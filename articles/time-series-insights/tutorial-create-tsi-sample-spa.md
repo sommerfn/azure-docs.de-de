@@ -5,15 +5,15 @@ author: ashannon7
 ms.service: time-series-insights
 ms.topic: tutorial
 ms.date: 04/25/2019
-ms.author: anshan
+ms.author: dpalled
 manager: cshankar
 ms.custom: seodec18
-ms.openlocfilehash: 3c2de4bd1f9d487cbb58be9581a0395bf1caa3f9
-ms.sourcegitcommit: cfbc8db6a3e3744062a533803e664ccee19f6d63
+ms.openlocfilehash: 5ee6e9aefb235feb28468798c3bd6b107f8c7c49
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/21/2019
-ms.locfileid: "65991894"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66244036"
 ---
 # <a name="tutorial-create-an-azure-time-series-insights-single-page-web-app"></a>Tutorial: Erstellen einer einseitigen Azure Time Series Insights-Web-App
 
@@ -146,7 +146,7 @@ Vor dem Erstellen der Anwendung müssen Sie sie bei Azure AD registrieren. Durch
 
       [!code-javascript[head-sample](~/samples-javascript/pages/tutorial/index.html?range=147-153&highlight=4-5)]
 
-      Beispiel: 
+      Beispiel:
 
       ```javascript
       clientId: '8884d4ca-b9e7-403a-bd8a-366d0ce0d460',
@@ -183,7 +183,7 @@ Vor dem Erstellen der Anwendung müssen Sie sie bei Azure AD registrieren. Durch
 Fehlercode/Bedingung | BESCHREIBUNG
 ---------------------| -----------
 *AADSTS50011: No reply address is registered for the application.* (AADSTS50011: Für die Anwendung ist keine Antwortadresse registriert.) | In der Azure AD-Registrierung fehlt die Eigenschaft **Antwort-URL**. Wechseln Sie für Ihre Azure AD-Anwendungsregistrierung zu **Einstellungen** > **Antwort-URLs**. Überprüfen Sie, ob die in Schritt 3 unter [Registrieren der Anwendung bei Azure AD](#register-the-application-with-azure-ad) angegebene **Anmelde**-URL vorhanden ist.
-*AADSTS50011: The reply url specified in the request does not match the reply urls configured for the application:  '\<Application ID GUID>'* . (Die in der Anforderung angegebene Antwort-URL entspricht nicht den für die Anwendung konfigurierten Antwort-URLs: <Anwendungs-ID>.) | Der in Schritt 6 unter [Erstellen und Veröffentlichen der Webanwendung](#build-and-publish-the-web-application) angegebene Wert für `postLogoutRedirectUri` muss dem Wert entsprechen, den Sie in Ihrer Azure AD-Anwendungsregistrierung unter **Einstellungen** > **Antwort-URLs** angegeben haben. Achten Sie darauf, dass Sie auch den Wert für **Ziel-URL** so ändern, dass gemäß Schritt 5 unter [Erstellen und Veröffentlichen der Webanwendung](#build-and-publish-the-web-application) *https* verwendet wird.
+*AADSTS50011: The reply url specified in the request does not match the reply urls configured for the application: '\<Application ID GUID>'* (AADSTS50011: Die in der Anforderung angegebene Antwort-URL entspricht nicht den für die Anwendung konfigurierten Antwort-URLs: <Anwendungs-ID>.) | Der in Schritt 6 unter [Erstellen und Veröffentlichen der Webanwendung](#build-and-publish-the-web-application) angegebene Wert für `postLogoutRedirectUri` muss dem Wert entsprechen, den Sie in Ihrer Azure AD-Anwendungsregistrierung unter **Einstellungen** > **Antwort-URLs** angegeben haben. Achten Sie darauf, dass Sie auch den Wert für **Ziel-URL** so ändern, dass gemäß Schritt 5 unter [Erstellen und Veröffentlichen der Webanwendung](#build-and-publish-the-web-application) *https* verwendet wird.
 Die Webanwendung wird zwar geladen, es wird jedoch eine nicht formatierte Nur-Text-Anmeldeseite mit weißem Hintergrund angezeigt. | Vergewissern Sie sich, dass die in Schritt 4 unter [Erstellen und Veröffentlichen der Webanwendung](#build-and-publish-the-web-application) erläuterten Pfade korrekt sind. Kann die Webanwendung die CSS-Dateien nicht finden, ist die Seite nicht ordnungsgemäß formatiert.
 
 ## <a name="clean-up-resources"></a>Bereinigen von Ressourcen

@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
 ms.custom: mvc
-ms.openlocfilehash: 41589dccae4e1259e4dc9368d5825ba770b4bdcc
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.openlocfilehash: 11fa72f5853350c76b2a8d0aa4fd7b96b598b670
+ms.sourcegitcommit: 009334a842d08b1c83ee183b5830092e067f4374
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66146696"
+ms.lasthandoff: 05/29/2019
+ms.locfileid: "66303847"
 ---
 # <a name="tutorial-develop-iot-edge-modules-for-linux-devices"></a>Tutorial: Entwickeln von IoT Edge-Modulen für Linux-Geräte
 
@@ -42,18 +42,18 @@ In diesem Tutorial wird Schritt für Schritt die Entwicklung eines IoT Edge-Modu
 
 Beim Entwickeln von IoT Edge-Modulen ist es wichtig, dass Sie den Unterschied zwischen dem Entwicklungscomputer und dem IoT Edge-Zielgerät verstehen, auf dem das Modul später bereitgestellt wird. Der Container, den Sie für Ihren Modulcode erstellen, muss mit dem Betriebssystem (BS) des *Zielgeräts* übereinstimmen. Am häufigsten kommt beispielsweise ein Szenario vor, bei dem ein Modul auf einem Windows-Computer entwickelt wird, das für ein Linux-Gerät mit IoT Edge bestimmt ist. In diesem Fall wird als Betriebssystem für den Container Linux verwendet. Denken Sie beim Durcharbeiten dieses Tutorials an den Unterschied zwischen dem *Betriebssystem des Entwicklungscomputers* und dem *Betriebssystem des Containers*.
 
-In diesem Tutorial geht es um Linux-Geräte, auf denen IoT Edge ausgeführt wird. Sie können Ihr bevorzugtes Entwicklungscomputer-Betriebssystem verwenden, solange auf Ihrem Entwicklungscomputer Linux-Container ausgeführt werden können. Es wird empfohlen, Visual Studio Code für die Entwicklung für Linux-Geräte zu nutzen, und dies ist auch die Vorgehensweise in diesem Tutorial. Alternativ können Sie Visual Studio 2017 nutzen, aber zwischen den beiden Tools gibt es Unterschiede in Bezug auf die Unterstützung.
+In diesem Tutorial geht es um Linux-Geräte, auf denen IoT Edge ausgeführt wird. Sie können Ihr bevorzugtes Entwicklungscomputer-Betriebssystem verwenden, solange auf Ihrem Entwicklungscomputer Linux-Container ausgeführt werden können. Es wird empfohlen, Visual Studio Code für die Entwicklung für Linux-Geräte zu nutzen, und dies ist auch die Vorgehensweise in diesem Tutorial. Alternativ können Sie Visual Studio nutzen, aber zwischen den beiden Tools gibt es Unterschiede in Bezug auf die Unterstützung.
 
-In der folgenden Tabelle sind die unterstützten Entwicklungsszenarien für **Linux-Container** in Visual Studio Code und Visual Studio 2017 aufgeführt.
+In der folgenden Tabelle sind die unterstützten Entwicklungsszenarien für **Linux-Container** in Visual Studio Code und Visual Studio aufgeführt.
 
-|   | Visual Studio Code | Visual Studio 2017 |
+|   | Visual Studio Code | Visual Studio 2017/2019 |
 | - | ------------------ | ------------------ |
 | **Architektur des Linux-Geräts** | Linux AMD64 <br> Linux ARM32 | Linux AMD64 <br> Linux ARM32 |
 | **Azure-Dienste** | Azure-Funktionen <br> Azure Stream Analytics <br> Azure Machine Learning |   |
 | **Sprachen** | C <br> C# <br> Java <br> Node.js <br> Python | C <br> C# |
-| **Weitere Informationen** | [Azure IoT Edge für Visual Studio Code](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-edge) | [Azure IoT Edge-Tools für Visual Studio 2017](https://marketplace.visualstudio.com/items?itemName=vsc-iot.vsiotedgetools) |
+| **Weitere Informationen** | [Azure IoT Edge für Visual Studio Code](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-edge) | [Azure IoT Edge-Tools für Visual Studio 2017](https://marketplace.visualstudio.com/items?itemName=vsc-iot.vsiotedgetools), [Azure IoT Edge-Tools für Visual Studio 2019](https://marketplace.visualstudio.com/items?itemName=vsc-iot.vs16iotedgetools) |
 
-In diesem Tutorial werden die Entwicklungsschritte für Visual Studio Code beschrieben. Falls Sie Visual Studio 2017 bevorzugen, hilft Ihnen die Anleitung unter [Entwickeln und Debuggen von Modulen für Azure IoT Edge mithilfe von Visual Studio 2017](how-to-visual-studio-develop-module.md) weiter.
+In diesem Tutorial werden die Entwicklungsschritte für Visual Studio Code beschrieben. Falls Sie Visual Studio bevorzugen, hilft Ihnen die Anleitung unter [Entwickeln und Debuggen von Modulen für Azure IoT Edge (Vorschauversion) mithilfe von Visual Studio 2017](how-to-visual-studio-develop-module.md) weiter.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -120,7 +120,7 @@ Für dieses Tutorial nutzen wir die C-Modulvorlage, weil hierfür die wenigsten 
 
 ### <a name="create-a-project-template"></a>Erstellen einer Projektvorlage
 
-Wählen Sie in der Befehlspalette von Visual Studio Code die Option **Azure IoT Edge: Neue IoT Edge-Projektmappe**. Folgen Sie den Aufforderungen, und verwenden Sie die folgenden Werte, um Ihre Projektmappe zu erstellen: 
+Wählen Sie in der Befehlspalette von Visual Studio Code die Option **Azure IoT Edge: Neue IoT Edge-Projektmappe** ein. Folgen Sie den Aufforderungen, und verwenden Sie die folgenden Werte, um Ihre Projektmappe zu erstellen: 
 
    | Feld | Wert |
    | ----- | ----- |
@@ -284,7 +284,7 @@ Sie haben sich vergewissert, dass die Containerimages in Ihrer Containerregistri
 
 Der Code von „SampleModule“ empfängt Nachrichten über die zugehörige Eingabewarteschlange und leitet diese an die Ausgabewarteschlange weiter. Im Bereitstellungsmanifest wurden Routen deklariert, über die Nachrichten von „tempSensor“ an „SampleModule“ und von „SampleModule“ dann an IoT Hub übergeben wurden. Mit den Azure IoT Tools für Visual Studio Code können Sie Nachrichten anzeigen, wenn diese von Ihren einzelnen Geräten auf IoT Hub eingehen. 
 
-1. Klicken Sie im Visual Studio Code-Explorer mit der rechten Maustaste auf das IoT Edge-Gerät, das Sie überwachen möchten, und wählen Sie dann die Option **Überwachung von D2C-Nachricht starten**. 
+1. Klicken Sie im Visual Studio Code-Explorer mit der rechten Maustaste auf das IoT Edge-Gerät, das Sie überwachen möchten, und wählen Sie dann die Option **Start Monitoring Built-in Event Endpoint** (Überwachung des integrierten Ereignisendpunkts starten) aus. 
 
 2. Im Ausgabefenster von Visual Studio Code können Sie anschließend verfolgen, wie die Nachrichten auf Ihrem IoT-Hub eingehen. 
 

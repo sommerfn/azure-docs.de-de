@@ -185,9 +185,9 @@ Führen Sie zum Konfigurieren des einmaligen Anmeldens von Azure AD mit Leapsome
 
     c. Kopieren Sie den Wert **Reply URL (receives response from your identity provider)** (Antwort-URL (erhält die Antwort von Ihrem Identitätsanbieter)), und fügen Sie ihn im Azure-Portal im Abschnitt **Grundlegende SAML-Konfiguration** in das Textfeld **Antwort-URL** ein.
 
-    d. Fügen Sie im Textfeld **SSO Login URL (provided by identity provider)** (SSO-Anmelde-URL (von Ihrem Identitätsanbieter bereitgestellt)) den Wert der **Anmelde-URL** ein, den Sie aus dem Azure-Portal kopiert haben.
+    d. Fügen Sie im Textfeld **SSO Login URL (provided by identity provider)** (SSO-Anmelde-URL (von Ihrem Identitätsanbieter angegeben)) den Wert der **Anmelde-URL** ein, den Sie aus dem Azure-Portal kopiert haben.
 
-    e. Kopieren Sie das aus dem Azure-Portal heruntergeladene Zertifikat ohne die Kommentare `--BEGIN CERTIFICATE and END CERTIFICATE--`, und fügen Sie es in das Textfeld **Certificate (provided by identity provider)** (Zertifikat (von Ihrem Identitätsanbieter bereitgestellt)) ein.
+    e. Kopieren Sie das aus dem Azure-Portal heruntergeladene Zertifikat ohne die Kommentare `--BEGIN CERTIFICATE and END CERTIFICATE--`, und fügen Sie es in das Textfeld **Certificate (provided by identity provider)** (Zertifikat (von Ihrem Identitätsanbieter angegeben)) ein.
 
     f. Klicken Sie auf **SSO-EINSTELLUNGEN AKTUALISIEREN**.
 

@@ -14,12 +14,12 @@ ms.topic: tutorial
 ms.date: 04/19/2019
 ms.author: yegu
 ms.custom: mvc
-ms.openlocfilehash: 28ba4397ca5a5fd3c281555238fc7eec8a82943d
-ms.sourcegitcommit: 300cd05584101affac1060c2863200f1ebda76b7
+ms.openlocfilehash: b0e48a0db63eded9e9c4921d33b03af39656ce0d
+ms.sourcegitcommit: 8c49df11910a8ed8259f377217a9ffcd892ae0ae
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/08/2019
-ms.locfileid: "65413667"
+ms.lasthandoff: 05/29/2019
+ms.locfileid: "66299263"
 ---
 # <a name="tutorial-use-feature-flags-in-a-net-core-app"></a>Tutorial: Verwenden von Featureflags in einer .NET Core-App
 
@@ -27,7 +27,7 @@ Die .NET Core-Featureverwaltungsbibliotheken bieten idiomatische Unterstützung
 
 In der Schnellstartanleitung [Add feature flags to an ASP.NET Core app](./quickstart-feature-flag-aspnet-core.md) (Hinzufügen von Featureflags zu einer ASP.NET Core-App) werden mehrere Methoden gezeigt, mit denen Sie Featureflags in einer ASP.NET Core-Anwendung hinzufügen können. Diese werden im vorliegenden Tutorial näher erläutert. Eine umfassende Referenz finden Sie in der [Featureverwaltungsdokumentation für ASP.NET Core](https://go.microsoft.com/fwlink/?linkid=2091410).
 
-In diesem Tutorial lernen Sie Folgendes:
+In diesem Lernprogramm lernen Sie Folgendes:
 
 > [!div class="checklist"]
 > * Hinzufügen von Featureflags in wichtigen Teilen Ihrer Anwendung, um die Verfügbarkeit von Features zu steuern
@@ -66,7 +66,7 @@ public class Startup
 }
 ```
 
-Wenn Sie in Ihren Featureflags einen Filter verwenden, müssen Sie eine zusätzliche Bibliothek einschließen und registrieren. Das folgende Beispiel zeigt, wie Sie einen integrierten Featurefilter namens **PercentageFilter** verwenden:
+Wenn Sie in Ihren Featureflags Filter verwenden, müssen Sie eine zusätzliche Bibliothek einschließen und registrieren. Das folgende Beispiel zeigt, wie Sie einen integrierten Featurefilter namens **PercentageFilter** verwenden:
 
 ```csharp
 using Microsoft.FeatureManagement;
@@ -205,7 +205,7 @@ public IActionResult Index()
 
 Ist ein MVC-Controller oder eine Aktion blockiert, weil das steuernde Featureflag *deaktiviert* ist, wird ein registrierter Handler (`IDisabledFeatureHandler`) aufgerufen. Der Standardhandler `IDisabledFeatureHandler` gibt den Statuscode 404 ohne Antworttext an den Client zurück.
 
-## <a name="view"></a>Ansicht
+## <a name="view"></a>Sicht
 
 In MVC-Ansichten kann ein Tag vom Typ `<feature>` verwendet werden, um das Rendern von Inhalten vom Aktivierungsstatus eines Featureflags abhängig zu machen.
 
@@ -232,7 +232,7 @@ public void ConfigureServices(IServiceCollection services)
 }
 ```
 
-## <a name="route"></a>Route
+## <a name="route"></a>Weiterleiten
 
 Routen können dynamisch auf der Grundlage von Featureflags verfügbar gemacht werden. Im folgenden Beispiel wird eine Route hinzugefügt, die `Beta` als den Standardcontroller festlegt – aber nur, wenn *FeatureA* aktiviert ist:
 
@@ -262,6 +262,6 @@ app.UseForFeature(featureName, appBuilder => {
 
 In diesem Tutorial haben Sie gelernt, wie Sie Featureflags in Ihrer ASP.NET Core-Anwendung unter Verwendung der Bibliotheken vom Typ `Microsoft.FeatureManagement` implementieren. Die folgenden Ressourcen enthalten weitere Informationen zur Unterstützung der Featureverwaltung in ASP.NET Core und App Configuration:
 
-* [Beispielcode für ASP.NET Core-Featureflag]()
-* [Dokumentation für „Microsoft.FeatureManagement“]()
+* [Beispielcode für ASP.NET Core-Featureflag](/azure/azure-app-configuration/quickstart-feature-flag-aspnet-core)
+* [Dokumentation für „Microsoft.FeatureManagement“](https://docs.microsoft.com/dotnet/api/microsoft.featuremanagement)
 * [Verwalten von Featureflags](./manage-feature-flags.md)

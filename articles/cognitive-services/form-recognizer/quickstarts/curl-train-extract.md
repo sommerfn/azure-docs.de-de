@@ -9,12 +9,12 @@ ms.subservice: form-recognizer
 ms.topic: quickstart
 ms.date: 04/15/2019
 ms.author: pafarley
-ms.openlocfilehash: bd68e2803b3b538011cfa37378890f2cc7b22223
-ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
+ms.openlocfilehash: 942f84723bc207c200b36a63ca7f65cb9d7dab59
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/20/2019
-ms.locfileid: "65906994"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66235606"
 ---
 # <a name="quickstart-train-a-form-recognizer-model-and-extract-form-data-by-using-the-rest-api-with-curl"></a>Schnellstart: Trainieren eines Modells zur Formularerkennung und Extrahieren von Formulardaten unter Verwendung der REST-API mit cURL
 
@@ -108,7 +108,7 @@ Als Nächstes analysieren Sie ein Dokument und extrahieren daraus Schlüssel-Wer
 
 1. Ersetzen Sie `<Endpoint>` durch den Endpunkt, den Sie mit Ihrem Abonnementschlüssel für die Formularerkennung erhalten haben. Sie finden ihn auf der Registerkarte **Übersicht** der Formularerkennungsressource.
 1. Ersetzen Sie `<modelID>` durch die Modell-ID, die Sie im vorherigen Abschnitt erhalten haben.
-1. Ersetzen Sie `<path to your form>` durch den Dateipfad zu Ihrem Formular.
+1. Ersetzen Sie `<path to your form>` durch den Dateipfad zu Ihrem Formular. Beispiel: c:\temp\file.pdf. 
 1. Ersetzen Sie `<file type>` durch den Dateityp. Unterstützte Typen: „pdf“, „image/jpeg“, „image/png“.
 1. Ersetzen Sie `<subscription key>` durch Ihren Abonnementschlüssel.
 

@@ -12,12 +12,12 @@ ms.date: 05/21/2019
 ms.author: mimart
 ms.reviewer: japere
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6ae8b9709e7294e8cb7819afe3ec9f6eb5a06427
-ms.sourcegitcommit: db3fe303b251c92e94072b160e546cec15361c2c
+ms.openlocfilehash: 7110d7004ae9be58bb150674d516692049507608
+ms.sourcegitcommit: 8c49df11910a8ed8259f377217a9ffcd892ae0ae
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/22/2019
-ms.locfileid: "66015424"
+ms.lasthandoff: 05/29/2019
+ms.locfileid: "66299076"
 ---
 # <a name="tutorial-add-an-on-premises-application-for-remote-access-through-application-proxy-in-azure-active-directory"></a>Tutorial: Hinzufügen einer lokalen Anwendung für den Remotezugriff über den Anwendungsproxy in Azure Active Directory
 
@@ -51,9 +51,9 @@ Für hohe Verfügbarkeit in Ihrer Produktionsumgebung sollten Sie mehrere Window
 
 2. Der Connectorserver und die Webanwendungsserver müssen derselben Active Directory-Domäne angehören bzw. vertrauenswürdige Domänen umfassen. Dass die Server zu derselben Domäne oder zu vertrauenswürdigen Domänen gehören, ist eine Voraussetzung für die Verwendung des einmaligen Anmeldens (Single Sign-On, SSO) mit integrierter Windows-Authentifizierung (IWA) und eingeschränkter Kerberos-Delegierung (Kerberos Constrained Delegation, KCD). Wenn der Connector- und Webanwendungsserver sich in unterschiedlichen Active Directory-Domänen befinden, müssen Sie die ressourcenbasierte Delegierung für einmaliges Anmelden verwenden. Weitere Informationen finden Sie unter [Eingeschränkte Kerberos-Delegierung für das einmalige Anmelden mit Anwendungsproxy](application-proxy-configure-single-sign-on-with-kcd.md).
 
-#### <a name="software-requirements"></a>Softwareanforderungen
+#### <a name="tls-requirements"></a>TLS-Anforderungen
 
-Auf dem Windows-Connectorserver muss TLS 1.2 aktiviert werden, bevor Sie den Anwendungsproxyconnector installieren. Vorhandene Connectors mit Versionen vor 1.5.612.0 nutzen bis auf Weiteres die früheren Versionen von TLS weiter. 
+Auf dem Windows-Connectorserver muss TLS 1.2 aktiviert werden, bevor Sie den Anwendungsproxyconnector installieren.
 
 So aktivieren Sie TLS 1.2
 
@@ -67,6 +67,9 @@ So aktivieren Sie TLS 1.2
     ```
 
 2. Starten Sie den Server neu.
+
+>[!Important] 
+> Zur Bereitstellung erstklassiger Verschlüsselung für unsere Kunden wird der Anwendungsproxydienst aktualisiert, um den Zugriff ausschließlich auf TLS 1.2-Protokolle zu beschränken. Basierend auf der Kundenbereitschaft werden die Änderungen nach und nach für Kunden bereitgestellt, die ausschließlich TLS 1.2-Protokolle verwenden. Für die Kunden ist keinerlei Beeinträchtigung spürbar. TLS 1.0 und 1.1 werden am 31. August 2019 eingestellt, und Kunden erhalten eine Vorankündigung, um sich auf diese Änderung vorbereiten zu können. Vergewissern Sie sich bei der Vorbereitung auf diese Änderung, dass alle Kombinationen aus Client/Server und Browser/Server zur Verwendung von TLS 1.2 aktualisiert wurden, um die Verbindung mit dem Anwendungsproxydienst sicherzustellen. Dazu gehören Clients, mit denen Ihre Benutzer auf Anwendungen zugreifen, die über den Anwendungsproxy veröffentlicht werden. Nützliche Referenzen und Ressourcen finden Sie unter [Vorbereiten der Verwendung von TLS 1.2 in Office 365](https://support.microsoft.com/help/4057306/preparing-for-tls-1-2-in-office-365).
 
 ## <a name="prepare-your-on-premises-environment"></a>Vorbereiten Ihrer lokalen Umgebung
 

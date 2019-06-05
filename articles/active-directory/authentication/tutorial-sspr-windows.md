@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahenry
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: acd100ccc3aafc2de1f2c7970ff9437c92156b17
-ms.sourcegitcommit: 4c2b9bc9cc704652cc77f33a870c4ec2d0579451
+ms.openlocfilehash: ea65120a2a735477d048b9012e160e0cdafe8835
+ms.sourcegitcommit: 25a60179840b30706429c397991157f27de9e886
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/17/2019
-ms.locfileid: "65861532"
+ms.lasthandoff: 05/28/2019
+ms.locfileid: "66253071"
 ---
 # <a name="tutorial-azure-ad-password-reset-from-the-login-screen"></a>Tutorial: Azure AD-Kennwortzurücksetzung über den Anmeldebildschirm
 
@@ -29,7 +29,7 @@ In diesem Tutorial ermöglichen Sie Benutzern das Zurücksetzen ihrer Kennwörte
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-* Sie müssen mindestens Windows 10 mit dem Update vom April 2018 ausführen und die Geräte müssen entweder:
+* Sie müssen mindestens Windows 10 mit dem Update vom April 2018 (v1803) ausführen und die Geräte müssen entweder:
    * [in Azure AD eingebunden](../device-management-azure-portal.md) sein oder
    * [in Azure AD Hybrid eingebunden](../device-management-hybrid-azuread-joined-devices-setup.md) sein, mit Netzwerkkonnektivität zu einem Domänencontroller.
 * Sie müssen die Azure AD-Self-Service-Kennwortzurücksetzung aktivieren.
@@ -122,7 +122,7 @@ Beim Testen dieser Funktionalität mit Remotedesktop oder einer erweiterten VM-S
 
 * Die Kennwortzurücksetzung wird für Remotedesktop derzeit nicht unterstützt.
 
-Wenn in Windows 10-Versionen vor 1809 die Richtlinie STRG+ALT+ENTF vorschreibt, funktioniert **Kennwort zurücksetzen** nicht.
+Wenn in Windows 10-Versionen vor v1809 die Richtlinie STRG+ALT+ENTF vorschreibt, funktioniert **Kennwort zurücksetzen** nicht.
 
 Wenn Benachrichtigungen bei gesperrtem Bildschirm deaktiviert sind, funktioniert **Kennwort zurücksetzen** nicht.
 

@@ -10,12 +10,12 @@ author: sdgilley
 ms.author: sgilley
 ms.date: 03/21/2019
 ms.custom: seodec18
-ms.openlocfilehash: 53e495a3c2d82738e1008ead84a4124e44435c9a
-ms.sourcegitcommit: 4c2b9bc9cc704652cc77f33a870c4ec2d0579451
+ms.openlocfilehash: c814f4bb0cc24350e45400d141c97d1b2eb4998d
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/17/2019
-ms.locfileid: "65864380"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66237797"
 ---
 # <a name="quickstart-use-your-own-notebook-server-to-get-started-with-azure-machine-learning"></a>Schnellstart: Verwenden Ihres eigenen Notebook-Servers für die ersten Schritte mit Azure Machine Learning
 
@@ -35,12 +35,27 @@ Wenn Sie kein Azure-Abonnement besitzen, können Sie ein kostenloses Konto erste
 * Azure Machine Learning Service-Arbeitsbereich
 * Konfigurationsdatei für den Arbeitsbereich ( **.azureml/config.json**)
 
-Diese erforderlichen Komponenten erhalten Sie unter [Create an Azure Machine Learning service workspace](setup-create-workspace.md#portal) (Erstellen eines Azure Machine Learning Service-Arbeitsbereichs).
+Diese erforderlichen Komponenten erhalten Sie unter [Create an Azure Machine Learning service workspace](setup-create-workspace.md#sdk) (Erstellen eines Azure Machine Learning Service-Arbeitsbereichs).
+
 
 
 ## <a name="use-the-workspace"></a>Verwenden des Arbeitsbereichs
 
-Erstellen Sie ein Skript, oder starten Sie ein Notebook im gleichen Verzeichnis, in dem auch die Konfigurationsdatei Ihres Arbeitsbereichs gespeichert ist. Führen Sie den Code aus, für den die grundlegenden APIs des SDK genutzt werden, um Experimentausführungen nachzuverfolgen.
+Erstellen Sie ein Skript, oder starten Sie ein Notebook im gleichen Verzeichnis, in dem auch die Konfigurationsdatei Ihres Arbeitsbereichs ( **.azureml/config.json**) gespeichert ist.
+
+### <a name="attach-to-workspace"></a>Anfügen an den Arbeitsbereich
+
+Dieser Code liest Informationen aus der Konfigurationsdatei, die an den Arbeitsbereich angefügt werden sollen.
+
+```
+from azureml.core import Workspace
+
+ws = Workspace.from_config()
+```
+
+### <a name="log-values"></a>Protokollieren von Werten
+
+Führen Sie den Code aus, für den die grundlegenden APIs des SDK genutzt werden, um Experimentausführungen nachzuverfolgen.
 
 1. Erstellen Sie ein Experiment im Arbeitsbereich.
 1. Protokollieren Sie einen einzelnen Wert im Experiment.
