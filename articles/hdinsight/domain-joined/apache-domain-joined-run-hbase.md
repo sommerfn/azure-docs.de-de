@@ -234,7 +234,7 @@ Basierend auf den konfigurierten Ranger-Richtlinien kann **sales_user1** alle Da
 Wenn Sie diese Anwendung nicht mehr benötigen, gehen Sie wie folgt vor, um den erstellten HBase-Cluster zu löschen:
 
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com/) an.
-2. Geben Sie oben im Suchfeld **** den Suchbegriff **HDInsight** ein. 
+2. Geben Sie oben im **Suchfeld** den Suchbegriff **HDInsight** ein. 
 1. Wählen Sie unter **Dienste** die Option **HDInsight-Cluster** aus.
 1. Klicken Sie in der daraufhin angezeigten Liste mit den HDInsight-Clustern neben dem Cluster, den Sie für dieses Tutorial erstellt haben, auf die Auslassungspunkte ( **...** ). 
 1. Klicken Sie auf **Löschen**. Klicken Sie auf **Ja**.
