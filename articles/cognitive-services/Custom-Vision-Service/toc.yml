@@ -70,8 +70,6 @@
       href: 'https://go.microsoft.com/fwlink/?linkid=865446'
     - name: Custom Vision-Vorhersage-API
       href: 'https://go.microsoft.com/fwlink/?linkid=865445'
-    - name: Glossar
-      href: glossary-of-terms.md
     - name: SDKs
       items:
         - name: .NET
