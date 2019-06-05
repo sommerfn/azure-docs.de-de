@@ -329,7 +329,7 @@ Die folgende Tabelle beschreibt die JSON-Eigenschaften, die in der JSON-Definiti
 | Eigenschaft | BESCHREIBUNG | Erforderlich |
 | -------- | ----------- | -------- |
 | name | Der Name der Aktivität in der Pipeline. | JA |
-| Beschreibung | Text, der beschreibt, welche Aktion die Aktivität ausführt. | Nein  |
+| description | Text, der beschreibt, welche Aktion die Aktivität ausführt. | Nein  |
 | type | Diese Eigenschaft muss auf „HDInsightSpark“ festgelegt werden. | JA |
 | linkedServiceName | Name des mit HDInsight verknüpften Diensts, in dem das Spark-Programm ausgeführt wird. | JA |
 | rootPath | Der Blobcontainer und -ordner mit der Spark-Datei. Für den Dateinamen wird zwischen Groß- und Kleinschreibung unterschieden. | JA |
