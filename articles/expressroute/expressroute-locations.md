@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 05/08/2019
+ms.date: 05/20/2019
 ms.author: pareshmu
-ms.openlocfilehash: 63d6d1419b0a70a0bcf3532a13d6f7491b792593
-ms.sourcegitcommit: e6d53649bfb37d01335b6bcfb9de88ac50af23bd
+ms.openlocfilehash: 00748f0a245dd0c63d59b32113077b5b10915d3d
+ms.sourcegitcommit: 59fd8dc19fab17e846db5b9e262a25e1530e96f3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/09/2019
-ms.locfileid: "65467700"
+ms.lasthandoff: 05/21/2019
+ms.locfileid: "65977975"
 ---
 # <a name="expressroute-partners-and-peering-locations"></a>ExpressRoute-Partner und Peeringstandorte
 
@@ -50,7 +50,7 @@ Die folgende Tabelle bietet eine Übersicht über die Azure-Regionen mit Express
 | **Indien** | 2 |Indien, Westen, Indien, Mitte, Indien, Süden |Chennai, Chennai2, Mumbai, Mumbai2 |
 | **Japan** | 2 |Japan West, Japan Ost |Osaka, Tokio |
 | **Südkorea** | 2 |Korea, Mitte, Korea, Süden |Busan, Seoul|
-| **Vereinigte Arabische Emirate** | 3 | VAE, Mitte; VAE, Norden | Dubai |
+| **Vereinigte Arabische Emirate** | 3 | VAE, Mitte; VAE, Norden | Dubai, Dubai2 |
 | **Südafrika** | 3 |„Südafrika, Westen“, „Südafrika, Norden“ |Kapstadt, Johannesburg |
 | **Südamerika** | 3 |Brasilien Süd |Sao Paulo |
 
@@ -93,8 +93,9 @@ Die folgende Tabelle enthält die Standorte nach Service Provider. [Hier](expres
 | **[Comcast](https://business.comcast.com/landingpage/microsoft-azure)** |Unterstützt |Unterstützt |Chicago, Silicon Valley, Washington, D.C. |
 | **[CoreSite](https://www.coresite.com/solutions/cloud-services/public-cloud-providers/microsoft-azure-expressroute)** |Unterstützt |Unterstützt |Chicago, Denver, Los Angeles, New York, Silicon Valley, Silicon Valley2, Washington DC, Washington DC2 |
 | **[DE-CIX](https://www.de-cix.net/en/de-cix-service-world/directcloud/find-a-cloud-service/detail/microsoft-azure)** | Unterstützt |Unterstützt |Amsterdam2, Frankfurt|
+| **du datamena** |Unterstützt |Unterstützt | Dubai2 |
 | **eir** |Unterstützt |Unterstützt |Dublin|
-| **Epsilon Global Communications** |Unterstützt |Unterstützt |Singapur, Singapur2 |
+| **[Epsilon Global Communications](https://www.epsilontel.com/solutions/direct-cloud-connect)** |Unterstützt |Unterstützt |Singapur, Singapur2 |
 | **[Equinix](https://www.equinix.com/partners/microsoft-azure/)** |Unterstützt |Unterstützt |Amsterdam, Atlanta, Chicago, Dallas, Dublin, Hongkong (SAR), London, London2, Los Angeles, Melbourne, Miami, New York, Osaka, Paris, São Paulo, Seattle, Silicon Valley, Singapur, Sydney, Tokio, Toronto, Washington DC |
 | **Etisalat (VAE)** |Unterstützt |Unterstützt |Dubai|
 | **[euNetworks](https://eunetworks.com/services/solutions/cloud-connect/microsoft-azure-expressroute/)** |Unterstützt |Unterstützt |Amsterdam, Dublin, London |
@@ -134,7 +135,7 @@ Die folgende Tabelle enthält die Standorte nach Service Provider. [Hier](expres
 | **[Tata Communications](https://www.tatacommunications.com/lp/izo/azure/azure_index.html)** |Unterstützt |Unterstützt |Amsterdam, Chennai, Hongkong (SAR), London, Mumbai, São Paulo, Silicon Valley, Singapur, Washington DC |
 | **Telecity Group** |Unterstützt |Unterstützt |Amsterdam |
 | **[Telefonica](https://www.business-solutions.telefonica.com/es/enterprise/solutions/efficient-infrastructure/managed-voice-data-connectivity/)** |Unterstützt |Unterstützt |Amsterdam, Sao Paulo |
-| **[Telehouse – KDDI](https://www.telehouse.net/solutions/cloud-services/cloud-link)** |Unterstützt |Unterstützt |London |
+| **[Telehouse – KDDI](https://www.telehouse.net/solutions/cloud-services/cloud-link)**  |Unterstützt |Unterstützt |London |
 | **Telenor** |Unterstützt |Unterstützt |Amsterdam, London |
 | **[Telia Carrier](https://teliacarrier.com/our-services/connectivity/cloud-connect.html?title=Cloud%20Connect)** | Unterstützt | Unterstützt |Amsterdam, Chicago, Dallas, London, Paris, Washington |
 | **Telmex Uninet**| Unterstützt | Unterstützt | Dallas |

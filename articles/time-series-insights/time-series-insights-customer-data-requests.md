@@ -4,17 +4,17 @@ description: Zusammenfassung der Funktionen für Kundendatenanforderungen in Azu
 author: ashannon7
 ms.author: anshan
 manager: cshankar
-ms.date: 05/17/2018
+ms.date: 05/08/2019
 ms.topic: conceptual
 ms.service: time-series-insights
 services: time-series-insights
 ms.custom: seodec18
-ms.openlocfilehash: 30f6b1fd953f89170a18d56bf0353c643853074e
-ms.sourcegitcommit: b767a6a118bca386ac6de93ea38f1cc457bb3e4e
+ms.openlocfilehash: 67aea6b3d535eeb0838da4ac6990c50e607617bf
+ms.sourcegitcommit: f6c85922b9e70bb83879e52c2aec6307c99a0cac
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/18/2018
-ms.locfileid: "53558548"
+ms.lasthandoff: 05/11/2019
+ms.locfileid: "65546388"
 ---
 # <a name="summary-of-customer-data-request-features"></a>Zusammenfassung der Features für Kundendatenanforderungen
 
@@ -65,3 +65,11 @@ Weitere Informationen finden Sie unter [Azure Time Series Insights-Explorer](tim
 Derzeit ist in Time Series Insights die differenzierte Löschung von Daten nicht möglich. Time Series Insights bietet jedoch die Möglichkeit, die in Time Series Insights gespeicherten Kundendaten durch Konfigurieren von Aufbewahrungsrichtlinien zu entfernen. Sie können die Aufbewahrungsdauer für die gesamte Time Series Insights-Umgebung in die Anzahl von Tagen anpassen, die Ihren Anforderungen für Löschvorgänge entspricht.
 
 Weitere Informationen finden Sie unter [Konfigurieren der Vermerkdauer in Time Series Insights](time-series-insights-how-to-configure-retention.md).
+
+## <a name="next-steps"></a>Nächste Schritte
+
+* Weitere Informationen zum [Gewähren von Datenzugriff für Ihre TSI-Umgebung](./time-series-insights-data-access.md).
+
+* Anzeigen des [Azure Time Series Insights-Explorers](time-series-insights-explorer.md).
+
+* Informationen zum [Konfigurieren der Vermerkdauer in Time Series Insights](time-series-insights-how-to-configure-retention.md).

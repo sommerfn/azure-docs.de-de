@@ -6,15 +6,15 @@ ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.devlang: dotnet
 ms.topic: conceptual
-ms.date: 10/16/2018
+ms.date: 04/26/2019
 ms.author: ramkris
 ms.reviewer: sngun
-ms.openlocfilehash: cfb90dc31635001291b1661f31ec2ee1fc378404
-ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
+ms.openlocfilehash: 7365fa4cac5e32962477ef7f2441825327a0eb64
+ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/12/2019
-ms.locfileid: "59523340"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65912705"
 ---
 # <a name="use-bulk-executor-net-library-to-perform-bulk-operations-in-azure-cosmos-db"></a>Verwenden der BulkExecutor-.NET-Bibliothek zum Ausführen von Massenvorgängen in Azure Cosmos DB
 
@@ -24,7 +24,7 @@ Zurzeit wird die BulkExecutor-Bibliothek nur von Azure Cosmos DB SQL-API- und Gr
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-* Falls Sie Visual Studio 2017 noch nicht installiert haben, können Sie die [Visual Studio 2017 Community-Edition](https://www.visualstudio.com/downloads/) herunterladen und verwenden. Aktivieren Sie beim Setup von Visual Studio die Option „Azure-Entwicklung“.
+* Falls Sie Visual Studio 2019 noch nicht installiert haben, können Sie die [Visual Studio 2019 Community-Edition](https://www.visualstudio.com/downloads/) herunterladen und verwenden. Aktivieren Sie beim Setup von Visual Studio die Option „Azure-Entwicklung“.
 
 * Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio) erstellen, bevor Sie beginnen. 
 

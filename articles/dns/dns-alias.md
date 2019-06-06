@@ -5,14 +5,14 @@ services: dns
 author: vhorne
 ms.service: dns
 ms.topic: article
-ms.date: 3/21/2019
+ms.date: 5/13/2019
 ms.author: victorh
-ms.openlocfilehash: 87ca7cae8e9170c8c437d0961cb1acb2e0dd0eb1
-ms.sourcegitcommit: 02d17ef9aff49423bef5b322a9315f7eab86d8ff
+ms.openlocfilehash: 847ad271dac4afc8c8baa2faa8702b3a3ab6cefa
+ms.sourcegitcommit: 1fbc75b822d7fe8d766329f443506b830e101a5e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58337645"
+ms.lasthandoff: 05/14/2019
+ms.locfileid: "65596702"
 ---
 # <a name="azure-dns-alias-records-overview"></a>Azure DNS-Aliaseinträge – Übersicht
 
@@ -25,7 +25,7 @@ Aliaseintragssätze werden für die folgenden Eintragstypen in einer Azure DNS-Z
 - CNAME
 
 > [!NOTE]
-> Wenn Sie beabsichtigen, für den Verweis auf ein [Azure Traffic Manager-Profil](../traffic-manager/quickstart-create-traffic-manager-profile.md) einen Aliaseintrag für die A- oder AAAA-Eintragstypen zu verwenden, stellen Sie sicher, dass das Traffic Manager-Profil nur [externe Endpunkte](../traffic-manager/traffic-manager-endpoint-types.md#external-endpoints) aufweist. Sie müssen die IPv4- oder IPv6-Adresse für externe Endpunkte in Traffic Manager angeben. Verwenden Sie idealerweise statische IP-Adressen.
+> Wenn Sie beabsichtigen, für den Verweis auf ein [Azure Traffic Manager-Profil](../traffic-manager/quickstart-create-traffic-manager-profile.md) einen Aliaseintrag für die A- oder AAAA-Eintragstypen zu verwenden, stellen Sie sicher, dass das Traffic Manager-Profil nur [externe Endpunkte](../traffic-manager/traffic-manager-endpoint-types.md#external-endpoints) aufweist. Sie müssen die IPv4- oder IPv6-Adresse für externe Endpunkte in Traffic Manager angeben. Sie können keine vollständig qualifizierten Domänennamen (FQDNs) in Endpunkten verwenden. Verwenden Sie idealerweise statische IP-Adressen.
 
 ## <a name="capabilities"></a>Funktionen
 

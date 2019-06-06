@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 01/01/2019
 ms.author: aljo
-ms.openlocfilehash: d6860cdfb2e453a2151b4c5e425cfe0b12d88f8b
-ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
+ms.openlocfilehash: c199bd7314cb076def497bc18030f783eb23f4be
+ms.sourcegitcommit: 3675daec6c6efa3f2d2bf65279e36ca06ecefb41
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/05/2019
-ms.locfileid: "59050474"
+ms.lasthandoff: 05/14/2019
+ms.locfileid: "65620227"
 ---
 # <a name="change-cluster-from-certificate-thumbprint-to-common-name"></a>Ändern des Clusters von „Zertifikatfingerabdruck“ zu „Allgemeiner Name“
 Keine zwei Zertifikate können den gleichen Fingerabdruck haben, was ein Clusterzertifikatrollover oder die Verwaltung erschwert. Mehrere Zertifikate können jedoch den gleichen allgemeinen Namen oder den gleichen Antragsteller haben.  Durch den Wechsel von „Zertifikatfingerabdruck“ zu „Allgemeiner Name“ bei einem bereitgestellten Cluster wird die Zertifikatverwaltung vereinfacht. In diesem Artikel wird beschrieben, wie Sie einen aktuell ausgeführten Service Fabric-Cluster für die Verwendung des allgemeinen Namens (anstelle des Zertifikatfingerabdrucks) aktualisieren.
@@ -127,7 +127,7 @@ Laden Sie die Vorlagedatei und die JSON-Parameterdatei auf Ihren lokalen Compute
     },
     ```
 
-    Außerdem könnten Sie *certificateThumbprint* entfernen, da dieser Parameter wahrscheinlich nicht mehr benötigt wird.
+    Außerdem könnten Sie *certificateThumbprint* entfernen, da dieser Parameter in der Resource Manager-Vorlage wahrscheinlich nicht mehr referenziert wird.
 
 2. Aktualisieren Sie in der Ressource **Microsoft.Compute/virtualMachineScaleSets** die VM-Erweiterung, damit in den Zertifikateinstellungen anstelle des Fingerabdrucks der allgemeine Name verwendet wird.  Fügen Sie unter **virtualMachineProfile**->**extensionProfile**->**extensions**->**properties**->**settings**->**certificate** den Eintrag `"commonNames": ["[parameters('certificateCommonName')]"],` hinzu, und entfernen Sie `"thumbprint": "[parameters('certificateThumbprint')]",`.
     ```json
@@ -203,6 +203,6 @@ New-AzResourceGroupDeployment -ResourceGroupName $groupname -Verbose `
 ## <a name="next-steps"></a>Nächste Schritte
 * Erfahren Sie mehr über [Clustersicherheit](service-fabric-cluster-security.md).
 * Erfahren Sie, wie Sie einen [Rollover für ein Cluster-Zertifikat ausführen](service-fabric-cluster-rollover-cert-cn.md).
-* [Verwalten von Clusterzertifikaten](service-fabric-cluster-security-update-certs-azure.md)
+* [Aktualisieren und Verwalten von Clusterzertifikaten](service-fabric-cluster-security-update-certs-azure.md)
 
 [image1]: ./media/service-fabric-cluster-change-cert-thumbprint-to-cn/PortalViewTemplates.png

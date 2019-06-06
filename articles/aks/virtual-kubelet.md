@@ -8,12 +8,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 08/14/2018
 ms.author: iainfou
-ms.openlocfilehash: a6a2fb246e407d6ea240ff40f4d2fa2b1b780931
-ms.sourcegitcommit: d61faf71620a6a55dda014a665155f2a5dcd3fa2
+ms.openlocfilehash: f7a0269ff22987648d134cb7f4fba8e28e29fd8b
+ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54054011"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65956295"
 ---
 # <a name="use-virtual-kubelet-with-azure-kubernetes-service-aks"></a>Verwenden von Virtual Kubelet mit Azure Kubernetes Service (AKS)
 
@@ -26,13 +26,35 @@ Bei Verwendung des Anbieters für virtuelle Kubelets in Azure Container Instance
 >
 > „Virtual Kubelet“ ist ein experimentelles Open Source-Projekt und sollte als solches verwendet werden. Weitere Informationen finden Sie im [Virtual Kubelet-GitHub-Projekt][vk-github]. Dort können Sie einen Beitrag leisten, Fragen stellen und mehr über virtuelle Kubelets erfahren.
 
-## <a name="prerequisite"></a>Voraussetzung
+## <a name="before-you-begin"></a>Voraussetzungen
 
 In diesem Dokument wird davon ausgegangen, dass Sie über einen AKS-Cluster verfügen. Wenn Sie einen AKS-Cluster benötigen, finden Sie weitere Informationen im [Schnellstart zu Azure Kubernetes Service (AKS)][aks-quick-start].
 
 Außerdem benötigen Sie mindestens die Azure CLI-Version **2.0.33** oder höher. Führen Sie `az --version` aus, um die Version zu finden. Informationen zum Durchführen einer Installation oder eines Upgrades finden Sei bei Bedarf unter [Installieren der Azure CLI](/cli/azure/install-azure-cli).
 
 Zum Installieren von Virtual Kubelet ist außerdem [Helm](https://docs.helm.sh/using_helm/#installing-helm) erforderlich.
+
+### <a name="register-container-instances-feature-provider"></a>Registrieren des Anbieters des Features „Container Instances“
+
+Wenn Sie den Dienst Azure Container Instance (ACI) noch nicht genutzt haben, registrieren Sie den Dienstanbieter in Ihrem Abonnement. Sie können den Status der ACI-Anbieterregistrierung mit dem Befehl [az provider list][az-provider-list] überprüfen, wie im folgenden Beispiel gezeigt:
+
+```azurecli-interactive
+az provider list --query "[?contains(namespace,'Microsoft.ContainerInstance')]" -o table
+```
+
+Der Anbieter *Microsoft.ContainerInstance* sollte als *Registriert* gemeldet werden, wie in der folgenden Beispielausgabe gezeigt:
+
+```
+Namespace                    RegistrationState
+---------------------------  -------------------
+Microsoft.ContainerInstance  Registered
+```
+
+Wenn der Anbieter als *NotRegistered* (Nicht registriert) angezeigt wird, registrieren Sie den Anbieter mit dem [az provider register][az-provider-register], wie im folgenden Beispiel gezeigt:
+
+```azurecli-interactive
+az provider register --namespace Microsoft.ContainerInstance
+```
 
 ### <a name="for-rbac-enabled-clusters"></a>Für RBAC-fähige Cluster
 
@@ -87,16 +109,16 @@ Diese Argumente sind für den `aks install-connector`-Befehl verfügbar.
 
 | Argument: | BESCHREIBUNG | Erforderlich |
 |---|---|:---:|
-| `--connector-name` | Name des ACI-Connectors| JA |
-| `--name``-n` | Name des verwalteten Clusters | JA |
-| `--resource-group``-g` | Name der Ressourcengruppe | JA |
-| `--os-type` | Betriebssystemtyp der Containerinstanzen. Zulässige Werte: Sowohl Linux als auch Windows. Standardwert: Linux. | Nein  |
-| `--aci-resource-group` | Ressourcengruppe, in der die ACI-Containergruppen erstellt werden sollen. | Nein  |
-| `--location``-l` | Speicherort zum Erstellen der ACI-Containergruppen | Nein  |
-| `--service-principal` | Dienstprinzipal für die Authentifizierung bei Azure-APIs | Nein  |
-| `--client-secret` | Dem Dienstprinzipal zugeordnetes Geheimnis | Nein  |
-| `--chart-url` | URL eines Helm-Diagramms zur Installation eines ACI-Connectors | Nein  |
-| `--image-tag` | Imagetag des Containerimages für das virtuelle Kubelet | Nein  |
+| `--connector-name` | Name des ACI-Connectors| Ja |
+| `--name``-n` | Name des verwalteten Clusters | Ja |
+| `--resource-group``-g` | Name der Ressourcengruppe | Ja |
+| `--os-type` | Betriebssystemtyp der Containerinstanzen. Zulässige Werte: Sowohl Linux als auch Windows. Standardwert: Linux. | Nein |
+| `--aci-resource-group` | Ressourcengruppe, in der die ACI-Containergruppen erstellt werden sollen. | Nein |
+| `--location``-l` | Speicherort zum Erstellen der ACI-Containergruppen | Nein |
+| `--service-principal` | Dienstprinzipal für die Authentifizierung bei Azure-APIs | Nein |
+| `--client-secret` | Dem Dienstprinzipal zugeordnetes Geheimnis | Nein |
+| `--chart-url` | URL eines Helm-Diagramms zur Installation eines ACI-Connectors | Nein |
+| `--image-tag` | Imagetag des Containerimages für das virtuelle Kubelet | Nein |
 
 ## <a name="validate-virtual-kubelet"></a>Überprüfen der Virtual Kubelet-Installation
 

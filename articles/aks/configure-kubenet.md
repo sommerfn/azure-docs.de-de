@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 01/31/2019
 ms.author: iainfou
 ms.reviewer: nieberts, jomore
-ms.openlocfilehash: 4d2ab19fafc265d70028d5ee192efc60a5a8eaff
-ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
+ms.openlocfilehash: a4ed3ec823982bf3977edf9939d98419e1c4b01f
+ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65073993"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65956389"
 ---
 # <a name="use-kubenet-networking-with-your-own-ip-address-ranges-in-azure-kubernetes-service-aks"></a>Verwenden von kubenet-Netzwerken mit Ihren eigenen IP-Adressbereichen in Azure Kubernetes Service (AKS)
 
@@ -22,6 +22,9 @@ Standardmäßig verwenden AKS-Cluster [kubenet][kubenet], und ein virtuelles Azu
 Mit [Azure Container Networking Interface (CNI)][cni-networking] erhält jeder Pod eine IP-Adresse aus dem Subnetz und kann direkt angesprochen werden. Diese IP-Adressen müssen in Ihrem Netzwerkadressraum eindeutig sein und im Voraus geplant werden. Jeder Knoten verfügt über einen Konfigurationsparameter für die maximale Anzahl von Pods, die er unterstützt. Die entsprechende Anzahl von IP-Adressen pro Knoten wird dann im Voraus für diesen Knoten reserviert. Dieser Ansatz erfordert mehr Planung und führt oft zu einer Erschöpfung der IP-Adresse oder der Notwendigkeit, Cluster in einem größeren Subnetz neu zu erstellen, wenn die Anforderungen Ihrer Anwendung wachsen.
 
 Dieser Artikel veranschaulicht die Verwendung von *kubenet*-Netzwerken zum Erstellen und Verwenden eines virtuellen Netzwerksubnetzes für einen AKS-Cluster. Weitere Informationen zu Netzwerkoptionen und -überlegungen finden Sie unter [Netzwerkkonzepte für Kubernetes und AKS][aks-network-concepts].
+
+> [!WARNING]
+> Um Windows Server-Knotenpools (derzeit als Vorschau in AKS) verwenden zu können, müssen Sie Azure CNI verwenden. Die Verwendung von „kubenet“ als das Netzwerkmodell ist für Windows Server-Container nicht verfügbar.
 
 ## <a name="before-you-begin"></a>Voraussetzungen
 
@@ -137,7 +140,7 @@ az role assignment create --assignee <appId> --scope $VNET_ID --role Contributor
 
 ## <a name="create-an-aks-cluster-in-the-virtual-network"></a>Erstellen eines AKS-Clusters im virtuellen Netzwerk
 
-Sie haben jetzt ein virtuelles Netzwerk und Subnetz erstellt sowie Berechtigungen für einen Dienstprinzipal zur Verwendung dieser Netzwerkressourcen erstellt und zugewiesen. Erstellen Sie nun mithilfe des Befehls [az aks erstellen][az-aks-create] einen AKS-Cluster in Ihrem virtuellen Netzwerk und Subnetz. Definieren Sie wie in der Ausgabe des vorherigen Befehls Ihre eigene Dienstprinzipal-*\<>* und Ihr eigenes *\<Kennwort>*, um den Dienstprinzipal zu erstellen.
+Sie haben jetzt ein virtuelles Netzwerk und Subnetz erstellt sowie Berechtigungen für einen Dienstprinzipal zur Verwendung dieser Netzwerkressourcen erstellt und zugewiesen. Erstellen Sie nun mithilfe des Befehls [az aks erstellen][az-aks-create] einen AKS-Cluster in Ihrem virtuellen Netzwerk und Subnetz. Definieren Sie wie in der Ausgabe des vorherigen Befehls Ihre eigene Dienstprinzipal- *\<>* und Ihr eigenes *\<Kennwort>* , um den Dienstprinzipal zu erstellen.
 
 Die folgenden IP-Adressbereiche sind auch als Teil des Clustererstellungsprozesses definiert:
 
@@ -149,6 +152,8 @@ Die folgenden IP-Adressbereiche sind auch als Teil des Clustererstellungsprozess
     * Dieser Adressbereich muss groß genug sein für die Anzahl der Knoten, auf die Sie erwartungsgemäß zentral hochskalieren werden. Sie können diesen Adressbereich nicht ändern, nachdem der Cluster bereitgestellt wurde, wenn Sie mehrere Adressen für zusätzliche Knoten benötigen.
     * Mit dem Pod-IP-Adressbereich wird jedem Knoten im Cluster ein */24*-Adressraum zugewiesen. Im folgenden Beispiel weist *--pod-cidr* von *192.168.0.0/16* dem ersten Knoten *192.168.0.0/24* zu, dem zweiten Knoten *192.168.1.0/24* und dem dritten Knoten *192.168.2.0/24*.
     * Beim Skalieren oder Upgraden des Clusters weist die Azure-Plattform weiterhin jedem neuen Knoten einen Pod-IP-Adressbereich zu.
+    
+* Über *--docker-bridge-address* können AKS-Knoten mit der zugrunde liegenden Verwaltungsplattform kommunizieren. Diese IP-Adresse darf nicht innerhalb des IP-Adressbereichs des virtuellen Netzwerk Ihres Clusters liegen und sollte sich nicht mit anderen in Ihrem Netzwerk verwendeten Adressbereichen überschneiden.
 
 ```azurecli-interactive
 az aks create \

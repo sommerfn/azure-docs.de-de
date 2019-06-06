@@ -8,12 +8,12 @@ ms.service: time-series-insights
 author: kingdomofends
 ms.author: adgera
 ms.date: 04/29/2019
-ms.openlocfilehash: cf07d19966c08a63b9aa50475622aa0a1e5e1600
-ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
+ms.openlocfilehash: e87a82e985ed1d1794f9da00546f167ef01e1779
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/07/2019
-ms.locfileid: "65236515"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66147452"
 ---
 ## <a name="business-disaster-recovery"></a>Business Disaster Recovery
 
@@ -48,10 +48,10 @@ Die Integration von Time Series Insights mit diesen anderen Diensten bietet zus�
 
 Es gibt mehrere Möglichkeiten, den Betrieb Ihrer Daten, Anwendungen und Dienste von Time Series Insights aufrechtzuerhalten, auch wenn sie gestört sind. Möglicherweise ist auch eine vollständige, duplizierte Sicherungskopie Ihrer Azure Time Series-Umgebung erforderlich:
 
-1. Als eine TSI-spezifische **Failoverinstanz** zur der Daten und Datenverkehr umgeleitet werden.
+1. Als eine Time Series Insights-spezifische **Failoverinstanz** zur der Daten und Datenverkehr umgeleitet werden.
 1. Für Überwachungs- und Datensicherungszwecke.
 
-Im Allgemeinen ist der beste Weg, eine TSI-Umgebung zu duplizieren, die Erstellung einer zweiten TSI-Umgebung in einer Sicherungs-Azure-Region. Ereignisse werden auch von Ihrer primären Ereignisquelle Ereignisse an diese sekundäre Umgebung gesendet. Stellen Sie sicher, dass Sie eine zweite, dedizierte Consumergruppe verwenden und die Business Disaster Recovery-Richtlinien dieser Quelle (siehe oben) befolgen.
+Im Allgemeinen ist der beste Weg, eine Time Series Insights-Umgebung zu duplizieren, die Erstellung einer zweiten Time Series Insights-Umgebung in einer Sicherungs-Azure-Region. Ereignisse werden auch von Ihrer primären Ereignisquelle Ereignisse an diese sekundäre Umgebung gesendet. Stellen Sie sicher, dass Sie eine zweite, dedizierte Consumergruppe verwenden und die Business Disaster Recovery-Richtlinien dieser Quelle (siehe oben) befolgen.
 
 Insbesondere beim Erstellen einer Duplikatumgebung:
 
@@ -63,7 +63,7 @@ Insbesondere beim Erstellen einer Duplikatumgebung:
 Letzter Schritt:
 
 * Wenn Ihre primäre Region während eines Notfalls betroffen ist, leiten Sie den Betrieb in die Time Series Insights-Sicherungsumgebung um.
-* Verwenden Sie Ihre zweite Region, um alle TSI-Telemetrie- und Abfragedaten zu sichern und wiederherzustellen.
+* Verwenden Sie Ihre zweite Region, um alle Time Series Insights-Telemetrie- und Abfragedaten zu sichern und wiederherzustellen.
 
 > [!IMPORTANT]
 > * Beachten Sie, dass es im Falle eines Failovers zu einer Verzögerung kommen kann.

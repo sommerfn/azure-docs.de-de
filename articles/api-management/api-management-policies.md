@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/19/2017
 ms.author: apimpm
-ms.openlocfilehash: 7f1352b018fe9ea46b0f0824ba53ee0204c7dc7c
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.openlocfilehash: ad57f86e221a98461fcd1dc11b92f5665d6128d0
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "60005518"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65786444"
 ---
 # <a name="api-management-policies"></a>Richtlinien für die API-Verwaltung
 Dieser Abschnitt enthält eine Referenz für die folgenden API Management-Richtlinien. Weitere Informationen zum Hinzufügen und Konfigurieren von Richtlinien finden Sie unter [Richtlinien in API Management](api-management-howto-policies.md).  
@@ -53,7 +53,7 @@ Dieser Abschnitt enthält eine Referenz für die folgenden API Management-Richtl
 -   [Authentifizierungsrichtlinien](api-management-authentication-policies.md#AuthenticationPolicies)  
     -   [Standardauthentifizierung](api-management-authentication-policies.md#Basic) – Authentifizierung mit einem Back-End-Dienst unter Verwendung der Standardauthentifizierung.  
     -   [Authentifizierung mit Clientzertifikat](api-management-authentication-policies.md#ClientCertificate) – Authentifizierung mit einem Back-End-Dienst unter Verwendung von Clientzertifikaten.  
-    -   [Authentifizierung mit Clientzertifikat:](api-management-authentication-policies.md#ManagedIdentity) Authentifizierung mit einem Back-End-Dienst unter Verwendung von Clientzertifikaten.  
+    -   [Authentifizierung mit einer verwalteten Identität](api-management-authentication-policies.md#ManagedIdentity) – Authentifizierung mit einem Back-End-Dienst unter Verwendung einer [verwalteten Identität](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview).  
 -   [Cachingrichtlinien](api-management-caching-policies.md#CachingPolicies)  
     -   [Aus Cache abrufen](api-management-caching-policies.md#GetFromCache) – Führt eine Cachesuche aus und gibt ggf. eine gültige Antwort aus dem Cache zurück.  
     -   [In Cache ablegen](api-management-caching-policies.md#StoreToCache) – Cacheantwort gemäß der angegebenen Konfiguration für die Cachesteuerung.  
@@ -83,5 +83,4 @@ Weitere Informationen zur Verwendung von Richtlinien finden Sie unter:
 
 + [Richtlinien in Azure API Management](api-management-howto-policies.md)
 + [Transform and protect your API](transform-api.md) (Transformieren und Schützen von APIs)
-+ Unter [Richtlinien für die API-Verwaltung](api-management-policy-reference.md) finden Sie eine komplette Liste der Richtlinienanweisungen und der zugehörigen Einstellungen.
-+ [API Management policy samples](policy-samples.md) (API Management-Richtlinienbeispiele)   
++ [API Management-Richtlinienbeispiele](policy-samples.md)   

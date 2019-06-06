@@ -9,12 +9,12 @@ ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 12/06/2018
 ms.custom: seodec18
-ms.openlocfilehash: 2a366a9030104c885adb1a4f773de04cdc439044
-ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
+ms.openlocfilehash: 420705ef6b2e38d147b7033d2fb3ad57bbc216ac
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/04/2019
-ms.locfileid: "55694634"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66159285"
 ---
 # <a name="stream-data-as-input-into-stream-analytics"></a>Streamen von Daten als Eingabe in Stream Analytics
 
@@ -131,6 +131,8 @@ Stream Analytics unterstützt derzeit keine Deserialisierung von AVRO-Nachrichte
 > [!NOTE]
 > Stream Analytics unterstützt das Hinzufügen von Inhalten zu einer vorhandenen Blobdatei nicht. Stream Analytics zeigt jede Datei nur einmal an. Des Weiteren werden alle Änderungen, die in der Datei vorgenommen wurden, nachdem der Auftrag die Daten gelesen hat, nicht verarbeitet. Die Methode, alle Daten für eine Blobdatei auf einmal hochzuladen und dann zusätzliche neuere Ereignisse einer anderen, neuen Blobdatei hinzuzufügen, hat sich bewährt.
 > 
+
+Das gleichzeitige Hochladen einer sehr großen Anzahl von Blobs kann dazu führen, dass Stream Analytics in seltenen Fällen das Lesen einiger Blobs überspringt. Es wird empfohlen, Blobs in einem Abstand von mindestens 2 Sekunden in Blob Storage hochzuladen. Wenn diese Option nicht praktikabel ist, können Sie Event Hubs verwenden, um große Mengen von Ereignissen zu streamen. 
 
 ### <a name="configure-blob-storage-as-a-stream-input"></a>Konfigurieren von Blob Storage als Datenstromeingabe 
 

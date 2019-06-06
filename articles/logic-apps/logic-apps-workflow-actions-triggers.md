@@ -8,13 +8,13 @@ ms.author: estfan
 ms.reviewer: klam, LADocs
 ms.suite: integration
 ms.topic: reference
-ms.date: 05/06/2019
-ms.openlocfilehash: 503bd6cfee1c19d2342ec9f535b3945178ab3ea0
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.date: 05/13/2019
+ms.openlocfilehash: aa5d3a0555875571276fdf4046ad0e4dd1e69bbd
+ms.sourcegitcommit: 1fbc75b822d7fe8d766329f443506b830e101a5e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65136603"
+ms.lasthandoff: 05/14/2019
+ms.locfileid: "65596942"
 ---
 # <a name="reference-for-trigger-and-action-types-in-workflow-definition-language-for-azure-logic-apps"></a>Referenz zu Trigger- und Aktionstypen in der Workflowdefinitionssprache für Azure Logic Apps.
 
@@ -56,7 +56,7 @@ Trigger besitzen auf oberster Ebene die folgenden Elemente (einige davon sind op
 | <*trigger-type*> | Zeichenfolge | Triggertyp, z.B. „Http“ oder „ApiConnection“ | 
 | <*trigger-inputs*> | JSON-Objekt | Eingaben, die das Verhalten des Triggers definieren | 
 | <*time-unit*> | Zeichenfolge | Die Zeiteinheit für die Häufigkeit der Triggerauslösung: „Second“, „Minute“, „Hour“, „Day“, „Week“, „Month“ | 
-| <*number-of-time-units*> | Ganze Zahl  | Wert, mit dem angegeben wird, wie oft der Trigger basierend auf der Häufigkeit ausgelöst wird (Anzahl von Zeiteinheiten der Wartezeit, bis der Trigger erneut ausgelöst wird) <p>Zulässige Mindest- und Maximalintervalle: <p>– Monat: 1–16 Monate </br>– Tag: 1–500 Tage </br>– Stunde: 1–12.000 Stunden </br>– Minute: 1–72.000 Minuten </br>- Sekunde: 1–9.999.999 Sekunden<p>Wenn das Intervall also beispielsweise auf „6“ und die Häufigkeit auf „Month“ festgelegt ist, erfolgt die Wiederholung alle sechs Monate. | 
+| <*number-of-time-units*> | Integer | Wert, mit dem angegeben wird, wie oft der Trigger basierend auf der Häufigkeit ausgelöst wird (Anzahl von Zeiteinheiten der Wartezeit, bis der Trigger erneut ausgelöst wird) <p>Zulässige Mindest- und Maximalintervalle: <p>– Monat: 1–16 Monate </br>– Tag: 1–500 Tage </br>– Stunde: 1–12.000 Stunden </br>– Minute: 1–72.000 Minuten </br>- Sekunde: 1–9.999.999 Sekunden<p>Wenn das Intervall also beispielsweise auf „6“ und die Häufigkeit auf „Month“ festgelegt ist, erfolgt die Wiederholung alle sechs Monate. | 
 |||| 
 
 *Optional*
@@ -137,7 +137,7 @@ Mit diesem Trigger wird ein Endpunkt überprüft bzw.*abgefragt*, indem [von Mic
 | <*method-type*> | Zeichenfolge | HTTP-Methode für die Kommunikation mit der verwalteten API: „GET“, „PUT“, „POST“, „PATCH“, „DELETE“ | 
 | <*api-operation*> | Zeichenfolge | Aufzurufender API-Vorgang | 
 | <*time-unit*> | Zeichenfolge | Die Zeiteinheit für die Häufigkeit der Triggerauslösung: „Second“, „Minute“, „Hour“, „Day“, „Week“, „Month“ | 
-| <*number-of-time-units*> | Ganze Zahl  | Wert, mit dem angegeben wird, wie oft der Trigger basierend auf der Häufigkeit ausgelöst wird (Anzahl von Zeiteinheiten der Wartezeit, bis der Trigger erneut ausgelöst wird) <p>Zulässige Mindest- und Maximalintervalle: <p>– Monat: 1–16 Monate </br>– Tag: 1–500 Tage </br>– Stunde: 1–12.000 Stunden </br>– Minute: 1–72.000 Minuten </br>- Sekunde: 1–9.999.999 Sekunden<p>Wenn das Intervall also beispielsweise auf „6“ und die Häufigkeit auf „Month“ festgelegt ist, erfolgt die Wiederholung alle sechs Monate. | 
+| <*number-of-time-units*> | Integer | Wert, mit dem angegeben wird, wie oft der Trigger basierend auf der Häufigkeit ausgelöst wird (Anzahl von Zeiteinheiten der Wartezeit, bis der Trigger erneut ausgelöst wird) <p>Zulässige Mindest- und Maximalintervalle: <p>– Monat: 1–16 Monate </br>– Tag: 1–500 Tage </br>– Stunde: 1–12.000 Stunden </br>– Minute: 1–72.000 Minuten </br>- Sekunde: 1–9.999.999 Sekunden<p>Wenn das Intervall also beispielsweise auf „6“ und die Häufigkeit auf „Month“ festgelegt ist, erfolgt die Wiederholung alle sechs Monate. | 
 |||| 
 
 *Optional*
@@ -146,8 +146,8 @@ Mit diesem Trigger wird ein Endpunkt überprüft bzw.*abgefragt*, indem [von Mic
 |-------|------|-------------| 
 | <*retry-behavior*> | JSON-Objekt | Passt das Wiederholungsverhalten für vorübergehende Fehler, die über den Statuscode 408, 429 und 5XX verfügen, und alle Verbindungsausnahmen an. Weitere Informationen finden Sie unter [Wiederholungsrichtlinien](../logic-apps/logic-apps-exception-handling.md#retry-policies). | 
 | <*query-parameters*> | JSON-Objekt | Alle Abfrageparameter, die in den API-Aufruf einbezogen werden sollen. Mit dem `"queries": { "api-version": "2018-01-01" }`-Objekt wird dem Aufruf beispielsweise `?api-version=2018-01-01` hinzugefügt. | 
-| <*max-runs*> | Ganze Zahl  | Standardmäßig werden Workflowinstanzen gleichzeitig oder parallel bis zum [Standardlimit](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits) ausgeführt. Informationen dazu, wie Sie dieses Limit ändern, indem Sie einen neuen <*count*>-Wert festlegen, finden Sie unter [Ändern der Triggerparallelität](#change-trigger-concurrency). | 
-| <*max-runs-queue*> | Ganze Zahl  | Wenn Ihr Workflow bereits auf der maximalen Anzahl von Instanzen ausgeführt wird (die Sie basierend auf der `runtimeConfiguration.concurrency.runs`-Eigenschaft ändern können), werden alle neuen Ausführungen bis zum [Standardlimit](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits) in diese Warteschlange eingereiht. Informationen zum Ändern des Standardlimits finden Sie unter [Ändern des Limits für wartende Ausführungen](#change-waiting-runs). | 
+| <*max-runs*> | Integer | Standardmäßig werden Workflowinstanzen gleichzeitig oder parallel bis zum [Standardlimit](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits) ausgeführt. Informationen dazu, wie Sie dieses Limit ändern, indem Sie einen neuen <*count*>-Wert festlegen, finden Sie unter [Ändern der Triggerparallelität](#change-trigger-concurrency). | 
+| <*max-runs-queue*> | Integer | Wenn Ihr Workflow bereits auf der maximalen Anzahl von Instanzen ausgeführt wird (die Sie basierend auf der `runtimeConfiguration.concurrency.runs`-Eigenschaft ändern können), werden alle neuen Ausführungen bis zum [Standardlimit](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits) in diese Warteschlange eingereiht. Informationen zum Ändern des Standardlimits finden Sie unter [Ändern des Limits für wartende Ausführungen](#change-waiting-runs). | 
 | <*splitOn-expression*> | Zeichenfolge | Für Trigger, die Arrays zurückgeben, verweist dieser Ausdruck auf das zu verwendende Array, damit Sie für jedes Arrayelement eine Workflowinstanz erstellen und ausführen können, anstatt eine „for each“-Schleife zu verwenden. <p>Dieser Ausdruck stellt beispielsweise ein Element im Array dar, das mit dem Inhalt des Triggers zurückgegeben wird: `@triggerbody()?['value']` |
 | <*operation-option*> | Zeichenfolge | Sie können das Standardverhalten ändern, indem Sie die `operationOptions`-Eigenschaft festlegen. Weitere Informationen finden Sie unter [Optionen für Vorgänge](#operation-options). |
 ||||
@@ -158,7 +158,7 @@ Mit diesem Trigger wird ein Endpunkt überprüft bzw.*abgefragt*, indem [von Mic
 |---------|------|-------------|
 | headers | JSON-Objekt | Header aus der Antwort |
 | body | JSON-Objekt | Text aus der Antwort |
-| status code | Ganze Zahl  | Der Statuscode aus der Antwort |
+| status code | Integer | Der Statuscode aus der Antwort |
 |||| 
 
 *Beispiel*
@@ -236,8 +236,8 @@ Dieser Trigger sendet eine Abonnementanforderung an einen Endpunkt, indem eine [
 |-------|------|-------------| 
 | <*retry-behavior*> | JSON-Objekt | Passt das Wiederholungsverhalten für vorübergehende Fehler, die über den Statuscode 408, 429 und 5XX verfügen, und alle Verbindungsausnahmen an. Weitere Informationen finden Sie unter [Wiederholungsrichtlinien](../logic-apps/logic-apps-exception-handling.md#retry-policies). | 
 | <*query-parameters*> | JSON-Objekt | Alle Abfrageparameter, die in den API-Aufruf einbezogen werden sollen. <p>Mit dem `"queries": { "api-version": "2018-01-01" }`-Objekt wird dem Aufruf beispielsweise `?api-version=2018-01-01` hinzugefügt. | 
-| <*max-runs*> | Ganze Zahl  | Standardmäßig werden Workflowinstanzen gleichzeitig oder parallel bis zum [Standardlimit](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits) ausgeführt. Informationen dazu, wie Sie dieses Limit ändern, indem Sie einen neuen <*count*>-Wert festlegen, finden Sie unter [Ändern der Triggerparallelität](#change-trigger-concurrency). | 
-| <*max-runs-queue*> | Ganze Zahl  | Wenn Ihr Workflow bereits auf der maximalen Anzahl von Instanzen ausgeführt wird (die Sie basierend auf der `runtimeConfiguration.concurrency.runs`-Eigenschaft ändern können), werden alle neuen Ausführungen bis zum [Standardlimit](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits) in diese Warteschlange eingereiht. Informationen zum Ändern des Standardlimits finden Sie unter [Ändern des Limits für wartende Ausführungen](#change-waiting-runs). | 
+| <*max-runs*> | Integer | Standardmäßig werden Workflowinstanzen gleichzeitig oder parallel bis zum [Standardlimit](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits) ausgeführt. Informationen dazu, wie Sie dieses Limit ändern, indem Sie einen neuen <*count*>-Wert festlegen, finden Sie unter [Ändern der Triggerparallelität](#change-trigger-concurrency). | 
+| <*max-runs-queue*> | Integer | Wenn Ihr Workflow bereits auf der maximalen Anzahl von Instanzen ausgeführt wird (die Sie basierend auf der `runtimeConfiguration.concurrency.runs`-Eigenschaft ändern können), werden alle neuen Ausführungen bis zum [Standardlimit](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits) in diese Warteschlange eingereiht. Informationen zum Ändern des Standardlimits finden Sie unter [Ändern des Limits für wartende Ausführungen](#change-waiting-runs). | 
 | <*splitOn-expression*> | Zeichenfolge | Für Trigger, die Arrays zurückgeben, verweist dieser Ausdruck auf das zu verwendende Array, damit Sie für jedes Arrayelement eine Workflowinstanz erstellen und ausführen können, anstatt eine „for each“-Schleife zu verwenden. <p>Dieser Ausdruck stellt beispielsweise ein Element im Array dar, das mit dem Inhalt des Triggers zurückgegeben wird: `@triggerbody()?['value']` |
 | <*operation-option*> | Zeichenfolge | Sie können das Standardverhalten ändern, indem Sie die `operationOptions`-Eigenschaft festlegen. Weitere Informationen finden Sie unter [Optionen für Vorgänge](#operation-options). | 
 |||| 
@@ -308,7 +308,7 @@ Dieser Trigger überprüft den angegebenen Endpunkt basierend auf dem angegebene
 | <*method-type*> | Zeichenfolge | HTTP-Methode zum Abrufen des angegebenen Endpunkts: „GET“, „PUT“, „POST“, „PATCH“, „DELETE“ | 
 | <*endpoint-URL*> | Zeichenfolge | HTTP- oder HTTPS-URL für den abzurufenden Endpunkt <p>Maximal zulässige Zeichenfolgengröße: 2 KB | 
 | <*time-unit*> | Zeichenfolge | Die Zeiteinheit für die Häufigkeit der Triggerauslösung: „Second“, „Minute“, „Hour“, „Day“, „Week“, „Month“ | 
-| <*number-of-time-units*> | Ganze Zahl  | Wert, mit dem angegeben wird, wie oft der Trigger basierend auf der Häufigkeit ausgelöst wird (Anzahl von Zeiteinheiten der Wartezeit, bis der Trigger erneut ausgelöst wird) <p>Zulässige Mindest- und Maximalintervalle: <p>– Monat: 1–16 Monate </br>– Tag: 1–500 Tage </br>– Stunde: 1–12.000 Stunden </br>– Minute: 1–72.000 Minuten </br>- Sekunde: 1–9.999.999 Sekunden<p>Wenn das Intervall also beispielsweise auf „6“ und die Häufigkeit auf „Month“ festgelegt ist, erfolgt die Wiederholung alle sechs Monate. | 
+| <*number-of-time-units*> | Integer | Wert, mit dem angegeben wird, wie oft der Trigger basierend auf der Häufigkeit ausgelöst wird (Anzahl von Zeiteinheiten der Wartezeit, bis der Trigger erneut ausgelöst wird) <p>Zulässige Mindest- und Maximalintervalle: <p>– Monat: 1–16 Monate </br>– Tag: 1–500 Tage </br>– Stunde: 1–12.000 Stunden </br>– Minute: 1–72.000 Minuten </br>- Sekunde: 1–9.999.999 Sekunden<p>Wenn das Intervall also beispielsweise auf „6“ und die Häufigkeit auf „Month“ festgelegt ist, erfolgt die Wiederholung alle sechs Monate. | 
 |||| 
 
 *Optional*
@@ -320,8 +320,8 @@ Dieser Trigger überprüft den angegebenen Endpunkt basierend auf dem angegebene
 | <*authentication-method*> | JSON-Objekt | Die Methode, die von der Anforderung für die Authentifizierung verwendet wird. Weitere Informationen finden Sie unter [Ausgehende Authentifizierung von Scheduler](../scheduler/scheduler-outbound-authentication.md). Über den Scheduler hinaus wird die `authority`-Eigenschaft unterstützt. Ohne Angabe wird standardmäßig der Wert `https://login.windows.net` verwendet. Sie können aber einen anderen Wert verwenden, beispielsweise `https://login.windows\-ppe.net`. |
 | <*retry-behavior*> | JSON-Objekt | Passt das Wiederholungsverhalten für vorübergehende Fehler, die über den Statuscode 408, 429 und 5XX verfügen, und alle Verbindungsausnahmen an. Weitere Informationen finden Sie unter [Wiederholungsrichtlinien](../logic-apps/logic-apps-exception-handling.md#retry-policies). |  
  <*query-parameters*> | JSON-Objekt | Alle Abfrageparameter, die in die Anforderung einbezogen werden sollen. <p>Mit dem `"queries": { "api-version": "2018-01-01" }`-Objekt wird der Anforderung beispielsweise `?api-version=2018-01-01` hinzugefügt. | 
-| <*max-runs*> | Ganze Zahl  | Standardmäßig werden Workflowinstanzen gleichzeitig oder parallel bis zum [Standardlimit](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits) ausgeführt. Informationen dazu, wie Sie dieses Limit ändern, indem Sie einen neuen <*count*>-Wert festlegen, finden Sie unter [Ändern der Triggerparallelität](#change-trigger-concurrency). | 
-| <*max-runs-queue*> | Ganze Zahl  | Wenn Ihr Workflow bereits auf der maximalen Anzahl von Instanzen ausgeführt wird (die Sie basierend auf der `runtimeConfiguration.concurrency.runs`-Eigenschaft ändern können), werden alle neuen Ausführungen bis zum [Standardlimit](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits) in diese Warteschlange eingereiht. Informationen zum Ändern des Standardlimits finden Sie unter [Ändern des Limits für wartende Ausführungen](#change-waiting-runs). | 
+| <*max-runs*> | Integer | Standardmäßig werden Workflowinstanzen gleichzeitig oder parallel bis zum [Standardlimit](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits) ausgeführt. Informationen dazu, wie Sie dieses Limit ändern, indem Sie einen neuen <*count*>-Wert festlegen, finden Sie unter [Ändern der Triggerparallelität](#change-trigger-concurrency). | 
+| <*max-runs-queue*> | Integer | Wenn Ihr Workflow bereits auf der maximalen Anzahl von Instanzen ausgeführt wird (die Sie basierend auf der `runtimeConfiguration.concurrency.runs`-Eigenschaft ändern können), werden alle neuen Ausführungen bis zum [Standardlimit](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits) in diese Warteschlange eingereiht. Informationen zum Ändern des Standardlimits finden Sie unter [Ändern des Limits für wartende Ausführungen](#change-waiting-runs). | 
 | <*operation-option*> | Zeichenfolge | Sie können das Standardverhalten ändern, indem Sie die `operationOptions`-Eigenschaft festlegen. Weitere Informationen finden Sie unter [Optionen für Vorgänge](#operation-options). | 
 |||| 
 
@@ -331,7 +331,7 @@ Dieser Trigger überprüft den angegebenen Endpunkt basierend auf dem angegebene
 |---------|------|-------------| 
 | headers | JSON-Objekt | Header aus der Antwort | 
 | body | JSON-Objekt | Text aus der Antwort | 
-| status code | Ganze Zahl  | Der Statuscode aus der Antwort | 
+| status code | Integer | Der Statuscode aus der Antwort | 
 |||| 
 
 *Erforderliche Voraussetzungen für eingehende Anforderungen*
@@ -341,8 +341,8 @@ Damit der Endpunkt gut mit Ihrer Logik-App funktioniert, muss er einem bestimmte
 | response | Erforderlich | BESCHREIBUNG | 
 |----------|----------|-------------| 
 | Statuscode | Ja | Der Statuscode „200 OK“ startet eine Ausführung. Alle anderen Statuscodes starten keine Ausführung. | 
-| Retry-After-Header | Nein  | Die Anzahl von Sekunden bis zur erneuten Abfrage des Endpunkts durch Ihre Logik-App. | 
-| Adressheader | Nein  | Die URL, die im nächsten Abfrageintervall aufgerufen werden soll. Ohne Angabe wird die ursprüngliche URL verwendet. | 
+| Retry-After-Header | Nein | Die Anzahl von Sekunden bis zur erneuten Abfrage des Endpunkts durch Ihre Logik-App. | 
+| Adressheader | Nein | Die URL, die im nächsten Abfrageintervall aufgerufen werden soll. Ohne Angabe wird die ursprüngliche URL verwendet. | 
 |||| 
 
 *Beispielverhalten für unterschiedliche Anforderungen*
@@ -415,8 +415,8 @@ Einige Werte, z.B. <*method-type*>, sind sowohl für das Objekt `"subscribe"` al
 | <*body-content*> | Zeichenfolge | Beliebiger Nachrichteninhalt, der in der Abonnement- oder Kündigungsanforderung gesendet werden soll | 
 | <*authentication-method*> | JSON-Objekt | Die Methode, die von der Anforderung für die Authentifizierung verwendet wird. Weitere Informationen finden Sie unter [Ausgehende Authentifizierung von Scheduler](../scheduler/scheduler-outbound-authentication.md). |
 | <*retry-behavior*> | JSON-Objekt | Passt das Wiederholungsverhalten für vorübergehende Fehler, die über den Statuscode 408, 429 und 5XX verfügen, und alle Verbindungsausnahmen an. Weitere Informationen finden Sie unter [Wiederholungsrichtlinien](../logic-apps/logic-apps-exception-handling.md#retry-policies). | 
-| <*max-runs*> | Ganze Zahl  | Standardmäßig werden alle Workflowinstanzen gleichzeitig oder parallel bis zum [Standardlimit](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits) ausgeführt. Informationen dazu, wie Sie dieses Limit ändern, indem Sie einen neuen <*count*>-Wert festlegen, finden Sie unter [Ändern der Triggerparallelität](#change-trigger-concurrency). | 
-| <*max-runs-queue*> | Ganze Zahl  | Wenn Ihr Workflow bereits auf der maximalen Anzahl von Instanzen ausgeführt wird (die Sie basierend auf der `runtimeConfiguration.concurrency.runs`-Eigenschaft ändern können), werden alle neuen Ausführungen bis zum [Standardlimit](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits) in diese Warteschlange eingereiht. Informationen zum Ändern des Standardlimits finden Sie unter [Ändern des Limits für wartende Ausführungen](#change-waiting-runs). | 
+| <*max-runs*> | Integer | Standardmäßig werden alle Workflowinstanzen gleichzeitig oder parallel bis zum [Standardlimit](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits) ausgeführt. Informationen dazu, wie Sie dieses Limit ändern, indem Sie einen neuen <*count*>-Wert festlegen, finden Sie unter [Ändern der Triggerparallelität](#change-trigger-concurrency). | 
+| <*max-runs-queue*> | Integer | Wenn Ihr Workflow bereits auf der maximalen Anzahl von Instanzen ausgeführt wird (die Sie basierend auf der `runtimeConfiguration.concurrency.runs`-Eigenschaft ändern können), werden alle neuen Ausführungen bis zum [Standardlimit](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits) in diese Warteschlange eingereiht. Informationen zum Ändern des Standardlimits finden Sie unter [Ändern des Limits für wartende Ausführungen](#change-waiting-runs). | 
 | <*operation-option*> | Zeichenfolge | Sie können das Standardverhalten ändern, indem Sie die `operationOptions`-Eigenschaft festlegen. Weitere Informationen finden Sie unter [Optionen für Vorgänge](#operation-options). | 
 |||| 
 
@@ -426,7 +426,7 @@ Einige Werte, z.B. <*method-type*>, sind sowohl für das Objekt `"subscribe"` al
 |---------|------|-------------| 
 | headers | JSON-Objekt | Header aus der Antwort | 
 | body | JSON-Objekt | Text aus der Antwort | 
-| status code | Ganze Zahl  | Der Statuscode aus der Antwort | 
+| status code | Integer | Der Statuscode aus der Antwort | 
 |||| 
 
 *Beispiel*
@@ -497,7 +497,7 @@ Dieser Trigger wird basierend auf dem angegebenen Wiederholungszeitplan ausgefü
 | Wert | Type | BESCHREIBUNG | 
 |-------|------|-------------| 
 | <*time-unit*> | Zeichenfolge | Die Zeiteinheit für die Häufigkeit der Triggerauslösung: „Second“, „Minute“, „Hour“, „Day“, „Week“, „Month“ | 
-| <*number-of-time-units*> | Ganze Zahl  | Wert, mit dem angegeben wird, wie oft der Trigger basierend auf der Häufigkeit ausgelöst wird (Anzahl von Zeiteinheiten der Wartezeit, bis der Trigger erneut ausgelöst wird) <p>Zulässige Mindest- und Maximalintervalle: <p>– Monat: 1–16 Monate </br>– Tag: 1–500 Tage </br>– Stunde: 1–12.000 Stunden </br>– Minute: 1–72.000 Minuten </br>- Sekunde: 1–9.999.999 Sekunden<p>Wenn das Intervall also beispielsweise auf „6“ und die Häufigkeit auf „Month“ festgelegt ist, erfolgt die Wiederholung alle sechs Monate. | 
+| <*number-of-time-units*> | Integer | Wert, mit dem angegeben wird, wie oft der Trigger basierend auf der Häufigkeit ausgelöst wird (Anzahl von Zeiteinheiten der Wartezeit, bis der Trigger erneut ausgelöst wird) <p>Zulässige Mindest- und Maximalintervalle: <p>– Monat: 1–16 Monate </br>– Tag: 1–500 Tage </br>– Stunde: 1–12.000 Stunden </br>– Minute: 1–72.000 Minuten </br>- Sekunde: 1–9.999.999 Sekunden<p>Wenn das Intervall also beispielsweise auf „6“ und die Häufigkeit auf „Month“ festgelegt ist, erfolgt die Wiederholung alle sechs Monate. | 
 |||| 
 
 *Optional*
@@ -509,8 +509,8 @@ Dieser Trigger wird basierend auf dem angegebenen Wiederholungszeitplan ausgefü
 | <*one-or-more-hour-marks*> | Ganze Zahl oder Ganzzahlarray | Wenn Sie für `frequency` die Option „Day“ oder „Week“ angeben, können Sie eine ganze Zahl oder eine kommagetrennte Liste mit ganzen Zahlen von 0 bis 23 als die Stunden des Tages angeben, zu denen der Workflow ausgeführt werden soll. <p>Wenn Sie also etwa „10“, „12“ und „14“ angeben, erhalten Sie die vollen Stunden „10 Uhr“, „12 Uhr“ und „14 Uhr“. | 
 | <*one-or-more-minute-marks*> | Ganze Zahl oder Ganzzahlarray | Wenn Sie für `frequency` die Option „Day“ oder „Week“ angeben, können Sie eine ganze Zahl oder eine kommagetrennte Liste mit ganzen Zahlen von 0 bis 59 als die Minuten der Stunde angeben, zu denen der Workflow ausgeführt werden soll. <p>Wenn Sie also beispielsweise „30“ als Minutenwert angeben und das vorherige Beispiel für Stunden des Tages verwenden, erhalten Sie „10:30 Uhr“, „12:30 Uhr“ und „14:30 Uhr“. | 
 | weekDays | Zeichenfolge oder Zeichenfolgenarray | Wenn Sie für `frequency` die Option „Week“ angeben, können Sie einen Tag oder eine durch Trennzeichen getrennte Liste mit Tagen für die Workflowausführung angeben: „Monday“, „Tuesday“, „Wednesday“, „Thursday“, „Friday“, „Saturday“, „Sunday“ | 
-| <*max-runs*> | Ganze Zahl  | Standardmäßig werden alle Workflowinstanzen gleichzeitig oder parallel bis zum [Standardlimit](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits) ausgeführt. Informationen dazu, wie Sie dieses Limit ändern, indem Sie einen neuen <*count*>-Wert festlegen, finden Sie unter [Ändern der Triggerparallelität](#change-trigger-concurrency). | 
-| <*max-runs-queue*> | Ganze Zahl  | Wenn Ihr Workflow bereits auf der maximalen Anzahl von Instanzen ausgeführt wird (die Sie basierend auf der `runtimeConfiguration.concurrency.runs`-Eigenschaft ändern können), werden alle neuen Ausführungen bis zum [Standardlimit](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits) in diese Warteschlange eingereiht. Informationen zum Ändern des Standardlimits finden Sie unter [Ändern des Limits für wartende Ausführungen](#change-waiting-runs). | 
+| <*max-runs*> | Integer | Standardmäßig werden alle Workflowinstanzen gleichzeitig oder parallel bis zum [Standardlimit](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits) ausgeführt. Informationen dazu, wie Sie dieses Limit ändern, indem Sie einen neuen <*count*>-Wert festlegen, finden Sie unter [Ändern der Triggerparallelität](#change-trigger-concurrency). | 
+| <*max-runs-queue*> | Integer | Wenn Ihr Workflow bereits auf der maximalen Anzahl von Instanzen ausgeführt wird (die Sie basierend auf der `runtimeConfiguration.concurrency.runs`-Eigenschaft ändern können), werden alle neuen Ausführungen bis zum [Standardlimit](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits) in diese Warteschlange eingereiht. Informationen zum Ändern des Standardlimits finden Sie unter [Ändern des Limits für wartende Ausführungen](#change-waiting-runs). | 
 | <*operation-option*> | Zeichenfolge | Sie können das Standardverhalten ändern, indem Sie die `operationOptions`-Eigenschaft festlegen. Weitere Informationen finden Sie unter [Optionen für Vorgänge](#operation-options). | 
 |||| 
 
@@ -616,8 +616,8 @@ Um diesen Trigger aufrufen zu können, müssen Sie die `listCallbackUrl`-API ver
 | <*method-type*> | Zeichenfolge | Methode, die eingehende Anforderungen verwenden müssen, um Ihre Logik-App aufzurufen: „GET“, „PUT“, „POST“, „PATCH“, „DELETE“ |
 | <*relative-path-for-accepted-parameter*> | Zeichenfolge | Relativer Pfad für den Parameter, der von der URL Ihres Endpunkts akzeptiert werden kann | 
 | <*required-properties*> | Array | Mindestens eine Eigenschaft, die Werte erfordert. | 
-| <*max-runs*> | Ganze Zahl  | Standardmäßig werden alle Workflowinstanzen gleichzeitig oder parallel bis zum [Standardlimit](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits) ausgeführt. Informationen dazu, wie Sie dieses Limit ändern, indem Sie einen neuen <*count*>-Wert festlegen, finden Sie unter [Ändern der Triggerparallelität](#change-trigger-concurrency). | 
-| <*max-runs-queue*> | Ganze Zahl  | Wenn Ihr Workflow bereits auf der maximalen Anzahl von Instanzen ausgeführt wird (die Sie basierend auf der `runtimeConfiguration.concurrency.runs`-Eigenschaft ändern können), werden alle neuen Ausführungen bis zum [Standardlimit](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits) in diese Warteschlange eingereiht. Informationen zum Ändern des Standardlimits finden Sie unter [Ändern des Limits für wartende Ausführungen](#change-waiting-runs). | 
+| <*max-runs*> | Integer | Standardmäßig werden alle Workflowinstanzen gleichzeitig oder parallel bis zum [Standardlimit](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits) ausgeführt. Informationen dazu, wie Sie dieses Limit ändern, indem Sie einen neuen <*count*>-Wert festlegen, finden Sie unter [Ändern der Triggerparallelität](#change-trigger-concurrency). | 
+| <*max-runs-queue*> | Integer | Wenn Ihr Workflow bereits auf der maximalen Anzahl von Instanzen ausgeführt wird (die Sie basierend auf der `runtimeConfiguration.concurrency.runs`-Eigenschaft ändern können), werden alle neuen Ausführungen bis zum [Standardlimit](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits) in diese Warteschlange eingereiht. Informationen zum Ändern des Standardlimits finden Sie unter [Ändern des Limits für wartende Ausführungen](#change-waiting-runs). | 
 | <*operation-option*> | Zeichenfolge | Sie können das Standardverhalten ändern, indem Sie die `operationOptions`-Eigenschaft festlegen. Weitere Informationen finden Sie unter [Optionen für Vorgänge](#operation-options). | 
 |||| 
 
@@ -1461,7 +1461,7 @@ Mit dieser Aktion wird die Nutzlast für die Antwort auf eine HTTP-Anforderung e
 
 | Wert | Type | BESCHREIBUNG | 
 |-------|------|-------------| 
-| <*response-status-code*> | Ganze Zahl  | Der HTTP-Statuscode, der an die eingehende Anforderung gesendet wird. Der Standardcode lautet „200 OK“, aber es kann ein beliebiger gültiger Statuscode sein, der mit 2xx, 4xx oder 5xx beginnt (aber nicht mit 3xxx). | 
+| <*response-status-code*> | Integer | Der HTTP-Statuscode, der an die eingehende Anforderung gesendet wird. Der Standardcode lautet „200 OK“, aber es kann ein beliebiger gültiger Statuscode sein, der mit 2xx, 4xx oder 5xx beginnt (aber nicht mit 3xxx). | 
 |||| 
 
 *Optional*
@@ -1817,7 +1817,7 @@ Mit dieser Aktion wird die Workflowausführung für den angegebenen Zeitraum ode
 
 | Wert | Type | BESCHREIBUNG | 
 |-------|------|-------------| 
-| <*number-of-units*> | Ganze Zahl  | Für die Aktion **Delay** die Anzahl von Zeiteinheiten für die Wartedauer | 
+| <*number-of-units*> | Integer | Für die Aktion **Delay** die Anzahl von Zeiteinheiten für die Wartedauer | 
 | <*interval*> | Zeichenfolge | Das zu wartende Intervall für die Aktion **Delay**: „Second“, „Minute“, „Hour“, „Day“, „Week“, „Month“ | 
 | <*date-time-stamp*> | Zeichenfolge | Für die Aktion **Delay Until** das Datum und die Uhrzeit zum Fortsetzen der Ausführung. Für diesen Wert muss das [UTC-Format für Datum und Uhrzeit](https://en.wikipedia.org/wiki/Coordinated_Universal_Time) verwendet werden. | 
 |||| 
@@ -1976,7 +1976,7 @@ Diese Schleifenaktion durchläuft ein Array und führt Aktionen für die einzeln
 
 | Wert | Type | BESCHREIBUNG | 
 |-------|------|-------------| 
-| <*count*> | Ganze Zahl  | Standardmäßig werden die Iterationen für „for each“-Schleifen gleichzeitig bzw. parallel ausgeführt, bis das [Standardlimit](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits) erreicht ist. Informationen dazu, wie Sie dieses Limit ändern, indem Sie einen neuen <*count*>-Wert festlegen, finden Sie unter [Ändern der Parallelität von „for each“-Schleifen](#change-for-each-concurrency). | 
+| <*count*> | Integer | Standardmäßig werden die Iterationen für „for each“-Schleifen gleichzeitig bzw. parallel ausgeführt, bis das [Standardlimit](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits) erreicht ist. Informationen dazu, wie Sie dieses Limit ändern, indem Sie einen neuen <*count*>-Wert festlegen, finden Sie unter [Ändern der Parallelität von „for each“-Schleifen](#change-for-each-concurrency). | 
 | <*operation-option*> | Zeichenfolge | Wenn Sie eine „for each“-Schleife nicht parallel, sondern sequenziell durchführen möchten, legen Sie entweder <*operation-option*> auf `Sequential` oder <*count*> auf `1` fest (aber nicht beides). Weitere Informationen finden Sie unter [Sequenzielles Ausführen von „for each“-Schleifen](#sequential-for-each). | 
 |||| 
 
@@ -2301,7 +2301,7 @@ Diese Schleifenaktion enthält Aktionen, die so lange ausgeführt werden, bis di
 | <*action-type*> | Zeichenfolge | Aktionstyp, den Sie ausführen möchten | 
 | <*action-inputs*> | Verschiedene | Eingaben für die auszuführende Aktion | 
 | <*condition*> | Zeichenfolge | Die Bedingung oder der Wert, die bzw. der ausgewertet wird, nachdem die Ausführung aller Aktionen der Schleife beendet ist | 
-| <*loop-count*> | Ganze Zahl  | Der Grenzwert für die maximale Anzahl von Schleifen, die von der Aktion ausgeführt werden können. Der Standardwert für `count` beträgt 60. | 
+| <*loop-count*> | Integer | Der Grenzwert für die maximale Anzahl von Schleifen, die von der Aktion ausgeführt werden können. Der Standardwert für `count` beträgt 60. | 
 | <*loop-timeout*> | Zeichenfolge | Der Grenzwert für längste Ausführungsdauer, die für die Schleife möglich ist. Der Standardwert für `timeout` lautet `PT1H`. Dies ist das erforderliche [ISO 8601-Format](https://en.wikipedia.org/wiki/ISO_8601). |
 |||| 
 
@@ -2376,10 +2376,11 @@ Sie können das Standardlaufzeitverhalten für Trigger und Aktionen mit diesen `
 
 | Eigenschaft | Typ | BESCHREIBUNG | Trigger oder Aktion | 
 |----------|------|-------------|-------------------| 
-| `runtimeConfiguration.concurrency.runs` | Ganze Zahl  | Ändern Sie das [*Standardlimit*](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits) für die Anzahl von Workflowinstanzen, die gleichzeitig bzw. parallel ausgeführt werden können. Mit diesem Wert kann die Anzahl von Anforderungen reduziert werden, die auf Back-End-Systemen eingehen. <p>Das Festlegen der `runs`-Eigenschaft auf `1` funktioniert genauso wie das Festlegen der `operationOptions`-Eigenschaft auf `SingleInstance`. Sie können jeweils eine Eigenschaft festlegen, aber nicht beide. <p>Informationen zum Ändern des Standardlimits finden Sie unter [Ändern der Triggerparallelität](#change-trigger-concurrency) oder [Sequenzielles Auslösen von Instanzen](#sequential-trigger). | Alle Trigger | 
-| `runtimeConfiguration.concurrency.maximumWaitingRuns` | Ganze Zahl  | Ändern Sie das [*Standardlimit*](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits) für die Anzahl von Workflowinstanzen, die auf die Ausführung warten können, wenn für Ihren Workflow bereits die maximale Anzahl von gleichzeitigen Instanzen ausgeführt wird. Sie können das Parallelitätslimit in der `concurrency.runs`-Eigenschaft ändern. <p>Informationen zum Ändern des Standardlimits finden Sie unter [Ändern des Limits für wartende Ausführungen](#change-waiting-runs). | Alle Trigger | 
-| `runtimeConfiguration.concurrency.repetitions` | Ganze Zahl  | Ändern Sie das [*Standardlimit*](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits) für die Anzahl von Iterationen der „for each“-Schleife, die gleichzeitig bzw. parallel ausgeführt werden können. <p>Das Festlegen der `repetitions`-Eigenschaft auf `1` funktioniert genauso wie das Festlegen der `operationOptions`-Eigenschaft auf `SingleInstance`. Sie können jeweils eine Eigenschaft festlegen, aber nicht beide. <p>Informationen zum Ändern des Standardlimits finden Sie unter [Ändern der „for each“-Parallelität](#change-for-each-concurrency) oder [Sequenzielles Ausführen von „for each“-Schleifen](#sequential-for-each). | Aktion: <p>[Foreach](#foreach-action) | 
-| `runtimeConfiguration.paginationPolicy.minimumItemCount` | Ganze Zahl  | Für bestimmte Aktionen, die die Paginierung unterstützen und diese aktiviert haben, gibt dieser Wert die *minimale* Anzahl der abzurufenden Ergebnisse an. <p>Informationen für das Aktivieren der Paginierung finden Sie unter [Get bulk data, items, or results by using pagination (Abrufen von Massendaten, Elementen oder Ergebnissen mithilfe der Paginierung)](../logic-apps/logic-apps-exceed-default-page-size-with-pagination.md). | Aktion: Verschiedene |
+| `runtimeConfiguration.concurrency.runs` | Integer | Ändern Sie das [*Standardlimit*](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits) für die Anzahl von Workflowinstanzen, die gleichzeitig bzw. parallel ausgeführt werden können. Mit diesem Wert kann die Anzahl von Anforderungen reduziert werden, die auf Back-End-Systemen eingehen. <p>Das Festlegen der `runs`-Eigenschaft auf `1` funktioniert genauso wie das Festlegen der `operationOptions`-Eigenschaft auf `SingleInstance`. Sie können jeweils eine Eigenschaft festlegen, aber nicht beide. <p>Informationen zum Ändern des Standardlimits finden Sie unter [Ändern der Triggerparallelität](#change-trigger-concurrency) oder [Sequenzielles Auslösen von Instanzen](#sequential-trigger). | Alle Trigger | 
+| `runtimeConfiguration.concurrency.maximumWaitingRuns` | Integer | Ändern Sie das [*Standardlimit*](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits) für die Anzahl von Workflowinstanzen, die auf die Ausführung warten können, wenn für Ihren Workflow bereits die maximale Anzahl von gleichzeitigen Instanzen ausgeführt wird. Sie können das Parallelitätslimit in der `concurrency.runs`-Eigenschaft ändern. <p>Informationen zum Ändern des Standardlimits finden Sie unter [Ändern des Limits für wartende Ausführungen](#change-waiting-runs). | Alle Trigger | 
+| `runtimeConfiguration.concurrency.repetitions` | Integer | Ändern Sie das [*Standardlimit*](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits) für die Anzahl von Iterationen der „for each“-Schleife, die gleichzeitig bzw. parallel ausgeführt werden können. <p>Das Festlegen der `repetitions`-Eigenschaft auf `1` funktioniert genauso wie das Festlegen der `operationOptions`-Eigenschaft auf `SingleInstance`. Sie können jeweils eine Eigenschaft festlegen, aber nicht beide. <p>Informationen zum Ändern des Standardlimits finden Sie unter [Ändern der „for each“-Parallelität](#change-for-each-concurrency) oder [Sequenzielles Ausführen von „for each“-Schleifen](#sequential-for-each). | Aktion: <p>[Foreach](#foreach-action) | 
+| `runtimeConfiguration.paginationPolicy.minimumItemCount` | Integer | Für bestimmte Aktionen, die die Paginierung unterstützen und diese aktiviert haben, gibt dieser Wert die *minimale* Anzahl der abzurufenden Ergebnisse an. <p>Informationen für das Aktivieren der Paginierung finden Sie unter [Get bulk data, items, or results by using pagination (Abrufen von Massendaten, Elementen oder Ergebnissen mithilfe der Paginierung)](../logic-apps/logic-apps-exceed-default-page-size-with-pagination.md). | Aktion: Verschiedene |
+| `runtimeConfiguration.staticResult` | JSON-Objekt | Für Aktionen, die die Einstellung [statisches Ergebnis](../logic-apps/test-logic-apps-mock-data-static-results.md) unterstützen und für die diese aktiviert ist, hat das `staticResult`-Objekt diese Attribute: <p>- `name`, das auf den Definitionsnamen des statischen Ergebnisses der aktuelle Aktion verweist, der innerhalb des `staticResults`-Attributs im `definition`-Attribut des Workflows Ihrer Logik-App vorkommt. Weitere Informationen finden Sie unter [Statische Ergebnisse – Schemareferenz zur Definitionssprache für Workflows](../logic-apps/logic-apps-workflow-definition-language.md#static-results). <p> - `staticResultOptions`, das angibt, ob statische Ergebnisse `Enabled` sind oder nicht für die aktuelle Aktion. <p>Informationen zum Aktivieren statischer Ergebnisse finden Sie unter [Testen von Logik-Apps mit Simulationsdaten durch die Einrichtung von statischen Ergebnissen](../logic-apps/test-logic-apps-mock-data-static-results.md). | Aktion: Verschiedene |
 ||||| 
 
 <a name="operation-options"></a>
@@ -2733,7 +2734,7 @@ Wenn Sie die [Azure AD-OAuth-Authentifizierung](../active-directory/develop/auth
 | Eigenschaft | Erforderlich | Value | BESCHREIBUNG |
 |----------|----------|-------|-------------|
 | **type** | Ja | `ActiveDirectoryOAuth` | Der zu verwendende Authentifizierungstyp, „ActiveDirectoryOAuth“ für Azure AD OAuth |
-| **authority** | Nein  | <*URL-for-authority-token-issuer*> | Die URL für die Zertifizierungsstelle, die das Authentifizierungstoken bereitstellt |
+| **authority** | Nein | <*URL-for-authority-token-issuer*> | Die URL für die Zertifizierungsstelle, die das Authentifizierungstoken bereitstellt |
 | **tenant** | Ja | <*tenant-ID*> | Die Mandanten-ID für den Azure AD-Mandanten |
 | **audience** | Ja | <*resource-to-authorize*> | Die Ressource, die Sie für die Autorisierung verwenden möchten, z. B. `https://management.core.windows.net/` |
 | **clientId** | Ja | <*client-ID*> | Die Client-ID für die App, die eine Autorisierung anfordert |

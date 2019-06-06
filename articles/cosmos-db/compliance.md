@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 11/15/2018
 ms.author: dharmas
 ms.reviewer: sngun
-ms.openlocfilehash: c8a74df19c012613807d39fb3ee529173e82d5ba
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: bbfc31e5eab2c2beb232a9ec2e0d5e11e4107be5
+ms.sourcegitcommit: 6ea7f0a6e9add35547c77eef26f34d2504796565
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58093261"
+ms.lasthandoff: 05/14/2019
+ms.locfileid: "65606290"
 ---
 # <a name="compliance-in-azure-cosmos-db"></a>Compliance in Azure Cosmos DB 
 
@@ -28,7 +28,7 @@ Azure Cosmos DB ist in allen Azure-Regionen verfügbar. Microsoft stellt für Ku
 
 * **Azure Government für das US-Verteidigungsministerium** ist in zwei Regionen der USA für das US-Verteidigungsministerium verfügbar.
 
-Um Kunden bei der Erfüllung ihrer eigenen Konformitätsverpflichtungen in regulierten Branchen und auf Märkten weltweit zu unterstützen, verfügt Azure über das größte Complianceportfolio der Branche – sowohl in Bezug auf die Breite (Gesamtzahl von Angeboten) als auch auf die Tiefe (Anzahl von kundenorientierten Diensten im Rahmen des Bewertungsbereichs).  Azure-Complianceangebote sind in vier Segmente unterteilt: globale Relevanz, US Government, branchenspezifisch und regions- oder landesspezifisch.  Complianceangebote basieren auf unterschiedlichen Arten von Zusicherungen, z.B. formale Zertifizierungen, Nachweise, Validierungen, Autorisierungen und Bewertungen, die von unabhängigen externen Prüfungsgesellschaften erstellt wurden, sowie Vertragsänderungen, Selbstbewertungen und Kundenleitfäden, die von Microsoft erstellt wurden.
+Um Kunden bei der Erfüllung ihrer eigenen Konformitätsverpflichtungen in regulierten Branchen und auf Märkten weltweit zu unterstützen, verfügt Azure über das größte Complianceportfolio der Branche – sowohl in Bezug auf die Breite (Gesamtzahl von Angeboten) als auch auf die Tiefe (Anzahl von kundenorientierten Diensten im Rahmen des Bewertungsbereichs).  Azure-Complianceangebote sind in vier Segmente unterteilt: globale Relevanz, US Government, branchenspezifisch und regions- oder landes-/regionsspezifisch.  Complianceangebote basieren auf unterschiedlichen Arten von Zusicherungen, z.B. formale Zertifizierungen, Nachweise, Validierungen, Autorisierungen und Bewertungen, die von unabhängigen externen Prüfungsgesellschaften erstellt wurden, sowie Vertragsänderungen, Selbstbewertungen und Kundenleitfäden, die von Microsoft erstellt wurden.
 
 ## <a name="azure-cosmos-db-certifications"></a>Azure Cosmos DB-Zertifizierungen  
 

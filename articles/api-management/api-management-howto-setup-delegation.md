@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/04/2019
 ms.author: apimpm
-ms.openlocfilehash: 796bea3c64ef7fc03367707461d13e0ea2514b8b
-ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
+ms.openlocfilehash: 4db99f23019b34e7361e3ead4096939b9499320d
+ms.sourcegitcommit: 17411cbf03c3fa3602e624e641099196769d718b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/05/2019
-ms.locfileid: "59051755"
+ms.lasthandoff: 05/10/2019
+ms.locfileid: "65518093"
 ---
 # <a name="how-to-delegate-user-registration-and-product-subscription"></a>Delegieren von Benutzerregistrierung und Produktabonnierung
 
@@ -130,7 +130,7 @@ Stellen Sie anschließend sicher, dass der Delegierungsendpunkt die folgenden Ak
      > 
    * Vergleichen Sie den generierten Hash mit dem Wert des **sig**-Abfrageparameters. Fahren Sie mit dem nächsten Schritt fort, wenn die Hashes übereinstimmen. Lehnen Sie die Anfrage andernfalls ab.
 3. Verarbeiten Sie das Produktabonnement basierend auf dem im Parameter **operation** angeforderten Vorgang, z. B. Abrechnung, weitere Fragen usw.
-4. Nachdem der Benutzer das Produkt auf Ihrer Seite erfolgreich abonniert hat, abonnieren Sie das Produkt in API Management für den Benutzer, indem Sie die [REST-API für die Produktabonnierung]aufrufen.
+4. Nachdem der Benutzer das Produkt auf Ihrer Seite erfolgreich abonniert hat, abonnieren Sie das Produkt in API Management für den Benutzer, indem Sie die [Aufrufen der REST-API für Abonnements] aufrufen.
 
 ## <a name="delegate-example-code"></a> Beispielcode
 
@@ -141,7 +141,7 @@ Die Codebeispiele zeigen Folgendes:
 
 Der gleiche Code funktioniert mit geringfügigen Änderungen auch für "productId" und "userID".
 
-**C#-Code zum Generieren des Hashwerts von returnUrl**
+**C#-Code zum Generieren des Hash von "returnUrl"**
 
 ```csharp
 using System.Security.Cryptography;
@@ -158,7 +158,7 @@ using (var encoder = new HMACSHA512(Convert.FromBase64String(key)))
 }
 ```
 
-**NodeJS-Code zum Generieren des Hashwerts von returnUrl**
+**NodeJS-Code zum Generieren des Hash von "returnUrl"**
 
 ```
 var crypto = require('crypto');
@@ -184,10 +184,10 @@ Weitere Informationen zum Delegieren finden Sie im folgenden Video:
 
 [Delegating developer sign in and sign up]: #delegate-signin-up
 [Delegating product subscription]: #delegate-product-subscription
-[Anfordern eines Tokens für einmalige Anmeldung (SSO)]: https://docs.microsoft.com/rest/api/apimanagement/User/GenerateSsoUrl
-[Erstellen eines Benutzers]: https://docs.microsoft.com/rest/api/apimanagement/user/createorupdate
-[Aufrufen der REST-API für die Produktabonnierung]: https://docs.microsoft.com/rest/api/apimanagement/productsubscriptions
+[Fordern Sie ein Token für die einmalige Anmeldung an (SSO)]: https://docs.microsoft.com/rest/api/apimanagement/User/GenerateSsoUrl
+[Erstellen Sie einen Benutzer]: https://docs.microsoft.com/rest/api/apimanagement/user/createorupdate
+[Aufrufen der REST-API für Abonnements]: https://docs.microsoft.com/rest/api/apimanagement/subscription/createorupdate
 [Next steps]: #next-steps
-[Beispielcode weiter unten]: #delegate-example-code
+[Beispielcode finden Sie unter]: #delegate-example-code
 
 [api-management-delegation-signin-up]: ./media/api-management-howto-setup-delegation/api-management-delegation-signin-up.png 

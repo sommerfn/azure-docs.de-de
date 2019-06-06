@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 06/11/2018
 ms.author: cephalin
 ms.custom: include file
-ms.openlocfilehash: 5169432af65a046465c9d1ced349687d6fdc8bb7
-ms.sourcegitcommit: caebf2bb2fc6574aeee1b46d694a61f8b9243198
+ms.openlocfilehash: 020e59f029b09f3c7656f67039731e4141e68d31
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/12/2018
-ms.locfileid: "35394025"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66137033"
 ---
 Wenn Python beim Starten Ihrer Anwendung einen Fehler erkennt, wird nur eine einfache Seite mit einer Fehlermeldung zurückgegeben (z.B. „Die Seite kann aufgrund eines internen Serverfehlers nicht angezeigt werden.“).
 

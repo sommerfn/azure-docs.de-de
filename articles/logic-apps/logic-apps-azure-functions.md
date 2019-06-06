@@ -9,12 +9,12 @@ ms.author: estfan
 ms.topic: article
 ms.date: 08/20/2018
 ms.reviewer: klam, LADocs
-ms.openlocfilehash: e371a6abe32a1a41d3babeaa27aaec3e30bd3323
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.openlocfilehash: 9b304f2d4d2e498701be5977decf202cb0fa995b
+ms.sourcegitcommit: d73c46af1465c7fd879b5a97ddc45c38ec3f5c0d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65142319"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65922070"
 ---
 # <a name="add-and-run-code-by-using-azure-functions-in-azure-logic-apps"></a>Hinzufügen und Ausführen von Code mithilfe von Azure Functions in Azure Logic Apps
 
@@ -37,7 +37,7 @@ Informationen zum Ausführen von Codeausschnitten ohne Erstellen von Azure-Funkt
 
   * Ihre Funktionen-App muss dasselbe Azure-Abonnement wie Ihre Logik-App aufweisen.
 
-  * Ihre Funktion verwendet einen HTTP-Trigger, z.B. die Funktionsvorlage **HTTP-Trigger** für **JavaScript** oder **C#**. 
+  * Ihre Funktion verwendet einen HTTP-Trigger, z.B. die Funktionsvorlage **HTTP-Trigger** für **JavaScript** oder **C#** . 
 
     Die HTTP-Trigger-Vorlage kann Inhalte mit dem Typ `application/json` von Ihrer Logik-App akzeptieren. 
     Wenn Sie Ihrer Logik-App eine Azure-Funktion hinzufügen, zeigt der Logik-App-Designer benutzerdefinierte Funktionen, die im Rahmen Ihres Azure-Abonnements aus dieser Vorlage erstellt wurden. 
@@ -51,6 +51,9 @@ Informationen zum Ausführen von Codeausschnitten ohne Erstellen von Azure-Funkt
   Bevor Sie Aktionen zum Ausführen von Funktionen hinzufügen können, muss Ihre Logik-App über einen Trigger gestartet werden.
 
   Falls Sie noch nicht mit Logik-Apps vertraut sind, finden Sie weitere Informationen unter [Was ist Azure Logic Apps?](../logic-apps/logic-apps-overview.md) und [Schnellstart: Erstellen Ihres ersten automatisierten Workflows mit Azure Logic Apps – Azure-Portal](../logic-apps/quickstart-create-first-logic-app-workflow.md).
+
+> [!NOTE]
+> Logic Apps-Integration in Functions funktioniert nicht, wenn Slots (Vorschau) aktiviert sind.
 
 <a name="create-function-external"></a>
 

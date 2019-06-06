@@ -1,24 +1,18 @@
 ---
 title: Grenzwerte und Drosselung für Anforderungen – Azure Resource Manager
 description: Beschreibt, wie eine Begrenzung von Azure Resource Manager-Anforderungen genutzt wird, wenn Abonnementgrenzwerte erreicht wurden.
-services: azure-resource-manager
-documentationcenter: na
 author: tfitzmac
-ms.assetid: e1047233-b8e4-4232-8919-3268d93a3824
 ms.service: azure-resource-manager
-ms.devlang: na
 ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.workload: na
-ms.date: 03/05/2019
+ms.date: 05/14/2019
 ms.author: tomfitz
 ms.custom: seodec18
-ms.openlocfilehash: 91a776ba13ffaeeb4f8184371ae45a80d829ae46
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: fc731b1abec9c101356a0fa57eef498b58612ab9
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57550625"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65791359"
 ---
 # <a name="throttling-resource-manager-requests"></a>Begrenzen von Resource Manager-Anforderungen
 
@@ -32,7 +26,7 @@ Wenn Ihre Anwendung oder Ihr Skript diese Grenzwerte erreicht, müssen Sie die A
 
 Wenn Sie den Grenzwert erreichen, erhalten Sie den HTTP-Statuscode **429 Zu viele Anforderungen**.
 
-[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+Azure Resource Graph begrenzt die Anzahl der Anforderungen nach seinen Vorgängen. Die Schritte in diesem Artikel zum Bestimmen der verbleibenden Anforderungen und zum Reagieren bei Erreichen des Grenzwerts gelten auch für Resource Graph. Resource Graph legt jedoch einen eigenen Grenzwert und eine eigene Rücksetzrate fest. Weitere Informationen finden Sie unter [Drosselung in Azure Resource Graph](../governance/resource-graph/overview.md#throttling).
 
 ## <a name="remaining-requests"></a>Verbleibende Anforderungen
 Sie können die Anzahl der verbleibenden Anforderungen durch Untersuchen der Antwortheader bestimmen. Leseanforderungen geben im Header einen Wert für die Anzahl der verbleibenden Leseanforderungen zurück. Schreibanforderungen enthalten einen Wert für die Anzahl der verbleibenden Schreibanforderungen. Die folgende Tabelle beschreibt die Antwortheader, die Sie auf diese Werte untersuchen können:

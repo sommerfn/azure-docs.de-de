@@ -9,15 +9,15 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 12/09/2018
+ms.date: 05/13/2019
 ms.author: tomfitz
 ms.custom: seodec18
-ms.openlocfilehash: dd7e29f8f37572565e505aade97b964254b6d72c
-ms.sourcegitcommit: e6d53649bfb37d01335b6bcfb9de88ac50af23bd
+ms.openlocfilehash: d93d9999c407e64658b88025feda48d33e1a5ad1
+ms.sourcegitcommit: 1fbc75b822d7fe8d766329f443506b830e101a5e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/09/2019
-ms.locfileid: "65466560"
+ms.lasthandoff: 05/14/2019
+ms.locfileid: "65595786"
 ---
 # <a name="enable-safe-deployment-practices-with-azure-deployment-manager-public-preview"></a>Sichere Bereitstellungsmethoden mit dem Azure-Bereitstellungs-Manager (öffentliche Vorschau)
 
@@ -38,15 +38,11 @@ Die Topologievorlage wird vor der Rolloutvorlage bereitgestellt.
 
 Die REST-API-Referenz für den Azure-Bereitstellungs-Manager finden Sie [hier](https://docs.microsoft.com/rest/api/deploymentmanager/).
 
-## <a name="supported-locations"></a>Unterstützte Standorte
-
-In der Vorschau werden die Ressourcen des Bereitstellungs-Managers in den Regionen „USA, Mitte“ und „USA, Osten 2“ unterstützt. Wenn Sie Ressourcen in Ihren Topologie- und Rolloutvorlagen definieren, z.B. die in diesem Artikel beschriebenen Diensteinheiten, Artefaktquellen und Rollouts, müssen Sie eine dieser Regionen als Standort angeben. Die Ressourcen, die Sie zum Erstellen Ihres Diensts bereitstellen, z.B. VMs, Speicherkonten und Web-Apps, werden jedoch an allen [Standardstandorten](https://azure.microsoft.com/global-infrastructure/services/?products=all) unterstützt.  
-
 ## <a name="identity-and-access"></a>Identität und Zugriff
 
 Im Falle des Bereitstellungs-Managers führt eine [benutzerseitig zugewiesene verwaltete Identität](../active-directory/managed-identities-azure-resources/overview.md) die Bereitstellungsaktionen durch. Sie erstellen diese Identität vor Beginn der Bereitstellung. Sie muss Zugriff auf das Abonnement haben, für das Sie den Dienst bereitstellen, und über die nötigen Berechtigungen zum Abschließen der Bereitstellung verfügen. Weitere Informationen zu den Aktionen, die durch Rollen gewährt werden, finden Sie unter [Integrierte Rollen für Azure-Ressourcen](../role-based-access-control/built-in-roles.md).
 
-Die Identität muss sich an einem Standort befinden, der vom Bereitstellungs-Manager unterstützt wird und dem Rolloutstandort entspricht.
+Die Identität muss sich am gleichen Speicherort wie der Rollout befinden.
 
 ## <a name="topology-template"></a>Topologievorlage
 
@@ -221,7 +217,9 @@ Der Warteschritt hält die Bereitstellung zwischendurch an. So können Sie über
 
 Die Eigenschaft „duration“ verwendet den [ISO 8601-Standard](https://en.wikipedia.org/wiki/ISO_8601#Durations). Das vorherige Beispiel gibt eine Wartezeit von einer Minute an.
 
-Weitere Informationen zum healthCheck-Schritt finden Sie unter []() und [](). Weitere Informationen finden Sie in der [Vorlagenreferenz für Schritte](/azure/templates/Microsoft.DeploymentManager/steps).
+Weitere Informationen zum Integritätsüberprüfungsschritt finden Sie unter [Rollout der Integritätsintegration in Azure-Bereitstellungs-Manager](./deployment-manager-health-check.md) und im [Tutorial: Verwenden der Integritätsprüfung im Azure-Bereitstellungs-Manager (Public Preview)](./deployment-manager-tutorial-health-check.md).
+
+Weitere Informationen finden Sie in der [steps-Vorlagenreferenz](/azure/templates/Microsoft.DeploymentManager/steps).
 
 ### <a name="rollouts"></a>Rollouts
 

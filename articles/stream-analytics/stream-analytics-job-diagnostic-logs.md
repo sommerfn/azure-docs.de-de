@@ -7,14 +7,13 @@ ms.author: jeanb
 ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
-ms.date: 01/19/2019
-ms.custom: seodec18
-ms.openlocfilehash: cc62a6b9f03bdd6dc8671a6cf96113a2234fc092
-ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
+ms.date: 05/15/2019
+ms.openlocfilehash: e784cfd2956479327cff9c97a09dd0ada6a154c2
+ms.sourcegitcommit: be9fcaace62709cea55beb49a5bebf4f9701f7c6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/02/2019
-ms.locfileid: "57247153"
+ms.lasthandoff: 05/17/2019
+ms.locfileid: "65826581"
 ---
 # <a name="troubleshoot-azure-stream-analytics-by-using-diagnostics-logs"></a>Problembehandlung bei Azure Stream Analytics mit Diagnoseprotokollen
 
@@ -83,7 +82,7 @@ Sie sollten unbedingt Diagnoseprotokolle aktivieren und an Azure Monitor-Protoko
 
 ## <a name="diagnostics-log-categories"></a>Kategorien der Diagnoseprotokolle
 
-Derzeit werden zwei Kategorien von Diagnoseprotokollen erfasst:
+Azure Stream Analytics erfasst zwei Kategorien von Diagnoseprotokollen:
 
 * **Erstellung**: Erfasst Protokollereignisse zu Auftragserstellungsvorgängen wie Erstellen von Aufträgen, Hinzufügen und Löschen von Eingaben und Ausgaben, Hinzufügen und Aktualisieren der Abfrage sowie Starten und Beenden des Auftrags.
 
@@ -101,16 +100,16 @@ Alle Protokolle werden im JSON-Format gespeichert. Jeder Eintrag enthält folgen
 NAME | BESCHREIBUNG
 ------- | -------
 time | Zeitstempel (UTC) des Protokolls.
-Ressourcen-ID | ID der Ressource, über die der Vorgang stattfand, in Großbuchstaben. Beinhaltet die Abonnement-ID, die Ressourcengruppe und den Auftragsnamen. Beispiel: **/SUBSCRIPTIONS/6503D296-DAC1-4449-9B03-609A1F4A1C87/RESOURCEGROUPS/MY-RESOURCE-GROUP/PROVIDERS/MICROSOFT.STREAMANALYTICS/STREAMINGJOBS/MYSTREAMINGJOB**.
+resourceId | ID der Ressource, über die der Vorgang stattfand, in Großbuchstaben. Beinhaltet die Abonnement-ID, die Ressourcengruppe und den Auftragsnamen. Beispiel: **/SUBSCRIPTIONS/6503D296-DAC1-4449-9B03-609A1F4A1C87/RESOURCEGROUPS/MY-RESOURCE-GROUP/PROVIDERS/MICROSOFT.STREAMANALYTICS/STREAMINGJOBS/MYSTREAMINGJOB**.
 category | Protokollkategorie: **Ausführung** oder **Erstellung**.
 operationName | Der Name des protokollierten Vorgangs. Beispielsweise **Ereignisse senden: Fehler beim Schreiben der SQL-Ausgabe nach mysqloutput**.
 status | Der Status des Vorgangs. Beispiele: **Fehlgeschlagen** oder **Erfolgreich**.
 level | Protokollebene. Beispiele: **Fehler**, **Warnung** oder **Information**.
-Eigenschaften | Spezifisches Detail des Protokolleintrags; als JSON-Zeichenfolge serialisiert. Weitere Informationen finden Sie in den folgenden Abschnitten dieses Artikels.
+properties | Spezifisches Detail des Protokolleintrags; als JSON-Zeichenfolge serialisiert. Weitere Informationen finden Sie in den folgenden Abschnitten dieses Artikels.
 
 ### <a name="execution-log-properties-schema"></a>Eigenschaftsschema der Ausführungsprotokolle
 
-Ausführungsprotokolle enthalten Informationen zu Ereignissen, die während der Ausführung des Stream Analytics-Auftrags aufgetreten sind. Das Schema der Eigenschaften variiert je nach Ereignistyp. Derzeit sind folgende Typen von Ausführungsprotokollen verfügbar:
+Ausführungsprotokolle enthalten Informationen zu Ereignissen, die während der Ausführung des Stream Analytics-Auftrags aufgetreten sind. Das Schema der Eigenschaften variiert abhängig davon, ob das Ereignis ein Datenfehler oder ein generisches Ereignis ist.
 
 ### <a name="data-errors"></a>Datenfehler
 
@@ -118,16 +117,20 @@ Alle Fehler, die auftreten, während der Auftrag Daten in dieser Kategorie von P
 
 NAME | BESCHREIBUNG
 ------- | -------
-Quelle | Name der Auftragseingabe oder -ausgabe, bei der der Fehler aufgetreten ist.
-Message | Mit dem Fehler verknüpfte Meldung.
+`Source` | Name der Auftragseingabe oder -ausgabe, bei der der Fehler aufgetreten ist.
+`Message` | Mit dem Fehler verknüpfte Meldung.
 Type | Fehlertyp. Beispiele: **DataConversionError**, **CsvParserError** oder **ServiceBusPropertyColumnMissingError**.
 Daten | Enthält Daten, die hilfreich sind, um die Ursache des Fehlers genau zu lokalisieren. Unterliegt je nach Größe Kürzungen.
 
 Je nach dem Wert für **operationName** entsprechen Datenfehler folgendem Schema:
-* **Serialisieren von Ereignissen**. Die Serialisierung von Ereignissen tritt bei Lesevorgängen von Ereignissen auf. Sie treten auf, wenn die Daten bei der Eingabe aus einem der folgenden Gründen nicht das Abfrageschema erfüllen:
-    * *Typenkonflikt während des (De)serialisierens von Ereignissen*: Identifiziert das Feld, das den Fehler verursacht.
-    * *Ein Ereignis kann nicht gelesen werden, ungültige Serialisierung*: Enthält Informationen über die Stelle in den Eingabedaten, an der der Fehler aufgetreten ist. Enthält den Blobnamen für die Eingabe mit formlosen Objekten, Offset und eine Stichprobe der Daten.
-* **Senden von Ereignissen**. Das Senden von Ereignissen tritt bei Schreibvorgängen auf. Diese identifizieren das Streamingereignis, das den Fehler verursacht hat.
+
+* **Die Serialisierung von Ereignissen** tritt bei Lesevorgängen von Ereignissen auf. Sie treten auf, wenn die Daten bei der Eingabe aus einem der folgenden Gründen nicht das Abfrageschema erfüllen:
+
+   * *Typenkonflikt während des (De)serialisierens von Ereignissen*: Identifiziert das Feld, das den Fehler verursacht.
+
+   * *Ein Ereignis kann nicht gelesen werden, ungültige Serialisierung*: Enthält Informationen über die Stelle in den Eingabedaten, an der der Fehler aufgetreten ist. Enthält den Blobnamen für die Eingabe mit formlosen Objekten, Offset und eine Stichprobe der Daten.
+
+* **Das Senden von Ereignissen** tritt bei Schreibvorgängen auf. Diese identifizieren das Streamingereignis, das den Fehler verursacht hat.
 
 ### <a name="generic-events"></a>Generische Ereignisse
 
@@ -136,7 +139,7 @@ Generische Ereignisse verarbeiten alles andere.
 NAME | BESCHREIBUNG
 -------- | --------
 Error | (optional) Fehlerinformationen. In der Regel sind dies Ausnahmeinformationen, sofern diese verfügbar sind.
-Message| Protokollmeldung.
+`Message`| Protokollmeldung.
 Type | Meldungstyp. Wird der internen Kategorisierung von Fehlern zugeordnet. Beispiele: **JobValidationError** oder **BlobOutputAdapterInitializationFailure**.
 Korrelations-ID | Ein [GUID](https://en.wikipedia.org/wiki/Universally_unique_identifier)-Wert, der die Auftragsausführung eindeutig identifiziert. Alle Ausführungsprotokolleinträge ab dem Zeitpunkt, an dem der Auftrag gestartet wird, bis zum Beenden des Auftrags weisen denselben Wert für **Korrelations-ID** auf.
 

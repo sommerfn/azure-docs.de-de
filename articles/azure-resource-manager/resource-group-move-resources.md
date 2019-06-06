@@ -1,23 +1,17 @@
 ---
 title: Verschieben von Azure-Ressourcen in ein neues Abonnement oder eine neue Ressourcengruppe | Microsoft-Dokumentation
 description: Verwenden Sie Azure Resource Manager, um Ressourcen in eine neue Ressourcengruppe oder ein neues Abonnement verschieben.
-services: azure-resource-manager
-documentationcenter: ''
 author: tfitzmac
-ms.assetid: ab7d42bd-8434-4026-a892-df4a97b60a9b
 ms.service: azure-resource-manager
-ms.workload: multiple
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
-ms.date: 04/19/2019
+ms.date: 05/17/2019
 ms.author: tomfitz
-ms.openlocfilehash: dfe2a103005cc48860c7bbeb3036afe94ff3a559
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.openlocfilehash: 1ae1afe103d4c52a2a7d921ef4f34dc030f3c6f7
+ms.sourcegitcommit: 4c2b9bc9cc704652cc77f33a870c4ec2d0579451
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "60004056"
+ms.lasthandoff: 05/17/2019
+ms.locfileid: "65872640"
 ---
 # <a name="move-resources-to-new-resource-group-or-subscription"></a>Verschieben von Ressourcen in eine neue Ressourcengruppe oder ein neues Abonnement
 
@@ -113,8 +107,9 @@ Die folgende Liste enthält eine allgemeine Zusammenfassung von Azure-Diensten, 
 * SignalR Service
 * Storage – Speicherkonten in verschiedenen Regionen können nicht im selben Vorgang verschoben werden. Stattdessen müssen Sie für jede Region einen separaten Vorgang durchführen.
 * Speicher (klassisch) – siehe [Einschränkungen bei der klassischen Bereitstellung](#classic-deployment-limitations)
+* Speichersynchronisierungsdienst
 * Stream Analytics – Stream Analytics-Aufträge können nicht verschoben werden, wenn sie ausgeführt werden.
-* SQL-Datenbankserver – die Datenbank und der Server müssen sich in derselben Ressourcengruppe befinden. Wenn Sie eine SQL Server-Instanz verschieben, werden auch alle ihre Datenbanken verschoben. Dieses Verhalten gilt für Azure SQL-Datenbank und Azure SQL Data Warehouse-Datenbanken.
+* SQL-Datenbank-Server – die Datenbank und der Server müssen sich in derselben Ressourcengruppe befinden. Wenn Sie eine SQL Server-Instanz verschieben, werden auch alle ihre Datenbanken verschoben. Dieses Verhalten gilt für Azure SQL-Datenbank und Azure SQL Data Warehouse-Datenbanken.
 * Time Series Insights
 * Traffic Manager
 * Virtual Machines – siehe [Einschränkungen von virtuellen Computern](#virtual-machines-limitations)
@@ -221,6 +216,22 @@ Beim Verschieben einer Web-App _zwischen Abonnements_ gelten die folgenden Einsc
     - App Service-Umgebungen
 - Alle App Service-Ressourcen in der Ressourcengruppe müssen zusammen verschoben werden.
 - App Service-Ressourcen können nur aus der Ressourcengruppe verschoben werden, in der sie ursprünglich erstellt wurden. Wenn eine App Service-Ressource sich nicht mehr in ihrer ursprünglichen Ressourcengruppe befindet, muss sie erst zurück in die ursprüngliche Ressourcengruppe verschoben werden, bevor sie zwischen Abonnements verschoben werden kann.
+
+Wenn Sie sich nicht an die ursprüngliche Ressourcengruppe erinnern, können Sie diese mithilfe der Diagnosefunktion finden. Wählen Sie für Ihre Web-App **Diagnose und Problembehandlung** aus. Wählen Sie dann **Konfiguration und Verwaltung** aus.
+
+![„Diagnose“ auswählen](./media/resource-group-move-resources/select-diagnostics.png)
+
+Wählen Sie **Migrationsoptionen** aus.
+
+![Migrationsoptionen auswählen](./media/resource-group-move-resources/select-migration.png)
+
+Wählen Sie die Option für empfohlene Schritte, um die Web-App zu verschieben.
+
+![„Empfohlene Schritte“ auswählen](./media/resource-group-move-resources/recommended-steps.png)
+
+Sie sehen die empfohlenen Maßnahmen, die Sie ergreifen sollten, bevor Sie die Ressourcen verschieben. Die Informationen enthalten die ursprüngliche Ressourcengruppe für die Web-App.
+
+![Empfehlungen](./media/resource-group-move-resources/recommendations.png)
 
 ### <a name="app-service-certificate-limitations"></a>Einschränkungen von App Service Certificate
 

@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/22/2019
 ms.author: apimpm
-ms.openlocfilehash: 90b2dfdbec0d6dc81a05b845832fda92fe36d98c
-ms.sourcegitcommit: 81fa781f907405c215073c4e0441f9952fe80fe5
+ms.openlocfilehash: b8bd6e7c77faa54a8ebf0842cf140ef8aa73e953
+ms.sourcegitcommit: 3ced637c8f1f24256dd6ac8e180fff62a444b03c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/25/2019
-ms.locfileid: "58403090"
+ms.lasthandoff: 05/17/2019
+ms.locfileid: "65834547"
 ---
 # <a name="api-management-policy-expressions"></a>Richtlinienausdrücke in API Management
 Die in diesem Artikel erörterte Syntax für Richtlinienausdrücke entspricht C# 7. Jeder Ausdruck besitzt Zugriff auf die implizit bereitgestellte [Kontextvariable](api-management-policy-expressions.md#ContextVariables) und eine zulässige [Teilmenge](api-management-policy-expressions.md#CLRTypes) von .NET Framework-Typen.
@@ -210,7 +210,7 @@ Eine Variable namens `context` steht implizit in jedem [Richtlinienausdruck](api
 
 |Kontextvariable|Zulässige Methoden, Eigenschaften und Parameterwerte|
 |----------------------|-------------------------------------------------------|
-|context|Api: IApi<br /><br /> Bereitstellung<br /><br /> Elapsed: TimeSpan – Zeitintervall zwischen dem Wert des Zeitstempels und der aktuellen Uhrzeit<br /><br /> LastError<br /><br /> Vorgang<br /><br /> Produkt<br /><br /> Anforderung<br /><br /> RequestId: Guid – eindeutiger Bezeichner der Anforderung<br /><br /> response<br /><br /> Abonnement<br /><br /> Timestamp: DateTime – Zeitpunkt des Empfangs der Anforderung<br /><br /> Tracing: bool – gibt an, ob die Ablaufverfolgung aktiviert oder deaktiviert ist <br /><br /> Benutzer<br /><br /> Variables: IReadOnlyDictionary<string, object><br /><br /> void Trace(message: string)|
+|context|Api: IApi<br /><br /> Bereitstellung<br /><br /> Elapsed: TimeSpan – Zeitintervall zwischen dem Wert des Zeitstempels und der aktuellen Uhrzeit<br /><br /> lastError<br /><br /> Vorgang<br /><br /> Produkt<br /><br /> Anforderung<br /><br /> RequestId: Guid – eindeutiger Bezeichner der Anforderung<br /><br /> response<br /><br /> Abonnement<br /><br /> Timestamp: DateTime – Zeitpunkt des Empfangs der Anforderung<br /><br /> Tracing: bool – gibt an, ob die Ablaufverfolgung aktiviert oder deaktiviert ist <br /><br /> Benutzer<br /><br /> Variables: IReadOnlyDictionary<string, object><br /><br /> void Trace(message: string)|
 |context.Api|Id: string<br /><br /> IsCurrentRevision: bool<br /><br />  Name: string<br /><br /> Path: string<br /><br /> Revision: string<br /><br /> ServiceUrl: IUrl<br /><br /> Version: string |
 |context.Deployment|Region: string<br /><br /> ServiceName: string<br /><br /> Certificates: IReadOnlyDictionary<string, X509Certificate2>|
 |context.LastError|Source: string<br /><br /> Reason: string<br /><br /> Message: string<br /><br /> Scope: string<br /><br /> Section: string<br /><br /> Path: string<br /><br /> PolicyId: string<br /><br /> Weitere Informationen zu context.LastError finden Sie unter [Fehlerbehandlung](api-management-error-handling-policies.md).|
@@ -220,8 +220,8 @@ Eine Variable namens `context` steht implizit in jedem [Richtlinienausdruck](api
 |string context.Request.Headers.GetValueOrDefault(headerName: string, defaultValue: string)|headerName: string<br /><br /> defaultValue: string<br /><br /> Gibt durch Trennzeichen getrennte Anforderungsheaderwerte oder `defaultValue` zurück, wenn der Header nicht gefunden wurde.|
 |context.Response|Hauptteil: IMessageBody<br /><br /> Headers: IReadOnlyDictionary<string, string[]><br /><br /> StatusCode: int<br /><br /> StatusReason: string|
 |string context.Response.Headers.GetValueOrDefault(headerName: string, defaultValue: string)|headerName: string<br /><br /> defaultValue: string<br /><br /> Gibt durch Trennzeichen getrennte Antwortheaderwerte oder `defaultValue` zurück, wenn der Header nicht gefunden wurde.|
-|context.Subscription|CreatedTime: DateTime<br /><br /> EndDate: DateTime?<br /><br /> Id: string<br /><br /> Key: string<br /><br /> Name: string<br /><br /> PrimaryKey: string<br /><br /> SecondaryKey: string<br /><br /> StartDate: DateTime?|
-|context.User|Email: string<br /><br /> FirstName: string<br /><br /> Groups: IEnumerable<IGroup\><br /><br /> Id: string<br /><br /> Identities: IEnumerable<IUserIdentity\><br /><br /> LastName: string<br /><br /> Note: string<br /><br /> RegistrationDate: DateTime|
+|context.Subscription|CreatedTime: Datetime<br /><br /> EndDate: DateTime?<br /><br /> Id: string<br /><br /> Key: string<br /><br /> Name: string<br /><br /> PrimaryKey: string<br /><br /> SecondaryKey: string<br /><br /> StartDate: DateTime?|
+|context.User|Email: string<br /><br /> FirstName: string<br /><br /> Groups: IEnumerable<IGroup\><br /><br /> Id: string<br /><br /> Identities: IEnumerable<IUserIdentity\><br /><br /> LastName: string<br /><br /> Note: string<br /><br /> RegistrationDate: Datetime|
 |IApi|Id: string<br /><br /> Name: string<br /><br /> Path: string<br /><br /> Protocols: IEnumerable<string\><br /><br /> ServiceUrl: IUrl<br /><br /> SubscriptionKeyParameterNames: ISubscriptionKeyParameterNames|
 |IGroup|Id: string<br /><br /> Name: string|
 |IMessageBody|As<T\>(preserveContent: bool = false): Where T: string, JObject, JToken, JArray, XNode, XElement, XDocument<br /><br /> Mit der `context.Request.Body.As<T>`-Methode und der `context.Response.Body.As<T>`-Methode werden ein Anforderungs- und ein Antwortnachrichtentext in einem angegebenen Typ `T` gelesen. Standardmäßig verwendet die Methode den Datenstrom des Originalnachrichtentexts und sorgt dafür, dass er nach seiner Rückgabe nicht mehr verfügbar ist. Wenn dies vermieden werden und die Methode eine Kopie des Textdatenstroms verarbeiten soll, legen Sie den `preserveContent`-Parameter auf `true` fest. Ein Beispiel finden Sie [hier](api-management-transformation-policies.md#SetBody).|
@@ -242,7 +242,8 @@ Eine Variable namens `context` steht implizit in jedem [Richtlinienausdruck](api
 |byte[] Encrypt(input: this byte[], alg: System.Security.Cryptography.SymmetricAlgorithm, key:byte[], iv:byte[])|input - zu verschlüsselnder Klartext<br /><br />alg - Verschlüsselungsalgorithmus<br /><br />key - Verschlüsselungsschlüssel<br /><br />iv - Initialisierungsvektor<br /><br />Gibt verschlüsselten Klartext zurück.|
 |byte[] Decrypt(input: this byte[], alg: string, key:byte[], iv:byte[])|input - zu entschlüsselnder Verschlüsselungstext<br /><br />alg - Name eines symmetrischen Verschlüsselungsalgorithmus<br /><br />key - Verschlüsselungsschlüssel<br /><br />iv - Initialisierungsvektor<br /><br />Gibt Klartext zurück.|
 |byte[] Decrypt(input: this byte[], alg: System.Security.Cryptography.SymmetricAlgorithm)|input - zu entschlüsselnder Verschlüsselungstext<br /><br />alg - Verschlüsselungsalgorithmus<br /><br />Gibt Klartext zurück.|
-|byte[] Decrypt(input: this byte[], alg: System.Security.Cryptography.SymmetricAlgorithm, key:byte[], iv:byte[])|input - Eingabe – zu entschlüsselnder Verschlüsselungstext<br /><br />alg - Verschlüsselungsalgorithmus<br /><br />key - Verschlüsselungsschlüssel<br /><br />iv - Initialisierungsvektor<br /><br />Gibt Klartext zurück.|
+|byte[] Decrypt(input: this byte[], alg: System.Security.Cryptography.SymmetricAlgorithm, key:byte[], iv:byte[])|input - zu entschlüsselnder Verschlüsselungstext<br /><br />alg - Verschlüsselungsalgorithmus<br /><br />key - Verschlüsselungsschlüssel<br /><br />iv - Initialisierungsvektor<br /><br />Gibt Klartext zurück.|
+|bool VerifyNoRevocation(input: this System.Security.Cryptography.X509Certificates.X509Certificate2)|Führt eine X.509-Kettenüberprüfung ohne Überprüfung des Zertifikatsperrungsstatus aus.<br /><br />Eingabe: Zertifikatobjekt<br /><br />Gibt `true` zurück, wenn die Überprüfung erfolgreich ist, `false`, wenn die Validierung fehlschlägt.|
 
 
 ## <a name="next-steps"></a>Nächste Schritte

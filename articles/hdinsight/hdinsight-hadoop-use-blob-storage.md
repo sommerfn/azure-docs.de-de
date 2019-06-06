@@ -7,12 +7,12 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 04/23/2019
-ms.openlocfilehash: 24e0b61dfd9950a5c5990f8341e32d048453c5d6
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 6e0192029decef95dcaecc0c60dce5fd5b6f99ff
+ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64689580"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66479906"
 ---
 # <a name="use-azure-storage-with-azure-hdinsight-clusters"></a>Verwenden von Azure Storage mit Azure HDInsight-Clustern
 
@@ -53,7 +53,7 @@ HDInsight bietet Zugang zum verteilten Dateisystem, das lokal an die Rechenknote
 
 Zusätzlich bietet HDInsight die Möglichkeit, auf die in Azure Storage gespeicherten Daten zuzugreifen. Die Syntax ist:
 
-    wasb[s]://<containername>@<accountname>.blob.core.windows.net/<path>
+    wasb://<containername>@<accountname>.blob.core.windows.net/<path>
 
 Hier sind einige Aspekte beim Verwenden eines Azure Storage-Kontos mit HDInsight-Clustern.
 
@@ -96,7 +96,7 @@ Bestimmte MapReduce-Aufträge und -Pakete können zu Zwischenergebnissen führen
 Das URI-Schema für den Zugriff auf Dateien in Azure-Speicher aus HDInsight lautet:
 
 ```config
-wasb[s]://<BlobStorageContainerName>@<StorageAccountName>.blob.core.windows.net/<path>
+wasb://<BlobStorageContainerName>@<StorageAccountName>.blob.core.windows.net/<path>
 ```
 
 Das URI-Schema bietet unverschlüsselten Zugriff (mit dem Präfix *wasb:* ) wie auch SSL-verschlüsselten Zugriff (mit *wasbs*). Wir empfehlen die Verwendung von *wasbs* , und zwar auch für den Zugriff auf Daten, die sich in Azure in derselben Region befinden.
