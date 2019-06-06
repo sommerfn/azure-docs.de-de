@@ -3,19 +3,19 @@ title: Sprachunterstützung – Textübersetzungs-API
 titleSuffix: Azure Cognitive Services
 description: Eine Liste der von der Textübersetzungs-API unterstützten natürlichen Sprachen.
 services: cognitive-services
-author: v-pawal
+author: rajdeep-in
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: reference
-ms.date: 02/21/2019
-ms.author: v-jansko
-ms.openlocfilehash: 8de9d7e6aac052ca24f1eef5f99c3146029bddbb
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.date: 06/04/2019
+ms.author: v-pawal
+ms.openlocfilehash: 924324b11f49a50bfb5f00e117b33c0cc572e3bb
+ms.sourcegitcommit: adb6c981eba06f3b258b697251d7f87489a5da33
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64690147"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66514979"
 ---
 # <a name="language-and-region-support-for-the-translator-text-api"></a>Sprach- und Regionsunterstützung für die Textübersetzungs-API
 
@@ -35,7 +35,7 @@ Die Textübersetzungs-API unterstützt die folgenden Sprachen für die Übersetz
 * Neuronales System als Standard: Das neuronale System ist als standardmäßiges Übersetzungssystem festgelegt. Verwenden Sie den Parameter `category=smt`, um auf das statistische System zur Verwendung mit Microsoft Translator Hub zuzugreifen.
 * Nur neuronales System: Es ist nur die neuronale Übersetzung verfügbar.
 
-**V3 der Textübersetzungs-API**: Version 3 der Textübersetzungs-API verwendet standardmäßig das neuronale System. Die statistischen Systeme sind nur verfügbar, wenn keine neuronalen Systeme vorhanden sind. 
+**V3 der Textübersetzungs-API**: Version 3 der Textübersetzungs-API verwendet standardmäßig das neuronale System. Die statistischen Systeme sind nur verfügbar, wenn keine neuronalen Systeme vorhanden sind.
 
 > [!NOTE]
 > Derzeit ist eine Teilmenge der neuronalen Sprachen in Custom Translator verfügbar und es werden nach und nach zusätzliche Sprachen hinzugefügt. [Zeigen Sie die zurzeit verfügbaren Sprachen im benutzerdefinierten Translator an](#customization).
@@ -213,6 +213,7 @@ Die folgenden Sprachen sind für die Anpassung an das Englische oder aus dem Eng
 | Bosnisch (Lateinisch)      | `bs`          |
 | Bulgarisch      | `bg`          |
 | Chinesisch (vereinfacht)      | `zh-Hans`          |
+|Chinesisch (traditionell)|   `zh-Hant`   |
 | Kroatisch      | `hr`          |
 | Tschechisch      | `cs`          |
 | Dänisch      | `da`          |
