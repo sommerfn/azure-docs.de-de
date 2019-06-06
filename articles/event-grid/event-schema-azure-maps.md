@@ -104,7 +104,7 @@ Ein Ereignis weist die folgenden Daten auf oberster Ebene aus:
 
 | Eigenschaft | Typ | BESCHREIBUNG |
 | -------- | ---- | ----------- |
-| Thema | Zeichenfolge | Vollständiger Ressourcenpfad zu der Ereignisquelle. Dieses Feld ist nicht beschreibbar. Dieser Wert wird von Event Grid bereitgestellt. |
+| topic | Zeichenfolge | Vollständiger Ressourcenpfad zu der Ereignisquelle. Dieses Feld ist nicht beschreibbar. Dieser Wert wird von Event Grid bereitgestellt. |
 | subject | Zeichenfolge | Vom Herausgeber definierter Pfad zum Ereignisbetreff |
 | eventType | Zeichenfolge | Einer der registrierten Ereignistypen für die Ereignisquelle. |
 | eventTime | Zeichenfolge | Die Zeit, in der das Ereignis generiert wird, basierend auf der UTC-Zeit des Anbieters. |
@@ -121,7 +121,7 @@ Das Datenobjekt weist die folgenden Eigenschaften auf:
 | apiName | Zeichenfolge | API-Name des Ereignisses. |
 | issues | object | Listet während der Verarbeitung aufgetretene Probleme auf. Wenn Probleme zurückgegeben werden, werden mit der Antwort keine Geometrien zurückgegeben. |
 | responseCode | number | HTTP-Antwortcode |
-| Geometrien | object | Listet die Zaungeometrien auf, die die Koordinatenposition enthalten oder sich mit dem searchBuffer überschneiden, der die Position umgibt. |
+| geometries | object | Listet die Zaungeometrien auf, die die Koordinatenposition enthalten oder sich mit dem searchBuffer überschneiden, der die Position umgibt. |
 
 Das Fehlerobjekt wird zurückgegeben, wenn in der Maps-API ein Fehler auftritt. Das Fehlerobjekt hat die folgenden Eigenschaften:
 
@@ -134,7 +134,7 @@ Das ErrorDetails-Objekt wird zurückgegeben, wenn in der Maps-API ein Fehler auf
 | Eigenschaft | Typ | BESCHREIBUNG |
 | -------- | ---- | ----------- |
 | code | Zeichenfolge | Der HTTP-Statuscode. |
-| Message: | Zeichenfolge | Sofern verfügbar eine lesbare Beschreibung des Fehlers. |
+| message | Zeichenfolge | Sofern verfügbar eine lesbare Beschreibung des Fehlers. |
 | innererror | InnerError | Sofern verfügbar ein Objekt, das dienstspezifische Informationen zum Fehler enthält. |
 
 InnerError ist ein Objekt, das dienstspezifische Informationen zum Fehler enthält. Das InnerError-Objekt weist die folgenden Eigenschaften auf: 
