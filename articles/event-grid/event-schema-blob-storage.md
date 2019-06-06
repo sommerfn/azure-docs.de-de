@@ -90,7 +90,7 @@ Ein Ereignis weist die folgenden Daten auf oberster Ebene aus:
 
 | Eigenschaft | Typ | BESCHREIBUNG |
 | -------- | ---- | ----------- |
-| Thema | Zeichenfolge | Vollständiger Ressourcenpfad zu der Ereignisquelle. Dieses Feld ist nicht beschreibbar. Dieser Wert wird von Event Grid bereitgestellt. |
+| topic | Zeichenfolge | Vollständiger Ressourcenpfad zu der Ereignisquelle. Dieses Feld ist nicht beschreibbar. Dieser Wert wird von Event Grid bereitgestellt. |
 | subject | Zeichenfolge | Vom Herausgeber definierter Pfad zum Ereignisbetreff |
 | eventType | Zeichenfolge | Einer der registrierten Ereignistypen für die Ereignisquelle. |
 | eventTime | Zeichenfolge | Die Zeit, in der das Ereignis generiert wird, basierend auf der UTC-Zeit des Anbieters. |
@@ -110,7 +110,7 @@ Das Datenobjekt weist die folgenden Eigenschaften auf:
 | contentType | Zeichenfolge | Der für das Blob angegebene Inhaltstyp. |
 | contentLength | integer | Die Größe des Blobs in Byte. |
 | blobType | Zeichenfolge | Der Blobtyp. Gültige Werte sind „BlockBlob“ oder „PageBlob“. |
-| URL | Zeichenfolge | Der Pfad des Blobs. |
+| url | Zeichenfolge | Der Pfad des Blobs. |
 | sequencer | Zeichenfolge | Ein vom Benutzer festgelegter Wert, mit dem Sie Anforderungen nachverfolgen können. |
 | storageDiagnostics | object | Informationen zur Speicherdiagnose. |
  
