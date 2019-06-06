@@ -157,7 +157,7 @@ Ein Ereignis weist die folgenden Daten auf oberster Ebene aus:
 
 | Eigenschaft | Typ | BESCHREIBUNG |
 | -------- | ---- | ----------- |
-| Thema | Zeichenfolge | Vollständiger Ressourcenpfad zu der Ereignisquelle. Dieses Feld ist nicht beschreibbar. Dieser Wert wird von Event Grid bereitgestellt. |
+| topic | Zeichenfolge | Vollständiger Ressourcenpfad zu der Ereignisquelle. Dieses Feld ist nicht beschreibbar. Dieser Wert wird von Event Grid bereitgestellt. |
 | subject | Zeichenfolge | Vom Herausgeber definierter Pfad zum Ereignisbetreff |
 | eventType | Zeichenfolge | Einer der registrierten Ereignistypen für die Ereignisquelle. |
 | eventTime | Zeichenfolge | Die Zeit, in der das Ereignis generiert wird, basierend auf der UTC-Zeit des Anbieters. |
@@ -173,7 +173,7 @@ Das Datenobjekt weist die folgenden Eigenschaften auf:
 | id | Zeichenfolge | Die Ereignis-ID. |
 | timestamp | Zeichenfolge | Der Zeitpunkt, an dem das Ereignis aufgetreten ist. |
 | action | Zeichenfolge | Die Aktion, die das angegebene Ereignis umfasst. |
-| Ziel | object | Das Ziel des Ereignisses. |
+| target | object | Das Ziel des Ereignisses. |
 | request | object | Die Anforderung, die das Ereignis generiert hat. |
 
 Das Zielobjekt weist die folgenden Eigenschaften auf:
@@ -187,7 +187,7 @@ Das Zielobjekt weist die folgenden Eigenschaften auf:
 | repository | Zeichenfolge | Der Name des Repositorys. |
 | tag | Zeichenfolge | Der Tagname. |
 | name | Zeichenfolge | Der Diagrammname. |
-| Version | Zeichenfolge | Die Diagrammversion. |
+| version | Zeichenfolge | Die Diagrammversion. |
 
 Das Anforderungsobjekt weist die folgenden Eigenschaften auf:
 
