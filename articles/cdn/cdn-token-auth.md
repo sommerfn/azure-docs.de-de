@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: integration
 ms.date: 11/17/2017
 ms.author: mezha
-ms.openlocfilehash: 640c65b1f6995a6c5fb7a3a1fcfeb580aecf5c43
-ms.sourcegitcommit: e7d4881105ef17e6f10e8e11043a31262cfcf3b7
+ms.openlocfilehash: b55685bc9cfdc8c31e6658050be94cbe49062f89
+ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/29/2019
-ms.locfileid: "64869407"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66472155"
 ---
 # <a name="securing-azure-cdn-assets-with-token-authentication"></a>Schützen von Azure CDN-Assets mit Tokenauthentifizierung
 
@@ -173,17 +173,17 @@ Im folgenden Flussdiagramm wird veranschaulicht, wie Azure CDN eine Clientanford
 3. Klicken Sie unter **HTTP Large** auf **Regel-Engine**. Sie verwenden die Regel-Engine, um Pfade zum Anwenden der Funktion zu definieren und die Tokenauthentifizierung sowie weitere Funktionen zur Tokenauthentifizierung zu aktivieren. Weitere Informationen finden Sie unter [Azure CDN-Regel-Engine](cdn-rules-engine-reference.md).
 
    1. Wählen Sie eine vorhandene Regel aus, oder erstellen Sie eine neue Regel, um das Asset oder den Pfad zu definieren, auf das bzw. den Sie die Tokenauthentifizierung anwenden möchten. 
-   2. Zum Aktivieren der Tokenauthentifizierung für eine Regel wählen Sie **[Token Auth](cdn-rules-engine-reference-features.md#token-auth)** aus der Liste **Features** und dann **Aktiviert** aus. Klicken Sie auf **Aktualisieren**, wenn Sie eine Regel aktualisieren, oder auf **Hinzufügen**, wenn Sie eine Regel erstellen.
+   2. Zum Aktivieren der Tokenauthentifizierung für eine Regel wählen Sie **[Token Auth](cdn-verizon-premium-rules-engine-reference-features.md#token-auth)** aus der Liste **Features** und dann **Aktiviert** aus. Klicken Sie auf **Aktualisieren**, wenn Sie eine Regel aktualisieren, oder auf **Hinzufügen**, wenn Sie eine Regel erstellen.
         
       ![Beispiel für die CDN-Regel-Engine: Tokenauthentifizierung aktiviert](./media/cdn-token-auth/cdn-rules-engine-enable2.png)
 
 4. In der Regel-Engine können Sie auch weitere Features im Zusammenhang mit der Tokenauthentifizierung aktivieren. Um die folgenden Features zu aktivieren, wählen Sie sie in der Liste **Features** aus, und wählen Sie dann **Aktiviert** aus.
     
-   - **[Token Auth Denial Code:](cdn-rules-engine-reference-features.md#token-auth-denial-code)** Gibt den Typ der Antwort an, die an einen Benutzer zurückgegeben wird, wenn eine Anforderung abgelehnt wird. Hier festgelegte Regeln setzen den Antwortcode außer Kraft, der im Abschnitt **Custom Denial Handling** auf der Seite für die tokenbasierte Authentifizierung festgelegt wurde.
+   - **[Token Auth Denial Code:](cdn-verizon-premium-rules-engine-reference-features.md#token-auth-denial-code)** Gibt den Typ der Antwort an, die an einen Benutzer zurückgegeben wird, wenn eine Anforderung abgelehnt wird. Hier festgelegte Regeln setzen den Antwortcode außer Kraft, der im Abschnitt **Custom Denial Handling** auf der Seite für die tokenbasierte Authentifizierung festgelegt wurde.
 
-   - **[Token Auth Ignore URL Case:](cdn-rules-engine-reference-features.md#token-auth-ignore-url-case)** Legt fest, ob für die zum Überprüfen des Tokens verwendete URL die Groß-/Kleinschreibung berücksichtigt wird.
+   - **[Token Auth Ignore URL Case:](cdn-verizon-premium-rules-engine-reference-features.md#token-auth-ignore-url-case)** Legt fest, ob für die zum Überprüfen des Tokens verwendete URL die Groß-/Kleinschreibung berücksichtigt wird.
 
-   - **[Token Auth Parameter:](cdn-rules-engine-reference-features.md#token-auth-parameter)** Benennt den Parameter der Abfragezeichenfolge für die Tokenauthentifizierung, der in der angeforderten URL angezeigt wird, um. 
+   - **[Token Auth Parameter:](cdn-verizon-premium-rules-engine-reference-features.md#token-auth-parameter)** Benennt den Parameter der Abfragezeichenfolge für die Tokenauthentifizierung, der in der angeforderten URL angezeigt wird, um. 
         
      ![Beispiel für die CDN-Regel-Engine: Einstellungen der Tokenauthentifizierung](./media/cdn-token-auth/cdn-rules-engine2.png)
 

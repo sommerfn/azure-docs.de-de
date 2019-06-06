@@ -5,14 +5,14 @@ author: luisbosquez
 ms.service: cosmos-db
 ms.subservice: cosmosdb-graph
 ms.topic: quickstart
-ms.date: 01/08/2018
+ms.date: 01/08/2019
 ms.author: lbosq
-ms.openlocfilehash: fa7b9289f4fef6962c896dba72a35088134431d9
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 277755641047bf311e06d17de5fe9d39bcc3b74b
+ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64730114"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66480582"
 ---
 # <a name="quickstart-create-query-and-traverse-an-azure-cosmos-db-graph-database-using-the-gremlin-console"></a>Schnellstart: Erstellen, Abfragen und Durchlaufen einer Azure Cosmos DB-Graphdatenbank mithilfe der Gremlin-Konsole
 
@@ -57,7 +57,7 @@ Außerdem müssen Sie die [Gremlin-Konsole](https://tinkerpop.apache.org/) insta
     ---|---|---
     hosts|[*account-name*.gremlin.cosmos.azure.com]|Der folgende Screenshot zeigt dies. Dies ist der Wert für den Gremlin-URI auf der Seite „Übersicht“ des Azure-Portals (in Winkelklammern mit entferntem Zusatz „:443/“).
     port|443|Legen Sie den Wert 443 fest.
-    username|*Ihr Benutzername*|Die Ressource im Format `/dbs/<db>/colls/<coll>`, wobei `<db>` der Datenbankname und `<coll>` der Sammlungsname ist.
+    userName|*Ihr Benutzername*|Die Ressource im Format `/dbs/<db>/colls/<coll>`, wobei `<db>` der Datenbankname und `<coll>` der Sammlungsname ist.
     password|*Ihr Primärschlüssel*| Siehe zweiten Screenshot unten. Dies ist Ihr Primärschlüssel, den Sie von der Seite „Schlüssel“ des Azure-Portals im Feld „Primärschlüssel“ abrufen können. Verwenden Sie die Schaltfläche „Kopieren“ links vom Feld, um den Wert zu kopieren.
     connectionPool|{enableSsl: true}|Ihre Verbindungspooleinstellung für SSL.
     serializer|{ className: org.apache.tinkerpop.gremlin.<br>driver.ser.GraphSONMessageSerializerV1d0,<br> config: { serializeResultToString: true }}|Legen Sie diesen Wert fest, und löschen Sie alle `\n`-Zeilenumbrüche, wenn Sie den Wert einfügen.

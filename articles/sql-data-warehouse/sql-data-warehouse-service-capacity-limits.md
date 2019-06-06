@@ -2,20 +2,20 @@
 title: Kapazitätslimits – Azure SQL Data Warehouse | Microsoft-Dokumentation
 description: Die maximalen Werte, die für verschiedene Komponenten von Azure SQL Data Warehouse zulässig sind.
 services: sql-data-warehouse
-author: happynicolle
+author: mlee3gsd
 manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
 ms.subservice: design
 ms.date: 11/14/2018
-ms.author: nicw
+ms.author: martinle
 ms.reviewer: igorstan
-ms.openlocfilehash: f3c2ecbb4c83132b674b4c296adc1339027f5215
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: 62213ca1910ff26287bcd398d89fe7f8caf3cfac
+ms.sourcegitcommit: adb6c981eba06f3b258b697251d7f87489a5da33
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65797780"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66514678"
 ---
 # <a name="sql-data-warehouse-capacity-limits"></a>Kapazitätsgrenzen von SQL Data Warehouse
 Die maximalen Werte, die für verschiedene Komponenten von Azure SQL Data Warehouse zulässig sind.
@@ -24,7 +24,7 @@ Die maximalen Werte, die für verschiedene Komponenten von Azure SQL Data Wareho
 | Category (Kategorie) | BESCHREIBUNG | Maximum |
 |:--- |:--- |:--- |
 | [Data Warehouse-Einheiten (DWU)](what-is-a-data-warehouse-unit-dwu-cdwu.md) |Max. DWUs für ein einzelnes SQL Data Warehouse | Gen1: DW6000<br></br>Gen2: DW30000c |
-| [Data Warehouse-Einheiten (DWU)](what-is-a-data-warehouse-unit-dwu-cdwu.md) |Standard-DTU pro Server |54.000<br></br>Standardmäßig verfügt jede SQL Server-Instanz (z.B. „myserver.database.windows.net“) über ein Kontingent von 54.000 DTUs, das bis zu DW6000c zulässt. Bei diesem Kontingentwert handelt es sich einfach um ein Sicherheitslimit. Sie können Ihr Kontingent erhöhen, indem Sie [ein Supportticket erstellen](sql-data-warehouse-get-started-create-support-ticket.md) und als Anfragetyp *Kontingent* auswählen.  Multiplizieren Sie zum Berechnen Ihrer DTU-Anforderungen die Anzahl der insgesamt benötigten DWUs mit 7,5, oder multiplizieren Sie die erforderlichen cDWUs mit 9,0. Beispiel: <br></br>DW6000 x 7,5 = 45.000 DTUs<br></br>DW6000c x 9.0 = 54.000 DTUs<br></br>Sie können den aktuellen DTU-Verbrauch im Portal über die Option „SQL-Server“ anzeigen. Sowohl angehaltene als auch nicht angehaltene Datenbanken werden in das DTU-Kontingent eingerechnet. |
+| [Data Warehouse-Einheiten (DWU)](what-is-a-data-warehouse-unit-dwu-cdwu.md) |Standard-DTU pro Server |54.000<br></br>Standardmäßig verfügt jede SQL Server-Instanz (z.B. „myserver.database.windows.net“) über ein Kontingent von 54.000 DTUs, das bis zu DW6000c zulässt. Bei diesem Kontingentwert handelt es sich einfach um ein Sicherheitslimit. Sie können Ihr Kontingent erhöhen, indem Sie [ein Supportticket erstellen](sql-data-warehouse-get-started-create-support-ticket.md) und als Anfragetyp *Kontingent* auswählen.  Multiplizieren Sie zum Berechnen Ihrer DTU-Anforderungen die Anzahl der insgesamt benötigten DWUs mit 7,5, oder multiplizieren Sie die erforderlichen cDWUs mit 9,0. Beispiel:<br></br>DW6000 x 7,5 = 45.000 DTUs<br></br>DW6000c x 9.0 = 54.000 DTUs<br></br>Sie können den aktuellen DTU-Verbrauch im Portal über die Option „SQL-Server“ anzeigen. Sowohl angehaltene als auch nicht angehaltene Datenbanken werden in das DTU-Kontingent eingerechnet. |
 | Datenbankverbindung |Maximale Anzahl gleichzeitig geöffneter Sitzungen |1024<br/><br/>Die Anzahl der gleichzeitig geöffneten Sitzungen variiert je nach ausgewählter DWU. DWU600c und höher unterstützt maximal 1024 offene Sitzungen. DWU500c und darunter unterstützt maximal 512 gleichzeitig geöffnete Sitzungen. Beachten Sie, dass die Anzahl der Abfragen begrenzt ist, die gleichzeitig ausgeführt werden können. Wenn der Grenzwert überschritten wird, gelangt die Anforderung in eine interne Warteschlange, in der sie auf die Verarbeitung wartet. |
 | Datenbankverbindung |Maximaler Arbeitsspeicher für vorbereitete Anweisungen |20 MB |
 | [Workloadverwaltung](resource-classes-for-workload-management.md) |Maximale Anzahl gleichzeitiger Abfragen |128<br/><br/> SQL Data Warehouse kann maximal 128 gleichzeitige Abfragen ausführen. Darüber hinausgehende Abfragen werden in eine Warteschlange eingereiht.<br/><br/>Die Anzahl der gleichzeitigen Abfragen kann abnehmen, wenn Benutzern höhere Ressourcenklassen zugeordnet werden oder wenn SQL Data Warehouse eine niedrigere Einstellung für [Data Warehouse-Einheit](memory-and-concurrency-limits.md) aufweist. Ausführungen einiger Abfragen, z.B. DMV-Abfragen, sind immer zulässig und haben keine Auswirkungen auf das Limit für gleichzeitige Abfragen. Ausführlichere Informationen zur Ausführung gleichzeitiger Abfragen finden Sie im Artikel zu [Parallelitätshöchstwerten](memory-and-concurrency-limits.md#concurrency-maximums). |

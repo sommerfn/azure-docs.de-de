@@ -5,15 +5,15 @@ services: azure-policy
 author: DCtheGeek
 ms.service: azure-policy
 ms.topic: include
-ms.date: 09/18/2018
+ms.date: 05/30/2019
 ms.author: dacoulte
 ms.custom: include file
-ms.openlocfilehash: 57cec39bde460c6079091490acf541761c61e003
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.openlocfilehash: 7907504401f4b47aafe6032ea895d9647e6c303c
+ms.sourcegitcommit: c05618a257787af6f9a2751c549c9a3634832c90
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66119298"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66420799"
 ---
 Für jeden Objekttyp für Azure Policy gilt eine maximale Anzahl. Ein _Scope_-Eintrag (Bereich) gilt entweder für das Abonnement oder die [Verwaltungsgruppe](../articles/governance/management-groups/overview.md).
 
@@ -26,5 +26,5 @@ Für jeden Objekttyp für Azure Policy gilt eine maximale Anzahl. Ein _Scope_-Ei
 | Richtliniendefinition | Parameter | 20 |
 | Initiativdefinition | Richtlinien | 100 |
 | Initiativdefinition | Parameter | 100 |
-| Richtlinien- oder Initiativenzuweisungen | Ausschlüsse (notScopes) | 250 |
+| Richtlinien- oder Initiativenzuweisungen | Ausschlüsse (notScopes) | 400 |
 | Richtlinienregel | Geschachtelte konditionelle Abschnitte | 512 |

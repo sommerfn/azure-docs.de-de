@@ -10,12 +10,12 @@ ms.subservice: bing-image-search
 ms.topic: article
 ms.date: 03/04/2019
 ms.author: aahi
-ms.openlocfilehash: 57a96648e480c89d1112f069676edb1abcc7cfc3
-ms.sourcegitcommit: e7d4881105ef17e6f10e8e11043a31262cfcf3b7
+ms.openlocfilehash: 6f4c354c89fa00d5fc65c635f5f6315761be2f01
+ms.sourcegitcommit: 3d4121badd265e99d1177a7c78edfa55ed7a9626
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/29/2019
-ms.locfileid: "64869853"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66384144"
 ---
 # <a name="language-and-region-support-for-the-bing-image-search-api"></a>Sprach- und Regionsunterstützung für die Bing-Bildersuche-API
 
@@ -119,4 +119,4 @@ Alternativ können Sie das Land/die Region mit dem `cc`-Abfrageparameter angeben
 |USA|Spanisch|es-US|
 
 ## <a name="next-steps"></a>Nächste Schritte
-Weitere Informationen zu den Endpunkten der Bing-News-Suche finden Sie unter [Referenz zur News-Bildersuche-API v7](https://docs.microsoft.com/rest/api/cognitiveservices/bing-images-api-v7-reference).
+Weitere Informationen zu den Endpunkten der Bing-News-Suche finden Sie unter [Referenz zur News-Bildersuche-API v7](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference).

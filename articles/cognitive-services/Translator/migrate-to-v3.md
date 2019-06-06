@@ -3,19 +3,19 @@ title: Migrieren zu Version 3 – Textübersetzungs-API
 titlesuffix: Azure Cognitive Services
 description: Erfahren Sie, wie Sie von V2 zu V3 der Text-API von Microsoft Translator migrieren.
 services: cognitive-services
-author: v-pawal
+author: rajdeep-in
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: conceptual
 ms.date: 02/01/2019
-ms.author: v-jansko
-ms.openlocfilehash: fa1733ddd70de3f8ef93452a880094ccf8b9ef56
-ms.sourcegitcommit: 807c318f5c034f8256f91c241e9d6f8f4d7de90a
+ms.author: v-pawal
+ms.openlocfilehash: 81b2e5c9c659a3811d7417d87b811a86f4350a52
+ms.sourcegitcommit: 3d4121badd265e99d1177a7c78edfa55ed7a9626
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64951477"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66382915"
 ---
 # <a name="translator-text-api-v2-to-v3-migration"></a>Migration der Textübersetzungs-API von Version 2 zu Version 3
 

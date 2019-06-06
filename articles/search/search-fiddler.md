@@ -10,12 +10,12 @@ ms.topic: quickstart
 ms.date: 05/16/2019
 ms.author: heidist
 ms.custom: seodec2018
-ms.openlocfilehash: bd3b9fe80a57a6a0dd824d92ae14a863ced240b2
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: eaf594286e5ffc101ad2d24e808fcb806998d053
+ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65793541"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66471563"
 ---
 # <a name="quickstart-explore-azure-search-rest-apis-using-postman"></a>Schnellstart: Erkunden von Azure Search-REST-APIs mit Postman
 > [!div class="op_single_selector"]
@@ -73,13 +73,13 @@ Formulieren Sie in Postman eine Anforderung, die wie auf dem folgenden Screensho
 
 In Azure Search wird der Index für gewöhnlich vor dem Laden von Daten erstellt. Für diese Aufgabe wird die [REST-API für die Indexerstellung](https://docs.microsoft.com/rest/api/searchservice/create-index) verwendet. 
 
-Die URL wird um den Indexnamen `hotel` erweitert.
+Die URL wird um den Indexnamen `hotels` erweitert.
 
 Gehen Sie dazu in Postman wie folgt vor:
 
 1. Ändern Sie das Verb in **PUT**.
 
-2. Fügen Sie diese URL ein: `https://<YOUR-SEARCH-SERVICE-NAME>.search.windows.net/indexes/hotel?api-version=2019-05-06`.
+2. Fügen Sie diese URL ein: `https://<YOUR-SEARCH-SERVICE-NAME>.search.windows.net/indexes/hotels?api-version=2019-05-06`.
 
 3. Geben Sie die (weiter unten dargestellte) Indexdefinition im Text der Anforderung an.
 
@@ -257,7 +257,7 @@ Fügen Sie für das Ziel eine geänderte Version der folgenden URL ein: `https:/
 
 ### <a name="1---create-an-index"></a>1. Erstellen eines Index
 
-Ändern Sie das Verb in **PUT**. Fügen Sie eine geänderte Version der folgenden URL ein: `https://<YOUR-SEARCH-SERVICE-NAME>.search.windows.net/indexes/hotel?api-version=2019-05-06`. Kopieren Sie die weiter oben bereitgestellte Indexdefinition, und fügen Sie sie in den Text der Anforderung ein. Ihre Seite sollte in etwa dem folgenden Screenshot entsprechen. Klicken Sie rechts oben auf **Ausführen**, um die fertige Anforderung zu senden.
+Ändern Sie das Verb in **PUT**. Fügen Sie eine geänderte Version der folgenden URL ein: `https://<YOUR-SEARCH-SERVICE-NAME>.search.windows.net/indexes/hotels?api-version=2019-05-06`. Kopieren Sie die weiter oben bereitgestellte Indexdefinition, und fügen Sie sie in den Text der Anforderung ein. Ihre Seite sollte in etwa dem folgenden Screenshot entsprechen. Klicken Sie rechts oben auf **Ausführen**, um die fertige Anforderung zu senden.
 
 ![Fiddler-Anforderungstext][7]
 

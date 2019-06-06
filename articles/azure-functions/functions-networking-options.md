@@ -8,12 +8,12 @@ ms.service: azure-functions
 ms.topic: conceptual
 ms.date: 4/11/2019
 ms.author: alkarche
-ms.openlocfilehash: 49f89d39b3b917ec6357b241d7c413c2790eca25
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: f13e498859986d5ee697cbd67907fd344147ed0c
+ms.sourcegitcommit: 600d5b140dae979f029c43c033757652cddc2029
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64575604"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66492834"
 ---
 # <a name="azure-functions-networking-options"></a>Netzwerkoptionen von Azure Functions
 
@@ -61,7 +61,7 @@ Die Integration des virtuellen Netzwerks ermöglicht Ihrer Funktions-App den Zug
 
 Mithilfe der Integration des virtuellen Netzwerks kann der Zugriff von Apps auf Datenbanken und Webdienste im virtuellen Netzwerk ermöglicht werden. Mit der Integration des virtuellen Netzwerks müssen Sie keinen öffentlichen Endpunkt für Anwendungen auf Ihrem virtuellen Computer verfügbar machen. Stattdessen können Sie die privaten Adressen verwenden, die nicht über das Internet geroutet werden.
 
-Die allgemein verfügbare Version der Integration des virtuellen Netzwerks beruht auf einem VPN-Gateway zum Verbinden von Funktions-Apps mit einem virtuellen Netzwerk. Sie ist verfügbar, wenn Functions unter einem App Service-Plan gehostet wird. Informationen zum Konfigurieren der Funktion finden Sie unter [Integrieren Ihrer App in ein virtuelles Azure-Netzwerk](../app-service/web-sites-integrate-with-vnet.md#enabling-vnet-integration).
+Die allgemein verfügbare Version der Integration des virtuellen Netzwerks beruht auf einem VPN-Gateway zum Verbinden von Funktions-Apps mit einem virtuellen Netzwerk. Sie ist verfügbar, wenn Functions unter einem App Service-Plan gehostet wird. Informationen zum Konfigurieren der Funktion finden Sie unter [Integrieren Ihrer App in ein virtuelles Azure-Netzwerk](../app-service/web-sites-integrate-with-vnet.md).
 
 ### <a name="preview-version-of-virtual-network-integration"></a>Vorschauversion der Integration des virtuellen Netzwerks
 

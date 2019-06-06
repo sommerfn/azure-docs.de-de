@@ -7,12 +7,12 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 04/08/2019
-ms.openlocfilehash: 2724451d44a793023f7b69196b186f68f6fc6a26
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 320b8f948d08e46c43085e174dfbe838f44bac79
+ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64720467"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66479159"
 ---
 # <a name="compare-storage-options-for-use-with-azure-hdinsight-clusters"></a>Vergleich der Speicheroptionen für die Verwendung mit Azure HDInsight-Clustern
 
@@ -137,7 +137,7 @@ HDInsight bietet Zugang zum verteilten Dateisystem, das lokal an die Rechenknote
 
 Mit HDInsight können Sie auch auf Daten in Azure Storage zugreifen. Die Syntax lautet wie folgt:
 
-    wasb[s]://<containername>@<accountname>.blob.core.windows.net/<path>
+    wasb://<containername>@<accountname>.blob.core.windows.net/<path>
 
 Berücksichtigen Sie die folgenden Prinzipien, wenn Sie ein Azure Storage-Konto mit HDInsight-Clustern verwenden:
 
