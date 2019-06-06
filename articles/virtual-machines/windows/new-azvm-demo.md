@@ -16,12 +16,12 @@ ms.workload: infrastructure
 ms.date: 12/12/2017
 ms.author: cynthn
 ROBOTS: NOINDEX
-ms.openlocfilehash: 02f2bd78ca5656534b106c6f7f18c05165b4b9ff
-ms.sourcegitcommit: f0f21b9b6f2b820bd3736f4ec5c04b65bdbf4236
+ms.openlocfilehash: cdf7385b3686c5c3f91e66c67ab5f0758935b39f
+ms.sourcegitcommit: 1aefdf876c95bf6c07b12eb8c5fab98e92948000
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58444499"
+ms.lasthandoff: 06/06/2019
+ms.locfileid: "66730130"
 ---
 # <a name="create-a-windows-virtual-machine-with-the-simplified-new-azvm-cmdlet-in-cloud-shell"></a>Erstellen eines virtuellen Windows-Computers mithilfe des vereinfachten Cmdlets „New-AzVM“ in Cloud Shell 
 
@@ -29,9 +29,9 @@ Das Cmdlet [New-AzVM](https://docs.microsoft.com/powershell/module/az.compute/ne
 
 Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) erstellen, bevor Sie beginnen.
 
-[!INCLUDE [updated-for-az-vm.md](../../../includes/updated-for-az-vm.md)]
+[!INCLUDE [updated-for-az.md](../../../includes/updated-for-az.md)]
 
-[!INCLUDE [cloud-shell-powershell](../../../includes/cloud-shell-powershell.md)]
+[!INCLUDE [cloud-shell-try-it](../../../includes/cloud-shell-try-it.md)]
 
 
 ## <a name="create-the-vm"></a>Erstellen des virtuellen Computers

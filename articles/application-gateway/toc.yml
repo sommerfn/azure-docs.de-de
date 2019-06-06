@@ -73,6 +73,8 @@
           href: waf-overview.md
         - name: WAF-Konfiguration
           href: application-gateway-waf-configuration.md
+        - name: Benutzerdefinierte Regeln
+          href: custom-waf-rules-overview.md
     - name: Systemüberwachung
       items:
         - name: Integritätstest
@@ -141,6 +143,12 @@
           href: application-gateway-customize-waf-rules-powershell.md
         - name: Azure-Befehlszeilenschnittstelle
           href: application-gateway-customize-waf-rules-cli.md
+    - name: Benutzerdefinierte WAF-Regeln
+      items:
+        - name: Beispiele für benutzerdefinierte Regeln
+          href: create-custom-waf-rules.md
+        - name: Konfigurieren der WAF mit benutzerdefinierten Regeln
+          href: configure-waf-custom-rules.md
     - name: Weiterleiten nach URL
       items:
         - name: Azure PowerShell

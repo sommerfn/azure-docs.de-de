@@ -188,6 +188,10 @@
           href: howto-configure-server-parameters-using-portal.md
         - name: Azure-Befehlszeilenschnittstelle
           href: howto-configure-server-parameters-using-cli.md
+    - name: Automatisches Vergrößern des Speichers
+      items:
+        - name: Azure-Portal
+          href: howto-auto-grow-storage-portal.md
     - name: Zugreifen auf Serverprotokolle
       items:
         - name: Azure-Portal

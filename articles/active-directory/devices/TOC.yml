@@ -1,8 +1,8 @@
-- name: Dokumentation zur Geräteverwaltung
+- name: Dokumentation zu Geräteidentitäten
   href: index.yml
 - name: Übersicht
   items:
-    - name: Was ist Geräteverwaltung in Azure AD?
+    - name: Was ist eine Geräteidentität?
       href: overview.md
     - name: Was ist Enterprise State Roaming?
       href: enterprise-state-roaming-overview.md
@@ -29,7 +29,7 @@
 - name: Anleitungen
   expanded: true
   items:
-    - name: Verwalten von Geräten mithilfe des Azure-Portals
+    - name: Verwalten der Geräteidentität
       href: device-management-azure-portal.md
     - name: Verwalten von veralteten Geräten
       href: manage-stale-devices.md

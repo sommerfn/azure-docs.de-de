@@ -10,18 +10,18 @@ reviewer: jasonwhowell, kfile, tsidocs
 ms.devlang: csharp
 ms.workload: big-data
 ms.topic: conceptual
-ms.date: 05/09/2019
+ms.date: 06/05/2019
 ms.custom: seodec18
-ms.openlocfilehash: e91c6fb4949a4902194bb95f98e49327434cdbfd
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.openlocfilehash: 250dd691c3ef3146d6768123de52bf0628b10e42
+ms.sourcegitcommit: 1aefdf876c95bf6c07b12eb8c5fab98e92948000
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/27/2019
-ms.locfileid: "66244110"
+ms.lasthandoff: 06/06/2019
+ms.locfileid: "66728963"
 ---
 # <a name="query-data-from-the-azure-time-series-insights-ga-environment-using-c"></a>Abfragen von Daten aus der Azure Time Series Insights GA-Umgebung mit C#
 
-In diesem C#-Beispiel wird gezeigt, wie Sie Daten aus der Azure Time Series Insights GA-Umgebung abfragen können. 
+In diesem C#-Beispiel wird gezeigt, wie Sie Daten aus der Azure Time Series Insights GA-Umgebung abfragen können.
 
 Das Beispiel zeigt einige einfache Beispiele für die Verwendung der Abfrage-API:
 
@@ -31,7 +31,7 @@ Das Beispiel zeigt einige einfache Beispiele für die Verwendung der Abfrage-API
 1. Als Beispiel für eine Websocketanforderung werden aggregierte Ereignisdaten für die relevante Umgebung abgefragt. Daten werden für den gesamten Verfügbarkeitszeitbereich abgefragt.
 
 > [!NOTE]
-> Der Beispielcode ist verfügbar unter [https://github.com/Azure-Samples/Azure-Time-Series-Insights](https://github.com/Azure-Samples/Azure-Time-Series-Insights/tree/master/csharp-ga-preview-sample).
+> Der Beispielcode ist verfügbar unter [https://github.com/Azure-Samples/Azure-Time-Series-Insights](https://github.com/Azure-Samples/Azure-Time-Series-Insights/tree/master/csharp-tsi-ga-sample).
 
 ## <a name="project-dependencies"></a>Projektabhängigkeiten
 
