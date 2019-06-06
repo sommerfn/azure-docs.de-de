@@ -142,10 +142,6 @@
               href: active-directory-certificate-based-authentication-android.md
             - name: CBA auf iOS-Geräten
               href: active-directory-certificate-based-authentication-ios.md
-    - name: Entwickeln
-      items:
-        - name: Integrieren von MFA in benutzerdefinierte Apps
-          href: howto-mfa-sdk.md
     - name: Berichterstellung
       items:
         - name: SSPR-Berichte
