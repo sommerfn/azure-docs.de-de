@@ -3,25 +3,25 @@ title: SAML-SSO (einmaliges Anmelden) für lokale Anwendungen mit dem Azure Acti
 description: Erfahren Sie, wie Sie das einmalige Anmelden für lokale Anwendungen bereitstellen, die über den Anwendungsproxy veröffentlicht und mit der SAML-Authentifizierung gesichert werden.
 services: active-directory
 documentationcenter: ''
-author: CelesteDG
-manager: mtillman
+author: msmimart
+manager: CelesteDG
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 03/12/2019
-ms.author: celested
+ms.date: 05/20/2019
+ms.author: mimart
 ms.reviewer: japere
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2e103604af7aba2a0ef2e3d0e02a721ae4740c40
-ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
+ms.openlocfilehash: 5524576ef21830ae13526dad2d8ac8a1d0864cf1
+ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/11/2019
-ms.locfileid: "59493772"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65956879"
 ---
 # <a name="saml-single-sign-on-for-on-premises-applications-with-application-proxy-preview"></a>SAML-SSO (einmaliges Anmelden) für lokale Anwendungen mit dem Anwendungsproxy (Vorschauversion)
 
@@ -50,8 +50,9 @@ Bedenken Sie bei der Ausführung des Tutorials Folgendes:
 1. Wählen Sie als SSO-Methode die Option **SAML** aus.
 1. Bearbeiten Sie auf der Seite **Einmaliges Anmelden (SSO) mit SAML einrichten** die Daten zu **Grundlegende SAML-Konfiguration**, und befolgen Sie die Anweisungen unter [Eingabe der SAML-Basiskonfiguration](configure-single-sign-on-non-gallery-applications.md#saml-based-single-sign-on), um die SAML-basierte Authentifizierung für die Anwendung zu konfigurieren.
 
-   * Stellen Sie sicher, dass die **Antwort-URL** mit der **externen URL** für die lokale Anwendung, die Sie über den Anwendungsproxy veröffentlicht haben, übereinstimmt oder ein Pfad unter der externen URL ist. Wenn in der Anwendung eine andere **Antwort-URL** für die SAML-Konfiguration erforderlich ist, fügen Sie sie als **erste** URL in der Liste hinzu, und behalten Sie die **externe URL** als zusätzliche URL nach der ersten URL bei.
-   * Stellen Sie sicher, dass in der Anwendung zudem die richtige **Antwort-URL** oder Assertionsverbraucherdienst-URL für den Empfang des Authentifizierungstokens angegeben ist.
+   * Stellen Sie sicher, dass die **Antwort-URL** mit der **externen URL** für die lokale Anwendung, die Sie über den Anwendungsproxy veröffentlicht haben, übereinstimmt oder ein Pfad unter der externen URL ist. 
+   * Wenn Ihre Anwendung eine andere **Antwort-URL** für die SAML-Konfiguration erfordert, fügen Sie diese als **zusätzliche** URL zur Liste hinzu, und aktivieren Sie das nebenstehende Kontrollkästchen, um diese URL als primäre **Antwort-URL** festzulegen, an die IDP-initiierte SAML-Anworten gesendet werden sollen.
+   * Stellen Sie für einen SP-initiierten Flow sicher, dass in der Anwendung auch die richtige **Antwort-URL** oder Assertionsverbraucherdienst-URL für den Empfang des Authentifizierungstokens angegeben ist.
 
      ![Eingabe der SAML-Basiskonfigurationsdaten](./media/application-proxy-configure-single-sign-on-on-premises-apps/basic-saml-configuration.png)
 

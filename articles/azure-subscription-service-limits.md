@@ -8,14 +8,14 @@ tags: billing
 ms.assetid: 60d848f9-ff26-496e-a5ec-ccf92ad7d125
 ms.service: billing
 ms.topic: article
-ms.date: 05/17/2019
+ms.date: 05/30/2019
 ms.author: byvinyal
-ms.openlocfilehash: 3f01e15e4ac39127263c8c68590b6c50be04847d
-ms.sourcegitcommit: e9a46b4d22113655181a3e219d16397367e8492d
+ms.openlocfilehash: 88c40021ff2e974ba16b3b3506ee54b45de90fda
+ms.sourcegitcommit: ef06b169f96297396fc24d97ac4223cabcf9ac33
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/21/2019
-ms.locfileid: "66023221"
+ms.lasthandoff: 05/31/2019
+ms.locfileid: "66427595"
 ---
 # <a name="azure-subscription-and-service-limits-quotas-and-constraints"></a>Einschränkungen für Azure-Abonnements und Dienste, Kontingente und Einschränkungen
 In diesem Dokument sind einige der gängigsten Einschränkungen in Microsoft Azure aufgeführt, die bisweilen auch als „Kontingente“ bezeichnet werden. Dieses Dokument behandelt derzeit nicht alle Azure-Dienste. Mit der Zeit wird diese Liste erweitert, um mehr Dienste abzudecken.
@@ -155,8 +155,6 @@ In der folgenden Tabelle werden die Features und Grenzwerte der [Dienstebenen](.
 
 ### <a name="azure-machine-learning-service-limits"></a>Grenzwerte des Azure Machine Learning-Diensts
 Die aktuellen Werte für Azure Machine Learning Compute-Kontingente finden Sie auf der [Seite „Azure Machine Learning-Kontingent“](../articles/machine-learning/service/how-to-manage-quotas.md)
-
-[!INCLUDE [how-to-manage-quotas](../articles/machine-learning/service/how-to-manage-quotas.md)]
 
 ### <a name="networking-limits"></a>Grenzwerte für Netzwerke
 [!INCLUDE [azure-virtual-network-limits](../includes/azure-virtual-network-limits.md)]

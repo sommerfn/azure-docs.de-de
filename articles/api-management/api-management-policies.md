@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/19/2017
 ms.author: apimpm
-ms.openlocfilehash: ad57f86e221a98461fcd1dc11b92f5665d6128d0
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: e27829fe5ebf57552ef4e97a2bfc7b6aefd81dc8
+ms.sourcegitcommit: 25a60179840b30706429c397991157f27de9e886
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65786444"
+ms.lasthandoff: 05/28/2019
+ms.locfileid: "66254399"
 ---
 # <a name="api-management-policies"></a>Richtlinien für die API-Verwaltung
 Dieser Abschnitt enthält eine Referenz für die folgenden API Management-Richtlinien. Weitere Informationen zum Hinzufügen und Konfigurieren von Richtlinien finden Sie unter [Richtlinien in API Management](api-management-howto-policies.md).  
@@ -39,12 +39,15 @@ Dieser Abschnitt enthält eine Referenz für die folgenden API Management-Richtl
     -   [JWT überprüfen](api-management-access-restriction-policies.md#ValidateJWT) – Erzwingt das Vorhandensein und die Gültigkeit eines JWT, das entweder aus einem angegebenen HTTP-Header oder aus einem angegebenen Abfrageparameter extrahiert wurde.  
 -   [Erweiterte Richtlinien](api-management-advanced-policies.md#AdvancedPolicies)  
     -   [Ablaufsteuerung](api-management-advanced-policies.md#choose) – bedingte Anwendung von Richtlinienanweisungen basierend auf der Auswertung von booleschen Ausdrücken.  
-    -   [Anforderung weiterleiten](api-management-advanced-policies.md#ForwardRequest) – leitet die Anforderung an den Back-End-Dienst.  
-    -   [Protokoll an Event Hub](api-management-advanced-policies.md#log-to-eventhub) – sendet Nachrichten im angegebenen Format an ein von einem Protokollierungstool definiertes Nachrichtenziel.  
+    -   [Anforderung weiterleiten](api-management-advanced-policies.md#ForwardRequest) – leitet die Anforderung an den Back-End-Dienst.
+    -   [Parallelität einschränken:](api-management-advanced-policies.md#LimitConcurrency) verhindert die Ausführung der eingeschlossenen Richtlinien durch mehr als die angegebene Anzahl von Anforderungen gleichzeitig.
+    -   [Protokoll an Event Hub](api-management-advanced-policies.md#log-to-eventhub) – sendet Nachrichten im angegebenen Format an ein von einem Protokollierungstool definiertes Nachrichtenziel.
+    -   [Modellantwort](api-management-advanced-policies.md#mock-response) – bricht die Pipelineausführung ab und gibt die Modellantwort unmittelbar an den Aufrufer zurück.
     -   [Wiederholen](api-management-advanced-policies.md#Retry) – Wiederholt die Ausführung der eingeschlossenen Richtlinienanweisungen, falls und bis die Bedingung erfüllt ist. Die Ausführung wird mit den angegebenen Zeitintervallen und bis zur angegebenen Anzahl der Wiederholungsversuche wiederholt.  
     -   [Zurückgegebene Antwort](api-management-advanced-policies.md#ReturnResponse) – bricht die Pipeline-Ausführung ab und gibt die angegebene Antwort unmittelbar an den Aufrufer zurück.  
     -   [Unidirektionale Anforderung senden](api-management-advanced-policies.md#SendOneWayRequest) – sendet eine Anforderung an die angegebene URL, ohne auf eine Antwort zu warten.  
-    -   [Sendeanforderung](api-management-advanced-policies.md#SendRequest) – sendet eine Anforderung an die angegebene URL.  
+    -   [Sendeanforderung](api-management-advanced-policies.md#SendRequest) – sendet eine Anforderung an die angegebene URL.
+    -   [HTTP-Proxy festlegen](api-management-advanced-policies.md#SetHttpProxy): Sie können weitergeleitete Anforderungen über einen HTTP-Proxy leiten.
     -   [Variable festlegen](api-management-advanced-policies.md#set-variable) – speichert einen Wert in einer benannten Kontextvariablen, um später darauf zugreifen zu können.  
     -   [Anforderungsmethode festlegen](api-management-advanced-policies.md#SetRequestMethod) – dient der Vornahme von Änderungen der HTTP-Anforderungsmethode.  
     -   [Statuscode festlegen](api-management-advanced-policies.md#SetStatus) – Ändert den HTTP-Statuscode in den angegebenen Wert.  

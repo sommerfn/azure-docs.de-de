@@ -10,12 +10,12 @@ ms.topic: article
 ms.date: 02/01/2019
 ms.author: davidmu
 ms.subservice: B2C
-ms.openlocfilehash: e12b3cbcb8f7a433b37c450c84bd34745f68a22d
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 9c08b5b5278045341ed86d987557d03cb46754e6
+ms.sourcegitcommit: 6ea7f0a6e9add35547c77eef26f34d2504796565
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64711505"
+ms.lasthandoff: 05/14/2019
+ms.locfileid: "65601587"
 ---
 # <a name="tutorial-create-user-flows-in-azure-active-directory-b2c"></a>Tutorial: Erstellen von Benutzerflows in Azure Active Directory B2C
 
@@ -76,7 +76,7 @@ Der Benutzerflow für Registrierung und Anmeldung verarbeitet die Benutzeroberfl
 4. Geben Sie eine gültige E-Mail-Adresse ein, klicken Sie auf **Überprüfungscode senden**, und geben Sie den Überprüfungscode ein, den Sie daraufhin erhalten.
 5. Geben Sie ein neues Kennwort ein, und bestätigen Sie es.
 6. Geben Sie den anzuzeigenden Namen ein, wählen Sie das Land und die Region aus, geben Sie eine Postleitzahl ein, und klicken Sie dann auf **Erstellen**. Das Token wird an `https://jwt.ms` zurückgegeben und sollte Ihnen angezeigt werden.
-7. Sie können den Benutzerflow jetzt erneut ausführen. Sie sollten in der Lage sein, sich mit dem Konto, das Sie erstellt haben, anzumelden. Das zurückgegebene Token enthält die Ansprüche, die Sie für Name, Land und Postleitzahl ausgewählt haben.
+7. Sie können den Benutzerflow jetzt erneut ausführen. Sie sollten in der Lage sein, sich mit dem Konto, das Sie erstellt haben, anzumelden. Das zurückgegebene Token enthält die Ansprüche, die Sie für Name, Land/Region und Postleitzahl ausgewählt haben.
 
 ## <a name="create-a-profile-editing-user-flow"></a>Erstellen eines Benutzerflows für die Profilbearbeitung
 

@@ -2,22 +2,22 @@
 title: Endbenutzerumgebungen für Anwendungen – Azure Active Directory | Microsoft-Dokumentation
 description: Azure Active Directory (Azure AD) bietet mehrere anpassbare Möglichkeiten, um Anwendungen für Endbenutzer in Ihrer Organisation bereitzustellen.
 services: active-directory
-author: CelesteDG
-manager: mtillman
+author: msmimart
+manager: CelesteDG
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 11/09/2018
-ms.author: celested
+ms.date: 05/03/2019
+ms.author: mimart
 ms.reviewer: arvindh
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4e00ecde5550b5ef4f1698fa879a039dee8aad12
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 41dde1579fc98db37ab7d92ce362d0a4ce9a82cf
+ms.sourcegitcommit: be9fcaace62709cea55beb49a5bebf4f9701f7c6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58181723"
+ms.lasthandoff: 05/17/2019
+ms.locfileid: "65824572"
 ---
 # <a name="end-user-experiences-for-applications-in-azure-active-directory"></a>Endbenutzerumgebungen für Anwendungen in Azure Active Directory
 Azure Active Directory (Azure AD) bietet mehrere anpassbare Möglichkeiten, um Anwendungen für Endbenutzer in Ihrer Organisation bereitzustellen:
@@ -53,7 +53,9 @@ Die meisten Verbundanwendungen, die SAML 2.0, WS-Verbund oder OpenID Connect unt
 ## <a name="direct-sign-on-links"></a>Links für die direkte Anmeldung
 Azure AD unterstützt auch Direktlinks für die einmalige Anmeldung bei einzelnen Anwendungen, die eine kennwortbasierte einmalige Anmeldung, einmaliges Anmelden über Link und eine beliebige Art der einmaligen Verbundanmeldung unterstützen.
 
-Diese Links sind speziell gestaltete URLs, die einen Benutzer durch den Azure AD-Anmeldevorgang für eine bestimmte Anwendung leiten, ohne dass der Benutzer die Anwendung aus dem Azure AD-Zugriffsbereich oder Office 365 starten muss. Diese **Benutzer-Zugriffs-URLs** finden Sie unter den Eigenschaften von verfügbaren Unternehmensanwendungen unter Azure Active Directory im Azure-Portal.
+Diese Links sind speziell gestaltete URLs, die einen Benutzer durch den Azure AD-Anmeldevorgang für eine bestimmte Anwendung leiten, ohne dass der Benutzer die Anwendung aus dem Azure AD-Zugriffsbereich oder Office 365 starten muss. Diese **Benutzer-Zugriffs-URLs** befinden sich unter den Eigenschaften der verfügbaren Unternehmensanwendungen. Wählen Sie im Azure-Portal **Azure Active Directory** > **Unternehmens-Apps** aus. Wählen Sie die Anwendung und dann **Eigenschaften** aus.
+
+![Beispiel für die Benutzerzugriffs-URL in den Twitter-Eigenschaften](media/end-user-experiences/direct-sign-on-link.png)
 
 Diese Links können Sie kopieren und überall dort einfügen, wo Sie einen Anmeldelink zur ausgewählten Anwendung bereitstellen möchten. Dies kann eine E-Mail oder ein beliebiges benutzerdefiniertes webbasiertes Portal sein, das Sie für den Benutzerzugriff auf eine Anwendung eingerichtet haben. Hier sehen Sie ein Beispiel für eine Azure AD-Direkt-URL zur einmaligen Anmeldung für Twitter:
 
