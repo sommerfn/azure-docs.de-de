@@ -7,14 +7,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: form-recognizer
 ms.topic: overview
-ms.date: 05/28/2019
+ms.date: 05/31/2019
 ms.author: pafarley
-ms.openlocfilehash: f65375bfd826660f8583068875a1fddc545a86d7
-ms.sourcegitcommit: 009334a842d08b1c83ee183b5830092e067f4374
+ms.openlocfilehash: 1c9e68f643f27f70190b5847225692d554cc5480
+ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/29/2019
-ms.locfileid: "66306545"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66475446"
 ---
 # <a name="install-and-run-form-recognizer-containers"></a>Installieren und Ausführen eines Containers für die Formularerkennung
 Die Formularerkennung wendet die Machine Learning-Technologie an, um Schlüssel-Wert-Paare und Tabellen aus Formularen zu identifizieren und zu extrahieren. Diesen werden Werte und Tabelleneinträge zugeordnet, und dann werden strukturierte Daten ausgegeben, die die Beziehungen in der Originaldatei enthalten. Sie können Ihr benutzerdefiniertes Formularerkennungsmodell mithilfe einer einfachen REST-API aufrufen, um die Komplexität zu reduzieren und es einfach in Ihren Prozess zur Workflowautomatisierung oder eine andere Anwendung zu integrieren. Es werden nur fünf Dokumente (oder ein leeres Formular) benötigt, sodass Sie schnell, präzise und auf Ihre spezifischen Inhalte zugeschnittene Ergebnisse ohne komplizierte manuelle Eingriffe oder umfangreiche datenwissenschaftliche Kenntnisse erzielen können. Es sind keine Datenbeschriftungen oder Datenanmerkungen erforderlich.
@@ -114,9 +114,9 @@ Ersetzen Sie im folgenden Beispiel für den Befehl `docker run` diese Parameter 
 
 ```bash
 docker run --rm -it -p 5000:5000 --memory 8g --cpus 2 \
-containerpreview.azurecr.io/microsoft/cognitive-services-form-recognizer \
 --mount type=bind,source=c:\input,target=/input  \
 --mount type=bind,source=c:\output,target=/output \
+containerpreview.azurecr.io/microsoft/cognitive-services-form-recognizer \
 Eula=accept \
 Billing={BILLING_ENDPOINT_URI} \
 ApiKey={BILLING_KEY} \
@@ -142,6 +142,8 @@ Führen Sie den ersten Container an Port 5000 aus.
 
 ```bash 
 docker run --rm -it -p 5000:5000 --memory 4g --cpus 1 \
+--mount type=bind,source=c:\input,target=/input  \
+--mount type=bind,source=c:\output,target=/output \
 containerpreview.azurecr.io/microsoft/cognitive-services-form-recognizer \
 Eula=accept \
 Billing={BILLING_ENDPOINT_URI} \

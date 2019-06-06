@@ -6,15 +6,15 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: tutorial
-ms.date: 04/16/2019
+ms.date: 05/30/2019
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: 588fe452473ddc2434d92f90afbf8a0e1bc8c275
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: 5602298ffe60ad15d3daf52587c50357c310200c
+ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65795766"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66480109"
 ---
 # <a name="set-up-disaster-recovery-for-azure-vms"></a>Einrichten der Notfallwiederherstellung für Azure-VMs
 
@@ -35,7 +35,7 @@ In diesem Tutorial wird erläutert, wie Sie die Notfallwiederherstellung für Az
 
 Für dieses Tutorial benötigen Sie Folgendes:
 
-- Stellen Sie sicher, dass Sie die [Architektur und die Komponenten des Szenarios](concepts-azure-to-azure-architecture.md) verstehen.
+- Überprüfen Sie [Architektur und Komponenten des Szenarios](concepts-azure-to-azure-architecture.md).
 - Sehen Sie sich die [Supportanforderungen](site-recovery-support-matrix-azure-to-azure.md) an, bevor Sie beginnen.
 
 ## <a name="create-a-recovery-services-vault"></a>Erstellen eines Recovery Services-Tresors

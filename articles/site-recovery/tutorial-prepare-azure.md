@@ -5,15 +5,15 @@ services: site-recovery
 author: rayne-wiselman
 ms.service: site-recovery
 ms.topic: tutorial
-ms.date: 04/15/2019
+ms.date: 05/30/2019
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: d2de871176917dcc24d910b3742bdb2700c4f25d
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: cb2ca7229524cf8d84041140129c7b9ca6876ea3
+ms.sourcegitcommit: c05618a257787af6f9a2751c549c9a3634832c90
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64691773"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66417807"
 ---
 # <a name="prepare-azure-resources-for-disaster-recovery-of-on-premises-machines"></a>Vorbereiten von Azure-Ressourcen für die Notfallwiederherstellung von lokalen Computern
 
@@ -75,7 +75,7 @@ Lokale Computer werden auf verwalteten Azure-Datenträgern repliziert. Bei einem
 4. Geben Sie die Ressourcengruppe an, in der das Netzwerk erstellt wird. Wir verwenden die vorhandene Ressourcengruppe **contosoRG**.
 5. Geben Sie unter **Adressbereich** den Netzwerkadressbereich ein. Hier wird **10.1.0.0/24** und kein Subnetz verwendet.
 6. Wählen Sie unter **Abonnement** das Abonnement aus, in dem das Netzwerk erstellt werden soll.
-7. Wählen Sie unter **Standort** die gleiche Region aus, in der auch der Recovery Services-Tresor erstellt wurde. In diesem Tutorial wird **Europa, Westen** verwendet.  Das Netzwerk muss sich in der gleichen Region wie der Tresor befinden.
+7. Wählen Sie unter **Standort** die gleiche Region aus, in der auch der Recovery Services-Tresor erstellt wurde. In diesem Tutorial wird **Europa, Westen** verwendet. Das Netzwerk muss sich in der gleichen Region wie der Tresor befinden.
 8. Wir behalten die Standardoptionen des DDoS-Basisschutzes ohne Dienstendpunkt im Netzwerk bei.
 9. Klicken Sie auf **Create**.
 
