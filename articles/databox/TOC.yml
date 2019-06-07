@@ -111,9 +111,7 @@
           items:
             - name: Verwalten über das Azure-Portal
               href: data-box-portal-ui-admin.md
-            - name: Verschieben von Daten in einen Blobtarif
-              href: data-box-how-to-set-data-tier.md
-            - name: Beheben von Problemen mit Data Box Heavy
+            - name: Behandeln von Data Box Disk-Problemen
               href: data-box-disk-troubleshoot.md
             - name: Kontaktieren des Supports
               href: data-box-disk-contact-microsoft-support.md
@@ -155,12 +153,18 @@
               href: data-box-local-web-ui-admin.md
             - name: Beheben von Geräteproblemen
               href: data-box-troubleshoot.md
+            - name: Verschieben von Daten in einen Blobtarif
+              href: data-box-how-to-set-data-tier.md
             - name: Kontaktieren des Supports
               href: data-box-disk-contact-microsoft-support.md
             - name: Migrieren
               items:
+                - name: Zu SharePoint Online
+                  href: data-box-heavy-migrate-spo.md
                 - name: Zu Azure-Dateisynchronisierung
                   href: ../storage/files/storage-sync-offline-data-transfer.md?toc=/azure/databox/toc.json&bc=/azure/databox/breadcrumb/toc.json
+                - name: Aus HDFS-Speicher
+                  href: ../storage/blobs/data-lake-storage-migrate-on-premises-hdfs-cluster.md?toc=/azure/databox/toc.json&bc=/azure/databox/breadcrumb/toc.json
     - name: Ressourcen
       items:
         - name: Data Box-Produkt

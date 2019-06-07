@@ -8,14 +8,14 @@ ms.subservice: core
 ms.topic: reference
 ms.author: larryfr
 author: Blackmist
-ms.date: 05/06/2019
+ms.date: 05/14/2019
 ms.custom: seodec18
-ms.openlocfilehash: 186ecf055cdf7b10690fdb4cbc574778a841b85a
-ms.sourcegitcommit: e6d53649bfb37d01335b6bcfb9de88ac50af23bd
+ms.openlocfilehash: 3acaf86123f2cab871bc2f99cc873a73015875e2
+ms.sourcegitcommit: cfbc8db6a3e3744062a533803e664ccee19f6d63
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/09/2019
-ms.locfileid: "65464803"
+ms.lasthandoff: 05/21/2019
+ms.locfileid: "65989845"
 ---
 # <a name="azure-machine-learning-service-release-notes"></a>Azure Machine Learning-Dienst – Anmerkungen zu dieser Version
 
@@ -24,6 +24,30 @@ Erfahren Sie in diesem Artikel mehr über die Versionen des Azure Machine Learni
 + Das [**Datenaufbereitungs-SDK**](https://aka.ms/data-prep-sdk) von Azure Machine Learning
 
 Sehen Sie die [Liste der bekannten Probleme](resource-known-issues.md) an, um mehr über bekannte Fehler und Problemumgehungen zu erfahren.
+
+## <a name="2019-05-14"></a>2019-05-14
+
+### <a name="azure-machine-learning-sdk-for-python-v1039"></a>Azure Machine Learning SDK für Python, Version 1.0.39
++ **Änderungen**
+  + Die für ein Ausführen verwendete Konfigurationsoption „auto_prepare_environment“ ist veraltet, wobei automatisches Vorbereiten zum Standard wird.
+
+## <a name="2019-05-08"></a>2019-05-08
+
+### <a name="azure-machine-learning-data-prep-sdk-v113"></a>Azure Machine Learning Data Prep SDK, Version 1.1.3
+
++ **Neue Features**
+  + Hinzugefügte Unterstützung für Lesen aus einer PostgreSQL-Datenbank, entweder durch Aufrufen von „read_postgresql“ oder durch Verwenden eines Datenspeichers.
+    + Beispiele finden Sie in den Schrittanleitung:
+      + [Data Ingestion notebook](https://aka.ms/aml-data-prep-ingestion-nb) (Datenerfassungsnotebook)
+      + [Datastore notebook](https://aka.ms/aml-data-prep-datastore-nb) (Datenspeichernotebook)
+
++ **Fehlerbehebungen und Verbesserungen**
+  + Behobene Probleme Spaltentypkonvertierung:
+  + Eine boolesche oder numerische Spalte wird nun richtig in eine boolesche Spalte konvertiert.
+  + Es gibt nun keinen Fehler mehr bei dem Versuch, eine Datumsspalte auf den Typ für Datum festzulegen.
+  + Verbesserte JoinType-Typen und zugehörige Referenzdokumentation. Wenn Sie zwei Datenflüsse verknüpfen, können Sie jetzt einen der folgenden Verknüpfungstypen (Join-Typen) angeben:
+    + NONE, MATCH, INNER, UNMATCHLEFT, LEFTANTI, LEFTOUTER, UNMATCHRIGHT, RIGHTANTI, RIGHTOUTER, FULLANTI, FULL.
+  + Verbesserte Datentyprückschlüsse, um mehr Datumsformate zu erkennen.
 
 ## <a name="2019-05-06"></a>2019-05-06
 
@@ -361,7 +385,7 @@ Der Azure Machine Learning Service ist jetzt allgemein verfügbar.
 Mit diesem Release kündigen wir eine neue verwaltete Compute-Umgebung über [Azure Machine Learning Compute](how-to-set-up-training-targets.md#amlcompute) an. Dieses Computeziel ersetzt das Azure Batch AI-Computeziel für Azure Machine Learning. 
 
 Dieses Computeziel:
-+ Wird für das Modelltraining und Batchrückschlüsse verwendet
++ Wird für das Modelltraining und Batchrückschlüsse/-bewertungen verwendet
 + Ist ein Computeziel mit einem oder mehreren Knoten
 + Übernimmt die Clusterverwaltung und Auftragsplanung für den Benutzer
 + Wird standardmäßig automatische skaliert

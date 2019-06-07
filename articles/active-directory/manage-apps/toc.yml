@@ -2,8 +2,10 @@
   href: index.yml
 - name: Übersicht
   items:
-    - name: Informationen zur Anwendungsverwaltung
+    - name: Worum handelt es sich bei der Anwendungsverwaltung?
       href: what-is-application-management.md
+    - name: Was ist der Anwendungsproxy?
+      href: what-is-application-proxy.md
 - name: Schnellstarts
   expanded: true
   items:

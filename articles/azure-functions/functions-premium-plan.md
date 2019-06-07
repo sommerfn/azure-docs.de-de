@@ -10,12 +10,12 @@ ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 4/11/2019
 ms.author: jehollan
-ms.openlocfilehash: d327146c4a1fa61e55bb904308038c1ce717123d
-ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
+ms.openlocfilehash: 75987e7cba9f373af5a434de9f273948c3c9ae75
+ms.sourcegitcommit: f6c85922b9e70bb83879e52c2aec6307c99a0cac
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/13/2019
-ms.locfileid: "59543743"
+ms.lasthandoff: 05/11/2019
+ms.locfileid: "65544768"
 ---
 # <a name="azure-functions-premium-plan-preview"></a>Premium-Plan (Premium-Tarif) für Azure Functions (Vorschau)
 
@@ -44,7 +44,7 @@ Wenn heute keine Ereignisse und Ausführungen im Verbrauchsplan ausgeführt werd
 
 Im Premium-Plan können Sie Ihre App in einem „vorab aufgewärmten“ Zustand für eine angegebene Anzahl von Instanzen vorhalten, bis zur Größe Ihres Mindestplans.  Mit vorab aufgewärmten Instanzen können Sie eine App auch vor hoher Last vorab skalieren. Erfolgt eine Erweiterung für die App, wird die App zunächst in die vorab aufgewärmten Instanzen skaliert. In Vorbereitung auf den nächsten Skalierungsvorgang werden sofort weitere Instanzen gepuffert und aufgewärmt. Dadurch, dass es einen Puffer mit vorab aufgewärmten Instanzen gibt, können Sie Kaltstartwartezeiten effektiv vermeiden.  Vorab aufgewärmte Instanzen ist ein Feature für den Premium-Plan, und Sie müssen während der gesamten Zeit, in der der Plan aktiv ist, mindestens eine Instanz aktiv und verfügbar halten.
 
-Sie können die Anzahl der vorab aufgewärmten Instanzen im Azure-Portal konfigurieren, indem Sie **Horizontal skalieren** auf der Registerkarte **Plattformfeatures** auswählen.
+Sie können die Anzahl der vorab aufgewärmten Instanzen im Azure-Portal konfigurieren, indem Sie Ihre **Funktions-App** auswählen, zur Registerkarte **Plattformfeatures** wechseln und die **Horizontal skalieren**-Optionen auswählen. Im Bearbeitungsfenster für eine Funktions-App gelten vorab aufgewärmte Instanzen speziell für diese App, aber die Mindestanzahl und die maximale Anzahl von Instanzen gelten für Ihren gesamten Plan.
 
 ![Einstellungen für elastisches Skalieren](./media/functions-premium-plan/scale-out.png)
 
@@ -114,6 +114,7 @@ Nachstehend sind die derzeit unterstützten Regionen für die öffentliche Vorsc
 |Frankreich, Mitte|
 |Japan, Westen|
 |Korea, Mitte|
+|USA Nord Mitte|
 |Nordeuropa|
 |USA Süd Mitte|
 |Indien (Süden)|

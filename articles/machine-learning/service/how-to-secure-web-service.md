@@ -11,12 +11,12 @@ ms.author: aashishb
 author: aashishb
 ms.date: 04/29/2019
 ms.custom: seodec18
-ms.openlocfilehash: 50e42172af6ca6b966f9f60d3e037f9ae3dc5cbe
-ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
+ms.openlocfilehash: 527f16e34e0f21d435fbd166328235566687bc88
+ms.sourcegitcommit: 16cb78a0766f9b3efbaf12426519ddab2774b815
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/02/2019
-ms.locfileid: "65023775"
+ms.lasthandoff: 05/17/2019
+ms.locfileid: "65852007"
 ---
 # <a name="use-ssl-to-secure-web-services-with-azure-machine-learning-service"></a>Verwenden von SSL zum Schützen von Webdiensten mit Azure Machine Learning Service
 
@@ -72,36 +72,10 @@ Wenn Sie ein Zertifikat anfordern, müssen Sie den vollqualifizierten Domänenna
 
 Legen Sie zum Bereitstellen (oder erneuten Bereitstellen) des Diensts mit aktiviertem SSL den `ssl_enabled`-Parameter auf `True` fest, wenn zutreffend. Legen Sie den `ssl_certificate`-Parameter auf den Wert der __Zertifikat__datei und den `ssl_key` auf den Wert der __Schlüssel__datei fest.
 
-+ **Visuelle Schnittstelle: Erstellen eines sicheren Azure Kubernetes Service (AKS) für die Bereitstellung** 
-    
-    Informieren Sie sich dort, wenn Sie versuchen, die sichere Bereitstellung von Computeressourcen für die visuelle Schnittstelle zu erstellen. Geben Sie beim Bereitstellen des AKS-Clusters Werte für die auf SSL bezogenen Parameter ein, und erstellen Sie dann eine neue AKS-Instanz.  Beachten Sie den folgenden Codeausschnitt:
-    
-
-    > [!TIP]
-    >  Wenn Sie nicht mit dem Python SDK vertraut sind, beginnen Sie mit [Was ist das Azure Machine Learning-SDK für Python?](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py).
-
-
-    ```python
-    from azureml.core.compute import AksCompute, ComputeTarget
-
-    # Provide SSL-related parameters when provisioning the AKS cluster
-    prov_config = AksCompute.provisioning_configuration(ssl_cert_pem_file="cert.pem", ssl_key_pem_file="key.pem", ssl_cname="www.contoso.com")   
- 
-    aks_name = 'secure-aks'
-    # Create the cluster
-    aks_target = ComputeTarget.create(workspace = ws,
-                                        name = aks_name,
-                                        provisioning_configuration = prov_config)
-    
-    # Wait for the create process to complete
-    aks_target.wait_for_completion(show_output = True)
-    print(aks_target.provisioning_state)
-    print(aks_target.provisioning_errors)
-    ```
-    
-   
-
 + **Bereitstellen in Azure Kubernetes Service (AKS) und FPGA**
+
+  > [!NOTE]
+  > Die Informationen in diesem Abschnitt gelten auch, wenn ein sicherer Webdienst für die grafische Benutzeroberfläche bereitgestellt wird. Wenn Sie das Python SDK bisher noch nicht verwendet haben, sollten Sie [Was ist das Azure Machine Learning-SDK für Python?](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py) lesen.
 
   Beim Bereitstellen in AKS können Sie entweder einen neuen AKS-Cluster erstellen oder einen vorhandenen anfügen. Beim Erstellen eines neuen Clusters wird [AksCompute.provisionining_configuration()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.compute.akscompute?view=azure-ml-py#provisioning-configuration-agent-count-none--vm-size-none--ssl-cname-none--ssl-cert-pem-file-none--ssl-key-pem-file-none--location-none--vnet-resourcegroup-name-none--vnet-name-none--subnet-name-none--service-cidr-none--dns-service-ip-none--docker-bridge-cidr-none-) verwendet, beim Anfügen eines vorhandenen Clusters [AksCompute.attach_configuration()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.compute.akscompute?view=azure-ml-py#attach-configuration-resource-group-none--cluster-name-none--resource-id-none-). Beide geben ein Konfigurationsobjekt mit einer `enable_ssl`-Methode zurück.
 
@@ -119,23 +93,26 @@ Legen Sie zum Bereitstellen (oder erneuten Bereitstellen) des Diensts mit aktivi
     ```python
     from azureml.core.compute import AksCompute
     # Config used to create a new AKS cluster and enable SSL
-    provisioning_config = AksCompute.provisioning_configuration().enable_ssl(leaf_domain_label = "myservice")
+    provisioning_config = AksCompute.provisioning_configuration()
+    provisioning_config.enable_ssl(leaf_domain_label = "myservice")
     # Config used to attach an existing AKS cluster to your workspace and enable SSL
     attach_config = AksCompute.attach_configuration(resource_group = resource_group,
-                                          cluster_name = cluster_name).enable_ssl(leaf_domain_label = "myservice")
+                                          cluster_name = cluster_name)
+    attach_config.enable_ssl(leaf_domain_label = "myservice")
     ```
 
-  * Bei Verwendung __eines Zertifikats, das Sie erworben haben__, verwenden Sie die Parameter `ssl_cert_pem_file`, `ssl_key_pem_file` und `ssl_cname`.  Im folgenden Beispiel wird das Erstellen von Konfigurationen veranschaulicht, die ein von Ihnen mit `.pem`-Dateien bereitgestelltes SSL-Zertifikat verwenden:
+  * Bei Verwendung __eines Zertifikats, das Sie erworben haben__, verwenden Sie die Parameter `ssl_cert_pem_file`, `ssl_key_pem_file` und `ssl_cname`. Im folgenden Beispiel wird das Erstellen von Konfigurationen veranschaulicht, die ein von Ihnen mit `.pem`-Dateien bereitgestelltes SSL-Zertifikat verwenden:
 
     ```python
     from azureml.core.compute import AksCompute
     # Config used to create a new AKS cluster and enable SSL
-    provisioning_config = AksCompute.provisioning_configuration(ssl_cert_pem_file="cert.pem", ssl_key_pem_file="key.pem", ssl_cname="www.contoso.com")
-    provisioning_config = AksCompute.provisioning_configuration().enable_ssl(ssl_cert_pem_file="cert.pem",
+    provisioning_config = AksCompute.provisioning_configuration()
+    provisioning_config.enable_ssl(ssl_cert_pem_file="cert.pem",
                                         ssl_key_pem_file="key.pem", ssl_cname="www.contoso.com")
     # Config used to attach an existing AKS cluster to your workspace and enable SSL
     attach_config = AksCompute.attach_configuration(resource_group = resource_group,
-                                         cluster_name = cluster_name).enable_ssl(ssl_cert_pem_file="cert.pem",
+                                         cluster_name = cluster_name)
+    attach_config.enable_ssl(ssl_cert_pem_file="cert.pem",
                                         ssl_key_pem_file="key.pem", ssl_cname="www.contoso.com")
     ```
 

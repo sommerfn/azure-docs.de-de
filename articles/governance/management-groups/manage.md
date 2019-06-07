@@ -6,12 +6,12 @@ ms.service: azure-resource-manager
 ms.date: 04/04/2019
 ms.author: rithorn
 ms.topic: conceptual
-ms.openlocfilehash: e47ce094cd690cba4ef398bc5d5d443f7ed647e9
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: b3798ec7578530e04ec9e00086fffaec9a58a7cd
+ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59272477"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65950229"
 ---
 # <a name="manage-your-resources-with-management-groups"></a>Verwalten von Ressourcen mit Verwaltungsgruppen
 
@@ -281,7 +281,7 @@ az account management-group subscription remove --name 'Contoso' --subscription 
 
 ## <a name="move-management-groups-in-the-hierarchy"></a>Verschieben von Verwaltungsgruppen in der Hierarchie  
 
-Wenn Sie eine übergeordnete Verwaltungsgruppe verschieben, wird die untergeordnete Hierarchie ebenfalls verschoben.
+Wenn Sie eine übergeordnete Verwaltungsgruppe verschieben, wird die untergeordnete Hierarchie ebenfalls verschoben. Für den Zugriff müssen Sie Verwaltungsgruppen verschieben. Weitere Informationen finden Sie unter [Zugriff auf die Verwaltungsgruppe](index.md#management-group-access).
 
 ### <a name="move-management-groups-in-the-portal"></a>Verschieben von Verwaltungsgruppen im Portal
 
@@ -325,7 +325,7 @@ Verwaltungsgruppen werden im [Azure-Aktivitätsprotokoll](../../azure-monitor/pl
 
 ![Aktivitätsprotokolle mit Verwaltungsgruppen](media/al-mg.png)
 
-Wenn Sie Verwaltungsgruppen außerhalb des Azure-Portals abfragen möchten, sieht der Zielbereich für Verwaltungsgruppen wie folgt aus: **"/providers/Microsoft.Management/managementGroups/{yourMgID}"**.
+Wenn Sie Verwaltungsgruppen außerhalb des Azure-Portals abfragen möchten, sieht der Zielbereich für Verwaltungsgruppen wie folgt aus: **"/providers/Microsoft.Management/managementGroups/{yourMgID}"** .
 
 ## <a name="referencing-management-groups-from-other-resource-providers"></a>Verweisen auf Verwaltungsgruppen von anderen Ressourcenanbietern
 

@@ -9,17 +9,17 @@ ms.topic: conceptual
 ms.reviewer: sgilley
 ms.author: sgilley
 author: sdgilley
-ms.date: 04/19/2019
-ms.openlocfilehash: cc6c93420e939e90e12b989def491199fd2c6b15
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.date: 05/21/2019
+ms.openlocfilehash: c6c32265e6fc2fc2bb0d6b00d89862e200731a2a
+ms.sourcegitcommit: cfbc8db6a3e3744062a533803e664ccee19f6d63
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "60006997"
+ms.lasthandoff: 05/21/2019
+ms.locfileid: "66016459"
 ---
 # <a name="create-an-azure-machine-learning-service-workspace"></a>Erstellen eines Azure Machine Learning Service-Arbeitsbereichs
 
-Sie benötigen einen [**Azure Machine Learning Service-Arbeitsbereich**](concept-azure-machine-learning-architecture.md#workspace), um Azure Machine Learning Service verwenden zu können.  Dieser Arbeitsbereich ist die Ressource auf oberster Ebene des Diensts und bietet einen zentralen Ort für die Arbeit mit allen erstellten Artefakten. 
+Sie benötigen einen [**Azure Machine Learning Service-Arbeitsbereich**](concept-workspace.md), um Azure Machine Learning Service verwenden zu können.  Dieser Arbeitsbereich ist die Ressource auf oberster Ebene des Diensts und bietet einen zentralen Ort für die Arbeit mit allen erstellten Artefakten. 
 
 In diesem Artikel erfahren Sie, wie Sie einen Arbeitsbereich mit einer der folgenden Methoden erstellen können: 
 * über die Benutzeroberfläche des [Azure-Portals](#portal)
@@ -33,7 +33,7 @@ Wenn Sie ein Skript zum Einrichten von automatisiertem, maschinellem Lernen in e
 
 Wenn Sie einen Arbeitsbereich erstellen, werden folgende Azure-Ressourcen automatisch hinzugefügt, sofern sie regional verfügbar sind:
  
-- [Azure Container Registry](https://azure.microsoft.com/services/container-registry/)
+- [Azure Container Registry](https://azure.microsoft.com/services/container-registry/): Um Kosten zu minimieren, wird ACR **verzögert geladen**, bis Bereitstellungsimages erstellt sind.
 - [Azure Storage (in englischer Sprache)](https://azure.microsoft.com/services/storage/)
 - [Azure Application Insights](https://azure.microsoft.com/services/application-insights/) 
 - [Azure Key Vault](https://azure.microsoft.com/services/key-vault/)
@@ -73,7 +73,7 @@ Mit den Schritten in diesem Artikel werden sämtliche Pakete installiert, die Si
 
 ### <a name="create-an-isolated-python-environment"></a>Erstellen einer isolierten Python-Umgebung
 
-1. Öffnen Sie ein Befehlszeilenfenster, erstellen Sie eine neue Conda-Umgebung mit dem Namen *myenv*, und installieren Sie Python 3.6.5. Das Azure Machine Learning SDK kann mit Python 3.5.2 oder höheren Versionen verwendet werden, die Komponenten für automatisiertes maschinelles Lernen sind unter Python 3.7 jedoch nicht voll funktionsfähig.  Es dauert einige Minuten, bis die Komponenten und Pakete heruntergeladen wurden und die Umgebung erstellt wurde.
+1. Öffnen Sie eine Anaconda-Eingabeaufforderung, erstellen Sie eine neue Conda-Umgebung namens *myenv*, und installieren Sie Python 3.6.5. Das Azure Machine Learning SDK kann mit Python 3.5.2 oder höheren Versionen verwendet werden, die Komponenten für automatisiertes maschinelles Lernen sind unter Python 3.7 jedoch nicht voll funktionsfähig.  Es dauert einige Minuten, bis die Komponenten und Pakete heruntergeladen wurden und die Umgebung erstellt wurde. 
 
     ```shell
     conda create -n myenv python=3.6.5

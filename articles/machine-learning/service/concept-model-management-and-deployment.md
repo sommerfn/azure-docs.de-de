@@ -11,12 +11,12 @@ author: chris-lauren
 ms.author: clauren
 ms.date: 05/02/2019
 ms.custom: seodec18
-ms.openlocfilehash: 18a80af8422e30ce3e87395449fca7b5f6a73762
-ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
+ms.openlocfilehash: 416bebc070cfcad52c6180e65f0066c46c826cbe
+ms.sourcegitcommit: 16cb78a0766f9b3efbaf12426519ddab2774b815
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/02/2019
-ms.locfileid: "65025010"
+ms.lasthandoff: 05/17/2019
+ms.locfileid: "65849643"
 ---
 # <a name="mlops-manage-deploy-and-monitor-models-with-azure-machine-learning-service"></a>MLOps: Verwalten, Bereitstellen und Überwachen von Modellen mit Azure Machine Learning Services
 
@@ -34,11 +34,14 @@ Jeder Schritt kann eigenständig oder als Teil eines einzelnen Befehls ausgefüh
 
 [ ![ ‚Zyklus: Continuous Integration/Continuous Deployment (CI/CD) für Azure Machine Learning‘](media/concept-model-management-and-deployment/model-ci-cd.png)](media/concept-model-management-and-deployment/model-ci-cd.png#lightbox)
 
-> [!VIDEO https://www.youtube.com/embed/0MaHb070H_8]
+> [!VIDEO https://www.microsoft.com/videoplayer/embed/RE2X1GX]
 
 ## <a name="step-1-register-model"></a>Schritt 1: Registrieren des Modells
 
 Die Modellregistrierung ermöglicht es Ihnen, Ihre Modelle in der Azure-Cloud in Ihrem Arbeitsbereich zu speichern und zu versionieren. Die Modellregistrierung erleichtert das Organisieren und Verwalten von trainierten Modellen.
+
+> [!TIP]
+> Sie können auch Modelle registrieren, die außerhalb von Azure Machine Learning Service trainiert wurden.
  
 Registrierte Modelle werden anhand des Namens und der Version identifiziert. Jedes Mal, wenn Sie ein Modell mit dem gleichen Namen wie ein bereits vorhandenes Modell registrieren, erhöht die Registrierung die Versionsnummer. Sie können beim Registrieren auch zusätzliche Metadatentags bereitstellen, die bei der Suche nach Modellen verwendet werden können. Azure Machine Learning Service unterstützt Modelle, die mit Python 3.5.2 oder höher geladen werden können.
 
@@ -69,7 +72,7 @@ Weitere Informationen finden Sie unter [Bereitstellen von Modellen](how-to-deplo
 
 ### <a name="iot-edge-devices"></a>IoT Edge-Geräte
 
-Sie können Modelle mit IoT-Geräten über **Azure IoT Edge-Module** verwenden. IoT Edge-Module werden auf Hardwaregeräten bereitgestellt, wodurch Rückschlüsse auf dem Gerät ermöglicht werden.
+Sie können Modelle mit IoT-Geräten über **Azure IoT Edge-Module** verwenden. IoT Edge-Module werden auf Hardwaregeräten bereitgestellt, wodurch Rückschlüsse oder Modellbewertungen auf dem jeweiligen Gerät ermöglicht werden.
 
 Weitere Informationen finden Sie unter [Bereitstellen von Modellen](how-to-deploy-and-where.md).
 
@@ -92,5 +95,7 @@ Bereitstellungen müssen explizit aktualisiert werden. Weitere Informationen fin
 ## <a name="next-steps"></a>Nächste Schritte
 
 Erfahren Sie mehr darüber [wie und auf welchen Instanzen Modelle mit dem Azure Machine Learning-Dienst bereitgestellt werden können](how-to-deploy-and-where.md). Ein Bereitstellungsbeispiel finden Sie unter [Tutorial: Bereitstellen eines Bildklassifizierungsmodells in Azure Container Instances](tutorial-deploy-models-with-aml.md).
+
+Erfahren Sie, wie Sie [durchgängige Integration und Bereitstellung von ML-Modellen mit Azure Pipelines](/azure/devops/pipelines/targets/azure-machine-learning) erstellen. 
 
 Erfahren Sie, wie Sie Clientanwendungen und -dienste erstellen, die [ein Modell verwenden, das als Webdienst bereitgestellt wird](how-to-consume-web-service.md).

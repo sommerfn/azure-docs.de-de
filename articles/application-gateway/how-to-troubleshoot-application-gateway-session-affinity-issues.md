@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 02/22/2019
 ms.author: absha
-ms.openlocfilehash: 90a57483fc7a530f214d34bf619a718b4c196e79
-ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
+ms.openlocfilehash: 07165a497e75934a65719e48a9af7d8d6906ee7b
+ms.sourcegitcommit: f6c85922b9e70bb83879e52c2aec6307c99a0cac
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59683148"
+ms.lasthandoff: 05/11/2019
+ms.locfileid: "65538348"
 ---
 # <a name="troubleshoot-azure-application-gateway-session-affinity-issues"></a>Behandeln von Problemen mit der Azure Application Gateway-Sitzungsaffinität
 
@@ -53,7 +53,7 @@ Manchmal sind die Probleme mit der Sitzungsaffinität darauf zurückzuführen, d
 
 Sie können auch mithilfe einer der folgenden Methoden überprüfen, ob der Wert von **CookieBasedAffinity** unter **backendHttpSettingsCollection** auf *Enabled* festgelegt ist:
 
-- Ausführen von [Get-AzApplicationGatewayBackendHttpSettings](https://docs.microsoft.com/powershell/module/az.network/get-azapplicationgatewaybackendhttpsettings) in PowerShell
+- Ausführen von [Get-AzApplicationGatewayBackendHttpSetting](https://docs.microsoft.com/powershell/module/az.network/get-azapplicationgatewaybackendhttpsetting) in PowerShell
 - Durchsuchen der JSON-Datei mithilfe der Azure Resource Manager-Vorlage
 
 ```
@@ -82,7 +82,7 @@ Gehen Sie zum Beheben dieses Problems wie folgt vor:
     **Tipp:** Wenn Sie mit der Verwendung von Fiddler nicht vertraut sind, aktivieren Sie die Option **I want to collect network traffic and analyze it using web debugger** (Ich möchte Netzwerkdatenverkehr mithilfe des Webdebuggers erfassen und analysieren) am unteren Rand.
 
 2. Überprüfen und analysieren Sie die Sitzungsprotokolle, um zu ermitteln, ob die vom Client bereitgestellten Cookies die ARRAffinity-Details enthalten. Wenn Sie die ARRAffinity-Details, z. B. **ARRAffinity=** *ARRAffinityValue*, im festgelegten Cookie nicht finden, bedeutet das, dass der Client nicht mit dem ARRA-Cookie antwortet, das vom Anwendungsgateway bereitgestellt wird.
-    Beispiel: 
+    Beispiel:
 
     ![troubleshoot-session-affinity-issues-3](./media/how-to-troubleshoot-application-gateway-session-affinity-issues/troubleshoot-session-affinity-issues-3.png)
 

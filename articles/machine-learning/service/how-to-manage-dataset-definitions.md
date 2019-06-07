@@ -1,5 +1,5 @@
 ---
-title: Dataset-Definition und Versionsangaben
+title: Dataset-Definition und -Versionsverwaltung mit „azureml-datasets“
 titleSuffix: Azure Machine Learning service
 description: Erfahren Sie, wie Sie Dataset-Definitionen aktualisieren und den Lebenszyklus von Definitionen verwalten können.
 services: machine-learning
@@ -10,12 +10,12 @@ ms.author: sihhu
 author: MayMSFT
 ms.reviewer: larryfr
 ms.date: 05/02/2019
-ms.openlocfilehash: 7c861c8cdc9985caa42bd2beb5236a4f4e93e4c7
-ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
+ms.openlocfilehash: e58ce156deaaad259ea7b74521bcf9b79afbd183
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/02/2019
-ms.locfileid: "65027708"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66146207"
 ---
 # <a name="update-and-manage-the-lifecycle-of-dataset-definitions"></a>Aktualisieren und Verwalten des Lebenszyklus von Dataset-Definitionen
 
@@ -172,7 +172,7 @@ ds_def_old.head(5)
       <th></th>
       <th>ID</th>
       <th>Fallnummer</th>
-      <th>Datum</th>
+      <th>Date</th>
       <th>Block</th>
       <th>IUCR</th>
       <th>Primärer Typ</th>
