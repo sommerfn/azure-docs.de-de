@@ -58,8 +58,6 @@
         - name: Ihre Marketplace-Vorteile
           href: ./gtm-your-marketplace-benefits.md
           items:
-            - name: Bewerben Ihres Business mit Microsoft
-              href: ./gtm-promote-your-business.md
             - name: Bevorzugte Lösungen
               href: ./preferred-solutions.md
             - name: Integrierte Lösungen
@@ -328,39 +326,6 @@
               href: ./cloud-partner-portal/power-bi/cpp-update-existing-offer.md
         - name: SaaS-Anwendungsangebot
           href: ./cloud-partner-portal/saas-app/cpp-saas-offer.md
-          items:
-            - name: Voraussetzungen
-              href: ./cloud-partner-portal/saas-app/cpp-prerequisites.md
-            - name: Erstellen eines SaaS-Anwendungsangebots
-              href: ./cloud-partner-portal/saas-app/cpp-create-offer.md
-              items:
-                - name: Registerkarte „Angebotseinstellungen“
-                  href: ./cloud-partner-portal/saas-app/cpp-offer-settings-tab.md
-                - name: Registerkarte „Technische Informationen“
-                  href: ./cloud-partner-portal/saas-app/cpp-technical-info-tab.md
-                - name: Registerkarte „Pläne“
-                  href: ./cloud-partner-portal/saas-app/cpp-plans-tab.md
-                - name: Registerkarte „Channel Info“ (Kanalinformationen)
-                  href: ./cloud-partner-portal/saas-app/cpp-channel-info-tab.md
-                - name: Registerkarte „Testversion“
-                  href: ./cloud-partner-portal/saas-app/cpp-testdrive-tab.md
-                - name: Registerkarte „Storefront Details“ (Storefrontdetails)
-                  href: ./cloud-partner-portal/saas-app/cpp-storefront-tab.md
-                - name: Registerkarte „Kontakte“
-                  href: ./cloud-partner-portal/saas-app/cpp-contacts-tab.md
-            - name: Veröffentlichen eines Angebots
-              href: ./cloud-partner-portal/saas-app/cpp-publish-offer.md
-            - name: Aktualisieren eines vorhandenen Angebots
-              href: ./cloud-partner-portal/saas-app/cpp-update-existing-offer.md
-            - name: SaaS-Fulfillment-APIs
-              href: ./cloud-partner-portal/saas-app/cpp-saas-fulfillment-apis.md
-              items:
-                - name: Registrieren einer SaaS-Anwendung
-                  href: ./cloud-partner-portal/saas-app/cpp-saas-registration.md
-                - name: SaaS-API v1 (veraltet)
-                  href: ./cloud-partner-portal/saas-app/cpp-saas-fulfillment-api-v1.md
-                - name: SaaS-API v2
-                  href: ./cloud-partner-portal/saas-app/cpp-saas-fulfillment-api-v2.md
         - name: VM-Angebot
           href: ./cloud-partner-portal/virtual-machine/cpp-virtual-machine-offer.md
           items:

@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 05/14/2019
 ms.author: raynew
-ms.openlocfilehash: 593a82221ec94e43d50b7382ba89053d5f68864a
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: e96aafe61c0d8547ffca9e97bfd9e90c9529155f
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65804790"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66237278"
 ---
 # <a name="set-up-disaster-recovery-at-scale-for-vmware-vmsphysical-servers"></a>Einrichten der skalierbaren Notfallwiederherstellung für VMware-VMs/physische Server
 
@@ -188,7 +188,7 @@ Nachdem Sie die Replikation für den ersten Batch von virtuellen Computern gesta
 1. Weisen Sie einen Administrator für die Notfallwiederherstellung zu, der den Integritätsstatus der replizierten Computer überwacht.
 2. [Überwachen Sie Ereignisse](site-recovery-monitor-and-troubleshoot.md) für replizierte Elemente und die Infrastruktur.
 3. [Überwachen Sie die Integrität](vmware-physical-azure-monitor-process-server.md) der Prozessserver für horizontales Skalieren.
-4. Registrieren Sie sich für den Erhalt von [E-Mail-Benachrichtigungen](https://docs.microsoft.com/azure/site-recovery/site-recovery-monitor-and-troubleshoot.md#subscribe-to-email-notifications) über Ereignisse, um die Überwachung zu erleichtern.
+4. Registrieren Sie sich für den Erhalt von [E-Mail-Benachrichtigungen](https://docs.microsoft.com/azure/site-recovery/site-recovery-monitor-and-troubleshoot#subscribe-to-email-notifications) über Ereignisse, um die Überwachung zu erleichtern.
 5. Führen Sie regelmäßige [Übungen zur Notfallwiederherstellung](site-recovery-test-failover-to-azure.md) durch, um sicherzustellen, dass alles wie erwartet funktioniert.
 
 

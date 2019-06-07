@@ -61,19 +61,18 @@
       href: security-center-policies-overview.md
     - name: Vergleichen der Baselines mithilfe der Dateiintegritätsüberwachung
       href: security-center-file-integrity-monitoring-baselines.md
-      items:
-        - name: Datensammlung
-          href: security-center-enable-data-collection.md
-        - name: Integrierte Sicherheitsrichtlinien
-          href: security-center-policy-definitions.md
-        - name: E-Mail-Benachrichtigungen
-          href: security-center-provide-security-contact-details.md
-        - name: Tarif
-          href: security-center-pricing.md
-        - name: Sicherheitskonfigurationen
-          href: security-center-customize-os-security-config.md
-        - name: Mandantenweite Sichtbarkeit
-          href: security-center-management-groups.md
+    - name: Datensammlung
+      href: security-center-enable-data-collection.md
+    - name: Integrierte Sicherheitsrichtlinien
+      href: security-center-policy-definitions.md
+    - name: E-Mail-Benachrichtigungen
+      href: security-center-provide-security-contact-details.md
+    - name: Tarif
+      href: security-center-pricing.md
+    - name: Sicherheitskonfigurationen
+      href: security-center-customize-os-security-config.md
+    - name: Mandantenweite Sichtbarkeit
+      href: security-center-management-groups.md
     - name: Implementieren von Sicherheitsempfehlungen
       href: security-center-recommendations.md
       items:
