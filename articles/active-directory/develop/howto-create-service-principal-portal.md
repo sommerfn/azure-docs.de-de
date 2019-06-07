@@ -3,25 +3,25 @@ title: Erstellen einer Identität für die Azure-App im Portal | Microsoft-Dokum
 description: Beschreibt das Erstellen einer neuen Azure Active Directory-Anwendung und eines Dienstprinzipals, der mit der rollenbasierten Zugriffskontrolle in Azure Resource Manager zum Verwalten des Zugriffs auf Ressourcen verwendet werden kann.
 services: active-directory
 documentationcenter: na
-author: CelesteDG
-manager: mtillman
+author: rwike77
+manager: CelesteDG
 ms.service: active-directory
 ms.subservice: develop
 ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 04/08/2019
-ms.author: celested
+ms.date: 05/14/2019
+ms.author: ryanwi
 ms.reviewer: tomfitz
 ms.custom: seoapril2019
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9affec9ccc1b87f36d6f30aff4795d85532be8c1
-ms.sourcegitcommit: b8a8d29fdf199158d96736fbbb0c3773502a092d
+ms.openlocfilehash: d0208d25e4583672ad2110d959f8e255affbf3e0
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/15/2019
-ms.locfileid: "59565919"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65764850"
 ---
 # <a name="how-to-use-the-portal-to-create-an-azure-ad-application-and-service-principal-that-can-access-resources"></a>Gewusst wie: Erstellen einer Azure AD-Anwendung und eines Dienstprinzipals mit Ressourcenzugriff über das Portal
 
@@ -66,7 +66,7 @@ Sie können den Umfang auf Abonnement-, Ressourcengruppen- oder Ressourcenebene 
 
    Falls Sie das gesuchte Abonnement nicht finden können, können Sie den **globalen Abonnementfilter** verwenden. Stellen Sie sicher, dass das gewünschte Abonnement für das Portal ausgewählt ist. 
 
-1. Wählen Sie die Option **Zugriffssteuerung (IAM)**.
+1. Wählen Sie die Option **Zugriffssteuerung (IAM)** .
 1. Wählen Sie **Rollenzuweisung hinzufügen** aus.
 
    ![Auswählen von „Rollenzuweisung hinzufügen“](./media/howto-create-service-principal-portal/select-add.png)
@@ -106,18 +106,18 @@ Sie benötigen auch die ID für Ihre Anwendung und einen Authentifizierungsschl�
 
    ![Client-ID](./media/howto-create-service-principal-portal/copy-app-id.png)
 
-1. Wählen Sie **Settings**aus.
+1. Wählen Sie **Zertifikate & Geheimnisse** aus.
 
-   ![Klicken auf „Einstellungen“](./media/howto-create-service-principal-portal/select-settings.png)
+   ![Klicken auf „Einstellungen“](./media/howto-create-service-principal-portal/select-certs-secrets.png)
 
-1. Wählen Sie **Schlüssel** aus.
-1. Geben Sie eine Beschreibung des Schlüssels und eine Dauer für den Schlüssel ein. Wählen Sie dann die Option **Schließen**.
+1. Wählen Sie **Geheime Clientschlüssel -> Neuer geheimer Clientschlüssel** aus.
+1. Geben Sie eine Beschreibung des Geheimnisses und eine Dauer ein. Wählen Sie anschließend **Hinzufügen** aus.
 
-   ![Speichern des Schlüssels](./media/howto-create-service-principal-portal/save-key.png)
+   ![Speichern des geheimen Clientschlüssels](./media/howto-create-service-principal-portal/save-secret.png)
 
-   Nach dem Speichern des Schlüssels wird der Wert des Schlüssels angezeigt. Kopieren Sie diesen Wert jetzt, da Sie den Schlüssel später nicht mehr abrufen können. Sie geben den Schlüsselwert zusammen mit der Anwendungs-ID an, um die Anmeldung als Anwendung durchzuführen. Speichern Sie die Schlüsselwert an einem Ort, von dem Ihre Anwendung ihn abrufen kann.
+   Nachdem der geheime Clientschlüssel gespeichert wurde, wird dessen Wert angezeigt. Kopieren Sie diesen Wert jetzt, da Sie den Schlüssel später nicht mehr abrufen können. Sie geben den Schlüsselwert zusammen mit der Anwendungs-ID an, um die Anmeldung als Anwendung durchzuführen. Speichern Sie die Schlüsselwert an einem Ort, von dem Ihre Anwendung ihn abrufen kann.
 
-   ![Gespeicherter Schlüssel](./media/howto-create-service-principal-portal/copy-key.png)
+   ![Kopieren des geheimen Clientschlüssels](./media/howto-create-service-principal-portal/copy-secret.png)
 
 ## <a name="required-permissions"></a>Erforderliche Berechtigungen
 
@@ -146,7 +146,7 @@ Ihr Konto muss in Ihrem Azure-Abonnement über `Microsoft.Authorization/*/Write`
 
 So überprüfen Sie die Berechtigungen Ihres Abonnements
 
-1. Wählen Sie oben rechts Ihr Konto und dann die Option **Meine Berechtigungen**.
+1. Wählen Sie oben rechts Ihr Konto und dann die Option **Meine Berechtigungen** aus.
 
    ![Auswählen von Benutzerberechtigungen](./media/howto-create-service-principal-portal/select-my-permissions.png)
 
@@ -154,7 +154,7 @@ So überprüfen Sie die Berechtigungen Ihres Abonnements
 
    ![Suchen nach Benutzern](./media/howto-create-service-principal-portal/view-details.png)
 
-1. Zeigen Sie Ihre zugewiesenen Rollen an, und ermitteln Sie, ob Sie über die erforderlichen Berechtigungen verfügen, um einer Rolle eine AD-App zuzuweisen. Wenn dies nicht der Fall ist, bitten Sie Ihren Abonnementadministrator, Sie zur Rolle „Benutzerzugriffsadministrator“ hinzuzufügen. In der folgenden Abbildung wurde der Benutzer der Rolle „Besitzer“ zugeordnet. Dies bedeutet, dass dieser Benutzer über die erforderlichen Berechtigungen verfügt.
+1. Wählen Sie **Rollenzuweisungen** aus, um Ihre zugewiesenen Rollen anzuzeigen, und ermitteln Sie, ob Sie über die erforderlichen Berechtigungen verfügen, um einer Rolle eine AD-App zuzuweisen. Wenn dies nicht der Fall ist, bitten Sie Ihren Abonnementadministrator, Sie zur Rolle „Benutzerzugriffsadministrator“ hinzuzufügen. In der folgenden Abbildung wurde der Benutzer der Rolle „Besitzer“ zugeordnet. Dies bedeutet, dass dieser Benutzer über die erforderlichen Berechtigungen verfügt.
 
    ![Anzeigen von Berechtigungen](./media/howto-create-service-principal-portal/view-user-role.png)
 

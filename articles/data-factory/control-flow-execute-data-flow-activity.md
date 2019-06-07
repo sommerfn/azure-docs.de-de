@@ -10,12 +10,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 02/22/2019
 ms.author: makromer
-ms.openlocfilehash: e1d4ce355f34014d5099c4b46f4420d032363fce
-ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
+ms.openlocfilehash: b0a6c6feae11f8daeed54c5e763dbff3aa711652
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/07/2019
-ms.locfileid: "65236672"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66153490"
 ---
 # <a name="execute-data-flow-activity-in-azure-data-factory"></a>Aktivität „Datenfluss ausführen“ in Azure Data Factory
 Verwenden Sie die Aktivität „Datenfluss ausführen“, um Ihren ADF-Datenfluss in (der Sandbox) in Läufen zum Debuggen der Pipeline oder in von der Pipeline ausgelösten Läufen auszuführen.
@@ -64,6 +64,10 @@ Verwenden Sie das Debuggen des Datenflusses, um einen aufgewärmten Cluster zum 
 Dies ist ein Pflichtfeld, das definiert, welche Integration Runtime, die für die Ausführung Ihrer Datenflussaktivität verwendet werden soll. Standardmäßig verwendet Data Factory die standardmäßige Azure Integration Runtime mit automatischer Auflösung. Sie können aber auch Ihre eigene Azure Integration Runtime erstellen, die bestimmte Regionen, den Computetyp, die Kernanzahl und die Gültigkeitsdauer (TTL) für die Ausführung Ihrer Datenflussausführung definiert.
 
 Die Standardeinstellung für die Ausführung von Datenflüssen sind 8 Kerne von Compute allgemein mit einer Gültigkeitsdauer (TTL) von 60 Minuten.
+
+Sie haben die Kontrolle über die Spark-Ausführungsumgebung für Ihre Datenflussaktivitäten. In der [Azure Integration Runtime](concepts-integration-runtime.md) gibt es Einstellungen zum Festlegen des Computetyps (universell, arbeitsspeicheroptimiert und für Compute optimiert), der Anzahl der Workerkerne und der Gültigkeitsdauer, um die Ausführungs-Engine mit Ihren Datenfluss-Computeanforderungen abzugleichen. Außerdem ermöglicht das Festlegen der Gültigkeitsdauer das Verwalten eines „warmen“ Clusters, der sofort für die Auftragsausführung verfügbar ist.
+
+![Azure Integration Runtime](media/data-flow/ir-new.png "Azure Integration Runtime")
 
 ### <a name="staging-area"></a>Stagingbereich
 

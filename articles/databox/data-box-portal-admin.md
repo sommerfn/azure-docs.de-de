@@ -1,23 +1,23 @@
 ---
-title: Administratorhandbuch für das Azure Data Box-Portal | Microsoft-Dokumentation
+title: Verwalten von Azure Data Box über das Azure-Portal | Microsoft-Dokumentation
 description: Beschreibt die Verwaltung von Azure Data Box über das Azure-Portal.
 services: databox
 author: alkohli
 ms.service: databox
 ms.subservice: pod
-ms.topic: overview
+ms.topic: article
 ms.date: 04/15/2019
 ms.author: alkohli
-ms.openlocfilehash: 483e1e0f6a472132446b20a161d012e69d83c4ac
-ms.sourcegitcommit: 5f348bf7d6cf8e074576c73055e17d7036982ddb
+ms.openlocfilehash: 31909e1f13d211aa87f13547218a6967d8e195ac
+ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/16/2019
-ms.locfileid: "59607108"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65950521"
 ---
-# <a name="use-the-azure-portal-to-administer-your-data-box"></a>Verwalten Ihrer Data Box im Azure-Portal
+# <a name="use-the-azure-portal-to-administer-your-azure-data-box"></a>Verwenden des Azure-Portals zum Verwalten von Azure Data Box
 
-Dieser Artikel beschreibt einige der komplexen Workflows und Verwaltungsaufgaben, die auf der Data Box ausgeführt werden können. Sie können die Data Box im Azure-Portal oder auf der lokalen Webbenutzeroberfläche verwalten. 
+Dieser Artikel beschreibt einige der komplexen Workflows und Verwaltungsaufgaben, die auf der Azure Data Box ausgeführt werden können. Sie können die Data Box im Azure-Portal oder auf der lokalen Webbenutzeroberfläche verwalten.
 
 Der Schwerpunkt dieses Artikels liegt auf den Aufgaben, die mithilfe des Azure-Portals ausgeführt werden können. Verwenden Sie das Azure-Portal, um Aufträge und die Data Box zu verwalten sowie den Auftragsstatus bis zum Abschluss nachzuverfolgen.
 

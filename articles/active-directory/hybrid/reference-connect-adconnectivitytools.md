@@ -10,12 +10,12 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.topic: reference
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 40b4be9aca5243b80151afac0ae221f0d44509c5
-ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
+ms.openlocfilehash: 1084a3e546a234739fbede46612dce96537c7d4a
+ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58650512"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65950642"
 ---
 # <a name="azure-ad-connect--adconnectivitytools-powershell-reference"></a>Azure AD Connect:  PowerShell-Referenz zu ADConnectivityTools
 
@@ -36,7 +36,7 @@ Confirm-DnsConnectivity [-Forest] <String> [-DCs] <Array> [-ReturnResultAsPSObje
 ### <a name="description"></a>Beschreibung
 
 Führt lokale DNS-Konnektivitätstests aus.
-Um den Active Directory-Connector zu konfigurieren, muss der Benutzer über Namensauflösung verfügen, sowohl in der Gesamtstruktur, mit der eine Verbindung hergestellt werden soll, als auch in den Domänencontrollern, die dieser Gesamtstruktur zugeordnet sind.
+Um den Active Directory Connector zu konfigurieren, muss der Benutzer über Namensauflösung verfügen und zwar sowohl in der Gesamtstruktur, mit der eine Verbindung hergestellt werden soll, als auch in den Domänencontrollern, die dieser Gesamtstruktur zugeordnet sind.
 
 ### <a name="examples"></a>BEISPIELE
 
@@ -309,7 +309,7 @@ Accept wildcard characters: False
 
 #### <a name="-skipdnsport"></a>-SkipDnsPort
 
-Wenn der Benutzer keine vom AD-Standort/Anmelde-DC bereitgestellten DNS-Dienste verwendet, sollte er eventuell Port 53 überspringen.
+Wenn der Benutzer keine vom AD-Standort/Anmelde-DC bereitgestellten DNS-Dienste verwendet, sollte er eventuell die Überprüfung von Port 53 überspringen.
 Der Benutzer muss weiterhin in der Lage sein, „_.ldap._tcp.\<forestfqdn\>“ aufzulösen, damit die Active Directory Connector-Konfiguration erfolgreich erfolgen kann.
 
 ```yml

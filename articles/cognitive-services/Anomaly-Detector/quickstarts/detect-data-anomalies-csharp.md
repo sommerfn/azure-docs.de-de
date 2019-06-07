@@ -9,12 +9,12 @@ ms.subservice: anomaly-detector
 ms.topic: article
 ms.date: 03/26/2019
 ms.author: aahi
-ms.openlocfilehash: ffa42eb2247d163dd6a146ffb26c1f8cc5cf6d82
-ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.openlocfilehash: 04b331f3b63ad6400b4bb8efcd053d04ac88989b
+ms.sourcegitcommit: 1fbc75b822d7fe8d766329f443506b830e101a5e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64922520"
+ms.lasthandoff: 05/14/2019
+ms.locfileid: "65595847"
 ---
 # <a name="quickstart-detect-anomalies-in-your-time-series-data-using-the-anomaly-detector-rest-api-and-c"></a>Schnellstart: Erkennen von Anomalien in Zeitreihendaten mithilfe der Anomalieerkennungs-REST-API und C# 
 
@@ -29,13 +29,15 @@ Dieser Schnellstart unterstützt Sie bei den ersten Schritten in den zwei Erkenn
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-- Eine beliebige [Visual Studio 2017](https://visualstudio.microsoft.com/downloads/)-Edition.
-- [Newtonsoft.Json](https://www.newtonsoft.com/json)
-    - So installieren Sie Newtonsoft.Json als NuGet-Paket in Visual Studio
-        1. Klicken Sie im **Projektmappen-Manager** mit der rechten Maustaste.
-        2. Klicken Sie auf **Manage NuGet Packages**
-        3. Suchen Sie nach `Newtonsoft.Json`, und installieren Sie das Paket.
-- Unter Linux/MacOS kann diese Anwendung mit [Mono](https://www.mono-project.com/) ausgeführt werden.
+- Eine beliebige Edition von [Visual Studio 2017 oder höher](https://visualstudio.microsoft.com/downloads/)
+
+- Das [Json.NET](https://www.newtonsoft.com/json)-Framework, das als NuGet-Paket verfügbar ist So installieren Sie Newtonsoft.Json als NuGet-Paket in Visual Studio
+    
+    1. Klicken Sie im **Projektmappen-Explorer** mit der rechten Maustaste auf Ihr Projekt.
+    2. Wählen Sie **NuGet-Pakete verwalten** aus.
+    3. Suchen Sie nach *Newtonsoft.Json*, und installieren Sie das Paket.
+
+- Unter Linux/macOS kann diese Anwendung mit [Mono](https://www.mono-project.com/) ausgeführt werden.
 
 - Eine JSON-Datei mit Datenpunkten auf einer Zeitreihe. Die Beispieldaten für diesen Schnellstart finden Sie auf [GitHub](https://github.com/Azure-Samples/anomalydetector/blob/master/example-data/request-data.json).
 

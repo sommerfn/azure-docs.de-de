@@ -9,14 +9,32 @@ ms.subservice: custom-vision
 ms.topic: conceptual
 ms.date: 04/03/2019
 ms.author: anroth
-ms.openlocfilehash: 2b0d8b8a86c3105b1bda7fb0d72cbcb72ed82995
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 4b4e449b9260debbe90523141cacc4ed76219490
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59785724"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65787951"
 ---
 # <a name="custom-vision-service-release-notes"></a>Custom Vision Service: Anmerkungen zu dieser Version
+
+## <a name="may-2-2019-and-may-10-2019"></a>2. Mai 2019 und 10. Mai 2019
+
+- Fehlerbehebungen und Back-End-Verbesserungen
+
+## <a name="may-23-2019"></a>23. Mai 2019
+
+- Verbesserte UX-Portalerfahrung in Bezug auf Azure-Abonnements, die die Auswahl von Azure-Verzeichnissen vereinfacht.
+
+## <a name="april-18-2019"></a>18. April 2019 
+
+- Der Export der Objekterkennung für das Developer Kit für KI für maschinelles Sehen wurde hinzugefügt.
+- Optimierungen der Benutzeroberfläche, einschließlich der Projektsuche.
+
+## <a name="april-3-2019"></a>3. April 2019
+
+- Der Grenzwert für die Anzahl der Begrenzungsrahmen pro Bild wurde auf 200 erhöht. 
+- Fehlerbehebungen, einschließlich eines umfangreichen Leistungsupdates für Modelle, die nach TensorFlow exportiert wurden. 
 
 ## <a name="march-26-2019"></a>26. März 2019
 

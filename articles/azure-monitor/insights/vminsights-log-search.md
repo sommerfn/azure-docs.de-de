@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/10/2019
 ms.author: magoedte
-ms.openlocfilehash: 38979aa5cbb7eff0a949dfb77d6a29b2cdb5c67b
-ms.sourcegitcommit: 6ea7f0a6e9add35547c77eef26f34d2504796565
+ms.openlocfilehash: 23ce57add0d55ba5901e2f5fcf82b3279d349cdc
+ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/14/2019
-ms.locfileid: "65602081"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66472575"
 ---
 # <a name="how-to-query-logs-from-azure-monitor-for-vms-preview"></a>Abfragen von Protokollen aus Azure Monitor für VMs (Vorschauversion)
 Azure Monitor für VMs erfasst Leistungs- und Verbindungsmetriken, Inventurdaten von Computern und Prozessen sowie Informationen zum Integritätsstatus und leitet diese an den Log Analytics-Arbeitsbereich in Azure Monitor weiter.  Diese Daten stehen in Azure Monitor für [Abfragen](../../azure-monitor/log-query/log-query-overview.md) zur Verfügung. Diese Daten können in verschiedenen Szenarios von Nutzen sein, z.B. bei der Migrationsplanung, Kapazitätsanalyse, Ermittlung und Ad-hoc-Behebung von Leistungsproblemen.
@@ -69,7 +69,7 @@ Um dem Einfluss der Gruppierung Rechnung zu tragen, werden Informationen über d
 |LinksFailed |Die Anzahl der physischen Netzwerkverbindungen, die während des Berichtszeitraums für ungültig erklärt wurden. Diese Informationen sind derzeit nur für ausgehende Verbindungen verfügbar. |
 |LinksLive |Die Anzahl der physischen Netzwerkverbindungen, die am Ende des Berichtszeitraums offen waren|
 
-#### <a name="metrics"></a>Metriken
+#### <a name="metrics"></a>metrics
 
 Über Metriken zur Verbindungsanzahl hinaus sind in den folgenden Eigenschaften des Datensatzes auch Informationen über das Volumen der gesendeten und empfangenen Daten für eine bestimmte logische Verbindung oder einen bestimmten Netzwerkport enthalten:
 
@@ -125,13 +125,6 @@ Jede RemoteIp-Eigenschaft in der Tabelle *VMConnection* wird anhand einer Sammlu
 ### <a name="ports"></a>Ports 
 Ports auf einem Computer, die aktiv eingehenden Datenverkehr akzeptieren oder Datenverkehr akzeptieren können und sich während des Berichtszeitraums im Leerlauf befinden, werden in die Tabelle „VMBoundPort“ eingetragen.  
 
->[!NOTE]
->Azure Monitor für VMs unterstützt in den folgenden Regionen nicht das Sammeln und Erfassen von Portdaten in einem Log Analytics-Arbeitsbereich:  
->- USA (Ost)  
->- Europa, Westen
->
-> Das Sammeln dieser Daten ist in den anderen [unterstützten Regionen](vminsights-enable-overview.md#log-analytics) für Azure Monitor für VMs aktiviert. 
-
 Jeder Datensatz in der Tabelle „VMBoundPort“ wird mit den folgenden Feldern definiert: 
 
 | Eigenschaft | Description |
@@ -143,7 +136,7 @@ Jeder Datensatz in der Tabelle „VMBoundPort“ wird mit den folgenden Feldern 
  
 Die Identität eines Ports ergibt aus den obigen fünf Feldern und wird in der Eigenschaft „PortId“ gespeichert. Diese Eigenschaft kann dazu verwendet werden, Datensätze für einen bestimmten Port für einen Zeitraum schnell zu finden. 
 
-#### <a name="metrics"></a>Metriken 
+#### <a name="metrics"></a>metrics 
 Portdatensätze umfassen Metriken, die die zugeordneten Verbindungen darstellen. Derzeit werden die folgenden Metriken gemeldet (die Details zu den einzelnen Metriken finden Sie im vorherigen Abschnitt): 
 
 - BytesSent und BytesReceived 

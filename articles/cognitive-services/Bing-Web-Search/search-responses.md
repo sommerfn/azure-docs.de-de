@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 02/12/2019
 ms.author: aahi
 ms.custom: seodec2018
-ms.openlocfilehash: 07fb655af25fe590effcb885e7b366346724b50a
-ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
+ms.openlocfilehash: 85087ce5a4fa3dd733f47a35bc18d76f1f4bc652
+ms.sourcegitcommit: 6ea7f0a6e9add35547c77eef26f34d2504796565
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56232891"
+ms.lasthandoff: 05/14/2019
+ms.locfileid: "65606691"
 ---
 # <a name="bing-web-search-api-response-structure-and-answer-types"></a>Antwortstruktur und Antworttypen der Bing-Websuche-API  
 
@@ -326,7 +326,7 @@ Mathematische Ausdrücke, die Variablen enthalten (z.B. 4x + 6 = 18, wobei x die
 
 ## <a name="timezone-answer"></a>Antwort zur Zeitzone
 
-Wenn der Benutzer eine Abfrage zu Uhrzeit oder Datum eingibt, kann die Antwort eine Antwort vom Typ [TimeZone](https://docs.microsoft.com/rest/api/cognitiveservices/bing-web-api-v7-reference#timezone) enthalten. Diese Antwort unterstützt implizite oder explizite Abfragen. Bei einer impliziten Abfrage, z.B. *Wie spät ist es?*, wird die Ortszeit basierend auf dem Standort des Benutzers zurückgegeben. Bei einer expliziten Abfrage, z.B. *Wie spät ist es in Seattle?*, wird die Ortszeit für Seattle, Washington, USA zurückgegeben.
+Wenn der Benutzer eine Abfrage zu Uhrzeit oder Datum eingibt, kann die Antwort eine Antwort vom Typ [TimeZone](https://docs.microsoft.com/rest/api/cognitiveservices/bing-web-api-v7-reference#timezone) enthalten. Diese Antwort unterstützt implizite oder explizite Abfragen. Bei einer impliziten Abfrage, z.B. *Wie spät ist es?* , wird die Ortszeit basierend auf dem Standort des Benutzers zurückgegeben. Bei einer expliziten Abfrage, z.B. *Wie spät ist es in Seattle?* , wird die Ortszeit für Seattle, Washington, USA zurückgegeben.
 
 Die Antwort vom Typ `timeZone` beinhaltet den Namen des Standorts, das aktuelle UTC-Datum und die aktuelle UTC-Zeit am angegebenen Standort sowie die UTC-Abweichung. Wenn sich die Standortgrenzen in mehreren Zeitzonen befinden, enthält die Antwort das aktuelle UTC-Datum und die aktuelle UTC-Zeit aller Zeitzonen innerhalb der Grenzen. Da der US-Bundesstaat Florida in zwei Zeitzonen liegt, enthält die Antwort beispielsweise das lokale Datum und die Ortszeit beider Zeitzonen.  
 

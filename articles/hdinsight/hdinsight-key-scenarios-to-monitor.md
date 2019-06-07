@@ -8,12 +8,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 11/06/2018
 ms.author: arindamc
-ms.openlocfilehash: 22484885663a4f9a908ae988882b87612129251a
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 9a6a63748ef36bbbceb00bc815616f2cb12692a7
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64693224"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65799792"
 ---
 # <a name="monitor-cluster-performance"></a>Überwachen der Clusterleistung
 
@@ -30,7 +30,7 @@ Melden Sie sich bei der [Ambari-Webbenutzeroberfläche](hdinsight-hadoop-manage-
 | Farbe | BESCHREIBUNG |
 | --- | --- |
 | Rot | Mindestens eine Master-Komponente auf dem Host ist ausgefallen. Zeigen Sie mit der Maus darauf, um eine QuickInfo mit den betroffenen Komponenten anzuzeigen. |
-| Orange | Mindestens eine untergeordnete Komponente auf dem Host ist ausgefallen. Zeigen Sie mit der Maus darauf, um eine QuickInfo mit den betroffenen Komponenten anzuzeigen. |
+| Orange | Mindestens eine sekundäre Komponente auf dem Host ist ausgefallen. Zeigen Sie mit der Maus darauf, um eine QuickInfo mit den betroffenen Komponenten anzuzeigen. |
 | Gelb | Ambari Server hat seit mehr als drei Minuten keinen Heartbeat vom Host empfangen. |
 | Grün | Normaler Ausführungszustand |
 

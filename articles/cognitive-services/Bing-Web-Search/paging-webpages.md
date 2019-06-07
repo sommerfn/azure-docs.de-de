@@ -9,14 +9,14 @@ ms.assetid: 26CA595B-0866-43E8-93A2-F2B5E09D1F3B
 ms.service: cognitive-services
 ms.subservice: bing-web-search
 ms.topic: conceptual
-ms.date: 08/20/2018
+ms.date: 05/15/2019
 ms.author: aahi
-ms.openlocfilehash: 68b99e7f0763f46c705a1ff2ba3a0e90216429c2
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: fa02c0913329ec740e3066b05b2e44a36ad379ce
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55878594"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65797800"
 ---
 # <a name="how-to-page-through-results-from-the-bing-web-search-api"></a>Durchblättern der Suchergebnisse der Bing-Websuche-API
 
@@ -24,7 +24,7 @@ Wenn Sie die API für die Websuche aufrufen, gibt Bing eine Liste mit Ergebnisse
 
 Das folgende Beispiel zeigt das `totalEstimatedMatches`-Feld mit einer Webantwort.  
 
-```
+```json
 {
     "_type" : "SearchResponse",
     "webPages" : {
@@ -65,3 +65,7 @@ Wenn Sie den `responseFilter`-Abfrageparameter angeben, aber Webseiten nicht in 
 
 > [!NOTE]
 > Das Feld `TotalEstimatedAnswers` gibt eine Schätzung der Gesamtzahl der Suchergebnisse an, die Sie für die aktuelle Abfrage abrufen können.  Wenn Sie die Parameter `count` und `offset` festlegen, kann sich der Wert von `TotalEstimatedAnswers` ändern. 
+
+## <a name="next-steps"></a>Nächste Schritte
+
+* [Was ist die Bing-Websuche-API](overview.md)?

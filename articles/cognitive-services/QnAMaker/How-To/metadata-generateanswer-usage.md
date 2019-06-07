@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: article
-ms.date: 04/16/2019
+ms.date: 05/10/2019
 ms.author: tulasim
-ms.openlocfilehash: c18ededc428b215720f8a6a6857a2eabd93bff8b
-ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
+ms.openlocfilehash: 2454e07e4fc4600f846acc7afbcc19cc0b677450
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59683587"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65792235"
 ---
 # <a name="get-a-knowledge-answer-with-the-generateanswer-api-and-metadata"></a>Abrufen einer wissensbasierten Antwort mit der GenerateAnswer-API und Metadaten
 
@@ -43,7 +43,7 @@ Sie verwenden die GenerateAnswer-API in Ihrem Bot oder Ihrer Anwendung, um die K
 
 ## <a name="publish-to-get-generateanswer-endpoint"></a>Veröffentlichen am GenerateAnswer-Endpunkt 
 
-Nachdem Sie Ihre Knowledge Base im [QnA Maker-Portal](https://www.qnamaker.ai) oder mithilfe der [API](https://westus.dev.cognitive.microsoft.com/docs/services/5a93fcf85b4ccd136866eb37/operations/5ac266295b4ccd1554da75ff) veröffentlicht haben, können Sie die Details von Ihrem GenerateAnswer-Endpunkt abrufen.
+Nachdem Sie Ihre Knowledge Base im [QnA Maker-Portal](https://www.qnamaker.ai) oder mithilfe der [API](https://go.microsoft.com/fwlink/?linkid=2092179) veröffentlicht haben, können Sie die Details von Ihrem GenerateAnswer-Endpunkt abrufen.
 
 So rufen Sie Endpunktdetails ab
 1. Melden Sie sich bei [https://www.qnamaker.ai](https://www.qnamaker.ai) an.
@@ -83,6 +83,7 @@ Der JSON-Text verfügt über mehrere Einstellungen:
 |`question`|required|Zeichenfolge|Eine Benutzerfrage, die an die Wissensdatenbank gesendet werden soll.|
 |`top`|optional|integer|Anzahl der priorisierten Ergebnisse für die Ausgabe Der Standardwert ist 1.|
 |`userId`|optional|Zeichenfolge|Eindeutige ID zur Identifizierung des Benutzers. Diese ID wird in den Chatprotokollen aufgezeichnet.|
+|`scoreThreshold`|optional|integer|Es werden nur Antworten mit einer Zuverlässigkeitsbewertung über diesem Schwellenwert zurückgegeben. Der Standardwert ist 0.|
 |`isTest`|optional|boolean|Wenn auf TRUE festgelegt, werden Ergebnisse aus dem `testkb`-Suchindex anstatt aus dem veröffentlichten Index zurückgegeben.|
 |`strictFilters`|optional|Zeichenfolge|Weist (sofern angegeben) QnA Maker an, nur Antworten mit den angegebenen Metadaten zurückzugeben. Verwenden Sie `none`, um festzulegen, dass die Antwort keine Metadatenfilter enthalten soll. |
 
@@ -93,6 +94,7 @@ Ein JSON-Beispieltext sieht folgendermaßen aus:
     "question": "qna maker and luis",
     "top": 6,
     "isTest": true,
+    "scoreThreshold": 20,
     "strictFilters": [
     {
         "name": "category",
@@ -114,7 +116,7 @@ Eine erfolgreiche Antwort gibt den Status 200 und eine JSON-Antwort zurück.
 |id|Die der Antwort zugewiesene eindeutige ID|
 |Fragen|Fragen des Benutzers|
 |answer (Annehmen)|Die Antwort auf die Frage|
-|Quelle|Name der Quelle, aus der die Antwort extrahiert oder in der Wissensdatenbank gespeichert wurde|
+|source|Name der Quelle, aus der die Antwort extrahiert oder in der Wissensdatenbank gespeichert wurde|
 |metadata|Die der Antwort zugeordneten Metadaten|
 |metadata.name|Metadatenname (Zeichenfolge, maximale Länge: 100, erforderlich)|
 |metadata.value: Metadatenwert (Zeichenfolge, maximale Länge: 100, erforderlich)|
@@ -146,7 +148,7 @@ Eine erfolgreiche Antwort gibt den Status 200 und eine JSON-Antwort zurück.
 
 ## <a name="using-metadata-allows-you-to-filter-answers-by-custom-metadata-tags"></a>Mithilfe von Metadaten können Sie Antworten nach benutzerdefinierten Metadatentags filtern.
 
-Durch das Hinzufügen von Metadaten können Sie die Antworten nach diesen Metadatentags filtern. Sehen Sie sich die folgenden FAQ-Daten an. Fügen Sie Ihrer Wissensdatenbank Metadaten hinzu, indem Sie auf das Metadatensymbol klicken.
+Durch das Hinzufügen von Metadaten können Sie die Antworten nach diesen Metadatentags filtern. Fügen Sie die Metadatenspalte aus dem Menü **Ansichtsoptionen** hinzu. Fügen Sie Ihrer Wissensdatenbank Metadaten hinzu, indem Sie auf das Metadatensymbol **+** klicken, um ein Metadatenpaar hinzuzufügen. Dieses Paar besteht aus einem Schlüssel und einen Wert.
 
 ![Hinzufügen von Metadaten](../media/qnamaker-how-to-metadata-usage/add-metadata.png)
 

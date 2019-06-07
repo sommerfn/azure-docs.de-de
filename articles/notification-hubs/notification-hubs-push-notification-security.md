@@ -14,12 +14,12 @@ ms.devlang: multiple
 ms.topic: article
 ms.date: 01/04/2019
 ms.author: jowargo
-ms.openlocfilehash: bd9df12cbe941b868c769daccd02c1d81b39f7bd
-ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
+ms.openlocfilehash: 22494984ca45cde7255fb5e1a30548c859bfad68
+ms.sourcegitcommit: be9fcaace62709cea55beb49a5bebf4f9701f7c6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54465359"
+ms.lasthandoff: 05/17/2019
+ms.locfileid: "65826515"
 ---
 # <a name="security-model-of-azure-notification-hubs"></a>Sicherheitsmodell von Azure Notification Hubs
 
@@ -50,3 +50,6 @@ Beachten Sie unbedingt, dass der Schlüssel mit Lauschzugriff einer Clientanwend
 | Verwalten  | CRUDs für Notification Hubs (einschließlich des Aktualisierens von PNS-Anmeldeinformationen und Sicherheitsschlüsseln) und Lesen von Registrierungen basierend auf Tags |Erstellen/Aktualisieren/Lesen/Löschen von Notification Hubs<br><br>Lesen von Registrierungen nach Tag |
 
 Notification Hubs akzeptieren Ansprüche, die durch Microsoft Azure Access Control-Token und von Signaturtoken mit freigegebenen Schlüsseln, die direkt auf dem Notification Hub konfiguriert wurden, erteilt werden.
+
+Es ist nicht möglich, eine Benachrichtigung an mehr als einen Namespace zu senden. Namespaces sind logische Container für Notification Hubs und nicht am Senden von Benachrichtigungen beteiligt.
+Die Zugriffsrichtlinien auf Namespaceebene (Anmeldeinformationen) können für Vorgänge auf Namespaceebene verwendet werden. Beispiel: Auflistung von Notification Hubs, Erstellen oder Löschen von Notification Hubs, usw. Nur die Zugriffsrichtlinien auf Hubebene würden es Ihnen gestatten, Benachrichtigungen zu senden.

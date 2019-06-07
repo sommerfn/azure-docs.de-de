@@ -8,12 +8,12 @@ ms.subservice: ''
 ms.topic: article
 ms.date: 09/27/2018
 ms.author: alkohli
-ms.openlocfilehash: d62ad37e6bbe9c89ef803cefc43f373e287a7af7
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 5b392fecd75f5c18793a6122b8d5d967a2e54afa
+ms.sourcegitcommit: 6ea7f0a6e9add35547c77eef26f34d2504796565
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58100444"
+ms.lasthandoff: 05/14/2019
+ms.locfileid: "65604444"
 ---
 # <a name="open-a-support-ticket-for-azure-data-box"></a>Öffnen eines Supporttickets für Azure Data Box 
 
@@ -56,7 +56,7 @@ Führen Sie die folgenden Schritte aus, um eine Supportanfrage zu erstellen.
 4. Klicken Sie unter **Neue Supportanfrage** auf Schritt 3 **Kontaktinformationen**. Führen Sie unter **Kontaktinformationen** folgende Schritte aus:
 
    1. Geben Sie in **Kontaktoptionen** Ihre bevorzugte Kontaktmethode (telefonisch oder per E-Mail) und die Sprache ein. Die Antwortzeit wird die anhand Ihres Abonnementplans automatisch ausgewählt.
-   2. Geben Sie in den **Kontaktinformationen** Ihren Namen, Ihre E-Mail-Adresse, einen optionalen Kontakt und das Land ein. Aktivieren Sie die Option **Änderungen an den Kontaktdaten für zukünftige Supportanfragen speichern**.
+   2. Geben Sie in den **Kontaktinformationen** Ihren Namen, Ihre E-Mail-Adresse, einen optionalen Kontakt und das Land/die Region ein. Aktivieren Sie die Option **Änderungen an den Kontaktdaten für zukünftige Supportanfragen speichern**.
    3. Klicken Sie auf **Create**.
    
        ![Kontaktinformationen](./media/data-box-disk-contact-microsoft-support/data-box-disk-support3.png)   
