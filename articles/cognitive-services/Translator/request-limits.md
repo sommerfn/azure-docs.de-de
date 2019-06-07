@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: conceptual
-ms.date: 02/21/2019
+ms.date: 06/04/2019
 ms.author: erhopf
-ms.openlocfilehash: 91cc002f373318e5124fc21f76edbfd000d17238
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: c19e39918aa64730a35a27fcdadd70800f47f4fa
+ms.sourcegitcommit: adb6c981eba06f3b258b697251d7f87489a5da33
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65796909"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66514651"
 ---
 # <a name="request-limits-for-translator-text"></a>Anforderungslimits für die Textübersetzungs-API
 
@@ -38,7 +38,7 @@ In der folgenden Tabelle sind Arrayelement- und Zeichengrenzwerte für jeden Vor
 
 ## <a name="character-limits-per-hour"></a>Zeichengrenzwerte pro Stunde
 
-Ihre Zeichengrenzwerte pro Stunde basieren auf der Abonnementebene der Textübersetzungs-API. Das Stundenkontingent sollte gleichmäßig über die gesamte Stunde verbraucht werden. Wenn Sie diese Grenzwerte erreichen oder überschreiten oder einen zu großen Teil des Kontingents in kurzer Zeit senden, werden Sie wahrscheinlich eine Antwort zur Kontingentüberschreitung erhalten. 
+Ihre Zeichengrenzwerte pro Stunde basieren auf der Abonnementebene der Textübersetzungs-API. Das Stundenkontingent sollte gleichmäßig über die gesamte Stunde verbraucht werden. Wenn Sie diese Grenzwerte erreichen oder überschreiten oder einen zu großen Teil des Kontingents in kurzer Zeit senden, werden Sie wahrscheinlich eine Antwort zur Kontingentüberschreitung erhalten.
 
 | Tarif | Zeichengrenzwert |
 |------|-----------------|

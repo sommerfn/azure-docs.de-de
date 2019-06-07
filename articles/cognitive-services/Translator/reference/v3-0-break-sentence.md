@@ -3,19 +3,19 @@ title: BreakSentence-Methode der Textübersetzungs-API
 titlesuffix: Azure Cognitive Services
 description: Verwenden Sie die BreakSentence-Methode der Textübersetzungs-API.
 services: cognitive-services
-author: v-pawal
+author: rajdeep-in
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: reference
 ms.date: 02/01/2019
-ms.author: v-jansko
-ms.openlocfilehash: b2c0fbbfbcd2e3cf71ef85b9d06f2f805698bfd0
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.author: v-pawal
+ms.openlocfilehash: 0ecb620757bc58b109747f69eb3b5afe0c56bac4
+ms.sourcegitcommit: 3d4121badd265e99d1177a7c78edfa55ed7a9626
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65797429"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66387556"
 ---
 # <a name="translator-text-api-30-breaksentence"></a>Textübersetzungs-API 3.0: BreakSentence
 
@@ -41,7 +41,7 @@ Die folgenden Anforderungsparameter werden in der Abfragezeichenfolge übergeben
     <td>*Erforderlicher Abfrageparameter*<br/>Die vom Client angeforderte Version der API. Der Wert muss `3.0` sein.</td>
   </tr>
   <tr>
-    <td>Language</td>
+    <td>language</td>
     <td>*Optionaler Abfrageparameter*<br/>Sprachtag, das die Sprache des Eingabetexts angibt. Wenn kein Code angegeben ist, wird die automatische Spracherkennung angewendet.</td>
   </tr>
   <tr>
