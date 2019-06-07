@@ -114,7 +114,7 @@ Alle Ereignisse enthalten die gleichen Daten der obersten Ebene:
 | Eigenschaft | Typ | BESCHREIBUNG |
 | -------- | ---- | ----------- |
 | id | Zeichenfolge | Eindeutiger Bezeichner für das Ereignis. |
-| Thema | Zeichenfolge | Vollständiger Ressourcenpfad zu der Ereignisquelle. Dieses Feld ist nicht beschreibbar. Dieser Wert wird von Event Grid bereitgestellt. |
+| topic | Zeichenfolge | Vollständiger Ressourcenpfad zu der Ereignisquelle. Dieses Feld ist nicht beschreibbar. Dieser Wert wird von Event Grid bereitgestellt. |
 | subject | Zeichenfolge | Vom Herausgeber definierter Pfad zum Ereignisbetreff |
 | eventType | Zeichenfolge | Einer der registrierten Ereignistypen für die Ereignisquelle. |
 | eventTime | Zeichenfolge | Die Zeit, in der das Ereignis generiert wird, basierend auf der UTC-Zeit des Anbieters. |
@@ -154,7 +154,7 @@ Die Inhalte des Datenobjekts unterscheiden sich für jeden Ereignisherausgeber. 
 | x509Thumbprint | Zeichenfolge | Der Fingerabdruck ist ein eindeutiger Wert für das x509-Zertifikat. Dieser wird üblicherweise zur Suche nach einem bestimmten Zertifikat in einem Zertifikatspeicher verwendet. Der Fingerabdruck wird mithilfe des SHA1-Algorithmus dynamisch generiert und ist nicht physisch im Zertifikat vorhanden. | 
 | primaryThumbprint | Zeichenfolge | Der primäre Fingerabdruck für das x509-Zertifikat. |
 | secondaryThumbprint | Zeichenfolge | Der sekundäre Fingerabdruck für das x509-Zertifikat. | 
-| Version | integer | Ein ganzzahliger Wert, der bei jeder Aktualisierung des Gerätezwillings um 1 erhöht wird. |
+| version | integer | Ein ganzzahliger Wert, der bei jeder Aktualisierung des Gerätezwillings um 1 erhöht wird. |
 | desired | object | Ein Teil der Eigenschaften, der nur vom Anwendungs-Back-End geschrieben und vom Gerät gelesen werden kann. | 
 | reported | object | Ein Teil der Eigenschaften, der nur vom Gerät geschrieben und vom Anwendungs-Back-End gelesen werden kann. |
 | lastUpdated | Zeichenfolge | Der ISO8601-Zeitstempel der letzten Eigenschaftenaktualisierung für den Gerätezwilling. | 
