@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/07/2019
 ms.author: rkarlin
-ms.openlocfilehash: 9b899bcae473edfccbf587baece27089fc001ff4
-ms.sourcegitcommit: d73c46af1465c7fd879b5a97ddc45c38ec3f5c0d
+ms.openlocfilehash: 40ee73b8cc9b95a4e2030ac38a6c322918dc878e
+ms.sourcegitcommit: 3d4121badd265e99d1177a7c78edfa55ed7a9626
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/20/2019
-ms.locfileid: "65921839"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66389095"
 ---
 # <a name="connect-your-palo-alto-networks-appliance"></a>Verbinden Ihrer Palo Alto Networks-Appliance
 
@@ -125,7 +125,7 @@ Es kann bis zu 20 Minuten dauern, bis Ihre Protokolle in Log Analytics angezeig
 
 3. Stellen Sie sicher, dass die Protokolle, die Sie senden [RFC 5424](https://tools.ietf.org/html/rfc542) erfüllen.
 
-4. Auf dem Computer, auf dem der Syslog-Agent ausgeführt wird, stellen Sie sicher, dass die Ports 514 und 25226 geöffnet sind und lauschen, indem Sie den Befehl `netstat -a -n:` verwenden. Weitere Informationen zur Verwendung dieses Befehls finden Sie auf der [Linux-Manpage „netstat(8)“](https://linux.die.netman/8/netstat). Wenn sie ordnungsgemäß lauschen, wird Folgendes angezeigt:
+4. Auf dem Computer, auf dem der Syslog-Agent ausgeführt wird, stellen Sie sicher, dass die Ports 514 und 25226 geöffnet sind und lauschen, indem Sie den Befehl `netstat -a -n:` verwenden. Weitere Informationen zur Verwendung dieses Befehls finden Sie auf der [Linux-Manpage „netstat(8)“](https://linux.die.net/man/8/netstat). Wenn sie ordnungsgemäß lauschen, wird Folgendes angezeigt:
 
    ![Azure Sentinel-Ports](./media/connect-cef/ports.png) 
 

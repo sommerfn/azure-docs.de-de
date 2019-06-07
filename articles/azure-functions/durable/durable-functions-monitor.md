@@ -10,12 +10,12 @@ ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 12/07/2018
 ms.author: azfuncdf
-ms.openlocfilehash: 243a388ee59a1a550f80882b0af61e1f1db008ca
-ms.sourcegitcommit: 59fd8dc19fab17e846db5b9e262a25e1530e96f3
+ms.openlocfilehash: 9d5e06c3d72d87a87b41a52ed4df369ebc04dccd
+ms.sourcegitcommit: 3d4121badd265e99d1177a7c78edfa55ed7a9626
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/21/2019
-ms.locfileid: "65977434"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66387093"
 ---
 # <a name="monitor-scenario-in-durable-functions---weather-watcher-sample"></a>Überwachungsszenario in Durable Functions – Beispiel einer Wetterbeobachtungsstation
 
@@ -42,7 +42,7 @@ Dieses Beispiel überwacht die aktuellen Wetterbedingungen an einem bestimmten O
 
 In diesem Beispiel wird die Weather Underground-API verwenden, um die Wetterbedingungen an einem Standort zu beobachten.
 
-Als Erstes benötigen Sie ein Weather Underground-Konto. Unter [https://www.wunderground.com/signup](https://www.wunderground.com/signup) können Sie kostenlos eines erstellen. Sobald Sie über das Konto verfügen, müssen Sie einen API-Schlüssel abrufen. Öffnen Sie dazu die Website [https://www.wunderground.com/weather/api](https://www.wunderground.com/weather/api), und wählen Sie „Key Settings“ (Schlüsseleinstellungen) aus. Der Stratus Developer-Plan ist kostenlos und für dieses Beispiel ausreichend.
+Als Erstes benötigen Sie ein Weather Underground-Konto. Unter [https://www.wunderground.com/signup](https://www.wunderground.com/signup) können Sie kostenlos eines erstellen. Sobald Sie über das Konto verfügen, müssen Sie einen API-Schlüssel abrufen. Öffnen Sie dazu die Website [https://www.wunderground.com/weather/api](https://www.wunderground.com/weather/api/?MR=1), und wählen Sie „Key Settings“ (Schlüsseleinstellungen) aus. Der Stratus Developer-Plan ist kostenlos und für dieses Beispiel ausreichend.
 
 Wenn Sie den API-Schlüssel haben, fügen Sie die folgenden **App-Einstellungen** zu Ihrer Funktions-App hinzu.
 

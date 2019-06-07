@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 06/25/2018
 ms.reviewer: sdash
 ms.author: mbullwin
-ms.openlocfilehash: 37de2de18656f0f8ba85495b3fd72315e0bd885b
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: f57d80adc7c77f2d874d13a68214cd638a2ac2a0
+ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58113077"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65957287"
 ---
 # <a name="automate-custom-reports-with-azure-application-insights-data"></a>Automatisieren von benutzerdefinierten Berichten mit Azure Application Insights-Daten
 
@@ -92,7 +92,10 @@ availabilityResults
 
    ![Screenshot: Erstellen einer neuen Funktion](./media/automate-custom-reports/function-app-03.png)
 
-5. Klicken Sie auf die Vorlage **_AppInsights: Geplante Übersicht_**.
+5. Klicken Sie auf die Vorlage **_AppInsights: Geplante Übersicht_** .
+
+     > [!NOTE]
+     > Standardmäßig werden Funktionen-Apps mit Runtimeversion 2.x erstellt. Sie müssen [Runtimeversion 1.x von Azure Functions als Ziel einstellen](https://docs.microsoft.com/azure/azure-functions/set-runtime-version), um die Vorlage „AppInsights: Geplante Übersicht“ zu verwenden.
 
    ![Screenshot: Neue Funktion – Application Insights-Vorlage](./media/automate-custom-reports/function-app-04.png)
 
@@ -100,7 +103,7 @@ availabilityResults
 
    ![Screenshot: Funktionseinstellungen](./media/automate-custom-reports/function-app-05.png)
 
-7. Klicken Sie auf **<Ihre Funktionen-App>** > **Plattformfeatures** > **Anwendungseinstellungen**.
+7. Klicken Sie auf **<Ihre Funktionen-App>**  > **Plattformfeatures** > **Anwendungseinstellungen**.
 
     ![Screenshot: Azure-Funktionen-App – Einstellungen](./media/automate-custom-reports/function-app-07.png)
 
@@ -117,7 +120,7 @@ availabilityResults
      > [!NOTE]
      > Falls Sie über kein SendGrid-Konto verfügen, können Sie eines erstellen. Die SendGrid-Dokumentation für Azure Functions finden Sie [hier](https://docs.microsoft.com/azure/azure-functions/functions-bindings-sendgrid). Eine kurze Erläuterung der Vorgehensweise zum Einrichten von SendGrid sowie zum Generieren eines API-Schlüssels finden Sie am Ende dieses Artikels. 
 
-9. Klicken Sie auf **Integrieren** und anschließend unter „Ausgaben“ auf **SendGrid ($return)**.
+9. Klicken Sie auf **Integrieren** und anschließend unter „Ausgaben“ auf **SendGrid ($return)** .
 
      ![Screenshot: Ausgabe](./media/automate-custom-reports/function-app-09.png)
 

@@ -9,12 +9,12 @@ ms.date: 10/24/2018
 ms.author: tamram
 ms.reviewer: artek
 ms.subservice: common
-ms.openlocfilehash: 9fd594fb264ff0467cc315f59927cd157068d522
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.openlocfilehash: 3d4c40e172352fc2d92ea5523cad2aebe5468e1e
+ms.sourcegitcommit: e9a46b4d22113655181a3e219d16397367e8492d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65146171"
+ms.lasthandoff: 05/21/2019
+ms.locfileid: "65961436"
 ---
 # <a name="zone-redundant-storage-zrs-highly-available-azure-storage-applications"></a>Zonenredundanter Speicher (ZRS): Hochverfügbare Azure Storage-Anwendungen
 [!INCLUDE [storage-common-redundancy-ZRS](../../../includes/storage-common-redundancy-zrs.md)]
@@ -32,10 +32,10 @@ ZRS ist in den folgenden Regionen verfügbar:
 - Frankreich, Mitte
 - Japan, Osten
 - UK, Süden
+- USA, Mitte
 - USA, Osten
 - USA (Ost 2)
 - USA, Westen 2
-- USA, Mitte
 
 Microsoft arbeitet daran, ZRS in weiteren Azure-Regionen zu aktivieren. Sehen Sie regelmäßig auf der Seite [Azure-Updates](https://azure.microsoft.com/updates/) nach, um Informationen zu neuen Regionen zu erhalten.
 
@@ -75,6 +75,7 @@ Beachten Sie die folgenden Einschränkungen bei Livemigrationen:
 - Sie können Daten nur innerhalb der gleichen Region migrieren. Wenn Sie Ihre Daten in ein ZRS-Konto zu einer anderen Region als das Quellkonto migrieren möchten, müssen Sie eine manuelle Migration ausführen.
 - Nur Standard-Speicherkontotypen unterstützen die Livemigration. Premium-Speicherkonten müssen manuelle migriert werden.
 - Die Livemigration von ZRS zu LRS, GRS oder RA-GRS wird nicht unterstützt. Sie müssen diese Daten manuell in ein neues oder vorhandenes Speicherkonto verschieben.
+- Verwaltete Datenträger sind nur für LRS verfügbar und können nicht zu ZRS migriert werden. Informationen zur Integration in Verfügbarkeitsgruppen finden Sie unter [Einführung in verwaltete Azure-Datenträger](https://docs.microsoft.com/azure/virtual-machines/windows/managed-disks-overview#integration-with-availability-sets). Sie können Momentaufnahmen und Images für verwaltete SSD Standard-Datenträger auf HDD Standard Storage speichern und [zwischen LRS- und ZRS-Optionen wählen](https://azure.microsoft.com/pricing/details/managed-disks/). 
 
 Sie können eine Livemigration über das [Azure-Support-Portal](https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview) anfordern. Wählen Sie im Portal das Speicherkonto aus, das Sie in ZRS konvertieren möchten.
 1. Wählen Sie **Neue Supportanfrage** aus.

@@ -7,19 +7,19 @@ ms.subservice: single-database
 ms.custom: ''
 ms.devlang: ''
 ms.topic: conceptual
-author: CarlRabeler
-ms.author: carlrab
+author: stevestein
+ms.author: sstein
 ms.reviewer: ''
 manager: craigg
 ms.date: 04/22/2019
-ms.openlocfilehash: 7dcbf2733ff23b0454208dbc789599cd372278ec
-ms.sourcegitcommit: 8fc5f676285020379304e3869f01de0653e39466
+ms.openlocfilehash: 15aedaa7eedad4940945e9b1e7eff0e1780da796
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/09/2019
-ms.locfileid: "65507834"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65790400"
 ---
-# <a name="azure-sql-database-vcore-based-purchasing-model-limits-for-a-single-database"></a>Limits des vCore-basierten Kaufmodells für eine Einzeldatenbank in Azure SQL-Datenbank
+# <a name="resource-limits-for-single-databases-using-the-vcore-based-purchasing-model"></a>Ressourcenlimits für Einzeldatenbanken, die das auf virtuellen Kernen (V-Kernen) basierende (vCore-basierte) Kaufmodell verwenden
 
 Dieser Artikel enthält ausführliche Angaben zu Ressourcenlimits für Einzeldatenbanken in Azure SQL-Datenbank, die das vCore-basierte Kaufmodell verwenden.
 
@@ -129,7 +129,7 @@ Sie können mit dem [Azure-Portal](sql-database-single-databases-manage.md#manag
 
 ### <a name="serverless-compute-tier"></a>Serverlose Computeebene
 
-Die [serverlose Computeebene](sql-database-serverless.md) ist in der öffentlichen Vorschauversion und gilt nur für einzelne Datenbanken, die das V-Kern-Kaufmodell verwenden.
+Die [serverlose Computeebene](sql-database-serverless.md) ist in der Vorschauversion und gilt nur für einzelne Datenbanken, die das V-Kern-Kaufmodell verwenden.
 
 #### <a name="generation-5-compute-platform"></a>Computeplattform der 5. Generation
 

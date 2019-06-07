@@ -12,12 +12,12 @@ ms.author: josack
 ms.reviewer: sstein
 manager: craigg
 ms.date: 02/13/2019
-ms.openlocfilehash: a83bc6518409add8a0732e5a0b17ab46c36564af
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: e13907e96bba338648bddcc102e3b4f51887d0ea
+ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59358414"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65949909"
 ---
 # <a name="new-dba-in-the-cloud--managing-your-single-and-pooled-databases-in-azure-sql-database"></a>Neuer DBA in der Cloud: Verwalten Ihrer Einzel- und Pooldatenbanken in Azure SQL-Datenbank
 
@@ -127,7 +127,7 @@ Sie können auch [reservierte IP-Adressen](../virtual-network/virtual-networks-r
 
 ### <a name="what-port-do-i-connect-to-sql-database-on"></a>Über welchen Port werden Verbindungen mit SQL-Datenbank hergestellt?
 
-Über Port 1433. SQL-Datenbank kommuniziert über diesen Port. Um Verbindungen aus einem Unternehmensnetzwerk herzustellen, müssen Sie in den Firewalleinstellungen Ihrer Organisation eine ausgehende Regel hinzufügen. Port 1433 sollte grundsätzlich nicht außerhalb von Azure verfügbar gemacht werden. SSMS kann in Azure mithilfe der [Azure RemoteApp](https://www.microsoft.com/cloud-platform/azure-remoteapp-client-apps) ausgeführt werden. Dafür müssen Sie keine ausgehenden Verbindungen mit Port 1433 öffnen. Die IP-Adresse ist statisch, sodass die Datenbank nur für die RemoteApp geöffnet sein kann. Außerdem unterstützt sie die mehrstufige Authentifizierung (Multi Factor Authentication, MFA).
+Über Port 1433. SQL-Datenbank kommuniziert über diesen Port. Um Verbindungen aus einem Unternehmensnetzwerk herzustellen, müssen Sie in den Firewalleinstellungen Ihrer Organisation eine ausgehende Regel hinzufügen. Port 1433 sollte grundsätzlich nicht außerhalb von Azure verfügbar gemacht werden.
 
 ### <a name="how-can-i-monitor-and-regulate-activity-on-my-server-and-database-in-sql-database"></a>Wie werden Aktivitäten auf dem Server und in der Datenbank in SQL-Datenbank überwacht und geregelt?
 
@@ -152,7 +152,7 @@ Zum Schutz sensibler Daten, die aktiv oder ruhend sein können, bietet SQL-Daten
 |**Merkmale**|**Always Encrypted**|**Transparente Datenverschlüsselung (TDE)**|
 |---|---|---|
 |**Umfang der Verschlüsselung**|Komplettlösung|Ruhende Daten|
-|**Datenbankserver kann auf sensible Daten zuzugreifen.**|Nein |Ja, da die Verschlüsselung ruhende Daten betrifft.|
+|**Datenbankserver kann auf sensible Daten zuzugreifen.**|Nein|Ja, da die Verschlüsselung ruhende Daten betrifft.|
 |**Zulässige T-SQL-Vorgänge**|Übereinstimmungsvergleich|Die gesamte T-SQL-Oberfläche ist verfügbar.|
 |**Sind zur Verwendung der Funktion Änderungen an Apps erforderlich?**|Wenig|Sehr wenig|
 |**Granularität der Verschlüsselung**|Spaltenebene|Datenbankebene|
@@ -160,7 +160,7 @@ Zum Schutz sensibler Daten, die aktiv oder ruhend sein können, bietet SQL-Daten
 
 ### <a name="how-can-i-limit-access-to-sensitive-data-in-my-database"></a>Wie wird der Zugriff auf sensible Daten in der Datenbank beschränkt?
 
-Jede Anwendung verfügt zu einem gewissen Grad über sensible Daten in der Datenbank, die vor unbefugtem Zugriff geschützt werden müssen. Bestimmte Mitarbeiter innerhalb der Organisation benötigen Zugang zu diesen Daten, während sie anderen verborgen bleiben sollten. Ein Beispiel sind Mitarbeitergehälter. Ein Vorgesetzter muss auf die Gehaltsinformationen seiner Mitarbeiter zugreifen können, einzelne Teammitglieder dürfen allerdings keinen Zugang zu den Gehaltsinformationen ihrer Kollegen haben. In einem weiteren Szenario könnten Datenentwickler in der Entwicklungs- oder Testphase mit sensiblen Daten interagieren, z. B. mit Sozialversicherungsnummern von Kunden. Auch diese Informationen müssen dem Entwickler nicht verfügbar gemacht werden. In diesen Fällen müssen Ihre sensiblen Daten entweder maskiert oder überhaupt nicht bereitgestellt werden. SQL-Datenbank bietet zwei Methoden, um nicht autorisierten Benutzern den Zugang zu sensiblen Daten zu verweigern:
+Jede Anwendung verfügt zu einem gewissen Grad über sensible Daten in der Datenbank, die vor unbefugtem Zugriff geschützt werden müssen. Bestimmte Mitarbeiter innerhalb der Organisation benötigen Zugang zu diesen Daten, während sie anderen verborgen bleiben sollten. Ein Beispiel sind Mitarbeitergehälter. Ein Vorgesetzter muss auf die Gehaltsinformationen seiner Mitarbeiter zugreifen können; einzelne Teammitglieder dürfen allerdings keinen Zugang zu den Gehaltsinformationen ihrer Kollegen haben. In einem weiteren Szenario könnten Datenentwickler in der Entwicklungs- oder Testphase mit sensiblen Daten interagieren, z. B. mit Sozialversicherungsnummern von Kunden. Auch diese Informationen müssen dem Entwickler nicht verfügbar gemacht werden. In diesen Fällen müssen Ihre sensiblen Daten entweder maskiert oder überhaupt nicht bereitgestellt werden. SQL-Datenbank bietet zwei Methoden, um nicht autorisierten Benutzern den Zugang zu sensiblen Daten zu verweigern:
 
 Die [dynamische Datenmaskierung](sql-database-dynamic-data-masking-get-started.md) ist eine Funktion zum Maskieren von Daten, mit der Sie die Offenlegung sensibler Daten beschränken können. So werden die Daten auf der Anwendungsschicht für nicht berechtigte Benutzer maskiert. Sie definieren eine Maskierungsregel, die ein Maskierungsmuster erstellen (z.B. zum Anzeigen nur der letzten vier Ziffern einer nationalen ID-SSN in der Form: XXX-XX-0000 und Markieren des größten Teils als „X“) und ermitteln kann, welche Benutzer von der Maskierungsregel ausgeschlossen werden sollen. Die Daten werden dynamisch maskiert. Für die verschiedenen Datenkategorien stehen mehrere Maskierungsfunktionen zur Verfügung. Dank der dynamischen Datenmaskierung können sensible Daten in Ihrer Datenbank automatisch erkannt und maskiert werden.
 
@@ -313,7 +313,7 @@ SQL-Datenbank nutzt intelligente Technologien, mit denen bestimmte Datenbeschäd
 Hier gibt mehrere Möglichkeiten:
 
 - **[Datensynchronisierung](sql-database-sync-data.md)** – Diese Funktion unterstützt Sie bei der bidirektionalen Synchronisierung von Daten zwischen mehreren lokalen SQL Server-Datenbanken und SQL-Datenbank. Um Daten mit lokalen SQL Server-Datenbanken zu synchronisieren, müssen Sie den Synchronisierungs-Agent auf einem lokalen Computer installieren und konfigurieren und den ausgehenden TCP-Port 1433 öffnen.
-- **[Transaktionsreplikation](https://azure.microsoft.com/blog/transactional-replication-to-azure-sql-database-is-now-generally-available/)**: Mit der Transaktionsreplikation können Sie Ihre lokalen Daten mit Azure SQL DB synchronisieren. Dabei stellt die lokale Umgebung den Verleger und Azure SQL DB den Abonnenten dar. Zurzeit wird nur dieses Szenario unterstützt. Weitere Informationen dazu, wie Sie Daten mit minimaler Ausfallzeit aus der lokalen Infrastruktur zu Azure SQL migrieren, finden Sie unter: [Verwenden der Transaktionsreplikation](sql-database-single-database-migrate.md#method-2-use-transactional-replication).
+- **[Transaktionsreplikation](https://azure.microsoft.com/blog/transactional-replication-to-azure-sql-database-is-now-generally-available/)** : Mit der Transaktionsreplikation können Sie Ihre lokalen Daten mit Azure SQL DB synchronisieren. Dabei stellt die lokale Umgebung den Verleger und Azure SQL DB den Abonnenten dar. Zurzeit wird nur dieses Szenario unterstützt. Weitere Informationen dazu, wie Sie Daten mit minimaler Ausfallzeit aus der lokalen Infrastruktur zu Azure SQL migrieren, finden Sie unter: [Verwenden der Transaktionsreplikation](sql-database-single-database-migrate.md#method-2-use-transactional-replication).
 
 ## <a name="next-steps"></a>Nächste Schritte
 

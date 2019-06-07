@@ -2,21 +2,21 @@
 title: Beheben von Sicherungsfehlern bei virtuellen Azure-Computern
 description: Fehlerbehandlung bei der Sicherung und Wiederherstellung virtueller Azure-Computer
 services: backup
-author: srinathv
+author: srinathvasireddy
 manager: vijayts
 ms.service: backup
 ms.topic: conceptual
-ms.date: 04/08/2019
-ms.author: srinathv
-ms.openlocfilehash: 6f10d8bc7f813245a66296988e4bb3792d898e08
-ms.sourcegitcommit: fec96500757e55e7716892ddff9a187f61ae81f7
+ms.date: 05/22/2019
+ms.author: srinathvasireddy
+ms.openlocfilehash: 179f806fcff5ce0e384455fdc9db3b2253449eb0
+ms.sourcegitcommit: 13cba995d4538e099f7e670ddbe1d8b3a64a36fb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/16/2019
-ms.locfileid: "59618191"
+ms.lasthandoff: 05/22/2019
+ms.locfileid: "66002316"
 ---
 # <a name="troubleshoot-azure-virtual-machine-backup"></a>Problembehandlung bei der Sicherung virtueller Azure-Computer
-Sie können Fehler, die beim Verwenden von Azure Backup auftreten, anhand der in der folgenden Tabelle aufgeführten Informationen beheben:
+Sie können Fehler, die bei der Verwendung von Azure Backup auftreten, anhand der nachstehend aufgeführten Informationen beheben:
 
 ## <a name="backup"></a>Backup
 
@@ -42,7 +42,7 @@ Beim Sicherungsvorgang ist ein Fehler aufgetreten, da sich der virtuelle Compute
 Fehlercode: UserErrorFsFreezeFailed <br/>
 Fehlermeldung: Fehler beim Einfrieren mindestens eines Bereitstellungspunkts der VM zum Erfassen einer dateisystemkonsistenten Momentaufnahme.
 
-* Überprüfen Sie den Dateisystemzustand aller eingebundenen Geräte mit dem **tune2fs**-Befehl, z.B. **tune2fs -l /dev/sdb1 \\**.\| grep **Dateisystemstatus**.
+* Überprüfen Sie den Dateisystemzustand aller eingebundenen Geräte mit dem **tune2fs**-Befehl, z.B. **tune2fs -l /dev/sdb1 \\** .\| grep **Dateisystemstatus**.
 * Heben Sie mit dem Befehl **umount** die Bereitstellung der Geräte auf, deren Dateisystemstatus nicht bereinigt wurde.
 * Führen Sie mit dem Befehl **fsck** eine Dateisystem-Konsistenzprüfung für diese Geräte aus.
 * Stellen Sie die Geräte erneut bereit, und versuchen Sie, die Sicherung auszuführen.</ol>
@@ -84,7 +84,7 @@ Starten Sie die in einem fehlerhaften Zustand befindlichen VSS Writer-Instanzen 
 Fehlercode: ExtensionConfigParsingFailure<br/>
 Fehlermeldung: Fehler beim Analysieren der Konfigurationsdatei für die Sicherungserweiterung.
 
-Dieser Fehler tritt aufgrund geänderter Berechtigungen für das Verzeichnis **MachineKeys** (**%systemdrive%\programdata\microsoft\crypto\rsa\machinekeys**) auf.
+Dieser Fehler tritt aufgrund geänderter Berechtigungen für das Verzeichnis **MachineKeys** ( **%systemdrive%\programdata\microsoft\crypto\rsa\machinekeys**) auf.
 Führen Sie den folgenden Befehl aus, und stellen Sie sicher, dass für das Verzeichnis **MachineKeys** die Standardberechtigungen gelten: **icacls %systemdrive%\programdata\microsoft\crypto\rsa\machinekeys**.
 
 Die Standardberechtigungen lauten wie folgt:
@@ -168,7 +168,7 @@ So wird sichergestellt, dass die Momentaufnahmen nicht über den Gast, sondern �
 | Der Momentaufnahmevorgang ist mit dem folgenden Vorgangsfehler des Volumeschattenkopie-Diensts (Volume Shadow Copy Service, VSS) fehlgeschlagen: **Dieses Laufwerk ist durch die BitLocker-Laufwerkverschlüsselung gesperrt. Das Laufwerk muss mithilfe der Systemsteuerung entsperrt werden.** |Deaktivieren Sie BitLocker für alle Laufwerke auf dem virtuellen Computer, und überprüfen Sie, ob der VSS-Fehler behoben wurde. |
 | Der Zustand des virtuellen Computers lässt keine Sicherungen zu. |<ul><li>Wenn sich der virtuelle Computer in einem Übergangszustand zwischen **Wird ausgeführt** und **Heruntergefahren** befindet, müssen Sie warten, bis der Zustand geändert wurde. Lösen Sie dann den Sicherungsauftrag aus. <li> Schließen Sie im Falle eines virtuellen Linux-Computers mit dem Kernelmodul Security Enhanced Linux den Azure Linux-Agent-Pfad **/var/lib/waagent** aus der Sicherheitsrichtlinie aus, und stellen Sie sicher, dass die Azure Backup-Erweiterung installiert ist.  |
 | Der VM-Agent ist auf dem virtuellen Computer nicht vorhanden: <br>Installieren Sie alle erforderlichen Komponenten und den VM-Agent. Wiederholen Sie dann den Vorgang. |Erfahren Sie mehr über die [VM-Agent-Installation und das Überprüfen der VM-Agent-Installation](#vm-agent). |
-| Azure Backup konnte zum Erfassen einer dateisystemkonsistenten Momentaufnahme mindestens einen Bereitstellungspunkt des virtuellen Computers nicht einfrieren. | Führen Sie den folgenden Schritt aus: <ul><li>Überprüfen Sie mit dem Befehl **tune2fs** den Dateisystemstatus aller bereitgestellten Geräte. Beispiel: **tune2fs -l /dev/sdb1 \\**.\| grep **Filesystem state**. <li>Heben Sie mit dem Befehl **umount** die Bereitstellung der Geräte auf, deren Dateisystemstatus nicht fehlerfrei ist. <li> Führen Sie mit dem Befehl **fsck** eine Dateisystemkonsistenzprüfung für diese Geräte aus. <li> Stellen Sie die Geräte erneut bereit, und versuchen Sie, die Sicherung auszuführen.</ol> |
+| Azure Backup konnte zum Erfassen einer dateisystemkonsistenten Momentaufnahme mindestens einen Bereitstellungspunkt des virtuellen Computers nicht einfrieren. | Führen Sie den folgenden Schritt aus: <ul><li>Überprüfen Sie mit dem Befehl **tune2fs** den Dateisystemstatus aller bereitgestellten Geräte. Beispiel: **tune2fs -l /dev/sdb1 \\** .\| grep **Filesystem state**. <li>Heben Sie mit dem Befehl **umount** die Bereitstellung der Geräte auf, deren Dateisystemstatus nicht fehlerfrei ist. <li> Führen Sie mit dem Befehl **fsck** eine Dateisystemkonsistenzprüfung für diese Geräte aus. <li> Stellen Sie die Geräte erneut bereit, und versuchen Sie, die Sicherung auszuführen.</ol> |
 | Der Momentaufnahmevorgang ist aufgrund eines Fehlers beim Erstellen eines sicheren Netzwerkkommunikationskanals fehlgeschlagen. | <ol><li> Öffnen Sie den Registrierungs-Editor, indem Sie **regedit.exe** im Modus mit erhöhten Rechten ausführen. <li> Identifizieren Sie alle auf Ihrem System vorhandenen Versionen von .NET Framework. Sie werden unter der Hierarchie des Registrierungsschlüssels **HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft** aufgeführt. <li> Fügen Sie für jede im Registrierungsschlüssel vorhandene .NET Framework-Version den folgenden Schlüssel hinzu: <br> **SchUseStrongCrypto"=dword:00000001** </ol>|
 | Der Momentaufnahmevorgang ist aufgrund eines Fehlers beim Installieren von Visual C++ Redistributable für Visual Studio 2012 fehlgeschlagen. | Navigieren Sie zu „C:\Packages\Plugins\Microsoft.Azure.RecoveryServices.VMSnapshot\agentVersion“, und installieren Sie „vcredist2012_x64“.<br/>Stellen Sie sicher, dass der richtige Registrierungsschlüsselwert zum Zulassen der Dienstinstallation festgelegt wird. Das heißt, legen Sie den Wert für **Start** in **HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\Msiserver** auf **3** und nicht auf **4** fest. <br><br>Wenn immer noch Probleme bei der Installation bestehen, starten Sie den Installationsdienst neu, indem Sie an einer Eingabeaufforderung mit erhöhten Rechten den Befehl **MSIEXEC /UNREGISTER** und dann **MSIEXEC /REGISTER** ausführen.  |
 

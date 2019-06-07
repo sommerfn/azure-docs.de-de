@@ -9,11 +9,11 @@ ms.date: 04/08/2019
 ms.author: alkohli
 ms.custom: include file
 ms.openlocfilehash: d28244d75da540948093c775ffc525a80e362526
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/08/2019
-ms.locfileid: "59286846"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66115419"
 ---
 Das Paket kann mithilfe von FedEx, UPS oder DHL an das Azure-Rechenzentrum gesendet werden. Wenn Sie einen anderen Spediteur als FedEx/DHL verwenden möchten, kontaktieren Sie das Azure Data Box Operations-Team unter `adbops@microsoft.com`
 

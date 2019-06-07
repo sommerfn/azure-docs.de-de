@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 04/23/2019
 ms.author: normesta
 ms.reviewer: jamesbak
-ms.openlocfilehash: 0b8139f11f937ddae30e25f4153e35287289a4d1
-ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
+ms.openlocfilehash: 5ad7ef714147616fe55a9b978d501b974323e251
+ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/07/2019
-ms.locfileid: "65233966"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65949572"
 ---
 # <a name="access-control-in-azure-data-lake-storage-gen2"></a>Zugriffssteuerung in Azure Data Lake Storage Gen2
 
@@ -94,7 +94,7 @@ Die Berechtigungen für ein Dateisystemobjekt sind **Lesen**, **Schreiben** und 
 
 #### <a name="short-forms-for-permissions"></a>Kurzformen für Berechtigungen
 
-**RWX** steht für **Lesen (Read), Schreiben (Write) und Ausführen (Execute)**. Es gibt auch ein noch kürzeres numerisches Format. Hierbei steht **4 für Lesen**, **2 für Schreiben** und **1 für Ausführen**, und Berechtigungen werden als Summe dieser Werte angegeben. Hier einige Beispiele.
+**RWX** steht für **Lesen (Read), Schreiben (Write) und Ausführen (Execute)** . Es gibt auch ein noch kürzeres numerisches Format. Hierbei steht **4 für Lesen**, **2 für Schreiben** und **1 für Ausführen**, und Berechtigungen werden als Summe dieser Werte angegeben. Hier einige Beispiele.
 
 | Numerische Form | Kurzform |      Bedeutung     |
 |--------------|------------|------------------------|

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/10/2019
 ms.author: magoedte
-ms.openlocfilehash: 8b6745a2b9afe8d3101585e3f7a13f2fc978c84a
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 38979aa5cbb7eff0a949dfb77d6a29b2cdb5c67b
+ms.sourcegitcommit: 6ea7f0a6e9add35547c77eef26f34d2504796565
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59492087"
+ms.lasthandoff: 05/14/2019
+ms.locfileid: "65602081"
 ---
 # <a name="how-to-query-logs-from-azure-monitor-for-vms-preview"></a>Abfragen von Protokollen aus Azure Monitor für VMs (Vorschauversion)
 Azure Monitor für VMs erfasst Leistungs- und Verbindungsmetriken, Inventurdaten von Computern und Prozessen sowie Informationen zum Integritätsstatus und leitet diese an den Log Analytics-Arbeitsbereich in Azure Monitor weiter.  Diese Daten stehen in Azure Monitor für [Abfragen](../../azure-monitor/log-query/log-query-overview.md) zur Verfügung. Diese Daten können in verschiedenen Szenarios von Nutzen sein, z.B. bei der Migrationsplanung, Kapazitätsanalyse, Ermittlung und Ad-hoc-Behebung von Leistungsproblemen.
@@ -43,8 +43,8 @@ Die folgenden Felder und Konventionen gelten sowohl für VMConnection als auch f
 
 - Computer: Vollqualifizierter Domänenname des berichtenden Computers 
 - AgentID: Eindeutiger Bezeichner für einen Computer mit dem Log Analytics-Agent  
-- Machine: Name der Azure Resource Manager-Ressource für den Computer, die von ServiceMap bereitgestellt wird. Das Format lautet *m-{GUID}*, wobei *GUID* der gleichen GUID wie AgentID entspricht.  
-- Prozess: Name der Azure Resource Manager-Ressource für den Prozess, die von ServiceMap bereitgestellt wird. Das Format lautet *p-{Hexadezimalzeichenfolge}*. Das Feld „Process“ ist innerhalb eines Computerbereichs eindeutig. Zum Erstellen einer eindeutigen Prozess-ID für mehrere Computer können Sie die Felder „Machine“ und „Process“ kombinieren. 
+- Machine: Name der Azure Resource Manager-Ressource für den Computer, die von ServiceMap bereitgestellt wird. Das Format lautet *m-{GUID}* , wobei *GUID* der gleichen GUID wie AgentID entspricht.  
+- Prozess: Name der Azure Resource Manager-Ressource für den Prozess, die von ServiceMap bereitgestellt wird. Das Format lautet *p-{Hexadezimalzeichenfolge}* . Das Feld „Process“ ist innerhalb eines Computerbereichs eindeutig. Zum Erstellen einer eindeutigen Prozess-ID für mehrere Computer können Sie die Felder „Machine“ und „Process“ kombinieren. 
 - ProcessName: Name der ausführbaren Datei für den Berichtsprozess
 - Alle IP-Adressen sind Zeichenfolgen im kanonischen IPv4-Format, z. B. *13.107.3.160* 
 
@@ -101,7 +101,7 @@ Der Einfachheit halber ist die IP-Adresse des Remoteendes einer Verbindung in de
 
 | Eigenschaft | Description |
 |:--|:--|
-|RemoteCountry |Der Name des Landes, in dem „RemoteIp“ gehostet ist.  Beispielsweise *USA* |
+|RemoteCountry |Der Name des Landes oder der Region, in dem bzw. der „RemoteIp“ gehostet ist.  Beispielsweise *USA* |
 |RemoteLatitude |Der Breitengrad der Geolocation. Beispielsweise *47,68* |
 |RemoteLongitude |Der Längengrad der Geolocation. Beispielsweise *-122,12* |
 
@@ -130,7 +130,7 @@ Ports auf einem Computer, die aktiv eingehenden Datenverkehr akzeptieren oder Da
 >- USA (Ost)  
 >- Europa, Westen
 >
-> Das Sammeln dieser Daten ist in den anderen [unterstützten Regionen](vminsights-onboard.md#log-analytics) für Azure Monitor für VMs aktiviert. 
+> Das Sammeln dieser Daten ist in den anderen [unterstützten Regionen](vminsights-enable-overview.md#log-analytics) für Azure Monitor für VMs aktiviert. 
 
 Jeder Datensatz in der Tabelle „VMBoundPort“ wird mit den folgenden Feldern definiert: 
 
@@ -202,7 +202,7 @@ Datensätze des Typs *ServiceMapProcess_CL* enthalten Bestandsdaten für über T
 | ProductVersion_s | Die Produktversion |
 | FileVersion_s | Die Dateiversion |
 | CommandLine_s | Die Befehlszeile |
-| ExecutablePath _s | Der Pfad zur ausführbaren Datei |
+| ExecutablePath_s | Der Pfad zur ausführbaren Datei |
 | WorkingDirectory_s | Das Arbeitsverzeichnis |
 | UserName | Das Konto, unter dem der Prozess ausgeführt wird |
 | UserDomain | Die Domäne, unter der der Prozess ausgeführt wird |

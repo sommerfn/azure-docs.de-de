@@ -9,12 +9,12 @@ ms.service: app-service
 ms.topic: conceptual
 ms.date: 05/08/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 1d7ab8008e8fbdb5f851f158d14f62bdea803f11
-ms.sourcegitcommit: 13cba995d4538e099f7e670ddbe1d8b3a64a36fb
+ms.openlocfilehash: e38e1479c1e094f691e8f22f0a48f9342cae5cf3
+ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/22/2019
-ms.locfileid: "66001703"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66475080"
 ---
 # <a name="security-attributes-for-azure-app-service"></a>Sicherheitsattribute für Azure App Service
 
@@ -51,7 +51,7 @@ In diesem Artikel werden die allgemeinen in Azure App Service integrierten Siche
 
 | Sicherheitsattribut | Ja/Nein | Notizen|
 |---|---|--|
-| Authentication| Ja | Kunden können Anwendungen in App Service erstellen, die automatisch in [Azure Active Directory (Azure AD)](../active-directory/index.md) sowie in andere OAuth-kompatible Identitätsanbieter eingebunden werden. Weitere Informationen finden Sie unter [Authentifizierung und Autorisierung in Azure App Service](overview-authentication-authorization.md). Für Verwaltungszugriff auf App Service-Ressourcen werden sämtliche Zugriffe mit einer Kombination aus Azure AD-authentifizierten Prinzipal- und Azure Resource Manager-RBAC-Rollen gesteuert. |
+| Authentication| Ja | Kunden können Anwendungen in App Service erstellen, die automatisch in [Azure Active Directory (Azure AD)](../active-directory/index.yml) sowie in andere OAuth-kompatible Identitätsanbieter eingebunden werden. Weitere Informationen finden Sie unter [Authentifizierung und Autorisierung in Azure App Service](overview-authentication-authorization.md). Für Verwaltungszugriff auf App Service-Ressourcen werden sämtliche Zugriffe mit einer Kombination aus Azure AD-authentifizierten Prinzipal- und Azure Resource Manager-RBAC-Rollen gesteuert. |
 | Autorisierung| Ja | Für Verwaltungszugriff auf App Service-Ressourcen werden sämtliche Zugriffe mit einer Kombination aus Azure AD-authentifizierten Prinzipal- und Azure Resource Manager-RBAC-Rollen gesteuert.  |
 
 
@@ -59,7 +59,7 @@ In diesem Artikel werden die allgemeinen in Azure App Service integrierten Siche
 
 | Sicherheitsattribut | Ja/Nein | Notizen|
 |---|---|--|
-| Steuerungs- und Verwaltungsebene: Protokollierung und Überwachung| Ja | Alle Verwaltungsvorgänge, die für App Service-Objekte ausgeführt werden, erfolgen über [Azure Resource Manager](../azure-resource-manager/index.yml). Verlaufsprotokolle für diese Vorgänge sind sowohl im Portal als auch über die CLI verfügbar. Weitere Informationen finden Sie unter [Vorgänge für Azure Resource Manager-Ressourcenanbieter](../role-based-access-control/resource-provider-operations.md#microsoftweb) und [az monitor activity-log](/cli/azure/monitor/activity-log). |
+| Protokollierung und Überwachung auf Steuerungs- und Verwaltungsebene| Ja | Alle Verwaltungsvorgänge, die für App Service-Objekte ausgeführt werden, erfolgen über [Azure Resource Manager](../azure-resource-manager/index.yml). Verlaufsprotokolle für diese Vorgänge sind sowohl im Portal als auch über die CLI verfügbar. Weitere Informationen finden Sie unter [Vorgänge für Azure Resource Manager-Ressourcenanbieter](../role-based-access-control/resource-provider-operations.md#microsoftweb) und [az monitor activity-log](/cli/azure/monitor/activity-log). |
 | Protokollierung und Überwachung auf Datenebene | Nein | Die Datenebene für App Service ist eine Remotedateifreigabe, die die bereitgestellten Websiteinhalte eines Kunden enthält.  Es gibt keine Überwachung der Remotedateifreigabe. |
 
 ## <a name="configuration-management"></a>Konfigurationsverwaltung

@@ -3,17 +3,17 @@ title: Lokales Bereitstellen der Remoteüberwachungslösung (Visual Studio Code)
 description: In dieser Schrittanleitung wird gezeigt, wie der Solution Accelerator für die Remoteüberwachung zu Test- und Entwicklungszwecken mithilfe von Visual Studio Code auf Ihrem lokalen Computer bereitgestellt wird.
 author: avneet723
 manager: hegate
-ms.author: avneet723
+ms.author: avneets
 ms.service: iot-accelerators
 services: iot-accelerators
 ms.date: 01/17/2019
 ms.topic: conceptual
-ms.openlocfilehash: 946f815cecea4cc172fac35c0b260d795317e6e1
-ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
+ms.openlocfilehash: bfe28f3ff994d518cb744233e88a6f04b5771a83
+ms.sourcegitcommit: e9a46b4d22113655181a3e219d16397367e8492d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58316217"
+ms.lasthandoff: 05/21/2019
+ms.locfileid: "65967528"
 ---
 # <a name="deploy-the-remote-monitoring-solution-accelerator-locally---visual-studio-code"></a>Lokales Bereitstellen des Solution Accelerators für die Remoteüberwachung – Visual Studio Code
 
@@ -59,7 +59,7 @@ dotnet build -c Release
 
 ### <a name="deploy-all-other-microservices-on-local-machine"></a>Bereitstellen aller anderen Microservices auf dem lokalen Computer
 
-In den folgenden Schritten wird erläutert, wie Sie die Microservices für die Remoteüberwachung in Visual Studio 2017 ausführen:
+In den folgenden Schritten wird erläutert, wie Sie die Microservices für die Remoteüberwachung in Visual Studio Code ausführen:
 
 1. Starten Sie Visual Studio Code.
 1. Öffnen Sie das Modul **azure-iot-pcs-remote-monitoring-dotnet** aus Ihrer lokalen Kopie in Visual Studio Code.

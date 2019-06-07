@@ -11,13 +11,13 @@ author: bonova
 ms.author: bonova
 ms.reviewer: carlrab, jovanpop, sachinp
 manager: craigg
-ms.date: 02/27/2019
-ms.openlocfilehash: e2068283414ef2fabb44e9876f6727cc0fe3530b
-ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
+ms.date: 05/22/2019
+ms.openlocfilehash: e091ec29c810fce7a39ad5aa5cc8f0ddae711752
+ms.sourcegitcommit: db3fe303b251c92e94072b160e546cec15361c2c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/07/2019
-ms.locfileid: "65233523"
+ms.lasthandoff: 05/22/2019
+ms.locfileid: "66016405"
 ---
 # <a name="overview-azure-sql-database-managed-instance-resource-limits"></a>Übersicht über Ressourceneinschränkungen für verwaltete Azure SQL-Datenbank-Instanzen
 
@@ -56,8 +56,8 @@ Eine verwaltete Instanz verfügt über zwei Dienstebenen: „Universell“und �
 | Max. Anzahl von Datenbanken pro Instanz | 100 | 100 |
 | Max. Datenbankdateien pro Instanz | Bis zu 280 | 32.767 Dateien pro Datenbank |
 | Daten-/Protokoll-IOPS (ungefähr) | 500 bis 7.500 pro Datei<br/>\*[Abhängig von der Dateigröße](https://docs.microsoft.com/azure/virtual-machines/windows/premium-storage-performance#premium-storage-disk-sizes)| 11K – 110K (1.375/V-Kern) |
-| Protokolldurchsatz | 22 MB/Sek. pro Instanz | 3 MB/Sek. pro virtuellem Kern<br/>Max. 48 MB/Sek. pro Instanz|
-| Datendurchsatz (ungefähr) | 100 bis 250 MB/Sek. pro Datei<br/>\*[Abhängig von der Dateigröße](https://docs.microsoft.com/azure/virtual-machines/windows/premium-storage-performance#premium-storage-disk-sizes) | 24 bis 48 MB/Sek. pro virtuellem Kern |
+| Protokolldurchsatz | 3 MB/Sek. pro virtuellem Kern<br/>Max. 22 MB/Sek. pro Instanz | 4 MB/Sek. pro virtuellem Kern<br/>Max. 48 MB/Sek. pro Instanz|
+| Datendurchsatz (ungefähr) | 100 bis 250 MB/Sek. pro Datei<br/>\*[Abhängig von der Dateigröße](https://docs.microsoft.com/azure/virtual-machines/windows/premium-storage-performance#premium-storage-disk-sizes) | |
 | E/A-Wartezeit (ungefähr) | 5 – 10 ms | 1 – 2 ms |
 | Max. TempDB-Größe | 192 bis 1.920 GB (24 GB pro virtuellem Kern) | Keine Einschränkungen – beschränkt durch die maximale Instanzspeichergröße |
 

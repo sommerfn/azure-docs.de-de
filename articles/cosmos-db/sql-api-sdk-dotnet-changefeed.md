@@ -8,12 +8,12 @@ ms.devlang: dotnet
 ms.topic: reference
 ms.date: 01/30/2019
 ms.author: maquaran
-ms.openlocfilehash: a878ab1937b06f06a27b18f793fc1bfa190969ed
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 56ec4d867abd5f2767c64b0800eeb017c0fb9923
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58090337"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65793008"
 ---
 # <a name="net-change-feed-processor-sdk-download-and-release-notes"></a>.NET Change Feed Processor-SDK: Download und Anmerkungen zum Release
 > [!div class="op_single_selector"]
@@ -40,6 +40,11 @@ ms.locfileid: "58090337"
 ## <a name="release-notes"></a>Versionshinweise
 
 ### <a name="v2-builds"></a>V2-Builds
+
+### <a name="a-name227227"></a><a name="2.2.7"/>2.2.7
+* Verbesserte Lastenausgleichsstrategie für ein Szenario, bei dem das Abrufen aller Leases länger dauert als das Leaseablaufintervall, z.B. aufgrund von Netzwerkproblemen:
+  * In diesem Szenario wird ein Lastenausgleichsalgorithmus verwendet, um Leases fälschlicherweise als abgelaufen zu betrachten, was dazu führt, dass aktiven Besitzern Leases gestohlen werden. Dies könnte einen unnötigen erneuten Ausgleich vieler Leases auslösen.
+  * Dieses Problem wurde in der vorliegenden Version folgendermaßen behoben: Bei einem Konflikt wird eine Wiederholung vermieden, wobei die abgelaufene Lease, die der Besitzer nicht geändert hat, abgerufen und dieser Abruf auf die nächste Iteration des Lastenausgleichs verschoben wird.
 
 ### <a name="a-name226226"></a><a name="2.2.6"/>2.2.6
 * Verbesserte Behandlung von Beobachterausnahmen.
@@ -163,6 +168,7 @@ Anforderungen an Cosmos DB mithilfe eines deaktivierten SDK werden vom Dienst ab
 
 | Version | Herausgabedatum | Deaktivierungstermine |
 | --- | --- | --- |
+| [2.2.7](#2.2.7) |14. Mai 2019 |--- |
 | [2.2.6](#2.2.6) |29. Januar 2019 |--- |
 | [2.2.5](#2.2.5) |13. Dezember 2018 |--- |
 | [2.2.4](#2.2.4) |29. November 2018 |--- |

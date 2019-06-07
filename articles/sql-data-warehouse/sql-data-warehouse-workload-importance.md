@@ -10,12 +10,12 @@ ms.subservice: workload management
 ms.date: 05/01/2019
 ms.author: rortloff
 ms.reviewer: jrasnick
-ms.openlocfilehash: 9c26bca66b0f82ea58d01d0eb8358f521168a799
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.openlocfilehash: 92990b68969e754ee126b6cd5a22ecfa700c0494
+ms.sourcegitcommit: 13cba995d4538e099f7e670ddbe1d8b3a64a36fb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65154136"
+ms.lasthandoff: 05/22/2019
+ms.locfileid: "66002884"
 ---
 # <a name="sql-data-warehouse-workload-importance"></a>Workloadpriorität für SQL Data Warehouse
 
@@ -61,4 +61,8 @@ Da die Abfrage „Q5“ die Klasse „mediumrc“ aufweist, erfordert sie zwei P
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Die ersten Schritte für das Erstellen einer Klassifizierung werden unter [CREATE WORKLOAD CLASSIFIER (Transact-SQL)](https://docs.microsoft.com/sql/t-sql/statements/create-workload-classifier-transact-sql) beschrieben.  Weitere Informationen zur Workloadklassifizierung in SQL Data Warehouse finden Sie unter [SQL Data Warehouse Workload Classification (Workloadklassifizierung in SQL Data Warehouse)](sql-data-warehouse-workload-classification.md).  Beachten Sie für die Erstellung eines Workloadklassifizierers die folgende Schnellstartanleitung: [Erstellen eines Workloadklassifizierers](quickstart-create-a-workload-classifier-tsql.md). Sie können die Abfragen und die zugewiesene Wichtigkeit unter [sys.dm_pdw_exec_requests](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-exec-requests-transact-sql) anzeigen.
+- Weitere Informationen zum Erstellen einer Klassifizierung finden Sie unter [CREATE WORKLOAD CLASSIFIER (Transact-SQL)](https://docs.microsoft.com/sql/t-sql/statements/create-workload-classifier-transact-sql).  
+- Weitere Informationen zur Workloadklassifizierung in SQL Data Warehouse finden Sie unter [Workloadklassifizierung](sql-data-warehouse-workload-classification.md).  
+- Lesen Sie für die Erstellung eines Workloadklassifizierers den Schnellstart [Erstellen eines Workloadklassifizierers](quickstart-create-a-workload-classifier-tsql.md).
+- Lesen Sie die Anleitungsartikel zum [Konfigurieren der Workloadpriorität](sql-data-warehouse-how-to-configure-workload-importance.md) und zum [Verwalten und Überwachen der Workloadpriorität](sql-data-warehouse-how-to-manage-and-monitor-workload-importance.md).
+- Sie können die Abfragen und die zugewiesene Wichtigkeit unter [sys.dm_pdw_exec_requests](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-exec-requests-transact-sql) anzeigen.
