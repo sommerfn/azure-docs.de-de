@@ -11,14 +11,14 @@ ms.author: sanpil
 author: sanpil
 ms.date: 05/14/2019
 ms.custom: seodec18
-ms.openlocfilehash: ff693ac34382ea5673989ecb6cbb38e19e176ad3
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: 3e3fe64baca6e61c7eee214b84fd1ccdc88d3629
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65801066"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66237816"
 ---
-# <a name="build-machine-learning-pipelines-with-the-azure-machine-learning-service"></a>Erstellen von Machine Learning-Pipelines mit dem Azure Machine Learning Service
+# <a name="build-reusable-ml-pipelines-in-azure-machine-learning-service"></a>Erstellen wiederverwendbarer Machine Learning-Pipelines im Azure Machine Learning Service
 
 In diesem Artikel lernen Sie die Machine Learning-Pipelines, die Sie mit dem Azure Machine Learning SDK für Python erstellen können, und die Vorteile der Verwendung von Pipelines kennen.
 

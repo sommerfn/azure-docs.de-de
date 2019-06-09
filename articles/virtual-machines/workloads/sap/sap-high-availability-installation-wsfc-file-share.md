@@ -17,12 +17,12 @@ ms.workload: infrastructure-services
 ms.date: 05/05/2017
 ms.author: rclaus
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: a20299887de827f25e4c3306f5e78c188c9a8a7f
-ms.sourcegitcommit: e9a46b4d22113655181a3e219d16397367e8492d
+ms.openlocfilehash: 95cde28bc4789346aabd58b5f7b543e1bbc989c1
+ms.sourcegitcommit: 8e76be591034b618f5c11f4e66668f48c090ddfd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/21/2019
-ms.locfileid: "65969404"
+ms.lasthandoff: 05/29/2019
+ms.locfileid: "66357698"
 ---
 # <a name="install-sap-netweaver-high-availability-on-a-windows-failover-cluster-and-file-share-for-sap-ascsscs-instances-on-azure"></a>Installieren von SAP NetWeaver-Hochverfügbarkeit in einem Windows-Failovercluster und auf einer Windows-Dateifreigabe für SAP ASCS-/SCS-Instanzen in Azure
 
@@ -324,7 +324,7 @@ Aktualisieren Sie die Parameter im SAP ASCS/SCS-Instanzprofil \<SID>_ASCS/SCS\<N
 | enque/encni/set_so_keepalive  | **true** |
 | service/ha_check_node | **1** |
 
-Starten Sie die SAP ASCS/SCS-Instanz neu. Legen Sie `KeepAlive`-Parameter auf beiden SAP ASCS/SCS-Clusterknoten fest, und befolgen Sie die Anweisungen zum [Festlegen von Registrierungseinträgen auf den Clusterknoten der SAP ASCS/SCS-Instanz]([high-availability-guide]:high-availability-guide.md). 
+Starten Sie die SAP ASCS/SCS-Instanz neu. Legen Sie `KeepAlive`-Parameter auf beiden SAP ASCS/SCS-Clusterknoten fest, und befolgen Sie die Anweisungen zum [Festlegen von Registrierungseinträgen auf den Clusterknoten der SAP ASCS/SCS-Instanz][high-availability-guide]. 
 
 ## <a name="install-a-dbms-instance-and-sap-application-servers"></a>Installieren einer DBMS-Instanz und von SAP-Anwendungsservern
 

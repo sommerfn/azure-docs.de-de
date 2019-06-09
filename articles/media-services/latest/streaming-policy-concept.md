@@ -9,71 +9,73 @@ editor: ''
 ms.service: media-services
 ms.workload: ''
 ms.topic: article
-ms.date: 05/15/2019
+ms.date: 05/26/2019
 ms.author: juliako
-ms.openlocfilehash: 510899e44e4ea4a90e21473ee6af546744c2be2a
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.openlocfilehash: da94726474b9159955d376b5a699875e306a25b1
+ms.sourcegitcommit: 25a60179840b30706429c397991157f27de9e886
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66120237"
+ms.lasthandoff: 05/28/2019
+ms.locfileid: "66258039"
 ---
 # <a name="streaming-policies"></a>Streamingrichtlinien
 
 In Azure Media Services v3 können Sie mithilfe von [Streamingrichtlinien](https://docs.microsoft.com/rest/api/media/streamingpolicies) Streamingprotokolle und Verschlüsselungsoptionen für Ihre [Streaminglocator](streaming-locators-concept.md) definieren. Media Services v3 bietet einige vordefinierte Streamingrichtlinien, die Sie direkt für Tests oder in der Produktion verwenden können. 
 
-Die folgenden vordefinierten Streamingrichtlinien sind aktuell verfügbar:<br/>„Predefined_DownloadOnly“, „Predefined_ClearStreamingOnly“, „Predefined_DownloadAndClearStreaming“, „Predefined_ClearKey“, „Predefined_MultiDrmCencStreaming“ und „Predefined_MultiDrmStreaming“.
+Die folgenden vordefinierten Streamingrichtlinien sind aktuell verfügbar:<br/>
+* „Predefined_DownloadOnly“
+* „Predefined_ClearStreamingOnly“
+* „Predefined_DownloadAndClearStreaming“
+* „Predefined_ClearKey“
+* „Predefined_MultiDrmCencStreaming“ 
+* „Predefined_MultiDrmStreaming“
 
-Wenn Sie besondere Anforderungen haben (wenn Sie z.B. verschiedene Protokolle angeben möchten oder einen benutzerdefinierten Schlüsselbereitstellungsdienst oder eine klare Audiospur verwenden müssen), können Sie eine benutzerdefinierte Streamingrichtlinie erstellen. 
+Die folgenden „Entscheidungsstruktur“ hilft Ihnen bei der Auswahl einer vordefinierten Streamingrichtlinie für Ihr Szenario.
 
- 
 > [!IMPORTANT]
 > * Eigenschaften von **Streamingrichtlinien** vom Datetime-Typ liegen immer im UTC-Format vor.
 > * Sie sollten eine begrenzte Sammlung von Richtlinien für Ihr Media Services-Konto erstellen und diese für Ihre Streaminglocators wiederverwenden, wenn dieselben Optionen benötigt werden. Weitere Informationen finden Sie unter [Kontingente und Einschränkungen](limits-quotas-constraints.md).
 
 ## <a name="decision-tree"></a>Entscheidungsstruktur
 
-Die folgenden Entscheidungsstruktur hilft Ihnen bei der Auswahl einer vordefinierten Streamingrichtlinie für Ihr Szenario.
+Klicken Sie auf Bild, um es in voller Größe anzeigen.  
 
-Klicken Sie auf Bild, um es in voller Größe anzeigen.  <br/>
-<a href="./media/streaming-policy/large.png" target="_blank"><img src="./media/streaming-policy/small.png"></a> 
+<a href="./media/streaming-policy/large.png" target="_blank"><img src="./media/streaming-policy/large.png"></a> 
 
-## <a name="examples"></a>Beispiele
+Wenn Sie besondere Anforderungen haben (wenn Sie z. B. verschiedene Protokolle angeben möchten oder einen benutzerdefinierten Schlüsselbereitstellungsdienst oder eine klare Audiospur verwenden müssen), können Sie eine benutzerdefinierte Streamingrichtlinie [erstellen](https://docs.microsoft.com/rest/api/media/streamingpolicies/create). 
 
-### <a name="not-encrypted"></a>Nicht verschlüsselt
+## <a name="get-a-streaming-policy-definition"></a>Abrufen einer Streamingrichtliniendefinition  
 
-Wenn Sie Ihre Datei im Klartext (nicht verschlüsselt) streamen möchten, legen Sie die vordefinierte Richtlinie für unverschlüsseltes Streaming fest: auf „Predefined_ClearStreamingOnly“ (in .NET können Sie die Enumeration „PredefinedStreamingPolicy.ClearStreamingOnly“ verwenden).
+Wenn Sie die Definition einer Streamingrichtlinie anzeigen möchten, verwenden Sie [Get](https://docs.microsoft.com/rest/api/media/streamingpolicies/get) und geben den Namen der Richtlinie an. Beispiel:
 
-```csharp
-StreamingLocator locator = await client.StreamingLocators.CreateAsync(
-    resourceGroup,
-    accountName,
-    locatorName,
-    new StreamingLocator
-    {
-        AssetName = assetName,
-        StreamingPolicyName = PredefinedStreamingPolicy.ClearStreamingOnly
-    });
+### <a name="rest"></a>REST
+
+Anforderung:
+
+```
+GET https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/contoso/providers/Microsoft.Media/mediaServices/contosomedia/streamingPolicies/clearStreamingPolicy?api-version=2018-07-01
 ```
 
-### <a name="encrypted"></a>Verschlüsselt 
+Antwort:
 
-Wenn Sie Ihren Inhalt mit Umschlag- und CENC-Verschlüsselung verschlüsseln müssen, legen Sie die Richtlinie auf ‚Predefined_MultiDrmCencStreaming‘ fest. Diese Richtlinie gibt an, dass zwei Inhaltsschlüssel (Umschlag und CENC) generiert und für den Locator festgelegt werden sollen. Daher werden die Umschlag-, PlayReady- und Widevine-Verschlüsselungen angewendet (der Schlüssel wird dem Client basierend auf den konfigurierten DRM-Lizenzen bereitgestellt).
-
-```csharp
-StreamingLocator locator = await client.StreamingLocators.CreateAsync(
-    resourceGroup,
-    accountName,
-    locatorName,
-    new StreamingLocator
-    {
-        AssetName = assetName,
-        StreamingPolicyName = "Predefined_MultiDrmCencStreaming",
-        DefaultContentKeyPolicyName = contentPolicyName
-    });
 ```
-
-Wenn Sie den Stream auch mit CBCS (FairPlay) verschlüsseln möchten, verwenden Sie ‚Predefined_MultiDrmStreaming‘.
+{
+  "name": "clearStreamingPolicy",
+  "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/contoso/providers/Microsoft.Media/mediaservices/contosomedia/streamingPolicies/clearStreamingPolicy",
+  "type": "Microsoft.Media/mediaservices/streamingPolicies",
+  "properties": {
+    "created": "2018-08-08T18:29:30.8501486Z",
+    "noEncryption": {
+      "enabledProtocols": {
+        "download": true,
+        "dash": true,
+        "hls": true,
+        "smoothStreaming": true
+      }
+    }
+  }
+}
+```
 
 ## <a name="filtering-ordering-paging"></a>Filterung, Sortierung, Paging
 
