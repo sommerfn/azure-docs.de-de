@@ -1,5 +1,5 @@
 ---
-title: SQL Data Warehouse-Klassifizierung | Microsoft-Dokumentation
+title: Azure SQL Data Warehouse-Klassifizierung | Microsoft-Dokumentation
 description: Leitfaden zur Verwendung der Klassifizierung, um Parallelität, Priorität und Computeressourcen für Abfragen in Azure SQL Data Warehouse zu verwalten
 services: sql-data-warehouse
 author: ronortloff
@@ -10,14 +10,14 @@ ms.subservice: workload management
 ms.date: 05/01/2019
 ms.author: rortloff
 ms.reviewer: jrasnick
-ms.openlocfilehash: c4630e11ef4001c546aecfe74dbced346b6d30e4
-ms.sourcegitcommit: 13cba995d4538e099f7e670ddbe1d8b3a64a36fb
+ms.openlocfilehash: 3edae23183896651efcbf7f867204a618a10c85d
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/22/2019
-ms.locfileid: "66000121"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66236903"
 ---
-# <a name="sql-data-warehouse-workload-classification"></a>SQL Data Warehouse-Workloadklassifizierung
+# <a name="azure-sql-data-warehouse-workload-classification"></a>Azure SQL Data Warehouse-Workloadklassifizierung
 
 In diesem Artikel wird der SQL Data Warehouse-Workloadklassifizierungsprozess beschrieben, in dem eingehenden Anforderungen eine Ressourcenklasse und eine Priorität zugewiesen wird.
 

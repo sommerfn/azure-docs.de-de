@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb, rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 35cd52fb82e5e4cce759be5dfdd8872f64802459
-ms.sourcegitcommit: 13cba995d4538e099f7e670ddbe1d8b3a64a36fb
+ms.openlocfilehash: 104665774eee885cc2f562e9813cffcf23aa943e
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/22/2019
-ms.locfileid: "66003530"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66235504"
 ---
 # <a name="baseline-policy-end-user-protection-preview"></a>Basisrichtlinie: Endbenutzerschutz (Vorschau)
 
@@ -62,12 +62,12 @@ Die Richtlinie **Endbenutzerschutz** betrifft alle Benutzer in Ihrem Verzeichnis
 
 ### <a name="user-exclusions"></a>Ausschluss von Benutzern
 
-Die Basisrichtlinie bietet die Möglichkeit, Benutzer auszuschließen. Es wird empfohlen, folgende Konten auszuschließen, bevor Sie die Richtlinie für Ihren Mandanten aktivieren:
+Diese Basisrichtlinie bietet Ihnen die Möglichkeit, Benutzer auszuschließen. Es wird empfohlen, die folgenden Konten auszuschließen, bevor Sie die Richtlinie für Ihren Mandanten aktivieren:
 
-* **Notfallzugriffs**- oder **Break-Glass**-Konten, um eine mandantenweite Kontosperrung zu vermeiden. In dem unwahrscheinlichen Fall, dass alle Administratoren aus dem Mandanten ausgeschlossen sind, können Sie sich mithilfe Ihres Administratorkontos für den Notfallzugriff beim Mandanten anmelden und Maßnahmen ergreifen, um den Zugriff wiederherzustellen.
+* **Notfallzugriffs**- oder **Break-Glass**-Konten, um eine mandantenweite Kontosperrung zu vermeiden. In dem unwahrscheinlichen Fall, dass alle Administratoren aus dem Mandanten ausgeschlossen sind, können Sie sich mit Ihrem Administratorkonto für den Notfallzugriff beim Mandanten anmelden und Maßnahmen ergreifen, um den Zugriff wiederherzustellen.
    * Weitere Informationen finden Sie im Artikel [Verwalten von Konten für den Notfallzugriff in Azure AD](../users-groups-roles/directory-emergency-access.md).
-* **Dienstkonten** und **Dienstprinzipale**, z. B. das Konto für die Azure AD Connect-Synchronisierung. Dienstkonten sind nicht interaktive Konten, die an keinen bestimmten Benutzer gebunden sind. Sie werden normalerweise von Back-End-Diensten verwendet und ermöglichen den programmgesteuerten Zugriff auf Anwendungen. Dienstkonten sollten ausgeschlossen werden, da die MFA nicht programmgesteuert ausgeführt werden kann.
-   * Wenn Ihre Organisation diese Konten in Skripts oder Code verwendet, sollten Sie es in Betracht ziehen, diese durch  [verwaltete Identitäten](../managed-identities-azure-resources/overview.md) zu ersetzen. Als vorläufige Problemumgehung können Sie diese spezifischen Konten aus der Basisrichtlinie ausschließen.
+* **Dienstkonten** und **Dienstprinzipale**, z. B. das Konto für die Azure AD Connect-Synchronisierung. Dienstkonten sind nicht interaktive Konten, die an keinen bestimmten Benutzer gebunden sind. Sie werden normalerweise von Back-End-Diensten verwendet und ermöglichen den programmgesteuerten Zugriff auf Anwendungen. Dienstkonten sollten ausgeschlossen werden, weil die MFA nicht programmgesteuert abgeschlossen werden kann.
+   * Wenn Ihre Organisation diese Konten in Skripts oder Code verwendet, sollten Sie in Betracht ziehen, diese durch  [verwaltete Identitäten](../managed-identities-azure-resources/overview.md) zu ersetzen. Als vorübergehende Problemumgehung können Sie diese spezifischen Konten aus der Basisrichtlinie ausschließen.
 * Benutzer, die kein Smartphone besitzen oder verwenden können.
    * Diese Richtlinie erfordert, dass sich Benutzer mithilfe der Microsoft Authenticator-App für die MFA registrieren.
 
@@ -75,7 +75,7 @@ Die Basisrichtlinie bietet die Möglichkeit, Benutzer auszuschließen. Es wird e
 
 Die **Basisrichtlinie: Endbenutzerschutz (Vorschau)** ist vorkonfiguriert und wird im Azure-Portal auf dem Blatt „Bedingter Zugriff“ ganz oben angezeigt.
 
-So können Sie diese Richtlinie aktivieren und Ihre Administratoren schützen
+Gehen Sie wie folgt vor, um diese Richtlinie zu aktivieren und Ihre Benutzer zu schützen:
 
 1. Melden Sie sich beim  **Azure-Portal** als globaler Administrator, Sicherheitsadministrator oder Administrator für bedingten Zugriff an.
 1. Navigieren Sie zu **Azure Active Directory** > **Bedingter Zugriff**.

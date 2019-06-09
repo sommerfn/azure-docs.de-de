@@ -8,26 +8,27 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 05/22/2019
 ms.author: srinathvasireddy
-ms.openlocfilehash: 179f806fcff5ce0e384455fdc9db3b2253449eb0
-ms.sourcegitcommit: 13cba995d4538e099f7e670ddbe1d8b3a64a36fb
+ms.openlocfilehash: 23137cd686bcdba59880ff705a43b16ced992b59
+ms.sourcegitcommit: 009334a842d08b1c83ee183b5830092e067f4374
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/22/2019
-ms.locfileid: "66002316"
+ms.lasthandoff: 05/29/2019
+ms.locfileid: "66303993"
 ---
 # <a name="troubleshoot-azure-virtual-machine-backup"></a>Problembehandlung bei der Sicherung virtueller Azure-Computer
 Sie können Fehler, die bei der Verwendung von Azure Backup auftreten, anhand der nachstehend aufgeführten Informationen beheben:
 
 ## <a name="backup"></a>Backup
+Dieser Abschnitt behandelt Fehler im Sicherungsvorgang für virtuelle Azure-Computer.
 
-### <a name="copyingvhdsfrombackupvaulttakinglongtime--copying-backed-up-data-from-vault-timed-out"></a>CopyingVHDsFromBackUpVaultTakingLongTime – Timeout beim Kopieren gesicherter Daten aus dem Tresor
+## <a name="copyingvhdsfrombackupvaulttakinglongtime---copying-backed-up-data-from-vault-timed-out"></a>CopyingVHDsFromBackUpVaultTakingLongTime – Timeout beim Kopieren gesicherter Daten aus dem Tresor
 
 Fehlercode: CopyingVHDsFromBackUpVaultTakingLongTime <br/>
 Fehlermeldung: Timeout beim Kopieren gesicherter Daten aus dem Tresor
 
 Dies kann durch vorübergehende Speicherfehler oder einen Mangel an Speicherkonto-IOPS für den Sicherungsdienst zum Übertragen von Daten in den Tresor innerhalb des Timeoutzeitraums passieren. Konfigurieren Sie die VM-Sicherung mit diesen [bewährten Methoden](backup-azure-vms-introduction.md#best-practices), und wiederholen Sie den Sicherungsvorgang.
 
-### <a name="usererrorvmnotindesirablestate---vm-is-not-in-a-state-that-allows-backups"></a>UserErrorVmNotInDesirableState – Aufgrund des Zustands des virtuellen Computers sind keine Sicherungen möglich.
+## <a name="usererrorvmnotindesirablestate---vm-is-not-in-a-state-that-allows-backups"></a>UserErrorVmNotInDesirableState – Aufgrund des Zustands des virtuellen Computers sind keine Sicherungen möglich.
 
 Fehlercode: UserErrorVmNotInDesirableState <br/>
 Fehlermeldung: Aufgrund des Zustands des virtuellen Computers sind keine Sicherungen möglich.<br/>
@@ -37,7 +38,7 @@ Beim Sicherungsvorgang ist ein Fehler aufgetreten, da sich der virtuelle Compute
 * Wenn sich der virtuelle Computer in einem Übergangszustand zwischen **Wird ausgeführt** und **Heruntergefahren** befindet, müssen Sie warten, bis der Zustand geändert wurde. Lösen Sie dann den Sicherungsauftrag aus.
 *  Schließen Sie im Falle eines virtuellen Linux-Computers mit dem Kernelmodul Security Enhanced Linux den Azure Linux-Agent-Pfad **/var/lib/waagent** aus der Sicherheitsrichtlinie aus, und stellen Sie sicher, dass die Azure Backup-Erweiterung installiert ist.
 
-### <a name="usererrorfsfreezefailed---failed-to-freeze-one-or-more-mount-points-of-the-vm-to-take-a-file-system-consistent-snapshot"></a>UserErrorFsFreezeFailed – Fehler beim Einfrieren mindestens eines Bereitstellungspunkts der VM zum Erfassen einer dateisystemkonsistenten Momentaufnahme
+## <a name="usererrorfsfreezefailed---failed-to-freeze-one-or-more-mount-points-of-the-vm-to-take-a-file-system-consistent-snapshot"></a>UserErrorFsFreezeFailed – Fehler beim Einfrieren mindestens eines Bereitstellungspunkts der VM zum Erfassen einer dateisystemkonsistenten Momentaufnahme
 
 Fehlercode: UserErrorFsFreezeFailed <br/>
 Fehlermeldung: Fehler beim Einfrieren mindestens eines Bereitstellungspunkts der VM zum Erfassen einer dateisystemkonsistenten Momentaufnahme.
@@ -47,7 +48,7 @@ Fehlermeldung: Fehler beim Einfrieren mindestens eines Bereitstellungspunkts der
 * Führen Sie mit dem Befehl **fsck** eine Dateisystem-Konsistenzprüfung für diese Geräte aus.
 * Stellen Sie die Geräte erneut bereit, und versuchen Sie, die Sicherung auszuführen.</ol>
 
-### <a name="extensionsnapshotfailedcom--extensioninstallationfailedcom--extensioninstallationfailedmdtc---extension-installationoperation-failed-due-to-a-com-error"></a>ExtensionSnapshotFailedCOM / ExtensionInstallationFailedCOM / ExtensionInstallationFailedMDTC – Fehler bei Installation/Betrieb der Erweiterung aufgrund eines COM+-Fehlers
+## <a name="extensionsnapshotfailedcom--extensioninstallationfailedcom--extensioninstallationfailedmdtc---extension-installationoperation-failed-due-to-a-com-error"></a>ExtensionSnapshotFailedCOM / ExtensionInstallationFailedCOM / ExtensionInstallationFailedMDTC – Fehler bei Installation/Betrieb der Erweiterung aufgrund eines COM+-Fehlers
 
 Fehlercode: ExtensionSnapshotFailedCOM <br/>
 Fehlermeldung: Fehler bei Momentaufnahmevorgang aufgrund eines COM+-Fehlers
@@ -55,7 +56,8 @@ Fehlermeldung: Fehler bei Momentaufnahmevorgang aufgrund eines COM+-Fehlers
 Fehlercode: ExtensionInstallationFailedCOM  <br/>
 Fehlermeldung: Fehler bei Installation/Betrieb der Erweiterung aufgrund eines COM+-Fehlers
 
-Fehlercode: ExtensionInstallationFailedMDTC-Fehlermeldung: Die Erweiterungsinstallation ist mit dem Fehler "COM+ konnte keine Daten mit dem Microsoft Distributed Transaction Coordinator austauschen" fehlgeschlagen.
+Fehlercode: ExtensionInstallationFailedMDTC <br/>
+Fehlermeldung: Die Erweiterungsinstallation ist mit dem Fehler "COM+ konnte keine Daten mit dem Microsoft Distributed Transaction Coordinator austauschen" fehlgeschlagen. <br/>
 
 Fehler beim Sicherungsvorgang aufgrund eines Problems mit dem Windows-Dienst **COM+-Systemanwendung**.  Gehen Sie folgendermaßen vor, um das Problem zu beheben:
 
@@ -69,7 +71,7 @@ Fehler beim Sicherungsvorgang aufgrund eines Problems mit dem Windows-Dienst **C
     * Starten Sie den Dienst „MS DTC“.
 * Starten Sie den Windows-Dienst **COM+-Systemanwendung**. Lösen Sie nach dem Starten des Diensts **COM+-Systemanwendung** einen Sicherungsauftrag über das Azure-Portal aus.</ol>
 
-### <a name="extensionfailedvsswriterinbadstate---snapshot-operation-failed-because-vss-writers-were-in-a-bad-state"></a>ExtensionFailedVssWriterInBadState – Fehler beim Momentaufnahmevorgang aufgrund eines fehlerhaften Zustands von VSS Writer-Instanzen
+## <a name="extensionfailedvsswriterinbadstate---snapshot-operation-failed-because-vss-writers-were-in-a-bad-state"></a>ExtensionFailedVssWriterInBadState – Fehler beim Momentaufnahmevorgang aufgrund eines fehlerhaften Zustands von VSS Writer-Instanzen
 
 Fehlercode: ExtensionFailedVssWriterInBadState <br/>
 Fehlermeldung: Fehler beim Momentaufnahmevorgang aufgrund eines fehlerhaften Zustands von VSS Writer-Instanzen.
@@ -79,7 +81,7 @@ Starten Sie die in einem fehlerhaften Zustand befindlichen VSS Writer-Instanzen 
   * ```net stop serviceName```
   * ```net start serviceName```
 
-### <a name="extensionconfigparsingfailure--failure-in-parsing-the-config-for-the-backup-extension"></a>ExtensionConfigParsingFailure – Fehler beim Analysieren der Konfigurationsdatei für die Sicherungserweiterung
+## <a name="extensionconfigparsingfailure--failure-in-parsing-the-config-for-the-backup-extension"></a>ExtensionConfigParsingFailure – Fehler beim Analysieren der Konfigurationsdatei für die Sicherungserweiterung
 
 Fehlercode: ExtensionConfigParsingFailure<br/>
 Fehlermeldung: Fehler beim Analysieren der Konfigurationsdatei für die Sicherungserweiterung.
@@ -108,7 +110,7 @@ Wenn für das Verzeichnis **MachineKeys** andere Berechtigungen als die Standard
     * Löschen Sie unter **Eigene Zertifikate** > **Zertifikate** alle Zertifikate, für die **Ausgestellt für** das klassische Bereitstellungsmodell ist, oder löschen Sie **Microsoft Azure CRP Certificate Generator**.
 3. Lösen Sie einen Sicherungsauftrag für den virtuellen Computer aus.
 
-### <a name="extensionstuckindeletionstate---extension-state-is-not-supportive-to-backup-operation"></a>ExtensionStuckInDeletionState – Sicherungsvorgang wird von Erweiterungsstatus nicht unterstützt
+## <a name="extensionstuckindeletionstate---extension-state-is-not-supportive-to-backup-operation"></a>ExtensionStuckInDeletionState – Sicherungsvorgang wird von Erweiterungsstatus nicht unterstützt
 
 Fehlercode: ExtensionStuckInDeletionState <br/>
 Fehlermeldung: Sicherungsvorgang wird von Erweiterungsstatus nicht unterstützt
@@ -121,7 +123,7 @@ Beim Sicherungsvorgang ist aufgrund eines inkonsistenten Status der Sicherungser
 * Wiederholen Sie den Sicherungsvorgang, nachdem Sie die Sicherungserweiterung gelöscht haben.
 * Mit dem nachfolgenden Sicherungsvorgang wird die neue Erweiterung mit dem gewünschten Status installiert.
 
-### <a name="extensionfailedsnapshotlimitreachederror---snapshot-operation-failed-as-snapshot-limit-is-exceeded-for-some-of-the-disks-attached"></a>ExtensionFailedSnapshotLimitReachedError – Fehler bei Momentaufnahmevorgang, weil für einige der angefügten Datenträger das Limit für Momentaufnahmen überschritten wurde
+## <a name="extensionfailedsnapshotlimitreachederror---snapshot-operation-failed-as-snapshot-limit-is-exceeded-for-some-of-the-disks-attached"></a>ExtensionFailedSnapshotLimitReachedError – Fehler bei Momentaufnahmevorgang, weil für einige der angefügten Datenträger das Limit für Momentaufnahmen überschritten wurde
 
 Fehlercode: ExtensionFailedSnapshotLimitReachedError  <br/>
 Fehlermeldung: Fehler bei Momentaufnahmevorgang, weil für einige der angefügten Datenträger das Limit für Momentaufnahmen überschritten wurde
@@ -135,7 +137,7 @@ Beim Momentaufnahmevorgang ist ein Fehler aufgetreten, da das Momentaufnahmenlim
     * Vergewissern Sie sich, dass in „/etc/azure/vmbackup.conf“ für **isanysnapshotfailed** der Wert „false“ festgelegt ist.
     * Planen Sie Azure Site Recovery für einen anderen Zeitpunkt, sodass kein Konflikt mit dem Sicherungsvorgang auftritt.
 
-### <a name="extensionfailedtimeoutvmnetworkunresponsive---snapshot-operation-failed-due-to-inadequate-vm-resources"></a>ExtensionFailedTimeoutVMNetworkUnresponsive – Fehler beim Momentaufnahmevorgang aufgrund nicht ausreichender VM-Ressourcen.
+## <a name="extensionfailedtimeoutvmnetworkunresponsive---snapshot-operation-failed-due-to-inadequate-vm-resources"></a>ExtensionFailedTimeoutVMNetworkUnresponsive – Fehler beim Momentaufnahmevorgang aufgrund nicht ausreichender VM-Ressourcen.
 
 Fehlercode: ExtensionFailedTimeoutVMNetworkUnresponsive<br/>
 Fehlermeldung: Fehler beim Momentaufnahmevorgang aufgrund nicht ausreichender VM-Ressourcen.
@@ -157,7 +159,7 @@ So wird sichergestellt, dass die Momentaufnahmen nicht über den Gast, sondern �
 
 **Schritt 3:** Versuchen Sie, [die Größe der VM zu erhöhen](https://azure.microsoft.com/blog/resize-virtual-machines/) und den Vorgang dann erneut durchzuführen.
 
-### <a name="common-vm-backup-errors"></a>Häufige Fehler bei der VM-Sicherung
+## <a name="common-vm-backup-errors"></a>Häufige Fehler bei der VM-Sicherung
 
 | Fehlerdetails | Problemumgehung |
 | ------ | --- |
@@ -239,7 +241,7 @@ Gehen Sie wie folgt vor, um die VM-Agent-Version auf virtuellen Windows-Computer
 ## <a name="troubleshoot-vm-snapshot-issues"></a>Behandeln von Problemen mit VM-Momentaufnahmen
 Bei der VM-Sicherung werden Momentaufnahmenbefehle an den zugrunde liegenden Speicher ausgegeben. Wenn Sie bei der Ausführung von Momentaufnahmeaufgaben keinen Zugriff auf Storage haben oder dabei Verzögerungen auftreten, kann es beim Sicherungsauftrag zu Fehlern kommen. Die folgenden Umstände können zu Fehlern bei Momentaufnahmeaufgaben führen:
 
-- **Der Netzwerkzugriff auf Storage wird durch NSG blockiert**. Erfahren Sie mehr über das [Einrichten des Netzwerkzugriffs](backup-azure-arm-vms-prepare.md#establish-network-connectivity) auf Storage durch Hinzufügen von IP-Adressen zu einer Whitelist oder über einen Proxyserver.
+- **Der Netzwerkzugriff auf Storage wird durch NSG blockiert**. Erfahren Sie mehr über das [Einrichten des Netzwerkzugriffs](backup-azure-arm-vms-prepare.md#establish-network-connectivity) auf Storage durch Hinzufügen einer Liste mit zulässigen IP-Adressen oder über einen Proxyserver.
 - **Virtuelle Computer mit konfigurierter SQL Server-Sicherung können Momentaufnahmeaufgaben verzögern**. Standardmäßig wird bei der Sicherung virtueller Computer eine vollständige VSS-Sicherung auf virtuellen Windows-Computern erstellt. Bei virtuellen Computern mit SQL Server und einer konfigurierten SQL Server-Sicherung kann es zu Verzögerungen bei Momentaufnahmen kommen. Wenn Verzögerungen bei Momentaufnahmen Sicherungsfehler verursachen, legen Sie den folgenden Registrierungsschlüssel fest:
 
    ```
@@ -262,8 +264,8 @@ Die Notwendigkeit zur Auflösung öffentlicher Internetadressen wird in [diesem 
 
 Nachdem die Namensauflösung richtig eingerichtet wurde, muss auch der Zugriff auf die Azure-IP-Adressen bereitgestellt werden. Führen Sie einen der folgenden Schritte aus, um die Blockierung des Zugriffs auf die Azure-Infrastruktur aufzuheben:
 
-- Setzen Sie die IP-Bereiche der Azure-Rechenzentren auf die Whitelist:
-   1. Beschaffen Sie sich die Liste mit den [IP-Adressen des Azure-Rechenzentrums](https://www.microsoft.com/download/details.aspx?id=41653) , die auf der Positivliste stehen sollen.
+- Liste von zulässigen IP-Adressbereichen im Azure-Rechenzentrum:
+   1. Beschaffen Sie sich die Liste mit den [IP-Adressen des Azure-Rechenzentrums](https://www.microsoft.com/download/details.aspx?id=41653), die auf der Zulassungsliste stehen sollen.
    1. Heben Sie die Blockierung für die IP-Adressen mit dem Cmdlet [New-NetRoute](https://docs.microsoft.com/powershell/module/nettcpip/new-netroute) auf. Führen Sie dieses Cmdlet auf dem virtuellen Azure-Computer in einem PowerShell-Fenster mit erhöhten Rechten aus. Führen Sie diesen Vorgang als Administrator aus.
    1. Fügen Sie der Netzwerksicherheitsgruppe (NSG), falls vorhanden, Regeln hinzu, um den Zugriff auf die IP-Adressen zuzulassen.
 - Erstellen Sie einen Pfad für den HTTP-Datenverkehr:

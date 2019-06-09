@@ -2,16 +2,16 @@
 title: Ändern, Löschen oder Verwalten Ihrer Verwaltungsgruppen – Azure Governance
 description: Hier erfahren Sie, wie Sie die Verwaltungsgruppenhierarchie anzeigen, verwalten, aktualisieren und löschen.
 author: rthorn17
-ms.service: azure-resource-manager
-ms.date: 04/04/2019
+ms.service: governance
+ms.date: 05/22/2019
 ms.author: rithorn
 ms.topic: conceptual
-ms.openlocfilehash: b3798ec7578530e04ec9e00086fffaec9a58a7cd
-ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
+ms.openlocfilehash: 028b4cbf62bf9ed0b3b38f54d3b787a8c1368da0
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/20/2019
-ms.locfileid: "65950229"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66242946"
 ---
 # <a name="manage-your-resources-with-management-groups"></a>Verwalten von Ressourcen mit Verwaltungsgruppen
 
@@ -206,10 +206,12 @@ Ein Grund zum Erstellen einer Verwaltungsgruppe ist das Bündeln von Abonnements
 Zum Verschieben des Abonnements müssen alle folgenden RBAC-Berechtigungen vorliegen:
 
 - Die Rolle „Besitzer“ für das untergeordnete Abonnement
-- Die Rolle „Besitzer“, „Mitwirkender“ oder „Verwaltungsgruppenmitwirkender“ für die übergeordnete Zielverwaltungsgruppe*
-- Die Rolle „Besitzer“, „Mitwirkender“ oder „Verwaltungsgruppenmitwirkender“ für die vorhandene übergeordnete Verwaltungsgruppe*
+- Die Rolle „Besitzer“, „Mitwirkender“ oder „Verwaltungsgruppenmitwirkender“ für die übergeordnete Zielverwaltungsgruppe
+- Die Rolle „Besitzer“, „Mitwirkender“ oder „Verwaltungsgruppenmitwirkender“ für die vorhandene übergeordnete Verwaltungsgruppe
 
-*: Gilt, wenn die Zielverwaltungsgruppe oder die vorhandene übergeordnete Verwaltungsgruppe nicht die Stammverwaltungsgruppe ist. Da die Stammverwaltungsgruppe die standardmäßige Landing-Gruppe für alle neuen Verwaltungsgruppen und Abonnements ist, benötigen Benutzer keine Berechtigungen für diese Gruppe, wenn ein Element hierhin verschoben werden soll.
+Wenn die Zielverwaltungsgruppe oder die vorhandene übergeordnete Verwaltungsgruppe die Stammverwaltungsgruppe ist, gelten die Berechtigungsanforderungen nicht. Da die Stammverwaltungsgruppe die standardmäßige Landing-Gruppe für alle neuen Verwaltungsgruppen und Abonnements ist, benötigen Sie keine Berechtigungen für diese Gruppe, wenn ein Element hierhin verschoben werden soll.
+
+Wenn die Rolle „Besitzer“ in Ihrem Abonnement von der aktuellen Verwaltungsgruppe geerbt wurde, sind Ihre Verschiebeziele eingeschränkt. Sie können das Abonnement nur in eine andere Verwaltungsgruppe verschieben, für das Sie die Rolle „Besitzer“ innehaben. Sie können es nicht in eine Verwaltungsgruppe verschieben, in der Sie „Mitwirkender“ sind, da Sie den Besitz an Ihrem Abonnement verlieren würden. Wenn Ihnen die Besitzerrolle für das Abonnement direkt zugewiesen wurde (nicht von der Verwaltungsgruppe geerbt), können Sie es in jede Verwaltungsgruppe verschieben, bei der Sie Mitwirkender sind.
 
 Wählen Sie zum Anzeigen Ihrer Berechtigungen im Azure-Portal die Verwaltungsgruppe und dann **IAM** aus. Weitere Informationen zu RBAC-Rollen finden Sie unter [Erste Schritte mit der rollenbasierten Zugriffssteuerung im Azure-Portal](../../role-based-access-control/overview.md).
 

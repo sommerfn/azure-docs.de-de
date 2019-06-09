@@ -6,18 +6,18 @@ author: alkohli
 ms.service: databox
 ms.subservice: ''
 ms.topic: article
-ms.date: 09/27/2018
+ms.date: 05/24/2019
 ms.author: alkohli
-ms.openlocfilehash: 5b392fecd75f5c18793a6122b8d5d967a2e54afa
-ms.sourcegitcommit: 6ea7f0a6e9add35547c77eef26f34d2504796565
+ms.openlocfilehash: acba9d2c87d2fb23e48ac24cec22388044702bac
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/14/2019
-ms.locfileid: "65604444"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66240144"
 ---
 # <a name="open-a-support-ticket-for-azure-data-box"></a>Öffnen eines Supporttickets für Azure Data Box 
 
-Dieser Artikel gilt für Azure Data Box und Azure Data Box Disk, die beide vom Azure Data Box-Dienst verwaltet werden. Wenn Probleme mit Ihrem Azure Data Box-Dienst auftreten, können Sie eine Serviceanfrage für den technischen Support erstellen. In diesem Artikel wird Folgendes beschrieben:
+Dieser Artikel gilt für Azure Data Box, Azure Data Box Heavy und Azure Data Box Disk, die alle vom Azure Data Box-Dienst verwaltet werden. Wenn Probleme mit Ihrem Azure Data Box-Dienst auftreten, können Sie eine Serviceanfrage für den technischen Support erstellen. In diesem Artikel wird Folgendes beschrieben:
 
 * Erstellen einer Supportanfrage
 * Verwalten des Lebenszyklus einer Supportanfrage innerhalb des Portals
@@ -34,7 +34,7 @@ Führen Sie die folgenden Schritte aus, um eine Supportanfrage zu erstellen.
     
     1. Wählen Sie aus der Dropdownliste **Problemtyp** den Eintrag **Technisch** aus.
     2. Wählen Sie Ihr **Abonnement** aus.
-    3. Aktivieren Sie unter **Dienst** die Option **Alle Dienste**. Wählen Sie in der Dropdownliste die Option **Data Box – Vorschau** aus. 
+    3. Aktivieren Sie unter **Dienst** die Option **Alle Dienste**. Wählen Sie in der Dropdownliste die Option **Data Box** aus. 
     4. Geben Sie Ihren **Supportplan** an.
     5. Klicken Sie auf **Weiter**.
 
@@ -84,3 +84,5 @@ Nach dem Erstellen einer Supportanfrage können Sie den Lebenszyklus des Tickets
 ## <a name="next-steps"></a>Nächste Schritte
 
 Erfahren Sie mehr über das [Behandeln von Problemen mit Data Box Disk](data-box-disk-troubleshoot.md).
+Erfahren Sie mehr über das [Behandeln von Problemen mit Data Box](data-box-troubleshoot.md).
+Erfahren Sie mehr über das [Behandeln von Problemen mit Data Box-Blobspeicher](data-box-troubleshoot-rest.md).

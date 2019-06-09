@@ -11,19 +11,19 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb, rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b562214d4bf8fd83f740e114a6d77200b4611649
-ms.sourcegitcommit: 13cba995d4538e099f7e670ddbe1d8b3a64a36fb
+ms.openlocfilehash: e7eebc68ae8a55d636f3bc85e179bd7d6813be8d
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/22/2019
-ms.locfileid: "66003538"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66235552"
 ---
 # <a name="baseline-policy-block-legacy-authentication-preview"></a>Basisrichtlinie: Blockieren der Legacyauthentifizierung (Vorschau)
 
 Um Ihren Benutzern den einfachen Zugriff auf Ihre Cloud-Apps zu ermöglichen, unterstützt Azure Active Directory (Azure AD) eine Vielzahl von Authentifizierungsprotokollen einschließlich der Legacyauthentifizierung. Der Begriff „Legacyauthentifizierung“ bezieht sich auf eine Authentifizierungsanforderung von:
 
 * älteren Office-Clients, die keine moderne Authentifizierung verwenden (z.B. Office 2010-Client)
-* jedem Client, der veraltete E-Mail-Protokolle wie IMAP/SMPT/POP3 verwendet
+* jedem Client, der veraltete E-Mail-Protokolle wie IMAP/SMTP/POP3 verwendet
 
 Heute stammt ein Großteil aller gefährdenden Anmeldeversuche von Legacyauthentifizierungen. Die Legacyauthentifizierung unterstützt keine mehrstufige Authentifizierung (Multi-Factor Authentication, MFA). Auch wenn Sie eine MFA-Richtlinie für Ihr Verzeichnis aktiviert haben, kann ein böswilliger Benutzer sich mithilfe eines älteren Protokolls authentifizieren und MFA umgehen.
 
@@ -74,13 +74,13 @@ Wenn Sie MacOS verwenden, sollten Sie ein Upgrade auf Office für Mac 2016 oder 
 
 Damit Windows-basierte Outlook-Clients die moderne Authentifizierung verwenden können, muss die moderne Authentifizierung ebenfalls für Exchange Online aktiviert sein. Wenn die moderne Authentifizierung für Exchange Online deaktiviert ist, verwenden Windows-basierte Outlook-Clients, die die moderne Authentifizierung unterstützen (Outlook 2013 oder höher), die Standardauthentifizierung zum Herstellen von Verbindungen mit Exchange Online-Postfächern.
 
-SharePoint Online ermöglicht standardmäßig die moderne Authentifizierung. Für Verzeichnisse, die nach dem 1. August 2017 erstellt wurden, ist die moderne Authentifizierung in Exchange Online standardmäßig aktiviert. Wenn Sie allerdings vorher die moderne Authentifizierung deaktiviert haben oder ein Verzeichnis verwenden, das vor diesem Datum erstellt wurde, führen Sie die Schritte im folgenden Artikel zum [Aktivieren der modernen Authentifizierung in Exchange Online](https://docs.microsoft.com/en-us/exchange/clients-and-mobile-in-exchange-online/enable-or-disable-modern-authentication-in-exchange-online) aus.
+SharePoint Online ermöglicht standardmäßig die moderne Authentifizierung. Für Verzeichnisse, die nach dem 1. August 2017 erstellt wurden, ist die moderne Authentifizierung in Exchange Online standardmäßig aktiviert. Wenn Sie allerdings vorher die moderne Authentifizierung deaktiviert haben oder ein Verzeichnis verwenden, das vor diesem Datum erstellt wurde, führen Sie die Schritte im folgenden Artikel zum [Aktivieren der modernen Authentifizierung in Exchange Online](https://docs.microsoft.com/exchange/clients-and-mobile-in-exchange-online/enable-or-disable-modern-authentication-in-exchange-online) aus.
 
 ### <a name="step-4-skype-for-business"></a>Schritt 4: Skype for Business
 
 Um Legacyauthentifizierungsanforderungen von Skype for Business zu verhindern, ist es notwendig, die moderne Authentifizierung für Skype for Business Online zu aktivieren. Für Verzeichnisse, die nach dem 1. August 2017 erstellt wurden, ist die moderne Authentifizierung für Skype for Business standardmäßig aktiviert.
 
-Zum Aktivieren der modernen Authentifizierung in Skype for Business sollten Sie auf Microsoft Teams umstellen, das die moderne Authentifizierung standardmäßig unterstützt. Wenn Sie die Umstellung zu diesem Zeitpunkt nicht durchführen können, müssen Sie die moderne Authentifizierung für Skype for Business Online aktivieren, sodass Skype for Business-Clients beginnen, die moderne Authentifizierung zu verwenden. Befolgen Sie diese Schritte im Artikel [Unterstützung von Skype for Business-Topologien mit moderner Authentifizierung](https://docs.microsoft.com/en-us/skypeforbusiness/plan-your-deployment/modern-authentication/topologies-supported) zum Aktivieren der modernen Authentifizierung für Skype for Business.
+Zum Aktivieren der modernen Authentifizierung in Skype for Business sollten Sie auf Microsoft Teams umstellen, das die moderne Authentifizierung standardmäßig unterstützt. Wenn Sie die Umstellung zu diesem Zeitpunkt nicht durchführen können, müssen Sie die moderne Authentifizierung für Skype for Business Online aktivieren, sodass Skype for Business-Clients beginnen, die moderne Authentifizierung zu verwenden. Befolgen Sie diese Schritte im Artikel [Unterstützung von Skype for Business-Topologien mit moderner Authentifizierung](https://docs.microsoft.com/skypeforbusiness/plan-your-deployment/modern-authentication/topologies-supported) zum Aktivieren der modernen Authentifizierung für Skype for Business.
 
 Zusätzlich zum Aktivieren der modernen Authentifizierung für Skype for Business Online sollte die moderne Authentifizierung für Exchange Online aktiviert werden, wenn die moderne Authentifizierung für Skype for Business aktiviert wird. Dieser Prozess synchronisiert den Zustand der modernen Authentifizierung in Exchange Online und Skype for Business Online und verhindert mehrere Anmeldeaufforderungen für Skype for Business-Clients.
 
@@ -105,7 +105,7 @@ Schritte zum Aktivieren der modernen Authentifizierung finden Sie in den folgend
 
 Die **Basisrichtlinie: Blockieren der Legacyauthentifizierung (Vorschau)** ist vorkonfiguriert und wird im Azure-Portal auf dem Blatt „Bedingter Zugriff“ ganz oben angezeigt.
 
-Gehen Sie wie folgt vor, um diese Richtlinie zu aktivieren und Ihre Administratoren zu schützen:
+Gehen Sie wie folgt vor, um diese Richtlinie zu aktivieren und Ihre Organisation zu schützen:
 
 1. Melden Sie sich beim  **Azure-Portal** als globaler Administrator, Sicherheitsadministrator oder Administrator für bedingten Zugriff an.
 1. Navigieren Sie zu **Azure Active Directory** > **Bedingter Zugriff**.

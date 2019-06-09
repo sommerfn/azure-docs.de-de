@@ -10,12 +10,12 @@ ms.author: larryfr
 author: Blackmist
 ms.date: 05/14/2019
 ms.custom: seodec18
-ms.openlocfilehash: 3acaf86123f2cab871bc2f99cc873a73015875e2
-ms.sourcegitcommit: cfbc8db6a3e3744062a533803e664ccee19f6d63
+ms.openlocfilehash: 2dd397e879dd76cabd119a3cbedff34041be2d13
+ms.sourcegitcommit: 8c49df11910a8ed8259f377217a9ffcd892ae0ae
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/21/2019
-ms.locfileid: "65989845"
+ms.lasthandoff: 05/29/2019
+ms.locfileid: "66298483"
 ---
 # <a name="azure-machine-learning-service-release-notes"></a>Azure Machine Learning-Dienst – Anmerkungen zu dieser Version
 
@@ -24,6 +24,21 @@ Erfahren Sie in diesem Artikel mehr über die Versionen des Azure Machine Learni
 + Das [**Datenaufbereitungs-SDK**](https://aka.ms/data-prep-sdk) von Azure Machine Learning
 
 Sehen Sie die [Liste der bekannten Probleme](resource-known-issues.md) an, um mehr über bekannte Fehler und Problemumgehungen zu erfahren.
+
+## <a name="2019-05-28"></a>28.05.2019
+
+### <a name="azure-machine-learning-data-prep-sdk-v114"></a>Azure Machine Learning Data Prep SDK, Version 1.1.4
+
++ **Neue Features**
+  + Sie können jetzt die folgenden Ausdruckssprachfunktionen verwenden, um datetime-Werte zu extrahieren und sie nach der Analyse neuen Spalten zuzuweisen.
+    + `RegEx.extract_record()` extrahiert DateTime-Elemente in eine neue Spalte.
+    + `create_datetime()` erstellt DateTime-Objekte aus separaten datetime-Elementen.
+  + Beim Aufrufen von `get_profile()` können Sie jetzt sehen, dass Quantilspalten als „(est.)“ bezeichnet werden, um deutlich anzugeben, dass es sich um Näherungswerte handelt.
+  + Sie können jetzt beim Lesen aus Azure Blob Storage ** als Platzhalter verwenden.
+    + Beispiel: `dprep.read_csv(path='https://yourblob.blob.core.windows.net/yourcontainer/**/data/*.csv')`
+
++ **Fehlerbehebungen**
+  + Korrektur eines Fehlers im Zusammenhang mit dem Lesen einer Parquet-Datei aus einer Remotequelle (Azure-Blob).
 
 ## <a name="2019-05-14"></a>2019-05-14
 

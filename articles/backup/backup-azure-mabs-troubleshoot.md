@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 05/21/2019
 ms.author: kasinh
-ms.openlocfilehash: aa039680be1e88d74cad63eba17d7f3aa89ea49f
-ms.sourcegitcommit: 13cba995d4538e099f7e670ddbe1d8b3a64a36fb
+ms.openlocfilehash: 06faed8ceca77edc20b67f73a76d885839aa7dbc
+ms.sourcegitcommit: 009334a842d08b1c83ee183b5830092e067f4374
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/22/2019
-ms.locfileid: "66000420"
+ms.lasthandoff: 05/29/2019
+ms.locfileid: "66304322"
 ---
 # <a name="troubleshoot-azure-backup-server"></a>Behandeln von Problemen mit Azure Backup Server
 
@@ -43,7 +43,7 @@ Wir empfehlen, dass Sie die nachstehende Prüfung durchführen, bevor Sie mit de
 
 | Vorgang | Fehlerdetails | Problemumgehung |
 | --- | --- | --- |
-| Backup | Replikat inkonsistent | Stellen Sie sicher, dass die Option für die automatische Konsistenzprüfung im Schutzgruppen-Assistenten aktiviert ist. Weitere Informationen zu den Ursachen von Replikatinkonsistenz und entsprechende Vorschläge finden Sie im Microsoft TechNet-Artikel [Replikat ist inkonsistent](https://technet.microsoft.com/library/cc161593.aspx).<br> <ol><li> Stellen Sie bei einer Systemstatus- oder BMR-Sicherung sicher, dass die Windows Server-Sicherung auf dem geschützten Server installiert ist.</li><li> Überprüfen Sie den DPM-Speicherpool auf dem DPM-/Microsoft Azure Backup Server auf Speicherplatzprobleme, und weisen Sie ggf. Speicher zu.</li><li> Überprüfen Sie den Zustand des Volumeschattenkopie-Diensts auf dem geschützten Server. Wenn er deaktiviert ist, legen Sie ihn auf manuellen Start fest. Starten Sie den Dienst auf dem Server. Kehren Sie anschließend zur DPM-/Microsoft Azure Backup Server-Konsole zurück, und starten Sie die Synchronisierung mit dem Auftrag zur Konsistenzprüfung.</li></ol>|
+| Backup | Replikat inkonsistent | Stellen Sie sicher, dass die Option für die automatische Konsistenzprüfung im Schutzgruppen-Assistenten aktiviert ist. Weitere Informationen zu den Ursachen von Replikatinkonsistenz und entsprechende Vorschläge finden Sie im Artikel [Replikat ist inkonsistent](https://technet.microsoft.com/library/cc161593.aspx).<br> <ol><li> Stellen Sie bei einer Systemstatus- oder BMR-Sicherung sicher, dass die Windows Server-Sicherung auf dem geschützten Server installiert ist.</li><li> Überprüfen Sie den DPM-Speicherpool auf dem DPM-/Microsoft Azure Backup Server auf Speicherplatzprobleme, und weisen Sie ggf. Speicher zu.</li><li> Überprüfen Sie den Zustand des Volumeschattenkopie-Diensts auf dem geschützten Server. Wenn er deaktiviert ist, legen Sie ihn auf manuellen Start fest. Starten Sie den Dienst auf dem Server. Kehren Sie anschließend zur DPM-/Microsoft Azure Backup Server-Konsole zurück, und starten Sie die Synchronisierung mit dem Auftrag zur Konsistenzprüfung.</li></ol>|
 
 ## <a name="online-recovery-point-creation-failed"></a>Fehler bei der Erstellung eines Onlinewiederherstellungspunkts.
 
@@ -82,7 +82,7 @@ Wir empfehlen, dass Sie die nachstehende Prüfung durchführen, bevor Sie mit de
 | Vorgang | Fehlerdetails | Problemumgehung |
 | --- | --- | --- |
 | Übertragen von Agents auf geschützte Server mithilfe von Push | Die für den Server angegebenen Anmeldeinformationen sind ungültig. | **Sollte die im Produkt empfohlene Aktion nicht funktionieren, führen Sie die folgenden Schritte aus**: <br> Installieren Sie den Schutz-Agent manuell auf dem Produktionsserver, wie in [diesem Artikel](https://technet.microsoft.com/library/hh758186(v=sc.12).aspx#BKMK_Manual) beschrieben.|
-| Azure Backup-Agent konnte keine Verbindung mit dem Azure Backup-Dienst herstellen (ID 100050). | Der Azure Backup-Agent konnte keine Verbindung mit dem Azure Backup-Dienst herstellen. | **Sollte die im Produkt empfohlene Aktion nicht funktionieren, führen Sie die folgenden Schritte aus**: <br>1. Führen Sie den folgenden Befehl an einer Eingabeaufforderung mit erhöhten Rechten aus: **psexec -i -s "C:\Programme\Internet Explorer\iexplore.exe**. Das Internet Explorer-Fenster wird geöffnet. <br/> 2. Navigieren Sie zu **Extras** > **Internetoptionen** > **Verbindungen** > **LAN-Einstellungen**. <br/> 3. Überprüfen Sie die Proxyeinstellungen für das Systemkonto. Legen Sie Proxy-IP und Port fest. <br/> 4. Schließen Sie Internet Explorer.|
+| Azure Backup-Agent konnte keine Verbindung mit dem Azure Backup-Dienst herstellen (ID 100050). | Der Azure Backup-Agent konnte keine Verbindung mit dem Azure Backup-Dienst herstellen. | **Sollte die im Produkt empfohlene Aktion nicht funktionieren, führen Sie die folgenden Schritte aus**: <br>1. Führen Sie den folgenden Befehl an einer Eingabeaufforderung mit erhöhten Rechten aus: **psexec -i -s "C:\Programme\Internet Explorer\iexplore.exe**. Das Internet Explorer-Fenster wird geöffnet. <br/> 2. Navigieren Sie zu **Extras** > **Internetoptionen** > **Verbindungen** > **LAN-Einstellungen**. <br/> 3. Ändern Sie die Einstellungen dahingehend, dass ein Proxyserver verwendet wird. Geben Sie dann die Proxyserverdetails an.<br/> 4. Wenn Ihr Computer über einen eingeschränkten Internetzugang verfügt, stellen Sie sicher, dass die Firewalleinstellungen auf dem Computer oder Proxy diese [URLs](backup-configure-vault.md#verify-internet-access) und [IP-Adressen](backup-configure-vault.md#verify-internet-access) zulassen.|
 | Fehler bei der Installation des Azure Backup-Agents | Bei der Installation von Microsoft Azure Recovery Services ist ein Fehler aufgetreten. Für alle Änderungen, die von der Microsoft Azure Recovery Services-Installation am System vorgenommen wurden, wurde ein Rollback ausgeführt. (ID: 4024) | Installieren Sie den Azure-Agent manuell.
 
 

@@ -18,12 +18,12 @@ ms.author: ryanwi
 ms.custom: aaddev
 ms.reviewer: sureshja
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1d02642b0c069124ddcfbef1ea655438c906739a
-ms.sourcegitcommit: f6c85922b9e70bb83879e52c2aec6307c99a0cac
+ms.openlocfilehash: d369891624256e98ba8d46168cc9c10c41d37b8d
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/11/2019
-ms.locfileid: "65545655"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66235240"
 ---
 # <a name="azure-active-directory-app-manifest"></a>Azure Active Directory-App-Manifest
 
@@ -50,7 +50,7 @@ Konfigurieren Sie das Anwendungsmanifest wie folgt:
 
 | Schlüssel  | Werttyp | BESCHREIBUNG  | Beispielwert |
 |---------|---------|---------|---------|
-| `accessTokenAcceptedVersion` | Nullable Int32 | Gibt die Zugriffstokenversion an, die von der Ressource erwartet wird. Dadurch ändern sich die Version und das Format des erzeugten JWT unabhängig vom Endpunkt oder Client, der zum Anfordern des Zugriffstokens verwendet wird.<br/><br/>Der verwendete Endpunkt, v1.0 oder v2.0, wird vom Client ausgewählt und wirkt sich nur auf die Version der ID-Token aus. Ressourcen müssen `accesstokenAcceptedVersion` explizit konfigurieren, um das unterstützte Zugriffstokenformat anzugeben.<br/><br/>Mögliche Werte für `accesstokenAcceptedVersion` sind 1, 2 oder null. Wenn der Wert null ist, wird standardmäßig 1 verwendet. Dies entspricht dem v1.0-Endpunkt. | `2` |
+| `accessTokenAcceptedVersion` | Nullable Int32 | Gibt die Zugriffstokenversion an, die von der Ressource erwartet wird. Dadurch ändern sich die Version und das Format des erzeugten JWT unabhängig vom Endpunkt oder Client, der zum Anfordern des Zugriffstokens verwendet wird.<br/><br/>Der verwendete Endpunkt, v1.0 oder v2.0, wird vom Client ausgewählt und wirkt sich nur auf die Version der ID-Token aus. Ressourcen müssen `accesstokenAcceptedVersion` explizit konfigurieren, um das unterstützte Zugriffstokenformat anzugeben.<br/><br/>Mögliche Werte für `accesstokenAcceptedVersion` sind 1, 2 oder null. Wenn der Wert null ist, wird standardmäßig 1 verwendet. Dies entspricht dem v1.0-Endpunkt. <br/><br/>Wenn `signInAudience` ist `AzureADandPersonalMicrosoftAccount`, muss der Wert `2` sein  | `2` |
 | `addIns` | Sammlung | Definiert ein benutzerdefiniertes Verhalten, mit dem eine App in bestimmten Kontexten von einem Verbraucherdienst aufgerufen werden kann. Beispielsweise kann für Anwendungen, die Dateidatenströme rendern können, die addIns-Eigenschaft für die Funktionalität „FileHandler“ festgelegt werden. Dadurch können Dienste wie Office 365 die Anwendung im Kontext eines Dokuments aufrufen, an dem der Benutzer arbeitet. | <code>{<br>&nbsp;&nbsp;&nbsp;"id":"968A844F-7A47-430C-9163-07AE7C31D407"<br>&nbsp;&nbsp;&nbsp;"type": "FileHandler",<br>&nbsp;&nbsp;&nbsp;"properties": [<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{"key": "version", "value": "2" }<br>&nbsp;&nbsp;&nbsp;]<br>}</code>|
 | `allowPublicClient` | Boolean | Gibt den Fallbackanwendungstyp zurück. Azure AD leitet den Anwendungstyp standardmäßig von „replyUrlsWithType“ ab. Es gibt bestimmte Szenarien, in den Azure AD den Client-App-Typ nicht bestimmen kann (etwa beim [ROPC](https://tools.ietf.org/html/rfc6749#section-4.3)-Fluss, in dem die HTTP-Anforderung ohne URL-Umleitung ausgeführt wird). In diesen Fällen interpretiert Azure AD den Anwendungstyp basierend auf dem Wert dieser Eigenschaft. Wird für diesen Wert TRUE verwendet, wird der Fallbackanwendungstyp als öffentlicher Client festgelegt, etwa als installierte App, die auf einem mobilen Gerät ausgeführt wird. Der Standardwert ist FALSE. Das bedeutet, dass der Fallbackanwendungstyp ein vertraulicher Client ist, etwa eine Web-App. | `false` |
 | `availableToOtherTenants` | Boolean | TRUE, wenn die Anwendung für andere Mandanten freigegeben wird; andernfalls FALSE. <br><br> _Hinweis: Nur in der (älteren) Benutzeroberfläche „App-Registrierungen“ verfügbar. Wird in der aktuellen Benutzeroberfläche [App-Registrierungen](https://go.microsoft.com/fwlink/?linkid=2083908) durch `signInAudience` ersetzt._ | |

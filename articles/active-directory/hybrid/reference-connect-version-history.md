@@ -12,16 +12,16 @@ ms.devlang: na
 ms.topic: reference
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 05/14/2019
+ms.date: 05/23/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 60453c320a66a8eebd7460b3930241f9e81b8a1b
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: 235877ac8f84e695e5f81770d33b6fed89a5f241
+ms.sourcegitcommit: 8c49df11910a8ed8259f377217a9ffcd892ae0ae
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65784331"
+ms.lasthandoff: 05/29/2019
+ms.locfileid: "66298794"
 ---
 # <a name="azure-ad-connect-version-release-history"></a>Azure AD Connect: Verlauf der Versionsveröffentlichungen
 Das Azure Active Directory-Team (Azure AD) aktualisiert Azure AD Connect regelmäßig mit neuen Features und Funktionen. Nicht alle Erweiterungen gelten für alle Benutzergruppen.
@@ -44,10 +44,20 @@ Während dieses Prozesses enthält die Versionsnummer des Releases ein „X“ a
 Nicht für alle Releases von Azure AD Connect wird das automatische Upgrade zur Verfügung gestellt. Aus dem Releasestatus geht hervor, ob für ein Release das automatische Upgrade oder nur der Download verfügbar gemacht wird. Wenn das automatische Upgrade auf Ihrem Azure AD Connect-Server aktiviert ist, wird dieser Server automatisch auf die neueste Version von Azure AD Connect aktualisiert, die für das automatische Upgrade veröffentlicht wird. Beachten Sie, dass nicht alle Azure AD Connect-Konfigurationen für ein automatisches Upgrade berechtigt sind. Unter dem Link [Automatisches Upgrade](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-install-automatic-upgrade) erhalten Sie weitere Informationen zu diesem Thema.
 
 ## <a name="13210"></a>1.3.21.0
+>[!IMPORTANT]
+>Es gibt ein bekanntes Problem beim Upgrade von Azure AD Connect aus einer früheren Version auf 1.3.21.0, bei dem im Office 365-Portal nicht die aktualisierte Version angezeigt wird, obwohl das Upgrade von Azure AD Connect erfolgreich durchgeführt wurde.
+>
+> Um dies zu beheben, müssen Sie das **AdSync**-Modul importieren und anschließend das Powershell-Cmdlet `Set-ADSyncDirSyncConfiguration` auf dem Azure AD Connect-Server ausführen.  Sie können sich nach den folgenden Schritten richten:
+>
+>1. Öffnen Sie Powershell im Administratormodus
+>2. Führen Sie `Import-Module "ADSync"` aus.
+>3. Führen Sie `Set-ADSyncDirSyncConfiguration -AnchorAttribute ""` aus.
+ 
+
 
 ### <a name="release-status"></a>Releasestatus 
 
-14.05.2019: TBD
+14.05.2019: Für den Download veröffentlicht
 
 
 ### <a name="fixed-issues"></a>Behobene Probleme 
@@ -1018,7 +1028,7 @@ Veröffentlichung: Mai 2016
 
 * Warnungen und Unterstützung beim Überprüfen von Domänen, wenn Sie in Azure AD Connect noch keine Überprüfung durchgeführt haben.
 * Unterstützung für [Microsoft Cloud Deutschland](reference-connect-instances.md#microsoft-cloud-germany)wurde hinzugefügt.
-* Unterstützung für die neueste Infrastruktur der [Microsoft Azure Government-Cloud](reference-connect-instances.md#microsoft-azure-government-cloud) mit neuen URL-Anforderungen wurde hinzugefügt.
+* Unterstützung für die neueste Infrastruktur der [Microsoft Azure Government-Cloud](reference-connect-instances.md#microsoft-azure-government) mit neuen URL-Anforderungen wurde hinzugefügt.
 
 **Behobene Probleme und Verbesserungen:**
 

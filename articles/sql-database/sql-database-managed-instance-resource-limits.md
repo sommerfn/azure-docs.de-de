@@ -9,22 +9,22 @@ ms.devlang: ''
 ms.topic: conceptual
 author: bonova
 ms.author: bonova
-ms.reviewer: carlrab, jovanpop, sachinp
+ms.reviewer: carlrab, jovanpop, sachinp, sstein
 manager: craigg
 ms.date: 05/22/2019
-ms.openlocfilehash: e091ec29c810fce7a39ad5aa5cc8f0ddae711752
-ms.sourcegitcommit: db3fe303b251c92e94072b160e546cec15361c2c
+ms.openlocfilehash: 7ff8405bba39e274c4f9f0cbacb7c295564c877e
+ms.sourcegitcommit: 009334a842d08b1c83ee183b5830092e067f4374
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/22/2019
-ms.locfileid: "66016405"
+ms.lasthandoff: 05/29/2019
+ms.locfileid: "66303214"
 ---
 # <a name="overview-azure-sql-database-managed-instance-resource-limits"></a>Übersicht über Ressourceneinschränkungen für verwaltete Azure SQL-Datenbank-Instanzen
 
-Dieser Artikel bietet eine Übersicht über die Ressourceneinschränkungen für verwaltete Azure SQL-Datenbank-Instanzen und erläutert, wie Sie eine Anforderung zur Erhöhung der standardmäßigen regionalen Grenzwerte für Abonnements erstellen.
+Dieser Artikel bietet eine Übersicht zu den Ressourceneinschränkungen für verwaltete Azure SQL-Datenbank-Instanzen und erläutert, wie Sie eine Anforderung zur Erhöhung dieser Grenzwerte erstellen.
 
 > [!NOTE]
-> Informationen zu weiteren Einschränkungen für verwaltete Instanzen finden Sie unter [vCore-basiertes Kaufmodell](sql-database-managed-instance.md#vcore-based-purchasing-model) und [Dienstebenen für eine verwaltete Instanz](sql-database-managed-instance.md#managed-instance-service-tiers). Unterschiede bei den unterstützten Funktionen und T-SQL-Anweisungen sind unter [Funktionsunterschiede](sql-database-features.md) und [Unterstützung von T-SQL-Anweisungen](sql-database-managed-instance-transact-sql-information.md) zu finden.
+> Unterschiede bei den unterstützten Funktionen und T-SQL-Anweisungen sind unter [Funktionsunterschiede](sql-database-features.md) und [Unterstützung von T-SQL-Anweisungen](sql-database-managed-instance-transact-sql-information.md) zu finden.
 
 ## <a name="instance-level-resource-limits"></a>Ressourceneinschränkungen auf Instanzebene
 
@@ -32,7 +32,7 @@ Eine verwaltete Instanz weist Merkmale und Ressourceneinschränkungen auf, die v
 
 ### <a name="hardware-generation-characteristics"></a>Merkmale der Hardwaregeneration
 
-Eine verwaltete Azure SQL-Datenbank-Instanz kann auf zwei Hardwaregenerationen (Gen4 und Gen5) bereitgestellt werden. Hardwaregenerationen weisen unterschiedliche Merkmale auf, die in der folgenden Tabelle beschrieben sind.
+Eine verwaltete Azure SQL-Datenbank-Instanz kann auf zwei Hardwaregenerationen bereitgestellt werden: Gen4 und Gen5. Hardwaregenerationen weisen unterschiedliche Merkmale auf, die in der folgenden Tabelle beschrieben sind.
 
 |   | **Gen4** | **Gen5** |
 | --- | --- | --- |
@@ -60,6 +60,7 @@ Eine verwaltete Instanz verfügt über zwei Dienstebenen: „Universell“und �
 | Datendurchsatz (ungefähr) | 100 bis 250 MB/Sek. pro Datei<br/>\*[Abhängig von der Dateigröße](https://docs.microsoft.com/azure/virtual-machines/windows/premium-storage-performance#premium-storage-disk-sizes) | |
 | E/A-Wartezeit (ungefähr) | 5 – 10 ms | 1 – 2 ms |
 | Max. TempDB-Größe | 192 bis 1.920 GB (24 GB pro virtuellem Kern) | Keine Einschränkungen – beschränkt durch die maximale Instanzspeichergröße |
+| Max. Sitzungen | 30000 | 30000 |
 
 **Hinweise**:
 
@@ -93,7 +94,7 @@ Unterstützte Abonnementtypen können eine begrenzte Anzahl von Ressourcen pro R
 > [!Note]
 > Diese Limits sind Standardeinstellungen und keine technischen Einschränkungen. Diese Limits können bei Bedarf erhöht werden, indem Sie eine spezielle [Supportanfrage im Azure-Portal](#obtaining-a-larger-quota-for-sql-managed-instance) erstellen, falls Sie mehr verwaltete Instanzen in der aktuellen Region benötigen. Alternativ können Sie auch neue verwaltete Instanzen in einer anderen Azure-Region erstellen, ohne Supportanfragen zu senden.
 
-In der folgenden Tabelle sind regionale Standardlimits für unterstützte Abonnements angegeben.
+In der folgenden Tabelle sind regionale Standardlimits für unterstützte Abonnements angegeben:
 
 |Abonnementtyp| Max. Anzahl von Subnetzen für verwaltete Instanzen | Max. Anzahl von Instanzen |Max. Anzahl von universellen verwalteten Instanzen*|Max. Anzahl von unternehmenskritischen verwalteten Instanzen*|
 | :---| :--- | :--- |:--- |:--- |
@@ -106,7 +107,6 @@ In der folgenden Tabelle sind regionale Standardlimits für unterstützte Abonne
 \* Sie können entweder 1 unternehmenskritische oder 4 universelle Instanzen in einem Subnetz bereitstellen, sodass die Gesamtanzahl von „Instanzeinheiten“ im Subnetz niemals höher als 4 ist.
 
 ** Die maximale Anzahl von Instanzen in einer Dienstebene trifft dann zu, wenn keine Instanzen in einer anderen Dienstebene vorhanden sind. Falls Sie beabsichtigen, universelle und unternehmenskritische Instanzen im selben Subnetz zu kombinieren, verwenden Sie den folgenden Abschnitt als Referenz für zulässige Kombinationen. Als einfache Faustregel gilt: Die Gesamtanzahl von Subnetzen darf nicht höher als 3 und die Gesamtanzahl von Instanzeinheiten nicht höher als 12 sein.
-
 
 
 > [!IMPORTANT]
@@ -132,7 +132,7 @@ Bei den folgenden Beispielen handelt es sich um Bereitstellungsfälle mit nicht 
 
 ## <a name="obtaining-a-larger-quota-for-sql-managed-instance"></a>Abrufen eines größeren Kontingents für verwaltete SQL-Instanz
 
-Wenn Sie mehr verwaltete Instanzen in Ihren aktuellen Regionen benötigen, können Sie eine Supportanfrage zum Erweitern des Kontingents über das Azure-Portal senden.
+Wenn Sie mehr verwaltete Instanzen in Ihren aktuellen Regionen benötigen, senden Sie eine Supportanfrage zum Erweitern des Kontingents über das Azure-Portal.
 Leiten Sie den Prozess zum Abrufen eines größeren Kontingents auf folgende Weise ein:
 
 1. Öffnen Sie **Hilfe + Support**, und klicken Sie auf **Neue Supportanfrage**.
@@ -166,6 +166,6 @@ Leiten Sie den Prozess zum Abrufen eines größeren Kontingents auf folgende Wei
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- Weitere Informationen zur verwalteten Instanz finden Sie unter [Was ist eine verwaltete Instanz?](sql-database-managed-instance.md)
+- Weitere Informationen zur verwalteten Instanz finden Sie unter [Was ist eine verwaltete Instanz?](sql-database-managed-instance.md).
 - Preisinformationen finden Sie unter [Preise – verwaltete Azure SQL-Datenbank-Instanzen ](https://azure.microsoft.com/pricing/details/sql-database/managed/).
 - Im [Schnellstarthandbuch](sql-database-managed-instance-get-started.md) erfahren Sie, wie Sie Ihre erste verwaltete Instanz erstellen.

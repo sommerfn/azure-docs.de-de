@@ -1,5 +1,5 @@
 ---
-title: Dataset-Definition und -Versionsverwaltung mit „azureml-datasets“
+title: Versionsverwaltung und Verwaltung von Dataset-Definitionen mit „azureml-datasets“
 titleSuffix: Azure Machine Learning service
 description: Erfahren Sie, wie Sie Dataset-Definitionen aktualisieren und den Lebenszyklus von Definitionen verwalten können.
 services: machine-learning
@@ -10,14 +10,14 @@ ms.author: sihhu
 author: MayMSFT
 ms.reviewer: larryfr
 ms.date: 05/02/2019
-ms.openlocfilehash: e58ce156deaaad259ea7b74521bcf9b79afbd183
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.openlocfilehash: 4476bdd902f054683fa544dc44b548689f3a1881
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66146207"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66241879"
 ---
-# <a name="update-and-manage-the-lifecycle-of-dataset-definitions"></a>Aktualisieren und Verwalten des Lebenszyklus von Dataset-Definitionen
+# <a name="version-and-manage-your-dataset-definitions"></a>Versionsverwaltung und Verwaltung von Datasetdefinitionen
 
 Erfahren Sie, wie Sie Dataset-Definitionen mit Azure Machine Learning Datasets (Vorschau) aktualisieren und verwalten können.
 
@@ -37,7 +37,7 @@ Sie benötigen ein Azure-Abonnement und einen Arbeitsbereich, um Ihr Dataset zu 
 
 Die in den Beispielen in diesem Dokument verwendete Beispieldatei ist unter [https://dprepdata.blob.core.windows.net/dataset-sample-files/crime.csv](https://dprepdata.blob.core.windows.net/dataset-sample-files/crime.csv) verfügbar.
 
-## <a name="update-dataset-definitions"></a>Aktualisieren von Dataset-Definitionen
+## <a name="create-and-update-definitions"></a>Erstellen und Aktualisieren von Definitionen
 
 Zuerst erstellen und registrieren wir ein Dataset in Ihrem Arbeitsbereich.
 

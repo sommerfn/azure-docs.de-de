@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 05/02/2019
 ms.author: erhopf
-ms.openlocfilehash: af801600eebed7c0d4ff01dd1edf01fa595840eb
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: de2f1009c574d9768330d4e6a38a219ba1f81daa
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65785774"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66237951"
 ---
 # <a name="prepare-data-for-custom-speech"></a>Vorbereiten von Daten für Custom Speech
 
@@ -66,8 +66,8 @@ Wenn Ihre Audiodaten diese Eigenschaften nicht erfüllen oder Sie prüfen möcht
 
 | Aktivität | BESCHREIBUNG | SoX-Befehl |
 |----------|-------------|-------------|
-| Audioformat überprüfen | Verwenden Sie diesen Befehl, um das Audiodateiformat zu überprüfen. | `soxi <filename>.wav` |
-| Audioformat konvertieren | Verwenden Sie diesen Befehl, um die Audiodatei in einen einzigen Kanal, 16 Bit, 48 KHz, zu konvertieren. | `sox <filename>.wav -b 16 -3 signed-integer -c l -r 48k -t wav <filename>.wav` |
+| Audioformat überprüfen | Verwenden Sie diesen Befehl, um das Audiodateiformat zu überprüfen. | `sox --i <filename>` |
+| Audioformat konvertieren | Verwenden Sie diesen Befehl, um die Audiodatei in einen einzigen Kanal, 16 Bit, 16 KHz, zu konvertieren. | `sox <input> -b 16 -e signed-integer -c 1 -r 16k -t wav <output>.wav` |
 
 ## <a name="audio--human-labeled-transcript-data-for-testingtraining"></a>Audio- und menschenmarkierte Transkriptionsdaten für Tests/Training
 
