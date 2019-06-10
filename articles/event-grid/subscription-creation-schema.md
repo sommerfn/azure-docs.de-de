@@ -35,7 +35,7 @@ Der Name des Ereignisabonnements muss 3 bis 64 Zeichen umfassen und darf nur die
 
 | Eigenschaft | Typ | BESCHREIBUNG |
 | -------- | ---- | ----------- |
-| Ziel | object | Das Objekt, das den Endpunkt definiert. |
+| destination | object | Das Objekt, das den Endpunkt definiert. |
 | filter | object | Ein optionales Feld zum Filtern der Ereignistypen. |
 
 ### <a name="destination-object"></a>destination-Objekt
