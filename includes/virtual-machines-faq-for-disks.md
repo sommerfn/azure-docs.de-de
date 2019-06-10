@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 05/13/2019
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 0ad006ca966cfcc2c817ae4e8bfd3dc2d477259e
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.openlocfilehash: 0e361edfea6365c3d3fe072e12bb303e71bb8d63
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66145913"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66248803"
 ---
 # <a name="frequently-asked-questions-about-azure-iaas-vm-disks-and-managed-and-unmanaged-premium-disks"></a>Häufig gestellte Fragen zu Azure-IaaS-VM-Datenträgern sowie zu verwalteten und nicht verwalteten Premium-Datenträgern
 
@@ -141,19 +141,9 @@ Verwaltete Datenträger können nicht umbenannt werden. Sie können jedoch einen
 
 Die GPT-Partitionierung kann nur auf Datenträgern für Daten, nicht auf Betriebssystem-Datenträgern verwendet werden. Betriebssystem-Datenträger müssen den MBR-Partitionstyp verwenden.
 
-## <a name="uploading-to-a-managed-disk"></a>Hochladen in einen verwalteten Datenträger
+**Welche Datenträgertypen unterstützen Momentaufnahmen?**
 
-**Kann ich Daten in einen vorhandenen verwalteten Datenträger hochladen?**
-
-Nein, Hochladen kann nur während der Erstellung eines neuen leeren Datenträgers verwendet werden, der den Status **ReadyToUpload** hat.
-
-**Kann ich einen Datenträger einem virtuellen Computer zuordnen, während der Datenträger einen Uploadstatus hat?**
-
-Nein.
-
-**Kann ich eine Momentaufnahme eines verwalteten Datenträgers erstellen, der einen Uploadstatus hat?**
-
-Nein.
+SSD Premium und SSD Standard unterstützen Momentaufnahmen ohne jegliche Beschränkung der Größe. Somit können Sie Momentaufnahmen großer Datenträger erstellen (bis zu 32 TiB). Ultra-SSDs unterstützen keine Momentaufnahmen.
 
 ## <a name="standard-ssd-disks"></a>Standard-SSD-Datenträger
 
@@ -353,7 +343,7 @@ Ja.
 
 **Welche Datenträgergröße wird vom Azure Backup- und vom Azure Site Recovery-Dienst maximal unterstützt?**
 
-Die maximale Datenträgergröße, die vom Azure Backup- und vom Azure Site Recovery-Dienst unterstützt wird, ist 4 TiB. Unterstützung für die größeren Datenträger bis zu 32TiB wird bald verfügbar sein.
+Die maximale Datenträgergröße, die vom Azure Backup- und vom Azure Site Recovery-Dienst unterstützt wird, ist 4 TiB. Unterstützung für die größeren Datenträger bis zu 32 TiB ist noch nicht verfügbar.
 
 **Welche VM-Größen werden für große Datenträger (> 4TiB) empfohlen, damit SSD Standard- und HDD Standard-Datenträger optimale Werte für IOPS und Bandbreite erzielen?**
 

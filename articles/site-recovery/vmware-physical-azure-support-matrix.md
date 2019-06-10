@@ -8,12 +8,12 @@ services: site-recovery
 ms.topic: conceptual
 ms.date: 05/10/2019
 ms.author: raynew
-ms.openlocfilehash: 2d1999077f6315658dbfd69473ddf5561bd76e0b
-ms.sourcegitcommit: f6c85922b9e70bb83879e52c2aec6307c99a0cac
+ms.openlocfilehash: 514aaaf7a274e60a17bbae62b3c62e7cf3668e7a
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/11/2019
-ms.locfileid: "65540589"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66237300"
 ---
 # <a name="support-matrix-for-disaster-recovery--of-vmware-vms-and-physical-servers-to-azure"></a>Unterstützungsmatrix für die Notfallwiederherstellung von virtuellen VMware-Computern und physischen Servern in Azure
 
@@ -46,7 +46,7 @@ RAM | 16 GB
 Anzahl der Datenträger | Drei Datenträger<br/><br/> Hierzu zählen der Betriebssystemdatenträger, der Prozessservercache-Datenträger und das Aufbewahrungslaufwerk für das Failback.
 Freier Speicherplatz auf dem Datenträger | 600 GB für den Prozessservercache.
 Freier Speicherplatz auf dem Datenträger | 600 GB für das Aufbewahrungslaufwerk.
-Betriebssystem  | Windows Server 2012 R2 oder Windows Server 2016 |
+Betriebssystem  | Windows Server 2012 R2 oder Windows Server 2016 mit Desktopoberfläche |
 Gebietsschema des Betriebssystems | Englisch (en-us)
 PowerCLI | [PowerCLI 6.0](https://my.vmware.com/web/vmware/details?productId=491&downloadGroup=PCLI600R1 "PowerCLI 6.0") ist für einen Konfigurationsserver mit einer Version ab [9.14](https://support.microsoft.com/help/4091311/update-rollup-23-for-azure-site-recovery) nicht erforderlich.
 Windows Server-Rollen | Folgende Komponenten dürfen nicht aktiviert werden: <br/> - Active Directory Domain Services <br/>- Internetinformationsdienste <br/> - Hyper-V |
