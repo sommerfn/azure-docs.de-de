@@ -3,7 +3,7 @@ title: Windows Defender Advanced Threat Protection mit Azure Security Center
 description: Dieses Dokument stellt die Integration von Azure Security Center und Windows Defender Advanced Threat Protection vor.
 services: security-center
 documentationcenter: na
-author: barclayn
+author: monhaber
 manager: barbkess
 editor: ''
 ms.service: security-center
@@ -11,25 +11,27 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 12/13/2018
-ms.author: barclayn
-ms.openlocfilehash: ee5ed8871ea5c021ad8c87e35f45e42ad641a324
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.date: 05/27/2018
+ms.author: monhaber
+ms.openlocfilehash: 8511f8987368d5746373f71e9f553013e385e0ee
+ms.sourcegitcommit: 25a60179840b30706429c397991157f27de9e886
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58124166"
+ms.lasthandoff: 05/28/2019
+ms.locfileid: "66258495"
 ---
 # <a name="windows-defender-advanced-threat-protection-with-azure-security-center"></a>Windows Defender Advanced Threat Protection mit Azure Security Center
 
 Azure Security Center erweitert das Angebot an Cloudworkloadschutz-Plattformen um die Integration in [Windows Defender Advanced Threat Protection](https://www.microsoft.com/en-us/WindowsForBusiness/windows-atp) (ATP).
 Diese Änderung bietet umfassende Funktionen für Endpoint Detection and Response (EDR). Durch die ATP-Integration in Windows Defender können Sie Anomalien erkennen. Sie können auch erweiterte Angriffe auf Serverendpunkte erkennen und darauf reagieren, die von Azure Security Center überwacht werden.
 
-Azure Security Center-Kunden können nun die Features von Windows Defender ATP verwenden:
+## <a name="windows-defender-atp-features-in-security-center"></a>Windows Defender ATP-Features in Security Center
+
+Wenn Sie Windows Defender ATP verwenden, erhalten Sie:
 
 - **Erkennungssensoren der nächsten Generation für Sicherheitsverletzungen**: Windows Defender ATP-Sensoren für Windows-Server erfassen eine breite Palette von verhaltensbezogenen Signalen.
 
-- **Auf Analysen basierende, cloudgesteuerte Erkennung von Sicherheitsverletzungen:**: Windows Defender ATP nimmt eine schnelle Anpassung an sich ändernde Bedrohungen vor. Das Produkt verwendet fortschrittliche Analysen und Big Data. Windows Defender ATP wird durch die Leistungsfähigkeit von Intelligent Security Graph mit Signalen aus Windows, Azure und Office verstärkt, um unbekannte Bedrohungen zu erkennen. Das Produkt stellt aussagekräftige Warnmeldungen zur Verfügung und ermöglicht eine schnelle Reaktion.
+- **Auf Analysen basierende, cloudgesteuerte Erkennung von Sicherheitsverletzungen:** : Windows Defender ATP nimmt eine schnelle Anpassung an sich ändernde Bedrohungen vor. Das Produkt verwendet fortschrittliche Analysen und Big Data. Windows Defender ATP wird durch die Leistungsfähigkeit von Intelligent Security Graph mit Signalen aus Windows, Azure und Office verstärkt, um unbekannte Bedrohungen zu erkennen. Das Produkt stellt aussagekräftige Warnmeldungen zur Verfügung und ermöglicht eine schnelle Reaktion.
 
 - **Informationen zu Bedrohungen**: Windows Defender ATP identifiziert Angriffstools, -techniken und -verfahren. Wenn diese erkannt werden, werden Warnungen generiert. Das Produkt verwendet Daten, die von Microsoft-Bedrohungsspezialisten und Sicherheitsteams generiert werden, ergänzt durch Informationen von Partnern.
 
@@ -53,9 +55,10 @@ Sie können die Warnung weiter untersuchen, indem Sie sie in Windows Defender AT
 
 ## <a name="platform-support"></a>Plattformunterstützung
 
-Dieses Feature unterstützt die Erkennung unter Windows Server 2012 R2 und Windows Server 2016.
+Windows Defender ATP in Security Center unterstützt die Erkennung unter Windows Server 2012 R2- und Windows Server 2016-Betriebssystemen, die zu einem Standarddienstabonnement gehören.
 
-Nur die Server in Abonnements für die Standard-Dienstebene werden unterstützt.
+> [!NOTE]
+> Wenn Sie Azure Security Center zum Überwachen von Servern verwenden, wird automatisch ein Windows Defender ATP-Mandanten erstellt, und die Windows Defender ATP-Daten werden standardmäßig in Europa gespeichert. Wenn Sie Ihre Daten an einen anderen Standort verschieben möchten, müssen Sie den Microsoft-Support kontaktieren, um den Mandanten zurückzusetzen.Wenn Sie Ihre Daten an einen anderen Ort verschieben müssen, müssen Sie den Microsoft-Support kontaktieren, um den Mieter zurückzusetzen.
 
 ## <a name="onboarding-servers-to-security-center"></a>Integrieren von Servern in Azure Security Center 
 
@@ -69,7 +72,6 @@ Klicken Sie unter der Integration von Servern in Windows Defender ATP auf **Wech
 4. Nach der Integration können Sie die Computer unter **Compute und Apps** überwachen.
 
    ![Integrieren von Computern](media/security-center-wdatp/onboard-computers.png)
-
 
 ## <a name="enable-windows-defender-atp-integration"></a>Aktivieren der ATP-Integration von Windows Defender
 
