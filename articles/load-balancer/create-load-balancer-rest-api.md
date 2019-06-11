@@ -48,7 +48,7 @@ Der einzige erforderliche Parameter ist `location`. Wenn Sie die *SKU*-Version n
 
 | NAME | Typ | BESCHREIBUNG |
 | :--- | :--- | :---------- |
-| location | Zeichenfolge | Ressourcenspeicherort Rufen Sie mit dem Vorgang [List Locations](https://docs.microsoft.com/rest/api/resources/subscriptions/listlocations) eine aktuelle Liste der Standorte auf. |
+| location | string | Ressourcenspeicherort Rufen Sie mit dem Vorgang [List Locations](https://docs.microsoft.com/rest/api/resources/subscriptions/listlocations) eine aktuelle Liste der Standorte auf. |
 
 
 ## <a name="example-create-and-update-a-basic-load-balancer"></a>Beispiel: Erstellen und Aktualisieren einer Load Balancer-Instanz im Tarif „Basic“
