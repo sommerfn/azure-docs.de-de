@@ -11,13 +11,13 @@ author: oslake
 ms.author: moslake
 ms.reviewer: sstein, carlrab
 manager: craigg
-ms.date: 05/11/2019
-ms.openlocfilehash: ba79e2b9552f0c27ac11501b2b125a126e40eb1d
-ms.sourcegitcommit: f013c433b18de2788bf09b98926c7136b15d36f1
+ms.date: 05/20/2019
+ms.openlocfilehash: 57f2c38ce0479f43d7f24de8d1feb554517bcc69
+ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/13/2019
-ms.locfileid: "65551622"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65951486"
 ---
 # <a name="sql-database-serverless-preview"></a>SQL-Datenbank – serverlos (Vorschau)
 
@@ -61,7 +61,7 @@ Serverlos ist preis-/leistungsoptimiert für Einzeldatenbanken mit zeitweiligen,
 
 Die folgende Tabelle enthält eine Zusammenfassung der Unterschiede zwischen der serverlosen Computeebene und der bereitgestellten Computeebene:
 
-| | **Serverloses Computing** | **Bereitgestelltes Computing** |
+| | **Serverloses Computing**: | **Bereitgestelltes Computing** |
 |:---|:---|:---|
 |**Szenario für typische Verwendung**| Datenbanken mit zeitweiliger, unvorhersehbarer Nutzung, bei der inaktive Zeiträume auftreten | Datenbanken oder Pools für elastische Datenbanken mit regelmäßiger Nutzung|
 | **Aufwand bei der Leistungsverwaltung** |Geringer|Höher|
@@ -81,7 +81,22 @@ Im Allgemeinen werden Datenbanken auf einem Computer mit ausreichender Kapazitä
 
 ### <a name="memory-management"></a>Speicherverwaltung
 
-Arbeitsspeicher für serverlose Datenbanken wird häufiger als bei bereitgestellten Datenbanken freigegeben. Dieses Verhalten ist unverzichtbar für die Kostenkontrolle bei serverlosen Computing. Im Gegensatz zum bereitgestellten Computing wird der Speicher aus dem SQL-Cache von einer serverlosen Datenbank freigegeben, wenn eine geringe CPU- oder Cacheauslastung vorliegt.
+Arbeitsspeicher für serverlose Datenbanken wird häufiger als bei bereitgestellten Computedatenbanken freigegeben. Dieses Verhalten ist wichtig, um für serverlose Datenbanken die Kosten kontrollieren zu können, und es kann mit einer Beeinträchtigung der Leistung verbunden sein.
+
+#### <a name="cache-reclaiming"></a>Freigeben des Cachespeichers
+
+Im Gegensatz zu bereitgestellten Computedatenbanken wird der Speicher aus dem SQL-Cache von einer serverlosen Datenbank freigegeben, wenn eine geringe CPU- oder Cacheauslastung vorliegt.
+
+- Die Cacheauslastung wird als niedrig angesehen, wenn die Gesamtgröße der zuletzt verwendeten Cacheeinträge für einen bestimmten Zeitraum unter einen Schwellenwert fällt.
+- Beim Auslösen der Cachefreigabe wird die Größe des Zielspeichers inkrementell auf einen Bruchteil der vorherigen Größe reduziert, und der Freigabevorgang wird nur fortgesetzt, wenn die Auslastung niedrig bleibt.
+- Während der Cachefreigabe entspricht die Richtlinie für die Auswahl der zu entfernenden Cacheeinträge der Auswahlrichtlinie für bereitgestellte Computedatenbanken bei hoher Speicherauslastung.
+- Der Cache wird niemals auf eine Größe verkleinert, die unter der Mindestgröße für den Arbeitsspeicher liegt. Dies wird über die Mindestanzahl von virtuellen Kernen definiert und kann entsprechend konfiguriert werden.
+
+Sowohl in serverlosen als auch in bereitgestellten Computedatenbanken können Cacheeinträge entfernt werden, wenn der gesamte verfügbare Arbeitsspeicher verwendet wird.
+
+#### <a name="cache-hydration"></a>Cachehydration
+
+Der SQL-Cache wächst an, während Daten auf die gleiche Weise und mit der gleichen Geschwindigkeit wie für bereitgestellte Datenbanken vom Datenträger abgerufen werden. Wenn die Datenbank ausgelastet ist, kann die Größe des Caches uneingeschränkt bis zum maximalen Arbeitsspeichergrenzwert zunehmen.
 
 ## <a name="autopause-and-autoresume"></a>Automatisches Anhalten und automatisches Fortsetzen
 
@@ -115,7 +130,7 @@ Das automatische Fortsetzen wird ausgelöst, wenn eine der folgenden Bedingungen
 
 ### <a name="connectivity"></a>Konnektivität
 
-Wenn serverlose Datenbanken angehalten sind, wird die Datenbank bei der ersten Anmeldung fortgesetzt, und es wird ein Fehler (Fehlercode 40613) mit dem Hinweis zurückgegeben, dass die Datenbank nicht verfügbar ist. Sobald die Datenbank fortgesetzt wird, muss die Anmeldung wiederholt werden, um die Verbindung herzustellen. Datenbankclients mit Wiederholungslogik für Verbindungen dürfen nicht geändert werden.
+Wenn eine serverlose Datenbank angehalten wird, wird die Datenbank bei der ersten Anmeldung fortgesetzt, und es wird ein Fehler (Fehlercode 40613) mit dem Hinweis zurückgegeben, dass die Datenbank nicht verfügbar ist. Sobald die Datenbank fortgesetzt wird, muss die Anmeldung wiederholt werden, um die Verbindung herzustellen. Datenbankclients mit Wiederholungslogik für Verbindungen dürfen nicht geändert werden.
 
 ### <a name="latency"></a>Latency
 
@@ -204,11 +219,11 @@ Das Ändern der maximalen Anzahl virtueller Kerne erfolgt durch Ausführen des B
 
 ### <a name="minimum-vcores"></a>Mindestanzahl virtueller Kerne
 
-Das Ändern der minimalen Anzahl virtueller Kerne erfolgt durch Ausführen des Befehls [Set-AzSqlDatabase](https://docs.microsoft.com/powershell/module/az.sql/set-azsqldatabase) in PowerShell mit dem `MinVcore`-Argument.
+Das Ändern der minimalen Anzahl von virtuellen Kernen erfolgt durch Ausführen des Befehls [Set-AzSqlDatabase](https://docs.microsoft.com/powershell/module/az.sql/set-azsqldatabase) in PowerShell mit dem `MinVcore`-Argument.
 
 ### <a name="autopause-delay"></a>Verzögerung für das automatische Anhalten
 
-Das Ändern der maximalen Anzahl virtueller Kerne erfolgt durch Ausführen des Befehls [Set-AzSqlDatabase](https://docs.microsoft.com/powershell/module/az.sql/set-azsqldatabase) in PowerShell mit dem `AutoPauseDelay`-Argument.
+Das Ändern der Verzögerung für das automatische Anhalten erfolgt durch Ausführen des Befehls [Set-AzSqlDatabase](https://docs.microsoft.com/powershell/module/az.sql/set-azsqldatabase) in PowerShell mit dem `AutoPauseDelay`-Argument.
 
 ## <a name="monitor-serverless-database"></a>Serverlose Datenbank überwachen
 
@@ -224,7 +239,7 @@ Das App-Paket ist die „Außengrenze“ der Ressourcenverwaltung für eine Date
 
 Der Benutzerressourcenpool ist die „Innengrenze“ der Ressourcenverwaltung für eine Datenbank, wobei es keine Rolle spielt, ob sich die Datenbank auf einer serverlosen oder einer bereitgestellten Computeebene befindet. Der Benutzerressourcenpool beschränkt CPU und E/A für Benutzerworkload, die von DDL-Abfragen (z.B. CREATE, ALTER usw.) und DML-Abfragen (z.B. SELECT, INSERT, UPDATE, DELETE usw.) generiert wird. Diese Abfragen sind im Allgemeinen für den Großteil der Auslastung des App-Pakets verantwortlich.
 
-### <a name="metrics"></a>Metriken
+### <a name="metrics"></a>metrics
 
 |Entität|Metrik|BESCHREIBUNG|Units|
 |---|---|---|---|
@@ -264,7 +279,7 @@ Ressourceneinschränkungen werden unter [Serverlose Computeebene](sql-database-v
 Die abgerechnete Computeleistung basiert auf der maximal verwendeten CPU und dem verwendeten Arbeitsspeicher (pro Sekunde). Wenn die verwendete CPU und der verwendete Arbeitsspeicher kleiner als die bereitgestellte Mindestmenge sind, wird die bereitgestellte Menge abgerechnet. Der Arbeitsspeicher wird in Einheiten aus virtuellen Kernen normalisiert, indem der Arbeitsspeicher in GB nach 3 GB pro virtuellem Kern neu skaliert wird. So kann die CPU bei der Abrechnung mit dem Arbeitsspeicher verglichen werden.
 
 - **Berechnete Ressource**: CPU und Arbeitsspeicher
-- **Berechneter Betrag ($)**: Einzelpreis virtueller Kern * Max. (Min. virtuelle Kerne, genutzte virtuelle Kerne, Min. Speicher GB * 1/3, genutzter Speicher GB * 1/3) 
+- **Berechneter Betrag ($)** : Einzelpreis virtueller Kern * Max. (Min. virtuelle Kerne, genutzte virtuelle Kerne, Min. Speicher GB * 1/3, genutzter Speicher GB * 1/3) 
 - **Fakturierungsintervall**: Pro Sekunde
 
 Der Einzelpreis für virtuelle Kerne ergibt sich aus den Kosten pro virtuellem Kern pro Sekunde. Informationen zu Einzelpreisen in einer bestimmten Region finden Sie auf der Seite [Azure SQL-Datenbank – Preise ](https://azure.microsoft.com/pricing/details/sql-database/single/).
@@ -277,19 +292,21 @@ Die genutzte Computekapazität wird mit der folgenden Metrik angegeben:
 
 Diese Menge wird pro Sekunde berechnet und über eine Minute aggregiert.
 
-**Beispiel**: Betrachten Sie eine Datenbank, die GP_S_Gen5_4 verwendet, mit der folgenden Nutzung über einen Zeitraum von einer Stunde:
+Erwägen Sie die Verwendung einer serverlosen Datenbank, für die für virtuelle Kerne ein Mindestwert von 1 und ein Höchstwert von 4 konfiguriert ist.  Dies entspricht ungefähr einem Arbeitsspeicher von mindestens 3 GB und maximal 12 GB.  Angenommen, die Verzögerung für automatisches Anhalten ist auf sechs Stunden festgelegt, und die Datenbankworkload ist während der ersten beiden Stunden eines Zeitraums von 24 Stunden aktiv und ansonsten inaktiv.    
 
-|Zeit (Stunden:Minuten)|app_cpu_billed (virtueller Kern – Sekunden)|
-|---|---|
-|0:01|63|
-|0:02|123|
-|0:03|95|
-|0:04|54|
-|0:05|41|
-|0:06 – 1:00|1255|
-||Gesamt: 1631|
+In diesem Fall werden für die Datenbank Compute- und Speicherkosten während der ersten acht Stunden berechnet.  Die Datenbank ist zwar nach der zweiten Stunde inaktiv, aber für die nachfolgenden sechs Stunden werden basierend auf der minimalen bereitgestellten Computeleistung trotzdem noch Computekosten berechnet, während die Datenbank online ist.  Während die Datenbank angehalten ist, werden in der restlichen Zeit des 24-Stunden-Zeitraums nur Kosten für den Speicher berechnet.
 
-Angenommen, der Compute-Einzelpreis beträgt 0,000073 USD/V-Kern/Sekunde. Die berechneten Computekosten für diese Stunde werden anhand der folgenden Formel bestimmt: **0,000073 USD/V-Kern/Sekunde · 1631 V-Kern-Sekunden = 0,1191 USD**
+Die genaue Berechnung der Computekosten für dieses Beispiel lautet:
+
+|Zeitintervall|Pro Sekunde verwendete virtuelle Kerne|Pro Sekunde verwendete GB|Berechnete Computedimension|Für Zeitintervall berechnete Sekunden für virtuelle Kerne|
+|---|---|---|---|---|
+|0:00 - 1:00|4|9|Verwendete virtuelle Kerne|4 virtuelle Kerne · 3.600 Sekunden = 14.400 Sekunden für virtuelle Kerne|
+|1:00 - 2:00|1|12|Verwendeter Arbeitsspeicher|12 GB · 1/3 · 3.600 Sekunden = 14.400 Sekunden für virtuelle Kerne|
+|2:00 - 8:00|0|0|Mindestens bereitgestellter Arbeitsspeicher|3 GB · 1/3 · 21.600 Sekunden = 21.600 Sekunden für virtuelle Kerne|
+|8:00 - 24:00|0|0|Keine Berechnung von Computeleistung während des Anhaltens|0 Sekunden für virtuelle Kerne|
+|Gesamte berechnete Sekunden für virtuelle Kerne in 24 Stunden||||50.400 Sekunden für virtuelle Kerne|
+
+Angenommen, der Compute-Einzelpreis beträgt 0,000073 USD/V-Kern/Sekunde.  Die Computeleistung, die für diesen 24-Stunden-Zeitraum berechnet wird, ist dann das Produkt aus dem Preis der Compute-Einheit und den berechneten Sekunden für virtuelle Kerne: 0,000073 USD/V-Kern/Sekunde · 50.400 Sekunden für virtuelle Kerne = 3,68 USD
 
 ## <a name="available-regions"></a>Verfügbare Regionen
 

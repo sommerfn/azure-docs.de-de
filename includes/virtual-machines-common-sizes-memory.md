@@ -5,19 +5,21 @@ services: virtual-machines
 author: jonbeck7
 ms.service: virtual-machines
 ms.topic: include
-ms.date: 07/06/2018
+ms.date: 05/16/2019
 ms.author: azcspmt;jonbeck;cynthn
 ms.custom: include file
-ms.openlocfilehash: 7984172c2b66f2b09e31c646b111e4b9d04fce2b
-ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
+ms.openlocfilehash: 0b0e03b163d4de7a441bb7d2714be23b58c95028
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/13/2019
-ms.locfileid: "59551624"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66170375"
 ---
 Arbeitsspeicheroptimierte VM-Größen bieten ein hohes Arbeitsspeicher-zu-CPU-Verhältnis und eignen sich hervorragend für relationale Datenbankserver, mittelgroße bis große Caches und In-Memory-Analysen. Dieser Artikel enthält Informationen zur Anzahl von vCPUs, Datenträgern und NICs sowie zum Speicherdurchsatz und zur Netzwerkbandbreite der einzelnen Größen in dieser Gruppe. 
 
-* Die M-Serie bietet die höchste vCPU-Anzahl (bis zu 128 vCPUs) und den größten Arbeitsspeicher (bis zu 3,8 TiB) für die virtuellen Computer in der Cloud.  Dies ist ideal für extrem große Datenbanken oder andere Anwendungen, für die eine hohe vCPU-Anzahl und große Mengen an Arbeitsspeicher benötigt werden.
+* Die Mv2-Serie bietet die höchste vCPU-Anzahl (bis zu 208 vCPUs) und den größten Arbeitsspeicher (bis zu 5,7 TiB) für die virtuellen Computer in der Cloud. Dies ist ideal für extrem große Datenbanken oder andere Anwendungen, für die eine hohe vCPU-Anzahl und große Mengen an Arbeitsspeicher benötigt werden.
+ 
+* Die M-Serie verfügt über eine hohe vCPU-Anzahl (bis zu 128 vCPUs) und eine große Menge von Arbeitsspeicher (bis zu 3,8 TiB). Dies ist auch ideal für extrem große Datenbanken oder andere Anwendungen, für die eine hohe vCPU-Anzahl und große Mengen an Arbeitsspeicher benötigt werden.
 
 * Die Serien Dv2, G und deren DSv2/GS-Entsprechungen eignen sich ideal für Clientanwendungen, die schnellere vCPUs und eine höhere Leistung des temporären Speichers erfordern oder einen höheren Arbeitsspeicherbedarf haben. Sie bieten eine leistungsfähige Kombination für viele Anwendungen für den Unternehmenseinsatz.
 
@@ -87,6 +89,66 @@ Datenträgerspeicher wird separat zu virtuellen Computern abgerechnet. Verwenden
 
 <sup>3</sup> Instanz wird isoliert auf dedizierter Hardware ausgeführt, die für einen einzigen Kunden bereitgestellt wird.
 
+
+## <a name="mv2-series"></a>Mv2-Serie
+
+Storage Premium Unterstützt
+
+Storage Premium-Zwischenspeicherung: Unterstützt
+
+Schreibbeschleunigung: [Unterstützt](https://docs.microsoft.com/azure/virtual-machines/windows/how-to-enable-write-accelerator)
+
+Die Mv2-Serie verfügt über hohen Durchsatz, geringe Latenz und direkt zugeordneten lokalen NVMe-Speicher, der auf einem Prozessor vom Typ Intel® Xeon® Platinum 8180M 2,5 GHz (Skylake) mit Hyperthreading ausgeführt wird und eine Basistaktfrequenz von 2,5 GHz für alle Kerne und eine maximale Turbotaktfrequenz von 3,8 GHz aufweist. Für alle VM-Größen der Mv2-Serie können sowohl persistente Standard- als auch Premium-Datenträger verwendet werden. Bei Instanzen der Mv2-Serie handelt es sich um arbeitsspeicheroptimierte VM-Größen zur Bereitstellung einer unvergleichlichen Computeleistung, um große In-Memory-Datenbanken und Workloads zu unterstützen. Sie verfügen über ein hohes Arbeitsspeicher/CPU-Verhältnis, das ideal für relationale Datenbankserver, große Caches und In-Memory-Analysen geeignet ist. 
+
+|Größe | vCPU | Arbeitsspeicher: GiB | Temporärer Speicher (SSD): GiB | Max. Anzahl Datenträger | Maximaler Durchsatz (Cache und temporärer Speicher): IOPS/MBps (Cachegröße in GiB) | Maximaler Durchsatz des Datenträgers ohne Cache: IOPS/MBps | Maximale Anzahl NICs/Erwartete Netzwerkbandbreite (MBps) |
+|-----------------|------|-------------|----------------|----------------|-----------------------------------------------------------------------|-------------------------------------------|------------------------------|
+| Standard_M208ms_v2<sup>1, 2</sup> | 208 | 5.700 | 4096 | 64 | 80.000/800 (7.040) | 40.000 / 1.000 | 8/16000 |
+| Standard_M208s_v2<sup>1, 2</sup> | 208 | 2850 | 4096 | 64 | 80.000/800 (7.040) | 40.000 / 1.000 | 8/16000 |
+
+Virtuelle Computer der Mv2-Serie verfügen über Hyperthreading-Technologie von Intel®  
+
+<sup>1</sup> Für diese großen VMs ist eines der folgenden Gastbetriebssysteme erforderlich: Windows Server 2016, Windows Server 2019, SLES 12 SP4, SLES 15.
+
+<sup>2</sup> VMs der Mv2-Serie sind nur als „Generation 2“ erhältlich. Bei Verwendung von Linux helfen Ihnen die Informationen zur Ermittlung und Auswahl eines SUSE Linux-Images im folgenden Abschnitt weiter.
+
+#### <a name="find-a-suse-image"></a>Ermitteln eines SUSE-Images
+
+Wählen Sie wie folgt im Azure-Portal ein geeignetes SUSE Linux-Image aus: 
+
+1. Wählen Sie im Azure-Portal die Option **Ressource erstellen**. 
+1. Suchen nach „SUSE SAP“ 
+1. Images vom Typ „SLES für SAP Generation 2“ sind mit nutzungsbasierter Bezahlung oder als BYOS (Bring Your Own Subscription) erhältlich. Erweitern Sie in den Suchergebnissen die gewünschte Imagekategorie:
+
+    * SUSE Linux Enterprise Server (SLES) für SAP
+    * SUSE Linux Enterprise Server (SLES) für SAP (BYOS)
+    
+1. SUSE-Images, die mit der Mv2-Serie kompatibel sind, ist als Präfix der Name `GEN2:` vorangestellt. Die folgenden SUSE-Images sind für VMs der Mv2-Serie erhältlich:
+
+    * GEN2: SUSE Linux Enterprise Server (SLES) 12 SP4 für SAP-Anwendungen
+    * GEN2: SUSE Linux Enterprise Server (SLES) 15 für SAP-Anwendungen
+    * GEN2: SUSE Linux Enterprise Server (SLES) 12 SP4 für SAP-Anwendungen (BYOS)
+    * GEN2: SUSE Linux Enterprise Server (SLES) 15 für SAP-Anwendungen (BYOS)
+
+#### <a name="select-a-suse-image-via-azure-cli"></a>Auswählen eines SUSE-Images per Azure CLI
+
+Verwenden Sie den folgenden [`az vm image list`](https://docs.microsoft.com/cli/azure/vm/image?view=azure-cli-latest#az-vm-image-list)-Befehl, um eine Liste mit dem derzeit verfügbaren SLES für SAP-Image für VMs der Mv2-Serie anzuzeigen:
+
+```azurecli
+az vm image list --output table --publisher SUSE --sku gen2 --all
+```
+
+Der Befehl gibt die derzeit verfügbaren VMs der Generation 2 aus, die bei SUSE für VMs der Mv2-Serie erhältlich sind. 
+
+Beispielausgabe:
+
+```
+Offer          Publisher  Sku          Urn                                        Version
+-------------  ---------  -----------  -----------------------------------------  ----------
+SLES-SAP       SUSE       gen2-12-sp4  SUSE:SLES-SAP:gen2-12-sp4:2019.05.13       2019.05.13
+SLES-SAP       SUSE       gen2-15      SUSE:SLES-SAP:gen2-15:2019.05.13           2019.05.13
+SLES-SAP-BYOS  SUSE       gen2-12-sp4  SUSE:SLES-SAP-BYOS:gen2-12-sp4:2019.05.13  2019.05.13
+SLES-SAP-BYOS  SUSE       gen2-15      SUSE:SLES-SAP-BYOS:gen2-15:2019.05.13      2019.05.13
+```
 
 ## <a name="m-series"></a>M-Serie 
 

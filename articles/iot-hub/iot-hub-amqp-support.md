@@ -8,12 +8,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 04/30/2019
 ms.author: rezas
-ms.openlocfilehash: 703e2c842fb42bad8aa112d84c516a29c2327378
-ms.sourcegitcommit: 399db0671f58c879c1a729230254f12bc4ebff59
+ms.openlocfilehash: f39f184bdc09677e347a2691351309dd6483f467
+ms.sourcegitcommit: e9a46b4d22113655181a3e219d16397367e8492d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/09/2019
-ms.locfileid: "65473434"
+ms.lasthandoff: 05/21/2019
+ms.locfileid: "65965387"
 ---
 # <a name="communicate-with-your-iot-hub-using-the-amqp-protocol"></a>Kommunikation mit Ihrem IoT Hub mithilfe des Protokolls AMQP
 
@@ -65,7 +65,7 @@ Der C2D-Nachrichtenaustausch zwischen Dienst und IoT Hub sowie zwischen Gerät u
 | Erstellt von | Verknüpfungstyp | Verknüpfungspfad | BESCHREIBUNG |
 |------------|-----------|-----------|-------------|
 | Dienst | Senderlink | `/messages/devicebound` | C2D-Nachrichten an Geräte werden vom Dienst an diesen Link gesendet. Die `To`-Eigenschaft von Nachrichten, die über diesen Link gesendet werden, wird auf den Linkpfad des Empfänger des Zielgeräts gesetzt, d.h. `/devices/<deviceID>/messages/devicebound`. |
-| Dienst | Empfängerlink | `/messages/serviceBound/feedback` | Abschluss-, Ablehnungs- und Abbruch-Feedbacknachrichten von Geräten, die über diesen Link vom Dienst empfangen werden. [Hier](./iot-hub-devguide-messages-c2d.md#message-feedback) finden Sie weitere Informationen zu Feedbacknachrichten. |
+| Dienst | Empfängerlink | `/messages/serviceBound/feedback` | Abschluss-, Ablehnungs- und Abbruch-Feedbacknachrichten von Geräten, die über diesen Link vom Dienst empfangen werden. Weitere Informationen zu Feedbacknachrichten finden Sie [hier](./iot-hub-devguide-messages-c2d.md#message-feedback). |
 
 Der folgende Codeausschnitt veranschaulicht, wie eine C2D-Nachricht erstellt und mit der [uAMQP-Bibliothek in Python](https://github.com/Azure/azure-uamqp-python) an ein Gerät gesendet wird.
 
@@ -127,11 +127,76 @@ Wie oben gezeigt, hat eine C2D-Feedbacknachricht den Inhaltstyp `application/vnd
 * Schlüssel `originalMessageId` im Feedbacktext enthält die ID der ursprünglichen vom Dienst gesendeten C2D-Nachricht. Diese kann zum Korrelieren des Feedbacks für C2D-Nachrichten verwendet werden.
 
 ### <a name="receive-telemetry-messages-service-client"></a>Empfangen von Telemetrienachrichten (Dienstclient)
+Standardmäßig werden die erfassten Telemetrienachrichten der Geräte von IoT Hub in einem integrierten Event Hub gespeichert. Ihr Dienstclient kann das AMQP-Protokoll nutzen, um die gespeicherten Ereignisse zu empfangen.
+
+Zu diesem Zweck muss der Dienstclient zuerst eine Verbindung mit dem IoT Hub-Endpunkt herstellen und eine Adresse für die Umleitung zu den integrierten Event Hubs erhalten. Der Dienstclient nutzt die bereitgestellte Adresse dann, um eine Verbindung mit dem integrierten Event Hub herzustellen.
+
+In jedem Schritt muss der Client die folgenden Informationen angeben:
+* Gültige Dienstanmeldeinformationen (Dienst-SAS-Token).
+* Einen korrekt formatierten Pfad zu der Consumergruppenpartition, von der Nachrichten abgerufen werden sollen. Für eine Consumergruppe und Partitions-ID hat der Pfad das folgende Format: `/messages/events/ConsumerGroups/<consumer_group>/Partitions/<partition_id>` (die Standardconsumergruppe ist `$Default`).
+* Ein optionales Filterungsprädikat zum Angeben eines Startpunkts für die Partition (eine Sequenznummer, eine Versatzangabe oder ein Einreihungszeitstempel).
+
+Im unten angegebenen Codeausschnitt wird die [uAMQP-Bibliothek in Python](https://github.com/Azure/azure-uamqp-python) verwendet, um die obigen Schritte zu veranschaulichen.
+
+```python
+import json
+import uamqp
+import urllib
+import time
+
+# Use generate_sas_token implementation available here: https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-security#security-token-structure
+from helper import generate_sas_token
+
+iot_hub_name = '<iot-hub-name>'
+hostname = '{iot_hub_name}.azure-devices.net'.format(iot_hub_name=iot_hub_name)
+policy_name = 'service'
+access_key = '<primary-or-secondary-key>'
+operation = '/messages/events/ConsumerGroups/{consumer_group}/Partitions/{p_id}'.format(consumer_group='$Default', p_id=0)
+
+username = '{policy_name}@sas.root.{iot_hub_name}'.format(policy_name=policy_name, iot_hub_name=iot_hub_name)
+sas_token = generate_sas_token(hostname, access_key, policy_name)
+uri = 'amqps://{}:{}@{}{}'.format(urllib.quote_plus(username), urllib.quote_plus(sas_token), hostname, operation)
+
+# Optional filtering predicates can be specified using endpiont_filter
+# Valid predicates include:
+# - amqp.annotation.x-opt-sequence-number
+# - amqp.annotation.x-opt-offset
+# - amqp.annotation.x-opt-enqueued-time
+# Set endpoint_filter variable to None if no filter is needed
+endpoint_filter = b'amqp.annotation.x-opt-sequence-number > 2995'
+
+# Helper function to set the filtering predicate on the source URI
+def set_endpoint_filter(uri, endpoint_filter=''):
+  source_uri = uamqp.address.Source(uri)
+  source_uri.set_filter(endpoint_filter)
+  return source_uri
+
+receive_client = uamqp.ReceiveClient(set_endpoint_filter(uri, endpoint_filter), debug=True)
+try:
+  batch = receive_client.receive_message_batch(max_batch_size=5)
+except uamqp.errors.LinkRedirect as redirect:
+  # Once a redirect error is received, close the original client and recreate a new one to the re-directed address
+  receive_client.close()
+
+  sas_auth = uamqp.authentication.SASTokenAuth.from_shared_access_key(redirect.address, policy_name, access_key)
+  receive_client = uamqp.ReceiveClient(set_endpoint_filter(redirect.address, endpoint_filter), auth=sas_auth, debug=True)
+
+# Start receiving messages in batches
+batch = receive_client.receive_message_batch(max_batch_size=5)
+for msg in batch:
+  print('*** received a message ***')
+  print(''.join(msg.get_data()))
+  print('\t: ' + str(msg.annotations['x-opt-sequence-number']))
+  print('\t: ' + str(msg.annotations['x-opt-offset']))
+  print('\t: ' + str(msg.annotations['x-opt-enqueued-time']))
+```
+
+Für eine bestimmte Geräte-ID wird von IoT Hub ein Hashwert der Geräte-ID verwendet, um zu ermitteln, auf welcher Partition die Nachrichten gespeichert werden sollen. Im obigen Codeausschnitt ist dargestellt, wie Ereignisse von einer einzelnen Partition dieser Art empfangen werden. Beachten Sie aber, dass für eine typische Anwendung häufig Ereignisse abgerufen werden müssen, die auf allen Event Hub-Partitionen gespeichert sind.
 
 
 ### <a name="additional-notes"></a>Zusätzliche Hinweise
 * Die AMQP-Verbindungen können aufgrund von Netzwerkstörungen oder Ablauf des (im Code generierten) Authentifizierungstokens unterbrochen werden. Der Dienstclient muss diese Situationen bewältigen und die Verbindung und Links bei Bedarf wiederherstellen. Im Fall des Ablaufs des Authentifizierungstokens kann der Client das Token auch proaktiv vor dessen Ablauf verlängern, um einen Verbindungsausfall zu vermeiden.
-* In einigen Fällen muss Ihr Client Linkumleitungen ordnungsgemäß verarbeiten können. Informationen hierzu finden Sie in der Dokumentation Ihres AMQP-Clients.
+* In einigen Fällen muss Ihr Client Linkumleitungen ordnungsgemäß verarbeiten können. Informationen zur Verarbeitung dieses Vorgangs finden Sie in der Dokumentation Ihres AMQP-Clients.
 
 ### <a name="receive-cloud-to-device-messages-device-and-module-client"></a>Empfangen von C2D-Nachrichten (Gerät- und Modulclient)
 Folgende AMQP-Links werden geräteseitig verwendet:

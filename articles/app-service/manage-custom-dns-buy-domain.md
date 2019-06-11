@@ -15,16 +15,16 @@ ms.topic: article
 ms.date: 11/24/2017
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: 0c59e892c8fd5a8bcc74d23e16eaabf1dc1a08f0
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: b3177c5dfc5602dd2b6530b0934c17400ab5d528
+ms.sourcegitcommit: 59fd8dc19fab17e846db5b9e262a25e1530e96f3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58121535"
+ms.lasthandoff: 05/21/2019
+ms.locfileid: "65978878"
 ---
 # <a name="buy-a-custom-domain-name-for-azure-app-service"></a>Kaufen eines benutzerdefinierten Domänennamens für Azure App Service
 
-App Service-Domänen (Vorschau) sind Domänen der obersten Ebene, die direkt in Azure verwaltet werden. Sie erleichtern die Verwaltung von benutzerdefinierten Domänen für [Azure App Service](overview.md). In diesem Tutorial wird gezeigt, wie Sie eine App Service-Domäne kaufen und Azure App Service einen DNS-Namen zuweisen.
+App Service-Domänen sind Domänen der obersten Ebene, die direkt in Azure verwaltet werden. Sie erleichtern die Verwaltung von benutzerdefinierten Domänen für [Azure App Service](overview.md). In diesem Tutorial wird gezeigt, wie Sie eine App Service-Domäne kaufen und Azure App Service einen DNS-Namen zuweisen.
 
 Informationen zu Azure VMs und Azure Storage finden Sie unter [Assign App Service domain to Azure VM or Azure Storage (Zuweisen einer App Service-Domäne zu einer Azure-VM oder Azure Storage)](https://blogs.msdn.microsoft.com/appserviceteam/2017/07/31/assign-app-service-domain-to-azure-vm-or-azure-storage/). Informationen zu Clouddiensten finden Sie unter [Konfigurieren eines benutzerdefinierten Domänennamens für einen Azure-Clouddienst](../cloud-services/cloud-services-custom-domain-name-portal.md)
 
@@ -55,7 +55,7 @@ Die Verwaltungsseite der App Service-App wird angezeigt.
 
 ### <a name="check-the-pricing-tier"></a>Überprüfen des Tarifs
 
-Scrollen Sie im linken Navigationsbereich der App-Seite zum Abschnitt **Einstellungen**, und wählen Sie **Zentral hochskalieren (App Service-Plan)**.
+Scrollen Sie im linken Navigationsbereich der App-Seite zum Abschnitt **Einstellungen**, und wählen Sie **Zentral hochskalieren (App Service-Plan)** .
 
 ![Menü „Zentral hochskalieren“](./media/app-service-web-tutorial-custom-domain/scale-up-menu.png)
 
@@ -150,7 +150,7 @@ Um den Hostnamen zu testen, navigieren Sie zu den aufgelisteten Hostnamen im Bro
 
 ## <a name="assign-hostnames-to-app"></a>Zuweisen von Hostnamen zur App
 
-Wenn Sie Ihrer App während des Kaufvorgangs nicht einen oder mehrere Standardhostnamen zuweisen möchten, oder wenn Sie einen Hostnamen zuweisen müssen, der nicht aufgeführt ist, können Sie die Zuweisung von Hostnamen zu jedem anderen Zeitpunkt vornehmen.
+Wenn Sie Ihrer App während des Kaufvorgangs nicht einen oder mehrere Standardhostnamen zuweisen möchten oder wenn Sie einen Hostnamen zuweisen müssen, der nicht aufgeführt ist, können Sie die Zuweisung auch zu jedem anderen Zeitpunkt durchführen.
 
 In der App Service-Domäne können Sie auch jeder anderen App einen Hostnamen zuweisen. Die Schritte hängen davon ab, ob die App Service-Domäne und die App zum selben Abonnement gehören.
 
@@ -174,7 +174,7 @@ Stellen Sie sicher, dass Ihre erworbene Domäne im Abschnitt**App Service Domain
 Wählen Sie **Hostnamen hinzufügen**.
 
 ### <a name="configure-hostname"></a>Konfigurieren des Hostnamens
-Tippen Sie im Dialogfeld**Add hostname** (Hostname hinzufügen) den vollqualifizierten Domänennamen Ihrer App Service-Domäne oder einer Unterdomäne ein. Beispiel: 
+Tippen Sie im Dialogfeld**Add hostname** (Hostname hinzufügen) den vollqualifizierten Domänennamen Ihrer App Service-Domäne oder einer Unterdomäne ein. Beispiel:
 
 - kontoso.net
 - www\.kontoso.net
@@ -201,7 +201,9 @@ Navigieren Sie zu den aufgelisteten Hostnamen im Browser. Versuchen Sie wie im B
 
 ## <a name="renew-the-domain"></a>Verlängern der Domäne
 
-Die erworbene App Service-Domäne ist ab dem Kaufdatum ein Jahr lang gültig. Die Domäne ist standardmäßig so konfiguriert, dass sie automatisch verlängert wird, indem Ihre Zahlungsmethode für das nächste Jahr belastet wird. Wenn Sie die automatische Verlängerung deaktivieren oder die Domäne manuell verlängern möchten, führen Sie die nachfolgenden Schritte aus.
+Die erworbene App Service-Domäne ist ab dem Kaufdatum ein Jahr lang gültig. Die Domäne ist standardmäßig so konfiguriert, dass sie automatisch verlängert wird, indem Ihre Zahlungsmethode für das nächste Jahr belastet wird. Sie können die Gültigkeit Ihres Domänennamens manuell verlängern.
+
+Wenn Sie die automatische Verlängerung deaktivieren oder die Domäne manuell verlängern möchten, führen Sie die nachfolgenden Schritte aus.
 
 Klicken Sie auf der Registerkarte **App Services** auf den Namen der App, wählen Sie **Einstellungen** aus, und klicken Sie anschließend auf **Benutzerdefinierte Domänen**.
 
@@ -211,11 +213,25 @@ Wählen Sie im Abschnitt **App Service-Domänen** die Domäne aus, die Sie konfi
 
 ![](./media/custom-dns-web-site-buydomains-web-app/dncmntask-cname-buydomains-select-domain.png)
 
-Klicken Sie im linken Navigationsbereich der Domäne auf **Domänenverlängerung**. Wenn die Domäne nicht automatisch verlängert werden soll, klicken Sie auf **Aus** und dann auf **Speichern**. 
+Klicken Sie im linken Navigationsbereich der Domäne auf **Domänenverlängerung**. Wenn die Domäne nicht automatisch verlängert werden soll, klicken Sie auf **Aus** und dann auf **Speichern**.
 
 ![](./media/custom-dns-web-site-buydomains-web-app/dncmntask-cname-buydomains-autorenew.png)
 
-Wenn Sie Ihre Domäne manuell verlängern möchten, klicken Sie auf **Domäne verlängern**. Diese Schaltfläche wird jedoch erst 90 Tage vor dem Ablauf der Domäne aktiviert.
+Wenn Sie Ihre Domäne manuell verlängern möchten, klicken Sie auf **Domäne verlängern**. Diese Schaltfläche wird aber erst [90 Tage vor Ablauf der Domäne](#when-domain-expires) aktiviert.
+
+Wenn die Verlängerung Ihrer Domäne erfolgreich ist, erhalten Sie innerhalb von 24 Stunden eine E-Mail-Benachrichtigung.
+
+## <a name="when-domain-expires"></a>Ablauf der Domäne
+
+In Azure werden ablaufende bzw. abgelaufene App Service-Domänen wie folgt verarbeitet:
+
+* Bei deaktivierter automatischer Verlängerung: 90 Tage vor Ablauf der Domäne erhalten Sie eine E-Mail mit einer Benachrichtigung über die Verlängerung, und die Schaltfläche **Domäne verlängern** ist im Portal aktiviert.
+* Bei aktivierter automatischer Verlängerung: Am Tag nach dem Ablaufdatum Ihrer Domäne versucht Azure, Ihnen die Verlängerung des Domänennamens in Rechnung zu stellen.
+* Wenn während der automatischen Verlängerung ein Fehler auftritt (z. B. bei Ablauf Ihrer hinterlegten Karte) oder die automatische Verlängerung deaktiviert ist und Sie das Ablaufen der Domäne zulassen, werden Sie von Azure über den Domänenablauf informiert, und Ihr Domänenname wird „geparkt“. Sie können Ihre Domäne [manuell verlängern](#renew-the-domain).
+* Am 4. und 12. Tag nach dem Ablauf erhalten Sie von Azure weitere Benachrichtigungs-E-Mails. Sie können Ihre Domäne [manuell verlängern](#renew-the-domain).
+* Am 19. Tag nach dem Ablauf bleibt Ihre Domäne weiterhin angehalten, unterliegt dann aber einer Einlösegebühr. Sie können sich telefonisch an den Kundensupport wenden, um Ihren Domänennamen zu verlängern. Hierfür gelten die jeweiligen Gebühren für die Verlängerung und Einlösung.
+* Am 25. Tag nach dem Ablauf wird Ihre Domäne von Azure über einen Branchenauktionsdienst zur Auktion freigegeben. Sie können sich telefonisch an den Kundensupport wenden, um Ihren Domänennamen zu verlängern. Hierfür gelten die jeweiligen Gebühren für die Verlängerung und Einlösung.
+* Ab dem 30. Tag nach dem Ablauf können Sie Ihre Domäne nicht mehr einlösen.
 
 <a name="custom"></a>
 
@@ -259,7 +275,7 @@ Klicken Sie im linken Menü der Domäne auf **Hostname bindings** (Hostnamenbind
 
 Die App Service-Domäne kann nicht gelöscht werden, bis alle Hostnamenbindungen gelöscht wurden.
 
-Löschen Sie jede Hostnamenbindung, indem Sie auf **...** > **Delete** (Löschen) klicken. Nachdem alle Bindungen gelöscht worden sind, klicken Sie auf **Save** (Speichern).
+Löschen Sie jede Hostnamenbindung, indem Sie auf **...**  > **Delete** (Löschen) klicken. Nachdem alle Bindungen gelöscht worden sind, klicken Sie auf **Save** (Speichern).
 
 ![](./media/custom-dns-web-site-buydomains-web-app/dncmntask-cname-buydomains-delete-hostname-bindings.png)
 
@@ -278,7 +294,3 @@ Nachdem der Vorgang abgeschlossen ist, ist die Domäne aus Ihrem Abonnement frei
 ## <a name="direct-default-url-to-a-custom-directory"></a>Weiterleiten der Standard-URL an ein benutzerdefiniertes Verzeichnis
 
 App Service leitet Webanforderungen standardmäßig an das Stammverzeichnis des App-Codes weiter. Informationen zum Weiterleiten an ein Unterverzeichnis wie `public` finden Sie unter [Zuordnen eines vorhandenen benutzerdefinierten DNS-Namens zu Azure-Web-Apps](app-service-web-tutorial-custom-domain.md#virtualdir).
-
-## <a name="more-resources"></a>Weitere Ressourcen
-
-[Häufig gestellte Fragen: App Service-Domäne (Vorschauversion) und benutzerdefinierte Domänen](https://blogs.msdn.microsoft.com/appserviceteam/2017/08/08/faq-app-service-domain-preview-and-custom-domains/)
