@@ -73,17 +73,17 @@ Oder Sie können die Wiederholungsrichtlinie manuell im Abschnitt `inputs` für 
 
 | Wert | Type | BESCHREIBUNG |
 |-------|------|-------------|
-| <*retry-policy-type*> | Zeichenfolge | Der Wiederholungsrichtlinientyp, den Sie verwenden möchten: `default`, `none`, `fixed` oder `exponential` | 
-| <*retry-interval*> | Zeichenfolge | Das Wiederholungsintervall, bei dem für den Wert das [ISO 8601-Format](https://en.wikipedia.org/wiki/ISO_8601#Combined_date_and_time_representations) verwendet werden muss. Der niedrigste Wert für das Intervall ist `PT5S`, und der höchste Wert ist `PT1D`. Wenn Sie die Richtlinie mit dem exponentiellen Intervall verwenden, können Sie einen anderen Mindest- und Maximalwert angeben. | 
-| <*retry-attempts*> | Ganze Zahl  | Die Anzahl der Wiederholungsversuche, die zwischen 1 und 90 liegen muss | 
+| <*retry-policy-type*> | String | Der Wiederholungsrichtlinientyp, den Sie verwenden möchten: `default`, `none`, `fixed` oder `exponential` | 
+| <*retry-interval*> | String | Das Wiederholungsintervall, bei dem für den Wert das [ISO 8601-Format](https://en.wikipedia.org/wiki/ISO_8601#Combined_date_and_time_representations) verwendet werden muss. Der niedrigste Wert für das Intervall ist `PT5S`, und der höchste Wert ist `PT1D`. Wenn Sie die Richtlinie mit dem exponentiellen Intervall verwenden, können Sie einen anderen Mindest- und Maximalwert angeben. | 
+| <*retry-attempts*> | Integer  | Die Anzahl der Wiederholungsversuche, die zwischen 1 und 90 liegen muss | 
 ||||
 
 *Optional*
 
 | Wert | Type | BESCHREIBUNG |
 |-------|------|-------------|
-| <*minimum-interval*> | Zeichenfolge | Bei der Richtlinie mit dem exponentiellen Intervall ist dies der niedrigste Intervallwert für das zufällig ausgewählte Intervall im [ISO 8601-Format](https://en.wikipedia.org/wiki/ISO_8601#Combined_date_and_time_representations). | 
-| <*maximum-interval*> | Zeichenfolge | Bei der Richtlinie mit dem exponentiellen Intervall ist dies der höchste Intervallwert für das zufällig ausgewählte Intervall im [ISO 8601-Format](https://en.wikipedia.org/wiki/ISO_8601#Combined_date_and_time_representations). | 
+| <*minimum-interval*> | String | Bei der Richtlinie mit dem exponentiellen Intervall ist dies der niedrigste Intervallwert für das zufällig ausgewählte Intervall im [ISO 8601-Format](https://en.wikipedia.org/wiki/ISO_8601#Combined_date_and_time_representations). | 
+| <*maximum-interval*> | String | Bei der Richtlinie mit dem exponentiellen Intervall ist dies der höchste Intervallwert für das zufällig ausgewählte Intervall im [ISO 8601-Format](https://en.wikipedia.org/wiki/ISO_8601#Combined_date_and_time_representations). | 
 |||| 
 
 Hier sind weitere Informationen zu den unterschiedlichen Richtlinientypen angegeben.
