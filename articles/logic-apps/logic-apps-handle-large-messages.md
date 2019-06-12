@@ -119,16 +119,16 @@ In den folgenden Schritten ist die Vorgehensweise ausführlich beschrieben, in d
 
    | Logic Apps-Feld für Anforderungsheader | Wert | Typ | BESCHREIBUNG |
    |---------------------------------|-------|------|-------------|
-   | **x-ms-transfer-mode** | chunked | Zeichenfolge | Gibt an, dass der Inhalt in Blöcken (Segmenten) hochgeladen wird |
-   | **x-ms-content-length** | <*Inhaltslänge*> | Ganze Zahl  | Der Gesamtgröße des Inhalts in Bytes vor der Blockerstellung |
+   | **x-ms-transfer-mode** | chunked | String | Gibt an, dass der Inhalt in Blöcken (Segmenten) hochgeladen wird |
+   | **x-ms-content-length** | <*Inhaltslänge*> | Integer  | Der Gesamtgröße des Inhalts in Bytes vor der Blockerstellung |
    ||||
 
 2. Der Endpunkt antwortet mit dem Erfolgsstatuscode „200“ und diesen optionalen Informationen:
 
    | Endpunktfeld für Antwortheader | Typ | Erforderlich | BESCHREIBUNG |
    |--------------------------------|------|----------|-------------|
-   | **x-ms-chunk-size** | Ganze Zahl  | Nein  | Der vorgeschlagene Blockgröße in Bytes |
-   | **Location** | Zeichenfolge | Nein  | Die URL-Adresse, an die die HTTP-PATCH-Nachrichten gesendet werden sollen |
+   | **x-ms-chunk-size** | Integer  | Nein  | Der vorgeschlagene Blockgröße in Bytes |
+   | **Location** | String | Nein  | Die URL-Adresse, an die die HTTP-PATCH-Nachrichten gesendet werden sollen |
    ||||
 
 3. Ihre Logik-App erstellt und sendet nacheinander HTTP-PATCH-Nachrichten, wobei jede Nachricht diese Informationen enthält:
@@ -139,9 +139,9 @@ In den folgenden Schritten ist die Vorgehensweise ausführlich beschrieben, in d
 
      | Logic Apps-Feld für Anforderungsheader | Wert | Typ | BESCHREIBUNG |
      |---------------------------------|-------|------|-------------|
-     | **Content-Range** | <*Bereich*> | Zeichenfolge | Der Bytebereich für den aktuellen Inhaltsblock, einschließlich des Anfangswerts, des Endwerts und der Gesamtgröße des Inhalts, zum Beispiel: „bytes=0-1023/10100“ |
-     | **Content-Type** | <*Inhaltstyp*> | Zeichenfolge | Der Typ des segmentierten (in Blöcke aufgeteilten) Inhalts |
-     | **Content-Length** | <*Inhaltslänge*> | Zeichenfolge | Die Länge des aktuellen Blocks in Bytes |
+     | **Content-Range** | <*Bereich*> | String | Der Bytebereich für den aktuellen Inhaltsblock, einschließlich des Anfangswerts, des Endwerts und der Gesamtgröße des Inhalts, zum Beispiel: „bytes=0-1023/10100“ |
+     | **Content-Type** | <*Inhaltstyp*> | String | Der Typ des segmentierten (in Blöcke aufgeteilten) Inhalts |
+     | **Content-Length** | <*Inhaltslänge*> | String | Die Länge des aktuellen Blocks in Bytes |
      |||||
 
 4. Nach jeder PATCH-Anforderung bestätigt der Endpunkt den Empfang des entsprechenden Blocks durch Antworten mit dem Statuscode „200“.
