@@ -59,7 +59,7 @@ Dieser Artikel enthält benutzerdefinierten Code, den Sie in den Ebenen außerha
 | Eigenschaft | Typ | BESCHREIBUNG |
 | --- | --- | --- |
 | sourceType |   | Typ der Ausführungsquelle Zulässige Werte sind **Microsoft.Logic/workflows** und **custom** (benutzerdefiniert). (Erforderlich) |
-| Quelle |   | Wenn der Quelltyp **Microsoft.Logic/workflows** ist, müssen die Quellinformationen diesem Schema folgen. Wenn der Quelltyp **custom** ist, ist das Schema ist ein JToken. (Erforderlich) |
+| source |   | Wenn der Quelltyp **Microsoft.Logic/workflows** ist, müssen die Quellinformationen diesem Schema folgen. Wenn der Quelltyp **custom** ist, ist das Schema ist ein JToken. (Erforderlich) |
 | systemId | Zeichenfolge | System-ID der Logik-App (Erforderlich) |
 | runId | Zeichenfolge | Ausführungs-ID der Logik-App (Erforderlich) |
 | operationName | Zeichenfolge | Name des Vorgangs (z.B. Aktion oder Trigger) (Erforderlich) |
