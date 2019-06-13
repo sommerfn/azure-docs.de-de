@@ -7,12 +7,12 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 06/03/2019
-ms.openlocfilehash: 9a592533a92ec724c9a332bef5fdfcf385cb7b2c
-ms.sourcegitcommit: 1aefdf876c95bf6c07b12eb8c5fab98e92948000
+ms.openlocfilehash: 1ec4786291d6e2e5be6785e52cf3ab5bb5bbc690
+ms.sourcegitcommit: 45e4466eac6cfd6a30da9facd8fe6afba64f6f50
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/06/2019
-ms.locfileid: "66730685"
+ms.lasthandoff: 06/07/2019
+ms.locfileid: "66754534"
 ---
 # <a name="migrate-to-granular-role-based-access-for-cluster-configurations"></a>Migrieren zu präzisem rollenbasiertem Zugriff für Clusterkonfigurationen
 
@@ -59,10 +59,10 @@ Die folgenden APIs werden geändert oder als veraltet gekennzeichnet:
 - [**GET /configurations/{NamederKonfiguration}** ](https://docs.microsoft.com/rest/api/hdinsight/hdinsight-cluster#get-configuration) (vertrauliche Informationen entfernt)
     - Bisher zum Abrufen einzelner Konfigurationstypen (einschließlich Geheimnissen) verwendet.
     - Dieser API-Aufruf gibt nun einzelne Konfigurationstypen zurück, lässt aber die Geheimnisse aus. Um alle Konfigurationen einschließlich der Geheimnisse abzurufen, verwenden Sie den neuen Aufruf „POST /configurations“. Um lediglich Gatewayeinstellungen abzurufen, verwenden Sie den neuen Aufruf „POST /getGatewaySettings“.
-- [**GET /configurations**](https://docs.microsoft.com/rest/api/hdinsight/hdinsight-cluster#get-configurations) (veraltet)
+- [**GET /configurations**](https://docs.microsoft.com/rest/api/hdinsight/hdinsight-cluster#get-configuration) (veraltet)
     - Bisher zum Abrufen aller Konfigurationen (einschließlich der Geheimnisse) verwendet
     - Dieser API-Aufruf wird nicht mehr unterstützt. Um zukünftig alle Konfigurationen abzurufen, verwenden Sie den neuen Aufruf „POST /configurations“. Um Konfigurationen abzurufen und dabei sensible Parameter auszulassen, verwenden Sie den Aufruf „GET /configurations/{NamederKonfiguration}“.
-- [**POST /configurations/{NamederKonfiguration}** ](https://docs.microsoft.com/rest/api/hdinsight/hdinsight-cluster#change-connectivity-settings) (veraltet)
+- [**POST /configurations/{NamederKonfiguration}** ](https://docs.microsoft.com/rest/api/hdinsight/hdinsight-cluster#update-gateway-settings) (veraltet)
     - Bisher zum Aktualisieren der Gatewayanmeldeinformationen verwendet.
     - Dieser API-Aufruf wird als veraltet gekennzeichnet und nicht mehr unterstützt. Verwenden Sie stattdessen das neue „POST /updateGatewaySettings“.
 

@@ -1,20 +1,20 @@
 ---
 title: Azure Active Directory-Integration für Azure Red Hat OpenShift | Microsoft-Dokumentation
 description: Erfahren Sie, wie Sie eine Azure AD-Sicherheitsgruppe (Azure Active Directory) und einen Benutzer zum Testen von Apps in Ihrem Microsoft Azure Red Hat OpenShift-Cluster erstellen.
-author: tylermsft
-ms.author: twhitney
+author: jimzim
+ms.author: jzim
 ms.service: openshift
 manager: jeconnoc
 ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 05/13/2019
-ms.openlocfilehash: f6b87748c33c1afd047ae25dfb7df3670a73e7c8
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: adc5a601a04936a376d7c69b26c2429940ebdf6e
+ms.sourcegitcommit: 009334a842d08b1c83ee183b5830092e067f4374
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65779679"
+ms.lasthandoff: 05/29/2019
+ms.locfileid: "66306473"
 ---
 # <a name="azure-active-directory-integration-for-azure-red-hat-openshift"></a>Azure Active Directory-Integration für Azure Red Hat OpenShift
 

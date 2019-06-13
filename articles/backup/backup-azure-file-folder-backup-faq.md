@@ -7,12 +7,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 05/28/2019
 ms.author: dacurwin
-ms.openlocfilehash: 1ac3cdecc79cafb9ea2697cca3c87b2ebe083d40
-ms.sourcegitcommit: 25a60179840b30706429c397991157f27de9e886
+ms.openlocfilehash: 56dc87b1cdf36d761c46133004a05f8fa225a091
+ms.sourcegitcommit: f9448a4d87226362a02b14d88290ad6b1aea9d82
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/28/2019
-ms.locfileid: "66254862"
+ms.lasthandoff: 06/07/2019
+ms.locfileid: "66808299"
 ---
 # <a name="common-questions-about-backing-up-files-and-folders"></a>Häufig gestellte Fragen zum Sichern von Dateien und Ordnern 
 
@@ -83,11 +83,11 @@ Wenn Sie einen Windows-Computer umbenennen, werden alle derzeit konfigurierten S
 - Wenn Sie Daten wiederherstellen müssen, die mit dem alten Servernamen im Tresor gesichert wurden, verwenden Sie die Option zur Wiederherstellung an einem alternativen Speicherort im Assistenten für die Datenwiederherstellung. [Weitere Informationen](backup-azure-restore-windows-server.md#use-instant-restore-to-restore-data-to-an-alternate-machine) 
 
 ### <a name="what-is-the-maximum-file-path-length-for-backup"></a>Wie lang ist die maximale Dateipfadlänge für die Sicherung?
-Der MARS-Agent basiert auf NTFS und verwendet die durch die [Windows-API](/windows/desktop/FileIO/naming-a-file#fully_qualified_vs._relative_paths) begrenzte Dateipfadlänge. Wenn die Dateien, die Sie sichern möchten, länger als der zulässige Wert sind, sichern Sie den übergeordneten Ordner oder das Laufwerk.  
+Der MARS-Agent basiert auf NTFS und verwendet die durch die [Windows-API](/windows/desktop/FileIO/naming-a-file#fully-qualified-vs-relative-paths) begrenzte Dateipfadlänge. Wenn die Dateien, die Sie sichern möchten, länger als der zulässige Wert sind, sichern Sie den übergeordneten Ordner oder das Laufwerk.  
 
 ### <a name="what-characters-are-allowed-in-file-paths"></a>Welche Zeichen sind in Dateipfaden zulässig?
 
-Der MARS-Agent basiert auf NTFS und erlaubt [unterstützte Zeichen](/windows/desktop/FileIO/naming-a-file#naming_conventions) in Dateinamen/Pfaden.
+Der MARS-Agent basiert auf NTFS und erlaubt [unterstützte Zeichen](/windows/desktop/FileIO/naming-a-file#naming-conventions) in Dateinamen/Pfaden.
 
 ### <a name="the-warning-azure-backups-have-not-been-configured-for-this-server-appears"></a>Die Warnung „Azure-Sicherungen wurden für diesen Server nicht konfiguriert“ wird angezeigt.
 Diese Warnung tritt auf, wenn die auf dem lokalen Server gespeicherten Sicherungszeitplaneinstellungen nicht den Einstellungen im Sicherungstresor entsprechen, auch wenn Sie eine Sicherungsrichtlinie konfiguriert haben.

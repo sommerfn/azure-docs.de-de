@@ -9,12 +9,12 @@ ms.date: 05/14/2019
 ms.author: normesta
 ms.reviewer: seguler
 ms.subservice: common
-ms.openlocfilehash: e40a0b35cd99565bec4e26862c938f6228bf9836
-ms.sourcegitcommit: 51a7669c2d12609f54509dbd78a30eeb852009ae
+ms.openlocfilehash: 193c00354b6222152e26476d0b06cfb1555c207e
+ms.sourcegitcommit: 45e4466eac6cfd6a30da9facd8fe6afba64f6f50
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/30/2019
-ms.locfileid: "66393733"
+ms.lasthandoff: 06/07/2019
+ms.locfileid: "66754878"
 ---
 #  <a name="tutorial-migrate-on-premises-data-to-cloud-storage-by-using-azcopy"></a>Tutorial: Migrieren von lokalen Daten zum Cloudspeicher mithilfe von AzCopy
 
@@ -79,7 +79,7 @@ Daraufhin wird ein Anmeldefenster geöffnet. Melden Sie sich in diesem Fenster m
 
 ## <a name="upload-contents-of-a-folder-to-blob-storage"></a>Hochladen des Inhalts eines Ordners in Blobspeicher
 
-Mit AzCopy können Sie unter [Windows](https://docs.microsoft.com/azure/storage/common/storage-use-azcopy#upload-blobs-to-blob-storage) oder [Linux](https://docs.microsoft.com/azure/storage/common/storage-use-azcopy-linux#blob-download) alle Dateien in einem Ordner in Blob Storage hochladen. Um alle Blobs in einem Ordner hochzuladen, geben Sie den folgenden AzCopy-Befehl aus:
+Mit AzCopy können Sie unter [Windows](https://docs.microsoft.com/azure/storage/common/storage-use-azcopy) oder [Linux](https://docs.microsoft.com/azure/storage/common/storage-use-azcopy-linux) alle Dateien in einem Ordner in Blob Storage hochladen. Um alle Blobs in einem Ordner hochzuladen, geben Sie den folgenden AzCopy-Befehl aus:
 
 ```AzCopy
 azcopy copy "<local-folder-path>" "https://<storage-account-name>.<blob or dfs>.core.windows.net/<container-name>" --recursive=true
@@ -179,10 +179,10 @@ Weitere Informationen zu AzCopy finden Sie in den folgenden Artikeln:
 
 * [Übertragen von Daten mit AzCopy v10](storage-use-azcopy-v10.md)
 
-* [Transfer data with AzCopy and blob storage](storage-use-azcopy-blobs.md) (Übertragen von Daten mit AzCopy und Blob Storage)
+* [Übertragen von Daten mit AzCopy und Blob Storage](storage-use-azcopy-blobs.md)
 
-* [Transfer data with AzCopy and file storage](storage-use-azcopy-files.md) (Übertragen von Daten mit AzCopy und Dateispeicher)
+* [Übertragen von Daten mit AzCopy und Dateispeicher](storage-use-azcopy-files.md)
 
-* [Copy data from Amazon S3 buckets by using AzCopy](storage-use-azcopy-s3.md) (Kopieren von Daten aus Amazon S3-Buckets mit AzCopy)
+* [Kopieren von Daten aus Amazon S3-Buckets mit AzCopy](storage-use-azcopy-s3.md)
  
-* [Configure, optimize, and troubleshoot AzCopy](storage-use-azcopy-configure.md) (Konfigurieren und Optimieren von sowie Problembehandlung für AzCopy)
+* [Konfigurieren, Optimieren und Problembehandlung in AzCopy](storage-use-azcopy-configure.md)

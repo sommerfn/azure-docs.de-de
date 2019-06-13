@@ -7,12 +7,12 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 02/12/2019
-ms.openlocfilehash: dc0a6e008c7a1f4fb414f6d8adad3a94abc7a6b2
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: 51c1ea7b554178f7fb3f264bf731ffd5872ceea2
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65792336"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66234549"
 ---
 # <a name="source-transformation-for-mapping-data-flow"></a>Quelltransformation für Mapping Data Flow 
 
@@ -92,7 +92,7 @@ Wählen Sie die Einstellungen zum Verwalten von Dateien in Ihrer Quelle aus.
 
 Wenn sich Ihre Quelle in SQL-Datenbank oder SQL Data Warehouse befindet, stehen Ihnen zusätzliche Optionen für die Verwaltung von Quelldateien zur Verfügung.
 
-* **Query** (Abfrage): Geben Sie eine SQL-Abfrage für die Quelle ein. Diese Einstellung überschreibt jede Tabelle, die Sie im Dataset ausgewählt haben. Beachten Sie, dass die **Order By**-Klauseln hier nicht unterstützt werden. Sie können hier jedoch eine vollständige SELECT FROM-Anweisung festlegen.
+* **Query** (Abfrage): Geben Sie eine SQL-Abfrage für die Quelle ein. Diese Einstellung überschreibt jede Tabelle, die Sie im Dataset ausgewählt haben. Beachten Sie, dass **Order By**-Klauseln hier nicht unterstützt werden. Sie können aber eine vollständige SELECT FROM-Anweisung festlegen. Sie können auch benutzerdefinierte Tabellenfunktionen verwenden. **select * from udfGetData()** ist eine benutzerdefinierte Funktion in SQL, die eine Tabelle zurückgibt. Diese Abfrage generiert eine Quelltabelle, die Sie in Ihrem Datenfluss verwenden können.
 * **Batchgröße**: Geben Sie eine Batchgröße ein, um große Datenmengen in Leseblöcke zu segmentieren.
 
 > [!NOTE]

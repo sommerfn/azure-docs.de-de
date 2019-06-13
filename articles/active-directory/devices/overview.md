@@ -17,12 +17,12 @@ ms.date: 06/04/2019
 ms.author: joflore
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8f91ff65d0e11ed2e9f923f94c740314c9136d99
-ms.sourcegitcommit: 6932af4f4222786476fdf62e1e0bf09295d723a1
+ms.openlocfilehash: faabc65a78626c053aecfac81b560b4731e40b95
+ms.sourcegitcommit: 1aefdf876c95bf6c07b12eb8c5fab98e92948000
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/05/2019
-ms.locfileid: "66688688"
+ms.lasthandoff: 06/06/2019
+ms.locfileid: "66729993"
 ---
 # <a name="what-is-a-device-identity"></a>Was ist eine Geräteidentität?
 
@@ -155,5 +155,5 @@ Als Faustregel sollten Sie Folgendes verwenden:
 - Einrichtung:
    - Informationen zu in Azure Active Directory registrierten Windows 10-Geräten finden Sie unter [Konfigurieren von bei Azure Active Directory registrierten Windows 10-Geräten](../user-help/device-management-azuread-registered-devices-windows10-setup.md).
    - Informationen zu in Azure AD eingebundenen Geräten finden Sie unter [Gewusst wie: Planen der Implementierung Ihrer Azure AD-Einbindung](azureadjoin-plan.md).
-   - Informationen zu in Azure AD eingebundenen Hybridgeräten finden Sie unter [Planen der Implementierung einer Azure Active Directory-Hybrideinbindung](hybrid-azuread-join-plan.md).   
+   - Informationen zu in Azure AD eingebundenen Hybridgeräten finden Sie unter [Planen der Implementierung einer Azure Active Directory-Hybrideinbindung](hybrid-azuread-join-plan.md).
 - Weitere Informationen zum gerätebasierten bedingten Zugriff finden Sie unter [Konfigurieren des gerätebasierten bedingten Zugriffs für Azure Active Directory](../conditional-access/require-managed-devices.md).

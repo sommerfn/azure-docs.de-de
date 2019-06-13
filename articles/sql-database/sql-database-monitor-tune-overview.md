@@ -12,12 +12,12 @@ ms.author: jovanpop
 ms.reviewer: jrasnik, carlrab
 manager: craigg
 ms.date: 01/25/2019
-ms.openlocfilehash: b8d0543a7dda19500880fee9d660295375f138cc
-ms.sourcegitcommit: 8e76be591034b618f5c11f4e66668f48c090ddfd
+ms.openlocfilehash: 2fa43fcd48736a3d044deb07ed690af580c3b987
+ms.sourcegitcommit: c05618a257787af6f9a2751c549c9a3634832c90
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/29/2019
-ms.locfileid: "66356372"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66416279"
 ---
 # <a name="monitoring-and-performance-tuning"></a>Überwachen und Optimieren der Datenbankleistung
 
@@ -40,7 +40,7 @@ Azure SQL-Datenbank **stellt Empfehlungen bereit, die Sie bei der Fehlerbehandlu
 Es gibt folgende Optionen für die Überwachung und Problembehandlung der Datenbankleistung:
 
 - Klicken Sie im [Azure-Portal](https://portal.azure.com) auf **SQL-Datenbanken**, wählen Sie die Datenbank aus, und suchen Sie dann mithilfe des Diagramms „Überwachung“ nach Ressourcen, die sich ihrer maximalen Leistung annähern. „DTU-Verbrauch“ wird standardmäßig angezeigt. Klicken Sie auf **Bearbeiten** , um den Zeitraum und die angezeigten Werte zu ändern.
-- Tools wie SQL Server Management Studio stellen viele nützliche Berichte bereit, mit deren Hilfe Sie die Ressourcennutzung überwachen und die Abfragen mit dem höchsten Ressourcenverbrauch identifizieren können.
+- Tools wie SQL Server Management Studio zu bieten, wie viele weitere nützliche Berichte ein [Leistungsdashboard](https://docs.microsoft.com/sql/relational-databases/performance/performance-dashboard?view=sql-server-2017) , Sie können die ressourcennutzung überwachen und Abfragen, für die größten Ressourcenverbrauch identifizieren oder [Query Store](https://docs.microsoft.com/sql/relational-databases/performance/monitoring-performance-by-using-the-query-store#Regressed), in dem Sie die Abfragen mit rückläufiger Leistung identifizieren können.
 - Verwenden Sie [Query Performance Insight](sql-database-query-performance.md) im [Azure-Portal](https://portal.azure.com), um diejenigen Abfragen zu identifizieren, die die meisten Ressourcen verbrauchen. Dieses Feature ist nur in Einzeldatenbanken und Pools für elastische Datenbanken verfügbar.
 - Verwenden Sie [SQL Database Advisor](sql-database-advisor-portal.md), um Empfehlungen zum Erstellen und Löschen von Indizes, zum Parametrisieren von Abfragen und zum Beheben von Schemaproblemen anzuzeigen. Dieses Feature ist nur in Einzeldatenbanken und Pools für elastische Datenbanken verfügbar.
 - Mit [Azure SQL Intelligent Insights](sql-database-intelligent-insights.md) können Sie die Leistung Ihrer Datenbank automatisch überwachen. Bei Erkennung eines Leistungsproblems wird ein Diagnoseprotokoll mit Details und einer Fehlerursachenanalyse des Problems generiert. Empfehlungen zur Verbesserung der Leistung werden nach Möglichkeit bereitgestellt.
@@ -59,8 +59,8 @@ Beim Diagnostizieren und Beheben von Leistungsproblemen besteht der erste Schrit
 Bei einem Workload mit Leistungsproblemen kann das Leistungsproblem auf CPU-Konflikte zurückzuführen sein (eine **running-related**-Bedingung) oder einzelne Abfragen warten auf etwas (eine **waitingrelated**-Bedingung).
 
 Für Probleme **in Zusammenhang mit der Ausführung** können folgende Ursachen vorliegen:
-- **Kompilierungsprobleme**: Der SQL-Abfrageoptimierer generiert möglicherweise aufgrund veralteter Statistiken, einer falschen Schätzung der zu verarbeitenden Zeilenanzahl oder einer falschen Schätzung des erforderlichen Arbeitsspeichers einen Plan, der nicht optimal ist. Wenn Sie wissen, dass die Abfrage in der Vergangenheit oder auf einer anderen Instanz (einer verwalteten Instanz oder einer SQL Server-Instanz) schneller ausgeführt wurde, vergleichen Sie die tatsächlichen Ausführungspläne, um mögliche Unterschiede festzustellen. Versuchen Sie, Abfragehinweise einzufügen oder Statistiken oder Indizes neu zu erstellen, um einen besseren Plan zu erzielen. Aktivieren Sie die automatische Plankorrektur in Azure SQL-Datenbank, um solche Probleme automatisch minimieren zu lassen.
-- **Ausführungsprobleme**: Wenn der Abfrageplan optimal ist, sind möglicherweise Grenzwerte in der Datenbank erreicht, beispielsweise beim Schreibdurchsatz von Protokollen. Möglicherweise werden auch defragmentierte Indizes verwendet, die neu erstellt werden sollten. Eine große Anzahl von gleichzeitigen Abfragen, die viele Ressourcen verbrauchen, kann ebenfalls Probleme mit der Ausführung verursachen. Probleme aufgrund von **Wartevorgängen** stehen in den meisten Fällen in Zusammenhang mit Ausführungsproblemen, weil Abfragen, die nicht effizient ausgeführt werden, möglicherweise auf Ressourcen warten.
+- **Kompilierungsprobleme** -SQL-Abfrageoptimierer möglicherweise nicht optimaler Plan aufgrund von veralteten Statistiken, falsche Schätzung der Anzahl der Zeilen, die verarbeitet werden, oder die Schätzung des erforderlichen Arbeitsspeichers erzeugen. Wenn Sie, dass die Abfrage schneller in der Vergangenheit oder auf andere Instanz weiter (entweder verwaltete Instanz oder SQL Server-Instanz) ausgeführt wurde wissen, schalten Sie die tatsächliche Ausführungspläne und vergleichen und feststellen werden verschiedene. Versuchen Sie, Abfragehinweise einzufügen oder Statistiken oder Indizes neu zu erstellen, um einen besseren Plan zu erzielen. Aktivieren Sie die automatische Plankorrektur in Azure SQL-Datenbank, um solche Probleme automatisch minimieren zu lassen.
+- **Probleme bei der Ausführung** : Wenn der Abfrageplan eine optimale ist und es wahrscheinlich einige Ressourcen in der Datenbank, z. B. Schreibdurchsatz Log Grenzwerte ist oder sie können defragmentierte Indizes, die neu erstellt werden sollen. Eine große Anzahl von gleichzeitigen Abfragen, die viele Ressourcen verbrauchen, kann ebenfalls Probleme mit der Ausführung verursachen. Probleme aufgrund von **Wartevorgängen** stehen in den meisten Fällen in Zusammenhang mit Ausführungsproblemen, weil Abfragen, die nicht effizient ausgeführt werden, möglicherweise auf Ressourcen warten.
 
 Für Probleme **in Zusammenhang mit Wartevorgängen** können folgende Ursachen vorliegen:
 - **Blockierung**: Möglicherweise hält eine Abfrage eine Sperre für einige Objekte in der Datenbank, während andere Abfragen versuchen, auf diese Objekte zuzugreifen. Mithilfe von DMVs oder Überwachungstools können Sie blockierende Abfragen einfach ermitteln.
@@ -143,6 +143,24 @@ WHERE
 GROUP BY q.query_hash
 ORDER BY count (distinct p.query_id) DESC
 ```
+### <a name="factors-influencing-query-plan-changes"></a>Faktoren, welche Änderungen an Abfrageplänen
+
+Eine Plan eine Neukompilierung der Abfrage Ausführung möglicherweise einen generierten Abfrageplan führen, die unterscheidet sich von Was ursprünglich zwischengespeichert wurde. Es gibt verschiedene Gründe dafür, warum ein vorhandener Plan für die ursprüngliche automatisch kompiliert werden kann:
+- Änderungen in das Schema, auf die von der Abfrage verwiesen wird
+- Änderungen an den Tabellen, auf die von der Abfrage verwiesen wird 
+- Änderungen an den Kontext Abfrageoptionen 
+
+Ein kompilierter Plan ausgeworfen werden kann, aus dem Cache für eine Vielzahl von Gründen, einschließlich des Neustarts, datenbankweit gültige konfigurationsänderungen, speicherauslastung und explizite Anforderungen an den Cache zu löschen. Darüber hinaus also einen RECOMPILE-Hinweis ein Plan wird nicht zwischengespeichert werden.
+
+Eine Neukompilierung (oder eine neue Kompilierung nach dem Cache entfernen) kann immer noch die Generierung eines Ausführungsplans identische Abfragen, von dem ursprünglich beobachtet führen.  Wenn Sie jedoch Änderungen für den Plan im Vergleich zu den vorherigen oder den ursprünglichen Plan vorhanden sind, sind die folgenden am häufigsten verwendeten erläuterungen für ein Abfrageausführungsplan Warum geändert:
+
+- **Geändert von physischen Entwurfsstrukturen**. Effektiver Abdeckung, die die Anforderungen einer Abfrage auf eine neue Kompilierung verwendet werden können, wenn der Abfrageoptimierer, es entscheidet besser geeignet, um diesen neuen Index zu nutzen, verwenden Sie die Datenstruktur, die ursprünglich für die erste Version des ausgewählten ist, z. B. erstellt neue Indizes die Ausführung der Abfrage.  Alle Änderungen an die referenzierten Objekte möglicherweise in einem neuen Plan Choice zum Zeitpunkt der Kompilierung.
+
+- **Unterschiede zwischen den Servern Ressource**. In einem Szenario, in denen ein Plan auf "System A" im Vergleich zu "System B" – die Verfügbarkeit der Ressourcen, wie z. B. die Anzahl verfügbarer Prozessoren, unterscheidet sich, können beeinflussen, welchen Plan generiert wird.  Z. B. wenn ein System eine höhere Anzahl von Prozessoren verfügt, kann ein paralleler Plan ausgewählt werden. 
+
+- **Andere Statistiken**. Die statistische Informationen zu der referenzierten Objekte geändert oder unterscheiden sich wesentlich von der ursprünglichen Systems Statistiken.  Wenn die Statistiken ändern und eine erneute Kompilierung erfolgt, wird die Abfrageoptimierer Statistiken ab dem jeweiligen Zeitpunkt rechtzeitig verwenden. Die überarbeiteten Statistiken möglicherweise erheblich unterschiedlichen datenverteilungen und Frequenzen, die nicht der Fall, in der ursprünglichen Kompilierung wäre.  Diese Änderungen werden verwendet, um zu schätzen, dass die kardinalitätsschätzung (Anzahl der Zeilen, die durch die der logischen Abfragestruktur fließen erwartet).  Änderungen an kardinalitätsschätzungen können wir auf verschiedene physische Operatoren und die zugehörigen Auftrag-von-Vorgänge führen.  Selbst geringfügige Änderungen an Statistics können in einen Ausführungsplan für die geänderte Abfrage führen.
+
+- **Geänderte Datenbank-Ebene oder Kardinalität zu Kompatibilitätsversion**.  Änderungen an der Datenbank-Kompatibilitätsgrad können neue Strategien und Funktionen, die in einen anderen Abfrageausführungsplan führen können.  Über den Kompatibilitätsgrad der Datenbank deaktivieren oder aktivieren das Ablaufverfolgungsflag 4199 oder Ändern des Status der bereichsbezogenen Datenbank-Konfiguration, die von QUERY_OPTIMIZER_HOTFIXES auch beeinflussen können Abfragen zur Auswahl stehenden Ausführung zum Zeitpunkt der Kompilierung.  Ablaufverfolgungsflags 9481 (-Force-legacy-CE) und 2312 (Standard-CE zu erzwingen) sind auch auf den Ausführungsplan auswirken. 
 
 ### <a name="resolve-problem-queries-or-provide-more-resources"></a>Lösen von Abfrageproblemen oder Bereitstellen weiterer Ressourcen
 

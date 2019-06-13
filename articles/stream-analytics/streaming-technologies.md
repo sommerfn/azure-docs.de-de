@@ -7,12 +7,12 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 05/15/2019
-ms.openlocfilehash: 7ef8715f23d21a23dc3f37b192314b922847d3e1
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: 85d6ed80da93f90e6dc0feaee7081ee3f36f1bf9
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65804788"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66242688"
 ---
 # <a name="choose-a-real-time-analytics-and-streaming-processing-technology-on-azure"></a>Auswählen einer Technologie für Echtzeitanalysen und -Streamingverarbeitung in Azure
 
@@ -25,7 +25,7 @@ Azure Stream Analytics wird als Dienst für Streaminganalysen in Azure empfohlen
 * Dashboards für die Datenvisualisierung
 * [Warnungen](stream-analytics-set-up-alerts.md) in Echtzeit zu temporalen und räumlichen Mustern oder Anomalien
 * Extraktions-, Umwandlungs- und Ladeprozesse (Extract, Transform and Load, ETL)
-* [Muster „Ereignissourcing“](/azure/architecture/patterns/event-sourcing.md)
+* [Muster „Ereignissourcing“](/azure/architecture/patterns/event-sourcing)
 * [IoT Edge](stream-analytics-edge.md)
 
 Das Hinzufügen eines Azure Stream Analytics-Auftrags in Ihrer Anwendung ist die schnellste Möglichkeit, Streaminganalysen unter Verwendung der bereits bekannten strukturierten Abfragesprache (SQL) in Azure auszuführen. Azure Stream Analytics ist ein Auftragsdienst, sodass Sie keine Zeit mit der Verwaltung von Clustern verbringen und sich nicht um Ausfallzeiten kümmern müssen, da der Dienst eine SLA mit einer Verfügbarkeit von 99,9 % auf Auftragsebene bietet. Auch die Abrechnung erfolgt auf Auftragsebene. Dadurch sind die Startkosten niedrig (eine Streamingeinheit), aber skalierbar (bis zu 192 Streamingeinheiten). Es ist sehr viel kostengünstiger, einige Stream Analytics-Aufträge auszuführen, als einen Cluster auszuführen und zu verwalten.

@@ -11,30 +11,30 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 04/17/2019
+ms.date: 05/23/2019
 ms.author: mimart
 ms.reviewer: harshja
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3fa5c5638da390f4416afc9f4bd9c5d58c34cea8
-ms.sourcegitcommit: be9fcaace62709cea55beb49a5bebf4f9701f7c6
+ms.openlocfilehash: 0f4e71bd7fd7e0ed9a220619995ba108fdccabe4
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/17/2019
-ms.locfileid: "65825570"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66233746"
 ---
 # <a name="set-a-custom-home-page-for-published-apps-by-using-azure-ad-application-proxy"></a>Festlegen einer benutzerdefinierten Startseite für veröffentlichte Apps mithilfe eines Azure AD-Anwendungsproxys
 
-Dieser Artikel erläutert das Konfigurieren einer App, sodass ein Benutzer auf eine benutzerdefinierte Homepage weitergeleitet wird. Dieses kann sich danach unterscheiden, ob es sich um einen internen oder externen Benutzer handelt. Wenn Sie eine App mit dem Anwendungsproxy veröffentlichen, legen Sie eine interne URL fest. Dies ist jedoch in einigen Fällen nicht die Seite, die den Benutzern zuerst angezeigt werden soll. Legen Sie eine benutzerdefinierte Startseite fest, sodass die Benutzer beim Zugreifen auf die App zur richtigen Seite gelangen. Benutzern wird die benutzerdefinierte Startseite angezeigt, die Sie festlegen, egal ob sie über den Azure Active Directory-Zugriffsbereich oder den Office 365-App-Starter auf die App zugreifen.
+In diesem Artikel wird erläutert, wie Sie eine App so konfigurieren, dass sie Benutzer zu einer benutzerdefinierten Homepage weiterleiten. Wenn Sie eine App mit dem Anwendungsproxy veröffentlichen, legen Sie eine interne URL fest. Dies ist jedoch in einigen Fällen nicht die Seite, die den Benutzern zuerst angezeigt werden soll. Legen Sie eine benutzerdefinierte Startseite fest, sodass die Benutzer beim Zugreifen auf die App zur richtigen Seite gelangen. Benutzern wird die benutzerdefinierte Startseite angezeigt, die Sie festlegen, egal ob sie über den Azure Active Directory-Zugriffsbereich oder den Office 365-App-Starter auf die App zugreifen.
 
 Wenn ein Benutzer die App startet, wird er standardmäßig zur Stammdomänen-URL der veröffentlichten App weitergeleitet. Die Zielseite wird in der Regel als URL der Startseite festgelegt. Definieren Sie mithilfe des Azure AD-PowerShell-Moduls eine benutzerdefinierte Homepage-URL, wenn App-Benutzer zu einer bestimmten Seite innerhalb der App gelangen sollen.
 
-Hier wird in einem Szenario begründet, warum Ihr Unternehmen eine benutzerdefinierte Homepage festlegt, die je nach den Benutzertyp unterschiedlich ausfällt:
+Hier ist ein Szenario, das erklärt, warum Ihr Unternehmen eine benutzerdefinierte Homepage festlegen sollte:
 
+- In Ihrem Unternehmensnetzwerk navigiert ein Benutzer zu `https://ExpenseApp/login/login.aspx`, um sich anzumelden und auf Ihre App zuzugreifen.
 - Da Sie auf oberster Ebene der Ordnerstruktur über andere Ressourcen verfügen, auf die der Anwendungsproxy zugreifen muss (z. B. Images), veröffentlichen Sie die App mit `https://ExpenseApp` als interner URL.
-- In Ihrem Unternehmensnetzwerk navigiert ein Benutzer jedoch zu `https://ExpenseApp/login/login.aspx`, um sich anzumelden und auf Ihre App zuzugreifen.
 - Die externe Standard-URL ist `https://ExpenseApp-contoso.msappproxy.net`. Über diese gelangen die Benutzer jedoch nicht auf die Anmeldeseite.
-- Sie möchten `https://ExpenseApp-contoso.msappproxy.net/login/login.aspx` als URL der externen Homepage festlegen, damit externen Benutzern zuerst die Anmeldeseite angezeigt wird.
+- Sie möchten `https://ExpenseApp-contoso.msappproxy.net/login/login.aspx` als URL der Homepage festlegen, damit externen Benutzern zuerst die Anmeldeseite angezeigt wird.
 
 >[!NOTE]
 >Wenn Sie Benutzern Zugriff auf veröffentlichte Apps erteilen, werden die Apps im [Azure AD-Zugriffsbereich](../user-help/my-apps-portal-end-user-access.md) und im [Office 365-Startfeld](https://www.microsoft.com/microsoft-365/blog/2016/09/27/introducing-the-new-office-365-app-launcher/) angezeigt.
@@ -49,21 +49,21 @@ Bevor Sie die URL der Homepage festlegen, berücksichtigen Sie die folgenden Anf
 
 - Nach einer Änderung der veröffentlichten App wird der Wert der Startseiten-URL unter Umständen zurückgesetzt. Wenn Sie die App in Zukunft aktualisieren, sollten Sie die URL der Startseite erneut überprüfen und bei Bedarf aktualisieren.
 
-Sie können die externe oder interne Homepage über das Azure-Portal oder mithilfe von PowerShell ändern.
+Sie können die URL der Homepage über das Azure-Portal oder mithilfe von PowerShell festlegen.
 
 ## <a name="change-the-home-page-in-the-azure-portal"></a>Ändern der Startseite im Azure-Portal
 
-Um die externe und die interne Startseite Ihrer App über das Azure AD-Portal zu ändern, gehen Sie folgendermaßen vor:
+Um die URL der Homepage Ihrer App über das Azure AD-Portal zu ändern, gehen Sie folgendermaßen vor:
 
-1. Melden Sie sich beim [Azure Active Directory-Portal](https://aad.portal.azure.com/) an. Das Dashboard für Azure Active Directory Admin Center wird angezeigt.
-2. Wählen Sie auf der Seitenleiste **Azure Active Directory** aus. Die Übersichtsseite für Azure AD wird angezeigt.
-3. Wählen Sie auf der Seitenleiste der Übersicht die Option **App-Registrierungen** aus. Die Liste der registrierten Apps wird angezeigt.
-4. Wählen Sie Ihre App in der Liste aus. Eine Seite mit den Details der registrierten App wird angezeigt.
-5. Wählen Sie den Link unter **Umleitungs-URIs** aus, der die Anzahl der Umleitungs-URIs für Web- und öffentliche Clients anzeigt. Die Authentifizierungsseite für die registrierte App wird angezeigt.
-6. Legen Sie in der letzten Zeile der Tabelle **Umleitungs-URIs** die Spalte **TYP** auf **Public client (mobile & desktop)** (Öffentlicher Client (mobil und Desktop)) fest, und geben Sie in der Spalte **UMLEITUNGS-URI** die interne URL ein, die Sie verwenden möchten. Eine neue leere Zeile wird unter der gerade geänderten Zeile angezeigt.
-7. Legen Sie in der neuen Zeile die Spalte **TYP** auf **Web** fest, und geben Sie in der Spalte **UMLEITUNGS-URI** die externe URL ein, die Sie verwenden möchten.
-8. Wenn Sie vorhandene Zeilen für Umleitungs-URIs löschen möchten, wählen Sie das Symbol **Löschen** (Mülleimer) neben den einzelnen unerwünschten Zeilen aus.
-9. Wählen Sie **Speichern** aus.
+1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com/) als Administrator an.
+2. Wählen Sie **Azure Active Directory** und dann **App-Registrierungen** aus. Die Liste der registrierten Apps wird angezeigt.
+3. Wählen Sie Ihre App in der Liste aus. Eine Seite mit den Details der registrierten App wird angezeigt.
+4. Wählen Sie unter **Verwalten** die Option **Branding** aus.
+5. Aktualisieren Sie **URL der Startseite** mit dem neuen Pfad.
+
+   ![Brandingseite für eine registrierte App mit dem Feld „URL der Startseite“](media/application-proxy-configure-custom-home-page/app-proxy-app-branding.png)
+ 
+6. Wählen Sie **Speichern** aus.
 
 ## <a name="change-the-home-page-with-powershell"></a>Ändern der Startseite mit PowerShell
 

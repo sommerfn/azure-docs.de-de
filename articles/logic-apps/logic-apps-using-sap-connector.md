@@ -10,12 +10,12 @@ ms.reviewer: divswa, LADocs
 ms.topic: article
 ms.date: 05/09/2019
 tags: connectors
-ms.openlocfilehash: 3fb39103fc9cb0f38bca56dcaeea4837ff4dfabe
-ms.sourcegitcommit: f6c85922b9e70bb83879e52c2aec6307c99a0cac
+ms.openlocfilehash: bccefec80ef3afd6d312bb1048d3be5d8e708728
+ms.sourcegitcommit: 25a60179840b30706429c397991157f27de9e886
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/11/2019
-ms.locfileid: "65541497"
+ms.lasthandoff: 05/28/2019
+ms.locfileid: "66258146"
 ---
 # <a name="connect-to-sap-systems-from-azure-logic-apps"></a>Herstellen einer Verbindung zu SAP-Systemen: Azure Logic Apps
 
@@ -119,6 +119,8 @@ In Azure Logic Apps handelt es sich bei einer [Aktion](../logic-apps/logic-apps-
       Wenn die Eigenschaft **Anmeldetyp** auf **Gruppe** festgelegt ist, sind diese (in der Regel optionalen) Eigenschaften erforderlich:
 
       ![Verbindung zum SAP-Nachrichtenserver herstellen](media/logic-apps-using-sap-connector/create-SAP-message-server-connection.png)
+
+      Standardmäßig wird starke Typisierung verwendet, um nach ungültigen Werten zu suchen, indem eine XML-Validierung anhand des Schemas durchgeführt wird. Durch dieses Verhalten können Sie Probleme früher feststellen. Die Option **Sichere Typisierung** ist aus Gründen der Abwärtskompatibilität verfügbar und überprüft nur die Länge der Zeichenfolge. Erfahren Sie mehr über die Option [**Sichere Typisierung**](#safe-typing).
 
    1. Wenn Sie fertig sind, wählen Sie **Erstellen** aus.
 
@@ -225,6 +227,8 @@ Dieses Beispiel verwendet eine Logik-App, die bei Empfang einer Nachricht von ei
 
       ![Verbindung zum SAP-Nachrichtenserver herstellen](media/logic-apps-using-sap-connector/create-SAP-message-server-connection.png)  
 
+      Standardmäßig wird starke Typisierung verwendet, um nach ungültigen Werten zu suchen, indem eine XML-Validierung anhand des Schemas durchgeführt wird. Durch dieses Verhalten können Sie Probleme früher feststellen. Die Option **Sichere Typisierung** ist aus Gründen der Abwärtskompatibilität verfügbar und überprüft nur die Länge der Zeichenfolge. Erfahren Sie mehr über die Option [**Sichere Typisierung**](#safe-typing).
+
 1. Geben Sie die erforderlichen Parameter basierend auf der Konfiguration Ihres SAP-Systems an.
 
    Optional können Sie eine oder mehrere SAP-Aktionen angeben. Diese Liste von Aktionen gibt die Nachrichten an, die der Trigger über das Datengateway von Ihrem SAP-Server empfängt. Eine leere Liste gibt an, dass der Trigger alle Nachrichten empfängt. Wenn die Liste mehrere Nachrichten enthält, empfängt der Trigger nur die Nachrichten, die in der Liste angegeben wurden. Alle anderen von Ihrem SAP-Server gesendeten Nachrichten werden vom Gateway abgelehnt.
@@ -306,7 +310,11 @@ Wählen Sie auf der Symbolleiste des Designers **Speichern**.
 
       ![Verbindung zum SAP-Nachrichtenserver herstellen](media/logic-apps-using-sap-connector/create-SAP-message-server-connection.png)
 
-   1. Wenn Sie fertig sind, wählen Sie **Erstellen** aus. Die Verbindung wird in Logic Apps eingerichtet und getestet, sodass sichergestellt ist, dass sie ordnungsgemäß funktioniert.
+      Standardmäßig wird starke Typisierung verwendet, um nach ungültigen Werten zu suchen, indem eine XML-Validierung anhand des Schemas durchgeführt wird. Durch dieses Verhalten können Sie Probleme früher feststellen. Die Option **Sichere Typisierung** ist aus Gründen der Abwärtskompatibilität verfügbar und überprüft nur die Länge der Zeichenfolge. Erfahren Sie mehr über die Option [**Sichere Typisierung**](#safe-typing).
+
+   1. Wenn Sie fertig sind, wählen Sie **Erstellen** aus. 
+   
+      Die Verbindung wird in Logic Apps eingerichtet und getestet, sodass sichergestellt ist, dass sie ordnungsgemäß funktioniert.
 
 1. Geben Sie den Pfad zu dem Artefakt an, für das Sie das Schema generieren möchten.
 
@@ -402,6 +410,53 @@ Um SNC für Ihre Anforderungen an oder aus dem SAP-System zu aktivieren, aktivie
 
    > [!NOTE]
    > Die Umgebungsvariablen SNC_LIB und SNC_LIB_64 sollten auf dem Computer, auf dem Sie das Datengateway und die SNC-Bibliothek betreiben, nicht festgelegt werden. Wenn sie festgelegt werden, haben sie Vorrang vor dem Wert der SNC-Bibliothek, der über den Connector übergeben wird.
+
+<a name="safe-typing"></a>
+
+## <a name="safe-typing"></a>Sichere Typisierung
+
+Standardmäßig wird beim Erstellen der SAP-Verbindung starke Typisierung verwendet, um nach ungültigen Werten zu suchen, indem eine XML-Validierung anhand des Schemas durchgeführt wird. Durch dieses Verhalten können Sie Probleme früher feststellen. Die Option **Sichere Typisierung** ist aus Gründen der Abwärtskompatibilität verfügbar und überprüft nur die Länge der Zeichenfolge. Wenn Sie **Sichere Typisierung** auswählen, werden die DATS- und TIMS-Typen in SAP als Zeichenfolgen und nicht als ihre XML-Entsprechungen (`xs:date` und `xs:time`, `xmlns:xs="http://www.w3.org/2001/XMLSchema"`) behandelt. Die sichere Typisierung beeinflusst das Verhalten für die gesamte Schemagenerierung, die Sendenachricht für die Nutzlast „wurde gesendet“ und die Antwort „wurde empfangen“ sowie den Trigger. 
+
+Wenn starke Typisierung verwendet wird (**Sichere Typisierung** nicht aktiviert) ordnet das Schema die DATS-und TIMS-Typen einfacheren XML-Typen zu:
+
+```xml
+<xs:element minOccurs="0" maxOccurs="1" name="UPDDAT" nillable="true" type="xs:date"/>
+<xs:element minOccurs="0" maxOccurs="1" name="UPDTIM" nillable="true" type="xs:time"/>
+```
+
+Beim Senden von Nachrichten mit starker Typisierung entspricht die DATS- und TIMS-Antwort dem entsprechenden XML-Typformat:
+
+```xml
+<DATE>9999-12-31</DATE>
+<TIME>23:59:59</TIME>
+```
+
+Wenn **Sichere Typisierung** aktiviert ist, ordnet das Schema die DATS- und TIMS-Typen nur XML-Zeichenfolgenfeldern mit Längeneinschränkungen zu, z.B.:
+
+```xml
+<xs:element minOccurs="0" maxOccurs="1" name="UPDDAT" nillable="true">
+  <xs:simpleType>
+    <xs:restriction base="xs:string">
+      <xs:maxLength value="8" />
+    </xs:restriction>
+  </xs:simpleType>
+</xs:element>
+<xs:element minOccurs="0" maxOccurs="1" name="UPDTIM" nillable="true">
+  <xs:simpleType>
+    <xs:restriction base="xs:string">
+      <xs:maxLength value="6" />
+    </xs:restriction>
+  </xs:simpleType>
+</xs:element>
+```
+
+Beim Senden von Nachrichten mit aktivierter **Sicherer Typisierung** sieht die DATS- und TIMS-Antwort wie im folgenden Beispiel aus:
+
+```xml
+<DATE>99991231</DATE>
+<TIME>235959</TIME>
+```
+
 
 ## <a name="known-issues-and-limitations"></a>Bekannte Probleme und Einschränkungen
 

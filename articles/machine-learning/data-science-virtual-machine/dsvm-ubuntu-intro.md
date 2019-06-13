@@ -16,12 +16,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/16/2018
-ms.openlocfilehash: d693af5ddd0b94734dfa065bef8a1f3a5de09ccc
-ms.sourcegitcommit: 1fbc75b822d7fe8d766329f443506b830e101a5e
+ms.openlocfilehash: 5a9fdebc8db0c2a1acc20a894f80cfcc87fb89d5
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/14/2019
-ms.locfileid: "65597125"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66236491"
 ---
 # <a name="provision-the-data-science-virtual-machine-for-linux-ubuntu"></a>Bereitstellen der Data Science Virtual Machine für Linux (Ubuntu)
 
@@ -121,7 +121,7 @@ Es gibt drei Methoden, um auf die Ubuntu-DSVM zuzugreifen:
 1. X2Go für grafische Sitzungen
 1. JupyterHub und JupyterLab für Jupyter-Notebooks
 
-Sie können Azure Notebooks auch eine Data Science VM zuordnen, um Jupyter-Notebooks auf der VM auszuführen und die Einschränkungen der kostenlosen Dienstebene zu umgehen. Weitere Informationen finden Sie unter [Verwalten und Konfigurieren von Projekten – Computeebene](/azure/notebooks/configure-manage-azure-notebooks-projects.md#compute-tier).
+Sie können Azure Notebooks auch eine Data Science VM zuordnen, um Jupyter-Notebooks auf der VM auszuführen und die Einschränkungen der kostenlosen Dienstebene zu umgehen. Weitere Informationen finden Sie unter [Verwalten und Konfigurieren von Projekten – Computeebene](/azure/notebooks/configure-manage-azure-notebooks-projects#compute-tier).
 
 ### <a name="ssh"></a>SSH
 

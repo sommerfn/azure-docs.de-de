@@ -7,16 +7,16 @@ manager: cshankar
 ms.service: time-series-insights
 ms.topic: article
 ms.date: 05/09/2019
-ms.author: anshan
+ms.author: dpalled
 ms.custom: seodec18
-ms.openlocfilehash: 535fe9a7920db89e434b4cc1b66aa38bf72a7829
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: 089285637bb740fea47f1fd07de0906dfe46662b
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65790078"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66244457"
 ---
-# <a name="how-to-shape-json-to-maximize-query-performance"></a>Strukturieren von JSON zum Maximieren der Abfrageleistung 
+# <a name="shape-json-to-maximize-query-performance"></a>Strukturieren von JSON zum Maximieren der Abfrageleistung 
 
 Dieser Artikel bietet Hilfestellung bei der JSON-Strukturierung, um die Effizienz Ihrer Azure Time Series Insights-Abfragen zu maximieren.
 
@@ -27,8 +27,7 @@ Dieser Artikel bietet Hilfestellung bei der JSON-Strukturierung, um die Effizien
 > [!VIDEO https://www.youtube.com/embed/b2BD5hwbg5I]
 
 ## <a name="best-practices"></a>Bewährte Methoden
-
-Es ist wichtig, beim Senden von Ereignissen an Time Series Insights verschiedene Aspekte zu berücksichtigen. Insbesondere sollte Folgendes sichergestellt werden:
+Sie berücksichtigen beim Senden von Ereignissen an Time Series Insights verschiedene Aspekte. Diese Aspekte sind immer wichtig:
 
 1. Senden Sie Daten so effizient wie möglich über das Netzwerk.
 1. Stellen Sie sicher, dass Ihre Daten in einer Weise gespeichert werden, die das Ausführen geeigneter Aggregationen für Ihr Szenario ermöglichen.
@@ -38,8 +37,8 @@ Es ist wichtig, beim Senden von Ereignissen an Time Series Insights verschiedene
 
 Die folgenden Richtlinien unterstützen Sie dabei, die bestmögliche Abfrageleistung zu erzielen:
 
-1. Verwenden Sie keine dynamischen Eigenschaften wie z.B. eine Tag-ID als Eigenschaftenname, weil hierdurch die Limits für die maximal zulässige Anzahl von Eigenschaften schneller erreicht werden.
-1. Senden Sie keine unnötigen Eigenschaften. Wenn eine Abfrageeigenschaft nicht benötigt wird, sollte sie nicht gesendet werden, um Speicherengpässe zu vermeiden.
+1. Verwenden Sie dynamische Eigenschaften (z.B. einer Transponder-ID) nicht als Eigenschaftenname. Diese Vorgehensweise trägt dazu bei, die maximale Eigenschaftsgrenze zu erreichen.
+1. Senden Sie keine unnötigen Eigenschaften. Wenn eine Abfrageeigenschaft nicht benötigt wird, sollte sie nicht gesendet werden. Auf diese Weise vermeiden Sie Speicherengpässe.
 1. Verwenden Sie [Verweisdaten](time-series-insights-add-reference-data-set.md), um das Senden von statischen Daten über das Netzwerk zu vermeiden.
 1. Verwenden Sie Dimensionseigenschaften für mehrere Ereignisse gemeinsam, um Daten effizienter über das Netzwerk zu senden.
 1. Verwenden Sie keine tiefe Arrayschachtelung. Time Series Insights unterstützt bis zu zwei Ebenen für geschachtelte Arrays, die Objekte enthalten. Time Series Insights sorgt für flache Arrays in Nachrichten, indem eine Aufteilung in mehrere Ereignisse mit Eigenschaft-Wert-Paaren durchgeführt wird.
@@ -49,14 +48,14 @@ Die folgenden Richtlinien unterstützen Sie dabei, die bestmögliche Abfrageleis
 
 Die folgenden zwei Beispiele veranschaulichen das Senden von Ereignissen, um die zuvor genannten Empfehlungen zu verdeutlichen. Im Anschluss an jedes Beispiel können Sie sehen, wie die Empfehlungen umgesetzt wurden.
 
-Die Beispiele basieren auf einem Szenario, in dem mehrere Geräte Messungen oder Signale senden. Bei diesen Messungen oder Signalen kann es sich um Werte wie Flussrate, Öldruck, Temperatur und Feuchtigkeit handeln. Im ersten Beispiel liegen einige wenige Messungen vor, die auf alle Geräte verteilt sind. Im zweiten Beispiel sind viele Geräte vorhanden, von denen jedes zahlreiche eindeutige Messungen sendet.
+Die Beispiele basieren auf einem Szenario, in dem mehrere Geräte Messungen oder Signale senden. Bei diesen Messungen oder Signalen kann es sich um Werte wie Flussrate, Öldruck, Temperatur und Feuchtigkeit handeln. Im ersten Beispiel liegen einige wenige Messungen vor, die auf alle Geräte verteilt sind. Im zweiten Beispiel sind zahlreiche Geräte vorhanden, von denen jedes zahlreiche eindeutige Messungen sendet.
 
-## <a name="scenario-one-only-a-few-measurements-exist"></a>1. Szenario: Nur wenige Messungen sind vorhanden.
+## <a name="scenario-one-only-a-few-measurements-exist"></a>Szenario 1: Es sind nur wenige Messungen vorhanden.
 
 > [!TIP]
-> **Empfehlung:** Senden Sie jede Messung und jedes Signal als separate Eigenschaft bzw. Spalte.
+> Es wird empfohlen, jede Messung und jedes Signal als separate Eigenschaft bzw. Spalte zu senden.
 
-Im folgenden Beispiel wird eine einzelne IoT Hub-Nachricht verwendet, bei der das äußere Array einen gemeinsam verwendeten Abschnitt für allgemeine Dimensionswerte enthält. Das äußere Array verwendet Verweisdaten, um die Effizienz der Nachricht zu erhöhen. Verweisdaten enthalten Gerätemetadaten, die sich nicht bei jedem Ereignis ändern, aber nützliche Eigenschaften für die Datenanalyse bereitstellen. Sowohl durch die Batchverarbeitung allgemeiner Dimensionswerte als auch durch die Verwendung von Verweisdaten werden beim Senden der Nachricht über das Netzwerk Bytes eingespart und somit die Effizienz gesteigert.
+Im folgenden Beispiel wird eine einzelne Azure IoT Hub-Nachricht verwendet, bei der das äußere Array einen gemeinsam verwendeten Abschnitt für allgemeine Dimensionswerte enthält. Das äußere Array verwendet Verweisdaten, um die Effizienz der Nachricht zu erhöhen. Verweisdaten enthalten Gerätemetadaten, die sich nicht bei jedem Ereignis ändern, aber nützliche Eigenschaften für die Datenanalyse bereitstellen. Durch Batchverarbeitung allgemeiner Dimensionswerte und Verwendung von Verweisdaten werden beim Senden der Nachricht über das Netzwerk Bytes eingespart, und die Effizienz wird somit gesteigert.
 
 Beispiel-JSON-Nutzlast:
 
@@ -89,14 +88,14 @@ Beispiel-JSON-Nutzlast:
 ]
 ```
 
-* Verweisdatentabelle (Schlüsseleigenschaft ist **deviceID**):
+* Verweisdatentabelle mit Schlüsseleigenschaft **deviceID**:
 
    | deviceId | messageId | deviceLocation |
    | --- | --- | --- |
    | FXXX | LINE\_DATA | EU |
    | FYYY | LINE\_DATA | US |
 
-* Time Series Insights-Ereignistabelle (flache Ansicht):
+* Time Series Insights-Ereignistabelle, flache Ansicht:
 
    | deviceId | messageId | deviceLocation | timestamp | series.Flow Rate ft3/s | series.Engine Oil Pressure psi |
    | --- | --- | --- | --- | --- | --- |
@@ -104,22 +103,18 @@ Beispiel-JSON-Nutzlast:
    | FXXX | LINE\_DATA | EU | 2018-01-17T01:17:00Z | 2.445906400680542 | 49.2 |
    | FYYY | LINE\_DATA | US | 2018-01-17T01:18:00Z | 0.58015072345733643 | 22.2 |
 
-Zu den obigen Tabellen:
+Hinweise für diese beiden Tabellen:
 
-- Die Spalte **deviceId** dient als Spaltenüberschrift für die verschiedenen Geräte in einem Bestand. Eine Verwendung von „deviceID“ als eigener Eigenschaftenname hätte die Gesamtzahl der Geräte mit den fünf weiteren Spalten auf 595 (S1-Umgebungen) oder 795 (S2-Umgebungen) beschränkt.
-
-- Unnötige Eigenschaften werden vermieden, z.B. Fabrikat- und Modellinformationen usw. Da diese künftig nicht abgefragt werden, wird durch ihr Entfernen die Netzwerk- und Speichereffizienz verbessert.
-
-- Verweisdaten werden verwendet, um die Anzahl von Bytes zu verringern, die über das Netzwerk übertragen werden. Zwei Attribute (**messageId** und **deviceLocation**) werden mithilfe der Schlüsseleigenschaft **deviceId** verknüpft. Diese Daten werden zum Zeitpunkt ihres Eingangs mit den Telemetriedaten verknüpft und anschließend zur Abfrage in Time Series Insights gespeichert.
-
+- Die Spalte **deviceId** dient als Spaltenüberschrift für die verschiedenen Geräte in einem Bestand. Die Verwendung von „deviceID“ als eigener Eigenschaftenname beschränkt die Gesamtzahl der Geräte mit den fünf weiteren Spalten auf 595 (S1-Umgebungen) oder 795 (S2-Umgebungen).
+- Unnötige Eigenschaften werden vermieden, z.B. Fabrikat- und Modellinformationen. Da die Eigenschaften künftig nicht abgefragt werden, wird durch ihr Entfernen die Netzwerk- und Speichereffizienz verbessert.
+- Verweisdaten werden verwendet, um die Anzahl von Bytes zu verringern, die über das Netzwerk übertragen werden. Die beiden Attribute (**messageId** und **deviceLocation**) werden mithilfe der Schlüsseleigenschaft **deviceId** verknüpft. Diese Daten werden zum Zeitpunkt ihres Eingangs mit den Telemetriedaten verknüpft und anschließend zur Abfrage in Time Series Insights gespeichert.
 - Es werden zwei Schachtelungsebenen verwendet. Diese entsprechen der maximal zulässigen Schachtelung, die von Time Series Insights unterstützt wird. Tief verschachtelte Arrays müssen vermieden werden.
+- Messwerte werden als separate Eigenschaften innerhalb desselben Objekts gesendet, da nur wenige Messwerte vorliegen. In diesem Fall sind **series.Flow Rate psi** und **series.Engine Oil Pressure ft3/s** eindeutige Spalten.
 
-- Messwerte werden als separate Eigenschaften innerhalb desselben Objekts gesendet, weil nur wenige Messwerte vorliegen. In diesem Fall sind **series.Flow Rate psi** und **series.Engine Oil Pressure ft3/s** eindeutige Spalten.
-
-## <a name="scenario-two-several-measures-exist"></a>2. Szenario: Mehrere Messwerte sind vorhanden.
+## <a name="scenario-two-several-measures-exist"></a>Szenario 2: Es sind mehrere Messwerte vorhanden.
 
 > [!TIP]
-> **Empfehlung**: Senden Sie Messungen als "type"-, "unit"-, "value"-Tupel.
+> Es wird empfohlen, Messungen als „type“-, „unit“- und „value“-Tupel zu senden.
 
 Beispiel-JSON-Nutzlast:
 
@@ -164,7 +159,7 @@ Beispiel-JSON-Nutzlast:
 ]
 ```
 
-* Verweisdaten (Schlüsseleigenschaften sind **deviceId** und **series.tagId**):
+* Verweisdatentabelle mit den Schlüsseleigenschaften **deviceId** und **series.tagId**:
 
    | deviceId | series.tagId | messageId | deviceLocation | type | unit |
    | --- | --- | --- | --- | --- | --- |
@@ -173,36 +168,32 @@ Beispiel-JSON-Nutzlast:
    | FYYY | pumpRate | LINE\_DATA | US | Flow Rate | ft3/s |
    | FYYY | oilPressure | LINE\_DATA | US | Engine Oil Pressure | psi |
 
-* Time Series Insights-Ereignistabelle (flache Ansicht):
+* Time Series Insights-Ereignistabelle, flache Ansicht:
 
    | deviceId | series.tagId | messageId | deviceLocation | type | unit | timestamp | series.value |
    | --- | --- | --- | --- | --- | --- | --- | --- |
    | FXXX | pumpRate | LINE\_DATA | EU | Flow Rate | ft3/s | 2018-01-17T01:17:00Z | 1.0172575712203979 | 
    | FXXX | oilPressure | LINE\_DATA | EU | Engine Oil Pressure | psi | 2018-01-17T01:17:00Z | 34.7 |
    | FXXX | pumpRate | LINE\_DATA | EU | Flow Rate | ft3/s | 2018-01-17T01:17:00Z | 2.445906400680542 | 
-   | FXXX | oilPressure | LINE\_DATA | EU | Engine Oil Pressure | Psi | 2018-01-17T01:17:00Z | 49.2 |
+   | FXXX | oilPressure | LINE\_DATA | EU | Engine Oil Pressure | psi | 2018-01-17T01:17:00Z | 49.2 |
    | FYYY | pumpRate | LINE\_DATA | US | Flow Rate | ft3/s | 2018-01-17T01:18:00Z | 0.58015072345733643 |
    | FYYY | oilPressure | LINE\_DATA | US | Engine Oil Pressure | psi | 2018-01-17T01:18:00Z | 22.2 |
 
-Zu den obigen Tabellen:
+Hinweise für diese beiden Tabellen:
 
-- Die Spalten **deviceId** und **series.tagId** dienen als Spaltenüberschriften für die verschiedenen Geräte und Tags in einem Bestand. Eine Verwendung als eigenes Attribut hätte die Abfrage mit den weiteren sechs Spalten auf insgesamt 594 (S1-Umgebungen) oder 794 (S2-Umgebungen) beschränkt.
-
+- Die Spalten **deviceId** und **series.tagId** dienen als Spaltenüberschriften für die verschiedenen Geräte und Tags in einem Bestand. Eine Verwendung als eigenes Attribut beschränkt die Abfrage mit den weiteren sechs Spalten auf insgesamt 594 (für S1-Umgebungen) oder 794 (für S2-Umgebungen).
 - Unnötige Eigenschaften werden (aus dem gleichen Grund wie im ersten Beispiel) vermieden.
-
-- Verweisdaten werden verwendet, um die Anzahl von Bytes zu verringern, die über das Netzwerk übertragen werden. Dies wird durch die Einführung von **deviceId** für ein eindeutiges Paar aus **messageId** und **deviceLocation** erreicht. Für das eindeutige Paar aus **type** und **unit.** wird ein zusammengesetzter Schlüssel verwendet: **series.tagId**. Der zusammengesetzte Schlüssel ermöglicht die Verwendung des Paars aus **deviceId** und **series.tagId**, um auf vier Werte zu verweisen: **messageId, deviceLocation, type** und **unit**. Diese Daten werden zum Zeitpunkt ihres Eingangs mit den Telemetriedaten verknüpft und anschließend zur Abfrage in Time Series Insights gespeichert.
-
+- Verweisdaten werden verwendet, um die Anzahl von Bytes zu verringern, die über das Netzwerk übertragen werden. Dies wird durch die Einführung von **deviceId** für ein eindeutiges Paar aus **messageId** und **deviceLocation** erreicht. Der zusammengesetzte Schlüssel **series.tagId** wird für das eindeutige Paar aus **type** und **unit** verwendet. Der zusammengesetzte Schlüssel ermöglicht die Verwendung des Paars aus **deviceId** und **series.tagId**, um auf vier Werte zu verweisen: **messageId, deviceLocation, type** und **unit**. Diese Daten werden zur Eingangszeit mit den Telemetriedaten verknüpft. Sie werden dann für Abfragen in Time Series Insights gespeichert.
 - Es werden (aus dem gleichen Grund wie im ersten Beispiel) zwei Schachtelungsebenen verwendet.
 
 ### <a name="for-both-scenarios"></a>Für beide Szenarien
 
-Wenn Sie über eine Eigenschaft mit einer großen Anzahl möglicher Werte verfügen, werden diese am besten als eindeutige Werte innerhalb einer einzelnen Spalte gesendet, statt eine neue Spalte für jeden Wert zu erstellen. Aus den zwei vorangehenden Beispielen:
+Für eine Eigenschaft mit einer großen Anzahl möglicher Werte werden diese am besten als eindeutige Werte innerhalb einer einzelnen Spalte gesendet, anstatt eine neue Spalte für jeden Wert zu erstellen. Aus den zwei vorangehenden Beispielen:
 
-  - Im ersten Beispiel liegen einige wenige Eigenschaften mit verschiedenen Werten vor, deshalb ist es angemessen, jeweils eine separate Eigenschaft zu verwenden.
-  - Im zweiten Beispiel hingegen werden die Messwerte nicht als individuelle Eigenschaften, sondern als ein Array aus Werten/Messwerten unterhalb einer gemeinsamen series-Eigenschaft angegeben. Es wird ein neuer Schlüssel – **tagId** – gesendet, mit dem eine neue Spalte **series.tagId** in der flachen Tabelle erstellt wird. Anhand von Verweisdaten werden die neuen Eigenschaften **type** und **unit** erstellt, um das Erreichen des Eigenschaftenlimits zu verhindern.
+  - Im ersten Beispiel weisen einige wenige Eigenschaften verschiedene Werte auf, deshalb ist es angemessen, jeweils eine separate Eigenschaft zu verwenden.
+  - Im zweiten Beispiel werden die Messwerte nicht als einzelne Eigenschaften angegeben. Stattdessen bilden sie ein Array von Werten oder Messwerten unter einer gemeinsamen Reiheneigenschaft. Der neue Schlüssel (**tagId**) wird gesendet, mit dem die neue Spalte (**series.tagId**) in der flachen Tabelle erstellt wird. Die neuen Eigenschaften **type** und **unit** werden mithilfe von Verweisdaten erstellt, sodass das Eigenschaftenlimit nicht erreicht wird.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
 - Lesen Sie den Artikel [Azure Time Series Insights-Abfragesyntax](/rest/api/time-series-insights/ga-query-syntax), um mehr über die Abfragesyntax der REST-API für den TSI-Datenzugriff zu erfahren
-
-- Lesen Sie mehr über das [Strukturieren von Ereignissen](./time-series-insights-send-events.md).
+- Erfahren Sie mehr über das [Strukturieren von Ereignissen](./time-series-insights-send-events.md).

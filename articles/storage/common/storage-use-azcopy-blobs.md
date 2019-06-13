@@ -1,6 +1,6 @@
 ---
 title: Übertragen von Daten nach oder aus Azure Blob Storage mit AzCopy v10 | Microsoft-Dokumentation
-description: Dieser Artikel enthält eine Sammlung von AzCopy-Beispielbefehlen, die Sie beim Erstellen von Containern, Kopieren von Dateien und Synchronisieren von Ordnern zwischen lokalen Dateisystemen und Containern unterstützen.
+description: Dieser Artikel enthält eine Auflistung von AzCopy Beispiel Befehle, mit denen Sie Container erstellen, Kopieren von Dateien und Verzeichnisse zwischen lokalen Dateisystemen und Containern zu synchronisieren.
 services: storage
 author: normesta
 ms.service: storage
@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 05/14/2019
 ms.author: normesta
 ms.subservice: common
-ms.openlocfilehash: 98e33f838ee9b6f506bf1dc01e1dd61ad587aa05
-ms.sourcegitcommit: 8c49df11910a8ed8259f377217a9ffcd892ae0ae
+ms.openlocfilehash: 140f2ec6252eac2958f236b2ffb48225fa16fe2b
+ms.sourcegitcommit: 6932af4f4222786476fdf62e1e0bf09295d723a1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/29/2019
-ms.locfileid: "66299409"
+ms.lasthandoff: 06/05/2019
+ms.locfileid: "66688055"
 ---
 # <a name="transfer-data-with-azcopy-and-blob-storage"></a>Übertragen von Daten mit AzCopy und Blob Storage
 
@@ -42,13 +42,13 @@ Sie können den AzCopy-Befehl `make` verwenden, um einen Container zu erstellen.
 
 ## <a name="upload-files"></a>Hochladen von Dateien
 
-Sie können den AzCopy-Befehl `copy` verwenden, um Dateien und Ordner von Ihrem lokalen Computer hochzuladen.
+Sie können AzCopy verwenden `copy` Befehl zum Hochladen von Dateien und Verzeichnissen auf Ihrem lokalen Computer.
 
 Dieser Abschnitt enthält folgende Beispiele:
 
 > [!div class="checklist"]
 > * Hochladen einer Datei
-> * Hochladen eines Ordners
+> * Ein Verzeichnis hochladen
 > * Hochladen von Dateien mithilfe von Platzhalterzeichen
 
 > [!NOTE]
@@ -59,53 +59,53 @@ Dieser Abschnitt enthält folgende Beispiele:
 |    |     |
 |--------|-----------|
 | **Syntax** | `azcopy cp "<local-file-path>" "https://<storage-account-name>.<blob or dfs>.core.windows.net/<container-name>/<blob-name>"` |
-| **Beispiel** | `azcopy copy "C:\myFolder\myTextFile.txt" "https://mystorageaccount.blob.core.windows.net/mycontainer/myTextFile.txt"` |
-| **Beispiel** (hierarchischer Namespace) | `azcopy copy "C:\myFolder\myTextFile.txt" "https://mystorageaccount.dfs.core.windows.net/mycontainer/myTextFile.txt"` |
+| **Beispiel** | `azcopy copy "C:\myDirectory\myTextFile.txt" "https://mystorageaccount.blob.core.windows.net/mycontainer/myTextFile.txt"` |
+| **Beispiel** (hierarchischer Namespace) | `azcopy copy "C:\myDirectory\myTextFile.txt" "https://mystorageaccount.dfs.core.windows.net/mycontainer/myTextFile.txt"` |
 
 > [!NOTE]
 > AzCopy lädt Daten standardmäßig in Blockblobs hoch. Um Dateien als Anfügeblobs oder Seitenblobs hochzuladen, verwenden Sie das Flag `--blob-type=[BlockBlob|PageBlob|AppendBlob]`.
 
-### <a name="upload-a-folder"></a>Hochladen eines Ordners
+### <a name="upload-a-directory"></a>Ein Verzeichnis hochladen
 
-Dieses Beispiel kopiert einen Ordner (sowie alle in diesem Ordner enthaltenen Dateien) in einen Blobcontainer. Das Resultat ist ein gleichnamiger Ordner im Container.
-
-|    |     |
-|--------|-----------|
-| **Syntax** | `azcopy copy "<local-folder-path>" "https://<storage-account-name>.<blob or dfs>.core.windows.net/<container-name>" --recursive` |
-| **Beispiel** | `azcopy copy "C:\myFolder" "https://mystorageaccount.blob.core.windows.net/mycontainer" --recursive` |
-| **Beispiel** (hierarchischer Namespace) | `azcopy copy "C:\myFolder" "https://mystorageaccount.dfs.core.windows.net/mycontainer" --recursive` |
-
-Um einen Ordner im Container zu kopieren, geben Sie einfach den Namen des Ordners in Ihrer Befehlszeichenfolge an.
+In diesem Beispiel kopiert ein Verzeichnis (und alle Dateien in diesem Verzeichnis), in einen Blob-Container. Das Ergebnis ist ein Verzeichnis im Container mit demselben Namen.
 
 |    |     |
 |--------|-----------|
-| **Beispiel** | `azcopy copy "C:\myFolder" "https://mystorageaccount.blob.core.windows.net/mycontainer/myBlobFolder" --recursive` |
-| **Beispiel** (hierarchischer Namespace) | `azcopy copy "C:\myFolder" "https://mystorageaccount.dfs.core.windows.net/mycontainer/myBlobFolder" --recursive` |
+| **Syntax** | `azcopy copy "<local-directory-path>" "https://<storage-account-name>.<blob or dfs>.core.windows.net/<container-name>" --recursive` |
+| **Beispiel** | `azcopy copy "C:\myDirectory" "https://mystorageaccount.blob.core.windows.net/mycontainer" --recursive` |
+| **Beispiel** (hierarchischer Namespace) | `azcopy copy "C:\myDirectory" "https://mystorageaccount.dfs.core.windows.net/mycontainer" --recursive` |
 
-Wenn Sie den Namen eines Ordners angeben, der im Container nicht vorhanden ist, erstellt AzCopy einen neuen Ordner dieses Namens.
-
-### <a name="upload-the-contents-of-a-folder"></a>Hochladen der Inhalte eines Ordners
-
-Mithilfe des Platzhaltersymbols (*) können Sie die Inhalte eines Ordners hochladen, ohne den Ordner selbst zu kopieren.
+Um zu einem Verzeichnis innerhalb des Containers zu kopieren, geben Sie einfach der Name dieses Verzeichnisses, in der Befehlszeichenfolge.
 
 |    |     |
 |--------|-----------|
-| **Syntax** | `azcopy copy "<local-folder-path>\*" "https://<storage-account-name>.<blob or dfs>.core.windows.net/<container-name>/<folder-path>` |
-| **Beispiel** | `azcopy copy "C:\myFolder\*" "https://mystorageaccount.blob.core.windows.net/mycontainer/myBlobFolder"` |
-| **Beispiel** (hierarchischer Namespace) | `azcopy copy "C:\myFolder\*" "https://mystorageaccount.dfs.core.windows.net/mycontainer/myBlobFolder"` |
+| **Beispiel** | `azcopy copy "C:\myDirectory" "https://mystorageaccount.blob.core.windows.net/mycontainer/myBlobDirectory" --recursive` |
+| **Beispiel** (hierarchischer Namespace) | `azcopy copy "C:\myDirectory" "https://mystorageaccount.dfs.core.windows.net/mycontainer/myBlobDirectory" --recursive` |
+
+Wenn Sie den Namen eines Verzeichnisses, die in den Container nicht vorhanden ist angeben, erstellt AzCopy ein neues Verzeichnis mit diesem Namen.
+
+### <a name="upload-the-contents-of-a-directory"></a>Hochladen der Inhalte eines Verzeichnisses
+
+Sie können den Inhalt eines Verzeichnisses hochladen, ohne kopieren enthaltenden Verzeichnisses selbst mit dem Platzhaltersymbol (*).
+
+|    |     |
+|--------|-----------|
+| **Syntax** | `azcopy copy "<local-directory-path>\*" "https://<storage-account-name>.<blob or dfs>.core.windows.net/<container-name>/<directory-path>` |
+| **Beispiel** | `azcopy copy "C:\myDirectory\*" "https://mystorageaccount.blob.core.windows.net/mycontainer/myBlobDirectory"` |
+| **Beispiel** (hierarchischer Namespace) | `azcopy copy "C:\myDirectory\*" "https://mystorageaccount.dfs.core.windows.net/mycontainer/myBlobDirectory"` |
 
 > [!NOTE]
-> Fügen Sie das Flag `--recursive` an, um Dateien in allen Unterordnern hochzuladen.
+> Fügen Sie der `--recursive` Flag zum Hochladen von Dateien in allen untergeordneten Verzeichnissen.
 
 ## <a name="download-files"></a>Herunterladen von Dateien
 
-Sie können den AzCopy-Befehl `copy` verwenden, um Blobs, Ordner und Container auf Ihren lokalen Computer herunterzuladen.
+Sie können AzCopy verwenden `copy` Befehl zum Herunterladen von Blobs, Containern und Verzeichnisse auf Ihrem lokalen Computer.
 
 Dieser Abschnitt enthält folgende Beispiele:
 
 > [!div class="checklist"]
 > * Herunterladen einer Datei
-> * Herunterladen eines Ordners
+> * Laden Sie ein Verzeichnis herunter.
 > * Herunterladen von Dateien mithilfe von Platzhalterzeichen
 
 > [!NOTE]
@@ -116,33 +116,33 @@ Dieser Abschnitt enthält folgende Beispiele:
 |    |     |
 |--------|-----------|
 | **Syntax** | `azcopy copy "https://<storage-account-name>.<blob or dfs>.core.windows.net/<container-name>/<blob-path>" "<local-file-path>"` |
-| **Beispiel** | `azcopy copy "https://mystorageaccount.blob.core.windows.net/mycontainer/myTextFile.txt" "C:\myFolder\myTextFile.txt"` |
-| **Beispiel** (hierarchischer Namespace) | `azcopy copy "https://mystorageaccount.dfs.core.windows.net/mycontainer/myTextFile.txt" "C:\myFolder\myTextFile.txt"` |
+| **Beispiel** | `azcopy copy "https://mystorageaccount.blob.core.windows.net/mycontainer/myTextFile.txt" "C:\myDirectory\myTextFile.txt"` |
+| **Beispiel** (hierarchischer Namespace) | `azcopy copy "https://mystorageaccount.dfs.core.windows.net/mycontainer/myTextFile.txt" "C:\myDirectory\myTextFile.txt"` |
 
-### <a name="download-a-folder"></a>Herunterladen eines Ordners
+### <a name="download-a-directory"></a>Laden Sie ein Verzeichnis herunter.
 
 |    |     |
 |--------|-----------|
-| **Syntax** | `azcopy copy "https://<storage-account-name>.<blob or dfs>.core.windows.net/<container-name>/<folder-path>" "<local-folder-path>" --recursive` |
-| **Beispiel** | `azcopy copy "https://mystorageaccount.blob.core.windows.net/mycontainer/myBlobFolder "C:\myFolder"  --recursive` |
-| **Beispiel** (hierarchischer Namespace) | `azcopy copy "https://mystorageaccount.dfs.core.windows.net/mycontainer/myBlobFolder "C:\myFolder"  --recursive` |
+| **Syntax** | `azcopy copy "https://<storage-account-name>.<blob or dfs>.core.windows.net/<container-name>/<directory-path>" "<local-directory-path>" --recursive` |
+| **Beispiel** | `azcopy copy "https://mystorageaccount.blob.core.windows.net/mycontainer/myBlobDirectory "C:\myDirectory"  --recursive` |
+| **Beispiel** (hierarchischer Namespace) | `azcopy copy "https://mystorageaccount.dfs.core.windows.net/mycontainer/myBlobDirectory "C:\myDirectory"  --recursive` |
 
-Dieses Beispiel erstellt einen Ordner namens `C:\myFolder\myBlobFolder`, der alle heruntergeladenen Dateien enthält.
+In diesem Beispiel führt ein Verzeichnis namens `C:\myDirectory\myBlobDirectory` , die alle der heruntergeladenen Dateien enthält.
 
-### <a name="download-the-contents-of-a-folder"></a>Herunterladen der Inhalte eines Ordners
+### <a name="download-the-contents-of-a-directory"></a>Laden Sie den Inhalt eines Verzeichnisses
 
-Mithilfe des Platzhaltersymbols (*) können Sie die Inhalte eines Ordners herunterladen, ohne den Ordner selbst zu kopieren.
+Sie können den Inhalt eines Verzeichnisses herunterladen, ohne selbst enthaltenden Verzeichnisses mithilfe das Platzhaltersymbol (*) kopieren.
 
 > [!NOTE]
 > Dieses Szenario wird derzeit nur für Konten unterstützt, die keinen hierarchischen Namespace besitzen.
 
 |    |     |
 |--------|-----------|
-| **Syntax** | `azcopy copy "https://<storage-account-name>.blob.core.windows.net/<container-name>/*" "<local-folder-path>/"` |
-| **Beispiel** | `azcopy copy "https://mystorageaccount.blob.core.windows.net/mycontainer/myBlobFolder/*" "C:\myFolder"` |
+| **Syntax** | `azcopy copy "https://<storage-account-name>.blob.core.windows.net/<container-name>/*" "<local-directory-path>/"` |
+| **Beispiel** | `azcopy copy "https://mystorageaccount.blob.core.windows.net/mycontainer/myBlobDirectory/*" "C:\myDirectory"` |
 
 > [!NOTE]
-> Fügen Sie das Flag `--recursive` an, um Dateien in allen Unterordnern herunterzuladen.
+> Fügen Sie der `--recursive` Flag zum Herunterladen von Dateien in allen untergeordneten Verzeichnissen.
 
 ## <a name="copy-blobs-between-storage-accounts"></a>Kopieren von Blobs zwischen Speicherkonten
 
@@ -157,9 +157,9 @@ Dieser Abschnitt enthält folgende Beispiele:
 
 > [!div class="checklist"]
 > * Kopieren eines Blobs in ein anderes Speicherkonto
-> * Kopieren eines Ordners in ein anderes Speicherkonto
+> * Kopieren eines Verzeichnisses in ein anderes Speicherkonto
 > * Kopieren eines Containers in ein anderes Speicherkonto
-> * Kopieren aller Container, Ordner und Dateien in ein anderes Speicherkonto
+> * Kopieren Sie alle Container, Verzeichnisse und Dateien in ein anderes Speicherkonto
 
 ### <a name="copy-a-blob-to-another-storage-account"></a>Kopieren eines Blobs in ein anderes Speicherkonto
 
@@ -168,12 +168,12 @@ Dieser Abschnitt enthält folgende Beispiele:
 | **Syntax** | `azcopy cp "https://<source-storage-account-name>.blob.core.windows.net/<container-name>/<blob-path>" "https://<destination-storage-account-name>.blob.core.windows.net/<container-name>/<blob-path>"` |
 | **Beispiel** | `azcopy cp "https://mysourceaccount.blob.core.windows.net/mycontainer/myTextFile.txt" "https://mydestinationaccount.blob.core.windows.net/mycontainer/myTextFile.txt"` |
 
-### <a name="copy-a-folder-to-another-storage-account"></a>Kopieren eines Ordners in ein anderes Speicherkonto
+### <a name="copy-a-directory-to-another-storage-account"></a>Kopieren eines Verzeichnisses in ein anderes Speicherkonto
 
 |    |     |
 |--------|-----------|
-| **Syntax** | `azcopy cp "https://<source-storage-account-name>.blob.core.windows.net/<container-name>/<folder-path>" "https://<destination-storage-account-name>.blob.core.windows.net/<container-name>/<folder-path>" --recursive` |
-| **Beispiel** | `azcopy cp "https://mysourceaccount.blob.core.windows.net/mycontainer/myBlobFolder" "https://mydestinationaccount.blob.core.windows.net/mycontainer/myBlobFolder" --recursive` |
+| **Syntax** | `azcopy cp "https://<source-storage-account-name>.blob.core.windows.net/<container-name>/<directory-path>" "https://<destination-storage-account-name>.blob.core.windows.net/<container-name>/<directory-path>" --recursive` |
+| **Beispiel** | `azcopy cp "https://mysourceaccount.blob.core.windows.net/mycontainer/myBlobDirectory" "https://mydestinationaccount.blob.core.windows.net/mycontainer/myBlobDirectory" --recursive` |
 
 ### <a name="copy-a-containers-to-another-storage-account"></a>Kopieren eines Containers in ein anderes Speicherkonto
 
@@ -182,7 +182,7 @@ Dieser Abschnitt enthält folgende Beispiele:
 | **Syntax** | `azcopy cp "https://<source-storage-account-name>.blob.core.windows.net/<container-name>" "https://<destination-storage-account-name>.blob.core.windows.net/<container-name>" --recursive` |
 | **Beispiel** | `azcopy cp "https://mysourceaccount.blob.core.windows.net/mycontainer" "https://mydestinationaccount.blob.core.windows.net/mycontainer" --recursive` |
 
-### <a name="copy-all-containers-folders-and-files-to-another-storage-account"></a>Kopieren aller Container, Ordner und Dateien in ein anderes Speicherkonto
+### <a name="copy-all-containers-directories-and-files-to-another-storage-account"></a>Kopieren Sie alle Container, Verzeichnisse und Dateien in ein anderes Speicherkonto
 
 |    |     |
 |--------|-----------|
@@ -196,7 +196,7 @@ Sie können die Inhalte eines lokalen Dateisystems mit einem Blobcontainer synch
 > [!NOTE]
 > Das aktuelle Release von AzCopy synchronisiert nicht zwischen anderen Quellen und Zielen (beispielsweise: Dateispeicher oder Amazon Web Services (AWS) S3-Buckets).
 
-Der Befehl `sync` vergleicht Dateinamen und die Zeitstempel der letzten Änderung. Legen Sie das optionale Flag `--delete-destination` auf den Wert `true` oder `prompt` fest, um Dateien im Zielordner zu löschen, wenn diese im Quellordner nicht mehr vorhanden sind.
+Der Befehl `sync` vergleicht Dateinamen und die Zeitstempel der letzten Änderung. Legen Sie die `--delete-destination` optionales Kennzeichen auf einen Wert von `true` oder `prompt` zum Löschen von Dateien im Zielverzeichnis, wenn diese Dateien nicht mehr im Quellverzeichnis vorhanden sind.
 
 Wenn Sie das `--delete-destination`-Flag auf `true` festlegen, löscht AzCopy Dateien, ohne zur Bestätigung aufzufordern. Wenn eine Bestätigungsaufforderung angezeigt werden soll, bevor AzCopy eine Datei löscht, legen Sie das `--delete-destination`-Flag auf `prompt` fest.
 
@@ -209,9 +209,9 @@ In diesem Fall ist das lokale Dateisystem die Quelle, und der Container ist das 
 
 |    |     |
 |--------|-----------|
-| **Syntax** | `azcopy sync "<local-folder-path>" "https://<storage-account-name>.<blob or dfs>.core.windows.net/<container-name>" --recursive` |
-| **Beispiel** | `azcopy sync "C:\myFolder" "https://mystorageaccount.blob.core.windows.net/mycontainer" --recursive` |
-| **Beispiel** (hierarchischer Namespace) | `azcopy sync "C:\myFolder" "https://<storage-account-name>.dfs.core.windows.net/mycontainer" --recursive` |
+| **Syntax** | `azcopy sync "<local-directory-path>" "https://<storage-account-name>.<blob or dfs>.core.windows.net/<container-name>" --recursive` |
+| **Beispiel** | `azcopy sync "C:\myDirectory" "https://mystorageaccount.blob.core.windows.net/mycontainer" --recursive` |
+| **Beispiel** (hierarchischer Namespace) | `azcopy sync "C:\myDirectory" "https://<storage-account-name>.dfs.core.windows.net/mycontainer" --recursive` |
 
 
 ### <a name="synchronize-a-local-file-system-to-a-container"></a>Synchronisieren eines lokalen Dateisystem mit einem Container
@@ -220,9 +220,9 @@ In diesem Fall ist der Container die Quelle, und das lokale Dateisystem ist das 
 
 |    |     |
 |--------|-----------|
-| **Syntax** | `azcopy sync "https://<storage-account-name>.<blob or dfs>.core.windows.net/<container-name>" "C:\myFolder" --recursive` |
-| **Beispiel** | `azcopy sync "https://mystorageaccount.blob.core.windows.net/mycontainer" "C:\myFolder" --recursive` |
-| **Beispiel** (hierarchischer Namespace) | `azcopy sync "https://mystorageaccount.dfs.core.windows.net/mycontainer" "C:\myFolder" --recursive` |
+| **Syntax** | `azcopy sync "https://<storage-account-name>.<blob or dfs>.core.windows.net/<container-name>" "C:\myDirectory" --recursive` |
+| **Beispiel** | `azcopy sync "https://mystorageaccount.blob.core.windows.net/mycontainer" "C:\myDirectory" --recursive` |
+| **Beispiel** (hierarchischer Namespace) | `azcopy sync "https://mystorageaccount.dfs.core.windows.net/mycontainer" "C:\myDirectory" --recursive` |
 
 ## <a name="next-steps"></a>Nächste Schritte
 

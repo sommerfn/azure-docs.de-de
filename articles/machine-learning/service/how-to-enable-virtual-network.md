@@ -10,12 +10,12 @@ ms.reviewer: jmartens
 ms.author: aashishb
 author: aashishb
 ms.date: 01/08/2019
-ms.openlocfilehash: c1006aa21b3009bb7508c7a24ab501d39737261c
-ms.sourcegitcommit: 59fd8dc19fab17e846db5b9e262a25e1530e96f3
+ms.openlocfilehash: 48c59ddc1e203030bd967911d536930cb94761d3
+ms.sourcegitcommit: 8e76be591034b618f5c11f4e66668f48c090ddfd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/21/2019
-ms.locfileid: "65978220"
+ms.lasthandoff: 05/29/2019
+ms.locfileid: "66356177"
 ---
 # <a name="securely-run-experiments-and-inference-inside-an-azure-virtual-network"></a>Sicheres Ausf체hren von Experimenten und Ziehen von R체ckschl체ssen innerhalb eines virtuellen Azure-Netzwerks
 
@@ -141,7 +141,7 @@ Wenn Sie die benutzerdefinierten Routen hinzuf체gen, definieren Sie die Route f�
 
 ![Beispiel f체r eine benutzerdefinierte Route f체r ein Adresspr채fix](./media/how-to-enable-virtual-network/user-defined-route.png)
 
-Weitere Informationen finden Sie im Artikel [Erstellen eines Azure Batch-Pools in einem virtuellen Netzwerk](/azure/batch/batch-virtual-network.md#user-defined-routes-for-forced-tunneling).
+Weitere Informationen finden Sie im Artikel [Erstellen eines Azure Batch-Pools in einem virtuellen Netzwerk](../../batch/batch-virtual-network.md#user-defined-routes-for-forced-tunneling).
 
 ### <a name="create-machine-learning-compute-in-a-virtual-network"></a>Erstellen von Machine Learning Compute in einem virtuellen Netzwerk
 

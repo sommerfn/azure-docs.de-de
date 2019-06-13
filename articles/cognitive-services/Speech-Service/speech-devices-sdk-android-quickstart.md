@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 05/02/2019
 ms.author: erhopf
-ms.openlocfilehash: 073166a594088bca04d81883247a5880fcbd1cb7
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.openlocfilehash: bd0160073898a5a83af2e7b2bba2dba007c04513
+ms.sourcegitcommit: ef06b169f96297396fc24d97ac4223cabcf9ac33
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/27/2019
-ms.locfileid: "66234523"
+ms.lasthandoff: 05/31/2019
+ms.locfileid: "66425661"
 ---
 # <a name="quickstart-run-the-speech-devices-sdk-sample-app-on-android"></a>Schnellstart: Ausführen der Speech Devices SDK-Beispiel-App unter Android
 
@@ -84,7 +84,7 @@ Erstellen und installieren Sie zum Überprüfen des Setups Ihres Development Kit
 
 1. Fügen Sie dem Quellcode den Abonnementschlüssel für Ihre Spracherkennung hinzu. Wenn Sie die Absichtserkennung ausprobieren möchten, fügen Sie auch Ihren Abonnementschlüssel für den [Language Understanding Intelligent Service (LUIS)](https://azure.microsoft.com/services/cognitive-services/language-understanding-intelligent-service/) und die Anwendungs-ID hinzu.
 
-   Für die Spracherkennung und LUIS werden Ihre Informationen in „MainActivity.java“ gespeichert:
+   Für Sprach- und LUIS geht Ihre Informationen in MainActivity.java:
 
    ```java
     // Subscription
@@ -95,7 +95,7 @@ Erstellen und installieren Sie zum Überprüfen des Setups Ihres Development Kit
     private static String LuisAppId = "<enter your LUIS AppId>";
    ```
 
-    Wenn Sie die Unterhaltungstranskription verwenden, sind Ihr Sprachschlüssel und die Regionsdaten auch in „conversation.java“ erforderlich:
+    Bei Verwendung von Konversation-Aufzeichnung wird Ihre Sprachinformationen für Schlüssel und Region auch in conversation.java erforderlich:
 
    ```java
     private static final String CTSKey = "<Conversation Transcription Service Key>";
@@ -145,7 +145,7 @@ Erstellen und installieren Sie zum Überprüfen des Setups Ihres Development Kit
 
    ![Speech-Geräte-SDK-Beispielanwendung und Optionen](media/speech-devices-sdk/qsg-8.png)
 
-1. Neu hinzugefügt wurde die Demoversion der Unterhaltungstranskription. Beginnen Sie die Transkription mit „Sitzung starten“. Standardmäßig ist jeder Benutzer ein Gast, aber wenn Sie über die Stimmsignaturen des Teilnehmers verfügen, können diese in eine Datei (/video/participants.properties) auf dem Gerät eingefügt werden. Informationen zum Generieren der Stimmsignatur finden Sie unter [Transkribieren von Konversationen (SDK)](how-to-use-conversation-transcription-service.md).
+1. Probieren Sie die neue Konversation Aufzeichnung-Demo. Beginnen Sie die Transkription mit „Sitzung starten“. Standardmäßig ist jeder Gast. Jedoch wenn Sie des Teilnehmers Voice Signaturen haben sie können platziert werden in eine Datei `/video/participants.properties` auf dem Gerät. Um die Sprach-Signatur zu generieren, sehen Sie sich [transkribieren Konversationen (SDK)](how-to-use-conversation-transcription-service.md).
 
    ![Demoanwendung für die Unterhaltungstranskription](media/speech-devices-sdk/qsg-15.png)
 

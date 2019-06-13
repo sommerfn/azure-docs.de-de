@@ -5,14 +5,14 @@ services: container-service
 author: iainfoulds
 ms.service: container-service
 ms.topic: article
-ms.date: 05/20/2019
+ms.date: 05/24/2019
 ms.author: iainfou
-ms.openlocfilehash: a85c39fbfbf629e6ba9e668d55dd905c1ce0800c
-ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
+ms.openlocfilehash: 57eacca75d711c5125a2856a7b6219cd2ec5306b
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/20/2019
-ms.locfileid: "65956355"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66242030"
 ---
 # <a name="connect-with-ssh-to-azure-kubernetes-service-aks-cluster-nodes-for-maintenance-or-troubleshooting"></a>Herstellen einer SSH-Verbindung mit Azure Kubernetes Service-Clusterknoten (AKS) zur Wartung oder Problembehandlung
 
@@ -33,18 +33,25 @@ Standardmäßig werden SSH-Schlüssel abgerufen oder generiert und dann beim Ers
 > [!NOTE]
 > Derzeit können SSH-Schlüssel Linux-Knoten nur mithilfe der Azure-Befehlszeilenschnittstelle (Azure CLI) hinzugefügt werden. Verwenden Sie, wenn Sie Windows Server-Knoten verwenden, die beim Erstellen des AKS-Clusters bereitgestellten SSH-Schlüssel, und fahren Sie mit dem Schritt [Abrufen der AKS-Knotenadresse](#get-the-aks-node-address) fort. Andernfalls können Sie [RDP-Verbindungen (Remotedesktopprotokoll) zum Herstellen einer Verbindung zu Windows Server-Knoten verwenden][aks-windows-rdp].
 
+Die Schritte zum Abrufen der privaten IP-Adresse der AKS-Knoten unterscheidet sich je nach Typ des AKS-Clusters, den Sie ausführen:
+
+* Für die meisten AKS-Cluster können Sie die folgenden Schritte ausführen, um [die IP-Adresse für normale AKS-Cluster abzurufen](#add-ssh-keys-to-regular-aks-clusters).
+* [Führen Sie die Schritte für auf VM-Skalierungsgruppen basierenden AKS-Cluster aus](#add-ssh-keys-to-virtual-machine-scale-set-based-aks-clusters), wenn Sie in AKS Previewfunktionen verwenden, die VM-Skalierungsgruppen wie mehrere Knotenpools oder Windows Server-Containerunterstützung verwenden.
+
+### <a name="add-ssh-keys-to-regular-aks-clusters"></a>Hinzufügen von SSH-Schlüsseln zu normalen AKS-Clustern
+
 Führen Sie die folgenden Schritte aus, um unter Linux einem AKS-Knoten Ihren SSH-Schlüssel hinzuzufügen:
 
-1. Rufen Sie den Ressourcengruppennamen für Ihre AKS-Clusterressourcen mit [az aks show][az-aks-show] ab. Geben Sie Ihre eigene Hauptressourcengruppe und den Namen Ihres AKS-Clusters an:
+1. Rufen Sie den Ressourcengruppennamen für Ihre AKS-Clusterressourcen mit [az aks show][az-aks-show] ab. Geben Sie Ihre eigene Hauptressourcengruppe und den Namen Ihres AKS-Clusters an. Der Clustername wird der Variablen namens *CLUSTER_RESOURCE_GROUP* zugewiesen:
 
     ```azurecli-interactive
-    az aks show --resource-group myResourceGroup --name myAKSCluster --query nodeResourceGroup -o tsv
+    CLUSTER_RESOURCE_GROUP=$(az aks show --resource-group myResourceGroup --name myAKSCluster --query nodeResourceGroup -o tsv)
     ```
 
 1. Listen Sie die virtuellen Computer in der AKS-Clusterressourcengruppe mit dem Befehl [az vm list][az-vm-list] auf. Diese virtuellen Computer sind Ihre AKS-Knoten:
 
     ```azurecli-interactive
-    az vm list --resource-group MC_myResourceGroup_myAKSCluster_eastus -o table
+    az vm list --resource-group $CLUSTER_RESOURCE_GROUP -o table
     ```
 
     Die folgende Beispielausgabe zeigt die AKS-Knoten:
@@ -59,25 +66,61 @@ Führen Sie die folgenden Schritte aus, um unter Linux einem AKS-Knoten Ihren SS
 
     ```azurecli-interactive
     az vm user update \
-      --resource-group MC_myResourceGroup_myAKSCluster_eastus \
+      --resource-group $CLUSTER_RESOURCE_GROUP \
       --name aks-nodepool1-79590246-0 \
       --username azureuser \
       --ssh-key-value ~/.ssh/id_rsa.pub
+    ```
+
+### <a name="add-ssh-keys-to-virtual-machine-scale-set-based-aks-clusters"></a>Hinzufügen von SSH-Schlüsseln zu AKS-Clustern, die auf VM-Skalierungsgruppen basieren
+
+Um Ihren SSH-Schlüssel einem Linux AKS-Knoten hinzuzufügen, der Teil einer VM-Skalierungsgruppe ist, führen Sie die folgenden Schritte aus:
+
+1. Rufen Sie den Ressourcengruppennamen für Ihre AKS-Clusterressourcen mit [az aks show][az-aks-show] ab. Geben Sie Ihre eigene Hauptressourcengruppe und den Namen Ihres AKS-Clusters an. Der Clustername wird der Variablen namens *CLUSTER_RESOURCE_GROUP* zugewiesen:
+
+    ```azurecli-interactive
+    CLUSTER_RESOURCE_GROUP=$(az aks show --resource-group myResourceGroup --name myAKSCluster --query nodeResourceGroup -o tsv)
+    ```
+
+1. Rufen Sie nun die VM-Skalierungsgruppe für Ihren AKS-Cluster mithilfe des Befehls [az vmss list][az-vmss-list] ab. Der Name der VM-Skalierungsgruppe wird der Variablen namens *SCALE_SET_NAME* zugewiesen:
+
+    ```azurecli-interactive
+    SCALE_SET_NAME=$(az vmss list --resource-group $CLUSTER_RESOURCE_GROUP --query [0].name -o tsv)
+    ```
+
+1. Um Ihre SSH-Schlüssel den Knoten in einer VM-Skalierungsgruppe hinzuzufügen, verwenden Sie den Befehl [az vmss extension set][az-vmss-extension-set]. Die Clusterressourcengruppe und der Name der VM-Skalierungsgruppe werden anhand der oben genannten Befehle bereitgestellt. Der Benutzername für die AKS-Knoten lautet standardmäßig *azureuser*. Aktualisieren Sie bei Bedarf den Speicherort Ihres eigenen öffentlichen SSH-Schlüssels, z.B. *~/.ssh/id_rsa.pub*:
+
+    ```azurecli-interactive
+    az vmss extension set  \
+        --resource-group $CLUSTER_RESOURCE_GROUP \
+        --vmss-name $SCALE_SET_NAME \
+        --name VMAccessForLinux \
+        --publisher Microsoft.OSTCExtensions \
+        --version 1.4 \
+        --protected-settings "{\"username\":\"azureuser\", \"ssh_key\":\"$(cat ~/.ssh/id_rsa.pub)\"}"
+    ```
+
+1. Wenden Sie den SSH-Schlüssel mithilfe des Befehls [az vmss update-instances][az-vmss-update-instances] auf die Knoten an:
+
+    ```azurecli-interactive
+    az vmss update-instances --instance-ids '*' \
+        --resource-group $CLUSTER_RESOURCE_GROUP \
+        --name $SCALE_SET_NAME
     ```
 
 ## <a name="get-the-aks-node-address"></a>Abrufen der AKS-Knotenadresse
 
 Die AKS-Knoten werden nicht im Internet öffentlich verfügbar gemacht. Zum Herstellen einer SSH-Verbindung mit den AKS-Knoten verwenden Sie die private IP-Adresse. Im nächsten Schritt erstellen Sie in Ihrem AKS-Cluster einen Hilfspod, mit dem Sie über SSH eine Verbindung mit dieser privaten IP-Adresse des Knotens herstellen können. Die Schritte zum Abrufen der privaten IP-Adresse der AKS-Knoten unterscheidet sich je nach Typ des AKS-Clusters, den Sie ausführen:
 
-* Für die meisten AKS-Cluster können Sie die folgenden Schritte ausführen, um [die IP-Adresse für normale AKS-Cluster abzurufen](#regular-aks-clusters).
-* [Führen Sie die Schritte für auf VM-Skalierungsgruppen basierenden AKS-Cluster aus](#virtual-machine-scale-set-based-aks-clusters), wenn Sie in AKS Previewfunktionen verwenden, die VM-Skalierungsgruppen wie mehrere Knotenpools oder Windows Server-Containerunterstützung verwenden.
+* Für die meisten AKS-Cluster können Sie die folgenden Schritte ausführen, um [die IP-Adresse für normale AKS-Cluster abzurufen](#ssh-to-regular-aks-clusters).
+* [Führen Sie die Schritte für auf VM-Skalierungsgruppen basierenden AKS-Cluster aus](#ssh-to-virtual-machine-scale-set-based-aks-clusters), wenn Sie in AKS Previewfunktionen verwenden, die VM-Skalierungsgruppen wie mehrere Knotenpools oder Windows Server-Containerunterstützung verwenden.
 
-### <a name="regular-aks-clusters"></a>Normale AKS-Cluster
+### <a name="ssh-to-regular-aks-clusters"></a>SSH für normale AKS-Cluster
 
 Zeigen Sie die private IP-Adresse eines AKS-Clusterknotens mit dem Befehl [az vm list-ip-addresses][az-vm-list-ip-addresses] an. Geben Sie den Namen Ihrer eigenen AKS-Clusterressourcengruppe an, den Sie in einem vorherigen Schritt mit [az-aks-show][az-aks-show] abgerufen haben:
 
 ```azurecli-interactive
-az vm list-ip-addresses --resource-group MC_myResourceGroup_myAKSCluster_eastus -o table
+az vm list-ip-addresses --resource-group $CLUSTER_RESOURCE_GROUP -o table
 ```
 
 Die folgende Beispielausgabe zeigt die privaten IP-Adressen der AKS-Knoten:
@@ -88,7 +131,7 @@ VirtualMachine            PrivateIPAddresses
 aks-nodepool1-79590246-0  10.240.0.4
 ```
 
-### <a name="virtual-machine-scale-set-based-aks-clusters"></a>AKS-Cluster, die auf VM-Skalierungsgruppen basieren
+### <a name="ssh-to-virtual-machine-scale-set-based-aks-clusters"></a>SSH für AKS-Cluster, die auf VM-Skalierungsgruppen basieren
 
 Listen Sie mithilfe des [kubectl get-Befehls][kubectl-get] die interne IP-Adresse der Knoten auf:
 
@@ -199,3 +242,6 @@ Wenn Sie zusätzliche Problembehandlungsdaten benötigen, können Sie [die Kubel
 [aks-windows-rdp]: rdp.md
 [ssh-nix]: ../virtual-machines/linux/mac-create-ssh-keys.md
 [ssh-windows]: ../virtual-machines/linux/ssh-from-windows.md
+[az-vmss-list]: /cli/azure/vmss#az-vmss-list
+[az-vmss-extension-set]: /cli/azure/vmss/extension#az-vmss-extension-set
+[az-vmss-update-instances]: /cli/azure/vmss#az-vmss-update-instances

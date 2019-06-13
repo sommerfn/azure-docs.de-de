@@ -7,12 +7,12 @@ ms.service: analysis-services
 ms.topic: conceptual
 ms.date: 04/26/2019
 ms.author: chlound
-ms.openlocfilehash: abbad97e29f60e5f135017cd43f9d30eba1805ca
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.openlocfilehash: 4cae93cff594ad561973f8029ea7335dc4c60263
+ms.sourcegitcommit: 8e76be591034b618f5c11f4e66668f48c090ddfd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66142691"
+ms.lasthandoff: 05/29/2019
+ms.locfileid: "66356999"
 ---
 # <a name="refresh-with-azure-automation"></a>Aktualisieren mit Azure Automation
 
@@ -26,7 +26,7 @@ Ein PowerShell-Beispielrunbook, das die Aktualisierung eines Modells veranschaul
 
 Alle Aufrufe müssen mit einem gültigen Azure Active Directory-Token (OAuth 2) authentifiziert werden.  Im Beispiel in diesem Artikel wird ein Dienstprinzipalname (Service Principal Name, SPN) für die Authentifizierung bei Azure Analysis Services verwendet.
 
-Weitere Informationen zum Erstellen eines Dienstprinzipals finden Sie unter []
+Weitere Informationen zum Erstellen eines Dienstprinzipals finden Sie unter [Erstellen eines Dienstprinzipals im Azure-Portal](../active-directory/develop/howto-create-service-principal-portal.md).
 
 ## <a name="prerequisites"></a>Voraussetzungen
 

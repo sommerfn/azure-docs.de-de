@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 05/28/2019
 ms.author: juliako
 ms.custom: seodec18
-ms.openlocfilehash: a390372587514e6ce5c9cb40df1d30cd400d9f41
-ms.sourcegitcommit: 8c49df11910a8ed8259f377217a9ffcd892ae0ae
+ms.openlocfilehash: 99aea38ec877074075eaec8cf9ab8da077901acf
+ms.sourcegitcommit: 51a7669c2d12609f54509dbd78a30eeb852009ae
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/29/2019
-ms.locfileid: "66299191"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66393107"
 ---
 # <a name="content-protection-with-dynamic-encryption"></a>Inhaltsschutz mit dynamischer Verschlüsselung
 
@@ -43,7 +43,7 @@ Für einen erfolgreichen Entwurf Ihres Inhaltsschutzsystems oder Ihrer Inhaltssc
   
    Das Beispiel veranschaulicht die folgenden Schritte:
 
-   1. Erstellen und konfigurieren Sie [Richtlinien für Inhaltsschlüssel](content-key-policy-concept.md). Wenn Sie Ihre Inhalte per DRM verschlüsseln, müssen Sie die **Richtlinie für Inhaltsschlüssel** erstellen. Diese Richtlinie ist zum Streamen oder Herunterladen in Klartext nicht erforderlich. Sie erstellen eine **Richtlinie für den Inhaltsschlüssel**, um zu konfigurieren, wie der Inhaltsschlüssel (der sicheren Zugriff auf Ihre Medienobjekte bereitstellt) an Endclients übermittelt wird.    
+   1. Erstellen und konfigurieren Sie [Richtlinien für Inhaltsschlüssel](content-key-policy-concept.md). Sie erstellen eine **Richtlinie für den Inhaltsschlüssel**, um zu konfigurieren, wie der Inhaltsschlüssel (der sicheren Zugriff auf Ihre Medienobjekte bereitstellt) an Endclients übermittelt wird.    
 
       * Definieren Sie die Autorisierung zur Lizenzbereitstellung, die die Logik der Autorisierungsprüfung basierend auf Ansprüchen in JWT angibt.
       * Konfigurieren Sie die Lizenzen [PlayReady](playready-license-template-overview.md), [Widevine](widevine-license-template-overview.md) und/oder [FairPlay](fairplay-license-overview.md). Mit den Vorlagen können Sie die Rechte und Berechtigungen für die einzelnen verwendeten DRMs konfigurieren.

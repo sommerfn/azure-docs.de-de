@@ -11,14 +11,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/22/2019
+ms.date: 06/03/2019
 ms.author: juliako
-ms.openlocfilehash: 25c0fe7a179db484f18c1aca16471e39a739052c
-ms.sourcegitcommit: 8c49df11910a8ed8259f377217a9ffcd892ae0ae
+ms.openlocfilehash: c25aef76b5559b6d00ccf60675d61ea5ea346773
+ms.sourcegitcommit: 600d5b140dae979f029c43c033757652cddc2029
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/29/2019
-ms.locfileid: "66299188"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66494352"
 ---
 # <a name="dynamic-packaging"></a>Dynamische Paketerstellung
 
@@ -114,10 +114,10 @@ Die dynamische Paketerstellung unterstützt MP4-Dateien mit Audiodaten, die folg
     * DTS Express (dtse)
     * DTS-HD Lossless ohne Core (dtsl)
 
-### <a name="hls-support"></a>HLS-Unterstützung
+### <a name="multi-audio-tracks"></a>Mit mehreren Audiospuren
 
-Die dynamische Paketerstellung unterstützt HLS (Version 4 oder höher) für Medienobjekte, die mehrere Audiospuren mit mehreren Codecs und Sprachen aufweisen.
-
+Beim streaming Assets, die mehreren Audiospuren mit mehreren Codecs und Sprachen unterstützt dynamische Paketerstellung mit mehreren Audiospuren für die Ausgabe von HLS (Version 4 oder höher).
+ 
 ### <a name="not-supported"></a>Nicht unterstützt
 
 Dateien mit [Dolby Digital](https://en.wikipedia.org/wiki/Dolby_Digital)-Audio (AC3) werden von der dynamischen Paketerstellung nicht unterstützt, da es sich dabei um einen Legacy-Codec handelt.

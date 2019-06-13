@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 05/23/2019
 ms.author: zarhoads
-ms.openlocfilehash: 63d06fbad4f50b2ef4bc85565a8d4281a99462a6
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.openlocfilehash: 76a5391cbe142851d9b1f60ea9346af2e7a35d6a
+ms.sourcegitcommit: 51a7669c2d12609f54509dbd78a30eeb852009ae
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/27/2019
-ms.locfileid: "66241427"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66392135"
 ---
 # <a name="install-applications-with-helm-in-azure-kubernetes-service-aks"></a>Installieren von Anwendungen mit Helm in Azure Kubernetes Service (AKS)
 
@@ -86,7 +86,7 @@ helm init \
     --tiller-tls-verify \
     --tls-ca-cert ca.cert.pem \
     --service-account tiller \
-      --node-selectors "beta.kubernetes.io/os"="linux"
+    --node-selectors "beta.kubernetes.io/os"="linux"
 ```
 
 ## <a name="find-helm-charts"></a>Suchen von Helm-Diagrammen
@@ -148,7 +148,9 @@ Update Complete. ⎈ Happy Helming!⎈
 Verwenden Sie zum Installieren von Diagrammen mit Helm den Befehl [helm install][helm-install], und geben Sie den Namen des zu installierenden Diagramms an. Um die Installation eines Helm-Diagramms in Aktion zu sehen, installieren wir eine grundlegende nginx-Bereitstellung mithilfe eines Helm-Diagramms. Wenn Sie TLS/SSL konfiguriert haben, fügen Sie den `--tls`-Parameter hinzu, um Ihr Helm-Clientzertifikat zu verwenden.
 
 ```console
-helm install stable/nginx-ingress --set controller.nodeSelector."beta\.kubernetes\.io/os"=linux --set defaultBackend.nodeSelector."beta\.kubernetes\.io/os"=linux
+helm install stable/nginx-ingress \
+    --set controller.nodeSelector."beta\.kubernetes\.io/os"=linux \
+    --set defaultBackend.nodeSelector."beta\.kubernetes\.io/os"=linux
 ```
 
 Die folgende verkürzte Beispielausgabe zeigt den Bereitstellungsstatus der Kubernetes-Ressource an, die vom Helm-Diagramm erstellt wurde:

@@ -9,12 +9,12 @@ ms.author: gwallace
 ms.date: 05/22/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 4df40febefa872fa52afdfaaf31b94dba7000af5
-ms.sourcegitcommit: 1aefdf876c95bf6c07b12eb8c5fab98e92948000
+ms.openlocfilehash: 871d3f6c81a5ecaa1863857258ea4327db3bf10d
+ms.sourcegitcommit: f9448a4d87226362a02b14d88290ad6b1aea9d82
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/06/2019
-ms.locfileid: "66729487"
+ms.lasthandoff: 06/07/2019
+ms.locfileid: "66808289"
 ---
 # <a name="update-management-solution-in-azure"></a>Lösung für die Updateverwaltung in Azure
 
@@ -303,7 +303,7 @@ Die Updateverwaltung verlässt sich zum Herunterladen und Installieren von Windo
 
 ### <a name="pre-download-updates"></a>Vorabdownload von Updates
 
-Um das automatische Herunterladen von Updates in einer Gruppenrichtlinie zu konfigurieren, können Sie die Einstellung [Automatische Updates konfigurieren](/windows-server/administration/windows-server-update-services/deploy/4-configure-group-policy-settings-for-automatic-updates#BKMK_comp5) auf **3** festlegen. Damit werden die erforderlichen Updates im Hintergrund heruntergeladen, aber nicht installiert. Auf diese Weise behält die Updateverwaltung die Kontrolle über die Zeitpläne, während die Updates gleichzeitig außerhalb des Wartungsfensters für die Updateverwaltung heruntergeladen werden können. Dies kann Fehler durch ein **Überschreiten des Wartungsfensters** bei der Updateverwaltung verhindern.
+Um das automatische Herunterladen von Updates in einer Gruppenrichtlinie zu konfigurieren, können Sie die Einstellung [Automatische Updates konfigurieren](/windows-server/administration/windows-server-update-services/deploy/4-configure-group-policy-settings-for-automatic-updates##configure-automatic-updates) auf **3** festlegen. Damit werden die erforderlichen Updates im Hintergrund heruntergeladen, aber nicht installiert. Auf diese Weise behält die Updateverwaltung die Kontrolle über die Zeitpläne, während die Updates gleichzeitig außerhalb des Wartungsfensters für die Updateverwaltung heruntergeladen werden können. Dies kann Fehler durch ein **Überschreiten des Wartungsfensters** bei der Updateverwaltung verhindern.
 
 Sie können dies auch mit PowerShell festlegen. Führen Sie dazu den folgenden PowerShell-Befehl auf einem System aus, auf dem Sie Updates automatisch herunterladen möchten.
 
