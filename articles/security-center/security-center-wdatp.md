@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/27/2018
 ms.author: monhaber
-ms.openlocfilehash: 8511f8987368d5746373f71e9f553013e385e0ee
-ms.sourcegitcommit: 25a60179840b30706429c397991157f27de9e886
+ms.openlocfilehash: d42b929807bf67b73d0587232608efc0cea6d717
+ms.sourcegitcommit: 45e4466eac6cfd6a30da9facd8fe6afba64f6f50
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/28/2019
-ms.locfileid: "66258495"
+ms.lasthandoff: 06/07/2019
+ms.locfileid: "66752571"
 ---
 # <a name="windows-defender-advanced-threat-protection-with-azure-security-center"></a>Windows Defender Advanced Threat Protection mit Azure Security Center
 
@@ -44,10 +44,6 @@ Diese Funktionen sind ab sofort in Azure Security Center verfügbar:
 - **Detaillierte Untersuchung des Computers**: Azure Security Center-Kunden können auf die Windows Defender ATP-Konsole zugreifen, um den Umfang einer Sicherheitsverletzung durch eine detaillierte Untersuchung zu erkennen.
 
 ![Azure Security Center zeigt eine Liste der Warnungen und allgemeine Informationen zu jeder Warnung an.](media/security-center-wdatp/image1.png)
-
-Sie können die Warnung in Azure Security Center [untersuchen](security-center-investigation.md):
-
-![Das Warnungsuntersuchungsdashboard in Azure Security Center](media/security-center-wdatp/image2.png)
 
 Sie können die Warnung weiter untersuchen, indem Sie sie in Windows Defender ATP pivotieren. Dort werden zusätzliche Informationen wie der Warnprozessbaum und die Ereignisgrafik angezeigt. Sie können auch eine detaillierte Computerzeitachse verwenden, die jedes Verhalten über einen historischen Zeitraum von bis zu sechs Monaten anzeigt.
 
@@ -97,7 +93,7 @@ Befolgen Sie die Anweisungen unter [Zuweisen von Benutzerzugriff auf das Portal]
 
 ## <a name="set-the-firewall-configuration"></a>Festlegen der Firewallkonfiguration
 
-Wenn Sie einen Proxy oder eine Firewall verwenden, der bzw. die anonymen Datenverkehr blockiert: Da ein Windows Defender ATP-Sensor aus dem Systemkontext eine Verbindung herstellt, stellen Sie sicher, dass anonymer Datenverkehr zulässig ist. Befolgen Sie die Anweisungen unter [Aktivieren des Zugriffs auf Windows Defender ATP-Dienst-URLs im Proxyserver](https://docs.microsoft.com/windows/security/threat-protection/windows-defender-atp/configure-proxy-internet-windows-defender-advanced-threat-protection#enable-access-to-windows-defender-atp-service-urls-in-the-proxy-server).
+Wenn Sie einen Proxy oder eine Firewall verwenden, der bzw. die anonymen Datenverkehr blockiert: Da ein Windows Defender ATP-Sensor aus dem Systemkontext eine Verbindung herstellt, stellen Sie sicher, dass anonymer Datenverkehr zulässig ist. Befolgen Sie die Anweisungen unter [Aktivieren des Zugriffs auf Windows Defender ATP-Dienst-URLs im Proxyserver](https://docs.microsoft.com/windows/security/threat-protection/windows-defender-atp/configure-proxy-internet-windows-defender-advanced-threat-protection#enable-access-to-microsoft-defender-atp-service-urls-in-the-proxy-server).
 
 ## <a name="test-the-feature"></a>Testen des Features
 

@@ -1,7 +1,7 @@
 ---
 title: Was sind Field Programmable Gate Arrays (FPGA)?
 titleSuffix: Azure Machine Learning service
-description: Hier erfahren Sie, wie Sie Modelle und Deep Neural Networks mit FPGAs in Azure beschleunigen. Dieser Artikel enthält eine Einführung in FPGAs (Field-Programmable Gate Arrays) und erläutert, wie Azure Machine Learning Service bei der Bereitstellung Ihres Modells in einem Azure-FPGA künstliche Intelligenz in Echtzeit bietet.
+description: Hier erfahren Sie, wie Sie Modelle und Deep Neural Networks mit FPGAs in Azure beschleunigen. Dieser Artikel enthält eine Einführung in FPGAs (Field-Programmable Gate Arrays) und erläutert, wie Azure Machine Learning Service bei der Bereitstellung Ihres Modells in einem Azure-FPGA KI in Echtzeit bietet.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -20,7 +20,7 @@ ms.locfileid: "66479566"
 ---
 # <a name="what-are-field-programmable-gate-arrays-fpga"></a>Was sind Field Programmable Gate Arrays (FPGA)?
 
-Dieser Artikel enthält eine Einführung in FPGAs (Field-Programmable Gate Arrays) und erläutert, wie Azure Machine Learning Service bei der Bereitstellung Ihres Modells in einem Azure-FPGA künstliche Intelligenz in Echtzeit bietet.
+Dieser Artikel enthält eine Einführung in FPGAs (Field-Programmable Gate Arrays) und erläutert, wie Azure Machine Learning Service bei der Bereitstellung Ihres Modells in einem Azure-FPGA KI in Echtzeit bietet.
 
 FPGAs enthalten ein Array von programmierbaren Logikblöcken sowie eine Hierarchie von neu konfigurierbaren Interconnects. Durch die Interconnects können diese Blöcke nach der Fertigung auf verschiedene Weise konfiguriert werden. Im Vergleich zu anderen Chips bieten FPGAs eine Kombination aus Programmierbarkeit und Leistung.
 

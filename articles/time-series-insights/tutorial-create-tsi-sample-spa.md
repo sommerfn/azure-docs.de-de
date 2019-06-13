@@ -8,12 +8,12 @@ ms.date: 04/25/2019
 ms.author: dpalled
 manager: cshankar
 ms.custom: seodec18
-ms.openlocfilehash: 5ee6e9aefb235feb28468798c3bd6b107f8c7c49
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.openlocfilehash: 2f25267b95e9ed5f7d5f6e6373fb9e3807927a7f
+ms.sourcegitcommit: 4cdd4b65ddbd3261967cdcd6bc4adf46b4b49b01
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/27/2019
-ms.locfileid: "66244036"
+ms.lasthandoff: 06/06/2019
+ms.locfileid: "66735347"
 ---
 # <a name="tutorial-create-an-azure-time-series-insights-single-page-web-app"></a>Tutorial: Erstellen einer einseitigen Azure Time Series Insights-Web-App
 
@@ -126,7 +126,7 @@ Vor dem Erstellen der Anwendung müssen Sie sie bei Azure AD registrieren. Durch
 
    1. Heben Sie die Auskommentierung der drei Zeilen unter dem Kommentar `"PROD RESOURCE LINKS"` auf, um die Abhängigkeiten von ENTWICKLUNG auf PRODUKTION umzustellen. Heben Sie die Auskommentierung der drei Zeilen unter dem Kommentar `"DEV RESOURCE LINKS"` auf.
 
-      [!code-javascript[head-sample](~/samples-javascript/pages/tutorial/index.html?range=2-20&highlight=10-13,15-18)]
+      [!code-html[head-sample](~/samples-javascript/pages/tutorial/index.html?range=2-20&highlight=10-13,15-18)]
 
       Ihre Abhängigkeiten sollte wie im folgenden Beispiel kommentiert sein:
 

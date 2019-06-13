@@ -8,12 +8,12 @@ ms.service: container-instances
 ms.topic: article
 ms.date: 5/13/2019
 ms.author: sajaya
-ms.openlocfilehash: 86efb6b655405500f994a5a5ec7acbd18c645004
-ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
+ms.openlocfilehash: 1400c023e43179a9c8490334e262711486c75a2d
+ms.sourcegitcommit: c05618a257787af6f9a2751c549c9a3634832c90
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/20/2019
-ms.locfileid: "65957557"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66417924"
 ---
 # <a name="frequently-asked-questions-about-azure-container-registry"></a>Häufig gestellte Fragen zu Azure Container Registry (ACR)
 
@@ -253,10 +253,11 @@ Quarantäne von Images ist derzeit eine Previewfunktion von ACR. Sie können den
 - [Neue Benutzerberechtigungen gelten nach Aktualisierung möglicherweise nicht sofort](#new-user-permissions-may-not-be-effective-immediately-after-updating)
 - [Authentifizierungsinformationen sind für direkte Aufrufe der REST-API nicht im ordnungsgemäßen Format angegeben](#authentication-information-is-not-given-in-the-correct-format-on-direct-rest-api-calls)
 - [Warum werden im Azure-Portal nicht alle meine Repositorys oder Tags angezeigt?](#why-does-the-azure-portal-not-list-all-my-repositories-or-tags)
+- [Wie erfasse ich HTTP-Ablaufverfolgungen unter Windows?](#how-do-i-collect-http-traces-on-windows)
 
 ### <a name="docker-pull-fails-with-error-nethttp-request-canceled-while-waiting-for-connection-clienttimeout-exceeded-while-awaiting-headers"></a>docker pull fails with error: net/http: request canceled while waiting for connection (Client.Timeout exceeded while awaiting headers)
 
- - Wenn dieser Fehler ein vorübergehendes Problem ist, wird eine Wiederholung erfolgreich sein. 
+ - Wenn dieser Fehler ein vorübergehendes Problem ist, wird eine Wiederholung erfolgreich sein.
  - Wenn `docker pull` kontinuierlich fehlschlägt, kann ein Problem mit dem Docker-Daemon vorliegen. Abhilfe für das Problem kann in der Regel ein Neustart des Docker-Daemons schaffen. 
  - Wenn dieses Problem nach Neustart des Docker-Daemons weiterhin auftritt, können Netzwerkprobleme auf dem Computer die Ursache sein. Um zu prüfen, ob die allgemeinen Netzwerkfunktionen auf dem Computer einwandfrei sind, rufen Sie einen Befehl wie `ping www.bing.com` auf.
  - Sie sollten für alle Docker-Clientvorgänge stets einen Wiederholungsmechanismus einrichten.
@@ -386,7 +387,29 @@ curl $redirect_url
 
 ### <a name="why-does-the-azure-portal-not-list-all-my-repositories-or-tags"></a>Warum werden im Azure-Portal nicht alle meine Repositorys oder Tags angezeigt? 
 
-Wenn Sie den Microsoft Edge als Browser verwenden, sehen Sie maximal 100 aufgeführte Repositorys oder Tags. Wenn Ihre Registrierung mehr als 100 Repositorys oder Tags enthält, empfehlen wir Ihnen, entweder Firefox oder Chrome als Browser zu verwenden, um alle aufzulisten.
+Wenn Sie den Microsoft Edge-Browser verwenden, werden maximal 100 Repositorys oder Tags aufgelistet. Wenn Ihre Registrierung mehr als 100 Repositorys oder Tags enthält, empfehlen wir Ihnen, entweder Firefox oder Chrome als Browser zu verwenden, um alle aufzulisten.
+
+### <a name="how-do-i-collect-http-traces-on-windows"></a>Wie erfasse ich HTTP-Ablaufverfolgungen unter Windows?
+
+#### <a name="prerequisites"></a>Voraussetzungen
+
+- Aktivieren Sie die Entschlüsselung von HTTPS in Fiddler: <https://docs.telerik.com/fiddler/Configure-Fiddler/Tasks/DecryptHTTPS>
+- Aktivieren Sie Docker zur Verwendung eines Proxys über die Docker-Benutzeroberfläche: <https://docs.docker.com/docker-for-windows/#proxies>
+- Setzen Sie die Einstellung nach Abschluss des Vorgangs unbedingt zurück.  Docker funktioniert nicht, wenn diese Option aktiviert ist und Fiddler nicht ausgeführt wird.
+
+#### <a name="windows-containers"></a>Windows-Container
+
+Konfigurieren des Docker-Proxys für 127.0.0.1:8888
+
+#### <a name="linux-containers"></a>Linux-Container
+
+Ermitteln Sie die IP-Adresse des virtuellen Switches des virtuellen Docker-Computers:
+
+```powershell
+(Get-NetIPAddress -InterfaceAlias "*Docker*" -AddressFamily IPv4).IPAddress
+```
+
+Konfigurieren Sie den Docker-Proxy für die Ausgabe des vorherigen Befehls und für den Port 8888 (z. B. 10.0.75.1:8888).
 
 ## <a name="tasks"></a>Aufgaben
 

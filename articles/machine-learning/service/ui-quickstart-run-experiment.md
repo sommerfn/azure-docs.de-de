@@ -9,18 +9,18 @@ ms.topic: quickstart
 author: sdgilley
 ms.author: sgilley
 ms.date: 05/02/2019
-ms.openlocfilehash: 0c492424e67853f7cb4a017fb4215d38a555a8a4
-ms.sourcegitcommit: f6c85922b9e70bb83879e52c2aec6307c99a0cac
+ms.openlocfilehash: 07b86138a95853673b5d54e272b40af41d58f418
+ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/11/2019
-ms.locfileid: "65545009"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66475946"
 ---
 # <a name="quickstart-prepare-and-visualize-data-without-writing-code-in-azure-machine-learning"></a>Schnellstart: Vorbereiten und Visualisieren von Daten in Azure Machine Learning ohne Schreiben von Code
 
-Bereiten Sie Ihre Daten auf der Visuellen Drag-&-Drop-Oberfläche in (Vorschauversion) für Azure Machine Learning vor, und visualisieren Sie sie. Die Daten, die Sie verwenden, enthalten Einträge für eine Reihe verschiedener Automobile, einschließlich Informationen wie Marke, Modell, technische Angaben und Preis.  
+Bereiten Sie Ihre Daten auf der Visuellen Drag-&-Drop-Oberfläche in (Vorschauversion) für Azure Machine Learning vor, und visualisieren Sie sie. Die Daten, die Sie verwenden, enthalten Einträge für eine Reihe verschiedener Automobile, einschließlich Informationen wie Marke, Modell, technische Angaben und Preis. Nachdem Sie diese Schnellstartanleitung abgeschlossen haben, können Sie mithilfe dieser Daten den Preis eines Autos vorhersagen. 
 
-In diesem Schnellstart untersuchen Sie Daten und bereiten sie auf:
+Bevor Sie ein Machine Learning-Modell trainieren, müssen Sie die Daten verstehen und vorbereiten.  In dieser Schnellstartanleitung führen Sie die folgenden Schritte aus:
 
 - Erstellen Ihres ersten Experiments zum Hinzufügen von Daten und Anzeigen einer Vorschau
 - Aufbereiten der Daten durch das Entfernen von fehlenden Werten
@@ -131,7 +131,7 @@ Nachdem Sie nun Ihr erstes Experiment durchgeführt haben, können Sie die Daten
 
      ![Vorschau der Daten](./media/ui-quickstart-run-experiment/preview-data.gif)
 
-1. Klicken Sie auf jede Spalte, um mehr über das Dataset zu erfahren.
+1. Klicken Sie auf jede Spalte, um weitere Informationen zum Dataset zu erhalten, und überlegen Sie, ob die Spalten hilfreich sind, um den Preis eines Autos vorherzusagen.
 
 ## <a name="prepare-data"></a>Vorbereiten von Daten
 
@@ -176,7 +176,7 @@ Entfernen Sie zunächst die Spalte **normalized-losses** vollständig.
 
 ### <a name="clean-missing-data"></a>Fehlende Daten bereinigen
 
-Fügen Sie nun ein weiteres Modul hinzu, mit dem alle verbleibenden Zeilen entfernt werden, in denen Daten fehlen.
+Wenn Sie ein Modell trainieren, müssen Sie etwas bezüglich der fehlenden Daten unternehmen.  In diesem Fall fügen Sie ein Modul hinzu, um alle restlichen Zeilen zu entfernen, in denen Daten fehlen.  
 
 1. Geben Sie im Suchfeld das Wort **Clean** ein, um nach dem Modul **Clean Missing Data** (Fehlende Daten bereinigen) zu suchen.
 
@@ -216,7 +216,7 @@ Da Sie Änderungen an den Modulen in Ihrem Experiment vorgenommen haben, hat sic
 
     Es gibt jetzt 193 Zeilen und 25 Spalten.
 
-    Wenn Sie auf **num-of-doors** klicken, sehen Sie, dass diese Spalte noch immer 2 eindeutige Werte aufweist, aber 0 fehlende Werte.  
+    Wenn Sie auf **num-of-doors** klicken, sehen Sie, dass diese Spalte noch immer 2 eindeutige Werte aufweist, aber 0 fehlende Werte. Klicken Sie auf die restlichen Spalten, um zu überprüfen, ob das Dataset noch fehlende Daten aufweist. 
 
 ## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
 
@@ -228,7 +228,7 @@ In diesem Schnellstart haben Sie Folgendes gelernt:
 
 - Erstellen Ihres ersten Experiments zum Hinzufügen von Daten und Anzeigen einer Vorschau
 - Aufbereiten der Daten durch das Entfernen von fehlenden Werten
-- Visualisieren der sich ergebenden Daten
+- Visualisieren der vorbereiteten Daten
 
 Fahren Sie mit dem folgenden Tutorial fort, um diese Daten zu verwenden, um den Preis eines Autos vorherzusagen.
 

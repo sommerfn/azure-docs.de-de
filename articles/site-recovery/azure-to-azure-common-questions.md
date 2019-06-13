@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.date: 04/29/2019
 ms.topic: conceptual
 ms.author: asgan
-ms.openlocfilehash: 1a13bda37c5bfac4efe6bd6109cb1dfcd5f7d2a9
-ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.openlocfilehash: 271e3c31c3e08d170add84ca4995f4876d4d3a33
+ms.sourcegitcommit: 45e4466eac6cfd6a30da9facd8fe6afba64f6f50
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64925669"
+ms.lasthandoff: 06/07/2019
+ms.locfileid: "66753773"
 ---
 # <a name="common-questions-azure-to-azure-disaster-recovery"></a>Häufig gestellte Fragen sind: Azure-zu-Azure-Notfallwiederherstellung
 
@@ -143,7 +143,7 @@ Ja. Wenn Sie die Aufbewahrungsdauer von 24 auf 72 Stunden erhöhen, speichert Si
 Sie stellt sicher, dass der Wiederherstellungspunkt über alle replizierten virtuellen Computer konsistent ist.
 Site Recovery bietet die Option „Multi-VM-Konsistenz“, bei deren Auswahl eine Replikationsgruppe erstellt wird, um alle zur Gruppe gehörenden Computer gemeinsam zu replizieren.
 Diese virtuellen Computer verfügen alle beim Failover über gemeinsame absturz- und anwendungskonsistente Wiederherstellungspunkte.
-Schauen Sie sich hierzu das Tutorial [Aktivieren von Multi-VM-Konsistenz](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-tutorial-enable-replication#enable-replication) an.
+Schauen Sie sich hierzu das Tutorial [Aktivieren von Multi-VM-Konsistenz](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-tutorial-enable-replication#enable-replication-for-a-vm) an.
 
 ### <a name="can-i-failover-single-virtual-machine-within-a-multi-vm-consistency-replication-group"></a>Kann für einen einzelnen virtuellen Computer in einer Replikationsgruppe für Multi-VM-Konsistenz ein Failover ausgeführt werden?
 Durch Auswahl der Option „Multi-VM-Konsistenz“ geben Sie an, dass die Anwendung von allen virtuellen Computern innerhalb einer Gruppe abhängig ist. Daher ist ein Failover für einen einzelnen virtuellen Computer nicht zulässig.

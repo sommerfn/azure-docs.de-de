@@ -8,12 +8,12 @@ ms.subservice: gateway
 ms.topic: article
 ms.date: 03/02/2019
 ms.author: alkohli
-ms.openlocfilehash: cdc1b07b93386c0225c1e6c5f570ea1247e450b5
-ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.openlocfilehash: e9092fb91ad98e6147647717e11d1a64bcff580e
+ms.sourcegitcommit: 45e4466eac6cfd6a30da9facd8fe6afba64f6f50
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64924388"
+ms.lasthandoff: 06/07/2019
+ms.locfileid: "66754179"
 ---
 # <a name="use-cases-for-azure-data-box-gateway"></a>Anwendungsfälle für Azure Data Box Gateway
 
@@ -50,7 +50,7 @@ Bevor Sie beginnen, stellen Sie sicher, dass Sie über ein Data Box Gateway-Ger�
 - Sie müssen die Daten nach dem Hochladen in die Archivspeicherebene verschieben. Sie können die Blobspeicherebene auf zwei Arten festlegen: Mit einem Azure PowerShell-Skript oder einer Azure Storage-Richtlinie für die Lebenszyklusverwaltung.  
     - Wenn Sie Azure PowerShell verwenden, befolgen Sie [diese Schritte](/azure/databox/data-box-how-to-set-data-tier#use-azure-powershell-to-set-the-blob-tier) zum Verschieben der Daten in die Archivspeicherebene.
     - Wenn Sie die Azure-Lebenszyklusverwaltung verwenden, befolgen Sie diese Schritte zum Verschieben der Daten in die Archivspeicherebene.
-        - [Registrieren](/azure/storage/common/storage-lifecycle-management-concepts#register-for-preview) Sie sich für die Vorschauversion des Diensts Bloblebenszyklus-Verwaltung, damit Sie die Archivspeicherebene verwenden können.
+        - [Registrieren](/azure/storage/common/storage-lifecycle-management-concepts) Sie sich für die Vorschauversion des Diensts Bloblebenszyklus-Verwaltung, damit Sie die Archivspeicherebene verwenden können.
         - Verwenden Sie die folgende Richtlinie zum [Archivieren von Daten bei der Erfassung](/azure/storage/blobs/storage-lifecycle-management-concepts#archive-data-at-ingest).
 - Nachdem die Blobs als Archiv gekennzeichnet sind, können sie vom Gateway nur noch geändert werden, indem sie in die heiße oder kalte Speicherebene verschoben werden. Befindet sich die Datei im lokalen Speicher, werden Änderungen an der lokalen Kopie (einschließlich Löschungen) nicht in die Archivspeicherebene hochgeladen.
 - Um Daten in der Archivspeicherebene lesen zu können, muss sie durch Ändern der Blobspeicherebene in heiß oder kalt aktiviert werden. Das [Aktualisieren der Freigabe](data-box-gateway-manage-shares.md#refresh-shares) auf dem Gateway aktiviert das Blob nicht.

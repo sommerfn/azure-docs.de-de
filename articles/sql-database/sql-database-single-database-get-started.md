@@ -9,15 +9,15 @@ ms.devlang: ''
 ms.topic: quickstart
 author: sachinpMSFT
 ms.author: ninarn
-ms.reviewer: carlrab
+ms.reviewer: carlrab, sstein
 manager: craigg
 ms.date: 04/23/2019
-ms.openlocfilehash: 3a0f3154142dc02a9ab48bc288c543b02fef46ea
-ms.sourcegitcommit: 3d4121badd265e99d1177a7c78edfa55ed7a9626
+ms.openlocfilehash: 85bbd14c8d2bcd8e3699e5f5efdae9f52acd63e5
+ms.sourcegitcommit: f9448a4d87226362a02b14d88290ad6b1aea9d82
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/30/2019
-ms.locfileid: "66389074"
+ms.lasthandoff: 06/07/2019
+ms.locfileid: "66808553"
 ---
 # <a name="quickstart-create-a-single-database-in-azure-sql-database-using-the-azure-portal"></a>Schnellstart: Erstellen einer Einzeldatenbank in Azure SQL-Datenbank über das Azure-Portal
 
@@ -137,4 +137,4 @@ Wenn Sie diese Ressourcen nicht mehr benötigen, können Sie sie wie folgt lösc
   - [Verbinden und Abfragen mit Azure Data Studio](https://docs.microsoft.com/sql/azure-data-studio/quickstart-sql-database?toc=/azure/sql-database/toc.json)
 - Informationen zum Erstellen einer Einzeldatenbank auf der bereitgestellten Computeebene mit der Azure CLI finden Sie unter [Azure CLI-Beispiele für Azure SQL-Datenbank](sql-database-cli-samples.md).
 - Informationen zum Erstellen einer Einzeldatenbank auf der bereitgestellten Computeebene mit Azure PowerShell finden Sie unter [Azure PowerShell-Beispiele für Azure SQL-Datenbank](sql-database-powershell-samples.md).
-- Informationen zum Erstellen einer Einzeldatenbank auf der serverlosen Computeebene mit Azure PowerShell finden Sie unter [Erstellen einer serverlosen Datenbank mit PowerShell](sql-database-serverless.md#create-new-serverless-database-using-powershell).
+- Informationen zum Erstellen einer Einzeldatenbank auf der serverlosen Computeebene mit Azure PowerShell finden Sie unter [Erstellen einer serverlosen Datenbank mit PowerShell](sql-database-serverless.md#create-new-database-in-serverless-compute-tier-using-powershell).

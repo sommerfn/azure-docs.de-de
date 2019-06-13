@@ -4,14 +4,14 @@ description: Eine Liste von Azure-Ressourcentypen, die in eine neue Ressourcengr
 author: tfitzmac
 ms.service: azure-resource-manager
 ms.topic: reference
-ms.date: 5/17/2019
+ms.date: 6/6/2019
 ms.author: tomfitz
-ms.openlocfilehash: dcac557f29a987ea732744c1b82f90f858623ec5
-ms.sourcegitcommit: 4c2b9bc9cc704652cc77f33a870c4ec2d0579451
+ms.openlocfilehash: 314b28edbd5770186d96fb2a2b203f26ff27bda0
+ms.sourcegitcommit: 45e4466eac6cfd6a30da9facd8fe6afba64f6f50
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/17/2019
-ms.locfileid: "65872552"
+ms.lasthandoff: 06/07/2019
+ms.locfileid: "66752349"
 ---
 # <a name="move-operation-support-for-resources"></a>Unterstützung des Verschiebevorgangs für Ressourcen
 In diesem Artikel wird aufgeführt, für welche Azure-Ressourcentypen der Verschiebevorgang unterstützt wird. Auch wenn ein Ressourcentyp den Verschiebevorgang unterstützt, kann dies bestimmten Bedingungen unterliegen, die das Verschieben der Ressource verhindern. Ausführliche Informationen über Bedingungen, die sich auf Verschiebevorgänge auswirken, finden Sie unter [Verschieben von Ressourcen in eine neue Ressourcengruppe oder ein neues Abonnement](resource-group-move-resources.md).
@@ -423,7 +423,7 @@ Um die Daten als Datei mit durch Trennzeichen getrennten Werten abzurufen, laden
 | metricalerts | Nein | Nein |
 | notificationgroups | Nein | Nein |
 | notificationrules | Nein | Nein |
-| scheduledqueryrules | Nein | Nein |
+| scheduledqueryrules | Ja | Ja |
 | webtests | Ja | Ja |
 | workbooks | Ja | Ja |
 

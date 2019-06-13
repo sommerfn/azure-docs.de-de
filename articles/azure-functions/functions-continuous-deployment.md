@@ -11,12 +11,12 @@ ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 09/25/2016
 ms.author: glenga
-ms.openlocfilehash: cb3f3ad3bb7b42429654ea4bf9b49f7e230db1da
-ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
+ms.openlocfilehash: 8fed6925d8c9341612c1f02ed20d83c492a68140
+ms.sourcegitcommit: f9448a4d87226362a02b14d88290ad6b1aea9d82
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64943880"
+ms.lasthandoff: 06/07/2019
+ms.locfileid: "66807242"
 ---
 # <a name="continuous-deployment-for-azure-functions"></a>Continuous Deployment für Azure Functions
 Mit Azure Functions können Sie Ihre Funktions-App unter Verwendung von Continuous Integration problemlos bereitstellen. Functions integriert sich in die wichtigsten Coderepositorys und Bereitstellungsquellen. Diese Integration ermöglicht einen Workflow, bei dem Funktionscodeaktualisierungen, die durch einen dieser Dienste erfolgen, die Bereitstellung in Azure auslösen. Sollten Sie noch nicht mit Azure Functions vertraut sein, sehen Sie sich zuerst die [Übersicht zu Azure Functions](functions-overview.md)an.
@@ -39,7 +39,7 @@ Bevor Sie Continuous Deployment einrichten, müssen Sie Ihre Bereitstellungsquel
 
 [!INCLUDE [functions-folder-structure](../../includes/functions-folder-structure.md)]
 
-Damit eine Bereitstellung über Azure DevOps möglich ist, müssen Sie zuerst Ihre Azure DevOps-Organisation mit Ihrem Azure-Abonnement verknüpfen. Weitere Informationen finden Sie unter [Einrichten der Abrechnung für Ihre Azure DevOps-Organisation](https://docs.microsoft.com/azure/devops/organizations/billing/set-up-billing-for-your-organization-vs?view=vsts#set-up-billing-via-the-azure-portal).
+Damit eine Bereitstellung über Azure DevOps möglich ist, müssen Sie zuerst Ihre Azure DevOps-Organisation mit Ihrem Azure-Abonnement verknüpfen. Weitere Informationen finden Sie unter [Einrichten der Abrechnung für Ihre Azure DevOps-Organisation](https://docs.microsoft.com/azure/devops/organizations/billing/set-up-billing-for-your-organization-vs#set-up-billing).
 
 ## <a name="set-up-continuous-deployment"></a>Einrichten der fortlaufenden Bereitstellung
 Gehen Sie wie folgt vor, um Continuous Deployment für eine vorhandene Funktionen-App zu konfigurieren. Die folgenden Schritte beziehen sich auf die Integration mit einem GitHub-Repository. Für Azure DevOps und andere Bereitstellungsdienste gelten jedoch ähnliche Schritte.

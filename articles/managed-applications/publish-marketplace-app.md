@@ -8,14 +8,14 @@ ms.service: managed-applications
 ms.devlang: na
 ms.topic: tutorial
 ms.tgt_pltfrm: na
-ms.date: 07/10/2018
+ms.date: 06/04/2019
 ms.author: tomfitz
-ms.openlocfilehash: 61cac49c34eb193d641a94c9a7839282289dd9c7
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 40132f67b135b0dc081180c34361047e59776b81
+ms.sourcegitcommit: 6932af4f4222786476fdf62e1e0bf09295d723a1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64572587"
+ms.lasthandoff: 06/05/2019
+ms.locfileid: "66688563"
 ---
 # <a name="azure-managed-applications-in-the-marketplace"></a>Verwaltete Azure-Anwendungen im Marketplace
 
@@ -103,6 +103,8 @@ Eine SKU wird im Marketplace unterhalb des übergeordneten Angebots angezeigt. S
 
    * **Version**: Geben Sie eine Version für das Paket ein, das Sie hochladen. Sie sollte folgendes Format aufweisen: `{number}.{number}.{number}{number}`.
    * **Paketdatei (.zip):** Dieses Paket enthält zwei erforderliche Dateien, komprimiert in einer ZIP-Datei. Bei einer Datei handelt es sich um eine Resource Manager-Vorlage, die definiert, welche Ressourcen für die verwaltete Anwendung bereitgestellt werden. Mit der anderen Datei wird die [Benutzeroberfläche](create-uidefinition-overview.md) für Kunden für die Bereitstellung der verwalteten Anwendung über das Portal definiert. Auf der Benutzeroberfläche geben Sie Elemente an, die Kunden die Angabe von Parameterwerten ermöglichen.
+   * **Mandanten-ID**: Die Mandanten-ID für den Kontozugriff
+   * **JIT-Zugriff aktivieren**: Wählen Sie **Ja** aus, um die [Just-In-Time-Zugriffssteuerung](request-just-in-time-access.md) für das Konto zu aktivieren. Bei aktivierter Option fordern Sie Zugriff auf das Kundenkonto für einen bestimmten Zeitraum an. Wählen Sie **Nein** aus, um festzulegen, dass Ihnen von den Kunden Ihrer verwalteten Anwendung dauerhaft Zugriff gewährt wird.
    * **PrincipalId:** Bei dieser Eigenschaft handelt es sich um den Azure AD-Bezeichner (Azure Active Directory) eines Benutzers, einer Benutzergruppe oder einer Anwendung, dem bzw. der Zugriff auf die Ressourcen im Kundenabonnement gewährt wird. Die Berechtigungen werden in der Rollendefinition beschrieben.
    * **Rollendefinition:** Bei dieser Eigenschaft handelt es sich um eine Liste aller integrierten Rollen der rollenbasierten Zugriffssteuerung (Role-Based Access Control, RBAC), die von Azure AD bereitgestellt werden. Sie können die Rolle auswählen, die am besten für die Verwaltung der Ressourcen im Auftrag des Kunden geeignet ist.
    * **Richtlinieneinstellungen:** Wenden Sie eine [Azure-Richtlinie](../governance/policy/overview.md) auf Ihre verwaltete Anwendung an, um Complianceanforderungen für die bereitgestellten Lösungen anzugeben. Wählen Sie aus den verfügbaren Optionen die anzuwendenden Richtlinien aus. Geben Sie als **Richtlinienparameter** eine JSON-Zeichenfolge mit den Parameterwerten an. Informationen zu Richtliniendefinitionen und zum Format der Parameterwerte finden Sie unter [Azure Policy-Beispiele](../governance/policy/samples/index.md).
@@ -117,7 +119,7 @@ Das Marketplace-Formular verlangt nach Feldern, die im [Azure Marketplace](https
 
 ### <a name="preview-subscription-ids"></a>Preview-Abonnement-IDs
 
-Geben Sie eine Liste der Azure-Abonnement-IDs ein, die auf das Angebot zugreifen können, nachdem es veröffentlicht wurde. Mithilfe dieser zugelassenen Abonnements können Sie das Angebot in der Vorschau testen, bevor es online geschaltet wird. Sie können eine Whitelist von bis zu 100 Abonnements im Partnerportal kompilieren.
+Geben Sie eine Liste der Azure-Abonnement-IDs ein, die auf das Angebot zugreifen können, nachdem es veröffentlicht wurde. Mithilfe dieser zugelassenen Abonnements können Sie das Angebot in der Vorschau testen, bevor es online geschaltet wird. Sie können eine Zulassungsliste von bis zu 100 Abonnements im Partnerportal kompilieren.
 
 ### <a name="suggested-categories"></a>Vorgeschlagene Kategorien
 

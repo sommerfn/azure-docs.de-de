@@ -10,12 +10,12 @@ ms.subservice: personalizer
 ms.topic: overview
 ms.date: 05/07/2019
 ms.author: edjez
-ms.openlocfilehash: 80e5feeccc4acc3e1f3dab6b815c8605332c7c71
-ms.sourcegitcommit: 3ced637c8f1f24256dd6ac8e180fff62a444b03c
+ms.openlocfilehash: 976830232453eee0993e64ac445c2e6a2f7e20ef
+ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/17/2019
-ms.locfileid: "65834310"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66478583"
 ---
 # <a name="personalizer-settings"></a>Einstellungen der Personalisierung
 
@@ -63,7 +63,9 @@ Stellen Sie nach dem Ändern dieser Einstellung sicher, dass Sie **Save** (Speic
 
 ### <a name="model-update-frequency"></a>Häufigkeit der Modellaktualisierung
 
-**Model update frequency** (Häufigkeit der Modellaktualisierung) legt fest, wie oft ein neues Personalisierungsmodell neu trainiert wird. 
+Vom Rangfolgeaufruf der Personalisierung wird nicht automatisch das neueste Modell verwendet, das auf der Grundlage der Relevanz-API-Aufrufe aller aktiven Ereignisse trainiert wurde. Die **Häufigkeit der Modellaktualisierung** legt fest, wie oft das vom Rangfolgeaufruf verwendete Modell aktualisiert wird. 
+
+Eine hohe Modellaktualisierungshäufigkeit ist hilfreich, wenn Veränderungen beim Benutzerverhalten genau nachverfolgt werden sollen. Beispiele wären etwa Websites mit Livenachrichten, viralen Inhalten oder Livegeboten für Produkte. In solchen Szenarien kann beispielsweise eine Frequenz von 15 Minuten verwendet werden. In den meisten Anwendungsfällen ist eine niedrigere Aktualisierungshäufigkeit sinnvoll. Eine Modellaktualisierungshäufigkeit von einer Minute empfiehlt sich beim Debuggen von Anwendungscode mit Personalisierung, bei Demos sowie beim interaktiven Testen von Machine Learning-Aspekten.
 
 ![„Model update frequency“ legt fest, wie oft ein neues Personalisierungsmodell neu trainiert wird.](media/settings/configure-model-update-frequency-settings.png)
 
@@ -77,7 +79,7 @@ Stellen Sie nach dem Ändern dieser Einstellung sicher, dass Sie **Save** (Speic
 
 ## <a name="export-the-personalizer-model"></a>Exportieren des Personalisierungsmodells
 
-Überprüfen Sie im Abschnitt für **Model and Policy** (Modell und Richtlinie) der Ressourcenverwaltung Modellerstellung und Datum der letzten Aktualisierung, und exportieren Sie das aktuelle Modell.
+Überprüfen Sie im Abschnitt für **Model and Policy** (Modell und Richtlinie) der Ressourcenverwaltung Modellerstellung und Datum der letzten Aktualisierung, und exportieren Sie das aktuelle Modell. Sie können das Azure-Portal oder die Personalisierungs-APIs verwenden, um eine Modelldatei zu Archivierungszwecken zu exportieren. 
 
 ![Exportieren des aktuellen Personalisierungsmodells](media/settings/export-current-personalizer-model.png)
 

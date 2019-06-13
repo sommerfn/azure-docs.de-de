@@ -1,6 +1,6 @@
 ---
 title: 'Tutorial: Azure Active Directory-Integration in Control | Microsoft-Dokumentation'
-description: Erfahren Sie, wie Sie das einmalige Anmelden zwischen Azure Active Directory und Control konfigurieren.
+description: Hier erfahren Sie, wie Sie das einmalige Anmelden zwischen Azure Active Directory und Continuity Control konfigurieren.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -16,18 +16,18 @@ ms.topic: tutorial
 ms.date: 05/16/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 569021d79e74bc7a5a2582741109e1094ba90de8
-ms.sourcegitcommit: 4c2b9bc9cc704652cc77f33a870c4ec2d0579451
+ms.openlocfilehash: aa66ae77ccc271e475d61b286e0f236429e40feb
+ms.sourcegitcommit: adb6c981eba06f3b258b697251d7f87489a5da33
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/17/2019
-ms.locfileid: "65874048"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66507508"
 ---
-# <a name="tutorial-integrate-control-with-azure-active-directory"></a>Tutorial: Integrieren von Control in Azure Active Directory
+# <a name="tutorial-integrate-continuity-control-with-azure-active-directory"></a>Tutorial: Integrieren von Continuity Control in Azure Active Directory
 
-In diesem Tutorial erfahren Sie, wie Sie Control in Azure Active Directory (Azure AD) integrieren. Bei der Integration von Control in Azure AD haben Sie folgende Möglichkeiten:
+In diesem Tutorial erfahren Sie, wie Sie Continuity Control in Azure Active Directory (Azure AD) integrieren. Bei der Integration von Control in Azure AD haben Sie folgende Möglichkeiten:
 
-* Steuern Sie in Azure AD, wer Zugriff auf Control hat.
+* Verwalten Sie in Azure AD, wer Zugriff auf Continuity Control hat.
 * Ermöglichen Sie es Ihren Benutzern, sich mit ihren Azure AD-Konten automatisch bei Control anzumelden.
 * Verwalten Sie Ihre Konten zentral im Azure-Portal.
 
@@ -38,7 +38,7 @@ Weitere Informationen zur Integration von SaaS-Apps in Azure AD finden Sie unter
 Für die ersten Schritte benötigen Sie Folgendes:
 
 * Ein Azure AD-Abonnement Falls Sie kein Abonnement besitzen, können Sie [hier](https://azure.microsoft.com/pricing/free-trial/) eine einmonatige kostenlose Testversion erhalten.
-* Ein Control-Abonnement, für das einmaliges Anmelden (SSO) aktiviert ist
+* Ein Continuity Control-Abonnement, für das einmaliges Anmelden (Single Sign-On, SSO) aktiviert ist
 
 ## <a name="scenario-description"></a>Beschreibung des Szenarios
 
@@ -83,7 +83,7 @@ Gehen Sie wie folgt vor, um das einmalige Anmelden von Azure AD im Azure-Portal 
     Geben Sie im Textfeld **Anmelde-URL** eine URL im folgenden Format ein: `https://<SUBDOMAIN>.continuity.net/auth/saml`
 
     > [!Note]
-    > Dieser Wert entspricht nicht dem tatsächlichen Wert. Ersetzen Sie diesen Wert durch die tatsächliche Anmelde-URL. Wenden Sie sich an das [Supportteam für den Control-Client](mailto:help@continuity.net), um diesen Wert zu erhalten. Sie können sich auch die Muster im Abschnitt **Grundlegende SAML-Konfiguration** im Azure-Portal ansehen.
+    > Dieser Wert entspricht nicht dem tatsächlichen Wert. Aktualisieren Sie den Wert mit der tatsächlichen Unterdomäne. Die SSO-Unterdomäne kann unter [Control Authentication Strategies](https://control.continuity.net/settings/account_profile#tab/security) (Control-Authentifizierungsstrategien) konfiguriert werden. Sie können sich auch die Muster im Abschnitt **Grundlegende SAML-Konfiguration** im Azure-Portal ansehen.
 
 1. Klicken Sie im Abschnitt **SAML-Signaturzertifikat** auf die Schaltfläche **Bearbeiten**, um das Dialogfeld **SAML-Signaturzertifikat** zu öffnen.
 
@@ -93,19 +93,13 @@ Gehen Sie wie folgt vor, um das einmalige Anmelden von Azure AD im Azure-Portal 
 
     ![Kopieren des Fingerabdruckwerts](common/copy-thumbprint.png)
 
-1. Kopieren Sie im Abschnitt **Control einrichten** die entsprechenden URLs gemäß Ihren Anforderungen.
+1. Kopieren Sie im Abschnitt **Control einrichten** die Anmelde-URL, und speichern Sie sie auf Ihrem Computer.
 
     ![Kopieren der Konfiguration-URLs](common/copy-configuration-urls.png)
 
-    a. Anmelde-URL
-
-    b. Azure AD-Bezeichner
-
-    c. Abmelde-URL
-
 ### <a name="configure-control-sso"></a>Konfigurieren des einmaligen Anmeldens für Control
 
-Um das einmalige Anmelden auf der Seite von **Control** zu konfigurieren, müssen Sie den **Fingerabdruckwert** und die aus dem Azure-Portal kopierten URLs an das [Control-Supportteam](mailto:help@continuity.net) senden. Es führt die Einrichtung durch, damit die SAML-SSO-Verbindung auf beiden Seiten richtig festgelegt ist.
+Zum Konfigurieren des einmaligen Anmeldens aufseiten von **Control** müssen Sie die Authentifizierungseinstellungen für einmaliges Anmelden unter [Control Authentication Strategies](https://control.continuity.net/settings/account_profile#tab/security) (Control-Authentifizierungsstrategien) aktualisieren. Aktualisieren Sie den Wert für **SAML SSO URL** (SAML-SSO-URL) mit der **Anmelde-URL** und den Wert für **Certificate Fingerprint** (Fingerabdruck des Zertifikats) mit dem **Fingerabdruckwert** aus dem Azure-Portal.
 
 ### <a name="create-an-azure-ad-test-user"></a>Erstellen eines Azure AD-Testbenutzers
 
@@ -139,7 +133,7 @@ In diesem Abschnitt ermöglichen Sie Britta Simon die Verwendung des einmaligen 
 
 ### <a name="create-control-test-user"></a>Erstellen eines Control-Testbenutzers
 
-In diesem Abschnitt erstellen Sie in Control eine Benutzerin mit dem Namen Britta Simon. Lassen Sie sich beim Hinzufügen von Benutzern auf der Control-Plattform vom  [Control-Supportteam](mailto:help@continuity.net) unterstützen. Benutzer müssen erstellt und aktiviert werden, damit Sie einmaliges Anmelden verwenden können.
+In diesem Abschnitt erstellen Sie in Control eine Benutzerin mit dem Namen Britta Simon. Lassen Sie sich beim Hinzufügen von Benutzern auf der Control-Plattform vom  [Control-Supportteam](mailto:help@continuity.net) unterstützen. Verwenden Sie den Azure AD-**Benutzernamen** von Britta Simon für die **Benutzer-ID des Identitätsanbieter** in Control. Damit Benutzer einmaliges Anmelden nutzen können, müssen sie in Control erstellt werden, und der Wert für die **Benutzer-ID des Identitätsanbieters** muss festgelegt werden.
 
 ### <a name="test-sso"></a>Testen des einmaligen Anmeldens
 

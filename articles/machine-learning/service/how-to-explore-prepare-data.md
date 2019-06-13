@@ -11,12 +11,12 @@ author: MayMSFT
 manager: cgronlun
 ms.reviewer: nibaccam
 ms.date: 05/23/2019
-ms.openlocfilehash: e692b0dc1089804b1d68b79c1a6f438f30554602
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.openlocfilehash: e29ef2616a43223ec582575ca6363f78b26e5f22
+ms.sourcegitcommit: 45e4466eac6cfd6a30da9facd8fe6afba64f6f50
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66146296"
+ms.lasthandoff: 06/07/2019
+ms.locfileid: "66753057"
 ---
 # <a name="explore-and-prepare-data-with-the-dataset-class-preview"></a>Untersuchen und Aufbereiten von Daten mit der Dataset-Klasse (Vorschau)
 
@@ -123,7 +123,7 @@ ID|FieldType.INTEGER|1.04986e+07|1.05351e+07|10,0|0.0|10,0|0.0|0.0|0.0|1.04986e+
 Fallnummer|FieldType.STRING|HZ239907|HZ278872|10,0|0.0|10,0|0.0|0.0|0.0||||||||||||||
 Date|FieldType.DATE|2016-04-04 23:56:00+00:00|2016-04-15 17:00:00+00:00|10,0|0.0|10,0|0.0|0.0|0.0||||||||||||||
 Block|FieldType.STRING|004XX S KILBOURN AVE|113XX S PRAIRIE AVE|10,0|0.0|10,0|0.0|0.0|0.0||||||||||||||
-IUCR|FieldType.INTEGER|810|1154|10,0|0.0|10,0|0.0|0.0|0.0|810|850|810|890|1.136|1153|1154|1154|1154|1058.5|137.285|18847.2|-0.785501|-1.3543
+IUCR|FieldType.INTEGER|810|1154|10,0|0.0|10,0|0.0|0.0|0.0|810|850|810|890|1\.136|1153|1154|1154|1154|1058.5|137.285|18847.2|-0.785501|-1.3543
 Primärer Typ|FieldType.STRING|DECEPTIVE PRACTICE|THEFT|10,0|0.0|10,0|0.0|0.0|0.0||||||||||||||
 BESCHREIBUNG|FieldType.STRING|BOGUS CHECK|OVER $500|10,0|0.0|10,0|0.0|0.0|0.0||||||||||||||
 Standortbeschreibung|FieldType.STRING||SCHOOL, PUBLIC, BUILDING|10,0|0.0|10,0|0.0|0.0|1.0||||||||||||||
@@ -148,7 +148,7 @@ In Datasets werden NULL-Werte, NaN-Werte und die Werte, die keinen Inhalt enthal
 
 Aus dem im vorhergehenden Abschnitt generierten Dataset-Profil können wir ersehen, dass die Spalten `Latitude` und `Longitude` einen hohen Prozentsatz an fehlenden Werten aufweisen. In diesem Beispiel berechnen wir den Mittelwert und imputieren fehlende Werte für diese beiden Spalten.
 
-Rufen Sie zunächst die neueste Definition des Datasets mit [`get_definition()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.dataset.dataset?view=azure-ml-py#get-definition-version-id-none-) ab, und verringern Sie die Daten mit [`keep_columns()`](https://docs.microsoft.com/python/api/azureml-dataprep/azureml.dataprep.dataflow?view=azure-dataprep-py#keep-columns-columns--multicolumnselection-----azureml-dataprep-api-dataflow-dataflow), sodass wir nur die Spalten anzeigen, die wir behandeln möchten.
+Rufen Sie zunächst die neueste Definition des Datasets mit [`get_definition()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.dataset.dataset?view=azure-ml-py#get-definition-version-id-none-) ab, und verringern Sie die Daten mit [`keep_columns()`](https://docs.microsoft.com/python/api/azureml-dataprep/azureml.dataprep.dataflow#keep-columns-columns--multicolumnselection--validate-column-exists--bool---false-----azureml-dataprep-api-dataflow-dataflow), sodass wir nur die Spalten anzeigen, die wir behandeln möchten.
 
 ```Python
 from azureml.core.dataset import Dataset

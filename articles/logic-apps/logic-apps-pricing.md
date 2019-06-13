@@ -10,12 +10,12 @@ ms.reviewer: estfan, LADocs
 ms.assetid: f8f528f5-51c5-4006-b571-54ef74532f32
 ms.topic: article
 ms.date: 05/22/2019
-ms.openlocfilehash: b37a6b6995df6f784b5f1b4a7a3f54d91faafc13
-ms.sourcegitcommit: cfbc8db6a3e3744062a533803e664ccee19f6d63
+ms.openlocfilehash: 20e84482b31c4da991f3fdc9c7bbf6ee0e7f902a
+ms.sourcegitcommit: 8c49df11910a8ed8259f377217a9ffcd892ae0ae
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/21/2019
-ms.locfileid: "65990194"
+ms.lasthandoff: 05/29/2019
+ms.locfileid: "66299101"
 ---
 # <a name="pricing-model-for-azure-logic-apps"></a>Preismodell für Azure Logic Apps
 
@@ -38,14 +38,14 @@ Azure Logic Apps rechnet alle Aktionen ab, die in Ihrer Logik-App ausgeführt we
 
 ## <a name="fixed-pricing-model"></a>Feststehendes Preismodell
 
-Eine [*Integrationsdienstumgebung* (Integration Service Environment, ISE)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md) ermöglicht Ihnen privates, isoliertes und dediziertes Erstellen und Ausführen von Logik-Apps, die auf Ressourcen in einem virtuellen Azure-Netzwerk zugreifen können. Für neue Logik-Apps, die in einer ISE ausgeführt werden, zahlen Sie einen festen monatlichen Preis für integrierte Aktionen und Trigger sowie für Standardconnectors.
+Eine [*Integrationsdienstumgebung* (Integration Service Environment, ISE)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md) ermöglicht Ihnen privates, isoliertes und dediziertes Erstellen und Ausführen von Logik-Apps, die auf Ressourcen in einem virtuellen Azure-Netzwerk zugreifen können. Für neue Logik-Apps, die in einer ISE ausgeführt werden, zahlen Sie einen [festen monatlichen Preis](https://azure.microsoft.com/pricing/details/logic-apps) für integrierte Aktionen und Trigger sowie für Standardconnectors.
 
-Ihre ISE enthält auch einen kostenlosen Unternehmensconnector, der eine beliebige Anzahl von Verbindungen umfassen kann. Die Nutzung für weitere Unternehmensconnectors wird basierend auf dem Preis für die Unternehmensnutzung berechnet.
+Ihre ISE enthält auch einen kostenlosen Unternehmensconnector, der eine beliebige Anzahl von *Verbindungen* umfassen kann. Die Nutzung für weitere Unternehmensconnectors wird basierend auf dem [Preis für die Unternehmensnutzung](https://azure.microsoft.com/pricing/details/logic-apps) berechnet. Nur allgemein verfügbare Unternehmensconnectors werden basierend auf dem Preis für die Unternehmensnutzung berechnet. Unternehmensconnectors der öffentlichen Vorschau werden mit der [Standardconnectorrate](https://azure.microsoft.com/pricing/details/logic-apps) in Rechnung gestellt.
 
 > [!NOTE]
 > In einer ISE wird für integrierte Trigger und Aktionen die Bezeichnung **Core** angezeigt, und diese Elemente werden in derselben ISE wie Ihre Logik-Apps ausgeführt. Standard- und Unternehmensconnectors, für die die Bezeichnung **ISE** angezeigt wird, werden in derselben ISE wie Ihre Logik-Apps ausgeführt. Connectors, für die die Bezeichnung ISE nicht angezeigt wird, werden im globalen Logic Apps-Dienst ausgeführt.
 
-Ihre ISE-Basiseinheit hat eine feste Kapazität – wenn Sie mehr Durchsatz benötigen, können Sie entweder während der Erstellung oder danach [weitere Skalierungseinheiten hinzufügen](../logic-apps/connect-virtual-network-vnet-isolated-environment.md#add-capacity). 
+Ihre ISE-Basiseinheit hat eine feste Kapazität – wenn Sie mehr Durchsatz benötigen, können Sie entweder während der Erstellung oder danach [weitere Skalierungseinheiten hinzufügen](../logic-apps/connect-virtual-network-vnet-isolated-environment.md#add-capacity). Für Logik-Apps, die in einer ISE ausgeführt werden, fallen keine Kosten für die Datenaufbewahrung an.
 
 Spezielle Preisinformationen finden Sie unter [Azure Logic Apps – Preise](https://azure.microsoft.com/pricing/details/logic-apps).
 
@@ -108,7 +108,7 @@ Spezielle Preisinformationen finden Sie unter [Azure Logic Apps – Preise](http
 
 ## <a name="data-retention"></a>Beibehaltung von Daten
 
-Alle Eingaben und Ausgaben, die während des Ausführens Ihrer Logik-App gespeichert wurden, werden entsprechend dem [Ausführungsaufbewahrungszeitraum](logic-apps-limits-and-config.md#run-duration-retention-limits) einer Logik-App in Rechnung gestellt. Spezielle Preisinformationen finden Sie unter [Azure Logic Apps – Preise](https://azure.microsoft.com/pricing/details/logic-apps).
+Mit Ausnahme von Logik-Apps, die in einer ISE (Integration Service Environment) ausgeführt werden, werden alle Eingaben und Ausgaben, die während des Ausführens Ihrer Logik-App gespeichert wurden, entsprechend dem [Ausführungsaufbewahrungszeitraum](logic-apps-limits-and-config.md#run-duration-retention-limits) einer Logik-App in Rechnung gestellt. Für Logik-Apps, die in einer ISE ausgeführt werden, fallen keine Kosten für die Datenaufbewahrung an. Spezielle Preisinformationen finden Sie unter [Azure Logic Apps – Preise](https://azure.microsoft.com/pricing/details/logic-apps).
 
 Für die Überwachung der Speichernutzung Ihrer Logik-App haben Sie folgende Möglichkeiten:
 

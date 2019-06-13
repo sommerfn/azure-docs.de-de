@@ -6,13 +6,13 @@ ms.author: tyfox
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
-ms.date: 04/26/2019
-ms.openlocfilehash: 8bcb20ec5c85c3cfa2e481a4a5848f404a2fb4eb
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.date: 06/03/2019
+ms.openlocfilehash: 9a592533a92ec724c9a332bef5fdfcf385cb7b2c
+ms.sourcegitcommit: 1aefdf876c95bf6c07b12eb8c5fab98e92948000
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64685455"
+ms.lasthandoff: 06/06/2019
+ms.locfileid: "66730685"
 ---
 # <a name="migrate-to-granular-role-based-access-for-cluster-configurations"></a>Migrieren zu präzisem rollenbasiertem Zugriff für Clusterkonfigurationen
 
@@ -20,8 +20,8 @@ Wir führen einige wichtige Änderungen ein, um differenzierteren rollenbasierte
 
 ## <a name="what-is-changing"></a>Was ändert sich?
 
-Bisher konnten Geheimnisse von Benutzern mit den [RBAC-Rollen](https://docs.microsoft.com/azure/role-based-access-control/rbac-and-directory-admin-roles) Besitzer, Mitwirkender oder Leser über die HDInsight-API abgerufen werden.
-Zukünftig können Benutzer mit der Leser-Rolle nicht mehr auf diese Geheimnisse zugreifen. Geheimnisse sind als Werte definiert, mit denen ein Zugriff mit erhöhten Rechten möglich ist, als es die Rolle eines Benutzers gestatten sollte. Dazu zählen Werte wie Clustergateway-HTTP-Anmeldeinformationen, Speicherkontenschlüssel und Datenbankanmeldeinformationen.
+Bisher konnten Geheimnisse von Clusterbenutzern mit den [RBAC-Rollen](https://docs.microsoft.com/azure/role-based-access-control/rbac-and-directory-admin-roles) „Besitzer“, „Mitwirkender“ oder „Leser“ über die HDInsight-API abgerufen werden, da sie jedem zur Verfügung standen, der die Berechtigung `*/read` besaß.
+In Zukunft wird für den Zugriff auf diese Geheimnisse die Berechtigung `Microsoft.HDInsight/clusters/configurations/*` erforderlich sein, d. h., dass Benutzer mit der Rolle „Leser“ nicht mehr darauf zugreifen können. Geheimnisse sind als Werte definiert, mit denen ein Zugriff mit erhöhten Rechten möglich ist, als es die Rolle eines Benutzers gestatten sollte. Dazu zählen Werte wie Clustergateway-HTTP-Anmeldeinformationen, Speicherkontenschlüssel und Datenbankanmeldeinformationen.
 
 Wir führen außerdem eine neue Rolle [HDInsight-Clusteroperator](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#hdinsight-cluster-operator) ein, die imstande ist, Geheimnisse ohne die Verwaltungsberechtigungen der Rollen „Mitwirkender“ oder „Besitzer“ abzurufen. Zusammenfassung:
 
@@ -41,13 +41,15 @@ Die folgenden Entitäten und Szenarien sind betroffen:
 - [API](#api): Benutzer der Endpunkte `/configurations` oder `/configurations/{configurationName}`.
 - [Azure HDInsight Tools for Visual Studio Code](#azure-hdinsight-tools-for-visual-studio-code), Version 1.1.1.1 oder niedriger
 - [Azure-Toolkit für IntelliJ](#azure-toolkit-for-intellij), Version 3.20.0 oder niedriger
+- [Azure Data Lake und Stream Analytics-Tools für Visual Studio](#azure-data-lake-and-stream-analytics-tools-for-visual-studio), niedriger als Version 2.3.9000.1.
+- [Azure-Toolkit für Eclipse](#azure-toolkit-for-eclipse), Version 3.15.0 oder niedriger.
 - [SDK für .NET](#sdk-for-net)
     - [Versionen 1.x oder 2.x](#versions-1x-and-2x): Benutzer, die die Methoden `GetClusterConfigurations`, `GetConnectivitySettings`, `ConfigureHttpSettings`, `EnableHttp` oder `DisableHttp` aus der ConfigurationsOperationsExtensions-Klasse verwenden.
     - [Versionen 3.x und höher](#versions-3x-and-up): Benutzer, die die Methoden `Get`, `Update`, `EnableHttp` oder `DisableHttp` aus der `ConfigurationsOperationsExtensions`-Klasse verwenden.
 - [SDK für Python](#sdk-for-python): Benutzer, die die Methoden `get` oder `update` aus der `ConfigurationsOperations`-Klasse verwenden.
 - [SDK für Java](#sdk-for-java): Benutzer, die die Methoden `update` oder `get` aus der `ConfigurationsInner`-Klasse verwenden.
 - [SDK für Go](#sdk-for-go): Benutzer, die die Methoden `Get` oder `Update` aus der `ConfigurationsClient`-Struktur verwenden.
-
+- [Az.HDInsight PowerShell](#azhdinsight-powershell), niedriger als Version 2.0.0.
 Die Migrationsschritte für Ihr Szenario finden Sie in den Abschnitten unten (oder verwenden Sie die Links oben).
 
 ### <a name="api"></a>API
@@ -80,6 +82,14 @@ Wenn Sie Version 1.1.1 oder niedriger verwenden, aktualisieren Sie bitte auf die
 ### <a name="azure-toolkit-for-intellij"></a>Azure Toolkit für IntelliJ
 
 Wenn Sie Version 3.20.0 oder niedriger verwenden, aktualisieren Sie bitte auf die [neueste Version des Azure Toolkit für IntelliJ-Plug-Ins](https://plugins.jetbrains.com/plugin/8053-azure-toolkit-for-intellij), um Unterbrechungen zu vermeiden.
+
+### <a name="azure-data-lake-and-stream-analytics-tools-for-visual-studio"></a>Azure Data Lake und Stream Analytics-Tools für Visual Studio
+
+Aktualisieren Sie auf Version 2.3.9000.1 oder höher von [Azure Data Lake und Stream Analytics-Tools für Visual Studio](https://marketplace.visualstudio.com/items?itemName=ADLTools.AzureDataLakeandStreamAnalyticsTools&ssr=false#overview), um Unterbrechungen zu vermeiden.  Hilfe beim Aktualisieren finden Sie in unserer Dokumentation unter [Aktualisieren von Data Lake Tools für Visual Studio](https://docs.microsoft.com/azure/hdinsight/hadoop/apache-hadoop-visual-studio-tools-get-started#update-data-lake-tools-for-visual-studio).
+
+### <a name="azure-toolkit-for-eclipse"></a>Azure-Toolkit für Eclipse
+
+Wenn Sie Version 3.15.0 oder niedriger verwenden, aktualisieren Sie bitte auf die [neueste Version des Azure-Toolkit für Eclipse](https://marketplace.eclipse.org/content/azure-toolkit-eclipse), um Unterbrechungen zu vermeiden.
 
 ### <a name="sdk-for-net"></a>SDK für .NET
 
@@ -114,7 +124,7 @@ Aktualisieren Sie auf [Version 1.0.0](https://pypi.org/project/azure-mgmt-hdinsi
 - [`ConfigurationsOperations.get`](https://docs.microsoft.com/python/api/azure-mgmt-hdinsight/azure.mgmt.hdinsight.operations.configurations_operations.configurationsoperations?view=azure-python#get-resource-group-name--cluster-name--configuration-name--custom-headers-none--raw-false----operation-config-) gibt **keine sensitiven Parameter** wie Speicherschlüssel (Kernwebsite) oder HTTP-Anmeldeinformationen (Gateway) mehr zurück.
     - Um alle Konfigurationen einschließlich der sensiblen Parameter zurückzugeben, verwenden Sie zukünftig [`ConfigurationsOperations.list`](https://docs.microsoft.com/python/api/azure-mgmt-hdinsight/azure.mgmt.hdinsight.operations.configurations_operations.configurationsoperations?view=azure-python#list-resource-group-name--cluster-name--custom-headers-none--raw-false----operation-config-).  Beachten Sie, dass Benutzer mit der Rolle „Leser“ nicht imstande sind, diese Rolle zu verwenden. Dadurch ist eine differenzierte Kontrolle der Benutzer möglich, die auf sensible Informationen für einen Cluster zugreifen können. 
     - Um lediglich HTTP-Gatewayanmeldeinformationen abzurufen, verwenden Sie [`ConfigurationsOperations.get_gateway_settings`](https://docs.microsoft.com/python/api/azure-mgmt-hdinsight/azure.mgmt.hdinsight.operations.clusters_operations.clustersoperations?view=azure-python#get-gateway-settings-resource-group-name--cluster-name--custom-headers-none--raw-false----operation-config-).
-- [`ConfigurationsOperations.update`](https://docs.microsoft.com/python/api/azure-mgmt-hdinsight/azure.mgmt.hdinsight.operations.clusters_operations.clustersoperations?view=azure-python#update-resource-group-name--cluster-name--tags-none--custom-headers-none--raw-false----operation-config-) ist mittlerweile veraltet und wurde durch [`ClusterOperationsExtensions.update_gateway_settings`](https://docs.microsoft.com/python/api/azure-mgmt-hdinsight/azure.mgmt.hdinsight.operations.clusters_operations.clustersoperations?view=azure-python#update-gateway-settings-resource-group-name--cluster-name--parameters--custom-headers-none--raw-false--polling-true----operation-config-) ersetzt.
+- [`ConfigurationsOperations.update`](https://docs.microsoft.com/python/api/azure-mgmt-hdinsight/azure.mgmt.hdinsight.operations.clusters_operations.clustersoperations?view=azure-python#update-resource-group-name--cluster-name--tags-none--custom-headers-none--raw-false----operation-config-) ist mittlerweile veraltet und wurde durch [`ClusterOperations.update_gateway_settings`](https://docs.microsoft.com/python/api/azure-mgmt-hdinsight/azure.mgmt.hdinsight.operations.clusters_operations.clustersoperations?view=azure-python#update-gateway-settings-resource-group-name--cluster-name--parameters--custom-headers-none--raw-false--polling-true----operation-config-) ersetzt.
 
 ### <a name="sdk-for-java"></a>SDK für Java
 
@@ -122,8 +132,8 @@ Aktualisieren Sie auf [Version 1.0.0](https://search.maven.org/artifact/com.micr
 
 - [`ConfigurationsInner.get`](https://docs.microsoft.com/java/api/com.microsoft.azure.management.hdinsight.v2018__06__01__preview.implementation._configurations_inner.get) gibt **keine sensitiven Parameter** wie Speicherschlüssel (Kernwebsite) oder HTTP-Anmeldeinformationen (Gateway) mehr zurück.
     - Um alle Konfigurationen einschließlich der sensiblen Parameter zurückzugeben, verwenden Sie zukünftig [`ConfigurationsInner.list`](https://docs.microsoft.com/java/api/com.microsoft.azure.management.hdinsight.v2018_06_01_preview.implementation.configurationsinner.list?view=azure-java-stable).  Beachten Sie, dass Benutzer mit der Rolle „Leser“ nicht imstande sind, diese Rolle zu verwenden. Dadurch ist eine differenzierte Kontrolle der Benutzer möglich, die auf sensible Informationen für einen Cluster zugreifen können. 
-    - Um lediglich HTTP-Gatewayanmeldeinformationen abzurufen, verwenden Sie [`ConfigurationsOperations.get_gateway_settings`](https://docs.microsoft.com/java/api/com.microsoft.azure.management.hdinsight.v2018_06_01_preview.implementation.clustersinner.getgatewaysettings?view=azure-java-stable).
-- [`ConfigurationsInner.update`](https://docs.microsoft.com/java/api/com.microsoft.azure.management.hdinsight.v2018__06__01__preview.implementation._configurations_inner.update) ist mittlerweile veraltet und wurde durch [`ClusterOperationsExtensions.update_gateway_settings`](https://docs.microsoft.com/java/api/com.microsoft.azure.management.hdinsight.v2018_06_01_preview.implementation.clustersinner.updategatewaysettings?view=azure-java-stable) ersetzt.
+    - Um lediglich HTTP-Gatewayanmeldeinformationen abzurufen, verwenden Sie [`ClustersInner.getGatewaySettings`](https://docs.microsoft.com/java/api/com.microsoft.azure.management.hdinsight.v2018_06_01_preview.implementation.clustersinner.getgatewaysettings?view=azure-java-stable).
+- [`ConfigurationsInner.update`](https://docs.microsoft.com/java/api/com.microsoft.azure.management.hdinsight.v2018__06__01__preview.implementation._configurations_inner.update) ist mittlerweile veraltet und wurde durch [`ClustersInner.updateGatewaySettings`](https://docs.microsoft.com/java/api/com.microsoft.azure.management.hdinsight.v2018_06_01_preview.implementation.clustersinner.updategatewaysettings?view=azure-java-stable) ersetzt.
 
 ### <a name="sdk-for-go"></a>SDK für Go
 
@@ -133,6 +143,15 @@ Aktualisieren Sie auf [Version 27.1.0](https://github.com/Azure/azure-sdk-for-go
     - Um alle Konfigurationen einschließlich der sensiblen Parameter zurückzugeben, verwenden Sie zukünftig [`ConfigurationsClient.list`](https://godoc.org/github.com/Azure/azure-sdk-for-go/services/preview/hdinsight/mgmt/2018-06-01-preview/hdinsight#ConfigurationsClient.List).  Beachten Sie, dass Benutzer mit der Rolle „Leser“ nicht imstande sind, diese Rolle zu verwenden. Dadurch ist eine differenzierte Kontrolle der Benutzer möglich, die auf sensible Informationen für einen Cluster zugreifen können. 
     - Um lediglich HTTP-Gatewayanmeldeinformationen abzurufen, verwenden Sie [`ClustersClient.get_gateway_settings`](https://godoc.org/github.com/Azure/azure-sdk-for-go/services/preview/hdinsight/mgmt/2018-06-01-preview/hdinsight#ClustersClient.GetGatewaySettings).
 - [`ConfigurationsClient.update`](https://godoc.org/github.com/Azure/azure-sdk-for-go/services/preview/hdinsight/mgmt/2018-06-01-preview/hdinsight#ConfigurationsClient.Update) ist mittlerweile veraltet und wurde durch [`ClustersClient.update_gateway_settings`](https://godoc.org/github.com/Azure/azure-sdk-for-go/services/preview/hdinsight/mgmt/2018-06-01-preview/hdinsight#ClustersClient.UpdateGatewaySettings) ersetzt.
+
+### <a name="azhdinsight-powershell"></a>Az.HDInsight PowerShell
+Aktualisieren Sie auf [Az PowerShell, Version 2.0.0](https://www.powershellgallery.com/packages/Az) oder höher, um Unterbrechungen zu vermeiden.  Möglicherweise sind minimale Codeänderungen erforderlich, wenn Sie eine von diesen Änderungen betroffene Methode verwenden.
+- `Grant-AzHDInsightHttpServicesAccess` ist mittlerweile veraltet und wurde durch das neue Cmdlet `Set-AzHDInsightGatewayCredential` ersetzt.
+- `Get-AzHDInsightJobOutput` wurde aktualisiert, um den detaillierten rollenbasierten Zugriff auf den Speicherschlüssel zu unterstützen.
+    - Benutzer mit den Rollen HDInsight-Clusteroperator, -mitwirkender oder -besitzer sind davon nicht betroffen.
+    - Benutzer, die nur über die Rolle „Leser“ verfügen, müssen den Parameter `DefaultStorageAccountKey` explizit angeben.
+- `Revoke-AzHDInsightHttpServicesAccess` gilt jetzt als veraltet. HTTP ist jetzt immer aktiviert, sodass dieses Cmdlet nicht mehr benötigt wird.
+ Weitere Details finden Sie im [az.HDInsight-Migrationsleitfaden](https://github.com/Azure/azure-powershell/blob/master/documentation/migration-guides/Az.2.0.0-migration-guide.md#azhdinsight).
 
 ## <a name="add-the-hdinsight-cluster-operator-role-assignment-to-a-user"></a>Hinzufügen der HDInsight-Clusteroperator-Rollenzuweisung zu einem Benutzer
 

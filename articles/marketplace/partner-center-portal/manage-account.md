@@ -7,12 +7,12 @@ ms.author: parthp
 ms.service: marketplace
 ms.topic: how-to
 ms.date: 05/30/2019
-ms.openlocfilehash: 935d2e1c96705506636c2883113a64bb70c39336
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: 5cb4caa6f0f8098e68d693be6cc2f33b5ccbeb32
+ms.sourcegitcommit: 45e4466eac6cfd6a30da9facd8fe6afba64f6f50
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65804834"
+ms.lasthandoff: 06/07/2019
+ms.locfileid: "66752826"
 ---
 # <a name="how-to-manage-your-commercial-marketplace-account-in-partner-center"></a>Verwalten Ihres Kontos im kommerziellen Marketplace in Partner Center 
 
@@ -84,7 +84,7 @@ Um Ihr Auszahlungskonto einzurichten, müssen Sie **Ihr Microsoft-Konto zuordnen
 
 Ihr Microsoft-Konto ist nun zugeordnet. Um ein Auszahlungskonto hinzuzufügen, müssen Sie wie folgt vorgehen:
 - **Zahlungsmethode auswählen**: Bankkonto oder PayPal
-- **Zahlungsinformationen hinzufügen**: Unter anderem müssen Sie hier möglicherweise einen Kontotyp auswählen (Giro- oder Sparkonto) und den Namen des Kontoinhabers, die Kontonummer, Bankleitzahl, Rechnungsadresse, Telefonnummer oder die PayPal-E-Mail-Adresse eingeben. * Weitere Informationen über die Verwendung von PayPal als Zahlungsmethode für Ihr Konto und darüber, ob diese in Ihrer Marktregion unterstützt wird, finden Sie unter [PayPal-Informationen](https://docs.microsoft.com/windows/uwp/publish/setting-up-your-payout-account-and-tax-forms#paypal-info).
+- **Zahlungsinformationen hinzufügen**: Unter anderem müssen Sie hier möglicherweise einen Kontotyp auswählen (Giro- oder Sparkonto) und den Namen des Kontoinhabers, die Kontonummer, Bankleitzahl, Rechnungsadresse, Telefonnummer oder die PayPal-E-Mail-Adresse eingeben. \* Weitere Informationen über die Verwendung von PayPal als Zahlungsmethode für Ihr Konto und darüber, ob diese in Ihrer Marktregion unterstützt wird, finden Sie unter [PayPal-Informationen](https://docs.microsoft.com/windows/uwp/publish/setting-up-your-payout-account-and-tax-forms#paypal-info).
 
 > [!IMPORTANT]
 > Wenn Sie Ihr Zahlungskonto ändern, kann dies dazu führen, dass sich Ihre Zahlungen um maximal einen Zahlungszyklus verzögern. Diese Verzögerung tritt auf, weil wir die Kontoänderung überprüfen müssen. Dies ist der gleiche Vorgang wie bei der ersten Einrichtung des Auszahlungskontos. Nachdem das Konto bestätigt wurde, erhalten Sie trotzdem den vollen Betrag. Zahlungen, die für den aktuellen Zahlungszyklus fällig sind, werden im nächsten Zyklus hinzugefügt.  
@@ -174,7 +174,7 @@ So fügen Sie Ihrem Partner Center-Konto Benutzer hinzu, die bereits im [Geschä
 
 1. Wechseln Sie zu **Benutzer** (unter **Kontoeinstellungen**), und wählen Sie **Benutzer hinzufügen** aus.
 2. Wählen Sie einen oder mehrere Benutzer aus der angezeigten Liste aus. Über das Suchfeld können Sie bestimmte Benutzer suchen.
-* Wenn Sie mehrere Benutzer auswählen, die Ihrem Partner Center-Konto hinzugefügt werden sollen, müssen Sie diesen dieselbe Rolle oder denselben Satz benutzerdefinierter Berechtigungen zuweisen. Um mehrere Benutzer mit unterschiedlichen Rollen/Berechtigungen hinzuzufügen, wiederholen Sie diese Schritte für jede Rolle bzw. für jeden Satz benutzerdefinierter Berechtigungen.
+\* Wenn Sie mehrere Benutzer auswählen, die Ihrem Partner Center-Konto hinzugefügt werden sollen, müssen Sie diesen dieselbe Rolle oder denselben Satz benutzerdefinierter Berechtigungen zuweisen. Um mehrere Benutzer mit unterschiedlichen Rollen/Berechtigungen hinzuzufügen, wiederholen Sie diese Schritte für jede Rolle bzw. für jeden Satz benutzerdefinierter Berechtigungen.
 3.  Wenn Sie die Auswahl von Benutzern abgeschlossen haben, klicken Sie auf **Ausgewählte hinzufügen**.
 5.  Geben Sie im Abschnitt **Rollen** die Rolle(n) oder die benutzerdefinierten Berechtigungen für den oder die ausgewählten Benutzer an.
 6.  Wählen Sie **Speichern** aus.
@@ -279,7 +279,7 @@ Wenn Sie einem neuen Azure AD-Anwendungskonto Partner Center-Zugriff gewähren m
 1.  Wählen Sie auf der Seite **Benutzer** (unter **Kontoeinstellungen**) die Option **Azure AD-Anwendungen hinzufügen** aus.
 2.  Wählen Sie auf der nächsten Seite **Neue Azure AD-Anwendung** aus.
 3.  Geben Sie die **Antwort-URL** für die neue Azure AD-Anwendung ein. Dies ist die URL, über die sich die Benutzer anmelden und Ihre Azure AD-Anwendung verwenden können (auch bekannt als App-URL oder Anmelde-URL). Die **Antwort-URL** darf nicht länger als 256 Zeichen sein und muss in Ihrem Verzeichnis eindeutig sein.
-4.  Geben Sie den **App-ID-URI** für die neue Azure AD-Anwendung ein. Dies ist ein logischer Bezeichner für die Azure AD-Anwendung, der angezeigt wird, wenn eine Anforderung für einmaliges Anmelden an Azure AD gesendet wird. Beachten Sie, dass der **App ID-URI** für jede Azure AD-Anwendung in Ihrem Verzeichnis eindeutig sein muss. Diese ID darf nicht länger als 256 Zeichen sein. Weitere Informationen zum App-ID-URI finden Sie unter [Integrieren von Anwendungen in Azure Active Directory](https://docs.microsoft.com/azure/active-directory/develop/active-directory-integrating-applications#changing-the-application-registration-to-support-multi-tenant).
+4.  Geben Sie den **App-ID-URI** für die neue Azure AD-Anwendung ein. Dies ist ein logischer Bezeichner für die Azure AD-Anwendung, der angezeigt wird, wenn eine Anforderung für einmaliges Anmelden an Azure AD gesendet wird. Beachten Sie, dass der **App ID-URI** für jede Azure AD-Anwendung in Ihrem Verzeichnis eindeutig sein muss. Diese ID darf nicht länger als 256 Zeichen sein. Weitere Informationen zum App-ID-URI finden Sie unter [Integrieren von Anwendungen in Azure Active Directory](https://docs.microsoft.com/azure/active-directory/develop/quickstart-modify-supported-accounts#change-the-application-registration-to-support-different-accounts).
 5.  Geben Sie im Abschnitt **Rollen** die Rolle(n) oder die benutzerdefinierten Berechtigungen für die Azure AD-Anwendung an.
 6.  Wählen Sie **Speichern** aus.
 

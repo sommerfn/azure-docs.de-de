@@ -163,25 +163,29 @@
       items:
         - name: Übersicht über Indexer
           href: search-indexer-overview.md
-        - name: Blobspeicher-Indexer
-          href: search-howto-indexing-azure-blob-storage.md
-        - name: Tabellenspeicher-Indexer
+        - name: Azure Table Storage-Indexer
           href: search-howto-indexing-azure-tables.md
-        - name: SQL DB-Indexer
+        - name: Azure SQL DB-Indexer
           href: search-howto-connecting-azure-sql-database-to-azure-search-using-indexers.md
-        - name: Cosmos DB-Indexer
+        - name: Azure Cosmos DB-Indexer
           href: search-howto-index-cosmosdb.md
-        - name: '1: n-Blob-Indizierung'
-          href: search-howto-index-one-to-many-blobs.md
-        - name: CSV-Blob-Indizierung
-          href: search-howto-index-csv-blobs.md
-        - name: JSON-Blob-Indizierung
-          href: search-howto-index-json-blobs.md
+        - name: Azure Blob Storage-Indexer
+          items:
+            - name: Einrichten eines Blobindexers
+              href: search-howto-indexing-azure-blob-storage.md
+            - name: 'Indizieren von 1:n-Blobs'
+              href: search-howto-index-one-to-many-blobs.md
+            - name: Indizieren von CSV-Blobs
+              href: search-howto-index-csv-blobs.md
+            - name: Indizieren von JSON-Blobs
+              href: search-howto-index-json-blobs.md
+        - name: Zeitplanindexer
+          href: search-howto-schedule-indexers.md
+        - name: Zuordnen von Feldern
+          href: search-indexer-field-mappings.md
         - name: Herstellen einer Verbindung mit virtuellen SQL Server-Computern
           href: search-howto-connecting-azure-sql-iaas-to-azure-search-using-indexers.md
-        - name: Feldzuordnungen
-          href: search-indexer-field-mappings.md
-        - name: Behandeln allgemeiner Probleme
+        - name: Häufig auftretende Probleme und Problembehandlung
           href: search-indexer-troubleshooting.md
     - name: Anreichern mit KI
       items:

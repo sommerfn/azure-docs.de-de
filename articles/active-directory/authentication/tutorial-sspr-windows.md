@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahenry
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ea65120a2a735477d048b9012e160e0cdafe8835
-ms.sourcegitcommit: 25a60179840b30706429c397991157f27de9e886
+ms.openlocfilehash: 2a4bdaba45c466b7f1f6fb8e91033f9a7665e034
+ms.sourcegitcommit: 1aefdf876c95bf6c07b12eb8c5fab98e92948000
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/28/2019
-ms.locfileid: "66253071"
+ms.lasthandoff: 06/06/2019
+ms.locfileid: "66730544"
 ---
 # <a name="tutorial-azure-ad-password-reset-from-the-login-screen"></a>Tutorial: Azure AD-Kennwortzurücksetzung über den Anmeldebildschirm
 
@@ -113,6 +113,8 @@ Das Azure AD-Überwachungsprotokoll enthält Informationen zur IP-Adresse und zu
 Wenn Benutzer ihr Kennwort über den Anmeldebildschirm eines Windows 10-Geräts zurücksetzen, wird ein temporäres Konto mit niedrigen Berechtigungen namens „defaultuser1“ erstellt. Mit diesem Konto wird der Vorgang zur Kennwortzurücksetzung geschützt. Für das Konto selbst ist ein zufällig generiertes Kennwort festgelegt. Das Konto wird außerdem nicht für die Geräteanmeldung angezeigt und wird nach dem Zurücksetzen des Kennworts durch den Benutzer automatisch entfernt. Unter Umständen sind mehrere Profile vom Typ „defaultuser“ vorhanden, sie können jedoch ignoriert werden.
 
 ## <a name="limitations"></a>Einschränkungen
+
+Das Entsperren von Konten, Benachrichtigungen über mobile Apps und Code mobiler Apps werden von SSPR für Windows 10 nicht unterstützt.
 
 Beim Testen dieser Funktionalität mit Hyper-V wird der Link „Kennwort zurücksetzen“ nicht angezeigt.
 
