@@ -70,7 +70,7 @@ Zur Unterstützung bei der Überwachung des Erfolgs, der Fehler und der Nachrich
 | interchangeControlNumber | String | Austauschkontrollnummer. (Optional) |
 | functionalGroupControlNumber | String | Funktionale Kontrollnummer. (Optional) |
 | transactionSetControlNumber | String | Transaktionssatz-Kontrollnummer. (Optional) |
-| CorrelationMessageId | String | Korrelationsnachrichten-ID. Kombination aus {AgreementName}*{GroupControlNumber}*{TransactionSetControlNumber}. (Optional) |
+| CorrelationMessageId | String | Korrelationsnachrichten-ID. Kombination aus {AgreementName} *{GroupControlNumber}* {TransactionSetControlNumber}. (Optional) |
 | messageType | String | Transaktionssatz oder Dokumenttyp. (Optional) |
 | isMessageFailed | Boolean | Gibt an, ob die X12-Nachricht fehlgeschlagen ist. (Erforderlich) |
 | isTechnicalAcknowledgmentExpected | Boolean | Gibt an, ob die technische Bestätigung in der X12-Vereinbarung konfiguriert ist. (Erforderlich) |
@@ -134,7 +134,7 @@ Zur Unterstützung bei der Überwachung des Erfolgs, der Fehler und der Nachrich
 | statusCode | Boolean | Statuscode für die Transaktionssatzbestätigung. (Erforderlich) |
 | segmentsCount | Enum | Statuscode für die Bestätigung. Zulässige Werte sind **Accepted**, **Rejected** und **AcceptedWithErrors**. (Erforderlich) |
 | processingStatus | Enum | Verarbeitungsstatus der Bestätigung. Zulässige Werte sind **Received**, **Generated** und **Sent**. (Erforderlich) |
-| CorrelationMessageId | String | Korrelationsnachrichten-ID. Kombination aus {AgreementName}*{GroupControlNumber}*{TransactionSetControlNumber}. (Optional) |
+| CorrelationMessageId | String | Korrelationsnachrichten-ID. Kombination aus {AgreementName} *{GroupControlNumber}* {TransactionSetControlNumber}. (Optional) |
 | isMessageFailed | Boolean | Gibt an, ob die X12-Nachricht fehlgeschlagen ist. (Erforderlich) |
 | ak2Segment | String | Bestätigung für einen Transaktionssatz in der empfangenen Funktionsgruppe. (Optional) |
 | ak3Segment | String | Meldet Fehler in einem Datensegment. (Optional) |
