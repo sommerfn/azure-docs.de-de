@@ -66,7 +66,7 @@ Der folgende JSON-Code zeigt das Schema für die Application Health-Erweiterung.
 | NAME | Wert/Beispiel | Datentyp
 | ---- | ---- | ---- 
 | apiVersion | `2018-10-01` | date |
-| Herausgeber | `Microsoft.ManagedServices` | Zeichenfolge |
+| publisher | `Microsoft.ManagedServices` | Zeichenfolge |
 | type | `ApplicationHealthLinux` (Linux), `ApplicationHealthWindows` (Windows) | Zeichenfolge |
 | typeHandlerVersion | `1.0` | int |
 
