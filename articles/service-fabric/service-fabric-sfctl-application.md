@@ -43,7 +43,7 @@ Ermöglicht es, Anwendungen und Anwendungstypen zu erstellen, zu löschen und zu
 | type | Ruft die Liste der Anwendungstypen im Service Fabric-Cluster ab, die genau mit dem angegebenen Namen übereinstimmen. |
 | type-list | Ruft die Liste der Anwendungstypen im Service Fabric-Cluster ab. |
 | unprovision | Entfernt einen Service Fabric-Anwendungstyp aus dem Cluster oder hebt die Registrierung eines Service Fabric-Anwendungstyps für den Cluster auf. |
-| Upgrade | Startet ein Aktualisieren einer Anwendung im Service Fabric-Cluster. |
+| upgrade | Startet ein Aktualisieren einer Anwendung im Service Fabric-Cluster. |
 | upgrade-resume | Setzt ein Aktualisieren einer Anwendung im Service Fabric-Cluster fort. |
 | upgrade-rollback | Führt ein Rollback des derzeit laufenden Upgrades einer Anwendung im Service Fabric-Cluster aus. |
 | upgrade-status | Ruft Details über das neueste Upgrade ab, das für diese Anwendung ausgeführt wurde. |
