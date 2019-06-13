@@ -6,14 +6,14 @@ author: vhorne
 ms.service: application-gateway
 ms.topic: overview
 ms.custom: mvc
-ms.date: 4/30/2019
+ms.date: 5/31/2019
 ms.author: victorh
-ms.openlocfilehash: 78dd4b31991a15d3d946c47c5394f64bb3afea95
-ms.sourcegitcommit: ed66a704d8e2990df8aa160921b9b69d65c1d887
+ms.openlocfilehash: e2e29bf0068fae5d6f4987ec5c3f2a52b883e4bd
+ms.sourcegitcommit: c05618a257787af6f9a2751c549c9a3634832c90
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64947267"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66418113"
 ---
 # <a name="what-is-azure-application-gateway"></a>Was ist Azure Application Gateway?
 
@@ -29,9 +29,9 @@ Diese Art des Routings wird als Lastenausgleich auf Anwendungsebene (OSI-Schicht
 
 Im Anschluss sind die verfügbaren Features von Azure Application Gateway aufgeführt:
 
-## <a name="secure-sockets-layer-ssl-termination"></a>SSL-Beendigung (Secure Sockets Layer)
+## <a name="secure-sockets-layer-ssltls-termination"></a>SSL/TLS-Beendigung (Secure Sockets Layer)
 
-Application Gateway unterstützt die SSL-Beendigung am Gateway, wonach der Datenverkehr in der Regel unverschlüsselt zu den Back-End-Servern gelangt. Mit diesem Feature können Webserver vom kostspieligen Verschlüsselungs- und Entschlüsselungsaufwand befreit werden. Manchmal ist die unverschlüsselte Kommunikation mit den Servern allerdings keine akzeptable Option. Der Grund hierfür können Sicherheits- oder Complianceanforderungen sein, oder dass die Anwendung nur eine sichere Verbindung akzeptiert. Für Anwendungen dieser Art unterstützt Application Gateway die End-to-End-SSL-Verschlüsselung.
+Application Gateway unterstützt die SSL/TLS-Beendigung am Gateway, wonach der Datenverkehr in der Regel unverschlüsselt zu den Back-End-Servern gelangt. Mit diesem Feature können Webserver vom kostspieligen Verschlüsselungs- und Entschlüsselungsaufwand befreit werden. Manchmal ist die unverschlüsselte Kommunikation mit den Servern allerdings keine akzeptable Option. Der Grund hierfür können Sicherheits- oder Complianceanforderungen sein, oder dass die Anwendung nur eine sichere Verbindung akzeptiert. Für Anwendungen dieser Art unterstützt Application Gateway die End-to-End-Verschlüsselung mit SSL/TLS.
 
 ## <a name="autoscaling"></a>Automatische Skalierung
 

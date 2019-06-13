@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 04/29/2019
 ms.author: cynthn
 ms.custom: include file
-ms.openlocfilehash: 66ec923f12c59d606056d48c09f1ba346e9a4d32
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.openlocfilehash: 291ec651061b7a8a3ea3c0645a6bd6581d529ef6
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66170387"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66245000"
 ---
 ## <a name="sign-in-to-azure"></a>Anmelden bei Azure 
 
@@ -56,7 +56,6 @@ Erstellen Sie die Definition des Katalogimages innerhalb Ihres Katalogs. In dies
 1. Wählen Sie nach Abschluss der Bereitstellung die Option **Zu Ressourcengruppe wechseln**.
 
 
-
 ## <a name="create-an-image-version"></a>Erstellen einer Imageversion
 
 Erstellen Sie eine Imageversion aus einem verwalteten Image. In diesem Beispiel lautet die Imageversion *1.0.0*. Sie wird in den Rechenzentren *USA, Westen-Mitte* und *USA, Süden-Mitte* repliziert. Bei der Auswahl der Zielregionen für die Replikation ist zu beachten, dass Sie auch die Region *Quelle* als Ziel für die Replikation angeben müssen.
@@ -75,3 +74,20 @@ Zulässige Zeichen für die Imageversion sind Zahlen und Punkte. Zahlen müssen 
 1. Wählen Sie nach Abschluss der Bereitstellung die Option **Zu Ressourcengruppe wechseln**.
 
 Es kann eine Weile dauern, bis das Image in alle Zielregionen repliziert ist.
+
+## <a name="share-the-gallery"></a>Teilen des Katalogs
+
+Wir empfehlen, dass Sie den Zugriff auf der Ebene des Imagekatalogs teilen. Im Folgenden werden Sie durch das Teilen des Katalogs geführt, den Sie gerade erstellt haben.
+
+1. Öffnen Sie das [Azure-Portal](https://portal.azure.com).
+1. Wählen Sie im Menü auf der linken Seite die Option **Ressourcengruppen** aus. 
+1. Wählen Sie in der Liste der Ressourcengruppen **myGalleryRG-Portal** aus. Das Blatt für Ihre Ressourcengruppe wird geöffnet.
+1. Wählen Sie im Menü auf der linken Seite **myGalleryRG** und dann **Zugriffssteuerung (IAM)** aus. 
+1. Wählen Sie unter **Rollenzuweisung hinzufügen** die Option **Hinzufügen** aus. Der Bereich **Rollenzuweisung hinzufügen** wird geöffnet. 
+1. Wählen Sie unter **Rolle** die Option **Leser** aus.
+1. Behalten Sie unter **Zugriff zuweisen zu** den Standardwert von **Azure AD-Benutzer, -Gruppe oder -Dienstprinzipal** bei.
+1. Geben Sie unter **Auswählen** die E-Mail-Adresse der Person ein, die Sie einladen möchten.
+1. Wenn der Benutzer außerhalb Ihrer Organisation ist, wird die Meldung **Dieser Benutzer erhält eine E-Mail, die ihm die Zusammenarbeit mit Microsoft ermöglicht.** angezeigt. Wählen Sie den Benutzer mit der E-Mail-Adresse aus, und klicken Sie dann auf **Speichern**.
+
+Wenn sich der Benutzer außerhalb Ihrer Organisation befindet, erhält er eine E-Mail-Einladung, um der Organisation beizutreten. Der Benutzer muss die Einladung annehmen, woraufhin er in der Lage ist, den Katalog und alle Imagedefinitionen und -versionen in seiner Liste der Ressourcen anzuzeigen.
+

@@ -8,23 +8,25 @@ ms.topic: include
 ms.date: 02/07/2019
 ms.author: robb
 ms.custom: include file
-ms.openlocfilehash: 4700573d3f5319599a6437d092e20d8013d2f7fb
-ms.sourcegitcommit: 956749f17569a55bcafba95aef9abcbb345eb929
+ms.openlocfilehash: 050d3314345e64e3d69a07367a0e9acc318fa106
+ms.sourcegitcommit: 25a60179840b30706429c397991157f27de9e886
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58632852"
+ms.lasthandoff: 05/28/2019
+ms.locfileid: "66271545"
 ---
-| Ressource | Standardlimit | Maximales Limit |
+| Resource | Standardlimit | Maximales Limit |
 | --- | --- | --- |
 | Einstellungen für automatische Skalierung |100 pro Region und Abonnement. | Wie Standard. |
 | Metrikwarnungen (klassisch) |100 aktive Warnungsregeln pro Abonnement. | Wenden Sie sich an den Support. |
-| Metrikwarnungen |100 aktive Warnungsregeln pro Abonnement. | Wenden Sie sich an den Support. |
+| Metrikwarnungen |1000 aktive Warnungsregeln pro Abonnement (in öffentlichen Clouds) und 100 aktive Warnungsregeln pro Abonnement in Azure China und Azure Government. | Wenden Sie sich an den Support. |
+| Aktivitätsprotokollwarnungen | 100 aktive Warnungsregeln pro Abonnement. | Wie Standard. |
+| Protokollwarnungen | 512 | Wenden Sie sich an den Support. |
 | Aktionsgruppen |2.000 Aktionsgruppen pro Abonnement. | Wenden Sie sich an den Support. |
 
 **Aktionsgruppenspezifische Einschränkungen**
 
-| Ressource | Standardlimit | Maximales Limit |
+| Resource | Standardlimit | Maximales Limit |
 | --- | --- | --- |
 | Azure-App-Push | 10 Azure-App-Aktionen pro Aktionsgruppe. | Wenden Sie sich an den Support. |
 | E-Mail | 1.000 E-Mail-Aktionen in einer Aktionsgruppe. Weitere Informationen finden Sie in den [Informationen zu Ratenbegrenzungen](../articles/azure-monitor/platform/alerts-rate-limiting.md). | Wenden Sie sich an den Support. |

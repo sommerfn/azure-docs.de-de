@@ -5,17 +5,17 @@ author: yanivlavi
 services: azure-monitor
 ms.service: azure-monitor
 ms.topic: conceptual
-ms.date: 11/29/2018
+ms.date: 04/26/2019
 ms.author: yalavi
 ms.reviewer: mbullwin
-ms.openlocfilehash: 3773a3e121c3b0162b83ea075601b7386228e4d5
-ms.sourcegitcommit: 2c09af866f6cc3b2169e84100daea0aac9fc7fd0
+ms.openlocfilehash: 0d6c578186dab9622ce650f535e11d505efcecb3
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/29/2019
-ms.locfileid: "64876191"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "65067619"
 ---
-# <a name="metric-alerts-with-dynamic-thresholds-in-azure-monitor-public-preview"></a>Metrikwarnungen mit dynamischen Schwellenwerten in Azure Monitor (Public Preview)
+# <a name="metric-alerts-with-dynamic-thresholds-in-azure-monitor"></a>Metrikwarnungen mit dynamischen Schwellenwerten in Azure Monitor
 
 Die Metrikwarnung mit Erkennung dynamischer Schwellenwerte nutzt erweitertes Machine Learning (ML), um das bisherige Verhalten von Metriken zu erfassen sowie Muster und Anomalien zu erkennen, die auf mögliche Probleme hinweisen. Benutzer profitieren von einer einfachen Benutzeroberfläche sowie von skalierbaren Vorgängen und können über die Azure Resource Manager-API vollständig automatisierte Warnungsregeln konfigurieren.
 

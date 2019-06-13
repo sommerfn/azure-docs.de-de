@@ -10,12 +10,12 @@ ms.subservice: content-moderator
 ms.topic: overview
 ms.date: 02/20/2019
 ms.author: pafarley
-ms.openlocfilehash: 7e9c12c7da701fb627c51373e57f870d3fc77ac5
-ms.sourcegitcommit: f013c433b18de2788bf09b98926c7136b15d36f1
+ms.openlocfilehash: 14cf500cff9f1f7f8b1573862c3060326e6518fa
+ms.sourcegitcommit: 6932af4f4222786476fdf62e1e0bf09295d723a1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/13/2019
-ms.locfileid: "65551314"
+ms.lasthandoff: 06/05/2019
+ms.locfileid: "66688863"
 ---
 # <a name="what-is-azure-content-moderator"></a>Was ist Azure Content Moderator?
 
@@ -30,6 +30,9 @@ Im Anschluss finden Sie einige Szenarien, in denen ein Softwareentwickler oder T
 - Messagingplattformen sozialer Medien, die von Benutzern hinzugefügte Bilder, Texte und Videos moderieren
 - Medienunternehmen, die eine zentrale Moderation für ihre Inhalte implementieren
 - Anbieter im Bildungswesen, die unangemessene Inhalte für Schüler und Lehrer herausfiltern
+
+> [!NOTE]
+> Sie können Content Moderator nicht verwenden, um nach Bildern zu suchen, auf denen Kinder in nicht zulässiger Weise dargestellt sind. Qualifizierte Organisationen können jedoch den [PhotoDNA Cloud Service](https://www.microsoft.com/photodna "Microsoft PhotoDNA Cloud Service") verwenden, um nach derartigen Inhalten zu suchen.
 
 ## <a name="what-it-includes"></a>Lieferumfang
 

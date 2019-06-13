@@ -1,7 +1,7 @@
 ---
 title: Einführung zur Deep Learning Virtual Machine – Azure | Microsoft-Dokumentation
 description: Wichtige Analyseszenarien und -komponenten für Deep Learning Virtual Machines
-keywords: deep learning, AI, data science tools, data science virtual machine, tools for data science, linux data science
+keywords: Deep Learning, KI, Data Science-Tools, virtueller Data Science-Computer, Tools für Data Science, Linux Data Science
 services: machine-learning
 documentationcenter: ''
 author: gopitk

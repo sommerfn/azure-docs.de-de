@@ -7,12 +7,12 @@ ms.service: dns
 ms.topic: article
 ms.date: 5/13/2019
 ms.author: victorh
-ms.openlocfilehash: 847ad271dac4afc8c8baa2faa8702b3a3ab6cefa
-ms.sourcegitcommit: 1fbc75b822d7fe8d766329f443506b830e101a5e
+ms.openlocfilehash: b34baa6f1ba91935fc6307dbb1617393786043b9
+ms.sourcegitcommit: 18a0d58358ec860c87961a45d10403079113164d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/14/2019
-ms.locfileid: "65596702"
+ms.lasthandoff: 06/05/2019
+ms.locfileid: "66692849"
 ---
 # <a name="azure-dns-alias-records-overview"></a>Azure DNS-Aliaseinträge – Übersicht
 
@@ -67,6 +67,9 @@ Genau wie ein Traffic Manager-Profil können Sie auch Aliasdatensätze verwenden
 Wenn Ihre statische Website „www.contoso.com“ heißt, können Ihre Benutzer mit „contoso.com“ auf Ihre Website zugreifen, ohne dem DNS-Namen „www“ voranstellen zu müssen.
 
 Wie zuvor beschrieben, werden CNAME-Einträge an der Zonenspitze nicht unterstützt. Daher können Sie keinen CNAME-Eintrag verwenden, um mit „contoso.com“ auf Ihren CDN-Endpunkt zu verweisen. Stattdessen können Sie einen Aliaseintrag verwenden, um direkt an der Zonenspitze auf einen CDN-Endpunkt zu verweisen.
+
+> [!NOTE]
+> Das Verweisen einer Zonenspitze auf CDN-Endpunkte für Azure CDN von Akamai wird derzeit nicht unterstützt.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

@@ -208,7 +208,7 @@ Go</a>
                                                 <ul class="noBullet">
                                                     <li><a class="barLink" href="/azure/storage/">Blob Storage</a></li>
                                                 </ul>
-                                                <h4>AI und Cognitive Services</h4>
+                                                <h4>KI und Cognitive Services</h4>
                                                 <ul class="noBullet">
                                                     <li><a class="barLink" href="/azure/machine-learning/">Machine Learning </a></li>
                                                     <li><a class="barLink" href="/azure/cognitive-services/">Cognitive Services</a></li>

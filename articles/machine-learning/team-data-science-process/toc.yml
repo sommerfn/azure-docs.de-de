@@ -204,7 +204,7 @@
   items:
     - name: Azure Machine Learning
       href: ../service/
-    - name: Azure AI-Katalog
+    - name: Azure KI-Katalog
       href: 'https://gallery.azure.ai'
     - name: Cortana Analytics Suite
       items:

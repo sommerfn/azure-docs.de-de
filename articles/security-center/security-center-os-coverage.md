@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 5/27/2019
+ms.date: 6/03/2019
 ms.author: monhaber
-ms.openlocfilehash: 807bde76bb6bb50490ee599768273a59c49d5e45
-ms.sourcegitcommit: 25a60179840b30706429c397991157f27de9e886
+ms.openlocfilehash: c5b5b88ee1334ac6d7b39b8ad53bd020e6042454
+ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/28/2019
-ms.locfileid: "66258703"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66480539"
 ---
 # <a name="platforms-and-features-supported-by-azure-security-center"></a>Von Azure Security Center unterstützte Features und Plattformen
 
@@ -93,7 +93,7 @@ VMs, die in einem Clouddienst ausgeführt werden, werden ebenfalls unterstützt.
 |FIM|✔|✔|✔|✔|✔|✔|Standard|
 |Bewertung der Datenträgerverschlüsselung|✔|✔|X|✔|✔|X|Kostenlos|
 |Drittanbieterbereitstellung|✔|X|X|✔|X|X|Kostenlos|
-|Bewertung von NSGs|✔|✔|X|✔|✔|X|Kostenlos|
+|NSG-Bewertung|✔|✔|X|✔|✔|X|Kostenlos|
 |Erkennung von Fileless-Bedrohungen|✔|✔|✔|X|X|X|Standard|
 |Netzwerkübersicht|✔|✔|X|✔|✔|X|Standard|
 |Adaptive Netzwerksteuerungen|✔|✔|X|✔|✔|X|Standard|
@@ -129,7 +129,7 @@ Informationen darüber, wann Empfehlungen für die einzelnen Schutzfunktionen ge
 |SQL|✔| ✔|
 |PostGreSQL*|✔| ✔|
 |MySQL*|✔| ✔|
-|Azure Blob-Speicherkonten*|✔| ✔|
+|Azure Blob Storage-Konten|✔| ✔|
 |App Services|✔| ✔|
 |Cloud Services|✔| X|
 |VNETs|✔| Nicht verfügbar|
@@ -137,7 +137,6 @@ Informationen darüber, wann Empfehlungen für die einzelnen Schutzfunktionen ge
 |NICs|✔| Nicht verfügbar|
 |NSGs|✔| Nicht verfügbar|
 |Abonnement|✔ **| ✔|
-|App Service|✔| Nicht verfügbar|
 |Batch|✔| Nicht verfügbar|
 |Service Fabric|✔| Nicht verfügbar|
 |Automation-Konto|✔| Nicht verfügbar|
@@ -147,14 +146,9 @@ Informationen darüber, wann Empfehlungen für die einzelnen Schutzfunktionen ge
 |Stream Analytics|✔| Nicht verfügbar|
 |Event Hub|✔| Nicht verfügbar|
 |Logik-Apps|✔| Nicht verfügbar|
-|Subnetz|✔| Nicht verfügbar|
-|VNet|✔| Nicht verfügbar|
 |Speicherkonto|✔| Nicht verfügbar|
 |Redis|✔| Nicht verfügbar|
-|SQL|✔| Nicht verfügbar|
 |Data Lake Analytics|✔| Nicht verfügbar|
-|Speicherkonto|✔| Nicht verfügbar|
-|Abonnement|✔| Nicht verfügbar|
 |Schlüsseltresor|✔| Nicht verfügbar|
 
 

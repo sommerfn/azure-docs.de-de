@@ -1,7 +1,7 @@
 ---
-title: Azure AI-Katalog
+title: Azure KI-Katalog
 titleSuffix: Azure Machine Learning Studio
-description: Freigeben und Entdecken vonAnalytics-Ressourcen und mehr im Azure AI-Katalog. Lernen Sie von anderen Benutzern, und leisten Sie Ihren eigenen Beitrag zur Community.
+description: Freigeben und Entdecken vonAnalytics-Ressourcen und mehr im Azure KI-Katalog. Lernen Sie von anderen Benutzern, und leisten Sie Ihren eigenen Beitrag zur Community.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: studio
@@ -17,14 +17,14 @@ ms.contentlocale: de-DE
 ms.lasthandoff: 03/19/2019
 ms.locfileid: "57885418"
 ---
-# <a name="share-and-discover-resources-in-the-azure-ai-gallery"></a>Freigeben und Entdecken von Ressourcen im Azure AI-Katalog
+# <a name="share-and-discover-resources-in-the-azure-ai-gallery"></a>Freigeben und Entdecken von Ressourcen im Azure KI-Katalog
 
 **[Azure AI Gallery](https://gallery.azure.ai)** ist eine communitybasierte Website zum Entdecken und Teilen von Lösungen, die mit Azure-KI-Diensten erstellt wurden.
 Der Katalog enthält viele Ressourcen, mit denen Sie Ihre eigenen Analytics-Lösungen entwickeln können.
 
 ## <a name="what-can-i-find-in-the-gallery"></a>Was finde ich im Katalog?
 
-Azure AI Gallery enthält verschiedene Ressourcen, die von Microsoft und Mitgliedern der Data Science-Community bereitgestellt wurden. Das umfasst:
+Der Azure KI-Katalog enthält verschiedene Ressourcen, die von Microsoft und Mitgliedern der Data Science-Community bereitgestellt wurden. Das umfasst:
 
 * **Experimente**: Die Gallery enthält eine Vielzahl von Experimenten, die in Azure Machine Learning Studio entwickelt wurden. Diese reichen von kurzen Machbarkeitsexperimenten, bei denen ein bestimmtes Machine Learning-Verfahren veranschaulicht wird, bis zu vollständig entwickelten Lösungen für komplexe Machine Learning-Probleme.
 * **Tutorials**: In mehreren Tutorials werden Machine Learning-Technologien und -Konzepte oder erweiterte Methoden zum Lösen verschiedener Machine Learning-Probleme beschrieben.
@@ -52,12 +52,12 @@ Sie können mit **Experimenten**, **Tutorials** und **Sammlungen** zur Gallery b
 
 Sie können **Experimente**, **benutzerdefinierte Module** und **Jupyter Notebooks** in Ihren eigenen Machine Learning Studio-Arbeitsbereich herunterladen und zur Entwicklung Ihrer eigenen Analyselösungen verwenden.
 
-So laden Sie eine Ressource aus der AI Gallery herunter:
+So laden Sie eine Ressource aus dem Azure KI-Katalog herunter:
 
-1. Öffnen Sie die Ressource in der AI Gallery.
+1. Öffnen Sie die Ressource im Azure KI-Katalog.
 1. Klicken Sie auf **In Studio öffnen**.
 
-![Öffnen eines Elements aus der AI Gallery](./media/gallery-how-to-use-contribute-publish/open-experiment-from-gallery.png)
+![Öffnen eines Elements aus dem Azure KI-Katalog](./media/gallery-how-to-use-contribute-publish/open-experiment-from-gallery.png)
 
 So laden Sie eine Ressource aus Studio herunter:
 
@@ -160,7 +160,7 @@ Sie können andere Benutzer unterstützen, indem Sie ein **Tutorial** in der Gal
 
 1. Klicken Sie auf **Erstellen**.
 
-Ihre Sammlung befindet sich nun in der Azure AI Gallery. Ihre Beiträge werden auf Ihrer Kontoseite unter der Registerkarte **Elemente** angezeigt.
+Ihre Sammlung befindet sich nun im Azure KI-Katalog Ihre Beiträge werden auf Ihrer Kontoseite unter der Registerkarte **Elemente** angezeigt.
 
 ### <a name="add-to-and-edit-your-collection"></a>Hinzufügen und Bearbeiten Ihrer Sammlung
 

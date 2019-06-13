@@ -8,12 +8,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 02/20/2019
 ms.author: kgremban
-ms.openlocfilehash: a2c49a6ba269321d1903565ace3ebaae3f3b917e
-ms.sourcegitcommit: 8ca6cbe08fa1ea3e5cdcd46c217cfdf17f7ca5a7
+ms.openlocfilehash: 01c58636ae9a28cd18b11285421bdd06cc048365
+ms.sourcegitcommit: 25a60179840b30706429c397991157f27de9e886
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/22/2019
-ms.locfileid: "56673852"
+ms.lasthandoff: 05/28/2019
+ms.locfileid: "66257672"
 ---
 # <a name="react-to-iot-hub-events-by-using-event-grid-to-trigger-actions"></a>Reagieren auf IoT Hub-Ereignisse mithilfe von Event Grid zum Auslösen von Aktionen
 
@@ -37,6 +37,7 @@ IoT Hub veröffentlicht die folgenden Ereignistypen:
 | Microsoft.Devices.DeviceDeleted | Wird ausgelöst, wenn ein Gerät aus einem IoT Hub gelöscht wird. |
 | Microsoft.Devices.DeviceConnected | Wird ausgelöst, wenn ein Gerät mit einem IoT Hub verbunden wird. |
 | Microsoft.Devices.DeviceDisconnected | Wird ausgelöst, wenn ein Gerät von einem IoT Hub getrennt wird. |
+| Microsoft.Devices.DeviceTelemetry | Wird ausgelöst, wenn eine Gerätetelemetrienachricht an eine IoT Hub-Instanz gesendet wird. |
 
 Konfigurieren Sie entweder mit dem Azure-Portal oder der Azure CLI, welche Ereignisse von jedem IoT Hub veröffentlicht werden sollen. Ein Beispiel finden Sie in dem Tutorial [Senden von E-Mail-Benachrichtigungen zu Azure IoT Hub-Ereignissen mit Logik-Apps](../event-grid/publish-iot-hub-events-to-logic-apps.md).
 
@@ -66,6 +67,42 @@ Das folgende Beispiel zeigt das Schema eines Ereignisses „Gerät verbunden“:
   }, 
   "dataVersion": "1", 
   "metadataVersion": "1" 
+}]
+```
+
+### <a name="device-telemetry-schema"></a>Schema der Gerätetelemetrie
+
+Das folgende Beispiel zeigt das Schema eines Gerätetelemetrieereignisses: 
+
+```json
+[{  
+  "id": "9af86784-8d40-fe2g-8b2a-bab65e106785",
+  "topic": "/SUBSCRIPTIONS/<subscription ID>/RESOURCEGROUPS/<resource group name>/PROVIDERS/MICROSOFT.DEVICES/IOTHUBS/<hub name>",
+  "subject": "devices/LogicAppTestDevice", 
+  "eventType": "Microsoft.Devices.DeviceTelemetry",
+  "eventTime": "2019-01-07T20:58:30.48Z",
+  "data": {        
+      "body": {            
+          "Weather": {                
+              "Temperature": 900            
+            },
+            "Location": "USA"        
+        },
+        "properties": {            
+            "Status": "Active"        
+        },
+        "systemProperties": {            
+          "iothub-content-type": "application/json",
+          "iothub-content-encoding": "utf-8",
+          "iothub-connection-device-id": "d1",
+          "iothub-connection-auth-method": "{\"scope\":\"device\",\"type\":\"sas\",\"issuer\":\"iothub\",\"acceptingIpFilterRule\":null}",
+          "iothub-connection-auth-generation-id": "123455432199234570",
+          "iothub-enqueuedtime": "2019-01-07T20:58:30.48Z",
+          "iothub-message-source": "Telemetry"        
+        }    
+  },
+  "dataVersion": "",
+  "metadataVersion": "1"
 }]
 ```
 
@@ -123,13 +160,21 @@ Eine ausführliche Beschreibung der einzelnen Eigenschaften finden Sie unter [Az
 
 ## <a name="filter-events"></a>Filtern von Ereignissen
 
-IoT Hub-Ereignisabonnements können Ereignisse basierend auf Ereignistyp und Gerätename filtern. Betrefffilter in Event Grid funktionieren anhand von Übereinstimmungen bei **Beginnt mit** (Präfix) und **Endet auf** (Suffix). Der Filter verwendet einen `AND`-Operator, sodass Ereignisse mit einem Betreff, der sowohl mit dem Präfix als auch mit dem Suffix übereinstimmt, an den Abonnenten übermittelt werden. 
+IoT Hub-Ereignisabonnements können Ereignisse basierend auf Ereignistyp, Dateninhalt und Betreff (der Gerätename) filtern.
+
+Event Grid ermöglicht das [Filtern](../event-grid/event-filtering.md) nach Ereignistypen, Betreff und Dateninhalt. Beim Erstellen des Event Grid-Abonnements können Sie wählen, dass Sie ausgewählte IoT-Ereignisse abonnieren möchten. Betrefffilter in Event Grid funktionieren anhand von Übereinstimmungen bei **Beginnt mit** (Präfix) und **Endet auf** (Suffix). Der Filter verwendet einen `AND`-Operator, sodass Ereignisse mit einem Betreff, der sowohl mit dem Präfix als auch mit dem Suffix übereinstimmt, an den Abonnenten übermittelt werden. 
 
 Der Betreff von IoT-Ereignissen verwendet das Format:
 
 ```json
 devices/{deviceId}
 ```
+
+Event Grid ermöglicht auch das Filtern nach Attributen jedes Ereignisses, einschließlich des Dateninhalts. Dadurch können Sie auswählen, welche Ereignisse auf der Grundlage von Inhalten der Telemetrienachricht übermittelt werden sollen. Beispiele hierfür finden Sie unter [erweiterte Filterung](../event-grid/event-filtering.md#advanced-filtering). 
+
+Bei nicht telemetriebezogenen Ereignissen wie „DeviceConnected“, „DeviceDisconnected“, „DeviceCreated“ und „DeviceDeleted“ kann die Event Grid-Filterung beim Erstellen des Abonnements verwendet werden. Bei Telemetrieereignissen können Benutzer – zusätzlich zum Filtern in Event Grid – über die Abfrage des Nachrichtenroutings auch nach Gerätezwillingen, Nachrichteneigenschaften und Textkörper filtern. Wir erstellen in IoT Hub eine Standard-[Route](iot-hub-devguide-messages-d2c.md), die auf Ihrem Event Grid-Abonnement für Gerätetelemetrie basiert. Diese einzelne Route kann alle Ihre Event Grid-Abonnements verarbeiten. Wenn Sie Nachrichten vor dem Senden von Telemetriedaten filtern möchten, können Sie Ihre [Routingabfrage](iot-hub-devguide-routing-query-syntax.md) aktualisieren. Beachten Sie, dass die Routingabfrage nur auf einen Nachrichtenkörper im JSON-Format angewendet werden kann.
+
+
 ## <a name="limitations-for-device-connected-and-device-disconnected-events"></a>Beschränkungen bei den Ereignissen „Gerät verbunden“ und „Gerät getrennt“
 
 Um die Ereignisse „Gerät verbunden“ und „Gerät getrennt“ zu erhalten, müssen Sie den D2C-Link oder den C2D-Link für Ihr Gerät öffnen. Wenn Ihr Gerät das MQTT-Protokoll verwendet, hält IoT Hub den C2D-Link geöffnet. Bei AMQP können Sie den C2D-Link öffnen, indem Sie die [ReceiveAsync-API](https://docs.microsoft.com/dotnet/api/microsoft.azure.devices.client.deviceclient.receiveasync?view=azure-dotnet) aufrufen. 
@@ -144,7 +189,7 @@ Anwendungen, die IoT Hub-Ereignisse behandeln, sollten diesen empfohlenen Method
 
 * Gehen Sie nicht davon aus, dass alle Ereignisse, die Sie erhalten, den Typen entsprechen, die Sie erwarten. Überprüfen Sie vor der Verarbeitung der Nachricht immer den eventType.
 
-* Nachrichten können in falscher Reihenfolge oder nach einer Verzögerung eingehen. Verwenden Sie das etag-Feld, um zu erfahren, ob Ihre Informationen zu Objekten auf dem neuesten Stand sind.
+* Nachrichten können in falscher Reihenfolge oder nach einer Verzögerung eingehen. Über das Feld „ETag“ können Sie erfahren, ob Ihre Informationen zu Objekten für Ereignisse vom Typ „DeviceCreated“ (Gerät erstellt) oder „DeviceDeleted“ (Gerät gelöscht) auf dem neuesten Stand sind.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

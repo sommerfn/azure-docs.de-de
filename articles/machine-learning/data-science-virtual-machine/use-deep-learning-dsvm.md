@@ -25,9 +25,9 @@ ms.locfileid: "55242823"
 ---
 # <a name="using-the-deep-learning-virtual-machine"></a>Verwenden der Deep Learning Virtual Machine
 
-Sobald Sie Ihre Deep Learning Virtual Machine (DLVM) bereitgestellt haben, können Sie beginnen, tiefe neuronale Netzwerkmodelle zu erstellen, um AI-Anwendungen in Bereichen wie maschinellem Sehen oder Sprachverständnis zu erstellen. 
+Sobald Sie Ihre DLVM-Instanz (Deep Learning Virtual Machine) bereitgestellt haben, können Sie beginnen, tiefe neuronale Netzwerkmodelle zu erstellen, um KI-Anwendungen in Bereichen wie maschinellem Sehen oder Sprachverständnis zu erstellen. 
 
-Es gibt eine Reihe von Tools, die auf der Deep Learning VM für AI bereitgestellt werden. Die [Seite zu Deep Learning und AI-Frameworks](dsvm-deep-learning-ai-frameworks.md) enthält Einzelheiten zur Nutzung dieser Tools. 
+Es gibt eine Reihe von Tools, die auf Deep Learning VM für KI bereitgestellt werden. Die [Seite zu Deep Learning und KI-Frameworks](dsvm-deep-learning-ai-frameworks.md) enthält Einzelheiten zur Nutzung dieser Tools. 
 
 ## <a name="deep-learning-tutorials-and-walkthroughs"></a>Deep Learning-Tutorials und exemplarische Vorgehensweisen
 

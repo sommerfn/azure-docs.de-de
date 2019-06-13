@@ -1,7 +1,7 @@
 ---
 title: Schnelles Starten Ihrer Experimente anhand von Beispielen
 titleSuffix: Azure Machine Learning Studio
-description: Erfahren Sie, wie Sie Machine Learning-Beispielexperimente verwenden, um mit der Azure AI Gallery und Azure Machine Learning Studio neue Experimente zu erstellen.
+description: Hier erfahren Sie, wie Sie Machine Learning-Beispielexperimente verwenden, um mit dem Azure KI-Katalog und Azure Machine Learning Studio neue Experimente zu erstellen.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: studio
@@ -17,9 +17,9 @@ ms.contentlocale: de-DE
 ms.lasthandoff: 03/19/2019
 ms.locfileid: "57861620"
 ---
-# <a name="create-azure-machine-learning-studio-experiments-from-working-examples-in-azure-ai-gallery"></a>Erstellen von Azure Machine Learning Studio-Experimenten aus funktionierenden Beispielen in Azure AI Gallery
+# <a name="create-azure-machine-learning-studio-experiments-from-working-examples-in-azure-ai-gallery"></a>Erstellen von Azure Machine Learning Studio-Experimenten aus funktionierenden Beispielen im Azure KI-Katalog
 
-Hier erfahren Sie, wie Sie Beispielexperimente aus dem [Azure AI-Katalog](https://gallery.azure.ai/) verwenden, anstatt Machine Learning-Experimente von Grund auf neu zu erstellen. Auf der Grundlage der Beispiele können Sie eine eigene Machine Learning-Lösung erstellen.
+Hier erfahren Sie, wie Sie Beispielexperimente aus dem [Azure KI-Katalog](https://gallery.azure.ai/) verwenden, anstatt Machine Learning-Experimente von Grund auf neu zu erstellen. Auf der Grundlage der Beispiele können Sie eine eigene Machine Learning-Lösung erstellen.
 
 Der Katalog enthält Beispielexperimente des Microsoft Azure Machine Learning Studio-Teams und Beispiele aus der Machine Learning-Community. Sie können zudem auch Fragen stellen oder Anmerkungen zu Experimenten veröffentlichen.
 
@@ -27,7 +27,7 @@ Die Nutzung des Katalogs wird in dem dreiminütigen Video [Kopieren der Arbeit a
 
 
 
-## <a name="find-an-experiment-to-copy-in-azure-ai-gallery"></a>Suchen nach einem zu kopierenden Experiment im Azure AI-Katalog
+## <a name="find-an-experiment-to-copy-in-azure-ai-gallery"></a>Suchen nach einem zu kopierenden Experiment im Azure KI-Katalog
 Navigieren Sie zum [Katalog](https://gallery.azure.ai/) und klicken Sie oben auf der Seite auf **Experiments** (Experimente), um anzuzeigen, welche Experimente verfügbar sind.
 
 ### <a name="find-the-newest-or-most-popular-experiments"></a>Suchen nach den neuesten oder beliebtesten Experimenten

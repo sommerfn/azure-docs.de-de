@@ -10,12 +10,12 @@ ms.topic: reference
 ms.date: 01/25/2019
 ms.author: davidmu
 ms.subservice: B2C
-ms.openlocfilehash: ca78e7a9ce44b492dafcc00c1663d54718ca7fac
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 9e8718d9216bb2f4a83f8e0373b4788210015b75
+ms.sourcegitcommit: 25a60179840b30706429c397991157f27de9e886
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64705079"
+ms.lasthandoff: 05/28/2019
+ms.locfileid: "66253776"
 ---
 # <a name="relyingparty"></a>RelyingParty
 
@@ -202,13 +202,13 @@ Das **OutputClaim**-Element enthält die folgenden Attribute:
 | Attribut | Erforderlich | BESCHREIBUNG |
 | --------- | -------- | ----------- |
 | ClaimTypeReferenceId | Ja | Ein Verweis auf ein **ClaimType**-Element, das bereits im **ClaimsSchema**-Abschnitt der Richtliniendatei definiert wurde. |
-| DefaultValue | Nein  | Ein Standardwert, der verwendet werden kann, wenn der Wert des Anspruchs leer ist. |
-| PartnerClaimType | Nein  | Sendet den Anspruch wie in der ClaimType-Definition konfiguriert über einen anderen Namen. |
+| DefaultValue | Nein | Ein Standardwert, der verwendet werden kann, wenn der Wert des Anspruchs leer ist. |
+| PartnerClaimType | Nein | Sendet den Anspruch wie in der ClaimType-Definition konfiguriert über einen anderen Namen. |
 
 ### <a name="subjectnaminginfo"></a>SubjectNamingInfo
 
 Mit dem **SubjectNameingInfo**-Element steuern Sie den Wert des Tokenantragstellers:
-- **JTW-Token:** Der `sub`-Anspruch. Dies ist ein Prinzipal, für den das Token Informationen zusichert, z.B. der Benutzer einer Anwendung. Dieser Wert ist unveränderlich und kann nicht erneut zugewiesen oder wiederverwendet werden. Er kann für die Durchführung von sicheren Autorisierungsüberprüfungen verwendet werden, z.B. wenn das Token verwendet wird, um auf eine Ressource zuzugreifen. Der Anspruch „Antragsteller“ wird standardmäßig mit der Objekt-ID des Benutzers im Verzeichnis aufgefüllt. Weitere Informationen finden Sie unter [Token, Sitzung und einmaliges Anmelden – Konfiguration](active-directory-b2c-token-session-sso.md).
+- **JWT-Token:** Der `sub`-Anspruch. Dies ist ein Prinzipal, für den das Token Informationen zusichert, z.B. der Benutzer einer Anwendung. Dieser Wert ist unveränderlich und kann nicht erneut zugewiesen oder wiederverwendet werden. Er kann für die Durchführung von sicheren Autorisierungsüberprüfungen verwendet werden, z.B. wenn das Token verwendet wird, um auf eine Ressource zuzugreifen. Der Anspruch „Antragsteller“ wird standardmäßig mit der Objekt-ID des Benutzers im Verzeichnis aufgefüllt. Weitere Informationen finden Sie unter [Token, Sitzung und einmaliges Anmelden – Konfiguration](active-directory-b2c-token-session-sso.md).
 - **SAML-Token:** Das `<Subject><NameID>`-Element, das das Subject-Element identifiziert.
 
 Das **SubjectNamingInfo**-Element enthält das folgende Attribut:

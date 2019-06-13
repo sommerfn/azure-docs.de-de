@@ -7,12 +7,12 @@ ms.date: 04/26/2019
 ms.topic: conceptual
 ms.service: azure-policy
 manager: carmonm
-ms.openlocfilehash: 6e3e01ca9bd459aa6c6aca8dfaacb98b1267fada
-ms.sourcegitcommit: 59fd8dc19fab17e846db5b9e262a25e1530e96f3
+ms.openlocfilehash: fb7f238bb5c04bb03ee500b1b953895cc88c0596
+ms.sourcegitcommit: 8c49df11910a8ed8259f377217a9ffcd892ae0ae
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/21/2019
-ms.locfileid: "65979345"
+ms.lasthandoff: 05/29/2019
+ms.locfileid: "66298924"
 ---
 # <a name="determine-causes-of-non-compliance"></a>Ermitteln der Ursachen für Nichtkonformität
 
@@ -90,6 +90,10 @@ In der folgenden Tabelle wird jeder mögliche _Grund_ der entsprechenden [Beding
 |Der aktuelle Wert muss den Zielwert als Schlüssel enthalten. |containsKey oder **nicht** notContainsKey |
 |Der aktuelle Wert muss den Zielwert enthalten. |contains oder **nicht** notContains |
 |Der aktuelle Wert muss gleich dem Zielwert sein. |equals der **nicht** notEquals |
+|Der aktuelle Wert muss kleiner als der Zielwert sein. |less oder **nicht** greaterOrEquals |
+|Der aktuelle Wert muss größer oder gleich dem Zielwert sein. |greaterOrEquals oder **nicht** less |
+|Der aktuelle Wert muss größer als der Zielwert sein. |greater oder **nicht** lessOrEquals |
+|Der aktuelle Wert muss kleiner oder gleich dem Zielwert sein. |lessOrEquals oder **nicht** greater |
 |Der aktuelle Wert muss vorhanden sein. |exists |
 |Der aktuelle Wert muss im Zielwert enthalten sein. |in der **nicht** notIn |
 |Der aktuelle Wert muss dem Zielwert entsprechen. |like oder **nicht** notLike |

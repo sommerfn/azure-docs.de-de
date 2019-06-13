@@ -169,7 +169,7 @@ ms.locfileid: "59571183"
                                                 <ul class="noBullet">
                                                     <li><a class="barLink" href="/azure/cosmos-db/">Azure Cosmos DB</a></li>
                                                 </ul>
-                                                <h4>AI und Cognitive Services</h4>
+                                                <h4>KI und Cognitive Services</h4>
                                                 <ul class="noBullet">
                                                     <li><a class="barLink" href="/azure/cognitive-services/computer-vision/">Maschinelles Sehen-API</a></li>
                                                     <li><a class="barLink" href="/azure/cognitive-services/face/">Gesichtserkennungs-API</a></li>
@@ -497,7 +497,7 @@ ms.locfileid: "59571183"
                                             </a>
                                         </li>
                                     </ul>
-                                    <h3>AI und Cognitive Services</h3>
+                                    <h3>KI + Cognitive Services</h3>
                                     <ul>
                                         <li>
                                             <a href="/azure/cognitive-services/emotion/home">

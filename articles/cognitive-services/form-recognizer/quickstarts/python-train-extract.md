@@ -9,12 +9,12 @@ ms.subservice: form-recognizer
 ms.topic: quickstart
 ms.date: 04/24/2019
 ms.author: pafarley
-ms.openlocfilehash: 139c0c29033dc45d07fd0987c2eee92308512329
-ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
+ms.openlocfilehash: ebed76c82b647d11e34a17ae94edf208929f8c56
+ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/20/2019
-ms.locfileid: "65906984"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66475252"
 ---
 # <a name="quickstart-train-a-form-recognizer-model-and-extract-form-data-by-using-the-rest-api-with-python"></a>Schnellstart: Trainieren eines Modells zur Formularerkennung und Extrahieren von Formulardaten unter Verwendung der REST-API mit Python
 
@@ -26,7 +26,7 @@ Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](htt
 Für diesen Schnellstart benötigen Sie Folgendes:
 - Zugriff auf die Vorschauversion der Formularerkennung mit eingeschränktem Zugriff. Um Zugriff auf die Vorschauversion zu erhalten, füllen Sie das [Formular zum Anfordern des Zugriffs auf die Formularerkennung](https://aka.ms/FormRecognizerRequestAccess) aus, und übermitteln Sie es.
 - Wenn Sie das Beispiel lokal ausführen möchten, muss [Python](https://www.python.org/downloads/) installiert sein.
-- Einen Satz von mindestens fünf Formularen des gleichen Typs. Für diesen Schnellstart können Sie ein [Beispieldataset](https://go.microsoft.com/fwlink/?linkid=2090451) verwenden.
+- Einen Satz von mindestens fünf Formularen des gleichen Typs. Zum Trainieren des Modells verwenden Sie diese Daten. Für diesen Schnellstart können Sie ein [Beispieldataset](https://go.microsoft.com/fwlink/?linkid=2090451) verwenden. Laden Sie die Daten in das Stammverzeichnis des Azure Blob Storage-Kontos hoch.
 
 ## <a name="create-a-form-recognizer-resource"></a>Erstellen einer Formularerkennungsressource
 
@@ -45,9 +45,12 @@ Wenn Ihnen Zugriff auf die Formularerkennung gewährt wird, erhalten Sie eine Wi
 
 Nach Abschluss der Bereitstellung Ihrer Formularerkennungsressource suchen Sie sie im Portal in der Liste **Alle Ressourcen** und wählen sie aus. Wählen Sie dann die Registerkarte **Schlüssel** aus, um Ihre Abonnementschlüssel anzuzeigen. Beide Schlüssel gewähren Ihrer App Zugriff auf die Ressource. Kopieren Sie den Wert von **KEY 1**. Sie werden sie im nächsten Abschnitt verwenden.
 
-## <a name="create-and-run-the-sample"></a>Erstellen und Ausführen des Beispiels
+## <a name="train-a-form-recognizer-model"></a>Trainieren eines Formularerkennungsmodells
 
-Um das Beispiel zu erstellen und auszuführen, nehmen Sie am nachstehenden Codeausschnitt die folgenden Änderungen vor:
+Zunächst benötigen Sie Trainingsdaten in einem Azure Storage-Blob. Als Haupteingabedaten sollten Sie mindestens fünf Beispielformulare (PDF-Dokumente und/oder Bilder) desselben Typs/mit der gleichen Struktur haben. Alternativ können Sie ein einzelnes leeres Formular mit zwei ausgefüllten Formularen verwenden. Der Dateiname des leeren Formulars muss das Wort „empty“ enthalten.
+
+Um ein Formularerkennungsmodell mit den Dokumenten in Ihrem Azure-Blobcontainer zu trainieren, rufen Sie die **Trainings**-API auf, indem Sie den folgenden Python-Code ausführen. Nehmen Sie die folgenden Änderungen vor, bevor Sie den Code ausführen:
+
 1. Ersetzen Sie `<Endpoint>` durch die Endpunkt-URL für die Formularerkennungsressource in der Azure-Region, in der Sie Ihre Abonnementschlüssel bezogen haben.
 1. Ersetzen Sie `<SAS URL>` durch die SAS-URL (Shared Access Signature) des Azure Blob Storage-Containers, in dem sich die Trainingsdaten befinden.  
 1. Ersetzen Sie `<Subscription key>` durch den Abonnementschlüssel, den Sie im vorherigen Schritt kopiert haben.

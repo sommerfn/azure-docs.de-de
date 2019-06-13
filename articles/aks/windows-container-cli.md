@@ -2,17 +2,17 @@
 title: Vorschauversion – Erstellen eines Windows Server-Containers auf einem Azure Kubernetes Service (AKS)-Cluster
 description: Hier erfahren Sie, wie Sie über die Azure-Befehlszeilenschnittstelle schnell einen Kubernetes-Cluster erstellen und eine Anwendung in einem Windows Server-Container in Azure Kubernetes Service (AKS) bereitstellen.
 services: container-service
-author: zr-msft
+author: tylermsft
 ms.service: container-service
 ms.topic: article
 ms.date: 05/06/2019
-ms.author: zarhoads
-ms.openlocfilehash: 328fb9707c7151b8696cfb55e13567db90e45b7f
-ms.sourcegitcommit: cfbc8db6a3e3744062a533803e664ccee19f6d63
+ms.author: twhitney
+ms.openlocfilehash: 5f727cb5c56c31e769edcb365f6d571253174567
+ms.sourcegitcommit: 009334a842d08b1c83ee183b5830092e067f4374
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/21/2019
-ms.locfileid: "65991154"
+ms.lasthandoff: 05/29/2019
+ms.locfileid: "66305296"
 ---
 # <a name="preview---create-a-windows-server-container-on-an-azure-kubernetes-service-aks-cluster-using-the-azure-cli"></a>Vorschauversion – Erstellen eines Windows Server-Containers auf einem Azure Kubernetes Service (AKS)-Cluster mit der Azure-Befehlszeilenschnittstelle
 
@@ -35,9 +35,10 @@ Wenn Sie die Befehlszeilenschnittstelle (CLI) lokal installieren und verwenden m
 Sie müssen nach der Erstellung Ihres Clusters einen zusätzlichen Knotenpool hinzufügen, der einen Windows Server-Container ausführen kann. Das Hinzufügen eines zusätzlichen Knotenpools wird in einem späteren Schritt behandelt, aber Sie müssen zunächst einige Previewfunktion aktivieren.
 
 > [!IMPORTANT]
-> AKS-Previewfunktionen stehen gemäß dem Self-Service- und Aktivierungsprinzip zur Verfügung. Vorschauversionen werden zum Sammeln von Feedback und Fehlern mithilfe unserer Community bereitgestellt. Allerdings werden sie vom technischen Support von Azure nicht unterstützt. Wenn Sie einen Cluster erstellen oder diese Features zu einem vorhandenen Cluster hinzufügen, wird der entsprechende Cluster erst dann unterstützt, wenn das Feature sich nicht mehr in der Vorschau befindet und in die allgemeine Verfügbarkeit übergegangen ist.
+> AKS-Previewfunktionen stehen gemäß dem Self-Service- und Aktivierungsprinzip zur Verfügung. Sie werden zum Sammeln von Feedback und Fehlern mithilfe unserer Community bereitgestellt. In der Vorschauversion sind diese Features nicht für den Einsatz in der Produktion vorgesehen. Features in der öffentlichen Vorschau unterliegen dem Prinzip des „bestmöglichen Supports“. Unterstützung durch die Teams für den technischen AKS-Support steht nur während der Geschäftszeiten in der Zeitzone „Pacific Standard Time“ (PST) zur Verfügung. Weitere Informationen hierzu finden Sie in den folgenden Supportartikeln:
 >
-> Wenn Sie Probleme mit Vorschaufunktionen haben, [eröffnen Sie ein Ticket im GitHub-Repository von AKS ][aks-github], und geben Sie den Namen des Vorschaufeatures im Fehlertitel an.
+> * [Unterstützungsrichtlinien für Azure Kubernetes Service][aks-support-policies]
+> * [Häufig gestellte Fragen zu Azure Kubernetes Service (AKS)][aks-faq]
 
 ### <a name="install-aks-preview-cli-extension"></a>Installieren der CLI-Erweiterung „aks-preview“
     
@@ -302,7 +303,6 @@ Weitere Informationen zu Azure Container Service sowie ein vollständiges Beispi
 [kubectl-get]: https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#get
 [node-selector]: https://kubernetes.io/docs/concepts/configuration/assign-pod-node/
 [dotnet-samples]: https://hub.docker.com/_/microsoft-dotnet-framework-samples/
-[aks-github]: https://github.com/azure/aks/issues
 [azure-cni]: https://github.com/Azure/azure-container-networking/blob/master/docs/cni.md
 
 <!-- LINKS - internal -->
@@ -328,3 +328,5 @@ Weitere Informationen zu Azure Container Service sowie ein vollständiges Beispi
 [kubernetes-dashboard]: kubernetes-dashboard.md
 [restricted-vm-sizes]: quotas-skus-regions.md#restricted-vm-sizes
 [use-advanced-networking]: configure-advanced-networking.md
+[aks-support-policies]: support-policies.md
+[aks-faq]: faq.md

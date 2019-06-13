@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.custom: seodec18
-ms.openlocfilehash: f4a562cab445398986c1b8f379f6cb90ca843342
-ms.sourcegitcommit: 563f8240f045620b13f9a9a3ebfe0ff10d6787a2
+ms.openlocfilehash: 18d72d46c46149aded0efcdd54f6f9d1119f8d3e
+ms.sourcegitcommit: 8e76be591034b618f5c11f4e66668f48c090ddfd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/01/2019
-ms.locfileid: "58758080"
+ms.lasthandoff: 05/29/2019
+ms.locfileid: "66357657"
 ---
 # <a name="learn-how-to-deploy-modules-and-establish-routes-in-iot-edge"></a>Bereitstellen von Modulen und Einrichten von Routen in IoT Edge
 
@@ -132,13 +132,13 @@ Routen werden in den gewünschten **$edgeHub**-Eigenschaften mit der folgenden S
 Für jede Route sind eine Quelle und eine Senke erforderlich, die Bedingung ist jedoch optional. Sie kann bei Bedarf zum Filtern von Nachrichten verwendet werden. 
 
 
-### <a name="source"></a>Quelle
+### <a name="source"></a>`Source`
 
 Die Quelle gibt an, woher die Nachrichten stammen. IoT Edge kann Nachrichten von Blattgeräten oder Modulen weiterleiten.
 
 Die Quelleigenschaft kann die folgenden Werte haben:
 
-| Quelle | BESCHREIBUNG |
+| `Source` | BESCHREIBUNG |
 | ------ | ----------- |
 | `/*` | Alle Gerät-zu-Cloud-Nachrichten oder Benachrichtigungen über Änderungen am Zwilling, die von Modulen oder Blattgeräten gesendet wurden |
 | `/twinChangeNotifications` | Alle Änderungen am Zwilling (gemeldete Eigenschaften), die von Modulen oder Blattgeräten gesendet wurden |
@@ -149,7 +149,7 @@ Die Quelleigenschaft kann die folgenden Werte haben:
 | `/messages/modules/<moduleId>/outputs/<output>` | Alle Gerät-zu-Cloud-Nachrichten, die von einem bestimmten Modul über eine bestimmte Ausgabe gesendet wurden |
 
 ### <a name="condition"></a>Bedingung
-Die Bedingung ist in einer Routendeklaration optional. Wenn Sie alle Nachrichten von der Senke an die Quelle übergeben möchten, lassen Sie die **WHERE**-Klausel ganz weg. Alternativ können Sie die [IoT Hub-Abfragesprache](../iot-hub/iot-hub-devguide-routing-query-syntax.md) verwenden, um nach bestimmten Nachrichten oder Nachrichtentypen zu filtern, die die Bedingung erfüllen. IoT Edge-Routen unterstützen keine Nachrichtenfilterung, die auf Zwillingstags oder -eigenschaften basiert. 
+Die Bedingung ist in einer Routendeklaration optional. Wenn Sie alle Nachrichten von der Quelle an die Senke übergeben möchten, lassen Sie die **WHERE**-Klausel ganz weg. Alternativ können Sie die [IoT Hub-Abfragesprache](../iot-hub/iot-hub-devguide-routing-query-syntax.md) verwenden, um nach bestimmten Nachrichten oder Nachrichtentypen zu filtern, die die Bedingung erfüllen. IoT Edge-Routen unterstützen keine Nachrichtenfilterung, die auf Zwillingstags oder -eigenschaften basiert. 
 
 Das Format der Nachrichten, die zwischen Modulen in IoT Edge übermittelt werden, entspricht dem Format der Nachrichten, die zwischen Ihren Geräten und Azure IoT Hub übermittelt werden. Alle Nachrichten liegen im JSON-Format vor und verfügen über die Parameter **systemProperties**, **appProperties** und **body**. 
 

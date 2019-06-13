@@ -9,12 +9,12 @@ ms.subservice: form-recognizer
 ms.topic: quickstart
 ms.date: 04/15/2019
 ms.author: pafarley
-ms.openlocfilehash: 942f84723bc207c200b36a63ca7f65cb9d7dab59
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.openlocfilehash: 351cb7ba2d7a55300a0ace999792a498cf72ebbb
+ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/27/2019
-ms.locfileid: "66235606"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66475267"
 ---
 # <a name="quickstart-train-a-form-recognizer-model-and-extract-form-data-by-using-the-rest-api-with-curl"></a>Schnellstart: Trainieren eines Modells zur Formularerkennung und Extrahieren von Formulardaten unter Verwendung der REST-API mit cURL
 
@@ -26,7 +26,7 @@ Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](htt
 Für diesen Schnellstart benötigen Sie Folgendes:
 - Zugriff auf die Vorschauversion der Formularerkennung mit eingeschränktem Zugriff. Um Zugriff auf die Vorschauversion zu erhalten, füllen Sie das [Formular zum Anfordern des Zugriffs auf die Formularerkennung](https://aka.ms/FormRecognizerRequestAccess) aus, und übermitteln Sie es.
 - [cURL](https://curl.haxx.se/windows/) muss installiert sein.
-- Einen Satz von mindestens fünf Formularen des gleichen Typs. Für diesen Schnellstart können Sie ein [Beispieldataset](https://go.microsoft.com/fwlink/?linkid=2090451) verwenden.
+- Einen Satz von mindestens fünf Formularen des gleichen Typs. Zum Trainieren des Modells verwenden Sie diese Daten. Für diesen Schnellstart können Sie ein [Beispieldataset](https://go.microsoft.com/fwlink/?linkid=2090451) verwenden. Laden Sie die Daten in das Stammverzeichnis des Azure Blob Storage-Kontos hoch.
 
 ## <a name="create-a-form-recognizer-resource"></a>Erstellen einer Formularerkennungsressource
 
@@ -47,7 +47,7 @@ Nach Abschluss der Bereitstellung Ihrer Formularerkennungsressource suchen Sie s
 
 ## <a name="train-a-form-recognizer-model"></a>Trainieren eines Formularerkennungsmodells
 
-Zunächst benötigen Sie Trainingsdaten. Sie können Daten in einem Azure-Blob oder Ihre eigenen lokalen Trainingsdaten verwenden. Als Haupteingabedaten sollten Sie mindestens fünf Beispielformulare (PDF-Dokumente und/oder Bilder) desselben Typs/mit der gleichen Struktur haben. Sie können auch ein einzelnes, leeres Formular verwenden. Der Dateiname des Formulars muss das Wort „empty“ enthalten.
+Zunächst benötigen Sie Trainingsdaten in einem Azure Storage-Blob. Als Haupteingabedaten sollten Sie mindestens fünf Beispielformulare (PDF-Dokumente und/oder Bilder) desselben Typs/mit der gleichen Struktur haben. Alternativ können Sie ein einzelnes leeres Formular mit zwei ausgefüllten Formularen verwenden. Der Dateiname des leeren Formulars muss das Wort „empty“ enthalten.
 
 Um ein Formularerkennungsmodell mit den Dokumenten in Ihrem Azure-Blobcontainer zu trainieren, rufen Sie die **Trainings**-API auf, indem Sie den folgenden cURL-Befehl ausführen. Nehmen Sie die folgenden Änderungen vor, bevor Sie den Befehl ausführen:
 

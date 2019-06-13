@@ -7,56 +7,48 @@ ms.subservice: performance
 ms.custom: ''
 ms.devlang: ''
 ms.topic: conceptual
-author: danimir
-ms.author: danil
+author: jovanpop-msft
+ms.author: jovanpop
 ms.reviewer: jrasnik, carlrab
 manager: craigg
 ms.date: 01/25/2019
-ms.openlocfilehash: 2a7a6ed5bd28bcc83500da6e82b6c4ff48b2989c
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: b8d0543a7dda19500880fee9d660295375f138cc
+ms.sourcegitcommit: 8e76be591034b618f5c11f4e66668f48c090ddfd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64719080"
+ms.lasthandoff: 05/29/2019
+ms.locfileid: "66356372"
 ---
 # <a name="monitoring-and-performance-tuning"></a>Überwachen und Optimieren der Datenbankleistung
 
-Azure SQL-Datenbank ist ein automatisch verwalteter und flexibler Datendienst, in dem Sie ganz einfache die Nutzung überwachen, Ressourcen (CPU, Arbeitsspeicher, E/A) hinzufügen oder entfernen und Empfehlungen zur Leistungsverbesserung Ihrer Datenbank suchen können. Außerdem können Sie die Datenbank an Ihre Workload anpassen lassen und automatisch die Leistung optimieren.
+Mit Azure SQL-Datenbank können Sie problemlos die Nutzung überwachen, Ressourcen (CPU, Arbeitsspeicher, E/A) hinzufügen oder entfernen, potenzielle Probleme behandeln und Empfehlungen suchen, mit denen sich die Leistung Ihrer Datenbank verbessern lässt. Azure SQL-Datenbank bietet eine Vielzahl von Features, mit denen sich Probleme in Ihrer Datenbank automatisch beheben lassen, wenn Sie es der Datenbank überlassen möchten, sich an Ihre Workload anzupassen und die Leistung automatisch zu optimieren. Es gibt allerdings einige spezifische Probleme, die Sie möglicherweise beheben müssen. Dieser Artikel beschreibt einige Best Practices und Tools, die Sie zum Beheben von Leistungsproblemen verwenden können.
+
+Es gibt zwei wichtige Aktivitäten, die Sie ausführen müssen, um sicherzustellen, dass Ihre Datenbank ohne Probleme ausgeführt wird:
+- [Überwachen der Datenbankleistung](#monitoring-database-performance), um sicherzustellen, dass die Ressourcen, die Ihrer Datenbank zugewiesen wurden, die Workload verarbeiten können. Wenn Sie feststellen, dass Ihre Ressourcen sich ihren Limits nähern, müssen Sie die Abfragen identifizieren, die die meisten Ressourcen verbrauchen, und diese optimieren. Alternativ dazu können Sie auch durch ein Upgrade der Dienstebene weitere Ressourcen hinzufügen.
+- [Beheben von Leistungsproblemen](#troubleshoot-performance-issues). um herauszufinden, warum ein Problem aufgetreten ist, und um die zugrunde liegende Ursache des Problems sowie die Aktion zu ermitteln, mit der sich das Problem beheben lässt.
 
 ## <a name="monitoring-database-performance"></a>Überwachen der Datenbankleistung
 
-Die Überwachung der Leistung einer SQL-Datenbank in Azure beginnt mit der Überwachung der Ressourcennutzung relativ zur gewählten Datenbankleistung. Mit Azure SQL-Datenbank können Sie Möglichkeiten zur Verbesserung und Optimierung der Abfrageleistung identifizieren, ohne dass Sie Ressourcen durch Überprüfen des [Datenbankratgebers](sql-database-advisor.md) ändern müssen. Fehlende Indizes und falsch optimierte Abfragen sind häufige Ursachen für eine schlechte Datenbankleistung. Sie können diese Empfehlungen zur Optimierung anwenden, um die Leistung Ihrer Workload zu verbessern. Sie können die Leistung Ihrer Abfragen auch automatisch durch Azure SQL-Datenbank optimieren lassen, indem Sie alle erkannten Empfehlungen anwenden und bestätigen, dass diese die Datenbankleistung verbessern (weitere Informationen finden Sie unter [automatically optimize performance of your queries (Automatisches Optimieren der Leistung Ihrer Abfragen)](sql-database-automatic-tuning.md)).
+Die Überwachung der Leistung einer SQL-Datenbank in Azure beginnt mit der Überwachung der Ressourcennutzung relativ zur gewählten Datenbankleistung. Sie müssen die folgenden Ressourcen überwachen:
+ - **CPU-Auslastung**: Sie müssen überprüfen, ob die CPU-Auslastung über einen längeren Zeitraum 100 % erreicht. Dies könnte ein Hinweis darauf sein, dass Sie ein Upgrade der Datenbank oder Instanz ausführen müssen oder dass Sie die Abfragen identifizieren und optimieren müssen, die den größten Teil der Computeleistung nutzen.
+ - **Wartestatistik**: Sie müssen überprüfen, warum Abfragen auf einige Ressourcen warten. Abfragen warten möglicherweise darauf, dass Daten abgerufen oder in Datenbankdateien gespeichert werden, oder sie warten, weil ein Ressourcenlimit erreicht wurde, usw.
+ - **E/A-Auslastung**: Sie müssen überprüfen, ob sich die E/A-Auslastung des zugrunde liegenden Speichers ihrem Limit nähert.
+ - **Arbeitsspeicherauslastung**: Die Menge an Arbeitsspeicher, der für Ihre Datenbank oder Instanz verfügbar ist, ist proportional zur Anzahl von virtuellen Kernen, und Sie müssen überprüfen, ob der Arbeitsspeicher für Ihre Workload ausreichend ist. Die Seitenlebenserwartung ist einer der Parameter, die darauf hinweisen können, ob Ihre Seiten schnell aus dem Arbeitsspeicher entfernt werden.
+
+Azure SQL-Datenbank **stellt Empfehlungen bereit, die Sie bei der Fehlerbehandlung und beim Beheben potenzieller Leistungsprobleme unterstützen können**. Sie können Möglichkeiten zur Verbesserung und Optimierung der Abfrageleistung identifizieren, ohne dass Sie Ressourcen anhand von [Empfehlungen zur Leistung für SQL-Datenbank](sql-database-advisor.md) ändern müssen. Fehlende Indizes und falsch optimierte Abfragen sind häufige Ursachen für eine schlechte Datenbankleistung. Sie können diese Empfehlungen zur Optimierung anwenden, um die Leistung Ihrer Workload zu verbessern. Sie können die Leistung Ihrer Abfragen auch automatisch durch Azure SQL-Datenbank optimieren lassen, indem Sie alle erkannten Empfehlungen anwenden und bestätigen, dass diese die Datenbankleistung verbessern (weitere Informationen finden Sie unter [automatically optimize performance of your queries (Automatisches Optimieren der Leistung Ihrer Abfragen)](sql-database-automatic-tuning.md)).
 
 Es gibt folgende Optionen für die Überwachung und Problembehandlung der Datenbankleistung:
 
 - Klicken Sie im [Azure-Portal](https://portal.azure.com) auf **SQL-Datenbanken**, wählen Sie die Datenbank aus, und suchen Sie dann mithilfe des Diagramms „Überwachung“ nach Ressourcen, die sich ihrer maximalen Leistung annähern. „DTU-Verbrauch“ wird standardmäßig angezeigt. Klicken Sie auf **Bearbeiten** , um den Zeitraum und die angezeigten Werte zu ändern.
-- Verwenden Sie die [Statistik zur Abfrageleistung](sql-database-query-performance.md), um die Abfragen zu identifizieren, die die meisten Ressourcen verbrauchen.
-- Verwenden Sie [SQL Database Advisor](sql-database-advisor-portal.md), um Empfehlungen zum Erstellen und Löschen von Indizes, zum Parametrisieren von Abfragen und zum Beheben von Schemaproblemen anzuzeigen.
+- Tools wie SQL Server Management Studio stellen viele nützliche Berichte bereit, mit deren Hilfe Sie die Ressourcennutzung überwachen und die Abfragen mit dem höchsten Ressourcenverbrauch identifizieren können.
+- Verwenden Sie [Query Performance Insight](sql-database-query-performance.md) im [Azure-Portal](https://portal.azure.com), um diejenigen Abfragen zu identifizieren, die die meisten Ressourcen verbrauchen. Dieses Feature ist nur in Einzeldatenbanken und Pools für elastische Datenbanken verfügbar.
+- Verwenden Sie [SQL Database Advisor](sql-database-advisor-portal.md), um Empfehlungen zum Erstellen und Löschen von Indizes, zum Parametrisieren von Abfragen und zum Beheben von Schemaproblemen anzuzeigen. Dieses Feature ist nur in Einzeldatenbanken und Pools für elastische Datenbanken verfügbar.
 - Mit [Azure SQL Intelligent Insights](sql-database-intelligent-insights.md) können Sie die Leistung Ihrer Datenbank automatisch überwachen. Bei Erkennung eines Leistungsproblems wird ein Diagnoseprotokoll mit Details und einer Fehlerursachenanalyse des Problems generiert. Empfehlungen zur Verbesserung der Leistung werden nach Möglichkeit bereitgestellt.
 - [Aktivieren Sie die automatische Optimierung](sql-database-automatic-tuning-enable.md), und lassen Sie erkannte Leistungsprobleme automatisch durch Azure SQL-Datenbank verbessern.
 - Verwenden Sie [dynamische Verwaltungsansichten (DMVs)](sql-database-monitoring-with-dmvs.md), [erweiterte Ereignisse](sql-database-xevent-db-diff-from-svr.md) und den [Abfragespeicher](https://docs.microsoft.com/sql/relational-databases/performance/monitoring-performance-by-using-the-query-store), um detaillierte Informationen zur Behebung von Leistungsproblemen zu erhalten.
 
 > [!TIP]
 > Im [Leistungsleitfaden](sql-database-performance-guidance.md) finden Sie Methoden, mit denen Sie die Leistung von Azure SQL-Datenbank verbessern können, nachdem Sie das Leistungsproblem mithilfe einer oder mehrerer der oben genannten Methoden ermittelt haben.
-
-## <a name="monitor-databases-using-the-azure-portal"></a>Überwachen von Datenbanken über das Azure-Portal
-
-Im [Azure-Portal](https://portal.azure.com/) können Sie die Nutzung einer einzelnen Datenbank überwachen, indem Sie die Datenbank auswählen und auf das Diagramm **Überwachung** klicken. Dadurch wird das Fenster **Metrik** geöffnet, in dem Sie durch Klicken auf die Schaltfläche **Diagramm bearbeiten** Änderungen vornehmen können. Fügen Sie die folgenden Metriken hinzu:
-
-- CPU-Prozentsatz
-- DTU-Prozentsatz
-- E/A-Prozentsatz für Daten
-- Datenbankgröße als Prozentsatz
-
-Nachdem Sie diese Metriken hinzugefügt haben, können Sie sie im Diagramm **Überwachung** mit weiteren Informationen im Fenster **Metrik** anzeigen. Alle vier Metriken geben die durchschnittliche prozentuale Nutzung relativ zur **DTU** der Datenbank an. In den Artikeln [DTU-basiertes Kaufmodell für Azure SQL-Datenbank](sql-database-service-tiers-dtu.md) und [vCore-basiertes Kaufmodell](sql-database-service-tiers-vcore.md) finden Sie weitere Informationen zu Dienstebenen.  
-
-![Tarifbezogenes Überwachen der Datenbankleistung.](./media/sql-database-single-database-monitoring/sqldb_service_tier_monitoring.png)
-
-Sie können zudem Benachrichtigungen für die Leistungsmetriken konfigurieren. Klicken Sie im Fenster **Metrik** auf die Schaltfläche **Warnung hinzufügen**. Befolgen Sie die Anweisungen des Assistenten, um die Benachrichtigung zu konfigurieren. Sie haben die Möglichkeit, Benachrichtigungen für den Fall zu konfigurieren, dass Metriken einen Schwellenwert überschreiten oder unterschreiten.
-
-Wenn Sie beispielsweise einen Anstieg der Workload Ihrer Datenbank erwarten, können Sie eine E-Mail-Benachrichtigung konfigurieren, die immer dann gesendet wird, wenn eine der Leistungsmetriken der Datenbank 80 % erreicht. Sie können dies als Frühwarnung verwenden, um zu ermitteln, wann Sie eventuell zur nächsthöheren Computegröße wechseln müssen.
-
-Anhand der Leistungsmetriken können Sie auch ermitteln, ob Sie möglicherweise eine Herabstufung auf eine niedrigere Computegröße vornehmen können. Angenommen, Sie verwenden eine Datenbank der Dienstebene "Standard S2", und alle Leistungsmetriken zeigen, dass die Datenbank zu jedem Zeitpunkt durchschnittlich nicht mehr als 10 % nutzt. Hier ist es wahrscheinlich, dass sich die Datenbank auch mit der Dienstebene "Standard S1" verwenden lässt. Bevor Sie sich für einen Wechsel zu einer niedrigeren Computegröße entscheiden, müssen Sie aber auch Workloads berücksichtigen, die Spitzen oder Schwankungen aufweisen können.
 
 ## <a name="troubleshoot-performance-issues"></a>Behandeln von Leistungsproblemen
 
@@ -65,6 +57,18 @@ Beim Diagnostizieren und Beheben von Leistungsproblemen besteht der erste Schrit
 ![Workload-Status](./media/sql-database-monitor-tune-overview/workload-states.png)
 
 Bei einem Workload mit Leistungsproblemen kann das Leistungsproblem auf CPU-Konflikte zurückzuführen sein (eine **running-related**-Bedingung) oder einzelne Abfragen warten auf etwas (eine **waitingrelated**-Bedingung).
+
+Für Probleme **in Zusammenhang mit der Ausführung** können folgende Ursachen vorliegen:
+- **Kompilierungsprobleme**: Der SQL-Abfrageoptimierer generiert möglicherweise aufgrund veralteter Statistiken, einer falschen Schätzung der zu verarbeitenden Zeilenanzahl oder einer falschen Schätzung des erforderlichen Arbeitsspeichers einen Plan, der nicht optimal ist. Wenn Sie wissen, dass die Abfrage in der Vergangenheit oder auf einer anderen Instanz (einer verwalteten Instanz oder einer SQL Server-Instanz) schneller ausgeführt wurde, vergleichen Sie die tatsächlichen Ausführungspläne, um mögliche Unterschiede festzustellen. Versuchen Sie, Abfragehinweise einzufügen oder Statistiken oder Indizes neu zu erstellen, um einen besseren Plan zu erzielen. Aktivieren Sie die automatische Plankorrektur in Azure SQL-Datenbank, um solche Probleme automatisch minimieren zu lassen.
+- **Ausführungsprobleme**: Wenn der Abfrageplan optimal ist, sind möglicherweise Grenzwerte in der Datenbank erreicht, beispielsweise beim Schreibdurchsatz von Protokollen. Möglicherweise werden auch defragmentierte Indizes verwendet, die neu erstellt werden sollten. Eine große Anzahl von gleichzeitigen Abfragen, die viele Ressourcen verbrauchen, kann ebenfalls Probleme mit der Ausführung verursachen. Probleme aufgrund von **Wartevorgängen** stehen in den meisten Fällen in Zusammenhang mit Ausführungsproblemen, weil Abfragen, die nicht effizient ausgeführt werden, möglicherweise auf Ressourcen warten.
+
+Für Probleme **in Zusammenhang mit Wartevorgängen** können folgende Ursachen vorliegen:
+- **Blockierung**: Möglicherweise hält eine Abfrage eine Sperre für einige Objekte in der Datenbank, während andere Abfragen versuchen, auf diese Objekte zuzugreifen. Mithilfe von DMVs oder Überwachungstools können Sie blockierende Abfragen einfach ermitteln.
+- **E/A-Probleme**: Möglicherweise warten Abfragen darauf, dass Seiten in die Daten- oder Protokolldateien geschrieben werden. In diesem Fall sehen Sie in der DMV die Wartestatistiken `INSTANCE_LOG_RATE_GOVERNOR`, `WRITE_LOG` oder `PAGEIOLATCH_*`.
+- **TempDB-Probleme**: Wenn Sie viele temporäre Tabellen verwenden oder viele TempDB-Überläufe in Ihren Plänen feststellen, liegt möglicherweise ein Problem mit dem TempDB-Durchsatz vor. 
+- **Arbeitsspeicherbezogene Probleme**: Möglicherweise steht für Ihre Workload nicht genügend Arbeitsspeicher zur Verfügung, sodass die Seitenlebenserwartung sinkt oder Ihre Abfragen eine geringere Speicherzuweisung erhalten als erforderlich. In einigen Fällen lassen sich diese Probleme mit den integrierten Intelligencefunktionen des Abfrageoptimierers beheben.
+ 
+In den folgenden Abschnitten wird erläutert, wie sich einige dieser Probleme identifizieren und beheben lassen.
 
 ## <a name="running-related-performance-issues"></a>Leistungsprobleme in Zusammenhang mit der Ausführung
 
@@ -76,7 +80,7 @@ Als allgemeine Richtlinie gilt: Wenn Ihre CPU-Auslastung konstant bei oder über
 
 Wenn Sie feststellen, dass ein Problem in Zusammenhang mit der Ausführung vorliegt, besteht Ihr Ziel darin, mithilfe einer oder mehrerer Methoden die genaue Ursache herauszufinden. Die gängigsten Methoden zum Ermitteln von Probleme in Zusammenhang mit der Ausführung sind die folgenden:
 
-- Verwenden Sie das [Azure-Portal](#monitor-databases-using-the-azure-portal), um die prozentuale CPU-Auslastung zu überwachen.
+- Verwenden Sie das [Azure-Portal](sql-database-manage-after-migration.md#monitor-databases-using-the-azure-portal), um die prozentuale CPU-Auslastung zu überwachen.
 - Verwenden Sie die folgenden [dynamische Verwaltungssichten](sql-database-monitoring-with-dmvs.md):
 
   - [sys.dm_db_resource_stats](sql-database-monitoring-with-dmvs.md#monitor-resource-use) gibt die CPU-, E/A- und Arbeitsspeichernutzung für eine Azure SQL-Datenbank zurück. Für alle 15 Sekunden ist eine Zeile vorhanden, selbst wenn keine Aktivität in der Datenbank erfolgt ist. Historische Daten werden eine Stunde lang aufbewahrt.

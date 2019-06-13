@@ -11,12 +11,12 @@ ms.topic: quickstart
 description: Schnelle Kubernetes-Entwicklung mit Containern, Microservices und Java in Azure
 keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, Container, Java, Helm, Service Mesh, Service Mesh-Routing, kubectl, k8s
 manager: jeconnoc
-ms.openlocfilehash: 26efa17ee699aed87ecfbbd21e7880e7538de4ea
-ms.sourcegitcommit: 59fd8dc19fab17e846db5b9e262a25e1530e96f3
+ms.openlocfilehash: 2a7ff71a8143883226c10754afc9757aea310c63
+ms.sourcegitcommit: 51a7669c2d12609f54509dbd78a30eeb852009ae
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/21/2019
-ms.locfileid: "65979129"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66393459"
 ---
 # <a name="quickstart-develop-with-java-on-kubernetes-using-azure-dev-spaces"></a>Schnellstart: Entwickeln mit Java unter Kubernetes mithilfe von Azure Dev Spaces
 
@@ -37,7 +37,7 @@ In diesem Leitfaden lernen Sie Folgendes:
 
 ## <a name="create-an-azure-kubernetes-service-cluster"></a>Erstellen eines Azure Kubernetes Service-Clusters
 
-Sie müssen in einer [unterstützten Region](https://docs.microsoft.com/azure/dev-spaces/#a-rapid,-iterative-kubernetes-development-experience-for-teams) einen AKS-Cluster erstellen. Mit den unten angegebenen Befehlen wird eine Ressourcengruppe mit dem Namen *MyResourceGroup* und der AKS-Cluster *MyAKS* erstellt.
+Sie müssen in einer [unterstützten Region][supported-regions] einen AKS-Cluster erstellen. Mit den unten angegebenen Befehlen wird eine Ressourcengruppe mit dem Namen *MyResourceGroup* und der AKS-Cluster *MyAKS* erstellt.
 
 ```cmd
 az group create --name MyResourceGroup --location eastus
@@ -119,7 +119,7 @@ Wenn Sie die Ausführung des Befehls `azds up` mit *STRG+C* anhalten, wird der D
 
 ## <a name="update-code"></a>Aktualisieren des Codes
 
-Zum Bereitstellen einer aktualisierten Version Ihres Diensts können Sie Dateien in Ihrem Projekt aktualisieren und den Befehl `azds up` erneut ausführen. Beispiel: 
+Zum Bereitstellen einer aktualisierten Version Ihres Diensts können Sie Dateien in Ihrem Projekt aktualisieren und den Befehl `azds up` erneut ausführen. Beispiel:
 
 1. Drücken Sie *STRG+C*, wenn `azds up` noch ausgeführt wird.
 1. Aktualisieren Sie [Zeile 19 unter `src/main/java/com/ms/sample/webfrontend/Application.java`](https://github.com/Azure/dev-spaces/blob/master/samples/java/getting-started/webfrontend/src/main/java/com/ms/sample/webfrontend/Application.java#L19) in:
@@ -188,7 +188,7 @@ Entfernen Sie den Haltepunkt, indem Sie Ihren Cursor in `src/main/java/com/ms/sa
 
 ## <a name="update-code-from-visual-studio-code"></a>Aktualisieren von Code aus Visual Studio Code
 
-Aktualisieren Sie während der Ausführung des Diensts im Debugmodus Zeile 19 in `src/main/java/com/ms/sample/webfrontend/Application.java`. Beispiel: 
+Aktualisieren Sie während der Ausführung des Diensts im Debugmodus Zeile 19 in `src/main/java/com/ms/sample/webfrontend/Application.java`. Beispiel:
 ```java
 return "Hello from webfrontend in Azure while debugging!";
 ```
@@ -213,3 +213,6 @@ Informieren Sie sich darüber, wie Azure Dev Spaces Sie bei der Entwicklung komp
 
 > [!div class="nextstepaction"]
 > [Arbeiten mit mehreren Containern und Teamentwicklung](multi-service-java.md)
+
+
+[supported-regions]: about.md#supported-regions-and-configurations

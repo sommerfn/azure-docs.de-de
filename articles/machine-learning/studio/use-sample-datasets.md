@@ -20,7 +20,7 @@ ms.locfileid: "57880992"
 # <a name="use-the-sample-datasets-in-azure-machine-learning-studio"></a>Verwenden von Beispieldatasets in Azure Machine Learning Studio
 [top]: #machine-learning-sample-datasets
 
-Beim Erstellen eines neuen Arbeitsbereichs in Azure Machine Learning Studio ist eine Reihe von Beispieldatasets und -experimenten standardmäßig enthalten. Viele dieser Beispieldatasets werden von den Beispielmodellen im [Azure AI-Katalog](https://gallery.azure.ai/) verwendet. Andere sind als Beispiele für verschiedene Arten von Daten vorhanden, die normalerweise für Machine Learning verwendet werden.
+Beim Erstellen eines neuen Arbeitsbereichs in Azure Machine Learning Studio ist eine Reihe von Beispieldatasets und -experimenten standardmäßig enthalten. Viele dieser Beispieldatasets werden von den Beispielmodellen im [Azure KI-Katalog](https://gallery.azure.ai/) verwendet. Andere sind als Beispiele für verschiedene Arten von Daten vorhanden, die normalerweise für Machine Learning verwendet werden.
 
 Einige dieser Datasets sind in Azure Blob Storage verfügbar. Für diese Datasets enthält die folgende Tabelle einen direkten Link. Sie können die Datasets mithilfe des Moduls [Import Data][import-data] in Ihren Experimenten nutzen.
 

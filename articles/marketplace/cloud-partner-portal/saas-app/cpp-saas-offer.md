@@ -7,12 +7,12 @@ ms.service: marketplace
 ms.topic: conceptual
 ms.date: 05/16/2019
 ms.author: pbutlerm
-ms.openlocfilehash: 08baf908d47cdc6a9bc1e97f88eb5ff509d6790e
-ms.sourcegitcommit: 3ced637c8f1f24256dd6ac8e180fff62a444b03c
+ms.openlocfilehash: 813cfb25ebcd3dd15314d7aa05933d0bf1167917
+ms.sourcegitcommit: 25a60179840b30706429c397991157f27de9e886
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/17/2019
-ms.locfileid: "65835054"
+ms.lasthandoff: 05/28/2019
+ms.locfileid: "66258057"
 ---
 # <a name="azure-saas-application-offer"></a>Azure-SaaS-Anwendungsangebot
 
@@ -20,6 +20,7 @@ In diesem Abschnitt wird beschrieben, wie Sie ein SaaS-Anwendungsangebot (Softwa
 
 > [!IMPORTANT] 
 > Die SaaS-Angebotsfunktionalität wird zum [Microsoft Partner Center](https://partner.microsoft.com/dashboard/directory) migriert.  Alle neuen Herausgeber müssen das Partner Center für die Erstellung neuer SaaS-Angebote und die Verwaltung bestehender Angebote verwenden.  Aktuelle Herausgeber mit SaaS-Angeboten werden schrittweise vom Cloud-Partnerportal zum Partner Center migriert.  Das Cloud-Partnerportal zeigt Statusmeldungen an, um anzugeben, wann bestimmte bestehende Angebote migriert wurden.
+> Weitere Informationen finden Sie unter [Erstellen eines neuen SaaS-Angebots](../../partner-center-portal/create-new-saas-offer.md).
 
 
 Verwenden Sie SaaS-Anwendungen, wenn Ihre Lösung in Ihrem eigenen Azure-Abonnement bereitgestellt wird und Kunden sich über eine Schnittstelle anmelden, die Sie entwerfen und verwalten, um die Anwendung zu testen. <a href="https://azure.microsoft.com/services/active-directory">Azure Active Directory</a> (AAD) wird verwendet, um Ihre vorhandene Testumgebung zu nutzen.

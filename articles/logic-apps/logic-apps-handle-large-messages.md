@@ -57,7 +57,7 @@ Ist für einen Endpunkt Blockerstellung für Downloads oder Uploads aktiviert, w
 
 Außerdem müssen Sie, wenn eine HTTP-Aktion Blockerstellung noch nicht unterstützt, Blockerstellung auch in `runTimeConfiguration`-Eigenschaft der Aktion einrichten. Sie können diese Eigenschaft innerhalb der Aktion festlegen, entweder direkt im Codeansicht-Editor, wie dies weiter unten beschrieben ist, oder im Designer für Logik-Apps, wie dies hier beschrieben ist:
 
-1. Wählen Sie in der oberen rechten Ecke der HTTP-Aktion die Ellipsenschaltfläche (**...**) aus, und wählen Sie dann **Einstellungen** aus.
+1. Wählen Sie in der oberen rechten Ecke der HTTP-Aktion die Ellipsenschaltfläche ( **...** ) aus, und wählen Sie dann **Einstellungen** aus.
 
    ![Menü „Einstellungen“ für die Aktion öffnen](./media/logic-apps-handle-large-messages/http-settings.png)
 
@@ -120,15 +120,15 @@ In den folgenden Schritten ist die Vorgehensweise ausführlich beschrieben, in d
    | Logic Apps-Feld für Anforderungsheader | Wert | Typ | BESCHREIBUNG |
    |---------------------------------|-------|------|-------------|
    | **x-ms-transfer-mode** | chunked | String | Gibt an, dass der Inhalt in Blöcken (Segmenten) hochgeladen wird |
-   | **x-ms-content-length** | <*Inhaltslänge*> | Integer  | Der Gesamtgröße des Inhalts in Bytes vor der Blockerstellung |
+   | **x-ms-content-length** | <*Inhaltslänge*> | Ganze Zahl | Der Gesamtgröße des Inhalts in Bytes vor der Blockerstellung |
    ||||
 
 2. Der Endpunkt antwortet mit dem Erfolgsstatuscode „200“ und diesen optionalen Informationen:
 
    | Endpunktfeld für Antwortheader | Typ | Erforderlich | BESCHREIBUNG |
    |--------------------------------|------|----------|-------------|
-   | **x-ms-chunk-size** | Integer  | Nein  | Der vorgeschlagene Blockgröße in Bytes |
-   | **Location** | String | Nein  | Die URL-Adresse, an die die HTTP-PATCH-Nachrichten gesendet werden sollen |
+   | **x-ms-chunk-size** | Ganze Zahl | Nein | Der vorgeschlagene Blockgröße in Bytes |
+   | **Location** | String | Nein | Die URL-Adresse, an die die HTTP-PATCH-Nachrichten gesendet werden sollen |
    ||||
 
 3. Ihre Logik-App erstellt und sendet nacheinander HTTP-PATCH-Nachrichten, wobei jede Nachricht diese Informationen enthält:

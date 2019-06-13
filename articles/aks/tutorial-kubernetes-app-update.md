@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 12/19/2018
 ms.author: twhitney
 ms.custom: mvc
-ms.openlocfilehash: f183fd9c9aca3e1c8ed5e2e31d2a451fae92e0a4
-ms.sourcegitcommit: 009334a842d08b1c83ee183b5830092e067f4374
+ms.openlocfilehash: 05eac7e673ad01e9d3e0fb25f261444fd7bc4e6d
+ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/29/2019
-ms.locfileid: "66304478"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66475503"
 ---
 # <a name="tutorial-update-an-application-in-azure-kubernetes-service-aks"></a>Tutorial: Aktualisieren einer Anwendung in Azure Kubernetes Service (AKS)
 
@@ -85,7 +85,10 @@ Verwenden Sie [docker tag][docker-tag], um das Image zu kennzeichnen. Ersetzen S
 docker tag azure-vote-front <acrLoginServer>/azure-vote-front:v2
 ```
 
-Verwenden Sie jetzt [docker push][docker-push], um das Image in Ihre Registrierung hochzuladen. Ersetzen Sie `<acrLoginServer>` durch Ihren ACR-Anmeldeservernamen. Falls bei Pushvorgängen an die ACR-Registrierung Probleme auftreten, sollten Sie sich vergewissern, dass Sie den Befehl [az acr login][az-acr-login] ausgeführt haben.
+Verwenden Sie jetzt [docker push][docker-push], um das Image in Ihre Registrierung hochzuladen. Ersetzen Sie `<acrLoginServer>` durch Ihren ACR-Anmeldeservernamen.
+
+> [!NOTE]
+> Falls bei Pushvorgängen an die ACR-Registrierung Probleme auftreten, sollten Sie sich vergewissern, dass Sie noch angemeldet sind. Führen Sie den Befehl [az acr login][az-acr-login] unter Verwendung des Namens Ihrer Azure Container Registry-Instanz aus, die Sie im Schritt [Erstellen einer Azure-Containerregistrierung](tutorial-kubernetes-prepare-acr.md#create-an-azure-container-registry) erstellt haben. Beispiel: `az acr login --name <azure container registry name>`.
 
 ```console
 docker push <acrLoginServer>/azure-vote-front:v2

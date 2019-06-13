@@ -1,18 +1,18 @@
 ---
 title: Häufig gestellte Fragen zum Sichern von Dateien und Ordnern mit Azure Backup
 description: Hierin geht es um häufig gestellte Fragen zum Sichern von Dateien und Ordnern mit Azure Backup.
-author: lingliw
-manager: digimobile
+author: dcurwin
+manager: carmonm
 ms.service: backup
 ms.topic: conceptual
-ms.date: 04/30/2019
-ms.author: v-lingwu
-ms.openlocfilehash: 5dbd4fefd5c5e1acd7e12ace547ddb8866b7f081
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.date: 05/28/2019
+ms.author: dacurwin
+ms.openlocfilehash: 1ac3cdecc79cafb9ea2697cca3c87b2ebe083d40
+ms.sourcegitcommit: 25a60179840b30706429c397991157f27de9e886
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65148587"
+ms.lasthandoff: 05/28/2019
+ms.locfileid: "66254862"
 ---
 # <a name="common-questions-about-backing-up-files-and-folders"></a>Häufig gestellte Fragen zum Sichern von Dateien und Ordnern 
 
@@ -101,7 +101,7 @@ Diese Warnung tritt auf, wenn die auf dem lokalen Server gespeicherten Sicherung
 Die Größe des Cacheordners bestimmt die Menge der Daten, die Sie sichern.
 - Die Cacheordnervolumes sollten freien Speicherplatz haben, der mindestens 5-10 % der Gesamtgröße der Sicherungsdaten ausmacht.
 - Wenn weniger als 5-10 % Speicherplatz zur Verfügung stehen, vergrößern Sie das Volume, oder verschieben Sie den Cacheordner auf ein Volume mit ausreichend freiem Speicherplatz.
-- 
+- Wenn Sie den Windows-Systemstatus sichern, benötigen Sie zusätzlich 30-35 GB freien Speicherplatz auf dem Volume, das den Cacheordner enthält.
 ### <a name="how-do-i-change-the-cache-location-for-the-mars-agent"></a>Wie ändere ich den Cachespeicherort für den MARS-Agent?
 
 

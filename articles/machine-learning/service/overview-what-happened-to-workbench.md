@@ -76,7 +76,7 @@ Weitere Informationen zur Verwendung des Azure Machine Learning Data Prep SDK fi
 
 Sie verlieren weder Code noch Arbeit. In der älteren Version stellen Projekte Cloudentitäten mit einem lokalen Verzeichnis dar. In der aktuellen Version fügen Sie lokale Verzeichnisse mithilfe einer lokalen Konfigurationsdatei an den Arbeitsbereich des Azure Machine Learning Service an. Hier finden Sie ein [Diagramm der aktuellen Architektur](concept-azure-machine-learning-architecture.md).
 
-Ein großer Teil des Projektinhalts befindet sich bereits auf Ihrem lokalen Computer. Daher müssen Sie lediglich eine Konfigurationsdatei im betreffenden Verzeichnis erstellen und in Ihrem Code auf sie verweisen, um ihn mit Ihrem Arbeitsbereich zu verbinden. Um das lokale Verzeichnis, das Ihre Dateien und Skripts enthält, weiterhin zu verwenden, geben Sie den Namen des Verzeichnisses im Python-Befehl ['experiment.submit'](https://docs.microsoft.com/python/api/azureml-core/azureml.core.experiment.experiment?view=azure-ml-py) ein. Alternativ hierzu können Sie auch den CLI-Befehl `az ml project attach` verwenden.  Beispiel: 
+Ein großer Teil des Projektinhalts befindet sich bereits auf Ihrem lokalen Computer. Daher müssen Sie lediglich eine Konfigurationsdatei im betreffenden Verzeichnis erstellen und in Ihrem Code auf sie verweisen, um ihn mit Ihrem Arbeitsbereich zu verbinden. Um das lokale Verzeichnis, das Ihre Dateien und Skripts enthält, weiterhin zu verwenden, geben Sie den Namen des Verzeichnisses im Python-Befehl ['experiment.submit'](https://docs.microsoft.com/python/api/azureml-core/azureml.core.experiment.experiment?view=azure-ml-py) ein. Alternativ hierzu können Sie auch den CLI-Befehl `az ml project attach` verwenden.  Beispiel:
 ```python
 run = exp.submit(source_directory = script_folder, script = 'train.py', run_config = run_config_system_managed)
 ```
@@ -105,7 +105,7 @@ Ja, sie werden noch bis Januar funktionieren. Siehe den vorigen Abschnitt [Zeitp
 
 Wenn Sie das neue Python SDK in der neuesten Version verwenden, können Sie mit dem Azure Machine Learning Service in beliebigen Python-Umgebungen interagieren. Informationen zur Installation des aktuellen <a href="https://aka.ms/aml-sdk" target="_blank">SDKs</a>. Sie können auch die aktualisierte [Azure Machine Learning CLI-Erweiterung](reference-azure-machine-learning-cli.md) mit dem umfassenden Satz an `az ml`-Befehlen verwenden, um mit dem Dienst in einer beliebigen Befehlszeilenumgebung zu interagieren, einschließlich der Azure Cloud Shell.
 
-## <a name="what-about-visual-studio-code-tools-for-ai"></a>Wie sieht es mit Visual Studio Code Tools for AI aus?
+## <a name="what-about-visual-studio-code-tools-for-ai"></a>Wie sieht es mit Visual Studio Code Tools für KI aus?
 
 In dieser aktuellen Version wurde die Erweiterung in Azure Machine Learning für Visual Studio Code umbenannt sowie erweitert und verbessert, um die zuvor genannten neuen Features zu unterstützen.
 

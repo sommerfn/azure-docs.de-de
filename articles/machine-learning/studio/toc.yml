@@ -26,7 +26,7 @@
   items:
     - name: Verfügbare Datasets
       href: use-sample-datasets.md
-    - name: Azure AI-Katalog
+    - name: Azure KI-Katalog
       href: gallery-how-to-use-contribute-publish.md
 - name: Konzepte
   items:
@@ -73,7 +73,7 @@
         - name: Verwenden von PowerShell zum Erstellen von Modellen
           displayName: 'endpoint, endpoints'
           href: create-models-and-endpoints-with-powershell.md
-        - name: Ausprobieren von Experimenten in AI Gallery
+        - name: Ausprobieren von Experimenten im KI-Katalog
           displayName: gallery
           href: sample-experiments.md
         - name: Auswerten und Interpretieren von Ergebnissen

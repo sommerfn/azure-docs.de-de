@@ -9,12 +9,12 @@ ms.date: 09/11/2018
 ms.topic: conceptual
 description: Schnelle Kubernetes-Entwicklung mit Containern und Microservices in Azure
 keywords: 'Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, Container, Helm, Service Mesh, Service Mesh-Routing, kubectl, k8s '
-ms.openlocfilehash: 39ef23d04dc1cf1b48297ecf8f0accfef4935cd2
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.openlocfilehash: 693abccd7e54a1dfef92cd57a715ac96bfd56a8c
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66158956"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66234006"
 ---
 # <a name="troubleshooting-guide"></a>Handbuch zur Problembehandlung
 
@@ -404,3 +404,8 @@ Erstellen eines Controllers mit einem alternativen Namen:
 ```cmd
 azds controller create --name my-controller --target-name MyAKS --resource-group MyResourceGroup
 ```
+
+## <a name="enabling-dev-spaces-failing-when-windows-node-pools-are-added-to-an-aks-cluster"></a>Fehler beim Aktivieren von Dev Spaces, wenn Windows-Knotenpools einem AKS-Cluster hinzugefügt werden
+
+### <a name="reason"></a>`Reason`
+Zurzeit ist Azure Dev Spaces nur für die Ausführung auf Linux-Pods und -Knoten vorgesehen. Zu diesem Zeitpunkt können Sie Azure Dev Spaces auf einem AKS-Cluster mit einem Windows-Knotenpool nicht aktivieren.

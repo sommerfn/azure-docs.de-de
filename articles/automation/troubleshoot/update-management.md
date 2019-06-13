@@ -4,16 +4,16 @@ description: Erfahren Sie, wie Sie Fehler mit Updateverwaltung beheben können.
 services: automation
 author: georgewallace
 ms.author: gwallace
-ms.date: 04/05/2019
+ms.date: 05/07/2019
 ms.topic: conceptual
 ms.service: automation
 manager: carmonm
-ms.openlocfilehash: 22e3ea1c90946902fc2a16d947ff2884e5e0a44b
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: f286877c6a9e787c06a8a846efaf94668c04fc4e
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59274585"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65787691"
 ---
 # <a name="troubleshooting-issues-with-update-management"></a>Behandeln von Problemen mit Updateverwaltung
 
@@ -160,6 +160,38 @@ Der Hybrid Runbook Worker konnte kein selbstsigniertes Zertifikat generieren.
 
 Überprüfen Sie, ob das Systemkonto über Lesezugriff auf den Ordner **C:\ProgramData\Microsoft\Crypto\RSA** verfügt, und versuchen Sie es erneut.
 
+### <a name="failed-to-start"></a>Szenario: Beim Starten eines Computers in einer Updatebereitstellung wird die Fehlermeldung „Fehler beim Starten“ zurückgegeben
+
+#### <a name="issue"></a>Problem
+
+Für einen Computer wird der Status **Fehler beim Starten** angezeigt. Wenn Sie sich die Detailinformationen für den Computer ansehen, wird der folgende Fehler angezeigt:
+
+```error
+Failed to start the runbook. Check the parameters passed. RunbookName Patch-MicrosoftOMSComputer. Exception You have requested to create a runbook job on a hybrid worker group that does not exist.
+```
+
+#### <a name="cause"></a>Ursache
+
+Dieser Fehler kann folgende Ursachen haben:
+
+* Der Computer ist nicht mehr vorhanden.
+* Der Computer ist ausgeschaltet und nicht erreichbar.
+* Für den Computer besteht ein Netzwerkverbindungsproblem, und der Hybrid Worker auf dem Computer ist nicht erreichbar.
+* Ein Update von Microsoft Monitoring Agent hat zu einer Änderung von SourceComputerId geführt.
+* Die Ausführung des Updates wurde möglicherweise gedrosselt, wenn das Limit von 2.000 gleichzeitigen Aufträgen in einem Automation-Konto erreicht wurde. Jede Bereitstellung kann als Auftrag betrachtet werden, und jeder Computer in einer Updatebereitstellung zählt als Auftrag. Jeder andere Automatisierungsauftrag oder jede Updatebereitstellung, der bzw. die in Ihrem Automation-Konto ausgeführt wird, wird auf das Limit für gleichzeitige Aufträge angerechnet.
+
+#### <a name="resolution"></a>Lösung
+
+Verwenden Sie [dynamische Gruppen](../automation-update-management.md#using-dynamic-groups) (falls vorhanden) für Ihre Updatebereitstellungen.
+
+* Stellen Sie sicher, dass der Computer noch vorhanden und erreichbar ist. Wenn er nicht mehr vorhanden ist, bearbeiten Sie Ihre Bereitstellung und entfernen Sie den Computer.
+* Im Abschnitt zu [Netzwerkplanung](../automation-update-management.md#ports) finden Sie eine Liste der Ports und Adressen, die für die Updateverwaltung erforderlich sind. Stellen Sie sicher, dass Ihr Computer diese Anforderungen erfüllt.
+* Führen Sie die folgende Abfrage in Log Analytics aus, um nach Computern in Ihrer Umgebung zu suchen, bei denen sich `SourceComputerId` geändert hat. Suchen Sie nach Computern, die denselben `Computer`-Wert, aber einen anderen `SourceComputerId`-Wert haben. Sobald Sie die betroffenen Computer gefunden haben, müssen Sie die Updatebereitstellungen für diese Computer bearbeiten und die Computer entfernen und dann erneut hinzufügen, damit `SourceComputerId` den richtigen Wert aufweist.
+
+   ```loganalytics
+   Heartbeat | where TimeGenerated > ago(30d) | distinct SourceComputerId, Computer, ComputerIP
+   ```
+
 ### <a name="hresult"></a>Szenario: Computer wird als nicht bewertet mit einer HResult-Ausnahme angezeigt.
 
 #### <a name="issue"></a>Problem
@@ -177,7 +209,9 @@ Doppelklicken Sie auf die rot angezeigte Ausnahme, um die vollständige Ausnahme
 |Ausnahme  |Lösung oder Aktion  |
 |---------|---------|
 |`Exception from HRESULT: 0x……C`     | Suchen Sie den entsprechenden Fehlercode in der [Windows Update-Fehlercodeliste](https://support.microsoft.com/help/938205/windows-update-error-code-list), um weitere Details zur Ursache der Ausnahme zu erfahren.        |
-|`0x8024402C` oder `0x8024401C`     | Diese Fehler deuten auf Netzwerkkonnektivitätsprobleme hin. Stellen Sie sicher, dass Ihr Computer über die richtige Netzwerkkonnektivität für die Updateverwaltung verfügt. Im Abschnitt [Netzwerkplanung](../automation-update-management.md#ports) finden Sie eine Liste der erforderlichen Ports und Adressen.        |
+|`0x8024402C`</br>`0x8024401C`</br>`0x8024402F`      | Diese Fehler deuten auf Netzwerkkonnektivitätsprobleme hin. Stellen Sie sicher, dass Ihr Computer über die richtige Netzwerkkonnektivität für die Updateverwaltung verfügt. Im Abschnitt [Netzwerkplanung](../automation-update-management.md#ports) finden Sie eine Liste der erforderlichen Ports und Adressen.        |
+|`0x8024001E`| Der Updatevorgang konnte nicht abgeschlossen werden, da der Dienst oder das System heruntergefahren wurden.|
+|`0x8024002E`| Der Windows Update-Dienst ist deaktiviert.|
 |`0x8024402C`     | Wenn Sie einen WSUS-Server verwenden, stellen Sie sicher, dass die Registrierungswerte für `WUServer` und `WUStatusServer` unter dem Registrierungsschlüssel `HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate` den richtigen WSUS-Server aufweisen.        |
 |`The service cannot be started, either because it is disabled or because it has no enabled devices associated with it. (Exception from HRESULT: 0x80070422)`     | Stellen Sie sicher, dass der Windows Update-Dienst (wuauserv) ausgeführt wird und nicht deaktiviert ist.        |
 |Weitere generische Ausnahmen     | Suchen Sie im Internet nach möglichen Lösungen, und arbeiten Sie mit Ihrem lokalen IT-Support zusammen.         |

@@ -35,11 +35,11 @@ Um in Azure HDInsight einen ML Services-Cluster zu erstellen, wählen Sie beim E
 
 ML Services in HDInsight bietet folgende Vorteile:
 
-### <a name="ai-innovation-from-microsoft-and-open-source"></a>AI-Innovation von Microsoft und Open-Source
+### <a name="ai-innovation-from-microsoft-and-open-source"></a>KI-Innovation von Microsoft und Open-Source
 
   ML Services beinhaltet hochgradig skalierbare, verteilte Algorithmen, etwa [RevoscaleR](https://docs.microsoft.com/machine-learning-server/r-reference/revoscaler/revoscaler), [revoscalepy](https://docs.microsoft.com/machine-learning-server/python-reference/revoscalepy/revoscalepy-package) und [microsoftML](https://docs.microsoft.com/machine-learning-server/python-reference/microsoftml/microsoftml-package), die auf Datenvolumen oberhalb der Größe des Arbeitsspeichers angewandt werden können und sich in verteilter Form auf einer Vielzahl von Plattformen ausführen lassen. Erfahren Sie mehr über die Sammlung der angepassten [R-Pakete](https://docs.microsoft.com/machine-learning-server/r-reference/introducing-r-server-r-package-reference) und [Python-Pakete](https://docs.microsoft.com/machine-learning-server/python-reference/introducing-python-package-reference) von Microsoft, die im Lieferumfang des Produkts enthalten sind.
   
-  ML Services verbindet diese Microsoft-Innovationen mit Beiträgen aus der Open-Source-Community (R-, Python- und AI-Toolkits) auf einer einzelnen Plattform auf Unternehmensniveau. Jedes Open-Source-Paket für maschinelles Lernen in R oder Python funktioniert parallel mit jeder proprietären Innovation von Microsoft.
+  ML Services verbindet diese Microsoft-Innovationen mit Beiträgen aus der Open-Source-Community (R-, Python- und KI-Toolkits) auf einer einzelnen Plattform auf Unternehmensniveau. Jedes Open-Source-Paket für maschinelles Lernen in R oder Python funktioniert parallel mit jeder proprietären Innovation von Microsoft.
 
 ### <a name="simple-secure-and-high-scale-operationalization-and-administration"></a>Einfache, sichere und hochgradig skalierbare Operationalisierung und Verwaltung
 

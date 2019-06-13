@@ -8,19 +8,20 @@ ms.topic: include
 ms.date: 05/06/2019
 ms.author: akjosh; cynthn
 ms.custom: include file
-ms.openlocfilehash: 4063e79a9415ac35b09cc77d0110c04e191b49c7
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.openlocfilehash: 7a0e628eed861767d1eeb50b0ded7bb3d8807328
+ms.sourcegitcommit: 25a60179840b30706429c397991157f27de9e886
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66145874"
+ms.lasthandoff: 05/28/2019
+ms.locfileid: "66271598"
 ---
-Der Katalog mit freigegebenen Images ist ein Dienst, der Ihnen hilft, Ihre benutzerdefinierten verwalteten VM-Images zu strukturieren und organisieren. Kataloge mit freigegebenen Images stellen Folgendes bereit:
+Katalog mit freigegebenen Images ist ein Dienst, der Ihnen hilft, Ihre verwalteten Images zu strukturieren und organisieren. Kataloge mit freigegebenen Images stellen Folgendes bereit:
 
 - Verwaltete globale Replikation von Images.
 - Versionsverwaltung und Gruppierung von Images zur einfacheren Verwaltung.
-- Machen Sie Ihre Images mit ZRS-Konten (zonenredundanter Speicher) in Regionen hochverfügbar, die Verfügbarkeitszonen unterstützen. ZRS bietet bessere Ausfallsicherheit bei zonenbezogenen Fehlern.
-- Freigeben über Abonnements hinweg und sogar zwischen Mandanten über RBAC.
+- Hochverfügbare Images mit ZRS-Konten (zonenredundanter Speicher) in Regionen, die Verfügbarkeitszonen unterstützen. ZRS bietet bessere Ausfallsicherheit bei zonenbezogenen Fehlern.
+- Freigeben über Abonnements hinweg und sogar zwischen Active Directory-Mandanten (AD) über RBAC.
+- Skalieren Ihrer Bereitstellungen mit Imagereplikaten in jeder Region.
 
 Mit einem Katalog mit freigegebenen Images können Sie Ihre Images für unterschiedliche Benutzer, Dienstprinzipale oder AD-Gruppen in Ihrer Organisation freigeben. Freigegebene Images können zur schnelleren Skalierung Ihrer Bereitstellungen in mehreren Regionen repliziert werden.
 
@@ -102,7 +103,26 @@ Weitere Informationen finden Sie unter [Vergleichen der Ressourcennutzung mit Gr
 ## <a name="scaling"></a>Skalieren
 Im Katalog mit freigegebenen Images können Sie die Anzahl der Replikate angeben, die Azure für die Images verwalten soll. Dies ist in Szenarien mit mehreren VM-Bereitstellungen hilfreich, da die VM-Bereitstellungen auf verschiedene Replikate verteilt werden können. Dadurch wird die Wahrscheinlichkeit verringert, dass der Instanzerstellungsprozess durch die Überlastung eines einzelnen Replikats gedrosselt wird.
 
+
+Mit dem Katalog mit freigegebenen Images können Sie jetzt bis zu 1.000 VM-Instanzen in einer VM-Skalierungsgruppe bereitstellen (erhöht von 600 mit verwalteten Images). Imagereplikate bieten eine bessere Leistung, Zuverlässigkeit und Konsistenz bei der Bereitstellung.  Sie können in jeder Zielregion ein andere Replikatanzahl festlegen, basierend auf der für die Region erforderlichen Skalierung. Da jedes Replikat eine tiefe Kopie Ihres Images ist, hilft dies dabei, Ihre Bereitstellungen mit jedem zusätzlichen Replikat linear zu skalieren. Natürlich sind wir uns bewusst, dass keine zwei Images oder Regionen identisch sind, doch dies ist unsere allgemeine Richtlinie für die Verwendung von Replikaten in einer Region:
+
+- Pro 20 virtuelle Computer, die Sie gleichzeitig erstellen, empfehlen wir, dass Sie ein Replikat behalten. Wenn Sie beispielsweise 120 VMs gleichzeitig mit demselben Image in einer Region erstellen, empfehlen wir, dass Sie mindestens 6 Replikate Ihres Images behalten. 
+- Für jede Skalierungsgruppenbereitstellung mit bis zu 600 Instanzen empfehlen wir, dass Sie mindestens ein Replikat behalten. Wenn Sie beispielsweise 5 Skalierungsgruppen gleichzeitig erstellen, wobei jede davon 600 VM-Instanzen in einer Region enthält, die dasselbe Image verwenden, empfehlen wir, dass Sie mindestens 5 Replikate Ihres Images behalten. 
+
+Wir empfehlen Ihnen stets, die Anzahl der Replikate überdimensioniert bereitzustellen, wegen Faktoren wie Größe, Inhalt und Betriebssystemtyp des Images.
+
+
 ![Eine Abbildung, die zeigt, wie Sie Images skalieren können](./media/shared-image-galleries/scaling.png)
+
+
+
+## <a name="make-your-images-highly-available"></a>Hochverfügbarkeit für Ihre Images
+
+[Zonenredundanter Azure-Speicher (ZRS)](https://azure.microsoft.com/blog/azure-zone-redundant-storage-in-public-preview/) bietet Resilienz vor einem Ausfall der Verfügbarkeitszone in der Region. Mit der allgemeinen Verfügbarkeit des Katalogs mit freigegebenen Images können Sie sich entschließen, Ihre Images in ZRS-Konten in Regionen mit Verfügbarkeitszonen zu speichern. 
+
+Sie können außerdem den Kontotyp für jede der Zielregionen auswählen. Der Standardtyp des Speicherkontos ist „Standard_LRS“, aber Sie können „Standard_ZRS“ für Regionen mit Verfügbarkeitszonen auswählen. Überprüfen Sie die regionale Verfügbarkeit von ZRS [hier](https://docs.microsoft.com/azure/storage/common/storage-redundancy-zrs).
+
+![Grafik mit ZRS](./media/shared-image-galleries/zrs.png)
 
 
 ## <a name="replication"></a>Replikation
@@ -115,17 +135,16 @@ Die Regionen, in die eine Versionen eines freigegebenen Images repliziert wird, 
 
 ## <a name="access"></a>Access
 
-Da es sich bei dem Katalog mit freigegebenen Images, dem freigegebenen Image und der Version des freigegebenen Images um Ressourcen handelt, lassen sich alle mithilfe der integrierten nativen Azure-RBAC-Steuerelemente freigeben. Mithilfe der rollenbasierten Zugriffssteuerung können Sie diese Ressourcen für andere Benutzer, Dienstprinzipalen und Gruppen freigeben. Sie können sogar Zugriff für Personen freigeben, die sich außerhalb des Mandanten befinden, in dem sie erstellt wurden. Sobald ein Benutzer Zugriff auf die Version eines freigegebenen Images hat, kann er einen virtuellen Computer oder eine VM-Skalierungsgruppe bereitstellen.  Im Folgenden finden Sie die Matrix für das Teilen, die dabei hilft, zu verstehen, worauf der Benutzer Zugriff erhält:
+Da es sich bei dem Katalog mit freigegebenen Images, der Imagedefinition und der Imageversion alles um Ressourcen handelt, lassen sich diese mithilfe der integrierten nativen Azure-RBAC-Steuerelemente freigeben. Mithilfe der rollenbasierten Zugriffssteuerung können Sie diese Ressourcen für andere Benutzer, Dienstprinzipalen und Gruppen freigeben. Sie können sogar Zugriff für Personen freigeben, die sich außerhalb des Mandanten befinden, in dem sie erstellt wurden. Sobald ein Benutzer Zugriff auf die Version eines freigegebenen Images hat, kann er einen virtuellen Computer oder eine VM-Skalierungsgruppe bereitstellen.  Im Folgenden finden Sie die Matrix für das Teilen, die dabei hilft, zu verstehen, worauf der Benutzer Zugriff erhält:
 
-| Geteilt mit Benutzer     | Gemeinsamer Image-Katalog | Geteiltes Image | Version eines freigegebenen Images |
+| Geteilt mit Benutzer     | Gemeinsamer Image-Katalog | Imagedefinition | Imageversion |
 |----------------------|----------------------|--------------|----------------------|
 | Gemeinsamer Image-Katalog | Ja                  | Ja          | Ja                  |
-| Geteiltes Image         | Nein                   | Ja          | Ja                  |
-| Version eines freigegebenen Images | Nein                   | Nein           | Ja                  |
+| Imagedefinition     | Nein                   | Ja          | Ja                  |
 
-Zur Erzielung der besten Leistung empfiehlt sich ein Freigeben auf Katalogebene. Weitere Informationen zu RBAC finden Sie unter [Verwalten des Zugriffs auf Azure-Ressourcen mit RBAC](../articles/role-based-access-control/role-assignments-portal.md).
+Zur Erzielung der besten Leistung empfiehlt sich ein Freigeben auf Katalogebene. Wir empfehlen nicht, einzelnen Imageversionen freizugeben. Weitere Informationen zu RBAC finden Sie unter [Verwalten des Zugriffs auf Azure-Ressourcen mit RBAC](../articles/role-based-access-control/role-assignments-portal.md).
 
-Images können auch, maßstäblich, über eine mehrinstanzenfähige App-Registrierung zwischen Mandanten freigegeben werden. Weitere Informationen zum Freigeben von Images zwischen Mandanten finden Sie unter [Freigeben von Katalog-VM-Images über Azure-Mandanten hinweg](../articles/virtual-machines/linux/share-images-across-tenants.md).
+Images können auch, maßstäblich, freigegeben werden, sogar über eine mehrinstanzenfähige App-Registrierung zwischen Mandanten hinweg. Weitere Informationen zum Freigeben von Images zwischen Mandanten finden Sie unter [Freigeben von Katalog-VM-Images über Azure-Mandanten hinweg](../articles/virtual-machines/linux/share-images-across-tenants.md).
 
 ## <a name="billing"></a>Abrechnung
 Für die Verwendung des Katalogs mit geteilten Images fällt keine zusätzliche Gebühren an. Für folgende Ressourcen werden Gebühren berechnet:
@@ -148,7 +167,7 @@ Imagedefinition:
 Imageversion:
 - Anzahl regionaler Replikate
 - Zielregionen
-- Ausschluss aus neuester Version
+- Aus Neueste ausschließen
 - Datum für Ende des Lebenszyklus
 
 

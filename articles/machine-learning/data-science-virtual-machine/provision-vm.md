@@ -226,9 +226,9 @@ Sie können den [Microsoft-Webplattform-Installer](https://www.microsoft.com/web
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* Schauen Sie sich die Tools für die Data Science-VM an, indem Sie das Startmenü auswählen.
+* Schauen Sie sich die Tools für die Data Science-VM an, indem Sie das Startmenü auswählen **.**
 * Erfahren Sie mehr über Azure Machine Learning Service, indem Sie [Was ist Azure Machine Learning Service?](../service/overview-what-is-azure-ml.md) lesen und die verfügbaren [Schnellstarts und Tutorials](../service/index.yml) ausprobieren.
 * Navigieren Sie im Explorer zu **C:\Programme\Microsoft\ML Server\R_SERVER\library\RevoScaleR\demoScripts**, um Beispiele für die RevoScaleR-Bibliothek in R zu finden, die Datenanalysen auf Unternehmensebene unterstützt.  
 * Lesen Sie den Artikel [Zehn Dinge, die Sie mit der Data Science Virtual Machine machen können](https://aka.ms/dsvmtenthings).
 * Erfahren Sie, wie Sie mithilfe des [Team Data Science-Prozesses](../team-data-science-process/index.yml)systematisch vollständige Analyselösungen erstellen.
-* Besuchen Sie die [Azure AI Gallery](https://gallery.cortanaintelligence.com), um Beispiele zu Machine Learning und zur Datenanalyse zu erhalten, in denen Azure Machine Learning und dazugehörige Datendienste in Azure verwendet werden. Wir haben auch ein Symbol für diese Galerie im Startmenü und auf dem Desktop der virtuellen Maschine bereitgestellt.
+* Besuchen Sie den [Azure KI-Katalog](https://gallery.cortanaintelligence.com), um Beispiele zu Machine Learning und zur Datenanalyse zu erhalten, in denen Azure Machine Learning und dazugehörige Datendienste in Azure verwendet werden. Wir haben auch ein Symbol für diese Galerie im Startmenü und auf dem Desktop der virtuellen Maschine bereitgestellt **.**

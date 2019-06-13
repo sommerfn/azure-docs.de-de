@@ -6,12 +6,12 @@ ms.service: azure-resource-manager
 ms.topic: conceptual
 ms.date: 05/17/2019
 ms.author: tomfitz
-ms.openlocfilehash: 1ae1afe103d4c52a2a7d921ef4f34dc030f3c6f7
-ms.sourcegitcommit: 4c2b9bc9cc704652cc77f33a870c4ec2d0579451
+ms.openlocfilehash: 046b8e75be0247f335bcf1d29117f5900b70aeb6
+ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/17/2019
-ms.locfileid: "65872640"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66477252"
 ---
 # <a name="move-resources-to-new-resource-group-or-subscription"></a>Verschieben von Ressourcen in eine neue Ressourcengruppe oder ein neues Abonnement
 
@@ -168,6 +168,7 @@ Folgende Szenarios werden noch nicht unterstützt:
 * Virtuelle Computer mit in Key Vault gespeichertem Zertifikat können in eine neue Ressourcengruppe im gleichen Abonnement verschoben werden, das abonnementübergreifende Verschieben ist jedoch nicht möglich.
 * Eine Virtual Machine Scale Sets-Instanz mit Load Balancer der Standard-SKU oder einer öffentlichen IP-Adresse der Standard-SKU kann nicht verschoben werden.
 * Von Marketplace-Ressourcen erstellte virtuelle Computer, an die Pläne angefügt sind, können nicht ressourcengruppen- oder abonnementübergreifend verschoben werden. Heben Sie die Bereitstellung des virtuellen Computers im aktuellen Abonnement auf, und stellen Sie ihn im neuen Abonnement erneut bereit.
+* Virtuelle Computer in einem vorhandenen virtuellen Netzwerk, in dem der Benutzer nicht beabsichtigt, alle Ressourcen im virtuellen Netzwerk zu verschieben.
 
 Verwenden Sie die folgende Problemumgehung, um mit Azure Backup konfigurierte virtuelle Computer zu verschieben:
 
@@ -323,7 +324,7 @@ Dieser Vorgang kann einige Minuten dauern.
 
 ### <a name="recovery-services-limitations"></a>Einschränkungen von Recovery Services
 
- Zum Verschieben eines Recovery Services-Tresors müssen Sie sich für eine [eingeschränkte öffentliche Vorschauversion](../backup/backup-azure-move-recovery-services-vault.md) registrieren.
+ Führen Sie die folgenden Schritte aus, um einen Recovery Services-Tresor zu verschieben: [Verschieben von Ressourcen in eine neue Ressourcengruppe oder ein neues Abonnement](../backup/backup-azure-move-recovery-services-vault.md).
 
 Derzeit können Sie jeweils einen Recovery Services-Tresor pro Region verschieben. Tresore, die Azure Files, die Azure-Dateisynchronisierung oder SQL auf IaaS-VMs sichern, können nicht verschoben werden.
 

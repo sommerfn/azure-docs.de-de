@@ -35,10 +35,10 @@ Verwenden Sie die folgende HTTP PUT-Anforderung, um eine neue Azure Basic Load B
 
 |NAME  |Geben Sie in  |Erforderlich |Typ |BESCHREIBUNG |
 |---------|---------|---------|---------|--------|
-|subscriptionId   |  path       |  True       |   Zeichenfolge      |  Die Abonnementanmeldeinformationen, die das Microsoft Azure-Abonnement eindeutig identifizieren. Die Abonnement-ID ist Teil des URI für jeden Dienstaufruf.      |
-|resourceGroupName     |     path    | True        |  Zeichenfolge       |   Der Name der Ressourcengruppe.     |
-|loadBalancerName     |  path       |      True   |    Zeichenfolge     |    Der Name des Load Balancer.    |
-|api-version    |   query     |  True       |     Zeichenfolge    |  Client-API-Version.      |
+|subscriptionId   |  path       |  True       |   string      |  Die Abonnementanmeldeinformationen, die das Microsoft Azure-Abonnement eindeutig identifizieren. Die Abonnement-ID ist Teil des URI für jeden Dienstaufruf.      |
+|resourceGroupName     |     path    | True        |  string       |   Der Name der Ressourcengruppe.     |
+|loadBalancerName     |  path       |      True   |    string     |    Der Name des Load Balancer.    |
+|api-version    |   query     |  True       |     string    |  Client-API-Version.      |
 
 
 

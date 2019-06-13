@@ -7,12 +7,12 @@ ms.service: marketplace
 ms.topic: article
 ms.date: 11/17/2018
 ms.author: yijenj
-ms.openlocfilehash: dcab4d24ca948980f28483fd09f29588e0329b63
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: 09ce4cdc6ab4556f0ba68507bb23d09e02ae0357
+ms.sourcegitcommit: 8c49df11910a8ed8259f377217a9ffcd892ae0ae
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65800974"
+ms.lasthandoff: 05/29/2019
+ms.locfileid: "66296825"
 ---
 # <a name="azure-partner-customer-usage-attribution"></a>Zuordnen der Nutzung durch Kunden von Azure-Partnern
 
@@ -208,7 +208,7 @@ Nachdem Sie die GUID in der Vorlage oder im Benutzer-Agent hinzugefügt und die 
 
 Nachdem Sie Ihre Vorlage geändert und eine Testbereitstellung ausgeführt haben, können Sie mit dem folgenden PowerShell-Skript die Ressourcen abrufen, die Sie bereitgestellt und markiert haben.
 
-Mit dem Skript können Sie überprüfen, ob die GUID erfolgreich der Resource Manager-Vorlage hinzugefügt wurde. Das Skript gilt nicht für die Bereitstellung über die Resource Manager-API.
+Mit dem Skript können Sie überprüfen, ob die GUID erfolgreich der Resource Manager-Vorlage hinzugefügt wurde. Das Skript gilt nicht für Resource Manager-API- oder Terraform-Bereitstellungen.
 
 Melden Sie sich bei Azure an. Wählen Sie das Abonnement mit der Bereitstellung aus, die Sie vor dem Ausführen des Skripts überprüfen möchten. Führen Sie das Skript im Abonnementkontext der Bereitstellung aus.
 
@@ -267,7 +267,7 @@ Wenn Sie Software von \<PARTNER> bereitstellen, kann Microsoft die Installation 
 
 ## <a name="get-support"></a>Support
 
-Wenn Sie Probleme mit dem Bericht oder der Anmeldung haben, erstellen Sie hier eine Supportanfrage an das Partner Center-Supportteam: [https://partner.microsoft.com/en-US/support](https://partner.microsoft.com/support)
+Wenn Sie Probleme mit dem Bericht oder der Anmeldung bei Partner Center haben, erstellen Sie hier eine Supportanfrage an das Partner Center-Supportteam: [https://partner.microsoft.com/en-US/support](https://partner.microsoft.com/support)
 
 ![](./media/marketplace-publishers-guide/partner-center-log-in-support.png)
 

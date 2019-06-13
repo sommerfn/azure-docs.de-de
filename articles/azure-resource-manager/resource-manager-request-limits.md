@@ -7,18 +7,18 @@ ms.topic: conceptual
 ms.date: 05/14/2019
 ms.author: tomfitz
 ms.custom: seodec18
-ms.openlocfilehash: fc731b1abec9c101356a0fa57eef498b58612ab9
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: b382b9ae35d492b4c779b8f7ee360fb378d54e08
+ms.sourcegitcommit: d89032fee8571a683d6584ea87997519f6b5abeb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65791359"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66399710"
 ---
 # <a name="throttling-resource-manager-requests"></a>Begrenzen von Resource Manager-Anforderungen
 
 Für jedes Azure-Abonnement und jeden Azure-Mandanten erlaubt Resource Manager pro Stunde bis zu 12.000 Leseanforderungen und bis zu 1.200 Schreibanforderungen. Diese Grenzwerte gelten für die Prinzipal-ID, von der die Anforderungen stammen, sowie für die Abonnement-ID bzw. die Mandanten-ID. Falls Ihre Anforderungen von mehreren Prinzipal-IDs stammen, liegen die Grenzwerte für das Abonnement/den Mandanten über 12.000 bzw. 1.200 Anforderungen pro Stunde.
 
-Anforderungen werden entweder auf Ihr Abonnement oder auf Ihren Mandanten angewendet. Bei Abonnementanforderungen wird Ihre Abonnement-ID übergeben (etwa beim Abrufen der Ressourcengruppen in Ihrem Abonnement). In Mandantenanforderungen ist Ihre Abonnement-ID nicht enthalten (etwa beim Abrufen gültiger Azure-Standorte).
+Anforderungen werden entweder auf Ihr Abonnement oder auf Ihren Mandanten angewendet. Bei Abonnementanforderungen wird Ihre Abonnement-ID übergeben, z. B. beim Abrufen der Ressourcengruppen in Ihrem Abonnement. In Mandantenanforderungen ist Ihre Abonnement-ID nicht enthalten (etwa beim Abrufen gültiger Azure-Standorte).
 
 Diese Grenzwerte gelten für jede Azure Resource Manager-Instanz. In jeder Azure-Region sind mehrere Instanzen vorhanden, und Azure Resource Manager wird in allen Azure-Regionen bereitgestellt.  In der Praxis sind die Grenzwerte also effektiv sehr viel höher als die aufgeführten Grenzwerte, da Benutzeranforderungen in der Regel von vielen verschiedenen Instanzen verarbeitet werden.
 

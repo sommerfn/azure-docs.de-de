@@ -10,12 +10,12 @@ ms.service: event-grid
 ms.topic: reference
 ms.date: 01/17/2019
 ms.author: kgremban
-ms.openlocfilehash: 5fcd7c10002e7e1ae9683fdd89d3af14a1500050
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: 8178c2a72d7a3e80c0376421fd21de6615cd2792
+ms.sourcegitcommit: 25a60179840b30706429c397991157f27de9e886
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57449188"
+ms.lasthandoff: 05/28/2019
+ms.locfileid: "66253004"
 ---
 # <a name="azure-event-grid-event-schema-for-iot-hub"></a>Azure Event Grid-Ereignisschema für IoT Hub
 
@@ -33,6 +33,7 @@ Azure IoT Hub gibt die folgenden Ereignistypen aus:
 | Microsoft.Devices.DeviceDeleted | Wird ausgelöst, wenn ein Gerät aus einem IoT Hub gelöscht wird. | 
 | Microsoft.Devices.DeviceConnected | Wird ausgelöst, wenn ein Gerät mit einem IoT Hub verbunden wird. |
 | Microsoft.Devices.DeviceDisconnected | Wird ausgelöst, wenn ein Gerät von einem IoT Hub getrennt wird. | 
+| Microsoft.Devices.DeviceTelemetry | Wird veröffentlicht, wenn eine Telemetrienachricht an einen IoT-Hub gesendet wird. |
 
 ## <a name="example-event"></a>Beispielereignis
 
@@ -56,6 +57,40 @@ Die Schemas für DeviceConnected- und DeviceDisconnected-Ereignisse verfügen ü
   }, 
   "dataVersion": "1", 
   "metadataVersion": "1" 
+}]
+```
+
+Das DeviceTelemetry-Ereignis wird ausgelöst, wenn ein Telemetrieereignis an einen IoT-Hub gesendet wird. Ein Beispielschema für dieses Ereignis wird unten gezeigt.
+
+```json
+[{
+  "id": "9af86784-8d40-fe2g-8b2a-bab65e106785",
+  "topic": "/SUBSCRIPTIONS/<subscription ID>/RESOURCEGROUPS/<resource group name>/PROVIDERS/MICROSOFT.DEVICES/IOTHUBS/<hub name>", 
+  "subject": "devices/LogicAppTestDevice", 
+  "eventType": "Microsoft.Devices.DeviceTelemetry",
+  "eventTime": "2019-01-07T20:58:30.48Z",
+  "data": {        
+      "body": {            
+          "Weather": {                
+              "Temperature": 900            
+          },
+          "Location": "USA"        
+      },
+        "properties": {            
+          "Status": "Active"        
+        },
+        "systemProperties": {            
+            "iothub-content-type": "application/json",
+            "iothub-content-encoding": "utf-8",
+            "iothub-connection-device-id": "d1",
+            "iothub-connection-auth-method": "{\"scope\":\"device\",\"type\":\"sas\",\"issuer\":\"iothub\",\"acceptingIpFilterRule\":null}",
+            "iothub-connection-auth-generation-id": "123455432199234570",
+            "iothub-enqueuedtime": "2019-01-07T20:58:30.48Z",
+            "iothub-message-source": "Telemetry"        
+        }    
+    },
+  "dataVersion": "",
+  "metadataVersion": "1"
 }]
 ```
 
@@ -114,7 +149,7 @@ Alle Ereignisse enthalten die gleichen Daten der obersten Ebene:
 | Eigenschaft | Typ | BESCHREIBUNG |
 | -------- | ---- | ----------- |
 | id | Zeichenfolge | Eindeutiger Bezeichner für das Ereignis. |
-| topic | Zeichenfolge | Vollständiger Ressourcenpfad zu der Ereignisquelle. Dieses Feld ist nicht beschreibbar. Dieser Wert wird von Event Grid bereitgestellt. |
+| Thema | Zeichenfolge | Vollständiger Ressourcenpfad zu der Ereignisquelle. Dieses Feld ist nicht beschreibbar. Dieser Wert wird von Event Grid bereitgestellt. |
 | subject | Zeichenfolge | Vom Herausgeber definierter Pfad zum Ereignisbetreff |
 | eventType | Zeichenfolge | Einer der registrierten Ereignistypen für die Ereignisquelle. |
 | eventTime | Zeichenfolge | Die Zeit, in der das Ereignis generiert wird, basierend auf der UTC-Zeit des Anbieters. |
@@ -129,7 +164,9 @@ Für IoT Hub-Ereignisse enthält das Datenobjekt die folgenden Eigenschaften:
 | hubName | Zeichenfolge | Name des IoT Hubs, in dem das Gerät erstellt bzw. aus dem das Gerät gelöscht wurde. |
 | deviceId | Zeichenfolge | Der eindeutige Bezeichner des Geräts. Eine Zeichenfolge mit Beachtung von Groß-/Kleinschreibung, die bis zu 128 Zeichen lang sein kann und alphanumerische 7-Bit-ASCII-Zeichen sowie die folgenden Sonderzeichen unterstützt: `- : . + % _ # * ? ! ( ) , = @ ; $ '`. |
 
-Die Inhalte des Datenobjekts unterscheiden sich für jeden Ereignisherausgeber. Für die IoT Hub-Ereignisse **Gerät verbunden** und **Gerät getrennt** enthält das Datenobjekt die folgenden Eigenschaften:
+Die Inhalte des Datenobjekts unterscheiden sich für jeden Ereignisherausgeber. 
+
+Für die IoT Hub-Ereignisse **Gerät verbunden** und **Gerät getrennt** enthält das Datenobjekt die folgenden Eigenschaften:
 
 | Eigenschaft | Typ | BESCHREIBUNG |
 | -------- | ---- | ----------- |
@@ -137,7 +174,15 @@ Die Inhalte des Datenobjekts unterscheiden sich für jeden Ereignisherausgeber. 
 | deviceConnectionStateEventInfo | object | Ereignisinformationen zum Verbindungsstatus des Geräts
 | sequenceNumber | Zeichenfolge | Eine Zahl, die hilft, die Reihenfolge der Ereignisse „Gerät verbunden“ oder „Gerät getrennt“ anzugeben. Die letzten Ereignisse haben eine höhere Sequenznummer als frühere Ereignisse. Diese Zahl kann sich um mehr als 1 ändern, aber sie ist immer ansteigend. Weitere Informationen finden Sie unter [Verwenden der Sequenznummer](../iot-hub/iot-hub-how-to-order-connection-state-events.md). |
 
-Die Inhalte des Datenobjekts unterscheiden sich für jeden Ereignisherausgeber. Für die IoT Hub-Ereignisse **Gerät erstellt** und **Gerät gelöscht** enthält das Datenobjekt die folgenden Eigenschaften:
+Für ein IoT Hub-Ereignis zur **Gerätetelemetrie** enthält das Datenobjekt die D2C-Nachricht im [IoT Hub-Nachrichtenformat](../iot-hub/iot-hub-devguide-messages-construct.md) und weist die folgenden Eigenschaften auf:
+
+| Eigenschaft | Typ | BESCHREIBUNG |
+| -------- | ---- | ----------- |
+| body | Zeichenfolge | Der Inhalt der Nachricht vom Gerät. |
+| properties | Zeichenfolge | Anwendungseigenschaften sind benutzerdefinierte Zeichenfolgen, die der Nachricht hinzugefügt werden können. Diese Felder sind optional. |
+| Systemeigenschaften | Zeichenfolge | Mithilfe von [Systemeigenschaften](../iot-hub/iot-hub-devguide-routing-query-syntax.md#system-properties) werden der Inhalt und die Quelle von Nachrichten identifiziert. |
+
+Für die IoT Hub-Ereignisse **Gerät erstellt** und **Gerät gelöscht** enthält das Datenobjekt die folgenden Eigenschaften:
 
 | Eigenschaft | Typ | BESCHREIBUNG |
 | -------- | ---- | ----------- |

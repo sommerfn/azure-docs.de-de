@@ -5,50 +5,51 @@ services: app-service\mobile
 author: conceptdev
 ms.service: app-service-mobile
 ms.topic: include
-ms.date: 05/25/2018
+ms.date: 05/06/2019
 ms.author: crdun
 ms.custom: include file
-ms.openlocfilehash: 894dd5ea7270390780813b647fe7a8b4c0f173bd
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.openlocfilehash: 3fe571a5e0b10da3c253bca233aad1e16d2ad852
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66139958"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66235972"
 ---
-1. Klicken Sie auf die Schaltfläche **App Services**, wählen Sie Ihr Mobile Apps-Back-End aus, wählen Sie **Schnellstart** aus, und wählen Sie anschließend Ihre Clientplattform (iOS, Android, Xamarin oder Cordova) aus.
+1. Laden Sie die Client-SDK-Schnellstarts für die folgenden Plattformen herunter:
+    
+    [iOS (Objective-C)](https://github.com/Azure/azure-mobile-apps-quickstarts/tree/master/client/iOS) [iOS (Swift)](https://github.com/Azure/azure-mobile-apps-quickstarts/tree/master/client/iOS-Swift) [Android (Java)](https://github.com/Azure/azure-mobile-apps-quickstarts/tree/master/client/android) [Xamarin.iOS](https://github.com/Azure/azure-mobile-apps-quickstarts/tree/master/client/xamarin.iOS) [Xamarin.Android](https://github.com/Azure/azure-mobile-apps-quickstarts/tree/master/client/xamarin.android) [Xamarin.Forms](https://github.com/Azure/azure-mobile-apps-quickstarts/tree/master/client/xamarin.forms) [Cordova](https://github.com/Azure/azure-mobile-apps-quickstarts/tree/master/client/cordova) [Windows (C#)](https://github.com/Azure/azure-mobile-apps-quickstarts/tree/master/client/windows-uwp-cs)
+        
+2. Azure Mobile Apps unterstützen das Back-End-SDK für .NET und Node. Laden Sie je nach App-Typ das [.NET](https://github.com/Azure/azure-mobile-apps-quickstarts/tree/master/backend/dotnet)- oder das [Node](https://github.com/Azure/azure-mobile-apps-quickstarts/tree/master/backend/node)-Projekt für das Open Source-Repository herunter.
 
-    ![Azure-Portal mit hervorgehobenem Mobile Apps-Schnellstart][quickstart]
+3. Sie müssen eine Datenbankverbindung hinzufügen oder eine Verbindung mit einer vorhandenen Verbindung herstellen. Legen Sie zunächst fest, ob Sie einen Datenspeicher erstellen oder einen bereits vorhandenen verwenden möchten.
 
-1. Ist keine Datenbankverbindung konfiguriert, gehen Sie wie folgt vor, um eine zu erstellen:
+4. **Erstellen eines neuen Datenspeichers**: Wenn Sie vorhaben, einen Datenspeicher zu erstellen, verwenden Sie den folgenden Schnellstart:
 
-    ![Azure-Portal mit Mobile Apps – Herstellen der Datenbankverbindung][connect]
+    [Schnellstart: Erste Schritte mit Einzeldatenbanken in Azure SQL-Datenbank](https://docs.microsoft.com/azure/sql-database/sql-database-single-database-quickstart-guide)
 
-    a. Erstellen Sie eine neue SQL-Datenbank und einen Server. Sie müssen für das Feld mit dem Namen der Verbindungszeichenfolge unter Umständen den Standardwert „MS_TableConnectionString“ übernehmen, um Schritt 3 weiter unten ausführen zu können.
+5. **Vorhandene Datenquelle**: Befolgen Sie die nachstehenden Anweisungen, wenn Sie eine vorhandene Verbindung verwenden möchten.
+    1. Format der SQL-Datenbank-Verbindungszeichenfolge: `Data Source=tcp:{your_SQLServer},{port};Initial Catalog={your_catalogue};User ID={your_username};Password={your_password}`
+      
+       **{your_SQLServer}** : Name des Servers. Diesen finden Sie auf der Übersichtsseite für Ihre Datenbank, in der Regel im Format „server_name.database.windows.net“.
+        **{port}** : Normalerweise 1433.
+        **{your_catalogue}** : Name der Datenbank.
+        **{your_username}** : Benutzername für den Zugriff auf Ihre Datenbank.
+        **{your_password}** : Kennwort für den Zugriff auf Ihre Datenbank.
+        
+        [Weitere Informationen zum Format der SQL-Verbindungszeichenfolge](https://docs.microsoft.com/dotnet/framework/data/adonet/connection-string-syntax#sqlclient-connection-strings)
 
-    ![Azure-Portal mit Mobile Apps – Erstellen einer neuen Datenbank und eines Servers][server]
+    2. Fügen Sie die Verbindungszeichenfolge Ihrer **mobilen App** hinzu. In App Service können Sie Verbindungszeichenfolgen für Ihre Anwendung über die Option **Konfiguration** im Menü verwalten.
 
-    b. Warten Sie, bis die Erstellung der Datenverbindung erfolgreich abgeschlossen wurde.
+        So fügen Sie eine Verbindungszeichenfolge hinzu:
 
-    ![Azure-Portal Benachrichtigung bei erfolgreicher Erstellung der Datenverbindung][notification]
+        1. Klicken Sie auf die Registerkarte **Anwendungseinstellungen**.
 
-    c. Die Herstellung der Datenverbindung muss erfolgreich sein.
+        2. Klicken Sie auf **[+] Neue Verbindungszeichenfolge**.
 
-    ![Azure Portal-Benachrichtigung: „Sie verfügen bereits über eine Datenverbindung.“][already-connection]
+        3. Sie müssen den **Namen**, **Wert** und **Typ** Ihrer Verbindungszeichenfolge angeben.
 
-1. Wählen Sie unter **2. Tabellen-API erstellen** als **Back-End-Sprache** die Option „Node.js“ aus.
+        4. Geben Sie als **Name** `MS_TableConnectionString` ein.
 
-1. Akzeptieren Sie die Bestätigung, und wählen Sie dann **TodoItem-Tabelle erstellen** aus.
-    Dadurch wird in Ihrer Datenbank eine neue Aufgabenlistentabelle erstellt.
+        5. Der Wert muss der Verbindungszeichenfolge entsprechen, die Sie im vorherigen Schritt zusammengestellt haben.
 
-    >[!IMPORTANT]
-    > Bei der Umstellung eines vorhandenen Back-Ends auf Node.js werden sämtliche Inhalte überschrieben. Wenn Sie stattdessen ein .NET-Back-End erstellen möchten, lesen Sie [Vorgehensweise: Erstellen eines .NET Mobile App-Back-Ends][instructions].
-
-<!-- Images. -->
-[quickstart]: ./media/app-service-mobile-configure-new-backend/quickstart.png
-[connect]: ./media/app-service-mobile-configure-new-backend/connect-to-bd.png
-[notification]: ./media/app-service-mobile-configure-new-backend/notification-data-connection-create.png
-[server]: ./media/app-service-mobile-configure-new-backend/create-new-server.png
-[already-connection]: ./media/app-service-mobile-configure-new-backend/already-connection.png
-
-<!-- URLs -->
-[instructions]: ../articles/app-service-mobile/app-service-mobile-dotnet-backend-how-to-use-server-sdk.md#create-app
+        6. Wenn Sie eine Verbindungszeichenfolge einer SQL Azure-Datenbank hinzufügen, wählen Sie unter **Typ** die Option **SQLAzure**.        

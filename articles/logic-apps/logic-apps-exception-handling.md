@@ -75,7 +75,7 @@ Oder Sie können die Wiederholungsrichtlinie manuell im Abschnitt `inputs` für 
 |-------|------|-------------|
 | <*retry-policy-type*> | String | Der Wiederholungsrichtlinientyp, den Sie verwenden möchten: `default`, `none`, `fixed` oder `exponential` | 
 | <*retry-interval*> | String | Das Wiederholungsintervall, bei dem für den Wert das [ISO 8601-Format](https://en.wikipedia.org/wiki/ISO_8601#Combined_date_and_time_representations) verwendet werden muss. Der niedrigste Wert für das Intervall ist `PT5S`, und der höchste Wert ist `PT1D`. Wenn Sie die Richtlinie mit dem exponentiellen Intervall verwenden, können Sie einen anderen Mindest- und Maximalwert angeben. | 
-| <*retry-attempts*> | Integer  | Die Anzahl der Wiederholungsversuche, die zwischen 1 und 90 liegen muss | 
+| <*retry-attempts*> | Ganze Zahl | Die Anzahl der Wiederholungsversuche, die zwischen 1 und 90 liegen muss | 
 ||||
 
 *Optional*
@@ -223,7 +223,7 @@ Grenzwerte für Bereiche finden Sie unter [Grenzwerte und Konfiguration](../logi
 
 Das Abfangen der Fehler eines Bereichs ist nützlich. Aber häufig ist auch der Kontext hilfreich, um genau zu verstehen, für welche Aktionen Fehler aufgetreten sind und welche Fehler oder Statuscodes zurückgegeben wurden. Mit dem Ausdruck `@result()` wird Kontext zum Ergebnis aller Aktionen in einem Bereich bereitgestellt.
 
-Der Ausdruck `@result()` nimmt einen einzelnen Parameter (Bereichsname) an und gibt ein Array mit den Ergebnissen aller Aktionen innerhalb des betreffenden Bereichs zurück. Diese Aktionsobjekte enthalten dieselben Attribute wie das  **\@actions()**-Objekt, z.B. Start- und Endzeit der Aktion, Status, Eingaben, Korrelations-IDs und Ausgaben. Sie können eine **\@result()**-Funktion problemlos mit einer **runAfter**-Eigenschaft koppeln, um Kontext zu allen Aktionen zu senden, für die im Bereich ein Fehler aufgetreten ist.
+Der Ausdruck `@result()` nimmt einen einzelnen Parameter (Bereichsname) an und gibt ein Array mit den Ergebnissen aller Aktionen innerhalb des betreffenden Bereichs zurück. Diese Aktionsobjekte enthalten dieselben Attribute wie das  **\@actions()** -Objekt, z.B. Start- und Endzeit der Aktion, Status, Eingaben, Korrelations-IDs und Ausgaben. Sie können eine **\@result()** -Funktion problemlos mit einer **runAfter**-Eigenschaft koppeln, um Kontext zu allen Aktionen zu senden, für die im Bereich ein Fehler aufgetreten ist.
 
 Zum Ausführen einer Aktion für jede Aktion eines Bereichs mit dem Ergebnis **Failed** und zum Filtern des Arrays der Ergebnisse bis hinab zu den fehlerhaften Aktionen können Sie **\@result()** mit der Aktion **[Filter Array](../connectors/connectors-native-query.md)** und einer [**For each**](../logic-apps/logic-apps-control-flow-loops.md)-Schleife koppeln. Sie können für das Array mit den gefilterten Ergebnissen eine Aktion für jeden Fehler durchführen, indem Sie die **For each**-Schleife verwenden. 
 
@@ -317,7 +317,7 @@ Zu Referenzzwecken ist hier ein Beispiel für ein einzelnes `@result()`-Element 
 }
 ```
 
-Sie können die oben in diesem Artikel beschriebenen Ausdrücke verwenden, um unterschiedliche Muster für die Ausnahmebehandlung zu nutzen. Außerdem können Sie die Entscheidung treffen, eine einzelne Aktion für die Ausnahmebehandlung außerhalb des Bereichs durchzuführen, bei der das gesamte gefilterte Array mit Fehlern akzeptiert wird, und die **For each**-Aktion zu entfernen. Darüber hinaus können Sie noch andere nützliche Eigenschaften aus der **\@result()**-Antwort einfügen, wie zuvor beschrieben.
+Sie können die oben in diesem Artikel beschriebenen Ausdrücke verwenden, um unterschiedliche Muster für die Ausnahmebehandlung zu nutzen. Außerdem können Sie die Entscheidung treffen, eine einzelne Aktion für die Ausnahmebehandlung außerhalb des Bereichs durchzuführen, bei der das gesamte gefilterte Array mit Fehlern akzeptiert wird, und die **For each**-Aktion zu entfernen. Darüber hinaus können Sie noch andere nützliche Eigenschaften aus der **\@result()** -Antwort einfügen, wie zuvor beschrieben.
 
 ## <a name="azure-diagnostics-and-metrics"></a>Azure-Diagnose und Metriken
 

@@ -1,6 +1,6 @@
 ---
 title: C#-Tutorial zum Aufrufen von Cognitive Services-APIs in einer Indizierungspipeline – Azure Search
-description: Dieses Tutorial führt Sie schrittweise durch ein Beispiel für das Extrahieren von Daten, natürliche Sprache und AI-Bildverarbeitung in der Azure Search-Indizierung für die Extrahierung und Transformation von Daten.
+description: Dieses Tutorial führt Sie schrittweise durch ein Beispiel für das Extrahieren von Daten, natürliche Sprache und KI-basierter Bildverarbeitung in der Azure Search-Indizierung für die Extrahierung und Transformation von Daten.
 manager: eladz
 author: MarkHeff
 services: search

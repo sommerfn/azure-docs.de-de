@@ -1,23 +1,18 @@
 ---
 title: Sichere Methoden zur regionsübergreifenden Bereitstellung – Azure-Bereitstellungs-Manager
 description: Beschreibt die zahlreiche Regionen umfassende Bereitstellung eines Diensts mit dem Azure-Bereitstellungs-Manager. Zeigt sichere Bereitstellungsmethoden, mit denen Sie die Stabilität Ihrer Bereitstellung vor dem Rollout in alle Regionen überprüfen können.
-services: azure-resource-manager
-documentationcenter: na
 author: tfitzmac
 ms.service: azure-resource-manager
-ms.devlang: na
 ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.workload: na
-ms.date: 05/13/2019
+ms.date: 05/31/2019
 ms.author: tomfitz
 ms.custom: seodec18
-ms.openlocfilehash: d93d9999c407e64658b88025feda48d33e1a5ad1
-ms.sourcegitcommit: 1fbc75b822d7fe8d766329f443506b830e101a5e
+ms.openlocfilehash: 52b132b45bd90d7d21bb072e9a94d8588d5cf301
+ms.sourcegitcommit: 087ee51483b7180f9e897431e83f37b08ec890ae
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/14/2019
-ms.locfileid: "65595786"
+ms.lasthandoff: 05/31/2019
+ms.locfileid: "66431173"
 ---
 # <a name="enable-safe-deployment-practices-with-azure-deployment-manager-public-preview"></a>Sichere Bereitstellungsmethoden mit dem Azure-Bereitstellungs-Manager (öffentliche Vorschau)
 
@@ -25,7 +20,7 @@ Um Ihren Dienst in vielen Regionen bereitzustellen und sicherzustellen, dass er 
 
 Der Bereitstellungs-Manager ist eine Funktion von Resource Manager. Er erweitert die verfügbaren Funktionen beim Bereitstellen. Verwenden Sie den Bereitstellungs-Manager für komplexe Dienste, die Sie in mehreren Regionen bereitstellen möchten. Mit der phasenweisen Einführung des Diensts können Sie mögliche Probleme finden, bevor er in allen Regionen bereitgestellt ist. Wenn Sie auf die zusätzlichen Vorsichtsmaßnahmen eines gestaffelten Rollouts verzichten möchten, verwenden Sie die standardmäßigen [Bereitstellungsoptionen](resource-group-template-deploy-portal.md) für Resource Manager. Der Bereitstellungs-Manager lässt sich nahtlos in alle vorhandenen Tools von Drittanbietern integrieren, die Resource Manager-Bereitstellungen unterstützen, z.B. CI- und CD-Angebote (Continuous Integration und Continuous Delivery). 
 
-Der Azure-Bereitstellungs-Manager befindet sich in der privaten Vorschau. Füllen Sie das [Anmeldeformular](https://aka.ms/admsignup) aus, um den Azure-Bereitstellungs-Manager zu verwenden. Helfen Sie dabei, die Funktion zu verbessern, indem Sie uns [Feedback senden](https://aka.ms/admfeedback).
+Der Azure-Bereitstellungs-Manager befindet sich in der Vorschau. Helfen Sie uns dabei, das Feature zu verbessern, indem Sie uns [Feedback senden](https://aka.ms/admfeedback).
 
 Um den Bereitstellungs-Manager zu verwenden, müssen Sie vier Dateien erstellen:
 

@@ -15,12 +15,12 @@ ms.topic: reference
 ms.date: 03/20/2019
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f273104366b3e583bd98ebcc6d50387a3fb1d335
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 58de8de9a9fab67d743d4560ccda037d8f41301b
+ms.sourcegitcommit: 8c49df11910a8ed8259f377217a9ffcd892ae0ae
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64572825"
+ms.lasthandoff: 05/29/2019
+ms.locfileid: "66299002"
 ---
 # <a name="azure-ad-connect-health-version-release-history"></a>Azure AD Connect Health: Verlauf der Versionsveröffentlichungen
 Das Azure Active Directory-Team aktualisiert Azure AD Connect Health regelmäßig mit neuen Features und Funktionen. In diesem Artikel werden die veröffentlichten Versionen und Features beschrieben.  
@@ -30,6 +30,13 @@ Das Azure Active Directory-Team aktualisiert Azure AD Connect Health regelmäßi
 >
 
 Azure AD Connect Health für die Synchronisierung ist in die Azure AD Connect-Installation integriert. Weitere Informationen zum Releaseverlauf von Azure AD Connect finden Sie [hier](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect-version-history). Featurefeedback können Sie über den [Benutzerfeedbackkanal für Connect Health](https://feedback.azure.com/forums/169401-azure-active-directory/filters/new?category_id=165591) abgeben.
+
+
+## <a name="may-2019"></a>Mai 2019
+**Agent-Aktualisierung:** 
+* Azure AD Connect Health-Agent für AD FS (Version 3.1.51.0) 
+   1. Fehlerbehebung, um zwischen mehreren Anmeldungen zu unterscheiden, die die gleiche Clientanforderungs-ID verwenden
+   2. Fehlerbehebung für die Analyse von Fehlern aufgrund von ungültigen Benutzernamen/Kennwörtern auf Servern mit lokalisierter Sprache   
 
 ## <a name="april-2019"></a>April 2019
 **Agent-Aktualisierung:** 

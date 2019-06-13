@@ -8,14 +8,14 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 05/13/2019
+ms.date: 05/24/2019
 ms.author: jingwang
-ms.openlocfilehash: c0591a7850516a419cb59045754cc4eb02979dfd
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.openlocfilehash: 1e248a005b499227a667bebacf7244fc3df9c828
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66122596"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66239146"
 ---
 # <a name="copy-data-to-or-from-azure-data-lake-storage-gen2-using-azure-data-factory"></a>Kopieren von Daten nach und aus Azure Data Lake Storage Gen2 mithilfe von Azure Data Factory
 
@@ -169,7 +169,7 @@ Um verwaltete Identitäten für die Azure-Ressourcenauthentifizierung zu verwend
 >Wenn Sie Bedenken haben, Berechtigungen auf Kontoebene zu vergeben, können Sie die Testverbindung und den Eingabepfad manuell während der Erstellung überspringen. Kopieraktivitäten funktionieren weiterhin, solange der verwalteten Identität die erforderlichen Berechtigungen für die zu kopierenden Dateien gewährt werden.
 
 >[!IMPORTANT]
->Falls Sie PolyBase zum Laden von Daten aus ADLS Gen2 in SQL DW nutzen, sollten Sie beim Verwenden der ADLS Gen2-Authentifizierung mit der verwalteten Identität sicherstellen, dass Sie auch SQL DW richtig für die Verwendung der Speicherung von MSI zu ADLS Gen2 konfigurieren. Führen Sie in [dieser Anleitung](../sql-database/sql-database-vnet-service-endpoint-rule-overview.md#impact-of-using-vnet-service-endpoints-with-azure-storage) die Schritte 1 bis 3b aus. Wenn ADLS Gen2 bei Ihnen mit einem VNET-Dienstendpunkt konfiguriert ist, müssen Sie die Authentifizierung mit der verwalteten Identität verwenden, damit mithilfe von PolyBase Daten dafür geladen werden können.
+>Wenn Sie PolyBase verwenden, um Daten aus ADLS Gen2 in SQL DW zu laden, und verwaltete ADLS Gen2-Identität eingesetzt wird, stellen Sie sicher, auch die Schritte 1 und 2 in [dieser Anleitung](../sql-database/sql-database-vnet-service-endpoint-rule-overview.md#impact-of-using-vnet-service-endpoints-with-azure-storage) auszuführen, um Ihren SQL-Datenbankserver bei Azure Active Directory (AAD) zu registrieren und Ihrem SQL-Datenbankserver die Rolle „Storage Blob Data Contributor RBAC“ (Speicherblobdaten-Mitwirkender RBAC) zuzuweisen. Der Rest wird von ADF erledigt. Wenn ADLS Gen2 bei Ihnen mit einem VNET-Dienstendpunkt konfiguriert ist, müssen Sie die Authentifizierung mit der verwalteten Identität verwenden, damit mithilfe von PolyBase Daten dafür geladen werden können.
 
 Diese Eigenschaften werden im verknüpften Dienst unterstützt:
 

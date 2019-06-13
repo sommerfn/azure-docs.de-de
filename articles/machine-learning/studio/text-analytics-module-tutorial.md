@@ -31,7 +31,7 @@ In einem Experiment zur Textanalyse würden Sie in der Regel Folgendes tun:
 
 In diesem Tutorial erlernen Sie die erforderlichen Schritte, während wir ein Stimmungsanalysemodell mit dem Dataset „Amazon Book Reviews“ schrittweise durcharbeiten (weitere Informationen finden Sie in der Forschungsarbeit „Biographies, Bollywood, Boom-boxes and Blenders: Domain Adaptation for Sentiment Classification“ von John Blitzer, Mark Dredze und Fernando Pereira, Association of Computational Linguistics (ACL), 2007.) Dieses Dataset besteht aus Beurteilungsergebnissen (1 - 2 oder 4 - 5) und einem Freiformtext. Das Ziel ist die Vorhersage des Beurteilungsergebnisses: niedrig (1 - 2) oder hoch (4 - 5).
 
-Sie finden Experimente, die in diesem Tutorial behandelt werden, im Azure AI-Katalog:
+Sie finden Experimente, die in diesem Tutorial behandelt werden, im Azure KI-Katalog:
 
 [Predict Book Reviews (Vorhersagen von Buchbesprechungen)](https://gallery.azure.ai/Experiment/Predict-Book-Reviews-1)
 

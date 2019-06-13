@@ -10,12 +10,12 @@ ms.topic: quickstart
 description: Kubernetes-Entwicklung im Team mit Containern und Microservices in Azure
 keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, Container, Helm, Service Mesh, Service Mesh-Routing, kubectl, k8s
 manager: jeconnoc
-ms.openlocfilehash: 94083639ca769d12b04c4dc316a9f9867e4209b1
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: e9f9198f8e086bee6c6b02b67ae7dd9cf523416c
+ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65765240"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66480360"
 ---
 # <a name="quickstart-team-development-on-kubernetes-using-azure-dev-spaces"></a>Schnellstart: Entwicklung im Team mit Java unter Kubernetes mithilfe von Azure Dev Spaces
 
@@ -35,7 +35,7 @@ In diesem Leitfaden lernen Sie Folgendes:
 
 ## <a name="create-an-azure-kubernetes-service-cluster"></a>Erstellen eines Azure Kubernetes Service-Clusters
 
-Sie müssen in einer [unterstützten Region](https://docs.microsoft.com/azure/dev-spaces/#a-rapid,-iterative-kubernetes-development-experience-for-teams) einen AKS-Cluster erstellen. Mit den unten angegebenen Befehlen wird eine Ressourcengruppe mit dem Namen *MyResourceGroup* und der AKS-Cluster *MyAKS* erstellt.
+Sie müssen in einer [unterstützten Region][supported-regions] einen AKS-Cluster erstellen. Mit den unten angegebenen Befehlen wird eine Ressourcengruppe mit dem Namen *MyResourceGroup* und der AKS-Cluster *MyAKS* erstellt.
 
 ```cmd
 az group create --name MyResourceGroup --location eastus
@@ -92,6 +92,8 @@ cd charts/
 helm init --wait
 helm install -n bikesharing . --dep-up --namespace dev --atomic --wait
 ```
+> [!Note]
+> **Bei Verwendung eines RBAC-fähigen Clusters** sollten Sie unbedingt [ein Dienstkonto für Tiller](https://helm.sh/docs/using_helm/#role-based-access-control) konfigurieren. Andernfalls tritt bei `helm`-Befehlen ein Fehler auf.
 
 Der Befehl `helm install` kann mehrere Minuten in Anspruch nehmen. Die Ausgabe des Befehls zeigt den Status aller Dienste an, die er nach Abschluss des Vorgangs für den Cluster bereitgestellt hat:
 
@@ -232,3 +234,6 @@ Erfahren Sie, wie Azure Dev Spaces Sie bei der Entwicklung komplexerer, containe
 
 > [!div class="nextstepaction"]
 > [Arbeiten mit mehreren Containern und Teamentwicklung](multi-service-nodejs.md)
+
+
+[supported-regions]: about.md#supported-regions-and-configurations

@@ -64,7 +64,7 @@ Dieser Artikel enthält benutzerdefinierten Code, den Sie in den Ebenen außerha
 | runId | Zeichenfolge | Ausführungs-ID der Logik-App (Erforderlich) |
 | operationName | Zeichenfolge | Name des Vorgangs (z.B. Aktion oder Trigger) (Erforderlich) |
 | repeatItemScopeName | Zeichenfolge | Elementnamen wiederholen, wenn sich die Aktion innerhalb einer `foreach`/`until`-Schleife befindet. (Erforderlich) |
-| repeatItemIndex | Ganze Zahl  | Gibt an, ob sich die Aktion innerhalb einer `foreach`/`until`-Schleife befindet. Gibt den Index des Wiederholungselements an. (Erforderlich) |
+| repeatItemIndex | Ganze Zahl | Gibt an, ob sich die Aktion innerhalb einer `foreach`/`until`-Schleife befindet. Gibt den Index des Wiederholungselements an. (Erforderlich) |
 | trackingId | Zeichenfolge | Überwachungs-ID zum Korrelieren der Nachrichten (Optional) |
 | correlationId | Zeichenfolge | Korrelations-ID zum Korrelieren der Nachrichten (Optional) |
 | clientRequestId | Zeichenfolge | Kann vom Client zum Korrelieren von Nachrichten ausgefüllt werden. (Optional) |

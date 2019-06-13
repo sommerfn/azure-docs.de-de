@@ -5,30 +5,30 @@ services: expressroute
 author: cherylmc
 ms.service: expressroute
 ms.topic: include
-ms.date: 06/12/2018
+ms.date: 05/28/2019
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: c025c431d826d3a2951a9eb5c09308695e172887
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.openlocfilehash: 9f7f9b1504533e0ec503e97c086c380da71671a0
+ms.sourcegitcommit: 8c49df11910a8ed8259f377217a9ffcd892ae0ae
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66170725"
+ms.lasthandoff: 05/29/2019
+ms.locfileid: "66299705"
 ---
 | Resource | Standard/maximales Limit |
 | --- | --- |
 | ExpressRoute-Verbindungen pro Abonnement |10 |
 | ExpressRoute-Verbindungen pro Region und Abonnement mit Azure Resource Manager |10 |
-| Maximale Anzahl von Routen für Private Peering in Azure mit ExpressRoute-Standard |4.000 |
-| Maximale Anzahl von Routen für Private Peering in Azure mit ExpressRoute-Premium-Add-on |10.000 |
-| Maximale Anzahl von Routen für privates Azure-Peering aus dem VNet-Adressraum für eine ExpressRoute-Verbindung |200 | 
-| Maximale Anzahl von Routen für Microsoft Azure-Peering mit ExpressRoute-Standard |200 |
-| Maximale Anzahl von Routen für Peering in Microsoft Azure mit ExpressRoute-Premium-Add-on |200 |
+| Maximale Anzahl der für das private Azure-Peering angekündigten Routen mit ExpressRoute Standard |4.000 |
+| Maximale Anzahl der für das private Azure-Peering angekündigten Routen mit ExpressRoute Premium-Add-On |10.000 |
+| Maximale Anzahl der vom privaten Azure-Peering angekündigten Routen aus dem VNET-Adressraum für eine ExpressRoute-Verbindung |200 |
+| Maximale Anzahl der für das Microsoft-Peering angekündigten Routen mit ExpressRoute Standard |200 |
+| Maximale Anzahl der für das Microsoft-Peering angekündigten Routen mit ExpressRoute Premium-Add-On |200 |
 | Maximale Anzahl von ExpressRoute-Verbindungen, die mit dem gleichen virtuellen Netzwerk am selben Peeringstandort verknüpft sind |4 |
 | Maximale Anzahl von ExpressRoute-Verbindungen, die mit dem gleichen virtuellen Netzwerk an unterschiedlichen Peeringstandorten verknüpft sind |4 |
-| Anzahl der pro ExpressRoute-Leitung zulässigen virtuellen Netzwerkverbindungen |Siehe hierzu die folgende Tabelle. |
+| Anzahl der pro ExpressRoute-Leitung zulässigen virtuellen Netzwerkverbindungen |Siehe Tabelle [Anzahl von virtuellen Netzwerken pro ExpressRoute-Leitung](#vnetpercircuit).  |
 
-#### <a name="number-of-virtual-networks-per-expressroute-circuit"></a>Anzahl der virtuellen Netzwerke pro ExpressRoute-Verbindung
+#### <a name="vnetpercircuit"></a>Anzahl von virtuellen Netzwerken pro ExpressRoute-Leitung
 | **Verbindungsgröße** | **Anzahl der Verknüpfungen eines virtuellen Netzwerks für Standard** | **Anzahl der Verknüpfungen eines virtuellen Netzwerks mit Premium-Add-on** |
 | --- | --- | --- |
 | 50 MBit/s |10 |20 |

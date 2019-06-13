@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 06/20/2018
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: 0e0c83d411242be38992dd763dea72eda70ffbf4
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.openlocfilehash: e9c307b2b2e720881acb983a2a1b00ac8e03dac4
+ms.sourcegitcommit: 8e76be591034b618f5c11f4e66668f48c090ddfd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "60006455"
+ms.lasthandoff: 05/29/2019
+ms.locfileid: "66357062"
 ---
 # <a name="manage-access-to-azure-resources-using-rbac-and-the-rest-api"></a>Verwalten des Zugriffs auf Azure-Ressourcen mit RBAC und der REST-API
 
@@ -38,12 +38,16 @@ Zum Auflisten des Zugriffs in RBAC führen Sie die Rollenzuweisungen auf. Um Rol
 
 1. Ersetzen Sie innerhalb des URIs *{scope}* durch den Bereich, für den die Rollen aufgelistet werden sollen.
 
-    | Bereich | Type |
+    | `Scope` | Type |
     | --- | --- |
     | `subscriptions/{subscriptionId}` | Abonnement |
     | `subscriptions/{subscriptionId}/resourceGroups/myresourcegroup1` | Ressourcengruppe |
-    | `subscriptions/{subscriptionId}/resourceGroups/myresourcegroup1/ providers/Microsoft.Web/sites/mysite1` | Ressource |
-
+    | `subscriptions/{subscriptionId}/resourceGroups/myresourcegroup1/ providers/Microsoft.Web/sites/mysite1` | Resource |
+    
+       
+     > [!NOTE]
+     > Im Beispiel oben wird „Microsoft.web“ als Ressourcenanbieter verwendet. Er verweist auf die App-Dienstinstanz. Analog dazu können Sie einen beliebigen anderen Ressourcenanbieter verwenden und den Bereichs-URI bilden. Weitere Informationen finden Sie unter [Azure-Ressourcenanbieter und -typen](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-supported-services) und [Vorgänge für Azure Resource Manager-Ressourcenanbieter](https://docs.microsoft.com/azure/role-based-access-control/resource-provider-operations).  
+     
 1. Ersetzen Sie *{filter}* durch die Bedingung, die zum Filtern der Liste mit den Rollenzuweisungen angewendet werden soll.
 
     | Filter | BESCHREIBUNG |
@@ -77,11 +81,11 @@ In RBAC erstellen Sie zum Gewähren des Zugriffs eine Rollenzuweisung. Um eine R
     
 1. Ersetzen Sie innerhalb des URIs *{scope}* durch den Bereich für die Rollenzuweisung.
 
-    | Bereich | Type |
+    | `Scope` | Type |
     | --- | --- |
     | `subscriptions/{subscriptionId}` | Abonnement |
     | `subscriptions/{subscriptionId}/resourceGroups/myresourcegroup1` | Ressourcengruppe |
-    | `subscriptions/{subscriptionId}/resourceGroups/myresourcegroup1/ providers/Microsoft.Web/sites/mysite1` | Ressource |
+    | `subscriptions/{subscriptionId}/resourceGroups/myresourcegroup1/ providers/Microsoft.Web/sites/mysite1` | Resource |
 
 1. Ersetzen Sie *{roleAssignmentName}* durch den GUID-Bezeichner der Rollenzuweisung.
 
@@ -105,11 +109,11 @@ In RBAC entfernen Sie eine Rollenzuweisung, um den Zugriff zu entfernen. Zum Ent
 
 1. Ersetzen Sie innerhalb des URIs *{scope}* durch den Bereich, um die Rollenzuweisung zu entfernen.
 
-    | Bereich | Type |
+    | `Scope` | Type |
     | --- | --- |
     | `subscriptions/{subscriptionId}` | Abonnement |
     | `subscriptions/{subscriptionId}/resourceGroups/myresourcegroup1` | Ressourcengruppe |
-    | `subscriptions/{subscriptionId}/resourceGroups/myresourcegroup1/ providers/Microsoft.Web/sites/mysite1` | Ressource |
+    | `subscriptions/{subscriptionId}/resourceGroups/myresourcegroup1/ providers/Microsoft.Web/sites/mysite1` | Resource |
 
 1. Ersetzen Sie *{roleAssignmentName}* durch den GUID-Bezeichner der Rollenzuweisung.
 

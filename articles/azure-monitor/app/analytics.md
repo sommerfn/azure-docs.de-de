@@ -12,23 +12,20 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 02/02/2019
 ms.author: mbullwin
-ms.openlocfilehash: d75544a30a441b5178a1e9dd368f1ce41cd4d321
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: f5819194e7967b5921f34223cad299752460de30
+ms.sourcegitcommit: 25a60179840b30706429c397991157f27de9e886
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64574261"
+ms.lasthandoff: 05/28/2019
+ms.locfileid: "66255639"
 ---
 # <a name="analytics-in-application-insights"></a>Analytics in Application Insights
 Analytics ist das leistungsfähige Such- und Abfragetool von [Application Insights](app-insights-overview.md). Analytics ist ein Webtool, sodass keine Installation erforderlich ist.
-Wenn Sie Application Insights bereits für eine Ihrer Apps konfiguriert haben, können Sie die Daten Ihrer App analysieren, indem Sie Analytics vom [Übersichtsblatt](app-insights-dashboards.md) Ihrer App aus öffnen.
+Wenn Sie Application Insights bereits für eine Ihrer Apps konfiguriert haben, können Sie die Daten Ihrer App analysieren, indem Sie Analytics über das Übersichtsblatt Ihrer App öffnen.
 
 ![Öffnen Sie unter „portal.azure.com“ die Application Insights-Ressource, und wählen Sie „Analytics“.](./media/analytics/001.png)
 
 Sie können auch den [Analytics-Playground](https://go.microsoft.com/fwlink/?linkid=859557) verwenden, eine kostenlose Demo-Umgebung mit einer Vielzahl von Beispieldaten.
-<br>
-<br>
-> [!VIDEO https://channel9.msdn.com/events/Connect/2016/123/player] 
 
 ## <a name="relation-to-azure-monitor-logs"></a>Bezug zu Azure Monitor-Protokollen
 Die Application Insights-Analyse basiert wie Azure Monitor-Protokolle auf [Azure Data Explorer](/azure/data-explorer) und verwendet auch die [Abfragesprache Kusto](/azure/kusto/query). Für sie wird das gleiche [Log Analytics-Portal](../log-query/get-started-portal.md) wie für Azure Monitor-Protokolle verwendet, obwohl die zugehörigen Daten in einer separaten Partition gespeichert werden.

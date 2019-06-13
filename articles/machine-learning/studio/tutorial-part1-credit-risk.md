@@ -47,7 +47,7 @@ Wenn Sie **Azure Machine Learning Studio** noch nicht verwendet haben, sollten S
 
 
 > [!TIP] 
-> Eine Arbeitskopie des Experiments, das Sie in diesem Tutorial entwickeln, finden Sie unter [Azure AI Gallery](https://gallery.azure.ai). Navigieren Sie zu **[Tutorial – Predict credit risk](https://gallery.azure.ai/Experiment/Walkthrough-Credit-risk-prediction-1)** (Tutorial: Vorhersagen des Kreditrisikos), und klicken Sie auf **Open in Studio**, um eine Kopie des Experiments in Ihren Machine Learning Studio-Arbeitsbereich herunterzuladen.
+> Eine Arbeitskopie des Experiments, das Sie in diesem Tutorial entwickeln, finden Sie im [Azure KI-Katalog](https://gallery.azure.ai). Navigieren Sie zu **[Tutorial – Predict credit risk](https://gallery.azure.ai/Experiment/Walkthrough-Credit-risk-prediction-1)** (Tutorial: Vorhersagen des Kreditrisikos), und klicken Sie auf **Open in Studio**, um eine Kopie des Experiments in Ihren Machine Learning Studio-Arbeitsbereich herunterzuladen.
 > 
 
 
@@ -69,7 +69,7 @@ Nachdem Ihr Arbeitsbereich erstellt wurde, öffnen Sie Machine Learning Studio (
 
 ## <a name="upload"></a>Hochladen vorhandener Daten
 
-Um ein Vorhersagemodell für Kreditrisiken zu entwickeln, benötigen Sie Daten, die Sie zum Trainieren und anschließenden Testen des Modells verwenden können. In diesem Tutorial verwenden Sie den Datensatz „UCI Statlog (German Credit Data)“ aus dem UC Irvine Machine Learning-Repository. Sie finden den Datensatz unter folgender URL:   
+Um ein Vorhersagemodell für Kreditrisiken zu entwickeln, benötigen Sie Daten, die Sie zum Trainieren und anschließenden Testen des Modells verwenden können. In diesem Tutorial verwenden Sie den Datensatz „UCI Statlog (German Credit Data)“ aus dem UC Irvine Machine Learning-Repository. Sie finden den Datensatz unter folgender URL:  
 <a href="https://archive.ics.uci.edu/ml/datasets/Statlog+(German+Credit+Data)">https://archive.ics.uci.edu/ml/datasets/Statlog+(German+Credit+Data)</a>
 
 Sie verwenden die Datei mit dem Namen **german.data**. Laden Sie die Datei auf Ihre lokale Festplatte herunter.  

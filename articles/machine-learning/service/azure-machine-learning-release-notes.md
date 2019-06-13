@@ -25,7 +25,7 @@ Erfahren Sie in diesem Artikel mehr über die Versionen des Azure Machine Learni
 
 Sehen Sie die [Liste der bekannten Probleme](resource-known-issues.md) an, um mehr über bekannte Fehler und Problemumgehungen zu erfahren.
 
-## <a name="2019-05-28"></a>28.05.2019
+## <a name="2019-05-28"></a>28\.05.2019
 
 ### <a name="azure-machine-learning-data-prep-sdk-v114"></a>Azure Machine Learning Data Prep SDK, Version 1.1.4
 
@@ -243,7 +243,7 @@ Hinweis: Die Pakete `numpy` und `pandas` des Data Prep Python SDK werden nicht m
   + Die `read_pandas_dataframe`-Transformation erfordert jetzt, dass der Datenrahmen Spaltennamen vom Typ Zeichenfolge oder Byte aufweist.
   + Es wurde ein Fehler in der `fill_nulls`-Transformation behoben, bei dem Werte nicht ordnungsgemäß ausgefüllt wurden, wenn die Spalte fehlte.
 
-## <a name="2019-03-11"></a>11.03.2019
+## <a name="2019-03-11"></a>11\.03.2019
 
 ### <a name="azure-machine-learning-sdk-for-python-v1018"></a>Azure Machine Learning SDK für Python v1.0.18
 
@@ -259,14 +259,14 @@ Hinweis: Die Pakete `numpy` und `pandas` des Data Prep Python SDK werden nicht m
 + **Fehlerbehebungen und Verbesserungen**
   + Die Dokumentation und Parameterüberprüfung für „random_split“ wurden verbessert.
   
-## <a name="2019-02-27"></a>27.02.2019
+## <a name="2019-02-27"></a>27\.02.2019
 
 ### <a name="azure-machine-learning-data-prep-sdk-v1016"></a>Azure Machine Learning Data Prep SDK v1.0.16
 
 + **Fehlerbehebung**
   + Ein Authentifizierungsproblem beim Dienstprinzipal wurde behoben, das durch eine API-Änderung hervorgerufen wurde.
 
-## <a name="2019-02-25"></a>25.02.2019
+## <a name="2019-02-25"></a>25\.02.2019
 
 ### <a name="azure-machine-learning-sdk-for-python-v1017"></a>Azure Machine Learning SDK für Python v1.0.17
 
@@ -397,7 +397,7 @@ Hinweis: Die Pakete `numpy` und `pandas` des Data Prep Python SDK werden nicht m
 Der Azure Machine Learning Service ist jetzt allgemein verfügbar.
 
 ### <a name="azure-machine-learning-compute"></a>Azure Machine Learning Compute
-Mit diesem Release kündigen wir eine neue verwaltete Compute-Umgebung über [Azure Machine Learning Compute](how-to-set-up-training-targets.md#amlcompute) an. Dieses Computeziel ersetzt das Azure Batch AI-Computeziel für Azure Machine Learning. 
+Mit diesem Release kündigen wir eine neue verwaltete Compute-Umgebung über [Azure Machine Learning Compute](how-to-set-up-training-targets.md#amlcompute) an. Dieses Computeziel ersetzt das Azure Batch KI-Computeziel für Azure Machine Learning. 
 
 Dieses Computeziel:
 + Wird für das Modelltraining und Batchrückschlüsse/-bewertungen verwendet
@@ -503,7 +503,7 @@ Erfahren Sie mehr zum Data Prep SDK, indem Sie die [Referenzdokumente](https://a
    * Assertionsfehler werden bei Dataflow-Fehler jetzt richtig behandelt
    * Per dbutils bereitgestellte Speicherorte werden unter Azure Databricks jetzt unterstützt
 
-## <a name="2018-11-05"></a>05.11.2018
+## <a name="2018-11-05"></a>05\.11.2018
 
 ### <a name="azure-portal"></a>Azure-Portal 
 Im Azure-Portal für den Azure Machine Learning-Dienst wurden folgende Updates vorgenommen:
@@ -540,7 +540,7 @@ Im Azure-Portal für den Azure Machine Learning-Dienst wurden folgende Updates v
   * Bei „Write_to_csv“ tritt kein Fehler mehr auf, wenn der Pfad als Zeichenfolge angegeben wird.
   * Wenn bei Verwendung von „Ersetzen“ das Suchfeld leer ist, tritt kein Fehler mehr auf. 
 
-## <a name="2018-10-12"></a>12.10.2018
+## <a name="2018-10-12"></a>12\.10.2018
 
 ### <a name="azure-machine-learning-sdk-for-python-v0168"></a>Azure Machine Learning SDK für Python v0.1.68
 
@@ -555,7 +555,7 @@ Im Azure-Portal für den Azure Machine Learning-Dienst wurden folgende Updates v
 + **Neue Features**
   * Methode transform_partition_with_file(script_path) hinzugefügt, die es Benutzern ermöglicht, den Pfad einer auszuführenden Python-Datei zu übergeben
 
-## <a name="2018-10-01"></a>01.10.2018
+## <a name="2018-10-01"></a>01\.10.2018
 
 ### <a name="azure-machine-learning-sdk-for-python-v0165"></a>Azure Machine Learning SDK für Python v0.1.65
 [Version 0.1.65](https://pypi.org/project/azureml-sdk/0.1.65) enthält neue Features, mehr Dokumentation, Fehlerbehebungen und weitere [Beispielnotebooks](https://aka.ms/aml-notebooks).
@@ -612,7 +612,7 @@ Sehen Sie die [Liste der bekannten Probleme](resource-known-issues.md) an, um me
   * Funktioniert mit jeder Tornado-Version, ein Downgrade Ihrer Tornado-Version ist nicht erforderlich
   * Der Wert gilt für alle Werte, nicht nur für die höchsten drei
 
-## <a name="2018-09-public-preview-refresh"></a>09.2018 (Aktualisierung der öffentlichen Vorschau)
+## <a name="2018-09-public-preview-refresh"></a>09\.2018 (Aktualisierung der öffentlichen Vorschau)
 
 Neues, aktualisiertes Release von Azure Machine Learning: Weitere Informationen zu diesem Release: https://azure.microsoft.com/blog/what-s-new-in-azure-machine-learning-service/
 

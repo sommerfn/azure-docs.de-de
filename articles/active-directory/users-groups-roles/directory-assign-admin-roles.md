@@ -14,12 +14,12 @@ ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 82afadef58310f46046c8c3168ed93a34769b316
-ms.sourcegitcommit: 5f348bf7d6cf8e074576c73055e17d7036982ddb
+ms.openlocfilehash: 1107a6df92bf577cd60b9ad31627219da8e1a388
+ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/16/2019
-ms.locfileid: "59609522"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65956547"
 ---
 # <a name="administrator-role-permissions-in-azure-active-directory"></a>Berechtigungen der Administratorrolle in Azure Active Directory
 
@@ -42,7 +42,7 @@ Die folgenden Administratorrollen sind verfügbar:
 
 * **[Anwendungsentwickler:](#application-developer)** Benutzer mit dieser Rolle können Anwendungsregistrierungen erstellen, wenn die Einstellung „Benutzer können Anwendungen registrieren“ auf „Nein“ festgelegt ist. Diese Rolle ermöglicht auch die Berechtigung, im eigenen Namen zuzustimmen, wenn die Einstellung „Benutzer können Apps zustimmen, die in ihrem Namen auf Unternehmensdaten zugreifen“ auf „Nein“ festgelegt ist. Benutzer, denen diese Rolle zugewiesen wurde, werden bei der Erstellung neuer Anwendungsregistrierungen oder Unternehmensanwendungen als Besitzer hinzugefügt.
 
-* **[Authentifizierungsadministrator](#authentication-administrator)**: Benutzer mit dieser Rolle können kennwortlose Anmeldeinformationen festlegen oder zurücksetzen. Authentifizierungsadministratoren können Benutzer auffordern, ihre vorhandenen Anmeldeinformationen ohne Kennwort (z.B. MFA, FIDO) erneut zu registrieren und **auf einem Gerät gespeicherte MFA-Informationen** zu widerrufen. Dadurch werden Benutzer, die keine Administratoren sind oder denen nur die folgenden Rollen zugewiesen wurden, bei der nächsten Anmeldung zur Eingabe ihrer MFA-Anmeldeinformationen aufgefordert:
+* **[Authentifizierungsadministrator](#authentication-administrator)** : Benutzer mit dieser Rolle können kennwortlose Anmeldeinformationen festlegen oder zurücksetzen. Authentifizierungsadministratoren können Benutzer auffordern, ihre vorhandenen Anmeldeinformationen ohne Kennwort (z.B. MFA, FIDO) erneut zu registrieren und **auf einem Gerät gespeicherte MFA-Informationen** zu widerrufen. Dadurch werden Benutzer, die keine Administratoren sind oder denen nur die folgenden Rollen zugewiesen wurden, bei der nächsten Anmeldung zur Eingabe ihrer MFA-Anmeldeinformationen aufgefordert:
   * Authentifizierungsadministrator
   * Rolle „Verzeichnis lesen“
   * Gasteinladender
@@ -51,13 +51,25 @@ Die folgenden Administratorrollen sind verfügbar:
 
   Die Rolle „Authentifizierungsadministrator“ ist derzeit als öffentliche Vorschauversion verfügbar. Diese Vorschauversion wird ohne Vereinbarung zum Servicelevel bereitgestellt und ist nicht für Produktionsworkloads vorgesehen. Manche Features werden möglicherweise nicht unterstützt oder sind nur eingeschränkt verwendbar. Weitere Informationen finden Sie unter [Zusätzliche Nutzungsbestimmungen für Microsoft Azure-Vorschauen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
-  <b>Wichtig</b>: Benutzer mit dieser Rolle können Anmeldeinformationen für Benutzer ändern, die Zugriff auf vertrauliche oder private Informationen bzw. kritische Konfigurationen innerhalb und außerhalb von Azure Active Directory haben. Das bedeutet, dass Benutzer, die Anmeldeinformationen ändern können, ggf. auch die Identität und die Berechtigungen des betreffenden Benutzers annehmen können. Beispiel: 
+  <b>Wichtig</b>: Benutzer mit dieser Rolle können Anmeldeinformationen für Benutzer ändern, die Zugriff auf vertrauliche oder private Informationen bzw. kritische Konfigurationen innerhalb und außerhalb von Azure Active Directory haben. Das bedeutet, dass Benutzer, die Anmeldeinformationen ändern können, ggf. auch die Identität und die Berechtigungen des betreffenden Benutzers annehmen können. Beispiel:
 
   * Besitzer von Anwendungsregistrierungen und Unternehmensanwendungen, die Anmeldeinformationen von Apps verwalten können, die sie besitzen. Diese Apps können über höhere Berechtigungen in Azure AD und in anderen Diensten verfügen, die Authentifizierungsadministratoren nicht gewährt werden. So kann ein Authentifizierungsadministrator die Identität eines Anwendungsbesitzers annehmen und dann die Identität einer privilegierten Anwendung durch Aktualisieren der Anmeldeinformationen für die Anwendung annehmen.
   * Besitzer von Azure-Abonnements, die ggf. auf vertrauliche oder private Informationen bzw. kritische Konfigurationen in Azure zugreifen können.
   * Besitzer von Sicherheitsgruppen und Office 365-Gruppen, die die Gruppenmitgliedschaft verwalten können. Diese Gruppen können Zugriff auf vertrauliche oder private Informationen bzw. kritische Konfigurationen in Azure AD und in anderen Diensten gewähren.
   * Administratoren in anderen Diensten außerhalb von Azure AD wie Exchange Online, Office Security and Compliance Center und Personalwesen.
   * Nichtadministratoren wie Führungskräfte, Rechtsberater und Mitarbeiter der Personalabteilung mit Zugriff auf vertrauliche oder private Informationen.
+
+* **[B2C-Benutzerflowadministrator:](#b2c-user-flow-administrator)** Benutzer mit dieser Rolle können B2C-Benutzerflows (auch als „integrierte“ Richtlinien bezeichnet) im Azure-Portal erstellen und verwalten. Durch Erstellen oder Bearbeiten von Benutzerflows können diese Benutzer den HTML-/CSS-/JavaScript-Inhalt für Benutzer ändern, die MFA-Anforderungen pro Benutzerflow ändern, Ansprüche im Token ändern und Sitzungseinstellungen für alle Richtlinien im Mandanten anpassen. Auf der anderen Seite bietet diese Rolle nicht die Möglichkeit, Benutzerdaten zu überprüfen oder Änderungen an Attributen vorzunehmen, die im Mandantenschema enthalten sind. Änderungen an Identity Experience Framework-Richtlinien (benutzerdefiniert) sind auch außerhalb des Bereichs dieser Rolle möglich.
+
+* **[B2C-Administrator für Benutzerflowattribute:](#b2c-user-flow-attribute-administrator)** Benutzer mit dieser Rolle können benutzerdefinierte Attribute, die für alle Benutzerflows im Mandanten verfügbar sind, hinzufügen und löschen. Daher können Benutzer mit dieser Rolle dem Benutzerschema neue Elemente hinzufügen und diese ändern und haben damit Einfluss auf das Verhalten aller Benutzerflows. Indirekt kann dies auch ändern, welche Daten von Benutzern abgefragt und letztendlich als Ansprüche an Anwendungen gesendet werden. Diese Rolle kann keine Benutzerflows bearbeiten.
+
+* **[B2C-IEF-Schlüsselsatzadministrator:](#b2c-ief-keyset-administrator)**    Benutzer können die Richtlinienschlüssel und -geheimnisse für Tokenverschlüsselung, Tokensignaturen und Verschlüsselung/Entschlüsselung von Ansprüchen erstellen und verwalten. Durch das Hinzufügen neuer Schlüssel zu vorhandenen Schlüsselcontainern kann dieser Administrator mit eingeschränkten Rechten, nach Bedarf Rollover für Geheimnisse ausführen, ohne dass dies Auswirkungen auf vorhandene Anwendungen hat. Diese Benutzer können den vollständigen Inhalt dieser Geheimnisse und deren Ablaufdaten anzeigen – auch nach deren Erstellung.
+    
+  <b>Wichtig:</b> Dies ist eine vertrauliche Rolle. Die Administratorrolle für Schlüsselsätze sollte sorgfältig überwacht und mit Bedacht für Präproduktion und Produktion zugewiesen werden.
+
+* **[B2C-IEF-Richtlinienadministrator:](#b2c-ief-policy-administrator)** Benutzer mit dieser Rolle können alle benutzerdefinierten Richtlinien in Azure AD B2C erstellen, lesen, aktualisieren und löschen und haben daher vollständige Kontrolle über das Identity Experience Framework im zugehörigen Azure AD B2C-Mandanten. Durch das Bearbeiten von Richtlinien können diese Benutzer einen direkten Verbund mit externen Identitätsanbietern einrichten, das Verzeichnisschema und alle benutzerseitigen Inhalte (HTML, CSS, JavaScript) sowie die Anforderungen für das Abschließen einer Authentifizierung ändern, neue Benutzer erstellen, Benutzerdaten an externe Systeme senden (einschließlich einer vollständigen Migration) und alle Benutzerinformationen bearbeiten (einschließlich vertraulicher Felder wie Kennwörter und Telefonnummern). Andererseits kann diese Rolle keine Verschlüsselungsschlüssel ändern oder Geheimnisse für den Verbund im Mandanten bearbeiten.
+
+  <b>Wichtig:</b> Der B2-IEF-Richtlinienadministrator ist eine streng vertrauliche Rolle, die nur sehr wenigen Benutzern für Mandanten in der Produktion zugewiesen werden sollte. Aktivitäten dieser Benutzer sollten streng überwacht werden. Dies gilt vor allem für Mandanten in der Produktion.
 
 * **[Rechnungsadministrator:](#billing-administrator)** Tätigt Käufe, verwaltet Abonnements und Supporttickets und überwacht die Dienstintegrität.
 
@@ -110,6 +122,9 @@ Die folgenden Administratorrollen sind verfügbar:
   > [!NOTE]
   > In der Microsoft Graph-API, der Azure AD Graph-API und in Azure AD PowerShell wird diese Rolle als „Exchange-Dienstadministrator“ bezeichnet. Im [Azure-Portal](https://portal.azure.com) lautet sie „Exchange-Administrator“. Im [Exchange Admin Center](https://go.microsoft.com/fwlink/p/?LinkID=529144) lautet sie „Exchange Online-Administrator“. 
 
+* **[Externer Identitätsanbieteradministrator:](#external-identity-provider-administrator)** Dieser Administrator verwaltet den Verbund zwischen Azure Active Directory-Mandanten und externen Identitätsanbietern. Benutzer mit dieser Rolle können neue Identitätsanbieter hinzufügen und alle verfügbaren Einstellungen (z. B. Authentifizierungspfad, Dienst-ID, zugeordnete Schlüsselcontainer) konfigurieren. Diese Benutzer können festlegen, dass der Mandant Authentifizierungen von externen Identitätsanbietern vertraut. Die resultierenden Auswirkungen auf die Benutzerumgebung hängt vom Typ des Mandanten ab:
+  * Azure Active Directory-Mandanten für Mitarbeiter und Partner: Das Hinzufügen eines Verbunds (z. B. mit Gmail) hat sofortige Auswirkungen auf Einladungen für Gäste, die noch nicht eingelöst wurden. Weitere Informationen finden Sie unter [Hinzufügen von Google als Identitätsanbieter für B2B-Gastbenutzer](https://docs.microsoft.com/azure/active-directory/b2b/google-federation).
+  * Azure Active Directory B2C-Mandanten: Das Hinzufügen eines Verbunds (z. B. mit Facebook oder einer anderen Azure Active Directory-Instanz) wirkt sich nicht sofort auf die Endbenutzerflows aus, sondern erst, wenn der Identitätsanbieter als Option in einem Benutzerflow (einer integrierten Richtlinie) hinzugefügt wird. Ein Beispiel finden Sie unter [Konfigurieren eines Microsoft-Kontos als Identitätsanbieter](https://docs.microsoft.com/azure/active-directory-b2c/active-directory-b2c-setup-msa-app). Um Benutzerflows zu ändern, ist die Rolle „B2C-Benutzerflowadministrator“ mit eingeschränkten Rechen erforderlich.
 
 * **[Globaler Administrator/Unternehmensadministrator:](#company-administrator)** Benutzer mit dieser Rolle besitzen Zugriff auf alle administrativen Features in Azure Active Directory sowie Dienste, die Azure Active Directory-Identitäten nutzen, z.B. Microsoft 365 Security Center, Microsoft 365 Compliance Center, Exchange Online, SharePoint Online oder Skype for Business Online. Die Person, die die Anmeldung für den Azure Active Directory-Mandanten vornimmt, wird ein globaler Administrator. Nur globale Administratoren können weitere Administratorrollen zuweisen. In Ihrem Unternehmen können mehrere globale Administratoren vorhanden sein. Globale Administratoren können das Kennwort für alle Benutzer und alle anderen Administratoren zurücksetzen.
 
@@ -141,22 +156,27 @@ Die folgenden Administratorrollen sind verfügbar:
   * Nachrichtencenter-Leser
   * Meldet Reader
   
-  <b>Wichtig</b>: Benutzer mit dieser Rolle können Kennwörter für Benutzer ändern, die Zugriff auf vertrauliche oder private Informationen bzw. kritische Konfigurationen innerhalb und außerhalb von Azure Active Directory haben. Benutzer, die Kennwörter ändern können, können ggf. auch die Identität und die Berechtigungen des betreffenden Benutzers annehmen. Beispiel: 
+  <b>Wichtig</b>: Benutzer mit dieser Rolle können Kennwörter für Benutzer ändern, die Zugriff auf vertrauliche oder private Informationen bzw. kritische Konfigurationen innerhalb und außerhalb von Azure Active Directory haben. Benutzer, die Kennwörter ändern können, können ggf. auch die Identität und die Berechtigungen des betreffenden Benutzers annehmen. Beispiel:
   * Besitzer von Anwendungsregistrierungen und Unternehmensanwendungen, die Anmeldeinformationen von Apps verwalten können, die sie besitzen. Diese Apps können über höhere Berechtigungen in Azure AD und in anderen Diensten verfügen, die Helpdeskadministratoren nicht gewährt werden. So kann ein Helpdeskadministrator die Identität eines Anwendungsbesitzers annehmen und dann die Identität einer privilegierten Anwendung durch Aktualisieren der Anmeldeinformationen für die Anwendung annehmen.
   * Besitzer von Azure-Abonnements, die ggf. auf vertrauliche oder private Informationen bzw. kritische Konfigurationen in Azure zugreifen können.
   * Besitzer von Sicherheitsgruppen und Office 365-Gruppen, die die Gruppenmitgliedschaft verwalten können. Diese Gruppen können Zugriff auf vertrauliche oder private Informationen bzw. kritische Konfigurationen in Azure AD und in anderen Diensten gewähren.
   * Administratoren in anderen Diensten außerhalb von Azure AD wie Exchange Online, Office Security and Compliance Center und Personalwesen.
   * Nichtadministratoren wie Führungskräfte, Rechtsberater und Mitarbeiter der Personalabteilung mit Zugriff auf vertrauliche oder private Informationen.
 
+
+  > [!NOTE]
+  > Das Delegieren von administrativen Berechtigungen für Teilmengen von Benutzern und das Anwenden von Richtlinien auf eine Teilmenge der Benutzer kann über [Verwaltungseinheiten (Vorschauversion)](https://docs.microsoft.com/azure/active-directory/users-groups-roles/directory-administrative-units) erfolgen.
+
+
   > [!NOTE]
   > Im [Azure-Portal](https://portal.azure.com/) hieß diese Rolle früher „Kennwortadministrator“. Wir ändern den Namen in „Helpdeskadministrator“, damit er dem Namen in Azure AD PowerShell, Azure AD Graph-API und Microsoft Graph-API entspricht. Für kurze Zeit verwenden wir im Azure-Portal den Namen „Helpdeskadministrator (Kennwort)“, bevor wir ihn in „Helpdeskadministrator“ ändern.
-  >
-  
+
+
 * **[Power BI-Administrator:](#power-bi-service-administrator)** Benutzer mit dieser Rolle besitzen globale Berechtigungen innerhalb von Microsoft Power BI, wenn der Dienst verfügbar ist, und können Supporttickets verwalten und die Dienstintegrität überwachen. Weitere Informationen finden Sie unter [Grundlegendes zur Power BI-Administratorrolle](https://docs.microsoft.com/power-bi/service-admin-role).
   > [!NOTE]
   > In der Microsoft Graph-API, der Azure AD Graph-API und Azure AD PowerShell wird diese Rolle als „Power BI-Dienstadministrator“ bezeichnet. Im [Azure-Portal](https://portal.azure.com) lautet sie „Power BI-Administrator“.
 
-* **[Privilegierter Authentifizierungsadministrator](#privileged-authentication-administrator)**: Benutzer mit dieser Rolle können Anmeldeinformationen ohne Kennwort für alle Benutzer, einschließlich globaler Administratoren, festlegen oder zurücksetzen. Privilegierte Authentifizierungsadministratoren können eine erneute Registrierung von Benutzern anhand einer vorhandenen Anmeldeinformation ohne Kennwort (z.B. MFA, FIDO) erzwingen und „Speichern der MFA auf dem Gerät“ widerrufen. In diesem Fall werden alle Benutzer bei der nächsten Anmeldung zur MFA-Eingabe aufgefordert. Privilegierte Authentifizierungsadministratoren können folgende Aktionen ausführen:
+* **[Privilegierter Authentifizierungsadministrator](#privileged-authentication-administrator)** : Benutzer mit dieser Rolle können Anmeldeinformationen ohne Kennwort für alle Benutzer, einschließlich globaler Administratoren, festlegen oder zurücksetzen. Privilegierte Authentifizierungsadministratoren können eine erneute Registrierung von Benutzern anhand einer vorhandenen Anmeldeinformation ohne Kennwort (z.B. MFA, FIDO) erzwingen und „Speichern der MFA auf dem Gerät“ widerrufen. In diesem Fall werden alle Benutzer bei der nächsten Anmeldung zur MFA-Eingabe aufgefordert. Privilegierte Authentifizierungsadministratoren können folgende Aktionen ausführen:
   * Benutzer zwingen, sich mit vorhandenen Anmeldeinformationen ohne Kennwort (z.B. MFA, FIDO) erneut zu registrieren
   * „Speichern der MFA auf dem Gerät“ widerrufen, wodurch bei der nächsten Anmeldung zur MFA-Eingabe aufgefordert wird
 
@@ -239,7 +259,7 @@ Die folgenden Administratorrollen sind verfügbar:
   |<p>Für alle Benutzer einschließlich aller Administratoren</p>|<p>Verwalten von Lizenzen</p><p>Verwalten aller Benutzereigenschaften mit Ausnahme des Benutzerprinzipalnamens</p>
   |Nur für Benutzer, die keine Administratoren sind und keine der folgenden eingeschränkten Administratorrollen haben:<ul><li>Rolle „Verzeichnis lesen“<li>Gasteinladender<li>Helpdeskadministrator<li>Nachrichtencenter-Leser<li>Meldet Reader<li>Benutzeradministrator|<p>Löschen und Wiederherstellen</p><p>Deaktivieren und Aktivieren</p><p>Annullieren von Aktualisierungstoken</p><p>Verwalten aller Benutzereigenschaften einschließlich des Benutzerprinzipalnamens</p><p>Kennwort zurücksetzen</p><p>Aktualisieren von Geräteschlüsseln (FIDO)</p>
   
-  <b>Wichtig</b>: Benutzer mit dieser Rolle können Kennwörter für Benutzer ändern, die Zugriff auf vertrauliche oder private Informationen bzw. kritische Konfigurationen innerhalb und außerhalb von Azure Active Directory haben. Benutzer, die Kennwörter ändern können, können ggf. auch die Identität und die Berechtigungen des betreffenden Benutzers annehmen. Beispiel: 
+  <b>Wichtig</b>: Benutzer mit dieser Rolle können Kennwörter für Benutzer ändern, die Zugriff auf vertrauliche oder private Informationen bzw. kritische Konfigurationen innerhalb und außerhalb von Azure Active Directory haben. Benutzer, die Kennwörter ändern können, können ggf. auch die Identität und die Berechtigungen des betreffenden Benutzers annehmen. Beispiel:
   * Besitzer von Anwendungsregistrierungen und Unternehmensanwendungen, die Anmeldeinformationen von Apps verwalten können, die sie besitzen. Diese Apps können über höhere Berechtigungen in Azure AD und in anderen Diensten verfügen, die Benutzeradministratoren nicht gewährt werden. So kann ein Benutzeradministrator die Identität eines Anwendungsbesitzers annehmen und dann die Identität einer privilegierten Anwendung durch Aktualisieren der Anmeldeinformationen für die Anwendung annehmen.
   * Besitzer von Azure-Abonnements, die ggf. auf vertrauliche oder private Informationen bzw. kritische Konfigurationen in Azure zugreifen können.
   * Besitzer von Sicherheitsgruppen und Office 365-Gruppen, die die Gruppenmitgliedschaft verwalten können. Diese Gruppen können Zugriff auf vertrauliche oder private Informationen bzw. kritische Konfigurationen in Azure AD und in anderen Diensten gewähren.
@@ -314,6 +334,34 @@ Ist berechtigt, Informationen zur Authentifizierungsmethode für alle Benutzer o
 | microsoft.office365.webPortal/allEntities/basic/read | Lesen der Basiseigenschaften für alle Ressourcen in microsoft.office365.webPortal. |
 | microsoft.office365.serviceHealth/allEntities/allTasks | Lesen und Konfigurieren des Office 365-Dienststatus. |
 | microsoft.office365.supportTickets/allEntities/allTasks | Erstellen und Verwalten von Office 365-Supporttickets. |
+
+### <a name="b2c-user-flow-administrator"></a>B2C-Benutzerflowadministrator
+Erstellen und Verwalten aller Aspekte von Benutzerflows
+
+| **Aktionen** | **Beschreibung** |
+| --- | --- |
+| microsoft.aad.b2c/userFlows/allTasks | Erstellen und Konfigurieren von Benutzerflows in Azure Active Directory B2C |
+
+### <a name="b2c-user-flow-attribute-administrator"></a>B2C-Administrator für Benutzerflowattribute
+Erstellen und Verwalten des Attributschemas für alle Benutzerabläufe
+
+| **Aktionen** | **Beschreibung** |
+| --- | --- |
+| microsoft.aad.b2c/userAttributes/allTasks | Lesen und Konfigurieren von Benutzerattributen in Azure Active Directory B2C |
+
+### <a name="b2c-ief-keyset-administrator"></a>B2C-IEF-Schlüsselsatzadministrator
+Verwalten von Geheimnissen für Verbund und Verschlüsselung im Identity Experience Framework
+
+| **Aktionen** | **Beschreibung** |
+| --- | --- |
+| microsoft.aad.b2c/trustFramework/keySets/allTasks | Lesen und Konfigurieren von Schlüsselsätzen in Azure Active Directory B2C |
+
+### <a name="b2c-ief-policy-administrator"></a>B2C-IEF-Richtlinienadministrator
+Erstellen und Verwalten von Vertrauensframework-Richtlinien im Identity Experience Framework
+
+| **Aktionen** | **Beschreibung** |
+| --- | --- |
+| microsoft.aad.b2c/trustFramework/policies/allTasks | Lesen und Konfigurieren benutzerdefinierter Richtlinien in Azure Active Directory B2C |
 
 ### <a name="billing-administrator"></a>Abrechnungsadministrator
 Ausführen von allgemeinen Abrechnungsaufgaben wie der Aktualisierung der Zahlungsinformationen.
@@ -675,6 +723,13 @@ Verwalten sämtlicher Aspekte des Produkts Exchange.
 | microsoft.office365.exchange/allEntities/allTasks | Verwalten sämtlicher Aspekte von Exchange Online. |
 | microsoft.office365.serviceHealth/allEntities/allTasks | Lesen und Konfigurieren des Office 365-Dienststatus. |
 | microsoft.office365.supportTickets/allEntities/allTasks | Erstellen und Verwalten von Office 365-Supporttickets. |
+
+### <a name="external-identity-provider-administrator"></a>Externer Identitätsanbieteradministrator
+Konfigurieren von Identitätsanbietern für die Verwendung in einem direkten Verbund
+
+| **Aktionen** | **Beschreibung** |
+| --- | --- |
+| microsoft.aad.b2c/identityProviders/allTasks | Lesen und Konfigurieren von Identitätsanbietern in Azure Active Directory B2C |
 
 ### <a name="guest-inviter"></a>Gasteinladender
 Diese Rolle kann Gastbenutzer einladen, unabhängig von der Einstellung „Mitglieder können Gäste einladen“.

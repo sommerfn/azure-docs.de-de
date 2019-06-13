@@ -10,23 +10,23 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 05/28/2019
 ms.author: diberry
-ms.openlocfilehash: b620cbb8e51fbe41defb6bdbdc66ba4a7e539aa0
-ms.sourcegitcommit: 009334a842d08b1c83ee183b5830092e067f4374
+ms.openlocfilehash: 7a4153dd382a901db21752dd3d55a01803431791
+ms.sourcegitcommit: 3d4121badd265e99d1177a7c78edfa55ed7a9626
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/29/2019
-ms.locfileid: "66306552"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66388688"
 ---
 # <a name="install-and-run-speech-service-containers"></a>Installieren und Ausführen von Containern für den Speech-Dienst
 
-Mit Speech-Containern können Kunden eine Speech-basierte Anwendungsarchitektur erstellen, die sowohl von widerstandsfähigen Cloudfunktionen als auch von der Edgeposition profitieren kann. Aktuell werden zwei Speech-Container unterstützt: **Spracherkennung** und **Sprachsynthese**. 
+Mit Speech-Containern können Kunden eine Speech-basierte Anwendungsarchitektur erstellen, die sowohl von widerstandsfähigen Cloudfunktionen als auch von der Edgeposition profitieren kann. 
 
 Die beiden Sprachcontainer sind **Spracherkennung** und **Sprachsynthese**. 
 
 |Funktion|Features|Neueste Version|
 |-|-|--|
-|Spracherkennung| <li>Wandelt fortlaufende Sprache in Echtzeit in Text um.<li>Kann Sprache aus Audioaufnahmen als Batch transkribieren. <li>Unterstützt Zwischenergebnisse, die Erkennung des Endes der Spracheingabe, automatische Textformatierung sowie die Maskierung anstößiger Ausdrücke. <li>Kann mithilfe von [Language Understanding](https://docs.microsoft.com/azure/cognitive-services/luis/) (LUIS) die Benutzerabsicht aus der transkribierten Sprache ableiten.\*|1.1.1|
-|Sprachsynthese| <li>Konvertiert Text in natürlich klingende Sprache. <li>Bietet mehrere Geschlechter und/oder Dialekte für viele unterstützte Sprachen. <li>Unterstützt Nur-Text-Eingabe und SSML (Speech Synthesis Markup Language, Markupsprache für Sprachsynthese). |1.1.0|
+|Spracherkennung| <li>Transkribiert kontinuierliche Echtzeitsprache oder Batchaudioaufzeichnungen in Text mit Zwischenergebnissen.|1.1.1|
+|Sprachsynthese| <li>Konvertiert Text in natürlich klingende Sprache. mit Nur-Text-Eingabe und SSML (Speech Synthesis Markup Language, Markupsprache für Sprachsynthese). |1.1.0|
 
 Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) erstellen, bevor Sie beginnen.
 
