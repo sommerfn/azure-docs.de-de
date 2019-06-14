@@ -97,6 +97,9 @@
             - name: 'Java (Windows, macOS, Linux)'
               href: quickstart-virtual-assistant-java-jre.md
               displayName: 'virtual assistant, speech-enabled bot, conversational agent'
+            - name: Java (Android)
+              href: quickstart-virtual-assistant-java-android.md
+              displayName: 'virtual assistant, speech-enabled bot, conversational agent'
     - name: REST-APIs
       items:
         - name: Liste unterstützter Stimmen nach Region
@@ -274,7 +277,7 @@
       href: 'https://docs.microsoft.com/cli/azure/cognitiveservices?view=azure-cli-latest#az_cognitiveservices_list'
     - name: Sprachunterstützung
       href: language-support.md
-    - name: Regionen
+    - name: Regions
       href: regions.md
 - name: Ressourcen
   items:
