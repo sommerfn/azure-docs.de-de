@@ -11,10 +11,10 @@ ms.author: amlstudiodocs
 ms.custom: seodec18
 ms.date: 12/18/2017
 ms.openlocfilehash: e6a7eaa94e7196c830a66b2d77023bd562119c92
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64699440"
 ---
 # <a name="analyze-customer-churn-using-azure-machine-learning-studio"></a>Analysieren der Kundenabwanderung mithilfe von Azure Machine Learning Studio
@@ -25,7 +25,7 @@ Dieser Artikel beschreibt eine Referenzimplementierung für ein Projekt zur Anal
 Dieses Experiment wurde von Serge Berger, Principal Data Scientist bei Microsoft, und Roger Barga, zuvor Produktmanager für Microsoft Azure Machine Learning Studio, entwickelt und getestet. Der Azure-Dokumentationsteam bedankt sich herzlich dafür, dass beide ihre Erkenntnisse in diesem Whitepaper präsentieren.
 
 > [!NOTE]
-> Die für dieses Experiment genutzten Daten sind nicht öffentlich zugänglich. Ein Beispiel zum Erstellen eines Machine Learning-Modells für die Kundenabwanderungsanalyse finden Sie hier: [Azure AI Gallery](https://gallery.azure.ai/) in der [Vorlage für ein Abwanderungsmodell im Einzelhandel](https://gallery.azure.ai/Collection/Retail-Customer-Churn-Prediction-Template-1).
+> Die für dieses Experiment genutzten Daten sind nicht öffentlich zugänglich. Ein Beispiel zum Erstellen eines Machine Learning-Modells für die Kundenabwanderungsanalyse finden Sie hier: [Vorlage für ein Abwanderungsmodell im Einzelhandel](https://gallery.azure.ai/Collection/Retail-Customer-Churn-Prediction-Template-1) im [Azure KI-Katalog](https://gallery.azure.ai/)
 > 
 > 
 

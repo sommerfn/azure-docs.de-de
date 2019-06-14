@@ -16,10 +16,10 @@ ms.date: 04/25/2019
 ms.author: sukumari
 ms.reviewer: azmetadata
 ms.openlocfilehash: 160d494eea4bd597725a4e7c21ad9b763502bee6
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/16/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65792096"
 ---
 # <a name="azure-instance-metadata-service"></a>Azure-Instanzmetadatendienst
@@ -37,7 +37,7 @@ Der Endpunkt steht unter einer bekannten, nicht routingfähigen IP-Adresse zur V
 
 Der Dienst ist in Azure-Regionen allgemein verfügbar. Unter Umständen sind nicht alle API-Versionen in allen Azure-Regionen verfügbar.
 
-Regionen                                        | Verfügbarkeit?                                 | Unterstützte Versionen
+Regions                                        | Verfügbarkeit?                                 | Unterstützte Versionen
 -----------------------------------------------|-----------------------------------------------|-----------------
 [Allgemein verfügbar in globalen Azure-Regionen](https://azure.microsoft.com/regions/)     | Allgemein verfügbar | 2017-04-02, 2017-08-01, 2017-12-01, 2018-02-01, 2018-04-02, 2018-10-01
 [Azure Government](https://azure.microsoft.com/overview/clouds/government/)              | Allgemein verfügbar | 2017-04-02, 2017-08-01, 2017-12-01, 2018-02-01, 2018-04-02, 2018-10-01
@@ -342,7 +342,7 @@ Invoke-RestMethod -Headers @{"Metadata"="true"} -URI http://169.254.169.254/meta
 
 Daten | BESCHREIBUNG | Eingeführt in Version
 -----|-------------|-----------------------
-attested | Siehe [Bestätigte Daten](#attested-data) | 01.10.2018
+attested | Siehe [Bestätigte Daten](#attested-data) | 01\.10.2018
 identity | Verwaltete Identitäten für Azure-Ressourcen. Siehe [Abrufen eines Zugriffstokens](../../active-directory/managed-identities-azure-resources/how-to-use-vm-token.md) | 2018-02-01
 instance | Siehe [Instanz-API](#instance-api) | 2017-04-02
 scheduledevents | Siehe [Azure-Metadatendienst: Geplante Ereignisse (Vorschau) für Windows-VMs](scheduled-events.md) | 2017-08-01
@@ -355,7 +355,7 @@ scheduledevents | Siehe [Azure-Metadatendienst: Geplante Ereignisse (Vorschau) f
 
 Daten | BESCHREIBUNG | Eingeführt in Version
 -----|-------------|-----------------------
-azEnvironment | Azure-Umgebung, in der die VM ausgeführt wird | 01.10.2018
+azEnvironment | Azure-Umgebung, in der die VM ausgeführt wird | 01\.10.2018
 customData | Siehe [Benutzerdefinierte Daten](#custom-data) | 2019-02-01
 location | Azure-Region, in der die VM ausgeführt wird | 2017-04-02
 name | Name des virtuellen Computers | 2017-04-02
@@ -365,9 +365,9 @@ placementGroupId | [Platzierungsgruppe](../../virtual-machine-scale-sets/virtual
 Tarif | Der [Tarif](https://docs.microsoft.com/rest/api/compute/virtualmachines/createorupdate#plan) mit Name, Produkt und Herausgeber für einen virtuellen Computer, wenn es sich um ein Azure Marketplace-Image handelt | 2018-04-02
 platformUpdateDomain |  [Updatedomäne](manage-availability.md), in der die VM ausgeführt wird | 2017-04-02
 platformFaultDomain | [Fehlerdomäne](manage-availability.md), in der die VM ausgeführt wird | 2017-04-02
-Anbieter | Anbieter des virtuellen Computers | 01.10.2018
+Anbieter | Anbieter des virtuellen Computers | 01\.10.2018
 publicKeys | [Sammlung von öffentlichen Schlüsseln](https://docs.microsoft.com/rest/api/compute/virtualmachines/createorupdate#sshpublickey), dem virtuellen Computer und den entsprechenden Pfaden zugewiesen | 2018-04-02
-Herausgeber | Herausgeber des VM-Images | 2017-04-02
+publisher | Herausgeber des VM-Images | 2017-04-02
 resourceGroupName | [Ressourcengruppe](../../azure-resource-manager/resource-group-overview.md) für den virtuellen Computer | 2017-08-01
 sku | Spezifische SKU für das VM-Image | 2017-04-02
 subscriptionId | Azure-Abonnement für den virtuellen Computer | 2017-08-01
@@ -619,7 +619,7 @@ Sobald Sie über die oben beschriebene Signatur verfügen, können Sie verifizie
 > [!NOTE]
 > Die Zertifikate für öffentliche Clouds und Sovereign Clouds unterscheiden sich voneinander.
 
- Regionen | Zertifikat
+ Regions | Zertifikat
 ---------|-----------------
 [Allgemein verfügbar in globalen Azure-Regionen](https://azure.microsoft.com/regions/)     | metadata.azure.com
 [Azure Government](https://azure.microsoft.com/overview/clouds/government/)              | metadata.azure.us

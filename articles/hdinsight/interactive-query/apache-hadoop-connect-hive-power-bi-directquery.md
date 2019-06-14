@@ -9,10 +9,10 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 02/25/2018
 ms.openlocfilehash: fb4e16c8be5344c5b9947758b6a09845b470196d
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/16/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65800997"
 ---
 # <a name="visualize-interactive-query-apache-hive-data-with-microsoft-power-bi-using-direct-query-in-azure-hdinsight"></a>Visualisieren von Interactive Query Apache Hive-Daten mit Microsoft Power BI mithilfe direkter Abfragen in Azure HDInsight
@@ -27,7 +27,7 @@ Sie können den [Apache Hive-ODBC-Treiber](../hadoop/apache-hadoop-connect-hive-
 Bevor Sie diesen Artikel durchgehen können, benötigen Sie Folgendes:
 
 * **HDInsight-Cluster**. Bei dem Cluster kann es sich entweder um einen HDInsight-Cluster mit Apache Hive oder um einen neu veröffentlichten Interactive Query-Cluster handeln. Informationen zum Erstellen von Clustern finden Sie unter [Cluster erstellen](../hadoop/apache-hadoop-linux-tutorial-get-started.md#create-cluster).
-* **[Microsoft Power BI Desktop](https://powerbi.microsoft.com/desktop/)**. Sie können eine Kopie aus dem [Microsoft Download Center](https://www.microsoft.com/download/details.aspx?id=45331) herunterladen.
+* **[Microsoft Power BI Desktop](https://powerbi.microsoft.com/desktop/)** . Sie können eine Kopie aus dem [Microsoft Download Center](https://www.microsoft.com/download/details.aspx?id=45331) herunterladen.
 
 ## <a name="load-data-from-hdinsight"></a>Laden von Daten aus HDInsight
 
@@ -35,7 +35,7 @@ Die Hive-Tabelle `hivesampletable` ist in allen HDInsight-Clustern enthalten.
 
 1. Starten Sie Power BI Desktop.
 
-2. Navigieren Sie in der Menüleiste zu **Start** > **Daten abrufen** > **Mehr...**.
+2. Navigieren Sie in der Menüleiste zu **Start** > **Daten abrufen** > **Mehr...** .
 
     ![HDInsight Power BI Daten öffnen](./media/apache-hadoop-connect-hive-power-bi-directquery/hdinsight-power-bi-open-odbc.png)
 

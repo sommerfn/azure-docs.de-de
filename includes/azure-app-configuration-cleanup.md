@@ -1,6 +1,6 @@
 ---
-title: Includedatei
-description: Includedatei
+title: include file
+description: include file
 services: azure-app-configuration
 author: yegu
 ms.service: azure-app-configuration
@@ -9,10 +9,10 @@ ms.date: 01/22/2019
 ms.author: yegu
 ms.custom: include file
 ms.openlocfilehash: 8f2e956603fbb9aec81b08260eade846eb6a622c
-ms.sourcegitcommit: 51a7669c2d12609f54509dbd78a30eeb852009ae
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/30/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66393316"
 ---
 Wenn Sie beabsichtigen, mit dem nächsten Tutorial fortzufahren, behalten Sie die in diesem Schnellstart erstellten Ressourcen. Sie können diese im nächsten Tutorial wiederverwenden.

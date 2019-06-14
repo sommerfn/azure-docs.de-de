@@ -1,6 +1,6 @@
 ---
-title: Includedatei
-description: Includedatei
+title: include file
+description: include file
 services: azure-monitor
 author: rboucher
 tags: azure-service-management
@@ -9,10 +9,10 @@ ms.date: 02/07/2019
 ms.author: robb
 ms.custom: include file
 ms.openlocfilehash: 050d3314345e64e3d69a07367a0e9acc318fa106
-ms.sourcegitcommit: 25a60179840b30706429c397991157f27de9e886
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/28/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66271545"
 ---
 | Resource | Standardlimit | Maximales Limit |
@@ -22,14 +22,14 @@ ms.locfileid: "66271545"
 | Metrikwarnungen |1000 aktive Warnungsregeln pro Abonnement (in öffentlichen Clouds) und 100 aktive Warnungsregeln pro Abonnement in Azure China und Azure Government. | Wenden Sie sich an den Support. |
 | Aktivitätsprotokollwarnungen | 100 aktive Warnungsregeln pro Abonnement. | Wie Standard. |
 | Protokollwarnungen | 512 | Wenden Sie sich an den Support. |
-| Aktionsgruppen |2.000 Aktionsgruppen pro Abonnement. | Wenden Sie sich an den Support. |
+| Aktionsgruppen |2\.000 Aktionsgruppen pro Abonnement. | Wenden Sie sich an den Support. |
 
 **Aktionsgruppenspezifische Einschränkungen**
 
 | Resource | Standardlimit | Maximales Limit |
 | --- | --- | --- |
 | Azure-App-Push | 10 Azure-App-Aktionen pro Aktionsgruppe. | Wenden Sie sich an den Support. |
-| E-Mail | 1.000 E-Mail-Aktionen in einer Aktionsgruppe. Weitere Informationen finden Sie in den [Informationen zu Ratenbegrenzungen](../articles/azure-monitor/platform/alerts-rate-limiting.md). | Wenden Sie sich an den Support. |
+| E-Mail | 1\.000 E-Mail-Aktionen in einer Aktionsgruppe. Weitere Informationen finden Sie in den [Informationen zu Ratenbegrenzungen](../articles/azure-monitor/platform/alerts-rate-limiting.md). | Wenden Sie sich an den Support. |
 | ITSM | 10 ITSM-Aktionen in einer Aktionsgruppe. | Wenden Sie sich an den Support. | 
 | Logik-App | 10 Logik-App-Aktionen in einer Aktionsgruppe. | Wenden Sie sich an den Support. |
 | Runbook | 10 Runbook-Aktionen in einer Aktionsgruppe. | Wenden Sie sich an den Support. |

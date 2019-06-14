@@ -12,10 +12,10 @@ ms.workload: na
 ms.date: 04/24/2019
 ms.author: banders
 ms.openlocfilehash: 9ff9b6b5313026d2102b98659183fa97c6a5ef84
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64683985"
 ---
 # <a name="understand-the-terms-in-your-azure-usage-and-charges-file"></a>Grundlegendes zu den Bedingungen in der Datei für die Azure-Nutzung und -Gebühren
@@ -26,9 +26,9 @@ Die folgende Tabelle zeigt, welche Gebühren für jeden Kontotyp enthalten sind.
 
 Kontotyp | Azure-Nutzung | Marketplace-Nutzung | Einkäufe | Rückerstattungen
 --- | --- | --- | --- | ---
-Enterprise Agreement (EA) | Ja | Ja | Ja | Nein 
+Enterprise Agreement (EA) | Ja | Ja | Ja | Nein
 Microsoft-Kundenvereinbarung (Microsoft Customer Agreement, MCA) | Ja | Ja | Ja | Ja
-Nutzungsbasierte Bezahlung (Pay-as-you-go, PAYG) | Ja | Nein  | Nein  | Nein 
+Nutzungsbasierte Bezahlung (Pay-as-you-go, PAYG) | Ja | Nein | Nein | Nein
 
 Weitere Informationen zu Marketplace-Bestellungen (auch als externe Dienstleistungen bezeichnet) finden Sie unter [Grundlegendes zu Azure-Gebühren für externe Dienste](billing-understand-your-azure-marketplace-charges.md).
 
@@ -61,7 +61,7 @@ CostCenter | EA, MCA | Die Kostenstelle, die im Abonnement für die Nachverfolgu
 CostInBillingCurrency | MCA | Kosten der Gebühren in der Abrechnungswährung vor Gutschriften oder Steuern.
 CostInPricingCurrency | MCA | Kosten der Gebühren in der Preiswährung vor Gutschriften oder Steuern.
 Currency | Nutzungsbasierte Zahlung | Siehe „BillingCurrency“.
-Datum | EA, MCA | Verbrauchs- oder Kaufdatum der Gebühren.
+Date | EA, MCA | Verbrauchs- oder Kaufdatum der Gebühren.
 ExchangeRateDate | MCA | Datum, an dem der Wechselkurs festgelegt wurde.
 ExchangeRatePricingToBilling | MCA | Der für die Umrechnung der Kosten aus der Preiswährung in die Abrechnungswährung verwendete Wechselkurs.
 Frequency | EA, MCA | Gibt an, ob eine Gebühr sich voraussichtlich wiederholt. Gebühren fallen entweder einmal (**OneTime**), wiederholt monatlich oder jährlich (**Recurring**) oder basierend auf der Nutzung (**UsageBased**) an.
