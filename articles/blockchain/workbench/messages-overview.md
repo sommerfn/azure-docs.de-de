@@ -116,7 +116,7 @@ Für die Anforderung sind folgende Felder erforderlich:
 | requestId            | Vom Client bereitgestellte GUID |
 | userChainIdentifier  | Adresse des Benutzers, der im Blockchainnetzwerk erstellt wurde. In Ethereum ist diese Adresse die **on chain**-Adresse des Benutzers. |
 | applicationName      | Name der Anwendung |
-| Version              | Die Version der Anwendung. Erforderlich, falls Sie mehrere Versionen der Anwendung aktiviert haben. Andernfalls ist die Version optional. Weitere Informationen zur Versionsverwaltung von Anwendungen finden Sie unter [Versionsverwaltung für die Azure Blockchain Workbench-Anwendung](version-app.md). |
+| version              | Die Version der Anwendung. Erforderlich, falls Sie mehrere Versionen der Anwendung aktiviert haben. Andernfalls ist die Version optional. Weitere Informationen zur Versionsverwaltung von Anwendungen finden Sie unter [Versionsverwaltung für die Azure Blockchain Workbench-Anwendung](version-app.md). |
 | workflowName         | Name des Workflows |
 | parameters           | Parametereingabe für die Vertragserstellung |
 | connectionId         | Eindeutiger Bezeichner für die Blockchainverbindung |
