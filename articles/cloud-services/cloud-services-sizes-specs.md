@@ -15,10 +15,10 @@ ms.workload: tbd
 ms.date: 07/18/2017
 ms.author: jeconnoc
 ms.openlocfilehash: 21fbfe22901de677209b55639cd8871ab408375b
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64719023"
 ---
 # <a name="sizes-for-cloud-services"></a>Größen für Clouddienste
@@ -143,7 +143,7 @@ Informationen und Überlegungen zum Verwenden dieser Größen finden Sie unter [
 | Standard_D12_v2 | 4         | 28           | 200                  | 4/hoch |
 | Standard_D13_v2 | 8         | 56           | 400                  | 8/hoch |
 | Standard_D14_v2 | 16        | 112          | 800                  | 8/äußerst hoch |
-| Standard_D15_v2 | 20        | 140          | 1.000                | 8/äußerst hoch |
+| Standard_D15_v2 | 20        | 140          | 1\.000                | 8/äußerst hoch |
 
 ## <a name="dv3-series"></a>Dv3-Serie
 
@@ -184,9 +184,9 @@ Informationen und Überlegungen zum Verwenden dieser Größen finden Sie unter [
 |---------------- | --------- | ------------ | -------------------- | ---------------------------- |
 | Standard_G1     | 2         | 28           | 384                  |1/hoch |
 | Standard_G2     | 4         | 56           | 768                  |2/hoch |
-| Standard_G3     | 8         | 112          | 1.536                |4/sehr hoch |
-| Standard_G4     | 16        | 224          | 3.072                |8/äußerst hoch |
-| Standard_G5     | 32        | 448          | 6.144                |8/äußerst hoch |
+| Standard_G3     | 8         | 112          | 1\.536                |4/sehr hoch |
+| Standard_G4     | 16        | 224          | 3\.072                |8/äußerst hoch |
+| Standard_G5     | 32        | 448          | 6\.144                |8/äußerst hoch |
 
 ## <a name="h-series"></a>H-Reihe
 Virtuelle Azure-Computer der H-Reihe sind High Performing Computing-VMs der nächsten Generation für High-End-Berechnungsanforderungen, z.B. Molekülmodellierung und Strömungsdynamikberechnung. Diese virtuellen Computer mit 8 und 16 Kernen basieren auf der Intel Haswell E5-2667 V3-Prozessortechnologie mit DDR4-Speicher und lokalem SSD-Speicher.

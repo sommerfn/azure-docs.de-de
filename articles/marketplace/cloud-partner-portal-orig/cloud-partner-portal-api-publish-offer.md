@@ -8,10 +8,10 @@ ms.topic: reference
 ms.date: 09/13/2018
 ms.author: pabutler
 ms.openlocfilehash: 117a4e5e238e754524ff813ce25ebc1105e2153c
-ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/30/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64934977"
 ---
 <a name="publish-an-offer"></a>Veröffentlichen eines Angebots
@@ -26,9 +26,9 @@ Startet den Veröffentlichungsprozess für das angegebene Angebot. Bei diesem Au
 
 |  **Name**      |    **Beschreibung**                               |  **Datentyp** |
 |  ------------- |  ------------------------------------            |   -----------  |
-|  publisherId   | Herausgeber-ID, z.B. `contoso`      |   Zeichenfolge       |
-|  offerId       | Angebots-ID                                 |   Zeichenfolge       |
-|  api-version   | Aktuelle Version der API                        |   Datum         |
+|  publisherId   | Herausgeber-ID, z.B. `contoso`      |   string       |
+|  offerId       | Angebots-ID                                 |   string       |
+|  api-version   | Aktuelle Version der API                        |   Date         |
 |  |  |
 
 

@@ -13,11 +13,11 @@ ms.topic: conceptual
 ms.date: 04/05/2019
 ms.author: bwren
 ms.openlocfilehash: 0e5b9b43e528b37fd994f9131f145abadb33c53b
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59798475"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "61425934"
 ---
 # <a name="viewing-and-analyzing-log-data-in-azure-monitor"></a>Anzeigen und Analysieren von Protokolldaten in Azure Monitor
 Log Analytics ist die primäre Oberfläche zum Arbeiten mit Protokolldaten und Erstellen von Abfragen in Azure Monitor. Öffnen Sie Log Analytics über **Protokolle** im **Azure Monitor**-Menü. Unter [Erste Schritte mit Log Analytics im Azure-Portal](get-started-portal.md) finden Sie eine Einführung in dieses Portal und können die entsprechenden Funktionen überprüfen.

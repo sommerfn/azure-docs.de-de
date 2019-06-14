@@ -12,10 +12,10 @@ ms.topic: article
 ms.date: 04/21/2019
 ms.author: juliako
 ms.openlocfilehash: 9154e5d58a36bde1827d63d11d57a77b4289a781
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64689372"
 ---
 # <a name="analyzing-video-and-audio-files"></a>Analysieren von Video- und Audiodateien
@@ -66,7 +66,7 @@ Die Ausgabe umfasst eine JSON-Datei (insights.json) mit allen Informationen, die
 |---|---|
 |id|Die Zeilen-ID.|
 |text|Das Transkript selbst.|
-|Language|Die Sprache des Transkripts. Vorgesehen zur Unterstützung von Transkripts, bei denen jede Zeile eine andere Sprache enthalten kann.|
+|language|Die Sprache des Transkripts. Vorgesehen zur Unterstützung von Transkripts, bei denen jede Zeile eine andere Sprache enthalten kann.|
 |instances|Eine Liste der Zeitbereiche, in denen diese Zeile angezeigt wurde. Wenn die Instanz „transcript“ lautet, ist nur eine Instanz vorhanden.|
 
 Beispiel:
@@ -105,7 +105,7 @@ Beispiel:
 |id|Die OCR-Zeilen-ID.|
 |text|Der OCR-Text.|
 |confidence|Die Zuverlässigkeit der Erkennung.|
-|Language|Die OCR-Sprache.|
+|language|Die OCR-Sprache.|
 |instances|Eine Liste der Zeitbereiche, in denen diese OCR angezeigt wurde (die gleiche OCR kann mehrfach vorkommen).|
 
 ```json
@@ -297,7 +297,7 @@ Stimmungen werden anhand ihres Felds „SentimentType“ (neutral/positiv/negati
 |---|---|
 |id|Die Bezeichnungs-ID.|
 |name|Der Bezeichnungsname (z. B. „Computer“, „TV“).|
-|Language|Die Sprache des Bezeichnungsnamens (sofern übersetzt). BCP-47|
+|language|Die Sprache des Bezeichnungsnamens (sofern übersetzt). BCP-47|
 |instances|Eine Liste der Zeitbereiche, in denen diese Bezeichnung angezeigt wurde (eine Bezeichnung kann mehrfach vorkommen). Jedes Vorkommen weist ein Zuverlässigkeitsfeld auf. |
 
 
@@ -357,7 +357,7 @@ Stimmungen werden anhand ihres Felds „SentimentType“ (neutral/positiv/negati
 |id|Die Stichwort-ID.|
 |text|Der Stichworttext.|
 |confidence|Die Zuverlässigkeit der Erkennung des Stichworts.|
-|Language|Die Sprache des Stichworts (sofern übersetzt).|
+|language|Die Sprache des Stichworts (sofern übersetzt).|
 |instances|Eine Liste der Zeitbereiche, in denen dieses Stichwort angezeigt wurde (ein Stichwort kann mehrfach vorkommen).|
 
 ```json

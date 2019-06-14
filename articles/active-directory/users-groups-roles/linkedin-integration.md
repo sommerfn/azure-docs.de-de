@@ -14,10 +14,10 @@ ms.reviewer: beengen
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 1130885cc3168582935264ffaad9fd7a8ba3c60b
-ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/30/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64920267"
 ---
 # <a name="integrate-linkedin-account-connections-in-azure-active-directory"></a>Integrieren von LinkedIn-Kontoverbindungen in Azure Active Directory
@@ -72,7 +72,7 @@ Die Option „Ausgewählt“, die eine Liste von Benutzern enthält, wurde durch
 
 ### <a name="move-the-currently-selected-individual-users-to-a-group"></a>Verschieben der aktuell ausgewählten einzelnen Benutzer in eine Gruppe
 
-1. Starten Sie PowerShell.
+1. Starten von PowerShell
 1. Installieren Sie das Azure AD Modul, indem Sie `Install-Module AzureAD` ausführen.
 1. Führen Sie das folgende Skript aus:
 

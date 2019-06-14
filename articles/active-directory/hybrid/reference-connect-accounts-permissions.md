@@ -18,10 +18,10 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 466b1aadb84bc92981b9adf1b1affa69f5f2ec25
-ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/30/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64919167"
 ---
 # <a name="azure-ad-connect-accounts-and-permissions"></a>Azure AD Connect: Konten und Berechtigungen
@@ -245,7 +245,7 @@ Um nicht verwendete Azure AD-Dienstkonten zu entfernen, führen Sie das folgende
 
 Weitere Informationen zum Verwalten oder Zurücksetzen des Kennworts für das Azure AD Connector-Konto finden Sie unter [Verwalten der Azure AD Connect-Konten](how-to-connect-azureadaccount.md).
 
-## <a name="related-documentation"></a>Verwandte Dokumentation
+## <a name="related-documentation"></a>verwandten Dokumentation
 Wenn Sie die Dokumentation zum [Integrieren Ihrer lokalen Identitäten in Azure Active Directory](whatis-hybrid-identity.md) nicht gelesen haben, finden Sie in der folgenden Tabelle Links zu verwandten Themen:
 
 |Thema |Link|  

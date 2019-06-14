@@ -8,10 +8,10 @@ ms.topic: reference
 ms.date: 09/13/2018
 ms.author: pabutler
 ms.openlocfilehash: 67109c3605ea96123ff41cb88d5ac328a09991e6
-ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/30/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64935330"
 ---
 <a name="retrieve-offers"></a>Abrufen von Angeboten
@@ -27,8 +27,8 @@ Ruft eine zusammengefasste Liste der Angebote unter einem Herausgebernamespace a
 
 | **Name**         |  **Beschreibung**                         |  **Datentyp** |
 | -------------    |  ------------------------------------    |  -----------   |
-|  publisherId     | Herausgeber-ID, z.B. `contoso` |   Zeichenfolge    |
-|  api-version     | Neueste Version der API                    |    Datum        |
+|  publisherId     | Herausgeber-ID, z.B. `contoso` |   string    |
+|  api-version     | Neueste Version der API                    |    Date        |
 |  |  |
 
 
@@ -72,7 +72,7 @@ Ruft eine zusammengefasste Liste der Angebote unter einem Herausgebernamespace a
 |  publisherId    | Bezeichner, der den Herausgeber eindeutig identifiziert                                                                      |
 |  status         | Status des Angebots. Die Liste der möglichen Werte finden Sie weiter unten unter [Angebotsstatus](#offer-status).                         |
 |  id             | GUID, die das Angebot im Herausgebernamespace eindeutig identifiziert.                                                    |
-|  Version        | Aktuelle Version des Angebots. Die version-Eigenschaft kann vom Client nicht geändert werden. Sie wird nach jeder Veröffentlichung inkrementiert. |
+|  version        | Aktuelle Version des Angebots. Die version-Eigenschaft kann vom Client nicht geändert werden. Sie wird nach jeder Veröffentlichung inkrementiert. |
 |  Definition     | Enthält eine zusammengefasste Ansicht der tatsächlichen Definition der Workload. Für eine ausführliche Definition verwenden Sie die API zum [Abrufen eines bestimmten Angebots](./cloud-partner-portal-api-retrieve-specific-offer.md). |
 |  changedTime    | Uhrzeit (UTC), zu der das Angebot letztmalig geändert wurde                                                                              |
 |  |  |

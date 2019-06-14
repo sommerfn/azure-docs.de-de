@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 04/24/2019
 ms.author: pabutler
 ms.openlocfilehash: aa0c908e18233926965d8dc3cd1b474f876b8dda
-ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/30/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64942430"
 ---
 # <a name="iot-edge-module-marketplace-tab"></a>Registerkarte „Marketplace“ für ein IoT Edge-Modul
@@ -33,7 +33,7 @@ In der folgenden Tabelle werden Zweck und Inhalt dieser Felder beschrieben. Erfo
 | **Zusammenfassung\***               | Kurze Zusammenfassung zum Angebot. Die maximale Länge beträgt 100 Zeichen. <!--ADD PICTURE IN ACTION-->|
 | **Lange Zusammenfassung\***          | Längere Zusammenfassung zum Angebot (kann auch mit **Zusammenfassung** identisch sein).  Die maximale Länge beträgt 256 Zeichen. <!--ADD PICTURE IN ACTION-->|
 | **Beschreibung\***           | Beschreibung des Angebots.  Die maximale Länge beträgt 3.000 Zeichen, und die einfache HTML-Formatierung wird unterstützt.<br/> Die Beschreibung muss unten einen Absatz zu den *Mindesthardwareanforderungen* enthalten. Beispiel: <br/> <p><u>Mindestanforderungen für Hardware</u>: Betriebssystem Linux x64 und ARM32, 1 GB RAM, 500 MB Speicher</p>
-| **Marketingbezeichner\***  | Eine eindeutige URL, die diesem Angebot zugeordnet wird und normalerweise den Namen Ihrer Organisation und der Lösung enthält. Die maximale Länge beträgt 50 Zeichen.  Beispiel:  <br/> `https://azuremarketplace.microsoft.com/marketplace/apps/contoso.sampleIoTEdgeModule`  |
+| **Marketingbezeichner\***  | Eine eindeutige URL, die diesem Angebot zugeordnet wird und normalerweise den Namen Ihrer Organisation und der Lösung enthält. Die maximale Länge beträgt 50 Zeichen.  Beispiel: <br/> `https://azuremarketplace.microsoft.com/marketplace/apps/contoso.sampleIoTEdgeModule`  |
 | **Preview Subscription IDs** (Abonnement-IDs für die Vorschauversion) | Sie können zwischen 1 und 100 Abonnement-IDs für Benutzer hinzufügen, die die Vorschauversion testen. Diese auf der Whitelist befindlichen Abonnements haben Zugriff auf das Angebot, nachdem es veröffentlicht wurde und bevor es live geschaltet wird. |
 | **Nützliche Links**          | Mehrfachauswahl von geschäftlichen und technischen Kategorien, denen das Angebot am ehesten zugeordnet werden kann.  Maximal 10 Kategorien können ausgewählt werden. Fügen Sie mindestens einen Link zu Ihrer Dokumentation und einen Link zu den kompatiblen IoT Edge-Geräten aus dem [Azure IoT-Gerätekatalog](https://catalog.azureiotsolutions.com/) hinzu. |
 | **Vorgeschlagene Kategorien\*** | Wählen Sie bis zu fünf Kategorien aus. Diese werden auf Ihrer Produktdetailseite angezeigt. Auf den Seiten zum Durchsuchen werden alle IoT Edge-Module unter der Kategorie *Internet der Dinge \> IoT Edge-Modul* angezeigt.|

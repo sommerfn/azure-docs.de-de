@@ -12,10 +12,10 @@ ms.date: 05/11/2018
 ms.author: tdsp
 ms.custom: seodec18, previous-author=fboylu, previous-ms.author=fboylu
 ms.openlocfilehash: f0faad91e9e3ff9384dcae57ed27c21fa21946b5
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64573774"
 ---
 # <a name="azure-ai-guide-for-predictive-maintenance-solutions"></a>Azure KI-Leitfaden für Predictive Maintenance-Lösungen
@@ -415,7 +415,7 @@ Der letzte Abschnitt dieses Leitfadens enthält eine Liste mit den PdM-Lösungsv
 | 3 | [Deep Learning for Predictive Maintenance](https://github.com/Azure/MachineLearningSamples-DeepLearningforPredictiveMaintenance) (Deep Learning für Predictive Maintenance) | Azure Notebook mit einer Demolösung für die Verwendung von LSTM-Netzwerken (Long Short-Term Memory) – einer Klasse von wiederkehrenden neuronalen Netzwerken – für Predictive Maintenance mit einem [Blogbeitrag für dieses Beispiel](https://azure.microsoft.com/blog/deep-learning-for-predictive-maintenance).|
 | 4 | [Predictive Maintenance Modeling Guide in R](https://gallery.azure.ai/Notebook/Predictive-Maintenance-Modelling-Guide-R-Notebook-1) (Predictive Maintenance – Leitfaden zur Modellierung in R) | Leitfaden zur PdM-Modellierung mit Skripts in R.|
 | 5 | [Azure Predictive Maintenance for Aerospace](https://gallery.azure.ai/Solution/Predictive-Maintenance-for-Aerospace-1) (Azure Predictive Maintenance für die Luft- und Raumfahrt) | Eine der ersten PdM-Lösungsvorlagen, die auf Azure ML v1.0 für die Wartung von Flugzeugen basieren. Dieser Leitfaden ist aus diesem Projekt entstanden. |
-| 6 | [Azure AI Toolkit for IoT Edge](https://github.com/Azure/ai-toolkit-iot-edge) (Azure AI-Toolkit für IoT Edge) | KI für IoT Edge mit TensorFlow. Im Toolkit sind Deep Learning-Modelle in Azure IoT Edge-kompatiblen Docker-Containern verpackt, und die Modelle werden als REST-APIs verfügbar gemacht.
+| 6 | [Azure AI Toolkit for IoT Edge](https://github.com/Azure/ai-toolkit-iot-edge) (Azure KI-Toolkit für IoT Edge) | KI für IoT Edge mit TensorFlow. Im Toolkit sind Deep Learning-Modelle in Azure IoT Edge-kompatiblen Docker-Containern verpackt, und die Modelle werden als REST-APIs verfügbar gemacht.
 | 7 | [Azure IoT Predictive Maintenance](https://github.com/Azure/azure-iot-predictive-maintenance) | Azure IoT Suite PCS (Preconfigured Solution, vorkonfigurierte Lösung). PdM-Vorlage für die Flugzeugwartung mit IoT Suite. Nutzen Sie auch [ein weiteres Dokument](https://docs.microsoft.com/azure/iot-suite/iot-suite-predictive-overview) und die [exemplarische Vorgehensweise](https://docs.microsoft.com/azure/iot-suite/iot-suite-predictive-walkthrough) für dasselbe Projekt. |
 | 8 | [Predictive Maintenance template using SQL Server R Services](https://gallery.azure.ai/Tutorial/Predictive-Maintenance-Template-with-SQL-Server-R-Services-1) (Predictive Maintenance-Vorlage mit SQL Server R Services) | Demo des Szenarios mit einer verbleibenden Nutzungsdauer basierend auf R Services. |
 | 9 | [Predictive Maintenance Modeling Guide (Modellhandbuch für die vorbeugende Wartung)](https://gallery.azure.ai/Collection/Predictive-Maintenance-Modelling-Guide-1) | Datasetfeature für die Wartung von Flugzeugen, das mit R erstellt wurde und über [Experimente](https://gallery.azure.ai/Experiment/Predictive-Maintenance-Modelling-Guide-Experiment-1) und [Datasets](https://gallery.azure.ai/Experiment/Predictive-Maintenance-Modelling-Guide-Data-Sets-1) sowie ein [Azure Notebook](https://gallery.azure.ai/Notebook/Predictive-Maintenance-Modelling-Guide-R-Notebook-1) und [Experimente](https://gallery.azure.ai/Experiment/Predictive-Maintenance-Step-1-of-3-data-preparation-and-feature-engineering-2) in AzureML v1.0 verfügt.|
@@ -430,10 +430,10 @@ Microsoft Azure bietet Lernpfade für die grundlegenden Konzepte, die hinter PdM
 | [Lernpfad für PdM mithilfe von Deep Learning](https://aischool.microsoft.com/learning-paths/FSIXxYkOGcauo0eUO8qAS) | Öffentlich |
 | [AI Developer in Azure](https://azure.microsoft.com/training/learning-paths/azure-ai-developer) | Öffentlich |
 | [Microsoft AI School](https://aischool.microsoft.com/learning-paths) | Öffentlich |
-| [Azure AI-Lernmaterial auf GitHub](https://github.com/Azure/connectthedots/blob/master/readme.md) | Öffentlich |
+| [Azure KI-Lernmaterial auf GitHub](https://github.com/Azure/connectthedots/blob/master/readme.md) | Öffentlich |
 | [LinkedIn Learning](https://www.linkedin.com/learning) | Öffentlich |
-| [Microsoft AI – YouTube-Webinare](https://www.youtube.com/watch?v=NvrH7_KKzoM&t=4s) | Öffentlich |
-| [Microsoft AI-Show](https://channel9.msdn.com/Shows/AI-Show) | Öffentlich |
+| [Microsoft KI – YouTube-Webinare](https://www.youtube.com/watch?v=NvrH7_KKzoM&t=4s) | Öffentlich |
+| [Microsoft AI Show](https://channel9.msdn.com/Shows/AI-Show) | Öffentlich |
 | [LearnAI@MS](https://learnanalytics.microsoft.com) | Partner |
 | [Microsoft Partner Network](https://learningportal.microsoft.com) | Partner |
 

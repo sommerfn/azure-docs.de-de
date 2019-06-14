@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 09/14/2018
 ms.author: pabutler
 ms.openlocfilehash: 6fdab26bb5a4da5402a3a0a895a7c8835ef22c2f
-ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/30/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64935799"
 ---
 # <a name="configure-lead-management-for-dynamics-crm-online"></a>Konfigurieren der Leadverwaltung für Dynamics CRM Online
@@ -139,7 +139,7 @@ Der letzte Schritt ist das Aktivieren des erstellten Benutzers für das Schreibe
 
 ## <a name="wrap-up"></a>Zusammenfassung
 
-Schließen Sie die Konfiguration von Dynamics CRM für die Leadverwaltung ab, indem Sie die generierten Informationen dem Cloud-Partnerportal hinzufügen. Beispiel: 
+Schließen Sie die Konfiguration von Dynamics CRM für die Leadverwaltung ab, indem Sie die generierten Informationen dem Cloud-Partnerportal hinzufügen. Beispiel:
 
 -   **Azure Active Directory** - **Anwendungs-ID** (Beispiel: *23456052-aaaa-bbbb-8662-1234df56788f*), **Verzeichnis-ID** (Beispiel: *12345678-8af1-4asf-1234-12234d01db47*) und **Anwendungsschlüssel** (Beispiel: *1234ABCDEDFRZ/G/FdY0aUABCEDcqhbLn/ST122345nBc=* ).
--   **Office 365** - **URL** (Beispiel: *https://contoso.crm4.dynamics.com* ), **Benutzername** (Beispiel: *contoso\@contoso.onmicrosoft.com*) und **Kennwort** (Beispiel: *K\@ennw0rt*).
+-   **Office 365** - **URL** (Beispiel: *https://contoso.crm4.dynamics.com* ), **Benutzername** (Beispiel: *contoso\@ contoso.onmicrosoft.com*) und **Kennwort** (Beispiel: *K\@ ennw0rt*).

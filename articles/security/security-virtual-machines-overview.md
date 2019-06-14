@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 04/28/2019
 ms.author: terrylan
 ms.openlocfilehash: 3467050214cba6ce5723c2747d2c13e40e86609b
-ms.sourcegitcommit: 8a681ba0aaba07965a2adba84a8407282b5762b2
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/29/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64872027"
 ---
 # <a name="azure-virtual-machines-security-overview"></a>Virtuelle Azure-Computer – Sicherheitsübersicht
@@ -170,7 +170,7 @@ Weitere Informationen:
 
 Confidential Computing gehört technisch betrachtet zwar nicht zum Thema „Sicherheit virtueller Computer“, doch die Sicherheit von VMs ist Teil des übergeordneten Themas Computesicherheit. Confidential Computing fällt in die Kategorie der Computesicherheit.
 
-Confidential Computing stellt sicher, dass Daten im unverschlüsselten Zustand, der zur effizienten Verarbeitung erforderlich ist, in einer Trusted Execution Environment (TEE, auch Enclave) geschützt werden (s. https://en.wikipedia.org/wiki/Trusted_execution_environment). Ein Beispiel finden Sie in der Abbildung unten.  
+Confidential Computing stellt sicher, dass Daten im unverschlüsselten Zustand, der zur effizienten Verarbeitung erforderlich ist, in einer Trusted Execution Environment (TEE, auch Enclave) geschützt werden (s. https://en.wikipedia.org/wiki/Trusted_execution_environment ). Ein Beispiel finden Sie in der Abbildung unten.  
 
 Wenn Sie TEEs verwenden, können externe Benutzer interne Daten und Vorgänge auch nicht mit einem Debugger anzeigen. TEEs gewährleisten sogar, dass nur autorisierter Code für den Zugriff auf Daten zugelassen wird. Wenn der Code geändert oder manipuliert wird, werden die Vorgänge verweigert, und die Umgebung wird deaktiviert. Die TEE erzwingt diese Schutzmaßnahmen, während der Code in der Umgebung ausgeführt wird.
 
