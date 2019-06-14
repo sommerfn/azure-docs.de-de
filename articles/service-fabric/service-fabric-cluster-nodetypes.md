@@ -79,7 +79,7 @@ Dies sind die Beschreibungen der Eigenschaften:
 | name | Zeichenfolge | --- | Eindeutiger Name für die Erweiterung |
 | type | „ServiceFabricLinuxNode“ oder „ServiceFabricWindowsNode“ | --- | Identifiziert das Betriebssystem, in dem Service Fabric gestartet wird. |
 | autoUpgradeMinorVersion | "true" oder "false" | --- | Aktivieren des automatischen Upgrades von Nebenversionen der Service Fabric-Laufzeit |
-| Herausgeber | Microsoft.Azure.ServiceFabric | --- | Name des Herausgebers der Service Fabric-Erweiterung |
+| publisher | Microsoft.Azure.ServiceFabric | --- | Name des Herausgebers der Service Fabric-Erweiterung |
 | clusterEndpoint | Zeichenfolge | --- | URI:PORT zum Verwaltungsendpunkt |
 | nodeTypeRef | Zeichenfolge | --- | Name von nodeType |
 | durabilityLevel | Bronze, Silber, Gold, Platin | --- | Zulässige Zeitspanne zum Anhalten der unveränderliche Azure-Infrastruktur |
