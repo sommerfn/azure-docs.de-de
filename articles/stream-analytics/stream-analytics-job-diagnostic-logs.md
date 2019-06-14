@@ -8,12 +8,12 @@ ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 05/15/2019
-ms.openlocfilehash: e784cfd2956479327cff9c97a09dd0ada6a154c2
-ms.sourcegitcommit: be9fcaace62709cea55beb49a5bebf4f9701f7c6
+ms.openlocfilehash: ff2930fbe0e53c4b3c1223f87919c0913296d07c
+ms.sourcegitcommit: adb6c981eba06f3b258b697251d7f87489a5da33
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/17/2019
-ms.locfileid: "65826581"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66515914"
 ---
 # <a name="troubleshoot-azure-stream-analytics-by-using-diagnostics-logs"></a>Problembehandlung bei Azure Stream Analytics mit Diagnoseprotokollen
 
@@ -46,7 +46,7 @@ Aktivitätsprotokolle sind standardmäßig aktiviert und geben allgemeine Einbli
 
    ![Vorgangszusammenfassung im Stream Analytics-Aktivitätsprotokoll](./media/stream-analytics-job-diagnostic-logs/operation-summary.png)
 
-4. Scrollen Sie nach unten zum JSON-Abschnitt **Eigenschaften**, der Details zum Fehler bereitstellt, der den fehlerhaften Vorgang verursacht hat. In diesem Beispiel war der Fehler auf einen Runtimefehler aufgrund außerhalb des zulässigen Bereichs liegender Breitengradwerte zurückzuführen.
+4. Scrollen Sie nach unten zum JSON-Abschnitt **Eigenschaften**, der Details zum Fehler bereitstellt, der den fehlerhaften Vorgang verursacht hat. In diesem Beispiel war der Fehler auf einen Runtimefehler aufgrund außerhalb des zulässigen Bereichs liegender Breitengradwerte zurückzuführen. Abweichungen in den Daten, die von einem Stream Analytics-Auftrag verarbeitet werden, bewirken einen Datenfehler. Es stehen Informationen zu verschiedenen [Fehlern bei der Eingabe und Ausgabe von Daten sowie zu den Gründen für deren Auftreten](https://docs.microsoft.com/azure/stream-analytics/data-errors) bereit.
 
    ![JSON-Fehlerdetails](./media/stream-analytics-job-diagnostic-logs/error-details.png)
 
