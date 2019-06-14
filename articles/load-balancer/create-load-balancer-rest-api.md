@@ -14,11 +14,11 @@ ms.workload: load-balancer
 ms.date: 06/06/2018
 ms.author: kumud
 ms.openlocfilehash: 159fe9d6a891858d8d2cc2315e9544b79eb44cff
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53079720"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60884978"
 ---
 # <a name="create-an-azure-basic-load-balancer-using-rest-api"></a>Erstellen einer Azure Basic Load Balancer-Instanz mit der REST-API
 
@@ -46,7 +46,7 @@ Verwenden Sie die folgende HTTP PUT-Anforderung, um eine neue Azure Basic Load B
 
 Der einzige erforderliche Parameter ist `location`. Wenn Sie die *SKU*-Version nicht definieren, wird standardmäßig eine Basic Load Balancer-Instanz erstellt.  Verwenden Sie [optionale Parameter](https://docs.microsoft.com/rest/api/load-balancer/loadbalancers/createorupdate#request-body) zum Anpassen der Load Balancer-Instanz.
 
-| NAME | Typ | BESCHREIBUNG |
+| NAME | Type | BESCHREIBUNG |
 | :--- | :--- | :---------- |
 | location | string | Ressourcenspeicherort Rufen Sie mit dem Vorgang [List Locations](https://docs.microsoft.com/rest/api/resources/subscriptions/listlocations) eine aktuelle Liste der Standorte auf. |
 

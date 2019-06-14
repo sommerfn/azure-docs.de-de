@@ -12,10 +12,10 @@ ms.topic: conceptual
 ms.date: 04/01/2019
 ms.author: diberry
 ms.openlocfilehash: 318e71b68bbabeeef34c75a412f9fdd5b6db754a
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/27/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65073023"
 ---
 # <a name="entity-roles-for-contextual-subtypes"></a>Entitätsrollen für kontextabhängige Untertypen
@@ -38,7 +38,7 @@ Rollen benennen diese Unterschiede:
 |Entitätstyp|Name der Entität|Rolle|Zweck|
 |--|--|--|--|
 |Einfach|Location|origin|Start des Flugs|
-|Einfach|Location|Ziel|Ziel des Flugs|
+|Einfach|Location|destination|Ziel des Flugs|
 
 ## <a name="non-machine-learned-entity-example-of-roles"></a>Nicht durch maschinelles Lernen erworbenes Entitätsbeispiel für Rollen
 
