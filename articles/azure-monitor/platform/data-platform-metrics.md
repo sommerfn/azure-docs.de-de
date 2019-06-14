@@ -12,10 +12,10 @@ ms.workload: infrastructure-services
 ms.date: 03/26/2019
 ms.author: bwren
 ms.openlocfilehash: 319def9072dbf38eff44ca4459428f1ef99a2b54
-ms.sourcegitcommit: e7d4881105ef17e6f10e8e11043a31262cfcf3b7
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/29/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64867960"
 ---
 # <a name="metrics-in-azure-monitor"></a>Metriken in Azure Monitor
@@ -58,17 +58,17 @@ Im folgenden Beispiel werden zwei Datasets für eine hypothetische Metrik namens
 
 ### <a name="network-throughput"></a>Netzwerkdurchsatz
 
-| Zeitstempel     | Metrikwert |
+| Timestamp     | Metrikwert |
 | ------------- |:-------------|
-| 8/9/2017 8:14 | 1.331,8 KBit/s |
-| 8/9/2017 8:15 | 1.141,4 KBit/s |
-| 8/9/2017 8:16 | 1.110,2 KBit/s |
+| 8/9/2017 8:14 | 1\.331,8 KBit/s |
+| 8/9/2017 8:15 | 1\.141,4 KBit/s |
+| 8/9/2017 8:16 | 1\.110,2 KBit/s |
 
 Diese nichtdimensionale Metrik kann nur grundlegende Fragen wie etwa Folgende beantworten: „Wie hoch war mein Netzwerkdurchsatz zu einem bestimmten Zeitpunkt?“.
 
 ### <a name="network-throughput--two-dimensions-ip-and-direction"></a>Netzwerkdurchsatz mit zwei Dimensionen („IP“ und „Richtung“)
 
-| Zeitstempel     | Dimension „IP“   | Dimension „Richtung“ | Metrikwert|
+| Timestamp     | Dimension „IP“   | Dimension „Richtung“ | Metrikwert|
 | ------------- |:-----------------|:------------------- |:-----------|
 | 8/9/2017 8:14 | IP="192.168.5.2" | Direction="Send"    | 646,5 KBit/s |
 | 8/9/2017 8:14 | IP="192.168.5.2" | Direction="Receive" | 420,1 KBit/s |

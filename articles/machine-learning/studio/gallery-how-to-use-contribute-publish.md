@@ -11,11 +11,11 @@ ms.author: amlstudiodocs
 ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro
 ms.date: 01/11/2019
 ms.openlocfilehash: 382d05869a56dc0920d60bca55d99be4b46e3f52
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57885418"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60811538"
 ---
 # <a name="share-and-discover-resources-in-the-azure-ai-gallery"></a>Freigeben und Entdecken von Ressourcen im Azure KI-Katalog
 
@@ -120,7 +120,7 @@ Sie können die folgenden Informationen Ihres Experiments direkt im Katalog änd
 
 * Experimentname
 * Zusammenfassung oder Beschreibung
-* Tags
+* `Tags`
 * Image
 * Sichtbarkeitseinstellung (**Öffentlich** oder **Nicht aufgeführt**)
 
