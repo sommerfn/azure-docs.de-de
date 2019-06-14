@@ -12,12 +12,12 @@ ms.date: 05/03/2019
 ms.author: mimart
 ms.reviewer: arvindh
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 41dde1579fc98db37ab7d92ce362d0a4ce9a82cf
-ms.sourcegitcommit: be9fcaace62709cea55beb49a5bebf4f9701f7c6
+ms.openlocfilehash: 23e5fc24e426c87bbc5062183f2ee2db0e546484
+ms.sourcegitcommit: 3d4121badd265e99d1177a7c78edfa55ed7a9626
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/17/2019
-ms.locfileid: "65824572"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66388215"
 ---
 # <a name="end-user-experiences-for-applications-in-azure-active-directory"></a>Endbenutzerumgebungen für Anwendungen in Azure Active Directory
 Azure Active Directory (Azure AD) bietet mehrere anpassbare Möglichkeiten, um Anwendungen für Endbenutzer in Ihrer Organisation bereitzustellen:
@@ -48,7 +48,7 @@ Weitere Informationen zum Office 365-Anwendungsstartprogramm finden Sie unter [A
 ## <a name="direct-sign-on-to-federated-apps"></a>Direkte Anmeldung bei Verbund-Apps
 Die meisten Verbundanwendungen, die SAML 2.0, WS-Verbund oder OpenID Connect unterstützen, bieten die Möglichkeit, dass Benutzer die Anwendung aufrufen, und dann entweder durch automatische Umleitung oder Klicken auf einen Link zur Anmeldung über Azure AD angemeldet werden. Dies bezeichnet man als vom Dienstanbieter initiierte Anmeldung, und die meisten Verbundanwendungen im Azure AD-Anwendungskatalog unterstützen diese Form der Anmeldung (weitere Informationen finden Sie in der Dokumentation, die Sie im Azure-Portal über einen Link im Assistenten zum Konfigurieren der einmaligen Anmeldung für eine App aufrufen können).
 
-![](./media/end-user-experiences/workdaymobile.png)
+![Beispiel für eine Anmeldeseite in einer mobilen App](./media/end-user-experiences/workdaymobile.png)
 
 ## <a name="direct-sign-on-links"></a>Links für die direkte Anmeldung
 Azure AD unterstützt auch Direktlinks für die einmalige Anmeldung bei einzelnen Anwendungen, die eine kennwortbasierte einmalige Anmeldung, einmaliges Anmelden über Link und eine beliebige Art der einmaligen Verbundanmeldung unterstützen.

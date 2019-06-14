@@ -12,20 +12,21 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 05/07/2019
 ms.author: jingwang
-ms.openlocfilehash: 80ef8870bafa00f3debda99db299018a39d42a82
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.openlocfilehash: 1a8d622aa280794d9a4d6fe7320ddcc21ac044f4
+ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/27/2019
-ms.locfileid: "66245042"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66475663"
 ---
 # <a name="copy-data-from-office-365-into-azure-using-azure-data-factory"></a>Kopieren von Daten aus Office 365 mithilfe von Azure Data Factory
 
-Mit Azure Data Factory können Sie die umfangreichen Unternehmensdaten in Ihrem Office 365-Mandanten auf skalierbare Weise in Azure aufnehmen und basierend auf diesen wertvollen Datenbeständen Analyseanwendungen erstellen und Erkenntnisse extrahieren. Die Integration in Privileged Access Management bietet sichere Zugriffssteuerung für die wertvollen zusammengestellten Daten in Office 365.  Weitere Informationen zu Microsoft Graph-Datenverbindungen finden Sie unter [diesem Link](https://docs.microsoft.com/graph/data-connect-concept-overview).
+Dank der Integration von Azure Data Factory und [Microsoft Graph Data Connect](https://docs.microsoft.com/graph/data-connect-concept-overview) können Sie die umfangreichen Unternehmensdaten in Ihrem Office 365-Mandanten auf skalierbare Weise in Azure überführen und auf Grundlage dieser wertvollen Datenbestände Analyseanwendungen erstellen und Erkenntnisse extrahieren. Die Integration in Privileged Access Management bietet sichere Zugriffssteuerung für die wertvollen zusammengestellten Daten in Office 365.  Über [diesen Link](https://docs.microsoft.com/graph/data-connect-concept-overview) erhalten Sie eine Übersicht über Microsoft Graph Data Connect und über [diesen Link](https://docs.microsoft.com/graph/data-connect-policies#licensing) Informationen zur Lizenzierung.
 
 In diesem Artikel wird beschrieben, wie Sie die Kopieraktivität in Azure Data Factory verwenden, um Daten aus Office 365 zu kopieren. Er baut auf dem Artikel zur [Übersicht über die Kopieraktivität](copy-activity-overview.md) auf, der eine allgemeine Übersicht über die Kopieraktivität enthält.
 
 ## <a name="supported-capabilities"></a>Unterstützte Funktionen
+Der ADF Office 365-Connector und Microsoft Graph Data Connect ermöglichen die umfangreiche Erfassung verschiedener Datasettypen von Exchange-E-Mail-fähigen Postfächern, einschließlich Adressbuchkontakte, Kalenderereignisse, E-Mails, Benutzerinformationen, Postfacheinstellungen usw.  [Hier](https://docs.microsoft.com/graph/data-connect-datasets) finden Sie die vollständige Liste verfügbarer Datasets.
 
 Vorerst können Sie in einer einzelnen Kopieraktivität **Daten aus Office 365 nur im JSON-Format (setOfObjects-Typ) in [Azure Blob Storage](connector-azure-blob-storage.md), [Azure Data Lake Storage Gen1](connector-azure-data-lake-store.md) und [Azure Data Lake Storage Gen2](connector-azure-data-lake-storage.md)** kopieren. Wenn Sie Office 365-Daten in andere Typen von Datenspeichern oder in anderen Formaten laden möchten, können Sie die erste Kopieraktivität mit einer nachfolgenden Kopieraktivität verketten, um Daten in einen der [unterstützten ADF-Zielspeicher](copy-activity-overview.md#supported-data-stores-and-formats) zu laden (siehe Spalte „Als Senke unterstützt“ in der Tabelle „Unterstützte Datenspeicher und Formate“).
 
@@ -83,7 +84,7 @@ Folgende Eigenschaften werden für den mit Office 365 verknüpften Dienst unters
 | servicePrincipalTenantId | Geben Sie die Mandanteninformationen Ihrer Azure AD-Webanwendung an. | Ja |
 | servicePrincipalId | Geben Sie die Client-ID der Anwendung an. | Ja |
 | servicePrincipalKey | Geben Sie den Schlüssel der Anwendung an. Markieren Sie dieses Feld als „SecureString“, um es sicher in Data Factory zu speichern. | Ja |
-| connectVia | Die Integration Runtime, die zum Herstellen einer Verbindung mit dem Datenspeicher verwendet werden soll.  Wenn keine Option angegeben ist, wird die standardmäßige Azure Integration Runtime verwendet. | Nein  |
+| connectVia | Die Integration Runtime, die zum Herstellen einer Verbindung mit dem Datenspeicher verwendet werden soll.  Wenn keine Option angegeben ist, wird die standardmäßige Azure Integration Runtime verwendet. | Nein |
 
 >[!NOTE]
 > Der Unterschied zwischen **office365TenantId** und **servicePrincipalTenantId** und der entsprechende anzugebende Wert:
@@ -120,8 +121,8 @@ Zum Kopieren von Daten aus Office 365 werden die folgenden Eigenschaften unterst
 |:--- |:--- |:--- |
 | type | Die type-Eigenschaft des Datasets muss auf Folgendes festgelegt werden: **Office365Table** | Ja |
 | tableName | Der Name des Datasets, das aus Office 365 extrahiert werden soll. [Hier](https://docs.microsoft.com/graph/data-connect-datasets#datasets) finden Sie die Liste der Office 365-Datasets, die für zum Extrahieren verfügbar sind. | Ja |
-| allowedGroups | Gruppenauswahlprädikat.  Verwenden Sie diese Eigenschaft, um bis zu 10 Benutzergruppen auszuwählen, für die die Daten abgerufen werden sollen.  Wenn keine Gruppen angegeben sind, werden Daten für die gesamte Organisation zurückgegeben. | Nein  |
-| userScopeFilterUri | Wenn die Eigenschaft `allowedGroups` nicht angegeben ist, können Sie einen Prädikatsausdruck verwenden, der auf den gesamten Mandanten angewendet wird, um die spezifischen Zeilen zu filtern, die aus Office 365 extrahiert werden sollen. Das Prädikatsformat sollte dem Abfrageformat von Microsoft Graph-APIs entsprechen, z.B. `https://graph.microsoft.com/v1.0/users?$filter=Department eq 'Finance'`. | Nein  |
+| allowedGroups | Gruppenauswahlprädikat.  Verwenden Sie diese Eigenschaft, um bis zu 10 Benutzergruppen auszuwählen, für die die Daten abgerufen werden sollen.  Wenn keine Gruppen angegeben sind, werden Daten für die gesamte Organisation zurückgegeben. | Nein |
+| userScopeFilterUri | Wenn die Eigenschaft `allowedGroups` nicht angegeben ist, können Sie einen Prädikatsausdruck verwenden, der auf den gesamten Mandanten angewendet wird, um die spezifischen Zeilen zu filtern, die aus Office 365 extrahiert werden sollen. Das Prädikatsformat sollte dem Abfrageformat von Microsoft Graph-APIs entsprechen, z.B. `https://graph.microsoft.com/v1.0/users?$filter=Department eq 'Finance'`. | Nein |
 | dateFilterColumn | Name der Filterspalte „DateTime“. Verwenden Sie diese Eigenschaft, um den Zeitraum zu begrenzen, für den Office 365-Daten extrahiert werden. | Ja, wenn das Dataset mindestens eine DateTime-Spalte enthält. Eine Liste der Datasets, die diesen DateTime-Filter benötigen, finden Sie [hier](https://docs.microsoft.com/graph/data-connect-filtering#filtering). |
 | startTime | Start-DateTime-Value, nach dem gefiltert werden soll. | Ja, wenn `dateFilterColumn` angegeben ist. |
 | endTime | End-DateTime-Value, nach dem gefiltert werden soll. | Ja, wenn `dateFilterColumn` angegeben ist. |

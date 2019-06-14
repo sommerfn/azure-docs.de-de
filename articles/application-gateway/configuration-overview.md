@@ -5,14 +5,14 @@ services: application-gateway
 author: vhorne
 ms.service: application-gateway
 ms.topic: article
-ms.date: 4/30/2019
+ms.date: 6/1/2019
 ms.author: absha
-ms.openlocfilehash: 5bfd1f930c190e717e435856f424f0cdf80deb2c
-ms.sourcegitcommit: ed66a704d8e2990df8aa160921b9b69d65c1d887
+ms.openlocfilehash: 55c7670821ee6c6f5b924bf18b5f7ad01d4b6d51
+ms.sourcegitcommit: 087ee51483b7180f9e897431e83f37b08ec890ae
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64946805"
+ms.lasthandoff: 05/31/2019
+ms.locfileid: "66431303"
 ---
 # <a name="application-gateway-configuration-overview"></a>Application Gateway – Konfigurationsübersicht
 
@@ -57,7 +57,7 @@ Netzwerksicherheitsgruppen (NSG) werden im Application Gateway-Subnetz unterstü
 
 - Datenverkehr vom **AzureLoadBalancer**-Tag muss zulässig sein.
 
-##### <a name="whitelist-application-gateway-access-to-a-few-source-ips"></a>Aufnehmen des Application Gateway-Zugriffs auf einige wenige Quell-IPs in eine Positivliste
+##### <a name="allow-application-gateway-access-to-a-few-source-ips"></a>Zulassen des Application Gateway-Zugriffs auf einige wenige Quell-IPs
 
 Verwenden Sie für dieses Szenario Netzwerksicherheitsgruppen im Application Gateway-Subnetz. Legen Sie die folgenden Einschränkungen für das Subnetz in dieser Priorität fest:
 

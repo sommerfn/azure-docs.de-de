@@ -1,20 +1,20 @@
 ---
-title: 'Schnellstart: Erfassen von Daten aus Kafka in Azure Data Explorer'
-description: In dieser Schnellstartanleitung erfahren Sie, wie Sie Daten aus Kafka in Azure Data Explorer erfassen (laden).
+title: Erfassen von Daten aus Kafka in Azure Data Explorer
+description: In diesem Artikel erfahren Sie, wie Sie Daten aus Kafka in Azure Data Explorer erfassen (laden).
 author: orspod
 ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
-ms.topic: quickstart
-ms.date: 05/17/2019
-ms.openlocfilehash: f36acb7237438848a53fdf91c291c4f67233af5d
-ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
+ms.topic: conceptual
+ms.date: 06/03/2019
+ms.openlocfilehash: 03b46ff50683149a22c71ccb155480a0f08455bd
+ms.sourcegitcommit: 600d5b140dae979f029c43c033757652cddc2029
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/20/2019
-ms.locfileid: "65901030"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66497281"
 ---
-# <a name="quickstart-ingest-data-from-kafka-into-azure-data-explorer"></a>Schnellstart: Erfassen von Daten aus Kafka in Azure Data Explorer
+# <a name="ingest-data-from-kafka-into-azure-data-explorer"></a>Erfassen von Daten aus Kafka in Azure Data Explorer
  
 Azure-Daten-Explorer ist ein schneller und hochgradig skalierbarer Dienst zur Untersuchung von Daten (Protokoll- und Telemetriedaten). Azure Data Explorer ermöglicht die Erfassung (Laden von Daten) aus Kafka. Bei Kafka handelt es sich um eine verteilte Streamingplattform zum Erstellen von Echzeitstreaming-Datenpipelines, mit denen Daten auf zuverlässige Weise zwischen Systemen oder Anwendungen verschoben werden.
  
@@ -162,5 +162,4 @@ cd ./azure-kusto-samples-dotnet/kafka/
  
 ## <a name="next-steps"></a>Nächste Schritte
  
-> [!div class="nextstepaction"]
-> [Schnellstart: Abfragen von Daten in Azure Data Explorer](web-query-data.md)
+* [Abfragen von Daten in Azure Data Explorer](web-query-data.md)

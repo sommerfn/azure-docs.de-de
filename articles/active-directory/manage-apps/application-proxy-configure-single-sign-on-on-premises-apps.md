@@ -16,12 +16,12 @@ ms.author: mimart
 ms.reviewer: japere
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5524576ef21830ae13526dad2d8ac8a1d0864cf1
-ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
+ms.openlocfilehash: 907cb598d708bfa26f53d2e43fef5456258c21b1
+ms.sourcegitcommit: 51a7669c2d12609f54509dbd78a30eeb852009ae
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/20/2019
-ms.locfileid: "65956879"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66393042"
 ---
 # <a name="saml-single-sign-on-for-on-premises-applications-with-application-proxy-preview"></a>SAML-SSO (einmaliges Anmelden) für lokale Anwendungen mit dem Anwendungsproxy (Vorschauversion)
 
@@ -50,14 +50,14 @@ Bedenken Sie bei der Ausführung des Tutorials Folgendes:
 1. Wählen Sie als SSO-Methode die Option **SAML** aus.
 1. Bearbeiten Sie auf der Seite **Einmaliges Anmelden (SSO) mit SAML einrichten** die Daten zu **Grundlegende SAML-Konfiguration**, und befolgen Sie die Anweisungen unter [Eingabe der SAML-Basiskonfiguration](configure-single-sign-on-non-gallery-applications.md#saml-based-single-sign-on), um die SAML-basierte Authentifizierung für die Anwendung zu konfigurieren.
 
-   * Stellen Sie sicher, dass die **Antwort-URL** mit der **externen URL** für die lokale Anwendung, die Sie über den Anwendungsproxy veröffentlicht haben, übereinstimmt oder ein Pfad unter der externen URL ist. 
-   * Wenn Ihre Anwendung eine andere **Antwort-URL** für die SAML-Konfiguration erfordert, fügen Sie diese als **zusätzliche** URL zur Liste hinzu, und aktivieren Sie das nebenstehende Kontrollkästchen, um diese URL als primäre **Antwort-URL** festzulegen, an die IDP-initiierte SAML-Anworten gesendet werden sollen.
-   * Stellen Sie für einen SP-initiierten Flow sicher, dass in der Anwendung auch die richtige **Antwort-URL** oder Assertionsverbraucherdienst-URL für den Empfang des Authentifizierungstokens angegeben ist.
+   * Stellen Sie sicher, dass die **Antwort-URL** mit der **externen URL** für die lokale Anwendung übereinstimmt, die Sie über den Anwendungsproxy veröffentlicht haben, oder dass es sich bei der Antwort-URL um ein Pfad unter der **externen URL** handelt.
+   * Bei einem IDP-initiierten Flow, in dem Ihre Anwendung eine andere **Antwort-URL** für die SAML-Konfiguration erfordert, fügen Sie diese URL als **zusätzliche** URL zur Liste hinzu, und aktivieren Sie das Kontrollkästchen daneben, um diese URL als primäre **Antwort-URL** festzulegen.
+   * Stellen Sie bei einem SP-initiierten Flow sicher, dass in der Back-End-Anwendung die richtige **Antwort-URL** oder Assertionsverbraucherdienst-URL für den Empfang des Authentifizierungstokens angegeben ist.
 
      ![Eingabe der SAML-Basiskonfigurationsdaten](./media/application-proxy-configure-single-sign-on-on-premises-apps/basic-saml-configuration.png)
 
     > [!NOTE]
-    > Wenn die Back-End-Anwendung erwartet, dass es sich bei der **Antwort-URL** um die interne URL handelt, müssen Sie auf den Geräten der Benutzer die Erweiterung zur sicheren Anmeldung bei „Meine Apps“ installieren. Diese Erweiterung leitet automatisch zum geeigneten Anwendungsproxydienst weiter. Informationen zur Installation der Erweiterung finden Sie unter [Download and install the My Apps Secure Sign-in Extension (Herunterladen und Installieren der Erweiterung zur sicheren Anmeldung bei „Meine Apps“)](../user-help/my-apps-portal-end-user-access.md#download-and-install-the-my-apps-secure-sign-in-extension).
+    > Wenn die Back-End-Anwendung erwartet, dass es sich bei der **Antwort-URL** um die interne URL handelt, müssen Sie entweder [benutzerdefinierte Domänen](application-proxy-configure-custom-domain.md) verwenden, um übereinstimmende interne und externe URLs zu erhalten, oder Sie müssen auf den Geräten der Benutzer die Erweiterung zur sicheren Anmeldung bei „Meine Apps“ installieren. Diese Erweiterung leitet automatisch zum geeigneten Anwendungsproxydienst weiter. Informationen zur Installation der Erweiterung finden Sie unter [Download and install the My Apps Secure Sign-in Extension (Herunterladen und Installieren der Erweiterung zur sicheren Anmeldung bei „Meine Apps“)](../user-help/my-apps-portal-end-user-access.md#download-and-install-the-my-apps-secure-sign-in-extension).
 
 ## <a name="test-your-app"></a>Testen Ihrer App
 
