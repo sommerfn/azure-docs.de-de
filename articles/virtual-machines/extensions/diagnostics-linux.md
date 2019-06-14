@@ -10,10 +10,10 @@ ms.topic: article
 ms.date: 12/13/2018
 ms.author: agaiha
 ms.openlocfilehash: e43ba83581b6ce012c619036317361a7c1c0bf4f
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64710416"
 ---
 # <a name="use-linux-diagnostic-extension-to-monitor-metrics-and-logs"></a>Verwenden der Linux-Diagnoseerweiterung zum Überwachen von Metriken und Protokollen
@@ -257,7 +257,7 @@ Element | Wert
 eventVolume | (optional:) Steuert die Anzahl der Partitionen, die innerhalb der Speichertabelle erstellt werden. Muss `"Large"`, `"Medium"` oder `"Small"` sein. Wenn Sie hier nichts angeben, lautet der Standardwert `"Medium"`.
 sampleRateInSeconds | (optional:) Das Standardintervall zwischen der Erfassung von unformatierten (nicht aggregierten) Metriken. Die kleinste unterstützte Erfassungsrate beträgt 15 Sekunden. Wenn Sie hier nichts angeben, lautet der Standardwert `15`.
 
-#### <a name="metrics"></a>Metriken
+#### <a name="metrics"></a>metrics
 
 ```json
 "metrics": {
@@ -388,7 +388,7 @@ Element | Wert
 ------- | -----
 Namespace | (optional:) Der OMI-Namespace, in dem die Abfrage ausgeführt werden soll. Falls keine Angabe erfolgt, lautet der Standardwert „root/scx“, der von den [plattformübergreifenden System Center-Anbietern](https://scx.codeplex.com/wikipage?title=xplatproviders&referringTitle=Documentation) implementiert wird.
 query | Die OMI-Abfrage, die ausgeführt werden soll.
-Tabelle | (optional:) Die Azure Storage-Tabelle im angegebenen Speicherkonto (siehe [geschützte Einstellungen](#protected-settings)).
+table | (optional:) Die Azure Storage-Tabelle im angegebenen Speicherkonto (siehe [geschützte Einstellungen](#protected-settings)).
 frequency | (optional:) Die Anzahl von Sekunden zwischen der Ausführung der Abfrage. Der Standardwert ist 300 (fünf Minuten), der Mindestwert beträgt 15 Sekunden.
 sinks | (optional:) Eine durch Trennzeichen getrennte Liste der Namen von zusätzlichen Senken, an die unformatierte Metrikergebnisse veröffentlicht werden sollen. Es erfolgt keine Aggregation dieser unformatierten Daten durch die Erweiterung oder den Azure-Metrikendienst.
 
@@ -411,7 +411,7 @@ Steuert die Erfassung von Protokolldateien. LAD erfasst neue Textzeilen so, wie 
 Element | Wert
 ------- | -----
 file | Der vollständige Pfadname der Protokolldatei, die überwacht und erfasst werden soll. Beim Pfadnamen muss es sich um eine einzelne Datei handeln. Er darf keinen Verzeichnisnamen oder Platzhalter enthalten.
-Tabelle | (optional:) Die Azure Storage-Tabelle im angegebenen Speicherkonto (wie in der geschützten Konfiguration angegeben), in die neue Zeilen vom Ende der Datei geschrieben werden.
+table | (optional:) Die Azure Storage-Tabelle im angegebenen Speicherkonto (wie in der geschützten Konfiguration angegeben), in die neue Zeilen vom Ende der Datei geschrieben werden.
 sinks | (optional:) Eine durch Trennzeichen getrennte Liste der Namen zusätzlicher Senken, an die Protokollzeilen gesendet werden.
 
 Sie müssen „table“ und/oder „sinks“ angeben.

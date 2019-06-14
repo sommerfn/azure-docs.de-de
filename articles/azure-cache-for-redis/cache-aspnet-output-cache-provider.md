@@ -15,10 +15,10 @@ ms.workload: tbd
 ms.date: 04/22/2018
 ms.author: yegu
 ms.openlocfilehash: a93d21b07dc486f743694ee99f60018ed4ef517c
-ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/30/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64943867"
 ---
 # <a name="aspnet-output-cache-provider-for-azure-cache-for-redis"></a>ASP.NET-Ausgabecacheanbieter für Azure Cache for Redis
@@ -73,7 +73,7 @@ Konfigurieren Sie die Attribute mit den Werten vom Blatt „Cache“ im Microsof
 | *loggingClassName*<br/>*loggingMethodName* | Zeichenfolge<br/>Zeichenfolge | *Nicht zutreffend* | *Diese Attribute können nur entweder über „web.config“ oder über „appSettings“ angegeben werden.*<br/><br/>Verwenden Sie diese Attribute, um Ihre Anwendung zu debuggen, indem Sie Protokolle aus dem Sitzungszustands-/Ausgabecache zusammen mit Protokollen aus „StackExchange.Redis“ bereitstellen. *loggingClassName* sollte ein Assembly-qualifizierter Klassenname sein, der die von *loggingMethodName* angegebene Methode enthält.<br/><br/>Die von *loggingMethodName* angegebene Methode sollte öffentlich, statisch und „void“ (keine Parameter akzeptieren) sein, mit dem Rückgabetyp **System.IO.TextWriter**. |
 | *applicationName* | Zeichenfolge | Der Modulname des aktuellen Prozesses oder „/“ | *Nur SessionStateProvider*<br/>*Dieses Attribut kann nur entweder über „web.config“ oder über „appSettings“ angegeben werden.*<br/><br/>Das in Redis Cache zu verwendende App-Namenspräfix. Der Kunde kann denselben Redis Cache für unterschiedliche Zwecke verwenden. Um sicherzustellen, dass bei den Sitzungsschlüsseln kein Konflikt entsteht, kann ihm der Name der Anwendung als Präfix vorangestellt werden. |
 | *throwOnError* | boolean | true | *Nur SessionStateProvider*<br/>*Dieses Attribut kann nur entweder über „web.config“ oder über „appSettings“ angegeben werden.*<br/><br/>Ob eine Ausnahme ausgelöst werden soll, wenn ein Fehler auftritt.<br/><br/>Weitere Informationen zu *throwOnError* finden Sie unter [ Hinweise zu *throwOnError*](#notes-on-throwonerror) im Abschnitt [Hinweise zu Attributen](#attribute-notes). |>*Microsoft.Web.Redis.RedisSessionStateProvider.LastException*. |
-| *retryTimeoutInMilliseconds* | Positive ganze Zahl | 5.000 | *Nur SessionStateProvider*<br/>*Dieses Attribut kann nur entweder über „web.config“ oder über „appSettings“ angegeben werden.*<br/><br/>Wie lange wiederholt werden soll, wenn ein Vorgang fehlschlägt. Wenn dieser Wert kleiner als *operationTimeoutInMilliseconds* ist, versucht es der Anbieter nicht noch mal.<br/><br/>Weitere Informationen zu *retryTimeoutInMilliseconds* finden Sie unter [ Hinweise zu *retryTimeoutInMilliseconds*](#notes-on-retrytimeoutinmilliseconds) im Abschnitt [Hinweise zu Attributen](#attribute-notes). |
+| *retryTimeoutInMilliseconds* | Positive ganze Zahl | 5\.000 | *Nur SessionStateProvider*<br/>*Dieses Attribut kann nur entweder über „web.config“ oder über „appSettings“ angegeben werden.*<br/><br/>Wie lange wiederholt werden soll, wenn ein Vorgang fehlschlägt. Wenn dieser Wert kleiner als *operationTimeoutInMilliseconds* ist, versucht es der Anbieter nicht noch mal.<br/><br/>Weitere Informationen zu *retryTimeoutInMilliseconds* finden Sie unter [ Hinweise zu *retryTimeoutInMilliseconds*](#notes-on-retrytimeoutinmilliseconds) im Abschnitt [Hinweise zu Attributen](#attribute-notes). |
 | *redisSerializerType* | Zeichenfolge | *Nicht zutreffend* | Gibt den Assembly-qualifizierten Typnamen einer Klasse an, die „Microsoft.Web.Redis“ implementiert. ISerializer, und dieser enthält die benutzerdefinierte Logik zum Serialisieren und Deserialisieren der Werte. Weitere Informationen finden Sie unter [Informationen zu *redisSerializerType*](#about-redisserializertype) im Abschnitt [Hinweise zu Attributen](#attribute-notes). |
 |
 

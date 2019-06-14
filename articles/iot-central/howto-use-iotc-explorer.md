@@ -9,11 +9,11 @@ ms.service: iot-central
 services: iot-central
 manager: peterpr
 ms.openlocfilehash: 16cb27ab330118d1bb59cf4f3d782bf55fa28d43
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57779741"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60517110"
 ---
 # <a name="monitor-device-connectivity-using-the-azure-iot-central-explorer"></a>Überwachen der Gerätekonnektivität mit dem Azure IoT Central-Explorer
 

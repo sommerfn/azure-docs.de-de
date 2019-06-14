@@ -19,10 +19,10 @@ ms.author: joflore
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 0065ec03695ee977133ae2ec43aafba7d5bfff78
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/16/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65784340"
 ---
 # <a name="azure-active-directory-identity-protection-notifications"></a>Azure Active Directory Identity Protection Benachrichtigungen
@@ -52,7 +52,7 @@ Als Administrator können Sie Folgendes festlegen:
 - **Die Empfänger dieser E-Mail**: Standardmäßig umfassen die Empfänger alle globalen Administratoren. Globale Administratoren können außerdem weitere globale Administratoren, Sicherheitsadministratoren und Sicherheitsleseberechtigte hinzufügen.  
 
 
-Um das zugehörige Dialogfeld zu öffnen, klicken Sie auf der Seite **Identity Protection** im Abschnitt **Einstellungen** auf **Warnungen**.
+Um das zugehörige Dialogfeld zu öffnen, klicken auf der Seite **Identity Protection** im Abschnitt **Einstellungen** auf **Warnungen**.
 
 ![E-Mail für erkannte gefährdete Benutzer](./media/notifications/05.png)
 

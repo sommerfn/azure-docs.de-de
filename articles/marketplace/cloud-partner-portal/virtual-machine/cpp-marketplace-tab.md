@@ -8,10 +8,10 @@ ms.topic: article
 ms.date: 04/25/2019
 ms.author: pabutler
 ms.openlocfilehash: d9b259ba93be369658638d034f109a3a6ba4c4a4
-ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/30/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64938185"
 ---
 # <a name="virtual-machine-marketplace-tab"></a>Registerkarte „Marketplace“ für VMs
@@ -33,7 +33,7 @@ In der folgenden Tabelle werden Zweck und Inhalt dieser Felder beschrieben. Erfo
 | **Lange Zusammenfassung\***          | Eine Beschreibung des Zwecks oder der Funktion der Lösung.  Die maximale Länge beträgt 256 Zeichen. |
 | **Beschreibung\***           | Eine Beschreibung der Lösung.  Die maximale Länge beträgt 3.000 Zeichen, und die einfache HTML-Formatierung wird unterstützt. |
 | **Microsoft CSP-Handelspartner-Kanal\*** | Die Nutzung des CSP-Partnerkanals (Cloud Solution Provider) ist jetzt verfügbar.  Unter [Cloud Solution Providers](../../cloud-solution-providers.md) finden Sie weitere Informationen zum Vermarkten Ihres Angebots über die Microsoft CSP-Partnerkanäle. |
-| **Marketingbezeichner\***  | Eine eindeutige URL, die diesem Angebot zugeordnet wird und normalerweise den Namen Ihrer Organisation und der Lösung enthält. Die maximale Länge beträgt 50 Zeichen.  Beispiel:  <br/> `https://azuremarketplace.microsoft.com/marketplace/apps/contoso.sampleApp`  |
+| **Marketingbezeichner\***  | Eine eindeutige URL, die diesem Angebot zugeordnet wird und normalerweise den Namen Ihrer Organisation und der Lösung enthält. Die maximale Länge beträgt 50 Zeichen.  Beispiel: <br/> `https://azuremarketplace.microsoft.com/marketplace/apps/contoso.sampleApp`  |
 | **Abonnement-IDs für die Vorschauversion\*** | Sie können zwischen 1 und 100 Abonnement-IDs für Benutzer hinzufügen, die die Vorschauversion testen. Diese auf der Whitelist befindlichen Abonnements haben Zugriff auf das Angebot, nachdem es veröffentlicht wurde und bevor es live geschaltet wird. |
 | **Nützliche Links**          | Hinzufügen von URLs zu Dokumenten, Versionshinweisen, häufig gestellten Fragen usw. |
 | **Vorgeschlagene Kategorien (max. 5)\*** | Mehrfachauswahl von geschäftlichen und technischen Kategorien, denen das Angebot am ehesten zugeordnet werden kann.  Maximal fünf Kategorien können ausgewählt werden.  |

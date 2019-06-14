@@ -8,10 +8,10 @@ ms.topic: reference
 ms.date: 09/13/2018
 ms.author: pabutler
 ms.openlocfilehash: 26ee8b5b1879c505f8200671558fe065ace068a3
-ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/30/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64935451"
 ---
 <a name="retrieve-offer-status"></a>Abrufen des Angebotsstatus 
@@ -26,9 +26,9 @@ Ruft den aktuellen Status des Angebots ab.
 
 |  **Name**       |   **Beschreibung**                            |  **Datentyp** |
 |  -------------  |  ------------------------------------------  |  ------------  |
-|  publisherId    | Herausgeber-ID, z.B. `Contoso`  |     Zeichenfolge     |
-|  offerId        | GUID, die das Angebot eindeutig identifiziert      |     Zeichenfolge     |
-|  api-version    | Neueste Version der API                        |     Datum       |
+|  publisherId    | Herausgeber-ID, z.B. `Contoso`  |     string     |
+|  offerId        | GUID, die das Angebot eindeutig identifiziert      |     string     |
+|  api-version    | Neueste Version der API                        |     Date       |
 |  |  |
 
 

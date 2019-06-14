@@ -15,11 +15,11 @@ ms.workload: ''
 ms.date: 03/26/2018
 ms.author: robreed
 ms.openlocfilehash: 9f81e2b7537a5ecc6778baa93a1bab23dd30ff8a
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57451908"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "61475506"
 ---
 # <a name="powershell-dsc-extension"></a>PowerShell DSC-Erweiterung
 
@@ -100,8 +100,8 @@ Der folgende JSON-Code zeigt das Schema für den Bereich mit den Einstellungen d
 
 | NAME | Wert/Beispiel | Datentyp |
 | ---- | ---- | ---- |
-| apiVersion | 01.10.2018 | date |
-| Herausgeber | Microsoft.Powershell.DSC | Zeichenfolge |
+| apiVersion | 01\.10.2018 | date |
+| publisher | Microsoft.Powershell.DSC | Zeichenfolge |
 | type | DSC | Zeichenfolge |
 | typeHandlerVersion | 2.77 | int |
 

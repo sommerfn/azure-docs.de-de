@@ -11,18 +11,18 @@ ms.author: sgilley
 ms.custom: seodec18
 ms.date: 03/22/2019
 ms.openlocfilehash: 8bacc3940cebaf9c62179cee0788e5903e56a310
-ms.sourcegitcommit: 49c8204824c4f7b067cd35dbd0d44352f7e1f95e
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/22/2019
-ms.locfileid: "58369206"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60751821"
 ---
 # <a name="copy-other-peoples-work-to-do-data-science"></a>Kopieren der Arbeit anderer für Ihre Data Science
 ## <a name="video-5-data-science-for-beginners-series"></a>Video 5: Reihe „Data Science für Einsteiger“
 Eines der Branchengeheimnisse von Data Science besteht darin, Ihre Arbeit von anderen erledigen zu lassen. Suchen Sie im Azure KI-Katalog ein Beispiel für einen Clusteringalgorithmus, das Sie für Ihr eigenes Machine Learning-Experiment verwenden können.
 
 > [!IMPORTANT]
-> Der **Cortana Intelligence-Katalog** wurde in **Azure AI-Katalog** umbenannt. Daher weichen der Text und die Abbildungen in dieser Abschrift leicht vom Video ab, in dem noch der vorherige Name verwendet wird.
+> Der **Cortana Intelligence-Katalog** wurde in **Azure KI-Katalog** umbenannt. Daher weichen der Text und die Abbildungen in dieser Abschrift leicht vom Video ab, in dem noch der vorherige Name verwendet wird.
 >
 
 Die Reihe bietet den größten Nutzen, wenn Sie sich alle Videos ansehen. [Zur Liste der Videos wechseln](#other-videos-in-this-series)
@@ -86,7 +86,7 @@ Der [Azure KI-Katalog](https://gallery.azure.ai) enthält noch weitere Experimen
 
 ![In Machine Learning Studio geöffnete Katalogexperimente – Methoden für fehlende Werte](./media/data-science-for-beginners-copy-other-peoples-work-to-do-data-science/experiment-methods-for-handling-missing-values.png)
 
-Im [Azure AI-Katalog](https://gallery.azure.ai) finden Sie funktionierende Experimente, die Sie als Ausgangspunkt für Ihre eigenen Lösungen verwenden können.
+Im [Azure KI-Katalog](https://gallery.azure.ai) finden Sie funktionierende Experimente, die Sie als Ausgangspunkt für Ihre eigenen Lösungen verwenden können.
 
 Sehen Sie sich unbedingt auch die anderen Videos in der Reihe „Data Science für Einsteiger“ von Microsoft Azure Machine Learning Studio an.
 
