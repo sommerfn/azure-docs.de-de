@@ -8,10 +8,10 @@ ms.topic: reference
 ms.date: 09/13/2018
 ms.author: pabutler
 ms.openlocfilehash: bb6bbd457ff372ad46091f49cf4ae7e4b34b3d83
-ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/30/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64935441"
 ---
 <a name="retrieve-a-specific-offer"></a>Abrufen eines bestimmten Angebots
@@ -40,11 +40,11 @@ Sie können auch eine bestimmte Version des Angebots abrufen oder das Angebot au
 
 | **Name**    | **Beschreibung**                                                                          | **Datentyp** |
 |-------------|------------------------------------------------------------------------------------------|---------------|
-| publisherId | Herausgeber-ID. Beispiel: Contoso                                                        | Zeichenfolge        |
-| offerId     | GUID, die das Angebot eindeutig identifiziert.                                                 | Zeichenfolge        |
-| Version     | Die Version des Angebots, das abgerufen wird. Standardmäßig wird die neueste Version des Angebots abgerufen. | Ganze Zahl        |
+| publisherId | Herausgeber-ID. Beispiel: Contoso                                                        | string        |
+| offerId     | GUID, die das Angebot eindeutig identifiziert.                                                 | string        |
+| version     | Die Version des Angebots, das abgerufen wird. Standardmäßig wird die neueste Version des Angebots abgerufen. | Integer       |
 | slotId      | Der Slot, aus dem das Angebot abgerufen werden soll. Einer der folgenden Werte ist möglich:      <br/>  - `Draft` (Standard) Ruft die Angebotsversion ab, die sich aktuell im Entwurfsstadium befindet.  <br/>  -  `Preview` Ruft die Angebotsversion ab, die sich aktuell im Vorschaustadium befindet.     <br/>  -  `Production` Ruft die Angebotsversion ab, die sich aktuell im Produktionsstadium befindet.          |      enum |
-| api-version | Neueste Version der API                                                                    | Datum          |
+| api-version | Neueste Version der API                                                                    | Date          |
 |  |  |  |
 
 
@@ -174,7 +174,7 @@ Sie können auch eine bestimmte Version des Angebots abrufen oder das Angebot au
 |  publisherId    | Eindeutiger Bezeichner des Herausgebers                                                                                              |
 |  status         | Status des Angebots. Die Liste der möglichen Werte finden Sie weiter unten unter [Angebotsstatus](#offer-status).                                  |
 |  id             | GUID, die das Angebot eindeutig identifiziert                                                                                         |
-|  Version        | Aktuelle Version des Angebots. Die version-Eigenschaft kann vom Client nicht geändert werden. Sie wird nach jeder Veröffentlichung inkrementiert.    |
+|  version        | Aktuelle Version des Angebots. Die version-Eigenschaft kann vom Client nicht geändert werden. Sie wird nach jeder Veröffentlichung inkrementiert.    |
 |  Definition     | Tatsächliche Definition der des Workloads                                                                                               |
 |  changedTime    | UTC-Zeitpunkt (Datum und Uhrzeit), zu dem das Angebot letztmalig geändert wurde                                                                                   |
 |  |  |

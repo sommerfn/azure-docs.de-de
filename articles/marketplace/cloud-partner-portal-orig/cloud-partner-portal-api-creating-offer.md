@@ -8,10 +8,10 @@ ms.topic: reference
 ms.date: 09/13/2018
 ms.author: pabutler
 ms.openlocfilehash: 55f6aa60c836d55333e1c5b02a44114b91df822d
-ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/30/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64935521"
 ---
 <a name="create-or-modify-an-offer"></a>Erstellen oder Ändern ein Angebots
@@ -27,9 +27,9 @@ Dieser Aufruf aktualisiert ein bestimmtes Angebot im Herausgebernamespace oder e
 
 |  **Name**         |  **Beschreibung**                      |  **Datentyp**  |
 |  --------         |  ----------------                     |  -------------  |
-| publisherId       |  Herausgeber-ID, z.B. `contoso` |   Zeichenfolge |
-| offerId           |  Angebots-ID                     |   Zeichenfolge        |
-| api-version       |  Aktuelle Version der API            |   Datum           |
+| publisherId       |  Herausgeber-ID, z.B. `contoso` |   string |
+| offerId           |  Angebots-ID                     |   string        |
+| api-version       |  Aktuelle Version der API            |   Date           |
 |  |  |  |
 
 <a name="header"></a>Header

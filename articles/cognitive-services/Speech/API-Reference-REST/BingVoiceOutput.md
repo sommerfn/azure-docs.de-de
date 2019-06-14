@@ -12,10 +12,10 @@ ms.date: 09/18/2018
 ms.author: priyar
 ROBOTS: NOINDEX,NOFOLLOW
 ms.openlocfilehash: a046bec5d81d828d88716d31c84e9cbcdcea1a08
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/27/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60515422"
 ---
 # <a name="bing-text-to-speech-api"></a>Text-to-Speech-API von Bing
@@ -32,7 +32,7 @@ Mit der Text-to-Speech-API von Bing kann Ihre Anwendung HTTP-Anforderungen an ei
 
 Jede Sprachsyntheseanforderung erfordert ein JWT-Zugriffstoken (JSON Web Token). Das JWT-Zugriffstoken wird über den Sprachanforderungsheader übergeben. Das Token ist zehn Minuten lang gültig. Informationen zum Abonnieren und Beziehen von API-Schlüsseln für den Abruf gültiger JWT-Zugriffstoken finden Sie unter [Cognitive Services ausprobieren](https://azure.microsoft.com/try/cognitive-services/).
 
-Der API-Schlüssel wird an den Tokendienst übergeben. Beispiel: 
+Der API-Schlüssel wird an den Tokendienst übergeben. Beispiel:
 
 ```HTTP
 POST https://api.cognitive.microsoft.com/sts/v1.0/issueToken
@@ -45,7 +45,7 @@ NAME| Format | BESCHREIBUNG
 ----|----|----
 Ocp-Apim-Subscription-Key | ASCII | Your subscription key (Ihr Abonnementschlüssel)
 
-Der Tokendienst gibt das JWT-Zugriffstoken im Format `text/plain` zurück. Das JWT wird dann im Format `Base64 access_token` mit der Präfixzeichenfolge `Bearer` als Autorisierungsheader an den Sprachendpunkt übergeben. Beispiel: 
+Der Tokendienst gibt das JWT-Zugriffstoken im Format `text/plain` zurück. Das JWT wird dann im Format `Base64 access_token` mit der Präfixzeichenfolge `Bearer` als Autorisierungsheader an den Sprachendpunkt übergeben. Beispiel:
 
 `Authorization: Bearer [Base64 access_token]`
 
