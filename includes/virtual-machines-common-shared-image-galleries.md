@@ -1,6 +1,6 @@
 ---
-title: Includedatei
-description: Includedatei
+title: include file
+description: include file
 services: virtual-machines
 author: axayjo
 ms.service: virtual-machines
@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 05/06/2019
 ms.author: akjosh; cynthn
 ms.custom: include file
-ms.openlocfilehash: 7a0e628eed861767d1eeb50b0ded7bb3d8807328
-ms.sourcegitcommit: 25a60179840b30706429c397991157f27de9e886
+ms.openlocfilehash: 3ea41a16f79f903b5ff7d2b93f74f7d3d2a0dd83
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/28/2019
-ms.locfileid: "66271598"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67133064"
 ---
 Katalog mit freigegebenen Images ist ein Dienst, der Ihnen hilft, Ihre verwalteten Images zu strukturieren und organisieren. Kataloge mit freigegebenen Images stellen Folgendes bereit:
 
@@ -78,15 +78,15 @@ Quellregionen sind in der folgenden Tabelle aufgeführt. Alle öffentlichen Regi
 
 | Quellregionen |
 |---------------------|-----------------|------------------|-----------------|
-| Australien, Mitte   | USA, Mitte (EUAP) | Korea, Mitte    | Vereinigtes Königreich, Süden 2      |
-| Australien, Mitte 2 | Asien, Osten       | Korea, Süden      | UK, Westen         |
-| Australien (Osten)      | USA (Ost)         | USA Nord Mitte | USA, Westen-Mitte |
-| Australien, Südosten | USA (Ost) 2       | Nordeuropa     | Europa, Westen     |
-| Brasilien Süd        | USA, Osten 2 (EUAP)  | USA Süd Mitte | Indien, Westen      |
-| Kanada, Mitte      | Frankreich, Mitte  | Indien (Süden)      | USA (Westen)         |
-| Kanada, Osten         | Frankreich, Süden    | Asien, Südosten   | USA (Westen)         |
-| Indien, Mitte       | Japan, Osten      | Vereinigtes Königreich, Norden         | USA, Westen 2       |
-| USA (Mitte)          | Japan, Westen      | UK, Süden         |                 |
+| Australien, Mitte   | USA, Mitte (EUAP) | Korea, Mitte    | USA, Westen-Mitte |
+| Australien, Mitte 2 | Asien, Osten       | Korea, Süden      | Europa, Westen     |
+| Australien (Osten)      | USA (Ost)         | USA Nord Mitte | Indien, Westen      |
+| Australien, Südosten | USA (Ost) 2       | Nordeuropa     | USA (Westen)         |
+| Brasilien Süd        | USA, Osten 2 (EUAP)  | USA Süd Mitte | USA, Westen 2       |
+| Kanada, Mitte      | Frankreich, Mitte  | Indien (Süden)      |                 |
+| Kanada, Osten         | Frankreich, Süden    | Asien, Südosten   |                 |
+| Indien, Mitte       | Japan, Osten      | UK, Süden         |                 |
+| USA (Mitte)          | Japan, Westen      | UK, Westen          |                 |
 
 
 
@@ -94,8 +94,8 @@ Quellregionen sind in der folgenden Tabelle aufgeführt. Alle öffentlichen Regi
 
 Pro Abonnement gibt es Einschränkungen hinsichtlich der Bereitstellung von Ressourcen mithilfe des Katalogs mit geteilten Images:
 - 100 Kataloge mit freigegebenen Images pro Abonnement und Region
-- 1.000 Imagedefinitionen pro Abonnement und Region
-- 10.000 Imageversionen pro Abonnement und Region
+- 1\.000 Imagedefinitionen pro Abonnement und Region
+- 10\.000 Imageversionen pro Abonnement und Region
 
 Weitere Informationen finden Sie unter [Vergleichen der Ressourcennutzung mit Grenzwerten](https://docs.microsoft.com/azure/networking/check-usage-against-limits) in Beispielen dazu, wie Sie Ihre aktuelle Nutzung überprüfen.
  

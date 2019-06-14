@@ -5,17 +5,17 @@ ms.topic: include
 ms.date: 05/09/2019
 ms.author: crdun
 ms.openlocfilehash: 63c54f8af91b6b4a76ba49d5e6fc7b3cda9f5b98
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/27/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66240313"
 ---
 1. Öffnen Sie das Projekt in **Android Studio** mithilfe von **Import project (Eclipse ADT, Gradle, etc.)** (Projekt importieren (Eclipse ADT, Gradle usw.)). Achten Sie auf diese wichtige Importauswahl, um JDK-Fehler zu vermeiden.
 
 2. Öffnen Sie die Datei `ToDoActivity.java` in diesem Ordner: „ZUMOAPPNAME/app/src/main/java/com/example/zumoappname“. Der Anwendungsname lautet `ZUMOAPPNAME`.
 
-3. Wechseln Sie zum [Azure-Portal](https://portal.azure.com/), und navigieren Sie zu der mobilen App, die Sie erstellt haben. Suchen Sie auf dem Blatt `Overview` nach der URL, die der öffentliche Endpunkt für Ihre mobile App ist. Beispiel: der Sitename für meinen App-Namen „test123“ wird https://test123.azurewebsites.net.
+3. Wechseln Sie zum [Azure-Portal](https://portal.azure.com/), und navigieren Sie zu der mobilen App, die Sie erstellt haben. Suchen Sie auf dem Blatt `Overview` nach der URL, die den öffentlichen Endpunkt für Ihre mobile App darstellt. Beispiel: der Sitename für meinen App-Namen „test123“ wird https://test123.azurewebsites.net.
 
 4. Ersetzen Sie in der `onCreate()`-Methode den Parameter `ZUMOAPPURL` durch den oben stehenden öffentlichen Endpunkt.
     

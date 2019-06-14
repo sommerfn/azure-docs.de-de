@@ -10,10 +10,10 @@ ms.reviewer: klam, LADocs
 ms.topic: reference
 ms.date: 05/13/2019
 ms.openlocfilehash: 3b0ad33ea6348f24079b3c88f972437244c0bc93
-ms.sourcegitcommit: 1fbc75b822d7fe8d766329f443506b830e101a5e
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/14/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65596759"
 ---
 # <a name="schema-reference-for-workflow-definition-language-in-azure-logic-apps"></a>Schemareferenz zur Definitionssprache für Workflows in Azure Logic Apps
@@ -78,7 +78,7 @@ So sieht die allgemeine Struktur einer Ausgabedefinition aus:
 
 | Attribut | Erforderlich | Typ | BESCHREIBUNG |
 |-----------|----------|------|-------------|
-| <*key-name*> | Ja | Zeichenfolge | Der Schlüsselname des Rückgabewerts der Ausgabe |
+| <*key-name*> | Ja | string | Der Schlüsselname des Rückgabewerts der Ausgabe |
 | <*key-type*> | Ja | int, float, string, securestring, bool, array, JSON-Objekt | Der Typ des Rückgabewerts der Ausgabe |
 | <*key-value*> | Ja | Entspricht <*key-type*> | Der Rückgabewert der Ausgabe |
 |||||
@@ -145,11 +145,11 @@ Definieren Sie im `staticResults`-Attribut die Attribute `outputs` und `status` 
 
 | Attribut | Erforderlich | Typ | BESCHREIBUNG |
 |-----------|----------|------|-------------|
-| <*static-result-definition-name*> | Ja | Zeichenfolge | Der Name der Definition eines statischen Ergebnisses, auf die eine Aktionsdefinition über ein `runtimeConfiguration.staticResult`-Objekt verweisen kann. Weitere Informationen finden Sie unter den [Einstellungen für die Laufzeitkonfiguration](../logic-apps/logic-apps-workflow-actions-triggers.md#runtime-config-options). <p>Sie können jedoch auch einen beliebigen anderen eindeutigen Namen verwenden. Standardmäßig wird an diesen eindeutigen Namen eine Zahl angehängt, die nach Bedarf inkrementiert wird. |
+| <*static-result-definition-name*> | Ja | string | Der Name der Definition eines statischen Ergebnisses, auf die eine Aktionsdefinition über ein `runtimeConfiguration.staticResult`-Objekt verweisen kann. Weitere Informationen finden Sie unter den [Einstellungen für die Laufzeitkonfiguration](../logic-apps/logic-apps-workflow-actions-triggers.md#runtime-config-options). <p>Sie können jedoch auch einen beliebigen anderen eindeutigen Namen verwenden. Standardmäßig wird an diesen eindeutigen Namen eine Zahl angehängt, die nach Bedarf inkrementiert wird. |
 | <*output-attributes-and-values-returned*> | Ja | Variabel | Die Anforderungen an diese Attribute variieren auf Grundlage verschiedener Bedingungen. Wenn z. B. für das Attribut `status` `Succeeded` gilt, schließt das `outputs`-Attribut Attribute und Werte ein, die von der Aktion als Modellausgaben zurückgegeben werden. Wenn für das Attribut `status` `Failed` gilt, schließt das `outputs`-Attribut das `errors`-Attribut ein. Dabei handelt es sich um ein Array mit mindestens einem `message`-Objekt, in dem Fehlerinformationen enthalten sind. |
 | <*header-values*> | Nein | JSON | Alle Headerwerte, die von der Aktion zurückgegeben werden. |
-| <*status-code-returned*> | Ja | Zeichenfolge | Der von der Aktion zurückgegebene Statuscode. |
-| <*action-status*> | Ja | Zeichenfolge | Der Status der Aktion, z. B. `Succeeded` oder `Failed`. |
+| <*status-code-returned*> | Ja | string | Der von der Aktion zurückgegebene Statuscode. |
+| <*action-status*> | Ja | string | Der Status der Aktion, z. B. `Succeeded` oder `Failed`. |
 |||||
 
 In dieser HTTP-Aktionsdefinition verweist beispielsweise das `runtimeConfiguration.staticResult.name`-Attribut auf `HTTP0` innerhalb des `staticResults`-Attributs, wo die Modellausgaben für die Aktion definiert werden. Das `runtimeConfiguration.staticResult.staticResultOptions`-Attribut gibt an, dass die Einstellung für statische Ergebnisse für die HTTP-Aktion `Enabled` ist.

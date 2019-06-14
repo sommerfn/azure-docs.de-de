@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 06/12/2018
 ms.author: cawa
 ms.openlocfilehash: b753b565b7dae6cdc244d05d051df964eda3c6f2
-ms.sourcegitcommit: 3675daec6c6efa3f2d2bf65279e36ca06ecefb41
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/14/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65620497"
 ---
 # <a name="microsoft-azure-storage-explorer-release-notes"></a>Anmerkungen zu dieser Version vom Microsoft Azure Storage-Explorer
@@ -28,7 +28,7 @@ Dieser Artikel enthält die Anmerkungen zu dieser Version für Azure Storage-Exp
 Beim [Microsoft Azure Storage-Explorer](./vs-azure-tools-storage-manage-with-storage-explorer.md) handelt es sich um eine eigenständige App, über die Sie ganz einfach mit Azure Storage-Daten arbeiten können – unter Windows, macOS und Linux.
 
 ## <a name="version-181"></a>Version 1.8.1
-13.5.2019
+13\.5.2019
 
 ### <a name="download-azure-storage-explorer-181"></a>Herunterladen von Azure Storage-Explorer 1.8.1
 - [Azure Storage-Explorer 1.8.1 für Windows](https://go.microsoft.com/fwlink/?LinkId=708343)
@@ -129,7 +129,7 @@ Beim [Microsoft Azure Storage-Explorer](./vs-azure-tools-storage-manage-with-sto
 * [Version 0.7.20151116.0](#version-07201511160)
 
 ## <a name="version-180"></a>Version 1.8.0
-1.5.2019
+1\.5.2019
 
 ### <a name="download-azure-storage-explorer-180"></a>Herunterladen von Azure Storage-Explorer 1.8.0
 - [Azure Storage-Explorer 1.8.0 für Windows](https://go.microsoft.com/fwlink/?LinkId=708343)
@@ -186,7 +186,7 @@ Beim [Microsoft Azure Storage-Explorer](./vs-azure-tools-storage-manage-with-sto
 * Bevor Sie Storage-Explorer unter Linux ausführen können, müssen Sie zunächst bestimmte Abhängigkeiten installieren. Weitere Informationen finden Sie im [Leitfaden zur Problembehandlung](https://docs.microsoft.com/azure/storage/common/storage-explorer-troubleshooting?tabs=1804#linux-dependencies) zum Storage-Explorer.
 
 ## <a name="version-170"></a>Version 1.7.0
-05.03.2019
+05\.03.2019
 
 ### <a name="download-azure-storage-explorer-170"></a>Herunterladen von Azure Storage-Explorer 1.7.0
 - [Azure Storage-Explorer 1.7.0 für Windows](https://go.microsoft.com/fwlink/?LinkId=708343)
@@ -256,7 +256,7 @@ Beim [Microsoft Azure Storage-Explorer](./vs-azure-tools-storage-manage-with-sto
     ```
 
 ## <a name="version-162"></a>Version 1.6.2
-9.1.2019
+9\.1.2019
 
 ### <a name="hotfixes"></a>Hotfixes
 * In Version 1.6.1 wurden Entitäten, die ADLS Gen2-ACLs nach ObjectId hinzugefügt wurden und keine Benutzer waren, immer als Gruppen hinzugefügt. Jetzt werden nur Gruppen als Gruppen hinzugefügt, und Entitäten wie Unternehmensanwendungen und Dienstprinzipale werden als Benutzer hinzugefügt. [#1049](https://www.github.com/Microsoft/AzureStorageExplorer/issues/1049)
@@ -328,7 +328,7 @@ Beim [Microsoft Azure Storage-Explorer](./vs-azure-tools-storage-manage-with-sto
     ```
 
 ## <a name="version-161"></a>Version 1.6.1
-18.12.2018
+18\.12.2018
 
 ### <a name="hotfixes"></a>Hotfixes
 * Aufgrund von API-Einschränkungen wurden sämtliche Validierungen von Objekt-IDs im Dialogfeld „Zugriff verwalten“ deaktiviert. Die Validierung erfolgt nun ausschließlich für Benutzer-UPNs. [#954](https://www.github.com/Microsoft/AzureStorageExplorer/issues/954)
@@ -397,7 +397,7 @@ Beim [Microsoft Azure Storage-Explorer](./vs-azure-tools-storage-manage-with-sto
     ```
 
 ## <a name="version-160"></a>Version 1.6.0
-5.12.2018
+5\.12.2018
 
 ### <a name="new"></a>Neu
 
@@ -452,7 +452,7 @@ Beim [Microsoft Azure Storage-Explorer](./vs-azure-tools-storage-manage-with-sto
     ```
 
 ## <a name="version-150"></a>Version 1.5.0
-29.10.2018
+29\.10.2018
 
 ### <a name="new"></a>Neu
 
@@ -684,7 +684,7 @@ Eine Unterstützung der Verwendung von AzCopy mit Dateifreigaben ist geplant.
     ```
 
 ## <a name="version-141"></a>Version 1.4.1
-28.08.2018
+28\.08.2018
 
 ### <a name="hotfixes"></a>Hotfixes
 * Beim ersten Start war es im Storage-Explorer nicht möglich, den Schlüssel zum Verschlüsseln sensibler Daten zu generieren. Dies führte zu Problemen bei der Verwendung von „Schnellzugriff“ und beim Anfügen von Ressourcen. [#535](https://github.com/Microsoft/AzureStorageExplorer/issues/535)
@@ -744,7 +744,7 @@ Eine Unterstützung der Verwendung von AzCopy mit Dateifreigaben ist geplant.
     ```
 
 ## <a name="version-130"></a>Version 1.3.0
-09.07.2018
+09\.07.2018
 
 ### <a name="new"></a>Neu
 * Der Zugriff auf $web-Container, die von statischen Websites verwendet werden, wird jetzt unterstützt. Dies ermöglicht ein problemloses Hochladen und Verwalten von Dateien und Ordnern, die von Ihrer Website genutzt werden. [#223](https://github.com/Microsoft/AzureStorageExplorer/issues/223)
@@ -801,7 +801,7 @@ Eine Unterstützung der Verwendung von AzCopy mit Dateifreigaben ist geplant.
     ```
 
 ## <a name="version-120"></a>Version 1.2.0
-12.06.2018
+12\.06.2018
 
 ### <a name="new"></a>Neu
 * Falls mit Storage-Explorer keine Abonnements einer Teilmenge Ihrer Mandanten geladen werden können, werden alle erfolgreich geladenen Abonnements zusammen mit einer Fehlermeldung für die nicht erfolgreichen Mandanten angezeigt. [#159](https://github.com/Microsoft/AzureStorageExplorer/issues/159)
@@ -858,7 +858,7 @@ Eine Unterstützung der Verwendung von AzCopy mit Dateifreigaben ist geplant.
     ```
 
 ## <a name="version-110"></a>Version 1.1.0
-09.05.2018
+09\.05.2018
 
 ### <a name="new"></a>Neu
 * Storage-Explorer unterstützt jetzt Azurite. Hinweis: Die Verbindung mit Azurite ist mit standardmäßigen Entwicklungsendpunkten hartcodiert.
@@ -913,7 +913,7 @@ Eine Unterstützung der Verwendung von AzCopy mit Dateifreigaben ist geplant.
 
 
 ## <a name="version-100"></a>Version 1.0.0
-16.04.2018
+16\.04.2018
 
 ### <a name="new"></a>Neu
 * Verbesserte Authentifizierung, durch die Storage-Explorer den gleichen Kontospeicher wie Visual Studio 2017 verwenden kann. Für die Verwendung dieses Features müssen Sie sich erneut bei Ihren Konten anmelden und Ihre gefilterten Abonnements neu festlegen.
@@ -978,7 +978,7 @@ Eine Unterstützung der Verwendung von AzCopy mit Dateifreigaben ist geplant.
     ```
 
 ## <a name="version-096"></a>Version 0.9.6
-28.02.2018
+28\.02.2018
 
 ### <a name="fixes"></a>Fehlerbehebungen
 * Ein Problem hat die Auflistung erwarteter Blobs/Dateien im Editor verhindert. Dieses Problem wurde behoben.
@@ -1014,7 +1014,7 @@ Eine Unterstützung der Verwendung von AzCopy mit Dateifreigaben ist geplant.
     ```
 
 ## <a name="version-095"></a>Version 0.9.5
-06.02.2018
+06\.02.2018
 
 ### <a name="new"></a>Neu
 
@@ -1110,7 +1110,7 @@ Eine Unterstützung der Verwendung von AzCopy mit Dateifreigaben ist geplant.
     ```
 
 ## <a name="version-092"></a>Version 0.9.2
-01.11.2017
+01\.11.2017
 
 ### <a name="hotfixes"></a>Hotfixes
 * Abhängig von der lokalen Zeitzone waren beim Bearbeiten von Edm.DateTime-Werten für Tabellenentitäten unerwartete Datenänderungen möglich. Der Editor verwendet nun ein Nur-Text-Feld, mit dem die Edm.DateTime-Werte präzise und einheitlich gesteuert werden können.
@@ -1230,7 +1230,7 @@ Eine Unterstützung der Verwendung von AzCopy mit Dateifreigaben ist geplant.
     ```
 
 ## <a name="version-0816"></a>Version 0.8.16
-21.08.2017
+21\.08.2017
 
 ### <a name="new"></a>Neu
 * Beim Öffnen eines Blobs fordert Storage-Explorer Sie zum Hochladen der heruntergeladenen Datei auf, wenn eine Änderung erkannt wird
@@ -1270,7 +1270,7 @@ Eine Unterstützung der Verwendung von AzCopy mit Dateifreigaben ist geplant.
     ```
 
 ### <a name="version-0814"></a>Version 0.8.14
-22.06.2017
+22\.06.2017
 
 ### <a name="new"></a>Neu
 
@@ -1332,7 +1332,7 @@ Eine Unterstützung der Verwendung von AzCopy mit Dateifreigaben ist geplant.
 
 
 ### <a name="version-0812-and-0811-and-0810"></a>Version 0.8.12, 0.8.11 und 0.8.10
-07.04.2017
+07\.04.2017
 
 #### <a name="new"></a>Neu
 
@@ -1375,7 +1375,7 @@ Eine Unterstützung der Verwendung von AzCopy mit Dateifreigaben ist geplant.
 
 
 ### <a name="version-089-and-088"></a>Version 0.8.9 und 0.8.8
-23.02.2017
+23\.02.2017
 
 >[!VIDEO https://www.youtube.com/embed/R6gonK3cYAc?ecver=1]
 
@@ -1407,7 +1407,7 @@ Eine Unterstützung der Verwendung von AzCopy mit Dateifreigaben ist geplant.
 * Beim Schnellzugriff kann das Navigieren zur Zielressource einige Sekunden dauern. Dies hängt davon ab, wie viele Ressourcen Sie verwenden.
 * Wenn mehr als drei Gruppen von Blobs oder Dateien gleichzeitig hochgeladen werden, können Fehler auftreten.
 
-16.12.2016
+16\.12.2016
 ### <a name="version-087"></a>Version 0.8.7
 
 >[!VIDEO https://www.youtube.com/embed/Me4Y4jxoer8?ecver=1]
@@ -1436,7 +1436,7 @@ Eine Unterstützung der Verwendung von AzCopy mit Dateifreigaben ist geplant.
 * Bei der Suche wird auf ca. 50.000 Knoten gesucht. Anschließend kann es zu einer Leistungsbeeinträchtigung oder zu Ausnahmefehlern kommen
 * Wenn Sie den Storage-Explorer unter macOS zum ersten Mal verwenden, werden unter Umständen mehrere Eingabeaufforderungen angezeigt, in denen die Berechtigung des Benutzers zum Zugreifen auf den Schlüsselbund abgefragt wird. Es wird empfohlen, die Option „Immer zulassen“ zu wählen, damit die Eingabeaufforderung nicht mehr angezeigt wird
 
-18.11.2016
+18\.11.2016
 ### <a name="version-086"></a>Version 0.8.6
 
 #### <a name="new"></a>Neu
@@ -1474,7 +1474,7 @@ Eine Unterstützung der Verwendung von AzCopy mit Dateifreigaben ist geplant.
 * Wenn mehr als drei Gruppen von Blobs oder Dateien gleichzeitig hochgeladen werden, können Fehler auftreten
 * Bei der Suche wird auf ca. 50.000 Knoten gesucht. Anschließend kann es zu einer Leistungsbeeinträchtigung oder zu Ausnahmefehlern kommen
 
-03.10.2016
+03\.10.2016
 ### <a name="version-085"></a>Version 0.8.5
 
 #### <a name="new"></a>Neu
@@ -1495,7 +1495,7 @@ Eine Unterstützung der Verwendung von AzCopy mit Dateifreigaben ist geplant.
 * Bei der Suche wird auf ca. 50.000 Knoten gesucht; anschließend kann es zu einer Leistungsbeeinträchtigung kommen
 * Dateien werden von Azure Stack derzeit nicht unterstützt; beim Versuch, Dateien zu erweitern, wird also ein Fehler ausgegeben
 
-12.09.2016
+12\.09.2016
 ### <a name="version-084"></a>Version 0.8.4
 
 >[!VIDEO https://www.youtube.com/embed/cr5tOGyGrIQ?ecver=1]
@@ -1516,7 +1516,7 @@ Eine Unterstützung der Verwendung von AzCopy mit Dateifreigaben ist geplant.
 
 * Bei der Suche wird auf ca. 50.000 Knoten gesucht; anschließend kann es zu einer Leistungsbeeinträchtigung kommen
 
-03.08.2016
+03\.08.2016
 ### <a name="version-083"></a>Version 0.8.3
 
 >[!VIDEO https://www.youtube.com/embed/HeGW-jkSd9Y?ecver=1]
@@ -1542,7 +1542,7 @@ Eine Unterstützung der Verwendung von AzCopy mit Dateifreigaben ist geplant.
 * Beim Umbenennen von Blobs (einzeln oder in einem umbenannten Blobcontainer) werden Momentaufnahmen nicht beibehalten. Alle anderen Eigenschaften und Metadaten für Blobs, Dateien und Entitäten werden beim Umbenennen beibehalten.
 * Das Kopieren und Umbenennen von Ressourcen funktioniert nicht in über SAS angefügten Konten
 
-07.07.2016
+07\.07.2016
 ### <a name="version-082"></a>Version 0.8.2
 
 >[!VIDEO https://www.youtube.com/embed/nYgKbRUNYZA?ecver=1]
@@ -1565,7 +1565,7 @@ Eine Unterstützung der Verwendung von AzCopy mit Dateifreigaben ist geplant.
 
 * Für die Installation unter macOS sind u.U. erhöhte Berechtigungen erforderlich
 
-15.06.2016
+15\.06.2016
 ### <a name="version-080"></a>Version 0.8.0
 
 >[!VIDEO https://www.youtube.com/embed/ycfQhKztSIY?ecver=1]
@@ -1594,7 +1594,7 @@ Eine Unterstützung der Verwendung von AzCopy mit Dateifreigaben ist geplant.
 * $metrics-Tabellen sind für Blob Storage-Konten nicht sichtbar
 * Programmgesteuert hinzugefügte Warteschlangennachrichten werden u.U. nicht ordnungsgemäß angezeigt, wenn sie mit Base64-Codierung codiert sind
 
-17.05.2016
+17\.05.2016
 ### <a name="version-07201605090"></a>Version 0.7.20160509.0
 
 #### <a name="new"></a>Neu
@@ -1609,7 +1609,7 @@ Eine Unterstützung der Verwendung von AzCopy mit Dateifreigaben ist geplant.
 
 * Tabellen: Wenn der Benutzer beim Hinzufügen, Bearbeiten oder Importieren einer Entität mit einer Eigenschaft mit einem mehrdeutigen Wert wie „1“ oder „1,0“ versucht, diese als `Edm.String` zu senden, wird der Wert über die Client-API als Edm.Double zurückgegeben
 
-31.03.2016
+31\.03.2016
 
 ### <a name="version-07201603250"></a>Version 0.7.20160325.0
 
@@ -1637,7 +1637,7 @@ Eine Unterstützung der Verwendung von AzCopy mit Dateifreigaben ist geplant.
 * Wenn beim Hinzufügen, Bearbeiten oder Importieren einer Entität mit einer Eigenschaft mit einem mehrdeutigen Wert wie „1“ oder „1,0“ versucht wird, diese als `Edm.String` zu senden, wird der Wert über die Client-API als Edm.Double zurückgegeben
 * Beim Importieren von CSV-Dateien mit mehrzeiligen Datensätzen werden die Daten möglicherweise aufgeteilt oder verschlüsselt
 
-03.02.2016
+03\.02.2016
 
 ### <a name="version-07201601291"></a>Version 0.7.20160129.1
 
@@ -1645,7 +1645,7 @@ Eine Unterstützung der Verwendung von AzCopy mit Dateifreigaben ist geplant.
 
 * Verbesserte Gesamtleistung beim Hochladen, Herunterladen und Kopieren von Blobs
 
-14.01.2016
+14\.01.2016
 
 ### <a name="version-07201601050"></a>Version 0.7.20160105.0
 
@@ -1676,7 +1676,7 @@ Eine Unterstützung der Verwendung von AzCopy mit Dateifreigaben ist geplant.
     * `sudo apt-get upgrade`
     * `sudo apt-get dist-upgrade`
 
-18.11.2015
+18\.11.2015
 ### <a name="version-07201511160"></a>Version 0.7.20151116.0
 
 #### <a name="new"></a>Neu

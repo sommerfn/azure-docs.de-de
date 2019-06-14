@@ -8,10 +8,10 @@ ms.date: 04/08/2019
 ms.topic: conceptual
 ms.author: sutalasi
 ms.openlocfilehash: 5490149f199c2d7887716ceae3f035527ad33961
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66170051"
 ---
 # <a name="set-up-disaster-recovery-of-vmware-vms-to-azure-with-powershell"></a>Einrichten der Notfallwiederherstellung von virtuellen VMware-Computern in Azure mithilfe von PowerShell
@@ -118,7 +118,7 @@ Im nachstehenden Beispiel wird mit den Tresordetails aus der $vault-Variable der
    VMwareDRToAzurePs VMwareDRToAzurePs Microsoft.RecoveryServices vaults
    ```
 
-Als Alternative zum Cmdlet „Set-ASRVaultContext“ kann der Tresorkontext auch mithilfe des Cmdlets „Import-AzRecoveryServicesAsrVaultSettingsFile“ festgelegt werden. Geben Sie für das Cmdlet „Import-AzRecoveryServicesAsrVaultSettingsFile“ mithilfe des Parameters „-path“ den Pfad der Tresorregistrierungsschlüssel-Datei an. Beispiel: 
+Als Alternative zum Cmdlet „Set-ASRVaultContext“ kann der Tresorkontext auch mithilfe des Cmdlets „Import-AzRecoveryServicesAsrVaultSettingsFile“ festgelegt werden. Geben Sie für das Cmdlet „Import-AzRecoveryServicesAsrVaultSettingsFile“ mithilfe des Parameters „-path“ den Pfad der Tresorregistrierungsschlüssel-Datei an. Beispiel:
 
    ```azurepowershell
    Get-AzRecoveryServicesVaultSettingsFile -SiteRecovery -Vault $Vault -Path "C:\Work\"

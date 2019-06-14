@@ -7,10 +7,10 @@ ms.service: mysql
 ms.topic: conceptual
 ms.date: 12/6/2018
 ms.openlocfilehash: 9088e9ad98633b46dc3a7f0ee9002a0dd9fc5a55
-ms.sourcegitcommit: f013c433b18de2788bf09b98926c7136b15d36f1
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/13/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65551879"
 ---
 # <a name="limitations-in-azure-database-for-mysql"></a>Beschränkungen in Azure Database for MySQL
@@ -27,12 +27,12 @@ Die folgende Tabelle enthält die maximale Anzahl von Verbindungen nach Tarif un
 |Allgemeiner Zweck| 4| 625|
 |Allgemeiner Zweck| 8| 1250|
 |Allgemeiner Zweck| 16| 2500|
-|Allgemeiner Zweck| 32| 5.000|
+|Allgemeiner Zweck| 32| 5\.000|
 |Allgemeiner Zweck| 64| 10000|
 |Arbeitsspeicheroptimiert| 2| 600|
 |Arbeitsspeicheroptimiert| 4| 1250|
 |Arbeitsspeicheroptimiert| 8| 2500|
-|Arbeitsspeicheroptimiert| 16| 5.000|
+|Arbeitsspeicheroptimiert| 16| 5\.000|
 |Arbeitsspeicheroptimiert| 32| 10000|
 
 Wenn Verbindungen den Grenzwert übersteigen, erhalten Sie möglicherweise den folgenden Fehler:

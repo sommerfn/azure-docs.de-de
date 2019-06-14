@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 05/06/2019
 ms.author: crdun
 ms.openlocfilehash: 8d7731480b6239c572d39f52b6a0217d2ac48d25
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/27/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66240227"
 ---
 1. Navigieren Sie zu der Projektmappendatei im Clientprojekt (.sln), und öffnen Sie sie mittels Visual Studio.
@@ -17,7 +17,7 @@ ms.locfileid: "66240227"
 
 3. Öffnen Sie die Datei `ToDoActivity.java` in diesem Ordner: „ZUMOAPPNAME/app/src/main/java/com/example/zumoappname“. Der Anwendungsname lautet `ZUMOAPPNAME`.
 
-4. Wechseln Sie zum [Azure-Portal](https://portal.azure.com/), und navigieren Sie zu der mobilen App, die Sie erstellt haben. Suchen Sie auf dem Blatt `Overview` nach der URL, die der öffentliche Endpunkt für Ihre mobile App ist. Beispiel: der Sitename für meinen App-Namen „test123“ wird https://test123.azurewebsites.net.
+4. Wechseln Sie zum [Azure-Portal](https://portal.azure.com/), und navigieren Sie zu der mobilen App, die Sie erstellt haben. Suchen Sie auf dem Blatt `Overview` nach der URL, die den öffentlichen Endpunkt für Ihre mobile App darstellt. Beispiel: der Sitename für meinen App-Namen „test123“ wird https://test123.azurewebsites.net.
 
 5. Wechseln Sie zu der Datei `index.js` in „ZUMOAPPNAME/www/js/index.js“, und ersetzen Sie in der `onDeviceReady()`-Methode den Parameter `ZUMOAPPURL` durch den oben stehenden öffentlichen Endpunkt.
 

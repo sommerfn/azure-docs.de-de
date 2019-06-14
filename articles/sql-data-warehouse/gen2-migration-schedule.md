@@ -11,10 +11,10 @@ ms.service: sql-data-warehouse
 ms.topic: article
 ms.date: 04/03/2019
 ms.openlocfilehash: 999c75d07ef7e24d4d75587b6b42a4ab1b2192cf
-ms.sourcegitcommit: 1fbc75b822d7fe8d766329f443506b830e101a5e
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/14/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65596114"
 ---
 # <a name="upgrade-your-data-warehouse-to-gen2"></a>Aktualisieren des Data Warehouse zu Gen2
@@ -32,38 +32,38 @@ In der folgenden Tabelle sehen Sie, wann der niedrigere Gen2-Computetarif in wel
 
 | **Region** | **Niedrigerer Gen2-Computetarif verfügbar** | **Beginn automatischer Upgrades** |
 |:--- |:--- |:--- |
-| Australien (Osten) |Verfügbar |1. Juni 2019 |
-| Australien, Südosten |Verfügbar |1. Mai 2019 |
-| Brasilien Süd |Verfügbar |1. Juni 2019 |
-| Kanada, Mitte |Verfügbar |1. Juni 2019 |
+| Australien (Osten) |Verfügbar |1\. Juni 2019 |
+| Australien, Südosten |Verfügbar |1\. Mai 2019 |
+| Brasilien Süd |Verfügbar |1\. Juni 2019 |
+| Kanada, Mitte |Verfügbar |1\. Juni 2019 |
 | Kanada, Osten |\* |\* |
-| USA (Mitte) |Verfügbar |1. Juni 2019 |
+| USA (Mitte) |Verfügbar |1\. Juni 2019 |
 | China, Osten |\* |\* |
 | China, Osten 2 |\* |Nur Gen2 |
 | China, Norden |\* |\* |
 | China, Norden 2 |Verfügbar |Nur Gen2 |
-| Asien, Osten |Verfügbar |1. Juni 2019 |
-| USA (Ost) |Verfügbar |1. Juni 2019 |
-| USA (Ost) 2 |Verfügbar |1. Juni 2019 |
-| Frankreich, Mitte |\* |1. Juni 2019 |
+| Asien, Osten |Verfügbar |1\. Juni 2019 |
+| USA (Ost) |Verfügbar |1\. Juni 2019 |
+| USA (Ost) 2 |Verfügbar |1\. Juni 2019 |
+| Frankreich, Mitte |\* |1\. Juni 2019 |
 | Deutschland, Mitte |\* |\* |
-| Deutschland, Westen-Mitte |1. September 2019|2. Januar 2020 |
-| Indien, Mitte |Verfügbar |1. Juni 2019 |
-| Indien, Süden |Verfügbar |1. Juni 2019 |
-| Japan, Osten |Verfügbar |1. Juni 2019 |
-| Japan, Westen |Verfügbar |1. Mai 2019 |
-| Korea, Mitte |Verfügbar |1. Juni 2019 |
-| Korea, Süden |Verfügbar |1. Mai 2019 |
-| USA Nord Mitte |Verfügbar |1. Mai 2019 |
-| Nordeuropa |Verfügbar |1. Juni 2019 |
-| USA Süd Mitte |Verfügbar |1. Juni 2019 |
-| Südostasien |Verfügbar |1. Juni 2019 |
-| UK, Süden |Verfügbar, 2019 |1. Juni 2019 |
+| Deutschland, Westen-Mitte |1\. September 2019|2\. Januar 2020 |
+| Indien, Mitte |Verfügbar |1\. Juni 2019 |
+| Indien, Süden |Verfügbar |1\. Juni 2019 |
+| Japan, Osten |Verfügbar |1\. Juni 2019 |
+| Japan, Westen |Verfügbar |1\. Mai 2019 |
+| Korea, Mitte |Verfügbar |1\. Juni 2019 |
+| Korea, Süden |Verfügbar |1\. Mai 2019 |
+| USA Nord Mitte |Verfügbar |1\. Mai 2019 |
+| Nordeuropa |Verfügbar |1\. Juni 2019 |
+| USA Süd Mitte |Verfügbar |1\. Juni 2019 |
+| Südostasien |Verfügbar |1\. Juni 2019 |
+| UK, Süden |Verfügbar, 2019 |1\. Juni 2019 |
 | UK, Westen |\*|\* |
-| USA, Westen-Mitte |2. September 2019 |2. Januar 2020|
-| Europa, Westen |Verfügbar |1. Juni 2019 |
-| USA (Westen) |Verfügbar |1. Juni 2019 |
-| USA, Westen 2 |Verfügbar |1. Juni 2019 |
+| USA, Westen-Mitte |2\. September 2019 |2\. Januar 2020|
+| Europa, Westen |Verfügbar |1\. Juni 2019 |
+| USA (Westen) |Verfügbar |1\. Juni 2019 |
+| USA, Westen 2 |Verfügbar |1\. Juni 2019 |
 
 ## <a name="automatic-upgrade-process"></a>Automatischer Upgradevorgang
 

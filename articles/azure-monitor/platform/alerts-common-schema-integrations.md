@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 05/27/2019
 ms.author: anantr
 ms.subservice: alerts
-ms.openlocfilehash: b51b9f08819a4c496e051d375f6d52aaa985c8e6
-ms.sourcegitcommit: 51a7669c2d12609f54509dbd78a30eeb852009ae
+ms.openlocfilehash: 13cb3880662e1665b03dd63f009645acbe97fc75
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/30/2019
-ms.locfileid: "66394006"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "66734891"
 ---
 # <a name="how-to-integrate-the-common-alert-schema-with-logic-apps"></a>Integrieren des allgemeinen Warnungsschemas mit Logic Apps
 
@@ -21,7 +21,7 @@ In diesem Artikel wird erläutert, wie Sie eine Logik-App erstellen, die das all
 
 ## <a name="overview"></a>Übersicht
 
-Das [allgemeine Warnungsschema](https://aka.ms/commonAlertSchemaDocs) stellt ein standardisiertes und erweiterbares JSON-Schema für alle verschiedenen Warnungstypen bereit. Das allgemeine Warnungsschema entfaltet seinen größten Nutzen bei programmgesteuerter Verwendung – durch Webhooks, Runbooks und Logik-Apps. In diesem Artikel wird veranschaulicht, wie eine einzelne Logik-App zur Verarbeitung aller Warnungen erstellt werden kann. Die gleichen Prinzipien können auch auf andere programmgesteuerte Methoden angewendet werden. Die in diesem Artikel beschriebene Logik-App erstellt klar definierte Variablen für die [Felder in „Essentials“](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-common-schema-definitions#essentials-fields) und veranschaulicht zudem, wie die Logik je nach [Warnungstyp]('https://docs.microsoft.com/azure/azure-monitor/platform/alerts-common-schema-definitions#alert-context-fields') verarbeitet wird.
+Das [allgemeine Warnungsschema](https://aka.ms/commonAlertSchemaDocs) stellt ein standardisiertes und erweiterbares JSON-Schema für alle verschiedenen Warnungstypen bereit. Das allgemeine Warnungsschema entfaltet seinen größten Nutzen bei programmgesteuerter Verwendung – durch Webhooks, Runbooks und Logik-Apps. In diesem Artikel wird veranschaulicht, wie eine einzelne Logik-App zur Verarbeitung aller Warnungen erstellt werden kann. Die gleichen Prinzipien können auch auf andere programmgesteuerte Methoden angewendet werden. Die in diesem Artikel beschriebene Logik-App erstellt klar definierte Variablen für die [Felder in „Essentials“](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-common-schema-definitions#essentials-fields) und veranschaulicht zudem, wie die Logik je nach [Warnungstyp](/azure/azure-monitor/platform/alerts-common-schema-definitions#alert-context-fields) verarbeitet wird.
 
 
 ## <a name="prerequisites"></a>Voraussetzungen 
@@ -125,7 +125,7 @@ In diesem Artikel wird davon ausgegangen, dass Sie mit Folgendem vertraut sind:
 
     ![Logik-App-Ausdruck](media/alerts-common-schema-integrations/logic-app-expressions.png "Logik-App-Ausdruck")
     
-     Im [Feld „monitoringService“]('https://docs.microsoft.com/azure/azure-monitor/platform/alerts-common-schema-definitions#alert-context-fields') können Sie den Warnungstyp eindeutig identifizieren, auf dessen Basis Sie die Bedingungslogik erstellen.
+     Im [Feld „monitoringService“](/azure/azure-monitor/platform/alerts-common-schema-definitions#alert-context-fields) können Sie den Warnungstyp eindeutig identifizieren, auf dessen Basis Sie die Bedingungslogik erstellen.
 
     
     Der folgende Codeausschnitt überprüft beispielsweise, ob es sich bei der Warnung um eine Application Insights-basierte Protokollwarnung handelt. Ist dies der Fall, werden die Suchergebnisse ausgegeben. Andernfalls wird „N/V“ ausgegeben.

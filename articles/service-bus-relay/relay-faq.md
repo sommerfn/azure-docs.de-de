@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 05/21/2018
 ms.author: spelluru
 ms.openlocfilehash: 2433f4b3563cc8b301d1815cccf5ab24406e8662
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66111476"
 ---
 # <a name="azure-relay-faqs"></a>Azure Relay – häufig gestellte Fragen
@@ -83,8 +83,8 @@ Relays, die anhand der WCF-Bindung **netTCPRelay** geöffnet werden, behandeln N
 | Namen des Kontingents | `Scope` |  Notizen | Wert |
 | --- | --- | --- | --- |
 | Gleichzeitige Listener für ein Relay |Entität |Nachfolgende Anforderungen für zusätzliche Verbindungen werden abgelehnt, und vom aufrufenden Code wird eine Ausnahme empfangen. |25 |
-| Gleichzeitige Relayverbindungen für alle Relayendpunkte eines Dienstnamespace |Namespace |- |5.000 |
-| Relayendpunkte pro Dienstnamespace |Namespace |- |10.000 |
+| Gleichzeitige Relayverbindungen für alle Relayendpunkte eines Dienstnamespace |Namespace |- |5\.000 |
+| Relayendpunkte pro Dienstnamespace |Namespace |- |10\.000 |
 | Nachrichtengröße für [NetOnewayRelayBinding](/dotnet/api/microsoft.servicebus.netonewayrelaybinding)- und [NetEventRelayBinding](/dotnet/api/microsoft.servicebus.neteventrelaybinding)-Relays |Namespace |Eingehende Nachrichten, die diese Kontingente überschreiten, werden abgelehnt, und vom aufrufenden Code wird eine Ausnahme empfangen. |64 KB |
 | Nachrichtengröße für [HttpRelayTransportBindingElement](/dotnet/api/microsoft.servicebus.httprelaytransportbindingelement)- und [NetTcpRelayBinding](/dotnet/api/microsoft.servicebus.nettcprelaybinding)-Relays |Namespace |Keine Begrenzung der Nachrichtengröße. |Unbegrenzt |
 

@@ -1,6 +1,6 @@
 ---
-title: Includedatei
-description: Includedatei
+title: include file
+description: include file
 services: billing
 author: rothja
 ms.service: billing
@@ -9,15 +9,15 @@ ms.date: 05/18/2018
 ms.author: jroth
 ms.custom: include file
 ms.openlocfilehash: e8fe694cc757f5bcb9cf470f17306e8aa0028744
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66238327"
 ---
 | Resource | Standardlimit | Maximales Limit |
 | --- | --- | --- |
-| vCPUs pro [Abonnement](../articles/billing-buy-sign-up-azure-subscription.md)<sup>1</sup> |20 |10.000 |
+| vCPUs pro [Abonnement](../articles/billing-buy-sign-up-azure-subscription.md)<sup>1</sup> |20 |10\.000 |
 | [Co-Admins](../articles/billing-add-change-azure-subscription-administrator.md) pro Abonnement |200 |200 |
 | [Speicherkonten](../articles/storage/common/storage-create-storage-account.md) pro Abonnement<sup>2</sup> |100 |100 |
 | [Clouddienste](../articles/cloud-services/cloud-services-choose-me.md) pro Abonnement |20 |200 |

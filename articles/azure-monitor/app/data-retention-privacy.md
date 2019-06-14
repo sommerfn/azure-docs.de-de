@@ -13,10 +13,10 @@ ms.topic: conceptual
 ms.date: 05/09/2019
 ms.author: mbullwin
 ms.openlocfilehash: 38723a5dd306c2a4b594d95e5cc660d117966bc4
-ms.sourcegitcommit: 17411cbf03c3fa3602e624e641099196769d718b
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/10/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65518841"
 ---
 # <a name="data-collection-retention-and-storage-in-application-insights"></a>Datensammlung, -aufbewahrung und -speicherung in Application Insights
@@ -262,8 +262,8 @@ Weitere Informationen zu [SDKs für andere Plattformen][platforms] finden Sie in
 | Sitzung (Session) |Sitzungs-ID |
 | ServerContext |Computername, Gebietsschema, Betriebssystem, Gerät, Benutzersitzung, Benutzerkontext, Vorgang |
 | Inferred |Geolocation anhand IP-Adresse, Zeitstempel, Betriebssystem, Browser |
-| Metriken |Metrikname und -wert |
-| Ereignisse |Ereignisname und -wert |
+| metrics |Metrikname und -wert |
+| Events |Ereignisname und -wert |
 | PageViews |URL und Seitenname oder Bildschirmname |
 | Client perf |URL-/Seitenname, Browserladezeit |
 | Ajax |HTTP-Aufrufe von der Webseite an den Server |
