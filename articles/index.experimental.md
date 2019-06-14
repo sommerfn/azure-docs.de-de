@@ -4,11 +4,11 @@ hide_bc: true
 title: Microsoft Azure-Dokumentation
 description: Erfahren Sie, wie Sie mit Microsoft Azure-Clouddiensten leistungsstarke Anwendungen erstellen und verwalten. Laden Sie die Dokumentation, Beispielcode, Tutorials und vieles mehr herunter.
 ms.openlocfilehash: 1d45b815b9becae6f6f8e8e3ea17dd0c7cb9245f
-ms.sourcegitcommit: e89b9a75e3710559a9d2c705801c306c4e3de16c
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/15/2019
-ms.locfileid: "59571183"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "61464078"
 ---
 <div id="main" class="v2">
     <div class="container">
@@ -1433,7 +1433,7 @@ ms.locfileid: "59571183"
                                                 </div>
                                                 <div class="cardText">
                                                     <h3>Data Lake Store</h3>
-                                                    <p>Riesiges Repository für Big Data-Analyseworkloads</p>
+                                                    <p>Hyperscalerepository für Big Data-Analyseworkloads</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -1914,7 +1914,7 @@ ms.locfileid: "59571183"
                         </ul>
                     </li>
                     <li>
-                        <a href="#cognitive">AI und Cognitive Services</a>
+                        <a href="#cognitive">KI + Cognitive Services</a>
                         <ul id="cognitive" class="cardsA">
                             <li>
                                 <a href="/azure/cognitive-services/computer-vision/">
@@ -2180,7 +2180,7 @@ ms.locfileid: "59571183"
                                                 </div>
                                                 <div class="cardText">
                                                     <h3>Data Lake Store</h3>
-                                                    <p>Riesiges Repository für Big Data-Analyseworkloads</p>
+                                                    <p>Hyperscalerepository für Big Data-Analyseworkloads</p>
                                                 </div>
                                             </div>
                                         </div>

@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 4/27/2018
 ms.author: shhurst
 ms.openlocfilehash: 5aa5ea2a39a0fb9f969e965fed14063522197cda
-ms.sourcegitcommit: 5de9de61a6ba33236caabb7d61bee69d57799142
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50085795"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60303770"
 ---
 # <a name="handle-large-messages-with-chunking-in-azure-logic-apps"></a>Verarbeiten von großen Nachrichten durch Blockerstellung in Azure Logic Apps
 
@@ -117,17 +117,17 @@ In den folgenden Schritten ist die Vorgehensweise ausführlich beschrieben, in d
 
 1. Ihre Logik-App sendet eine erste HTTP-POST- oder -PUT-Anforderung mit einem leeren Nachrichtentext. Die Anforderungsheader enthält diese Informationen zu dem Inhalt, den Ihre Logik-App in Blöcken hochladen möchte:
 
-   | Logic Apps-Feld für Anforderungsheader | Wert | Typ | BESCHREIBUNG |
+   | Logic Apps-Feld für Anforderungsheader | Wert | Type | BESCHREIBUNG |
    |---------------------------------|-------|------|-------------|
    | **x-ms-transfer-mode** | chunked | String | Gibt an, dass der Inhalt in Blöcken (Segmenten) hochgeladen wird |
-   | **x-ms-content-length** | <*Inhaltslänge*> | Ganze Zahl | Der Gesamtgröße des Inhalts in Bytes vor der Blockerstellung |
+   | **x-ms-content-length** | <*Inhaltslänge*> | Integer | Der Gesamtgröße des Inhalts in Bytes vor der Blockerstellung |
    ||||
 
 2. Der Endpunkt antwortet mit dem Erfolgsstatuscode „200“ und diesen optionalen Informationen:
 
-   | Endpunktfeld für Antwortheader | Typ | Erforderlich | BESCHREIBUNG |
+   | Endpunktfeld für Antwortheader | Type | Erforderlich | BESCHREIBUNG |
    |--------------------------------|------|----------|-------------|
-   | **x-ms-chunk-size** | Ganze Zahl | Nein | Der vorgeschlagene Blockgröße in Bytes |
+   | **x-ms-chunk-size** | Integer | Nein | Der vorgeschlagene Blockgröße in Bytes |
    | **Location** | String | Nein | Die URL-Adresse, an die die HTTP-PATCH-Nachrichten gesendet werden sollen |
    ||||
 
@@ -137,7 +137,7 @@ In den folgenden Schritten ist die Vorgehensweise ausführlich beschrieben, in d
 
    * Im Header sind diese Details zu dem Inhaltsblock enthalten, der in der jeweiligen PATCH-Nachricht gesendet wurde:
 
-     | Logic Apps-Feld für Anforderungsheader | Wert | Typ | BESCHREIBUNG |
+     | Logic Apps-Feld für Anforderungsheader | Wert | Type | BESCHREIBUNG |
      |---------------------------------|-------|------|-------------|
      | **Content-Range** | <*Bereich*> | String | Der Bytebereich für den aktuellen Inhaltsblock, einschließlich des Anfangswerts, des Endwerts und der Gesamtgröße des Inhalts, zum Beispiel: „bytes=0-1023/10100“ |
      | **Content-Type** | <*Inhaltstyp*> | String | Der Typ des segmentierten (in Blöcke aufgeteilten) Inhalts |

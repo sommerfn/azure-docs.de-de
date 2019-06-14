@@ -11,11 +11,11 @@ ms.topic: article
 ms.reviewer: klam, LADocs
 ms.suite: integration
 ms.openlocfilehash: 3f812c1142b5cd40169f7340163295b0f7ea6a4d
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57779146"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60996590"
 ---
 # <a name="handle-errors-and-exceptions-in-azure-logic-apps"></a>Behandeln von Fehlern und Ausnahmen in Azure Logic Apps
 
@@ -75,7 +75,7 @@ Oder Sie können die Wiederholungsrichtlinie manuell im Abschnitt `inputs` für 
 |-------|------|-------------|
 | <*retry-policy-type*> | String | Der Wiederholungsrichtlinientyp, den Sie verwenden möchten: `default`, `none`, `fixed` oder `exponential` | 
 | <*retry-interval*> | String | Das Wiederholungsintervall, bei dem für den Wert das [ISO 8601-Format](https://en.wikipedia.org/wiki/ISO_8601#Combined_date_and_time_representations) verwendet werden muss. Der niedrigste Wert für das Intervall ist `PT5S`, und der höchste Wert ist `PT1D`. Wenn Sie die Richtlinie mit dem exponentiellen Intervall verwenden, können Sie einen anderen Mindest- und Maximalwert angeben. | 
-| <*retry-attempts*> | Ganze Zahl | Die Anzahl der Wiederholungsversuche, die zwischen 1 und 90 liegen muss | 
+| <*retry-attempts*> | Integer | Die Anzahl der Wiederholungsversuche, die zwischen 1 und 90 liegen muss | 
 ||||
 
 *Optional*
