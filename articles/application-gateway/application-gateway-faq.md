@@ -6,18 +6,20 @@ author: vhorne
 ms.service: application-gateway
 ms.topic: article
 ms.workload: infrastructure-services
-ms.date: 4/30/2019
+ms.date: 6/1/2019
 ms.author: victorh
-ms.openlocfilehash: 72eaa18d570e85274efbea80f12e9a7301eecbfa
-ms.sourcegitcommit: ed66a704d8e2990df8aa160921b9b69d65c1d887
+ms.openlocfilehash: 25779cd62f70df41a7734d2f8097504923dcb3a3
+ms.sourcegitcommit: 087ee51483b7180f9e897431e83f37b08ec890ae
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64947081"
+ms.lasthandoff: 05/31/2019
+ms.locfileid: "66430872"
 ---
 # <a name="frequently-asked-questions-about-application-gateway"></a>Häufig gestellte Fragen zu Application Gateway
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+
+Im Folgenden finden Sie häufig gestellte Fragen zu Azure Application Gateway.
 
 ## <a name="general"></a>Allgemein
 
@@ -103,7 +105,7 @@ Die Bereitstellung von Instanzen, die die v2-SKU nutzen, kann bis zu sechs Minu
 
 ### <a name="can-i-use-exchange-server-as-a-backend-with-application-gateway"></a>Kann ich Exchange Server als Back-End mit Application Gateway verwenden?
 
- Nein. Application Gateway unterstützt keine E-Mail-Protokolle wie SMTP, IMAP oder POP3. 
+Nein. Application Gateway unterstützt keine E-Mail-Protokolle wie SMTP, IMAP oder POP3. 
 
 ## <a name="performance"></a>Leistung
 
@@ -123,7 +125,7 @@ Ja, die Application Gateway v2-SKU unterstützt automatische Skalierung. Weitere
 
 ### <a name="does-manual-scale-up-or-scale-down-cause-downtime"></a>Werden durch das zentrale Hoch- oder Herunterskalieren Ausfallzeiten verursacht?
 
- Nein. Instanzen sind auf Upgrade- und Fehlerdomänen verteilt.
+Nein. Instanzen sind auf Upgrade- und Fehlerdomänen verteilt.
 
 ### <a name="does-application-gateway-support-connection-draining"></a>Unterstützt Application Gateway den Verbindungsausgleich?
 
@@ -145,7 +147,7 @@ Application Gateway kann mit Instanzen außerhalb des eigenen virtuellen Netzwer
 
 ### <a name="can-i-deploy-anything-else-in-the-application-gateway-subnet"></a>Kann ich im Application Gateway-Subnetz noch etwas anderes bereitstellen?
 
- Nein. Aber Sie können weitere Application Gateway-Instanzen im Subnetz bereitstellen.
+Nein. Aber Sie können weitere Application Gateway-Instanzen im Subnetz bereitstellen.
 
 ### <a name="are-network-security-groups-supported-on-the-application-gateway-subnet"></a>Werden Netzwerksicherheitsgruppen im Application Gateway-Subnetz unterstützt?
 
@@ -177,7 +179,7 @@ Microservice-Architektur wird unterstützt. Für das Testen an unterschiedlichen
 
 ### <a name="do-custom-probes-support-wildcards-or-regex-on-response-data"></a>Unterstützen benutzerdefinierte Tests Platzhalter oder reguläre Ausdrücke in Antwortdaten?
 
- Nein. 
+Nein. 
 
 ### <a name="how-are-routing-rules-processed-in-application-gateway"></a>Wie werden Routingregeln in Application Gateway verarbeitet?
 
@@ -187,13 +189,18 @@ Siehe [Application Gateway – Konfigurationsübersicht](https://docs.microsoft.
 
 Wenn Sie mehrere Standorte für Application Gateway konfiguriert haben, wird im Feld „Host“ der Name angegeben, an den der Test gesendet werden soll. Verwenden Sie andernfalls „127.0.0.1“. Dieser Wert entspricht nicht dem Hostnamen des virtuellen Computers. Sein Format ist \<Protokoll\>://\<Host\>:\<Port\>\<Pfad\>.
 
-### <a name="can-i-whitelist-application-gateway-access-to-only-a-few-source-ips"></a>Kann ich für den Application Gateway-Zugriff nur wenige Quell-IPs in eine Whitelist aufnehmen?
+### <a name="can-i-allow-application-gateway-access-to-only-a-few-source-ip-addresses"></a>Kann ich nur einigen wenigen Quell-IP-Adressen Zugriff auf Application Gateway gewähren?
 
-Ja. Weitere Informationen finden Sie unter [Application Gateway – Konfigurationsübersicht](https://docs.microsoft.com/azure/application-gateway/configuration-overview#whitelist-application-gateway-access-to-a-few-source-ips).
+Ja. Weitere Informationen finden Sie unter [Application Gateway – Konfigurationsübersicht](https://docs.microsoft.com/azure/application-gateway/configuration-overview#allow-application-gateway-access-to-a-few-source-ips).
 
 ### <a name="can-i-use-the-same-port-for-both-public-facing-and-private-facing-listeners"></a>Kann ich den gleichen Port sowohl für öffentliche als auch für private Listener verwenden?
 
- Nein.
+Nein.
+
+### <a name="is-there-guidance-available-to-migrate-from-the-v1-sku-to-the-v2-sku"></a>Gibt es Richtlinien für die Migration von der v1-SKU zur v2-SKU?
+
+Ja. Details dazu finden Sie unter [Migrieren von Azure Application Gateway und Web Application Firewall von v1 zu v2](migrate-v1-v2.md).
+
 
 ## <a name="configuration---ssl"></a>Konfiguration: SSL
 
@@ -289,7 +296,7 @@ Application Gateway unterstützt CRS [2.2.9](application-gateway-crs-rulegroups-
 
 ### <a name="does-detection-mode-block-traffic"></a>Wird Datenverkehr durch den Erkennungsmodus blockiert?
 
- Nein. Der Erkennungsmodus protokolliert nur Datenverkehr, der eine WAF-Regel auslöst.
+Nein. Der Erkennungsmodus protokolliert nur Datenverkehr, der eine WAF-Regel auslöst.
 
 ### <a name="can-i-customize-waf-rules"></a>Kann ich WAF-Regeln anpassen?
 
@@ -312,6 +319,10 @@ Weitere Informationen finden Sie im Artikel zu den [zehn wichtigsten, von OWASP 
 ### <a name="does-waf-support-ddos-protection"></a>Unterstützt WAF DDoS-Schutz?
 
 Ja. Sie können DDoS-Schutz im virtuellen Netzwerk aktivieren, in dem das Anwendungsgateway bereitgestellt wird. Mit dieser Einstellung wird sichergestellt, dass der Azure DDoS Protection-Dienst auch die VIP-Adresse des Anwendungsgateways schützt.
+
+### <a name="is-there-guidance-available-to-migrate-from-the-v1-sku-to-the-v2-sku"></a>Gibt es Richtlinien für die Migration von der v1-SKU zur v2-SKU?
+
+Ja. Details dazu finden Sie unter [Migrieren von Azure Application Gateway und Web Application Firewall von v1 zu v2](migrate-v1-v2.md).
 
 ## <a name="diagnostics-and-logging"></a>Diagnose und Protokollierung
 

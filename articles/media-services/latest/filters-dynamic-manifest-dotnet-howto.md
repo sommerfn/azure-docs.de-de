@@ -11,18 +11,20 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: ne
 ms.topic: article
-ms.date: 05/07/2019
+ms.date: 06/03/2019
 ms.author: juliako
-ms.openlocfilehash: 0d85bad5328c9d28c8690b389fca18731ea17644
-ms.sourcegitcommit: 13cba995d4538e099f7e670ddbe1d8b3a64a36fb
+ms.openlocfilehash: 2bcb8762b94347f4409507fb89a18cb6c9d0dacd
+ms.sourcegitcommit: 600d5b140dae979f029c43c033757652cddc2029
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/22/2019
-ms.locfileid: "66002359"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66494295"
 ---
 # <a name="create-filters-with-media-services-net-sdk"></a>Erstellen von Filtern mit dem Media Services .NET SDK
 
-Bei der Inhaltsbereitstellung für Ihre Kunden (Streaming von Liveereignissen oder Video on Demand) benötigen Ihre Kunden möglicherweise mehr Flexibilität als in der Manifestdatei für das Standardmedienobjekt beschrieben. Azure Media Services ermöglicht es Ihnen, Kontofilter und Medienobjektfilter für Ihre Inhalte zu definieren. Weitere Informationen finden Sie unter [Filter](filters-concept.md) und [dynamische Manifeste](filters-dynamic-manifest-overview.md).
+Bei der Inhaltsbereitstellung für Ihre Kunden (Streaming von Liveereignissen oder Video on Demand) benötigen Ihre Kunden möglicherweise mehr Flexibilität als in der Manifestdatei für das Standardmedienobjekt beschrieben. Azure Media Services ermöglicht es Ihnen, Kontofilter und Medienobjektfilter für Ihre Inhalte zu definieren. 
+
+Eine ausführliche Beschreibung dieses Features und der Szenarien, in denen es verwendet wird, finden Sie unter [Dynamische Manifeste](filters-dynamic-manifest-overview.md) und [Filter](filters-concept.md).
 
 In diesem Thema wird beschrieben, wie Sie mit dem Media Services .NET SDK einen Filter für ein Video on Demand-Medienobjekt sowie [Kontofilter](https://docs.microsoft.com/dotnet/api/microsoft.azure.management.media.models.accountfilter?view=azure-dotnet) und [Medienobjektfilter](https://docs.microsoft.com/dotnet/api/microsoft.azure.management.media.models.assetfilter?view=azure-dotnet) erstellen. 
 
