@@ -25,7 +25,7 @@ ms.locfileid: "64569811"
 Dieses Dokument unterstützt Sie bei der Verwaltung von bereits mit Azure Security Center verbundenen Sicherheitslösungen sowie beim Hinzufügen neuer Lösungen.
 
 > [!NOTE]
-> Eine Teilmenge der sicherheitslösungen wird am 31. Juli 2019 eingestellt. Weitere Informationen und andere Dienste, finden Sie unter [Deaktivierung von Security Center-Funktionen (Juli 2019)](security-center-features-retirement-july2019.md#menu_solutions).
+> Eine Teilmenge der Sicherheitslösungen läuft am 31. Juli 2019 aus. Weitere Informationen und alternative Dienste finden Sie unter [Auslaufen von Security Center-Funktionen (Juli 2019)](security-center-features-retirement-july2019.md#menu_solutions).
 
 ## <a name="integrated-azure-security-solutions"></a>Integrierte Azure-Sicherheitslösungen
 Mit Security Center können Sie ganz einfach integrierte Sicherheitslösungen in Azure aktivieren. Dies hat unter anderem folgende Vorteile:
