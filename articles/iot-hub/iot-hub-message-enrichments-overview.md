@@ -8,12 +8,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 05/10/2019
 ms.author: robinsh
-ms.openlocfilehash: 2de945d2ef1d87b47ea81aac034916466d3c9bda
-ms.sourcegitcommit: 25a60179840b30706429c397991157f27de9e886
+ms.openlocfilehash: c29543bf37b568b7ed11abe8e11183a0869d21d9
+ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/28/2019
-ms.locfileid: "66259342"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66479834"
 ---
 # <a name="message-enrichments-for-device-to-cloud-iot-hub-messages-preview"></a>Nachrichtenanreicherungen bei Gerät-zu-Cloud-IoT Hub-Nachrichten (Vorschauversion)
 
@@ -48,6 +48,8 @@ Die Nachrichten können aus einer beliebigen Datenquelle stammen, die vom [IoT H
 * Ereignisse im Gerätelebenszyklus, z.B. wenn das Gerät erstellt oder gelöscht wird
 
 Sie können Anreicherungen zu Nachrichten, die an den integrierten Endpunkt eines IoT-Hubs gesendet werden, oder zu Nachrichten hinzufügen, die an benutzerdefinierte Endpunkte wie Azure Blob Storage, eine Service Bus-Warteschlange oder ein Service Bus-Thema weitergeleitet werden.
+
+Sie können auch Anreicherungen zu Nachrichten hinzufügen, die bei Event Grid veröffentlicht werden, indem Sie den Endpunkt als Event Grid auswählen. Weitere Informationen finden Sie unter [Iot Hub und Event Grid](iot-hub-event-grid.md).
 
 Anreicherungen werden pro Endpunkt angewendet. Wenn Sie fünf Anreicherungen angeben, die für einen bestimmten Endpunkt gestempelt werden sollen, werden alle an diesen Endpunkt gesendeten Nachrichten mit denselben fünf Anreicherungen gestempelt.
 

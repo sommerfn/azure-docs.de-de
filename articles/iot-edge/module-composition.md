@@ -4,25 +4,28 @@ description: Hier erfahren Sie, wie ein Bereitstellungsmanifest deklariert, welc
 author: kgremban
 manager: philmea
 ms.author: kgremban
-ms.date: 03/28/2019
+ms.date: 05/28/2019
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.custom: seodec18
-ms.openlocfilehash: 18d72d46c46149aded0efcdd54f6f9d1119f8d3e
-ms.sourcegitcommit: 8e76be591034b618f5c11f4e66668f48c090ddfd
+ms.openlocfilehash: f4828b59ffa43365f48c002262368d383dfcff05
+ms.sourcegitcommit: 3d4121badd265e99d1177a7c78edfa55ed7a9626
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/29/2019
-ms.locfileid: "66357657"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66389367"
 ---
 # <a name="learn-how-to-deploy-modules-and-establish-routes-in-iot-edge"></a>Bereitstellen von Modulen und Einrichten von Routen in IoT Edge
 
-Jedes IoT Edge-Gerät führt mindestens zwei Module aus, die die IoT Edge-Runtime ausmachen: „$edgeAgent“ und „$edgeHub“. Darüber hinaus kann jedes IoT Edge-Gerät mehrere Module ausführen, um eine beliebige Anzahl von Prozessen auszuführen. Alle diese Module werden gleichzeitig auf einem Gerät bereitgestellt. IoT Edge bietet eine Möglichkeit, zu deklarieren, welche Module installiert und wie sie für die gemeinsame Funktionsweise konfiguriert werden. 
+Jedes IoT Edge-Gerät führt mindestens zwei Module aus, die die IoT Edge-Runtime ausmachen: „$edgeAgent“ und „$edgeHub“. Ein IoT Edge-Gerät kann mehrere zusätzliche Module für eine beliebige Anzahl von Prozessen ausführen. Verwenden Sie ein Bereitstellungsmanifest, um Ihrem Gerät mitzuteilen, welche Module installiert und wie sie für die Zusammenarbeit konfiguriert werden müssen. 
 
 Das *Bereitstellungsmanifest* ist ein JSON-Dokument, das Folgendes beschreibt:
 
-* Den Modulzwilling des **IoT Edge-Agents** mit dem Containerimage für das jeweilige Modul, den Anmeldeinformationen für den Zugriff auf private Containerregistrierungen und Anweisungen zur Erstellung und Verwaltung des jeweiligen Moduls
+* Der **IoT Edge-Agent**-Modulzwilling, der drei Komponenten umfasst. 
+  * Das Containerimage für jedes Modul, das auf dem Gerät ausgeführt wird.
+  * Die Anmeldeinformationen für den Zugriff auf die Registrierungen des privaten Containers, die Modulimages enthalten.
+  * Anweisungen dazu, wie jedes Modul erstellt und verwaltet werden soll.
 * Den Modulzwilling des **IoT Edge-Hubs**, der u.a. festlegt, wie Nachrichten zwischen Modulen und schließlich an IoT Hub gesendet werden
 * Ggf. die gewünschten Eigenschaften zusätzlicher Modulzwillinge
 
@@ -134,7 +137,9 @@ Für jede Route sind eine Quelle und eine Senke erforderlich, die Bedingung ist 
 
 ### <a name="source"></a>`Source`
 
-Die Quelle gibt an, woher die Nachrichten stammen. IoT Edge kann Nachrichten von Blattgeräten oder Modulen weiterleiten.
+Die Quelle gibt an, woher die Nachrichten stammen. IoT Edge kann Nachrichten von Modulen oder Blattknotengeräten weiterleiten. 
+
+Unter Verwendung der IoT-SDKs können Module mithilfe der ModuleClient-Klasse spezifische Ausgabewarteschlangen für ihre Nachrichten deklarieren. Ausgabewarteschlangen sind nicht erforderlich, aber Sie sind hilfreich für die Verwaltung mehrerer Routen. Blattknotengeräten können die DeviceClient-Klasse der IoT-SDKs verwenden, um Nachrichten auf die gleiche Weise an IoT Edge-Gatewaygeräte zu senden, wie sie Nachrichten an IoT Hub senden würden. Weitere Informationen finden Sie unter [Verstehen und Verwenden von Azure IoT Hub-SDKs](../iot-hub/iot-hub-devguide-sdks.md).
 
 Die Quelleigenschaft kann die folgenden Werte haben:
 
@@ -142,7 +147,7 @@ Die Quelleigenschaft kann die folgenden Werte haben:
 | ------ | ----------- |
 | `/*` | Alle Gerät-zu-Cloud-Nachrichten oder Benachrichtigungen über Änderungen am Zwilling, die von Modulen oder Blattgeräten gesendet wurden |
 | `/twinChangeNotifications` | Alle Änderungen am Zwilling (gemeldete Eigenschaften), die von Modulen oder Blattgeräten gesendet wurden |
-| `/messages/*` | Alle Gerät-zu-Cloud-Nachrichten, die von einem Modul oder einem Blattgerät über eine beliebige oder keine Ausgabe gesendet wurden |
+| `/messages/*` | Alle Gerät-zu-Cloud-Nachrichten, die von einem Modul über eine beliebige oder keine Ausgabe, oder von einem Blattknotengerät gesendet wurden |
 | `/messages/modules/*` | Alle Gerät-zu-Cloud-Nachrichten, die von einem Modul über eine beliebige oder keine Ausgabe versendet wurden |
 | `/messages/modules/<moduleId>/*` | Alle Gerät-zu-Cloud-Nachrichten, die von einem bestimmten Modul über eine beliebige oder keine Ausgabe gesendet wurden |
 | `/messages/modules/<moduleId>/outputs/*` | Alle Gerät-zu-Cloud-Nachrichten, die von einem bestimmten Modul über eine beliebige Ausgabe gesendet wurden |
