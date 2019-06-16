@@ -38,7 +38,7 @@ Zum Ausführen einer vorhandenen Anwendung eines Windows-Containers in einem Ser
 ## <a name="prerequisites"></a>Voraussetzungen
 
 * Ein Entwicklungscomputer, auf dem Folgendes ausgeführt wird:
-  * Visual Studio 2015 oder Visual Studio-2019.
+  * Visual Studio 2015 oder Visual Studio 2019.
   * [Service Fabric-SDK und -Tools](service-fabric-get-started.md)
   *  Docker für Windows [Laden Sie „Docker CE for Windows (stable)“ herunter](https://store.docker.com/editions/community/docker-ce-desktop-windows?tab=description). Klicken Sie nach dem Installieren und Starten von Docker mit der rechten Maustaste auf das Taskleistensymbol, und wählen Sie **Switch to Windows containers** (Zu Windows-Containern wechseln). Dieser Schritt ist für die Ausführung Windows-basierter Docker-Images erforderlich.
 
@@ -482,7 +482,7 @@ docker rmi myregistry.azurecr.io/samples/helloworldapp
 Windows Server-Container sind nicht mit allen Versionen eines Hostbetriebssystems kompatibel. Beispiel:
  
 - Windows Server-Container, die mit Windows Server Version 1709 erstellt wurden, funktionieren nicht auf Hosts unter Windows Server 2016. 
-- Windows Server-Container, die mit Windows Server 2016 erstellt wurden, funktionieren in Hyper-V-Isolationsmodus nur auf einem Host mit Windows Server, Version 1709. 
+- Windows Server-Container, die mit Windows Server 2016 erstellt wurden, funktionieren im Hyper-V-Isolationsmodus nur auf Hosts unter Windows Server Version 1709. 
 - Mit Windows Server-Containern, die mit Windows Server 2016 erstellt wurden, ist es möglicherweise erforderlich, sicherzustellen, dass die Revision des Containerbetriebssystems und des Hostbetriebssystems sind identisch, sofern die Ausführung im Isolationsmodus auf einem Host unter Windows Server 2016 erfolgt.
  
 Weitere Informationen finden Sie unter [Versionskompatibilität von Windows-Containern](https://docs.microsoft.com/virtualization/windowscontainers/deploy-containers/version-compatibility).
