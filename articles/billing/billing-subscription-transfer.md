@@ -116,7 +116,7 @@ Alle Ressourcen wie virtuelle Computer, Datenträger und Websites werden auf den
 
 ### <a id="no-button"></a> Warum wird die Schaltfläche „Abonnement übertragen“ nicht angezeigt?
 
-Leider ist die Self-Service-Abonnementübertragung für Ihr Angebot nicht verfügbar. Die Liste der unterstützten Angebote finden Sie im Abschnitt [Unterstützte Angebote](#supported-offers) dieses Artikels. Darüber hinaus werden wir die Übertragung des Abonnements für alle Länder nicht blockiert. Allerdings wird cross Land Übertragung nicht unterstützt. Zum Übertragen Ihres Abonnements in ein anderes Land [wenden Sie sich an den Support](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade). 
+Leider ist die Self-Service-Abonnementübertragung für Ihr Angebot nicht verfügbar. Die Liste der unterstützten Angebote finden Sie im Abschnitt [Unterstützte Angebote](#supported-offers) dieses Artikels. Darüber hinaus wird die Abonnementübertragung für kein Land blockiert. Allerdings wird keine Übertragung über Ländergrenzen hinweg unterstützt. Zum Übertragen Ihres Abonnements in ein anderes Land [wenden Sie sich an den Support](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade). 
 
 
 ### <a name="can-i-transfer-ownership-to-an-account-in-another-country"></a>Kann ich den Besitz an ein Konto in einem anderen Land übertragen?

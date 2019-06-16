@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/22/2019
 ms.author: manayar
-ms.openlocfilehash: 6c271c2c9feb1520951b2a8e301da4878970d60a
-ms.sourcegitcommit: 25a60179840b30706429c397991157f27de9e886
+ms.openlocfilehash: 61430f5a43a04fa0e5b2f0c79ff03419c73aaf28
+ms.sourcegitcommit: c05618a257787af6f9a2751c549c9a3634832c90
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/28/2019
-ms.locfileid: "66259408"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66416554"
 ---
 # <a name="instance-protection-for-azure-virtual-machine-scale-set-instances-preview"></a>Instanzschutz für Instanzen von Azure-VM-Skalierungsgruppen (Vorschauversion)
 Azure-VM-Skalierungsgruppen ermöglichen per [Autoskalierung](virtual-machine-scale-sets-autoscale-overview.md) eine bessere Elastizität für Ihre Workload, damit Sie die Konfiguration durchführen können, wenn Ihre Infrastruktur horizontal hoch- und herunterskaliert wird. Mit Skalierungsgruppen können Sie auch eine große Zahl von VMs zentral verwalten, konfigurieren und aktualisieren, indem Sie die entsprechenden Einstellungen der [Upgraderichtlinie](virtual-machine-scale-sets-upgrade-scale-set.md#how-to-bring-vms-up-to-date-with-the-latest-scale-set-model) verwenden. Sie können ein Update des Skalierungsgruppenmodells konfigurieren. Die neue Konfiguration wird dann automatisch auf alle Skalierungsgruppeninstanzen angewendet, wenn Sie die Upgraderichtlinie auf „Automatisch“ oder „Parallel“ festgelegt haben.
@@ -30,7 +30,7 @@ Während der Verarbeitung von Datenverkehr durch Ihre Anwendung kann es zu Situa
 In diesem Artikel wird beschrieben, wie Sie die verschiedenen Funktionen für den Instanzschutz auf Skalierungsgruppeninstanzen anwenden und dafür nutzen können.
 
 > [!NOTE]
->Der Instanzschutz befindet sich derzeit in der öffentlichen Vorschauphase. Es ist kein Abonnementverfahren erforderlich, um die unten beschriebenen Funktionen der öffentlichen Vorschauversion zu nutzen. Die Vorschauversion des Instanzschutzes wird nur für API-Version 2019-03-01 und höher unterstützt.
+>Der Instanzschutz befindet sich derzeit in der öffentlichen Vorschauphase. Es ist kein Abonnementverfahren erforderlich, um die unten beschriebenen Funktionen der öffentlichen Vorschauversion zu nutzen. Die Vorschauversion des Instanzschutzes wird nur für API-Version 2019-03-01 und Skalierungsgruppen mit verwalteten Datenträgern unterstützt.
 
 ## <a name="types-of-instance-protection"></a>Arten des Instanzschutzes
 Skalierungsgruppen umfassen zwei Arten von Funktionen für den Instanzschutz:

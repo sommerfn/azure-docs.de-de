@@ -16,15 +16,15 @@ ms.locfileid: "66497535"
 ---
 # <a name="fslogix-profile-containers-and-azure-files"></a>FSLogix-Profilcontainer und Azure Files
 
-Der Windows Virtual Desktop-Dienst (Vorschauversion) empfiehlt FSLogix-Profilcontainer als Lösung für Benutzerprofile. FSLogix ist für das Roaming von Profilen in Remotecomputingumgebungen wie z.B. Windows Virtual Desktop konzipiert. Das Feature speichert ein vollständiges Benutzerprofil in einem einzelnen Container. Bei der Anmeldung ist dieser Container dynamisch die Compute-Umgebung mithilfe von nativ unterstützten Virtual Hard Disk (VHD) und Hyper-V Virtual Hard Disk (VHDX) zugeordnet. Das Benutzerprofil ist sofort verfügbar und wird im System genau so angezeigt wie ein natives Benutzerprofil.
+Der Windows Virtual Desktop-Dienst (Vorschauversion) empfiehlt FSLogix-Profilcontainer als Lösung für Benutzerprofile. FSLogix ist für das Roaming von Profilen in Remotecomputingumgebungen wie z.B. Windows Virtual Desktop konzipiert. Das Feature speichert ein vollständiges Benutzerprofil in einem einzelnen Container. Bei der Anmeldung wird der Container dynamisch an die Computingumgebung angefügt. Hierzu werden nativ unterstützte VHD (Virtual Hard Disk) und VHDX (Hyper-V Virtual Hard Disk) verwendet. Das Benutzerprofil ist sofort verfügbar und wird im System genau so angezeigt wie ein natives Benutzerprofil.
 
 In diesem Artikel beschreiben wir die FSLogix-Profilcontainer, die mit Azure Files verwendet werden. Die Informationen gelten im Kontext des Windows Virtual Desktop-Diensts, der [am 21.3. angekündigt wurde](https://www.microsoft.com/microsoft-365/blog/2019/03/21/windows-virtual-desktop-public-preview/).
 
 ## <a name="user-profiles"></a>Benutzerprofile
 
-Ein Benutzerprofil enthält Datenelemente, die über eine einzelne, einschließlich Konfigurationsinformationen, z.B. Einstellungen für Desktops, dauerhafte Netzwerkverbindungen und Anwendungseinstellungen. Windows erstellt standardmäßig ein lokales Benutzerprofil, das eng in das Betriebssystem integriert ist.
+Ein Benutzerprofil enthält Datenelemente über eine Person, einschließlich Konfigurationsinformationen wie Desktopeinstellungen, dauerhafte Netzwerkverbindungen und Anwendungseinstellungen. Windows erstellt standardmäßig ein lokales Benutzerprofil, das eng in das Betriebssystem integriert ist.
 
-Ein Remotebenutzerprofil stellt eine Partition zwischen Benutzerdaten und Betriebssystem bereit. Sie können das Betriebssystem ersetzt oder ohne Auswirkungen auf die Daten geändert werden. Bei Remotedesktop-Sitzungshosts (RDSH) und Infrastrukturen mit virtuellen Desktops (Virtual Desktop Infrastructures, VDI) können folgende Gründe für das Ersetzen des Betriebssystems vorliegen:
+Ein Remotebenutzerprofil stellt eine Partition zwischen Benutzerdaten und Betriebssystem bereit. Es ermöglicht es, das Betriebssystem ohne Auswirkungen auf die Benutzerdaten zu ersetzen oder zu ändern. Bei Remotedesktop-Sitzungshosts (RDSH) und Infrastrukturen mit virtuellen Desktops (Virtual Desktop Infrastructures, VDI) können folgende Gründe für das Ersetzen des Betriebssystems vorliegen:
 
 - Upgrade des Betriebssystems
 - Austausch eines vorhandenen virtuellen Computers
@@ -67,7 +67,7 @@ S2D-Cluster benötigen ein Betriebssystem, das gepatcht, aktualisiert und in ein
 
 ## <a name="fslogix-profile-containers"></a>FSLogix-Profilcontainer
 
-19 November 2018 [Microsoft erwarb FSLogix](https://blogs.microsoft.com/blog/2018/11/19/microsoft-acquires-fslogix-to-enhance-the-office-365-virtualization-experience/). FSLogix Herausforderungen viele Profil Container. Die wichtigsten dieser Aspekte sind:
+Am 19. November 2018 [erwarb Microsoft FSLogix](https://blogs.microsoft.com/blog/2018/11/19/microsoft-acquires-fslogix-to-enhance-the-office-365-virtualization-experience/). FSLogix löst viele Herausforderungen in Bezug auf Profilcontainer, insbesondere diese:
 
 - **Leistung:** [FSLogix-Profilcontainer](https://fslogix.com/products/profile-containers) sind ausgesprochen leistungsfähig und lösen Leistungsprobleme, die bisher einen Austauschmodus mit Cache blockiert haben.
 - **OneDrive:** Ohne FSLogix-Profilcontainer wird OneDrive for Business in nicht dauerhaften RDSH- und VDI-Umgebungen nicht unterstützt. Im Blog [OneDrive for Business and FSLogix best practices](https://fslogix.com/products/technical-faqs/284-onedrive-for-business-and-fslogix-best-practices) (Best Practices für OneDrive for Business und FSLogix) beschrieben, wie diese beiden Technologien interagieren. Weitere Informationen finden Sie unter [Verwenden des Synchronisierungsclients auf virtuellen Desktops](https://docs.microsoft.com/deployoffice/rds-onedrive-business-vdi).

@@ -153,7 +153,7 @@ telemetry.trackEvent({name: "WinGame"});
 
 Die Telemetrie ist in der Tabelle `customEvents` in [Application Insights Analytics](analytics.md) verfügbar. Jede Zeile stellt einen Aufruf von `trackEvent(..)` in der App dar.
 
-Wenn die [Stichprobenentnahme](../../azure-monitor/app/sampling.md) aktiv ist, wird für die itemCount-Eigenschaft ein Wert größer 1 angezeigt. itemCount==10 bedeutet beispielsweise, dass bei der Stichprobenentnahme von 10 Aufrufen von trackEvent() nur einer übertragen wurde. Zum Abrufen der richtigen Anzahl benutzerdefinierter Ereignisse, Sie sollten daher verwenden Sie Code wie z. B. `customEvents | summarize sum(itemCount)`.
+Wenn die [Stichprobenentnahme](../../azure-monitor/app/sampling.md) aktiv ist, wird für die itemCount-Eigenschaft ein Wert größer 1 angezeigt. itemCount==10 bedeutet beispielsweise, dass bei der Stichprobenentnahme von 10 Aufrufen von trackEvent() nur einer übertragen wurde. Zum Abrufen der richtigen Anzahl benutzerdefinierter Ereignisse sollten Sie daher Code wie `customEvents | summarize sum(itemCount)` verwenden.
 
 ## <a name="getmetric"></a>GetMetric
 

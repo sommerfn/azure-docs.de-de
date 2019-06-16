@@ -102,7 +102,7 @@ Initialisieren Sie nun die Konfiguration mit *Terraform init*, und führen Sie d
 
 Wenn Sie ein Azure Storage-Blob für Statusspeicher verwenden, wird der Blob vor jedem Vorgang, bei dem Zustand geschrieben wird, automatisch gesperrt. Diese Konfiguration verhindert mehrere gleichzeitige Statusvorgänge, die zu Beschädigungen führen können. Weitere Informationen finden Sie unter [State Locking][terraform-state-lock] (Sperren des Status) in der Terraform-Dokumentation.
 
-Die Sperre kann angezeigt werden, wenn das Blob über das Azure-Portal oder andere Azure-Verwaltungstools zu untersuchen.
+Die Sperre kann bei der Untersuchung des Blobs über das Azure-Portal oder andere Azure-Verwaltungstools angezeigt werden.
 
 ![Azure-Blob mit Sperre](media/terraform-backend/lock.png)
 

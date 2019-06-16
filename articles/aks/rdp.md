@@ -34,7 +34,7 @@ Die Windows Server-Knoten Ihres AKS-Clusters haben keine IP-Adressen für extern
 
 Im folgenden Beispiel wird eine VM mit dem Namen *myVM* in der Ressourcengruppe *myResourceGroup* erstellt.
 
-Rufen Sie zunächst das Subnetz, die von Ihrem Windows Server-Knoten-Pool verwendet. Um die Subnetz-Id zu erhalten, benötigen Sie den Namen des Subnetzes. Um den Namen des Subnetzes zu erhalten, benötigen Sie den Namen des Vnet. Erhalten Sie den Namen des Vnet durch Abfragen von Ihrem Cluster für die Liste der Netzwerke an. Um den Cluster abzufragen, benötigen Sie den Namen an. Sie können alle diese durch Ausführen des folgenden Befehls in der Azure Cloud Shell abrufen:
+Rufen Sie zuerst das Subnetz ab, das von Ihrem Windows Server-Knotenpool verwendet wird. Um die Subnetz-ID zu erhalten, benötigen Sie den Namen des Subnetzes. Um den Namen des Subnetzes zu erhalten, benötigen Sie den Namen des virtuellen Netzes. Den Namen des virtuellen Netzes rufen Sie ab, indem Sie Ihren Cluster nach der Liste der Netzwerke abfragen. Um den Cluster abzufragen, benötigen Sie seinen Namen. Alle diese Angaben erhalten Sie durch Ausführen des folgenden Befehls in Azure Cloud Shell:
 
 ```azurecli-interactive
 CLUSTER_RG=$(az aks show -g myResourceGroup -n myAKSCluster --query nodeResourceGroup -o tsv)
@@ -43,7 +43,7 @@ SUBNET_NAME=$(az network vnet subnet list -g $CLUSTER_RG --vnet-name $VNET_NAME 
 SUBNET_ID=$(az network vnet subnet show -g $CLUSTER_RG --vnet-name $VNET_NAME --name $SUBNET_NAME --query id -o tsv)
 ```
 
-Nun, da Sie die subnetzkennung haben, führen Sie den folgenden Befehl im gleichen Azure Cloud Shell-Fenster zum Erstellen des virtuellen Computers:
+Nachdem Sie nun über SUBNET_ID verfügen, führen Sie den folgenden Befehl im gleichen Azure Cloud Shell-Fenster aus, um den virtuellen Computer zu erstellen:
 
 ```azurecli-interactive
 az vm create \

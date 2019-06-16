@@ -15,7 +15,7 @@ ms.contentlocale: de-DE
 ms.lasthandoff: 05/31/2019
 ms.locfileid: "66427761"
 ---
-# <a name="azure-data-box-heavy-limits-preview"></a>Einschränkungen bei Azure Data Box hohe (Vorschau)
+# <a name="azure-data-box-heavy-limits-preview"></a>Grenzwerte für Azure Data Box Heavy (Vorschau)
 
 
 Berücksichtigen Sie beim Bereitstellen und Betreiben Ihres Azure Data Box Heavy-Geräts die folgenden Grenzwerte. In der folgenden Tabelle werden die für die Data Box geltenden Einschränkungen beschrieben.
