@@ -8,12 +8,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 05/10/2019
 ms.author: robinsh
-ms.openlocfilehash: c29543bf37b568b7ed11abe8e11183a0869d21d9
-ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
+ms.openlocfilehash: 13e35ab93fc37541548785c6355489eaf3a3efc2
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/04/2019
-ms.locfileid: "66479834"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "66754553"
 ---
 # <a name="message-enrichments-for-device-to-cloud-iot-hub-messages-preview"></a>Nachrichtenanreicherungen bei Gerät-zu-Cloud-IoT Hub-Nachrichten (Vorschauversion)
 
@@ -77,7 +77,7 @@ Nachrichtenanreicherungen stehen ohne zusätzliche Gebühren zur Verfügung. Der
 
 ## <a name="availability"></a>Verfügbarkeit
 
-Diese Funktion steht in der Vorschauversion zur Verfügung und zwar in allen Regionen mit Ausnahme von „USA, Osten“, „USA, Westen“, „Europa, Westen“, [Azure Government](/azure-government/documentation-government-welcome.md), [Azure China 21Vianet](/azure/china/china-welcome.md) und [Azure Deutschland](https://azure.microsoft.com/global-infrastructure/germany/).
+Diese Funktion steht in der Vorschauversion zur Verfügung und zwar in allen Regionen mit Ausnahme von „USA, Osten“, „USA, Westen“, „Europa, Westen“, [Azure Government](/azure/azure-government/documentation-government-welcome), [Azure China 21Vianet](/azure/china) und [Azure Deutschland](https://azure.microsoft.com/global-infrastructure/germany/).
 
 ## <a name="next-steps"></a>Nächste Schritte
 

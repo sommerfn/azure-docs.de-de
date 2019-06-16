@@ -13,10 +13,10 @@ ms.date: 05/02/2019
 ms.author: HeidiSteen
 ms.custom: seodec2018
 ms.openlocfilehash: 5374ff896613dd8f8563a2054be8a92103e63fbb
-ms.sourcegitcommit: bb85a238f7dbe1ef2b1acf1b6d368d2abdc89f10
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/10/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65523903"
 ---
 # <a name="azure-search-service-rest-api-version-2019-05-06-preview"></a>REST-API für den Azure Search-Dienst: Version 2019-05-06-Preview

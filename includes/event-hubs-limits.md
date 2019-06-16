@@ -1,6 +1,6 @@
 ---
-title: Includedatei
-description: Includedatei
+title: include file
+description: include file
 services: event-hubs
 author: sethmanheim
 ms.service: event-hubs
@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 05/22/2019
 ms.author: spelluru
 ms.custom: include file
-ms.openlocfilehash: e941ef11dd0dce8b252d301a609e4fe57f6cf671
-ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
+ms.openlocfilehash: fa6b4d6d0db09f8c4955430d6dc227356416d915
+ms.sourcegitcommit: 4cdd4b65ddbd3261967cdcd6bc4adf46b4b49b01
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/04/2019
-ms.locfileid: "66482262"
+ms.lasthandoff: 06/06/2019
+ms.locfileid: "66735995"
 ---
 In der folgenden Tabelle sind die Kontingente und Grenzwerte aufgelistet, die für [Azure Event Hubs](https://azure.microsoft.com/services/event-hubs/) gelten. Informationen zu den Preisen von Event Hubs finden Sie unter [Event Hubs – Preise](https://azure.microsoft.com/pricing/details/event-hubs/).
 
@@ -39,7 +39,7 @@ Das Event Hubs Dedicated-Angebot wird zu einem festen Monatspreis mit einem Mini
 | --- | ---|
 | Bandbreite |  20 CUs |
 | Namespaces | 50 pro CU |
-| Event Hubs |  Keine Einschränkung für Event Hubs/Themen |
+| Event Hubs |  1000 pro Namespace |
 | Eingangsereignisse | Enthalten |
 | Nachrichtengröße | 1 Million Bytes |
 | Partitionen | 2000 pro CU |
