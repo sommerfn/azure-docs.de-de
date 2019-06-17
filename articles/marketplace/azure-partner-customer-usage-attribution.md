@@ -7,12 +7,12 @@ ms.service: marketplace
 ms.topic: article
 ms.date: 11/17/2018
 ms.author: yijenj
-ms.openlocfilehash: 09ce4cdc6ab4556f0ba68507bb23d09e02ae0357
-ms.sourcegitcommit: 8c49df11910a8ed8259f377217a9ffcd892ae0ae
+ms.openlocfilehash: 45d575488db8d740069fba961203842899024747
+ms.sourcegitcommit: f9448a4d87226362a02b14d88290ad6b1aea9d82
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/29/2019
-ms.locfileid: "66296825"
+ms.lasthandoff: 06/07/2019
+ms.locfileid: "66807181"
 ---
 # <a name="azure-partner-customer-usage-attribution"></a>Zuordnen der Nutzung durch Kunden von Azure-Partnern
 
@@ -267,11 +267,13 @@ Wenn Sie Software von \<PARTNER> bereitstellen, kann Microsoft die Installation 
 
 ## <a name="get-support"></a>Support
 
-Wenn Sie Probleme mit dem Bericht oder der Anmeldung bei Partner Center haben, erstellen Sie hier eine Supportanfrage an das Partner Center-Supportteam: [https://partner.microsoft.com/en-US/support](https://partner.microsoft.com/support)
+Es gibt zwei Supportkanäle, abhängig vom Problem, mit dem Sie sich befassen.
+
+Wenn Probleme im Partner Center auftreten, z.B. beim Anzeigen des Berichts über die Zuordnung der Nutzung durch Kunden oder beim Anmelden, erstellen Sie hier eine Supportanfrage an das Partner Center-Supportteam: [https://partner.microsoft.com/en-US/support](https://partner.microsoft.com/support)
 
 ![](./media/marketplace-publishers-guide/partner-center-log-in-support.png)
 
-Befolgen Sie diese Schritte, wenn Sie Hilfe beim Marketplace-Onboarding und/oder bei der Zuordnung der Nutzung durch Kunden benötigen:
+Wenn Sie Unterstützung beim Marketplace-Onboarding und/oder beim Zuordnen der Nutzung durch Kunden im Allgemeinen benötigen, wie z. B. beim Einrichten der Zuordnen der Nutzung durch Kunden, führen Sie die folgenden Schritte aus:
 
 1. Navigieren Sie zur [Supportseite](https://go.microsoft.com/fwlink/?linkid=844975).
 
