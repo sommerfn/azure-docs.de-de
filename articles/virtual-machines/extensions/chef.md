@@ -70,24 +70,24 @@ Der folgende JSON-Code zeigt das Schema für die Chef-VM-Erweiterung. Die Erweit
 
 | NAME | Wert/Beispiel | Datentyp
 | ---- | ---- | ---- 
-| apiVersion | `2017-12-01` | Zeichenfolge (Datum) |
-| publisher | `Chef.Bootstrap.WindowsAzure` | Zeichenfolge |
-| type | `LinuxChefClient` (Linux), `ChefClient` (Windows) | Zeichenfolge |
-| typeHandlerVersion | `1210.12` | Zeichenfolge (Double) |
+| apiVersion | `2017-12-01` | string (date) |
+| publisher | `Chef.Bootstrap.WindowsAzure` | string |
+| type | `LinuxChefClient` (Linux), `ChefClient` (Windows) | string |
+| typeHandlerVersion | `1210.12` | string (double) |
 
 ### <a name="settings"></a>Einstellungen
 
 | NAME | Wert/Beispiel | Datentyp | Erforderlich?
 | ---- | ---- | ---- | ----
-| settings/bootstrap_options/chef_server_url | `https://api.chef.io/organizations/myorg` | Zeichenfolge (URL) | J |
-| settings/bootstrap_options/validation_client_name | `myorg-validator` | Zeichenfolge | J |
-| settings/runlist | `recipe[mycookbook::default]` | Zeichenfolge | J |
+| settings/bootstrap_options/chef_server_url | `https://api.chef.io/organizations/myorg` | string (url) | J |
+| settings/bootstrap_options/validation_client_name | `myorg-validator` | string | J |
+| settings/runlist | `recipe[mycookbook::default]` | string | J |
 
 ### <a name="protected-settings"></a>Geschützte Einstellungen
 
 | NAME | Beispiel | Datentyp | Erforderlich?
 | ---- | ---- | ---- | ---- |
-| protectedSettings/validation_key | `-----BEGIN RSA PRIVATE KEY-----\nKEYDATA\n-----END RSA PRIVATE KEY-----` | Zeichenfolge | J |
+| protectedSettings/validation_key | `-----BEGIN RSA PRIVATE KEY-----\nKEYDATA\n-----END RSA PRIVATE KEY-----` | string | J |
 
 <!--
 ### Linux-specific settings
