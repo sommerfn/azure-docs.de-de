@@ -8,12 +8,12 @@ ms.service: iot-accelerators
 services: iot-accelerators
 ms.date: 01/17/2019
 ms.topic: conceptual
-ms.openlocfilehash: bfe28f3ff994d518cb744233e88a6f04b5771a83
-ms.sourcegitcommit: e9a46b4d22113655181a3e219d16397367e8492d
+ms.openlocfilehash: ed3301eb0e723e05e2a642ffea2f1609032553b4
+ms.sourcegitcommit: 1aefdf876c95bf6c07b12eb8c5fab98e92948000
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/21/2019
-ms.locfileid: "65967528"
+ms.lasthandoff: 06/06/2019
+ms.locfileid: "66730174"
 ---
 # <a name="deploy-the-remote-monitoring-solution-accelerator-locally---visual-studio-code"></a>Lokales Bereitstellen des Solution Accelerators für die Remoteüberwachung – Visual Studio Code
 
@@ -62,13 +62,14 @@ dotnet build -c Release
 In den folgenden Schritten wird erläutert, wie Sie die Microservices für die Remoteüberwachung in Visual Studio Code ausführen:
 
 1. Starten Sie Visual Studio Code.
-1. Öffnen Sie das Modul **azure-iot-pcs-remote-monitoring-dotnet** aus Ihrer lokalen Kopie in Visual Studio Code.
-1. Kopieren Sie die Dateien **launch.json** und **tasks.json** aus „Scripts\local\launch\idesettings\vscode\.“. Erstellen Sie einen neuen Ordner **azure-iot-pcs-remote-monitoring-dotnet\.vscode**, und fügen Sie die Dateien dort ein.
-1. Öffnen Sie den Debuggingbereich in Visual Studio Code, und führen Sie die Konfiguration **Run all microservices** (Alle Microservices ausführen) aus. Diese Konfiguration führt den Microservice für Gerätesimulationen in Docker und die anderen Microservices im Debugger aus.
+1. Öffnen Sie den Ordner **azure-iot-pcs-remote-monitoring-dotnet** in VS Code.
+1. Erstellen Sie einen neuen Ordner namens **.vscode** im Ordner **azure-iot-pcs-remote-monitoring-dotnet**.
+1. Kopieren Sie die Dateien **launch.json** und **tasks.json** aus „services\scripts\local\launch\idesettings\vscode“ in den gerade erstellten Ordner **.vscode**.
+1. Öffnen Sie den **Debuggingbereich** in VS Code, und führen Sie die Konfiguration **Alle Microservices ausführen** aus. Diese Konfiguration führt den Microservice für Gerätesimulationen in Docker und die anderen Microservices im Debugger aus.
 
-Die Ausgabe des **Auth**-Diensts in der **Debugging-Konsole** ähnelt z.B. der folgenden:
+Die Ausgabe der Ausführung von **Alle Microservices ausführen** in der Debugging-Konsole sieht in etwa so aus:
 
-[![Deploy-Local-Auth-Service](./media/deploy-locally-vscode/auth-debug-results-inline.png)](./media/deploy-locally-vscode/auth-debug-results-expanded.png#lightbox)
+[![Deploy-Local-Microservices](./media/deploy-locally-vscode/auth-debug-results-inline.png)](./media/deploy-locally-vscode/auth-debug-results-expanded.png#lightbox)
 
 ### <a name="run-the-web-ui"></a>Ausführen der Webbenutzeroberfläche
 

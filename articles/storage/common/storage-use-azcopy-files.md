@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 05/14/2019
 ms.author: normesta
 ms.subservice: common
-ms.openlocfilehash: 5d11d5c0da350b9abf2e2b06a11a1690cf3f6922
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.openlocfilehash: 69d7136396c3d989e63b8956d3e703cc7f9666c8
+ms.sourcegitcommit: 6932af4f4222786476fdf62e1e0bf09295d723a1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/27/2019
-ms.locfileid: "66245459"
+ms.lasthandoff: 06/05/2019
+ms.locfileid: "66687935"
 ---
 # <a name="transfer-data-with-azcopy-and-file-storage"></a>Übertragen von Daten mit AzCopy und Dateispeicher 
 
@@ -32,13 +32,13 @@ Sie können den AzCopy-Befehl `make` verwenden, um eine Dateifreigabe zu erstell
 
 ## <a name="upload-files"></a>Hochladen von Dateien
 
-Sie können den AzCopy-Befehl `copy` verwenden, um Dateien und Ordner von Ihrem lokalen Computer hochzuladen.
+Sie können den AzCopy-Befehl `copy` verwenden, um Dateien und Verzeichnisse von Ihrem lokalen Computer hochzuladen.
 
 Dieser Abschnitt enthält folgende Beispiele:
 
 > [!div class="checklist"]
 > * Hochladen einer Datei
-> * Hochladen eines Ordners
+> * Hochladen eines Verzeichnisses
 > * Hochladen von Dateien mithilfe von Platzhalterzeichen
 
 > [!NOTE]
@@ -49,46 +49,46 @@ Dieser Abschnitt enthält folgende Beispiele:
 |    |     |
 |--------|-----------|
 | **Syntax** | `azcopy cp "<local-file-path>" "https://<storage-account-name>.file.core.windows.net/<file-share-name>/<file-name>?<SAS-token>"` |
-| **Beispiel** | `azcopy copy "C:\myFolder\myTextFile.txt" "https://mystorageaccount.file.core.windows.net/myfileshare/myTextFile.txt?sv=2018-03-28&ss=bjqt&srs=sco&sp=rjklhjup&se=2019-05-10T04:37:48Z&st=2019-05-09T20:37:48Z&spr=https&sig=%2FSOVEFfsKDqRry4bk3qz1vAQFwY5DDzp2%2B%2F3Eykf%2FJLs%3D"` |
+| **Beispiel** | `azcopy copy "C:\myDirectory\myTextFile.txt" "https://mystorageaccount.file.core.windows.net/myfileshare/myTextFile.txt?sv=2018-03-28&ss=bjqt&srs=sco&sp=rjklhjup&se=2019-05-10T04:37:48Z&st=2019-05-09T20:37:48Z&spr=https&sig=%2FSOVEFfsKDqRry4bk3qz1vAQFwY5DDzp2%2B%2F3Eykf%2FJLs%3D"` |
 
-### <a name="upload-a-folder"></a>Hochladen eines Ordners
+### <a name="upload-a-directory"></a>Hochladen eines Verzeichnisses
 
-Dieses Beispiel kopiert einen Ordner (sowie alle in diesem Ordner enthaltenen Dateien) in eine Dateifreigabe. Das Resultat ist ein gleichnamiger Ordner in der Dateifreigabe.
-
-|    |     |
-|--------|-----------|
-| **Syntax** | `azcopy copy "<local-folder-path>" "https://<storage-account-name>.file.core.windows.net/<file-share-name>?<SAS-token>" --recursive` |
-| **Beispiel** | `azcopy copy "C:\myFolder" "https://mystorageaccount.file.core.windows.net/myfileshare?sv=2018-03-28&ss=bjqt&srs=sco&sp=rjklhjup&se=2019-05-10T04:37:48Z&st=2019-05-09T20:37:48Z&spr=https&sig=%2FSOVEFfsKDqRry4bk3qz1vAQFwY5DDzp2%2B%2F3Eykf%2FJLs%3D" --recursive` |
-
-Um in einen Ordner in der Dateifreigabe zu kopieren, geben Sie einfach den Namen dieses Ordners in Ihrer Befehlszeichenfolge an.
+Dieses Beispiel kopiert ein Verzeichnis (sowie alle in diesem Verzeichnis enthaltenen Dateien) in eine Dateifreigabe. Das Resultat ist ein gleichnamiges Verzeichnis in der Dateifreigabe.
 
 |    |     |
 |--------|-----------|
-| **Beispiel** | `azcopy copy "C:\myFolder" "https://mystorageaccount.file.core.windows.net/myfileshare/myFileShareFolder?sv=2018-03-28&ss=bjqt&srs=sco&sp=rjklhjup&se=2019-05-10T04:37:48Z&st=2019-05-09T20:37:48Z&spr=https&sig=%2FSOVEFfsKDqRry4bk3qz1vAQFwY5DDzp2%2B%2F3Eykf%2FJLs%3D" --recursive` |
+| **Syntax** | `azcopy copy "<local-directory-path>" "https://<storage-account-name>.file.core.windows.net/<file-share-name>?<SAS-token>" --recursive` |
+| **Beispiel** | `azcopy copy "C:\myDirectory" "https://mystorageaccount.file.core.windows.net/myfileshare?sv=2018-03-28&ss=bjqt&srs=sco&sp=rjklhjup&se=2019-05-10T04:37:48Z&st=2019-05-09T20:37:48Z&spr=https&sig=%2FSOVEFfsKDqRry4bk3qz1vAQFwY5DDzp2%2B%2F3Eykf%2FJLs%3D" --recursive` |
 
-Wenn Sie den Namen eines Ordners angeben, der in der Dateifreigabe nicht vorhanden ist, erstellt AzCopy einen neuen Ordner dieses Namens.
-
-### <a name="upload-the-contents-of-a-folder"></a>Hochladen der Inhalte eines Ordners
-
-Mithilfe des Platzhaltersymbols (*) können Sie die Inhalte eines Ordners hochladen, ohne den Ordner selbst zu kopieren.
+Um ein Verzeichnis innerhalb der Dateifreigabe zu kopieren, geben Sie einfach den Namen des Verzeichnisses in Ihrer Befehlszeichenfolge an.
 
 |    |     |
 |--------|-----------|
-| **Syntax** | `azcopy copy "<local-folder-path>/*" "https://<storage-account-name>.file.core.windows.net/<file-share-name>/<folder-path>?<SAS-token>` |
-| **Beispiel** | `azcopy copy "C:\myFolder\*" "https://mystorageaccount.file.core.windows.net/myfileshare/myFileShareFolder?sv=2018-03-28&ss=bjqt&srs=sco&sp=rjklhjup&se=2019-05-10T04:37:48Z&st=2019-05-09T20:37:48Z&spr=https&sig=%2FSOVEFfsKDqRry4bk3qz1vAQFwY5DDzp2%2B%2F3Eykf%2FJLs%3D"` |
+| **Beispiel** | `azcopy copy "C:\myDirectory" "https://mystorageaccount.file.core.windows.net/myfileshare/myFileShareDirectory?sv=2018-03-28&ss=bjqt&srs=sco&sp=rjklhjup&se=2019-05-10T04:37:48Z&st=2019-05-09T20:37:48Z&spr=https&sig=%2FSOVEFfsKDqRry4bk3qz1vAQFwY5DDzp2%2B%2F3Eykf%2FJLs%3D" --recursive` |
+
+Wenn Sie den Namen eines Verzeichnisses angeben, das in der Dateifreigabe nicht vorhanden ist, erstellt AzCopy ein neues Verzeichnis dieses Namens.
+
+### <a name="upload-the-contents-of-a-directory"></a>Hochladen der Inhalte eines Verzeichnisses
+
+Mithilfe des Platzhaltersymbols (*) können Sie die Inhalte eines Verzeichnisses hochladen, ohne das Verzeichnis selbst zu kopieren.
+
+|    |     |
+|--------|-----------|
+| **Syntax** | `azcopy copy "<local-directory-path>/*" "https://<storage-account-name>.file.core.windows.net/<file-share-name>/<directory-path>?<SAS-token>` |
+| **Beispiel** | `azcopy copy "C:\myDirectory\*" "https://mystorageaccount.file.core.windows.net/myfileshare/myFileShareDirectory?sv=2018-03-28&ss=bjqt&srs=sco&sp=rjklhjup&se=2019-05-10T04:37:48Z&st=2019-05-09T20:37:48Z&spr=https&sig=%2FSOVEFfsKDqRry4bk3qz1vAQFwY5DDzp2%2B%2F3Eykf%2FJLs%3D"` |
 
 > [!NOTE]
-> Fügen Sie das Flag `--recursive` an, um Dateien in allen Unterordnern hochzuladen.
+> Fügen Sie das Flag `--recursive` an, um Dateien in allen Unterverzeichnissen hochzuladen.
 
 ## <a name="download-files"></a>Herunterladen von Dateien
 
-Sie können den AzCopy-Befehl `copy` verwenden, um Dateien, Ordner und Dateifreigaben auf Ihren lokalen Computer herunterzuladen.
+Sie können den AzCopy-Befehl `copy` verwenden, um Dateien, Verzeichnisse und Dateifreigaben auf Ihren lokalen Computer herunterzuladen.
 
 Dieser Abschnitt enthält folgende Beispiele:
 
 > [!div class="checklist"]
 > * Herunterladen einer Datei
-> * Herunterladen eines Ordners
+> * Herunterladen eines Verzeichnisses
 > * Herunterladen von Dateien mithilfe von Platzhalterzeichen
 
 > [!NOTE]
@@ -99,28 +99,28 @@ Dieser Abschnitt enthält folgende Beispiele:
 |    |     |
 |--------|-----------|
 | **Syntax** | `azcopy copy "https://<storage-account-name>.file.core.windows.net/<file-share-name>/<file-path>?<SAS-token>" "<local-file-path>"` |
-| **Beispiel** | `azcopy copy "https://mystorageaccount.file.core.windows.net/myfileshare/myTextFile.txt?sv=2018-03-28&ss=bjqt&srs=sco&sp=rjklhjup&se=2019-05-10T04:37:48Z&st=2019-05-09T20:37:48Z&spr=https&sig=%2FSOVEFfsKDqRry4bk3qz1vAQFwY5DDzp2%2B%2F3Eykf%2FJLs%3D" "C:\myFolder\myTextFile.txt"` |
+| **Beispiel** | `azcopy copy "https://mystorageaccount.file.core.windows.net/myfileshare/myTextFile.txt?sv=2018-03-28&ss=bjqt&srs=sco&sp=rjklhjup&se=2019-05-10T04:37:48Z&st=2019-05-09T20:37:48Z&spr=https&sig=%2FSOVEFfsKDqRry4bk3qz1vAQFwY5DDzp2%2B%2F3Eykf%2FJLs%3D" "C:\myDirectory\myTextFile.txt"` |
 
-### <a name="download-a-folder"></a>Herunterladen eines Ordners
-
-|    |     |
-|--------|-----------|
-| **Syntax** | `azcopy copy "https://<storage-account-name>.file.core.windows.net/<file-share-name>/<folder-path>?<SAS-token>" "<local-folder-path>" --recursive` |
-| **Beispiel** | `azcopy copy "https://mystorageaccount.file.core.windows.net/myfileshare/myFileShareFolder?sv=2018-03-28&ss=bjqt&srs=sco&sp=rjklhjup&se=2019-05-10T04:37:48Z&st=2019-05-09T20:37:48Z&spr=https&sig=%2FSOVEFfsKDqRry4bk3qz1vAQFwY5DDzp2%2B%2F3Eykf%2FJLs%3D" "C:\myFolder"  --recursive` |
-
-Dieses Beispiel erstellt einen Ordner namens `C:\myFolder\myFileShareFolder`, der alle heruntergeladenen Dateien enthält.
-
-### <a name="download-the-contents-of-a-folder"></a>Herunterladen der Inhalte eines Ordners
-
-Mithilfe des Platzhaltersymbols (*) können Sie die Inhalte eines Ordners herunterladen, ohne den Ordner selbst zu kopieren.
+### <a name="download-a-directory"></a>Herunterladen eines Verzeichnisses
 
 |    |     |
 |--------|-----------|
-| **Syntax** | `azcopy copy "https://<storage-account-name>.file.core.windows.net/<file-share-name>/*?<SAS-token>" "<local-folder-path>/"` |
-| **Beispiel** | `azcopy copy "https://mystorageaccount.file.core.windows.net/myfileshare/myFileShareFolder/*?sv=2018-03-28&ss=bjqt&srs=sco&sp=rjklhjup&se=2019-05-10T04:37:48Z&st=2019-05-09T20:37:48Z&spr=https&sig=%2FSOVEFfsKDqRry4bk3qz1vAQFwY5DDzp2%2B%2F3Eykf%2FJLs%3D" "C:\myFolder"` |
+| **Syntax** | `azcopy copy "https://<storage-account-name>.file.core.windows.net/<file-share-name>/<directory-path>?<SAS-token>" "<local-directory-path>" --recursive` |
+| **Beispiel** | `azcopy copy "https://mystorageaccount.file.core.windows.net/myfileshare/myFileShareDirectory?sv=2018-03-28&ss=bjqt&srs=sco&sp=rjklhjup&se=2019-05-10T04:37:48Z&st=2019-05-09T20:37:48Z&spr=https&sig=%2FSOVEFfsKDqRry4bk3qz1vAQFwY5DDzp2%2B%2F3Eykf%2FJLs%3D" "C:\myDirectory"  --recursive` |
+
+Dieses Beispiel erstellt ein Verzeichnis namens `C:\myDirectory\myFileShareDirectory`, das alle heruntergeladenen Dateien enthält.
+
+### <a name="download-the-contents-of-a-directory"></a>Herunterladen der Inhalte eines Verzeichnisses
+
+Mithilfe des Platzhaltersymbols (*) können Sie die Inhalte eines Verzeichnisses herunterladen, ohne das Verzeichnis selbst zu kopieren.
+
+|    |     |
+|--------|-----------|
+| **Syntax** | `azcopy copy "https://<storage-account-name>.file.core.windows.net/<file-share-name>/*?<SAS-token>" "<local-directory-path>/"` |
+| **Beispiel** | `azcopy copy "https://mystorageaccount.file.core.windows.net/myfileshare/myFileShareDirectory/*?sv=2018-03-28&ss=bjqt&srs=sco&sp=rjklhjup&se=2019-05-10T04:37:48Z&st=2019-05-09T20:37:48Z&spr=https&sig=%2FSOVEFfsKDqRry4bk3qz1vAQFwY5DDzp2%2B%2F3Eykf%2FJLs%3D" "C:\myDirectory"` |
 
 > [!NOTE]
-> Fügen Sie das Flag `--recursive` an, um Dateien in allen Unterordnern herunterzuladen.
+> Fügen Sie das Flag `--recursive` an, um Dateien in allen Unterverzeichnissen herunterzuladen.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

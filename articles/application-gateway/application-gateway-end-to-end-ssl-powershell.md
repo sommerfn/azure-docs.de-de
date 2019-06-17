@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 4/8/2019
 ms.author: victorh
-ms.openlocfilehash: 8c715cb84dff6e2e739de59aba33041ec1b8db52
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: d9851f6b3e32d0c7ab0d7774458ba5bc4d9ba823
+ms.sourcegitcommit: 1aefdf876c95bf6c07b12eb8c5fab98e92948000
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65786287"
+ms.lasthandoff: 06/06/2019
+ms.locfileid: "66729679"
 ---
 # <a name="configure-end-to-end-ssl-by-using-application-gateway-with-powershell"></a>Konfigurieren von End-to-End-SSL mit Application Gateway mithilfe von PowerShell
 
@@ -44,7 +44,7 @@ Dieses Szenario umfasst Folgendes:
 
 Zum Konfigurieren von End-to-End-SSL mit einem Anwendungsgateway wird ein Zertifikat für das Gateway benötigt. Außerdem sind weitere Zertifikate für die Back-End-Server erforderlich. Das Gatewayzertifikat wird zum Ableiten eines symmetrischen Schlüssels gemäß der Spezifikation des SSL-Protokolls verwendet. Der symmetrische Schlüssel wird dann zum Verschlüsseln und Entschlüsseln des Datenverkehrs mit dem Gateway verwendet. Das Gatewayzertifikat muss im PFX-Format (Personal Information Exchange, privater Informationsaustausch) vorliegen. In diesem Dateiformat können Sie den privaten Schlüssel exportieren. Das ist erforderlich, damit das Anwendungsgateway die Ver- und Entschlüsselung des Datenverkehrs durchführen kann.
 
-Für die End-to-End-SSL-Verschlüsselung muss das Back-End der Whitelist des Anwendungsgateways hinzugefügt werden. Laden Sie das öffentliche Zertifikat der Back-End-Server auf das Anwendungsgateway hoch. Durch das Hinzufügen des Zertifikats wird sichergestellt, dass das Anwendungsgateway nur mit bekannten Back-End-Instanzen kommuniziert. Außerdem wird auf diese Weise die End-to-End-Kommunikation gesichert.
+Für die End-to-End-SSL-Verschlüsselung muss das Back-End explizit vom Anwendungsgateway zugelassen werden. Laden Sie das öffentliche Zertifikat der Back-End-Server auf das Anwendungsgateway hoch. Durch das Hinzufügen des Zertifikats wird sichergestellt, dass das Anwendungsgateway nur mit bekannten Back-End-Instanzen kommuniziert. Außerdem wird auf diese Weise die End-to-End-Kommunikation gesichert.
 
 Der Konfigurationsprozess wird in den folgenden Abschnitten beschrieben.
 
@@ -170,7 +170,7 @@ Vor dem Erstellen des Anwendungsgateways werden die Konfigurationselemente festg
    > Wenn Sie Hostheader und Servernamensanzeige (SNI) auf dem Back-End verwenden, ist der abgerufene öffentliche Schlüssel nicht zwingend der Zielort für den Datenverkehr. Öffnen Sie im Zweifelsfall auf den Back-End-Servern die Seite https://127.0.0.1/, um sich zu vergewissern, welches Zertifikat für die *standardmäßige* SSL-Bindung verwendet wird. Verwenden Sie den öffentlichen Schlüssel aus der Aufforderung in diesem Abschnitt. Wenn Sie Hostheader und SNI in HTTPS-Bindungen verwenden und durch eine manuelle Browseranforderung in https://127.0.0.1/ auf den Back-End-Servern keine Antwort und kein Zertifikat erhalten, müssen Sie eine Standard-SSL-Bindung auf diesen einrichten. Andernfalls sind die Tests nicht erfolgreich, und das Back-End wird nicht in die Whitelist aufgenommen.
 
    ```powershell
-   $authcert = New-AzApplicationGatewayAuthenticationCertificate -Name 'whitelistcert1' -CertificateFile C:\cert.cer
+   $authcert = New-AzApplicationGatewayAuthenticationCertificate -Name 'allowlistcert1' -CertificateFile C:\cert.cer
    ```
 
    > [!NOTE]

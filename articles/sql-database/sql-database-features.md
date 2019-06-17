@@ -12,12 +12,12 @@ ms.author: jovanpop
 ms.reviewer: bonova, sstein
 manager: craigg
 ms.date: 05/10/2019
-ms.openlocfilehash: 79cf4c713d60fa600bbb80b9c16728502ffc88ff
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.openlocfilehash: 4d8d2fd9a7408bb77939c9a1c8fdd67251282f49
+ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/27/2019
-ms.locfileid: "66236832"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66479205"
 ---
 # <a name="feature-comparison-azure-sql-database-versus-sql-server"></a>Funktionsvergleich: Azure SQL-Datenbank und SQL Server
 
@@ -96,8 +96,9 @@ Die folgende Tabelle enthält die wichtigsten Features von SQL Server und gibt A
 | [Unterstützung von JSON-Daten](https://docs.microsoft.com/sql/relational-databases/json/json-data-sql-server) | [Ja](sql-database-json-features.md) | [Ja](sql-database-json-features.md) |
 | [Sprachelemente](https://docs.microsoft.com/sql/t-sql/language-elements/language-elements-transact-sql) | Die meisten (siehe einzelne Elemente) |  Ja – siehe [T-SQL-Unterschiede](sql-database-managed-instance-transact-sql-information.md) |
 | [Verknüpfte Server](https://docs.microsoft.com/sql/relational-databases/linked-servers/linked-servers-database-engine) | Nein (siehe [Elastische Abfrage](sql-database-elastic-query-horizontal-partitioning.md)) | Nur mit [SQL Server und SQL-Datenbank](sql-database-managed-instance-transact-sql-information.md#linked-servers) |
-| [Protokollversand](https://docs.microsoft.com/sql/database-engine/log-shipping/about-log-shipping-sql-server) | [Hochverfügbarkeit](sql-database-high-availability.md) ist in jeder Datenbank enthalten. Informationen zur Notfallwiederherstellung finden Sie unter [Übersicht über die Geschäftskontinuität mit Azure SQL-Datenbank](sql-database-business-continuity.md). |[Hochverfügbarkeit](sql-database-high-availability.md) ist in jeder Datenbank enthalten. Informationen zur Notfallwiederherstellung finden Sie unter [Übersicht über die Geschäftskontinuität mit Azure SQL-Datenbank](sql-database-business-continuity.md). |
+| [Protokollversand](https://docs.microsoft.com/sql/database-engine/log-shipping/about-log-shipping-sql-server) | [Hochverfügbarkeit](sql-database-high-availability.md) ist in jeder Datenbank enthalten. Informationen zur Notfallwiederherstellung finden Sie unter [Übersicht über die Geschäftskontinuität mit Azure SQL-Datenbank](sql-database-business-continuity.md). | Nativ in den DMS-Migrationsprozess integriert. [Hochverfügbarkeit](sql-database-high-availability.md) ist in jeder Datenbank enthalten, und es wird nicht empfohlen, den Protokollversand als Alternative für Hochverfügbarkeit zu verwenden. Informationen zur Notfallwiederherstellung finden Sie unter [Übersicht über die Geschäftskontinuität mit Azure SQL-Datenbank](sql-database-business-continuity.md). |
 | [Anmeldungen und Benutzer](https://docs.microsoft.com/sql/relational-databases/security/authentication-access/principals-database-engine) | Ja, aber die `CREATE`- und `ALTER`-Anmeldeanweisungen bieten nicht alle Optionen (keine Windows- und Azure Active Directory-Anmeldungen auf Serverebene). `EXECUTE AS LOGIN` wird nicht unterstützt – verwenden Sie stattdessen `EXECUTE AS USER`.  | Ja, mit einigen [Unterschieden](sql-database-managed-instance-transact-sql-information.md#logins-and-users). Windows-Anmeldungen werden nicht unterstützt, sie sollten durch Azure Active Directory-Anmeldungen ersetzt werden. |
+| [Langzeitaufbewahrung (Long-Term Retention, LTR) von Sicherungen](sql-database-long-term-retention.md) | Ja, automatisch erstellte Sicherungen werden bis zu zehn Jahre lang aufbewahrt. | Bisher nicht. Verwenden Sie [manuelle Sicherungen](sql-database-managed-instance-transact-sql-information.md#backup) mit `COPY_ONLY` als vorübergehende Problemumgehung. |
 | [Master Data Services (MDS)](https://docs.microsoft.com/sql/master-data-services/master-data-services-overview-mds) | Nein | Nein |
 | [Minimale Protokollierung bei Massenimport](https://docs.microsoft.com/sql/relational-databases/import-export/prerequisites-for-minimal-logging-in-bulk-import) | Nein | Nein |
 | [Ändern von Systemdaten](https://docs.microsoft.com/sql/relational-databases/databases/system-databases) | Nein | Ja |

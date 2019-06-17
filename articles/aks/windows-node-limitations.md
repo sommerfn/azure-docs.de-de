@@ -2,17 +2,17 @@
 title: Einschränkungen für Windows Server-Knotenpools in Azure Kubernetes Service (AKS)
 description: Informationen zu den bekannten Einschränkungen beim Ausführen von Windows Server-Knotenpools und Anwendungsworkloads in Azure Kubernetes Service (AKS)
 services: container-service
-author: iainfoulds
+author: tylermsft
 ms.service: container-service
 ms.topic: article
-ms.date: 05/06/2019
-ms.author: iainfou
-ms.openlocfilehash: 3d249271995d96307722dadf6b3e012e63565e6a
-ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
+ms.date: 05/31/2019
+ms.author: twhitney
+ms.openlocfilehash: 12fb9dc67e8afae3dcb9ade97dd61ab438e0fac5
+ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/20/2019
-ms.locfileid: "65956264"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66475406"
 ---
 # <a name="current-limitations-for-windows-server-node-pools-and-application-workloads-in-azure-kubernetes-service-aks"></a>Aktuelle Einschränkungen für Windows Server-Knotenpools und Anwendungsworkloads in Azure Kubernetes Service (AKS)
 
@@ -21,9 +21,10 @@ In Azure Kubernetes Service (AKS) können Sie einen Knotenpool erstellen, der Wi
 In diesem Artikel werden einige Einschränkungen und Betriebssystemkonzepte für Windows Server-Knoten in AKS erläutert. Knotenpools für Windows Server befinden sich derzeit in der Vorschauphase.
 
 > [!IMPORTANT]
-> AKS-Previewfunktionen stehen gemäß dem Self-Service- und Aktivierungsprinzip zur Verfügung. Vorschauversionen werden zum Sammeln von Feedback und Fehlern mithilfe unserer Community bereitgestellt. Allerdings werden sie vom technischen Support von Azure nicht unterstützt. Wenn Sie einen Cluster erstellen oder diese Features zu einem vorhandenen Cluster hinzufügen, wird der entsprechende Cluster erst dann unterstützt, wenn das Feature sich nicht mehr in der Vorschau befindet und in die allgemeine Verfügbarkeit übergegangen ist.
+> AKS-Previewfunktionen stehen gemäß dem Self-Service- und Aktivierungsprinzip zur Verfügung. Sie werden zum Sammeln von Feedback und Fehlern mithilfe unserer Community bereitgestellt. In der Vorschauversion sind diese Features nicht für den Einsatz in der Produktion vorgesehen. Features in der öffentlichen Vorschau unterliegen dem Prinzip des „bestmöglichen Supports“. Unterstützung durch die Teams für den technischen AKS-Support steht nur während der Geschäftszeiten in der Zeitzone „Pacific Standard Time“ (PST) zur Verfügung. Weitere Informationen hierzu finden Sie in den folgenden Supportartikeln:
 >
-> Wenn Sie Probleme mit Vorschaufunktionen haben, [eröffnen Sie ein Ticket im GitHub-Repository von AKS ][aks-github], und geben Sie den Namen des Vorschaufeatures im Fehlertitel an.
+> * [Unterstützungsrichtlinien für Azure Kubernetes Service][aks-support-policies]
+> * [Häufig gestellte Fragen zum Azure-Support][aks-faq]
 
 ## <a name="limitations-for-windows-server-in-kubernetes"></a>Einschränkungen für Windows Server in Kubernetes
 
@@ -44,6 +45,7 @@ Die folgenden Upstreameinschränkungen für Windows Server-Container in Kubernet
 Die folgenden zusätzlichen Einschränkungen gelten für die Unterstützung von Windows Server-Knotenpools in AKS:
 
 - Ein AKS-Cluster enthält immer einen Linux-Knotenpool als ersten Knotenpool. Dieser erste Linux-basierte Knotenpool kann nur gelöscht werden, wenn der AKS-Cluster selbst gelöscht wird.
+- AKS unterstützt derzeit nur das grundlegenden Lastenausgleichsmodul, in dem nur ein Back-End-Pool verwendet werden kann: der standardmäßige Linux-Knotenpool. Daher wird Datenverkehr aus Windows-Pods immer [in eine von Azure verwaltete öffentliche IP-Adresse übersetzt][azure-outbound-traffic]. Da diese IP-Adresse nicht konfiguriert werden kann, ist es derzeit nicht möglich, eine Whitelist für Datenverkehr aus Windows-Pods einzurichten. 
 - AKS-Cluster müssen das (erweiterte) Azure CNI-Netzwerkmodell verwenden.
     - Kubenet Basic-Netzwerke werden nicht unterstützt. Sie können keinen AKS-Cluster erstellen, der Kubenet verwendet. Weitere Informationen zu den Unterschieden der Netzwerkmodelle finden Sie unter [Netzwerkkonzepte für Anwendungen in AKS][azure-network-models].
     - Das Azure CNI-Netzwerkmodell erfordert zusätzliche Planung und Überlegungen für die Verwaltung von IP-Adressen. Weitere Informationen zum Planen und Implementieren von Azure CNI finden Sie unter [Konfigurieren von Azure CNI-Netzwerken in AKS][configure-azure-cni].
@@ -57,6 +59,8 @@ Die folgenden zusätzlichen Einschränkungen gelten für die Unterstützung von 
 - Previewfunktionen in AKS, z. B. Netzwerkrichtlinie und Autoskalierung für Cluster, werden bei Windows Server-Knoten nicht unterstützt.
 - Eingangscontroller sollten nur auf Linux-Knoten mit einem NodeSelector geplant werden.
 - Azure Dev Spaces ist derzeit nur für Linux-basierte Knotenpools verfügbar.
+- Von Gruppen verwaltete Dienstkonten (gMSA) werden derzeit in AKS nicht unterstützt, wenn die Windows Server-Knoten zu keiner Active Directory-Domäne gehören.
+    - Das Open-Source-Upstreamprojekt [aks-engine][aks-engine] bietet derzeit keine Unterstützung für gMSA, wenn Sie dieses Feature verwenden müssen.
 
 ## <a name="os-concepts-that-are-different"></a>Unterschiedliche Betriebssystemkonzepte
 
@@ -74,11 +78,14 @@ Erstellen Sie zum Einstieg in Windows Server-Container in AKS [einen Knotenpool,
 
 <!-- LINKS - external -->
 [upstream-limitations]: https://kubernetes.io/docs/setup/windows/#limitations
-[aks-github]: https://github.com/azure/aks/issues]
 [kubernetes]: https://kubernetes.io
+[aks-engine]: https://github.com/azure/aks-engine
 
 <!-- LINKS - internal -->
 [azure-network-models]: concepts-network.md#azure-virtual-networks
 [configure-azure-cni]: configure-azure-cni.md
 [nodepool-upgrade]: use-multiple-node-pools.md#upgrade-a-node-pool
 [windows-node-cli]: windows-container-cli.md
+[aks-support-policies]: support-policies.md
+[aks-faq]: faq.md
+[azure-outbound-traffic]: ../load-balancer/load-balancer-outbound-connections.md#defaultsnat

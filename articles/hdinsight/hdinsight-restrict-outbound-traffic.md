@@ -7,15 +7,15 @@ author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.topic: howto
-ms.date: 05/13/2019
-ms.openlocfilehash: 44b6f099b5b17329976b9fec3c0ac38b5e394221
-ms.sourcegitcommit: 59fd8dc19fab17e846db5b9e262a25e1530e96f3
+ms.date: 05/30/2019
+ms.openlocfilehash: 35b9731d82f190cee142173ddf688a92ebf30a38
+ms.sourcegitcommit: 1aefdf876c95bf6c07b12eb8c5fab98e92948000
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/21/2019
-ms.locfileid: "65978016"
+ms.lasthandoff: 06/06/2019
+ms.locfileid: "66730660"
 ---
-# <a name="configure-outbound-network-traffic-restriction-for-azure-hdinsight-clusters-preview"></a>Konfigurieren von Einschränkungen des ausgehenden Netzwerkdatenverkehrs für Azure HDInsight-Cluster (Vorschau)
+# <a name="configure-outbound-network-traffic-for-azure-hdinsight-clusters-using-firewall-preview"></a>Konfigurieren des ausgehenden Netzwerkdatenverkehrs für Azure HDInsight-Cluster mithilfe von Firewall (Vorschau)
 
 In diesem Artikel werden die Schritte beschrieben, mit denen Sie aus Ihrem HDInsight-Cluster ausgehenden Datenverkehr mithilfe von Azure Firewall schützen. Die folgenden Schritte setzen voraus, dass Sie eine Azure Firewall-Instanz für einen vorhandenen Cluster konfigurieren. Wenn Sie einen neuen Cluster bereitstellen – und hinter einer Firewall – erstellen Sie zunächst Ihren HDInsight-Cluster und das Subnetz, und führen Sie dann die Schritte in diesem Handbuch aus.
 
@@ -32,38 +32,23 @@ Die Lösung zum Sichern ausgehender Adressen besteht in der Verwendung eines Fir
 ## <a name="configuring-azure-firewall-with-hdinsight"></a>Konfigurieren von Azure Firewall mit HDInsight
 
 Hier sehen Sie eine Zusammenfassung der Schritte, um von HDInsight ausgehenden Datenverkehr mit Azure Firewall zu sperren:
-1. Aktivieren der Dienstendpunkte.
 1. Erstellen einer Firewall.
 1. Hinzufügen von Anwendungsregeln zur Firewall
 1. Fügen Sie der Firewall Netzwerkregeln hinzu.
 1. Erstellen Sie eine Routingtabelle.
 
-### <a name="enable-service-endpoints"></a>Aktivieren der Dienstendpunkte
-
-Wenn Sie die Firewall umgehen möchten (z.B. um die Kosten für die Datenübertragung zu sparen), können Sie Dienstendpunkte für SQL und Speicher in Ihrem HDInsight-Subnetz aktivieren. Wenn Sie Dienstendpunkte für Azure SQL aktiviert haben, müssen alle Azure SQL-Abhängigkeiten Ihres Clusters ebenfalls mit Dienstendpunkten konfiguriert werden.
-
-Um die richtigen Dienstendpunkte zu aktivieren, führen Sie die folgenden Schritte aus:
-
-1. Melden Sie sich beim Azure-Portal an, und wählen Sie das virtuelle Netzwerk aus, in dem Ihr HDInsight-Cluster bereitgestellt wird.
-1. Wählen Sie unter **Einstellungen** die Option **Subnetze** aus.
-1. Wählen Sie das Subnetz aus, in dem Ihr Cluster bereitgestellt wird.
-1. Klicken Sie auf dem Bildschirm zum Bearbeiten der Subnetzeinstellungen im Dropdownfeld **Dienstendpunkte** > **Dienste** auf **Microsoft.SQL** und/oder **Microsoft.Storage**.
-1. Wenn Sie einen ESP-Cluster verwenden, müssen Sie auch den Endpunkt **Microsoft.AzureActiveDirectory** auswählen.
-1. Klicken Sie auf **Speichern**.
-
 ### <a name="create-a-new-firewall-for-your-cluster"></a>Erstellen einer neuen Firewall für Ihren Cluster
 
 1. Erstellen Sie ein Subnetz namens **AzureFirewallSubnet** in dem virtuellen Netzwerk, in dem sich Ihr Cluster befindet. 
 1. Erstellen Sie eine neue Firewall namens **Test-FW01** gemäß den Schritten im [Tutorial: Bereitstellen und Konfigurieren von Azure Firewall über das Azure-Portal](../firewall/tutorial-firewall-deploy-portal.md#deploy-the-firewall).
-1. Wählen Sie die neue Firewall über das Azure-Portal aus. Klicken Sie unter **Einstellungen** > **Anwendungsregelsammlung** > **Anwendungsregelsammlung hinzufügen** auf **Regeln**.
-
-    ![Titel: Hinzufügen einer Anwendungsregelsammlung](./media/hdinsight-restrict-outbound-traffic/hdinsight-restrict-outbound-traffic-add-app-rule-collection.png)
 
 ### <a name="configure-the-firewall-with-application-rules"></a>Konfigurieren der Firewall mit Anwendungsregeln
 
 Erstellen Sie eine Anwendungsregelsammlung, die dem Cluster ermöglicht, wichtige Informationen zu senden und zu empfangen.
 
 Wählen Sie die neue Firewall **Test-FW01** über das Azure-Portal aus. Klicken Sie unter **Einstellungen** > **Anwendungsregelsammlung** > **Anwendungsregelsammlung hinzufügen** auf **Regeln**.
+
+![Titel: Hinzufügen einer Anwendungsregelsammlung](./media/hdinsight-restrict-outbound-traffic/hdinsight-restrict-outbound-traffic-add-app-rule-collection.png)
 
 Führen Sie auf dem Bildschirm **Anwendungsregelsammlung hinzufügen** die folgenden Schritte aus:
 
@@ -75,12 +60,9 @@ Führen Sie auf dem Bildschirm **Anwendungsregelsammlung hinzufügen** die folge
     1. Eine Regel zum Zulassen von Windows-Anmeldeaktivität:
         1. Geben Sie im Abschnitt **Ziel-FQDN** einen **Namen** ein, und legen Sie **Quelladressen** auf `*` fest.
         1. Geben Sie `https:443` unter **Protokoll:Port** und `login.windows.net` unter **Ziel-FQDNS** ein.
-    1. Eine Regel zum Zulassen von SQM-Telemetrie:
+    1. Wenn Ihr Cluster durch WASB gesichert ist, fügen Sie eine Regel für WASB hinzu:
         1. Geben Sie im Abschnitt **Ziel-FQDN** einen **Namen** ein, und legen Sie **Quelladressen** auf `*` fest.
-        1. Geben Sie `https:443` unter **Protokoll:Port** und `sqm.telemetry.microsoft.com` unter **Ziel-FQDNS** ein.
-    1. Wenn Ihr Cluster durch WASB gesichert ist, und Sie nicht die oben genannten Dienstendpunkte verwenden, fügen Sie eine Regel für WASB hinzu:
-        1. Geben Sie im Abschnitt **Ziel-FQDN** einen **Namen** ein, und legen Sie **Quelladressen** auf `*` fest.
-        1. Geben Sie abhängig davon, ob sie „wasb://“ oder „wasbs://“ verwenden, `http`unter **Protokoll:Port** und die URL des Speicherkontos unter **Ziel-FQDNS** ein.
+        1. Geben Sie `http:80,https:443` unter **Protokoll:Port** und die URL des Speicherkontos unter **Ziel-FQDNS** ein. Das Format sieht etwa so aus: <Name_des_Speicherkontos.blob.core.windows.net>. Um NUR HTTPS-Verbindungen zu verwenden, stellen Sie sicher, dass die Option [Sichere Übertragung erforderlich](https://docs.microsoft.com/en-us/azure/storage/common/storage-require-secure-transfer) im Speicherkonto aktiviert ist.
 1. Klicken Sie auf **Hinzufügen**.
 
 ![Titel: Eingeben der Details der Anwendungsregelsammlung](./media/hdinsight-restrict-outbound-traffic/hdinsight-restrict-outbound-traffic-add-app-rule-collection-details.png)
@@ -89,41 +71,33 @@ Führen Sie auf dem Bildschirm **Anwendungsregelsammlung hinzufügen** die folge
 
 Erstellen Sie die Netzwerkregeln, um Ihren HDInsight-Cluster ordnungsgemäß zu konfigurieren.
 
-> [!Important]
-> Sie können zwischen der Verwendung von SQL-Diensttags in der Firewall mithilfe von Netzwerkregeln, wie in diesem Abschnitt beschrieben, und einem SQL-Dienstendpunkt wie im [Abschnitt über Dienstendpunkte](#enable-service-endpoints) beschrieben wählen. Wenn Sie SQL-Tags in Netzwerkregeln verwenden möchten, können Sie SQL-Verkehr protokollieren und überwachen. Bei Verwendung eines Dienstendpunkts umgeht SQL-Datenverkehr die Firewall.
-
 1. Wählen Sie die neue Firewall **Test-FW01** über das Azure-Portal aus.
 1. Klicken Sie unter **Einstellungen** > **Netzwerkregelsammlung** > **Netzwerkregelsammlung hinzufügen** auf **Regeln**.
 1. Geben Sie im Bildschirm **Netzwerkregelsammlung hinzufügen** **Name** und **Priorität** ein, und klicken Sie im **Aktion**-Dropdownmenü auf **Zulassen**.
 1. Erstellen Sie die folgenden Regeln:
-    1. Eine Netzwerkregel, die dem Cluster ermöglicht, die Uhrsynchronisierung mit NTP auszuführen.
-        1. Geben Sie im Abschnitt **Regeln** einen **Namen** ein, und wählen Sie **Beliebig** in der **Protokoll**-Dropdownliste aus.
+    1. Eine Netzwerkregel im Abschnitt „IP-Adressen“, die dem Cluster ermöglicht, die Uhrsynchronisierung mit NTP auszuführen.
+        1. Geben Sie im Abschnitt **Regeln** einen **Namen** ein, und wählen Sie in der **Protokoll**-Dropdownliste den Eintrag **UDP** aus.
         1. Legen Sie **Quelladressen** und **Zieladressen** auf `*` fest.
         1. Legen Sie **Zielports** auf 123 fest.
-    1. Wenn Sie das Enterprise-Sicherheitspaket (Enterprise Security Package, ESP) verwenden, fügen Sie eine Netzwerkregel hinzu, die die Kommunikation mit AAD-DS für ESP-Cluster ermöglicht.
+    1. Wenn Sie das Enterprise-Sicherheitspaket (Enterprise Security Package, ESP) verwenden, fügen Sie im Abschnitt „IP-Adressen“ eine Netzwerkregel hinzu, die die Kommunikation mit AAD-DS für ESP-Cluster ermöglicht.
         1. Bestimmen Sie die zwei IP-Adressen für Ihre Domänencontroller.
         1. Geben Sie in der nächsten Zeile im Abschnitt **Regeln** einen **Namen** ein, und wählen Sie **Beliebig** in der **Protokoll**-Dropdownliste aus.
         1. Legen Sie **Quelladressen** auf `*` fest.
         1. Geben Sie alle IP-Adressen für Ihre Domänencontroller durch Kommas getrennt in **Zieladressen** ein.
         1. Legen Sie **Zielports** auf `*` fest.
-    1. Wenn Sie Azure Data Lake Storage verwenden, können Sie eine Netzwerkregel zur Behandlung eines SNI-Problems mit ADLS Gen1 und Gen2 hinzufügen. Diese Option leitet den Datenverkehr zur Firewall, was zu höheren Kosten für große Datenmengen führen könnte, aber der Datenverkehr wird protokolliert und kann überwacht werden.
+    1. Wenn Sie Azure Data Lake Storage verwenden, können Sie im Abschnitt „IP-Adressen“ eine Netzwerkregel zur Behandlung eines SNI-Problems mit ADLS Gen1 und Gen2 hinzufügen. Diese Option leitet den Datenverkehr zur Firewall, was zu höheren Kosten für große Datenmengen führen könnte, aber der Datenverkehr wird in Firewallprotokollen protokolliert und überwacht.
         1. Bestimmen Sie die IP-Adresse für Ihr Data Lake Storage-Konto. Sie können mit einem PowerShell-Befehl wie `[System.Net.DNS]::GetHostAddresses("STORAGEACCOUNTNAME.blob.core.windows.net")` den FQDN in eine IP-Adresse auflösen.
-        1. Geben Sie in der nächsten Zeile im Abschnitt **Regeln** einen **Namen** ein, und wählen Sie **Beliebig** in der **Protokoll**-Dropdownliste aus.
+        1. Geben Sie in der nächsten Zeile im Abschnitt **Regeln** einen **Namen** ein, und wählen Sie in der **Protokoll**-Dropdownliste den Eintrag **TCP** aus.
         1. Legen Sie **Quelladressen** auf `*` fest.
         1. Geben Sie die IP-Adresse für Ihr Speicherkonto in **Zieladressen** ein.
         1. Legen Sie **Zielports** auf `*` fest.
-    1. Eine Netzwerkregel, um Kommunikation mit dem Schlüsselverwaltungsdienst für die Aktivierung von Windows zu ermöglichen.
-        1. Geben Sie in der nächsten Zeile im Abschnitt **Regeln** einen **Namen** ein, und wählen Sie **Beliebig** in der **Protokoll**-Dropdownliste aus.
-        1. Legen Sie **Quelladressen** auf `*` fest.
-        1. Legen Sie **Zieladressen** auf `*` fest.
-        1. Legen Sie **Zielports** auf `1688` fest.
-    1. Wenn Sie Log Analytics verwenden, erstellen Sie eine Netzwerkregel, um die Kommunikation mit Ihrem Log Analytics-Arbeitsbereich zu ermöglichen.
-        1. Geben Sie in der nächsten Zeile im Abschnitt **Regeln** einen **Namen** ein, und wählen Sie **Beliebig** in der **Protokoll**-Dropdownliste aus.
+    1. (Optional) Wenn Sie Log Analytics verwenden, erstellen Sie im Abschnitt „IP-Adressen“ eine Netzwerkregel, um die Kommunikation mit Ihrem Log Analytics-Arbeitsbereich zu ermöglichen.
+        1. Geben Sie in der nächsten Zeile im Abschnitt **Regeln** einen **Namen** ein, und wählen Sie in der **Protokoll**-Dropdownliste den Eintrag **TCP** aus.
         1. Legen Sie **Quelladressen** auf `*` fest.
         1. Legen Sie **Zieladressen** auf `*` fest.
         1. Legen Sie **Zielports** auf `12000` fest.
-    1. Konfigurieren Sie ein Diensttag für SQL, mit dem Sie SQL-Datenverkehr protokollieren und überwachen können.
-        1. Geben Sie in der nächsten Zeile im Abschnitt **Regeln** einen **Namen** ein, und wählen Sie **Beliebig** in der **Protokoll**-Dropdownliste aus.
+    1. Konfigurieren Sie im Abschnitt „Diensttags“ für SQL eine Regel, die es Ihnen erlaubt, SQL-Datenverkehr zu protokollieren und zu überwachen, sofern Sie im HDInsight-Subnetz keine Dienstendpunkte für SQL Server konfiguriert haben, wodurch die Firewall umgangen wird.
+        1. Geben Sie in der nächsten Zeile im Abschnitt **Regeln** einen **Namen** ein, und wählen Sie in der **Protokoll**-Dropdownliste den Eintrag **TCP** aus.
         1. Legen Sie **Quelladressen** auf `*` fest.
         1. Legen Sie **Zieladressen** auf `*` fest.
         1. Wählen Sie **Sql** in der **Diensttags**-Dropdownliste aus.
@@ -136,10 +110,9 @@ Erstellen Sie die Netzwerkregeln, um Ihren HDInsight-Cluster ordnungsgemäß zu 
 
 Erstellen Sie eine Routingtabelle mit den folgenden Einträgen:
 
-1. Sieben Adressen aus [dieser Liste der für die HDInsight-Verwaltung erforderlichen IP-Adressen](../hdinsight/hdinsight-extend-hadoop-virtual-network.md#hdinsight-ip) mit dem nächstem Hop **Internet**:
+1. Sechs Adressen aus [dieser Liste der für die HDInsight-Verwaltung erforderlichen IP-Adressen](../hdinsight/hdinsight-extend-hadoop-virtual-network.md#hdinsight-ip) mit dem nächstem Hop **Internet**:
     1. Vier IP-Adressen für alle Cluster in allen Regionen
     1. Zwei für die Region, in der der Cluster erstellt wird, spezifische IP-Adressen
-    1. Eine IP-Adresse ist der rekursive Resolver von Azure
 1. Eine Route für ein virtuelles Gerät für IP-Adresse 0.0.0.0/0, wobei der nächste Hop Ihre private Azure Firewall-IP-Adresse ist.
 
 Um z.B. die Routingtabelle für ein in der US-Region „USA, Mitte“ erstelltes Cluster zu konfigurieren, verwenden Sie die folgenden Schritte:
@@ -158,20 +131,15 @@ Um z.B. die Routingtabelle für ein in der US-Region „USA, Mitte“ erstelltes
 | 138.91.141.162 | 138.91.141.162/32 | Internet | Nicht verfügbar |
 | 13.67.223.215 | 13.67.223.215/32 | Internet | Nicht verfügbar |
 | 40.86.83.253 | 40.86.83.253/32 | Internet | Nicht verfügbar |
-| 168.63.129.16 | 168.63.129.16/32 | Internet | Nicht verfügbar |
 | 0.0.0.0 | 0.0.0.0/0 | Virtuelles Gerät | 10.1.1.4 |
-
-![Titel: Erstellen einer Routingtabelle](./media/hdinsight-restrict-outbound-traffic/hdinsight-restrict-outbound-traffic-add-route-table.png)
 
 Schließen Sie die Konfiguration der Routingtabelle ab:
 
 1. Weisen Sie die Routingtabelle, die Sie erstellt haben, durch Klicken auf **Subnetze** unter **Einstellungen** und dann **Zuordnen** Ihrem HDInsight-Subnetz zu.
-1. Wählen Sie auf dem Bildschirm **Subnetz zuordnen** das virtuelle Netzwerk aus, in dem Ihr Cluster erstellt wurde, und das **AzureFirewallSubnet**, das Sie für die Verwendung mit der Firewall erstellt haben.
+1. Wählen Sie auf dem Bildschirm **Subnetz zuordnen** das virtuelle Netzwerk, in dem Ihr Cluster erstellt wurde, und das **HDInsight-Subnetz**, das Sie für Ihren HDInsight-Cluster verwendet haben.
 1. Klicken Sie auf **OK**.
 
-![Titel: Erstellen einer Routingtabelle](./media/hdinsight-restrict-outbound-traffic/hdinsight-restrict-outbound-traffic-route-table-associate-subnet.png)
-
-## <a name="edge-node-application-traffic"></a>Edgeknotenanwendungs-Datenverkehr
+## <a name="edge-node-or-custom-application-traffic"></a>Datenverkehr für Edgeknoten- oder benutzerdefinierte Anwendung
 
 Mithilfe der oben genannten Schritte kann der Cluster problemlos ausgeführt werden. Sie müssen weiterhin Abhängigkeiten konfigurieren, um Ihren benutzerdefinierten Anwendungen ggf. die Ausführung auf den Edgeknoten zu ermöglichen.
 
@@ -192,6 +160,9 @@ AzureDiagnostics | where msg_s contains "Deny" | where TimeGenerated >= ago(1h)
 ```
 
 Die Integration Ihrer Azure Firewall-Instanz in Azure Monitor-Protokolle ist nützlich, wenn Sie eine Anwendung erstmals einrichten und nicht alle Anwendungsabhängigkeiten kennen. Weitere Informationen zu Azure Monitor-Protokollen finden Sie unter [Analysieren von Protokolldaten in Azure Monitor](../azure-monitor/log-query/log-query-overview.md).
+
+## <a name="access-to-the-cluster"></a>Zugriff auf den Cluster
+Nach der erfolgreichen Einrichtung der Firewall können Sie den internen Endpunkt (https://<clustername>-int.azurehdinsight.net) verwenden, um aus dem VNET auf Ambari zuzugreifen. Um den öffentlichen Endpunkt (https://<clustername>.azurehdinsight.net) oder den SSH-Endpunkt (<clustername>-ssh.azurehdinsight.net) zu verwenden, stellen Sie sicher, dass Sie über die richtigen Routen in der Routingtabelle verfügen und NSG-Regeln eingerichtet haben, um das Problem mit dem asymmetrischen Routing zu vermeiden, das [hier](https://docs.microsoft.com/en-us/azure/firewall/integrate-lb) beschrieben wird.
 
 ## <a name="configure-another-network-virtual-appliance"></a>Konfigurieren eines anderen virtuellen Netzwerkgeräts
 

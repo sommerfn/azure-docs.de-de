@@ -12,14 +12,14 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-windows
 ms.devlang: na
 ms.topic: article
-ms.date: 05/13/2019
+ms.date: 05/23/2019
 ms.author: lahugh
-ms.openlocfilehash: 9553612d5b9d0b646c5c25e3f719038ac27d4826
-ms.sourcegitcommit: 1fbc75b822d7fe8d766329f443506b830e101a5e
+ms.openlocfilehash: 1dcc0d3a652ccbf365a18ce734a54dc78515b1a7
+ms.sourcegitcommit: 3d4121badd265e99d1177a7c78edfa55ed7a9626
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/14/2019
-ms.locfileid: "65596164"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66388369"
 ---
 # <a name="generation-2-vms-preview-on-azure"></a>VMs der Generation 2 (Vorschau) in Azure
 
@@ -30,7 +30,9 @@ ms.locfileid: "65596164"
 
 Unterstützung für virtuelle Computer (VMs) der Generation 2 ist jetzt als öffentliche Vorschau in Azure verfügbar. Die Generation eines virtuellen Computers kann nach seiner Erstellung nicht mehr geändert werden. Wir empfehlen Ihnen daher, die Überlegungen [hier](https://docs.microsoft.com/windows-server/virtualization/hyper-v/plan/should-i-create-a-generation-1-or-2-virtual-machine-in-hyper-v) sowie die Informationen auf dieser Seite zu überprüfen, bevor Sie eine Generation auswählen.
 
-VMs der Generation 2 unterstützen zahlreiche Schlüsselfunktionen (etwa mehr Speicher, Intel® Software Guard Extensions (SGX) und Virtual Persistent Memory (vPMEM)), die bei VMs der Generation 1 nicht unterstützt werden. VMs der Generation 2 haben einige Funktionen, die in Azure noch nicht unterstützt werden. Weitere Informationen finden Sie im Abschnitt [Features und Funktionen](#features-and-capabilities). VMs der Generation 2 verwenden die neue UEFI-basierte Startarchitektur im Vergleich zur BIOS-basierten Architektur der VMs der Generation 1. Im Vergleich zu VMs der Generation 1 können VMs der Generation 2 eine verbesserte Start- und Installationszeit aufweisen. Für einen Überblick über VMs der Generation 2 und einige der wichtigsten Unterschiede zwischen Generation 1 und Generation 2 finden Sie unter [Sollte ich einen virtuellen Computer der Generation 1 oder 2 in Hyper-V erstellen?](https://docs.microsoft.com/windows-server/virtualization/hyper-v/plan/should-i-create-a-generation-1-or-2-virtual-machine-in-hyper-v)
+VMs der Generation 2 unterstützen zahlreiche wichtige Features, die in der 1. Generation nicht unterstützt werden, wie z.B. mehr Speicher, Intel® Software Guard Extensions (SGX) und Virtual Persistent Memory (vPMEM). VMs der Generation 2 weisen auch einige Features auf, die in Azure noch nicht unterstützt werden. Weitere Informationen finden Sie im Abschnitt [Features und Funktionen](#features-and-capabilities).
+
+VMs der Generation 2 verwenden die neue UEFI-basierte Startarchitektur im Vergleich zur BIOS-basierten Architektur der VMs der Generation 1. Im Vergleich zu VMs der Generation 1 können VMs der Generation 2 eine verbesserte Start- und Installationszeit aufweisen. Für einen Überblick über VMs der Generation 2 und einige der wichtigsten Unterschiede zwischen Generation 1 und Generation 2 finden Sie unter [Sollte ich einen virtuellen Computer der Generation 1 oder 2 in Hyper-V erstellen?](https://docs.microsoft.com/windows-server/virtualization/hyper-v/plan/should-i-create-a-generation-1-or-2-virtual-machine-in-hyper-v)
 
 ## <a name="generation-2-vm-sizes"></a>VM-Größen der Generation 2
 
@@ -111,6 +113,29 @@ VMs der Generation 2 können aus einem verwalteten Image oder einem verwalteten 
 VMs der Generation 2 können auch mithilfe von VM-Skalierungsgruppen erstellt werden. Sie können VMs der Generation 2 mithilfe von Azure VM-Skalierungsgruppen über die Azure CLI erstellen.
 
 ## <a name="frequently-asked-questions"></a>Häufig gestellte Fragen
+
+* **Sind VMs der Generation 2 allgemein in allen Azure-Regionen verfügbar?**  
+    Ja, allerdings stehen nicht alle [VM-Größen der Generation 2](#generation-2-vm-sizes) in allen Regionen zur Verfügung. Die Verfügbarkeit von VMs der Generation 2 richtet sich nach der Verfügbarkeit der VM-Größe.
+
+* **Gibt es einen Preisunterschied zwischen VMs der 1. und 2. Generation?**  
+    Zwischen VMs der 1. und 2. Generation gibt es keine Preisunterschiede.
+
+* **Wie erhöhe ich die Größe des Betriebssystemdatenträgers?**  
+  Betriebssystemdatenträger mit einer Größe von mehr als 2 TB sind neu bei VMs der Generation 2. Standardmäßig sind die meisten Betriebssystemdatenträger für VMs der Generation 2 kleiner als 2 TB, aber die Datenträgergröße kann bis zum empfohlenen Maximum von 4 TB erhöht werden. Sie können die Größe für Betriebssystemdatenträger über die Azure CLI oder das Azure-Portal erhöhen. Weitere Informationen zum programmgesteuerten Erweitern von Datenträgern finden Sie unter [Ändern der Größe eines Datenträgers](expand-os-disk.md).
+
+  So erhöhen Sie die Größe für Betriebssystemdatenträger über das Azure-Portal:
+
+  * Navigieren Sie im Azure-Portal zur Seite mit den VM-Eigenschaften.
+
+  * Verwenden Sie die Schaltfläche **Beenden** im Azure-Portal, um die VM herunterzufahren und ihre Zuordnung aufzuheben.
+
+  * Wählen Sie im Abschnitt **Datenträger** den Betriebssystemdatenträger aus, den Sie vergrößern möchten.
+
+  * Wählen Sie im Abschnitt **Datenträger** die Option **Konfiguration** aus, und aktualisieren Sie die **Größe** auf den gewünschten Wert.
+
+  * Navigieren Sie zurück zur Seite mit den Eigenschaften der VM, und **starten** Sie die VM.
+  
+  Möglicherweise wird eine Warnmeldung für Betriebssystemdatenträger mit einer Größe von mehr als 2 TB angezeigt. Die Warnung gilt nicht für VMs der 2. Generation, allerdings werden Größen von mehr als 4 TB für Betriebssystemdatenträger **nicht empfohlen**.
 
 * **Unterstützen VMs der Generation 2 den beschleunigten Netzwerkbetrieb?**  
     Ja, VMs der Generation 2 unterstützen den [beschleunigten Netzwerkbetrieb](../../virtual-network/create-vm-accelerated-networking-cli.md).

@@ -9,19 +9,19 @@ ms.date: 05/11/2018
 ms.topic: conceptual
 description: Schnelle Kubernetes-Entwicklung mit Containern und Microservices in Azure
 keywords: Docker, Kubernetes, Azure, AKS, Azure Container Service, Container
-ms.openlocfilehash: 8ee50289083b12b7b2abd3b9ece2c8de345df9fe
-ms.sourcegitcommit: 16cb78a0766f9b3efbaf12426519ddab2774b815
+ms.openlocfilehash: 900529d54a26729d9d0fb949d9217d5e2d618254
+ms.sourcegitcommit: adb6c981eba06f3b258b697251d7f87489a5da33
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/17/2019
-ms.locfileid: "65851434"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66515289"
 ---
 # <a name="how-to-manage-secrets-when-working-with-an-azure-dev-space"></a>Verwalten von Geheimnissen beim Arbeiten mit einem Azure Dev Space
 
 Für Ihre Dienste sind möglicherweise bestimmte Kennwörter, Verbindungszeichenfolgen und andere Geheimnisse erforderlich, z. B. für Datenbanken oder andere sichere Azure-Dienste. Wenn Sie die Werte dieser Geheimnisse in Konfigurationsdateien festlegen, können Sie sie in Ihrem Code als Umgebungsvariablen zur Verfügung stellen.  Sie müssen umsichtig damit umgehen, um die Sicherheit der Geheimnisse nicht zu gefährden.
 
-Azure Dev Spaces bietet zwei empfohlene Optionen zum Speichern von Geheimnissen: in der Datei „values.dev.yaml“ und durch direktes Einbeziehen in „azds.yaml“. Es wird davon abgeraten, Geheimnisse in der Datei „values.yaml“ zu speichern.
- 
+Azure Dev Spaces bietet zwei empfohlene und optimierte Optionen zum Speichern von Geheimnissen in Helm-Charts, die von den Azure Dev Spaces-Clienttools generiert werden: in der Datei „values.dev.yaml“ und inline in „azds.yaml“. Es wird davon abgeraten, Geheimnisse in der Datei „values.yaml“ zu speichern. Abgesehen von den beiden Vorgehensweisen bei Helm-Charts, die von den in diesem Artikel definierten Clienttools generiert werden, können Sie beim Erstellen eines eigenen Helm-Charts das Helm-Chart direkt zum Verwalten und Speichern von Geheimnissen verwenden.
+
 ## <a name="method-1-valuesdevyaml"></a>Methode 1: „values.dev.yaml“
 1. Öffnen Sie Visual Studio Code (VS Code) mit Ihrem für Azure Dev Spaces aktivierten Projekt.
 2. Fügen Sie eine Datei mit dem Namen _values.dev.yaml_ im gleichen Ordner wie die vorhandene _azds.yaml_ hinzu, und definieren Sie Ihren geheimen Schlüssel und die Werte, wie im folgenden Beispiel:

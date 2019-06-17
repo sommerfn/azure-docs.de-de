@@ -5,17 +5,17 @@ services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 05/14/2019
+ms.date: 06/04/2019
 ms.topic: conceptual
 ms.service: cost-management
 manager: vitavor
 ms.custom: secdec18
-ms.openlocfilehash: 89ba5b9641d156dfb098d51272b8bf8d3fd53f5b
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: 946a9bd7595692dddd157d01945fd15bdf1ab965
+ms.sourcegitcommit: 600d5b140dae979f029c43c033757652cddc2029
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65785857"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66493756"
 ---
 # <a name="assign-access-to-cost-management-data"></a>Zuweisen des Zugriffs auf Daten in Cost Management
 
@@ -170,6 +170,13 @@ Für den Zugriff auf den Ressourcengruppenbereich ist mindestens die Berechtigun
 7. Wählen Sie unter **Zugriff zuweisen zu** die Option **Azure AD-Benutzer, -Gruppe oder -Anwendung** aus.
 8. Um den Zugriff zuzuweisen, suchen Sie den Benutzer, und wählen Sie ihn aus.
 9. Klicken Sie auf **Speichern**.
+
+## <a name="cross-tenant-authentication-issues"></a>Mandantenübergreifende Authentifizierungsprobleme
+
+Zurzeit bietet Azure Cost Management eingeschränkte Unterstützung für die mandantenübergreifende Authentifizierung. Unter bestimmten Umständen wird bei der Kostenanalyse der Fehler **Zugriff verweigert** zurückgegeben, wenn Sie versuchen, sich mandantenübergreifend zu authentifizieren. Dieses Problem kann auftreten, wenn Sie die rollenbasierte Zugriffssteuerung für das Abonnement eines anderen Mandanten konfigurieren und dann versuchen, Kostendaten anzuzeigen.
+
+*So können Sie das Problem umgehen*: Nachdem Sie die mandantenübergreifende rollenbasierte Zugriffssteuerung konfiguriert haben, warten Sie eine Stunde. Versuchen Sie dann, in beiden Mandanten Kosten in der Kostenanalyse anzuzeigen oder Benutzern Zugriff auf Cost Management zu gewähren.  
+
 
 ## <a name="next-steps"></a>Nächste Schritte
 

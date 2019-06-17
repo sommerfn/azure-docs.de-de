@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 05/14/2019
 ms.author: iainfou
-ms.openlocfilehash: de0ba13a527569e446a44c275b7323d4487f53b6
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: b5a203150906758bde33431a1dab717e090f2e28
+ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65780295"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66475571"
 ---
 # <a name="preview---limit-egress-traffic-for-cluster-nodes-and-control-access-to-required-ports-and-services-in-azure-kubernetes-service-aks"></a>Vorschau: Einschränken des ausgehenden Datenverkehrs für Clusterknoten und Steuern des Zugriffs auf erforderliche Ports und Dienste in Azure Kubernetes Service (AKS)
 
@@ -21,9 +21,10 @@ Standardmäßig haben AKS-Cluster uneingeschränkten ausgehenden Internetzugriff
 In diesem Artikel wird erläutert, welche Netzwerkports und vollqualifizierten Domänennamen (FQDNs) erforderlich oder optional sind, wenn Sie den ausgehenden Datenverkehr in einem AKS-Cluster einschränken.  Diese Funktion steht derzeit als Vorschau zur Verfügung.
 
 > [!IMPORTANT]
-> AKS-Previewfunktionen stehen gemäß dem Self-Service- und Aktivierungsprinzip zur Verfügung. Vorschauversionen werden zum Sammeln von Feedback und Fehlern mithilfe unserer Community bereitgestellt. Allerdings werden sie vom technischen Support von Azure nicht unterstützt. Wenn Sie einen Cluster erstellen oder diese Features zu einem vorhandenen Cluster hinzufügen, wird der entsprechende Cluster erst dann unterstützt, wenn das Feature sich nicht mehr in der Vorschau befindet und in die allgemeine Verfügbarkeit übergegangen ist.
+> AKS-Previewfunktionen stehen gemäß dem Self-Service- und Aktivierungsprinzip zur Verfügung. Sie werden zum Sammeln von Feedback und Fehlern mithilfe unserer Community bereitgestellt. In der Vorschauversion sind diese Features nicht für den Einsatz in der Produktion vorgesehen. Features in der öffentlichen Vorschau unterliegen dem Prinzip des „bestmöglichen Supports“. Unterstützung durch die Teams für den technischen AKS-Support steht nur während der Geschäftszeiten in der Zeitzone „Pacific Standard Time“ (PST) zur Verfügung. Weitere Informationen hierzu finden Sie in den folgenden Supportartikeln:
 >
-> Wenn Sie Probleme mit Vorschaufunktionen haben, [eröffnen Sie ein Ticket im GitHub-Repository von AKS ][aks-github], und geben Sie den Namen des Vorschaufeatures im Fehlertitel an.
+> * [Unterstützungsrichtlinien für Azure Kubernetes Service][aks-support-policies]
+> * [Häufig gestellte Fragen zum Azure-Support][aks-faq]
 
 ## <a name="before-you-begin"></a>Voraussetzungen
 
@@ -68,13 +69,13 @@ In AKS gibt es zwei Gruppen von Ports und Adressen:
 Die folgenden ausgehenden Ports und Netzwerkregeln sind für einen AKS-Cluster erforderlich:
 
 * TCP-Port *443*
-* TCP-Port *9000*
+* Die TCP-Ports *9000* und *22* für die Kommunikation zwischen dem Tunnelfrontpod und dem Tunnelende auf dem API-Server.
 
 Die folgenden vollqualifizierten Domänennamen und Anwendungsregeln sind erforderlich:
 
 | FQDN                      | Port      | Zweck      |
 |---------------------------|-----------|----------|
-| *.azmk8s.io               | HTTPS: 443 | Diese Adresse ist der Endpunkt des API-Servers. |
+| *.azmk8s.io               | HTTPS:443,22,9000 | Diese Adresse ist der Endpunkt des API-Servers. |
 | aksrepos.azurecr.io       | HTTPS: 443 | Diese Adresse ist für den Zugriff auf Images in Azure Container Registry (ACR) erforderlich. |
 | *.blob.core.windows.net   | HTTPS: 443 | Diese Adresse ist der Back-End-Speicher für in ACR gespeicherte Images. |
 | mcr.microsoft.com         | HTTPS: 443 | Diese Adresse ist für den Zugriff auf Images in Microsoft Container Registry (MCR) erforderlich. |
@@ -105,9 +106,6 @@ Die folgenden vollqualifizierten Domänennamen und Anwendungsregeln werden für 
 
 In diesem Artikel haben Sie erfahren, welche Ports und Adressen zugelassen werden müssen, wenn Sie den ausgehenden Datenverkehr für den Cluster einschränken. Sie können auch definieren, wie die Pods selbst kommunizieren können und welche Einschränkungen für sie im Cluster gelten. Weitere Informationen finden Sie unter [Sicherer Datenverkehr zwischen Pods durch Netzwerkrichtlinien in Azure Kubernetes Service (AKS)][network-policy].
 
-<!-- LINKS - external -->
-[aks-github]: https://github.com/azure/aks/issues]
-
 <!-- LINKS - internal -->
 [aks-quickstart-cli]: kubernetes-walkthrough.md
 [aks-quickstart-portal]: kubernetes-walkthrough-portal.md
@@ -118,3 +116,5 @@ In diesem Artikel haben Sie erfahren, welche Ports und Adressen zugelassen werde
 [az-feature-list]: /cli/azure/feature#az-feature-list
 [az-provider-register]: /cli/azure/provider#az-provider-register
 [aks-upgrade]: upgrade-cluster.md
+[aks-support-policies]: support-policies.md
+[aks-faq]: faq.md

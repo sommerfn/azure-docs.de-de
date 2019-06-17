@@ -6,14 +6,14 @@ author: iainfoulds
 manager: jeconnoc
 ms.service: container-service
 ms.topic: article
-ms.date: 05/06/2019
+ms.date: 06/03/2019
 ms.author: iainfou
-ms.openlocfilehash: 6bfcd11dd6bfd31583fb2d0cd3f4229d3dd70065
-ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
+ms.openlocfilehash: 1cc03cbcffc5253e8b357b6702cd21c45740ff81
+ms.sourcegitcommit: adb6c981eba06f3b258b697251d7f87489a5da33
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/20/2019
-ms.locfileid: "65887367"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66514489"
 ---
 # <a name="frequently-asked-questions-about-azure-kubernetes-service-aks"></a>Häufig gestellte Fragen zu Azure Kubernetes Service (AKS)
 
@@ -129,6 +129,10 @@ Da es sich bei AKS um einen verwalteten Dienst handelt, werden Add-Ons und Pods 
 
 Benutzer können die minimale `maxPods`-Validierung nicht außer Kraft setzen.
 
+## <a name="can-i-apply-azure-reservation-discounts-to-my-aks-agent-nodes"></a>Kann ich Rabatte für Azure-Reservierungen auf meine AKS-Agent-Knoten anwenden?
+
+AKS-Agent-Knoten werden als standardmäßige Azure-VMs abgerechnet. Wenn Sie also [Azure-Reservierungen][reservation-discounts] für die von Ihnen in AKS verwendete VM-Größe erworben haben, werden diese Rabatte automatisch angewendet.
+
 <!-- LINKS - internal -->
 
 [aks-regions]: ./quotas-skus-regions.md#region-availability
@@ -145,6 +149,7 @@ Benutzer können die minimale `maxPods`-Validierung nicht außer Kraft setzen.
 [nodepool-upgrade]: use-multiple-node-pools.md#upgrade-a-node-pool
 [aks-windows-cli]: windows-container-cli.md
 [aks-windows-limitations]: windows-node-limitations.md
+[reservation-discounts]: ../billing/billing-save-compute-costs-reservations.md
 
 <!-- LINKS - external -->
 

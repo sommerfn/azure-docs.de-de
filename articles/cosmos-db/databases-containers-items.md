@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 05/20/2019
 ms.author: rimman
 ms.reviewer: sngun
-ms.openlocfilehash: 7d607b4370d51ea2605fae6543bd3336853b0806
-ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
+ms.openlocfilehash: 574dd9fd6189b6d0f1e5d455146d6d083ad7ff77
+ms.sourcegitcommit: 3d4121badd265e99d1177a7c78edfa55ed7a9626
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/20/2019
-ms.locfileid: "65954211"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66389465"
 ---
 # <a name="work-with-databases-containers-and-items-in-azure-cosmos-db"></a>Arbeiten mit Datenbanken, Containern und Elementen in Azure Cosmos DB
 
@@ -55,6 +55,9 @@ Beim Erstellen eines Azure Cosmos-Containers konfigurieren Sie den Durchsatz in 
 
 * **Bereitgestellter, gemeinsam genutzter Durchsatz:** Die Container teilen sich den bereitgestellten Durchsatz mit anderen Containern in der gleichen Datenbank (mit Ausnahme der Container, die mit dediziert bereitgestelltem Durchsatz konfiguriert wurden). Das heißt, der bereitgestellte Durchsatz für die Datenbank wird von allen Containern mit freigegebenem Durchsatz genutzt. Weitere Informationen finden Sie unter [Bereitstellen von Durchsatz für eine Azure Cosmos-Datenbank](how-to-provision-database-throughput.md).
 
+> [!NOTE]
+> Sie können freigegebenen und dedizierten Durchsatz nur beim Erstellen der Datenbank und des Containers konfigurieren. Wenn Sie nach dem Erstellen eines Containers vom Modus des dedizierten Durchsatzes zum Modus des freigegebenen Durchsatzes (und umgekehrt) wechseln möchten, müssen Sie einen neuen Container erstellen und die Daten zu diesem neuen Container migrieren. Sie können die Daten mit dem Azure Cosmos DB-Feature für Änderungsfeeds migrieren.
+
 Ein Azure Cosmos-Container kann elastisch skaliert werden, und zwar unabhängig davon, ob Sie Container mit dediziertem oder gemeinsam genutztem bereitgestelltem Durchsatz erstellen.
 
 Ein Azure Cosmos-Container ist ein schemaunabhängiger Container für Elemente. Elemente innerhalb eines Containers können beliebige Schemas aufweisen. Beispielsweise können ein Element, das eine Person darstellt, und ein Element, das ein Fahrzeug darstellt, im *selben Container* platziert werden. Standardmäßig werden alle Elemente, die Sie einem Container hinzufügen, automatisch indiziert, ohne dass eine explizite Index- oder Schemaverwaltung erforderlich ist. Sie können das Indizierungsverhalten anpassen, indem Sie die [Indizierungsrichtlinie](index-overview.md) für einen Container konfigurieren. 
@@ -85,7 +88,7 @@ Ein Azure Cosmos-Container enthält einen Satz von systemdefinierten Eigenschaft
 |\_self | Vom System generiert | Adressierbarer URI des Containers | Ja | Nein | Nein | Nein | Nein |
 |id | Vom Benutzer konfigurierbar | Benutzerdefinierter eindeutiger Name des Containers | Ja | Ja | Ja | Ja | Ja |
 |indexingPolicy | Vom Benutzer konfigurierbar | Bietet die Möglichkeit, den Indexpfad, den Indextyp und den Indexmodus zu ändern | Ja | Nein | Nein | Nein | Ja |
-|TimeToLive | Vom Benutzer konfigurierbar | Bietet die Möglichkeit, Elemente nach einem festgelegten Zeitraum automatisch aus einem Container zu löschen. Weitere Informationen finden Sie unter [Gültigkeitsdauer](time-to-live.md). | Ja | Nein | Nein | Nein | Ja |
+|timeToLive | Vom Benutzer konfigurierbar | Bietet die Möglichkeit, Elemente nach einem festgelegten Zeitraum automatisch aus einem Container zu löschen. Weitere Informationen finden Sie unter [Gültigkeitsdauer](time-to-live.md). | Ja | Nein | Nein | Nein | Ja |
 |changeFeedPolicy | Vom Benutzer konfigurierbar | Wird zum Lesen von Änderungen verwendet, die an Elementen in einem Container vorgenommen wurden. Weitere Informationen finden Sie unter [Änderungsfeed](change-feed.md). | Ja | Nein | Nein | Nein | Ja |
 |uniqueKeyPolicy | Vom Benutzer konfigurierbar | Stellt die Eindeutigkeit von Werten innerhalb einer logischen Partition sicher. Weitere Informationen finden Sie unter [Einschränkungen für eindeutige Schlüssel](unique-keys.md). | Ja | Nein | Nein | Nein | Ja |
 

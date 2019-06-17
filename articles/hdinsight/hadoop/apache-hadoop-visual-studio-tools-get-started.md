@@ -9,13 +9,13 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive,hdiseo17may2017,seodec18
 ms.topic: conceptual
-ms.date: 02/21/2019
-ms.openlocfilehash: 6fbbdb67478d0b45a2cc2ecb8a44fac140e72da5
-ms.sourcegitcommit: 16cb78a0766f9b3efbaf12426519ddab2774b815
+ms.date: 06/03/2019
+ms.openlocfilehash: 42ef03d604caacf5ba18773b88e892237b5f0eae
+ms.sourcegitcommit: 6932af4f4222786476fdf62e1e0bf09295d723a1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/17/2019
-ms.locfileid: "65851886"
+ms.lasthandoff: 06/05/2019
+ms.locfileid: "66688529"
 ---
 # <a name="use-data-lake-tools-for-visual-studio-to-connect-to-azure-hdinsight-and-run-apache-hive-queries"></a>Herstellen einer Verbindung mit Azure HDInsight und Ausführen von Apache Hive-Abfragen mithilfe von Data Lake Tools für Visual Studio
 
@@ -33,10 +33,10 @@ Um dieses Tutorial durchzuführen und Data Lake Tools für Visual Studio zu verw
 
 * Ein Azure HDInsight-Cluster. Informationen zum Erstellen eines HDInsight-Clusters finden Sie unter [Erste Schritte bei der Verwendung von Apache Hadoop in HDInsight](apache-hadoop-linux-tutorial-get-started.md). Zum Ausführen interaktiver Apache Hive-Abfragen benötigen Sie einen [HDInsight Interactive Query](../interactive-query/apache-interactive-query-get-started.md)-Cluster.  
 
-* [Visual Studio](https://visualstudio.microsoft.com/downloads/) (2013 und höher).  Die [Visual Studio Community-Edition](https://visualstudio.microsoft.com/vs/community/) ist kostenlos erhältlich.  Weitere Informationen finden Sie unter [Installieren von Visual Studio 2017](https://docs.microsoft.com/visualstudio/install/install-visual-studio) und [Visual Studio 2019](https://visualstudio.microsoft.com/downloads/).
+* [Visual Studio](https://visualstudio.microsoft.com/downloads/) (2013 und höher).  Die [Visual Studio Community-Edition](https://visualstudio.microsoft.com/vs/community/) ist kostenlos erhältlich.  Weitere Informationen finden Sie unter [Installieren von Visual Studio 2017](https://docs.microsoft.com/visualstudio/install/install-visual-studio) und [Visual Studio 2019](https://visualstudio.microsoft.com/downloads/). Visual Studio 2019 enthält leichte Abweichungen bei Schnittstellen.
 
   > [!IMPORTANT]  
-  > Data Lake Tools wird nicht mehr für Visual Studio 2013 unterstützt. 
+  > Data Lake Tools wird nicht mehr für Visual Studio 2013 unterstützt.
 
 ## <a name="install-data-lake-tools-for-visual-studio"></a>Installieren von Data Lake-Tools für Visual Studio  
 <a name="install-or-update-data-lake-tools-for-visual-studio"></a>
@@ -93,19 +93,20 @@ So stellen Sie in Visual Studio eine Verbindung mit dem Azure-Portal her:
 
 1. Navigieren Sie im Server-Explorer zu **Azure** > **HDInsight**, und wählen Sie Ihren Cluster aus.
 
-2. Klicken Sie mit der rechten Maustaste auf einen HDInsight-Cluster, und wählen Sie dann **Cluster in Azure-Portal verwalten** aus.
+2. Klicken Sie mit der rechten Maustaste auf einen HDInsight-Cluster, und wählen Sie **Cluster in Azure-Portal verwalten** aus.
 
 So können Sie in Visual Studio Fragen stellen und/oder Feedback geben:
 
 1. Navigieren Sie im Server-Explorer zu **Azure** > **HDInsight**.
 
 2. Klicken Sie mit der rechten Maustaste auf **HDInsight**, und wählen Sie entweder **MSDN-Forum** aus, um Fragen zu stellen, oder **Feedback abgeben**, um Feedback einzureichen.
+
 ## <a name="link-a-cluster"></a>Verknüpfen eines Clusters
-Sie können einen Cluster verknüpfen, indem Sie mit der rechten Maustaste auf **HDInsight** klicken und dann die Option zum **Verknüpfen eines HDInsight-Clusters** auswählen. Geben Sie **Verbindungs-URL**, **Benutzername** und **Kennwort** ein, klicken Sie auf **Weiter** und dann auf **Fertig stellen**. Der Cluster sollte erfolgreich unter „HDInsight-Knoten“ aufgelistet werden.
+Sie können einen Cluster verknüpfen, indem Sie mit der rechten Maustaste auf **HDInsight** klicken und dann **HDInsight-Cluster verknüpfen** auswählen. Geben Sie **Verbindungs-URL**, **Benutzername** und **Kennwort** ein, klicken Sie auf **Weiter** und dann auf **Fertig stellen**. Der Cluster sollte erfolgreich unter „HDInsight-Knoten“ aufgelistet werden.
 
 ![Screenshot von Data Lake Tools für das Dialogfeld von Visual Studio zum Verknüpfen von Clustern](./media/apache-hadoop-visual-studio-tools-get-started/hdinsight-visual-studio-tools-link-cluster-dialog.png)
 
-Klicken Sie mit der rechten Maustaste auf den verknüpften Cluster, und wählen Sie **Bearbeiten** aus. Der Benutzer kann die Clusterinformationen aktualisieren. Beachten Sie, dass die Option zum Hinzufügen von HDInsight-Clustern derzeit nur Hive unterstützt.
+Klicken Sie mit der rechten Maustaste auf den verknüpften Cluster, und wählen Sie **Bearbeiten** aus. Der Benutzer kann die Clusterinformationen aktualisieren. Die Option zum Hinzufügen von HDInsight-Clustern unterstützt derzeit nur Hive.
 
 ![Screenshot von Data Lake Tools für das Dialogfeld von Visual Studio zum Verknüpfen von Clustern – Update](./media/apache-hadoop-visual-studio-tools-get-started/hdinsight-visual-studio-tools-link-cluster-update.png)
 
@@ -170,7 +171,14 @@ So können Sie Ad-hoc-Abfragen erstellen und ausführen
 
 1. Klicken Sie mit der rechten Maustaste auf den Cluster, in dem Sie die Abfrage ausführen möchten, und wählen Sie dann **Hive-Abfrage schreiben** aus.  
 
-2. Geben Sie die Hive-Abfragen ein.  
+2. Geben Sie die folgende Hive-Abfrage ein:
+
+    ```sql
+    SELECT devicemodel, COUNT(devicemodel) AS deviceCount
+    FROM hivesampletable
+    GROUP BY devicemodel
+    ORDER BY devicemodel
+    ```
 
     Der Hive-Editor unterstützt IntelliSense. Data Lake Tools für Visual Studio unterstützt das Laden von Remotemetadaten, wenn Sie Ihr Hive-Skript bearbeiten. Wenn Sie beispielsweise `SELECT * FROM` eingeben, listet IntelliSense alle vorgeschlagenen Tabellennamen auf. Wird ein Tabellenname angegeben, listet IntelliSense die Spaltennamen auf. Die Tools unterstützen die meisten Hive-DML-Anweisungen, Unterabfragen und integrierte UDFs.
 

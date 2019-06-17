@@ -10,12 +10,12 @@ author: anumjs
 ms.author: anjangsh
 ms.reviewer: jrasnick
 manager: craigg
-ms.openlocfilehash: 215f7c9c65658ddbb10498bb59f3d326bf3a10f1
-ms.sourcegitcommit: cfbc8db6a3e3744062a533803e664ccee19f6d63
+ms.openlocfilehash: 9e5f10c2b4c2108626db79ad9821a8b07e57a2e3
+ms.sourcegitcommit: c05618a257787af6f9a2751c549c9a3634832c90
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/21/2019
-ms.locfileid: "65988288"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66417702"
 ---
 # <a name="azure-sql-data-warehouse-release-notes"></a>Azure SQL Data Warehouse – Versionshinweise
 
@@ -23,7 +23,7 @@ In diesem Artikel sind die neuen Funktionen und Verbesserungen in den neuesten V
 
 ## <a name="check-your-azure-sql-data-warehouse-version"></a>Überprüfen Ihrer Azure SQL Data Warehouse-Version
 
-Da in allen Regionen neue Features eingeführt werden, überprüfen Sie für die Verfügbarkeit der Features die in Ihrer Instanz bereitgestellte Version sowie die aktuellen Versionshinweise für Azure SQL Data Warehouse. Stellen Sie über SQL Server Management Studio (SSMS) eine Verbindung mit Ihrer Azure SQL Data Warehouse-Instanz her, um deren Version zu überprüfen. Führen Sie `SELECT @@VERSION AS 'SQL Data Warehouse';` aus, um zur aktuellen Version von Azure SQL Data Warehouse zurückzukehren.
+Da in allen Regionen neue Features eingeführt werden, überprüfen Sie die in Ihrer Instanz bereitgestellte Version sowie die aktuellen Versionshinweise für Azure SQL Data Warehouse, um zu ermitteln, ob ein Feature verfügbar ist. Stellen Sie über SQL Server Management Studio (SSMS) eine Verbindung mit Ihrer Azure SQL Data Warehouse-Instanz her, um deren Version zu überprüfen. Führen Sie `SELECT @@VERSION AS 'SQL Data Warehouse';` aus, um zur aktuellen Version von Azure SQL Data Warehouse zurückzukehren.
 
 Beispielausgabe: ![SQL Data Warehouse-Version](./media/release-notes/sql_data_warehouse_version.png)
 
@@ -38,6 +38,7 @@ Verwenden Sie das identifizierte Datum, um zu bestätigen, welches Release auf I
 |**Additional T-SQL support** (Weitere T-SQL-Unterstützung)|Die T-SQL-Sprachoberfläche für SQL Data Warehouse wurde erweitert und bietet nun Unterstützung für: </br> - [TRIM](/sql/t-sql/functions/trim-transact-sql?view=azure-sqldw-latest)|
 |**JSON-Funktionen**|Mithilfe der folgenden neuen JSON-Funktionen können Business Analysts in Azure Data Warehouse nun die vertraute T-SQL-Programmiersprache für die Abfrage und Bearbeitung von Dokumenten verwenden, die als JSON-Daten formatiert sind:</br> - [ISJSON](/sql/t-sql/functions/isjson-transact-sql?view=azure-sqldw-latest)</br> - [JSON_VALUE](/sql/t-sql/functions/json-value-transact-sql?view=azure-sqldw-latest)</br> -  [JSON_QUERY](/sql/t-sql/functions/json-query-transact-sql?view=azure-sqldw-latest)</br> -  [JSON_MODIFY](/sql/t-sql/functions/json-modify-transact-sql?view=azure-sqldw-latest)</br> - [OPENJSON](/sql/t-sql/functions/openjson-transact-sql?view=azure-sqldw-latest)|
 |**Zwischenspeichern von Resultsets (Preview)**|Das Zwischenspeichern von Resultsets ermöglicht sofortige Abfrageantwortzeiten, und Erkenntnisse sind für Business Analysts und berichtende Benutzer schneller verfügbar. Weitere Informationen finden Sie unter</br> - [ALTER DATABASE (Transact-SQL)](/sql/t-sql/statements/alter-database-transact-sql?view=azure-sqldw-latest)</br> - [ALTER DATABASE SET Options (Transact SQL)](/sql/t-sql/statements/alter-database-transact-sql-set-options?view=azure-sqldw-latest) (ALTER DATABASE SET-Optionen (Transact SQL))</br> - [SET RESULT SET CACHING (Transact-SQL)](/sql/t-sql/statements/set-result-set-caching-transact-sql?view=azure-sqldw-latest)</br> - [SET-Anweisungen (Transact-SQL)](/sql/t-sql/statements/set-statements-transact-sql)</br> - [sys.databases (Transact-SQL)](/sql/relational-databases/system-catalog-views/sys-databases-transact-sql?view=azure-sqldw-latest)|
+|**Sortierter gruppierter Columnstore-Index (Vorschau)**|Columnstore ist ein wichtiges Element beim Speichern und effizienten Abfragen großer Datenmengen. Columnstore teilt für jede Tabelle die eingehenden Daten in Zeilengruppen auf, und jede Spalte in einer Zeilengruppe bildet ein Segment auf dem Datenträger.  Sortierte gruppierte Columnstore-Indizes optimieren die Abfrageausführung, indem sie eine effiziente Löschung von Segmenten ermöglichen.   Weitere Informationen finden Sie unter</br> -  [CREATE TABLE (Azure SQL Data Warehouse)](/sql/t-sql/statements/create-table-azure-sql-data-warehouse?view=azure-sqldw-latest)</br> -  [CREATE COLUMNSTORE INDEX (Transact-SQL)](/sql/t-sql/statements/create-columnstore-index-transact-sql?view=azure-sqldw-latest).|
 
 ## <a name="march-2019"></a>März 2019
 

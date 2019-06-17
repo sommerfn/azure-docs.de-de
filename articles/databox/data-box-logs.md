@@ -1,43 +1,43 @@
 ---
-title: Erfassen und Protokollieren von Azure Data Box-Ereignissen| Microsoft-Dokumentation
-description: Beschreibt, wie Ereignisse in den verschiedenen Phasen Ihrer Azure Data Box-Auftrags nachverfolgt und protokolliert werden.
+title: Erfassen und Protokollieren von Azure Data Box- und Azure Data Box Heavy-Ereignissen| Microsoft-Dokumentation
+description: Dieser Artikel beschreibt, wie Ereignisse in den verschiedenen Phasen Ihres Azure Data Box- oder Azure Data Box Heavy-Auftrags nachverfolgt und protokolliert werden.
 services: databox
 author: alkohli
 ms.service: databox
 ms.subservice: pod
 ms.topic: article
-ms.date: 05/14/2019
+ms.date: 06/03/2019
 ms.author: alkohli
-ms.openlocfilehash: 7a6adc72c1dfbe67311ae2ca98d5b07dfab41719
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: 108d17d3e0ca5f32648f9d4f6cf4b5f9a2984d0c
+ms.sourcegitcommit: 600d5b140dae979f029c43c033757652cddc2029
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65804886"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66495820"
 ---
-# <a name="tracking-and-event-logging-for-your-azure-data-box"></a>Nachverfolgung und Ereignisprotokollierung für Azure Data Box
+# <a name="tracking-and-event-logging-for-your-azure-data-box-and-azure-data-box-heavy"></a>Nachverfolgung und Ereignisprotokollierung für Azure Data Box und Azure Data Box Heavy
 
-Ein Data Box-Auftrag durchläuft die folgenden Schritte: Bestellen, Einrichten, Kopieren von Daten, Hochladen in Azure und Überprüfen sowie Löschen von Daten. Für jeden Schritt des Auftrags können Sie mehrere Aktionen durchführen, um den Zugriff auf den Auftrag zu steuern, die Ereignisse zu überwachen, den Auftrag zu verfolgen und die verschiedenen Protokolle zu interpretieren, die generiert werden.
+Ein Data Box- oder Data Box Heavy-Auftrag durchläuft die folgenden Schritte: Bestellen, Einrichten, Kopieren von Daten, Zurücksenden, Hochladen in Azure und Überprüfen sowie Löschen von Daten. Für jeden Schritt des Auftrags können Sie mehrere Aktionen durchführen, um den Zugriff auf den Auftrag zu steuern, die Ereignisse zu überwachen, den Auftrag zu verfolgen und die verschiedenen Protokolle zu interpretieren, die generiert werden.
 
-Die folgende Tabelle enthält eine Übersicht der Schritte eines Data Box-Auftrags und die verfügbaren Tools zum Nachverfolgen und Überwachen des Auftrags in jedem Schritt.
+Die folgende Tabelle zeigt eine Übersicht über die Schritte eines Data Box- oder Data Box Heavy-Auftrags und die verfügbaren Tools zum Nachverfolgen und Überwachen des Auftrags in jedem Schritt.
 
 | Phase eines Data Box-Auftrags       | Tool zum Nachverfolgen und Überwachen                                                                        |
 |----------------------------|------------------------------------------------------------------------------------------------|
 | Erstellung des Auftrags               | [Einrichten der Zugriffssteuerung für den Auftrag über RBAC](#set-up-access-control-on-the-order)                                                    |
 | Auftrag verarbeitet            | [Nachverfolgen des Auftrags](#track-the-order) über <ul><li> Azure-Portal </li><li> Website des Spediteurs </li><li>E-Mail-Benachrichtigungen</ul> |
 | Einrichten des Geräts              | In [Aktivitätsprotokollen](#query-activity-logs-during-setup) protokollierter Zugriff auf Geräteanmeldeinformation                                              |
-| Kopieren von Daten auf ein Gerät        | [Anzeigen von *error.xml*-Dateien](#view-error-log-during-data-copy-to-data-box) für das Kopieren von Daten                                                             |
+| Kopieren von Daten auf ein Gerät        | [Anzeigen von *error.xml*-Dateien](#view-error-log-during-data-copy) für das Kopieren von Daten                                                             |
 | Vorbereiten des Versands            | [Überprüfen der BOM-Dateien](#inspect-bom-during-prepare-to-ship) oder der Manifestdateien auf dem Gerät                                      |
 | Datenupload in Azure       | [Überprüfen von *Kopierprotokollen*](#review-copy-log-during-upload-to-azure) auf Fehler beim Datenupload im Azure-Rechenzentrum                         |
 | Löschen von Daten vom Gerät   | [Anzeigen der Kette von Protokollen zur Rückverfolgbarkeit](#get-chain-of-custody-logs-after-data-erasure) einschließlich von Überwachungsprotokollen und Auftragsverlauf                                                   |
 
-In diesem Artikel werden die verschiedenen verfügbaren Verfahren und Tools detailliert beschrieben, mit denen Data Box-Aufträge nachverfolgt und überwacht werden können.
+In diesem Artikel werden die verschiedenen verfügbaren Verfahren und Tools detailliert beschrieben, mit denen Data Box- oder Data Box Heavy-Aufträge nachverfolgt und überwacht werden können. Die Informationen in diesem Artikel gelten sowohl für Data Box als auch für Data Box Heavy. In den folgenden Abschnitten gelten alle Verweise auf Data Box auch für Data Box Heavy.
 
 ## <a name="set-up-access-control-on-the-order"></a>Einrichten der Zugriffssteuerung für den Auftrag
 
 Sie können beim Erstellen Ihres Auftrags festlegen, wer auf diesen Auftrag zugreifen kann. Richten Sie RBAC-Rollen (Rollenbasierte Zugriffssteuerung) in verschiedenen Bereichen ein, um den Zugriff auf den Data Box-Auftrag zu steuern. Eine RBAC-Rolle bestimmt die Art des Zugriffs: Lese-/Schreibzugriff, schreibgeschützt, Lese-/Schreibzugriff auf eine Teilmenge von Vorgängen.
 
-Die folgenden zwei Data Box-Rollen können definiert werden:
+Für den Azure Data Box-Dienst können die folgenden beiden Rollen definiert werden:
 
 - **Data Box-Leser**: Schreibgeschützter Zugriff auf Aufträge, wie im Bereich definiert. Hiermit können lediglich die Details eines Auftrags angezeigt werden. Es ist nicht möglich, auf weitere Details im Zusammenhang mit Speicherkonten zuzugreifen oder die Auftragsdetails zu bearbeiten, z.B. Adresse usw.
 - **Data Box-Mitwirkender**: Kann nur einen Auftrag zum Übertragen von Daten in ein bestimmtes Speicherkonto erstellen, *wenn bereits Schreibzugriff auf ein Speicherkonto gewährt wurde*. Falls kein Zugriff auf ein Speicherkonto gewährt wurde, kann mit dieser Rolle kein Data Box-Auftrag zum Kopieren von Daten in das Konto erstellt werden. Diese Rolle definiert keine Berechtigungen für Speicherkonten und gewährt keinen Zugriff auf Speicherkonten.  
@@ -70,9 +70,9 @@ Sie können Ihren Auftrag über das Azure-Portal und über die Website des Spedi
 
 - Jede Anmeldung bei der Data Box wird in Echtzeit protokolliert. Diese Informationen sind jedoch erst nach erfolgreichem Abschluss des Auftrags in den [Überwachungsprotokollen](#audit-logs) verfügbar.
 
-## <a name="view-error-log-during-data-copy-to-data-box"></a>Anzeigen des Fehlerprotokolls beim Kopieren von Daten in die Data Box
+## <a name="view-error-log-during-data-copy"></a>Anzeigen des Fehlerprotokolls beim Kopieren von Daten
 
-Beim Kopieren von Daten in die Data Box wird eine Fehlerdatei generiert, falls beim Kopieren der Daten Probleme auftreten.
+Während des Kopiervorgangs von Daten auf die Data Box oder Data Box Heavy wird eine Fehlerdatei generiert, falls beim Kopieren der Daten Probleme auftreten.
 
 ### <a name="errorxml-file"></a>Datei „Error.xml“
 
@@ -147,7 +147,7 @@ Hier finden Sie ein Beispiel für die Datei *error.xml* für verschiedene Fehler
 <file error="ERROR_CONTAINER_OR_SHARE_NAME_ALPHA_NUMERIC_DASH">\Starting with Capital</file>
 ```
 
-In jedem der oben aufgeführten Fälle müssen Sie die Fehler beheben, bevor Sie mit dem nächsten Schritt fortfahren. Weitere Informationen über die Fehler beim Kopieren von Daten in Data Box über SMB- oder NFS-Protokolle finden Sie unter [Behandeln von Problemen bei der Data Box](data-box-troubleshoot.md). Weitere Informationen über die Fehler beim Kopieren von Daten in Data Box über REST finden Sie unter [Behandeln von Problemen mit dem Data Box-Blobspeicher](data-box-troubleshoot-rest.md).
+In jedem der oben aufgeführten Fälle müssen Sie die Fehler beheben, bevor Sie mit dem nächsten Schritt fortfahren. Weitere Informationen zu den Fehlern beim Kopieren von Daten auf die Data Box über SMB- oder NFS-Protokolle finden Sie unter [Behandeln von Problemen mit Azure Data Box und Azure Data Box Heavy](data-box-troubleshoot.md). Weitere Informationen über die Fehler beim Kopieren von Daten in Data Box über REST finden Sie unter [Behandeln von Problemen mit dem Data Box-Blobspeicher](data-box-troubleshoot-rest.md).
 
 ## <a name="inspect-bom-during-prepare-to-ship"></a>BOM-Überprüfung während der Vorbereitung für den Versand
 
@@ -157,7 +157,7 @@ Bei der Vorbereitung auf den Versand wird eine Dateiliste erstellt, die als BOM 
 - Verwenden Sie diese Datei, um die tatsächliche Größe der Dateien zu überprüfen.
 - Überprüfen Sie, ob *crc64* einer Zeichenfolge ungleich Null entspricht. <!--A null value for crc64 indicates that there was a reparse point error)-->
 
-Weitere Informationen zu den Fehlern während der Vorbereitung auf den Versand finden Sie unter [Behandeln von Problemen bei der Data Box](data-box-troubleshoot.md).
+Weitere Informationen zu den Fehlern während der Vorbereitung auf den Versand finden Sie unter [Behandeln von Problemen mit Azure Data Box und Azure Data Box Heavy](data-box-troubleshoot.md).
 
 ### <a name="bom-or-manifest-file"></a>BOM- oder Manifestdatei
 
@@ -253,7 +253,7 @@ Nachdem die Daten gemäß den NIST-Richtlinien (SP 800-88 Revision 1) vom Data B
 
 ### <a name="audit-logs"></a>Überwachungsprotokolle
 
-Überwachungsprotokolle enthalten Informationen zum Einschalten und zum Zugriff auf Data Box, wenn sich der Dienst außerhalb des Azure-Rechenzentrums befindet. Die Protokolle befinden sich hier: `storage-account/azuredatabox-chainofcustodylogs`
+Überwachungsprotokolle enthalten Informationen zum Einschalten und Freigeben des Zugriffs auf die Data Box oder Data Box Heavy außerhalb eines Azure-Rechenzentrums. Die Protokolle befinden sich hier: `storage-account/azuredatabox-chainofcustodylogs`
 
 Hier finden Sie ein Beispiel für das Überwachungsprotokoll einer Data Box:
 
@@ -310,7 +310,7 @@ The authentication information fields provide detailed information about this sp
 
 ## <a name="download-order-history"></a>Herunterladen des Auftragsverlaufs
 
-Der Auftragsverlauf ist im Azure-Portal verfügbar. Wenn der Auftrag und die Gerätebereinigung (Löschung der Daten vom Datenträger) abgeschlossen sind, wechseln Sie zu  **Data Box-Auftrag > Auftragsdetails**. Die Option  ****   ist verfügbar. Weitere Informationen finden Sie unter [Bestellverlauf herunterladen](data-box-portal-admin.md#download-order-history).
+Der Auftragsverlauf ist im Azure-Portal verfügbar. Wenn der Auftrag und die Gerätebereinigung (Löschung der Daten von den Datenträgern) abgeschlossen sind, wechseln Sie zu **Auftragsdetails**. Die Option  **Bestellverlauf herunterladen**  ist verfügbar. Weitere Informationen finden Sie unter [Bestellverlauf herunterladen](data-box-portal-admin.md#download-order-history).
 
 Wenn Sie durch den Auftragsverlauf scrollen, sehen Sie Folgendes:
 
@@ -324,7 +324,7 @@ Hier finden Sie ein Beispiel für das Auftragsverlaufsprotokoll im Azure-Portal:
 -------------------------------
 Microsoft Data Box Order Report
 -------------------------------
-Name                                               : gus-pinto                              
+Name                                               : gus-poland                              
 StartTime(UTC)                              : 9/19/2018 8:49:23 AM +00:00                       
 DeviceType                                     : DataBox                                           
 -------------------
@@ -362,11 +362,11 @@ Time(UTC)                 | Activity                       | Status          | D
 Data Box Log Links
 ------------------
 Account Name         : gusacct
-Copy Logs Path       : databoxcopylog/gus-pinto_<Device-serial-no>_CopyLog_<GUID>.xml
+Copy Logs Path       : databoxcopylog/gus-poland_<Device-serial-no>_CopyLog_<GUID>.xml
 Audit Logs Path      : azuredatabox-chainofcustodylogs\<GUID>\<Device-serial-no>
 BOM Files Path       : azuredatabox-chainofcustodylogs\<GUID>\<Device-serial-no>
 ```
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- Erfahren Sie mehr über das [Behandeln von Problemen in Ihrer Data Box](data-box-troubleshoot.md).
+- Erfahren Sie mehr über das [Behandeln von Problemen mit Azure Data Box und Azure Data Box Heavy](data-box-troubleshoot.md).

@@ -9,43 +9,45 @@ ms.topic: conceptual
 ms.author: mesameki
 author: mesameki
 ms.reviewer: larryfr
-ms.date: 04/29/2019
-ms.openlocfilehash: 4261e869fe17283886d7d8ea8101e03110d6dad4
-ms.sourcegitcommit: 16cb78a0766f9b3efbaf12426519ddab2774b815
+ms.date: 05/30/2019
+ms.openlocfilehash: 4f1dd0bfc0637c6681b513860a63df2b8c35fe5e
+ms.sourcegitcommit: 087ee51483b7180f9e897431e83f37b08ec890ae
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/17/2019
-ms.locfileid: "65851995"
+ms.lasthandoff: 05/31/2019
+ms.locfileid: "66430857"
 ---
 # <a name="model-interpretability-with-azure-machine-learning-service"></a>Modellinterpretierbarkeit mit Azure Machine Learning Service
 
-In diesem Artikel erfahren Sie, wie Sie mithilfe des Interpretierbarkeitspakets des Python-SDK für Azure Machine Learning erklären können, wie Ihr Modell zu den getroffenen Vorhersagen gelangte.
+In diesem Artikel erfahren Sie, wie Sie mithilfe der verschiedenen Interpretierbarkeitspakete des Python-SDK für Azure Machine Learning erklären können, wie Ihr Modell zu den getroffenen Vorhersagen gelangt.
 
-Durch Verwenden der Klassen und Methoden in diesem Paket erhalten Sie:
-+ Interpretierbarkeit realer Datasets in beliebigem Umfang während des Trainings und in der Rückschlussphase 
+Durch Verwenden der Klassen und Methoden im SDK erhalten Sie Folgendes:
++ Relevanzwerte sowohl für unformatierte als auch für verarbeitete Merkmale
++ Interpretierbarkeit realer Datasets in beliebigem Umfang während des Trainings und in der Rückschlussphase
 + Interaktive Visualisierungen, die Ihnen bei der Erkennung von Muster in Daten und bei der Erklärung zum Zeitpunkt der Schulung helfen
-+ Relevanzbewertung von Features: Rohdaten- und entwickelte Features
 
-Während der Trainingsphase des Entwicklungszyklus können Modelldesigner und Bewerter die Ausgabe eines Modells den Projektbeteiligten erklären, um Vertrauen aufzubauen.  Sie verwenden außerdem die Erkenntnisse aus dem Modell zum Debuggen, Überprüfen des Modellverhaltens auf die Erfüllung der Ziele und Suchen nach Trends.
+Während der Trainingsphase des Entwicklungszyklus können Modellentwickler und -bewerter die Interpretierbarkeitsausgabe eines Modells verwenden, um Hypothesen zu überprüfen und Vertrauen bei den Beteiligten aufzubauen.  Sie verwenden außerdem die Erkenntnisse aus dem Modell zum Debuggen, Überprüfen des Modellverhaltens auf die Erfüllung der Ziele und Suchen nach Trends.
 
-Rückschlüsse oder Modellbewertungen bilden die Phase, in der das bereitgestellte Modell für die Vorhersage verwendet wird – meist für Produktionsdaten. In dieser Phase können Data Science-Experten den Personen, die das Modell verwenden, die resultierenden Vorhersagen erklären. Warum hat das Modell beispielsweise ein Hypothekendarlehen abgelehnt oder vorhergesagt, dass ein Anlageportfolio mit einem höheren Risiko behaftet ist?
+Beim maschinellen Lernen sind **Merkmale** diejenigen Datenfelder, die zum Vorhersagen eines Zieldatenpunkts verwendet werden. Um beispielsweise ein Kreditrisiko vorherzusagen, werden möglicherweise Datenfelder für Alter, Kontogröße und Kontoalter verwendet. In diesem Fall sind Alter, Kontogröße und Kontoalter **Merkmale**. Die Relevanz eines Merkmals informiert darüber, wie sich jedes Datenfeld auf die Vorhersagen des Modells ausgewirkt hat. Das Alter spielt möglicherweise bei der Vorhersage eine schwerer wiegende Rolle, wohingegen Kontogröße und Kontoalter sich nur unwesentlich auf die Vorhersagegenauigkeit auswirken. Dank dieses Prozesses können Data Scientists die getroffenen Vorhersagen erklären, sodass alle Beteiligten einen Einblick darin erhalten, welche Datenpunkte die wichtigsten im Modell sind.
 
-Mit diesem Angebot können Sie Machine Learning-Modelle **global für alle Daten** oder **lokal für einen bestimmten Datenpunkt** mithilfe modernster Technologien auf einfache und skalierbare Weise erklären.
+Verwenden Sie diese Tools, um Machine Learning-Modelle **global für alle Daten** oder **lokal für bestimmte Datenpunkte** mithilfe modernster Technologien auf einfache und skalierbare Weise zu erklären.
 
-Die Interpretierbarkeitsklassen werden über zwei Python-Pakete zur Verfügung gestellt. Erfahren Sie, wie Sie [SDK-Pakete für Azure Machine Learning installieren](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py).
+Die Interpretierbarkeitsklassen werden in mehreren SDK-Paketen zur Verfügung gestellt. Erfahren Sie, wie Sie [SDK-Pakete für Azure Machine Learning installieren](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py).
 
-* [`azureml.explain.model`](https://docs.microsoft.com/python/api/azureml-explain-model/?view=azure-ml-py), das Hauptpaket, enthält von Microsoft unterstützte Funktionen. 
+* [`azureml.explain.model`](https://docs.microsoft.com/python/api/azureml-explain-model/?view=azure-ml-py), das Hauptpaket, enthält von Microsoft unterstützte Funktionen.
 
 * `azureml.contrib.explain.model`: Vorschau- und experimentelle Funktionen, die Sie ausprobieren können.
 
+* `azureml.train.automl.automlexplainer`-Paket zum Interpretieren automatisierter Machine Learning-Modelle.
+
 > [!IMPORTANT]
-> Der Inhalt von „azureml.contrib.explain.model“ wird nicht vollständig unterstützt. Sobald die experimentellen Funktionen ausgereift sind, werden sie schrittweise in das Hauptpaket verlagert.
+> Der Inhalt im `contrib`-Namespace wird nicht vollständig unterstützt. Sobald die experimentellen Funktionen ausgereift sind, werden sie schrittweise in den Hauptnamespace verlagert.
 
 ## <a name="how-to-interpret-your-model"></a>Interpretieren des Modells
 
 Die Interpretierbarkeitsklassen und -methoden können angewandt werden, um das globale Verhalten des Modells oder bestimmte Vorhersagen zu verstehen. Erstere wird als globale Erklärung und letztere als lokale Erklärung bezeichnet.
 
-Die Methoden können auch danach kategorisiert werden, ob die Methode modellunabhängig oder modellspezifisch ist. Einige Methoden zielen auf bestimmte Arten von Modellen ab. Der Tree Explainer von SHAP eignet sich nur für baumstrukturbasierte Modelle. Einige Methoden behandeln das Modell als Blackbox, wie z.B. der Mimic Explainer oder der Kernel Explainer von SHAP. Das Paket `explain` verfolgt diese verschiedenen Ansätze basierend auf Datasets, Modelltypen und Anwendungsfällen. 
+Die Methoden können auch danach kategorisiert werden, ob die Methode modellunabhängig oder modellspezifisch ist. Einige Methoden zielen auf bestimmte Arten von Modellen ab. Der Tree Explainer von SHAP eignet sich nur für baumstrukturbasierte Modelle. Einige Methoden behandeln das Modell als Blackbox, wie z.B. der Mimic Explainer oder der Kernel Explainer von SHAP. Das Paket `explain` verfolgt diese verschiedenen Ansätze basierend auf Datasets, Modelltypen und Anwendungsfällen.
 
 Die Ausgabe ist ein Satz von Informationen dazu, wie ein angegebenes Modell Vorhersagen trifft, z. B.:
 * Global/lokale relative Featurepriorität
@@ -103,9 +105,9 @@ Das Paket `explain` funktioniert mit lokalen und Remotecomputezielen. Bei lokale
 
 ### <a name="train-and-explain-locally"></a>Lokales Trainieren und Erklären
 
-1. Trainieren Sie Ihr Modell in einem lokalen Jupyter-Notebook. 
+1. Trainieren Sie Ihr Modell in einem lokalen Jupyter-Notebook.
 
-    ``` python
+    ```python
     # load breast cancer dataset, a well-known small dataset that comes with scikit-learn
     from sklearn.datasets import load_breast_cancer
     from sklearn import svm
@@ -126,8 +128,9 @@ Das Paket `explain` funktioniert mit lokalen und Remotecomputezielen. Bei lokale
     # "features" and "classes" fields are optional
     explainer = TabularExplainer(model, x_train, features=breast_cancer_data.feature_names, classes=classes)
     ```
+
     oder
-    
+
     ```python
     from azureml.explain.model.mimic.mimic_explainer import MimicExplainer
     from azureml.explain.model.mimic.models.lightgbm_model import LGBMExplainableModel
@@ -152,16 +155,18 @@ Das Paket `explain` funktioniert mit lokalen und Remotecomputezielen. Bei lokale
     ```python
     # explain the first data point in the test set
     local_explanation = explainer.explain_local(x_test[0])
-    
+
     # sorted feature importance values and feature names
     sorted_local_importance_names = local_explanation.get_ranked_local_names()
     sorted_local_importance_values = local_explanation.get_ranked_local_values()
     ```
+
     oder
+
     ```python
     # explain the first five data points in the test set
     local_explanation = explainer.explain_local(x_test[0:4])
-    
+
     # sorted feature importance values and feature names
     sorted_local_importance_names = local_explanation.get_ranked_local_names()
     sorted_local_importance_values = local_explanation.get_ranked_local_values()
@@ -173,14 +178,14 @@ Sie können auf den verschiedenen von Azure Machine Learning Service unterstütz
 
 1. Erstellen Sie ein Trainingsskript in einem lokalen Jupyter-Notebook (Beispiel: run_explainer.py).
 
-    ``` python  
+    ```python
     run = Run.get_context()
     client = ExplanationClient.from_run(run)
-    
+
     # Train your model here
 
-    # explain predictions on your local machine   
-    # "features" and "classes" fields are optional 
+    # explain predictions on your local machine
+    # "features" and "classes" fields are optional
     explainer = TabularExplainer(model, x_train, features=breast_cancer_data.feature_names, classes=classes)
     # explain overall model predictions (global explanation)
     global_explanation = explainer.explain_global(x_test)
@@ -198,10 +203,9 @@ Sie können auf den verschiedenen von Azure Machine Learning Service unterstütz
 
 2. Befolgen Sie die Anweisungen unter [Einrichten von Computezielen für das Modelltraining](how-to-set-up-training-targets.md#amlcompute), um eine Azure Machine Learning Compute-Instanz als Computeziel einzurichten und die Trainingsausführung zu übermitteln.
 
-3. Laden Sie die Erklärung in Ihr lokales Jupyter-Notebook herunter. 
+3. Laden Sie die Erklärung in Ihr lokales Jupyter-Notebook herunter.
 
-
-    ``` python
+    ```python
     from azureml.contrib.explain.model.explanation.explanation_client import ExplanationClient
     # Get model explanation data
     client = ExplanationClient.from_run(run)
@@ -239,6 +243,7 @@ Die folgenden Plots bieten eine globale Ansicht des trainierten Modells mit den 
 [![Globales Visualisierungsdashboard](./media/machine-learning-interpretability-explainability/global-charts.png)](./media/machine-learning-interpretability-explainability/global-charts.png#lightbox)
 
 ### <a name="local-visualizations"></a>Lokale Visualisierungen
+
 Sie können an jedem Zeitpunkt der vorherigen Plots auf einen lokalen Datenpunkt klicken, um den Relevanzplot der lokalen Features für den angegebenen Datenpunkt zu laden.
 
 |Plot|BESCHREIBUNG|
@@ -253,11 +258,11 @@ Um das Visualisierungsdashboard zu laden, verwenden Sie den folgenden Code:
 from azureml.contrib.explain.model.visualize import ExplanationDashboard
 
 ExplanationDashboard(global_explanation, model, x_test)
-``` 
+```
 
 ## <a name="raw-feature-transformations"></a>Rohfeaturetransformationen
 
-Optional können Sie Ihre Featuretransformations-Pipeline an den Explainer übergeben, um Erklärungen in Bezug auf die Rohfeatures vor der Transformation (im Gegensatz zu entwickelte Features) zu empfangen. Wenn Sie diesen Schritt überspringen, bietet der Explainer Erklärungen in Bezug auf entwickelte Features. 
+Optional können Sie Ihre Featuretransformations-Pipeline an den Explainer übergeben, um Erklärungen in Bezug auf die Rohfeatures vor der Transformation (im Gegensatz zu entwickelte Features) zu empfangen. Wenn Sie diesen Schritt überspringen, bietet der Explainer Erklärungen in Bezug auf entwickelte Features.
 
 Das Format der unterstützten Transformationen entspricht dem unter [sklearn-pandas](https://github.com/scikit-learn-contrib/sklearn-pandas) beschriebenen. Grundsätzlich werden alle Transformationen unterstützt, solange sie eine einzelne Spalte verarbeiten und daher eine 1:n-Transformation darstellen.
 
@@ -292,33 +297,37 @@ tabular_explainer = TabularExplainer(clf.steps[-1][1], initialization_examples=x
 Der Explainer kann zusammen mit dem ursprünglichen Modell bereitgestellt werden und bei einer Bewertung die lokalen Erklärungsinformationen bereitstellen. Der Bereitstellungsvorgang für einen Bewertungsexplainer ähnelt der Bereitstellung eines Modells und umfasst die folgenden Schritte:
 
 1. Erstellen eines Erläuterungsobjekts:
+
    ```python
    from azureml.contrib.explain.model.tabular_explainer import TabularExplainer
 
    explainer = TabularExplainer(model, x_test)
-   ``` 
+   ```
 
 1. Erstellen eines Bewertungsexplainers unter Verwendung des Erläuterungsobjekts:
+
    ```python
    scoring_explainer = explainer.create_scoring_explainer(x_test)
 
    # Pickle scoring explainer
    scoring_explainer_path = scoring_explainer.save('scoring_explainer_deploy')
-   ``` 
+   ```
 
 1. Konfigurieren und Registrieren eines Images, das das Bewertungsexplainermodell verwendet
+
    ```python
    # Register explainer model using the path from ScoringExplainer.save - could be done on remote compute
    run.upload_file('breast_cancer_scoring_explainer.pkl', scoring_explainer_path)
    model = run.register_model(model_name='breast_cancer_scoring_explainer', model_path='breast_cancer_scoring_explainer.pkl')
    print(model.name, model.id, model.version, sep = '\t')
-   ``` 
+   ```
 
 1. [Optional:] Abrufen des Bewertungsexplainers aus der Cloud und Testen der Erläuterungen
+
    ```python
    from azureml.contrib.explain.model.scoring.scoring_explainer import ScoringExplainer
 
-   # Retreive the scoring explainer model from cloud"
+   # Retrieve the scoring explainer model from cloud"
    scoring_explainer_model = Model(ws, 'breast_cancer_scoring_explainer')
    scoring_explainer_model_path = scoring_explainer_model.download(target_dir=os.getcwd(), exist_ok=True)
 
@@ -333,6 +342,7 @@ Der Explainer kann zusammen mit dem ursprünglichen Modell bereitgestellt werden
 1. Bereitstellen des Images für ein Computeziel:
 
    1. Erstellen einer Bewertungsdatei (führen Sie vor diesem Schritt die Schritte unter [Bereitstellen von Modellen mit Azure Machine Learning Service](https://docs.microsoft.com/azure/machine-learning/service/how-to-deploy-and-where) zum Registrieren Ihres ursprünglichen Vorhersagemodells aus)
+
         ```python
         %%writefile score.py
         import json
@@ -365,50 +375,55 @@ Der Explainer kann zusammen mit dem ursprünglichen Modell bereitgestellt werden
             local_importance_values = scoring_explainer.explain(data)
             # You can return any data type as long as it is JSON-serializable
             return {'predictions': predictions.tolist(), 'local_importance_values': local_importance_values}
-        ``` 
-    1. Definieren der Bereitstellungskonfiguration. (Diese Konfiguration hängt von den Anforderungen Ihres Modells ab. Das folgende Beispiel definiert eine Konfiguration, die einen CPU-Kern und 1 GB Arbeitsspeicher verwendet.)
+        ```
+
+   1. Definieren der Bereitstellungskonfiguration. (Diese Konfiguration hängt von den Anforderungen Ihres Modells ab. Das folgende Beispiel definiert eine Konfiguration, die einen CPU-Kern und 1 GB Arbeitsspeicher verwendet.)
+
         ```python
         from azureml.core.webservice import AciWebservice
 
-        aciconfig = AciWebservice.deploy_configuration(cpu_cores=1, 
-                                                       memory_gb=1, 
-                                                       tags={"data": "breastcancer",  
-                                                             "method" : "local_explanation"}, 
+        aciconfig = AciWebservice.deploy_configuration(cpu_cores=1,
+                                                       memory_gb=1,
+                                                       tags={"data": "breastcancer",
+                                                             "method" : "local_explanation"},
                                                        description='Get local explanations for breast cancer data')
-        ``` 
+        ```
 
-    1. Erstellen einer Datei mit Umgebungsabhängigkeiten
+   1. Erstellen einer Datei mit Umgebungsabhängigkeiten
 
         ```python
-        from azureml.core.conda_dependencies import CondaDependencies 
+        from azureml.core.conda_dependencies import CondaDependencies
 
         # WARNING: to install this, g++ needs to be available on the Docker image and is not by default (look at the next cell)
 
 
-        myenv = CondaDependencies.create(pip_packages=["azureml-defaults", "azureml-explain-model", "azureml-contrib-explain-model"], 
+        myenv = CondaDependencies.create(pip_packages=["azureml-defaults", "azureml-explain-model", "azureml-contrib-explain-model"],
                                         conda_packages=["scikit-learn"])
 
         with open("myenv.yml","w") as f:
             f.write(myenv.serialize_to_string())
-            
+
         with open("myenv.yml","r") as f:
             print(f.read())
-        ``` 
-    1. Erstellen eines benutzerdefinierten Dockerfiles mit installiertem g++
+        ```
+
+   1. Erstellen eines benutzerdefinierten Dockerfiles mit installiertem g++
 
         ```python
         %%writefile dockerfile
-        RUN apt-get update && apt-get install -y g++  
-        ``` 
-    1. Bereitstellen des erstellten Images (geschätzte Zeit: 5 Minuten)
+        RUN apt-get update && apt-get install -y g++
+        ```
+
+   1. Bereitstellen des erstellten Images (geschätzte Zeit: 5 Minuten)
+
         ```python
         from azureml.core.webservice import Webservice
         from azureml.core.image import ContainerImage
 
         # Use the custom scoring, docker, and conda files we created above
         image_config = ContainerImage.image_configuration(execution_script="score.py",
-                                                        docker_file="dockerfile", 
-                                                        runtime="python", 
+                                                        docker_file="dockerfile",
+                                                        runtime="python",
                                                         conda_file="myenv.yml")
 
         # Use configs and models generated above
@@ -419,9 +434,10 @@ Der Explainer kann zusammen mit dem ursprünglichen Modell bereitgestellt werden
                                             image_config=image_config)
 
         service.wait_for_deployment(show_output=True)
-        ``` 
+        ```
 
 1. Testen der Bereitstellung
+
     ```python
     import requests
 
@@ -438,9 +454,33 @@ Der Explainer kann zusammen mit dem ursprünglichen Modell bereitgestellt werden
     print("POST to url", service.scoring_uri)
     # can covert back to Python objects from json string if desired
     print("prediction:", resp.text)
-    ``` 
+    ```
 
 1. Bereinigen: Verwenden Sie zum Löschen eines bereitgestellten Webdiensts `service.delete()`.
+
+## <a name="interpretability-in-automated-ml"></a>Interpretierbarkeit beim automatisierten maschinellen Lernen
+
+Das automatisierte maschinelle Lernen enthält Pakete zum Interpretieren der Merkmalsrelevanz in automatisch trainierten Modellen. Darüber hinaus ermöglichen Klassifizierungsszenarien Ihnen, die Merkmalsrelevanz auf Klassenebene abzurufen. Es gibt zwei Methoden, um dieses Verhalten beim automatisierten maschinellen Lernen zu aktivieren:
+
+* Um die Merkmalsrelevanz für ein trainiertes Ensemblemodell zu aktivieren, verwenden Sie die Funktion [`explain_model()`](https://docs.microsoft.com/python/api/azureml-train-automl/azureml.train.automl.automlexplainer?view=azure-ml-py).
+
+    ```python
+    from azureml.train.automl.automlexplainer import explain_model
+
+    shap_values, expected_values, overall_summary, overall_imp, \
+        per_class_summary, per_class_imp = explain_model(fitted_model, X_train, X_test)
+    ```
+
+* Um die Merkmalsrelevanz für jede einzelne Ausführung vor dem Training zu aktivieren, legen Sie den `model_explainability`-Parameter im `AutoMLConfig`-Objekt auf `True` fest, und stellen Sie Daten zur Überprüfung bereit. Verwenden Sie dann die Funktion [`retrieve_model_explanation()`](https://docs.microsoft.com/python/api/azureml-train-automl/azureml.train.automl.automlexplainer?view=azure-ml-py).
+
+    ```python
+    from azureml.train.automl.automlexplainer import retrieve_model_explanation
+
+    shap_values, expected_values, overall_summary, overall_imp, per_class_summary, \
+        per_class_imp = retrieve_model_explanation(best_run)
+    ```
+
+Weitere Informationen zum Aktivieren von Interpretierbarkeitsmerkmalen beim automatisierten maschinellen Lernen finden Sie hier: [Erläutern des Modells (Interpretierbarkeit)](how-to-configure-auto-train.md#explain-the-model-interpretability).
 
 ## <a name="next-steps"></a>Nächste Schritte
 

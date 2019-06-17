@@ -10,12 +10,12 @@ ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 4/11/2019
 ms.author: jehollan
-ms.openlocfilehash: 75987e7cba9f373af5a434de9f273948c3c9ae75
-ms.sourcegitcommit: f6c85922b9e70bb83879e52c2aec6307c99a0cac
+ms.openlocfilehash: dab7561db8f223bff87f41ef756605359c3478e4
+ms.sourcegitcommit: 600d5b140dae979f029c43c033757652cddc2029
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/11/2019
-ms.locfileid: "65544768"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66492702"
 ---
 # <a name="azure-functions-premium-plan-preview"></a>Premium-Plan (Premium-Tarif) für Azure Functions (Vorschau)
 
@@ -56,7 +56,7 @@ az resource update -g <resource_group> -n <function_app_name>/config/web --set p
 
 ### <a name="private-network-connectivity"></a>Private Netzwerkkonnektivität
 
-Für Azure Functions, bereitgestellt in einem Premium-Plan, wird die [neue VNET-Integration für Web-Apps](../app-service/web-sites-integrate-with-vnet.md#new-vnet-integration) genutzt.  Ist diese Integration konfiguriert, kann Ihre App mit Ressourcen in Ihrem VNET oder geschützt über Dienstendpunkte kommunizieren.  IP-Einschränkungen sind ebenfalls für die App verfügbar, um eingehenden Datenverkehr zu beschränken.
+Für Azure Functions, bereitgestellt in einem Premium-Plan, wird die [neue VNET-Integration für Web-Apps](../app-service/web-sites-integrate-with-vnet.md) genutzt.  Ist diese Integration konfiguriert, kann Ihre App mit Ressourcen in Ihrem VNET oder geschützt über Dienstendpunkte kommunizieren.  IP-Einschränkungen sind ebenfalls für die App verfügbar, um eingehenden Datenverkehr zu beschränken.
 
 Wenn Sie Ihrer Funktions-App in einem Premium-Plan ein Subnetz zuweisen, benötigen Sie ein Subnetz mit genügend IP-Adressen für jede mögliche-Instanz. Obwohl die maximale Anzahl von Instanzen in der Vorschauphase variieren kann, ist ein IP-Adressblock mit mindestens 100 verfügbaren Adressen erforderlich.
 
@@ -91,7 +91,7 @@ az resource update -g <resource_group> -n <premium_plan_name> --set properties.m
 
 ### <a name="available-instance-skus"></a>Verfügbare Instanz-SKUs
 
-Wenn Sie Ihren Plan erstellen oder horizontal skalieren, können Sie zwischen drei Instanzgrößen wählen.  Ihnen werden die Gesamtanzahl von Kernen und der Arbeitsspeicher in Rechnung gestellt, die pro Sekunde genutzt werden.  Ihre App kann automatisch nach Bedarf auf mehrere Instanzen hochskaliert werden.  
+Wenn Sie Ihren Plan erstellen oder skalieren, können Sie zwischen drei Instanzgrößen wählen.  Ihnen werden die Gesamtanzahl von Kernen und der Arbeitsspeicher in Rechnung gestellt, die pro Sekunde genutzt werden.  Ihre App kann automatisch nach Bedarf auf mehrere Instanzen hochskaliert werden.  
 
 |SKU|Kerne|Arbeitsspeicher|Storage|
 |--|--|--|--|
