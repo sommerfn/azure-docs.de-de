@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 11/24/2017
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: b3177c5dfc5602dd2b6530b0934c17400ab5d528
-ms.sourcegitcommit: 59fd8dc19fab17e846db5b9e262a25e1530e96f3
+ms.openlocfilehash: 4b26446845d004b4dd92807c0b5ec0ada9ed181f
+ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/21/2019
-ms.locfileid: "65978878"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66475222"
 ---
 # <a name="buy-a-custom-domain-name-for-azure-app-service"></a>Kaufen eines benutzerdefinierten Domänennamens für Azure App Service
 
@@ -138,13 +138,17 @@ Klicken Sie auf der Seite **App Service Domain** (App Service-Domäne) auf **OK*
 
 ### <a name="test-the-hostnames"></a>Testen des Hostnamens
 
-Wenn Sie Ihrer App Standardhostnamen zugewiesen haben, wird Ihnen für jeden ausgewählten Hostnamen eine Erfolgsbenachrichtigung angezeigt. 
+Wenn Sie Ihrer App Standardhostnamen zugewiesen haben, wird Ihnen für jeden ausgewählten Hostnamen eine Erfolgsbenachrichtigung angezeigt.
 
 ![](./media/custom-dns-web-site-buydomains-web-app/dncmntask-cname-buydomains-bind-success.png)
 
-Auf der Seite **Benutzerdefinierte Domänen** werden Ihnen die ausgewählten Hostnamen im Abschnitt **Benutzerdefinierte Hostnamen** angezeigt. 
+Auf der Seite **Benutzerdefinierte Domänen** werden Ihnen die ausgewählten Hostnamen im Abschnitt **Benutzerdefinierte Hostnamen** angezeigt.
 
 ![](./media/custom-dns-web-site-buydomains-web-app/dncmntask-cname-buydomains-hostnames-added.png)
+
+> [!NOTE]
+> Die Bezeichnung **Nicht sicher** für Ihre benutzerdefinierte Domäne bedeutet, dass diese noch nicht an ein SSL-Zertifikat gebunden ist und dass für alle HTTPS-Anforderungen von einem Browser an Ihre benutzerdefinierte Domäne abhängig vom Browser eine Warnung oder ein Fehler angezeigt wird. Informationen zum Konfigurieren der SSL-Bindung finden Sie unter [Kaufen und Konfigurieren eines SSL-Zertifikats für Azure App Service](web-sites-purchase-ssl-web-site.md).
+>
 
 Um den Hostnamen zu testen, navigieren Sie zu den aufgelisteten Hostnamen im Browser. Versuchen Sie wie im Beispiel im vorstehenden Screenshot, zu den Seiten _kontoso.net_ und _www\.kontoso.net_ zu navigieren.
 

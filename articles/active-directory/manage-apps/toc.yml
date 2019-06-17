@@ -83,6 +83,10 @@
           href: plan-sso-deployment.md
     - name: Endbenutzerportale
       href: end-user-experiences.md
+    - name: One-Click-SSO
+      items:
+        - name: Was ist One-Click-SSO?
+          href: one-click-sso-tutorial.md
 - name: Anleitungen
   items:
     - name: Hinzufügen einer Cloud-App

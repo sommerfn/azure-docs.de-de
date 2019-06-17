@@ -16,6 +16,10 @@
       href: manage-app-groups.md
     - name: 5. Erstellen eines Hostpools zum Überprüfen von Dienstupdates
       href: create-validation-host-pool.md
+    - name: 6. Bereitstellen eines Verwaltungstools
+      href: manage-resources-using-ui.md
+    - name: 7. Einrichten von Dienstwarnungen
+      href: set-up-service-alerts.md
 - name: Vorgehensweise
   items:
     - name: Herstellen einer Verbindung mit Windows Virtual Desktop-Ressourcen
@@ -40,6 +44,8 @@
       href: configure-vm-gpu.md
     - name: Automatisches Skalieren von Sitzungshosts
       href: set-up-scaling-script.md
+    - name: Anpassen der RDP-Eigenschaften
+      href: customize-rdp-properties.md
 - name: Konzepte
   items:
     - name: Windows Virtual Desktop-Umgebung

@@ -64,7 +64,9 @@ landingContent:
         links:
           - text: Konfigurieren eines transparenten Gateways
             url: how-to-create-transparent-gateway.md
-          - text: Verbinden eines nachgeschalteten Geräts
+          - text: Authentifizieren eines nachgeschalteten Geräts bei Azure IoT Hub
+            url: how-to-authenticate-downstream-device.md
+          - text: Herstellen einer Verbindung zwischen einem nachgeschalteten Gerät und einem Gateway
             url: how-to-connect-downstream-device.md
   - title: Vorbereiten für Produktionsszenarien
     linkLists:

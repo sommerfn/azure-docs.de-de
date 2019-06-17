@@ -83,22 +83,26 @@
           href: sql-database-design-first-database.md
         - name: Entwerfen einer Datenbank mithilfe von .NET
           href: sql-database-design-first-database-csharp.md
-    - name: Migrieren zu SQL-Datenbank
+    - name: Singleton-Datenbank
       items:
         - name: Migrieren zu einer Einzel- oder Pooldatenbank mithilfe von DMS
           href: ../dms/tutorial-sql-server-to-azure-sql.md?toc=/azure/sql-database/toc.json
-        - name: Migrieren zu einer verwalteten Instanz mithilfe von DMS
+        - name: Implementieren einer geografisch verteilten Datenbank
+          href: sql-database-implement-geo-distributed-database.md
+        - name: Einrichten der Azure SQL-Datensynchronisierung
+          href: sql-database-get-started-sql-data-sync.md
+    - name: Verwaltete Instanz
+      items:
+        - name: Onlinemigration mithilfe von DMS
           href: ../dms/tutorial-sql-server-to-managed-instance.md?toc=/azure/sql-database/toc.json
+        - name: Konfigurieren der Transaktionsreplikation
+          href: replication-with-sql-database-managed-instance.md
     - name: Sicherheit in SQL-Datenbank
       items:
         - name: Sicherheit für Einzel- und Pooldatenbanken
           href: sql-database-security-tutorial.md
         - name: Sicherheit bei verwalteten Instanzen
           href: sql-database-managed-instance-aad-security-tutorial.md
-    - name: Implementieren einer geografisch verteilten Datenbank
-      href: sql-database-implement-geo-distributed-database.md
-    - name: Einrichten der Azure SQL-Datensynchronisierung
-      href: sql-database-get-started-sql-data-sync.md
     - name: Machine Learning Services
       items:
         - name: Erstellen eines Vorhersagemodells in R
@@ -500,8 +504,6 @@
           href: sql-database-managed-instance-find-management-endpoint-ip-address.md
         - name: Überprüfen des integrierten Firewallschutzes
           href: sql-database-managed-instance-management-endpoint-verify-built-in-firewall.md
-        - name: Transaktionsreplikation
-          href: replication-with-sql-database-managed-instance.md
         - name: Konfigurieren der Bedrohungserkennung
           href: sql-database-managed-instance-threat-detection.md
         - name: Herstellen einer Verbindung mit Anwendungen

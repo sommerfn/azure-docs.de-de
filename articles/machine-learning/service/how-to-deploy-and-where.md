@@ -9,14 +9,14 @@ ms.topic: conceptual
 ms.author: jordane
 author: jpe316
 ms.reviewer: larryfr
-ms.date: 05/21/2019
+ms.date: 05/31/2019
 ms.custom: seoapril2019
-ms.openlocfilehash: 4685d02fa9a1f08d86bdbe2915b94f177235b864
-ms.sourcegitcommit: db3fe303b251c92e94072b160e546cec15361c2c
+ms.openlocfilehash: 328da909449eb71df3139e06be2254eb302232a4
+ms.sourcegitcommit: 18a0d58358ec860c87961a45d10403079113164d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/22/2019
-ms.locfileid: "66016420"
+ms.lasthandoff: 06/05/2019
+ms.locfileid: "66692909"
 ---
 # <a name="deploy-models-with-the-azure-machine-learning-service"></a>Bereitstellen von Modellen mit dem Azure Machine Learning-Dienst
 
@@ -97,7 +97,7 @@ Die folgenden Computeziele bzw. Computeressourcen können verwendet werden, um I
 | [Lokaler Webdienst](#local) | Testen/Debuggen | Geeignet für eingeschränkte Tests und Problembehandlung.
 | [Azure Kubernetes Service (AKS)](#aks) | Echtzeitrückschluss | Geeignet für hochgradig skalierbare Produktionsbereitstellungen. Bietet automatische Skalierung und schnelle Reaktionszeiten. |
 | [Azure Container Instances (ACI)](#aci) | Testen | Ideal für CPU-basierte Workloads mit geringer Skalierung. |
-| [Azure Machine Learning Compute](how-to-run-batch-predictions.md) | (Vorschau) Batchrückschluss | Ausführen von Batchbewertungen auf serverlosen Computezielen. Unterstützt virtuelle Computer mit normaler und niedriger Priorität. |
+| [Azure Machine Learning Compute](how-to-run-batch-predictions.md) | Batchrückschluss | Führen Sie Batchrückschluss für serverloses Computing aus. Unterstützt virtuelle Computer mit normaler und niedriger Priorität. |
 | [Azure IoT Edge](#iotedge) | (Vorschauversion) IoT-Modul | Bereitstellen und Verarbeiten von ML-Modellen auf IoT-Geräten. |
 
 
@@ -130,8 +130,9 @@ Folgende Typen werden derzeit unterstützt:
 Um Schemagenerierung zu verwenden, schließen Sie das `inference-schema`-Paket in Ihre Conda-Umgebungsdatei ein. Das folgende Beispiel verwendet `[numpy-support]`, da das Eingangsskript einen NumPy-Parametertyp verwendet: 
 
 #### <a name="example-dependencies-file"></a>Beispieldatei für Abhängigkeiten
-Das folgende Beispiel zeigt eine Conda-Abhängigkeitsdatei für den Rückschluss.
-```python
+Das folgende YAML-Beispiel zeigt eine Conda-Abhängigkeitsdatei für den Rückschluss.
+
+```YAML
 name: project_environment
 dependencies:
   - python=3.6.2
@@ -186,6 +187,48 @@ def run(data):
         return error
 ```
 
+#### <a name="example-script-with-dictionary-input-support-consumption-from-power-bi"></a>Beispielskript mit Wörterbucheingabe (Unterstützung der Nutzung von Daten aus Power BI)
+
+Im folgende Beispiel wird veranschaulicht, wie Eingabedaten unter Verwendung von Datenrahmen als Wörterbuch des Typs <Schlüssel: Wert> definiert werden. Diese Methode wird für die Nutzung des von Power BI bereitgestellten Webdiensts unterstützt ([erfahren Sie mehr über den Webdienst von Power BI](https://docs.microsoft.com/en-us/power-bi/service-machine-learning-integration)):
+
+```python
+import json
+import pickle
+import numpy as np
+import pandas as pd
+import azureml.train.automl
+from sklearn.externals import joblib
+from azureml.core.model import Model
+
+from inference_schema.schema_decorators import input_schema, output_schema
+from inference_schema.parameter_types.numpy_parameter_type import NumpyParameterType
+from inference_schema.parameter_types.pandas_parameter_type import PandasParameterType
+
+def init():
+    global model
+    model_path = Model.get_model_path('model_name')   # replace model_name with your actual model name, if needed
+    # deserialize the model file back into a sklearn model
+    model = joblib.load(model_path)
+
+input_sample = pd.DataFrame(data=[{
+              "input_name_1": 5.1,         # This is a decimal type sample. Use the data type that reflects this column in your data
+              "input_name_2": "value2",    # This is a string type sample. Use the data type that reflects this column in your data
+              "input_name_3": 3            # This is a integer type sample. Use the data type that reflects this column in your data
+            }])
+
+output_sample = np.array([0])              # This is a integer type sample. Use the data type that reflects the expected result
+
+@input_schema('data', PandasParameterType(input_sample))
+@output_schema(NumpyParameterType(output_sample))
+def run(data):
+    try:
+        result = model.predict(data)
+        # you can return any datatype as long as it is JSON-serializable
+        return result.tolist()
+    except Exception as e:
+        error = str(e)
+        return error
+```
 Weitere Beispielskripts finden Sie in den folgenden Beispielen:
 
 * PyTorch: [https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/training-with-deep-learning/train-hyperparameter-tune-deploy-with-pytorch](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/training-with-deep-learning/train-hyperparameter-tune-deploy-with-pytorch)
@@ -236,9 +279,6 @@ Die folgenden Abschnitte zeigen, wie Sie die Bereitstellungskonfiguration erstel
 
 Um eine lokale Bereitstellung durchzuführen, müssen Sie **Docker** auf Ihrem lokalen Computer installiert haben.
 
-In den Beispielen dieses Abschnitts wird [deploy_from_image](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice(class)?view=azure-ml-py#deploy-from-model-workspace--name--models--image-config--deployment-config-none--deployment-target-none-) verwendet. Modell und Image müssen daher vor der Bereitstellung registriert werden. Weitere Informationen zu anderen Bereitstellungsmethoden finden Sie unter [deploy](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice(class)?view=azure-ml-py#deploy-workspace--name--model-paths--image-config--deployment-config-none--deployment-target-none-) sowie unter [deploy_from_model](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice(class)?view=azure-ml-py#deploy-from-model-workspace--name--models--image-config--deployment-config-none--deployment-target-none-).
-
-
 + **Verwenden des SDK**
 
   ```python
@@ -284,7 +324,7 @@ Um Kontingente und die Regionsverfügbarkeit für ACI anzuzeigen, lesen Sie den 
 
 Weitere Informationen finden Sie in der Referenzdokumentation für die Klassen [AciWebservice](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice.aciwebservice?view=azure-ml-py) und [Webservice](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice.webservice?view=azure-ml-py).
 
-### <a id="aks"></a>Azure Kubernetes Service (PRODUKTION)
+### <a id="aks"></a>Azure Kubernetes Service (ENTWICKLUNG/TESTS und PRODUKTION)
 
 Sie können einen vorhandenen AKS-Cluster verwenden oder mithilfe des Azure Machine Learning-SDK, der CLI oder des Azure-Portals einen neuen erstellen.
 
@@ -296,6 +336,9 @@ Falls Sie bereits einen AKS-Cluster angefügt haben, können Sie dafür die Bere
 
   ```python
   aks_target = AksCompute(ws,"myaks")
+  # If deploying to a cluster configured for dev/test, ensure that it was created with enough
+  # cores and memory to handle this deployment configuration. Note that memory is also used by
+  # things such as dependencies and AML components.
   deployment_config = AksWebservice.deploy_configuration(cpu_cores = 1, memory_gb = 1)
   service = Model.deploy(ws, "aksservice", [model], inference_config, deployment_config, aks_target)
   service.wait_for_deployment(show_output = True)
@@ -318,16 +361,23 @@ Weitere Informationen zur AKS-Bereitstellung und zur automatischen Skalierung fi
 #### Erstellen eines neuen AKS-Clusters<a id="create-attach-aks"></a>
 **Geschätzter Zeitaufwand:** Ca. fünf Minuten.
 
-> [!IMPORTANT]
-> Das Erstellen oder Anfügen eines AKS-Clusters ist ein für Ihren Arbeitsbereich einmaliger Vorgang. Sie können diesen Cluster für mehrere Bereitstellungen wiederverwenden. Wenn Sie den Cluster oder die Ressourcengruppe löschen, die ihn enthält, müssen Sie bei der nächsten Bereitstellung einen neuen Cluster erstellen.
+Das Erstellen oder Anfügen eines AKS-Clusters ist ein für Ihren Arbeitsbereich einmaliger Vorgang. Sie können diesen Cluster für mehrere Bereitstellungen wiederverwenden. Wenn Sie den Cluster oder die Ressourcengruppe löschen, die ihn enthält, müssen Sie bei der nächsten Bereitstellung einen neuen Cluster erstellen. Sie können an Ihren Arbeitsbereich mehrere AKS-Cluster anfügen.
 
-Weitere Informationen zum Festlegen von `autoscale_target_utilization`, `autoscale_max_replicas` und `autoscale_min_replicas` finden Sie in der Referenz zu [AksWebservice.deploy_configuration](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice.akswebservice?view=azure-ml-py#deploy-configuration-autoscale-enabled-none--autoscale-min-replicas-none--autoscale-max-replicas-none--autoscale-refresh-seconds-none--autoscale-target-utilization-none--collect-model-data-none--auth-enabled-none--cpu-cores-none--memory-gb-none--enable-app-insights-none--scoring-timeout-ms-none--replica-max-concurrent-requests-none--max-request-wait-time-none--num-replicas-none--primary-key-none--secondary-key-none--tags-none--properties-none--description-none-).
+Falls Sie einen AKS-Cluster für Entwicklung, Validierung und Tests erstellen möchten, legen Sie `cluster_purpose = AksCompute.ClusterPurpose.DEV_TEST` fest, wenn Sie [`provisioning_configuration()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.compute.akscompute?view=azure-ml-py) verwenden. Ein mit dieser Einstellung erstellter Cluster hat nur einen Knoten.
+
+> [!IMPORTANT]
+> Bei Festlegen von `cluster_purpose = AksCompute.ClusterPurpose.DEV_TEST` wird ein AKS-Cluster erstellt, der nicht für die Verarbeitung von Produktionsdatenverkehr geeignet ist. Rückschlusszeiten können länger sein als bei einem Cluster, der für die Produktion angelegt wurde. Für Entwicklungs- und Testcluster wird zudem keine Fehlertoleranz garantiert.
+>
+> Wir empfehlen, dass Cluster, die für Entwicklung und Tests erstellt werden, mindestens zwei virtuelle CPUs aufweisen.
+
 Das folgende Beispiel zeigt, wie ein neuer Azure Kubernetes Service-Cluster erstellt wird:
 
 ```python
 from azureml.core.compute import AksCompute, ComputeTarget
 
-# Use the default configuration (you can also provide parameters to customize this)
+# Use the default configuration (you can also provide parameters to customize this).
+# For example, to create a dev/test cluster, use:
+# prov_config = AksCompute.provisioning_configuration(cluster_purpose = AksComputee.ClusterPurpose.DEV_TEST)
 prov_config = AksCompute.provisioning_configuration()
 
 aks_name = 'myaks'
@@ -344,6 +394,7 @@ Weitere Informationen zum Erstellen eines AKS-Clusters außerhalb des Azure Mach
 * [az aks create](https://docs.microsoft.com/cli/azure/aks?toc=%2Fazure%2Faks%2FTOC.json&bc=%2Fazure%2Fbread%2Ftoc.json&view=azure-cli-latest#az-aks-create)
 * [Schnellstart: Bereitstellen eines AKS-Clusters (Azure Kubernetes Service) über das Azure-Portal](https://docs.microsoft.com/azure/aks/kubernetes-walkthrough-portal?view=azure-cli-latest)
 
+Weitere Informationen zum Parameter `cluster_purpose` finden Sie in der Referenz zu [AksCompute.ClusterPurpose](https://docs.microsoft.com/python/api/azureml-core/azureml.core.compute.aks.akscompute.clusterpurpose?view=azure-ml-py).
 
 > [!IMPORTANT]
 > Wenn Sie für [`provisioning_configuration()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.compute.akscompute?view=azure-ml-py) benutzerdefinierte Werte für agent_count und vm_size auswählen, müssen Sie sicherstellen, dass agent_count multipliziert mit vm_size mindestens 12 virtuellen CPUs entspricht. Wenn Sie beispielsweise für vm_size „Standard_D3_v2“ verwenden, das 4 virtuelle CPUs hat, müssen Sie für agent_count einen Wert von mindestens 3 wählen.
@@ -352,7 +403,16 @@ Weitere Informationen zum Erstellen eines AKS-Clusters außerhalb des Azure Mach
 
 #### <a name="attach-an-existing-aks-cluster"></a>Anfügen eines vorhandenen AKS-Clusters
 
-Wenn Sie in Ihrem Azure-Abonnement bereits über einen AKS-Cluster mit der Version 1.12.## und mindestens 12 virtuellen CPUs verfügen, können Sie diesen für die Bereitstellung Ihres Images verwenden. Der folgende Code veranschaulicht das Anfügen eines vorhandenen AKS-Clusters der Version 1.12.## an Ihren Arbeitsbereich:
+Wenn Sie in Ihrem Azure-Abonnement bereits über einen AKS-Cluster verfügen und dieser die Version 1.12.* hat, können Sie diesen für die Bereitstellung Ihres Image verwenden.
+
+> [!WARNING]
+> Wenn Sie einen AKS-Cluster an einen Arbeitsbereich anfügen, können Sie durch Festlegen des Parameters `cluster_purpose` bestimmen, wie Sie den Cluster verwenden möchten.
+>
+> Wenn Sie den Parameter `cluster_purpose` nicht bzw. `cluster_purpose = AksCompute.ClusterPurpose.FAST_PROD` festlegen, muss der Cluster über mindestens 12 virtuelle CPUs verfügen.
+>
+> Wenn Sie `cluster_purpose = AksCompute.ClusterPurpose.DEV_TEST` festlegen, muss der Cluster nicht über 12 virtuelle CPUs verfügen. Ein Cluster, der für Entwicklung/Tests konfiguriert ist, eignet sich jedoch nicht für Produktionsdatenverkehr und kann Rückschlusszeiten erhöhen.
+
+Der folgende Code veranschaulicht das Anfügen eines vorhandenen AKS-Clusters der Version 1.12.## an Ihren Arbeitsbereich:
 
 ```python
 from azureml.core.compute import AksCompute, ComputeTarget
@@ -360,11 +420,18 @@ from azureml.core.compute import AksCompute, ComputeTarget
 resource_group = 'myresourcegroup'
 cluster_name = 'mycluster'
 
-# Attach the cluster to your workgroup
+# Attach the cluster to your workgroup. If the cluster has less than 12 virtual CPUs, use the following instead:
+# attach_config = AksCompute.attach_configuration(resource_group = resource_group,
+#                                         cluster_name = cluster_name,
+#                                         cluster_purpose = AksCompute.ClusterPurpose.DEV_TEST)
 attach_config = AksCompute.attach_configuration(resource_group = resource_group,
                                          cluster_name = cluster_name)
 aks_target = ComputeTarget.attach(ws, 'mycompute', attach_config)
 ```
+
+Weitere Informationen zu `attack_configuration()` finden Sie in der Referenz zu [AksCompute.attach_configuration()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.compute.akscompute?view=azure-ml-py#attach-configuration-resource-group-none--cluster-name-none--resource-id-none--cluster-purpose-none-).
+
+Weitere Informationen zum Parameter `cluster_purpose` finden Sie in der Referenz zu [AksCompute.ClusterPurpose](https://docs.microsoft.com/python/api/azureml-core/azureml.core.compute.aks.akscompute.clusterpurpose?view=azure-ml-py).
 
 ## <a name="consume-web-services"></a>Nutzen von Webdiensten
 
@@ -398,7 +465,7 @@ print(response.json())
 Weitere Informationen finden Sie unter [Erstellen von Clientanwendungen zur Nutzung von Webdiensten](how-to-consume-web-service.md).
 
 
-### <a id="azuremlcompute"></a> Batchnutzung
+### <a id="azuremlcompute"></a> Batchrückschluss
 Azure Machine Learning Compute-Ziele werden von Azure Machine Learning Service erstellt und verwaltet. Sie können für Batchvorhersagen über Azure Machine Learning-Pipelines verwendet werden.
 
 Eine exemplarische Vorgehensweise zu Batchrückschlüssen mit Azure Machine Learning Compute finden Sie im Artikel [Ausführen von Batchvorhersagen](how-to-run-batch-predictions.md).

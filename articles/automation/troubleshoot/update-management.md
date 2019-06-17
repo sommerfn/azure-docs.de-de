@@ -4,16 +4,16 @@ description: Erfahren Sie, wie Sie Fehler mit Updateverwaltung beheben können.
 services: automation
 author: georgewallace
 ms.author: gwallace
-ms.date: 05/07/2019
+ms.date: 05/31/2019
 ms.topic: conceptual
 ms.service: automation
 manager: carmonm
-ms.openlocfilehash: f286877c6a9e787c06a8a846efaf94668c04fc4e
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: 9bcc871ecc9413f02545e6aec4caa6342d563b44
+ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65787691"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66474570"
 ---
 # <a name="troubleshooting-issues-with-update-management"></a>Behandeln von Problemen mit Updateverwaltung
 
@@ -78,19 +78,48 @@ $s = New-AzureRmAutomationSchedule -ResourceGroupName mygroup -AutomationAccount
 New-AzureRmAutomationSoftwareUpdateConfiguration  -ResourceGroupName $rg -AutomationAccountName $aa -Schedule $s -Windows -AzureVMResourceId $azureVMIdsW -NonAzureComputer $nonAzurecomputers -Duration (New-TimeSpan -Hours 2) -IncludedUpdateClassification Security,UpdateRollup -ExcludedKbNumber KB01,KB02 -IncludedKbNumber KB100
 ```
 
-### <a name="nologs"></a>Szenario: Die Daten der Updateverwaltung für einen Computer werden nicht in Azure Monitor-Protokolle angezeigt
+### <a name="nologs"></a>Szenario: Im Portal werden unter „Updateverwaltung“ keine Computer angezeigt
 
 #### <a name="issue"></a>Problem
 
-Bei einigen Ihrer Computer wird **Nicht bewertet** unter **Compliance** angezeigt, es werden aber Heartbeatdaten in Azure Monitor-Protokolle für den Hybrid Runbook Worker, jedoch nicht für die Updateverwaltung angezeigt.
+Sie können auf die folgenden Szenarien stoßen:
+
+* In der Ansicht „Updateverwaltung“ einer VM wird Ihr Computer als **Nicht konfiguriert** angezeigt
+
+* Ihre Computer fehlen in der Ansicht „Updateverwaltung“ Ihres Automation-Kontos
+
+* Bei einigen Ihrer Computer wird **Nicht bewertet** unter **Compliance** angezeigt, es werden aber Heartbeatdaten in Azure Monitor-Protokolle für den Hybrid Runbook Worker, jedoch nicht für die Updateverwaltung angezeigt.
 
 #### <a name="cause"></a>Ursache
 
+Dies kann durch potenzielle lokale Konfigurationsprobleme oder eine falsch konfigurierte Bereichskonfiguration verursacht werden.
+
 Der Hybrid Runbook Worker muss eventuell erneut registriert und installiert werden.
+
+Möglicherweise haben Sie in Ihrem Arbeitsbereich ein Kontingent festgelegt, das erreicht ist und verhindert, dass Daten gespeichert werden.
 
 #### <a name="resolution"></a>Lösung
 
-Führen Sie die Schritte unter [Bereitstellen eines Windows Hybrid Runbook Workers](../automation-windows-hrw-install.md) aus, um den Hybrid Worker für Windows neu zu installieren (bzw. [Bereitstellen eines Linux Hybrid Runbook Workers](../automation-linux-hrw-install.md) für Linux).
+* Vergewissern Sie sich, dass Ihr Computer dem richtigen Arbeitsbereich Bericht erstattet. Überprüfen Sie, welchem Arbeitsbereich Ihr Computer Berichte erstattet. Entsprechende Anweisungen dazu finden Sie unter [Überprüfen der Agent-Konnektivität mit Log Analytics](../../azure-monitor/platform/agent-windows.md#verify-agent-connectivity-to-log-analytics). Vergewissern Sie sich anschließend, dass dies der Arbeitsbereich ist, der mit Ihrem Azure Automation-Konto verknüpft ist. Um dies zu bestätigen, navigieren Sie zu Ihrem Automation-Konto und klicken Sie unter **Verwandte Ressourcen** auf **Verknüpfter Arbeitsbereich**.
+
+* Prüfen Sie, ob die Computer in Ihrem Log Analytics-Arbeitsbereich angezeigt werden. Führen Sie in Ihrem Log Analytics-Arbeitsbereich, der mit Ihrem Automation-Konto verknüpft ist, die folgende Abfrage aus. Wenn Ihr Computer nicht in den Suchergebnissen zu sehen ist, sendet Ihr Computer kein Taktsignal, was bedeutet, dass höchstwahrscheinlich ein lokales Konfigurationsproblem vorliegt. Sie können je nach Betriebssystem die Problembehandlung für [Windows](update-agent-issues.md#troubleshoot-offline) oder [Linux](update-agent-issues-linux.md#troubleshoot-offline) ausführen oder den [Agent neu installieren](../../azure-monitor/learn/quick-collect-windows-computer.md#install-the-agent-for-windows). Wenn Ihr Computer in den Suchergebnissen aufgeführt ist, müssen Sie die im folgenden Aufzählungspunkt angegebene Bereichskonfiguration überprüfen.
+
+  ```loganalytics
+  Heartbeat
+  | summarize by Computer, Solutions
+  ```
+
+* Suchen Sie nach Bereichskonfigurationsproblemen. Die [Bereichskonfiguration](../automation-onboard-solutions-from-automation-account.md#scope-configuration) bestimmt, welche Computer für die Lösung konfiguriert werden. Wenn Ihr Computer zwar in Ihrem Arbeitsbereich, aber sonst nicht angezeigt wird, müssen Sie die Bereichskonfiguration entsprechend den Computern konfigurieren. Informationen hierzu finden Sie unter [Integrieren von Computern in den Arbeitsbereich](../automation-onboard-solutions-from-automation-account.md#onboard-machines-in-the-workspace).
+
+* Wenn Sie das Problem nicht anhand der obigen Schritte beheben können, führen Sie die Schritte unter [Bereitstellen eines Windows Hybrid Runbook Workers](../automation-windows-hrw-install.md) aus, um den Hybrid Worker für Windows neu zu installieren (bzw. [Bereitstellen eines Linux Hybrid Runbook Workers](../automation-linux-hrw-install.md) für Linux).
+
+* Führen Sie in Ihrem Arbeitsbereich die folgende Abfrage aus. Wenn Sie das Ergebnis `Data collection stopped due to daily limit of free data reached. Ingestion status = OverQuota` sehen, haben Sie ein Kontingent für Ihren Arbeitsbereich festgelegt, das erreicht ist, wodurch das Speichern von Daten verhindert wird. Wechseln Sie in Ihrem Arbeitsbereich zu **Nutzung und geschätzte Kosten** > **Datenvolumenverwaltung**. Überprüfen Sie das eingerichtete Kontingent, oder heben Sie es auf.
+
+  ```loganalytics
+  Operation
+  | where OperationCategory == 'Data Collection Status'
+  | sort by TimeGenerated desc
+  ```
 
 ## <a name="windows"></a>Windows
 

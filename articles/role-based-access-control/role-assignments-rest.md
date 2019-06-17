@@ -12,15 +12,15 @@ ms.workload: multiple
 ms.tgt_pltfrm: rest-api
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 06/20/2018
+ms.date: 05/28/2019
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: e9c307b2b2e720881acb983a2a1b00ac8e03dac4
-ms.sourcegitcommit: 8e76be591034b618f5c11f4e66668f48c090ddfd
+ms.openlocfilehash: 3602e4ca83e828270ebef56c688670b896ca58a4
+ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/29/2019
-ms.locfileid: "66357062"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66472730"
 ---
 # <a name="manage-access-to-azure-resources-using-rbac-and-the-rest-api"></a>Verwalten des Zugriffs auf Azure-Ressourcen mit RBAC und der REST-API
 
@@ -54,7 +54,7 @@ Zum Auflisten des Zugriffs in RBAC führen Sie die Rollenzuweisungen auf. Um Rol
     | --- | --- |
     | `$filter=atScope()` | Listet nur die Rollenzuweisungen für den angegebenen Bereich auf, ohne die Rollenzuweisungen der Unterbereiche. |
     | `$filter=principalId%20eq%20'{objectId}'` | Listet die Rollenzuweisungen für bestimmte Benutzer, Gruppen oder Dienstprinzipale auf. |
-    | `$filter=assignedTo('{objectId}')` | Listet Rollenzuweisungen für bestimmte Benutzer auf, einschließlich für von Gruppen geerbten Benutzer. |
+    | `$filter=assignedTo('{objectId}')` | Listet die Rollenzuweisungen für bestimmte Benutzer oder Dienstprinzipale auf. Wenn der Benutzer Mitglied einer Gruppe ist, die über eine Rollenzuweisung verfügt, wird diese Rollenzuweisung ebenfalls aufgeführt. Dieser Filter ist für Gruppen transitiv, das heißt: Wenn der Benutzer Mitglied einer Gruppe und diese Gruppe wiederum Mitglied einer anderen Gruppe ist, die über eine Rollenzuweisung verfügt, wird diese Rollenzuweisung ebenfalls aufgeführt. Dieser Filter akzeptiert nur eine Objekt-ID für einen Benutzer oder einen Dienstprinzipal. Für eine Gruppe kann keine Objekt-ID übergeben werden. |
 
 ## <a name="grant-access"></a>Gewähren von Zugriff
 

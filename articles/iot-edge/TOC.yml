@@ -51,6 +51,22 @@
           href: tutorial-deploy-custom-vision.md
         - name: Lokales Speichern von Daten mit SQL
           href: tutorial-store-data-sql-server.md
+    - name: 4. End-to-End-Beispiel für maschinelles Lernen im Edge-Bereich
+      items:
+        - name: Einführung
+          href: tutorial-machine-learning-edge-01-intro.md
+        - name: Einrichten des Entwicklungscomputers und der Azure-Dienste
+          href: tutorial-machine-learning-edge-02-prepare-environment.md
+        - name: Generieren simulierter Gerätedaten
+          href: tutorial-machine-learning-edge-03-generate-data.md
+        - name: Trainieren und Bereitstellen eines Azure Machine Learning-Modells
+          href: tutorial-machine-learning-edge-04-train-model.md
+        - name: Konfigurieren eines transparenten Gateways
+          href: tutorial-machine-learning-edge-05-configure-edge-device.md
+        - name: Erstellen und Bereitstellen von IoT Edge-Modulen
+          href: tutorial-machine-learning-edge-06-custom-modules.md
+        - name: Senden von Daten an IoT Hub über ein transparentes Gateway
+          href: tutorial-machine-learning-edge-07-send-data-to-hub.md
 - name: Konzepte
   items:
     - name: IoT Edge-Laufzeit
@@ -149,6 +165,8 @@
       items:
         - name: Konfigurieren eines transparenten Gateways
           href: how-to-create-transparent-gateway.md
+        - name: Authentifizieren eines nachgeschalteten Geräts
+          href: how-to-authenticate-downstream-device.md
         - name: Verbinden eines nachgeschalteten Geräts
           href: how-to-connect-downstream-device.md
         - name: ModBus-Protokollgateway

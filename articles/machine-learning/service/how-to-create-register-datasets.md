@@ -11,12 +11,12 @@ author: MayMSFT
 manager: cgronlun
 ms.reviewer: nibaccam
 ms.date: 05/21/2019
-ms.openlocfilehash: 949468dfe26b076b5c5cf5cab8bbdc2038c7bd2a
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.openlocfilehash: 021b9035b10ad5a08bca1842e8d0714b33c84271
+ms.sourcegitcommit: 600d5b140dae979f029c43c033757652cddc2029
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66165897"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66492434"
 ---
 # <a name="create-and-access-datasets-preview-in-azure-machine-learning"></a>Erstellen von und Zugreifen auf Datasets (Vorschauversion) in Azure Machine Learning
 
@@ -40,7 +40,7 @@ Sie benötigen Folgendes, um Datasets zu erstellen und zu nutzen:
 
 * Ein Azure-Abonnement. Wenn Sie kein Azure-Abonnement besitzen, können Sie ein kostenloses Konto erstellen, bevor Sie beginnen. Probieren Sie noch heute die [kostenlose oder kostenpflichtige Version von Azure Machine Learning Service](https://aka.ms/AMLFree) aus.
 
-* Einen [Azure Machine Learning Service-Arbeitsbereich](https://docs.microsoft.com/azure/machine-learning/service/setup-create-workspace).
+* Ein [Azure Machine Learning Service-Arbeitsbereich](https://docs.microsoft.com/azure/machine-learning/service/setup-create-workspace)
 
 * Eine [Installation des Azure Machine Learning-SDK für Python](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py), in dem das Paket „azureml-datasets“ enthalten ist.
 

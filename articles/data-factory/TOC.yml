@@ -486,6 +486,8 @@
           href: control-flow-expression-language-functions.md
         - name: Systemvariablen
           href: control-flow-system-variables.md
+        - name: Datenflussparameter
+          href: parameters-data-flow.md
     - name: Sicherheit
       items:
         - name: Sicherheitshinweise für die Datenverschiebung
@@ -546,6 +548,8 @@
           href: configure-bcdr-azure-ssis-integration-runtime.md
         - name: Bereinigen von SSISDB-Protokollen mit Aufträgen für die elastische Datenbank
           href: how-to-clean-up-ssisdb-logs-with-elastic-jobs.md
+        - name: Problembehandlung für die Paketausführung in Azure-SSIS IR
+          href: ssis-integration-runtime-ssis-activity-faq.md
     - name: Erstellen von Triggern
       items:
         - name: Erstellen eines ereignisbasierten Triggers

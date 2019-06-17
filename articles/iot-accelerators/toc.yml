@@ -205,7 +205,7 @@
           href: iot-accelerators-device-simulation-advanced-device.md
         - name: Visualisieren von Telemetriedaten mit Time Series Insights
           href: iot-accelerators-device-simulation-time-series-insights.md
-        - name: Serialisieren von Telemetrie mithilfe von Protbuf
+        - name: Serialisieren von Telemetrie mithilfe von Protobuf
           href: iot-accelerators-device-simulation-protobuf.md
         - name: Bereitstellen eines benutzerdefinierten Docker-Images
           href: iot-accelerators-device-simulation-deploy-image.md

@@ -43,6 +43,8 @@
         - name: Offlineauswertung
           href: concepts-offline-evaluation.md
           displayName: 'learning policy, Counterfactual, features'
+    - name: Skalierbarkeit und Leistung
+      href: concepts-scalability-performance.md
 - name: Anleitungen
   items:
     - name: Erstellen und Konfigurieren der Personalisierung

@@ -74,8 +74,9 @@
     - name: Mandantenweite Sichtbarkeit
       href: security-center-management-groups.md
     - name: Implementieren von Sicherheitsempfehlungen
-      href: security-center-recommendations.md
       items:
+        - name: Was sind Sicherheitsempfehlungen?
+          href: security-center-recommendations.md
         - name: Stärken des Sicherheitsstatus
           href: security-center-monitoring.md
         - name: Schützen Ihrer Computer und Apps
@@ -181,6 +182,8 @@
       href: /learn/browse/?term=securityS
     - name: Verwalten von Benutzerdaten
       href: security-center-privacy.md
+    - name: Verwalten von IoT
+      href: 'https://docs.microsoft.com/en-us/azure/asc-for-iot/'
     - name: Häufig gestellte Fragen
       href: security-center-faq.md
     - name: Azure Security
