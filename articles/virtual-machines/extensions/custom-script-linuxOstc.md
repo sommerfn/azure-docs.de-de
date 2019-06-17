@@ -122,14 +122,14 @@ Diese Elemente müssen als vertrauliche Daten behandelt und in der Konfiguration
 | NAME | Wert/Beispiel | Datentyp |
 | ---- | ---- | ---- |
 | apiVersion | 2015-06-15 | date |
-| publisher | Microsoft.OSTCExtensions | Zeichenfolge |
-| type | CustomScriptForLinux | Zeichenfolge |
+| publisher | Microsoft.OSTCExtensions | string |
+| type | CustomScriptForLinux | string |
 | typeHandlerVersion | 1.5 | int |
-| fileUris (Beispiel) | https://github.com/MyProject/Archive/MyPythonScript.py | Array |
-| commandToExecute (Beispiel) | python MyPythonScript.py \<my-param1\> | Zeichenfolge |
+| fileUris (Beispiel) | https://github.com/MyProject/Archive/MyPythonScript.py | array |
+| commandToExecute (Beispiel) | python MyPythonScript.py \<my-param1\> | string |
 | enableInternalDNSCheck | true | boolean |
-| storageAccountName (Beispiel) | examplestorageacct | Zeichenfolge |
-| storageAccountKey (Beispiel) | TmJK/1N3AbAZ3q/+hOXoi/l73zOqsaxXDhqa9Y83/v5UpXQp2DQIBuv2Tifp60cE/OaHsJZmQZ7teQfczQj8hg== | Zeichenfolge |
+| storageAccountName (Beispiel) | examplestorageacct | string |
+| storageAccountKey (Beispiel) | TmJK/1N3AbAZ3q/+hOXoi/l73zOqsaxXDhqa9Y83/v5UpXQp2DQIBuv2Tifp60cE/OaHsJZmQZ7teQfczQj8hg== | string |
 
 ### <a name="property-value-details"></a>Details zu Eigenschaftswerten
 
