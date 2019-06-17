@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 09/13/2018
 ms.author: pabutler
 ms.openlocfilehash: 92c55c7f15b3f350ad802157bf401f3e75983789
-ms.sourcegitcommit: 6ea7f0a6e9add35547c77eef26f34d2504796565
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/14/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65606440"
 ---
 # <a name="azure-resource-manager-test-drive"></a>Azure Resource Manager-Testversion
@@ -89,7 +89,7 @@ Zudem ist zu beachten, dass **alle Parameter optional sind**. Wenn Sie also kein
 | **password**    | Sichere Zeichenfolge    | Neues zufälliges Kennwort | Lp!ACS\^2kh     |
 | **session id**   | Zeichenfolge          | Eindeutige Sitzungs-ID für Testversion (GUID)    | b8c8693e-5673-449c-badd-257a405a6dee |
 
-#### <a name="username"></a>username
+#### <a name="username"></a>userName
 
 In der Testversion wird dieser Parameter mit einem **Basis-URI** des Bereitstellungspakets initialisiert, sodass Sie mit diesem Parameter den URI einer beliebigen in dem Paket enthaltenen Datei erstellen können.
 
@@ -116,7 +116,7 @@ In Ihrer Vorlage können Sie mit diesem Parameter einen URI einer in dem Bereits
 }
 ```
 
-#### <a name="username"></a>username
+#### <a name="username"></a>userName
 
 In der Testversion wird dieser Parameter mit einem neuen zufälligen Benutzernamen initialisiert:
 

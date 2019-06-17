@@ -28,48 +28,48 @@ Bei Beginn von Trainingsausführungen auf einem [Computeziel](how-to-set-up-trai
 
 Bevor Sie ein Experiment auf einem Computeziel oder Ihrem lokalen Computer initiieren können, müssen Sie sicherstellen, dass die erforderlichen Dateien, z.B. Abhängigkeitsdateien und Datendateien, die Ihr Code zum Ausführen benötigt, für das Computeziel verfügbar sind.
 
-Azure Machine Learning trainingsskripts durch Kopieren des gesamten Skriptordner im Ziel-computekontext ausgeführt, und klicken Sie dann eine Momentaufnahme. Die speicherbegrenzung für Momentaufnahmen des Experiments ist 300 MB bzw. 2000-Dateien.
+Azure Machine Learning führt Trainingsskripts durch Kopieren des gesamten Skriptordners in den Computezielkontext aus und erstellt anschließend eine Momentaufnahme. Das Speicherlimit für Momentaufnahmen des Experiments liegt bei 300 MB und/oder 2000 Dateien.
 
-Aus diesem Grund empfehlen wir folgende Aktionen ausführen:
+Aus diesem Grund empfehlen wir Folgendes:
 
-* **Das Speichern der Dateien in einem Azure Machine Learning [Datenspeicher](https://docs.microsoft.com/python/api/azureml-core/azureml.data?view=azure-ml-py).** Dies verhindert, dass Experiment Latenzprobleme und hat den Vorteil, den Zugriff auf Daten von einem remote-Compute-Ziel, was bedeutet, dass die Authentifizierung und Bereitstellung von Azure Machine Learning-Dienst verwaltet werden. Weitere Informationen zum Angeben eines Datenspeichers als Ihr Quellverzeichnis und Hochladen von Dateien in Ihren Datenspeicher finden Sie im Artikel [Zugreifen auf Daten aus Ihren Datenspeichern](how-to-access-data.md).
+* **Speichern Sie Ihre Dateien in einem Azure Machine Learning-[Datenspeicher](https://docs.microsoft.com/python/api/azureml-core/azureml.data?view=azure-ml-py).** Dadurch werden Probleme mit Wartezeiten beim Experiment vermieden, und Sie erhalten die Vorteile des Datenzugriffs von einem Remotecomputeziel aus, was bedeutet, dass Funktionen wie die Authentifizierung und die Einbindung von Azure Machine Learning Service verwaltet werden. Weitere Informationen zum Angeben eines Datenspeichers als Ihr Quellverzeichnis und Hochladen von Dateien in Ihren Datenspeicher finden Sie im Artikel [Zugreifen auf Daten aus Ihren Datenspeichern](how-to-access-data.md).
 
-* **Wenn lediglich ein Paar von Datendateien und Abhängigkeit Skripts und kann nicht verwendet einen Datenspeicher,** platzieren Sie die Dateien im selben Ordnerverzeichnis wie Ihr trainingsskript. Geben Sie diesen Ordner direkt in Ihrem Trainingsskript als Ihr `source_directory` an, oder in dem Code, der Ihr Trainingsskript aufruft.
+* **Wenn Sie nur wenige Datendateien und Abhängigkeitsskripts benötigen und keinen Datenspeicher verwenden können,** legen Sie die Dateien in demselben Ordnerverzeichnis wie Ihr Trainingsskript ab. Geben Sie diesen Ordner direkt in Ihrem Trainingsskript als Ihr `source_directory` an, oder in dem Code, der Ihr Trainingsskript aufruft.
 
 <a name="limits"></a>
 
 ### <a name="storage-limits-of-experiment-snapshots"></a>Speicherlimits von Experimentmomentaufnahmen
 
-Für Experimente erstellt Azure Machine Learning automatisch eine Momentaufnahme des Experiments Ihres Codes basierend auf das Verzeichnis, die, das Sie vorschlagen, wenn Sie die Ausführung konfigurieren. Hierfür gilt ein Grenzwert von insgesamt 300MB und/oder 2.000 Dateien. Wenn Sie diese Grenze überschreiten, sehen Sie folgende Fehlermeldung:
+Für Experimente erstellt Azure Machine Learning automatisch eine Experimentmomentaufnahme Ihres Codes basierend auf dem Verzeichnis, das Sie bei der Konfiguration der Ausführung vorschlagen. Hierfür gilt ein Grenzwert von insgesamt 300MB und/oder 2.000 Dateien. Wenn Sie diese Grenze überschreiten, sehen Sie folgende Fehlermeldung:
 
 ```Python
 While attempting to take snapshot of .
 Your total snapshot size exceeds the limit of 300.0 MB
 ```
 
-Speichern Sie Ihr Experiment-Dateien in einem Datenspeicher, um diesen Fehler zu beheben. Wenn Sie einen Datenspeicher, verwenden, können die folgende Tabelle bietet mögliche alternative Lösungen.
+Speichern Sie Ihre Experimentdateien in einem Datenspeicher, um diesen Fehler zu beheben. Wenn Sie keinen Datenspeicher verwenden können, bietet die folgende Tabelle mögliche alternative Lösungen.
 
-Experiment&nbsp;description|Lösung zum Speicherlimit
+Experimentbeschreibung|Lösung zum Speicherlimit
 ---|---
-Weniger als 2000 Dateien & einen Datenspeicher kann nicht verwendet werden.| Überschreiben Sie die Snapshot-größenbeschränkung mit <br> `azureml._restclient.snapshots_client.SNAPSHOT_MAX_SIZE_BYTES = 'insert_desired_size'`<br> Dies kann je nach Anzahl und Größe der Dateien mehrere Minuten dauern.
-Spezifisches Skriptverzeichnis muss verwendet werden| Stellen Sie eine `.amlignore` Datei ausschließen von Dateien aus der Momentaufnahme des Experiments, die nicht Teil des Quellcodes. Fügen Sie die Dateinamen, die `.amlignore` Datei, und platzieren Sie es im gleichen Verzeichnis wie Ihr trainingsskript. Die `.amlignore` Datei verwendet die gleichen [Syntax und Muster](https://git-scm.com/docs/gitignore) als eine `.gitignore` Datei.
-Pipeline|Verwenden von einem anderen Unterverzeichnis für jeden Schritt
-Jupyter Notebooks| Erstellen Sie eine `.amlignore` Datei oder Ihrem Notebook in einem neuen, leeren Unterverzeichnis verschieben, und führen Sie den Code erneut aus.
+Weniger als 2000 Dateien und Verwendung eines Datenspeichers nicht möglich| Setzen Sie die Größenbeschränkung für die Momentaufnahme folgendermaßen außer Kraft: <br> `azureml._restclient.snapshots_client.SNAPSHOT_MAX_SIZE_BYTES = 'insert_desired_size'`<br> Dies kann je nach Anzahl und Größe der Dateien mehrere Minuten dauern.
+Spezifisches Skriptverzeichnis muss verwendet werden| Erstellen Sie eine `.amlignore`-Datei zum Ausschließen von Dateien aus der Momentaufnahme des Experiments, die nicht Teil des Quellcodes sind. Fügen Sie der `.amlignore`-Datei die Dateinamen hinzu, und legen Sie die Datei in demselben Verzeichnis wie Ihr Trainingsskript ab. Für die `.amlignore`-Datei werden [dieselbe Syntax und dieselben Muster](https://git-scm.com/docs/gitignore) wie für eine `.gitignore`-Datei verwendet.
+Pipeline|Verwenden Sie für jeden Schritt ein anderes Unterverzeichnis.
+Jupyter Notebooks| Erstellen Sie eine `.amlignore`-Datei, oder verschieben Sie Ihr Notebook in ein neues, leeres Unterverzeichnis, und führen Sie den Code erneut aus.
 
 ## <a name="where-to-write-files"></a>Speicherort zum Schreiben von Dateien
 
-Aufgrund der Isolation von Trainingsexperimenten werden die während Ausführungen auftretenden Änderungen an Dateien nicht unbedingt außerhalb Ihrer Umgebung beibehalten. Wenn Ihr Skript die Dateien, die lokale compute ändert, die Änderungen werden nicht beibehalten, für das nächste Experiment ausführen und werden nicht weitergegeben, zurück an den Clientcomputer automatisch. Aus diesem Grund die Änderungen während des ersten Experiments ausführen nicht und dürfen nicht die in der zweiten beeinträchtigen.
+Aufgrund der Isolation von Trainingsexperimenten werden die während Ausführungen auftretenden Änderungen an Dateien nicht unbedingt außerhalb Ihrer Umgebung beibehalten. Wenn Ihr Skript die lokalen zu berechnenden Dateien ändert, werden die Änderungen für Ihre nächste Experimentausführung nicht beibehalten und auch nicht automatisch an den Clientcomputer zurückgeleitet. Darum sollten die während der ersten Ausführung des Experiments vorgenommenen Änderungen sich nicht auf die Änderungen der zweiten Ausführung auswirken.
 
-Wenn Sie Änderungen zu schreiben, wird empfohlen, Schreiben von Dateien auf einen Azure Machine Learning-Datenspeicher. Weitere Informationen finden Sie unter [Zugreifen auf Daten aus Ihren Datenspeichern](how-to-access-data.md).
+Wenn Sie Änderungen vornehmen, wird empfohlen, Dateien in einen Azure Machine Learning-Datenspeicher zu schreiben. Weitere Informationen finden Sie unter [Zugreifen auf Daten aus Ihren Datenspeichern](how-to-access-data.md).
 
-Wenn Sie einen Datenspeicher nicht benötigen, Schreiben von Dateien, die `./outputs` und/oder `./logs` Ordner.
+Wenn Sie keinen Datenspeicher benötigen, schreiben Sie Dateien in die Ordner `./outputs` und/oder `./logs`.
 
 >[!Important]
 > Zwei Ordner, *outputs* und *logs*, erhalten eine besondere Behandlung durch Azure Machine Learning. Wenn Sie während des Trainings Dateien in die Ordner `./outputs` und `./logs` schreiben, werden diese Dateien automatisch in Ihren Ausführungsverlauf hochgeladen, damit Sie Zugriff darauf haben, wenn die Ausführung abgeschlossen ist.
 
-* **Für die Ausgabe wie statusmeldungen oder Bewertungsergebnisse** Schreiben von Dateien, die `./outputs` Ordner, sodass diese als Artefakte im Verlauf beibehalten werden. Achten Sie darauf, die Anzahl und Größe der Dateien, die in diesem Ordner geschrieben, wie Latenz auftreten kann, wenn der Inhalt hochgeladen werden, um den Ausführungsverlauf. Wenn Latenz ein Problem darstellt, wird das Schreiben von Dateien auf einen Datenspeicher empfohlen.
+* **Für Ausgabe wie Statusmeldungen oder Bewertungsergebnisse** schreiben Sie Dateien in den Ordner `./outputs`, sodass diese als Artefakte im Verlauf beibehalten werden. Achten Sie auf die Anzahl und Größe der Dateien, die in diesen Ordner geschrieben werden, weil beim Hochladen der Inhalte in den Ausführungsverlauf Wartezeiten entstehen können. Wenn die Wartezeit ein Problem darstellt, wird das Schreiben von Dateien in einen Datenspeicher empfohlen.
 
-* **Zum Speichern von geschriebenen Datei als Protokolle im Ausführungsverlauf** Schreiben von Dateien auf `./logs` Ordner. Die Protokolle werden in Echtzeit hochgeladen, sodass diese Methode für das Streamen von Liveupdates von einer Remoteausführung geeignet ist.
+* **Um geschriebene Dateien als Protokolle im Ausführungsverlauf zu speichern**, schreiben Sie Dateien in den Ordner `./logs`. Die Protokolle werden in Echtzeit hochgeladen, sodass diese Methode für das Streamen von Liveupdates von einer Remoteausführung geeignet ist.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
