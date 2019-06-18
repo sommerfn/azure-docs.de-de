@@ -5,15 +5,15 @@ services: expressroute
 author: jaredr80
 ms.service: expressroute
 ms.topic: conceptual
-ms.date: 05/20/2019
+ms.date: 06/06/2019
 ms.author: jaredro
 ms.custom: seodec18
-ms.openlocfilehash: 1a6f3fbc0160a78fb76f810257d3285725445eba
-ms.sourcegitcommit: 25a60179840b30706429c397991157f27de9e886
+ms.openlocfilehash: adffb18272d10c579f8b28bef055813b1074a237
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/28/2019
-ms.locfileid: "66257961"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "66754743"
 ---
 # <a name="expressroute-faq"></a>ExpressRoute – FAQ
 
@@ -288,7 +288,7 @@ Ja. Für ExpressRoute Premium werden neben den ExpressRoute-Verbindungsgebühren
 
 ## <a name="expressroute-local"></a>ExpressRoute Local
 ### <a name="what-is-expressroute-local"></a>Was ist ExpressRoute Local?
-ExpressRoute Local ist eine SKU der ExpressRoute-Verbindung. Ein wichtiges Feature von ExpressRoute Local ist, dass Sie über eine Local-Verbindung an einem ExpressRoute-Peeringstandort nur Zugriff auf eine oder zwei Azure-Regionen an demselben Standort bzw. in dessen Nähe haben. Mit einer Standard-Verbindung haben Sie dagegen Zugriff auf alle Azure-Regionen eines geopolitischen Gebiets, und mit einer Premium-Verbindung auf alle Azure-Regionen weltweit. 
+ExpressRoute Local ist eine SKU der ExpressRoute-Verbindung, die nur unter [ExpressRoute Direct](expressroute-erdirect-about.md) verfügbar ist. Ein wichtiges Feature von ExpressRoute Local ist, dass Sie über eine Local-Verbindung an einem ExpressRoute-Peeringstandort nur Zugriff auf eine oder zwei Azure-Regionen an demselben Standort bzw. in dessen Nähe haben. Mit einer Standard-Verbindung haben Sie dagegen Zugriff auf alle Azure-Regionen eines geopolitischen Gebiets, und mit einer Premium-Verbindung auf alle Azure-Regionen weltweit. 
 
 ### <a name="what-are-the-benefits-of-expressroute-local"></a>Welche Vorteile hat ExpressRoute Local?
 Sie müssen für Ihre ExpressRoute-Standard- bzw. -Premium-Verbindung zwar für ausgehende Datenübertragungen zahlen, aber für Ihre ExpressRoute Local-Verbindung fallen hierfür keine separaten Kosten an. Anders ausgedrückt: Die Gebühren für die Datenübertragung sind im Preis von ExpressRoute Local enthalten. ExpressRoute Local ist eine wirtschaftlichere Lösung, falls Sie über eine große Menge von zu übertragenden Daten verfügen und Ihre Daten über eine private Verbindung an einen ExpressRoute-Peeringstandort in der Nähe der gewünschten Azure-Regionen verlagern können. 
