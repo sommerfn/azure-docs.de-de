@@ -100,9 +100,9 @@ Der folgende JSON-Code zeigt das Schema für den Bereich mit den Einstellungen d
 
 | NAME | Wert/Beispiel | Datentyp |
 | ---- | ---- | ---- |
-| apiVersion | 01\.10.2018 | date |
+| apiVersion | 01.10.2018 | date |
 | publisher | Microsoft.Powershell.DSC | string |
-| type | DSC | Zeichenfolge |
+| type | DSC | string |
 | typeHandlerVersion | 2.77 | int |
 
 ### <a name="settings-property-values"></a>Eigenschaftswerte der Einstellungen
@@ -113,19 +113,19 @@ Der folgende JSON-Code zeigt das Schema für den Bereich mit den Einstellungen d
 | settings.configuration.url | string | Gibt den URL-Speicherort an, von dem die ZIP-Datei Ihrer DSC-Konfiguration herunterzuladen ist. Wenn die bereitgestellte URL ein SAS-Token für den Zugriff erfordert, müssen Sie die protectedSettings.configurationUrlSasToken-Eigenschaft auf den Wert Ihres SAS-Tokens festlegen. Diese Eigenschaft ist erforderlich, wenn „settings.configuration.script“ und/oder „settings.configuration.function“ definiert sind.
 | settings.configuration.script | string | Gibt den Dateinamen des Skripts an, das die Definition Ihrer DSC-Konfiguration enthält. Dieses Skript muss sich im Stammverzeichnis der ZIP-Datei befinden, die von der durch die configuration.url-Eigenschaft angegebenen URL heruntergeladen wurde. Diese Eigenschaft ist erforderlich, wenn „settings.configuration.url“ und/oder „settings.configuration.script“ definiert sind.
 | settings.configuration.function | string | Gibt den Namen Ihrer DSC-Konfiguration an. Die Konfiguration mit diesem Namen muss im Skript enthalten sein, das durch „configuration.script“ definiert ist. Diese Eigenschaft ist erforderlich, wenn „settings.configuration.url“ und/oder „settings.configuration.function“ definiert sind.
-| settings.configurationArguments | Collection | Definiert beliebige Parameter, die Sie Ihrer DSC-Konfiguration übergeben möchten. Diese Eigenschaft wird nicht verschlüsselt.
+| settings.configurationArguments | Sammlung | Definiert beliebige Parameter, die Sie Ihrer DSC-Konfiguration übergeben möchten. Diese Eigenschaft wird nicht verschlüsselt.
 | settings.configurationData.url | string | Gibt die URL an, unter der die Datei mit Ihren Konfigurationsdaten (.pds1) heruntergeladen werden kann, um sie als Eingabe für Ihre DSC-Konfiguration zu nutzen. Wenn die bereitgestellte URL ein SAS-Token für den Zugriff erfordert, müssen Sie die protectedSettings.configurationDataUrlSasToken-Eigenschaft auf den Wert Ihres SAS-Tokens festlegen.
 | settings.privacy.dataEnabled | string | Aktiviert bzw. deaktiviert die Erfassung von Telemetriedaten. Die einzig möglichen Werte für diese Eigenschaft sind „Enable“, „Disable“, „''“ oder „$null“. Wird die Eigenschaft leer gelassen oder „null“ angegeben, ist die Telemetrie aktiviert.
 | settings.advancedOptions.forcePullAndApply | Bool | Diese Einstellung ist dafür ausgelegt, die Arbeitserfahrung im Umgang mit der Erweiterung beim Registrieren von Knoten bei Azure Automation DSC zu verbessern.  Wenn der Wert auf `$true` festgelegt ist, wartet die Erweiterung die erste Ausführung der beim Dienst abgerufenen Konfiguration ab, bevor er die Erfolgs-/Fehlermeldung zurückgibt.  Wenn der Wert auf „$false“ festgelegt ist, bezieht sich der von der Erweiterung zurückgegebene Status lediglich darauf, ob der Knoten erfolgreich bei Azure Automation State Configuration registriert wurde, und die Knotenkonfiguration wird während der Registrierung nicht ausgeführt.
-| settings.advancedOptions.downloadMappings | Collection | Definiert alternative Speicherorte zum Herunterladen von Abhängigkeiten wie WMF und .NET.
+| settings.advancedOptions.downloadMappings | Sammlung | Definiert alternative Speicherorte zum Herunterladen von Abhängigkeiten wie WMF und .NET.
 
 ### <a name="protected-settings-property-values"></a>Eigenschaftswerte geschützter Einstellungen
 
 | NAME | Datentyp | BESCHREIBUNG
 | ---- | ---- | ---- |
-| protectedSettings.configurationArguments | Zeichenfolge | Definiert beliebige Parameter, die Sie Ihrer DSC-Konfiguration übergeben möchten. Diese Eigenschaft wird verschlüsselt. |
-| protectedSettings.configurationUrlSasToken | Zeichenfolge | Gibt das SAS-Token für den Zugriff auf durch „configuration.url“ definierte URL an. Diese Eigenschaft wird verschlüsselt. |
-| protectedSettings.configurationDataUrlSasToken | Zeichenfolge | Gibt das SAS-Token für den Zugriff auf durch „configurationData.url“ definierte URL an. Diese Eigenschaft wird verschlüsselt. |
+| protectedSettings.configurationArguments | string | Definiert beliebige Parameter, die Sie Ihrer DSC-Konfiguration übergeben möchten. Diese Eigenschaft wird verschlüsselt. |
+| protectedSettings.configurationUrlSasToken | string | Gibt das SAS-Token für den Zugriff auf durch „configuration.url“ definierte URL an. Diese Eigenschaft wird verschlüsselt. |
+| protectedSettings.configurationDataUrlSasToken | string | Gibt das SAS-Token für den Zugriff auf durch „configurationData.url“ definierte URL an. Diese Eigenschaft wird verschlüsselt. |
 
 
 ## <a name="template-deployment"></a>Bereitstellung von Vorlagen
