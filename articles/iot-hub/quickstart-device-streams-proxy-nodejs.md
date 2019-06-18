@@ -1,6 +1,6 @@
 ---
-title: 'Azure IoT Hub-Gerätestreams: Node.js-Schnellstartanleitung für SSH/RDP (Vorschauversion) | Microsoft-Dokumentation'
-description: In dieser Schnellstartanleitung führen Sie eine Node.js-Beispielanwendung aus, die als Proxy fungiert, um SSH-/RDP-Szenarien über IoT Hub-Gerätestreams zu ermöglichen.
+title: 'Azure IoT Hub-Gerätestreams: Node.js-Schnellstartanleitung für SSH und RDP (Vorschauversion) | Microsoft-Dokumentation'
+description: In dieser Schnellstartanleitung führen Sie eine Node.js-Beispielanwendung aus, die als Proxy fungiert, um SSH- und RDP-Szenarien über IoT Hub-Gerätestreams zu ermöglichen.
 author: rezasherafat
 manager: briz
 ms.service: iot-hub
@@ -10,26 +10,29 @@ ms.topic: quickstart
 ms.custom: mvc
 ms.date: 03/14/2019
 ms.author: rezas
-ms.openlocfilehash: c4f994638420819da41a355d679cb03785b94a3a
-ms.sourcegitcommit: 3ced637c8f1f24256dd6ac8e180fff62a444b03c
+ms.openlocfilehash: 1d77f3a10e286246e23ae522e95aa23c487cca2f
+ms.sourcegitcommit: 4cdd4b65ddbd3261967cdcd6bc4adf46b4b49b01
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/17/2019
-ms.locfileid: "65832342"
+ms.lasthandoff: 06/06/2019
+ms.locfileid: "66735106"
 ---
-# <a name="quickstart-sshrdp-over-an-iot-hub-device-stream-using-a-nodejs-proxy-application-preview"></a>Schnellstart: SSH/RDP über einen IoT Hub-Gerätestream unter Verwendung einer Node.js-Proxyanwendung (Vorschauversion)
+# <a name="quickstart-enable-ssh-and-rdp-over-an-iot-hub-device-stream-by-using-a-nodejs-proxy-application-preview"></a>Schnellstart: Ermöglichen von SSH und RDP über einen IoT Hub-Gerätestream unter Verwendung einer Node.js-Proxyanwendung (Vorschauversion)
 
 [!INCLUDE [iot-hub-quickstarts-4-selector](../../includes/iot-hub-quickstarts-4-selector.md)]
 
 Microsoft Azure IoT Hub unterstützt derzeit Gerätestreams als [Previewfunktion](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
-Über [IoT Hub-Gerätestreams](./iot-hub-device-streams-overview.md) können Dienst- und Geräteanwendungen sicher und firewallfreundlich kommunizieren. In dieser Schnellstartanleitung erfahren Sie, wie Sie eine serverseitig ausgeführte Node.js-Proxyanwendung ausführen, sodass SSH- und RDP-Datenverkehr über einen Gerätestream an das Gerät gesendet werden kann. Eine Übersicht über das Setup finden Sie in den [Beispielen für lokale Proxys für SSH und RDP](./iot-hub-device-streams-overview.md#local-proxy-sample-for-ssh-or-rdp). Während der Public Preview-Phase unterstützt das Node.js SDK nur dienstseitige Gerätestreams. Aus diesem Grund wird in dieser Schnellstartanleitung nur das Ausführen des lokalen Dienstproxys erläutert. Sie sollten einen der folgenden Schnellstarts für lokale Geräteproxys ausführen:  
+Über [IoT Hub-Gerätestreams](./iot-hub-device-streams-overview.md) können Dienst- und Geräteanwendungen sicher und firewallfreundlich kommunizieren. 
 
-   * [SSH/RDP über IoT Hub-Gerätestreams unter Verwendung einer C-Proxy-App](./quickstart-device-streams-proxy-c.md)
+In dieser Schnellstartanleitung erfahren Sie, wie Sie eine serverseitig ausgeführte Node.js-Proxyanwendung ausführen, sodass SSH-Datenverkehr (Secure Shell) und RDP-Datenverkehr (Remotedesktopprotokoll) über einen Gerätestream an das Gerät gesendet werden kann. Eine Übersicht über das Setup finden Sie im [Beispiel für lokale Proxys](./iot-hub-device-streams-overview.md#local-proxy-sample-for-ssh-or-rdp). 
 
-   * [SSH/RDP über IoT Hub-Gerätestreams unter Verwendung einer C#-Proxy-App](./quickstart-device-streams-proxy-csharp.md)
+Während der Public Preview-Phase unterstützt das Node.js SDK nur dienstseitige Gerätestreams. Aus diesem Grund wird in dieser Schnellstartanleitung nur das Ausführen der lokalen Dienstproxyanwendung erläutert. Informationen zum Ausführen der lokalen Geräteproxyanwendung finden Sie in den folgenden Artikeln:  
 
-Als Erstes wird die Einrichtung für SSH (unter Verwendung des Ports 22) beschrieben. Danach erfahren Sie, wie Sie das Setup für RDP (Port 3389) ändern. Gerätestreams sind anwendungs- und protokollunabhängig. Das gleiche Beispiel kann daher für andere Arten von Anwendungsdatenverkehr von Clients/Servern angepasst werden (in der Regel durch Ändern des Kommunikationsports).
+   * [Schnellstart: SSH/RDP über einen IoT Hub-Gerätestream unter Verwendung einer C-Proxyanwendung (Vorschauversion)](./quickstart-device-streams-proxy-c.md)
+   * [Schnellstart: SSH/RDP über einen IoT Hub-Gerätestream unter Verwendung einer C#-Proxyanwendung (Vorschauversion)](./quickstart-device-streams-proxy-csharp.md)
+
+Dieser Artikel beschreibt das Setup für SSH (unter Verwendung von Port 22) und anschließend, wie das Setup für RDP (verwendet Port 3389) geändert wird. Gerätestreams sind anwendungs- und protokollunabhängig. Das gleiche Beispiel kann daher für andere Arten von Anwendungsdatenverkehr von Clients/Servern angepasst werden (in der Regel durch Ändern des Kommunikationsports).
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
@@ -37,29 +40,26 @@ Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](htt
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-* Die Vorschau der Gerätestreams wird derzeit nur für IoT Hubs unterstützt, die in folgenden Regionen erstellt werden:
+* Die Vorschau der Gerätestreams wird derzeit nur für IoT-Hubs unterstützt, die in folgenden Regionen erstellt werden:
 
-   * **USA (Mitte)**
+  * USA (Mitte)
+  * USA, Mitte (EUAP)
 
-   * **USA, Mitte (EUAP)**
+* Auf Ihrem Entwicklungscomputer muss mindestens Node.js v10.x.x installiert sein, um die lokale Dienstanwendung in diesem Schnellstart ausführen zu können.
+  * Laden Sie [Node.js](https://nodejs.org) für mehrere Plattformen herunter.
+  * Überprüfen Sie mit dem folgenden Befehl die aktuelle Node.js-Version auf Ihrem Entwicklungscomputer:
 
-Auf Ihrem Entwicklungscomputer muss sich mindestens Node.js v10.x.x befinden, um die lokale Dienstanwendung in diesem Schnellstart ausführen zu können.
+   ```
+   node --version
+   ```
 
-* Laden Sie Node.js für mehrere Plattformen von [nodejs.org](https://nodejs.org) herunter.
+* Führen Sie den folgenden Befehl aus, um Ihrer Cloud Shell-Instanz die Azure IoT-Erweiterung für die Azure-Befehlszeilenschnittstelle hinzuzufügen. Die IoT-Erweiterung fügt der Azure-Befehlszeilenschnittstelle spezifische Befehle für IoT Hub, IoT Edge und IoT Device Provisioning Service (DPS) hinzu.
 
-Mit dem folgenden Befehl können Sie die aktuelle Node.js-Version auf Ihrem Entwicklungscomputer überprüfen:
+    ```azurecli-interactive
+    az extension add --name azure-cli-iot-ext
+    ```
 
-```
-node --version
-```
-
-* Führen Sie den folgenden Befehl aus, um Ihrer Cloud Shell-Instanz die Microsoft Azure IoT-Erweiterung für die Azure-Befehlszeilenschnittstelle hinzuzufügen. Die IoT-Erweiterung fügt der Azure-Befehlszeilenschnittstelle spezifische Befehle für IoT Hub, IoT Edge und IoT Device Provisioning Service (DPS) hinzu.
-
-```azurecli-interactive
-az extension add --name azure-cli-iot-ext
-```
-
-* Laden Sie das Node.js-Beispielprojekt von https://github.com/Azure-Samples/azure-iot-samples-node/archive/streams-preview.zip herunter, und extrahieren Sie das ZIP-Archiv (falls Sie dies nicht bereits getan haben).
+* [Laden Sie das Node.js-Beispielprojekt herunter](https://github.com/Azure-Samples/azure-iot-samples-node/archive/streams-preview.zip), und extrahieren Sie das ZIP-Archiv (falls Sie dies nicht bereits getan haben).
 
 ## <a name="create-an-iot-hub"></a>Erstellen eines IoT Hubs
 
@@ -69,29 +69,30 @@ Wenn Sie das vorherige Tutorial [Schnellstart: Senden von Telemetriedaten von ei
 
 ## <a name="register-a-device"></a>Registrieren eines Geräts
 
-Wenn Sie das vorherige Tutorial [Schnellstart: Senden von Telemetriedaten von einem Gerät an eine IoT Hub-Instanz und Lesen der Telemetriedaten aus der IoT Hub-Instanz mit einer Back-End-Anwendung (Node.js)](quickstart-send-telemetry-node.md) absolviert haben, können Sie diesen Schritt überspringen.
+Wenn Sie [Schnellstart: Senden von Telemetriedaten von einem Gerät an eine IoT Hub-Instanz und Lesen der Telemetriedaten aus der IoT Hub-Instanz mit einer Back-End-Anwendung (Node.js)](quickstart-send-telemetry-node.md) absolviert haben, können Sie diesen Schritt überspringen.
 
-Ein Gerät muss bei Ihrer IoT Hub-Instanz registriert sein, um eine Verbindung herstellen zu können. In dieser Schnellstartanleitung verwenden Sie Azure Cloud Shell, um ein simuliertes Gerät zu registrieren.
+Ein Gerät muss bei Ihrer IoT Hub-Instanz registriert sein, um eine Verbindung herstellen zu können. In diesem Abschnitt verwenden Sie Azure Cloud Shell, um ein simuliertes Gerät zu registrieren.
 
-1. Führen Sie in Azure Cloud Shell den folgenden Befehl aus, um die Geräteidentität zu erstellen.
+1. Führen Sie in Cloud Shell den folgenden Befehl aus, um die Geräteidentität zu erstellen:
 
-   **YourIoTHubName**: Ersetzen Sie diesen Platzhalter unten durch den Namen, den Sie für Ihren IoT-Hub ausgewählt haben.
-
-   **MyDevice**: Der für das registrierte Gerät angegebene Name. Verwenden Sie „MyDevice“ wie gezeigt. Wenn Sie für Ihr Gerät einen anderen Namen wählen, müssen Sie diesen innerhalb des gesamten Artikels verwenden und den Gerätenamen in den Beispielanwendungen aktualisieren, bevor Sie sie ausführen.
+   > [!NOTE]
+   > * Ersetzen Sie den Platzhalter *YourIoTHubName* durch den Namen, den Sie für Ihren IoT-Hub wählen.
+   > * Verwenden Sie *MyDevice* wie gezeigt. Der für das registrierte Gerät angegebene Name. Wenn Sie für Ihr Gerät einen anderen Namen auswählen, verwenden Sie diesen im gesamten Artikel, und aktualisieren Sie den Gerätenamen in den Beispielanwendungen, bevor Sie sie ausführen.
 
     ```azurecli-interactive
     az iot hub device-identity create --hub-name YourIoTHubName --device-id MyDevice
     ```
 
-2. Darüber hinaus benötigen Sie eine *Dienstverbindungszeichenfolge*, damit die Back-End-Anwendung eine Verbindung mit Ihrer IoT Hub-Instanz herstellen und die Nachrichten abrufen kann. Der folgende Befehl ruft die Dienstverbindungszeichenfolge für Ihre IoT Hub-Instanz ab:
+1. Darüber hinaus benötigen Sie eine *Dienstverbindungszeichenfolge*, damit die Back-End-Anwendung eine Verbindung mit Ihrem IoT-Hub herstellen und die Nachrichten abrufen kann. Der folgende Befehl ruft die Zeichenfolge für Ihren IoT-Hub ab:
 
-    **YourIoTHubName**: Ersetzen Sie diesen Platzhalter unten durch den Namen, den Sie für Ihren IoT-Hub ausgewählt haben.
+   > [!NOTE]
+   > Ersetzen Sie den Platzhalter *YourIoTHubName* durch den Namen, den Sie für Ihren IoT-Hub wählen.
 
     ```azurecli-interactive
     az iot hub show-connection-string --policy-name service --name YourIoTHubName
     ```
 
-    Notieren Sie sich den zurückgegebenen Wert, der in etwa wie folgt aussieht:
+    Notieren Sie sich den zurückgegebenen Wert zur späteren Verwendung in dieser Schnellstartanleitung. Dies sieht in etwa wie im folgenden Beispiel aus:
 
    `"HostName={YourIoTHubName}.azure-devices.net;SharedAccessKeyName=service;SharedAccessKey={YourSharedAccessKey}"`
 
@@ -99,69 +100,68 @@ Ein Gerät muss bei Ihrer IoT Hub-Instanz registriert sein, um eine Verbindung h
 
 In diesem Abschnitt richten Sie einen End-to-End-Stream ein, um SSH-Datenverkehr zu tunneln.
 
-### <a name="run-the-device-local-proxy"></a>Ausführen des lokalen Geräteproxys
+### <a name="run-the-device-local-proxy-application"></a>Ausführen der lokalen Geräteproxyanwendung
 
-Wie bereits erwähnt, unterstützt das IoT Hub Node.js SDK während der Public Preview-Phase nur dienstseitige Gerätestreams. Verwenden Sie für die lokale Geräteanwendung eines der Geräteproxyprogramme, die in den folgenden Schnellstarts verfügbar sind:
+Wie bereits erwähnt, unterstützt das IoT Hub Node.js SDK nur dienstseitige Gerätestreams. Verwenden Sie für die lokale Geräteanwendung eine Geräteproxyanwendung, die in den folgenden Schnellstartanleitungen verfügbar ist:
 
-   * [SSH/RDP über IoT Hub-Gerätestreams unter Verwendung von C-Proxy-Apps](./quickstart-device-streams-proxy-c.md)
+   * [Schnellstart: SSH/RDP über einen IoT Hub-Gerätestream unter Verwendung einer C-Proxyanwendung (Vorschauversion)](./quickstart-device-streams-proxy-c.md)
+   * [Schnellstart: SSH/RDP über einen IoT Hub-Gerätestream unter Verwendung einer C#-Proxyanwendung (Vorschauversion)](./quickstart-device-streams-proxy-csharp.md) 
 
-   * [SSH/RDP über IoT Hub-Gerätestreams unter Verwendung von C#-Proxy-Apps](./quickstart-device-streams-proxy-csharp.md) 
+Vergewissern Sie sich, dass die lokale Geräteproxyanwendung ausgeführt wird, bevor Sie mit dem nächsten Schritt fortfahren.
 
-Vergewissern Sie sich, dass der lokale Geräteproxy ausgeführt wird, bevor Sie mit dem nächsten Schritt fortfahren.
+### <a name="run-the-service-local-proxy-application"></a>Ausführen der lokalen Dienstproxyanwendung
 
-### <a name="run-the-service-local-proxy"></a>Ausführen des lokalen Dienstproxys
+Wenn die lokale Geräteproxyanwendung ausgeführt wird, führen Sie die in Node.js geschriebene lokale Dienstproxyanwendung wie folgt aus:
 
-Nachdem Sie sich vergewissert haben, dass der [lokale Geräteproxy](#run-the-device-local-proxy) ausgeführt wird, gehen Sie wie folgt vor, um den in Node.js geschriebenen lokalen Dienstproxy auszuführen.
+1. Geben Sie für Umgebungsvariablen Ihre Dienstanmeldeinformationen, die ID des Zielgeräts, auf dem der SSH-Daemon ausgeführt wird, und die Portnummer für den auf dem Gerät ausgeführten Proxy ein.
 
-* Geben Sie Ihre Dienstanmeldeinformationen, die ID des Zielgeräts, auf dem der SSH-Daemon ausgeführt wird, und die Portnummer für den auf dem Gerät ausgeführten Proxy als Umgebungsvariablen ein.
+   ```
+   # In Linux
+   export IOTHUB_CONNECTION_STRING="<provide_your_service_connection_string>"
+   export STREAMING_TARGET_DEVICE="MyDevice"
+   export PROXY_PORT=2222
 
-```
-# In Linux
-export IOTHUB_CONNECTION_STRING="<provide_your_service_connection_string>"
-export STREAMING_TARGET_DEVICE="MyDevice"
-export PROXY_PORT=2222
+   # In Windows
+   SET IOTHUB_CONNECTION_STRING=<provide_your_service_connection_string>
+   SET STREAMING_TARGET_DEVICE=MyDevice
+   SET PROXY_PORT=2222
+   ```
 
-# In Windows
-SET IOTHUB_CONNECTION_STRING=<provide_your_service_connection_string>
-SET STREAMING_TARGET_DEVICE=MyDevice
-SET PROXY_PORT=2222
-```
+   Ändern Sie die Werte oben basierend auf Ihrer Geräte-ID und Verbindungszeichenfolge.
 
-  Ändern Sie die Werte oben basierend auf Ihrer Geräte-ID und Verbindungszeichenfolge.
+1. Navigieren Sie in Ihrem entzippten Projektordner zum Verzeichnis *Quickstarts/device-streams-service*, und führen Sie die lokale Dienstproxyanwendung aus.
 
-* Navigieren Sie in Ihrem entzippten Projektordner zu `Quickstarts/device-streams-service`, und führen Sie den lokalen Dienstproxy aus.
+   ```
+   cd azure-iot-samples-node-streams-preview/iot-hub/Quickstarts/device-streams-service
 
-```
-cd azure-iot-samples-node-streams-preview/iot-hub/Quickstarts/device-streams-service
+   # Install the preview service SDK, and other dependencies
+   npm install azure-iothub@streams-preview
+   npm install
 
-# Install the preview service SDK, and other dependencies
-npm install azure-iothub@streams-preview
-npm install
-
-# Run the service-local proxy application
-node proxy.js
-```
+   # Run the service-local proxy application
+   node proxy.js
+   ```
 
 ### <a name="ssh-to-your-device-via-device-streams"></a>Herstellen einer SSH-Verbindung mit Ihrem Gerät über Gerätestreams
 
 Verwenden Sie unter Linux `ssh $USER@localhost -p 2222` in einem Terminal, um SSH auszuführen. Verwenden Sie unter Windows Ihren bevorzugten SSH-Client (beispielsweise PuTTY).
 
-Im Anschluss sehen Sie die Konsolenausgabe des lokalen Diensts nach Einrichtung der SSH-Sitzung. (Der lokale Dienstproxy lauscht am Port 2222.)
+Im Anschluss sehen Sie die Konsolenausgabe des lokalen Diensts nach Einrichtung der SSH-Sitzung. (Die lokale Dienstproxyanwendung lauscht an Port 2222.)
 
 ![SSH-Terminalausgabe](./media/quickstart-device-streams-proxy-nodejs/service-console-output.png)
 
-Im Anschluss sehen Sie die Konsolenausgabe des SSH-Clientprogramms. (Der SSH-Client kommuniziert mit dem SSH-Daemon, indem er eine Verbindung mit dem Port 22 herstellt, an dem der lokale Dienstproxy lauscht.)
+Konsolenausgabe des SSH-Clientprogramms (Der SSH-Client kommuniziert mit dem SSH-Daemon, indem er eine Verbindung mit Port 22 herstellt, an dem die lokale Dienstproxyanwendung lauscht.)
 
 ![Ausgabe des SSH-Clients](./media/quickstart-device-streams-proxy-nodejs/ssh-console-output.png)
 
 ### <a name="rdp-to-your-device-via-device-streams"></a>Herstellen einer RDP-Verbindung mit Ihrem Gerät über Gerätestreams
 
-Stellen Sie nun mithilfe Ihres RDP-Clientprogramms eine Verbindung mit dem Dienstproxy am Port 2222 her. (Hierbei handelt es sich um einen verfügbaren Port, den Sie zuvor willkürlich ausgewählt haben.)
+Stellen Sie nun mithilfe Ihrer RDP-Clientanwendung eine Verbindung mit dem lokalen Dienstproxy an Port 2222 her. (Hierbei handelt es sich um einen beliebigen Port, den Sie zuvor ausgewählt haben.)
 
 > [!NOTE]
 > Vergewissern Sie sich, dass Ihr Geräteproxy ordnungsgemäß für RDP sowie mit dem RDP-Port 3389 konfiguriert ist.
 
-![RDP-Clientverbindung mit lokalem Dienstproxy](./media/quickstart-device-streams-proxy-nodejs/rdp-screen-capture.png)
+![Herstellen einer Verbindung zwischen RDP-Client und lokaler Dienstproxyanwendung](./media/quickstart-device-streams-proxy-nodejs/rdp-screen-capture.png)
 
 ## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
 
@@ -169,7 +169,7 @@ Stellen Sie nun mithilfe Ihres RDP-Clientprogramms eine Verbindung mit dem Diens
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-In dieser Schnellstartanleitung haben Sie einen IoT-Hub eingerichtet, ein Gerät registriert und ein Dienstproxyprogramm bereitgestellt, um RDP- und SSH-Verbindungen mit einem IoT-Gerät zu ermöglichen. RDP- und SSH-Datenverkehr wird über einen Gerätestream über IoT Hub getunnelt. Dadurch ist keine direkte Verbindung mit dem Gerät erforderlich.
+In dieser Schnellstartanleitung haben Sie einen IoT-Hub eingerichtet, ein Gerät registriert und eine Dienstproxyanwendung bereitgestellt, um RDP- und SSH-Verbindungen mit einem IoT-Gerät zu ermöglichen. RDP- und SSH-Datenverkehr wird über einen Gerätestream über den IoT-Hub getunnelt. Bei diesem Vorgang ist keine direkte Verbindung mit dem Gerät erforderlich.
 
 Weitere Informationen zu Gerätestreams finden Sie hier:
 

@@ -9,12 +9,12 @@ ms.custom: mvc
 ms.date: 6/5/2019
 ms.author: victorh
 Customer intent: As an administrator, I want to evaluate Azure Firewall so I can determine if I want to use it.
-ms.openlocfilehash: b1763e7c24ea75a698c3718ab5e205dcc3e0c8c4
-ms.sourcegitcommit: 600d5b140dae979f029c43c033757652cddc2029
+ms.openlocfilehash: 4b33174b20cdf42e29cdb5b4786122513d2c6080
+ms.sourcegitcommit: 45e4466eac6cfd6a30da9facd8fe6afba64f6f50
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/04/2019
-ms.locfileid: "66495796"
+ms.lasthandoff: 06/07/2019
+ms.locfileid: "66753738"
 ---
 # <a name="what-is-azure-firewall"></a>Was ist Azure Firewall?
 
@@ -62,7 +62,7 @@ Alle IP-Adressen für ausgehenden Datenverkehr des virtuellen Netzwerks werden i
 
 ### <a name="inbound-dnat-support"></a>DNAT-Unterstützung für eingehenden Datenverkehr
 
-Der eingehende Netzwerkdatenverkehr zur öffentlichen IP-Adresse Ihrer Firewall wird in die privaten IP-Adressen in Ihren virtuellen Netzwerken übersetzt (Destination Network Address Translation) und gefiltert. 
+Der eingehende Netzwerkdatenverkehr zur öffentlichen IP-Adresse Ihrer Firewall wird in die privaten IP-Adressen in Ihren virtuellen Netzwerken übersetzt (Destination Network Address Translation) und gefiltert.
 
 ### <a name="azure-monitor-logging"></a>Azure Monitor-Protokollierung
 
@@ -82,8 +82,7 @@ Netzwerkfilterregeln für andere Protokolle als TCP/UDP (z.B. ICMP) funktioniere
 |Portbereich in Netzwerk- und Anwendungsregeln|Ports sind auf eine Anzahl von 64.000 begrenzt, da der hohe Portbereich für Verwaltung und Integritätstests reserviert sind. |Wir arbeiten daran, diese Beschränkung zu lockern.|
 |Threat Intelligence-Warnungen sind möglicherweise maskiert.|Netzwerkregeln mit Ziel 80/443 für ausgehende Filterung maskieren Threat Intelligence-Warnungen, wenn diese für den Modus „Alert only“ (Nur Warnen) konfiguriert sind.|Erstellen Sie die ausgehende Filterung für 80/443 mithilfe von Anwendungsregeln. Oder ändern Sie den Threat Intelligence-Modus zu **Alert and Deny** (Warnen und Verweigern).|
 |Azure Firewall verwendet Azure DNS nur für die Namensauflösung.|Azure Firewall löst FQDNs nur mit Azure DNS auf. Ein benutzerdefinierter DNS-Server wird nicht unterstützt. Dies hat keine Auswirkungen auf die DNS-Auflösung in anderen Subnetzen.|Wir arbeiten daran, diese Beschränkung zu lockern.|
-|Azure Firewall-SNAT/DNAT funktioniert für private IP-Ziele nicht|Die Azure Firewall-SNAT/DNAT-Unterstützung ist auf eingehenden/ausgehenden Internetdatenverkehr beschränkt. SNAT/DNAT funktioniert derzeit für private IP-Ziele nicht. Beispiel: Spoke zu Spoke.|Dies wird zurzeit untersucht.
-
+|Azure Firewall-SNAT/DNAT funktioniert für private IP-Ziele nicht|Die Azure Firewall-SNAT/DNAT-Unterstützung ist auf eingehenden/ausgehenden Internetdatenverkehr beschränkt. SNAT/DNAT funktioniert derzeit für private IP-Ziele nicht. Beispiel: Spoke zu Spoke.|Dies ist Teil der Roadmap für ein künftiges Update.
 ## <a name="next-steps"></a>Nächste Schritte
 
 - [Tutorial: Bereitstellen und Konfigurieren von Azure Firewall über das Azure-Portal](tutorial-firewall-deploy-portal.md)

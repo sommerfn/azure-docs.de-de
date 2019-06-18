@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ae4b57d86461526b285e77aa408373b5d7f5aedf
-ms.sourcegitcommit: adb6c981eba06f3b258b697251d7f87489a5da33
+ms.openlocfilehash: 600d6b9f1eb8d8073e1658dd5b8196a3d8137e42
+ms.sourcegitcommit: 4cdd4b65ddbd3261967cdcd6bc4adf46b4b49b01
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/04/2019
-ms.locfileid: "66513381"
+ms.lasthandoff: 06/06/2019
+ms.locfileid: "66733716"
 ---
 # <a name="tutorial-configure-hybrid-azure-active-directory-join-for-federated-domains"></a>Tutorial: Konfigurieren der Azure Active Directory-Hybrideinbindung für Verbunddomänen
 
@@ -71,7 +71,7 @@ für die Azure AD-Hybrideinbindung ist erforderlich, dass die Geräte innerhalb 
 
 Ab Windows 10 1803 gilt Folgendes: Wenn für die sofortige Azure AD-Hybrideinbindung für Verbundumgebungen wie AD FS ein Fehler auftritt, nutzen wir Azure AD Connect, um das Computerobjekt in Azure AD zu synchronisieren. Dieses Objekt wird anschließend verwendet, um die Geräteregistrierung für die Azure AD-Hybrideinbindung durchzuführen. Vergewissern Sie sich, dass Azure AD die Computerobjekte der Geräte für die Azure AD-Hybrideinbindung mit Azure AD synchronisiert. Wenn die Computerobjekte zu bestimmten Organisationseinheiten (OEs) gehören, müssen diese OEs auch für die Synchronisierung in Azure AD Connect konfiguriert werden. Weitere Informationen zum Synchronisieren von Computerobjekten mit Azure AD Connect finden Sie im Artikel [Azure AD Connect-Synchronisierung: Konfigurieren der Filterung](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-sync-configure-filtering#organizational-unitbased-filtering).
 
-Wenn für Ihre Organisation Zugriff auf das Internet über einen ausgehenden Proxy erforderlich ist, empfiehlt Microsoft die [Implementierung von WPAD (Web Proxy AutoDiscovery, Webproxy-AutoErmittlung)](https://docs.microsoft.com/previous-versions/tn-archive/cc995261(v%3dtechnet.10)), damit Windows 10-Computer Geräte bei Azure AD registrieren können. Wenn beim Konfigurieren und Verwalten von WPAD Probleme auftreten, lesen Sie die Informationen unter [Troubleshooting Automatic Detection](https://docs.microsoft.com/previous-versions/tn-archive/cc302643(v=technet.10) (Problembehandlung bei der automatischen Ermittlung). 
+Wenn für Ihre Organisation Zugriff auf das Internet über einen ausgehenden Proxy erforderlich ist, empfiehlt Microsoft die [Implementierung von WPAD (Web Proxy AutoDiscovery, Webproxy-AutoErmittlung)](https://docs.microsoft.com/previous-versions/tn-archive/cc995261(v%3dtechnet.10)), damit Windows 10-Computer Geräte bei Azure AD registrieren können. Wenn beim Konfigurieren und Verwalten von WPAD Probleme auftreten, lesen Sie die Informationen unter [Troubleshooting Automatic Detection](https://docs.microsoft.com/previous-versions/tn-archive/cc302643(v=technet.10)) (Problembehandlung bei der automatischen Ermittlung). 
 
 Wenn Sie nicht die Webproxy-AutoErmittlung verwenden, aber Proxyeinstellungen auf Ihrem Computer konfigurieren müssen, können Sie dazu ab Windows 10 1709 [WinHTTP-Einstellungen mithilfe eines Gruppenrichtlinienobjekts (Group Policy Object, GPO) konfigurieren](https://blogs.technet.microsoft.com/netgeeks/2018/06/19/winhttp-proxy-settings-deployed-by-gpo/).
 

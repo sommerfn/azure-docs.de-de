@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: overview
 ms.date: 4/30/2019
 ms.author: victorh
-ms.openlocfilehash: cdf2a1a730be657b41c7a4b2daf2f178661394b4
-ms.sourcegitcommit: ed66a704d8e2990df8aa160921b9b69d65c1d887
+ms.openlocfilehash: 2a494b924107baeabbcf412af7e1bbdb1db0f753
+ms.sourcegitcommit: 45e4466eac6cfd6a30da9facd8fe6afba64f6f50
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64947110"
+ms.lasthandoff: 06/07/2019
+ms.locfileid: "66752017"
 ---
 # <a name="whats-new-in-azure-application-gateway"></a>Neuerungen in Azure Application Gateway
 
@@ -27,6 +27,7 @@ Azure Application Gateway wird fortlaufend aktualisiert. Damit Sie bezüglich de
 
 |Feature  |BESCHREIBUNG  |Hinzufügedatum  |
 |---------|---------|---------|
+|Benutzerdefinierte WAF-Regeln |Application Gateway WAF_v2 unterstützt nun die Erstellung von benutzerdefinierten Regeln. Siehe [Custom rules for Web Application Firewall v2](custom-waf-rules-overview.md) (Benutzerdefinierte Regeln für Web Application Firewall v2) |Juni 2019 |
 |Automatische Skalierung, Zonenredundanz, Unterstützung von statischen VIPs (allgemeine Verfügbarkeit) |Allgemeine Verfügbarkeit für v2 SKU, die automatische Skalierung, Zonenredundanz, Verbesserung der Leistung, statische VIPs, Schlüsseltresor und Neugenerierung von Headern unterstützt. Siehe die [Dokumentation zur automatischen Skalierung per Application Gateway](application-gateway-autoscaling-zone-redundant.md). |April 2019 |
 |Schlüsseltresor-Integration |Application Gateway unterstützt jetzt die Integration mit Key Vault (in der öffentlichen Vorschau) für Serverzertifikate, die an HTTPS-fähige Listener angefügt sind. Siehe [SSL-Terminierung mit Key Vault-Zertifikaten](key-vault-certs.md). |April 2019 |
 |CRUD/Umschreibungen von Headern     |Sie können die HTTP-Header jetzt umschreiben. Eine Schritt-für-Schritt-Anleitung finden Sie im [Tutorial: Erstellen eines Application Gateways und erneutes Generieren eines HTTP-Headers](tutorial-http-header-rewrite-powershell.md).|Dezember 2018|

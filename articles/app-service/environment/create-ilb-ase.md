@@ -14,12 +14,12 @@ ms.topic: quickstart
 ms.date: 05/28/2019
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: 6f571342b02084ceb8d67fbb889e030194663489
-ms.sourcegitcommit: 600d5b140dae979f029c43c033757652cddc2029
+ms.openlocfilehash: 5b05755502ad5836a21080a122d2e1721825f10c
+ms.sourcegitcommit: 4cdd4b65ddbd3261967cdcd6bc4adf46b4b49b01
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/04/2019
-ms.locfileid: "66493846"
+ms.lasthandoff: 06/06/2019
+ms.locfileid: "66734684"
 ---
 # <a name="create-and-use-an-internal-load-balancer-app-service-environment"></a>Erstellen und Verwenden einer App Service-Umgebung für internen Lastenausgleich 
 
@@ -109,7 +109,7 @@ So konfigurieren Sie Ihren DNS:
 
 - Erstellen Sie eine Zone für *&lt;ASE-Name&gt;.appserviceenvironment.net*.
 - Erstellen Sie einen A-Eintrag in dieser Zone, der * auf die ILB-IP-Adresse verweist. 
-- Erstellen Sie eine Zone namens „scm“ in *&lt;ASE-Name&gt;.appserviceenvironment.net*.
+- Erstellen Sie eine Zone namens „scm“ in *&lt;ASE-Name&gt;.scm.appserviceenvironment.net*.
 - Erstellen Sie einen A-Eintrag in der Zone „scm“, der auf die ILB-IP-Adresse verweist.
 
 ## <a name="publish-with-an-ilb-ase"></a>Veröffentlichen mit einer ILB-ASE

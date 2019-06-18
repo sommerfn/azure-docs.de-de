@@ -14,12 +14,12 @@ ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a0e600204479bc54a590df6bf1bbcd634eaac7fc
-ms.sourcegitcommit: 6ea7f0a6e9add35547c77eef26f34d2504796565
+ms.openlocfilehash: b17ef24d753041934f68f3daee950aaa0bec46ba
+ms.sourcegitcommit: 4cdd4b65ddbd3261967cdcd6bc4adf46b4b49b01
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/14/2019
-ms.locfileid: "65605638"
+ms.lasthandoff: 06/06/2019
+ms.locfileid: "66734757"
 ---
 # <a name="quickstart-naming-policy-for-groups-in-azure-active-directory"></a>Schnellstart: Benennungsrichtlinie für Gruppen in Azure Active Directory
 
@@ -31,12 +31,12 @@ In dieser Schnellstartanleitung richten Sie eine Benennungsrichtlinie in Ihrem A
 
 Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/) erstellen, bevor Sie beginnen.
 
-## <a name="configure-the-group-naming-policy-for-a-tenant-using-azure-portal-preview"></a>Konfigurieren der Benennungsrichtlinie für Gruppen für einen Mandanten im Azure-Portal (Vorschauversion)
+## <a name="configure-the-group-naming-policy-for-a-tenant-using-azure-portal"></a>Konfigurieren der Benennungsrichtlinie für Gruppen für einen Mandanten im Azure-Portal
 
 1. Melden Sie sich mit einem Benutzeradministratorkonto beim [Azure AD Admin Center](https://aad.portal.azure.com) an.
 1. Wählen Sie **Gruppen** aus, und wählen Sie dann **Benennungsrichtlinie** aus, um die Seite „Benennungsrichtlinie“ zu öffnen.
 
-    ![Öffnen der Seite „Benennungsrichtlinie“ im Admin Center](./media/groups-naming-policy/policy-preview.png)
+    ![Öffnen der Seite „Benennungsrichtlinie“ im Admin Center](./media/groups-naming-policy/policy.png)
 
 ### <a name="view-or-edit-the-prefix-suffix-naming-policy"></a>Anzeigen oder Bearbeiten von Präfix-/Suffixbenennungsrichtlinien
 
@@ -49,7 +49,7 @@ Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](htt
 
 1. Wählen Sie auf der Seite **Benennungsrichtlinie** die Option **Blockierte Wörter** aus.
 
-    ![Bearbeiten und Hochladen der Liste der blockierten Wörter für die Benennungsrichtlinie](./media/groups-naming-policy/blockedwords-preview.png)
+    ![Bearbeiten und Hochladen der Liste der blockierten Wörter für die Benennungsrichtlinie](./media/groups-naming-policy/blockedwords.png)
 
 1. Wählen Sie **Herunterladen** aus, um die aktuelle Liste der benutzerdefinierten blockierten Wörter anzuzeigen oder zu bearbeiten.
 1. Laden Sie die neue Liste der benutzerdefinierten blockierten Wörter durch Auswählen des Dateisymbols hoch.
@@ -59,7 +59,7 @@ Das ist alles. Sie haben Ihre Benennungsrichtlinie festgelegt und benutzerdefini
 
 ## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
 
-### <a name="remove-the-naming-policy-using-azure-portal-preview"></a>Entfernen der Benennungsrichtlinie im Azure-Portal (Vorschauversion)
+### <a name="remove-the-naming-policy-using-azure-portal"></a>Entfernen der Benennungsrichtlinie im Azure-Portal
 
 1. Wählen Sie auf der Seite **Benennungsrichtlinie** die Option **Richtlinie löschen** aus.
 1. Nach dem Bestätigen des Löschvorgangs wird die Benennungsrichtlinie einschließlich aller Präfix-/Suffixbenennungsrichtlinien und benutzerdefinierten blockierten Wörter entfernt.

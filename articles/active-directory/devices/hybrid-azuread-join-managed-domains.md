@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: efa653ecf306f5ac5eefaddd61d98e81f919876d
-ms.sourcegitcommit: adb6c981eba06f3b258b697251d7f87489a5da33
+ms.openlocfilehash: 6f9daeb5e0de9c53f16efff46e02015acfa7c521
+ms.sourcegitcommit: 4cdd4b65ddbd3261967cdcd6bc4adf46b4b49b01
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/04/2019
-ms.locfileid: "66513304"
+ms.lasthandoff: 06/06/2019
+ms.locfileid: "66734608"
 ---
 # <a name="tutorial-configure-hybrid-azure-active-directory-join-for-managed-domains"></a>Tutorial: Konfigurieren der Azure Active Directory-Hybrideinbindung für verwaltete Domänen
 
@@ -65,7 +65,7 @@ für die Azure AD-Hybrideinbindung ist erforderlich, dass die Geräte innerhalb 
 - `https://device.login.microsoftonline.com`
 - [https://autologon.microsoftazuread-sso.com](`https://autologon.microsoftazuread-sso.com`) (Wenn Sie das nahtlose einmalige Anmelden verwenden oder verwenden möchten)
 
-Wenn für Ihre Organisation Zugriff auf das Internet über einen ausgehenden Proxy erforderlich ist, empfiehlt Microsoft die [Implementierung von WPAD (Web Proxy AutoDiscovery, Webproxy-AutoErmittlung)](https://docs.microsoft.com/previous-versions/tn-archive/cc995261(v%3dtechnet.10)), damit Windows 10-Computer Geräte bei Azure AD registrieren können. Wenn beim Konfigurieren und Verwalten von WPAD Probleme auftreten, lesen Sie die Informationen unter [Troubleshooting Automatic Detection](https://docs.microsoft.com/previous-versions/tn-archive/cc302643(v=technet.10) (Problembehandlung bei der automatischen Ermittlung). 
+Wenn für Ihre Organisation Zugriff auf das Internet über einen ausgehenden Proxy erforderlich ist, empfiehlt Microsoft die [Implementierung von WPAD (Web Proxy AutoDiscovery, Webproxy-AutoErmittlung)](https://docs.microsoft.com/previous-versions/tn-archive/cc995261(v%3dtechnet.10)), damit Windows 10-Computer Geräte bei Azure AD registrieren können. Wenn beim Konfigurieren und Verwalten von WPAD Probleme auftreten, lesen Sie die Informationen unter [Troubleshooting Automatic Detection](https://docs.microsoft.com/previous-versions/tn-archive/cc302643(v=technet.10)) (Problembehandlung bei der automatischen Ermittlung). 
 
 Wenn Sie nicht die Webproxy-AutoErmittlung verwenden, aber Proxyeinstellungen auf Ihrem Computer konfigurieren müssen, können Sie dazu ab Windows 10 1709 [WinHTTP-Einstellungen mithilfe eines Gruppenrichtlinienobjekts (Group Policy Object, GPO) konfigurieren](https://blogs.technet.microsoft.com/netgeeks/2018/06/19/winhttp-proxy-settings-deployed-by-gpo/).
 
