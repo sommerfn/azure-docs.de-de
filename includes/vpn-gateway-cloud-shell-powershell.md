@@ -9,10 +9,10 @@ ms.date: 06/04/2019
 ms.author: cherylmc
 ms.custom: include file
 ms.openlocfilehash: 3ef848d12e3a39c3bd83ea44fcb86d67bbdb38dc
-ms.sourcegitcommit: 1aefdf876c95bf6c07b12eb8c5fab98e92948000
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/06/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66735938"
 ---
 In diesem Artikel werden PowerShell-Cmdlets verwendet. Zum Ausführen der Cmdlets können Sie Azure Cloud Shell verwenden, eine interaktive Shell-Umgebung, die in Azure gehostet und über den Browser verwendet wird. In Azure Cloud Shell sind die Azure PowerShell-Cmdlets bereits vorinstalliert.

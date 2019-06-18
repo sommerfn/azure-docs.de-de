@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 06/06/2019
 ms.author: tomfitz
 ms.openlocfilehash: 99fd4215de4dd118558acc008fcfa6490ea0093d
-ms.sourcegitcommit: f9448a4d87226362a02b14d88290ad6b1aea9d82
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/07/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66807369"
 ---
 # <a name="resource-property-or-variable-iteration-in-azure-resource-manager-templates"></a>Iteration von Ressourcen, Eigenschaften oder Variablen in Azure Resource Manager-Vorlagen
