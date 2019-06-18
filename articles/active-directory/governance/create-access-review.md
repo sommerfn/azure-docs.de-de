@@ -15,12 +15,12 @@ ms.date: 05/21/2019
 ms.author: rolyon
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7cb889b243de7459b7b14f9d778a3177873de3f6
-ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
+ms.openlocfilehash: 1ef72f1649c3f3e0af7fba53b2e8dbcee49d4b59
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/04/2019
-ms.locfileid: "66473297"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "66734562"
 ---
 # <a name="create-an-access-review-of-groups-or-applications-in-azure-ad-access-reviews"></a>Erstellen einer Zugriffsüberprüfung für Gruppen oder Anwendungen in Azure AD-Zugriffsüberprüfungen
 
@@ -31,7 +31,6 @@ In diesem Artikel wird die Erstellung einer oder mehrerer Zugriffsüberprüfunge
 ## <a name="prerequisites"></a>Voraussetzungen
 
 - Azure AD Premium P2
-- [Zugriffsüberprüfungen integrieren](access-reviews-overview.md)
 - Globaler Administrator oder Benutzeradministrator
 
 Weitere Informationen finden Sie unter [Welche Benutzer benötigen Lizenzen?](access-reviews-overview.md#which-users-must-have-licenses)
