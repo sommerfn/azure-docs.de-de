@@ -16,12 +16,12 @@ ms.author: celested
 ms.reviewer: harshja
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 365f017fe7d71500c17d0a9ccd9c5a0a26a78b75
-ms.sourcegitcommit: cfbc8db6a3e3744062a533803e664ccee19f6d63
+ms.openlocfilehash: ab08c93662988655154cf300ac4ee3758fbc7872
+ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/21/2019
-ms.locfileid: "65989592"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66472799"
 ---
 # <a name="header-based-authentication-for-single-sign-on-with-application-proxy-and-pingaccess"></a>Headerbasierte Authentifizierung für einmaliges Anmelden mit Anwendungsproxy und PingAccess
 
@@ -50,7 +50,7 @@ Dieser Artikel richtet sich an Personen, die in diesem Szenario erstmals eine An
 
 Wenn Sie bereits Anwendungsproxy aktiviert und einen Connector installiert haben, können Sie diesen Abschnitt überspringen und mit [Hinzufügen Ihrer Anwendung zu Azure AD mit Anwendungsproxy](#add-your-application-to-azure-ad-with-application-proxy) fortfahren.
 
-Der Anwendungsproxyconnector ist ein Windows Server-Dienst, der den Datenverkehr von den Remotemitarbeitern zu Ihren veröffentlichten Anwendungen weiterleitet. Ausführlichere Installationsanweisungen finden Sie im [Tutorial: Hinzufügen einer lokalen Anwendung für den Remotezugriff über den Anwendungsproxy in Azure Active Directory](application-proxy-add-on-premises-application.md).
+Der Anwendungsproxyconnector ist ein Windows Server-Dienst, der den Datenverkehr von den Remotemitarbeitern zu Ihren veröffentlichten Anwendungen weiterleitet. Ausführlichere Installationsanweisungen finden Sie unter [Tutorial: Hinzufügen einer lokalen Anwendung für den Remotezugriff über den Anwendungsproxy in Azure Active Directory](application-proxy-add-on-premises-application.md).
 
 1. Melden Sie sich beim [Azure Active Directory-Portal](https://aad.portal.azure.com/) als Anwendungsadministrator an. Die Seite **Azure Active Directory Admin Center** wird angezeigt.
 2. Wählen Sie **Azure Active Directory** > **Anwendungsproxy** > **Connectordienst herunterladen** aus. Die Seite **Download des Anwendungsproxyconnectors** wird angezeigt.
@@ -158,9 +158,9 @@ So erfassen Sie diese Informationen
 
 ### <a name="update-graphapi-to-send-custom-fields-optional"></a>Aktualisieren von GraphAPI zum Senden von benutzerdefinierten Feldern (optional)
 
-Eine Liste mit Sicherheitstoken, die Azure AD für die Authentifizierung sendet, finden Sie unter [Microsoft Identity Platform – ID-Token](../develop/id-tokens.md). Wenn Sie einen benutzerdefinierten Anspruch benötigen, der andere Token sendet, legen Sie das Anwendungsfeld `acceptMappedClaims` auf `True` fest. Sie können Graph-Tester oder das Anwendungsmanifest des Azure AD-Portals nutzen, um diese Änderung vornehmen.
+Wenn Sie einen benutzerdefinierten Anspruch benötigen, der andere Token innerhalb des von PingAccess genutzten „access_token“ sendet, legen Sie für das Anwendungsfeld `acceptMappedClaims` `True` fest. Sie können Graph-Tester oder das Anwendungsmanifest des Azure AD-Portals nutzen, um diese Änderung vornehmen.
 
-In diesem Beispiel wird der Graph-Tester verwendet:
+**In diesem Beispiel wird der Graph-Tester verwendet:**
 
 ```
 PATCH https://graph.windows.net/myorganization/applications/<object_id_GUID_of_your_application>
@@ -170,7 +170,7 @@ PATCH https://graph.windows.net/myorganization/applications/<object_id_GUID_of_y
 }
 ```
 
-In diesem Beispiel wird das Feld `acceptMappedClaims` im [Azure Active Directory-Portal](https://aad.portal.azure.com/) aktualisiert:
+**In diesem Beispiel wird das `acceptMappedClaims`Feld** im [Azure Active Directory-Portal](https://aad.portal.azure.com/) aktualisiert:
 
 1. Melden Sie sich beim [Azure Active Directory-Portal](https://aad.portal.azure.com/) als Anwendungsadministrator an.
 2. Klicken Sie auf **Azure Active Directory** > **App-Registrierungen**. Eine Liste mit Anwendungen wird eingeblendet.
@@ -179,7 +179,28 @@ In diesem Beispiel wird das Feld `acceptMappedClaims` im [Azure Active Directory
 5. Suchen Sie das Feld `acceptMappedClaims`, und ändern Sie den Wert in `True`.
 6. Wählen Sie **Speichern** aus.
 
-### <a name="use-a-custom-claim-optional"></a>Verwenden eines benutzerdefinierten Anspruchs (optional)
+
+### <a name="use-of-optional-claims-optional"></a>Verwenden optionaler Ansprüche (optional)
+Mit optionalen Ansprüchen können Sie standardmäßige Ansprüche, die aber nicht standardmäßig enthalten sind, allen Benutzern und Mandanten hinzufügen. Sie können optionale Ansprüche für Ihre Anwendung konfigurieren, indem Sie das Anwendungsmanifest ändern. Weitere Informationen finden Sie im Artikel [Grundlegendes zum Azure AD-Anwendungsmanifest](https://docs.microsoft.com/azure/active-directory/develop/reference-app-manifest/).
+
+Beispiel zum Einschließen der E-Mail-Adresse in das „access_token“, das PingAccess nutzt:
+```
+    "optionalClaims": {
+        "idToken": [],
+        "accessToken": [
+            {
+                "name": "email",
+                "source": null,
+                "essential": false,
+                "additionalProperties": []
+            }
+        ],
+        "saml2Token": []
+    },
+```
+
+### <a name="use-of-claims-mapping-policy-optional"></a>Verwenden der Anspruchszuordnungsrichtlinie (optional)
+[Anspruchszuordnungsrichtlinie (Vorschau)](https://docs.microsoft.com/azure/active-directory/develop/active-directory-claims-mapping#claims-mapping-policy-properties/) für Attribute, die nicht in Azure AD vorhanden sind. Durch Zuordnung von Ansprüchen können Sie alte lokale Apps zur Cloud migrieren, indem Sie zusätzliche benutzerdefinierte Ansprüche hinzufügen, die von Ihrem ADFS oder Benutzerobjekten gesichert werden.
 
 Damit Ihre Anwendung einen benutzerdefinierten Anspruch verwenden und zusätzliche Felder enthalten kann, achten Sie darauf, dass Sie auch [eine Richtlinie für die Zuordnung benutzerdefinierter Ansprüche erstellt und der Anwendung zugeordnet haben](../develop/active-directory-claims-mapping.md#claims-mapping-policy-assignment).
 
@@ -187,6 +208,16 @@ Damit Ihre Anwendung einen benutzerdefinierten Anspruch verwenden und zusätzlic
 > Um einen benutzerdefinierten Anspruch zu verwenden, benötigen Sie auch eine für diese Anwendung definierte und ihr zugewiesene benutzerdefinierte Richtlinie. Diese Richtlinie sollte alle erforderlichen benutzerdefinierten Attribute enthalten.
 >
 > Richtliniendefinition und Zuweisung können über PowerShell, Azure AD Graph-Tester oder Microsoft Graph erfolgen. Wenn diese Aufgaben über PowerShell erfolgen, müssen Sie möglicherweise zuerst `New-AzureADPolicy` verwenden und die Richtlinie dann der Anwendung mit `Add-AzureADServicePrincipalPolicy` zuweisen. Weitere Informationen finden Sie unter [Zuweisung von Anspruchszuordnungsrichtlinien](../develop/active-directory-claims-mapping.md#claims-mapping-policy-assignment).
+
+Beispiel:
+```powershell
+$pol = New-AzureADPolicy -Definition @('{"ClaimsMappingPolicy":{"Version":1,"IncludeBasicClaimSet":"true", "ClaimsSchema": [{"Source":"user","ID":"employeeid","JwtClaimType":"employeeid"}]}}') -DisplayName "AdditionalClaims" -Type "ClaimsMappingPolicy"
+
+Add-AzureADServicePrincipalPolicy -Id "<<The object Id of the Enterprise Application you published in the previous step, which requires this claim>>" -RefObjectId $pol.Id 
+```
+
+### <a name="enable-pingaccess-to-use-custom-claims-optional-but-required-if-you-expect-the-application-to-consume-additional-claims"></a>Aktivieren von PingAccess, um benutzerdefinierte Ansprüche zu verwenden (optional, jedoch erforderlich, wenn Sie erwarten, dass die Anwendung zusätzliche Ansprüche nutzt)
+Wenn Sie im folgenden Schritt PingAccess konfigurieren, muss in der Websitzung, die Sie erstellen (Einstellungen->Zugriff->Websitzungen) **Anforderungsprofil** deaktiviert und **Benutzerattribute aktualisieren** auf **Nein** gesetzt sein.
 
 ## <a name="download-pingaccess-and-configure-your-application"></a>Herunterladen von PingAccess und Konfigurieren Ihrer Anwendung
 

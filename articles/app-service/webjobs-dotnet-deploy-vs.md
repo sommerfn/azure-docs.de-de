@@ -14,12 +14,12 @@ ms.custom: vs-azure
 ms.workload: azure-vs
 ms.date: 02/18/2019
 ms.author: glenga;david.ebbo;suwatch;pbatum;naren.soni
-ms.openlocfilehash: 4d375b559019529bdc170ce6bab535481e0569e0
-ms.sourcegitcommit: 4c2b9bc9cc704652cc77f33a870c4ec2d0579451
+ms.openlocfilehash: b8cc628ef7db198c5068bb3917cf41113ba1687a
+ms.sourcegitcommit: c05618a257787af6f9a2751c549c9a3634832c90
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/17/2019
-ms.locfileid: "65873018"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66417087"
 ---
 # <a name="develop-and-deploy-webjobs-using-visual-studio---azure-app-service"></a>Entwickeln und Bereitstellen von WebJobs mit Visual Studio – Azure App Service
 
@@ -27,7 +27,7 @@ In diesem Artikel wird erläutert, wie Sie Visual Studio zum Bereitstellen eines
 
 Sie können mehrere Webaufträge in einer Web-App veröffentlichen. Stellen Sie sicher, dass jeder Webauftrag in einer Web-App über einen eindeutigen Namen verfügt.
 
-Mit Version 3.x des [Azure WebJobs SDK](webjobs-sdk-how-to.md) können Sie Webaufträge entwickeln, die als .NET Core-Apps ausgeführt werden, während Version 2.x lediglich das .NET Framework unterstützt. Die Art und Weise, auf die Sie ein WebJobs-Projekt bereitstellen, unterscheidet sich bei .NET Core-Projekten von .NET Framework.
+Mit Version 3.x des [Azure WebJobs SDK](webjobs-sdk-how-to.md) können Sie Webaufträge entwickeln, die entweder als .NET Core- oder .NET Framework-Apps ausgeführt werden, während Version 2.x lediglich das .NET Framework unterstützt. Die Art und Weise, auf die Sie ein WebJobs-Projekt bereitstellen, ist bei .NET Core- und .NET Framework-Projekten unterschiedlich.
 
 ## <a name="webjobs-as-net-core-console-apps"></a>Webaufträge als .NET Core-Konsolenanwendung
 

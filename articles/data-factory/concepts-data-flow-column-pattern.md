@@ -6,12 +6,12 @@ ms.author: makromer
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 01/30/2019
-ms.openlocfilehash: 5131329f6675bc86374f5a5c081e0aaa7d36c0fe
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.openlocfilehash: 08cdaafe00b7dc586ea75f6ff03fdb89107edee9
+ms.sourcegitcommit: 087ee51483b7180f9e897431e83f37b08ec890ae
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66155234"
+ms.lasthandoff: 05/31/2019
+ms.locfileid: "66430760"
 ---
 # <a name="azure-data-factory-mapping-data-flows-column-patterns"></a>Azure Data Factory-Mappingdatenfluss – Spaltenmuster
 

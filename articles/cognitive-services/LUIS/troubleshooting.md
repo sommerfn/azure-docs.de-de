@@ -11,16 +11,20 @@ ms.subservice: language-understanding
 ms.topic: article
 ms.date: 05/15/2019
 ms.author: diberry
-ms.openlocfilehash: b4c1de8edf04e15b540adeac01bcbf0cb1d1b8af
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: f922f9c64f182377365192543305b48659c518da
+ms.sourcegitcommit: c05618a257787af6f9a2751c549c9a3634832c90
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65766931"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66417981"
 ---
 # <a name="language-understanding-frequently-asked-questions-faq"></a>Language Understanding: häufig gestellte Fragen (FAQ)
 
 Dieser Artikel enthält Antworten auf häufig gestellte Fragen zu Language Understanding (LUIS).
+
+## <a name="whats-new"></a>Neuigkeiten
+
+[Erfahren Sie mehr über](whats-new.md) Neuerungen in Language Understanding.
 
 <a name="luis-authoring"></a>
 
@@ -297,6 +301,10 @@ Die folgenden Features wurden bei der Build 2019-Konferenz veröffentlicht:
 * [Verbesserte vordefinierte Domänen](luis-reference-prebuilt-domains.md) 
 * [Entitäten vom Typ „dynamische Liste“](luis-migration-api-v3.md#dynamic-lists-passed-in-at-prediction-time)
 * [Externe Entitäten](luis-migration-api-v3.md#external-entities-passed-in-at-prediction-time)
+
+Videos:
+
+* [How to use Azure Conversational AI to scale your business for the next generation (Bereiten Sie Ihr Unternehmen mit Azure Conversational AI auf die nächste Generation vor)](https://www.youtube.com/watch?v=_k97jd-csuk&feature=youtu.be)
 
 ## <a name="next-steps"></a>Nächste Schritte
 

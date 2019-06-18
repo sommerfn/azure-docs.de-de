@@ -13,18 +13,18 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 02/18/2019
 ms.author: glenga
-ms.openlocfilehash: 6f743f7ea7fda368fc5895646145f553f3fb50fb
-ms.sourcegitcommit: 4c2b9bc9cc704652cc77f33a870c4ec2d0579451
+ms.openlocfilehash: 20bb8d5380f5a905a827dfb12dcc032e327267e0
+ms.sourcegitcommit: c05618a257787af6f9a2751c549c9a3634832c90
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/17/2019
-ms.locfileid: "65864831"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66418227"
 ---
 # <a name="get-started-with-the-azure-webjobs-sdk-for-event-driven-background-processing"></a>Erste Schnitte mit dem Azure WebJobs SDK für die ereignisgesteuerte Hintergrundverarbeitung
 
-In diesem Artikel erfahren Sie, wie Sie mit Visual Studio 2019 ein Azure WebJobs SDK-Projekt erstellen, es lokal ausführen und dann in [Azure App Service](overview.md) bereitstellen. Das Projekt, das Sie erstellen, ist eine .NET Core-Konsolenanwendung, die Version 3.x des WebJobs SDK verwendet. Weitere Informationen zu Version 2.x, die das .NET Framework verwendet, finden Sie unter [Entwickeln und Bereitstellen von WebJobs mit Visual Studio – Azure App Service](webjobs-dotnet-deploy-vs.md).
+In diesem Artikel erfahren Sie, wie Sie mit Visual Studio 2019 ein Azure WebJobs SDK-Projekt erstellen, es lokal ausführen und dann in [Azure App Service](overview.md) bereitstellen. Version 3.x des WebJobs SDK unterstützt .NET Core und .NET Framework-Konsolen-Apps. Weitere Informationen zum Arbeiten mit dem WebJobs SDK finden Sie unter [Verwenden des WebJobs SDK für die ereignisgesteuerte Hintergrundverarbeitung](webjobs-sdk-how-to.md).
 
-Weitere Informationen zum Arbeiten mit dem WebJobs SDK finden Sie unter [Verwenden des WebJobs SDK für die ereignisgesteuerte Hintergrundverarbeitung](webjobs-sdk-how-to.md).
+In diesem Artikel erfahren Sie, wie Sie WebJobs als .NET Core-Konsolen-App bereitstellen. Wie Sie WebJobs als .NET Framework-Konsolen-App bereitstellen, erfahren Sie unter [Webaufträge als .NET Framework-Konsolenanwendungen](webjobs-dotnet-deploy-vs.md#webjobs-as-net-framework-console-apps). Weitere Informationen zu WebJobs SDK Version 2.x, die nur .NET Framework unterstützt, finden Sie unter [Entwickeln und Bereitstellen von WebJobs mit Visual Studio – Azure App Service](webjobs-dotnet-deploy-vs.md).
 
 ## <a name="prerequisites"></a>Voraussetzungen
 

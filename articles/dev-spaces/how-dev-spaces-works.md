@@ -10,12 +10,12 @@ ms.date: 03/04/2019
 ms.topic: conceptual
 description: Beschreibt die Prozesse, die zur Funktionsweise von Azure Dev Spaces beitragen, und beschreibt, wie diese in der Konfigurationsdatei „azds.yaml“ konfiguriert werden.
 keywords: azds.yaml, Azure Dev Spaces, Dev Spaces, Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, Container
-ms.openlocfilehash: f7cf5ae875fa0fb87322052df036d35e8e5e89a4
-ms.sourcegitcommit: 6ea7f0a6e9add35547c77eef26f34d2504796565
+ms.openlocfilehash: e437a53d640bbdad3cdeeba8fd73e1f9ffef4023
+ms.sourcegitcommit: d89032fee8571a683d6584ea87997519f6b5abeb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/14/2019
-ms.locfileid: "65605409"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66399832"
 ---
 # <a name="how-azure-dev-spaces-works-and-is-configured"></a>Funktionsweise und Konfiguration von Azure Dev Spaces
 
@@ -80,7 +80,7 @@ Ausführlichere Informationen zur Funktionsweise von Azure Dev Spaces sind in de
 ## <a name="prepare-your-aks-cluster"></a>Vorbereiten Ihres AKS-Clusters
 
 Ein Vorbereiten Ihres AKS-Clusters umfasst Folgendes:
-* Überprüfen, ob sich Ihr AKS-Cluster in einer Region befindet, die [von Azure Dev Spaces unterstützt wird](https://docs.microsoft.com/azure/dev-spaces/#a-rapid,-iterative-kubernetes-development-experience-for-teams)
+* Überprüfen, ob sich Ihr AKS-Cluster in einer Region befindet, die von [Azure Dev Spaces unterstützt wird][supported-regions].
 * Überprüfen, ob Sie Kubernetes 1.10.3 oder höher ausführen
 * Aktivieren von Azure Dev Spaces in Ihrem Cluster über `az aks use-dev-spaces`
 
@@ -408,7 +408,7 @@ Bei einer Java-, .NET- oder Node.js-Anwendung können Sie diese, wenn sie direkt
 
 ![Debuggen von Code](media/get-started-node/debug-configuration-nodejs2.png)
 
-Wenn Sie Ihre Anwendung über Visual Studio Code oder Visual Studio für ein Debuggen starten, erfolgen das Starten sowie das Verbinden mit Ihrem Entwicklungsbereich auf die gleiche Weise wie bei einem Ausführen von `azds up`. Die clientseitigen Tools in Visual Studio Code und Visual Studio stellen auch einen zusätzlichen Parameter mit speziellen Informationen für das Debuggen bereit. Der Parameter enthält den Namen des Debugger-Image, den Speicherort des Debuggers im Image des Debuggers und den Zielspeicherort im Container der Anwendung, um den Debugger-Ordner bereitzustellen. 
+Wenn Sie Ihre Anwendung über Visual Studio Code oder Visual Studio für ein Debuggen starten, erfolgen das Starten sowie das Verbinden mit Ihrem Entwicklungsbereich auf die gleiche Weise wie bei einem Ausführen von `azds up`. Die clientseitigen Tools in Visual Studio Code und Visual Studio stellen auch einen zusätzlichen Parameter mit speziellen Informationen für das Debuggen bereit. Der Parameter enthält den Namen des Debugger-Image, den Speicherort des Debuggers im Image des Debuggers und den Zielspeicherort im Container der Anwendung, um den Debugger-Ordner bereitzustellen.
 
 Das Debugger-Image wird automatisch durch die clientseitigen Tools bestimmt. Dazu wird eine Methode verwendet, die derjenigen ähnelt, die bei der Generierung der Dockerfile-Datei und des Helm-Charts beim Ausführen von `azds prep` verwendet wird. Sobald der Debugger im Image der Anwendung bereitgestellt ist, wird er mit `azds exec` ausgeführt.
 
@@ -442,3 +442,7 @@ Informationen zum Einstieg in die Entwicklung im Team finden Sie in der folgende
 * [Teamentwicklung – .NET Core mit CLI and Visual Studio Code](team-development-netcore.md)
 * [Teamentwicklung – .NET Core mit Visual Studio 2017](team-development-netcore-visualstudio.md)
 * [Teamentwicklung – Node.js mit CLI and Visual Studio Code](team-development-nodejs.md)
+
+
+
+[supported-regions]: about.md#supported-regions-and-configurations

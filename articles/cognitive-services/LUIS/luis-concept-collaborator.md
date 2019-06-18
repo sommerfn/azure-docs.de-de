@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 04/01/2019
+ms.date: 06/03/2019
 ms.author: diberry
-ms.openlocfilehash: 8c2ed8932e67a2e0c83fe4e3fdf6783c24e56a6e
-ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
+ms.openlocfilehash: 294905ccfd0ce8db6da8737277b0ce978ba837ea
+ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/20/2019
-ms.locfileid: "65956982"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66473509"
 ---
 # <a name="collaborating-with-other-authors"></a>Zusammenarbeiten mit anderen Autoren
 
@@ -31,7 +31,7 @@ Unter [Azure Active Directory-Mandantenbenutzer](luis-how-to-collaborate.md#azur
 
 ## <a name="luis-app-owner"></a>LUIS-App-Besitzer
 
-Das Konto, mit dem eine App erstellt wird, ist der Besitzer und jede App hat einen einzelnen Besitzer. Der Besitzer wird auf der Seite **[Einstellungen](luis-how-to-collaborate.md)** der App aufgeführt. Der Besitzer kann die E-Mail für den Erhalt der App löschen, wenn das Endpunktkontingent 75 % des monatlichen Limits erreicht. 
+Das Konto, mit dem eine App erstellt wird, ist der Besitzer und jede App hat einen einzelnen Besitzer. Der Besitzer wird auf der Seite **[Einstellungen](luis-how-to-collaborate.md)** der App aufgeführt. Der Besitzer empfängt E-Mail, wenn das Endpunktkontingent 75% des monatlichen Limits erreicht. 
 
 ## <a name="authorization-roles"></a>Autorisierungsrollen
 LUIS unterstützt mit einer Ausnahme keine unterschiedlichen Rollen für Besitzer und Projektmitarbeiter. Der Besitzer ist das einzige Konto, das die App löschen kann.

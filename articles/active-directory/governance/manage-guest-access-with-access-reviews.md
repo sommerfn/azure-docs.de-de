@@ -16,12 +16,12 @@ ms.date: 12/13/2018
 ms.author: rolyon
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6fc5bcdbbe821008f74e85a91889044c8975ce93
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.openlocfilehash: 7c896356b67de185c55396e98aa6bb2e61dd004d
+ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66113255"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66472904"
 ---
 # <a name="manage-guest-access-with-azure-ad-access-reviews"></a>Verwalten des Gastzugriffs mit Azure AD-Zugriffsüberprüfungen
 
@@ -41,7 +41,7 @@ Weitere Informationen finden Sie unter [Welche Benutzer benötigen Lizenzen?](ac
 
 ## <a name="create-and-perform-an-access-review-for-guests"></a>Erstellen und Durchführen einer Zugriffsüberprüfung für Gäste
 
-Navigieren Sie zuerst als globaler Administrator oder Benutzeradministrator zur [Seite „Zugriffsüberprüfungen“](https://portal.azure.com/#blade/Microsoft_AAD_ERM/DashboardBlade/), um sicherzustellen, dass Ihre Organisation Zugriffsüberprüfungen verwenden kann.
+Navigieren Sie zuerst als globaler Administrator oder Benutzeradministrator zur [Seite „Identity Governance“](https://portal.azure.com/#blade/Microsoft_AAD_ERM/DashboardBlade/), um sicherzustellen, dass Ihre Organisation Zugriffsüberprüfungen verwenden kann.
 
 Azure AD ermöglicht mehrere Szenarien für die Überprüfung von Gastbenutzern.
 

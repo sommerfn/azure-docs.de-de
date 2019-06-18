@@ -7,22 +7,34 @@ ms.author: mattwoj
 ms.service: marketplace
 ms.topic: conceptual
 ms.date: 05/30/2019
-ms.openlocfilehash: 461c9f3f3725ba27410088ca19f1ec050375adf2
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: 9bf3136969974abbe9a99a5632478e3cbb22307e
+ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65804828"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66474525"
 ---
 # <a name="check-the-publishing-status-of-your-commercial-marketplace-offer"></a>Überprüfen des Veröffentlichungsstatus Ihres Commercial Marketplace-Angebots
 
 Sie können Ihren aktuellen **Veröffentlichungsstatus** im Partner Center im [Commercial Marketplace-Portal](https://partner.microsoft.com/dashboard/commercial-marketplace/offers) auf der Registerkarte **Offer overview** (Angebotsübersicht) einsehen.
 
+Für jedes Angebot sollte eine der folgenden Statusangaben angezeigt werden.
+
+| **Status**    | **Beschreibung**  |
+| :---------- | :-------------------|
+| **Draft** | Angebot wurde erstellt, wird aber nicht veröffentlicht. |
+| **Veröffentlichung wird durchgeführt** | Das Angebot / der Plan durchläuft die Schritte des Veröffentlichungsvorgangs. |
+| **Erforderliche Aktion** | Ein schwerwiegendes Problem wurde während der Zertifizierung durch Microsoft oder eines anderen Veröffentlichungsschritts erkannt. |
+| **Vorschau** | Das Angebot wurde von Microsoft zertifiziert und muss nun noch abschließend durch den Herausgeber verifiziert werden. Wählen Sie „Live schalten“, um das Angebot live zu schalten. |
+| **Live** | Das Angebot ist im Marketplace live geschaltet und kann von Kunden angezeigt und erworben werden. |
+| **Ausstehender Verkaufsstopp** | Der Herausgeber hat den „Verkaufsstopp“ für Angebot oder Plan ausgewählt, aber die Aktion ist noch nicht abgeschlossen. |
+| **Im Marketplace nicht verfügbar** | Ein zuvor im Marketplace veröffentlichtes Angebot / veröffentlichter Plan wurde entfernt. |
+
 ## <a name="automated-validation"></a>Automatisierte Validierung
 
 Der erste Schritt im Veröffentlichungsprozess sieht eine Reihe automatisierter Validierungen vor. Jeder Validierungsschritt entspricht einem Feature, das Sie bei der Erstellung Ihres Angebots aktiviert haben. Wenn dieses Feature nicht aktiviert wurde, wechselt die Validierung zum nächsten Veröffentlichungsschritt. Jede Validierungsprüfung muss abgeschlossen sein, bevor der Veröffentlichungsstatus genehmigt wird.
 
-- **Einrichten des Flows zum Kauf eines Angebots (> 10 Min.)**
+- **Einrichten des Flows zum Kauf eines Angebots (<10 Min.)**
 
 In diesem Schritt stellen wir sicher, dass Ihr Angebot vom Kunden im Azure-Portal gekauft werden kann. Dieser Schritt gilt nur für Angebote, die über Microsoft verkauft werden.
 
@@ -34,7 +46,7 @@ In diesem Schritt validieren wir die Daten, die Sie im Abschnitt „Technische K
 
 Nach der Validierung der Daten und Funktionalität Ihrer Testversion im vorherigen Schritt werden wir in diesem Schritt Instanzen Ihrer Testversion so bereitstellen und replizieren, dass sie für Kunden einsatzbereit sind.  Dieser Schritt gilt nur für Angebote mit aktivierter Testversion.
 
-- **Überprüfung der Leadverwaltung und Registrierung (> 15 Min.)**
+- **Überprüfung der Leadverwaltung und Registrierung (<15 Min.)**
 
 In diesem Schritt bestätigen wir, dass Ihr Leadverwaltungssystem Kundenleads basierend auf den Angaben in der Angebotseinrichtung erhalten kann. Dieser Schritt gilt nur für Angebote mit aktivierter Leadverwaltung.
 

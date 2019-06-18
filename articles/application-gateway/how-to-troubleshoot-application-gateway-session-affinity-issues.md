@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 02/22/2019
 ms.author: absha
-ms.openlocfilehash: 07165a497e75934a65719e48a9af7d8d6906ee7b
-ms.sourcegitcommit: f6c85922b9e70bb83879e52c2aec6307c99a0cac
+ms.openlocfilehash: 66f61b5d6fcb86ed93e4dbae802ae7a80613c83d
+ms.sourcegitcommit: d89032fee8571a683d6584ea87997519f6b5abeb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/11/2019
-ms.locfileid: "65538348"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66397841"
 ---
 # <a name="troubleshoot-azure-application-gateway-session-affinity-issues"></a>Behandeln von Problemen mit der Azure Application Gateway-Sitzungsaffinität
 
@@ -86,7 +86,7 @@ Gehen Sie zum Beheben dieses Problems wie folgt vor:
 
     ![troubleshoot-session-affinity-issues-3](./media/how-to-troubleshoot-application-gateway-session-affinity-issues/troubleshoot-session-affinity-issues-3.png)
 
-        ![troubleshoot-session-affinity-issues-4](./media/how-to-troubleshoot-application-gateway-session-affinity-issues/troubleshoot-session-affinity-issues-4.png)
+    ![troubleshoot-session-affinity-issues-4](./media/how-to-troubleshoot-application-gateway-session-affinity-issues/troubleshoot-session-affinity-issues-4.png)
 
 In der Anwendung wird weiterhin versucht, das Cookie für jede Anforderung festzulegen, bis eine Antwort empfangen wird.
 
@@ -167,23 +167,23 @@ Sie können einen Webdebugger Ihrer Wahl verwenden. In diesem Beispiel wird Fidd
 
 2. Klicken Sie mit der rechten Maustaste auf die ausführbare Setupdatei, und führen Sie die Installation als Administrator aus.
 
-            ![troubleshoot-session-affinity-issues-12](./media/how-to-troubleshoot-application-gateway-session-affinity-issues/troubleshoot-session-affinity-issues-12.png)
+    ![troubleshoot-session-affinity-issues-12](./media/how-to-troubleshoot-application-gateway-session-affinity-issues/troubleshoot-session-affinity-issues-12.png)
 
 3. Wenn Sie Fiddler öffnen, sollte die Erfassung von Datenverkehr automatisch gestartet werden. (Beachten Sie die Option „Capturing“ (Erfassen) in der linken unteren Ecke.) Drücken Sie F12, um die Erfassung von Datenverkehr zu starten oder zu beenden.
 
-        ![troubleshoot-session-affinity-issues-13](./media/how-to-troubleshoot-application-gateway-session-affinity-issues/troubleshoot-session-affinity-issues-13.png)
+    ![troubleshoot-session-affinity-issues-13](./media/how-to-troubleshoot-application-gateway-session-affinity-issues/troubleshoot-session-affinity-issues-13.png)
 
 4. In den meisten Fällen möchten Sie wahrscheinlich entschlüsselten HTTPS-Datenverkehr erfassen. Sie können die HTTP-Entschlüsselung aktivieren, indem Sie **Tools** > **Fiddler Options** (Tools > Fiddler-Optionen) auswählen und das Kontrollkästchen **Decrypt HTTPS traffic** (HTTPS-Datenverkehr entschlüsseln) aktivieren.
 
-        ![troubleshoot-session-affinity-issues-14](./media/how-to-troubleshoot-application-gateway-session-affinity-issues/troubleshoot-session-affinity-issues-14.png)
+    ![troubleshoot-session-affinity-issues-14](./media/how-to-troubleshoot-application-gateway-session-affinity-issues/troubleshoot-session-affinity-issues-14.png)
 
 5. Sie können vorherige nicht verknüpfte Sitzungen entfernen, bevor Sie das Problem reproduzieren, indem Sie wie im folgenden Screenshot gezeigt auf **X** (Symbol) > **Remove All** (Alle entfernen) klicken: 
 
-        ![troubleshoot-session-affinity-issues-15](./media/how-to-troubleshoot-application-gateway-session-affinity-issues/troubleshoot-session-affinity-issues-15.png)
+    ![troubleshoot-session-affinity-issues-15](./media/how-to-troubleshoot-application-gateway-session-affinity-issues/troubleshoot-session-affinity-issues-15.png)
 
 6. Nachdem Sie das Problem reproduziert haben, speichern Sie die Datei zur Überprüfung, indem Sie **File** > **Save** > **All Sessions...** (Datei > Speichern > Alle Sitzungen...) auswählen. 
 
-        ![troubleshoot-session-affinity-issues-16](./media/how-to-troubleshoot-application-gateway-session-affinity-issues/troubleshoot-session-affinity-issues-16.png)
+    ![troubleshoot-session-affinity-issues-16](./media/how-to-troubleshoot-application-gateway-session-affinity-issues/troubleshoot-session-affinity-issues-16.png)
 
 7. Überprüfen und analysieren Sie die Sitzungsprotokolle, um das Problem zu ermitteln.
 
@@ -194,11 +194,11 @@ Sie können einen Webdebugger Ihrer Wahl verwenden. In diesem Beispiel wird Fidd
    > [!NOTE]
    > Dieser ARRAffinity-Wert ist die Cookie-ID, die das Anwendungsgateway für den Client festlegt und die dieser an einen bestimmten Back-End-Server senden muss.
 
-    ![troubleshoot-session-affinity-issues-17](./media/how-to-troubleshoot-application-gateway-session-affinity-issues/troubleshoot-session-affinity-issues-17.png)
+   ![troubleshoot-session-affinity-issues-17](./media/how-to-troubleshoot-application-gateway-session-affinity-issues/troubleshoot-session-affinity-issues-17.png)
 
 - **Beispiel B:** Im nächsten Sitzungsprotokoll ist angegeben, dass der Client dem Anwendungsgateway, das den ARRAAFFINITY-Wert festgelegt hat, antwortet. Wenn die ARRAffinity-Cookie-ID übereinstimmt, sollte das Paket an den gleichen Back-End-Server gesendet werden, der zuvor verwendet wurde. Sehen Sie sich die nächsten Zeilen der HTTP-Kommunikation an, um zu überprüfen, ob sich das ARRAffinity-Cookie des Clients ändert.
 
-    ![troubleshoot-session-affinity-issues-18](./media/how-to-troubleshoot-application-gateway-session-affinity-issues/troubleshoot-session-affinity-issues-18.png)
+   ![troubleshoot-session-affinity-issues-18](./media/how-to-troubleshoot-application-gateway-session-affinity-issues/troubleshoot-session-affinity-issues-18.png)
 
 > [!NOTE]
 > In einer Kommunikationssitzung sollte sich das Cookie nicht ändern. Überprüfen Sie das obere Feld auf der rechten Seite. Wählen Sie die Registerkarte „Cookies“ aus, um zu überprüfen, ob der Client das Cookie verwendet und zurück an das Anwendungsgateway sendet. Wenn dies nicht der Fall ist, wird das Cookie im Clientbrowser nicht beibehalten und nicht für die Kommunikation verwendet. In einigen Fällen kann der Client falsche Informationen angeben.

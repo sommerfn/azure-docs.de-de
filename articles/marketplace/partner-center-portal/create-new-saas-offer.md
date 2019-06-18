@@ -7,27 +7,28 @@ ms.author: mattwoj
 ms.service: marketplace
 ms.topic: conceptual
 ms.date: 05/30/2019
-ms.openlocfilehash: 30e547759cbafabf5f762f671b09b0cbeea3a44c
-ms.sourcegitcommit: 16cb78a0766f9b3efbaf12426519ddab2774b815
+ms.openlocfilehash: 9c8b8a6ad8a10a65a05b46bf433d00b4e3ecb402
+ms.sourcegitcommit: ec7b0bf593645c0d1ef401a3350f162e02c7e9b8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/17/2019
-ms.locfileid: "65851216"
+ms.lasthandoff: 06/01/2019
+ms.locfileid: "66455629"
 ---
 # <a name="create-a-new-saas-offer"></a>Erstellen eines neuen SaaS-Angebots
 
-Um mit dem Erstellen von SaaS-Angeboten (Software-as-a-Service) zu beginnen, müssen Sie zunächst [ein Partner Center-Konto erstellen](./create-account.md) und das [Dashboard „Kommerzieller Marketplace“](https://partner.microsoft.com/dashboard/commercial-marketplace/offers) öffnen, in dem die Registerkarte **Angebote** ausgewählt ist. 
+Um mit dem Erstellen von SaaS-Angeboten (Software-as-a-Service) zu beginnen, müssen Sie zunächst [ein Partner Center-Konto erstellen](./create-account.md) und das [Dashboard „Kommerzieller Marketplace“](https://partner.microsoft.com/dashboard/commercial-marketplace/offers) öffnen, in dem die Registerkarte **Übersicht** ausgewählt ist.
 
-![Dashboard „Kommerzieller Marketplace“ im Partner Center](./media/commercial-marketplace-offers.png)
+![Dashboard „Kommerzieller Marketplace“ im Partner Center](./media/new-offer-overview.png)
 
 Klicken Sie auf die Schaltfläche **Neues Angebot**, und wählen Sie dann das Menüelement **Software-as-a-Service** aus. 
 
 Wenn Sie einen der anderen Angebotstypen auswählen, werden Sie zum älteren [Cloud-Partnerportal](https://cloudpartner.azure.com/) umgeleitet.  Im kommerziellen Marketplace im Partner Center-Portal sind derzeit nur SaaS-Angebote verfügbar. 
 
-![Fenster „Neues Angebot“ im Partner Center](./media/new-offer.png)
+![Fenster „Neues Angebot“ im Partner Center](./media/new-offer-click.png)
 
+Das Dialogfeld **Neues Angebot** wird angezeigt. 
 
-Das Dialogfeld **Neues Angebot** wird angezeigt. ![Dialogfeld „Neues Angebot“](./media/new-offer-popup.png)
+![Dialogfeld „Neues Angebot“](./media/new-offer-popup.png)
 
 
 ## <a name="offer-id-and-name"></a>Angebots-ID und Angebotsname
@@ -89,7 +90,7 @@ Softwarelizenzgebühren werden als monatliche standortbasierte Abonnementpauscha
 - Für Partner, die für die **reduzierte Marketplace-Dienstgebühr** qualifiziert sind, wird von Mai 2019 bis Juni 2020 eine reduzierte Transaktionsgebühr für die SaaS-Angebote angezeigt. In diesem Szenario stellt Microsoft 100,00 USD für Ihre Softwarelizenz in Rechnung und zahlt 90,00 USD an den Herausgeber aus.
 
 > [!NOTE]
-> **Reduzierte Marketplace-Dienstgebühr**: Für SaaS-Angebote, die Sie in unserem kommerziellen Marketplace veröffentlicht haben, reduziert Microsoft die Marketplace-Dienstgebühr von 20 % (wie im Microsoft-Herausgebervertrag angegeben) auf 10 %. Damit Ihr Angebot qualifiziert ist, muss mindestens eines Ihrer Angebote von Microsoft als bereit für IP-Co-Selling oder als priorisiert für IP-Co-Selling gekennzeichnet worden sein.  Die Anforderungen für die Berechtigung müssen mindestens fünf (5) Arbeitstage vor dem Ende eines jeden Kalendermonats erfüllt sein, damit die reduzierte Marketplace-Dienstgebühr für den Monat in Anspruch genommen werden kann.  Die reduzierte Marketplace-Dienstgebühr gilt nicht für virtuelle Computer, verwaltete Apps oder andere Produkte, die über unseren kommerziellen Marketplace zur Verfügung gestellt werden.  Die reduzierte Marketplace-Dienstgebühr ist nur für qualifizierte Angebote bezüglich Lizenzgebühren verfügbar, die von Microsoft zwischen dem 31. Mai 2019 und dem 30. Juni 2020 vereinnahmt wurden.  Nach diesem Zeitpunkt gilt für die Marketplace-Dienstgebühr wieder der normale Betrag. 
+> **Reduzierte Marketplace-Dienstgebühr**: Für SaaS-Angebote, die Sie in unserem kommerziellen Marketplace veröffentlicht haben, reduziert Microsoft die Marketplace-Dienstgebühr von 20 % (wie im Microsoft-Herausgebervertrag angegeben) auf 10 %. Damit Ihr Angebot qualifiziert ist, muss mindestens eines Ihrer Angebote von Microsoft als bereit für IP-Co-Selling oder als priorisiert für IP-Co-Selling gekennzeichnet worden sein.  Die Anforderungen für die Berechtigung müssen mindestens fünf (5) Arbeitstage vor dem Ende eines jeden Kalendermonats erfüllt sein, damit die reduzierte Marketplace-Dienstgebühr für den Monat in Anspruch genommen werden kann.  Die reduzierte Marketplace-Dienstgebühr gilt nicht für virtuelle Computer, verwaltete Apps oder andere Produkte, die über unseren kommerziellen Marketplace zur Verfügung gestellt werden.  Die reduzierte Marketplace-Dienstgebühr ist nur für qualifizierte Angebote bezüglich Lizenzgebühren verfügbar, die von Microsoft zwischen dem 1. Mai 2019 und dem 30. Juni 2020 vereinnahmt wurden.  Nach diesem Zeitpunkt gilt für die Marketplace-Dienstgebühr wieder der normale Betrag. 
 
 |**Microsoft berechnet**|**100 USD pro Monat**|
 |:---|:---|
@@ -117,6 +118,10 @@ Listen Sie Ihr Angebot für Kunden als kostenlose Testversion auf, indem Sie ein
 
 ##### <a name="contact-me"></a>Kontakt mit mir aufnehmen
 Sammeln Sie über Ihr CRM-System (Customer Relationship Management) Kundenkontaktinformationen. Der Kunde wird gebeten, die Berechtigung zur Freigabe seiner Informationen zu erteilen. Diese Kundeninformationen sowie der Angebotsname, die Angebots-ID und der Marketplace, auf dem der Kunde Ihr Angebot gefunden hat, werden an das CRM-System gesendet, das Sie konfiguriert haben. Weitere Informationen zum Konfigurieren des CRM-Systems finden Sie unter [Einbinden der Leadverwaltung](#connect-lead-management). 
+
+## <a name="example-marketplace-offer-listing"></a>Liste der Marketplace-Beispielangebote
+
+![Liste der Marketplace-Beispielangebote mit Hinweisen](./media/marketplace-offer.svg)
 
 ## <a name="enable-a-test-drive"></a>Aktivieren einer Testversion
 
@@ -177,7 +182,8 @@ Wählen Sie bis zu zwei (2) Branchen, die zum Gruppieren Ihres Angebots in den e
 Dies ist ein optionales Feld, das im AppSource Marketplace verwendet wird, um die Versionsnummer Ihres Angebots anzugeben. 
 
 ### <a name="standard-contract"></a>Standardvertrag
-- **Standardvertrag verwenden?** 
+
+- **Standardvertrag verwenden?**
 
 Zur Vereinfachung des Beschaffungsprozesses für Kunden und zur Verringerung der rechtlichen Komplexität für Softwareanbieter stellt Microsoft die Vorlage „Standardvertrag“ bereit, um eine Transaktion im Marketplace zu erleichtern. 
 
@@ -185,7 +191,8 @@ Statt benutzerdefinierte Geschäftsbedingungen zu erstellen, können Azure Marke
 
 Der Standardvertrag ist hier zu finden: https://go.microsoft.com/fwlink/?linkid=2041178.
 
-##### <a name="terms-of-use"></a>Nutzungsbedingungen
+#### <a name="terms-of-use"></a>Nutzungsbedingungen
+
 Wenn Ihre Lizenzbedingungen vom Standardvertrag abweichen, können Sie hier die eigenen Nutzungsbedingungen eingeben. Sie können in diesem Feld bis zu 10.000 Zeichen Text eingeben. Wenn Ihre Nutzungsbedingungen eine längere Beschreibung erfordern, geben Sie in diesem Feld einen einzelnen URL-Link ein, über den Ihre zusätzlichen Lizenzbedingungen aufgerufen werden können. Er wird für Kunden als aktiver Link angezeigt.
 
 Kunden müssen diese Bedingungen akzeptieren, bevor sie Ihre App testen können. 
@@ -193,9 +200,11 @@ Kunden müssen diese Bedingungen akzeptieren, bevor sie Ihre App testen können.
 Klicken Sie auf **Speichern**, bevor Sie mit dem nächsten Abschnitt fortfahren!
 
 ## <a name="offer-listing"></a>Angebotsliste
+
 Auf der Registerkarte „Angebotsliste“ werden die Sprachen (und Märkte) angezeigt, in denen Ihr Angebot verfügbar ist. Derzeit ist nur der Standort „Englisch (USA)“ verfügbar. Auf dieser Seite werden zudem der Status der sprachspezifischen Liste und das Datum/die Uhrzeit der Hinzufügung angezeigt. Sie müssen für jede Sprache/jeden Markt die Marketplace-Informationen (Angebotsname, Beschreibung, Suchbegriffe usw.) definieren.
 
 ### <a name="offer-listings"></a>Angebotsauflistungen
+
 Geben Sie Informationen an, die im Marketplace angezeigt werden sollen, einschließlich der Beschreibung des Angebots und der Marketingressourcen.
 
 - **Name** (erforderlich): Der hier definierte Name wird als Titel der Angebotsliste in dem/den von Ihnen gewählten Marketplace(s) angezeigt. Der Name ist basierend auf Ihrer vorherigen Eingabe in **Neues Angebot** bereits eingetragen.  Er ist möglicherweise markenrechtlich geschützt.  Er darf keine Leerzeichen und Emojis (mit Ausnahme des Markenzeichen- und Copyrightsymbols) enthalten und muss auf 50 Zeichen begrenzt sein.
@@ -235,7 +244,6 @@ Klicken Sie auf **Speichern**, bevor Sie mit dem nächsten Abschnitt fortfahren!
 - [Bewährte Methoden für Angebotslistung](https://docs.microsoft.com/azure/marketplace/gtm-offer-listing-best-practices)
 
 
-
 ## <a name="preview"></a>Vorschau
 
 Sie können auf der Registerkarte **Vorschau** eine eingeschränkte **Vorschauzielgruppe** für das Freigeben Ihres Angebots definieren, bevor Sie das Angebot für die größere Marketplace-Zielgruppe live veröffentlichen.
@@ -256,7 +264,7 @@ Auf der Registerkarte **Technische Konfiguration** werden die technischen Inform
 
 - **URL der Angebotsseite** (erforderlich): Definieren Sie die URL der Website, zu der der Kunde weitergeleitet wird, nachdem er Ihr Angebot auf dem Marketplace erworben hat. Diese URL wird auch der Endpunkt, der die Verbindungs-APIs für Geschäfte mit Microsoft empfängt.
 
-- **Verbindungswebhook** (erforderlich): Für alle asynchronen Ereignisse, die Microsoft im Auftrag des Kunden an Sie senden muss (Beispiel: das Azure-Abonnement ist ungültig geworden), müssen Sie einen Webhook für die Verbindung angeben. Wenn Sie noch nicht über ein Webhooksystem verfügen, ist die einfachste Konfiguration eine Logik-App am HTTP-Endpunkt, die auf alle veröffentlichten Ereignisse lauscht und sie entsprechend behandelt (z.B https://prod-1westus.logic.azure.com:443/work)). Weitere Informationen finden Sie unter [Aufrufen, Auslösen oder Schachteln von Workflows mit HTTP-Endpunkten in Logik-Apps](https://docs.microsoft.com/azure/logic-apps/logic-apps-http-endpoint).
+- **Verbindungswebhook** (erforderlich): Für alle asynchronen Ereignisse, die Microsoft im Auftrag des Kunden an Sie senden muss (Beispiel: das Azure-Abonnement ist ungültig geworden), müssen Sie einen Webhook für die Verbindung angeben. Wenn Sie noch nicht über ein Webhooksystem verfügen, ist die einfachste Konfiguration eine Logik-App am HTTP-Endpunkt, die auf alle veröffentlichten Ereignisse lauscht und sie entsprechend behandelt (z.B. https:\//prod-1westus.logic.azure.com:443/work). Weitere Informationen finden Sie unter [Aufrufen, Auslösen oder Schachteln von Workflows mit HTTP-Endpunkten in Logik-Apps](https://docs.microsoft.com/azure/logic-apps/logic-apps-http-endpoint).
 
 - **ID des Azure AD-Mandanten** (erforderlich): Es ist im Azure-Portal erforderlich, dass Sie eine [Azure AD-App (Active Directory) erstellen](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal), damit überprüft werden kann, ob die Verbindung zwischen unseren beiden Diensten über eine authentifizierte Kommunikation erfolgt. Um die [Mandanten-ID](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#get-tenant-id) zu ermitteln, wechseln Sie zu Azure Active Directory, wählen Sie **Eigenschaften** aus, und suchen Sie nach der aufgeführten Nummer der **Verzeichnis-ID** (z.B. 50c464d3-4930-494c-963c-1e951d15360e).
 
@@ -270,9 +278,10 @@ Auf der Registerkarte **Planübersicht** können Sie eine Vielzahl von Planoptio
 
 Nach der Erstellung werden die Plannamen, IDs und Preismodelle, die Verfügbarkeit (öffentlich oder privat), der aktuelle Veröffentlichungsstatus und alle verfügbaren Aktionen angezeigt.
 
--   Die unter **Planübersicht** verfügbaren **Aktionen** variieren je nach dem aktuellen Status des Plans und umfassen möglicherweise:
-  - Wenn der Planstatus **Entwurf** lautet: „Entwurf löschen“
-  - Wenn der Planstatus **Live** lautet: „Stop sell plan“ (Verkauf des Plans einstellen) oder „Sync private Audience“ (Private Zielgruppe synchronisieren)
+Die unter **Planübersicht** verfügbaren **Aktionen** variieren je nach dem aktuellen Status des Plans und umfassen möglicherweise:
+
+- Wenn der Planstatus **Entwurf** lautet: „Entwurf löschen“
+- Wenn der Planstatus **Live** lautet: „Stop sell plan“ (Verkauf des Plans einstellen) oder „Sync private Audience“ (Private Zielgruppe synchronisieren)
 
 **Neuen Plan erstellen** (mindestens ein Plan für diejenigen, die den Verkauf über Microsoft abwickeln möchten)
 
@@ -351,6 +360,9 @@ In SaaS-Angeboten werden private Zielgruppen mithilfe von Mandanten-IDs definier
 > [!NOTE]
 > Eine private Zielgruppe (oder eingeschränkte Zielgruppe) unterscheidet sich von einer Vorschauzielgruppe. Sie können auf der Registerkarte **[Vorschau](#preview)** eine Vorschauzielgruppe definieren. Einer Vorschauzielgruppe wird Zugriff auf das Angebot gewährt, *bevor* es im Marketplace live veröffentlicht wird. Die Festlegung als private Zielgruppe gilt nur für einen bestimmten Plan. Für die private Zielgruppe können alle Pläne (private und nicht private Pläne) angezeigt werden, jedoch nur während des eingeschränkten Vorschauzeitraums, in dem der Plan getestet und überprüft wird.
 
+## <a name="example-list-of-plans-within-a-marketplace-offer"></a>Beispielliste der Pläne innerhalb eines Marketplace-Angebots
+
+![Liste der Marketplace-Beispielpläne mit Hinweisen](./media/marketplace-plan.svg)
 
 ## <a name="test-drive"></a>Testversion
 
@@ -388,9 +400,9 @@ Microsoft kann mit diesem Typ von Testversion die Dienstbereitstellung hosten un
 
 - **Dauer der Testversion** (erforderlich): Geben Sie den Zeitraum ein, in dem die Testversion aktiv bleibt, indem Sie die Anzahl der Stunden festlegen. Nach Ablauf dieser Anzahl von Stunden wird die Sitzung beendet, und sie belegt nicht mehr eine Ihrer Lizenzen. Der empfohlene Wert beträgt 2 bis 24 Stunden, abhängig von der Komplexität Ihres Angebots. Dies Dauer kann nur als ganze Zahl von Stunden festgelegt werden (Beispiel: „2“ ist zulässig, „1,5“ ist unzulässig).  Der Benutzer kann eine neue Sitzung anfordern, wenn die Zeit abgelaufen ist und er erneut auf die Testversion zugreifen möchte.
 
-- **Instanz-URL** (erforderlich): Die URL, über die der Kunde die Testversion startet. Dies ist in der Regel die URL Ihrer Dynamics 365-Instanz, auf der Ihre App mit installierten Beispieldaten ausgeführt wird (z.B. https://testdrive.crm.dynamics.com)).
+- **Instanz-URL** (erforderlich): Die URL, über die der Kunde die Testversion startet. Dies ist in der Regel die URL Ihrer Dynamics 365-Instanz, auf der Ihre App mit installierten Beispieldaten ausgeführt wird (z.B. https://testdrive.crm.dynamics.com) ).
 
-- **Web-API-URL der Instanz** (erforderlich): Rufen Sie die Web-API-URL für Ihre Dynamics 365-Instanz ab, indem Sie sich bei Ihrem Microsoft 365-Konto anmelden, zu **Einstellungen** \&gt; **Anpassung** \&gt; **Entwicklerressourcen** \&gt; **Instance Web API (Service Root URL)** (Instanz-Web-API (Stamm-URL des Diensts)) navigieren und die hier angegebene URL kopieren (z.B. https://testdrive.crm.dynamics.com/api/data/v9.0)).
+- **Web-API-URL der Instanz** (erforderlich): Rufen Sie die Web-API-URL für Ihre Dynamics 365-Instanz ab, indem Sie sich bei Ihrem Microsoft 365-Konto anmelden, zu **Einstellungen** \&gt; **Anpassung** \&gt; **Entwicklerressourcen** \&gt; **Instance Web API (Service Root URL)** (Instanz-Web-API (Stamm-URL des Diensts)) navigieren und die hier angegebene URL kopieren (z.B. https://testdrive.crm.dynamics.com/api/data/v9.0) ).
 
 - **Rollenname** (erforderlich): Geben Sie den Namen der Sicherheitsrolle ein, den Sie in der benutzerdefinierten Dynamics 365-Testversion definiert haben. Dieser wird dem Benutzer während der Dauer der Testversion zugewiesen (z.B. „Testversionsrolle“).
 

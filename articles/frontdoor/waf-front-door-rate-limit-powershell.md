@@ -9,22 +9,18 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 04/16/2019
+ms.date: 05/31/2019
 ms.author: kumud;tyao
-ms.openlocfilehash: 3701a69ab72abf20a4f1608a1cee56c9cea38aca
-ms.sourcegitcommit: bb85a238f7dbe1ef2b1acf1b6d368d2abdc89f10
+ms.openlocfilehash: 903405c8fada6165b79e780a7828c6de3b95163e
+ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/10/2019
-ms.locfileid: "65523636"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66478928"
 ---
 # <a name="configure-a-web-application-firewall-rate-limit-rule-using-azure-powershell"></a>Konfigurieren einer Web Application Firewall-Regel zur Ratenbegrenzung mit Azure PowerShell
 Die Azure-WAF-Ratenbegrenzungsregel (Web Application Firewall) für Azure Front Door steuert die Anzahl der Anforderungen, die von einer einzelnen Client-IP-Adresse in einem Zeitraum von einer Minute zulässig sind.
 Dieser Artikel zeigt das Konfigurieren einer WAF-Ratenbegrenzungsregel mithilfe von Azure PowerShell, die steuert, wie viele Anforderungen von einem einzelnen Client an eine Webanwendung, die */promo* in der URL enthält, zulässig sind.
-
-> [!IMPORTANT]
-> Die WAF-Ratenbegrenzungsfunktion für Azure Front Door befindet sich derzeit in der öffentlichen Vorschau.
-> Diese Vorschauversion wird ohne Vereinbarung zum Servicelevel bereitgestellt und ist nicht für Produktionsworkloads vorgesehen. Manche Features werden möglicherweise nicht unterstützt oder sind nur eingeschränkt verwendbar. Weitere Informationen finden Sie unter [Zusätzliche Nutzungsbestimmungen für Microsoft Azure-Vorschauen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) erstellen, bevor Sie beginnen.
 
@@ -65,10 +61,10 @@ Das folgende Beispiel überprüft Übereinstimmungen mit */promo* im Wert der Va
      -MatchValue "/promo"
 ```
 ## <a name="create-a-custom-rate-limit-rule"></a>Erstellen einer benutzerdefinierten Ratenbegrenzungsregel
-Legen Sie eine Ratenbegrenzung mit [New-AzFrontDoorCustomRuleObject](/powershell/module/az.frontdoor/new-azfrontdoorwafcustomruleobject) fest. Im folgenden Beispiel wird die Begrenzung auf 1.000 festgelegt. Anforderungen über 1.000 von einem Client an die Aktionsseite („/promo“) in einem Zeitraum von einer Minute werden blockiert, bis die nächste Minute beginnt.
+Legen Sie eine Ratenbegrenzung mit [New-AzFrontDoorWafCustomRuleObject](/powershell/module/az.frontdoor/new-azfrontdoorwafcustomruleobject) fest. Im folgenden Beispiel wird die Begrenzung auf 1.000 festgelegt. Anforderungen über 1.000 von einem Client an die Aktionsseite („/promo“) in einem Zeitraum von einer Minute werden blockiert, bis die nächste Minute beginnt.
 
 ```powershell-interactive
-   $promoRateLimitRule = New-AzFrontDoorCustomRuleObject `
+   $promoRateLimitRule = New-AzFrontDoorWafCustomRuleObject `
      -Name "rateLimitRule" `
      -RuleType RateLimitRule `
      -MatchCondition $promoMatchCondition `

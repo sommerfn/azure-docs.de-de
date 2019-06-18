@@ -12,16 +12,16 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.subservice: compliance
-ms.date: 04/27/2019
+ms.date: 05/30/2019
 ms.author: rolyon
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0b9baa48c13e317ba3fb54d998ee8f125d2093c7
-ms.sourcegitcommit: d73c46af1465c7fd879b5a97ddc45c38ec3f5c0d
+ms.openlocfilehash: efd3ff8a6e7ddf2aa6242cc322d8a6536a6bd26b
+ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/20/2019
-ms.locfileid: "65921055"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66474066"
 ---
 # <a name="what-is-azure-ad-entitlement-management-preview"></a>Was ist die Azure AD-Berechtigungsverwaltung? (Vorschau)
 
@@ -70,22 +70,13 @@ Sie können mit der Berechtigungsverwaltung die folgenden Typen von Ressourcen v
 
 - Azure AD-Sicherheitsgruppen
 - Office 365-Gruppen
-- Azure AD-Unternehmensanwendungen
-- SaaS-Anwendungen
-- Anwendungen mit benutzerdefinierter Integration
-- SharePoint Online-Websitesammlungen
-- SharePoint Online-Websites
+- Azure AD-Enterprise-Anwendungen einschließlich SaaS-Anwendung und benutzerdefinierter integrierter Anwendungen, die Verbund oder Bereitstellung unterstützen
+- SharePoint Online-Websitesammlungen und -Websites
 
-## <a name="prerequisites"></a>Voraussetzungen
+Sie können auch den Zugriff auf andere Ressourcen steuern, die auf Azure AD-Sicherheitsgruppen oder Office 365-Gruppen basieren.  Beispiel:
 
-Um Azure AD-Berechtigungsverwaltung (Vorschauversion) verwenden zu können, benötigen Sie eine der folgenden Lizenzen:
-
-- Azure AD Premium P2
-- Enterprise Mobility + Security (EMS) E5-Lizenz
-
-Weitere Informationen finden Sie unter [Registrieren für Azure Active Directory Premium-Editionen](../fundamentals/active-directory-get-started-premium.md) und [Enterprise Mobility + Security E5-Testversion](https://aka.ms/emse5trial).
-
-Spezielle Clouds, z.B. Azure Government, Azure Deutschland und Azure China 21Vianet, können in dieser Vorschau derzeit nicht verwendet werden.
+- Sie können Benutzerlizenzen für Microsoft Office 365 mit einer Azure AD-Sicherheitsgruppe in einem Zugriffspaket und Konfigurieren der [gruppenbasierten Lizenzierung](../users-groups-roles/licensing-groups-assign.md) für diese Gruppe vergeben.
+- Sie können Benutzern mithilfe einer Azure AD-Sicherheitsgruppe in einem Zugriffspaket und Erstellen einer [Azure-Rollenzuweisung](../../role-based-access-control/role-assignments-portal.md) für diese Gruppe Zugriff zum Verwalten von Azure-Ressourcen erteilen.
 
 ## <a name="what-are-access-packages-and-policies"></a>Was sind Zugriffspakete und Zugriffspaketrichtlinien?
 
@@ -173,6 +164,12 @@ Die folgende Tabelle gibt Aufschluss über die Berechtigungen für die einzelnen
 | [Hinzufügen/Entfernen von Ressourcen zu/aus einem Katalog](entitlement-management-catalog-create.md#add-resources-to-a-catalog) | :heavy_check_mark: |  | :heavy_check_mark: |  |  |
 | [Hinzufügen von Katalogbesitzern oder Zugriffspaketmanagern](entitlement-management-catalog-create.md#add-catalog-owners-or-access-package-managers) | :heavy_check_mark: |  | :heavy_check_mark: |  |  |
 | [Bearbeiten/Löschen eines Katalogs](entitlement-management-catalog-create.md#edit-a-catalog) | :heavy_check_mark: |  | :heavy_check_mark: |  |  |
+
+## <a name="license-requirements"></a>Lizenzanforderungen
+
+[!INCLUDE [Azure AD Premium P2 license](../../../includes/active-directory-p2-license.md)]
+
+Spezielle Clouds, z.B. Azure Government, Azure Deutschland und Azure China 21Vianet, können in dieser Vorschau derzeit nicht verwendet werden.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

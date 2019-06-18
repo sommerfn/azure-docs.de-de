@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 04/29/2019
 ms.author: absha
-ms.openlocfilehash: ebb14d97273851585e491e3bcd36f776ec9b61b4
-ms.sourcegitcommit: 13cba995d4538e099f7e670ddbe1d8b3a64a36fb
+ms.openlocfilehash: 9160d300270bf1ab5043bee632d27bcc4b7bf332
+ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/22/2019
-ms.locfileid: "66000967"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66476034"
 ---
 # <a name="rewrite-http-headers-with-application-gateway"></a>Erneutes Generieren von HTTP-Headern mit Application Gateway
 
@@ -153,11 +153,11 @@ Sie können einen HTTP-Anforderungs- oder -Antwortheader auf das Vorhandensein e
 
 ## <a name="limitations"></a>Einschränkungen
 
+- Wenn eine Antwort über mehrere Header gleichen Namens verfügt, führt das erneute Generieren des Werts eines dieser Header zum Löschen anderer Header in der Antwort. Dies kann in der Regel bei Set-Cookie-Headern auftreten, da eine Antwort mehrere Set-Cookie-Header enthalten kann. Ein solches Szenario liegt vor, wenn Sie einen App-Dienst mit einem Anwendungsgateway verwenden und cookiebasierte Sitzungsaffinität auf dem Anwendungsgateway konfiguriert haben. In diesem Fall enthält die Antwort 2 Set-Cookie-Header: einen vom App-Dienst verwendeten, d.h. `Set-Cookie: ARRAffinity=ba127f1caf6ac822b2347cc18bba0364d699ca1ad44d20e0ec01ea80cda2a735;Path=/;HttpOnly;Domain=sitename.azurewebsites.net`, und einen anderen für die Anwendungsgatewayaffinität, d.h. `Set-Cookie: ApplicationGatewayAffinity=c1a2bd51lfd396387f96bl9cc3d2c516; Path=/`. Das Umschreiben einer der Set-Cookie-Header in diesem Szenario kann dazu führen, dass der andere Set-Cookie-Header aus der Antwort entfernt wird.
+
 - Das erneute Generieren von Verbindungs-, Upgrade- und Hostheadern wird derzeit nicht unterstützt.
 
 - Wie in [RFC 7230](https://tools.ietf.org/html/rfc7230#page-27) festgelegt, können Headernamen sämtliche alphanumerischen Zeichen und Sonderzeichen beinhalten. Derzeit wird das Sonderzeichen „Unterstrich“ (\_) in Headernamen nicht unterstützt.
-
-- Wenn eine Antwort über mehrere Header gleichen Namens verfügt, führt das erneute Generieren des Werts eines dieser Header zum Löschen anderer Header in der Antwort.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
