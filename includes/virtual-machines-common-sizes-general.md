@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 10/08/2018
 ms.author: azcspmt;jonbeck;cynthn
 ms.custom: include file
-ms.openlocfilehash: 2864946af6bd9ed2a271ef35d3afb385bfa9a71d
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.openlocfilehash: 98e0732ece3d046b7c073ac075b7eae89d36c125
+ms.sourcegitcommit: 3d4121badd265e99d1177a7c78edfa55ed7a9626
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66145757"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66391346"
 ---
 Universelle VM-Größen zeichnen sich durch ein ausgewogenes Verhältnis zwischen CPU und Arbeitsspeicher aus. Ideal für Tests und Entwicklung, kleine bis mittlere Datenbanken sowie Webserver mit geringer bis mittlerer Auslastung. Dieser Artikel enthält Informationen zur Anzahl von vCPUs, Datenträgern und NICs sowie zum Speicherdurchsatz für die Größen in dieser Gruppe. 
 
@@ -65,12 +65,12 @@ Die Größen der Dsv3-Serie basieren auf dem Prozessor vom Typ 2,4 GHz Intel Xeo
 
 | Größe             | vCPU | Arbeitsspeicher: GiB | Temporärer Speicher (SSD): GiB | Max. Anzahl Datenträger | Maximaler Durchsatz (Cache und temporärer Speicher): IOPS/MBps (Cachegröße in GiB) | Maximaler Durchsatz des Datenträgers ohne Cache: IOPS/MBps | Maximale Anzahl NICs/Erwartete Netzwerkbandbreite (MBps) |
 |------------------|--------|-------------|----------------|----------------|-----------------------------------------------------------------------|-------------------------------------------|------------------------------------------------|
-| Standard_D2s_v3  | 2      | 8           | 16             | 4              | 4.000/32 (50)                                                       | 3.200/48                                | 2 / 1.000                                   |
-| Standard_D4s_v3  | 4      | 16          | 32             | 8              | 8.000/64 (100)                                                      | 6.400/96                                | 2 / 2.000                                   |
-| Standard_D8s_v3  | 8      | 32          | 64             | 16             | 16.000/128 (200)                                                    | 12.800/192                              | 4 / 4.000                                      |
-| Standard_D16s_v3 | 16     | 64          | 128            | 32             | 32.000/256 (400)                                                    | 25.600/384                              | 8 / 8.000                                      |
-| Standard_D32s_v3 | 32     | 128          | 256            | 32             | 64.000/512 (800)                                                    | 51.200/768                              | 8 / 16.000                                               |
-| Standard_D64s_v3 | 64     | 256          | 512            | 32             | 128.000/1024 (1600)                                                    | 80.000/1.200                              | 8 / 30.000                                               |
+| Standard_D2s_v3  | 2      | 8           | 16             | 4              | 4000/32 (50)                                                       | 3200/48                                | 2/1000                                   |
+| Standard_D4s_v3  | 4      | 16          | 32             | 8              | 8000/64 (100)                                                      | 6400/96                                | 2/2000                                   |
+| Standard_D8s_v3  | 8      | 32          | 64             | 16             | 16000/128 (200)                                                    | 12800/192                              | 4/4000                                      |
+| Standard_D16s_v3 | 16     | 64          | 128            | 32             | 32000/256 (400)                                                    | 25600/384                              | 8 / 8000                                      |
+| Standard_D32s_v3 | 32     | 128          | 256            | 32             | 64000/512 (800)                                                    | 51200/768                              | 8/16000                                               |
+| Standard_D64s_v3 | 64     | 256          | 512            | 32             | 128000/1024 (1600)                                                    | 80000/1200                              | 8 / 30000                                               |
 
 <sup>1</sup> Virtuelle Computer der Dsv3-Serie verfügen über Hyper-Threading-Technologie von Intel®
 
@@ -89,12 +89,12 @@ Datenträgerspeicher wird separat zu virtuellen Computern abgerechnet. Verwenden
 
 | Größe            | vCPU | Arbeitsspeicher: GiB | Temporärer Speicher (SSD): GiB | Max. Anzahl Datenträger | Maximaler Durchsatz (temporärer Speicher): IOPS/MBit/s Lesen/MBit/s Schreiben | Maximale Anzahl NICs/Netzwerkbandbreite |
 |-----------------|-----------|-------------|----------------|----------------|----------------------------------------------------------|------------------------------|
-| Standard_D2_v3  | 2         | 8           | 50             | 4              | 3000/46/23                                               | 2 / 1.000                    |
-| Standard_D4_v3  | 4         | 16          | 100            | 8              | 6000/93/46                                               | 2 / 2.000                    |
-| Standard_D8_v3  | 8         | 32          | 200            | 16             | 12000/187/93                                             | 4 / 4.000                    |
-| Standard_D16_v3 | 16        | 64          | 400            | 32             | 24000/375/187                                            | 8 / 8.000                    |
-| Standard_D32_v3 | 32        | 128          | 800            | 32             | 48000/750/375                                            | 8 / 16.000                             |
-| Standard_D64_v3 | 64        | 256          | 1600            | 32             | 96000/1000/500                                            | 8 / 30.000                             |
+| Standard_D2_v3  | 2         | 8           | 50             | 4              | 3000/46/23                                               | 2/1000                    |
+| Standard_D4_v3  | 4         | 16          | 100            | 8              | 6000/93/46                                               | 2/2000                    |
+| Standard_D8_v3  | 8         | 32          | 200            | 16             | 12000/187/93                                             | 4/4000                    |
+| Standard_D16_v3 | 16        | 64          | 400            | 32             | 24000/375/187                                            | 8 / 8000                    |
+| Standard_D32_v3 | 32        | 128         | 800            | 32             | 48000/750/375                                            | 8/16000                   |
+| Standard_D64_v3 | 64        | 256         | 1600           | 32             | 96000/1000/500                                           | 8 / 30000                   |
 
 <sup>1</sup> Virtuelle Computer der Dv3-Serie verfügen über Hyper-Threading-Technologie von Intel®
 
@@ -108,11 +108,11 @@ Storage Premium-Zwischenspeicherung:  Unterstützt
 
 | Größe | vCPU | Arbeitsspeicher: GiB | Temporärer Speicher (SSD): GiB | Max. Anzahl Datenträger | Maximaler Durchsatz (Cache und temporärer Speicher): IOPS/MBps (Cachegröße in GiB) | Maximaler Durchsatz des Datenträgers ohne Cache: IOPS/MBps | Maximale Anzahl NICs/Erwartete Netzwerkbandbreite (MBps) |
 | --- | --- | --- | --- | --- | --- | --- | --- |
-| Standard_DS1_v2 |1 |3,5 |7 |4 |4.000/32 (43) |3.200/48 |2/750 |
-| Standard_DS2_v2 |2 |7 |14 |8 |8.000/64 (86) |6.400/96 |2/1500 |
-| Standard_DS3_v2 |4 |14 |28 |16 |16.000/128 (172) |12.800/192 |4/3000 |
-| Standard_DS4_v2 |8 |28 |56 |32 |32.000/256 (344) |25.600/384 |8/6000 |
-| Standard_DS5_v2 |16 |56 |112 |64 |64.000/512 (688) |51.200/768 |8 / 12000 |
+| Standard_DS1_v2 |1 |3,5 |7 |4 |4000/32 (43) |3200/48 |2/750 |
+| Standard_DS2_v2 |2 |7 |14 |8 |8000/64 (86) |6400/96 |2/1500 |
+| Standard_DS3_v2 |4 |14 |28 |16 |16000/128 (172) |12800/192 |4/3000 |
+| Standard_DS4_v2 |8 |28 |56 |32 |32000/256 (344) |25600/384 |8/6000 |
+| Standard_DS5_v2 |16 |56 |112 |64 |64000/512 (688) |51200/768 |8 / 12000 |
 
 ## <a name="dv2-series"></a>Dv2-Serie
 
@@ -161,10 +161,3 @@ Storage Premium-Zwischenspeicherung: Unterstützt
 |---------------|------|-------------|------------------------|----------------|-------------------------------------------------------------------------|-------------------------------------------|----------------------------------------------|
 | Standard_DC2s | 2    | 8           | 100                    | 2              | 4000/32 (43)                                                          | 3200/48                                  | 2/1500                                     |
 | Standard_DC4s | 4    | 16          | 200                    | 4              | 8000/64 (86)                                                          | 6400/96                                  | 2/3000                                     |
-
-
-
-
-
-
-

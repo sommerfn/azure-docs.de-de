@@ -9,14 +9,14 @@ editor: ''
 ms.service: media-services
 ms.workload: ''
 ms.topic: article
-ms.date: 05/26/2019
+ms.date: 05/28/2019
 ms.author: juliako
-ms.openlocfilehash: da94726474b9159955d376b5a699875e306a25b1
-ms.sourcegitcommit: 25a60179840b30706429c397991157f27de9e886
+ms.openlocfilehash: a813c77e81e51bfe13e75ed6c8d0e24b4d0fa645
+ms.sourcegitcommit: 51a7669c2d12609f54509dbd78a30eeb852009ae
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/28/2019
-ms.locfileid: "66258039"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66392922"
 ---
 # <a name="streaming-policies"></a>Streamingrichtlinien
 
@@ -41,6 +41,8 @@ Die folgenden „Entscheidungsstruktur“ hilft Ihnen bei der Auswahl einer vord
 Klicken Sie auf Bild, um es in voller Größe anzeigen.  
 
 <a href="./media/streaming-policy/large.png" target="_blank"><img src="./media/streaming-policy/large.png"></a> 
+
+Werden Ihre Inhalte verschlüsselt, müssen Sie eine [Richtlinie für Inhaltsschlüssel](content-key-policy-concept.md) erstellen. Zum Streamen oder Herunterladen in Klartext ist die **Richtlinie für Inhaltsschlüssel** nicht erforderlich. 
 
 Wenn Sie besondere Anforderungen haben (wenn Sie z. B. verschiedene Protokolle angeben möchten oder einen benutzerdefinierten Schlüsselbereitstellungsdienst oder eine klare Audiospur verwenden müssen), können Sie eine benutzerdefinierte Streamingrichtlinie [erstellen](https://docs.microsoft.com/rest/api/media/streamingpolicies/create). 
 

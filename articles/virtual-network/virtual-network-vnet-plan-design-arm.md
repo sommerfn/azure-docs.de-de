@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/16/2018
 ms.author: kumud
-ms.openlocfilehash: 3843b5022aaf218bf91e25ecf6d9c36bb2db2dee
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 0a80630ffa363d2b633667d8104cc0326c4afa2e
+ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64575428"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66478590"
 ---
 # <a name="plan-virtual-networks"></a>Planen virtueller Netzwerke
 
@@ -77,7 +77,7 @@ Sie können den Netzwerkdatenverkehr zu und von Ressourcen in einem virtuellen N
 - Wenn auf unterschiedliche virtuelle Computer innerhalb eines Subnetzes unterschiedliche Sicherheitsregeln angewandt werden sollen, können Sie die Netzwerkschnittstelle im virtuellen Computer Anwendungssicherheitsgruppen zuordnen. In einer Sicherheitsregel kann eine Anwendungssicherheitsgruppe als Quelle und Ziel angegeben werden. Diese Regel gilt dann nur für die Netzwerkschnittstellen, die Mitglieder der Anwendungssicherheitsgruppe sind. Weitere Informationen zu [Netzwerksicherheitsgruppen](security-overview.md) und [Anwendungssicherheitsgruppen](security-overview.md#application-security-groups).
 - In Azure werden in jeder Netzwerksicherheitsgruppe mehrere Standardsicherheitsregeln erstellt. Eine Standardregel lässt die Weiterleitung des gesamten Datenverkehrs zwischen allen Ressourcen in einem virtuellen Netzwerk zu. Dieses Verhalten können Sie mithilfe von Netzwerksicherheitsgruppen oder benutzerdefiniertem Routing zum Weiterleiten von Datenverkehr an ein virtuelles Netzwerkgerät außer Kraft setzen. Es wird empfohlen, sich mit allen [Standardsicherheitsregeln](security-overview.md#default-security-rules) von Azure sowie mit der Anwendung von Netzwerksicherheitsgruppen-Regeln auf eine Ressource vertraut zu machen.
 
-Sie können sich Beispielentwürfe für die Implementierung eines Umkreisnetzwerks (auch als DMZ bezeichnet) zwischen Azure und dem Internet mithilfe eines [virtuellen Netzwerkgeräts](/azure/architecture/reference-architectures/dmz/secure-vnet-dmz?toc=%2Fazure%2Fvirtual-network%2Ftoc.json) oder mit [Netzwerksicherheitsgruppen](virtual-networks-dmz-nsg.md) ansehen.
+Sie können sich Beispielentwürfe für die Implementierung eines Umkreisnetzwerks (auch als DMZ bezeichnet) zwischen Azure und dem Internet mithilfe eines [virtuellen Netzwerkgeräts](/azure/architecture/reference-architectures/dmz/secure-vnet-dmz?toc=%2Fazure%2Fvirtual-network%2Ftoc.json) ansehen.
 
 ### <a name="traffic-routing"></a>Routing von Datenverkehr
 

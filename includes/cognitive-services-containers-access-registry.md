@@ -4,18 +4,18 @@ ms.author: diberry
 ms.service: cognitive-services
 ms.topic: include
 ms.date: 05/07/2019
-ms.openlocfilehash: 27c6b59a458fb79b86d7064d710a01593a1745dc
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.openlocfilehash: 02beb6bdce096c35d8948cc8aefab6cc97be907c
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66125130"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67063932"
 ---
-## <a name="use-docker-cli-to-authenticate-private-container-registry"></a>Authentifizieren einer privaten Containerregistrierung mit der Docker-Befehlszeilenschnittstelle
+## <a name="use-the-docker-cli-to-authenticate-the-private-container-registry"></a>Authentifizieren einer privaten Containerregistrierung mit der Docker-Befehlszeilenschnittstelle
 
 Es gibt mehrere Möglichkeiten, sich bei der privaten Containerregistrierung für Cognitive Services-Container zu authentifizieren, aber die empfohlene Methode über die Befehlszeile ist die Verwendung der [Docker-CLI](https://docs.docker.com/engine/reference/commandline/cli/).
 
-Verwenden Sie den Befehl [docker login](https://docs.docker.com/engine/reference/commandline/login/) wie im folgenden Beispiel gezeigt, um sich bei der privaten Containerregistrierung für Cognitive Services-Container (`containerpreview.azurecr.io`) anzumelden. Ersetzen Sie *\<username\>* durch den Benutzernamen und *\<password\>* durch das Kennwort. Diese Anmeldeinformationen wurden Ihnen vom Azure Cognitive Services-Team bereitgestellt.
+Verwenden Sie den [`docker login`-Befehl](https://docs.docker.com/engine/reference/commandline/login/) wie im folgenden Beispiel gezeigt, um sich bei `containerpreview.azurecr.io` (der privaten Containerregistrierung für Cognitive Services-Container) anzumelden. Ersetzen Sie *\<username\>* durch den Benutzernamen und *\<password\>* durch das Kennwort. Diese Anmeldeinformationen wurden Ihnen vom Azure Cognitive Services-Team bereitgestellt.
 
 ```
 docker login containerpreview.azurecr.io -u <username> -p <password>

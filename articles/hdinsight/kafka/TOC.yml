@@ -7,11 +7,11 @@
 - name: Schnellstarts
   expanded: true
   items:
-    - name: Erstellen eines Apache Kafka-Clusters – Portal
+    - name: 'Erstellen eines Apache Kafka-Clusters: Portal'
       href: apache-kafka-get-started.md
-    - name: Erstellen eines Apache Kafka-Clusters – PowerShell
+    - name: 'Erstellen eines Apache Kafka-Clusters: PowerShell'
       href: apache-kafka-quickstart-powershell.md
-    - name: Erstellen eines Apache Kafka-Clusters – Resource Manager-Vorlage
+    - name: 'Erstellen eines Apache Kafka-Clusters: Vorlage'
       displayName: 'resource manager template, arm template, resource manager group'
       href: apache-kafka-quickstart-resource-manager-template.md
 - name: Lernprogramme

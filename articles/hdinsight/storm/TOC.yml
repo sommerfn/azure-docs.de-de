@@ -4,6 +4,11 @@
   items:
     - name: Worum handelt es sich bei Apache Storm in Azure HDInsight?
       href: apache-storm-overview.md
+- name: Schnellstarts
+  expanded: true
+  items:
+    - name: Erstellen einer Apache Storm-Topologie in HDInsight
+      href: ./apache-storm-quickstart.md
 - name: Erste Schritte
   items:
     - name: Erstellen eines Apache Storm-Clusters

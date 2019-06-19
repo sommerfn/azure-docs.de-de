@@ -7,13 +7,13 @@
 - name: Schnellstarts
   expanded: true
   items:
-    - name: Erstellen eines Apache Spark-Clusters – Portal
+    - name: 'Erstellen eines Apache Spark-Clusters: Portal'
       href: apache-spark-jupyter-spark-sql-use-portal.md
-    - name: Erstellen eines Apache Spark-Clusters – PowerShell
+    - name: 'Erstellen eines Apache Spark-Clusters: PowerShell'
       href: apache-spark-jupyter-spark-sql-use-powershell.md
     - name: 'Erstellen eines Apache Spark-Clusters: Azure CLI'
       href: apache-spark-create-cluster-cli.md
-    - name: Erstellen eines Apache Spark-Clusters – Resource Manager-Vorlage
+    - name: 'Erstellen eines Apache Spark-Clusters: Vorlage'
       displayName: 'resource manager template, arm template, resource manager group'
       href: apache-spark-jupyter-spark-sql.md
 - name: Lernprogramme
