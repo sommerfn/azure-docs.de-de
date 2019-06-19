@@ -1,6 +1,6 @@
 ---
-title: Includedatei
-description: Includedatei
+title: include file
+description: include file
 services: automation
 author: georgewallace
 ms.service: automation
@@ -9,11 +9,11 @@ ms.date: 12/13/2018
 ms.author: gwallace
 ms.custom: include file
 ms.openlocfilehash: 2823a33b25812a69ad463433bacd9710655c9176
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66238688"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67178498"
 ---
 #### <a name="process-automation"></a>Prozessautomatisierung
 
@@ -28,10 +28,10 @@ ms.locfileid: "66238688"
 | Auftragsausführungszeit – Free-Tarif |500 Minuten pro Abonnement pro Kalendermonat ||
 | Maximal zulässiger Speicherplatz pro Sandbox<sup>1</sup> |1 GB |Betrifft nur Azure-Sandboxen.|
 | Maximaler Arbeitsspeicher pro Sandbox<sup>1</sup> |400 MB |Betrifft nur Azure-Sandboxen.|
-| Maximal zulässige Anzahl von Netzwerksockets pro Sandbox<sup>1</sup> |1.000 |Betrifft nur Azure-Sandboxen.|
+| Maximal zulässige Anzahl von Netzwerksockets pro Sandbox<sup>1</sup> |1\.000 |Betrifft nur Azure-Sandboxen.|
 | Maximal zulässige Laufzeit pro Runbook <sup>1</sup> |3 Stunden |Betrifft nur Azure-Sandboxen.|
 | Maximale Anzahl von Automation-Konten in einem Abonnement |Keine Begrenzung ||
-| Maximale Anzahl von Hybrid Worker-Gruppen pro Automation-Konto|4.000||
+| Maximale Anzahl von Hybrid Worker-Gruppen pro Automation-Konto|4\.000||
 |Maximale Anzahl gleichzeitiger Aufträge, die auf einem einzelnen Hybrid Runbook Worker ausgeführt werden können|50 ||
 | Maximale Größe der Runbookauftragsparameter   | 512 KBit||
 | Maximale Anzahl von Runbookparametern   | 50|Sie können einen JSON- oder XML-Zeichenfolge an einen Parameter übergeben und ihn mit dem Runbook analysieren, wenn Sie das Limit von 50 Parametern erreichen.|
@@ -50,7 +50,7 @@ Die folgende Tabelle zeigt die Grenzwerte der nachverfolgten Elemente pro Comput
 |Datei|500||
 |Registrierung|250||
 |Windows-Software|250|Softwareupdates nicht inbegriffen|
-|Linux-Pakete|1.250||
+|Linux-Pakete|1\.250||
 |Dienste|250||
 |Daemon|250||
 

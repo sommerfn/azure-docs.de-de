@@ -1,5 +1,5 @@
 ---
-title: Includedatei
+title: include file
 description: Includedatei, die Code zum Erstellen eines Back-End-ASP .NET-WebAPI-Projekts enthält.
 services: notification-hubs
 author: spelluru
@@ -9,11 +9,11 @@ ms.date: 03/22/2019
 ms.author: spelluru
 ms.custom: include file
 ms.openlocfilehash: 28eac814364b56f59b8edc6f59209a6d742ff403
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66156793"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67178337"
 ---
 ## <a name="create-the-webapi-project"></a>Erstellen des WebAPI-Projekts
 

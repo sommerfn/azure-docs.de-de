@@ -5,11 +5,11 @@ ms.service: app-service-mobile
 ms.topic: include
 ms.date: 08/23/2018
 ms.openlocfilehash: 852a3b00e8513f9ce68c5aae54c974505d0c9af6
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66140094"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67178589"
 ---
 1. Starten Sie auf dem Mac **Keychain Access**. Öffnen Sie auf der linken Navigationsleiste unter **Kategorie** den Eintrag **Meine Zertifikate**. Suchen Sie das SSL-Zertifikat, das Sie im vorigen Abschnitt heruntergeladen haben, und legen Sie den Inhalt offen. Wählen Sie nur das Zertifikat (ohne den privaten Schlüssel) aus. [Exportieren](https://support.apple.com/kb/PH20122?locale=en_US) Sie es dann.
 2. Wählen Sie im [Azure-Portal](https://portal.azure.com/) die Option **Alle durchsuchen** > **App Services** aus. Wählen Sie dann Ihr Mobile Apps-Back-End aus. 

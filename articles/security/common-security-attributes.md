@@ -10,10 +10,10 @@ ms.topic: conceptual
 ms.date: 04/03/2019
 ms.author: mbaldwin
 ms.openlocfilehash: 64accb70561d4c0282b3ee45935d955dba1c67c4
-ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/04/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66474538"
 ---
 # <a name="security-attributes-for-azure-services"></a>Sicherheitsattribute für Azure-Dienste
@@ -195,7 +195,7 @@ In diesem Artikel werden allgemeine Sicherheitsattribute für ausgewählte Azure
 
 | Sicherheitsattribut | Ja/Nein | Notizen|
 |---|---|--|
-| Unterstützung der Azure-Überwachung (Log Analytics, Application Insights usw.)| Ja | Log Analytics wird über Diagnoseprotokolle unterstützt. Weitere Informationen finden Sie unter „Überwachen von Azure Backup-geschützten Workloads mit Log Analytics“ (unter https://azure.microsoft.com/blog/monitor-all-azure-backup-protected-workloads-using-log-analytics/)). |
+| Unterstützung der Azure-Überwachung (Log Analytics, Application Insights usw.)| Ja | Log Analytics wird über Diagnoseprotokolle unterstützt. Weitere Informationen finden Sie unter „Überwachen von Azure Backup-geschützten Workloads mit Log Analytics“ (unter https://azure.microsoft.com/blog/monitor-all-azure-backup-protected-workloads-using-log-analytics/) ). |
 
 ### <a name="identity-and-access-management"></a>Identitäts- und Zugriffsverwaltung
 

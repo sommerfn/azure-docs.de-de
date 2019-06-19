@@ -5,11 +5,11 @@ ms.topic: include
 ms.date: 09/04/2018
 ms.author: glenga
 ms.openlocfilehash: c1784111cd2fc2c93b67510f310b9e513cf2b86e
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66132479"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67177886"
 ---
 [Trigger und Bindungen](../articles/azure-functions/functions-triggers-bindings.md) von Azure Functions kommunizieren mit verschiedenen Azure-Diensten. Bei der Integration in diese Dienste können Fehler auftreten, deren Ursache in den APIs der zugrunde liegenden Azure-Dienste liegt. Fehler können auch auftreten, wenn Sie versuchen, mit anderen Diensten aus Ihrem Funktionscode über REST oder Clientbibliotheken zu kommunizieren. Zur Vermeidung von Datenverlusten und zum Sicherstellen eines ordnungsgemäßen Verhaltens der Funktionen ist es wichtig, Fehler aus allen Quellen zu behandeln.
 

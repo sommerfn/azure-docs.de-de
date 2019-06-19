@@ -1,6 +1,6 @@
 ---
-title: Includedatei
-description: Includedatei
+title: include file
+description: include file
 services: virtual-machines
 author: roygara
 ms.service: virtual-machines
@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 05/10/2019
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 326382339e2b4aeaa488d3d7f76b7ff35f9bc620
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.openlocfilehash: 7515c061467419412608bb8103136791845ae093
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66147781"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67133170"
 ---
 # <a name="enable-and-deploy-azure-ultra-ssds-preview"></a>Aktivieren und Bereitstellen von SSD Ultra-Azure-Datenträgern (Vorschauversion)
 
@@ -37,7 +37,8 @@ Behalten Sie den Wert für **Zonen** bei. Er steht für Ihre Verfügbarkeitszone
 |---------|---------|---------|---------|---------|---------|---------|
 |disks     |UltraSSD_LRS         |eastus2         |X         |         |         |         |
 
-Wenn der Befehl keine Antwort zurückgegeben hat, steht Ihre Registrierung beim Feature entweder noch aus oder ist noch nicht genehmigt.
+> [!NOTE]
+> Wenn der Befehl keine Antwort zurückgegeben hat, steht Ihre Registrierung beim Feature entweder noch aus oder ist noch nicht genehmigt.
 
 Nachdem Sie nun wissen, in welcher Zone bereitgestellt werden soll, können Sie die Bereitstellungsschritte in diesem Artikel ausführen, um Ihre ersten virtuellen Computer mit SSD Ultra bereitzustellen.
 
