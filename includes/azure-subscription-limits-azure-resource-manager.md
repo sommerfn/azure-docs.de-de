@@ -9,15 +9,15 @@ ms.date: 04/22/2019
 ms.author: jroth
 ms.custom: include file
 ms.openlocfilehash: 712b70960e09a9c2b0e7a998bc0bddbc28c1e112
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66146244"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67178450"
 ---
 | Resource | Standardlimit | Maximales Limit |
 | --- | --- | --- |
-| VMs pro [Abonnement](../articles/billing-buy-sign-up-azure-subscription.md) |25\.000<sup>1</sup> pro Region |25\.000 pro Region |
+| VMs pro [Abonnement](../articles/billing-buy-sign-up-azure-subscription.md) |25.000<sup>1</sup> pro Region |25.000 pro Region |
 | Gesamte Kerne pro [Abonnement](../articles/billing-buy-sign-up-azure-subscription.md) |20<sup>1</sup> pro Region | Wenden Sie sich an den Support. |
 | VM-Kerne pro Serie (z. B. Dv2 und F) pro [Abonnement](../articles/billing-buy-sign-up-azure-subscription.md) |20<sup>1</sup> pro Region | Wenden Sie sich an den Support. |
 | [Co-Administratoren](../articles/billing-add-change-azure-subscription-administrator.md) pro Abonnement |Unbegrenzt. |Unbegrenzt. |
@@ -26,7 +26,7 @@ ms.locfileid: "66146244"
 | [Verfügbarkeitsgruppen](../articles/virtual-machines/windows/manage-availability.md#configure-multiple-virtual-machines-in-an-availability-set-for-redundancy) pro Abonnement |2\.000 pro Region |2\.000 pro Region |
 | Anforderungsgröße für Azure Resource Manager-API |4\.194.304 Byte |4\.194.304 Byte |
 | Tags pro Abonnement<sup>2</sup> |Unbegrenzt. |Unbegrenzt. |
-| Eindeutige Tag-Berechnungen pro Abonnement<sup>2</sup> | 10\.000 | 10\.000 |
+| Eindeutige Tag-Berechnungen pro Abonnement<sup>2</sup> | 10.000 | 10.000 |
 | [Clouddienste](../articles/cloud-services/cloud-services-choose-me.md) pro Abonnement |Nicht zutreffend<sup>3</sup> |Nicht zutreffend<sup>3</sup> |
 | [Affinitätsgruppen](../articles/virtual-network/virtual-networks-migrate-to-regional-vnet.md) pro Abonnement |Nicht zutreffend<sup>3</sup> |Nicht zutreffend<sup>3</sup> |
 | [Bereitstellungen auf Abonnementebene](../articles/azure-resource-manager/deploy-to-subscription.md) pro Standort | 800<sup>4</sup> | 800 |

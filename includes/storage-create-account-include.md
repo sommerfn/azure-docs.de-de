@@ -1,6 +1,6 @@
 ---
-title: Includedatei
-description: Includedatei
+title: include file
+description: include file
 services: storage
 author: tamram
 ms.service: storage
@@ -9,11 +9,11 @@ ms.date: 11/20/2018
 ms.author: tamram
 ms.custom: include file
 ms.openlocfilehash: 6d22f83ff9bcec685962934e415676bf8d948db0
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66158586"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67177769"
 ---
 ## <a name="create-an-azure-storage-account"></a>Erstellen eines Azure-Speicherkontos
 

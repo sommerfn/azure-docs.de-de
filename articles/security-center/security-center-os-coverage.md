@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 6/03/2019
 ms.author: monhaber
-ms.openlocfilehash: c5b5b88ee1334ac6d7b39b8ad53bd020e6042454
-ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
+ms.openlocfilehash: e2d66db2ae3c379db86d40603d919489fdf15eed
+ms.sourcegitcommit: 22c97298aa0e8bd848ff949f2886c8ad538c1473
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/04/2019
-ms.locfileid: "66480539"
+ms.lasthandoff: 06/14/2019
+ms.locfileid: "67144257"
 ---
 # <a name="platforms-and-features-supported-by-azure-security-center"></a>Von Azure Security Center unterstützte Features und Plattformen
 
@@ -78,7 +78,7 @@ VMs, die in einem Clouddienst ausgeführt werden, werden ebenfalls unterstützt.
 > [!div class="mx-tableFixed"]
 > 
 
-|Server|Windows||Linux||||Preise|
+|Server|Windows|||Linux|||Preise|
 |----|----|----|----|----|----|----|----|
 |**Umgebung**|**Azure**||**Nicht-Azure**|**Azure**||**Nicht-Azure**||
 ||**Virtueller Computer**|**VM-Skalierungsgruppe**||**Virtueller Computer**|**VM-Skalierungsgruppe**|

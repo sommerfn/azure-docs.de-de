@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.author: sgilley
 author: sdgilley
 ms.date: 05/15/2019
-ms.openlocfilehash: 0b158a1d713e0de8f3d1b2672aed442fce66e724
-ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
+ms.openlocfilehash: be07e0f3438ea93312d4eb440e7e63b8f98e11b8
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/20/2019
-ms.locfileid: "65917104"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67077376"
 ---
 # <a name="what-is-the-visual-interface-for-azure-machine-learning-service"></a>Was ist die grafische Benutzeroberfläche für Azure Machine Learning Service? 
 
@@ -27,7 +27,7 @@ Die grafische Benutzeroberfläche verwendet Ihren Azure Machine Learning Service
 + Schreiben von Artefakten von [Experimentausführungen](#experiment) im Workspace
 + Zugriff auf [Datasets](#dataset)
 + Verwenden der [Computeressourcen](#compute) im Workspace, um das Experiment auszuführen 
-+ Registrieren von [Modellen](concept-azure-machine-learning-architecture.md#model)
++ Registrieren von [Modellen](concept-azure-machine-learning-architecture.md#models)
 + [Bereitstellen](#deployment) von Modellen als Webdienste auf Computeressourcen im Workspace
 
 ![Übersicht über die grafische Benutzeroberfläche](media/ui-concept-visual-interface/overview.png)

@@ -7,12 +7,12 @@ ms.service: marketplace
 ms.topic: conceptual
 ms.date: 05/22/2019
 ms.author: pabutler
-ms.openlocfilehash: a1bcab9816627b453ba8b20b7bcd9402c2dfd151
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.openlocfilehash: 08f9d794822dfd7879efc7c4813ecc46f92f6a45
+ms.sourcegitcommit: 72f1d1210980d2f75e490f879521bc73d76a17e1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/27/2019
-ms.locfileid: "66240478"
+ms.lasthandoff: 06/14/2019
+ms.locfileid: "67147898"
 ---
 # <a name="lead-management-instructions-for-azure-table"></a>Anweisungen für die Leadverwaltung für Azure-Tabellen
 
@@ -97,7 +97,7 @@ Im nächsten Schritt stellen Sie eine Verbindung mit Ihrer Azure-Tabelle her, un
 
      ![Benutzerdefinierten Wert für den Azure-Tabellennamen auswählen](./media/cloud-partner-portal-lead-management-instructions-azure-table/msflow-getentities-table-name.png)
 
-   - **Filterabfrage**: Klicken Sie auf dieses Feld. In einem Popupfenster wird das Symbol **Vergangene Zeit abrufen** angezeigt. Wählen Sie **Vergangene Zeit** aus, um dies als Zeitstempel zum Filtern der Abfrage zu verwenden. Alternativ können Sie die folgende Funktion in das Feld einfügen: CreatedTime `gt datetime'@{body('Get_past_time')}'` 
+   - **Filterabfrage**: Klicken Sie auf dieses Feld. In einem Popupfenster wird das Symbol **Vergangene Zeit abrufen** angezeigt. Wählen Sie **Vergangene Zeit** aus, um dies als Zeitstempel zum Filtern der Abfrage zu verwenden. Alternativ können Sie die folgende Funktion in das Feld einfügen: CreatedTime `Timestamp gt datetime'@{body('Get_past_time')}'` 
 
      ![Filterabfragefunktion einrichten](./media/cloud-partner-portal-lead-management-instructions-azure-table/msflow-getentities-filterquery.png)
 

@@ -1,5 +1,5 @@
 ---
-title: Includedatei
+title: include file
 description: Includedatei für vertrauliche Clientszenario-Landing Pages (Daemon, Web-App, Web-API)
 services: active-directory
 documentationcenter: dev-center-name
@@ -15,11 +15,11 @@ ms.date: 04/18/2018
 ms.author: jmprieur
 ms.custom: include file
 ms.openlocfilehash: 9ee7422b372993d60c629524eb036b9678e5776c
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66121843"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67178273"
 ---
 ## <a name="registration-of-secrets-or-certificates"></a>Registrierung von geheimen Schlüsseln oder Zertifikaten
 
