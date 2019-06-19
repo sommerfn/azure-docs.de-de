@@ -39,13 +39,13 @@ Die VM-Erweiterung für den Network Watcher-Agent kann für folgende Linux-Distr
 | Distribution | Version |
 |---|---|
 | Ubuntu | 12+ |
-| Debian | 7 und 8 |
-| Red Hat | 6 und 7 |
-| Oracle Linux | 6.8 und höher und 7 |
-| SUSE Linux Enterprise Server | 11 und 12 |
-| OpenSUSE Leap | 42.3 und höher |
-| CentOS | 6.5 und höher und 7 |
-| CoreOS | 899.17.0 und höher |
+| Debian | 7 and 8 |
+| Red Hat | 6 and 7 |
+| Oracle Linux | 6.8+ and 7 |
+| SUSE Linux Enterprise Server | 11 and 12 |
+| OpenSUSE Leap | 42.3+ |
+| CentOS | 6.5+ and 7 |
+| CoreOS | 899.17.0+ |
 
 
 ### <a name="internet-connectivity"></a>Internetkonnektivität
