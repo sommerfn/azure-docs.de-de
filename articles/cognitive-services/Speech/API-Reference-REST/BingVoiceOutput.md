@@ -62,12 +62,12 @@ Die folgende Tabelle enthält die HTTP-Header für Sprachsyntheseanforderungen:
 
 Header |Wert |Kommentare
 ----|----|----
-Content-Typ | application/ssml+xml | Der Inhaltstyp der Eingabe.
+Content-Type | application/ssml+xml | Der Inhaltstyp der Eingabe.
 X-Microsoft-OutputFormat | **1.** ssml-16khz-16bit-mono-tts <br> **2.** raw-16khz-16bit-mono-pcm <br>**3.** audio-16khz-16kbps-mono-siren <br> **4.** riff-16khz-16kbps-mono-siren <br> **5.** riff-16khz-16bit-mono-pcm <br> **6.** audio-16khz-128kbitrate-mono-mp3 <br> **7.** audio-16khz-64kbitrate-mono-mp3 <br> **8.** audio-16khz-32kbitrate-mono-mp3 | Das Audioformat der Ausgabe.
 X-Search-AppId | Eine GUID (nur hexadezimal, keine Bindestriche) | Eine ID zur eindeutigen Identifizierung der Clientanwendung. Hierbei kann es sich um die Shop-ID für Apps handeln. Sollte keine verfügbar sein, kann die ID für eine Anwendung vom Benutzer generiert werden.
 X-Search-ClientID | Eine GUID (nur hexadezimal, keine Bindestriche) | Eine ID zur eindeutigen Identifizierung einer Anwendungsinstanz für jede Installation.
-Benutzer-Agent | Anwendungsname | Der Anwendungsname ist erforderlich und muss weniger als 255 Zeichen umfassen.
-Autorisierung | Autorisierungstoken |  Informationen hierzu finden Sie im Abschnitt <a href="#Subscription">Authentifizierungstoken</a>.
+User-Agent | Anwendungsname | Der Anwendungsname ist erforderlich und muss weniger als 255 Zeichen umfassen.
+Authorization | Autorisierungstoken |  Informationen hierzu finden Sie im Abschnitt <a href="#Subscription">Authentifizierungstoken</a>.
 
 ### <a name="InputParam"></a>Eingabeparameter
 
