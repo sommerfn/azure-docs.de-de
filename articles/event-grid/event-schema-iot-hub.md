@@ -10,12 +10,12 @@ ms.service: event-grid
 ms.topic: reference
 ms.date: 01/17/2019
 ms.author: kgremban
-ms.openlocfilehash: e770beb0470b54d8e13493bca4790323b2e96ce1
-ms.sourcegitcommit: 51a7669c2d12609f54509dbd78a30eeb852009ae
+ms.openlocfilehash: 4e96276a862844cea1d0800eafb952d4a0df97ab
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/30/2019
-ms.locfileid: "66393198"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67076352"
 ---
 # <a name="azure-event-grid-event-schema-for-iot-hub"></a>Azure Event Grid-Ereignisschema für IoT Hub
 
@@ -35,7 +35,7 @@ Azure IoT Hub gibt die folgenden Ereignistypen aus:
 | Microsoft.Devices.DeviceDisconnected | Wird ausgelöst, wenn ein Gerät von einem IoT Hub getrennt wird. | 
 | Microsoft.Devices.DeviceTelemetry | Wird veröffentlicht, wenn eine Telemetrienachricht an einen IoT-Hub gesendet wird. |
 
-Alle Ereignisse mit Ausnahme von Gerät-Telemetrie-Ereignissen sind allgemein verfügbar in allen Regionen, die von Event Grid unterstützt werden. Gerät telemetrieereignis ist in der öffentlichen Vorschau und ist verfügbar in allen Regionen außer USA, Osten "," USA, Westen "," Europa, Westen, [Azure Government](/azure-government/documentation-government-welcome.md), [Azure China 21Vianet](/azure/china/china-welcome.md), und [Azure Deutschland](https://azure.microsoft.com/global-infrastructure/germany/).
+Alle Geräteereignisse mit Ausnahme von Gerätetelemetrieereignissen sind in allen von Event Grid unterstützten Regionen allgemein verfügbar. Gerätetelemetrieereignisse stehen in der öffentlichen Vorschauversion zur Verfügung, und zwar in allen Regionen mit Ausnahme von „USA, Osten“, „USA, Westen“, „Europa, Westen“, [Azure Government](../azure-government/documentation-government-welcome.md), [Azure China 21Vianet](/azure/china/china-welcome) und [Azure Deutschland](https://azure.microsoft.com/global-infrastructure/germany/).
 
 ## <a name="example-event"></a>Beispielereignis
 
@@ -182,7 +182,7 @@ Für ein IoT Hub-Ereignis zur **Gerätetelemetrie** enthält das Datenobjekt die
 | -------- | ---- | ----------- |
 | body | Zeichenfolge | Der Inhalt der Nachricht vom Gerät. |
 | properties | Zeichenfolge | Anwendungseigenschaften sind benutzerdefinierte Zeichenfolgen, die der Nachricht hinzugefügt werden können. Diese Felder sind optional. |
-| Systemeigenschaften | Zeichenfolge | Mithilfe von [Systemeigenschaften](../iot-hub/iot-hub-devguide-routing-query-syntax.md#system-properties) werden der Inhalt und die Quelle von Nachrichten identifiziert. Nachricht für das Gerät Telemetriedaten muss in einem gültigen JSON-Format mit dem ContentType, ContentEncoding in UTF-8 festgelegt, in den Eigenschaften der Nachricht zu JSON festgelegt sein. Wenn dies nicht festgelegt ist, wird der IoT Hub in base 64-codierten Format die Nachrichten schreibt.  |
+| Systemeigenschaften | Zeichenfolge | Mithilfe von [Systemeigenschaften](../iot-hub/iot-hub-devguide-routing-query-syntax.md#system-properties) werden der Inhalt und die Quelle von Nachrichten identifiziert. Gerätetelemetrienachrichten müssen in einem gültigen JSON-Format vorliegen, und in den Systemeigenschaften der Nachricht müssen contentType auf JSON und contentEncoding auf UTF-8 festgelegt sein. Wenn dies nicht festgelegt ist, schreibt IoT Hub die Nachrichten in Base64-codiertem Format.  |
 
 Für die IoT Hub-Ereignisse **Gerät erstellt** und **Gerät gelöscht** enthält das Datenobjekt die folgenden Eigenschaften:
 

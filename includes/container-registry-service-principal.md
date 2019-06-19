@@ -1,6 +1,6 @@
 ---
-title: Includedatei
-description: Includedatei
+title: include file
+description: include file
 services: container-registry
 author: dlepow
 ms.service: container-registry
@@ -9,11 +9,11 @@ ms.date: 12/14/2018
 ms.author: danlep
 ms.custom: include file
 ms.openlocfilehash: 69951693f9d3bacb556453aba954620815884d43
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66152237"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67178738"
 ---
 ## <a name="create-a-service-principal"></a>Erstellen eines Dienstprinzipals
 

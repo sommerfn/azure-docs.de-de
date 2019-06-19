@@ -1,6 +1,6 @@
 ---
-title: Includedatei
-description: Includedatei
+title: include file
+description: include file
 services: storage
 author: tamram
 ms.service: storage
@@ -9,11 +9,11 @@ ms.date: 04/16/2019
 ms.author: tamram
 ms.custom: include
 ms.openlocfilehash: 3076065d23d4701711c0ecb60349e77ee5c9b7c8
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66115441"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67178306"
 ---
 Azure Storage unterstützt die Verschlüsselung ruhender Daten mit von Microsoft verwalteten Schlüsseln oder vom Kunden verwalteten Schlüsseln. Mit von Kunden verwalteten Schlüsseln können Sie Zugriffssteuerungen erstellen, rotieren, deaktivieren und widerrufen.
 

@@ -9,11 +9,11 @@ ms.date: 10/24/2018
 ms.author: cherylmc
 ms.custom: include file
 ms.openlocfilehash: 35f987f26ce47c19e3d5eb1ca5d2bb32d0c7ad1b
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66170163"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67177948"
 ---
 1. Klicken Sie im Portal auf der linken Seite auf **+** , und geben Sie „Gateway für virtuelle Netzwerke“ für die Suche ein. Suchen Sie unter **Ergebnisse** nach **Gateway für virtuelle Netzwerke**, und klicken Sie auf den Eintrag.
 2. Klicken Sie unten auf der Seite „Gateway für virtuelle Netzwerke“ auf **Erstellen**. Die Seite **Gateway für virtuelle Netzwerke erstellen** wird geöffnet.

@@ -5,11 +5,11 @@ ms.topic: include
 ms.date: 08/23/2018
 ms.author: crdun
 ms.openlocfilehash: a69df0cc9ea14a2c9fa172c77663afb1d6861f9b
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66140125"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67178591"
 ---
 #### <a name="configure-the-ios-project-in-xamarin-studio"></a>Konfigurieren des iOS-Projekts in Xamarin Studio
 1. Öffnen Sie in Xamarin.Studio die Datei **Info.plist**, und aktualisieren Sie die **Paket-ID** mit der Paket-ID, die Sie zuvor mit Ihrer neuen App-ID erstellt haben.

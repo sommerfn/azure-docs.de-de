@@ -9,12 +9,12 @@ ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 12/07/2018
 ms.custom: seodec18
-ms.openlocfilehash: 38353ed68469ac35f04d68e19afd11ac4b47f2ae
-ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
+ms.openlocfilehash: cfb7dc8ef41c8829caebed6fff2d881093dbbe4d
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64943952"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67076240"
 ---
 # <a name="get-started-using-azure-stream-analytics-real-time-fraud-detection"></a>Erste Schritte mit Azure Stream Analytics: Betrugsermittlung in Echtzeit
 
@@ -131,11 +131,12 @@ Bevor Sie die TelcoGenerator-App starten, müssen Sie sie so konfigurieren, dass
 
 ### <a name="start-the-app"></a>Starten der App
 1.  Öffnen Sie ein Befehlsfenster, und wechseln Sie zum Ordner, in dem sich die entzippte TelcoGenerator-App befindet.
+
 2.  Geben Sie den folgenden Befehl ein:
 
-        ```cmd
-        telcodatagen.exe 1000 0.2 2
-        ```
+   ```cmd
+   telcodatagen.exe 1000 0.2 2
+   ```
 
     Die Parameter lauten wie folgt: 
 

@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/23/2017
 ms.author: mazha
-ms.openlocfilehash: 337f2a31d60d54b47c692b06b5d63c28c0964061
-ms.sourcegitcommit: 2c09af866f6cc3b2169e84100daea0aac9fc7fd0
+ms.openlocfilehash: 5092872433529f11f699aa8a0c5e87d110cb59f7
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/29/2019
-ms.locfileid: "64876221"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67077424"
 ---
 # <a name="using-azure-cdn-with-cors"></a>Verwendung von Azure CDN mit CORS
 ## <a name="what-is-cors"></a>Was ist CORS?
@@ -85,7 +85,7 @@ Wenn der reguläre Ausdruck übereinstimmt, ersetzt Ihre Regel den **Access-Cont
 ![Beispiel für Regeln mit regulären Ausdruck](./media/cdn-cors/cdn-cors-regex.png)
 
 #### <a name="request-header-rule-for-each-origin"></a>Anforderungsheader-Regel für jeden Ursprung
-Statt reguläre Ausdrücke können Sie stattdessen eine separate Regel für jeden Ursprung erstellen, den sie zulassen möchten. Verwenden Sie dazu die [Übereinstimmungsbedingung](/previous-versions/azure/mt757336(v=azure.100)#Anchor_1) des **Request Header**-Platzhalters. Wie bei der Methode des regulären Ausdrucks legt die Regel-Engine allein die CORS-Header fest. 
+Statt reguläre Ausdrücke können Sie stattdessen eine separate Regel für jeden Ursprung erstellen, den sie zulassen möchten. Verwenden Sie dazu die [Übereinstimmungsbedingung](/previous-versions/azure/mt757336(v=azure.100)#match-conditions) des **Request Header**-Platzhalters. Wie bei der Methode des regulären Ausdrucks legt die Regel-Engine allein die CORS-Header fest. 
 
 ![Beispiel für Regeln ohne regulären Ausdruck](./media/cdn-cors/cdn-cors-no-regex.png)
 

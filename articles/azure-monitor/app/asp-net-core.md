@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 05/22/2019
 ms.author: mbullwin
-ms.openlocfilehash: cb7ace20fd0a59dafff3d7f8240f54c3c8e12492
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.openlocfilehash: 2da253c058329b80c6175b9066b76816940dc3d5
+ms.sourcegitcommit: 1289f956f897786090166982a8b66f708c9deea1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/27/2019
-ms.locfileid: "66226394"
+ms.lasthandoff: 06/17/2019
+ms.locfileid: "67153987"
 ---
 # <a name="application-insights-for-aspnet-core-applications"></a>Application Insights für ASP.NET Core-Anwendungen
 
@@ -59,7 +59,7 @@ Mit dem [Application Insights SDK (Software Development Kit) für ASP.NET Core](
 
     ```xml
         <ItemGroup>
-          <PackageReference Include="Microsoft.ApplicationInsights.AspNetCore" Version="2.6.1" />
+          <PackageReference Include="Microsoft.ApplicationInsights.AspNetCore" Version="2.7.0" />
         </ItemGroup>
     ```
 

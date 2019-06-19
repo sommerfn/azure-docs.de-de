@@ -5,11 +5,11 @@ ms.topic: include
 ms.date: 10/26/2018
 ms.author: tamram
 ms.openlocfilehash: 6911e06dc023027ab32b99387b9f7d3f5e708f86
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66158608"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67177770"
 ---
 ## <a name="configure-your-application-to-access-azure-storage"></a>Konfigurieren der Anwendung für den Zugriff auf Azure Storage
 Es gibt zwei Möglichkeiten, um Ihre Anwendung für den Zugriff auf die Storage-Dienste zu authentifizieren:

@@ -10,12 +10,12 @@ ms.date: 03/04/2019
 ms.topic: conceptual
 description: Beschreibt die Prozesse, die zur Funktionsweise von Azure Dev Spaces beitragen, und beschreibt, wie diese in der Konfigurationsdatei „azds.yaml“ konfiguriert werden.
 keywords: azds.yaml, Azure Dev Spaces, Dev Spaces, Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, Container
-ms.openlocfilehash: e437a53d640bbdad3cdeeba8fd73e1f9ffef4023
-ms.sourcegitcommit: d89032fee8571a683d6584ea87997519f6b5abeb
+ms.openlocfilehash: 083ed45a8fa95ac5fc26af6547b5765acf80e43b
+ms.sourcegitcommit: 1289f956f897786090166982a8b66f708c9deea1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/30/2019
-ms.locfileid: "66399832"
+ms.lasthandoff: 06/17/2019
+ms.locfileid: "67154556"
 ---
 # <a name="how-azure-dev-spaces-works-and-is-configured"></a>Funktionsweise und Konfiguration von Azure Dev Spaces
 
@@ -210,7 +210,7 @@ Der `up`-Befehl lädt die Quelldateien Ihrer Anwendung und andere Artefakte, die
 1. Er erstellt den Container für Ihre Anwendung.
 1. Er stellt Ihre Anwendung im Entwicklungsbereich bereit.
 1. Er erstellt einen öffentlich zugänglichen DNS-Namen für den Anwendungsendpunkt, sofern ein solcher konfiguriert ist.
-1. Er verwendet *port-forward*, um Zugriff auf Ihren Anwendungsendpunkt über http://locahost zu bieten.
+1. Er verwendet *port-forward*, um Zugriff auf Ihren Anwendungsendpunkt über http://localhost zu bieten.
 1. Er sendet Standardausgabe (stdout) und Standardfehlerausgabe (stderr) an die clientseitigen Tools.
 
 

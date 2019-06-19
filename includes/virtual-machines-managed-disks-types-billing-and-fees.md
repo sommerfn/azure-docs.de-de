@@ -1,6 +1,6 @@
 ---
-title: Includedatei
-description: Includedatei
+title: include file
+description: include file
 services: virtual-machines
 author: roygara
 ms.service: virtual-machines
@@ -9,11 +9,11 @@ ms.date: 01/22/2019
 ms.author: rogarana
 ms.custom: include file
 ms.openlocfilehash: 268467796e67caf2d20fedb44d83fd455a09b83e
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66147828"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67178078"
 ---
 **Ausgehende Datenübertragungen**: [Ausgehende Datenübertragungen](https://azure.microsoft.com/pricing/details/bandwidth/) (Daten, die von den Azure-Datencentern ausgehen) verursachen Kosten bei der Bandbreitenverwendung.
 

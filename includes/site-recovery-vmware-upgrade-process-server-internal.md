@@ -5,11 +5,11 @@ ms.topic: include
 ms.date: 04/28/2010
 ms.author: raynew
 ms.openlocfilehash: 83e9e584967f780532ce9b3c51bf3f41a963eabf
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66170004"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67178621"
 ---
 1. Melden Sie sich als Administrator beim Prozessserver an.
 2. Laden Sie die neueste Version des [Installationsprogramms für einheitliches Setup](https://aka.ms/unifiedinstaller) herunter.

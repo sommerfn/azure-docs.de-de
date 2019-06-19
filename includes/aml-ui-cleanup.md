@@ -1,6 +1,6 @@
 ---
-title: Includedatei
-description: Includedatei
+title: include file
+description: include file
 services: machine-learning
 ms.service: machine-learning
 ms.custom: include file
@@ -9,11 +9,11 @@ author: sgilley
 ms.author: sgilley
 ms.date: 05/06/2019
 ms.openlocfilehash: 623e993dfbe6bbb3297fa6470865ab1a04f55b37
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66123156"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67178508"
 ---
 >[!IMPORTANT]
 >Sie können die von Ihnen bei der Vorbereitung erstellten Ressourcen auch in anderen Tutorials und Anleitungen für Azure Machine Learning Service verwenden.

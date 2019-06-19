@@ -11,19 +11,21 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/07/2019
+ms.date: 06/13/2019
 ms.author: juliako
 ms.custom: seodec18
-ms.openlocfilehash: c7415bfeadc978fe7b3b6a03265c0643b129afbf
-ms.sourcegitcommit: 13cba995d4538e099f7e670ddbe1d8b3a64a36fb
+ms.openlocfilehash: c6007b66e31996db5c6b043219470968a7b05031
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/22/2019
-ms.locfileid: "66000172"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67114684"
 ---
 # <a name="creating-filters-with-cli"></a>Erstellen von Filtern mit der CLI 
 
-Bei der Inhaltsbereitstellung für Ihre Kunden (Streaming von Liveereignissen oder Video on Demand) benötigen Ihre Kunden möglicherweise mehr Flexibilität als in der Manifestdatei für die Standardmediendatei beschrieben. Azure Media Services ermöglicht es Ihnen, Kontofilter und Medienobjektfilter für Ihre Inhalte zu definieren. Weitere Informationen finden Sie unter [Filter](filters-concept.md) und [dynamische Manifeste](filters-dynamic-manifest-overview.md).
+Bei der Inhaltsbereitstellung für Ihre Kunden (Streaming von Liveereignissen oder Video on Demand) benötigen Ihre Kunden möglicherweise mehr Flexibilität als in der Manifestdatei für die Standardmediendatei beschrieben. Azure Media Services ermöglicht es Ihnen, Kontofilter und Medienobjektfilter für Ihre Inhalte zu definieren. 
+
+Eine ausführliche Beschreibung dieser Funktion und der Szenarien, in denen sie verwendet wird, finden Sie unter [Dynamische Manifeste](filters-dynamic-manifest-overview.md) und [Filter](filters-concept.md).
 
 In diesem Thema werden das Konfigurieren eines Filters für ein Video on Demand-Medienobjekt und die Verwendung der Befehlszeilenschnittstelle für Media Services v3 zum Erstellen von [Kontofiltern](https://docs.microsoft.com/cli/azure/ams/account-filter?view=azure-cli-latest) und [Filtern für Medienobjekte](https://docs.microsoft.com/cli/azure/ams/asset-filter?view=azure-cli-latest) gezeigt. 
 
@@ -97,7 +99,6 @@ az ams asset-filter create -a amsAccount -g resourceGroup -n filterName --asset-
 ```
 
 Siehe auch [JSON-Beispiele für Filter](https://docs.microsoft.com/rest/api/media/assetfilters/createorupdate#create_an_asset_filter).
-
 
 ## <a name="associate-filters-with-streaming-locator"></a>Zuordnen von Filtern mit Streaminglocator
 

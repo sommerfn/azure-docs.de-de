@@ -1,6 +1,6 @@
 ---
-title: Includedatei
-description: Includedatei
+title: include file
+description: include file
 services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
@@ -9,11 +9,11 @@ ms.date: 03/21/2018
 ms.author: cherylmc
 ms.custom: include file
 ms.openlocfilehash: b3907882df09bfae1d6453fbffbd3e7562554f7c
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66159340"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67177973"
 ---
 * **PolicyBased:** PolicyBased-VPNs wurden im klassischen Bereitstellungsmodell bisher als Gateways mit statischem Routing bezeichnet. Bei richtlinienbasierten VPNs werden Pakete verschlüsselt und durch IPsec-Tunnel geleitet. Grundlage hierfür sind die IPsec-Richtlinien, die jeweils per Kombination aus Adresspräfixen zwischen Ihrem lokalen Netzwerk und dem Azure-VNet konfiguriert werden. Die Richtlinie (auch Datenverkehrsselektor genannt) wird in der Regel als Zugriffsliste in der VPN-Gerätekonfiguration definiert. Der Wert für einen PolicyBased-VPN-Typ lautet *PolicyBased*. Wenn Sie ein PolicyBased-VPN verwenden, beachten Sie die folgenden Einschränkungen:
   

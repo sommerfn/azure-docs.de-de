@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: vmware
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: fa7730247ddc5f30c3d21a32421a6c55ec4ef72e
-ms.sourcegitcommit: 8a681ba0aaba07965a2adba84a8407282b5762b2
+ms.openlocfilehash: c9689a468e8784eb4ec3590011e02a37d92d6b9c
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/29/2019
-ms.locfileid: "64872765"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67083401"
 ---
 # <a name="vpn-gateways-overview"></a>Übersicht über VPN-Gateways
 
@@ -37,6 +37,8 @@ Zu den Anwendungsfällen von Site-to-Site-VPN gehören:
 * Einfache Übertragung von VM-Vorlagen, ISO-Dateien und andere Dateien aus Ihren lokalen Ressourcen in das vCenter Ihrer privaten Cloud.
 * Zugriff auf Workloads, die in Ihrer privaten Cloud ausgeführt werden, aus Ihrem lokalen Netzwerk.
 
+![Topologie einer Site-to-Site-VPN-Verbindung](media/cloudsimple-site-to-site-vpn-connection.png)
+
 ### <a name="cryptographic-parameters"></a>Kryptografische Parameter
 
 Für eine Standort-zu-Standort-VPN-Verbindung werden die folgenden kryptografischen Standardparameter verwendet, um eine sichere Verbindung herzustellen.  Wenn Sie eine Verbindung von einem lokalen VPN-Gerät herstellen, müssen die Parameter übereinstimmen.
@@ -50,7 +52,7 @@ Für eine Standort-zu-Standort-VPN-Verbindung werden die folgenden kryptografisc
 | IKE-Version | IKEv1 | IKEv1 | IKEv1 |
 | Verschlüsselung | AES 128 | AES 256 | AES 256 |
 | Hashalgorithmus| SHA 256 | SHA 256 | SHA 1 |
-| Diffie-Hellman-Gruppe (DH-Gruppe) | 1 | 1 | 1 |
+| Diffie-Hellman-Gruppe (DH-Gruppe) | 2 | 2 | 2 |
 | Lebensdauer | 28.800 Sekunden | 28.800 Sekunden | 28.800 Sekunden |
 | Datengröße | 4 GB | 4 GB | 4 GB |
 
@@ -62,7 +64,7 @@ Für eine Standort-zu-Standort-VPN-Verbindung werden die folgenden kryptografisc
 | Verschlüsselung | AES 128 | AES 256 | AES 256 |
 | Hashalgorithmus| SHA 256 | SHA 256 | SHA 1 |
 | Perfect Forward Secrecy-Gruppe (PFS-Gruppe) | Keine | Keine | Keine |
-| Lebensdauer | 1.800 Sekunden | 1.800 Sekunden | 1.800 Sekunden |
+| Lebensdauer | 1\.800 Sekunden | 1\.800 Sekunden | 1\.800 Sekunden |
 | Datengröße | 4 GB | 4 GB | 4 GB |
 
 ## <a name="point-to-site-vpn-gateway"></a>Point-to-Site-VPN-Gateway

@@ -1,6 +1,6 @@
 ---
-title: Includedatei
-description: Includedatei
+title: include file
+description: include file
 services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
@@ -9,11 +9,11 @@ ms.date: 03/21/2018
 ms.author: cherylmc
 ms.custom: include file
 ms.openlocfilehash: 0334f9fd2d749b88580ff3857d705de2ae961902
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66157717"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67177945"
 ---
 Das Gateway für virtuelle Netzwerke verwendet ein bestimmtes Subnetz, das als „Gatewaysubnetz“ bezeichnet wird. Das Gatewaysubnetz ist Teil des IP-Adressbereichs für das virtuelle Netzwerk, den Sie beim Konfigurieren Ihres virtuellen Netzwerks angeben. Es enthält die IP-Adressen, die von den Ressourcen und Diensten des Gateways für virtuelle Netzwerke verwendet werden. Das Subnetz muss „GatewaySubnet“ heißen, damit Azure die Gatewayressourcen bereitstellen kann. Für die Bereitstellung der Gatewayressourcen kann kein anderes Subnetz angegeben werden. Wenn Sie über kein Subnetz namens „GatewaySubnet“ verfügen, tritt beim Erstellen des VPN-Gateways ein Fehler auf.
 

@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 06/04/2019
 ms.author: erhopf
 ms.openlocfilehash: c19e39918aa64730a35a27fcdadd70800f47f4fa
-ms.sourcegitcommit: adb6c981eba06f3b258b697251d7f87489a5da33
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/04/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66514651"
 ---
 # <a name="request-limits-for-translator-text"></a>Anforderungslimits für die Textübersetzungs-API
@@ -29,12 +29,12 @@ In der folgenden Tabelle sind Arrayelement- und Zeichengrenzwerte für jeden Vor
 
 | Vorgang | Maximale Größe des Arrayelements |   Maximale Anzahl von Arrayelementen |  Maximale Anforderungsgröße (Zeichen) |
 |:----|:----|:----|:----|
-| Translate | 5.000 | 100   | 5.000 |
-| Transliterate | 5.000 | 10    | 5.000 |
+| Translate | 5\.000 | 100   | 5\.000 |
+| Transliterate | 5\.000 | 10    | 5\.000 |
 | Detect | 10.000 | 100 |   50.000 |
-| BreakSentence | 10.000    | 100 | 5.0000 |
-| Wörterbuchsuche| 100 |  10  | 1.000 |
-| Wörterbuchbeispiele | 100 für Text und 100 für Übersetzung (200 insgesamt)| 10|   2.000 |
+| BreakSentence | 10.000    | 100 | 5\.0000 |
+| Wörterbuchsuche| 100 |  10  | 1\.000 |
+| Wörterbuchbeispiele | 100 für Text und 100 für Übersetzung (200 insgesamt)| 10|   2\.000 |
 
 ## <a name="character-limits-per-hour"></a>Zeichengrenzwerte pro Stunde
 

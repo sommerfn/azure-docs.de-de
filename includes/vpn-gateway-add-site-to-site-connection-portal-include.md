@@ -9,11 +9,11 @@ ms.date: 04/04/2018
 ms.author: cherylmc
 ms.custom: include file
 ms.openlocfilehash: 19ad4e39ca4e402c37b2cfa69c7c306b6e5a2766
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66170116"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67177944"
 ---
 1. Öffnen Sie die Seite Ihres Gateways für virtuelle Netzwerke. Dazu gibt es verschiedene Möglichkeiten. Sie können über **TestVNet1 > Überblick > Verbundene Geräte > VNet1GW** zum Gateway „VNet1GW“ navigieren.
 2. Klicken Sie auf der Seite für „VNet1GW“ auf **Verbindungen**. Klicken Sie oben auf der Seite „Verbindungen“ auf **+Hinzufügen**, um die Seite **Verbindung hinzufügen** zu öffnen.

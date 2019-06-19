@@ -5,17 +5,17 @@ ms.service: iot-hub
 ms.topic: include
 ms.date: 10/26/2018
 ms.openlocfilehash: 104849557a8580e16fa1860b7919d1c0252debe9
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66238183"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67178486"
 ---
 In der folgenden Tabelle sind die Grenzwerte aufgeführt, die den verschiedenen Dienstebenen S1, S2, S3 und F1 zugeordnet sind. Informationen zu den Kosten jeder *Einheit* finden Sie unter [Azure IoT Hub – Preise](https://azure.microsoft.com/pricing/details/iot-hub/).
 
 | Resource | S1 Standard | S2 Standard | S3 Standard | F1 Free |
 | --- | --- | --- | --- | --- |
-| Nachrichten/Tag |400\.000 |6\.000.000 |300\.000.000 |8\.000 |
+| Nachrichten/Tag |400.000 |6\.000.000 |300.000.000 |8\.000 |
 | Maximale Anzahl der Einheiten |200 |200 |10 |1 |
 
 > [!NOTE]
@@ -66,7 +66,7 @@ IoT Hub drosselt Anforderungen, wenn die folgenden Kontingente überschritten we
 | Senden von Nachrichten von Geräten an die Cloud |6\.000/Sekunde/Einheit (für S3), 120/Sekunde/Einheit (für S2), 12/Sekunde/Einheit (für S1). <br/>Mindestens 100/Sekunde |
 | C2D-Sendevorgänge | 83,33/Sekunde/Einheit (5.000/Minute/Einheit) (für S3), 1,67/Sekunde/Einheit (100/Minute/Einheit) (für S1 und S2). |
 | C2D-Empfangsvorgänge |833,33/Sekunde/Einheit (50.000/Minute/Einheit) (für S3), 16,67/Sekunde/Einheit (1.000/Minute/Einheit) (für S1 und S2). |
-| Dateiuploadvorgänge |83,33 Dateiuploadbenachrichtigungen/Sekunde/Einheit (5.000/Minute/Einheit) (für S3), 1,67 Dateiuploadbenachrichtigungen/Sekunde/Einheit (100/Minute/Einheit) (für S1 und S2). <br/> 10\.000 SAS-URIs können gleichzeitig für ein Azure-Speicherkonto geöffnet sein.<br/> 10 SAS-URIs/Gerät können gleichzeitig geöffnet sein. |
+| Dateiuploadvorgänge |83,33 Dateiuploadbenachrichtigungen/Sekunde/Einheit (5.000/Minute/Einheit) (für S3), 1,67 Dateiuploadbenachrichtigungen/Sekunde/Einheit (100/Minute/Einheit) (für S1 und S2). <br/> 10.000 SAS-URIs können gleichzeitig für ein Azure-Speicherkonto geöffnet sein.<br/> 10 SAS-URIs/Gerät können gleichzeitig geöffnet sein. |
 | Direkte Methoden | 24 MB/s/Texteinheit (S3), 480 KB/s/Einheit (S2), 160 KB/s/Einheit (S1).<br/> Basierend auf einer Größe von 8 KB pro Verbrauchseinheit für die Drosselung. |
 | Gerätezwilling-Lesevorgänge | 500/Sekunde/Einheit (für S3), maximal 100/Sekunde oder 10/Sekunde/Einheit (für S2), 100/Sekunde/Einheit (für S1) |
 | Gerätezwillingsaktualisierungen | 250/Sekunde/Einheit (für S3), maximal 50/Sekunde oder 5/Sekunde/Einheit (für S2), 50/Sekunde/Einheit (für S1) |

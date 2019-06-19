@@ -5,11 +5,11 @@ ms.topic: include
 ms.date: 03/25/2019
 ms.author: alkohli
 ms.openlocfilehash: 674ca630aa41d930ad7d7cfebccbe9b44351b68c
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66161004"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67178536"
 ---
 Im Folgenden finden Sie eine Liste der unterstützten Betriebssysteme für Clients oder Hosts, die mit Ihrem Gerät verbunden sind. Diese Betriebssystemversionen wurden intern getestet.
 

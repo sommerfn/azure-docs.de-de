@@ -1,22 +1,22 @@
 ---
-title: 'Schnellstart: Erfassen von Daten aus Event Hub in Azure Data Explorer'
-description: In dieser Schnellstartanleitung erfahren Sie, wie Sie Daten aus Event Hub im Azure-Daten-Explorer erfassen (laden).
+title: Erfassen von Daten aus Event Hub in Azure Data Explorer
+description: In diesem Artikel erfahren Sie, wie Sie Daten aus Event Hub in Azure Data Explorer erfassen (laden).
 author: orspod
 ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
-ms.topic: quickstart
-ms.date: 05/29/2019
-ms.openlocfilehash: 18ce5e9d7cff0d32021e97cd85f1e18c0309f00b
-ms.sourcegitcommit: 8e76be591034b618f5c11f4e66668f48c090ddfd
+ms.topic: conceptual
+ms.date: 06/03/2019
+ms.openlocfilehash: cafceb0c7ee6b165ee03727e1dff76db00d2863b
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/29/2019
-ms.locfileid: "66357686"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67077337"
 ---
-# <a name="quickstart-ingest-data-from-event-hub-into-azure-data-explorer"></a>Schnellstart: Erfassen von Daten aus Event Hub in Azure Data Explorer
+# <a name="ingest-data-from-event-hub-into-azure-data-explorer"></a>Erfassen von Daten aus Event Hub in Azure Data Explorer
 
-Azure-Daten-Explorer ist ein schneller und hochgradig skalierbarer Dienst zur Untersuchung von Daten (Protokoll- und Telemetriedaten). Azure-Daten-Explorer ermöglicht die Datenerfassung (das Laden von Daten) aus Event Hubs. Dabei handelt es sich um eine Big Data-Streamingplattform und einen Ereigniserfassungsdienst. [Event Hubs](/azure/event-hubs/event-hubs-about) kann Millionen von Ereignissen pro Sekunde nahezu in Echtzeit verarbeiten. In diesem Schnellstart erstellen Sie einen Event Hub, stellen eine Verbindung über Azure-Daten-Explorer damit her und zeigen den Datenfluss durch das System an.
+Azure-Daten-Explorer ist ein schneller und hochgradig skalierbarer Dienst zur Untersuchung von Daten (Protokoll- und Telemetriedaten). Azure-Daten-Explorer ermöglicht die Datenerfassung (das Laden von Daten) aus Event Hubs. Dabei handelt es sich um eine Big Data-Streamingplattform und einen Ereigniserfassungsdienst. [Event Hubs](/azure/event-hubs/event-hubs-about) kann Millionen von Ereignissen pro Sekunde nahezu in Echtzeit verarbeiten. In diesem Artikel erstellen Sie einen Event Hub, stellen damit eine Verbindung über Azure Data Explorer her und zeigen den Datenfluss durch das System an.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -34,7 +34,7 @@ Melden Sie sich beim [Azure-Portal](https://portal.azure.com/) an.
 
 ## <a name="create-an-event-hub"></a>Erstellen eines Ereignis-Hubs
 
-In diesem Schnellstart generieren Sie Beispieldaten und senden diese an einen Event Hub. Der erste Schritt besteht im Erstellen eines Event Hubs. Dazu verwenden Sie eine Azure Resource Manager-Vorlage im Azure-Portal.
+In diesem Artikel generieren Sie Beispieldaten und senden sie an einen Event Hub. Der erste Schritt besteht im Erstellen eines Event Hubs. Dazu verwenden Sie eine Azure Resource Manager-Vorlage im Azure-Portal.
 
 1. Verwenden Sie für die Event Hub-Erstellung die folgende Schaltfläche, um die Bereitstellung zu starten. Klicken Sie mit der rechten Maustaste, und wählen Sie **In neuem Fenster öffnen**, damit Sie die restlichen Schritte in diesem Artikel ausführen können.
 
@@ -58,7 +58,7 @@ In diesem Schnellstart generieren Sie Beispieldaten und senden diese an einen Ev
     |---|---|---|
     | Abonnement | Ihr Abonnement | Wählen Sie das Azure-Abonnement aus, das Sie für Ihren Event Hub verwenden möchten.|
     | Ressourcengruppe | *test-hub-rg* | Erstellen Sie eine neue Ressourcengruppe. |
-    | Location | *USA, Westen* | Wählen Sie für diesen Schnellstart die Option *USA, Westen* aus. Wählen Sie für ein Produktionssystem die Region aus, die Ihre Anforderungen am besten erfüllt. Erstellen Sie den Event Hub-Namespace am gleichen Standort wie den Kusto-Cluster, um eine optimale Leistung zu erzielen (besonders wichtig für Event Hub-Namespaces mit hohem Durchsatz).
+    | Location | *USA, Westen* | Wählen Sie für diesen Artikel die Option *USA, Westen* aus. Wählen Sie für ein Produktionssystem die Region aus, die Ihre Anforderungen am besten erfüllt. Erstellen Sie den Event Hub-Namespace am gleichen Standort wie den Kusto-Cluster, um eine optimale Leistung zu erzielen (besonders wichtig für Event Hub-Namespaces mit hohem Durchsatz).
     | Namespacename | Ein eindeutiger Namespacename | Wählen Sie einen eindeutigen Namen, der Ihren Namespace identifiziert. Beispiel: *mytestnamespace*. Der Domänenname *servicebus.windows.net* wird an den von Ihnen angegebenen Namen angefügt. Der Name darf nur Buchstaben, Zahlen und Bindestriche enthalten. Der Name muss mit einem Buchstaben beginnen und mit einem Buchstaben oder einer Zahl enden. Der Wert muss zwischen 6 und 50 Zeichen umfassen.
     | Event Hub-Name | *test-hub* | Der Event Hub befindet sich unter dem Namespace, der einen eindeutigen Bereichscontainer bereitstellt. Der Name des Event Hubs muss innerhalb des Namespaces eindeutig sein. |
     | Name der Consumergruppe | *test-group* | Durch Consumergruppen können mehrere verarbeitende Anwendungen jeweils über eine separate Ansicht des Ereignisdatenstroms verfügen. |
@@ -205,5 +205,4 @@ Wenn Sie nicht vorhaben, Ihren Event Hub erneut zu verwenden, bereinigen Sie **t
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-> [!div class="nextstepaction"]
-> [Schnellstart: Abfragen von Daten in Azure Data Explorer](web-query-data.md)
+* [Abfragen von Daten in Azure Data Explorer](web-query-data.md)

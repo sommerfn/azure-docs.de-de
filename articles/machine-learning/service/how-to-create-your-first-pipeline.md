@@ -11,12 +11,12 @@ ms.author: sanpil
 author: sanpil
 ms.date: 05/02/2019
 ms.custom: seodec18
-ms.openlocfilehash: 15fa9095b8169dc1545c796421be91e89652e1c1
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.openlocfilehash: c87685673052d2cfbc961d3bb717c9cd274872af
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66165876"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67059242"
 ---
 # <a name="create-and-run-a-machine-learning-pipeline-by-using-azure-machine-learning-sdk"></a>Erstellen und Ausführen einer Machine Learning-Pipeline mit dem Azure Machine Learning SDK
 
@@ -53,7 +53,7 @@ Erstellen Sie die Ressourcen, die zum Ausführen einer Pipeline erforderlich sin
 
 * Konfigurieren Sie ein `DataReference`-Objekt, um auf Daten zu verweisen, die sich in einem Datenspeicher befinden oder dort zugänglich sind.
 
-* Richten Sie die [Computeziele](concept-azure-machine-learning-architecture.md#compute-target) ein, auf denen Ihre Pipelineschritte ausgeführt werden.
+* Richten Sie die [Computeziele](concept-azure-machine-learning-architecture.md#compute-targets) ein, auf denen Ihre Pipelineschritte ausgeführt werden.
 
 ### <a name="set-up-a-datastore"></a>Einrichten eines Datenspeichers
 Ein Datenspeicher speichert die Daten für den Zugriff durch die Pipeline. Jeder Arbeitsbereich verfügt über einen Standarddatenspeicher. Sie können weitere Datenspeicher registrieren. 
@@ -296,7 +296,7 @@ Wenn Sie die Pipeline übermitteln, prüft Azure Machine Learning Service die Ab
 > [!IMPORTANT]
 > Wenn Sie verhindern möchten, dass Dateien von der Momentaufnahme erfasst werden, müssen Sie eine [GITIGNORE](https://git-scm.com/docs/gitignore)- oder `.amlignore`-Datei im Verzeichnis erstellen und diesem die Dateien hinzufügen. Für die `.amlignore`-Datei werden die gleiche Syntax und die gleichen Muster wie für die [GITIGNORE](https://git-scm.com/docs/gitignore)-Datei verwendet. Wenn beide Dateien vorhanden sind, hat die `.amlignore`-Datei Vorrang.
 >
-> Weitere Informationen finden Sie unter [Momentaufnahmen](concept-azure-machine-learning-architecture.md#snapshot).
+> Weitere Informationen finden Sie unter [Momentaufnahmen](concept-azure-machine-learning-architecture.md#snapshots).
 
 ```python
 # Submit the pipeline to be run

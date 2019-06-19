@@ -5,11 +5,11 @@ ms.topic: include
 ms.date: 03/18/2019
 ms.author: rogarana
 ms.openlocfilehash: 2936fd318f08c74675f7e8b382c861f4a28319fc
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66148171"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67178081"
 ---
 Sie können eine Reihe von Datenträgern an einen virtuellen Azure-Computer anfügen. Basierend auf den Skalierbarkeits- und Leistungszielen für Datenträger eines virtuellen Computers können Sie die Anzahl und den Typ der Datenträger festlegen, die Sie benötigen, um Ihre Anforderungen an Leistung und Kapazität zu erfüllen.
 
@@ -22,12 +22,12 @@ In der folgenden Tabelle sind die standardmäßigen und maximal zulässigen Limi
 
 > | Resource | Standardlimit  | Maximales Limit |
 > | --- | --- | --- |
-> | Verwaltete Standarddatenträger | 25\.000 | 50\.000 |
-> | Verwaltete SSD Standard-Datenträger | 25\.000 | 50\.000 |
-> | Verwaltete Premium-Datenträger | 25\.000 | 50\.000 |
-> | Standard_LRS-Momentaufnahmen | 25\.000 | 50\.000 |
-> | Standard_ZRS-Momentaufnahmen | 25\.000 | 50\.000 |
-> | Verwaltetes Image | 25\.000 | 50\.000 |
+> | Verwaltete Standarddatenträger | 25.000 | 50.000 |
+> | Verwaltete SSD Standard-Datenträger | 25.000 | 50.000 |
+> | Verwaltete Premium-Datenträger | 25.000 | 50.000 |
+> | Standard_LRS-Momentaufnahmen | 25.000 | 50.000 |
+> | Standard_ZRS-Momentaufnahmen | 25.000 | 50.000 |
+> | Verwaltetes Image | 25.000 | 50.000 |
 
 * **Standardspeicherkonten:** Ein Standardspeicherkonto hat eine maximale Gesamtanforderungsrate von 20.000 IOPS. Die gesamten IOPS auf allen Datenträgern eines virtuellen Computers in einem Standardspeicherkonto dürfen dieses Limit nicht überschreiten.
   

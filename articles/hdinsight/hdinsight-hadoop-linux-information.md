@@ -8,19 +8,16 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 03/20/2019
-ms.openlocfilehash: c52574485a62b081224a36ca5deb0fdae114f9bc
-ms.sourcegitcommit: 4c2b9bc9cc704652cc77f33a870c4ec2d0579451
+ms.openlocfilehash: b00630354834897793bbf357be378051bcf74698
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/17/2019
-ms.locfileid: "65859662"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67059379"
 ---
 # <a name="information-about-using-hdinsight-on-linux"></a>Informationen zur Verwendung von HDInsight unter Linux
 
 Azure HDInsight-Cluster stellen Apache Hadoop in einer vertrauten Linux-Umgebung bereit, die in der Azure-Cloud ausgeführt wird. Die Lösung sollte sich größtenteils genauso wie jede andere Installation von Hadoop unter Linux verhalten. In diesem Dokument werden bestimmte Unterschiede aufgeführt, die Sie kennen sollten.
-
-> [!IMPORTANT]  
-> Linux ist das einzige Betriebssystem, das unter HDInsight Version 3.4 oder höher verwendet wird. Weitere Informationen finden Sie unter [Welche Hadoop-Komponenten und -Versionen sind in HDInsight verfügbar?](hdinsight-component-versioning.md#hdinsight-windows-retirement).
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -288,7 +285,6 @@ Um eine andere Version einer Komponente zu verwenden, laden Sie die benötigte V
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* [Migrieren von Windows-basiertem HDInsight zum Linux-basierten](hdinsight-migrate-from-windows-to-linux.md)
 * [Verwalten von HDInsight-Clustern mithilfe der Apache Ambari-REST-API](./hdinsight-hadoop-manage-ambari-rest-api.md)
 * [Verwenden von Apache Hive mit HDInsight](hadoop/hdinsight-use-hive.md)
 * [Verwenden von Apache Pig mit HDInsight](hadoop/hdinsight-use-pig.md)

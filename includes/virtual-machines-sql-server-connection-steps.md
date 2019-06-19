@@ -5,11 +5,11 @@ ms.topic: include
 ms.date: 10/26/2018
 ms.author: jroth
 ms.openlocfilehash: 297317ff33d88d6390220980ef35f2538579e310
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66165493"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67178032"
 ---
 ### <a name="open-tcp-ports-in-the-windows-firewall-for-the-default-instance-of-the-database-engine"></a>Öffnen der TCP-Ports in der Windows-Firewall für die Standardinstanz der Datenbank-Engine
 1. Herstellen der Verbindung mit dem virtuellen Computer über Remotedesktop Weitere Informationen zum Herstellen einer Verbindung mit dem virtuellen Computer finden Sie unter [Öffnen der VM mit Remotedesktop](../articles/virtual-machines/windows/sql/virtual-machines-windows-portal-sql-server-provision.md#remotedesktop).
