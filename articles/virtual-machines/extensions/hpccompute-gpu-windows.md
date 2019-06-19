@@ -74,8 +74,8 @@ Der folgende JSON-Code zeigt das Schema für die Erweiterung.
 | NAME | Wert/Beispiel | Datentyp |
 | ---- | ---- | ---- |
 | apiVersion | 2015-06-15 | date |
-| publisher | Microsoft.HpcCompute | Zeichenfolge |
-| type | NvidiaGpuDriverWindows | Zeichenfolge |
+| publisher | Microsoft.HpcCompute | string |
+| type | NvidiaGpuDriverWindows | string |
 | typeHandlerVersion | 1.2 | int |
 
 
