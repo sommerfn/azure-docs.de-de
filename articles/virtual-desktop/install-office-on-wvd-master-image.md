@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: how-to
 ms.date: 05/02/2019
 ms.author: v-chjenk
-ms.openlocfilehash: 92a0ba8c0f43e26b7a1bbe82cc52f61d390fc04d
-ms.sourcegitcommit: be9fcaace62709cea55beb49a5bebf4f9701f7c6
+ms.openlocfilehash: cb9edbb508ddd993dcefbf69eb06b4f0d4156485
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/17/2019
-ms.locfileid: "65827319"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "66742546"
 ---
 # <a name="install-office-on-a-master-vhd-image"></a>Installieren von Office für ein VHD-Masterimage
 
@@ -29,7 +29,9 @@ In diesem Artikel wird außerdem davon ausgegangen, dass Sie über erhöhte Rech
 
 Mit der Aktivierung gemeinsam genutzter Computer können Sie Office 365 ProPlus auf einem Computer in Ihrem Unternehmen bereitstellen, auf den mehrere Benutzer zugreifen. Weitere Informationen zur Aktivierung gemeinsam genutzter Computer finden Sie im [Überblick über die Aktivierung gemeinsam genutzter Computer für Office 365 ProPlus](https://docs.microsoft.com/DeployOffice/overview-of-shared-computer-activation-for-office-365-proplus).
 
-Verwenden Sie das [Office-Bereitstellungstool](https://www.microsoft.com/download/details.aspx?id=49117), um Office zu installieren. Windows 10 Enterprise (mehrere Sitzungen) unterstützt nur Office 365 ProPlus.
+Verwenden Sie das [Office-Bereitstellungstool](https://www.microsoft.com/download/details.aspx?id=49117), um Office zu installieren. Windows 10 Enterprise (mehrere Sitzungen) unterstützt nur die folgenden Versionen von Office:
+- Office 365 ProPlus
+- Office 365-Business, das ein Microsoft 365 Business-Abonnement enthält
 
 Für das Office-Bereitstellungstool wird eine XML-Konfigurationsdatei benötigt. Informationen zum Anpassen des folgenden Beispiels finden Sie unter [Konfigurationsoptionen für das Office-Bereitstellungstool](https://docs.microsoft.com/deployoffice/configuration-options-for-the-office-2016-deployment-tool).
 

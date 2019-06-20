@@ -1,6 +1,6 @@
 ---
-title: Includedatei
-description: Includedatei
+title: include file
+description: include file
 services: virtual-machines
 author: axayjo
 ms.service: virtual-machines
@@ -8,16 +8,16 @@ ms.topic: include
 ms.date: 05/21/2019
 ms.author: akjosh; cynthn
 ms.custom: include file
-ms.openlocfilehash: 841027fe8d6b97e661faa038dc9381edbb3d4cd8
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.openlocfilehash: 57736a3cd553e83294d5290867e261b626cb035f
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/27/2019
-ms.locfileid: "66226027"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "66814718"
 ---
 ## <a name="before-you-begin"></a>Voraussetzungen
 
-Für das Beispiel in diesem Artikel muss ein verwaltetes Image eines generalisierten virtuellen Computers vorhanden sein. Weitere Informationen finden Sie unter [Tutorial: Erstellen eines benutzerdefinierten Images eines virtuellen Azure-Computers mit der Azure CLI 2.0](https://docs.microsoft.com/azure/virtual-machines/linux/tutorial-custom-images). Wenn das verwaltete Image einen Datenträger für Daten enthält, darf dieser nicht größer als 1 TB sein.
+Für das Beispiel in diesem Artikel muss ein verwaltetes Image eines generalisierten virtuellen Computers vorhanden sein. Weitere Informationen finden Sie unter [Tutorial: Erstellen eines benutzerdefinierten Images eines virtuellen Azure-Computers mit der Azure CLI](https://docs.microsoft.com/azure/virtual-machines/linux/tutorial-custom-images). Wenn das verwaltete Image einen Datenträger für Daten enthält, darf dieser nicht größer als 1 TB sein.
 
 ## <a name="launch-azure-cloud-shell"></a>Starten von Azure Cloud Shell
 
