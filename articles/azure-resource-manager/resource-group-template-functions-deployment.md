@@ -33,7 +33,7 @@ Informationen zum Abrufen von Werten aus Ressourcen, Ressourcengruppen oder Abon
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-## <a name="deployment"></a>Bereitstellung
+## <a name="deployment"></a>deployment
 `deployment()`
 
 Gibt Informationen zum aktuellen Bereitstellungsvorgang zurück.
