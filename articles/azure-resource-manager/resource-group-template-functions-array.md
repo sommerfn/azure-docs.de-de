@@ -136,8 +136,8 @@ Gibt den ersten Wert aus den Parametern zurück, der nicht NULL ist. Leere Zeich
 
 | Parameter | Erforderlich | Typ | BESCHREIBUNG |
 |:--- |:--- |:--- |:--- |
-| arg1 |Ja |Ganze Zahl, Zeichenfolge, Array oder Objekt |Der erste Wert, der auf NULL getestet werden soll. |
-| weitere arg-Parameter |Nein |Ganze Zahl, Zeichenfolge, Array oder Objekt |Weitere Werte, die auf NULL getestet werden sollen. |
+| arg1 |Ja |int, string, array oder object |Der erste Wert, der auf NULL getestet werden soll. |
+| weitere arg-Parameter |Nein |int, string, array oder object |Weitere Werte, die auf NULL getestet werden sollen. |
 
 ### <a name="return-value"></a>Rückgabewert
 
