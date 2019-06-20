@@ -58,7 +58,7 @@ Konvertiert den Wert in ein Array.
 
 | Parameter | Erforderlich | Typ | BESCHREIBUNG |
 |:--- |:--- |:--- |:--- |
-| convertToArray |Ja |Ganze Zahl, Zeichenfolge, Array oder Objekt |Der Wert, der in ein Array konvertiert werden soll. |
+| convertToArray |Ja |int, string, array oder object |Der Wert, der in ein Array konvertiert werden soll. |
 
 ### <a name="return-value"></a>Rückgabewert
 
