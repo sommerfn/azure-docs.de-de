@@ -20,9 +20,6 @@
     - name: Erstellen bedarfsgesteuerter Cluster
       href: ../hdinsight-hadoop-create-linux-clusters-adf.md
       maintainContext: true
-    - name: Überwachen der Clusterverfügbarkeit mit Ambari und Azure Monitor-Protokollen
-      href: ../hdinsight-cluster-availability.md
-      maintainContext: true
 - name: Beispiele
   items:
     - name: Beispiele für .NET
@@ -36,6 +33,9 @@
       maintainContext: true
 - name: Konzepte
   items:
+    - name: Überwachen der Clusterverfügbarkeit mit Ambari und Azure Monitor-Protokollen
+      href: ../hdinsight-cluster-availability.md
+      maintainContext: true
     - name: HDInsight 4.0
       href: ../hdinsight-version-release.md
       maintainContext: true
