@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 09/14/2018
 ms.author: pabutler
 ms.openlocfilehash: 9d2c64479f65995c0eca756b86bd0a96a752867d
-ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/30/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64935737"
 ---
 # <a name="getting-started-with-the-cloud-partner-portal"></a>Erste Schritte mit dem Cloudpartnerportal
@@ -44,7 +44,7 @@ Im weiteren Verlauf der Tour werden Sie, nachdem Sie ein neues Angebot gestartet
 ![Seite „Angebot“](./media/cloud-partner-portal-getting-started-with-the-cloud-partner-portal/offer-page.png)
 
 Auf der Seite "Angebot" haben Sie folgende Möglichkeiten:
-- Im Modus **Editor** können Sie Inhalte hinzufügen. Im Modus **Status** können Sie den Status Ihres Angebots überprüfen.
+- Wechseln Sie zwischen den beiden folgenden Modi der obersten Ebene, um Inhalte hinzuzufügen oder den Status Ihres Angebots zu überprüfen: **Editor** (Einfügen von Inhalten) und **Status** (Überprüfen des Angebotsstatus).
 - Über die **Aktionsleiste** können Sie Änderungen an Ihrem Angebot speichern oder Ihre Eingabe verwerfen.
 - Sie können zwischen den erforderlichen **Formularen** für jedes Angebot navigieren, während Sie die Einstellungen Ihres Angebots ändern.
 

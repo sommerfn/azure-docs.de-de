@@ -7,12 +7,12 @@ ms.service: healthcare-apis
 ms.topic: reference
 ms.date: 02/07/2019
 ms.author: mihansen
-ms.openlocfilehash: 1752ec8b2f846b51ef8222c54a00d5a5a0cdd05a
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: 74a17c4a433ebe1c1107230739086375fe165ed9
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55875194"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "66753727"
 ---
 # <a name="features"></a>Features
 
@@ -20,7 +20,9 @@ Azure API for FHIR bietet eine vollständig verwaltete Bereitstellung des Micros
 
 ## <a name="fhir-version"></a>FHIR-Version
 
-Aktuelle Version: `3.0.1`
+Neueste unterstützte Version (nur auf OSS-Implementierung verfügbar): `4.0.0`
+
+Frühere Versionen, die derzeit ebenfalls unterstützt werden, umfassen (sowohl auf PaaS- als auch OSS-Implementierungen verfügbar): `3.0.1`
 
 ## <a name="rest-api"></a>REST-API
 
@@ -30,19 +32,19 @@ Aktuelle Version: `3.0.1`
 | vread                          | Ja       |         |
 | aktualisieren                         | Ja       |         |
 | Update mit optimistischer Sperre | Ja       |         |
-| update (bedingt)           | Nein         |         |
-| patch                          | Nein         |         |
+| update (bedingt)           | Nein        |         |
+| patch                          | Nein        |         |
 | delete                         | Ja       |         |
-| delete (bedingt)           | Nein         |         |
+| delete (bedingt)           | Nein        |         |
 | create                         | Ja       | Unterstützung für POST/PUT |
-| create (bedingt)           | Nein         |         |
+| create (bedingt)           | Nein        |         |
 | search                         | Teilweise   | Siehe unten |
 | capabilities                   | Ja       |         |
-| Batch                          | Nein         |         |
-| transaction                    | Nein         |         |
+| Batch                          | Nein        |         |
+| transaction                    | Nein        |         |
 | history                        | Ja       |         |
 | paging                         | Teilweise   | `self` und `next` werden unterstützt |
-| intermediaries                 | Nein         |         |
+| intermediaries                 | Nein        |         |
 
 ## <a name="search"></a>Suchen,
 
@@ -52,7 +54,7 @@ Es werden alle Suchparametertypen unterstützt. Verkettete Parameter und umgekeh
 |-----------------------|-----------|---------|
 | Number                | Ja       |         |
 | Date/DateTime         | Ja       |         |
-| Zeichenfolge                | Ja       |         |
+| string                | Ja       |         |
 | Tokenverschlüsselung                 | Ja       |         |
 | Verweis             | Ja       |         |
 | Composite             | Ja       |         |
@@ -66,13 +68,13 @@ Es werden alle Suchparametertypen unterstützt. Verkettete Parameter und umgekeh
 |`:exact`               | Ja       |         |
 |`:contains`            | Ja       |         |
 |`:text`                | Ja       |         |
-|`:in` (Token)          | Nein         |         |
-|`:below` (Token)       | Nein         |         |
-|`:above` (Token)       | Nein         |         |
-|`:not-in` (Token)      | Nein         |         |
-|`:[type]` (Referenz)  | Nein         |         |
+|`:in` (Token)          | Nein        |         |
+|`:below` (Token)       | Nein        |         |
+|`:above` (Token)       | Nein        |         |
+|`:not-in` (Token)      | Nein        |         |
+|`:[type]` (Referenz)  | Nein        |         |
 |`:below` (URI)         | Ja       |         |
-|`:above` (URI)         | Nein         | Problem [#158](https://github.com/Microsoft/fhir-server/issues/158) |
+|`:above` (URI)         | Nein        | Problem [#158](https://github.com/Microsoft/fhir-server/issues/158) |
 
 | Allgemeiner Suchparameter | Unterstützt | Comment |
 |-------------------------| ----------|---------|
@@ -81,24 +83,24 @@ Es werden alle Suchparametertypen unterstützt. Verkettete Parameter und umgekeh
 | `_tag`                  | Ja       |         |
 | `_profile`              | Ja       |         |
 | `_security`             | Ja       |         |
-| `_text`                 | Nein         |         |
-| `_content`              | Nein         |         |
-| `_list`                 | Nein         |         |
-| `_has`                  | Nein         |         |
+| `_text`                 | Nein        |         |
+| `_content`              | Nein        |         |
+| `_list`                 | Nein        |         |
+| `_has`                  | Nein        |         |
 | `_type`                 | Ja       |         |
-| `_query`                | Nein         |         |
+| `_query`                | Nein        |         |
 
 | Suchvorgänge       | Unterstützt | Comment |
 |-------------------------|-----------|---------|
-| `_filter`               | Nein         |         |
-| `_sort`                 | Nein         |         |
-| `_score`                | Nein         |         |
+| `_filter`               | Nein        |         |
+| `_sort`                 | Nein        |         |
+| `_score`                | Nein        |         |
 | `_count`                | Ja       |         |
 | `_summary`              | Teilweise   | `_summary=count` wird unterstützt |
-| `_include`              | Nein         |         |
-| `_revinclude`           | Nein         |         |
-| `_contained`            | Nein         |         |
-| `_elements`             | Nein         |         |
+| `_include`              | Nein        |         |
+| `_revinclude`           | Nein        |         |
+| `_contained`            | Nein        |         |
+| `_elements`             | Nein        |         |
 
 ## <a name="persistence"></a>Persistenz
 

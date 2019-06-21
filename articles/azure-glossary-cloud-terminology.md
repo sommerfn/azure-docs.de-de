@@ -16,17 +16,17 @@ ms.topic: article
 ms.date: 08/16/2017
 ms.author: monicar
 ms.openlocfilehash: 9a93786759941def4cf8677509b1b2565cac5090
-ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56823857"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60325424"
 ---
 # <a name="microsoft-azure-glossary-a-dictionary-of-cloud-terminology-on-the-azure-platform"></a>Microsoft Azure-Glossar: Ein Wörterbuch der Cloudterminologie auf der Azure Platform
 
 Das Microsoft Azure-Glossar ist ein kompaktes Wörterbuch der Cloudterminologie für die Azure Platform. Weitere Informationen:
 
-* [Microsoft Azure und Amazon Web Services:](https://azure.microsoft.com/campaigns/azure-vs-aws/mapping/) Definitionen von Azure-Diensten und AWS-Entsprechungen.<!-- I propose to link to https://azure.microsoft.com/services/ instead of this -->
+* [Microsoft Azure und Amazon Web Services:](https://azure.microsoft.com/campaigns/azure-vs-aws/mapping/) Definitionen von Azure-Diensten und ihre AWS-Entsprechungen<!-- I propose to link to https://azure.microsoft.com/services/ instead of this -->
 * [Cloud Computing-Terminologie:](https://azure.microsoft.com/overview/cloud-computing-dictionary/) Allgemeine branchenübliche Cloudbegriffe.
 
 ## <a name="account"></a>account
@@ -66,8 +66,8 @@ Weitere Informationen finden Sie unter [Azure-Regionen](best-practices-availabil
 
 ## <a name="geo-replication"></a>Georeplikation
 Der Vorgang der automatischen Replikation von Inhalten wie beispielsweise Blobs, Tabellen und Warteschlangen innerhalb eines Regionspaars.  
-Weitere Informationen finden Sie unter [Aktive Georeplikation für Azure SQL-Datenbank](sql-database/sql-database-geo-replication-overview.md)
-<!-- The meaning of "geo" in this term seems to be different than the meaning provided in the "geo" entry -->.
+Weitere Informationen finden Sie unter [Aktive Georeplikation für Azure SQL-Datenbank](sql-database/sql-database-geo-replication-overview.md).
+<!-- The meaning of "geo" in this term seems to be different than the meaning provided in the "geo" entry -->
 
 ## <a name="image"></a>image
 Eine Datei, die das Betriebssystem und die Anwendungskonfiguration enthält, und die zum Erstellen einer beliebigen Anzahl von virtuellen Computern verwendet werden kann. In Azure können zwei Arten von Images verwendet werden: VM-Images und Betriebssystem-Images. Ein VM-Image enthält ein Betriebssystem und alle Datenträger, die an einen virtuellen Computer angefügt sind, wenn das Image erstellt wird. Ein Betriebssystem-Image enthält nur ein generalisiertes Betriebssystem ohne Datenträgerkonfigurationen.  

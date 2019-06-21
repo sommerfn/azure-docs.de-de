@@ -10,12 +10,12 @@ ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 12/06/2018
 ms.custom: seodec18
-ms.openlocfilehash: 5df4c9dfe18b02ade3a37717da9c68acbfcf1853
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 40035b946d0f2b09929f8c7f1ac27231546e6746
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53106599"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "64692916"
 ---
 # <a name="develop-net-standard-user-defined-functions-for-azure-stream-analytics-edge-jobs-preview"></a>Entwickeln von benutzerdefinierten .NET Standard-Funktionen für Azure Stream Analytics-Edge-Aufträge (Vorschau)
 
@@ -44,7 +44,7 @@ Der Pfad aller UDF-Pakete hat das Format `/UserCustomCode/CLR/*`. Dynamic Link L
 |dateTime  |  dateTime   |
 |struct  |  IRecord   |
 |object  |  IRecord   |
-|Array<object>  |  IArray   |
+|Array\<Objekt>  |  IArray   |
 |dictionary<Zeichenfolge, Objekt>  |  IRecord   |
 
 ## <a name="codebehind"></a>CodeBehind
@@ -114,7 +114,7 @@ Erweitern Sie den Abschnitt mit der **benutzerdefinierten Codekonfiguration**, u
  |**Einstellung**  |**Empfohlener Wert**  |
  |---------|---------|
  |Assemblyquelle  | Vorhandene Assemblypakete aus der Cloud.    |
- |Ressource  |  Wählen Sie Daten aus dem aktuellen Konto aus.   |
+ |Resource  |  Wählen Sie Daten aus dem aktuellen Konto aus.   |
  |Abonnement  |  Wählen Sie Ihr Abonnement aus.   |
  |Speicherkonto  |  Wählen Sie Ihr Speicherkonto aus.   |
  |Container  |  Wählen Sie den Container aus, den Sie in Ihrem Speicherkonto erstellt haben.   |

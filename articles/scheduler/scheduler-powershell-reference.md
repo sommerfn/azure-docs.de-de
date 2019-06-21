@@ -9,12 +9,12 @@ ms.reviewer: klam
 ms.assetid: 9a26c457-d7a1-4e4a-bc79-f26592155218
 ms.topic: article
 ms.date: 08/18/2016
-ms.openlocfilehash: 4b179c50af8b1ffc4313a49da978f178915ec9cc
-ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
+ms.openlocfilehash: 53b68a5dc72277c9fd44b36d346e5b5c91b53a93
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/11/2019
-ms.locfileid: "59489895"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60344375"
 ---
 # <a name="powershell-cmdlets-reference-for-azure-scheduler"></a>PowerShell-Cmdlets-Referenz für den Azure Scheduler
 
@@ -56,7 +56,7 @@ Get-Help <cmdlet name> -Full
 
 ## <a name="see-also"></a>Weitere Informationen
 
-* [Was ist Azure Scheduler?](scheduler-intro.md)
-* [Konzepte, Terminologie und Entitäten in Microsoft Azure Scheduler](scheduler-concepts-terms.md)
-* [Erstellen und Planen des ersten Auftrags mit Azure Scheduler – Azure-Portal](scheduler-get-started-portal.md)
+* [Was ist der Azure Scheduler?](scheduler-intro.md)
+* [Konzepte, Terminologie und Entitätshierarchie](scheduler-concepts-terms.md)
+* [Erstellen und Planen des ersten Auftrags – Azure-Portal](scheduler-get-started-portal.md)
 * [Azure Scheduler-REST-API – Referenz](https://msdn.microsoft.com/library/mt629143)

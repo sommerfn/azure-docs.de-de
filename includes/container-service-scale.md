@@ -4,12 +4,12 @@ ms.service: container-service
 ms.topic: include
 ms.date: 11/09/2018
 ms.author: danlep
-ms.openlocfilehash: 2ed74a4ba19af3a441bcf26a48890f033e6c365f
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.openlocfilehash: a4af53e035929a44f74a95b8e9897cb1dc0c6d8e
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66151677"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "66814882"
 ---
 [!INCLUDE [ACS deprecation](container-service-deprecation.md)]
 
@@ -29,7 +29,7 @@ Sie können die Anzahl von Agent-Knoten in einem DC/OS-, Docker Swarm- oder Kube
 
 ## <a name="scale-with-the-azure-cli"></a>Skalieren mit Azure CLI
 
-Stellen Sie sicher, dass Sie die aktuelle Version von Azure CLI [installiert](/cli/azure/install-az-cli2) haben und bei einem Azure-Konto (`az login`) angemeldet sind.
+[Installieren Sie die Azure CLI](/cli/azure/install-azure-cli), und melden Sie sich bei einem Azure-Konto mit `az login` an.
 
 ### <a name="see-the-current-agent-count"></a>Anzeigen der aktuellen Agent-Anzahl
 Um die Anzahl der Agents anzuzeigen, die sich derzeit im Cluster befinden, führen Sie den Befehl `az acs show` aus. Damit wird die Clusterkonfiguration angezeigt. Der folgende Befehl zeigt z.B. die Konfiguration des Containerdiensts namens `containerservice-myACSName` in der Ressourcengruppe `myResourceGroup`:

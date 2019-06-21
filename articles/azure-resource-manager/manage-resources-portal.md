@@ -12,11 +12,11 @@ ms.topic: conceptual
 ms.date: 02/11/2019
 ms.author: jgao
 ms.openlocfilehash: 20bf38b87ce29f8506a5611ecd25cf38f6d4ed61
-ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56824985"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60550707"
 ---
 # <a name="manage-azure-resources-by-using-the-azure-portal"></a>Verwalten von Azure-Ressourcen über das Azure-Portal
 
@@ -40,7 +40,7 @@ Azure-Ressourcen werden durch Azure-Dienste und Ressourcengruppen organisiert. D
 So öffnen Sie eine Ressource nach Diensttyp:
 
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
-2. Wählen Sie im linken Bereich den Azure-Dienst aus, in diesem Fall **Speicherkonten**.  Wenn der Dienst nicht aufgelistet ist, wählen Sie **Alle Dienste** und dann den Diensttyp aus.
+2. Wählen Sie im linken Bereich den Azure-Dienst aus. In diesem Fall **Speicherkonten**.  Wenn der Dienst nicht aufgelistet ist, wählen Sie **Alle Dienste** und dann den Diensttyp aus.
 
     ![Azure Ressource im Portal öffnen](./media/manage-resources-portal/manage-azure-resources-portal-open-service.png)
 
@@ -124,7 +124,7 @@ Der Zugriff auf Ressourcen in Azure wird mithilfe der [rollenbasierten Zugriffss
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- Weitere Informationen zu Azure Resource Manager finden Sie unter [Übersicht über den Azure-Ressourcen-Manager](./resource-group-overview.md).
+- Weitere Informationen zu Azure Resource Manager finden Sie unter [Übersicht über den Azure Resource Manager](./resource-group-overview.md).
 - Informationen zur Resource Manager-Vorlagensyntax finden Sie unter [Verstehen der Struktur und Syntax von Azure Resource Manager-Vorlagen](./resource-group-authoring-templates.md).
 - Informationen zum Entwickeln von Vorlagen finden Sie in den [Schritt-für-Schritt-Tutorials](/azure/azure-resource-manager/).
-- Informationen zum Anzeigen der Vorlagenschemas für Azure Resource Manager finden Sie in der [Vorlagenreferenzdokumentation](/azure/templates/).
+- Informationen zum Anzeigen der Vorlagenschemas für Azure Resource Manager finden Sie in der [Referenz zu Vorlagen](/azure/templates/).

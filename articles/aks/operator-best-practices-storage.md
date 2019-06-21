@@ -5,13 +5,13 @@ services: container-service
 author: iainfoulds
 ms.service: container-service
 ms.topic: conceptual
-ms.date: 12/04/2018
+ms.date: 5/6/2019
 ms.author: iainfou
-ms.openlocfilehash: 7476747de31819907cf144e5a6b33cb29e1f866f
-ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
+ms.openlocfilehash: e7f45a3a0e62b2b559002b71bd8816e050f062ab
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/06/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65072648"
 ---
 # <a name="best-practices-for-storage-and-backups-in-azure-kubernetes-service-aks"></a>Best Practices für Speicherung und Sicherungen in Azure Kubernetes Service (AKS)
@@ -34,12 +34,12 @@ Anwendungen erfordern häufig verschiedene Arten und von Speicher mit unterschie
 
 In der folgenden Tabelle sind die verfügbarer Speichertypen und ihre Fähigkeiten aufgeführt:
 
-| Anwendungsfall | Volume-Plug-In | Lese-/Schreibzugriff, einmal | Schreibgeschützt, mehrfach | Lese-/Schreibzugriff, mehrfach |
-|----------|---------------|-----------------|----------------|-----------------|
-| Freigegebene Konfiguration       | Azure Files   | Ja | Ja | Ja |
-| Strukturierte App-Daten        | Azure Disks   | Ja | Nein   | Nein   |
-| App-Daten, schreibgeschützte Freigaben | [Dysk (Vorschau)][dysk] | Ja | Ja | Nein   |
-| Unstrukturierte Daten, Dateisystemvorgänge | [BlobFuse (Vorschau)][blobfuse] | Ja | Ja | Ja |
+| Anwendungsfall | Volume-Plug-In | Lese-/Schreibzugriff, einmal | Schreibgeschützt, mehrfach | Lese-/Schreibzugriff, mehrfach | Unterstützung für Windows Server-Container |
+|----------|---------------|-----------------|----------------|-----------------|--------------------|
+| Freigegebene Konfiguration       | Azure Files   | Ja | Ja | Ja | Ja |
+| Strukturierte App-Daten        | Azure Disks   | Ja | Nein  | Nein  | Ja |
+| App-Daten, schreibgeschützte Freigaben | [Dysk (Vorschau)][dysk] | Ja | Ja | Nein  | Nein |
+| Unstrukturierte Daten, Dateisystemvorgänge | [BlobFuse (Vorschau)][blobfuse] | Ja | Ja | Ja | Nein |
 
 Die beiden primären Speichertypen, die für Volumes in AKS zur Verfügung stehen, werden durch Azure-Datenträger oder Azure Files gesichert. Um die Sicherheit zu verbessern, verwenden beide Speichertypen standardmäßig Azure-Speicherdienstverschlüsselung (Storage Service Encryption, SSE) zur Verschlüsselung von ruhenden Daten. Festplatten können derzeit nicht mit der Azure Disk Encryption auf AKS-Knotenebene verschlüsselt werden.
 
@@ -64,8 +64,8 @@ Wenn Ihre Anwendungen Azure-Datenträger als Speicherlösung benötigen, planen 
 
 | Knotentyp und -größe | vCPU | Arbeitsspeicher (GiB) | Max. Anzahl Datenträger | Maximale Anzahl nicht zwischengespeicherter Datenträger-IOPS | Maximaler nicht zwischengespeicherter Durchsatz (Mbit/s) |
 |--------------------|------|--------------|----------------|------------------------|--------------------------------|
-| Standard_B2ms      | 2    | 8            | 4              | 1.920                  | 22,5                           |
-| Standard_DS2_v2    | 2    | 7            | 8              | 6.400                  | 96                             |
+| Standard_B2ms      | 2    | 8            | 4              | 1\.920                  | 22,5                           |
+| Standard_DS2_v2    | 2    | 7            | 8              | 6\.400                  | 96                             |
 
 Hier ermöglicht die VM-Größe *Standard_DS2_v2* die doppelte Anzahl an angeschlossenen Datenträgern und bietet das Drei- bis Vierfache an IOPS und Datenträgerdurchsatz. Wenn Sie sich nur die wichtigsten Computeressourcen ansehen und die Kosten vergleichen, wählen Sie möglicherweise die VM-Größe *Standard_B2ms* aus und stellen dann eine schlechte Speicherleistung sowie Einschränkungen fest. Arbeiten Sie mit Ihrem Anwendungsentwicklungsteam zusammen, um ihren Speicherkapazitätsbedarf und ihre Leistungsanforderungen zu verstehen. Wählen Sie die geeignete VM-Größe für die AKS-Knoten aus, um ihre Leistungsanforderungen zu erfüllen oder zu überschreiten. Ermitteln Sie regelmäßig die Baseline von Anwendungen, um die VM-Größe bei Bedarf anzupassen.
 

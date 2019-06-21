@@ -10,12 +10,12 @@ ms.author: grhuynh
 ms.service: genomics
 ms.topic: article
 ms.date: 05/23/2018
-ms.openlocfilehash: d5e33f5b22012b297cdceacbe38425934f0f65b4
-ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
+ms.openlocfilehash: ed37d42d8ec1692cc5edb62b68536803f47205f5
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/17/2018
-ms.locfileid: "45734368"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60721244"
 ---
 # <a name="how-to-contact-microsoft-genomics-for-support"></a>Kontaktaufnahme mit dem Microsoft Genomics-Support
 Diese Übersicht beschreibt, wie Sie sich mit einer Supportanfrage an Microsoft Genomics wenden. Das kann hilfreich sein, wenn Sie Ihr Problem nicht mithilfe des [Leitfadens zur Problembehandlung](troubleshooting-guide-genomics.md) oder der [FAQ](frequently-asked-questions-genomics.md) beheben können. 

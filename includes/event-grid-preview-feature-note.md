@@ -1,6 +1,6 @@
 ---
-title: Includedatei
-description: Includedatei
+title: include file
+description: include file
 services: event-grid
 author: tfitzmac
 ms.service: event-grid
@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 11/06/2018
 ms.author: tomfitz
 ms.custom: include file
-ms.openlocfilehash: 85a1579e32b4c216f234f77c76316bedeaea77b0
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.openlocfilehash: d32beb2d799a60cb9c5be061c39e4ec834da8dcf
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66119542"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "66814754"
 ---
 Dieses Feature befindet sich in der Vorschauphase. Sie müssen eine Vorschauerweiterung oder ein Vorschaumodul installieren, um es zu verwenden.
 
@@ -28,11 +28,9 @@ In [CloudShell](/azure/cloud-shell/quickstart):
 
 Für eine lokale Installation:
 
-1. Deinstallieren Sie die Azure CLI lokal.
-1. Installieren Sie die [neueste Version](/cli/azure/install-azure-cli) der Azure CLI.
-1. Starten Sie das Befehlsfenster.
+1. [Installieren Sie die Azure-Befehlszeilenschnittstelle](/cli/azure/install-azure-cli). Vergewissern Sie sich mit `az --version`, dass Sie über die aktuelle Version verfügen.
 1. Deinstallieren Sie frühere Versionen der Erweiterung `az extension remove -n eventgrid`.
-1. Installieren Sie die Erweiterung `az extension add -n eventgrid`.
+1. Installieren Sie die Erweiterung `eventgrid` mit `az extension add -n eventgrid`.
 
 ### <a name="install-module-for-powershell"></a>Installieren des Moduls für PowerShell
 

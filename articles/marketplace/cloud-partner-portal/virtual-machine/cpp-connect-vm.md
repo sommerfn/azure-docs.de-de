@@ -8,10 +8,10 @@ ms.topic: article
 ms.date: 10/19/2018
 ms.author: pabutler
 ms.openlocfilehash: ca002a77fd7252466f604b995af949b54694bc8c
-ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/30/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64938578"
 ---
 # <a name="connect-to-your-azure-based-virtual-machine"></a>Herstellen einer Verbindung mit Ihrem Azure-basierten virtuellen Computer
@@ -47,7 +47,7 @@ Zum Herstellen der Verbindung mit dem Linux-basierten virtuellen Computer benöt
 7. Klicken Sie auf **Öffnen**, um ein PuTTY-Terminal zu öffnen.  
 8. Geben Sie bei entsprechender Aufforderung den Kontonamen und das Kennwort Ihres Linux-VM-Kontos ein. 
 
-   Falls Probleme mit der Verbindungsherstellung auftreten, hilft Ihnen die Dokumentation für Ihren SSH-Client weiter, z.B. [Kapitel 10 mit den häufigen Fehlermeldungen](https://www.ssh.com/ssh/putty/putty-manuals/0.68/Chapter10.html#errors).
+   Falls Probleme mit der Verbindungsherstellung auftreten, hilft Ihnen die Dokumentation für Ihren SSH-Client weiter, z. B. [Kapitel 10 mit den häufigen Fehlermeldungen](https://www.ssh.com/ssh/putty/putty-manuals/0.68/Chapter10.html#errors).
 
 Weitere Informationen, z.B. zum Hinzufügen eines Desktops zu einer bereitgestellten Linux-VM, finden Sie unter [Installieren und Konfigurieren von Remotedesktop zum Herstellen einer Verbindung mit einem virtuellen Linux-Computer in Azure](../../../virtual-machines/linux/use-remote-desktop.md).
 

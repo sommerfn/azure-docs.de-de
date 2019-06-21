@@ -7,12 +7,12 @@ ms.service: healthcare-apis
 ms.topic: reference
 ms.date: 02/07/2019
 ms.author: mihansen
-ms.openlocfilehash: e3889ed9f758ce2c374eae106674930ba67f7620
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: 50a610c3fb92b65b62e17a986ea1c0f70d0a0f1d
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55878781"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "66753746"
 ---
 # <a name="frequently-asked-questions-about-azure-api-for-fhir"></a>Häufig gestellte Fragen zu Azure API for FHIR
 
@@ -26,7 +26,11 @@ Derzeit wird Microsoft Azure Active Directory als Identitätsanbieter unterstüt
 
 ## <a name="supported-fhir-version"></a>Unterstützte FHIR-Version
 
-Derzeit wird die Version 3.0.1 unterstützt. Ausführliche Informationen finden Sie unter [Unterstützte Features](fhir-features-supported.md).
+Azure API for FHIR (PaaS): Version 3.0.1 wird unterstützt.
+
+FHIR-Server für Azure (OSS): Zusätzlich zu Version 3.0.1 wird Version 4.0.0, die neueste Version der FHIR-Spezifikation, unterstützt.
+
+Ausführliche Informationen finden Sie unter [Unterstützte Features](fhir-features-supported.md). Informationen zu den Änderungen zwischen Versionen finden Sie im [Versionsverlauf für HL7 FHIR](http://hl7.org/fhir/R4/history.html).
 
 ## <a name="oss-and-azure-api-for-fhir"></a>OSS und Azure API for FHIR
 

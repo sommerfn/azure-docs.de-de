@@ -16,11 +16,11 @@ ms.workload: na
 ms.date: 02/19/2019
 ms.author: banders
 ms.openlocfilehash: f93152ae3db926fb989c219d1e515abaf0281bf4
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57837880"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60372177"
 ---
 # <a name="understand-the-charges-on-your-microsoft-customer-agreements-invoice"></a>Grundlegendes zu den Gebühren auf der Rechnung für eine Microsoft-Kundenvereinbarung
 
@@ -46,7 +46,7 @@ Dieser Artikel bezieht sich auf ein Abrechnungskonto für eine Microsoft-Kundenv
 
     |Column  |Definition  |
     |---------|---------|
-    |Datum     | Das Datum der Transaktion  |
+    |Date     | Das Datum der Transaktion  |
     |Rechnungs-ID     | Der Bezeichner für die Rechnung, auf der die Transaktion in Rechnung gestellt wurde. Wenn Sie eine Supportanfrage senden, teilen Sie dem Azure-Support die ID mit, um die Bearbeitung Ihrer Supportanfrage zu beschleunigen. |
     |Transaktionstyp     |  Der Typ der Transaktion, z. B. Erwerb, Stornierung und Nutzungsgebühren  |
     |Produktfamilie     | Die Kategorie des Produkts, z. B. „Compute“ für virtuelle Computer oder „Datenbank“ für Azure SQL-Datenbank|
@@ -169,7 +169,7 @@ Filtern Sie in der CSV-Datei zu Azure-Nutzung und -Gebühren die Spalte **subscr
 
 ## <a name="pay-your-bill"></a>Bezahlen Ihrer Rechnung
 
-Anweisungen zum Bezahlen Ihrer Rechnung finden Sie unten auf der Rechnung. Weitere Informationen finden Sie unter [Informationen zur Bezahlung](billing-mca-understand-your-invoice.md#how-to-pay).
+Die Anweisungen zum Bezahlen Ihrer Rechnung finden Sie unten auf der Rechnung. [Informationen zur Bezahlung](billing-mca-understand-your-invoice.md#how-to-pay)
 
 Wenn Sie Ihre Rechnung bereits bezahlt haben, können Sie den Status der Zahlung im Azure-Portal auf der Seite „Rechnungen“ überprüfen.
 
@@ -178,7 +178,7 @@ Wenn Sie Ihre Rechnung bereits bezahlt haben, können Sie den Status der Zahlung
 
 ## <a name="need-help-contact-us"></a>Sie brauchen Hilfe? Kontakt
 
-Wenn Sie Fragen haben oder Hilfe benötigen, [erstellen Sie eine Supportanfrage](https://go.microsoft.com/fwlink/?linkid=2083458).
+Wenn Sie weitere Fragen haben oder Hilfe benötigen, [erstellen Sie eine Supportanfrage](https://go.microsoft.com/fwlink/?linkid=2083458).
 
 ## <a name="next-steps"></a>Nächste Schritte
 

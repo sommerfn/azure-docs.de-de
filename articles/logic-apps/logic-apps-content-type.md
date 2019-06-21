@@ -10,12 +10,12 @@ ms.topic: article
 ms.date: 07/20/2018
 ms.reviewer: klam, LADocs
 ms.suite: integration
-ms.openlocfilehash: 82eb9c895f016efe569651dc89885d2e4850fd59
-ms.sourcegitcommit: 1478591671a0d5f73e75aa3fb1143e59f4b04e6a
+ms.openlocfilehash: 2a9318317d5a01136a42b4fb6d580bafaf53ec4e
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/19/2018
-ms.locfileid: "39159090"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60685746"
 ---
 # <a name="handle-content-types-in-azure-logic-apps"></a>Behandeln von Inhaltstypen in Azure Logic Apps
 
@@ -63,7 +63,7 @@ Logic Apps ermöglicht Ihnen, benutzerfreundliche Token zu generieren, die die E
   
   1. Wählen Sie im Anforderungstrigger **Beispielnutzlast zum Generieren eines Schemas verwenden** aus.  
   
-  2. Geben Sie unter **Geben oder fügen Sie eine JSON-Beispielnutzlast ein** eine Beispielnutzlast ein, und wählen Sie dann **Fertig**. Beispiel:  
+  2. Geben Sie unter **Geben oder fügen Sie eine JSON-Beispielnutzlast ein** eine Beispielnutzlast ein, und wählen Sie dann **Fertig**. Beispiel: 
 
      ![Angeben einer JSON-Beispielnutzlast](./media/logic-apps-content-type/request-trigger.png)
 
@@ -140,15 +140,15 @@ Zum Erhalten einiger Datentypen konvertiert Logic Apps den Inhalt in eine Base64
 
 In dieser Liste wird beschrieben, wie Logic Apps Inhalt konvertiert, wenn Sie diese [Funktionen](../logic-apps/workflow-definition-language-functions-reference.md) verwenden:
 
-* `json()`: konvertiert Daten in `application/json`
-* `xml()`: konvertiert Daten in `application/xml`
-* `binary()`: konvertiert Daten in `application/octet-stream`
-* `string()`: konvertiert Daten in `text/plain`
-* `base64()`: konvertiert Inhalt in eine Base64-Zeichenfolge
-* `base64toString()`: konvertiert eine Base64-codierte Zeichenfolge in `text/plain`
-* `base64toBinary()`: konvertiert eine Base64-codierte Zeichenfolge in `application/octet-stream`
-* `encodeDataUri()`: codiert eine Zeichenfolge als dataUri-Bytearray
-* `decodeDataUri()`: decodiert eine `dataUri` in ein Bytearray
+* `json()`: Konvertiert Daten in `application/json`.
+* `xml()`: Konvertiert Daten in `application/xml`.
+* `binary()`: Konvertiert Daten in `application/octet-stream`.
+* `string()`: Konvertiert Daten in `text/plain`.
+* `base64()`: Konvertiert Inhalt in eine Base64-Zeichenfolge.
+* `base64toString()`: Konvertiert eine Base64-codierte Zeichenfolge in `text/plain`.
+* `base64toBinary()`: Konvertiert eine Base64-codierte Zeichenfolge in `application/octet-stream`.
+* `encodeDataUri()`: Codiert eine Zeichenfolge als dataUri-Bytearray.
+* `decodeDataUri()`: Decodiert `dataUri` in ein Bytearray.
 
 Wenn Sie z.B. eine HTTP-Anforderung erhalten, in der für `Content-Type` der Wert `application/xml` festgelegt ist, z.B. diesen Inhalt:
 

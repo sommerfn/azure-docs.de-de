@@ -11,14 +11,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 10/11/2018
+ms.date: 06/06/2019
 ms.author: Kumud
-ms.openlocfilehash: 77c3c595994092ff2ca68f3cefa5eb3c8a54bcd6
-ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
+ms.openlocfilehash: ec68038a5b0fe7edca095e0d9b190d5da09c8e82
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53189046"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "66754708"
 ---
 # <a name="metrics-and-health-diagnostics-for-standard-load-balancer"></a>Metriken und Integritätsdiagnosen für Standard Load Balancer
 
@@ -31,14 +31,14 @@ Dieser Artikel enthält einen kurzen Überblick über diese Funktionen und zeigt
 
 ## <a name = "MultiDimensionalMetrics"></a>Mehrdimensionale Metriken
 
-Azure Load Balancer stellt neue mehrdimensionale Metriken über die neuen Azure-Metriken (Vorschau) im Azure-Portal zur Verfügung und ermöglicht es Ihnen, in Echtzeit diagnostische Einblicke in Ihre Load Balancer-Ressourcen zu erhalten. 
+Azure Load Balancer stellt neue mehrdimensionale Metriken über die neuen Azure-Metriken im Azure-Portal zur Verfügung und ermöglicht es Ihnen, in Echtzeit diagnostische Einblicke in Ihre Load Balancer-Ressourcen zu erhalten. 
 
 Die verschiedenen Standard Load Balancer-Konfigurationen bieten die folgenden Metriken:
 
 | Metrik | Ressourcentyp | BESCHREIBUNG | Empfohlene Aggregation |
 | --- | --- | --- | --- |
-| VIP-Verfügbarkeit (Datenpfadverfügbarkeit) | Öffentlicher Load Balancer | Standard Load Balancer wendet kontinuierlich den Datenpfad aus einer Region auf das Load Balancer-Front-End bis hin zum SDN-Stapel an, der Ihren virtuellen Computer unterstützt. Solange integre Instanzen verbleiben, folgt die Messung demselben Pfad wie der Datenverkehr mit Lastenausgleich Ihrer Anwendungen. Der Datenpfad, der von Ihren Kunden verwendet wird, wird ebenfalls überprüft. Die Messung ist für Ihre Anwendung nicht sichtbar und bewirkt keine Beeinträchtigung bei anderen Vorgängen.| Durchschnitt |
-| DIP-Verfügbarkeit (Integritätsteststatus) |  Öffentlicher und interner Load Blancer | Standard Load Balancer verwendet einen verteilten Integritätsprüfungsdienst, der die Integrität Ihres Anwendungsendpunkts gemäß Ihren Konfigurationseinstellungen überwacht. Diese Metrik stellt eine Aggregat- oder nach Endpunkt gefilterte Ansicht jedes Instanzendpunkts im Load Balancer-Pool bereit. Sie können sehen, wie Load Balancer die Integrität Ihrer Anwendung gemäß Ihrer Integritätsprüfungskonfiguration beurteilt. |  Durchschnitt |
+| Datenpfadverfügbarkeit (VIP-Verfügbarkeit)| Öffentlicher Load Balancer | Standard Load Balancer wendet kontinuierlich den Datenpfad aus einer Region auf das Load Balancer-Front-End bis hin zum SDN-Stapel an, der Ihren virtuellen Computer unterstützt. Solange integre Instanzen verbleiben, folgt die Messung demselben Pfad wie der Datenverkehr mit Lastenausgleich Ihrer Anwendungen. Der Datenpfad, der von Ihren Kunden verwendet wird, wird ebenfalls überprüft. Die Messung ist für Ihre Anwendung nicht sichtbar und bewirkt keine Beeinträchtigung bei anderen Vorgängen.| Durchschnitt |
+| Integritätsteststatus (DIP-Verfügbarkeit) |  Öffentlicher und interner Load Blancer | Standard Load Balancer verwendet einen verteilten Integritätsprüfungsdienst, der die Integrität Ihres Anwendungsendpunkts gemäß Ihren Konfigurationseinstellungen überwacht. Diese Metrik stellt eine Aggregat- oder nach Endpunkt gefilterte Ansicht jedes Instanzendpunkts im Load Balancer-Pool bereit. Sie können sehen, wie Load Balancer die Integrität Ihrer Anwendung gemäß Ihrer Integritätsprüfungskonfiguration beurteilt. |  Durchschnitt |
 | SYN-Pakete (Synchronisierung) |  Öffentlicher Load Balancer | Standard Load Balancer beendet keine TCP-Verbindungen (Transmission Control Protocol) und interagiert nicht mit TCP- oder UDP-Paketdatenflüssen. Datenflüsse und deren Handshakes erfolgen immer zwischen der Quelle und der VM-Instanz. Für eine bessere Problembehandlung Ihrer TCP-Protokollszenarien können Sie SYN-Paketzähler verwenden, um zu verstehen, wie viele TCP-Verbindungsversuche vorgenommen werden. Die Metrik gibt die Anzahl der TCP-SYN-Pakete an, die empfangen wurden.| Durchschnitt |
 | SNAT-Verbindungen |  Öffentlicher Load Balancer |Standard Load Balancer meldet die Anzahl von maskierten ausgehenden Datenflüssen an das Front-End mit der öffentlichen IP-Adresse. SNAT-Ports (Source Network Address Translation) stellen eine erschöpfbare Ressource dar. Diese Metrik kann einen Hinweis darauf geben, in welchem Umfang Ihre Anwendung SNAT für ausgehende Flows nutzt. Die Zählerstände für erfolgreiche und fehlgeschlagene ausgehende SNAT-Flows werden gemeldet und können zur Problembehebung und Analyse Ihrer ausgehenden Flows verwendet werden.| Durchschnitt |
 | Byteleistungsindikatoren |  Öffentlicher und interner Load Blancer | Standard Load Balancer meldet die pro Front-End verarbeiteten Daten.| Durchschnitt |
@@ -46,18 +46,18 @@ Die verschiedenen Standard Load Balancer-Konfigurationen bieten die folgenden Me
 
 ### <a name="view-your-load-balancer-metrics-in-the-azure-portal"></a>Anzeigen Ihrer Load Balancer-Metriken im Azure-Portal
 
-Das Azure-Portal macht die Load Balancer Metriken über die Seite „Metriken (Vorschau)“ verfügbar, die sowohl auf der Seite „Load Balancer-Ressource“ für eine bestimmte Ressource als auch auf der Seite „Azure Monitor“ verfügbar ist. 
+Das Azure-Portal macht die Load Balancer Metriken über die Seite „Metriken“ verfügbar, die sowohl auf der Seite „Load Balancer-Ressource“ für eine bestimmte Ressource als auch auf der Seite „Azure Monitor“ verfügbar ist. 
 
 So zeigen Sie die Metriken für Ihre Standard Load Balancer-Ressourcen an
-1. Wechseln Sie zur Seite „Metriken (Vorschau)"“ und führen Sie einen der folgenden Schritte aus:
+1. Wechseln Sie zur Seite „Metriken“, und führen Sie einen der folgenden Schritte aus:
    * Wählen Sie auf der Seite „Load Balancer-Ressource“ den Metriktyp in der Dropdownliste aus.
    * Wählen Sie auf der Seite „Azure Monitor“ die Load Balancer-Ressource aus.
 2. Legen Sie den entsprechenden Aggregationstyp fest.
 3. Konfigurieren Sie optional die erforderliche Filterung und Gruppierung.
 
-![Metrikenvorschau für Standard Load Balancer](./media/load-balancer-standard-diagnostics/LBMetrics1.png)
+    ![Metriken für Standard Load Balancer](./media/load-balancer-standard-diagnostics/lbmetrics1anew.png)
 
-*Abbildung: Metrik für DIP-Verfügbarkeit und Integritätsteststatus für Load Balancer Standard*
+    *Abbildung: Datenpfadverfügbarkeit-Metrik für Standard Load Balancer*
 
 ### <a name="retrieve-multi-dimensional-metrics-programmatically-via-apis"></a>Programmgesteuertes Abrufen von mehrdimensionalen Metriken über APIs
 
@@ -72,15 +72,15 @@ Die VIP-Verfügbarkeitsmetrik beschreibt die Integrität des Datenpfads innerhal
 - Tiefer einsteigen und ermitteln, ob die Plattform, auf der Ihr Dienst bereitgestellt wird, fehlerfrei ist, oder ob Ihr Gastbetriebssystem oder die Anwendungsinstanz fehlerfrei ist.
 - Bestimmen, ob sich ein Ereignis auf Ihren Dienst oder die zugrunde liegende Datenebene bezieht. Verwechseln Sie diese Metrik nicht mit dem Integritätsteststatus („DIP-Verfügbarkeit“).
 
-So rufen Sie die VIP-Verfügbarkeit für Ihre Standard Load Balancer-Ressourcen ab
+So rufen Sie die Datenpfadverfügbarkeit für Ihre Standard Load Balancer-Ressourcen ab
 1. Vergewissern Sie sich, dass die richtige Load Balancer-Ressource ausgewählt ist. 
-2. Wählen Sie in der Dropdownliste **Metrik** die Option **VIP-Verfügbarkeit** aus. 
+2. Wählen Sie in der Dropdownliste **Metrik** die Option **Datenpfadverfügbarkeit** aus. 
 3. Wählen in der Dropdownliste **Aggregation** die Option **Mittelwert** aus. 
-4. Fügen Sie außerdem einen Filter für die VIP-Adresse oder den VIP-Port als die Dimension mit der erforderlichen Front-End-IP-Adresse oder dem erforderlichen Front-End-Port hinzu, und gruppieren Sie diese dann nach der ausgewählten Dimension.
+4. Fügen Sie außerdem einen Filter für die Front-End-IP-Adresse oder den Front-End-Port als die Dimension mit der erforderlichen Front-End-IP-Adresse oder dem erforderlichen Front-End-Port hinzu, und gruppieren Sie diese dann nach der ausgewählten Dimension.
 
 ![VIP-Sondierung](./media/load-balancer-standard-diagnostics/LBMetrics-VIPProbing.png)
 
-*Abbildung: VIP-Sondierungsdetails für Load Balancer*
+*Abbildung: Front-End-Sondierungsdetails für Load Balancer*
 
 Die Metrik wird durch eine aktive bandinterne Messung generiert. Ein Sondierungsdienst innerhalb der Region löst Datenverkehr für diese Messung aus. Der Dienst wird aktiviert, sobald Sie eine Bereitstellung mit einem öffentliche Front-End erstellen, und wird weiter ausgeführt, bis Sie das Front-End entfernen. 
 
@@ -93,7 +93,7 @@ VIP-Verfügbarkeit kann aus folgenden Gründen fehlschlagen:
 - Ihre Bereitstellung hat keine fehlerfreien virtuellen Computer, die im Back-End-Pool verblieben sind. 
 - Es ist ein Infrastrukturausfall aufgetreten.
 
-Zu Diagnosezwecken können Sie die [VIP-Verfügbarkeitsmetrik zusammen mit dem Integritätsteststatus](#vipavailabilityandhealthprobes) verwenden.
+Zu Diagnosezwecken können Sie die [Datenpfadverfügbarkeit-Metrik zusammen mit dem Integritätsteststatus](#vipavailabilityandhealthprobes) verwenden.
 
 Verwenden Sie **Mittelwert** als Aggregation für die meisten Szenarien.
 
@@ -101,13 +101,9 @@ Verwenden Sie **Mittelwert** als Aggregation für die meisten Szenarien.
 
 Die Integritätsteststatus-Metrik beschreibt die Integrität Ihrer Anwendungsbereitstellung, wie Sie diese konfiguriert haben, als Sie den Integritätstest Ihres Load Balancers konfiguriert haben. Der Load Balancer verwendet den Status des Integritätstests, um zu bestimmen, wohin neue Datenflüsse gesendet werden sollen. Integritätstests stammen aus einer Azure-Infrastrukturadresse und können im Gastbetriebssystem des virtuellen Computers angezeigt werden.
 
-So rufen Sie die DIP-Verfügbarkeit für Ihre Standard Load Balancer-Ressourcen ab
-1. Wählen Sie die Metrik **DIP-Verfügbarkeit** mit dem Aggregationstyp **Mittelwert** aus. 
-2. Wenden Sie einen Filter auf die erforderliche VIP-IP-Adresse oder den erforderlichen VIP-Port (oder auf beides) an.
-
-![DIP-Verfügbarkeit](./media/load-balancer-standard-diagnostics/LBMetrics-DIPAvailability.png)
-
-*Abbildung: VIP-Verfügbarkeit des Load Balancers*
+So rufen Sie den Integritätsteststatus für Ihre Standard Load Balancer-Ressourcen ab
+1. Wählen Sie die Metrik **Integritätsteststatus** mit dem Aggregationstyp **Mittelwert** aus. 
+2. Wenden Sie einen Filter auf die erforderliche Front-End-IP-Adresse oder den erforderlichen Front-End-Port (oder auf beides) an.
 
 Integritätstests schlagen aus den folgenden Gründen fehl:
 - Sie konfigurieren einen Integritätstest für einen Port, der nicht lauscht oder nicht reagiert oder das falsche Protokoll verwendet. Wenn für Ihren Dienst DSR-Regeln (Direct Server Return oder Floating IP-Regeln) verwendet werden, vergewissern Sie sich, dass der Dienst auf die IP-Adresse der IP-Konfiguration der Netzwerkkarte und nicht nur auf den Loopback lauscht, der mit der Front-End-IP-Adresse konfiguriert ist.
@@ -165,13 +161,13 @@ Sie können Integritätstestmetriken verwenden, um zu erkennen, wie Azure die In
 
 Sie können einen Schritt weiter gehen und VIP-Verfügbarkeit-Metriken verwenden, um zu erfahren, wie Azure die Integrität der zugrunde liegenden Datenebene beurteilt, die für Ihre spezielle Bereitstellung zuständig ist. Wenn Sie beide Metriken kombinieren, können Sie, wie in diesem Beispiel veranschaulicht, gezielt feststellen, wo sich der Fehler befindet:
 
-![VIP-Diagnose](./media/load-balancer-standard-diagnostics/LBMetrics-DIPnVIPAvailability.png)
+![Kombinieren der Metriken „Datenpfadverfügbarkeit“ und „Integritätsteststatus“](./media/load-balancer-standard-diagnostics/lbmetrics-dipnvipavailability-2bnew.png)
 
-*Abbildung: Kombinieren von DIP- und VIP-Verfügbarkeitsmetriken*
+*Abbildung: Kombinieren der Metriken „Datenpfadverfügbarkeit“ und „Integritätsteststatus“*
 
 Im Diagramm werden die folgenden Informationen angezeigt:
-- Die Infrastruktur selbst war fehlerfrei, die Infrastruktur, in der Ihr virtueller Computer gehostet wird, war erreichbar, und im Back-End waren mehrere virtuelle Computer platziert. Diese Informationen sind durch die blaue Ablaufverfolgung für VIP-Verfügbarkeit gekennzeichnet, die 100 Prozent beträgt. 
-- Der Integritätsteststatus (DIP-Verfügbarkeit) liegt jedoch am Anfang des Diagramms bei 0 Prozent, wie es durch die orangefarbene Ablaufverfolgung gekennzeichnet ist. Der eingekreiste Bereich in Grün markiert, ab wann der Status (DIP-Verfügbarkeit) fehlerfrei wurde und an welchem Punkt die Bereitstellung des Kunden neue Datenflüsse akzeptieren konnte.
+- Die Infrastruktur, in der Ihre virtuellen Computer gehostet werden, war am Anfang des Diagramms nicht verfügbar und lag bei 0 Prozent. Später war die Infrastruktur fehlerfrei, die virtuellen Computer waren erreichbar, und im Back-End waren mehrere virtuelle Computer platziert. Diese Informationen sind durch die blaue Ablaufverfolgung für Datenpfadverfügbarkeit (VIP-Verfügbarkeit) gekennzeichnet, die später bei 100 Prozent lag. 
+- Der Integritätsteststatus (DIP-Verfügbarkeit), der durch die violette Ablaufverfolgung gekennzeichnet ist, liegt jedoch am Anfang des Diagramms bei 0 Prozent. Der eingekreiste Bereich in Grün markiert, ab wann der Integritätsteststatus (DIP-Verfügbarkeit) fehlerfrei wurde und an welchem Punkt die Bereitstellung des Kunden neue Datenflüsse akzeptieren konnte.
 
 Anhand des Diagramms kann der Kunde eigenständig eine Fehlerbehebung für die Bereitstellung vornehmen, ohne zu erraten oder beim Support zu erfragen, ob andere Probleme auftreten. Der Dienst war nicht verfügbar, weil Integritätstests wegen einer Fehlkonfiguration oder einer fehlerhaften Anwendung fehlgeschlagen sind.
 

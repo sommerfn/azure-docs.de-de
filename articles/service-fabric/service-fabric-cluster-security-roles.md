@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 2/23/2018
 ms.author: subramar
-ms.openlocfilehash: 39b77813e3494e809b92738924544e196d89a166
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: ed000dc4be1ae45382d688d4a596ec745c69d0bb
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34204650"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60711157"
 ---
 # <a name="role-based-access-control-for-service-fabric-clients"></a>Rollenbasierte Zugriffssteuerung für Service Fabric-Clients
 Azure Service Fabric unterstützt zwei unterschiedliche Zugriffsberechtigungstypen für Clients, die mit einem Service Fabric-Cluster verbunden sind: Administrator und Benutzer. Zugriffssteuerung ermöglicht es dem Clusteradministrator, den Zugriff auf bestimmte Clustervorgänge für verschiedene Gruppen von Benutzern einzuschränken, wodurch die Sicherheit des Clusters erhöht wird.  
@@ -52,9 +52,9 @@ Der Administrator-Zugriffssteuerungstyp hat vollen Zugriff auf die FabricClient-
 * **RecoverSystemPartitions**: Wiederherstellen von Systemdienstpartitionen                             
 
 ### <a name="cluster-operations"></a>Clustervorgänge
-* **ProvisionFabric**: MSI- und/oder Clustermanifest-Bereitstellung                             
+* **ProvisionFabric**: MSI- und/oder Clustermanifestbereitstellung                             
 * **UpgradeFabric**: Starten von Clusterupgrades                             
-* **UnprovisionFabric**: Aufheben der MSI- und/oder Clustermanifest-Bereitstellung                         
+* **UnprovisionFabric**: Aufhebung der MSI- und/oder Clustermanifestbereitstellung                         
 * **MoveNextFabricUpgradeDomain**: Fortsetzen von Clusterupgrades mit einer expliziten Updatedomäne                             
 * **ReportFabricUpgradeHealth**: Fortsetzen von Clusterupgrades beim aktuellen Aktualisierungsvorgang                             
 * **StartInfrastructureTask**: Starten von Infrastrukturaufgaben                             

@@ -10,11 +10,11 @@ ms.assetid: ad8a6992-02c7-47d4-a108-62fc5a0777a3
 ms.topic: conceptual
 ms.date: 05/03/2018
 ms.openlocfilehash: 3269d38b691ec4dd9573a241c89dadc285787143
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51254025"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60408134"
 ---
 # <a name="install-data-lake-tools-for-visual-studio"></a>Installieren von Data Lake-Tools für Visual Studio
 
@@ -22,7 +22,7 @@ Erfahren Sie, wie Sie mit Visual Studio Azure Data Lake Analytics-Konten erstell
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-* **Visual Studio:** alle Editionen außer Express werden unterstützt.
+* **Visual Studio:** Alle Editionen außer Express werden unterstützt.
     * Visual Studio 2017
     * Visual Studio 2015
     * Visual Studio 2013
@@ -33,9 +33,9 @@ Erfahren Sie, wie Sie mit Visual Studio Azure Data Lake Analytics-Konten erstell
 
 Azure Data Lake Tools für Visual Studio wird in Visual Studio 2017 ab Version 15.3 unterstützt. Das Tool ist Teil der Workloads **Datenspeicherung und -verarbeitung** und **Azure-Entwicklung** im Visual Studio-Installer. Aktivieren Sie eine dieser beiden Workloads im Rahmen Ihrer Visual Studio-Installation.  
 
-Aktivieren Sie die Workload **Datenspeicherung und -verarbeitung** wie folgt: ![Aktivieren der Workload „Datenspeicherung und -verarbeitung“](./media/data-lake-analytics-data-lake-tools-get-started/data-lake-tools-for-vs-2017-install-01.png)
+Aktivieren Sie die Workload **Datenspeicherung und -verarbeitung** wie gezeigt: ![Aktivieren der Workload „Datenspeicherung und -verarbeitung“](./media/data-lake-analytics-data-lake-tools-get-started/data-lake-tools-for-vs-2017-install-01.png)
 
-Aktivieren Sie die Workload **Azure-Entwicklung** wie folgt: ![Aktivieren der Workload „Azure-Entwicklung“](./media/data-lake-analytics-data-lake-tools-get-started/data-lake-tools-for-vs-2017-install-02.png)
+Aktivieren Sie die Workload **Azure-Entwicklung** wie gezeigt: ![Aktivieren der Workload „Azure-Entwicklung“](./media/data-lake-analytics-data-lake-tools-get-started/data-lake-tools-for-vs-2017-install-02.png)
 
 ## <a name="install-azure-data-lake-tools-for-visual-studio-2013-and-2015"></a>Installieren von Azure Data Lake Tools für Visual Studio 2013 und 2015
 
