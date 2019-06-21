@@ -15,10 +15,10 @@ ms.workload: infrastructure-services
 ms.date: 05/16/2018
 ms.author: kumud
 ms.openlocfilehash: 0a80630ffa363d2b633667d8104cc0326c4afa2e
-ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/04/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66478590"
 ---
 # <a name="plan-virtual-networks"></a>Planen virtueller Netzwerke
@@ -29,7 +29,7 @@ Das Erstellen eines virtuellen Netzwerks zum Testen ist einfach. Aber die Wahrsc
 
 Alle Azure-Ressourcen haben einen Namen. Der Name muss innerhalb eines Bereichs eindeutig sein, der für jeden Ressourcentyp unterschiedlich sein kann. Der Name eines virtuellen Netzwerks muss beispielsweise innerhalb einer [Ressourcengruppe](../azure-glossary-cloud-terminology.md?toc=%2fazure%2fvirtual-network%2ftoc.json#resource-group) eindeutig sein, kann jedoch innerhalb eines [Abonnements](../azure-glossary-cloud-terminology.md?toc=%2fazure%2fvirtual-network%2ftoc.json#subscription) oder einer Azure-[Region](https://azure.microsoft.com/regions/#services) dupliziert werden. Das Definieren einer Namenskonvention, die Sie beim Benennen von Ressourcen konsistent verwenden können, ist hilfreich, wenn mit der Zeit mehrere Netzwerkressourcen verwaltet werden. Empfehlungen finden Sie unter [Namenskonventionen](/azure/architecture/best-practices/naming-conventions?toc=%2fazure%2fvirtual-network%2ftoc.json#networking).
 
-## <a name="regions"></a>Regionen
+## <a name="regions"></a>Regions
 
 Alle Azure-Ressourcen werden in einer Azure-Region und unter einem Abonnement erstellt. Eine Ressource kann nur in einem virtuellen Netzwerk erstellt werden, das in derselben Region und unter demselben Abonnement wie die Ressource vorhanden ist. Sie können jedoch virtuelle Netzwerke verbinden, die in unterschiedlichen Abonnements und Regionen vorhanden sind. Weitere Informationen finden Sie unter [Konnektivität](#connectivity). Bei der Festlegung, in welchen Regionen Ressourcen bereitgestellt werden, sollte berücksichtigt werden, wo sich die Nutzer der Ressourcen physisch befinden:
 

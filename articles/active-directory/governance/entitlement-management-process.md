@@ -12,16 +12,16 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.subservice: compliance
-ms.date: 04/26/2019
+ms.date: 05/30/2019
 ms.author: rolyon
 ms.reviewer: mamkumar
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4ab18c8f165fc30636cd05091be1181743f9972d
-ms.sourcegitcommit: 8a681ba0aaba07965a2adba84a8407282b5762b2
+ms.openlocfilehash: aede5e315141251026867f7028ebf989d44da4d5
+ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/29/2019
-ms.locfileid: "64873643"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66473061"
 ---
 # <a name="request-process-and-email-notifications-in-azure-ad-entitlement-management-preview"></a>Anforderungsprozess und E-Mail-Benachrichtigungen in der Azure AD-Berechtigungsverwaltung (Vorschauversion)
 
@@ -44,7 +44,7 @@ Ein Benutzer, der Zugriff auf ein Zugriffspaket benötigt, kann eine Zugriffsanf
 | --- | --- |
 | Gesendet | Ein Benutzer sendet eine Anforderung. |
 | Ausstehende Genehmigung | Wenn die Richtlinie für ein Zugriffspaket eine Genehmigung erfordert, ändert sich der Status der Anforderung in „Genehmigung ausstehend“. |
-| Abgelaufen | Wenn keine der genehmigenden Personen die Anforderung innerhalb des Zeitlimits für die Genehmigungsanforderung überprüft, läuft die Anforderung ab. In dem Fall muss der Benutzer seine Anforderung erneut senden. |
+| Abgelaufen | Wenn keine der genehmigenden Personen die Anforderung innerhalb des Zeitlimits für die Genehmigungsanforderung genehmigt, läuft die Anforderung ab. In dem Fall muss der Benutzer seine Anforderung erneut senden. |
 | Verweigert | Eine genehmigende Person lehnt eine Anforderung ab. |
 | Genehmigt | Eine genehmigende Person genehmigt eine Anforderung. |
 | Übermitteln | Dem Benutzer wurde **noch kein** Zugriff auf alle Ressourcen im Zugriffspaket zugewiesen. Wenn es sich um einen externen Benutzer handelt, hat der Benutzer noch nicht auf das Ressourcenverzeichnis zugegriffen und die Berechtigungsaufforderung akzeptiert. |
@@ -71,7 +71,7 @@ Die folgende Tabelle enthält weitere Details zu den einzelnen E-Mail-Benachrich
 | 7 | Ihr Zugriff auf *[Zugriffspaket]* läuft in X Tag(en) ab | X Tage vor dem Ablauf des Zugriffs des Anforderers auf das Zugriffspaket | Anforderer |
 | 8 | Ihr Zugriff auf *[Zugriffspaket]* ist abgelaufen | Wenn der Zugriff des Anforderers auf ein Zugriffspaket abläuft | Anforderer |
 
-### <a name="review-access-request-emails"></a>E-Mails zur Überprüfung von Zugriffsanforderungen
+### <a name="access-request-emails"></a>E-Mails zu Zugriffsanforderungen
 
 Wenn ein Anforderer eine Zugriffsanforderung für ein Zugriffspaket sendet, die so konfiguriert ist, dass eine Genehmigung erforderlich ist, erhalten alle in der Richtlinie festgelegten genehmigenden Personen eine E-Mail-Benachrichtigung mit Details der Anforderung. Die Details umfassen den Namen des Anforderers, die Organisation, das Start- und Enddatum für den Zugriff, (falls angegeben) eine geschäftlichen Begründung, wann die Anforderung gesendet wurde und wann die Anforderung abläuft. Die E-Mail enthält einen Link, über den die genehmigenden Personen die Zugriffsanforderung genehmigen oder ablehnen können. Nachfolgend sehen Sie ein Beispiel einer E-Mail-Benachrichtigung, die an eine genehmigende Person gesendet wird, wenn ein Anforderer eine Zugriffsanforderung sendet.
 
@@ -79,7 +79,7 @@ Wenn ein Anforderer eine Zugriffsanforderung für ein Zugriffspaket sendet, die 
 
 ### <a name="approved-or-denied-emails"></a>E-Mails über Genehmigung oder Ablehnung
 
-Anforderer werden benachrichtigt, wenn ihre Zugriffsanforderung genehmigt wurde und für den Zugriff verfügbar ist oder wenn die Zugriffsanforderung abgelehnt wurde. Wenn eine genehmigende Person eine von einem Anforderer gesendete Zugriffsanforderung überprüft, kann sie die Zugriffsanforderung genehmigen oder ablehnen. Die genehmigende Person muss eine geschäftliche Begründung der Entscheidung hinzufügen.
+Anforderer werden benachrichtigt, wenn ihre Zugriffsanforderung genehmigt wurde und für den Zugriff verfügbar ist oder wenn die Zugriffsanforderung abgelehnt wurde. Wenn eine genehmigende Person eine von einem Anforderer gesendete Zugriffsanforderung empfängt, kann sie die Zugriffsanforderung genehmigen oder ablehnen. Die genehmigende Person muss eine geschäftliche Begründung der Entscheidung hinzufügen.
 
 Wenn eine Zugriffsanforderung genehmigt wird, startet die Berechtigungsverwaltung den Prozess, durch den dem Anforderer Zugriff auf die einzelnen Ressourcen im Zugriffspaket gewährt wird. Nachdem dem Anforderer der Zugriff auf alle Ressourcen im Zugriffspaket gewährt wurde, wird eine E-Mail-Benachrichtigung an den Anforderer gesendet, um ihn darüber zu informieren, dass seine Zugriffsanforderung genehmigt wurde und er jetzt auf das Zugriffspaket zugreifen kann. Nachfolgend sehen Sie ein Beispiel einer E-Mail-Benachrichtigung, die an einen Anforderer gesendet wird, wenn ihm Zugriff auf ein Zugriffspaket gewährt wurde.
 

@@ -8,18 +8,18 @@ ms.topic: conceptual
 ms.date: 10/29/2018
 ms.author: vinagara
 ms.subservice: alerts
-ms.openlocfilehash: 1c7712fc2ce55a3d22995bb119a9ee485a064903
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 03a6ea45577b4a4bf57501b1834f91438feb4e2b
+ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64683391"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66477858"
 ---
 # <a name="troubleshoot-log-alerts-in-azure-monitor"></a>Behandeln von Protokollwarnungen in Azure Monitor  
 
 Dieser Artikel zeigt die Lösung häufiger Probleme beim Einrichten von Protokollwarnungen in Azure Monitor. Er bietet auch Lösungen für häufige Probleme bezüglich der Funktionalität oder der Konfiguration von Protokollwarnungen. 
 
-Der Begriff *Protokollwarnungen* beschreibt Warnungen, die basierend auf einer Protokollabfrage in einem [Azure Log Analytics-Workspace](../learn/tutorial-viewdata.md) oder in [Azure Application Insights](../../azure-monitor/app/analytics.md) ausgelöst werden. Erfahren Sie mehr über Funktionen, Terminologie und Typen unter [Protokollwarnungen in Azure Monitor](../platform/alerts-unified-log.md).
+Mit dem Begriff *Protokollwarnungen* werden Regeln beschrieben, die basierend auf einer Protokollabfrage in einem [Azure Log Analytics-Arbeitsbereich](../learn/tutorial-viewdata.md) oder in [Azure Application Insights](../../azure-monitor/app/analytics.md) ausgelöst werden. Erfahren Sie mehr über Funktionen, Terminologie und Typen unter [Protokollwarnungen in Azure Monitor](../platform/alerts-unified-log.md).
 
 > [!NOTE]
 > In diesem Artikel werden keine Fälle berücksichtigt, in denen das Azure-Portal eine ausgelöste Warnungsregel anzeigt und eine Benachrichtigung nicht durch eine zugeordnete Aktionsgruppe erfolgt. Weitere Informationen zu solchen Fällen finden Sie unter [Erstellen und Verwalten von Aktionsgruppen im Azure-Portal](../platform/action-groups.md).
@@ -181,6 +181,7 @@ Das folgende Beispielereignis im Azure-Aktivitätsprotokoll bezieht sich auf ein
 In jeder Protokollwarnungsregel, die in Azure Monitor bei dessen Konfiguration erstellt wurde, muss eine Analyseabfrage angegeben werden, die vom Warnungsdienst regelmäßig auszuführen ist. Zum Zeitpunkt der Erstellung oder Aktualisierung der Protokollwarnungsregel weist die Analyseabfrage möglicherweise eine korrekte Syntax auf. Doch manchmal kann die in der Warnungsregel bereitgestellte Abfrage im Laufe der Zeit Syntaxprobleme entwickeln und dazu führen, dass bei der Regelausführung Fehler auftreten. Einige häufige Gründe, aus denen eine Analyseabfrage in einer Protokollwarnungsregel Fehler entwickeln kann, sind die folgenden:
 
 - Die Abfrage wird für die [Ausführung in mehreren Ressourcen](../log-query/cross-workspace-query.md) geschrieben. Und mindestens eine angegebene Ressource ist nicht mehr vorhanden.
+- Der konfigurierte [Protokollwarnungstyp „Metrische Maßeinheit“](../../azure-monitor/platform/alerts-unified-log.md#metric-measurement-alert-rules) verfügt über eine Warnungsabfrage, die nicht mit den Syntaxnormen übereinstimmt.
 - Es gab keinen Datenfluss zur Analyseplattform. Die [Abfrageausführung liefert einen Fehler](https://dev.loganalytics.io/documentation/Using-the-API/Errors), da keine Daten für die bereitgestellte Abfrage vorhanden sind.
 - Änderungen an der [Abfragesprache](https://docs.microsoft.com/azure/kusto/query/) umfassen ein überarbeitetes Format für Befehle und Funktionen. Daher ist die zuvor in einer Warnungsregel angegebene Abfrage nicht mehr gültig.
 

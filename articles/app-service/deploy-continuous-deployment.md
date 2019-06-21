@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 12/03/2018
 ms.author: cephalin;dariagrigoriu
 ms.custom: seodec18
-ms.openlocfilehash: fcb2c270b36d5efbe7b799787cf2a123b51bea5c
-ms.sourcegitcommit: 02d17ef9aff49423bef5b322a9315f7eab86d8ff
+ms.openlocfilehash: 384f709bb32f973efec39518eaa895e25136fe23
+ms.sourcegitcommit: 3d4121badd265e99d1177a7c78edfa55ed7a9626
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58337543"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66390637"
 ---
 # <a name="continuous-deployment-to-azure-app-service"></a>Continuous Deployment in Azure App Service
 Dieser Artikel veranschaulicht das Konfigurieren von Continuous Deployment für [Azure App Service](overview.md). App Service ermöglicht Continuous Deployment aus Bitbucket, GitHub und [Azure DevOps Services](https://www.visualstudio.com/team-services/) durch Pullen der neuesten Updates aus Ihrem vorhandenen Repository in einen dieser Dienste.
@@ -130,7 +130,7 @@ Geben Sie auf der Seite **Konfigurieren** im Abschnitt **Build** das Sprachframe
 
 Wählen Sie auf der Seite **Test** aus, ob Auslastungstests aktiviert werden sollen, und klicken Sie dann auf **Weiter**.
 
-Abhängig vom [Tarif](https://azure.microsoft.com/pricing/details/app-service/plans/) Ihres App Service-Plans wird ggf. auch eine Seite **Für Staging bereitstellen** angezeigt. Wählen Sie aus, ob [Bereitstellungsslots aktiviert werden sollen](deploy-staging-slots.md), und klicken Sie dann auf **Weiter**. 
+Abhängig vom [Tarif](https://azure.microsoft.com/pricing/details/app-service/plans/) Ihres App Service-Plans wird ggf. auch eine Seite **Für Staging bereitstellen** angezeigt. Wählen Sie aus, ob [Bereitstellungsslots aktiviert werden sollen](deploy-staging-slots.md), und klicken Sie dann auf **Weiter**. Für DevOps sind Continuous Delivery-Vorgänge für den Produktionsslot nicht zulässig. Dies ist beabsichtigt, um versehentliche Bereitstellungen für die Produktion zu verhindern. Sie sollten einen Continuous Delivery-Vorgang für einen Stagingslot einrichten, die Änderungen dort überprüfen und die Slots austauschen, wenn Sie fertig sind.
 
 ### <a name="finish-configuration"></a>Fertigstellen der Konfiguration
 

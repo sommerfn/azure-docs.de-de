@@ -15,12 +15,12 @@ ms.custom: vs-azure
 ms.workload: azure-vs
 ms.date: 11/02/2017
 ms.author: vturecek
-ms.openlocfilehash: 9fbd9b8e298713dad022196989027f9e43ce806d
-ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
+ms.openlocfilehash: 682059914b5d86f5e670e373a4acf3e4ac6246ba
+ms.sourcegitcommit: ef06b169f96297396fc24d97ac4223cabcf9ac33
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58667734"
+ms.lasthandoff: 05/31/2019
+ms.locfileid: "66428210"
 ---
 # <a name="debug-your-service-fabric-application-by-using-visual-studio"></a>Debuggen der Service Fabric-Anwendung mithilfe von Visual Studio
 > [!div class="op_single_selector"]
@@ -30,7 +30,7 @@ ms.locfileid: "58667734"
 
 
 ## <a name="debug-a-local-service-fabric-application"></a>Debuggen einer lokalen Service Fabric-Anwendung
-Sie können Zeit und Geld sparen, indem Sie Ihre Azure Service Fabric-Anwendung in einem Cluster für die Entwicklung auf einem lokalen Computer bereitstellen und debuggen. Visual Studio 2017 bzw. Visual Studio 2015 kann die Anwendung im lokalen Cluster bereitstellen und den Debugger automatisch mit allen Instanzen der Anwendung verbinden. Visual Studio muss als Administrator ausgeführt werden, damit eine Verbindung mit dem Debugger hergestellt werden kann.
+Sie können Zeit und Geld sparen, indem Sie Ihre Azure Service Fabric-Anwendung in einem Cluster für die Entwicklung auf einem lokalen Computer bereitstellen und debuggen. Visual Studio 2019 oder 2015 kann die Anwendung im lokalen Cluster bereitstellen und den Debugger automatisch mit allen Instanzen der Anwendung verbinden. Visual Studio muss als Administrator ausgeführt werden, um eine Verbindung mit dem Debugger herstellen zu können.
 
 1. Um einen lokalen Cluster für die Entwicklung zu erstellen, folgen Sie den Schritten unter [Einrichten der Service Fabric-Entwicklungsumgebung](service-fabric-get-started.md).
 2. Drücken Sie **F5** oder klicken Sie auf **Debuggen** > **Debugging starten**.
@@ -49,7 +49,7 @@ Sie können Zeit und Geld sparen, indem Sie Ihre Azure Service Fabric-Anwendung 
    
     ![Fenster mit Diagnoseereignissen öffnen][viewdiagnosticevents]
    
-    Wenn Sie Ihre Ablaufverfolgungen nach einem bestimmten Dienst oder einer bestimmten Anwendung filtern möchten, aktivieren Sie einfach das Streaming von Ablaufverfolgungen in diesem Dienst oder dieser Anwendung.
+    Wenn Sie Ihre Ablaufverfolgungen nach einem bestimmten Dienst oder einer bestimmten Anwendung filtern möchten, müssen Sie das Streaming von Ablaufverfolgungen in diesem Dienst oder dieser Anwendung aktivieren.
 6. Sie können die Diagnoseereignisse in der automatisch generierten Datei **ServiceEventSource.cs** anzeigen und im Anwendungscode aufrufen.
    
     ```csharp
@@ -58,14 +58,14 @@ Sie können Zeit und Geld sparen, indem Sie Ihre Azure Service Fabric-Anwendung 
 7. Im Fenster **Diagnoseereignisse** können Ereignisse in Echtzeit gefiltert, angehalten und geprüft werden.  Der Filter ist eine einfache Zeichenfolgensuche in der Ereignismeldung und ihrem Inhalt.
    
     ![Ereignisse in Echtzeit filtern, anhalten und fortsetzen oder prüfen][diagnosticeventsactions]
-8. Das Debuggen von Diensten ist vergleichbar mit dem Debuggen jeder beliebigen anderen Anwendung. Um das Debuggen zu vereinfachen, legen Sie in der Regel Haltepunkte in Visual Studio fest. Obwohl Reliable Collections in mehreren Knoten repliziert werden, wird dennoch IEnumerable implementiert. Das heißt, Sie können beim Debuggen die Ergebnisansicht in Visual Studio verwenden, um den darin gespeicherten Inhalt anzuzeigen. Legen Sie einfach einen Haltepunkt an einer beliebigen Stelle im Code fest.
+8. Das Debuggen von Diensten ist vergleichbar mit dem Debuggen jeder beliebigen anderen Anwendung. Um das Debuggen zu vereinfachen, legen Sie in der Regel Haltepunkte in Visual Studio fest. Obwohl Reliable Collections in mehreren Knoten repliziert werden, wird dennoch IEnumerable implementiert. Diese Implementierung bedeutet, dass Sie beim Debuggen die Ergebnisansicht in Visual Studio verwenden können, um den darin gespeicherten Inhalt anzuzeigen. Legen Sie hierfür an einer beliebigen Stelle im Code einen Haltepunkt fest.
    
     ![Anwendung debuggen][breakpoint]
 
 <!--Every topic should have next steps and links to the next logical set of content to keep the customer engaged-->
 
 ## <a name="debug-a-remote-service-fabric-application"></a>Debuggen einer Service Fabric-Remoteanwendung
-Wenn Ihre Service Fabric-Anwendungen auf einem Service Fabric-Cluster in Azure ausgeführt werden, können Sie diese direkt von Visual Studio aus remotedebuggen.
+Wenn Ihre Service Fabric-Anwendungen auf einem Service Fabric-Cluster in Azure ausgeführt werden, können Sie das Remotedebuggen hierfür direkt aus Visual Studio durchführen.
 
 > [!NOTE]
 > Die Funktion benötigt [Service Fabric SDK 2.0](https://www.microsoft.com/web/handlers/webpi.ashx?command=getinstallerredirect&appid=MicrosoftAzure-ServiceFabric-VS2015) und [Azure SDK für .NET 2.9](https://azure.microsoft.com/downloads/).    
@@ -78,11 +78,11 @@ Wenn Ihre Service Fabric-Anwendungen auf einem Service Fabric-Cluster in Azure a
 > 
 > 
 
-1. Navigieren Sie im **Cloud-Explorer** zu Ihrem Cluster, klicken Sie mit der rechten Maustaste, und wählen Sie **Debuggen aktivieren** aus.
+1. Navigieren Sie im **Cloud-Explorer** zu Ihrem Cluster. Klicken Sie mit der rechten Maustaste, und wählen Sie **Debuggen aktivieren**.
    
     ![Aktivieren des Remotedebuggens][enableremotedebugging]
    
-    Dadurch wird der Vorgang zum Aktivieren der Erweiterung zum Remotedebuggen auf Ihren Clusterknoten sowie der benötigten Netzwerkkonfigurationen gestartet.
+    Durch diese Aktion wird der Vorgang zum Aktivieren der Erweiterung zum Remotedebuggen auf Ihren Clusterknoten und für die benötigten Netzwerkkonfigurationen gestartet.
 2. Klicken Sie im **Cloud-Explorer** mit der rechten Maustaste auf den Clusterknoten, und wählen Sie **Debugger anfügen** aus.
    
     ![Debugger anfügen][attachdebugger]
@@ -96,7 +96,7 @@ Wenn Ihre Service Fabric-Anwendungen auf einem Service Fabric-Cluster in Azure a
    
    * Falls Sie einen zustandslosen Dienst debuggen, sind alle Instanzen des Diensts auf allen Knoten Teil der Debugsitzung.
    * Falls Sie einen zustandsbehafteten Dienst debuggen, ist nur das primäre Replikat der jeweiligen Partition aktiv und wird somit vom Debugger behandelt. Falls das primäre Replikat während der Debugsitzung verschoben wird, ist die Verarbeitung dieses Replikats immer noch Teil der Debugsitzung.
-   * Um nur relevante Partitionen oder Instanzen eines bestimmten Diensts abzufangen, können Sie bedingte Haltepunkte verwenden, um nur eine bestimmte Partition oder Instanz zu unterbrechen.
+   * Um nur relevante Partitionen oder Instanzen eines bestimmten Diensts abzufangen, können Sie bedingte Haltepunkte verwenden, damit nur eine bestimmte Partition oder Instanz unterbrochen wird.
      
      ![Bedingter Haltepunkt][conditionalbreakpoint]
      
@@ -124,11 +124,11 @@ Sie können Ablaufverfolgungen von einem Remoteclusterknoten aus auch direkt zu 
 > 
 > 
 
-1. Navigieren Sie im **Cloud-Explorer** zu Ihrem Cluster, klicken Sie mit der rechten Maustaste, und wählen Sie **Streamingablaufverfolgungen aktivieren** aus.
+1. Navigieren Sie im **Cloud-Explorer** zu Ihrem Cluster. Klicken Sie mit der rechten Maustaste, und wählen Sie **Streamingablaufverfolgungen aktivieren**.
    
-    ![Aktivieren des Remotestreaming von Ablaufverfolgungen ][enablestreamingtraces]
+    ![Aktivieren des Remotestreaming von Ablaufverfolgungen][enablestreamingtraces]
    
-    Dadurch wird der Vorgang zum Aktivieren der Erweiterung zum Streaming von Ablaufverfolgungen auf Ihren Clusterknoten sowie der benötigten Netzwerkkonfigurationen gestartet.
+    Mit dieser Aktion wird der Vorgang zum Aktivieren der Erweiterung zum Streamen von Ablaufverfolgungen auf Ihren Clusterknoten sowie der benötigten Netzwerkkonfigurationen gestartet.
 2. Erweitern Sie im **Cloud-Explorer** das **Knoten**-Element, klicken Sie mit der rechten Maustaste auf den Knoten, von dem aus Sie Ablaufverfolgungen streamen möchten, und wählen Sie **Streamingablaufverfolgungen anzeigen** aus.
    
     ![Remotestreaming von Ablaufverfolgungen anzeigen][viewremotestreamingtraces]

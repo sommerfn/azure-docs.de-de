@@ -9,14 +9,14 @@ editor: ''
 ms.service: media-services
 ms.workload: na
 ms.topic: article
-ms.date: 05/26/2019
+ms.date: 06/04/2019
 ms.author: juliako
-ms.openlocfilehash: dd632051ebce6afc3c1f7be118fe8d31cd806ec9
-ms.sourcegitcommit: 8c49df11910a8ed8259f377217a9ffcd892ae0ae
+ms.openlocfilehash: e34e0f9fee1d09e66dcdd5069e800dc1f3f750cb
+ms.sourcegitcommit: 6932af4f4222786476fdf62e1e0bf09295d723a1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/29/2019
-ms.locfileid: "66296807"
+ms.lasthandoff: 06/05/2019
+ms.locfileid: "66688652"
 ---
 # <a name="azure-media-services-v3-release-notes"></a>Versionshinweise zu Azure Media Services v3
 
@@ -36,15 +36,22 @@ Weitere Informationen finden Sie unter [Hinweise zur Migration von Media Service
 
 ## <a name="may-2019"></a>Mai 2019
 
-### <a name="hls-v4-and-above-support-in-dynamic-packaging"></a>Unterstützung von HLS v4 und höher in der dynamischen Paketerstellung 
+### <a name="azure-monitor-support-for-media-services-diagnostic-logs-and-metrics"></a>Azure Monitor-Unterstützung für Media Services-Diagnoseprotokolle und -Metriken
 
-Unterstützung für HLS (Version 4 oder höher) in der dynamischen Paketerstellung wurde für Ressourcen hinzugefügt, die mehrere Audiospuren mit mehreren Codecs und Sprachen besitzen.
+Sie können jetzt Azure Monitor verwenden, um die von Media Services ausgegebenen Telemetriedaten anzuzeigen.
 
-Weitere Informationen finden Sie unter [Dynamische Paketerstellung](dynamic-packaging-overview.md).
+* Nutzen Sie die Azure Monitor-Diagnoseprotokolle, um Anforderungen zu überwachen, die vom Endpunkt für die Media Services-Schlüsselbereitstellung gesendet werden. 
+* Überwachen Sie die Metriken, die von den [Streamingendpunkten](streaming-endpoint-concept.md) von Media Services ausgegeben werden.   
 
-### <a name="media-services-availability-in-korea-central-region"></a>Media Services-Verfügbarkeit in der Region „Südkorea, Mitte“
+Ausführliche Informationen finden Sie unter [Überwachen von Media Services-Metriken und -Diagnoseprotokollen](media-services-metrics-diagnostic-logs.md).
 
-Media Services sind jetzt in der Region „Südkorea, Mitte“ verfügbar. 
+### <a name="multi-audio-tracks-support-in-dynamic-packaging"></a>Unterstützung von mehreren Audiospuren bei der dynamischen Paketerstellung 
+
+Beim Streamen von Medienobjekten, die mehrere Audiospuren mit mehreren Codecs und Sprachen aufweisen, unterstützt die [dynamische Paketerstellung](dynamic-packaging-overview.md) jetzt mehrere Audiospuren für die HLS-Ausgabe (Version 4 oder höher).
+
+### <a name="korea-regional-pair-is-open-for-media-services"></a>Korea-Regionspaar für Media Services verfügbar 
+
+Microsoft Azure Media Services ist jetzt in den Regionen „Südkorea, Mitte“ und „Südkorea, Süden“ verfügbar. 
 
 Weiter Informationen finden Sie unter [Clouds und Regionen, in denen Media Services v3 verfügbar ist](azure-clouds-regions.md).
 

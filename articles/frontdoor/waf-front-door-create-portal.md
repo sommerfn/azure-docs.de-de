@@ -11,14 +11,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 04/8/2019
+ms.date: 05/31/2019
 ms.author: kumud;tyao
-ms.openlocfilehash: 26db3a67c3efbd0ba2a5c58facd0c07175f7ed12
-ms.sourcegitcommit: b8a8d29fdf199158d96736fbbb0c3773502a092d
+ms.openlocfilehash: 15a80dac0e0601480e22ad960f2827f3d8f290c0
+ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/15/2019
-ms.locfileid: "59564138"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66479065"
 ---
 # <a name="create-a-waf-policy-for-azure-front-door-by-using-the-azure-portal"></a>Erstellen einer WAF-Richtlinie für Azure Front Door im Azure-Portal
 
@@ -63,17 +63,19 @@ Um WAF in Aktion zu sehen, können Sie den Modus von **Erkennung** in **Prävent
 
  ![Ändern des WAF-Richtlinienmodus](./media/waf-front-door-create-portal/policy.png)
 
+### <a name="custom-rules"></a>Benutzerdefinierte Regeln
+
+Sie können eine benutzerdefinierte Regel erstellen, indem Sie im Abschnitt **Benutzerdefinierte Regeln** die Option **Benutzerdefinierte Regel hinzufügen** wählen. Die Seite für die Konfiguration einer benutzerdefinierten Regel wird geöffnet. Unten ist ein Beispiel für die Konfiguration einer benutzerdefinierten Regel zum Blockieren einer Anforderung für den Fall angegeben, in dem die Abfragezeichenfolge **blockme** enthält.
+
+![Ändern des WAF-Richtlinienmodus](./media/waf-front-door-create-portal/customquerystring2.png)
+
 ### <a name="default-rule-set-drs"></a>Standardregelsatz
 
 Der von Azure verwaltete Standardregelsatz ist standardmäßig aktiviert. Um eine einzelne Regel innerhalb einer Regelgruppe zu deaktivieren, erweitern Sie die Regeln innerhalb dieser Regelgruppe. Aktivieren Sie das **Kontrollkästchen** vor der Regelnummer, und klicken Sie oben auf der Registerkarte auf **Deaktivieren**. Um Aktionstypen für einzelne Regeln innerhalb des Regelsatzes zu ändern, aktivieren Sie das Kontrollkästchen vor der Regelnummer, und wählen Sie dann oben die Registerkarte **Aktion ändern** aus.
 
- ![Ändern des WAF-Regelsatzes](./media/waf-front-door-create-portal/managed.png)
+ ![Ändern des WAF-Regelsatzes](./media/waf-front-door-create-portal/managed2.png)
 
 ## <a name="next-steps"></a>Nächste Schritte
 
 - Informationen zu Azure Web Application Firewall finden Sie [hier](waf-overview.md).
 - Erfahren Sie mehr zu [Azure Front Door](front-door-overview.md).
-
-
-
-

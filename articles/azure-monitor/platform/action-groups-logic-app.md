@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 07/18/2018
 ms.author: dukek
 ms.subservice: alerts
-ms.openlocfilehash: e69158a6ee4d8415f52cf458c028cab56f481d8b
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: a33c6f6621e7fc7944bc116b27e5f26de88f77d9
+ms.sourcegitcommit: 3d4121badd265e99d1177a7c78edfa55ed7a9626
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58121127"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66389573"
 ---
 # <a name="how-to-trigger-complex-actions-with-azure-monitor-alerts"></a>Auslösen komplexer Aktionen mit Azure Monitor-Warnungen
 
@@ -26,7 +26,7 @@ Der allgemeine Vorgang besteht aus den folgenden Schritten:
 
 -   Erstellen Sie die Logik-App für den jeweiligen Warnungstyp.
 
--   Importieren Sie das Schema für den jeweiligen Warnungstyp in die Logik-App.
+-   Importieren Sie eine Beispielnutzlast für den jeweiligen Warnungstyp in die Logik-App.
 
 -   Definieren Sie das Verhalten der Logik-App.
 
@@ -58,7 +58,7 @@ Der Vorgang ist ähnlich, wenn die Logik-App eine andere Aktion ausführen soll.
 
     ![Verwenden einer Beispielnutzlast](media/action-groups-logic-app/use-sample-payload-button.png "Verwenden einer Beispielnutzlast")
 
-8.  Kopieren Sie das folgende Beispielschema, und fügen Sie es in das Dialogfeld ein:
+8.  Kopieren Sie die folgende Beispielnutzlast, und fügen Sie sie in das Dialogfeld ein:
 
     ```json
         {
@@ -140,7 +140,7 @@ Das nächste Mal, wenn Ihre Aktionsgruppe durch eine Warnung aufgerufen wird, wi
 Azure Service Health-Einträge sind ein Teil des Aktivitätsprotokolls. Der Prozess zum Erstellen der Warnung ähnelt abgesehen von ein paar Änderungen dem [Erstellen einer Aktivitätsprotokollwarnung](#create-an-activity-log-alert-administrative):
 
 - Die Schritte 1 bis 7 sind identisch.
-- Verwenden Sie für Schritt 8 das folgende Beispielschema für den HTTP-Anforderungstrigger:
+- Verwenden Sie für Schritt 8 die folgende Beispielnutzlast für den HTTP-Anforderungstrigger:
 
     ```json
     {
@@ -228,7 +228,7 @@ Azure Service Health-Einträge sind ein Teil des Aktivitätsprotokolls. Der Proz
 Der Prozess zum Erstellen einer Metrikwarnung ähnelt abgesehen von ein paar Änderungen dem [Erstellen einer Aktivitätsprotokollwarnung](#create-an-activity-log-alert-administrative):
 
 - Die Schritte 1 bis 7 sind identisch.
-- Verwenden Sie für Schritt 8 das folgende Beispielschema für den HTTP-Anforderungstrigger:
+- Verwenden Sie für Schritt 8 die folgende Beispielnutzlast für den HTTP-Anforderungstrigger:
 
     ```json
     {

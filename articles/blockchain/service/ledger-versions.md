@@ -10,26 +10,32 @@ ms.topic: article
 ms.service: azure-blockchain
 ms.reviewer: janders
 manager: femila
-ms.openlocfilehash: 63c9a8b9e266dacbb0fb6faba50fb44ac9a4b46e
-ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
+ms.openlocfilehash: 53f65ec91a1e0f1e5a6322f0125bf83cd3e400b2
+ms.sourcegitcommit: d89032fee8571a683d6584ea87997519f6b5abeb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/02/2019
-ms.locfileid: "65027614"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66399101"
 ---
 # <a name="supported-azure-blockchain-service-ledger-versions"></a>Von Azure Blockchain unterstützte Ledgerversionen
 
-Azure Blockchain verwendet den auf Ethereum basierenden Ledger [Quorum](https://github.com/jpmorganchase/quorum/wiki), der dafür konzipiert ist, private Transaktionen innerhalb einer Gruppe bekannter Teilnehmer zu verarbeiten. Diese werden in Azure Blockchain als Konsortium bezeichnet.
+Azure Blockchain verwendet den auf Ethereum basierenden Ledger [Quorum](https://www.goquorum.com/developers), der dafür konzipiert ist, private Transaktionen innerhalb einer Gruppe bekannter Teilnehmer zu verarbeiten. Diese werden in Azure Blockchain als Konsortium bezeichnet.
 
 Momentan unterstützt Azure Blockchain [Quorum Version 2.2.1](https://github.com/jpmorganchase/quorum/releases/tag/v2.2.1) und den [Transaktions-Manager Tessera](https://github.com/jpmorganchase/tessera).
 
 ## <a name="managing-updates-and-upgrades"></a>Verwalten von Updates und Upgrades
 
-Die Versionsverwaltung in Quorum erfolgt über Haupt-, Neben- und Patchversionen. Wenn die Quorum-Version z. B. 2.0.1 ist, ist 2 die Hauptversion, 0 die Nebenversion und 1 ist die Patchversion. Der Dienst patcht Patchversionen des Ledgers automatisch. Momentan wird das Upgraden von Haupt- und Nebenversionen nicht unterstützt.
+Für die Versionsverwaltung in Quorum werden eine Hauptversion, eine Nebenversion und Patchreleases verwendet. Wenn die Quorum-Version beispielsweise 2.0.1 lautet, wird der Releasetyp wie folgt kategorisiert:
+
+|Hauptversion | Nebenversion  | Patch  |
+| :--- | :----- | :----- |
+| 2 | 0 | 1 | 
+
+Azure Blockchain Service führt die Aktualisierung der Patchreleases von Quorum auf vorhandene ausgeführte Mitglieder innerhalb von 30 Tagen nach der Bereitstellung durch Quorum automatisch durch.
 
 ## <a name="availability-of-new-ledger-versions"></a>Verfügbarkeit neuer Ledgerversionen
 
-Azure Blockchain macht die aktuellste Version des Ledgers innerhalb von 60 Tagen nach dessen Veröffentlichung durch den Hersteller verfügbar. Wenn Sie ein neues Mitglied und Konsortium bereitstellen, stehen maximal vier Nebenversionen für Konsortien zur Auswahl.
+Azure Blockchain Service macht die aktuellste Haupt- und Nebenversion des Quorum-Ledgers innerhalb von 60 Tagen nach dessen Veröffentlichung durch den Quorum-Hersteller verfügbar. Wenn Sie ein neues Mitglied und Konsortium bereitstellen, stehen maximal vier Nebenversionen für Konsortien zur Auswahl. Upgrades von einer Haupt- auf eine Nebenversion werden derzeit nicht unterstützt.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

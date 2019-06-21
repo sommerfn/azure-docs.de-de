@@ -12,10 +12,10 @@ manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: cd5b388f92a875fb2635037a6eae3ff3b6a95793
-ms.sourcegitcommit: adb6c981eba06f3b258b697251d7f87489a5da33
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/04/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66513287"
 ---
 # <a name="controlled-validation-of-hybrid-azure-ad-join"></a>Kontrollierte Überprüfung der Azure AD-Hybrideinbindung
@@ -73,7 +73,7 @@ Verwenden Sie das folgende Beispiel, um ein Gruppenrichtlinienobjekt (Group Poli
       1. Wertname: **TenantName**
       1. Werttyp: **REG_SZ**
       1. Wertdaten: Ihr überprüfter **Domänenname** in Azure AD (beispielsweise `contoso.onmicrosoft.com` oder ein anderer überprüfter Domänenname in Ihrem Verzeichnis).
-   1. Klicken Sie auf **OK**.
+   1. Klicken Sie auf **OK**
 1. Schließen Sie den Editor für das neu erstellte Gruppenrichtlinienobjekt.
 1. Verknüpfen Sie das neu erstellte Gruppenrichtlinienobjekt mit der gewünschten Organisationseinheit, die die in die Domäne eingebundenen Computer Ihrer kontrollierten Rolloutelemente enthält.
 

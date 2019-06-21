@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 03/29/2018
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 75987c7838846aacb099b725e2a222967b32fe64
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 73ed98bf950f7c9f52e2b8eeb431fe4b36bfe324
+ms.sourcegitcommit: ef06b169f96297396fc24d97ac4223cabcf9ac33
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64691270"
+ms.lasthandoff: 05/31/2019
+ms.locfileid: "66427923"
 ---
 # <a name="use-azure-files-with-linux"></a>Verwenden von Azure Files mit Linux
 
@@ -81,56 +81,57 @@ ms.locfileid: "64691270"
 
 ## <a name="mount-the-azure-file-share-on-demand-with-mount"></a>Bedarfsgesteuertes Einbinden der Azure-Dateifreigabe mit `mount`
 
-1. **[Installieren Sie das Paket „cifs-utils“ für Ihre Linux-Distribution](#install-cifs-utils)**.
+1. **[Installieren Sie das Paket „cifs-utils“ für Ihre Linux-Distribution](#install-cifs-utils)** .
 
-1. **Erstellen Sie einen Ordner für den Bereitstellungspunkt**: Ein Ordner für einen Bereitstellungspunkt kann zwar an einem beliebigen Ort im Dateisystem erstellt werden, üblicherweise erfolgt die Erstellung jedoch im Ordner `/mnt`. Beispiel: 
+1. **Erstellen Sie einen Ordner für den Bereitstellungspunkt**: Ein Ordner für einen Bereitstellungspunkt kann zwar an einem beliebigen Ort im Dateisystem erstellt werden, aber normalerweise erfolgt die Erstellung in einem neuen Ordner. Mit dem folgenden Befehl wird beispielsweise ein neues Verzeichnis erstellt. Ersetzen Sie **<storage_account_name>** und **<file_share_name>** durch die entsprechenden Informationen für Ihre Umgebung:
 
     ```bash
-    mkdir /mnt/MyAzureFileShare
+    mkdir -p <storage_account_name>/<file_share_name>
     ```
 
-1. **Verwenden Sie den Einbindungsbefehl, um die Azure-Dateifreigabe einzubinden**: Ersetzen Sie `<storage-account-name>`, `<share-name>`, `<smb-version>`, `<storage-account-key>` und `<mount-point>` durch die entsprechenden Informationen für Ihre Umgebung. Falls Ihre Linux-Distribution SMB 3.0 mit Verschlüsselung unterstützt (siehe [Grundlegendes zu SMB-Clientanforderungen](#smb-client-reqs)), verwenden Sie `3.0` für `<smb-version>`. Bei Linux-Distributionen ohne Unterstützung von SMB 3.0 mit Verschlüsselung muss `2.1` für `<smb-version>` verwendet werden. Eine Azure-Dateifreigabe kann nur außerhalb einer Azure-Region mit SMB 3.0 eingebunden werden (gilt auch in der lokalen Umgebung sowie in einer anderen Azure-Region). 
+1. **Verwenden Sie den Einbindungsbefehl, um die Azure-Dateifreigabe einzubinden**: Denken Sie daran, die Platzhalter **<storage_account_name>** , **<share_name>** , **<smb_version>** , **<storage_account_key>** und **<mount_point>** durch die entsprechenden Informationen für Ihre Umgebung zu ersetzen. Wenn Ihre Linux-Distribution SMB 3.0 mit Verschlüsselung unterstützt (siehe [Grundlegendes zu SMB-Clientanforderungen](#smb-client-reqs)), sollten Sie für **<smb_version>** den Wert **3.0** verwenden. Bei Linux-Distributionen ohne Unterstützung von SMB 3.0 mit Verschlüsselung muss für **<smb_version>** der Wert **2.1** verwendet werden. Eine Azure-Dateifreigabe kann nur außerhalb einer Azure-Region mit SMB 3.0 eingebunden werden (gilt auch in der lokalen Umgebung sowie in einer anderen Azure-Region). 
 
     ```bash
-    sudo mount -t cifs //<storage-account-name>.file.core.windows.net/<share-name> <mount-point> -o vers=<smb-version>,username=<storage-account-name>,password=<storage-account-key>,dir_mode=0777,file_mode=0777,serverino
+    sudo mount -t cifs //<storage_account_name>.file.core.windows.net/<share_name> <mount_point> -o vers=<smb_version>,username=<storage_account_name>,password=<storage_account_key>,dir_mode=0777,file_mode=0777,serverino
     ```
 
 > [!Note]  
-> Wenn Sie die Azure-Dateifreigabe nicht mehr benötigen, können Sie `sudo umount <mount-point>` verwenden, um die Einbindung der Freigabe aufzuheben.
+> Wenn Sie die Azure-Dateifreigabe nicht mehr benötigen, können Sie `sudo umount <mount_point>` verwenden, um die Einbindung der Freigabe aufzuheben.
 
 ## <a name="create-a-persistent-mount-point-for-the-azure-file-share-with-etcfstab"></a>Erstellen eines permanenten Bereitstellungspunkts für die Azure-Dateifreigabe mit `/etc/fstab`
 
-1. **[Installieren Sie das Paket „cifs-utils“ für Ihre Linux-Distribution](#install-cifs-utils)**.
+1. **[Installieren Sie das Paket „cifs-utils“ für Ihre Linux-Distribution](#install-cifs-utils)** .
 
-1. **Erstellen Sie einen Ordner für den Bereitstellungspunkt**: Ein Ordner für einen Bereitstellungspunkt kann zwar an einem beliebigen Ort im Dateisystem erstellt werden, üblicherweise erfolgt die Erstellung jedoch im Ordner `/mnt`. Beachten Sie unabhängig vom Ort der Erstellung den absoluten Pfad des Ordners. Der folgende Befehl erstellt beispielsweise einen neuen Ordner unter `/mnt`. (Der Pfad ist ein absoluter Pfad.)
+1. **Erstellen Sie einen Ordner für den Bereitstellungspunkt**: Ein Ordner für einen Bereitstellungspunkt kann zwar an einem beliebigen Ort im Dateisystem erstellt werden, aber normalerweise erfolgt die Erstellung in einem neuen Ordner. Beachten Sie unabhängig vom Ort der Erstellung den absoluten Pfad des Ordners. Mit dem folgenden Befehl wird beispielsweise ein neues Verzeichnis erstellt. Ersetzen Sie **<storage_account_name>** und **<file_share_name>** durch die entsprechenden Informationen für Ihre Umgebung.
 
     ```bash
-    sudo mkdir /mnt/MyAzureFileShare
+    sudo mkdir -p <storage_account_name>/<file_share_name>
     ```
 
-1. **Erstellen Sie eine Datei mit Anmeldeinformationen, um den Benutzernamen (den Namen des Speicherkontos) und das Kennwort (den Schlüssel des Speicherkontos) für die Dateifreigabe zu speichern.** Ersetzen Sie `<storage-account-name>` und `<storage-account-key>` durch die entsprechenden Angaben für Ihre Umgebung. 
+1. **Erstellen Sie eine Datei mit Anmeldeinformationen, um den Benutzernamen (den Namen des Speicherkontos) und das Kennwort (den Schlüssel des Speicherkontos) für die Dateifreigabe zu speichern.** Ersetzen Sie **<storage_account_name>** und **<storage_account_key>** durch die entsprechenden Informationen für Ihre Umgebung.
 
     ```bash
     if [ ! -d "/etc/smbcredentials" ]; then
-        sudo mkdir /etc/smbcredentials
+    sudo mkdir /etc/smbcredentials
     fi
-
-    if [ ! -f "/etc/smbcredentials/<storage-account-name>.cred" ]; then
-        sudo bash -c 'echo "username=<storage-account-name>" >> /etc/smbcredentials/<storage-account-name>.cred'
-        sudo bash -c 'echo "password=<storage-account-key>" >> /etc/smbcredentials/<storage-account-name>.cred'
+    if [ ! -f "/etc/smbcredentials/<STORAGE ACCOUNT NAME>.cred" ]; then
+    sudo bash -c 'echo "username=<STORAGE ACCOUNT NAME>" >> /etc/smbcredentials/<STORAGE ACCOUNT NAME>.cred'
+    sudo bash -c 'echo "password=7wRbLU5ea4mgc<DRIVE LETTER>PIpUCNcuG9gk2W4S2tv7p0cTm62wXTK<DRIVE LETTER>CgJlBJPKYc4VMnwhyQd<DRIVE LETTER>UT<DRIVE LETTER>yR5/RtEHyT/EHtg2Q==" >> /etc/smbcredentials/<STORAGE ACCOUNT NAME>.cred'
     fi
     ```
 
 1. **Ändern Sie die Berechtigungen in der Datei mit den Anmeldeinformationen so, dass nur „root“ die Kennwortdatei lesen oder ändern kann.** Da der Speicherkontoschlüssel eigentlich ein Superadministratorkennwort für das Speicherkonto ist, ist es wichtig, die Berechtigungen für die Datei so festzulegen, dass nur „root“ darauf zugreifen kann, damit Benutzer mit geringeren Rechten den Speicherkontoschlüssel nicht abrufen können.   
 
     ```bash
-    sudo chmod 600 /etc/smbcredentials/<storage-account-name>.cred
+    sudo chmod 600 /etc/smbcredentials/<storage_account_name>.cred
     ```
 
-1. **Fügen Sie mit dem folgenden Befehl die folgende Zeile an `/etc/fstab` an**: Ersetzen Sie `<storage-account-name>`, `<share-name>`, `<smb-version>` und `<mount-point>` durch die entsprechenden Angaben für Ihre Umgebung. Falls Ihre Linux-Distribution SMB 3.0 mit Verschlüsselung unterstützt (siehe [Grundlegendes zu SMB-Clientanforderungen](#smb-client-reqs)), verwenden Sie `3.0` für `<smb-version>`. Bei Linux-Distributionen ohne Unterstützung von SMB 3.0 mit Verschlüsselung muss `2.1` für `<smb-version>` verwendet werden. Eine Azure-Dateifreigabe kann nur außerhalb einer Azure-Region mit SMB 3.0 eingebunden werden (gilt auch in der lokalen Umgebung sowie in einer anderen Azure-Region). 
+1. **Fügen Sie mit dem folgenden Befehl die folgende Zeile an `/etc/fstab` an**: Denken Sie daran, die Platzhalter **<storage_account_name>** , **<share_name>** , **<smb_version>** und **<mount_point>** durch die entsprechenden Informationen für Ihre Umgebung zu ersetzen. Wenn Ihre Linux-Distribution SMB 3.0 mit Verschlüsselung unterstützt (siehe [Grundlegendes zu SMB-Clientanforderungen](#smb-client-reqs)), sollten Sie für **<smb_version>** den Wert **3.0** verwenden. Bei Linux-Distributionen ohne Unterstützung von SMB 3.0 mit Verschlüsselung muss für **<smb_version>** der Wert **2.1** verwendet werden. Eine Azure-Dateifreigabe kann nur außerhalb einer Azure-Region mit SMB 3.0 eingebunden werden (gilt auch in der lokalen Umgebung sowie in einer anderen Azure-Region).
 
     ```bash
-    sudo bash -c 'echo "//<storage-account-name>.file.core.windows.net/<share-name> <mount-point> cifs nofail,vers=<smb-version>,credentials=/etc/smbcredentials/<storage-account-name>.cred,dir_mode=0777,file_mode=0777,serverino" >> /etc/fstab'
+    sudo bash -c 'echo "//<STORAGE ACCOUNT NAME>.file.core.windows.net/<FILE SHARE NAME> /mount/<STORAGE ACCOUNT NAME>/<FILE SHARE NAME> cifs nofail,vers=3.0,credentials=/etc/smbcredentials/<STORAGE ACCOUNT NAME>.cred,dir_mode=0777,file_mode=0777,serverino" >> /etc/fstab'
+
+    sudo mount /mount/<STORAGE ACCOUNT NAME>/<FILE SHARE NAME>
     ```
 
 > [!Note]  

@@ -1,6 +1,6 @@
 ---
 title: Dienstebene „Universell“ – Azure SQL-Datenbank | Microsoft-Dokumentation
-description: Informationen zum Tarif „Universell“ für Azure SQL-Datenbank
+description: Informationen zur Dienstebene „Universell“ für Azure SQL-Datenbank
 services: sql-database
 ms.service: sql-database
 ms.subservice: service
@@ -12,17 +12,17 @@ ms.author: jovanpop-msft
 ms.reviewer: sstein
 manager: craigg
 ms.date: 02/07/2019
-ms.openlocfilehash: dc379f1ee67174cd806840e4244054701d18f0d4
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: b972ea985a09457d8b6a17a292e18754761f5a6e
+ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59784021"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66479199"
 ---
 # <a name="general-purpose-service-tier---azure-sql-database"></a>Dienstebene „Universell“ – Azure SQL-Datenbank
 
 > [!NOTE]
-> Die Dienstebene „Universell“ beim vCore-basierten Kaufmodell wird beim DTU-basierten Kaufmodell als Dienstebene „Standard“ bezeichnet. Einen Vergleich zwischen vCore-basierten Kaufmodell und DTU-basiertem Kaufmodell finden Sie unter [Kaufmodelle für Azure SQL-Datenbank und Ressourcen](sql-database-purchase-models.md).
+> Die Dienstebene „Universell“ beim vCore-basierten Kaufmodell wird beim DTU-basierten Kaufmodell als Dienstebene „Standard“ bezeichnet. Einen Vergleich zwischen vCore-basiertem Kaufmodell und DTU-basiertem Kaufmodell finden Sie unter [Kaufmodelle für Azure SQL-Datenbank und Ressourcen](sql-database-purchase-models.md).
 
 Azure SQL-Datenbank basiert auf der an die Cloudumgebung angepasste Architektur der SQL Server-Datenbank-Engine, um selbst bei Infrastrukturausfällen eine Verfügbarkeit von 99,99 % sicherzustellen. In Azure SQL-Datenbank werden drei Dienstebenen verwendet, die jeweils unterschiedliche Architekturmodelle aufweisen. Diese Dienstebenen lauten:
 
@@ -45,10 +45,11 @@ Bei jeder Aktualisierung der Datenbank-Engine oder des Betriebssystems, bei Fehl
 
 ## <a name="when-to-choose-this-service-tier"></a>Wann sollte diese Dienstebene gewählt werden?
 
-Die Dienstebene „Universell“ ist eine Standarddienstebene in Azure SQL-Datenbank, der für die meisten generischen Workloads entwickelt wurde. Wenn Sie eine vollständig verwaltete Datenbank-Engine mit einer SLA von 99,99 % mit einer Speicherlatenz von 5 bis 10 ms benötigen, die in den meisten Fällen der Azure SQL-IaaS-Lösung entspricht, ist der Tarif „Universell“ für Sie die richtige Wahl.
+Die Dienstebene „Universell“ ist eine Standarddienstebene in Azure SQL-Datenbank, der für die meisten generischen Workloads entwickelt wurde. Wenn Sie eine vollständig verwaltete Datenbank-Engine mit einer SLA von 99,99 % mit einer Speicherlatenz von 5 bis 10 ms benötigen, die in den meisten Fällen der Azure SQL-IaaS-Lösung entspricht, ist der Tarif „Universell“ für Sie die richtige Wahl.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
+- Sehen Sie sich die Ressourcenmerkmale (Anzahl von Kernen, E/A, Arbeitsspeicher) der Ebene „Universell/Standard“ für eine [verwaltete Instanz](sql-database-managed-instance-resource-limits.md#service-tier-characteristics), für eine Einzeldatenbank im [V-Kern-Modell](sql-database-vcore-resource-limits-single-databases.md#general-purpose-service-tier-storage-sizes-and-compute-sizes) bzw. [DTU-Modell](sql-database-dtu-resource-limits-single-databases.md#single-database-storage-sizes-and-compute-sizes) oder für einen Pool für elastische Datenbanken im [V-Kern-Modell](sql-database-vcore-resource-limits-elastic-pools.md#general-purpose-service-tier-storage-sizes-and-compute-sizes) und [DTU-Modell](sql-database-dtu-resource-limits-elastic-pools.md#standard-elastic-pool-limits) an.
 - Informationen zu den Tarifen [Unternehmenskritisch](sql-database-service-tier-business-critical.md) und [Hyperscale](sql-database-service-tier-hyperscale.md)
 - Informationen zu [Service Fabric](../service-fabric/service-fabric-overview.md)
 - Weitere Optionen zu Hochverfügbarkeit und Notfallwiederherstellung finden Sie unter [Geschäftskontinuität](sql-database-business-continuity.md).
