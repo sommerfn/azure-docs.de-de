@@ -53,7 +53,7 @@ Das folgende Beispiel zeigt die Abschnitte, die die grundlegende Struktur einer 
       }
     }
 
-| Elementname | Erforderlich? | BESCHREIBUNG |
+| Elementname | Erforderlich? | Description |
 | --- | --- | --- |
 | $schema |Nein |Speicherort der JSON-Schemadatei Mithilfe der JSON-Schemadatei können Sie die Gültigkeit der Definitionsdatei testen. |
 | title |Ja |Der Name des im Lab angezeigten Artefakts. |
@@ -76,7 +76,7 @@ Sie definieren Parameter mit der folgenden Struktur:
       }
     }
 
-| Elementname | Erforderlich? | BESCHREIBUNG |
+| Elementname | Erforderlich? | Description |
 | --- | --- | --- |
 | type |Ja |Der Typ des Parameterwerts. In der folgenden Liste finden Sie die zulässigen Typen. |
 | displayName |Ja |Der Name des Parameters, der einem Benutzer im Labor angezeigt wird. |

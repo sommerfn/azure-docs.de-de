@@ -11,17 +11,17 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: tbd
-ms.date: 5/8/2019
+ms.date: 6/6/2019
 ms.author: raiye
-ms.openlocfilehash: 71f66129aeec4f4c8b470a421caade22960d2d64
-ms.sourcegitcommit: 399db0671f58c879c1a729230254f12bc4ebff59
+ms.openlocfilehash: bdb3d0af93a69c1d15bd34a4badef5915ec0f01f
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/09/2019
-ms.locfileid: "65473217"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "66743032"
 ---
 # <a name="azure-guest-os-releases-and-sdk-compatibility-matrix"></a>Azure-Gastbetriebssystemversionen und SDK-Kompatibilitätsmatrix
-Bietet Ihnen aktuelle Informationen zu den neuesten Azure-Gastbetriebssystemreleases für Cloud Services. Anhand dieser Informationen können Sie Ihren Upgradepfad planen, bevor ein Gastbetriebssystem abgekündigt wird. Wenn Sie die Rollen so konfigurieren, dass die *automatischen* Gast-BS-Updates, wie unter [Updateeinstellungen für Azure-Gast-BS][Azure Guest OS Update Settings] beschrieben, verwendet werden, müssen Sie diese Seite nicht unbedingt lesen. 
+Bietet Ihnen aktuelle Informationen zu den neuesten Azure-Gastbetriebssystemreleases für Cloud Services. Anhand dieser Informationen können Sie Ihren Upgradepfad planen, bevor ein Gastbetriebssystem abgekündigt wird. Wenn Sie die Rollen so konfigurieren, dass die *automatischen* Gast-BS-Updates, wie unter [Updateeinstellungen für Azure-Gast-BS][Azure Guest OS Update Settings] beschrieben, verwendet werden, müssen Sie diese Seite nicht unbedingt lesen.
 
 > [!IMPORTANT]
 > Diese Seite bezieht sich auf die Cloud Services-Web- und Workerrollen, die zusätzlich zu einem Gastbetriebssystem ausgeführt werden. Sie **gilt nicht** für IaaS Virtual Machines.
@@ -42,6 +42,9 @@ Bietet Ihnen aktuelle Informationen zu den neuesten Azure-Gastbetriebssystemrele
 Sie wissen nicht genau, wie Sie Ihr Gastbetriebssystem aktualisieren sollen? Entsprechende Informationen finden Sie [hier][cloud updates].
 
 ## <a name="news-updates"></a>Neuigkeiten
+
+###### <a name="june-6-2019"></a>**6. Juni 2019**
+Das Gastbetriebssystem für Mai wurde veröffentlicht.
 
 ###### <a name="may-7-2019"></a>**7. Mai 2019**
 Das Gastbetriebssystem für April wurde veröffentlicht.
@@ -92,12 +95,13 @@ Installierte .NET Framework-Versionen: 3.5, 4.7.2
 
 | Konfigurationszeichenfolge | Herausgabedatum | Deaktivierungsdatum |
 | --- | --- | --- |
-| WA-GUEST-OS-6.6_201904-01 |7. Mai 2019 |Post 6.8 |
-| WA-GUEST-OS-6.5_201903-01 |26. März 2019 |Post 6.7 |
-|~~WA-GUEST-OS-6.4_201902-01~~ |12. März 2019 |7. Mai 2019 |
-|~~WA-GUEST-OS-6.3_201901-01~~ |5. Februar 2019 |26. März 2019 |
+| WA-GUEST-OS-6.7_201905-01 |6\. Juni 2019 |Post 6.9 |
+| WA-GUEST-OS-6.6_201904-01 |7\. Mai 2019 |Post 6.8 |
+|~~WA-GUEST-OS-6.5_201903-01~~ |26. März 2019 |6\. Juni 2019 |
+|~~WA-GUEST-OS-6.4_201902-01~~ |12. März 2019 |7\. Mai 2019 |
+|~~WA-GUEST-OS-6.3_201901-01~~ |5\. Februar 2019 |26. März 2019 |
 |~~WA-GUEST-OS-6.2_201812-01~~ |24. Januar 2019 |12. März 2019 |
-|~~WA-GUEST-OS-6.1_201811-01~~ |24. Januar 2019 |5. Februar 2019 |
+|~~WA-GUEST-OS-6.1_201811-01~~ |24. Januar 2019 |5\. Februar 2019 |
 
 ## <a name="family-5-releases"></a>Releases von Familie 5
 **Windows Server 2016**
@@ -111,13 +115,14 @@ Installierte .NET Framework-Versionen: 3.5, 4.6.2
 
 | Konfigurationszeichenfolge | Herausgabedatum | Deaktivierungsdatum |
 | --- | --- | --- |
-| WA-GUEST-OS-5.30_201904-01 |7. Mai 2019 |Post 5.32 |
-| WA-GUEST-OS-5.29_201903-01 |26. März 2019 |Post 5.31 |
-|~~WA-GUEST-OS-5.28_201902-01~~ |12. März 2019 |7. Mai 2019 |
-|~~WA-GUEST-OS-5.27_201901-01~~ |5. Februar 2019 |26. März 2019 |
-|~~WA-GUEST-OS-5.26_201812-01~~ |7. Januar 2019 |12. März 2019 |
-|~~WA-GUEST-OS-5.25_201811-01~~ |14. Dezember 2018 |5. Februar 2019 |
-|~~WA-GUEST-OS-5.24_201810-01~~ |8. November 2018 |7. Januar 2019 |
+| WA-GUEST-OS-5.31_201905-01 |6\. Juni 2019 |Post 5.33 |
+| WA-GUEST-OS-5.30_201904-01 |7\. Mai 2019 |Post 5.32 |
+|~~WA-GUEST-OS-5.29_201903-01~~ |26. März 2019 |6\. Juni 2019 |
+|~~WA-GUEST-OS-5.28_201902-01~~ |12. März 2019 |7\. Mai 2019 |
+|~~WA-GUEST-OS-5.27_201901-01~~ |5\. Februar 2019 |26. März 2019 |
+|~~WA-GUEST-OS-5.26_201812-01~~ |7\. Januar 2019 |12. März 2019 |
+|~~WA-GUEST-OS-5.25_201811-01~~ |14. Dezember 2018 |5\. Februar 2019 |
+|~~WA-GUEST-OS-5.24_201810-01~~ |8\. November 2018 |7\. Januar 2019 |
 |~~WA-GUEST-OS-5.23_201809-01~~ |12. Oktober 2018 |14. Dezember 2018 |
 
 ## <a name="family-4-releases"></a>Releases von Familie 4
@@ -127,13 +132,14 @@ Installierte .NET Framework-Versionen: 3.5, 4.5.1
 
 | Konfigurationszeichenfolge | Herausgabedatum | Deaktivierungsdatum |
 | --- | --- | --- |
-| WA-GUEST-OS-4.65_201904-01 |7. Mai 2019 |Post 4.67 |
-| WA-GUEST-OS-4.64_201903-01 |26. März 2019 |Post 4.66 |
-|~~WA-GUEST-OS-4.63_201902-01~~ |12. März 2019 |7. Mai 2019 |
-|~~WA-GUEST-OS-4.62_201901-01~~ |5. Februar 2019 |26. März 2019 |
-|~~WA-GUEST-OS-4.61_201812-01~~ |7. Januar 2019 |12. März 2019 |
-|~~WA-GUEST-OS-4.60_201811-01~~ |14. Dezember 2018 |5. Februar 2019 |
-|~~WA-GUEST-OS-4.59_201810-01~~ |8. November 2018 |7. Januar 2019 |
+| WA-GUEST-OS-4.66_201905-01 |6\. Juni 2019 |Post 4.68 |
+| WA-GUEST-OS-4.65_201904-01 |7\. Mai 2019 |Post 4.67 |
+|~~WA-GUEST-OS-4.64_201903-01~~ |26. März 2019 |6\. Juni 2019 |
+|~~WA-GUEST-OS-4.63_201902-01~~ |12. März 2019 |7\. Mai 2019 |
+|~~WA-GUEST-OS-4.62_201901-01~~ |5\. Februar 2019 |26. März 2019 |
+|~~WA-GUEST-OS-4.61_201812-01~~ |7\. Januar 2019 |12. März 2019 |
+|~~WA-GUEST-OS-4.60_201811-01~~ |14. Dezember 2018 |5\. Februar 2019 |
+|~~WA-GUEST-OS-4.59_201810-01~~ |8\. November 2018 |7\. Januar 2019 |
 |~~WA-GUEST-OS-4.58_201809-01~~ |12. Oktober 2018 |14. Dezember 2018 |
 
 ## <a name="family-3-releases"></a>Releases von Familie 3
@@ -143,13 +149,14 @@ Installierte .NET Framework-Versionen: 3.5, 4.5
 
 | Konfigurationszeichenfolge | Herausgabedatum | Deaktivierungsdatum |
 | --- | --- | --- |
-| WA-GUEST-OS-3.72_201904-01 |7. Mai 2019 |Post 3.74 |
-| WA-GUEST-OS-3.71_201903-01 |26. März 2019 |Post 3.73 |
-|~~WA-GUEST-OS-3.70_201902-01~~ |12. März 2019 |7. Mai 2019 |
-|~~WA-GUEST-OS-3.69_201901-01~~ |5. Februar 2019 |26. März 2019 |
-|~~WA-GUEST-OS-3.68_201812-01~~ |7. Januar 2019 |12. März 2019 |
-|~~WA-GUEST-OS-3.67_201811-01~~ |14. Dezember 2018 |5. Februar 2019 |
-|~~WA-GUEST-OS-3.66_201810-01~~ |8. November 2018 |7. Januar 2019 |
+| WA-GUEST-OS-3.73_201905-01 |6\. Juni 2019 |Post 3.75 |
+| WA-GUEST-OS-3.72_201904-01 |7\. Mai 2019 |Post 3.74 |
+|~~WA-GUEST-OS-3.71_201903-01~~ |26. März 2019 |6\. Juni 2019 |
+|~~WA-GUEST-OS-3.70_201902-01~~ |12. März 2019 |7\. Mai 2019 |
+|~~WA-GUEST-OS-3.69_201901-01~~ |5\. Februar 2019 |26. März 2019 |
+|~~WA-GUEST-OS-3.68_201812-01~~ |7\. Januar 2019 |12. März 2019 |
+|~~WA-GUEST-OS-3.67_201811-01~~ |14. Dezember 2018 |5\. Februar 2019 |
+|~~WA-GUEST-OS-3.66_201810-01~~ |8\. November 2018 |7\. Januar 2019 |
 |~~WA-GUEST-OS-3.65_201809-01~~ |12. Oktober 2018 |14. Dezember 2018 |
 
 ## <a name="family-2-releases"></a>Releases von Familie 2
@@ -159,13 +166,14 @@ Installierte .NET Framework-Versionen: 3.5 (einschließlich 2.0 und 3.0)
 
 | Konfigurationszeichenfolge | Herausgabedatum | Deaktivierungsdatum |
 | --- | --- | --- |
-| WA-GUEST-OS-2.85_201904-01 |7. Mai 2019 |Post 2.87 |
-| WA-GUEST-OS-2.84_201903-01 |26. März 2019 |Post 2.86 |
-|~~WA-GUEST-OS-2.83_201902-01~~ |12. März 2019 |7. Mai 2019 |
-|~~WA-GUEST-OS-2.82_201901-01~~ |5. Februar 2019 |26. März 2019 |
-|~~WA-GUEST-OS-2.81_201812-01~~ |7. Januar 2019 |12. März 2019 |
-|~~WA-GUEST-OS-2.80_201811-01~~ |14. Dezember 2018 |5. Februar 2019 |
-|~~WA-GUEST-OS-2.79_201810-01~~ |8. November 2018 |7. Januar 2019 |
+| WA-GUEST-OS-2.86_201905-01 |6\. Juni 2019 |Post 2.88 |
+| WA-GUEST-OS-2.85_201904-01 |7\. Mai 2019 |Post 2.87 |
+|~~WA-GUEST-OS-2.84_201903-01~~ |26. März 2019 |6\. Juni 2019 |
+|~~WA-GUEST-OS-2.83_201902-01~~ |12. März 2019 |7\. Mai 2019 |
+|~~WA-GUEST-OS-2.82_201901-01~~ |5\. Februar 2019 |26. März 2019 |
+|~~WA-GUEST-OS-2.81_201812-01~~ |7\. Januar 2019 |12. März 2019 |
+|~~WA-GUEST-OS-2.80_201811-01~~ |14. Dezember 2018 |5\. Februar 2019 |
+|~~WA-GUEST-OS-2.79_201810-01~~ |8\. November 2018 |7\. Januar 2019 |
 |~~WA-GUEST-OS-2.78_201809-01~~ |12. Oktober 2018 |14. Dezember 2018 |
 
 ## <a name="msrc-patch-updates"></a>MSRC-Patch-Updates
@@ -194,7 +202,7 @@ Wenn das **Ablaufdatum** überschritten ist, wird jeder Clouddienst, der dieses 
 Die Gastbetriebssystemfamilien basieren auf veröffentlichten Versionen von Microsoft Windows Server. Das Gastbetriebssystem ist das zugrunde liegende Betriebssystem, auf dem Azure Cloud Services ausgeführt wird. Jedes Gastbetriebssystem verfügt über eine Familien-, eine Versions- und eine Releasenummer.
 
 * **Guest OS family**  
-   entspricht einem Windows Server-Betriebssystemrelease, auf dem ein Gastbetriebssystem basiert. Die *Familie 3* basiert beispielsweise auf Windows Server 2012.
+  entspricht einem Windows Server-Betriebssystemrelease, auf dem ein Gastbetriebssystem basiert. Die *Familie 3* basiert beispielsweise auf Windows Server 2012.
 * **Gastbetriebssystem-Version**  
   Gilt für das Image einer Gastbetriebssystemfamilie sowie relevante [Microsoft Security Response Center-Patches (MSRC)][msrc], die zum Zeitpunkt der Herstellung der neuen Gastbetriebssystemversion verfügbar sind. Möglicherweise sind nicht alle Patches enthalten.
 

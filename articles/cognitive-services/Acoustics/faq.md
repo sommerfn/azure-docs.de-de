@@ -10,12 +10,12 @@ ms.subservice: acoustics
 ms.topic: resources
 ms.date: 03/20/2019
 ms.author: kegodin
-ms.openlocfilehash: 3426681aad19bbe01c0f7e88ca16e79c0b490c36
-ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
+ms.openlocfilehash: 1f2b4d25b39e9b3ebc6659e736d47640964251dc
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58317305"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "64693882"
 ---
 # <a name="project-acoustics-frequently-asked-questions"></a>Häufig gestellte Fragen zu Projekt Akustik
 
@@ -27,7 +27,7 @@ Bei den Plug-Ins der Projekt Akustik-Suite handelt es sich um ein Akustiksystem,
 
 Sie können das Plug-In [Projekt Akustik mit Unity](https://www.microsoft.com/download/details.aspx?id=57346) oder das Plug-In [Projekt Akustik mit Unreal](https://www.microsoft.com/download/details.aspx?id=58090) herunterladen.
 
-## <a name="does-project-acoustics-support-x-platform"></a>Unterstützt Projekt Akustik die <x>-Plattform?
+## <a name="does-project-acoustics-support-ltxgt-platform"></a>Unterstützt Projekt Akustik die &lt;x&gt;-Plattform?
 
 Die Unterstützung der Projekt Akustik-Plattform wird basierend auf den Kundenbedürfnissen entwickelt. Kontaktieren Sie uns in den [Projekt Akustik-Foren](https://social.msdn.microsoft.com/Forums/en-US/home?forum=projectacoustics), um nach Unterstützung für zusätzliche Plattformen zu fragen.
 
@@ -45,7 +45,7 @@ Acoustics belegt etwa 0,01 % der CPU pro Quelle pro Frame. Die Speicherauslastun
  
 ## <a name="do-i-need-to-simplify-the-level-geometry-control-triangle-count-make-meshes-watertight"></a>Muss ich die Pegelgeometrie vereinfachen? Muss ich die Anzahl der Dreiecke steuern? Muss ich Gittermodelle wasserdicht machen?
 
- Nein. Das System erfasst die detaillierte Pegelgeometrie direkt. Sie wird zur internen Verarbeitung in Voxels konvertiert.
+Nein. Das System erfasst die detaillierte Pegelgeometrie direkt. Sie wird zur internen Verarbeitung in Voxels konvertiert.
  
 ## <a name="whats-in-the-runtime-lookup-table"></a>Was befindet sich in der Nachschlagetabelle für die Runtime?
 
@@ -57,7 +57,7 @@ Ja, Projekt Akustik konsultiert die Nachschlagetabelle und aktualisiert den Audi
  
 ## <a name="can-project-acoustics-handle-dynamic-geometry-closing-doors-walls-blown-away"></a>Kann Projekt Akustik mit dynamischer Geometrie umgehen? Oder schließende Türen? Oder Wände, die entfernt werden?
 
- Nein. Die akustischen Parameter werden basierend auf dem statischen Zustand einer Spielstufe vorausberechnet. Wir empfehlen, die Türgeometrie aus der Akustik auszuklammern und anschließend basierend auf dem Zustand von zerstörbaren und beweglichen Spielobjekten mithilfe bewährter Verfahren zusätzliche Okklusion anzuwenden.
+Nein. Die akustischen Parameter werden basierend auf dem statischen Zustand einer Spielstufe vorausberechnet. Wir empfehlen, die Türgeometrie aus der Akustik auszuklammern und anschließend basierend auf dem Zustand von zerstörbaren und beweglichen Spielobjekten mithilfe bewährter Verfahren zusätzliche Okklusion anzuwenden.
  
 ## <a name="does-project-acoustics-use-acoustic-materials"></a>Verwendet Projekt Akustik akustische Materialien?
 
