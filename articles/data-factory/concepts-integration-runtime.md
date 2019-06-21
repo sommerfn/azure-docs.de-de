@@ -10,14 +10,14 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 05/07/2019
+ms.date: 05/31/2019
 ms.author: abnarain
-ms.openlocfilehash: 6a7daae90254bb4192dbaf13e1c2f9202e2d2baa
-ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
+ms.openlocfilehash: 7c86577abe1e8e158299e3a6aee2cff7f3568241
+ms.sourcegitcommit: ef06b169f96297396fc24d97ac4223cabcf9ac33
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/07/2019
-ms.locfileid: "65232427"
+ms.lasthandoff: 05/31/2019
+ms.locfileid: "66427140"
 ---
 # <a name="integration-runtime-in-azure-data-factory"></a>Integrationslaufzeit in Azure Data Factory
 Bei der Integrationslaufzeit (Integration Runtime, IR) handelt es sich um die Computeinfrastruktur, mit der Azure Data Factory die folgenden Datenintegrationsfunktionen für verschiedene Netzwerkumgebungen bereitstellt:
@@ -114,11 +114,11 @@ Mit dem Integrationslaufzeit-Standort wird der Standort der Back-End-Computeinst
 ### <a name="azure-ir-location"></a>Azure-Integrationslaufzeit: Standort
 Wenn Sie für eine Azure-Integrationslaufzeit einen bestimmten Standort festlegen, werden Datenverschiebungen und Aktivitätsverteilungen in der entsprechenden Region durchgeführt. 
 
-Bei Verwendung der Azure-Integrationslaufzeit mit automatischer Auflösung (Standardeinstellung) gilt Folgendes: 
+Bei Verwendung der **Azure-Integrationslaufzeit mit automatischer Auflösung** (Standardeinstellung) gilt Folgendes: 
 
 - Bei Kopieraktivitäten versucht ADF, Ihre Senke und Ihren Quelldatenspeicher automatisch zu erkennen und den bestmöglichen Ort zu wählen – entweder in der gleichen Region (sofern verfügbar) oder in der nächstgelegenen Region im gleichen geografischen Gebiet. Ist keine Erkennung möglich, wird alternativ die Data Factory-Region verwendet.
 
-- Für die Ausführung der Lookup-/GetMetadata-Aktivität und die Verteilung von Transformationsaktivitäten verwendet ADF die Integrationslaufzeit in der Data Factory-Region.
+- ADF verwendet die IR in der Data Factory-Region für die Ausführung der Aktivitäten Lookup/GetMetadata/Delete (auch als Pipelineaktivitäten bezeichnet), die Bereitstellung von Transformationsaktivitäten (auch als externe Aktivitäten bezeichnet) und die Erstellung von Vorgängen (Verbindung testen, Ordner- und Tabellenliste durchsuchen, Daten als Vorschau anzeigen).
 
 - Für den Datenfluss verwendet ADF die IR in der Data Factory-Region. 
 

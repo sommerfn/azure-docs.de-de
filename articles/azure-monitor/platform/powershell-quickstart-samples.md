@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 2/14/2018
 ms.author: robb
 ms.subservice: ''
-ms.openlocfilehash: 59cb14c86963d956b0bd63f65b10776dff4aa97f
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: ada62fbfa51604a6b3188c27d5c14da40c8ac116
+ms.sourcegitcommit: d89032fee8571a683d6584ea87997519f6b5abeb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59698075"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66400209"
 ---
 # <a name="azure-monitor-powershell-quick-start-samples"></a>Azure Monitor – PowerShell-Schnellstartbeispiele
 In diesem Artikel werden PowerShell-Beispielbefehle beschrieben, mit denen Sie auf Azure Monitor-Features zugreifen können.
@@ -42,6 +42,11 @@ Es wird ein Anmeldebildschirm angezeigt. Nach der Anmeldung werden Ihr Konto, di
 Get-AzSubscription
 ```
 
+Verwenden Sie den folgenden Befehl, um Ihren Arbeitskontext anzuzeigen (für welches Abonnement Ihre Befehle ausgeführt werden):
+
+```powershell
+Get-AzContext
+```
 Verwenden Sie den folgenden Befehl, um den Arbeitskontext in ein anderes Abonnement zu ändern:
 
 ```powershell
@@ -50,18 +55,23 @@ Set-AzContext -SubscriptionId <subscriptionid>
 
 
 ## <a name="retrieve-activity-log-for-a-subscription"></a>Abrufen des Aktivitätsprotokolls für ein Abonnement
-Verwenden Sie das Cmdlet `Get-AzLog` .  Im Folgenden sind einige allgemeine Beispiele aufgeführt.
+Verwenden Sie das Cmdlet [Get-AzLog](https://docs.microsoft.com/powershell/module/az.monitor/get-azlog).  Im Folgenden sind einige allgemeine Beispiele aufgeführt. Das Aktivitätsprotokoll enthält die letzten 90 Tage der Vorgänge. Wenn Sie ältere Datumsangaben verwenden, führt dies zu einer Fehlermeldung.  
+
+Sehen Sie sich die aktuellen Angaben für Datum bzw. Uhrzeit an, um zu ermitteln, welche Zeiten in den Befehlen unten verwendet werden müssen:
+```powershell
+Get-Date
+```
 
 Abrufen von Protokolleinträgen ab dieser Uhrzeit-/Datumsangabe bis heute:
 
 ```powershell
-Get-AzLog -StartTime 2016-03-01T10:30
+Get-AzLog -StartTime 2019-03-01T10:30
 ```
 
 Abrufen von Protokolleinträgen im Uhrzeit-/Datumsbereich:
 
 ```powershell
-Get-AzLog -StartTime 2015-01-01T10:30 -EndTime 2015-01-01T11:30
+Get-AzLog -StartTime 2019-01-01T10:30 -EndTime 2015-01-01T11:30
 ```
 
 Abrufen von Protokolleinträgen aus einer bestimmten Ressourcengruppe:
@@ -85,13 +95,13 @@ Get-AzLog -Caller 'myname@company.com'
 Der folgende Befehl ruft die letzten 1.000 Ereignisse aus dem Aktivitätsprotokoll ab:
 
 ```powershell
-Get-AzLog -MaxEvents 1000
+Get-AzLog -MaxRecord 10
 ```
 
 `Get-AzLog` unterstützt viele weitere Parameter. Weitere Informationen finden Sie in der `Get-AzLog` -Referenz.
 
 > [!NOTE]
-> `Get-AzLog` stellt nur den Verlauf für 15 Tage bereit. Mithilfe des **-MaxEvents** -Parameters können Sie die letzten N Ereignisse für mehr als 15 Tage abfragen. Verwenden Sie für den Zugriff auf Ereignisse, die älter als 15 Tage sind, die REST-API oder das SDK (C#-Beispiel mit dem SDK). Wenn Sie **StartTime** nicht angeben, ist der Standardwert **EndTime** minus 1 Stunde. Wenn Sie **EndTime**nicht angeben, ist der Standardwert die aktuelle Zeit. Alle Zeitangaben sind in UTC.
+> `Get-AzLog` stellt nur den Verlauf für 15 Tage bereit. Mithilfe des Parameters **-MaxRecords** können Sie die letzten N Ereignisse für mehr als 15 Tage abfragen. Verwenden Sie für den Zugriff auf Ereignisse, die älter als 15 Tage sind, die REST-API oder das SDK (C#-Beispiel mit dem SDK). Wenn Sie **StartTime** nicht angeben, ist der Standardwert **EndTime** minus 1 Stunde. Wenn Sie **EndTime**nicht angeben, ist der Standardwert die aktuelle Zeit. Alle Zeitangaben sind in UTC.
 > 
 > 
 
