@@ -37,7 +37,7 @@ Gibt ein Objekt von Eigenschaften zurück, die mit den Ausgaben dieses Blaupause
 
 | Parameter | Erforderlich | Typ | BESCHREIBUNG |
 |:--- |:--- |:--- |:--- |
-| artifactName |Ja |Zeichenfolge |Der Name eines Blaupausenartefakts. |
+| artifactName |Ja |string |Der Name eines Blaupausenartefakts. |
 
 ### <a name="return-value"></a>Rückgabewert
 
@@ -151,7 +151,7 @@ Gibt einen Blaupausenparameterwert zurück. Der angegebene Parametername muss in
 
 | Parameter | Erforderlich | Typ | BESCHREIBUNG |
 |:--- |:--- |:--- |:--- |
-| parameterName |Ja |Zeichenfolge |Der Name des zurückzugebenden Parameter. |
+| parameterName |Ja |string |Der Name des zurückzugebenden Parameter. |
 
 ### <a name="return-value"></a>Rückgabewert
 
