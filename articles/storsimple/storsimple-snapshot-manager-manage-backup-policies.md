@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 06/05/2017
 ms.author: v-sharos
-ms.openlocfilehash: 218c89e403673c16c72da95aa2c1d685bbed5a86
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 7dac26b058b959011e38b4373369b8a1115d2705
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
-ms.locfileid: "23109278"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "64687274"
 ---
 # <a name="use-storsimple-snapshot-manager-to-create-and-manage-backup-policies"></a>Verwenden des StorSimple Snapshot Managers zum Erstellen und Verwalten von Sicherungsrichtlinien
 ## <a name="overview"></a>Übersicht
@@ -67,7 +67,7 @@ Nachdem Sie eine Sicherungsrichtlinie erstellt haben, werden die folgenden Infor
 * **Volumegruppe** – die der Richtlinie zugeordnete Volumegruppe.
 * **Aufbewahrung** – die Anzahl der beibehaltenen Momentaufnahmen, maximal 64.
 * **Erstellt** – das Datum, an dem diese Richtlinie erstellt wurde.
-* **Aktiviert**: Gibt an, ob die Richtlinie derzeit angewendet wird. Bei **True** ist die Richtline aktiviert, bei **False** ist die Richtlinie nicht aktiviert.
+* **Aktiviert** – Legt fest, ob die Richtlinie derzeit angewendet wird: Bei **True** ist die Richtline aktiviert, bei **False** ist die Richtlinie nicht aktiviert.
 
 ## <a name="edit-a-backup-policy"></a>Bearbeiten einer Sicherungsrichtlinie
 Verwenden Sie das folgende Verfahren, um eine vorhandene Sicherungsrichtlinie bearbeiten.

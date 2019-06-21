@@ -11,6 +11,8 @@
       href: per-vm-quota-requests.md
     - name: Erhöhung des Grenzwerts der gesamten regionalen vCPUs
       href: regional-quota-requests.md
+    - name: Erhöhung des Grenzwerts für Netzwerke
+      href: networking-quota-requests.md
 - name: Beheben von Abonnementproblemen im Zusammenhang mit Region oder SKU
   href: sku-series-unavailable.md
 - name: Verweis

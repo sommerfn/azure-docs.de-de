@@ -1,6 +1,6 @@
 ---
-title: Includedatei
-description: Includedatei
+title: include file
+description: include file
 services: iot-hub
 author: dominicbetts
 ms.service: iot-hub
@@ -8,16 +8,16 @@ ms.topic: include
 ms.date: 09/07/2018
 ms.author: dobett
 ms.custom: include file
-ms.openlocfilehash: 40a5416f15b0e2d66d6ce4b4787573560ee4af00
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.openlocfilehash: b2bce9788006a564def9bd8c1375a85dc4184b67
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66156402"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "66814862"
 ---
 ## <a name="create-a-device-identity"></a>Erstellen einer Geräteidentität
 
-In diesem Abschnitt verwenden Sie die Azure-Befehlszeilenschnittstelle zum Erstellen einer Geräteidentität für dieses Tutorial. Die Azure-Befehlszeilenschnittstelle ist in der [Azure Cloud Shell](~/articles/cloud-shell/overview.md) vorinstalliert, Sie können sie aber auch [lokal installieren](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest). Bei Geräte-IDs wird die Groß-/Kleinschreibung beachtet.
+In diesem Abschnitt verwenden Sie die Azure-Befehlszeilenschnittstelle zum Erstellen einer Geräteidentität für dieses Tutorial. Die Azure-Befehlszeilenschnittstelle ist in der [Azure Cloud Shell](~/articles/cloud-shell/overview.md) vorinstalliert. Sie können [die Azure-Befehlszeilenschnittstelle aber auch lokal installieren](/cli/azure/install-azure-cli). Bei Geräte-IDs wird die Groß-/Kleinschreibung beachtet.
 
 1. Führen Sie den folgenden Befehl in der Befehlszeilenumgebung aus, in der Sie die IoT-Erweiterung mit der Azure-Befehlszeilenschnittstelle installieren:
 

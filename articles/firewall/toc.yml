@@ -43,6 +43,10 @@
       href: deploy-cli.md
     - name: Mithilfe einer Vorlage bereitstellen
       href: deploy-template.md
+    - name: Bereitstellen mit mehreren öffentlichen IP-Adressen
+      href: deploy-multi-public-ip-powershell.md
+    - name: Bereitstellen mit Verfügbarkeitszonen
+      href: deploy-availability-zone-powershell.md
     - name: Integrieren mit Lastenausgleich
       href: integrate-lb.md
 - name: Verweis

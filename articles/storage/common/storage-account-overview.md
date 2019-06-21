@@ -5,15 +5,15 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: article
-ms.date: 05/06/2019
+ms.date: 06/07/2019
 ms.author: tamram
 ms.subservice: common
-ms.openlocfilehash: 2eaf819870e2b70cc6238af6d1e9fa1dcb5caab8
-ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
+ms.openlocfilehash: 00b94174debf915fac3ae5fb37f382c0dc46abfb
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/07/2019
-ms.locfileid: "65236754"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "66755002"
 ---
 # <a name="azure-storage-account-overview"></a>Übersicht über Azure Storage-Konten
 
@@ -62,7 +62,11 @@ Während Allgemein v2-Konten für die meisten Fälle empfohlen werden, eignen si
 
 ### <a name="block-blob-storage-accounts"></a>Blockblob-Speicherkonten
 
-Ein Blockblob-Speicherkonto ist ein spezielles Speicherkonto, das dazu dient, unstrukturierte Objektdaten als Blockblobs oder Anfügeblobs zu speichern. Blockblob-Speicherkonten bieten mehrere Zugriffsebenen, um Daten auf Ihren Nutzungsmustern basierend zu speichern. Weitere Informationen finden Sie unter [Zugriffsebenen für Blockblobdaten](#access-tiers-for-block-blob-data).
+Blockblob-Speicherkonten sind spezielle Speicherkonten und dienen dazu, unstrukturierte Objektdaten als Blockblobs zu speichern. Dieser Speicherkontotyp unterstützt Block- und Anfügeblobs, nicht jedoch Seitenblobs, Tabellen oder Warteschlangen.
+
+Gegenüber universellen V2- und Blobspeicherkonten bieten Blockblob-Speicherkonten niedrige und einheitliche Latenzzeiten und höhere Transaktionsraten.
+
+Blockblob-Speicherkonten unterstützen derzeit kein Tiering zu den Zugriffsebenen „Heiß“, „Kalt“ oder „Archiv“.
 
 ### <a name="filestorage-preview-storage-accounts"></a>FileStorage-Speicherkonten (Vorschau)
 
@@ -75,12 +79,16 @@ Beachten Sie bei der Benennung Ihres Speicherkontos folgende Regeln:
 - Speicherkontonamen müssen zwischen 3 und 24 Zeichen lang sein und dürfen nur Zahlen und Kleinbuchstaben enthalten.
 - Der Name Ihres Speicherkontos muss innerhalb von Azure eindeutig sein. Zwei Speicherkonten können nicht denselben Namen haben.
 
-## <a name="general-purpose-performance-tiers"></a>Allgemeine Leistungsstufen
+## <a name="performance-tiers"></a>Leistungsstufen
 
 Allgemeine Speicherkonten können für jede der folgenden Leistungsstufen konfiguriert werden:
 
 * Eine Standard-Leistungsstufe zum Speichern von Blobs, Dateien, Tabellen, Warteschlangen und Azure-VM-Datenträgern.
 * Eine Premium-Leistungsstufe zum ausschließlichen Speichern von nicht verwalteten VM-Datenträgern.
+
+Blockblob-Speicherkonten bieten die Leistungsebene „Premium“ für das Speichern von Block- und Anfügeblobs.
+
+FileStorage-Speicherkonten (Vorschau) bieten die Leistungsebene „Premium“ für Azure-Dateifreigaben.
 
 ## <a name="access-tiers-for-block-blob-data"></a>Zugriffsebenen für Blockblobdaten
 
@@ -88,9 +96,9 @@ Azure Storage bietet verschiedene Optionen für den Zugriff auf Blockblobdaten b
 
 Folgende Zugriffsebenen sind verfügbar:
 
-* Die Zugriffsebene **Heiß**, die für häufigen Zugriff auf Objekte im Speicherkonto optimiert ist. Der Zugriff auf Daten auf der Zugriffsebene „Heiß“ ist sehr kosteneffektiv, aber die Speicherkosten liegen etwas höher. Neue Speicherkonten werden standardmäßig auf dieser Ebene erstellt.
-* Die Zugriffsebene **Kalt**, die für die Speicherung von großen Datenmengen optimiert ist, auf die selten zugegriffen wird und die mindestens 30 Tage lang gespeichert werden. Das Speichern von Daten auf der Ebene „Kalt“ ist kostengünstiger, aber der Zugriff auf die Daten ist unter Umständen etwas kostenintensiver als der Zugriff auf Daten auf der Ebene „Heiß“.
-* Die Ebene **Archiv**, die nur für einzelne Blockblobs verfügbar ist. Diese Ebene ist für Daten optimiert, die mehrere Stunden Abruflatenz tolerieren und mindestens 180 Tage lang auf der Ebene „Archiv“ verbleiben. Die Ebene „Archiv“ ist die kosteneffektivste Option für das Speichern von Daten, aber der Zugriff auf die Daten ist kostenintensiver als der Zugriff auf Daten auf der Ebene „Heiß“ oder „Kalt“.
+* Die Zugriffsebene **Heiß**, die für häufigen Zugriff auf Objekte im Speicherkonto optimiert ist. Der Zugriff auf Daten auf der Zugriffsebene „Heiß“ ist besonders kostengünstig, dafür liegen aber die Speicherkosten etwas höher. Neue Speicherkonten werden standardmäßig auf dieser Ebene erstellt.
+* Die Zugriffsebene **Kalt**, die für die Speicherung von großen Datenmengen optimiert ist, auf die selten zugegriffen wird und die mindestens 30 Tage lang gespeichert werden. Das Speichern von Daten auf der Ebene „Kalt“ ist kostengünstiger, doch kann der Zugriff auf die Daten teurer sein als der Zugriff auf der Ebene „Heiß“.
+* Die Ebene **Archiv**, die nur für einzelne Blockblobs verfügbar ist. Diese Ebene ist für Daten optimiert, die mehrere Stunden Abruflatenz tolerieren und mindestens 180 Tage lang auf der Ebene „Archiv“ verbleiben. Die Archivebene ist die kosteneffektivste Option für das Speichern von Daten, der Zugriff auf die Daten ist jedoch kostenintensiver als der Zugriff auf Daten auf der heißen oder kalten Ebene.
 
 Wenn sich das Nutzungsmusters Ihrer Daten ändern, können Sie jederzeit zwischen den Zugriffsebenen wechseln. Weitere Informationen zu Zugriffsebenen finden Sie unter [Azure Blob Storage: Zugriffsebenen „Heiß“ (Hot), „Kalt“ (Cool) und „Archiv“](../blobs/storage-blob-storage-tiers.md).
 
@@ -119,7 +127,7 @@ Wenn Ihr allgemeines Speicherkonto beispielsweise *meinspeicherkonto*heißt, lau
 * Azure Files: http://*meinspeicherkonto*.file.core.windows.net
 
 > [!NOTE]
-> Ein Blobspeicherkonto macht nur den Endpunkt des Blobdiensts verfügbar.
+> Blockblob- und Blockspeicherkonten machen nur den Endpunkt des Blobdiensts verfügbar.
 
 Die URL für den Zugriff auf ein Objekt in einem Speicherkonto wird durch Anhängen des Objektstandorts im Speicherkonto an den Endpunkt generiert. Eine Blob-Adresse kann beispielsweise das folgende Format haben: http://*meinspeicherkonto*.blob.core.windows.net/*meincontainer*/*meinblob*.
 
@@ -177,5 +185,6 @@ Sie können diesen Dienst auch zum Übertragen von Daten aus Azure Blob Storage 
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* Um zu erfahren, wie Sie ein Azure Storage-Konto erstellen, lesen Sie den Artikel [Erstellen eines Speicherkontos](storage-quickstart-create-account.md).
+* Informationen zum Erstellen eines universellen Azure-Speicherkontos finden Sie unter [Erstellen eines Speicherkontos](storage-quickstart-create-account.md).
+* Informationen zum Erstellen eines Blockblob-Speicherkontos finden Sie unter [Erstellen eines Blockblob-Speicherkontos](../blobs/storage-blob-create-account-block-blob.md).
 * Informationen zum Verwalten oder Löschen eines vorhandenen Speicherkontos finden Sie unter [Verwalten von Azure Storage-Konten](storage-account-manage.md).

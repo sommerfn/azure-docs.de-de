@@ -13,16 +13,16 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.subservice: report-monitor
-ms.date: 11/13/2018
+ms.date: 06/07/2019
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 78676ac2f2dcff74a27e0260a5d83e924f7c246f
-ms.sourcegitcommit: 70550d278cda4355adffe9c66d920919448b0c34
+ms.openlocfilehash: 6ee49ae56122fe596a4490914677d91d2f0348f6
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58434822"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "66807530"
 ---
 # <a name="troubleshooting-azure-active-directory-activity-logs-content-pack-errors"></a>Behandlung von Fehlern am Inhaltspaket von Azure Active Directory-Aktivitätsprotokollen 
 
@@ -47,7 +47,7 @@ In diesem Artikel finden Sie Informationen zu den möglichen Ursachen und zur Be
 | Ursache | So behebt man den Fehler |
 | ---   | ---        |
 | Aktualisierungsfehler können auftreten, wenn die Anmeldeinformationen der Benutzer, die eine Verbindung mit dem Inhaltspaket herstellen, zurückgesetzt, aber nicht in den Verbindungseinstellungen des Inhaltspakets aktualisiert wurden. | Suchen Sie in Power BI das Dataset, das dem Dashboard für Azure AD-Aktivitätsprotokolle (**Azure Active Directory-Aktivitätsprotokolle**) entspricht. Wählen Sie die geplante Aktualisierung aus, und geben Sie dann Ihre Azure AD-Anmeldeinformationen ein. |
-| Bei einer Aktualisierung können aufgrund von Datenproblemen im zugrunde liegenden Inhaltspaket Fehler auftreten. | [Öffnen Sie ein Supportticket](../fundamentals/active-directory-troubleshooting-support-howto.md).|
+| Eine Aktualisierung kann aufgrund großer Datasets fehlschlagen. | Zurzeit kann das Azure AD-Inhaltspaket mit Power BI aufgrund von Einschränkungen bei Zeitlimits im Power BI-Dienst nur kleine Datasets (weniger als 500,00 Zeilen) unterstützen. Wenn Drosselungsfehler auftreten oder die Aktualisierung aufgrund von Zeitlimitproblemen fehlschlägt, versuchen Sie möglicherweise, ein großes Dataset abzurufen. Reduzieren Sie die Zeitspanne in der Abfrage, und versuchen Sie es erneut.|
  
  
 ## <a name="failed-to-update-data-source-credentials"></a>Fehler beim Aktualisieren der Anmeldeinformationen für die Datenquelle 

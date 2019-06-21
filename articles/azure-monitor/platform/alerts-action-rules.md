@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 04/25/2019
 ms.author: anantr
 ms.component: alerts
-ms.openlocfilehash: f8d7b00de24c566cab204c66371dac9b569c42c9
-ms.sourcegitcommit: 3675daec6c6efa3f2d2bf65279e36ca06ecefb41
+ms.openlocfilehash: 6e97826499842a257f6402bd5268edc4cd6a486e
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/14/2019
-ms.locfileid: "65620001"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "66734916"
 ---
 # <a name="action-rules-preview"></a>Aktionsregeln (Vorschau)
 
@@ -128,12 +128,15 @@ Contoso möchte Benachrichtigungen für alle Protokollwarnungen unterdrücken, d
 
 ### <a name="scenario-3-action-group-defined-at-a-resource-group"></a>Szenario 3: In einer Ressourcengruppe definierte Aktionsgruppe
 
-Contoso hat eine [Metrikwarnung auf Abonnementebene](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-metric-overview#monitoring-at-scale-using-metric-alerts-in-azure-monitor) definiert, möchte jedoch die für Warnungen ausgelösten Aktionen für die Ressourcengruppe „ContosoRG“ separat definieren.
+Contoso hat eine [Metrikwarnung auf Abonnementebene](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-metric-overview#monitoring-at-scale-using-metric-alerts-in-azure-monitor) definiert, möchte aber die Aktionen definieren, die bei Warnungen speziell ausgelöst werden, die aus der Ressourcengruppe „ContosoRG“ generiert wurden.
 
 **Lösung:** Erstellen Sie eine Aktionsregel mit
 * Bereich = „ContosoRG“
 * Keine Filter
 * Aktionsgruppe auf „ContosoActionGroup“ festgelegt
+
+> [!NOTE]
+> **In Aktionsregeln definierte Aktionsgruppen und Warnungsregeln arbeiten unabhängig voneinander, und es erfolgt keine Deduplizierung**. Wenn im vorstehend beschriebenen Szenario eine Aktionsgruppe für die Warnungsregel definiert wurde, wird sie in Verbindung mit der in der Aktionsregel definierten Aktionsgruppe ausgelöst. 
 
 ## <a name="managing-your-action-rules"></a>Verwalten Ihrer Aktionsregeln
 

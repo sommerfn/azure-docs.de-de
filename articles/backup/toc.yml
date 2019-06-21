@@ -26,6 +26,8 @@
       href: tutorial-restore-files.md
     - name: Sichern von SQL Server auf virtuellen Azure-Computern
       href: tutorial-sql-backup.md
+    - name: "Sichern von Azure\_Files-Dateifreigaben"
+      href: tutorial-backup-azure-files.md
     - name: Sichern von Windows Server
       href: tutorial-backup-windows-server-to-azure.md
     - name: Wiederherstellen von Dateien auf Windows Server

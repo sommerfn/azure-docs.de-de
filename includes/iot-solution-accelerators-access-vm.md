@@ -1,6 +1,6 @@
 ---
-title: Includedatei
-description: Includedatei
+title: include file
+description: include file
 services: iot-accelerators
 author: dominicbetts
 ms.service: iot-accelerators
@@ -8,16 +8,16 @@ ms.topic: include
 ms.date: 08/16/2018
 ms.author: dobett
 ms.custom: include file
-ms.openlocfilehash: db1af4f046bd8849fddee299e949d6edbdaae86a
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.openlocfilehash: 8d1f0f6ae3ffc123f1ae8318a6fbce4a9a3024fa
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66143390"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "66814762"
 ---
 ## <a name="access-the-virtual-machine"></a>Zugriff auf den virtuellen Computer
 
-Bei den nachstehenden Schritten wird der Befehl `az` in der Azure Cloud Shell verwendet. Wenn es Ihnen lieber ist, können Sie auf Ihrem Entwicklungscomputer [Azure CLI 2.0 installieren](https://docs.microsoft.com/cli/azure/install-azure-cli) und die Befehle lokal ausführen.
+Bei den nachstehenden Schritten wird die Azure-Befehlszeilenschnittstelle in der Azure Cloud Shell verwendet. Wenn es Ihnen lieber ist, können Sie auf Ihrem Entwicklungscomputer die [Azure-Befehlszeilenschnittstelle installieren](/cli/azure/install-azure-cli) und die Befehle lokal ausführen.
 
 Die nachstehenden Schritte zeigen, wie Sie den virtuellen Azure-Computer so konfigurieren, das **SSH**-Zugriff zulässig ist. Bei den gezeigten Schritten wird angenommen, dass der für den Solution Accelerator gewählte Name **Contoso-Simulation** lautet. Ersetzen Sie diesen Wert durch den Namen Ihrer Bereitstellung:
 

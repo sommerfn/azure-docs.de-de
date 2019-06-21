@@ -1,6 +1,6 @@
 ---
 title: 'Azure Active Directory: Durchsetzen einer Gruppenbenennungsrichtlinie für Office 365-Gruppen | Microsoft-Dokumentation'
-description: Einrichten einer Benennungsrichtlinie für Office 365-Gruppen in Azure Active Directory (Vorschau)
+description: Einrichten einer Benennungsrichtlinie für Office 365-Gruppen in Azure Active Directory
 services: active-directory
 documentationcenter: ''
 author: curtand
@@ -15,12 +15,12 @@ ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro;seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9d21616938978e501cc112fde105be4db4499b2a
-ms.sourcegitcommit: 6ea7f0a6e9add35547c77eef26f34d2504796565
+ms.openlocfilehash: 0c13b95028975c5463217455c940bb84c3867899
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/14/2019
-ms.locfileid: "65605550"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "66734785"
 ---
 # <a name="enforce-a-naming-policy-on-office-365-groups-in-azure-active-directory"></a>Durchsetzen einer Benennungsrichtlinie für Office 365-Gruppen in Azure Active Directory
 
@@ -76,12 +76,12 @@ Ausgewählte Administratoren können von diesen Richtlinien für alle Gruppenwor
 - Benutzeradministrator
 - Verzeichnis schreiben
 
-## <a name="configure-naming-policy-in-azure-portal-preview"></a>Konfigurieren einer Benennungsrichtlinie im Azure-Portal (Vorschauversion)
+## <a name="configure-naming-policy-in-azure-portal"></a>Konfigurieren einer Benennungsrichtlinie im Azure-Portal
 
 1. Melden Sie sich mit einem Benutzeradministratorkonto beim [Azure AD Admin Center](https://aad.portal.azure.com) an.
 1. Wählen Sie **Gruppen** aus, und wählen Sie dann **Benennungsrichtlinie** aus, um die Seite „Benennungsrichtlinie“ zu öffnen.
 
-    ![Öffnen der Seite „Benennungsrichtlinie“ im Admin Center](./media/groups-naming-policy/policy-preview.png)
+    ![Öffnen der Seite „Benennungsrichtlinie“ im Admin Center](./media/groups-naming-policy/policy.png)
 
 ### <a name="view-or-edit-the-prefix-suffix-naming-policy"></a>Anzeigen und Bearbeiten von Präfix-/Suffixbenennungsrichtlinien
 
@@ -94,7 +94,7 @@ Ausgewählte Administratoren können von diesen Richtlinien für alle Gruppenwor
 
 1. Wählen Sie auf der Seite **Benennungsrichtlinie** die Option **Blockierte Wörter** aus.
 
-    ![Bearbeiten und Hochladen der Liste der blockierten Wörter für die Benennungsrichtlinie](./media/groups-naming-policy/blockedwords-preview.png)
+    ![Bearbeiten und Hochladen der Liste der blockierten Wörter für die Benennungsrichtlinie](./media/groups-naming-policy/blockedwords.png)
 
 1. Wählen Sie **Herunterladen** aus, um die aktuelle Liste der benutzerdefinierten blockierten Wörter anzuzeigen oder zu bearbeiten.
 1. Laden Sie die neue Liste der benutzerdefinierten blockierten Wörter durch Auswählen des Dateisymbols hoch.
@@ -198,7 +198,7 @@ Set-AzureADDirectorySetting -Id $Settings.Id -DirectorySetting $Settings
 
 ## <a name="remove-the-naming-policy"></a>Entfernen der Benennungsrichtlinie
 
-### <a name="remove-the-naming-policy-using-azure-portal-preview"></a>Entfernen der Benennungsrichtlinie im Azure-Portal (Vorschauversion)
+### <a name="remove-the-naming-policy-using-azure-portal"></a>Entfernen der Benennungsrichtlinie im Azure-Portal
 
 1. Wählen Sie auf der Seite **Benennungsrichtlinie** die Option **Richtlinie löschen** aus.
 1. Nach dem Bestätigen des Löschvorgangs wird die Benennungsrichtlinie einschließlich aller Präfix-/Suffixbenennungsrichtlinien und benutzerdefinierten blockierten Wörter entfernt.

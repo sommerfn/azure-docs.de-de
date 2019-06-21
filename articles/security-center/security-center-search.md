@@ -14,14 +14,18 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/11/2017
 ms.author: rkarlin
-ms.openlocfilehash: 6cbf3d70bd835ce1b838b19c93507f7d9487a418
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 90dbb33fa516d3a831d4e60969ac6b6c8312d539
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58074504"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "64574141"
 ---
 # <a name="azure-security-center-search"></a>Azure Security Center-Suche
+
+> [!NOTE]
+> Das Dashboard „Suchen“ des Azure Security Center wird am 31. Juli 2019 eingestellt. Weitere Informationen und alternative Dienste finden Sie unter [Auslaufen von Security Center-Funktionen (Juli 2019)](security-center-features-retirement-july2019.md#menu_search).
+
 Azure Security Center verwendet die [Azure Monitor-Protokollsuche](../log-analytics/log-analytics-log-searches.md), um Ihre Sicherheitsdaten abzurufen und zu analysieren. Azure Monitor-Protokolle bietet eine Abfragesprache zum schnellen Abrufen und Konsolidieren von Daten. In Security Center können Sie mithilfe der Azure Monitor-Protokollsuche Abfragen erstellen und gesammelte Daten analysieren.
 
 Die Suche steht sowohl im Free-Tarif als auch im Standard-Tarif von Security Center zur Verfügung.  Welche Daten in Ihren Protokollsuchen verfügbar sind, hängt davon ab, welcher Tarif auf Ihren Arbeitsbereich angewendet wurde.  Weitere Informationen finden Sie auf der Seite mit den [Preisen für Security Center](../security-center/security-center-pricing.md).

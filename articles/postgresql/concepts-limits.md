@@ -5,16 +5,17 @@ author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
-ms.date: 5/6/2019
-ms.openlocfilehash: 01133662ca3a7364efd362f6db99d33243b2ad4b
-ms.sourcegitcommit: 0ae3139c7e2f9d27e8200ae02e6eed6f52aca476
+ms.date: 06/05/2019
+ms.openlocfilehash: 3e1597def26c09378d3917ad2d49163ef17732f8
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65073542"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "66732860"
 ---
 # <a name="limitations-in-azure-database-for-postgresql---single-server"></a>Einschränkungen in Azure Database for PostgreSQL – Einzelserver
-In den folgenden Abschnitten werden die Kapazitäts- und funktionalen Beschränkungen im Datenbankdienst beschrieben.
+In den folgenden Abschnitten werden die Kapazitäts- und funktionalen Beschränkungen im Datenbankdienst beschrieben. Informationen zu den Tarifen für Ressourcen (Compute, Arbeitsspeicher, Speicher) finden Sie im Artikel [Tarife](concepts-pricing-tiers.md).
+
 
 ## <a name="maximum-connections"></a>Maximale Anzahl der Verbindungen
 Die folgende Tabelle enthält die maximale Anzahl von Verbindungen nach Tarif und V-Kernen: 
@@ -28,12 +29,12 @@ Die folgende Tabelle enthält die maximale Anzahl von Verbindungen nach Tarif un
 |Allgemeiner Zweck| 8| 480|
 |Allgemeiner Zweck| 16| 950|
 |Allgemeiner Zweck| 32| 1500|
-|Allgemeiner Zweck| 64| 1.900|
+|Allgemeiner Zweck| 64| 1\.900|
 |Arbeitsspeicheroptimiert| 2| 300|
 |Arbeitsspeicheroptimiert| 4| 500|
 |Arbeitsspeicheroptimiert| 8| 960|
-|Arbeitsspeicheroptimiert| 16| 1.900|
-|Arbeitsspeicheroptimiert| 32| 1.900|
+|Arbeitsspeicheroptimiert| 16| 1\.900|
+|Arbeitsspeicheroptimiert| 32| 1\.900|
 
 Wenn Verbindungen den Grenzwert übersteigen, erhalten Sie möglicherweise den folgenden Fehler:
 > SCHWERWIEGEND: Es sind bereits zu viele Clients vorhanden.

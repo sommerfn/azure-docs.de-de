@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 04/18/2016
 ms.author: v-sharos
-ms.openlocfilehash: 2c0b211bced99d272a73a7b018a22f99d8d58aa9
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 260dfdd4b8fe7c277358fa5773029ea9a532740a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
-ms.locfileid: "23111718"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "61078306"
 ---
 # <a name="use-storsimple-snapshot-manager-to-view-and-manage-volumes"></a>Verwenden des StorSimple Snapshot Managers zum Anzeigen und Verwalten von Volumes
 ## <a name="overview"></a>Übersicht
@@ -91,9 +91,9 @@ Gehen Sie folgendermaßen vor, um Informationen zu lokalen und Azure StorSimple-
    
     ![Konfigurieren der Spalten](./media/storsimple-snapshot-manager-manage-volumes/HCS_SSM_View_volumes.png)
    
-   | Ergebnisspalte | Beschreibung |
+   | Ergebnisspalte | BESCHREIBUNG |
    |:--- |:--- |
-   |  Name |Die Spalte **Name** enthält den Laufwerkbuchstaben, der den jeweiligen ermittelten Volumes zugeordnet wurde. |
+   |  NAME |Die Spalte **Name** enthält den Laufwerkbuchstaben, der den jeweiligen ermittelten Volumes zugeordnet wurde. |
    |  Gerät |Die Spalte **Gerät** enthält die IP-Adresse des mit dem Hostcomputer verbundenen Geräts. |
    |  Device Volume Name |Die Spalte **Device Volume Name** enthält den Namen des Gerätevolumes, zu dem das ausgewählte Volume gehört. Dies ist der im Azure-Portal für das Volume festgelegte Volumename. |
    |  Access Paths |Die Spalte **Access Paths** zeigt den Zugriffspfad zum Volume an. Dies ist der Laufwerkbuchstabe oder der Bereitstellungspunkt, über den auf dem Hostcomputer auf das Volume zugegriffen werden kann. |
@@ -123,7 +123,7 @@ Gehen Sie folgendermaßen vor, um die mit dem StorSimple Snapshot Manager verbun
 1. Klicken Sie auf das Desktopsymbol, um den StorSimple Snapshot Manager zu starten.
 2. Klicken Sie im Fensterbereich **Bereich** mit der rechten Maustaste auf **Volumes**, und klicken Sie dann auf **Volumes erneut überprüfen**.
    
-    ![Volumes erneut einlesen](./media/storsimple-snapshot-manager-manage-volumes/HCS_SSM_Rescan_volumes.png)
+    ![Erneutes Einlesen von Volumes](./media/storsimple-snapshot-manager-manage-volumes/HCS_SSM_Rescan_volumes.png)
    
     Mit diesem Verfahren wird die Volumeliste mit StorSimple Snapshot Manager synchronisiert. Alle Änderungen wie z. B. neue oder gelöschte Volumes werden in den Ergebnissen berücksichtigt.
 
@@ -139,7 +139,7 @@ Vorbereitungen
 #### <a name="to-configure-backup-of-a-basic-volume"></a>So konfigurieren Sie die Sicherung eines Basisvolumes
 1. Erstellen Sie ein Basisvolume auf dem StorSimple-Gerät.
 2. Führen Sie die Bereitstellung, Initialisierung und Formatierung des Volumes wie unter [Bereitstellen von Volumes](#mount-volumes)beschrieben durch. 
-3. Klicken Sie auf das Desktopsymbol des StorSimple Snapshot Managers. Das Fenster des StorSimple Snapshot Managers wird angezeigt. 
+3. Klicken Sie auf das StorSimple Snapshot Manager-Symbol auf Ihrem Desktop. Das Fenster des StorSimple Snapshot Managers wird angezeigt. 
 4. Klicken Sie im Fensterbereich **Bereich** mit der rechten Maustaste auf den Knoten **Volumes**, und wählen Sie dann **Volumes erneut überprüfen** aus. Wenn die Überprüfung abgeschlossen ist, wird im **Ergebnisbereich** eine Liste der Volumes angezeigt. 
 5. Klicken Sie im Bereich **Ergebnisse** mit der rechten Maustaste auf das Volume, und wählen Sie dann **Volumegruppe erstellen** aus. 
    
@@ -155,8 +155,8 @@ Vorbereitungen
 ## <a name="configure-and-back-up-a-dynamic-mirrored-volume"></a>Konfigurieren und Sichern eines dynamisch gespiegelten Volumes
 Führen Sie die folgenden Schritte aus, um die Sicherung eines dynamisch gespiegelten Volumes zu konfigurieren:
 
-* Schritt 1: Erstellen eines dynamisch gespiegelten Volumes mithilfe der Datenträgerverwaltung 
-* Schritt 2: Konfigurieren der Sicherung mit dem StorSimple Snapshot Manager
+* Schritt 1: Erstellen eines dynamisch gespiegelten Volumes mithilfe der Datenträgerverwaltung 
+* Schritt 2: Konfigurieren der Sicherung mit dem StorSimple Snapshot Manager
 
 ### <a name="prerequisites"></a>Voraussetzungen
 Vorbereitungen
@@ -165,7 +165,7 @@ Vorbereitungen
 * Installieren und konfigurieren Sie den StorSimple Snapshot Manager. Weitere Informationen finden Sie unter [Bereitstellen des StorSimple Snapshot Managers](storsimple-snapshot-manager-deployment.md).
 * Konfigurieren Sie zwei Volumes auf dem StorSimple-Gerät. (In den Beispielen lauten die verfügbaren Volumes **Disk 1** und **Disk 2**.) 
 
-### <a name="step-1-use-disk-management-to-create-a-dynamic-mirrored-volume"></a>Schritt 1: Erstellen eines dynamisch gespiegelten Volumes mithilfe der Datenträgerverwaltung 
+### <a name="step-1-use-disk-management-to-create-a-dynamic-mirrored-volume"></a>Schritt 1: Erstellen eines dynamisch gespiegelten Volumes mithilfe der Datenträgerverwaltung
 Die Datenträgerverwaltung ist ein Systemprogramm zum Verwalten von Festplatten und den darauf enthaltenen Volumes oder Partitionen. Weitere Informationen zur Datenträgerverwaltung finden Sie unter [Disk Management](https://technet.microsoft.com/library/cc770943.aspx) (in englischer Sprache) auf der Microsoft TechNet-Website.
 
 #### <a name="to-create-a-dynamic-mirrored-volume"></a>So erstellen Sie ein dynamisch gespiegeltes Volume
@@ -190,7 +190,7 @@ Die Datenträgerverwaltung ist ein Systemprogramm zum Verwalten von Festplatten 
     
     ![Datenträgerverwaltung – dynamisch gespiegelte Datenträger](./media/storsimple-snapshot-manager-manage-volumes/HCS_SSM_Verify_dynamic_disks_2.png) 
 
-### <a name="step-2-use-storsimple-snapshot-manager-to-configure-backup"></a>Schritt 2: Konfigurieren der Sicherung mit dem StorSimple Snapshot Manager
+### <a name="step-2-use-storsimple-snapshot-manager-to-configure-backup"></a>Schritt 2: Konfigurieren der Sicherung mit dem StorSimple Snapshot Manager
 Verwenden Sie das folgende Verfahren zum Konfigurieren eines dynamisch gespiegelten Volumes, und starten Sie dann eine sofortige Sicherung, oder erstellen Sie eine Richtlinie für geplante Sicherungen.
 
 #### <a name="to-configure-backup-of-a-dynamic-mirrored-volume"></a>So konfigurieren Sie die Sicherung eines dynamisch gespiegelten Volumes

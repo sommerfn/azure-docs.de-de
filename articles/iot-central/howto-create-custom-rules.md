@@ -9,12 +9,12 @@ ms.service: iot-central
 services: iot-central
 ms.custom: mvc
 manager: philmea
-ms.openlocfilehash: 6140a8aea3fe0fe0a8f1c01cd1c97404c41f7a69
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: 5248b9546ffe931b72123778d0d23574e5238405
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65804798"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "66742410"
 ---
 # <a name="extend-azure-iot-central-with-custom-rules-that-send-notifications"></a>Erweitern von Azure IoT Central mit benutzerdefinierten Regeln zum Senden von Benachrichtigungen
 
@@ -353,4 +353,4 @@ In dieser Schrittanleitung wurde Folgendes vermittelt:
 * Erstellen einer Stream Analytics-Abfrage, die erkennt, wenn ein Gerät keine Daten mehr sendet
 * Senden einer E-Mail-Benachrichtigung mithilfe der Dienste Azure Functions und SendGrid
 
-Sie wissen nun, wie Sie benutzerdefinierte Regeln und Benachrichtigungen erstellen. Als Nächstes empfiehlt die Lektüre des Artikels [Visualisieren und Analysieren der Azure IoT Central-Daten in einem Power BI-Dashboard](howto-connect-powerbi.md).
+Sie wissen jetzt, wie Sie benutzerdefinierte Regeln und Benachrichtigungen erstellen können. Als Nächstes sollten Sie sich über das [Erweitern von Azure IoT Central mit benutzerdefinierten Analysen](howto-create-custom-analytics.md) informieren.

@@ -14,16 +14,19 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 3/20/2019
 ms.author: rkarlin
-ms.openlocfilehash: c0c37724e61490c8c33b5e2d37879549bbc6d7ce
-ms.sourcegitcommit: 81fa781f907405c215073c4e0441f9952fe80fe5
+ms.openlocfilehash: d9dc9f3a4ab964b66e3a2cb03f4aad442c5665e9
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/25/2019
-ms.locfileid: "58402115"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "64573607"
 ---
 # <a name="customize-os-security-configurations-in-azure-security-center-preview"></a>Anpassen der Sicherheitskonfigurationen von Betriebssystemen in Azure Security Center (Vorschau)
 
 Diese exemplarische Vorgehensweise veranschaulicht, wie Sie Bewertungen für Sicherheitskonfigurationen von Betriebssystemen in Azure Security Center anpassen.
+
+> [!NOTE]
+> Die Möglichkeit zum Anpassen von Sicherheitskonfigurationen von Betriebssystemen wird am 31. Juli 2019 eingestellt. Weitere Informationen und alternative Dienste finden Sie unter [Auslaufen von Security Center-Funktionen (Juli 2019)](security-center-features-retirement-july2019.md#menu_securityconfigurations).
 
 ## <a name="what-are-os-security-configurations"></a>Was sind Sicherheitskonfigurationen von Betriebssystemen?
 
@@ -281,7 +284,7 @@ Alle potenziellen Fehler sind in der folgenden Tabelle aufgeführt:
 | BaselineRuleCceIdNotUniqueError          | Die CCE-ID *{0}* ist nicht eindeutig.                                                                                                                  |
 | BaselineRuleEmptyProperty                | Die Eigenschaft *{0}* fehlt oder ist ungültig.                                                                                                       |
 | BaselineRuleIdNotInDefault               | Die Regel weist die Quelleigenschaft *Microsoft* auf, wurde aber im Standardregelsatz von Microsoft nicht gefunden.                                                   |
-| BaselineRuleIdNotUniqueError             | Die Regel-ID ist nicht eindeutig.                                                                                                                       |
+| BaselineRuleIdNotUniqueError             | Der Regel-Bezeichner ist nicht eindeutig.                                                                                                                       |
 | BaselineRuleInvalidGuid                  | Die Eigenschaft *{0}* wurde als ungültig ermittelt. Der Wert ist keine gültige GUID.                                                                             |
 | BaselineRuleInvalidHive                  | „Hive“ muss „LocalMachine“ sein.                                                                                                                   |
 | BaselineRuleNameNotUniqueError           | Der Regelname ist nicht eindeutig.                                                                                                                 |
@@ -290,12 +293,12 @@ Alle potenziellen Fehler sind in der folgenden Tabelle aufgeführt:
 | BaselineRuleNotInPlace                   | Die Regel entspricht einer Standardregel des Typs {0} und ist in der Liste {1} aufgeführt.                                                                       |
 | BaselineRulePropertyTooLong              | Die Eigenschaft *{0}* ist zu lang. Maximal zulässige Länge: {1}.                                                                                        |
 | BaselineRuleRegTypeInvalidError          | Der erwartete Wert *{0}* stimmt nicht mit dem definierten Registrierungswerttyp überein.                                                              |
-| BaselineRulesetAdded                     | Der Regelsatz mit der ID *{0}* wurde in der Standardkonfiguration nicht gefunden. Der Regelsatz kann nicht hinzugefügt werden.                                               |
+| BaselineRulesetAdded                     | Der Regelsatz mit dem Bezeichner *{0}* wurde in der Standardkonfiguration nicht gefunden. Der Regelsatz kann nicht hinzugefügt werden.                                               |
 | BaselineRulesetIdMustBeUnique            | Der angegebene Baselineregelsatz *{0}* muss eindeutig sein.                                                                                           |
-| BaselineRulesetNotFound                  | Der Regelsatz mit der ID *{0}* und dem Namen *{1}* wurde in der angegebenen Konfiguration nicht gefunden. Der Regelsatz kann nicht gelöscht werden.                                |
-| BaselineRuleSourceNotMatch               | Die Regel mit der ID *{0}* ist bereits definiert.                                                                                                       |
-| BaselineRuleTypeDoesntMatch              | Der Standardregeltyp lautet *{0}*.                                                                                                              |
-| BaselineRuleTypeDoesntMatchError         | Der tatsächliche Typ der Regel ist *{0}*, aber die *ruleType*-Eigenschaft ist *{1}*.                                                                          |
+| BaselineRulesetNotFound                  | Der Regelsatz mit dem Bezeichner *{0}* und dem Namen *{1}* wurde in der angegebenen Konfiguration nicht gefunden. Der Regelsatz kann nicht gelöscht werden.                                |
+| BaselineRuleSourceNotMatch               | Die Regel mit dem Bezeichner *{0}* ist bereits definiert.                                                                                                       |
+| BaselineRuleTypeDoesntMatch              | Der Standardregeltyp lautet *{0}* .                                                                                                              |
+| BaselineRuleTypeDoesntMatchError         | Der tatsächliche Typ der Regel ist *{0}* , aber die *ruleType*-Eigenschaft ist *{1}* .                                                                          |
 | BaselineRuleUnpermittedChangesError      | Nur die Eigenschaften *expectedValue* und *state* dürfen geändert werden.                                                                       |
 | BaselineTooManyRules                     | Die maximal zulässige Anzahl angepasster Regeln ist {0}. Die angegebene Konfiguration enthält {1} Regeln, {2} Standardregeln und {3} angepasste Regeln. |
 | ErrorNoConfigurationStatus               | Es wurde kein Konfigurationsstatus gefunden. Geben Sie den gewünschten Konfigurationsstatus an: *Standard* oder *Benutzerdefiniert*.                                    |
