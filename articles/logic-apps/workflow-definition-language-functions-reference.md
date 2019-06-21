@@ -9,12 +9,12 @@ ms.author: estfan
 ms.reviewer: klam, LADocs
 ms.topic: reference
 ms.date: 08/15/2018
-ms.openlocfilehash: 24e0a0ae2a6af964d3ed87d1817de6e5f403c9b1
-ms.sourcegitcommit: c05618a257787af6f9a2751c549c9a3634832c90
+ms.openlocfilehash: 506076e2d9b171e1ec1ff604519cbbfbe4339e87
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/30/2019
-ms.locfileid: "66416349"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "66733067"
 ---
 # <a name="functions-reference-for-workflow-definition-language-in-azure-logic-apps-and-microsoft-flow"></a>Funktionsreferenz zur Definitionssprache für Workflows in Azure Logic Apps und Microsoft Flow
 
@@ -737,7 +737,7 @@ In diesem Beispiel wird ein Tag zu dem angegebenen Zeitstempel addiert:
 addToTime('2018-01-01T00:00:00Z', 1, 'Day')
 ```
 
-Dies ist das zurückgegebene Ergebnis: `"2018-01-02T00:00:00:0000000Z"`
+Dies ist das zurückgegebene Ergebnis: `"2018-01-02T00:00:00.0000000Z"`
 
 *Beispiel 2*
 

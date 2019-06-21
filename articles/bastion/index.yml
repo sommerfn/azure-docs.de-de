@@ -1,0 +1,43 @@
+### YamlMime:YamlDocument
+documentType: LandingData
+title: Azure Bastion-Dokumentation
+metadata:
+  document_id: null
+  title: Bastion
+  meta.description: Learn how to use Azure Bastion
+  author: cherylmc
+  ms.service: Bastion
+  ms.topic: landing-page
+  ms.date: 06/13/2019
+  ms.author: cherylmc
+abstract:
+  description: "Hier erfahren Sie, wie Sie mithilfe von Azure Bastion eine Verbindung mit einem virtuellen Computer herstellen. Konfigurieren Sie sichere und nahtlose RDP-/SSH-Verbindungen mit Ihren virtuellen Computern über SSL direkt im Azure-Portal. Beim Herstellen einer Verbindung über Azure\_Bastion benötigen Ihre virtuellen Computer keine öffentliche IP-Adresse."
+  aside:
+    image:
+      alt: null
+      height: 110
+      src: 'https://go.microsoft.com/fwlink/?linkid=2095604'
+      width: 250
+    title: 'Arbeiten mit Azure Bastion (1:03)'
+    href: 'https://go.microsoft.com/fwlink/?linkid=2095517'
+    width: 250
+sections:
+  - title: Erstellen und Verwalten von Azure Bastion-Instanzen (Vorschauversion)
+    items:
+      - type: paragraph
+        text: 'Hier erfahren Sie, wie Sie mithilfe von Azure Bastion einen Host konfigurieren und anschließend eine Verbindung mit einem virtuellen Computer herstellen.'
+      - type: list
+        style: unordered
+        items:
+          - html: <a href="/azure/bastion/bastion-create-host-portal">Erstellen und Ändern eines Azure Bastion-Hosts</a>
+          - html: <a href="/azure/bastion/bastion-connect-vm-ssh">Herstellen einer Verbindung mit einem virtuellen Windows-Computer</a>
+          - html: <a href="/azure/bastion/bastion-connect-vm-rdp">Herstellen einer Verbindung mit einem virtuellen Linux-Computer</a>
+          - html: <a href="/azure/bastion/bastion-faq">Lesen der häufig gestellten Fragen zu Azure Bastion</a>
+  - title: Verweis
+    items:
+      - type: list
+        style: cards
+        className: cardsD
+        items:
+          - title: REST
+            html: '<p><a href="https://msdn.microsoft.com/library/azure/mt586720">REST-API-Referenz</a></p>'

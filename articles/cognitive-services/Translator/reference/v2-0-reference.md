@@ -3,19 +3,19 @@ title: Textübersetzungs-API Version 2.0
 titleSuffix: Azure Cognitive Services
 description: Referenzdokumentation für die Textübersetzungs-API Version 2.0
 services: cognitive-services
-author: v-pawal
+author: rajdeep-in
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: reference
 ms.date: 05/15/2018
-ms.author: v-jansko
-ms.openlocfilehash: 961dd277034db7e5406e671233f26b4fd8fe5f26
-ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
+ms.author: v-pawal
+ms.openlocfilehash: d2ff61908d7901fc464b58ee1ef9b5605b3026a3
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/12/2019
-ms.locfileid: "59527284"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "66389846"
 ---
 # <a name="translator-text-api-v20"></a>Microsoft Translator-Text-API Version 2.0
 
@@ -28,11 +28,18 @@ Die Textübersetzungs-API, Version 2, kann nahtlos in Ihre Anwendungen, Websites
 Für den Zugriff auf die Textübersetzungs-API müssen Sie sich bei [Microsoft Azure registrieren](../translator-text-how-to-signup.md).
 
 ## <a name="authorization"></a>Autorisierung
-Alle Aufrufe an die Textübersetzungs-API erfordern einen Abonnementschlüssel für die Authentifizierung. Die API unterstützt zwei Authentifizierungsmodi:
+Alle Aufrufe an die Textübersetzungs-API erfordern einen Abonnementschlüssel für die Authentifizierung. Die API unterstützt drei Authentifizierungsmodi:
 
-* Verwendung eines Zugriffstokens Verwenden Sie den unter **Schritt 9** angegebenen Abonnementschlüssel, um ein Zugriffstoken zu generieren. Stellen Sie dazu eine POST-Anforderung an den Authentifizierungsdienst. Ausführliche Informationen dazu finden Sie in der Tokendienst-Dokumentation. Übergeben Sie das Zugriffstoken mithilfe des Autorisierungsheaders oder des Abfrageparameters „query_token“ an den Übersetzerdienst. Das Zugriffstoken ist für 10 Minuten gültig. Rufen Sie alle 10 Minuten ein neues Zugriffstoken ab, und verwenden Sie weiterhin das gleiche Zugriffstoken für wiederholte Anforderungen innerhalb dieser 10 Minuten.
+- Ein Zugriffstoken. Verwenden Sie den unter **Schritt 9** angegebenen Abonnementschlüssel, um ein Zugriffstoken zu generieren. Stellen Sie dazu eine POST-Anforderung an den Authentifizierungsdienst. Ausführliche Informationen dazu finden Sie in der Tokendienst-Dokumentation. Übergeben Sie das Zugriffstoken mithilfe des Autorisierungsheaders oder des Abfrageparameters `access_token` an den Übersetzerdienst. Das Zugriffstoken ist 10 Minuten lang gültig. Rufen Sie alle 10 Minuten ein neues Zugriffstoken ab, und verwenden Sie innerhalb dieser 10 Minuten für wiederholte Anforderungen weiterhin dasselbe Zugriffstoken.
+- Direkte Verwendung eines Abonnementschlüssels. Übergeben Sie Ihren Abonnementschlüssel als Wert im `Ocp-Apim-Subscription-Key`-Header, der in Ihrer Anforderung an die Übersetzungs-API enthalten ist. In diesem Modus müssen Sie den Authentifizierungstokendienst nicht aufrufen, um ein Zugriffstoken zu generieren.
+- Ein [Cognitive Services-Abonnement für mehrere Dienste](https://azure.microsoft.com/pricing/details/cognitive-services/). In diesem Modus können Sie einen einzelnen geheimen Schlüssel verwenden, um Anforderungen für mehrere Dienste zu authentifizieren. <br/>
+Wenn Sie einen geheimen Multi-Service-Schlüssel verwenden, müssen Sie Ihrer Anforderung zwei Authentifizierungsheader hinzufügen. Der erste Header übergibt den geheimen Schlüssel. Der zweite Header gibt die Region an, die Ihrem Abonnement zugeordnet ist:
+   - `Ocp-Apim-Subscription-Key`
+   - `Ocp-Apim-Subscription-Region`
 
-* Direkte Verwendung eines Abonnementschlüssels. Übergeben Sie Ihren Abonnementschlüssel als Wert im `Ocp-Apim-Subscription-Key`-Header, der in Ihrer Anforderung an die Übersetzungs-API enthalten ist. In diesem Modus müssen Sie den Authentifizierungstokendienst nicht aufrufen, um ein Zugriffstoken zu generieren.
+Die Region ist für das Abonnement der Multi-Service-Text-API erforderlich. Die von Ihnen ausgewählte Region ist die einzige Region, die Sie für die Textübersetzung verwenden können, wenn Sie den Multi-Service-Abonnementschlüssel verwenden, und muss sich um die gleiche Region handeln, die Sie bei der Registrierung für Ihr Multi-Service-Abonnement über das Azure-Portal ausgewählt haben.
+
+Diese Regionen sind verfügbar: `australiaeast`, `brazilsouth`, `canadacentral`, `centralindia`, `centraluseuap`, `eastasia`, `eastus`, `eastus2`, `japaneast`, `northeurope`, `southcentralus`, `southeastasia`, `uksouth`, `westcentralus`, `westeurope`, `westus` und `westus2`.
 
 Prüfen Sie, dass Ihr Abonnementschlüssel und das Zugriffstoken Geheimnisse sind, die nicht in der Ansicht dargestellt werden sollten.
 
@@ -90,7 +97,7 @@ Anforderungsinhaltstyp: application/xml
 
 ### <a name="response-messages"></a>Antwortnachrichten
 
-|HTTP-Statuscode|Grund|
+|HTTP-Statuscode|`Reason`|
 |:--|:--|
 |400    |Ungültige Anforderung. Überprüfen Sie die Eingabeparameter und die detaillierte Fehlerantwort.|
 |401    |Ungültige Anmeldeinformationen|
@@ -188,7 +195,7 @@ Anforderungsinhaltstyp: application/xml
 
 ### <a name="response-messages"></a>Antwortnachrichten
 
-|HTTP-Statuscode   |Grund|
+|HTTP-Statuscode   |`Reason`|
 |:--|:--|
 |400    |Ungültige Anforderung. Überprüfen Sie die Eingabeparameter und die detaillierte Fehlerantwort. Häufige Fehler sind z.B. folgende: <ul><li>Ein Arrayelement kann nicht leer sein</li><li>Ungültige Kategorie</li><li>Ausgangssprache ist ungültig</li><li>Zielsprache ist ungültig</li><li>Die Anforderung enthält zu viele Elemente</li><li>Die Ausgangssprache (From) wird nicht unterstützt</li><li>Die Zielsprache wird nicht unterstützt</li><li>Die Übersetzungsanforderung verfügt über zu viele Daten</li><li>HTML liegt nicht im richtigen Format vor</li><li>Zu viele Zeichenfolgen wurde in der Übersetzungsanforderung übergeben</li></ul>|
 |401    |Ungültige Anmeldeinformationen|
@@ -202,7 +209,7 @@ Ruft die Anzeigenamen für die Sprachen ab, die als Parameter `languageCodes` ü
 
 Der Anforderungs-URI ist `https://api.microsofttranslator.com/V2/Http.svc/GetLanguageNames`.
 
-Der Anforderungstext enthält ein Zeichenfolgenarray, das die Sprachencodes der ISO 639-1 darstellt, für die die Anzeigenamen abgerufen werden. Beispiel: 
+Der Anforderungstext enthält ein Zeichenfolgenarray, das die Sprachencodes der ISO 639-1 darstellt, für die die Anzeigenamen abgerufen werden. Beispiel:
 
 ```
 <ArrayOfstring xmlns:i="https://www.w3.org/2001/XMLSchema-instance"  xmlns="http://schemas.microsoft.com/2003/10/Serialization/Arrays">
@@ -231,7 +238,7 @@ Anforderungsinhaltstyp: application/xml
 
 ### <a name="response-messages"></a>Antwortnachrichten
 
-|HTTP-Statuscode|Grund|
+|HTTP-Statuscode|`Reason`|
 |:--|:--|
 |400    |Ungültige Anforderung. Überprüfen Sie die Eingabeparameter und die detaillierte Fehlerantwort.|
 |401    |Ungültige Anmeldeinformationen|
@@ -264,7 +271,7 @@ Anforderungsinhaltstyp: application/xml
 
 ### <a name="response-messages"></a>Antwortnachrichten
 
-|HTTP-Statuscode|Grund|
+|HTTP-Statuscode|`Reason`|
 |:--|:--|
 |400    |Ungültige Anforderung. Überprüfen Sie die Eingabeparameter und die detaillierte Fehlerantwort.|
 |401    |Ungültige Anmeldeinformationen|
@@ -297,7 +304,7 @@ Anforderungsinhaltstyp: application/xml
  
 ### <a name="response-messages"></a>Antwortnachrichten
 
-|HTTP-Statuscode|Grund|
+|HTTP-Statuscode|`Reason`|
 |:--|:--|
 |400|Ungültige Anforderung. Überprüfen Sie die Eingabeparameter und die detaillierte Fehlerantwort.|
 |401|Ungültige Anmeldeinformationen|
@@ -325,7 +332,7 @@ Anforderungsinhaltstyp: application/xml
 |:--|:--|:--|:--|:--|
 |appid|(leer)|Erforderlich. Wenn der Header `Authorization` oder `Ocp-Apim-Subscription-Key` verwendet wird, lassen Sie das Feld „appid“ leer, oder schließen Sie eine Zeichenfolge ein, die `"Bearer" + " " + "access_token"` enthält.|query|Zeichenfolge|
 |text|(leer)   |Erforderlich. Eine Zeichenfolge, die einen Satz oder mehrere Sätze in der angegebenen Sprache enthält, in der der Wave-Stream wiedergegeben werden soll. Die Größe des gesprochenen Textes darf 2000 Zeichen nicht überschreiten.|query|Zeichenfolge|
-|Language|(leer)   |Erforderlich. Eine Zeichenfolge, die den Code der unterstützten Sprache darstellt, in die der Text gesprochen werden soll. Der Code muss in der Liste der Codes aufgeführt sein, die von der Methode `GetLanguagesForSpeak` zurückgegeben werden.|query|Zeichenfolge|
+|language|(leer)   |Erforderlich. Eine Zeichenfolge, die den Code der unterstützten Sprache darstellt, in die der Text gesprochen werden soll. Der Code muss in der Liste der Codes aufgeführt sein, die von der Methode `GetLanguagesForSpeak` zurückgegeben werden.|query|Zeichenfolge|
 |format|(leer)|Optional. Eine Zeichenfolge, die die Inhaltstyp-ID zurückgibt. Derzeit sind `audio/wav` und `audio/mp3` verfügbar. Standardwert: `audio/wav`.|query|Zeichenfolge|
 |options|(leer)    |<ul><li>Optional. Eine Zeichenfolge, die Eigenschaften der synthetisierten Spracheingabe angibt.<li>`MaxQuality` und `MinSize` sind verfügbar, um die Qualität der Audiosignale anzugeben. Mit `MaxQuality` erhalten Sie eine hochqualitative Stimmwiedergabe, und mit `MinSize` erhalten Sie eine Stimmwiedergabe von niedrigerer Qualität. Der Standardwert ist `MinSize`.</li><li>`female` und `male` sind verfügbar, um das gewünschte Geschlecht bei der Sprachwiedergabe zu bestimmen. Der Standardwert ist `female`. Verwenden Sie den senkrechten Strich <code>\|</code>, um mehrere Optionen einzuschließen. Beispiel: `MaxQuality|Male`.</li></li></ul> |query|Zeichenfolge|
 |Autorisierung|(leer)|Erforderlich, falls das Feld `appid` oder der Header `Ocp-Apim-Subscription-Key` nicht angegeben ist. Autorisierungstoken: `"Bearer" + " " + "access_token"`|Header|Zeichenfolge|
@@ -333,7 +340,7 @@ Anforderungsinhaltstyp: application/xml
 
 ### <a name="response-messages"></a>Antwortnachrichten
 
-|HTTP-Statuscode|Grund|
+|HTTP-Statuscode|`Reason`|
 |:--|:--|
 |400    |Ungültige Anforderung. Überprüfen Sie die Eingabeparameter und die detaillierte Fehlerantwort.|
 |401    |Ungültige Anmeldeinformationen|
@@ -366,7 +373,7 @@ Anforderungsinhaltstyp: application/xml
 
 ### <a name="response-messages"></a>Antwortnachrichten
 
-|HTTP-Statuscode|Grund|
+|HTTP-Statuscode|`Reason`|
 |:--|:--|
 |400|Ungültige Anforderung. Überprüfen Sie die Eingabeparameter und die detaillierte Fehlerantwort.|
 |401    |Ungültige Anmeldeinformationen|
@@ -420,7 +427,7 @@ Anforderungsinhaltstyp: application/xml
 
 ### <a name="response-messages"></a>Antwortnachrichten
 
-|HTTP-Statuscode|Grund|
+|HTTP-Statuscode|`Reason`|
 |:--|:--|
 |400    |Ungültige Anforderung. Überprüfen Sie die Eingabeparameter und die detaillierte Fehlerantwort.|
 |401    |Ungültige Anmeldeinformationen|
@@ -463,7 +470,7 @@ Anforderungsinhaltstyp: application: xml
 
 ### <a name="response-messages"></a>Antwortnachrichten
 
-|HTTP-Statuscode|Grund|
+|HTTP-Statuscode|`Reason`|
 |:--|:--|
 |400    |Ungültige Anforderung. Überprüfen Sie die Eingabeparameter und die detaillierte Fehlerantwort.|
 |401    |Ungültige Anmeldeinformationen|
@@ -530,7 +537,7 @@ Anforderungsinhaltstyp: application/xml
 
 ### <a name="response-messages"></a>Antwortnachrichten
 
-|HTTP-Statuscode|Grund|
+|HTTP-Statuscode|`Reason`|
 |:--|:--|
 |400    |Ungültige Anforderung. Überprüfen Sie die Eingabeparameter und die detaillierte Fehlerantwort.|
 |401    |Ungültige Anmeldeinformationen|
@@ -560,13 +567,13 @@ Anforderungsinhaltstyp: application/xml
 |:--|:--|:--|:--|:--|
 |appid|(leer)  |Erforderlich. Wenn der Header „Authorization“ oder „Ocp-Apim-Subscription-Key“ verwendet wird, lassen Sie das Feld „appid“ leer, oder schließen Sie eine Zeichenfolge ein, die „Bearer“ + „ „ (Leerzeichen) + „access_token“ enthält.|query| Zeichenfolge|
 |text|(leer)   |Erforderlich. Eine Zeichenfolge, die den Text darstellt, der in Sätze aufgeteilt werden soll. Die Textgröße darf 10.000 Zeichen nicht überschreiten.|query|Zeichenfolge|
-|Language   |(leer)    |Erforderlich. Eine Zeichenfolge, die den Sprachcode des Eingabetexts darstellt.|query|Zeichenfolge|
+|language   |(leer)    |Erforderlich. Eine Zeichenfolge, die den Sprachcode des Eingabetexts darstellt.|query|Zeichenfolge|
 |Autorisierung|(leer)|Erforderlich, falls das Feld „appid“ oder der Header „Ocp-Apim-Subscription-Key“ nicht angegeben ist. Autorisierungstoken:  „Bearer“ + „ „ + „access_token“.    |Header|Zeichenfolge|
 |Ocp-Apim-Subscription-Key|(leer)|Erforderlich, falls das Feld „appid“ oder der Header „Authorization“ nicht angegeben ist.|Header|Zeichenfolge|
 
 ### <a name="response-messages"></a>Antwortnachrichten
 
-|HTTP-Statuscode|Grund|
+|HTTP-Statuscode|`Reason`|
 |:--|:--|
 |400|Ungültige Anforderung. Überprüfen Sie die Eingabeparameter und die detaillierte Fehlerantwort.|
 |401|Ungültige Anmeldeinformationen|
@@ -662,7 +669,7 @@ Anforderungsinhaltstyp: application/xml
 
 ### <a name="response-messages"></a>Antwortnachrichten
 
-|HTTP-Statuscode|Grund|
+|HTTP-Statuscode|`Reason`|
 |:--|:--|
 |400    |Ungültige Anforderung. Überprüfen Sie die Eingabeparameter und die detaillierte Fehlerantwort.|
 |401    |Ungültige Anmeldeinformationen|
@@ -777,7 +784,7 @@ Anforderungsinhaltstyp: application/xml
 
 ### <a name="response-messages"></a>Antwortnachrichten
 
-|HTTP-Statuscode|Grund|
+|HTTP-Statuscode|`Reason`|
 |:--|:--|
 |400    |Ungültige Anforderung. Überprüfen Sie die Eingabeparameter und die detaillierte Fehlerantwort.|
 |401    |Ungültige Anmeldeinformationen|

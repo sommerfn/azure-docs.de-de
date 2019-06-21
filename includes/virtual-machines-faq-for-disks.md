@@ -1,6 +1,6 @@
 ---
-title: Includedatei
-description: Includedatei
+title: include file
+description: include file
 services: virtual-machines
 author: roygara
 ms.service: virtual-machines
@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 05/13/2019
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 0e361edfea6365c3d3fe072e12bb303e71bb8d63
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.openlocfilehash: b993b34f81298b40c8849084380b2d1770708351
+ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/27/2019
-ms.locfileid: "66248803"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66482246"
 ---
 # <a name="frequently-asked-questions-about-azure-iaas-vm-disks-and-managed-and-unmanaged-premium-disks"></a>Häufig gestellte Fragen zu Azure-IaaS-VM-Datenträgern sowie zu verwalteten und nicht verwalteten Premium-Datenträgern
 
@@ -143,7 +143,7 @@ Die GPT-Partitionierung kann nur auf Datenträgern für Daten, nicht auf Betrieb
 
 **Welche Datenträgertypen unterstützen Momentaufnahmen?**
 
-SSD Premium und SSD Standard unterstützen Momentaufnahmen ohne jegliche Beschränkung der Größe. Somit können Sie Momentaufnahmen großer Datenträger erstellen (bis zu 32 TiB). Ultra-SSDs unterstützen keine Momentaufnahmen.
+Für SSD Premium, SSD Standard und HDD Standard werden Momentaufnahmen unterstützt. Für diese drei Datenträgertypen werden Momentaufnahmen für alle Datenträgergrößen unterstützt (einschließlich Datenträger mit einer Größe von bis zu 32 TiB). Ultra-SSDs unterstützen keine Momentaufnahmen.
 
 ## <a name="standard-ssd-disks"></a>Standard-SSD-Datenträger
 

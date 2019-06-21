@@ -40,6 +40,8 @@
               href: connect-azure-atp.md
             - name: Herstellen einer Verbindung mit Azure Security Center
               href: connect-azure-security-center.md
+            - name: Verbinden eines Domänennamenservers
+              href: connect-dns.md
             - name: Herstellen einer Verbindung mit Microsoft Web Application Firewall
               href: connect-microsoft-waf.md
             - name: Herstellen einer Verbindung mit der Windows-Firewall

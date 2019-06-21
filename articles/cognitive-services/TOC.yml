@@ -7,8 +7,28 @@
       href: Welcome.md
     - name: Sprachunterstützung
       href: language-support.md
+- name: Containerunterstützung
+  items:
     - name: Containerunterstützung
       href: cognitive-services-container-support.md
+    - name: Containeranleitungen
+      items:
+        - name: Wiederverwendung von Containern
+          href: ./containers/container-reuse-recipe.md
+        - name: Bereitstellen in Azure Container Instances
+          href: ./containers/azure-container-instance-recipe.md
+        - name: Bereitstellen in Azure Kubernetes
+          href: ./containers/azure-kubernetes-recipe.md
+        - name: Bereitstellen mit Docker Compose
+          href: ./containers/docker-compose-recipe.md
+    - name: Andere Containerdienste
+      items:
+        - name: Azure Container Instances
+          href: ../container-instances/container-instances-tutorial-prepare-app.md
+        - name: Azure Container Registry
+          href: ../container-registry/container-registry-get-started-azure-cli.md
+        - name: Azure Kubernetes Service (AKS)
+          href: ../aks/tutorial-kubernetes-prepare-app.md
 - name: Schnellstarts
   items:
     - name: Erstellen eines Kontos

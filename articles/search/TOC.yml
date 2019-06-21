@@ -31,6 +31,14 @@
       href: search-get-started-python.md
 - name: Lernprogramme
   items:
+    - name: Erstellen Ihrer ersten App
+      items:
+        - name: 1. Seite für die Standardsuche
+          href: tutorial-csharp-create-first-app.md
+        - name: 2. Hinzufügen der Ergebnispaginierung
+          href: tutorial-csharp-paging.md
+        - name: 3. Hinzufügen von Eingabevorschlägen
+          href: tutorial-csharp-type-ahead-and-suggestions.md
     - name: Indizieren von Azure SQL-Datenbank
       href: search-indexer-tutorial.md
     - name: Indizieren von Azure-JSON-Blobs

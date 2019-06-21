@@ -11,34 +11,25 @@ ms.workload: mobile
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/29/2019
+ms.date: 05/30/2019
 ms.author: apimpm
-ms.openlocfilehash: ac9910358cf19eac3f704f1bf3e259e9a1543dcc
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.openlocfilehash: 5427c4050b6b70c18da7a1899d16e448c41e81c6
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66141521"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "66427348"
 ---
 # <a name="how-to-secure-apis-using-client-certificate-authentication-in-api-management"></a>Sichern von APIs über eine Clientzertifikatauthentifizierung in API Management
 
-API Management bietet die Möglichkeit, den Zugriff auf APIs (d.h. vom Client auf API Management) mithilfe von Clientzertifikaten zu sichern. Derzeit können Sie den Fingerabdruck eines Clientzertifikats anhand eines gewünschten Werts prüfen. Sie können den Fingerabdruck auch anhand vorhandener Zertifikate prüfen, die auf API Management hochgeladen wurden.  
+API Management bietet die Möglichkeit, den Zugriff auf APIs (d.h. vom Client auf API Management) mithilfe von Clientzertifikaten zu sichern. Sie können eingehende Zertifikate überprüfen und die Zertifikateigenschaften mit den gewünschten Werten vergleichen, indem Sie Richtlinienausdrücke verwenden.
 
-Informationen zum Sichern des Zugriffs auf den Back-End-Dienst einer API mithilfe von Clientzertifikaten (d.h. von API Management auf Back-End) finden Sie unter [Sichern von Back-End-Diensten über eine Clientzertifikatauthentifizierung](https://docs.microsoft.com/azure/api-management/api-management-howto-mutual-certificates).
+Informationen zum Schützen des Zugriffs auf den Back-End-Dienst einer API mithilfe von Clientzertifikaten (von API Management auf das Back-End) finden Sie unter [Sichern von Back-End-Diensten über eine Clientzertifikatauthentifizierung in Azure API Management](https://docs.microsoft.com/azure/api-management/api-management-howto-mutual-certificates).
 
-## <a name="checking-the-expiration-date"></a>Prüfen des Ablaufdatums
+> [!IMPORTANT]
+> Um Clientzertifikate im Tarif „Verbrauch“ empfangen und überprüfen zu können, müssen Sie zuerst wie unten gezeigt auf dem Blatt „Benutzerdefinierte Domänen“ die Einstellung „Clientzertifikat anfordern“ aktivieren.
 
-Die unten stehenden Richtlinien können konfiguriert werden, um zu prüfen, ob das Zertifikat abgelaufen ist:
-
-```xml
-<choose>
-    <when condition="@(context.Request.Certificate == null || context.Request.Certificate.NotAfter < DateTime.Now)" >
-        <return-response>
-            <set-status code="403" reason="Invalid client certificate" />
-        </return-response>
-    </when>
-</choose>
-```
+![Anfordern des Clientzertifikats](./media/api-management-howto-mutual-certificates-for-clients/request-client-certificate.png)
 
 ## <a name="checking-the-issuer-and-subject"></a>Prüfen des Ausstellers und des Antragstellers
 
@@ -46,13 +37,17 @@ Die unten stehenden Richtlinien konfiguriert werden, um den Aussteller und den A
 
 ```xml
 <choose>
-    <when condition="@(context.Request.Certificate == null || context.Request.Certificate.Issuer != "trusted-issuer" || context.Request.Certificate.SubjectName.Name != "expected-subject-name")" >
+    <when condition="@(context.Request.Certificate == null || !context.Request.Certificate.Verify() || context.Request.Certificate.Issuer != "trusted-issuer" || context.Request.Certificate.SubjectName.Name != "expected-subject-name")" >
         <return-response>
             <set-status code="403" reason="Invalid client certificate" />
         </return-response>
     </when>
 </choose>
 ```
+
+> [!NOTE]
+> Verwenden Sie `context.Request.Certificate.VerifyNoRevocation()` anstelle von `context.Request.Certificate.Verify()`, um die Überprüfung der Zertifikatssperrliste zu deaktivieren.
+> Wenn das Clientzertifikat selbstsigniert ist, müssen Stamm- oder Zwischen-Zertifizierungsstellenzertifikate in API Management [hochgeladen](api-management-howto-ca-certificates.md) werden, damit `context.Request.Certificate.Verify()` und `context.Request.Certificate.VerifyNoRevocation()` funktionieren.
 
 ## <a name="checking-the-thumbprint"></a>Prüfen des Fingerabdrucks
 
@@ -60,21 +55,25 @@ Die folgenden Richtlinien können zum Prüfen des Fingerabdrucks eines Clientzer
 
 ```xml
 <choose>
-    <when condition="@(context.Request.Certificate == null || context.Request.Certificate.Thumbprint != "desired-thumbprint")" >
+    <when condition="@(context.Request.Certificate == null || !context.Request.Certificate.Verify() || context.Request.Certificate.Thumbprint != "desired-thumbprint")" >
         <return-response>
             <set-status code="403" reason="Invalid client certificate" />
         </return-response>
     </when>
 </choose>
 ```
+
+> [!NOTE]
+> Verwenden Sie `context.Request.Certificate.VerifyNoRevocation()` anstelle von `context.Request.Certificate.Verify()`, um die Überprüfung der Zertifikatssperrliste zu deaktivieren.
+> Wenn das Clientzertifikat selbstsigniert ist, müssen Stamm- oder Zwischen-Zertifizierungsstellenzertifikate in API Management [hochgeladen](api-management-howto-ca-certificates.md) werden, damit `context.Request.Certificate.Verify()` und `context.Request.Certificate.VerifyNoRevocation()` funktionieren.
 
 ## <a name="checking-a-thumbprint-against-certificates-uploaded-to-api-management"></a>Prüfen eines Fingerabdrucks anhand von auf API Management hochgeladenen Zertifikaten
 
-Das folgende Beispiel zeigt, wie Sie den Fingerabdruck eines Clientzertifikats anhand von auf API Management hochgeladenen Zertifikaten prüfen können: 
+Das folgende Beispiel zeigt, wie Sie den Fingerabdruck eines Clientzertifikats anhand von auf API Management hochgeladenen Zertifikaten prüfen können:
 
 ```xml
 <choose>
-    <when condition="@(context.Request.Certificate == null || !context.Deployment.Certificates.Any(c => c.Value.Thumbprint == context.Request.Certificate.Thumbprint))" >
+    <when condition="@(context.Request.Certificate == null || !context.Request.Certificate.Verify()  || !context.Deployment.Certificates.Any(c => c.Value.Thumbprint == context.Request.Certificate.Thumbprint))" >
         <return-response>
             <set-status code="403" reason="Invalid client certificate" />
         </return-response>
@@ -83,8 +82,17 @@ Das folgende Beispiel zeigt, wie Sie den Fingerabdruck eines Clientzertifikats a
 
 ```
 
-## <a name="next-step"></a>Nächster Schritt
+> [!NOTE]
+> Verwenden Sie `context.Request.Certificate.VerifyNoRevocation()` anstelle von `context.Request.Certificate.Verify()`, um die Überprüfung der Zertifikatssperrliste zu deaktivieren.
+> Wenn das Clientzertifikat selbstsigniert ist, müssen Stamm- oder Zwischen-Zertifizierungsstellenzertifikate in API Management [hochgeladen](api-management-howto-ca-certificates.md) werden, damit `context.Request.Certificate.Verify()` und `context.Request.Certificate.VerifyNoRevocation()` funktionieren.
 
-*  [Sichern von Back-End-Diensten über eine Clientzertifikatauthentifizierung](https://docs.microsoft.com/azure/api-management/api-management-howto-mutual-certificates)
-*  [Hochladen von Zertifikaten](https://docs.microsoft.com/azure/api-management/api-management-howto-mutual-certificates)
+> [!TIP]
+> Das Problem aufgrund eines Clientzertifikat-Deadlocks, das in [diesem Artikel](https://techcommunity.microsoft.com/t5/Networking-Blog/HTTPS-Client-Certificate-Request-freezes-when-the-Server-is/ba-p/339672) beschrieben ist, kann auf unterschiedliche Art und Weise auftreten, z. B. Einfrieren von Anforderungen, Anforderungen führen nach dem Timeout zum Status `403 Forbidden` oder `context.Request.Certificate` ist `null`. Dieses Problem wirkt sich normalerweise auf Anforderungen vom Typ `POST` und `PUT` mit einer Inhaltslänge von ca. 60 KB oder mehr aus.
+> Aktivieren Sie auf dem Blatt „Benutzerdefinierte Domänen“ die Einstellung „Clientzertifikat aushandeln“ für gewünschte Hostnamen, um dieses Problem zu verhindern. Dieses Feature ist im Tarif „Verbrauch“ nicht verfügbar.
 
+![Clientzertifikat aushandeln](./media/api-management-howto-mutual-certificates-for-clients/negotiate-client-certificate.png)
+
+## <a name="next-steps"></a>Nächste Schritte
+
+-   [Sichern von Back-End-Diensten über eine Clientzertifikatauthentifizierung](https://docs.microsoft.com/azure/api-management/api-management-howto-mutual-certificates)
+-   [Hochladen von Zertifikaten](https://docs.microsoft.com/azure/api-management/api-management-howto-mutual-certificates)

@@ -9,12 +9,12 @@ ms.date: 11/13/2018
 ms.topic: conceptual
 ms.author: raynew
 manager: carmonm
-ms.openlocfilehash: 050e3032d47b8215ae1aef8492c247031275ab86
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 83cfd2b7ccdf8ec14e828baec1031e11b28c988c
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58094642"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "66427368"
 ---
 # <a name="azure-backup-server-protection-matrix"></a>Azure Backup Server-Schutzmatrix
 
@@ -82,6 +82,15 @@ In diesem Artikel sind verschiedene Server und Workloads aufgeführt, die Sie mi
 |Virtuelle VMware-Computer|VMware vCenter/vSphere ESX/ESXi: lizenzierte Version 5.5/6.0/6.5 |Physischer Server <br/>Lokale Hyper-V-VM <br/> Windows-VM in VMware|J|J|VMware-Ms in freigegebenen Clustervolumen (CSVs), NFS und im SAN-Speicher<br /> Die Wiederherstellung von Dateien und Ordnern auf Elementebene ist nur für virtuelle Windows-Computer verfügbar, VMware vApp wird nicht unterstützt.|
 |Virtuelle VMware-Computer|[VMware vSphere 6.7](backup-azure-backup-server-vmware.md#vmware-vsphere-67) |Physischer Server <br/>Lokale Hyper-V-VM <br/> Windows-VM in VMware|J|N|VMware-Ms in freigegebenen Clustervolumen (CSVs), NFS und im SAN-Speicher<br /> Die Wiederherstellung von Dateien und Ordnern auf Elementebene ist nur für virtuelle Windows-Computer verfügbar, VMware vApp wird nicht unterstützt.|
 |Linux|Linux, ausgeführt als Hyper-V- oder VMware-Gast|Physischer Server <br/>Lokale Hyper-V-VM <br/> Windows-VM in VMware|J|J|Hyper-V muss unter Windows Server 2012 R2 oder Windows Server 2016 ausgeführt werden. Schützen: Gesamter virtueller Computer<br /><br />Wiederherstellen: Gesamter virtueller Computer <br/><br/> Eine vollständige Liste der unterstützten Linux-Distributionen und -Versionen finden Sie im Artikel [Linux auf von Azure unterstützten Distributionen](../virtual-machines/linux/endorsed-distros.md).|
+
+## <a name="azure-expressroute-support"></a>Azure ExpressRoute-Unterstützung
+
+Wenn Azure ExpressRoute mit privatem Peering oder Microsoft-Peering konfiguriert wird, können die Daten mit dem Dienst nicht in Azure gesichert werden.
+
+Wenn Azure ExpressRoute mit öffentlichem Peering konfiguriert wird, können die Daten mit dem Dienst in Azure gesichert werden.
+
+>[!NOTE]
+>Öffentliches Peering gilt für neue Leitungen als veraltet.
 
 ## <a name="cluster-support"></a>Unterstützung für Cluster
 Azure Backup Server kann Daten in den folgenden gruppierten Anwendungen schützen:

@@ -10,7 +10,7 @@
     - name: Schnellstart
       expanded: true
       items:
-        - name: Initialisieren und Kaufen von Kapazität
+        - name: Initialisieren und Bereitstellen von Kapazität
           href: quickstart-create-cloudsimple-service.md
         - name: Konfigurieren einer Private Cloud-Umgebung
           href: quickstart-create-private-cloud.md
@@ -62,7 +62,7 @@
           href: access-cloudsimple-portal.md
         - name: Verwalten von Knoten
           items:
-            - name: Kauf von Knoten
+            - name: Bereitstellen von Knoten
               href: create-nodes.md
         - name: Verwalten von privaten Cloudressourcen
           items:

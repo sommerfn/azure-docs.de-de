@@ -10,12 +10,12 @@ services: time-series-insights
 ms.topic: conceptual
 ms.date: 04/30/2019
 ms.custom: seodec18
-ms.openlocfilehash: c7339dc683a062d4a74708d2e9f155f20f4d0ea8
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.openlocfilehash: 787445d5186a173b2cba674b36cd95879cc863e5
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/27/2019
-ms.locfileid: "66244081"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "66389993"
 ---
 # <a name="azure-time-series-insights-preview-use-cases"></a>Anwendungsfälle für Azure Time Series Insights Preview
 
@@ -28,7 +28,7 @@ Im Einzelnen werden in diesem Artikel die folgenden Fragen beantwortet:
 * Welche Vorteile bietet die Verwendung von Time Series Insights für die [Betriebsanalyse und Prozesseffizienz](#operational-analysis-and-driving-process-efficiency)?
 * Welche Vorteile bietet die Verwendung von Time Series Insights für die [erweiterte Analyse](#advanced-analytics)?
 
-Nachfolgend wird eine Übersicht über diese Nutzungsszenarien beschrieben.
+In den folgenden Abschnitten können Sie sich eine Übersicht über diese Nutzungsszenarien verschaffen.
 
 ## <a name="introduction"></a>Einführung
 
@@ -54,7 +54,7 @@ Es gibt drei primäre Methoden zur Interaktion mit in Time Series Insights gespe
 
     * Lesen Sie die Dokumentationen [Time Series Insights JS-Clientbibliothek](tutorial-explore-js-client-lib.md) und [Time Series Insights-Client](https://github.com/Microsoft/tsiclient), um mehr über das JavaScript-SDK zu erfahren.
 
-    * Weitere Informationen zum Freigeben von URLs und zur neuen Benutzeroberfläche finden Sie unter [Visualisieren von Daten in der Explorer-Vorschauversion](time-series-insights-update-explorer.md).
+    * Weitere Informationen zum Freigeben von URLs und zur neuen Benutzeroberfläche finden Sie unter [Visualisieren von Daten im Azure Time Series Insights Preview-Explorer](time-series-insights-update-explorer.md).
 
 - Die dritte Methode für den Einstieg besteht in der Verwendung leistungsfähiger APIs zum Abfragen von in Time Series Insights gespeicherten Daten. Time Series Insights verfügt über temporale Operatoren wie `from`, `to`, `first` und `last`. Es verfügt über Aggregationen und Transformationen wie `average`, `min`, `max`, `split by`, `order by` und `DateHistogram`. Es gibt auch Filteroperatoren wie `has`, `in`, `and`, `or`, `greater than` und `REGEX`. Alle diese Operatoren ermöglichen Downstreamanwendungen das schnelle Auffinden interessanter Trends und Muster in Ihren Daten. Verwenden Sie sie zum Auffüllen selbst entwickelter Visualisierungen, um Anomalien zu erkennen.
 
@@ -97,7 +97,5 @@ Time Series Insights schließt die Lücke zwischen IoT-Daten und erweiterten Ana
 ## <a name="next-steps"></a>Nächste Schritte
 
 - Weitere Informationen zum [Time Series Insights Preview-Explorer](./time-series-insights-update-explorer.md).
-
-- Lesen Sie zur Planung Ihrer Umgebung [Time Series Insights Preview-Planung](./time-series-insights-update-plan.md).
-
+- Lesen Sie [Azure Time Series Insights Preview-Planung](./time-series-insights-update-plan.md), um Ihre Umgebung zu planen.
 - Lesen Sie die Dokumentation zum [Time Series Insights-Client](https://github.com/Microsoft/tsiclient).

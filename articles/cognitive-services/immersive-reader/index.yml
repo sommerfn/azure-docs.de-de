@@ -1,0 +1,62 @@
+### YamlMime:YamlDocument
+documentType: LandingData
+title: Dokumentation zum plastischen Reader
+metadata:
+  title: 'Dokumentation zum plastischen Reader: Schnellstarts, Tutorials, API-Referenz – Azure Cognitive Services | Microsoft-Dokumentation'
+  description: 'Hier erfahren Sie, wie Sie den plastischen Reader in Ihrer Anwendung verwenden.'
+  services: cognitive-services
+  author: metanMSFT
+  manager: nitinme
+  ms.service: cognitive-services
+  ms.tgt_pltfrm: na
+  ms.devlang: na
+  ms.topic: landing-page
+  ms.date: 06/20/2019
+  ms.author: metanMSFT
+abstract:
+  description: 'Der plastische Reader ist ein Tool, das bewährte Techniken implementiert, um das Leseverständnis von Leseanfängern, Sprachenlernenden und Personen mit Lernunterschieden zu verbessern. Implementieren Sie den plastischen Reader in Ihrer Webanwendung mithilfe des Immersive Reader SDK.'
+sections:
+  - items:
+      - type: list
+        style: cards
+        className: cardsM
+        columns: 3
+        items:
+          - href: /azure/cognitive-services/immersive-reader/overview
+            html: '<p>Hier erfahren Sie mehr über den plastischen Reader und darüber, wie er in Ihre Anwendungen integriert werden kann.</p>'
+            image:
+              src: ../media/index/i_overview.svg
+            title: Worum handelt es sich beim plastischen Reader?
+          - href: /azure/cognitive-services/immersive-reader/reference
+            html: <p>Hier erfahren Sie mehr über das Immersive Reader Javascript SDK</p>
+            image:
+              src: ../media/index/i_overview.svg
+            title: Verwenden des Immersive Reader SDK
+  - title: Fünfminütige Schnellstarts
+    items:
+      - type: paragraph
+        text: 'Erste Schritte mit dem plastischen Reader:'
+      - type: list
+        style: icon48
+        items:
+          - image:
+              src: media/index/logo_csharp.svg
+            text: 'C&#35;'
+            alt: 'C#-Logo'
+            href: quickstart
+  - title: Schritt-für-Schritt-Tutorials
+    items:
+      - type: paragraph
+        text: 'Hier erfahren Sie, wie Anwendungen unter Verwendung des plastischen Readers entwickelt werden:'
+      - type: list
+        style: unordered
+        items:
+          - html: <a href="tutorial.md">Starten des plastischen Readers mithilfe von Node.js</a>
+  - title: Verweis
+    items:
+      - type: list
+        style: cards
+        className: cardsD
+        items:
+          - title: SDKs
+            html: <p><a href="reference.md">JavaScript</a></p>
