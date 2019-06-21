@@ -126,8 +126,8 @@ Kombiniert mehrere Zeichenfolgenwerte und gibt die verkettete Zeichenfolge zurü
 
 | Parameter | Erforderlich | Typ | BESCHREIBUNG |
 |:--- |:--- |:--- |:--- |
-| string1 |Ja |Zeichenfolge |Der erste Wert für die Verkettung. |
-| zusätzliche Argumente |Nein |Zeichenfolge |Weitere Werte in sequenzieller Reihenfolge für die Verkettung. |
+| string1 |Ja |string |Der erste Wert für die Verkettung. |
+| zusätzliche Argumente |Nein |string |Weitere Werte in sequenzieller Reihenfolge für die Verkettung. |
 
 ### <a name="return-value"></a>Rückgabewert
 
@@ -200,7 +200,7 @@ Anschließende Verwendung von _principalIds_ als Argument für `parameters()` in
 }
 ```
 
-## <a name="resourcegroup"></a>Ressourcengruppe
+## <a name="resourcegroup"></a>resourceGroup
 
 `resourceGroup()`
 
@@ -272,7 +272,7 @@ Gibt ein Objekt zurück, das das angegebene Ressourcengruppenartefakt darstellt.
 
 | Parameter | Erforderlich | Typ | BESCHREIBUNG |
 |:--- |:--- |:--- |:--- |
-| placeholderName |Ja |Zeichenfolge |Der Platzhaltername des Ressourcengruppenartefakts, der zurückgegeben werden soll. |
+| placeholderName |Ja |string |Der Platzhaltername des Ressourcengruppenartefakts, der zurückgegeben werden soll. |
 
 ### <a name="return-value"></a>Rückgabewert
 
