@@ -11,10 +11,10 @@ ms.author: zhanxia
 ms.date: 05/06/2019
 ROBOTS: NOINDEX
 ms.openlocfilehash: 40a8247c22da1f7a057e222565ffb2ec4c6b7fb3
-ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/02/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65027716"
 ---
 # <a name="evaluate-model-module"></a>Modul „Evaluate Model“
@@ -62,7 +62,7 @@ Sie können auch eine zweite Menge von Ergebnissen mit **Evaluate Model** verbin
 Dieses Feature ist nützlich, da Sie die Ergebnisse zweier verschiedener Modelle auf der Grundlage derselben Daten einfach vergleichen können. Sie können auch Ergebnisse zweier verschiedener Ausführungen über dieselben Daten mit unterschiedlichen Parametern vergleichen.
 
 1. Verbinden Sie die Ausgabe **Scored dataset** des Moduls [Score Model](score-model.md) mit der Eingabe des Moduls **Evaluate Model**. 
-2. Verbinden Sie die Ausgabe des Moduls „Score Model“ für das zweite Modell mit der rechten Eingabe des **Moduls „Evaluate Model“**.
+2. Verbinden Sie die Ausgabe des Moduls „Score Model“ für das zweite Modell mit der rechten Eingabe des **Moduls „Evaluate Model“** .
 3. Klicken Sie mit der rechten Maustaste auf **Evaluate Model** und dann auf **Run selected** (Ausgewählte ausführen), um die Auswertungsergebnisse zu generieren.
 
 ## <a name="results"></a>Ergebnisse
@@ -81,7 +81,7 @@ So stellt beispielsweise die folgende Abbildung einen Vergleich der Ergebnisse z
 
 Da es sich um ein Clusteringmodell handelt, sind die Auswertungsergebnisse anders als wenn Sie Ergebnisse zweier Regressionsmodelle vergleichen oder zwei Klassifizierungsmodelle miteinander vergleichen. Die Gesamtpräsentation ist jedoch identisch. 
 
-## <a name="metrics"></a>Metriken
+## <a name="metrics"></a>metrics
 
 Dieser Abschnitt beschreibt die Metriken, die für die bestimmten Arten von Modellen zurückgegeben werden, die für den Einsatz mit **Evaluate Model** unterstützt werden:
 

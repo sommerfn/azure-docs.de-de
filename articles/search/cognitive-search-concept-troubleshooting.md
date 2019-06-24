@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 02/02/2019
 ms.author: luisca
 ms.custom: seodec2018
-ms.openlocfilehash: ebc0ca718ab8edf5ef644993c71b0353861265b8
-ms.sourcegitcommit: fdd6a2927976f99137bb0fcd571975ff42b2cac0
+ms.openlocfilehash: c97ccd82a9c09e10572733040e238443cbf777da
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/27/2019
-ms.locfileid: "56961846"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "64696594"
 ---
 # <a name="troubleshooting-tips-for-cognitive-search"></a>Tipps zur Problembehandlung bei der kognitiven Suche
 
@@ -84,7 +84,7 @@ Fügen Sie ein Feld ```enriched``` als Teil Ihrer Indexdefinition zu Debuzwecken
 
 Fehlender Inhalt könnte das Ergebnis von Dokumenten sein, die während der Indizierung verworfen werden. Für die Preisstufen Free und Basic gibt es niedrige Grenzwerte für die Dokumentgröße. Jede Datei, die den Grenzwert überschreitet, wird während der Indizierung verworfen. Sie können im Azure-Portal nach verworfenen Dokumenten suchen. Doppelklicken Sie im Dashboard des Suchdiensts auf die Kachel des Indexers. Überprüfen Sie das Verhältnis der erfolgreichen indizierten Dokumente. Wenn es nicht 100% ist, können Sie auf darauf klicken, um mehr Details zu erhalten. 
 
-Wenn das Problem mit der Dateigröße zusammenhängt, wird möglicherweise ein Fehler wie dieser angezeigt: „Das Blob <Dateiname> ist <Dateigröße> Bytes groß und überschreitet daher das Größenlimit für die Dokumentenextrahierung für Ihren aktuellen Diensttarif.“ Weitere Informationen zu Indexergrenzwerten finden Sie unter [Grenzwerte für den Azure Search-Dienst](search-limits-quotas-capacity.md).
+Wenn das Problem mit der Dateigröße zusammenhängt, wird möglicherweise ein Fehler wie dieser angezeigt: „Das Blob "\<Dateiname>" ist \<Dateigröße> Bytes groß und überschreitet daher das Größenlimit für die Dokumentenextrahierung für Ihre aktuelle Dienstebene.“ Weitere Informationen zu Indexergrenzwerten finden Sie unter [Grenzwerte für den Azure Search-Dienst](search-limits-quotas-capacity.md).
 
 Ein zweiter Grund dafür, dass Inhalte nicht angezeigt werden, können Zuordnungsfehler bei der Eingabe/Ausgabe sein, die zusammenhängen. Ein Beispiel hierfür wäre, wenn ein Ausgabezielname „Personen“ lautet, aber der Indexfeldname kleingeschrieben ist („personen“). Das System könnte 201 Erfolgsmeldungen für die gesamte Pipeline zurückgeben, sodass der Eindruck entsteht, dass die Indizierung erfolgreich war, obwohl tatsächlich ein Feld leer ist. 
 

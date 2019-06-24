@@ -1,6 +1,6 @@
 ---
-title: Hinzufügen einer Seite zur Benutzeroberfläche der Remoteüberwachungslösung – Azure | Microsoft-Dokumentation
-description: Dieser Artikel zeigt Ihnen, wie Sie eine neue Seite in die Webbenutzeroberfläche des Solution Accelerators für die Remoteüberwachung hinzufügen können.
+title: Hinzufügen einer Seite zur Benutzeroberfläche der Remoteüberwachungslösung – Azure | Microsoft-Dokumentation
+description: Dieser Artikel zeigt Ihnen, wie Sie eine neue Seite auf der Webbenutzeroberfläche des Solution Accelerators für die Remoteüberwachung hinzufügen können.
 author: dominicbetts
 manager: timlt
 ms.author: dobett
@@ -9,11 +9,11 @@ services: iot-accelerators
 ms.date: 10/02/2018
 ms.topic: conceptual
 ms.openlocfilehash: 95830cdffb232e16f9fbae51cfa11fbd18172c3c
-ms.sourcegitcommit: 4047b262cf2a1441a7ae82f8ac7a80ec148c40c4
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2018
-ms.locfileid: "49094491"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "61447079"
 ---
 # <a name="add-a-custom-page-to-the-remote-monitoring-solution-accelerator-web-ui"></a>Hinzufügen einer benutzerdefinierten Seite zur Webbenutzeroberfläche des Solution Accelerators für die Remoteüberwachung
 
@@ -154,7 +154,7 @@ Optional können Sie Ihre lokal ausgeführte Kopie der Webbenutzeroberfläche mi
 
 1. Bereitstellen einer **grundlegenden** Instanz des Solution Accelerators mit der **pcs**-CLI. Notieren Sie den Namen der Bereitstellung und die Anmeldeinformationen, die Sie für die VM angegeben haben. Weitere Informationen finden Sie unter [Bereitstellen der vorkonfigurierten Remoteüberwachungslösung über die Befehlszeilenschnittstelle](iot-accelerators-remote-monitoring-deploy-cli.md).
 
-1. Aktivieren Sie über das Azure-Portal oder mit [az CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest) den SSH-Zugriff auf den virtuellen Computer, der die Microservices in der Lösung hostet. Beispiel: 
+1. Aktivieren Sie über das Azure-Portal oder mit [az CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest) den SSH-Zugriff auf den virtuellen Computer, der die Microservices in der Lösung hostet. Beispiel:
 
     ```sh
     az network nsg rule update --name SSH --nsg-name {your solution name}-nsg --resource-group {your solution name} --access Allow
@@ -162,7 +162,7 @@ Optional können Sie Ihre lokal ausgeführte Kopie der Webbenutzeroberfläche mi
 
     Sie sollten nur während der Test- und Entwicklungsphase SSH-Zugriff aktivieren. Wenn Sie SSH aktivieren, [sollten Sie es so bald wie möglich wieder deaktivieren](../security/azure-security-network-security-best-practices.md).
 
-1. Suchen Sie über das Azure-Portal oder mit [az CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest) den Namen und die öffentliche IP-Adresse des virtuellen Computers. Beispiel: 
+1. Suchen Sie über das Azure-Portal oder mit [az CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest) den Namen und die öffentliche IP-Adresse des virtuellen Computers. Beispiel:
 
     ```sh
     az resource list --resource-group {your solution name} -o table

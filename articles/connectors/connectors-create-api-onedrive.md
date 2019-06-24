@@ -11,12 +11,12 @@ services: logic-apps
 ms.reviewer: klam, LADocs
 ms.suite: integration
 tags: connectors
-ms.openlocfilehash: 50bd9ecdd665cf72c146c63ae25efa6773934a3e
-ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
+ms.openlocfilehash: 840a010f8606387a250552d884621a96d0031f90
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35295379"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "62106226"
 ---
 # <a name="get-started-with-the-onedrive-connector"></a>Erste Schritte mit dem OneDrive-Connector
 Stellen Sie eine Verbindung mit OneDrive her, um Ihre Dateien zu verwalten, d. h. diese hochzuladen, abzurufen, zu löschen usw. 
@@ -62,7 +62,7 @@ Ein Trigger ist ein Ereignis, mit dem ein in einer Logik-App definierter Workflo
 ## <a name="use-an-action"></a>Verwenden einer Aktion
 Eine Aktion ist ein Vorgang, der durch den in einer Logik-App definierten Workflow ausgeführt wird. Weitere Informationen zu Aktionen finden Sie [hier](../logic-apps/logic-apps-overview.md#logic-app-concepts).
 
-1. Wählen Sie das Pluszeichen aus. Es stehen mehrere Auswahlmöglichkeiten zur Verfügung: **Aktion hinzufügen**, **Bedingung hinzufügen** oder eine der Optionen unter **Mehr**.
+1. Wählen Sie das Pluszeichen aus. Sie sehen mehrere Auswahlmöglichkeiten: **Aktion hinzufügen**, **Bedingung hinzufügen** oder eine der Optionen unter **Mehr**.
    
     ![](./media/connectors-create-api-onedrive/add-action.png)
 2. Wählen Sie **Aktion hinzufügen**aus.

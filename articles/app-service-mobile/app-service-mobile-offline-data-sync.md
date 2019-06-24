@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 10/30/2016
 ms.author: crdun
 ms.openlocfilehash: ab8fb4a567e4c4a7bf1e884999a4e403a98547a0
-ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49471032"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "62128014"
 ---
 # <a name="offline-data-sync-in-azure-mobile-apps"></a>Synchronisierung von Offlinedaten in Azure Mobile Apps
 ## <a name="what-is-offline-data-sync"></a>Was ist die Synchronisierung von Offlinedaten?
@@ -37,13 +37,13 @@ Die Offlinesynchronisierung hat mehrere Vorteile:
 
 Die folgenden Lernprogramme zeigen, wie Sie die Offlinesynchronisierung zu Ihren mobilen Clients mithilfe von Azure Mobile Apps hinzufügen können:
 
-* [Android: Offlinesynchronisierung aktivieren]
-* [Apache Cordova: Offlinesynchronisierung aktivieren](app-service-mobile-cordova-get-started-offline-data.md)
-* [iOS: Offlinesynchronisierung aktivieren]
-* [Xamarin iOS: Offlinesynchronisierung aktivieren]
-* [Xamarin Android: Offlinesynchronisierung aktivieren]
-* [Xamarin.Forms: Offlinesynchronisierung aktivieren](app-service-mobile-xamarin-forms-get-started-offline-data.md)
-* [Aktivieren der Offlinesynchronisierung für Ihre Windows-App]
+* [Android: Aktivieren der Offlinesynchronisierung]
+* [Apache Cordova: Aktivieren der Offlinesynchronisierung](app-service-mobile-cordova-get-started-offline-data.md)
+* [iOS: Aktivieren der Offlinesynchronisierung]
+* [Xamarin iOS: Aktivieren der Offlinesynchronisierung]
+* [Xamarin Android: Aktivieren der Offlinesynchronisierung]
+* [Xamarin.Forms: Aktivieren der Offlinesynchronisierung](app-service-mobile-xamarin-forms-get-started-offline-data.md)
+* [Universelle Windows-Plattform: Aktivieren der Offlinesynchronisierung]
 
 ## <a name="what-is-a-sync-table"></a>Was ist eine Synchronisierungstabelle?
 Um auf den "/tables"-Endpunkt zuzugreifen, stellen Azure Mobile-Client-SDKs Schnittstellen bereit, z. B. `IMobileServiceTable` (.NET-Client-SDK) oder `MSTable` (iOS-Client). Diese APIs stellen eine direkte Verbindung mit dem Azure Mobile App-Back-End her, und es tritt ein Fehler auf, wenn das Clientgerät über keine Netzwerkverbindung verfügt.
@@ -53,7 +53,7 @@ Zur Unterstützung der Offlinenutzung sollte Ihre App stattdessen die *Synchroni
 ## <a name="what-is-a-local-store"></a>Was ist ein lokaler Speicher?
 Ein lokaler Speicher ist die Datenpersistenzebene auf dem Clientgerät. Die Client-SDKs von Azure Mobile Apps bieten eine Standardimplementierung für den lokalen Speicher. Unter Windows, Xamarin und Android basiert sie auf SQLite. Unter iOS basiert sie auf Core Data.
 
-Um die SQLite-basierte Implementierung für Windows Phone oder den Microsoft Store verwenden zu können, müssen Sie eine SQLite-Erweiterung installieren. Weitere Informationen finden Sie unter [Aktivieren der Offlinesynchronisierung für Ihre Windows-App]. Im Lieferumfang von Android und iOS ist im Betriebssystem selbst eine Version von SQLite enthalten, weshalb es nicht notwendig ist, auf eine eigene Version von SQLite zu verweisen.
+Um die SQLite-basierte Implementierung für Windows Phone oder den Microsoft Store verwenden zu können, müssen Sie eine SQLite-Erweiterung installieren. Weitere Informationen finden Sie unter [Universelle Windows-Plattform: Aktivieren der Offlinesynchronisierung]. Im Lieferumfang von Android und iOS ist im Betriebssystem selbst eine Version von SQLite enthalten, weshalb es nicht notwendig ist, auf eine eigene Version von SQLite zu verweisen.
 
 Entwickler können auch ihren eigenen lokalen Speicher implementieren. Wenn Sie Daten in einem verschlüsselten Format auf dem mobilen Client speichern möchten, können Sie z. B. einen lokalen Speicher definieren, der SQLCipher für die Verschlüsselung verwendet.
 
@@ -65,8 +65,8 @@ Ein lokaler Speicher wird mithilfe einer Initialisierungsmethode wie `IMobileSer
 ## <a name="how-sync-works"></a>So funktioniert die Offlinesynchronisierung
 Beim Synchronisieren von Tabellen steuert der Clientcode, wann lokale Änderungen mit einem Azure Mobile App-Back-End synchronisiert werden sollen. Nichts wird an das Back-End gesendet, bis ein Aufruf für einen *Pushvorgang* für lokale Änderungen erfolgt. Auf ähnliche Weise wird der lokale Speicher nur dann mit neuen Daten aufgefüllt, wenn ein Aufruf für einen *Pullvorgang* von Daten erfolgt.
 
-* **Pushvorgang**: Push ist ein Vorgang auf dem Synchronisierungskontext, der alle CUD-Änderungen seit dem letzten Pushvorgang sendet. Beachten Sie, dass es nicht möglich ist, nur die Änderungen einer einzelnen Tabelle zu senden, da andernfalls Vorgänge außerhalb der Reihenfolge gesendet werden könnten. Ein Pushvorgang führt eine Reihe von REST-Aufrufen an Ihr Azure Mobile App-Back-End durch, das wiederum die Serverdatenbank ändert.
-* **Pullvorgänge**: Pullvorgänge erfolgen pro Tabelle und können mit einer Abfrage so angepasst werden, dass nur eine Teilmenge der Serverdaten abgerufen wird. Die Azure Mobile-Client-SDKs legen dann die resultierenden Daten im lokalen Speicher ab.
+* **Push**: Ein Pushvorgang ist ein Vorgang im Synchronisierungskontext, bei dem alle CUD-Änderungen seit dem letzten Pushvorgang gesendet werden. Beachten Sie, dass es nicht möglich ist, nur die Änderungen einer einzelnen Tabelle zu senden, da andernfalls Vorgänge außerhalb der Reihenfolge gesendet werden könnten. Ein Pushvorgang führt eine Reihe von REST-Aufrufen an Ihr Azure Mobile App-Back-End durch, das wiederum die Serverdatenbank ändert.
+* **Pull**: Ein Pullvorgang wird pro Tabelle ausgeführt und kann mit einer Abfrage so angepasst werden, dass nur eine Teilmenge der Serverdaten abgerufen wird. Die Azure Mobile-Client-SDKs legen dann die resultierenden Daten im lokalen Speicher ab.
 * **Implizite Pushvorgänge**: Wenn ein Pullvorgang für eine Tabelle mit ausstehenden lokalen Updates ausgeführt wird, führt der Pullvorgang zunächst einen Vorgang vom Typ `push()` für den Synchronisierungskontext aus. Dieser Pushvorgang minimiert Konflikte zwischen Änderungen, die sich bereits in der Warteschlange befinden, und den neuen Daten vom Server.
 * **Inkrementelle Synchronisierung**: der erste Parameter für den Pullvorgang ist ein *Abfragename* , der nur auf dem Client verwendet wird. Wenn Sie einen nicht leeren Abfragenamen verwenden, führt das Azure Mobile SDK eine *inkrementelle Synchronisierung* durch. Jedes Mal, wenn ein Pullvorgang einen Satz von Ergebnissen zurückgibt, wird der neueste `updatedAt`-Zeitstempel aus der Ergebnismenge in den lokalen SDK-Systemtabellen gespeichert. Nachfolgende Pullvorgänge rufen nur Datensätze nach dem jeweiligen Zeitstempel ab.
 
@@ -90,15 +90,15 @@ Beim Synchronisieren von Tabellen steuert der Clientcode, wann lokale Änderunge
   Als Beispiel für veraltete Daten auf dem Client nehmen wir an, dass im Beispiel "todo list" Gerät 1 nur Elemente abruft, die nicht abgeschlossen sind. Das todo-Element „Milch kaufen“ wurde auf dem Server von einem anderen Gerät als abgeschlossen markiert. Allerdings verfügt Gerät 1 im lokalen Speicher weiterhin über das todo-Element „Milch kaufen“, da es nur Elemente abruft, die nicht als abgeschlossen markiert sind. Dieses veraltete Element wird durch eine Löschung entfernt.
 
 ## <a name="next-steps"></a>Nächste Schritte
-* [iOS: Offlinesynchronisierung aktivieren]
-* [Xamarin iOS: Offlinesynchronisierung aktivieren]
-* [Xamarin Android: Offlinesynchronisierung aktivieren]
-* [Aktivieren der Offlinesynchronisierung für Ihre Windows-App]
+* [iOS: Aktivieren der Offlinesynchronisierung]
+* [Xamarin iOS: Aktivieren der Offlinesynchronisierung]
+* [Xamarin Android: Aktivieren der Offlinesynchronisierung]
+* [Universelle Windows-Plattform: Aktivieren der Offlinesynchronisierung]
 
 <!-- Links -->
 [.NET Client SDK]: app-service-mobile-dotnet-how-to-use-client-library.md
-[Android: Offlinesynchronisierung aktivieren]: app-service-mobile-android-get-started-offline-data.md
-[iOS: Offlinesynchronisierung aktivieren]: app-service-mobile-ios-get-started-offline-data.md
-[Xamarin iOS: Offlinesynchronisierung aktivieren]: app-service-mobile-xamarin-ios-get-started-offline-data.md
-[Xamarin Android: Offlinesynchronisierung aktivieren]: app-service-mobile-xamarin-android-get-started-offline-data.md
-[Aktivieren der Offlinesynchronisierung für Ihre Windows-App]: app-service-mobile-windows-store-dotnet-get-started-offline-data.md
+[Android: Aktivieren der Offlinesynchronisierung]: app-service-mobile-android-get-started-offline-data.md
+[iOS: Aktivieren der Offlinesynchronisierung]: app-service-mobile-ios-get-started-offline-data.md
+[Xamarin iOS: Aktivieren der Offlinesynchronisierung]: app-service-mobile-xamarin-ios-get-started-offline-data.md
+[Xamarin Android: Aktivieren der Offlinesynchronisierung]: app-service-mobile-xamarin-android-get-started-offline-data.md
+[Universelle Windows-Plattform: Aktivieren der Offlinesynchronisierung]: app-service-mobile-windows-store-dotnet-get-started-offline-data.md

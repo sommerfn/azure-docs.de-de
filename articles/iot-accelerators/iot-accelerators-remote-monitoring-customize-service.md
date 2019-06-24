@@ -1,5 +1,5 @@
 ---
-title: Hinzufügen eines Diensts zur Benutzeroberfläche der Remoteüberwachungslösung – Azure | Microsoft-Dokumentation
+title: Hinzufügen eines Diensts zur Benutzeroberfläche der Remoteüberwachungslösung – Azure | Microsoft-Dokumentation
 description: Dieser Artikel zeigt Ihnen, wie Sie einen neuen Dienst zur Webbenutzeroberfläche des Solution Accelerators für die Remoteüberwachung hinzufügen können.
 author: dominicbetts
 manager: timlt
@@ -9,11 +9,11 @@ services: iot-accelerators
 ms.date: 10/02/2018
 ms.topic: conceptual
 ms.openlocfilehash: e44aa8ade512a6005959e795cb1d4ad861da1338
-ms.sourcegitcommit: 4047b262cf2a1441a7ae82f8ac7a80ec148c40c4
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2018
-ms.locfileid: "49094506"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "61447045"
 ---
 # <a name="add-a-custom-service-to-the-remote-monitoring-solution-accelerator-web-ui"></a>Hinzufügen eines benutzerdefinierten Diensts zur Webbenutzeroberfläche des Solution Accelerators für die Remoteüberwachung
 

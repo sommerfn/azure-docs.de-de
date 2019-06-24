@@ -11,11 +11,11 @@ ms.date: 07/30/2018
 ms.reviewer: klam, LADocs
 ms.suite: integration
 ms.openlocfilehash: 93c24f88fcd6a002493933ef71c5c80bd2ff8c10
-ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50231643"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "62120178"
 ---
 # <a name="perform-data-operations-in-azure-logic-apps"></a>Durchführen von Datenvorgängen in Azure Logic Apps
 
@@ -62,7 +62,7 @@ Sie benötigen Folgendes, um die Beispiele in diesem Artikel verwenden zu könne
 
 * Die Logik-App, für die Sie den Vorgang für die Arbeit mit den Daten benötigen. 
 
-  Wenn Sie noch nicht mit Logik-Apps vertraut sind, lesen Sie [Was ist Azure Logic Apps?](../logic-apps/logic-apps-overview.md) und [Schnellstart: Erstellen Ihres ersten Logik-App-Workflows](../logic-apps/quickstart-create-first-logic-app-workflow.md).
+  Falls Sie noch nicht mit Logik-Apps vertraut sind, finden Sie weitere Informationen unter [Was ist Azure Logic Apps?](../logic-apps/logic-apps-overview.md) und [Schnellstart: Erstellen Ihres ersten automatisierten Workflows mit Azure Logic Apps – Azure-Portal](../logic-apps/quickstart-create-first-logic-app-workflow.md).
 
 * Ein [Trigger](../logic-apps/logic-apps-overview.md#logic-app-concepts), der als erster Schritt in Ihrer Logik-App verwendet wird. 
 
@@ -82,7 +82,7 @@ Anschließend erstellt sie diese Ausgabe:
 
 `{"age":35,"fullName":"Owens,Sophie"}`
 
-Führen Sie diese Schritte mit dem Logik-App-Designer aus, wenn Sie ein Beispiel ausprobieren möchten. Falls Sie den Codeansicht-Editor bevorzugen, können Sie die Aktionsdefinitionen des Beispiels für **Compose** und **Initialize variable** auch aus diesem Artikel in die zugrunde liegende Workflowdefinition Ihrer eigenen Logik-App kopieren: [Codebeispiele für Datenvorgänge – Compose](../logic-apps/logic-apps-data-operations-code-samples.md#compose-action-example). 
+Führen Sie diese Schritte mit dem Logik-App-Designer aus, wenn Sie ein Beispiel ausprobieren möchten. Falls Sie den Codeansichts-Editor bevorzugen, können Sie die Aktionsdefinitionen des Beispiels für **Compose** und **Initialize variable** auch aus diesem Artikel in die zugrunde liegende Workflowdefinition Ihrer eigenen Logik-App kopieren: [Codebeispiele für Datenvorgänge – Compose](../logic-apps/logic-apps-data-operations-code-samples.md#compose-action-example) 
 
 1. Öffnen Sie im <a href="https://portal.azure.com" target="_blank">Azure-Portal</a> oder in Visual Studio Ihre Logik-App im Logik-App-Designer. 
 
@@ -100,7 +100,7 @@ Führen Sie diese Schritte mit dem Logik-App-Designer aus, wenn Sie ein Beispiel
    * Zum Hinzufügen einer Aktion zwischen Schritten bewegen Sie den Mauszeiger über den Verbindungspfeil, sodass das Pluszeichen (+) angezeigt wird. 
    Wählen Sie das Pluszeichen und dann die Option **Aktion hinzufügen**.
 
-3. Geben Sie im Suchfeld den Begriff „compose“ als Filter ein. Wählen Sie in der Liste mit den Aktionen diese Aktion aus: **Compose**.
+3. Geben Sie im Suchfeld den Begriff „compose“ als Filter ein. Wählen Sie in der Liste mit den Aktionen diese Aktion aus: **Verfassen**
 
    ![Auswählen der Aktion „Compose“](./media/logic-apps-perform-data-operations/select-compose-action.png)
 
@@ -142,7 +142,7 @@ Sie können sich vergewissern, dass mit der Aktion **Compose** die erwarteten Er
 
 Verwenden Sie die Aktion **Datenvorgänge – Create CSV table**, um eine CSV-Tabelle (durch Trennzeichen getrennte Werte) zu erstellen, die die Eigenschaften und Werte aus JSON-Objekten (JavaScript Object Notation) in einem Array enthält. Sie können die sich ergebende Tabelle dann in Aktionen verwenden, die auf die Aktion **Create CSV table** folgen. 
 
-Falls Sie den Codeansicht-Editor bevorzugen, können Sie die Aktionsdefinitionen des Beispiels für **Create CSV table** und **Initialize variable** aus diesem Artikel in die zugrunde liegende Workflowdefinition Ihrer eigenen Logik-App kopieren: [Codebeispiele für Datenvorgänge – Create CSV table](../logic-apps/logic-apps-data-operations-code-samples.md#create-csv-table-action-example). 
+Falls Sie den Codeansichts-Editor bevorzugen, können Sie die Aktionsdefinitionen des Beispiels für **Create CSV table** und **Initialize variable** aus diesem Artikel in die zugrunde liegende Workflowdefinition Ihrer eigenen Logik-App kopieren: [Codebeispiele für Datenvorgänge – Create CSV table](../logic-apps/logic-apps-data-operations-code-samples.md#create-csv-table-action-example) 
 
 1. Öffnen Sie im <a href="https://portal.azure.com" target="_blank">Azure-Portal</a> oder in Visual Studio Ihre Logik-App im Logik-App-Designer. 
 
@@ -161,7 +161,7 @@ Falls Sie den Codeansicht-Editor bevorzugen, können Sie die Aktionsdefinitionen
    * Zum Hinzufügen einer Aktion zwischen Schritten bewegen Sie den Mauszeiger über den Verbindungspfeil, sodass das Pluszeichen (+) angezeigt wird. 
    Wählen Sie das Pluszeichen und dann die Option **Aktion hinzufügen**.
 
-3. Geben Sie im Suchfeld den Begriff „create csv table“ als Filter ein. Wählen Sie in der Liste mit den Aktionen diese Aktion aus: **Create CSV table**.
+3. Geben Sie im Suchfeld den Begriff „create csv table“ als Filter ein. Wählen Sie in der Liste mit den Aktionen diese Aktion aus: **CSV-Tabelle erstellen**
 
    ![Auswählen der Aktion „Create CSV table“](./media/logic-apps-perform-data-operations/select-create-csv-table-action.png)
 
@@ -211,7 +211,7 @@ Sie können sich vergewissern, dass mit der Aktion **Create CSV table** die erwa
 
 Verwenden Sie die Aktion **Datenvorgänge – Create HTML table**, um eine HTML-Tabelle zu erstellen, die die Eigenschaften und Werte aus JSON-Objekten (JavaScript Object Notation) in einem Array enthält. Sie können die sich ergebende Tabelle dann in Aktionen verwenden, die auf die Aktion **Create HTML table** folgen.
 
-Falls Sie den Codeansicht-Editor bevorzugen, können Sie die Aktionsdefinitionen des Beispiels für **Create HTML table** und **Initialize variable** aus diesem Artikel in die zugrunde liegende Workflowdefinition Ihrer eigenen Logik-App kopieren: [Codebeispiele für Datenvorgänge – Create HTML table](../logic-apps/logic-apps-data-operations-code-samples.md#create-html-table-action-example). 
+Falls Sie den Codeansichts-Editor bevorzugen, können Sie die Aktionsdefinitionen des Beispiels für **Create HTML table** und **Initialize variable** aus diesem Artikel in die zugrunde liegende Workflowdefinition Ihrer eigenen Logik-App kopieren: [Codebeispiele für Datenvorgänge – Create HTML table](../logic-apps/logic-apps-data-operations-code-samples.md#create-html-table-action-example) 
 
 1. Öffnen Sie im <a href="https://portal.azure.com" target="_blank">Azure-Portal</a> oder in Visual Studio Ihre Logik-App im Logik-App-Designer. 
 
@@ -230,7 +230,7 @@ Falls Sie den Codeansicht-Editor bevorzugen, können Sie die Aktionsdefinitionen
    * Zum Hinzufügen einer Aktion zwischen Schritten bewegen Sie den Mauszeiger über den Verbindungspfeil, sodass das Pluszeichen (+) angezeigt wird. 
    Wählen Sie das Pluszeichen und dann die Option **Aktion hinzufügen**.
 
-3. Geben Sie im Suchfeld den Begriff „create html table“ als Filter ein. Wählen Sie in der Liste mit den Aktionen diese Aktion aus: **Create HTML table**.
+3. Geben Sie im Suchfeld den Begriff „create html table“ als Filter ein. Wählen Sie in der Liste mit den Aktionen diese Aktion aus: **HTML-Tabelle erstellen**
 
    ![Auswählen der Aktion „Create HTML table“](./media/logic-apps-perform-data-operations/select-create-html-table-action.png)
 
@@ -288,7 +288,7 @@ Verwenden Sie die Aktion **Datenvorgänge – Filter array**, um aus einem vorha
 > 
 > Wenn die Arrayausgabe der Aktion **Filter array** für Aktionen verwendet werden soll, müssen diese Aktionen entweder Arrays als Eingabe akzeptieren, oder Sie müssen die Arrayausgabe ggf. in ein anderes kompatibles Format konvertieren. 
 
-Falls Sie den Codeansicht-Editor bevorzugen, können Sie die Aktionsdefinitionen des Beispiels für **Filter array** und **Initialize variable** aus diesem Artikel in die zugrunde liegende Workflowdefinition Ihrer eigenen Logik-App kopieren: [Codebeispiele für Datenvorgänge – Filter array](../logic-apps/logic-apps-data-operations-code-samples.md#filter-array-action-example). 
+Falls Sie den Codeansichts-Editor bevorzugen, können Sie die Aktionsdefinitionen des Beispiels für **Filter array** und **Initialize variable** aus diesem Artikel in die zugrunde liegende Workflowdefinition Ihrer eigenen Logik-App kopieren: [Codebeispiele für Datenvorgänge – Filter array](../logic-apps/logic-apps-data-operations-code-samples.md#filter-array-action-example) 
 
 1. Öffnen Sie im <a href="https://portal.azure.com" target="_blank">Azure-Portal</a> oder in Visual Studio Ihre Logik-App im Logik-App-Designer. 
 
@@ -309,7 +309,7 @@ Falls Sie den Codeansicht-Editor bevorzugen, können Sie die Aktionsdefinitionen
    * Zum Hinzufügen einer Aktion zwischen Schritten bewegen Sie den Mauszeiger über den Verbindungspfeil, sodass das Pluszeichen (+) angezeigt wird. 
    Wählen Sie das Pluszeichen und dann die Option **Aktion hinzufügen**.
 
-3. Geben Sie im Suchfeld „filter array“ als Filter ein. Wählen Sie in der Liste mit den Aktionen diese Aktion aus: **Filter array**.
+3. Geben Sie im Suchfeld „filter array“ als Filter ein. Wählen Sie in der Liste mit den Aktionen diese Aktion aus: **Filter array**
 
    ![Auswählen der Aktion „Filter array“](./media/logic-apps-perform-data-operations/select-filter-array-action.png)
 
@@ -357,7 +357,7 @@ Sie können sich vergewissern, dass mit der Aktion **Filter array** die erwartet
 
 Verwenden Sie die Aktion **Datenvorgänge – Join**, um eine Zeichenfolge zu erstellen, die alle Elemente eines Arrays enthält. Die Elemente sind jeweils mit einem spezifischen Trennzeichen voneinander getrennt. Anschließend können Sie die Zeichenfolge in Aktionen verwenden, die nach der Aktion **Join** folgen.
 
-Falls Sie den Codeansicht-Editor bevorzugen, können Sie die Aktionsdefinitionen des Beispiels für **Join** und **Initialize variable** aus diesem Artikel in die zugrunde liegende Workflowdefinition Ihrer eigenen Logik-App kopieren: [Codebeispiele für Datenvorgänge – Join](../logic-apps/logic-apps-data-operations-code-samples.md#join-action-example). 
+Falls Sie den Codeansichts-Editor bevorzugen, können Sie die Aktionsdefinitionen des Beispiels für **Join** und **Initialize variable** aus diesem Artikel in die zugrunde liegende Workflowdefinition Ihrer eigenen Logik-App kopieren: [Codebeispiele für Datenvorgänge – Join](../logic-apps/logic-apps-data-operations-code-samples.md#join-action-example) 
 
 1. Öffnen Sie im <a href="https://portal.azure.com" target="_blank">Azure-Portal</a> oder in Visual Studio Ihre Logik-App im Logik-App-Designer. 
 
@@ -376,7 +376,7 @@ Falls Sie den Codeansicht-Editor bevorzugen, können Sie die Aktionsdefinitionen
    * Zum Hinzufügen einer Aktion zwischen Schritten bewegen Sie den Mauszeiger über den Verbindungspfeil, sodass das Pluszeichen (+) angezeigt wird. 
    Wählen Sie das Pluszeichen und dann die Option **Aktion hinzufügen**.
 
-3. Geben Sie im Suchfeld den Begriff „join“ als Filter ein. Wählen Sie in der Liste mit den Aktionen diese Aktion aus: **Join**.
+3. Geben Sie im Suchfeld den Begriff „join“ als Filter ein. Wählen Sie in der Liste mit den Aktionen diese Aktion aus: **Join**
 
    ![Auswählen der Aktion „Datenvorgänge – Join“](./media/logic-apps-perform-data-operations/select-join-action.png)
 
@@ -421,7 +421,7 @@ Sie können sich vergewissern, dass mit der Aktion **Join** die erwarteten Ergeb
 Um auf Eigenschaften in JSON-Inhalten (JavaScript Object Notation) zu verweisen oder darauf zuzugreifen, können Sie benutzerfreundliche Felder oder Token für diese Eigenschaften erstellen, indem Sie die Aktion **Datenvorgänge – Parse JSON** verwenden.
 Auf diese Weise können Sie diese Eigenschaften in der Liste mit den dynamischen Inhalten auswählen, wenn Sie die Eingaben für Ihre Logik-App angeben. Für diese Aktion können Sie entweder ein JSON-Schema angeben oder aus dem JSON-Inhalt oder der Nutzlast Ihres Beispiels generieren.
 
-Falls Sie den Codeansicht-Editor bevorzugen, können Sie die Aktionsdefinitionen des Beispiels für **Parse JSON** und **Initialize variable** aus diesem Artikel in die zugrunde liegende Workflowdefinition Ihrer eigenen Logik-App kopieren: [Codebeispiele für Datenvorgänge – Parse JSON](../logic-apps/logic-apps-data-operations-code-samples.md#parse-json-action-example). 
+Falls Sie den Codeansichts-Editor bevorzugen, können Sie die Aktionsdefinitionen des Beispiels für **Parse JSON** und **Initialize variable** aus diesem Artikel in die zugrunde liegende Workflowdefinition Ihrer eigenen Logik-App kopieren: [Codebeispiele für Datenvorgänge – Parse JSON](../logic-apps/logic-apps-data-operations-code-samples.md#parse-json-action-example) 
 
 1. Öffnen Sie im <a href="https://portal.azure.com" target="_blank">Azure-Portal</a> oder in Visual Studio Ihre Logik-App im Logik-App-Designer. 
 
@@ -440,7 +440,7 @@ Falls Sie den Codeansicht-Editor bevorzugen, können Sie die Aktionsdefinitionen
    * Zum Hinzufügen einer Aktion zwischen Schritten bewegen Sie den Mauszeiger über den Verbindungspfeil, sodass das Pluszeichen (+) angezeigt wird. 
    Wählen Sie das Pluszeichen und dann die Option **Aktion hinzufügen**.
 
-3. Geben Sie im Suchfeld den Begriff „parse json“ als Filter ein. Wählen Sie in der Liste mit den Aktionen diese Aktion aus: **Parse JSON**.
+3. Geben Sie im Suchfeld den Begriff „parse json“ als Filter ein. Wählen Sie in der Liste mit den Aktionen diese Aktion aus: **JSON analysieren**
 
    ![Auswählen der Aktion „Parse JSON“](./media/logic-apps-perform-data-operations/select-parse-json-action.png)
 
@@ -499,7 +499,7 @@ Verwenden Sie die Aktion **Datenvorgänge – Select**, um ein Array mit JSON-Ob
 > [!NOTE]
 > Wenn die Arrayausgabe der Aktion **Select** für Aktionen verwendet werden soll, müssen diese Aktionen entweder Arrays als Eingabe akzeptieren, oder Sie müssen die Arrayausgabe ggf. in ein anderes kompatibles Format konvertieren. 
 
-Falls Sie den Codeansicht-Editor bevorzugen, können Sie die Aktionsdefinitionen des Beispiels für **Select** und **Initialize variable** aus diesem Artikel in die zugrunde liegende Workflowdefinition Ihrer eigenen Logik-App kopieren: [Codebeispiele für Datenvorgänge – Select](../logic-apps/logic-apps-data-operations-code-samples.md#select-action-example). 
+Falls Sie den Codeansichts-Editor bevorzugen, können Sie die Aktionsdefinitionen des Beispiels für **Select** und **Initialize variable** aus diesem Artikel in die zugrunde liegende Workflowdefinition Ihrer eigenen Logik-App kopieren: [Codebeispiele für Datenvorgänge – Select](../logic-apps/logic-apps-data-operations-code-samples.md#select-action-example) 
 
 1. Öffnen Sie im <a href="https://portal.azure.com" target="_blank">Azure-Portal</a> oder in Visual Studio Ihre Logik-App im Logik-App-Designer. 
 
@@ -518,7 +518,7 @@ Falls Sie den Codeansicht-Editor bevorzugen, können Sie die Aktionsdefinitionen
    * Zum Hinzufügen einer Aktion zwischen Schritten bewegen Sie den Mauszeiger über den Verbindungspfeil, sodass das Pluszeichen (+) angezeigt wird. 
    Wählen Sie das Pluszeichen und dann die Option **Aktion hinzufügen**.
 
-3. Geben Sie im Suchfeld den Begriff „select“ als Filter ein. Wählen Sie in der Liste mit den Aktionen diese Aktion aus: **Select**.
+3. Geben Sie im Suchfeld den Begriff „select“ als Filter ein. Wählen Sie in der Liste mit den Aktionen diese Aktion aus: **Auswählen**
 
    ![Auswählen der Aktion „Select“](./media/logic-apps-perform-data-operations/select-select-action.png)
 

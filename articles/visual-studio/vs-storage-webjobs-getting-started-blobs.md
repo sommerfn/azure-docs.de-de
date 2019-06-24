@@ -13,11 +13,11 @@ ms.topic: conceptual
 ms.date: 12/02/2016
 ms.author: ghogen
 ms.openlocfilehash: 5a7c16e6ac565d1660fee02cb7df178344b195e7
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51254399"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "62122922"
 ---
 # <a name="get-started-with-azure-blob-storage-and-visual-studio-connected-services-webjob-projects"></a>Erste Schritte mit Azure Blob Storage und verbundenen Visual Studio-Diensten (WebJob-Projekte)
 [!INCLUDE [storage-try-azure-tools-blobs](../../includes/storage-try-azure-tools-blobs.md)]
@@ -144,11 +144,11 @@ Die maximale Anzahl von Wiederholungen ist konfigurierbar. Für die Verarbeitung
 
 Die Warteschlangennachricht für nicht verarbeitbare Blobs ist ein JSON-Objekt, das die folgenden Eigenschaften enthält:
 
-* FunctionId (im Format *{WebJob-Name}*.Functions.*{Funktionsname}*; Beispiel: WebJob1.Functions.CopyBlob)
+* FunctionId (im Format *{WebJob-Name}* .Functions. *{Funktionsname}* ; Beispiel: WebJob1.Functions.CopyBlob)
 * BlobType ("BlockBlob" oder "PageBlob")
 * ContainerName
 * BlobName
-* ETag (eine Blobversions-ID. Beispiel: 0x8D1DC6E70A277EF)
+* ETag (eine Blobversions-ID, z.B.: „0x8D1DC6E70A277EF“)
 
 Im folgenden Codebeispiel enthält die **CopyBlob**-Funktion Code, der bewirkt, dass bei jedem Aufruf ein Fehler auftritt. Nachdem das SDK die Funktion mit der maximalen Anzahl von Wiederholungen aufgerufen hat, wird in der Warteschlange für nicht verarbeitbare Blobs eine Nachricht erstellt. Diese Nachricht wird von der **LogPoisonBlob**-Funktion verarbeitet.
 
@@ -193,11 +193,11 @@ Das WebJobs-SDK stellt sicher, dass **BlobTrigger** -Funktionen für ein neues o
 
 Blobbelege werden in einem Container mit dem Namen *azure-webjobs-hosts* in dem Azure-Speicherkonto gespeichert, das in der Verbindungszeichenfolge "AzureWebJobsStorage" angegeben ist. Ein Blobbeleg enthält die folgenden Informationen:
 
-* Die Funktion, die für das Blob aufgerufen wurde („*{WebJob-Name}*.Functions.*{Funktionsname}*“; Beispiel: „WebJob1.Functions.CopyBlob“)
+* Die Funktion, die für das Blob aufgerufen wurde („ *{WebJob-Name}* .Functions. *{Funktionsname}* “; Beispiel: „WebJob1.Functions.CopyBlob“)
 * Containername
 * Blobtyp ("BlockBlob" oder "PageBlob")
 * Blobname
-* ETag (eine Blobversions-ID. Beispiel: 0x8D1DC6E70A277EF)
+* ETag (eine Blobversions-ID, z.B.: „0x8D1DC6E70A277EF“)
 
 Wenn Sie eine erneute Verarbeitung eines Blobs erzwingen möchten, können Sie den Blobbeleg für dieses Blob manuell aus dem Container *azure-webjobs-hosts* löschen.
 

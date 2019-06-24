@@ -12,12 +12,12 @@ ms.workload: azure-vs
 ms.topic: conceptual
 ms.date: 11/14/2017
 ms.author: ghogen
-ms.openlocfilehash: b2b707585df4a7ec26f689b4213be74bdaab680d
-ms.sourcegitcommit: 30c7f9994cf6fcdfb580616ea8d6d251364c0cd1
+ms.openlocfilehash: 388c4d5f28e87f5cfe26336771d30fa44c6f9ef0
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/18/2018
-ms.locfileid: "42144349"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "62123007"
 ---
 # <a name="get-started-with-azure-blob-storage-and-visual-studio-connected-services-aspnet-core"></a>Erste Schritte mit Azure Blob Storage und verbundenen Visual Studio-Diensten (ASP.NET Core)
 
@@ -27,7 +27,7 @@ Dieser Artikel beschreibt die ersten Schritte beim Verwenden von Azure Blob Stor
 
 Azure Blob Storage ist ein Dienst zur Speicherung großer Mengen unstrukturierter Daten, auf die von überall auf der Welt über HTTP oder HTTPS zugegriffen werden kann. Ein einzelner BLOB kann eine beliebige Größe aufweisen. BLOBs können Bilder, Audio- und Videodateien, Rohdaten und Dokumentdateien enthalten. In diesem Artikel werden die ersten Schritte mit dem Blob Storage beschrieben, nachdem Sie über das Visual Studio-Feature **Verbundene Dienste** ein Azure Storage-Konto in einem ASP.NET Core-Projekt erstellt haben.
 
-Dateien werden in Ordnern gespeichert, Speicher-BLOBs analog dazu in Containern. Nachdem Sie ein Blob erstellt haben, erstellen Sie darin mindestens einen Container. Beispielsweise können Sie in einem Blob mit dem Namen „Notizbuch“ Container mit dem Namen „Bilder“ erstellen, um Bilder zu speichern, und einen anderen Container mit dem Namen „Audio“, um Audiodateien zu speichern. Nachdem Sie die Container erstellt haben, können Sie einzelne Dateien in die Container hochladen. Weitere Informationen zum programmgesteuerten Bearbeiten von Blobs finden Sie unter [Schnellstart: Hochladen, Herunterladen und Auflisten von Blobs mit .NET](../storage/blobs/storage-quickstart-blobs-dotnet.md).
+Dateien werden in Ordnern gespeichert, Speicher-BLOBs analog dazu in Containern. Nachdem Sie ein Blob erstellt haben, erstellen Sie darin mindestens einen Container. Beispielsweise können Sie in einem Blob mit dem Namen „Notizbuch“ Container mit dem Namen „Bilder“ erstellen, um Bilder zu speichern, und einen anderen Container mit dem Namen „Audio“, um Audiodateien zu speichern. Nachdem Sie die Container erstellt haben, können Sie einzelne Dateien in die Container hochladen. Weitere Informationen finden Sie unter [Schnellstart: Hochladen, Herunterladen und Auflisten von Blobs mit .NET](../storage/blobs/storage-quickstart-blobs-dotnet.md). Hier finden Sie Informationen zum programmgesteuerten Bearbeiten von Blobs.
 
 Einige Azure Storage-APIs sind asynchron, und im Code in diesem Artikel wird vorausgesetzt, dass asynchrone Methoden verwendet werden. Weitere Informationen finden Sie unter [Asynchrone Programmierung](https://docs.microsoft.com/dotnet/csharp/async).
 
@@ -140,7 +140,7 @@ do
 } while (token != null);
 ```
 
-Weitere Möglichkeiten zum Auflisten des Inhalts eines Blobcontainers finden Sie unter [Schnellstart: Hochladen, Herunterladen und Auflisten von Blobs mit .NET](../storage/blobs/storage-quickstart-blobs-dotnet.md#list-the-blobs-in-a-container).
+Weitere Informationen finden Sie unter [Schnellstart: Hochladen, Herunterladen und Auflisten von Blobs mit .NET](../storage/blobs/storage-quickstart-blobs-dotnet.md#list-the-blobs-in-a-container). Hier finden Sie Informationen zu weiteren Möglichkeiten zum Auflisten des Inhalts eines Blobcontainers.
 
 ## <a name="download-a-blob"></a>Herunterladen eines Blobs
 
@@ -157,7 +157,7 @@ using (var fileStream = System.IO.File.OpenWrite(@"path\myfile"))
 }
 ```
 
-Weitere Möglichkeiten zum Speichern von Blobs als Dateien finden Sie unter [Schnellstart: Hochladen, Herunterladen und Auflisten von Blobs mit .NET](../storage/blobs/storage-quickstart-blobs-dotnet.md#download-blobs).
+Weitere Informationen finden Sie unter [Schnellstart: Hochladen, Herunterladen und Auflisten von Blobs mit .NET](../storage/blobs/storage-quickstart-blobs-dotnet.md#download-blobs). Hier sind weitere Möglichkeiten beschrieben, wie Blobs als Dateien gespeichert werden können.
 
 ## <a name="delete-a-blob"></a>Löschen eines BLOBs
 

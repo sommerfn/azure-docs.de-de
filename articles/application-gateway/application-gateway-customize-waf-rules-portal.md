@@ -7,10 +7,10 @@ ms.service: application-gateway
 ms.date: 2/22/2019
 ms.author: victorh
 ms.openlocfilehash: f7ffb8d6adfd4afc75618834a3fe82cf9a3d0c9f
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64720381"
 ---
 # <a name="customize-web-application-firewall-rules-through-the-azure-portal"></a>Anpassen von Web Application Firewall-Regeln mit dem Azure-Portal
@@ -54,7 +54,7 @@ Wenn Sie Regeln deaktivieren, können Sie eine gesamte Regelgruppe oder bestimmt
 
 ## <a name="mandatory-rules"></a>Obligatorische Regeln
 
-Die folgende Liste enthält die Bedingungen, die dazu führen, dass WAF die Anforderung im Präventionsmodus blockiert.  Im Erkennungsmodus werden sie als Ausnahmen protokolliert.
+Die folgende Liste enthält die Bedingungen, die dazu führen, dass WAF die Anforderung im Präventionsmodus blockiert. Im Erkennungsmodus werden sie als Ausnahmen protokolliert.
 
 Diese können nicht konfiguriert oder deaktiviert werden:
 

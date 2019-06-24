@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/18/2017
 ms.author: jeconnoc
-ms.openlocfilehash: 29ee71e7946145e50cc875df96b674abec3e12df
-ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
+ms.openlocfilehash: f5597773b3127852481d5e14844bed889c4d6f83
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/13/2018
-ms.locfileid: "39004335"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "61435240"
 ---
 # <a name="how-to-configure-auto-scaling-for-a-cloud-service-in-the-portal"></a>Konfigurieren der automatischen Skalierung für einen Clouddienst im Portal
 
@@ -41,14 +41,14 @@ Folgendes ist allerdings zu beachten, bevor die Skalierung einer Anwendung konfi
 
 * Um die Hochverfügbarkeit Ihrer Anwendung zu gewährleisten, sollte diese mit mindestens zwei Rolleninstanzen bereitgestellt werden. Weitere Informationen finden Sie unter [Vereinbarungen zum Servicelevel](https://azure.microsoft.com/support/legal/sla/).
 
-* Die automatische Skalierung erfolgt nur, wenn der Status für alle Rollen **Bereit** lautet.  
+* Die automatische Skalierung erfolgt nur, wenn der Status für alle Rollen **Bereit** lautet.  
 
 
 ## <a name="where-scale-is-located"></a>Aufrufen der Funktion für die Skalierung
 Nachdem Sie Ihren Clouddienst ausgewählt haben, sollte das Blatt für den Clouddienst angezeigt werden.
 
 1. Wählen Sie auf dem Blatt für den Clouddienst auf der Kachel **Rollen und Instanzen** den Namen des Clouddiensts aus.   
-   **WICHTIG**: Sie müssen auf die Clouddienstrolle klicken, nicht auf die Rolleninstanz unterhalb der Rolle.
+   **WICHTIG:** Sie müssen auf die Clouddienstrolle klicken, nicht auf die Rolleninstanz unterhalb der Rolle.
 
     ![](./media/cloud-services-how-to-scale-portal/roles-instances.png)
 2. Wählen Sie die Kachel **Skalieren** aus.

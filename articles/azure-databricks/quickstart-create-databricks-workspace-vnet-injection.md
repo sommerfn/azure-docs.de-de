@@ -9,11 +9,11 @@ ms.service: azure-databricks
 ms.topic: conceptual
 ms.date: 04/02/2019
 ms.openlocfilehash: 295b64b10f9f78ca6224d60fb84c6d1310aaa42e
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/08/2019
-ms.locfileid: "59287521"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60770603"
 ---
 # <a name="quickstart-create-an-azure-databricks-workspace-in-a-virtual-network"></a>Schnellstart: Erstellen eines Azure Databricks-Arbeitsbereichs in einem virtuellen Netzwerk
 
@@ -37,7 +37,7 @@ Melden Sie sich beim [Azure-Portal](https://portal.azure.com/) an.
     |Adressraum|10.1.0.0/16|Der Adressbereich des virtuellen Netzwerks in CIDR-Notation.|
     |Abonnement|\<Ihr Abonnement\>|Wählen Sie das gewünschte Azure-Abonnement aus.|
     |Ressourcengruppe|databricks-quickstart|Klicken Sie auf **Neu erstellen**, und geben Sie einen neuen Ressourcengruppennamen für Ihr Konto ein.|
-    |Standort|\<Die Region, die Ihren Benutzern am nächsten liegt\>|Wählen Sie einen geografischen Standort aus, an dem Sie Ihr virtuelles Netzwerk hosten können. Verwenden Sie den Standort, der Ihren Benutzern am nächsten ist.|
+    |Location|\<Die Region, die Ihren Benutzern am nächsten liegt\>|Wählen Sie einen geografischen Standort aus, an dem Sie Ihr virtuelles Netzwerk hosten können. Verwenden Sie den Standort, der Ihren Benutzern am nächsten ist.|
     |Subnetzname|die Standardeinstellung|Wählen Sie für das Standardsubnetz in Ihrem virtuellen Netzwerk einen Namen aus.|
     |Subnetzadressbereich|10.1.0.0/24|Der Adressbereich des Subnetzes in CIDR-Notation. Er muss innerhalb des Adressraums des virtuellen Netzwerks liegen. Der Adressbereich eines aktiven Subnetzes kann nicht bearbeitet werden.|
 
@@ -58,7 +58,7 @@ Melden Sie sich beim [Azure-Portal](https://portal.azure.com/) an.
     |Arbeitsbereichname|databricks-quickstart|Wählen Sie einen Namen für Ihren Azure Databricks-Arbeitsbereich aus.|
     |Abonnement|\<Ihr Abonnement\>|Wählen Sie das gewünschte Azure-Abonnement aus.|
     |Ressourcengruppe|databricks-quickstart|Wählen Sie die gleiche Ressourcengruppe wie für das virtuelle Netzwerk.|
-    |Standort|\<Die Region, die Ihren Benutzern am nächsten liegt\>|Verwenden Sie denselben Standort wie für das virtuelle Netzwerk.|
+    |Location|\<Die Region, die Ihren Benutzern am nächsten liegt\>|Verwenden Sie denselben Standort wie für das virtuelle Netzwerk.|
     |Preisstufe|Wählen Sie entweder „Standard“ oder „Premium“.|Weitere Informationen zu diesen Tarifen, finden Sie auf der Seite [Databricks – Preise](https://azure.microsoft.com/pricing/details/databricks/).|
     |Deploy Azure Databricks workspace in your Virtual Network (Azure Databricks-Arbeitsbereich in Ihrem virtuellen Netzwerk bereitstellen)|Ja|Mit dieser Einstellung können Sie einen Azure Databricks-Arbeitsbereich in Ihrem virtuellen Netzwerk bereitstellen.|
     |Virtual Network|databricks-quickstart|Wählen Sie das im vorherigen Abschnitt erstellte virtuelle Netzwerk aus.|
@@ -84,7 +84,7 @@ Melden Sie sich beim [Azure-Portal](https://portal.azure.com/) an.
 
 1. Kehren Sie zu Ihrer Instanz des Azure Databricks-Diensts zurück, und klicken Sie auf der Seite **Übersicht** auf **Arbeitsbereich starten**.
 
-2. Klicken Sie auf **Cluster** > **+ Cluster erstellen**. Geben Sie einen Clusternamen wie *databricks-quickstart-cluster* ein, und übernehmen Sie die restlichen Standardeinstellungen. Wählen Sie **Cluster erstellen** aus.
+2. Klicken Sie auf **Cluster** >  **+ Cluster erstellen**. Geben Sie einen Clusternamen wie *databricks-quickstart-cluster* ein, und übernehmen Sie die restlichen Standardeinstellungen. Wählen Sie **Cluster erstellen** aus.
 
     ![Erstellen eines Azure Databricks-Clusters](./media/quickstart-create-databricks-workspace-vnet-injection/create-cluster.png)
 

@@ -13,15 +13,15 @@ ms.topic: conceptual
 ms.date: 10/26/2018
 ms.author: yexu
 ms.openlocfilehash: ef0bb3716a32a0f25b90e74bc44d7291c146b431
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/08/2019
-ms.locfileid: "59267462"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60808817"
 ---
 #  <a name="fault-tolerance-of-copy-activity-in-azure-data-factory"></a>Fehlertoleranz der Kopieraktivität in Azure Data Factory
-> [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
-> * [Version 1](v1/data-factory-copy-activity-fault-tolerance.md)
+> [!div class="op_single_selector" title1="Wählen Sie die von Ihren verwendete Version des Data Factory-Diensts aus:"]
+> * [Version 1](v1/data-factory-copy-activity-fault-tolerance.md)
 > * [Aktuelle Version](copy-activity-fault-tolerance.md)
 
 Die Kopieraktivität in Azure Data Factory bietet beim Kopieren von Daten zwischen Quell- und Senkendatenspeichern zwei Optionen für den Umgang mit nicht kompatiblen Zeilen:
@@ -40,7 +40,7 @@ Die Kopieraktivität unterstützt drei Szenarien zum Erkennen, Überspringen und
 
     Beispiel:  Kopieren von Daten aus einer CSV-Datei in Blob Storage in eine SQL-Datenbank mit einer Schemadefinition, die sechs Spalten enthält. Die Zeilen der CSV-Datei, die sechs Spalten enthalten, werden erfolgreich in den Senkenspeicher kopiert. Die Zeilen der CSV-Datei mit weniger oder mehr als sechs Spalten werden als inkompatibel erkannt und übersprungen.
 
-- **Primärschlüsselverletzung beim Schreiben in SQL Server/Azure SQL Database/Azure Cosmos DB**
+- **Primärschlüsselverletzung beim Schreiben in SQL Server/Azure SQL-Datenbank/Azure Cosmos DB**
 
     Beispiel:  Kopieren von Daten von einer SQL Server-Instanz in eine SQL-Datenbank. In der SQL-Datenbank der Senke ist ein Primärschlüssel definiert, in der SQL Server-Instanz der Quelle ist dagegen kein Primärschlüssel definiert. Die doppelten Zeilen, die in der Quelle vorhanden sind, können nicht in die Senke kopiert werden. Die Kopieraktivität kopiert nur die erste Zeile der Quelldaten in die Senke. Die nachfolgenden Quellzeilen, die den doppelten Primärschlüsselwert enthalten, werden als inkompatibel erkannt und übersprungen.
 
@@ -73,10 +73,10 @@ Das folgende Beispiel umfasst eine JSON-Definition zum Konfigurieren des Übersp
 
 Eigenschaft | BESCHREIBUNG | Zulässige Werte | Erforderlich
 -------- | ----------- | -------------- | -------- 
-enableSkipIncompatibleRow | Gibt an, ob nicht kompatible Zeilen beim Kopieren übersprungen werden sollen. | True<br/>False (Standardwert) | Nein 
-redirectIncompatibleRowSettings | Eine Gruppe von Eigenschaften, die angegeben werden können, wenn Sie die inkompatiblen Zeilen protokollieren möchten. | &nbsp; | Nein 
-linkedServiceName | Der verknüpfte Dienst von [Azure Storage](connector-azure-blob-storage.md#linked-service-properties) oder [Azure Data Lake Store](connector-azure-data-lake-store.md#linked-service-properties) zum Speichern des Protokolls mit den übersprungenen Zeilen | Der Name eines verknüpften Diensts vom Typ `AzureStorage` oder `AzureDataLakeStore`, der auf die Instanz verweist, in der die Protokolldatei gespeichert werden soll. | Nein 
-path | Der Pfad der Protokolldatei, die die übersprungenen Zeilen enthält. | Geben Sie den gewünschten Pfad für die Protokollierung der inkompatiblen Daten an. Wenn Sie keinen Pfad angeben, erstellt der Dienst automatisch einen Container. | Nein 
+enableSkipIncompatibleRow | Gibt an, ob nicht kompatible Zeilen beim Kopieren übersprungen werden sollen. | True<br/>False (Standardwert) | Nein
+redirectIncompatibleRowSettings | Eine Gruppe von Eigenschaften, die angegeben werden können, wenn Sie die inkompatiblen Zeilen protokollieren möchten. | &nbsp; | Nein
+linkedServiceName | Der verknüpfte Dienst von [Azure Storage](connector-azure-blob-storage.md#linked-service-properties) oder [Azure Data Lake Store](connector-azure-data-lake-store.md#linked-service-properties) zum Speichern des Protokolls mit den übersprungenen Zeilen | Der Name eines verknüpften Diensts vom Typ `AzureStorage` oder `AzureDataLakeStore`, der auf die Instanz verweist, in der die Protokolldatei gespeichert werden soll. | Nein
+path | Der Pfad der Protokolldatei, die die übersprungenen Zeilen enthält. | Geben Sie den gewünschten Pfad für die Protokollierung der inkompatiblen Daten an. Wenn Sie keinen Pfad angeben, erstellt der Dienst automatisch einen Container. | Nein
 
 ## <a name="monitor-skipped-rows"></a>Überwachen der übersprungenen Zeilen
 Nach Abschluss der Ausführung der Kopieraktivität wird die Anzahl übersprungener Zeilen in der Ausgabe der Kopieraktivität angezeigt:
@@ -108,7 +108,7 @@ data4, data5, data6, "2627", "Violation of PRIMARY KEY constraint 'PK_tblintstrd
 ## <a name="next-steps"></a>Nächste Schritte
 Weitere Informationen finden Sie in den anderen Artikeln zur Kopieraktivität:
 
-- [Kopieraktivität in Azure Data Factory](copy-activity-overview.md)
-- [Handbuch zur Leistung und Optimierung der Kopieraktivität](copy-activity-performance.md)
+- [Kopieraktivität – Übersicht](copy-activity-overview.md)
+- [Leistung der Kopieraktivität](copy-activity-performance.md)
 
 

@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/25/2016
 ms.author: gangan
-ms.openlocfilehash: 0b45bd2a1a2599908d2077198dce0062071b79af
-ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
+ms.openlocfilehash: f6d9e683e1feff670c26b01a31ce977557295bff
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/18/2018
-ms.locfileid: "31512509"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "62129058"
 ---
 # <a name="how-to-create-an-azure-support-request"></a>Gewusst wie: Erstellen einer Azure-Supportanfrage
 ## <a name="summary"></a>Zusammenfassung
@@ -34,7 +34,7 @@ Basierend auf Kundenfeedback haben wir die Benutzeroberfläche für Supportanfra
 
 * **Optimierung**: Die Anzahl von Klicks und Blättern wurde reduziert, um die Übermittlung einer Supportanfrage zu vereinfachen.
 * **Integration**: Wenn Sie die Problembehandlung für ein Problem mit einer Azure-Ressource durchführen, sollte das Öffnen einer Supportanfrage für diese Ressource leicht möglich sein, ohne den Kontext zu wechseln.
-* **Effizienz**: Sammeln Sie die wichtigen Informationen, die Ihr Supporttechniker benötigt, um das Problem effizient zu lösen.
+* **Effizient**: Sammeln Sie die wichtigen Informationen, die Ihr Supporttechniker benötigt, um das Problem effizient zu lösen.
 
 ## <a name="getting-started"></a>Erste Schritte
 Sie können eine Supportanfrage oben über das Navigationsmenü oder direkt auf dem Blatt einer Ressource erstellen.
@@ -54,7 +54,7 @@ Wählen Sie auf der Seite „Hilfe und Support“ die Option „Neue Supportanfr
 ## <a name="basics"></a>Grundlagen
 Im ersten Schritt des Prozesses für Supportanfragen werden grundlegende Informationen zu Ihrem Problem und Supportplan gesammelt.
 
-Beispiel: Für Ihren virtuellen Computer sind technische Schwierigkeiten aufgetreten, und Sie vermuten, dass es sich um ein Problem mit der Netzwerkverbindung handelt.
+Sehen wir uns ein Beispiel an: Für Ihren virtuellen Computer sind technische Schwierigkeiten aufgetreten, und Sie vermuten, dass es sich um ein Problem mit der Netzwerkverbindung handelt.
 Indem Sie im ersten Schritt des Assistenten den Dienst („Virtueller Computer unter Windows“) und die Ressource (Name Ihres virtuellen Computers) auswählen, wird der Prozess gestartet, mit dem Sie Hilfe zu diesem Problem erhalten.
 
 ![Blatt "Grundlagen"](./media/how-to-create-azure-support-request/Basics.png)

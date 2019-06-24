@@ -8,12 +8,12 @@ ms.service: container-registry
 ms.topic: article
 ms.date: 01/05/2018
 ms.author: cristyg
-ms.openlocfilehash: 171593483fc94c1c67013ab520b0085ca98f3a82
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 685c978ff206e75d770918f2528a826ad522b706
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/07/2018
-ms.locfileid: "33768327"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "64710188"
 ---
 # <a name="view-container-registry-repositories-in-the-azure-portal"></a>Anzeigen von Azure Container Registry-Repositorys im Azure-Portal
 
@@ -22,8 +22,8 @@ Mit Azure Container Registry können Sie Docker-Containerimages in Repositorys s
 ## <a name="prerequisites"></a>Voraussetzungen
 
 * **Containerregistrierung**: Erstellen Sie in Ihrem Azure-Abonnement eine Containerregistrierung. Verwenden Sie beispielsweise das [Azure-Portal](container-registry-get-started-portal.md) oder die [Azure CLI](container-registry-get-started-azure-cli.md).
-* **Docker CLI**: Installieren Sie [Docker][docker-install] auf dem lokalen Computer. Anschließend steht Ihnen die Docker-Befehlszeilenschnittstelle zur Verfügung.
-* **Containerimage**: Übertragen Sie ein Image per Push an Ihre Containerregistrierung. Anleitungen für Push- und Pull-Vorgänge für Images finden Sie unter [Push- und Pull-Vorgänge für Images](container-registry-get-started-docker-cli.md).
+* **Docker CLI**: Installieren Sie [Docker][docker-install] auf Ihrem lokalen Computer. Danach steht Ihnen die Docker-Befehlszeilenschnittstelle zur Verfügung.
+* **Containerimage**: Übertragen Sie ein Image über Pushübertragung in Ihre Containerregistrierung. Anleitungen für Push- und Pull-Vorgänge für Images finden Sie unter [Push- und Pull-Vorgänge für Images](container-registry-get-started-docker-cli.md).
 
 ## <a name="view-repositories-in-azure-portal"></a>Anzeigen von Repositorys im Azure-Portal
 

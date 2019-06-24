@@ -9,12 +9,12 @@ ms.author: divswa
 ms.reviewer: jonfan, estfan, LADocs
 ms.topic: article
 ms.date: 06/02/2017
-ms.openlocfilehash: 11fbec81e88eec6c7daa9136eb5421387b79d71c
-ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
+ms.openlocfilehash: f0591b47ce7ba6837f300088c856c0098fb66710
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/28/2018
-ms.locfileid: "43124333"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60998812"
 ---
 # <a name="b2b-errors-and-solutions-for-azure-logic-apps"></a>B2B-Fehler und -Lösungen für Azure Logic Apps
 
@@ -64,7 +64,7 @@ Dieser Artikel hilft Ihnen bei der Problembehandlung von Fehlern, die möglicher
 | Benutzeraktion | Fügen Sie der AS2-Nachricht @base64ToBinary hinzu, bevor sie an den Partner gesendet wird. |
 |||
 
-Beispiel: 
+Beispiel:
 
 ```json
 "HTTP": {
@@ -84,7 +84,7 @@ Beispiel:
 | Benutzeraktion | Fügen Sie MDN vor dem Senden an den Partner @base64ToBinary hinzu. | 
 |||
 
-Beispiel: 
+Beispiel:
 
 ```json
 "Response": {
@@ -145,7 +145,7 @@ Beispiel:
 
 |   |   | 
 |---|---|
-| Fehlerbeschreibung | InvalidTemplate. Verarbeitung der Vorlagensprachausdrücke in Aktion „Flat_File_Decoding“, Eingaben in Zeile „1“ und Spalte „1902“ nicht möglich: „Erforderliche Eigenschaft 'Content' erwartet einen Wert, erhält jedoch NULL. Pfad ‚.‘“. |
+| Fehlerbeschreibung | InvalidTemplate. Vorlagensprachausdrücke in den Eingaben der Aktion "Flat_File_Decoding" in Zeile "1" und Spalte "1902" können nicht verarbeitet werden: Erforderliche Eigenschaft "Content" erwartet einen Wert, erhält jedoch NULL. Pfad ‚.‘“. |
 | Benutzeraktion | Dieser Fehler gibt an, dass die Eingabenachricht keinen Text enthält. |
 |   |   | 
 

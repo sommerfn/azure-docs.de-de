@@ -14,14 +14,14 @@ ms.date: 06/07/2018
 ms.author: jingwang
 robots: noindex
 ms.openlocfilehash: 0a3adbd082c68121e762fd03c2221a0c800f0bc5
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57892641"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60823979"
 ---
 # <a name="move-data-from-an-on-premises-cassandra-database-using-azure-data-factory"></a>Verschieben von Daten aus einer lokalen Cassandra-Datenbank mit Azure Data Factory
-> [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
+> [!div class="op_single_selector" title1="Wählen Sie die von Ihren verwendete Version des Data Factory-Diensts aus:"]
 > * [Version 1](data-factory-onprem-cassandra-connector.md)
 > * [Version 2 (aktuelle Version)](../connector-cassandra.md)
 
@@ -70,10 +70,10 @@ Die folgende Tabelle enthält eine Beschreibung der JSON-Elemente, die speziell 
 | host |Mindestens eine IP-Adresse oder ein Hostname von Cassandra-Servern.<br/><br/>Geben Sie eine durch Trennzeichen getrennte Liste mit IP-Adressen oder Hostnamen an, um gleichzeitig mit allen Servern Verbindungen herzustellen. |Ja |
 | port |Der TCP-Port, den der Cassandra-Server verwendet, um auf Clientverbindungen zu lauschen. |Nein, Standardwert: 9042 |
 | authenticationType |Basic (Standard) oder Anonymous (Anonym) |Ja |
-| username |Geben Sie einen Benutzernamen für das Benutzerkonto an. |Ja, wenn authenticationType auf „Basic“ (Standard) festgelegt ist. |
+| userName |Geben Sie einen Benutzernamen für das Benutzerkonto an. |Ja, wenn authenticationType auf „Basic“ (Standard) festgelegt ist. |
 | password |Geben Sie ein Kennwort für das Benutzerkonto an. |Ja, wenn authenticationType auf „Basic“ (Standard) festgelegt ist. |
 | gatewayName |Der Name des Gateways, das zum Herstellen der Verbindung mit der lokalen Cassandra-Datenbank verwendet wird. |Ja |
-| encryptedCredential |Anmeldeinformationen, die vom Gateway verschlüsselt werden. |Nein  |
+| encryptedCredential |Anmeldeinformationen, die vom Gateway verschlüsselt werden. |Nein |
 
 >[!NOTE]
 >Verbindungen mit Cassandra über SSL werden derzeit nicht unterstützt.
@@ -262,20 +262,20 @@ Unter [RelationalSource-Typeigenschaften](#copy-activity-properties) finden Sie 
 ### <a name="type-mapping-for-cassandra"></a>Typzuordnung für Cassandra
 | Cassandra-Typ | .NET-basierter Typ |
 | --- | --- |
-| ASCII |Zeichenfolge |
+| ASCII |String |
 | BIGINT |Int64 |
 | BLOB |Byte[] |
-| BOOLEAN |BOOLEAN |
-| DECIMAL |Decimal |
-| DOUBLE |DOUBLE |
+| Boolean |Boolean |
+| Decimal |Decimal |
+| Double |Double |
 | FLOAT |Single |
-| INET |Zeichenfolge |
+| INET |String |
 | INT |Int32 |
-| TEXT |Zeichenfolge |
+| TEXT |String |
 | TIMESTAMP |DateTime |
 | TIMEUUID |Guid |
 | UUID |Guid |
-| VARCHAR |Zeichenfolge |
+| VARCHAR |String |
 | VARINT |Decimal |
 
 > [!NOTE]
@@ -330,7 +330,7 @@ Die folgenden Tabellen enthalten die virtuellen Tabellen, in denen die Daten aus
 #### <a name="table-exampletablevtmap"></a>Tabelle „ExampleTable_vt_Map“:
 | pk_int | Map_key | Map_value |
 | --- | --- | --- |
-| 1 |S1 |Eine  |
+| 1 |S1 |Eine |
 | 1 |S2 |b |
 | 3 |S1 |t |
 

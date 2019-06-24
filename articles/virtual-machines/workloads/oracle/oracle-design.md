@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 08/02/2018
 ms.author: rogirdh
-ms.openlocfilehash: 8241dc0303b7e60f9ce1e04e56d152c9a0b3906c
-ms.sourcegitcommit: d2329d88f5ecabbe3e6da8a820faba9b26cb8a02
+ms.openlocfilehash: c5a76b9cee8fd6eb09ee4d24c1380202fd17cc6d
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/16/2019
-ms.locfileid: "56327509"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60836313"
 ---
 # <a name="design-and-implement-an-oracle-database-in-azure"></a>Entwerfen und Implementieren einer Oracle-Datenbank in Azure
 
@@ -190,9 +190,9 @@ Es gibt drei Optionen für die Hostzwischenspeicherung:
 
 - *Schreibgeschützt*: Alle Anfragen werden für zukünftige Lesevorgänge zwischengespeichert. Alle Schreibvorgänge werden direkt in Azure Blob Storage gespeichert.
 
-- *Lese-/Schreibzugriff*:  Dies ist ein „Vorauslese“-Algorithmus. Die Lese- und Schreibvorgänge werden für zukünftige Lesevorgänge zwischengespeichert. Schreibvorgänge ohne Durchschreiben werden zuerst im lokalen Cache gespeichert. Für SQL Server werden Schreibvorgänge in Azure Storage gespeichert, da Durchschreiben verwendet wird. Darüber hinaus bietet dies die niedrigste Datenträgerlatenz für schlanke Workloads.
+- *Lese-/Schreibzugriff*: Dies ist ein „Im Voraus lesen“-Algorithmus. Die Lese- und Schreibvorgänge werden für zukünftige Lesevorgänge zwischengespeichert. Schreibvorgänge ohne Durchschreiben werden zuerst im lokalen Cache gespeichert. Für SQL Server werden Schreibvorgänge in Azure Storage gespeichert, da Durchschreiben verwendet wird. Darüber hinaus bietet dies die niedrigste Datenträgerlatenz für schlanke Workloads.
 
-- *Keine* (deaktiviert):  Mit dieser Option können Sie den Cache umgehen. Alle Daten werden auf den Datenträger übertragen und in Azure Storage gespeichert. Diese Methode bietet Ihnen die höchste E/A-Rate für E/A-intensive Workloads. Sie müssen auch die „Transaktionskosten“ berücksichtigen.
+- *Keine* (deaktiviert): Mit dieser Option können Sie den Cache umgehen. Alle Daten werden auf den Datenträger übertragen und in Azure Storage gespeichert. Diese Methode bietet Ihnen die höchste E/A-Rate für E/A-intensive Workloads. Sie müssen auch die „Transaktionskosten“ berücksichtigen.
 
 **Empfehlungen**
 
@@ -218,7 +218,7 @@ Nachdem Sie Ihre Azure-Umgebung eingerichtet und konfiguriert haben, besteht der
 
     Der Administratorcomputer sollte nur IP-beschränkten Zugriff auf die Jumpbox bieten. Die Jumpbox sollte dann Zugriff auf Anwendung und Datenbank haben.
 
-- *Privates Netzwerk* (Subnetze):  Sie sollten Anwendungsdienst und Datenbank in separaten Subnetzen unterbringen, damit eine bessere Steuerung durch die NSG-Richtlinie festgelegt werden kann.
+- *Privates Netzwerk* (Subnetze): Sie sollten den Anwendungsdienst und die Datenbank in separaten Subnetzen installieren, damit eine bessere Steuerung über die NSG-Richtlinie festgelegt werden kann.
 
 
 ## <a name="additional-reading"></a>Zusätzliche Lektüre

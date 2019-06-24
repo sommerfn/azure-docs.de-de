@@ -14,15 +14,15 @@ ms.date: 05/15/2018
 ms.author: jingwang
 robots: noindex
 ms.openlocfilehash: 4ff7f92d1d13966be5d17f37210bef961f64faf2
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58084605"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "61462390"
 ---
 # <a name="copy-data-to-or-from-oracle-on-premises-by-using-azure-data-factory"></a>Kopieren von Daten in eine bzw. aus einer lokalen Oracle-Instanz mit Azure Data Factory
 
-> [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
+> [!div class="op_single_selector" title1="Wählen Sie die von Ihren verwendete Version des Data Factory-Diensts aus:"]
 > * [Version 1](data-factory-onprem-oracle-connector.md)
 > * [Version 2 (aktuelle Version)](../connector-oracle.md)
 
@@ -55,7 +55,7 @@ Das Gateway ist auch dann erforderlich, wenn Oracle in einer Azure IaaS-VM (Infr
 
 Dieser Connector für Oracle unterstützt zwei Treiberversionen:
 
-- **Microsoft-Treiber für Oracle (empfohlen)**: Ab dem Datenverwaltungsgateway Version 2.7 wird mit dem Gateway automatisch ein Microsoft-Treiber für Oracle installiert. Sie müssen den Treiber nicht installieren oder aktualisieren, um eine Verbindung mit Oracle herzustellen. Sie können auch eine bessere Kopierleistung erzielen, wenn Sie diesen Treiber verwenden. Die folgenden Versionen von Oracle-Datenbanken werden unterstützt:
+- **Microsoft-Treiber für Oracle (empfohlen)** : Ab dem Datenverwaltungsgateway Version 2.7 wird mit dem Gateway automatisch ein Microsoft-Treiber für Oracle installiert. Sie müssen den Treiber nicht installieren oder aktualisieren, um eine Verbindung mit Oracle herzustellen. Sie können auch eine bessere Kopierleistung erzielen, wenn Sie diesen Treiber verwenden. Die folgenden Versionen von Oracle-Datenbanken werden unterstützt:
   - Oracle 12c R1 (12.1)
   - Oracle 11g R1, R2 (11.1, 11.2)
   - Oracle 10g R1, R2 (10.1, 10.2)
@@ -103,7 +103,7 @@ In der folgenden Tabelle werden die JSON-Elemente beschrieben, die für den verk
 | Eigenschaft | BESCHREIBUNG | Erforderlich |
 | --- | --- | --- |
 | type |Die Eigenschaft **type** muss auf **OnPremisesOracle** festgelegt sein. |Ja |
-| driverType | Legen Sie fest, welcher Treiber für das Kopieren von Daten aus einer bzw. in eine Oracle-Datenbank verwendet wird. Zulässige Werte sind **Microsoft** und **ODP** (Standardwert). Details zu den Treibern finden Sie unter [Unterstützte Versionen und Installation](#supported-versions-and-installation). | Nein  |
+| driverType | Legen Sie fest, welcher Treiber für das Kopieren von Daten aus einer bzw. in eine Oracle-Datenbank verwendet wird. Zulässige Werte sind **Microsoft** und **ODP** (Standardwert). Details zu den Treibern finden Sie unter [Unterstützte Versionen und Installation](#supported-versions-and-installation). | Nein |
 | connectionString | Geben Sie Informationen, die für die Verbindung mit der Oracle-Datenbankinstanz erforderlich sind, für die Eigenschaft **connectionString** an. | Ja |
 | gatewayName | Der Name des Gateways, das zum Herstellen einer Verbindung mit dem lokalen Oracle-Server verwendet wird. |Ja |
 
@@ -172,7 +172,7 @@ Wenn bei der Kopieraktivität eine Quelle vom Typ **OracleSource** verwendet wir
 
 | Eigenschaft | BESCHREIBUNG | Zulässige Werte | Erforderlich |
 | --- | --- | --- | --- |
-| oracleReaderQuery |Verwendet die benutzerdefinierte Abfrage zum Lesen von Daten. |Eine SQL-Abfragezeichenfolge. Beispiel: „select \* from **MyTable**“. <br/><br/>Falls nicht angegeben, wird folgende SQL-Anweisung ausgeführt: „select \* from **MyTable**“. |Nein <br />(wenn **tableName** von **dataset** angegeben ist) |
+| oracleReaderQuery |Verwendet die benutzerdefinierte Abfrage zum Lesen von Daten. |Eine SQL-Abfragezeichenfolge. Beispiel: „select \* from **MyTable**“. <br/><br/>Falls nicht angegeben, wird folgende SQL-Anweisung ausgeführt: „select \* from **MyTable**“. |Nein<br />(wenn **tableName** von **dataset** angegeben ist) |
 
 ### <a name="oraclesink"></a>OracleSink
 
@@ -180,10 +180,10 @@ Wenn bei der Kopieraktivität eine Quelle vom Typ **OracleSource** verwendet wir
 
 | Eigenschaft | BESCHREIBUNG | Zulässige Werte | Erforderlich |
 | --- | --- | --- | --- |
-| writeBatchTimeout |Die Wartezeit für den Abschluss der Batcheinfügung, bevor ein Timeout auftritt. |**timespan**<br/><br/> Beispiel: 00:30:00 (30 Minuten) |Nein  |
+| writeBatchTimeout |Die Wartezeit für den Abschluss der Batcheinfügung, bevor ein Timeout auftritt. |**timespan**<br/><br/> Beispiel: 00:30:00 (30 Minuten) |Nein |
 | writeBatchSize |Fügt Daten in die SQL-Tabelle ein, wenn die Puffergröße den Wert von **writeBatchSize** erreicht. |Integer (Gesamtanzahl von Zeilen) |Nein (Standardwert: 100) |
-| sqlWriterCleanupScript |Gibt eine Abfrage für die auszuführende Kopieraktivität an, damit die Daten eines bestimmten Slice bereinigt werden. |Eine Abfrageanweisung. |Nein  |
-| sliceIdentifierColumnName |Gibt den Spaltennamen der Spalte an, die die Kopieraktivität mit einem automatisch generierten Slicebezeichner auffüllen soll. Der Wert für **sliceIdentifierColumnName** wird verwendet, um Daten eines bestimmten Slice bei erneuter Ausführung zu bereinigen. |Der Spaltenname einer Spalte, die den Datentyp **binary(32)** aufweist. |Nein  |
+| sqlWriterCleanupScript |Gibt eine Abfrage für die auszuführende Kopieraktivität an, damit die Daten eines bestimmten Slice bereinigt werden. |Eine Abfrageanweisung. |Nein |
+| sliceIdentifierColumnName |Gibt den Spaltennamen der Spalte an, die die Kopieraktivität mit einem automatisch generierten Slicebezeichner auffüllen soll. Der Wert für **sliceIdentifierColumnName** wird verwendet, um Daten eines bestimmten Slice bei erneuter Ausführung zu bereinigen. |Der Spaltenname einer Spalte, die den Datentyp **binary(32)** aufweist. |Nein |
 
 ## <a name="json-examples-for-copying-data-to-and-from-the-oracle-database"></a>JSON-Beispiele zum Kopieren von Daten in die bzw. aus der Oracle-Datenbank
 
@@ -599,27 +599,27 @@ Wenn Sie Daten aus Oracle verschieben, werden die folgenden Zuordnungen zwischen
 | --- | --- |
 | BFILE |Byte[] |
 | BLOB |Byte[]<br/>(nur unterstützt für Oracle 10g oder höher bei Verwendung eines Microsoft-Treibers) |
-| CHAR |Zeichenfolge |
-| CLOB |Zeichenfolge |
+| CHAR |String |
+| CLOB |String |
 | DATE |DateTime |
 | FLOAT |Dezimal, Zeichenfolge (wenn Genauigkeit > 28) |
 | INTEGER |Dezimal, Zeichenfolge (wenn Genauigkeit > 28) |
 | INTERVAL YEAR TO MONTH |Int32 |
 | INTERVAL DAY TO SECOND |Zeitraum |
-| LONG |Zeichenfolge |
+| LONG |String |
 | LONG RAW |Byte[] |
-| NCHAR |Zeichenfolge |
-| NCLOB |Zeichenfolge |
+| NCHAR |String |
+| NCLOB |String |
 | NUMBER |Dezimal, Zeichenfolge (wenn Genauigkeit > 28) |
-| NVARCHAR2 |Zeichenfolge |
+| NVARCHAR2 |String |
 | RAW |Byte[] |
-| ROWID |Zeichenfolge |
+| ROWID |String |
 | TIMESTAMP |DateTime |
 | TIMESTAMP WITH LOCAL TIME ZONE |DateTime |
 | TIMESTAMP WITH TIME ZONE |DateTime |
 | UNSIGNED INTEGER |Number |
-| VARCHAR2 |Zeichenfolge |
-| XML |Zeichenfolge |
+| VARCHAR2 |String |
+| XML |string |
 
 > [!NOTE]
 > Die Datentypen **INTERVAL YEAR TO MONTH** und **INTERVAL DAY TO SECOND** werden bei Verwendung eines Microsoft-Treibers nicht unterstützt.

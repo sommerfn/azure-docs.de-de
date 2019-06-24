@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 08/02/2018
 ms.author: rogirdh
-ms.openlocfilehash: 9f525e68502e32a3f9c7e7cebe6d45627f9077c3
-ms.sourcegitcommit: eaad191ede3510f07505b11e2d1bbfbaa7585dbd
+ms.openlocfilehash: 09df1421d6deae6db305cef2a46d6c40d0c12ba3
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/03/2018
-ms.locfileid: "39495026"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60835883"
 ---
 # <a name="disaster-recovery-for-an-oracle-database-12c-database-in-an-azure-environment"></a>Notfallwiederherstellungsszenario für eine Oracle Database 12c-Datenbank in einer Azure-Umgebung
 
@@ -78,7 +78,7 @@ Hier ein Überblick über den Aufbau von Azure:
 
 ![Screenshot der DR-Topologieseite](./media/oracle-disaster-recovery/oracle_topology_02.png)
 
-### <a name="approach-2-site-to-site-vpn"></a>Ansatz 2: Site-to-Site-VPN
+### <a name="approach-2-site-to-site-vpn"></a>Ansatz 2: Standort-zu-Standort-VPN-Verbindung
 Das Site-to-Site-VPN ist ein besserer Ansatz. Weitere Informationen zum Einrichten eines VPN finden Sie unter [Erstellen eines virtuellen Netzwerks mit einer Site-to-Site-VPN-Verbindung per CLI](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-cli).
 
 #### <a name="topology"></a>Topologie
@@ -106,5 +106,5 @@ Hier ein Überblick über den Aufbau von Azure:
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- [Tutorial: Erstellen eines hoch verfügbaren virtuellen Computers](../../linux/create-cli-complete.md)
-- [Erkunden der Azure-CLI-Beispiele für die Bereitstellung virtueller Computer](../../linux/cli-samples.md)
+- [Tutorial: Erstellen von hoch verfügbaren virtuellen Computern](../../linux/create-cli-complete.md)
+- [Erkunden der Azure CLI-Beispiele für die Bereitstellung virtueller Computer](../../linux/cli-samples.md)

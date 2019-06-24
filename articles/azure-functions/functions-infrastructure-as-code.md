@@ -13,12 +13,12 @@ ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 04/03/2019
 ms.author: glenga
-ms.openlocfilehash: 5d028768c062ef7df74d48f83ccc4e27a506f1ac
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.openlocfilehash: 283487eeb0f1f85940da4db8c932602e1b45efd3
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/08/2019
-ms.locfileid: "59270902"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "64695803"
 ---
 # <a name="automate-resource-deployment-for-your-function-app-in-azure-functions"></a>Automatisieren der Ressourcenbereitstellung für Ihre Funktions-App in Azure Functions
 
@@ -37,7 +37,7 @@ Beispielvorlagen finden Sie unter:
 
 Eine Azure Functions-Bereitstellung besteht in der Regel aus diesen Ressourcen:
 
-| Ressource                                                                           | Anforderung | Syntax- und Eigenschaftenverweis                                                         |   |
+| Resource                                                                           | Anforderung | Syntax- und Eigenschaftenverweis                                                         |   |
 |------------------------------------------------------------------------------------|-------------|-----------------------------------------------------------------------------------------|---|
 | Eine Funktions-App                                                                     | Erforderlich    | [Microsoft.Web/sites](/azure/templates/microsoft.web/sites)                             |   |
 | Ein [Azure Storage](../storage/index.yml)-Konto                                   | Erforderlich    | [Microsoft.Storage/storageAccounts](/azure/templates/microsoft.storage/storageaccounts) |   |
@@ -664,13 +664,34 @@ Hier ist ein Beispiel unter Verwendung von HTML:
 <a href="https://portal.azure.com/#create/Microsoft.Template/uri/<url-encoded-path-to-azuredeploy-json>" target="_blank"><img src="https://azuredeploy.net/deploybutton.png"></a>
 ```
 
+### <a name="deploy-using-powershell"></a>Bereitstellen mit PowerShell
+
+Mit den folgenden PowerShell-Befehlen wird eine Ressourcengruppe erstellt und eine Vorlage bereitgestellt, über die eine Funktions-App mit deren erforderlichen Ressourcen erstellt wird. Um diese Befehle lokal ausführen zu können, müssen Sie [Azure PowerShell](/powershell/azure/install-az-ps) installiert haben. Führen Sie [`Connect-AzAccount`](/powershell/module/az.accounts/connect-azaccount) aus, um sich anzumelden.
+
+```powershell
+# Register Resource Providers if they're not already registered
+Register-AzResourceProvider -ProviderNamespace "microsoft.web"
+Register-AzResourceProvider -ProviderNamespace "microsoft.storage"
+
+# Create a resource group for the function app
+New-AzResourceGroup -Name "MyResourceGroup" -Location 'West Europe'
+
+# Create the parameters for the file, which for this template is the function app name.
+$TemplateParams = @{"appName" = "<function-app-name>"}
+
+# Deploy the template
+New-AzResourceGroupDeployment -ResourceGroupName "MyResourceGroup" -TemplateFile template.json -TemplateParameterObject $TemplateParams -Verbose
+```
+
+Um diese Bereitstellung zu testen, können Sie eine [Vorlage](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-function-app-create-dynamic/azuredeploy.json) wie die folgende verwenden, mit der eine Funktions-App unter Windows in einem Verbrauchsplan erstellt wird. Ersetzen Sie `<function-app-name>` durch einen eindeutigen Namen für Ihre Funktions-App.
+
 ## <a name="next-steps"></a>Nächste Schritte
 
 Machen Sie sich näher mit dem Entwickeln und Konfigurieren von Azure Functions vertraut.
 
 * [Entwicklerreferenz zu Azure Functions](functions-reference.md)
 * [Konfigurieren von Azure-Funktions-App-Einstellungen](functions-how-to-use-azure-function-app-settings.md)
-* [Erstellen Ihrer ersten Azure-Funktion](functions-create-first-azure-function.md)
+* [Erstellen Sie Ihre erste Funktion in Azure Functions](functions-create-first-azure-function.md)
 
 <!-- LINKS -->
 

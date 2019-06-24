@@ -15,12 +15,12 @@ ms.custom: H1Hack27Feb2017
 ms.workload: infrastructure-services
 ms.date: 12/18/2017
 ms.author: victorh
-ms.openlocfilehash: 7f69d77ac7a6c2a17ef2568f0c7edaef2e1ee3f5
-ms.sourcegitcommit: 4e5ac8a7fc5c17af68372f4597573210867d05df
+ms.openlocfilehash: 2b9c8f1bb7407dd36623fd8ad68f9489172a1caf
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/20/2018
-ms.locfileid: "39174291"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "64712222"
 ---
 # <a name="overview-of-dns-zones-and-records"></a>Übersicht über DNS-Zonen und -Einträge
 
@@ -28,7 +28,7 @@ Auf dieser Seite werden die Konzepte Domänen, DNS-Zonen und DNS-Einträge sowie
 
 ## <a name="domain-names"></a>Domänennamen
 
-Das Domain Name System ist eine Hierarchie von Domänen. Die Hierarchie beginnt mit der Stammdomäne, deren Name einfach „**.**“ lautet.  Darunter befinden sich Domänen der obersten Ebene, z.B. „com“, „net“, „org“, „uk“ oder „jp“.  Unterhalb davon befinden sich die Domänen der zweiten Ebene, z.B. „org.uk“ oder „co.jp“. Diese Domänen in der DNS-Hierarchie sind global verteilt und werden von DNS-Namenservern in der ganzen Welt gehostet.
+Das Domain Name System ist eine Hierarchie von Domänen. Die Hierarchie beginnt mit der Stammdomäne, deren Name einfach „ **.** “ lautet.  Darunter befinden sich Domänen der obersten Ebene, z.B. „com“, „net“, „org“, „uk“ oder „jp“.  Unterhalb davon befinden sich die Domänen der zweiten Ebene, z.B. „org.uk“ oder „co.jp“. Diese Domänen in der DNS-Hierarchie sind global verteilt und werden von DNS-Namenservern in der ganzen Welt gehostet.
 
 Eine Domänennamen-Registrierungsstelle ist eine Organisation, die es Ihnen ermöglicht, einen Domänennamen wie „contoso.com“ zu erwerben.  Das Erwerben eines Domänennamens gibt Ihnen das Recht, die DNS-Hierarchie unter diesem Namen zu kontrollieren. Sie können z.B. der Website Ihrer Firma den Namen „www.contoso.com“ geben. Die Registrierungsstelle kann die Domäne in Ihrem Auftrag auf ihren eigenen Namenservern hosten oder es Ihnen gestatten, alternative Namenserver anzugeben.
 
@@ -111,7 +111,7 @@ Die Zeichenfolgen eines DNS-Eintrags dürfen nicht mit den TXT-Einträgen in ein
 
 ## <a name="tags-and-metadata"></a>Tags und Metadaten
 
-### <a name="tags"></a>Tags
+### <a name="tags"></a>`Tags`
 
 Tags sind eine Liste von Name-Wert-Paaren, die von Azure Resource Manager zum Bezeichnen von Ressourcen verwendet werden.  Mithilfe von Tags ermöglicht Azure Resource Manager gefilterte Ansichten Ihrer Azure-Rechnung. Zusätzlich können Sie eine Richtlinie erstellen, die die erforderlichen Tags festlegt. Weitere Informationen zu Tags finden Sie unter [Verwenden von Tags zum Organisieren von Azure-Ressourcen](../azure-resource-manager/resource-group-using-tags.md).
 
@@ -134,7 +134,7 @@ Auf der Ebene der REST-API von Azure DNS werden ETags mithilfe von HTTP-Headern 
 | Header | Verhalten |
 | --- | --- |
 | Keine |PUT ist immer erfolgreich (keine Etag-Prüfung) |
-| If-match <etag> |PUT ist nur erfolgreich, wenn die Ressource vorhanden ist und das Etag übereinstimmt. |
+| If-match \<Etag> |PUT ist nur erfolgreich, wenn die Ressource vorhanden ist und das Etag übereinstimmt. |
 | If-match * |PUT ist nur erfolgreich, wenn eine Ressource vorhanden ist. |
 | If-none-match * |PUT ist nur erfolgreich, wenn die Ressource nicht vorhanden ist. |
 

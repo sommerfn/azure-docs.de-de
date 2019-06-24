@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 03/30/2018
 ms.author: roiyz
-ms.openlocfilehash: bf6eca33eb1448eb84065fb7fe184d01e77feb61
-ms.sourcegitcommit: f0c2758fb8ccfaba76ce0b17833ca019a8a09d46
+ms.openlocfilehash: c83eb1f6525c54bc44386f84498789b50bf19043
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/06/2018
-ms.locfileid: "51036990"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "64721136"
 ---
 # <a name="virtual-machine-extensions-and-features-for-linux"></a>Informationen zu Erweiterungen und Features für virtuelle Computer für Linux
 
@@ -337,7 +337,7 @@ Die folgenden Schritte zur Problembehandlung gelten für alle VM-Erweiterungen.
 
 1. Um das Protokoll des Linux-Agents zu überprüfen, sollten Sie die Aktivität bei der Bereitstellung der Erweiterung in */var/log/waagent.log* untersuchen.
 
-2. Überprüfen Sie die Protokolle der eigentlichen Erweiterung in */var/log/azure/<extensionName>*, um weitere Informationen zu erhalten.
+2. Überprüfen Sie die Protokolle der eigentlichen Erweiterung in */var/log/azure/\<NameDerErweiterung>* , um weitere Informationen zu erhalten.
 
 3. Lesen Sie die Abschnitte zur Problembehandlung in der Dokumentation zu Erweiterungen für Fehlercodes, bekannten Problemen usw.
 

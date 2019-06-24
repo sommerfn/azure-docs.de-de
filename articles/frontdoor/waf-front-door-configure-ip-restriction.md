@@ -11,17 +11,17 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/31/2019
 ms.author: kumud;tyao
-ms.openlocfilehash: 4a0b4a7d088eb7e9d7e329b5a7a5ef9c9fb57335
-ms.sourcegitcommit: 1aefdf876c95bf6c07b12eb8c5fab98e92948000
+ms.openlocfilehash: 73ef16aeb9a6014e98c0d40314bc174c6b5bf307
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/06/2019
-ms.locfileid: "66729912"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "66808354"
 ---
 # <a name="configure-an-ip-restriction-rule-with-a-web-application-firewall-for-azure-front-door-service"></a>Konfigurieren einer IP-Einschränkungsregel mit einer Web Application Firewall für Azure Front Door Service
 In diesem Artikel wird erläutert, wie Sie IP-Einschränkungsregeln in Web Application Firewall (WAF) für Azure Front Door Service über die Azure-Befehlszeilenschnittstelle, Azure PowerShell oder eine Azure Resource Manager-Vorlage konfigurieren.
 
-Eine auf IP-Adressen basierende Zugriffssteuerungsregel ist eine benutzerdefinierte WAF-Regel, mit der Sie den Zugriff auf Ihre Webanwendungen steuern können, indem Sie eine Liste von IP-Adressen oder IP-Adressbereichen im CIDR-Format (Classless Inter-Domain Routing) angeben.
+Eine auf IP-Adressen basierende Zugriffssteuerungsregel ist eine benutzerdefinierte WAF-Regel, mit der Sie den Zugriff auf Ihre Webanwendungen steuern können. Dazu ist in der Regel eine Liste von IP-Adressen oder IP-Adressbereichen im CIDR-Format (Classless Inter-Domain Routing) angegeben.
 
 Standardmäßig kann auf Ihre Webanwendungen über das Internet zugegriffen werden. Wenn Sie den Zugriff auf Clients aus einer Liste von bekannten IP-Adressen oder IP-Adressbereichen beschränken möchten, müssen Sie zwei IP-Abgleichsregeln erstellen. Die erste IP-Abgleichsregel enthält die Liste der IP-Adressen als übereinstimmende Werte und legt die Aktion auf **Allow** fest. Mit der zweiten Regel mit niedrigerer Priorität werden alle anderen IP-Adressen mithilfe des Operators **ALL** blockiert und die Aktion auf **Block** festgelegt. Nachdem eine IP-Einschränkungsregel angewandt wurde, erhalten Anforderungen von Adressen, die nicht in dieser Zulassungsliste enthalten sind, die Antwort „403 (Nicht zulässig)“.  
 
@@ -62,7 +62,7 @@ az network waf-policy custom-rule create \
   --name IPAllowListRule \
   --priority 1 \
   --rule-type MatchRule \
-  --match-condition RemoteAddr IPMatch ["<ip-address-range-1>","<ip-address-range-2>"] \
+  --match-condition RemoteAddr IPMatch ("<ip-address-range-1>","<ip-address-range-2>") \
   --action Allow \
   --resource-group <resource-group-name> \
   --policy-name IPAllowPolicyExampleCLI
@@ -138,7 +138,7 @@ Ersetzen Sie im folgenden Beispiel *ip-address-range-1* und *ip-address-range-2*
 $IPMatchCondition = New-AzFrontDoorWafMatchConditionObject `
 -MatchVariable  RemoteAddr `
 -OperatorProperty IPMatch `
--MatchValue ["ip-address-range-1", "ip-address-range-2"]
+-MatchValue "ip-address-range-1", "ip-address-range-2"
 ```
 Erstellen Sie mit dem folgenden Befehl eine *Bedingungsregel für die Übereinstimmung aller IP-Adressen*:
 ```powershell

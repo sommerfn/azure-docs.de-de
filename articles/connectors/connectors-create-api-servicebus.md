@@ -12,11 +12,11 @@ ms.topic: article
 tags: connectors
 ms.date: 08/25/2018
 ms.openlocfilehash: 68378c87e18df874059579445352b8fd1b2b6c13
-ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50232714"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "62105579"
 ---
 # <a name="exchange-messages-in-the-cloud-with-azure-service-bus-and-azure-logic-apps"></a>Austauschen von Nachrichten in der Cloud mit Azure Service Bus und Azure Logic Apps
 
@@ -74,12 +74,12 @@ Vergewissern Sie sich, dass Ihre Logik-App über Berechtigungen für den Zugriff
 
 1. Um einer leeren Logik-App einen *Trigger* hinzuzufügen, geben Sie in das Suchfeld „Azure Service Bus“ als Filter ein. Wählen Sie in der Triggerliste den gewünschten Trigger aus. 
 
-   Um z.B. Ihre Logik-App auszulösen, wenn ein neues Element an eine Service Bus-Warteschlange gesendet wird, wählen Sie diesen Trigger aus: **Bei Empfang einer Nachricht in einer Warteschlange (automatisch abschließen)**.
+   Um z.B. Ihre Logik-App auszulösen, wenn ein neues Element an eine Service Bus-Warteschlange gesendet wird, wählen Sie diesen Trigger aus: **Bei Empfang einer Nachricht in einer Warteschlange (automatisch abschließen)**
 
    ![Service Bus-Trigger auswählen](./media/connectors-create-api-azure-service-bus/select-service-bus-trigger.png)
 
    > [!NOTE]
-   > Einige Trigger können eine oder mehrere Nachrichten zurückgeben, z.B. der Trigger **Bei Empfang mindestens einer Nachricht in der Warteschlange (autom. abschließen)**. Wird ein solcher Trigger ausgelöst, gibt er mindestens eine und maximal so viele Nachrichten zurück, wie diese in seiner Eigenschaft **Maximale Nachrichtenanzahl** angegeben ist.
+   > Einige Trigger können eine oder mehrere Nachrichten zurückgeben, z.B. der Trigger **Bei Empfang mindestens einer Nachricht in der Warteschlange (autom. abschließen)** . Wird ein solcher Trigger ausgelöst, gibt er mindestens eine und maximal so viele Nachrichten zurück, wie diese in seiner Eigenschaft **Maximale Nachrichtenanzahl** angegeben ist.
 
    *Alle Service Bus-Trigger sind Trigger mit langem Abruf*. Das bedeutet, dass ein Trigger beim Auslösen alle Nachrichten verarbeitet und dann 30 Sekunden lang auf weitere Nachrichten wartet, die in der Warteschlange oder im Themenabonnement eingehen. 
    Gehen innerhalb von 30 Sekunden keine Nachrichten ein, wird die Triggerausführung übersprungen. 
@@ -90,12 +90,12 @@ Vergewissern Sie sich, dass Ihre Logik-App über Berechtigungen für den Zugriff
    1. Wählen Sie im letzten Schritt zum Hinzufügen einer Aktion **Neuer Schritt** aus. 
 
       Wenn Sie zwischen Schritten eine Aktion einfügen möchten, bewegen Sie den Mauszeiger über den Pfeil zwischen den Schritten. 
-      Wählen Sie das daraufhin angezeigte Pluszeichen (**+**) und dann **Aktion hinzufügen** aus.
+      Wählen Sie das daraufhin angezeigte Pluszeichen ( **+** ) und dann **Aktion hinzufügen** aus.
 
    1. Geben Sie im Suchfeld den Begriff „Azure Service Bus“ als Filter ein. 
    Wählen Sie in der Liste mit den Aktionen die gewünschte Aktion aus. 
  
-      Wählen Sie z.B. diese Aktion aus: **Nachricht senden**.
+      Wählen Sie beispielsweise diese Aktion aus: **Nachricht senden**
 
       ![Auswählen einer Service Bus-Aktion](./media/connectors-create-api-azure-service-bus/select-service-bus-send-message-action.png) 
 
@@ -118,14 +118,14 @@ Vergewissern Sie sich, dass Ihre Logik-App über Berechtigungen für den Zugriff
 
 1. Geben Sie die erforderlichen Informationen zu Ihrem Trigger oder Ihrer Aktion ein. Führen Sie in diesem Beispiel die erforderlichen Schritte für Ihren Trigger oder Ihre Aktion aus: 
 
-   * **Für den Beispieltrigger:** Legen Sie das Abrufintervall und die Häufigkeit für die Überprüfung der Warteschlange fest.
+   * **Für den Beispieltrigger**: Legen Sie das Abrufintervall und die Häufigkeit für die Überprüfung der Warteschlange fest.
 
      ![Einrichten des Abrufintervalls](./media/connectors-create-api-azure-service-bus/service-bus-trigger-details.png)
 
      Wenn Sie fertig sind, fahren Sie mit dem Erstellen Ihres Logik-App-Workflows fort, indem Sie die gewünschten Aktionen hinzufügen. Sie können beispielsweise eine Aktion hinzufügen, die eine E-Mail sendet, wenn eine neue Nachricht eingeht.
      Wenn Ihr Trigger die Warteschlange überprüft und eine neue Nachricht findet, führt Ihre Logik-App die von Ihnen ausgewählten Aktionen für die gefundene Nachricht aus.
 
-   * **Für die Beispielaktion:** Geben Sie den Nachrichteninhalt und weitere Details ein. 
+   * **Für die Beispielaktion**: Geben Sie den Nachrichteninhalt und alle weiteren Details ein. 
 
      ![Angeben von Nachrichteninhalt und weiteren Informationen](./media/connectors-create-api-azure-service-bus/service-bus-send-message-details.png)
 

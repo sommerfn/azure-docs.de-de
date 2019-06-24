@@ -14,14 +14,14 @@ ms.date: 04/13/2018
 ms.author: jingwang
 robots: noindex
 ms.openlocfilehash: 433a8b2f9fb1f4c4599afbb807e9270992a98a52
-ms.sourcegitcommit: dede0c5cbb2bd975349b6286c48456cfd270d6e9
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/16/2019
-ms.locfileid: "54331536"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60824183"
 ---
 # <a name="move-data-from-mongodb-using-azure-data-factory"></a>Verschieben von Daten aus MongoDB mithilfe von Azure Data Factory
-> [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
+> [!div class="op_single_selector" title1="Wählen Sie die von Ihren verwendete Version des Data Factory-Diensts aus:"]
 > * [Version 1](data-factory-on-premises-mongodb-connector.md)
 > * [Version 2 (aktuelle Version)](../connector-mongodb.md)
 
@@ -66,15 +66,15 @@ Die folgende Tabelle enthält eine Beschreibung der JSON-Elemente, die für den 
 
 | Eigenschaft | BESCHREIBUNG | Erforderlich |
 | --- | --- | --- |
-| type |Die type-Eigenschaft muss auf Folgendes festgelegt werden: **OnPremisesMongoDb**. |JA |
-| server |IP-Adresse oder Hostname des MongoDB-Servers |JA |
+| type |Die type-Eigenschaft muss auf Folgendes festgelegt werden: **OnPremisesMongoDb**. |Ja |
+| server |IP-Adresse oder Hostname des MongoDB-Servers |Ja |
 | port |Der TCP-Port, den der MongoDB-Server verwendet, um auf Clientverbindungen zu lauschen |Optional, Standardwert: 27.017 |
-| authenticationType |Basic oder Anonymous |JA |
-| username |Benutzerkonto für den Zugriff auf MongoDB |Ja (wenn die Standardauthentifizierung verwendet wird) |
+| authenticationType |Basic oder Anonymous |Ja |
+| userName |Benutzerkonto für den Zugriff auf MongoDB |Ja (wenn die Standardauthentifizierung verwendet wird) |
 | password |Kennwort für den Benutzer |Ja (wenn die Standardauthentifizierung verwendet wird) |
 | authSource |Der Name der MongoDB-Datenbank, die Sie zum Überprüfen Ihrer Anmeldeinformationen zur Authentifizierung verwenden möchten |Optional (wenn die Standardauthentifizierung verwendet wird). Standardwert: verwendet das Administratorkonto und die Datenbank, die mit der databaseName-Eigenschaft angegeben wird |
-| databaseName |Der Name der MongoDB-Datenbank, auf die Sie zugreifen möchten |JA |
-| gatewayName |Der Name des Gateways, das auf den Datenspeicher zugreift |JA |
+| databaseName |Der Name der MongoDB-Datenbank, auf die Sie zugreifen möchten |Ja |
+| gatewayName |Der Name des Gateways, das auf den Datenspeicher zugreift |Ja |
 | encryptedCredential |Anmeldeinformationen, die vom Gateway verschlüsselt werden |Optional |
 
 ## <a name="dataset-properties"></a>Dataset-Eigenschaften
@@ -296,7 +296,7 @@ Beim Verschieben von Daten in MongoDB werden die folgenden Zuordnungen zwischen 
 | MongoDB-Typ | Typ ".NET Framework" |
 | --- | --- |
 | Binary |Byte[] |
-| Boolescher Wert |Boolescher Wert |
+| Boolean |Boolean |
 | Date |DateTime |
 | NumberDouble |Double |
 | NumberInt |Int32 |

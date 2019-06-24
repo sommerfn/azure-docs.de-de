@@ -13,14 +13,14 @@ ms.topic: conceptual
 ms.date: 08/01/2018
 ms.author: abnarain
 ms.openlocfilehash: d5b074fcf182bcc9bf4dc17ba21215d27e13cbdd
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57760969"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60888434"
 ---
 # <a name="transform-data-by-running-u-sql-scripts-on-azure-data-lake-analytics"></a>Transformieren von Daten durch Ausführen von U-SQL-Skripts für Azure Data Lake Analytics 
-> [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
+> [!div class="op_single_selector" title1="Wählen Sie die von Ihren verwendete Version des Data Factory-Diensts aus:"]
 > * [Version 1](v1/data-factory-usql-activity.md)
 > * [Aktuelle Version](transform-data-using-data-lake-analytics.md)
 
@@ -38,9 +38,9 @@ Die folgende Tabelle enthält Beschreibungen der allgemeinen Eigenschaften, die 
 | ------------------------ | ---------------------------------------- | ---------------------------------------- |
 | **type**                 | Legen Sie die type-Eigenschaft auf **AzureDataLakeAnalytics** fest. | Ja                                      |
 | **accountName**          | Name des Azure Data Lake Analytics-Kontos.  | Ja                                      |
-| **dataLakeAnalyticsUri** | URI des Azure Data Lake Analytics-Kontos.           | Nein                                        |
-| **subscriptionId**       | Azure-Abonnement-ID                    | Nein                                        |
-| **resourceGroupName**    | Azure-Ressourcengruppenname                | Nein                                        |
+| **dataLakeAnalyticsUri** | URI des Azure Data Lake Analytics-Kontos.           | Nein                                       |
+| **subscriptionId**       | Azure-Abonnement-ID                    | Nein                                       |
+| **resourceGroupName**    | Azure-Ressourcengruppenname                | Nein                                       |
 
 ### <a name="service-principal-authentication"></a>Dienstprinzipalauthentifizierung
 Der mit Azure Data Lake Analytics verknüpfte Dienst erfordert für die Verbindung mit dem Azure Data Lake Analytics-Dienst eine Dienstprinzipalauthentifizierung. Wenn Sie die Dienstprinzipalauthentifizierung verwenden möchten, registrieren Sie in Azure Active Directory (Azure AD) eine Anwendungsentität und gewähren ihr Zugriff auf Data Lake Analytics und den verwendeten Data Lake Store. Eine ausführliche Anleitung finden Sie unter [Dienst-zu-Dienst-Authentifizierung](../data-lake-store/data-lake-store-authenticate-using-active-directory.md). Notieren Sie sich die folgenden Werte, die Sie zum Definieren des verknüpften Diensts verwenden:
@@ -120,16 +120,16 @@ Die folgende Tabelle beschreibt die Namen und Eigenschaften, die für diese Akti
 | Eigenschaft            | BESCHREIBUNG                              | Erforderlich |
 | :------------------ | :--------------------------------------- | :------- |
 | name                | Name der Aktivität in der Pipeline     | Ja      |
-| Beschreibung         | Ein Text, der beschreibt, was mit der Aktivität ausgeführt wird.  | Nein        |
+| description         | Ein Text, der beschreibt, was mit der Aktivität ausgeführt wird.  | Nein       |
 | type                | Für die Data Lake Analytics-U-SQL-Aktivität ist der Aktivitätstyp **DataLakeAnalyticsU-SQL**. | Ja      |
 | linkedServiceName   | Mit Azure Data Lake Analytics verknüpfter Dienst. Weitere Informationen zu diesem verknüpften Dienst finden Sie im Artikel [Von Azure Data Factory unterstützten Compute-Umgebungen](compute-linked-services.md).  |Ja       |
 | scriptPath          | Der Pfad zum Ordner, der das U-SQL-Skript enthält. Beim Dateinamen wird Groß-/Kleinschreibung unterschieden. | Ja      |
 | scriptLinkedService | Verknüpfter Dienst, der eine Verknüpfung mit der **Azure Data Lake Store**- oder **Azure Storage**-Instanz herstellt, die das Skript für die Data Factory enthält. | Ja      |
-| degreeOfParallelism | Die maximale Anzahl von Knoten, die zum Ausführen des Auftrags gleichzeitig verwendet werden. | Nein        |
-| priority            | Bestimmt, welche der in der Warteschlange befindlichen Aufträge als erstes ausgeführt werden. Je niedriger die Zahl, desto höher die Priorität. | Nein        |
-| Parameter          | Parameter, die an das U-SQL-Skript übergeben werden sollen.    | Nein        |
-| runtimeVersion      | Die Runtimeversion der zu verwendenden U-SQL-Engine. | Nein        |
-| compilationMode     | <p>Der Kompilierungsmodus von U-SQL. Muss einen der folgenden Werte aufweisen: **Semantic:** Es werden nur Semantiküberprüfungen und erforderliche Integritätsprüfungen durchgeführt. **Full:** Es wird die vollständige Kompilierung ausgeführt, einschließlich Syntaxprüfung, Optimierung, Codegenerierung usw. **SingleBox:** Es wird die vollständige Kompilierung durchgeführt, wobei die TargetType-Einstellung auf „SingleBox“ festgelegt ist. Wenn Sie für diese Eigenschaft keinen Wert angeben, bestimmt der Server den optimalen Kompilierungsmodus. | Nein  |
+| degreeOfParallelism | Die maximale Anzahl von Knoten, die zum Ausführen des Auftrags gleichzeitig verwendet werden. | Nein       |
+| priority            | Bestimmt, welche der in der Warteschlange befindlichen Aufträge als erstes ausgeführt werden. Je niedriger die Zahl, desto höher die Priorität. | Nein       |
+| parameters          | Parameter, die an das U-SQL-Skript übergeben werden sollen.    | Nein       |
+| runtimeVersion      | Die Runtimeversion der zu verwendenden U-SQL-Engine. | Nein       |
+| compilationMode     | <p>Der Kompilierungsmodus von U-SQL. Muss einen der folgenden Werte aufweisen: **Semantic:** Es werden nur Semantiküberprüfungen und erforderliche Integritätsprüfungen durchgeführt. **Full:** Es wird die vollständige Kompilierung ausgeführt, einschließlich Syntaxprüfung, Optimierung, Codegenerierung usw. **SingleBox:** Es wird die vollständige Kompilierung durchgeführt, wobei die TargetType-Einstellung auf „SingleBox“ festgelegt ist. Wenn Sie für diese Eigenschaft keinen Wert angeben, bestimmt der Server den optimalen Kompilierungsmodus. | Nein |
 
 Die Skriptdefinition finden Sie unter [SearchLogProcessing.txt](#sample-u-sql-script). 
 
@@ -176,7 +176,7 @@ In der beispielhaften Pipelinedefinition werden die Eingabe- und Ausgabeparamete
 }
 ```
 
-Anstelle von hartcodierten Werten können dynamische Parameter verwendet werden. Beispiel:  
+Anstelle von hartcodierten Werten können dynamische Parameter verwendet werden. Beispiel: 
 
 ```json
 "parameters": {

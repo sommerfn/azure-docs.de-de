@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 04/23/2019
 ms.author: tilee
-ms.openlocfilehash: 5393bf854b0bff40ee5e5ad78fc4865d22cd8334
-ms.sourcegitcommit: adb6c981eba06f3b258b697251d7f87489a5da33
+ms.openlocfilehash: e87bfad11eee5b86d35e6b4f2846b094c467e0ef
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/04/2019
-ms.locfileid: "66514355"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "66734172"
 ---
 # <a name="status-monitor-v2-api-enable-applicationinsightsmonitoring-v021-alpha"></a>API für Statusmonitor v2: Enable-ApplicationInsightsMonitoring (v0.2.1-alpha)
 
@@ -25,7 +25,7 @@ In diesem Artikel wird ein Cmdlet des [PowerShell-Moduls „Az.ApplicationMonito
 
 > [!IMPORTANT]
 > Statusmonitor v2 ist derzeit als öffentliche Vorschauversion verfügbar.
-> Diese Vorschauversion wird ohne Vereinbarung zum Servicelevel bereitgestellt und wird für Produktionsworkloads nicht empfohlen. Einige Features werden möglicherweise nicht unterstützt oder bieten möglicherweise nur eingeschränkte Funktionen.
+> Diese Vorschauversion wird ohne Vereinbarung zum Servicelevel bereitgestellt und ist nicht für Produktionsworkloads vorgesehen. Einige Features werden möglicherweise nicht unterstützt oder bieten möglicherweise nur eingeschränkte Funktionen.
 > Weitere Informationen finden Sie unter [Zusätzliche Nutzungsbestimmungen für Microsoft Azure-Vorschauen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 ## <a name="description"></a>BESCHREIBUNG
@@ -45,7 +45,7 @@ Nachdem Sie die Überwachung aktiviert haben, empfiehlt es sich, [Live Metrics S
 > - Dieses Cmdlet erfordert, dass Sie unsere Lizenz- und Datenschutzbestimmungen durchlesen und akzeptieren.
 
 > [!IMPORTANT] 
-> Dieses Cmdlet erfordert eine PowerShell-Sitzung mit Administratorrechten und einer Ausführungsrichtlinie mit erhöhten Rechten. Weitere Informationen finden Sie unter [Ausführen von PowerShell als Administrator mit einer Ausführungsrichtlinie mit erhöhten Rechten](status-monitor-v2-detailed-instructions.md#run-powershell-as-administrator-with-an-elevated-execution-policy).
+> Dieses Cmdlet erfordert eine PowerShell-Sitzung mit Administratorrechten und einer Ausführungsrichtlinie mit erhöhten Rechten. Weitere Informationen finden Sie unter [Ausführen von PowerShell als Administrator mit einer Ausführungsrichtlinie mit erhöhten Rechten](status-monitor-v2-detailed-instructions.md#run-powershell-as-admin-with-an-elevated-execution-policy).
 
 ## <a name="examples"></a>Beispiele
 
@@ -109,7 +109,7 @@ Die Instrumentierungs-Engine erfordert Aufwand und ist standardmäßig deaktivie
 **Optional.** Verwenden Sie diesen Schalter, um die Lizenz- und Datenschutzbestimmungen in monitorlosen Installationen anzunehmen.
 
 ### <a name="-verbose"></a>-Verbose
-**Allgemeiner Parameter.** Verwenden Sie diesen Parameter, um detaillierte Protokolle auszugeben.
+**Allgemeiner Parameter.** Verwenden Sie diesen Parameter, um detaillierte Protokolle anzuzeigen.
 
 ### <a name="-whatif"></a>-WhatIf 
 **Allgemeiner Parameter.** Verwenden Sie diesen Parameter, um Ihre Eingabeparameter zu testen und zu überprüfen, ohne die Überwachung tatsächlich zu aktivieren.

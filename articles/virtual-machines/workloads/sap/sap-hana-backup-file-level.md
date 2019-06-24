@@ -13,12 +13,12 @@ ums.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 07/05/2018
 ms.author: rclaus
-ms.openlocfilehash: d3d1769766053b513a98df153cb635ae148f26b1
-ms.sourcegitcommit: ab3b2482704758ed13cccafcf24345e833ceaff3
+ms.openlocfilehash: fc35077e00bc6322a815a52ca6ab3571a4e06d3d
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/06/2018
-ms.locfileid: "37867369"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60937717"
 ---
 # <a name="sap-hana-azure-backup-on-file-level"></a>SAP HANA-Sicherung mit Azure Backup auf Dateiebene
 
@@ -36,7 +36,7 @@ Diese Abbildung zeigt das Dialogfeld des Sicherungsmenüelements in SAP HANA-Stu
 
 Diese Option klingt zwar recht einfach und unkompliziert, es sind jedoch ein paar Punkte zu berücksichtigen. Wie bereits erwähnt kann an einen virtuellen Azure-Computer nur eine begrenzte Anzahl von Datenträgern angefügt werden. Ggf. reicht die Dateisystemkapazität des virtuellen Computers nicht aus, um SAP HANA-Sicherungsdateien zu speichern. Das hängt von der Größe der Datenbank und von den Anforderungen für den Datenträgerdurchsatz (ggf. mit Software-Striping auf mehreren Datenträgern) ab. Weiter unten in diesem Artikel finden Sie verschiedene Optionen zum Verschieben dieser Sicherungsdateien sowie zum Verwalten der Dateigrößenbeschränkungen und der Leistung beim Verarbeiten großer Datenmengen.
 
-Eine weitere Option mit größerer Freiheit bei der Gesamtkapazität ist Azure Blob Storage. Ein einzelnes Blob ist zwar ebenfalls auf 1 TB beschränkt, die Gesamtkapazität eines einzelnen Blobcontainers liegt momentan jedoch bei 500 TB. Darüber hinaus haben Kunden die Möglichkeit, so genannten &quot;kalten&quot; Blobspeicher auszuwählen und dadurch Kosten zu sparen. Ausführliche Informationen zu kaltem Blobspeicher finden Sie unter [Azure Blob Storage: „Heiße“ und „kalte“ Speicherebenen](../../../storage/blobs/storage-blob-storage-tiers.md).
+Eine weitere Option mit größerer Freiheit bei der Gesamtkapazität ist Azure Blob Storage. Ein einzelnes Blob ist zwar ebenfalls auf 1 TB beschränkt, die Gesamtkapazität eines einzelnen Blobcontainers liegt momentan jedoch bei 500 TB. Darüber hinaus haben Kunden die Möglichkeit, so genannten &quot;kalten&quot; Blobspeicher auszuwählen und dadurch Kosten zu sparen. Ausführlichere Informationen über kalten Blobspeicher finden Sie unter [Azure Blob Storage: Zugriffsebenen „Heiß“, „Kalt“ und „Archiv“](../../../storage/blobs/storage-blob-storage-tiers.md).
 
 Die SAP HANA-Sicherungen können auch in einem georeplizierten Speicherkonto gespeichert werden, um die Sicherheit weiter zu erhöhen. Ausführliche Informationen zur Speicherkontoreplikation finden Sie unter [Azure Storage-Replikation](../../../storage/common/storage-redundancy.md).
 
@@ -70,7 +70,7 @@ Bei der Wiederholung der gleichen Sicherung mit Software-RAID und übergreifende
 
 ## <a name="copy-sap-hana-backup-files-to-azure-blob-storage"></a>Kopieren von SAP HANA-Sicherungsdateien in Azure Blob Storage
 
-Azure Blob Storage ist die beste Option zur schnellen Speicherung von SAP HANA-Sicherungsdateien. Ein einzelner Blobcontainer ist auf 500 TB beschränkt. Das sollte für die meisten SAP HANA-Systeme unter Verwendung der Azure-VM-Typen M32ts, M32ls, M64ls und GS5 ausreichend sein. Kunden haben die Wahl zwischen &quot;heißem&quot; und &quot;kaltem&quot; Blobspeicher. (Weitere Informationen finden Sie unter [Azure Blob Storage: „Heiße“ und „kalte“ Speicherebenen](../../../storage/blobs/storage-blob-storage-tiers.md).)
+Azure Blob Storage ist die beste Option zur schnellen Speicherung von SAP HANA-Sicherungsdateien. Ein einzelner Blobcontainer ist auf 500 TB beschränkt. Das sollte für die meisten SAP HANA-Systeme unter Verwendung der Azure-VM-Typen M32ts, M32ls, M64ls und GS5 ausreichend sein. Kunden haben die Wahl zwischen &quot;heißem&quot; und &quot;kaltem&quot; Blobspeicher. (Weitere Informationen finden Sie unter [Azure Blob Storage: Zugriffsebenen „Heiß“, „Kalt“ und „Archiv“](../../../storage/blobs/storage-blob-storage-tiers.md).)
 
 Mit dem blobxfer-Tool lassen sich die SAP HANA-Sicherungsdateien komfortabel direkt in Azure Blob Storage kopieren.
 

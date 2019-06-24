@@ -9,12 +9,12 @@ ms.reviewer: jasonwhowell
 ms.assetid: 49416f38-fcc7-476f-a55e-d67f3f9c1d34
 ms.topic: conceptual
 ms.date: 03/15/2018
-ms.openlocfilehash: 4629b52f3b2c9e351ddc2a68a40c5178a9a73950
-ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
+ms.openlocfilehash: d3601fd8c32c70cf828cd08fada71258ec8fa5d4
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43048254"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60812671"
 ---
 # <a name="adjust-quotas-and-limits-in-azure-data-lake-analytics"></a>Anpassen von Kontingenten und Grenzwerten in Azure Data Lake Analytics
 
@@ -22,7 +22,7 @@ Hier erfahren Sie, wie Sie das Kontingent und die Grenzwerte in ADLA-Konten (Azu
 
 ## <a name="azure-subscriptions-limits"></a>Azure-Abonnementgrenzen
 
-**Maximale Anzahl von ADLA-Konten pro Region und Abonnement:** 5
+**Maximale Anzahl von ADLA-Konten pro Region und Abonnement:**  5
 
 Beim Versuch, ein sechstes ADLA-Konto zu erstellen, erhalten Sie folgenden Fehler : Sie haben die maximale Anzahl von Data Lake Analytics-Konten (5) in „Region“ für das Abonnement „Name“ erreicht. 
 
@@ -34,7 +34,7 @@ Wenn Sie diesen Grenzwert überschreiten möchten, können Sie diese Optionen ve
 
 **Maximale Anzahl von Analytics-Einheiten (AUs) pro Konto:** 32
 
-Dies ist die maximale Anzahl von AUs, die in Ihrem Konto gleichzeitig ausgeführt werden können. Wenn die Gesamtzahl von in allen Aufträgen ausgeführten AUs diesen Grenzwert überschreitet, werden neuere Aufträge automatisch in die Warteschlange eingereiht. Beispiel: 
+Dies ist die maximale Anzahl von AUs, die in Ihrem Konto gleichzeitig ausgeführt werden können. Wenn die Gesamtzahl von in allen Aufträgen ausgeführten AUs diesen Grenzwert überschreitet, werden neuere Aufträge automatisch in die Warteschlange eingereiht. Beispiel:
 
 * Sie führen einen Auftrag mit 32 AUs aus. Wenn Sie einen zweiten Auftrag übermitteln, wartet dieser in der Auftragswarteschlange, bis der erste Auftrag abgeschlossen ist.
 * Wenn bereits vier Aufträge mit jeweils 8 AUs ausgeführt werden und Sie einen fünften Auftrag übermitteln, der 8 AUs benötigt, wartet dieser Auftrag in der Auftragswarteschlange, bis 8 AUs verfügbar sind.
@@ -43,7 +43,7 @@ Dies ist die maximale Anzahl von AUs, die in Ihrem Konto gleichzeitig ausgeführ
 
 Dies ist die standardmäßige maximale Anzahl von AUs, die jedem einzelnen Auftrag in Ihrem Konto zugewiesen werden können. Aufträge, denen mehr als diese Begrenzung zugewiesen wird, werden abgelehnt, es sei denn,für den Absender gilt eine Computerichtlinie (Auftragsübermittlungsbegrenzung), die ihm mehr AUs pro Auftrag gewährt. Die Obergrenze dieses Werts ist die AU-Begrenzung für das Konto.
 
-**Maximale Anzahl gleichzeitiger U-SQL-Aufträge pro Konto:** 20.
+**Maximale Anzahl gleichzeitiger U-SQL-Aufträge pro Konto:** 20
 
 Dies ist die maximale Anzahl von Aufträgen, die in Ihrem Konto gleichzeitig ausgeführt werden können. Aufträge, die diesen Wert überschreiten, werden automatisch in die Warteschlange eingereiht.
 

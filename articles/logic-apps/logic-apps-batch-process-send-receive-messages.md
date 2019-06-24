@@ -10,11 +10,11 @@ ms.reviewer: estfan, jonfan, LADocs
 ms.topic: article
 ms.date: 01/16/2019
 ms.openlocfilehash: c33b1d46ecf710f050fc998ce27f6448337c6b78
-ms.sourcegitcommit: a1cf88246e230c1888b197fdb4514aec6f1a8de2
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/16/2019
-ms.locfileid: "54352511"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60683703"
 ---
 # <a name="send-receive-and-batch-process-messages-in-azure-logic-apps"></a>Versand, Empfang und Batchverarbeitung von Nachrichten in Azure Logic Apps
 
@@ -58,9 +58,9 @@ Um Nachrichten an einen Batch senden zu können, muss dieser Batch zunächst als
 
    | Eigenschaft | BESCHREIBUNG | 
    |----------|-------------|
-   | **Batchmodus** | - **Inline**: Zum Definieren von Freigabekriterien im Batchtrigger <br>- **Integrationskonto**:  Zum Definieren mehrerer Konfigurationen für Freigabekriterien über ein [Integrationskonto](../logic-apps/logic-apps-enterprise-integration-create-integration-account.md). Mit einem Integrationskonto können Sie diese Konfigurationen an zentraler Stelle statt in separaten Logik-Apps verwalten. | 
+   | **Batchmodus** | - **Inline**: Zum Definieren von Freigabekriterien im Batchtrigger <br>- **Integrationskonto**: Zum Definieren mehrerer Konfigurationen für Freigabekriterien über ein [Integrationskonto](../logic-apps/logic-apps-enterprise-integration-create-integration-account.md). Mit einem Integrationskonto können Sie diese Konfigurationen an zentraler Stelle statt in separaten Logik-Apps verwalten. | 
    | **Batchname** | Der Name für Ihren Batch (in diesem Beispiel „TestBatch“). Er gilt nur für den Batchmodus **Inline**. |  
-   | **Freigabekriterien** | Diese Eigenschaft gilt nur für den Batchmodus **Inline** und gibt die Kriterien an, die vor der Verarbeitung der einzelnen Batches erfüllt sein müssen: <p>- **Basierend auf der Nachrichtenanzahl**:  Den Batch auf Grundlage der Anzahl der vom Batch gesammelten Nachrichten freigeben. <br>- **Basierend auf der Größe**:  Den Batch auf Grundlage der Gesamtgröße aller von diesem Batch gesammelten Nachrichten in Bytes freigeben. <br>- **Zeitplan**: Den Batch auf Grundlage eines Wiederholungszeitplans freigeben, der ein Intervall und eine Häufigkeit angibt. In den erweiterten Optionen können Sie außerdem eine Zeitzone auswählen und ein Startdatum sowie eine Startzeit bereitstellen. <br>- **Alle auswählen**: Alle angegebenen Kriterien verwenden. | 
+   | **Freigabekriterien** | Diese Eigenschaft gilt nur für den Batchmodus **Inline** und gibt die Kriterien an, die vor der Verarbeitung der einzelnen Batches erfüllt sein müssen: <p>- **Basierend auf der Nachrichtenanzahl**: Den Batch auf Grundlage der Anzahl der vom Batch gesammelten Nachrichten freigeben. <br>- **Basierend auf Größe**: Den Batch auf Grundlage der Gesamtgröße aller von diesem Batch gesammelten Nachrichten in Bytes freigeben. <br>- **Zeitplan**: Den Batch auf Grundlage eines Wiederholungszeitplans freigeben, der ein Intervall und eine Häufigkeit angibt. In den erweiterten Optionen können Sie außerdem eine Zeitzone auswählen und ein Startdatum sowie eine Startzeit bereitstellen. <br>- **Alle auswählen**: Alle angegebenen Kriterien verwenden. | 
    | **Nachrichtenanzahl** | Die Anzahl von Nachrichten, die im Batch gesammelt werden sollen, z. B. 10 Nachrichten Der Grenzwert für einen Batch ist 8.000 Nachrichten. | 
    | **Batch Size** | Die Gesamtgröße in Bytes, die im Batch gesammelt werden soll, z. B. 10 MB. Das Größenlimit für einen Batch beträgt 80 MB. | 
    | **Zeitplan** | Das Intervall und die Häufigkeit zwischen Batchfreigaben, z. B. 10 Minuten. Der Mindestwert für die Wiederholungen beträgt 60 Sekunden bzw. 1 Minute. Minutenbruchteile werden auf 1 Minute aufgerundet. Um eine Zeitzone oder ein Startdatum und eine Startuhrzeit anzugeben, wählen Sie **Erweiterte Optionen anzeigen** aus. | 
@@ -90,7 +90,7 @@ Um Nachrichten an einen Batch senden zu können, muss dieser Batch zunächst als
 
    3. Wählen Sie diese Aktion aus: **E-Mail senden – <*E-Mail-Anbieter*>**
 
-      Beispiel: 
+      Beispiel:
 
       ![Auswählen der Aktion „E-Mail senden“ für Ihren E-Mail-Anbieter](./media/logic-apps-batch-process-send-receive-messages/batch-receiver-send-email-action.png)
 
@@ -150,7 +150,7 @@ Erstellen Sie nun eine oder mehrere Logik-Apps für den Batchversand, die Nachri
    1. Wählen Sie unter dem Wiederholungstrigger die Option **Neuer Schritt** aus.
 
    2. Geben Sie im Suchfeld den Begriff „Batch“ als Filter ein. 
-   Wählen Sie die Liste **Aktionen** und dann die Aktion  **Logik-App-Workflow mit Batchtrigger auswählen – Nachrichten an Batch senden** aus.
+   Wählen Sie die Liste **Aktionen** aus, und wählen Sie dann diese Aktion aus: **Logik-App-Workflow mit Batchtrigger auswählen – Nachrichten an Batch senden**
 
       ![Auswählen von „Logik-App-Workflow mit Batchtrigger auswählen“](./media/logic-apps-batch-process-send-receive-messages/send-messages-batch-action.png)
 

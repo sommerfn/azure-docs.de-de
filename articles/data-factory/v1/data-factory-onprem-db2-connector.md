@@ -14,14 +14,14 @@ ms.date: 01/10/2018
 ms.author: jingwang
 robots: noindex
 ms.openlocfilehash: 72c88ef10bf1df217ec6e24ac744d0b30386b4a3
-ms.sourcegitcommit: f7be3cff2cca149e57aa967e5310eeb0b51f7c77
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/15/2019
-ms.locfileid: "56311527"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60824013"
 ---
 # <a name="move-data-from-db2-by-using-azure-data-factory-copy-activity"></a>Verschieben von Daten aus DB2 mithilfe der Kopieraktivität von Azure Data Factory
-> [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
+> [!div class="op_single_selector" title1="Wählen Sie die von Ihren verwendete Version des Data Factory-Diensts aus:"]
 > * [Version 1](data-factory-onprem-db2-connector.md)
 > * [Version 2 (aktuelle Version)](../connector-db2.md)
 
@@ -84,10 +84,10 @@ Die folgende Tabelle enthält die JSON-Eigenschaften, die spezifisch für einen 
 | **type** |Diese Eigenschaft muss auf **OnPremisesDb2** festgelegt werden. |Ja |
 | **server** |Der Name des DB2-Servers |Ja |
 | **database** |Der Name der DB2-Datenbank |Ja |
-| **schema** |Der Name des Schemas in der DB2-Datenbank. Diese Eigenschaft erfordert die Beachtung der Groß-/Kleinschreibung. |Nein  |
+| **schema** |Der Name des Schemas in der DB2-Datenbank. Diese Eigenschaft erfordert die Beachtung der Groß-/Kleinschreibung. |Nein |
 | **authenticationType** |Der Typ der Authentifizierung für die Verbindung mit der DB2-Datenbank. Mögliche Werte: „Anonymous“, „Basic“ und „Windows“. |Ja |
-| **username** |Der Name für das Benutzerkonto, wenn Sie die Standard- oder Windows-Authentifizierung verwenden. |Nein  |
-| **password** |Das Kennwort für das Benutzerkonto |Nein  |
+| **username** |Der Name für das Benutzerkonto, wenn Sie die Standard- oder Windows-Authentifizierung verwenden. |Nein |
+| **password** |Das Kennwort für das Benutzerkonto |Nein |
 | **gatewayName** |Der Name des Gateways, das der Data Factory-Dienst zum Herstellen einer Verbindung mit der lokalen DB2-Datenbank verwenden soll |Ja |
 
 ## <a name="dataset-properties"></a>Dataset-Eigenschaften
@@ -309,7 +309,7 @@ Die folgenden Zuordnungen werden angewendet, wenn die Kopieraktivität Daten aus
 | DB2-Datenbanktyp | Typ ".NET Framework" |
 | --- | --- |
 | SmallInt |Int16 |
-| Ganze Zahl  |Int32 |
+| Integer |Int32 |
 | BigInt |Int64 |
 | Real |Single |
 | Double |Double |
@@ -317,25 +317,25 @@ Die folgenden Zuordnungen werden angewendet, wenn die Kopieraktivität Daten aus
 | Decimal |Decimal |
 | DecimalFloat |Decimal |
 | Numeric |Decimal |
-| Datum |DateTime |
+| Date |DateTime |
 | Time |TimeSpan |
 | Timestamp |Datetime |
-| xml |Byte[] |
-| Char |Zeichenfolge |
-| VarChar |Zeichenfolge |
-| LongVarChar |Zeichenfolge |
-| DB2DynArray |Zeichenfolge |
-| Binär |Byte[] |
+| Xml |Byte[] |
+| Char |string |
+| VarChar |string |
+| LongVarChar |string |
+| DB2DynArray |string |
+| Binary |Byte[] |
 | VarBinary |Byte[] |
 | LongVarBinary |Byte[] |
-| Graphic |Zeichenfolge |
-| VarGraphic |Zeichenfolge |
-| LongVarGraphic |Zeichenfolge |
-| Clob |Zeichenfolge |
+| Graphic |string |
+| VarGraphic |string |
+| LongVarGraphic |string |
+| Clob |string |
 | Blob |Byte[] |
-| DbClob |Zeichenfolge |
+| DbClob |string |
 | SmallInt |Int16 |
-| Ganze Zahl  |Int32 |
+| Integer |Int32 |
 | BigInt |Int64 |
 | Real |Single |
 | Double |Double |
@@ -343,11 +343,11 @@ Die folgenden Zuordnungen werden angewendet, wenn die Kopieraktivität Daten aus
 | Decimal |Decimal |
 | DecimalFloat |Decimal |
 | Numeric |Decimal |
-| Datum |DateTime |
+| Date |DateTime |
 | Time |TimeSpan |
 | Timestamp |Datetime |
-| xml |Byte[] |
-| Char |Zeichenfolge |
+| Xml |Byte[] |
+| Char |string |
 
 ## <a name="map-source-to-sink-columns"></a>Zuordnen von Quell- zur Senkenspalten
 Weitere Informationen zum Zuordnen von Spalten im Quell-DataSet zu Spalten im Senken-DataSet finden Sie unter [Zuordnen von DataSet-Spalten in Azure Data Factory](data-factory-map-columns.md).

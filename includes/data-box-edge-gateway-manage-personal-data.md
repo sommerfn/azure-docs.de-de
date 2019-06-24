@@ -4,17 +4,17 @@ ms.service: databox
 ms.topic: include
 ms.date: 04/16/2019
 ms.author: alkohli
-ms.openlocfilehash: fa8340ec6f555258f159e14133305b847e2e3cc3
-ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
+ms.openlocfilehash: af4c3829c8b12bfcaae0602dde8f459de7e50f3a
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59684459"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "67120502"
 ---
-- **Auftragsdetails**: Nach der Erstellung des Auftrags werden die Versandadresse, die E-Mail-Adresse und die Kontaktinformationen von Benutzern im Azure-Portal gespeichert. Zu den gespeicherten Informationen gehört Folgendes:
+- **Auftragsdetails**. Wenn ein Auftrag erstellt wird, werden die Versandadresse, die E-Mail-Adresse und die Kontaktinformationen des Benutzers im Azure-Portal gespeichert. Zu den gespeicherten Informationen gehört Folgendes:
   - Kontaktname
   - Telefonnummer
-  - E-Mail
+  - E-Mail-Adresse
   - Anschrift
   - City
   - Postleitzahl
@@ -22,9 +22,8 @@ ms.locfileid: "59684459"
   - Land/Provinz/Region
   - Nachverfolgungsnummer für den Versand
 
-    Die Auftragsdetails werden verschlüsselt und im Dienst gespeichert. Der Dienst bewahrt die Informationen auf, bis Sie die Ressource oder den Auftrag explizit löschen. Zwischen dem Versand des Geräts und dem Zeitpunkt, zu dem das Gerät wieder bei Microsoft eingeht, ist das Löschen der Ressource und des entsprechenden Auftrags nicht möglich.
+    Auftragsdetails werden verschlüsselt und im Dienst gespeichert. Der Dienst bewahrt die Informationen auf, bis Sie die Ressource oder den Auftrag explizit löschen. Ab dem Versand des Geräts und bis zu dem Zeitpunkt, zu dem das Gerät wieder bei Microsoft eingeht, ist das Löschen der Ressource und des entsprechenden Auftrags nicht möglich.
 
-- **Lieferanschrift**: Nach der Auftragserteilung gibt der Data Box-Dienst die Lieferanschrift an externe Transportdienstleister (beispielsweise UPS) weiter.
+- **Lieferanschrift**. Nach einer Auftragserteilung gibt der Data Box-Dienst die Lieferanschrift an externe Transportdienstleister (etwa UPS) weiter.
 
-- **Freigabebenutzer**: Benutzer auf Ihrem Gerät können auch auf die Daten in den Freigaben zugreifen. Eine Liste mit Benutzern, die auf die Freigabedaten zugreifen können, kann angezeigt werden. Wenn die Freigaben gelöscht werden, wird diese Liste ebenfalls gelöscht.
-
+- **Freigabebenutzer**. Benutzer Ihres Geräts können auch auf die Daten zugreifen, die sich auf den Freigaben befinden. Eine Liste der Benutzer, die auf die Freigabedaten zugreifen können, kann angezeigt werden. Wenn die Freigaben gelöscht werden, wird diese Liste ebenfalls gelöscht.

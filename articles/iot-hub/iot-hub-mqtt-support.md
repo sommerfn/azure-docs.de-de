@@ -8,12 +8,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 10/12/2018
 ms.author: rezas
-ms.openlocfilehash: 5c879b050fad0ac8c6467ffa29d9aee398f57aa2
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.openlocfilehash: 1a0b6cf8ce272733c259283fdec9c215ac2b0fd8
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/08/2019
-ms.locfileid: "59276844"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "61442561"
 ---
 # <a name="communicate-with-your-iot-hub-using-the-mqtt-protocol"></a>Kommunikation mit Ihrem IoT Hub mithilfe des Protokolls MQTT
 
@@ -150,11 +150,11 @@ Implementieren Sie anschließend den Client in einem Python-Skript. Ersetzen Sie
 
 * `<local path to digicert.cer>` ist der Pfad zu einer lokalen Datei, die das DigiCert Baltimore-Stammzertifikat enthält. Sie können diese Datei erstellen, indem Sie die Zertifikatinformationen aus [certs.c](https://github.com/Azure/azure-iot-sdk-c/blob/master/certs/certs.c) in das Azure IoT SDK für C kopieren. Fügen Sie die Zeilen `-----BEGIN CERTIFICATE-----` und `-----END CERTIFICATE-----` ein, entfernen Sie die `"`-Markierungen am Anfang und Ende jeder Zeile, und entfernen Sie die Zeichen `\r\n` am Ende jeder Zeile.
 
-* `<device id from device registry>` ist die ID eines Geräts, das Sie Ihrem IoT-Hub hinzugefügt haben.
+* `<device id from device registry>` ist die ID eines Geräts, das Sie Ihrem IoT Hub hinzugefügt haben.
 
 * `<generated SAS token>` ist ein SAS-Token für das Gerät, das wie zuvor in diesem Artikel beschrieben erstellt wurde.
 
-* `<iot hub name>` ist der Name Ihres IoT-Hubs.
+* `<iot hub name>` ist der Name Ihres IoT Hubs.
 
 ```python
 from paho.mqtt import client as mqtt
@@ -191,7 +191,7 @@ client.loop_forever()
 
 ### <a name="sending-device-to-cloud-messages"></a>Senden von D2C-Nachrichten
 
-Nachdem Sie erfolgreich eine Verbindung hergestellt haben, kann ein Gerät Nachrichten mithilfe von `devices/{device_id}/messages/events/` oder `devices/{device_id}/messages/events/{property_bag}` als **Themenname** an IoT Hub senden. Das `{property_bag}` -Element ermöglicht dem Gerät das Senden von Nachrichten mit zusätzlichen Eigenschaften in einem URL-codierten Format. Beispiel: 
+Nachdem Sie erfolgreich eine Verbindung hergestellt haben, kann ein Gerät Nachrichten mithilfe von `devices/{device_id}/messages/events/` oder `devices/{device_id}/messages/events/{property_bag}` als **Themenname** an IoT Hub senden. Das `{property_bag}` -Element ermöglicht dem Gerät das Senden von Nachrichten mit zusätzlichen Eigenschaften in einem URL-codierten Format. Beispiel:
 
 ```text
 RFC 2396-encoded(<PropertyName1>)=RFC 2396-encoded(<PropertyValue1>)&RFC 2396-encoded(<PropertyName2>)=RFC 2396-encoded(<PropertyValue2>)…
@@ -216,7 +216,7 @@ Zum Empfangen von Nachrichten von einem IoT Hub muss ein Gerät ein Abonnement u
 
 Das Gerät empfängt erst Nachrichten von der IoT Hub-Instanz, nachdem es deren gerätespezifischen Endpunkt erfolgreich abonniert hat, der vom Themenfilter `devices/{device_id}/messages/devicebound/#` dargestellt wird. Nachdem ein Abonnement eingerichtet wurde, empfängt das Gerät C2D-Nachrichten, die nach dem Zeitpunkt des Abonnements an das Gerät gesendet wurden. Wenn das Gerät eine Verbindung mit auf **0** festgelegtem **CleanSession**-Flag herstellt, behält das Abonnement verschiedene Sitzungen übergreifend bei. In diesem Fall empfängt das Gerät beim nächsten Verbindungsaufbau mit **CleanSession 0** ausstehende Nachrichten, die ihm gesendet wurden, als es vom Netzwerk getrennt war. Wenn das Gerät das auf **1** festgelegte **CleanSession**-Flag verwendet, empfängt es erst dann Nachrichten von der IoT Hub-Instanz, wenn es deren Geräteendpunkt abonniert.
 
-IoT Hub sendet Nachrichten mit dem **Themennamen** `devices/{device_id}/messages/devicebound/` oder `devices/{device_id}/messages/devicebound/{property_bag}`, wenn Nachrichteneigenschaften vorhanden sind. `{property_bag}` enthält URL-codierte Schlüssel-Wert-Paare von Nachrichteneigenschaften. Nur Anwendungseigenschaften und vom Benutzer festlegbare Systemeigenschaften (z.B. **messageId** oder **correlationId**) sind im Eigenschaftenbehälter enthalten. Systemeigenschaftennamen haben das Präfix **$**, Anwendungseigenschaften verwenden den ursprünglichen Eigenschaftennamen ohne Präfix.
+IoT Hub sendet Nachrichten mit dem **Themennamen** `devices/{device_id}/messages/devicebound/` oder `devices/{device_id}/messages/devicebound/{property_bag}`, wenn Nachrichteneigenschaften vorhanden sind. `{property_bag}` enthält URL-codierte Schlüssel-Wert-Paare von Nachrichteneigenschaften. Nur Anwendungseigenschaften und vom Benutzer festlegbare Systemeigenschaften (z.B. **messageId** oder **correlationId**) sind im Eigenschaftenbehälter enthalten. Systemeigenschaftennamen haben das Präfix **$** , Anwendungseigenschaften verwenden den ursprünglichen Eigenschaftennamen ohne Präfix.
 
 Wenn eine Geräte-App ein Thema mit **QoS 2** abonniert, gewährt IoT Hub im **SUBACK**-Paket maximal die QoS-Ebene 1. Danach übermittelt IoT Hub mithilfe von QoS 1 Nachrichten an das Gerät.
 
@@ -264,7 +264,7 @@ Die folgende Sequenz beschreibt, wie ein Gerät die gemeldeten Eigenschaften in 
 
 3. Anschließend sendet der Dienst eine Antwortnachricht, die den neuen ETag-Wert für die Sammlung der gemeldeten Eigenschaften enthält, im Thema `$iothub/twin/res/{status}/?$rid={request id}`. Diese Antwortnachricht verwendet den gleichen **request id**-Wert wie die Anforderung.
 
-Der Nachrichtentext der Anforderung enthält ein JSON-Dokument mit neuen Werten für gemeldete Eigenschaften. Jeder Member im JSON-Dokument wird aktualisiert, oder der entsprechende Member wird im Dokument des Gerätezwillings hinzugefügt. Wenn ein Member auf `null` festgelegt ist, wird der Member aus dem enthaltenden Objekt gelöscht. Beispiel: 
+Der Nachrichtentext der Anforderung enthält ein JSON-Dokument mit neuen Werten für gemeldete Eigenschaften. Jeder Member im JSON-Dokument wird aktualisiert, oder der entsprechende Member wird im Dokument des Gerätezwillings hinzugefügt. Wenn ein Member auf `null` festgelegt ist, wird der Member aus dem enthaltenden Objekt gelöscht. Beispiel:
 
 ```json
 {
@@ -301,7 +301,7 @@ Weitere Informationen finden Sie im [Entwicklerhandbuch zu Gerätezwillingen](io
 
 ### <a name="receiving-desired-properties-update-notifications"></a>Empfangen von Aktualisierungsbenachrichtigungen für gewünschte Eigenschaften
 
-Wenn die Verbindung für ein Gerät hergestellt wird, sendet IoT Hub Benachrichtigungen an das Thema `$iothub/twin/PATCH/properties/desired/?$version={new version}`. Die Benachrichtigungen enthalten den Inhalt der Aktualisierung, die vom Lösungs-Back-End durchgeführt wird. Beispiel: 
+Wenn die Verbindung für ein Gerät hergestellt wird, sendet IoT Hub Benachrichtigungen an das Thema `$iothub/twin/PATCH/properties/desired/?$version={new version}`. Die Benachrichtigungen enthalten den Inhalt der Aktualisierung, die vom Lösungs-Back-End durchgeführt wird. Beispiel:
 
 ```json
 {
@@ -343,5 +343,5 @@ Weitere Informationen zum Planen Ihrer IoT Hub-Bereitstellung finden Sie unter:
 
 Weitere Informationen zu den Funktionen von IoT Hub finden Sie unter:
 
-* [Entwicklerhandbuch für IoT Hub](iot-hub-devguide.md)
-* [Bereitstellen von KI auf Edgegeräten mit Azure IoT Edge](../iot-edge/tutorial-simulate-device-linux.md)
+* [Entwicklungsleitfaden für IoT Hub](iot-hub-devguide.md)
+* [Bereitstellen von KI auf Edge-Geräten mit Azure IoT Edge](../iot-edge/tutorial-simulate-device-linux.md)

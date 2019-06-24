@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/20/2017
 ms.author: spelluru
-ms.openlocfilehash: 0fe30fe95e77adceaa5013f89206b08daf2a58a2
-ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
+ms.openlocfilehash: fe8f057443b978e70e7cdd2591affd455fefdca8
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/05/2018
-ms.locfileid: "43702094"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60749035"
 ---
 # <a name="azure-relay-exceptions"></a>Azure Relay-Ausnahmen
 
@@ -29,10 +29,10 @@ In diesem Artikel werden einige Ausnahmen aufgelistet, die von den Azure Relay-A
 
 Die Relay-APIs generieren Ausnahmen, die in folgende Kategorien fallen können. Empfohlene Maßnahmen, die Sie durchführen können, um die Ausnahmen zu beheben, sind ebenfalls aufgeführt.
 
-*   **Codierfehler des Benutzers**: [System.ArgumentException](https://msdn.microsoft.com/library/system.argumentexception.aspx), [System.InvalidOperationException](https://msdn.microsoft.com/library/system.invalidoperationexception.aspx), [System.OperationCanceledException](https://msdn.microsoft.com/library/system.operationcanceledexception.aspx), [System.Runtime.Serialization.SerializationException](https://msdn.microsoft.com/library/system.runtime.serialization.serializationexception.aspx). 
+*   **Codierfehler des Benutzers:** [System.ArgumentException](https://msdn.microsoft.com/library/system.argumentexception.aspx), [System.InvalidOperationException](https://msdn.microsoft.com/library/system.argumentexception.aspx), [System.OperationCanceledException](https://msdn.microsoft.com/library/system.invalidoperationexception.aspx), [System.Runtime.Serialization.SerializationException](https://msdn.microsoft.com/library/system.runtime.serialization.serializationexception.aspx). 
 
     **Allgemeine Maßnahme**: Korrigieren Sie den Code, bevor Sie fortfahren.
-*   **Setup-/Konfigurationsfehler**: [System.UnauthorizedAccessException](https://msdn.microsoft.com/library/system.unauthorizedaccessexception.aspx). 
+*   **Fehler bei der Einrichtung oder Konfiguration**: [System.UnauthorizedAccessException](https://msdn.microsoft.com/library/system.unauthorizedaccessexception.aspx). 
 
     **Allgemeine Maßnahme**: Überprüfen Sie die Konfiguration. Ändern Sie die Konfiguration bei Bedarf.
 *   **Vorübergehende Ausnahmen**: [Microsoft.ServiceBus.Messaging.MessagingException](/dotnet/api/microsoft.servicebus.messaging.messagingexception), [Microsoft.ServiceBus.Messaging.ServerBusyException](/dotnet/api/microsoft.servicebus.messaging.serverbusyexception), [Microsoft.ServiceBus.Messaging.MessagingCommunicationException](/dotnet/api/microsoft.servicebus.messaging.messagingcommunicationexception). 
@@ -40,7 +40,7 @@ Die Relay-APIs generieren Ausnahmen, die in folgende Kategorien fallen können. 
     **Allgemeine Maßnahme**: Wiederholen Sie den Vorgang, oder benachrichtigen Sie die Benutzer.
 *   **Andere Ausnahmen**: [System.Transactions.TransactionException](https://msdn.microsoft.com/library/system.transactions.transactionexception.aspx), [System.TimeoutException](https://msdn.microsoft.com/library/system.timeoutexception.aspx). 
 
-    **Allgemeine Maßnahme**: Richtet sich nach dem Ausnahmetyp. Informationen hierzu finden Sie in der Tabelle im nächsten Abschnitt. 
+    **Allgemeine Maßnahme**: Ergibt sich je nach Ausnahmetyp. Informationen hierzu finden Sie in der Tabelle im nächsten Abschnitt. 
 
 ## <a name="exception-types"></a>Ausnahmetypen
 
