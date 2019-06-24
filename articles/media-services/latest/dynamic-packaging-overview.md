@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/03/2019
 ms.author: juliako
-ms.openlocfilehash: c25aef76b5559b6d00ccf60675d61ea5ea346773
-ms.sourcegitcommit: 600d5b140dae979f029c43c033757652cddc2029
+ms.openlocfilehash: ac08ddf4719b8d17519c5d487a6fb824efb3139a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/04/2019
-ms.locfileid: "66494352"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67068866"
 ---
 # <a name="dynamic-packaging"></a>Dynamische Paketerstellung
 
@@ -114,9 +114,9 @@ Die dynamische Paketerstellung unterstützt MP4-Dateien mit Audiodaten, die folg
     * DTS Express (dtse)
     * DTS-HD Lossless ohne Core (dtsl)
 
-### <a name="multi-audio-tracks"></a>Mit mehreren Audiospuren
+### <a name="multi-audio-tracks"></a>Mehrere Audiospuren
 
-Beim streaming Assets, die mehreren Audiospuren mit mehreren Codecs und Sprachen unterstützt dynamische Paketerstellung mit mehreren Audiospuren für die Ausgabe von HLS (Version 4 oder höher).
+Beim Streamen von Medienobjekten, die mehrere Audiospuren mit mehreren Codecs und Sprachen aufweisen, unterstützt die dynamische Paketerstellung mehrere Audiospuren für die HLS-Ausgabe (Version 4 oder höher).
  
 ### <a name="not-supported"></a>Nicht unterstützt
 

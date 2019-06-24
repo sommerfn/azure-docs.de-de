@@ -15,10 +15,10 @@ ms.topic: conceptual
 ms.date: 05/06/2019
 ms.author: crdun
 ms.openlocfilehash: f3e8ca4f9736dffe4928fc8920b0890dff87367b
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/27/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66236028"
 ---
 # <a name="create-a-xamarinandroid-app"></a>Erstellen einer Xamarin.Android-App
@@ -52,11 +52,11 @@ Sie haben nun ein Azure-Back-End für mobile Apps bereitgestellt, das von Ihren 
 ## <a name="run-the-xamarinandroid-app"></a>Ausführen der Xamarin.Android-App
 1. Öffnen Sie das Projekt „Xamarin.Android“.
 
-2. Wechseln Sie zum [Azure-Portal](https://portal.azure.com/), und navigieren Sie zu der mobilen App, die Sie erstellt haben. Suchen Sie auf dem Blatt `Overview` nach der URL, die der öffentliche Endpunkt für Ihre mobile App ist. Beispiel: der Sitename für meinen App-Namen „test123“ wird https://test123.azurewebsites.net.
+2. Wechseln Sie zum [Azure-Portal](https://portal.azure.com/), und navigieren Sie zu der mobilen App, die Sie erstellt haben. Suchen Sie auf dem Blatt `Overview` nach der URL, die den öffentlichen Endpunkt für Ihre mobile App darstellt. Beispiel: der Sitename für meinen App-Namen „test123“ wird https://test123.azurewebsites.net.
 
 3. Öffnen Sie die Datei `ToDoActivity.cs` in diesem Ordner: „xamarin.android/ZUMOAPPNAME/ToDoActivity.cs“. Der Anwendungsname lautet `ZUMOAPPNAME`.
 
-4. Ersetzen Sie in der `ToDoActivity`-Klasse die Variable `ZUMOAPPURL` durch den oben stehenden öffentlichen Endpunkt.
+4. Ersetzen Sie in der Klasse `ToDoActivity` die Variable `ZUMOAPPURL` durch den oben angegebenen öffentlichen Endpunkt.
 
     `const string applicationURL = @"ZUMOAPPURL";`
 

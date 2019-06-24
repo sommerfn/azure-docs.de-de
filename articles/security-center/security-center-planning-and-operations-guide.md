@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 04/11/2019
 ms.author: v-mohabe
 ms.openlocfilehash: 04cfe489e9eea53bf58dd64e0eac3e5a95033bcc
-ms.sourcegitcommit: e9a46b4d22113655181a3e219d16397367e8492d
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/21/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65966846"
 ---
 # <a name="azure-security-center-planning-and-operations-guide"></a>Planungs- und Betriebshandbuch für Azure Security Center
@@ -47,7 +47,7 @@ Je nach Größe und Struktur Ihrer Organisation wird Azure Security Center unter
 
 ![Rollen](./media/security-center-planning-and-operations-guide/security-center-planning-and-operations-guide-fig01-new.png)
 
-Security Center ermöglicht es den Personen, diese unterschiedlichen Aufgaben auszuführen. Beispiel: 
+Security Center ermöglicht es den Personen, diese unterschiedlichen Aufgaben auszuführen. Beispiel:
 
 **Jeff (Workloadbesitzer)**
 

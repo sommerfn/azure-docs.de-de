@@ -6,15 +6,15 @@ manager: cgronlun
 services: search
 ms.service: search
 ms.topic: conceptual
-ms.date: 05/13/2019
+ms.date: 06/13/2019
 ms.author: heidist
 ms.custom: seodec2018
-ms.openlocfilehash: 1871fee2734d347ff54d6aa70d90d1c28bd1f6f1
-ms.sourcegitcommit: 1fbc75b822d7fe8d766329f443506b830e101a5e
+ms.openlocfilehash: 8676ad48bc4fab6149db00d778349ac1acd7223d
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/14/2019
-ms.locfileid: "65597286"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67062388"
 ---
 # <a name="filters-in-azure-search"></a>Filter in Azure Search 
 
@@ -158,11 +158,11 @@ Bei Textzeichenfolgen wird Groß-/Kleinschreibung berücksichtigt. Es gibt keine
 
 ### <a name="approaches-for-filtering-on-text"></a>Ansätze zum Filtern von Text
 
-| Vorgehensweise | BESCHREIBUNG | Einsatzgebiete | 
+| Vorgehensweise | BESCHREIBUNG | Einsatzgebiete |
 |----------|-------------|-------------|
-| [search.in](query-odata-filter-orderby-syntax.md) | Eine Funktion, bei der ein Feld mit einer durch Trennzeichen getrennte Liste von Zeichenfolgen entspricht. | Dies wird für [Sicherheitsfilter](search-security-trimming-for-azure-search.md) und alle anderen Filter empfohlen, in denen viele unformatierte Textwerte mit einem Zeichenfolgenfeld verglichen werden. Die Funktion **search.in** ist auf Geschwindigkeit ausgelegt und viel schneller als das explizite Vergleichen des Felds mit jeder Zeichenfolge mithilfe von `eq` und `or`. | 
-| [search.ismatch](query-odata-filter-orderby-syntax.md) | Eine Funktion, die es erlaubt, Volltextsuchvorgänge mit strikt booleschen Filteroperationen im selben Filterausdruck zu kombinieren. | Verwenden Sie **search.ismatch** (oder das Äquivalent **search.ismatchscoring**), wenn Sie in einer Anforderung mehrere Suchfilterkombinationen möchten. Sie können sie auch für den Filter *enthält* verwenden, um auf eine Teilzeichenfolge innerhalb einer größeren Zeichenfolge zu filtern. |
-| [$filter=Feld, Operator, Zeichenfolge](query-odata-filter-orderby-syntax.md) | Ein benutzerdefinierter Ausdruck bestehend aus Feldern, Operatoren und Werten. | Verwenden Sie diesen Ausdruck, wenn Sie genaue Übereinstimmungen zwischen Zeichenfolgefeldern und einem Zeichenfolgenwert finden möchten. |
+| [`search.in`](search-query-odata-search-in-function.md) | Eine Funktion, bei der ein Feld mit einer durch Trennzeichen getrennte Liste von Zeichenfolgen entspricht. | Dies wird für [Sicherheitsfilter](search-security-trimming-for-azure-search.md) und alle anderen Filter empfohlen, in denen viele unformatierte Textwerte mit einem Zeichenfolgenfeld verglichen werden. Die Funktion **search.in** ist auf Geschwindigkeit ausgelegt und viel schneller als das explizite Vergleichen des Felds mit jeder Zeichenfolge mithilfe von `eq` und `or`. | 
+| [`search.ismatch`](search-query-odata-full-text-search-functions.md) | Eine Funktion, die es erlaubt, Volltextsuchvorgänge mit strikt booleschen Filteroperationen im selben Filterausdruck zu kombinieren. | Verwenden Sie **search.ismatch** (oder das Äquivalent **search.ismatchscoring**), wenn Sie in einer Anforderung mehrere Suchfilterkombinationen möchten. Sie können sie auch für den Filter *enthält* verwenden, um auf eine Teilzeichenfolge innerhalb einer größeren Zeichenfolge zu filtern. |
+| [`$filter=field operator string`](search-query-odata-comparison-operators.md) | Ein benutzerdefinierter Ausdruck bestehend aus Feldern, Operatoren und Werten. | Verwenden Sie diesen Ausdruck, wenn Sie genaue Übereinstimmungen zwischen Zeichenfolgefeldern und einem Zeichenfolgenwert finden möchten. |
 
 ## <a name="numeric-filter-fundamentals"></a>Grundlegendes zu numerischen Filtern
 

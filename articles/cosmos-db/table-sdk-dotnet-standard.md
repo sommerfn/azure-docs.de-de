@@ -9,10 +9,10 @@ ms.devlang: dotnet
 ms.topic: reference
 ms.date: 03/18/2019
 ms.openlocfilehash: 1c9894772f440a568cbc08890feb961471d84137
-ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/04/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66480216"
 ---
 # <a name="azure-cosmos-db-table-net-standard-api-download-and-release-notes"></a>.NET Standard-API für Azure Cosmos DB-Tabellen: Download und Versionshinweise
@@ -69,7 +69,7 @@ Die plattformübergreifende .NET Standard-Bibiliothek [Microsoft.Azure.Cosmos.Ta
 | --- | --- | --- |
 | [1.0.1](#1.0.1) |19. April 2019 |--- |
 | [1.0.0](#1.0.0) |13. März 2019 |--- |
-| [0.11.0-preview](#0.11.0-preview) |5. März 2019 |--- |
+| [0.11.0-preview](#0.11.0-preview) |5\. März 2019 |--- |
 | [0.10.1-preview](#0.10.1-preview) |22. Januar 2019 |--- |
 | [0.10.0-preview](#0.10.0-preview) |18. Dezember 2018 |--- |
 | [0.9.1-preview](#0.9.1-preview) |18. Oktober 2018 |--- |

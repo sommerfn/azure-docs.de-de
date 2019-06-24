@@ -8,10 +8,10 @@ ms.author: babanisa
 ms.topic: conceptual
 ms.date: 01/08/2019
 ms.openlocfilehash: 61821caa2450096bdbdde3461316ad21a82f6f18
-ms.sourcegitcommit: 009334a842d08b1c83ee183b5830092e067f4374
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/29/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66304295"
 ---
 # <a name="understand-event-domains-for-managing-event-grid-topics"></a>Grundlegendes zu Ereignisdomänen für die Verwaltung von Event Grid-Themen
@@ -99,7 +99,7 @@ Ereignisdomänen übernehmen die Veröffentlichung von Themen für Sie. Anstatt 
 ## <a name="limits-and-quotas"></a>Grenzen und Kontingente
 Im Anschluss sind die Grenzwerte und Kontingente für Ereignisdomänen angegeben:
 
-- 100\.000 Themen pro Ereignisdomäne 
+- 100.000 Themen pro Ereignisdomäne 
 - 100 Ereignisdomänen pro Azure-Abonnement 
 - 500 Ereignisabonnements pro Thema innerhalb einer Ereignisdomäne
 - 50 Domänenbereichabonnements 

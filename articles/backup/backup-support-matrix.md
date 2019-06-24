@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 02/17/2019
 ms.author: raynew
 ms.openlocfilehash: 99dd3c0b07307f2d0bf97dbff697e32e648705ae
-ms.sourcegitcommit: d89032fee8571a683d6584ea87997519f6b5abeb
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/30/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66400172"
 ---
 # <a name="azure-backup-support-matrix"></a>Matrix zur Azure Backup-Unterstützung
@@ -139,7 +139,7 @@ Backup unterstützt die Komprimierung des Sicherungsdatenverkehrs, wie in der fo
 
 **Einstellung** | **Einschränkungen**
 --- | ---
-**Maximale Wiederherstellungspunkte pro geschützter Instanz (Computer oder Workload)** | 9.999
+**Maximale Wiederherstellungspunkte pro geschützter Instanz (Computer oder Workload)** | 9\.999
 **Maximale Ablaufzeit für einen Wiederherstellungspunkt** | Keine Begrenzung
 **Maximale Sicherungshäufigkeit für DPM/MABS** | Alle 15 Minuten für SQL Server<br/><br/> Stündlich für andere Workloads
 **Maximale Sicherungshäufigkeit für Tresor** | **Lokale Windows-Computer oder Azure-VMs mit dem MARS-Agent:** Dreimal pro Tag<br/><br/> **DPM/MABS:** Zweimal pro Tag<br/><br/> **Azure VM-Sicherung:** Einmal pro Tag

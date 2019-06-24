@@ -11,10 +11,10 @@ ms.date: 04/23/2019
 ms.author: marsma
 ms.subservice: B2C
 ms.openlocfilehash: b336428592a4897319725782c994c3fae26bfae0
-ms.sourcegitcommit: adb6c981eba06f3b258b697251d7f87489a5da33
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/04/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66510418"
 ---
 # <a name="set-up-sign-in-with-a-linkedin-account-using-custom-policies-in-azure-active-directory-b2c"></a>Einrichten der Anmeldung mit einem LinkedIn-Konto mithilfe benutzerdefinierter Richtlinien in Azure Active Directory B2C
@@ -42,7 +42,7 @@ Um LinkedIn als Identitätsanbieter in Azure AD B2C zu nutzen, müssen Sie eine 
 7. Machen Sie Angaben für **Business Email** (Geschäftliche E-Mail-Adresse) und **Business Phone** (Geschäftliche Telefonnummer).
 8. Lesen und akzeptieren Sie die Nutzungsbedingungen am Ende der Seite, und wählen Sie dann **Submit** (Übermitteln) aus.
 9. Wählen Sie **Authentication** (Authentifizierung) aus, und notieren Sie die Werte für **Client ID** (Client-ID) und **Client Secret** (Clientgeheimnis).
-10. Geben Sie **unter**Authorized Redirect URLs`https://your-tenant.b2clogin.com/your-tenant.onmicrosoft.com/oauth2/authresp` (Autorisierte Umleitungs-URLs) ein. Ersetzen Sie `your-tenant` durch den Namen Ihres Mandanten. Bei der Eingabe Ihres Mandantennamens dürfen Sie nur Kleinbuchstaben verwenden, auch wenn der Mandant in Azure AD B2C Großbuchstaben enthält. 
+10. Geben Sie ** unter **Authorized Redirect URLs`https://your-tenant.b2clogin.com/your-tenant.onmicrosoft.com/oauth2/authresp` (Autorisierte Umleitungs-URLs) ein. Ersetzen Sie `your-tenant` durch den Namen Ihres Mandanten. Bei der Eingabe Ihres Mandantennamens dürfen Sie nur Kleinbuchstaben verwenden, auch wenn der Mandant in Azure AD B2C Großbuchstaben enthält. 
 11. Wählen Sie **Update** aus.
 12. Wählen Sie **Settings** (Einstellungen) aus, ändern Sie **Application status** (Anwendungsstatus) in **Live**, und wählen Sie dann **Update** aus.
 

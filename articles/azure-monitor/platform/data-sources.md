@@ -13,10 +13,10 @@ ms.workload: infrastructure-services
 ms.date: 05/23/2019
 ms.author: bwren
 ms.openlocfilehash: b77fb3ab5651147c59b9f0afd22a2d6d0159c90e
-ms.sourcegitcommit: 8e76be591034b618f5c11f4e66668f48c090ddfd
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/29/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66357480"
 ---
 # <a name="sources-of-monitoring-data-for-azure-monitor"></a>Quellen für Überwachungsdaten für Azure Monitor
@@ -35,7 +35,7 @@ Quellen für Überwachungsdaten von Azure-Anwendungen können in Ebenen organisi
 ### <a name="azure"></a>Azure
 Die folgende Tabelle enthält kurze Beschreibungen der Azure-spezifischen Anwendungsebenen. Folgen Sie dem Link, um zu weiteren Informationen in den folgenden Abschnitten zu gelangen.
 
-| Ebene | BESCHREIBUNG | Sammlungsmethode |
+| Tarif | BESCHREIBUNG | Sammlungsmethode |
 |:---|:---|:---|
 | [Azure-Mandant](#azure-tenant) | Daten zum Betrieb von Azure-Diensten auf Mandantenebene, z. B. Azure Active Directory. | Zeigen Sie AAD-Daten im Portal an, oder konfigurieren Sie die Sammlung in Azure Monitor mithilfe einer Diagnoseeinstellung für Mandanten. |
 | [Azure-Abonnement](#azure-subscription) | Daten im Zusammenhang mit der Integrität und Verwaltung von ressourcenübergreifenden Diensten in Ihrem Azure-Abonnement, z.B. Resource Manager und Service Health. | Zeigen Sie die Daten im Portal an, oder konfigurieren Sie die Sammlung in Azure Monitor mithilfe eines Protokollprofils. |
@@ -44,7 +44,7 @@ Die folgende Tabelle enthält kurze Beschreibungen der Azure-spezifischen Anwend
 ### <a name="azure-other-cloud-or-on-premises"></a>Azure, andere Cloud oder lokal 
 Die folgende Tabelle enthält kurze Beschreibungen der Anwendungsebenen, die in Azure, einer anderen Cloud oder lokal vorhanden sein können. Folgen Sie dem Link, um zu weiteren Informationen in den folgenden Abschnitten zu gelangen.
 
-| Ebene | BESCHREIBUNG | Sammlungsmethode |
+| Tarif | BESCHREIBUNG | Sammlungsmethode |
 |:---|:---|:---|
 | [Betriebssystem (Gast)](#operating-system-guest) | Daten zum Betriebssystem auf Computeressourcen. | Installieren Sie den Log Analytics-Agent, um Clientdatenquellen in Azure Monitor zu sammeln, und den Dependency-Agent, um Abhängigkeiten zu sammeln, die Azure Monitor für VMs unterstützen.<br>Für virtuelle Azure-Computer installieren Sie die Azure-Diagnoseerweiterung, um Protokolle und Metriken in Azure Monitor zu sammeln. |
 | [Anwendungscode](#application-code) | Daten über die Leistung und Funktionalität der tatsächlichen Anwendung und des Codes, einschließlich Leistungsnachverfolgungen, Anwendungsprotokolle und Benutzertelemetrie. | Instrumentieren Sie den Code für das Sammeln von Daten in Application Insights. |

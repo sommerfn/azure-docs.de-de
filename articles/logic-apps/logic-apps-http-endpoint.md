@@ -13,10 +13,10 @@ ms.topic: article
 ms.custom: H1Hack27Feb2017
 ms.date: 03/31/2017
 ms.openlocfilehash: b091fb8c6f0b2b655ce0595188c362206f79d702
-ms.sourcegitcommit: 600d5b140dae979f029c43c033757652cddc2029
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/04/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66495052"
 ---
 # <a name="call-trigger-or-nest-workflows-with-http-endpoints-in-azure-logic-apps"></a>Aufrufen, Auslösen oder Schachteln von Workflows mit HTTP-Endpunkten in Azure Logic Apps
@@ -294,7 +294,7 @@ A: Ja, HTTP-Endpunkte unterstützen die erweiterte Konfiguration über [**API Ma
 
 A: Hier ist eine Zusammenfassung dieser Änderungen:
 
-| Vorschau vom 1. Dezember 2014 | 1. Juni 2016 |
+| Vorschau vom 1. Dezember 2014 | 1\. Juni 2016 |
 | --- | --- |
 | Klicken auf die API-App **HTTP-Listener** |Klicken auf **Manueller Trigger** (keine API-App erforderlich) |
 | HTTP-Listener-Einstellung*Sendet Antwort automatisch* |Hinzufügen oder Nichthinzufügen einer **Response**-Aktion zur Workflowdefinition |

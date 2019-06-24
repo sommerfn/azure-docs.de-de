@@ -8,12 +8,12 @@ ms.service: azure-functions
 ms.topic: article
 ms.date: 5/03/2019
 ms.author: alkarche, glenga
-ms.openlocfilehash: 07c7d7fb682708bf813820440d9c790c28b1f3e5
-ms.sourcegitcommit: 3ced637c8f1f24256dd6ac8e180fff62a444b03c
+ms.openlocfilehash: 55cce60ab3d1cda3cb870afd2f6214f917a04189
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/17/2019
-ms.locfileid: "65834579"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67063282"
 ---
 # <a name="tutorial-integrate-functions-with-an-azure-virtual-network"></a>Tutorial: Integrieren von Functions in ein virtuelles Azure-Netzwerk
 
@@ -170,4 +170,4 @@ Funktionen, die in einem Premium-Tarif ausgeführt werden, haben dieselbe zugrun
 > [!div class="nextstepaction"]
 > [Weitere Informationen zu den Netzwerkoptionen in Functions](./functions-networking-options.md)
 
-[Premium-Plan]: functions-scale.md#premium-plan-public-preview
+[Premium-Plan]: functions-scale.md#premium-plan
