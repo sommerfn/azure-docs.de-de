@@ -6,15 +6,15 @@ manager: alinast
 ms.service: digital-twins
 services: digital-twins
 ms.topic: conceptual
-ms.date: 01/11/2019
+ms.date: 06/05/2019
 ms.author: v-adgera
 ms.custom: seodec18
-ms.openlocfilehash: b77960961a7c032faad7000f7a2ce297802a1497
-ms.sourcegitcommit: e9a46b4d22113655181a3e219d16397367e8492d
+ms.openlocfilehash: 9490772226ecdb90cdd2e0b98fe8336b91db6044
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/21/2019
-ms.locfileid: "65967048"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "66754505"
 ---
 # <a name="add-blobs-to-objects-in-azure-digital-twins"></a>Hinzufügen von Blobs zu Objekten in Azure Digital Twins
 
@@ -36,7 +36,7 @@ Neben **Content-Type** und **Content-Disposition** müssen mehrteilige Anforderu
 
 Nachfolgend finden Sie die vier wichtigsten JSON-Schemas:
 
-![JSON-Schemas][1]
+[![JSON-Schemas](media/how-to-add-blobs/blob-models.PNG)](media/how-to-add-blobs/blob-models.PNG#lightbox)
 
 JSON-Blobmetadaten entsprechen dem folgenden Modell:
 
@@ -53,14 +53,14 @@ JSON-Blobmetadaten entsprechen dem folgenden Modell:
 
 | Attribut | Type | BESCHREIBUNG |
 | --- | --- | --- |
-| **parentId** | Zeichenfolge | Die übergeordnete Entität, der das Blob zugeordnet werden soll (Räume, Geräte oder Benutzer) |
-| **name** |Zeichenfolge | Ein benutzerfreundlicher Name für das Blob |
-| **type** | Zeichenfolge | Der Blobtyp: *type* und *typeId* können nicht verwendet werden.  |
+| **parentId** | string | Die übergeordnete Entität, der das Blob zugeordnet werden soll (Räume, Geräte oder Benutzer) |
+| **name** |string | Ein benutzerfreundlicher Name für das Blob |
+| **type** | string | Der Blobtyp: *type* und *typeId* können nicht verwendet werden.  |
 | **typeId** | Integer | Die Blobtyp-ID: *type* und *typeId* können nicht verwendet werden. |
-| **subtype** | Zeichenfolge | Der Blobuntertyp: *subtype* und *subtypeId* können nicht verwendet werden. |
+| **subtype** | string | Der Blobuntertyp: *subtype* und *subtypeId* können nicht verwendet werden. |
 | **subtypeId** | Integer | Die Untertyp-ID des Blobs: *subtype* und *subtypeId* können nicht verwendet werden. |
-| **description** | Zeichenfolge | Benutzerdefinierte Beschreibung des Blobs |
-| **sharing** | Zeichenfolge | Gibt an, ob das Blob freigegeben werden kann: Enumeration [`None`, `Tree`, `Global`] |
+| **description** | string | Benutzerdefinierte Beschreibung des Blobs |
+| **sharing** | string | Gibt an, ob das Blob freigegeben werden kann: Enumeration [`None`, `Tree`, `Global`] |
 
 Blobmetadaten werden immer als erster Block mit **Content-Type** `application/json` oder als eine `.json`-Datei angegeben. Dateidaten werden im zweiten Block als einer der unterstützten MIME-Typen angegeben.
 
@@ -110,18 +110,18 @@ Einzeln zurückgegebene Blobs haben folgendes JSON-Schema:
 
 | Attribut | Type | BESCHREIBUNG |
 | --- | --- | --- |
-| **id** | Zeichenfolge | Der eindeutige Bezeichner für das Blob |
-| **name** |Zeichenfolge | Ein benutzerfreundlicher Name für das Blob |
-| **parentId** | Zeichenfolge | Die übergeordnete Entität, der das Blob zugeordnet werden soll (Räume, Geräte oder Benutzer) |
-| **type** | Zeichenfolge | Der Blobtyp: *type* und *typeId* können nicht verwendet werden.  |
+| **id** | string | Der eindeutige Bezeichner für das Blob |
+| **name** |string | Ein benutzerfreundlicher Name für das Blob |
+| **parentId** | string | Die übergeordnete Entität, der das Blob zugeordnet werden soll (Räume, Geräte oder Benutzer) |
+| **type** | string | Der Blobtyp: *type* und *typeId* können nicht verwendet werden.  |
 | **typeId** | Integer | Die Blobtyp-ID: *type* und *typeId* können nicht verwendet werden. |
-| **subtype** | Zeichenfolge | Der Blobuntertyp: *subtype* und *subtypeId* können nicht verwendet werden. |
+| **subtype** | string | Der Blobuntertyp: *subtype* und *subtypeId* können nicht verwendet werden. |
 | **subtypeId** | Integer | Die Untertyp-ID des Blobs: *subtype* und *subtypeId* können nicht verwendet werden. |
-| **sharing** | Zeichenfolge | Gibt an, ob das Blob freigegeben werden kann: Enumeration [`None`, `Tree`, `Global`] |
-| **description** | Zeichenfolge | Benutzerdefinierte Beschreibung des Blobs |
+| **sharing** | string | Gibt an, ob das Blob freigegeben werden kann: Enumeration [`None`, `Tree`, `Global`] |
+| **description** | string | Benutzerdefinierte Beschreibung des Blobs |
 | **contentInfos** | Array | Gibt unstrukturierte Metadateninformationen an, einschließlich der Version |
-| **fullName** | Zeichenfolge | Der vollständige Name des Blobs |
-| **spacePaths** | Zeichenfolge | Der Raumpfad |
+| **fullName** | string | Der vollständige Name des Blobs |
+| **spacePaths** | string | Der Raumpfad |
 
 Blobmetadaten werden immer als erster Block mit **Content-Type** `application/json` oder als eine `.json`-Datei angegeben. Dateidaten werden im zweiten Block als einer der unterstützten MIME-Typen angegeben.
 
@@ -183,7 +183,7 @@ var response = await httpClient.PostAsync("spaces/blobs", multipartContent);
 
 Abschließend können [cURL](https://curl.haxx.se/)-Benutzer auf die gleiche Weise mehrteilige Anforderungen ausführen:
 
-![Geräteblobs][5]
+[![Geräteblobs](media/how-to-add-blobs/curl.PNG)](media/how-to-add-blobs/curl.PNG#lightbox)
 
 ```bash
 curl
@@ -211,7 +211,7 @@ Die folgenden Abschnitte beschreiben die wichtigsten blobbezogenen API-Endpunkte
 
 Blobs können an Geräte angefügt werden. Die folgende Abbildung zeigt die Swagger-Referenzdokumentation für Ihre Verwaltungs-APIs. Sie gibt gerätebezogene API-Endpunkte für die Blobnutzung sowie ggf. zu übergebende erforderliche Pfadparameter an.
 
-![Geräteblobs][2]
+[![Geräteblobs](media/how-to-add-blobs/blobs-device-api.PNG)](media/how-to-add-blobs/blobs-device-api.PNG#lightbox)
 
 Wenn Sie beispielsweise ein Blob aktualisieren oder erstellen und dann an ein Gerät anfügen möchten, richten Sie eine authentifizierte HTTP PATCH-Anforderung an:
 
@@ -229,7 +229,7 @@ Erfolgreiche Anforderungen geben ein JSON-Objekt zurück, wie [weiter oben besch
 
 Blobs können auch an Räume angefügt werden. Die folgende Abbildung enthält alle Raum-API-Endpunkte für die Verarbeitung von Blobs. Aufgelistet sind auch alle Pfadparameter, die ggf. an diese Endpunkte übergeben werden müssen.
 
-![Raumblobs][3]
+[![Raumblobs](media/how-to-add-blobs/blobs-space-api.PNG)](media/how-to-add-blobs/blobs-space-api.PNG#lightbox)
 
 Wenn beispielsweise ein an einen Raum angefügtes Blob zurückgegeben werden soll, richten Sie eine authentifizierte HTTP GET-Anforderung an:
 
@@ -249,7 +249,7 @@ Eine PATCH-Anforderung an denselben Endpunkt aktualisiert die Metadatenbeschreib
 
 Blobs können an Benutzermodelle angefügt werden (z. B. um ein Profilbild zuzuordnen). Die folgende Abbildung zeigt die relevanten Benutzer-API-Endpunkte sowie alle ggf. erforderlichen Pfadparameter (z. B. `id`):
 
-![Benutzerblobs][4]
+[![Benutzerblobs](media/how-to-add-blobs/blobs-users-api.PNG)](media/how-to-add-blobs/blobs-users-api.PNG#lightbox)
 
 Wenn Sie beispielsweise ein Blob abrufen möchten, das an einen Benutzer angefügt ist, richten Sie eine authentifizierte HTTP GET-Anforderung mit den erforderlichen Formulardaten an:
 
@@ -288,10 +288,3 @@ Vergewissern Sie sich auch, dass jeder mehrteilige Block einen entsprechenden **
 - Weitere Informationen zur Swagger-Referenzdokumentation von Azure Digital Twins finden Sie unter [Verwenden von Azure Digital Twins-Swagger](how-to-use-swagger.md).
 
 - Weitere Informationen zum Hochladen von Blobs über Postman finden Sie unter [Konfigurieren von Postman](./how-to-configure-postman.md).
-
-<!-- Images -->
-[1]: media/how-to-add-blobs/blob-models.PNG
-[2]: media/how-to-add-blobs/blobs-device-api.PNG
-[3]: media/how-to-add-blobs/blobs-space-api.PNG
-[4]: media/how-to-add-blobs/blobs-users-api.PNG
-[5]: media/how-to-add-blobs/curl.PNG

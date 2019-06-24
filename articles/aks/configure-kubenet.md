@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 06/03/2019
 ms.author: iainfou
 ms.reviewer: nieberts, jomore
-ms.openlocfilehash: cde7d692e8bb37e874c6e55e5584d96e3b13af31
-ms.sourcegitcommit: 600d5b140dae979f029c43c033757652cddc2029
+ms.openlocfilehash: 94a6ce87cf313fe283631e594a63f210c775c7a1
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/04/2019
-ms.locfileid: "66497187"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "66808575"
 ---
 # <a name="use-kubenet-networking-with-your-own-ip-address-ranges-in-azure-kubernetes-service-aks"></a>Verwenden von kubenet-Netzwerken mit Ihren eigenen IP-Adressbereichen in Azure Kubernetes Service (AKS)
 
@@ -62,7 +62,7 @@ Die folgenden grundlegenden Berechnungen zeigen den Unterschied zwischen Netzwer
 
 ### <a name="virtual-network-peering-and-expressroute-connections"></a>Peering virtueller Netzwerke und ExpressRoute-Verbindungen
 
-Um lokale Konnektivität zu bieten, kann sowohl der *kubenet*- als auch der *Azure CNI*-Netzwerkansatz [Peering in virtuellen Netzwerken][vnet-peering] oder [ExpressRoute-Verbindungen][express-route] verwenden. Planen Sie Ihre IP-Adressbereiche sorgfältig, um Überschneidungen und falsches Datenverkehrsrouting zu verhindern. In vielen lokalen Netzwerken wird z.B. ein *10.0.0.0/8*-Adressbereich verwendet, der über die ExpressRoute-Verbindung angekündigt wird. Sie sollten Ihre AKS-Cluster in Subnetzen virtueller Azure-Netzwerke außerhalb dieses Adressbereichs erstellen, z.B. *172.26.0.0/16*.
+Um lokale Konnektivität zu bieten, kann sowohl der *kubenet*- als auch der *Azure CNI*-Netzwerkansatz [Peering in virtuellen Netzwerken][vnet-peering] oder [ExpressRoute-Verbindungen][express-route] verwenden. Planen Sie Ihre IP-Adressbereiche sorgfältig, um Überschneidungen und falsches Datenverkehrsrouting zu verhindern. In vielen lokalen Netzwerken wird z.B. ein *10.0.0.0/8*-Adressbereich verwendet, der über die ExpressRoute-Verbindung angekündigt wird. Sie sollten Ihre AKS-Cluster in Subnetzen virtueller Azure-Netzwerke außerhalb dieses Adressbereichs erstellen, z. B. *172.16.0.0/16*.
 
 ### <a name="choose-a-network-model-to-use"></a>Auswählen eines zu verwendenden Netzwerkmodells
 
@@ -92,15 +92,15 @@ Erstellen Sie für den Einstieg in die Verwendung von *kubenet* und Ihrem eigene
 az group create --name myResourceGroup --location eastus
 ```
 
-Wenn Ihnen kein Subnetz eines virtuellen Netzwerks zur Verfügung steht, erstellen Sie diese Netzwerkressourcen mit dem Befehl [az network vnet create] [ az-network-vnet-create]. Im folgenden Beispiel erhält das virtuelle Netzwerk den Namen *myVnet* und das Adresspräfix *10.0.0.0/8*. Ein Subnetz mit dem Namen *myAKSSubnet* mit dem Adresspräfix *10.240.0.0/16* wird erstellt.
+Wenn Ihnen kein Subnetz eines virtuellen Netzwerks zur Verfügung steht, erstellen Sie diese Netzwerkressourcen mit dem Befehl [az network vnet create] [ az-network-vnet-create]. Im folgenden Beispiel erhält das virtuelle Netzwerk den Namen *myVnet* und das Adresspräfix *192.168.0.0/16*. Ein Subnetz mit dem Namen *myAKSSubnet* mit dem Adresspräfix *192.168.1.0/24* wird erstellt.
 
 ```azurecli-interactive
 az network vnet create \
     --resource-group myResourceGroup \
     --name myAKSVnet \
-    --address-prefixes 10.0.0.0/8 \
+    --address-prefixes 192.168.0.0/16 \
     --subnet-name myAKSSubnet \
-    --subnet-prefix 10.240.0.0/16
+    --subnet-prefix 192.168.1.0/24
 ```
 
 ## <a name="create-a-service-principal-and-assign-permissions"></a>Erstellen eines Dienstprinzipals und Zuweisen von Berechtigungen
@@ -150,7 +150,7 @@ Die folgenden IP-Adressbereiche sind auch als Teil des Clustererstellungsprozess
 
 * *--pod-cidr* muss ein großer Adressraum sein, der nicht an anderer Stelle in Ihrer Netzwerkumgebung verwendet wird. Dieser Bereich schließt alle lokalen Netzwerkbereiche ein, wenn Sie mit ExpressRoute oder Site-to-Site-VPN-Verbindungen eine Verbindung Ihrer virtuellen Azure-Netzwerke herstellen möchten oder dies planen.
     * Dieser Adressbereich muss groß genug sein für die Anzahl der Knoten, auf die Sie erwartungsgemäß zentral hochskalieren werden. Sie können diesen Adressbereich nicht ändern, nachdem der Cluster bereitgestellt wurde, wenn Sie mehrere Adressen für zusätzliche Knoten benötigen.
-    * Mit dem Pod-IP-Adressbereich wird jedem Knoten im Cluster ein */24*-Adressraum zugewiesen. Im folgenden Beispiel weist *--pod-cidr* von *192.168.0.0/16* dem ersten Knoten *192.168.0.0/24* zu, dem zweiten Knoten *192.168.1.0/24* und dem dritten Knoten *192.168.2.0/24*.
+    * Mit dem Pod-IP-Adressbereich wird jedem Knoten im Cluster ein */24*-Adressraum zugewiesen. Im folgenden Beispiel weist *--pod-cidr* von *10.244.0.0/16* dem ersten Knoten *10.244.0.0/24* zu, dem zweiten Knoten *10.244.1.0/24* und dem dritten Knoten *10.244.2.0/24*.
     * Beim Skalieren oder Upgraden des Clusters weist die Azure-Plattform weiterhin jedem neuen Knoten einen Pod-IP-Adressbereich zu.
     
 * Über *--docker-bridge-address* können AKS-Knoten mit der zugrunde liegenden Verwaltungsplattform kommunizieren. Diese IP-Adresse darf nicht innerhalb des IP-Adressbereichs des virtuellen Netzwerk Ihres Clusters liegen und sollte sich nicht mit anderen in Ihrem Netzwerk verwendeten Adressbereichen überschneiden.
@@ -163,7 +163,7 @@ az aks create \
     --network-plugin kubenet \
     --service-cidr 10.0.0.0/16 \
     --dns-service-ip 10.0.0.10 \
-    --pod-cidr 192.168.0.0/16 \
+    --pod-cidr 10.244.0.0/16 \
     --docker-bridge-address 172.17.0.1/16 \
     --vnet-subnet-id $SUBNET_ID \
     --service-principal <appId> \

@@ -1,21 +1,21 @@
 ---
-title: Includedatei
-description: Includedatei
+title: include file
+description: include file
 services: virtual-machines
 author: cynthn
 ms.service: virtual-machines
 ms.topic: include
-ms.date: 05/22/2019
+ms.date: 06/04/2019
 ms.author: cynthn;kareni
 ms.custom: include file
-ms.openlocfilehash: d2312fac64515756f5ed2e0feb22fdc6b7205376
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.openlocfilehash: 46ade0ecb0e2e081585803a0b1bc7eab989e21e6
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66125187"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "66735215"
 ---
-**Letzte Aktualisierung des Dokuments**: 14 Mai. 2019 19:00 Uhr MEZ.
+**Letzte Aktualisierung des Dokuments**: 4. Juni 2019, 15:00 Uhr (PST).
 
 Eine öffentlich gemachte [neue Art von CPU-Sicherheitsrisiken](https://portal.msrc.microsoft.com/en-US/security-guidance/advisory/ADV180002), die als „Seitenkanalangriffe mit spekulativer Ausführung“ bezeichnet wird, hatte Fragen von Kunden zur Folge, die sich mehr Klarheit wünschen.  
 
@@ -77,7 +77,7 @@ Sie können auf Ihrem virtuellen Computer oder in Ihrem Clouddienst zusätzliche
 Ihr Zielbetriebssystem muss aktuell sein, damit Sie diese zusätzlichen Sicherheitsfunktionen aktivieren können. Für „Seitenkanalangriffe mit spekulativer Ausführung“ sind standardmäßig mehrere Maßnahmen zur Risikominderung aktiviert, aber die hier beschriebenen zusätzlichen Features müssen manuell aktiviert werden und können sich auf die Leistung auswirken. 
 
 
-**Schritt 1: Deaktivieren von Hyperthreading auf dem virtuellen Computer**: Kunden, die nicht vertrauenswürdigen Code auf einem virtuellen Computer mit Hyperthreading ausführen, müssen das Hyperthreading deaktivieren oder zu einer VM-Größe ohne Hyperthreading wechseln. Um festzustellen, ob Hyperthreading auf Ihrem virtuellen Computer aktiviert ist, verwenden Sie das folgende Skript mit der Windows-Befehlszeile auf dem virtuellen Computer.
+**Schritt 1: Deaktivieren von Hyperthreading auf dem virtuellen Computer**: Kunden, die nicht vertrauenswürdigen Code auf einem virtuellen Computer mit Hyperthreading ausführen, müssen das Hyperthreading deaktivieren oder zu einer VM-Größe ohne Hyperthreading wechseln. Eine Liste mit VM-Größen mit Hyperthreading finden Sie in [diesem Dokument](https://docs.microsoft.com/azure/virtual-machines/windows/acu). (Bei diesen VM-Größen beträgt das Verhältnis zwischen vCPU und Kern 2:1.) Mit dem folgenden Skript können Sie über die Windows-Befehlszeile auf dem virtuellen Computer ermitteln, ob Hyperthreading für Ihren virtuellen Computer aktiviert ist.
 
 Geben Sie `wmic` ein, um die interaktive Benutzeroberfläche aufzurufen. Geben Sie dann den folgenden Befehl ein, um die Menge der physischen und logischen Prozessoren auf dem virtuellen Computer anzuzeigen.
 
@@ -85,7 +85,7 @@ Geben Sie `wmic` ein, um die interaktive Benutzeroberfläche aufzurufen. Geben S
 CPU Get NumberOfCores,NumberOfLogicalProcessors /Format:List
 ```
 
-Wenn die Anzahl der logischen Prozessoren höher als die der physischen Prozessoren (Kerne) ist, ist Hyperthreading aktiviert.  Wenn Sie einen virtuellen Computer mit Hyperthreading ausführen, [wenden Sie sich an den Azure-Support](https://aka.ms/MicrocodeEnablementRequest-SupportTechnical), um das Hyperthreading zu deaktivieren.  Sobald Hyperthreading deaktiviert ist, **fordert der Support zu einem vollständigen Neustart des virtuellen Computers auf**. 
+Wenn die Anzahl logischer Prozessoren die Anzahl physischer Prozessoren (Kerne) übersteigt, ist Hyperthreading aktiviert.  Wenn Sie einen virtuellen Computer mit Hyperthreading ausführen, [wenden Sie sich an den Azure-Support](https://aka.ms/MicrocodeEnablementRequest-SupportTechnical), um das Hyperthreading zu deaktivieren.  Nach Deaktivierung des Hyperthreadings ist ein **vollständiger Neustart des virtuellen Computers erforderlich**. Unter [Anzahl Kerne](#core-count) erfahren Sie, warum sich die Anzahl Ihrer VM-Kerne verringert hat.
 
 
 **Schritt 2:** Führen Sie parallel zu Schritt 1 die Anweisungen unter [KB4072698](https://support.microsoft.com/help/4072698/windows-server-guidance-to-protect-against-the-speculative-execution) aus, um mit dem [SpeculationControl](https://aka.ms/SpeculationControlPS)-PowerShell-Modul sicherzustellen, dass der Schutz aktiviert ist.
@@ -123,7 +123,7 @@ Wenn die Ausgabe `MDS mitigation is enabled: False` anzeigt, [wenden Sie sich an
 <a name="linux"></a>Für die Aktivierung der internen zusätzlichen Sicherheitsfunktionen ist es erforderlich, dass das Zielbetriebssystem auf dem aktuellsten Stand ist. Einige Maßnahmen zur Risikominderung sind standardmäßig aktiviert. Im folgenden Abschnitt werden die Funktionen beschrieben, die standardmäßig deaktiviert sind bzw. für die eine Hardwareunterstützung (Microcode) benötigt wird. Die Aktivierung dieser Funktionen kann zu einer Beeinträchtigung der Leistung führen. Weitere Informationen finden Sie in der Dokumentation des Anbieters Ihres Betriebssystems.
 
 
-**Schritt 1: Deaktivieren von Hyperthreading auf dem virtuellen Computer**: Kunden, die nicht vertrauenswürdigen Code auf einem virtuellen Computer mit Hyperthreading ausführen, müssen das Hyperthreading deaktivieren oder zu einem virtuellen Computer ohne Hyperthreading wechseln.  Führen Sie den Befehl `lscpu` auf dem virtuellen Linux-Computer aus, um festzustellen, einen virtuellen Computer mit Hyperthreading ausführen. 
+**Schritt 1: Deaktivieren von Hyperthreading auf dem virtuellen Computer**: Kunden, die nicht vertrauenswürdigen Code auf einem virtuellen Computer mit Hyperthreading ausführen, müssen das Hyperthreading deaktivieren oder zu einem virtuellen Computer ohne Hyperthreading wechseln.  Eine Liste mit VM-Größen mit Hyperthreading finden Sie in [diesem Dokument](https://docs.microsoft.com/azure/virtual-machines/linux/acu). (Bei diesen VM-Größen beträgt das Verhältnis zwischen vCPU und Kern 2:1.) Führen Sie auf dem virtuellen Linux-Computer den Befehl `lscpu` aus, um zu ermitteln, ob Sie einen virtuellen Computer mit Hyperthreading ausführen. 
 
 Bei `Thread(s) per core = 2` ist Hyperthreading aktiviert. 
 
@@ -145,7 +145,8 @@ NUMA node(s):          1
 
 ```
 
-Wenn Sie einen virtuellen Computer mit Hyperthreading ausführen, [wenden Sie sich an den Azure-Support](https://aka.ms/MicrocodeEnablementRequest-SupportTechnical), um das Hyperthreading zu deaktivieren.  Sobald Hyperthreading deaktiviert ist, **fordert der Support zu einem vollständigen Neustart des virtuellen Computers auf**.
+Wenn Sie einen virtuellen Computer mit Hyperthreading ausführen, [wenden Sie sich an den Azure-Support](https://aka.ms/MicrocodeEnablementRequest-SupportTechnical), um das Hyperthreading zu deaktivieren.  Nach Deaktivierung des Hyperthreadings ist ein **vollständiger Neustart des virtuellen Computers erforderlich**. Unter [Anzahl Kerne](#core-count) erfahren Sie, warum sich die Anzahl Ihrer VM-Kerne verringert hat.
+
 
 
 **Schritt 2:** Informationen zum Einleiten von Gegenmaßnahmen für die folgenden Sicherheitsrisiken durch Seitenkanalangriffe mit spekulativer Ausführung finden Sie in der Dokumentation Ihres Betriebssystemanbieters:   
@@ -153,6 +154,11 @@ Wenn Sie einen virtuellen Computer mit Hyperthreading ausführen, [wenden Sie si
 - [RedHat und CentOS](https://access.redhat.com/security/vulnerabilities) 
 - [SUSE](https://www.suse.com/support/kb/?doctype%5B%5D=DT_SUSESDB_PSDB_1_1&startIndex=1&maxIndex=0) 
 - [Ubuntu](https://wiki.ubuntu.com/SecurityTeam/KnowledgeBase/) 
+
+
+### <a name="core-count"></a>Anzahl Kerne
+
+Bei der Erstellung eines virtuellen Computers mit Hyperthreading ordnet Azure zwei Threads pro Kern zu. Diese werden als vCPUs bezeichnet. Wird Hyperthreading deaktiviert, entfernt Azure einen Thread und zeigt Singlethread-Kerne (physische Kerne) an. Aufgrund des Verhältnisses von 2:1 zwischen vCPU und CPU sieht es nach der Deaktivierung des Hyperthreadings so aus, als hätte sich die CPU-Anzahl des virtuellen Computers halbiert. Ein Beispiel: Bei einem virtuellen Computer vom Typ „D8_v3“ handelt es sich um einen virtuellen Computer mit Hyperthreading, der auf acht vCPUs (vier Kerne mit jeweils zwei Threads pro Kern) ausgeführt wird.  Wenn nun Hyperthreading deaktiviert wird, geht die CPU-Anzahl auf vier physische Kerne mit einem einzelnen Thread pro Kern zurück. 
 
 ## <a name="next-steps"></a>Nächste Schritte
 

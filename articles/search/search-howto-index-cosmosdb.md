@@ -10,12 +10,12 @@ ms.service: search
 ms.devlang: rest-api
 ms.topic: conceptual
 ms.custom: seodec2018
-ms.openlocfilehash: 07989b06b756e1e360ac3c37927a8267c84d9162
-ms.sourcegitcommit: bb85a238f7dbe1ef2b1acf1b6d368d2abdc89f10
+ms.openlocfilehash: 0610f57e264189961a6803bee5bb93c1ec9fb103
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/10/2019
-ms.locfileid: "65522834"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "66754000"
 ---
 # <a name="how-to-index-cosmos-db-using-an-azure-search-indexer"></a>Indizieren von Cosmos DB mithilfe eines Azure Search-Indexers
 
@@ -46,19 +46,19 @@ Die einfachste Methode zum Indizieren von Azure Cosmos-Elementen ist die Verwend
 
 Sie sollten für Azure Search und Azure Cosmos DB dasselbe Azure-Abonnement verwenden, vorzugsweise in derselben Region.
 
-### <a name="1---prepare-source-data"></a>1. Vorbereiten von Quelldaten
+### <a name="1---prepare-source-data"></a>1\. Vorbereiten von Quelldaten
 
 Sie müssen über ein Cosmos-Konto verfügen, der SQL-API oder der MongoDB-API eine Azure Cosmos-Datenbank zugeordnet haben und über einen Container mit JSON-Dokumenten verfügen. 
 
 Stellen Sie sicher, dass Ihre Cosmos DB-Datenbank Daten enthält. Der [Datenimport-Assistent](search-import-data-portal.md) liest Metadaten und entnimmt Stichproben, um ein Indexschema abzuleiten. Darüber hinaus lädt er auch Daten aus Cosmos DB. Wenn die Daten nicht vorhanden sind, wird der Assistent mit der folgenden Fehlermeldung beendet: „Fehler bei der Ermittlung des Indexschemas der Datenquelle: Could not build a prototype index because datasource 'emptycollection' returned no data“ (Prototyp-Index konnte nicht erstellt werden, da von der Datenquelle „emptycollection“ keine Daten zurückgegeben wurden).
 
-### <a name="2---start-import-data-wizard"></a>2. Starten des Datenimport-Assistenten
+### <a name="2---start-import-data-wizard"></a>2\. Starten des Datenimport-Assistenten
 
 Sie können den Assistenten auf der Seite des Azure Search-Diensts [über die Befehlsleiste](search-import-data-portal.md) starten. Alternativ können Sie im Abschnitt **Einstellungen**, der sich im linken Navigationsbereich Ihres Speicherkontos befindet, auf **Azure Search hinzufügen** klicken.
 
    ![Befehl „Daten importieren“ im Portal](./media/search-import-data-portal/import-data-cmd2.png "Starten des Datenimport-Assistenten")
 
-### <a name="3---set-the-data-source"></a>3. Einrichten der Datenquelle
+### <a name="3---set-the-data-source"></a>3\. Einrichten der Datenquelle
 
 > [!NOTE] 
 > Derzeit können Sie die **MongoDB**-Datenquellen mit dem Azure-Portal oder der .NET SDK erstellen oder bearbeiten. Allerdings **können** Sie den Ausführungsverlauf des MongoDB-Indexers im Portal überwachen.
@@ -77,7 +77,7 @@ Auf der Seite **Datenquelle** muss die Quelle **Cosmos DB** lauten und folgende 
 
    ![Cosmos DB-Datenquellendefinition](media/search-howto-index-cosmosdb/cosmosdb-datasource.png "Cosmos DB-Datenquellendefinition")
 
-### <a name="4---skip-the-add-cognitive-search-page-in-the-wizard"></a>4. Überspringen der Seite „Kognitive Suche hinzufügen“ im Assistenten
+### <a name="4---skip-the-add-cognitive-search-page-in-the-wizard"></a>4\. Überspringen der Seite „Kognitive Suche hinzufügen“ im Assistenten
 
 Das Hinzufügen kognitiver Qualifikationen ist für den Import eines Dokuments nicht erforderlich. Wenn Sie nicht unbedingt [Cognitive Services-APIs und Transformationen](cognitive-search-concept-intro.md) zu Ihrer Indizierungspipeline hinzufügen müssen, können Sie diesen Schritt überspringen.
 
@@ -89,7 +89,7 @@ Von dieser Seite aus können Sie zur Indexanpassung springen.
 
    ![Überspringen des Schritts zu kognitiven Qualifikationen](media/search-get-started-portal/skip-cog-skill-step.png)
 
-### <a name="5---set-index-attributes"></a>5. Festlegen von Indexattributen
+### <a name="5---set-index-attributes"></a>5\. Festlegen von Indexattributen
 
 Auf der **Indexseite** sollte eine Liste von Feldern mit einem Datentyp sowie mehrere Kontrollkästchen zum Festlegen von Indexattributen aufgeführt sein. Der Assistent kann basierend auf Metadaten und durch Sampling der Quelldaten eine Felderliste erstellen. 
 
@@ -258,7 +258,7 @@ Stellen Sie sicher, dass das Schema des Ziel-Indexes mit dem Schema der JSON-Que
 | Bool |Edm.Boolean, Edm.String |
 | Zahlen, die wie Ganzzahlen aussehen |Edm.Int32, Edm.Int64, Edm.String |
 | Zahlen, die wie Gleitkommas aussehen |Edm.Double, Edm.String |
-| Zeichenfolge |Edm.String |
+| string |Edm.String |
 | Arrays primitiver Typen, z.B. ["a", "b", "c"] |Collection(Edm.String) |
 | Zeichenfolgen, die wie Datumsangaben aussehen |Edm.DateTimeOffset, Edm.String |
 | GeoJSON-Objekte, z.B. { "type": "Point", "coordinates": [long, lat] } |Edm.GeographyPoint |
@@ -282,6 +282,8 @@ Nach der Erstellung von Index und Datenquelle können Sie den Indexer erstellen:
 Dieser Indexer wird alle zwei Stunden ausgeführt (das Planungsintervall ist auf „PT2H“ festgelegt). Um einen Indexer alle 30 Minuten auszuführen, legen Sie das Intervall auf „PT30M“ fest. Das kürzeste unterstützte Intervall beträgt fünf Minuten. Der Zeitplan ist optional. Ohne Zeitplan wird ein Indexer nur einmal bei seiner Erstellung ausgeführt. Allerdings können Sie ein Indexer bei Bedarf jederzeit ausführen.   
 
 Weitere Informationen zur API zum Erstellen eines Indexers finden Sie unter [Erstellen eines Indexers](https://docs.microsoft.com/rest/api/searchservice/create-indexer).
+
+Weitere Informationen zum Definieren von Indexerzeitplänen finden Sie unter [Indexerzeitpläne für Azure Search](search-howto-schedule-indexers.md).
 
 ## <a name="use-net"></a>Verwenden von .NET
 

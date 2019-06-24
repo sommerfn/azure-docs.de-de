@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 12/06/2018
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: cb8aab71769fc46cd713920b417b24780ee706ca
-ms.sourcegitcommit: adb6c981eba06f3b258b697251d7f87489a5da33
+ms.openlocfilehash: 7a802354f20998c87ac8c2ef1f2c1dbdf47f6930
+ms.sourcegitcommit: 4cdd4b65ddbd3261967cdcd6bc4adf46b4b49b01
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/04/2019
-ms.locfileid: "66512686"
+ms.lasthandoff: 06/06/2019
+ms.locfileid: "66733644"
 ---
 # <a name="configure-the-resource-owner-password-credentials-flow-in-azure-active-directory-b2c-using-a-custom-policy"></a>Konfigurieren des Flows für Kennwortanmeldeinformationen von Ressourcenbesitzern in Azure Active Directory B2C mithilfe einer benutzerdefinierten Richtlinie
 
@@ -140,7 +140,7 @@ Führen Sie die unter [Erste Schritte mit benutzerdefinierten Richtlinien in Azu
     </TechnicalProfile>
     ```
 
-    Ersetzen Sie den **DefaultValue** von **client_id** und **resource_id** durch die Anwendungs-ID der ProxyIdentityExperienceFramework-Anwendung, die Sie im Tutorial unter den Voraussetzungen erstellt haben.
+    Ersetzen Sie **DefaultValue** von **client_id** durch die Anwendungs-ID der ProxyIdentityExperienceFramework-Anwendung, die Sie im Tutorial unter den Voraussetzungen erstellt haben. Ersetzen Sie **DefaultValue** von **resource_id** durch die Anwendungs-ID der IdentityExperienceFramework-Anwendung, die Sie ebenfalls im Tutorial unter den Voraussetzungen erstellt haben.  
 
 5. Fügen Sie die folgenden **ClaimsProvider**-Elemente mit ihren technischen Profilen dem **ClaimsProviders**-Element hinzu:
 

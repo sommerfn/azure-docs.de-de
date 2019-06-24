@@ -8,14 +8,14 @@ manager: femila
 ms.service: media-services
 ms.subservice: video-indexer
 ms.topic: article
-ms.date: 05/15/2019
+ms.date: 06/05/2019
 ms.author: juliako
-ms.openlocfilehash: 5acd9b68368f56000a0a32d1ade310cf30143950
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: 6b5422e2eb67eb309c086c023df9f733940e5e44
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65799381"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "66735072"
 ---
 # <a name="embed-video-indexer-widgets-into-your-applications"></a>Einbetten von Video Indexer-Widgets in Ihre Anwendungen
 
@@ -44,7 +44,7 @@ Mit einem **Player**-Widget können Sie das Video mit einer adaptiven Bitrate st
 |showCaptions|Boolescher Wert|Dient zum Laden des Players mit bereits geladenen Beschriftungen.<br/>Beispiel: showCaptions=true|
 |type||Aktiviert ein Design für den Audioplayer (Videoteil wird entfernt).<br/>Beispiel: type=audio|
 |autoplay|Boolescher Wert|Gibt an, ob der Player beim Laden mit der Wiedergabe des Videos beginnen soll (Standardeinstellung: TRUE).<br/>Beispiel: autoplay=false|
-|Language|Sprachcode|Dienst zum Steuern der Sprache des Players (Standardeinstellung: en-US)<br/>Beispiel: language=de-DE|
+|language|Sprachcode|Dienst zum Steuern der Sprache des Players (Standardeinstellung: en-US)<br/>Beispiel: language=de-DE|
 
 ## <a name="embedding-public-content"></a>Einbetten von öffentlichen Inhalten
 
@@ -62,6 +62,9 @@ Mit einem **Player**-Widget können Sie das Video mit einer adaptiven Bitrate st
 
     ![Widget](./media/video-indexer-embed-widgets/video-indexer-widget02.png)
 
+> [!NOTE]
+> Wenn beim Freigeben der Video-URLs Probleme auftreten, fügen Sie dem Link den Parameter „location“ hinzu. Der Parameter sollte auf die [Azure-Regionen festgelegt werden, in denen Video Indexer vorhanden ist](regions.md). Beispiel: `https://www.videoindexer.ai/accounts/00000000-0000-0000-0000-000000000000/videos/b2b2c74b8e/?location=trial`.
+
 ## <a name="embedding-private-content"></a>Einbetten von privaten Inhalten
 
 Sie können Codes aus eingebetteten Popups (wie im vorherigen Abschnitt gezeigt) nur für **öffentliche** Videos abrufen. 
@@ -70,7 +73,7 @@ Wenn Sie ein **privates** Video einbetten möchten, müssen Sie ein Zugriffstoke
 
 `https://www.videoindexer.ai/embed/[insights | player]/<accountId>/<videoId>/?accessToken=<accessToken>`
     
-Verwenden Sie die API des [**Widgets „Einblicke erhalten“**](https://api-portal.videoindexer.ai/docs/services/operations/operations/Get-Video-Insights-Widget?&pattern=widget), um den Inhalt des Widgets des Typs „Kognitive Erkenntnisse“ abzurufen. Oder verwenden Sie [**Get Video Access Token**](https://api-portal.videoindexer.ai/docs/services/authorization/operations/Get-Video-Access-Token?) (Videozugriffstoken abrufen), und fügen Sie es wie oben gezeigt der URL als Abfrageparameter hinzu. Geben Sie diese URL als **src**-Wert von **iframe** an.
+Verwenden Sie die API des [**Widgets „Einblicke erhalten“** ](https://api-portal.videoindexer.ai/docs/services/operations/operations/Get-Video-Insights-Widget?&pattern=widget), um den Inhalt des Widgets des Typs „Kognitive Erkenntnisse“ abzurufen. Oder verwenden Sie [**Get Video Access Token**](https://api-portal.videoindexer.ai/docs/services/authorization/operations/Get-Video-Access-Token?) (Videozugriffstoken abrufen), und fügen Sie es wie oben gezeigt der URL als Abfrageparameter hinzu. Geben Sie diese URL als **src**-Wert von **iframe** an.
 
 Wenn Sie für Ihr eingebettetes Widget Funktionen zum Bearbeiten von Erkenntnissen bereitstellen möchten (wie in unserer Webanwendung), müssen Sie ein Zugriffstoken mit Bearbeitungsberechtigungen übergeben. Verwenden Sie [**Get Insights Widget**](https://api-portal.videoindexer.ai/docs/services/operations/operations/Get-Video-Insights-Widget?&pattern=widget) oder [**Get Video Access Token**](https://api-portal.videoindexer.ai/docs/services/authorization/operations/Get-Video-Access-Token?) mit **&allowEdit=true**. 
 
@@ -173,7 +176,7 @@ Bei Verwendung Ihres eigenen Players müssen Sie diesen selbst so anpassen, dass
         </video>    
 
 2. Betten Sie das Widget „Kognitive Erkenntnisse“ ein.
-3. Implementieren Sie die Kommunikation für Ihren Player, indem Sie auf das Ereignis „message“ lauschen. Beispiel: 
+3. Implementieren Sie die Kommunikation für Ihren Player, indem Sie auf das Ereignis „message“ lauschen. Beispiel:
 
         <script>
     
@@ -234,7 +237,7 @@ Beachten Sie, dass diese Option nur in Fällen relevant ist, in denen Sie die Er
 
 Wenn Sie den Video Indexer-Player einbetten, können Sie die Größe des Players wählen, indem Sie die iframe-Größe angeben.
 
-Beispiel: 
+Beispiel:
 
 `<iframe width="640" height="360" src="https://www.videoindexer.ai/embed/player/<accountId>/<videoId>/" frameborder="0" allowfullscreen />`
 

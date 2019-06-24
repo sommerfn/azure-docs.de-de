@@ -7,15 +7,15 @@ manager: shivamg
 keywords: Log Analytics; Azure Backup; Warnungen Diagnoseeinstellungen; Aktionsgruppen
 ms.service: backup
 ms.topic: conceptual
-ms.date: 02/26/2019
+ms.date: 06/04/2019
 ms.author: pullabhk
 ms.assetid: 01169af5-7eb0-4cb0-bbdb-c58ac71bf48b
-ms.openlocfilehash: 94fde7714f3efe0a460983966923071bce1afcc6
-ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
+ms.openlocfilehash: 1e85b633024b5a3e85874707ae9a1f068e7a328d
+ms.sourcegitcommit: f9448a4d87226362a02b14d88290ad6b1aea9d82
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65190506"
+ms.lasthandoff: 06/07/2019
+ms.locfileid: "66808525"
 ---
 # <a name="monitoring-at-scale-using-azure-monitor"></a>Überwachen im gewünschten Umfang mithilfe von Azure Monitor
 
@@ -46,7 +46,7 @@ Sie können einen LA-Arbeitsbereich aus einem anderen Abonnement als Ziel auswä
 
 ### <a name="deploying-solution-to-log-analytics-workspace"></a>Bereitstellen einer Lösung für den Log Analytics-Arbeitsbereich
 
-Sobald sich die Daten innerhalb des LA-Arbeitsbereichs befinden, stellen Sie [eine Github-Vorlage](https://azure.microsoft.com/resources/templates/101-backup-oms-monitoring/) in LA bereit, um die Daten zu visualisieren. Stellen Sie sicher, dass Sie die gleiche Ressourcengruppe, den gleichen Arbeitsbereichsnamen und den gleichen Speicherort angeben, um den Arbeitsbereich ordnungsgemäß zu bestimmen, und installieren Sie dann diese Vorlage.
+Sobald sich die Daten innerhalb des LA-Arbeitsbereichs befinden, stellen Sie [eine GitHub-Vorlage](https://azure.microsoft.com/resources/templates/101-backup-oms-monitoring/) in LA bereit, um die Daten zu visualisieren. Stellen Sie sicher, dass Sie die gleiche Ressourcengruppe, den gleichen Arbeitsbereichsnamen und den gleichen Speicherort angeben, um den Arbeitsbereich ordnungsgemäß zu bestimmen, und installieren Sie dann diese Vorlage.
 
 ### <a name="view-azure-backup-data-using-log-analytics-la"></a>Anzeigen von Azure Backup-Daten mit Log Analytics (LA)
 
@@ -242,13 +242,13 @@ Wenden Sie die in der folgenden Abbildung gezeigten Filter an, um zu überprüfe
 
 ![Aktivitätsprotokolle für Azure-VM-Sicherungen](media/backup-azure-monitoring-laworkspace/activitylogs-azurebackup-vmbackups.png)
 
-Sie können auf das Segment „JSON“ klicken, um weitere Details abzurufen und diese durch Kopieren und Einfügen in einen Text-Editor anzeigen. Es sollten die Tresordetails und das Element angezeigt werden, welches das Aktivitätsprotokoll ausgelöst hat, d.h. das Sicherungselement.
+Wenn Sie auf den Namen des Vorgangs klicken, werden der Vorgang und zugehörige Details angezeigt.
 
-Klicken Sie dann auf „Aktivitätsprotokollwarnung hinzufügen“, um Warnungen für alle solchen Protokolle zu generieren.
+![Neue Warnungsregel](media/backup-azure-monitoring-laworkspace/new-alert-rule.png)
 
-Sie können auf die oben gezeigte Warnung „Aktivitätsprotokoll hinzufügen“ klicken, um den Bildschirm zur Erstellung von Warnungen zu öffnen, der dem Bildschirm zur Erstellung von Warnungen [ ähnlich ist, wie oben beschrieben](#create-alerts-using-log-analytics).
+Klicken Sie auf **Neue Warnungsregel**, um den Bildschirm **Regel erstellen** zu öffnen. Dort können Sie Warnungen anhand der in [diesem Artikel](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-activity-log) beschriebenen Schritte erstellen.
 
-Hier ist die Ressource der RS-Tresor selbst und daher müssen Sie die gleiche Aktion für alle Tresore wiederholen, in denen Sie über Aktivitätsprotokolle informiert werden möchten. Die Bedingung hat keinen Schwellenwert, keinen Zeitraum und keine Häufigkeit, da es sich um eine ereignisbasierte Warnung handelt. Sobald das entsprechende Aktivitätsprotokoll erstellt wurde, wird die Warnung ausgelöst.
+Hier ist die Ressource der Recovery Services-Tresor selbst. Daher müssen Sie die gleiche Aktion für alle Tresore wiederholen, in denen Sie über Aktivitätsprotokolle informiert werden möchten. Die Bedingung hat keinen Schwellenwert, keinen Zeitraum und keine Häufigkeit, da es sich um eine ereignisbasierte Warnung handelt. Sobald das entsprechende Aktivitätsprotokoll erstellt wurde, wird die Warnung ausgelöst.
 
 ## <a name="recommendation"></a>Empfehlung
 
@@ -257,7 +257,7 @@ Hier ist die Ressource der RS-Tresor selbst und daher müssen Sie die gleiche Ak
 Während die Benachrichtigung über Aktivitätsprotokolle verwendet werden kann, empfiehlt der ***Azure Backup-Dienst dringend, LA für die Überwachung im gewünschten Umfang zu verwenden und NICHT Aktivitätsprotokolle. Dafür gibt es folgende Gründe***.
 
 - **Begrenzte Szenarien:** Gilt nur für Azure-VM-Sicherungen und sollte für jeden RS-Tresor wiederholt werden.
-- **Definitionsübereinstimmung:** Die Aktivität für geplante Sicherungen entspricht nicht der neuesten Definition von Aktivitätsprotokollen und richtet sich nach [Diagnoseprotokollen](https://docs.microsoft.com/azure/azure-monitor/platform/diagnostic-logs-overview#what-are-azure-monitor-diagnostic-logs). Dies führt zu unerwarteten Auswirkungen, wenn das Datapumping über den Aktivitätsprotokollkanal wie unten beschrieben geändert wird.
+- **Definitionsübereinstimmung:** Die Aktivität für geplante Sicherungen entspricht nicht der neuesten Definition von Aktivitätsprotokollen und richtet sich nach [Diagnoseprotokollen](https://docs.microsoft.com/azure/azure-monitor/platform/diagnostic-logs-overview#what-you-can-do-with-diagnostic-logs). Dies führt zu unerwarteten Auswirkungen, wenn das Datapumping über den Aktivitätsprotokollkanal wie unten beschrieben geändert wird.
 - **Probleme mit dem Aktivitätsprotokollkanal:** Wir haben jetzt ein neues Modell eingesetzt, um Aktivitätsprotokolle aus Azure Backup in Recovery Services-Tresore zu verschieben. Leider hat dies die Generierung von Aktivitätsprotokollen in Azure-Sovereign Clouds beeinträchtigt. Wenn Benutzer von Azure-Sovereign Clouds Warnungen aus den Aktivitätsprotokollen über Azure Monitor erstellt/konfiguriert haben, würden sie nicht ausgelöst werden. Außerdem würden in allen öffentlichen Azure-Regionen, wenn ein Benutzer Recovery Services-Aktivitätsprotokolle wie [hier](https://docs.microsoft.com/azure/azure-monitor/platform/collect-activity-logs) erwähnt in einem Log Analytics-Arbeitsbereich erfasst, auch diese Protokolle nicht angezeigt.
 
 Daher wird dringend empfohlen, den Log Analytic-Arbeitsbereich für die Überwachung und Warnung aller Ihrer mit Azure Backup geschützten Workloads zu verwenden.

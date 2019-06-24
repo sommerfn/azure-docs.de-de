@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 4/23/2019
+ms.date: 6/6/2019
 ms.author: b-juche
-ms.openlocfilehash: 53b2742cf92f3a3df346ba3557c718b8d7a11a4e
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 657bacc153b5721d5a9f34792eaf4796cb477755
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64719443"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "66808879"
 ---
 # <a name="create-a-volume-for-azure-netapp-files"></a>Erstellen eines Volumes für Azure NetApp Files
 
@@ -90,34 +90,36 @@ Ein Subnetz muss an Azure NetApp Files delegiert werden.
 
 Azure NetApp Files unterstützt SMBv3-Volumes. Bevor Sie ein SMB-Volume hinzufügen, müssen Sie zunächst Active Directory-Verbindungen erstellen. 
 
+### <a name="requirements-for-active-directory-connections"></a>Anforderungen an Active Directory-Verbindungen
+
+ Die Anforderungen für Active Directory-Verbindungen lauten wie folgt: 
+
+* Das von Ihnen verwendete Administratorkonto muss in der Lage sein, Computerkonten im Pfad der Organisationseinheit (OU) zu erstellen, den Sie angeben werden.  
+
+* Auf dem entsprechenden Windows Active Directory-Server (AD) müssen die richtigen Ports geöffnet sein.  
+    Die erforderlichen Ports lauten wie folgt: 
+
+    |     Dienst           |     Port     |     Protocol     |
+    |-----------------------|--------------|------------------|
+    |    AD-Webdienste    |    9389      |    TCP           |
+    |    DNS                |    53        |    TCP           |
+    |    DNS                |    53        |    UDP           |
+    |    ICMPv4             |    –       |    Echo Reply    |
+    |    Kerberos           |    464       |    TCP           |
+    |    Kerberos           |    464       |    UDP           |
+    |    Kerberos           |    88        |    TCP           |
+    |    Kerberos           |    88        |    UDP           |
+    |    LDAP               |    389       |    TCP           |
+    |    LDAP               |    389       |    UDP           |
+    |    LDAP               |    3268      |    TCP           |
+    |    NetBIOS-Name       |    138       |    UDP           |
+    |    SAM/LSA            |    445       |    TCP           |
+    |    SAM/LSA            |    445       |    UDP           |
+    |    Sicheres LDAP (LDAPS)        |    636       |    TCP           |
+    |    Sicheres LDAP (LDAPS)        |    3269      |    TCP           |
+    |    w32time            |    123       |    UDP           |
+
 ### <a name="create-an-active-directory-connection"></a>Erstellen einer Active Directory-Verbindung
-
-1. Stellen Sie sicher, dass die folgenden Anforderungen erfüllt sind: 
-
-    * Das von Ihnen verwendete Administratorkonto muss in der Lage sein, Computerkonten im Pfad der Organisationseinheit (OU) zu erstellen, den Sie angeben werden.
-    * Auf dem entsprechenden Windows Active Directory-Server (AD) müssen die richtigen Ports geöffnet sein.  
-        Die erforderlichen Ports lauten wie folgt: 
-
-        |     Dienst           |     Port     |     Protocol     |
-        |-----------------------|--------------|------------------|
-        |    AD-Webdienste    |    9389      |    TCP           |
-        |    DNS                |    53        |    TCP           |
-        |    DNS                |    53        |    UDP           |
-        |    ICMPv4             |    –       |    Echo Reply    |
-        |    Kerberos           |    464       |    TCP           |
-        |    Kerberos           |    464       |    UDP           |
-        |    Kerberos           |    88        |    TCP           |
-        |    Kerberos           |    88        |    UDP           |
-        |    LDAP               |    389       |    TCP           |
-        |    LDAP               |    389       |    UDP           |
-        |    LDAP               |    3268      |    TCP           |
-        |    NetBIOS-Name       |    138       |    UDP           |
-        |    SAM/LSA            |    445       |    TCP           |
-        |    SAM/LSA            |    445       |    UDP           |
-        |    Sicheres LDAP (LDAPS)        |    636       |    TCP           |
-        |    Sicheres LDAP (LDAPS)        |    3269      |    TCP           |
-        |    w32time            |    123       |    UDP           |
-
 
 1. Klicken Sie über Ihr NetApp-Konto auf **Active Directory-Verbindungen**, und klicken Sie dann auf **Verbinden**.  
 
@@ -125,10 +127,10 @@ Azure NetApp Files unterstützt SMBv3-Volumes. Bevor Sie ein SMB-Volume hinzufü
 
 2. Geben Sie im Fenster „Active Directory beitreten“ die folgenden Informationen an:
 
-    * **Primäres DNS**   
-        Dies ist die IP-Adresse des Domänencontrollers für die bevorzugten Active Directory Domain Services, die mit Azure NetApp Files verwendet werden sollen. 
-    * **Sekundäres DNS**  
-        Dies ist die IP-Adresse des Domänencontrollers für die sekundären Active Directory Domain Services, die mit Azure NetApp Files verwendet werden sollen. 
+    * **Primäres DNS**  
+        Das DNS, das für den Active Directory-Domänenbeitritt und SMB-Authentifizierungsvorgänge erforderlich ist 
+    * **Sekundäres DNS**   
+        Der sekundäre DNS-Server für das Sicherstellen redundanter Namensdienste 
     * **Domäne**  
         Dies ist der Domänenname Ihrer Active Directory Domain Services, denen Sie beitreten möchten.
     * **Präfix des SMB-Servers (Computerkonto)**  

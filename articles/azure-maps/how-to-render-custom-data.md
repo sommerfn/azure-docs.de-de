@@ -3,18 +3,18 @@ title: Rendern benutzerdefinierter Daten auf einer Rasterkarte in Azure Maps | M
 description: Rendern von benutzerdefinierten Daten auf einer Rasterkarte in Azure Maps.
 author: walsehgal
 ms.author: v-musehg
-ms.date: 02/12/2019
+ms.date: 04/03/2019
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: 46f08aaa33563f620e7a011620730249e903f7b7
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: a9fed8464bd19c4b8a32e37c8c97698f0a2d9503
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58086597"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "66734298"
 ---
 # <a name="render-custom-data-on-a-raster-map"></a>Rendern von benutzerdefinierten Daten auf einer Rasterkarte
 
@@ -42,7 +42,7 @@ Führen Sie die folgenden Schritte aus, um Ortsmarken mit Bezeichnungen und eine
 
 2. Klicken Sie erneut auf **New** (Neu), um die Anforderung zu erstellen. Wählen Sie im Fenster **Create New** (Neu erstellen) die Option **Request** (Anforderung) aus. Geben Sie einen **Request name** (Anforderungsnamen) für die Ortsmarken ein, wählen Sie die im vorherigen Schritt erstellte Sammlung als Speicherort für die Anforderung aus, und klicken Sie dann auf **Save** (Speichern).
     
-    ![Erstellen einer Anforderung in Postman](./media/tutorial-geofence/postman-new.png)
+    ![Erstellen einer Anforderung in Postman](./media/how-to-render-custom-data/postman-new.png)
 
 3. Wählen Sie auf der Registerkarte „Builder“ (Generator) die HTTP-Methode „GET“ aus, und geben Sie die folgende URL ein, um eine GET-Anforderung zu erstellen.
 
@@ -145,7 +145,7 @@ Sie können den Pfad und die Standortinformationen einer Ortsmarke auch mithilfe
     https://atlas.microsoft.com/map/static/png?subscription-key={subscription-key}&api-version=1.0&layer=basic&style=main&zoom=12&center=-73.96682739257812%2C40.78119135317995&pins=default|la-35+50|ls12|lc003C62|co9B2F15||'Times Square'-73.98516297340393 40.758781646381024|'Central Park'-73.96682739257812 40.78119135317995&path=lc0000FF|fc0000FF|lw3|la0.80|fa0.30||udid-{udId}
     ```
 
-6. Das Ergebnis ist das folgende Bild:
+    Hier sehen Sie das Antwortbild:
 
     ![Abrufen von Daten aus dem Azure Maps-Datenspeicher](./media/how-to-render-custom-data/uploaded-path.png)
 
@@ -164,9 +164,9 @@ Sie können das Aussehen eines Polygons ändern, indem Sie Stilmodifikatoren mit
     &subscription-key={subscription--key}
     ```
 
-Das Ergebnis ist das folgende Bild:
+    Hier sehen Sie das Antwortbild:
 
-![Rendern eines durchsichtigen Polygons](./media/how-to-render-custom-data/opaque-polygon.png)
+    ![Rendern eines durchsichtigen Polygons](./media/how-to-render-custom-data/opaque-polygon.png)
 
 
 ## <a name="render-a-circle-and-pushpins-with-custom-labels"></a>Rendern von Kreisen und Ortsmarken mit benutzerdefinierten Bezeichnungen
@@ -186,9 +186,9 @@ Führen Sie die folgenden Schritte aus, um einen Kreis und Ortsmarken mit benutz
     https://atlas.microsoft.com/map/static/png?api-version=1.0&style=main&layer=basic&zoom=14&height=700&Width=700&center=-122.13230609893799,47.64599069048016&path=lcFF0000|lw2|la0.60|ra1000||-122.13230609893799 47.64599069048016&pins=default|la15+50|al0.66|lc003C62|co002D62||'Microsoft Corporate Headquarters'-122.14131832122801  47.64690503939462|'Microsoft Visitor Center'-122.136828 47.642224|'Microsoft Conference Center'-122.12552547454833 47.642940335653996|'Microsoft The Commons'-122.13687658309935  47.64452336193245&subscription-key={subscription-key}
     ```
 
-Das Ergebnis ist das folgende Bild:
+    Hier sehen Sie das Antwortbild:
 
-![Rendern eines Kreises mit benutzerdefinierten Ortsmarken](./media/how-to-render-custom-data/circle-custom-pins.png)
+    ![Rendern eines Kreises mit benutzerdefinierten Ortsmarken](./media/how-to-render-custom-data/circle-custom-pins.png)
 
 ## <a name="next-steps"></a>Nächste Schritte
 

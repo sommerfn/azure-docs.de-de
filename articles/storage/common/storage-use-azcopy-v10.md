@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 05/14/2019
 ms.author: normesta
 ms.subservice: common
-ms.openlocfilehash: 7d14de200f5301781130e01e75f1b7813389fa76
-ms.sourcegitcommit: 6932af4f4222786476fdf62e1e0bf09295d723a1
+ms.openlocfilehash: bfa3e5a943ee59b1ed335f45e113a60f62572675
+ms.sourcegitcommit: 4cdd4b65ddbd3261967cdcd6bc4adf46b4b49b01
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/05/2019
-ms.locfileid: "66688193"
+ms.lasthandoff: 06/06/2019
+ms.locfileid: "66735032"
 ---
 # <a name="get-started-with-azcopy"></a>Erste Schritte mit AzCopy
 
@@ -28,7 +28,7 @@ AzCopy ist ein Befehlszeilenhilfsprogramm, das Sie verwenden können, um Blobs o
 
 ## <a name="download-azcopy"></a>Herunterladen von AzCopy
 
-Laden Sie zuerst die ausführbare AzCopy V10-Datei in ein beliebiges Verzeichnis auf Ihrem Computer herunter. Der Einfachheit halber erwägen Sie das AzCopy-Verzeichnis zum Systempfad zur einfacheren Verwendung.
+Laden Sie zunächst die ausführbare Datei für AzCopy V10 in ein beliebiges Verzeichnis auf Ihrem Computer herunter. 
 
 - [Windows](https://aka.ms/downloadazcopy-v10-windows) (ZIP)
 - [Linux](https://aka.ms/downloadazcopy-v10-linux) (TAR)
@@ -39,13 +39,15 @@ Laden Sie zuerst die ausführbare AzCopy V10-Datei in ein beliebiges Verzeichnis
 
 ## <a name="run-azcopy"></a>Ausführen von AzCopy
 
-Navigieren Sie in einer Eingabeaufforderung zu dem Verzeichnis, in das Sie die Datei heruntergeladen haben.
+Erwägen Sie aus Gründen der Bedienfreundlichkeit, den Speicherort des Verzeichnisses mit der ausführbaren AzCopy-Datei der Einfachheit halber dem Systempfad hinzuzufügen. Auf diese Weise können Sie in jedem beliebigen Verzeichnis auf Ihrem System `azcopy` eingeben.
 
-Um eine Liste mit Befehlen anzuzeigen, geben `azcopy -h` und drücken Sie dann die EINGABETASTE.
+Falls Sie das AzCopy-Verzeichnis nicht zum Pfad hinzufügen, müssen Sie in das Verzeichnis der ausführbaren AzCopy-Datei wechseln und in Windows PowerShell-Eingabeaufforderungen `azcopy` oder `.\azcopy` eingeben.
 
-Weitere Informationen zu einem bestimmten Befehl fügen Sie einfach den Namen des Befehls (z. B.: `azcopy list -h`).
+Um eine Liste der AzCopy-Befehle anzuzeigen, geben Sie `azcopy -h` ein, und drücken Sie dann die EINGABETASTE.
 
-![Inline-Hilfe](media/storage-use-azcopy-v10/azcopy-inline-help.png)
+Wenn Sie weitere Informationen zu einem bestimmten Befehl erhalten möchten, fügen Sie einfach den Namen des Befehls ein (etwa `azcopy list -h`).
+
+![Inlinehilfe](media/storage-use-azcopy-v10/azcopy-inline-help.png)
 
 Bevor Sie etwas Sinnvolles mit AzCopy machen können, müssen Sie entscheiden, wie Sie dem Speicherdienst die Autorisierungsanmeldeinformationen bereitstellen werden.
 
@@ -81,7 +83,7 @@ Diese Rollen können Ihrer Identität in jedem dieser Bereiche zugewiesen werden
 
 Informationen zum Überprüfen und Zuweisen von Rollen finden Sie unter [Gewähren von Zugriff auf Azure Blob- und -Warteschlangendaten mit RBAC im Azure-Portal](https://docs.microsoft.com/azure/storage/common/storage-auth-aad-rbac-portal?toc=%2fazure%2fstorage%2fblobs%2ftoc.json).
 
-Sie benötigen eine dieser Rollen, die für Ihre Identität zugewiesen wird, wenn die Zugriffssteuerungsliste (ACL) der Zielcontainer oder des Verzeichnisses Ihrer Identität hinzugefügt wird. In der ACL benötigt Ihre Identität, Schreibberechtigung für das Zielverzeichnis und execute-Berechtigung für den Container und jeder übergeordnete Verzeichnis.
+Ihrer Identität muss keine dieser Rollen zugewiesen sein, wenn Ihre Identität der Zugriffssteuerungsliste (ACL) des Zielcontainers oder des Verzeichnisses hinzugefügt wurde. In der ACL benötigt Ihre Identität Schreibberechtigungen für das Zielverzeichnis und Ausführungsberechtigungen für den Container und jedes übergeordnete Verzeichnis.
 
 Weitere Informationen finden Sie unter [Zugriffssteuerung in Azure Data Lake Storage Gen2](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-access-control).
 
@@ -102,7 +104,7 @@ Diese Rollen können Ihrer Identität in jedem dieser Bereiche zugewiesen werden
 
 Informationen zum Überprüfen und Zuweisen von Rollen finden Sie unter [Gewähren von Zugriff auf Azure Blob- und -Warteschlangendaten mit RBAC im Azure-Portal](https://docs.microsoft.com/azure/storage/common/storage-auth-aad-rbac-portal?toc=%2fazure%2fstorage%2fblobs%2ftoc.json).
 
-Sie benötigen eine dieser Rollen, die für Ihre Identität zugewiesen wird, wenn die Zugriffssteuerungsliste (ACL) der Zielcontainer oder des Verzeichnisses Ihrer Identität hinzugefügt wird. In der ACL benötigt Ihre Identität, read-Berechtigung für das Zielverzeichnis und execute-Berechtigung für den Container und jedes übergeordneten Verzeichnis.
+Ihrer Identität muss keine dieser Rollen zugewiesen sein, wenn Ihre Identität der Zugriffssteuerungsliste (ACL) des Zielcontainers oder des Verzeichnisses hinzugefügt wurde. In der ACL benötigt Ihre Identität Leseberechtigungen für das Zielverzeichnis und Ausführungsberechtigungen für den Container und jedes übergeordnete Verzeichnis.
 
 Weitere Informationen finden Sie unter [Zugriffssteuerung in Azure Data Lake Storage Gen2](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-access-control).
 

@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/29/2019
 ms.author: yegu
-ms.openlocfilehash: cdf0ce26ab3a8056fb40bc54ba6336b7cfd69ec0
-ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
+ms.openlocfilehash: 6b27b27fedf622908fa5c06bd2562d9049a4366b
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/07/2019
-ms.locfileid: "65230120"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67052054"
 ---
 # <a name="azure-cache-for-redis-faq"></a>Häufig gestellte Fragen zu Azure Cache for Redis
 In diesem Artikel erhalten Sie Antworten auf häufig gestellte Fragen sowie Informationen zu Mustern und Best Practices für Azure Cache for Redis.
@@ -136,19 +136,19 @@ Aus dieser Tabelle können folgende Schlussfolgerungen gezogen werden:
 | Tarif | Größe | CPU-Kerne | Verfügbare Bandbreite | 1 KB Wertgröße | 1 KB Wertgröße |
 | --- | --- | --- | --- | --- | --- |
 | **Standard-Cachegröße** | | |**Megabits pro Sekunde (MBit/s)/Megabyte pro Sekunde (MB/s)** |**Anforderungen pro Sekunde (RPS), kein SLL** |**Anforderungen pro Sekunde (RPS), SLL** |
-| C0 | 250 MB | Shared | 100 / 12,5  |  15.000 |   7.500 |
+| C0 | 250 MB | Shared | 100 / 12,5  |  15.000 |   7\.500 |
 | C1 |   1 GB | 1      | 500 / 62,5  |  38.000 |  20.720 |
 | C2 | 2,5 GB | 2      | 500 / 62,5  |  41.000 |  37.000 |
-| C3 |   6 GB | 4      | 1.000 / 125  | 100.000 |  90.000 |
+| C3 |   6 GB | 4      | 1\.000 / 125  | 100.000 |  90.000 |
 | C4 |  13 GB | 2      | 500 / 62,5  |  60.000 |  55.000 |
-| C5 |  26 GB | 4      | 1.000/125 | 102.000 |  93.000 |
-| C6 |  53 GB | 8      | 2.000/250 | 126.000 | 120.000 |
+| C5 |  26 GB | 4      | 1\.000/125 | 102.000 |  93.000 |
+| C6 |  53 GB | 8      | 2\.000/250 | 126.000 | 120.000 |
 | **Premium-Cachegröße** | |**CPU-Kerne pro Shard** | **Megabits pro Sekunde (MBit/s)/Megabyte pro Sekunde (MB/s)** |**Anforderungen pro Sekunde (RPS), kein SLL, pro Shard** |**Anforderungen pro Sekunde (RPS), SLL, pro Shard** |
-| P1 |   6 GB |  2 | 1.500/187,5 | 180.000 | 172.000 |
-| P2 |  13 GB |  4 | 3.000/375   | 350.000 | 341.000 |
-| P3 |  26 GB |  4 | 3.000/375   | 350.000 | 341.000 |
-| P4 |  53 GB |  8 | 6.000/750   | 400.000 | 373.000 |
-| P5 | 120 GB | 20 | 6.000/750   | 400.000 | 373.000 |
+| P1 |   6 GB |  2 | 1\.500/187,5 | 180.000 | 172.000 |
+| P2 |  13 GB |  4 | 3\.000/375   | 350.000 | 341.000 |
+| P3 |  26 GB |  4 | 3\.000/375   | 350.000 | 341.000 |
+| P4 |  53 GB |  8 | 6\.000/750   | 400.000 | 373.000 |
+| P5 | 120 GB | 20 | 6\.000/750   | 400.000 | 373.000 |
 
 Anweisungen zum Einrichten von stunnel oder zum Herunterladen von Redis-Tools wie `redis-benchmark.exe` finden Sie im Abschnitt [Wie führe ich Redis-Befehle aus?](#cache-commands).
 
@@ -203,7 +203,7 @@ In der Regel reichen die Standardwerte des Clients aus. Sie können die Optionen
   * Verwenden Sie eine einzelne ConnectionMultiplexer-Instanz für die Anwendung. Sie können "LazyConnection" verwenden, um eine einzelne Instanz zu erstellen, die über eine Connection-Eigenschaft zurückgegeben wird, wie gezeigt in [Verbindungsherstellung mit dem Cache unter Verwendung der ConnectionMultiplexer-Klasse](cache-dotnet-how-to-use-azure-redis-cache.md#connect-to-the-cache).
   * Legen Sie die `ConnectionMultiplexer.ClientName` -Eigenschaft zu Diagnosezwecken auf einen eindeutigen App-Instanznamen fest.
   * Verwenden Sie für benutzerdefinierte Workloads mehrere `ConnectionMultiplexer` -Instanzen.
-      * Sie können diesem Modell folgen, wenn die Last in Ihrer Anwendung variiert. Beispiel: 
+      * Sie können diesem Modell folgen, wenn die Last in Ihrer Anwendung variiert. Beispiel:
       * Sie können einen Multiplexer zur Verarbeitung großer Schlüssel verwenden.
       * Sie können einen Multiplexer zur Verarbeitung kleiner Schlüssel verwenden.
       * Sie können verschiedene Werte für Verbindungstimeouts und eine retry-Logik für jede verwendete ConnectionMultiplexer-Instanz verwenden.
@@ -251,7 +251,7 @@ Sie können alle aufgelisteten [Redis-Befehle](https://redis.io/commands#) mit A
 * `redis-cli -h <Azure Cache for Redis name>.redis.cache.windows.net -a <key>`
 
 > [!NOTE]
-> Die Redis-Befehlszeilentools funktionieren nicht mit dem SSL-Port, aber Sie können ein Hilfsprogramm wie `stunnel` verwenden, um eine sichere Verbindung zwischen den Tools und dem SSL-Port herzustellen. Anweisungen hierzu finden Sie im Blogbeitrag [Announcing ASP.NET Session State Provider for Redis Preview Release](https://blogs.msdn.com/b/webdev/archive/2014/05/12/announcing-asp-net-session-state-provider-for-redis-preview-release.aspx) (Ankündigung des ASP.NET-Sitzungsstatusanbieters für Redis-Vorschauversion).
+> Die Redis-Befehlszeilentools funktionieren nicht mit dem SSL-Port, aber Sie können ein Hilfsprogramm wie `stunnel` verwenden, um eine sichere Verbindung zwischen den Tools und dem SSL-Port herzustellen. Anweisungen hierzu finden Sie unter [Verwenden des Redis-Befehlszeilentools mit Azure Cache for Redis](https://docs.microsoft.com/azure/azure-cache-for-redis/cache-how-to-redis-cli-tool).
 >
 >
 
@@ -388,7 +388,7 @@ Vor dem Hintergrund dieser Informationen empfehlen wir dringend, als minimalen W
 
 So konfigurieren Sie diese Einstellung:
 
-* Wir empfehlen, diese Einstellung programmgesteuert zu ändern, indem Sie die [ThreadPool.SetMinThreads (...) ](/dotnet/api/system.threading.threadpool.setminthreads#System_Threading_ThreadPool_SetMinThreads_System_Int32_System_Int32_)-Methode in `global.asax.cs` verwenden. Beispiel: 
+* Wir empfehlen, diese Einstellung programmgesteuert zu ändern, indem Sie die [ThreadPool.SetMinThreads (...) ](/dotnet/api/system.threading.threadpool.setminthreads#System_Threading_ThreadPool_SetMinThreads_System_Int32_System_Int32_)-Methode in `global.asax.cs` verwenden. Beispiel:
 
 ```cs
 private readonly int minThreads = 200;
@@ -403,7 +403,7 @@ void Application_Start(object sender, EventArgs e)
 ```
 
   > [!NOTE]
-  > Der von dieser Methode festgelegte Wert ist eine globale Einstellung, die die gesamte AppDomain betrifft. Wenn Sie beispielsweise über einen Computer mit 4 Kernen verfügen und *minWorkerThreads* und *minIOThreads* auf 50 pro CPU während der Laufzeit festlegen möchten, verwenden Sie **ThreadPool.SetMinThreads (200, 200)**.
+  > Der von dieser Methode festgelegte Wert ist eine globale Einstellung, die die gesamte AppDomain betrifft. Wenn Sie beispielsweise über einen Computer mit 4 Kernen verfügen und *minWorkerThreads* und *minIOThreads* auf 50 pro CPU während der Laufzeit festlegen möchten, verwenden Sie **ThreadPool.SetMinThreads (200, 200)** .
 
 * Sie können außerdem die Einstellung für die Mindestanzahl von Threads mithilfe der Konfigurationseinstellungen [*minIoThreads* bzw. *minWorkerThreads*](https://msdn.microsoft.com/library/vstudio/7w2sway1(v=vs.100).aspx) unter dem Konfigurationselement `<processModel>` in `Machine.config` angeben, das sich normalerweise in `%SystemRoot%\Microsoft.NET\Framework\[versionNumber]\CONFIG\` befindet. **Es wird generell nicht empfohlen, die Mindestanzahl von Threads auf diese Weise festzulegen, weil es sich um eine systemweite Einstellung handelt.**
 
