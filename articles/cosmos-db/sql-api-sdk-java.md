@@ -9,10 +9,10 @@ ms.topic: reference
 ms.date: 03/13/2019
 ms.author: sngun
 ms.openlocfilehash: 03f7f050e158ba30d2f89e79ffcc9e8723eb5268
-ms.sourcegitcommit: 8c49df11910a8ed8259f377217a9ffcd892ae0ae
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/29/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66298689"
 ---
 # <a name="azure-cosmos-db-java-sdk-for-sql-api-release-notes-and-resources"></a>Azure Cosmos DB Java SDK für die SQL-API: Versionshinweise und Ressourcen
@@ -250,21 +250,21 @@ Anforderungen an Cosmos DB mithilfe eines deaktivierten SDK werden vom Dienst ab
 | [1.9.3](#1.9.3) |30. Oktober 2016 |30. Mai 2020 |
 | [1.9.2](#1.9.2) |28. Oktober 2016 |30. Mai 2020 |
 | [1.9.1](#1.9.1) |26. Oktober 2016 |30. Mai 2020 |
-| [1.9.0](#1.9.0) |3. Oktober 2016 |30. Mai 2020 |
+| [1.9.0](#1.9.0) |3\. Oktober 2016 |30. Mai 2020 |
 | [1.8.1](#1.8.1) |30. Juni 2016 |30. Mai 2020 |
 | [1.8.0](#1.8.0) |14. Juni 2016 |30. Mai 2020 |
 | [1.7.1](#1.7.1) |30. April 2016 |30. Mai 2020 |
 | [1.7.0](#1.7.0) |27. April 2016 |30. Mai 2020 |
 | [1.6.0](#1.6.0) |29. März 2016 |30. Mai 2020 |
 | [1.5.1](#1.5.1) |31. Dezember 2015 |30. Mai 2020 |
-| [1.5.0](#1.5.0) |4. Dezember 2015 |30. Mai 2020 |
-| [1.4.0](#1.4.0) |5. Oktober 2015 |30. Mai 2020 |
-| [1.3.0](#1.3.0) |5. Oktober 2015 |30. Mai 2020 |
-| [1.2.0](#1.2.0) |5. August 2015 |30. Mai 2020 |
-| [1.1.0](#1.1.0) |9. Juli 2015 |30. Mai 2020 |
+| [1.5.0](#1.5.0) |4\. Dezember 2015 |30. Mai 2020 |
+| [1.4.0](#1.4.0) |5\. Oktober 2015 |30. Mai 2020 |
+| [1.3.0](#1.3.0) |5\. Oktober 2015 |30. Mai 2020 |
+| [1.2.0](#1.2.0) |5\. August 2015 |30. Mai 2020 |
+| [1.1.0](#1.1.0) |9\. Juli 2015 |30. Mai 2020 |
 | 1.0.1 |12. Mai 2015 |30. Mai 2020 |
-| [1.0.0](#1.0.0) |7. April 2015 |30. Mai 2020 |
-| 0.9.5-prelease |9. März 2015 |29. Februar 2016 |
+| [1.0.0](#1.0.0) |7\. April 2015 |30. Mai 2020 |
+| 0.9.5-prelease |9\. März 2015 |29. Februar 2016 |
 | 0.9.4-prelease |17. Februar 2015 |29. Februar 2016 |
 | 0.9.3-prelease |13. Januar 2015 |29. Februar 2016 |
 | 0.9.2-prelease |19. Dezember 2014 |29. Februar 2016 |

@@ -29,10 +29,10 @@ ms.author:
 - btalb
 - prachank
 ms.openlocfilehash: ad1a5b69e4ec7b44c0e61a5ddd2c06633464d31a
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/27/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66235002"
 ---
 # <a name="tcpip-performance-tuning-for-azure-vms"></a>Optimierung der TCP/IP-Leistung für Azure-VMs
@@ -141,8 +141,8 @@ Die Netzwerklatenz wird durch die Lichtgeschwindigkeit über ein Glasfasernetz b
 | | | | |
 |-|-|-|-|
 |**Route**|**Entfernung**|**Zeit (unidirektional)**|**RTT**|
-|New York nach San Francisco|4.148 km|21 ms|42 ms|
-|New York nach London|5.585 km|28 ms|56 ms|
+|New York nach San Francisco|4\.148 km|21 ms|42 ms|
+|New York nach London|5\.585 km|28 ms|56 ms|
 |New York nach Sydney|15.993 km|80 ms|160 ms|
 
 Diese Tabelle zeigt die Luftlinie zwischen zwei Orten. In Netzwerken ist der Abstand in der Regel länger als die Luftlinie. Dies ist eine einfache Formel zur Berechnung der minimalen RTT, die von der Lichtgeschwindigkeit bestimmt wird:

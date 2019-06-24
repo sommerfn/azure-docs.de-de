@@ -10,10 +10,10 @@ ms.topic: conceptual
 ms.date: 04/23/2019
 ms.author: mbaldwin
 ms.openlocfilehash: d8ce3c995e8e0f20ed6d694f481cc5fc9fde4fa7
-ms.sourcegitcommit: 13cba995d4538e099f7e670ddbe1d8b3a64a36fb
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/22/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66000149"
 ---
 # <a name="security-attributes-for-azure-service-bus-relay"></a>Sicherheitsattribute für Azure Service Bus Relay
@@ -51,14 +51,14 @@ In diesem Artikel werden die in Azure Service Bus Relay integrierten Sicherheits
 | Sicherheitsattribut | Ja/Nein | Notizen|
 |---|---|--|
 | Authentication| Ja | Über SAS. |
-| Autorisierung|  Ja | Über SAS. |
+| Authorization|  Ja | Über SAS. |
 
 
 ## <a name="audit-trail"></a>Überwachungspfad
 
 | Sicherheitsattribut | Ja/Nein | Notizen|
 |---|---|--|
-| Protokollierung und Überwachung auf Steuerungs-/Verwaltungsebene| Ja | Über [Azure Resource Manager](../azure-resource-manager/index.yml). |
+| Protokollierung und Überwachung auf Steuerungs- und Verwaltungsebene| Ja | Über [Azure Resource Manager](../azure-resource-manager/index.yml). |
 | Protokollierung und Überwachung auf Datenebene| Ja | Verbindungserfolg/-fehler und Fehler werden protokolliert.  |
 
 ## <a name="configuration-management"></a>Konfigurationsverwaltung

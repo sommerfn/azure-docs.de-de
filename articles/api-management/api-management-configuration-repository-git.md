@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 03/12/2019
 ms.author: apimpm
 ms.openlocfilehash: c371333dcc7db0b60ffa5f94d6e2d55ae500a4f6
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/27/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66241180"
 ---
 # <a name="how-to-save-and-configure-your-api-management-service-configuration-using-git"></a>Speichern und Konfigurieren der API Management-Dienstkonfiguration mit Git
@@ -165,7 +165,7 @@ Jeder Ordner kann eine oder mehrere Dateien enthalten, und in einigen Fällen ei
 | --- | --- |
 | json |Konfigurationsinformationen zur jeweiligen Entität |
 | html |Beschreibungen der Entität, werden häufig im Entwicklerportal angezeigt |
-| xml |Richtlinienanweisungen |
+| Xml |Richtlinienanweisungen |
 | css |Stylesheets für die Anpassung des Entwicklerportals |
 
 Diese Dateien können im lokalen System erstellt, gelöscht, bearbeitet und verwaltet werden, und die Änderungen werden wieder in Ihrer API Management-Dienstinstanz bereitgestellt.

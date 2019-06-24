@@ -7,10 +7,10 @@ ms.topic: conceptual
 ms.date: 05/21/2019
 ms.author: rimman
 ms.openlocfilehash: ddbec882675dba4724406ad1ea8079df377c34fc
-ms.sourcegitcommit: e9a46b4d22113655181a3e219d16397367e8492d
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/21/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65967298"
 ---
 # <a name="optimize-provisioned-throughput-cost-in-azure-cosmos-db"></a>Optimieren der Kosten für bereitgestellten Durchsatz in Azure Cosmos DB
@@ -56,7 +56,7 @@ Wie aus der folgenden Tabelle hervorgeht, können Sie je nach API-Auswahl Durchs
 |API|Konfigurieren Sie für **gemeinsam genutzten**  Durchsatz |Konfigurieren Sie für **dedizierten** Durchsatz |
 |----|----|----|
 |SQL-API|Datenbank|Container|
-|Azure Cosmos DB-API für MongoDB|Datenbank|Sammlung|
+|Azure Cosmos DB-API für MongoDB|Datenbank|Collection|
 |Cassandra-API|Keyspace|Table|
 |Gremlin-API|Datenbankkonto|Graph|
 |Tabelle-API|Datenbankkonto|Table|

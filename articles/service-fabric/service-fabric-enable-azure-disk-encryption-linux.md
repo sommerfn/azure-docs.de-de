@@ -14,10 +14,10 @@ ms.workload: NA
 ms.date: 03/22/2019
 ms.author: aljo
 ms.openlocfilehash: 47b07188d1757708fb494c6a66e93379657e806a
-ms.sourcegitcommit: 25a60179840b30706429c397991157f27de9e886
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/28/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66258760"
 ---
 # <a name="enable-disk-encryption-for-azure-service-fabric-cluster-nodes-in-linux"></a>Aktivieren der Datenträgerverschlüsselung für Azure Service Fabric-Clusterknoten unter Linux 
@@ -27,7 +27,7 @@ ms.locfileid: "66258760"
 >
 >
 
-In diesem Tutorial erfahren Sie, wie Sie die Datenträgerverschlüsselung auf Azure Service Fabric-Clusterknoten unter Linux aktivieren. Sie müssen diese Schritte für alle Knotentypen und VM-Skalierungsgruppen befolgen. Für die Verschlüsselung der Knoten verwenden wir die Azure Disk Encryption-Funktion für VM-Skalierungsgruppen.
+In diesem Tutorial erfahren Sie, wie Sie die Datenträgerverschlüsselung auf Azure Service Fabric-Clusterknoten unter Linux aktivieren. Sie müssen diese Schritte für alle Knotentypen und VM-Skalierungsgruppen befolgen. Für die Verschlüsselung der Knoten verwenden wir die Azure Disk Encryption-Funktion für VM-Skalierungsgruppen.
 
 In dem Leitfaden werden die folgenden Themen behandelt:
 
@@ -43,7 +43,7 @@ In dem Leitfaden werden die folgenden Themen behandelt:
 
  **Selbstregistrierung**
 
-Für die Vorschau auf die Datenträgerverschlüsselung für die VM-Skalierungsgruppe ist eine Selbstregistrierung erforderlich. Führen Sie die folgenden Schritte aus:
+Die Vorschauversion der Datenträgerverschlüsselung für die VM-Skalierungsgruppe erfordert eine Selbstregistrierung. Führen Sie die folgenden Schritte aus:
 
 1. Führen Sie den folgenden Befehl aus: 
     ```powershell
@@ -60,9 +60,9 @@ Für die Vorschau auf die Datenträgerverschlüsselung für die VM-Skalierungsgr
     ```powershell
     Set-AzKeyVaultAccessPolicy -VaultName $keyVaultName -EnabledForDiskEncryption
     ```
-2. Installieren Sie die aktuellste Version der [Azure CLI](/cli/azure/install-azure-cli), die über die neuen Verschlüsselungsbefehle verfügt.
+2. Installieren Sie die neueste Version der [Azure-Befehlszeilenschnittstelle](/cli/azure/install-azure-cli), da diese über die neuen Verschlüsselungsbefehle verfügt.
 
-3. Installieren Sie die aktuelle Version des [Azure SDK aus dem Azure PowerShell-Release](https://github.com/Azure/azure-powershell/releases). Es folgen die Azure Disk Encryption-Cmdlets (ADE) der VM-Skalierungsgruppe zum Aktivieren ([set](/powershell/module/az.compute/set-azvmssdiskencryptionextension)) der Verschlüsselung, Abrufen ([get](/powershell/module/az.compute/get-azvmssvmdiskencryption)) des Verschlüsselungsstatus und Entfernen ([disable](/powershell/module/az.compute/disable-azvmssdiskencryption)) der Verschlüsselung von der Skalierungsgruppeninstanz.
+3. Installieren Sie die neueste Version des [Azure SDK aus dem Azure PowerShell-Release](https://github.com/Azure/azure-powershell/releases). Es folgen die Azure Disk Encryption-Cmdlets (ADE) der VM-Skalierungsgruppe zum Aktivieren ([set](/powershell/module/az.compute/set-azvmssdiskencryptionextension)) der Verschlüsselung, Abrufen ([get](/powershell/module/az.compute/get-azvmssvmdiskencryption)) des Verschlüsselungsstatus und Entfernen ([disable](/powershell/module/az.compute/disable-azvmssdiskencryption)) der Verschlüsselung aus der Skalierungsgruppeninstanz.
 
 
 | Get-Help | Version |  `Source`  |
@@ -76,7 +76,7 @@ Für die Vorschau auf die Datenträgerverschlüsselung für die VM-Skalierungsgr
 
 
 ## <a name="supported-scenarios-for-disk-encryption"></a>Unterstützte Szenarien für die Datenträgerverschlüsselung
-* Die Verschlüsselung von VM-Skalierungsgruppen wird nur für Skalierungsgruppen mit verwalteten Datenträgern unterstützt. Sie wird nicht für native (oder nicht verwaltete) Datenträger-Skalierungsgruppen unterstützt.
+* Die Verschlüsselung für VM-Skalierungsgruppen wird nur für Skalierungsgruppen mit verwalteten Datenträgern unterstützt. Sie wird nicht für native (oder nicht verwaltete) Datenträger-Skalierungsgruppen unterstützt.
 * Die Verschlüsselung und Deaktivierung der Verschlüsselung wird bei Betriebssystem- und Datenvolumes für VM-Skalierungsgruppen unter Linux unterstützt. 
 * Reimaging- und Upgradevorgänge von virtuellen Computern (VMs) für VM-Skalierungsgruppen werden in der aktuellen Vorschauversion nicht unterstützt.
 

@@ -17,10 +17,10 @@ ms.reviewer: asteen
 ms.custom: H1Hack27Feb2017
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 9b6f069489738e9dceeee350a36aa2b45715a314
-ms.sourcegitcommit: be9fcaace62709cea55beb49a5bebf4f9701f7c6
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/17/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65825027"
 ---
 # <a name="how-to-deploy-the-access-panel-extension-for-internet-explorer-using-group-policy"></a>How to Deploy the Access Panel Extension for Internet Explorer using Group Policy (Bereitstellen der Zugriffsbereichserweiterung für Internet Explorer mit der Gruppenrichtlinie; in englischer Sprache)
@@ -104,7 +104,7 @@ Zusätzlich zur Ausführung des Installationsprogramms muss jede Erweiterung fü
    * `User Configuration/Policies/Administrative Templates/Windows Components/Internet Explorer/Security Features/Add-on Management`
 2. Klicken Sie mit der rechten Maustaste auf **Add-On-Liste**, und wählen Sie **Bearbeiten** aus.
     ![Bearbeiten Sie die Add-On-Liste.](./media/deploy-access-panel-browser-extension/edit-add-on-list.png)
-3. Wählen Sie im Fenster **Add-On-Liste** die Option **Aktiviert** aus. Klicken Sie im Abschnitt **Optionen** auf **Anzeigen...**.
+3. Wählen Sie im Fenster **Add-On-Liste** die Option **Aktiviert** aus. Klicken Sie im Abschnitt **Optionen** auf **Anzeigen...** .
    
     ![Klicken Sie auf „Aktivieren“ und anschließend auf „Anzeigen...“.](./media/deploy-access-panel-browser-extension/edit-add-on-list-window.png)
 4. Führen Sie im Fenster **Inhalt anzeigen** die folgenden Schritte aus:

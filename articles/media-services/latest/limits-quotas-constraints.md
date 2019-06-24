@@ -12,10 +12,10 @@ ms.topic: article
 ms.date: 05/16/2019
 ms.author: juliako
 ms.openlocfilehash: 1aa15a42893d867ae18c267e163e8df94af50723
-ms.sourcegitcommit: be9fcaace62709cea55beb49a5bebf4f9701f7c6
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/17/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65824452"
 ---
 # <a name="quotas-and-limitations-in-azure-media-services-v3"></a>Kontingente und Einschränkungen für Azure Media Services (v3)
@@ -24,7 +24,7 @@ In diesem Artikel werden die Kontingente und Einschränkungen für Azure Media S
 
 | Resource | Standardlimit | 
 | --- | --- | 
-| Medienobjekte pro Azure Media Services-Konto | 1.000.000|
+| Medienobjekte pro Azure Media Services-Konto | 1\.000.000|
 | Dynamische Manifestfilter|100|
 | „JobInputs“ pro Auftrag | 50  (feststehend)|
 | „JobOutputs“ pro Auftrag | 20 (feststehend) |

@@ -11,10 +11,10 @@ ms.date: 03/27/2019
 ms.author: mabasile
 ms.reviewer: igorstan
 ms.openlocfilehash: 5593d6e392915448845adcac95da869e72a11310
-ms.sourcegitcommit: 4c2b9bc9cc704652cc77f33a870c4ec2d0579451
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/17/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65873803"
 ---
 # <a name="sql-data-warehouse-data-integration-partners"></a>Partner für die Datenintegration bei SQL Data Warehouse
@@ -24,7 +24,7 @@ Für die Erstellung Ihrer eigenen Data Warehouse-Lösung können Sie auf eine Vi
 | Partner | BESCHREIBUNG | Website/Produktlink |
 | ------- | ----------- | -------------------- |
 | ![Alooma][7] |**Alooma**<br> Alooma ist eine ETL-Lösung (Extrahieren, Transformieren und Laden), mit der Datenteams Daten aus verschiedenen Datensilos in Echtzeit in SQL Data Warehouse integrieren, erweitern und streamen können. |[Produktseite][alooma_website] |
-| ![Alteryx][1] |**Alteryx**<br>  Alteryx Designer bietet einen wiederholbaren Workflow für Self-Service-Datenanalysen, mit dem Sie für detaillierte Einblicke nicht mehr Wochen, sondern nur noch wenige Stunden benötigen. Alteryx Designer erweitert die Möglichkeiten von Datenanalysten: Datenvorbereitung, Datenzusammenführung und vorhersagende, statistische und räumliche Analysen werden in der gleichen intuitiven Benutzeroberfläche zusammengeführt. |[Produktseite][alteryx_designer_website]<br>[Azure Marketplace][alteryx_marketplace]<br>|
+| ![Alteryx][1] |**Alteryx**<br> Alteryx Designer bietet einen wiederholbaren Workflow für Self-Service-Datenanalysen, mit dem Sie für detaillierte Einblicke nicht mehr Wochen, sondern nur noch wenige Stunden benötigen. Alteryx Designer erweitert die Möglichkeiten von Datenanalysten: Datenvorbereitung, Datenzusammenführung und vorhersagende, statistische und räumliche Analysen werden in der gleichen intuitiven Benutzeroberfläche zusammengeführt. |[Produktseite][alteryx_designer_website]<br>[Azure Marketplace][alteryx_marketplace]<br>|
 | ![Attunity][2] |**Attunity (CloudBeam)**<br>Attunity CloudBeam bietet eine automatisierte Lösung zum Laden von Daten in SQL Data Warehouse. Sie vereinfacht das Batchladen und die inkrementelle Replikation von Daten aus zahlreichen Quellen – SQL Server, Oracle, DB2, Sybase, MySQL und viele mehr. |[Produktseite][attunity_cloudbeam_website]<br>[Azure Marketplace][attunity_marketplace]<br> |
 | ![Denodo][3] |**Denodo**<br>Denodo bietet Zugriff in Echtzeit auf Daten in den verschiedenen Datenquellen einer Organisation. Die Lösung verknüpft mittels Datenvirtualisierung Daten in vielen verschiedenen Quellen ohne Replikation. Sie bietet sowohl im Batchmodus als auch in Echtzeit umfassenden Zugriff auf strukturierte und unstrukturierte Daten im Unternehmen, Big Data und cloudbasierte Quellen.|[Produktseite][denodo_website]<br>[Azure Marketplace][denodo_marketplace]<br> |
 | ![Fivetran][8] |**Fivetran**<br>Fivetran hilft Ihnen, Daten aus unterschiedlichen Quellen zu zentralisieren. Die Lösung umfasst ein Datenpipelineprodukt mit einer wachsenden Liste integrierter Connectors für alle gängigen Datenquellen, das keinerlei Wartung oder Konfiguration erfordert. Die Einrichtung nach der Authentifizierung bei den Datenquellen und beim Ziel-Data Warehouse nimmt nur fünf Minuten in Anspruch.|[Produktseite][fivetran_website]<br> |

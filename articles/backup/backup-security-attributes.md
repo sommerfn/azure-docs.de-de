@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 04/16/2019
 ms.author: mbaldwin
 ms.openlocfilehash: 86b8ab96a94a6ffc44c304d8a0a689301560a989
-ms.sourcegitcommit: 13cba995d4538e099f7e670ddbe1d8b3a64a36fb
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/22/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66002800"
 ---
 # <a name="security-attributes-for-azure-backup"></a>Sicherheitsattribute für Azure Backup
@@ -36,7 +36,7 @@ In diesem Artikel werden die in Azure Backup integrierten Sicherheitsattribute b
 | Sicherheitsattribut | Ja/Nein | Notizen |
 |---|---|--|
 | Unterstützung des Dienstendpunkts| Nein |  |
-| Unterstützung der VNET-Einschleusung| Nein |  |
+| Unterstützung der VNet-Einschleusung| Nein |  |
 | Unterstützung von Netzwerkisolation und Firewall| Ja | Die Tunnelerzwingung wird für VM-Sicherungen unterstützt. Die Tunnelerzwingung wird für Workloads in virtuellen Computern nicht unterstützt. |
 | Unterstützung der Tunnelerzwingung| Nein |  |
 
@@ -58,8 +58,8 @@ In diesem Artikel werden die in Azure Backup integrierten Sicherheitsattribute b
 
 | Sicherheitsattribut | Ja/Nein | Notizen|
 |---|---|--|
-| Steuerungs-/Verwaltungsebene: Protokollierung und Überwachung| Ja | Alle vom Kunden über das Azure-Portal ausgelösten Aktionen werden in Aktivitätsprotokollen protokolliert. |
-| Datenebene: Protokollierung und Überwachung| Nein | Die Azure Backup-Datenebene kann nicht direkt aufgerufen werden.  |
+| Protokollierung und Überwachung auf Steuerungs- und Verwaltungsebene| Ja | Alle vom Kunden über das Azure-Portal ausgelösten Aktionen werden in Aktivitätsprotokollen protokolliert. |
+| Protokollierung und Überwachung auf Datenebene| Nein | Die Azure Backup-Datenebene kann nicht direkt aufgerufen werden.  |
 
 ## <a name="configuration-management"></a>Konfigurationsverwaltung
 

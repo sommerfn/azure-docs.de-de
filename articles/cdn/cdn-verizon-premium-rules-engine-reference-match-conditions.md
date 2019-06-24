@@ -8,10 +8,10 @@ ms.topic: article
 ms.date: 05/31/2019
 ms.author: magattus
 ms.openlocfilehash: 5197fdfe78b1b091de713754967f58157cc4a1b3
-ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/04/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66482028"
 ---
 # <a name="azure-cdn-from-verizon-premium-rules-engine-match-conditions"></a>Übereinstimmungsbedingungen der Regel-Engine für Azure CDN Premium von Verizon
@@ -804,7 +804,7 @@ Wichtige Informationen:
 - Vor einem URL-Vergleich wird eine Edge-CNAME-URL in eine CDN-URL umgeschrieben.
 
     Beispielsweise verweisen die beiden folgenden URLs auf dasselbe Objekt und verfügen daher über den gleichen URL-Pfad:
-     - CDN-URL: http://wpc.0001.&lt;Domäne&gt;/800001/CustomerOrigin/path/asset.htm
+     - CDN-URL: http://wpc.0001.&lt ;Domäne&gt; /800001/CustomerOrigin/path/asset.htm
      - Edge-CNAME-URL: http:\//&lt;Endpunkt&gt;.azureedge.net/path/asset.htm
     
     Weitere Informationen:

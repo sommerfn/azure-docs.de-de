@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 03/28/2019
 ms.author: cephalin
 ms.openlocfilehash: 9422d543ad83f29d60fd7e1de51a79c3416e5b14
-ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/20/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65956161"
 ---
 # <a name="configure-a-linux-nodejs-app-for-azure-app-service"></a>Konfigurieren einer Linux-Node.js-App für Azure App Service
@@ -71,7 +71,7 @@ az webapp config set --resource-group <resource-group-name> --name <app-name> --
 
 ### <a name="run-npm-start"></a>NPM-Start ausführen
 
-Um Ihre App mit `npm start` zu starten, stellen Sie einfach sicher, dass sich ein `start`-Skript in der Datei *package.json* befindet. Beispiel: 
+Um Ihre App mit `npm start` zu starten, stellen Sie einfach sicher, dass sich ein `start`-Skript in der Datei *package.json* befindet. Beispiel:
 
 ```json
 {
@@ -119,7 +119,7 @@ az webapp config set --resource-group <resource-group-name> --name <app-name> --
 
 Sie können Ihre Node.js-App remote in [Visual Studio Code](https://code.visualstudio.com/) debuggen, wenn Sie sie so konfigurieren, dass sie [mit PM2 ausgeführt](#run-with-pm2) wird, außer Sie führen sie mit einer *.config.js, *.yml oder *.yaml* aus.
 
-In den meisten Fällen ist keine zusätzliche Konfiguration für Ihre App erforderlich. Wenn Ihre App mit einer *process.json*-Datei (Standard oder benutzerdefiniert) ausgeführt wird, muss sie über eine `script`-Eigenschaft im JSON-Stammverzeichnis verfügen. Beispiel: 
+In den meisten Fällen ist keine zusätzliche Konfiguration für Ihre App erforderlich. Wenn Ihre App mit einer *process.json*-Datei (Standard oder benutzerdefiniert) ausgeführt wird, muss sie über eine `script`-Eigenschaft im JSON-Stammverzeichnis verfügen. Beispiel:
 
 ```json
 {
@@ -147,7 +147,7 @@ process.env.NODE_ENV
 
 Standardmäßig führt Kudu `npm install --production` aus, wenn es erkennt, dass eine Node.js-App bereitgestellt wird. Wenn Ihre App eines der beliebten Automationstools wie Grunt, Bower oder Gulp benötigt, müssen Sie ein [benutzerdefiniertes Bereitstellungsskript](https://github.com/projectkudu/kudu/wiki/Custom-Deployment-Script) bereitstellen, um es auszuführen.
 
-Damit Ihr Repository diese Tools ausführen kann, müssen Sie sie zu den Abhängigkeiten in *package.json* hinzufügen. Beispiel: 
+Damit Ihr Repository diese Tools ausführen kann, müssen Sie sie zu den Abhängigkeiten in *package.json* hinzufügen. Beispiel:
 
 ```json
 "dependencies": {
@@ -226,7 +226,7 @@ fi
 
 In App Service erfolgt die [SSL-Beendigung](https://wikipedia.org/wiki/TLS_termination_proxy) in den Modulen für den Netzwerklastenausgleich, sodass alle HTTPS-Anforderungen Ihre App als unverschlüsselte HTTP-Anforderungen erreichen. Wenn Ihre App-Logik überprüfen muss, ob Benutzeranforderungen verschlüsselt sind, können Sie dazu den Header `X-Forwarded-Proto` untersuchen.
 
-Gängige Webframeworks ermöglichen den Zugriff auf die Information `X-Forwarded-*` in Ihrem App-Standardmuster. In [Express](https://expressjs.com/) können Sie [trust proxies](https://expressjs.com/guide/behind-proxies.html) (Proxys vertrauen) verwenden. Beispiel: 
+Gängige Webframeworks ermöglichen den Zugriff auf die Information `X-Forwarded-*` in Ihrem App-Standardmuster. In [Express](https://expressjs.com/) können Sie [trust proxies](https://expressjs.com/guide/behind-proxies.html) (Proxys vertrauen) verwenden. Beispiel:
 
 ```javascript
 app.set('trust proxy', 1)
@@ -249,7 +249,7 @@ if (req.secure) {
 Wenn sich eine funktionierende Node.js-App in App Service anders verhält oder Fehler aufweist, versuchen Sie Folgendes:
 
 - [Greifen Sie auf den Protokolldatenstrom zu](#access-diagnostic-logs).
-- Testen Sie die App lokal im Produktionsmodus. App Service führt Ihre Node.js-Apps im Produktionsmodus aus, daher müssen Sie sicherstellen, dass Ihr Projekt lokal wie erwartet im Produktionsmodus funktioniert. Beispiel: 
+- Testen Sie die App lokal im Produktionsmodus. App Service führt Ihre Node.js-Apps im Produktionsmodus aus, daher müssen Sie sicherstellen, dass Ihr Projekt lokal wie erwartet im Produktionsmodus funktioniert. Beispiel:
     - Abhängig von Ihrer *package.json* können verschiedene Pakete für den Produktionsmodus installiert sein (`dependencies` oder `devDependencies`).
     - Bestimmte Webframeworks können statische Dateien im Produktionsmodus unterschiedlich bereitstellen.
     - Bestimmte Webframeworks können benutzerdefinierte Startskripts verwenden, wenn sie im Produktionsmodus ausgeführt werden.

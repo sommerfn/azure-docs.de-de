@@ -10,10 +10,10 @@ ms.topic: conceptual
 ms.date: 05/22/2019
 ms.author: jingwang
 ms.openlocfilehash: 9f6edc45316eaeceb75da643ed64b39382712852
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66165943"
 ---
 # <a name="supported-file-formats-and-compression-codecs-in-azure-data-factory"></a>Unterstützte Dateiformate und Komprimierungscodecs in Azure Data Factory
@@ -460,8 +460,8 @@ Beispiel: Legen Sie für die Variable `_JAVA_OPTIONS` den Wert `-Xms256m -Xmx16g
 | Single | Float | – | – |
 | Double | Double | – | – |
 | Decimal | Binary | Decimal | Decimal |
-| Zeichenfolge | Binary | Utf8 | Utf8 |
-| Datetime | Int96 | – | – |
+| string | Binary | Utf8 | Utf8 |
+| DateTime | Int96 | – | – |
 | TimeSpan | Int96 | – | – |
 | DateTimeOffset | Int96 | – | – |
 | ByteArray | Binary | – | – |
@@ -506,16 +506,16 @@ Für Kopiervorgänge in der selbstgehosteten Integration Runtime mit Serialisier
 | Int32 | Int |
 | UInt32 | Long |
 | Int64 | Long |
-| UInt64 | Zeichenfolge |
+| UInt64 | string |
 | Single | Float |
 | Double | Double |
 | Decimal | Decimal |
-| Zeichenfolge | Zeichenfolge |
-| Datetime | Zeitstempel |
-| DateTimeOffset | Zeitstempel |
-| TimeSpan | Zeitstempel |
+| string | string |
+| DateTime | Timestamp |
+| DateTimeOffset | Timestamp |
+| TimeSpan | Timestamp |
 | ByteArray | Binary |
-| Guid | Zeichenfolge |
+| Guid | string |
 | Char | Char(1) |
 
 ## <a name="avro-format"></a>AVRO-Format

@@ -13,10 +13,10 @@ ms.reviewer: sstein
 manager: craigg
 ms.date: 11/07/2018
 ms.openlocfilehash: b1b281c7beac6b6cb48834e636edff818f89bf12
-ms.sourcegitcommit: 009334a842d08b1c83ee183b5830092e067f4374
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/29/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66304140"
 ---
 # <a name="deploy-and-explore-a-standalone-single-tenant-application-that-uses-azure-sql-database"></a>Bereitstellen und Untersuchen einer eigenständigen SaaS-Anwendung für einzelne Mandanten, die Azure SQL-Datenbank verwendet
@@ -76,16 +76,16 @@ In der App werden Veranstaltungsorte vorgestellt.  Die Veranstaltungsorte sind d
 
 1. Öffnen Sie die Ereignisseite für jeden der drei Mandanten in eigenen Browserregisterkarten:
 
-   - http://events.contosoconcerthall.&lt;Benutzer&gt;.trafficmanager.net
-   - http://events.dogwooddojo.&lt;Benutzer&gt;.trafficmanager.net
-   - http://events.fabrikamjazzclub.&lt;Benutzer&gt;.trafficmanager.net
+   - http://events.contosoconcerthall.&lt ;Benutzer&gt;.trafficmanager.net
+   - http://events.dogwooddojo.&lt ;Benutzer&gt;.trafficmanager.net
+   - http://events.fabrikamjazzclub.&lt ;Benutzer&gt;.trafficmanager.net
 
      (Ersetzen Sie in jeder URL &lt;Benutzer&gt; durch den Benutzerwert Ihrer Bereitstellung.)
 
-   ![Ereignisse](./media/saas-standaloneapp-get-started-deploy/fabrikam.png)
+   ![Events](./media/saas-standaloneapp-get-started-deploy/fabrikam.png)
 
 Zum Steuern der Verteilung eingehender Anforderungen nutzt die App [*Azure Traffic Manager*](../traffic-manager/traffic-manager-overview.md). Jede mandantenspezifische App-Instanz enthält den Namen des Mandanten als Teil des Domänennamens in der URL. Alle Mandanten-URLs enthalten Ihren spezifischen Wert für **Benutzer**. Die URLs haben das folgende Format:
-- http://events.&lt;Veranstaltungsort&gt;.&lt;Benutzer&gt;.trafficmanager.net
+- http://events.&lt ;Veranstaltungsort&gt;.&lt; Benutzer&gt;.trafficmanager.net
 
 Der **Speicherort** der Datenbank jedes Mandanten ist in den App-Einstellungen der zugehörigen bereitgestellten App enthalten.
 

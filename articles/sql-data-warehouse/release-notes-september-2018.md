@@ -11,17 +11,17 @@ ms.date: 10/08/2018
 ms.author: anjangsh
 ms.reviewer: jrasnick
 ms.openlocfilehash: 5041458fdc3c6a49c59f2c4c476db71098531419
-ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/20/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65912156"
 ---
 # <a name="whats-new-in-azure-sql-data-warehouse-september-2018"></a>Neuerungen in Azure SQL Data Warehouse September 2018
 Azure SQL Data Warehouse wird fortlaufend verbessert. In diesem Artikel informieren wir Sie über neue Features und Änderungen, die im September 2018 eingeführt wurden.
 
 ## <a name="new-lower-entry-point-for-sql-data-warehouse-gen2"></a>Neuer niedrigerer Einstiegspunkt für SQL Data Warehouse Gen2
-Im April 2018 [kündigte Microsoft](https://azure.microsoft.com/blog/turbocharge-cloud-analytics-with-azure-sql-data-warehouse/) Azure SQL Data Warehouse Gen2 mit 5-facher Leistung, 5-facher Computeskalierung, 4-facher Parallelität und unbegrenztem Speicher an. Laut dem [Vergleichstest für Data Warehouse in der Cloud](https://gigaom.com/report/data-warehouse-in-the-cloud-benchmark/) von Gigaom **übertrifft SQL Data Warehouse Gen2 Amazon Redshift um 42 %**.
+Im April 2018 [kündigte Microsoft](https://azure.microsoft.com/blog/turbocharge-cloud-analytics-with-azure-sql-data-warehouse/) Azure SQL Data Warehouse Gen2 mit 5-facher Leistung, 5-facher Computeskalierung, 4-facher Parallelität und unbegrenztem Speicher an. Laut dem [Vergleichstest für Data Warehouse in der Cloud](https://gigaom.com/report/data-warehouse-in-the-cloud-benchmark/) von Gigaom **übertrifft SQL Data Warehouse Gen2 Amazon Redshift um 42 %** .
 
 Gen2 ist nun auf der niedrigeren Einstiegsebene von DWU500c allgemein verfügbar und ermöglicht Ihnen das Ausführen eines kleineren Data Warehouse oder von Entwicklungs-/Testumgebungen mit all den neuesten Verbesserungen des Diensts. Beim neuen Einstiegspunkt werden alle Gen2-Features beibehalten, wie z.B. [adaptive Zwischenspeicherung](https://azure.microsoft.com/blog/adaptive-caching-powers-azure-sql-data-warehouse-performance-gains/), [blitzschnelle Datenumsetzung](https://azure.microsoft.com/blog/lightning-fast-query-performance-with-azure-sql-data-warehouse/) und Unterstützung für [Data Warehouse in Echtzeit](https://azure.microsoft.com/blog/enabling-real-time-data-warehousing-with-azure-sql-data-warehouse/).
 

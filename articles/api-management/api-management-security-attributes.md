@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 04/16/2019
 ms.author: mbaldwin
 ms.openlocfilehash: 3b5826d472b80179c5eb76e0e3a6b1c7ee282487
-ms.sourcegitcommit: 13cba995d4538e099f7e670ddbe1d8b3a64a36fb
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/22/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66001089"
 ---
 # <a name="security-attributes-for-api-management"></a>Sicherheitsattribute für API Management
@@ -26,7 +26,7 @@ In diesem Artikel werden die in API Management integrierten Sicherheitsattribute
 | Sicherheitsattribut | Ja/Nein | Notizen |
 |---|---|--|
 | Verschlüsselung ruhender Daten:<ul><li>Serverseitige Verschlüsselung</li><li>Serverseitige Verschlüsselung mit vom Kunden verwalteten Schlüsseln</li><li>Weitere Verschlüsselungsfunktionen (z. B. clientseitig, immer verschlüsselt usw.)</ul>| Ja (nur serverseitige Verschlüsselung) | Vertrauliche Daten, z. B. Zertifikate, Schlüssel und als geheim gekennzeichnete Werte, werden mit vom Dienst verwalteten Schlüsseln für die jeweilige Dienstinstanz verschlüsselt. |
-| Verschlüsselung während der Übertragung:<ul><li>ExpressRoute-Verschlüsselung</li><li>Verschlüsselung im VNET</li><li>VNet-VNet-Verschlüsselung</ul>| Ja | [ExpressRoute](../expressroute/index.yml)- und VNET-Verschlüsselungen erfolgen über [Azure-Netzwerke](../virtual-network/index.yml). |
+| Verschlüsselung während der Übertragung:<ul><li>ExpressRoute-Verschlüsselung</li><li>In VNet-Verschlüsselung</li><li>VNet-VNet-Verschlüsselung</ul>| Ja | [ExpressRoute](../expressroute/index.yml)- und VNET-Verschlüsselung erfolgen über [Azure-Netzwerke](../virtual-network/index.yml). |
 | Verarbeitung von Verschlüsselungsschlüsseln (CMK, BYOK usw.)| Nein | Alle Verschlüsselungsschlüssel gelten pro Dienstinstanz und werden vom Dienst verwaltet. |
 | Verschlüsselung auf Spaltenebene (Azure Data Services)| – | |
 | Verschlüsselte API-Aufrufe| Ja | Aufrufe auf Verwaltungsebene erfolgen über [Azure Resource Manager](../azure-resource-manager/index.yml) und TLS. Ein gültiges JSON Web Token (JWT) ist erforderlich.  Aufrufe auf Datenebene können mit TLS und einem der unterstützten Authentifizierungsmechanismen (z. B. Clientzertifikat oder JWT) geschützt werden.
@@ -38,7 +38,7 @@ In diesem Artikel werden die in API Management integrierten Sicherheitsattribute
 |---|---|--|
 | Unterstützung des Dienstendpunkts| Nein | |
 | Unterstützung der VNET-Einschleusung| Ja | |
-| Unterstützung von Netzwerkisolation und Firewall| Ja | Verwendung von Netzwerksicherheitsgruppen (NSGs) bzw. Azure Application Gateway (oder andere Software-Appliance). |
+| Unterstützung von Netzwerkisolation und Firewall| Ja | Mithilfe von Netzwerksicherheitsgruppen (NSGs) bzw. Azure Application Gateway (oder anderen Softwareappliances) |
 | Unterstützung der Tunnelerzwingung| Ja | Azure-Netzwerke unterstützen die Tunnelerzwingung. |
 
 ## <a name="detection"></a>Erkennung
@@ -59,8 +59,8 @@ In diesem Artikel werden die in API Management integrierten Sicherheitsattribute
 
 | Sicherheitsattribut | Ja/Nein | Notizen|
 |---|---|--|
-| Protokollierung und Überwachung auf Steuerungs-/Verwaltungsebene| Ja | [Azure Monitor-Aktivitätsprotokolle](../azure-monitor/platform/activity-logs-overview.md) |
-| Datenebene: Protokollierung und Überwachung| Ja | [Azure Monitor-Diagnoseprotokolle](../azure-monitor/platform/diagnostic-logs-overview.md) und (optional) [Azure Application Insights](../azure-monitor/app/app-insights-overview.md).  |
+| Protokollierung und Überwachung auf Steuerungs- und Verwaltungsebene| Ja | [Azure Monitor-Aktivitätsprotokolle](../azure-monitor/platform/activity-logs-overview.md) |
+| Protokollierung und Überwachung auf Datenebene| Ja | [Azure Monitor-Diagnoseprotokolle](../azure-monitor/platform/diagnostic-logs-overview.md) und (optional) [Azure Application Insights](../azure-monitor/app/app-insights-overview.md)  |
 
 ## <a name="configuration-management"></a>Konfigurationsverwaltung
 

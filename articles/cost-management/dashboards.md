@@ -11,10 +11,10 @@ ms.service: cost-management
 manager: vitavor
 ms.custom: seodec18
 ms.openlocfilehash: b83368b913bf1303b49e3a56e3a15248af222cbe
-ms.sourcegitcommit: 13cba995d4538e099f7e670ddbe1d8b3a64a36fb
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/22/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66002051"
 ---
 # <a name="view-key-cost-metrics-with-dashboards"></a>Anzeigen der wichtigsten Kostenmetriken mit Dashboards
@@ -42,7 +42,7 @@ Um schnell mit einem benutzerdefinierten Dashboard zu beginnen, können Sie ein 
 
 So erstellen Sie ein benutzerdefiniertes Dashboard
 
-1. Klicken Sie auf der Startseite auf **Neu hinzufügen +**. Die Seite „Mein Dashboard“ wird angezeigt.  
+1. Klicken Sie auf der Startseite auf **Neu hinzufügen +** . Die Seite „Mein Dashboard“ wird angezeigt.  
     ![Die Seite „Mein Dashboard“, auf der Sie neue Berichte hinzufügen](./media/dashboards/my-dashboard.png)
 2. Klicken Sie auf **Neuen Bericht hinzufügen**. Das Feld „Bericht hinzufügen“ wird angezeigt.
 3. Wählen Sie den Bericht, den Sie dem Dashboardgadget hinzufügen möchten. Das Gadget wird dem Dashboard hinzugefügt.

@@ -16,10 +16,10 @@ ms.topic: article
 ms.date: 01/03/2019
 ms.author: cephalin
 ms.openlocfilehash: 1e09eec89c683d36df49110227488a6413ed371c
-ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/20/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65955908"
 ---
 # <a name="set-up-staging-environments-in-azure-app-service"></a>Einrichten von Stagingumgebungen in Azure App Service
@@ -195,7 +195,7 @@ Das Feature „Automatisch tauschen“ rationalisiert DevOps-Szenarien, bei dene
 
 Gehen Sie zum Konfigurieren des Features „Automatisch tauschen“ wie folgt vor:
 
-1. Navigieren Sie zur Ressourcenseite Ihrer App. Wählen Sie **Bereitstellungsslots (Vorschau)** > *\<gewünschter Quellslot>* > **Anwendungseinstellungen** aus.
+1. Navigieren Sie zur Ressourcenseite Ihrer App. Wählen Sie **Bereitstellungsslots (Vorschau)**  >  *\<gewünschter Quellslot>*  > **Anwendungseinstellungen** aus.
    
 2. Wählen Sie unter **Automatisch tauschen** die Option **Ein** und anschließend unter **Slot für automatischen Tausch** den gewünschten Zielslot aus, und klicken Sie dann auf der Befehlsleiste auf **Speichern**. 
    
@@ -272,7 +272,7 @@ Standardmäßig erhalten neue Slots eine Routingregel von `0%`, die in grau darg
 
 ## <a name="delete-slot"></a>Löschen eines Slots
 
-Navigieren Sie zur Ressourcenseite Ihrer App. Wählen Sie **Bereitstellungsslots (Vorschau)** > *\<zu löschender Slot>* > **Übersicht** aus. Klicken Sie auf der Befehlsleiste auf **Löschen**.  
+Navigieren Sie zur Ressourcenseite Ihrer App. Wählen Sie **Bereitstellungsslots (Vorschau)**  >  *\<zu löschender Slot>*  > **Übersicht** aus. Klicken Sie auf der Befehlsleiste auf **Löschen**.  
 
 ![Löschen eines Bereitstellungsslots](./media/web-sites-staged-publishing/DeleteStagingSiteButton.png)
 

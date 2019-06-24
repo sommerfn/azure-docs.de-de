@@ -16,10 +16,10 @@ ms.date: 03/27/2019
 ms.author: arvinh
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 8f7e2fabc86374f7fe055303d056ae8e00f33389
-ms.sourcegitcommit: e9a46b4d22113655181a3e219d16397367e8492d
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/21/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65964371"
 ---
 # <a name="tutorial-configure-pingboard-for-automatic-user-provisioning"></a>Tutorial: Konfigurieren von Pingboard für die automatische Benutzerbereitstellung
@@ -74,7 +74,7 @@ Dieser Abschnitt führt Sie durch das Verbinden Ihres Azure AD mit der Pingboard
 
     b. Melden Sie sich mit Ihrem Administratorkonto bei [Pingboard](https://pingboard.com/) an.
 
-    c. Wählen Sie **Add-Ons** > **Integrations (Integrationen)** > **Azure Active Directory** aus.
+    c. Wählen Sie **Add-Ons** > **Integrations (Integrationen)**  > **Azure Active Directory** aus.
 
     d. Navigieren Sie zur Registerkarte **Configure** (Konfigurieren), und wählen Sie **Enable user provisioning from Azure** (Benutzerbereitstellung über Azure ermöglichen) aus.
 

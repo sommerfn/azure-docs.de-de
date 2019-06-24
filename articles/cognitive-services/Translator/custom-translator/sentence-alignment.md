@@ -10,10 +10,10 @@ ms.date: 02/21/2019
 ms.author: v-pawal
 ms.topic: conceptual
 ms.openlocfilehash: 99538fd18067377efcc9e744e9ec611e0f685273
-ms.sourcegitcommit: 3d4121badd265e99d1177a7c78edfa55ed7a9626
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/30/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66389595"
 ---
 # <a name="sentence-pairing-and-alignment-in-parallel-documents"></a>Satzpaarbildung und -zuordnung in parallelen Dokumenten
@@ -36,9 +36,9 @@ In der folgenden Tabelle ist die für ein erfolgreiches Training erforderliche M
 
 | Dataset   | Empfohlene Mindestanzahl von extrahierten Sätzen | Empfohlene Mindestanzahl von zugeordneten Sätzen | Höchstanzahl von zugeordneten Sätzen |
 |------------|--------------------------------------------|------------------------------------------|--------------------------------|
-| Training   | 10.000                                     | 2.000                                    | Keine Obergrenze                 |
-| Optimierung     | 2.000                                      | 500                                      | 2.500                          |
-| Testen    | 2.000                                      | 500                                      | 2.500                          |
+| Training   | 10.000                                     | 2\.000                                    | Keine Obergrenze                 |
+| Optimierung     | 2\.000                                      | 500                                      | 2\.500                          |
+| Testen    | 2\.000                                      | 500                                      | 2\.500                          |
 | Wörterbuch | 0                                          | 0                                        | Keine Obergrenze                 |
 
 ## <a name="next-steps"></a>Nächste Schritte

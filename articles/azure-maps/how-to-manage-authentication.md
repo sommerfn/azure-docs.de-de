@@ -9,10 +9,10 @@ ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.openlocfilehash: 617adbcda70799aa07248945bbc27f9d95aa77a3
-ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/20/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65952571"
 ---
 # <a name="manage-authentication-in-azure-maps"></a>Verwalten der Authentifizierung in Azure Maps
@@ -61,7 +61,7 @@ Nachdem Sie ein Azure Maps-Konto erstellt haben, müssen Sie eine Verknüpfung z
 
 Nachdem Sie ein Azure Maps-Konto mit Ihrem Azure AD-Mandanten verknüpfen können Sie die Zugriffssteuerung gewähren, indem Sie einem Benutzer oder einer Anwendung Azure Maps-Zugriffssteuerungsrollen zuweisen.
 
-1. Wechseln Sie zur **Zugriffssteuerung (IAM)**, klicken Sie auf **Rollenzuweisungen**, und wählen Sie dann **Rollenzuweisung hinzufügen** aus.
+1. Wechseln Sie zur **Zugriffssteuerung (IAM)** , klicken Sie auf **Rollenzuweisungen**, und wählen Sie dann **Rollenzuweisung hinzufügen** aus.
 
     ![Gewähren von RBAC](./media/how-to-manage-authentication/how-to-grant-rbac.png)
 
@@ -71,7 +71,7 @@ Nachdem Sie ein Azure Maps-Konto mit Ihrem Azure AD-Mandanten verknüpfen könne
 
 ## <a name="view-available-azure-maps-rbac-roles"></a>Anzeigen verfügbarer Azure Maps-RBAC-Rollen
 
-Öffnen Sie die **Zugriffssteuerung (IAM)**, klicken Sie auf **Rollen**, und suchen Sie dann nach Rollen, die mit **Azure Maps** beginnen, um Rollen für die rollenbasierte Zugriffssteuerung für Azure Maps anzuzeigen. Hierbei handelt es sich um die Rollen, denen Sie den Zugriff gewähren können.
+Öffnen Sie die **Zugriffssteuerung (IAM)** , klicken Sie auf **Rollen**, und suchen Sie dann nach Rollen, die mit **Azure Maps** beginnen, um Rollen für die rollenbasierte Zugriffssteuerung für Azure Maps anzuzeigen. Hierbei handelt es sich um die Rollen, denen Sie den Zugriff gewähren können.
 
 ![Anzeigen verfügbarer Rollen](./media/how-to-manage-authentication/how-to-view-avail-roles.png)
 
@@ -80,7 +80,7 @@ Nachdem Sie ein Azure Maps-Konto mit Ihrem Azure AD-Mandanten verknüpfen könne
 
 Mit der rollenbasierten Zugriffssteuerung kann die Zugriffssteuerung genau abgestimmt werden.
 
-Öffnen Sie die **Zugriffssteuerung (IAM)**, klicken Sie auf **Rollenzuweisungen**, und filtern Sie dann nach **Azure Maps**, um Benutzer und Apps anzuzeigen, denen die rollenbasierte Zugriffssteuerung für Azure Maps gewährt wurde.
+Öffnen Sie die **Zugriffssteuerung (IAM)** , klicken Sie auf **Rollenzuweisungen**, und filtern Sie dann nach **Azure Maps**, um Benutzer und Apps anzuzeigen, denen die rollenbasierte Zugriffssteuerung für Azure Maps gewährt wurde.
 
 ![Benutzer und Apps mit gewährter rollenbasierter Zugriffssteuerung anzeigen](./media/how-to-manage-authentication/how-to-view-amrbac.png)
 

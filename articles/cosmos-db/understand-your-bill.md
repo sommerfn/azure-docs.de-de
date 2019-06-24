@@ -8,10 +8,10 @@ ms.date: 05/21/2019
 ms.author: rimman
 ms.reviewer: sngun
 ms.openlocfilehash: a097539e51aa2a2130dead236d553d60f2ebb89d
-ms.sourcegitcommit: e9a46b4d22113655181a3e219d16397367e8492d
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/21/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65965662"
 ---
 # <a name="understand-your-azure-cosmos-db-bill"></a>Grundlegendes zu Ihrer Azure Cosmos DB-Rechnung
@@ -28,7 +28,7 @@ Dieser Artikel enthält einige Beispiele, damit die einzelnen Positionen auf der
 
 * Angenommen, Sie konfigurieren einen Durchsatz von 1.000 RUs/Sek. für einen Container, und zwar für 24 Stunden x 30 Tage im Monat = 720 Stunden.  
 
-* 1.000 RUs/Sek. entsprechen 10 Grundeinheiten von je 100 RUs/Sek. pro Stunde (d. h. 1.000/100 = 10), und zwar für jede Stunde, die der Container vorhanden ist. 
+* 1\.000 RUs/Sek. entsprechen 10 Grundeinheiten von je 100 RUs/Sek. pro Stunde (d. h. 1.000/100 = 10), und zwar für jede Stunde, die der Container vorhanden ist. 
 
 * Wenn man diese 10 Einheiten pro Stunde mit den Kosten der Grundeinheit von 100 RUs/Sek. = 0,008 US-Dollar multipliziert, ergeben sich Kosten von 0,08 US-Dollar pro Stunde. 
 
@@ -97,7 +97,7 @@ Angenommen, Sie haben einen Azure Cosmos-Container in der Region „USA, Westen�
 |**Element** |**Nutzung (Monat)** |**Rate** |**Monatliche Kosten** |
 |---------|---------|---------|-------|
 |Durchsatzabrechnung für Container in „USA, Westen“      | 10.000 RUs/Sek. x 24 x 30    |0,008 US-Dollar pro 100 RUs/Sek. pro Stunde   |576 US-Dollar|
-|Durchsatzabrechnung für drei zusätzliche Regionen „USA, Osten“, „Europa, Norden“ und „Asien, Osten“       | 3 x 10.000 RUs/Sek. x 24 x 30    |0,008 US-Dollar pro 100 RUs/Sek. pro Stunde  |1.728 US-Dollar|
+|Durchsatzabrechnung für drei zusätzliche Regionen „USA, Osten“, „Europa, Norden“ und „Asien, Osten“       | 3 x 10.000 RUs/Sek. x 24 x 30    |0,008 US-Dollar pro 100 RUs/Sek. pro Stunde  |1\.728 US-Dollar|
 |Speicherabrechnung für Container in „USA, Westen“      | 250 GB    |0,25 US-Dollar/GB  |62,50 US-Dollar|
 |Speicherabrechnung für drei zusätzliche Regionen „USA, Osten“, „Europa, Norden“ und „Asien, Osten“      | 3 x 250 GB    |0,25 US-Dollar/GB  |187,50 US-Dollar|
 |**Gesamt**     |     |  |**2.554 US-Dollar**|
@@ -110,8 +110,8 @@ Angenommen, Sie erstellen einen Azure Cosmos-Container in der Region „USA, Wes
 
 |**Element** |**Nutzung (Monat)**|**Rate** |**Monatliche Kosten** |
 |---------|---------|---------|-------|
-|Durchsatzabrechnung für Container in „USA, Westen“ (Schreibanforderungen für alle Regionen)       | 10.000 RUs/Sek. x 24 x 30    |0,016 US-Dollar pro 100 RUs/Sek. pro Stunde    |1.152 US-Dollar |
-|Durchsatzabrechnung für drei zusätzliche Regionen „USA, Osten“, „Europa, Norden“ und „Asien, Osten“ (Schreibanforderungen für alle Regionen)        | (3+1) x 10.000 RUs/Sek. x 24 x 30    |0,016 US-Dollar pro 100 RUs/Sek. pro Stunde   |4.608 US-Dollar |
+|Durchsatzabrechnung für Container in „USA, Westen“ (Schreibanforderungen für alle Regionen)       | 10.000 RUs/Sek. x 24 x 30    |0,016 US-Dollar pro 100 RUs/Sek. pro Stunde    |1\.152 US-Dollar |
+|Durchsatzabrechnung für drei zusätzliche Regionen „USA, Osten“, „Europa, Norden“ und „Asien, Osten“ (Schreibanforderungen für alle Regionen)        | (3+1) x 10.000 RUs/Sek. x 24 x 30    |0,016 US-Dollar pro 100 RUs/Sek. pro Stunde   |4\.608 US-Dollar |
 |Speicherabrechnung für Container in „USA, Westen“      | 250 GB    |0,25 US-Dollar/GB  |62,50 US-Dollar|
 |Speicherabrechnung für drei zusätzliche Regionen „USA, Osten“, „Europa, Norden“ und „Asien, Osten“      | 3 x 250 GB    |0,25 US-Dollar/GB  |187,50 US-Dollar|
 |**Gesamt**     |     |  |**6.010 US-Dollar**|
@@ -181,17 +181,17 @@ Die monatliche Gesamtrechnung wird (30 Tage und 720 Stunden im Monat vorausgeset
 |**Stunden**  |**RUs/Sek.** |**Element** |**Nutzung (stündlich)** |**Kosten** |
 |---------|---------|---------|-------|-------|
 |[0-100] |D1: 10.000 <br/>D2: 30.000 <br/>C1: 20.000 |Durchsatzabrechnung für Container in „USA, Westen“ (Schreibanforderungen für alle Regionen)  | `D1: 10K RU/sec/100 * $0.016 * 100 hours = $160` <br/>`D2: 30 K RU/sec/100 * $0.016 * 100 hours = $480` <br/>`C1: 20 K RU/sec/100 *$0.016 * 100 hours = $320` |960 US-Dollar  |
-| | |Durchsatzabrechnung für zwei weitere Regionen „USA, Osten“ und „Europa, Norden“ (Schreibanforderungen für alle Regionen)  |`(2 + 1) * (60 K RU/sec /100 * $0.016) * 100 hours = $2,880`  |2.880 US-Dollar  |
-|[101-200] |D1: 50.000 <br/>D2: 70.000 <br/>C1: -- |Durchsatzabrechnung für Container in „USA, Westen“ (Schreibanforderungen für alle Regionen)  |`D1: 50 K RU/sec/100 * $0.016 * 100 hours = $800` <br/>`D2: 70 K RU/sec/100 * $0.016 * 100 hours = $1,120` |1.920 US-Dollar  |
-| | |Durchsatzabrechnung für zwei weitere Regionen „USA, Osten“ und „Europa, Norden“ (Schreibanforderungen für alle Regionen)  |`(2 + 1) * (120 K RU/sec /100 * $0.016) * 100 hours = $5,760`  |5.760 US-Dollar  |
-|[201-300]  |D1: 50.000 <br/>D2: 70.000 <br/>C1: 20.000 |Durchsatzabrechnung für Container in „USA, Westen“ (Schreibanforderungen für alle Regionen)  |`D1: 50 K RU/sec/100 * $0.016 * 100 hours = $800` <br/>`D2: 70 K RU/sec/100 * $0.016 * 100 hours = $1,120` <br/>`C1: 20 K RU/sec/100 *$0.016 * 100 hours = $320` |2.240 USD  |
-| | |Durchsatzabrechnung für zwei weitere Regionen „USA, Osten“ und „Europa, Norden“ (Schreibanforderungen für alle Regionen)  |`(2 + 1) * (140 K RU/sec /100 * $0.016-) * 100 hours = $6,720` |6.720 US-Dollar |
-|[301-400] |D1: 10.000 <br/>D2: 80.000 <br/>C1: -- |Durchsatzabrechnung für Container in „USA, Westen“ (Schreibanforderungen für alle Regionen)  |`D1: 10K RU/sec/100 * $0.016 * 100 hours = $160` <br/>`D2: 80 K RU/sec/100 * $0.016 * 100 hours = $1,280`  |1.440 US-Dollar   |
-| | |Durchsatzabrechnung für zwei weitere Regionen „USA, Osten“ und „Europa, Norden“ (Schreibanforderungen für alle Regionen)  |`(1 + 1) * (90 K RU/sec /100 * $0.016) * 100 hours = $2,880`  |2.880 US-Dollar  |
+| | |Durchsatzabrechnung für zwei weitere Regionen „USA, Osten“ und „Europa, Norden“ (Schreibanforderungen für alle Regionen)  |`(2 + 1) * (60 K RU/sec /100 * $0.016) * 100 hours = $2,880`  |2\.880 US-Dollar  |
+|[101-200] |D1: 50.000 <br/>D2: 70.000 <br/>C1: -- |Durchsatzabrechnung für Container in „USA, Westen“ (Schreibanforderungen für alle Regionen)  |`D1: 50 K RU/sec/100 * $0.016 * 100 hours = $800` <br/>`D2: 70 K RU/sec/100 * $0.016 * 100 hours = $1,120` |1\.920 US-Dollar  |
+| | |Durchsatzabrechnung für zwei weitere Regionen „USA, Osten“ und „Europa, Norden“ (Schreibanforderungen für alle Regionen)  |`(2 + 1) * (120 K RU/sec /100 * $0.016) * 100 hours = $5,760`  |5\.760 US-Dollar  |
+|[201-300]  |D1: 50.000 <br/>D2: 70.000 <br/>C1: 20.000 |Durchsatzabrechnung für Container in „USA, Westen“ (Schreibanforderungen für alle Regionen)  |`D1: 50 K RU/sec/100 * $0.016 * 100 hours = $800` <br/>`D2: 70 K RU/sec/100 * $0.016 * 100 hours = $1,120` <br/>`C1: 20 K RU/sec/100 *$0.016 * 100 hours = $320` |2\.240 USD  |
+| | |Durchsatzabrechnung für zwei weitere Regionen „USA, Osten“ und „Europa, Norden“ (Schreibanforderungen für alle Regionen)  |`(2 + 1) * (140 K RU/sec /100 * $0.016-) * 100 hours = $6,720` |6\.720 US-Dollar |
+|[301-400] |D1: 10.000 <br/>D2: 80.000 <br/>C1: -- |Durchsatzabrechnung für Container in „USA, Westen“ (Schreibanforderungen für alle Regionen)  |`D1: 10K RU/sec/100 * $0.016 * 100 hours = $160` <br/>`D2: 80 K RU/sec/100 * $0.016 * 100 hours = $1,280`  |1\.440 US-Dollar   |
+| | |Durchsatzabrechnung für zwei weitere Regionen „USA, Osten“ und „Europa, Norden“ (Schreibanforderungen für alle Regionen)  |`(1 + 1) * (90 K RU/sec /100 * $0.016) * 100 hours = $2,880`  |2\.880 US-Dollar  |
 |[401-500] |D1: 10.000 <br>D2: 10.000 <br>C1: 20.000 |Durchsatzabrechnung für Container in „USA, Westen“ (Schreibanforderungen für alle Regionen)  |`D1: 10K RU/sec/100 * $0.016 * 100 hours = $160` <br>`D2: 10K RU/sec/100 * $0.016 * 100 hours = $160` <br>`C1: 20 K RU/sec/100 *$0.016 * 100 hours = $320` |640 US-Dollar  |
-| | |Durchsatzabrechnung für zwei weitere Regionen „USA, Osten“ und „Europa, Norden“ (Schreibanforderungen für alle Regionen)  |`(1 + 1) * (40 K RU/sec /100 * $0.016) * 100 hours = $1,280`  |1.280 US-Dollar  |
-|[501-700] |D1: 20.000 <br>D2: 100.000 <br>C1: -- |Durchsatzabrechnung für Container in „USA, Westen“ (Schreibanforderungen für alle Regionen)  |`D1: 20 K RU/sec/100 * $0.016 * 200 hours = $640` <br>`D2: 100 K RU/sec/100 * $0.016 * 200 hours = $3,200` |3.840 US-Dollar  |
-| | |Durchsatzabrechnung für zwei weitere Regionen „USA, Osten“ und „Europa, Norden“ (Schreibanforderungen für alle Regionen)  |`(1 + 1) * (120 K RU/sec /100 * $0.016) * 200 hours = $1,280`  |7.680 US-Dollar  |
+| | |Durchsatzabrechnung für zwei weitere Regionen „USA, Osten“ und „Europa, Norden“ (Schreibanforderungen für alle Regionen)  |`(1 + 1) * (40 K RU/sec /100 * $0.016) * 100 hours = $1,280`  |1\.280 US-Dollar  |
+|[501-700] |D1: 20.000 <br>D2: 100.000 <br>C1: -- |Durchsatzabrechnung für Container in „USA, Westen“ (Schreibanforderungen für alle Regionen)  |`D1: 20 K RU/sec/100 * $0.016 * 200 hours = $640` <br>`D2: 100 K RU/sec/100 * $0.016 * 200 hours = $3,200` |3\.840 US-Dollar  |
+| | |Durchsatzabrechnung für zwei weitere Regionen „USA, Osten“ und „Europa, Norden“ (Schreibanforderungen für alle Regionen)  |`(1 + 1) * (120 K RU/sec /100 * $0.016) * 200 hours = $1,280`  |7\.680 US-Dollar  |
 |[701-720] |D1: 20.000 <br/>D2: 50.000 <br/>C1: -- |Durchsatzabrechnung für Container in „USA, Westen“ (Schreibanforderungen für alle Regionen)  |`D1: 20 K RU/sec/100 *$0.016 * 20 hours = $64` <br/>`D2: 50 K RU/sec/100 *$0.016 * 20 hours = $160` |224 US-Dollar  |
 | | |Durchsatzabrechnung für zwei weitere Regionen „USA, Osten“ und „Europa, Norden“ (Schreibanforderungen für alle Regionen)  |`(1 + 1) * (70 K RU/sec /100 * $0.016) * 20 hours = $448`  |224 US-Dollar  |
 || |**Monatliche Gesamtkosten**  | |**38.688 US-Dollar**   |
@@ -236,9 +236,9 @@ Ihre Gesamtrechnung (ohne reservierte Kapazität) sähe wie folgt aus (30 Tage o
 
 |**Region**| **Stundenpreis pro 100 RUs/Sek.**|**Einheiten (RUs/Sek.)**|**Rechnungsbetrag (pro Stunde)**| **Rechnungsbetrag (pro Monat)**|
 |----|----|----|----|----|
-|USA (Ost)|0,008 US-Dollar |50.000|4 US-Dollar|2.880 US-Dollar |
-|Japan, Osten|0,009 US-Dollar |50.000| 4,50 US-Dollar |3.240 US-Dollar |
-|Gesamt|||8,50 US-Dollar|6.120 US-Dollar |
+|USA (Ost)|0,008 US-Dollar |50.000|4 US-Dollar|2\.880 US-Dollar |
+|Japan, Osten|0,009 US-Dollar |50.000| 4,50 US-Dollar |3\.240 US-Dollar |
+|Gesamt|||8,50 US-Dollar|6\.120 US-Dollar |
 
 Angenommen, Sie hätten stattdessen reservierte Kapazität gekauft. Sie können reservierte Kapazität von 100.000 RUs/Sek. zum Preis von 56.064 US-Dollar für ein Jahr (20 % Rabatt) bzw. 6,40 US-Dollar pro Stunde erwerben. Die Preise für reservierte Kapazität finden Sie unter [Preise](https://azure.microsoft.com/pricing/details/cosmos-db/).  
 
@@ -250,10 +250,10 @@ Was Sie tatsächlich erworben haben, ist ein Guthaben von 8 US-Dollar pro Stunde
 
 |**Region**| **Stundenpreis pro 100 RUs/Sek.**|**Einheiten (RUs/Sek.)**| **Rechnungsbetrag (pro Stunde)**| **Rechnungsbetrag (pro Monat)**|
 |----|----|----|----|----|
-|USA (Ost)|0,008 US-Dollar |50.000|4 US-Dollar|2.880 US-Dollar |
-|Japan, Osten|0,009 US-Dollar |50.000| 4,50 US-Dollar |3.240 US-Dollar |
-|||Nutzungsbasierte Bezahlung|8,50 US-Dollar|6.120 US-Dollar|
-|Erworbene reservierte Kapazität|0,0064 US-Dollar (20 % Rabatt) |Kapazität im Wert von 100 RUs/Sek. bzw. 8 US-Dollar vorab erworben |- 8 US-Dollar|- 5.760 US-Dollar |
+|USA (Ost)|0,008 US-Dollar |50.000|4 US-Dollar|2\.880 US-Dollar |
+|Japan, Osten|0,009 US-Dollar |50.000| 4,50 US-Dollar |3\.240 US-Dollar |
+|||Nutzungsbasierte Bezahlung|8,50 US-Dollar|6\.120 US-Dollar|
+|Erworbene reservierte Kapazität|0,0064 US-Dollar (20 % Rabatt) |Kapazität im Wert von 100 RUs/Sek. bzw. 8 US-Dollar vorab erworben |\- 8 US-Dollar|\- 5.760 US-Dollar |
 |Nettorechnungsbetrag|||0,50 US-Dollar |360 US-Dollar |
 
 ## <a name="next-steps"></a>Nächste Schritte

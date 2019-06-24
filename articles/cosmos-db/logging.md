@@ -8,10 +8,10 @@ ms.date: 05/23/2019
 ms.author: sngun
 ms.custom: seodec18
 ms.openlocfilehash: 67a6eec938a4a18455e4063925e21e26fe362f76
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/27/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66243472"
 ---
 # <a name="diagnostic-logging-in-azure-cosmos-db"></a>Diagnoseprotokollierung in Azure Cosmos DB 
@@ -266,7 +266,7 @@ Für die Werte für Datum und Uhrzeit wird UTC verwendet.
 
 Da dasselbe Speicherkonto zum Erfassen von Protokollen für mehrere Ressourcen verwendet werden kann, kann die vollqualifizierte Ressourcen-ID im Blobnamen verwendet werden, um auf die jeweils benötigten Blobs zuzugreifen bzw. diese herunterzuladen. Zunächst wird aber beschrieben, wie Sie alle Blobs herunterladen.
 
-Erstellen Sie zunächst einen Ordner zum Herunterladen der Blobs. Beispiel: 
+Erstellen Sie zunächst einen Ordner zum Herunterladen der Blobs. Beispiel:
 
 ```powershell
 New-Item -Path 'C:\Users\username\ContosoCosmosDBLogs'`
@@ -288,7 +288,7 @@ $blobs | Get-AzStorageBlobContent `
 
 Beim Ausführen dieses zweiten Befehls wird mit dem Trennzeichen **/** in den Blobnamen eine vollständige Ordnerstruktur unter dem Zielordner erstellt. Diese Struktur wird zum Herunterladen und Speichern der Blobs als Dateien verwendet.
 
-Verwenden Sie Platzhalter, um Blobs selektiv herunterzuladen. Beispiel: 
+Verwenden Sie Platzhalter, um Blobs selektiv herunterzuladen. Beispiel:
 
 * Wenn Sie über mehrere Datenbanken verfügen und Protokolle für nur eine Datenbank mit dem Namen **CONTOSOCOSMOSDB3** herunterladen möchten, verwenden Sie den folgenden Befehl:
 

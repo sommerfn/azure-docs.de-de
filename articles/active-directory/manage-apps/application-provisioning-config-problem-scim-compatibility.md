@@ -17,10 +17,10 @@ ms.author: mimart
 ms.reviewer: arvinh
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: a9a0e595d2120d3cdccd42c502a83de9d5ed3ff4
-ms.sourcegitcommit: e9a46b4d22113655181a3e219d16397367e8492d
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/21/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65963180"
 ---
 # <a name="known-issues-and-resolutions-with-scim-20-protocol-compliance-of-the-azure-ad-user-provisioning-service"></a>Bekannte Probleme und Lösungen bei der Einhaltung des SCIM 2.0-Protokolls des Azure AD-Benutzerbereitstellungsdiensts
@@ -45,7 +45,7 @@ In diesem Artikel werden aktuelle und ehemalige Probleme mit dem Bereitstellungs
 
 ## <a name="were-the-services-fixes-described-automatically-applied-to-my-pre-existing-scim-app"></a>Wurden die beschriebenen Dienstkorrekturen automatisch auf meine vorhandene SCIM-App angewandt?
 
- Nein. Da dies einen Breaking Change für SCIM-Apps, die mit dem älteren Verhalten programmiert wurden, bedeutet hätte, wurden die Änderungen nicht automatisch auf vorhandene Apps angewandt.
+Nein. Da dies einen Breaking Change für SCIM-Apps, die mit dem älteren Verhalten programmiert wurden, bedeutet hätte, wurden die Änderungen nicht automatisch auf vorhandene Apps angewandt.
 
 Die Änderungen gelten für alle neuen [SCIM-Apps, die nicht im Katalog enthalten sind](configure-single-sign-on-non-gallery-applications.md) und nach dem Datum der Korrektur im Azure-Portal konfiguriert werden.
 

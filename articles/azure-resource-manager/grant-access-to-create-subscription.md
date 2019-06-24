@@ -14,10 +14,10 @@ ms.workload: na
 ms.date: 05/23/2019
 ms.author: jureid
 ms.openlocfilehash: 81f3edcfcffad1b9b6d0ab4b49769601196049ad
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/27/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66238053"
 ---
 # <a name="grant-access-to-create-azure-enterprise-subscriptions-preview"></a>Gewähren des Zugriffs zum Erstellen von Azure Enterprise-Abonnements (Vorschau)
@@ -71,7 +71,7 @@ Benutzer müssen in einem Registrierungskonto über die [RBAC-Rolle „Besitzer�
 
     # <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
 
-    Verwenden Sie das Cmdlet [Get-AzEnrollmentAccount](/powershell/module/az.billing/get-azenrollmentaccount) zum Auflisten aller Registrierungskonten, auf die Sie zugreifen können. Wählen Sie **Jetzt ausprobieren** aus, um [Azure Cloud Shell](https://shell.azure.com/) zu öffnen. Klicken Sie zum Einfügen des Codes mit der rechten Maustaste auf die Shell-Fenster, und wählen Sie dann **Einfügen** aus.
+    Verwenden Sie das Cmdlet [Get-AzEnrollmentAccount](/powershell/module/az.billing/get-azenrollmentaccount) zum Auflisten aller Registrierungskonten, auf die Sie zugreifen können. Wählen Sie **Jetzt ausprobieren** aus, um [Azure Cloud Shell](https://shell.azure.com/) zu öffnen. Klicken Sie zum Einfügen des Codes mit der rechten Maustaste auf das Shell-Fenster, und wählen Sie dann **Einfügen** aus.
 
     ```azurepowershell-interactive
     Get-AzEnrollmentAccount

@@ -16,10 +16,10 @@ ms.author: mimart
 ms.reviewer: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: ecadb499d140ccfc993820080cae0b749977fc61
-ms.sourcegitcommit: be9fcaace62709cea55beb49a5bebf4f9701f7c6
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/17/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65824741"
 ---
 # <a name="manage-certificates-for-federated-single-sign-on-in-azure-active-directory"></a>Verwalten von Zertifikaten für die einmalige Verbundanmeldung in Azure Active Directory
@@ -34,7 +34,7 @@ Wenn Sie eine neue Anwendung aus dem Katalog hinzufügen und eine SAML-basierte 
 
 ![Downloadoptionen für aktives SAML-Signaturzertifikat](./media/manage-certificates-for-federated-single-sign-on/active-certificate-download-options.png)
 
-Sie können auch ein aktives oder inaktives Zertifikat herunterladen, indem Sie neben der Überschrift **SAML-Signaturzertifikat** das Symbol **Bearbeiten** (Stiftsymbol) auswählen, wodurch die Seite **SAML-Signaturzertifikat** angezeigt wird. Wählen Sie die Auslassungspunkte (**...**) neben dem Zertifikat aus, das Sie herunterladen möchten, und wählen Sie dann das gewünschte Zertifikatformat aus. Als zusätzliche Option können Sie das Zertifikat im Privacy Enhanced Mail-Format (PEM) herunterladen. Dieses Format ist mit Base64 identisch, weist jedoch die Dateinamenerweiterung **PEM** auf, die in Windows nicht als Zertifikatformat erkannt wird.
+Sie können auch ein aktives oder inaktives Zertifikat herunterladen, indem Sie neben der Überschrift **SAML-Signaturzertifikat** das Symbol **Bearbeiten** (Stiftsymbol) auswählen, wodurch die Seite **SAML-Signaturzertifikat** angezeigt wird. Wählen Sie die Auslassungspunkte ( **...** ) neben dem Zertifikat aus, das Sie herunterladen möchten, und wählen Sie dann das gewünschte Zertifikatformat aus. Als zusätzliche Option können Sie das Zertifikat im Privacy Enhanced Mail-Format (PEM) herunterladen. Dieses Format ist mit Base64 identisch, weist jedoch die Dateinamenerweiterung **PEM** auf, die in Windows nicht als Zertifikatformat erkannt wird.
 
 ![Downloadoptionen für SAML-Signaturzertifikat (aktives und inaktives Zertifikat)](./media/manage-certificates-for-federated-single-sign-on/all-certificate-download-options.png)
 
@@ -88,7 +88,7 @@ Als Nächstes müssen Sie das neue Zertifikat im richtigen Format herunterladen,
 
 3. Befolgen Sie die weiter oben im Abschnitt [Automatisch generiertes Zertifikat für Katalog- und Nicht-Kataloganwendungen](#auto-generated-certificate-for-gallery-and-non-gallery-applications) aufgeführten Anweisungen. In diesem Schritt wird das Zertifikat in dem für den Upload durch die Anwendung erforderlichen Codierungsformat heruntergeladen.
 
-4. Wenn Sie einen Rollover auf das neue Zertifikat ausführen möchten, wechseln Sie zurück zur Seite **SAML-Signaturzertifikat**, und wählen Sie in der neu gespeicherten Zertifikatzeile die Auslassungspunkte (**...**) aus, und wählen Sie dann **Zertifikat als aktiv festlegen** aus. Der Status des neuen Zertifikats ändert sich in **Aktiv**, und der Status des zuvor aktiven Zertifikats ändert sich in **Inaktiv**.
+4. Wenn Sie einen Rollover auf das neue Zertifikat ausführen möchten, wechseln Sie zurück zur Seite **SAML-Signaturzertifikat**, und wählen Sie in der neu gespeicherten Zertifikatzeile die Auslassungspunkte ( **...** ) aus, und wählen Sie dann **Zertifikat als aktiv festlegen** aus. Der Status des neuen Zertifikats ändert sich in **Aktiv**, und der Status des zuvor aktiven Zertifikats ändert sich in **Inaktiv**.
 
 5. Fahren Sie mit den zuvor angezeigten Konfigurationsanweisungen für die SAML-basierte Anmeldung für die Anwendung fort, um das SAML-Signaturzertifikat im richtigen Codierungsformat hochzuladen.
 
@@ -116,7 +116,7 @@ Wenn ein Zertifikat in Kürze abläuft, können Sie es mithilfe eines Verfahrens
 
 2. Wenn die Anwendung einen automatischen Rollover für das Zertifikat ausführen kann, legen Sie das neue Zertifikat durch Ausführen der folgenden Schritte als aktiv fest:
    1. Wechseln Sie zurück zur Seite **SAML-Signaturzertifikat**.
-   2. Wählen Sie in der neu gespeicherten Zertifikatzeile die Auslassungspunkte (**...**) aus, und wählen Sie dann **Zertifikat als aktiv festlegen** aus.
+   2. Wählen Sie in der neu gespeicherten Zertifikatzeile die Auslassungspunkte ( **...** ) aus, und wählen Sie dann **Zertifikat als aktiv festlegen** aus.
    3. Überspringen Sie die nächsten zwei Schritte.
 
 3. Wenn die App jeweils nur ein Zertifikat verarbeiten kann, wählen Sie ein Intervall für Ausfallzeiten aus, um den nächsten Schritt ausführen zu können. (Andernfalls, wenn die Anwendung das neue Zertifikat nicht automatisch übernimmt, aber mehrere Signaturzertifikate gleichzeitig verarbeiten kann, können Sie den nächsten Schritt jederzeit auszuführen.)

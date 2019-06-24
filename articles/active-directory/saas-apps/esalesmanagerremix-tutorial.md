@@ -16,11 +16,11 @@ ms.topic: article
 ms.date: 06/12/2018
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5f2a3bb666e40f1aafd921d70d93133ca9139b38
-ms.sourcegitcommit: 6f043a4da4454d5cb673377bb6c4ddd0ed30672d
+ms.openlocfilehash: 895fb0d83e383618818325263ac80c5919a0ee7b
+ms.sourcegitcommit: 1289f956f897786090166982a8b66f708c9deea1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/08/2019
+ms.lasthandoff: 06/17/2019
 ms.locfileid: "65406947"
 ---
 # <a name="integrate-azure-active-directory-with-e-sales-manager-remix"></a>Integrieren von Azure Active Directory mit E Sales Manager Remix
@@ -103,14 +103,14 @@ Aktivieren Sie das einmalige Anmelden von Azure AD im Azure-Portal, und konfigur
 
     a. Geben Sie im Feld **Anmelde-URL** eine URL im folgenden Format ein: *https://\<serverbasierteURL>/\<Unterdomäne>/esales-pc*.
 
-    b. Geben Sie im Feld **Bezeichner** eine URL im folgenden Format ein: *https://\<serverbasierteURL>/\<Unterdomäne>/*.
+    b. Geben Sie im Feld **Bezeichner** eine URL im folgenden Format ein: *https://\<serverbasierteURL>/\<Unterdomäne>/* .
 
     c. Notieren Sie den Wert von **Bezeichner** zur späteren Verwendung in diesem Tutorial.
     
     > [!NOTE] 
     > Die vorangehenden Werte sind keine echten Werte. Ersetzen Sie diese Werte durch die tatsächliche Anmelde-URL und den tatsächlichen Bezeichner. Wenden Sie sich an das [Supportteam für den E Sales Manager Remix-Client](mailto:esupport@softbrain.co.jp), um diese Werte zu erhalten.
 
-1. Wählen Sie unter **SAML-Signaturzertifikat** die Option **Zertifikat (Base64)**, und speichern Sie die Zertifikatdatei auf Ihrem Computer.
+1. Wählen Sie unter **SAML-Signaturzertifikat** die Option **Zertifikat (Base64)** , und speichern Sie die Zertifikatdatei auf Ihrem Computer.
 
     ![Link zum Herunterladen des Zertifikats (Base64)](./media/esalesmanagerremix-tutorial/tutorial_esalesmanagerremix_certificate.png) 
 
@@ -120,7 +120,7 @@ Aktivieren Sie das einmalige Anmelden von Azure AD im Azure-Portal, und konfigur
 
     Das Fenster **Attribut bearbeiten** wird geöffnet.
 
-1. Kopieren Sie die Werte in **Namespace** und **Name**. Generieren Sie den Wert nach dem Muster *\<Namespace>/\<Name>*, und speichern Sie ihn zur späteren Verwendung in diesem Tutorial.
+1. Kopieren Sie die Werte in **Namespace** und **Name**. Generieren Sie den Wert nach dem Muster *\<Namespace>/\<Name>* , und speichern Sie ihn zur späteren Verwendung in diesem Tutorial.
 
     ![Fenster „Attribut bearbeiten“](./media/esalesmanagerremix-tutorial/configure2.png)
 
@@ -158,7 +158,7 @@ Aktivieren Sie das einmalige Anmelden von Azure AD im Azure-Portal, und konfigur
     
     b. Wählen Sie in der Dropdownliste im Abschnitt **Collaboration item** (Zusammenarbeitselement) die Option **email** aus.
 
-    c. Fügen Sie in das Feld **Collaboration item** (Zusammenarbeitselement) den Anspruchswert ein, den Sie aus dem Azure-Portal kopiert haben (d.h. **https://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress**).
+    c. Fügen Sie in das Feld **Collaboration item** (Zusammenarbeitselement) den Anspruchswert ein, den Sie aus dem Azure-Portal kopiert haben (d.h. **http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress** ).
 
     d. Fügen Sie in das Feld **Issuer (entity ID)** (Aussteller (Entitäts-ID)) den Wert für „Bezeichner“ ein, den Sie aus dem Azure-Portal im Abschnitt **Domäne und URLs für E Sales Manager Remix** kopiert haben.
 

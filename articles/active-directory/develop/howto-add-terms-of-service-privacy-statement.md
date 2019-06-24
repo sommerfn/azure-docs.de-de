@@ -18,10 +18,10 @@ ms.reviwer: lenalepa, sureshja
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 399f72c7819378ddc1566c2bdde94801b2c71687
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/27/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66235321"
 ---
 # <a name="how-to-configure-terms-of-service-and-privacy-statement-for-an-app"></a>Gewusst wie: Konfigurieren von Nutzungsbedingungen und Datenschutzbestimmungen für eine App
@@ -48,7 +48,7 @@ Bevor Sie Links zu den Dokumenten mit den Nutzungsbedingungen und Datenschutzbes
 |---------------|---------------------------------------|
 | Format        | Gültige URL                             |
 | Gültige Schemas | HTTP und HTTPS<br/>Empfohlen wird HTTPS |
-| Max. Länge    | 2.048 Zeichen                       |
+| Max. Länge    | 2\.048 Zeichen                       |
 
 Beispiele: `https://myapp.com/terms-of-service` und `https://myapp.com/privacy-statement`
 

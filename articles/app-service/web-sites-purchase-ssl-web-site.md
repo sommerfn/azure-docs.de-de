@@ -16,10 +16,10 @@ ms.date: 10/16/2018
 ms.author: apurvajo;cephalin
 ms.custom: seodec18
 ms.openlocfilehash: 0febb8fadd973b67ed232d6094d85894fb383d14
-ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/20/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65955710"
 ---
 # <a name="buy-and-configure-an-ssl-certificate-for-azure-app-service"></a>Kaufen und Konfigurieren eines SSL-Zertifikats für Azure App Service
@@ -97,9 +97,9 @@ Klicken Sie auf **App Service-Überprüfung**. Da Sie die Domäne bereits Ihrer 
 
 ## <a name="bind-certificate-to-app"></a>Binden eines Zertifikats an eine App
 
-Klicken Sie im linken Menü des **[Azure-Portals](https://portal.azure.com/)** auf **App Services** > **\<Ihre_App>**.
+Klicken Sie im linken Menü des **[Azure-Portals](https://portal.azure.com/)** auf **App Services** >  **\<Ihre_App>** .
 
-Wählen Sie im linken Navigationsbereich Ihrer App **SSL-Einstellungen** > **Private Zertifikate (.pfx)** > **App Service-Zertifikat importieren**.
+Wählen Sie im linken Navigationsbereich Ihrer App **SSL-Einstellungen** > **Private Zertifikate (.pfx)**  > **App Service-Zertifikat importieren**.
 
 ![Bild von Zertifikatimport einfügen](./media/app-service-web-purchase-ssl-web-site/ImportCertificate.png)
 

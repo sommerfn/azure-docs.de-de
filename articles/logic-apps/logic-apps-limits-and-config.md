@@ -10,10 +10,10 @@ ms.reviewer: klam, LADocs
 ms.topic: article
 ms.date: 05/23/2019
 ms.openlocfilehash: e824ac81f1336644fa70cc24539284feacee3199
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/27/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66244531"
 ---
 # <a name="limits-and-configuration-information-for-azure-logic-apps"></a>Grenzwert- und Konfigurationsinformationen für Azure Logic Apps
@@ -30,11 +30,11 @@ Dies sind die Grenzwerte für eine einzelne Logik-App-Definition:
 | ---- | ----- | ----- |
 | Aktionen pro Workflow | 500 | Zur Erhöhung dieses Grenzwerts können Sie bei Bedarf geschachtelte Workflows hinzufügen. |
 | Zulässige Schachtelungstiefe für Aktionen | 8 | Zur Erhöhung dieses Grenzwerts können Sie bei Bedarf geschachtelte Workflows hinzufügen. |
-| Workflows pro Region und Abonnement | 1.000 | |
+| Workflows pro Region und Abonnement | 1\.000 | |
 | Trigger pro Workflow | 10 | Wenn in der Codeansicht gearbeitet wird, nicht im Designer |
 | Bereichsumschaltbegrenzung | 25 | |
 | Variablen pro Workflow | 250 | |
-| Zeichen pro Ausdruck | 8.192 | |
+| Zeichen pro Ausdruck | 8\.192 | |
 | Maximale Größe für `trackedProperties` | 16.000 Zeichen |
 | Name für `action` oder `trigger` | 80 Zeichen | |
 | Länge von `description` | 256 Zeichen | |
@@ -82,7 +82,7 @@ Dies sind die Grenzwerte für eine einzelne Ausführung der Logik-App:
 | Foreach-Arrayelemente | 100.000 | Dieser Grenzwert beschreibt die maximale Anzahl von Arrayelementen, die eine Foreach-Schleife verarbeiten kann. <p><p>Sie können die [Abfrageaktion](../connectors/connectors-native-query.md) verwenden, um größere Arrays zu filtern. |
 | Foreach-Parallelität | Wenn die Parallelitätssteuerung deaktiviert ist, beträgt der standardmäßige Grenzwert 20. Der Standardwert kann in einen Wert von 1 bis 50 (einschließlich) geändert werden. | Dieser Grenzwert entspricht der maximalen Anzahl von Foreach-Schleifeniterationen, die gleichzeitig bzw. parallel ausgeführt werden können. <p><p>Informationen zum Ändern des Standardlimits auf einen Wert zwischen 1 und 50 (einschließlich) finden Sie unter [Ändern des Foreach-Parallelitätsgrenzwerts](../logic-apps/logic-apps-workflow-actions-triggers.md#change-for-each-concurrency) und [Sequenzielles Ausführen von Foreach-Schleifen](../logic-apps/logic-apps-workflow-actions-triggers.md#sequential-for-each). |
 | SplitOn-Elemente | 100.000 | Für Trigger, die ein Array zurückgeben, können Sie einen Ausdruck angeben, der eine SplitOn-Eigenschaft verwendet, um [Arrayelemente für die Verarbeitung in mehrere Workflowinstanzen aufzuteilen bzw. aufzulösen](../logic-apps/logic-apps-workflow-actions-triggers.md#split-on-debatch), anstatt eine Foreach-Schleife zu verwenden. Dieser Ausdruck verweist auf das Array, das zum Erstellen und Ausführen einer Workflowinstanz für jedes Arrayelement verwendet werden soll. |
-| Until-Iterationen | 5.000 | |
+| Until-Iterationen | 5\.000 | |
 ||||
 
 <a name="throughput-limits"></a>
@@ -156,8 +156,8 @@ Die folgenden Grenzwerte gelten für benutzerdefinierte Connectors, die Sie übe
 
 | NAME | Grenzwert bei mehreren Mandanten | Grenzwert für Integrationsdienstumgebung | Notizen |
 |------|--------------------|---------------------------------------|-------|
-| Anzahl von benutzerdefinierten Connectors | 1.000 pro Azure-Abonnement | 1.000 pro Azure-Abonnement ||
-| Anzahl von Anforderungen pro Minute für einen benutzerdefinierten Connector | 500 Anforderungen pro Minute und Verbindung | 2.000 Anforderungen pro Minute und *benutzerdefiniertem Connector* ||
+| Anzahl von benutzerdefinierten Connectors | 1\.000 pro Azure-Abonnement | 1\.000 pro Azure-Abonnement ||
+| Anzahl von Anforderungen pro Minute für einen benutzerdefinierten Connector | 500 Anforderungen pro Minute und Verbindung | 2\.000 Anforderungen pro Minute und *benutzerdefiniertem Connector* ||
 |||
 
 <a name="managed-identity"></a>
@@ -184,11 +184,11 @@ Die folgenden Grenzwerte gelten für die Anzahl von Artefakten für jedes Integr
 
 | Artefakt | Kostenlos | Basic | Standard |
 |----------|------|-------|----------|
-| EDI-Handelsverträge | 10 | 1 | 1.000 |
-| EDI-Handelspartner | 25 | 2 | 1.000 |
-| Karten | 25 | 500 | 1.000 |
-| Schemas | 25 | 500 | 1.000 |
-| Assemblys | 10 | 25 | 1.000 |
+| EDI-Handelsverträge | 10 | 1 | 1\.000 |
+| EDI-Handelspartner | 25 | 2 | 1\.000 |
+| Karten | 25 | 500 | 1\.000 |
+| Schemas | 25 | 500 | 1\.000 |
+| Assemblys | 10 | 25 | 1\.000 |
 | Zertifikate | 25 | 2 | 500 |
 | Batchkonfigurationen | 5 | 1 | 50 |
 ||||

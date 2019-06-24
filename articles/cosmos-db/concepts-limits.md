@@ -7,10 +7,10 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 05/19/2019
 ms.openlocfilehash: 0086327661df637dc0ae60208ed9424b4610ef0e
-ms.sourcegitcommit: e9a46b4d22113655181a3e219d16397367e8492d
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/21/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65969455"
 ---
 # <a name="limits-in-azure-cosmos-db"></a>Grenzwerte in Azure Cosmos DB
@@ -88,8 +88,8 @@ Abhängig von der API, die Sie verwenden, kann ein Azure Cosmos-Element ein Doku
 | Resource | Standardlimit |
 | --- | --- |
 | Maximale Größe eines Elements | 2MB (UTF-8-Länge von JSON-Darstellung) |
-| Maximale Länge des Partitionsschlüsselwerts | 2.048 Bytes |
-| Maximale Länge des ID-Werts | 1.024 Bytes |
+| Maximale Länge des Partitionsschlüsselwerts | 2\.048 Bytes |
+| Maximale Länge des ID-Werts | 1\.024 Bytes |
 | Maximale Anzahl der Eigenschaften pro Element | Praktisch unbegrenzt |
 | Maximale Schachtelungstiefe | Praktisch unbegrenzt |
 | Maximale Länge des Eigenschaftsnamens | Praktisch unbegrenzt |
@@ -130,11 +130,11 @@ Cosmos DB unterstützt das Abfragen von Elementen mithilfe von [SQL](how-to-sql-
 | --- | --- |
 | Maximale Länge der SQL-Abfrage| 256KB <sup>*</sup>|
 | Maximale Anzahl der JOINs pro Abfrage| 5 <sup>*</sup>|
-| Maximale Anzahl der ANDs pro Abfrage| 2.000 <sup>*</sup>|
-| Maximale Anzahl der ORs pro Abfrage| 2.000 <sup>*</sup>|
+| Maximale Anzahl der ANDs pro Abfrage| 2\.000 <sup>*</sup>|
+| Maximale Anzahl der ORs pro Abfrage| 2\.000 <sup>*</sup>|
 | Maximale Anzahl der UDFs pro Abfrage| 10 <sup>*</sup>|
-| Maximale Anzahl der Argumente pro IN-Ausdrucks| 6.000 <sup>*</sup>|
-| Maximale Anzahl der Punkte pro Polygon| 4.096 <sup>*</sup>|
+| Maximale Anzahl der Argumente pro IN-Ausdrucks| 6\.000 <sup>*</sup>|
+| Maximale Anzahl der Punkte pro Polygon| 4\.096 <sup>*</sup>|
 
 <sup>*</sup> Sie können jeden dieser Grenzwerte für SQL-Abfragen erhöhen, indem Sie sich an den Azure-Support wenden oder über [askcosmosdb@microsoft.com](mailto:askcosmosdb@microsoft.com) an uns.
 
@@ -158,7 +158,7 @@ Die folgende Tabelle enthält die Grenzwerte für die [Azure Cosmos DB kostenlos
 | Dauer der Testversion | 30 Tage (kann beliebig oft erneuert werden) |
 | Maximale Anzahl Container pro Abonnement (SQL, Gremlin, Tabellen-API) | 1 |
 | Maximale Anzahl Container pro Abonnement (MongoDB-API) | 3 |
-| Maximaler Durchsatz pro Container | 5.000 |
+| Maximaler Durchsatz pro Container | 5\.000 |
 | Maximaler Durchsatz pro Datenbank mit gemeinsam genutztem Durchsatz | 20000 |
 | Max. Gesamtspeicher pro Konto | 10 GB |
 

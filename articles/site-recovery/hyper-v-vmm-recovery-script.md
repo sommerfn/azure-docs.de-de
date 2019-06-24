@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 11/27/2018
 ms.author: rajanaki
-ms.openlocfilehash: a3d6f84de103596e27c22cbb11d709bb1a85dc91
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: ea6d969ed6612f947e3c73c438738bd98ac2bb30
+ms.sourcegitcommit: 1289f956f897786090166982a8b66f708c9deea1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52836838"
+ms.lasthandoff: 06/17/2019
+ms.locfileid: "64700464"
 ---
 # <a name="add-a-vmm-script-to-a-recovery-plan"></a>Hinzufügen eines VMM-Skripts zu einem Wiederherstellungsplan
 
@@ -29,7 +29,7 @@ Sie können PowerShell-Skripts in Ihren Wiederherstellungsplänen verwenden. Sie
     - Wenn ein Fehler auftritt, wird der Rest des Skripts nicht mehr ausgeführt.
     - Wenn beim Ausführen eines ungeplanten Failovers ein Fehler auftritt, wird der Wiederherstellungsplan fortgesetzt.
     - Wenn beim Ausführen eines geplanten Failovers ein Fehler auftritt, wird der Wiederherstellungsplan angehalten. Korrigieren Sie das Skript, überprüfen Sie, ob es wie erwartet ausgeführt wird, und führen Sie dann den Wiederherstellungsplan erneut aus.
-        - Der Befehl `Write-Host` funktioniert nicht in einem Skript für einen Wiederherstellungsplan. Bei Verwendung des Befehls `Write-Host` in einem Skript führt das Skript zu einem Fehler. Um die Ausgabe zu erstellen, erstellen Sie ein Proxyskript, das wiederum Ihr Hauptskript ausführt. Um sicherzustellen, dass alle Ausgaben weitergeleitet werden, verwenden Sie den Befehl **\>\>**.
+        - Der Befehl `Write-Host` funktioniert nicht in einem Skript für einen Wiederherstellungsplan. Bei Verwendung des Befehls `Write-Host` in einem Skript führt das Skript zu einem Fehler. Um die Ausgabe zu erstellen, erstellen Sie ein Proxyskript, das wiederum Ihr Hauptskript ausführt. Um sicherzustellen, dass alle Ausgaben weitergeleitet werden, verwenden Sie den Befehl **\>\>** .
         - Die Zeitüberschreitung für das Skript wird erreicht, falls die Rückgabe nicht innerhalb von 600 Sekunden erfolgt.
         - Falls etwas in STDERR geschrieben wird, wird das Skript als nicht erfolgreich klassifiziert. Diese Informationen werden in den Details zur Skriptausführung angezeigt.
 
@@ -45,7 +45,7 @@ Sie können PowerShell-Skripts in Ihren Wiederherstellungsplänen verwenden. Sie
   
   1. Öffnen Sie den Registrierungs-Editor, und navigieren Sie zu **HKEY_LOCAL_MACHINE\SOFTWARE\MICROSOFT\Azure Site Recovery\Registration**.
 
-  1. Ändern Sie den Wert von **ScriptLibraryPath** in **\\\libserver2.contoso.com\share\\**. Geben Sie den vollqualifizierten Domänennamen vollständig ein. Geben Sie die Berechtigungen für den Speicherort der Freigabe an. Dies ist der Stammknoten der Freigabe. Wechseln Sie in VMM in der Bibliothek zum Stammknoten, um diesen zu überprüfen. Der Pfad, der geöffnet wird, ist der Stamm des Pfads. Dies ist der Pfad, den Sie in der Variable verwenden müssen.
+  1. Ändern Sie den Wert von **ScriptLibraryPath** in **\\\libserver2.contoso.com\share\\** . Geben Sie den vollqualifizierten Domänennamen vollständig ein. Geben Sie die Berechtigungen für den Speicherort der Freigabe an. Dies ist der Stammknoten der Freigabe. Wechseln Sie in VMM in der Bibliothek zum Stammknoten, um diesen zu überprüfen. Der Pfad, der geöffnet wird, ist der Stamm des Pfads. Dies ist der Pfad, den Sie in der Variable verwenden müssen.
 
   1. Testen Sie das Skript mit einem Benutzerkonto mit der gleichen Stufe von Benutzerrechten wie das VMM-Dienstkonto. Durch die Verwendung dieser Benutzerrechte vergewissern Sie sich, dass eigenständige, getestete Skripts auf die gleiche Weise wie in Wiederherstellungsplänen ausgeführt werden. Legen Sie für die Ausführungsrichtlinie auf dem VMM-Server wie folgt eine Umleitung fest:
 
@@ -71,7 +71,7 @@ Nachdem Sie die virtuellen Computer oder Replikationsgruppen einem Wiederherstel
 1. Öffnen Sie den Wiederherstellungsplan.
 1. Wählen Sie in der Liste **Schritte** ein Element aus. Wählen Sie dann **Skript** oder **Manuelle Aktion** aus.
 1. Geben Sie an, ob Sie das Skript oder die Aktion vor oder nach dem ausgewählten Eintrag hinzufügen möchten. Verwenden Sie die Schaltflächen **Nach oben** und **Nach unten**, um die Position des Skripts nach oben oder unten zu verschieben.
-1. Wenn Sie ein VMM-Skript hinzufügen, wählen Sie **Failover to VMM script** (Failover zu VMM-Skript) aus. Geben Sie unter **Skriptpfad** den relativen Pfad zur Freigabe ein. Geben Sie z.B. „**\RPScripts\RPScript.PS1**“ ein.
+1. Wenn Sie ein VMM-Skript hinzufügen, wählen Sie **Failover to VMM script** (Failover zu VMM-Skript) aus. Geben Sie unter **Skriptpfad** den relativen Pfad zur Freigabe ein. Geben Sie z.B. „ **\RPScripts\RPScript.PS1**“ ein.
 1. Wenn Sie ein Azure Automation-Runbook hinzufügen, geben Sie das Automation-Konto an, in dem sich das Runbook befindet. Wählen Sie dann das gewünschte Azure-Runbookskript aus.
 1. Führen Sie ein Failover für den Wiederherstellungsplan aus, um sicherzustellen, dass das Skript wie erwartet funktioniert.
 

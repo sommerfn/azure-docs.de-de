@@ -9,15 +9,15 @@ ms.topic: conceptual
 ms.date: 05/10/2019
 ms.author: robinsh
 ms.openlocfilehash: e4906bf9f2aead69c315ddb7b2e3b10489378d87
-ms.sourcegitcommit: 25a60179840b30706429c397991157f27de9e886
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/28/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66259372"
 ---
 # <a name="tutorial-using-azure-iot-hub-message-enrichments-preview"></a>Tutorial: Verwenden von Azure IoT Hub-Nachrichtenanreicherungen (Vorschauversion)
 
-*Nachrichtenanreicherungen* ist die Fähigkeit des IoT-Hubs, Nachrichten mit zusätzlichen Informationen zu *stempeln*, bevor sie an den angegebenen Endpunkt gesendet werden. Ein Grund zur Verwendung von Nachrichtenanreicherungen ist die Einbeziehung von Daten, mit denen sich die Downstreamverarbeitung vereinfachen lässt. So kann beispielsweise durch die Anreicherung von Gerätetelemetrienachrichten mit einem Gerätezwillingstag die Last bei Kunden reduziert werden, um Gerätezwillings-API-Aufrufe für diese Informationen durchzuführen. Weitere Informationen finden Sie in der [Übersicht über Nachrichtenanreicherungen](iot-hub-message-enrichments-overview.md).
+*Nachrichtenanreicherungen* ist die Fähigkeit des IoT-Hubs, Nachrichten mit zusätzlichen Informationen zu *stempeln*, bevor sie an den angegebenen Endpunkt gesendet werden. Ein Grund für die Verwendung von Nachrichtenanreicherungen: Auf diese Weise lassen sich Daten einbeziehen, die zur Vereinfachung der Downstreamverarbeitung verwendet werden können. So kann beispielsweise durch die Anreicherung von Gerätetelemetrienachrichten mit einem Gerätezwillingstag die Last bei Kunden reduziert werden, um Gerätezwillings-API-Aufrufe für diese Informationen durchzuführen. Weitere Informationen finden Sie in der [Übersicht über Nachrichtenanreicherungen](iot-hub-message-enrichments-overview.md).
 
 In diesem Tutorial verwenden Sie die Azure CLI zum Einrichten der Ressourcen, einschließlich zwei Endpunkten, die auf zwei verschiedene Speichercontainer verweisen – **enriched** und **original**. Anschließend verwenden Sie das [Azure-Portal](https://portal.azure.com) zum Konfigurieren von Nachrichtenanreicherungen. Diese sollen nur auf Nachrichten angewendet werden, die an den Endpunkt mit dem Speichercontainer **enriched** gesendet werden. Sie senden Nachrichten an den IoT-Hub, die an beide Speichercontainer weitergeleitet werden. Nur die an den Endpunkt für den Speichercontainer **enriched** gesendeten Nachrichten werden angereichert.
 
@@ -71,7 +71,7 @@ Hier sind die vom Skript erstellten Ressourcen. **enriched** bedeutet, dass die 
 
 | NAME | Wert |
 |-----|-----|
-| Ressourcengruppe | ContosoResourcesMsgEn |
+| resourceGroup | ContosoResourcesMsgEn |
 | Containername | original  |
 | Containername | enriched  |
 | IoT-Gerätename | Contoso-Test-Device |

@@ -16,10 +16,10 @@ ms.author: mimart
 ms.reviewer: arvinh
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 086161b73e2a3e07df835394dc26082e12fbd434
-ms.sourcegitcommit: e9a46b4d22113655181a3e219d16397367e8492d
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/21/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65963987"
 ---
 # <a name="automate-user-provisioning-and-deprovisioning-to-saas-applications-with-azure-active-directory"></a>Automatisieren der Bereitstellung und Bereitstellungsaufhebung von Benutzern für SaaS-Anwendungen mit Azure Active Directory
@@ -91,7 +91,7 @@ Informationen zum generischen Verbinden von Anwendungen, die SCIM 2.0-basierte A
 
 Konfigurieren Sie im Azure Active Directory-Portal den Azure AD-Bereitstellungsdiensts für eine ausgewählte Anwendung.
 
-1. Öffnen Sie das **[Azure Active Directory-Portal](https://aad.portal.azure.com)**.
+1. Öffnen Sie das **[Azure Active Directory-Portal](https://aad.portal.azure.com)** .
 
 1. Wählen Sie im linken Bereich die Option **Unternehmensanwendungen** aus. Daraufhin wird eine Liste aller konfigurierten Apps angezeigt.
 
@@ -202,13 +202,13 @@ Die folgende Tabelle fasst die Synchronisierungsdauer für gängige Bereitstellu
 | Bereichskonfiguration | Benutzer, Gruppen und Mitglieder im Bereich | Dauer der ersten Synchronisierung | Dauer der inkrementellen Synchronisierung |
 | -------- | -------- | -------- | -------- |
 | Nur zugewiesene Benutzer und Gruppen synchronisieren |  < 1.000 |  < 30 Minuten | < 30 Minuten |
-| Nur zugewiesene Benutzer und Gruppen synchronisieren |  1.000 - 10.000 | 142 - 708 Minuten | < 30 Minuten |
-| Nur zugewiesene Benutzer und Gruppen synchronisieren |   10.000 - 100.000 | 1.170 - 2.340 Minuten | < 30 Minuten |
+| Nur zugewiesene Benutzer und Gruppen synchronisieren |  1\.000 - 10.000 | 142 - 708 Minuten | < 30 Minuten |
+| Nur zugewiesene Benutzer und Gruppen synchronisieren |   10.000 - 100.000 | 1\.170 - 2.340 Minuten | < 30 Minuten |
 | Alle Benutzer und Gruppen in Azure AD synchronisieren |  < 1.000 | < 30 Minuten  | < 30 Minuten |
-| Alle Benutzer und Gruppen in Azure AD synchronisieren |  1.000 - 10.000 | < 30 - 120 Minuten | < 30 Minuten |
+| Alle Benutzer und Gruppen in Azure AD synchronisieren |  1\.000 - 10.000 | < 30 - 120 Minuten | < 30 Minuten |
 | Alle Benutzer und Gruppen in Azure AD synchronisieren |  10.000 - 100.000  | 713 - 1.425 Minuten | < 30 Minuten |
 | Alle Benutzer in Azure AD synchronisieren|  < 1.000  | < 30 Minuten | < 30 Minuten |
-| Alle Benutzer in Azure AD synchronisieren | 1.000 - 10.000  | 43 - 86 Minuten | < 30 Minuten |
+| Alle Benutzer in Azure AD synchronisieren | 1\.000 - 10.000  | 43 - 86 Minuten | < 30 Minuten |
 
 
 Nur für die Konfiguration **Nur zugewiesene Benutzer und Gruppen synchronisieren** können Sie die folgenden Formeln verwenden, um den ungefähren Mindest- und Höchstwert für die erwartete **Dauer der ersten Synchronisierung** zu bestimmen:
@@ -269,7 +269,7 @@ Die Verwendung dynamischer Gruppen kann jedoch die Gesamtleistung der End-to-End
 
 ### <a name="does-automatic-user-provisioning-to-saas-apps-work-with-nested-groups-in-azure-ad"></a>Funktioniert automatische Benutzerbereitstellung für SaaS-Apps mit geschachtelten Gruppen in Azure AD?
 
- Nein. Wenn die Konfiguration auf „Nur zugewiesene Benutzer und Gruppen synchronisieren“ festgelegt ist, kann der Azure AD-Benutzerbereitstellungsdienst Benutzer, die sich in geschachtelten Gruppen befinden, weder lesen noch bereitstellen. Er kann nur Benutzer lesen und bereitstellen, die direkte Mitglieder der explizit zugewiesenen Gruppe sind.
+Nein. Wenn die Konfiguration auf „Nur zugewiesene Benutzer und Gruppen synchronisieren“ festgelegt ist, kann der Azure AD-Benutzerbereitstellungsdienst Benutzer, die sich in geschachtelten Gruppen befinden, weder lesen noch bereitstellen. Er kann nur Benutzer lesen und bereitstellen, die direkte Mitglieder der explizit zugewiesenen Gruppe sind.
 
 Dies ist eine Einschränkung „gruppenbasierter Zuweisungen zu Anwendungen“, die sich auch auf das einmalige Anmelden auswirkt und unter [Verwenden einer Gruppe zum Verwalten des Zugriffs auf SaaS-Anwendungen](https://docs.microsoft.com/azure/active-directory/users-groups-roles/groups-saasapps ) beschrieben ist.
 

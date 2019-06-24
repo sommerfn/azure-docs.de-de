@@ -7,10 +7,10 @@ ms.topic: conceptual
 ms.date: 05/21/2019
 ms.author: rimman
 ms.openlocfilehash: 2d1ac054abf4bb8228bdb5cc20d79cb751af7a33
-ms.sourcegitcommit: e9a46b4d22113655181a3e219d16397367e8492d
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/21/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65967442"
 ---
 # <a name="optimize-query-cost-in-azure-cosmos-db"></a>Optimieren der Abfragekosten in Azure Cosmos DB
@@ -89,7 +89,7 @@ Total Query Execution Time               :   �
 
 Berücksichtigen Sie bei der Kostenoptimierung von Abfragen die folgenden bewährten Methoden:
 
-* **Zusammenstellen von mehreren Entitätstypen** 
+* **Zusammenstellen von mehreren Entitätstypen**
 
    Versuchen Sie, mehrere Entitätstypen in einem oder einigen wenigen Containern zusammenzustellen. Diese Methode bietet nicht nur Vorteile aus preislicher Sicht, sondern wirkt sich auch positiv auf die Ausführung von Abfragen und Transaktionen aus. Abfragen werden auf einen einzelnen Container begrenzt, und atomische Transaktionen für mehrere Datensätze über gespeicherte Prozeduren/Trigger hinweg werden auf einen Partitionsschlüssel in einem einzelnen Container begrenzt. Durch das Zusammenstellen von Entitäten im selben Container können Sie die Anzahl der Netzwerk-Roundtrips zum Auflösen von Beziehungen zwischen den Datensätzen reduzieren. Dadurch erhöht sich die End-to-End-Leistung und ermöglicht atomische Transaktionen über mehrere Datensätze für ein größeres Dataset. In Folge sinken die Kosten. Wenn in Ihrem Szenario die Zusammenstellung mehrerer Entitätstypen in einem oder einigen wenigen Containern schwierig ist, liegt dies in der Regel daran, dass Sie eine vorhandene Anwendung migrieren und keine Codeänderungen vornehmen möchten. In diesem Fall sollten Sie die Bereitstellung des Durchsatzes auf Datenbankebene in Betracht ziehen.  
 

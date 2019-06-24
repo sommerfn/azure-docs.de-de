@@ -9,10 +9,10 @@ ms.topic: reference
 ms.date: 01/30/2019
 ms.author: maquaran
 ms.openlocfilehash: 2a4d636ccb03e36f7c495f3c10c90033d7c3c93c
-ms.sourcegitcommit: c05618a257787af6f9a2751c549c9a3634832c90
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/30/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66417917"
 ---
 # <a name="net-change-feed-processor-sdk-download-and-release-notes"></a>.NET Change Feed Processor-SDK: Download und Anmerkungen zum Release
@@ -177,13 +177,13 @@ Anforderungen an Cosmos DB mithilfe eines deaktivierten SDK werden vom Dienst ab
 | [2.2.3](#2.2.3) |19. November 2018 |--- |
 | [2.2.2](#2.2.2) |31. Oktober 2018 |--- |
 | [2.2.1](#2.2.1) |24. Oktober 2018 |--- |
-| [1.3.3](#1.3.3) |8. Mai 2018 |--- |
+| [1.3.3](#1.3.3) |8\. Mai 2018 |--- |
 | [1.3.2](#1.3.2) |18. April 2018 |--- |
 | [1.3.1](#1.3.1) |13. März 2018 |--- |
 | [1.2.0](#1.2.0) |31. Oktober 2017 |--- |
 | [1.1.1](#1.1.1) |29. August 2017 |--- |
 | [1.1.0](#1.1.0) |13. August 2017 |--- |
-| [1.0.0](#1.0.0) |7. Juli 2017 |--- |
+| [1.0.0](#1.0.0) |7\. Juli 2017 |--- |
 
 ## <a name="faq"></a>Häufig gestellte Fragen
 

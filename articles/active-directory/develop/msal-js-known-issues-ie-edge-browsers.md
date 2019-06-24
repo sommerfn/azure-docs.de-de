@@ -18,10 +18,10 @@ ms.reviewer: saeeda
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: c57ed956ec50c8bac26720a27894c07353928336
-ms.sourcegitcommit: 4c2b9bc9cc704652cc77f33a870c4ec2d0579451
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/17/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65874086"
 ---
 # <a name="known-issues-on-internet-explorer-and-microsoft-edge-browsers-with-msaljs"></a>Bekannte Probleme in den Browsern Internet Explorer und Microsoft Edge bei Verwendung von MSAL.js
@@ -46,7 +46,7 @@ Die meisten Probleme haben folgende Ursache. Der Sitzungsspeicher und lokale Spe
     - [Fehler 13861050](https://developer.microsoft.com/en-us/microsoft-edge/platform/issues/13861050/)
     - [Fehler 13861663](https://developer.microsoft.com/en-us/microsoft-edge/platform/issues/13861663/)
 
-### <a name="update-fix-available-in-msaljs-023"></a>Update: Fix in MSAL.js 0.2.3 verfügbar
+### <a name="update-fix-available-in-msaljs-023"></a>Aktualisieren: Fix in MSAL.js 0.2.3 verfügbar
 In [MSAL.js 0.2.3](https://github.com/AzureAD/microsoft-authentication-library-for-js/releases) wurden Fixes für die Umleitungsschleife bei der Authentifizierung veröffentlicht. Aktivieren Sie das Flag `storeAuthStateInCookie` in der Konfiguration von MSAL.js, um diesen Fix zu nutzen. Dieses Flag ist standardmäßig auf „false“ festgelegt.
 
 Wenn das Flag `storeAuthStateInCookie` aktiviert ist, nutzt MSAL.js die Browsercookies, um den Anforderungsstatus zu speichern, der für die Überprüfung der Authentifizierungsflows erforderlich ist.

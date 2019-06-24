@@ -10,10 +10,10 @@ ms.topic: conceptual
 ms.date: 04/16/2019
 ms.author: mbaldwin
 ms.openlocfilehash: 922273e3805004f6af068ea748c16f5675810144
-ms.sourcegitcommit: 13cba995d4538e099f7e670ddbe1d8b3a64a36fb
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/22/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66001464"
 ---
 # <a name="security-attributes-for-azure-storage"></a>Sicherheitsattribute für Azure Storage
@@ -37,7 +37,7 @@ In diesem Artikel werden die in Azure Storage integrierten Sicherheitsattribute 
 | Sicherheitsattribut | Ja/Nein | Notizen |
 |---|---|--|
 | Unterstützung des Dienstendpunkts| Ja |  |
-| Unterstützung der VNET-Einschleusung| – |  |
+| Unterstützung der VNet-Einschleusung| – |  |
 | Unterstützung von Netzwerkisolation und Firewall| Ja | |
 | Unterstützung der Tunnelerzwingung| – |  |
 
@@ -59,8 +59,8 @@ In diesem Artikel werden die in Azure Storage integrierten Sicherheitsattribute 
 
 | Sicherheitsattribut | Ja/Nein | Notizen|
 |---|---|--|
-| Steuerungs-/Verwaltungsebene: Protokollierung und Überwachung | Ja | Azure Resource Manager-Aktivitätsprotokoll |
-| Datenebene: Protokollierung und Überwachung| Ja | Diagnoseprotokolle des Diensts, Azure Monitor-Protokolle in der Vorschauversion  |
+| Protokollierung und Überwachung auf Steuerungs- und Verwaltungsebene | Ja | Azure Resource Manager-Aktivitätsprotokoll |
+| Protokollierung und Überwachung auf Datenebene| Ja | Diagnoseprotokolle des Diensts, Azure Monitor-Protokolle in der Vorschauversion  |
 
 ## <a name="configuration-management"></a>Konfigurationsverwaltung
 

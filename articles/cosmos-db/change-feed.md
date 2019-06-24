@@ -9,10 +9,10 @@ ms.date: 05/20/2019
 ms.reviewer: sngun
 ms.custom: seodec18
 ms.openlocfilehash: 51a554586c67842ead40cd4a1bfaaa51bbdd8a18
-ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/20/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65954400"
 ---
 # <a name="change-feed-in-azure-cosmos-db---overview"></a>Änderungsfeed in Azure Cosmos DB – Übersicht
@@ -35,10 +35,10 @@ Dieses Feature wird derzeit von den folgenden Azure Cosmos DB-APIs und Client-SD
 
 | **Clienttreiber** | **Azure-Befehlszeilenschnittstelle** | **SQL-API** | **Cassandra-API** | **MongoDB-API von Azure Cosmos DB** | **Gremlin-API**|**Tabellen-API** |
 | --- | --- | --- | --- | --- | --- | --- |
-| .NET | Nicht verfügbar | Ja | Nein  | Nein  | Ja | Nein  |
-|Java|Nicht verfügbar|Ja|Nein |Nein |Ja|Nein |
-|Python|Nicht verfügbar|Ja|Nein |Nein |Ja|Nein |
-|Node/JS|Nicht verfügbar|Ja|Nein |Nein |Ja|Nein |
+| .NET | Nicht verfügbar | Ja | Nein | Nein | Ja | Nein |
+|Java|Nicht verfügbar|Ja|Nein|Nein|Ja|Nein|
+|Python|Nicht verfügbar|Ja|Nein|Nein|Ja|Nein|
+|Node/JS|Nicht verfügbar|Ja|Nein|Nein|Ja|Nein|
 
 ## <a name="change-feed-and-different-operations"></a>Änderungsfeed und verschiedene Vorgänge
 

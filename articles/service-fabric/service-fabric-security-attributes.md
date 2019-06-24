@@ -10,10 +10,10 @@ ms.topic: conceptual
 ms.date: 04/16/2019
 ms.author: mbaldwin
 ms.openlocfilehash: 7c1718298c3f7c3fea28fa0b18569085f071696f
-ms.sourcegitcommit: 13cba995d4538e099f7e670ddbe1d8b3a64a36fb
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/22/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66003055"
 ---
 # <a name="security-attributes-for-azure-service-fabric"></a>Sicherheitsattribute für Azure Service Fabric
@@ -59,7 +59,7 @@ In diesem Artikel werden die in Azure Service Fabric integrierten Sicherheitsatt
 
 | Sicherheitsattribut | Ja/Nein | Notizen|
 |---|---|--|
-| Protokollierung und Überwachung auf Steuerungs-/Verwaltungsebene| Ja | Alle Vorgänge auf Steuerungsebene durchlaufen Überwachungs- und Genehmigungsprozesse. |
+| Protokollierung und Überwachung auf Steuerungs- und Verwaltungsebene| Ja | Alle Vorgänge auf Steuerungsebene durchlaufen Überwachungs- und Genehmigungsprozesse. |
 | Protokollierung und Überwachung auf Datenebene| – | Der Cluster befindet sich im Besitz des Kunden.  |
 
 ## <a name="configuration-management"></a>Konfigurationsverwaltung

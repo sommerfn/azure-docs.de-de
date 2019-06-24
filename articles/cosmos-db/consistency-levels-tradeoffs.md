@@ -8,10 +8,10 @@ ms.date: 05/21/2019
 ms.author: rimman
 ms.reviewer: sngun
 ms.openlocfilehash: 09777a9980e4576a5d00123516e33696e845dcac
-ms.sourcegitcommit: cfbc8db6a3e3744062a533803e664ccee19f6d63
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/21/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65990219"
 ---
 # <a name="consistency-availability-and-performance-tradeoffs"></a>Kompromisse in Bezug auf Konsistenz, Verfügbarkeit und Leistung 
@@ -59,7 +59,7 @@ In der folgenden Tabelle wird die Beziehung zwischen dem Konsistenzmodell und de
 |> 1|Multimaster|Sitzung, Präfixkonsistenz, Letztlich|< 15 Minuten|0|
 |> 1|Multimaster|Begrenzte Veraltung (Bounded staleness)|*K* & *T*|0|
 
-*K* = Anzahl von *„K“*-Versionen (d. h. Updates) eines Elements.
+*K* = Anzahl von *„K“* -Versionen (d. h. Updates) eines Elements.
 
 *T* = Zeitintervall *„T“* seit dem letzten Update.
 

@@ -13,10 +13,10 @@ ms.topic: conceptual
 ms.date: 03/08/2019
 ms.author: jingwang
 ms.openlocfilehash: 6fb989632d3165ac5e54e540aae4385fc2258c85
-ms.sourcegitcommit: 25a60179840b30706429c397991157f27de9e886
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/28/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66256907"
 ---
 # <a name="copy-data-from-sap-business-warehouse-via-open-hub-using-azure-data-factory"></a>Kopieren von Daten aus SAP Business Warehouse über Open Hub mithilfe von Azure Data Factory
@@ -211,14 +211,14 @@ Beim Kopieren von Daten aus SAP BW Open Hub werden die folgenden Zuordnungen von
 
 | SAP ABAP-Typ | Data Factory-Zwischendatentyp |
 |:--- |:--- |
-| C (String) | Zeichenfolge |
+| C (String) | string |
 | I (integer) | Int32 |
 | F (Float) | Double |
-| D (Date) | Zeichenfolge |
-| T (Time) | Zeichenfolge |
+| D (Date) | string |
+| T (Time) | string |
 | P (BCD Packed, Currency, Decimal, Qty) | Decimal |
-| N (Numc) | Zeichenfolge |
-| X („Binary“ und „Raw“) | Zeichenfolge |
+| N (Numc) | string |
+| X („Binary“ und „Raw“) | string |
 
 ## <a name="next-steps"></a>Nächste Schritte
 Eine Liste der Datenspeicher, die als Quellen und Senken für die Kopieraktivität in Azure Data Factory unterstützt werden, finden Sie unter [Unterstützte Datenspeicher](copy-activity-overview.md#supported-data-stores-and-formats).

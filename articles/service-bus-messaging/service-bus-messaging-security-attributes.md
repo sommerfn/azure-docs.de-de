@@ -10,10 +10,10 @@ ms.topic: conceptual
 ms.date: 04/23/2019
 ms.author: mbaldwin
 ms.openlocfilehash: d68ffe6561da6a23c288dfabd1d3eb6b34099bb3
-ms.sourcegitcommit: 13cba995d4538e099f7e670ddbe1d8b3a64a36fb
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/22/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66003113"
 ---
 # <a name="security-attributes-for-azure-service-bus-messaging"></a>Sicherheitsattribute für Azure Service Bus Messaging
@@ -36,7 +36,7 @@ In diesem Artikel werden die in Azure Service Bus Messaging integrierten Sicherh
 
 | Sicherheitsattribut | Ja/Nein | Notizen |
 |---|---|--|
-| Dienstendpunktunterstützung| Ja (nur Premium-Tarif) | VNet-Dienstendpunkte werden nur für den [Premium-Tarif von Service Bus](service-bus-premium-messaging.md) unterstützt. |
+| Unterstützung des Dienstendpunkts| Ja (nur Premium-Tarif) | VNET-Dienstendpunkte werden nur für den [Premium-Tarif von Service Bus](service-bus-premium-messaging.md) unterstützt. |
 | Unterstützung der VNet-Einschleusung| Nein | |
 | Unterstützung von Netzwerkisolation und Firewall| Ja (nur Premium-Tarif) |  |
 | Unterstützung der Tunnelerzwingung| Nein |  |

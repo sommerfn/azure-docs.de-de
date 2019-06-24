@@ -9,10 +9,10 @@ ms.topic: article
 ms.date: 10/29/2018
 ms.author: yijenj
 ms.openlocfilehash: bd8cdbec42ea7df34ceee3ab82a1c6cac60ab59e
-ms.sourcegitcommit: 16cb78a0766f9b3efbaf12426519ddab2774b815
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/17/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65849718"
 ---
 # <a name="azure-marketplace-commercial-transaction-capabilities-and-considerations"></a>Kommerzielle Transaktionen ‎in Azure Marketplace: Möglichkeiten und Überlegungen
@@ -166,12 +166,12 @@ Beispiel, wenn der Kunde mit einer Kreditkarte bezahlt:
 |----------|----------|
 |Auftragszeitraum   | 15. August 2018 bis 30. August 2018 |
 |Laufzeitende (Monat)   | 30. August 2018 |
-|Abrechnungsdatum | 1. September 2018 |
-|Zahlungsdatum des Kunden | 1. September 2018 |
-|Treuhandperiode (nur Kreditkarten, 30 Tage) | 1. September 2018 bis 30. September 2018 |
-|Start der Forderungslaufzeit | 1. September 2018 |
+|Abrechnungsdatum | 1\. September 2018 |
+|Zahlungsdatum des Kunden | 1\. September 2018 |
+|Treuhandperiode (nur Kreditkarten, 30 Tage) | 1\. September 2018 bis 30. September 2018 |
+|Start der Forderungslaufzeit | 1\. September 2018 |
 |Ende der Forderungslaufzeit (max. 30 Tage) | 30. September 2018 |
-|Datum der Berechnung der Auszahlung (monatlich am 15.) | 1. Oktober 2018 |
+|Datum der Berechnung der Auszahlung (monatlich am 15.) | 1\. Oktober 2018 |
 |Auszahlungsdatum | 15. Oktober 2018 |
 
 Wenn der Kunde im Enterprise Agreement-Rahmen bezahlt:

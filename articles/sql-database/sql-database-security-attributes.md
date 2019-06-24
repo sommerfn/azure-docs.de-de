@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 05/06/2019
 ms.author: mbaldwin
 ms.openlocfilehash: 6c495456a5a3295abe5460ff6b5586e41fab2d95
-ms.sourcegitcommit: 13cba995d4538e099f7e670ddbe1d8b3a64a36fb
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/22/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66001037"
 ---
 # <a name="security-attributes-for-azure-sql-database"></a>Sicherheitsattribute für Azure SQL-Datenbank
@@ -38,7 +38,7 @@ Azure SQL-Datenbank umfasst Konzepte für [Einzeldatenbanken](sql-database-singl
 | Sicherheitsattribut | Ja/Nein | Notizen |
 |---|---|--|
 | Unterstützung des Dienstendpunkts| Ja | Gilt nur für eine [Einzeldatenbank](sql-database-single-index.yml). |
-| Unterstützung der VNET-Einschleusung| Ja | Gilt nur für eine [verwaltete Instanz](sql-database-managed-instance.md). |
+| Unterstützung der VNet-Einschleusung| Ja | Gilt nur für eine [verwaltete Instanz](sql-database-managed-instance.md). |
 | Unterstützung von Netzwerkisolation und Firewall| Ja | Firewall auf Datenbank- und Serverebene; Netzwerkisolation nur für eine [verwaltete Instanz](sql-database-managed-instance.md) |
 | Unterstützung der Tunnelerzwingung| Ja | [Verwaltete Instanz](sql-database-managed-instance.md) über [Azure ExpressRoute](../expressroute/index.yml)-VPN |
 
@@ -60,8 +60,8 @@ Azure SQL-Datenbank umfasst Konzepte für [Einzeldatenbanken](sql-database-singl
 
 | Sicherheitsattribut | Ja/Nein | Notizen|
 |---|---|--|
-| Steuerungs-/Verwaltungsebene: Protokollierung und Überwachung| Ja | Ja, für einige Ereignisse. |
-| Datenebene: Protokollierung und Überwachung | Ja | Über [SQL-Überwachung](sql-database-auditing.md). |
+| Protokollierung und Überwachung auf Steuerungs- und Verwaltungsebene| Ja | Ja, für einige Ereignisse. |
+| Protokollierung und Überwachung auf Datenebene | Ja | Über [SQL-Überwachung](sql-database-auditing.md). |
 
 ## <a name="configuration-management"></a>Konfigurationsverwaltung
 

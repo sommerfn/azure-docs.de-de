@@ -10,10 +10,10 @@ ms.topic: article
 ms.service: storage
 ms.subservice: blobs
 ms.openlocfilehash: 146b33c1a52838279f000a7f793902e2f35dbfaa
-ms.sourcegitcommit: be9fcaace62709cea55beb49a5bebf4f9701f7c6
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/17/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65826491"
 ---
 # <a name="reacting-to-blob-storage-events"></a>Reaktion auf Blob Storage-Ereignisse
@@ -44,7 +44,7 @@ Blob Storage-Ereignisse enthalten alle Informationen, die Sie für die Reaktion 
 
 > |Eigenschaft|Typ|BESCHREIBUNG|
 > |-------------------|------------------------|-----------------------------------------------------------------------|
-> |Thema|Zeichenfolge|Vollständige Azure Resource Manager-ID des Speicherkontos, das das Ereignis ausgibt.|
+> |topic|Zeichenfolge|Vollständige Azure Resource Manager-ID des Speicherkontos, das das Ereignis ausgibt.|
 > |subject|Zeichenfolge|Der relative Ressourcenpfad zu dem Objekt, das der Betreff des Ereignisses ist, in dem gleichen erweiterten Azure Resource Manager-Format, mit dem Speicherkonten, Dienste und Container für RBAC von Azure beschrieben werden.  Dieses Format schließt einen Blobnamen ein, bei dem die Groß-/Kleinschreibung beibehalten wird.|
 > |eventTime|Zeichenfolge|Datum und Uhrzeit der Ereignisgenerierung im ISO 8601-Format.|
 > |eventType|Zeichenfolge|„Microsoft.Storage.BlobCreated“ oder „Microsoft.Storage.BlobDeleted“|

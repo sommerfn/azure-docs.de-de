@@ -18,10 +18,10 @@ ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: cffef4028a684e27c0941c234df551d844f13420
-ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/20/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65896865"
 ---
 # <a name="azure-ad-activity-logs-in-azure-monitor"></a>Azure AD-Aktivitätsprotokolle in Azure Monitor
@@ -79,8 +79,8 @@ Die folgende Tabelle enthält eine Schätzung der Kosten in Abhängigkeit von de
 | Protokollkategorie | Anzahl an Benutzern | Ereignisse pro Tag | Datenmenge pro Monat (Schätzung) | Kosten pro Monat (Schätzung) | Kosten pro Jahr (Schätzung) |
 |--------------|-----------------|----------------------|--------------------------------------|----------------------------|---------------------------|
 | Audit | 100.000 | 1,5&nbsp;Millionen | 90 GB | 1,93 $ | 23,12 $ |
-| Audit | 1.000 | 15.000 | 900 MB | 0,02 $ | 0,24 $ |
-| Anmeldungen | 1.000 | 34.800 | 4 GB | 0,13 $ | 1,56 $ |
+| Audit | 1\.000 | 15.000 | 900 MB | 0,02 $ | 0,24 $ |
+| Anmeldungen | 1\.000 | 34.800 | 4 GB | 0,13 $ | 1,56 $ |
 | Anmeldungen | 100.000 | 15&nbsp;Millionen | 1,7 TB | 35,41 $ | 424,92 $ |
  
 
@@ -102,9 +102,9 @@ Die folgende Tabelle enthält die ungefähren monatlichen Kosten für einen einf
 
 | Protokollkategorie | Anzahl an Benutzern | Ereignisse pro Sekunde | Ereignisse pro Fünf-Minuten-Intervall | Menge pro Intervall | Nachrichten pro Intervall | Nachrichten pro Monat | Kosten pro Monat (Schätzung) |
 |--------------|-----------------|-------------------------|----------------------------------------|---------------------|---------------------------------|------------------------------|----------------------------|
-| Audit | 100.000 | 18 | 5.400 | 10,8 MB | 43 | 371.520 | 10,83 $ |
-| Audit | 1.000 | 0,1 | 52 | 104 KB | 1 | 8.640 | 10,80 $ |
-| Anmeldungen | 1.000 | 178 | 53.400 | 106,8&nbsp;MB | 418 | 3.611.520 | 11,06 $ |  
+| Audit | 100.000 | 18 | 5\.400 | 10,8 MB | 43 | 371.520 | 10,83 $ |
+| Audit | 1\.000 | 0,1 | 52 | 104 KB | 1 | 8\.640 | 10,80 $ |
+| Anmeldungen | 1\.000 | 178 | 53.400 | 106,8&nbsp;MB | 418 | 3\.611.520 | 11,06 $ |  
 
 ### <a name="azure-monitor-logs-cost-considerations"></a>Kostenüberlegungen zu Azure Monitor-Protokollen
 
@@ -113,7 +113,7 @@ Die folgende Tabelle enthält die ungefähren monatlichen Kosten für einen einf
 | Protokollkategorie       | Anzahl an Benutzern | Ereignisse pro Tag | Ereignisse pro Monat (30 Tage) | Kosten pro Monat in US-Dollar (geschätzt) |
 | :--                | ---             | ---            | ---                        | --:                          |
 | Überwachung und Anmeldungen | 100.000         | 16.500.000     | 495.000.000                |  1093,00 US-Dollar                       |
-| Audit              | 100.000         | 1.500.000      | 45.000.000                 |  246,66 US-Dollar                     |
+| Audit              | 100.000         | 1\.500.000      | 45.000.000                 |  246,66 US-Dollar                     |
 | Anmeldungen           | 100.000         | 15.000.000     | 450.000.000                |  847,28 US-Dollar                     |
 
 
