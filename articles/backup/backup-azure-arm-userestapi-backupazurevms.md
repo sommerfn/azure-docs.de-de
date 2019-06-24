@@ -1,5 +1,5 @@
 ---
-title: 'Azure Backup: Sichern von virtuellen Azure-Computern über die REST-API'
+title: 'Azure Backup: Sichern virtueller Azure-Computer mithilfe der REST-API'
 description: Verwalten von Sicherungsvorgängen der Azure-VM-Sicherung mit der REST-API
 services: backup
 author: pvrk
@@ -11,11 +11,11 @@ ms.date: 08/03/2018
 ms.author: pullabhk
 ms.assetid: b80b3a41-87bf-49ca-8ef2-68e43c04c1a3
 ms.openlocfilehash: 8a47d3cf346d7961e9f8b1c4fa615a2faa6b1da0
-ms.sourcegitcommit: 02ce0fc22a71796f08a9aa20c76e2fa40eb2f10a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/08/2018
-ms.locfileid: "51289577"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60646772"
 ---
 # <a name="back-up-an-azure-vm-using-azure-backup-via-rest-api"></a>Sichern eines virtuellen Azure-Computers mithilfe von Azure Backup über die REST-API
 
@@ -45,9 +45,9 @@ POST https://management.azure.com/Subscriptions/00000000-0000-0000-0000-00000000
 
 Der „refresh“-Vorgang ist ein [asynchroner Vorgang](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-async-operations). Das bedeutet, dass in diesem Vorgang ein anderer Vorgang erstellt wird, der separat nachverfolgt werden muss.
 
-Zwei Antworten werden zurückgegeben: „202 (Akzeptiert)“, wenn ein anderer Vorgang erstellt wird, und dann „200 (OK)“, wenn dieser Vorgang abgeschlossen ist.
+Er gibt zwei Antworten zurück: „202 (Akzeptiert)“, wenn ein anderer Vorgang erstellt wird, und dann „200 (OK)“, wenn dieser Vorgang abgeschlossen ist.
 
-|NAME  |Typ  |BESCHREIBUNG  |
+|NAME  |Type  |BESCHREIBUNG  |
 |---------|---------|---------|
 |204 Kein Inhalt     |         |  OK, wird ohne Inhalt zurückgegeben      |
 |202 – Akzeptiert     |         |     Zulässig    |
@@ -110,7 +110,7 @@ Der *GET*-URI enthält alle erforderlichen Parameter. Es ist kein zusätzlicher 
 
 #### <a name="responses"></a>Antworten
 
-|NAME  |Typ  |BESCHREIBUNG  |
+|NAME  |Type  |BESCHREIBUNG  |
 |---------|---------|---------|
 |200 – OK     | [WorkloadProtectableItemResourceList](https://docs.microsoft.com/rest/api/backup/backupprotectableitems/list#workloadprotectableitemresourcelist)        |       OK |
 
@@ -186,9 +186,9 @@ PUT https://management.azure.com/Subscriptions/00000000-0000-0000-0000-000000000
 
 Zum Erstellen eines geschützten Elements werden die folgenden Komponenten des Anforderungstexts verwendet.
 
-|NAME  |Typ  |BESCHREIBUNG  |
+|NAME  |Type  |BESCHREIBUNG  |
 |---------|---------|---------|
-|Eigenschaften     | AzureIaaSVMProtectedItem        |ProtectedItem-Ressourceneigenschaften         |
+|properties     | AzureIaaSVMProtectedItem        |ProtectedItem-Ressourceneigenschaften         |
 
 Die vollständige Liste mit Definitionen des Anforderungstexts und weitere Einzelheiten finden Sie im [Dokument zur REST-API zum Erstellen eines geschützten Elements](https://docs.microsoft.com/rest/api/backup/protecteditems/createorupdate#request-body).
 
@@ -212,9 +212,9 @@ Bei `{sourceResourceId}` handelt es sich um die oben genannte `{virtualMachineId
 
 Die Erstellung eines geschützten Elements ist ein [asynchroner Vorgang](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-async-operations). Das bedeutet, dass in diesem Vorgang ein anderer Vorgang erstellt wird, der separat nachverfolgt werden muss.
 
-Zwei Antworten werden zurückgegeben: „202 (Akzeptiert)“, wenn ein anderer Vorgang erstellt wird, und dann „200 (OK)“, wenn dieser Vorgang abgeschlossen ist.
+Er gibt zwei Antworten zurück: „202 (Akzeptiert)“, wenn ein anderer Vorgang erstellt wird, und dann „200 (OK)“, wenn dieser Vorgang abgeschlossen ist.
 
-|NAME  |Typ  |BESCHREIBUNG  |
+|NAME  |Type  |BESCHREIBUNG  |
 |---------|---------|---------|
 |200 – OK     |    [ProtectedItemResource](https://docs.microsoft.com/rest/api/backup/protecteditemoperationresults/get#protecteditemresource)     |  OK       |
 |202 – Akzeptiert     |         |     Zulässig    |
@@ -300,9 +300,9 @@ POST https://management.azure.com/Subscriptions/00000000-0000-0000-0000-00000000
 
 Zum Auslösen einer bedarfsgesteuerten Sicherung werden die folgenden Komponenten des Anforderungstexts verwendet.
 
-|NAME  |Typ  |BESCHREIBUNG  |
+|NAME  |Type  |BESCHREIBUNG  |
 |---------|---------|---------|
-|Eigenschaften     | [IaaSVMBackupRequest](https://docs.microsoft.com/rest/api/backup/backups/trigger#iaasvmbackuprequest)        |BackupRequestResource-Eigenschaften         |
+|properties     | [IaaSVMBackupRequest](https://docs.microsoft.com/rest/api/backup/backups/trigger#iaasvmbackuprequest)        |BackupRequestResource-Eigenschaften         |
 
 Die vollständige Liste mit Definitionen des Anforderungstexts und weitere Einzelheiten finden Sie im [Dokument zur REST-API zum Auslösen von Sicherungen für geschützte Elemente](https://docs.microsoft.com/rest/api/backup/backups/trigger#request-body).
 
@@ -323,9 +323,9 @@ Der folgende Anforderungstext definiert Eigenschaften, die zum Auslösen einer S
 
 Das Auslösen einer bedarfsgesteuerten Sicherung ist ein [asynchroner Vorgang](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-async-operations). Das bedeutet, dass in diesem Vorgang ein anderer Vorgang erstellt wird, der separat nachverfolgt werden muss.
 
-Zwei Antworten werden zurückgegeben: „202 (Akzeptiert)“, wenn ein anderer Vorgang erstellt wird, und dann „200 (OK)“, wenn dieser Vorgang abgeschlossen ist.
+Er gibt zwei Antworten zurück: „202 (Akzeptiert)“, wenn ein anderer Vorgang erstellt wird, und dann „200 (OK)“, wenn dieser Vorgang abgeschlossen ist.
 
-|NAME  |Typ  |BESCHREIBUNG  |
+|NAME  |Type  |BESCHREIBUNG  |
 |---------|---------|---------|
 |202 – Akzeptiert     |         |     Zulässig    |
 
@@ -443,9 +443,9 @@ DELETE https://management.azure.com//Subscriptions/00000000-0000-0000-0000-00000
 
 Der *DELETE*-Vorgang für den Schutz ist ein [asynchroner Vorgang](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-async-operations). Das bedeutet, dass in diesem Vorgang ein anderer Vorgang erstellt wird, der separat nachverfolgt werden muss.
 
-Zwei Antworten werden zurückgegeben: „202 (Akzeptiert)“, wenn ein anderer Vorgang erstellt wird, und dann „204 (Kein Inhalt)“, wenn dieser Vorgang abgeschlossen ist.
+Er gibt zwei Antworten zurück: „202 (Akzeptiert)“, wenn ein anderer Vorgang erstellt wird, und dann „204 (NoContent)“, wenn dieser Vorgang abgeschlossen ist.
 
-|NAME  |Typ  |BESCHREIBUNG  |
+|NAME  |Type  |BESCHREIBUNG  |
 |---------|---------|---------|
 |204 Kein Inhalt     |         |  Kein Inhalt       |
 |202 – Akzeptiert     |         |     Zulässig    |

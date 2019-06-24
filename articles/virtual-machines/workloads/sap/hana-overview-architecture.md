@@ -15,11 +15,11 @@ ms.date: 09/04/2018
 ms.author: saghorpa
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: c177dbad1145dee6eda3202d8076997cc7673dfc
-ms.sourcegitcommit: d211f1d24c669b459a3910761b5cacb4b4f46ac9
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/06/2018
-ms.locfileid: "44026920"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60477799"
 ---
 #  <a name="what-is-sap-hana-on-azure-large-instances"></a>Was ist SAP HANA in Azure (große Instanzen)?
 
@@ -27,9 +27,9 @@ SAP HANA in Azure (große Instanzen) ist eine einzigartige Lösung in Azure. Neb
 
 Die Kundenisolation innerhalb des Infrastrukturumfelds wird in Mandanten wie folgt durchgeführt:
 
-- **Netzwerke**: Isolation von Kunden innerhalb des Infrastrukturstapels durch virtuelle Netzwerke pro dem Kunden zugewiesenem Mandanten. Ein Mandant wird einem einzelnen Kunden zugewiesen. Ein Kunde kann mehrere Mandanten haben. Die Netzwerkisolation von Mandanten verhindert die Netzwerkkommunikation zwischen Mandanten auf der Ebene des Infrastrukturumfelds. Dies ist auch dann der Fall, wenn die Mandanten zum selben Kunden gehören.
-- **Speicherkomponenten**: Isolation durch Speicher-VMs, denen Speichervolumes zugewiesen sind. Speichervolumen können nur einem virtuellen Speichercomputer zugewiesen werden. Ein virtueller Speichercomputer wird nur einem einzigen Mandanten im SAP HANA-TDI-zertifizierten Infrastrukturstapel zugewiesen. Folglich kann nur in einem bestimmten verknüpften Mandanten auf Speichervolumes zugegriffen werden, die einer Speicher-VM zugewiesen sind. Sie sind zwischen den verschiedenen bereitgestellten Mandanten nicht sichtbar.
-- **Server oder Host**: Eine Server- oder Hosteinheit wird nicht zwischen Kunden oder Mandanten freigegeben. Ein Server oder Host, der einem Kunden bereitgestellt wird, ist eine unteilbare Bare-Metal-Computeeinheit, die einem einzigen Mandanten zugewiesen wird. Es wird *keine* Hard- oder Softpartitionierung verwendet, die dazu führen könnte, dass Sie einen Host oder Server für einen anderen Kunden freigeben. Speichervolumen, die dem virtuellen Speichercomputer des spezifischen Kunden zugewiesen sind, werden in einen derartigen Server eingebunden. Einem Mandant kann eine oder mehrere Servereinheiten verschiedener SKUs exklusiv zugewiesen werden.
+- **Netzwerk**: Isolation von Kunden innerhalb des Infrastrukturstapels durch virtuelle Netzwerke pro dem Kunden zugewiesenem Mandanten. Ein Mandant wird einem einzelnen Kunden zugewiesen. Ein Kunde kann mehrere Mandanten haben. Die Netzwerkisolation von Mandanten verhindert die Netzwerkkommunikation zwischen Mandanten auf der Ebene des Infrastrukturumfelds. Dies ist auch dann der Fall, wenn die Mandanten zum selben Kunden gehören.
+- **Speicherkomponenten:** Isolation durch Speicher-VMs, denen Speichervolumes zugewiesen sind. Speichervolumen können nur einem virtuellen Speichercomputer zugewiesen werden. Ein virtueller Speichercomputer wird nur einem einzigen Mandanten im SAP HANA-TDI-zertifizierten Infrastrukturstapel zugewiesen. Folglich kann nur in einem bestimmten verknüpften Mandanten auf Speichervolumes zugegriffen werden, die einer Speicher-VM zugewiesen sind. Sie sind zwischen den verschiedenen bereitgestellten Mandanten nicht sichtbar.
+- **Server oder Host:** Eine Server- oder Hosteinheit wird nicht zwischen Kunden oder Mandanten freigegeben. Ein Server oder Host, der einem Kunden bereitgestellt wird, ist eine unteilbare Bare-Metal-Computeeinheit, die einem einzigen Mandanten zugewiesen wird. Es wird *keine* Hard- oder Softpartitionierung verwendet, die dazu führen könnte, dass Sie einen Host oder Server für einen anderen Kunden freigeben. Speichervolumen, die dem virtuellen Speichercomputer des spezifischen Kunden zugewiesen sind, werden in einen derartigen Server eingebunden. Einem Mandant kann eine oder mehrere Servereinheiten verschiedener SKUs exklusiv zugewiesen werden.
 - In einem Infrastrukturumfeld von SAP HANA in Azure (große Instanzen) werden viele verschiedene Mandanten anhand der Mandantenkonzepte auf Netzwerk-, Speicher- und Computeebene bereitgestellt und voneinander isoliert. 
 
 

@@ -15,11 +15,11 @@ ms.workload: na
 ms.date: 09/20/2018
 ms.author: barclayn
 ms.openlocfilehash: 272cc843ab90eade06525f665d3cf2decf74a26f
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56114653"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60444515"
 ---
 # <a name="azure-encryption-overview"></a>Übersicht über die Azure-Verschlüsselung
 
@@ -39,7 +39,7 @@ Azure unterstützt verschiedene Verschlüsselungsmodelle, darunter die serversei
 
 ### <a name="client-side-encryption"></a>Clientseitige Verschlüsselung
 
-Die clientseitige Verschlüsselung erfolgt außerhalb von Azure.  Sie hat folgenden Inhalt:
+Die clientseitige Verschlüsselung erfolgt außerhalb von Azure. Sie hat folgenden Inhalt:
 
 - Daten, die über eine im Rechenzentrum des Kunden ausgeführte Anwendung oder über eine Dienstanwendung verschlüsselt werden
 - Daten, die beim Empfang in Azure bereits verschlüsselt sind
@@ -78,7 +78,7 @@ Weitere Informationen zum Verwenden und Herunterladen des NuGet-Pakets „Azure 
 
 Bei Verwendung der clientseitigen Verschlüsselung mit Key Vault werden Ihre Daten mit einem einmaligen symmetrischen Inhaltsverschlüsselungsschlüssel (CEK, Content Encryption Key) verschlüsselt, der vom Azure Storage Client SDK generiert wird. Der CEK wird mit einem Schlüsselverschlüsselungsschlüssel (KEK, Key Encryption Key) verschlüsselt, bei dem es sich entweder um ein symmetrisches oder ein asymmetrisches Schlüsselpaar handeln kann. Sie können ihn lokal verwalten oder in Key Vault speichern. Die verschlüsselten Daten werden dann in Azure Storage hochgeladen.
 
-Weitere Informationen zur clientseitigen Verschlüsselung mit Key Vault und den ersten Schritten mit entsprechenden Anweisungen finden Sie unter [Tutorial: Verschlüsseln und Entschlüsseln von Blobs in Microsoft Azure Storage per Azure Key Vault](../storage/storage-encrypt-decrypt-blobs-key-vault.md). 
+Weitere Informationen zur clientseitigen Verschlüsselung mit Key Vault und den ersten Schritten mit entsprechenden Anweisungen finden Sie unter [Tutorial: Verschlüsseln und Entschlüsseln von Blobs in Azure Storage per Azure Key Vault](../storage/storage-encrypt-decrypt-blobs-key-vault.md).
 
 Schließlich können Sie auch die Azure Storage-Clientbibliothek für Java verwenden, um die clientseitige Verschlüsselung vor dem Hochladen von Daten in Azure Storage und die Entschlüsselung der Daten beim Herunterladen auf den Client durchzuführen. Um die Schlüsselverwaltung für Speicherkonten zu ermöglichen, unterstützt diese Bibliothek zudem die Integration in [Key Vault](https://azure.microsoft.com/services/key-vault/).
 
@@ -170,9 +170,9 @@ Sie können eine Point-to-Site-VPN-Verbindung mit einem virtuellen Netzwerk übe
 
 Weitere Informationen zu Point-to-Site-VPN-Verbindungen mit virtuellen Azure-Netzwerken finden Sie in folgenden Artikeln:
 
-[Konfigurieren einer Point-to-Site-Verbindung mit einem VNET unter Verwendung der Zertifikatauthentifizierung: Azure-Portal](../vpn-gateway/vpn-gateway-howto-point-to-site-resource-manager-portal.md)  
+[Konfigurieren einer Point-to-Site-Verbindung mit einem VNET unter Verwendung der Zertifikatauthentifizierung: Azure-Portal](../vpn-gateway/vpn-gateway-howto-point-to-site-resource-manager-portal.md) 
 
-[Konfigurieren einer Point-to-Site-Verbindung mit einem VNET unter Verwendung der Zertifikatauthentifizierung: PowerShellPowerShell](../vpn-gateway/vpn-gateway-howto-point-to-site-rm-ps.md)
+[Konfigurieren einer Point-to-Site-Verbindung mit einem VNET unter Verwendung der Zertifikatauthentifizierung: PowerShell](../vpn-gateway/vpn-gateway-howto-point-to-site-rm-ps.md)
 
 ### <a name="site-to-site-vpns"></a>Site-to-Site-VPN-Verbindungen 
 

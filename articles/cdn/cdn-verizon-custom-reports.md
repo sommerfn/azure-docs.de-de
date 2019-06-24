@@ -1,6 +1,6 @@
 ---
 title: Benutzerdefinierte Berichte aus Verizon | Microsoft-Dokumentation
-description: 'Mithilfe der folgenden Berichte können Sie Verwendungsmuster für Ihr CDN anzeigen: Bandbreite, Übertragene Daten, Treffer, Cachestatus, Cachetrefferquote, Übertragene IPV4/IPV6-Daten.'
+description: 'Mithilfe der folgenden Berichte können Sie Verwendungsmuster für Content Delivery Network anzeigen: Bandbreite, übertragene Daten, Treffer, Cachestatus, Cachetrefferquote, übertragene IPv4-/IPv6-Daten.'
 services: cdn
 documentationcenter: ''
 author: mdgattuso
@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 10/11/2017
 ms.author: magattus
 ms.openlocfilehash: 75a1fb4beb4025dc3ec63d29944331d07be35d8a
-ms.sourcegitcommit: 4047b262cf2a1441a7ae82f8ac7a80ec148c40c4
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2018
-ms.locfileid: "49092065"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60323574"
 ---
 # <a name="custom-reports-from-verizon"></a>Benutzerdefinierte Berichte aus Verizon
 
@@ -47,15 +47,15 @@ Definieren Sie die folgenden Berichtsoptionen, um einen benutzerdefinierten Beri
 
 - Metriken: Die folgenden Optionen werden unterstützt:
 
-   - Treffer: gibt die Gesamtanzahl der Anforderungen an, die an einen Edge CNAME weitergeleitet werden, für den die benutzerdefinierte Berichtsfunktion aktiviert ist. Diese Metrik umfasst nicht den an den Client zurückgegebenen Statuscode.
+   - Treffer: Gibt die Gesamtanzahl von Anforderungen an, die an einen Edge CNAME weitergeleitet werden, für den die benutzerdefinierte Berichtsfunktion aktiviert ist. Diese Metrik umfasst nicht den an den Client zurückgegebenen Statuscode.
 
-   - Übertragene Daten: gibt die Gesamtmenge der von den Edgeservern an die HTTP-Clients (z.B. Webbrowser) übertragenen Daten für Anforderungen an, die an einen Edge CNAME weitergeleitet werden, für den die benutzerdefinierte Berichtsfunktion aktiviert ist. Die Menge der übertragenen Daten wird durch Hinzufügen der HTTP-Antwortheader zum Antworttext berechnet. Daher ist die Menge der übertragenen Daten für jedes Objekt größer als seine tatsächliche Dateigröße.
+   - Übertragene Daten: Gibt die Gesamtmenge der von den Edgeservern an die HTTP-Clients (z. B. Webbrowser) übertragenen Daten für Anforderungen an, die an einen Edge CNAME weitergeleitet werden, für den die benutzerdefinierte Berichtsfunktion aktiviert ist. Die Menge der übertragenen Daten wird durch Hinzufügen der HTTP-Antwortheader zum Antworttext berechnet. Daher ist die Menge der übertragenen Daten für jedes Objekt größer als seine tatsächliche Dateigröße.
 
-- Gruppierungen: bestimmt den Typ der Statistiken, die unterhalb des Balkendiagramms angezeigt werden Die folgenden Optionen werden unterstützt:
+- Gruppierungen: Bestimmt den Typ der Statistiken, die unterhalb des Balkendiagramms angezeigt werden. Die folgenden Optionen werden unterstützt:
 
-   - HTTP-Antwortcodes: sortiert die Statistiken nach dem HTTP-Antwortcode (z.B. 200, 403 usw.), der an den Client zurückgegeben wird 
+   - HTTP-Antwortcodes: Sortiert die Statistiken nach dem HTTP-Antwortcode (z. B. 200, 403 usw.), der an den Client zurückgegeben wird. 
 
-   - Cachestatus: sortiert die Statistiken nach Cachestatus.
+   - Cachestatus: Sortiert die Statistiken nach Cachestatus.
 
 
 Um den Datumsbereich für den Bericht festzulegen, können Sie in der Dropdownliste einen vordefinierten Datumsbereich auswählen, z.B. **Heute** oder **Diese Woche**, oder Sie können **Benutzerdefiniert** auswählen und durch Klicken auf die Kalendersymbole manuell einen Datumsbereich eingeben. 

@@ -11,11 +11,11 @@ ms.date: 08/21/2018
 ms.author: pullabhk
 ms.assetid: 5ffc4115-0ae5-4b85-a18c-8a942f6d4870
 ms.openlocfilehash: 657a777da0e984a145c1c617a6194bf4ef56306e
-ms.sourcegitcommit: 02ce0fc22a71796f08a9aa20c76e2fa40eb2f10a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/08/2018
-ms.locfileid: "51289647"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60648804"
 ---
 # <a name="create-azure-recovery-services-backup-policies-using-rest-api"></a>Erstellen von Azure Recovery Services-Sicherungsrichtlinien mit der REST-API
 
@@ -52,8 +52,8 @@ Um z.B. eine Richtlinie für Azure-VM-Sicherungen zu erstellen, werden im Folgen
 
 |NAME  |Erforderlich  |Typ  |BESCHREIBUNG  |
 |---------|---------|---------|---------|
-|Eigenschaften     |   True      |  ProtectionPolicy:[AzureIaaSVMProtectionPolicy](https://docs.microsoft.com/rest/api/backup/protectionpolicies/createorupdate#azureiaasvmprotectionpolicy)      | ProtectionPolicyResource-Eigenschaften        |
-|tags     |         | Objekt        |  Ressourcentags       |
+|properties     |   True      |  ProtectionPolicy:[AzureIaaSVMProtectionPolicy](https://docs.microsoft.com/rest/api/backup/protectionpolicies/createorupdate#azureiaasvmprotectionpolicy)      | ProtectionPolicyResource-Eigenschaften        |
+|tags     |         | Object        |  Ressourcentags       |
 
 Die vollständige Liste von Definitionen im Anforderungstext finden Sie im Dokument [Schutzrichtlinien – Erstellen oder Aktualisieren](https://docs.microsoft.com/rest/api/backup/protectionpolicies/createorupdate).
 
@@ -154,11 +154,11 @@ Die Richtlinie besagt Folgendes:
 
 ## <a name="responses"></a>Antworten
 
-Die Erstellung bzw. Aktualisierung von Sicherungsrichtlinien ist ein [asynchroner Vorgang](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-async-operations). Dies bedeutet, dass bei diesem Vorgang ein anderer Vorgang erstellt wird, der separat nachverfolgt werden muss.
+Die Erstellung bzw. Aktualisierung von Sicherungsrichtlinien ist ein [asynchroner Vorgang](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-async-operations). Das bedeutet, dass in diesem Vorgang ein anderer Vorgang erstellt wird, der separat nachverfolgt werden muss.
 
-Es werden zwei Antworten zurückgegeben: 202 (Zulässig), wenn ein anderer Vorgang erstellt wird, und dann 200 (OK), wenn dieser Vorgang abgeschlossen ist.
+Er gibt zwei Antworten zurück: „202 (Akzeptiert)“, wenn ein anderer Vorgang erstellt wird, und dann „200 (OK)“, wenn dieser Vorgang abgeschlossen ist.
 
-|NAME  |Typ  |BESCHREIBUNG  |
+|NAME  |Type  |BESCHREIBUNG  |
 |---------|---------|---------|
 |200 – OK     |    [ProtectionPolicyResource](https://docs.microsoft.com/rest/api/backup/protectionpolicies/createorupdate#protectionpolicyresource)     |  OK       |
 |202 – Akzeptiert     |         |     Zulässig    |
@@ -287,5 +287,5 @@ Aktivieren Sie den Schutz für eine nicht geschützte Azure-VM (siehe [Sichern e
 
 Weitere Informationen zu den Azure Backup-REST-APIs finden Sie in den folgenden Dokumenten:
 
-- [Recovery Services](/rest/api/recoveryservices/)
+- [Azure Recovery Services-Anbieter – REST-API](/rest/api/recoveryservices/)
 - [Erste Schritte mit der Azure-REST-API](/rest/api/azure/)

@@ -7,11 +7,11 @@ author: zr-msft
 ms.author: zarhoads
 ms.topic: article
 ms.date: 01/09/2019
-ms.openlocfilehash: 703aa081c8acf41f9206e2b0ccff45571367d2e8
-ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
+ms.openlocfilehash: 7a81f26b4dad5f7257e5c3fd012dffaf06d573bb
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/06/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65073781"
 ---
 # <a name="tutorial-deploy-from-github-to-azure-kubernetes-service-aks-with-jenkins-continuous-integration-and-deployment"></a>Tutorial: Bereitstellen über GitHub in Azure Kubernetes Service (AKS) mit Continuous Integration und Continuous Deployment von Jenkins
@@ -48,6 +48,9 @@ Für dieses Tutorial benötigen Sie Folgendes:
 ## <a name="prepare-your-app"></a>Vorbereiten Ihrer App
 
 In diesem Artikel verwenden Sie eine Azure-Abstimmungsanwendung, die eine in einem oder mehreren Pods gehostete Webschnittstelle und einen zusätzlichen Pod für die temporäre Datenspeicherung enthält. Bevor Sie Jenkins und AKS für automatisierte Bereitstellungen integrieren, müssen Sie zuerst manuell die Azure-Abstimmungsanwendung in Ihrem AKS-Cluster vorbereiten und bereitstellen. Diese manuelle Bereitstellung ist die erste Version der Anwendung und ermöglicht Ihnen, die Anwendung in Aktion zu sehen.
+
+> [!NOTE]
+> Die Azure-Beispielabstimmungsanwendung verwendet einen Linux-Pod, der zur Ausführung auf einem Linux-Knoten geplant wird. Der in diesem Artikel beschriebene Flow funktioniert auch für einen Windows Server-Pod, der für einen Windows Server-Knoten geplant ist.
 
 Forken Sie das folgende GitHub-Repository für die Beispielanwendung: [https://github.com/Azure-Samples/azure-voting-app-redis](https://github.com/Azure-Samples/azure-voting-app-redis). Wählen Sie die Schaltfläche **Fork** (Verzweigen) in der rechten oberen Ecke aus, um das Repository in Ihr GitHub-Konto zu verzweigen.
 
@@ -163,7 +166,7 @@ Enter the following to Unlock Jenkins:
 
 Eine Jenkins-Umgebungsvariable wird verwendet, um den Namen des ACR-Anmeldeservers zu speichern. Auf diese Variable wird während der Ausführung eines Jenkins-Buildauftrags verwiesen. Erstellen Sie diese Umgebungsvariable anhand der folgenden Schritte:
 
-- Wählen Sie auf der linken Seite des Jenkins-Portals **Manage Jenkins (Jenkins verwalten)** > **Configure System (System konfigurieren)** aus.
+- Wählen Sie auf der linken Seite des Jenkins-Portals **Manage Jenkins (Jenkins verwalten)**  > **Configure System (System konfigurieren)** aus.
 - Wählen Sie unter **Global Properties** (Globale Eigenschaften) die Option **Environment variables** (Umgebungsvariablen) aus. Fügen Sie eine Variable mit dem Namen `ACR_LOGINSERVER` und Ihrem ACR-Anmeldeserver als Wert hinzu.
 
     ![Jenkins-Umgebungsvariablen](media/aks-jenkins/env-variables.png)
@@ -208,7 +211,7 @@ az role assignment create --assignee 626dd8ea-042d-4043-a8df-4ef56273670f --role
 
 Nachdem die Rollenzuweisung in Azure erstellt wurde, speichern Sie nun Ihre ACR-Anmeldeinformationen in einem Jenkins-Anmeldeinformationsobjekt. Auf diese Anmeldeinformationen wird während eines Jenkins-Erstellungsauftrags verwiesen.
 
-Klicken Sie links im Jenkins-Portal auf **Credentials (Anmeldeinformationen)** > **Jenkins** > **Global credentials (unrestricted) (Globale Anmeldeinformationen (nicht eingeschränkt))** > **Add Credentials (Anmeldeinformationen hinzufügen)**.
+Klicken Sie links im Jenkins-Portal auf **Credentials (Anmeldeinformationen)**  > **Jenkins** > **Global credentials (unrestricted) (Globale Anmeldeinformationen (nicht eingeschränkt))**  > **Add Credentials (Anmeldeinformationen hinzufügen)** .
 
 Stellen Sie sicher, dass als Typ für die Anmeldeinformationen **Username with password** ausgewählt ist, und geben Sie Folgendes ein:
 
@@ -232,7 +235,7 @@ Wählen Sie auf der Startseite des im Jenkins-Portal links **New item** (Neues E
 
 1. Wählen Sie im Bereich **Build Triggers** (Buildtrigger) die Option **GitHub hook trigger for GITscm polling** (GitHub-Hooktrigger für GITscm-Abruf) aus.
 1. Wählen Sie unter **Build Environment** (Buildumgebung) die Option **Use secret texts or files** (Geheime Texte oder Dateien verwenden) aus.
-1. Wählen Sie unter **Bindings** (Bindungen) die Option **Add (Hinzufügen)** > **Username and password (separated) (Benutzername und Kennwort (getrennt))** aus.
+1. Wählen Sie unter **Bindings** (Bindungen) die Option **Add (Hinzufügen)**  > **Username and password (separated) (Benutzername und Kennwort (getrennt))** aus.
    - Geben Sie `ACR_ID` unter **Username Variable (Variable für Benutzernamen)** und `ACR_PASSWORD` unter **Password Variable (Variable für Kennwort)** ein.
 
      ![Jenkins-Bindungen](media/aks-jenkins/bindings.png)

@@ -15,11 +15,11 @@ ms.topic: troubleshooting
 ms.date: 10/31/2018
 ms.author: genli
 ms.openlocfilehash: cb414abcbbf2db7b7cd6a3d724e50010beeef647
-ms.sourcegitcommit: 8d88a025090e5087b9d0ab390b1207977ef4ff7c
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/21/2018
-ms.locfileid: "52275734"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60318353"
 ---
 # <a name="how-to-use-perfinsights"></a>Verwenden von PerfInsights
 
@@ -105,27 +105,27 @@ Informationen zu virtuellen Windows-Computern, Datenträger- oder Speicherpoolko
 |Gesammelte Daten                              |  |  | Leistungsszenarien |  |  | |
 |----------------------------------|----------------------------|------------------------------------|--------------------------|--------------------------------|----------------------|----------------------|
 |                               | Schnelle Leistungsanalyse | Benchmarktests | Leistungsanalyse | Azure Files-Analyse | Erweiterte Leistungsanalyse |
-| Informationen aus Ereignisprotokollen       | JA                        | Ja                                | Ja                      | Ja                  | JA                  |
-| Systeminformationen                | JA                        | Ja                                | Ja                      | Ja                  | JA                  |
-| Volumezuordnung                        | JA                        | Ja                                | Ja                      | Ja                  | JA                  |
-| Datenträgerzuordnung                          | JA                        | Ja                                | Ja                      | Ja                  | JA                  |
-| Ausgeführte Aufgaben                     | JA                        | Ja                                | Ja                      | Ja                  | JA                  |
-| Speicherzuverlässigkeitszähler      | JA                        | Ja                                | Ja                      | Ja                  | JA                  |
-| Speicherinformationen               | JA                        | Ja                                | Ja                      | Ja                  | JA                  |
-| FSUTIL-Ausgabe                     | JA                        | Ja                                | Ja                      | Ja                  | JA                  |
-| Filtertreiberinformationen                | JA                        | Ja                                | Ja                      | Ja                  | JA                  |
-| Netstat-Ausgabe                    | JA                        | Ja                                | Ja                      | Ja                  | JA                  |
-| Network Configuration             | JA                        | Ja                                | Ja                      | Ja                  | JA                  |
-| Firewall-Konfiguration            | JA                        | Ja                                | Ja                      | Ja                  | JA                  |
-| SQL Server-Konfiguration          | JA                        | Ja                                | Ja                      | Ja                  | JA                  |
-| Leistungsdiagnose-Ablaufverfolgungen *  | JA                        | Ja                                | Ja                      | Ja                  | JA                  |
-| Leistungsindikator-Ablaufverfolgung **      |                            |                                    | JA                      |                      | JA                  |
-| SMB-Indikatorablaufverfolgung **              |                            |                                    |                          | JA                  |                      |
-| SQL Server-Indikatorablaufverfolgung **       |                            |                                    | JA                      |                      | JA                  |
-| XPerf-Ablaufverfolgung                       |                            |                                    |                          |                      | JA                  |
-| StorPort-Ablaufverfolgung                    |                            |                                    |                          |                      | JA                  |
-| Netzwerkablaufverfolgung                     |                            |                                    |                          | JA                  | JA                  |
-| DiskSpd-Vergleichstest-Ablaufverfolgung ***       |                            | JA                                |                          |                      |                      |
+| Informationen aus Ereignisprotokollen       | Ja                        | Ja                                | Ja                      | Ja                  | Ja                  |
+| Systeminformationen                | Ja                        | Ja                                | Ja                      | Ja                  | Ja                  |
+| Volumezuordnung                        | Ja                        | Ja                                | Ja                      | Ja                  | Ja                  |
+| Datenträgerzuordnung                          | Ja                        | Ja                                | Ja                      | Ja                  | Ja                  |
+| Ausgeführte Aufgaben                     | Ja                        | Ja                                | Ja                      | Ja                  | Ja                  |
+| Speicherzuverlässigkeitszähler      | Ja                        | Ja                                | Ja                      | Ja                  | Ja                  |
+| Speicherinformationen               | Ja                        | Ja                                | Ja                      | Ja                  | Ja                  |
+| FSUTIL-Ausgabe                     | Ja                        | Ja                                | Ja                      | Ja                  | Ja                  |
+| Filtertreiberinformationen                | Ja                        | Ja                                | Ja                      | Ja                  | Ja                  |
+| Netstat-Ausgabe                    | Ja                        | Ja                                | Ja                      | Ja                  | Ja                  |
+| Netzwerkkonfiguration             | Ja                        | Ja                                | Ja                      | Ja                  | Ja                  |
+| Firewall-Konfiguration            | Ja                        | Ja                                | Ja                      | Ja                  | Ja                  |
+| SQL Server-Konfiguration          | Ja                        | Ja                                | Ja                      | Ja                  | Ja                  |
+| Leistungsdiagnose-Ablaufverfolgungen *  | Ja                        | Ja                                | Ja                      | Ja                  | Ja                  |
+| Leistungsindikator-Ablaufverfolgung **      |                            |                                    | Ja                      |                      | Ja                  |
+| SMB-Indikatorablaufverfolgung **              |                            |                                    |                          | Ja                  |                      |
+| SQL Server-Indikatorablaufverfolgung **       |                            |                                    | Ja                      |                      | Ja                  |
+| XPerf-Ablaufverfolgung                       |                            |                                    |                          |                      | Ja                  |
+| StorPort-Ablaufverfolgung                    |                            |                                    |                          |                      | Ja                  |
+| Netzwerkablaufverfolgung                     |                            |                                    |                          | Ja                  | Ja                  |
+| DiskSpd-Vergleichstest-Ablaufverfolgung ***       |                            | Ja                                |                          |                      |                      |
 |       |                            |                         |                                                   |                      |                      |
 
 ### <a name="performance-diagnostics-trace-"></a>Leistungsdiagnose-Ablaufverfolgung (*)
@@ -134,7 +134,7 @@ Führt im Hintergrund eine regelbasiertes Engine aus, um Daten zu sammeln und ak
 
 - HighCpuUsage-Regel: Erkennt Zeiträume mit hoher CPU-Auslastung und zeigt die stärksten CPU-Ressourcenverbraucher während dieser Zeiträume an.
 - HighDiskUsage-Regel: Erkennt Zeiträume mit hoher Datenträgerauslastung auf physischen Datenträgern und zeigt die stärksten Datenträger-Ressourcenverbraucher während dieser Zeiträume an.
-- HighResolutionDiskMetric-Regel: Zeigt IOPS, Durchsatz und E/A-Latenzmetriken pro 50 Millisekunden für jeden physischen Datenträger an. Mit der Lösung lassen sich schnell Datenträgerdrosselungs-Perioden identifizieren.
+- HighResolutionDiskMetric-Regel: Zeigt IOPS, Durchsatz und E/A-Latenzmetriken pro 50 Millisekunden für jeden physischen Datenträger an. Mit der Lösung lassen sich schnell Datenträgerdrosselungs-Perioden identifizieren.
 - HighMemoryUsage-Regel: Erkennt Perioden mit hoher Arbeitsspeicherauslastung und zeigt die stärksten Arbeitsspeicher-Ressourcenverbraucher während dieser Periode an.
 
 > [!NOTE] 
@@ -167,7 +167,7 @@ DiskSpd-E/A-Workloadtests (Betriebssystemdatenträger [Schreibzugriff] und Pooll
 
 -  Dieses Tool muss auf dem virtuellen Computer ausgeführt werden, auf dem das Leistungsproblem besteht. 
 
--  Die folgenden Betriebssysteme werden unterstützt: Windows Server 2008 R2, Windows Server 2012, Windows Server 2012 R2 und Windows Server 2016; Windows 8.1 und Windows 10.
+-  Folgende Betriebssysteme werden unterstützt: Windows Server 2008 R2, Windows Server 2012, Windows Server 2012 R2 und Windows Server 2016; Windows 8.1 und Windows 10.
 
 #### <a name="possible-problems-when-you-run-the-tool-on-production-vms"></a>Mögliche Probleme bei Ausführung des Tools auf Produktions-VMs
 

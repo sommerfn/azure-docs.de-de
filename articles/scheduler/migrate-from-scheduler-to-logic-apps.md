@@ -9,12 +9,12 @@ ms.author: deli
 ms.reviewer: klam, LADocs
 ms.topic: article
 ms.date: 09/20/2018
-ms.openlocfilehash: c841f29adbe9911193227cced2856d953d820b08
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 25ed66fd75301475542dbac8e8a01670ee37563c
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46997280"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60531681"
 ---
 # <a name="migrate-azure-scheduler-jobs-to-azure-logic-apps"></a>Migrieren von Azure Scheduler-Aufträgen zu Azure Logic Apps
 
@@ -29,7 +29,7 @@ In diesem Artikel wird gezeigt, wie Sie einmalige und wiederkehrende Aufträge p
 
 * Der Azure Logic Apps-Dienst unterstützt Zeitzonen und die Sommerzeit (Daylight Saving Time, DST).
 
-Weitere Informationen finden Sie unter [Was ist Azure Logic Apps?](../logic-apps/logic-apps-overview.md) Erstellen Sie alternativ Ihre erste Logik-App mit dieser Schnellstartanleitung: [Schnellstart: Erstellen eines automatisierten Workflows mit Azure Logic Apps – Azure-Portal](../logic-apps/quickstart-create-first-logic-app-workflow.md).
+Weitere Informationen finden Sie unter [Was ist Azure Logic Apps?](../logic-apps/logic-apps-overview.md) Erstellen Sie alternativ Ihre erste Logik-App mit dieser Schnellstartanleitung: [Schnellstart: Erstellen Ihres ersten automatisierten Workflows mit Azure Logic Apps – Azure-Portal](../logic-apps/quickstart-create-first-logic-app-workflow.md)
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -43,11 +43,11 @@ Sie können mehrere einmalige Aufträge ausführen, indem Sie eine einzelne Logi
 
 ### <a name="create-your-logic-app"></a>Erstellen Ihrer Logik-App
 
-1. Erstellen Sie im Azure-Portal eine leere [Logik-App](https://portal.azure.com) im Logik-App-Designer. 
+1. Erstellen Sie im [Azure-Portal](https://portal.azure.com) eine leere Logik-App im Logik-App-Designer. 
 
-   Führen Sie die grundlegenden Schritte im [Schnellstart: Erstellen eines automatisierten Workflows mit Azure Logic Apps – Azure-Portal](../logic-apps/quickstart-create-first-logic-app-workflow.md) durch.
+   Führen Sie die grundlegenden in diesem Artikel aus: [Schnellstart: Erstellen Ihres ersten automatisierten Workflows mit Azure Logic Apps – Azure-Portal](../logic-apps/quickstart-create-first-logic-app-workflow.md).
 
-1. Geben Sie im Suchfeld „Beim Empfang einer HTTP-Anforderung“ als Filter ein. Wählen Sie unter der Triggerliste diesen Trigger aus: **Beim Empfang einer HTTP-Anforderung** 
+1. Geben Sie im Suchfeld „Beim Empfang einer HTTP-Anforderung“ als Filter ein. Wählen Sie in der Triggerliste den folgenden Trigger aus: **Beim Empfang einer HTTP-Anforderung** 
 
    ![Hinzufügen eines Request-Triggers](./media/migrate-from-scheduler-to-logic-apps/request-trigger.png)
 
@@ -67,7 +67,7 @@ Sie können mehrere einmalige Aufträge ausführen, indem Sie eine einzelne Logi
 
 1. Klicken Sie unter dem Trigger auf **Nächster Schritt**. 
 
-1. Geben Sie im Suchfeld den Begriff „Verzögern bis“ als Filter ein. Wählen Sie in der Liste mit den Aktionen diese Aktion aus: **Verzögern bis**.
+1. Geben Sie im Suchfeld den Begriff „Verzögern bis“ als Filter ein. Wählen Sie in der Liste mit den Aktionen diese Aktion aus: **Verzögern bis**
 
    Diese Aktion hält den Workflow Ihrer Logik-App bis zum angegebenen Datum zur jeweiligen Uhrzeit an.
 
@@ -104,7 +104,7 @@ Mit der Postman-App können Sie beispielsweise eine POST-Anforderung mit ähnlic
 
 | Anforderungsmethode | URL | Body | Header |
 |----------------|-----|------|---------| 
-| **POST** | <*endpoint-URL*> | **raw** <p>**JSON(application/json)** <p>Geben Sie in das Feld **raw** die Nutzlast an, die in der Anforderung gesendet werden soll. <p>**Hinweis**: Diese Einstellung konfiguriert automatisch die **Header**-Werte. | **Schlüssel**: „Content-Type“ <br>**Wert**: „application/json“
+| **POST** | <*endpoint-URL*> | **raw** <p>**JSON(application/json)** <p>Geben Sie in das Feld **raw** die Nutzlast an, die in der Anforderung gesendet werden soll. <p>**Hinweis**: Diese Einstellung konfiguriert automatisch die **Header**-Werte. | **Key**: Content-Typ <br>**Wert**: „application/json“
  |||| 
 
 ![Senden einer Anforderung zum manuellen Auslösen Ihrer Logik-App](./media/migrate-from-scheduler-to-logic-apps/postman-send-post-request.png)
@@ -129,9 +129,9 @@ Jeder einmalige Auftrag in Logic Apps wird als einzelne Logik-App-Instanz ausgef
 
 1. Erstellen Sie im [Azure-Portal](https://portal.azure.com) eine leere Logik-App im Logik-App-Designer. 
 
-   Führen Sie die grundlegenden Schritte im [Schnellstart: Erstellen eines automatisierten Workflows mit Azure Logic Apps – Azure-Portal](../logic-apps/quickstart-create-first-logic-app-workflow.md) durch.
+   Führen Sie die grundlegenden in diesem Artikel aus: [Schnellstart: Erstellen Ihres ersten automatisierten Workflows mit Azure Logic Apps – Azure-Portal](../logic-apps/quickstart-create-first-logic-app-workflow.md).
 
-1. Geben Sie im Suchfeld den Begriff „Wiederholung“ als Filter ein. Wählen Sie in der Triggerliste den folgenden Trigger aus: **Recurrence** 
+1. Geben Sie im Suchfeld den Begriff „Wiederholung“ als Filter ein. Wählen Sie in der Triggerliste den folgenden Trigger aus: **Serie** 
 
    ![Hinzufügen eines Recurrence-Triggers](./media/migrate-from-scheduler-to-logic-apps/recurrence-trigger.png)
 
@@ -159,7 +159,7 @@ Im Folgenden werden weitere Möglichkeiten zum Anpassen Ihrer Aufträge vorgeste
 
 Um die Art und Weise zu steuern, mit der eine Aktion bei einem vorübergehenden Fehler in Ihrer Logik-App erneut ausgeführt wird, können Sie die [Wiederholungsrichtlinie](../logic-apps/logic-apps-exception-handling.md#retry-policies) in den Einstellungen für jede Aktion festlegen. Beispiel:
 
-1. Öffnen Sie das Menü der Aktion (**...**), und klicken Sie auf **Einstellungen**.
+1. Öffnen Sie das Menü der Aktion ( **...** ), und klicken Sie auf **Einstellungen**.
 
    ![Öffnen der Aktionseinstellungen](./media/migrate-from-scheduler-to-logic-apps/action-settings.png)
 
@@ -179,7 +179,7 @@ Wenn bei der Ausführung der Standardaktion ein Fehler in Azure Scheduler auftri
 
    ![Hinzufügen von Parallelaktionen](./media/migrate-from-scheduler-to-logic-apps/add-parallel-action.png)
 
-1. Öffnen Sie in der alternativen Aktion das Menü (**...**), und klicken Sie auf **Ausführung konfigurieren nach**.
+1. Öffnen Sie in der alternativen Aktion das Menü ( **...** ), und klicken Sie auf **Ausführung konfigurieren nach**.
 
    ![Ausführung konfigurieren nach](./media/migrate-from-scheduler-to-logic-apps/configure-run-after.png)
 
@@ -195,20 +195,20 @@ Weitere Informationen zur Behandlung von Ausnahmen finden Sie unter [Abfangen un
 
 <a name="retire-date"></a> 
 
-**F**: Wann wird Azure Scheduler eingestellt? <br>
-**A**: Azure Scheduler wird voraussichtlich am 30. September 2019 eingestellt.
+**F:** Wann wird Azure Scheduler eingestellt? <br>
+**A:** Azure Scheduler wird voraussichtlich am 30. September 2019 eingestellt.
 
-**F**: Was geschieht mit meinen Scheduler-Auftragssammlungen und -Aufträgen, nachdem der Dienst eingestellt wird? <br>
-**A**: Alle Scheduler-Auftragssammlungen und -Aufträge werden aus dem System gelöscht.
+**F:** Was geschieht mit meinen Scheduler-Auftragssammlungen und -Aufträgen, nachdem der Dienst eingestellt wird? <br>
+**A:** Alle Scheduler-Auftragssammlungen und -Aufträge werden aus dem System gelöscht.
 
-**F**: Muss ich vor der Migration meiner Scheduler-Aufträge zu Logic Apps Sicherungen bzw. sonstige Aufgaben durchführen? <br>
-**A**: Wir empfehlen Ihnen, immer Ihre Arbeiten zu sichern. Stellen Sie sicher, dass die von Ihnen erstellten Logik-Apps wie erwartet ausgeführt werden, bevor Sie Ihre Scheduler-Aufträge löschen oder deaktivieren. 
+**F:** Muss ich vor der Migration meiner Scheduler-Aufträge zu Logic Apps Sicherungen bzw. sonstige Aufgaben durchführen? <br>
+**A:** Wir empfehlen Ihnen, immer Ihre Arbeiten zu sichern. Stellen Sie sicher, dass die von Ihnen erstellten Logik-Apps wie erwartet ausgeführt werden, bevor Sie Ihre Scheduler-Aufträge löschen oder deaktivieren. 
 
-**F**: Gibt es ein Tool, mit dem ich meine Aufträge von Scheduler zu Logic Apps migrieren kann? <br>
-**A**: Jeder Scheduler-Auftrag ist einzigartig. Ein universell gültiges Tool gibt es nicht. Allerdings werden verschiedene Skripts zur Verfügung gestellt, die Sie entsprechend Ihrer Anforderungen ändern können. Schauen Sie in regelmäßigen Abständen vorbei, um die verfügbaren Skripts einzusehen.
+**F:** Gibt es ein Tool, mit dem ich meine Aufträge von Scheduler zu Logic Apps migrieren kann? <br>
+**A:** Jeder Scheduler-Auftrag ist einzigartig. Ein universell gültiges Tool gibt es nicht. Allerdings werden verschiedene Skripts zur Verfügung gestellt, die Sie entsprechend Ihrer Anforderungen ändern können. Schauen Sie in regelmäßigen Abständen vorbei, um die verfügbaren Skripts einzusehen.
 
-**F**: Wo erhalte ich Support für die Migration meiner Scheduler-Aufträge? <br>
-**A**: Nachfolgend finden Sie einige Ressourcen, über die Sie Support anfordern können: 
+**F:** Wo erhalte ich Support für die Migration meiner Scheduler-Aufträge? <br>
+**A:** Nachfolgend finden Sie einige Ressourcen, über die Sie Support anfordern können: 
 
 **Azure-Portal**
 
@@ -230,9 +230,9 @@ Wenn Ihr Azure-Abonnement mit einem kostenpflichtigen Supportplan ausgestattet i
 **Community**
 
 * [Azure Logic Apps-Forum](https://social.msdn.microsoft.com/Forums/en-US/home?forum=azurelogicapps)
-* [Stapelüberlauf](https://stackoverflow.com/questions/tagged/azure-scheduler)
+* [Stack Overflow](https://stackoverflow.com/questions/tagged/azure-scheduler)
 
 ## <a name="next-steps"></a>Nächste Schritte
 
 * [Erstellen und Ausführen von wiederkehrenden Aufgaben und Workflows mit Azure Logic Apps](../connectors/connectors-native-recurrence.md)
-* [Überprüfen des Datenverkehrs nach einem Zeitplan mit Azure Logic Apps](../logic-apps/tutorial-build-schedule-recurring-logic-app-workflow.md)
+* [Tutorial: Überprüfen des Datenverkehrs mit einer zeitplanbasierten Logik-App](../logic-apps/tutorial-build-schedule-recurring-logic-app-workflow.md)

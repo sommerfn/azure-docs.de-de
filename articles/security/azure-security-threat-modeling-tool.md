@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 02/16/2017
 ms.author: jegeib
 ms.openlocfilehash: 4e08491ae898fef16af1e199a76a4c07a6c226b9
-ms.sourcegitcommit: a408b0e5551893e485fa78cd7aa91956197b5018
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/17/2019
-ms.locfileid: "54358659"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60610478"
 ---
 # <a name="microsoft-threat-modeling-tool"></a>Microsoft Threat Modeling Tool
 
@@ -33,12 +33,12 @@ Das Tool ermöglicht Folgendes:
 
 Nachfolgend sind einige Funktionen und Innovationen des Tools aufgeführt:
 
-* **Automatisierung:**  Anleitungen und Feedback bei der Erstellung eines Modells
-* **STRIDE pro Element:**  Geführte Analyse der Bedrohungen und Gegenmaßnahmen
-* **Berichte:**  Sicherheitsaktivitäten und Tests in der Überprüfungsphase
-* **Einzigartige Methodik:**  Ermöglicht es Benutzern, Bedrohungen besser zu visualisieren und zu verstehen
+* **Automatisierung:** Anleitungen und Feedback bei der Erstellung eines Modells
+* **STRIDE pro Element:** Geführte Analyse der Bedrohungen und Gegenmaßnahmen
+* **Berichte:** Sicherheitsaktivitäten und Tests in der Überprüfungsphase
+* **Einzigartige Methodik:** Ermöglicht es Benutzern, Bedrohungen besser zu visualisieren und zu verstehen
 * **Speziell für Entwickler konzipiert und auf Software ausgerichtet:** Viele Ansätze zielen auf Objekte oder Angreifer ab. Bei uns steht die Software im Mittelpunkt. Unsere Basis sind Aktivitäten, mit denen alle Softwareentwickler und -architekten vertraut sind, z.B. das Zeichnen von Bildern für ihre Softwarearchitektur.
-* **Fokus auf der Entwurfsanalyse:**  Der Begriff „Modellierung von Bedrohungen“ kann sich auf eine Technik zur Analyse von Anforderungen oder Entwürfen beziehen. In manchen Fällen bezieht er sich auf eine komplexe Mischung aus beidem. Der Microsoft SDL-Ansatz für die Modellierung von Bedrohungen ist eine fokussierte Entwurfsanalysemethode.
+* **Fokus auf der Entwurfsanalyse:** Der Begriff „Modellierung von Bedrohungen“ kann sich auf eine Technik zur Analyse von Anforderungen oder Entwürfen beziehen. In manchen Fällen bezieht er sich auf eine komplexe Mischung aus beidem. Der Microsoft SDL-Ansatz für die Modellierung von Bedrohungen ist eine fokussierte Entwurfsanalysemethode.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

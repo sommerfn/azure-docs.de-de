@@ -16,11 +16,11 @@ ms.date: 06/21/2018
 ms.author: magattus
 ms.custom: ''
 ms.openlocfilehash: 7768dde424aedc295b53512db50c9dfc9db9ab8c
-ms.sourcegitcommit: 4047b262cf2a1441a7ae82f8ac7a80ec148c40c4
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2018
-ms.locfileid: "49091469"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60635634"
 ---
 # <a name="migrate-an-azure-cdn-profile-from-standard-verizon-to-premium-verizon"></a>Migrieren eines Azure CDN-Profils von Verizon Standard zu Verizon Premium
 
@@ -37,7 +37,7 @@ Wenn Sie ein Profil vom Typ **Azure CDN Standard von Verizon** upgraden möchten
 ## <a name="profile-comparison"></a>Profilvergleich
 Profile vom Typ **Azure CDN Premium von Verizon** unterscheiden sich in folgenden wichtigen Punkten von Profilen vom Typ **Azure CDN Standard von Verizon**:
 - Für bestimmte Azure CDN-Features (etwa [Komprimierung](cdn-improve-performance.md), [Cacheregeln](cdn-caching-rules.md) und [Geofilterung](cdn-restrict-access-by-country.md)) muss anstelle der Azure CDN-Schnittstelle das Verizon-Portal (über die Schaltfläche **Verwalten**) verwendet werden.
-- API: Anders als bei Verizon Standard können Sie diese Features, auf die über das Verizon Premium-Portal zugegriffen wird, nicht über die API steuern. Über die API können jedoch andere allgemeine Features gesteuert werden – beispielsweise das Erstellen/Löschen eines Endpunkts, das Bereinigen/Laden zwischengespeicherter Assets und das Aktivieren/Deaktivieren einer benutzerdefinierten Domäne.
+- API: Anders als bei Verizon Standard können Sie diese Features, auf die über das Verizon Premium-Portal zugegriffen wird, nicht über die API steuern. Über die API können jedoch andere allgemeine Features gesteuert werden – beispielsweise das Erstellen/Löschen eines Endpunkts, das Bereinigen/Laden zwischengespeicherter Assets und das Aktivieren/Deaktivieren einer benutzerdefinierten Domäne.
 - Preise: Die Verizon Premium-Preisstruktur für Datenübertragungen unterscheidet sich von der Preisstruktur für Verizon Standard. Weitere Informationen finden Sie unter [Azure Content Delivery Network – Preise](https://azure.microsoft.com/pricing/details/cdn/).
 
 Profile vom Typ **Azure CDN Premium von Verizon** bieten folgende Zusatzfeatures:

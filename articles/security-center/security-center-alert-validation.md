@@ -15,11 +15,11 @@ ms.workload: na
 ms.date: 11/28/2018
 ms.author: rkarlin
 ms.openlocfilehash: 009f5fe7243b8ce597c2be9f9c6874cdb56d103c
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56108544"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60706046"
 ---
 # <a name="alerts-validation-in-azure-security-center"></a>Warnungsüberprüfung in Azure Security Center
 In diesem Dokument erfahren Sie, wie Sie überprüfen, ob Ihr System ordnungsgemäß für Azure Security Center-Warnungen konfiguriert ist.
@@ -32,7 +32,7 @@ Nach der Installation des Security Center-Agents auf Ihrem Computer führen Sie 
 
 1. Kopieren Sie eine ausführbare Datei (beispielsweise „calc.exe“) auf den Desktop des Computers oder in ein beliebiges anderes Verzeichnis.
 2. Benennen Sie diese Datei in **ASC_AlertTest_662jfi039N.exe** um.
-3. Öffnen Sie die Eingabeaufforderung, und führen Sie die Datei mit einem (selbst ausgedachten) Argument aus. Beispiel: *ASC_AlertTest_662jfi039N.exe -foo* 
+3. Öffnen Sie die Eingabeaufforderung, und führen Sie die Datei mit einem (selbst ausgedachten) Argument aus. Beispiel: *ASC_AlertTest_662jfi039N.exe -foo*
 4. Warten Sie fünf bis zehn Minuten, und öffnen Sie die Security Center-Warnungen. Dort sollte eine Warnung wie die folgende vorliegen:
 
     ![Warnungsüberprüfung](./media/security-center-alert-validation/security-center-alert-validation-fig2.png)

@@ -15,11 +15,11 @@ ms.date: 09/10/2018
 ms.author: saghorpa
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 73643cd6954932f933e200baad09e4301300aac2
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55822543"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60794901"
 ---
 # <a name="disaster-recovery-principles"></a>Prinzipien für die Notfallwiederherstellung
 
@@ -81,7 +81,7 @@ Als Nächstes müssen Sie den Sicherungszeitplan für Speichermomentaufnahmen ei
 - Legen Sie für das Volume für die Transaktionsprotokollsicherung (Momentaufnahmetyp **logs**) fest, dass es alle drei Minuten an den entsprechenden Speichervolumezielen am Standort für die Notfallwiederherstellung repliziert wird.
 
 Richten Sie zur Minimierung der Recovery Point Objective Folgendes ein:
-- Führen Sie alle 30 bis 60 Minuten eine Speichermomentaufnahme vom Typ **hana** (siehe „Schritt 7:  Durchführen von Momentaufnahmen“) durch.
+- Führen Sie alle 30 bis 60 Minuten eine Speichermomentaufnahme vom Typ **hana** (siehe „Schritt 7: Durchführen von Momentaufnahmen“) durch.
 - Führen Sie alle fünf Minuten SAP HANA-Transaktionsprotokollsicherungen durch.
 - Führen Sie alle 5 bis 15 Minuten Speichermomentaufnahmen vom Typ **logs** durch. Mit diesem Intervall erzielen Sie einen RPO-Wert von etwa 15 bis 25 Minuten.
 

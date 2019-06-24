@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: ''
-ms.openlocfilehash: 319f9cba23d088553f361b6a0d648bbde94e0743
-ms.sourcegitcommit: f606248b31182cc559b21e79778c9397127e54df
+ms.openlocfilehash: be3c31951c4721a861f9239c5220419dec11b6bf
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/12/2018
-ms.locfileid: "38968560"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60799150"
 ---
 # <a name="extending-geojson-geometries"></a>Erweitern der GeoJSON-Geometrien
 
@@ -30,7 +30,7 @@ Die [GeoJSON-Spezifikation][1] unterstützt nur die folgenden Geometrien:
 * Point
 * Polygon
 
-Einige Azure Maps-APIs (z.B. [Search Inside Geometry (Suche innerhalb der Geometrie)](https://docs.microsoft.com/rest/api/maps/search/postsearchinsidegeometry)) akzeptieren Geometrien wie „Circle“ (Kreis), die nicht Teil der [GeoJSON-Spezifikation][1] sind.
+Einige Azure Maps-APIs (z. B. [Search Inside Geometry (Suche innerhalb der Geometrie)](https://docs.microsoft.com/rest/api/maps/search/postsearchinsidegeometry)) akzeptieren Geometrien wie „Circle“ (Kreis), die nicht Teil der [GeoJSON-Spezifikation][1] sind.
 
 Dieser Artikel bietet eine ausführliche Erläuterung darüber, wie Azure Maps die [GeoJSON-Spezifikation][1] erweitert, um bestimmte Geometrien darzustellen.
 
@@ -52,7 +52,7 @@ Eine `Circle`-Geometrie, die mithilfe eines `GeoJSON Feature`-Objekts dargestell
 
 #### <a name="example"></a>Beispiel
 
-So stellen Sie einen Kreis mithilfe eines `GeoJSON Feature`-Objekts dar, der sich auf dem Breitengrad 47.639754 und dem Längengrad –122.126986 befindet und dessen Radius gleich 100 Meter ist:
+So stellen Sie einen Kreis dar, der sich auf dem Breitengrad 47.639754 und dem Längengrad -122.126986 befindet und dessen Radius gleich 100 Meter ist. Dazu verwenden Sie ein `GeoJSON Feature`-Objekt:
 
 ```json            
 {

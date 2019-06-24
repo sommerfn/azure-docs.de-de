@@ -9,11 +9,11 @@ ms.topic: conceptual
 ms.date: 09/06/2016
 ms.author: yizhon
 ms.openlocfilehash: 0a7e30be374ae5095e206ce0e519e51bb58f1f00
-ms.sourcegitcommit: f6050791e910c22bd3c749c6d0f09b1ba8fccf0c
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50024862"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60399237"
 ---
 # <a name="azure-iot-device-sdk-for-c--more-about-serializer"></a>Azure IoT-Geräte-SDK für C – weitere Informationen zum Serialisierungsprogramm
 
@@ -64,7 +64,7 @@ In diesem Beispiel werden keine weiteren Datentypen gezeigt, die vom SDK unterst
 
 Die folgenden Datentypen werden in Modellen unterstützt, die mit der Bibliothek des **Serialisierungsprogramms** erstellt wurden:
 
-| Typ | BESCHREIBUNG |
+| Type | BESCHREIBUNG |
 | --- | --- |
 | double |Gleitkommazahl mit doppelter Genauigkeit |
 | int |32-Bit-Ganzzahl |
@@ -194,7 +194,7 @@ Bei Ausführung dieses Codes wird folgende Nachricht an IoT Hub gesendet:
 {"aDouble":1.100000000000000, "aInt":2, "aFloat":3.000000, "aLong":4, "aInt8":5, "auInt8":6, "aInt16":7, "aInt32":8, "aInt64":9, "aBool":true, "aAsciiCharPtr":"ascii string 1", "aDateTimeOffset":"2015-09-14T21:18:21Z", "aGuid":"00010203-0405-0607-0809-0A0B0C0D0E0F", "aBinary":"AQID"}
 ```
 
-Beachten Sie, dass die Serialisierung in JSON erfolgt. Hierbei handelt es sich um das Format, das von der Bibliothek des **Serialisierungsmoduls** generiert wird. Beachten Sie auch, dass jedes Element des serialisierten JSON-Objekts den Elementen des in unserem Modell definierten **TestType**-Ereignisses entspricht. Die Werte entsprechen ebenfalls exakt den im Code verwendeten Werten. Beachten Sie jedoch, dass die Binärdaten Base64-codiert sind: „AQID“ ist die Base64-Codierung von {0x01, 0x02, 0x03}.
+Beachten Sie, dass die Serialisierung in JSON erfolgt. Hierbei handelt es sich um das Format, das von der Bibliothek des **Serialisierungsmoduls** generiert wird. Beachten Sie auch, dass jedes Element des serialisierten JSON-Objekts den Elementen des in unserem Modell definierten **TestType**-Ereignisses entspricht. Die Werte entsprechen ebenfalls exakt den im Code verwendeten Werten. Beachten Sie jedoch, dass die Binärdaten base64-codiert sind: „AQID“ ist die Base64-Codierung von {0x01, 0x02, 0x03}.
 
 Dieses Beispiel veranschaulicht den Vorteil der Bibliothek des **Serialisierungsprogramms** : Mit dieser Bibliothek können wir JSON-Daten an die Cloud senden, ohne uns explizit mit der Serialisierung in unserer Anwendung beschäftigen zu müssen. Wir müssen nur die Werte der Datenereignisse in unserem Modell festlegen und dann einfach APIs aufrufen, um diese Ereignisse an die Cloud zu senden.
 
@@ -669,4 +669,4 @@ Dies ist zugleich der Abschluss der dreiteiligen Artikelreihe zur Entwicklung vo
 
 Weitere Informationen zum Entwickeln für IoT Hub finden Sie im Artikel zu den [Azure IoT SDKs](iot-hub-devguide-sdks.md).
 
-Weitere Informationen zu den Funktionen von IoT Hub finden Sie unter [Bereitstellen von KI auf Edge-Geräten mit Azure IoT Edge](../iot-edge/tutorial-simulate-device-linux.md).
+Weitere Informationen zu den Funktionen von IoT Hub finden Sie unter [Bereitstellen von KI auf Edgegeräten mit Azure IoT Edge](../iot-edge/tutorial-simulate-device-linux.md).

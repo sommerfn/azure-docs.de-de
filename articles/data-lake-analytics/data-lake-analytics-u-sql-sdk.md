@@ -9,11 +9,11 @@ ms.reviewer: jasonwhowell
 ms.topic: conceptual
 ms.date: 03/01/2017
 ms.openlocfilehash: 14908225e78b79cb748e712ae23643ddde4a4242
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58089963"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60813480"
 ---
 # <a name="run-and-test-u-sql-with-azure-data-lake-u-sql-sdk"></a>Ausführen und Testen von U-SQL mit dem Azure Data Lake U-SQL SDK
 
@@ -379,7 +379,7 @@ E_CSC_SYSTEM_INTERNAL: Interner Fehler. Could not load file or assembly 'ScopeEn
 
 Überprüfen Sie die folgenden Punkte:
 
-- Stellen Sie sicher, dass Sie über eine x64-Umgebung verfügen. Die Buildzielplattform und die Testumgebung sollten auf x64 eingestellt sein, siehe **Schritt 1:  Erstellen eines C#-Komponententestprojekts und Konfiguration**.
+- Stellen Sie sicher, dass Sie über eine x64-Umgebung verfügen. Die Buildzielplattform und die Testumgebung sollten auf x64 eingestellt sein, siehe **Schritt 1: Erstellen eines C#-Komponententestprojekts und Konfiguration** weiter oben.
 - Stellen Sie sicher, dass Sie alle Abhängigkeitsdateien aus NugetPackage\build\runtime\ in das Arbeitsverzeichnis des Projekts kopiert haben.
 
 

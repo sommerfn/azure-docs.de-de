@@ -8,30 +8,30 @@ ms.subservice: gateway
 ms.topic: article
 ms.date: 04/16/2019
 ms.author: alkohli
-ms.openlocfilehash: b27b712128ddfbb07a7a7f68f616c20ec3fb53d3
-ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
+ms.openlocfilehash: 230d1a28ba15a8736e46c02cb08217a28fc18599
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59686140"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "64695186"
 ---
 # <a name="azure-data-box-gateway-security-and-data-protection"></a>Azure Data Box Gateway: Sicherheit und Schutz von Daten
 
-Sicherheit ist bei der Einführung neuer Technologien immer ein zentrales Anliegen. Das gilt insbesondere, wenn die Technologie mit vertraulichen oder proprietären Daten verwendet wird. Die Lösung Microsoft Azure Data Box Gateway trägt dazu bei, dass Ihre Daten nur von autorisierten Entitäten angezeigt, geändert oder gelöscht werden können.
+Sicherheit ist bei der Einführung neuer Technologien immer ein zentrales Anliegen. Das gilt insbesondere, wenn die Technologie mit vertraulichen oder proprietären Daten verwendet wird. Azure Data Box Gateway trägt dazu bei, dass Ihre Daten nur von autorisierten Entitäten angezeigt, geändert oder gelöscht werden können.
 
 In diesem Artikel werden die Sicherheitsmerkmale von Azure Data Box Gateway beschrieben, mit denen die einzelnen Komponenten der Lösung und die darin gespeicherten Daten geschützt werden.
 
 Die Lösung Data Box Gateway besteht aus vier Hauptkomponenten, die miteinander interagieren:
 
-- **In Azure gehosteter Data Box Gateway-Dienst:** die Verwaltungsressource zum Erstellen des Geräteauftrags, zum Konfigurieren des Geräts sowie zum anschließenden Nachverfolgen des Auftrags bis zur Erfüllung.
-- **Data Box Gateway-Gerät:** das virtuelle Gerät, das Sie im Hypervisor des angegebenen Systems bereitgestellt haben. Dieses virtuelle Gerät wird verwendet, um Ihre lokalen Daten in Azure zu importieren.
-- **Mit dem Gerät verbundene Clients/Hosts:** die Clients in Ihrer Infrastruktur, die mit dem Data Box Gateway-Gerät verbunden werden und zu schützende Daten enthalten.
-- **Cloud-Speicher** – Der Speicherort in der Azure-Cloud, an dem die Daten gespeichert werden. Hierbei handelt es sich in der Regel um das Speicherkonto, das mit der erstellten Data Box Gateway-Ressource verknüpft ist.
+- **In Azure gehosteter Data Box Gateway-Dienst:** Die Verwaltungsressource zum Erstellen des Geräteauftrags, zum Konfigurieren des Geräts sowie zum anschließenden Nachverfolgen des Auftrags bis zur Erfüllung
+- **Data Box Gateway-Gerät:** Das virtuelle Gerät, das Sie im Hypervisor des angegebenen Systems bereitgestellt haben. Dieses virtuelle Gerät wird verwendet, um Ihre lokalen Daten in Azure zu importieren.
+- **Mit dem Gerät verbundene Clients/Hosts:** Die Clients in Ihrer Infrastruktur, die mit dem Data Box Gateway-Gerät verbunden werden und zu schützende Daten enthalten
+- **Cloudspeicher:** Der Speicherort auf der Azure-Cloudplattform, an dem die Daten gespeichert werden. Hierbei handelt es sich in der Regel um das Speicherkonto, das mit der erstellten Data Box Gateway-Ressource verknüpft ist.
 
 
 ## <a name="data-box-gateway-service-protection"></a>Schutz des Data Box Gateway-Diensts
 
-Der Data Box Gateway-Dienst ist ein in Microsoft Azure gehosteter Verwaltungsdienst. Der Dienst wird zum Konfigurieren und Verwalten des Geräts verwendet.
+Der Data Box Gateway-Dienst ist ein in Azure gehosteter Verwaltungsdienst. Der Dienst wird zum Konfigurieren und Verwalten des Geräts verwendet.
 
 [!INCLUDE [data-box-edge-gateway-data-rest](../../includes/data-box-edge-gateway-service-protection.md)]
 
@@ -54,7 +54,7 @@ Weitere Informationen finden Sie unter [Abrufen des Aktivierungsschlüssels](dat
 
 ### <a name="protect-the-device-via-password"></a>Schützen des Geräts mittels Kennwort
 
-Kennwörter sorgen dafür, dass nur autorisierte Benutzer auf Ihre Daten zugreifen können. Data Box Gateway-Geräte sind nach dem Start gesperrt.
+Mit Kennwörtern wird sichergestellt, dass nur autorisierte Benutzer Zugriff auf Ihre Daten haben. Data Box Gateway-Geräte sind nach dem Start gesperrt.
 
 Ihre Möglichkeiten:
 
@@ -65,7 +65,7 @@ Ihre Möglichkeiten:
 - Verwenden Sie zum [Ändern des Kennworts](data-box-gateway-manage-access-power-connectivity-mode.md#manage-device-access) die lokale Webbenutzeroberfläche. Sollten Sie das Kennwort ändern, benachrichtigen Sie alle Benutzer mit Remotezugriff, damit bei ihnen keine Anmeldefehler auftreten.
 
 
-## <a name="protect-the-data"></a>Schützen der Daten
+## <a name="protect-your-data"></a>Schützen Ihrer Daten
 
 In diesem Abschnitt werden die Data Box Gateway-Sicherheitsfeatures für Daten während der Übertragung und für gespeicherte Daten beschrieben.
 
@@ -84,13 +84,13 @@ In diesem Abschnitt werden die Data Box Gateway-Sicherheitsfeatures für Daten w
 
 ## <a name="manage-personal-information"></a>Verwalten persönlicher Informationen
 
-Der Data Box Gateway-Dienst erfasst persönliche Informationen in folgenden wichtigen Fällen:
+Der Data Box Gateway-Dienst erfasst persönliche Informationen in folgenden Szenarien:
 
 [!INCLUDE [data-box-edge-gateway-data-rest](../../includes/data-box-edge-gateway-manage-personal-data.md)]
 
 Eine Anleitung zum Anzeigen der Liste mit den Benutzern, die auf eine Freigabe zugreifen oder sie löschen können, finden Sie unter [Verwalten von Freigaben auf Data Box Gateway](data-box-gateway-manage-shares.md).
 
-Weitere Informationen finden Sie im [Trust Center](https://www.microsoft.com/trustcenter) in der Microsoft-Datenschutzrichtlinie.
+Weitere Informationen finden Sie im [Trust Center in der Microsoft-Datenschutzrichtlinie](https://www.microsoft.com/trustcenter).
 
 ## <a name="next-steps"></a>Nächste Schritte
 

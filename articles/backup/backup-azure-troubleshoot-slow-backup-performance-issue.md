@@ -9,11 +9,11 @@ ms.topic: troubleshooting
 ms.date: 10/31/2018
 ms.author: genli
 ms.openlocfilehash: f24a60ab9bdcf1231085de4edeeb89ce1edf4e80
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51248468"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60337628"
 ---
 # <a name="troubleshoot-slow-backup-of-files-and-folders-in-azure-backup"></a>Problembehandlung bei langsamer Sicherung von Dateien und Ordnern in Azure Backup
 Dieser Artikel enthält Informationen zu Problembehandlungsschritten, mit denen Sie eine niedrige Geschwindigkeit beim Sichern von Dateien und Ordnern mit Azure Backup diagnostizieren können. Wenn Sie den Azure Backup-Agent zum Sichern von Dateien verwenden, kann der Sicherungsprozess länger als erwartet dauern. Diese Verzögerung kann eine oder mehrere der folgenden Ursachen haben:
@@ -68,7 +68,7 @@ Für Antivirenprogramme empfehlen wir Ihnen, die folgenden Dateien und Speichero
 
 <a id="cause3"></a>
 
-## <a name="cause-backup-agent-running-on-an-azure-virtual-machine"></a>Ursache: Der Backup-Agent wird auf einem virtuellen Azure-Computer ausgeführt
+## <a name="cause-backup-agent-running-on-an-azure-virtual-machine"></a>Ursache: Auf einem virtuellen Azure-Computer ausgeführter Backup-Agent
 Wenn Sie den Backup-Agent auf einem virtuellen Computer ausführen, ist die Leistung niedriger als bei Ausführung auf einem physischen Computer. Dies ist aufgrund der IOPS-Beschränkungen zu erwarten.  Sie können die Leistung aber optimieren, indem Sie die Datenlaufwerke, die gesichert werden, auf Azure Storage Premium umstellen. Wir arbeiten an der Behebung dieses Problems, und die Lösung wird Teil einer zukünftigen Version sein.
 
 <a id="cause4"></a>

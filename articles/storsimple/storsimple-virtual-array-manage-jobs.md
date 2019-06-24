@@ -15,11 +15,11 @@ ms.workload: na
 ms.date: 11/11/2016
 ms.author: alkohli
 ms.openlocfilehash: dbab2aaab2c12bef07748f54e5864d042f1c982a
-ms.sourcegitcommit: 922f7a8b75e9e15a17e904cc941bdfb0f32dc153
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/27/2018
-ms.locfileid: "52333563"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60302479"
 ---
 # <a name="use-the-storsimple-device-manager-service-to-view-jobs-for-the-storsimple-virtual-array"></a>Verwenden des StorSimple-Geräte-Manager-Diensts zum Anzeigen von Aufträgen für das StorSimple Virtual Array
 ## <a name="overview"></a>Übersicht
@@ -59,7 +59,7 @@ Führen Sie die folgenden Schritte aus, um die Details eines Auftrags anzuzeigen
 #### <a name="job-failures-when-the-virtual-machine-is-paused-in-the-hypervisor"></a>Auftragsfehler, wenn der virtuelle Computer im Hypervisor angehalten wird
 Wenn ein Auftrag im StorSimple Virtual Array ausgeführt wird und das Gerät (bereitgestellter virtueller Computer im Hypervisor) für mehr als 15 Minuten angehalten wurde, schlägt der Auftrag fehl. Dies ist darauf zurückzuführen, dass die Zeit Ihres virtuellen StorSimple-Arrays nicht mehr synchron mit der Microsoft Azure-Zeit ist. 
 
-Die folgende Fehlermeldung wird angezeigt: „Your device time is out of sync with the Microsoft Azure time by more than 15 minutes. Ensure that the hypervisor and the device times are synchronized with an NTP server. Verify that there are no connectivity issues. To troubleshoot connectivity issues, run diagnostic tests from the local web UI of your virtual device.“ (Ihr Gerät ist seit über 15 Minuten nicht mehr mit der Microsoft Azure-Zeit synchronisiert. Stellen Sie sicher, dass der Hypervisor und die Gerätezeit mit dem NTP-Server synchronisiert sind. Sie können Verbindungsfehler beheben, indem Sie Diagnosetests von der lokalen Webbenutzeroberfläche Ihres virtuellen Geräts ausführen.)
+Der folgende Fehler wird angezeigt: „Your device time is out of sync with the Microsoft Azure time by more than 15 minutes. Ensure that the hypervisor and the device times are synchronized with an NTP server. Verify that there are no connectivity issues. To troubleshoot connectivity issues, run diagnostic tests from the local web UI of your virtual device.“ (Ihr Gerät ist seit über 15 Minuten nicht mehr mit der Microsoft Azure-Zeit synchronisiert. Stellen Sie sicher, dass der Hypervisor und die Gerätezeit mit dem NTP-Server synchronisiert sind. Sie können Verbindungsfehler beheben, indem Sie Diagnosetests von der lokalen Webbenutzeroberfläche Ihres virtuellen Geräts ausführen.)
 
 Diese Fehler betreffen Backup-, Wiederherstellungs-, Aktualisierungs- und Failover-Aufträge. Wenn Ihr virtueller Computer in Hyper-V bereitgestellt wird, synchronisiert der Computer die Zeit letztendlich mit dem Hypervisor. Sobald dies geschieht, können Sie den Auftrag neu starten.
 
