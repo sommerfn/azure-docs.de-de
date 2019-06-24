@@ -226,7 +226,7 @@ Dieser Trigger sendet eine Abonnementanforderung an einen Endpunkt, indem eine [
 
 | Wert | Type | BESCHREIBUNG | 
 |-------|------|-------------| 
-| <*verbindungsname*> | string | Name für die Verbindung mit der verwalteten API, die vom Workflow verwendet wird | 
+| <*connection-name*> | string | Name für die Verbindung mit der verwalteten API, die vom Workflow verwendet wird | 
 | <*body-content*> | JSON-Objekt | Nachrichteninhalt, der als Nutzlast an die verwaltete API gesendet wird | 
 |||| 
 
