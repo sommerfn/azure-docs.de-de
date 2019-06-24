@@ -133,7 +133,7 @@ Mit diesem Trigger wird ein Endpunkt überprüft bzw.*abgefragt*, indem [von Mic
 | Wert | Type | BESCHREIBUNG | 
 |-------|------|-------------| 
 | <*APIConnection_trigger_name*> | string | Name des Triggers | 
-| <*verbindungsname*> | string | Name für die Verbindung mit der verwalteten API, die vom Workflow verwendet wird | 
+| <*connection-name*> | string | Name für die Verbindung mit der verwalteten API, die vom Workflow verwendet wird | 
 | <*method-type*> | string | HTTP-Methode für die Kommunikation mit der verwalteten API: „GET“, „PUT“, „POST“, „PATCH“, „DELETE“ | 
 | <*api-operation*> | string | Aufzurufender API-Vorgang | 
 | <*time-unit*> | string | Die Zeiteinheit für die Häufigkeit der Triggerauslösung: „Second“, „Minute“, „Hour“, „Day“, „Week“, „Month“ | 
