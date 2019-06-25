@@ -611,17 +611,17 @@ Das Datenobjekt weist die folgenden Eigenschaften auf:
 
 | Eigenschaft | Typ | BESCHREIBUNG |
 | -------- | ---- | ----------- |
-| trackType | Zeichenfolge | Spurtyp (Audio/Video) |
-| trackName | Zeichenfolge | Name der Spur (entweder vom Encoder oder (bei RTMP) vom Server im Format *SpurTyp_Bitrate* generiert). |
+| trackType | string | Spurtyp (Audio/Video) |
+| trackName | string | Name der Spur (entweder vom Encoder oder (bei RTMP) vom Server im Format *SpurTyp_Bitrate* generiert). |
 | bitrate | integer | Bitrate der Spur |
 | incomingBitrate | integer | Berechnete Bitrate basierend auf den Datenblöcken vom Encoder. |
-| lastTimestamp | Zeichenfolge | Neuester Zeitstempel, der für eine Spur in den letzten 20 Sekunden empfangen wurde. |
-| timescale | Zeichenfolge | Zeitskala für die Darstellung der Zeitstempel. |
+| lastTimestamp | string | Neuester Zeitstempel, der für eine Spur in den letzten 20 Sekunden empfangen wurde. |
+| timescale | string | Zeitskala für die Darstellung der Zeitstempel. |
 | overlapCount | integer | Anzahl der Datenblöcke mit überlappenden Zeitstempeln in den letzten 20 Sekunden. |
 | discontinuityCount | integer | Anzahl von Diskontinuitäten in den letzten 20 Sekunden. |
 | nonIncreasingCount | integer | Anzahl der Datenblöcke mit Zeitstempeln in der Vergangenheit, die in den letzten 20 Sekunden empfangen wurden. |
 | unexpectedBitrate | bool | Die erwarteten und tatsächlichen Bitraten in den letzten 20 Sekunden unterscheiden sich um mehr als das maximal zulässige Limit. TRUE, wenn (und nur wenn) incomingBitrate >= 2 * Bitrate OR incomingBitrate <= Bitrate / 2 OR IncomingBitrate = 0 gilt. |
-| state | Zeichenfolge | Zustand des Liveereignisses. |
+| state | string | Zustand des Liveereignisses. |
 | healthy | bool | Gibt an, ob die Erfassung hinsichtlich Anzahl und Flags fehlerfrei ist. Healthy ist TRUE, wenn overlapCount = 0 && discontinuityCount = 0 && nonIncreasingCount = 0 && unexpectedBitrate = false gilt. |
 
 ### <a name="liveeventtrackdiscontinuitydetected"></a>LiveEventTrackDiscontinuityDetected
@@ -655,13 +655,13 @@ Das Datenobjekt weist die folgenden Eigenschaften auf:
 
 | Eigenschaft | Typ | BESCHREIBUNG |
 | -------- | ---- | ----------- |
-| trackType | Zeichenfolge | Spurtyp (Audio/Video) |
-| trackName | Zeichenfolge | Name der Spur (entweder vom Encoder oder (bei RTMP) vom Server im Format *SpurTyp_Bitrate* generiert). |
+| trackType | string | Spurtyp (Audio/Video) |
+| trackName | string | Name der Spur (entweder vom Encoder oder (bei RTMP) vom Server im Format *SpurTyp_Bitrate* generiert). |
 | bitrate | integer | Bitrate der Spur |
-| previousTimestamp | Zeichenfolge | Zeitstempel des vorherigen Fragments. |
-| newTimestamp | Zeichenfolge | Zeitstempel des aktuellen Fragments. |
-| discontinuityGap | Zeichenfolge | Lücke zwischen den beiden obigen Zeitstempeln. |
-| timescale | Zeichenfolge | Zeitskala für die Darstellung von Zeitstempel und Diskontinuitätslücke. |
+| previousTimestamp | string | Zeitstempel des vorherigen Fragments. |
+| newTimestamp | string | Zeitstempel des aktuellen Fragments. |
+| discontinuityGap | string | Lücke zwischen den beiden obigen Zeitstempeln. |
+| timescale | string | Zeitskala für die Darstellung von Zeitstempel und Diskontinuitätslücke. |
 
 ### <a name="common-event-properties"></a>Allgemeine Ereigniseigenschaften
 
@@ -669,14 +669,14 @@ Ein Ereignis weist die folgenden Daten auf oberster Ebene aus:
 
 | Eigenschaft | Typ | BESCHREIBUNG |
 | -------- | ---- | ----------- |
-| topic | Zeichenfolge | Das EventGrid-Thema. Diese Eigenschaft enthält die Ressourcen-ID für das Media Services-Konto. |
-| subject | Zeichenfolge | Ressourcenpfad für den Media Services-Kanal unter dem Media Services-Konto. Durch Verketten von topic und subject erhalten Sie die Ressourcen-ID für den Auftrag. |
-| eventType | Zeichenfolge | Einer der registrierten Ereignistypen für die Ereignisquelle. Beispiel: “Microsoft.Media.JobStateChange“. |
-| eventTime | Zeichenfolge | Die Zeit, in der das Ereignis generiert wird, basierend auf der UTC-Zeit des Anbieters. |
-| id | Zeichenfolge | Eindeutiger Bezeichner für das Ereignis. |
+| topic | string | Das EventGrid-Thema. Diese Eigenschaft enthält die Ressourcen-ID für das Media Services-Konto. |
+| subject | string | Ressourcenpfad für den Media Services-Kanal unter dem Media Services-Konto. Durch Verketten von topic und subject erhalten Sie die Ressourcen-ID für den Auftrag. |
+| eventType | string | Einer der registrierten Ereignistypen für die Ereignisquelle. Beispiel: “Microsoft.Media.JobStateChange“. |
+| eventTime | string | Die Zeit, in der das Ereignis generiert wird, basierend auf der UTC-Zeit des Anbieters. |
+| id | string | Eindeutiger Bezeichner für das Ereignis. |
 | data | object | Media Services-Ereignisdaten. |
-| dataVersion | Zeichenfolge | Die Schemaversion des Datenobjekts. Der Herausgeber definiert die Schemaversion. |
-| metadataVersion | Zeichenfolge | Die Schemaversion der Ereignismetadaten. Event Grid definiert das Schema der Eigenschaften der obersten Ebene. Dieser Wert wird von Event Grid bereitgestellt. |
+| dataVersion | string | Die Schemaversion des Datenobjekts. Der Herausgeber definiert die Schemaversion. |
+| metadataVersion | string | Die Schemaversion der Ereignismetadaten. Event Grid definiert das Schema der Eigenschaften der obersten Ebene. Dieser Wert wird von Event Grid bereitgestellt. |
 
 ## <a name="next-steps"></a>Nächste Schritte
 
