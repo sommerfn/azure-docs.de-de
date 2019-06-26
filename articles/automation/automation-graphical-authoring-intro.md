@@ -324,10 +324,10 @@ Jeder Eingabeparameter wird durch die Eigenschaften in der folgenden Tabelle def
 
 | Eigenschaft | BESCHREIBUNG |
 |:--- |:--- |
-| NAME |Der eindeutige Name des Parameters. Dieser darf nur aus alphanumerischen Zeichen bestehen und darf keine Leerzeichen enthalten. |
-| BESCHREIBUNG |Eine optionale Beschreibung für den Eingabeparameter. |
+| Name |Der eindeutige Name des Parameters. Dieser darf nur aus alphanumerischen Zeichen bestehen und darf keine Leerzeichen enthalten. |
+| Description |Eine optionale Beschreibung für den Eingabeparameter. |
 | Type |Der für den Parameterwert erwartete Datentyp. Das Azure-Portal bietet ein geeignetes Steuerelement zum Eingeben des jeweiligen Datentyps für jeden Parameter. |
-| Erforderlich |Gibt an, ob ein Wert für den Parameter bereitgestellt werden muss. Das Runbook kann nicht gestartet werden, wenn der Wert für einen erforderlichen Parameter fehlt, für den kein Standardwert definiert wurde. |
+| Mandatory |Gibt an, ob ein Wert für den Parameter bereitgestellt werden muss. Das Runbook kann nicht gestartet werden, wenn der Wert für einen erforderlichen Parameter fehlt, für den kein Standardwert definiert wurde. |
 | Standardwert |Gibt an, welcher Wert für den Parameter verwendet wird, wenn kein Wert bereitgestellt wird. Dieser Wert kann entweder "Null" lauten oder einen spezifischen Wert angeben. |
 
 ### <a name="runbook-output"></a>Runbookausgabe
