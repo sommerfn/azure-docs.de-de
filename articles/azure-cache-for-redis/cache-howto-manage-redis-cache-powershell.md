@@ -127,10 +127,10 @@ Die folgende Tabelle enthält Eigenschaften und Beschreibungen für Parameter, d
 
 | Parameter | BESCHREIBUNG | Standard |
 | --- | --- | --- |
-| NAME |Name des Caches | |
+| Name |Name des Caches | |
 | Location |Ort des Caches | |
 | ResourceGroupName |Name der Ressourcengruppe, in der der Cache erstellt werden soll | |
-| Größe |Die Größe des Caches. Gültige Werte sind: P1, P2, P3, P4, C0, C1, C2, C3, C4, C5, C6, 250 MB, 1 GB, 2,5 GB, 6 GB, 13 GB, 26 GB, 53 GB |1 GB |
+| Size |Die Größe des Caches. Gültige Werte sind: P1, P2, P3, P4, C0, C1, C2, C3, C4, C5, C6, 250 MB, 1 GB, 2,5 GB, 6 GB, 13 GB, 26 GB, 53 GB |1 GB |
 | ShardCount |Die Anzahl der zu erstellenden Shards beim Erstellen eines Premium-Caches mit Clusterunterstützung. Gültige Werte sind: 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 | |
 | SKU |Gibt die SKU des Caches an. Gültige Werte sind: Basic, Standard und Premium |Standard |
 | RedisConfiguration |Gibt die Konfigurationseinstellungen für Redis an. Details zu den einzelnen Einstellungen finden Sie in der Tabelle [RedisConfiguration-Eigenschaften](#redisconfiguration-properties) . | |
