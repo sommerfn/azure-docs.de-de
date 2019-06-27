@@ -85,12 +85,12 @@ In der folgenden Tabelle werden die Standardparameter für alle Verwaltungslösu
 
 | Parameter | Type | BESCHREIBUNG |
 |:--- |:--- |:--- |
-| .<Name der Region |Zeichenfolge |Azure Automation-Kontoname |
-| pricingTier |Zeichenfolge |Der Tarif für den Log Analytics-Arbeitsbereich und das Azure Automation-Konto |
-| regionId |Zeichenfolge |Region des Azure Automation-Kontos |
-| solutionName |Zeichenfolge |Name der Lösung  Wenn Sie die Lösung über Schnellstartvorlagen bereitstellen, sollten Sie „solutionName“ als Parameter definieren, damit Sie eine Zeichenfolge definieren können und dies nicht durch den Benutzer erfolgen muss. |
-| workspaceName |Zeichenfolge |Name des Log Analytics-Arbeitsbereichs. |
-| workspaceRegionId |Zeichenfolge |Region des Azure Log Analytics-Arbeitsbereichs |
+| accountName |string |Azure Automation-Kontoname |
+| pricingTier |string |Der Tarif für den Log Analytics-Arbeitsbereich und das Azure Automation-Konto |
+| regionId |string |Region des Azure Automation-Kontos |
+| solutionName |string |Name der Lösung  Wenn Sie die Lösung über Schnellstartvorlagen bereitstellen, sollten Sie „solutionName“ als Parameter definieren, damit Sie eine Zeichenfolge definieren können und dies nicht durch den Benutzer erfolgen muss. |
+| workspaceName |string |Name des Log Analytics-Arbeitsbereichs. |
+| workspaceRegionId |string |Region des Azure Log Analytics-Arbeitsbereichs |
 
 
 Unten stehend finden Sie die Struktur der Standardparameter, die Sie kopieren und in Ihrer Lösungsdatei einfügen können.  
@@ -225,9 +225,9 @@ Die Entität **Plan** der Lösungsressource weist die Eigenschaften in der folge
 | Eigenschaft | BESCHREIBUNG |
 |:--- |:--- |
 | name |Name der Lösung |
-| Version |Die Version der Lösung, wie vom Autor festgelegt. |
+| version |Die Version der Lösung, wie vom Autor festgelegt. |
 | product |Eindeutige Zeichenfolge zum Identifizieren der Lösung. |
-| Herausgeber |Herausgeber der Lösung |
+| publisher |Herausgeber der Lösung |
 
 
 
