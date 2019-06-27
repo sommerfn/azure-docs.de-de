@@ -127,17 +127,17 @@ Die folgende Tabelle enthält Eigenschaften und Beschreibungen für Parameter, d
 
 | Parameter | BESCHREIBUNG | Standard |
 | --- | --- | --- |
-| NAME |Name des Caches | |
+| Name |Name des Caches | |
 | Location |Ort des Caches | |
 | ResourceGroupName |Name der Ressourcengruppe, in der der Cache erstellt werden soll | |
-| Größe |Die Größe des Caches. Gültige Werte sind: P1, P2, P3, P4, C0, C1, C2, C3, C4, C5, C6, 250 MB, 1 GB, 2,5 GB, 6 GB, 13 GB, 26 GB, 53 GB |1 GB |
+| Size |Die Größe des Caches. Gültige Werte sind: P1, P2, P3, P4, C0, C1, C2, C3, C4, C5, C6, 250 MB, 1 GB, 2,5 GB, 6 GB, 13 GB, 26 GB, 53 GB |1 GB |
 | ShardCount |Die Anzahl der zu erstellenden Shards beim Erstellen eines Premium-Caches mit Clusterunterstützung. Gültige Werte sind: 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 | |
 | SKU |Gibt die SKU des Caches an. Gültige Werte sind: Basic, Standard und Premium |Standard |
 | RedisConfiguration |Gibt die Konfigurationseinstellungen für Redis an. Details zu den einzelnen Einstellungen finden Sie in der Tabelle [RedisConfiguration-Eigenschaften](#redisconfiguration-properties) . | |
 | EnableNonSslPort |Gibt an, ob der Nicht-SSL-Port aktiviert ist. |False |
 | MaxMemoryPolicy |Dieser Parameter ist veraltet – verwenden Sie stattdessen RedisConfiguration. | |
 | StaticIP |Wenn Sie den Cache in einem VNET hosten, geben Sie hiermit eine eindeutige IP-Adresse im Subnetz für den Cache an. Wird keine IP-Adresse angegeben, wird eine für Sie aus dem Subnetz ausgewählt. | |
-| Subnetz |Wenn Sie den Cache in einem VNET hosten, geben Sie hiermit den Namen des Subnetzes an, in dem der Cache bereitgestellt wird. | |
+| Subnet |Wenn Sie den Cache in einem VNET hosten, geben Sie hiermit den Namen des Subnetzes an, in dem der Cache bereitgestellt wird. | |
 | VirtualNetwork |Wenn Sie den Cache in einem VNET hosten, geben Sie hiermit die Ressourcen-ID des VNET an, in dem der Cache bereitgestellt wird. | |
 | KeyType |Gibt an, welcher Zugriffsschlüssel beim Erneuern der Zugriffsschlüssel neu generiert werden muss. Gültige Werte sind: Primary, Secondary | |
 
