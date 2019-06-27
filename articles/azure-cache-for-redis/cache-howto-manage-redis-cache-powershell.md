@@ -137,7 +137,7 @@ Die folgende Tabelle enthält Eigenschaften und Beschreibungen für Parameter, d
 | EnableNonSslPort |Gibt an, ob der Nicht-SSL-Port aktiviert ist. |False |
 | MaxMemoryPolicy |Dieser Parameter ist veraltet – verwenden Sie stattdessen RedisConfiguration. | |
 | StaticIP |Wenn Sie den Cache in einem VNET hosten, geben Sie hiermit eine eindeutige IP-Adresse im Subnetz für den Cache an. Wird keine IP-Adresse angegeben, wird eine für Sie aus dem Subnetz ausgewählt. | |
-| Subnetz |Wenn Sie den Cache in einem VNET hosten, geben Sie hiermit den Namen des Subnetzes an, in dem der Cache bereitgestellt wird. | |
+| Subnet |Wenn Sie den Cache in einem VNET hosten, geben Sie hiermit den Namen des Subnetzes an, in dem der Cache bereitgestellt wird. | |
 | VirtualNetwork |Wenn Sie den Cache in einem VNET hosten, geben Sie hiermit die Ressourcen-ID des VNET an, in dem der Cache bereitgestellt wird. | |
 | KeyType |Gibt an, welcher Zugriffsschlüssel beim Erneuern der Zugriffsschlüssel neu generiert werden muss. Gültige Werte sind: Primary, Secondary | |
 
