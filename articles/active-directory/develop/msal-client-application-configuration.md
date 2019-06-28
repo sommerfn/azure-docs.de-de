@@ -38,10 +38,10 @@ In Ihrem Code initialisieren Sie eine neue öffentliche oder vertrauliche Client
 ## <a name="authority"></a>Authority
 Die Autorität ist eine URL, die ein Verzeichnis angibt, aus dem die MSAL Token anfordern kann. Gängige Autoritäten sind folgende:
 
-- https://login.microsoftonline.com/&lt ;Mandant&gt; /, wobei &lt; Mandant&gt; die Mandanten-ID des Azure AD-Mandanten (Azure Active Directory) oder eine Domäne ist, die diesem Azure AD-Mandanten zugeordnet ist. Diese wird nur für die Anmeldung von Benutzern einer bestimmten Organisation verwendet.
-- https://login.microsoftonline.com/common/. Hiermit werden Benutzer mit Geschäfts-, Schul- und Unikonten oder persönlichen Microsoft-Konten angemeldet.
-- https://login.microsoftonline.com/organizations/. Damit werden Benutzer mit Geschäfts-, Schul- oder Unikonten angemeldet.
-- https://login.microsoftonline.com/consumers/. Hiermit werden Benutzer angemeldet, die nur über ein persönliches Microsoft-Konto verfügen (früher als Windows Live ID-Konto bezeichnet).
+- [https://login.microsoftonline.com/&amp;lt](https://login.microsoftonline.com/&lt );Mandant&gt; /, wobei &lt; Mandant&gt; die Mandanten-ID des Azure AD-Mandanten (Azure Active Directory) oder eine Domäne ist, die diesem Azure AD-Mandanten zugeordnet ist. Diese wird nur für die Anmeldung von Benutzern einer bestimmten Organisation verwendet.
+- [https://login.microsoftonline.com/common/](https://login.microsoftonline.com/common/ ). Hiermit werden Benutzer mit Geschäfts-, Schul- und Unikonten oder persönlichen Microsoft-Konten angemeldet.
+- [https://login.microsoftonline.com/organizations/](https://login.microsoftonline.com/organizations/ ). Damit werden Benutzer mit Geschäfts-, Schul- oder Unikonten angemeldet.
+- [https://login.microsoftonline.com/consumers/](https://login.microsoftonline.com/consumers/ ). Hiermit werden Benutzer angemeldet, die nur über ein persönliches Microsoft-Konto verfügen (früher als Windows Live ID-Konto bezeichnet).
 
 Die Einstellung für die Autorität muss mit den Angaben im Anwendungsregistrierungsportal übereinstimmen.
 

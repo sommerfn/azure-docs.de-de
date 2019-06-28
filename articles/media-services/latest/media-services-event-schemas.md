@@ -130,8 +130,8 @@ Das Datenobjekt weist die folgenden Eigenschaften auf:
 
 | Eigenschaft | Typ | BESCHREIBUNG |
 | -------- | ---- | ----------- |
-| previousState | Zeichenfolge | Der Status des Auftrags vor dem Ereignis. |
-| state | Zeichenfolge | Der neue Status des Auftrags, über den in diesem Ereignis eine Benachrichtigung erfolgt. Beispiel: „Geplant: Der Auftrag ist startbereit“ oder „Abgeschlossen: Der Auftrag wurde abgeschlossen“.|
+| previousState | string | Der Status des Auftrags vor dem Ereignis. |
+| state | string | Der neue Status des Auftrags, über den in diesem Ereignis eine Benachrichtigung erfolgt. Beispiel: „Geplant: Der Auftrag ist startbereit“ oder „Abgeschlossen: Der Auftrag wurde abgeschlossen“.|
 
 Der Auftragsstatus kann einen der folgenden Werte aufweisen: *Queued* (In Warteschlange), *Scheduled* (Geplant), *Processing* (Wird verarbeitet), *Finished* (Abgeschlossen), *Error* (Fehler), *Canceled* (Abgebrochen), *Canceling* (Wird abgebrochen).
 
@@ -316,11 +316,11 @@ Das Datenobjekt weist die folgenden Eigenschaften auf:
 
 | Eigenschaft | Typ | BESCHREIBUNG |
 | -------- | ---- | ----------- |
-| streamId | Zeichenfolge | Bezeichner des Streams oder der Verbindung. Der Encoder bzw. der Kunde ist dafür verantwortlich, diese ID in die Erfassungs-URL einzufügen. |  
-| ingestUrl | Zeichenfolge | Erfassungs-URL, die vom Liveereignis bereitgestellt wird. |  
-| encoderIp | Zeichenfolge | IP-Adresse des Encoders. |
-| encoderPort | Zeichenfolge | Port des Encoders, von dem dieser Stream stammt. |
-| resultCode | Zeichenfolge | Der Grund, aus dem die Verbindung abgelehnt wurde. Diese Ergebniscodes werden in der folgenden Tabelle aufgeführt. |
+| streamId | string | Bezeichner des Streams oder der Verbindung. Der Encoder bzw. der Kunde ist dafür verantwortlich, diese ID in die Erfassungs-URL einzufügen. |  
+| ingestUrl | string | Erfassungs-URL, die vom Liveereignis bereitgestellt wird. |  
+| encoderIp | string | IP-Adresse des Encoders. |
+| encoderPort | string | Port des Encoders, von dem dieser Stream stammt. |
+| resultCode | string | Der Grund, aus dem die Verbindung abgelehnt wurde. Diese Ergebniscodes werden in der folgenden Tabelle aufgeführt. |
 
 Die Ergebniscodes sind:
 
@@ -363,10 +363,10 @@ Das Datenobjekt weist die folgenden Eigenschaften auf:
 
 | Eigenschaft | Typ | BESCHREIBUNG |
 | -------- | ---- | ----------- |
-| streamId | Zeichenfolge | Bezeichner des Streams oder der Verbindung. Der Encoder bzw. der Kunde ist dafür verantwortlich, diese ID in die Erfassungs-URL bereitzustellen. |
-| ingestUrl | Zeichenfolge | Erfassungs-URL, die vom Liveereignis bereitgestellt wird. |
-| encoderIp | Zeichenfolge | IP-Adresse des Encoders. |
-| encoderPort | Zeichenfolge | Port des Encoders, von dem dieser Stream stammt. |
+| streamId | string | Bezeichner des Streams oder der Verbindung. Der Encoder bzw. der Kunde ist dafür verantwortlich, diese ID in die Erfassungs-URL bereitzustellen. |
+| ingestUrl | string | Erfassungs-URL, die vom Liveereignis bereitgestellt wird. |
+| encoderIp | string | IP-Adresse des Encoders. |
+| encoderPort | string | Port des Encoders, von dem dieser Stream stammt. |
 
 ### <a name="liveeventencoderdisconnected"></a>LiveEventEncoderDisconnected
 
@@ -397,11 +397,11 @@ Das Datenobjekt weist die folgenden Eigenschaften auf:
 
 | Eigenschaft | Typ | BESCHREIBUNG |
 | -------- | ---- | ----------- |
-| streamId | Zeichenfolge | Bezeichner des Streams oder der Verbindung. Der Encoder bzw. der Kunde ist dafür verantwortlich, diese ID in die Erfassungs-URL einzufügen. |  
-| ingestUrl | Zeichenfolge | Erfassungs-URL, die vom Liveereignis bereitgestellt wird. |  
-| encoderIp | Zeichenfolge | IP-Adresse des Encoders. |
-| encoderPort | Zeichenfolge | Port des Encoders, von dem dieser Stream stammt. |
-| resultCode | Zeichenfolge | Der Grund für die Trennung der Verbindung mit dem Encoder. Die Trennung kann ordnungsgemäß oder verursacht durch einen Fehler erfolgen. Diese Ergebniscodes werden in der folgenden Tabelle aufgeführt. |
+| streamId | string | Bezeichner des Streams oder der Verbindung. Der Encoder bzw. der Kunde ist dafür verantwortlich, diese ID in die Erfassungs-URL einzufügen. |  
+| ingestUrl | string | Erfassungs-URL, die vom Liveereignis bereitgestellt wird. |  
+| encoderIp | string | IP-Adresse des Encoders. |
+| encoderPort | string | Port des Encoders, von dem dieser Stream stammt. |
+| resultCode | string | Der Grund für die Trennung der Verbindung mit dem Encoder. Die Trennung kann ordnungsgemäß oder verursacht durch einen Fehler erfolgen. Diese Ergebniscodes werden in der folgenden Tabelle aufgeführt. |
 
 Die Fehlerergebniscodes sind:
 
@@ -454,12 +454,12 @@ Das Datenobjekt weist die folgenden Eigenschaften auf:
 
 | Eigenschaft | Typ | BESCHREIBUNG |
 | -------- | ---- | ----------- |
-| trackType | Zeichenfolge | Spurtyp (Audio/Video) |
-| trackName | Zeichenfolge | Name der Spur |
+| trackType | string | Spurtyp (Audio/Video) |
+| trackName | string | Name der Spur |
 | bitrate | integer | Bitrate der Spur |
-| timestamp | Zeichenfolge | Zeitstempel des gelöschten Datenblocks |
-| timescale | Zeichenfolge | Zeitskala des Zeitstempels |
-| resultCode | Zeichenfolge | Grund für das Löschen des Datenblocks. **FragmentDrop_OverlapTimestamp** oder **FragmentDrop_NonIncreasingTimestamp**. |
+| timestamp | string | Zeitstempel des gelöschten Datenblocks |
+| timescale | string | Zeitskala des Zeitstempels |
+| resultCode | string | Grund für das Löschen des Datenblocks. **FragmentDrop_OverlapTimestamp** oder **FragmentDrop_NonIncreasingTimestamp**. |
 
 ### <a name="liveeventincomingstreamreceived"></a>LiveEventIncomingStreamReceived
 
@@ -494,14 +494,14 @@ Das Datenobjekt weist die folgenden Eigenschaften auf:
 
 | Eigenschaft | Typ | BESCHREIBUNG |
 | -------- | ---- | ----------- |
-| trackType | Zeichenfolge | Spurtyp (Audio/Video) |
-| trackName | Zeichenfolge | Name der Spur (entweder vom Encoder oder (bei RTMP) vom Server im Format *SpurTyp_Bitrate* generiert). |
+| trackType | string | Spurtyp (Audio/Video) |
+| trackName | string | Name der Spur (entweder vom Encoder oder (bei RTMP) vom Server im Format *SpurTyp_Bitrate* generiert). |
 | bitrate | integer | Bitrate der Spur |
-| ingestUrl | Zeichenfolge | Erfassungs-URL, die vom Liveereignis bereitgestellt wird. |
-| encoderIp | Zeichenfolge  | IP-Adresse des Encoders. |
-| encoderPort | Zeichenfolge | Port des Encoders, von dem dieser Stream stammt. |
-| timestamp | Zeichenfolge | Erster Zeitstempel des empfangenen Datenblocks |
-| timescale | Zeichenfolge | Zeitskala für die Darstellung des Zeitstempels |
+| ingestUrl | string | Erfassungs-URL, die vom Liveereignis bereitgestellt wird. |
+| encoderIp | string  | IP-Adresse des Encoders. |
+| encoderPort | string | Port des Encoders, von dem dieser Stream stammt. |
+| timestamp | string | Erster Zeitstempel des empfangenen Datenblocks |
+| timescale | string | Zeitskala für die Darstellung des Zeitstempels |
 
 ### <a name="liveeventincomingstreamsoutofsync"></a>LiveEventIncomingStreamsOutOfSync
 
@@ -533,12 +533,12 @@ Das Datenobjekt weist die folgenden Eigenschaften auf:
 
 | Eigenschaft | Typ | BESCHREIBUNG |
 | -------- | ---- | ----------- |
-| minLastTimestamp | Zeichenfolge | Minimum der letzten Zeitstempel für alle Spuren (Audio oder Video). |
-| typeOfTrackWithMinLastTimestamp | Zeichenfolge | Der Typ der Spur (Audio oder Video) mit dem niedrigsten letzten Zeitstempel. |
-| maxLastTimestamp | Zeichenfolge | Maximum aller Zeitstempel in allen Spuren (Audio oder Video). |
-| typeOfTrackWithMaxLastTimestamp | Zeichenfolge | Der Typ der Spur (Audio oder Video) mit dem höchsten letzten Zeitstempel. |
-| timescaleOfMinLastTimestamp| Zeichenfolge | Ruft die Zeitskala ab, in der „MinLastTimestamp“ dargestellt wird.|
-| timescaleOfMaxLastTimestamp| Zeichenfolge | Ruft die Zeitskala ab, in der „MaxLastTimestamp“ dargestellt wird.|
+| minLastTimestamp | string | Minimum der letzten Zeitstempel für alle Spuren (Audio oder Video). |
+| typeOfTrackWithMinLastTimestamp | string | Der Typ der Spur (Audio oder Video) mit dem niedrigsten letzten Zeitstempel. |
+| maxLastTimestamp | string | Maximum aller Zeitstempel in allen Spuren (Audio oder Video). |
+| typeOfTrackWithMaxLastTimestamp | string | Der Typ der Spur (Audio oder Video) mit dem höchsten letzten Zeitstempel. |
+| timescaleOfMinLastTimestamp| string | Ruft die Zeitskala ab, in der „MinLastTimestamp“ dargestellt wird.|
+| timescaleOfMaxLastTimestamp| string | Ruft die Zeitskala ab, in der „MaxLastTimestamp“ dargestellt wird.|
 
 ### <a name="liveeventincomingvideostreamsoutofsync"></a>LiveEventIncomingVideoStreamsOutOfSync
 
@@ -569,11 +569,11 @@ Das Datenobjekt weist die folgenden Eigenschaften auf:
 
 | Eigenschaft | Typ | BESCHREIBUNG |
 | -------- | ---- | ----------- |
-| firstTimestamp | Zeichenfolge | Zeitstempel, der für eine der Spuren/Qualitätsstufen vom Typ Video empfangen wurde. |
-| firstDuration | Zeichenfolge | Dauer des Datenblocks mit dem ersten Zeitstempel. |
-| secondTimestamp | Zeichenfolge  | Zeitstempel, der für einige andere Spuren/Qualitätsstufen vom Typ Video empfangen wurde. |
-| secondDuration | Zeichenfolge | Dauer des Datenblocks mit dem zweiten Zeitstempel. |
-| timescale | Zeichenfolge | Die Zeitskala für Zeitstempel und Dauer.|
+| firstTimestamp | string | Zeitstempel, der für eine der Spuren/Qualitätsstufen vom Typ Video empfangen wurde. |
+| firstDuration | string | Dauer des Datenblocks mit dem ersten Zeitstempel. |
+| secondTimestamp | string  | Zeitstempel, der für einige andere Spuren/Qualitätsstufen vom Typ Video empfangen wurde. |
+| secondDuration | string | Dauer des Datenblocks mit dem zweiten Zeitstempel. |
+| timescale | string | Die Zeitskala für Zeitstempel und Dauer.|
 
 ### <a name="liveeventingestheartbeat"></a>LiveEventIngestHeartbeat
 
