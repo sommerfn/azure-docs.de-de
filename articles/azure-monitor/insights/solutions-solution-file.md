@@ -85,7 +85,7 @@ In der folgenden Tabelle werden die Standardparameter für alle Verwaltungslösu
 
 | Parameter | Type | BESCHREIBUNG |
 |:--- |:--- |:--- |
-| accountName |string |Azure Automation-Kontoname |
+| .<Name der Region |string |Azure Automation-Kontoname |
 | pricingTier |string |Der Tarif für den Log Analytics-Arbeitsbereich und das Azure Automation-Konto |
 | regionId |string |Region des Azure Automation-Kontos |
 | solutionName |string |Name der Lösung  Wenn Sie die Lösung über Schnellstartvorlagen bereitstellen, sollten Sie „solutionName“ als Parameter definieren, damit Sie eine Zeichenfolge definieren können und dies nicht durch den Benutzer erfolgen muss. |

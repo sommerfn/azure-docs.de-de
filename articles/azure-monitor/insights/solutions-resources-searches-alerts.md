@@ -76,7 +76,7 @@ Ressourcen für [Gespeicherte Suchen in Log Analytics](../../azure-monitor/log-q
 
 Die Eigenschaften einer gespeicherten Suche sind in der folgenden Tabelle beschrieben.
 
-| Eigenschaft | BESCHREIBUNG |
+| Eigenschaft | description |
 |:--- |:--- |
 | category | Die Kategorie für die gespeicherte Suche.  Alle gespeicherten Suchen in derselben Lösung verwenden häufig gemeinsam eine einzige Kategorie, sodass sie gemeinsam in der Konsole gruppiert werden. |
 | displayname | Name, der für die gespeicherte Suche im Portal angezeigt wird |
@@ -121,7 +121,7 @@ Eine gespeicherte Suche kann einen oder mehrere Zeitpläne aufweisen, wobei jede
     }
 Die Eigenschaften für Zeitplanressourcen werden in der folgenden Tabelle beschrieben.
 
-| Elementname | Erforderlich | BESCHREIBUNG |
+| Elementname | Erforderlich | description |
 |:--|:--|:--|
 | enabled       | Ja | Gibt an, ob die Warnung beim Erstellen aktiviert wird. |
 | interval      | Ja | Abfrageintervall in Minuten |
@@ -174,18 +174,18 @@ Warnungsaktionen weisen die folgende Struktur auf: Dies schließt allgemeine Var
 
 Die Eigenschaften für Warnungsaktionsressourcen werden in den folgenden Tabellen beschrieben:
 
-| Elementname | Erforderlich | BESCHREIBUNG |
+| Elementname | Erforderlich | description |
 |:--|:--|:--|
 | type | Ja | Der Typ der Aktion.  Dieser lautet bei Warnungsaktionen **Warnung**. |
 | name | Ja | Der Anzeigename für die Warnung.  Dies ist der Name, der in der Konsole für die Warnungsregel angezeigt wird. |
 | description | Nein | Eine optionale Beschreibung der Warnung |
-| severity | Ja | Schweregrad des Warnungsdatensatzes aus den folgenden Werten:<br><br> **Kritisch**<br>**Warnung**<br>**Information**
+| Schweregrad | Ja | Schweregrad des Warnungsdatensatzes aus den folgenden Werten:<br><br> **Kritisch**<br>**Warnung**<br>**Information**
 
 
 #### <a name="threshold"></a>Schwellenwert
 Dieser Abschnitt ist ein Pflichtabschnitt. Er definiert die Eigenschaften für den Warnungsschwellenwert.
 
-| Elementname | Erforderlich | BESCHREIBUNG |
+| Elementname | Erforderlich | description |
 |:--|:--|:--|
 | Operator | Ja | Operator für den Vergleich der folgenden Werte:<br><br>**gt = Greater Than (Größer als)<br>lt = Less Than (Kleiner als)** |
 | Wert | Ja | Der Wert zum Vergleich der Ergebnisse |
@@ -196,7 +196,7 @@ Dieser Abschnitt ist optional. Fügen Sie ihn für eine Warnung aufgrund metrisc
 > [!NOTE]
 > Warnungen aufgrund metrischer Messungen befinden sich derzeit in der öffentlichen Vorschau.
 
-| Elementname | Erforderlich | BESCHREIBUNG |
+| Elementname | Erforderlich | description |
 |:--|:--|:--|
 | TriggerCondition | Ja | Gibt an, ob der Schwellenwert für die Gesamtanzahl der Verstöße oder für aufeinander folgende Verstöße gegen folgende Werte steht:<br><br>**Insgesamt<br>Aufeinander folgende** |
 | Operator | Ja | Operator für den Vergleich der folgenden Werte:<br><br>**gt = Greater Than (Größer als)<br>lt = Less Than (Kleiner als)** |
@@ -206,7 +206,7 @@ Dieser Abschnitt ist optional. Fügen Sie ihn für eine Warnung aufgrund metrisc
 #### <a name="throttling"></a>Drosselung
 Dieser Abschnitt ist optional. Beziehen Sie diesen Abschnitt mit ein, wenn nach dem Erstellen einer Warnung Warnungen von derselben Regel eine bestimmte Zeit lang unterdrückt werden sollen.
 
-| Elementname | Erforderlich | BESCHREIBUNG |
+| Elementname | Erforderlich | description |
 |:--|:--|:--|
 | DurationInMinutes | Ja, wenn das Drosselungselement enthalten ist | Dauer der Unterdrückung von Warnungen in Minuten, wenn eine Warnung aufgrund derselben Regel erstellt wird. |
 
@@ -215,7 +215,7 @@ Alle Warnungen in Azure verwenden Aktionsgruppen als Standardmechanismus für di
 
 Für Benutzer, die ihre Warnungen auf Azure erweitert haben, sollten bei Zeitplänen jetzt zusammen mit dem Schwellenwert auch Aktionsgruppendetails übergeben werden, um eine Warnung erstellen zu können. E-Mail-Details, Webhook-URLs, Details zur Runbookautomatisierung und weitere Aktionen müssen vor dem Erstellen einer Warnung in einer Aktionsgruppe definiert werden; es ist möglich, eine [Aktionsgruppe von Azure Monitor aus](../../azure-monitor/platform/action-groups.md) im Portal zu erstellen, oder die [Aktionsgruppen-Ressourcenvorlage](../../azure-monitor/platform/action-groups-create-resource-manager-template.md) zu verwenden.
 
-| Elementname | Erforderlich | BESCHREIBUNG |
+| Elementname | Erforderlich | description |
 |:--|:--|:--|
 | AzNsNotification | Ja | Die Ressourcen-ID der Azure-Aktionsgruppe, die der Warnung zugeordnet werden soll, um erforderliche Aktionen auszuführen, wenn Warnungskriterien zutreffen. |
 | CustomEmailSubject | Nein | Benutzerdefinierte Betreffzeile der E-Mail, die an alle Adressen gesendet wird, die in der zugeordneten Aktionsgruppe angegeben sind. |
@@ -231,7 +231,7 @@ Jeder Zeitplan weist eine Aktion vom Typ **Warnung** auf. Dadurch werden die Det
 ##### <a name="emailnotification"></a>EmailNotification
  Dieser Abschnitt ist optional. Schließen Sie ihn ein, wenn bei der Warnung eine E-Mail an mindestens einen Empfänger gesendet werden soll.
 
-| Elementname | Erforderlich | BESCHREIBUNG |
+| Elementname | Erforderlich | description |
 |:--|:--|:--|
 | Empfänger | Ja | Durch Kommas getrennte Liste der E-Mail-Adressen, an die eine Benachrichtigung gesendet wird, wenn eine Warnung wie im folgenden Beispiel erstellt wird.<br><br>**[ "Empfänger1\@contoso.com", "Empfänger2\@contoso.com" ]** |
 | Subject | Ja | Die Betreffzeile der E-Mail |
@@ -240,7 +240,7 @@ Jeder Zeitplan weist eine Aktion vom Typ **Warnung** auf. Dadurch werden die Det
 ##### <a name="remediation"></a>Wiederherstellung
 Dieser Abschnitt ist optional. Schließen Sie ihn ein, wenn als Reaktion auf die Warnung ein Runbook gestartet werden soll. 
 
-| Elementname | Erforderlich | BESCHREIBUNG |
+| Elementname | Erforderlich | description |
 |:--|:--|:--|
 | RunbookName | Ja | Der Name des Runbooks, das gestartet werden soll |
 | WebhookUri | Ja | Der URI des Webhooks für das Runbook |
@@ -269,7 +269,7 @@ Wenn die Warnung einen Webhook aufruft, benötigt sie eine Aktionsressource mit 
     }
 Die Eigenschaften für Webhook-Aktionsressourcen werden in den folgenden Tabellen beschrieben:
 
-| Elementname | Erforderlich | BESCHREIBUNG |
+| Elementname | Erforderlich | description |
 |:--|:--|:--|
 | type | Ja | Der Typ der Aktion. Dieser lautet für Webhookaktionen **Webhook**. |
 | name | Ja | Der Anzeigename für die Aktion. Dieser wird nicht in der Konsole angezeigt. |

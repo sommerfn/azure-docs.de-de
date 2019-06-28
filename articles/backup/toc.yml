@@ -144,8 +144,6 @@
           items:
             - name: Verwalten von Azure-VM-Sicherungen
               href: backup-azure-manage-vms.md
-            - name: Überwachen von Warnungen für Azure-VM-Sicherungen
-              href: backup-azure-monitor-vms.md
         - name: Wiederherstellen virtueller Azure-Computer
           items:
             - name: Wiederherstellen virtueller Azure-Computer im Portal
