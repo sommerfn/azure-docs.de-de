@@ -109,7 +109,7 @@ Die folgende Tabelle zeigt die Schemaunterschiede zwischen Log Analytics und App
 | AvailabilityTestId | id |
 | AvailabilityTestName | name |
 | AvailabilityTimestamp | timestamp |
-| "Browser" | client_browser |
+| Browser | client_browser |
 | City | client_city |
 | ClientIP | client_IP |
 | Computer | cloud_RoleInstance | 
@@ -125,7 +125,7 @@ Die folgende Tabelle zeigt die Schemaunterschiede zwischen Log Analytics und App
 | ExceptionType | type |
 | OperationID | operation_id |
 | OperationName | operation_Name | 
-| Betriebssystem | client_OS | 
+| OS | client_OS | 
 | PageViewCount | itemCount |
 | PageViewDuration | duration | 
 | PageViewName | name | 
@@ -134,13 +134,13 @@ Die folgende Tabelle zeigt die Schemaunterschiede zwischen Log Analytics und App
 | RequestDuration | duration | 
 | RequestID | id | 
 | RequestName | name | 
-| RequestSuccess | Erfolg | 
+| RequestSuccess | success | 
 | ResponseCode | resultCode | 
-| Rolle | cloud_RoleName |
+| Role | cloud_RoleName |
 | RoleInstance | cloud_RoleInstance |
 | SessionId | session_Id | 
 | SourceSystem | operation_SyntheticSource |
-| TelemetryType | type |
+| TelemetryTYpe | type |
 | URL | _url |
 | UserAccountId | user_AccountId |
 
