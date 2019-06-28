@@ -1,6 +1,13 @@
 ### YamlMime:Landing
 title: Microsoft Identity Platform (vormals Azure Active Directory für Entwickler)
 summary: "Microsoft Identity Platform ist eine Weiterentwicklung der Azure\_AD-Entwicklerplattform (Azure Active Directory). Sie ermöglicht Entwicklern das Erstellen von Anwendungen, mit denen alle Microsoft-Identitäten angemeldet werden, sowie das Abrufen von Token zum Aufrufen von Microsoft-APIs, etwa Microsoft Graph oder von Entwicklern erstellte APIs. Es handelt sich um eine Plattform mit vollem Funktionsumfang, die sich aus einem mit den OAuth\_2.0- und OpenID\_Connect-Standards konformen Authentifizierungsdienst, Open-Source-Bibliotheken, Anwendungsregistrierung und -konfiguration, stabiler Konzept- und Referenzdokumentation, Schnellstartbeispielen, Codebeispielen, Tutorials und Schrittanleitungen zusammensetzt."
+metadata:
+  ms.topic: landing-page
+  ms.date: 06/22/2019
+  author: CelesteDG
+  ms.service: active-directory
+  ms.subservice: develop
+  ms.workload: identity
 landingContent:
   - title: Informationen zu Microsoft Identity Platform
     linkLists:

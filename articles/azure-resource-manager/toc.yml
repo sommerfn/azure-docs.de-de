@@ -212,7 +212,7 @@
 - name: Verweis
   items:
     - name: Vorlagenreferenz
-      href:  /azure/templates/
+      href: /azure/templates/
     - name: Funktionen von Azure-Ressourcen-Manager-Vorlagen
       items:
         - name: Alle Funktionen
