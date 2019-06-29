@@ -109,7 +109,7 @@ Die folgende Tabelle zeigt die Schemaunterschiede zwischen Log Analytics und App
 | AvailabilityTestId | id |
 | AvailabilityTestName | name |
 | AvailabilityTimestamp | timestamp |
-| Browser | client_browser |
+| "Browser" | client_browser |
 | City | client_city |
 | ClientIP | client_IP |
 | Computer | cloud_RoleInstance | 
