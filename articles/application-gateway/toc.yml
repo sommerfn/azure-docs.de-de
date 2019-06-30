@@ -96,6 +96,7 @@
         - name: Azure-Befehlszeilenschnittstelle
           href: tutorial-manage-web-traffic-cli.md
         - name: Vorlage
+          displayName: 'ARM, Resource Manager, template'
           href: create-vmss-template.md
     - name: Konfigurieren des internen Load Balancers
       items:
@@ -241,6 +242,8 @@
       href: /rest/api/applicationgateway
     - name: Azure Resource Manager
       href: ../azure-resource-manager/resource-group-overview.md
+    - name: Resource Manager-Vorlage
+      href: 'https://docs.microsoft.com/azure/templates/microsoft.network/allversions'
 - name: Ressourcen
   items:
     - name: Verfassen von Vorlagen

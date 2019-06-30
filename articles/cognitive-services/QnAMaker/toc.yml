@@ -144,6 +144,13 @@
 - name: Verweis
   items:
     - name: REST-API-Referenz
+      items:
+        - name: Erstellen von APIs
+          href: 'https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/knowledgebase'
+        - name: GenerateAnswer-API
+          href: 'https://docs.microsoft.com/rest/api/cognitiveservices/qnamakerruntime/runtime/generateanswer'
+        - name: Trainings-API
+          href: 'https://docs.microsoft.com/rest/api/cognitiveservices/qnamakerruntime/runtime/train'
       href: 'https://go.microsoft.com/fwlink/?linkid=2092179'
     - name: Häufig gestellte Fragen
       href: faqs.md

@@ -50,10 +50,6 @@
           href: xamarin-notification-hubs-ios-push-notification-apns-get-started.md
         - name: Senden von lokalisierten Pushbenachrichtigungen an iOS-Geräte
           href: notification-hubs-ios-xplat-localized-apns-push-notification.md
-    - name: Kindle
-      items:
-        - name: Senden von Pushbenachrichtigungen mit Amazon Device Messaging
-          href: notification-hubs-kindle-amazon-adm-push-notification.md
     - name: Windows Phone
       items:
         - name: Senden von Pushbenachrichtigungen an Apps
@@ -129,8 +125,6 @@
           href: configure-windows-push-notification-service.md
         - name: Konfigurieren des Microsoft-Pushbenachrichtigungsdiensts
           href: configure-microsoft-push-notification-service.md
-        - name: Konfigurieren von Android Device Messaging
-          href: configure-android-device-messaging.md
         - name: Konfigurieren von Baidu Cloud Push
           href: configure-baidu-cloud-push.md
     - name: Registrieren bei einem Anwendungs-Back-End

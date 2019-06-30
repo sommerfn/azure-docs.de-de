@@ -19,6 +19,8 @@
               href: service-bus-quickstart-powershell.md
             - name: Azure-Befehlszeilenschnittstelle
               href: service-bus-quickstart-cli.md
+            - name: Azure Resource Manager-Vorlage
+              href: service-bus-resource-manager-namespace-queue.md
         - name: Senden und Empfangen von Nachrichten
           items:
             - name: .NET
@@ -40,7 +42,11 @@
     - name: Service Bus-Themen und -Abonnements
       items:
         - name: Erstellen von Themen und Abonnements
-          href: service-bus-quickstart-topics-subscriptions-portal.md
+          items:
+            - name: Azure-Portal
+              href: service-bus-quickstart-topics-subscriptions-portal.md
+            - name: Azure Resource Manager-Vorlage
+              href: service-bus-resource-manager-namespace-topic.md
         - name: Veröffentlichen und Abonnieren von Nachrichten
           items:
             - name: .NET
@@ -187,10 +193,6 @@
           items:
             - name: Erstellen eines Namespace
               href: service-bus-resource-manager-namespace.md
-            - name: Erstellen eines Namespace und einer Warteschlange
-              href: service-bus-resource-manager-namespace-queue.md
-            - name: Erstellen eines Service Bus-Namespace mit Thema und Abonnement mit einer Azure Resource Manager-Vorlage
-              href: service-bus-resource-manager-namespace-topic.md
             - name: Erstellen einer Autorisierungsregel für Namespace und Warteschlange
               href: service-bus-resource-manager-namespace-auth-rule.md
             - name: 'Erstellen eines Namespace mit Thema, Abonnement und Regel'

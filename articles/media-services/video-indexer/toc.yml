@@ -14,14 +14,17 @@
     - name: Verwenden der Video Indexer-API
       href: video-indexer-use-apis.md
 - name: Konzepte
-  href: video-indexer-concepts.md
   items:
+    - name: Übersicht
+      href: video-indexer-concepts.md
     - name: Vergleichen von Video Indexer- und Media Services-Voreinstellungen
       href: compare-video-indexer-with-media-services-presets.md
     - name: Verwalten mehrerer Mandanten
       href: manage-multiple-tenants.md
     - name: Anpassen von Inhaltsmodellen
       items:
+        - name: Übersicht
+          href: customize-content-models-overview.md
         - name: Marken
           href: customize-brands-model-overview.md
         - name: Sprache
@@ -80,9 +83,11 @@
       href: 'https://azure.microsoft.com/pricing/details/media-services/'
     - name: Regionale Verfügbarkeit
       href: 'https://azure.microsoft.com/regions/services/'
-    - name: Regionen
+    - name: Regions
       href: regions.md
     - name: Häufig gestellte Fragen
       href: faq.md
     - name: Compliance
       href: 'https://gallery.technet.microsoft.com/Overview-of-Azure-c1be3942'
+    - name: Versionshinweise
+      href: release-notes.md

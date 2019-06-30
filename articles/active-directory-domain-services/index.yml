@@ -5,8 +5,8 @@ metadata:
   title: Dokumentation zu Azure AD Domain Services
   description: 'Hier erfahren Sie, wie Sie mithilfe von Active Directory Domain Services virtuelle Azure-Computer ohne Verwendung von Domänencontrollern einer Domäne hinzufügen. Anhand von Tutorials und anderem Dokumentationsmaterial wird gezeigt, wie Sie virtuelle Computer mithilfe von Gruppenrichtlinien verwalten.'
   keywords: 'Azure AD, Azure,Domänenbeitritt, Gruppenrichtlinie, LDAP, Kerberos, Domänencontroller, DC, Lift & Shift'
-  author: MikeStephens-MS
-  ms.author: mstephen
+  author: iainfoulds
+  ms.author: iainfou
   manager: daveba
   ms.date: 05/22/2019
   ms.topic: landing-page

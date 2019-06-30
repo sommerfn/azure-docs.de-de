@@ -8,11 +8,13 @@
       href: iot-services-and-technologies.md
 - name: Sicherheit
   items:
-    - name: Sicherheitsarchitektur
-      href: iot-security-architecture.md
-    - name: Bewährte Methoden für die Sicherheit
-      href: iot-security-best-practices.md
-    - name: Sichere Bereitstellung
-      href: iot-security-deployment.md
+    - name: Empfehlungen
+      href: security-recommendations.md
     - name: Sicherheit von Anfang an
       href: iot-security-ground-up.md
+    - name: Bewährte Methoden für die Sicherheit
+      href: iot-security-best-practices.md
+    - name: Sicherheitsarchitektur
+      href: iot-security-architecture.md
+    - name: Sichere Bereitstellung
+      href: iot-security-deployment.md

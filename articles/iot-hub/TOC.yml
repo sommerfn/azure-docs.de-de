@@ -159,6 +159,8 @@
           href: iot-hub-devguide-glossary.md
     - name: Sicherheit
       items:
+        - name: Empfehlungen
+          href: /azure/iot-fundamentals/security-recommendations?context=azure/iot-hub/rc/rc
         - name: Sicherheit von Anfang an
           href: /azure/iot-fundamentals/iot-security-ground-up?context=azure/iot-hub/rc/rc
         - name: Bewährte Methoden für die Sicherheit

@@ -56,7 +56,7 @@ sections:
           - image:
               src: media/index/ml-server_r.svg
             text: ML Services
-            href: /azure/hdinsight/r-server/r-server-get-started
+            href: /azure/hdinsight/r-server/ml-services-quickstart-job-rstudio
   - title: Schritt-für-Schritt-Tutorials
     items:
       - type: paragraph
@@ -64,7 +64,6 @@ sections:
       - type: list
         style: unordered
         items:
-          - html: 'Apache Hadoop &#58; <a href="/azure/hdinsight/hdinsight-analyze-flight-delay-data-linux">Durchführen von ETL-Vorgängen</a> | <a href="/azure/hdinsight/hdinsight-hadoop-create-linux-clusters-adf">Erstellen bedarfsgesteuerter Cluster</a>'
           - html: 'Apache Spark &#58; <a href="/azure/hdinsight/spark/apache-spark-load-data-run-query">Ausführen interaktiver Abfragen</a> | <a href="/azure/hdinsight/spark/apache-spark-use-bi-tools">Visualisieren von Daten</a> | <a href="/azure/hdinsight/spark/apache-spark-ipython-notebook-machine-learning">Machine Learning</a>'
           - html: 'Apache Kafka &#58; <a href="/azure/hdinsight/hdinsight-apache-kafka-spark-structured-streaming">Strukturiertes Streaming mit Kafka</a> | <a href="/azure/hdinsight/hdinsight-apache-storm-with-kafka">Verwenden mit Storm in HDInsight</a> | <a href="/azure/hdinsight/kafka/apache-kafka-producer-consumer-api">Verwenden der Producer- und Consumer-APIs von Kafka</a>'
           - html: 'Apache HBase &#58; <a href="/azure/hdinsight/hbase/apache-hbase-provision-vnet">Erstellen von HBase-Clustern in einem VNET</a> | <a href="/azure/hdinsight/hdinsight-phoenix-in-hdinsight">Verwenden von Apache Phoenix</a> | <a href="/azure/hdinsight/hdinsight-using-spark-query-hbase">Verbinden mit Spark</a>'
