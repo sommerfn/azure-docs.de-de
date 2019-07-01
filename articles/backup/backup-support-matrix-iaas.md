@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 05/08/2019
 ms.author: raynew
-ms.openlocfilehash: 96b05ff6e08b3a35bdcfb43f78066679914ca63a
-ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
+ms.openlocfilehash: ef522785d5074187871c25c54deae84b156d69b1
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/04/2019
-ms.locfileid: "66477481"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "66743173"
 ---
 # <a name="support-matrix-for-azure-vm-backup"></a>Unterstützungsmatrix für die Sicherung virtueller Azure-Computer
 Mit dem [Azure Backup-Dienst](backup-overview.md) können Sie lokale Computer und Workloads sowie virtuelle Azure-Computer (VMs) sichern. Dieser Artikel enthält eine Zusammenfassung der Unterstützungseinstellungen und Einschränkungen bei der Sicherung von Azure-VMs mit Azure Backup.
@@ -54,6 +54,8 @@ Sicherungen pro Tag (über DPM/MABS) | Zwei geplante Sicherungen pro Tag
 Monatliche oder jährliche Sicherung   | Wird bei der Sicherung mit der Azure-VM-Erweiterung nicht unterstützt. Lediglich tägliche und wöchentliche Sicherungen werden unterstützt.<br/><br/> Sie können die Richtlinie so einrichten, dass tägliche oder wöchentliche Sicherungen in einem monatlichen oder jährlichen Aufbewahrungszeitraum beibehalten werden.
 Automatische Uhrzeitanpassung | Nicht unterstützt.<br/><br/> Azure Backup passt Änderungen an der Sommer- oder Winterzeit bei der Sicherung einer VM nicht automatisch an.<br/><br/>  Ändern Sie die Richtlinie nach Bedarf manuell.
 [Sicherheitsfunktionen für Hybridsicherungen](https://docs.microsoft.com/azure/backup/backup-azure-security-feature) |  Die Sicherheitsfunktionen können nicht deaktiviert werden.
+Sichern des virtuellen Computers mit geänderter Computerzeit | Nicht unterstützt.<br/><br/> Falls als Computerzeit ein zukünftiges Datum bzw. eine zukünftige Uhrzeit festgelegt wird, nachdem die Sicherung für diesen virtuellen Computer aktiviert wurde. Auch wenn diese Änderung rückgängig gemacht wird, wird die erfolgreiche Sicherung nicht garantiert.  
+
 
 ## <a name="operating-system-support-windows"></a>Unterstützte Betriebssysteme (Windows)
 

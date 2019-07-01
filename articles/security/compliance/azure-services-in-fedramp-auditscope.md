@@ -1,6 +1,6 @@
 ---
 title: Azure-Dienste im FedRAMP- und DoD SRG-Prüfumfang
-description: Dieser Artikel enthält Tabellen für Azure Public- und Azure Government, die veranschaulichen, welchen FedRAMP- („Mittel“ gegenüber  „Hoch“) und DoD SRG (Impact Level 2, 4 oder 5)-Prüfumfang ein bestimmter Dienst erreicht hat.
+description: Dieser Artikel enthält Tabellen für öffentliche Azure-Instanzen und Azure Government, die veranschaulichen, welchen FedRAMP-Prüfumfang („Mittel“ gegenüber „Hoch“) und DoD SRG-Prüfumfang (Impact Level 2, 4 oder 5) ein bestimmter Dienst erreicht hat.
 author: davib
 ms.author: davib
 ms.date: 5/17/2019
@@ -8,15 +8,15 @@ ms.topic: article
 ms.service: security
 ms.reviewer: rochiou
 ms.openlocfilehash: 6f92c609cbc9c5ba7d5d185b369bbf0a9d798a3e
-ms.sourcegitcommit: 7042ec27b18f69db9331b3bf3b9296a9cd0c0402
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/06/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66743096"
 ---
 # <a name="azure-services-by-fedramp-and-dod-cc-srg-audit-scope"></a>Azure-Dienste nach FedRAMP- und DoD CC SRG-Prüfumfang
 
-Microsoft Government-Clouddienste erfüllen die anspruchsvollen Vorgaben des Federal Risk and Authorization Management Program der USA (FedRAMP) sowie die des US-Verteidigungsministeriums, von Impact Level 2 bis 5. Durch die Bereitstellung geschützter Dienste, einschließlich Azure Government, Office 365 U.S. Government  und Dynamics 365 Government, können Bundes- und Verteidigungsbehörden eine Vielzahl von konformen Diensten nutzen.
+Microsoft Government-Clouddienste erfüllen die anspruchsvollen Vorgaben des Federal Risk and Authorization Management Program der USA (FedRAMP) sowie die des US-Verteidigungsministeriums, von Impact Level 2 bis 5. Durch die Bereitstellung geschützter Dienste, einschließlich Azure Government, Office 365 U.S. Government und Dynamics 365 Government, können Bundes- und Verteidigungsbehörden eine Vielzahl von konformen Diensten nutzen.
 
 Dieser Artikel enthält eine detaillierte Liste der In-Scope-Clouddienste in Azure und Azure Government für FedRAMP- und DoD CC SRG-Complianceangebote.
 

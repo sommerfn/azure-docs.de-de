@@ -5,18 +5,18 @@ services: container-service
 author: iainfoulds
 ms.service: container-service
 ms.topic: article
-ms.date: 05/14/2019
+ms.date: 06/06/2019
 ms.author: iainfou
-ms.openlocfilehash: b5a203150906758bde33431a1dab717e090f2e28
-ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
+ms.openlocfilehash: 43ba7593336372bbbd7a3a4bb9821665a42bbf29
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/04/2019
-ms.locfileid: "66475571"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "66752181"
 ---
 # <a name="preview---limit-egress-traffic-for-cluster-nodes-and-control-access-to-required-ports-and-services-in-azure-kubernetes-service-aks"></a>Vorschau: Einschränken des ausgehenden Datenverkehrs für Clusterknoten und Steuern des Zugriffs auf erforderliche Ports und Dienste in Azure Kubernetes Service (AKS)
 
-Standardmäßig haben AKS-Cluster uneingeschränkten ausgehenden Internetzugriff. Diese Ebene des Netzwerkzugriffs ermöglicht, dass ausgeführte Knoten und Dienste nach Bedarf auf externe Ressourcen zugreifen können. Wenn Sie den ausgehenden Datenverkehr einschränken möchten, muss eine begrenzte Anzahl von Ports und Adressen zugänglich sein, um fehlerfreie Clusterwartungsaufgaben verwalten zu können. Der Cluster wird dann so konfiguriert, dass nur Containerimages des Basissystems aus Microsoft Container Registry (MCR) oder Azure Container Registry (ACR), jedoch aus keinen externen öffentlichen Repositorys verwendet werden.
+Standardmäßig haben AKS-Cluster uneingeschränkten ausgehenden Internetzugriff. Diese Ebene des Netzwerkzugriffs ermöglicht, dass ausgeführte Knoten und Dienste nach Bedarf auf externe Ressourcen zugreifen können. Wenn Sie den ausgehenden Datenverkehr einschränken möchten, muss eine begrenzte Anzahl von Ports und Adressen zugänglich sein, um fehlerfreie Clusterwartungsaufgaben verwalten zu können. Der Cluster wird dann so konfiguriert, dass nur Containerimages des Basissystems aus Microsoft Container Registry (MCR) oder Azure Container Registry (ACR), jedoch aus keinen externen öffentlichen Repositorys verwendet werden. Sie müssen Ihre bevorzugten Firewall- und Sicherheitsregeln konfigurieren, um diese erforderlichen Ports und Adressen zuzulassen.
 
 In diesem Artikel wird erläutert, welche Netzwerkports und vollqualifizierten Domänennamen (FQDNs) erforderlich oder optional sind, wenn Sie den ausgehenden Datenverkehr in einem AKS-Cluster einschränken.  Diese Funktion steht derzeit als Vorschau zur Verfügung.
 
@@ -28,7 +28,7 @@ In diesem Artikel wird erläutert, welche Netzwerkports und vollqualifizierten D
 
 ## <a name="before-you-begin"></a>Voraussetzungen
 
-Azure CLI-Version 2.0.61 oder höher muss installiert und konfiguriert sein. Führen Sie `az --version` aus, um die Version zu finden. Wenn Sie eine Installation oder ein Upgrade ausführen müssen, finden Sie unter [Installieren von Azure CLI 2.0][install-azure-cli] Informationen dazu.
+Azure CLI-Version 2.0.66 oder höher muss installiert und konfiguriert sein. Führen Sie `az --version` aus, um die Version zu finden. Wenn Sie eine Installation oder ein Upgrade ausführen müssen, finden Sie unter [Installieren von Azure CLI 2.0][install-azure-cli] Informationen dazu.
 
 Um einen AKS-Cluster zu erstellen, für den der ausgehende Datenverkehr eingeschränkt werden kann, aktivieren Sie zuerst ein Featureflag für Ihr Abonnement. Mit dieser Featureregistrierung werden alle AKS-Cluster, die Sie erstellen, so konfiguriert, dass Containerimages des Basissystems aus MCR oder ACR verwendet werden. Um das Featureflag *AKSLockingDownEgressPreview* zu registrieren, verwenden Sie den Befehl [az feature register][az-feature-register], wie im folgenden Beispiel gezeigt:
 
@@ -54,7 +54,7 @@ Zu Verwaltungs- und Betriebszwecken müssen Knoten in einem AKS-Cluster auf best
 
 Um die Sicherheit Ihres AKS-Clusters zu erhöhen, können Sie den ausgehenden Datenverkehr einschränken. Der Cluster wird so konfiguriert, dass Containerimages des Basissystems aus MCR oder ACR gepullt werden. Wenn Sie den ausgehenden Datenverkehr auf diese Weise einschränken, müssen Sie bestimmte Ports und FQDNs definieren, damit AKS-Knoten ordnungsgemäß mit erforderlichen externen Diensten kommunizieren können. Ohne diese autorisierten Ports und FQDNs können AKS-Knoten nicht mit dem API-Server kommunizieren und keine Kernkomponenten installieren.
 
-Sie können [Azure Firewall][azure-firewall] oder eine Firewallappliance eines Drittanbieters verwenden, um den ausgehenden Datenverkehr zu schützen und diese erforderlichen Ports und Adressen zu definieren.
+Sie können [Azure Firewall][azure-firewall] oder eine Firewallappliance eines Drittanbieters verwenden, um den ausgehenden Datenverkehr zu schützen und diese erforderlichen Ports und Adressen zu definieren. AKS erstellt diese Regeln nicht automatisch für Sie. Die folgenden Ports und Adressen dienen als Referenz, wenn Sie die entsprechenden Regeln in Ihrer Netzwerkfirewall erstellen.
 
 In AKS gibt es zwei Gruppen von Ports und Adressen:
 
@@ -70,23 +70,26 @@ Die folgenden ausgehenden Ports und Netzwerkregeln sind für einen AKS-Cluster e
 
 * TCP-Port *443*
 * Die TCP-Ports *9000* und *22* für die Kommunikation zwischen dem Tunnelfrontpod und dem Tunnelende auf dem API-Server.
+    * Um genauere Informationen zu erhalten, sehen Sie sich die Adressen * *.hcp.\<location\>.azmk8s.io* und * *.tun.\<location\>.azmk8s.io* in der folgenden Tabelle an.
 
 Die folgenden vollqualifizierten Domänennamen und Anwendungsregeln sind erforderlich:
 
-| FQDN                      | Port      | Zweck      |
-|---------------------------|-----------|----------|
-| *.azmk8s.io               | HTTPS:443,22,9000 | Diese Adresse ist der Endpunkt des API-Servers. |
-| aksrepos.azurecr.io       | HTTPS: 443 | Diese Adresse ist für den Zugriff auf Images in Azure Container Registry (ACR) erforderlich. |
-| *.blob.core.windows.net   | HTTPS: 443 | Diese Adresse ist der Back-End-Speicher für in ACR gespeicherte Images. |
-| mcr.microsoft.com         | HTTPS: 443 | Diese Adresse ist für den Zugriff auf Images in Microsoft Container Registry (MCR) erforderlich. |
-| management.azure.com      | HTTPS: 443 | Diese Adresse ist für GET/PUT-Vorgänge in Kubernetes erforderlich. |
-| login.microsoftonline.com | HTTPS: 443 | Diese Adresse ist für die Azure Active Directory-Authentifizierung erforderlich. |
+| FQDN                       | Port      | Zweck      |
+|----------------------------|-----------|----------|
+| *.hcp.\<location\>.azmk8s.io | HTTPS:443, TCP:22, TCP:9000 | Diese Adresse ist der Endpunkt des API-Servers. Ersetzen Sie *\<location\>* durch die Region, in der Ihr AKS-Cluster bereitgestellt wurde. |
+| *.tun.\<location\>.azmk8s.io | HTTPS:443, TCP:22, TCP:9000 | Diese Adresse ist der Endpunkt des API-Servers. Ersetzen Sie *\<location\>* durch die Region, in der Ihr AKS-Cluster bereitgestellt wurde. |
+| aksrepos.azurecr.io        | HTTPS: 443 | Diese Adresse ist für den Zugriff auf Images in Azure Container Registry (ACR) erforderlich. |
+| *.blob.core.windows.net    | HTTPS: 443 | Diese Adresse ist der Back-End-Speicher für in ACR gespeicherte Images. |
+| mcr.microsoft.com          | HTTPS: 443 | Diese Adresse ist für den Zugriff auf Images in Microsoft Container Registry (MCR) erforderlich. |
+| *.cdn.mscr.io              | HTTPS: 443 | Diese Adresse ist für den von Azure CDN (Content Delivery Network) unterstützten MCR-Speicher erforderlich. |
+| management.azure.com       | HTTPS: 443 | Diese Adresse ist für GET/PUT-Vorgänge in Kubernetes erforderlich. |
+| login.microsoftonline.com  | HTTPS: 443 | Diese Adresse ist für die Azure Active Directory-Authentifizierung erforderlich. |
+| api.snapcraft.io           | HTTPS:443, HTTP:80 | Diese Adresse ist für die Installation von Snap-Paketen auf Linux-Knoten erforderlich. |
+| ntp.ubuntu.com             | UDP:123   | Diese Adresse ist für die NTP-Zeitsynchronisierung auf Linux-Knoten erforderlich. |
+| *.docker.io                | HTTPS: 443 | Diese Adresse ist zum Abrufen von Containerimages per Pull für den Tunnelfrontpod erforderlich. |
 
 ## <a name="optional-recommended-addresses-and-ports-for-aks-clusters"></a>Optionale empfohlene Adressen und Ports für AKS-Cluster
 
-Die folgenden ausgehenden Ports und Netzwerkregeln sind für die ordnungsgemäße Ausführung von AKS-Clustern nicht erforderlich, werden jedoch empfohlen:
-
-* UDP-Port *123* für die NTP-Zeitsynchronisierung
 * UDP-Port *53* für DNS
 
 Die folgenden vollqualifizierten Domänennamen und Anwendungsregeln werden für die ordnungsgemäße Ausführung von AKS-Clustern empfohlen:
