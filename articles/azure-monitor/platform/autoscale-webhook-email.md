@@ -66,7 +66,7 @@ Wenn Sie die REST-API oder die Resource Manager-Vorlage verwenden, fügen Sie da
 | sendToSubscriptionAdministrator |Ja |Als Wert muss „true“ oder „false“ festgelegt werden. |
 | sendToSubscriptionCoAdministrators |Ja |Als Wert muss „true“ oder „false“ festgelegt werden. |
 | customEmails |Ja |Der Wert kann NULL [] oder ein Zeichenfolgenarray aus E-Mail-Adressen sein. |
-| Webhooks |Ja |Der Wert kann NULL oder ein gültiger URI sein. |
+| webhooks |Ja |Der Wert kann NULL oder ein gültiger URI sein. |
 | serviceUri |Ja |Ein gültiger HTTPS-URI |
 | properties |Ja |Der Wert muss leer {} sein. Er kann auch Schlüssel-Wert-Paare enthalten. |
 
@@ -120,5 +120,5 @@ Beim Generieren der Benachrichtigung über automatische Skalierung werden die fo
 | portalLink |Ja |Link vom Azure-Portal zur Zusammenfassungsseite der Zielressource |
 | oldCapacity |Ja |Die aktuelle (alte) Anzahl von Instanzen, wenn die automatische Skalierung eine Skalierungsaktion durchgeführt hat |
 | newCapacity |Ja |Die neue Anzahl der Instanzen, auf die die automatische Skalierung die Ressource skaliert hat |
-| Eigenschaften |Nein |Optional. Eine Reihe von Schlüssel-Wert-Paaren (Beispiel: Wörterbuch <Zeichenfolge, Zeichenfolge>). Das Feld "properties" ist optional. In einer angepassten Benutzeroberfläche oder einem auf Logik-Apps basierenden Workflow können Sie Schlüssel und Werte eingeben, die mithilfe der Nutzlast übergeben werden können. Alternativ können benutzerdefinierte Eigenschaften über den Webhook-URI selbst (als Abfrageparameter) an den ausgehenden Webhook-Aufruf zurückgegeben werden. |
+| properties |Nein |Optional. Eine Reihe von Schlüssel-Wert-Paaren (Beispiel: Wörterbuch <Zeichenfolge, Zeichenfolge>). Das Feld "properties" ist optional. In einer angepassten Benutzeroberfläche oder einem auf Logik-Apps basierenden Workflow können Sie Schlüssel und Werte eingeben, die mithilfe der Nutzlast übergeben werden können. Alternativ können benutzerdefinierte Eigenschaften über den Webhook-URI selbst (als Abfrageparameter) an den ausgehenden Webhook-Aufruf zurückgegeben werden. |
 
