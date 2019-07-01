@@ -179,7 +179,7 @@ Die Eigenschaften für Warnungsaktionsressourcen werden in den folgenden Tabelle
 | type | Ja | Der Typ der Aktion.  Dieser lautet bei Warnungsaktionen **Warnung**. |
 | name | Ja | Der Anzeigename für die Warnung.  Dies ist der Name, der in der Konsole für die Warnungsregel angezeigt wird. |
 | description | Nein | Eine optionale Beschreibung der Warnung |
-| Schweregrad | Ja | Schweregrad des Warnungsdatensatzes aus den folgenden Werten:<br><br> **Kritisch**<br>**Warnung**<br>**Information**
+| severity | Ja | Schweregrad des Warnungsdatensatzes aus den folgenden Werten:<br><br> **Kritisch**<br>**Warnung**<br>**Information**
 
 
 #### <a name="threshold"></a>Schwellenwert
