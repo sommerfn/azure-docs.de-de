@@ -30,6 +30,8 @@
   items:
     - name: Tastenkombinationen
       href: azure-portal-keyboard-shortcuts.md
+    - name: Hinzufügen von Azure-Portal-URLs zu einer Liste sicherer IP-Adressen
+      href: azure-portal-safelist-urls.md
     - name: Struktur von Azure-Dashboards
       href: azure-portal-dashboards-structure.md
 - name: Ressourcen

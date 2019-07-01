@@ -223,6 +223,14 @@
             - name: Mit REST
               displayName: 'encode, encoding, custom, transform'
               href: custom-preset-rest-howto.md
+        - name: Erstellen von Subclips für ein Video
+          items:
+            - name: Mit .NET
+              href: subclip-video-dotnet-howto.md
+              displayName: 'subclipping, clip, edit, trim, clipping'
+            - name: Mit REST
+              href: subclip-video-rest-howto.md
+              displayName: 'subclipping, clip, edit, trim, clipping'
     - name: Verwenden von Event Grid
       items:
         - name: 'Überwachen von Ereignissen: Portal'

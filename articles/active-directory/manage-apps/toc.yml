@@ -45,24 +45,22 @@
           href: application-proxy-network-topology.md
         - name: Vergleichen von Remotezugriffslösungen
           href: application-proxy-migration.md
+    - name: Einmaliges Anmelden
+      items:
+        - name: Worum handelt es sich beim einmaligen Anmelden?
+          href: what-is-single-sign-on.md
+        - name: Planen einer Bereitstellung mit einmaligem Anmelden
+          href: plan-sso-deployment.md
+    - name: One-Click-SSO
+      items:
+        - name: Was ist One-Click-SSO?
+          href: one-click-sso-tutorial.md
     - name: Bereitstellen von Benutzern und Gruppen
       items:
         - name: Automatische Benutzerbereitstellung
-          href: configure-automatic-user-provisioning-portal.md
-        - name: SaaS-Apps
           href: user-provisioning.md
-        - name: SCIM-fähige Apps
+        - name: Automatisieren der Bereitstellung für SCIM-fähige Apps
           href: use-scim-to-provision-users-and-groups.md
-        - name: Anpassen von Anwendungsattributen
-          href: Customize-application-attributes.md
-        - name: Schreiben von Ausdrücken für Attributzuordnungen
-          href: functions-for-customizing-application-data.md
-        - name: Bereichsfilter
-          href: define-conditional-rules-for-provisioning-user-accounts.md
-        - name: Berichte zur automatischen Benutzerbereitstellung
-          href: check-status-user-account-provisioning.md
-        - name: Problembehandlung bei der Benutzerbereitstellung
-          href: application-provisioning-config-problem.md
     - name: Anwendungssicherheit
       items:
         - name: Optionen für den App-Zugriff
@@ -75,18 +73,8 @@
           href: tenant-restrictions.md
         - name: Konfigurieren der SAML-Tokenverschlüsselung (Vorschauversion)
           href: howto-saml-token-encryption.md
-    - name: Einmaliges Anmelden
-      items:
-        - name: Worum handelt es sich beim einmaligen Anmelden?
-          href: what-is-single-sign-on.md
-        - name: Planen einer Bereitstellung mit einmaligem Anmelden
-          href: plan-sso-deployment.md
     - name: Endbenutzerportale
       href: end-user-experiences.md
-    - name: One-Click-SSO
-      items:
-        - name: Was ist One-Click-SSO?
-          href: one-click-sso-tutorial.md
 - name: Anleitungen
   items:
     - name: Hinzufügen einer Cloud-App
@@ -157,12 +145,20 @@
               href: application-proxy-configure-single-sign-on-on-premises-apps.md
     - name: Benutzerbereitstellung konfigurieren
       items:
-        - name: Dauer der Bereitstellung
-          href: application-provisioning-when-will-provisioning-finish-specific-user.md
-        - name: 'Konfigurieren der Benutzerbereitstellung: Katalog-App'
+        - name: Benutzerbereitstellung für Katalog-Apps
           href: application-provisioning-config-how-to.md
-        - name: 'Synchronisieren eines Attributs für die Zuordnung: Katalog-App'
-          href: user-provisioning-sync-attributes-for-mapping.md
+        - name: Konfigurieren der automatischen Benutzerbereitstellung
+          href: configure-automatic-user-provisioning-portal.md
+        - name: Anpassen von Anwendungsattributen
+          href: Customize-application-attributes.md
+        - name: Schreiben von Ausdrücken für Attributzuordnungen
+          href: functions-for-customizing-application-data.md
+        - name: Bereichsfilter
+          href: define-conditional-rules-for-provisioning-user-accounts.md
+        - name: Überprüfen des Bereitstellungsstatus
+          href: application-provisioning-when-will-provisioning-finish-specific-user.md
+        - name: Berichte zur automatischen Benutzerbereitstellung
+          href: check-status-user-account-provisioning.md
     - name: Zuweisen von Benutzern und Verwalten des Zugriffs auf Apps
       items:
         - name: Konfigurieren der Benutzereinwilligung
@@ -235,10 +231,12 @@
               href: configure-password-single-sign-on-non-gallery-applications-problems.md
         - name: Problembehandlung bei der Benutzerbereitstellung
           items:
+            - name: Problembehandlung bei der Benutzerbereitstellung
+              href: application-provisioning-config-problem.md
+            - name: 'Synchronisieren eines Attributs für die Zuordnung: Katalog-App'
+              href: user-provisioning-sync-attributes-for-mapping.md
             - name: 'Dauert Stunden: Katalog-App'
               href: application-provisioning-when-will-provisioning-finish.md
-            - name: 'Problem beim Konfigurieren der Benutzerbereitstellung: Katalog-App'
-              href: application-provisioning-config-problem.md
             - name: Problem beim Speichern von Administratoranmeldeinformationen während des Konfigurierens der Benutzerbereitstellung in einer Katalog-App
               href: application-provisioning-config-problem-storage-limit.md
             - name: 'Benutzer werden nicht bereitgestellt: Katalog-App'

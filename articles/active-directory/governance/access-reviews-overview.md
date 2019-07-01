@@ -12,16 +12,16 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.subservice: compliance
-ms.date: 01/18/2019
+ms.date: 06/05/2019
 ms.author: rolyon
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1563a023f397999deb5c6abd40843d6a376b0492
-ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
+ms.openlocfilehash: 7fcc804db66430598e72e9ebf31a8837eda1cca6
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2019
-ms.locfileid: "58576121"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67204591"
 ---
 # <a name="what-are-azure-ad-access-reviews"></a>Was sind Azure AD-Zugriffsüberprüfungen?
 
@@ -58,19 +58,32 @@ Je nachdem, was Sie überprüfen möchten, erstellen Sie Ihre Zugriffsüberprüf
 | --- | --- | --- | --- |
 | Mitglieder von Sicherheitsgruppen</br>Mitglieder von Office-Gruppen | Angegebene Prüfer</br>Gruppenbesitzer</br>Selbstüberprüfung | Azure AD-Zugriffsüberprüfungen</br>Azure AD-Gruppen | Zugriffsbereich |
 | Einer verbundenen App zugewiesen | Angegebene Prüfer</br>Selbstüberprüfung | Azure AD-Zugriffsüberprüfungen</br>Azure AD-Unternehmens-Apps (in der Vorschauversion) | Zugriffsbereich |
-| Azure AD-Rolle | Angegebene Prüfer</br>Selbstüberprüfung | Azure AD PIM | Azure-Portal |
-| Azure-Ressourcenrolle | Angegebene Prüfer</br>Selbstüberprüfung | Azure AD PIM | Azure-Portal |
+| Azure AD-Rolle | Angegebene Prüfer</br>Selbstüberprüfung | [Azure AD PIM](../privileged-identity-management/pim-how-to-start-security-review.md?toc=%2fazure%2factive-directory%2fgovernance%2ftoc.json) | Azure-Portal |
+| Azure-Ressourcenrolle | Angegebene Prüfer</br>Selbstüberprüfung | [Azure AD PIM](../privileged-identity-management/pim-resource-roles-start-access-review.md?toc=%2fazure%2factive-directory%2fgovernance%2ftoc.json) | Azure-Portal |
 
-## <a name="prerequisites"></a>Voraussetzungen
+## <a name="which-users-must-have-licenses"></a>Welche Benutzer benötigen Lizenzen?
 
-Um Zugriffsüberprüfungen verwenden zu können, müssen Sie über eine der folgenden Lizenzen verfügen:
+Jeder Benutzer, der mit Zugriffsüberprüfungen interagiert, benötigt eine kostenpflichtige Azure AD Premium P2-Lizenz. Beispiele:
 
-- Azure AD Premium P2
-- Enterprise Mobility + Security (EMS) E5-Lizenz
+- Administratoren, die eine Zugriffsüberprüfung erstellen
+- Gruppenbesitzer, die eine Zugriffsüberprüfung durchführen
+- Als Reviewer zugewiesene Benutzer
+- Benutzer, die eine Selbstüberprüfung ausführen
 
-Weitere Informationen finden Sie unter [Gewusst wie: Registrieren für Azure Active Directory Premium](../fundamentals/active-directory-get-started-premium.md) oder [Enterprise Mobility + Security E5-Testversion](https://aka.ms/emse5trial).
+Sie können Gastbenutzer auch bitten, ihren eigenen Zugriff zu überprüfen. Für jede kostenpflichtige Azure AD Premium P2-Lizenz, die Sie einem Benutzer Ihrer eigenen Organisation zuweisen, können Sie mit Azure AD B2B (Business-to-Business) unter dem Kontingent für externe Benutzer bis zu fünf Gastbenutzer einladen. Diese Gastbenutzer können auch Azure AD Premium P2-Features nutzen. Weitere Informationen finden Sie unter [Leitfaden zur Lizenzierung von Azure Active Directory B2B-Kollaboration](../b2b/licensing-guidance.md).
 
-## <a name="get-started-with-access-reviews"></a>Erste Schritte mit Zugriffsüberprüfungen
+Anhand der folgenden Beispielszenarien können Sie die Anzahl der benötigten Lizenzen bestimmen.
+
+| Szenario | Berechnung | Erforderliche Anzahl von Lizenzen |
+| --- | --- | --- |
+| Ein Administrator erstellt eine Zugriffsüberprüfung für Gruppe A mit 500 Benutzern.<br/>Er weist drei Gruppenbesitzer als Reviewer zu. | 1 Administrator + 3 Gruppenbesitzer | 4 |
+| Ein Administrator erstellt eine Zugriffsüberprüfung für Gruppe A mit 500 Benutzern.<br/>Er legt sie als Selbstüberprüfung fest. | 1 Administrator + 500 Benutzer als Selbstüberprüfer | 501 |
+| Ein Administrator erstellt eine Zugriffsüberprüfung für Gruppe A mit 5 Benutzern und 25 Gastbenutzern.<br/>Er legt sie als Selbstüberprüfung fest. | 1 Administrator + 5 Benutzer als Selbstüberprüfer<br/>(Gastbenutzer sind im erforderlichen Verhältnis von 1:5 abgedeckt.) | 6 |
+| Ein Administrator erstellt eine Zugriffsüberprüfung für Gruppe A mit 5 Benutzern und 28 Gastbenutzern.<br/>Er legt sie als Selbstüberprüfung fest. | 1 Administrator + 5 Benutzer als Selbstüberprüfer + 1 Benutzer, um Gastbenutzer im erforderlichen Verhältnis von 1:5 abzudecken | 7 |
+
+Weitere Informationen zum Zuweisen von Lizenzen zu Ihren Benutzern finden Sie unter [Zuweisen oder Entfernen von Lizenzen im Azure Active Directory-Portal](../fundamentals/license-users-groups.md).
+
+## <a name="learn-about-access-reviews"></a>Informationen zu Zugriffsüberprüfungen
 
 Schauen Sie sich das folgende kurze Demovideo an, um mehr über das Erstellen und Durchführen von Zugriffsüberprüfungen zu erfahren:
 
@@ -80,29 +93,9 @@ Wenn Sie Zugriffsüberprüfungen in Ihrer Organisation bereitstellen möchten, f
 
 >[!VIDEO https://www.youtube.com/embed/X1SL2uubx9M]
 
-## <a name="enable-access-reviews"></a>Aktivieren von Zugriffsüberprüfungen
+## <a name="license-requirements"></a>Lizenzanforderungen
 
-Führen Sie die folgenden Schritte aus, um Zugriffsüberprüfungen zu aktivieren.
-
-1. Melden Sie sich als globaler Administrator oder Benutzeradministrator beim [Azure-Portal](https://portal.azure.com) an, in dem Sie Zugriffsüberprüfungen verwenden möchten.
-
-1. Klicken Sie auf **Alle Dienste**, und suchen Sie nach dem Dienst für Zugriffsüberprüfungen.
-
-1. Klicken Sie auf **Zugriffsüberprüfungen**.
-
-    ![Alle Dienste – Zugriffsüberprüfungen](./media/access-reviews-overview/all-services-access-reviews.png)
-
-1. Klicken Sie in der Navigationsliste auf **Integrieren**, um die Seite **Zugriffsüberprüfungen integrieren** zu öffnen.
-
-    ![Zugriffsüberprüfungen integrieren](./media/access-reviews-overview/onboard-button.png)
-
-1. Klicken Sie auf **Erstellen**, um Zugriffsüberprüfungen im aktuellen Verzeichnis zu aktivieren.
-
-    ![Zugriffsüberprüfungen integrieren](./media/access-reviews-overview/onboard-access-reviews.png)
-
-    Beim nächsten Starten von Zugriffsüberprüfungen sind die entsprechenden Optionen für Zugriffsüberprüfungen aktiviert.
-
-    ![Aktivierte Zugriffsüberprüfungen](./media/access-reviews-overview/access-reviews-enabled.png)
+[!INCLUDE [Azure AD Premium P2 license](../../../includes/active-directory-p2-license.md)]
 
 ## <a name="next-steps"></a>Nächste Schritte
 

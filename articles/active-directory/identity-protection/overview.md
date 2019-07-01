@@ -17,12 +17,12 @@ ms.date: 01/29/2019
 ms.author: joflore
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9d9b0c80522a988447b2753953c0c51b058fdd43
-ms.sourcegitcommit: cfbc8db6a3e3744062a533803e664ccee19f6d63
+ms.openlocfilehash: 8a1154e6484ebc86743202239dcd94f0772c8011
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/21/2019
-ms.locfileid: "66015214"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67204521"
 ---
 # <a name="what-is-azure-active-directory-identity-protection"></a>Was ist Azure Active Directory Identity Protection?
 
@@ -42,7 +42,7 @@ Daher müssen Sie:
 
 Die Ermittlung von kompromittierten Identitäten ist keine einfache Aufgabe. Azure Active Directory verwendet adaptive Machine Learning-Algorithmen und -Heuristiken zum Erkennen von Anomalien und verdächtigen Vorfällen, die auf potenziell gefährdete Identitäten hinweisen. Mit diesen Daten generiert Identity Protection Berichte und Warnungen, damit Sie die erkannten Probleme auswerten und entsprechende Aktionen zur Lösung oder Korrektur durchführen können.
 
-Azure Active Directory Identity Protection ist viel mehr als nur ein Tool für die Überwachung und Berichterstellung. Zum Schutz der Identitäten Ihrer Organisation können Sie risikobasierte Richtlinien konfigurieren, die automatisch auf erkannte Probleme reagieren, wenn eine angegebene Risikostufe erreicht wurde. Mit diesen Richtlinien in Verbindung mit anderen Kontrollelementen für den bedingten Zugriff von Azure Active Directory und [Enterprise Mobility + Security](https://docs.microsoft.com/enterprise-mobility-security/) (EMS) können adaptive Korrekturaktionen entweder blockiert oder initiiert werden. Hierzu gehören Kennwortzurücksetzungen und die Durchsetzung der Multi-Factor Authentication.
+Azure Active Directory Identity Protection ist viel mehr als nur ein Tool für die Überwachung und Berichterstellung. Zum Schutz der Identitäten Ihrer Organisation können Sie risikobasierte Richtlinien konfigurieren, die automatisch auf erkannte Probleme reagieren, wenn eine angegebene Risikostufe erreicht wurde. Mit diesen Richtlinien in Verbindung mit anderen Kontrollelementen für den bedingten Zugriff von Azure Active Directory und [Enterprise Mobility + Security](https://docs.microsoft.com/enterprise-mobility-security/) (EMS) können adaptive Korrekturaktionen entweder blockiert oder initiiert werden. Hierzu gehören Kennwortzurücksetzungen und die Durchsetzung der mehrstufigen Authentifizierung.
 
 ### <a name="identity-protection-capabilities"></a>Funktionen von Identity Protection
 

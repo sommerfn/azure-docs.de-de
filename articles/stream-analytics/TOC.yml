@@ -88,7 +88,7 @@
           href: stream-analytics-test-query.md
         - name: Anzeigen der Ergebnisse auf einem Dashboard
           href: stream-analytics-power-bi-dashboard.md
-        - name: Bereinigen eines Auftrags
+        - name: Beenden oder Löschen eines Auftrags
           href: stream-analytics-clean-up-your-job.md
         - name: Koppeln von Aufträgen für Zuverlässigkeit
           href: stream-analytics-job-reliability.md

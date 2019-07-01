@@ -4,12 +4,12 @@ ms.service: azure
 ms.topic: include
 ms.date: 05/31/2019
 ms.author: sttramer
-ms.openlocfilehash: 8eafa0a07f760c64c45aeaec8876a485ab95d5d7
-ms.sourcegitcommit: 1aefdf876c95bf6c07b12eb8c5fab98e92948000
+ms.openlocfilehash: 4a52041f773529c2a72c8019da27d56f98b6b53d
+ms.sourcegitcommit: 72f1d1210980d2f75e490f879521bc73d76a17e1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/06/2019
-ms.locfileid: "66726749"
+ms.lasthandoff: 06/14/2019
+ms.locfileid: "67147459"
 ---
 ## <a name="open-azure-cloud-shell"></a>Öffnen von Azure Cloud Shell
 
@@ -19,8 +19,8 @@ Um in Azure Cloud Shell Code aus diesem Artikel auszuführen, öffnen Sie eine C
 
 Sie können Azure Cloud Shell wie folgt starten:
 
-|  |   |
+| Option | Beispiel/Link |
 |-----------------------------------------------|---|
 | Klicken Sie in der rechten oberen Ecke eines Codeblocks auf **Ausprobieren**. Dadurch wird __nicht__ automatisch Text in Cloud Shell kopiert. | ![Beispiel für „Testen Sie es.“ für Azure Cloud Shell](./media/cloud-shell-try-it/cli-try-it.png) |
-| Öffnen Sie [shell.azure.com](https://shell.azure.com) in einem Browser. | [![Schaltfläche zum Starten von Azure Cloud Shell](./media/cloud-shell-try-it/launchcloudshell.png)](https://shell.azure.com) |
+| Öffnen Sie [Azure Cloud Shell](https://shell.azure.com) im Browser. | <a href="https://shell.azure.com" title="Azure Cloud Shell starten"><img name="launch-cloud-shell" src="https://docs.microsoft.com/azure/includes/media/cloud-shell-try-it/launchcloudshell.png" /></a> |
 | Klicken Sie im [Azure-Portal](https://portal.azure.com) rechts oben im Menü auf die Schaltfläche **Cloud Shell**: | ![Cloud Shell-Schaltfläche im Azure-Portal](./media/cloud-shell-try-it/cloud-shell-menu.png) |
