@@ -564,6 +564,8 @@
                       href: insights/container-insights-enable-new-cluster.md
                     - name: Aktivieren für einen vorhandenen Cluster
                       href: insights/container-insights-enable-existing-clusters.md
+                    - name: Regionszuordnungen
+                      href: insights/container-insights-region-mapping.md
                 - name: Analysieren
                   href: insights/container-insights-analyze.md
                 - name: Konfigurieren der Agent-Sammlungseinstellungen

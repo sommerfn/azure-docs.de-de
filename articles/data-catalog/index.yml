@@ -9,7 +9,7 @@ metadata:
   ms.author: jasonh
   ms.service: data-catalog
   ms.topic: landing-page
-  ms.date: 04/05/2019
+  ms.date: 07/01/2019
 abstract:
   description: 'Hier erfahren Sie, wie Sie Ihre Organisation und Ihr Team mithilfe von Data Catalog beim Finden, Verstehen und Nutzen Ihrer Daten unterstützen können. Anhand von Tutorials, einer REST-API-Referenz und anderem Dokumentationsmaterial wird gezeigt, wie Sie ein Datenrepository planen und einrichten, in dem Datennutzer verfügbare Datenquellen finden und sich mit Informationen von Experten vertraut machen können.'
 sections:
@@ -40,5 +40,3 @@ sections:
         items:
           - title: REST
             html: <p><a href="/rest/api/datacatalog/">REST-API-Referenz</a></p><p><a href="/rest/api/datacatalog/data-catalog-search-syntax-reference">Referenz zur Suchsyntax</a></p>
-          - title: Ressourcen-Manager
-            html: <p><a href="/azure/templates/microsoft.datacatalog/catalogs">Resource Manager-Vorlagen</a></p>
