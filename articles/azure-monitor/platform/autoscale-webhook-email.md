@@ -18,7 +18,7 @@ ms.locfileid: "60787298"
 # <a name="use-autoscale-actions-to-send-email-and-webhook-alert-notifications-in-azure-monitor"></a>Verwenden von automatischen Skalierungsvorgängen zum Senden von E-Mail- und Webhook-Warnbenachrichtigungen in Azure Monitor
 In diesem Artikel wird beschrieben, wie Sie Trigger einrichten, damit Sie basierend auf Skalierungsvorgängen in Azure bestimmte Web-URLs aufrufen oder E-Mails senden können.  
 
-## <a name="webhooks"></a>Webhooks
+## <a name="webhooks"></a>webhooks
 Mithilfe von Webhooks können Sie die Azure-Warnbenachrichtigungen für die Nachbearbeitung oder benutzerdefinierte Benachrichtigungen an andere Systeme weiterleiten. Beispielsweise können Warnungen an Dienste weitergeleitet werden, die eine eingehende Webanforderung zum Senden einer SMS, zum Protokollieren von Fehlern oder zum Benachrichtigen eines Teams über Chat- oder Messagingdienste usw. verarbeiten können. Der URI des Webhooks muss ein gültiger HTTP- oder HTTPS-Endpunkt sein.
 
 ## <a name="email"></a>E-Mail
@@ -120,5 +120,5 @@ Beim Generieren der Benachrichtigung über automatische Skalierung werden die fo
 | portalLink |Ja |Link vom Azure-Portal zur Zusammenfassungsseite der Zielressource |
 | oldCapacity |Ja |Die aktuelle (alte) Anzahl von Instanzen, wenn die automatische Skalierung eine Skalierungsaktion durchgeführt hat |
 | newCapacity |Ja |Die neue Anzahl der Instanzen, auf die die automatische Skalierung die Ressource skaliert hat |
-| properties |Nein |Optional. Eine Reihe von Schlüssel-Wert-Paaren (Beispiel: Wörterbuch <Zeichenfolge, Zeichenfolge>). Das Feld "properties" ist optional. In einer angepassten Benutzeroberfläche oder einem auf Logik-Apps basierenden Workflow können Sie Schlüssel und Werte eingeben, die mithilfe der Nutzlast übergeben werden können. Alternativ können benutzerdefinierte Eigenschaften über den Webhook-URI selbst (als Abfrageparameter) an den ausgehenden Webhook-Aufruf zurückgegeben werden. |
+| Eigenschaften |Nein |Optional. Eine Reihe von Schlüssel-Wert-Paaren (Beispiel: Wörterbuch <Zeichenfolge, Zeichenfolge>). Das Feld "properties" ist optional. In einer angepassten Benutzeroberfläche oder einem auf Logik-Apps basierenden Workflow können Sie Schlüssel und Werte eingeben, die mithilfe der Nutzlast übergeben werden können. Alternativ können benutzerdefinierte Eigenschaften über den Webhook-URI selbst (als Abfrageparameter) an den ausgehenden Webhook-Aufruf zurückgegeben werden. |
 
