@@ -153,14 +153,14 @@ In der folgenden Tabelle werden die Parameter und Werte beschrieben, die zum Ers
 | Parameter | value |
 | --- | --- |
 | NAME |simpletestdiskwrite |
-| Standort für diese Warnungsregel |USA (Ost) |
+| Standort für diese Warnungsregel |East US |
 | ResourceGroup |montest |
 | TargetResourceId |/subscriptions/s1/resourceGroups/montest/providers/Microsoft.Compute/virtualMachines/testconfig |
-| „MetricName“ für die Warnung, die erstellt wird |\PhysicalDisk(_Total)\Disk Writes/sec. Unter den Informationen zum Cmdlet `Get-MetricDefinitions` finden Sie Details dazu, wie Sie die genauen Metriknamen abrufen. |
+| „MetricName“ für die Warnung, die erstellt wird |\PhysicalDisk(_Total)\Disk Writes/sec. See the `Get-MetricDefinitions` cmdlet about how to retrieve the exact metric names |
 | operator |GreaterThan |
 | Schwellenwert (Anzahl/s für diese Metrik) |1 |
 | WindowSize (Format: hh:mm:ss) |00:05:00 |
-| Aggregator (Statistik der Metrik, die in diesem Fall die durchschnittliche Anzahl verwendet) |Durchschnitt |
+| Aggregator (Statistik der Metrik, die in diesem Fall die durchschnittliche Anzahl verwendet) |Average |
 | Benutzerdefinierte E-Mail-Adressen (Zeichenfolgenarray) |'foo@example.com','bar@example.com' |
 | E-Mail an Besitzer, Mitwirkende und Leser senden |-SendToServiceOwners |
 
