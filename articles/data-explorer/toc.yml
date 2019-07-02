@@ -2,7 +2,7 @@
   href: index.yml
 - name: Übersicht
   items:
-    - name: Was ist Daten-Explorer?
+    - name: Was ist der Azure-Daten-Explorer?
       href: data-explorer-overview.md
 - name: Schnellstarts
   expanded: true
@@ -15,8 +15,6 @@
       items:
         - name: Web-Benutzeroberfläche
           href: web-query-data.md
-        - name: Python
-          href: python-query-data.md
 - name: Lernprogramme
   items:
     - name: Erfassen von Daten ohne Verwendung von Code
@@ -68,12 +66,18 @@
       items:
         - name: Schreiben von Abfragen
           href: write-queries.md
-        - name: Zeitreihenanalyse
-          href: time-series-analysis.md
-        - name: Anomalieerkennung und -vorhersage
-          href: anomaly-detection.md
-        - name: Machine Learning
-          href: machine-learning-clustering.md
+        - name: Abfragen von Daten in Azure Data Lake
+          href: data-lake-query-data.md
+        - name: Python
+          href: python-query-data.md
+        - name: Zeitreihenanalyse und Machine Learning
+          items:
+            - name: Zeitreihenanalyse
+              href: time-series-analysis.md
+            - name: Anomalieerkennung und -vorhersage
+              href: anomaly-detection.md
+            - name: Machine Learning
+              href: machine-learning-clustering.md
     - name: Visualisieren von Daten
       items:
         - name: Power BI

@@ -260,6 +260,9 @@
     - name: Grundlegendes zu Richtlinienauswirkungen
       displayName: 'order, evaluation'
       href: ./concepts/effects.md
+    - name: Azure Policy für Kubernetes
+      displayName: 'aks, rego, k8s, opa, open policy agent, gatekeeper'
+      href: ./concepts/rego-for-aks.md
     - name: Überwachen virtueller Computer mit der Gastkonfiguration
       displayName: 'provider, tools, definition'
       href: ./concepts/guest-configuration.md
@@ -303,7 +306,7 @@
           href: /dotnet/api/microsoft.azure.management.resourcemanager.models.policydefinition
     - name: REST
       items:
-        - name: Ereignisse
+        - name: Events
           href: /rest/api/policy-insights/policyevents
         - name: Zustände
           href: /rest/api/policy-insights/policystates

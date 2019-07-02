@@ -252,6 +252,8 @@
           href: troubleshoot-azure-files.md
         - name: SQL Server
           href: backup-sql-server-azure-troubleshoot.md
+        - name: SAP HANA-Sicherung auf virtuellen Azure-Computern
+          href: backup-azure-sap-hana-database-troubleshoot.md
         - name: Systemstatus
           href: backup-azure-system-state-troubleshoot.md
     - name: Überwachen von Azure Backup-Workloads

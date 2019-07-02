@@ -548,8 +548,6 @@
           href: configure-bcdr-azure-ssis-integration-runtime.md
         - name: Bereinigen von SSISDB-Protokollen mit Aufträgen für die elastische Datenbank
           href: how-to-clean-up-ssisdb-logs-with-elastic-jobs.md
-        - name: Problembehandlung für die Paketausführung in Azure-SSIS IR
-          href: ssis-integration-runtime-ssis-activity-faq.md
     - name: Erstellen von Triggern
       items:
         - name: Erstellen eines ereignisbasierten Triggers
@@ -572,6 +570,12 @@
           href: solution-template-delta-copy-with-control-table.md
         - name: Transformieren von Daten mit Databricks
           href: solution-template-databricks-notebook.md
+    - name: Handbuch zur Problembehandlung
+      items:
+        - name: Problembehandlung für Aktivitäten
+          href: data-factory-troubleshoot-guide.md
+        - name: Problembehandlung für die Paketausführung in Azure-SSIS IR
+          href: ssis-integration-runtime-ssis-activity-faq.md
 - name: Verweis
   items:
     - name: .NET

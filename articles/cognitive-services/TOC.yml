@@ -31,8 +31,10 @@
           href: ../aks/tutorial-kubernetes-prepare-app.md
 - name: Schnellstarts
   items:
-    - name: Erstellen eines Kontos
+    - name: Erstellen eines Kontos im Azure-Portal
       href: cognitive-services-apis-create-account.md
+    - name: Erstellen eines Kontos mit der Azure-Befehlszeilenschnittstelle
+      href: cognitive-services-apis-create-account-cli.md
     - name: Authentication
       href: authentication.md
     - name: Diagnoseprotokollierung

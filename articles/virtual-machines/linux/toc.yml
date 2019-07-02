@@ -274,13 +274,13 @@
           items:
             - name: Übersicht
               href: image-builder-overview.md
-            - name: Verwenden der CLI 2.0
+            - name: Mithilfe der Azure-Befehlszeilenschnittstelle
               href: image-builder.md
             - name: Vorlagenreferenz
               href: image-builder-json.md
-            - name: Verwenden mit Katalogen
+            - name: Entwickeln für Imagekataloge
               href: image-builder-gallery.md
-            - name: Aktualisieren einer Imageversion
+            - name: Aktualisieren eines vorhandenen Images
               href: image-builder-gallery-update-image-version.md
             - name: Problembehandlung
               href: 'https://github.com/danielsollondon/azvmimagebuilder/blob/master/troubleshootingaib.md'

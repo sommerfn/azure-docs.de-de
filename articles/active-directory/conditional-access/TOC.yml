@@ -19,6 +19,8 @@
 - name: Konzepte
   expanded: false
   items:
+    - name: Einführen von bedingtem Zugriff
+      href: howto-conditional-access-adoption-kit.md
     - name: Baselineschutzrichtlinien
       href: concept-baseline-protection.md
     - name: Bedingungen

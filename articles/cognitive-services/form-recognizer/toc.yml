@@ -17,6 +17,8 @@
               href: quickstarts/python-train-extract.md
 - name: Anleitungen
   items:
+    - name: Erstellen eines Trainingsdatasets
+      href: build-training-data-set.md
     - name: Verwenden von Containern
       items:
         - name: Installieren und Ausführen von Containern

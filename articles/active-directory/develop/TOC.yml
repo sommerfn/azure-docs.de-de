@@ -301,6 +301,8 @@
               href: app-objects-and-service-principals.md
             - name: Wie und warum werden Apps zu Azure AD hinzugefügt?
               href: active-directory-how-applications-are-added.md
+            - name: 'Umleitungs-URI/Antwort-URL: Einschränkungen'
+              href: reply-url.md
             - name: Apps mit einem Mandanten und mit mehreren Mandanten
               href: single-and-multi-tenant-apps.md
         - name: Berechtigungen und Zustimmung

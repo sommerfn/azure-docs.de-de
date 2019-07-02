@@ -43,6 +43,11 @@ sections:
             image:
               src: ../media/index/i_get-started.svg
             title: Installieren und Ausführen von Containern
+          - href: /azure/cognitive-services/form-recognizer/build-training-data-set
+            html: '<p>Erstellen Sie ein Dataset, das zum Trainieren eines benutzerdefinierten Modells optimiert ist.</p>'
+            image:
+              src: ../media/index/i_overview.svg
+            title: Erstellen eines Trainingsdatasets
   - title: Fünfminütige Schnellstarts
     items:
       - type: paragraph

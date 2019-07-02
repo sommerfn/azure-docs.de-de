@@ -25,6 +25,8 @@
       href: billing-understand-your-invoice.md
     - name: "Erläuterung der Rechnungsbedingungen\_– nur Microsoft-Kundenvereinbarung"
       href: billing-mca-understand-your-invoice.md
+    - name: "Bezahlen Ihrer Rechnung\_– nur Microsoft-Kundenvereinbarung"
+      href: billing-how-to-pay-bill.md
     - name: Abrechnungskonten für Microsoft-Kundenvereinbarung
       href: billing-mca-overview.md
 - name: Verwalten von Kosten
@@ -79,7 +81,7 @@
               href: billing-understand-suse-reservation-charges.md
         - name: Nicht enthaltene Softwarekosten
           href: billing-reserved-instance-windows-software-costs.md
-        - name: Verbrauch für nutzungsbasierte Bezahlung
+        - name: Nutzung für einzelne Abonnements
           href: billing-understand-reserved-instance-usage.md
         - name: Verbrauch für Enterprise
           href: billing-understand-reserved-instance-usage-ea.md

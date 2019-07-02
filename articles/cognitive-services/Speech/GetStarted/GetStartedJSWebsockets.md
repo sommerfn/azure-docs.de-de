@@ -42,7 +42,7 @@ In diesem Abschnitt erfahren Sie Schritt für Schritt, wie Sie eine HTML-Beispie
 
 ### <a name="open-the-sample-directly"></a>Direktes Öffnen des Beispiels
 
-Beziehen Sie wie weiter oben beschrieben einen Abonnementschlüssel. Öffnen Sie dann den [Link zum Beispiel](https://htmlpreview.github.io/? https://github.com/Azure-Samples/SpeechToText-WebSockets-Javascript/blob/preview/samples/browser/Sample.html). Daraufhin wird die Seite in Ihrem Standardbrowser geladen und unter Verwendung von [htmlPreview](https://github.com/htmlpreview/htmlpreview.github.com) gerendert.
+Beziehen Sie wie weiter oben beschrieben einen Abonnementschlüssel. Öffnen Sie dann den [Link zum Beispiel](https://htmlpreview.github.io/?https://github.com/Azure-Samples/SpeechToText-WebSockets-Javascript/blob/preview/samples/browser/Sample.html). Daraufhin wird die Seite in Ihrem Standardbrowser geladen und unter Verwendung von [htmlPreview](https://github.com/htmlpreview/htmlpreview.github.com) gerendert.
 
 ### <a name="open-the-sample-from-a-local-copy"></a>Öffnen des Beispiels über eine lokale Kopie
 

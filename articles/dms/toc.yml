@@ -54,8 +54,10 @@
       href: pre-reqs.md
     - name: "Netzwerktopologien für Migrationen vom Typ „Verwaltete Azure\_SQL-Datenbank-Instanz“"
       href: resource-network-topologies.md
-    - name: Bekannte Probleme
+    - name: Problembehandlung und bekannte Probleme
       items:
+        - name: Behandeln von Konnektivitätsproblemen bei Quelldatenbanken
+          href: known-issues-troubleshooting-dms-source-connectivity.md
         - name: Behandeln von allgemeinen Problemen und Fehlern
           href: known-issues-troubleshooting-dms.md
         - name: 'Bekannte Probleme: Onlinemigration zu Azure SQL-Datenbank'

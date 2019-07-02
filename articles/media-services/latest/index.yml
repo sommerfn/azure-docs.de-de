@@ -55,34 +55,22 @@ sections:
         className: cardsM
         columns: 1
         items:
-          - image:
-              src: media/index/dotnet.svg
-            html: '<p>Im Tutorial laden Sie eine lokale Videodatei hoch, codieren die Datei und streamen den codierten Inhalt.<p/>'
+          - html: '<p>Im Tutorial laden Sie eine lokale Videodatei hoch, codieren die Datei und streamen den codierten Inhalt.<p/>'
             href: /azure/media-services/latest/stream-files-tutorial-with-api
             title: Codieren von hochgeladenen Dateien und Streamen von Videos
-          - image:
-              src: media/index/dotnet.svg
-            html: '<p>Im Tutorial wird das Setup für ein Liveereignis erläutert. Anschließend wird gezeigt, wie Sie unter Verwendung von .NET ein Liveereignis vom Typ „Pass-Through“ erstellen.</p>'
+          - html: '<p>Im Tutorial wird das Setup für ein Liveereignis erläutert. Anschließend wird gezeigt, wie Sie ein Liveereignis vom Typ „Pass-Through“ erstellen.</p>'
             href: /azure/media-services/latest/stream-live-tutorial-with-api
             title: Livebroadcasts
-          - image:
-              src: media/index/dotnet.svg
-            html: '<p>In diesem Tutorial wird gezeigt, wie Videos mit der Azure Media Services-API analysiert werden.</p>'
+          - html: '<p>In diesem Tutorial wird gezeigt, wie Videos mit der Azure Media Services-API analysiert werden.</p>'
             href: /azure/media-services/latest/analyze-videos-tutorial-with-api
             title: Analysieren Ihres Videos
-          - image:
-              src: media/index/dotnet.svg
-            html: '<p>Hier erfahren Sie, wie Sie Media Services-APIs konfigurieren und verwenden, um Ihre Inhalte mit AES-128 dynamisch zu verschlüsseln.</p>'
+          - html: '<p>Hier erfahren Sie, wie Sie Media Services-APIs konfigurieren und verwenden, um Ihre Inhalte mit AES-128 dynamisch zu verschlüsseln.</p>'
             href: /azure/media-services/latest/protect-with-aes128
             title: Dynamische Verschlüsselung mit AES-128
-          - image:
-              src: media/index/dotnet.svg
-            html: '<p>Hier wird erläutert, wie Sie Media Services-APIs konfigurieren und verwenden, um Ihre Inhalte mit Multi-DRM (PlayReady, Widevine und FairPlay) dynamisch zu verschlüsseln.</p>'
+          - html: '<p>Hier wird erläutert, wie Sie Media Services-APIs konfigurieren und verwenden, um Ihre Inhalte mit Multi-DRM (PlayReady, Widevine und FairPlay) dynamisch zu verschlüsseln.</p>'
             href: /azure/media-services/latest/protect-with-drm
             title: Dynamische Verschlüsselung mit Multi-DRM
-          - image:
-              src: media/index/rest.svg
-            html: '<p>Im Tutorial wird gezeigt, wie Sie eine Remotedatei anhand einer URL codieren und das Videos streamen.</p>'
+          - html: '<p>Im Tutorial wird gezeigt, wie Sie eine Remotedatei anhand einer URL codieren und das Videos streamen.</p>'
             href: /azure/media-services/latest/stream-files-tutorial-with-rest
             title: Codieren von Remotedateien und Streamen von Videos
   - title: Beispiele

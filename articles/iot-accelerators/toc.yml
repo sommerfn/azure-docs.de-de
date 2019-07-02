@@ -137,6 +137,8 @@
           href: overview-opc-twin.md
         - name: Was ist ein OPC-Tresor?
           href: overview-opc-vault.md
+        - name: Was ist OPC Publisher?
+          href: overview-opc-publisher.md
         - name: Was ist die verbundene Factory?
           href: iot-accelerators-connected-factory-features.md
     - name: Schnellstarts
@@ -153,8 +155,6 @@
           items:
             - name: Verwenden des Dashboards
               href: iot-accelerators-connected-factory-dashboard.md
-            - name: Verwenden von OPC Publisher
-              href: 'https://github.com/Azure/iot-edge-opc-publisher/blob/master/README.md'
             - name: Konfigurieren des Solution Accelerators
               href: iot-accelerators-connected-factory-configure.md
             - name: Anpassen des Solution Accelerators
@@ -177,6 +177,12 @@
                   href: howto-opc-vault-deploy-existing-client-server-communication.md
             - name: Bereitstellen eines OPC-Tresors von Grund auf
               href: howto-opc-vault-deploy-scratch.md
+        - name: OPC Publisher
+          items:
+            - name: Konfigurieren von OPC Publisher
+              href: howto-opc-publisher-configure.md
+            - name: Ausführen von OPC Publisher
+              href: howto-opc-publisher-run.md
     - name: Ressourcen
       items:
         - name: GitHub-Repository

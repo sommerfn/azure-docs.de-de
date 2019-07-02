@@ -1,0 +1,41 @@
+### YamlMime:YamlDocument
+documentType: LandingData
+title: Azure FXT Edge Filer-Dokumentation
+metadata:
+  title: Azure FXT Edge Filer-Dokumentation
+  description: Verwenden von Azure FXT Edge Filer als Cachingebene für leseintensive HPC-Tasks (High Performance Computing)
+  author: ekpgh
+  ms.service: fxt-edge-filer
+  ms.topic: landing-page
+  ms.date: 06/20/2019
+  ms.author: v-erkell
+abstract:
+  description: 'Der Azure FXT Edge Filer-Hybridspeichercache ist ein Hybridsystem aus Hardware und Software, das den Datenzugriff für dateibasierte, leseintensive HPC-Workflows (High Performance Computing) beschleunigt. Ein Cluster von mindestens drei Azure FXT Edge Filer-Geräten kann die Speicherleistung für lokale NAS-Systeme (NetApp oder Dell EMC Isilon), Cloudspeicher oder eine Kombination verschiedener Lösungen verbessern.'
+sections:
+  - title: Schritt-für-Schritt-Tutorials
+    items:
+      - type: list
+        style: unordered
+        items:
+          - html: <a href="fxt-install">Installieren der Azure FXT Edge Filer-Hardware</a>
+          - html: <a href="fxt-network-power">Herstellen von Netzwerkverbindungen für Azure FXT Edge Filer</a>
+          - html: <a href="fxt-node-password">Festlegen von Stammkennwörtern für die Hardwareknoten</a>
+          - html: <a href="fxt-cluster-create">Erstellen des Clusters für den Hybridspeichercache</a>
+          - html: <a href="fxt-add-nodes">Hinzufügen von Clusterknoten</a>
+          - html: <a href="fxt-add-storage">Hinzufügen von Back-End-Speicher und Konfigurieren des virtuellen Namespace</a>
+          - html: <a href="fxt-configure-network">Konfigurieren der Netzwerkeinstellungen des Clusters</a>
+  - title: Anleitungen
+    items:
+      - type: list
+        style: unordered
+        items:
+          - html: <a href="fxt-mount-clients">Verbinden von Clients mit dem Azure FXT Edge Filer-Cluster</a>
+          - html: <a href="fxt-monitor">Überwachen von Azure FXT Edge Filer</a>
+          - html: <a href="fxt-power-off">Sicheres Ausschalten eines Hardwareknotens</a>
+  - title: Ressourcen
+    items:
+      - type: list
+        style: unordered
+        items:
+          - html: <a href="fxt-specs">Hardwarespezifikationen</a>
+          - html: <a href="fxt-additional-doc">Zusätzliche Dokumentation</a>

@@ -34,6 +34,8 @@
           href: 'https://github.com/Azure/azure-devtestlab/tree/master/samples/DevTestLabs/QuickStartTemplates'
         - name: Azure PowerShell
           href: samples-powershell.md
+        - name: 'Azure PowerShell: Modul „Az.DevTestLabs2“'
+          href: 'https://github.com/Azure/azure-devtestlab/tree/master/samples/DevTestLabs/Modules/Library'
         - name: Azure-Befehlszeilenschnittstelle
           href: samples-cli.md
 - name: Konzepte
@@ -283,6 +285,8 @@
           href: /cli/azure/lab
         - name: PowerShell
           href: /powershell/module/az.devtestlabs
+        - name: 'PowerShell: Beispielmodul „sample Az.DevTestLabs2“'
+          href: 'https://github.com/Azure/azure-devtestlab/tree/master/samples/DevTestLabs/Modules/Library'
         - name: REST-API
           href: 'https://docs.microsoft.com/rest/api/dtl/'
         - name: Resource Manager-Vorlage

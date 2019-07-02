@@ -58,6 +58,12 @@
       href: cross-network-connectivity.md
     - name: Allgemeine Azure-Sicherheitsattribute
       href: expressroute-security-attributes.md
+    - name: Entwerfen für Hochverfügbarkeit
+      href: designing-for-high-availability-with-expressroute.md
+    - name: Entwerfen für die Notfallwiederherstellung
+      items:
+        - name: Privates Peering
+          href: designing-for-disaster-recovery-with-expressroute-privatepeering.md
 - name: Anleitungen
   items:
     - name: Erstellen und Ändern einer Verbindung

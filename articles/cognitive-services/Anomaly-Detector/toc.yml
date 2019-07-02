@@ -58,6 +58,8 @@
       href: 'https://aka.ms/adpricing'
     - name: Regionale Verfügbarkeit
       href: 'https://aka.ms/adregion'
+    - name: Benutzergenerierter Inhalt
+      href: user-generated-content.md
     - name: Beitreten zur Ratgebergruppe für die Anomalieerkennung auf Microsoft Teams
       href: 'https://aka.ms/adadvisorsjoin'
     - name: Architektur der Referenzlösung

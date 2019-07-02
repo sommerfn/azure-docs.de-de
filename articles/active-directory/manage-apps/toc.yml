@@ -51,9 +51,9 @@
           href: what-is-single-sign-on.md
         - name: Planen einer Bereitstellung mit einmaligem Anmelden
           href: plan-sso-deployment.md
-    - name: One-Click-SSO
+    - name: 1-Klick-SSO
       items:
-        - name: Was ist One-Click-SSO?
+        - name: Was ist 1-Klick-SSO?
           href: one-click-sso-tutorial.md
     - name: Bereitstellen von Benutzern und Gruppen
       items:
