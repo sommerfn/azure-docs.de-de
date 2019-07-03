@@ -36,6 +36,8 @@
   items:
     - name: "Auswählen einer Stream\_Analytics-Technologie"
       href: streaming-technologies.md
+    - name: Auswählen eines Tools für die Auftragsentwicklung
+      href: feature-comparison.md
     - name: Eingabetypen für einen Auftrag
       items:
         - name: Übersicht über Eingaben

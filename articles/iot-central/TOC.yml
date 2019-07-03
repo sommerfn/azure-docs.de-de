@@ -62,7 +62,7 @@
         - name: Verwenden von Gerätegruppen
           href: howto-use-device-sets.md
         - name: Gerätevorlagenversion
-          href: howto-version-devicetemplate.md
+          href: howto-version-device-template.md
     - name: Überwachung und Analyse
       items:
         - name: Erstellen einer Telemetrieregel
@@ -105,6 +105,8 @@
           href: howto-prepare-images.md
         - name: Konfigurieren des Anwendungsdashboards
           href: howto-configure-homepage.md
+        - name: Verwenden von Dashboardkacheln
+          href: howto-use-tiles.md
         - name: Anpassen der Anwendungsbenutzeroberfläche
           href: howto-customize-ui.md
         - name: Verwenden von Anwendungsvorlagen

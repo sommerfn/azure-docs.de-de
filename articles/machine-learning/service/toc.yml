@@ -197,6 +197,9 @@
         - name: Nachverfolgen von Experimenten mit MLflow
           displayName: 'log, monitor, metrics'
           href: how-to-use-mlflow.md
+        - name: Visualisieren von Experimenten mit TensorBoard
+          displayName: 'log, monitor, metrics'
+          href: how-to-monitor-tensorboard.md
     - name: Automatisieren von Machine Learning
       displayName: 'automl, auto ml'
       items:
@@ -304,6 +307,8 @@
               href: ../algorithm-module-reference/add-rows.md
             - name: Entfernen doppelter Zeilen
               href: ../algorithm-module-reference/remove-duplicate-rows.md
+            - name: Verknüpfen von Daten
+              href: ../algorithm-module-reference/join-data.md
             - name: Teilen von Daten
               href: ../algorithm-module-reference/split-data.md
             - name: Normalisieren von Daten
@@ -352,12 +357,14 @@
               href: ../algorithm-module-reference/two-class-support-vector-machine.md
             - name: K-Means Clustering
               href: ../algorithm-module-reference/k-means-clustering.md
-        - name: Python-Sprachmodule
+        - name: Python- und R-Sprachmodule
           items:
             - name: Ausführen von Python-Skripts
               href: ../algorithm-module-reference/execute-python-script.md
             - name: Erstellen eines Python-Modells
               href: ../algorithm-module-reference/create-python-model.md
+            - name: Execute R Script
+              href: ../algorithm-module-reference/execute-r-script.md
         - name: Fehlermeldungen und Codes
           href: ../algorithm-module-reference/machine-learning-module-error-codes.md
 - name: Ressourcen
