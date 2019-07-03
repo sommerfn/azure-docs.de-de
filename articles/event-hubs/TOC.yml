@@ -63,14 +63,16 @@
       href: event-hubs-availability-and-consistency.md
     - name: Skalierbarkeit
       href: event-hubs-scalability.md
+    - name: Georedundante Notfallwiederherstellung
+      items:
+        - name: Georedundante Notfallwiederherstellung und Georeplikation
+          href: event-hubs-geo-dr.md
     - name: Sicherheit
       items:
         - name: Verwaltete Identität für Azure-Ressourcen
           href: event-hubs-managed-service-identity.md
         - name: Rollenbasierte Zugriffssteuerung (Vorschauversion)
           href: event-hubs-role-based-access-control.md
-        - name: Georedundante Notfallwiederherstellung und Georeplikation
-          href: event-hubs-geo-dr.md
         - name: Übersicht über das Authentifizierungs- und Sicherheitsmodell
           href: event-hubs-authentication-and-security-model-overview.md
         - name: Sicherheitsattribute

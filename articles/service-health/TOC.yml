@@ -7,7 +7,7 @@
 - name: Schnellstarts
   items:
     - name: Konfigurieren von Warnungen für Service Health-Ereignisse
-      href: ../azure-monitor/platform/alerts-activity-log-service-notifications.md?toc=%2fazure%2fservice-health%2ftoc.json
+      href: ../azure-monitor/platform/alerts-activity-log-service-notifications.md
 - name: Konzepte
   items:
     - name: Azure-Statusseite
@@ -19,9 +19,9 @@
 - name: Anleitung
   items:
     - name: Konfigurieren von Warnungen für Service Health-Ereignisse
-      href: ../azure-monitor/platform/alerts-activity-log-service-notifications.md?toc=%2fazure%2fservice-health%2ftoc.json
+      href: alerts-activity-log-service-notifications.md
     - name: Anzeigen von Dienstintegritätsbenachrichtigungen im Azure-Portal
-      href: ../azure-monitor/platform/service-notifications.md?toc=%2fazure%2fservice-health%2ftoc.json
+      href: service-notifications.md
     - name: Senden von Warnungen an externe Systeme über einen Webhook
       href: service-health-alert-webhook-guide.md
     - name: Senden von Warnungen an ServiceNow

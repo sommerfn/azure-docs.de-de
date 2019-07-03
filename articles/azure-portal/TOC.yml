@@ -8,8 +8,6 @@
       href: azure-portal-supported-browsers-devices.md
 - name: Konzepte
   items:
-    - name: Erstellen und Freigeben von Azure-Dashboards
-      href: azure-portal-dashboards.md
     - name: Freigeben von Dashboards per rollenbasierter Zugriffssteuerung
       href: azure-portal-dashboard-share-access.md
     - name: Programmgesteuertes Erstellen von Azure-Dashboards
@@ -20,6 +18,8 @@
       href: azure-portal-change-theme-high-contrast.md
     - name: 'Hinzufügen, Entfernen und Sortieren von Favoriten'
       href: azure-portal-add-remove-sort-favorites.md
+    - name: Erstellen und Freigeben von Azure-Dashboards
+      href: azure-portal-dashboards.md
     - name: Verwenden einer benutzerdefinierten Markdown-Kachel
       href: azure-portal-markdown-tile.md
     - name: Exportieren oder Löschen von Benutzereinstellungen
