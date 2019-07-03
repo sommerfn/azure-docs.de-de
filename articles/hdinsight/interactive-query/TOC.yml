@@ -24,6 +24,9 @@
       maintainContext: true
 - name: Anleitung
   items:
+    - name: Migrieren von Hive-Workloads zu HDInsight 4.0
+      href: apache-hive-migrate-workloads.md
+      maintainContext: true
     - name: Verwenden des Clusterspeichers
       items:
         - name: Verwenden von Azure Storage
@@ -100,6 +103,9 @@
           href: ./apache-hadoop-connect-hive-power-bi-directquery.md
         - name: Herstellen einer Verbindung zwischen Power BI und Apache Hadoop
           href: ../hadoop/apache-hadoop-connect-hive-power-bi.md
+          maintainContext: true
+        - name: Abfragen von Hive mit PowerShell und ODBC
+          href: apache-hive-query-odbc-driver-powershell.md
           maintainContext: true
         - name: Herstellen einer Verbindung zwischen Excel und Apache Hadoop
           href: ../hadoop/apache-hadoop-connect-excel-hive-odbc-driver.md
@@ -333,11 +339,6 @@
         - name: Überwachen der Clusterleistung
           href: ../hdinsight-key-scenarios-to-monitor.md
           maintainContext: true
-- name: Anleitung
-  items:
-    - name: Migrieren von Hive-Workloads zu HDInsight 4.0
-      href: apache-hive-migrate-workloads.md
-      maintainContext: true
 - name: Verweis
   items:
     - name: Codebeispiele
