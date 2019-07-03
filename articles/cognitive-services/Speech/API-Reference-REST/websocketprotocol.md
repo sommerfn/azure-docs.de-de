@@ -183,7 +183,7 @@ Clients *müssen* sofort eine `speech.config`-Nachricht senden, nachdem sie die 
 |----|----|
 | `Path` | `speech.config` |
 | X-Timestamp | Zeitstempel der UTC-Uhrzeit des Clients im Format ISO 8601 |
-| Content-Typ | application/json; charset=utf-8 |
+| Content-Type | application/json; charset=utf-8 |
 
 Wie bei allen vom Client stammenden Nachrichten im Spracherkennungsdienst-Protokoll, *muss* die `speech.config`-Nachricht einen *X-Timestamp*-Header enthalten, mit dem die UTC-Uhrzeit des Clients für den Zeitpunkt aufgezeichnet wird, zu dem die Nachricht an den Dienst gesendet wurde. Für die `speech.config`-Nachricht ist *kein* *X-RequestId*-Header erforderlich, da diese Nachricht nicht einer bestimmten Sprachanforderung zugeordnet ist.
 
