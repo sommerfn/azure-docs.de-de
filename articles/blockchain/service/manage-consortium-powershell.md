@@ -145,8 +145,8 @@ Verwenden Sie dieses Cmdlet, um Mitgliederdetails abzurufen oder Mitglieder des 
 
 | Parameter | BESCHREIBUNG | Erforderlich |
 |-----------|-------------|:--------:|
-| NAME | Der Name des Blockchain Service-Mitglieds, zu dem Sie Details abrufen möchten. Wenn Sie einen Namen eingeben, werden die Details zu diesem Mitglied zurückgegeben. Wenn Sie keinen Namen angeben, wird eine Liste aller Konsortiumsmitglieder zurückgegeben. | Nein |
-| Mitglieder | Ein von Import-ConsortiumManagementContracts abgerufenes Mitgliederobjekt | Ja |
+| Name | Der Name des Blockchain Service-Mitglieds, zu dem Sie Details abrufen möchten. Wenn Sie einen Namen eingeben, werden die Details zu diesem Mitglied zurückgegeben. Wenn Sie keinen Namen angeben, wird eine Liste aller Konsortiumsmitglieder zurückgegeben. | Nein |
+| Members | Ein von Import-ConsortiumManagementContracts abgerufenes Mitgliederobjekt | Ja |
 | Web3Client | Ein von New-Web3Connection abgerufenes Web3Client-Objekt | Ja |
 
 #### <a name="example"></a>Beispiel
@@ -174,8 +174,8 @@ Verwenden Sie dieses Cmdlet, um ein Blockchainmitglied zu entfernen.
 
 | Parameter | BESCHREIBUNG | Erforderlich |
 |-----------|-------------|:--------:|
-| NAME | Der Name des zu entfernenden Mitglieds | Ja |
-| Mitglieder | Ein von Import-ConsortiumManagementContracts abgerufenes Mitgliederobjekt | Ja |
+| Name | Der Name des zu entfernenden Mitglieds | Ja |
+| Members | Ein von Import-ConsortiumManagementContracts abgerufenes Mitgliederobjekt | Ja |
 | Web3Account | Ein von Import-Web3Account abgerufenes Web3Account-Objekt | Ja |
 | Web3Client | Ein von New-Web3Connection abgerufenes Web3Client-Objekt | Ja |
 
@@ -196,10 +196,10 @@ Konsortiumsadministratoren können **DisplayName** (Anzeigename) und **Role** (R
 
 | Parameter | BESCHREIBUNG | Erforderlich |
 |-----------|-------------|:--------:|
-| NAME | Name des Blockchainmitglieds | Ja |
+| Name | Name des Blockchainmitglieds | Ja |
 | DisplayName | Neuer Anzeigename | Nein |
 | AccountAddress | Kontoadresse | Nein |
-| Mitglieder | Ein von Import-ConsortiumManagementContracts abgerufenes Mitgliederobjekt | Ja |
+| Members | Ein von Import-ConsortiumManagementContracts abgerufenes Mitgliederobjekt | Ja |
 | Web3Account | Ein von Import-Web3Account abgerufenes Web3Account-Objekt | Ja |
 | Web3Client |  Ein von New-Web3Connection abgerufenes Web3Client-Objekt| Ja |
 
@@ -223,8 +223,8 @@ Verwenden Sie dieses Cmdlet, um neue Mitglieder zum Konsortium einzuladen.
 | Parameter | BESCHREIBUNG | Erforderlich |
 |-----------|-------------|:--------:|
 | SubscriptionId | Azure-Abonnement-ID des Mitglieds, das eingeladen werden soll | Ja |
-| Rolle | Die Konsortiumsrolle. Mögliche Werte sind ADMIN oder USER. Bei ADMIN handelt es sich um die Administratorrolle des Konsortiums. Bei USER handelt es sich um die Mitgliederrolle des Konsortiums. | Ja |
-| Mitglieder | Ein von Import-ConsortiumManagementContracts abgerufenes Mitgliederobjekt | Ja |
+| Role | Die Konsortiumsrolle. Mögliche Werte sind ADMIN oder USER. Bei ADMIN handelt es sich um die Administratorrolle des Konsortiums. Bei USER handelt es sich um die Mitgliederrolle des Konsortiums. | Ja |
+| Members | Ein von Import-ConsortiumManagementContracts abgerufenes Mitgliederobjekt | Ja |
 | Web3Account | Ein von Import-Web3Account abgerufenes Web3Account-Objekt | Ja |
 | Web3Client | Ein von New-Web3Connection abgerufenes Web3Client-Objekt | Ja |
 
@@ -243,7 +243,7 @@ Verwenden Sie dieses Cmdlet, um den Einladungsstatus eines Konsortiumsmitglieds 
 | Parameter | BESCHREIBUNG | Erforderlich |
 |-----------|-------------|:--------:|
 | SubscriptionId | Die Azure-Abonnement-ID des Mitglieds, das eingeladen werden soll. Wenn Sie eine Abonnement-ID angeben, werden die Einladungsdetails zur Abonnement-ID zurückgegeben. Wenn Sie keine Abonnement-ID angeben, wird eine Liste mit allen Mitgliedereinladungen zurückgegeben. | Nein |
-| Mitglieder | Ein von Import-ConsortiumManagementContracts abgerufenes Mitgliederobjekt | Ja |
+| Members | Ein von Import-ConsortiumManagementContracts abgerufenes Mitgliederobjekt | Ja |
 | Web3Client | Ein von New-Web3Connection abgerufenes Web3Client-Objekt | Ja |
 
 #### <a name="example"></a>Beispiel
@@ -270,7 +270,7 @@ Verwenden Sie dieses Cmdlet, um die Einladung eines Konsortiumsmitglieds zu wide
 | Parameter | BESCHREIBUNG | Erforderlich |
 |-----------|-------------|:--------:|
 | SubscriptionId | Azure-Abonnement-ID des Mitglieds, dessen Einladung widerrufen werden soll | Ja |
-| Mitglieder | Ein von Import-ConsortiumManagementContracts abgerufenes Mitgliederobjekt | Ja |
+| Members | Ein von Import-ConsortiumManagementContracts abgerufenes Mitgliederobjekt | Ja |
 | Web3Account | Ein von Import-Web3Account abgerufenes Web3Account-Objekt | Ja |
 | Web3Client | Ein von New-Web3Connection abgerufenes Web3Client-Objekt | Ja |
 
@@ -290,8 +290,8 @@ Verwenden Sie dieses Cmdlet, um die **Rolle** für eine vorhandene Einladung fes
 | Parameter | BESCHREIBUNG | Erforderlich |
 |-----------|-------------|:--------:|
 | SubscriptionId | Azure-Abonnement-ID des Mitglieds, das eingeladen werden soll | Ja |
-| Rolle | Neue Konsortiumsrolle für die Einladung. Mögliche Werte sind **USER** oder **ADMIN**. | Ja |
-| Mitglieder |  Ein von Import-ConsortiumManagementContracts abgerufenes Mitgliederobjekt | Ja |
+| Role | Neue Konsortiumsrolle für die Einladung. Mögliche Werte sind **USER** oder **ADMIN**. | Ja |
+| Members |  Ein von Import-ConsortiumManagementContracts abgerufenes Mitgliederobjekt | Ja |
 | Web3Account | Ein von Import-Web3Account abgerufenes Web3Account-Objekt | Ja |
 | Web3Client | Ein von New-Web3Connection abgerufenes Web3Client-Objekt | Ja |
 
