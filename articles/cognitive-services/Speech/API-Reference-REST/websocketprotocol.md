@@ -255,7 +255,7 @@ Die folgenden Header sind für alle `audio`-Nachrichten erforderlich.
 | `Path` | `audio` |
 | X-RequestId | UUID im Format „no-dash“ |
 | X-Timestamp | Zeitstempel der UTC-Uhrzeit des Clients im Format ISO 8601 |
-| Content-Typ | Der Audioinhaltstyp. Der Typ muss entweder *audio/x-wav* (PCM) oder *audio/silk* (SILK) lauten. |
+| Content-Type | Der Audioinhaltstyp. Der Typ muss entweder *audio/x-wav* (PCM) oder *audio/silk* (SILK) lauten. |
 
 #### <a name="supported-audio-encodings"></a>Unterstützte Audiocodierungen
 
@@ -310,7 +310,7 @@ Clients müssen das Ende eines „Turns“ bestätigen, indem sie eine `telemetr
 | Codierung von WebSocket-Nachrichten | Text |
 | `Path` | `telemetry` |
 | X-Timestamp | Zeitstempel der UTC-Uhrzeit des Clients im Format ISO 8601 |
-| Content-Typ | `application/json` |
+| Content-Type | `application/json` |
 | Body | Eine JSON-Struktur, die Clientinformationen zum „Turn“ enthält. |
 
 Eine Definition des Schemas für den Text der `telemetry`-Nachricht finden Sie im Abschnitt [Schema der Telemetriedaten](#telemetry-schema).
@@ -331,7 +331,7 @@ Mit der `speech.startDetected`-Nachricht wird angegeben, dass der Spracherkennun
 | ------------- | ---------------- |
 | Codierung von WebSocket-Nachrichten | Text |
 | `Path` | `speech.startDetected` |
-| Content-Typ | application/json; charset=utf-8 |
+| Content-Type | application/json; charset=utf-8 |
 | Body | Die JSON-Struktur mit Informationen zu den Bedingungen, die bei der Erkennung der Spracheingabe geherrscht haben. Über das Feld *Offset* dieser Struktur wird der Versatz (in Einheiten von 100 Nanosekunden) angegeben, der zwischen der Erkennung der Sprachdaten im Audiodatenstrom und dem Beginn des Datenstroms besteht. |
 
 #### <a name="sample-message"></a>Beispielnachricht
@@ -357,7 +357,7 @@ Während der Spracherkennung generiert der Spracherkennungsdienst regelmäßig H
 | Codierung von WebSocket-Nachrichten | Text |
 | `Path` | `speech.hypothesis` |
 | X-RequestId | UUID im Format „no-dash“ |
-| Content-Typ | Anwendung/json |
+| Content-Type | Anwendung/json |
 | Body | JSON-Struktur für die Sprachhypothese |
 
 #### <a name="sample-message"></a>Beispielnachricht
@@ -388,7 +388,7 @@ Wenn der Spracherkennungsdienst ermittelt, dass er über ausreichende Informatio
 | ------------- | ---------------- |
 | Codierung von WebSocket-Nachrichten | Text |
 | `Path` | `speech.phrase` |
-| Content-Typ | Anwendung/json |
+| Content-Type | Anwendung/json |
 | Body | JSON-Struktur des gesprochenen Ausdrucks |
 
 Das JSON-Schema für gesprochene Ausdrücke enthält die folgenden Felder: `RecognitionStatus`, `DisplayText`, `Offset` und `Duration`. Weitere Informationen zu diesen Feldern finden Sie unter [Transcription responses](../concepts.md#transcription-responses) (Transkriptionsantworten).
@@ -417,7 +417,7 @@ Die `speech.endDetected`-Nachricht gibt an, dass die Clientanwendung das Streame
 | Codierung von WebSocket-Nachrichten | Text |
 | `Path` | `speech.endDetected` |
 | Body | Die JSON-Struktur mit dem Versatz für die Erkennung des Endes der Spracheingabe. Der Versatz wird in Einheiten von 100 Nanosekunden ab dem Beginn der Audiodaten dargestellt, die für die Erkennung verwendet werden. |
-| Content-Typ | application/json; charset=utf-8 |
+| Content-Type | application/json; charset=utf-8 |
 
 #### <a name="sample-message"></a>Beispielnachricht
 
@@ -441,7 +441,7 @@ Mit `turn.start` wird der Beginn eines „Turns“ aus Sicht des Diensts signali
 | ------------- | ---------------- |
 | Codierung von WebSocket-Nachrichten | Text |
 | `Path` | `turn.start` |
-| Content-Typ | application/json; charset=utf-8 |
+| Content-Type | application/json; charset=utf-8 |
 | Body | JSON-Struktur |
 
 #### <a name="sample-message"></a>Beispielnachricht
