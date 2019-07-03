@@ -221,8 +221,8 @@ Diesen öffentlichen Schlüssel finden Sie in der Liste der Transaktionsknoten. 
 
     | Wert | BESCHREIBUNG
     |-------|-------------
-    | \<öffentlicher Schlüssel des alpha-Knotens\> | Öffentlicher Schlüssel des alpha-Knotens
-    | \<Adresse des Ethereum-Kontos\> | Ethereum-Kontoadresse, die im Standardtransaktionsknoten erstellt wurde
+    | \<alpha node public key\> | Öffentlicher Schlüssel des alpha-Knotens
+    | \<Ethereum account address\> | Ethereum-Kontoadresse, die im Standardtransaktionsknoten erstellt wurde
 
     In diesem Beispiel wird der Anfangswert des Werts **storeData** auf „42“ festgelegt.
 
@@ -392,8 +392,8 @@ Da Sie den öffentlichen Schlüssel des Knotens **beta** nicht in **privateFor**
 
     | Wert | BESCHREIBUNG
     |-------|-------------
-    | \<öffentlicher Schlüssel des alpha-Knotens\> | Öffentlicher Schlüssel des alpha-Knotens
-    | \<Adresse des Ethereum-Kontos\> | Ethereum-Kontoadresse, die im Standardtransaktionsknoten erstellt wurde
+    | \<alpha node public key\> | Öffentlicher Schlüssel des alpha-Knotens
+    | \<Ethereum account address\> | Ethereum-Kontoadresse, die im Standardtransaktionsknoten erstellt wurde
 
     **privateFor** definiert die Knoten, auf denen die Transaktion verfügbar ist. In diesem Beispiel kann das Konto des Standardtransaktionsknotens private Transaktionen an den Knoten **alpha** übermitteln. Sie müssen öffentliche Schlüssel für alle Teilnehmer an der privaten Transaktion hinzufügen.
 
