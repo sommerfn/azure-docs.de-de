@@ -43,7 +43,7 @@ Eine Blockchainanwendung enthält Konfigurationsmetadaten, Workflows und Benutze
 |-------|-------------|:--------:|
 | ApplicationName | Eindeutiger Anwendungsname. Der entsprechende intelligente Vertrag muss den gleichen **Anwendungsnamen** für die jeweilige Vertragsklasse verwenden.  | Ja |
 | DisplayName | Der Anzeigename der Anwendung | Ja |
-| BESCHREIBUNG | Beschreibung der Anwendung | Nein |
+| Description | Beschreibung der Anwendung | Nein |
 | ApplicationRoles | Sammlung von [Anwendungsrollen](#application-roles). Benutzerrollen, die innerhalb der Anwendung agieren oder teilnehmen können.  | Ja |
 | Workflows | Sammlung von [Workflows](#workflows). Jeder Workflow fungiert als Zustandsautomat, um den Ablauf der Geschäftslogik zu steuern. | Ja |
 
