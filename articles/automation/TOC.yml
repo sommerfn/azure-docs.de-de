@@ -124,6 +124,8 @@
         - name: Beheben von Fehlern bei Runbooks
           href: troubleshoot/runbooks.md
           displayName: troubleshoot
+        - name: Starten/Beenden von virtuellen Computern
+          href: troubleshoot/start-stop-vm.md
 - name: Updateverwaltung
   items:
     - name: Übersicht über die Updateverwaltung
@@ -313,6 +315,8 @@
   items:
     - name: Weiterleiten von Azure Automation-Auftragsdaten an Log Analytics
       href: automation-manage-send-joblogs-log-analytics.md
+    - name: "Unterstützte Regionen für Zuordnungen zwischen Log\_Analytics-Arbeitsbereichen"
+      href: how-to/region-mappings.md
 - name: Migrieren
   items:
     - name: Migration von Orchestrator
