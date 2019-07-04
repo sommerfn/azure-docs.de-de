@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.custom: mvc
 ms.date: 01/04/2019
 ms.author: jowargo
-ms.openlocfilehash: 929977913fdbf0c6f59d69ec536a2638bca7b97c
-ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
+ms.openlocfilehash: 341f5a30fe03de4c69b5a7e18703931988d2d185
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/07/2019
-ms.locfileid: "65232737"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67063631"
 ---
 # <a name="tutorial-push-notifications-to-android-devices-by-using-azure-notification-hubs-and-google-cloud-messaging-deprecated"></a>Tutorial: Senden von Pushbenachrichtigungen an Android-Geräte mit Azure Notification Hubs und Google Cloud Messaging (veraltet)
 
@@ -66,7 +66,7 @@ In diesem Tutorial führen Sie die folgenden Aktionen aus:
 
 ### <a name="configure-gcm-setting-for-the-notification-hub"></a>Konfigurieren von GCM-Einstellungen für den Benachrichtigungshub
 
-1. Klicken Sie unter **BENACHRICHTIGUNGSEINSTELLUNGEN** auf **Google (GCM)**.
+1. Klicken Sie unter **BENACHRICHTIGUNGSEINSTELLUNGEN** auf **Google (GCM)** .
 2. Geben Sie den **API-Schlüssel** ein, den Sie aus Google Cloud Console abgerufen haben.
 3. Wählen Sie auf der Symbolleiste **Speichern** aus.
 
@@ -110,7 +110,7 @@ Der Notification Hub ist jetzt für die Arbeit mit GCM konfiguriert, und Sie bes
 
 ### <a name="updating-the-projects-androidmanifestxml"></a>Aktualisieren Sie die Datei „AndroidManifest.xml“ des Projekts.
 
-1. Für die Unterstützung von GCM müssen Sie im Code einen Instanz-ID-Listenerdienst implementieren, der zum [Beschaffen von Registrierungstoken](https://developers.google.com/cloud-messaging/android/client#sample-register) mit der [Instanz-ID-API von Google](https://developers.google.com/instance-id/) verwendet wird. In diesem Tutorial lautet der Name der Klasse `MyInstanceIDService`.
+1. Für die Unterstützung von GCM müssen Sie im Code einen Instanz-ID-Listenerdienst implementieren, der zum [Beschaffen von Registrierungstoken](https://developers.google.com/cloud-messaging/) mit der [Instanz-ID-API von Google](https://developers.google.com/instance-id/) verwendet wird. In diesem Tutorial lautet der Name der Klasse `MyInstanceIDService`.
 
     Fügen Sie der Datei „AndroidManifest.xml“ im Tag `<application>` die unten angegebene Dienstdefinition hinzu. Ersetzen Sie den Platzhalter `<your package>` durch Ihren tatsächlichen Namen des Pakets, der oben in der Datei `AndroidManifest.xml` angegeben ist.
   
@@ -144,7 +144,7 @@ Der Notification Hub ist jetzt für die Arbeit mit GCM konfiguriert, und Sie bes
     ```
 4. Fügen Sie unterhalb des Tags `</application>` die folgenden erforderlichen GCM-bezogenen Berechtigungen hinzu. Ersetzen Sie dabei `<your package>` durch den oben in der Datei `AndroidManifest.xml` angegebenen Paketnamen.
 
-    Weitere Informationen zu diesen Berechtigungen finden Sie unter [Setup a GCM Client app for Android](https://developers.google.com/cloud-messaging/android/client#manifest)(Einrichten einer GCM-Client-App für Android).
+    Weitere Informationen zu diesen Berechtigungen finden Sie unter [Setup a GCM Client app for Android](https://developers.google.com/cloud-messaging/)(Einrichten einer GCM-Client-App für Android).
 
     ```xml
     <uses-permission android:name="android.permission.INTERNET"/>

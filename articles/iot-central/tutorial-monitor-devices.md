@@ -3,18 +3,18 @@ title: Überwachen Ihrer Geräte in Azure IoT Central | Microsoft-Dokumentation
 description: Als Bediener können Sie mit der Azure IoT Central-Anwendung Ihre Geräte überwachen.
 author: dominicbetts
 ms.author: dobett
-ms.date: 02/01/2019
+ms.date: 06/09/2019
 ms.topic: tutorial
 ms.service: iot-central
 services: iot-central
 ms.custom: mvc
 manager: philmea
-ms.openlocfilehash: 561477d8bf3a64397e9964499339c368dec5470d
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: d6ad7631ae32f8bd04812093a0fef4fa3d575864
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57760471"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67067412"
 ---
 # <a name="tutorial-use-azure-iot-central-to-monitor-your-devices"></a>Tutorial: Überwachen Ihrer Geräte mithilfe von Azure IoT Central
 

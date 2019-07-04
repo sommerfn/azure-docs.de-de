@@ -3,18 +3,18 @@ title: Definieren eines neuen Gerätetyps in Azure IoT Central | Microsoft-Dokum
 description: In diesem Tutorial für Ersteller erfahren Sie, wie Sie in Ihrer Azure IoT Central-Anwendung einen neuen Gerätetyp definieren. Sie definieren die Telemetriedaten, den Zustand, die Eigenschaften und die Einstellungen für den Typ.
 author: dominicbetts
 ms.author: dobett
-ms.date: 01/28/2019
+ms.date: 06/07/2019
 ms.topic: tutorial
 ms.service: iot-central
 services: iot-central
 ms.custom: mvc
 manager: philmea
-ms.openlocfilehash: 884381cc3b9aaeec29f5697485cd90c28b2bd97e
-ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
+ms.openlocfilehash: 54884728533aeff0472ed99660be00478227fbcd
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59681249"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67056784"
 ---
 # <a name="tutorial-define-a-new-device-type-in-your-azure-iot-central-application"></a>Tutorial: Definieren eines neuen Gerätetyps in Ihrer Azure IoT Central-Anwendung
 
@@ -176,7 +176,7 @@ Mithilfe von Ereignissen können Sie Zeitpunktdaten definieren, die vom Gerät g
      | -------------------- | -----------       |
      | Anzeigename         | Fan Motor Error   |
      | Feldname           | fanmotorerr       |
-     | Severity             | Error             |
+     | severity             | Error             |
 
      Wählen Sie **Speichern** aus, um die Ereignisdefinition zu speichern:
 
@@ -287,7 +287,7 @@ Einstellungen Eigenschaften und Befehle sind unterschiedliche Werte, die in eine
 
     | Feld                | Wert                |
     | -------------------- | -------------------- |
-    | Anzeigename         | Standort             |
+    | Anzeigename         | Location             |
     | Feldname           | location             |
     | Anfangswert        | Seattle, WA          |
     | BESCHREIBUNG          | Gerätestandort      |
@@ -306,7 +306,7 @@ Einstellungen Eigenschaften und Befehle sind unterschiedliche Werte, die in eine
     | -------------------- | ----------------------- |
     | Anzeigename         | Datum der letzten Wartung       |
     | Feldname           | serviceDate             |
-    | Anfangswert        | 1.1.2019                |
+    | Anfangswert        | 1\.1.2019                |
     | BESCHREIBUNG          | Datum der letzten Wartung           |
 
     ![Konfigurieren der Geräteeigenschaften](./media/tutorial-define-device-type/configureproperties2.png)
