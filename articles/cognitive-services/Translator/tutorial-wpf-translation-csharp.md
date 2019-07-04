@@ -3,19 +3,19 @@ title: 'Tutorial: Erstellen einer Übersetzungs-App mit WPF, C# – Textüberset
 titleSuffix: Azure Cognitive Services
 description: In diesem Tutorial erstellen Sie eine WPF-App (Windows Presentation Foundation), bei der Cognitive Services-APIs für die Textübersetzung, Spracherkennung und Rechtschreibprüfung mit nur einem Abonnementschlüssel verwendet werden. In dieser Übung wird veranschaulicht, wie Sie Features der Textübersetzungs-API und Bing-Rechtschreibprüfung-API nutzen.
 services: cognitive-services
-author: erhopf
+author: swmachan
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: tutorial
 ms.date: 06/04/2019
-ms.author: erhopf
-ms.openlocfilehash: 2deaa0ed8b21d5e091fe5d3b3e6986eaf2340281
-ms.sourcegitcommit: adb6c981eba06f3b258b697251d7f87489a5da33
+ms.author: swmachan
+ms.openlocfilehash: b300c40b4a9c832a0df87f7cfc6e6a9558d766f6
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/04/2019
-ms.locfileid: "66514708"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67448226"
 ---
 # <a name="tutorial-create-a-translation-app-with-wpf"></a>Tutorial: Erstellen einer Übersetzungs-App mit WPF
 
@@ -108,7 +108,7 @@ Wir sehen uns nun an, was erstellt werden soll.
 
 Die Benutzeroberfläche enthält die folgenden Komponenten:
 
-| NAME | Type | BESCHREIBUNG |
+| NAME | type | BESCHREIBUNG |
 |------|------|-------------|
 | `FromLanguageComboBox` | Kombinationsfeld | Zeigt eine Liste mit den Sprachen an, die von Microsoft Translator für Textübersetzungen unterstützt werden. Der Benutzer wählt die Ausgangssprache für die Übersetzung aus. |
 | `ToLanguageComboBox` | Kombinationsfeld | Dient zum Auswählen der Zielsprache für die Übersetzung und zeigt die gleiche Sprachenliste wie `FromComboBox` an. |
@@ -244,7 +244,7 @@ Unser gesamtes Projekt ist in der `MainWindow : Window`-Klasse gekapselt. Wir be
 
 In diesem Codeblock haben wir zwei Membervariablen deklariert, die Informationen zu den verfügbaren Sprachen für die Übersetzung enthalten:
 
-| Variable | Type | BESCHREIBUNG |
+| Variable | type | BESCHREIBUNG |
 |----------|------|-------------|
 |`languageCodes` | Array von Zeichenfolgen |Dient zum Zwischenspeichern der Sprachcodes. Der Translator-Dienst identifiziert Sprachen mithilfe von Kurzcodes (etwa `en` für Englisch). |
 |`languageCodesAndTitles` | Sortiertes Wörterbuch | Ordnet die Anzeigenamen auf der Benutzeroberfläche den in der API verwendeten Kurzcodes zu. Dabei wird die alphabetische Sortierung (ohne Berücksichtigung der Groß-/Kleinschreibung) eingehalten. |
@@ -370,7 +370,7 @@ Als Nächstes erstellen wir die Methode zum Erkennen der Sprache des Quelltexts 
        HttpWebRequest detectLanguageWebRequest = (HttpWebRequest)WebRequest.Create(detectUri);
        detectLanguageWebRequest.Headers.Add("Ocp-Apim-Subscription-Key", COGNITIVE_SERVICES_KEY);
        detectLanguageWebRequest.Headers.Add("Ocp-Apim-Subscription-Region", "westus");
-       detectLanguageWebRequest.ContentType = "app/json; charset=utf-8";
+       detectLanguageWebRequest.ContentType = "application/json; charset=utf-8";
        detectLanguageWebRequest.Method = "POST";
 
        // Send request
@@ -427,7 +427,7 @@ private string CorrectSpelling(string text)
     HttpWebRequest spellCheckWebRequest = (HttpWebRequest)WebRequest.Create(uri);
     spellCheckWebRequest.Headers.Add("Ocp-Apim-Subscription-Key", COGNITIVE_SERVICES_KEY);
     spellCheckWebRequest.Method = "POST";
-    spellCheckWebRequest.ContentType = "app/x-www-form-urlencoded"; // doesn't work without this
+    spellCheckWebRequest.ContentType = "application/x-www-form-urlencoded"; // doesn't work without this
 
     // Create and send the request
     string body = "text=" + System.Web.HttpUtility.UrlEncode(text);

@@ -7,12 +7,12 @@ ms.service: storage
 ms.topic: article
 ms.author: normesta
 ms.date: 05/28/2019
-ms.openlocfilehash: 61477767c59dd521e3f46db4445238a5a1ea759e
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 5ab24a99b22fae172b5308ba7477953f27ecfd44
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67071435"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67435955"
 ---
 # <a name="host-a-static-website-in-azure-storage"></a>Hosten einer statischen Website in Azure Storage
 
@@ -44,13 +44,7 @@ Sie können das Hosting statischer Websites über die [Azure-Befehlszeilenschnit
 
 1. Öffnen Sie zunächst [Azure Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/overview?view=azure-cli-latest), oder falls Sie die Azure-CLI lokal [installiert](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest) haben, öffnen Sie eine Befehlskonsolenanwendung wie Windows PowerShell.
 
-2. Installieren Sie über das soeben geöffnete Befehlsfenster die Speichererweiterung in der Vorschauversion.
-
-   ```azurecli-interactive
-   az extension add --name storage-preview
-   ```
-
-3. Wenn Ihre Identität mehreren Abonnements zugeordnet ist, legen Sie das aktive Abonnement auf das Abonnement des Speicherkontos fest, auf dem Ihre statische Website gehostet wird.
+2. Wenn Ihre Identität mehreren Abonnements zugeordnet ist, legen Sie das aktive Abonnement auf das Abonnement des Speicherkontos fest, auf dem Ihre statische Website gehostet wird.
 
    ```azurecli-interactive
    az account set --subscription <subscription-id>
@@ -58,7 +52,7 @@ Sie können das Hosting statischer Websites über die [Azure-Befehlszeilenschnit
 
    Ersetzen Sie den Platzhalterwert `<subscription-id>` durch die ID Ihres Abonnements.
 
-4. Aktivieren Sie das Hosting statischer Websites.
+3. Aktivieren Sie das Hosting statischer Websites.
 
    ```azurecli-interactive
    az storage blob service-properties update --account-name <storage-account-name> --static-website --404-document <error-document-name> --index-document <index-document-name>
@@ -70,7 +64,7 @@ Sie können das Hosting statischer Websites über die [Azure-Befehlszeilenschnit
 
    * Ersetzen Sie den Platzhalter `<index-document-name>` durch den Namen des Indexdokuments. Dieses Dokument ist üblicherweise „index.html“.
 
-5. Laden Sie Objekte aus einem Quellverzeichnis in den Container *$web* hoch.
+4. Laden Sie Objekte aus einem Quellverzeichnis in den Container *$web* hoch.
 
    > [!NOTE]
    > Wenn Sie Azure Cloud Shell verwenden, vergewissern Sie sich, dass Sie beim Verweisen auf den `$web`-Container ein Escapezeichen `\` hinzufügen (z.B. `\$web`). Wenn Sie eine lokale Installation der Azure-CLI verwenden, müssen Sie das Escapezeichen nicht verwendet.

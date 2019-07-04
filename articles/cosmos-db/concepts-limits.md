@@ -6,12 +6,12 @@ ms.author: arramac
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 05/19/2019
-ms.openlocfilehash: 0086327661df637dc0ae60208ed9424b4610ef0e
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 28eb7c6a11f71fa87835bcfe78e635753965bac3
+ms.sourcegitcommit: d3b1f89edceb9bff1870f562bc2c2fd52636fc21
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65969455"
+ms.lasthandoff: 07/04/2019
+ms.locfileid: "67561236"
 ---
 # <a name="limits-in-azure-cosmos-db"></a>Grenzwerte in Azure Cosmos DB
 
@@ -37,7 +37,6 @@ Nach der Erstellung eines Azure Cosmos-Kontos unter Ihrem Abonnement können Sie
 
 Ein Cosmos-Container (oder eine Datenbank mit gemeinsam genutztem Durchsatz) muss einen Mindestdurchsatz von 400 RUs aufweisen. Mit zunehmendem Wachstum des Containers hängt der unterstützte Mindestdurchsatz auch von folgenden Faktoren ab:
 
-* Die maximale Größe des im Container verbrauchten Speichers wird in Inkrementen von 40 RUs pro GB an verbrauchtem Speicher gemessen. Wenn ein Container z.B. 100GB Daten enthält, muss der Durchsatz mindestens 4.000 RUs betragen
 * Der maximale Durchsatz, der jemals im Container bereitgestellt wurde. Der Dienst unterstützt das Senken des Durchsatzes eines Containers auf 10% des bereitgestellten Maximums. Wenn z.B. der Durchsatz auf 10.000 RUs erhöht wurde, würde der niedrigstmögliche bereitgestellte Durchsatz 1.000 RUs betragen
 * Die Gesamtzahl der Container, die Sie jemals in einer Datenbank mit gemeinsam genutztem Durchsatz erstellt haben, gemessen in 100 RUs pro Container. Wenn Sie z.B. fünf Container in einer Datenbank mit gemeinsam genutztem Durchsatz erstellt haben, muss der Durchsatz mindestens 500 RUs betragen
 
@@ -48,7 +47,6 @@ Der aktuelle und minimale Durchsatz eines Containers oder einer Datenbank kann �
 | Minimale Anzahl RUs pro Container ([Bereitstellungsmodus für dedizierten Durchsatz](databases-containers-items.md#azure-cosmos-containers)) | 400 |
 | Minimale Anzahl RUs pro Datenbank ([Bereitstellungsmodus für gemeinsam genutzten Durchsatz](databases-containers-items.md#azure-cosmos-containers)) | 400 |
 | Minimale Anzahl RUs pro Container in einer Datenbank mit gemeinsam genutztem Durchsatz | 100 |
-| Minimale Anzahl RUs pro GB an verbrauchten Speicher | 40 |
 
 Cosmos DB unterstützt flexible Skalierung von Durchsatz (RUs) pro Container bzw. Datenbank über die SDKs oder das Portal. Jeder Container kann synchron und sofort innerhalb eines Skalierungsbereichs von 10 bis 100 Mal zwischen Minimal- und Maximalwert skaliert werden. Wenn der angeforderte Durchsatzwert außerhalb des Bereichs liegt, wird die Skalierung asynchron durchgeführt. Die asynchrone Skalierung kann je nach angefordertem Durchsatz und Datenspeichergröße im Container Minuten bis Stunden dauern.  
 

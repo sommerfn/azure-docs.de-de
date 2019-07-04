@@ -3,20 +3,20 @@ title: Verwenden der Languages-Methode der Sprachübersetzungs-API
 titleSuffix: Azure Cognitive Services
 description: Erfahren Sie, wie Sie die Languages-Methode der Sprachübersetzungs-API verwenden.
 services: cognitive-services
-author: Jann-Skotdal
+author: swmachan
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-speech
 ms.topic: conceptual
 ms.date: 05/18/2018
-ms.author: v-jansko
+ms.author: swmachan
 ROBOTS: NOINDEX,NOFOLLOW
-ms.openlocfilehash: 7498ba08b9ce7b6aae10f38a393eb8cba37f3f4e
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 4abe6330d0359f7d7c922facecaaf1a8b1fc7174
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60827900"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67446953"
 ---
 # <a name="translator-speech-api-languages"></a>Sprachübersetzungs-API: Languages
 
@@ -132,7 +132,7 @@ Languages {speech (object, optional), text (object, optional), tts (object, opti
 
 ### <a name="headers"></a>Header
 
-|Header|BESCHREIBUNG|Type|
+|Header|BESCHREIBUNG|type|
 :--|:--|:--|
 X-RequestId|Ein Wert, der vom Server generiert wird, um die Anforderung zu identifizieren und Probleme zu behandeln.|Zeichenfolge|
 

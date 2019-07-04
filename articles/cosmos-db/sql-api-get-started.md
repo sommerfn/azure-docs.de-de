@@ -8,12 +8,12 @@ ms.devlang: dotnet
 ms.topic: tutorial
 ms.date: 04/15/2019
 ms.author: sngun
-ms.openlocfilehash: 7574985dbcc502d03bc886c7651c859b22968c5f
-ms.sourcegitcommit: 1fbc75b822d7fe8d766329f443506b830e101a5e
+ms.openlocfilehash: 60c7e6b32f60d6f42d706489c41dbeea4af0d15d
+ms.sourcegitcommit: a12b2c2599134e32a910921861d4805e21320159
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/14/2019
-ms.locfileid: "65596091"
+ms.lasthandoff: 06/24/2019
+ms.locfileid: "67342121"
 ---
 # <a name="build-a-net-console-app-to-manage-data-in-azure-cosmos-db-sql-api-account"></a>Erstellen einer .NET-Konsolen-App zum Verwalten von Daten in einem Azure Cosmos DB-SQL-API-Konto
 
@@ -130,11 +130,11 @@ Beginnen Sie jetzt mit dem Schreiben von Code. Die vollständige Datei *Project.
       
       ![Anzeigen und Kopieren von Zugriffsschlüsseln im Azure-Portal](./media/sql-api-get-started/nosql-tutorial-keys.png)
       
-   1. Kopieren Sie unter **Lese-/Schreibschlüssel** den Wert von **URI**, indem Sie rechts die Schaltfläche „Kopieren“ verwenden, und fügen Sie ihn in `<your endpoint URL>` in *Program.cs* ein. Beispiel:  
+   1. Kopieren Sie unter **Lese-/Schreibschlüssel** den Wert von **URI**, indem Sie rechts die Schaltfläche „Kopieren“ verwenden, und fügen Sie ihn in `<your endpoint URL>` in *Program.cs* ein. Beispiel: 
       
       `private const string EndpointUrl = "https://mysqlapicosmosdb.documents.azure.com:443/";`
       
-   1. Kopieren Sie den Wert von **PRIMÄRSCHLÜSSEL**, und fügen Sie ihn in `<your primary key>` in *Program.cs* ein. Beispiel:  
+   1. Kopieren Sie den Wert von **PRIMÄRSCHLÜSSEL**, und fügen Sie ihn in `<your primary key>` in *Program.cs* ein. Beispiel: 
       
       `private const string PrimaryKey = "19ZDNJAiYL26tmnRvoez6hmtIfBGwjun50PWRjNYMC2ig8Ob9hYk7Fq1RYSv8FcIYnh1TdBISvCh7s6yyb0000==";`
    
@@ -450,7 +450,7 @@ Das folgende Diagramm veranschaulicht, wie die Azure Cosmos DB-SQL-Abfragesyntax
 
 ![Diagramm zur Veranschaulichung des Bereichs und der Bedeutung der Abfrage, die vom NoSQL-Tutorial zum Erstellen einer C#-Konsolenanwendung verwendet wird.](./media/sql-api-get-started/nosql-tutorial-collection-documents.png)
 
-Das Schlüsselwort [FROM](how-to-sql-query.md#FromClause) in der SQL-Abfrage ist optional, da Azure Cosmos DB bereits Abfragen auf eine einzelne Sammlung begrenzt. Sie können `FROM Families f` mit `FROM root r` oder einem anderen Variablennamen Ihrer Wahl austauschen. Azure Cosmos DB leitet ab, dass `Families`, `root` oder der variable Name, den Sie ausgewählt haben, auf die aktuelle Sammlung verweist bzw. verweisen.
+Das Schlüsselwort [FROM](sql-query-from.md) in der SQL-Abfrage ist optional, da Azure Cosmos DB bereits Abfragen auf eine einzelne Sammlung begrenzt. Sie können `FROM Families f` mit `FROM root r` oder einem anderen Variablennamen Ihrer Wahl austauschen. Azure Cosmos DB leitet ab, dass `Families`, `root` oder der variable Name, den Sie ausgewählt haben, auf die aktuelle Sammlung verweist bzw. verweisen.
 
 ## <a id="ReplaceDocument"></a>Aktualisieren eines JSON-Dokuments
 

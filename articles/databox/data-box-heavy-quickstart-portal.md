@@ -8,12 +8,12 @@ ms.subservice: heavy
 ms.topic: quickstart
 ms.date: 06/04/2019
 ms.author: alkohli
-ms.openlocfilehash: 930da7367b3f5d7e20617afedef007efea97c51a
-ms.sourcegitcommit: adb6c981eba06f3b258b697251d7f87489a5da33
+ms.openlocfilehash: 3467b25c085fb86d4aed3918d5446d118f76ffb8
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/04/2019
-ms.locfileid: "66515939"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67446736"
 ---
 # <a name="quickstart-deploy-azure-data-box-heavy-using-the-azure-portal"></a>Schnellstart: Bereitstellen von Azure Data Box Heavy über das Azure-Portal
 
@@ -57,7 +57,7 @@ Stellen Sie Folgendes sicher, bevor Sie beginnen:
 
 ## <a name="sign-in-to-azure"></a>Anmelden bei Azure
 
-Melden Sie sich unter [http://portal.azure.com](http://portal.azure.com) beim Azure-Portal an.
+Melden Sie sich unter [https://portal.azure.com](https://portal.azure.com) beim Azure-Portal an.
 
 ## <a name="order"></a>Reihenfolge
 
@@ -95,7 +95,7 @@ Dieser Schritt dauert ungefähr 10 bis 15 Minuten.
 
 Dieser Schritt dauert ungefähr 5 bis 7 Minuten.
 
-1. Zum Abrufen des Gerätekennworts wechseln Sie im [Azure-Portal](http://portal.azure.com) zu **Allgemein > Gerätedetails**. Für beide Knoten des Geräts wird dasselbe Kennwort verwendet.
+1. Zum Abrufen des Gerätekennworts wechseln Sie im [Azure-Portal](https://portal.azure.com) zu **Allgemein > Gerätedetails**. Für beide Knoten des Geräts wird dasselbe Kennwort verwendet.
 2. Weisen Sie dem Ethernet-Adapter auf dem Computer, mit dem Sie sich mit der Data Box Heavy verbinden, die statische IP-Adresse 192.168.100.5 und das Subnetz 255.255.255.255.0 zu. Greifen Sie unter `https://192.168.100.10` auf die lokale Webbenutzeroberfläche des Geräts zu. Der Verbindungsaufbau kann nach dem Einschalten des Geräts bis zu 5 Minuten dauern.
 3. Melden Sie sich mit dem aus dem Azure-Portal abgerufenen Kennwort an. Sie sehen eine Fehlermeldung, die auf ein Problem mit dem Sicherheitszertifikat der Website hinweist. Befolgen Sie die browserspezifischen Anweisungen, um zur Webseite zu gelangen.
 4. Standardmäßig werden die Netzwerkeinstellungen für die Schnittstellen (mit Ausnahme der MGMT-Schnittstelle) als DHCP konfiguriert. Bei Bedarf können Sie diese Schnittstellen als statisch konfigurieren und eine IP-Adresse angeben.

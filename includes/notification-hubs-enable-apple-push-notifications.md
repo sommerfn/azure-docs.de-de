@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 08/28/2018
 ms.author: spelluru
 ms.custom: include file
-ms.openlocfilehash: c664e73b39ad48a860661cfd9141ee74df203f3e
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 3e4549a21ec32f1a2c1c869c3b2e0bd8c2e4204e
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67116649"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67446567"
 ---
 ## <a name="generate-the-certificate-signing-request-file"></a>Erstellen der Zertifikatsignieranforderungsdatei
 
@@ -108,7 +108,7 @@ Um Pushbenachrichtigungen an eine iOS-App zu senden, registrieren Sie Ihre Anwen
 
     ![Exportieren des Zertifikats im p12-Format](./media/notification-hubs-enable-apple-push-notifications/notification-hubs-export-cert-p12.png)
 
-    Notieren Sie sich den Dateinamen und den Speicherort des exportierten P12-Zertifikats. Sie werden zum Aktivieren der Authentifizierung mit APNs verwendet.
+    Notieren Sie sich den Dateinamen und den Speicherort des exportierten P12-Zertifikats, Sie werden zum Aktivieren der Authentifizierung mit APNs verwendet.
 
     > [!NOTE]
     > In diesem Tutorial wird eine Datei namens **QuickStart.p12** erstellt. Name und Ort Ihrer Datei können verschieden sein.

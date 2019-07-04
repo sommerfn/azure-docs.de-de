@@ -5,18 +5,15 @@ services: azure-resource-manager,azure-portal
 documentationcenter: ''
 author: mumian
 ms.service: azure-resource-manager
-ms.workload: multiple
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/26/2019
 ms.author: jgao
-ms.openlocfilehash: 559c1874c119eabef2c35a954961c1e669df3c06
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: bc3c1a05c64edea260bd177dd7eaefc003db5310
+ms.sourcegitcommit: 2d3b1d7653c6c585e9423cf41658de0c68d883fa
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65507227"
+ms.lasthandoff: 06/20/2019
+ms.locfileid: "67296286"
 ---
 # <a name="manage-azure-resource-manager-resource-groups-by-using-the-azure-portal"></a>Verwalten von Azure Resource Manager-Gruppen mithilfe des Azure-Portals
 
@@ -109,14 +106,6 @@ Sie können Ressourcengruppen und Ressourcen Tags zuordnen, um sie logisch zu or
 ## <a name="export-resource-groups-to-templates"></a>Exportieren von Ressourcengruppen in Vorlagen
 
 Informationen zum Exportieren von Vorlagen finden Sie unter [Exportieren von einzelnen und mehreren Ressourcen in eine Vorlage – Portal](export-template-portal.md).
-
-### <a name="fix-export-issues"></a>Beheben von Exportproblemen
-
-Nicht alle Ressourcentypen unterstützen die Funktion zum Exportieren von Vorlagen. Exportprobleme treten nur dann auf, wenn Sie aus einer Ressourcengruppe exportieren anstatt aus Ihrem Bereitstellungsverlauf. Falls die letzte Bereitstellung genau den aktuellen Status der Ressourcengruppe widerspiegelt, sollten Sie die Vorlage nicht aus der Ressourcengruppe, sondern aus dem Bereitstellungsverlauf exportieren. Führen Sie den Export aus einer Ressourcengruppe nur dann durch, wenn Sie Änderungen an der Ressourcengruppe vorgenommen haben, die in nicht einer einzelnen Vorlage definiert sind.
-
-Beheben Sie Exportprobleme, indem Sie der Vorlage die fehlenden Ressourcen manuell hinzufügen. Die Fehlermeldung enthält die Ressourcentypen, die nicht exportiert werden konnten. Suchen Sie den entsprechenden Ressourcentyp in der [Vorlagenreferenz](/azure/templates/). Informationen zum manuellen Hinzufügen eines virtuellen Netzwerkgateways finden Sie beispielsweise unter [Microsoft.Network/virtualNetworkGateways template reference](/azure/templates/microsoft.network/virtualnetworkgateways) (Microsoft.Network/virtualNetworkGateways – Vorlagenreferenz). Der Vorlagenverweis liefert den JSON-Code, um die Ressource zu Ihrer Vorlage hinzuzufügen.
-
-Nachdem Sie das JSON-Format für die Ressource abgerufen haben, müssen Sie die Ressourcenwerte abrufen. Verwenden Sie zum Anzeigen der Werte für die Ressource den GET-Vorgang in der REST-API für den Ressourcentyp. Informationen zum Abrufen der Werte für Ihr Gateway für virtuelle Netzwerke finden Sie beispielsweise unter [Virtual Network Gateways - Get](/rest/api/network-gateway/virtualnetworkgateways/get) (Gateways für virtuelle Netzwerke – Abrufen).
 
 ## <a name="manage-access-to-resource-groups"></a>Verwalten des Zugriffs auf Ressourcengruppen
 

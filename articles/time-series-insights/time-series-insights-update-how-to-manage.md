@@ -8,14 +8,14 @@ manager: cshankar
 ms.service: time-series-insights
 services: time-series-insights
 ms.topic: conceptual
-ms.date: 04/30/2019
+ms.date: 06/26/2019
 ms.custom: seodec18
-ms.openlocfilehash: 6251df2317ceff9dded92f2d829bfab0503fdf1b
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: f626ce2e009a18afcb4d04b7caa6850ea58c7483
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66237589"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67446813"
 ---
 # <a name="provision-and-manage-azure-time-series-insights-preview"></a>Bereitstellen und Verwalten der Vorschauversion von Azure Time Series Insights
 
@@ -45,7 +45,7 @@ Die folgenden Schritte beschreiben, wie Sie eine Azure Time Series Insights Prev
 
 1. Wählen Sie die Schaltfläche **PAYG** im Menü **SKU** aus. Geben Sie einen Umgebungsnamen an, und wählen Sie aus, welche Abonnementgruppe und welche Ressourcengruppe verwendet werden sollen. Wählen Sie dann einen unterstützten Ort für die Umgebung aus, wo sie gehostet werden soll.
 
-   [![Erstellen Sie eine Azure Time Series Insights-Instanz.](media/v2-update-manage/manage_three.PNG)](media/v2-update-manage/manage_three.PNG#lightbox)
+   [![Erstellen Sie eine Azure Time Series Insights-Instanz.](media/v2-update-manage/manage-three.png)](media/v2-update-manage/manage-three.png#lightbox)
 
 1. Geben Sie eine Time Series-ID ein.
 
@@ -56,7 +56,7 @@ Die folgenden Schritte beschreiben, wie Sie eine Azure Time Series Insights Prev
 
 1. Erstellen Sie ein Azure Storage-Konto, indem Sie einen Namen für das Konto auswählen und eine Replikationsauswahl treffen. Hierdurch wird automatisch ein Azure Storage-Konto vom Typ „Allgemein v1“ erstellt. Es wird in derselben Region wie die Azure Time Series Insights-Umgebung (Vorschauversion) erstellt, die Sie zuvor ausgewählt haben.
 
-    [![Erstellen eines Azure Storage-Kontos für Ihre Instanz](media/v2-update-manage/manage_five.PNG)](media/v2-update-manage/manage_five.PNG#lightbox)
+    [![Erstellen eines Azure Storage-Kontos für Ihre Instanz](media/v2-update-manage/manage-five.png)](media/v2-update-manage/manage-five.png#lightbox)
 
 1. Optional können Sie eine Ereignisquelle hinzufügen.
 
@@ -67,11 +67,11 @@ Die folgenden Schritte beschreiben, wie Sie eine Azure Time Series Insights Prev
      > [!TIP]
      > Die in der Warteschlange verbrachte Zeit einer Nachricht ist möglicherweise nicht die beste konfigurierte Einstellung, um sie in Uploadszenarien mit Batch-Ereignissen oder Verlaufsdaten zu verwenden. Stellen Sie sicher, dass Sie Ihre Entscheidung überprüfen, ob in solchen Fällen eine „Timestamp“-Eigenschaft verwendet werden soll oder nicht.
 
-     [![Registerkarte „Ereignisquelle“](media/v2-update-manage/manage_two.PNG)](media/v2-update-manage/manage_two.PNG#lightbox)
+     [![Registerkarte „Ereignisquelle“](media/v2-update-manage/manage-two.png)](media/v2-update-manage/manage-two.png#lightbox)
 
 1. Vergewissern Sie sich, dass Ihre Umgebung mit den gewünschten Einstellungen bereitgestellt wurde.
 
-    [![Registerkarte „Bewerten + erstellen“](media/v2-update-manage/manage_three.PNG)](media/v2-update-manage/manage_three.PNG#lightbox)
+    [![Registerkarte „Bewerten + erstellen“](media/v2-update-manage/manage-three.png)](media/v2-update-manage/manage-three.png#lightbox)
 
 ## <a name="manage-the-environment"></a>Verwalten der Umgebung
 
@@ -88,7 +88,7 @@ Sie können Ihre Azure Time Series Insights-Umgebung (Vorschauversion) über das
 
 * Das Datenblatt **Verweisdaten** im Azure-Portal wurde in der Vorschauversion von Azure Time Series Insights entfernt, da Verweisdaten keine Komponente von Umgebungen mit nutzungsbasierter Bezahlung sind.
 
-[![Time Series Insights-Umgebung (Vorschauversion) im Azure-Portal](media/v2-update-manage/manage_four.PNG)](media/v2-update-manage/manage_four.PNG#lightbox)
+[![Time Series Insights-Umgebung (Vorschauversion) im Azure-Portal](media/v2-update-manage/manage-four.png)](media/v2-update-manage/manage-four.png#lightbox)
 
 ## <a name="next-steps"></a>Nächste Schritte
 

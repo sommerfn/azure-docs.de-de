@@ -6,14 +6,14 @@ author: alkohli
 ms.service: storage
 ms.subservice: blobs
 ms.topic: article
-ms.date: 04/01/2019
+ms.date: 06/24/2019
 ms.author: alkohli
-ms.openlocfilehash: 8f106674c1b1ec90477c7c030dc55085fcf10656
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: fb49802adf6242f445b700d06622d7e6aa336b4d
+ms.sourcegitcommit: a7ea412ca4411fc28431cbe7d2cc399900267585
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60729918"
+ms.lasthandoff: 06/25/2019
+ms.locfileid: "67357035"
 ---
 # <a name="solutions-for-periodic-data-transfer"></a>Lösungen für eine regelmäßige Datenübertragung
  
@@ -66,7 +66,7 @@ In der folgenden Tabelle werden die Unterschiede der Schlüsselfunktionen zusamm
 ## <a name="next-steps"></a>Nächste Schritte
 
 - [Übertragen von Daten mit AzCopy](/azure/storage/common/storage-use-azcopy-v10?toc=%2fazure%2fstorage%2ftables%2ftoc.json).
-- [Weitere Informationen zu Datenübertragungen mit Storage REST-APIs](https://docs.microsoft.com/azure/databox-online/data-box-gateway-deploy-add-shares).
+- [Weitere Informationen zu Datenübertragungen mit Storage REST-APIs](https://docs.microsoft.com/dotnet/api/overview/azure/storage?view=azure-dotnet).
 - Informationen zum
     - [Übertragen von Daten mit Data Box Gateway](https://docs.microsoft.com/azure/databox-online/data-box-gateway-deploy-add-shares)
     - [Transformieren von Daten mit Data Box Edge vor dem Senden an Azure](https://docs.microsoft.com/azure/databox-online/data-box-edge-deploy-configure-compute).

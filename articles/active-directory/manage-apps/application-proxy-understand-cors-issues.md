@@ -11,16 +11,16 @@ ms.topic: conceptual
 ms.date: 05/23/2019
 ms.author: celested
 ms.reviewer: japere
-ms.openlocfilehash: 2b6adcf4231aa44a4f28d277e963efa16de8af81
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: afc0bb990f69521efb2557a6a086c0de5126f82c
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66399343"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67440417"
 ---
 # <a name="understand-and-solve-azure-active-directory-application-proxy-cors-issues"></a>Verstehen und Beheben von CORS-Problemen für den Azure Active Directory-Anwendungsproxy
 
-Die Ressourcenfreigabe zwischen verschiedenen Ursprüngen ([Cross-Origin Resource Sharing, CORS](http://www.w3.org/TR/cors/)) kann bisweilen Herausforderungen für die Apps und APIs mit sich bringen, die Sie über den Azure Active Directory-Anwendungsproxy veröffentlichen. In diesem Artikel werden CORS-Probleme für den Azure AD-Anwendungsproxy sowie entsprechende Lösungen behandelt.
+Die Ressourcenfreigabe zwischen verschiedenen Ursprüngen ([Cross-Origin Resource Sharing, CORS](https://www.w3.org/TR/cors/)) kann bisweilen Herausforderungen für die Apps und APIs mit sich bringen, die Sie über den Azure Active Directory-Anwendungsproxy veröffentlichen. In diesem Artikel werden CORS-Probleme für den Azure AD-Anwendungsproxy sowie entsprechende Lösungen behandelt.
 
 Die Browsersicherheit verhindert in der Regel, dass eine Webseite AJAX-Anforderungen an eine andere Domäne richtet. Diese Einschränkung wird als *Richtlinie des gleichen Ursprungs* bezeichnet und verhindert, dass eine schädliche Website sensible Daten von einer anderen Website liest. Manchmal sollen andere Websites jedoch unter Umständen Ihre Web-API aufrufen können. CORS ist ein W3C-Standard, der einem Server eine weniger strenge Anwendung der Richtlinie des gleichen Ursprungs ermöglicht und einige Anforderungen zwischen verschiedenen Ursprüngen zulässt, während andere abgelehnt werden.
 

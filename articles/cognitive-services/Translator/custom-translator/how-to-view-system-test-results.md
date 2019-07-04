@@ -2,19 +2,19 @@
 title: 'Anzeigen von Systemtestergebnissen und Bereitstellung: Custom Translator'
 titleSuffix: Azure Cognitive Services
 description: Überprüfen Sie nach erfolgreichem Training die Systemtests, um Ihre Trainingsergebnisse zu analysieren. Wenn Sie mit den Trainingsergebnissen zufrieden sind, fordern Sie die Bereitstellung des trainierten Modells an.
-author: rajdeep-in
+author: swmachan
 manager: christw
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.date: 02/21/2019
-ms.author: v-pawal
+ms.author: swmachan
 ms.topic: conceptual
-ms.openlocfilehash: 675ae10e304bd22c441740a87e8033136ff63ebd
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: ec15851ae7ff59a752fbf0d823d87aa6e68f10e9
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66389317"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67442481"
 ---
 # <a name="view-system-test-results"></a>Anzeigen der Ergebnisse von Systemtests
 

@@ -1,24 +1,21 @@
 ---
 title: Grundlegendes zu administrativen Abrechnungsrollen für Microsoft-Kundenvereinbarungen – Azure
 description: Hier erhalten Sie Informationen zu Abrechnungsrollen für Abrechnungskonten für Microsoft-Kundenvereinbarungen in Azure.
-services: billing
-documentationcenter: ''
 author: amberbhargava
 manager: amberbhargava
-editor: ''
 ms.service: billing
 ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 02/28/2019
+ms.date: 07/01/2019
 ms.author: banders
-ms.openlocfilehash: 780870cc71e95507a52ba6a9338026f895a96ac1
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 12e492fee95192d0af49ff7b6a5be3144398fef8
+ms.sourcegitcommit: ac1cfe497341429cf62eb934e87f3b5f3c79948e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60370889"
+ms.lasthandoff: 07/01/2019
+ms.locfileid: "67490443"
 ---
 # <a name="understand-microsoft-customer-agreement-administrative-roles-in-azure"></a>Grundlegendes zu Verwaltungsrollen für Microsoft-Kundenvereinbarungen in Azure
 
@@ -30,7 +27,7 @@ Dieser Artikel bezieht sich auf ein Abrechnungskonto für eine Microsoft-Kundenv
 
 In der folgenden Tabelle werden die Abrechnungsrollen beschrieben, die Sie zum Verwalten Ihres Abrechnungskontos, Ihrer Abrechnungsprofile und Rechnungsabschnitte verwenden.
 
-|Rolle|BESCHREIBUNG|
+|Role|BESCHREIBUNG|
 |---|---|
 |Besitzer des Abrechnungskontos|Verwalten aller Einstellungen für ein Abrechnungskonto|
 |Mitwirkender am Abrechnungskonto|Verwalten aller Einstellungen außer den Berechtigungen für das Abrechnungskonto|
@@ -46,7 +43,7 @@ In der folgenden Tabelle werden die Abrechnungsrollen beschrieben, die Sie zum V
 
 ## <a name="billing-account-roles-and-tasks"></a>Rollen und Aufgaben für ein Abrechnungskonto
 
-Mit einem Abrechnungskonto können Sie die Abrechnung für Ihre Organisation verwalten. Sie verwenden ein Abrechnungskonto, um Kosten zu organisieren, Gebühren und Rechnungen zu überwachen und den Zugriff auf Abrechnungen für Ihre Organisation zu steuern. Weitere Informationen finden Sie unter [Grundlegendes zum Abrechnungskonto](billing-mca-overview.md#understand-billing-account).
+Mit einem Abrechnungskonto können Sie die Abrechnung für Ihre Organisation verwalten. Sie verwenden ein Abrechnungskonto, um Kosten zu organisieren, Gebühren und Rechnungen zu überwachen und den Zugriff auf Abrechnungen für Ihre Organisation zu steuern. Weitere Informationen finden Sie unter [Grundlegendes zum Abrechnungskonto](billing-mca-overview.md#your-billing-account).
 
 In den folgenden Tabellen wird aufgezeigt, welche Rolle Sie zum Ausführen von Aufgaben im Zusammenhang mit dem Abrechnungskonto benötigen.
 
@@ -92,7 +89,7 @@ In den folgenden Tabellen wird aufgezeigt, welche Rolle Sie zum Ausführen von A
 
 ## <a name="billing-profile-roles-and-tasks"></a>Rollen und Aufgaben für ein Abrechnungsprofil
 
-Mit einem Abrechnungsprofil können Sie Ihre Rechnungen und Zahlungsmethoden verwalten. Eine monatliche Rechnung wird für die Azure-Abonnements und andere Produkte generiert, die über das Abrechnungsprofil erworben wurden. Die Zahlungsmethoden werden für die Bezahlung der Rechnung verwendet. Weitere Informationen finden Sie unter [Grundlegendes zu Abrechnungsprofilen](billing-mca-overview.md#understand-billing-profiles).
+Mit einem Abrechnungsprofil können Sie Ihre Rechnungen und Zahlungsmethoden verwalten. Eine monatliche Rechnung wird für die Azure-Abonnements und andere Produkte generiert, die über das Abrechnungsprofil erworben wurden. Die Zahlungsmethoden werden für die Bezahlung der Rechnung verwendet. Weitere Informationen finden Sie unter [Grundlegendes zu Abrechnungsprofilen](billing-mca-overview.md#billing-profiles).
 
 In den folgenden Tabellen wird aufgezeigt, welche Rolle Sie zum Ausführen von Aufgaben im Zusammenhang mit dem Abrechnungsprofil benötigen.
 
@@ -142,7 +139,7 @@ In den folgenden Tabellen wird aufgezeigt, welche Rolle Sie zum Ausführen von A
 
 ## <a name="invoice-section-roles-and-tasks"></a>Rollen und Aufgaben für einen Rechnungsabschnitt
 
-Mithilfe eines Rechnungsabschnitts können Sie die Kosten auf Ihrer Rechnung organisieren. Sie können einen Abschnitt erstellen, um Ihre Kosten nach Abteilung, nach Entwicklungsumgebung oder gemäß den Organisationsanforderungen zu organisieren. Erteilen Sie anderen Benutzern die Berechtigung zum Erstellen von Azure-Abonnements für den Abschnitt. Alle Nutzungsgebühren und Einkäufe für die Abonnements werden dann im Abschnitt der Rechnung angezeigt. Weitere Informationen finden Sie unter [Grundlegendes zu Rechnungsabschnitten](billing-mca-overview.md#understand-invoice-sections).
+Mithilfe eines Rechnungsabschnitts können Sie die Kosten auf Ihrer Rechnung organisieren. Sie können einen Abschnitt erstellen, um Ihre Kosten nach Abteilung, nach Entwicklungsumgebung oder gemäß den Organisationsanforderungen zu organisieren. Erteilen Sie anderen Benutzern die Berechtigung zum Erstellen von Azure-Abonnements für den Abschnitt. Alle Nutzungsgebühren und Einkäufe für die Abonnements werden dann im Abschnitt der Rechnung angezeigt. Weitere Informationen finden Sie unter [Grundlegendes zu Rechnungsabschnitten](billing-mca-overview.md#invoice-sections).
 
 In den folgenden Tabellen wird aufgezeigt, welche Rolle Sie zum Ausführen von Aufgaben im Zusammenhang mit Rechnungsabschnitten benötigen.
 

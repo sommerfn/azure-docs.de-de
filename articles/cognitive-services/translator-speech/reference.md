@@ -3,20 +3,20 @@ title: Referenz für die Sprachübersetzungs-API
 titleSuffix: Azure Cognitive Services
 description: Referenzdokumentation für die Sprachübersetzungs-API.
 services: cognitive-services
-author: Jann-Skotdal
+author: swmachan
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-speech
 ms.topic: reference
 ms.date: 05/18/2018
-ms.author: v-jansko
+ms.author: swmachan
 ROBOTS: NOINDEX,NOFOLLOW
-ms.openlocfilehash: 3493f6d25461836d8f6e48ce4213b0f5b78b6372
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 0f083a6ca3079128aad4aba3a53013df378a6106
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60539178"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67446901"
 ---
 # <a name="translator-speech-api"></a>Sprachübersetzungs-API
 
@@ -176,7 +176,7 @@ Wenn eine Clientanwendung die Audiowiedergabe abgeschlossen und das letzte Ender
 |format|(leer)|Gibt das Format des Text-to-Speech-Audiostreams an, der vom Dienst zurückgegeben wurde. Die verfügbaren Optionen lauten wie folgt:<ul><li>`audio/wav`: Waveform-Audiostream. Der Client sollte den WAV-Header verwenden, um das Audioformat richtig interpretieren zu können. Das WAV-Audio für Text-to-Speech ist einkanaliges 16-Bit-PCM mit einer Samplingrate von 24 kHz oder 16 kHz.</li><li>`audio/mp3`: MP3-Audiostream.</li></ul>Der Standardwert ist `audio/wav`.|query|Zeichenfolge|
 |ProfanityAction    |(leer)    |Gibt an, wie der Dienst mit in der Sprache erkannten Obszönitäten umgehen soll. Gültige Aktionen sind:<ul><li>`NoAction`: Obszönitäten bleiben unverändert.</li><li>`Marked`: Obszönitäten werden durch einen Marker ersetzt. Siehe Parameter `ProfanityMarker`.</li><li>`Deleted`: Obszönitäten werden gelöscht. Wenn das Wort `"jackass"` beispielsweise als Obszönität behandelt wird, wird der Ausdruck `"He is a jackass."` in `"He is a .".` geändert</li></ul>Die Standardaktion ist „Marked“.|query|Zeichenfolge|
 |ProfanityMarker|(leer)    |Gibt an, wie erkannte Obszönitäten behandelt werden, wenn `ProfanityAction` auf `Marked` festgelegt ist. Gültige Optionen sind:<ul><li>`Asterisk`: Obszönitäten werden durch die Zeichenfolge `***` ersetzt. Wenn das Wort `"jackass"` beispielsweise als Obszönität behandelt wird, wird der Ausdruck `"He is a jackass."` in `"He is a ***.".` geändert</li><li>`Tag`: Obszönitäten werden von einem XML-Tag für Obszönitäten umgeben. Wenn das Wort `"jackass"` beispielsweise als Obszönität behandelt wird, wird der Ausdruck `"He is a jackass."` in `"He is a <profanity>jackass</profanity>."` geändert.</li></ul>Der Standardwert lautet `Asterisk`.|query|Zeichenfolge|
-|Autorisierung|(leer)  |Gibt den Wert des Bearertokens des Clients an. Verwenden Sie das Präfix `Bearer` gefolgt vom Wert des Werts `access_token`, der vom Authentifizierungstokendienst zurückgegeben wird.|Header   |Zeichenfolge|
+|Authorization|(leer)  |Gibt den Wert des Bearertokens des Clients an. Verwenden Sie das Präfix `Bearer` gefolgt vom Wert des Werts `access_token`, der vom Authentifizierungstokendienst zurückgegeben wird.|Header   |Zeichenfolge|
 |Ocp-Apim-Subscription-Key|(leer)|Erforderlich, falls der Header `Authorization` nicht angegeben ist.|Header|Zeichenfolge|
 |access_token|(leer)   |Alternative Möglichkeit für die Übergabe eines gültigen OAuth-Zugriffstokens. Das Bearertoken wird in der Regel mit dem Header `Authorization` bereitgestellt. In einigen WebSocket-Bibliotheken dürfen mit Clientcode keine Header festgelegt werden. In diesem Fall kann der Client den Abfrageparameter `access_token` für die Übergabe eines gültigen Tokens verwenden. Bei der Verwendung eines Zugriffstokens für die Authentifizierung muss `access_token` festgelegt werden, wenn der Header `Authorization` nicht festgelegt ist. Wenn sowohl der Header als auch der Abfrageparameter festgelegt sind, wird der Abfrageparameter ignoriert. Clients sollten nur eine Methode für die Übergabe des Tokens verwenden.|query|Zeichenfolge|
 |subscription-key|(leer)   |Alternative Möglichkeit für die Übergabe eines Abonnementschlüssels. In einigen WebSocket-Bibliotheken dürfen mit Clientcode keine Header festgelegt werden. In diesem Fall kann der Client den Abfrageparameter `subscription-key` für die Übergabe eines gültigen Abonnementschlüssels verwenden. Wenn Sie einen Abonnementschlüssel für die Authentifizierung verwenden, muss „subscription-key“ festgelegt werden, wenn der Header `Ocp-Apim-Subscription-Key` nicht festgelegt ist. Wenn sowohl der Header als auch der Abfrageparameter festgelegt sind, wird der Abfrageparameter ignoriert. Clients sollten nur eine Methode für die Übergabe des `subscription key` verwenden.|query|Zeichenfolge|

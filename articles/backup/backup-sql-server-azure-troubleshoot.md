@@ -6,14 +6,14 @@ author: anuragm
 manager: shivamg
 ms.service: backup
 ms.topic: article
-ms.date: 05/27/2019
+ms.date: 06/18/2019
 ms.author: anuragm
-ms.openlocfilehash: 8459bb451c4ff462ee816b986cafdbf776603917
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 9ed30a35f30d1b6b9fdcd43110ed93618a10dbc3
+ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66306972"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67204189"
 ---
 # <a name="troubleshoot-back-up-sql-server-on-azure"></a>Problembehandlung zum Sichern von SQL Server in Azure
 
@@ -25,12 +25,11 @@ Informationen zum Anzeigen der Funktionsaspekte finden Sie im Artikel [Informati
 
 ## <a name="sql-server-permissions"></a>SQL Server-Berechtigungen
 
-Zum Konfigurieren des Schutzes für eine SQL Server-Datenbank auf einem virtuellen Computer, muss auf diesem virtuellen Computer die Erweiterung **AzureBackupWindowsWorkload** installiert sein. Wenn die Fehlermeldung **UserErrorSQLNoSysadminMembership** angezeigt wird, bedeutet das, dass Ihre SQL-Instanz nicht über die erforderlichen Berechtigungen für die Sicherung verfügt. Um diesen Fehler zu beheben, führen Sie die Schritte in [Festlegen von Berechtigungen für Nicht-Marketplace-SQL-VMs](backup-azure-sql-database.md#fix-sql-sysadmin-permissions) aus.
-
+Zum Konfigurieren des Schutzes für eine SQL Server-Datenbank auf einem virtuellen Computer, muss auf diesem virtuellen Computer die Erweiterung **AzureBackupWindowsWorkload** installiert sein. Wenn die Fehlermeldung **UserErrorSQLNoSysadminMembership** angezeigt wird, bedeutet das, dass Ihre SQL-Instanz nicht über die erforderlichen Berechtigungen für die Sicherung verfügt. Um diesen Fehler zu beheben, führen Sie die Schritte in [Festlegen von Berechtigungen für Nicht-Marketplace-SQL-VMs](backup-azure-sql-database.md#set-vm-permissions) aus.
 
 ## <a name="backup-type-unsupported"></a>Nicht unterstützter Sicherungstyp
 
-| Severity | BESCHREIBUNG | Mögliche Ursachen | Empfohlene Maßnahme |
+| severity | BESCHREIBUNG | Mögliche Ursachen | Empfohlene Maßnahme |
 |---|---|---|---|
 | Warnung | Die aktuellen Einstellungen für diese Datenbank unterstützen einen bestimmten Sicherungstyp nicht, der in der zugehörigen Richtlinie enthalten ist. | <li>**Master-Datenbank**: In der Masterdatenbank kann nur eine vollständige Datenbanksicherung durchgeführt werden. Es sind weder **differenzielle** Sicherungen noch Sicherungen von **Transaktionsprotokollen** möglich. </li> <li>Datenbanken im **einfachen Wiederherstellungsmodell** erlauben nicht die Sicherung von **Transaktionsprotokollen**.</li> | Ändern Sie die Datenbankeinstellungen so, dass alle Sicherungstypen in der Richtlinie unterstützt werden. Alternativ können Sie die aktuelle Richtlinie so ändern, dass nur die unterstützten Sicherungstypen berücksichtigt werden. Andernfalls werden die nicht unterstützten Sicherungstypen bei der geplanten Sicherung übersprungen oder der Sicherungsauftrag schlägt bei einer Ad-hoc-Sicherung fehl.
 

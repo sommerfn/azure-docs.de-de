@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 05/22/2019
 ms.author: jingwang
-ms.openlocfilehash: 4cd61db3ec0e8d88c9b1c6d6ba427b120b3f1af1
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 3c846ab3e81e7ab8a4948aa4ed96cfa75e8eb3f4
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66152416"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67449687"
 ---
 # <a name="copy-data-from-sap-business-warehouse-by-using-azure-data-factory"></a>Kopieren von Daten aus SAP Business Warehouse mithilfe von Azure Data Factory
 
@@ -125,7 +125,7 @@ Wechseln Sie im Azure-Portal zu Ihrer Data Factory. Klicken Sie auf **Erstellen 
 
     ![Detailansicht der Aktivitätsausgabe](media/load-sap-bw-data/activity-output-details.png)
 
-## <a name="do-an-incremental-copy-from-sap-bw-open-hub"></a>Inkrementelles Kopieren aus SAP BW Open Hub
+## <a name="incremental-copy-from-sap-bw-open-hub"></a>Inkrementelles Kopieren aus SAP BW Open Hub
 
 > [!TIP]
 > Informationen dazu, wie der SAP BW Open Hub-Connector in Data Factory inkrementelle Daten aus SAP BW kopiert, finden Sie unter [Ablauf der Deltaextraktion für den SAP BW Open Hub-Connector](connector-sap-business-warehouse-open-hub.md#delta-extraction-flow). In diesem Artikel wird auch die grundlegende Connectorkonfiguration erläutert.

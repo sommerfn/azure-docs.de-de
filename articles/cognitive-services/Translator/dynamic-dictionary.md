@@ -3,19 +3,19 @@ title: Dynamisches Wörterbuch – Textübersetzungs-API
 titlesuffix: Azure Cognitive Services
 description: Verwenden Sie die Funktion für das dynamische Wörterbuch der Textübersetzungs-API.
 services: cognitive-services
-author: rajdeep-in
+author: swmachan
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: conceptual
 ms.date: 06/04/2019
-ms.author: v-pawal
-ms.openlocfilehash: d3a77ee9273e9f587b6157bb6ed2294865b1fca5
-ms.sourcegitcommit: adb6c981eba06f3b258b697251d7f87489a5da33
+ms.author: swmachan
+ms.openlocfilehash: 2ef1e474dd5d36f1967501ea7bdedc4736954a2b
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/04/2019
-ms.locfileid: "66514254"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67436012"
 ---
 # <a name="how-to-use-a-dynamic-dictionary"></a>Verwenden eines dynamischen Wörterbuchs
 

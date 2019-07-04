@@ -8,12 +8,12 @@ ms.reviewer: jasonh
 ms.topic: conceptual
 ms.date: 03/15/2019
 ms.custom: H1Hack27Feb2017,hdinsightactive
-ms.openlocfilehash: 6f3140f412f9d36ca36cef440bd4e60f1a9197d4
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: d74c40264e8ed535d250e938487885a848ba6b47
+ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64702220"
+ms.lasthandoff: 07/01/2019
+ms.locfileid: "67484198"
 ---
 # <a name="use-python-user-defined-functions-udf-with-apache-hive-and-apache-pig-in-hdinsight"></a>Verwenden benutzerdefinierter Python-Funktionen mit Apache Hive und Apache Pig in HDInsight
 
@@ -161,9 +161,6 @@ Ersetzen Sie `sshuser` in den folgenden Befehlen durch den tatsächlichen Benutz
     ```
 
 ### <a name="upload-file-powershell"></a>Hochladen einer Datei (PowerShell)
-
-> [!IMPORTANT]  
-> Diese PowerShell-Skripts funktionieren nicht, wenn die [sichere Übertragung](../../storage/common/storage-require-secure-transfer.md) aktiviert ist.  Verwenden Sie entweder Shellbefehle, oder deaktivieren Sie die sichere Übertragung.
 
 PowerShell kann auch zur Remoteausführung von Hive-Abfragen verwendet werden. Stellen Sie sicher, dass das Arbeitsverzeichnis das Verzeichnis ist, in dem sich die Datei `hiveudf.py` befindet.  Verwenden Sie das folgende PowerShell-Skript zum Ausführen einer Hive-Abfrage, für die das `hiveudf.py`-Skript verwendet wird:
 
@@ -433,9 +430,6 @@ Ersetzen Sie `sshuser` in den folgenden Befehlen durch den tatsächlichen Benutz
 
 
 ### <a name="upload-file-powershell"></a>Hochladen einer Datei (PowerShell)
-
-> [!IMPORTANT]  
-> Diese PowerShell-Skripts funktionieren nicht, wenn die [sichere Übertragung](../../storage/common/storage-require-secure-transfer.md) aktiviert ist.  Verwenden Sie entweder Shellbefehle, oder deaktivieren Sie die sichere Übertragung.
 
 PowerShell kann auch zur Remoteausführung von Hive-Abfragen verwendet werden. Stellen Sie sicher, dass das Arbeitsverzeichnis das Verzeichnis ist, in dem sich die Datei `pigudf.py` befindet.  Verwenden Sie das folgende PowerShell-Skript zum Ausführen einer Hive-Abfrage, für die das `pigudf.py`-Skript verwendet wird:
 

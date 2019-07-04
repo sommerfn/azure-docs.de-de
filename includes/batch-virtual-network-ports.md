@@ -15,12 +15,12 @@ ms.workload: ''
 ms.date: 04/10/2019
 ms.author: lahugh
 ms.custom: include file
-ms.openlocfilehash: 711b662c35b5f8fec96f1edee765696bc1028bf8
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.openlocfilehash: a794852e68fdb2bf52717aaa6441880bd1d51139
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67178443"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67436269"
 ---
 ### <a name="general-requirements"></a>Allgemeine Anforderungen
 
@@ -71,9 +71,9 @@ Sie müssen keine NSGs auf der Subnetzebene angeben, da Batch eigene NSGs konfig
 
 **Ausgangssicherheitsregeln**
 
-| `Source` | Quellports | Ziel | Zieldiensttag | Protocol | Aktion |
-| --- | --- | --- | --- | --- | --- |
-| Beliebig | 443 | [Diensttag](../articles/virtual-network/security-overview.md#service-tags) | `Storage` (in der gleichen Region wie Ihr Batchkonto und VNET)  | Beliebig | ZULASSEN |
+| `Source` | Quellports | Ziel | Zieldiensttag | Zielports | Protocol | Aktion |
+| --- | --- | --- | --- | --- | --- | --- |
+| Beliebig | * | [Diensttag](../articles/virtual-network/security-overview.md#service-tags) | `Storage` (in der gleichen Region wie Ihr Batchkonto und VNET) | 443 | TCP | ZULASSEN |
 
 ### <a name="pools-in-the-cloud-services-configuration"></a>Pools in der Cloud Services-Konfiguration
 
