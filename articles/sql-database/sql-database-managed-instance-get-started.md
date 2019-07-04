@@ -12,12 +12,12 @@ ms.author: jovanpop
 ms.reviewer: sstein, carlrab
 manager: craigg
 ms.date: 05/07/2019
-ms.openlocfilehash: f54cea75e6f7866f1be41d3b0f82393af2235a0a
-ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
+ms.openlocfilehash: 27439758c9e2b909bb7179b69c7aade81429f502
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/20/2019
-ms.locfileid: "65949875"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67070487"
 ---
 # <a name="quickstart-create-an-azure-sql-database-managed-instance"></a>Schnellstart: Erstellen einer verwalteten Azure SQL-Datenbank-Instanz
 
@@ -70,10 +70,10 @@ Die folgenden Schritte zeigen, wie Sie eine verwaltete Instanz erstellen.
 
     ![Fortschritt der Bereitstellung einer verwalteten Instanz](./media/sql-database-managed-instance-get-started/deployment-progress.png)
 
-11. Wählen Sie **Die Bereitstellung wird ausgeführt.**, um das Fenster für die verwaltete Instanz zu öffnen und den Bereitstellungsstatus weiter zu verfolgen. 
+11. Wählen Sie **Die Bereitstellung wird ausgeführt.** , um das Fenster für die verwaltete Instanz zu öffnen und den Bereitstellungsstatus weiter zu verfolgen. 
 
 > [!IMPORTANT]
-> Für die erste Instanz in einem Subnetz ist die Bereitstellungsdauer normalerweise deutlich länger als bei den nachfolgenden Instanzen. Brechen Sie den Bereitstellungsvorgang nicht ab, weil er länger als erwartet dauert. Das Erstellen der zweiten verwalteten Instanz im Subnetz dauert nur einige Minuten.
+> Für die erste Instanz in einem Subnetz ist die Bereitstellungsdauer normalerweise deutlich länger als bei den nachfolgenden Instanzen. Brechen Sie den Bereitstellungsvorgang nicht ab, weil er länger als erwartet dauert.
 
 ## <a name="review-resources-and-retrieve-your-fully-qualified-server-name"></a>Überprüfen der Ressourcen und Abrufen des vollqualifizierten Servernamens
 

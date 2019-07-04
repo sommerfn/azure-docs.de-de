@@ -13,14 +13,14 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-linux
 ms.devlang: na
 ms.topic: article
-ms.date: 03/12/2018
+ms.date: 06/24/2019
 ms.author: szark
-ms.openlocfilehash: 7776e0005facb57d223a1ba1e73d1efa30edec49
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: c90b6b3292b7ced75c1a01e64133533ffa5970df
+ms.sourcegitcommit: a7ea412ca4411fc28431cbe7d2cc399900267585
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60327948"
+ms.lasthandoff: 06/25/2019
+ms.locfileid: "67357280"
 ---
 # <a name="prepare-an-ubuntu-virtual-machine-for-azure"></a>Vorbereiten eines virtuellen Ubuntu-Computers für Azure
 [!INCLUDE [learn-about-deployment-models](../../../includes/learn-about-deployment-models-both-include.md)]
@@ -125,15 +125,6 @@ In diesem Artikel wird davon ausgegangen, dass Sie bereits ein Ubuntu-Linux-Betr
    > [!Note]
    >  Das Paket `walinuxagent` entfernt unter Umständen die Pakete `NetworkManager` und `NetworkManager-gnome`, falls sie installiert sind.
 
-Aktualisieren Sie für Ubuntu 18.04/18.10 die Azure-Datenquelle in folgender Weise: /etc/cloud/cloud.cfg.d/90-azure.cfg, fügen Sie diesen Code am Ende der Datei hinzu:
-
-**Wichtig: der Code muss genau wie dargestellt hinzugefügt werden, einschließlich Leerzeichen.**
-
-```bash
-datasource:
-   Azure:
-     agent_command: [service, walinuxagent, start]
-```
 
 1. Führen Sie die folgenden Befehle aus, um den virtuellen Computer zurückzusetzen und ihn für die Bereitstellung in Azure vorzubereiten:
    

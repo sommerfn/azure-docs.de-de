@@ -1,25 +1,17 @@
 ---
 title: Azure Resource Manager-Vorlagenfunktionen – Vergleich | Microsoft Docs
 description: Hier werden die Funktionen beschrieben, die in einer Azure Resource Manager-Vorlage zum Vergleichen von Werten verwendet werden können.
-services: azure-resource-manager
-documentationcenter: na
 author: tfitzmac
-manager: timlt
-editor: tysonn
-ms.assetid: ''
 ms.service: azure-resource-manager
-ms.devlang: na
 ms.topic: reference
-ms.tgt_pltfrm: na
-ms.workload: na
 ms.date: 09/05/2017
 ms.author: tomfitz
-ms.openlocfilehash: 6591a75577670f5bb50c1275af7e51e9b8328d50
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 0eafadd4049baea58aa882b3421eaa6a684a3a38
+ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66128688"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67205497"
 ---
 # <a name="comparison-functions-for-azure-resource-manager-templates"></a>Vergleichsfunktionen für Azure Resource Manager-Vorlagen
 
@@ -42,8 +34,8 @@ Resource Manager stellt mehrere Funktionen zum Durchführen von Vergleichen in V
 
 | Parameter | Erforderlich | Typ | BESCHREIBUNG |
 |:--- |:--- |:--- |:--- |
-| arg1 |Ja |Ganze Zahl, Zeichenfolge, Array oder Objekt |Der erste auf Gleichheit zu überprüfende Wert. |
-| arg2 |Ja |Ganze Zahl, Zeichenfolge, Array oder Objekt |Der zweite auf Gleichheit zu überprüfende Wert. |
+| arg1 |Ja |int, string, array oder object |Der erste auf Gleichheit zu überprüfende Wert. |
+| arg2 |Ja |int, string, array oder object |Der zweite auf Gleichheit zu überprüfende Wert. |
 
 ### <a name="return-value"></a>Rückgabewert
 
@@ -135,7 +127,7 @@ Die folgende [Beispielvorlage](https://github.com/Azure/azure-docs-json-samples/
 
 Die Ausgabe aus dem vorherigen Beispiel mit den Standardwerten lautet:
 
-| NAME | Type | Wert |
+| NAME | type | Wert |
 | ---- | ---- | ----- |
 | checkInts | Bool | True |
 | checkStrings | Bool | True |
@@ -173,7 +165,7 @@ In der folgenden [Beispielvorlage](https://github.com/Azure/azure-docs-json-samp
 
 Die Ausgabe aus dem vorherigen Beispiel lautet wie folgt:
 
-| NAME | Type | Wert |
+| NAME | type | Wert |
 | ---- | ---- | ----- |
 | checkNotEquals | Bool | True |
 
@@ -248,7 +240,7 @@ Die folgende [Beispielvorlage](https://github.com/Azure/azure-docs-json-samples/
 
 Die Ausgabe aus dem vorherigen Beispiel mit den Standardwerten lautet:
 
-| NAME | Type | Wert |
+| NAME | type | Wert |
 | ---- | ---- | ----- |
 | checkInts | Bool | False |
 | checkStrings | Bool | True |
@@ -324,7 +316,7 @@ Die folgende [Beispielvorlage](https://github.com/Azure/azure-docs-json-samples/
 
 Die Ausgabe aus dem vorherigen Beispiel mit den Standardwerten lautet:
 
-| NAME | Type | Wert |
+| NAME | type | Wert |
 | ---- | ---- | ----- |
 | checkInts | Bool | False |
 | checkStrings | Bool | True |
@@ -400,7 +392,7 @@ Die folgende [Beispielvorlage](https://github.com/Azure/azure-docs-json-samples/
 
 Die Ausgabe aus dem vorherigen Beispiel mit den Standardwerten lautet:
 
-| NAME | Type | Wert |
+| NAME | type | Wert |
 | ---- | ---- | ----- |
 | checkInts | Bool | True |
 | checkStrings | Bool | False |
@@ -476,7 +468,7 @@ Die folgende [Beispielvorlage](https://github.com/Azure/azure-docs-json-samples/
 
 Die Ausgabe aus dem vorherigen Beispiel mit den Standardwerten lautet:
 
-| NAME | Type | Wert |
+| NAME | type | Wert |
 | ---- | ---- | ----- |
 | checkInts | Bool | True |
 | checkStrings | Bool | False |

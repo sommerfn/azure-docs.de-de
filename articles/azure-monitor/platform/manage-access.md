@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 03/27/2019
 ms.author: magoedte
-ms.openlocfilehash: 27db27d79a05f24461e63242c0395cfd81315432
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 22802950c68dc5a3cf0df8ee26ff38ccb937b551
+ms.sourcegitcommit: 2d3b1d7653c6c585e9423cf41658de0c68d883fa
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60782768"
+ms.lasthandoff: 06/20/2019
+ms.locfileid: "67295519"
 ---
 # <a name="manage-log-data-and-workspaces-in-azure-monitor"></a>Verwalten von Protokolldaten und Arbeitsbereichen in Azure Monitor
 In Azure Monitor werden Protokolldaten in einem Log Analytics-Arbeitsbereich gespeichert, bei dem es sich im Wesentlichen um einen Container handelt, der Daten und Konfigurationsinformationen enthält. Zum Verwalten des Zugriffs auf Protokolldaten führen Sie verschiedene Verwaltungsaufgaben für Arbeitsbereiche durch. Sie oder andere Mitglieder Ihrer Organisation können mehrere Arbeitsbereiche nutzen, um unterschiedliche Mengen von Daten zu verwalten, die in Ihrer gesamten IT-Infrastruktur oder Teilen davon erfasst werden.
@@ -213,7 +213,7 @@ Mitglieder der Rolle *Log Analytics-Leser* können folgende Aktionen ausführen:
 
 Die Rolle „Log Analytics-Leser“ umfasst die folgenden Azure-Aktionen:
 
-| Type    | Berechtigung | BESCHREIBUNG |
+| type    | Berechtigung | BESCHREIBUNG |
 | ------- | ---------- | ----------- |
 | Aktion | `*/read`   | Anzeigen aller Azure-Ressourcen und der Ressourcenkonfiguration, einschließlich: <br> VM-Erweiterungsstatus <br> Konfiguration von Azure-Diagnosen für Ressourcen <br> Sämtliche Eigenschaften und Einstellungen aller Ressourcen |
 | Aktion | `Microsoft.OperationalInsights/workspaces/analytics/query/action` | Ausführen von Protokollsuchabfragen (v2) |
@@ -278,7 +278,7 @@ Lesen Sie [Definieren von Zugriffssteuerung pro Tabelle](#table-level-rbac) weit
 ## <a name="table-level-rbac"></a>RBAC auf Tabellenebene
 **RBAC auf Tabellenebene** ermöglicht zusätzlich zu den anderen Berechtigungen eine präzisere Steuerung von Daten in einem Log Analytics-Arbeitsbereich. Mit diesem Steuerelement können Sie bestimmte Datentypen definieren, auf die nur eine bestimmte Gruppe von Benutzern Zugriff besitzt.
 
-Sie implementieren die Tabellenzugriffssteuerung mit [benutzerdefinierten Azure-Rollen](../../role-based-access-control/custom-roles.md), um den Zugriff auf bestimmte [Tabellen](../log-query/log-query-overview.md#how-azure-monitor-log-data-is-organized) im Arbeitsbereich entweder zu gewähren oder zu verweigern. Diese Rollen gelten für Arbeitsbereiche mit arbeitsbereichbezogenen oder ressourcenbezogenen [Zugriffssteuerungsmodi](#access-control-mode), und zwar unabhängig vom [Zugriffsmodus](#access-modes) des Benutzers.
+Sie implementieren die Tabellenzugriffssteuerung mit [benutzerdefinierten Azure-Rollen](../../role-based-access-control/custom-roles.md), um den Zugriff auf bestimmte [Tabellen](../log-query/logs-structure.md) im Arbeitsbereich entweder zu gewähren oder zu verweigern. Diese Rollen gelten für Arbeitsbereiche mit arbeitsbereichbezogenen oder ressourcenbezogenen [Zugriffssteuerungsmodi](#access-control-mode), und zwar unabhängig vom [Zugriffsmodus](#access-modes) des Benutzers.
 
 Erstellen Sie eine [benutzerdefinierte Rolle](../../role-based-access-control/custom-roles.md) mit den folgenden Aktionen, um den Zugriff auf die Tabellenzugriffssteuerung zu definieren.
 

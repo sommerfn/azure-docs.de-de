@@ -8,18 +8,18 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-visual-search
 ms.topic: article
-ms.date: 4/03/2019
+ms.date: 7/01/2019
 ms.author: aahi
-ms.openlocfilehash: 62d34b859a0cf71320c478b7cab4a2914e5ee308
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: bd5118b42f32a521df8e3acfffb68391d4021791
+ms.sourcegitcommit: 5bdd50e769a4d50ccb89e135cfd38b788ade594d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60579863"
+ms.lasthandoff: 07/03/2019
+ms.locfileid: "67541521"
 ---
 # <a name="sending-search-queries-to-the-bing-visual-search-api"></a>Senden von Suchabfragen an die API für die visuelle Bing-Suche
 
-In diesem Artikel werden die Parameter und Attribute von Anforderungen beschrieben, die an die API für die visuelle Bing-Suche gesendet werden. Außerdem finden Sie hier Informationen zum Antwortobjekt.
+In diesem Artikel werden die Parameter und Attribute von Anforderungen beschrieben, die an die API für die visuelle Bing-Suche gesendet werden. Außerdem finden Sie hier Informationen zum Antwortobjekt. 
 
 Erkenntnisse zu Bildern können auf drei Arten gewonnen werden:
 
@@ -73,7 +73,7 @@ Anforderungen müssen als HTTP-POST-Anforderungen gesendet werden.
 
 Die folgenden Abfrageparameter sollten in der Anforderung angegeben werden. Fügen Sie auf jeden Fall zumindest den `mkt`-Abfrageparameter ein:
 
-| NAME | Wert | Type | Erforderlich |
+| NAME | Wert | type | Erforderlich |
 | --- | --- | --- | --- |
 | <a name="cc" />cc  | Ein zweistelliger Ländercode, der angibt, woher die Ergebnisse stammen.<br /><br /> Wenn Sie diesen Parameter festlegen, müssen Sie auch den Header [Accept-Language](#acceptlanguage) angeben. Bing verwendet die erste unterstützte Sprache aus der Liste der Sprachen und kombiniert sie mit dem Ländercode, den Sie für den Markt angeben, aus dem Ergebnisse zurückgegeben werden sollen. Enthält die Liste der Sprachen keine unterstützte Sprache, sucht Bing die nächstgelegene Sprache und den nächstgelegenen Markt, die die Anforderung unterstützen. Alternativ dazu wird anstatt des angegebenen Marktes ein aggregierter oder Standardmarkt für die Ergebnisse verwendet.<br /><br /> Verwenden Sie diesen und den `Accept-Language`-Abfrageparameter nur, wenn Sie mehrere Sprachen angeben. Andernfalls sollten Sie die Abfrageparameter `mkt` und `setLang` verwenden.<br /><br /> Dieser Parameter und der Abfrageparameter [mkt](#mkt) schließen sich gegenseitig aus. Geben Sie daher nicht beide an. | string | Nein       |
 | <a name="mkt" />mkt   | Der Markt, aus dem die Ergebnisse stammen. <br /><br /> **HINWEIS:** Sie sollten immer den Markt angeben, falls bekannt. Die Angabe des Marktes ermöglicht Bing, die Anforderung weiterzuleiten und eine geeignete und optimale Antwort zurückzugeben.<br /><br /> Dieser Parameter und der Abfrageparameter [cc](#cc) schließen sich gegenseitig aus. Geben Sie daher nicht beide an. | string | Ja      |
@@ -192,6 +192,9 @@ Content-Disposition: form-data; name="knowledgeRequest"
 ```
 
 ## <a name="bing-visual-search-responses"></a>Antworten der visuellen Bing-Suche
+
+
+[!INCLUDE [cognitive-services-bing-url-note](../../../../includes/cognitive-services-bing-url-note.md)]
 
 Sind Informationen zu dem Bild verfügbar, enthält die Antwort ein oder mehrere `tags` mit den Informationen. Das `image`-Feld enthält das Auswertungstoken für das Eingabebild.
 

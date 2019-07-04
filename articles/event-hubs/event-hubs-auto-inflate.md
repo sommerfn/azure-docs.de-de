@@ -15,15 +15,15 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/06/2018
 ms.author: shvija
-ms.openlocfilehash: d705993c7cd3816e89da21625dc5b003435b9128
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 22c12d3233d85a02f6eef8d63e5a4494b4f0cdfa
+ms.sourcegitcommit: a52d48238d00161be5d1ed5d04132db4de43e076
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60822735"
+ms.lasthandoff: 06/20/2019
+ms.locfileid: "67273705"
 ---
 # <a name="automatically-scale-up-azure-event-hubs-throughput-units"></a>Automatische Erweiterung der Azure Event Hub-Durchsatzeinheiten
-Azure Event Hubs ist eine extrem skalierbare Datenstreamingplattform. Daher nimmt die Event Hubs-Nutzung häufig zu, nachdem mit der Nutzung des Diensts begonnen wurde. Für solche Nutzung müssen die vordefinierten [Durchsatzeinheiten](event-hubs-features.md#throughput-units) zur Skalierung von Event Hubs und zur Verarbeitung größerer Übertragungsraten erweitert werden. Das Feature **Automatische Vergrößerung** von Event Hubs wird automatisch durch Erhöhung der Anzahl von Durchsatzeinheiten zentral hochskaliert, um den Nutzungsanforderungen gerecht zu werden. Zusätzliche Durchsatzeinheiten verhindern Drosselungsszenarien, bei denen Folgendes vorliegt:
+Azure Event Hubs ist eine extrem skalierbare Datenstreamingplattform. Daher nimmt die Event Hubs-Nutzung häufig zu, nachdem mit der Nutzung des Diensts begonnen wurde. Für solche Nutzung müssen die vordefinierten [Durchsatzeinheiten](event-hubs-scalability.md#throughput-units) zur Skalierung von Event Hubs und zur Verarbeitung größerer Übertragungsraten erweitert werden. Das Feature **Automatische Vergrößerung** von Event Hubs wird automatisch durch Erhöhung der Anzahl von Durchsatzeinheiten zentral hochskaliert, um den Nutzungsanforderungen gerecht zu werden. Zusätzliche Durchsatzeinheiten verhindern Drosselungsszenarien, bei denen Folgendes vorliegt:
 
 * Die Datenerfassungsrate überschreitet die festgelegten Durchsatzeinheiten.
 * Die Raten für ausgehende Datenanforderungen überschreiten die festgelegten Durchsatzeinheiten.
@@ -32,7 +32,7 @@ Der Event Hubs-Dienst erhöht den Durchsatz, wenn die Last den minimalen Schwell
 
 ## <a name="how-auto-inflate-works"></a>Funktionsweise der automatischen Vergrößerung
 
-Der Datenverkehr von Event Hubs wird von [Durchsatzeinheiten](event-hubs-features.md#throughput-units) gesteuert. Eine einzelne Durchsatzeinheit lässt eingehenden Datenverkehr von 1 MB pro Sekunde und die doppelte Menge an ausgehendem Datenverkehr zu. Event Hubs Standard kann mit 1 bis 20 Durchsatzeinheiten konfiguriert werden. Dank der automatischen Vergrößerung können Sie zunächst mit den mindestens erforderlichen Durchsatzeinheiten, die Sie auswählen, beginnen. Je nach der Zunahme des Datenverkehrs passt die Funktion die Durchsatzeinheiten automatisch bis zur maximal erforderlichen Anzahl an. Die automatische Vergrößerung hat folgende Vorteile:
+Der Datenverkehr von Event Hubs wird von [Durchsatzeinheiten](event-hubs-scalability.md#throughput-units) gesteuert. Eine einzelne Durchsatzeinheit lässt eingehenden Datenverkehr von 1 MB pro Sekunde und die doppelte Menge an ausgehendem Datenverkehr zu. Event Hubs Standard kann mit 1 bis 20 Durchsatzeinheiten konfiguriert werden. Dank der automatischen Vergrößerung können Sie zunächst mit den mindestens erforderlichen Durchsatzeinheiten, die Sie auswählen, beginnen. Je nach der Zunahme des Datenverkehrs passt die Funktion die Durchsatzeinheiten automatisch bis zur maximal erforderlichen Anzahl an. Die automatische Vergrößerung hat folgende Vorteile:
 
 - Effizienter Skalierungsmechanismus, der eine Vergrößerung entsprechend der Zunahme des Datenverkehrs ermöglicht
 - Automatische Skalierung bis zur festgelegten Obergrenze ohne Probleme aufgrund einer Drosselung

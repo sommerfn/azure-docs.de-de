@@ -7,13 +7,13 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: tutorial
-ms.date: 04/02/2019
-ms.openlocfilehash: 3dead1bdedb75a1b6fafb947da9c88094f0c4de9
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.date: 06/24/2019
+ms.openlocfilehash: 7a23d30e940417a6191cf14ad5d60159bd11c3da
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64724157"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67446400"
 ---
 # <a name="tutorial-use-the-apache-kafka-producer-and-consumer-apis"></a>Tutorial: Verwenden der Apache Kafka Producer- und Consumer-APIs
 
@@ -43,7 +43,7 @@ Weitere Informationen zu den APIs finden Sie in der Apache-Dokumentation unter [
 
 ## <a name="understand-the-code"></a>Grundlegendes zum Code
 
-Die exemplarische Anwendung befindet sich unter [https://github.com/Azure-Samples/hdinsight-kafka-java-get-started](https://github.com/Azure-Samples/hdinsight-kafka-java-get-started) im `Producer-Consumer`-Unterverzeichnis. Die Anwendung besteht im Wesentlichen aus vier Dateien:
+Die exemplarische Anwendung befindet sich unter [https://github.com/Azure-Samples/hdinsight-kafka-java-get-started](https://github.com/Azure-Samples/hdinsight-kafka-java-get-started) im `Producer-Consumer` -Unterverzeichnis. Die Anwendung besteht im Wesentlichen aus vier Dateien:
 
 * `pom.xml`: Diese Datei definiert die Projektabhängigkeiten, Java-Version und Verpackungsmethoden.
 * `Producer.java`: Diese Datei sendet mithilfe der Producer-API willkürliche Sätze an Kafka.
@@ -65,8 +65,7 @@ Wichtige Informationen zur `pom.xml`-Datei:
     </dependency>
     ```
 
-    > [!NOTE]  
-    > Der `${kafka.version}`-Eintrag wird im `<properties>..</properties>`-Abschnitt von `pom.xml` deklariert und ist für die Kafka-Version des HDInsight-Clusters konfiguriert.
+    Der `${kafka.version}`-Eintrag wird im `<properties>..</properties>`-Abschnitt von `pom.xml` deklariert und ist für die Kafka-Version des HDInsight-Clusters konfiguriert.
 
 * Plug-Ins: Maven-Plug-Ins bieten verschiedene Funktionen. In diesem Projekt werden die folgenden Plug-Ins verwendet:
 
@@ -220,10 +219,19 @@ Der Verbrauch durch die Clients in derselben Gruppe wird über die Partitionen f
 
 Datensätze werden in Kafka in der Reihenfolge gespeichert, in der sie in einer Partition empfangen werden. Erstellen Sie eine Consumergruppe, bei der die Anzahl von Consumerinstanzen mit der Anzahl von Partitionen übereinstimmt, um für Datensätze *in einer Partition* eine geordnete Bereitstellung zu erzielen. Erstellen Sie eine Consumergruppe mit nur einer Consumerinstanz, um für Datensätze *im Thema* eine geordnete Bereitstellung zu erzielen.
 
+## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
+
+Zum Bereinigen der im Rahmen dieses Tutorials erstellten Ressourcen können Sie die Ressourcengruppe löschen. Dadurch werden auch der zugeordnete HDInsight-Cluster sowie alle anderen Ressourcen gelöscht, die der Ressourcengruppe zugeordnet sind.
+
+So entfernen Sie die Ressourcengruppe über das Azure-Portal:
+
+1. Erweitern Sie im Azure-Portal das Menü auf der linken Seite, um das Menü mit den Diensten zu öffnen, und klicken Sie auf __Ressourcengruppen__, um die Liste mit Ihren Ressourcengruppen anzuzeigen.
+2. Suchen Sie die zu löschende Ressourcengruppe, und klicken Sie mit der rechten Maustaste rechts neben dem Eintrag auf die Schaltfläche __Mehr__ (...).
+3. Klicken Sie auf __Ressourcengruppe löschen__, und bestätigen Sie den Vorgang.
+
 ## <a name="next-steps"></a>Nächste Schritte
 
 In diesem Dokument haben Sie erfahren, wie Sie die Apache Kafka Producer- und Consumer-APIs mit Kafka in HDInsight verwenden. Verwenden Sie Folgendes, um weitere Informationen zur Verwendung von Kafka zu erhalten:
 
-* [Analysieren von Apache Kafka-Protokollen](apache-kafka-log-analytics-operations-management.md)
-* [Replizieren von Daten zwischen Apache Kafka-Clustern](apache-kafka-mirroring.md)
-* [Apache Kafka Streams-API mit HDInsight](apache-kafka-streams-api.md)
+> [!div class="nextstepaction"]
+> [Analysieren von Apache Kafka-Protokollen](apache-kafka-log-analytics-operations-management.md)

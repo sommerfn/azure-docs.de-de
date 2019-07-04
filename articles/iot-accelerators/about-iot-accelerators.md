@@ -9,12 +9,12 @@ ms.custom: mvc
 ms.service: iot-accelerators
 services: iot-accelerators
 manager: timlt
-ms.openlocfilehash: 042c3c2925e9d537847f16f02d841d793456fb03
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: d9dd3ff2f24660404a1ab0440668c4d4da1e7319
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58172817"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67080513"
 ---
 # <a name="what-are-azure-iot-solution-accelerators"></a>Was sind Azure IoT Solution Accelerators?
 
@@ -38,11 +38,11 @@ Verwenden Sie den [Solution Accelerator für die Remoteüberwachung](iot-acceler
 
 Sie können das Remoteüberwachungs-Dashboard verwenden, um die Telemetriedaten Ihrer verbundenen Geräte anzuzeigen, neue Geräte bereitzustellen oder die Firmware auf Ihren verbundenen Geräten zu aktualisieren:
 
-[![Remoteüberwachungslösung-Dashboard](./media/about-iot-accelerators/rm-dashboard-inline.png)](./media/about-iot-accelerators/rm-dashboard-expanded.png#lightbox)
+[![Dashboard der Remoteüberwachungslösung](./media/about-iot-accelerators/rm-dashboard-inline.png)](./media/about-iot-accelerators/rm-dashboard-expanded.png#lightbox)
 
 ### <a name="connected-factory"></a>Verbundene Factory
 
-Verwenden Sie den [Solution Accelerator „Verbundene Factory“](iot-accelerators-connected-factory-sample-walkthrough.md), um Telemetriedaten von Industrieanlagen mit einer Schnittstelle vom Typ [OPC Unified Architecture](https://opcfoundation.org/about/opc-technologies/opc-ua/) zu erfassen und zu steuern. Beispiele für Industrieanlagen sind Montage- und Teststationen einer Fertigungsstrecke.
+Verwenden Sie den [Solution Accelerator „Verbundene Factory“](iot-accelerators-connected-factory-features.md), um Telemetriedaten von Industrieanlagen mit einer Schnittstelle vom Typ [OPC Unified Architecture](https://opcfoundation.org/about/opc-technologies/opc-ua/) zu erfassen und zu steuern. Beispiele für Industrieanlagen sind Montage- und Teststationen einer Fertigungsstrecke.
 
 Sie können das Dashboard für verbundene Factorys zum Überwachen und Verwalten Ihrer Industriegeräte verwenden:
 
@@ -103,7 +103,7 @@ Die Kosten für die Ausführung eines Solution Accelerators ergeben sich aus den
 
 Sehen Sie sich die Schnellstarts an, wenn Sie einen der IoT-Solution Accelerators testen möchten:
 
-* [Testen einer Lösung für die Remoteüberwachung](quickstart-remote-monitoring-deploy.md)
+* [Testen einer Remoteüberwachungslösung](quickstart-remote-monitoring-deploy.md)
 * [Testen einer Lösung für verbundene Factorys](quickstart-connected-factory-deploy.md)
 * [Testen einer Predictive Maintenance-Lösung](quickstart-predictive-maintenance-deploy.md)
 * [Testen einer Gerätesimulationslösung](quickstart-device-simulation-deploy.md)

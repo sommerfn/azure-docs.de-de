@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 03/18/2019
 ms.author: magattus
 ms.custom: ''
-ms.openlocfilehash: 956df17c821b86d95b1d87c3c8d8197bab7a95be
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: f7de7fe1c677d54c0fa3e6d3ca4730ef1083bc81
+ms.sourcegitcommit: a52d48238d00161be5d1ed5d04132db4de43e076
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65955267"
+ms.lasthandoff: 06/20/2019
+ms.locfileid: "67273277"
 ---
 # <a name="set-up-failover-across-multiple-azure-cdn-endpoints-with-azure-traffic-manager"></a>Einrichten des Failovers für mehrere Azure CDN-Endpunkte mit Azure Traffic Manager
 
@@ -81,7 +81,7 @@ Nachdem Sie Ihre CDN- und Traffic Manager-Profile eingerichtet haben, führen Si
 
     Azure CDN verwendet die Unterdomäne *cdnverify*, um die DNS-Zuordnung zu überprüfen und den Registrierungsvorgang abzuschließen. Weitere Informationen finden Sie unter [Erstellen eines CNAME-DNS-Eintrags](cdn-map-content-to-custom-domain.md#create-a-cname-dns-record). Durch diesen Schritt kann Azure CDN die benutzerdefinierte Domäne erkennen und in der Folge auf ihre Anforderungen antworten.
     
- > [!NOTE]
+    > [!NOTE]
     > Um SSL für ein **Azure CDN aus Akamai**-Profil zu aktivieren, müssen Sie die benutzerdefinierte Domäne direkt für Ihren Endpunkt benennen. „cdnverify“ zum Aktivieren von SSL wird noch nicht unterstützt. 
     >
 

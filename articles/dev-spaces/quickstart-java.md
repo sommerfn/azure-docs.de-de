@@ -11,12 +11,12 @@ ms.topic: quickstart
 description: Schnelle Kubernetes-Entwicklung mit Containern, Microservices und Java in Azure
 keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, Container, Java, Helm, Service Mesh, Service Mesh-Routing, kubectl, k8s
 manager: jeconnoc
-ms.openlocfilehash: 2a7ff71a8143883226c10754afc9757aea310c63
-ms.sourcegitcommit: 51a7669c2d12609f54509dbd78a30eeb852009ae
+ms.openlocfilehash: b3074fc280098d0aa55292c48a1562b8dfeb3cc0
+ms.sourcegitcommit: 837dfd2c84a810c75b009d5813ecb67237aaf6b8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/30/2019
-ms.locfileid: "66393459"
+ms.lasthandoff: 07/02/2019
+ms.locfileid: "67503081"
 ---
 # <a name="quickstart-develop-with-java-on-kubernetes-using-azure-dev-spaces"></a>Schnellstart: Entwickeln mit Java unter Kubernetes mithilfe von Azure Dev Spaces
 
@@ -195,7 +195,7 @@ return "Hello from webfrontend in Azure while debugging!";
 
 Speichern Sie die Datei . Klicken Sie auf *Debuggen* und dann auf *Debugging erneut starten*, oder klicken Sie in der *Debug-Symbolleiste* auf die Schaltfläche *Debugging erneut starten*.
 
-![Aktualisieren des Debuggens](media/get-started-java/debug-action-refresh.png)
+![Aktualisieren des Debuggens](media/common/debug-action-refresh.png)
 
 Öffnen Sie Ihren Dienst in einem Browser. Sie sehen, dass Ihre aktualisierte Meldung angezeigt wird.
 

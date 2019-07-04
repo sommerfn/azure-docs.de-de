@@ -15,17 +15,17 @@ ms.workload: na
 ms.custom: seodec18
 ms.date: 12/06/2018
 ms.author: shvija
-ms.openlocfilehash: e5cad797b633d43bcc9ead657a60fca8aa6679bb
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 425f4d9dbd6478af834bee6c88d0f13bdaa45b16
+ms.sourcegitcommit: a52d48238d00161be5d1ed5d04132db4de43e076
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60822383"
+ms.lasthandoff: 06/20/2019
+ms.locfileid: "67273689"
 ---
 # <a name="availability-and-consistency-in-event-hubs"></a>Verfügbarkeit und Konsistenz in Event Hubs
 
 ## <a name="overview"></a>Übersicht
-Azure Event Hubs verwendet ein [Partitionierungsmodell](event-hubs-features.md#partitions) zur Verbesserung der Verfügbarkeit und Parallelisierung innerhalb eines einzelnen Event Hubs. Wenn ein Event Hub z.B. über vier Partitionen verfügt und eine dieser Partitionen im Rahmen eines Lastenausgleichsvorgangs von einem Server zu einem anderen verschoben wird, können Sie weiterhin an drei andere Partitionen Daten senden und von dort empfangen. Darüber hinaus ermöglichen mehr Partitionen, dass mehr gleichzeitige Leser Ihre Daten verarbeiten können, wodurch sich der aggregierte Durchsatz verbessert. Die Kenntnis der Auswirkungen von Partitionierung und Reihenfolge in einem verteilten System ist ein wichtiger Aspekt des Lösungsentwurfs.
+Azure Event Hubs verwendet ein [Partitionierungsmodell](event-hubs-scalability.md#partitions) zur Verbesserung der Verfügbarkeit und Parallelisierung innerhalb eines einzelnen Event Hubs. Wenn ein Event Hub z.B. über vier Partitionen verfügt und eine dieser Partitionen im Rahmen eines Lastenausgleichsvorgangs von einem Server zu einem anderen verschoben wird, können Sie weiterhin an drei andere Partitionen Daten senden und von dort empfangen. Darüber hinaus ermöglichen mehr Partitionen, dass mehr gleichzeitige Leser Ihre Daten verarbeiten können, wodurch sich der aggregierte Durchsatz verbessert. Die Kenntnis der Auswirkungen von Partitionierung und Reihenfolge in einem verteilten System ist ein wichtiger Aspekt des Lösungsentwurfs.
 
 Um den Kompromiss zwischen Reihenfolge und Verfügbarkeit zu erklären, betrachten Sie das [CAP-Theorem](https://en.wikipedia.org/wiki/CAP_theorem), auch bekannt als Brewers Theorem. Dieses Theorem erörtert die Wahl zwischen Konsistenz, Verfügbarkeit und Ausfalltoleranz. Es besagt, dass bei Systemen, die durch ein Netzwerk partitioniert werden, immer Kompromisse zwischen Konsistenz und Verfügbarkeit gemacht werden müssen.
 

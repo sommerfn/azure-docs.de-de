@@ -4,17 +4,17 @@ description: Beschreibt, wie Runbooks und Integrationspakete von System Center O
 services: automation
 ms.service: automation
 ms.subservice: process-automation
-author: georgewallace
-ms.author: gwallace
+author: bobbytreed
+ms.author: robreed
 ms.date: 03/16/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: ae47cba8f8e9a7cdf914c0b3ea5dfb9fa6c259a9
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: eb5a77668cce96ef45a960908612b502f1520e25
+ms.sourcegitcommit: f811238c0d732deb1f0892fe7a20a26c993bc4fc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60738212"
+ms.lasthandoff: 06/29/2019
+ms.locfileid: "67477586"
 ---
 # <a name="migrating-from-orchestrator-to-azure-automation-beta"></a>Migrieren von Orchestrator zu Azure Automation (Beta)
 Runbooks in [System Center Orchestrator](https://technet.microsoft.com/library/hh237242.aspx) basieren auf Aktivitäten der Integrationspakete, die speziell für Orchestrator geschrieben wurden, während Runbooks in Azure Automation auf Windows PowerShell basieren.  [Grafische Runbooks](automation-runbook-types.md#graphical-runbooks) in Azure Automation haben ein ähnliches Aussehen wie Orchestrator-Runbooks, die enthaltenen Aktivitäten repräsentieren PowerShell-Cmdlets, untergeordnete Runbooks und Objekte.

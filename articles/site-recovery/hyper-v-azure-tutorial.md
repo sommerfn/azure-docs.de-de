@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 05/30/2019
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: 9d45e0f0c759685f9d35285ee7718585d5961333
-ms.sourcegitcommit: d89032fee8571a683d6584ea87997519f6b5abeb
+ms.openlocfilehash: f4c9ddf608033f6b85268fe74b12861eb8c30082
+ms.sourcegitcommit: 2d3b1d7653c6c585e9423cf41658de0c68d883fa
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/30/2019
-ms.locfileid: "66399416"
+ms.lasthandoff: 06/20/2019
+ms.locfileid: "67295156"
 ---
 # <a name="set-up-disaster-recovery-of-on-premises-hyper-v-vms-to-azure"></a>Einrichten der Notfallwiederherstellung von lokalen Hyper-V-VMs in Azure
 
@@ -30,11 +30,11 @@ In diesem Tutorial lernen Sie Folgendes:
 > * Aktivieren der Replikation für eine VM
 
 > [!NOTE]
-> In den Tutorials wird der einfachste Bereitstellungspfad für ein Szenario erläutert. Sie verwenden nach Möglichkeit Standardoptionen und zeigen nicht alle möglichen Einstellungen und Pfade. Ausführliche Anweisungen finden Sie in den Artikeln im Abschnitt **Schrittanleitungen** der [Dokumentation zur Sitewiederherstellung](https://docs.microsoft.com/azure/site-recovery).
+> In den Tutorials wird der einfachste Bereitstellungspfad für ein Szenario erläutert. Sie verwenden nach Möglichkeit Standardoptionen und zeigen nicht alle möglichen Einstellungen und Pfade. Ausführliche Anweisungen finden Sie in den Artikeln im Abschnitt **Schrittanleitungen** der [Dokumentation zu Site Recovery](https://docs.microsoft.com/azure/site-recovery).
 
 ## <a name="before-you-begin"></a>Voraussetzungen
 
-Dies ist das dritte Tutorial in einer Reihe. Es wird davon ausgegangen, dass Sie bereits die Aufgaben in den vorherigen Tutorials durchgearbeitet haben:
+Dies ist das dritte Tutorial in einer Reihe. Es wird davon ausgegangen, dass Sie die Aufgaben in den vorherigen Tutorials bereits durchgearbeitet haben:
 
 1. [Vorbereiten von Azure](tutorial-prepare-azure.md)
 2. [Vorbereiten lokaler Hyper-V-Instanzen](tutorial-prepare-on-premises-hyper-v.md)
@@ -106,7 +106,7 @@ Wenn Sie einen Hyper-V Core Server betreiben, laden Sie die Setupdatei herunter,
 3. Registrieren Sie den Server mithilfe dieses Befehls:
 
     ```
-    cd  C:\Program Files\Microsoft Azure Site Recovery Provider\DRConfigurator.exe" /r /Friendlyname "FriendlyName of the Server" /Credentials "path to where the credential file is saved"
+    cd  "C:\Program Files\Microsoft Azure Site Recovery Provider\DRConfigurator.exe" /r /Friendlyname "FriendlyName of the Server" /Credentials "path to where the credential file is saved"
     ```
 
 ## <a name="set-up-the-target-environment"></a>Einrichten der Zielumgebung
@@ -140,7 +140,7 @@ Site Recovery prüft, ob Sie über ein oder mehrere kompatible Azure-Speicherkon
 4. Wählen Sie bei Verwendung der Tutorialeinstellungen das Speicherkonto **contosovmsacct1910171607**, das im vorherigen Tutorial für replizierte Daten erstellt wurde. Wählen Sie außerdem das Netzwerk **ContosoASRnet** aus, in dem sich die Azure-VMs nach dem Failover befinden werden.
 5. Wählen Sie unter **Virtuelle Computer** > **Auswählen** die VM aus, die Sie replizieren möchten. Wählen Sie anschließend **OK** aus.
 
-   Sie können den Fortschritt der Aktion **Schutz aktivieren** unter **Aufträge** > **Site Recovery-Aufträge** verfolgen. Nach der Ausführung des Auftrags **Schutz abschließen** ist die erste Replikation abgeschlossen und der virtuelle Computer bereit zum Failover.
+   Sie können den Fortschritt der Aktion **Schutz aktivieren** unter **Aufträge** > **Site Recovery-Aufträge** verfolgen. Nach der Ausführung des Auftrags **Schutz abschließen** ist die erste Replikation abgeschlossen und die VM bereit zum Failover.
 
 ## <a name="next-steps"></a>Nächste Schritte
 > [!div class="nextstepaction"]

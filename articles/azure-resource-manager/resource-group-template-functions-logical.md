@@ -1,23 +1,17 @@
 ---
 title: Azure Resource Manager-Vorlagenfunktionen – logisch | Microsoft-Dokumentation
 description: Hier werden die Funktionen beschrieben, die in einer Azure Resource Manager-Vorlage zum Bestimmen von logischen Werten verwendet werden können.
-services: azure-resource-manager
-documentationcenter: na
 author: tfitzmac
-ms.assetid: ''
 ms.service: azure-resource-manager
-ms.devlang: na
 ms.topic: reference
-ms.tgt_pltfrm: na
-ms.workload: na
 ms.date: 04/15/2019
 ms.author: tomfitz
-ms.openlocfilehash: 2ccdd337d5c01a0ac0253fe1d1e131fa4e6d51a7
-ms.sourcegitcommit: 1289f956f897786090166982a8b66f708c9deea1
+ms.openlocfilehash: 2487cf928685423e4b60bb2923fc7e348eaff0c3
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/17/2019
-ms.locfileid: "65405668"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67447974"
 ---
 # <a name="logical-functions-for-azure-resource-manager-templates"></a>Logische Funktionen für Azure Resource Manager-Vorlagen
 
@@ -75,7 +69,7 @@ Die folgende [Beispielvorlage](https://github.com/Azure/azure-docs-json-samples/
 
 Die Ausgabe aus dem vorherigen Beispiel lautet wie folgt:
 
-| NAME | Type | Wert |
+| NAME | type | Wert |
 | ---- | ---- | ----- |
 | andExampleOutput | Bool | False |
 | orExampleOutput | Bool | True |
@@ -128,7 +122,7 @@ Die folgende [Beispielvorlage](https://github.com/Azure/azure-docs-json-samples/
 
 Die Ausgabe aus dem vorherigen Beispiel mit den Standardwerten lautet:
 
-| NAME | Type | Wert |
+| NAME | type | Wert |
 | ---- | ---- | ----- |
 | trueString | Bool | True |
 | falseString | Bool | False |
@@ -186,7 +180,7 @@ Die folgende [Beispielvorlage](https://github.com/Azure/azure-docs-json-samples/
 
 Die Ausgabe aus dem vorherigen Beispiel lautet wie folgt:
 
-| NAME | Type | Wert |
+| NAME | type | Wert |
 | ---- | ---- | ----- |
 | yesOutput | string | Ja |
 | noOutput | string | no |
@@ -196,7 +190,7 @@ In der folgenden [Beispielvorlage](https://github.com/krnese/AzureDeploy/blob/ma
 
 ```json
 {
-    "$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
     "contentVersion": "1.0.0.0",
     "parameters": {
         "vmName": {
@@ -284,7 +278,7 @@ Die folgende [Beispielvorlage](https://github.com/Azure/azure-docs-json-samples/
 
 Die Ausgabe aus dem vorherigen Beispiel lautet wie folgt:
 
-| NAME | Type | Wert |
+| NAME | type | Wert |
 | ---- | ---- | ----- |
 | andExampleOutput | Bool | False |
 | orExampleOutput | Bool | True |
@@ -308,7 +302,7 @@ In der folgenden [Beispielvorlage](https://github.com/Azure/azure-docs-json-samp
 
 Die Ausgabe aus dem vorherigen Beispiel lautet wie folgt:
 
-| NAME | Type | Wert |
+| NAME | type | Wert |
 | ---- | ---- | ----- |
 | checkNotEquals | Bool | True |
 
@@ -358,7 +352,7 @@ Die folgende [Beispielvorlage](https://github.com/Azure/azure-docs-json-samples/
 
 Die Ausgabe aus dem vorherigen Beispiel lautet wie folgt:
 
-| NAME | Type | Wert |
+| NAME | type | Wert |
 | ---- | ---- | ----- |
 | andExampleOutput | Bool | False |
 | orExampleOutput | Bool | True |

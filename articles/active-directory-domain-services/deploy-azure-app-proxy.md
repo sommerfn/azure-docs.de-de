@@ -3,7 +3,7 @@ title: 'Azure Active Directory Domain Services: Bereitstellen eines Azure Active
 description: Verwenden eines Azure AD-Anwendungsproxys in durch Azure Active Directory Domain Services verwalteten Domänen
 services: active-directory-ds
 documentationcenter: ''
-author: MikeStephens-MS
+author: iainfoulds
 manager: daveba
 editor: curtand
 ms.assetid: 938a5fbc-2dd1-4759-bcce-628a6e19ab9d
@@ -14,13 +14,13 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/14/2019
-ms.author: mstephen
-ms.openlocfilehash: 202d33c95742f951b57e68f491f139aef068767c
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.author: iainfou
+ms.openlocfilehash: e9ccbd81a8efeb69ea073d89edd6579a6d59699a
+ms.sourcegitcommit: f811238c0d732deb1f0892fe7a20a26c993bc4fc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66245335"
+ms.lasthandoff: 06/29/2019
+ms.locfileid: "67473605"
 ---
 # <a name="deploy-azure-ad-application-proxy-on-an-azure-ad-domain-services-managed-domain"></a>Bereitstellen eines Azure AD-Anwendungsproxys in einer durch Azure AD Domain Services verwalteten Domäne
 Mit dem Azure Active Directory-Anwendungsproxy (AD) können Sie Remotemitarbeiter unterstützen, indem Sie lokale Anwendungen so veröffentlichen, dass über das Internet auf sie zugegriffen werden kann. Mit Azure AD Domain Services können Sie jetzt lokal ausgeführte Legacyanwendungen per Lift & Shift zu Azure Infrastrukturdiensten migrieren. Anschließend können Sie diese Anwendungen über den Azure AD-Anwendungsproxy veröffentlichen, um Benutzern in Ihrer Organisation einen sicheren Remotezugriff bereitzustellen.

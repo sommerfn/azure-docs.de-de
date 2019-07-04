@@ -6,15 +6,15 @@ manager: cgronlun
 services: search
 ms.service: search
 ms.topic: conceptual
-ms.date: 03/22/2019
+ms.date: 07/01/2019
 ms.author: heidist
 ms.custom: seodec2018
-ms.openlocfilehash: 6879dd975f97ba2746165e87a135e5d90e8b229f
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 5955b21ae405f15960974fcbc81b8383f3322509
+ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60308727"
+ms.lasthandoff: 07/01/2019
+ms.locfileid: "67485714"
 ---
 # <a name="scale-partitions-and-replicas-for-query-and-indexing-workloads-in-azure-search"></a>Skalieren von Partitionen und Replikaten für Abfrage und Indizierung von Arbeitslasten in Azure Search
 Nach dem [Auswählen eines Tarifs](search-sku-tier.md) und dem [Bereitstellen eines Suchdiensts](search-create-service-portal.md) kann im nächsten Schritt optional die Anzahl der von dem Dienst verwendeten Replikate oder Partitionen erhöht werden. Jeder Tarif bietet eine feste Anzahl von Abrechnungseinheiten. In diesem Artikel wird erläutert, wie Sie diese Einheiten für eine optimale Konfiguration zuordnen, bei der Ihre Anforderungen für die Abfrageausführung, Indizierung und Speicherung ausgeglichen sind.
@@ -47,6 +47,7 @@ Wir empfehlen, die Replikat- und Partitionszuordnung über das Azure-Portal zu e
 Allgemein gilt: Suchanwendungen benötigen mehr Replikate als Partitionen, insbesondere, wenn die Dienstvorgänge auf Abfrageworkloads ausgerichtet sind. Warum das so ist, erfahren Sie im [Abschnitt zu Hochverfügbarkeit](#HA).
 
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com/) an, und wählen Sie den Suchdienst aus.
+
 2. Öffnen Sie in **Einstellungen** die Seite **Skalierung**, um Replikate und Partitionen zu ändern. 
 
    Der folgende Screenshot zeigt einen Standarddienst, der mit einem Replikat und einer Partition bereitgestellt wurde. Die Formel im unteren Bereich gibt an, wie viele Sucheinheiten verwendet werden (1). Wenn der Preis pro Einheit 100 US-Dollar wäre (kein echter Preis), würden die monatlichen Kosten für die Ausführung dieses Diensts durchschnittlich 100 US-Dollar betragen.
@@ -108,6 +109,7 @@ Da ein Hochskalieren einfach und relativ schnell durchzuführen ist, wird im All
 Allgemeine Empfehlungen für Hochverfügbarkeit sind:
 
 * Zwei Replikate für Hochverfügbarkeit von schreibgeschützten Workloads (Abfragen)
+
 * Drei oder mehr Replikate für Hochverfügbarkeit von Lese-/Schreibworkloads (Abfragen und Indizierung, wenn einzelne Dokumente hinzugefügt, aktualisiert oder gelöscht werden)
 
 Vereinbarungen zum Servicelevel (Service Level Agreements, SLAs) für Azure Search sind auf Abfragevorgänge und auf Indexupdates (Hinzufügen, Aktualisieren oder Löschen von Dokumenten) ausgerichtet.

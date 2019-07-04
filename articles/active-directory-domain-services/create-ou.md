@@ -3,7 +3,7 @@ title: 'Azure Active Directory Domain Services: Leitfaden zur Verwaltung | Micro
 description: Erstellen einer Organisationseinheit (OE) in durch Azure AD Domain Services verwalteten Domänen
 services: active-directory-ds
 documentationcenter: ''
-author: MikeStephens-MS
+author: iainfoulds
 manager: daveba
 editor: curtand
 ms.assetid: 52602ad8-2b93-4082-8487-427bdcfa8126
@@ -14,13 +14,13 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/10/2019
-ms.author: mstephen
-ms.openlocfilehash: e7ff91a87377deed06fa4214cc1e5764e8b2da92
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.author: iainfou
+ms.openlocfilehash: b2bdad25d676d65494fdd5b6a314f8c3381254de
+ms.sourcegitcommit: f811238c0d732deb1f0892fe7a20a26c993bc4fc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66245347"
+ms.lasthandoff: 06/29/2019
+ms.locfileid: "67473679"
 ---
 # <a name="create-an-organizational-unit-ou-on-an-azure-ad-domain-services-managed-domain"></a>Erstellen einer Organisationseinheit (OE) in einer durch Azure AD Domain Services verwalteten Domäne
 Zu den durch Azure AD Domain Services verwalteten Domänen gehören zwei integrierte Container mit den Bezeichnungen „AADDC Computers“ und „AADDC Users“. Der Container „AADDC Computers“ enthält Computerobjekte für alle Computer, die in die verwaltete Domäne eingebunden sind. Der Container „AADDC Users“ enthält die Benutzer und Gruppen im Azure AD-Mandanten. Gelegentlich kann es notwendig werden, Dienstkonten für die verwaltete Domäne zu erstellen, um Workloads bereitzustellen. Zu diesem Zweck können Sie eine benutzerdefinierte Organisationseinheit (OE) in der verwalteten Domäne erstellen und innerhalb dieser Organisationseinheit Dienstkonten erstellen. In diesem Artikel wird gezeigt, wie Sie in der verwalteten Domäne eine Organisationseinheit erstellen.

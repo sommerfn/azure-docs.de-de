@@ -8,25 +8,23 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-entity-search
 ms.topic: quickstart
-ms.date: 02/01/2019
+ms.date: 06/27/2019
 ms.author: aahi
-ms.openlocfilehash: b8879bcbd807f3a74938a09da0abb57a1e0eeb4d
-ms.sourcegitcommit: 3d4121badd265e99d1177a7c78edfa55ed7a9626
+ms.openlocfilehash: 25cb4845de9b23b04aa25140fae88f50e77cc72c
+ms.sourcegitcommit: 5bdd50e769a4d50ccb89e135cfd38b788ade594d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/30/2019
-ms.locfileid: "66388843"
+ms.lasthandoff: 07/03/2019
+ms.locfileid: "67542803"
 ---
 # <a name="sending-search-requests-to-the-bing-entity-search-api"></a>Senden von Suchanforderungen an die Bing-Entitätssuche-API
 
-Die Bing-Entitätssuche-API sendet eine Suchabfrage an Bing und erhält Ergebnisse, die Entitäten und Orte umfassen. Zu Orten gehören Restaurants, Hotels oder andere lokale Geschäfte. Für Orte kann die Abfrage den Namen des lokalen Unternehmens angeben oder nach einer Liste fragen (z.B. Restaurants in meiner Nähe). Entitätsergebnisse enthalten Personen, Orte oder Gegenstände. Orte sind in diesem Zusammenhang touristische Attraktionen, Staaten, Länder/Regionen usw. 
-
-[!INCLUDE [cognitive-services-bing-news-search-signup-requirements](../../../../includes/cognitive-services-bing-entity-search-signup-requirements.md)]
+Die Bing-Entitätssuche-API sendet eine Suchabfrage an Bing und erhält Ergebnisse, die Entitäten und Orte umfassen. Zu Orten gehören Restaurants, Hotels oder andere lokale Geschäfte. Für Orte kann die Abfrage den Namen des lokalen Unternehmens angeben oder nach einer Liste fragen (z.B. Restaurants in meiner Nähe). Entitätsergebnisse enthalten Personen, Orte oder Gegenstände. Orte sind in diesem Zusammenhang touristische Attraktionen, Staaten, Länder/Regionen usw.
 
 ## <a name="the-endpoint"></a>Der Endpunkt
 
 Um Suchergebnisse für Entitäten und Orte zu erhalten, senden Sie eine GET-Anforderung an den folgenden Endpunkt:  
-  
+
 ```
 https://api.cognitive.microsoft.com/bing/v7.0/entities
 ```
@@ -69,6 +67,8 @@ Wenn Sie zuvor noch keine der Bing-APIs aufgerufen haben, lassen Sie den Client-
 ## <a name="the-response"></a>Die Antwort
 
 Das folgende Beispiel zeigt die Antwort auf die vorherige Anforderung. Im Beispiel sind auch die Bing-spezifischen Antwortheader aufgeführt. Informationen über das Antwortobjekt finden Sie unter [SearchResponse](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-entities-api-v7-reference#searchresponse).
+
+[!INCLUDE [cognitive-services-bing-url-note](../../../../includes/cognitive-services-bing-url-note.md)]
 
 ```json
 BingAPIs-TraceId: 76DD2C2549B94F9FB55B4BD6FEB6AC

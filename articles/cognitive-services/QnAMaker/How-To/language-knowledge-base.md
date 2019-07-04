@@ -3,19 +3,19 @@ title: 'Nicht englischsprachige Wissensdatenbank: QnA Maker'
 titleSuffix: Azure Cognitive Services
 description: QnA Maker unterstützt Wissensdatenbank-Inhalte in mehreren Sprachen. Allerdings sollte für jeden QnA Maker-Dienst eine einzelne Sprache festgelegt werden. Die erste Wissensdatenbank, die für einen bestimmten QnA Maker-Dienst erstellt wurde, bestimmt die Sprache dieses Dienstes.
 services: cognitive-services
-author: tulasim88
+author: diberry
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: article
 ms.date: 01/14/2019
-ms.author: tulasim
-ms.openlocfilehash: f6c317cc1281a5a9bc18a2057fa12b7b61bb7689
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.author: diberry
+ms.openlocfilehash: 1203748b43ea5911d4717f451bca2cbe82753386
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61371886"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67447415"
 ---
 # <a name="language-support-of-knowledge-base-content-for-qna-maker"></a>Sprachunterstützung für Inhalte in QnA Maker-Wissensdatenbanken
 QnA Maker unterstützt Wissensdatenbank-Inhalte in mehreren Sprachen. Allerdings sollte für jeden QnA Maker-Dienst eine einzelne Sprache festgelegt werden. Die erste Wissensdatenbank, die für einen bestimmten QnA Maker-Dienst erstellt wurde, bestimmt die Sprache dieses Dienstes. Die unterstützten Sprachen finden Sie [hier](../Overview/languages-supported.md).

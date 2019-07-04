@@ -1,19 +1,17 @@
 ---
 title: Häufig gestellte Fragen zu Azure Data Catalog
 description: Häufig gestellte Fragen zu Azure Data Catalog, einschließlich Funktionen für die Ermittlung von Datenquellen, Anmerkungen und Verwaltung.
-services: data-catalog
 author: JasonWHowell
 ms.author: jasonh
-ms.assetid: 5c7e209a-458c-4bb4-96bb-7ed178f9528a
 ms.service: data-catalog
 ms.topic: conceptual
-ms.date: 01/18/2018
-ms.openlocfilehash: 7c5241b9df23bb0334a39f2c684fd1bdff40b4c2
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.date: 07/01/2019
+ms.openlocfilehash: 6ab5c67129b16cde5ca74e72effdf56ec0a22711
+ms.sourcegitcommit: 79496a96e8bd064e951004d474f05e26bada6fa0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61004040"
+ms.lasthandoff: 07/02/2019
+ms.locfileid: "67508886"
 ---
 # <a name="azure-data-catalog-frequently-asked-questions"></a>Häufig gestellte Fragen zu Azure Data Catalog
 Dieser Artikel bietet Antworten auf häufig gestellte Fragen im Zusammenhang mit dem Azure Data Catalog-Dienst.
@@ -36,7 +34,7 @@ Data Catalog ist für technische und nicht technische Benutzer gedacht, z.B.:
 Data Catalog-Dienste sind derzeit in den folgenden Rechenzentren verfügbar:
 
 * USA (Westen)
-* USA (Ost)
+* East US
 * Europa, Westen
 * Nordeuropa
 * Australien (Osten)
@@ -103,9 +101,6 @@ Nutzen Sie bitte [Azure Data Catalog-Forum](https://go.microsoft.com/fwlink/?Lin
 
 ## <a name="does-the-catalog-work-with-another-data-source-that-im-interested-in"></a>Funktioniert der Katalog mit einer anderen Datenquelle, die mich interessiert?
 Wir arbeiten aktiv daran, Data Catalog weitere Datenquellen hinzuzufügen. Wenn Sie für eine bestimmte Datenquelle Unterstützung wünschen, können Sie diese in den [Azure-Foren für Feedback zu Data Catalog](https://feedback.azure.com/forums/906052-data-catalog) vorschlagen (oder eine ggf. bereits vorhandene Anfrage unterstützen).
-
-## <a name="how-is-azure-data-catalog-related-to-the-data-catalog-in-power-bi-for-office-365"></a>Welche Verbindung besteht zwischen Azure Data Catalog und Data Catalog in Power BI für Office 365?
-Sie können sich Azure Data Catalog als Weiterentwicklung von Data Catalog in Power BI vorstellen. Ab Frühjahr 2017 ist mithilfe von Azure Data Catalog die gemeinsame Nutzung und die Ermittlung von Abfragen in Excel 2016 und Power Query für Excel möglich. Data Catalog-Funktionen in Excel sind für Benutzer mit Power BI Pro-Lizenzen verfügbar.
 
 ## <a name="what-permissions-do-i-need-to-register-assets-with-data-catalog"></a>Welche Berechtigungen benötige ich, um Datenobjekte bei Data Catalog registrieren zu können?
 Zum Ausführen des Azure Data Catalog-Registrierungstools benötigen Sie Berechtigungen für die Datenquelle, die Ihnen das Auslesen von Metadaten aus der Quelle ermöglicht. Um auch eine Vorschau hinzuzufügen, müssen Sie über Berechtigungen verfügen, die Ihnen das Einlesen der Daten aus den registrierten Objekten erlauben.

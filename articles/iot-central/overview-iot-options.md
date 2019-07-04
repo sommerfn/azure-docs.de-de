@@ -3,18 +3,18 @@ title: Microsoft Azure IoT-Optionen | Microsoft-Dokumentation
 description: 'Entscheiden Sie, wie Ihre Azure IoT-Lösung implementiert werden soll: per Azure IoT Central, per IoT Solution Accelerators oder per IoT Hub.'
 author: dominicbetts
 ms.author: dobett
-ms.date: 11/30/2017
+ms.date: 06/09/2019
 ms.topic: overview
 ms.service: iot-central
 services: iot-central
 ms.custom: mvc
 manager: timlt
-ms.openlocfilehash: 571c703609bac2e4414baf19edc39cf5e9f8820a
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: 19ec7afeb71f0e9d5602f1c4ba1a2456162cdfae
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57759775"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67077388"
 ---
 # <a name="compare-azure-iot-central-and-azure-iot-options"></a>Vergleich der Optionen von Azure IoT Central und Azure IoT
 

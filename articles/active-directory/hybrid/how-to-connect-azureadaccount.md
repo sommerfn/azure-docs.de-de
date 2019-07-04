@@ -16,12 +16,12 @@ ms.date: 04/25/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d68c190b51b9bbb5faf21e8ea75b07d1a82005e5
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 0ea151ee79fccd66f1d9422744d8f57829677ec0
+ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64571403"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67204531"
 ---
 # <a name="change-the-azure-ad-connector-account-password"></a>Ändern des Kennworts für das Azure AD-Connector-Konto
 Das Azure AD-Connector-Konto sollte keine Verwaltung erfordern. Wenn Sie die Anmeldeinformationen des Kontos zurückzusetzen müssen, finden Sie die notwendigen Informationen in diesem Thema. Dies ist beispielsweise der Fall, wenn ein globaler Administrator versehentlich über PowerShell das Kennwort des Kontos zurückgesetzt hat.
@@ -39,12 +39,12 @@ Dieses Cmdlet setzt das Kennwort für das Dienstkonto zurück und aktualisiert e
 ## <a name="known-issues-these-steps-can-solve"></a>Bekannte Probleme, die sich mit diesen Schritten beheben lassen
 Dieser Abschnitt enthält eine Liste mit Fehlern, die von Kunden gemeldet und durch das Zurücksetzen der Anmeldeinformationen für das Azure AD-Connector-Konto behoben wurden.
 
-- - -
+---
 Ereignis 6900  
 Der Server hat einen unerwarteten Fehler beim Verarbeiten einer Benachrichtigung über eine Kennwortänderung erkannt:  
 AADSTS70002: Fehler beim Überprüfen der Anmeldeinformationen. AADSTS50054: Für die Authentifizierung wurde ein altes Kennwort verwendet.
 
-- - -
+---
 Ereignis 659  
 Fehler beim Abrufen der Konfiguration für die Kennwortrichtliniensynchronisierung. Microsoft.IdentityModel.Clients.ActiveDirectory.AdalServiceException:  
 AADSTS70002: Fehler beim Überprüfen der Anmeldeinformationen. AADSTS50054: Für die Authentifizierung wurde ein altes Kennwort verwendet.

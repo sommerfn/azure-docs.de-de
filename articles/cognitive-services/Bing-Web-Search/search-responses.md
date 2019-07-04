@@ -8,15 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-web-search
 ms.topic: conceptual
-ms.date: 02/12/2019
+ms.date: 06/25/2019
 ms.author: aahi
 ms.custom: seodec2018
-ms.openlocfilehash: 47a573fd4ed4d058b9f9a265c8774f0856371b94
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 5380713af17a751ab695fee90895b4f6b0d2369b
+ms.sourcegitcommit: 5bdd50e769a4d50ccb89e135cfd38b788ade594d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66390099"
+ms.lasthandoff: 07/03/2019
+ms.locfileid: "67542812"
 ---
 # <a name="bing-web-search-api-response-structure-and-answer-types"></a>Antwortstruktur und Antworttypen der Bing-Websuche-API  
 
@@ -39,6 +39,8 @@ Wenn Sie eine Suchanforderung an die Bing-Websuche senden, wird im Antworttext e
 ```
 
 Normalerweise wird bei der Bing-Websuche eine Teilmenge der Antworten zurückgegeben. Wenn der Abfrageausdruck beispielsweise *sailing dinghies* war, kann die Antwort `webPages`, `images` und `rankingResponse` enthalten. Sofern Sie nicht [responseFilter](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference#responsefilter) zum Herausfiltern von Webseiten verwendet haben, umfasst die Antwort immer `webpages`- und `rankingResponse`-Antworten.
+
+[!INCLUDE [cognitive-services-bing-url-note](../../../includes/cognitive-services-bing-url-note.md)]
 
 ## <a name="webpages-answer"></a>Antwort zu Webseiten
 
@@ -428,10 +430,6 @@ Wenn Bing feststellt, dass der Benutzer möglicherweise einen abweichenden Ausdr
     }]
 }, ...
 ```
-
-Das folgende Beispiel zeigt, wie der Rechtschreibvorschlag in Bing verwendet wird.
-
-![Beispiel für Rechtschreibvorschlag in Bing](./media/cognitive-services-bing-web-api/bing-web-spellingsuggestion.GIF)  
 
 ## <a name="response-headers"></a>Antwortheader
 

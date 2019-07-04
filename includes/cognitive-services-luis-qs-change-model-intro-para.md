@@ -1,6 +1,6 @@
 ---
-title: Includedatei
-description: Includedatei
+title: include file
+description: include file
 services: cognitive-services
 author: diberry
 manager: cgronlun
@@ -11,11 +11,11 @@ ms.custom: include file
 ms.date: 08/16/2018
 ms.author: diberry
 ms.openlocfilehash: 67c8659fd13b8e2c3ca8f1e1042d27d4f7d4a925
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66124255"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67178406"
 ---
 In dieser Schnellstartanleitung fügen Sie einer Reise-App Beispieläußerungen hinzu und trainieren die App. Bei Beispieläußerungen handelt es sich um Konversationstext von Benutzern, der einer Absicht zugeordnet ist. Indem Sie Beispieläußerungen für Absichten bereitstellen, teilen Sie LUIS mit, welche Arten des vom Benutzer angegebenen Texts zu welcher Absicht gehören. 
 

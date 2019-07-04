@@ -9,12 +9,12 @@ ms.service: cognitive-services
 ms.topic: conceptual
 ms.date: 03/01/2019
 ms.author: erhopf
-ms.openlocfilehash: 06cc5509598cb6227a64e2cf375a5686c89312eb
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.openlocfilehash: 6de5711ca977612f01943f6aaf2c9d7061116090
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/17/2019
-ms.locfileid: "67163675"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67435929"
 ---
 # <a name="authenticate-requests-to-azure-cognitive-services"></a>Authentifizieren von Anforderungen an Azure Cognitive Services
 
@@ -28,7 +28,7 @@ Jede Anforderung an Azure Cognitive Service muss einen Authentifizierungsheader 
 
 Damit Sie eine Anforderung übermitteln können, benötigen Sie ein Azure-Konto und ein Azure Cognitive Services-Abonnement. Wenn Sie bereits über ein Konto verfügen, können Sie mit dem nächsten Abschnitt fortfahren. Wenn Sie noch kein Konto haben, sind Sie mit der folgenden Anleitung in wenigen Minuten startbereit: [Erstellen eines Cognitive Services-Kontos für Azure](cognitive-services-apis-create-account.md).
 
-Sie können Ihren Abonnementschlüssel über das [Azure-Portal](cognitive-services-apis-create-account.md#access-your-resource) abrufen, nachdem Sie Ihr Konto erstellt oder eine [kostenlose Testversion](https://azure.microsoft.com/try/cognitive-services/my-apis) aktiviert haben.
+Sie können Ihren Abonnementschlüssel über das [Azure-Portal](cognitive-services-apis-create-account.md#get-the-keys-for-your-subscription) abrufen, nachdem Sie Ihr Konto erstellt oder eine [kostenlose Testversion](https://azure.microsoft.com/try/cognitive-services/my-apis) aktiviert haben.
 
 ## <a name="authentication-headers"></a>Authentifizierungsheader
 
@@ -38,7 +38,7 @@ Betrachten wir zunächst kurz die verfügbaren Authentifizierungsheader für die
 |--------|-------------|
 | Ocp-Apim-Subscription-Key | Verwenden Sie diesen Header für die Authentifizierung mit einem Abonnementschlüssel für einen bestimmten Dienst oder für mehrere Dienste. |
 | Ocp-Apim-Subscription-Region | Dieser Header ist nur bei Verwendung eines Schlüssels zu einem Abonnement für mehrere Dienste mit der [Textübersetzungs-API](./Translator/reference/v3-0-reference.md) erforderlich. Verwenden Sie diesen Header, um die Abonnementregion anzugeben. |
-| Autorisierung | Verwenden Sie diesen Header, wenn Sie ein Authentifizierungstoken verwenden. Die Schritte zum Ausführen eines Tokenaustauschs werden in den folgenden Abschnitten beschrieben. Der angegebene Wert weist folgendes Format auf: `Bearer <TOKEN>`. |
+| Authorization | Verwenden Sie diesen Header, wenn Sie ein Authentifizierungstoken verwenden. Die Schritte zum Ausführen eines Tokenaustauschs werden in den folgenden Abschnitten beschrieben. Der angegebene Wert weist folgendes Format auf: `Bearer <TOKEN>`. |
 
 ## <a name="authenticate-with-a-single-service-subscription-key"></a>Authentifizieren mit einem Schlüssel für ein Abonnement für einen einzelnen Dienst
 

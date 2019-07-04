@@ -1,22 +1,17 @@
 ---
 title: Mandantenübergreifende Authentifizierung – Azure Resource Manager
 description: Beschreibt, wie Azure Resource Manager Authentifizierungsanforderungen mandantenübergreifend behandelt.
-services: azure-resource-manager
-documentationcenter: ''
 author: tfitzmac
 ms.service: azure-resource-manager
-ms.workload: multiple
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 01/07/2019
 ms.author: tomfitz
-ms.openlocfilehash: 6554c05f40f580a6d7ae086e1d09834298f86621
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 5370b9b6d6a8bee82f8feca6dbcbcd78a4c12193
+ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60550766"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67205606"
 ---
 # <a name="authenticate-requests-across-tenants"></a>Mandantenübergreifende Authentifizierung von Anforderungen
 
@@ -28,7 +23,7 @@ Die Anforderung hat die folgenden Headerwerte für die Authentifizierung:
 
 | Headername | BESCHREIBUNG | Beispielwert |
 | ----------- | ----------- | ------------ |
-| Autorisierung | Primäres Token | Bearer &lt;primary-token&gt; |
+| Authorization | Primäres Token | Bearer &lt;primary-token&gt; |
 | x-ms-authorization-auxiliary | Zusätzliche Token | Bearer &lt;auxiliary-token1&gt;; EncryptedBearer &lt;auxiliary-token2&gt;; Bearer &lt;auxiliary-token3&gt; |
 
 Der zusätzliche Header kann bis zu drei zusätzliche Token enthalten. 
