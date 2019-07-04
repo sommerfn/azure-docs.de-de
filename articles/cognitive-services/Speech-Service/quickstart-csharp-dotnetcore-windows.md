@@ -10,16 +10,16 @@ ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 12/13/2018
 ms.author: wolfma
-ms.openlocfilehash: f3dd4d20c6455e97b566ed435b14437d614e25b4
-ms.sourcegitcommit: e6d53649bfb37d01335b6bcfb9de88ac50af23bd
+ms.openlocfilehash: 873145cf9d418433ba241ce06d7d594fb3e6322b
+ms.sourcegitcommit: c63e5031aed4992d5adf45639addcef07c166224
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/09/2019
-ms.locfileid: "65466444"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67465734"
 ---
 # <a name="quickstart-recognize-speech-with-the-speech-sdk-for-net-core"></a>Schnellstart: Erkennen von Sprache mit dem Speech-SDK für .NET Core
 
-Schnellstarts sind auch für [Sprachübersetzung](quickstart-translate-speech-dotnetcore-windows.md) verfügbar.
+Schnellstarts sind auch für [Sprachsynthese](quickstart-text-to-speech-dotnetcore.md) und [Sprachübersetzung](quickstart-translate-speech-dotnetcore-windows.md) verfügbar.
 
 Wählen Sie bei Bedarf eine andere Programmiersprache und/oder Umgebung:<br/>
 [!INCLUDE [Selector](../../../includes/cognitive-services-speech-service-quickstart-selector.md)]

@@ -5,15 +5,15 @@ services: storage
 author: roygara
 ms.service: storage
 ms.topic: article
-ms.date: 11/26/2018
+ms.date: 06/24/2019
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: d9b7296a116ebd06542a53087afbd083dbd3a7eb
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: fdbbea2d32762d2d4030ec3a10826595dadd371c
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64696747"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67449827"
 ---
 # <a name="azure-file-sync-proxy-and-firewall-settings"></a>Proxy- und Firewalleinstellungen der Azure-Dateisynchronisierung
 Die Azure-Dateisynchronisierung verbindet Ihre lokalen Server mit Azure Files, wodurch Synchronisierung für mehrere Standorte und Cloudtiering-Funktionalität ermöglicht werden. Daher muss ein lokaler Server eine Verbindung mit dem Internet haben. Ein IT-Administrator muss den besten Weg festlegen, auf dem der Server zu den Azure-Clouddiensten gelangt.
@@ -111,20 +111,31 @@ Für Business Continuity und Disaster Recovery (BCDR) haben Sie Ihre Azure-Datei
 
 | Cloud  | Region | URL des primären Endpunkts | Regionspaar | Ermittlungs-URL |
 |--------|--------|----------------------|---------------|---------------|
-| Öffentlich |Australien (Osten) | https://kailani-aue.one.microsoft.com | Australien, Südosten | https://kailani-aue.one.microsoft.com |
+| Öffentlich |Australien (Osten) | https://kailani-aue.one.microsoft.com | Australien, Südosten | https://tm-kailani-aue.one.microsoft.com |
 | Öffentlich |Australien, Südosten | https://kailani-aus.one.microsoft.com | Australien (Osten) | https://tm-kailani-aus.one.microsoft.com |
+| Öffentlich | Brasilien Süd | https://brazilsouth01.afs.azure.net | USA Süd Mitte | https://tm-brazilsouth01.afs.azure.net |
 | Öffentlich | Kanada, Mitte | https://kailani-cac.one.microsoft.com | Kanada, Osten | https://tm-kailani-cac.one.microsoft.com |
 | Öffentlich | Kanada, Osten | https://kailani-cae.one.microsoft.com | Kanada, Mitte | https://tm-kailani.cae.one.microsoft.com |
+| Öffentlich | Indien, Mitte | https://kailani-cin.one.microsoft.com | Indien (Süden) | https://tm-kailani-cin.one.microsoft.com |
 | Öffentlich | USA (Mitte) | https://kailani-cus.one.microsoft.com | USA (Ost) 2 | https://tm-kailani-cus.one.microsoft.com |
 | Öffentlich | Asien, Osten | https://kailani11.one.microsoft.com | Asien, Südosten | https://tm-kailani11.one.microsoft.com |
-| Öffentlich | USA (Ost) | https://kailani1.one.microsoft.com | USA (Westen) | https://tm-kailani1.one.microsoft.com |
+| Öffentlich | East US | https://kailani1.one.microsoft.com | USA (Westen) | https://tm-kailani1.one.microsoft.com |
 | Öffentlich | USA (Ost) 2 | https://kailani-ess.one.microsoft.com | USA (Mitte) | https://tm-kailani-ess.one.microsoft.com |
+| Öffentlich | Japan, Osten | https://japaneast01.afs.azure.net | Japan, Westen | https://tm-japaneast01.afs.azure.net |
+| Öffentlich | Japan, Westen | https://japanwest01.afs.azure.net | Japan, Osten | https://tm-japanwest01.afs.azure.net |
+| Öffentlich | Korea, Mitte | https://koreacentral01.afs.azure.net/ | Korea, Süden | https://tm-koreacentral01.afs.azure.net/ |
+| Öffentlich | Korea, Süden | https://koreasouth01.afs.azure.net/ | Korea, Mitte | https://tm-koreasouth01.afs.azure.net/ |
+| Öffentlich | USA Nord Mitte | https://northcentralus01.afs.azure.net | USA Süd Mitte | https://tm-northcentralus01.afs.azure.net |
 | Öffentlich | Nordeuropa | https://kailani7.one.microsoft.com | Europa, Westen | https://tm-kailani7.one.microsoft.com |
+| Öffentlich | USA Süd Mitte | https://southcentralus01.afs.azure.net | USA Nord Mitte | https://tm-southcentralus01.afs.azure.net |
+| Öffentlich | Indien (Süden) | https://kailani-sin.one.microsoft.com | Indien, Mitte | https://tm-kailani-sin.one.microsoft.com |
 | Öffentlich | Asien, Südosten | https://kailani10.one.microsoft.com | Asien, Osten | https://tm-kailani10.one.microsoft.com |
 | Öffentlich | UK, Süden | https://kailani-uks.one.microsoft.com | UK, Westen | https://tm-kailani-uks.one.microsoft.com |
 | Öffentlich | UK, Westen | https://kailani-ukw.one.microsoft.com | UK, Süden | https://tm-kailani-ukw.one.microsoft.com |
+| Öffentlich | USA, Westen-Mitte | https://westcentralus01.afs.azure.net | USA, Westen 2 | https://tm-westcentralus01.afs.azure.net |
 | Öffentlich | Europa, Westen | https://kailani6.one.microsoft.com | Nordeuropa | https://tm-kailani6.one.microsoft.com |
-| Öffentlich | USA (Westen) | https://kailani.one.microsoft.com | USA (Ost) | https://tm-kailani.one.microsoft.com |
+| Öffentlich | USA (Westen) | https://kailani.one.microsoft.com | East US | https://tm-kailani.one.microsoft.com |
+| Öffentlich | USA, Westen 2 | https://westus201.afs.azure.net | USA, Westen-Mitte | https://tm-westus201.afs.azure.net |
 | Behörden | US Gov Arizona | https://usgovarizona01.afs.azure.us | US Gov Texas | https://tm-usgovarizona01.afs.azure.us |
 | Behörden | US Gov Texas | https://usgovtexas01.afs.azure.us | US Gov Arizona | https://tm-usgovtexas01.afs.azure.us |
 

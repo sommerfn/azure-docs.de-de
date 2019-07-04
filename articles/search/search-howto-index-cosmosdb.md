@@ -10,12 +10,12 @@ ms.service: search
 ms.devlang: rest-api
 ms.topic: conceptual
 ms.custom: seodec2018
-ms.openlocfilehash: 0610f57e264189961a6803bee5bb93c1ec9fb103
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 7f9df42725e41fb514370dbdb828ad5b1305ea78
+ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66754000"
+ms.lasthandoff: 07/01/2019
+ms.locfileid: "67485447"
 ---
 # <a name="how-to-index-cosmos-db-using-an-azure-search-indexer"></a>Indizieren von Cosmos DB mithilfe eines Azure Search-Indexers
 
@@ -133,7 +133,7 @@ In Ihrem Cosmos DB-Konto können Sie auswählen, ob die Sammlung automatisch all
 
 ### <a name="1---assemble-inputs-for-the-request"></a>1 – Zusammenstellen der Eingaben für die Anforderung
 
-Für jede Anforderung müssen Sie den Dienstnamen und den Administratorschlüssel für Azure Search (im POST-Header) und den Namen des Speicherkontos sowie den Schlüssel für den Blobspeicher bereitstellen. Sie können [Postman](search-fiddler.md) zum Senden von HTTP-Anforderungen an Azure Search verwenden.
+Für jede Anforderung müssen Sie den Dienstnamen und den Administratorschlüssel für Azure Search (im POST-Header) und den Namen des Speicherkontos sowie den Schlüssel für den Blobspeicher bereitstellen. Sie können [Postman](search-get-started-postman.md) zum Senden von HTTP-Anforderungen an Azure Search verwenden.
 
 Kopieren Sie die folgenden vier Werten in den Editor, sodass Sie sie in eine Anforderung einfügen können:
 

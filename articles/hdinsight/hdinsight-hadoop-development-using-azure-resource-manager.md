@@ -8,12 +8,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 02/21/2018
 ms.author: hrasheed
-ms.openlocfilehash: 36b43ce6636bf918e1e8c42af4c2746865f5ccd1
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 320611f05190d755c85a94a8e8eb9a1c04b3310e
+ms.sourcegitcommit: 79496a96e8bd064e951004d474f05e26bada6fa0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65523346"
+ms.lasthandoff: 07/02/2019
+ms.locfileid: "67508824"
 ---
 # <a name="migrating-to-azure-resource-manager-based-development-tools-for-hdinsight-clusters"></a>Migrieren zu Azure Resource Manager-basierten Entwicklungstools für HDInsight-Cluster
 
@@ -52,7 +52,7 @@ Die `azure hdinsight job`-Befehle, die Sie ggf. zum Übermitteln von Aufträgen 
 
 * [Ausführen von MapReduce-Aufträgen mit Hadoop in HDInsight mithilfe von Curl](hadoop/apache-hadoop-use-mapreduce-curl.md)
 * [Ausführen von Apache Hive-Abfragen mit Apache Hadoop in HDInsight mit Curl](hadoop/apache-hadoop-use-hive-curl.md)
-* [Ausführen von Apache Pig-Aufträgen mit Apache Hadoop in HDInsight mithilfe von REST](hadoop/apache-hadoop-use-pig-curl.md)
+
 
 Informationen zu anderen Möglichkeiten zum interaktiven Ausführen von Apache Hadoop MapReduce, Apache Hive und Apache Pig finden Sie unter [Verwenden von MapReduce mit Apache Hadoop in HDInsight](hadoop/hdinsight-use-mapreduce.md), [Verwenden von Apache Hive mit Apache Hadoop auf HDInsight](hadoop/hdinsight-use-hive.md) und [Verwenden von Apache Pig mit Apache Hadoop auf HDInsight](hadoop/hdinsight-use-pig.md).
 
@@ -213,7 +213,6 @@ Neuer Befehl:
 #### <a name="other-samples"></a>Weitere Beispiele
 * [Erstellen von Hadoop-Clustern in HDInsight](hdinsight-hadoop-create-linux-clusters-azure-powershell.md)
 * [Übermitteln von Apache Hive-Aufträgen](hadoop/apache-hadoop-use-hive-powershell.md)
-* [Übermitteln von Apache Pig-Aufträgen](hadoop/apache-hadoop-use-pig-powershell.md)
 * [Übermitteln von Apache Sqoop-Aufträgen](hadoop/apache-hadoop-use-sqoop-powershell.md)
 
 ## <a name="migrating-to-the-new-hdinsight-net-sdk"></a>Migrieren zum neuen HDInsight .NET SDK
@@ -231,7 +230,6 @@ Dieser Abschnitt enthält weitere Informationen dazu, wie Sie bestimmte Aufgaben
 | Authentifizieren von Clientanwendungen, die Azure Active Directory mit dem .NET SDK interaktiv nutzen |Weitere Informationen finden Sie unter [Ausführen von Apache Hive-Abfragen per HDInsight .NET-SDK](hadoop/apache-hadoop-use-hive-dotnet-sdk.md). Der Codeausschnitt in diesem Artikel verwendet den interaktiven Authentifizierungsansatz. |
 | Authentifizieren von Clientanwendungen, die Azure Active Directory mit dem .NET SDK nicht interaktiv nutzen |Siehe [Erstellen von HDInsight-Anwendungen für die nicht interaktive Authentifizierung](hdinsight-create-non-interactive-authentication-dotnet-applications.md) |
 | Übermitteln eines Apache Hive-Auftrags mit dem .NET SDK |Weitere Informationen finden Sie unter [Übermitteln von Apache Hive-Aufträgen](hadoop/apache-hadoop-use-hive-dotnet-sdk.md). |
-| Übermitteln eines Apache Pig-Auftrags mit dem .NET SDK |Weitere Informationen finden Sie unter [Übermitteln von Apache Pig-Aufträgen](hadoop/apache-hadoop-use-pig-dotnet-sdk.md). |
 | Übermitteln eines Apache Sqoop-Auftrags mit dem .NET SDK |Weitere Informationen finden Sie unter [Übermitteln von Apache Sqoop-Aufträgen](hadoop/apache-hadoop-use-sqoop-dotnet-sdk.md). |
 | Auflisten von HDInsight-Clustern mit dem .NET SDK |Weitere Informationen finden Sie unter [Auflisten von HDInsight-Clustern](hdinsight-administer-use-dotnet-sdk.md#list-clusters) |
 | Skalieren von HDInsight-Clustern mit dem .NET SDK |Weitere Informationen finden Sie unter [Skalieren von HDInsight-Clustern](hdinsight-administer-use-dotnet-sdk.md#scale-clusters) |

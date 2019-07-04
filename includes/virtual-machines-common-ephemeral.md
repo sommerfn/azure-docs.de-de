@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 05/02/2019
 ms.author: azcspmt;jonbeck;cynthn
 ms.custom: include file
-ms.openlocfilehash: 3e9885466d422a0428311ed3013e2ab34341cd25
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 24c2bfa4aae94642d3ed66f2cfa6e31ba1e6b19a
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66391406"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67457350"
 ---
 Kurzlebige Betriebssystem-Datenträger werden auf dem lokalen Speicher des virtuellen Computers (VM) erstellt und nicht auf dem externen Azure Storage gespeichert. Kurzlebige Betriebssystem-Datenträger eignen sich gut für zustandslose Workloads, bei denen Anwendungen einzelne VM-Ausfälle tolerieren, aber mehr Wert auf die Zeit legen, die für umfangreiche Bereitstellung oder die Zeit für das Reimaging der einzelnen VM-Instanzen benötigt wird. Sie eignen sich auch für Anwendungen, die mit dem klassischen Bereitstellungsmodell bereitgestellt werden, um zum Resource Manager-Bereitstellungsmodell zu wechseln. Mit einem kurzlebigen Betriebssystem-Datenträger sind eine geringere Latenzzeit für das Lesen/Schreiben auf dem Betriebssystem-Datenträger und ein schnelleres VM-Reimaging festzustellen. Darüber hinaus ist der kurzlebige Betriebssystem-Datenträger kostenlos, es fallen keine Speicherkosten für den Betriebssystem-Datenträger an. 
  

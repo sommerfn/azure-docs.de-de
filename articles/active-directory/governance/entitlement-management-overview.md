@@ -12,16 +12,16 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.subservice: compliance
-ms.date: 05/30/2019
+ms.date: 06/05/2019
 ms.author: rolyon
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: efd3ff8a6e7ddf2aa6242cc322d8a6536a6bd26b
-ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
+ms.openlocfilehash: fbb4001e9496d31d9c2879721f8cf8e26b74ddf3
+ms.sourcegitcommit: 156b313eec59ad1b5a820fabb4d0f16b602737fc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/04/2019
-ms.locfileid: "66474066"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67204551"
 ---
 # <a name="what-is-azure-ad-entitlement-management-preview"></a>Was ist die Azure AD-Berechtigungsverwaltung? (Vorschau)
 
@@ -129,41 +129,6 @@ Machen Sie sich zum besseren Verständnis der Berechtigungsverwaltung und der da
 | Ressourcenverzeichnis | Ein Verzeichnis, das mindestens eine Ressource enthält, die freigegeben (geteilt) werden soll. |
 | Zugewiesene Benutzer | Eine Zuweisung eines Zugriffspakets zu einem Benutzer oder einer Gruppe. |
 | enable | Das Verfügbarmachen eines Zugriffspakets für Anforderungen von Benutzern. |
-
-## <a name="roles-and-permissions"></a>Rollen und Berechtigungen
-
-Die Berechtigungsverwaltung verfügt je nach beruflicher Funktion über unterschiedliche Rollen.
-
-| Rolle | BESCHREIBUNG |
-| --- | --- |
-| [Benutzeradministrator](../users-groups-roles/directory-assign-admin-roles.md#user-administrator) | Verwalten aller Aspekte der Berechtigungsverwaltung.<br/>Erstellen von Benutzern und Gruppen. |
-| Katalogersteller | Erstellen und Verwalten von Katalogen. In der Regel ein IT-Administrator oder Ressourcenbesitzer. Die Person, die einen Katalog erstellt, ist automatisch der erste Besitzer des Katalogs. |
-| Katalogbesitzer | Bearbeiten und Verwalten von vorhandenen Katalogen. In der Regel ein IT-Administrator oder Ressourcenbesitzer. |
-| Zugriffspaketmanager | Bearbeiten und Verwalten aller in einem Katalog vorhandenen Zugriffspakete. |
-| Genehmigende Person | Genehmigen der Anforderungen von Zugriffspaketen. |
-| Anforderer | Anfordern von Zugriffspaketen. |
-
-Die folgende Tabelle gibt Aufschluss über die Berechtigungen für die einzelnen Rollen.
-
-| Aufgabe | Benutzeradministrator | Katalogersteller | Katalogbesitzer | Zugriffspaketmanager | Genehmigende Person |
-| --- | :---: | :---: | :---: | :---: | :---: |
-| [Erstellen eines neuen Zugriffspakets im Katalog „Allgemein“](entitlement-management-access-package-create.md) | :heavy_check_mark: |  :heavy_check_mark: |  |  |  |
-| [Erstellen eines neuen Zugriffspakets in einem Katalog](entitlement-management-access-package-create.md) | :heavy_check_mark: |   | :heavy_check_mark: |  |  |
-| [Hinzufügen/Entfernen von Ressourcenrollen zu/aus einem Zugriffspaket](entitlement-management-access-package-edit.md) | :heavy_check_mark: |  | :heavy_check_mark: | :heavy_check_mark: |  |
-| [Festlegen, wer ein Zugriffspaket anfordern darf](entitlement-management-access-package-edit.md#add-a-new-policy) | :heavy_check_mark: |  | :heavy_check_mark: | :heavy_check_mark: |  |
-| [Direktes Zuweisen eines Benutzers zu einem Zugriffspaket](entitlement-management-access-package-edit.md#directly-assign-a-user) | :heavy_check_mark: |  | :heavy_check_mark: | :heavy_check_mark: |  |
-| [Anzeigen, wem ein Zugriffspaket zugewiesen ist](entitlement-management-access-package-edit.md#view-who-has-an-assignment) | :heavy_check_mark: |  | :heavy_check_mark: | :heavy_check_mark: |  |
-| [Anzeigen der Anforderungen eines Zugriffspakets](entitlement-management-access-package-edit.md#view-requests) | :heavy_check_mark: |  | :heavy_check_mark: | :heavy_check_mark: |  |
-| [Anzeigen der Fehler bei der Übermittlung einer Anforderung](entitlement-management-access-package-edit.md#view-a-requests-delivery-errors) | :heavy_check_mark: |  | :heavy_check_mark: | :heavy_check_mark: |  |
-| [Abbrechen einer ausstehenden Anforderung](entitlement-management-access-package-edit.md#cancel-a-pending-request) | :heavy_check_mark: |  | :heavy_check_mark: | :heavy_check_mark: |  |
-| [Ausblenden eines Zugriffspakets](entitlement-management-access-package-edit.md#change-the-hidden-setting) | :heavy_check_mark: |  | :heavy_check_mark: | :heavy_check_mark: |  |
-| [Löschen eines Zugriffspakets](entitlement-management-access-package-edit.md#delete) | :heavy_check_mark: |  | :heavy_check_mark: | :heavy_check_mark: |  |
-| [Genehmigen einer Zugriffsanforderung](entitlement-management-request-approve.md) |  |  |  |  | :heavy_check_mark: |
-| [Erstellen eines Katalogs](entitlement-management-catalog-create.md) | :heavy_check_mark: | :heavy_check_mark: |  |  |  |
-| [Hinzufügen/Entfernen von Ressourcen zu/aus dem Katalog „Allgemein“](entitlement-management-catalog-create.md#add-resources-to-a-catalog) | :heavy_check_mark: |  |  |  |  |
-| [Hinzufügen/Entfernen von Ressourcen zu/aus einem Katalog](entitlement-management-catalog-create.md#add-resources-to-a-catalog) | :heavy_check_mark: |  | :heavy_check_mark: |  |  |
-| [Hinzufügen von Katalogbesitzern oder Zugriffspaketmanagern](entitlement-management-catalog-create.md#add-catalog-owners-or-access-package-managers) | :heavy_check_mark: |  | :heavy_check_mark: |  |  |
-| [Bearbeiten/Löschen eines Katalogs](entitlement-management-catalog-create.md#edit-a-catalog) | :heavy_check_mark: |  | :heavy_check_mark: |  |  |
 
 ## <a name="license-requirements"></a>Lizenzanforderungen
 

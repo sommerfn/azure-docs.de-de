@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahenry
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 77154ef35242c55724becb77595dbd5ecf8a4da9
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: f98b72d9b5e59155bb7215181fd1ecd336126ee6
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60359057"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67440974"
 ---
 # <a name="password-management-frequently-asked-questions"></a>Häufig gestellte Fragen zur Kennwortverwaltung
 
@@ -114,7 +114,7 @@ Diese FAQ sind in folgende Abschnitte unterteilt:
   >
 * **F:  Wie informiere ich meine Benutzer, wo sie ihre Kennwörter zurücksetzen können?**
 
-  > **A:** Nutzen Sie die Vorschläge in unserem [Artikel zur SSPR-Bereitstellung](howto-sspr-deployment.md#sample-communication).
+  > **A:** Nutzen Sie die Vorschläge in unserem [Artikel zur SSPR-Bereitstellung](howto-sspr-deployment.md#communications-plan).
   >
   >
 * **F:  Kann ich diese Seite von einem mobilen Gerät aus verwenden?**

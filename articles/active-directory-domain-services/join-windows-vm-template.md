@@ -3,7 +3,7 @@ title: Einbinden eines virtuellen Windows Server-Computers in Azure Active Direc
 description: Binden Sie einen virtuellen Windows Server-Computer mithilfe von Azure Resource Manager-Vorlagen in eine verwaltete Domäne ein.
 services: active-directory-ds
 documentationcenter: ''
-author: MikeStephens-MS
+author: iainfoulds
 manager: daveba
 editor: curtand
 ms.assetid: 4eabfd8e-5509-4acd-86b5-1318147fddb5
@@ -14,13 +14,13 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/20/2019
-ms.author: mstephen
-ms.openlocfilehash: e4ca613059e10755056616b964cc500625fef187
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.author: iainfou
+ms.openlocfilehash: 3d16a4240b7a30a483b70b068ab7d91ca7bdcb17
+ms.sourcegitcommit: f811238c0d732deb1f0892fe7a20a26c993bc4fc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66245305"
+ms.lasthandoff: 06/29/2019
+ms.locfileid: "67473033"
 ---
 # <a name="join-a-windows-server-virtual-machine-to-a-managed-domain-using-a-resource-manager-template"></a>Einbinden eines virtuellen Windows Server-Computers mithilfe einer Resource Manager-Vorlage in eine verwaltete Domäne
 Dieser Artikel veranschaulicht, wie Sie einen virtuellen Windows Server-Computer mithilfe von Resource Manager-Vorlagen in eine durch Azure AD Domain Services verwaltete Domäne einbinden.

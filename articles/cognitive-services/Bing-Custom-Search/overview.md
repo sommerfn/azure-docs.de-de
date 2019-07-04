@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-custom-search
 ms.topic: overview
-ms.date: 03/4/2019
+ms.date: 06/27/2019
 ms.author: aahi
-ms.openlocfilehash: 93af1cce37c69691fb39f62270f4de6c9c73cf32
-ms.sourcegitcommit: 3d4121badd265e99d1177a7c78edfa55ed7a9626
+ms.openlocfilehash: 067693c3c02d19f3bdab77f315c920b25078e7f5
+ms.sourcegitcommit: 5bdd50e769a4d50ccb89e135cfd38b788ade594d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/30/2019
-ms.locfileid: "66388598"
+ms.lasthandoff: 07/03/2019
+ms.locfileid: "67542691"
 ---
 # <a name="what-is-the-bing-custom-search-api"></a>Worum handelt es sich bei der API für die benutzerdefinierte Bing-Suche?
 
@@ -48,6 +48,8 @@ Weitere Informationen zum Anpassen Ihrer Suchinstanz finden Sie unter [Konfiguri
 Informieren Sie sich unter [Anforderungen für die Verwendung und Anzeige der Bing-Suche-API](./use-and-display-requirements.md) über die Verwendung von Suchergebnissen in Ihren Diensten und Anwendungen.
 
 Machen Sie sich mit dem Referenzinhalt für die einzelnen Endpunkte für die benutzerdefinierte Suche vertraut. Die Referenz enthält die Endpunkte, Header und Abfrageparameter, die Sie zum Anfordern von Suchergebnissen verwenden können. Darüber hinaus finden Sie dort Definitionen der Antwortobjekte.
+
+[!INCLUDE [cognitive-services-bing-url-note](../../../includes/cognitive-services-bing-url-note.md)]
 
 - [API für die benutzerdefinierte Suche](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-custom-search-api-v7-reference)
 - [API für die benutzerdefinierte Bildersuche](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-custom-images-api-v7-reference)

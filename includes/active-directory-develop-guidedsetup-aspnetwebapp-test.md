@@ -1,6 +1,6 @@
 ---
-title: Includedatei
-description: Includedatei
+title: include file
+description: include file
 services: active-directory
 documentationcenter: dev-center-name
 author: jmprieur
@@ -15,11 +15,11 @@ ms.date: 04/19/2018
 ms.author: jmprieur
 ms.custom: include file
 ms.openlocfilehash: 8795c9ab0a4dbb76327d0ead48ed33fb0cff9e86
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66121777"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67178700"
 ---
 ## <a name="test-your-code"></a>Testen Ihres Codes
 
@@ -33,7 +33,7 @@ Wenn Sie Ihren Test ausführen möchten, verwenden Sie für die Anmeldung ein Mi
 
 #### <a name="view-application-results"></a>Anzeigen von Anwendungsergebnissen
 
-Nachdem Sie sich angemeldet haben, wird der Benutzer zur Startseite Ihrer Website umgeleitet. Die Startseite ist die HTTPS-URL, die im Microsoft-Anwendungsregistrierungsportal in Ihre Anwendungsregistrierungsinformationen eingegeben wurde. Auf der Startseite wird die Willkommensnachricht *„Hallo \<Benutzer“*, ein Link zum Abmelden und ein Link zum Anzeigen der Benutzeransprüche angezeigt. Über den Link für die Benutzeransprüche wird der vorher erstellte *Claims*-Controller durchsucht.
+Nachdem Sie sich angemeldet haben, wird der Benutzer zur Startseite Ihrer Website umgeleitet. Die Startseite ist die HTTPS-URL, die im Microsoft-Anwendungsregistrierungsportal in Ihre Anwendungsregistrierungsinformationen eingegeben wurde. Auf der Startseite wird die Willkommensnachricht *„Hallo \<Benutzer“* , ein Link zum Abmelden und ein Link zum Anzeigen der Benutzeransprüche angezeigt. Über den Link für die Benutzeransprüche wird der vorher erstellte *Claims*-Controller durchsucht.
 
 ### <a name="browse-to-see-the-users-claims"></a>Navigieren zu den Benutzeransprüchen
 

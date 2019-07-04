@@ -8,12 +8,12 @@ ms.subservice: heavy
 ms.topic: tutorial
 ms.date: 06/05/2019
 ms.author: alkohli
-ms.openlocfilehash: 5628a1b3ea42c91f49f78699c37bb2b306275e9e
-ms.sourcegitcommit: 1aefdf876c95bf6c07b12eb8c5fab98e92948000
+ms.openlocfilehash: 1c432ee5851115e029b55722b6b238b4672e8345
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/06/2019
-ms.locfileid: "66730828"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67446715"
 ---
 # <a name="use-the-azure-data-box-heavy-to-migrate-your-file-share-content-to-sharepoint-online"></a>Verwenden der Azure Data Box Heavy zum Migrieren von Dateifreigabeinhalten zu SharePoint Online
 
@@ -81,7 +81,7 @@ Für optimale Leistung und Konnektivität empfehlen wir, einen virtuellen Azure-
 
 1. Melden Sie sich beim Azure-Portal an, und [erstellen Sie einen virtuellen Computer](../virtual-machines/windows/quick-create-portal.md).
 2. [Stellen Sie die Azure-Dateifreigabe auf dem virtuellen Computer bereit](../storage/files/storage-how-to-use-files-windows.md#mount-the-azure-file-share-with-file-explorer).
-3. [Laden Sie das SharePoint-Migrationstool herunter](http://spmtreleasescus.blob.core.windows.net/install/default.htm), und installieren Sie es auf dem virtuellen Azure-Computer.
+3. [Laden Sie das SharePoint-Migrationstool herunter](https://spmtreleasescus.blob.core.windows.net/install/default.htm), und installieren Sie es auf dem virtuellen Azure-Computer.
 4. Starten Sie die SharePoint-Migrationstool. Klicken Sie auf **Anmelden**, und geben Sie Ihren Benutzernamen und Ihr Kennwort für Office 365 ein.
 5. Wenn **Wo sind Ihre Daten?** angezeigt wird, wählen Sie **Dateifreigabe** aus. Geben Sie den Pfad zu der Azure-Dateifreigabe ein, die Ihre Daten enthält.
 6. Befolgen Sie die restlichen Eingabeaufforderungen, einschließlich der Angabe des Zielspeicherorts. Weitere Informationen finden Sie unter [Verwenden des SharePoint-Migrationstools](https://docs.microsoft.com/sharepointmigration/how-to-use-the-sharepoint-migration-tool).

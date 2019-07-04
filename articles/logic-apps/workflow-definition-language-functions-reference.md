@@ -9,12 +9,12 @@ ms.author: estfan
 ms.reviewer: klam, LADocs
 ms.topic: reference
 ms.date: 08/15/2018
-ms.openlocfilehash: 506076e2d9b171e1ec1ff604519cbbfbe4339e87
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: f5e2af7a7118eaa95e43049b3594ffd584aad4cc
+ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66733067"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67203083"
 ---
 # <a name="functions-reference-for-workflow-definition-language-in-azure-logic-apps-and-microsoft-flow"></a>Funktionsreferenz zur Definitionssprache für Workflows in Azure Logic Apps und Microsoft Flow
 
@@ -319,7 +319,7 @@ action().outputs.body.<property>
 | <*property*> | Nein | string | Der Name der Aktionsobjekteigenschaft, deren Wert Sie abrufen möchten: **name**, **startTime**, **endTime**, **inputs**, **outputs**, **status**, **code**, **trackingId** und **clientTrackingId**. Im Azure-Portal finden Sie diese Eigenschaften, indem Sie die Details eines bestimmten Ausführungsverlaufs überprüfen. Weitere Informationen hierzu finden Sie unter [REST-API - Workflowausführungsaktionen](https://docs.microsoft.com/rest/api/logic/workflowrunactions/get). |
 |||||
 
-| Rückgabewert | Type | BESCHREIBUNG |
+| Rückgabewert | type | BESCHREIBUNG |
 | ------------ | -----| ----------- |
 | <*action-output*> | string | Die Ausgabe von der aktuellen Aktion oder die Eigenschaft |
 ||||
@@ -341,7 +341,7 @@ actionBody('<actionName>')
 | <*actionName*> | Ja | string | Der Name der Aktion, deren `body`-Ausgabe Sie abrufen möchten |
 |||||
 
-| Rückgabewert | Type | BESCHREIBUNG |
+| Rückgabewert | type | BESCHREIBUNG |
 | ------------ | -----| ----------- |
 | <*action-body-output*> | string | Die `body`-Ausgabe von der angegebenen Aktion |
 ||||
@@ -388,7 +388,7 @@ actionOutputs('<actionName>')
 | <*actionName*> | Ja | string | Der Name der Aktion, deren Ausgabe Sie abrufen möchten |
 |||||
 
-| Rückgabewert | Type | BESCHREIBUNG |
+| Rückgabewert | type | BESCHREIBUNG |
 | ------------ | -----| ----------- |
 | <*output*> | string | Die Ausgabe von der angegebenen Aktion |
 ||||
@@ -461,7 +461,7 @@ actions('<actionName>').outputs.body.<property>
 | <*property*> | Nein | string | Der Name der Aktionsobjekteigenschaft, deren Wert Sie abrufen möchten: **name**, **startTime**, **endTime**, **inputs**, **outputs**, **status**, **code**, **trackingId** und **clientTrackingId**. Im Azure-Portal finden Sie diese Eigenschaften, indem Sie die Details eines bestimmten Ausführungsverlaufs überprüfen. Weitere Informationen hierzu finden Sie unter [REST-API - Workflowausführungsaktionen](https://docs.microsoft.com/rest/api/logic/workflowrunactions/get). |
 |||||
 
-| Rückgabewert | Type | BESCHREIBUNG |
+| Rückgabewert | type | BESCHREIBUNG |
 | ------------ | -----| ----------- |
 | <*action-output*> | string | Die Ausgabe von der angegebenen Aktion oder Eigenschaft |
 ||||
@@ -491,7 +491,7 @@ add(<summand_1>, <summand_2>)
 | <*summand_1*>, <*summand_2*> | Ja | Integer, Float oder kombiniert | Die zu addierenden Zahlen |
 |||||
 
-| Rückgabewert | Type | BESCHREIBUNG |
+| Rückgabewert | type | BESCHREIBUNG |
 | ------------ | -----| ----------- |
 | <*result-sum*> | Integer oder Float | Das Ergebnis der Addition der angegebenen Zahlen |
 ||||
@@ -523,7 +523,7 @@ addDays('<timestamp>', <days>, '<format>'?)
 | <*format*> | Nein | string | Entweder ein [einzelner Formatbezeichner](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) oder ein [benutzerdefiniertes Formatmuster](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings). Das Standardformat für den Zeitstempel ist [„o“](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) (JJJJ-MM-TTT hh:mm:ss:fffffffK), das mit [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) übereinstimmt und in dem Zeitzoneninformationen erhalten bleiben. |
 |||||
 
-| Rückgabewert | Type | BESCHREIBUNG |
+| Rückgabewert | type | BESCHREIBUNG |
 | ------------ | ---- | ----------- |
 | <*updated-timestamp*> | string | Der Zeitstempel plus der angegebenen Anzahl von Tagen  |
 ||||
@@ -565,7 +565,7 @@ addHours('<timestamp>', <hours>, '<format>'?)
 | <*format*> | Nein | string | Entweder ein [einzelner Formatbezeichner](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) oder ein [benutzerdefiniertes Formatmuster](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings). Das Standardformat für den Zeitstempel ist [„o“](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) (JJJJ-MM-TTT hh:mm:ss:fffffffK), das mit [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) übereinstimmt und in dem Zeitzoneninformationen erhalten bleiben. |
 |||||
 
-| Rückgabewert | Type | BESCHREIBUNG |
+| Rückgabewert | type | BESCHREIBUNG |
 | ------------ | ---- | ----------- |
 | <*updated-timestamp*> | string | Der Zeitstempel plus der angegebenen Anzahl von Stunden  |
 ||||
@@ -607,7 +607,7 @@ addMinutes('<timestamp>', <minutes>, '<format>'?)
 | <*format*> | Nein | string | Entweder ein [einzelner Formatbezeichner](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) oder ein [benutzerdefiniertes Formatmuster](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings). Das Standardformat für den Zeitstempel ist [„o“](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) (JJJJ-MM-TTT hh:mm:ss:fffffffK), das mit [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) übereinstimmt und in dem Zeitzoneninformationen erhalten bleiben. |
 |||||
 
-| Rückgabewert | Type | BESCHREIBUNG |
+| Rückgabewert | type | BESCHREIBUNG |
 | ------------ | ---- | ----------- |
 | <*updated-timestamp*> | string | Der Zeitstempel plus der angegebenen Anzahl von Minuten |
 ||||
@@ -649,7 +649,7 @@ addProperty(<object>, '<property>', <value>)
 | <*value*> | Ja | Beliebig | Der Wert für die Eigenschaft |
 |||||
 
-| Rückgabewert | Type | BESCHREIBUNG |
+| Rückgabewert | type | BESCHREIBUNG |
 | ------------ | ---- | ----------- |
 | <*updated-object*> | Object | Das aktualisierte JSON-Objekt mit der angegebenen Eigenschaft |
 ||||
@@ -680,7 +680,7 @@ addSeconds('<timestamp>', <seconds>, '<format>'?)
 | <*format*> | Nein | string | Entweder ein [einzelner Formatbezeichner](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) oder ein [benutzerdefiniertes Formatmuster](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings). Das Standardformat für den Zeitstempel ist [„o“](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) (JJJJ-MM-TTT hh:mm:ss:fffffffK), das mit [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) übereinstimmt und in dem Zeitzoneninformationen erhalten bleiben. |
 |||||
 
-| Rückgabewert | Type | BESCHREIBUNG |
+| Rückgabewert | type | BESCHREIBUNG |
 | ------------ | ---- | ----------- |
 | <*updated-timestamp*> | string | Der Zeitstempel plus der angegebenen Anzahl von Sekunden  |
 ||||
@@ -724,7 +724,7 @@ addToTime('<timestamp>', <interval>, '<timeUnit>', '<format>'?)
 | <*format*> | Nein | string | Entweder ein [einzelner Formatbezeichner](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) oder ein [benutzerdefiniertes Formatmuster](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings). Das Standardformat für den Zeitstempel ist [„o“](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) (JJJJ-MM-TTT hh:mm:ss:fffffffK), das mit [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) übereinstimmt und in dem Zeitzoneninformationen erhalten bleiben. |
 |||||
 
-| Rückgabewert | Type | BESCHREIBUNG |
+| Rückgabewert | type | BESCHREIBUNG |
 | ------------ | ---- | ----------- |
 | <*updated-timestamp*> | string | Der Zeitstempel plus der angegebenen Anzahl von Zeiteinheiten  |
 ||||
@@ -765,7 +765,7 @@ and(<expression1>, <expression2>, ...)
 | <*expression1*>, <*expression2*>, ... | Ja | Boolean | Die Ausdrücke, die überprüft werden sollen |
 |||||
 
-| Rückgabewert | Type | BESCHREIBUNG |
+| Rückgabewert | type | BESCHREIBUNG |
 | ------------ | -----| ----------- |
 | "true" oder "false" | Boolean | Gibt „true“ zurück, wenn alle Ausdrücke gleich „true“ sind. Gibt „false“ zurück, wenn mindestens ein Ausdruck gleich „false“ ist. |
 ||||
@@ -818,7 +818,7 @@ array('<value>')
 | <*value*> | Ja | string | Die Zeichenfolge zum Erstellen eines Arrays |
 |||||
 
-| Rückgabewert | Type | BESCHREIBUNG |
+| Rückgabewert | type | BESCHREIBUNG |
 | ------------ | ---- | ----------- |
 | [<*value*>] | Array | Ein Array, das die einzelne angegebene Eingabe enthält |
 ||||
@@ -848,7 +848,7 @@ base64('<value>')
 | <*value*> | Ja | string | Die eingegebene Zeichenfolge |
 |||||
 
-| Rückgabewert | Type | BESCHREIBUNG |
+| Rückgabewert | type | BESCHREIBUNG |
 | ------------ | ---- | ----------- |
 | <*base64-string*> | string | Die base64-codierte Version für die eingegebene Zeichenfolge |
 ||||
@@ -878,7 +878,7 @@ base64ToBinary('<value>')
 | <*value*> | Ja | string | Die base64-codierte Zeichenfolge, die konvertiert werden soll |
 |||||
 
-| Rückgabewert | Type | BESCHREIBUNG |
+| Rückgabewert | type | BESCHREIBUNG |
 | ------------ | ---- | ----------- |
 | <*binary-for-base64-string*> | string | Die Binärversion für die base64-codierte Zeichenfolge |
 ||||
@@ -912,7 +912,7 @@ base64ToString('<value>')
 | <*value*> | Ja | string | Die base64-codierte Zeichenfolge, die decodiert werden soll |
 |||||
 
-| Rückgabewert | Type | BESCHREIBUNG |
+| Rückgabewert | type | BESCHREIBUNG |
 | ------------ | ---- | ----------- |
 | <*decoded-base64-string*> | string | Die Zeichenfolgenversion für eine base64-codierte Zeichenfolge |
 ||||
@@ -942,7 +942,7 @@ binary('<value>')
 | <*value*> | Ja | string | Die Zeichenfolge, die konvertiert werden soll |
 |||||
 
-| Rückgabewert | Type | BESCHREIBUNG |
+| Rückgabewert | type | BESCHREIBUNG |
 | ------------ | ---- | ----------- |
 | <*binary-for-input-value*> | string | Die Binärversion für die angegebene Zeichenfolge |
 ||||
@@ -976,7 +976,7 @@ body('<actionName>')
 | <*actionName*> | Ja | string | Der Name der Aktion, deren `body`-Ausgabe Sie abrufen möchten |
 |||||
 
-| Rückgabewert | Type | BESCHREIBUNG |
+| Rückgabewert | type | BESCHREIBUNG |
 | ------------ | -----| ----------- |
 | <*action-body-output*> | string | Die `body`-Ausgabe von der angegebenen Aktion |
 ||||
@@ -1021,7 +1021,7 @@ bool(<value>)
 | <*value*> | Ja | Beliebig | Der zu konvertierende Wert |
 |||||
 
-| Rückgabewert | Type | BESCHREIBUNG |
+| Rückgabewert | type | BESCHREIBUNG |
 | ------------ | ---- | ----------- |
 | "true" oder "false" | Boolean | Die booleschen Version des angegebenen Werts |
 ||||
@@ -1056,7 +1056,7 @@ coalesce(<object_1>, <object_2>, ...)
 | <*object_1*>, <*object_2*>, ... | Ja | Beliebig, Typen können kombiniert sein | Ein oder mehrere Elemente, die auf NULL geprüft werden sollen |
 |||||
 
-| Rückgabewert | Type | BESCHREIBUNG |
+| Rückgabewert | type | BESCHREIBUNG |
 | ------------ | ---- | ----------- |
 | <*first-non-null-item*> | Beliebig | Das erste Element oder der erste Wert, das oder der ungleich NULL ist. Sind alle Parameter gleich NULL, gibt diese Funktion NULL zurück. |
 ||||
@@ -1092,7 +1092,7 @@ concat('<text1>', '<text2>', ...)
 | <*text1*>, <*text2*>, ... | Ja | string | Mindestens zwei Zeichenfolgen, die kombiniert werden sollen |
 |||||
 
-| Rückgabewert | Type | BESCHREIBUNG |
+| Rückgabewert | type | BESCHREIBUNG |
 | ------------ | ---- | ----------- |
 | <*text1text2...* > | string | Die Zeichenfolge, die aus den kombinierten Eingabezeichenfolgen erstellt wurde |
 ||||
@@ -1132,7 +1132,7 @@ Diese Funktion ist insbesondere für diese Sammlungstypen vorgesehen:
 | <*value*> | Ja | Zeichenfolge, Array bzw. Wörterbuch | Das Element, nach dem gesucht werden soll |
 |||||
 
-| Rückgabewert | Type | BESCHREIBUNG |
+| Rückgabewert | type | BESCHREIBUNG |
 | ------------ | ---- | ----------- |
 | "true" oder "false" | Boolean | Gibt „true“, wenn das Element gefunden wurde. Gibt „false“ zurück, wenn sie nicht gefunden wurde. |
 ||||
@@ -1170,7 +1170,7 @@ convertFromUtc('<timestamp>', '<destinationTimeZone>', '<format>'?)
 | <*format*> | Nein | string | Entweder ein [einzelner Formatbezeichner](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) oder ein [benutzerdefiniertes Formatmuster](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings). Das Standardformat für den Zeitstempel ist [„o“](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) (JJJJ-MM-TTT hh:mm:ss:fffffffK), das mit [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) übereinstimmt und in dem Zeitzoneninformationen erhalten bleiben. |
 |||||
 
-| Rückgabewert | Type | BESCHREIBUNG |
+| Rückgabewert | type | BESCHREIBUNG |
 | ------------ | ---- | ----------- |
 | <*converted-timestamp*> | string | Der in das Format der Zielzeitzone konvertierte Zeitstempel |
 ||||
@@ -1213,7 +1213,7 @@ convertTimeZone('<timestamp>', '<sourceTimeZone>', '<destinationTimeZone>', '<fo
 | <*format*> | Nein | string | Entweder ein [einzelner Formatbezeichner](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) oder ein [benutzerdefiniertes Formatmuster](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings). Das Standardformat für den Zeitstempel ist [„o“](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) (JJJJ-MM-TTT hh:mm:ss:fffffffK), das mit [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) übereinstimmt und in dem Zeitzoneninformationen erhalten bleiben. |
 |||||
 
-| Rückgabewert | Type | BESCHREIBUNG |
+| Rückgabewert | type | BESCHREIBUNG |
 | ------------ | ---- | ----------- |
 | <*converted-timestamp*> | string | Der in das Format der Zielzeitzone konvertierte Zeitstempel |
 ||||
@@ -1255,7 +1255,7 @@ convertToUtc('<timestamp>', '<sourceTimeZone>', '<format>'?)
 | <*format*> | Nein | string | Entweder ein [einzelner Formatbezeichner](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) oder ein [benutzerdefiniertes Formatmuster](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings). Das Standardformat für den Zeitstempel ist [„o“](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) (JJJJ-MM-TTT hh:mm:ss:fffffffK), das mit [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) übereinstimmt und in dem Zeitzoneninformationen erhalten bleiben. |
 |||||
 
-| Rückgabewert | Type | BESCHREIBUNG |
+| Rückgabewert | type | BESCHREIBUNG |
 | ------------ | ---- | ----------- |
 | <*converted-timestamp*> | string | Der Zeitstempel, der in UTC konvertiert wurde |
 ||||
@@ -1296,7 +1296,7 @@ createArray('<object1>', '<object2>', ...)
 | <*object1*>, <*object2*>, ... | Ja | Beliebig, aber nicht kombiniert | Mindestens zwei Elemente, mit denen das Array erstellt wird |
 |||||
 
-| Rückgabewert | Type | BESCHREIBUNG |
+| Rückgabewert | type | BESCHREIBUNG |
 | ------------ | ---- | ----------- |
 | [<*object1*>, <*object2*>, ...] | Array | Das Array, das aus allen Eingabeelemente erstellt wurde |
 ||||
@@ -1326,7 +1326,7 @@ dataUri('<value>')
 | <*value*> | Ja | string | Die Zeichenfolge, die konvertiert werden soll |
 |||||
 
-| Rückgabewert | Type | BESCHREIBUNG |
+| Rückgabewert | type | BESCHREIBUNG |
 | ------------ | ---- | ----------- |
 | <*data-uri*> | string | Der Daten-URI für die Eingabezeichenfolge |
 ||||
@@ -1358,7 +1358,7 @@ dataUriToBinary('<value>')
 | <*value*> | Ja | string | Der Daten-URI, der konvertiert werden soll |
 |||||
 
-| Rückgabewert | Type | BESCHREIBUNG |
+| Rückgabewert | type | BESCHREIBUNG |
 | ------------ | ---- | ----------- |
 | <*binary-for-data-uri*> | string | Die binäre Version für den Daten-URI |
 ||||
@@ -1393,7 +1393,7 @@ dataUriToString('<value>')
 | <*value*> | Ja | string | Der Daten-URI, der konvertiert werden soll |
 |||||
 
-| Rückgabewert | Type | BESCHREIBUNG |
+| Rückgabewert | type | BESCHREIBUNG |
 | ------------ | ---- | ----------- |
 | <*string-for-data-uri*> | string | Die Zeichenfolgenversion des Daten-URIs |
 ||||
@@ -1423,7 +1423,7 @@ dayOfMonth('<timestamp>')
 | <*timestamp*> | Ja | string | Die Zeichenfolge, die den Zeitstempel enthält |
 |||||
 
-| Rückgabewert | Type | BESCHREIBUNG |
+| Rückgabewert | type | BESCHREIBUNG |
 | ------------ | ---- | ----------- |
 | <*day-of-month*> | Integer | Der Tag des Monats aus dem angegebenen Zeitstempel |
 ||||
@@ -1453,7 +1453,7 @@ dayOfWeek('<timestamp>')
 | <*timestamp*> | Ja | string | Die Zeichenfolge, die den Zeitstempel enthält |
 |||||
 
-| Rückgabewert | Type | BESCHREIBUNG |
+| Rückgabewert | type | BESCHREIBUNG |
 | ------------ | ---- | ----------- |
 | <*day-of-week*> | Integer | Der Wochentag aus dem angegebenen Zeitstempel, wobei Folgendes gilt: Sonntag = 0, Montag = 1 usw. |
 ||||
@@ -1483,7 +1483,7 @@ dayOfYear('<timestamp>')
 | <*timestamp*> | Ja | string | Die Zeichenfolge, die den Zeitstempel enthält |
 |||||
 
-| Rückgabewert | Type | BESCHREIBUNG |
+| Rückgabewert | type | BESCHREIBUNG |
 | ------------ | ---- | ----------- |
 | <*day-of-year*> | Integer | Der Tag des Jahres aus dem angegebenen Zeitstempel |
 ||||
@@ -1515,7 +1515,7 @@ decodeBase64('<value>')
 | <*value*> | Ja | string | Die base64-codierte Zeichenfolge, die decodiert werden soll |
 |||||
 
-| Rückgabewert | Type | BESCHREIBUNG |
+| Rückgabewert | type | BESCHREIBUNG |
 | ------------ | ---- | ----------- |
 | <*decoded-base64-string*> | string | Die Zeichenfolgenversion für eine base64-codierte Zeichenfolge |
 ||||
@@ -1547,7 +1547,7 @@ decodeDataUri('<value>')
 | <*value*> | Ja | string | Die Daten-URI-Zeichenfolge, die decodiert werden soll |
 |||||
 
-| Rückgabewert | Type | BESCHREIBUNG |
+| Rückgabewert | type | BESCHREIBUNG |
 | ------------ | ---- | ----------- |
 | <*binary-for-data-uri*> | string | Die Binärversion für eine Daten-URI-Zeichenfolge |
 ||||
@@ -1582,7 +1582,7 @@ decodeUriComponent('<value>')
 | <*value*> | Ja | string | Die Zeichenfolge mit den Escapezeichen, die decodiert werden sollen |
 |||||
 
-| Rückgabewert | Type | BESCHREIBUNG |
+| Rückgabewert | type | BESCHREIBUNG |
 | ------------ | ---- | ----------- |
 | <*decoded-uri*> | string | Die aktualisierte Zeichenfolge mit den decodierten Escapezeichen |
 ||||
@@ -1614,7 +1614,7 @@ div(<dividend>, <divisor>)
 | <*divisor*> | Ja | Integer oder Float | Die Zahl, durch die der *Dividend* geteilt wird; darf nicht 0 sein |
 |||||
 
-| Rückgabewert | Type | BESCHREIBUNG |
+| Rückgabewert | type | BESCHREIBUNG |
 | ------------ | ---- | ----------- |
 | <*quotient-result*> | Integer | Das ganzzahlige Ergebnis aus der Division der ersten Zahl durch die zweite Zahl |
 ||||
@@ -1647,7 +1647,7 @@ encodeUriComponent('<value>')
 | <*value*> | Ja | string | Die Zeichenfolge, die in das URI-codierte Format konvertiert werden soll |
 |||||
 
-| Rückgabewert | Type | BESCHREIBUNG |
+| Rückgabewert | type | BESCHREIBUNG |
 | ------------ | ---- | ----------- |
 | <*encoded-uri*> | string | Die URI-codierte Zeichenfolge mit Escapezeichen |
 ||||
@@ -1679,7 +1679,7 @@ empty([<collection>])
 | <*collection*> | Ja | Zeichenfolge, Array oder Objekt | Die Sammlung, die überprüft werden soll |
 |||||
 
-| Rückgabewert | Type | BESCHREIBUNG |
+| Rückgabewert | type | BESCHREIBUNG |
 | ------------ | ---- | ----------- |
 | "true" oder "false" | Boolean | Gibt „true“ zurück, wenn die Sammlung leer ist. Gibt „false“ zurück, wenn sie nicht leer ist. |
 ||||
@@ -1716,7 +1716,7 @@ endsWith('<text>', '<searchText>')
 | <*searchText*> | Ja | string | Die beendende Teilzeichenfolge, nach der gesucht werden soll |
 |||||
 
-| Rückgabewert | Type | BESCHREIBUNG |
+| Rückgabewert | type | BESCHREIBUNG |
 | ------------ | ---- | ----------- |
 | "true" oder "false"  | Boolean | Gibt „true“ zurück, wenn die beendende Teilzeichenfolge gefunden wurde. Gibt „false“ zurück, wenn sie nicht gefunden wurde. |
 ||||
@@ -1757,7 +1757,7 @@ equals('<object1>', '<object2>')
 | <*object1*>, <*object2*> | Ja | Verschiedene | Die Werte, Ausdrücke oder Objekte, die verglichen werden sollen |
 |||||
 
-| Rückgabewert | Type | BESCHREIBUNG |
+| Rückgabewert | type | BESCHREIBUNG |
 | ------------ | ---- | ----------- |
 | "true" oder "false" | Boolean | Gibt „true“ zurück, wenn beide gleichwertig sind. Gibt „false“ zurück, wenn sie nicht gleichwertig sind. |
 ||||
@@ -1792,7 +1792,7 @@ first([<collection>])
 | <*collection*> | Ja | Zeichenfolge oder Array | Die Sammlung, aus der das erste Element abgerufen werden soll |
 |||||
 
-| Rückgabewert | Type | BESCHREIBUNG |
+| Rückgabewert | type | BESCHREIBUNG |
 | ------------ | ---- | ----------- |
 | <*first-collection-item*> | Beliebig | Das erste Element in der Sammlung |
 ||||
@@ -1827,7 +1827,7 @@ float('<value>')
 | <*value*> | Ja | string | Die Zeichenfolge, die die gültige Gleitkommazahl angibt, die konvertiert werden soll |
 |||||
 
-| Rückgabewert | Type | BESCHREIBUNG |
+| Rückgabewert | type | BESCHREIBUNG |
 | ------------ | ---- | ----------- |
 | <*float-value*> | Float | Die Gleitkommazahl für die angegebene Zeichenfolge |
 ||||
@@ -1858,7 +1858,7 @@ formatDateTime('<timestamp>', '<format>'?)
 | <*format*> | Nein | string | Entweder ein [einzelner Formatbezeichner](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) oder ein [benutzerdefiniertes Formatmuster](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings). Das Standardformat für den Zeitstempel ist [„o“](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) (JJJJ-MM-TTT hh:mm:ss:fffffffK), das mit [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) übereinstimmt und in dem Zeitzoneninformationen erhalten bleiben. |
 |||||
 
-| Rückgabewert | Type | BESCHREIBUNG |
+| Rückgabewert | type | BESCHREIBUNG |
 | ------------ | ---- | ----------- |
 | <*reformatted-timestamp*> | string | Der aktualisierte Zeitstempel im angegebenen Format |
 ||||
@@ -1889,7 +1889,7 @@ formDataMultiValues('<actionName>', '<key>')
 | <*key*> | Ja | string | Der Name des Schlüssels, dessen Wert Sie abrufen möchten |
 |||||
 
-| Rückgabewert | Type | BESCHREIBUNG |
+| Rückgabewert | type | BESCHREIBUNG |
 | ------------ | ---- | ----------- |
 | [<*array-with-key-values*>] | Array | Ein Array mit allen Werten, die mit dem angegebenen Schlüssel übereinstimmen. |
 ||||
@@ -1921,7 +1921,7 @@ formDataValue('<actionName>', '<key>')
 | <*key*> | Ja | string | Der Name des Schlüssels, dessen Wert Sie abrufen möchten |
 |||||
 
-| Rückgabewert | Type | BESCHREIBUNG |
+| Rückgabewert | type | BESCHREIBUNG |
 | ------------ | ---- | ----------- |
 | <*key-value*> | string | Der Wert in dem angegebenen Schlüssel  |
 ||||
@@ -1953,7 +1953,7 @@ getFutureTime(<interval>, <timeUnit>, <format>?)
 | <*format*> | Nein | string | Entweder ein [einzelner Formatbezeichner](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) oder ein [benutzerdefiniertes Formatmuster](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings). Das Standardformat für den Zeitstempel ist [„o“](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) (JJJJ-MM-TTT hh:mm:ss:fffffffK), das mit [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) übereinstimmt und in dem Zeitzoneninformationen erhalten bleiben. |
 |||||
 
-| Rückgabewert | Type | BESCHREIBUNG |
+| Rückgabewert | type | BESCHREIBUNG |
 | ------------ | ---- | ----------- |
 | <*updated-timestamp*> | string | Der aktuelle Zeitstempel plus der angegebenen Anzahl von Zeiteinheiten |
 ||||
@@ -1997,7 +1997,7 @@ getPastTime(<interval>, <timeUnit>, <format>?)
 | <*format*> | Nein | string | Entweder ein [einzelner Formatbezeichner](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) oder ein [benutzerdefiniertes Formatmuster](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings). Das Standardformat für den Zeitstempel ist [„o“](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) (JJJJ-MM-TTT hh:mm:ss:fffffffK), das mit [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) übereinstimmt und in dem Zeitzoneninformationen erhalten bleiben. |
 |||||
 
-| Rückgabewert | Type | BESCHREIBUNG |
+| Rückgabewert | type | BESCHREIBUNG |
 | ------------ | ---- | ----------- |
 | <*updated-timestamp*> | string | Der aktuelle Zeitstempel abzüglich der angegebenen Anzahl von Zeiteinheiten |
 ||||
@@ -2042,7 +2042,7 @@ greater('<value>', '<compareTo>')
 | <*compareTo*> | Ja | Integer, Float bzw. Zeichenfolge | Der Vergleichswert |
 |||||
 
-| Rückgabewert | Type | BESCHREIBUNG |
+| Rückgabewert | type | BESCHREIBUNG |
 | ------------ | ---- | ----------- |
 | "true" oder "false" | Boolean | Gibt „true“ zurück, wenn der erste Wert größer ist als der zweite Wert. Gibt „false“ zurück, wenn der erste Wert kleiner gleich dem zweiten Wert ist. |
 ||||
@@ -2079,7 +2079,7 @@ greaterOrEquals('<value>', '<compareTo>')
 | <*compareTo*> | Ja | Integer, Float bzw. Zeichenfolge | Der Vergleichswert |
 |||||
 
-| Rückgabewert | Type | BESCHREIBUNG |
+| Rückgabewert | type | BESCHREIBUNG |
 | ------------ | ---- | ----------- |
 | "true" oder "false" | Boolean | Gibt „true“ zurück, wenn der erste Wert größer gleich dem zweiten Wert ist. Gibt „false“ zurück, wenn der erste Wert kleiner ist als der zweite Wert. |
 ||||
@@ -2119,7 +2119,7 @@ guid('<format>')
 | <*format*> | Nein | string | Ein einzelner [Formatbezeichner](https://msdn.microsoft.com/library/97af8hh4) für den zurückgegebenen GUID. Das Standardformat ist „D“, Sie können  aber „N“, „D“, „B“, „P“ oder „X“ verwenden. |
 |||||
 
-| Rückgabewert | Type | BESCHREIBUNG |
+| Rückgabewert | type | BESCHREIBUNG |
 | ------------ | ---- | ----------- |
 | <*GUID-value*> | string | Ein zufällig generierter GUID |
 ||||
@@ -2152,7 +2152,7 @@ if(<expression>, <valueIfTrue>, <valueIfFalse>)
 | <*valueIfFalse*> | Ja | Beliebig | Der Wert, der zurückgegeben werden soll, wenn der Ausdruck gleich „false“ ist |
 |||||
 
-| Rückgabewert | Type | BESCHREIBUNG |
+| Rückgabewert | type | BESCHREIBUNG |
 | ------------ | ---- | ----------- |
 | <*specified-return-value*> | Beliebig | Der angegebene Wert, der abhängig davon zurückgegeben wird, ob der Ausdruck gleich „true“ oder „false“ ist. |
 ||||
@@ -2183,7 +2183,7 @@ indexOf('<text>', '<searchText>')
 | <*searchText*> | Ja | string | Die Teilzeichenfolge, nach der gesucht werden soll |
 |||||
 
-| Rückgabewert | Type | BESCHREIBUNG |
+| Rückgabewert | type | BESCHREIBUNG |
 | ------------ | ---- | ----------- |
 | <*index-value*>| Integer | Die Anfangsposition oder der Anfangsindexwert für die angegebene Teilzeichenfolge. <p>Wird die Zeichenfolge nicht gefunden, wird „-1“ zurückgegeben. |
 ||||
@@ -2213,7 +2213,7 @@ int('<value>')
 | <*value*> | Ja | string | Die Zeichenfolge, die konvertiert werden soll |
 |||||
 
-| Rückgabewert | Type | BESCHREIBUNG |
+| Rückgabewert | type | BESCHREIBUNG |
 | ------------ | ---- | ----------- |
 | <*integer-result*> | Integer | Die Ganzzahlversion für die angegebene Zeichenfolge |
 ||||
@@ -2239,7 +2239,7 @@ Sie können die Werte auch aus den Eigenschaften dieses Elements abrufen.
 item()
 ```
 
-| Rückgabewert | Type | BESCHREIBUNG |
+| Rückgabewert | type | BESCHREIBUNG |
 | ------------ | ---- | ----------- |
 | <*current-array-item*> | Beliebig | Das aktuelle Element im Array für die aktuelle Iteration der Aktion |
 ||||
@@ -2268,7 +2268,7 @@ items('<loopName>')
 | <*loopName*> | Ja | string | Der Name der for-each-Schleife |
 |||||
 
-| Rückgabewert | Type | BESCHREIBUNG |
+| Rückgabewert | type | BESCHREIBUNG |
 | ------------ | ---- | ----------- |
 | <*item*> | Beliebig | Das Element aus dem aktuellen Zyklus in der angegebenen for-each-Schleife |
 ||||
@@ -2296,7 +2296,7 @@ iterationIndexes('<loopName>')
 | <*loopName*> | Ja | string | Name der „Until“-Schleife | 
 ||||| 
 
-| Rückgabewert | Type | BESCHREIBUNG | 
+| Rückgabewert | type | BESCHREIBUNG | 
 | ------------ | ---- | ----------- | 
 | <*index*> | Integer | Indexwert für die aktuelle Iteration in der angegebenen „Until“-Schleife | 
 |||| 
@@ -2386,7 +2386,7 @@ json('<value>')
 | <*value*> | Ja | Zeichenfolge oder XML | Die Zeichenfolge oder das XML-Objekt, die oder das konvertiert werden soll |
 |||||
 
-| Rückgabewert | Type | BESCHREIBUNG |
+| Rückgabewert | type | BESCHREIBUNG |
 | ------------ | ---- | ----------- |
 | <*JSON-result*> | Nativer JSON-Typ oder natives JSON-Objekt | Der Wert des nativen JSON-Typs oder das native JSON-Objekt für die angegebene Zeichenfolge oder das angegebene XML-Objekt. Hat die Zeichenfolge den Nullwert (NULL), gibt die Funktion ein leeres Objekt zurück. |
 ||||
@@ -2458,7 +2458,7 @@ intersection('<collection1>', '<collection2>', ...)
 | <*collection1*>, <*collection2*>, ... | Ja | Array oder Objekt, aber nicht beide | Die Sammlungen, aus denen Sie *nur* die gemeinsame Elemente wünschen |
 |||||
 
-| Rückgabewert | Type | BESCHREIBUNG |
+| Rückgabewert | type | BESCHREIBUNG |
 | ------------ | ---- | ----------- |
 | <*common-items*> | Array bzw. Objekt | Eine Sammlung, die nur die Elemente enthält, die in jeder der angegebenen Sammlungen enthalten sind. |
 ||||
@@ -2489,7 +2489,7 @@ join([<collection>], '<delimiter>')
 | <*delimiter*> | Ja | string | Das Trennzeichen, das zwischen den einzelnen Elementen in der Ergebniszeichenfolge steht. |
 |||||
 
-| Rückgabewert | Type | BESCHREIBUNG |
+| Rückgabewert | type | BESCHREIBUNG |
 | ------------ | ---- | ----------- |
 | <*char1*><*delimiter*><*char2*><*delimiter*>... | string | Die resultierende Zeichenfolge, die aus allen Elementen im angegebenen Array erstellt wurde |
 ||||
@@ -2520,7 +2520,7 @@ last([<collection>])
 | <*collection*> | Ja | Zeichenfolge oder Array | Die Sammlung, aus der das letzte Element abgerufen werden soll |
 |||||
 
-| Rückgabewert | Type | BESCHREIBUNG |
+| Rückgabewert | type | BESCHREIBUNG |
 | ------------ | ---- | ----------- |
 | <*last-collection-item*> | Zeichenfolge bzw. Array | Das letzte Element in der Sammlung |
 ||||
@@ -2556,7 +2556,7 @@ lastIndexOf('<text>', '<searchText>')
 | <*searchText*> | Ja | string | Die Teilzeichenfolge, nach der gesucht werden soll |
 |||||
 
-| Rückgabewert | Type | BESCHREIBUNG |
+| Rückgabewert | type | BESCHREIBUNG |
 | ------------ | ---- | ----------- |
 | <*ending-index-value*> | Integer | Die Anfangsposition oder der Indexwert des letzten Vorkommens der angegebenen Teilzeichenfolge. <p>Wird die Zeichenfolge nicht gefunden, wird „-1“ zurückgegeben. |
 ||||
@@ -2587,7 +2587,7 @@ length([<collection>])
 | <*collection*> | Ja | Zeichenfolge oder Array | Die Sammlung mit den Elementen, die gezählt werden sollen |
 |||||
 
-| Rückgabewert | Type | BESCHREIBUNG |
+| Rückgabewert | type | BESCHREIBUNG |
 | ------------ | ---- | ----------- |
 | <*length-or-count*> | Integer | Die Anzahl von Elementen in der Sammlung |
 ||||
@@ -2621,7 +2621,7 @@ less('<value>', '<compareTo>')
 | <*compareTo*> | Ja | Integer, Float bzw. Zeichenfolge | Das Vergleichselement |
 |||||
 
-| Rückgabewert | Type | BESCHREIBUNG |
+| Rückgabewert | type | BESCHREIBUNG |
 | ------------ | ---- | ----------- |
 | "true" oder "false" | Boolean | Gibt „true“ zurück, wenn der erste Wert kleiner ist als der zweite Wert. Gibt „false“ zurück, wenn der erste Wert größer gleich dem zweiten Wert ist. |
 ||||
@@ -2658,7 +2658,7 @@ lessOrEquals('<value>', '<compareTo>')
 | <*compareTo*> | Ja | Integer, Float bzw. Zeichenfolge | Das Vergleichselement |
 |||||
 
-| Rückgabewert | Type | BESCHREIBUNG |
+| Rückgabewert | type | BESCHREIBUNG |
 | ------------ | ---- | ----------- |
 | "true" oder "false"  | Boolean | Gibt „true“ zurück, wenn der erste Wert kleiner gleich dem zweiten Wert ist. Gibt „false“ zurück, wenn der erste Wert größer ist als der zweite Wert. |
 ||||
@@ -2688,7 +2688,7 @@ Diese Funktion funktioniert nur mit Triggern und Aktionen für die Connectortype
 listCallbackUrl()
 ```
 
-| Rückgabewert | Type | BESCHREIBUNG |
+| Rückgabewert | type | BESCHREIBUNG |
 | ------------ | ---- | ----------- |
 | <*callback-URL*> | string | Die Rückruf-URL für einen Trigger oder eine Aktion |
 ||||
@@ -2716,7 +2716,7 @@ max([<number1>, <number2>, ...])
 | [<*number1*>, <*number2*>, ...] | Ja | Array: Integer, Float oder beide | Das Array mit den Zahlen, aus denen Sie den größten Wert abrufen möchten |
 |||||
 
-| Rückgabewert | Type | BESCHREIBUNG |
+| Rückgabewert | type | BESCHREIBUNG |
 | ------------ | ---- | ----------- |
 | <*max-value*> | Integer oder Float | Der größte Wert in dem angegebenen Array oder in der angegebenen Menge von Zahlen |
 ||||
@@ -2749,7 +2749,7 @@ min([<number1>, <number2>, ...])
 | [<*number1*>, <*number2*>, ...] | Ja | Array: Integer, Float oder beide | Das Array mit den Zahlen, aus denen Sie den kleinsten Wert abrufen möchten |
 |||||
 
-| Rückgabewert | Type | BESCHREIBUNG |
+| Rückgabewert | type | BESCHREIBUNG |
 | ------------ | ---- | ----------- |
 | <*min-value*> | Integer oder Float | Der kleinste Wert in der angegebenen Menge von Zahlen oder in dem angegebenen Array |
 ||||
@@ -2782,7 +2782,7 @@ mod(<dividend>, <divisor>)
 | <*divisor*> | Ja | Integer oder Float | Die Zahl, durch die der *Dividend* geteilt wird; darf nicht 0 sein |
 |||||
 
-| Rückgabewert | Type | BESCHREIBUNG |
+| Rückgabewert | type | BESCHREIBUNG |
 | ------------ | ---- | ----------- |
 | <*modulo-result*> | Integer oder Float | Der Rest aus der Division der ersten Zahl durch die zweite Zahl |
 ||||
@@ -2813,7 +2813,7 @@ mul(<multiplicand1>, <multiplicand2>)
 | <*multiplicand2*> | Ja | Integer oder Float | Die Zahl, mit der *multiplicand1* multipliziert werden soll. |
 |||||
 
-| Rückgabewert | Type | BESCHREIBUNG |
+| Rückgabewert | type | BESCHREIBUNG |
 | ------------ | ---- | ----------- |
 | <*product-result*> | Integer oder Float | Das Produkt aus der Multiplikation der ersten Zahl mit der zweiten Zahl |
 ||||
@@ -2848,7 +2848,7 @@ multipartBody('<actionName>', <index>)
 | <*index*> | Ja | Integer | Der Indexwert des von Ihnen gewünschten Teils |
 |||||
 
-| Rückgabewert | Type | BESCHREIBUNG |
+| Rückgabewert | type | BESCHREIBUNG |
 | ------------ | ---- | ----------- |
 | <*body*> | string | Der Textteil für den angegebenen Teil |
 ||||
@@ -2869,7 +2869,7 @@ not(<expression>)
 | <*expression*> | Ja | Boolean | Der zu überprüfende Ausdruck |
 |||||
 
-| Rückgabewert | Type | BESCHREIBUNG |
+| Rückgabewert | type | BESCHREIBUNG |
 | ------------ | ---- | ----------- |
 | "true" oder "false" | Boolean | Gibt „true“ zurück, wenn der Ausdruck gleich „false“ ist. Gibt „false“ zurück, wenn der Ausdruck gleich „true“ ist. |
 ||||
@@ -2918,7 +2918,7 @@ or(<expression1>, <expression2>, ...)
 | <*expression1*>, <*expression2*>, ... | Ja | Boolean | Die Ausdrücke, die überprüft werden sollen |
 |||||
 
-| Rückgabewert | Type | BESCHREIBUNG |
+| Rückgabewert | type | BESCHREIBUNG |
 | ------------ | ---- | ----------- |
 | "true" oder "false" | Boolean | Gibt „true“ zurück, wenn mindestens ein Ausdruck gleich „true“ ist. Gibt „false“ zurück, wenn alle Ausdrücke gleich „false“ sind. |
 ||||
@@ -2966,7 +2966,7 @@ parameters('<parameterName>')
 | <*parameterName*> | Ja | string | Der Name des Parameters, dessen Wert Sie abrufen möchten |
 |||||
 
-| Rückgabewert | Type | BESCHREIBUNG |
+| Rückgabewert | type | BESCHREIBUNG |
 | ------------ | ---- | ----------- |
 | <*parameter-value*> | Beliebig | Der Wert des angegebenen Parameters |
 ||||
@@ -3005,7 +3005,7 @@ rand(<minValue>, <maxValue>)
 | <*maxValue*> | Ja | Integer | Die ganze Zahl, die im Bereich auf die größte Zahl folgt, die die Funktion zurückgeben kann |
 |||||
 
-| Rückgabewert | Type | BESCHREIBUNG |
+| Rückgabewert | type | BESCHREIBUNG |
 | ------------ | ---- | ----------- |
 | <*random-result*> | Integer | Die zufällige ganze Zahl, die aus dem angegebenen Bereich zurückgegeben wird |
 ||||
@@ -3036,7 +3036,7 @@ range(<startIndex>, <count>)
 | <*count*> | Ja | Integer | Die Anzahl von ganzen Zahlen im Array |
 |||||
 
-| Rückgabewert | Type | BESCHREIBUNG |
+| Rückgabewert | type | BESCHREIBUNG |
 | ------------ | ---- | ----------- |
 | [<*range-result*>] | Array | Das Array mit ganzen Zahlen ab dem angegebenen Index |
 ||||
@@ -3068,7 +3068,7 @@ replace('<text>', '<oldText>', '<newText>')
 | <*newText*> | Ja | string | Die Ersatzzeichenfolge |
 |||||
 
-| Rückgabewert | Type | BESCHREIBUNG |
+| Rückgabewert | type | BESCHREIBUNG |
 | ------------ | ---- | ----------- |
 | <*updated-text*> | string | Die aktualisierte Zeichenfolge, nachdem die Teilzeichenfolge ersetzt wurde. <p>Wenn die Teilzeichenfolge nicht gefunden wird, wird die ursprüngliche Zeichenfolge zurückgegeben. |
 ||||
@@ -3099,7 +3099,7 @@ removeProperty(<object>, '<property>')
 | <*property*> | Ja | string | Der Name der zu Eigenschaft, die entfernt werden soll |
 |||||
 
-| Rückgabewert | Type | BESCHREIBUNG |
+| Rückgabewert | type | BESCHREIBUNG |
 | ------------ | ---- | ----------- |
 | <*updated-object*> | Object | Das aktualisierte JSON-Objekt ohne die angegebene Eigenschaft |
 ||||
@@ -3130,7 +3130,7 @@ setProperty(<object>, '<property>', <value>)
 | <*value*> | Ja | Beliebig | Der Wert, auf den die angegebene Eigenschaft festgelegt werden soll |
 |||||
 
-| Rückgabewert | Type | BESCHREIBUNG |
+| Rückgabewert | type | BESCHREIBUNG |
 | ------------ | ---- | ----------- |
 | <*updated-object*> | Object | Das aktualisierte JSON-Objekt, dessen Eigenschaft Sie festlegen |
 ||||
@@ -3160,7 +3160,7 @@ skip([<collection>], <count>)
 | <*count*> | Ja | Integer | Eine positive ganze Zahl für die Anzahl von Elementen, die am Anfang entfernt werden sollen |
 |||||
 
-| Rückgabewert | Type | BESCHREIBUNG |
+| Rückgabewert | type | BESCHREIBUNG |
 | ------------ | ---- | ----------- |
 | [<*updated-collection*>] | Array | Die aktualisierte Auflistung, nachdem die angegebenen Elemente entfernt wurden |
 ||||
@@ -3191,7 +3191,7 @@ split('<text>', '<delimiter>')
 | <*delimiter*> | Ja | string | Das Zeichen in der ursprünglichen Zeichenfolge, das als Trennzeichen verwendet wird |
 |||||
 
-| Rückgabewert | Type | BESCHREIBUNG |
+| Rückgabewert | type | BESCHREIBUNG |
 | ------------ | ---- | ----------- |
 | [<*substring1*>,<*substring2*>,...] | Array | Ein Array mit Teilzeichenfolgen aus der ursprünglichen Zeichenfolge, das durch Trennzeichen getrennt ist |
 ||||
@@ -3222,7 +3222,7 @@ startOfDay('<timestamp>', '<format>'?)
 | <*format*> | Nein | string | Entweder ein [einzelner Formatbezeichner](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) oder ein [benutzerdefiniertes Formatmuster](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings). Das Standardformat für den Zeitstempel ist [„o“](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) (JJJJ-MM-TTT hh:mm:ss:fffffffK), das mit [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) übereinstimmt und in dem Zeitzoneninformationen erhalten bleiben. |
 |||||
 
-| Rückgabewert | Type | BESCHREIBUNG |
+| Rückgabewert | type | BESCHREIBUNG |
 | ------------ | ---- | ----------- |
 | <*updated-timestamp*> | string | Der angegebene Zeitstempel, der jedoch bei null Uhr für den Tag beginnt |
 ||||
@@ -3253,7 +3253,7 @@ startOfHour('<timestamp>', '<format>'?)
 | <*format*> | Nein | string | Entweder ein [einzelner Formatbezeichner](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) oder ein [benutzerdefiniertes Formatmuster](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings). Das Standardformat für den Zeitstempel ist [„o“](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) (JJJJ-MM-TTT hh:mm:ss:fffffffK), das mit [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) übereinstimmt und in dem Zeitzoneninformationen erhalten bleiben. |
 |||||
 
-| Rückgabewert | Type | BESCHREIBUNG |
+| Rückgabewert | type | BESCHREIBUNG |
 | ------------ | ---- | ----------- |
 | <*updated-timestamp*> | string | Der angegebene Zeitstempel, der jedoch bei null Minuten für die Stunde beginnt |
 ||||
@@ -3284,7 +3284,7 @@ startOfMonth('<timestamp>', '<format>'?)
 | <*format*> | Nein | string | Entweder ein [einzelner Formatbezeichner](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) oder ein [benutzerdefiniertes Formatmuster](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings). Das Standardformat für den Zeitstempel ist [„o“](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) (JJJJ-MM-TTT hh:mm:ss:fffffffK), das mit [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) übereinstimmt und in dem Zeitzoneninformationen erhalten bleiben. |
 |||||
 
-| Rückgabewert | Type | BESCHREIBUNG |
+| Rückgabewert | type | BESCHREIBUNG |
 | ------------ | ---- | ----------- |
 | <*updated-timestamp*> | string | Der angegebene Zeitstempel, der jedoch am ersten Tag des Monats um null Uhr beginnt |
 ||||
@@ -3317,7 +3317,7 @@ startsWith('<text>', '<searchText>')
 | <*searchText*> | Ja | string | Die beginnende Zeichenfolge, nach der gesucht werden soll |
 |||||
 
-| Rückgabewert | Type | BESCHREIBUNG |
+| Rückgabewert | type | BESCHREIBUNG |
 | ------------ | ---- | ----------- |
 | "true" oder "false"  | Boolean | Gibt „true“ zurück, wenn die beginnende Teilzeichenfolge gefunden wurde. Gibt „false“ zurück, wenn sie nicht gefunden wurde. |
 ||||
@@ -3357,7 +3357,7 @@ string(<value>)
 | <*value*> | Ja | Beliebig | Der zu konvertierende Wert |
 |||||
 
-| Rückgabewert | Type | BESCHREIBUNG |
+| Rückgabewert | type | BESCHREIBUNG |
 | ------------ | ---- | ----------- |
 | <*string-value*> | string | Die Zeichenfolgenversion des angegebenen Werts |
 ||||
@@ -3398,7 +3398,7 @@ sub(<minuend>, <subtrahend>)
 | <*subtrahend*> | Ja | Integer oder Float | Die Zahl, die von *minuend* subtrahiert werden soll |
 |||||
 
-| Rückgabewert | Type | BESCHREIBUNG |
+| Rückgabewert | type | BESCHREIBUNG |
 | ------------ | ---- | ----------- |
 | <*result*> | Integer oder Float | Das Ergebnis aus der Subtraktion der zweiten Zahl von der ersten Zahl |
 ||||
@@ -3431,7 +3431,7 @@ substring('<text>', <startIndex>, <length>)
 | <*length*> | Ja | Integer | Eine positive Anzahl von Zeichen, die in der Teilzeichenfolge enthalten sein sollen |
 |||||
 
-| Rückgabewert | Type | BESCHREIBUNG |
+| Rückgabewert | type | BESCHREIBUNG |
 | ------------ | ---- | ----------- |
 | <*substring-result*> | string | Eine Teilzeichenfolge, die die angegebene Anzahl von Zeichen enthält und in der Quellzeichenfolge an der angegebenen Indexposition beginnt |
 ||||
@@ -3465,7 +3465,7 @@ subtractFromTime('<timestamp>', <interval>, '<timeUnit>', '<format>'?)
 | <*format*> | Nein | string | Entweder ein [einzelner Formatbezeichner](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) oder ein [benutzerdefiniertes Formatmuster](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings). Das Standardformat für den Zeitstempel ist [„o“](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) (JJJJ-MM-TTT hh:mm:ss:fffffffK), das mit [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) übereinstimmt und in dem Zeitzoneninformationen erhalten bleiben. |
 |||||
 
-| Rückgabewert | Type | BESCHREIBUNG |
+| Rückgabewert | type | BESCHREIBUNG |
 | ------------ | ---- | ----------- |
 | <*updated-timestamp*> | string | Der Zeitstempel abzüglich der angegebenen Anzahl von Zeiteinheiten |
 ||||
@@ -3507,7 +3507,7 @@ take([<collection>], <count>)
 | <*count*> | Ja | Integer | Eine positive ganze Zahl für die Anzahl von Elementen, die ab dem Anfang abgerufen werden sollen |
 |||||
 
-| Rückgabewert | Type | BESCHREIBUNG |
+| Rückgabewert | type | BESCHREIBUNG |
 | ------------ | ---- | ----------- |
 | <*subset*> oder [<*subset*>] | Zeichenfolge bzw. Array | Eine Zeichenfolge oder ein Array, die oder das die angegebene Anzahl von Elementen ab dem Anfang der ursprünglichen Sammlung enthält |
 ||||
@@ -3542,7 +3542,7 @@ ticks('<timestamp>')
 | <*timestamp*> | Ja | string | Die Zeichenfolge für einen Zeitstempel |
 |||||
 
-| Rückgabewert | Type | BESCHREIBUNG |
+| Rückgabewert | type | BESCHREIBUNG |
 | ------------ | ---- | ----------- |
 | <*ticks-number*> | Integer | Die Anzahl von Ticks seit dem angegebenen Zeitstempel |
 ||||
@@ -3562,7 +3562,7 @@ toLower('<text>')
 | <*text*> | Ja | string | Die Zeichenfolge, die in Kleinbuchstaben zurückgegeben werden soll |
 |||||
 
-| Rückgabewert | Type | BESCHREIBUNG |
+| Rückgabewert | type | BESCHREIBUNG |
 | ------------ | ---- | ----------- |
 | <*lowercase-text*> | string | Die ursprüngliche Zeichenfolge in Kleinbuchstaben |
 ||||
@@ -3592,7 +3592,7 @@ toUpper('<text>')
 | <*text*> | Ja | string | Die Zeichenfolge, die in Großbuchstaben zurückgegeben werden soll |
 |||||
 
-| Rückgabewert | Type | BESCHREIBUNG |
+| Rückgabewert | type | BESCHREIBUNG |
 | ------------ | ---- | ----------- |
 | <*uppercase-text*> | string | Die ursprüngliche Zeichenfolge in Großbuchstaben |
 ||||
@@ -3624,7 +3624,7 @@ Außerdem gibt es für diese Funktion Kurzformversionen. Informationen hierzu fi
 trigger()
 ```
 
-| Rückgabewert | Type | BESCHREIBUNG |
+| Rückgabewert | type | BESCHREIBUNG |
 | ------------ | ---- | ----------- |
 | <*trigger-output*> | string | Die Ausgabe von einem Trigger zur Laufzeit |
 ||||
@@ -3641,7 +3641,7 @@ Siehe [trigger()](#trigger).
 triggerBody()
 ```
 
-| Rückgabewert | Type | BESCHREIBUNG |
+| Rückgabewert | type | BESCHREIBUNG |
 | ------------ | ---- | ----------- |
 | <*trigger-body-output*> | string | Die `body`-Ausgabe des Triggers |
 ||||
@@ -3661,7 +3661,7 @@ triggerFormDataMultiValues('<key>')
 | <*key*> | Ja | string | Der Name des Schlüssels, dessen Wert Sie abrufen möchten |
 |||||
 
-| Rückgabewert | Type | BESCHREIBUNG |
+| Rückgabewert | type | BESCHREIBUNG |
 | ------------ | ---- | ----------- |
 | [<*array-with-key-values*>] | Array | Ein Array mit allen Werten, die mit dem angegebenen Schlüssel übereinstimmen. |
 ||||
@@ -3692,7 +3692,7 @@ triggerFormDataValue('<key>')
 | <*key*> | Ja | string | Der Name des Schlüssels, dessen Wert Sie abrufen möchten |
 |||||
 
-| Rückgabewert | Type | BESCHREIBUNG |
+| Rückgabewert | type | BESCHREIBUNG |
 | ------------ | ---- | ----------- |
 | <*key-value*> | string | Der Wert in dem angegebenen Schlüssel |
 ||||
@@ -3722,7 +3722,7 @@ triggerMultipartBody(<index>)
 | <*index*> | Ja | Integer | Der Indexwert des von Ihnen gewünschten Teils |
 |||||
 
-| Rückgabewert | Type | BESCHREIBUNG |
+| Rückgabewert | type | BESCHREIBUNG |
 | ------------ | ---- | ----------- |
 | <*body*> | string | Der Textteil für den angegebenen Teil in der mehrteiligen Ausgabe eines Triggers |
 ||||
@@ -3739,7 +3739,7 @@ Siehe [trigger()](#trigger).
 triggerOutputs()
 ```
 
-| Rückgabewert | Type | BESCHREIBUNG |
+| Rückgabewert | type | BESCHREIBUNG |
 | ------------ | ---- | ----------- |
 | <*trigger-output*> | string | Die Ausgabe von einem Trigger zur Laufzeit  |
 ||||
@@ -3759,7 +3759,7 @@ trim('<text>')
 | <*text*> | Ja | string | Die Zeichenfolge, in der sich die führenden und nachfolgende Leerzeichen befinden, die entfernt werden sollen |
 |||||
 
-| Rückgabewert | Type | BESCHREIBUNG |
+| Rückgabewert | type | BESCHREIBUNG |
 | ------------ | ---- | ----------- |
 | <*updatedText*> | string | Eine aktualisierte Version der ursprünglichen Zeichenfolge ohne führende oder nachfolgende Leerzeichen |
 ||||
@@ -3791,7 +3791,7 @@ union([<collection1>], [<collection2>], ...)
 | <*collection1*>, <*collection2*>, ...  | Ja | Array oder Objekt, aber nicht beide | Die Sammlungen, aus denen Sie *alle* Elemente wünschen |
 |||||
 
-| Rückgabewert | Type | BESCHREIBUNG |
+| Rückgabewert | type | BESCHREIBUNG |
 | ------------ | ---- | ----------- |
 | <*updatedCollection*> | Array bzw. Objekt | Eine Sammlung mit allen Elementen aus den angegebenen Sammlungen – keine Duplikate |
 ||||
@@ -3823,7 +3823,7 @@ uriComponent('<value>')
 | <*value*> | Ja | string | Die Zeichenfolge, die in das URI-codierte Format konvertiert werden soll |
 |||||
 
-| Rückgabewert | Type | BESCHREIBUNG |
+| Rückgabewert | type | BESCHREIBUNG |
 | ------------ | ---- | ----------- |
 | <*encoded-uri*> | string | Die URI-codierte Zeichenfolge mit Escapezeichen |
 ||||
@@ -3853,7 +3853,7 @@ uriComponentToBinary('<value>')
 | <*value*> | Ja | string | Die URI-codierte Zeichenfolge, die konvertiert werden soll |
 |||||
 
-| Rückgabewert | Type | BESCHREIBUNG |
+| Rückgabewert | type | BESCHREIBUNG |
 | ------------ | ---- | ----------- |
 | <*binary-for-encoded-uri*> | string | Die Binärversion für die URI-codierte Zeichenfolge Der binäre Inhalt ist base64-codiert und wird von `$content` dargestellt. |
 ||||
@@ -3888,7 +3888,7 @@ uriComponentToString('<value>')
 | <*value*> | Ja | string | Die URI-codierte Zeichenfolge, die decodiert werden soll |
 |||||
 
-| Rückgabewert | Type | BESCHREIBUNG |
+| Rückgabewert | type | BESCHREIBUNG |
 | ------------ | ---- | ----------- |
 | <*decoded-uri*> | string | Die decodierte Version für die URI-codierte Zeichenfolge |
 ||||
@@ -3918,7 +3918,7 @@ uriHost('<uri>')
 | <*uri*> | Ja | string | Der URI, dessen `host`-Wert Sie abrufen möchten |
 |||||
 
-| Rückgabewert | Type | BESCHREIBUNG |
+| Rückgabewert | type | BESCHREIBUNG |
 | ------------ | ---- | ----------- |
 | <*host-value*> | string | Der `host`-Wert des angegebenen URIs |
 ||||
@@ -3948,7 +3948,7 @@ uriPath('<uri>')
 | <*uri*> | Ja | string | Der URI, dessen `path`-Wert Sie abrufen möchten |
 |||||
 
-| Rückgabewert | Type | BESCHREIBUNG |
+| Rückgabewert | type | BESCHREIBUNG |
 | ------------ | ---- | ----------- |
 | <*path-value*> | string | Der `path`-Wert des angegebenen URIs. Hat `path` keinen Wert, wird das Zeichen „/“ zurückgegeben. |
 ||||
@@ -3978,7 +3978,7 @@ uriPathAndQuery('<uri>')
 | <*uri*> | Ja | string | Der URI, dessen `path`- und `query`-Wert abgerufen werden sollen |
 |||||
 
-| Rückgabewert | Type | BESCHREIBUNG |
+| Rückgabewert | type | BESCHREIBUNG |
 | ------------ | ---- | ----------- |
 | <*path-query-value*> | string | Der `path`- und der `query`-Wert des angegebenen URIs. Gibt `path` keinen Wert an, wird das Zeichen „/“ zurückgegeben. |
 ||||
@@ -4008,7 +4008,7 @@ uriPort('<uri>')
 | <*uri*> | Ja | string | Der URI, dessen `port`-Wert Sie abrufen möchten |
 |||||
 
-| Rückgabewert | Type | BESCHREIBUNG |
+| Rückgabewert | type | BESCHREIBUNG |
 | ------------ | ---- | ----------- |
 | <*port-value*> | Integer | Der `port`-Wert des angegebenen URIs. Gibt `port` keinen Wert an, wird der Standardport für das Protokoll zurückgegeben. |
 ||||
@@ -4038,7 +4038,7 @@ uriQuery('<uri>')
 | <*uri*> | Ja | string | Der URI, dessen `query`-Wert Sie abrufen möchten |
 |||||
 
-| Rückgabewert | Type | BESCHREIBUNG |
+| Rückgabewert | type | BESCHREIBUNG |
 | ------------ | ---- | ----------- |
 | <*query-value*> | string | Der `query`-Wert des angegebenen URIs |
 ||||
@@ -4068,7 +4068,7 @@ uriScheme('<uri>')
 | <*uri*> | Ja | string | Der URI, dessen `scheme`-Wert Sie abrufen möchten |
 |||||
 
-| Rückgabewert | Type | BESCHREIBUNG |
+| Rückgabewert | type | BESCHREIBUNG |
 | ------------ | ---- | ----------- |
 | <*scheme-value*> | string | Der `scheme`-Wert des angegebenen URIs |
 ||||
@@ -4101,7 +4101,7 @@ Optional können Sie mit dem <*format*>-Parameter ein anderes Format angeben.
 | <*format*> | Nein | string | Entweder ein [einzelner Formatbezeichner](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) oder ein [benutzerdefiniertes Formatmuster](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings). Das Standardformat für den Zeitstempel ist [„o“](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) (JJJJ-MM-TTT hh:mm:ss:fffffffK), das mit [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) übereinstimmt und in dem Zeitzoneninformationen erhalten bleiben. |
 |||||
 
-| Rückgabewert | Type | BESCHREIBUNG |
+| Rückgabewert | type | BESCHREIBUNG |
 | ------------ | ---- | ----------- |
 | <*current-timestamp*> | string | Das aktuelle Datum und die aktuelle Uhrzeit |
 ||||
@@ -4143,7 +4143,7 @@ variables('<variableName>')
 | <*variableName*> | Ja | string | Der Name der Variablen, deren Wert Sie abrufen möchten |
 |||||
 
-| Rückgabewert | Type | BESCHREIBUNG |
+| Rückgabewert | type | BESCHREIBUNG |
 | ------------ | ---- | ----------- |
 | <*variable-value*> | Beliebig | Der Wert der angegebenen Variablen |
 ||||
@@ -4197,7 +4197,7 @@ xml('<value>')
 | <*value*> | Ja | string | Die Zeichenfolge mit dem JSON-Objekt, das konvertiert werden soll. <p>Das JSON-Objekt darf nur eine Stammeigenschaft haben, die kein Array sein darf. <br>Verwenden Sie den umgekehrten Schrägstrich (\\) als Escapezeichen für das doppelte Anführungszeichen ("). |
 |||||
 
-| Rückgabewert | Type | BESCHREIBUNG |
+| Rückgabewert | type | BESCHREIBUNG |
 | ------------ | ---- | ----------- |
 | <*xml-version*> | Object | Das codierte XML-Objekt für die angegebene Zeichenfolge oder das angegebene JSON-Objekt |
 ||||
@@ -4256,7 +4256,7 @@ xpath('<xml>', '<xpath>')
 | <*xpath*> | Ja | Beliebig | Der XPath-Ausdruck, der für die Suche nach übereinstimmenden XML-Knoten oder -Werten verwendet wird |
 |||||
 
-| Rückgabewert | Type | BESCHREIBUNG |
+| Rückgabewert | type | BESCHREIBUNG |
 | ------------ | ---- | ----------- |
 | <*xml-node*> | XML | Ein XML-Knoten, wenn nur ein einziger Knoten mit dem angegebenen XPath-Ausdruck übereinstimmt |
 | <*value*> | Beliebig | Der Wert aus einem XML-Knoten, wenn nur ein einziger Wert mit dem angegebenen XPath-Ausdruck übereinstimmt |
@@ -4303,7 +4303,7 @@ In diesem Beispiel wird in beiden Ausdrücken nach Knoten gesucht, die mit dem `
 
 * *Ausdruck 2*
 
-  `xpath(xml(body('Http')), '/*[local-name=()=\"file\"] and namespace-uri()=\"http://contoso.com\"/*[local-name()]=\"location\" and namespace-uri()=\"\"]')`
+  `xpath(xml(body('Http')), '/*[local-name()=\"file\" and namespace-uri()=\"http://contoso.com\"]/*[local-name()=\"location\"]')`
 
 Dies sind die Argumente:
 
@@ -4317,9 +4317,9 @@ Dies sind die Argumente:
 
   * `/*[name()=\"file\"]/*[name()=\"location\"]`
 
-  * `/*[local-name=()=\"file\"] and namespace-uri()=\"http://contoso.com\"/*[local-name()]=\"location\" and namespace-uri()=\"\"]`
+  * `/*[local-name()=\"file\" and namespace-uri()=\"http://contoso.com\"]/*[local-name()=\"location\"]`
 
-Dies ist der Ergebnisknoten, der mit dem `<location></location`-Knoten übereinstimmt:
+Dies ist der Ergebnisknoten, der mit dem `<location></location>`-Knoten übereinstimmt:
 
 ```xml
 <location xmlns="https://contoso.com">Paris</location>

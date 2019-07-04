@@ -11,17 +11,17 @@ author: danimir
 ms.author: danil
 ms.reviewer: jrasnik, carlrab
 manager: craigg
-ms.date: 03/12/2019
-ms.openlocfilehash: 089f5335a65151c9c576346995f0bee34b5d10b4
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.date: 05/21/2019
+ms.openlocfilehash: 6824a7151a0c007d6fe4ba021f274886a3cf0dcb
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65791899"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67447819"
 ---
 # <a name="azure-sql-database-metrics-and-diagnostics-logging"></a>Protokollierung von Metriken und Diagnosen für Azure SQL-Datenbank
 
-In diesem Thema erfahren Sie, wie Sie die Protokollierung von Diagnosetelemetriedaten für Azure SQL-Datenbank über das Azure-Portal, PowerShell, die Azure-Befehlszeilenschnittstelle (Azure CLI), Azure Monitor-REST-API und Azure Resource Manager-Vorlage konfigurieren. Diese Diagnosen können verwendet werden, um die Ressourcennutzung und Statistiken zur Abfrageausführung zu messen. 
+In diesem Thema erfahren Sie, wie Sie die Protokollierung von Diagnosetelemetriedaten für Azure SQL-Datenbank über das Azure-Portal, PowerShell, die Azure-Befehlszeilenschnittstelle (Azure CLI), Azure Monitor-REST-API und Azure Resource Manager-Vorlage konfigurieren. Diese Diagnosen können verwendet werden, um die Ressourcennutzung und Statistiken zur Abfrageausführung zu messen.
 
 Einzeldatenbanken, Pooldatenbanken in Pools für elastische Datenbanken und Instanzdatenbanken in einer verwalteten Instanz können Metriken und Diagnoseprotokolle zur einfacheren Leistungsüberwachung streamen. Sie können eine Datenbank dazu konfigurieren, Informationen zum Ressourcenverbrauch, zu Workern und Sitzungen sowie zur Konnektivität in eine der folgenden Azure-Ressourcen zu übertragen:
 
@@ -119,7 +119,7 @@ Um das Streaming von Diagnosetelemetriedaten für eine Ressource des Pools für 
 1. Konfigurieren Sie außerdem das Streaming der Diagnosetelemetrie für jede Datenbank innerhalb des Pools für elastische Datenbanken, den Sie überwachen möchten, indem Sie die im nächsten Abschnitt beschriebenen Schritte ausführen.
 
 > [!IMPORTANT]
-> Neben Diagnosetelemetriedaten für einen Pool für elastische Datenbanken müssen Sie auch Diagnosetelemetriedaten für jede Datenbank in diesem Pool konfigurieren, wie weiter unten beschrieben wird. 
+> Neben Diagnosetelemetriedaten für einen Pool für elastische Datenbanken müssen Sie auch Diagnosetelemetriedaten für jede Datenbank in diesem Pool konfigurieren, wie weiter unten beschrieben wird.
 
 ### <a name="configure-streaming-of-diagnostics-telemetry-for-single-database-or-database-in-elastic-pool"></a>Konfigurieren des Streamings von Diagnosetelemetriedaten für eine Einzeldatenbank oder für eine Datenbank in einem Pool für elastische Datenbanken
 
@@ -181,7 +181,7 @@ Führen Sie die folgenden Schritte aus, um das Streaming von Diagnosetelemetried
 1. Konfigurieren Sie außerdem das Streaming der Diagnosetelemetrie für jede Instanzdatenbank innerhalb der verwalteten Instanz, die Sie überwachen möchten, indem Sie die im nächsten Abschnitt beschriebenen Schritte ausführen.
 
 > [!IMPORTANT]
-> Neben Diagnosetelemetriedaten für eine verwaltete Instanz müssen auch Diagnosetelemetriedaten für jede Instanzdatenbank konfiguriert werden, wie weiter unten beschrieben. 
+> Neben Diagnosetelemetriedaten für eine verwaltete Instanz müssen auch Diagnosetelemetriedaten für jede Instanzdatenbank konfiguriert werden, wie weiter unten beschrieben.
 
 ### <a name="configure-streaming-of-diagnostics-telemetry-for-instance-databases"></a>Konfigurieren des Streamings von Diagnosetelemetriedaten für Instanzdatenbanken
 
@@ -261,6 +261,7 @@ Geben Sie die Arbeitsbereichsressourcen-ID \<$WSID\> als Parameter an, wenn Sie 
     PS C:\> $WSID = "/subscriptions/<subID>/resourcegroups/<RG_NAME>/providers/microsoft.operationalinsights/workspaces/<WS_NAME>"
     PS C:\> .\Enable-AzureRMDiagnostics.ps1 -WSID $WSID
     ```
+
    Ersetzen Sie \<subID\> durch die Abonnement-ID, \<RG_NAME\> durch den Namen der Ressourcengruppe und \<WS_NAME\> durch den Namen des Arbeitsbereichs.
 
 ### <a name="azure-cli"></a>Azure-Befehlszeilenschnittstelle
@@ -397,10 +398,6 @@ Ein Blobname für das Speichern von Daten aus einem Pool für elastische Datenba
 insights-{metrics|logs}-{category name}/resourceId=/SUBSCRIPTIONS/{subscription ID}/ RESOURCEGROUPS/{resource group name}/PROVIDERS/Microsoft.SQL/servers/{resource_server}/ elasticPools/{elastic_pool_name}/y={four-digit numeric year}/m={two-digit numeric month}/d={two-digit numeric day}/h={two-digit 24-hour clock hour}/m=00/PT1H.json
 ```
 
-### <a name="download-metrics-and-logs-from-storage"></a>Herunterladen von Metriken und Protokollen aus Storage
-
-Weitere Informationen zum [Herunterladen von Metrik- und Diagnoseprotokollen aus Storage](../storage/blobs/storage-quickstart-blobs-dotnet.md#download-the-sample-application).
-
 ## <a name="data-retention-policy-and-pricing"></a>Datenaufbewahrungsrichtlinie und Preisübersicht
 
 Wenn Sie Event Hubs oder ein Speicherkonto auswählen, können Sie eine Aufbewahrungsrichtlinie angeben. Diese Richtlinie löscht Daten, die älter als ein ausgewählter Zeitraums sind. Wenn Sie Log Analytics angeben, hängt die Aufbewahrungsrichtlinie vom ausgewählten Tarif ab. In diesem Fall können Sie mit den verfügbaren kostenlosen Datenerfassungseinheiten jeden Monat mehrere Datenbanken kostenlos überwachen. Für die Nutzung von Diagnosetelemetrie, die über die kostenlosen Einheiten hinausgeht, können Kosten anfallen. Beachten Sie, dass bei aktiven Datenbanken mit umfangreicheren Workloads mehr Daten als bei Datenbanken im Leerlauf erfasst werden. Weitere Informationen finden Sie unter [Azure Monitor – Preise](https://azure.microsoft.com/pricing/details/monitor/).
@@ -441,7 +438,7 @@ Die folgenden Tabellen enthalten Details zu Telemetriedaten, die für alle Proto
 |TenantId|Ihre Mandanten-ID |
 |SourceSystem|Immer: Azure|
 |TimeGenerated [UTC]|Zeitstempel für die Aufzeichnung des Protokolls |
-|Type|Immer: AzureDiagnostics |
+|type|Immer: AzureDiagnostics |
 |ResourceProvider|Name des Ressourcenanbieters Immer: MICROSOFT.SQL |
 |Category (Kategorie)|Name der Kategorie Immer: ResourceUsageStats |
 |Resource|Name der Ressource |
@@ -466,7 +463,7 @@ Die folgenden Tabellen enthalten Details zu Telemetriedaten, die für alle Proto
 |TenantId|Ihre Mandanten-ID |
 |SourceSystem|Immer: Azure |
 |TimeGenerated [UTC]|Zeitstempel für die Aufzeichnung des Protokolls |
-|Type|Immer: AzureDiagnostics |
+|type|Immer: AzureDiagnostics |
 |ResourceProvider|Name des Ressourcenanbieters Immer: MICROSOFT.SQL |
 |Category (Kategorie)|Name der Kategorie Immer: QueryStoreRuntimeStatistics |
 |OperationName|Name des Vorgangs. Immer: QueryStoreRuntimeStatisticsEvent |
@@ -517,7 +514,7 @@ Weitere Informationen zu [Laufzeitstatistikdaten des Abfragespeichers](https://d
 |TenantId|Ihre Mandanten-ID |
 |SourceSystem|Immer: Azure |
 |TimeGenerated [UTC]|Zeitstempel für die Aufzeichnung des Protokolls |
-|Type|Immer: AzureDiagnostics |
+|type|Immer: AzureDiagnostics |
 |ResourceProvider|Name des Ressourcenanbieters Immer: MICROSOFT.SQL |
 |Category (Kategorie)|Name der Kategorie Immer: QueryStoreWaitStatistics |
 |OperationName|Name des Vorgangs. Immer: QueryStoreWaitStatisticsEvent |
@@ -555,7 +552,7 @@ Weitere Informationen zu [Wartestatistikdaten des Abfragespeichers](https://docs
 |TenantId|Ihre Mandanten-ID |
 |SourceSystem|Immer: Azure |
 |TimeGenerated [UTC]|Zeitstempel für die Aufzeichnung des Protokolls |
-|Type|Immer: AzureDiagnostics |
+|type|Immer: AzureDiagnostics |
 |ResourceProvider|Name des Ressourcenanbieters Immer: MICROSOFT.SQ |
 |Category (Kategorie)|Name der Kategorie Immer: Errors |
 |OperationName|Name des Vorgangs. Immer: ErrorEvent |
@@ -570,7 +567,7 @@ Weitere Informationen zu [Wartestatistikdaten des Abfragespeichers](https://docs
 |`Message`|Fehlermeldungen in Nur-Text |
 |user_defined_b|Benutzerdefiniertes Fehlerbit |
 |error_number_d|Fehlercode |
-|Severity|Schweregrad des Fehlers |
+|severity|Schweregrad des Fehlers |
 |state_d|Status des Fehlers |
 |query_hash_s|Der Abfragehash der fehlerhaften Abfrage (falls verfügbar) |
 |query_plan_hash_s|Hash des Abfrageplans der fehlerhaften Abfrage (falls verfügbar) |
@@ -584,7 +581,7 @@ Weitere Informationen zu [SQL Server-Fehlermeldungen](https://msdn.microsoft.com
 |TenantId|Ihre Mandanten-ID |
 |SourceSystem|Immer: Azure |
 |TimeGenerated [UTC]|Zeitstempel für die Aufzeichnung des Protokolls |
-|Type|Immer: AzureDiagnostics |
+|type|Immer: AzureDiagnostics |
 |ResourceProvider|Name des Ressourcenanbieters Immer: MICROSOFT.SQL |
 |Category (Kategorie)|Name der Kategorie Immer: DatabaseWaitStatistics |
 |OperationName|Name des Vorgangs. Immer: DatabaseWaitStatisticsEvent |
@@ -613,7 +610,7 @@ Weitere Informationen zu [Datenbankwartestatistiken](https://docs.microsoft.com/
 |TenantId|Ihre Mandanten-ID |
 |SourceSystem|Immer: Azure |
 |TimeGenerated [UTC]|Zeitstempel für die Aufzeichnung des Protokolls |
-|Type|Immer: AzureDiagnostics |
+|type|Immer: AzureDiagnostics |
 |ResourceProvider|Name des Ressourcenanbieters Immer: MICROSOFT.SQL |
 |Category (Kategorie)|Name der Kategorie Immer: Zeitlimits |
 |OperationName|Name des Vorgangs. Immer: TimeoutEvent |
@@ -636,7 +633,7 @@ Weitere Informationen zu [Datenbankwartestatistiken](https://docs.microsoft.com/
 |TenantId|Ihre Mandanten-ID |
 |SourceSystem|Immer: Azure |
 |TimeGenerated [UTC]|Zeitstempel für die Aufzeichnung des Protokolls |
-|Type|Immer: AzureDiagnostics |
+|type|Immer: AzureDiagnostics |
 |ResourceProvider|Name des Ressourcenanbieters Immer: MICROSOFT.SQL |
 |Category (Kategorie)|Name der Kategorie Immer: Blöcke |
 |OperationName|Name des Vorgangs. Immer: BlockEvent |
@@ -660,7 +657,7 @@ Weitere Informationen zu [Datenbankwartestatistiken](https://docs.microsoft.com/
 |TenantId|Ihre Mandanten-ID |
 |SourceSystem|Immer: Azure |
 |TimeGenerated [UTC] |Zeitstempel für die Aufzeichnung des Protokolls |
-|Type|Immer: AzureDiagnostics |
+|type|Immer: AzureDiagnostics |
 |ResourceProvider|Name des Ressourcenanbieters Immer: MICROSOFT.SQL |
 |Category (Kategorie)|Name der Kategorie Immer: Deadlocks |
 |OperationName|Name des Vorgangs. Immer: DeadlockEvent |
@@ -681,7 +678,7 @@ Weitere Informationen zu [Datenbankwartestatistiken](https://docs.microsoft.com/
 |TenantId|Ihre Mandanten-ID |
 |SourceSystem|Immer: Azure |
 |TimeGenerated [UTC]|Zeitstempel für die Aufzeichnung des Protokolls |
-|Type|Immer: AzureDiagnostics |
+|type|Immer: AzureDiagnostics |
 |ResourceProvider|Name des Ressourcenanbieters Immer: MICROSOFT.SQL |
 |Category (Kategorie)|Name der Kategorie Immer: AutomaticTuning |
 |Resource|Name der Ressource |
@@ -719,5 +716,3 @@ Weitere Informationen zu Event Hubs finden Sie hier:
 
 - [Was ist Azure Event Hubs?](../event-hubs/event-hubs-what-is-event-hubs.md)
 - [Erste Schritte mit Event Hubs](../event-hubs/event-hubs-csharp-ephcs-getstarted.md)
-
-Weitere Informationen zu Azure Storage finden Sie unter [Herunterladen von Metriken und Diagnoseprotokollen aus Storage](../storage/blobs/storage-quickstart-blobs-dotnet.md#download-the-sample-application).

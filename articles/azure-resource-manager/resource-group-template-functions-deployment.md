@@ -1,23 +1,17 @@
 ---
 title: Azure Resource Manager-Vorlagenfunktionen – Bereitstellung | Microsoft Docs
 description: Hier werden die Funktionen beschrieben, die in einer Azure Resource Manager-Vorlage zum Abrufen von Informationen zur Bereitstellung verwendet werden können.
-services: azure-resource-manager
-documentationcenter: na
 author: tfitzmac
-ms.assetid: ''
 ms.service: azure-resource-manager
-ms.devlang: na
 ms.topic: reference
-ms.tgt_pltfrm: na
-ms.workload: na
 ms.date: 01/03/2019
 ms.author: tomfitz
-ms.openlocfilehash: c5bd40741ec0fe047f98b4b4431819d90e188385
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 9cf81058d79d474a4d61195850636e428a1dbd0d
+ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66128663"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67206466"
 ---
 # <a name="deployment-functions-for-azure-resource-manager-templates"></a>Bereitstellungsfunktionen für Azure Resource Manager-Vorlagen 
 
@@ -167,7 +161,7 @@ Gibt einen Parameterwert zurück. Der spezifizierte Parametername muss im Parame
 
 | Parameter | Erforderlich | Typ | BESCHREIBUNG |
 |:--- |:--- |:--- |:--- |
-| parameterName |Ja |Zeichenfolge |Der Name des zurückzugebenden Parameter. |
+| parameterName |Ja |string |Der Name des zurückzugebenden Parameter. |
 
 ### <a name="return-value"></a>Rückgabewert
 
@@ -252,7 +246,7 @@ Die folgende [Beispielvorlage](https://github.com/Azure/azure-docs-json-samples/
 
 Die Ausgabe aus dem vorherigen Beispiel mit den Standardwerten lautet:
 
-| NAME | Type | Wert |
+| NAME | type | Wert |
 | ---- | ---- | ----- |
 | stringOutput | string | option 1 |
 | intOutput | Int | 1 |
@@ -355,7 +349,7 @@ Die folgende [Beispielvorlage](https://github.com/Azure/azure-docs-json-samples/
 
 Die Ausgabe aus dem vorherigen Beispiel mit den Standardwerten lautet:
 
-| NAME | Type | Wert |
+| NAME | type | Wert |
 | ---- | ---- | ----- |
 | exampleOutput1 | string | myVariable |
 | exampleOutput2 | Array | [1, 2, 3, 4] |

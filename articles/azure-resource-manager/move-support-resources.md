@@ -6,12 +6,12 @@ ms.service: azure-resource-manager
 ms.topic: reference
 ms.date: 6/6/2019
 ms.author: tomfitz
-ms.openlocfilehash: 314b28edbd5770186d96fb2a2b203f26ff27bda0
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 9ab8fbd8fa0453ca6c89f3e7ad91bea95b0b9096
+ms.sourcegitcommit: 08138eab740c12bf68c787062b101a4333292075
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66752349"
+ms.lasthandoff: 06/22/2019
+ms.locfileid: "67331985"
 ---
 # <a name="move-operation-support-for-resources"></a>Unterstützung des Verschiebevorgangs für Ressourcen
 In diesem Artikel wird aufgeführt, für welche Azure-Ressourcentypen der Verschiebevorgang unterstützt wird. Auch wenn ein Ressourcentyp den Verschiebevorgang unterstützt, kann dies bestimmten Bedingungen unterliegen, die das Verschieben der Ressource verhindern. Ausführliche Informationen über Bedingungen, die sich auf Verschiebevorgänge auswirken, finden Sie unter [Verschieben von Ressourcen in eine neue Ressourcengruppe oder ein neues Abonnement](resource-group-move-resources.md).
@@ -564,8 +564,8 @@ Um die Daten als Datei mit durch Trennzeichen getrennten Werten abzurufen, laden
 | expressroutecrossconnections | Nein | Nein |
 | expressroutegateways | Nein | Nein |
 | expressrouteports | Nein | Nein |
-| frontdoors | Ja | Ja |
-| frontdoorwebapplicationfirewallpolicies | Ja | Ja |
+| frontdoors | Nein | Nein |
+| frontdoorwebapplicationfirewallpolicies | Nein | Nein |
 | loadbalancers | Ja | Ja |
 | localnetworkgateways | Ja | Ja |
 | natgateways | Ja | Ja |

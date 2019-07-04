@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 10/08/2018
 ms.author: genli
-ms.openlocfilehash: e828a8fc4211a0f0c4b53a9e18fa1c2fb6f6916b
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: ca3fe83d7072ba774c8124c5108652ab7223041d
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60593222"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67449816"
 ---
 # <a name="windows-shows-critical-service-failed-on-blue-screen-when-booting-an-azure-vm"></a>Unter Windows wird beim Starten eines virtuellen Azure-Computers der Bluescreenfehler „CRITICAL SERVICE FAILED“ (FEHLER BEIM KRITISCHEN DIENST) angezeigt.
 Dieser Artikel beschreibt den Fehler „CRITICAL SERVICE FAILED“ (FEHLER BEIM KRITISCHEN DIENST), der unter Umständen beim Starten eines virtuellen Windows-Computers in Microsoft Azure angezeigt wird. Er enthält Schritte zum Beheben des Problems. 
@@ -30,7 +30,7 @@ Dieser Artikel beschreibt den Fehler „CRITICAL SERVICE FAILED“ (FEHLER BEIM 
 
 Eine Windows-VM wird nicht gestartet. Beim Überprüfen der Startscreenshots unter [Startdiagnose](./boot-diagnostics.md) wird eine der folgenden Fehlermeldungen auf einem Bluescreen angezeigt:
 
-- „Your PC ran into a problem and needs to restart. You can restart. For more information about this issue and possible fixes, visit http://windows.com/stopcode. Wenn Sie sich an den Support wenden, stellen Sie die folgenden Informationen bereit: Stillstandcode: CRITICAL SERVICE FAILED (FEHLER BEIM KRITISCHEN DIENST) 
+- „Your PC ran into a problem and needs to restart. You can restart. For more information about this issue and possible fixes, visit https://windows.com/stopcode. Wenn Sie sich an den Support wenden, stellen Sie die folgenden Informationen bereit: Stillstandcode: CRITICAL SERVICE FAILED (FEHLER BEIM KRITISCHEN DIENST) 
 - „Your PC ran into a problem and needs to restart. We're just collecting some error info, and then we'll restart for you. If you'd like to know more, you can search online later for this error: CRITICAL_SERVICE_FAILED“ (Auf dem PC ist ein Fehler aufgetreten. Er muss neu gestartet werden. Wir sammeln Fehlerinformationen und starten dann den PC für Sie neu. Wenn Sie weitere Informationen benötigen, können Sie später online nach dem folgenden Fehler suchen: CRITICAL_SERVICE_FAILED)
 
 ## <a name="cause"></a>Ursache

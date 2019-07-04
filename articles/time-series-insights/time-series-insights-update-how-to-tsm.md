@@ -8,14 +8,14 @@ manager: cshankar
 ms.service: time-series-insights
 services: time-series-insights
 ms.topic: conceptual
-ms.date: 05/07/2019
+ms.date: 06/26/2019
 ms.custom: seodec18
-ms.openlocfilehash: 73384868deb8f0e33b233e363c42a12adbcbe402
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 05faf77d22f77da87e7c22d47473e6debf0f77c8
+ms.sourcegitcommit: aa66898338a8f8c2eb7c952a8629e6d5c99d1468
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66237559"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67460888"
 ---
 # <a name="data-modeling-in-azure-time-series-insights-preview"></a>Datenmodellierung in Azure Time Series Insights Preview
 
@@ -29,12 +29,12 @@ Weitere Informationen zur Verwendung des Updates finden Sie unter [Azure Time Se
 
 1. Wechseln Sie zum Auswahlbereich für Zeitreihenmodelle, und wählen Sie im Menü **Typen** aus. Reduzieren Sie den Bereich, um den Fokus auf die Typen von Zeitreihenmodellen zu legen.
 
-    [![Erstellen eines einzelnen Typs](media/v2-update-how-to-tsm/portal_one.png)](media/v2-update-how-to-tsm/portal_one.png#lightbox)
+    [![Erstellen eines einzelnen Typs](media/v2-update-how-to-tsm/portal-one.png)](media/v2-update-how-to-tsm/portal-one.png#lightbox)
 
 1. Wählen Sie **Hinzufügen**.
 1. Geben Sie alle Details ein, die sich auf Typen beziehen, und wählen Sie **Erstellen** aus. Diese Aktion erstellt Typen in der Umgebung.
 
-    [![Hinzufügen eines Typs](media/v2-update-how-to-tsm/portal_two.png)](media/v2-update-how-to-tsm/portal_two.png#lightbox)
+    [![Hinzufügen eines Typs](media/v2-update-how-to-tsm/portal-two.png)](media/v2-update-how-to-tsm/portal-two.png#lightbox)
 
 ### <a name="bulk-upload-one-or-more-types"></a>Massenupload eines oder mehrerer Typen
 
@@ -42,21 +42,21 @@ Weitere Informationen zur Verwendung des Updates finden Sie unter [Azure Time Se
 1. Wählen Sie die Datei aus, die die Typnutzlast enthält.
 1. Wählen Sie die Option **Hochladen**.
 
-    [![Hochladen von JSON](media/v2-update-how-to-tsm/portal_three.png)](media/v2-update-how-to-tsm/portal_three.png#lightbox)
+    [![Hochladen von JSON](media/v2-update-how-to-tsm/portal-three.png)](media/v2-update-how-to-tsm/portal-three.png#lightbox)
 
 ### <a name="edit-a-single-type"></a>Bearbeiten eines einzelnen Typs
 
 1. Wählen Sie den Typ und dann **Bearbeiten** aus. 
 1. Nehmen Sie die erforderlichen Änderungen vor, und wählen Sie **Speichern** aus.
 
-    [![Bearbeiten eines Typs](media/v2-update-how-to-tsm/portal_four.png)](media/v2-update-how-to-tsm/portal_four.png#lightbox)
+    [![Bearbeiten eines Typs](media/v2-update-how-to-tsm/portal-four.png)](media/v2-update-how-to-tsm/portal-four.png#lightbox)
 
 ### <a name="delete-a-type"></a>Löschen eines Typs
 
 1. Wählen Sie den Typ aus, und wählen Sie **Bearbeiten** aus.
 1. Wenn den Typen keine Instanzen zugeordnet sind, wird er gelöscht.
 
-    [![Löschen eines Typs](media/v2-update-how-to-tsm/portal_five.png)](media/v2-update-how-to-tsm/portal_five.png#lightbox)
+    [![Löschen eines Typs](media/v2-update-how-to-tsm/portal-five.png)](media/v2-update-how-to-tsm/portal-five.png#lightbox)
 
 ## <a name="hierarchies"></a>Hierarchien
 
@@ -64,19 +64,19 @@ Weitere Informationen zur Verwendung des Updates finden Sie unter [Azure Time Se
 
 1. Wechseln Sie zum Auswahlbereich für Zeitreihenmodelle, und wählen Sie im Menü **Hierarchien** aus. Reduzieren Sie den Bereich, um den Fokus auf die Hierarchien von Zeitreihenmodellen zu legen.
 
-    [![Auswählen von Hierarchien](media/v2-update-how-to-tsm/portal_six.png)](media/v2-update-how-to-tsm/portal_six.png#lightbox)
+    [![Auswählen von Hierarchien](media/v2-update-how-to-tsm/portal-six.png)](media/v2-update-how-to-tsm/portal-six.png#lightbox)
 
 1. Wählen Sie **Hinzufügen**.
 
-    [![Hinzufügen einer Hierarchie](media/v2-update-how-to-tsm/portal_seven.png)](media/v2-update-how-to-tsm/portal_seven.png#lightbox)
+    [![Hinzufügen einer Hierarchie](media/v2-update-how-to-tsm/portal-seven.png)](media/v2-update-how-to-tsm/portal-seven.png#lightbox)
 
 1. Wählen Sie im rechten Bereich **Ebene hinzufügen** aus.
 
-    [![Hinzufügen einer Ebene](media/v2-update-how-to-tsm/portal_eight.png)](media/v2-update-how-to-tsm/portal_eight.png#lightbox)
+    [![Hinzufügen einer Ebene](media/v2-update-how-to-tsm/portal-eight.png)](media/v2-update-how-to-tsm/portal-eight.png#lightbox)
 
 1. Geben Sie die Hierarchiedetails ein, und wählen Sie **Erstellen** aus.
 
-    [![Erstellen einer Ebene](media/v2-update-how-to-tsm/portal_nine.png)](media/v2-update-how-to-tsm/portal_nine.png#lightbox)
+    [![Erstellen einer Ebene](media/v2-update-how-to-tsm/portal-nine.png)](media/v2-update-how-to-tsm/portal-nine.png#lightbox)
 
 ### <a name="bulk-upload-one-or-more-hierarchies"></a>Massenupload einer oder mehrerer Hierarchien
 
@@ -84,21 +84,21 @@ Weitere Informationen zur Verwendung des Updates finden Sie unter [Azure Time Se
 1. Wählen Sie die Datei aus, die die Hierarchienutzlast enthält.
 1. Wählen Sie die Option **Hochladen**.
 
-    [![Massenupload von Hierarchien](media/v2-update-how-to-tsm/portal_ten.png)](media/v2-update-how-to-tsm/portal_ten.png#lightbox)
+    [![Massenupload von Hierarchien](media/v2-update-how-to-tsm/portal-ten.png)](media/v2-update-how-to-tsm/portal-ten.png#lightbox)
 
 ### <a name="edit-a-single-hierarchy"></a>Bearbeiten einer einzelnen Hierarchie
 
 1. Wählen Sie die Hierarchie und dann **Bearbeiten** aus.
 1. Nehmen Sie die erforderlichen Änderungen vor, und wählen Sie **Speichern** aus.
 
-    [![Bearbeiten einer einzelnen Hierarchie](media/v2-update-how-to-tsm/portal_eleven.png)](media/v2-update-how-to-tsm/portal_eleven.png#lightbox)
+    [![Bearbeiten einer einzelnen Hierarchie](media/v2-update-how-to-tsm/portal-eleven.png)](media/v2-update-how-to-tsm/portal-eleven.png#lightbox)
 
 ### <a name="delete-a-hierarchy"></a>Löschen einer Hierarchie
 
 1. Wählen Sie die Hierarchie und dann **Löschen** aus. 
 1. Wenn der Hierarchie keine Instanzen zugeordnet sind, wird sie gelöscht.
 
-    [![Löschen einer Hierarchie](media/v2-update-how-to-tsm/portal_twelve.png)](media/v2-update-how-to-tsm/portal_twelve.png#lightbox)
+    [![Löschen einer Hierarchie](media/v2-update-how-to-tsm/portal-twelve.png)](media/v2-update-how-to-tsm/portal-twelve.png#lightbox)
 
 ## <a name="instances"></a>Instanzen
 
@@ -106,11 +106,11 @@ Weitere Informationen zur Verwendung des Updates finden Sie unter [Azure Time Se
 
 1. Wechseln Sie zum Auswahlbereich für Zeitreihenmodelle, und wählen Sie im Menü **Instanzen** aus. Reduzieren Sie den Bereich, um den Fokus auf die Instanzen von Zeitreihenmodellen zu legen.
 
-    [![Erstellen einer einzelnen Instanz](media/v2-update-how-to-tsm/portal_thirteen.png)](media/v2-update-how-to-tsm/portal_thirteen.png#lightbox)
+    [![Erstellen einer einzelnen Instanz](media/v2-update-how-to-tsm/portal-thirteen.png)](media/v2-update-how-to-tsm/portal-thirteen.png#lightbox)
 
 1. Wählen Sie **Hinzufügen**.
 
-    [![Hinzufügen einer Instanz](media/v2-update-how-to-tsm/portal_fourteen.png)](media/v2-update-how-to-tsm/portal_fourteen.png#lightbox)
+    [![Hinzufügen einer Instanz](media/v2-update-how-to-tsm/portal-fourteen.png)](media/v2-update-how-to-tsm/portal-fourteen.png#lightbox)
 
 1. Geben Sie die Instanzdetails ein, wählen Sie die Zuordnung von Typ und Hierarchie aus, und wählen Sie **Erstellen** aus.
 
@@ -119,7 +119,7 @@ Weitere Informationen zur Verwendung des Updates finden Sie unter [Azure Time Se
 1. Wählen Sie die Option **JSON hochladen** aus.
 1. Wählen Sie die Datei aus, die die Instanzennutzlast enthält.
 
-    [![Massenupload einer oder mehrerer Instanzen](media/v2-update-how-to-tsm/portal_fifteen.png)](media/v2-update-how-to-tsm/portal_fifteen.png#lightbox)
+    [![Massenupload einer oder mehrerer Instanzen](media/v2-update-how-to-tsm/portal-fifteen.png)](media/v2-update-how-to-tsm/portal-fifteen.png#lightbox)
 
 1. Wählen Sie die Option **Hochladen**.
 
@@ -128,7 +128,7 @@ Weitere Informationen zur Verwendung des Updates finden Sie unter [Azure Time Se
 1. Wählen Sie die Instanz und dann **Bearbeiten** aus. 
 1. Nehmen Sie die erforderlichen Änderungen vor, und wählen Sie **Speichern** aus.
 
-    [![Bearbeiten einer einzelnen Instanz](media/v2-update-how-to-tsm/portal_sixteen.png)](media/v2-update-how-to-tsm/portal_sixteen.png#lightbox)
+    [![Bearbeiten einer einzelnen Instanz](media/v2-update-how-to-tsm/portal-sixteen.png)](media/v2-update-how-to-tsm/portal-sixteen.png#lightbox)
 
 ## <a name="next-steps"></a>Nächste Schritte
 

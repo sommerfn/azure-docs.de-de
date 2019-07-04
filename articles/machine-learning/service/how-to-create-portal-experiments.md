@@ -11,12 +11,12 @@ author: tsikiksr
 manager: cgronlun
 ms.reviewer: nibaccam
 ms.date: 05/02/2019
-ms.openlocfilehash: a2a281fda9272fb794692becb0ca08f3cf791458
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 714283628e1b2ac445d36d0b07fe299b589a1cf0
+ms.sourcegitcommit: 5cb0b6645bd5dff9c1a4324793df3fdd776225e4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65990149"
+ms.lasthandoff: 06/21/2019
+ms.locfileid: "67312820"
 ---
 # <a name="create-and-explore-automated-machine-learning-experiments-in-the-azure-portal-preview"></a>Erstellen und Untersuchen automatisierter Machine Learning-Experimente im Azure-Portal (Vorschau)
 
@@ -96,16 +96,16 @@ Wählen Sie die Schaltfläche „Create Experiment“ (Experiment erstellen) aus
 
 1. Für Vorhersagen:
     1. Wählen Sie die Zeitspalte aus: Diese Spalte enthält die zu verwendenden Zeitdaten.
-    1. Wählen Sie den Vorhersagehorizont aus: Geben Sie an, wie viele Zeiteinheiten (Minuten/Stunden/Tage/Wochen/Monate/Jahre) das Modell die Zukunft vorhersagen können soll. Je weiter das Modell die Zukunft vorhersagen muss, desto ungenauer wird es. [Weitere Informationen zu Vorhersagen und zum Vorhersagehorizont](https://docs.microsoft.com/azure/machine-learning/service/how-to-auto-train-forecast#configure-experiment).
+    1. Wählen Sie den Vorhersagehorizont aus: Geben Sie an, wie viele Zeiteinheiten (Minuten/Stunden/Tage/Wochen/Monate/Jahre) das Modell die Zukunft vorhersagen können soll. Je weiter das Modell die Zukunft vorhersagen muss, desto ungenauer wird es. [Weitere Informationen zu Vorhersagen und zum Vorhersagehorizont](how-to-auto-train-forecast.md).
 
 1. (Optional) Erweiterte Einstellungen: Zusätzliche Einstellungen, mit denen Sie den Trainingsauftrag besser steuern können.
 
     Erweiterte Einstellungen|BESCHREIBUNG
     ------|------
-    Primary metric (Primäre Metrik)| Die wichtigste Metrik, die für die Bewertung Ihres Modells verwendet wird. [Weitere Informationen zur Modellmetriken](https://docs.microsoft.com/azure/machine-learning/service/how-to-configure-auto-train#explore-model-metrics).
+    Primary metric (Primäre Metrik)| Die wichtigste Metrik, die für die Bewertung Ihres Modells verwendet wird. [Weitere Informationen zur Modellmetriken](how-to-configure-auto-train.md#explore-model-metrics).
     Exit Criteria (Beendigungskriterien)| Wenn eines dieser Kriterien erfüllt ist, wird der Trainingsauftrag vor dem vollständigen Abschluss beendet. <br> *Training job time (minutes)* (Dauer des Trainingsauftrags (Minuten)): Gibt an, wie lange der Trainingsauftrag ausgeführt werden soll.  <br> *Max number of iterations* (Maximale Anzahl von Iterationen): Die maximale Anzahl von Pipelines (Iterationen), die im Trainingsauftrag getestet werden. Der Auftrag wird nicht häufiger als die angegebene Anzahl von Iterationen ausgeführt. <br> *Metric score threshold* (Metrischer Bewertungsschwellenwert):  Die Metrikmindestbewertung für alle Pipelines. Auf diese Weise wird sichergestellt, dass Sie nicht mehr Zeit für den Trainingsauftrag aufwenden als nötig, wenn Sie eine definierte Zielmetrik verwenden, die Sie erreichen möchten.
     Preprocessing (Vorverarbeitung)| Aktivieren oder deaktivieren Sie mit dieser Option die Vorverarbeitung durch automatisiertes Machine Learning. Vorverarbeitung umfasst die automatische Datenbereinigung, die Vorbereitung und die Transformation, um synthetische Features zu generieren. [Weitere Informationen zur Vorverarbeitung](#preprocess).
-    Überprüfen| Wählen Sie eine der Optionen für Kreuzvalidierung aus, die im Trainingsauftrag verwendet werden soll. [Weitere Informationen zur Kreuzvalidierung](https://docs.microsoft.com/azure/machine-learning/service/how-to-configure-auto-train#cross-validation-split-options).
+    Überprüfen| Wählen Sie eine der Optionen für Kreuzvalidierung aus, die im Trainingsauftrag verwendet werden soll. [Weitere Informationen zur Kreuzvalidierung](how-to-configure-auto-train.md).
     Parallelität| Wählen Sie die Multi-Core-Grenzwerte aus, die Sie verwenden möchten, wenn Multi-Core-Compute zum Einsatz kommt.
     Blocked algorithm (Blockierter Algorithmus)| Wählen Sie Algorithmen aus, die Sie aus den Trainingsauftrag ausschließen möchten.
 
@@ -180,7 +180,7 @@ Bei Trainingsaufträgen kann es eine Weile dauern, bis die Ausführung jeder Pip
 
 ### <a name="view-training-run-details"></a>Anzeigen der Details der Trainingsausführung
 
-Führen Sie einen Drilldown der Ausgabemodelle aus, um Details zur Trainingsausführung anzuzeigen, z.B. Leistungsmetriken und Verteilungsdiagramme. [Weitere Informationen zu Diagrammen](https://docs.microsoft.com/azure/machine-learning/service/how-to-track-experiments#understanding-automated-ml-charts).
+Führen Sie einen Drilldown der Ausgabemodelle aus, um Details zur Trainingsausführung anzuzeigen, z.B. Leistungsmetriken und Verteilungsdiagramme. [Weitere Informationen zu Diagrammen](how-to-track-experiments.md#understanding-automated-ml-charts).
 
 ![Details zur Iteration](media/how-to-create-portal-experiments/iteration-details.png)
 
@@ -220,7 +220,7 @@ Automatisiertes maschinelles Lernen unterstützt Sie dabei, das Modell bereitzus
 
 1. Wählen Sie die Schaltfläche **Durchsuchen** neben dem Feld „Conda-Datei“ aus, um die Umgebungsdatei (condaEnv.yml) hochzuladen, Sie zuvor heruntergeladen haben.
 
-    Sie können Ihr eigenes Bewertungsskript und Ihre eigene Conda-Datei verwenden, und Sie können weitere Dateien hochladen. [Hier finden Sie weitere Informationen über Bewertungsskripts](https://docs.microsoft.com/azure/machine-learning/service/how-to-deploy-and-where#script).
+    Sie können Ihr eigenes Bewertungsskript und Ihre eigene Conda-Datei verwenden, und Sie können weitere Dateien hochladen. [Hier finden Sie weitere Informationen über Bewertungsskripts](how-to-deploy-and-where.md#script).
 
       >[!Important]
       > Ein Dateiname muss weniger als 32 Zeichen haben und muss mit einem alphanumerischen Zeichen beginnen und enden. Dazwischen darf ein Name Bindestriche, Unterstriche, Punkte und alphanumerische Zeichen enthalten. Leerzeichen sind nicht zulässig.
@@ -228,7 +228,7 @@ Automatisiertes maschinelles Lernen unterstützt Sie dabei, das Modell bereitzus
     ![Image erstellen](media/how-to-create-portal-experiments/create-image.png)
 
 1. Wählen Sie die Schaltfläche „Erstellen“ aus, um die Imageerstellung zu starten. Dieser Vorgang wird einige Minuten dauern. Sobald er abgeschlossen ist, wird in der oberen Leiste eine Meldung angezeigt.
-1. Wechseln Sie zur Registerkarte „Images“, aktivieren Sie das Kontrollkästchen neben dem Image, das Sie bereitstellen möchten, und wählen Sie „Bereitstellung erstellen“ aus. [Hier finden Sie weitere Informationen über Bereitstellungen](https://docs.microsoft.com/azure/machine-learning/service/how-to-deploy-and-where).
+1. Wechseln Sie zur Registerkarte „Images“, aktivieren Sie das Kontrollkästchen neben dem Image, das Sie bereitstellen möchten, und wählen Sie „Bereitstellung erstellen“ aus. [Hier finden Sie weitere Informationen über Bereitstellungen](how-to-deploy-and-where.md).
 
     Es gibt zwei Optionen für eine Bereitstellung.
      + Azure Container Instances (ACI): Diese Option wird überwiegend für Testzwecke statt für eine einsatzfähige skalierbare Bereitstellung verwendet. Geben Sie unbedingt die Werte für mindestens einen Kern für _CPU-Reservekapazität_ und mindestens einen GB-Wert für _Arbeitsspeicher-Reservekapazität_ ein.

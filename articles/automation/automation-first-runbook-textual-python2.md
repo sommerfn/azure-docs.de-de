@@ -4,17 +4,17 @@ description: Tutorial, in dem Sie sich mit dem Erstellen, Testen und Veröffentl
 services: automation
 ms.service: automation
 ms.subservice: process-automation
-author: georgewallace
-ms.author: gwallace
+author: bobbytreed
+ms.author: robreed
 ms.date: 03/19/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: e79f4b58582ab6643a7a13ffee25503060a2208c
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: a030005d73df61c31c5aa1c2e1b56e52b03a56e3
+ms.sourcegitcommit: f811238c0d732deb1f0892fe7a20a26c993bc4fc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60929274"
+ms.lasthandoff: 06/29/2019
+ms.locfileid: "67478505"
 ---
 # <a name="my-first-python-runbook"></a>Mein erstes Python-Runbook
 
@@ -153,13 +153,14 @@ Verwenden Sie den Computeclient zum Starten des virtuellen Computers. Fügen Sie
 ```python
 # Initialize the compute management client with the RunAs credential and specify the subscription to work against.
 compute_client = ComputeManagementClient(
-azure_credential,
-  str(runas_connection["SubscriptionId"])
+    azure_credential,
+    str(runas_connection["SubscriptionId"])
 )
 
 
 print('\nStart VM')
-async_vm_start = compute_client.virtual_machines.start("MyResourceGroup", "TestVM")
+async_vm_start = compute_client.virtual_machines.start(
+    "MyResourceGroup", "TestVM")
 async_vm_start.wait()
 ```
 
@@ -188,7 +189,8 @@ Beachten Sie, dass das Element der Argumentliste (`sys.argv[0]`) der Name des Sk
 Nun können Sie die letzten beiden Zeilen des Runbooks ändern, um anstelle hartcodierter Werte die Eingabeparameterwerte zu verwenden:
 
 ```python
-async_vm_start = compute_client.virtual_machines.start(resource_group_name, vm_name)
+async_vm_start = compute_client.virtual_machines.start(
+    resource_group_name, vm_name)
 async_vm_start.wait()
 ```
 

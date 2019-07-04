@@ -3,19 +3,19 @@ title: Transliterate-Methode der Textübersetzungs-API
 titlesuffix: Azure Cognitive Services
 description: Verwenden Sie die Transliterate-Methode der Textübersetzungs-API.
 services: cognitive-services
-author: rajdeep-in
+author: swmachan
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: reference
 ms.date: 02/01/2019
-ms.author: v-pawal
-ms.openlocfilehash: 138a04cca1bbbaf7b59f628f491a5f13d73fb6f7
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.author: swmachan
+ms.openlocfilehash: ddf4ca1939e09f5f63999657e7a751c9e53693e2
+ms.sourcegitcommit: a7ea412ca4411fc28431cbe7d2cc399900267585
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66387388"
+ms.lasthandoff: 06/25/2019
+ms.locfileid: "67357658"
 ---
 # <a name="translator-text-api-30-transliterate"></a>Textübersetzungs-API 3.0: Transliterate
 
@@ -64,7 +64,7 @@ Anforderungsheader enthalten Folgendes:
     <td><em>Erforderlicher Anforderungsheader</em>.<br/>Weitere Informationen finden Sie in den <a href="https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference#authentication">verfügbaren Optionen für die Authentifizierung</a>.</td>
   </tr>
   <tr>
-    <td>Content-Typ</td>
+    <td>Content-Type</td>
     <td>*Erforderlicher Anforderungsheader*.<br/>Gibt den Inhaltstyp der Nutzlast an. Mögliche Werte: `application/json`.</td>
   </tr>
   <tr>

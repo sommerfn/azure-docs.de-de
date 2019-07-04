@@ -11,13 +11,13 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, carlrab
 manager: craigg
-ms.date: 01/25/2019
-ms.openlocfilehash: 1e1bc92c684bf6ddbb7dc4ff0f882ad61ddeb27e
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.date: 06/21/2019
+ms.openlocfilehash: 00fa1128df03befda8b15be2d7f2c527f65f9973
+ms.sourcegitcommit: a12b2c2599134e32a910921861d4805e21320159
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61075811"
+ms.lasthandoff: 06/24/2019
+ms.locfileid: "67341075"
 ---
 # <a name="restore-an-azure-sql-database-or-failover-to-a-secondary"></a>Wiederherstellen einer Azure SQL-Datenbank oder Failover auf eine sekundäre Datenbank
 
@@ -34,7 +34,7 @@ Informationen über Szenarien zum Thema Geschäftskontinuität sowie über die F
 > Bei Verwendung zonenredundanter Datenbanken oder -Pools vom Typ „Premium“ oder „Unternehmenskritisch“ erfolgt der Wiederherstellungsprozess automatisch, sodass das verbleibende Material nicht relevant ist.
 
 > [!NOTE]
-> Sowohl die primäre als auch die sekundäre Datenbank müssen die gleiche Dienstebene aufweisen. Darüber hinaus wird dringend empfohlen, die sekundäre Datenbank mit der gleichen Computegröße (DTUs oder virtuelle Kerne) wie die primäre Datenbank zu erstellen. Weitere Informationen finden Sie unter [Upgrade oder Downgrade einer primären Datenbank](sql-database-active-geo-replication.md#upgrading-or-downgrading-a-primary-database).
+> Sowohl die primäre als auch die sekundäre Datenbank müssen die gleiche Dienstebene aufweisen. Darüber hinaus wird dringend empfohlen, die sekundäre Datenbank mit der gleichen Computegröße (DTUs oder virtuelle Kerne) wie die primäre Datenbank zu erstellen. Weitere Informationen finden Sie unter [Upgrade oder Downgrade einer primären Datenbank](sql-database-active-geo-replication.md#upgrading-or-downgrading-primary-database).
 
 > [!NOTE]
 > Verwenden Sie mindestens eine Failovergruppe, um das Failover mehrerer Datenbanken zu verwalten.

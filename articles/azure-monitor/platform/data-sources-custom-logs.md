@@ -11,14 +11,14 @@ ms.service: log-analytics
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 02/12/2019
+ms.date: 06/19/2019
 ms.author: bwren
-ms.openlocfilehash: c80736dcd8be0c7ff3aae850aaaf9659f47daf36
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 56dd1c29d5606da96bbc6d519b70caf580852446
+ms.sourcegitcommit: a52d48238d00161be5d1ed5d04132db4de43e076
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60996352"
+ms.lasthandoff: 06/20/2019
+ms.locfileid: "67273076"
 ---
 # <a name="custom-logs-in-azure-monitor"></a>Benutzerdefinierte Protokolle in Azure Monitor
 Mithilfe der Datenquelle „Benutzerdefinierte Protokolle“ in Azure Monitor können Ereignisse aus Textdateien auf Windows- und Linux-Computern erfasst werden. Viele Anwendungen protokollieren Informationen nicht in standardmäßigen Protokollierungsdiensten wie Windows-Ereignisprotokoll oder Syslog, sondern in Textdateien. Die erfassten Daten können entweder in Ihren Abfragen zu einzelnen Feldern aufgeschlüsselt oder während der Erfassung in einzelne Felder extrahiert werden.
@@ -35,11 +35,7 @@ Die zu sammelnden Protokolldateien müssen folgende Kriterien erfüllen:
 - Die Protokolldatei muss ASCII- oder UTF-8-Codierung verwenden.  Andere Formate wie UTF-16 werden nicht unterstützt.
 
 >[!NOTE]
->Azure Monitor erfasst doppelte Einträge in der Protokolldatei.  Allerdings sind die Abfrageergebnisse inkonsistent, wenn die Anzahl angezeigter Filterergebnisse die Ergebnisanzahl übersteigt.  Sie müssen unbedingt das Protokoll überprüfen, um festzustellen, ob dieses Verhalten durch die Anwendung, die es erstellt, verursacht wird, und es nach Möglichkeit vor der Erstellung der benutzerdefinierten Protokollsammlungsdefinition beheben.  
->
-  
->[!NOTE]
-> Wenn Ihre Anwendung jeden Tag eine neue Protokolldatei erstellt oder eine bestimmte Größe erreicht, werden diese vom Log Analytics-Agent für Linux erst nach dem Neustart ermittelt. Der Grund ist, dass der Agent erst nach dem Start eine Enumeration durchführt und mit der Überwachung für Muster mit den angegebenen Protokollen beginnt. Daher müssen Sie dies entsprechend planen, indem Sie den Neustart des Agents automatisieren.  Diese Einschränkung gilt nicht für den Log Analytics-Agent für Windows.  
+> Azure Monitor erfasst doppelte Einträge in der Protokolldatei. Allerdings sind die Abfrageergebnisse inkonsistent, wenn die Anzahl angezeigter Filterergebnisse die Ergebnisanzahl übersteigt. Sie müssen unbedingt das Protokoll überprüfen, um festzustellen, ob dieses Verhalten durch die Anwendung, die es erstellt, verursacht wird, und es nach Möglichkeit vor der Erstellung der benutzerdefinierten Protokollsammlungsdefinition beheben.  
 >
 
 >[!NOTE]

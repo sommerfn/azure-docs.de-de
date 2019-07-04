@@ -16,12 +16,12 @@ ms.date: 07/12/2017
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b33e993dbddc9c1567a1a6f7d3dca28af240a000
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: b21c5f8630598a4b7117d23ad7c8da46de07d2fa
+ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60381143"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67204494"
 ---
 # <a name="azure-ad-connect-sync-functions-reference"></a>Azure AD Connect-Synchronisierung: Funktionsreferenz
 In der Azure AD Connect-Synchronisierung werden Funktionen verwendet, um Attributwerte während der Synchronisierung zu ändern.  
@@ -89,7 +89,7 @@ Funktionen mit den Typen **mvbin**, **mvstr** und **mvref** können nur für meh
 | [ReplaceChars](#replacechars) |[Right](#right) |[RTrim](#rtrim) |[Trim](#trim) | |
 | [UCase](#ucase) |[Word](#word) | | | |
 
-- - -
+---
 ### <a name="bitand"></a>BitAnd
 **Beschreibung:**  
 Die BitAnd-Funktion legt angegebene Bits auf einen Wert fest.
@@ -111,7 +111,7 @@ Anders gesagt: sie gibt in allen Fällen 0 zurück, außer wenn die entsprechend
 `BitAnd(&HF, &HF7)`  
 Gibt 7 zurück, da durch die Verknüpfung mit AND die Hexadezimalwerte „F“ und „F7“ zu diesem Wert ausgewertet werden.
 
-- - -
+---
 ### <a name="bitor"></a>BitOr
 **Beschreibung:**  
 Die BitOr-Funktion legt angegebene Bits auf einen Wert fest.
@@ -124,7 +124,7 @@ Die BitOr-Funktion legt angegebene Bits auf einen Wert fest.
 **Hinweise:**  
 Diese Funktion konvertiert beide Parameter in die binäre Darstellung und legt ein Bit auf 1 fest, wenn mindestens eins der entsprechenden Bits in „mask“ und „flag“ 1 ist, und auf 0, wenn beide entsprechenden Bits 0 sind. Anders gesagt gibt sie in allen Fällen 1 zurück, außer wenn die entsprechenden Bits der beiden Parameter 0 sind.
 
-- - -
+---
 ### <a name="cbool"></a>CBool
 **Beschreibung:**  
 Die CBool-Funktion gibt einen booleschen Wert zurück, der auf dem ausgewerteten Ausdruck basiert.
@@ -140,7 +140,7 @@ Wenn die Auswertung des Ausdrucks einen Wert ungleich Null ergibt, gibt CBool �
 
 Gibt True zurück, wenn beide Attribute den gleichen Wert haben.
 
-- - -
+---
 ### <a name="cdate"></a>CDate
 **Beschreibung:**  
 Die CDate-Funktion gibt einen UTC-DateTime-Wert aus einer Zeichenfolge zurück. "DateTime" ist kein synchronisierungsspezifischer Attributtyp, wird jedoch von einigen Funktionen verwendet.
@@ -161,7 +161,7 @@ Gibt einen DateTime-Wert auf Basis der Anfangszeit des Mitarbeiters zurück.
 Gibt einen DateTime-Wert zurück, der „2013-01-11 12:00 AM“ darstellt.
 
 
-- - -
+---
 ### <a name="certextensionoids"></a>CertExtensionOids
 **Beschreibung:**  
 Gibt die OID-Werte aller kritischen Erweiterungen eines Zertifikatobjekts zurück
@@ -170,7 +170,7 @@ Gibt die OID-Werte aller kritischen Erweiterungen eines Zertifikatobjekts zurüc
 `mvstr CertExtensionOids(binary certificateRawData)`  
 *   certificateRawData: Darstellung eines Bytearrays eines X.509-Zertifikats. Das Bytearray kann aus binär (DER) codierten oder Base64-codierten X.509-Daten bestehen.
 
-- - -
+---
 ### <a name="certformat"></a>CertFormat
 **Beschreibung:**  
 Gibt den Formatnamen dieses X.509v3-Zertifikats zurück
@@ -179,7 +179,7 @@ Gibt den Formatnamen dieses X.509v3-Zertifikats zurück
 `str CertFormat(binary certificateRawData)`  
 *   certificateRawData: Darstellung eines Bytearrays eines X.509-Zertifikats. Das Bytearray kann aus binär (DER) codierten oder Base64-codierten X.509-Daten bestehen.
 
-- - -
+---
 ### <a name="certfriendlyname"></a>CertFriendlyName
 **Beschreibung:**  
 Gibt den zugeordneten Alias eines Zertifikats zurück
@@ -188,7 +188,7 @@ Gibt den zugeordneten Alias eines Zertifikats zurück
 `str CertFriendlyName(binary certificateRawData)`  
 *   certificateRawData: Darstellung eines Bytearrays eines X.509-Zertifikats. Das Bytearray kann aus binär (DER) codierten oder Base64-codierten X.509-Daten bestehen.
 
-- - -
+---
 ### <a name="certhashstring"></a>CertHashString
 **Beschreibung:**  
 Gibt den SHA1-Hashwert des X. 509v3-Zertifikats als hexadezimale Zeichenfolge zurück
@@ -197,7 +197,7 @@ Gibt den SHA1-Hashwert des X. 509v3-Zertifikats als hexadezimale Zeichenfolge zu
 `str CertHashString(binary certificateRawData)`  
 *   certificateRawData: Darstellung eines Bytearrays eines X.509-Zertifikats. Das Bytearray kann aus binär (DER) codierten oder Base64-codierten X.509-Daten bestehen.
 
-- - -
+---
 ### <a name="certissuer"></a>CertIssuer
 **Beschreibung:**  
 Gibt den Namen der Zertifizierungsstelle zurück, die das X.509v3-Zertifikat ausgestellt hat
@@ -206,7 +206,7 @@ Gibt den Namen der Zertifizierungsstelle zurück, die das X.509v3-Zertifikat aus
 `str CertIssuer(binary certificateRawData)`  
 *   certificateRawData: Darstellung eines Bytearrays eines X.509-Zertifikats. Das Bytearray kann aus binär (DER) codierten oder Base64-codierten X.509-Daten bestehen.
 
-- - -
+---
 ### <a name="certissuerdn"></a>CertIssuerDN
 **Beschreibung:**  
 Gibt den Distinguished Name des Zertifikatausstellers zurück
@@ -215,7 +215,7 @@ Gibt den Distinguished Name des Zertifikatausstellers zurück
 `str CertIssuerDN(binary certificateRawData)`  
 *   certificateRawData: Darstellung eines Bytearrays eines X.509-Zertifikats. Das Bytearray kann aus binär (DER) codierten oder Base64-codierten X.509-Daten bestehen.
 
-- - -
+---
 ### <a name="certissueroid"></a>CertIssuerOid
 **Beschreibung:**  
 Gibt die OID des Zertifikatausstellers zurück
@@ -224,7 +224,7 @@ Gibt die OID des Zertifikatausstellers zurück
 `str CertIssuerOid(binary certificateRawData)`  
 *   certificateRawData: Darstellung eines Bytearrays eines X.509-Zertifikats. Das Bytearray kann aus binär (DER) codierten oder Base64-codierten X.509-Daten bestehen.
 
-- - -
+---
 ### <a name="certkeyalgorithm"></a>CertKeyAlgorithm
 **Beschreibung:**  
 Gibt die Schlüsselalgorithmusinformationen zu diesem X.509v3-Zertifikat als Zeichenfolge zurück
@@ -233,7 +233,7 @@ Gibt die Schlüsselalgorithmusinformationen zu diesem X.509v3-Zertifikat als Zei
 `str CertKeyAlgorithm(binary certificateRawData)`  
 *   certificateRawData: Darstellung eines Bytearrays eines X.509-Zertifikats. Das Bytearray kann aus binär (DER) codierten oder Base64-codierten X.509-Daten bestehen.
 
-- - -
+---
 ### <a name="certkeyalgorithmparams"></a>CertKeyAlgorithmParams
 **Beschreibung:**  
 Gibt die Schlüsselalgorithmusparameter für das X.509v3-Zertifikat als hexadezimale Zeichenfolge zurück
@@ -242,7 +242,7 @@ Gibt die Schlüsselalgorithmusparameter für das X.509v3-Zertifikat als hexadezi
 `str CertKeyAlgorithm(binary certificateRawData)`  
 *   certificateRawData: Darstellung eines Bytearrays eines X.509-Zertifikats. Das Bytearray kann aus binär (DER) codierten oder Base64-codierten X.509-Daten bestehen.
 
-- - -
+---
 ### <a name="certnameinfo"></a>CertNameInfo
 **Beschreibung:**  
 Gibt die Namen des Antragstellers und des Ausstellers aus einem Zertifikat zurück
@@ -253,7 +253,7 @@ Gibt die Namen des Antragstellers und des Ausstellers aus einem Zertifikat zurü
 *   X509NameType: Der X509NameType-Wert des Antragstellers.
 *   includesIssuerName: TRUE, um den Ausstellernamen einzuschließen, andernfalls FALSE
 
-- - -
+---
 ### <a name="certnotafter"></a>CertNotAfter
 **Beschreibung:**  
 Gibt das Uhrzeit (Ortszeit) zurück, zu der das Zertifikat abläuft
@@ -262,7 +262,7 @@ Gibt das Uhrzeit (Ortszeit) zurück, zu der das Zertifikat abläuft
 `dt CertNotAfter(binary certificateRawData)`  
 *   certificateRawData: Darstellung eines Bytearrays eines X.509-Zertifikats. Das Bytearray kann aus binär (DER) codierten oder Base64-codierten X.509-Daten bestehen.
 
-- - -
+---
 ### <a name="certnotbefore"></a>CertNotBefore
 **Beschreibung:**  
 Gibt die Uhrzeit (Ortszeit) zurück, zu der ein Zertifikat gültig wird
@@ -271,7 +271,7 @@ Gibt die Uhrzeit (Ortszeit) zurück, zu der ein Zertifikat gültig wird
 `dt CertNotBefore(binary certificateRawData)`  
 *   certificateRawData: Darstellung eines Bytearrays eines X.509-Zertifikats. Das Bytearray kann aus binär (DER) codierten oder Base64-codierten X.509-Daten bestehen.
 
-- - -
+---
 ### <a name="certpublickeyoid"></a>CertPublicKeyOid
 **Beschreibung:**  
 Gibt die OID des öffentlichen Schlüssels für das X.509v3-Zertifikat zurück
@@ -280,7 +280,7 @@ Gibt die OID des öffentlichen Schlüssels für das X.509v3-Zertifikat zurück
 `str CertKeyAlgorithm(binary certificateRawData)`  
 *   certificateRawData: Darstellung eines Bytearrays eines X.509-Zertifikats. Das Bytearray kann aus binär (DER) codierten oder Base64-codierten X.509-Daten bestehen.
 
-- - -
+---
 ### <a name="certpublickeyparametersoid"></a>CertPublicKeyParametersOid
 **Beschreibung:**  
 Gibt die OID der Parameter des öffentlichen Schlüssels für das X.509v3-Zertifikat zurück
@@ -289,7 +289,7 @@ Gibt die OID der Parameter des öffentlichen Schlüssels für das X.509v3-Zertif
 `str CertPublicKeyParametersOid(binary certificateRawData)`  
 *   certificateRawData: Darstellung eines Bytearrays eines X.509-Zertifikats. Das Bytearray kann aus binär (DER) codierten oder Base64-codierten X.509-Daten bestehen.
 
-- - -
+---
 ### <a name="certserialnumber"></a>CertSerialNumber
 **Beschreibung:**  
 Gibt die Seriennummer des X.509v3-Zertifikats zurück
@@ -298,7 +298,7 @@ Gibt die Seriennummer des X.509v3-Zertifikats zurück
 `str CertSerialNumber(binary certificateRawData)`  
 *   certificateRawData: Darstellung eines Bytearrays eines X.509-Zertifikats. Das Bytearray kann aus binär (DER) codierten oder Base64-codierten X.509-Daten bestehen.
 
-- - -
+---
 ### <a name="certsignaturealgorithmoid"></a>CertSignatureAlgorithmOid
 **Beschreibung:**  
 Gibt die OID des Algorithmus zurück, mit dem die Signatur eines Zertifikats erstellt wurde
@@ -307,7 +307,7 @@ Gibt die OID des Algorithmus zurück, mit dem die Signatur eines Zertifikats ers
 `str CertSignatureAlgorithmOid(binary certificateRawData)`  
 *   certificateRawData: Darstellung eines Bytearrays eines X.509-Zertifikats. Das Bytearray kann aus binär (DER) codierten oder Base64-codierten X.509-Daten bestehen.
 
-- - -
+---
 ### <a name="certsubject"></a>CertSubject
 **Beschreibung:**  
 Ruft den Distinguished Name des Antragstellers für das Zertifikat ab
@@ -316,7 +316,7 @@ Ruft den Distinguished Name des Antragstellers für das Zertifikat ab
 `str CertSubject(binary certificateRawData)`  
 *   certificateRawData: Darstellung eines Bytearrays eines X.509-Zertifikats. Das Bytearray kann aus binär (DER) codierten oder Base64-codierten X.509-Daten bestehen.
 
-- - -
+---
 ### <a name="certsubjectnamedn"></a>CertSubjectNameDN
 **Beschreibung:**  
 Gibt den Distinguished Name des Antragstellers für das Zertifikat zurück
@@ -325,7 +325,7 @@ Gibt den Distinguished Name des Antragstellers für das Zertifikat zurück
 `str CertSubjectNameDN(binary certificateRawData)`  
 *   certificateRawData: Darstellung eines Bytearrays eines X.509-Zertifikats. Das Bytearray kann aus binär (DER) codierten oder Base64-codierten X.509-Daten bestehen.
 
-- - -
+---
 ### <a name="certsubjectnameoid"></a>CertSubjectNameOid
 **Beschreibung:**  
 Gibt die OID des Antragstellernamens aus einem Zertifikat zurück
@@ -334,7 +334,7 @@ Gibt die OID des Antragstellernamens aus einem Zertifikat zurück
 `str CertSubjectNameOid(binary certificateRawData)`  
 *   certificateRawData: Darstellung eines Bytearrays eines X.509-Zertifikats. Das Bytearray kann aus binär (DER) codierten oder Base64-codierten X.509-Daten bestehen.
 
-- - -
+---
 ### <a name="certthumbprint"></a>CertThumbprint
 **Beschreibung:**  
 Gibt den Fingerabdruck eines Zertifikats zurück
@@ -343,7 +343,7 @@ Gibt den Fingerabdruck eines Zertifikats zurück
 `str CertThumbprint(binary certificateRawData)`  
 *   certificateRawData: Darstellung eines Bytearrays eines X.509-Zertifikats. Das Bytearray kann aus binär (DER) codierten oder Base64-codierten X.509-Daten bestehen.
 
-- - -
+---
 ### <a name="certversion"></a>CertVersion
 **Beschreibung:**  
 Gibt die X.509-Formatversion eines Zertifikats zurück
@@ -352,7 +352,7 @@ Gibt die X.509-Formatversion eines Zertifikats zurück
 `str CertThumbprint(binary certificateRawData)`  
 *   certificateRawData: Darstellung eines Bytearrays eines X.509-Zertifikats. Das Bytearray kann aus binär (DER) codierten oder Base64-codierten X.509-Daten bestehen.
 
-- - -
+---
 ### <a name="cguid"></a>CGuid
 **Beschreibung:**  
 Die CGuid-Funktion konvertiert die Zeichenfolgendarstellung einer GUID in ihre binäre Darstellung.
@@ -362,7 +362,7 @@ Die CGuid-Funktion konvertiert die Zeichenfolgendarstellung einer GUID in ihre b
 
 * Eine in diesem Muster formatierte Zeichenfolge: xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx oder {xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx}
 
-- - -
+---
 ### <a name="contains"></a>Contains
 **Beschreibung:**  
 Die Contains-Funktion sucht in einem mehrwertigen Attribut nach einer Zeichenfolge.
@@ -386,7 +386,7 @@ Für Verweisattribute muss die Suchzeichenfolge genau mit dem Wert übereinstimm
 `IIF(Contains([proxyAddresses],"SMTP:")>0,[proxyAddresses],Error("No primary SMTP address found."))`  
 Wenn das proxyAddresses-Attribut eine primäre E-Mail-Adresse besitzt (angegeben durch „SMTP:“ [in Großbuchstaben]), wird das proxyAddresses-Attribut zurückgegeben. Andernfalls wird ein Fehler zurückgegeben.
 
-- - -
+---
 ### <a name="convertfrombase64"></a>ConvertFromBase64
 **Beschreibung:**  
 Die ConvertFromBase64-Funktion konvertiert den angegebenen Base64-codierten Wert in eine reguläre Zeichenfolge.
@@ -404,7 +404,7 @@ Die ConvertFromBase64-Funktion konvertiert den angegebenen Base64-codierten Wert
 
 Beide Beispiele geben "*Hello world!* " zurück.
 
-- - -
+---
 ### <a name="convertfromutf8hex"></a>ConvertFromUTF8Hex
 **Beschreibung:**  
 Die ConvertFromUTF8Hex-Funktion konvertiert den angegebenen UTF8-Hex-codierten Wert in eine Zeichenfolge.
@@ -422,7 +422,7 @@ Dieses Format wird von Azure Active Directory als DN verwendet.
 `ConvertFromUTF8Hex("48656C6C6F20776F726C6421")`  
 Gibt*Hello world!* zurück.
 
-- - -
+---
 ### <a name="converttobase64"></a>ConvertToBase64
 **Beschreibung:**  
 Die ConvertToBase64-Funktion konvertiert eine Zeichenfolge in eine Unicode-Base64-Zeichenfolge.  
@@ -435,7 +435,7 @@ Konvertiert den Wert eines Arrays von ganzen Zahlen in die entsprechende mit Bas
 `ConvertToBase64("Hello world!")`  
 Gibt „SABlAGwAbABvACAAdwBvAHIAbABkACEA“ zurück.
 
-- - -
+---
 ### <a name="converttoutf8hex"></a>ConvertToUTF8Hex
 **Beschreibung:**  
 Die ConvertToUTF8Hex-Funktion konvertiert eine Zeichenfolge in einen hexadezimal-codierten UTF8-Wert.
@@ -450,7 +450,7 @@ Das Ausgabeformat dieser Funktion wird von Azure Active Directory als DN-Attribu
 `ConvertToUTF8Hex("Hello world!")`  
 Gibt „48656C6C6F20776F726C6421“ zurück.
 
-- - -
+---
 ### <a name="count"></a>Count
 **Beschreibung:**  
 Die Count-Funktion gibt die Anzahl von Elementen in einem mehrwertigen Attribut zurück.
@@ -458,7 +458,7 @@ Die Count-Funktion gibt die Anzahl von Elementen in einem mehrwertigen Attribut 
 **Syntax:**  
 `num Count(mvstr attribute)`
 
-- - -
+---
 ### <a name="cnum"></a>CNum
 **Beschreibung:**  
 Die CNum-Funktion nimmt eine Zeichenfolge entgegen und gibt einen numerischen Datentyp zurück.
@@ -466,7 +466,7 @@ Die CNum-Funktion nimmt eine Zeichenfolge entgegen und gibt einen numerischen Da
 **Syntax:**  
 `num CNum(str value)`
 
-- - -
+---
 ### <a name="cref"></a>CRef
 **Beschreibung:**  
 Konvertiert eine Zeichenfolge in ein Verweisattribut.
@@ -477,7 +477,7 @@ Konvertiert eine Zeichenfolge in ein Verweisattribut.
 **Beispiel:**  
 `CRef("CN=LC Services,CN=Microsoft,CN=lcspool01,CN=Pools,CN=RTC Service," & %Forest.LDAP%)`
 
-- - -
+---
 ### <a name="cstr"></a>CStr
 **Beschreibung:**  
 Die CStr-Funktion konvertiert in einen Zeichenfolgendatentyp.
@@ -493,7 +493,7 @@ Die CStr-Funktion konvertiert in einen Zeichenfolgendatentyp.
 `CStr([dn])`  
 Könnte „cn=Joe,dc=contoso,dc=com“ zurückgeben.
 
-- - -
+---
 ### <a name="dateadd"></a>DateAdd
 **Beschreibung:**  
 Gibt einen Datumswert zurück, der ein Datum enthält, zu dem ein angegebenes Zeitintervall addiert wurde.
@@ -519,7 +519,7 @@ Gibt einen Datumswert zurück, der ein Datum enthält, zu dem ein angegebenes Ze
 `DateAdd("m", 3, CDate("2001-01-01"))`  
 Addiert drei Monate und gibt einen DateTime-Wert zurück, der „2001-04-01“ darstellt.
 
-- - -
+---
 ### <a name="datefromnum"></a>DateFromNum
 **Beschreibung:**  
 Die DateFromNum-Funktion konvertiert einen Wert im AD-Datumsformat in einen DateTime-Typ.
@@ -532,7 +532,7 @@ Die DateFromNum-Funktion konvertiert einen Wert im AD-Datumsformat in einen Date
 `DateFromNum(129699324000000000)`  
 Gibt einen DateTime-Wert zurück, der „2012-01-01 23:00:00“ darstellt.
 
-- - -
+---
 ### <a name="dncomponent"></a>DNComponent
 **Beschreibung:**  
 Die DNComponent-Funktion gibt den Wert einer angegebenen DN-Komponente von links beginnend zurück.
@@ -547,7 +547,7 @@ Die DNComponent-Funktion gibt den Wert einer angegebenen DN-Komponente von links
 `DNComponent(CRef([dn]),1)`  
 Falls der DN „cn=Joe,ou=…“ lautet, wird „Joe“ zurückgegeben.
 
-- - -
+---
 ### <a name="dncomponentrev"></a>DNComponentRev
 **Beschreibung:**  
 Die DNComponentRev-Funktion gibt den Wert einer angegebenen DN-Komponente von rechts beginnend (also vom Ende her) zurück.
@@ -566,7 +566,7 @@ Falls der DN „cn=Joe,ou=Atlanta,ou=GA,ou=US, dc=contoso,dc=com“ lautet, gebe
 `DNComponentRev(CRef([dn]),1,"DC")`  
 „US“ zurück.
 
-- - -
+---
 ### <a name="error"></a>Error
 **Beschreibung:**  
 Die Error-Funktion wird verwendet, um einen benutzerdefinierten Fehler zurückzugeben.
@@ -578,7 +578,7 @@ Die Error-Funktion wird verwendet, um einen benutzerdefinierten Fehler zurückzu
 `IIF(IsPresent([accountName]),[accountName],Error("AccountName is required"))`  
 Wenn das accountName-Attribut nicht vorhanden ist, wird ein Fehler für das Objekt ausgegeben.
 
-- - -
+---
 ### <a name="escapedncomponent"></a>EscapeDNComponent
 **Beschreibung:**  
 Die EscapeDNComponent-Funktion versieht eine Komponente eines DN mit Escapezeichen, sodass sie im LDAP dargestellt werden kann.
@@ -590,7 +590,7 @@ Die EscapeDNComponent-Funktion versieht eine Komponente eines DN mit Escapezeich
 `EscapeDNComponent("cn=" & [displayName]) & "," & %ForestLDAP%)`  
 Stellt sicher, dass das Objekt in einem LDAP-Verzeichnis erstellt werden kann, auch wenn das displayName-Attribut Zeichen enthält, die in LDAP mit Escapezeichen versehen werden müssen.
 
-- - -
+---
 ### <a name="formatdatetime"></a>FormatDateTime
 **Beschreibung:**  
 Die FormatDateTime-Funktion wird verwendet, um einen DateTime-Wert in eine Zeichenfolge in einem angegebenen Format zu formatieren.
@@ -612,7 +612,7 @@ Ergibt „2007-12-25“.
 `FormatDateTime(DateFromNum([pwdLastSet]),"yyyyMMddHHmmss.0Z")`  
 Kann „20140905081453.0Z“ ergeben.
 
-- - -
+---
 ### <a name="guid"></a>Guid
 **Beschreibung:**  
 Die Guid-Funktion generiert eine neue GUID nach dem Zufallsprinzip.
@@ -620,7 +620,7 @@ Die Guid-Funktion generiert eine neue GUID nach dem Zufallsprinzip.
 **Syntax:**  
 `str Guid()`
 
-- - -
+---
 ### <a name="iif"></a>IIF
 **Beschreibung:**  
 Die IIF-Funktion gibt basierend auf einer angegebenen Bedingung einen Wert aus einem Satz möglicher Werte zurück.
@@ -636,7 +636,7 @@ Die IIF-Funktion gibt basierend auf einer angegebenen Bedingung einen Wert aus e
 `IIF([employeeType]="Intern","t-" & [alias],[alias])`  
  Gibt bei Praktikanten den Alias eines Benutzers mit einem vorangestellten „t-“ zurück. Andernfalls wird der unveränderte Alias des Benutzers zurückgegeben.
 
-- - -
+---
 ### <a name="instr"></a>InStr
 **Beschreibung:**  
 Die InStr-Funktion sucht nach dem ersten Vorkommen einer Teilzeichenfolge in einer Zeichenfolge.
@@ -662,7 +662,7 @@ Wird als 5 ausgewertet.
 `InStr("repEated","e",3,vbBinaryCompare)`  
 Wird als 7 ausgewertet.
 
-- - -
+---
 ### <a name="instrrev"></a>InStrRev
 **Beschreibung:**  
 Die InStrRev-Funktion sucht nach dem letzten Vorkommen einer Teilzeichenfolge in einer Zeichenfolge.
@@ -684,7 +684,7 @@ Gibt die Position zurück, an der die Teilzeichenfolge gefunden wurde (oder 0, w
 `InStrRev("abbcdbbbef","bb")`  
 Gibt 7 zurück.
 
-- - -
+---
 ### <a name="isbitset"></a>IsBitSet
 **Beschreibung:**  
 Die IsBitSet-Funktion testet, ob ein Bit festgelegt ist.
@@ -698,7 +698,7 @@ Die IsBitSet-Funktion testet, ob ein Bit festgelegt ist.
 `IsBitSet(&HF,4)`  
 Gibt „True“ zurück, da Bit 4 auf den Hexadezimalwert „F“ festgelegt ist.
 
-- - -
+---
 ### <a name="isdate"></a>IsDate
 **Beschreibung:**  
 Die IsDate-Funktion wird als „True“ ausgewertet, wenn der Ausdruck als DateTime-Typ ausgewertet werden kann.
@@ -709,7 +709,7 @@ Die IsDate-Funktion wird als „True“ ausgewertet, wenn der Ausdruck als DateT
 **Hinweise:**  
 Wird verwendet, um zu bestimmen, ob „CDate()“ erfolgreich sein kann.
 
-- - -
+---
 ### <a name="iscert"></a>IsCert
 **Beschreibung:**  
 Gibt TRUE zurück, wenn die Rohdaten in ein .NET X509Certificate2-Zertifikatobjekt serialisiert werden können
@@ -717,7 +717,7 @@ Gibt TRUE zurück, wenn die Rohdaten in ein .NET X509Certificate2-Zertifikatobje
 **Syntax:**  
 `bool CertThumbprint(binary certificateRawData)`  
 *   certificateRawData: Darstellung eines Bytearrays eines X.509-Zertifikats. Das Bytearray kann aus binär (DER) codierten oder Base64-codierten X.509-Daten bestehen.
-- - -
+---
 ### <a name="isempty"></a>IsEmpty
 **Beschreibung:**  
 Die IsEmpty-Funktion wird als „True“ ausgewertet, wenn das Attribut in CS oder MV vorhanden ist, jedoch zu einer leeren Zeichenfolge ausgewertet wird.
@@ -725,7 +725,7 @@ Die IsEmpty-Funktion wird als „True“ ausgewertet, wenn das Attribut in CS od
 **Syntax:**  
 `bool IsEmpty(var Expression)`
 
-- - -
+---
 ### <a name="isguid"></a>IsGuid
 **Beschreibung:**  
 Die IsGuid-Funktion wird als „True“ ausgewertet, wenn die Zeichenfolge in eine GUID konvertiert werden kann.
@@ -742,7 +742,7 @@ Wird verwendet, um zu bestimmen, ob „CGuid()“ erfolgreich sein kann.
 `IIF(IsGuid([strAttribute]),CGuid([strAttribute]),NULL)`  
 Wenn „StrAttribute“ ein GUID-Format besitzt, wird die binäre Darstellung zurückgegeben. Andernfalls wird ein Nullwert zurückgegeben.
 
-- - -
+---
 ### <a name="isnull"></a>IsNull
 **Beschreibung:**  
 Die IsNull-Funktion gibt „True“ zurück, wenn die Auswertung des Ausdrucks einen Nullwert ergibt.
@@ -757,7 +757,7 @@ Für ein Attribut wird ein Nullwert durch die Abwesenheit des Attributs ausgedr�
 `IsNull([displayName])`  
 Gibt „True“ zurück, wenn das Attribut nicht in CS oder MV vorhanden ist.
 
-- - -
+---
 ### <a name="isnullorempty"></a>IsNullOrEmpty
 **Beschreibung:**  
 Die IsNullOrEmpty-Funktion gibt „True“ zurück, wenn der Ausdruck einem Nullwert oder einer leeren Zeichenfolge entspricht.
@@ -773,7 +773,7 @@ Die Umkehrung dieser Funktion heißt "IsPresent".
 `IsNullOrEmpty([displayName])`  
 Gibt „True“ zurück, wenn das Attribut in CS oder MV nicht vorhanden oder eine leere Zeichenfolge ist.
 
-- - -
+---
 ### <a name="isnumeric"></a>IsNumeric
 **Beschreibung:**  
 Die IsNumeric-Funktion gibt einen booleschen Wert zurück, der angibt, ob ein Ausdruck als Zahlentyp ausgewertet werden kann.
@@ -784,7 +784,7 @@ Die IsNumeric-Funktion gibt einen booleschen Wert zurück, der angibt, ob ein Au
 **Hinweise:**  
 Wird verwendet, um zu bestimmen, ob „CNum()“ erfolgreich zum Analysieren des Ausdrucks verwendet werden kann.
 
-- - -
+---
 ### <a name="isstring"></a>IsString
 **Beschreibung:**  
 Die IsString-Funktion wird als „True“ ausgewertet, wenn der Ausdruck als Zeichenfolgentyp ausgewertet werden kann.
@@ -795,7 +795,7 @@ Die IsString-Funktion wird als „True“ ausgewertet, wenn der Ausdruck als Zei
 **Hinweise:**  
 Wird verwendet, um zu bestimmen, ob „CStr()“ erfolgreich zum Analysieren des Ausdrucks verwendet werden kann.
 
-- - -
+---
 ### <a name="ispresent"></a>IsPresent
 **Beschreibung:**  
 Die IsPresent-Funktion gibt „True“ zurück, wenn der Ausdruck zu einer Zeichenfolge ausgewertet wird, die kein Nullwert und nicht leer ist.
@@ -809,7 +809,7 @@ Die umgekehrte Funktion heißt „IsNullOrEmpty“.
 **Beispiel:**  
 `Switch(IsPresent([directManager]),[directManager], IsPresent([skiplevelManager]),[skiplevelManager], IsPresent([director]),[director])`
 
-- - -
+---
 ### <a name="item"></a>Item
 **Beschreibung:**  
 Die Item-Funktion gibt ein Element aus einer mehrwertigen Zeichenfolge oder einem mehrwertigen Attribut zurück.
@@ -829,7 +829,7 @@ Gibt einen Fehler aus, wenn der Index außerhalb des gültigen Bereichs liegt.
 `Mid(Item([proxyAddresses],Contains([proxyAddresses], "SMTP:")),6)`  
 Gibt die primäre E-Mail-Adresse zurück.
 
-- - -
+---
 ### <a name="itemornull"></a>ItemOrNull
 **Beschreibung:**  
 Die ItemOrNull-Funktion gibt ein Element aus einer mehrwertigen Zeichenfolge/einem mehrwertigen Attribut zurück.
@@ -845,7 +845,7 @@ Die ItemOrNull-Funktion lässt sich mit der Contains-Funktion kombinieren, da le
 
 Liegt der Index außerhalb des gültigen Bereichs, wird ein Nullwert zurückgegeben.
 
-- - -
+---
 ### <a name="join"></a>Join
 **Beschreibung:**  
 Die Join-Funktion akzeptiert eine Zeichenfolge mit mehreren Werten und gibt eine einwertige Zeichenfolge zurück, zwischen deren einzelnen Elementen das angegebene Trennzeichen eingefügt ist.
@@ -864,7 +864,7 @@ Zwischen den Funktionen „Join“ und „Split“ besteht Parität. Die Funktio
 `Join([proxyAddresses],",")`  
 Kann Folgendes zurückgeben: SMTP:john.doe@contoso.com, smtp:jd@contoso.com
 
-- - -
+---
 ### <a name="lcase"></a>LCase
 **Beschreibung:**  
 Die LCase-Funktion konvertiert alle Zeichen in einer Zeichenfolge in Kleinbuchstaben.
@@ -876,7 +876,7 @@ Die LCase-Funktion konvertiert alle Zeichen in einer Zeichenfolge in Kleinbuchst
 `LCase("TeSt")`  
 Gibt „test“ zurück.
 
-- - -
+---
 ### <a name="left"></a>Left
 **Beschreibung:**  
 Die Left-Funktion gibt eine angegebene Anzahl von Zeichen von der linken Seite einer Zeichenfolge zurück.
@@ -900,7 +900,7 @@ Wenn die Zeichenfolge weniger Zeichen enthält als in „numChars“ angegeben, 
 `Left("John Doe", 3)`  
 Gibt „Joh“ zurück.
 
-- - -
+---
 ### <a name="len"></a>Len
 **Beschreibung:**  
 Die Len-Funktion gibt die Anzahl von Zeichen in einer Zeichenfolge zurück.
@@ -912,7 +912,7 @@ Die Len-Funktion gibt die Anzahl von Zeichen in einer Zeichenfolge zurück.
 `Len("John Doe")`  
 Gibt „8“ zurück.
 
-- - -
+---
 ### <a name="ltrim"></a>LTrim
 **Beschreibung:**  
 Die LTrim-Funktion entfernt führende Leerzeichen aus einer Zeichenfolge.
@@ -924,7 +924,7 @@ Die LTrim-Funktion entfernt führende Leerzeichen aus einer Zeichenfolge.
 `LTrim(" Test ")`  
 Gibt „Test “ zurück.
 
-- - -
+---
 ### <a name="mid"></a>Mid
 **Beschreibung:**  
 Die Mid-Funktion gibt eine bestimmte Anzahl von Zeichen ab einer bestimmten Position in einer Zeichenfolge zurück.
@@ -955,7 +955,7 @@ Gibt „hn Do“ zurück.
 `Mid("John Doe", 6, 999)`  
 Gibt „Doe“ zurück.
 
-- - -
+---
 ### <a name="now"></a>Now
 **Beschreibung:**  
 Die Now-Funktion gibt einen DateTime-Wert zurück, der das aktuelle Datum und die aktuelle Uhrzeit gemäß Systemdatum und -uhrzeit Ihres Computers angibt.
@@ -963,7 +963,7 @@ Die Now-Funktion gibt einen DateTime-Wert zurück, der das aktuelle Datum und di
 **Syntax:**  
 `dt Now()`
 
-- - -
+---
 ### <a name="numfromdate"></a>NumFromDate
 **Beschreibung:**  
 Die NumFromDate-Funktion gibt ein Datum im AD-Datumsformat zurück.
@@ -975,7 +975,7 @@ Die NumFromDate-Funktion gibt ein Datum im AD-Datumsformat zurück.
 `NumFromDate(CDate("2012-01-01 23:00:00"))`  
 Gibt „129699324000000000“ zurück.
 
-- - -
+---
 ### <a name="padleft"></a>PadLeft
 **Beschreibung:**  
 Die PadLeft-Funktion füllt eine Zeichenfolge nach links bis zu einer bestimmten Länge mit einem bestimmten Auffüllzeichen auf.
@@ -1000,7 +1000,7 @@ Die PadLeft-Funktion füllt eine Zeichenfolge nach links bis zu einer bestimmten
 `PadLeft("User", 10, "0")`  
 Gibt „000000User“ zurück.
 
-- - -
+---
 ### <a name="padright"></a>PadRight
 **Beschreibung:**  
 Die PadRight-Funktion füllt eine Zeichenfolge nach rechts bis zu einer bestimmten Länge mit einem bestimmten Auffüllzeichen auf.
@@ -1025,7 +1025,7 @@ Die PadRight-Funktion füllt eine Zeichenfolge nach rechts bis zu einer bestimmt
 `PadRight("User", 10, "0")`  
 Gibt „User000000“ zurück.
 
-- - -
+---
 ### <a name="pcase"></a>PCase
 **Beschreibung:**  
 Die PCase-Funktion konvertiert das erste Zeichen jedes durch Leerzeichen getrennten Worts in einer Zeichenfolge in einen Großbuchstaben und alle anderen Zeichen in Kleinbuchstaben.
@@ -1044,7 +1044,7 @@ Gibt „test“ zurück.
 `PCase(LCase("TEST"))`  
 Gibt „Test“ zurück.
 
-- - -
+---
 ### <a name="randomnum"></a>RandomNum
 **Beschreibung:**  
 Die RandomNum-Funktion gibt eine Zufallszahl innerhalb eines bestimmten Intervalls zurück.
@@ -1059,7 +1059,7 @@ Die RandomNum-Funktion gibt eine Zufallszahl innerhalb eines bestimmten Interval
 `Random(100,999)`  
 Kann „734“ zurückgeben.
 
-- - -
+---
 ### <a name="removeduplicates"></a>RemoveDuplicates
 **Beschreibung:**  
 Die RemoveDuplicates-Funktion stellt sicher, dass in einer übergebenen mehrwertigen Zeichenfolge jeder Wert eindeutig ist.
@@ -1071,7 +1071,7 @@ Die RemoveDuplicates-Funktion stellt sicher, dass in einer übergebenen mehrwert
 `RemoveDuplicates([proxyAddresses])`  
 Gibt ein bereinigtes proxyAddress-Attribut zurück, aus dem alle doppelten Werte entfernt wurden.
 
-- - -
+---
 ### <a name="replace"></a>Replace
 **Beschreibung:**  
 Die Replace-Funktion ersetzt alle Vorkommen einer Zeichenfolge durch eine andere Zeichenfolge.
@@ -1094,7 +1094,7 @@ Die Funktion erkennt die folgenden speziellen Moniker:
 `Replace([address],"\r\n",", ")`  
 Ersetzt CRLF durch ein Komma und ein Leerzeichen, was etwa wie folgt aussehen kann: „One Microsoft Way, Redmond, WA, USA“.
 
-- - -
+---
 ### <a name="replacechars"></a>ReplaceChars
 **Beschreibung:**  
 Die ReplaceChars-Funktion ersetzt alle Vorkommen von Zeichen, die in der ReplacePattern-Zeichenfolge gefunden werden.
@@ -1127,7 +1127,7 @@ Gibt „Raksmorgas“ zurück.
 `ReplaceChars("O’Neil",%ReplaceString%)`  
 Gibt „ONeil“ zurück. (Der Apostroph wird entfernt.)
 
-- - -
+---
 ### <a name="right"></a>Right
 **Beschreibung:**  
 Die Right-Funktion gibt eine bestimmte Anzahl von Zeichen von der rechten Seite einer Zeichenfolge (also vom Ende her) zurück.
@@ -1153,7 +1153,7 @@ Wenn die Zeichenfolge weniger Zeichen enthält als in "numChars" angegeben, wird
 `Right("John Doe", 3)`  
 Gibt „Doe“ zurück.
 
-- - -
+---
 ### <a name="rtrim"></a>RTrim
 **Beschreibung:**  
 Die RTrim-Funktion entfernt nachfolgende Leerzeichen aus einer Zeichenfolge.
@@ -1165,7 +1165,7 @@ Die RTrim-Funktion entfernt nachfolgende Leerzeichen aus einer Zeichenfolge.
 `RTrim(" Test ")`  
 Gibt „ Test“ zurück.
 
-- - -
+---
 ### <a name="select"></a>Select
 **Beschreibung:**  
 Verarbeitet alle Werte in einem mehrwertigen Attribut (oder der Ausgabe eines Ausdrucks), basierend auf der angegebenen Funktion
@@ -1183,7 +1183,7 @@ Verarbeitet alle Werte in einem mehrwertigen Attribut (oder der Ausgabe eines Au
 `Select($item,[otherPhone],Replace($item,"-",""))`  
 Gibt alle Werte im mehrwertigen Attribut „otherPhone“ zurück, nachdem Bindestriche (-) entfernt wurden
 
-- - -
+---
 ### <a name="split"></a>Split
 **Beschreibung:**  
 Die Split-Funktion nimmt eine durch Trennzeichen getrennte Zeichenfolge entgegen und wandelt sie in eine mehrwertige Zeichenfolge um.
@@ -1200,7 +1200,7 @@ Die Split-Funktion nimmt eine durch Trennzeichen getrennte Zeichenfolge entgegen
 `Split("SMTP:john.doe@contoso.com,smtp:jd@contoso.com",",")`  
 Gibt eine mehrwertige Zeichenfolge mit zwei Elementen zurück, die für das proxyAddress-Attribut nützlich sind.
 
-- - -
+---
 ### <a name="stringfromguid"></a>StringFromGuid
 **Beschreibung:**  
 Die StringFromGuid-Funktion nimmt eine binäre GUID entgegen und konvertiert sie in eine Zeichenfolge.
@@ -1208,7 +1208,7 @@ Die StringFromGuid-Funktion nimmt eine binäre GUID entgegen und konvertiert sie
 **Syntax:**  
 `str StringFromGuid(bin GUID)`
 
-- - -
+---
 ### <a name="stringfromsid"></a>StringFromSid
 **Beschreibung:**  
 Die StringFromSid-Funktion konvertiert ein Bytearray mit einer enthaltenen Sicherheits-ID in eine Zeichenfolge.
@@ -1216,7 +1216,7 @@ Die StringFromSid-Funktion konvertiert ein Bytearray mit einer enthaltenen Siche
 **Syntax:**  
 `str StringFromSid(bin ObjectSID)`  
 
-- - -
+---
 ### <a name="switch"></a>Switch
 **Beschreibung:**  
 Mit der Switch-Funktion wird ein einzelner Wert auf der Grundlage ausgewerteter Bedingungen zurückgegeben.
@@ -1245,7 +1245,7 @@ Switch gibt nichts zurück, wenn:
 `Switch([city] = "London", "English", [city] = "Rome", "Italian", [city] = "Paris", "French", True, Error("Unknown city"))`  
 Gibt die Sprache zurück, die in einigen Großstädten gesprochen wird. Andernfalls wird ein Fehler zurückgegeben.
 
-- - -
+---
 ### <a name="trim"></a>Trim
 **Beschreibung:**  
 Die Trim-Funktion entfernt führende und nachfolgende Leerzeichen aus einer Zeichenfolge.
@@ -1260,7 +1260,7 @@ Gibt „test“ zurück.
 `Trim([proxyAddresses])`  
 Entfernt führende und nachfolgende Leerzeichen für jeden Wert im proxyAddress-Attribut.
 
-- - -
+---
 ### <a name="ucase"></a>UCase
 **Beschreibung:**  
 Die UCase-Funktion konvertiert alle Zeichen in einer Zeichenfolge in Großbuchstaben.
@@ -1272,7 +1272,7 @@ Die UCase-Funktion konvertiert alle Zeichen in einer Zeichenfolge in Großbuchst
 `UCase("TeSt")`  
 Gibt „test“ zurück.
 
-- - -
+---
 ### <a name="where"></a>Hierbei gilt:
 
 **Beschreibung:**  
@@ -1290,7 +1290,7 @@ Gibt eine Teilmenge von Werten aus einem mehrwertigen Attribut (oder die Ausgabe
 `Where($item,[userCertificate],CertNotAfter($item)>Now())`  
 Gibt die Zertifikatwerte im mehrwertigen Attribut „userCertificate“ zurück, die nicht abgelaufen sind
 
-- - -
+---
 ### <a name="with"></a>With
 **Beschreibung:**  
 Die With-Funktion stellt eine Möglichkeit zum Vereinfachen eines komplexen Ausdrucks mithilfe einer Variablen bereit. Dabei wird ein Teilausdruck dargestellt, der mindestens im komplexen Ausdruck angezeigt wird.
@@ -1308,7 +1308,7 @@ Ist funktionell gleichwertig mit:
 Hiermit werden nur nicht abgelaufene Zertifikatwerte aus dem Attribut „userCertificate“ zurückgegeben.
 
 
-- - -
+---
 ### <a name="word"></a>Word
 **Beschreibung:**  
 Die Word-Funktion gibt ein in einer Zeichenfolge enthaltenes Wort auf der Grundlage von Parametern zurück, die die zu verwendenden Trennzeichen und die Nummer des zurückzugebenden Worts beschreiben.

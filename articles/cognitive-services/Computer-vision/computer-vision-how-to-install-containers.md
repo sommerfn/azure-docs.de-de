@@ -7,16 +7,16 @@ author: IEvangelist
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: computer-vision
-ms.topic: article
-ms.date: 06/10/2019
-ms.author: IEvangelist
+ms.topic: conceptual
+ms.date: 06/19/2019
+ms.author: dapine
 ms.custom: seodec18
-ms.openlocfilehash: 49e3af546ffcf5be47c73bfe633223a4d968d887
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 8a5a66c720c0a591fe9d6c9864286d80f68ba599
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67060924"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67449347"
 ---
 # <a name="install-and-run-recognize-text-containers"></a>Installieren und Ausführen von Texterkennungscontainern
 
@@ -125,7 +125,7 @@ Es sind noch weitere [Beispiele](./computer-vision-resource-container-config.md#
 
 Der Container stellt REST-basierte Endpunkt-APIs für die Abfragevorhersage bereit. 
 
-Verwenden Sie für Container-APIs den Host `https://localhost:5000`.
+Verwenden Sie für Container-APIs den Host `http://localhost:5000`.
 
 ### <a name="asynchronous-text-recognition"></a>Asynchrone Texterkennung
 

@@ -3,19 +3,19 @@ title: Textübersetzungs-API Version 2.0
 titleSuffix: Azure Cognitive Services
 description: Referenzdokumentation für die Textübersetzungs-API Version 2.0
 services: cognitive-services
-author: rajdeep-in
+author: swmachan
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: reference
 ms.date: 05/15/2018
-ms.author: v-pawal
-ms.openlocfilehash: d2ff61908d7901fc464b58ee1ef9b5605b3026a3
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.author: swmachan
+ms.openlocfilehash: 88503c73e2ca9cf04e64ca3a47793e9b10ca325a
+ms.sourcegitcommit: a7ea412ca4411fc28431cbe7d2cc399900267585
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66389846"
+ms.lasthandoff: 06/25/2019
+ms.locfileid: "67357833"
 ---
 # <a name="translator-text-api-v20"></a>Microsoft Translator-Text-API Version 2.0
 
@@ -27,7 +27,7 @@ Die Textübersetzungs-API, Version 2, kann nahtlos in Ihre Anwendungen, Websites
 ## <a name="getting-started"></a>Erste Schritte
 Für den Zugriff auf die Textübersetzungs-API müssen Sie sich bei [Microsoft Azure registrieren](../translator-text-how-to-signup.md).
 
-## <a name="authorization"></a>Autorisierung
+## <a name="authorization"></a>Authorization
 Alle Aufrufe an die Textübersetzungs-API erfordern einen Abonnementschlüssel für die Authentifizierung. Die API unterstützt drei Authentifizierungsmodi:
 
 - Ein Zugriffstoken. Verwenden Sie den unter **Schritt 9** angegebenen Abonnementschlüssel, um ein Zugriffstoken zu generieren. Stellen Sie dazu eine POST-Anforderung an den Authentifizierungsdienst. Ausführliche Informationen dazu finden Sie in der Tokendienst-Dokumentation. Übergeben Sie das Zugriffstoken mithilfe des Autorisierungsheaders oder des Abfrageparameters `access_token` an den Übersetzerdienst. Das Zugriffstoken ist 10 Minuten lang gültig. Rufen Sie alle 10 Minuten ein neues Zugriffstoken ab, und verwenden Sie innerhalb dieser 10 Minuten für wiederholte Anforderungen weiterhin dasselbe Zugriffstoken.
@@ -91,7 +91,7 @@ Anforderungsinhaltstyp: application/xml
 |zu|(leer) |Erforderlich. Eine Zeichenfolge, die den Code der Sprache darstellt, in die der Text übersetzt werden soll.|query|Zeichenfolge|
 |contentType|(leer)    |Optional. Das Format des Texts, der übersetzt wird. Die unterstützten Formate sind text/plain (Standard) und text/html. Jede HTML muss ein wohlgeformtes vollständiges Element sein.|query|Zeichenfolge|
 |category|(leer)   |Optional. Eine Zeichenfolge, die die Kategorie (Domäne) der Übersetzung enthält. Der Standardwert lautet „general“.|query|Zeichenfolge|
-|Autorisierung|(leer)  |Erforderlich, falls das Feld „appid“ oder der Header „Ocp-Apim-Subscription-Key“ nicht angegeben ist. Autorisierungstoken:  „Bearer“ + „ „ + „access_token“.|Header|Zeichenfolge|
+|Authorization|(leer)  |Erforderlich, falls das Feld „appid“ oder der Header „Ocp-Apim-Subscription-Key“ nicht angegeben ist. Autorisierungstoken:  „Bearer“ + „ „ + „access_token“.|Header|Zeichenfolge|
 |Ocp-Apim-Subscription-Key|(leer)  |Erforderlich, falls das Feld „appid“ oder der Header „Authorization“ nicht angegeben ist.|Header|Zeichenfolge|
 
 
@@ -190,7 +190,7 @@ Anforderungsinhaltstyp: application/xml
 
 |Parameter|Wert|BESCHREIBUNG|Parametertyp|Datentyp|
 |:--|:--|:--|:--|:--|
-|Autorisierung|(leer) |Erforderlich, falls das Feld „appid“ oder der Header „Ocp-Apim-Subscription-Key“ nicht angegeben ist. Autorisierungstoken:  „Bearer“ + „ „ + „access_token“.|Header|Zeichenfolge|
+|Authorization|(leer) |Erforderlich, falls das Feld „appid“ oder der Header „Ocp-Apim-Subscription-Key“ nicht angegeben ist. Autorisierungstoken:  „Bearer“ + „ „ + „access_token“.|Header|Zeichenfolge|
 |Ocp-Apim-Subscription-Key|(leer)|Erforderlich, falls das Feld „appid“ oder der Header „Authorization“ nicht angegeben ist.|Header|Zeichenfolge|
 
 ### <a name="response-messages"></a>Antwortnachrichten
@@ -233,7 +233,7 @@ Anforderungsinhaltstyp: application/xml
 |:--|:--|:--|:--|:--|
 |appid|(leer)|Erforderlich. Wenn der Header `Authorization` oder `Ocp-Apim-Subscription-Key` verwendet wird, lassen Sie das Feld „appid“ leer, oder schließen Sie eine Zeichenfolge ein, die `"Bearer" + " " + "access_token"` enthält.|query|Zeichenfolge|
 |locale|(leer) |Erforderlich. Eine Zeichenfolge, die eine Kombination aus einem Kulturcode aus zwei Kleinbuchstaben (laut ISO 639) darstellt, die mit einer Sprache und einem Subkulturcode aus zwei Großbuchstaben (laut ISO 3166) in Verbindung steht, um die Sprachnamen oder einen eigenständigen ISO 639-Kulturcode in Kleinbuchstaben zu lokalisieren.|query|Zeichenfolge|
-|Autorisierung|(leer)  |Erforderlich, falls das Feld „appid“ oder der Header `Ocp-Apim-Subscription-Key` nicht angegeben ist. Autorisierungstoken: `"Bearer" + " " + "access_token"`|Header|Zeichenfolge|
+|Authorization|(leer)  |Erforderlich, falls das Feld „appid“ oder der Header `Ocp-Apim-Subscription-Key` nicht angegeben ist. Autorisierungstoken: `"Bearer" + " " + "access_token"`|Header|Zeichenfolge|
 |Ocp-Apim-Subscription-Key|(leer)  |Erforderlich, falls das Feld „appid“ oder der Header `Authorization` nicht angegeben ist.|Header|Zeichenfolge|
 
 ### <a name="response-messages"></a>Antwortnachrichten
@@ -266,7 +266,7 @@ Anforderungsinhaltstyp: application/xml
 |Parameter|Wert|BESCHREIBUNG|Parametertyp|Datentyp|
 |:--|:--|:--|:--|:--|
 |appid|(leer)|Erforderlich. Wenn der Header `Authorization` oder `Ocp-Apim-Subscription-Key` verwendet wird, lassen Sie das Feld „appid“ leer, oder schließen Sie eine Zeichenfolge ein, die `"Bearer" + " " + "access_token"` enthält.|query|Zeichenfolge|
-|Autorisierung|(leer)  |Erforderlich, falls das Feld `appid` oder der Header `Ocp-Apim-Subscription-Key` nicht angegeben ist. Autorisierungstoken: `"Bearer" + " " + "access_token"`|Header|Zeichenfolge|
+|Authorization|(leer)  |Erforderlich, falls das Feld `appid` oder der Header `Ocp-Apim-Subscription-Key` nicht angegeben ist. Autorisierungstoken: `"Bearer" + " " + "access_token"`|Header|Zeichenfolge|
 |Ocp-Apim-Subscription-Key|(leer)|Erforderlich, falls das Feld `appid` oder der Header `Authorization` nicht angegeben ist.|Header|Zeichenfolge|
 
 ### <a name="response-messages"></a>Antwortnachrichten
@@ -299,7 +299,7 @@ Anforderungsinhaltstyp: application/xml
 |Parameter|Wert|BESCHREIBUNG|Parametertyp|Datentyp|
 |:--|:--|:--|:--|:--|
 |appid|(leer)|Erforderlich. Wenn der Header `Authorization` oder `Ocp-Apim-Subscription-Key` verwendet wird, lassen Sie das Feld „appid“ leer, oder schließen Sie eine Zeichenfolge ein, die `"Bearer" + " " + "access_token"` enthält.|query|Zeichenfolge|
-|Autorisierung|(leer)|Erforderlich, falls das Feld `appid` oder der Header `Ocp-Apim-Subscription-Key` nicht angegeben ist. Autorisierungstoken: `"Bearer" + " " + "access_token"`|Header|Zeichenfolge|
+|Authorization|(leer)|Erforderlich, falls das Feld `appid` oder der Header `Ocp-Apim-Subscription-Key` nicht angegeben ist. Autorisierungstoken: `"Bearer" + " " + "access_token"`|Header|Zeichenfolge|
 |Ocp-Apim-Subscription-Key|(leer)|Erforderlich, falls das Feld `appid` oder der Header `Authorization` nicht angegeben ist.|Header|Zeichenfolge|
  
 ### <a name="response-messages"></a>Antwortnachrichten
@@ -335,7 +335,7 @@ Anforderungsinhaltstyp: application/xml
 |language|(leer)   |Erforderlich. Eine Zeichenfolge, die den Code der unterstützten Sprache darstellt, in die der Text gesprochen werden soll. Der Code muss in der Liste der Codes aufgeführt sein, die von der Methode `GetLanguagesForSpeak` zurückgegeben werden.|query|Zeichenfolge|
 |format|(leer)|Optional. Eine Zeichenfolge, die die Inhaltstyp-ID zurückgibt. Derzeit sind `audio/wav` und `audio/mp3` verfügbar. Standardwert: `audio/wav`.|query|Zeichenfolge|
 |options|(leer)    |<ul><li>Optional. Eine Zeichenfolge, die Eigenschaften der synthetisierten Spracheingabe angibt.<li>`MaxQuality` und `MinSize` sind verfügbar, um die Qualität der Audiosignale anzugeben. Mit `MaxQuality` erhalten Sie eine hochqualitative Stimmwiedergabe, und mit `MinSize` erhalten Sie eine Stimmwiedergabe von niedrigerer Qualität. Der Standardwert ist `MinSize`.</li><li>`female` und `male` sind verfügbar, um das gewünschte Geschlecht bei der Sprachwiedergabe zu bestimmen. Der Standardwert ist `female`. Verwenden Sie den senkrechten Strich <code>\|</code>, um mehrere Optionen einzuschließen. Beispiel: `MaxQuality|Male`.</li></li></ul> |query|Zeichenfolge|
-|Autorisierung|(leer)|Erforderlich, falls das Feld `appid` oder der Header `Ocp-Apim-Subscription-Key` nicht angegeben ist. Autorisierungstoken: `"Bearer" + " " + "access_token"`|Header|Zeichenfolge|
+|Authorization|(leer)|Erforderlich, falls das Feld `appid` oder der Header `Ocp-Apim-Subscription-Key` nicht angegeben ist. Autorisierungstoken: `"Bearer" + " " + "access_token"`|Header|Zeichenfolge|
 |Ocp-Apim-Subscription-Key|(leer)  |Erforderlich, falls das Feld `appid` oder der Header `Authorization` nicht angegeben ist.|Header|Zeichenfolge|
 
 ### <a name="response-messages"></a>Antwortnachrichten
@@ -368,7 +368,7 @@ Anforderungsinhaltstyp: application/xml
 |:--|:--|:--|:--|:--|
 |appid|(leer)  |Erforderlich. Wenn der Header `Authorization` oder `Ocp-Apim-Subscription-Key` verwendet wird, lassen Sie das Feld „appid“ leer, oder schließen Sie eine Zeichenfolge ein, die `"Bearer" + " " + "access_token"` enthält.|query|Zeichenfolge|
 |text|(leer)|Erforderlich. Eine Zeichenfolge, die Text enthält, dessen Sprache identifiziert werden soll. Die Textgröße darf 10.000 Zeichen nicht überschreiten.|query| Zeichenfolge|
-|Autorisierung|(leer)|Erforderlich, falls das Feld `appid` oder der Header `Ocp-Apim-Subscription-Key` nicht angegeben ist. Autorisierungstoken: `"Bearer" + " " + "access_token"`|Header|Zeichenfolge|
+|Authorization|(leer)|Erforderlich, falls das Feld `appid` oder der Header `Ocp-Apim-Subscription-Key` nicht angegeben ist. Autorisierungstoken: `"Bearer" + " " + "access_token"`|Header|Zeichenfolge|
 |Ocp-Apim-Subscription-Key  |(leer)    |Erforderlich, falls das Feld `appid` oder der Header `Authorization` nicht angegeben ist.|Header|Zeichenfolge|
 
 ### <a name="response-messages"></a>Antwortnachrichten
@@ -422,7 +422,7 @@ Anforderungsinhaltstyp: application/xml
 |Parameter|Wert|BESCHREIBUNG|Parametertyp|Datentyp|
 |:--|:--|:--|:--|:--|
 |appid|(leer)|Erforderlich. Wenn der Header `Authorization` oder `Ocp-Apim-Subscription-Key` verwendet wird, lassen Sie das Feld „appid“ leer, oder schließen Sie eine Zeichenfolge ein, die `"Bearer" + " " + "access_token"` enthält.|query|Zeichenfolge|
-|Autorisierung|(leer)|Erforderlich, falls das Feld `appid` oder der Header `Ocp-Apim-Subscription-Key` nicht angegeben ist. Autorisierungstoken: `"Bearer" + " " + "access_token"`|Header|Zeichenfolge|
+|Authorization|(leer)|Erforderlich, falls das Feld `appid` oder der Header `Ocp-Apim-Subscription-Key` nicht angegeben ist. Autorisierungstoken: `"Bearer" + " " + "access_token"`|Header|Zeichenfolge|
 |Ocp-Apim-Subscription-Key|(leer)|Erforderlich, falls das Feld `appid` oder der Header „Authorization“ nicht angegeben ist.|Header|Zeichenfolge|
 
 ### <a name="response-messages"></a>Antwortnachrichten
@@ -465,7 +465,7 @@ Anforderungsinhaltstyp: application: xml
 |category|(leer)|Optional. Eine Zeichenfolge, die die Kategorie (Domäne) der Übersetzung enthält. Der Standardwert lautet „general“.|query|Zeichenfolge|
 |user|(leer)|Erforderlich. Eine Zeichenfolge, die zur Nachverfolgung des Erstellers der Einreichung verwendet wird.|query|Zeichenfolge|
 |uri|(leer)|Optional. Eine Zeichenfolge, die den Inhaltsspeicherort dieser Übersetzung enthält.|query|Zeichenfolge|
-|Autorisierung|(leer)|Erforderlich, falls das Feld „appid“ oder der Header `Ocp-Apim-Subscription-Key` nicht angegeben ist. Autorisierungstoken: `"Bearer" + " " + "access_token"`    |Header|Zeichenfolge|
+|Authorization|(leer)|Erforderlich, falls das Feld „appid“ oder der Header `Ocp-Apim-Subscription-Key` nicht angegeben ist. Autorisierungstoken: `"Bearer" + " " + "access_token"`    |Header|Zeichenfolge|
 |Ocp-Apim-Subscription-Key|(leer)|Erforderlich, falls das Feld `appid` oder der Header `Authorization` nicht angegeben ist.|Header|Zeichenfolge|
 
 ### <a name="response-messages"></a>Antwortnachrichten
@@ -532,7 +532,7 @@ Anforderungsinhaltstyp: application/xml
 
 |Parameter|Wert|BESCHREIBUNG|Parametertyp|Datentyp|
 |:--|:--|:--|:--|:--|
-|Autorisierung|(leer)|Erforderlich, falls das Feld „appid“ oder der Header „Ocp-Apim-Subscription-Key“ nicht angegeben ist. Autorisierungstoken:  „Bearer“ + „ „ + „access_token“.|Header|Zeichenfolge|
+|Authorization|(leer)|Erforderlich, falls das Feld „appid“ oder der Header „Ocp-Apim-Subscription-Key“ nicht angegeben ist. Autorisierungstoken:  „Bearer“ + „ „ + „access_token“.|Header|Zeichenfolge|
 |Ocp-Apim-Subscription-Key|(leer)|Erforderlich, falls das Feld „appid“ oder der Header „Authorization“ nicht angegeben ist.|Header|Zeichenfolge|
 
 ### <a name="response-messages"></a>Antwortnachrichten
@@ -568,7 +568,7 @@ Anforderungsinhaltstyp: application/xml
 |appid|(leer)  |Erforderlich. Wenn der Header „Authorization“ oder „Ocp-Apim-Subscription-Key“ verwendet wird, lassen Sie das Feld „appid“ leer, oder schließen Sie eine Zeichenfolge ein, die „Bearer“ + „ „ (Leerzeichen) + „access_token“ enthält.|query| Zeichenfolge|
 |text|(leer)   |Erforderlich. Eine Zeichenfolge, die den Text darstellt, der in Sätze aufgeteilt werden soll. Die Textgröße darf 10.000 Zeichen nicht überschreiten.|query|Zeichenfolge|
 |language   |(leer)    |Erforderlich. Eine Zeichenfolge, die den Sprachcode des Eingabetexts darstellt.|query|Zeichenfolge|
-|Autorisierung|(leer)|Erforderlich, falls das Feld „appid“ oder der Header „Ocp-Apim-Subscription-Key“ nicht angegeben ist. Autorisierungstoken:  „Bearer“ + „ „ + „access_token“.    |Header|Zeichenfolge|
+|Authorization|(leer)|Erforderlich, falls das Feld „appid“ oder der Header „Ocp-Apim-Subscription-Key“ nicht angegeben ist. Autorisierungstoken:  „Bearer“ + „ „ + „access_token“.    |Header|Zeichenfolge|
 |Ocp-Apim-Subscription-Key|(leer)|Erforderlich, falls das Feld „appid“ oder der Header „Authorization“ nicht angegeben ist.|Header|Zeichenfolge|
 
 ### <a name="response-messages"></a>Antwortnachrichten
@@ -664,7 +664,7 @@ Anforderungsinhaltstyp: application/xml
 |from|(leer)|Erforderlich. Eine Zeichenfolge, die den Sprachcode des Übersetzungstexts darstellt.|query|Zeichenfolge|
 |zu |(leer)    |Erforderlich. Eine Zeichenfolge, die den Code der Sprache darstellt, in die der Text übersetzt werden soll.|query|Zeichenfolge|
 |maxTranslations|(leer)|Erforderlich. Ein Integer, der die Höchstanzahl der Übersetzungen darstellt, die zurückgegeben werden sollen.|query|integer|
-|Autorisierung| (leer)|Erforderlich, falls das Feld `appid` oder der Header `Ocp-Apim-Subscription-Key` nicht angegeben ist. Autorisierungstoken: `"Bearer" + " " + "access_token"`|Zeichenfolge| Header|
+|Authorization| (leer)|Erforderlich, falls das Feld `appid` oder der Header `Ocp-Apim-Subscription-Key` nicht angegeben ist. Autorisierungstoken: `"Bearer" + " " + "access_token"`|Zeichenfolge| Header|
 |Ocp-Apim-Subscription-Key|(leer)  |Erforderlich, falls das Feld `appid` oder der Header `Authorization` nicht angegeben ist.|Header|Zeichenfolge|
 
 ### <a name="response-messages"></a>Antwortnachrichten
@@ -779,7 +779,7 @@ Anforderungsinhaltstyp: application/xml
 
 |Parameter|Wert|BESCHREIBUNG|Parametertyp|Datentyp|
 |:--|:--|:--|:--|:--|
-|Autorisierung  |(leer)    |Erforderlich, falls das Feld `appid` oder der Header `Ocp-Apim-Subscription-Key` nicht angegeben ist. Autorisierungstoken: `"Bearer" + " " + "access_token"`|Header|Zeichenfolge|
+|Authorization  |(leer)    |Erforderlich, falls das Feld `appid` oder der Header `Ocp-Apim-Subscription-Key` nicht angegeben ist. Autorisierungstoken: `"Bearer" + " " + "access_token"`|Header|Zeichenfolge|
 |Ocp-Apim-Subscription-Key|(leer)  |Erforderlich, falls das Feld `appid` oder der Header `Authorization` nicht angegeben ist.|Header|Zeichenfolge|
 
 ### <a name="response-messages"></a>Antwortnachrichten

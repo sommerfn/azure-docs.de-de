@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.date: 05/29/2019
 ms.author: heidist
 ms.custom: seodec2018
-ms.openlocfilehash: 650dfa7284b41407e9b128a2096548d7acfc1567
-ms.sourcegitcommit: 51a7669c2d12609f54509dbd78a30eeb852009ae
+ms.openlocfilehash: fd81115f4e811366b6b115d1c73a9be7ca26698b
+ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/30/2019
-ms.locfileid: "66393797"
+ms.lasthandoff: 07/01/2019
+ms.locfileid: "67485618"
 ---
 # <a name="create-an-azure-search-service-in-the-portal"></a>Erstellen eines Azure Search-Diensts im Portal
 
@@ -94,7 +94,7 @@ Denken Sie daran, Ihren Dienst an das Dashboard anzuheften, damit Sie nach jeder
 
 ## <a name="get-a-key-and-url-endpoint"></a>Abrufen eines Schlüssels und URL-Endpunkts
 
-Um den neuen Dienst verwenden zu können, müssen Sie in der Regel den URL-Endpunkt und einen Autorisierungs-API-Schlüssel angeben. Schnellstarts, Tutorials (etwa [Untersuchen von Azure Search-REST-APIs mit Fiddler oder Postman](search-fiddler.md) und [Verwenden von Azure Search aus einer .NET-Anwendung](search-howto-dotnet-sdk.md)), Beispiele und benutzerdefinierter Code benötigen jeweils einen Endpunkt und einen Schlüssel, damit sie mit einer bestimmten Ressource ausgeführt werden können.
+Um den neuen Dienst verwenden zu können, müssen Sie in der Regel den URL-Endpunkt und einen Autorisierungs-API-Schlüssel angeben. Schnellstarts, Tutorials (etwa [Untersuchen von Azure Search-REST-APIs mit Fiddler oder Postman](search-get-started-postman.md) und [Verwenden von Azure Search aus einer .NET-Anwendung](search-howto-dotnet-sdk.md)), Beispiele und benutzerdefinierter Code benötigen jeweils einen Endpunkt und einen Schlüssel, damit sie mit einer bestimmten Ressource ausgeführt werden können.
 
 1. Kopieren Sie rechts auf der Dienstübersichtsseite den URL-Endpunkt.
 

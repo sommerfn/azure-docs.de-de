@@ -16,12 +16,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 09/26/2018
 ms.author: sedusch
-ms.openlocfilehash: c93bca14d9385eaf9f79f69d76e9e704796da7a9
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 82ab400c89cb57f3cf72cfb9196ea7c6402808fe
+ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66154055"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67203910"
 ---
 # <a name="azure-virtual-machines-deployment-for-sap-netweaver"></a>Azure Virtual Machines – Bereitstellung für SAP NetWeaver
 
@@ -534,7 +534,7 @@ Verwenden Sie nach dem Bereitstellen Ihrer VM in Azure dieselben Richtlinien und
 Da für unterschiedliche Versionen eines Betriebssystems oder eines DBMS auch unterschiedliche Patchanforderungen gelten, erfüllen die Images auf dem Azure Marketplace unter Umständen nicht Ihre Anforderungen. Stattdessen kann es ratsam sein, eine VM mit einem eigenen OS/DBMS-VM-Image zu erstellen, das Sie später erneut bereitstellen können.
 Bei der Erstellung eines privaten Images für Linux müssen andere Schritte ausgeführt werden als bei der Erstellung eines privaten Images für Windows.
 
-- - -
+---
 > ![Windows][Logo_Windows] Windows
 >
 > Um ein Windows-Image vorzubereiten, das Sie zum Bereitstellen mehrerer virtueller Computer verwenden können, müssen die Windows-Einstellungen (z.B. Windows-SID und Hostname) auf dem lokalen virtuellen Computer abstrahiert bzw. generalisiert werden. Hierfür können Sie [sysprep](https://msdn.microsoft.com/library/hh825084.aspx) verwenden.
@@ -545,7 +545,7 @@ Bei der Erstellung eines privaten Images für Linux müssen andere Schritte ausg
 >
 >
 
-- - -
+---
 Sie können ein benutzerdefiniertes Image vorbereiten und erstellen und dann zum Erstellen mehrerer neuer VMs verwenden. Dies wird im [SAP NetWeaver auf virtuellen Azure-Computern – Planungs- und Implementierungshandbuch][planning-guide] beschrieben. Richten Sie den Datenbankinhalt ein, indem Sie entweder den SAP Software Provisioning Manager verwenden, um ein neues SAP-System zu installieren (eine Datenbanksicherung wird von einem Datenträger wiederhergestellt, der an den virtuellen Computer angeschlossen ist), oder indem Sie eine Datenbanksicherung direkt aus Azure Storage wiederherstellen, falls Ihr DBMS dies unterstützt. Weitere Informationen finden Sie im [SAP NetWeaver auf virtuellen Azure-Computern – DBMS-Bereitstellungshandbuch][dbms-guide]. Wenn Sie bereits ein SAP-System auf dem lokalen virtuellen Computer installiert haben (insbesondere bei Systemen mit zwei Ebenen), können Sie die SAP-Systemeinstellungen nach der Bereitstellung des virtuellen Azure-Computers über das vom SAP Software Provisioning Manager unterstützte Verfahren zum Umbenennen von Systemen anpassen (SAP-Hinweis [1619720]). Andernfalls können Sie die SAP-Software nach dem Bereitstellen der Azure-VM installieren.
 
 Im folgenden Flussdiagramm ist die SAP-spezifische Schrittfolge zum Bereitstellen einer VM über ein benutzerdefiniertes Image dargestellt:
@@ -674,7 +674,7 @@ In diesem Szenario wird der VM-Agent während der Bereitstellung **nicht** autom
 
 Weitere Informationen zum Azure-VM-Agent finden Sie in den folgenden Ressourcen.
 
-- - -
+---
 > ![Windows][Logo_Windows] Windows
 >
 > [Übersicht über den Agent für virtuelle Azure-Computer][virtual-machines-windows-agent-user-guide]
@@ -685,7 +685,7 @@ Weitere Informationen zum Azure-VM-Agent finden Sie in den folgenden Ressourcen.
 >
 >
 
-- - -
+---
 
 Im folgenden Flussdiagramm ist die Folge der Schritte zum Verschieben einer lokalen VM mit einer nicht generalisierten Azure-VHD dargestellt:
 

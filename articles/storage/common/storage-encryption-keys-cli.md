@@ -5,16 +5,16 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: article
-ms.date: 04/16/2019
+ms.date: 06/24/2019
 ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: common
-ms.openlocfilehash: ca2cfc9369fd6fb001b2a2dc401c33e5ddfd38c8
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 925b69e064e260a78a102a068f052ad7d396c380
+ms.sourcegitcommit: a7ea412ca4411fc28431cbe7d2cc399900267585
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65142904"
+ms.lasthandoff: 06/25/2019
+ms.locfileid: "67357054"
 ---
 # <a name="configure-customer-managed-keys-for-azure-storage-encryption-from-azure-cli"></a>Konfigurieren von Kunden verwalteter Schlüssel für die Azure Storage-Verschlüsselung mithilfe der Azure CLI
 
@@ -62,7 +62,7 @@ Rufen Sie [az keyvault set-policy](/cli/azure/keyvault#az-keyvault-set-policy) a
 
 ```azurecli-interactive
 storage_account_principal=$(az storage account show \
-    -name <storage-account> \
+    --name <storage-account> \
     --resource-group <resource-group> \
     --query identity.principalId \
     --output tsv)

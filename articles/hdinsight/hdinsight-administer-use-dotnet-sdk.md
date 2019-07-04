@@ -8,12 +8,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/14/2018
 ms.author: hrasheed
-ms.openlocfilehash: 06e3178e344ee46f67cfd8a6feaf08d56d3c86e7
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: abfbac552cc5cb4449a75c45d0c1ffdbcf6b770c
+ms.sourcegitcommit: 79496a96e8bd064e951004d474f05e26bada6fa0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64724130"
+ms.lasthandoff: 07/02/2019
+ms.locfileid: "67508111"
 ---
 # <a name="manage-apache-hadoop-clusters-in-hdinsight-by-using-net-sdk"></a>Verwalten von Apache Hadoop-Clustern in HDInsight mit dem .NET SDK
 
@@ -257,10 +257,6 @@ Weitere Informationen finden Sie unter [Ausführen von MapReduce-Beispielen in H
 
 Weitere Informationen finden Sie unter [Ausführen von Apache Hive-Abfragen per HDInsight .NET-SDK](hadoop/apache-hadoop-use-hive-dotnet-sdk.md).
 
-**So übermitteln Sie Apache Pig-Aufträge**
-
-Weitere Informationen finden Sie unter [Ausführen von Apache Pig-Aufträgen mithilfe des .NET SDK für Apache Hadoop in HDInsight](hadoop/apache-hadoop-use-pig-dotnet-sdk.md).
-
 **So übermitteln Sie Apache Sqoop-Aufträge**
 
 Weitere Informationen finden Sie unter [Verwenden von Apache Hadoop mit HDInsight](hadoop/apache-hadoop-use-sqoop-dotnet-sdk.md).
@@ -278,7 +274,7 @@ Siehe [Hochladen von Daten in HDInsight][hdinsight-upload-data].
 * [Referenzdokumentation zum HDInsight .NET SDK](https://docs.microsoft.com/dotnet/api/overview/azure/hdinsight)
 * [Verwalten von Apache Hadoop-Clustern in HDInsight mit dem Azure-Portal](hdinsight-administer-use-portal-linux.md)
 * [Verwalten von HDInsight über eine Befehlszeilenschnittstelle][hdinsight-admin-cli]
-* [Erstellen von HDInsight-Clustern][hdinsight-provision]
+* [Erstellen von Hadoop-Clustern in HDInsight][hdinsight-provision]
 * [Hochladen von Daten in HDInsight][hdinsight-upload-data]
 * [Erste Schritte mit Azure HDInsight][hdinsight-get-started]
 

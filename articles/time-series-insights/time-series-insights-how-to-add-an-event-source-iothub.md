@@ -11,12 +11,12 @@ ms.workload: big-data
 ms.topic: conceptual
 ms.date: 05/01/2019
 ms.custom: seodec18
-ms.openlocfilehash: 12e86e2a47698d7f736b5f66a92819a4621d5e96
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.openlocfilehash: 47e14ff87a6197ccc97231835da545207545a328
+ms.sourcegitcommit: aa66898338a8f8c2eb7c952a8629e6d5c99d1468
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/17/2019
-ms.locfileid: "67165685"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67460786"
 ---
 # <a name="add-an-iot-hub-event-source-to-your-time-series-insights-environment"></a>Hinzufügen einer IoT Hub-Ereignisquelle zu einer Time Series Insights-Umgebung
 
@@ -42,7 +42,7 @@ So fügen Sie Ihrem IoT-Hub eine neue Consumergruppe hinzu
 
 1. Wählen Sie unter **Einstellungen** die Option **Integrierte Endpunkte** und dann den Endpunkt **Ereignisse** aus.
 
-   [![Auswählen der Schaltfläche „Ereignisse“ auf der Seite „Integrierte Endpunkte“](media/time-series-insights-how-to-add-an-event-source-iothub/iothub_one.png)](media/time-series-insights-how-to-add-an-event-source-iothub/iothub_one.png#lightbox)
+   [![Auswählen der Schaltfläche „Ereignisse“ auf der Seite „Integrierte Endpunkte“](media/time-series-insights-how-to-add-an-event-source-iothub/iothub-one.png)](media/time-series-insights-how-to-add-an-event-source-iothub/iothub-one.png#lightbox)
 
 1. Geben Sie unter **Consumergruppen** einen eindeutigen Namen für die Consumergruppe ein. Verwenden Sie diesen Namen, wenn Sie eine neue Ereignisquelle in Ihrer Time Series Insights-Umgebung erstellen.
 
@@ -56,7 +56,7 @@ So fügen Sie Ihrem IoT-Hub eine neue Consumergruppe hinzu
 
 1. Wählen Sie unter **Umgebungstopologie** den Eintrag **Ereignisquellen** und dann **Hinzufügen** aus.
 
-   [![Auswählen von „Ereignisquellen“ und anschließendes Klicken auf die Schaltfläche „Hinzufügen“](media/time-series-insights-how-to-add-an-event-source-iothub/iothub_two.png)](media/time-series-insights-how-to-add-an-event-source-iothub/iothub_two.png#lightbox)
+   [![Auswählen von „Ereignisquellen“ und anschließendes Klicken auf die Schaltfläche „Hinzufügen“](media/time-series-insights-how-to-add-an-event-source-iothub/iothub-two.png)](media/time-series-insights-how-to-add-an-event-source-iothub/iothub-two.png#lightbox)
 
 1. Geben Sie im Bereich **Neue Ereignisquelle** für **Ereignisquellenname** einen Namen ein, der in dieser Time Series Insights-Umgebung eindeutig ist. Geben Sie z. B. **event-stream** ein.
 
@@ -66,11 +66,11 @@ So fügen Sie Ihrem IoT-Hub eine neue Consumergruppe hinzu
 
    * Wenn Sie in einem Ihrer Abonnements bereits über einen IoT-Hub verfügen, wählen Sie **IoT-Hub aus verfügbaren Abonnements verwenden** aus. Diese Option stellt den einfachsten Ansatz dar.
    
-     [![Auswählen von Optionen im Bereich „Neue Ereignisquelle“](media/time-series-insights-how-to-add-an-event-source-iothub/iothub_three.png)](media/time-series-insights-how-to-add-an-event-source-iothub/iothub_three.png#lightbox)
+     [![Auswählen von Optionen im Bereich „Neue Ereignisquelle“](media/time-series-insights-how-to-add-an-event-source-iothub/iothub-three.png)](media/time-series-insights-how-to-add-an-event-source-iothub/iothub-three.png#lightbox)
 
     * In der folgenden Tabelle werden die Eigenschaften beschrieben, die für die Option **IoT Hub aus verfügbaren Abonnements verwenden** erforderlich sind:
 
-       [![Bereich „Neue Ereignisquelle“: In der Option „IoT Hub aus verfügbaren Abonnements verwenden“ festzulegende Eigenschaften](media/time-series-insights-how-to-add-an-event-source-iothub/iothub_four.png)](media/time-series-insights-how-to-add-an-event-source-iothub/iothub_four.png#lightbox)
+       [![Bereich „Neue Ereignisquelle“: In der Option „IoT Hub aus verfügbaren Abonnements verwenden“ festzulegende Eigenschaften](media/time-series-insights-how-to-add-an-event-source-iothub/iothub-four.png)](media/time-series-insights-how-to-add-an-event-source-iothub/iothub-four.png#lightbox)
 
        | Eigenschaft | BESCHREIBUNG |
        | --- | --- |
@@ -101,7 +101,7 @@ So fügen Sie Ihrem IoT-Hub eine neue Consumergruppe hinzu
 
 1. Klicken Sie auf **Erstellen**.
 
-   [![Schaltfläche „Erstellen“](media/time-series-insights-how-to-add-an-event-source-iothub/iothub_five.png)](media/time-series-insights-how-to-add-an-event-source-iothub/iothub_five.png#lightbox)
+   [![Schaltfläche „Erstellen“](media/time-series-insights-how-to-add-an-event-source-iothub/iothub-five.png)](media/time-series-insights-how-to-add-an-event-source-iothub/iothub-five.png#lightbox)
 
 1. Nach der Erstellung der Ereignisquelle beginnt Time Series Insights automatisch damit, Daten in Ihre Umgebung zu streamen.
 

@@ -10,16 +10,16 @@ ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 03/13/2019
 ms.author: erhopf
-ms.openlocfilehash: fa516c5050bfd53add761bea56c74a58057263c7
-ms.sourcegitcommit: e6d53649bfb37d01335b6bcfb9de88ac50af23bd
+ms.openlocfilehash: 8f246e5b3d96855bd40ff50e2f382d8576fee021
+ms.sourcegitcommit: c63e5031aed4992d5adf45639addcef07c166224
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/09/2019
-ms.locfileid: "65465684"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67466101"
 ---
 # <a name="quickstart-translate-speech-with-the-speech-sdk-for-net-core"></a>Schnellstart: Übersetzen von Sprache mit dem Speech-SDK für .NET Core
 
-Schnellstarts sind auch für [Spracherkennung](quickstart-csharp-dotnet-windows.md) und [Sprachsynthese](quickstart-text-to-speech-dotnet-windows.md) verfügbar.
+Schnellstarts sind auch für [Spracherkennung](quickstart-csharp-dotnet-windows.md) und [Sprachsynthese](quickstart-text-to-speech-dotnetcore.md) verfügbar.
 
 In dieser Schnellstartanleitung erstellen Sie eine einfache .NET Core-Anwendung, mit der die Spracheingabe des Benutzers über das Mikrofon Ihres Computers erfasst, die Sprache übersetzt und der übersetzte Text in Echtzeit in der Befehlszeile transkribiert wird. Diese Anwendung ist für die Ausführung unter Windows (64 Bit) konzipiert und basiert auf dem [Speech-SDK-NuGet-Paket](https://aka.ms/csspeech/nuget) und Microsoft Visual Studio 2017.
 

@@ -16,12 +16,12 @@ ms.workload: infrastructure
 ms.date: 12/04/2018
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 8b19c0fd8af2792a4ffb877e5c6a7fc6b3f94511
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 975289f338e638ed0209d4f6cf2a163ced996e42
+ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60836116"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67202938"
 ---
 # <a name="considerations-for-azure-virtual-machines-dbms-deployment-for-sap-workload"></a>Azure Virtual Machines – DBMS-Bereitstellung für SAP-Workload
 [1114181]: https://launchpad.support.sap.com/#/notes/1114181
@@ -150,7 +150,7 @@ Die Platzierung der Datenbank-, der Protokoll- und der Wiederholungsdateien sowi
 Wenn Ihre IOPS-Anforderungen das übersteigen, was eine einzelne VHD bereitstellen kann, müssen Sie den für die Datenbankdateien benötigten IOPS über die Anzahl von VHDs ausgleichen. Die einfachste Möglichkeit, die IOPS-Last auf verschiedene Datenträger zu verteilen, ist das Erstellen eines Softwarestripes über die verschiedenen Datenträger hinweg. Fügen Sie dann den LUNs im Softwarestripe eine Anzahl von Datendateien des SAP-DBMS hinzu. Die Anzahl von Datenträgern im Stripe wird von den Anforderungen an IOPS, Datenträgerdurchsatz und Volumes bestimmt.
 
 
-- - -
+---
 > ![Windows][Logo_Windows] Windows
 >
 > Es wird empfohlen, Windows-Speicherplätze zum Erstellen von Stripesets über mehrere Azure-VHDs hinweg zu verwenden. Verwenden Sie mindestens Windows Server 2012 R2 oder Windows Server 2016.
@@ -164,7 +164,7 @@ Wenn Ihre IOPS-Anforderungen das übersteigen, was eine einzelne VHD bereitstell
 >
 >
 
-- - -
+---
 
 > [!NOTE]
 > Da Azure Storage drei Images der VHDs speichert, ist es nicht ratsam, beim Striping eine Redundanz zu konfigurieren. Sie müssen nur das Striping so konfigurieren, dass die E/A-Vorgänge auf die verschiedenen VHDs verteilt werden.
@@ -230,7 +230,7 @@ Azure-VMs bieten Datenträger mit flüchtigem Speicher, nachdem eine VM bereitge
 
 Weitere Informationen finden Sie unter [Understand the temporary drive on Windows VMs in Azure](https://blogs.msdn.microsoft.com/mast/2013/12/06/understanding-the-temporary-drive-on-windows-azure-virtual-machines/) (Grundlegendes zum temporären Laufwerk auf Windows-VMs in Azure).
 
-- - -
+---
 > ![Windows][Logo_Windows] Windows
 >
 > Laufwerk D auf einer Azure-VM ist ein nicht permanentes Laufwerk, das durch einige lokale Datenträger im Azure-Serverknoten gesichert wird. Da es nicht permanent ist, gehen alle auf Laufwerk D vorgenommenen Änderungen am Inhalt verloren, wenn die VM neu gestartet wird. Änderungen umfassen gespeicherte Dateien, erstellte Verzeichnisse und installierte Anwendungen.
@@ -241,7 +241,7 @@ Weitere Informationen finden Sie unter [Understand the temporary drive on Window
 >
 >
 
-- - -
+---
 
 
 
@@ -339,7 +339,7 @@ Um die Netzwerklatenz zwischen Azure-VMs weiter zu reduzieren, empfehlen wir Ihn
 > Nicht alle VM-Typen unterstützen den beschleunigten Netzwerkbetrieb. Der vorherige Artikel führt die VM-Typen auf, die den beschleunigten Netzwerkbetrieb unterstützen.
 >
 
-- - -
+---
 > ![Windows][Logo_Windows] Windows
 >
 > Unter [Erstellen eines virtuellen Windows-Computers mit beschleunigtem Netzwerkbetrieb](https://docs.microsoft.com/azure/virtual-network/create-vm-accelerated-networking-powershell) erfahren Sie, wie VMs mit beschleunigtem Netzwerkbetrieb für Windows bereitgestellt werden.
@@ -350,7 +350,7 @@ Um die Netzwerklatenz zwischen Azure-VMs weiter zu reduzieren, empfehlen wir Ihn
 >
 >
 
-- - -
+---
 
 > [!NOTE]
 > Im Falle von SUSE, Red Hat und Oracle Linux wird der beschleunigte Netzwerkbetrieb von den aktuellen Releases unterstützt. Ältere Releases wie SLES 12 SP2 oder RHEL 7.2 unterstützen den beschleunigten Netzwerkbetrieb in Azure nicht.

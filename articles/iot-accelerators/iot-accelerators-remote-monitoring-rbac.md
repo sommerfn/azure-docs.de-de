@@ -8,12 +8,12 @@ ms.service: iot-accelerators
 services: iot-accelerators
 ms.date: 03/08/2019
 ms.topic: conceptual
-ms.openlocfilehash: 9accb41cdb4d780bf137d6872cca022226f902e6
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: b0c9699bccbb539c9617fac2f3296483139e7188
+ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61443096"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67203156"
 ---
 # <a name="configure-role-based-access-controls-in-the-remote-monitoring-solution-accelerator"></a>Konfigurieren der rollenbasierten Zugriffssteuerung im Solution Accelerator der Remoteüberwachung
 
@@ -91,11 +91,11 @@ Die folgenden Schritte beschreiben, wie Sie einer Anwendung in Azure Active Dire
 
 1. Suchen Sie nach der **App-Registrierung** für Ihre Lösung im Azure-Portal. Der Anwendungsname ist der Name Ihrer Remoteüberwachungslösung. Im folgenden Screenshot sind der Anzeigename der Lösung und der Anwendung **contoso-rm4**.
 
-    ![App-Registrierung](media/iot-accelerators-remote-monitoring-rbac/appregistration2.png)
+    ![App-Registrierung](media/iot-accelerators-remote-monitoring-rbac/app-registration-2.png)
 
 1. Wählen Sie Ihre Anwendung aus, und klicken Sie auf **Manifest**. Es werden die beiden vorhandenen [App-Rollen](https://docs.microsoft.com/azure/architecture/multitenant-identity/app-roles) angezeigt, die für die Anwendung definiert sind:
 
-    ![Anzeigen des Manifests](media/iot-accelerators-remote-monitoring-rbac/viewmanifest.png)
+    ![Anzeigen des Manifests](media/iot-accelerators-remote-monitoring-rbac/view-manifest.png)
 
 1. Bearbeiten Sie das Manifest, um die Rolle **ManageDevices** hinzuzufügen, wie im folgenden Ausschnitt dargestellt. Sie benötigen eine eindeutige Zeichenfolge wie eine GUID für die neue Rollen-ID. Sie können eine neue GUID mit einem Dienst wie [Online GUID Generator](https://www.guidgenerator.com/) generieren:
 

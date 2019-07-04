@@ -2,18 +2,18 @@
 title: Beheben von Fehlern bei Azure Automation-Runbooks
 description: Erfahren Sie, wie Sie Probleme mit Azure Automation-Runbooks beheben.
 services: automation
-author: georgewallace
-ms.author: gwallace
+author: bobbytreed
+ms.author: robreed
 ms.date: 01/24/2019
 ms.topic: conceptual
 ms.service: automation
 manager: carmonm
-ms.openlocfilehash: 65de80004dd05e3eb29f3313bc17405c40450d7a
-ms.sourcegitcommit: d89032fee8571a683d6584ea87997519f6b5abeb
+ms.openlocfilehash: 5a9bd554ec3b7ae4f84d6a0a4726af7ffea89e89
+ms.sourcegitcommit: f811238c0d732deb1f0892fe7a20a26c993bc4fc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/30/2019
-ms.locfileid: "66397125"
+ms.lasthandoff: 06/29/2019
+ms.locfileid: "67477471"
 ---
 # <a name="troubleshoot-errors-with-runbooks"></a>Beheben von Fehlern bei Runbooks
 

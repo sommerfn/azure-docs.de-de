@@ -3,19 +3,19 @@ title: Textübersetzungs-API – Methode für Wörterbuchbeispiele
 titlesuffix: Azure Cognitive Services
 description: Verwenden Sie die Methode für Wörterbuchbeispiele der Textübersetzungs-API.
 services: cognitive-services
-author: rajdeep-in
+author: swmachan
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: reference
 ms.date: 03/29/2018
-ms.author: v-pawal
-ms.openlocfilehash: 526fc3e51691773e27530a0fa775f4f07ee94acd
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.author: swmachan
+ms.openlocfilehash: e4665157803409b884c3333d9a3514403e5630bd
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66389769"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67435123"
 ---
 # <a name="translator-text-api-30-dictionary-examples"></a>Textübersetzungs-API 3.0: Wörterbuchbeispiele
 
@@ -60,7 +60,7 @@ Anforderungsheader enthalten Folgendes:
     <td><em>Erforderlicher Anforderungsheader</em>.<br/>Weitere Informationen finden Sie in den <a href="https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference#authentication">verfügbaren Optionen für die Authentifizierung</a>.</td>
   </tr>
   <tr>
-    <td>Content-Typ</td>
+    <td>Content-Type</td>
     <td>*Erforderlicher Anforderungsheader*.<br/>Gibt den Inhaltstyp der Nutzlast an. Mögliche Werte: `application/json`.</td>
   </tr>
   <tr>

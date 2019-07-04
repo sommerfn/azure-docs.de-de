@@ -5,11 +5,11 @@ ms.topic: include
 ms.date: 12/10/2018
 ms.author: genemi
 ms.openlocfilehash: e30651cb0ed7d74082163a92acbc428c21018255
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66167224"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67178169"
 ---
 ## <a name="c-program-example"></a>Beispiel für C#-Programm
 
@@ -37,7 +37,7 @@ Das Entitätsbeziehungsdiagramm zeigt die Beziehung zwischen den beiden Tabellen
 
 Das C#-Programm ist logisch eine CS-Datei und physisch in mehrere Codeblöcke unterteilt, damit jeder Block leichter zu verstehen ist. Gehen Sie wie folgt vor, um das Programm zu kompilieren und auszuführen:
 
-1. Erstellen Sie in Visual Studio ein C#-Projekt. Der Projekttyp sollte eine *Konsole* sein, die sich unter **Vorlagen** > **Visual C#** > **Windows Desktop** > **Konsolen-App (.NET Framework)** befindet.
+1. Erstellen Sie in Visual Studio ein C#-Projekt. Der Projekttyp sollte eine *Konsole* sein, die sich unter **Vorlagen** > **Visual C#**  > **Windows Desktop** > **Konsolen-App (.NET Framework)** befindet.
 
 1. Ersetzen Sie in der Datei *Program.cs* die Startzeilen des Codes, indem Sie die folgenden Schritte ausführen:
 

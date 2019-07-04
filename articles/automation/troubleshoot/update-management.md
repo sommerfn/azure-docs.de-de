@@ -2,18 +2,18 @@
 title: Beheben von Fehlern mit Updateverwaltung
 description: Erfahren Sie, wie Sie Fehler mit Updateverwaltung beheben können.
 services: automation
-author: georgewallace
-ms.author: gwallace
+author: bobbytreed
+ms.author: robreed
 ms.date: 05/31/2019
 ms.topic: conceptual
 ms.service: automation
 manager: carmonm
-ms.openlocfilehash: 9bcc871ecc9413f02545e6aec4caa6342d563b44
-ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
+ms.openlocfilehash: 23139755af812f99bce8c2c255805eaf9e30b2da
+ms.sourcegitcommit: f811238c0d732deb1f0892fe7a20a26c993bc4fc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/04/2019
-ms.locfileid: "66474570"
+ms.lasthandoff: 06/29/2019
+ms.locfileid: "67477060"
 ---
 # <a name="troubleshooting-issues-with-update-management"></a>Behandeln von Problemen mit Updateverwaltung
 

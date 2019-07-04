@@ -1,6 +1,6 @@
 ---
-title: Includedatei
-description: Includedatei
+title: include file
+description: include file
 services: cognitive-services
 author: diberry
 manager: cgronlun
@@ -11,11 +11,11 @@ ms.custom: include file
 ms.date: 08/16/2018
 ms.author: diberry
 ms.openlocfilehash: 15047b9782ea86b91ba78e0d745c67892fdc8b76
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66124111"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67178408"
 ---
 Das `response`-Array zum Hinzufügen der Beispieläußerungen gibt mit der Eigenschaft `hasError` für jede Beispieläußerung das erfolgreiche bzw. fehlgeschlagene Hinzufügen an. Die folgende JSON-Antwort gibt an, dass beide Äußerungen erfolgreich hinzugefügt wurden. 
 
