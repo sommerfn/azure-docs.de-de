@@ -63,6 +63,10 @@
               href: google-federation.md
             - name: Authentifizierung mit Einmalkennung
               href: one-time-passcode.md
+            - name: Direkter Verbund
+              href: direct-federation.md
+            - name: Beispiel eines direkten Verbunds mit AD FS
+              href: direct-federation-adfs.md
             - name: Zulassen oder Blockieren von Einladungen
               href: allow-deny-list.md
             - name: Hinzufügen von B2B-Benutzern ohne Einladung
