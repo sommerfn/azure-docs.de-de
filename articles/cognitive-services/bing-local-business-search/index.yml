@@ -13,7 +13,7 @@ metadata:
   ms.devlang: na
   ms.topic: landing-page
   ms.date: 08/02/2018
-  ms.author: 'rosh, v-gedod'
+  ms.author: rosh
 abstract:
   description: Mit der Bing-Such-API für ortsansässige Unternehmen können Ihre Anwendungen basierend auf Suchabfragen Kontakt- und Standortdaten von Unternehmen in der näheren Umgebung suchen.
 sections:
