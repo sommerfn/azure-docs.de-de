@@ -37,10 +37,12 @@
       items:
         - name: Szenarien
           href: scenarios.md
-        - name: Auswählen eines virtuellen Netzwerks
+        - name: Planen eines virtuellen Netzwerks
           href: network-considerations.md
     - name: Verwalten von Azure AD DS
       items:
+        - name: Aktivieren von Sicherheitsüberwachungsereignissen (Vorschau)
+          href: security-audit-events.md
         - name: Überprüfen der Integrität einer verwalteten Domäne
           href: check-health.md
         - name: Konfigurieren der bereichsbezogenen Synchronisierung von Azure AD mit einer verwalteten Domäne
