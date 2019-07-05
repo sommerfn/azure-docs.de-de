@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 6/29/2017
 ms.author: mcoskun
-ms.openlocfilehash: a3df5f28475b03f1799dc1e245c3a7e904b49cb3
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: d009749b7bc31595be26124b9d1eee7666e95bd4
+ms.sourcegitcommit: 978e1b8cac3da254f9d6309e0195c45b38c24eb5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60772923"
+ms.lasthandoff: 07/03/2019
+ms.locfileid: "67551673"
 ---
 # <a name="reliable-services-notifications"></a>Reliable Services – Benachrichtigungen
 Mit Benachrichtigungen können Clients Änderungen an einem Objekt verfolgen, an dem sie interessiert sind. Zwei Typen von Objekten unterstützen Benachrichtigungen: *Reliable State Manager* und *Reliable Dictionary*.
@@ -167,7 +167,7 @@ Der **DictionaryChanged**-Ereignishandler verwendet **NotifyDictionaryChangedEve
 
 * **NotifyDictionaryChangedAction.Rebuild**: **NotifyDictionaryRebuildEventArgs**
 * **NotifyDictionaryChangedAction.Clear**: **NotifyDictionaryClearEventArgs**
-* **NotifyDictionaryChangedAction.Add** und **NotifyDictionaryChangedAction.Remove**: **NotifyDictionaryItemAddedEventArgs**
+* **NotifyDictionaryChangedAction.Add**: **NotifyDictionaryItemAddedEventArgs**
 * **NotifyDictionaryChangedAction.Update**: **NotifyDictionaryItemUpdatedEventArgs**
 * **NotifyDictionaryChangedAction.Remove**: **NotifyDictionaryItemRemovedEventArgs**
 
