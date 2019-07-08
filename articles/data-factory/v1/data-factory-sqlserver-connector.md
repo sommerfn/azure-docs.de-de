@@ -79,7 +79,7 @@ Die folgende Tabelle enthält eine Beschreibung der JSON-Elemente, die für den 
 | type |Legen Sie die type-Eigenschaft auf **OnPremisesSqlServer** fest. |Ja |
 | connectionString |Geben Sie "connectionString"-Informationen an, die zum Herstellen einer Verbindung mit der lokalen SQL Server-Datenbank mithilfe der SQL Server- oder Windows-Authentifizierung benötigt werden. |Ja |
 | gatewayName |Name des Gateways, das der Data Factory-Dienst zum Herstellen einer Verbindung mit der lokalen SQL Server-Datenbank verwenden soll. |Ja |
-| username |Geben Sie den Benutzernamen an, wenn Sie die Windows-Authentifizierung verwenden. Beispiel: **Domainname\\Benutzername**. |Nein |
+| username |Geben Sie den Benutzernamen an, wenn Sie die Windows-Authentifizierung verwenden. Beispiel: **Domainname\\username**. |Nein |
 | password |Geben Sie das Kennwort für das Benutzerkonto an, das Sie für den Benutzernamen angegeben haben. |Nein |
 
 Sie können Anmeldeinformationen mithilfe des Cmdlets **New-AzDataFactoryEncryptValue** verschlüsseln und wie im folgenden Beispiel gezeigt in der Verbindungszeichenfolge verwenden (**EncryptedCredential**-Eigenschaft):
