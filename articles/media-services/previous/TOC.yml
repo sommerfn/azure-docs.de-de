@@ -51,6 +51,9 @@
   items:
     - name: Verwalten
       items:
+        - name: Konten
+          displayName: subscription
+          href: media-services-account-concept.md
         - name: Entitäten
           items:
             - name: .NET
