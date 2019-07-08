@@ -100,10 +100,10 @@
           href: manage-database-permissions.md
         - name: Überprüfen der Clusterintegrität
           href: check-cluster-health.md
-        - name: 'Clusterverwaltung: Erweitern'
-          href: manage-cluster-scale-out.md
-        - name: 'Clusterverwaltung: zentrales Hochskalieren'
-          href: manage-cluster-scale-up.md
+        - name: Verwalten von horizontaler Clusterskalierung
+          href: manage-cluster-horizontal-scaling.md
+        - name: Verwalten von vertikaler Clusterskalierung
+          href: manage-cluster-vertical-scaling.md
         - name: Löschen von Daten
           href: delete-data.md
         - name: Behandeln von doppelten Daten

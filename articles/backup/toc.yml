@@ -62,6 +62,8 @@
           href: backup-azure-files-faq.md
         - name: 'Häufig gestellte Fragen: Sichern von SQL Server-Datenbanken auf virtuellen Azure-Computern'
           href: faq-backup-sql-server.md
+        - name: 'Häufig gestellte Fragen: Azure Backup Server und DPM'
+          href: backup-azure-dpm-azure-server-faq.md
     - name: Sichern der Architektur
       href: backup-architecture.md
     - name: Rollenbasierte Access Control
