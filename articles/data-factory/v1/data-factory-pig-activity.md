@@ -92,7 +92,7 @@ Die HDInsight Pig-Aktivität in einer Data Factory-[Pipeline](data-factory-creat
 | outputs |Mindestens eine von der Pig-Aktivität erzeugte Ausgabe |Ja |
 | linkedServiceName |Verweis auf den HDInsight-Cluster, der als verknüpfter Dienst in Data Factory registriert ist. |Ja |
 | script |Angabe des Pig-Skripts inline |Nein |
-| script path |Speichern Sie das Pig-Skript in Azure Blob Storage, und geben Sie den Pfad zur Datei an. Verwenden Sie die Eigenschaft "script" oder "scriptPath". Beide können nicht zusammen verwendet werden. Beim Dateinamen muss die Groß-/Kleinschreibung beachtet werden. |Nein |
+| scriptPath |Speichern Sie das Pig-Skript in Azure Blob Storage, und geben Sie den Pfad zur Datei an. Verwenden Sie die Eigenschaft "script" oder "scriptPath". Beide können nicht zusammen verwendet werden. Beim Dateinamen muss die Groß-/Kleinschreibung beachtet werden. |Nein |
 | defines |Geben Sie Parameter als Schlüssel-Wert-Paare für Verweise innerhalb des Pig-Skripts an. |Nein |
 
 ## <a name="example"></a>Beispiel
