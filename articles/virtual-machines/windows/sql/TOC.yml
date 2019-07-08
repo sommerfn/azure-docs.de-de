@@ -58,8 +58,12 @@
           href: virtual-machines-windows-portal-sql-server-provision.md
         - name: Mithilfe von Azure PowerShell
           href: virtual-machines-windows-ps-sql-create.md
+    - name: Registrieren beim Ressourcenanbieter
+      href: virtual-machines-windows-sql-register-with-resource-provider.md
     - name: Ändern des Lizenzierungsmodells für virtuelle SQL-Computer
       href: virtual-machines-windows-sql-ahb.md
+    - name: Ändern der Edition von SQL Server
+      href: virtual-machines-windows-sql-change-edition.md
     - name: Migrieren
       items:
         - name: Migrieren einer SQL Server-Datenbank

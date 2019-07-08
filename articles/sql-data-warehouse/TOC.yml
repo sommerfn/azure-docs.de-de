@@ -127,6 +127,14 @@
           href: sql-data-warehouse-overview-develop.md
         - name: Bewährte Methoden
           href: sql-data-warehouse-best-practices-development.md
+        - name: Materialisierte Sicht
+          items:
+            - name: Erstellen von materialisierten Sichten als SELECT (Transact-SQL)
+              href: /sql/t-sql/statements/create-materialized-view-as-select-transact-sql
+            - name: Ändern von materialisierten Sichten als SELECT (Transact-SQL)
+              href: /sql/t-sql/statements/alter-materialized-view-transact-sql
+        - name: Zwischenspeichern von Resultsets
+          href: /sql/t-sql/statements/set-result-set-caching-transact-sql
         - name: Tabellen
           items:
             - name: Übersicht
