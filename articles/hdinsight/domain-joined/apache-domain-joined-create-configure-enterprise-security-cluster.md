@@ -304,14 +304,14 @@ New-SelfSignedCertificate -Subject hdifabrikam.com `
 
         | Eigenschaft | Wert |
         |---|---|
-        | `Source` | Beliebig |
-        | Quellportbereiche | * |
-        | Ziel | Beliebig |
-        | Zielportbereich | 636 |
-        | Protocol | Beliebig |
-        | Aktion | ZULASSEN |
-        | Priorität | <Desired Number> |
-        | NAME | Port_LDAP_636 |
+        | Source | Any |
+        | Source port ranges | * |
+        | Destination | Any |
+        | Destination port range | 636 |
+        | Protocol | Any |
+        | Action | Allow |
+        | Priority | \<Desired Number> |
+        | Name | Port_LDAP_636 |
 
     ![Eingangssicherheitsregel](./media/apache-domain-joined-create-configure-enterprise-security-cluster/add-inbound-security-rule.png)
 
