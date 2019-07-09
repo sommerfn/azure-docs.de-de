@@ -176,7 +176,7 @@ In diesem Abschnitt werden die verschiedenen Verwendungsmöglichkeiten von Skrip
     | Auswählen eines Skripts | Wählen Sie __Benutzerdefiniert__ aus, wenn Sie ein eigenes Skript verwenden möchten. Wählen Sie andernfalls eines der bereitgestellten Skripts aus. |
     | NAME |Geben Sie einen Namen für die Skriptaktion an. |
     | Bash-Skript-URI |Geben Sie den URI des Skripts an. |
-    | Haupt-/Worker-/Zookeeper-Knoten |Geben Sie die Knoten an, auf denen das Skript ausgeführt wird: **Hauptknoten**, **Worker** oder **ZooKeeper**. |
+    | Head/Worker/ZooKeeper |Geben Sie die Knoten an, auf denen das Skript ausgeführt wird: **Head**, **Worker** oder **ZooKeeper**. |
     | Parameter |Geben Sie die Parameter an, sofern dies für das Skript erforderlich ist. |
 
     Verwenden Sie den Eintrag __Speichern Sie diese Skriptaktion__, um sicherzustellen, dass das Skript bei Skalierungsvorgängen angewendet wird.
