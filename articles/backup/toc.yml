@@ -64,6 +64,8 @@
           href: faq-backup-sql-server.md
         - name: 'Häufig gestellte Fragen: Azure Backup Server und DPM'
           href: backup-azure-dpm-azure-server-faq.md
+        - name: Häufig gestellte Fragen zur Azure Backup-Monitorwarnung
+          href: backup-azure-monitor-alert-faq.md
     - name: Sichern der Architektur
       href: backup-architecture.md
     - name: Rollenbasierte Access Control
