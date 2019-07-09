@@ -189,9 +189,9 @@ In diesem Artikel konfigurieren Sie die Hive-Aktivität, um einen HDInsight Hado
 
     |Eigenschaft  |Wert  |
     |---------|---------|
-    |NAME | Geben Sie einen Namen für die Data Factory ein. Dieser Name muss global eindeutig sein.|
-    |Abonnement | Wählen Sie Ihr Azure-Abonnement. |
-    |Ressourcengruppe | Wählen Sie **Vorhandene verwenden** und dann die Ressourcengruppe aus, die Sie mit dem PowerShell-Skript erstellt haben. |
+    |Name | Geben Sie einen Namen für die Data Factory ein. Dieser Name muss global eindeutig sein.|
+    |Subscription | Wählen Sie Ihr Azure-Abonnement. |
+    |Resource group | Wählen Sie **Vorhandene verwenden** und dann die Ressourcengruppe aus, die Sie mit dem PowerShell-Skript erstellt haben. |
     |Version | **V2** beibehalten. |
     |Location | Der Standort wird automatisch auf die Region festgelegt, die Sie beim Erstellen der Ressourcengruppe zuvor angegeben haben. Für dieses Tutorial wird der Standort auf **USA, Osten** festgelegt. |
 
