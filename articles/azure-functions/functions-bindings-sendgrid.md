@@ -259,9 +259,9 @@ Die folgende Tabelle gibt Aufschluss über die Bindungskonfigurationseigenschaft
 |**direction**|| Erforderlich – muss auf `out` festgelegt sein.|
 |**name**|| Erforderlich – der Variablenname, der im Funktionscode für die Anforderung oder den Anforderungstext verwendet wird. Dieser Wert ist ```$return```, wenn es nur einen Rückgabewert gibt. |
 |**apiKey**|**ApiKey**| Der Name einer App-Einstellung, die Ihren API-Schlüssel enthält. Wenn sie nicht festgelegt wird, lautet der Standardname der App-Einstellung „AzureWebJobsSendGridApiKey“.|
-|**to**|**An**| E-Mail-Adresse des Empfängers |
+|**to**|**To**| E-Mail-Adresse des Empfängers |
 |**from**|**From**| E-Mail-Adresse des Absenders |
-|**subject**|**Betreff**| Betreff der E-Mail |
+|**subject**|**Subject**| Betreff der E-Mail |
 |**text**|**Text**| Inhalt der E-Mail |
 
 [!INCLUDE [app settings to local.settings.json](../../includes/functions-app-settings-local.md)]
