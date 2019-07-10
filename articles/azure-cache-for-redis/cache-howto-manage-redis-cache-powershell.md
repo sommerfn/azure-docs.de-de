@@ -155,7 +155,7 @@ Die folgende Tabelle enthält Eigenschaften und Beschreibungen für Parameter, d
 | set-max-intset-entries |Konfiguriert die [Speicheroptimierung](https://redis.io/topics/memory-optimization) für kleine Aggregatdatentypen |Standard und Premium |
 | zset-max-ziplist-entries |Konfiguriert die [Speicheroptimierung](https://redis.io/topics/memory-optimization) für kleine Aggregatdatentypen |Standard und Premium |
 | zset-max-ziplist-value |Konfiguriert die [Speicheroptimierung](https://redis.io/topics/memory-optimization) für kleine Aggregatdatentypen |Standard und Premium |
-| Datenbanken |Konfiguriert die Anzahl der Datenbanken. Diese Eigenschaft kann nur bei der Erstellung des Caches konfiguriert werden. |Standard und Premium |
+| databases |Konfiguriert die Anzahl der Datenbanken. Diese Eigenschaft kann nur bei der Erstellung des Caches konfiguriert werden. |Standard und Premium |
 
 ## <a name="to-create-an-azure-cache-for-redis"></a>So erstellen Sie einen Azure Cache for Redis
 Neue Azure Cache for Redis-Instanzen werden mit dem [New-AzRedisCache](https://docs.microsoft.com/powershell/module/az.rediscache/new-azrediscache)-Cmdlet erstellt.
