@@ -25,6 +25,8 @@
   items:
     - name: Authentifizierungsmethoden
       href: concept-authentication-methods.md
+    - name: Kennwortlose Authentifizierung
+      href: concept-authentication-passwordless.md
     - name: Kombinierte Registrierung
       href: concept-registration-mfa-sspr-combined.md
     - name: Zurücksetzen des Kennworts
@@ -131,8 +133,12 @@
       href: howto-password-smart-lockout.md
     - name: Windows Hello for Business
       href: 'https://docs.microsoft.com/windows/security/identity-protection/hello-for-business/hello-identity-verification'
-    - name: Kennwortlose Anmeldung per Telefon
-      href: howto-authentication-phone-sign-in.md
+    - name: Kennwortlos
+      items:
+        - name: Kennwortlos aktivieren
+          href: howto-authentication-passwordless-enable.md
+        - name: Kennwortlose Anmeldung per Telefon
+          href: howto-authentication-phone-sign-in.md
     - name: Zertifikatbasierte Authentifizierung
       items:
         - name: Erste Schritte mit Zertifikatauthentifizierung

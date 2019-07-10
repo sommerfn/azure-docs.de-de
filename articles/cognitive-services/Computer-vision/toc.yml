@@ -147,6 +147,8 @@
           href: computer-vision-how-to-install-containers.md
         - name: Konfigurieren von Containern
           href: computer-vision-resource-container-config.md
+        - name: Verwenden von Containerinstanzen
+          href: deploy-computer-vision-on-container-instances.md
     - name: Verwenden des verbundenen Diensts für maschinelles Sehen
       href: vs-computer-vision-connected-service.md
     - name: Videoanalyse in Echtzeit

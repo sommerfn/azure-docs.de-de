@@ -52,6 +52,8 @@
           items:
             - name: Herstellen einer Verbindung mit CEF (generisch)
               href: connect-common-event-format.md
+            - name: Herstellen einer Verbindung mit AWS
+              href: connect-aws.md
             - name: Herstellen einer Verbindung mit Barracuda
               href: connect-barracuda.md
             - name: Herstellen einer Verbindung mit Check Point

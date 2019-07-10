@@ -209,6 +209,8 @@
           href: sql-database-managed-instance-index.yml
         - name: 'Verwaltete Instanz: Funktionen'
           href: sql-database-managed-instance.md
+        - name: Häufig gestellte Fragen zu verwalteten Instanzen
+          href: sql-database-managed-instance-faq.md
         - name: Referenz zur Verwaltungs-API
           href: sql-database-managed-instance-create-manage.md
         - name: Ressourceneinschränkungen

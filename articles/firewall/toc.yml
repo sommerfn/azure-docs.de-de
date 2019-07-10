@@ -49,6 +49,8 @@
       href: deploy-availability-zone-powershell.md
     - name: Integrieren mit Lastenausgleich
       href: integrate-lb.md
+    - name: Anwendungsregeln mit SQL-FQDNs
+      href: sql-fqdn-filtering.md
 - name: Verweis
   items:
     - name: Azure-Befehlszeilenschnittstelle

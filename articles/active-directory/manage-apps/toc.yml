@@ -49,11 +49,19 @@
       items:
         - name: Worum handelt es sich beim einmaligen Anmelden?
           href: what-is-single-sign-on.md
+        - name: Aktivieren von SSO für Ihre mehrinstanzenfähige Anwendung
+          href: isv-sso-content.md
+        - name: Erstellen eines Azure-Mandanten für eine mehrinstanzenfähige Anwendung
+          href: isv-tenant-multi-tenant-app.md
+        - name: Auswählen eines Verbunds mit mehreren Mandanten
+          href: isv-choose-multi-tenant-federation.md
+        - name: Dokumentation für mehrinstanzenfähige Anwendung erstellen
+          href: isv-create-sso-documentation.md
         - name: Planen einer Bereitstellung mit einmaligem Anmelden
           href: plan-sso-deployment.md
-    - name: 1-Klick-SSO
+    - name: One-Click-SSO
       items:
-        - name: Was ist 1-Klick-SSO?
+        - name: Was ist One-Click-SSO?
           href: one-click-sso-tutorial.md
     - name: Bereitstellen von Benutzern und Gruppen
       items:
@@ -73,6 +81,20 @@
           href: tenant-restrictions.md
         - name: Konfigurieren der SAML-Tokenverschlüsselung (Vorschauversion)
           href: howto-saml-token-encryption.md
+    - name: Einmaliges Anmelden
+      items:
+        - name: Worum handelt es sich beim einmaligen Anmelden?
+          href: what-is-single-sign-on.md
+        - name: Planen einer Bereitstellung mit einmaligem Anmelden
+          href: plan-sso-deployment.md
+        - name: Aktivieren des einmaliges Anmeldens in Ihrer mehrinstanzenfähigen Anwendung
+          href: isv-sso-content.md
+        - name: Auswahl des richtigen SSO-Verbundprotokolls
+          href: isv-choose-multi-tenant-federation.md
+        - name: Erstellen eines Azure-Mandanten für Ihre mehrinstanzenfähige Anwendung
+          href: isv-tenant-multi-tenant-app.md
+        - name: Erstellen und Veröffentlichen einer SSO-Dokumentation für Ihre Anwendung
+          href: isv-create-sso-documentation.md
     - name: Endbenutzerportale
       href: end-user-experiences.md
 - name: Anleitungen
