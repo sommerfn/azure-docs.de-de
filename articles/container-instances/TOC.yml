@@ -97,7 +97,7 @@
           href: container-instances-monitor.md
         - name: Abrufen von Containerprotokollen und -ereignissen
           href: container-instances-get-logs.md
-        - name: Protokollierung mit Azure Log Analytics
+        - name: Protokollierung mit Azure Monitor-Protokollen
           href: container-instances-log-analytics.md
     - name: Problembehandlung
       items:
@@ -137,3 +137,5 @@
       href: 'https://stackoverflow.com/questions/tagged/azure-container-instances'
     - name: Videos
       href: 'https://azure.microsoft.com/resources/videos/index/?services=container-instances&sort=newest'
+    - name: Häufig gestellte Fragen
+      href: container-instances-faq.md
