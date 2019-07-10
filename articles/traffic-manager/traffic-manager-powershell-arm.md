@@ -61,7 +61,7 @@ In der folgenden Tabelle sind die Parameter beschrieben:
 
 | Parameter | BESCHREIBUNG |
 | --- | --- |
-| NAME |Der Ressourcenname für die Traffic Manager-Profilressource. Profile in der gleichen Ressourcengruppe müssen eindeutige Namen aufweisen. Dieser Name unterscheidet sich von den DNS-Namen, die für DNS-Abfragen verwendet werden. |
+| Name |Der Ressourcenname für die Traffic Manager-Profilressource. Profile in der gleichen Ressourcengruppe müssen eindeutige Namen aufweisen. Dieser Name unterscheidet sich von den DNS-Namen, die für DNS-Abfragen verwendet werden. |
 | ResourceGroupName |Name der Ressourcengruppe, in der die Profilressource enthalten ist |
 | TrafficRoutingMethod |Gibt die Routingmethode an. Hiermit wird ermittelt, welcher Endpunkt als Reaktion auf eine DNS-Abfrage zurückgegeben wird. Mögliche Werte sind „Leistung“, „Gewichtung“ und „Priorität“. |
 | RelativeDnsName |Gibt den Hostnamenteil des DNS-Namens an, der von diesem Traffic Manager-Profil bereitgestellt wird. Dieser Wert wird mit dem DNS-Domänennamen kombiniert, der von Azure Traffic Manager zum Erstellen des vollqualifizierten Domänennamens (FQDN) des Profils verwendet wird. So wird z.B. der Wert „Contoso“ zu „contoso.trafficmanager.net“. |
