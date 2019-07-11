@@ -9,13 +9,13 @@ ms.service: cognitive-services
 ms.subservice: url-preview
 ms.topic: reference
 ms.date: 03/29/2018
-ms.author: rosh, v-gedod
-ms.openlocfilehash: 7cc52493ec0e2b9c81d52da4bb22102c2c7e5e5c
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.author: rosh
+ms.openlocfilehash: 43254db734a48f3e7aaa5a26a7fbf3981c9e9d87
+ms.sourcegitcommit: ccb9a7b7da48473362266f20950af190ae88c09b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60712481"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67592864"
 ---
 # <a name="project-url-preview-endpoint"></a>Project URL Preview-Endpunkt
 
@@ -31,7 +31,7 @@ https://api.labs.cognitive.microsoft.com/urlpreview/v7.0/search?q=https://swiftk
 ```
 
 ### <a name="query-parameters"></a>Abfrageparameter
-|NAME|Wert|Type|Erforderlich|  
+|NAME|Wert|type|Erforderlich|  
 |----------|-----------|----------|--------------|  
 |q|Die URL, für die eine Vorschau angezeigt werden soll|string |Ja|
 |safeSearch|Ungültige, nicht jugendfreie Inhalte oder illegale Inhalte. Diese werden mit dem Fehlercode 400 blockiert, und das Flag *isFamilyFriendly* wird nicht zurückgegeben. <p>Für legale nicht jugendfreie Inhalte wird das Verhalten unten beschrieben. Es wird der Statuscode 200 zurückgegeben, und das Flag *IsFamilyFriendly* wird auf „false“ festgelegt.<ul><li>safeSearch=strict: Titel, Beschreibung, URL und Bild werden nicht zurückgegeben.</li><li>safeSearch=moderate: Titel, URL und Beschreibung werden abgerufen, das beschreibende Bild aber nicht.</li><li>safeSearch=off: Alle Antwortobjekte/-elemente (Titel, URL, Beschreibung und Bild) werden abgerufen.</li></ul> |string|Nicht erforderlich. </br> Standardmäßig wird „safeSearch=strict“ verwendet.| 

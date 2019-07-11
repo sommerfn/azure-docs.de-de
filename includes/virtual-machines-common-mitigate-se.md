@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 06/04/2019
 ms.author: cynthn;kareni
 ms.custom: include file
-ms.openlocfilehash: 46ade0ecb0e2e081585803a0b1bc7eab989e21e6
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 169e25aeb8503a11f768a2a3062022eef51a76b8
+ms.sourcegitcommit: c0419208061b2b5579f6e16f78d9d45513bb7bbc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66735215"
+ms.lasthandoff: 07/08/2019
+ms.locfileid: "67659807"
 ---
 **Letzte Aktualisierung des Dokuments**: 4. Juni 2019, 15:00 Uhr (PST).
 
@@ -21,7 +21,7 @@ Eine öffentlich gemachte [neue Art von CPU-Sicherheitsrisiken](https://portal.m
 
 Microsoft hat Maßnahmen zur Minderung dieser Risiken für alle Clouddienste bereitgestellt. Die Infrastruktur, in der Azure ausgeführt und Kundenworkloads voneinander isoliert werden, ist geschützt. Dies bedeutet, dass ein potenzieller Angreifer, der dieselbe Infrastruktur nutzt, Ihre Anwendung über diese Sicherheitsrisiken nicht angreifen kann.
 
-In Azure wird nach Möglichkeit die [Wartung mit Speicherbeibehaltung](https://docs.microsoft.com/azure/virtual-machines/windows/maintenance-and-updates#maintenance-not-requiring-a-reboot) genutzt, um die Auswirkungen für Kunden möglichst gering zu halten und auf Neustarts verzichten zu können. In Azure werden diese Methoden eingesetzt, wenn systemweite Updates am Host vorgenommen werden, um unsere Kunden zu schützen.
+In Azure wird nach Möglichkeit die [Wartung mit Speicherbeibehaltung](https://docs.microsoft.com/azure/virtual-machines/windows/maintenance-and-updates#maintenance-that-doesnt-require-a-reboot) genutzt, um die Auswirkungen für Kunden möglichst gering zu halten und auf Neustarts verzichten zu können. In Azure werden diese Methoden eingesetzt, wenn systemweite Updates am Host vorgenommen werden, um unsere Kunden zu schützen.
 
 Weitere Informationen dazu, wie die Sicherheit in alle Bereiche von Azure integriert ist, finden Sie auf der Website mit der [Dokumentation zur Azure-Sicherheit](https://docs.microsoft.com/azure/security/). 
 

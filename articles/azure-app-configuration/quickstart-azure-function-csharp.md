@@ -14,12 +14,12 @@ ms.tgt_pltfrm: Azure Functions
 ms.workload: tbd
 ms.date: 02/24/2019
 ms.author: yegu
-ms.openlocfilehash: c09cb0f93f05a9574543ebabb398148638092c73
-ms.sourcegitcommit: 4c2b9bc9cc704652cc77f33a870c4ec2d0579451
+ms.openlocfilehash: a4900964fb6feeb4c7cb0f147d3681031cac6a7b
+ms.sourcegitcommit: 66237bcd9b08359a6cce8d671f846b0c93ee6a82
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/17/2019
-ms.locfileid: "65864794"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67798430"
 ---
 # <a name="quickstart-create-an-azure-function-with-app-configuration"></a>Schnellstart: Erstellen einer Azure-Funktion mit App Configuration
 
@@ -56,7 +56,7 @@ Installieren Sie [Visual Studio 2019](https://visualstudio.microsoft.com/vs), um
 1. Klicken Sie mit der rechten Maustaste auf Ihr Projekt, und wählen Sie **NuGet-Pakete verwalten** aus. Suchen Sie auf der Registerkarte **Durchsuchen** die folgenden NuGet-Pakete, und fügen Sie sie Ihrem Projekt hinzu. Wenn Sie sie nicht finden können, aktivieren Sie das Kontrollkästchen **Vorabversion einbeziehen**.
 
     ```
-    Microsoft.Extensions.Configuration.AzureAppConfiguration 1.0.0 preview or later
+    Microsoft.Extensions.Configuration.AzureAppConfiguration 2.0.0-preview-009200001-1437 or later
     ```
 
 2. Öffnen Sie *Function1.cs*, und fügen Sie einen Verweis auf den App Configuration-Anbieter für .NET Core hinzu.

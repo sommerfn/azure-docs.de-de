@@ -3,17 +3,17 @@ title: include file
 description: include file
 services: cdn
 author: SyntaxC4
-ms.service: cdn
+ms.service: azure-cdn
 ms.topic: include
 ms.date: 05/24/2018
 ms.author: cfowler
 ms.custom: include file
-ms.openlocfilehash: c58b226c0f3bd63cb2a54bd3d8c91eb750a26f0a
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.openlocfilehash: 8aa6cb3f10b86a6821cd93190ecc2135508739cb
+ms.sourcegitcommit: ccb9a7b7da48473362266f20950af190ae88c09b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67178436"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67593984"
 ---
 ## <a name="create-a-new-cdn-profile"></a>Erstellen eines neuen CDN-Profils
 
@@ -35,7 +35,7 @@ Ein CDN-Profil ist ein Container für CDN-Endpunkte und gibt einen Tarif an.
     | -------- | ----- |
     | **Name** | Geben Sie *my-cdn-profile-123* als Profilname ein. Dieser Name muss global eindeutig sein. Sollte er bereits verwendet werden, können Sie einen anderen Namen eingeben. |
     | **Abonnement** | Wählen Sie in der Dropdownliste ein Azure-Abonnement aus. |
-    | **Ressourcengruppe** | Klicken Sie auf **Neu erstellen**, und geben Sie *my-resource-group-123* als Ressourcengruppennamen ein. Dieser Name muss global eindeutig sein. Sollte er bereits verwendet werden, können Sie die Option **Vorhandenes Element verwenden** und anschließend **my-resource-group-123** in der Dropdownliste auswählen. | 
+    | **Ressourcengruppe** | Klicken Sie auf **Neu erstellen**, und geben Sie *my-resource-group-123* als Ressourcengruppennamen ein. Sollte er bereits verwendet werden, können Sie die Option **Vorhandenes Element verwenden** und anschließend **my-resource-group-123** in der Dropdownliste auswählen. | 
     | **Ressourcengruppenstandort** | Wählen Sie in der Dropdownliste die Option **USA, Mitte** aus. |
     | **Preisstufe** | Wählen Sie in der Dropdownliste die Option **Verizon Standard** aus. |
     | **Jetzt neuen CDN-Endpunkt erstellen** | Lassen Sie das Kontrollkästchen deaktiviert. |  

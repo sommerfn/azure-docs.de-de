@@ -10,12 +10,12 @@ author: xiaoharper
 ms.author: zhanxia
 ms.date: 05/02/2019
 ROBOTS: NOINDEX
-ms.openlocfilehash: 09a2b616e2bba93be86241c64d37daec7d6dea3b
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 5ce3d86d37940f66065debce30b348371b7aa6af
+ms.sourcegitcommit: 3107874d7559ea975e4d55ae33cdf45f4b5485e4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65027840"
+ms.lasthandoff: 07/04/2019
+ms.locfileid: "67568248"
 ---
 # <a name="exceptions-and-error-codes-for-algorithm--module-reference"></a>Ausnahmen und Fehlercodes für Algorithmen und Module – Referenz
 
@@ -251,15 +251,16 @@ Wenn das Modell mit einem der speziellen Trainingsmodule trainiert wurde, verbin
 |----|----|----|
 |Alle Klassifizierer|[Train Model](train-model.md) (Modell trainieren) |[Score Model](score-model.md) (Modell bewerten)|
 |Alle Regressionsmodelle|[Train Model](train-model.md) (Modell trainieren) |[Score Model](score-model.md) (Modell bewerten)|
-<!--| Clusteringmodelle| [Train Clustering Model](train-clustering-model.md) (Clusteringmodell trainieren) oder [Sweep Clustering](sweep-clustering.md) (Sweepclustering)| [Assign Data to Clusters](assign-data-to-clusters.md) (Zuweisen von Daten zu Clustern)|
-| Anomalieerkennung – Einklassige SVM | [Train Anomaly Detection Model](train-anomaly-detection-model.md) (Anomalieerkennungsmodell trainieren) |[Score Model](score-model.md) (Modell bewerten)|
-| Anomalieerkennung – PCA |[Train Model](train-model.md) (Modell trainieren) |[Score Model](score-model.md) (Modell bewerten) </br> Zur Bewertung des Modells sind einige zusätzliche Schritte erforderlich. |
-| Anomalieerkennung – Zeitreihen|  [Time Series Anomaly Detection](time-series-anomaly-detection.md) (Anomalieerkennung in Zeitreihen) |Das Modell wird mit Daten trainiert und generiert Bewertungen. Das Modul erstellt keinen trainierten Learner und es ist keine zusätzliche Bewertung erforderlich. |
-| Empfehlungsmodell| [Train Matchbox Recommender](train-matchbox-recommender.md) (Matchbox Recommender trainieren) | [Score Matchbox Recommender](score-matchbox-recommender.md) (Matchbox Recommender bewerten) |
-| Bildklassifizierung | [Pretrained Cascade Image Classification](pretrained-cascade-image-classification.md) (Vortrainierte Kaskadenbildklassifizierung) | [Score Model](score-model.md) (Modell bewerten) |
-|Vowpal Wabbit-Modelle| [Train Vowpal Wabbit Version 7-4 Model](train-vowpal-wabbit-version-7-4-model.md) (Vowpal Wabbit-Modelle der Version 7-4 trainieren) | [Score Vowpal Wabbit Version 7-4 Model](score-vowpal-wabbit-version-7-4-model.md) (Vowpal Wabbit-Modelle der Version 7-4 bewerten) |   
-|Vowpal Wabbit-Modelle| [Train Vowpal Wabbit Version 7-10 Model](train-vowpal-wabbit-version-7-10-model.md) (Vowpal Wabbit-Modelle der Version 7-10 trainieren) | [Score Vowpal Wabbit Version 7-10 Model](score-vowpal-wabbit-version-7-10-model.md) (Vowpal Wabbit-Modelle der Version 7-10 bewerten) |
-|Vowpal Wabbit-Modelle| [Train Vowpal Wabbit Version 8 Model](score-vowpal-wabbit-version-8-model.md) (Vowpal Wabbit-Modelle der Version 8 trainieren) | [Score Vowpal Wabbit Version 8 Model](score-vowpal-wabbit-version-8-model.md) (Vowpal Wabbit-Modelle der Version 8 bewerten) |-->
+
+<!--| clustering models| [Train Clustering Model](train-clustering-model.md) or [Sweep Clustering](sweep-clustering.md)| [Assign Data to Clusters](assign-data-to-clusters.md)|
+| anomaly detection - One-Class SVM | [Train Anomaly Detection Model](train-anomaly-detection-model.md) |[Score Model](score-model.md)|
+| anomaly detection - PCA |[Train Model](train-model.md) |[Score Model](score-model.md) </br> Some additional steps are required to evaluate the model. |
+| anomaly detection - time series|  [Time Series Anomaly Detection](time-series-anomaly-detection.md) |Model trains from data and generates scores. The module does not create a trained learner and no additional scoring is required. |
+| recommendation model| [Train Matchbox Recommender](train-matchbox-recommender.md) | [Score Matchbox Recommender](score-matchbox-recommender.md) |
+| image classification | [Pretrained Cascade Image Classification](pretrained-cascade-image-classification.md) | [Score Model](score-model.md) |
+|Vowpal Wabbit models| [Train Vowpal Wabbit Version 7-4 Model](train-vowpal-wabbit-version-7-4-model.md) | [Score Vowpal Wabbit Version 7-4 Model](score-vowpal-wabbit-version-7-4-model.md) |   
+|Vowpal Wabbit models| [Train Vowpal Wabbit Version 7-10 Model](train-vowpal-wabbit-version-7-10-model.md) | [Score Vowpal Wabbit Version 7-10 Model](score-vowpal-wabbit-version-7-10-model.md) |
+|Vowpal Wabbit models| [Train Vowpal Wabbit Version 8 Model](score-vowpal-wabbit-version-8-model.md) | [Score Vowpal Wabbit Version 8 Model](score-vowpal-wabbit-version-8-model.md) |-->
   
 |Ausnahmemeldungen|  
 |------------------------|  

@@ -2,24 +2,25 @@
 title: Grundlegendes zu IoT-Sicherheitsempfehlungen für Azure Security Center für (Vorschauversion) | Microsoft-Dokumentation
 description: Lernen Sie das Konzept der Sicherheitsempfehlungen kennen, und erfahren Sie, wie sie in Azure Security Center für IoT verwendet werden.
 services: asc-for-iot
-ms.service: ascforiot
+ms.service: asc-for-iot
 documentationcenter: na
 author: mlottner
 manager: rkarlin
 editor: ''
 ms.assetid: 02ced504-d3aa-4770-9d10-b79f80af366c
+ms.subservice: asc-for-iot
 ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/24/2019
 ms.author: mlottner
-ms.openlocfilehash: 122a1585abf43d1aedc7f329cd7e41a6228f8c3e
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 1ee71bbacdba7a14e94de41563a04be9c0f00d13
+ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65200670"
+ms.lasthandoff: 07/07/2019
+ms.locfileid: "67618410"
 ---
 # <a name="security-recommendations"></a>Sicherheitsempfehlungen
 
@@ -35,7 +36,7 @@ In diesem Artikel finden Sie eine Liste von Empfehlungen, die auf Ihrem IoT Hub 
 
 Geräteempfehlungen liefern Einblicke und Vorschläge zur Verbesserung der Gerätesicherheit und des Geräteverhaltens. 
 
-| Severity | NAME                                                      | Data source | BESCHREIBUNG                                                                                                                                                                                           |
+| severity | NAME                                                      | Data source | BESCHREIBUNG                                                                                                                                                                                           |
 |----------|-----------------------------------------------------------|-------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | Mittel   | Offene Ports am Gerät                                      | Agent       | Auf dem Gerät wurde ein lauschender Endpunkt gefunden                                                                                                                                                          |
 | Mittel   | In einer der Ketten wurde eine zu wenig einschränkende Firewallrichtlinie gefunden. | Agent       | Zulässige Firewallrichtlinie gefunden(INPUT/OUTPUT). Die Firewallrichtlinie sollte standardmäßig den gesamten Datenverkehr verweigern und Regeln definieren, die die notwendige Kommunikation mit dem/vom Gerät ermöglichen.                               |
@@ -47,7 +48,7 @@ Geräteempfehlungen liefern Einblicke und Vorschläge zur Verbesserung der Gerä
 
 Operative Empfehlungen liefern Einblicke und Vorschläge zur Verbesserung der Konfiguration des Sicherheits-Agent.
 
-| Severity | NAME                                    | Data source | BESCHREIBUNG                                                                       |
+| severity | NAME                                    | Data source | BESCHREIBUNG                                                                       |
 |----------|-----------------------------------------|-------------|-----------------------------------------------------------------------------------|
 | Niedrig      | Der Agent sendet ungenutzte Meldungen          | Agent       | 10 % oder mehr der Sicherheitsmeldungen in den letzten 24 Stunden waren kleiner als 4 KB.  |
 | Niedrig      | Sicherheitszwillingskonfiguration nicht optimal | Agent       | Die Konfiguration des Sicherheitszwillings ist nicht optimal.                                        |
@@ -58,7 +59,7 @@ Operative Empfehlungen liefern Einblicke und Vorschläge zur Verbesserung der Ko
 
 Empfehlungsbenachrichtigungen bieten Einblicke und Vorschläge für Aktionen zum Verbessern des Sicherheitszustands Ihrer Umgebung.  
 
-| Severity | NAME                                                     | Data source | BESCHREIBUNG                                                                                                                                                                                                             |
+| severity | NAME                                                     | Data source | BESCHREIBUNG                                                                                                                                                                                                             |
 |----------|----------------------------------------------------------|-------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | Hoch     | Identische Authentifizierungsinformationen wurden von mehreren Geräten verwendet | IoT Hub     | Von mehreren Geräten wurden die gleichen IoT Hub-Authentifizierungsinformationen verwendet. Dies kann auf ein unzulässiges Gerät hinweisen, das die Identität eines legitimen Geräts vorgibt. Die Verwendung doppelter Berechtigungen erhöht das Risiko eines Geräteidentitätswechsels durch einen bösartigen Akteur. |
 | Mittel   | Die Standard-IP-Filterrichtlinie muss auf „Verweigern“ festgelegt sein                  | IoT Hub     | Die IP-Filterkonfiguration sollte Regeln für zulässigen Datenverkehr definieren und standardmäßig den gesamten übrigen Datenverkehr ablehnen.                                                                                                     |

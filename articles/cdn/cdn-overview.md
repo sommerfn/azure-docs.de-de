@@ -7,7 +7,7 @@ author: mdgattuso
 manager: danielgi
 editor: ''
 ms.assetid: 866e0c30-1f33-43a5-91f0-d22f033b16c6
-ms.service: cdn
+ms.service: azure-cdn
 ms.workload: tbd
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -15,12 +15,12 @@ ms.topic: overview
 ms.date: 05/09/2018
 ms.author: magattus
 ms.custom: mvc
-ms.openlocfilehash: 9692d495ada8a311fd5037a4f17f24ed6da9243a
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 6aaa98bea5e6cf1bdffc3dbe28e42e9545a626ea
+ms.sourcegitcommit: ccb9a7b7da48473362266f20950af190ae88c09b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57843673"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67593609"
 ---
 # <a name="what-is-a-content-delivery-network-on-azure"></a>Was ist ein Content Delivery Network in Azure?
 Ein Content Delivery Network (CDN) ist ein verteiltes Netzwerk mit Servern, über die Webinhalte auf effiziente Weise für Benutzer bereitgestellt werden können. In CDNs werden zwischengespeicherte Inhalte auf Edgeservern an POP-Standorten (Point of Presence) gespeichert, die sich in der Nähe der Endbenutzer befinden, um die Wartezeit zu verringern. 
@@ -38,7 +38,7 @@ Eine Liste mit aktuellen CDN-Knotenstandorten finden Sie unter [Azure CDN-POP-St
 ## <a name="how-it-works"></a>So funktioniert's
 ![Übersicht über CDN](./media/cdn-overview/cdn-overview.png)
 
-1. Ein Benutzer (Alice) fordert eine Datei (auch Ressource genannt) über eine URL mit einem speziellen Domänennamen an. Beispiel: _&lt;Endpunktname&gt;_.azureedge.net. Dieser Name kann ein Endpunkt-Hostname oder eine benutzerdefinierte Domäne sein. Das DNS leitet die Anforderung an den POP-Standort mit der besten Leistung weiter. Dabei handelt es sich in der Regel um den POP, der dem Benutzer geografisch am nächsten ist.
+1. Ein Benutzer (Alice) fordert eine Datei (auch Ressource genannt) über eine URL mit einem speziellen Domänennamen an. Beispiel: _&lt;Endpunktname&gt;_ .azureedge.net. Dieser Name kann ein Endpunkt-Hostname oder eine benutzerdefinierte Domäne sein. Das DNS leitet die Anforderung an den POP-Standort mit der besten Leistung weiter. Dabei handelt es sich in der Regel um den POP, der dem Benutzer geografisch am nächsten ist.
     
 2. Falls sich die Datei nicht im Cache eines der Edgeserver am POP befindet, fordert der POP die Datei vom Ursprungsserver an. Der Ursprungsserver kann eine Azure-Web-App, eine Azure Cloud Service-Instanz, ein Azure Storage-Konto oder ein beliebiger öffentlich zugänglicher Webserver sein.
    

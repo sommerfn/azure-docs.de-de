@@ -5,7 +5,7 @@ keywords: SSH-Verbindung abgelehnt, SSH-Fehler, Azure SSH, SSH-Verbindungsfehler
 services: virtual-machines-linux
 documentationcenter: ''
 author: genlin
-manager: jeconnoc
+manager: gwallace
 editor: ''
 tags: top-support-issue,azure-service-management,azure-resource-manager
 ms.assetid: dcb82e19-29b2-47bb-99f2-900d4cfb5bbb
@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-linux
 ms.topic: troubleshooting
 ms.date: 05/30/2017
 ms.author: genli
-ms.openlocfilehash: 81e00c4a3b9490a05667d58952f7bdf8945bacdb
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 190aab1f321aa9014eea95a63d525b394288b03b
+ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61405253"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67709271"
 ---
 # <a name="troubleshoot-ssh-connections-to-an-azure-linux-vm-that-fails-errors-out-or-is-refused"></a>Behandeln von Problemen, Fehlern oder Ablehnungen im Zusammenhang mit der SSH-Verbindung mit einem virtuellen Azure Linux-Computer
 Dieser Artikel hilft Ihnen dabei, Probleme zu suchen und zu beheben, die aufgrund von SSH-Fehlern (Secure Shell), SSH-Verbindungsfehlern oder der Ablehnung einer SSH-Verbindung, wenn Sie versuchen, eine Verbindung mit einem virtuellen Linux-Computer herzustellen, auftreten. Sie können das Azure-Portal, die Azure-Befehlszeilenschnittstelle oder die VM-Zugriffserweiterung für Linux verwenden, um Verbindungsproblemen zu ermitteln und zu beheben.

@@ -7,7 +7,7 @@ author: mdgattuso
 manager: danielgi
 editor: ''
 ms.assetid: cbc2ff98-916d-4339-8959-622823c5b772
-ms.service: cdn
+ms.service: azure-cdn
 ms.workload: tbd
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -15,12 +15,12 @@ ms.topic: quickstart
 ms.date: 05/24/2018
 ms.author: magattus
 ms.custom: mvc
-ms.openlocfilehash: ea4134c486310592f1f0f344ae26a11276143faf
-ms.sourcegitcommit: cdf0e37450044f65c33e07aeb6d115819a2bb822
+ms.openlocfilehash: d8e1c3f845af6edf274aa95797523ace07cf820c
+ms.sourcegitcommit: ccb9a7b7da48473362266f20950af190ae88c09b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57193363"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67594015"
 ---
 # <a name="quickstart-integrate-an-azure-storage-account-with-azure-cdn"></a>Schnellstart: Integrieren eines Azure-Speicherkontos in CDN
 In dieser Schnellstartanleitung aktivieren Sie das [Azure Content Delivery Network (CDN)](cdn-overview.md) für die Zwischenspeicherung von Inhalten aus Azure Storage. Azure CDN bietet Entwicklern eine globale Lösung für die Übermittlung von Inhalten mit hoher Bandbreite. Sie können Blobs und statische Inhalte von Compute-Instanzen auf physischen Knoten in den USA, Europa, Asien, Australien und Südamerika zwischenspeichern.
@@ -55,7 +55,7 @@ Es gibt mehrere Methoden zum Erstellen eines Speicherkontos, einschließlich Azu
    
     Dieser Wert wird der Hostname im URI, der zum Adressieren von Blob-, Warteschlangen- oder Tabellenressourcen für das Abonnement verwendet wird. Um auf eine Containerressource in Blob Storage zu verweisen, verwenden Sie einen URI im folgenden Format:
    
-    http://*&lt;Speicherkontobezeichnung&gt;*.blob.core.windows.net/*&lt;MeinContainer&gt;*
+    http:// *&lt;Speicherkontobezeichnung&gt;* .blob.core.windows.net/ *&lt;MeinContainer&gt;*
 
     Dabei ist *&lt;StorageAccountLabel&gt;* der Wert, die Sie im Feld **Name** eingegeben haben.
    
@@ -98,7 +98,7 @@ Sie können Azure CDN direkt über Ihr Speicherkonto für Ihr Speicherkonto akti
     | -------- | ----- |
     | **CDN-Profil** | Klicken Sie auf **Neu erstellen**, und geben Sie Ihren Profilnamen ein (beispielsweise *my-cdn-profile-123*). Dieser Name muss global eindeutig sein.  |
     | **Preisstufe** | Wählen Sie in der Dropdownliste die Option **Verizon Standard** aus. |
-    | **CDN-Endpunktname** | Geben Sie den Hostnamen Ihres Endpunkts (*my-endpoint-123*) ein. Dieser Name muss global eindeutig sein. Dieser Name wird für den Zugriff auf Ihre zwischengespeicherten Ressourcen in der Domäne _&lt;Endpunktname&gt;_.azureedge.net verwendet. |
+    | **CDN-Endpunktname** | Geben Sie den Hostnamen Ihres Endpunkts (*my-endpoint-123*) ein. Dieser Name muss global eindeutig sein. Dieser Name wird für den Zugriff auf Ihre zwischengespeicherten Ressourcen in der Domäne _&lt;Endpunktname&gt;_ .azureedge.net verwendet. |
     | **Hostname des Ursprungs** | Für einen neuen CDN-Endpunkt wird standardmäßig der Hostname Ihres Speicherkontos als Ursprungsserver verwendet. |
 
 3. Klicken Sie auf **Erstellen**. Der erstellte Endpunkt wird in der Liste mit den Endpunkten angezeigt.

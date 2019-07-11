@@ -11,12 +11,12 @@ ms.devlang: dotnet
 ms.topic: reference
 ms.date: 09/12/2018
 ms.author: glenga
-ms.openlocfilehash: 2a6d670ba9f2f496cc94d2790eb6f66d46305746
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 30c97eed5f28631bd2583cbda75df5755ffe2e34
+ms.sourcegitcommit: c0419208061b2b5579f6e16f78d9d45513bb7bbc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65872801"
+ms.lasthandoff: 07/08/2019
+ms.locfileid: "67626093"
 ---
 # <a name="azure-functions-c-developer-reference"></a>C#-Entwicklerreferenz zu Azure Functions
 
@@ -50,7 +50,7 @@ Wenn Sie das Projekt erstellen, wird im Buildausgabeverzeichnis eine Ordnerstruk
  | - host.json
 ```
 
-Dieses Verzeichnis wird in Ihrer Funktions-App in Azure bereitgestellt. Die in [Version 2.x](functions-versions.md) der Functions-Runtime erforderlichen Bindungserweiterungen werden [dem Projekt als NuGet-Pakete hinzugefügt](./functions-bindings-register.md#c-class-library-with-visual-studio-2019).
+Dieses Verzeichnis wird in Ihrer Funktions-App in Azure bereitgestellt. Die in [Version 2.x](functions-versions.md) der Functions-Runtime erforderlichen Bindungserweiterungen werden [dem Projekt als NuGet-Pakete hinzugefügt](./functions-bindings-register.md#vs).
 
 > [!IMPORTANT]
 > Im Buildprozess wird für jede Funktion eine Datei vom Typ *function.json* erstellt. Die Datei *function.json* ist nicht für die direkte Bearbeitung vorgesehen. Sie können weder die Bindungskonfiguration ändern noch die Funktion deaktivieren, indem Sie diese Datei bearbeiten. Informationen zum Deaktivieren einer Funktion finden Sie unter [Gewusst wie: Deaktivieren von Funktionen](disable-function.md#functions-2x---c-class-libraries).

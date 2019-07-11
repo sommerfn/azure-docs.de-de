@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 5/13/2019
 ms.author: heidist
 ms.custom: seodec2018
-ms.openlocfilehash: 8dffc5b87aefe23953d3a74f1d96b5ee03e0315d
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 88171487fd180931d4659390f0db3c8619fb2d62
+ms.sourcegitcommit: cf438e4b4e351b64fd0320bf17cc02489e61406a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65597394"
+ms.lasthandoff: 07/08/2019
+ms.locfileid: "67653450"
 ---
 # <a name="how-to-build-a-facet-filter-in-azure-search"></a>Erstellen eines Facettenfilters in Azure Search 
 
@@ -82,7 +82,7 @@ Indexattribute, mit denen gesteuert wird, wie ein Feld verwendet wird, werden ei
 
 ## <a name="build-and-load-an-index"></a>Erstellen und Laden eines Index
 
-Ein (wahrscheinlich naheliegender) Zwischenschritt vor der Erstellung einer Abfrage ist das [Erstellen und Auffüllen des Index](https://docs.microsoft.com/azure/search/search-create-index-dotnet#3---construct-index). Er wird daher nur der Vollständigkeit halber erwähnt. Die Verfügbarkeit des Index kann unter anderem durch das Überprüfen der Indexliste im [Portal](https://portal.azure.com) ermittelt werden.
+Ein (wahrscheinlich naheliegender) Zwischenschritt vor der Erstellung einer Abfrage ist das [Erstellen und Auffüllen des Index](https://docs.microsoft.com/azure/search/search-get-started-dotnet#1---create-index). Er wird daher nur der Vollständigkeit halber erwähnt. Die Verfügbarkeit des Index kann unter anderem durch das Überprüfen der Indexliste im [Portal](https://portal.azure.com) ermittelt werden.
 
 ## <a name="add-facet-filters-to-a-query"></a>Hinzufügen von Facettenfiltern zu einer Abfrage
 

@@ -5,7 +5,7 @@ keywords: Remotedesktop-Fehler,Remotedesktop-Verbindungsfehler,Verbindung mit vi
 services: virtual-machines-windows
 documentationcenter: ''
 author: roiyz-msft
-manager: jeconnoc
+manager: gwallace
 editor: ''
 tags: top-support-issue,azure-service-management,azure-resource-manager
 ms.assetid: 0d740f8e-98b8-4e55-bb02-520f604f5b18
@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: troubleshooting
 ms.date: 03/23/2018
 ms.author: roiyz
-ms.openlocfilehash: 50adab1eaa199473a8da857d38c3a08c424c677a
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 711c5cb8211de8b5ec27cfd76f12c34c84676e64
+ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64728939"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67710513"
 ---
 # <a name="troubleshoot-remote-desktop-connections-to-an-azure-virtual-machine"></a>Behandeln von Problemen bei Remotedesktopverbindungen mit einem virtuellen Azure-Computer
 Eine Verbindung über das Remotedesktopprotokoll (RDP) mit Ihrem Windows-basierten virtuellen Azure-Computer (VM, Virtual Machine) kann aus verschiedenen Gründen fehlschlagen, sodass Sie nicht auf Ihren virtuellen Computer zugreifen können. Das Problem kann mit dem Remotedesktopdienst auf dem virtuellen Computer, der Netzwerkverbindung oder dem Remotedesktopclient auf Ihrem Hostcomputer zusammenhängen. Dieser Artikel führt Sie durch einige der am häufigsten verwendeten Methoden, um die RDP-Verbindungsprobleme zu beheben. 

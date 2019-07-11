@@ -8,16 +8,16 @@ ms.topic: include
 ms.date: 010/17/2018
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: 60a64758ae93320fc44a0705038e9db7e114b9bd
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.openlocfilehash: 26e48d1af8e29c7d00a80910dcca62811da14822
+ms.sourcegitcommit: 2e4b99023ecaf2ea3d6d3604da068d04682a8c2d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67177920"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67673338"
 ---
 Im Azure-Portal können Sie zur gewünschten Verbindung navigieren und den Verbindungsstatus für eine klassische VNet-VPN Gateway-Instanz anzeigen. Die folgenden Schritte zeigen eine Möglichkeit, zu Ihrer Verbindung zu navigieren und sie zu überprüfen.
 
-1. Klicken Sie im [Azure-Portal](http://portal.azure.com) auf **All resources** (Alle Ressourcen), und navigieren Sie zum klassischen virtuellen Netzwerk.
+1. Klicken Sie im [Azure-Portal](https://portal.azure.com) auf **All resources** (Alle Ressourcen), und navigieren Sie zum klassischen virtuellen Netzwerk.
 2. Klicken Sie auf dem Blatt für das virtuelle Netzwerk auf **Übersicht**, um auf den Abschnitt **VPN-Verbindungen** des Blatts zuzugreifen.
 3. Klicken Sie in der Grafik mit den VPN-Verbindungen auf den Standort.
 

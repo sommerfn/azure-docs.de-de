@@ -8,12 +8,12 @@ ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 05/30/2019
-ms.openlocfilehash: bfdebacb4de205fa42fe96ceb9970d2d109536e8
-ms.sourcegitcommit: 2d3b1d7653c6c585e9423cf41658de0c68d883fa
+ms.openlocfilehash: 1f03f9e68640edd73d2f6bb55cf205a609450658
+ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/20/2019
-ms.locfileid: "67296149"
+ms.lasthandoff: 07/07/2019
+ms.locfileid: "67620495"
 ---
 # <a name="stream-data-as-input-into-stream-analytics"></a>Streamen von Daten als Eingabe in Stream Analytics
 
@@ -79,7 +79,7 @@ FROM Input
 ```
 
 > [!NOTE]
-> Bei Verwendung von Event Hub als Endpunkt für IoT Hub-Routen können Sie mithilfe der [GetMetadataPropertyValue-Funktion](https://msdn.microsoft.com/library/azure/mt793845.aspx) auf die IoT Hub-Metadaten zugreifen.
+> Bei Verwendung von Event Hub als Endpunkt für IoT Hub-Routen können Sie mithilfe der [GetMetadataPropertyValue-Funktion](https://docs.microsoft.com/stream-analytics-query/getmetadatapropertyvalue) auf die IoT Hub-Metadaten zugreifen.
 > 
 
 ## <a name="stream-data-from-iot-hub"></a>Streamen von Daten aus IoT Hub
@@ -129,7 +129,7 @@ Für Szenarien mit großen Mengen unstrukturierter Daten, die in der Cloud gespe
 
 Ein häufig verwendetes Szenario für Blob Storage-Eingaben bei Stream Analytics ist die Protokollverarbeitung. In diesem Szenario wurden Telemetriedatendateien von einem System erfasst, die zur Extraktion aussagekräftiger Daten analysiert und verarbeitet werden müssen.
 
-Der Standardzeitstempel von Blob Storage-Ereignissen in Stream Analytics ist der Zeitstempel, an dem das Blob zuletzt geändert wurde, also `BlobLastModifiedUtcTime`. Zum Verarbeiten der Daten als Datenstrom mit einem Zeitstempel in der Ereignisnutzlast müssen Sie das Schlüsselwort [TIMESTAMP BY](https://msdn.microsoft.com/library/azure/dn834998.aspx) verwenden. Bei einem Stream Analytics-Auftrag werden Daten jede Sekunde per Pullvorgang aus der Azure-Blobspeichereingabe abgerufen, wenn die Blobdatei verfügbar ist. Falls die Blobdatei nicht verfügbar ist, kommt es zu einem exponentiellen Backoff mit einer maximalen Zeitverzögerung von 90 Sekunden.
+Der Standardzeitstempel von Blob Storage-Ereignissen in Stream Analytics ist der Zeitstempel, an dem das Blob zuletzt geändert wurde, also `BlobLastModifiedUtcTime`. Zum Verarbeiten der Daten als Datenstrom mit einem Zeitstempel in der Ereignisnutzlast müssen Sie das Schlüsselwort [TIMESTAMP BY](https://docs.microsoft.com/stream-analytics-query/stream-analytics-query-language-reference) verwenden. Bei einem Stream Analytics-Auftrag werden Daten jede Sekunde per Pullvorgang aus der Azure-Blobspeichereingabe abgerufen, wenn die Blobdatei verfügbar ist. Falls die Blobdatei nicht verfügbar ist, kommt es zu einem exponentiellen Backoff mit einer maximalen Zeitverzögerung von 90 Sekunden.
 
 Eingaben im CSV-Format müssen über eine Überschriftenzeile verfügen, um Felder für das Dataset zu definieren. Alle Felder der Überschriftenzeile müssen eindeutig sein.
 

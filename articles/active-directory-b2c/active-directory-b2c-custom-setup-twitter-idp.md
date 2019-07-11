@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 09/20/2018
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: cc657e079949b8217031906efeb84049217d6493
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 1bf90ec8987ec419131ba21137972a0905e33f19
+ms.sourcegitcommit: cf438e4b4e351b64fd0320bf17cc02489e61406a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66510252"
+ms.lasthandoff: 07/08/2019
+ms.locfileid: "67654138"
 ---
 # <a name="set-up-sign-in-with-a-twitter-account-by-using-custom-policies-in-azure-active-directory-b2c"></a>Einrichten der Anmeldung mit einem Twitter-Konto mithilfe benutzerdefinierter Richtlinien in Azure Active Directory B2C
 
@@ -48,7 +48,7 @@ Sie müssen den geheimen Schlüssel, den Sie zuvor notiert haben, in Ihrem Azure
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com/) an.
 2. Stellen Sie sicher, dass Sie das Verzeichnis verwenden, das Ihren Azure AD B2C-Mandanten enthält. Klicken Sie im oberen Menü auf **Verzeichnis- und Abonnementfilter**, und wählen Sie das Verzeichnis aus, das Ihren Mandanten enthält.
 3. Wählen Sie links oben im Azure-Portal die Option **Alle Dienste** aus, suchen Sie nach **Azure AD B2C**, und wählen Sie dann diese Option aus.
-4. Wählen Sie auf der Seite „Übersicht“ die Option **Identity Experience Framework – PREVIEW** (Framework für die Identitätsfunktion – VORSCHAU) aus.
+4. Wählen Sie auf der Seite „Übersicht“ die Option **Framework für die Identitätsfunktion** aus.
 5. Klicken Sie erst auf **Richtlinienschlüssel** und anschließend auf **Hinzufügen**.
 6. Klicken Sie unter **Optionen** auf `Manual`.
 7. Geben Sie einen **Namen** für den Richtlinienschlüssel ein. Beispiel: `TwitterSecret`. Dem Namen Ihres Schlüssels wird automatisch das Präfix `B2C_1A_` hinzugefügt.
@@ -58,7 +58,7 @@ Sie müssen den geheimen Schlüssel, den Sie zuvor notiert haben, in Ihrem Azure
 
 ## <a name="add-a-claims-provider"></a>Hinzufügen eines Anspruchsanbieters
 
-Wenn Sie möchten, dass sich Benutzer mit einem Twitter-Konto anmelden, müssen Sie das Konto als Anspruchsanbieter definieren, mit dem Azure AD B2C über einen Endpunkt kommunizieren kann. Der Endpunkt bietet eine Reihe von Ansprüchen, mit denen Azure AD B2C überprüft, ob ein bestimmter Benutzer authentifiziert wurde. 
+Wenn Sie möchten, dass sich Benutzer mit einem Twitter-Konto anmelden, müssen Sie das Konto als Anspruchsanbieter definieren, mit dem Azure AD B2C über einen Endpunkt kommunizieren kann. Der Endpunkt bietet eine Reihe von Ansprüchen, mit denen Azure AD B2C überprüft, ob ein bestimmter Benutzer authentifiziert wurde.
 
 Sie können ein Twitter-Konto als Anspruchsanbieter definieren, indem Sie es in der Erweiterungsdatei Ihrer Richtlinie dem Element **ClaimsProvider** hinzufügen.
 
@@ -147,7 +147,7 @@ Nachdem Sie eine Schaltfläche implementiert haben, müssen Sie sie mit einer Ak
     ```XML
     <ClaimsExchange Id="TwitterExchange" TechnicalProfileReferenceId="Twitter-OAUTH1" />
     ```
-    
+
     Ändern Sie den Wert von **TechnicalProfileReferenceId** in die ID des technischen Profils, das Sie zuvor erstellt haben. Beispiel: `Twitter-OAUTH1`.
 
 3. Speichern Sie die Datei *TrustFrameworkExtensions.xml*, und laden Sie die Datei zur Überprüfung erneut hoch.

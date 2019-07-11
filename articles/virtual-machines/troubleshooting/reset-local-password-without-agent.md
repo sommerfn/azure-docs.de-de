@@ -4,7 +4,7 @@ description: 'Gewusst wie: Zurücksetzen des Kennworts eines lokalen Windows-Ben
 services: virtual-machines-windows
 documentationcenter: ''
 author: genlin
-manager: jeconnoc
+manager: gwallace
 editor: ''
 ms.assetid: cf353dd3-89c9-47f6-a449-f874f0957013
 ms.service: virtual-machines-windows
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 04/25/2019
 ms.author: genli
-ms.openlocfilehash: 3c0152726aba115e1b370838308a7bf0af08cab7
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 4dc38714f4edb024255b4015cef54f26d5eef189
+ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64708132"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67710654"
 ---
 # <a name="reset-local-windows-password-for-azure-vm-offline"></a>Zurücksetzen eines lokalen Windows-Kennworts im Offlinemodus für einen virtuellen Azure-Computer
 Sie können das lokale Windows-Kennwort eines virtuellen Computers in Azure im [Azure-Portal oder mithilfe von Azure PowerShell](reset-rdp.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) zurücksetzen, sofern der Azure-Gast-Agent installiert ist. Diese Methode ist die einfachste Möglichkeit zum Zurücksetzen eines Kennworts für einen virtuellen Azure-Computer. Wenn der Azure-Gast-Agent nicht reagiert oder nach dem Hochladen eines benutzerdefinierten Images nicht installiert wird, können Sie ein Windows-Kennwort manuell zurücksetzen. In diesem Artikel wird erläutert, wie das Kennwort eines lokalen Kontos durch Anfügen des virtuellen Quellbetriebssystem-Datenträgers an einen anderen virtuellen Computer zurückgesetzt wird. Die in diesem Artikel beschriebenen Schritte gelten nicht für Windows-Domänencontroller. 

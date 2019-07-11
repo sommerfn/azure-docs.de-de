@@ -4,7 +4,7 @@ description: Erfahren Sie, wie Sie „cloud-init“ zum Konfigurieren einer Ausl
 services: virtual-machines-linux
 documentationcenter: ''
 author: rickstercdn
-manager: jeconnoc
+manager: gwallace
 editor: ''
 tags: azure-resource-manager
 ms.service: virtual-machines-linux
@@ -14,12 +14,12 @@ ms.devlang: azurecli
 ms.topic: article
 ms.date: 11/29/2017
 ms.author: rclaus
-ms.openlocfilehash: 626fd4739daf2506854c42f16ac986a361ebab38
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: adf03ea912a028c1059683c49350dea3743ee7a6
+ms.sourcegitcommit: 2e4b99023ecaf2ea3d6d3604da068d04682a8c2d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60729816"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67671696"
 ---
 # <a name="use-cloud-init-to-configure-a-swapfile-on-a-linux-vm"></a>Verwenden von „cloud-init“ zum Konfigurieren einer Auslagerungsdatei auf einer Linux-VM
 Dieser Artikel zeigt, wie Sie [cloud-init](https://cloudinit.readthedocs.io) zum Konfigurieren der Auslagerungsdatei auf verschiedenen Linux-Distributionen verwenden. Die Auslagerungsdatei wurde traditionell vom Linux-Agent (WALA) konfiguriert – abhängig davon, für welche Distributionen eine Auslagerungsdatei benötigt wurde.  In diesem Dokument wird das Vorgehen für die bedarfsgesteuerte Erstellung der Auslagerungsdatei zur Bereitstellungszeit unter Verwendung von „cloud-init“ beschrieben.  Weitere Informationen zur nativen Funktionsweise von „cloud-init“ in Azure und zu den unterstützten Linux-Distributionen finden Sie in der [Übersicht zu „cloud-init“](using-cloud-init.md).

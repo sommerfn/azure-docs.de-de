@@ -4,7 +4,7 @@ description: Verwenden Sie das Portal, um einen neuen oder vorhandenen Datenträ
 services: virtual-machines-linux
 documentationcenter: ''
 author: cynthn
-manager: jeconnoc
+manager: gwallace
 editor: ''
 tags: azure-resource-manager
 ms.assetid: 5e1c6212-976c-4962-a297-177942f90907
@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 07/12/2018
 ms.author: cynthn
 ms.subservice: disks
-ms.openlocfilehash: d5dd916f7e4434640db6dae6f8c5a73d1ff2d3e0
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 162857ed1b22edf67b44cb4648607103cf733c7d
+ms.sourcegitcommit: 2e4b99023ecaf2ea3d6d3604da068d04682a8c2d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60187953"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67671845"
 ---
 # <a name="use-the-portal-to-attach-a-data-disk-to-a-linux-vm"></a>Anfügen eines Datenträgers an einen virtuellen Linux-Computer mithilfe des Portals 
 In diesem Artikel wird beschrieben, wie Sie über das Azure-Portal neue und vorhandene Datenträger an einen virtuellen Linux-Computer anfügen können. Sie können auch [einen Datenträger an eine Windows-VM im Azure-Portal anfügen](../windows/attach-managed-disk-portal.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json). 

@@ -3,15 +3,15 @@ title: Verbindungsarchitektur in Azure Database for PostgreSQL
 description: Hier wird die Verbindungsarchitektur für Ihren Azure Database for PostgreSQL-Server beschrieben.
 author: kummanish
 ms.author: manishku
-ms.service: PostgreSQL
+ms.service: postgresql
 ms.topic: conceptual
 ms.date: 05/23/2019
-ms.openlocfilehash: 73c23c471cb12ca3a3a7df4380779b464b8d86d4
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 0d91458c555c819c4bcf97215a712719ebc5eb71
+ms.sourcegitcommit: ccb9a7b7da48473362266f20950af190ae88c09b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66735891"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67588959"
 ---
 # <a name="connectivity-architecture-in-azure-database-for-postgresql"></a>Verbindungsarchitektur in Azure Database for PostgreSQL
 In diesem Artikel wird die Verbindungsarchitektur von Azure Database for PostgreSQL beschrieben, und Sie erfahren, wie Datenverkehr von Clients innerhalb und außerhalb von Azure an Ihre Azure Database for PostgreSQL-Datenbankinstanz weitergeleitet wird.

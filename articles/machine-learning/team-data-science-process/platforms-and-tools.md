@@ -10,12 +10,12 @@ ms.topic: article
 ms.date: 09/04/2017
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 31c6c1258b6d20eb2d2802cf23244cb59df682c0
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 8ad5c4cb4d17443144febd716391803064ccdad1
+ms.sourcegitcommit: c0419208061b2b5579f6e16f78d9d45513bb7bbc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61428735"
+ms.lasthandoff: 07/08/2019
+ms.locfileid: "67626374"
 ---
 # <a name="platforms-and-tools-for-data-science-projects"></a>Plattformen und Tools für Data Science-Projekte
 
@@ -48,7 +48,7 @@ Es enthält auch **Machine Learning- und KI-Tools** wie xgboost, mxnet und Vowpa
 
 Die Data Science-VM ist derzeit für die Betriebssysteme **Windows** und **Linux CentOS** verfügbar. Wählen Sie die Größe Ihrer Data Science-VM (Anzahl von CPU-Kernen und Größe des Arbeitsspeichers) abhängig von den Anforderungen der Data Science-Projekte aus, die Sie damit ausführen möchten. 
 
-Weitere Informationen zur Windows-Edition der Data Science-VM finden Sie im Azure Marketplace unter [Data Science Virtual Machine - Windows 2012](https://azure.microsoft.com/marketplace/partners/microsoft-ads/standard-data-science-vm/) (Data Science-VM – Windows 2012). Die Linux-Edition der Data Science-VM finden Sie unter [Data Science Virtual Machine for Linux (CentOS)](https://azure.microsoft.com/marketplace/partners/microsoft-ads/linux-data-science-vm/) (Data Science-VM für Linux (CentOS)).
+Weitere Informationen zur Windows-Edition der Data Science-VM finden Sie im Azure Marketplace unter [Data Science Virtual Machine - Windows 2012](https://azuremarketplace.microsoft.com/marketplace/apps/microsoft-dsvm.dsvm-windows) (Data Science-VM – Windows 2012). Die Linux-Edition der Data Science-VM finden Sie unter [Data Science Virtual Machine for Linux (CentOS)](https://azure.microsoft.com/marketplace/partners/microsoft-ads/linux-data-science-vm/) (Data Science-VM für Linux (CentOS)).
 
 Informationen zur effizienten Ausführung einiger gängiger Data Science-Aufgaben auf der Data Science-VM finden Sie unter [Zehn Dinge, die Sie mit der Data Science Virtual Machine machen können](../data-science-virtual-machine/vm-do-ten-things.md).
 

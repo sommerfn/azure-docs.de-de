@@ -4,18 +4,17 @@ description: In diesem Tutorial erfahren Sie, wie Sie einer ASP.NET- oder ASP.NE
 services: key-vault
 author: ghogen
 manager: jillfra
-ms.prod: visual-studio
-ms.technology: vs-azure
+ms.service: key-vault
 ms.custom: vs-azure
 ms.topic: conceptual
 ms.date: 03/21/2019
 ms.author: ghogen
-ms.openlocfilehash: 154eaa577ea66056c301db9516b425931b81d24d
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: f84662ce17d604f1a60b6700d259d322415ae91e
+ms.sourcegitcommit: 2e4b99023ecaf2ea3d6d3604da068d04682a8c2d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64730436"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67672207"
 ---
 # <a name="add-key-vault-to-your-web-application-by-using-visual-studio-connected-services"></a>Hinzufügen von Key Vault zu Ihrer Webanwendung mithilfe der Option „Verbundene Dienste“ in Visual Studio
 
@@ -151,7 +150,7 @@ In diesem Abschnitt werden die genauen Änderungen identifiziert, die an einem A
 
 Betrifft die .NET-Verweise der Projektdatei und NuGet-Verweise.
 
-| Type | Verweis |
+| type | Verweis |
 | --- | --- |
 | NuGet | Microsoft.AspNetCore.AzureKeyVault.HostingStartup |
 
@@ -187,7 +186,7 @@ In diesem Abschnitt werden die genauen Änderungen identifiziert, die an einem A
 
 Betrifft die Projektdatei (.NET-Verweise) und `packages.config` (NuGet-Verweise).
 
-| Type | Verweis |
+| type | Verweis |
 | --- | --- |
 | .NET; NuGet | Microsoft.Azure.KeyVault |
 | .NET; NuGet | Microsoft.Azure.KeyVault.WebKey |

@@ -9,12 +9,12 @@ manager: kfile
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 06/29/2017
-ms.openlocfilehash: abb2a89f41340e8e2e26fa36cc20b790341618d0
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: f24ad348c681609392f83af894bf774dbee226bc
+ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60763227"
+ms.lasthandoff: 07/07/2019
+ms.locfileid: "67620841"
 ---
 # <a name="real-time-twitter-sentiment-analysis-in-azure-stream-analytics"></a>Twitter-Standpunktanalyse in Echtzeit in Azure Stream Analytics
 
@@ -232,9 +232,9 @@ Nun, da wir einen Datenstrom von Tweet-Ereignissen von Twitter in Echtzeit haben
 
 ## <a name="specify-the-job-query"></a>Festlegen der Auftragsabfrage
 
-Stream Analytics unterstützt ein einfaches, deklaratives Abfragemodell, das Transformationen beschreibt. Weitere Informationen zur Sprache finden Sie in der [Azure Stream Analytics-Abfragesprachreferenz](https://msdn.microsoft.com/library/azure/dn834998.aspx).  Dieses Tutorial hilft Ihnen beim Erstellen und Testen mehrerer Abfragen über Twitter-Daten.
+Stream Analytics unterstützt ein einfaches, deklaratives Abfragemodell, das Transformationen beschreibt. Weitere Informationen zur Sprache finden Sie in der [Azure Stream Analytics-Abfragesprachreferenz](https://docs.microsoft.com/stream-analytics-query/stream-analytics-query-language-reference).  Dieses Tutorial hilft Ihnen beim Erstellen und Testen mehrerer Abfragen über Twitter-Daten.
 
-Um die Anzahl der Erwähnungen verschiedener Themen zu vergleichen, können Sie mithilfe eines [rollierenden Fensters](https://msdn.microsoft.com/library/azure/dn835055.aspx) alle fünf Sekunden die Anzahl der Erwähnungen jedes Themas abrufen.
+Um die Anzahl der Erwähnungen verschiedener Themen zu vergleichen, können Sie mithilfe eines [rollierenden Fensters](https://docs.microsoft.com/stream-analytics-query/tumbling-window-azure-stream-analytics) alle fünf Sekunden die Anzahl der Erwähnungen jedes Themas abrufen.
 
 1. Schließen Sie das Blatt **Eingaben**, sofern Sie dies noch nicht getan haben.
 
@@ -266,7 +266,7 @@ Um die Anzahl der Erwähnungen verschiedener Themen zu vergleichen, können Sie 
 
     Wenn Sie nicht `TwitterStream` als Alias für die Eingabe verwendet haben, ersetzen Sie `TwitterStream` in der Abfrage durch Ihren Alias.  
 
-    Diese Abfrage gibt mit dem Schlüsselwort **TIMESTAMP BY** ein Zeitstempelfeld für die Nutzlast an, das für die zeitliche Berechnung verwendet wird. Wird dieses Feld nicht angegeben, verwendet der Vorgang die Zeit, zu der jedes Ereignis beim Event Hub eingeht. Weitere Informationen erhalten Sie im Abschnitt „Arrival Time vs Application Time“ („Eingangszeit im Vgl. zu Anwendungszeit“) in der [Stream Analytics Query Reference (Stream Analytics-Abfragereferenz)](https://msdn.microsoft.com/library/azure/dn834998.aspx).
+    Diese Abfrage gibt mit dem Schlüsselwort **TIMESTAMP BY** ein Zeitstempelfeld für die Nutzlast an, das für die zeitliche Berechnung verwendet wird. Wird dieses Feld nicht angegeben, verwendet der Vorgang die Zeit, zu der jedes Ereignis beim Event Hub eingeht. Weitere Informationen erhalten Sie im Abschnitt „Arrival Time vs Application Time“ („Eingangszeit im Vgl. zu Anwendungszeit“) in der [Stream Analytics Query Reference (Stream Analytics-Abfragereferenz)](https://docs.microsoft.com/stream-analytics-query/stream-analytics-query-language-reference).
 
     Diese Abfrage greift zudem mithilfe der Eigenschaft **System.Timestamp** jeweils auf einen Zeitstempel für das Ende der einzelnen Fenster zu.
 
@@ -348,7 +348,7 @@ Sie können ein Tool wie den [Azure Storage-Explorer](https://storageexplorer.co
 
 ## <a name="create-another-query-to-identify-trending-topics"></a>Erstellen einer weiteren Abfrage zum Identifizieren von Trendthemen
 
-Eine andere Abfrage, die Ihnen vermittelt, worum es bei Twitter-Stimmungen geht, basiert auf einem [gleitenden Fenster](https://msdn.microsoft.com/library/azure/dn835051.aspx). Zum Identifizieren von Trendthemen suchen Sie nach Themen, die einen Schwellenwert für Erwähnungen in einem angegebenen Zeitraum überschreiten.
+Eine andere Abfrage, die Ihnen vermittelt, worum es bei Twitter-Stimmungen geht, basiert auf einem [gleitenden Fenster](https://docs.microsoft.com/stream-analytics-query/sliding-window-azure-stream-analytics). Zum Identifizieren von Trendthemen suchen Sie nach Themen, die einen Schwellenwert für Erwähnungen in einem angegebenen Zeitraum überschreiten.
 
 Für die Zwecke dieses Tutorials suchen Sie nach Themen, die in den letzten fünf Sekunden mehr als 20-mal erwähnt werden.
 
@@ -379,5 +379,5 @@ Um Hilfe zu erhalten, nutzen Sie unser [Azure Stream Analytics-Forum](https://so
 * [Einführung in Azure Stream Analytics](stream-analytics-introduction.md)
 * [Erste Schritte mit Azure Stream Analytics](stream-analytics-real-time-fraud-detection.md)
 * [Skalieren von Azure Stream Analytics-Aufträgen](stream-analytics-scale-jobs.md)
-* [Stream Analytics Query Language Reference (in englischer Sprache)](https://msdn.microsoft.com/library/azure/dn834998.aspx)
+* [Stream Analytics Query Language Reference (in englischer Sprache)](https://docs.microsoft.com/stream-analytics-query/stream-analytics-query-language-reference)
 * [Referenz zur Azure Stream Analytics-Verwaltungs-REST-API](https://msdn.microsoft.com/library/azure/dn835031.aspx)

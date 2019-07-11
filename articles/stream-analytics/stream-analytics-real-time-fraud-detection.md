@@ -9,12 +9,12 @@ ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 12/07/2018
 ms.custom: seodec18
-ms.openlocfilehash: cfb7dc8ef41c8829caebed6fff2d881093dbbe4d
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: c45c42077d6f07ef847d2b95d4c24310f51abca4
+ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67076240"
+ms.lasthandoff: 07/07/2019
+ms.locfileid: "67621837"
 ---
 # <a name="get-started-using-azure-stream-analytics-real-time-fraud-detection"></a>Erste Schritte mit Azure Stream Analytics: Betrugsermittlung in Echtzeit
 
@@ -207,7 +207,7 @@ Eine einfache Abfrage kann alle eingehenden Daten möglicherweise nur lesen. All
 
 Die Abfragen, die Sie hier erstellen, zeigen nur die transformierten Daten auf dem Bildschirm an. In einem Abschnitt weiter unten konfigurieren Sie eine Ausgabesenke und eine Abfrage, die die transformierten Daten in diese Senke schreibt.
 
-Weitere Informationen zur Sprache finden Sie in der [Azure Stream Analytics-Abfragesprachreferenz](https://msdn.microsoft.com/library/dn834998.aspx).
+Weitere Informationen zur Sprache finden Sie in der [Azure Stream Analytics-Abfragesprachreferenz](https://docs.microsoft.com/stream-analytics-query/stream-analytics-query-language-reference).
 
 ### <a name="get-sample-data-for-testing-queries"></a>Abrufen von Beispieldaten zum Testen von Abfragen
 
@@ -289,11 +289,11 @@ Für diese Transformation sollte eine Sequenz von temporalen Fenstern erzeugt we
         GROUP BY TUMBLINGWINDOW(s, 5), SwitchNum
         ```
 
-    Diese Abfrage verwendet das Schlüsselwort `Timestamp By` in der Klausel `FROM`, um anzugeben, welches Zeitstempelfeld in der Datenstromeingabe für die Definition des rollierenden Fensters verwendet werden soll. In diesem Fall werden die Daten im Fenster in Segmente unterteilt, und zwar anhand des Felds `CallRecTime` in jedem Datensatz. (Wird kein Feld angegeben, verwendet der Windowingvorgang die Zeit, zu der jedes Ereignis beim Event Hub eingeht.) Weitere Informationen finden Sie unter „Ankunftszeit vs. Anwendungszeit“ in der [Referenz zur Stream Analytics-Abfragesprache](https://msdn.microsoft.com/library/azure/dn834998.aspx). 
+    Diese Abfrage verwendet das Schlüsselwort `Timestamp By` in der Klausel `FROM`, um anzugeben, welches Zeitstempelfeld in der Datenstromeingabe für die Definition des rollierenden Fensters verwendet werden soll. In diesem Fall werden die Daten im Fenster in Segmente unterteilt, und zwar anhand des Felds `CallRecTime` in jedem Datensatz. (Wird kein Feld angegeben, verwendet der Windowingvorgang die Zeit, zu der jedes Ereignis beim Event Hub eingeht.) Weitere Informationen finden Sie unter „Ankunftszeit vs. Anwendungszeit“ in der [Referenz zur Stream Analytics-Abfragesprache](https://docs.microsoft.com/stream-analytics-query/stream-analytics-query-language-reference). 
 
     Die Projektion enthält `System.Timestamp`, die einen Zeitstempel für das Ende jedes Fensters zurückgibt. 
 
-    Um anzugeben, dass Sie ein rollierendes Fenster verwenden möchten, verwenden Sie die Funktion [TUMBLINGWINDOW](https://msdn.microsoft.com/library/dn835055.aspx) in der Klausel `GROUP BY`. In der Funktion geben Sie eine Zeiteinheit (von einer Mikrosekunde bis zu einem Tag) und eine Fenstergröße (Anzahl der Einheiten) an. In diesem Beispiel besteht das rollierende Fenster aus 5-Sekunden-Intervallen, sodass Sie alle 5 Sekunden der Anrufe eine Zählung pro Land/Region erhalten.
+    Um anzugeben, dass Sie ein rollierendes Fenster verwenden möchten, verwenden Sie die Funktion [TUMBLINGWINDOW](https://docs.microsoft.com/stream-analytics-query/tumbling-window-azure-stream-analytics) in der Klausel `GROUP BY`. In der Funktion geben Sie eine Zeiteinheit (von einer Mikrosekunde bis zu einem Tag) und eine Fenstergröße (Anzahl der Einheiten) an. In diesem Beispiel besteht das rollierende Fenster aus 5-Sekunden-Intervallen, sodass Sie alle 5 Sekunden der Anrufe eine Zählung pro Land/Region erhalten.
 
 2. Klicken Sie erneut auf **Test**. Beachten Sie, dass die Zeitstempel in den Ergebnissen unter **WindowEnd** in 5-Sekunden-Schritten angegeben werden.
 
@@ -418,5 +418,5 @@ Weitere Informationen zu Stream Analytics allgemein finden Sie auch in diesen Ar
 
 * [Einführung in Azure Stream Analytics](stream-analytics-introduction.md)
 * [Skalieren von Azure Stream Analytics-Aufträgen](stream-analytics-scale-jobs.md)
-* [Stream Analytics Query Language Reference (in englischer Sprache)](https://msdn.microsoft.com/library/azure/dn834998.aspx)
+* [Stream Analytics Query Language Reference (in englischer Sprache)](https://docs.microsoft.com/stream-analytics-query/stream-analytics-query-language-reference)
 * [Referenz zur Azure Stream Analytics-Verwaltungs-REST-API](https://msdn.microsoft.com/library/azure/dn835031.aspx)

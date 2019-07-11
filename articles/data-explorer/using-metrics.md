@@ -7,12 +7,12 @@ ms.reviewer: gabil
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 04/01/2019
-ms.openlocfilehash: a9c9f4d827d21c374bebba9d39e33b0bcad8a83e
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: cb59fa0fe9094943dfc942d1d6e664891996c9e3
+ms.sourcegitcommit: 1e347ed89854dca2a6180106228bfafadc07c6e5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60826797"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67569281"
 ---
 # <a name="monitor-azure-data-explorer-performance-health-and-usage-with-metrics"></a>Überwachen der Azure Data Explorer-Leistung, -Integrität und -Nutzung mit Metriken
 
@@ -42,7 +42,7 @@ Im Bereich „Metriken“:
 
     **Metrik** | **Einheit** | **Aggregation** | **Beschreibung der Metrik**
     |---|---|---|---|
-    | Cacheauslastung | Percent | Avg, Max, Min | Prozentsatz der zugewiesenen Cacheressourcen, die derzeit vom Cluster genutzt werden. Der Cache bezieht sich auf die Größe der SSD, die für die Benutzeraktivität gemäß der definierten Cacherichtlinie zugeordnet wird. Eine durchschnittliche Cacheauslastung von 80 % oder weniger ist für einen Cluster ein tragbarer Zustand. Wenn die durchschnittliche Cacheauslastung über 80 % liegt, sollte für den Cluster das [zentrale Hochskalieren](manage-cluster-scale-up.md) auf einen Tarif mit Datenspeicheroptimierung oder das [horizontale Hochskalieren](manage-cluster-scale-out.md) auf weitere Instanzen durchgeführt werden. Alternativ hierzu können Sie die Cacherichtlinie anpassen (weniger Tage im Cache). Falls die Cacheauslastung über 100 % liegt, übersteigt die Größe der zwischenzuspeichernden Daten gemäß Cacherichtlinie die Gesamtgröße des Caches im Cluster. |
+    | Cacheauslastung | Percent | Avg, Max, Min | Prozentsatz der zugewiesenen Cacheressourcen, die derzeit vom Cluster genutzt werden. Der Cache bezieht sich auf die Größe der SSD, die für die Benutzeraktivität gemäß der definierten Cacherichtlinie zugeordnet wird. Eine durchschnittliche Cacheauslastung von 80 % oder weniger ist für einen Cluster ein tragbarer Zustand. Wenn die durchschnittliche Cacheauslastung über 80 % liegt, sollte für den Cluster das [zentrale Hochskalieren](manage-cluster-vertical-scaling.md) auf einen Tarif mit Datenspeicheroptimierung oder das [horizontale Hochskalieren](manage-cluster-horizontal-scaling.md) auf weitere Instanzen durchgeführt werden. Alternativ hierzu können Sie die Cacherichtlinie anpassen (weniger Tage im Cache). Falls die Cacheauslastung über 100 % liegt, übersteigt die Größe der zwischenzuspeichernden Daten gemäß Cacherichtlinie die Gesamtgröße des Caches im Cluster. |
     | CPU | Percent | Avg, Max, Min | Prozentsatz der zugewiesenen Computeressourcen, die derzeit von Computern im Cluster genutzt werden. Eine durchschnittliche CPU-Auslastung von 80 % ist für einen Cluster ein tragbarer Zustand. Der Maximalwert der CPU beträgt 100 %. Dies bedeutet, dass keine weiteren Computeressourcen zum Verarbeiten von Daten vorhanden sind. Wenn die Leistung eines Clusters nicht gut ist, sollten Sie den Maximalwert der CPU überprüfen, um zu ermitteln, ob bestimmte CPUs blockiert sind. |
     | Verarbeitete Ereignisse (für Event Hubs) | Count | Max, Min, Sum | Gesamtzahl der Ereignisse, die von Event Hubs gelesen und vom Cluster verarbeitet werden. Die Ereignisse werden danach unterteilt, ob sie vom Clustermodul abgelehnt oder akzeptiert werden. |
     | Latenz bei der Erfassung | Sekunden | Avg, Max, Min | Latenz der erfassten Daten ab dem Empfangszeitpunkt der Daten im Cluster bis zu dem Zeitpunkt, zu dem die Daten bereit zum Abfragen sind. Der Zeitraum der Erfassungslatenz richtet sich nach dem Erfassungsszenario. |

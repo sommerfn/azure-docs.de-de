@@ -14,12 +14,12 @@ ms.workload: iaas-sql-server
 ms.date: 02/12/2019
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: 5efbe874bbf3c1c4081eb7a2c76c1be5a3358ec8
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: b5015f00d3c6dfe0e1e5c2466af777cc0f1bc509
+ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65518977"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67607148"
 ---
 # <a name="use-azure-sql-vm-cli-to-configure-always-on-availability-group-for-sql-server-on-an-azure-vm"></a>Verwenden der Azure SQL VM-Befehlszeilenschnittstelle zum Konfigurieren von Always On-Verfügbarkeitsgruppen für SQL Server in einer Azure VM
 In diesem Artikel wird die Verwendung der [Azure SQL VM CLI](/cli/azure/sql/vm?view=azure-cli-latest/) zum Bereitstellen eines Windows-Failoverclusters (WSFC), zum Hinzufügen von SQL Server-VMs zum Cluster sowie zum Erstellen des internen Load Balancers und Listeners für eine Always On-Verfügbarkeitsgruppe beschrieben.  Die eigentliche Bereitstellung der Always On-Verfügbarkeitsgruppe erfolgt trotzdem manuell mithilfe von SQL Server Management Studio (SSMS). 
@@ -28,7 +28,7 @@ In diesem Artikel wird die Verwendung der [Azure SQL VM CLI](/cli/azure/sql/vm?v
 Wenn Sie die Einrichtung einer Always On-Verfügbarkeitsgruppe mithilfe der Azure SQL VM CLI automatisieren möchten, muss bereits Folgendes vorhanden sein: 
 - Ein [Azure-Abonnement](https://azure.microsoft.com/free/).
 - Eine Ressourcengruppe mit einem Domänencontroller. 
-- Mindestens ein in eine Domäne eingebundener [virtueller Computer in Azure mit der Enterprise Edition von SQL Server 2016 (oder höher)](https://docs.microsoft.com/azure/virtual-machines/windows/sql/virtual-machines-windows-portal-sql-server-provision), der sich in der *gleichen Verfügbarkeitsgruppe oder anderen Verfügbarkeitszonen* befindet, die [beim SQL-VM-Ressourcenanbieter registriert wurden](virtual-machines-windows-sql-ahb.md#register-sql-server-vm-with-sql-resource-provider).  
+- Mindestens ein in eine Domäne eingebundener [virtueller Computer in Azure mit der Enterprise Edition von SQL Server 2016 (oder höher)](https://docs.microsoft.com/azure/virtual-machines/windows/sql/virtual-machines-windows-portal-sql-server-provision), der sich in der *gleichen Verfügbarkeitsgruppe oder anderen Verfügbarkeitszonen* befindet, die [beim SQL-VM-Ressourcenanbieter registriert wurden](virtual-machines-windows-sql-register-with-resource-provider.md).  
 - [Azure-Befehlszeilenschnittstelle](/cli/azure/install-azure-cli). 
 - Zwei verfügbare (von keiner Entität verwendete ) IP-Adressen, eine für den internen Load Balancer und eine für den Verfügbarkeitsgruppenlistener mit dem gleichen Subnetz wie die Verfügbarkeitsgruppe. Wenn ein vorhandener Load Balancer verwendet wird, wird nur eine verfügbare IP-Adresse für den Verfügbarkeitsgruppenlistener benötigt. 
 

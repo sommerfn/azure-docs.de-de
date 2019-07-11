@@ -11,12 +11,12 @@ ms.service: application-insights
 ms.custom: mvc
 ms.topic: quickstart
 manager: carmonm
-ms.openlocfilehash: dd1644ad9b7fcee951b31997ab549f117530f635
-ms.sourcegitcommit: f9448a4d87226362a02b14d88290ad6b1aea9d82
+ms.openlocfilehash: fc47b00bb266bb57ecffbb522667ca67ac7c8c97
+ms.sourcegitcommit: cf438e4b4e351b64fd0320bf17cc02489e61406a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/07/2019
-ms.locfileid: "66808378"
+ms.lasthandoff: 07/08/2019
+ms.locfileid: "67656747"
 ---
 # <a name="start-monitoring-your-java-web-application"></a>Starten der Überwachung Ihrer Java-Webanwendung
 
@@ -57,9 +57,8 @@ Application Insights kann Telemetriedaten von jeder mit dem Internet verbundenen
     | Einstellungen        | Wert           | BESCHREIBUNG  |
    | ------------- |:-------------|:-----|
    | **Name**      | Global eindeutiger Wert | Der Name, der die zu überwachende App identifiziert. |
-   | **Anwendungstyp** | Java-Webanwendung | Der Typ der zu überwachenden App. |
    | **Ressourcengruppe**     | myResourceGroup      | Der Name der neuen Ressourcengruppe, die Application Insights-Daten hosten soll. |
-   | **Location** | USA (Ost) | Wählen Sie einen Standort in Ihrer Nähe oder in der Nähe des Standorts, in dem Ihre App gehostet wird. |
+   | **Location** | East US | Wählen Sie einen Standort in Ihrer Nähe oder in der Nähe des Standorts, in dem Ihre App gehostet wird. |
 
 2. Klicken Sie auf **Create**.
 

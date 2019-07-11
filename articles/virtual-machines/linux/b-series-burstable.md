@@ -4,7 +4,7 @@ description: In diesem Artikel werden die Größen von Burstable Azure-VMs der B
 services: virtual-machines-linux
 documentationcenter: ''
 author: ayshakeen
-manager: jeconnoc
+manager: gwallace
 editor: ''
 tags: azure-resource-manager
 ms.assetid: ''
@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 06/25/2019
 ms.author: ayshak
-ms.openlocfilehash: 7f9bed859191c77069b2610e828a3d523cff5c43
-ms.sourcegitcommit: c63e5031aed4992d5adf45639addcef07c166224
+ms.openlocfilehash: 2445ad4804755fb2bdc013f7ea819ed51a2f6480
+ms.sourcegitcommit: 2e4b99023ecaf2ea3d6d3604da068d04682a8c2d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67466760"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67671817"
 ---
 # <a name="b-series-burstable-virtual-machine-sizes"></a>Größen von virtuellen Burstable-Computern der B-Serie
 

@@ -7,7 +7,8 @@ author: rkarlin
 manager: rkarlin
 editor: ''
 ms.assetid: 10cce91a-421b-4959-acdf-7177d261f6f2
-ms.service: sentinel
+ms.service: azure-sentinel
+ms.subservice: azure-sentinel
 ms.devlang: na
 ms.topic: overview
 ms.custom: mvc
@@ -15,12 +16,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 2/28/2019
 ms.author: rkarlin
-ms.openlocfilehash: 7d64f02c7bebb6d4326281ba87d118eab075eba9
-ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
+ms.openlocfilehash: 2c730c240ed5ff68a1d48ef17d15de1aaa73ab1e
+ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/07/2019
-ms.locfileid: "65228605"
+ms.lasthandoff: 07/07/2019
+ms.locfileid: "67619904"
 ---
 # <a name="what-is-azure-sentinel-preview"></a>Was ist Azure Sentinel (Vorschauversion)?
 
@@ -28,7 +29,7 @@ ms.locfileid: "65228605"
 > Azure Sentinel ist zurzeit als öffentliche Vorschauversion verfügbar.
 > Diese Vorschauversion wird ohne Vereinbarung zum Servicelevel bereitgestellt und ist nicht für Produktionsworkloads vorgesehen. Manche Features werden möglicherweise nicht unterstützt oder sind nur eingeschränkt verwendbar. Weitere Informationen finden Sie unter [Zusätzliche Nutzungsbestimmungen für Microsoft Azure-Vorschauen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
-Microsoft Azure Sentinel ist eine skalierbare, cloudnative Lösung für **Security Information & Event Management (SIEM)** und die **Sicherheitsorchestrierung mit automatisierter Reaktion (Security Orchestration Automated Response, SOAR)**. Azure Sentinel bietet intelligente Sicherheits- und Bedrohungsanalysen für das ganze Unternehmen und stellt eine zentrale Lösung für die Warnungs- und Bedrohungserkennung, die proaktive Suche sowie die Reaktion auf Bedrohungen bereit. 
+Microsoft Azure Sentinel ist eine skalierbare, cloudnative Lösung für **Security Information & Event Management (SIEM)** und die **Sicherheitsorchestrierung mit automatisierter Reaktion (Security Orchestration Automated Response, SOAR)** . Azure Sentinel bietet intelligente Sicherheits- und Bedrohungsanalysen für das ganze Unternehmen und stellt eine zentrale Lösung für die Warnungs- und Bedrohungserkennung, die proaktive Suche sowie die Reaktion auf Bedrohungen bereit. 
 
 Mit Azure Sentinel können Sie Ihr gesamtes Unternehmen sozusagen aus der Vogelperspektive beobachten und die immer komplexeren Angriffe mit Unmengen von Warnungen und lang andauernden Lösungsversuchen leichter in den Griff bekommen.
 
@@ -36,7 +37,7 @@ Mit Azure Sentinel können Sie Ihr gesamtes Unternehmen sozusagen aus der Vogelp
 
 - **Ermitteln Sie bisher unentdeckte Bedrohungen**, und minimieren Sie falsch positive Ergebnisse mithilfe der Analysefunktionen und unvergleichlichen Informationen zu Bedrohungen von Microsoft. 
 
-- **Untersuchen Sie Bedrohungen mit künstlicher Intelligenz (KI)**, und verfolgen Sie verdächtige Aktivitäten in großem Stil. Dabei profitieren Sie von der jahrelangen Erfahrung von Microsoft in Sachen Cybersicherheit. 
+- **Untersuchen Sie Bedrohungen mit künstlicher Intelligenz (KI)** , und verfolgen Sie verdächtige Aktivitäten in großem Stil. Dabei profitieren Sie von der jahrelangen Erfahrung von Microsoft in Sachen Cybersicherheit. 
 
 - **Reagieren** Sie dank der integrierten Orchestrierung und Automatisierung häufiger Aufgaben schnell auf Incidents.
 

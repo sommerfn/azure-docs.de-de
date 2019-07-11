@@ -4,7 +4,7 @@ description: Erfahren Sie, wie Sie einen virtuellen Linux-Computer in Azure erst
 services: virtual-machines-linux
 documentationcenter: virtual-machines
 author: cynthn
-manager: jeconnoc
+manager: gwallace
 editor: ''
 tags: azure-resource-manager
 ms.assetid: ''
@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 06/05/2018
 ms.author: cynthn
-ms.openlocfilehash: 2b078cd769a9b4e5e66fe132fd4ef73ec4621efc
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: a7f624bc85d35048a8f9afa0f527ae592a24fbf1
+ms.sourcegitcommit: 2e4b99023ecaf2ea3d6d3604da068d04682a8c2d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60391360"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67667947"
 ---
 # <a name="create-a-linux-virtual-machine-that-uses-ssh-authentication-with-the-rest-api"></a>Erstellen eines virtuellen Linux-Computers zur Verwendung der SSH-Authentifizierung mit der REST-API
 
@@ -137,7 +137,7 @@ Sie können den von Ihnen bevorzugten Client zum Senden dieser HTTP-Anforderung 
 
 Es gibt zwei erfolgreiche Antworten für den Vorgang, um einen virtuellen Computer zu erstellen oder zu aktualisieren:
 
-| NAME        | Type                                                                              | BESCHREIBUNG |
+| NAME        | type                                                                              | BESCHREIBUNG |
 |-------------|-----------------------------------------------------------------------------------|-------------|
 | 200 – OK      | [VirtualMachine](/rest/api/compute/virtualmachines/createorupdate#virtualmachine) | OK          |
 | 201 – Erstellt | [VirtualMachine](/rest/api/compute/virtualmachines/createorupdate#virtualmachine) | Erstellt     |

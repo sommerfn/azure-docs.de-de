@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/2/2018
 ms.author: rkarlin
-ms.openlocfilehash: 73043680ea7b8b63a329d0a457449b635b7b80f2
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 9bf2704fbbaa2c7a469dcefa3dc3f3cd7e4d5504
+ms.sourcegitcommit: c0419208061b2b5579f6e16f78d9d45513bb7bbc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60703590"
+ms.lasthandoff: 07/08/2019
+ms.locfileid: "67626264"
 ---
 # <a name="automate-onboarding-of-azure-security-center-using-powershell"></a>Automatisieren der Integration von Azure Security Center mithilfe von PowerShell
 
@@ -101,7 +101,7 @@ Diese PowerShell-Cmdlets können nun mit Automatisierungsskripts verwendet werde
 ## <a name="see-also"></a>Weitere Informationen
 Weitere Informationen zum Automatisieren der Integration in Security Center mithilfe von PowerShell finden Sie im folgenden Artikel:
 
-* [Az.Security](https://github.com/Azure/azure-powershell/blob/master/src/ResourceManager/Security/Commands.Security/help/Az.Security.md).
+* [Az.Security](https://docs.microsoft.com/powershell/module/az.security).
 
 Weitere Informationen zu Security Center finden Sie in den folgenden Artikeln:
 

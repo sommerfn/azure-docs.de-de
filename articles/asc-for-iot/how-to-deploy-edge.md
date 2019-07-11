@@ -2,24 +2,25 @@
 title: Bereitstellen des Azure Security Center für IoT Edge-Moduls | Microsoft-Dokumentation
 description: Erfahren Sie, wie Sie einen Azure Security Center für IoT-Sicherheits-Agent auf einem IoT Edge-Gerät bereitstellen.
 services: asc-for-iot
-ms.service: ascforiot
+ms.service: asc-for-iot
 documentationcenter: na
 author: mlottner
 manager: rkarlin
 editor: ''
 ms.assetid: 32a9564d-16fd-4b0d-9618-7d78d614ce76
+ms.subservice: asc-for-iot
 ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/1/2019
 ms.author: mlottner
-ms.openlocfilehash: 85e342f08e5402e50e5b0dfd1fe2df90337f29ca
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 49ed4c6515f8fb63c3331b05e1bb29b13985e6b3
+ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66254293"
+ms.lasthandoff: 07/07/2019
+ms.locfileid: "67618319"
 ---
 # <a name="deploy-a-security-module-on-your-iot-edge-device"></a>Bereitstellen eines Sicherheitsmoduls auf Ihrem IoT Edge-Gerät
 

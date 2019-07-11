@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 05/16/2019
 ms.author: cynthn;azcspmt;jonbeck
 ms.custom: include file
-ms.openlocfilehash: 464c7bcb510a2f6ab80fb11d722c241ec51a1b16
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: bb945695e0525876e044117e26c239e21d66473f
+ms.sourcegitcommit: 2e4b99023ecaf2ea3d6d3604da068d04682a8c2d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66391434"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67673342"
 ---
 Dieser Abschnitt enthält Informationen zu den vorherigen Generationen von VM-Größen. Diese Größen können weiterhin verwendet werden, es sind jedoch neuere Generationen verfügbar. 
 
@@ -29,7 +29,7 @@ Storage Premium  Nicht unterstützt
 
 Storage Premium-Zwischenspeicherung:  Nicht unterstützt
 
-| Größe         | vCPU | Arbeitsspeicher: GiB | Temporärer Speicher (SSD): GiB | Maximaler Durchsatz (temporärer Speicher): IOPS/MBit/s Lesen/MBps Schreiben | Max. Datenträger/Durchsatz: IOPS | Maximale Anzahl NICs/Erwartete Netzwerkbandbreite (MBps) |
+| Size         | vCPU | Arbeitsspeicher: GiB | Temporärer Speicher (SSD): GiB | Maximaler Durchsatz (temporärer Speicher): IOPS/MBit/s Lesen/MBps Schreiben | Max. Datenträger/Durchsatz: IOPS | Maximale Anzahl NICs/Erwartete Netzwerkbandbreite (MBps) |
 |--------------|-----------|-------------|----------------|----------------------------------------------------------|-----------------------------------|------------------------------|
 | Standard_F1  | 1         | 2           | 16             | 3000/46/23                                           | 4/4 x 500                         | 2/750                 |
 | Standard_F2  | 2         | 4           | 32             | 6000/93/46                                           | 8/8 x 500                         | 2/1500                     |
@@ -47,7 +47,7 @@ Storage Premium  Unterstützt
 
 Storage Premium-Zwischenspeicherung:  Unterstützt
 
-| Größe | vCPU | Arbeitsspeicher: GiB | Temporärer Speicher (SSD): GiB | Max. Anzahl Datenträger | Maximaler Durchsatz (Cache und temporärer Speicher): IOPS/MBps (Cachegröße in GiB) | Maximaler Durchsatz des Datenträgers ohne Cache: IOPS/MBps | Maximale Anzahl NICs/Erwartete Netzwerkbandbreite (MBps) |
+| Size | vCPU | Arbeitsspeicher: GiB | Temporärer Speicher (SSD): GiB | Max. Anzahl Datenträger | Maximaler Durchsatz (Cache und temporärer Speicher): IOPS/MBps (Cachegröße in GiB) | Maximaler Durchsatz des Datenträgers ohne Cache: IOPS/MBps | Maximale Anzahl NICs/Erwartete Netzwerkbandbreite (MBps) |
 | --- | --- | --- | --- | --- | --- | --- | --- |
 | Standard_F1s |1 |2 |4 |4 |4000/32 (12) |3200/48 |2/750 |
 | Standard_F2s |2 |4 |8 |8 |8000/64 (24) |6400/96 |2/1500 |
@@ -61,7 +61,7 @@ MB/s = 10^6 Bytes pro Sekunde und GB = 1.024^3 Bytes.
 
 ## <a name="ls-series"></a>Ls-Serie
 
-Die Ls-Reihe bietet bis zu 32 vCPUs aus der [Intel® Xeon® E5 v3-Prozessorfamilie](http://www.intel.com/content/www/us/en/processors/xeon/xeon-e5-solutions.html). Die Ls-Serie erreicht die gleiche CPU-Leistung wie die G/GS-Serie und bietet 8 GiB Arbeitsspeicher pro vCPU.
+Die Ls-Reihe bietet bis zu 32 vCPUs aus der [Intel® Xeon® E5 v3-Prozessorfamilie](https://www.intel.com/content/www/us/en/processors/xeon/xeon-e5-solutions.html). Die Ls-Serie erreicht die gleiche CPU-Leistung wie die G/GS-Serie und bietet 8 GiB Arbeitsspeicher pro vCPU.
 
 Die Ls-Serie unterstützt nicht die Erstellung eines lokalen Caches, um die von dauerhaften Datenträgern erreichbaren IOPS zu erhöhen. Dank des hohen Durchsatzes und der IOPS des lokalen Datenträgers eignen sich VMs der Ls-Reihe ideal für NoSQL-Speicher wie Apache Cassandra und MongoDB, die Daten über mehrere virtuelle Computer replizieren, um Persistenz im Falle eines Ausfalls eines einzelnen virtuellen Computers zu erzielen.
 
@@ -71,7 +71,7 @@ Storage Premium  Unterstützt
 
 Storage Premium-Zwischenspeicherung:  Nicht unterstützt
  
-| Größe          | vCPU | Arbeitsspeicher (GiB) | Temporärer Speicher (GiB) | Max. Anzahl Datenträger | Maximaler Durchsatz temporärer Speicher (IOPS/MB/s) | Maximaler Datenträgerdurchsatz ohne Cache: (IOPS/MB/s) | Maximale Anzahl NICs/Erwartete Netzwerkbandbreite (MBps) | 
+| Size          | vCPU | Arbeitsspeicher (GiB) | Temporärer Speicher (GiB) | Max. Anzahl Datenträger | Maximaler Durchsatz temporärer Speicher (IOPS/MB/s) | Maximaler Datenträgerdurchsatz ohne Cache: (IOPS/MB/s) | Maximale Anzahl NICs/Erwartete Netzwerkbandbreite (MBps) | 
 |----------------|-----------|-------------|--------------------------|----------------|-------------------------------------------------------------|-------------------------------------------|------------------------------| 
 | Standard_L4s   | 4  | 32  | 678   | 16 | 20000/200 | 5000/125  | 2/4000  | 
 | Standard_L8s   | 8  | 64  | 1388 | 32 | 40000/400 | 10000/250 | 4/8000  | 
@@ -84,13 +84,13 @@ Der mit einem virtuellen Computer der Ls-Serie maximal mögliche Datenträgerdur
 
 ## <a name="nvv2-series-preview"></a>NVv2-Serie (Preview)
 
-**Neuere Größenempfehlung**: [NVv3-Serie (Vorschau)](https://docs.microsoft.com/azure/virtual-machines/linux/sizes-gpu#nvv2-series-preview)
+**Neuere Größenempfehlung**: [NVv3-Serie (Vorschau)](https://docs.microsoft.com/azure/virtual-machines/linux/sizes-gpu#nvv3-series-preview-1)
 
-Die virtuellen Computer der NVv2-Serie verfügen über GPUs vom Typ [NVIDIA Tesla M60](http://images.nvidia.com/content/tesla/pdf/188417-Tesla-M60-DS-A4-fnl-Web.pdf) sowie NVIDIA GRID-Technologie mit Intel Broadwell CPUs. Diese virtuellen Computer wurden für GPU-beschleunigte Grafikanwendungen und virtuelle Desktops entwickelt, um Kunden die Datenvisualisierung, Ergebnissimulation, CAD oder das Rendering und Streaming von Inhalten zu erleichtern. Außerdem können diese virtuellen Computer Workloads mit einfacher Genauigkeit wie Codierung und Rendering ausführen. Virtuelle Computer der NVv2-Serie unterstützen Storage Premium und verfügen im Vergleich zur NV-Vorgängerserie über doppelt so viel Systemspeicher (RAM).  
+Die virtuellen Computer der NVv2-Serie verfügen über GPUs vom Typ [NVIDIA Tesla M60](https://images.nvidia.com/content/tesla/pdf/188417-Tesla-M60-DS-A4-fnl-Web.pdf) sowie NVIDIA GRID-Technologie mit Intel Broadwell CPUs. Diese virtuellen Computer wurden für GPU-beschleunigte Grafikanwendungen und virtuelle Desktops entwickelt, um Kunden die Datenvisualisierung, Ergebnissimulation, CAD oder das Rendering und Streaming von Inhalten zu erleichtern. Außerdem können diese virtuellen Computer Workloads mit einfacher Genauigkeit wie Codierung und Rendering ausführen. Virtuelle Computer der NVv2-Serie unterstützen Storage Premium und verfügen im Vergleich zur NV-Vorgängerserie über doppelt so viel Systemspeicher (RAM).  
 
 Alle GPUs in NVv2-Instanzen beinhalten eine GRID-Lizenz. Diese Lizenz bietet Ihnen die erforderliche Flexibilität für die Verwendung einer NV-Instanz als virtuelle Arbeitsstation für einen einzelnen Benutzer. Außerdem besteht für ein Szenario mit einer virtuellen Anwendung die Möglichkeit, dass 25 Benutzer gleichzeitig eine Verbindung mit dem virtuellen Computer herstellen.
 
-| Größe | vCPU | Arbeitsspeicher: GiB | Temporärer Speicher (SSD): GiB | GPU | GPU-Arbeitsspeicher: GiB | Max. Anzahl Datenträger | Maximale Anzahl NICs | Virtuelle Arbeitsstationen | Virtuelle Anwendungen | 
+| Size | vCPU | Arbeitsspeicher: GiB | Temporärer Speicher (SSD): GiB | GPU | GPU-Arbeitsspeicher: GiB | Max. Anzahl Datenträger | Maximale Anzahl NICs | Virtuelle Arbeitsstationen | Virtuelle Anwendungen | 
 | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
 | Standard_NV6s_v2 |6 |112 |320 | 1 | 8 | 12 | 4 | 1 | 25 |
 | Standard_NV12s_v2 |12 |224 |640 | 2 | 16 | 24 | 8 | 2 | 50 |

@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 03/28/2019
 ms.author: tyfox
-ms.openlocfilehash: 459de569916af14b0efea0ff08b92e5c93ed2369
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 195999ba685828042fc958e8aed7e67bad694657
+ms.sourcegitcommit: 1572b615c8f863be4986c23ea2ff7642b02bc605
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64718923"
+ms.lasthandoff: 07/10/2019
+ms.locfileid: "67786562"
 ---
 # <a name="how-to-monitor-cluster-availability-with-ambari-and-azure-monitor-logs"></a>Überwachen der Clusterverfügbarkeit mit Ambari und Azure Monitor-Protokollen
 
@@ -123,7 +123,7 @@ Führen Sie beispielsweise die Beispielabfrage **Availability rate** aus, indem 
 > [!NOTE] 
 > Die Verfügbarkeitsrate wird über einen Zeitraum von 24 Stunden gemessen, sodass Ihr Cluster mindestens 24 Stunden ausgeführt werden muss, bevor Sie genaue Verfügbarkeitsraten sehen.
 
-Sie können diese Tabelle an ein freigegebenes Dashboard anheften, indem Sie rechts oben auf **Anheften** klicken. Wenn Sie über kein beschreibbares freigegebenes Dashboard verfügen, finden Sie Informationen zu dessen Erstellung hier: [Erstellen und Freigeben von Dashboards im Azure-Portal](https://docs.microsoft.com/azure/azure-portal/azure-portal-dashboards#publish-a-dashboard-and-manage-access-control).
+Sie können diese Tabelle an ein freigegebenes Dashboard anheften, indem Sie rechts oben auf **Anheften** klicken. Wenn Sie über kein beschreibbares freigegebenes Dashboard verfügen, finden Sie Informationen zu dessen Erstellung hier: [Erstellen und Freigeben von Dashboards im Azure-Portal](https://docs.microsoft.com/azure/azure-portal/azure-portal-dashboards#publish-and-share-a-dashboard).
 
 ### <a name="azure-monitor-alerts"></a>Azure Monitor-Warnungen
 

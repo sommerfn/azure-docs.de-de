@@ -18,12 +18,12 @@ ms.author: ryanwi
 ms.reviewer: jmprieur, andret
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5e2eca253bc5d1495d26506e0e6f8a83762e8bc5
-ms.sourcegitcommit: 13cba995d4538e099f7e670ddbe1d8b3a64a36fb
+ms.openlocfilehash: 83f5b08e5fee17c0ea5577d4d56d4d3208a818e3
+ms.sourcegitcommit: c0419208061b2b5579f6e16f78d9d45513bb7bbc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/22/2019
-ms.locfileid: "66001108"
+ms.lasthandoff: 07/08/2019
+ms.locfileid: "67625308"
 ---
 # <a name="quickstart-build-a-net-web-api-that-integrates-with-azure-ad-for-authentication-and-authorization"></a>Schnellstart: Erstellen einer.NET-Web-API, die zur Authentifizierung und Autorisierung in Azure AD integriert wird
 
@@ -79,7 +79,7 @@ Um eingehende Anforderungen und Token zu überprüfen, müssen Sie Ihre Anwendun
 
 2. Fügen Sie dem Projekt „TodoListService“ eine OWIN-Startklasse mit dem Namen `Startup.cs`hinzu.  Klicken Sie mit der rechten Maustaste auf das Projekt, wählen Sie **Hinzufügen > Neues Element** aus, und suchen Sie dann nach **OWIN**. Die OWIN-Middleware ruft beim Starten Ihrer Anwendung die Methode `Configuration(…)` auf.
 
-3. Ändern Sie die Klassendeklaration in `public partial class Startup`. Wir haben für Sie einen Teil dieser Klasse in einer anderen Datei bereits implementiert. Rufen Sie in der `Configuration(…)`-Methode `ConfgureAuth(…)` auf, um die Authentifizierung für Ihre Web-App einzurichten.
+3. Ändern Sie die Klassendeklaration in `public partial class Startup`. Wir haben für Sie einen Teil dieser Klasse in einer anderen Datei bereits implementiert. Rufen Sie in der `Configuration(…)`-Methode `ConfigureAuth(…)` auf, um die Authentifizierung für Ihre Web-App einzurichten.
 
     ```csharp
     public partial class Startup
