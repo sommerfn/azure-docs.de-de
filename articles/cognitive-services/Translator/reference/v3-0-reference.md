@@ -3,19 +3,19 @@ title: Referenz für die Textübersetzungs-API Version 3.0
 titlesuffix: Azure Cognitive Services
 description: Referenzdokumentation für die Textübersetzungs-API Version 3.0
 services: cognitive-services
-author: rajdeep-in
+author: swmachan
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: reference
 ms.date: 03/29/2018
-ms.author: v-pawal
-ms.openlocfilehash: 973d38413fa39fec1c50b5e9770b6114fa2c4c3d
-ms.sourcegitcommit: 3d4121badd265e99d1177a7c78edfa55ed7a9626
+ms.author: swmachan
+ms.openlocfilehash: 9b8f3894062c34e743a39f28b5f079a67a285c84
+ms.sourcegitcommit: a7ea412ca4411fc28431cbe7d2cc399900267585
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/30/2019
-ms.locfileid: "66387510"
+ms.lasthandoff: 06/25/2019
+ms.locfileid: "67357682"
 ---
 # <a name="translator-text-api-v30"></a>Textübersetzungs-API Version 3.0
 
@@ -31,20 +31,20 @@ Version 3 der Textübersetzungs-API umfasst eine moderne JSON-basierte Web-API. 
 
 ## <a name="base-urls"></a>Basis-URLs
 
-Der Microsoft Translator wird aus mehreren Rechenzentren unterstützt. Momentan befinden sie sich in 6 [Azure-Regionen](https://azure.microsoft.com/global-infrastructure/regions):
+Der Microsoft Translator wird aus mehreren Rechenzentren unterstützt. Momentan befinden sie sich in 6 [Azure-Geografien](https://azure.microsoft.com/global-infrastructure/regions):
 
 * **Amerika**: USA, Westen 2 und USA, Westen-Mitte 
 * **Asien-Pazifik:** Asien, Südosten und Südkorea, Süden
 * **Europa:** Europa, Norden und Europa, Westen
 
-Anforderungen an die Textübersetzungs-API von Microsoft werden in den meisten Fällen von dem Rechenzentrum bearbeitet, das dem Ursprungsort der Anforderung am nächsten liegt. Im Falle eines Rechenzentrumsausfalls kann die Anforderung außerhalb der Region weitergeleitet werden.
+Anforderungen an die Textübersetzungs-API von Microsoft werden in den meisten Fällen von dem Rechenzentrum bearbeitet, das dem Ursprungsort der Anforderung am nächsten liegt. Bei einem Rechenzentrumsausfall kann die Anforderung außerhalb der Azure-Geografie weitergeleitet werden.
 
-Um zu erzwingen, dass die Anforderung von einem bestimmten Rechenzentrum bearbeitet wird, ändern Sie den globalen Endpunkt in der API-Anforderung auf den gewünschten regionalen Endpunkt:
+Um zu erzwingen, dass die Anforderung von einer bestimmten Azure-Geografie bearbeitet wird, ändern Sie den globalen Endpunkt in der API-Anforderung auf den gewünschten regionalen Endpunkt:
 
-|BESCHREIBUNG|Region|Basis-URL|
+|BESCHREIBUNG|Azure-Geografie|Basis-URL|
 |:--|:--|:--|
-|Azure|Global|  api.cognitive.microsofttranslator.com|
-|Azure|Nordamerika|   api-nam.cognitive.microsofttranslator.com|
+|Azure|Global (nicht regional)|   api.cognitive.microsofttranslator.com|
+|Azure|USA|   api-nam.cognitive.microsofttranslator.com|
 |Azure|Europa|  api-eur.cognitive.microsofttranslator.com|
 |Azure|Asien-Pazifik|    api-apc.cognitive.microsofttranslator.com|
 
@@ -58,7 +58,7 @@ Es gibt drei Header, mit denen Sie Ihr Abonnement authentifizieren können. Dies
 |Header|BESCHREIBUNG|
 |:----|:----|
 |Ocp-Apim-Subscription-Key|*Verwendung mit Cognitive Services-Abonnement, wenn Sie Ihren geheimen Schlüssel übergeben*.<br/>Der Wert ist der geheime Azure-Schlüssel für Ihr Abonnement für die Textübersetzungs-API.|
-|Autorisierung|*Verwendung mit dem Cognitive Services-Abonnement, wenn Sie ein Authentifizierungstoken übergeben.*<br/>Der Wert ist das Bearertoken: `Bearer <token>`.|
+|Authorization|*Verwendung mit dem Cognitive Services-Abonnement, wenn Sie ein Authentifizierungstoken übergeben.*<br/>Der Wert ist das Bearertoken: `Bearer <token>`.|
 |Ocp-Apim-Subscription-Region|*Verwendung mit dem Multi-Service-Abonnement von Cognitive Services, wenn Sie einen geheimen Multi-Service-Schlüssel übergeben.*<br/>Der Wert ist die Region des Multi-Service-Abonnements. Dieser Wert ist optional, wenn kein Multi-Service-Abonnement verwendet wird.|
 
 ###  <a name="secret-key"></a>Geheimer Schlüssel
@@ -154,6 +154,7 @@ Der Fehlercode ist eine 6-stellige Zahl, die aus dem 3-stelligen HTTP-Statuscode
 | 400075| Die Kombination aus Sprachpaar und Kategorie ist ungültig.|
 | 400077| Die maximale Anforderungsgröße wurde überschritten. Informieren Sie sich unter [Anforderungsgrenzwerte](../request-limits.md).|
 | 400079| Das für die Übersetzung zwischen Ausgangs- und Zielsprache angeforderte benutzerdefinierte System ist nicht vorhanden.|
+| 400080| Transliteration wird für die Sprache oder das Skript nicht unterstützt.|
 | 401000| Die Anforderung wurde nicht autorisiert, da die Anmeldeinformationen fehlen oder ungültig sind.|
 | 401015| „Die angegebenen Anmeldeinformationen gelten für die SAPI. Diese Anforderung erfordert Anmeldeinformationen für die Text-API. Verwenden Sie ein Abonnement für die Textübersetzungs-API.“|
 | 403000| Der Vorgang ist nicht zulässig.|

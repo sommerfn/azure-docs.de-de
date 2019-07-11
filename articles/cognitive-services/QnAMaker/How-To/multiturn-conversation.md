@@ -9,195 +9,192 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: article
-ms.date: 06/12/2019
+ms.date: 06/26/2019
 ms.author: diberry
-ms.openlocfilehash: 7c7d7c480068b754413fd2309a2251d1e3855106
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 10249375922b47a40f71a60938cdd12ffe0f9b54
+ms.sourcegitcommit: 79496a96e8bd064e951004d474f05e26bada6fa0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67075187"
+ms.lasthandoff: 07/02/2019
+ms.locfileid: "67508138"
 ---
 # <a name="use-follow-up-prompts-to-create-multiple-turns-of-a-conversation"></a>Erstellen von Mehrfachdurchläufen einer Konversation mit Folgeaufforderungen
 
 Verwalten Sie für Ihren Bot von einer Frage zur nächsten die Mehrfachdurchläufe (_Multi-Turn_) mit Folgeaufforderungen und Kontext.
 
-Im folgenden Video wird veranschaulicht, wie dies funktioniert.
+Wenn Sie erfahren möchten, wie ein Mehrfachdurchlauf funktioniert, sehen Sie sich das folgende Demovideo an:
 
-[![](../media/conversational-context/youtube-video.png)](https://aka.ms/multiturnexample).
+[![Konversationen mit Mehrfachdurchläufen in QnA Maker](../media/conversational-context/youtube-video.png)](https://aka.ms/multiturnexample)
 
 ## <a name="what-is-a-multi-turn-conversation"></a>Was ist eine Konversation mit Mehrfachdurchläufen?
 
-Einige Fragen können nicht in einem Zug beantwortet werden. Wenn Sie Konversationen (Chatbot) in Ihrer Clientanwendung entwerfen, kann ein Benutzer eine Frage stellen, die gefiltert oder verfeinert werden muss, um die richtige Antwort zu bestimmen. Ein derartiger Flow durch die Fragen kann erreicht werden, indem dem Benutzer **Folgeaufforderungen** präsentiert werden.
+Einige Fragen können nicht in einem Zug beantwortet werden. Wenn Sie Ihre Clientanwendung (Chatbot) für Konversationen entwerfen, könnte ein Benutzer eine Frage stellen, die gefiltert oder verfeinert werden muss, um die richtige Antwort zu bestimmen. Sie ermöglichen diesen Ablauf durch die Fragen, indem Sie dem Benutzer *Folgeaufforderungen* anzeigen.
 
-Wenn der Benutzer die Frage stellt, gibt QnA Maker die Antwort _und_ etwaige Folgeaufforderungen zurück. Dadurch können Folgefragen als Auswahlmöglichkeiten präsentiert werden. 
+Wenn ein Benutzer eine Frage stellt, gibt QnA Maker die Antwort _und_ alle Folgeaufforderungen zurück. Diese Antwort ermöglicht es Ihnen, Folgefragen als Auswahlmöglichkeiten zu präsentieren. 
 
 ## <a name="example-multi-turn-conversation-with-chat-bot"></a>Beispiel für Konversation mit Mehrfachdurchläufen mit Chatbot
 
-Ein Chatbot verwaltet die Konversation mit dem Benutzer Frage für Frage, um die abschließende Antwort zu bestimmen.
+Mithilfe von Mehrfachdurchlauf verwaltet ein Chatbot eine Konversation mit einem Benutzer, um die endgültige Antwort zu bestimmen, wie in der folgenden Abbildung gezeigt wird:
 
-![Verwalten Sie im Konversationsablauf den Konversationszustand in einem Mehrfachdurchlauf-Dialogsystem, indem Sie innerhalb der Antworten Eingabeaufforderungen als Optionen präsentieren, mit denen die Konversation fortgesetzt werden kann.](../media/conversational-context/conversation-in-bot.png)
+![Ein Mehrfachdurchlauf-Dialog mit Eingabeaufforderungen, die einen Benutzer durch eine Konversation leiten](../media/conversational-context/conversation-in-bot.png)
 
-In der voranstehenden Abbildung hat der Benutzer `My account` eingegeben. Die Wissensdatenbank verfügt über 3 verknüpfte Frage- und Antwortpaare. Der Benutzer muss zum Verfeinern der Antwort eine der drei Optionen auswählen. In der Wissensdatenbank hat die Frage (#1) drei Folgeaufforderungen, die im Chatbot als drei Auswahlmöglichkeiten (#2) angezeigt werden. 
+In der vorstehenden Abbildung hat ein Benutzer durch Eingabe von **My account** (Mein Konto) eine Konversation begonnen. Die Wissensdatenbank enthält drei verknüpfte Frage-und-Antwortpaare. Um die Antwort zu verfeinern, wählt der Benutzer eine der drei Auswahlmöglichkeiten in der Wissensdatenbank aus. Zur Frage (#1) gibt es drei Folgeaufforderungen, die im Chatbot als drei Optionen (#2) angezeigt werden. 
 
-Wenn der Benutzer eine Auswahlmöglichkeit (#3) auswählt, wird die Liste der Verfeinerungsoptionen (#4) angezeigt. Dieser Vorgang kann fortgesetzt werden (#5), bis die richtige und abschließende Antwort (#6) bestimmt wird.
+Wenn der Benutzer eine Option (#3) auswählt, wird die nächste Liste von Verfeinerungsoptionen (#4) angezeigt. Diese Sequenz wird so lange fortgesetzt (#5), bis der Benutzer die richtige, endgültige Antwort (#6) bestimmt.
 
-In der voranstehenden Abbildung ist **Enable multi-turn** (Mehrfachdurchläufe aktivieren) ausgewählt, um die Eingabeaufforderungen anzuzeigen. 
+> [!NOTE]
+> In der vorstehenden Abbildung wurde das Kontrollkästchen **Enable multi-turn** (Mehrfachdurchlauf aktivieren) ausgewählt, um sicherzustellen, dass die Eingabeaufforderungen angezeigt werden. 
 
-### <a name="using-multi-turn-in-a-bot"></a>Verwenden von Mehrfachdurchläufen in einem Bot
+### <a name="use-multi-turn-in-a-bot"></a>Verwenden von Mehrfachdurchläufen in einem Bot
 
-Sie müssen Ihre Clientanwendung ändern, um die kontextbezogene Konversation zu verwalten. Sie müssen [Ihrem Bot Code hinzufügen](https://github.com/microsoft/BotBuilder-Samples/tree/master/experimental/qnamaker-prompting), um Eingabeaufforderungen anzuzeigen.  
+Ändern Sie zum Verwalten der kontextbezogenen Konversation Ihre Clientanwendung, indem Sie [Ihrem Bot Code hinzufügen](https://github.com/microsoft/BotBuilder-Samples/tree/master/experimental/qnamaker-prompting). Durch das Hinzufügen des Codes wird es ermöglicht, dass Benutzern die Eingabeaufforderungen angezeigt werden.  
 
 ## <a name="create-a-multi-turn-conversation-from-a-documents-structure"></a>Erstellen einer Mehrfachdurchlauf-Konversation anhand der Struktur eines Dokuments
 
-Beim Erstellen einer Wissensdatenbank sehen Sie ein optionales Kontrollkästchen, mit dem Sie die Mehrfachdurchlauf-Extrahierung aktivieren können. 
+Wenn Sie eine Wissensdatenbank erstellen, zeigt der Abschnitt **Populate your KB** (Auffüllen Ihrer Wissensdatenbank) ein Kontrollkästchen **Enable multi-turn extraction from URLs, .pdf or .docx files** (Mehrfachdurchlauf-Extrahierung aus URLs, PDF- oder DOCX-Dateien aktivieren). 
 
-![Beim Erstellen einer Wissensdatenbank sehen Sie ein optionales Kontrollkästchen, mit dem Sie die Mehrfachdurchlauf-Extrahierung aktivieren können.](../media/conversational-context/enable-multi-turn.png)
+![Kontrollkästchen zum Aktivieren der Mehrfachdurchlauf-Extrahierung](../media/conversational-context/enable-multi-turn.png)
 
-Bei Aktivierung dieser Option kann die Mehrfachdurchlauf-Konversation beim Importieren eines Dokuments aus der Struktur abgeleitet werden. Ist diese Struktur vorhanden, erstellt QnA Maker automatisch die QnA-Paare mit Folgeaufforderungen. 
+Wenn Sie diese Option für ein importiertes Dokument auswählen, kann die Mehrfachdurchlauf-Konversation aus der Dokumentstruktur abgeleitet werden. Wenn diese Struktur vorhanden ist, erstellt QnA Maker im Rahmen des Importvorgangs die Folgeaufforderung, die Fragen und Antworten für Sie als Paare zusammenfügt. 
 
-Die Mehrfachdurchlauf-Struktur kann nur aus URLs, PDF- und DOCX-Dateien abgeleitet werden. 
+Die Mehrfachdurchlauf-Struktur kann nur aus URLs, PDF-Dateien oder DOCX-Dateien abgeleitet werden. Ein Beispiel für eine Struktur zeigt eine Abbildung aus einer [PDF-Datei eines Microsoft Surface-Benutzerhandbuchs](https://github.com/Azure-Samples/cognitive-services-sample-data-files/blob/master/qna-maker/data-source-formats/product-manual.pdf). Aufgrund der Größe dieser PDF-Datei erfordert die QnA Maker-Ressource als **Tarif für die Suche** mindestens **B** (15 Indizes). 
 
-Nutzen Sie die folgende Abbildung einer Microsoft Surface-[PDF-Datei](https://github.com/Azure-Samples/cognitive-services-sample-data-files/blob/master/qna-maker/data-source-formats/product-manual.pdf) als Anleitung. Aufgrund der Größe der PDF-Datei erfordert die Azure QnA Maker-Ressource für die Suche mindestens die Preisstufe „B (15 Indizes)“. 
-
-![![Wenn Sie ein Dokument importieren, kann eine kontextbezogene Konversation aus der Struktur abgeleitet werden. Ist diese Struktur vorhanden, erstellt QnA Maker im Rahmen des Dokumentimports automatisch die QnA-Paare mit Folgeaufforderungen.](../media/conversational-context/import-file-with-conversational-structure.png)](../media/conversational-context/import-file-with-conversational-structure.png#lightbox)
+![![Beispiel für eine Struktur in einem Benutzerhandbuch](../media/conversational-context/import-file-with-conversational-structure.png)](../media/conversational-context/import-file-with-conversational-structure.png#lightbox)
 
 Beim Importieren des PDF-Dokuments bestimmt QnA Maker Folgeaufforderungen anhand der Struktur, um den Konversationsablauf zu erstellen. 
 
-1. In **Schritt 1** wählen Sie in der oberen Navigation die Option **Create a knowledge base** (Wissensdatenbank erstellen) aus.
-1. In **Schritt2** erstellen Sie einen Frage- und Antwortdienst, oder verwenden Sie einen vorhandenen. Achten Sie darauf, einen Frage- und Antwortdienst mit einem Suchdienst der Preisstufe „B (15 Indizes)“ oder höher zu verwenden, da die PDF-Datei des Surface-Handbuchs zu groß für eine niedrigere Preisstufe ist.
-1. In **Schritt 3** geben Sie einen Namen für Ihre Wissensdatenbank ein, z.B. `Surface manual`.
-1. In **Schritt 4** aktivieren Sie **Enable multi-turn extraction from URLs, .pdf or .docx files** (Aktivieren der Mehrfachdurchlauf-Extrahierung von URLs, PDF- oder DOCX). Auswählen der URL für das Surface-Handbuch
-
-    ```text
-    https://github.com/Azure-Samples/cognitive-services-sample-data-files/raw/master/qna-maker/data-source-formats/product-manual.pdf
-    ```
+1. Wählen Sie in QnA Maker **Create a knowledge base** (Neue Wissensdatenbank erstellen) aus.
+1. Erstellen Sie einen QnA Maker-Dienst, oder verwenden Sie einen vorhandenen. Weil im vorstehenden Beispiel zu Microsoft Surface die PDF-Datei zu groß für einen kleineren Tarif ist, verwenden Sie einen QnA Maker-Dienst mit einem **Suchdienst** von mindestens **B** (15 Indizes).
+1. Geben Sie einen Namen für Ihre Wissensdatenbank ein, z.B. **Surface-Handbuch**.
+1. Aktivieren Sie das Kontrollkästchen **Enable multi-turn extraction from URLs, .pdf or .docx files** (Mehrfachdurchlauf-Extrahierung von URLs, PDF- oder DOCX-Dateien aktivieren). 
+1. Wählen Sie die URL-für das Surface-Handbuch, **https://github.com/Azure-Samples/cognitive-services-sample-data-files/raw/master/qna-maker/data-source-formats/product-manual.pdf** , aus.
 
 1. Wählen Sie die Schaltfläche **KB erstellen** aus. 
 
-    Sobald die Wissensdatenbank erstellt wurde, wird ein Überblick der Frage- und Antwortpaare angezeigt.
+    Nachdem die Wissensdatenbank erstellt wurde, wird ein Überblick über die Frage- und Antwortpaare angezeigt.
 
 ## <a name="show-questions-and-answers-with-context"></a>Anzeigen von Fragen und Antworten mit Kontext
 
-Reduzieren Sie die Anzahl der angezeigten Frage- und Antwortpaare auf diejenigen, die kontextbezogene Konversationen aufweisen. 
+Reduzieren Sie die Anzahl der angezeigten Frage- und Antwortpaare auf nur diejenigen mit kontextbezogenen Konversationen. 
 
-1. Wählen Sie **Optionen anzeigen** und anschließend **Show context (PREVIEW)** (Kontext anzeigen (VORSCHAU)) aus. Die Liste enthält die Frage- und Antwortpaare mit Folgeaufforderungen. 
+Wählen Sie **Optionen anzeigen** und dann **Show context (PREVIEW)** (Kontext anzeigen (VORSCHAU)) aus. Die Liste zeigt Frage- und Antwortpaare mit Folgeaufforderungen an. 
 
-    ![Filtern von Frage- und Antwortpaaren nach kontextbezogenen Konversationen](../media/conversational-context/filter-question-and-answers-by-context.png)
+![Filtern von Frage- und Antwortpaaren nach kontextbezogenen Konversationen](../media/conversational-context/filter-question-and-answers-by-context.png)
 
-2. Der Mehrfachdurchlauf-Kontext wird in der ersten Spalte angezeigt.
+Der Mehrfachdurchlauf-Kontext wird in der ersten Spalte angezeigt.
 
-    ![![Beim Importieren des PDF-Dokuments bestimmt QnA Maker Folgeaufforderungen anhand der Struktur, um den Konversationsablauf zu erstellen. ](../media/conversational-context/surface-manual-pdf-follow-up-prompt.png)](../media/conversational-context/surface-manual-pdf-follow-up-prompt.png#lightbox)
+![![Die Spalte "Context (PREVIEW)"](../media/conversational-context/surface-manual-pdf-follow-up-prompt.png)](../media/conversational-context/surface-manual-pdf-follow-up-prompt.png#lightbox)
 
-    Das „#1“ in der vorherigen Abbildung zeigt fett formatierten Text in die Spalte und damit die aktuelle Frage an. Die übergeordnete Frage wird als oberstes Element in der Zeile angezeigt. Alle Fragen darunter sind die verknüpften Frage- und Antwortpaare. Diese Elemente können ausgewählt werden, um sofort zu den anderen Kontextelementen zu gelangen. 
+In der vorstehenden Abbildung zeigt **#1** fett formatierten Text in der Spalte und damit die aktuelle Frage an. Die übergeordnete Frage wird als oberstes Element in der Zeile angezeigt. Alle Fragen darunter sind die verknüpften Frage- und Antwortpaare. Diese Elemente können ausgewählt werden, damit Sie sofort zu den anderen Kontextelementen gelangen. 
 
-## <a name="add-existing-qna-pair-as-follow-up-prompt"></a>Hinzufügen eines vorhandenen Frage- und Antwortpaars als Folgeaufforderung
+## <a name="add-an-existing-question-and-answer-pair-as-a-follow-up-prompt"></a>Hinzufügen eines vorhandenen Frage- und Antwortpaars als Folgeaufforderung
 
-Die ursprüngliche Frage von `My account` verfügt über Folgeaufforderung wie z.B. `Accounts and signing in`. 
+Bei der ursprünglichen Frage, **My account** (Mein Konto), gibt es Folgeaufforderungen wie **Accounts and signing in** (Konten und Anmelden). 
 
-![Die ursprüngliche Frage von „Mein Konto“ gibt ordnungsgemäß die Antworten zu „Konten und Anmeldung“ zurück, und ist schon mit der Folgeaufforderung verknüpft.](../media/conversational-context/detected-and-linked-follow-up-prompts.png)
+![Die Antworten zu „Accounts and signing in“und Folgeaufforderungen](../media/conversational-context/detected-and-linked-follow-up-prompts.png)
 
-Fügen Sie eine Folgeaufforderung zu einem vorhandenen Frage- und Antwortpaar hinzu, das derzeit noch nicht verknüpft ist. Da die Frage nicht mit einem Frage- und Antwortpaar verknüpft ist, muss sich die aktuelle Einstellung für die Ansicht ändern.
+Fügen Sie eine Folgeaufforderung zu einem vorhandenen Frage- und Antwortpaar hinzu, das derzeit noch nicht verknüpft ist. Weil die Frage nicht mit einem Frage- und Antwortpaar verknüpft ist, muss die aktuelle Einstellung für die Ansicht geändert werden.
 
-1. Um ein vorhandenes Frage- und Antwortpaar als Folgeaufforderung zu verknüpfen, wählen Sie die Zeile für das betreffende Frage- und Antwortpaar aus. Für das Surface-Handbuch suchen Sie nach `Sign out`, um die Liste zu reduzieren.
-1. Wählen Sie in der Zeile für `Signout` aus der Spalte **Answer** (Antwort) die Option **Add follow-up prompt** (Folgeaufforderung hinzufügen) aus.
-1. Geben Sie im Popupfenster **Follow-up prompt (PREVIEW)** (Folgeaufforderung (VORSCHAU)) Folgendes ein:
+1. Um ein vorhandenes Frage- und Antwortpaar als Folgeaufforderung zu verknüpfen, wählen Sie die Zeile für das betreffende Frage- und Antwortpaar aus. Für das Surface-Handbuch suchen Sie nach **Sign out** (Abmelden), um die Liste zu reduzieren.
+1. Wählen Sie in der Zeile für **Sign out** in der Spalte **Answer** (Antwort) die Option **Add follow-up prompt** (Folgeaufforderung hinzufügen) aus.
+1. Geben Sie in den Feldern des Popupfensters **Follow-up prompt (PREVIEW)** (Folgeaufforderung (VORSCHAU)) die folgenden Werte ein:
 
     |Feld|Wert|
     |--|--|
-    |Anzeigetext|`Turn off the device`. Dies ist benutzerdefinierter Text, der für die Folgeaufforderung angezeigt werden soll.|
-    |Context-only (Nur Kontext)|Aktiviert. Diese Antwort wird nur zurückgegeben, wenn die Frage Kontext angibt.|
-    |Link to answer (Link zur Antwort)|Geben Sie `Use the sign-in screen` ein, um das vorhandene Frage- und Antwortpaar zu suchen.|
+    |Anzeigetext|Geben Sie **Gerät ausschalten** ein. Dies ist benutzerdefinierter Text, der in der Folgeaufforderung angezeigt werden soll.|
+    |Context-only (Nur Kontext)| Aktivieren Sie dieses Kontrollkästchen. Eine Antwort wird nur zurückgegeben, wenn die Frage einen Kontext angibt.|
+    |Link to answer (Link zur Antwort)|Geben Sie **Anmeldebildschirm verwenden** ein, um das vorhandene Frage- und Antwortpaar zu finden.|
 
 
 1.  Es wird eine Übereinstimmung zurückgegeben. Wählen Sie diese Antwort als Folgeaufforderung und dann **Save** (Speichern) aus. 
 
-    ![Suchen Sie mit dem Antworttext im Dialogfeld „Link to Answer“ (Link zur Antwort) der Folgeaufforderung nach einer vorhandenen Antwort.](../media/conversational-context/search-follow-up-prompt-for-existing-answer.png)
+    ![Die Seite „Follow-up prompt (PREVIEW)“
+(Folgeaufforderung (VORSCHAU))](../media/conversational-context/search-follow-up-prompt-for-existing-answer.png)
 
-1. Wenn Sie die Folgeaufforderung hinzugefügt haben, müssen Sie in der oberen Navigation **Save and train** (Speichern und trainieren) auswählen.
+1. Nachdem Sie die Folgeaufforderung hinzugefügt haben, wählen Sie in der oberen Navigation **Save and train** (Speichern und trainieren) aus.
   
 ### <a name="edit-the-display-text"></a>Bearbeiten des Anzeigetexts 
 
-Wenn eine Folgeaufforderung erstellt und ein vorhandenes Frage- und Antwortpaar als **Link zur Antwort** ausgewählt wird, können Sie neuen **Anzeigetext** eingeben. Dieser Text ersetzt die vorhandene Frage nicht, und es wird keine neue alternative Frage hinzugefügt. Es ist von diesen Werten getrennt. 
+Wenn eine Folgeaufforderung erstellt und ein vorhandenes Frage- und Antwortpaar als **Link to answer** (Link zur Antwort) eingegeben wird, können Sie neuen **Display text** (Anzeigetext) eingeben. Dieser Text ersetzt die vorhandene Frage nicht, und es wird keine neue alternative Frage hinzugefügt. Es ist von diesen Werten getrennt. 
 
 1. Zum Bearbeiten des Anzeigetexts suchen Sie im Feld **Context** (Kontext) nach der Frage, und wählen Sie sie aus.
-1. Wählen Sie in der Zeile dieser Frage die Folgeaufforderung in der Antwortspalte aus. 
+1. Wählen Sie in der Zeile für diese Frage die Folgeaufforderung in der Antwortspalte aus. 
 1. Wählen Sie den Anzeigetext, den Sie bearbeiten möchten, und dann **Edit** (Bearbeiten) aus.
 
-    ![Wählen Sie den Anzeigetext, den Sie bearbeiten möchten, und dann „Edit“ (Bearbeiten) aus.](../media/conversational-context/edit-existing-display-text.png)
+    ![Der Befehl „Edit“ für den Anzeigetext](../media/conversational-context/edit-existing-display-text.png)
 
-1. Das Popup **Folgeaufforderung** ermöglicht Ihnen, den vorhandenen Anzeigetext zu ändern. 
+1. Ändern Sie im Popupfenster **Follow-up prompt** (Folgeaufforderung) den vorhandenen Anzeigetext. 
 1. Wenn Sie die Bearbeitung Ihres Anzeigetexts abgeschlossen haben, wählen Sie **Save** (Speichern) aus. 
-1. Denken Sie daran, in der oberen Navigationsleiste **Save and train** (Speichern und trainieren) auszuwählen.
+1. Wählen Sie in der oberen Navigationsleiste **Save and train** (Speichern und trainieren) aus.
 
 
 <!--
 
-## To find best prompt answer, add metadata to follow-up prompts 
+## To find the best prompt answer, add metadata to follow-up prompts 
 
-If you have several follow-up prompts for a given QnA pair, but you know as the knowledge base manager, that not all prompts should be returned, use metadata to categorize the prompts in the knowledge base, then send the metadata from the client application as part of the GenerateAnswer request.
+If you have several follow-up prompts for a specific question-and-answer pair but you know, as the knowledge base manager, that not all prompts should be returned, use metadata to categorize the prompts in the knowledge base. You can then send the metadata from the client application as part of the GenerateAnswer request.
 
-In the knowledge base, when a question-and-answer pair is linked to follow-up prompts, the metadata filters are applied first, then the follow-ups are returned.
+In the knowledge base, when a question-and-answer pair is linked to follow-up prompts, the metadata filters are applied first, and then the follow-ups are returned.
 
-1. For the two follow-up QnA pairs, add metadata to each one:
+1. Add metadata to each of the two follow-up question-and-answer pairs:
 
     |Question|Add metadata|
     |--|--|
-    |`Feedback on an QnA Maker service`|"Feature":"all"|
-    |`Feedback on an existing feature`|"Feature":"one"|
+    |*Feedback on a QnA Maker service*|"Feature":"all"|
+    |*Feedback on an existing feature*|"Feature":"one"|
     
-    ![Add metadata to follow-up prompt so it can be filtered in conversation response from service](../media/conversational-context/add-metadata-feature-to-follow-up-prompt.png) 
+    ![The "Metadata tags" column for adding metadata to a follow-up prompt](../media/conversational-context/add-metadata-feature-to-follow-up-prompt.png) 
 
-1. Save and train. 
+1. Select **Save and train**. 
 
-    When you send the question `Give feedback` with the metadata filter `Feature` with a value of `all`, only the QnA pair with that metadata will be returned. Both QnA pairs are not returned because they both do not match the filter. 
+    When you send the question **Give feedback** with the metadata filter **Feature** with a value of **all**, only the question-and-answer pair with that metadata is returned. QnA Maker doesn't return both question-and-answer pairs, because both don't match the filter. 
 
 -->
 
-## <a name="add-new-qna-pair-as-follow-up-prompt"></a>Hinzufügen eines neuen Frage- und Antwortpaars als Folgeaufforderung
+## <a name="add-a-new-question-and-answer-pair-as-a-follow-up-prompt"></a>Hinzufügen eines neuen Frage- und Antwortpaars als Folgeaufforderung
 
-Fügen Sie ein neues Frage- und Antwortpaar zur Wissensdatenbank hinzu. Das Frage- und Antwortpaar sollte mit einer vorhandenen Frage als Folgeaufforderung verknüpft sein.
+Wenn Sie der Wissensdatenbank ein neues Frage- und Antwortpaar hinzufügen, sollte jedes Paar mit einer vorhandenen Frage als Folgeaufforderung verknüpft werden.
 
-1. Suchen Sie in der Symbolleiste der Wissensdatenbank das vorhandene Frage- und Antwortpaar für `Accounts and Signing In` aus, und wählen Sie es aus. 
+1. Suchen Sie in der Symbolleiste der Wissensdatenbank nach dem vorhandenen Frage- und Antwortpaar für **Accounts and signing in** (Konten und Anmelden), und wählen Sie es aus. 
 
 1. Wählen Sie in der Spalte **Antwort** für diese Frage **Add follow-up prompt** (Folgeaufforderung hinzufügen) aus. 
-1. Erstellen Sie in **Follow-up prompt (PREVIEW)** (Folgeaufforderung (VORSCHAU)) eine neue Folgeaufforderung, indem Sie folgende Werte eingeben: 
+1. Erstellen Sie unter **Follow-up prompt (PREVIEW)** (Folgeaufforderung (VORSCHAU)) eine neue Folgeaufforderung, indem Sie folgende Werte eingeben: 
 
-    |Textfeld|Wert|
+    |Feld|Wert|
     |--|--|
-    |**Display Text** (Anzeigetext)|`Create a Windows Account`. Dies ist benutzerdefinierter Text, der für die Folgeaufforderung angezeigt werden soll.|
-    |**Context-only** (Nur Kontext)|Aktiviert. Diese Antwort wird nur zurückgegeben, wenn die Frage Kontext angibt.|
-    |**Link to answer** (Link zur Antwort)|Geben Sie den folgenden Text als Antwort ein:<br>`[Create](https://account.microsoft.com/) a Windows account with a new or existing email account.`<br>Wenn Sie die Datenbank speichern und trainieren, wird dieser Text konvertiert in |
+    |Anzeigetext|*Erstellen Sie ein Windows-Konto*. Dies ist der benutzerdefinierte Text, der in der Folgeaufforderung angezeigt werden soll.|
+    |Context-only (Nur Kontext)|Aktivieren Sie dieses Kontrollkästchen. Diese Antwort wird nur zurückgegeben, wenn die Frage einen Kontext angibt.|
+    |Link to answer (Link zur Antwort)|Geben Sie den folgenden Text als Antwort ein:<br>*[Erstellen Sie](https://account.microsoft.com/) ein Windows-Konto mit einem neuen oder vorhandenen E-Mail-Konto*.<br>Wenn Sie die Datenbank speichern und trainieren, wird dieser Text konvertiert. |
     |||
 
-    ![Erstellen eines neuen Frage- und Antwortpaars mit Aufforderung](../media/conversational-context/create-child-prompt-from-parent.png)
+    ![Erstellen einer neuen Eingabeaufforderung für Frage und Antwort](../media/conversational-context/create-child-prompt-from-parent.png)
 
 
-1. Wählen Sie **Neu erstellen** und anschließend **Speichern** aus. 
+1. Wählen Sie **Create new** (Neu erstellen) und dann **Save** (Speichern) aus. 
 
-    Dadurch wurde ein neues Frage- und Antwortpaar erstellt, und die ausgewählte Frage wurde als Folgeaufforderung verknüpft. In der Spalte **Context** (Kontext) wird für beide Fragen eine Folgeaufforderungsbeziehung angegeben. 
+    Durch diese Aktion wird ein neues Frage- und Antwortpaar erstellt, und die ausgewählte Frage wird als Folgeaufforderung verknüpft. In der Spalte **Context** (Kontext) wird für beide Fragen eine Folgeaufforderungsbeziehung angegeben. 
 
-1. Ändern Sie die **Ansichtsoptionen** so, dass [Kontext angezeigt wird](#show-questions-and-answers-with-context).
+1. Wählen Sie **View options** (Optionen anzeigen) und dann [**Show context (PREVIEW)** ](#show-questions-and-answers-with-context) (Kontext anzeigen (VORSCHAU)) aus.
 
-    Die neue Frage zeigt die Art der Verknüpfung an.
+    Die neue Frage zeigt, wie sie verknüpft ist.
 
-    ![Erstellen einer neuen Folgeaufforderung ](../media/conversational-context/new-qna-follow-up-prompt.png)
+    ![Erstellen einer neuen Folgeaufforderung](../media/conversational-context/new-qna-follow-up-prompt.png)
 
-    Die übergeordneten Frage zeigt die neue Frage als eine der möglichen Optionen an.
+    Die übergeordnete Frage zeigt eine neue Frage als eine der Auswahlmöglichkeiten an.
 
-    ![![In der Spalte „Kontext“ wird für beide Fragen eine Folgeaufforderungsbeziehung angegeben.](../media/conversational-context/child-prompt-created.png)](../media/conversational-context/child-prompt-created.png#lightbox)
+    ![![In der Spalte „Context“ wird für beide Fragen eine Folgeaufforderungsbeziehung angegeben](../media/conversational-context/child-prompt-created.png)](../media/conversational-context/child-prompt-created.png#lightbox)
 
-1. Wenn Sie die Folgeaufforderung hinzugefügt haben, müssen Sie in der oberen Navigation **Save and train** (Speichern und trainieren) auswählen.
+1. Nachdem Sie die Folgeaufforderung hinzugefügt haben, wählen Sie in der oberen Navigationsleiste **Save and train** (Speichern und trainieren) aus.
 
-## <a name="enable-multi-turn-when-testing-follow-up-prompts"></a>Aktivieren von Mehrfachdurchläufen beim Testen von Folgeaufforderungen
+## <a name="enable-multi-turn-during-testing-of-follow-up-prompts"></a>Aktivieren von Mehrfachdurchläufen während des Testens von Folgeaufforderungen
 
-Wenn Sie die Frage mit Folgeaufforderungen im Bereich **Test** testen, wählen Sie **Mehrfachdurchlauf aktivieren**, und geben Sie Ihre Frage ein. Die Antwort enthält die Folgeaufforderungen.
+Wenn Sie die Frage mit Folgeaufforderungen im Bereich **Test** testen, wählen Sie **Enable multi-turn** (Mehrfachdurchlauf aktivieren) aus, und geben Sie Ihre Frage ein. Die Antwort enthält die Folgeaufforderungen.
 
-![Beim Testen der Frage im Testbereich schließt die Antwort die Folgeaufforderungen ein.](../media/conversational-context/test-pane-with-question-having-follow-up-prompts.png)
+![Die Antwort enthält die Folgeaufforderungen.](../media/conversational-context/test-pane-with-question-having-follow-up-prompts.png)
 
-Wenn Sie Mehrfachdurchläufe nicht aktivieren, wird zwar die Antwort zurückgegeben, aber Folgeaufforderungen werden nicht zurückgegeben.
+Wenn Sie Mehrfachdurchläufe nicht aktivieren, wird zwar die Antwort zurückgegeben, aber keine Folgeaufforderungen.
 
-## <a name="json-request-to-return-initial-answer-and-follow-up-prompts"></a>JSON-Anforderung für Rückgabe der ersten Antwort und der Folgeaufforderungen
+## <a name="a-json-request-to-return-an-initial-answer-and-follow-up-prompts"></a>Eine JSON-Anforderung zur Rückgabe einer ersten Antwort und der Folgeaufforderungen
 
 Fordern Sie mit dem leeren `context`-Objekt die Antwort auf die Frage des Benutzers an, und schließen Sie Folgeaufforderungen ein. 
 
@@ -211,9 +208,9 @@ Fordern Sie mit dem leeren `context`-Objekt die Antwort auf die Frage des Benutz
 }
 ```
 
-## <a name="json-response-to-return-initial-answer-and-follow-up-prompts"></a>JSON-Antwort für Rückgabe der ersten Antwort und der Folgeaufforderungen
+## <a name="a-json-response-to-return-an-initial-answer-and-follow-up-prompts"></a>Eine JSON-Antwort zur Rückgabe einer ersten Antwort und der Folgeaufforderungen
 
-Im vorherigen Abschnitt wurden eine Antwort und etwaige Folgeaufforderungen für `Accounts and signing in` angefordert. Die Antwort enthält die Aufforderungsinformationen, die sich unter `answers[0].context` befinden und den Text einschließen, der für den Benutzer angezeigt werden soll. 
+Im vorstehenden Abschnitt wurde eine Antwort mit allen Folgeaufforderungen für **Accounts and signing in** (Konten und Anmelden) angefordert. Die Antwort enthält die Aufforderungsinformationen, die in *answers[0].context* stehen, und den Text, der dem Benutzer angezeigt werden soll. 
 
 ```JSON
 {
@@ -235,24 +232,6 @@ Im vorherigen Abschnitt wurden eine Antwort und etwaige Folgeaufforderungen für
                         "qnaId": 16,
                         "qna": null,
                         "displayText": "Use the sign-in screen"
-                    },
-                    {
-                        "displayOrder": 1,
-                        "qnaId": 17,
-                        "qna": null,
-                        "displayText": "Use Windows Hello to sign in"
-                    },
-                    {
-                        "displayOrder": 2,
-                        "qnaId": 18,
-                        "qna": null,
-                        "displayText": "Sign out"
-                    },
-                    {
-                        "displayOrder": 0,
-                        "qnaId": 79,
-                        "qna": null,
-                        "displayText": "Create a Windows Account"
                     }
                 ]
             }
@@ -261,7 +240,7 @@ Im vorherigen Abschnitt wurden eine Antwort und etwaige Folgeaufforderungen für
             "questions": [
                 "Sign out"
             ],
-            "answer": "**Sign out**\n\nHere's how to sign out: \n\n Go to Start , and right-click your name. Then select Sign out. ",
+            "answer": "**Sign out**\n\nHere's how to sign out: \n\n Go to Start, and right-click your name. Then select Sign out. ",
             "score": 38.01,
             "id": 18,
             "source": "product-manual.pdf",
@@ -296,13 +275,19 @@ Im vorherigen Abschnitt wurden eine Antwort und etwaige Folgeaufforderungen für
 }
 ```
 
-Das `prompts`-Array gibt Text in der `displayText`-Eigenschaft sowie den Wert für `qnaId` an, sodass Sie diese Antworten als nächste angezeigte Auswahlmöglichkeiten im Konversationsfluss präsentieren können, und sendet den ausgewählten Wert anschließend in der folgenden Anforderung an QnA Maker. 
+Das Array `prompts` stellt Text in der `displayText`-Eigenschaft und den Wert `qnaId` bereit. Sie können diese Antworten als die nächsten angezeigten Auswahlmöglichkeiten im Konversationsablauf anzeigen und dann die ausgewählte `qnaId` in der nachstehenden Anforderung an QnA Maker senden. 
 
-## <a name="json-request-to-return-non-initial-answer-and-follow-up-prompts"></a>JSON-Anforderung für Rückgabe einer nachfolgenden Antwort und der Folgeaufforderungen
+<!--
 
-Füllen Sie das `context`-Objekt aus, um den vorherigen Kontext einzuschließen.
+The `promptsToDelete` array provides the ...
 
-In der folgenden JSON-Anforderung ist die aktuelle Frage `Use Windows Hello to sign in`, und die vorherige Frage war `Accounts and signing in`. 
+-->
+
+## <a name="a-json-request-to-return-a-non-initial-answer-and-follow-up-prompts"></a>Eine JSON-Anforderung zur Rückgabe einer nachfolgenden Antwort und der Folgeaufforderungen
+
+Füllen Sie das `context`-Objekt aus, um den vorherigen Kontext einzubeziehen.
+
+In der folgenden JSON-Anforderung lautet die aktuelle Frage *Use Windows Hello to sign in* (Windows Hello zum Anmelden verwenden), und die vorherige Frage lautete *accounts und signing in* (Konten und Anmelden). 
 
 ```JSON
 {
@@ -318,7 +303,7 @@ In der folgenden JSON-Anforderung ist die aktuelle Frage `Use Windows Hello to s
 }
 ``` 
 
-##  <a name="json-response-to-return-non-initial-answer-and-follow-up-prompts"></a>JSON-Antwort für Rückgabe einer nachfolgenden Antwort und der Folgeaufforderungen
+##  <a name="a-json-response-to-return-a-non-initial-answer-and-follow-up-prompts"></a>Eine JSON-Antwort zur Rückgabe einer nachfolgenden Antwort und der Folgeaufforderungen
 
 QnA Maker-JSON-Antwort _GenerateAnswer_ enthält die Folgeaufforderungen in der `context`-Eigenschaft des ersten Elements im `answers`-Objekt:
 
@@ -378,15 +363,15 @@ QnA Maker-JSON-Antwort _GenerateAnswer_ enthält die Folgeaufforderungen in der 
 }
 ```
 
-## <a name="query-the-knowledge-base-with-the-qna-id"></a>Abfragen der Wissensdatenbank mit der QnA-ID
+## <a name="query-the-knowledge-base-with-the-qna-maker-id"></a>Abfragen der Wissensdatenbank mit der QnA Maker-ID
 
-In der Antwort auf die erste Frage werden alle Folgeaufforderungen und zugehörigen `qnaId` zurückgegeben. Da Sie nun über die ID verfügen, können Sie diese im Anforderungstext der Folgeaufforderung übergeben. Wenn der Anforderungstext die `qnaId` und das Kontextobjekt (mit den vorherigen QnA-Eigenschaften) enthält, wird von „GenerateAnswer“ die genaue Frage anhand der ID zurückgegeben, anstatt den Rangfolgenalgorithmus zu verwenden, um die Antwort anhand des Fragentexts zu suchen. 
+In der Antwort auf die erste Frage werden alle Folgeaufforderungen und zugehörigen `qnaId` zurückgegeben. Da Sie nun über die ID verfügen, können Sie diese im Anforderungstext der Folgeaufforderung übergeben. Wenn der Anforderungstext die `qnaId` und das Kontextobjekt (mit den vorherigen QnA Maker-Eigenschaften) enthält, gibt „GenerateAnswer“ die genaue Frage anhand der ID zurück, statt den Rangfolgenalgorithmus zu verwenden, um die Antwort anhand des Fragentexts zu suchen. 
 
-## <a name="displaying-prompts-and-sending-context-in-the-client-application"></a>Anzeigen von Eingabeaufforderungen und Senden von Kontext in der Clientanwendung 
+## <a name="display-prompts-and-send-context-in-the-client-application"></a>Anzeigen von Eingabeaufforderungen und Senden von Kontext in der Clientanwendung 
 
-Sie haben Eingabeaufforderungen zu Ihrer Wissensdatenbank hinzugefügt und den Datenfluss im Testbereich getestet. Jetzt müssen Sie diese Eingabeaufforderungen in der Clientanwendung verwenden. Für Bot Framework werden die Eingabeaufforderungen nicht automatisch in den Clientanwendungen angezeigt. Sie können die Eingabeaufforderungen als vorgeschlagene Aktionen oder Schaltflächen als Teil der Antwort auf die Abfrage des Benutzers in Clientanwendungen anzeigen, indem Sie dieses [Bot Framework-Beispiel](https://aka.ms/qnamakermultiturnsample) in Ihren Code einschließen. Die Clientanwendung sollte die aktuelle QnA-ID sowie die Benutzerabfrage speichern und für die nächste Benutzerabfrage an das [Kontextobjekt der GenerateAnswer-API](#json-request-to-return-non-initial-answer-and-follow-up-prompts) übergeben. 
+Sie haben Eingabeaufforderungen zu Ihrer Wissensdatenbank hinzugefügt und den Datenfluss im Testbereich getestet. Jetzt müssen Sie diese Eingabeaufforderungen in der Clientanwendung verwenden. Bei Bot Framework werden die Eingabeaufforderungen in den Clientanwendungen nicht automatisch angezeigt. Sie können die Aufforderungen als vorgeschlagene Aktionen oder Schaltflächen als Teil der Antwort auf die Abfrage des Benutzers in Clientanwendungen anzeigen, indem Sie dieses [Bot Framework-Beispiel](https://aka.ms/qnamakermultiturnsample) in Ihren Code einbeziehen. Die Clientanwendung sollte die aktuelle QnA Maker-ID sowie die Benutzerabfrage speichern und für die nächste Benutzerabfrage an das [Kontextobjekt der GenerateAnswer-API](#a-json-request-to-return-a-non-initial-answer-and-follow-up-prompts) übergeben. 
 
-## <a name="display-order-supported-in-api"></a>Unterstützung der Anzeigereihenfolge in der API
+## <a name="display-order-is-supported-in-the-update-api"></a>Die Anzeigereihenfolge wird in der Update-API unterstützt
 
 Der in der JSON-Antwort zurückgegebene [Anzeigetext und die Anzeigereihenfolge](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/knowledgebase/update#promptdto) können von der [Update-API](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/knowledgebase/update) bearbeitet werden. 
 
@@ -396,9 +381,19 @@ FIX - Need to go to parent, then answer column, then edit answer.
 
 -->
 
+## <a name="create-knowledge-base-with-multi-turn-prompts-with-the-create-api"></a>Erstellen einer Wissensdatenbank mit Eingabeaufforderungen mit Mehrfachdurchläufen mithilfe der Create-API
+
+Sie können eine Wissensdatenbank mit Eingabeaufforderungen mit Mehrfachdurchläufen mithilfe der [Create-API von QnA Maker](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/knowledgebase/create) erstellen. Die Aufforderungen werden im Array `prompts` der `context`-Eigenschaft hinzugefügt. 
+
+
+## <a name="add-or-delete-multi-turn-prompts-with-the-update-api"></a>Hinzufügen oder Löschen von Eingabeaufforderungen mit Mehrfachdurchläufen mithilfe der Update-API
+
+Sie können Eingabeaufforderungen mit Mehrfachdurchläufen mithilfe der [Update-API von QnA Maker](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/knowledgebase/update) hinzufügen oder löschen.  Die Aufforderungen werden im Array `promptsToAdd` der `context`-Eigenschaft und im Array `promptsToDelete` hinzugefügt. 
+
+
 ## <a name="next-steps"></a>Nächste Schritte
 
-Erfahren Sie mehr über kontextbezogene Konversationen im [Dialogbeispiel](https://aka.ms/qnamakermultiturnsample), oder informieren Sie sich über [konzeptionelles Bot-Design für Konversationen mit Mehrfachdurchläufen](https://docs.microsoft.com/azure/bot-service/bot-builder-conversations?view=azure-bot-service-4.0).
+Erfahren Sie mehr über kontextbezogene Konversationen in diesem [Dialogbeispiel](https://aka.ms/qnamakermultiturnsample), oder informieren Sie sich über [konzeptionelles Bot-Design für Konversationen mit Mehrfachdurchläufen](https://docs.microsoft.com/azure/bot-service/bot-builder-conversations?view=azure-bot-service-4.0).
 
 > [!div class="nextstepaction"]
 > [Migrieren einer Wissensdatenbank](../Tutorials/migrate-knowledge-base.md)

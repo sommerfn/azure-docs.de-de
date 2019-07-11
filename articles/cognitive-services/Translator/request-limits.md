@@ -3,19 +3,19 @@ title: Anforderungslimits – Textübersetzungs-API
 titleSuffix: Azure Cognitive Services
 description: In diesem Artikel werden die Anforderungslimits für die Textübersetzungs-API aufgeführt. Die Gebühren werden basierend auf der Anzahl der Zeichen berechnet, nicht nach der Anforderungshäufigkeit, mit einem Grenzwert von 5.000 Zeichen pro Anforderung. Die Zeichengrenzwerte sind abonnementbasiert, wobei F0 auf 2 Millionen Zeichen pro Stunde beschränkt ist.
 services: cognitive-services
-author: erhopf
+author: swmachan
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: conceptual
 ms.date: 06/04/2019
-ms.author: erhopf
-ms.openlocfilehash: c19e39918aa64730a35a27fcdadd70800f47f4fa
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.author: swmachan
+ms.openlocfilehash: a7621cc80a38d9a07872a94d8e5221dc04023b86
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66514651"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67435032"
 ---
 # <a name="request-limits-for-translator-text"></a>Anforderungslimits für die Textübersetzungs-API
 
@@ -38,7 +38,11 @@ In der folgenden Tabelle sind Arrayelement- und Zeichengrenzwerte für jeden Vor
 
 ## <a name="character-limits-per-hour"></a>Zeichengrenzwerte pro Stunde
 
-Ihre Zeichengrenzwerte pro Stunde basieren auf der Abonnementebene der Textübersetzungs-API. Das Stundenkontingent sollte gleichmäßig über die gesamte Stunde verbraucht werden. Wenn Sie diese Grenzwerte erreichen oder überschreiten oder einen zu großen Teil des Kontingents in kurzer Zeit senden, werden Sie wahrscheinlich eine Antwort zur Kontingentüberschreitung erhalten.
+Ihre Zeichengrenzwerte pro Stunde basieren auf der Abonnementebene der Textübersetzungs-API. 
+
+Das Stundenkontingent sollte gleichmäßig über die gesamte Stunde verbraucht werden. Beispielsweise sollten Zeichen beim Grenzwert für den F0-Tarif von 2 Millionen Zeichen pro Stunde nicht schneller als mit ungefähr 33.300 Zeichen pro Minute gleitendes Fenster (2 Millionen, dividiert durch 60 Minuten) verbraucht werden.
+
+Wenn Sie diese Grenzwerte erreichen oder überschreiten oder einen zu großen Teil des Kontingents in kurzer Zeit senden, werden Sie wahrscheinlich eine Antwort zur Kontingentüberschreitung erhalten. Es gibt keine Beschränkungen für gleichzeitige Anforderungen.
 
 | Tarif | Zeichengrenzwert |
 |------|-----------------|

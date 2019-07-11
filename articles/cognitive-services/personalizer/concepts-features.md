@@ -7,15 +7,15 @@ author: edjez
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: personalizer
-ms.topic: overview
-ms.date: 05/07/2019
+ms.topic: concept
+ms.date: 06/24/2019
 ms.author: edjez
-ms.openlocfilehash: ebe7f9307fcfa39d6cb133203a4c17243ad390c5
-ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
+ms.openlocfilehash: 2353b8c735602aff0386f44cc29d2be5eb9f90c4
+ms.sourcegitcommit: a12b2c2599134e32a910921861d4805e21320159
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/02/2019
-ms.locfileid: "65025501"
+ms.lasthandoff: 06/24/2019
+ms.locfileid: "67340886"
 ---
 # <a name="features-are-information-about-actions-and-context"></a>Merkmale sind Informationen über Aktionen und Kontext.
 
@@ -41,6 +41,12 @@ Die Personalisierung schreibt weder vor noch schränkt sie ein, welche Merkmale 
 
 Die Personalisierung unterstützt Merkmale der Typen Zeichenfolge, numerisch und boolesch.
 
+### <a name="how-choice-of-feature-type-affects-machine-learning-in-personalizer"></a>Auswirkungen der Wahl des Merkmalstyps auf Machine Learning in der Personalisierung
+
+* **Zeichenfolgen**: Bei Zeichenfolgentypen erstellt jede Kombination aus Schlüssel und Wert neue Gewichtungen im Machine Learning-Modell „Personalisierung“. 
+* **Numerisch**: Sie sollten numerische Werte verwenden, wenn sich die Zahl proportional auf das Personalisierungsergebnis auswirken soll. Dies hängt stark vom Szenario ab. Hier ist ein vereinfachtes Beispiel: Bei der Personalisierung eines Kundenerlebnisses im Einzelhandel könnte „NumberOfPetsOwned“ (AnzahlVonHaustierenImBesitz) ein numerisches Merkmal sein, wenn Personen mit 2 oder 3 Haustieren das Personalisierungsergebnis zwei- oder dreimal so stark wie Personen beeinflussen sollen, die nur ein Haustier besitzen. Merkmale, die auf numerischen Einheiten basieren, bei denen aber die Bedeutung nicht linear ist – z.B. „Alter“, „Temperatur“ oder „Körpergröße einer Person“ – werden am besten als Zeichenfolgen codiert, und die Merkmalsqualität kann durch die Verwendung von Bereichen normalerweise verbessert werden. „Alter“ könnte beispielsweise codiert werden als „Alter“: „0–5“, „Alter“: „6–10“ usw.
+* **Boolesche** Werte, die mit dem Wert „false“ gesendet wurden, agieren so, als ob sie nie gesendet worden wären.
+
 Merkmale, die nicht vorhanden sind, sollten aus der Anforderung entfernt werden. Vermeiden Sie das Senden von Merkmalen mit einem Nullwert, weil dieser beim Trainieren des Modells als vorhanden und mit einem Wert von „Null“ verarbeitet wird.
 
 ## <a name="categorize-features-with-namespaces"></a>Kategorisieren von Merkmalen mit Namespaces
@@ -64,12 +70,15 @@ Sie können Merkmalsnamespaces nach Ihren eigenen Konventionen benennen, solange
 
 Im folgenden JSON-Code sind `user`, `state` und `device` Merkmalsnamespaces.
 
+JSON-Objekte können geschachtelte JSON-Objekte und einfache Eigenschaften/Werte enthalten. Ein Array kann nur einbezogen werden, wenn die Arrayelemente Zahlen sind. 
+
 ```JSON
 {
     "contextFeatures": [
         { 
             "user": {
-                "name":"Doug"
+                "name":"Doug",
+                "latlong": [47.6, -122.1]
             }
         },
         {
@@ -115,7 +124,7 @@ Ein Zeitstempel mit Sekundenangaben ist beispielsweise ein Merkmal von sehr geri
 
 #### <a name="expand-feature-sets-with-extrapolated-information"></a>Erweitern von Merkmalssätzen mit extrapolierten Informationen
 
-Sie können auch mehr Merkmale erhalten, indem Sie sich Gedanken zu nicht erkundeten Attributen machen, die aus bereits vorhandenen Informationen abgeleitet werden können. Ist es bei der Personalisierung einer fiktiven Filmliste beispielsweise möglich, das ein Wochentag gegenüber einem Wochenende unterschiedliches Verhalten bei Benutzern hervorruft? Zeit könnte um ein Attribut „Wochenende“ oder „Wochentag“ erweitert werden. Lenken nationale kulturelle Feiertage die Aufmerksamkeit auf bestimmte Arten von Filmen? Beispielsweise eignet sich ein Attribut „Halloween“ an Orten, wo dieses relevant ist. Ist es möglich, dass regnerisches Wetter bei vielen Benutzern signifikante Auswirkungen auf die Auswahl eines Films hat? Zusammen mit Zeit und Ort könnte ein Wetterdienst diese Informationen bereitstellen, und Sie können sie als zusätzliches Merkmal hinzufügen. 
+Sie können auch mehr Merkmale erhalten, indem Sie sich Gedanken zu nicht erkundeten Attributen machen, die aus bereits vorhandenen Informationen abgeleitet werden können. Ist es bei der Personalisierung einer fiktiven Filmliste beispielsweise möglich, dass ein Wochentag gegenüber einem Wochenende unterschiedliches Verhalten bei Benutzern hervorruft? Zeit könnte um ein Attribut „Wochenende“ oder „Wochentag“ erweitert werden. Lenken nationale kulturelle Feiertage die Aufmerksamkeit auf bestimmte Arten von Filmen? Beispielsweise eignet sich ein Attribut „Halloween“ an Orten, wo dieses relevant ist. Ist es möglich, dass regnerisches Wetter bei vielen Benutzern signifikante Auswirkungen auf die Auswahl eines Films hat? Zusammen mit Zeit und Ort könnte ein Wetterdienst diese Informationen bereitstellen, und Sie können sie als zusätzliches Merkmal hinzufügen. 
 
 #### <a name="expand-feature-sets-with-artificial-intelligence-and-cognitive-services"></a>Erweitern von Merkmalssätzen mit künstlicher Intelligenz und Cognitive Services
 
@@ -123,7 +132,7 @@ Künstliche Intelligenz und ausführungsbereite Cognitive Services können eine 
 
 Indem Sie Ihre Elemente mithilfe von KI-Diensten vorverarbeiten, können Sie automatisch Informationen extrahieren, die wahrscheinlich relevant für die Personalisierung sind.
 
-Beispiel: 
+Beispiel:
 
 * Sie können eine Filmdatei mit [Video Indexer](https://azure.microsoft.com/services/media-services/video-indexer/) ausführen, um Szenenelemente, Text, Stimmungen und viele andere Attribute zu extrahieren. Diese Attribute können dann verdichtet werden, um die Merkmale wiederzugeben, die die ursprünglichen Elementmetadaten nicht aufwiesen. 
 * Bilder können mit einer Objekterkennung behandelt werden, Gesichter mit einer Stimmungsanalyse usw.
@@ -190,6 +199,8 @@ In einigen Fällen kann dies erst später in Ihrer Geschäftslogik bestimmt werd
 
 Beim Aufrufen von Relevanz senden Sie mehrere Aktionen zur Auswahl:
 
+JSON-Objekte können geschachtelte JSON-Objekte und einfache Eigenschaften/Werte enthalten. Ein Array kann nur einbezogen werden, wenn die Arrayelemente Zahlen sind. 
+
 ```json
 {
     "actions": [
@@ -198,7 +209,8 @@ Beim Aufrufen von Relevanz senden Sie mehrere Aktionen zur Auswahl:
       "features": [
         {
           "taste": "salty",
-          "spiceLevel": "medium"
+          "spiceLevel": "medium",
+          "grams": [400,800]
         },
         {
           "nutritionLevel": 5,
@@ -211,7 +223,8 @@ Beim Aufrufen von Relevanz senden Sie mehrere Aktionen zur Auswahl:
       "features": [
         {
           "taste": "sweet",
-          "spiceLevel": "none"
+          "spiceLevel": "none",
+          "grams": [150, 300, 450]
         },
         {
           "nutritionalLevel": 2
@@ -223,7 +236,8 @@ Beim Aufrufen von Relevanz senden Sie mehrere Aktionen zur Auswahl:
       "features": [
         {
           "taste": "sweet",
-          "spiceLevel": "none"
+          "spiceLevel": "none",
+          "grams": [300, 600, 900]
         },
         {
           "nutritionLevel": 5
@@ -238,7 +252,8 @@ Beim Aufrufen von Relevanz senden Sie mehrere Aktionen zur Auswahl:
       "features": [
         {
           "taste": "salty",
-          "spiceLevel": "low"
+          "spiceLevel": "low",
+          "grams": [300, 600]
         },
         {
           "nutritionLevel": 8
@@ -265,6 +280,8 @@ Ihre Anwendung ist für das Laden der Informationen über den Kontext aus den re
 
 Kontext wird als JSON-Objekt ausgedrückt, das an die Relevanz-API gesendet wird:
 
+JSON-Objekte können geschachtelte JSON-Objekte und einfache Eigenschaften/Werte enthalten. Ein Array kann nur einbezogen werden, wenn die Arrayelemente Zahlen sind. 
+
 ```JSON
 {
     "contextFeatures": [
@@ -282,7 +299,9 @@ Kontext wird als JSON-Objekt ausgedrückt, das an die Relevanz-API gesendet wird
         {
             "device": {
                 "mobile":true,
-                "Windows":true
+                "Windows":true,
+                "screensize": [1680,1050]
+                }
             }
         }
     ]

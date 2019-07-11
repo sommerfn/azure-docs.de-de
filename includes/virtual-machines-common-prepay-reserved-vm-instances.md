@@ -3,13 +3,13 @@ author: yashesvi
 ms.author: banders
 ms.service: virtual-machines-windows
 ms.topic: include
-ms.date: 05/14/2019
-ms.openlocfilehash: c7ff7ab0800449c2a3aa9d58bd036981caccaa1c
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.date: 07/01/2019
+ms.openlocfilehash: 9e0caa8b98133dad3af083e8910d0603bbd2563b
+ms.sourcegitcommit: ac1cfe497341429cf62eb934e87f3b5f3c79948e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67178059"
+ms.lasthandoff: 07/01/2019
+ms.locfileid: "67489900"
 ---
 # <a name="prepay-for-virtual-machines-with-azure-reserved-vm-instances-ri"></a>Vorauszahlen für virtuelle Computer mit Azure Reserved VM Instances (RI)
 
@@ -17,7 +17,7 @@ Sie können für virtuelle Computer mit Azure Reserved VM Instances im Voraus be
 
 Sie können eine reservierte VM-Instanz im [Azure-Portal](https://portal.azure.com) erwerben. So kaufen Sie ein Instanz:
 
-- Ihnen muss die Besitzerrolle für mindestens ein Enterprise-Abonnement oder ein Abonnement mit nutzungsbasierter Zahlung zugeordnet sein.
+- Sie müssen in einer „Besitzer“-Rolle für mindestens ein Enterprise-Abonnement oder ein Abonnement mit einem Satz für nutzungsbasierte Bezahlung sein.
 - Bei Enterprise-Abonnements muss im [EA-Portal](https://ea.azure.com) die Option **Reservierte Instanzen hinzufügen** aktiviert werden. Wenn diese Einstellung deaktiviert ist, müssen Sie ein EA-Administrator für das Abonnement sein.
 - Für das Cloud Solution Provider (CSP)-Programm können nur die Administrator- oder Vertriebs-Agents Reservierungen kaufen.
 
@@ -68,13 +68,13 @@ Reservierte VM-Instanzen sind bis auf wenige Ausnahmen für die meisten VM-Grö�
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
 2. Klicken Sie auf **Alle Dienste** > **Reservierungen**.
 3. Klicken Sie auf **Hinzufügen**, um eine neue Reservierung zu erwerben.
-4. Füllen Sie die erforderlichen Felder aus. Ausgeführte VM-Instanzen, die den ausgewählten Attributen entsprechen, sind für den Reservierungsrabatt berechtigt. Die tatsächliche Anzahl der VM-Instanzen, die den Rabatt erhalten, hängt vom ausgewählten Bereich und von der ausgewählten Menge ab.
+4. Geben Sie die erforderlichen Felder ein. Ausgeführte VM-Instanzen, die den ausgewählten Attributen entsprechen, sind für den Reservierungsrabatt berechtigt. Die tatsächliche Anzahl der VM-Instanzen, die den Rabatt erhalten, hängt vom ausgewählten Bereich und von der ausgewählten Menge ab.
 
     | Feld      | BESCHREIBUNG|
     |------------|--------------|
     |NAME        |Der Name dieser Reservierung|
-    |Abonnement|Das zum Bezahlen für die Reservierung verwendete Abonnement. Die Zahlungsmethode für das Abonnement wird mit Vorauszahlungen für die Reservierung belastet. Der Abonnementtyp muss „Enterprise Agreement“ (Angebotsnummern: MS-AZR-0017P oder MS-AZR-0148P) oder „Nutzungsbasierte Zahlung“ (Angebotsnummern: MS-AZR-0003P oder MS-AZR-0023P) sein. Bei einem Enterprise-Abonnement werden die Gebühren vom Verpflichtungsguthaben der Reservierung abgezogen oder als Überschreitung belastet. Bei einem Abonnement mit nutzungsbasierter Zahlung wird die Kreditkarte mit den Gebühren belastet, oder die Gebühren werden für die Zahlung auf Rechnung in Rechnung gestellt.|    
-    |`Scope`       |Der Bereich der Reservierung kann ein Abonnement oder mehrere Abonnements (freigegebener Bereich) umfassen. Optionen: <ul><li>Einzelnes Abonnement: Der Reservierungsrabatt wird auf die virtuellen Computern in diesem Abonnement angewendet. </li><li>Freigegeben: Der Reservierungsrabatt wird auf virtuelle Computer angewendet, die in einem beliebigen Abonnement innerhalb des Abrechnungskontexts ausgeführt werden. Für Enterprise-Kunden stellt der freigegebene Bereich die Registrierung dar und umfasst alle Abonnements in der Registrierung. Für Kunden mit nutzungsbasierter Zahlung stellt der freigegebene Bereich alle Abonnements mit nutzungsbasierter Zahlung dar, die vom Kontoadministrator erstellt wurden.</li></ul>|
+    |Abonnement|Das zum Bezahlen für die Reservierung verwendete Abonnement. Die Zahlungsmethode für das Abonnement wird mit Vorauszahlungen für die Reservierung belastet. Der Abonnementtyp muss „Enterprise Agreement“ (Angebotsnummern: MS-AZR-0017P oder MS-AZR-0148P) oder ein einzelnes Abonnement mit Sätzen für nutzungsbasierte Bezahlung (Angebotsnummern: MS-AZR-0003P oder MS-AZR-0023P) sein. Bei einem Enterprise-Abonnement werden die Gebühren vom Verpflichtungsguthaben der Reservierung abgezogen oder als Überschreitung belastet. Bei einem Abonnement mit Sätzen für nutzungsbasierte Zahlung wird die Kreditkarte mit den Gebühren belastet, oder die Gebühren werden für Zahlung auf Rechnung in Rechnung gestellt.|    
+    |`Scope`       |Der Bereich der Reservierung kann ein Abonnement oder mehrere Abonnements (freigegebener Bereich) umfassen. Optionen: <ul><li>Einzelnes Abonnement: Der Reservierungsrabatt wird auf die virtuellen Computern in diesem Abonnement angewendet. </li><li>Freigegeben: Der Reservierungsrabatt wird auf virtuelle Computer angewendet, die in einem beliebigen Abonnement innerhalb des Abrechnungskontexts ausgeführt werden. Für Enterprise-Kunden stellt der freigegebene Bereich die Registrierung dar und umfasst alle Abonnements in der Registrierung. Für Kunden, die Abonnements mit Sätzen für nutzungsbasierte Bezahlung besitzen, besteht der freigegebene Bereich aus allen Abonnements mit diesen Sätzen, die vom Kontoadministrator erstellt wurden.</li></ul>|
     |Region    |Die Azure-Region, die durch die Reservierung abgedeckt wird|    
     |Größe des virtuellen Computers     |Die Größe der VM-Instanzen|
     |Optimiert für     |Mithilfe der Option für Flexibilität bei der VM-Instanzgröße wird der Rabatt für Reservierungen auf weitere VMs in derselben [VM-Größengruppe](https://aka.ms/RIVMGroups) angewendet. Die Option „Kapazitätspriorität“ priorisiert Rechenzentrumskapazität für Ihre Bereitstellungen. So erhalten Sie zusätzliche Sicherheit, dass die VM-Instanzen gestartet werden können, wenn sie benötigt werden. Die Kapazitätspriorität ist nur für den Reservierungsumfang „Einzelabonnement“ verfügbar. |
@@ -121,7 +121,7 @@ Wenn Sie weitere Fragen haben oder Hilfe benötigen, [erstellen Sie eine Support
     - [Was sind Azure-Reservierungen?](../articles/billing/billing-save-compute-costs-reservations.md)
     - [Verwalten von Reservierungen für Ressourcen in Azure](../articles/billing/billing-manage-reserved-vm-instance.md)
     - [Grundlegendes zur Anwendung des Rabatts für Azure-Reservierungen auf virtuelle Computer](../articles/billing/billing-understand-vm-reservation-charges.md)
-    - [Grundlegendes zur Nutzung von Azure-Reservierungen für das Abonnement mit nutzungsbasierter Bezahlung](../articles/billing/billing-understand-reserved-instance-usage.md)
+    - [Grundlegendes zur Reservierungsnutzung bei einem Abonnement mit Sätzen für nutzungsbasierte Bezahlung](../articles/billing/billing-understand-reserved-instance-usage.md)
     - [Grundlegendes zur Nutzung von Azure-Reservierungen für den Konzernbeitritt](../articles/billing/billing-understand-reserved-instance-usage-ea.md)
     - [Nicht in Azure-Reservierungen enthaltene Windows-Softwarekosten](../articles/billing/billing-reserved-instance-windows-software-costs.md)
     - [Verkaufen Microsoft Azure Reserved Instances](https://docs.microsoft.com/partner-center/azure-reservations)

@@ -4,12 +4,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 03/29/2019
 ms.author: erhopf
-ms.openlocfilehash: 9cad860b8808dd2682995768c282d8376ab5d9be
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.openlocfilehash: 5f06ca04b0b6ea48ebb49952df71cb02946777fa
+ms.sourcegitcommit: 08138eab740c12bf68c787062b101a4333292075
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67178378"
+ms.lasthandoff: 06/22/2019
+ms.locfileid: "67333375"
 ---
 ## <a name="authentication"></a>Authentication
 
@@ -26,8 +26,7 @@ Wenn Sie den Header `Ocp-Apim-Subscription-Key` verwenden, müssen Sie nur Ihren
 'Ocp-Apim-Subscription-Key': 'YOUR_SUBSCRIPTION_KEY'
 ```
 
-Wenn Sie den Header `Authorization: Bearer` verwenden, müssen Sie eine Anforderung an den Endpunkt `issueToken` stellen. In dieser Anforderung tauschen Sie Ihren Abonnementschlüssel gegen ein Zugriffstoken, der 10 Minuten lang gültig ist. In den nächsten Abschnitten erfahren Sie, wie Sie ein Token abrufen, verwenden und aktualisieren können.
-
+Wenn Sie den Header `Authorization: Bearer` verwenden, müssen Sie eine Anforderung an den Endpunkt `issueToken` stellen. In dieser Anforderung tauschen Sie Ihren Abonnementschlüssel gegen ein Zugriffstoken, der 10 Minuten lang gültig ist. In den nächsten Abschnitten erfahren Sie, wie Sie ein Token abrufen und verwenden können.
 
 ### <a name="how-to-get-an-access-token"></a>Abrufen eines Zugriffstokens
 

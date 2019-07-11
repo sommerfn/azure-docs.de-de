@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 2/20/2019
 ms.author: panosper
 ms.custom: seodec18
-ms.openlocfilehash: 2148d1bd79a858bec37e6c574c2a6b6e2009fe46
-ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
+ms.openlocfilehash: 45ed0167f5a83fa843a224ada35e96672a6752a1
+ms.sourcegitcommit: 5cb0b6645bd5dff9c1a4324793df3fdd776225e4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65190411"
+ms.lasthandoff: 06/21/2019
+ms.locfileid: "67311840"
 ---
 # <a name="why-use-batch-transcription"></a>Gründe für die Verwendung von Batch-Transkriptionen
 
@@ -66,8 +66,8 @@ Die Konfigurationsparameter werden als JSON angegeben:
 {
   "recordingsUrl": "<URL to the Azure blob to transcribe>",
   "models": [{"Id":"<optional acoustic model ID>"},{"Id":"<optional language model ID>"}],
-  "locale": "<local to us, for example en-US>",
-  "name": "<user define name of the transcription batch>",
+  "locale": "<locale to us, for example en-US>",
+  "name": "<user defined name of the transcription batch>",
   "description": "<optional description of the transcription>",
   "properties": {
     "ProfanityFilterMode": "Masked",
@@ -83,22 +83,54 @@ Die Konfigurationsparameter werden als JSON angegeben:
 
 ### <a name="configuration-properties"></a>Konfigurationseigenschaften
 
-| Parameter | BESCHREIBUNG | Erforderlich/optional |
-|-----------|-------------|---------------------|
-| `ProfanityFilterMode` | Gibt den Umgang mit Obszönitäten in Erkennungsergebnissen an. Zulässige Werte sind `none` (deaktiviert den Obszönitätenfilter), `masked` (Obszönitäten werden durch Sternchen ersetzt), `removed` (Obszönitäten werden aus dem Ergebnis entfernt) und `tags` (fügt „Obszönität“-Tags ein). Die Standardeinstellung ist `masked`. | Optional |
-| `PunctuationMode` | Gibt den Umgang mit Satzzeichen in Erkennungsergebnissen an. Gültige Werte sind `none` (deaktiviert Satzzeichen), `dictated` (explizite Satzzeichen), `automatic` (der Decoder verwaltet die Satzzeichen), `dictatedandautomatic` (vorgeschriebene Satzzeichen) oder „automatic“. | Optional |
- | `AddWordLevelTimestamps` | Gibt an, ob der Ausgabe Zeitstempel auf Wortebene hinzugefügt werden sollen. Gültige Werte sind `true` zum Aktivieren und `false` zum Deaktivieren von Zeitstempeln auf Wortebene. | Optional |
- | `AddSentiment` | Gibt an, dass die Stimmung der Äußerung hinzugefügt werden soll. Gültige Werte sind `true` zum Aktivieren der Stimmung pro Äußerung und `false` (Standardwert) zum Deaktivieren. | Optional |
+Verwenden Sie diese optionalen Eigenschaften zum Konfigurieren der Transkription:
+
+| Parameter | BESCHREIBUNG |
+|-----------|-------------|
+| `ProfanityFilterMode` | Gibt den Umgang mit Obszönitäten in Erkennungsergebnissen an. Zulässige Werte sind `none` (deaktiviert den Obszönitätenfilter), `masked` (Obszönitäten werden durch Sternchen ersetzt), `removed` (Obszönitäten werden aus dem Ergebnis entfernt) und `tags` (fügt „Obszönität“-Tags ein). Die Standardeinstellung ist `masked`. |
+| `PunctuationMode` | Gibt den Umgang mit Satzzeichen in Erkennungsergebnissen an. Gültige Werte sind `none` (deaktiviert Satzzeichen), `dictated` (explizite Satzzeichen), `automatic` (der Decoder verwaltet die Satzzeichen), `dictatedandautomatic` (vorgeschriebene Satzzeichen) oder „automatic“. |
+ | `AddWordLevelTimestamps` | Gibt an, ob der Ausgabe Zeitstempel auf Wortebene hinzugefügt werden sollen. Gültige Werte sind `true` zum Aktivieren und `false` zum Deaktivieren von Zeitstempeln auf Wortebene. |
+ | `AddSentiment` | Gibt an, dass die Stimmung der Äußerung hinzugefügt werden soll. Gültige Werte sind `true` zum Aktivieren der Stimmung pro Äußerung und `false` (Standardwert) zum Deaktivieren. |
+ | `AddDiarization` | Gibt an, dass die Diarisierungsanalyse bei der Eingabe durchgeführt werden sollte. Es wird erwartet, dass diese Eingabe ein Monokanal mit zwei Stimmen ist. Gültige Werte sind `true` zum Aktivieren der Diarisierung und `false` (der Standardwert) zu deren Deaktivierung. Außerdem muss `AddWordLevelTimestamps` auf „true“ festgelegt werden.|
 
 ### <a name="storage"></a>Storage
 
 Die Batchtranskription unterstützt [Azure Blob-Speicher](https://docs.microsoft.com/azure/storage/blobs/storage-blobs-overview) zum Lesen von Audio und zum Schreiben von Transkriptionen in den Speicher.
 
-## <a name="webhooks"></a>Webhooks 
+## <a name="webhooks"></a>webhooks 
 
 Die Abfrage des Transkriptionsstatus ist möglicherweise nicht die leistungsstärkste Option oder bietet nicht die bestmögliche Benutzererfahrung. Zur Abfrage des Status können Sie Rückrufe registrieren, die den Client benachrichtigen, wenn zeitintensive Transkriptionsaufgaben abgeschlossen sind.
 
 Weitere Informationen finden Sie unter [Webhooks](webhooks.md).
+
+## <a name="speaker-separation-diarization"></a>Sprechertrennung (Diarisierung)
+
+Diarisierung ist der Prozess, bei dem Sprecher in einem Audioelement getrennt werden. Unsere Batch-Pipeline unterstützt die Diarisierung und kann zwei Sprecher in Monokanalaufnahmen erkennen.
+
+Wenn Sie anfordern möchten, dass Ihre Audiotranskriptionsanforderung zur Diarisierung verarbeitet wird, müssen Sie den relevanten Parameter einfach wie unten gezeigt in der HTTP-Anforderung hinzufügen.
+
+ ```json
+{
+  "recordingsUrl": "<URL to the Azure blob to transcribe>",
+  "models": [{"Id":"<optional acoustic model ID>"},{"Id":"<optional language model ID>"}],
+  "locale": "<locale to us, for example en-US>",
+  "name": "<user defined name of the transcription batch>",
+  "description": "<optional description of the transcription>",
+  "properties": {
+    "AddWordLevelTimestamps" : "True",
+    "AddDiarization" : "True"
+  }
+}
+```
+
+Zeitstempel auf Wortebene müssten außerdem in der oben angegebenen Anforderung als Parameter ‚aktiviert‘ werden. 
+
+Das entsprechende Audio enthält die durch eine Zahl identifizierten Sprecher (weil wir derzeit nur zwei Stimmen unterstützen, werden die Sprecher als ‚Sprecher 1‘ und ‚Sprecher 2‘ identifiziert), gefolgt von der Transkriptionsausgabe.
+
+Beachten Sie außerdem, dass die Diarisierung in Stereoaufnahmen nicht verfügbar ist. Darüber hinaus enthalten alle JSON-Ausgaben das „Speaker“-Tag. Wenn keine Diarisierung verwendet wird, steht in der JSON-Ausgabe: ‚Speaker: Null‘.
+
+> [!NOTE]
+> Die Diarisierung ist in allen Regionen und für alle Gebietsschemas verfügbar!
 
 ## <a name="sentiment"></a>Stimmung
 
@@ -110,7 +142,7 @@ Die Stimmung ist ein neues Feature in der Batch-Transkriptions-API und ein wicht
 4.  ermitteln, was zu einer positiven Entwicklung bei negativen Gesprächen geführt hat
 5.  herausfinden, was Kunden an einem Produkt oder Dienst gefallen oder missfallen hat
 
-Die Stimmung wird pro Audiosegment bewertet. Ein Audiosegment ist der Zeitraum vom Start der Äußerung (Offset) bis zur Erkennung von Stille am Ende des Byte-Streams. Der gesamte Text in diesem Segment wird zum Berechnen der Stimmung bewertet. Wir berechnen KEINE aggregierten Werte für den gesamten Anruf oder die gesamte Sprechzeit jedes Kanals. Dies bleibt dem Domänenbesitzer überlassen.
+Die Stimmung wird pro Audiosegment bewertet. Ein Audiosegment ist der Zeitraum vom Start der Äußerung (Offset) bis zur Erkennung von Stille am Ende des Byte-Streams. Der gesamte Text in diesem Segment wird zum Berechnen der Stimmung bewertet. Wir berechnen KEINE aggregierten Werte für den gesamten Anruf oder die gesamte Sprechzeit jedes Kanals. Diese Aggregationen bleiben dem Domänenbesitzer überlassen.
 
 Die Stimmung wird auf die lexikalische Form angewendet.
 
@@ -153,7 +185,7 @@ Dieses Feature verwendet ein Stimmungsmodell, das sich derzeit in der Betaphase 
 
 ## <a name="sample-code"></a>Beispielcode
 
-Das vollständige Beispiel steht im [GitHub-Beispielrepository](https://aka.ms/csspeech/samples) innerhalb des Unterverzeichnisses `samples/batch` zur Verfügung.
+Vollständige Beispiele stehen im [GitHub-Beispielrepository](https://aka.ms/csspeech/samples) innerhalb des Unterverzeichnisses `samples/batch` zur Verfügung.
 
 Sie müssen den Beispielcode mit Ihren Abonnementinformationen, der Dienstregion, dem SAS-URI mit Verweis auf die zu transkribierende Audiodatei und die Modell-IDs anpassen, falls Sie ein benutzerdefiniertes Audio- oder Sprachmodell verwenden möchten. 
 
