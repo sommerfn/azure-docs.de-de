@@ -4,12 +4,12 @@ ms.service: virtual-machines
 ms.topic: include
 ms.date: 04/11/2019
 ms.author: cynthn
-ms.openlocfilehash: 81bde837cd78646f1fc59d921246c72978ecb840
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.openlocfilehash: 15724adfc6eb875f3d2d5b6d3ecbbb54135a7265
+ms.sourcegitcommit: 2e4b99023ecaf2ea3d6d3604da068d04682a8c2d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67178072"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67671425"
 ---
 # <a name="use-infrastructure-automation-tools-with-virtual-machines-in-azure"></a>Verwenden von Infrastrukturautomatisierungstools mit virtuellen Computern in Azure
 Für die umfangreiche konsistente Erstellung und Verwaltung virtueller Azure-Computer (Virtual Machines, VMs) empfiehlt sich in der Regel eine Form der Automatisierung. Es gibt zahlreiche Tools und Lösungen, mit denen Sie die gesamte Azure-Infrastrukturbereitstellung und den gesamten Verwaltungslebenszyklus automatisieren können. In diesem Artikel werden einige der Infrastrukturautomatisierungstools vorgestellt, die Sie in Azure verwenden können. Diese Tools lassen sich in der Regel einem der folgenden Konzepte zuordnen:
@@ -45,7 +45,7 @@ In diesem Artikel werden folgende Themen erläutert:
 
 
 ## <a name="puppet"></a>Puppet
-[Puppet](https://www.puppet.com) ist eine für Unternehmen geeignete Automatisierungsplattform zur Anwendungsübermittlung und -bereitstellung. Auf den Zielcomputern werden Agents installiert, um Puppet Master das Ausführen von Manifesten zu ermöglichen, die die gewünschte Konfiguration der Azure-Infrastruktur und der virtuellen Computer definieren. Zur Optimierung des DevOps-Workflows kann Puppet mit anderen Lösungen wie Jenkins und GitHub kombiniert werden. Weitere Informationen finden Sie unter [How Puppet works](https://puppet.com/product/how-puppet-works) (Funktionsweise von Puppet).
+[Puppet](https://www.puppet.com) ist eine für Unternehmen geeignete Automatisierungsplattform zur Anwendungsübermittlung und -bereitstellung. Auf den Zielcomputern werden Agents installiert, um Puppet Master das Ausführen von Manifesten zu ermöglichen, die die gewünschte Konfiguration der Azure-Infrastruktur und der virtuellen Computer definieren. Zur Optimierung des DevOps-Workflows kann Puppet mit anderen Lösungen wie Jenkins und GitHub kombiniert werden. Weitere Informationen finden Sie unter [How Puppet works](https://puppet.com/products/how-puppet-works) (Funktionsweise von Puppet).
 
 In diesem Artikel werden folgende Themen erläutert:
 
@@ -53,7 +53,7 @@ In diesem Artikel werden folgende Themen erläutert:
 
 
 ## <a name="cloud-init"></a>cloud-init
-[Cloud-init](https://cloudinit.readthedocs.io) ist ein weit verbreiteter Ansatz zum Anpassen einer Linux-VM beim ersten Start. Sie können mit cloud-init Pakete installieren und Dateien schreiben oder Benutzer und Sicherheit konfigurieren. Da cloud-init während des ersten Startvorgangs aufgerufen wird, müssen Sie keine zusätzlichen Schritte oder Agents auf Ihre Konfiguration anwenden.  Weitere Informationen zum ordnungsgemäßen Formatieren Ihrer `#cloud-config`-Dateien finden Sie auf der [cloud-init-Dokumentationswebsite](http://cloudinit.readthedocs.io/en/latest/topics/format.html#cloud-config-data).  `#cloud-config`-Dateien sind Base64-codierte Textdateien.
+[Cloud-init](https://cloudinit.readthedocs.io) ist ein weit verbreiteter Ansatz zum Anpassen einer Linux-VM beim ersten Start. Sie können mit cloud-init Pakete installieren und Dateien schreiben oder Benutzer und Sicherheit konfigurieren. Da cloud-init während des ersten Startvorgangs aufgerufen wird, müssen Sie keine zusätzlichen Schritte oder Agents auf Ihre Konfiguration anwenden.  Weitere Informationen zum ordnungsgemäßen Formatieren Ihrer `#cloud-config`-Dateien finden Sie auf der [cloud-init-Dokumentationswebsite](https://cloudinit.readthedocs.io/en/latest/topics/format.html#cloud-config-data).  `#cloud-config`-Dateien sind Base64-codierte Textdateien.
 
 Cloud-init funktioniert auch Distributionen übergreifend. Verwenden Sie z.B. nicht **apt-get install** oder **yum install**, um ein Paket zu installieren. Stattdessen können Sie eine Liste mit zu installierenden Paketen definieren. „cloud-init“ verwendet automatisch das native Paketverwaltungstool für die ausgewählte Distribution.
 

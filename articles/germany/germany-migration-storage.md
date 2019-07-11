@@ -9,12 +9,12 @@ ms.service: germany
 ms.date: 08/15/2018
 ms.topic: article
 ms.custom: bfmigrate
-ms.openlocfilehash: db26380ef50fd7546f90ceccaec854587e4690c4
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 572313f65d5d97211dcb664d79122ea6be520bab
+ms.sourcegitcommit: 1572b615c8f863be4986c23ea2ff7642b02bc605
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66165933"
+ms.lasthandoff: 07/10/2019
+ms.locfileid: "67786550"
 ---
 # <a name="migrate-storage-resources-to-global-azure"></a>Migrieren von Speicherressourcen zu Azure weltweit
 
@@ -133,7 +133,7 @@ Wie bereits erwähnt, gibt es mehrere Möglichkeiten, einen virtuellen Computer 
 Weitere Informationen finden Sie unter:
 
 - Erfahren Sie, wie Sie [über die API](/rest/api/compute/disks/grantaccess) auf den Datenträger exportieren, indem Sie einen Shared Access Signature-URI abrufen. 
-- Erfahren Sie, wie Sie einen verwalteten Datenträger [über die API](/rest/api/compute/disks/createorupdate#create_a_managed_disk_by_importing_an_unmanaged_blob_from_a_different_subscription.) aus einem nicht verwalteten Blob erstellen.
+- Erfahren Sie, wie Sie einen verwalteten Datenträger [über die API](/rest/api/compute/disks/createorupdate#create-a-managed-disk-by-importing-an-unmanaged-blob-from-a-different-subscription.) aus einem nicht verwalteten Blob erstellen.
 
 
 ## <a name="next-steps"></a>Nächste Schritte

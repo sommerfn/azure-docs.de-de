@@ -6,13 +6,14 @@ author: cherylmc
 ms.service: expressroute
 ms.topic: conceptual
 ms.date: 12/07/2018
-ms.author: anzaman;cherylmc
-ms.openlocfilehash: 556589aa7a0a577b9b1a010cf4811922ebc6de52
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.author: cherylmc
+ms.reviewer: anzaman
+ms.openlocfilehash: e42190814b9365c7db054eb2b5f1842581b64009
+ms.sourcegitcommit: cf438e4b4e351b64fd0320bf17cc02489e61406a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60837809"
+ms.lasthandoff: 07/08/2019
+ms.locfileid: "67657069"
 ---
 # <a name="create-and-modify-an-expressroute-circuit-using-cli"></a>Erstellen und Ändern einer ExpressRoute-Verbindung mit der CLI
 
@@ -23,9 +24,10 @@ Dieser Artikel beschreibt, wie eine Azure ExpressRoute-Verbindung mit der Befehl
 > * [Azure-Portal](expressroute-howto-circuit-portal-resource-manager.md)
 > * [PowerShell](expressroute-howto-circuit-arm.md)
 > * [Azure-Befehlszeilenschnittstelle](howto-circuit-cli.md)
+> * [Azure Resource Manager-Vorlage](expressroute-howto-circuit-resource-manager-template.md)
 > * [Video – Azure-Portal](https://azure.microsoft.com/documentation/videos/azure-expressroute-how-to-create-an-expressroute-circuit)
 > * [PowerShell (klassisch)](expressroute-howto-circuit-classic.md)
-> 
+>
 
 ## <a name="before-you-begin"></a>Voraussetzungen
 
@@ -127,8 +129,8 @@ Sie können nun eine ExpressRoute-Verbindung erstellen.
 
 > [!IMPORTANT]
 > Ihre ExpressRoute-Verbindung wird von dem Moment an berechnet, in dem ein Dienstschlüssel ausgegeben wird. Führen Sie diesen Vorgang durch, wenn der Konnektivitätsanbieter bereit ist, die Verbindung bereitzustellen.
-> 
-> 
+>
+>
 
 Wenn Sie noch keine Ressourcengruppe besitzen, müssen Sie zuerst eine erstellen, bevor Sie Ihre ExpressRoute-Verbindung erstellen. Sie können mithilfe des folgenden Befehls eine Ressourcengruppe erstellen:
 
@@ -136,7 +138,7 @@ Wenn Sie noch keine Ressourcengruppe besitzen, müssen Sie zuerst eine erstellen
 az group create -n ExpressRouteResourceGroup -l "West US"
 ```
 
-Das folgende Beispiel zeigt, wie Sie eine ExpressRoute-Verbindung mit 200 MBit/s über Equinix im Silicon Valley herstellen können. Wenn Sie einen anderen Anbieter und andere Einstellungen verwenden, ersetzen Sie bei Ihrer Anforderung die entsprechenden Informationen. 
+Das folgende Beispiel zeigt, wie Sie eine ExpressRoute-Verbindung mit 200 MBit/s über Equinix im Silicon Valley herstellen können. Wenn Sie einen anderen Anbieter und andere Einstellungen verwenden, ersetzen Sie bei Ihrer Anforderung die entsprechenden Informationen.
 
 Stellen Sie sicher, dass Sie die richtige SKU-Ebene und die richtige SKU-Familie angeben.
 
@@ -267,8 +269,8 @@ Eine detaillierte Anleitung zum Erstellen und Ändern von Verbindungspeerings fi
 
 > [!IMPORTANT]
 > Diese Anweisungen gelten nur für Verbindungen, die über Dienstanbieter erstellt wurden, von denen Layer 2-Konnektivitätsdienste angeboten werden. Wenn Sie einen Dienstanbieter nutzen, der verwaltete Layer 3-Dienste anbietet (meist ein IP-VPN, z.B. MPLS), übernimmt Ihr Konnektivitätsanbieter die Konfiguration und Verwaltung des Routings für Sie.
-> 
-> 
+>
+>
 
 ### <a name="8-link-a-virtual-network-to-an-expressroute-circuit"></a>8. Verknüpfen eines virtuellen Netzwerks mit einer ExpressRoute-Verbindung
 
@@ -279,7 +281,7 @@ Verknüpfen Sie anschließend ein virtuelles Netzwerk mit Ihrer ExpressRoute-Ver
 Sie können bestimmte Eigenschaften einer ExpressRoute-Verbindung ändern, ohne die Konnektivität zu beeinträchtigen. Sie können ohne Ausfallzeiten folgende Änderungen vornehmen:
 
 * Sie können ein ExpressRoute Premium-Add-On für Ihre ExpressRoute-Verbindung aktivieren oder deaktivieren.
-* Sie können die Bandbreite der ExpressRoute-Verbindung erhöhen, sofern Kapazität am Port vorhanden ist. Ein Downgrade der Bandbreite einer Verbindung wird allerdings nicht unterstützt. 
+* Sie können die Bandbreite der ExpressRoute-Verbindung erhöhen, sofern Kapazität am Port vorhanden ist. Ein Downgrade der Bandbreite einer Verbindung wird allerdings nicht unterstützt.
 * Sie können den Abrechnungstarif von „Volumentarif“ in „Unbegrenzte Daten“ ändern. Eine Änderung des Abrechnungstarifs von „Unbegrenzte Daten“ in „Volumentarif“ wird jedoch nicht unterstützt.
 * Sie können die Option *Klassische Vorgänge zulassen*aktivieren und deaktivieren.
 
@@ -299,8 +301,8 @@ Für die Verbindung sind nun die Features des ExpressRoute Premium-Add-Ons aktiv
 
 > [!IMPORTANT]
 > Bei diesem Vorgang kann ein Fehler auftreten, wenn Sie Ressourcen verwenden, die die zulässige Menge für die Standardverbindung überschreiten.
-> 
-> 
+>
+>
 
 Vor der Deaktivierung des ExpressRoute Premium-Add-Ons sollten Sie folgende Kriterien beachten:
 

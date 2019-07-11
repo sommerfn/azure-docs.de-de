@@ -8,12 +8,12 @@ ms.service: storage
 ms.topic: conceptual
 ms.date: 02/12/2019
 ms.author: normesta
-ms.openlocfilehash: c5b6287757f6b71cfd60687f463673f142db04d9
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: fd3875c5c78a02efab1251166ec7113902be3e08
+ms.sourcegitcommit: dad277fbcfe0ed532b555298c9d6bc01fcaa94e2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64939294"
+ms.lasthandoff: 07/10/2019
+ms.locfileid: "67723237"
 ---
 # <a name="using-azure-data-lake-storage-gen2-for-big-data-requirements"></a>Verwenden von Azure Data Lake Storage Gen2 für Big Data-Anforderungen
 
@@ -39,8 +39,8 @@ Ein *Dateisystem* ist ein Container für Ordner und Dateien. Sie benötigen mind
 
 |Tool | Anleitungen |
 |---|--|
-|Azure Storage-Explorer | [Erstellen eines Dateisystems mithilfe von Storage-Explorer](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-explorer#create-a-filesystem) |
-|AzCopy | [Erstellen eines Blobcontainers oder einer Dateifreigabe mithilfe von AzCopyV10](https://docs.microsoft.com/azure/storage/common/storage-use-azcopy-v10?toc=%2fazure%2fstorage%2fblobs%2ftoc.json#create-a-blob-container-or-file-share)|
+|Azure Storage-Explorer | [Erstellen eines Dateisystems mithilfe von Storage-Explorer](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-explorer#create-a-file-system) |
+|AzCopy | [Erstellen eines Blobcontainers oder einer Dateifreigabe mithilfe von AzCopyV10](https://docs.microsoft.com/azure/storage/common/storage-use-azcopy-v10#transfer-files)|
 |Befehlszeilenschnittstelle (CLI) des Hadoop Distributed File System mit HDInsight |[Erstellen eines Dateisystems mithilfe von HDFS mit HDInsight](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-use-hdfs-data-lake-storage?toc=%2fazure%2fstorage%2fblobs%2ftoc.json#create-a-file-system) |
 |Code in einem Azure Databricks-Notebook|[Erstellen des Dateisystems für das Speicherkonto (Scala)](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-quickstart-create-databricks-account?toc=%2fazure%2fstorage%2fblobs%2ftoc.json#create-storage-account-file-system) <br><br> [Erstellen und Einbinden eines Dateisystems (Python)](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-use-databricks-spark?toc=%2fazure%2fstorage%2fblobs%2ftoc.json#create-a-file-system-and-mount-it)|
 
@@ -54,11 +54,11 @@ Es gibt drei Möglichkeiten, um Zugriff zu gewähren:
 
 * Weisen Sie eine dieser Rollen einem Benutzer, einer Gruppe, einer vom Benutzer verwalteten Identität oder einem Dienstprinzipal zu:
 
-  [Leser von Speicherblobdaten](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#storage-blob-data-reader-preview)
+  [Leser von Speicherblobdaten](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#storage-blob-data-reader)
 
-  [Mitwirkender an Speicherblobdaten](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#storage-queue-data-contributor-preview)
+  [Mitwirkender an Speicherblobdaten](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#storage-queue-data-contributor)
 
-  [Besitzer von Speicherblobdaten](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#storage-blob-data-owner-preview)
+  [Besitzer von Speicherblobdaten](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#storage-blob-data-owner)
 
 * Verwenden Sie ein SAS-Token (Shared Access Signature).
 
@@ -196,4 +196,4 @@ Hier ist eine Liste von Tools, mit denen Sie Daten von Data Lake Storage Gen2 he
 |Tool | Anleitungen |
 |---|--|
 |Azure Data Factory | [Kopieraktivität in Azure Data Factory](https://docs.microsoft.com/azure/data-factory/copy-activity-overview) |
-|Apache DistCop | [Kopieren von Daten zwischen Azure Storage-Blobs und Azure Data Lake Storage Gen2 mit DistCp](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-use-distcp) |
+|Apache DistCp | [Kopieren von Daten zwischen Azure Storage-Blobs und Azure Data Lake Storage Gen2 mit DistCp](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-use-distcp) |

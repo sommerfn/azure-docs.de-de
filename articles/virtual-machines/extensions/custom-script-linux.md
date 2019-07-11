@@ -4,7 +4,7 @@ description: Automatisieren von Konfigurationsaufgaben für virtuelle Linux-Comp
 services: virtual-machines-linux
 documentationcenter: ''
 author: roiyz-msft
-manager: jeconnoc
+manager: gwallace
 editor: ''
 tags: azure-resource-manager
 ms.assetid: cf17ab2b-8d7e-4078-b6df-955c6d5071c2
@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 04/25/2018
 ms.author: roiyz
-ms.openlocfilehash: b9bc3ef0cf5dd54802d32058afb904800c364c19
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: c94c0bdb4979d932049e4b1c1e16fbd9e8096ca3
+ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64725232"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67706052"
 ---
 # <a name="use-the-azure-custom-script-extension-version-2-with-linux-virtual-machines"></a>Verwenden von Version 2 der Azure-Erweiterung für benutzerdefinierte Skripts mit virtuellen Linux-Computern
 Version 2 der Erweiterung für benutzerdefinierte Skripts lädt Skripts auf virtuelle Azure-Computer herunter und führt sie dort aus. Diese Erweiterung ist hilfreich bei der Konfiguration nach der Bereitstellung, bei der Softwareinstallation oder bei anderen Konfigurations-/Verwaltungsaufgaben. Sie können Skripts von Azure Storage oder einem anderen zugänglichen Speicherort im Internet herunterladen oder sie für die Erweiterungsruntime bereitstellen. 
@@ -113,7 +113,7 @@ Diese Elemente müssen als vertrauliche Daten behandelt und in der Konfiguration
 | publisher | Microsoft.Compute.Extensions | string |
 | type | CustomScript | string |
 | typeHandlerVersion | 2.0 | int |
-| fileUris (Beispiel) | https://github.com/MyProject/Archive/MyPythonScript.py | Array |
+| fileUris (Beispiel) | https://github.com/MyProject/Archive/MyPythonScript.py | array |
 | commandToExecute (Beispiel) | python MyPythonScript.py \<my-param1> | string |
 | script | IyEvYmluL3NoCmVjaG8gIlVwZGF0aW5nIHBhY2thZ2VzIC4uLiIKYXB0IHVwZGF0ZQphcHQgdXBncmFkZSAteQo= | string |
 | skipDos2Unix (Beispiel) | false | boolean |

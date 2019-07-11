@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 11/09/2017
 ms.author: ranjithr
 ms.custom: seodec18
-ms.openlocfilehash: 321dbf891c77007952f01b32bb509a15c2ac3e6f
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 5dae268e2c659bcd39c7b274f2f12c64b4504353
+ms.sourcegitcommit: dad277fbcfe0ed532b555298c9d6bc01fcaa94e2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60853067"
+ms.lasthandoff: 07/10/2019
+ms.locfileid: "67719782"
 ---
 # <a name="best-practices-and-troubleshooting-guide-for-node-applications-on-azure-app-service-windows"></a>Bewährte Methoden und Problembehandlungsschritte für Node-Anwendungen in Azure App Service unter Windows
 
@@ -274,14 +274,14 @@ Aktivieren Sie FREB für Ihre Anwendung, um den win32-Fehlercode anzuzeigen. (St
 | 503 |1002 |Überprüfen Sie den win32-Fehlercode auf den tatsächlichen Grund. Die Anforderung konnte nicht für „node.exe“ zugestellt werden. |
 | 503 |1003 |Die Named Pipe ist zu stark ausgelastet. Überprüfen Sie, ob „node.exe“ einen hohen CPU-Verbrauch aufweist. |
 
-NODE.exe verfügt über eine Einstellung namens `NODE_PENDING_PIPE_INSTANCES`. In Azure App Service ist dieser Wert auf 5000 festgelegt. Dies bedeutet, dass „node.exe“ für die benannte Pipe 5000 Anforderungen auf einmal akzeptieren kann. Dieser Wert sollte für die meisten Node-Anwendungen ausreichen, die in Azure App Service ausgeführt werden. 503\.1003 sollte in Azure App Service nicht angezeigt werden, da für `NODE_PENDING_PIPE_INSTANCES` ein hoher Wert gilt.
+NODE.exe verfügt über eine Einstellung namens `NODE_PENDING_PIPE_INSTANCES`. In Azure App Service ist dieser Wert auf 5000 festgelegt. Dies bedeutet, dass „node.exe“ für die benannte Pipe 5000 Anforderungen auf einmal akzeptieren kann. Dieser Wert sollte für die meisten Node-Anwendungen ausreichen, die in Azure App Service ausgeführt werden. 503.1003 sollte in Azure App Service nicht angezeigt werden, da für `NODE_PENDING_PIPE_INSTANCES` ein hoher Wert gilt.
 
 ## <a name="more-resources"></a>Weitere Ressourcen
 
 Unter den unten angegebenen Links finden Sie weitere Informationen zu „node.js“-Anwendungen für Azure App Service.
 
 * [Erste Schritte mit Node.js-Web-Apps in Azure App Service](app-service-web-get-started-nodejs.md)
-* [Debuggen einer Node.js-Web-App in Azure App Service](app-service-web-tutorial-nodejs-mongodb-app.md)
+* [Debuggen einer Node.js-Web-App in Azure App Service](https://blogs.msdn.microsoft.com/azureossds/2018/08/03/debugging-node-js-apps-on-azure-app-services/)
 * [Verwenden von Node.js-Modulen mit Azure-Anwendungen](../nodejs-use-node-modules-azure-apps.md)
 * [Azure App Service-Web-Apps: Node.js](https://blogs.msdn.microsoft.com/silverlining/2012/06/14/windows-azure-websites-node-js/)
 * [Node.js Developer Center (in englischer Sprache)](../nodejs-use-node-modules-azure-apps.md)

@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: shlo
 robots: noindex
-ms.openlocfilehash: 25cf9c3b7968be16dcc22f4140725efc22d785f2
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: f43bf3e9158b7d02f6b0f6147559962da855bfbb
+ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66156539"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67701755"
 ---
 # <a name="azure-data-factory---json-scripting-reference"></a>Azure Data Factory – JSON-Skiptreferenz
 > [!NOTE]
@@ -4941,7 +4941,7 @@ Die folgende Tabelle enthält Beschreibungen der Eigenschaften, die in der Azure
 
 | Eigenschaft | BESCHREIBUNG | Erforderlich |
 | --- | --- | --- |
-| Type |Legen Sie die type-Eigenschaft auf **AzureML** fest. |Ja |
+| type |Legen Sie die type-Eigenschaft auf **AzureML** fest. |Ja |
 | mlEndpoint |Die Batchbewertungs-URL. |Ja |
 | apiKey |Die veröffentlichte API des Arbeitsbereichsmodells. |Ja |
 
@@ -4969,7 +4969,7 @@ Die folgende Tabelle enthält Beschreibungen der Eigenschaften, die in der JSON-
 
 | Eigenschaft | BESCHREIBUNG | Erforderlich |
 | --- | --- | --- |
-| Type |Legen Sie die type-Eigenschaft auf **AzureDataLakeAnalytics** fest. |Ja |
+| type |Legen Sie die type-Eigenschaft auf **AzureDataLakeAnalytics** fest. |Ja |
 | accountName |Name des Azure Data Lake Analytics-Kontos. |Ja |
 | dataLakeAnalyticsUri |URI des Azure Data Lake Analytics-Kontos. |Nein |
 | Autorisierung |Der Autorisierungscode wird automatisch abgerufen, nachdem Sie im Data Factory-Editor auf die Schaltfläche **Autorisieren** geklickt und die OAuth-Anmeldung abgeschlossen haben. |Ja |

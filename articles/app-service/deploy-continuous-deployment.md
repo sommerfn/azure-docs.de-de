@@ -12,14 +12,15 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 12/03/2018
-ms.author: cephalin;dariagrigoriu
+ms.author: cephalin
+ms.reviewer: dariac
 ms.custom: seodec18
-ms.openlocfilehash: 384f709bb32f973efec39518eaa895e25136fe23
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 13aaccdbc07f7829d6ac9870fbc46f7d78381db8
+ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66390637"
+ms.lasthandoff: 07/07/2019
+ms.locfileid: "67617249"
 ---
 # <a name="continuous-deployment-to-azure-app-service"></a>Continuous Deployment in Azure App Service
 Dieser Artikel veranschaulicht das Konfigurieren von Continuous Deployment für [Azure App Service](overview.md). App Service ermöglicht Continuous Deployment aus Bitbucket, GitHub und [Azure DevOps Services](https://www.visualstudio.com/team-services/) durch Pullen der neuesten Updates aus Ihrem vorhandenen Repository in einen dieser Dienste.

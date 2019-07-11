@@ -2,24 +2,25 @@
 title: Leitfaden zu Sicherheitswarnungen für Azure Security Center für IoT (Vorschauversion) | Microsoft-Dokumentation
 description: Hier erhalten Sie Informationen zu Sicherheitswarnungen und empfohlenen Abhilfemaßnahmen unter Verwendung von Azure Security Center für IoT-Features und -Diensten.
 services: asc-for-iot
-ms.service: ascforiot
+ms.service: asc-for-iot
 documentationcenter: na
 author: mlottner
 manager: rkarlin
 editor: ''
 ms.assetid: a5c25cba-59a4-488b-abbe-c37ff9b151f9
+ms.subservice: asc-for-iot
 ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/24/2019
 ms.author: mlottner
-ms.openlocfilehash: db3a955cd9e572d1daca044aed75048e394e8457
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 6168278a51cf5a73fec0387ab61f46e201d158f9
+ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65200754"
+ms.lasthandoff: 07/07/2019
+ms.locfileid: "67616941"
 ---
 # <a name="azure-security-center-for-iot-security-alerts"></a>Azure Security Center für IoT – Sicherheitswarnungen
 
@@ -37,7 +38,7 @@ Weitere Details finden Sie unter [Create custom alerts](quickstart-create-custom
 
 ## <a name="built-in-alerts-for-iot-devices"></a>Integrierte Warnungen für IoT-Geräte
 
-| Severity | NAME                                                   | Data source | BESCHREIBUNG                                                                                                                                                                                                                                                                                                                                                                                                                                 |
+| severity | NAME                                                   | Data source | BESCHREIBUNG                                                                                                                                                                                                                                                                                                                                                                                                                                 |
 |----------|--------------------------------------------------------|-------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | Hoch     | Erfolgreiche lokale Anmeldung                                 | Agent       | Erfolgreiche Anmeldung eines lokalen Gerätes erkannt                                                                                                                                                                                                                                                                                                                                                                                         |
 | Hoch     | Erfolgreicher Brute-Force-Angriff                                  | Agent       | Mehrere nicht erfolgreiche Anmeldeversuche, gefolgt von einer erfolgreichen Anmeldung erkannt. Auf dem Gerät ist ein erfolgreicher Brute-Force-Angriff aufgetreten.                                                                                                                                                                                                                                                                                                              |
@@ -81,7 +82,7 @@ Weitere Details finden Sie unter [Create custom alerts](quickstart-create-custom
 
 ## <a name="built-in-alerts-for-iot-hub"></a>Integrierte Warnungen für IoT Hub
 
-| Severity | NAME                                                                         | BESCHREIBUNG                                                                                                                                                                                                                                                                                                                            |
+| severity | NAME                                                                         | BESCHREIBUNG                                                                                                                                                                                                                                                                                                                            |
 |----------|------------------------------------------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | Mittel   | Neues Zertifikat zu einem IoT Hub hinzugefügt                                    |Einem IoT Hub wurde ein neues Zertifikat hinzugefügt. Wenn diese Hinzufügung nicht durch eine autorisierte Person erfolgt ist, kann dies auf schädliche Aktivitäten hinweisen.                                                                                                                                                                                                    |
 | Mittel   | Zertifikat von einem IoT Hub gelöscht                                    | Ein Zertifikat wurde von einem IoT Hub gelöscht. Wenn diese Aktion nicht durch eine autorisierte Person erfolgt ist, kann dies auf schädliche Aktivitäten hinweisen.                                                                                                                                                                                                |

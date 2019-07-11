@@ -7,12 +7,12 @@ ms.service: marketplace
 ms.topic: conceptual
 ms.date: 10/19/2018
 ms.author: pabutler
-ms.openlocfilehash: 3d38efadfb8ad13d072056ef851be99d9540ad4b
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 0637491a1d7799bcaef594123aab53f89690c86f
+ms.sourcegitcommit: cf438e4b4e351b64fd0320bf17cc02489e61406a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64938429"
+ms.lasthandoff: 07/08/2019
+ms.locfileid: "67654035"
 ---
 # <a name="configure-the-azure-hosted-vm"></a>Konfigurieren der in Azure gehosteten VM
 
@@ -66,7 +66,7 @@ Windows-Betriebssystemdatenträger werden mit dem [Sysprep-Tool](https://docs.mi
 > [!WARNING]
 >  Da Updates unter Umständen automatisch ausgeführt werden, sollten Sie die VM nach der Ausführung von Sysprep bis zur Bereitstellung herunterfahren.  Durch das Herunterfahren wird vermieden, dass nachfolgende Updates instanzspezifische Änderungen am VHD-Betriebssystem oder den installierten Diensten vornehmen.
 
-Weitere Informationen zum Ausführen von Sysprep finden Sie unter [Schritte zum Generalisieren einer VHD](https://docs.microsoft.com/azure/virtual-machines/windows/prepare-for-upload-vhd-image#steps-to-generalize-a-vhd).
+Weitere Informationen zum Ausführen von Sysprep finden Sie unter [Schritte zum Generalisieren einer VHD](https://docs.microsoft.com/azure/virtual-machines/windows/capture-image-resource#generalize-the-windows-vm-using-sysprep).
 
 ### <a name="linux"></a>Linux
 

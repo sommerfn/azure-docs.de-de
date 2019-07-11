@@ -105,6 +105,10 @@
           href: web-sites-php-configure.md
         - name: Konfigurieren von Java
           href: configure-language-java.md
+        - name: Verbindungsherstellung mit lokalen Ressourcen
+          href: web-sites-integrate-with-vnet.md
+        - name: Azure Storage (Container) konfigurieren
+          href: configure-connect-to-azure-storage.md
     - name: Bereitstellen in Azure
       items:
         - name: Bereitstellen der App

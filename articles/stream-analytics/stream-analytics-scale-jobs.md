@@ -9,12 +9,12 @@ ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 06/22/2017
-ms.openlocfilehash: f4307da2e74846507cafb9f767a6ccae855e42a2
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: fe4d37563af159f566bc3fb03a3cfe136e7cb734
+ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60816815"
+ms.lasthandoff: 07/07/2019
+ms.locfileid: "67621725"
 ---
 # <a name="scale-an-azure-stream-analytics-job-to-increase-throughput"></a>Skalieren eines Azure Stream Analytics-Auftrags zur Erhöhung des Durchsatzes
 In diesem Artikel erfahren Sie, wie Sie eine Stream Analytics-Abfrage zur Steigerung des Durchsatzes für Stream Analytics-Aufträge optimieren. Im folgenden Leitfaden wird erläutert, wie Sie Ihren Auftrag zur Verarbeitung höherer Lasten skalieren und von einer größeren Menge an Systemressourcen (z.B. Bandbreite, CPU-Ressourcen, Arbeitsspeicher) profitieren können.
@@ -85,7 +85,7 @@ Um Hilfe zu erhalten, nutzen Sie unser [Azure Stream Analytics-Forum](https://so
 ## <a name="next-steps"></a>Nächste Schritte
 * [Einführung in Azure Stream Analytics](stream-analytics-introduction.md)
 * [Erste Schritte mit Azure Stream Analytics](stream-analytics-real-time-fraud-detection.md)
-* [Stream Analytics Query Language Reference (in englischer Sprache)](https://msdn.microsoft.com/library/azure/dn834998.aspx)
+* [Stream Analytics Query Language Reference (in englischer Sprache)](https://docs.microsoft.com/stream-analytics-query/stream-analytics-query-language-reference)
 * [Referenz zur Azure Stream Analytics-Verwaltungs-REST-API](https://msdn.microsoft.com/library/azure/dn835031.aspx)
 
 <!--Image references-->

@@ -2,18 +2,18 @@
 title: Verbinden mit einer Datenquelle in Power BI-Arbeitsbereichssammlungen | Microsoft-Dokumentation
 description: Erfahren Sie, wie Sie in Power BI-Arbeitsbereichssammlungen eine Verbindung zu Datenquellen herstellen können.
 services: power-bi-workspace-collections
-ms.service: power-bi-workspace-collections
+ms.service: power-bi-embedded
 author: rkarlin
 ms.author: rkarlin
 ms.topic: article
 ms.workload: powerbi
 ms.date: 09/20/2017
-ms.openlocfilehash: 721458c5725e912d801b307ac05f3fde0776580e
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 1ce666a017c1e5ac25b11fe1c22cdb37746f75df
+ms.sourcegitcommit: 2e4b99023ecaf2ea3d6d3604da068d04682a8c2d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64708762"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67669155"
 ---
 # <a name="connect-to-a-data-source"></a>Herstellen einer Verbindung mit einer Datenquelle
 

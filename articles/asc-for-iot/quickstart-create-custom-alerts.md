@@ -2,24 +2,25 @@
 title: Erstellen benutzerdefinierter Benachrichtigungen für Azure Security Center für IoT (Vorschauversion) | Microsoft-Dokumentation
 description: Hier erfahren Sie, wie Sie benutzerdefinierte Benachrichtigungen für Azure Security Center für IoT erstellen und zuweisen.
 services: asc-for-iot
-ms.service: ascforiot
+ms.service: asc-for-iot
 documentationcenter: na
 author: mlottner
 manager: rkarlin
 editor: ''
 ms.assetid: d1757868-da3d-4453-803a-7e3a309c8ce8
+ms.subservice: asc-for-iot
 ms.devlang: na
 ms.topic: quickstart
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/19/2019
 ms.author: mlottner
-ms.openlocfilehash: 3b4c5e4700b0ef718a6b079ecc6ab3ad80f4eab6
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: 12559af013d49e557ba0132bef24867867745c16
+ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65786180"
+ms.lasthandoff: 07/07/2019
+ms.locfileid: "67618024"
 ---
 # <a name="quickstart-create-custom-alerts"></a>Schnellstart: Erstellen benutzerdefinierter Benachrichtigungen
 
@@ -62,7 +63,7 @@ Verwenden Sie Sicherheitsgruppen, um Ihre Geräte in logischen Kategorien zu gru
 
 Die folgende Tabelle enthält eine Zusammenfassung der anpassbaren Benachrichtigungen:
 
-| Severity | NAME                                                                                                    | Data source | BESCHREIBUNG                                                                                                                                     |
+| severity | NAME                                                                                                    | Data source | BESCHREIBUNG                                                                                                                                     |
 |----------|---------------------------------------------------------------------------------------------------------|-------------|-------------------------------------------------------------------------------------------------------------------------------------------------|
 | Niedrig      | Benutzerdefinierte Benachrichtigung: Die Anzahl von Cloud-zu-Gerät-Nachrichten im AMQP-Protokoll liegt nicht innerhalb des zulässigen Bereichs.          | IoT Hub     | Die Menge der Cloud-zu-Gerät-Nachrichten (AMQP-Protokoll) in einem Zeitfenster liegt nicht innerhalb des konfigurierten zulässigen Bereichs.                                  |
 | Niedrig      | Benutzerdefinierte Benachrichtigung: Die Anzahl abgelehnter Cloud-zu-Gerät-Nachrichten im AMQP-Protokoll liegt nicht innerhalb des zulässigen Bereichs. | IoT Hub     | Die Menge der Cloud-zu-Gerät-Nachrichten (AMQP-Protokoll), die in einem Zeitfenster durch das Gerät abgelehnt wurden, liegt nicht innerhalb des konfigurierten zulässigen Bereichs. |

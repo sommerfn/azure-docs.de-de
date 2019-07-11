@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 05/10/2019
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 7515c061467419412608bb8103136791845ae093
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 742e0028b1f92beb8300cc97f09d8292259fbc0a
+ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67133170"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67712445"
 ---
 # <a name="enable-and-deploy-azure-ultra-ssds-preview"></a>Aktivieren und Bereitstellen von SSD Ultra-Azure-Datenträgern (Vorschauversion)
 
@@ -63,7 +63,7 @@ Zum Verwenden von SSD Ultra-Datenträgern müssen Sie eine VM erstellen, für d
 Ersetzen Sie die Variablen **$vmname**, **$rgname**, **$diskname**, **$location**, **$password** und **$user** durch Ihre eigenen Werte, bzw. legen Sie sie fest. Legen Sie **$zone** auf den Wert Ihrer Verfügbarkeitszone fest, den Sie am [Anfang dieses Artikels](#determine-your-availability-zone) ermittelt haben. Führen Sie anschließend den folgenden CLI-Befehl aus, um eine Ultra-fähige VM zu erstellen:
 
 ```azurecli-interactive
-az vm create --subscription $subscription -n $vmname -g $rgname --image Win2016Datacenter --ultra-ssd-enabled --zone $zone --authentication-type password --admin-password $password --admin-username $user --attach-data-disks $diskname --size Standard_D4s_v3 --location $location
+az vm create --subscription $subscription -n $vmname -g $rgname --image Win2016Datacenter --ultra-ssd-enabled true --zone $zone --authentication-type password --admin-password $password --admin-username $user --attach-data-disks $diskname --size Standard_D4s_v3 --location $location
 ```
 
 ### <a name="create-an-ultra-ssd-using-cli"></a>Erstellen eines SSD Ultra-Datenträgers per CLI

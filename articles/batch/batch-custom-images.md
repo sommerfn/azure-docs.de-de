@@ -8,12 +8,12 @@ ms.service: batch
 ms.topic: article
 ms.date: 04/15/2019
 ms.author: lahugh
-ms.openlocfilehash: 886dea0e53519870aaa27dea721a9eb78515cf86
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 80cba5e1b5e38e31dea2272cc4e33b4a95940e41
+ms.sourcegitcommit: d2785f020e134c3680ca1c8500aa2c0211aa1e24
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64706326"
+ms.lasthandoff: 07/04/2019
+ms.locfileid: "67565610"
 ---
 # <a name="use-a-custom-image-to-create-a-pool-of-virtual-machines"></a>Verwenden eines benutzerdefinierten Images zum Erstellen eines VM-Pools 
 
@@ -49,7 +49,7 @@ In Azure können Sie ein verwaltetes Image auf der Grundlage des Betriebssystemd
 
 ### <a name="prepare-a-vm"></a>Vorbereiten eines virtuellen Computers
 
-Wenn Sie einen neuen virtuellen Computer für das Image erstellen, können Sie ein von Batch unterstütztes Azure Marketplace-Erstanbieterimage als Basisimage für Ihr verwaltetes Image verwenden. Nur Images von Erstanbietern können als Basisimage verwendet werden. Eine vollständige Liste der von Azure Batch unterstützten Azure Marketplace-Imageverweisen finden Sie im Artikel zum Vorgang zum [Auflisten der Knoten-Agent-SKUs](/rest/api/batchservice/account/listnodeagentskus).
+Wenn Sie einen neuen virtuellen Computer für das Image erstellen, können Sie ein von Batch unterstütztes Azure Marketplace-Erstanbieterimage als Basisimage für Ihr verwaltetes Image verwenden. Nur Images von Erstanbietern können als Basisimage verwendet werden. Eine vollständige Liste der von Azure Batch unterstützten Azure Marketplace-Imageverweisen finden Sie im Artikel zum Vorgang zum [Auflisten der Knoten-Agent-SKUs](/java/api/com.microsoft.azure.batch.protocol.accounts.listnodeagentskus).
 
 > [!NOTE]
 > Sie können kein Image von Drittanbietern verwenden, das über zusätzliche Lizenz- und Kaufbedingungen zu Ihrem Basisimage verfügt. Informationen zu diesen Marketplace-Images finden Sie in der Anleitung für [Linux](../virtual-machines/linux/cli-ps-findimage.md#deploy-an-image-with-marketplace-terms

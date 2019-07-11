@@ -10,12 +10,12 @@ ms.subservice: development
 ms.date: 03/15/2019
 ms.author: xiaoyul
 ms.reviewer: igorstan
-ms.openlocfilehash: 06bdd21363aee8202ce7178f157f01a5c26e3a52
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: c22caa4b3da69d46241dfbaa7556d0209130415c
+ms.sourcegitcommit: c0419208061b2b5579f6e16f78d9d45513bb7bbc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65851590"
+ms.lasthandoff: 07/08/2019
+ms.locfileid: "67626132"
 ---
 # <a name="designing-tables-in-azure-sql-data-warehouse"></a>Entwerfen von Tabellen in Azure SQL Data Warehouse
 
@@ -107,7 +107,7 @@ Standardmäßig speichert SQL Data Warehouse eine Tabelle als gruppierten Column
 Eine Liste der Columnstore-Funktionen finden Sie unter [Columnstore-Indizes – Neuigkeiten](/sql/relational-databases/indexes/columnstore-indexes-what-s-new). Informationen zum Verbessern der Leistung von Columnstore-Indizes finden Sie unter [Maximieren der Zeilengruppenqualität für Columnstore](sql-data-warehouse-memory-optimizations-for-columnstore-compression.md).
 
 ## <a name="statistics"></a>Statistiken
-Der Abfrageoptimierer verwendet beim Erstellen des Plans für die Ausführung einer Abfrage Statistiken auf Spaltenebene. Um die Abfrageleistung zu verbessern, ist es wichtig, über Statistiken für einzelne Spalten zu verfügen, insbesondere für in Abfrageverknüpfungen verwendete Spalten. Das [Erstellen von Statistiken](https://docs.microsoft.com/azure/sql-data-warehouse/sql-data-warehouse-tables-statistics#automatic-creation-of-statistics) erfolgt automatisch.  Die Aktualisierung der Statistiken wird jedoch nicht automatisch ausgeführt. Führen Sie die Statistikaktualisierung durch, wenn eine erhebliche Anzahl von Zeilen hinzugefügt oder geändert wurde. Aktualisieren Sie Statistiken z. B. nach einem Ladevorgang. Weitere Informationen finden Sie unter [Verwalten von Statistiken für Tabellen in SQL Data Warehouse](sql-data-warehouse-tables-statistics.md).
+Der Abfrageoptimierer verwendet beim Erstellen des Plans für die Ausführung einer Abfrage Statistiken auf Spaltenebene. Um die Abfrageleistung zu verbessern, ist es wichtig, über Statistiken für einzelne Spalten zu verfügen, insbesondere für in Abfrageverknüpfungen verwendete Spalten. Das [Erstellen von Statistiken](https://docs.microsoft.com/azure/sql-data-warehouse/sql-data-warehouse-tables-statistics#automatic-creation-of-statistic) erfolgt automatisch.  Die Aktualisierung der Statistiken wird jedoch nicht automatisch ausgeführt. Führen Sie die Statistikaktualisierung durch, wenn eine erhebliche Anzahl von Zeilen hinzugefügt oder geändert wurde. Aktualisieren Sie Statistiken z. B. nach einem Ladevorgang. Weitere Informationen finden Sie unter [Verwalten von Statistiken für Tabellen in SQL Data Warehouse](sql-data-warehouse-tables-statistics.md).
 
 ## <a name="commands-for-creating-tables"></a>Befehle zum Erstellen von Tabellen
 Sie können eine Tabelle als neue leere Tabelle erstellen. Alternativ können Sie eine Tabelle erstellen und mit den Ergebnissen einer SELECT-Anweisung füllen. Es folgen die T-SQL-Befehle zum Erstellen einer Tabelle.

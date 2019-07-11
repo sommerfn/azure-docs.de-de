@@ -1,0 +1,51 @@
+### YamlMime:YamlDocument
+documentType: LandingData
+title: Azure Data Share (Vorschauversion) – Dokumentation
+metadata:
+  title: 'Azure Data Share (Vorschauversion) – Dokumentation: Tutorials, Schrittanleitungen'
+  description: Die Vorschauversion von Azure Data Share ist ein sicherer Dienst für die Freigabe von Daten für Drittanbieter-Organisationen.
+  author: joannapea
+  ms.author: joanpo
+  ms.service: data-share
+  ms.topic: landing-page
+  ms.date: 07/10/2019
+abstract:
+  description: '<p>Die Vorschauversion von Azure Data Share ist ein sicherer Dienst für die Freigabe von Daten für Drittanbieter-Organisationen. Wählen Sie die Datasets aus, die Sie freigeben möchten, fügen Sie Empfänger hinzu, und starten Sie die Datenfreigabe mit der Möglichkeit, Ihre Datenfreigabebeziehungen zu verwalten, zu überwachen und zu steuern. </p><p>Erfahren Sie in unseren Tutorials, wie Azure Data Share verwendet wird.</p>'
+  aside:
+    image:
+      alt: null
+      height: 110
+      src: media/azure-friday.png
+      width: 250
+    title: Azure Data Share in Azure Friday
+    href: 'https://channel9.msdn.com/Shows/Azure-Friday/Share-data-simply-and-securely-using-Azure-Data-Share/player?format=ny'
+    width: 250
+sections:
+  - title: Anleitungen
+    items:
+      - type: paragraph
+        text: 'In den folgenden Schrittanleitungen erfahren Sie, wie Sie Ihre Datenfreigabe überwachen, Dataset-Mappings konfigurieren, Empfänger hinzufügen und vieles mehr:'
+      - type: list
+        style: icon48
+        items:
+          - image:
+              src: /azure/data-share/media/index/portal.svg
+            text: Überwachen von Azure Data Share
+            href: /azure/data-share/how-to-monitor
+          - image:
+              src: /azure/data-share/media/index/portal.svg
+            text: Konfigurieren eines Dataset-Mappings
+            href: /azure/data-share/how-to-configure-mapping
+          - image:
+              src: /azure/data-share/media/index/portal.svg
+            text: Behandeln von Problemen mit Azure Data Share
+            href: /azure/data-share/data-share-troubleshoot
+  - title: Schritt-für-Schritt-Tutorials
+    items:
+      - type: paragraph
+        text: 'Erfahren Sie, wie Sie mit der Freigabe Ihrer Daten über Azure Data Share beginnen können.'
+      - type: list
+        style: ordered
+        items:
+          - html: <a href="share-your-data">Freigeben von Daten mithilfe von Azure Data Share</a>
+          - html: <a href="subscribe-to-data-share">Akzeptieren und Empfangen von Daten mithilfe von Azure Data Share</a>

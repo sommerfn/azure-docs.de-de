@@ -4,7 +4,7 @@ description: Verwenden Sie eine Azure Resource Manager-Vorlage, um einen neuen v
 services: virtual-machines-windows
 documentationcenter: ''
 author: sbtron
-manager: jeconnoc
+manager: gwallace
 editor: ''
 tags: azure-resource-manager
 ms.assetid: 8cde8fe7-977b-43d2-be74-ad46dc946058
@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 05/31/2017
 ms.author: saurabh
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 00b4a145da9104cab410c5a07f6d7ec5ded5c45d
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 8d1c5598bd7ea5b3f35d5447935953d4cd55664a
+ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60800019"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67706754"
 ---
 # <a name="use-monitoring-and-diagnostics-with-a-windows-vm-and-azure-resource-manager-templates"></a>Verwenden von Überwachung und Diagnose bei einer Windows-VM und Azure Resource Manager-Vorlagen
 Die Azure-Diagnoseerweiterung stellt Überwachungs- und Diagnosefunktionen auf einem Windows-basierten virtuellen Azure-Computer bereit. Sie können diese Funktionen auf dem virtuellen Computer nutzen, indem Sie die Erweiterung in die Azure Resource Manager-Vorlage einbinden. Weitere Informationen zum Einbinden von Erweiterungen in eine Vorlage für virtuelle Computer finden Sie unter [Erstellen von Azure-Ressourcen-Manager-Vorlagen mit VM-Erweiterungen](../windows/template-description.md#extensions) . Dieser Artikel beschreibt das Hinzufügen der Azure-Diagnoseerweiterung zu einer Vorlage für virtuelle Windows-Computer.  
