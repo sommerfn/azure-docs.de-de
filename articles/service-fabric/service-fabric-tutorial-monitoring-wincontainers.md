@@ -13,14 +13,14 @@ ms.topic: tutorial
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 06/08/2018
-ms.author: aljo, dekapur
+ms.author: dekapur
 ms.custom: mvc
-ms.openlocfilehash: 11d913264e5920b90ea08d2a29a3651ab101ee64
-ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
+ms.openlocfilehash: 011cac977e44f85b8b183d253e987ff1b38c9834
+ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58663161"
+ms.lasthandoff: 07/07/2019
+ms.locfileid: "67621918"
 ---
 # <a name="tutorial-monitor-windows-containers-on-service-fabric-using-azure-monitor-logs"></a>Tutorial: Überwachen von Windows-Containern unter Service Fabric mit Azure Monitor-Protokollen
 
@@ -86,7 +86,7 @@ Nehmen Sie die folgenden Änderungen in Ihrer *template.json*-Datei vor:
     "omsSolution": "ServiceFabric"
     ```
 
-3. Fügen Sie Microsoft Monitoring Agent als VM-Erweiterung hinzu. Suchen Sie die Ressource für VM-Skalierungsgruppen: *resources* > *"apiVersion": "[variables('vmssApiVersion')]"*. Fügen Sie unter *properties* > *virtualMachineProfile* > *extensionProfile* > *extensions* die folgende Erweiterungsbeschreibung unter der Erweiterung *ServiceFabricNode* hinzu: 
+3. Fügen Sie Microsoft Monitoring Agent als VM-Erweiterung hinzu. Suchen Sie die Ressource für VM-Skalierungsgruppen: *resources* >  *"apiVersion": "[variables('vmssApiVersion')]"* . Fügen Sie unter *properties* > *virtualMachineProfile* > *extensionProfile* > *extensions* die folgende Erweiterungsbeschreibung unter der Erweiterung *ServiceFabricNode* hinzu: 
     
     ```json
     {
@@ -212,7 +212,7 @@ Da der Agent Docker-Protokolle erfasst, werden standardmäßig *stdout* und *std
 
 ![Containerlösungsdashboard](./media/service-fabric-tutorial-monitoring-wincontainers/container-metrics.png)
 
-Durch Klicken auf einen der folgenden Bereiche gelangen Sie zu der Kusto-Abfrage, die den angezeigten Wert generiert. Ändern Sie die Abfrage in *\**, um die verschiedenen Arten von Protokollen anzuzeigen, die erfasst werden. Von hier aus können Sie nach Containerleistung und Protokollen abfragen oder filtern bzw. Service Fabric-Plattformereignisse betrachten. Die Agents geben auch ständig einen Heartbeat von jedem Knoten aus, den Sie sich ansehen können, um sicherzustellen, dass immer noch Daten von allen Computern gesammelt werden, wenn sich Ihre Clusterkonfiguration ändert.
+Durch Klicken auf einen der folgenden Bereiche gelangen Sie zu der Kusto-Abfrage, die den angezeigten Wert generiert. Ändern Sie die Abfrage in *\** , um die verschiedenen Arten von Protokollen anzuzeigen, die erfasst werden. Von hier aus können Sie nach Containerleistung und Protokollen abfragen oder filtern bzw. Service Fabric-Plattformereignisse betrachten. Die Agents geben auch ständig einen Heartbeat von jedem Knoten aus, den Sie sich ansehen können, um sicherzustellen, dass immer noch Daten von allen Computern gesammelt werden, wenn sich Ihre Clusterkonfiguration ändert.
 
 ![Containerabfrage](./media/service-fabric-tutorial-monitoring-wincontainers/query-sample.png)
 

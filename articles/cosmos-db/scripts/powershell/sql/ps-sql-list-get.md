@@ -3,15 +3,15 @@ title: 'Azure PowerShell-Skript: Auflist- und Abrufvorgänge in Azure Cosmos DB 
 description: 'Azure PowerShell-Skript: Auflist- und Abrufvorgänge in Azure Cosmos DB für die SQL-API (Core-API)'
 author: markjbrown
 ms.service: cosmos-db
-ms.topic: samples
+ms.topic: sample
 ms.date: 05/18/2019
 ms.author: mjbrown
-ms.openlocfilehash: a2bcf8a123ffd19c84e2d39b38d0c9612ba43afb
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 4c82f1ffffe5149960f710252ec8dfe967ffbe2b
+ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66245491"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67603809"
 ---
 # <a name="list-and-get-databases-and-containers-for-azure-cosmos-db---sql-core-api"></a>Auflisten und Abrufen von Datenbanken und Containern für Azure Cosmos DB: SQL-API (Core-API)
 
