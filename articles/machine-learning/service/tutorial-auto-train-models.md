@@ -11,12 +11,12 @@ ms.author: nilesha
 ms.reviewer: trbye
 ms.date: 04/11/2019
 ms.custom: seodec18
-ms.openlocfilehash: 907383c057c0c1eebee6550a0d1e9c75dd88513c
-ms.sourcegitcommit: c05618a257787af6f9a2751c549c9a3634832c90
+ms.openlocfilehash: 8cedf7abf71a772a0b770dd2f82d9a5508f5dd75
+ms.sourcegitcommit: dda9fc615db84e6849963b20e1dce74c9fe51821
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/30/2019
-ms.locfileid: "66417293"
+ms.lasthandoff: 07/08/2019
+ms.locfileid: "67622376"
 ---
 # <a name="tutorial-use-automated-machine-learning-to-build-your-regression-model"></a>Tutorial: Erstellen Ihres Regressionsmodells mit automatisiertem Machine Learning
 
@@ -144,7 +144,7 @@ dflow_prepared.get_profile()
   <thead>
     <tr style="text-align: right;">
       <th></th>
-      <th>Type</th>
+      <th>type</th>
       <th>Min</th>
       <th>max</th>
       <th>Count</th>
@@ -175,9 +175,9 @@ dflow_prepared.get_profile()
       <td>FieldType.STRING</td>
       <td>1</td>
       <td>VTS</td>
-      <td>6.148,0</td>
+      <td>6\.148,0</td>
       <td>0.0</td>
-      <td>6.148,0</td>
+      <td>6\.148,0</td>
       <td>0.0</td>
       <td>0.0</td>
       <td>0.0</td>
@@ -201,9 +201,9 @@ dflow_prepared.get_profile()
       <td>FieldType.STRING</td>
       <td>Freitag</td>
       <td>Wednesday</td>
-      <td>6.148,0</td>
+      <td>6\.148,0</td>
       <td>0.0</td>
-      <td>6.148,0</td>
+      <td>6\.148,0</td>
       <td>0.0</td>
       <td>0.0</td>
       <td>0.0</td>
@@ -227,9 +227,9 @@ dflow_prepared.get_profile()
       <td>FieldType.DECIMAL</td>
       <td>0</td>
       <td>23</td>
-      <td>6.148,0</td>
+      <td>6\.148,0</td>
       <td>0.0</td>
-      <td>6.148,0</td>
+      <td>6\.148,0</td>
       <td>0.0</td>
       <td>0.0</td>
       <td>0.0</td>
@@ -253,9 +253,9 @@ dflow_prepared.get_profile()
       <td>FieldType.DECIMAL</td>
       <td>0</td>
       <td>59</td>
-      <td>6.148,0</td>
+      <td>6\.148,0</td>
       <td>0.0</td>
-      <td>6.148,0</td>
+      <td>6\.148,0</td>
       <td>0.0</td>
       <td>0.0</td>
       <td>0.0</td>
@@ -279,9 +279,9 @@ dflow_prepared.get_profile()
       <td>FieldType.DECIMAL</td>
       <td>0</td>
       <td>59</td>
-      <td>6.148,0</td>
+      <td>6\.148,0</td>
       <td>0.0</td>
-      <td>6.148,0</td>
+      <td>6\.148,0</td>
       <td>0.0</td>
       <td>0.0</td>
       <td>0.0</td>
@@ -305,9 +305,9 @@ dflow_prepared.get_profile()
       <td>FieldType.STRING</td>
       <td>Freitag</td>
       <td>Wednesday</td>
-      <td>6.148,0</td>
+      <td>6\.148,0</td>
       <td>0.0</td>
-      <td>6.148,0</td>
+      <td>6\.148,0</td>
       <td>0.0</td>
       <td>0.0</td>
       <td>0.0</td>
@@ -331,9 +331,9 @@ dflow_prepared.get_profile()
       <td>FieldType.DECIMAL</td>
       <td>0</td>
       <td>23</td>
-      <td>6.148,0</td>
+      <td>6\.148,0</td>
       <td>0.0</td>
-      <td>6.148,0</td>
+      <td>6\.148,0</td>
       <td>0.0</td>
       <td>0.0</td>
       <td>0.0</td>
@@ -357,9 +357,9 @@ dflow_prepared.get_profile()
       <td>FieldType.DECIMAL</td>
       <td>0</td>
       <td>59</td>
-      <td>6.148,0</td>
+      <td>6\.148,0</td>
       <td>0.0</td>
-      <td>6.148,0</td>
+      <td>6\.148,0</td>
       <td>0.0</td>
       <td>0.0</td>
       <td>0.0</td>
@@ -383,9 +383,9 @@ dflow_prepared.get_profile()
       <td>FieldType.DECIMAL</td>
       <td>0</td>
       <td>59</td>
-      <td>6.148,0</td>
+      <td>6\.148,0</td>
       <td>0.0</td>
-      <td>6.148,0</td>
+      <td>6\.148,0</td>
       <td>0.0</td>
       <td>0.0</td>
       <td>0.0</td>
@@ -409,9 +409,9 @@ dflow_prepared.get_profile()
       <td>FieldType.STRING</td>
       <td>N</td>
       <td>J</td>
-      <td>6.148,0</td>
+      <td>6\.148,0</td>
       <td>0.0</td>
-      <td>6.148,0</td>
+      <td>6\.148,0</td>
       <td>0.0</td>
       <td>0.0</td>
       <td>0.0</td>
@@ -435,9 +435,9 @@ dflow_prepared.get_profile()
       <td>FieldType.DECIMAL</td>
       <td>-74,0781</td>
       <td>-73,7459</td>
-      <td>6.148,0</td>
+      <td>6\.148,0</td>
       <td>0.0</td>
-      <td>6.148,0</td>
+      <td>6\.148,0</td>
       <td>0.0</td>
       <td>0.0</td>
       <td>0.0</td>
@@ -461,9 +461,9 @@ dflow_prepared.get_profile()
       <td>FieldType.DECIMAL</td>
       <td>40.5755</td>
       <td>40.8799</td>
-      <td>6.148,0</td>
+      <td>6\.148,0</td>
       <td>0.0</td>
-      <td>6.148,0</td>
+      <td>6\.148,0</td>
       <td>0.0</td>
       <td>0.0</td>
       <td>0.0</td>
@@ -487,9 +487,9 @@ dflow_prepared.get_profile()
       <td>FieldType.DECIMAL</td>
       <td>-74.0857</td>
       <td>-73.7209</td>
-      <td>6.148,0</td>
+      <td>6\.148,0</td>
       <td>0.0</td>
-      <td>6.148,0</td>
+      <td>6\.148,0</td>
       <td>0.0</td>
       <td>0.0</td>
       <td>0.0</td>
@@ -513,9 +513,9 @@ dflow_prepared.get_profile()
       <td>FieldType.DECIMAL</td>
       <td>40.5835</td>
       <td>40.8797</td>
-      <td>6.148,0</td>
+      <td>6\.148,0</td>
       <td>0.0</td>
-      <td>6.148,0</td>
+      <td>6\.148,0</td>
       <td>0.0</td>
       <td>0.0</td>
       <td>0.0</td>
@@ -539,9 +539,9 @@ dflow_prepared.get_profile()
       <td>FieldType.DECIMAL</td>
       <td>1</td>
       <td>6</td>
-      <td>6.148,0</td>
+      <td>6\.148,0</td>
       <td>0.0</td>
-      <td>6.148,0</td>
+      <td>6\.148,0</td>
       <td>0.0</td>
       <td>0.0</td>
       <td>0.0</td>
@@ -565,9 +565,9 @@ dflow_prepared.get_profile()
       <td>FieldType.DECIMAL</td>
       <td>0.01</td>
       <td>32,34</td>
-      <td>6.148,0</td>
+      <td>6\.148,0</td>
       <td>0.0</td>
-      <td>6.148,0</td>
+      <td>6\.148,0</td>
       <td>0.0</td>
       <td>0.0</td>
       <td>0.0</td>
@@ -591,9 +591,9 @@ dflow_prepared.get_profile()
       <td>FieldType.DECIMAL</td>
       <td>0,1</td>
       <td>88</td>
-      <td>6.148,0</td>
+      <td>6\.148,0</td>
       <td>0.0</td>
-      <td>6.148,0</td>
+      <td>6\.148,0</td>
       <td>0.0</td>
       <td>0.0</td>
       <td>0.0</td>
@@ -1127,6 +1127,8 @@ print(y_predict[:10])
 Erstellen Sie ein Punktdiagramm, um den Vergleich der vorhergesagten Kostenwerte mit den tatsächlichen Kostenwerten zu visualisieren. Im folgenden Code wird das Merkmal `distance` als X-Achse verwendet und die Fahrtkosten `cost` als Y-Achse. Um die Varianz der vorhergesagten Kosten bei jedem Fahrtstreckenwert zu vergleichen, werden die ersten 100 vorhergesagten und tatsächlichen Kostenwerte als separate Reihen erstellt. Die Untersuchung des Diagramms zeigt, dass die Beziehung Entfernung/Kosten nahezu linear ist und die vorhergesagten Kostenwerte in den meisten Fällen sehr nahe bei den tatsächlichen Kostenwerten für die gleiche Entfernung liegen.
 
 ```python
+%matplotlib inline
+
 import matplotlib.pyplot as plt
 
 fig = plt.figure(figsize=(14, 10))

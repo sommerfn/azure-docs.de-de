@@ -9,12 +9,12 @@ ms.workload: data-services
 ms.topic: tutorial
 ms.custom: mvc
 ms.date: 06/03/2019
-ms.openlocfilehash: f78555b37cc82c1e97a6f51ec504bc47937ee8c4
-ms.sourcegitcommit: 600d5b140dae979f029c43c033757652cddc2029
+ms.openlocfilehash: d09ed0585250d078f728aa4e7272cca147a40c38
+ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/04/2019
-ms.locfileid: "66493413"
+ms.lasthandoff: 07/07/2019
+ms.locfileid: "67612377"
 ---
 # <a name="analyze-phone-call-data-with-stream-analytics-and-visualize-results-in-power-bi-dashboard"></a>Analysieren von Telefonanrufdaten mit Stream Analytics und Visualisieren der Ergebnisse in einem Power BI-Dashboard
 
@@ -191,7 +191,7 @@ Der letzte Schritt umfasst das Definieren einer Ausgabesenke für den Auftrag, i
 
 ## <a name="define-a-query-to-analyze-input-data"></a>Definieren einer Abfrage zum Analysieren von Eingabedaten
 
-Der nächste Schritt besteht darin, eine Transformation zu erstellen, die Daten in Echtzeit analysiert. Sie definieren die Transformationsabfrage mit der [Stream Analytics-Abfragesprache](https://msdn.microsoft.com/library/dn834998.aspx). Die in diesem Tutorial verwendete Abfrage erkennt betrügerische Anrufe auf der Grundlage der Telefondaten.
+Der nächste Schritt besteht darin, eine Transformation zu erstellen, die Daten in Echtzeit analysiert. Sie definieren die Transformationsabfrage mit der [Stream Analytics-Abfragesprache](https://docs.microsoft.com/stream-analytics-query/stream-analytics-query-language-reference). Die in diesem Tutorial verwendete Abfrage erkennt betrügerische Anrufe auf der Grundlage der Telefondaten.
 
 Bei den betrügerischen Anrufen in diesem Beispiel ruft der gleiche Benutzer innerhalb von fünf Sekunden von verschiedenen Standorten aus an. Beispielsweise kann derselbe Benutzer nicht gleichzeitig einen legitimen Anruf aus den USA und aus Australien tätigen. So definieren Sie die Transformationsabfrage für Ihren Stream Analytics-Auftrag:
 
@@ -212,7 +212,7 @@ Bei den betrügerischen Anrufen in diesem Beispiel ruft der gleiche Benutzer inn
    GROUP BY TumblingWindow(Duration(second, 1))
    ```
 
-   Sie können für die Streamingdaten eine Selbstverknüpfung basierend auf dem Wert `CallRecTime` durchführen, um die Daten auf betrügerische Anrufe zu prüfen. Anschließend können Sie nach Anrufdatensätzen suchen, bei denen der Wert `CallingIMSI` (die ursprüngliche Anzahl) identisch ist, aber nicht der Wert `SwitchNum` (Ursprungsland/-region). Wenn Sie eine Verknüpfung per JOIN-Vorgang für Streamingdaten durchführen, müssen bei der Verknüpfung einige Beschränkungen dazu festgelegt werden, welchen Zeitabstand die übereinstimmenden Zeilen haben können. Da die Streamingdaten endlos sind, werden die Zeitgrenzen für die Beziehung in der **ON**-Klausel der Verknüpfung angegeben. Hierfür wird die Funktion [DATEDIFF](https://msdn.microsoft.com/azure/stream-analytics/reference/datediff-azure-stream-analytics) verwendet.
+   Sie können für die Streamingdaten eine Selbstverknüpfung basierend auf dem Wert `CallRecTime` durchführen, um die Daten auf betrügerische Anrufe zu prüfen. Anschließend können Sie nach Anrufdatensätzen suchen, bei denen der Wert `CallingIMSI` (die ursprüngliche Anzahl) identisch ist, aber nicht der Wert `SwitchNum` (Ursprungsland/-region). Wenn Sie eine Verknüpfung per JOIN-Vorgang für Streamingdaten durchführen, müssen bei der Verknüpfung einige Beschränkungen dazu festgelegt werden, welchen Zeitabstand die übereinstimmenden Zeilen haben können. Da die Streamingdaten endlos sind, werden die Zeitgrenzen für die Beziehung in der **ON**-Klausel der Verknüpfung angegeben. Hierfür wird die Funktion [DATEDIFF](https://docs.microsoft.com/stream-analytics-query/datediff-azure-stream-analytics) verwendet.
 
    Diese Abfrage entspricht bis auf die Funktion **DATEDIFF** einer regulären SQL-Verknüpfung. Die in dieser Abfrage verwendete Funktion **DATEDIFF** gilt speziell für Streaming Analytics und muss in der `ON...BETWEEN`-Klausel verwendet werden.
 

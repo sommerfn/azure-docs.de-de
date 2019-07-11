@@ -1,19 +1,19 @@
 ---
-title: 'Azure PowerShell-Skript: list- und get-Vorgänge von Azure Cosmos DB für die Tabellen-API'
-description: 'Azure PowerShell-Skript: list- und get-Vorgänge von Azure Cosmos DB für die Tabellen-API'
+title: 'Azure PowerShell-Skript: Erstellen eines Containers mit deaktivierter Indizierung in einem Azure Cosmos-Konto'
+description: 'Beispiel eines Azure PowerShell-Skripts: Erstellen eines Containers mit deaktivierter Indizierung in einem Azure Cosmos-Konto'
 author: markjbrown
 ms.service: cosmos-db
 ms.topic: sample
-ms.date: 05/18/2019
+ms.date: 05/06/2019
 ms.author: mjbrown
-ms.openlocfilehash: 28394d1a5cb09caca243ad9f3a584aa2e55f8fe9
+ms.openlocfilehash: 7cec954bc85873d300a4abb96396025600e17201
 ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
 ms.translationtype: HT
 ms.contentlocale: de-DE
 ms.lasthandoff: 07/05/2019
-ms.locfileid: "67603803"
+ms.locfileid: "67603862"
 ---
-# <a name="list-and-get-tables-for-azure-cosmos-db---table-api"></a>Auflisten und Abrufen von Tabellen für Azure Cosmos DB – Tabellen-API
+# <a name="create-a-container-indexing-turned-off-in-an-azure-cosmos-account-using-powershell"></a>Erstellen eines Containers mit deaktivierter Indizierung in einem Azure Cosmos-Konto mithilfe von PowerShell
 
 [!INCLUDE [updated-for-az](../../../../../includes/updated-for-az.md)]
 
@@ -21,7 +21,7 @@ ms.locfileid: "67603803"
 
 ## <a name="sample-script"></a>Beispielskript
 
-[!code-powershell[main](../../../../../powershell_scripts/cosmosdb/table/ps-table-list-get.ps1 "List or get tables for Table API")]
+[!code-powershell[main](../../../../../powershell_scripts/cosmosdb/sql/ps-container-create-index-none.ps1 "Create a container indexing turned off in an Azure Cosmos account")]
 
 ## <a name="clean-up-deployment"></a>Bereinigen der Bereitstellung
 

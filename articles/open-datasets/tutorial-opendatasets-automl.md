@@ -4,18 +4,17 @@ titleSuffix: Azure Open Datasets
 description: Erfahren Sie, wie Sie die Benutzerfreundlichkeit von öffentlichen Azure-Datasets und die Leistungsfähigkeit von Azure Machine Learning Service nutzen, um ein Regressionsmodell zum Vorhersagen von Standardtaxipreisen in New York zu erstellen.
 services: open-datasets
 ms.service: open-datasets
-ms.subservice: core
 ms.topic: tutorial
 author: trevorbye
 ms.author: trbye
 ms.reviewer: trbye
 ms.date: 05/02/2019
-ms.openlocfilehash: e753793b5da59d09a21991831046a43899c62ef2
-ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
+ms.openlocfilehash: a1df79c59ede8cd9ad72a2ebb2edb4bdb64b802a
+ms.sourcegitcommit: ccb9a7b7da48473362266f20950af190ae88c09b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/02/2019
-ms.locfileid: "65027516"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67588969"
 ---
 # <a name="tutorial-build-a-regression-model-with-automated-machine-learning-and-open-datasets"></a>Tutorial: Erstellen eines Regressionsmodells mit automatisiertem maschinellem Lernen und öffentlichen Datasets
 
@@ -1464,7 +1463,7 @@ taxi_holidays_weather_df.describe()
       <td>15,651884</td>
       <td>10,339720</td>
       <td>9,474396</td>
-      <td>2.815,592754</td>
+      <td>2\.815,592754</td>
     </tr>
     <tr>
       <th>Min</th>
@@ -1559,7 +1558,7 @@ taxi_holidays_weather_df.describe()
       <td>67,090909</td>
       <td>24,000000</td>
       <td>31,303665</td>
-      <td>9.999,000000</td>
+      <td>9\.999,000000</td>
     </tr>
   </tbody>
 </table>
@@ -1627,7 +1626,7 @@ final_df.describe()
       <td>11765.000000</td>
       <td>11765.000000</td>
       <td>11765.000000</td>
-      <td>1.490,000000</td>
+      <td>1\.490,000000</td>
       <td>11765.000000</td>
       <td>11765.000000</td>
       <td>11765.000000</td>
@@ -1660,7 +1659,7 @@ final_df.describe()
       <td>16,203195</td>
       <td>10.125701</td>
       <td>8,553512</td>
-      <td>1.284,892832</td>
+      <td>1\.284,892832</td>
     </tr>
     <tr>
       <th>Min</th>
@@ -1735,7 +1734,7 @@ final_df.describe()
       <td>67,090909</td>
       <td>24,000000</td>
       <td>26,524107</td>
-      <td>9.999,000000</td>
+      <td>9\.999,000000</td>
     </tr>
   </tbody>
 </table>

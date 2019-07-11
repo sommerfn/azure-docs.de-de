@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: heavy
 ms.topic: tutorial
-ms.date: 06/05/2019
+ms.date: 07/03/2019
 ms.author: alkohli
-ms.openlocfilehash: 1c432ee5851115e029b55722b6b238b4672e8345
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: d74539ec1de8f503b0d0e423adf6273d1422fed5
+ms.sourcegitcommit: ccb9a7b7da48473362266f20950af190ae88c09b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67446715"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67592337"
 ---
 # <a name="use-the-azure-data-box-heavy-to-migrate-your-file-share-content-to-sharepoint-online"></a>Verwenden der Azure Data Box Heavy zum Migrieren von Dateifreigabeinhalten zu SharePoint Online
 
@@ -23,7 +23,7 @@ Die Microsoft Azure Data Box ist ein Dienst, mit dem Sie ein Gerät aus dem Micr
 
 - [Data Box Disk](https://docs.microsoft.com/azure/databox/data-box-disk-overview) mit einer nutzbaren Kapazität von 35 TB pro Bestellung für Datasets geringer bis mittlerer Größe.
 - [Data Box](https://docs.microsoft.com/azure/databox/data-box-overview) mit einer nutzbaren Kapazität von 80 TB pro Gerät für Datasets mittlerer Größe bis große Datasets.
-- [Data Box Heavy](https://docs.microsoft.com/azure/databox/data-box-heavy-overview) mit einer nutzbaren Kapazität von 770 TB pro Gerät für große Datasets. Data Box Heavy befindet sich zurzeit in der Vorschauphase.
+- [Data Box Heavy](https://docs.microsoft.com/azure/databox/data-box-heavy-overview) mit einer nutzbaren Kapazität von 770 TB pro Gerät für große Datasets.
 
 In diesem Artikel wird erläutert, wie Data Box Heavy zum Migrieren von Dateifreigabeinhalten zu SharePoint Online verwendet wird.
 

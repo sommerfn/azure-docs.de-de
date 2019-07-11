@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: content-moderator
 ms.topic: quickstart
-ms.date: 01/10/2019
+ms.date: 07/03/2019
 ms.author: pafarley
-ms.openlocfilehash: 20920a04c5b85c9eede7d7b249dd6e0548308240
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: 0fef3bffd30c19d0313e5fce7eb610ae7f6349f5
+ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55883405"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67606989"
 ---
 # <a name="quickstart-analyze-text-content-for-objectionable-material-in-python"></a>Schnellstart: Analysieren von Text auf anstößige Inhalte in Python
 
@@ -32,7 +32,7 @@ Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](htt
 
 Installieren Sie das Content Moderator Python SDK, indem Sie eine Eingabeaufforderung öffnen und den folgenden Befehl ausführen:
 
-```
+```bash
 pip install azure-cognitiveservices-vision-contentmoderator
 ```
 
@@ -61,7 +61,7 @@ Der Einfachheit halber analysieren Sie Text direkt aus dem Skript. Definieren Si
 
 ## <a name="query-the-moderator-service"></a>Abfragen des Moderator-Diensts
 
-Erstellen Sie mit Ihrem Abonnementschlüssel und Ihrer Endpunkt-URL eine **ContentModeratorClient**-Instanz. Rufen Sie dann mithilfe der **TextModerationOperations**-Memberinstanz die Moderations-API auf. Weitere Informationen zum Aufrufen der API finden Sie in der Referenzdokumentation zu **[screen_text](https://docs.microsoft.com/python/api/azure-cognitiveservices-vision-contentmoderator/azure.cognitiveservices.vision.contentmoderator.operations.textmoderationoperations?view=azure-python)**.
+Erstellen Sie mit Ihrem Abonnementschlüssel und Ihrer Endpunkt-URL eine **ContentModeratorClient**-Instanz. Rufen Sie dann mithilfe der **TextModerationOperations**-Memberinstanz die Moderations-API auf. Weitere Informationen zum Aufrufen der API finden Sie in der Referenzdokumentation zu **[screen_text](https://docs.microsoft.com/python/api/azure-cognitiveservices-vision-contentmoderator/azure.cognitiveservices.vision.contentmoderator.operations.textmoderationoperations?view=azure-python)** .
 
 [!code-python[](~/cognitive-services-content-moderator-samples/documentation-samples/python/text-moderation-quickstart-python.py?range=23-36)]
 

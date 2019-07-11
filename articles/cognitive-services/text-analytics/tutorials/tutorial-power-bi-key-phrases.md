@@ -10,12 +10,12 @@ ms.subservice: text-analytics
 ms.topic: tutorial
 ms.date: 02/13/2019
 ms.author: aahi
-ms.openlocfilehash: 24767f73e3e1409f81262ad57f3fd5152a4ec319
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.openlocfilehash: 705e637235eb81be29a2ea0d7d68ccd000ea0470
+ms.sourcegitcommit: c0419208061b2b5579f6e16f78d9d45513bb7bbc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "60003467"
+ms.lasthandoff: 07/08/2019
+ms.locfileid: "67626033"
 ---
 # <a name="tutorial-integrate-power-bi-with-the-text-analytics-cognitive-service"></a>Tutorial: Integrieren von Power BI in die Textanalyse von Cognitive Services
 
@@ -103,7 +103,7 @@ Die [Schlüsselbegriffs-API](https://westus.dev.cognitive.microsoft.com/docs/ser
 Nun sind Sie bereit zum Erstellen der benutzerdefinierte Funktion, die Power BI und die Textanalyse integriert. Die Funktion erhält den zu verarbeitenden Text als Parameter. Sie konvertiert Daten in das erforderliche und aus dem erforderlichen JSON-Format und stellt die HTTP-Anforderung an die Schlüsselbegriffs-API. Die Funktion analysiert dann die Antwort von der API und gibt eine Zeichenfolge zurück, die eine durch Trennzeichen getrennte Liste der extrahierten Schlüsselbegriffe enthält.
 
 > [!NOTE]
-> Benutzerdefinierte Power BI Desktop-Funktionen sind in der [Power Query-Formelsprache „M“](https://msdn.microsoft.com/library/mt211003.aspx) oder kurz „M“ geschrieben. M ist eine funktionale Programmiersprache, die auf [F#](https://docs.microsoft.com/dotnet/fsharp/) basiert. Sie müssen jedoch kein Programmierer sein, um dieses Tutorial abzuschließen; der erforderliche Code ist unten angegeben.
+> Benutzerdefinierte Power BI Desktop-Funktionen sind in der [Power Query-Formelsprache „M“](https://docs.microsoft.com/powerquery-m/power-query-m-reference) oder kurz „M“ geschrieben. M ist eine funktionale Programmiersprache, die auf [F#](https://docs.microsoft.com/dotnet/fsharp/) basiert. Sie müssen jedoch kein Programmierer sein, um dieses Tutorial abzuschließen; der erforderliche Code ist unten angegeben.
 
 Stellen Sie sicher, dass in Power BI Desktop nach wie vor das Fenster des Abfrage-Editors geöffnet ist. Klicken Sie anderenfalls auf das Menüband **Start** und in der Gruppe **Externe Daten** auf **Abfragen bearbeiten**.
 
@@ -188,7 +188,7 @@ Verwenden Sie diese Spalte nun, um eine Wortwolke zu generieren. Als Erstes klic
 > [!NOTE]
 > Warum werden Schlüsselbegriffe zum Erstellen einer Wortwolke verwendet, anstatt des vollständigen Texts aller Kommentare? Die Schlüsselbegriffe enthalten die *wichtigen* Wörter aus unseren Kundenkommentaren, nicht nur die *am häufigsten verwendeten* Wörter. Außerdem ist die Wortgrößenanpassung in der Wolke dann nicht durch die häufige Verwendung eines Worts in einer relativ geringen Anzahl von Kommentaren verzerrt.
 
-Installieren Sie das benutzerdefinierte visuelle Objekt „Wortwolke“, wenn es noch nicht installiert ist. Klicken Sie im Bereich „Visualisierungen“ rechts neben dem Arbeitsbereich auf die drei Punkte (**...** ), und wählen Sie **Import from Store** (Aus Store importieren). Suchen Sie nach „Wolke“, und klicken Sie dann neben dem visuellen Element „Wortwolke“ auf **Hinzufügen**. Power BI installiert das Visual „Wortwolke“ und weist Sie auf eine erfolgreiche Installation hin.
+Installieren Sie das benutzerdefinierte visuelle Objekt „Wortwolke“, wenn es noch nicht installiert ist. Klicken Sie im Bereich „Visualisierungen“ rechts neben dem Arbeitsbereich auf die drei Punkte ( **...** ), und wählen Sie **Import from Store** (Aus Store importieren). Suchen Sie nach „Wolke“, und klicken Sie dann neben dem visuellen Element „Wortwolke“ auf **Hinzufügen**. Power BI installiert das Visual „Wortwolke“ und weist Sie auf eine erfolgreiche Installation hin.
 
 ![[Hinzufügen eines benutzerdefinierten visuellen Elements]](../media/tutorials/power-bi/add-custom-visuals.png)<br><br>
 
@@ -294,7 +294,7 @@ Erfahren Sie mehr über den Textanalysedienst, die Power Query-Formelsprache „
 > [Referenz zur Textanalyse-API](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-V2-1/operations/56f30ceeeda5650db055a3c6)
 
 > [!div class="nextstepaction"]
-> [Referenz zu Power Query M](https://msdn.microsoft.com/library/mt211003.aspx)
+> [Referenz zu Power Query M](https://docs.microsoft.com/powerquery-m/power-query-m-reference)
 
 > [!div class="nextstepaction"]
 > [Power BI-Dokumentation](https://powerbi.microsoft.com/documentation/powerbi-landing-page/)
