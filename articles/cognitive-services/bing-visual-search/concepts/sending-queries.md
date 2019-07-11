@@ -57,7 +57,7 @@ Legen Sie bei `imageInsightsToken` ein Auswertungstoken fest. Rufen Sie zum Abru
 
 Das Feld `cropArea` ist optional. Mit dem Zuschneidebereich können Sie die linke obere Ecke und die rechte untere Ecke eines relevanten Bereichs angeben. Legen Sie dabei Werte zwischen 0,0 und 1,0 fest. Damit geben Sie den Prozentsatz der gesamten Breite oder Höhe an. Im vorherigen Beispiel wird etwa die rechte Hälfte des Bildes als relevanter Bereich markiert. Soll die Anforderung auf den relevanten Bereich beschränkt sein, fügen Sie Werte in dieses Feld ein.
 
-Das `filters`-Objekt enthält einen Sitefilter (das `site`-Feld). Damit können Sie die Ergebnisse für ähnliche Bilder und ähnliche Produkte auf eine bestimmte Domäne eingrenzen. Zeigt das Bild beispielsweise ein Surface Book, können Sie `site` auf „www.microsoft.com“ festlegen.
+Das `filters`-Objekt enthält einen Sitefilter (das `site`-Feld). Damit können Sie die Ergebnisse für ähnliche Bilder und ähnliche Produkte auf eine bestimmte Domäne eingrenzen. Zeigt das Bild beispielsweise ein Surface Book, können Sie `site` auf www.microsoft.com festlegen.
 
 Wenn Sie Informationen zu der lokalen Kopie eines Bildes erhalten möchten, laden Sie das Bild in Binärform hoch.
 

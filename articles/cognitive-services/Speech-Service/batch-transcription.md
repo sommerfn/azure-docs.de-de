@@ -8,15 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 2/20/2019
+ms.date: 07/05/2019
 ms.author: panosper
-ms.custom: seodec18
-ms.openlocfilehash: 45ed0167f5a83fa843a224ada35e96672a6752a1
-ms.sourcegitcommit: 5cb0b6645bd5dff9c1a4324793df3fdd776225e4
+ms.openlocfilehash: b71400c3ae3c1cc6737d9194b4d94bf0b9c7efa9
+ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/21/2019
-ms.locfileid: "67311840"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67606740"
 ---
 # <a name="why-use-batch-transcription"></a>Gründe für die Verwendung von Batch-Transkriptionen
 
@@ -56,7 +55,7 @@ Die Batch-Transkriptions-API unterstützt die folgenden Formate:
 | MP3 | PCM | 16 Bit | 8 oder 16 kHz, Mono, Stereo |
 | OGG | OPUS | 16 Bit | 8 oder 16 kHz, Mono, Stereo |
 
-Bei Audiostreams in Stereo teilt die Batch-Transkriptions-API den linken und rechten Kanal während des Transkriptionsvorgangs. Die beiden JSON-Dateien mit dem Ergebnis werden jeweils von einem einzigen Kanal erstellt. Die Zeitstempel pro Äußerung ermöglicht es dem Entwickler, eine geordnete endgültige Transkription zu erstellen. Diese Beispielanforderung umfasst Eigenschaften für die Filterung anstößiger Ausdrücke, Satzzeichen und Zeitstempel auf Wortebene. 
+Bei Audiostreams in Stereo teilt die Batch-Transkriptions-API den linken und rechten Kanal während des Transkriptionsvorgangs. Die beiden JSON-Dateien mit dem Ergebnis werden jeweils von einem einzigen Kanal erstellt. Die Zeitstempel pro Äußerung ermöglicht es dem Entwickler, eine geordnete endgültige Transkription zu erstellen. Diese Beispielanforderung umfasst Eigenschaften für die Filterung anstößiger Ausdrücke, Satzzeichen und Zeitstempel auf Wortebene.
 
 ### <a name="configuration"></a>Konfiguration
 
@@ -97,7 +96,7 @@ Verwenden Sie diese optionalen Eigenschaften zum Konfigurieren der Transkription
 
 Die Batchtranskription unterstützt [Azure Blob-Speicher](https://docs.microsoft.com/azure/storage/blobs/storage-blobs-overview) zum Lesen von Audio und zum Schreiben von Transkriptionen in den Speicher.
 
-## <a name="webhooks"></a>webhooks 
+## <a name="webhooks"></a>webhooks
 
 Die Abfrage des Transkriptionsstatus ist möglicherweise nicht die leistungsstärkste Option oder bietet nicht die bestmögliche Benutzererfahrung. Zur Abfrage des Status können Sie Rückrufe registrieren, die den Client benachrichtigen, wenn zeitintensive Transkriptionsaufgaben abgeschlossen sind.
 
@@ -123,7 +122,7 @@ Wenn Sie anfordern möchten, dass Ihre Audiotranskriptionsanforderung zur Diaris
 }
 ```
 
-Zeitstempel auf Wortebene müssten außerdem in der oben angegebenen Anforderung als Parameter ‚aktiviert‘ werden. 
+Zeitstempel auf Wortebene müssten außerdem in der oben angegebenen Anforderung als Parameter ‚aktiviert‘ werden.
 
 Das entsprechende Audio enthält die durch eine Zahl identifizierten Sprecher (weil wir derzeit nur zwei Stimmen unterstützen, werden die Sprecher als ‚Sprecher 1‘ und ‚Sprecher 2‘ identifiziert), gefolgt von der Transkriptionsausgabe.
 
@@ -134,7 +133,7 @@ Beachten Sie außerdem, dass die Diarisierung in Stereoaufnahmen nicht verfügba
 
 ## <a name="sentiment"></a>Stimmung
 
-Die Stimmung ist ein neues Feature in der Batch-Transkriptions-API und ein wichtiges Feature in der Callcenterdomäne. Mit den `AddSentiment`-Parametern für ihre Anforderungen können Kunden: 
+Die Stimmung ist ein neues Feature in der Batch-Transkriptions-API und ein wichtiges Feature in der Callcenterdomäne. Mit den `AddSentiment`-Parametern für ihre Anforderungen können Kunden:
 
 1.  Einblicke in die Kundenzufriedenheit gewinnen
 2.  Einblicke in die Leistung der Mitarbeiter erhalten (das Team, das Anrufe entgegennimmt)
@@ -187,7 +186,7 @@ Dieses Feature verwendet ein Stimmungsmodell, das sich derzeit in der Betaphase 
 
 Vollständige Beispiele stehen im [GitHub-Beispielrepository](https://aka.ms/csspeech/samples) innerhalb des Unterverzeichnisses `samples/batch` zur Verfügung.
 
-Sie müssen den Beispielcode mit Ihren Abonnementinformationen, der Dienstregion, dem SAS-URI mit Verweis auf die zu transkribierende Audiodatei und die Modell-IDs anpassen, falls Sie ein benutzerdefiniertes Audio- oder Sprachmodell verwenden möchten. 
+Sie müssen den Beispielcode mit Ihren Abonnementinformationen, der Dienstregion, dem SAS-URI mit Verweis auf die zu transkribierende Audiodatei und die Modell-IDs anpassen, falls Sie ein benutzerdefiniertes Audio- oder Sprachmodell verwenden möchten.
 
 [!code-csharp[Configuration variables for batch transcription](~/samples-cognitive-services-speech-sdk/samples/batch/csharp/program.cs#batchdefinition)]
 
