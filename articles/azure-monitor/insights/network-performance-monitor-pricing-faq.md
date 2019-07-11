@@ -13,13 +13,13 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/02/2018
-ms.author: ajaycode
-ms.openlocfilehash: 77cacd7f94d8ddd92fcd7383d2d0a7929734eaeb
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.author: agummadi
+ms.openlocfilehash: 68e84d8ac82d5cdd52bf92df858730315514c17c
+ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60401407"
+ms.lasthandoff: 07/07/2019
+ms.locfileid: "67612850"
 ---
 # <a name="pricing-changes-for-azure-network-performance-monitor"></a>Preisänderungen für Azure-Netzwerkleistungsmonitor
 
@@ -82,12 +82,12 @@ Wenn ExpressRoute eine private Peeringverbindung überwacht, wird das Volumen de
 
 |Perzentil      |Daten/Monat (MB)|
 | :---:          |           ---:|
-|50\.<sup></sup> |            192|
-|60\.<sup></sup> |            256|
-|70\.<sup></sup> |            360|
-|80\.<sup></sup> |            498|
-|90\.<sup></sup> |            870|
-|95\.<sup></sup> |           1560|
+|50.<sup></sup> |            192|
+|60.<sup></sup> |            256|
+|70.<sup></sup> |            360|
+|80.<sup></sup> |            498|
+|90.<sup></sup> |            870|
+|95.<sup></sup> |           1560|
 
 
 Gemäß der obigen Tabelle fallen beim 50. Perzentil Kosten für eine Datenmenge von 192 MB von. Bei einem Preis von 2,30 USD pro GB für den ersten Monat belaufen sich die Kosten für die Überwachung einer Verbindung auf 0,43 USD (192 * 2,30:1024).

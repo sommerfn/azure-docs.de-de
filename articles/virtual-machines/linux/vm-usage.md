@@ -4,7 +4,7 @@ description: Grundlegendes zu Nutzungsdetails virtueller Computer
 services: virtual-machines
 documentationcenter: ''
 author: mmccrory
-manager: jeconnoc
+manager: gwallace
 editor: ''
 tags: azure-virtual-machine
 ms.assetid: ''
@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm
 ms.workload: infrastructure-services
 ms.date: 12/04/2017
 ms.author: memccror
-ms.openlocfilehash: d3e6d3c534a9295b76043dc8a6e01b9c1bb1496e
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: bc341492779e6ed5aef2505a98ad8a116866fe4d
+ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60743206"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67695278"
 ---
 # <a name="understanding-azure-virtual-machine-usage"></a>Grundlegendes zur Verwendung virtueller Azure-Computer
 Durch das Analysieren Ihre Azure-Nutzungsdaten können aufschlussreiche Einblicke in die Verwendung gewonnen werden – Einblicke, die eine bessere Kostenverwaltung und Verteilung in Ihrer Organisation ermöglichen können. Dieses Dokument enthält fundierte Einblicke in die Nutzungsdetails von Azure Compute. Weitere Informationen zur allgemeinen Azure-Nutzung finden Sie unter [Grundlegendes zu Ihrer Rechnung](https://docs.microsoft.com/azure/billing/billing-understand-your-bill).
@@ -82,7 +82,7 @@ Der Name der Region im Feld „Resource Location“ der Nutzungsdetails variiert
 |    chinaeast             |    China, Osten                            |
 |    chinanorth            |    China, Norden                           |
 |    eastasia              |    Asien, Osten                             |
-|    eastus                |    USA (Ost)                               |
+|    eastus                |    East US                               |
 |    eastus2               |    USA (Ost) 2                             |
 |    GermanyCentral        |    Deutschland, Mitte                            |
 |    GermanyNortheast      |    Deutschland, Nordosten                          |

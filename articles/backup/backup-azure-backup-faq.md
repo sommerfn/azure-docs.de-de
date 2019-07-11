@@ -6,14 +6,14 @@ author: dcurwin
 manager: carmonm
 ms.service: backup
 ms.topic: conceptual
-ms.date: 01/08/2019
+ms.date: 07/07/2019
 ms.author: dacurwin
-ms.openlocfilehash: c4e79d166d92a88934e5c5330ca852da8900c6f3
-ms.sourcegitcommit: a52d48238d00161be5d1ed5d04132db4de43e076
+ms.openlocfilehash: a8b0e8b6c7c9e42764b1f3b2af9ed408f4501cc1
+ms.sourcegitcommit: dda9fc615db84e6849963b20e1dce74c9fe51821
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/20/2019
-ms.locfileid: "67275551"
+ms.lasthandoff: 07/08/2019
+ms.locfileid: "67622391"
 ---
 # <a name="azure-backup---frequently-asked-questions"></a>Azure Backup – häufig gestellte Fragen
 In diesem Artikel werden allgemeine Fragen um Azure Backup-Dienst beantwortet.
@@ -51,37 +51,6 @@ Nein. Die Speicheroptionen eines Recovery Services-Tresors können nur geändert
 - Informationen zu den Agents für das Sichern von Azure-Dateiordnern finden Sie in diesen [häufig gestellten Fragen](backup-azure-file-folder-backup-faq.md).
 
 
-## <a name="vmware-and-hyper-v-backup"></a>VMware- und Hyper-V-Sicherung
-
-### <a name="can-i-back-up-vmware-vcenter-servers-to-azure"></a>Kann ich VMware vCenter-Server in Azure sichern?
-Ja. Mit Azure Backup Server können Sie VMware vCenter-Server und ESXi-Hosts in Azure sichern.
-
-- [Erfahren Sie mehr](backup-mabs-protection-matrix.md) über unterstützte Versionen.
-- [Gehen Sie folgendermaßen vor](backup-azure-backup-server-vmware.md), um einen VMware-Server zu sichern.
-
-### <a name="do-i-need-a-separate-license-to-recover-an-full-on-premises-vmwarehyper-v-cluster"></a>Benötige ich eine separate Lizenz, um einen vollständigen lokalen VMware-/Hyper-V-Cluster wiederherzustellen?
-Sie benötigen für den VMware-/Hyper-V-Schutz keine separate Lizenzierung.
-
-- Wenn Sie ein System Center-Kunde sind, verwenden Sie System Center Data Protection Manager (DPM) zum Schützen von VMware-VMs.
-- Falls Sie kein System Center-Kunde sind, können Sie Azure Backup Server (nutzungsbasierte Bezahlung) verwenden, um VMware-VMs zu schützen.
-
-## <a name="dpm-and-azure-backup-server-backup"></a>DPM und Azure Backup Server-Sicherungen
-
-### <a name="which-dpm-versions-are-supported"></a>Welche DPM-Versionen werden unterstützt?
-Die unterstützten DPM-Versionen sind in der [Unterstützungsmatrix](backup-azure-dpm-introduction.md#prerequisites-and-limitations) zusammengefasst. Es wird empfohlen, die neuesten DPM-Updates zu installieren und die [neueste Version](https://aka.ms/azurebackup_agent) des Azure Backup-Agents auf dem DPM-Server auszuführen.
-
-### <a name="can-i-register-the-server-to-multiple-vaults"></a>Kann ich den Server für mehrere Tresore registrieren?
-Nein. Ein DPM- oder Azure Backup-Server kann nur für einen Tresor registriert werden.
-
-### <a name="can-i-use-azure-backup-server-to-create-a-bare-metal-recovery-bmr-backup-for-a-physical-server-br"></a>Kann ich Azure Backup Server verwenden, um eine Bare Metal Recovery-Sicherung (BMR) für einen physischen Server zu erstellen? <br/>
-Ja.
-
-### <a name="can-i-use-dpm-to-back-up-apps-in-azure-stack"></a>Kann ich mit DPM Apps in Azure Stack sichern?
-Nein. Sie können Azure Stack mit Azure Backup schützen, das Sichern von Apps in Azure Stack mit DPM wird von Azure Backup jedoch nicht unterstützt.
-
-### <a name="if-ive-installed-azure-backup-agent-to-protect-my-files-and-folders-can-i-install-system-center-dpm-to-back-up-on-premises-workloads-to-azure"></a>Kann ich System Center DPM zum Sichern von lokalen Workloads in Azure installieren, wenn ich den Azure Backup-Agent zum Schutz meiner Dateien und Ordner installiert habe?
-Ja. Sie sollten jedoch zuerst DPM einrichten und dann den Azure Backup-Agent installieren.  Das Installieren der Komponenten in dieser Reihenfolge stellt sicher, dass der Azure Backup-Agent mit DPM verwendet werden kann. Das Installieren des Agents vor DPM wird nicht empfohlen oder unterstützt.
-
 ## <a name="general-backup"></a>Allgemeine Sicherung
 
 ### <a name="are-there-limits-on-backup-scheduling"></a>Gibt es Beschränkungen bei der Planung der Sicherung?
@@ -118,7 +87,7 @@ Für Sicherungen von virtuellen Azure-Computern mit Linux unterstützt Azure Bac
 Die folgenden Größengrenzwerte gelten:
 
 Betriebssystem/Computer | Größengrenzwert der Datenquelle
---- | --- 
+--- | ---
 Windows 8 oder höher | 54.400 GB
 Windows 7 |1\.700 GB
 Windows Server 2012 oder höher | 54.400 GB

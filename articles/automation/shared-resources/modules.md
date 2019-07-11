@@ -3,22 +3,21 @@ title: Verwenden von Modulen in Azure Automation
 description: In diesem Artikel erfahren Sie, wie Sie Module in Azure Automation verwalten.
 services: automation
 ms.service: automation
-ms.subservice: shared-resources
-author: georgewallace
-ms.author: gwallace
-ms.date: 03/13/2019
+author: bobbytreed
+ms.author: robreed
+ms.date: 06/05/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: fa7f5d3fb38eb1dbca51dec9b73dca3c998436aa
-ms.sourcegitcommit: b8f9200112cae265155b8877f7e1621c4bcc53fc
+ms.openlocfilehash: cd085164fc9804e0c1c822df1c72d3ef94093a07
+ms.sourcegitcommit: 2e4b99023ecaf2ea3d6d3604da068d04682a8c2d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/14/2019
-ms.locfileid: "57905325"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67672784"
 ---
 # <a name="manage-modules-in-azure-automation"></a>Verwenden von Modulen in Azure Automation
 
-Azure Automation bietet die Möglichkeit, PowerShell-Module für die Verwendung durch PowerShell-basierte Runbooks in Ihr Automation-Konto zu importieren. Bei diesen Module kann es sich um benutzerdefinierte, von Ihnen erstellte Module, Module aus dem PowerShell-Katalog oder die AzureRM- und AZ-Module für Azure handeln.
+Azure Automation bietet die Möglichkeit, PowerShell-Module für die Verwendung durch PowerShell-basierte Runbooks in Ihr Automation-Konto zu importieren. Bei diesen Module kann es sich um benutzerdefinierte, von Ihnen erstellte Module, Module aus dem PowerShell-Katalog oder die AzureRM- und AZ-Module für Azure handeln. Bei der Erstellung eines Automation-Kontos werden einige Module standardmäßig importiert.
 
 ## <a name="import-modules"></a>Importieren von Modulen
 
@@ -50,6 +49,22 @@ Suchen Sie unter https://www.powershellgallery.com das gewünschte Modul, wenn S
 Sie können Module auch direkt in Ihrem Automation-Konto Module aus dem PowerShell-Katalog importieren. Wählen Sie in Ihrem Automation-Konto unter **Freigegebene Ressourcen** die Option **Module** aus. Klicken Sie auf der Seite „Module“ auf **Katalog durchsuchen**. Die Seite **Katalog durchsuchen** wird geöffnet. Sie können auf dieser Seite ein Modul im PowerShell-Katalog suchen. Wählen Sie das gewünschte Modul aus, und klicken Sie auf **Importieren**. Klicken Sie auf der Seite **Importieren** auf **OK**, um den Importvorgang zu starten.
 
 ![PowerShell-Katalog – Import aus Azure-Portal](../media/modules/gallery-azure-portal.png)
+
+## <a name="delete-modules"></a>Löschen von Modulen
+
+Wenn Sie Probleme mit einem Modul haben oder ein Rollback auf eine frühere Version eines Moduls durchführen müssen, können Sie es aus Ihrem Automation-Konto löschen. Die ursprünglichen Versionen von [Standardmodulen](#default-modules), die beim Erstellen eines Automation-Kontos importiert werden, können nicht gelöscht werden. Wenn das Modul, das Sie löschen möchten, eine neuere Version als die installierten [Standardmodule](#default-modules) aufweist, wird ein Rollback auf die Version durchgeführt, die mit Ihrem Automation-Konto installiert wurde. Andernfalls werden alle Module, die Sie aus Ihrem Automation-Konto löschen, entfernt.
+
+### <a name="azure-portal"></a>Azure-Portal
+
+Navigieren Sie im Azure-Portal zu Ihrem Automation-Konto, und wählen Sie unter **Module** die Option **Freigegebene Ressourcen** aus. Wählen Sie das Modul aus, das Sie entfernen möchten. Klicken Sie auf der Seite **Modul** auf **Löschen**. Handelt es sich bei dem Modul um eines der [Standardmodule](#default-modules), wird ein Rollback auf die Version durchgeführt, die beim Erstellen des Automation-Kontos installiert wurde.
+
+### <a name="powershell"></a>PowerShell
+
+Führen Sie zum Entfernen eines Moduls mithilfe von PowerShell den folgenden Befehl aus:
+
+```azurepowershell-interactive
+Remove-AzureRmAutomationModule -Name <moduleName> -AutomationAccountName <automationAccountName> -ResourceGroupName <resourceGroupName>
+```
 
 ## <a name="internal-cmdlets"></a>Interne Cmdlets
 
@@ -209,6 +224,37 @@ Beachten Sie folgende Punkte, wenn Sie ein PowerShell-Modul für die Verwendung 
 * Das Modul sollte vollständig in einem Xcopy-fähigen Paket enthalten sein. Azure Automation-Module werden an die Automation-Sandboxes verteilt, wenn Runbooks ausgeführt werden müssen. Die Module müssen unabhängig von dem Host funktionieren, auf dem sie ausgeführt werden. Es muss daher möglich sein, ein Modulpaket zu komprimieren, zu verschieben und nach dem Import in die PowerShell-Umgebung eines anderen Hosts ganz normal zu verwenden. Hierzu darf das Modul nicht von anderen Dateien außerhalb des Modulordners abhängig sein. Dieser Ordner wird komprimiert, wenn das Modul in Azure Automation importiert wird. Darüber hinaus darf das Modul nicht von spezifischen Registrierungseinstellungen auf einem Host abhängig sein (etwa von den Einstellungen, die bei der Installation eines Produkts festgelegt werden). Alle Dateien im Modul sollten einen Pfad mit weniger als 140 Zeichen aufweisen. Pfade mit mehr 140 Zeichen führen zu Problemen beim Importieren Ihres Runbooks. Andernfalls kann das Modul in Azure Automation nicht verwendet werden.  
 
 * Falls Sie in Ihrem Modul auf [Azure PowerShell Az-Module](/powershell/azure/new-azureps-module-az?view=azps-1.1.0) verweisen, achten Sie darauf, dass Sie auch auf `AzureRM` verweisen. Das `Az`-Modul kann nicht zusammen mit `AzureRM`-Modulen verwendet werden. `Az` wird in Runbooks zwar unterstützt, aber standardmäßig nicht importiert. Weitere Informationen zu `Az`-Modulen sowie wichtige Aspekte, die es zu berücksichtigen gilt, finden Sie unter [Az module support in Azure Automation](../az-modules.md) (Unterstützung des Az-Moduls in Azure Automation).
+
+## <a name="default-modules"></a>Standardmodule
+
+Die folgende Tabelle enthält die Module, die beim Erstellen eines Automation-Kontos standardmäßig importiert werden. Die unten aufgeführten Module können zwar neuere Versionen aufweisen, als die importierten Versionen, aber die ursprünglichen Versionen können nicht aus Ihrem Automation-Konto entfernt werden, selbst wenn Sie eine neuere Version löschen.
+
+|Modulname|Version|
+|---|---|
+| AuditPolicyDsc | 1.1.0.0 |
+| Azure | 1.0.3 |
+| Azure.Storage | 1.0.3 |
+| AzureRM.Automation | 1.0.3 |
+| AzureRM.Compute | 1.2.1 |
+| AzureRM.Profile | 1.0.3 |
+| AzureRM.Resources | 1.0.3 |
+| AzureRM.Sql | 1.0.3 |
+| AzureRM.Storage | 1.0.3 |
+| ComputerManagementDsc | 5.0.0.0 |
+| GPRegistryPolicyParser | 0,2 |
+| Microsoft.PowerShell.Core | 0 |
+| Microsoft.PowerShell.Diagnostics |  |
+| Microsoft.PowerShell.Management |  |
+| Microsoft.PowerShell.Security |  |
+| Microsoft.PowerShell.Utility |  |
+| Microsoft.WSMan.Management |  |
+| Orchestrator.AssetManagement.Cmdlets | 1 |
+| PSDscResources | 2.9.0.0 |
+| SecurityPolicyDsc | 2.1.0.0 |
+| StateConfigCompositeResources | 1 |
+| xDSCDomainjoin | 1.1 |
+| xPowerShellExecutionPolicy | 1.1.0.0 |
+| xRemoteDesktopAdmin | 1.1.0.0 |
 
 ## <a name="next-steps"></a>Nächste Schritte
 

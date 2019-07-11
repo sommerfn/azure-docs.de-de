@@ -4,7 +4,7 @@ description: Grundlegendes zu Nutzungsdetails virtueller Computer
 services: virtual-machines
 documentationcenter: ''
 author: mmccrory
-manager: jeconnoc
+manager: gwallace
 editor: ''
 tags: azure-virtual-machine
 ms.assetid: ''
@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm
 ms.workload: infrastructure-services
 ms.date: 12/04/2017
 ms.author: memccror
-ms.openlocfilehash: b515a0b226723989b1cc73356f1377da421dc9aa
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 4cd0f27ebfeb25724bab50069344b417f62d5f50
+ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61485645"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67707891"
 ---
 # <a name="understanding-azure-virtual-machine-usage"></a>Grundlegendes zur Verwendung virtueller Azure-Computer
 Durch das Analysieren Ihre Azure-Nutzungsdaten können aufschlussreiche Einblicke in die Verwendung gewonnen werden – Einblicke, die eine bessere Kostenverwaltung und Verteilung in Ihrer Organisation ermöglichen können. Dieses Dokument enthält fundierte Einblicke in die Nutzungsdetails von Azure Compute. Weitere Informationen zur allgemeinen Azure-Nutzung finden Sie unter [Grundlegendes zu Ihrer Rechnung](../../billing/billing-understand-your-bill.md).
@@ -82,7 +82,7 @@ Der Name der Region im Feld „Resource Location“ der Nutzungsdetails variiert
 |    chinaeast             |    China, Osten                            |
 |    chinanorth            |    China, Norden                           |
 |    eastasia              |    Asien, Osten                             |
-|    eastus                |    USA (Ost)                               |
+|    eastus                |    East US                               |
 |    eastus2               |    USA (Ost) 2                             |
 |    GermanyCentral        |    Deutschland, Mitte                            |
 |    GermanyNortheast      |    Deutschland, Nordosten                          |
