@@ -1,5 +1,5 @@
 ---
-title: Registrieren und Anmelden mit einem Salesforce-SAML-Anbieter mithilfe von benutzerdefinierten Richtlinien in Azure Active Directory B2C | Microsoft-Dokumentation
+title: Registrieren und Anmelden mit einem Salesforce-SAML-Anbieter mithilfe von benutzerdefinierten Richtlinien in Azure Active Directory B2C
 description: Registrieren und Anmelden mit einem Salesforce-SAML-Anbieter mithilfe von benutzerdefinierten Richtlinien in Azure Active Directory B2C
 services: active-directory-b2c
 author: mmacy
@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 09/21/2018
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: e565822c006191615dbc10b980da24dcd9ed787a
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 7cbde2beb03c174facbd145954387a31f6158a9a
+ms.sourcegitcommit: cf438e4b4e351b64fd0320bf17cc02489e61406a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66508300"
+ms.lasthandoff: 07/08/2019
+ms.locfileid: "67654190"
 ---
 # <a name="set-up-sign-in-with-a-salesforce-saml-provider-by-using-custom-policies-in-azure-active-directory-b2c"></a>Registrieren und Anmelden mit einem Salesforce-SAML-Anbieter mithilfe von benutzerdefinierten Richtlinien in Azure Active Directory B2C
 
@@ -31,11 +31,11 @@ In diesem Artikel erfahren Sie, wie Sie die Anmeldung für Benutzer aus einer Sa
 
 ### <a name="set-up-salesforce-as-an-identity-provider"></a>Einrichten von Salesforce als Identitätsanbieter
 
-1. [Anmelden Sie sich bei Salesforce an](https://login.salesforce.com/). 
+1. [Anmelden Sie sich bei Salesforce an](https://login.salesforce.com/).
 2. Erweitern Sie im Menü auf der linken Seite unter **Einstellungen** die Option **Identität**, und wählen Sie dann **Identitätsanbieter** aus.
 3. Wählen Sie **Enable Identity Provider** (Identitätsanbieter aktivieren) aus.
-4. Wählen Sie unter **Select the certificate** (Zertifikat auswählen) das Zertifikat aus, das Salesforce für die Kommunikation mit Azure AD B2C verwendet soll. Sie können das Standardzertifikat verwenden. 
-5. Klicken Sie auf **Speichern**. 
+4. Wählen Sie unter **Select the certificate** (Zertifikat auswählen) das Zertifikat aus, das Salesforce für die Kommunikation mit Azure AD B2C verwendet soll. Sie können das Standardzertifikat verwenden.
+5. Klicken Sie auf **Speichern**.
 
 ### <a name="create-a-connected-app-in-salesforce"></a>Erstellen einer verbundenen App in Salesforce
 
@@ -49,7 +49,7 @@ In diesem Artikel erfahren Sie, wie Sie die Anmeldung für Benutzer aus einer Sa
       ```
 
 6. Geben Sie im Feld **ACS-URL** die folgende URL ein. Ersetzen Sie den Wert von `your-tenant` durch den Namen Ihres Azure AD B2C-Mandanten.
-      
+
       ```
       https://your-tenant.b2clogin.com/your-tenant.onmicrosoft.com/B2C_1A_TrustFrameworkBase/samlp/sso/assertionconsumer
       ```
@@ -90,17 +90,17 @@ Sie müssen das erstellte Zertifikat in Ihrem Azure AD B2C-Mandanten speichern.
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com/) an.
 2. Stellen Sie sicher, dass Sie das Verzeichnis verwenden, das Ihren Azure AD B2C-Mandanten enthält, indem Sie im oberen Menü auf den **Verzeichnis- und Abonnementfilter** klicken und das entsprechende Verzeichnis auswählen.
 3. Wählen Sie links oben im Azure-Portal die Option **Alle Dienste** aus, suchen Sie nach **Azure AD B2C**, und wählen Sie dann diese Option aus.
-4. Wählen Sie auf der Seite „Übersicht“ die Option **Identity Experience Framework – PREVIEW** (Framework für die Identitätsfunktion – VORSCHAU) aus.
+4. Wählen Sie auf der Seite „Übersicht“ die Option **Framework für die Identitätsfunktion** aus.
 5. Klicken Sie erst auf **Richtlinienschlüssel** und anschließend auf **Hinzufügen**.
 6. Klicken Sie unter **Optionen** auf `Upload`.
 7. Geben Sie einen **Namen** für die Richtlinie ein. Beispiel: SAMLSigningCert. Dem Namen Ihres Schlüssels wird automatisch das Präfix `B2C_1A_` hinzugefügt.
-8. Navigieren Sie zum Zertifikat „B2CSigningCert.pfx“, das Sie erstellt haben, und wählen Sie es aus. 
+8. Navigieren Sie zum Zertifikat „B2CSigningCert.pfx“, das Sie erstellt haben, und wählen Sie es aus.
 9. Geben Sie das **Kennwort** für das Zertifikat ein.
 3. Klicken Sie auf **Create**.
 
 ## <a name="add-a-claims-provider"></a>Hinzufügen eines Anspruchsanbieters
 
-Wenn Sie möchten, dass sich Benutzer mit einem Salesforce-Konto anmelden, müssen Sie das Konto als Anspruchsanbieter definieren, mit dem Azure AD B2C über einen Endpunkt kommunizieren kann. Der Endpunkt bietet eine Reihe von Ansprüchen, mit denen Azure AD B2C überprüft, ob ein bestimmter Benutzer authentifiziert wurde. 
+Wenn Sie möchten, dass sich Benutzer mit einem Salesforce-Konto anmelden, müssen Sie das Konto als Anspruchsanbieter definieren, mit dem Azure AD B2C über einen Endpunkt kommunizieren kann. Der Endpunkt bietet eine Reihe von Ansprüchen, mit denen Azure AD B2C überprüft, ob ein bestimmter Benutzer authentifiziert wurde.
 
 Sie können ein Salesforce-Konto als Anspruchsanbieter definieren, indem Sie es in der Erweiterungsdatei Ihrer Richtlinie dem **ClaimsProviders**-Element hinzufügen.
 
@@ -189,7 +189,7 @@ Nachdem Sie eine Schaltfläche implementiert haben, müssen Sie sie mit einer Ak
     ```XML
     <ClaimsExchange Id="SalesforceExchange" TechnicalProfileReferenceId="salesforce" />
     ```
-    
+
     Ändern Sie den Wert von **TechnicalProfileReferenceId** in die **Id** des technischen Profils, das Sie zuvor erstellt haben. Beispiel: `LinkedIn-OAUTH`.
 
 3. Speichern Sie die Datei *TrustFrameworkExtensions.xml*, und laden Sie die Datei zur Überprüfung erneut hoch.

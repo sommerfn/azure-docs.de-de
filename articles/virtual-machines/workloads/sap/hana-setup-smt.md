@@ -4,7 +4,7 @@ description: Einrichten eines SMT-Servers für SAP HANA in Azure (große Instanz
 services: virtual-machines-linux
 documentationcenter: ''
 author: hermanndms
-manager: jeconnoc
+manager: gwallace
 editor: ''
 ms.service: virtual-machines-linux
 ms.devlang: NA
@@ -14,12 +14,12 @@ ms.workload: infrastructure
 ms.date: 09/10/2018
 ms.author: rclaus
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 690f41e941f2d1db8fc92d225a54d07570299222
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 879bea079a5de6558b20edfc05ba432c98254c9b
+ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60478010"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67707387"
 ---
 # <a name="set-up-smt-server-for-suse-linux"></a>Einrichten eines SMT-Servers für SUSE Linux
 SAP HANA-Einheiten (große Instanzen) haben keine direkte Verbindung mit dem Internet. Daher ist das Registrieren einer solchen Einheit beim Betriebssystemanbieter und das Herunterladen und Anwenden von Updates kein ganz einfacher Vorgang. Eine mögliche Lösung für SUSE Linux ist die Einrichtung eines SMT-Servers auf einem virtuellen Azure-Computer. Hosten Sie den virtuellen Computer in einem virtuellen Azure-Netzwerk, das mit der HANA-Einheit (große Instanzen) verbunden ist. Mit einem SMT-Server dieser Art kann die HANA-Einheit (große Instanzen) Updates registrieren und herunterladen. 

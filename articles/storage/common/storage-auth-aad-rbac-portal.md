@@ -9,12 +9,12 @@ ms.date: 03/21/2019
 ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: common
-ms.openlocfilehash: ebb67ff295a934b4e125e298018c27a095adc590
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 959d96a9bc1dd9f28e62d904248cd1f18d73c27d
+ms.sourcegitcommit: d2785f020e134c3680ca1c8500aa2c0211aa1e24
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65153868"
+ms.lasthandoff: 07/04/2019
+ms.locfileid: "67563932"
 ---
 # <a name="grant-access-to-azure-blob-and-queue-data-with-rbac-in-the-azure-portal"></a>Gewähren von Zugriff auf Azure-Blob- und -Warteschlangendaten mit RBAC über das Azure-Portal
 
@@ -42,6 +42,11 @@ Nachdem Sie den gewünschten Umfang für eine Rollenzuweisung festgelegt haben, 
 
 In den folgenden Abschnitten werden diese Schritte ausführlicher beschrieben.
 
+> [!NOTE]
+> Als Besitzer Ihres Azure Storage-Kontos erhalten Sie nicht automatisch Berechtigungen für den Zugriff auf Daten. Sie müssen sich selbst explizit eine RBAC-Rolle für Azure Storage zuweisen. Sie können sie auf der Ebene Ihres Abonnements, einer Ressourcengruppe, eines Speicherkontos oder eines Containers oder einer Warteschlange zuordnen.
+> 
+> Sie können einem Container oder einer Warteschlange keine Rolle zuweisen, wenn in Ihrem Speicherkonto ein hierarchischer Namespace aktiviert ist.
+
 ### <a name="assign-a-built-in-rbac-role"></a>Zuweisen einer integrierten RBAC-Rolle
 
 Bevor Sie einem Sicherheitsprinzipal eine Rolle zuweisen, stellen Sie sicher, dass Sie den Umfang der Berechtigungen berücksichtigen, die Sie erteilen. Legen Sie mithilfe des Abschnitts [Bestimmen des Ressourcenumfangs](#determine-resource-scope) den gewünschten Umfang fest.
@@ -65,11 +70,6 @@ Die hier gezeigte Vorgehensweise weist eine auf einen Container begrenzte Rolle 
     ![Screenshot mit einer Liste von Benutzern, denen eine Rolle zugewiesen ist](media/storage-auth-aad-rbac-portal/container-scoped-role.png)
 
 Sie können ähnliche Schritte ausführen, um eine Rolle zuzuweisen, deren Umfang für ein Speicherkonto, eine Ressourcengruppe oder ein Abonnement gilt.
-
-> [!NOTE]
-> Als Besitzer Ihres Azure Storage-Kontos erhalten Sie nicht automatisch Berechtigungen für den Zugriff auf Daten. Sie müssen sich selbst explizit eine RBAC-Rolle für Azure Storage zuweisen. Sie können sie auf der Ebene Ihres Abonnements, einer Ressourcengruppe, eines Speicherkontos oder eines Containers oder einer Warteschlange zuordnen.
-> 
-> Sie können einem Container oder einer Warteschlange keine Rolle zuweisen, wenn in Ihrem Speicherkonto ein hierarchischer Namespace aktiviert ist.
 
 ### <a name="assign-the-reader-role-for-portal-access"></a>Zuweisen der Rolle „Leser“ für den Portalzugriff
 

@@ -3,7 +3,7 @@ title: Optimieren der Leistung virtueller Azure-Computer der Lsv2-Serie – Spei
 description: Erfahren Sie, wie Sie die Leistung für Ihre Lösung auf virtuellen Computern der Lsv2-Serie optimieren.
 services: virtual-machines-windows
 author: laurenhughes
-manager: jeconnoc
+manager: gwallace
 ms.service: virtual-machines-windows
 ms.devlang: na
 ms.topic: article
@@ -11,12 +11,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 04/17/2019
 ms.author: joelpell
-ms.openlocfilehash: ec6a6ea5d00d43f6dffa3aabc367d94ebb8db198
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 7e96fb6fc7b3e581d058ef0f96124959189d0f4e
+ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67075604"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67709806"
 ---
 # <a name="optimize-performance-on-the-lsv2-series-virtual-machines"></a>Optimieren der Leistung virtueller Computer der Lsv2-Serie
 

@@ -9,14 +9,14 @@ editor: ''
 ms.service: media-services
 ms.workload: ''
 ms.topic: article
-ms.date: 01/03/2018
+ms.date: 07/10/2018
 ms.author: juliako
-ms.openlocfilehash: fd5bf9f7bca9c667191d0d3f83be6e29a96c8dbe
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: e72085d3ac9815b3ec5fd89c678860bd75761f73
+ms.sourcegitcommit: 66237bcd9b08359a6cce8d671f846b0c93ee6a82
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64926529"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67798102"
 ---
 # <a name="azure-media-player-overview"></a>Übersicht über Azure Media Player
 
@@ -30,7 +30,7 @@ Mit Microsoft Azure Media Services können Inhalte in den Streamingformaten HLS,
 
 ### <a name="start-using"></a>Jetzt beginnen
 
-Sie können die [Azure Media Player-Demoseite](https://aka.ms/amp) verwenden, um Azure Media Services-Beispiele oder Ihren eigenen Stream wiederzugeben.  
+Sie können die [Azure Media Player-Demoseite](https://ampdemo.azureedge.net/azuremediaplayer.html) verwenden, um Azure Media Services-Beispiele oder Ihren eigenen Stream wiederzugeben.  
 
 Fügen Sie zum Wiedergeben eines neuen Videos eine andere URL ein, und wählen Sie die Option **Aktualisieren**.
 
@@ -40,7 +40,7 @@ Wählen Sie **Erweiterte Optionen**, um die Wiedergabeoptionen zu konfigurieren 
 
 ### <a name="monitor-diagnostics-of-a-video-stream"></a>Überwachen der Diagnosedaten eines Videostreams
 
-Sie können mithilfe der [Azure Media Player-Demoseite](https://aka.ms/amp) die Diagnosedaten eines Videostreams überwachen. 
+Sie können mithilfe der [Azure Media Player-Demoseite](https://ampdemo.azureedge.net/azuremediaplayer.html) die Diagnosedaten eines Videostreams überwachen. 
 
 ![Azure Media Player-Diagnose](./media/azure-media-player/diagnostics.png)
 

@@ -8,12 +8,12 @@ ms.service: marketplace
 ms.topic: article
 ms.date: 06/05/2018
 ms.author: ellacroi
-ms.openlocfilehash: 5e691dde92ac05b653cdafb22db9276c7a566008
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: dd9aa28703003d2e286197d57e9f00361e2b460d
+ms.sourcegitcommit: cf438e4b4e351b64fd0320bf17cc02489e61406a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66259356"
+ms.lasthandoff: 07/08/2019
+ms.locfileid: "67654002"
 ---
 # <a name="become-a-cloud-marketplace-publisher"></a>Weg zum Cloud Marketplace-Herausgeber
 
@@ -22,11 +22,11 @@ In diesem Artikel wird beschrieben, wie Sie sich als Herausgeber für den Cloud-
 
 |  | Registrierungsschritt | Duration | Details |  
 |:--- |:--- |:--- |:--- |  
-| 1 | Registrieren im Microsoft Partner Network | 15 Min. | [Registrieren beim Microsoft Partner Network](https://docs.microsoft.com/azure/marketplace/become-publisher#1-register-in-microsoft-partner-network) |  
-| 2 | Erstellen eines Microsoft-Kontos <ul>(für Azure Marketplace-Transaktionsangebote erforderlich; für andere Benutzer empfohlen)</ul> | 15 Min. | [Erstellen einer Microsoft-ID](https://docs.microsoft.com/azure/marketplace/become-publisher#2-create-a-microsoft-account) |  
+| 1 | Registrieren im Microsoft Partner Network | 15 Min. | [Registrieren beim Microsoft Partner Network](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-account#register-for-an-account-using-the-enrollment-page) |  
+| 2 | Erstellen eines Microsoft-Kontos <ul>(für Azure Marketplace-Transaktionsangebote erforderlich; für andere Benutzer empfohlen)</ul> | 15 Min. | [Erstellen einer Microsoft-ID](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-account) |  
 | 3 | Erstellen eines Partner Center-Kontos | 15 Min. | [Erstellen eines Partner Center-Kontos](https://partner.microsoft.com/dashboard/account/v3/enrollment/introduction/azureisv) |  
-| 4 |  Anmelden beim Cloud-Partnerportal | 1 - 3 Tage | [Anmelden beim Cloud-Partnerportal](https://docs.microsoft.com/azure/marketplace/become-publisher#4-sign-into-cloud-partner-portal) |  
-| 5 | Registrieren beim Microsoft Developer Center (Dev Center) (für Azure Marketplace-Transaktionsangebote) | 5 - 10 Tage | [Registrierung in Dev Center](https://docs.microsoft.com/azure/marketplace/become-publisher#5-register-in-dev-center-for-transact-publishing-option-only) |  
+| 4 |  Anmelden beim Cloud-Partnerportal | 1 - 3 Tage | [Anmelden beim Cloud-Partnerportal](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-account#sign-in-with-a-work-account) |  
+| 5 | Registrieren beim Microsoft Developer Center (Dev Center) (für Azure Marketplace-Transaktionsangebote) | 5 - 10 Tage | [Registrierung in Dev Center](/azure/marketplace/deprecated/register-dev-center) |  
 
 
 ## <a name="1-register-in-microsoft-partner-network"></a>1. Registrieren im Microsoft Partner Network  
@@ -50,9 +50,9 @@ Mit einem Microsoft-Konto (z.B. *outlook.com\@ oder \@live.com*) können Sie auf
 [! IMPORTANT] Beachten Sie, dass Sie nicht mit einem Microsoft-Konto auf das Portal zugreifen können, das Ihrer geschäftlichen E-Mail-Adresse zugeordnet ist.
 
 > [!Note]
-> Wenn Sie bereits über ein Microsoft-Konto verfügen, lesen Sie die [Richtlinien zum Erstellen einer Microsoft-ID zum Verwalten eines Marketplace-Kontos](https://docs.microsoft.com/azure/marketplace/guidelines#guidelines-for-creating-a-microsoft-id-to-manage-a-marketplace-account), um festzustellen, ob es für die Veröffentlichung im Marketplace verwendet werden kann. 
+> Wenn Sie bereits über ein Microsoft-Konto verfügen, lesen Sie die [Richtlinien zum Erstellen einer Microsoft-ID zum Verwalten eines Marketplace-Kontos](https://docs.microsoft.com/azure/marketplace/partner-center-portal/manage-account#manage-tenants), um festzustellen, ob es für die Veröffentlichung im Marketplace verwendet werden kann. 
 > 
-> Benutzer mit einem Azure Active Directory-Verbundfirmenkonto sollten [diesen Artikel](https://docs.microsoft.com/azure/marketplace/guidelines#issue-microsoft-id-in-an-azure-ad-federated-domain) lesen, bevor sie Ihr vorhandenes Microsoft-Konto erstellen oder verwenden.
+> Benutzer mit einem Azure Active Directory-Verbundfirmenkonto sollten [diesen Artikel](https://docs.microsoft.com/azure/marketplace/partner-center-portal/manage-account#manage-users) lesen, bevor sie Ihr vorhandenes Microsoft-Konto erstellen oder verwenden.
 
 *   Unterstützung bei der Erstellung oder Verwaltung Ihres Microsoft-Kontos finden Sie auf den [Supportseiten für Microsoft-Konten](https://support.microsoft.com/products/microsoft-account?category=manage-account).
 

@@ -4,7 +4,7 @@ description: Erfahren Sie, wie Kataloge mit freigegebenen Images verwendet werde
 services: virtual-machines-windows
 documentationcenter: virtual-machines
 author: axayjo
-manager: jeconnoc
+manager: gwallace
 editor: tysonn
 tags: azure-resource-manager
 ms.assetid: ''
@@ -14,14 +14,15 @@ ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 05/06/2019
-ms.author: akjosh; cynthn
+ms.author: akjosh
+ms.reviewer: cynthn
 ms.custom: ''
-ms.openlocfilehash: 982a24cc47ff17c56b1d75e4dcdc01f15ebdea32
-ms.sourcegitcommit: c05618a257787af6f9a2751c549c9a3634832c90
+ms.openlocfilehash: b28ad9b61a14a1961cf2a9de828df320134be838
+ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/30/2019
-ms.locfileid: "66418421"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67709175"
 ---
 # <a name="shared-image-gallery-overview"></a>Übersicht über den Katalog mit freigegebenen Images
 

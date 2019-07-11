@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 05/20/2019
 ms.author: luisca
 ms.custom: seodec2018
-ms.openlocfilehash: 44f16b3334b991e071fa85ca4cffbc0837f0a6ec
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: ffce8a2bd8a04e73acdeac037be0b10ba1a9a887
+ms.sourcegitcommit: 2e4b99023ecaf2ea3d6d3604da068d04682a8c2d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66244426"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67672386"
 ---
 # <a name="attach-a-cognitive-services-resource-with-a-skillset-in-azure-search"></a>Anfügen einer Cognitive Services-Ressource an eine Qualifikationsgruppe in Azure Search 
 
@@ -42,7 +42,7 @@ Kostenlose Ressourcen (begrenzte Anreicherung) sind auf 20 Dokumente pro Tag pr
 
 1. Öffnen Sie den Assistenten „Daten importieren“:
 
-   ![Öffnen des Assistenten „Daten importieren“](media/search-get-started-portal/import-data-cmd2.png "Öffnen des Assistenten „Daten importieren“")
+   ![Öffnen des Assistenten „Daten importieren“](media/search-get-started-portal/import-data-cmd.png "Öffnen des Assistenten „Daten importieren“")
 
 1. Wählen Sie eine Datenquelle aus, und fahren Sie mit **Kognitive Suche hinzufügen (optional)** fort. Eine ausführliche Anleitung für diesen Assistenten finden Sie unter [Importieren, Indizieren und Abfragen mithilfe von Portaltools](search-get-started-portal.md).
 

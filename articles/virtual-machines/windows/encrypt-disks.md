@@ -4,7 +4,7 @@ description: Erfahren Sie, wie Sie virtuelle Datenträger auf einem virtuellen W
 services: virtual-machines-windows
 documentationcenter: ''
 author: cynthn
-manager: jeconnoc
+manager: gwallace
 editor: ''
 tags: azure-resource-manager
 ms.assetid: ''
@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 10/30/2018
 ms.author: cynthn
-ms.openlocfilehash: 4ef485bb91fe52e138b805f347e729fc4097fc7c
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: fadbb4668dbaed46cc30841d2b04a92ea41cd5a1
+ms.sourcegitcommit: dad277fbcfe0ed532b555298c9d6bc01fcaa94e2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66431099"
+ms.lasthandoff: 07/10/2019
+ms.locfileid: "67718666"
 ---
 # <a name="encrypt-virtual-disks-on-a-windows-vm"></a>Verschlüsseln virtueller Datenträger auf einer Windows-VM
 Zum Verbessern der Sicherheit und Compliance von virtuellen Computern können virtuelle Datenträger in Azure verschlüsselt werden. Die Verschlüsselung der Datenträger basiert auf kryptografischen Schlüsseln, die in einer Azure Key Vault-Instanz gesichert werden. Diese kryptografischen Schlüssel werden von Ihnen kontrolliert, und Sie können deren Verwendung überwachen. Dieser Artikel beschreibt, wie Sie virtuelle Datenträger auf einer Windows-VM mithilfe von Azure PowerShell verschlüsseln. Sie können auch [einen virtuellen Linux-Computer mithilfe der Azure CLI verschlüsseln](../linux/encrypt-disks.md).

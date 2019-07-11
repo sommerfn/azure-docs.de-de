@@ -2,15 +2,16 @@
 title: Einrichten von Micro Focus CICS BankDemo für Micro Focus Enterprise Developer 4.0 auf virtuellen Azure-Computern
 description: Führen Sie die Micro Focus BankDemo-Anwendung auf virtuellen Azure-Computern aus, um zu erfahren, wie Sie Micro Focus Enterprise Server und Enterprise Developer verwenden.
 author: sread
+ms.author: sread
 ms.date: 04/02/2019
 ms.topic: article
 ms.service: multiple
-ms.openlocfilehash: 7afe29cb98a294b2a30020ad48f8b27264386746
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 4491fc137c2c85e2be605f5e58fde6fd422efbbe
+ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66304766"
+ms.lasthandoff: 07/07/2019
+ms.locfileid: "67621331"
 ---
 # <a name="set-up-micro-focus-cics-bankdemo-for-micro-focus-enterprise-developer-40-on-azure"></a>Einrichten von Micro Focus CICS BankDemo für Micro Focus Enterprise Developer 4.0 in Azure
 

@@ -4,7 +4,7 @@ description: Übersicht über die cloud-init-Funktionen in Microsoft Azure
 services: virtual-machines-linux
 documentationcenter: ''
 author: rickstercdn
-manager: jeconnoc
+manager: gwallace
 editor: ''
 tags: azure-resource-manager
 ms.assetid: 195c22cd-4629-4582-9ee3-9749493f1d72
@@ -15,12 +15,12 @@ ms.devlang: azurecli
 ms.topic: article
 ms.date: 11/29/2017
 ms.author: rclaus
-ms.openlocfilehash: 377ad49ae3a5ae0f61cd0fd93b68dd817d617397
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 057f7c42c037dac4cb2be686df09287de7113f0d
+ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67050820"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67695390"
 ---
 # <a name="cloud-init-support-for-virtual-machines-in-azure"></a>cloud-init-Unterstützung für virtuelle Computer in Azure
 In diesem Artikel wird die bereits vorhandene Unterstützung für [cloud-init](https://cloudinit.readthedocs.io) zum Konfigurieren virtueller Computer (VM) oder VM-Skalierungsgruppen (VMSS) während der Bereitstellung in Azure erläutert. Diese cloud-init-Skripts werden beim erstmaligen Starten ausgeführt, nachdem die Ressourcen von Azure bereitgestellt wurden.  
@@ -34,13 +34,13 @@ Cloud-init funktioniert auch Distributionen übergreifend. Verwenden Sie z.B. ni
 
 | Herausgeber | Angebot | SKU | Version | cloud-init-fähig |
 |:--- |:--- |:--- |:--- |:--- |
-|Canonical |UbuntuServer |18.04-LTS |neueste |Ja | 
-|Canonical |UbuntuServer |17.10 |neueste |Ja | 
-|Canonical |UbuntuServer |16.04-LTS |neueste |Ja | 
-|Canonical |UbuntuServer |14.04.5-LTS |neueste |Ja |
-|CoreOS |CoreOS |Stable |neueste |Ja |
-|OpenLogic |CentOS |7-CI |neueste |preview |
-|RedHat |RHEL |7-RAW-CI |neueste |preview |
+|Canonical |UbuntuServer |18.04-LTS |latest |Ja | 
+|Canonical |UbuntuServer |17.10 |latest |Ja | 
+|Canonical |UbuntuServer |16.04-LTS |latest |Ja | 
+|Canonical |UbuntuServer |14.04.5-LTS |latest |Ja |
+|CoreOS |CoreOS |Stable |latest |Ja |
+|OpenLogic |CentOS |7-CI |latest |preview |
+|RedHat |RHEL |7-RAW-CI |latest |preview |
 
 Derzeit unterstützt Azure Stack die Bereitstellung von RHEL 7.4 und CentOS 7.4 mithilfe von cloud-init nicht.
 

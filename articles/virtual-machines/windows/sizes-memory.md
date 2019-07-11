@@ -4,7 +4,7 @@ description: Auflistung der verschiedenen verfügbaren arbeitsspeicheroptimierte
 services: virtual-machines-windows
 documentationcenter: ''
 author: jonbeck7
-manager: jeconnoc
+manager: gwallace
 editor: ''
 tags: azure-resource-manager,azure-service-management
 keywords: VM-Isolation,isolierte VM,Isolation,isoliert
@@ -16,12 +16,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 05/15/2019
 ms.author: jonbeck
-ms.openlocfilehash: d21d420dd80e69f0b90c9853a9eab96d66c3df0d
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 5ee42b2028a9aa04250598e46ebd7b6b81d6a021
+ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65834136"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67710171"
 ---
 # <a name="memory-optimized-virtual-machine-sizes"></a>Arbeitsspeicheroptimierte Größen virtueller Computer
 

@@ -9,12 +9,12 @@ ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 12/07/2018
 ms.custom: seodec18
-ms.openlocfilehash: b5ed614fdd378b36d8f95fc90ce7ff98d63ef31a
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 8357a53ee065812922b5df53fbdef7c14e5f0ff7
+ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60761871"
+ms.lasthandoff: 07/07/2019
+ms.locfileid: "67621026"
 ---
 # <a name="troubleshoot-input-connections"></a>Problembehandlung für Eingangsverbindungen
 
@@ -29,7 +29,7 @@ Auf dieser Seite werden häufige Probleme mit Eingangsverbindungen und deren Beh
         
     Verwenden Sie die Schaltfläche [**Beispieldaten**](stream-analytics-sample-data-input.md) für jede Eingabe, und laden Sie die Eingabebeispieldaten herunter.
         
-    Überprüfen Sie die Beispieldaten, um die Form der Daten zu verstehen: das Schema und die [Datentypen](https://msdn.microsoft.com/library/azure/dn835065.aspx).
+    Überprüfen Sie die Beispieldaten, um die Form der Daten zu verstehen: das Schema und die [Datentypen](https://docs.microsoft.com/stream-analytics-query/data-types-azure-stream-analytics).
 
 ## <a name="malformed-input-events-causes-deserialization-errors"></a>Falsch formatierte Eingabeereignisse führen zu Deserialisierungsfehlern 
 Deserialisierungsprobleme werden verursacht, wenn der Eingabedatenstrom Ihres Stream Analytics-Auftrags falsch formatierte Nachrichten enthält. Beispielsweise kann eine falsch formatierte Nachricht durch eine fehlende Klammer oder geschweifte Klammer in einem JSON-Objekt oder ein falsches Zeitstempelformat im Zeitfeld verursacht werden. 
@@ -145,5 +145,5 @@ Um Hilfe zu erhalten, nutzen Sie unser [Azure Stream Analytics-Forum](https://so
 * [Einführung in Azure Stream Analytics](stream-analytics-introduction.md)
 * [Erste Schritte mit Azure Stream Analytics](stream-analytics-real-time-fraud-detection.md)
 * [Skalieren von Azure Stream Analytics-Aufträgen](stream-analytics-scale-jobs.md)
-* [Stream Analytics Query Language Reference (in englischer Sprache)](https://msdn.microsoft.com/library/azure/dn834998.aspx)
+* [Stream Analytics Query Language Reference (in englischer Sprache)](https://docs.microsoft.com/stream-analytics-query/stream-analytics-query-language-reference)
 * [Referenz zur Azure Stream Analytics-Verwaltungs-REST-API](https://msdn.microsoft.com/library/azure/dn835031.aspx)

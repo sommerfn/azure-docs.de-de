@@ -6,16 +6,16 @@ author: alkohli
 ms.service: databox
 ms.subservice: heavy
 ms.topic: article
-ms.date: 05/22/2019
+ms.date: 07/03/2019
 ms.author: alkohli
-ms.openlocfilehash: b9e249885bd0e930773d4b374f85d72e60abdbdc
-ms.sourcegitcommit: ef06b169f96297396fc24d97ac4223cabcf9ac33
+ms.openlocfilehash: 4b41af691bb864dd11b001a6217a7b1e0318d6e0
+ms.sourcegitcommit: ccb9a7b7da48473362266f20950af190ae88c09b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/31/2019
-ms.locfileid: "66427738"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67592329"
 ---
-# <a name="azure-data-box-heavy-system-requirements-preview"></a>Systemanforderungen für Azure Data Box Heavy (Vorschau)
+# <a name="azure-data-box-heavy-system-requirements"></a>Systemanforderungen für Azure Data Box Heavy
 
 In diesem Artikel werden wichtige Systemanforderungen für Ihre Microsoft Azure Data Box Heavy und die Clients beschrieben, die sich mit dem Gerät verbinden. Sie sollten die Informationen sorgfältig lesen, bevor Sie Ihre Data Box Heavy bereitstellen. Später können Sie während der Bereitstellung und beim nachfolgenden Betrieb bei Bedarf als Referenz darauf zurückgreifen.
 

@@ -8,14 +8,14 @@ ms.topic: include
 ms.date: 11/30/2018
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: eb2555cdc163ee0f88149248b9e7d83a51d34a1b
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.openlocfilehash: 42e983ead6f7562c6a31cf9ef4ad2d97d0ff9707
+ms.sourcegitcommit: 2e4b99023ecaf2ea3d6d3604da068d04682a8c2d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67177937"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67673353"
 ---
-1. Wählen Sie im [Azure-Portal](http://portal.azure.com) das virtuelle Resource Manager-Netzwerk aus, für das Sie ein virtuelles Netzwerkgateway erstellen möchten.
+1. Wählen Sie im [Azure-Portal](https://portal.azure.com) das virtuelle Resource Manager-Netzwerk aus, für das Sie ein virtuelles Netzwerkgateway erstellen möchten.
 
 2. Klicken Sie auf der Seite Ihres virtuellen Netzwerks im Abschnitt **Einstellungen** auf **Subnetze**, um die Seite **Subnetze** zu erweitern.
 

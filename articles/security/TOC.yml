@@ -142,6 +142,9 @@
         - name: Checkliste für die Sicherheit
           displayName: 'identity, active directory, password'
           href: azure-ad-secure-steps.md
+        - name: Kennwortlos wählen
+          displayName: 'identity, active directory, passwordless'
+          href: azure-ad-passwordless.md
         - name: Bewährte Methoden
           displayName: 'password, identity, active directory'
           href: azure-security-identity-management-best-practices.md
@@ -357,7 +360,7 @@
               href: azure-security-threat-modeling-tool-auditing-and-logging.md
             - name: Authentication
               href: azure-security-threat-modeling-tool-authentication.md
-            - name: Autorisierung
+            - name: Authorization
               href: azure-security-threat-modeling-tool-authorization.md
             - name: Kommunikationssicherheit
               href: azure-security-threat-modeling-tool-communication-security.md

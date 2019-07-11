@@ -2,18 +2,18 @@
 title: Neuerungen bei Power BI-Arbeitsbereichssammlungen
 description: Aktuelle Informationen zu Neuerungen bei Power BI-Arbeitsbereichssammlungen.
 services: power-bi-workspace-collections
-ms.service: power-bi-workspace-collections
+ms.service: power-bi-embedded
 author: rkarlin
 ms.author: rkarlin
 ms.topic: article
 ms.workload: powerbi
 ms.date: 09/20/2017
-ms.openlocfilehash: 9ef9416abb4aaf0927d1e072286ef83a4d8c39cb
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 448c0997068fae0637c7015eed96fafbaf5b3442
+ms.sourcegitcommit: 2e4b99023ecaf2ea3d6d3604da068d04682a8c2d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64724020"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67672342"
 ---
 # <a name="whats-new-in-power-bi-workspace-collections"></a>Neuerungen bei Power BI-Arbeitsbereichssammlungen
 
@@ -22,7 +22,7 @@ Updates für **Power BI-Arbeitsbereichssammlungen** werden in regelmäßigen Abs
 > [!IMPORTANT]
 > Power BI-Arbeitsbereichssammlungen sind veraltet und nur noch bis Juni 2018 (oder bis zum Termin in Ihrem Vertrag) verfügbar. Es wird empfohlen, die Migration zu Power BI Embedded zu planen, um Unterbrechungen für Ihre Anwendung zu vermeiden. Informationen zur Migration Ihrer Daten zu Power BI Embedded finden Sie unter [Migrieren von Inhalten aus Power BI-Arbeitsbereichssammlungen zu Power BI Embedded](https://powerbi.microsoft.com/documentation/powerbi-developer-migrate-from-powerbi-embedded/).
 
-## <a name="march-2017"></a>17\. März 2017
+## <a name="march-2017"></a>17. März 2017
 
 **Self-service-Funktionen**
 
@@ -53,13 +53,13 @@ Updates für **Power BI-Arbeitsbereichssammlungen** werden in regelmäßigen Abs
 
 * [Erweiterte Analysen mit Power BI-Arbeitsbereichssammlungen und R](https://powerbi.microsoft.com/blog/r-in-pbie/)
 
-## <a name="august-31-2016"></a>31\. August 2016
+## <a name="august-31-2016"></a>31. August 2016
 In dieser Version:
 
 * Ein ganz neues JavaScript-SDK, das [erweiterte Filter und Seitennavigation](interact-with-reports.md)unterstützt.
 * Power BI-Arbeitsbereichssammlungen werden jetzt im Rechenzentrum „Kanada, Mitte“ unterstützt. Überprüfen Sie den [Status von Rechenzentren](https://azure.microsoft.com/status/).
 
-## <a name="july-11-2016"></a>11\. Juli 2016
+## <a name="july-11-2016"></a>11. Juli 2016
 In dieser Version:
 
 * **Gute Nachrichten!** Den Dienst „Power BI-Arbeitsbereichssammlungen“ gibt es nicht länger in der Vorschau- sondern nun in der allgemein verfügbaren Version.  

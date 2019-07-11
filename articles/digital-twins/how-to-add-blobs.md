@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 06/05/2019
 ms.author: v-adgera
 ms.custom: seodec18
-ms.openlocfilehash: 9490772226ecdb90cdd2e0b98fe8336b91db6044
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: c61544ce10c5a7d16b3ffc0009039e27f5feecb1
+ms.sourcegitcommit: 2e4b99023ecaf2ea3d6d3604da068d04682a8c2d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66754505"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67670796"
 ---
 # <a name="add-blobs-to-objects-in-azure-digital-twins"></a>Hinzufügen von Blobs zu Objekten in Azure Digital Twins
 
@@ -36,7 +36,7 @@ Neben **Content-Type** und **Content-Disposition** müssen mehrteilige Anforderu
 
 Nachfolgend finden Sie die vier wichtigsten JSON-Schemas:
 
-[![JSON-Schemas](media/how-to-add-blobs/blob-models.PNG)](media/how-to-add-blobs/blob-models.PNG#lightbox)
+[![JSON-Schemas](media/how-to-add-blobs/blob-models-img.png)](media/how-to-add-blobs/blob-models-img.png#lightbox)
 
 JSON-Blobmetadaten entsprechen dem folgenden Modell:
 
@@ -51,7 +51,7 @@ JSON-Blobmetadaten entsprechen dem folgenden Modell:
   }
 ```
 
-| Attribut | Type | BESCHREIBUNG |
+| Attribut | type | BESCHREIBUNG |
 | --- | --- | --- |
 | **parentId** | string | Die übergeordnete Entität, der das Blob zugeordnet werden soll (Räume, Geräte oder Benutzer) |
 | **name** |string | Ein benutzerfreundlicher Name für das Blob |
@@ -108,7 +108,7 @@ Einzeln zurückgegebene Blobs haben folgendes JSON-Schema:
 }
 ```
 
-| Attribut | Type | BESCHREIBUNG |
+| Attribut | type | BESCHREIBUNG |
 | --- | --- | --- |
 | **id** | string | Der eindeutige Bezeichner für das Blob |
 | **name** |string | Ein benutzerfreundlicher Name für das Blob |
@@ -183,7 +183,7 @@ var response = await httpClient.PostAsync("spaces/blobs", multipartContent);
 
 Abschließend können [cURL](https://curl.haxx.se/)-Benutzer auf die gleiche Weise mehrteilige Anforderungen ausführen:
 
-[![Geräteblobs](media/how-to-add-blobs/curl.PNG)](media/how-to-add-blobs/curl.PNG#lightbox)
+[![Geräteblobs](media/how-to-add-blobs/curl-img.png)](media/how-to-add-blobs/curl-img.png#lightbox)
 
 ```bash
 curl
@@ -211,7 +211,7 @@ Die folgenden Abschnitte beschreiben die wichtigsten blobbezogenen API-Endpunkte
 
 Blobs können an Geräte angefügt werden. Die folgende Abbildung zeigt die Swagger-Referenzdokumentation für Ihre Verwaltungs-APIs. Sie gibt gerätebezogene API-Endpunkte für die Blobnutzung sowie ggf. zu übergebende erforderliche Pfadparameter an.
 
-[![Geräteblobs](media/how-to-add-blobs/blobs-device-api.PNG)](media/how-to-add-blobs/blobs-device-api.PNG#lightbox)
+[![Geräteblobs](media/how-to-add-blobs/blobs-device-api-img.png)](media/how-to-add-blobs/blobs-device-api-img.png#lightbox)
 
 Wenn Sie beispielsweise ein Blob aktualisieren oder erstellen und dann an ein Gerät anfügen möchten, richten Sie eine authentifizierte HTTP PATCH-Anforderung an:
 
@@ -229,7 +229,7 @@ Erfolgreiche Anforderungen geben ein JSON-Objekt zurück, wie [weiter oben besch
 
 Blobs können auch an Räume angefügt werden. Die folgende Abbildung enthält alle Raum-API-Endpunkte für die Verarbeitung von Blobs. Aufgelistet sind auch alle Pfadparameter, die ggf. an diese Endpunkte übergeben werden müssen.
 
-[![Raumblobs](media/how-to-add-blobs/blobs-space-api.PNG)](media/how-to-add-blobs/blobs-space-api.PNG#lightbox)
+[![Raumblobs](media/how-to-add-blobs/blobs-space-api-img.png)](media/how-to-add-blobs/blobs-space-api-img.png#lightbox)
 
 Wenn beispielsweise ein an einen Raum angefügtes Blob zurückgegeben werden soll, richten Sie eine authentifizierte HTTP GET-Anforderung an:
 
@@ -249,7 +249,7 @@ Eine PATCH-Anforderung an denselben Endpunkt aktualisiert die Metadatenbeschreib
 
 Blobs können an Benutzermodelle angefügt werden (z. B. um ein Profilbild zuzuordnen). Die folgende Abbildung zeigt die relevanten Benutzer-API-Endpunkte sowie alle ggf. erforderlichen Pfadparameter (z. B. `id`):
 
-[![Benutzerblobs](media/how-to-add-blobs/blobs-users-api.PNG)](media/how-to-add-blobs/blobs-users-api.PNG#lightbox)
+[![Benutzerblobs](media/how-to-add-blobs/blobs-users-api-img.png)](media/how-to-add-blobs/blobs-users-api-img.png#lightbox)
 
 Wenn Sie beispielsweise ein Blob abrufen möchten, das an einen Benutzer angefügt ist, richten Sie eine authentifizierte HTTP GET-Anforderung mit den erforderlichen Formulardaten an:
 

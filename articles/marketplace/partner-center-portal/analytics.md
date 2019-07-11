@@ -7,12 +7,12 @@ ms.author: shthota
 ms.service: marketplace
 ms.topic: conceptual
 ms.date: 05/31/2019
-ms.openlocfilehash: 0da95dbdca52232b4b24ad921bf2d9c78dc76d56
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: e467def33eb2980e58611d50c314a1206877e3b0
+ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66245541"
+ms.lasthandoff: 07/07/2019
+ms.locfileid: "67619684"
 ---
 # <a name="analytics-for-the-commercial-marketplace-in-partner-center"></a>Analysen für das Programm „Kommerzieller Marketplace“ im Partner Center
 
@@ -138,7 +138,7 @@ Das Diagramm **Bestellungen nach Marketplace-Lizenztyp** zeigt die Anzahl der Be
 
 - **Abrechnung über Azure**: Wenn Sie sich entscheiden, [Ihr Angebot über Microsoft zu verkaufen](./create-new-saas-offer.md#sell-through-microsoft)werden die Rechnungen bei diesem Lizenztyp von Microsoft in Ihrem Namen an den Kunden ausgestellt. Zahlungsarten sind beispielsweise nutzungsbasierte Bezahlung, Kreditkarte oder Enterprise-Rechnungsstellung.
 - **BYOL (Bring Your Own License)** : Microsoft stellt Kunden die Nutzung dieser Art von Marketplace-Angebot nicht in Rechnung. Wird im Marketplace als **[Jetzt abrufen (kostenlos)](./create-new-saas-offer.md#get-it-now-free)** aufgeführt.
-- **Free:** Microsoft stellt Kunden die Nutzung dieser Art von Marketplace-Angebot nicht in Rechnung. Wird im Marketplace als **[Kostenlose Testversion](./create-new-saas-offer.md#free-trial)** aufgeführt.
+- **Free:** Microsoft stellt Kunden die Nutzung dieser Art von Marketplace-Angebot nicht in Rechnung. Wird im Marketplace als **[Kostenlose Testversion](./create-new-saas-offer.md##free-trial-listing)** aufgeführt.
 - **Microsoft als Handelspartner**: Stellt Angebote dar, die von Microsoft-Handelspartnern im Rahmen des **[CSP-Programms (Cloud Solution Provider)](./create-new-saas-offer.md#csp-program-opt-in)** verkauft werden.
 
 ![Partner Center, Bestellungen nach Lizenztyp analysieren](./media/analyze-license-type.png)

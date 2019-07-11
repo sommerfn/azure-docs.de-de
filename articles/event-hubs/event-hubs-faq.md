@@ -10,12 +10,12 @@ ms.topic: article
 ms.custom: seodec18
 ms.date: 05/15/2019
 ms.author: shvija
-ms.openlocfilehash: c5e58f7bc89fbe2d93f6610465abf4a92fd31406
-ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
+ms.openlocfilehash: e1ec6987f1a142e9bf9cd4413cfb4444bde1b7dd
+ms.sourcegitcommit: 66237bcd9b08359a6cce8d671f846b0c93ee6a82
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/04/2019
-ms.locfileid: "66476120"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67796998"
 ---
 # <a name="event-hubs-frequently-asked-questions"></a>Häufig gestellte Fragen zu Event Hubs
 
@@ -83,7 +83,7 @@ Um die richtigen IP-Adressen für die Whitelist für Ihre Verbindungen zu ermitt
     ```
     nslookup <YourNamespaceName>.servicebus.windows.net
     ```
-2. Notieren Sie sich die IP-Adresse, die in `Non-authoritative answer` zurückgegeben werden. Diese IP-Adresse ist statisch. Sie würde sich nur dann ändern, wenn Sie den Namespace auf einem anderen Cluster wiederherstellen.
+2. Notieren Sie sich die IP-Adresse, die in `Non-authoritative answer` zurückgegeben werden. Sie würde sich nur dann ändern, wenn Sie den Namespace auf einem anderen Cluster wiederherstellen.
 
 Wenn Sie die Zonenredundanz für Ihren Namespace verwenden, müssen Sie einige zusätzliche Schritte durchführen: 
 
@@ -167,9 +167,9 @@ In der folgenden Tabelle sind die Ergebnisse aufgeführt, die bei unseren Vergle
 
 | Form der Nutzlast | Empfänger | Eingangsbandbreite| Eingangsnachrichten | Ausgangsbandbreite | Ausgangsnachrichten | TUs gesamt | TUs pro CU |
 | ------------- | --------- | ---------------- | ------------------ | ----------------- | ------------------- | --------- | ---------- |
-| Batches von 100 x 1 KB | 2 | 400 MB/s | 400\.000 Nachrichten/s | 800 MB/s | 800\.000 Nachrichten/s | 400 TUs | 100 TUs | 
-| Batches von 10 x 10 KB | 2 | 666 MB/s | 666.000 Nachrichten/s | 1,33 GB/s | 133\.000 Nachrichten/s | 666 TUs | 166 TUs |
-| Batches von 6 x 32 KB | 1 | 1,05 GB/s | 34\.000 Nachrichten/s | 1,05 GB/s | 34\.000 Nachrichten/s | 1\.000 TUs | 250 TUs |
+| Batches von 100 x 1 KB | 2 | 400 MB/s | 400.000 Nachrichten/s | 800 MB/s | 800.000 Nachrichten/s | 400 TUs | 100 TUs | 
+| Batches von 10 x 10 KB | 2 | 666 MB/s | 666.000 Nachrichten/s | 1,33 GB/s | 133.000 Nachrichten/s | 666 TUs | 166 TUs |
+| Batches von 6 x 32 KB | 1 | 1,05 GB/s | 34.000 Nachrichten/s | 1,05 GB/s | 34.000 Nachrichten/s | 1\.000 TUs | 250 TUs |
 
 Bei den Tests wurden folgende Kriterien verwendet:
 

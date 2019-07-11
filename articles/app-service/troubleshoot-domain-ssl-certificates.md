@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 03/01/2019
 ms.author: genli
 ms.custom: seodec18
-ms.openlocfilehash: c0584a69349c2785b5b6bce1d17c023c95b36151
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 0b6bdc884107a522c81d100c0a05018cbc9d0a70
+ms.sourcegitcommit: dad277fbcfe0ed532b555298c9d6bc01fcaa94e2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66136176"
+ms.lasthandoff: 07/10/2019
+ms.locfileid: "67718271"
 ---
 # <a name="troubleshoot-domain-and-ssl-certificate-problems-in-azure-app-service"></a>Problembehandlung bei Domänen- und SSL-Zertifikaten in Azure App Service
 
@@ -325,7 +325,6 @@ Sie können Ihre Domäne auch ohne eine App Service-Web-App verwalten. Die Domä
 
 **Kann ich eine Web-App mit einer benutzerdefinierten Domäne in anderes Abonnement oder von einer App Service-Umgebung v1 in eine App Service-Umgebung v2 übertragen?**
 
-Ja, können Sie Ihre Web-App aus einem Abonnement in ein anderes übertragen. Führen Sie dazu die Schritte im Leitfaden [Verschieben von Ressourcen in Azure](../azure-resource-manager/resource-group-move-resources.md) aus. Beim Übertragen einer Web-App müssen einige Einschränkungen berücksichtigt werden. Weitere Informationen finden Sie unter [Einschränkungen beim Verschieben von App Service-Ressourcen](../azure-resource-manager/resource-group-move-resources.md#app-service-limitations
-).
+Ja, können Sie Ihre Web-App aus einem Abonnement in ein anderes übertragen. Führen Sie dazu die Schritte im Leitfaden [Verschieben von Ressourcen in Azure](../azure-resource-manager/resource-group-move-resources.md) aus. Beim Übertragen einer Web-App müssen einige Einschränkungen berücksichtigt werden. Weitere Informationen finden Sie unter [Einschränkungen beim Verschieben von App Service-Ressourcen](../azure-resource-manager/move-limitations/app-service-move-limitations.md).
 
 Nach dem Übertragen der Web-App sollten die Hostnamensbindungen der Domänen innerhalb der Einstellung für die benutzerdefinierten Domänen beibehalten werden. Zum Konfigurieren der Hostnamensbindungen sind keine zusätzlichen Schritte erforderlich.

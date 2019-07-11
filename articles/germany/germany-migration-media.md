@@ -9,12 +9,12 @@ ms.service: germany
 ms.date: 08/15/2018
 ms.topic: article
 ms.custom: bfmigrate
-ms.openlocfilehash: 9c1426391edb42ecc3e74ee84649bb69196c45dd
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: c8a34137c6d1d0d238d27c61d11012bf589b6ea0
+ms.sourcegitcommit: cf438e4b4e351b64fd0320bf17cc02489e61406a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60686334"
+ms.lasthandoff: 07/08/2019
+ms.locfileid: "67657041"
 ---
 # <a name="migrate-media-resources-to-global-azure"></a>Migrieren von Medienressourcen zu Azure weltweit
 
@@ -26,7 +26,7 @@ In Azure Media Services konfigurieren Sie Ihr eigenes Speicherkonto und alle Med
 
 Weitere Informationen finden Sie unter:
 
-- Frischen Sie Ihre Kenntnisse auf, indem Sie die [Tutorials zu Media Services](https://docs.microsoft.com/azure/media-services/#step-by-step-tutorials) durcharbeiten.
+- Frischen Sie Ihre Kenntnisse auf, indem Sie die [Tutorials zu Media Services](https://docs.microsoft.com/azure/media-services/previous/) durcharbeiten.
 - Lesen Sie die [Übersicht über Media Services](../media-services/previous/media-services-overview.md).
 - Erfahren Sie, wie Sie [ein Media Services-Konto erstellen](../media-services/previous/media-services-portal-create-account.md).
 

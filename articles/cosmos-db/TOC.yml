@@ -797,6 +797,8 @@
       href: 'https://azure.microsoft.com/try/cosmosdb/'
     - name: Preise
       href: 'https://azure.microsoft.com/pricing/details/cosmos-db/'
+    - name: Vorteile von Multimaster
+      href: multi-master-benefits.md
     - name: Anwendungsfälle
       items:
         - name: Gängige Anwendungsfälle

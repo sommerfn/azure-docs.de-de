@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/25/2017
 ms.author: malop;kumud
-ms.openlocfilehash: e5481b0e262021e28a398b72b5ad022673947609
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 357122abba483a96dd9f2d602a793ee06e80b245
+ms.sourcegitcommit: 1572b615c8f863be4986c23ea2ff7642b02bc605
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65409503"
+ms.lasthandoff: 07/10/2019
+ms.locfileid: "67785551"
 ---
 # <a name="virtual-network-integration-for-azure-services"></a>Integration virtueller Netzwerke für Azure-Dienste
 
@@ -43,7 +43,7 @@ Das Bereitstellen von Diensten in einem virtuellen Netzwerk bietet die folgenden
 - Dienstinstanzen werden in einem Subnetz in einem virtuellen Netzwerk bereitgestellt. Eingehender und ausgehender Netzwerkzugriff auf das Subnetz muss gemäß der Anleitung durch den Dienst über [Netzwerksicherheitsgruppen](security-overview.md#network-security-groups) geöffnet sein.
 - Bestimmte Dienste verhängen auch Einschränkungen über dem Subnetz, in dem sie bereitgestellt werden, wobei die Anwendung von Richtlinien, Routen oder die Kombination von virtuellen Computern und Dienstressourcen im selben Subnetz eingeschränkt werden. Überprüfen Sie für jeden Dienst die spezifischen Einschränkungen, da sie sich im Laufe der Zeit ändern können. Beispiele für solche Dienste sind Azure NetApp Files, Dedicated HSM, Azure Container Instances, App Service. 
 - Optional ist für Dienste möglicherweise ein [delegiertes Subnetz](virtual-network-manage-subnet.md#add-a-subnet) als expliziter Bezeichner erforderlich, damit ein Subnetz einen bestimmten Diensts hosten kann. Durch Delegieren erhalten Dienste explizite Berechtigungen zum Erstellen dienstspezifischer Ressourcen im delegierten Subnetz.
-- Betrachten Sie ein Beispiel für eine REST-API-Antwort in einem [virtuellen Netzwerk mit einem delegierten Subnetz](https://docs.microsoft.com/rest/api/virtualnetwork/virtualnetworks/get#get_virtual_network_with_a_delegated_subnet). Eine umfassende Liste der Dienste, die das Modell des delegierten Subnetzes verwenden, erhalten Sie über die API für [verfügbare Delegierungen](https://docs.microsoft.com/rest/api/virtualnetwork/availabledelegations/list).
+- Betrachten Sie ein Beispiel für eine REST-API-Antwort in einem [virtuellen Netzwerk mit einem delegierten Subnetz](https://docs.microsoft.com/rest/api/virtualnetwork/virtualnetworks/get#get-virtual-network-with-a-delegated-subnet). Eine umfassende Liste der Dienste, die das Modell des delegierten Subnetzes verwenden, erhalten Sie über die API für [verfügbare Delegierungen](https://docs.microsoft.com/rest/api/virtualnetwork/availabledelegations/list).
 
 ### <a name="services-that-can-be-deployed-into-a-virtual-network"></a>Dienste, die in einem virtuellen Netzwerk bereitgestellt werden können
 

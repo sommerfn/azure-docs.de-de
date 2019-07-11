@@ -7,15 +7,15 @@ author: kegodin
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: acoustics
-ms.topic: how-to
+ms.topic: conceptual
 ms.date: 03/20/2019
 ms.author: kegodin
-ms.openlocfilehash: 8605fe2ea86f875b5c5fd8ea451a287442dcd51b
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 2deddfd4e6c03b53306d8fbab3340dce464158b0
+ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64922485"
+ms.lasthandoff: 07/07/2019
+ms.locfileid: "67612736"
 ---
 # <a name="project-acoustics-unity-integration"></a>Projekt Akustik: Unity-Integration
 In dieser Vorgehensweise wird die Integration des Unity-Plug-Ins von Projekt Akustik in Ihr Unity-Projekt erläutert.

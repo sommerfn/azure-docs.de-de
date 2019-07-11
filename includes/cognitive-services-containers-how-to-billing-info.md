@@ -1,15 +1,15 @@
 ---
-author: diberry
-ms.author: diberry
+author: IEvangelist
+ms.author: dapine
+ms.date: 06/25/2019
 ms.service: cognitive-services
 ms.topic: include
-ms.date: 04/16/2019
-ms.openlocfilehash: bfda8b83f1bedf11151ba89b58c95347aa35839a
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: a24300958c27daaaf49cc3045a5e99d77c938ab7
+ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67052043"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67704233"
 ---
 Abfragen des Containers werden gemäß des Tarifs der Azure-Ressource in Rechnung gestellt, die für `<ApiKey>` verwendet wird.
 

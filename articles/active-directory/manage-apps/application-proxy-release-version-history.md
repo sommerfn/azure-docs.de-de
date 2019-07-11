@@ -13,15 +13,15 @@ ms.topic: reference
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 04/05/2019
-ms.subservice: manage-apps
+ms.subservice: app-mgmt
 ms.author: mimart
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7af05769861f98ec192789d90f8a61f5b6638d1d
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 97b54d57a13f0f2b47633a25f1a44efdfa17d11a
+ms.sourcegitcommit: ccb9a7b7da48473362266f20950af190ae88c09b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65783283"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67595058"
 ---
 # <a name="azure-ad-application-proxy-version-release-history"></a>Azure AD-Anwendungsproxy: Verlauf der Versionsveröffentlichungen
 In diesem Artikel werden die veröffentlichten Versionen und Features des Anwendungsproxys von Azure Active Directory (Azure AD) aufgeführt. Das Azure AD-Team aktualisiert den Anwendungsproxy regelmäßig mit neuen Features und Funktionen. Anwendungsproxyconnectors werden automatisch aktualisiert, wenn eine neue Version veröffentlicht wird.
@@ -38,7 +38,7 @@ Herunterladen des Azure AD-Anwendungsproxyconnectors |  [Laden Sie den aktuellen
 
 ### <a name="release-status"></a>Releasestatus
 
-20\. September 2018: Für den Download veröffentlicht
+20. September 2018: Für den Download veröffentlicht
 
 ### <a name="new-features-and-improvements"></a>Neue Features und Verbesserungen
 
@@ -56,7 +56,7 @@ Herunterladen des Azure AD-Anwendungsproxyconnectors |  [Laden Sie den aktuellen
 
 ### <a name="release-status"></a>Releasestatus
 
-19\. Januar 2018: Für den Download veröffentlicht
+19. Januar 2018: Für den Download veröffentlicht
 
 ### <a name="fixed-issues"></a>Behobene Probleme
 
@@ -66,7 +66,7 @@ Herunterladen des Azure AD-Anwendungsproxyconnectors |  [Laden Sie den aktuellen
 
 ### <a name="release-status"></a>Releasestatus 
 
-25\. Mai 2017: Für den Download veröffentlicht 
+25. Mai 2017: Für den Download veröffentlicht 
 
 ### <a name="new-features-and-improvements"></a>Neue Features und Verbesserungen 
 
@@ -76,7 +76,7 @@ Verbesserte Kontrolle über die Beschränkungen für ausgehende Verbindungen von
 
 ### <a name="release-status"></a>Releasestatus
 
-15\. April 2017: Für den Download veröffentlicht
+15. April 2017: Für den Download veröffentlicht
 
 ### <a name="new-features-and-improvements"></a>Neue Features und Verbesserungen
 

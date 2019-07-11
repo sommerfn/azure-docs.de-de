@@ -2,18 +2,18 @@
 title: Häufig verwendete Sicherheitsattribute für Azure Backup
 description: Eine Prüfliste allgemeiner Sicherheitsattribute für die Auswertung von Azure Backup
 services: backup
-author: msmbaldwin
+author: utraghuv
 manager: barbkess
 ms.service: backup
 ms.topic: conceptual
 ms.date: 04/16/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 86b8ab96a94a6ffc44c304d8a0a689301560a989
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 595cc4eff70e2df4cb6d7f1d6a0c1a2748b34bf2
+ms.sourcegitcommit: d2785f020e134c3680ca1c8500aa2c0211aa1e24
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66002800"
+ms.lasthandoff: 07/04/2019
+ms.locfileid: "67565631"
 ---
 # <a name="security-attributes-for-azure-backup"></a>Sicherheitsattribute für Azure Backup
 
@@ -51,7 +51,7 @@ In diesem Artikel werden die in Azure Backup integrierten Sicherheitsattribute b
 | Sicherheitsattribut | Ja/Nein | Notizen|
 |---|---|--|
 | Authentication| Ja | Die Authentifizierung erfolgt über Azure Active Directory. |
-| Autorisierung| Ja | Vom Kunden erstellte und integrierte RBAC-Rollen werden verwendet. Weitere Informationen finden Sie unter [Use Role-Based Access Control to manage Azure Backup recovery points (Verwenden der rollenbasierten Zugriffssteuerung zum Verwalten von Azure Backup-Wiederherstellungspunkten)](/azure/backup/backup-rbac-rs-vault). |
+| Authorization| Ja | Vom Kunden erstellte und integrierte RBAC-Rollen werden verwendet. Weitere Informationen finden Sie unter [Use Role-Based Access Control to manage Azure Backup recovery points (Verwenden der rollenbasierten Zugriffssteuerung zum Verwalten von Azure Backup-Wiederherstellungspunkten)](/azure/backup/backup-rbac-rs-vault). |
 
 
 ## <a name="audit-trail"></a>Überwachungspfad

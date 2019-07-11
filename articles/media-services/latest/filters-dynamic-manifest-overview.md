@@ -13,12 +13,12 @@ ms.devlang: ne
 ms.topic: article
 ms.date: 06/11/2019
 ms.author: juliako
-ms.openlocfilehash: ab07b87d724f2006b6b5c0e4f472140f92230dea
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: a8e4228340917fe26ca5999bd70d122e31cd3c43
+ms.sourcegitcommit: 66237bcd9b08359a6cce8d671f846b0c93ee6a82
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67080401"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67797612"
 ---
 # <a name="pre-filtering-manifests-with-dynamic-packager"></a>Vorfiltern von Manifesten mit dem dynamischen Packager
 
@@ -48,7 +48,7 @@ Das REST-Beispiel finden Sie unter [Hochladen, Codieren und Streamen von Dateien
 
 ### <a name="monitor-the-bitrate-of-a-video-stream"></a>Überwachen der Bitrate eines Videostreams
 
-Sie können mithilfe der [Azure Media Player-Demoseite](https://aka.ms/amp) die Bitrate eines Videostreams überwachen. Die Demoseite zeigt auf der Registerkarte **Diagnose** Diagnoseinformationen an:
+Sie können mithilfe der [Azure Media Player-Demoseite](https://ampdemo.azureedge.net/azuremediaplayer.html) die Bitrate eines Videostreams überwachen. Die Demoseite zeigt auf der Registerkarte **Diagnose** Diagnoseinformationen an:
 
 ![Azure Media Player-Diagnose][amp_diagnostics]
  

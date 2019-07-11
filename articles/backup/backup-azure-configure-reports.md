@@ -6,14 +6,14 @@ author: adigan
 manager: shivamg
 ms.service: backup
 ms.topic: conceptual
-ms.date: 01/30/2019
+ms.date: 07/09/2019
 ms.author: adigan
-ms.openlocfilehash: e3004a44958d75d18d608a2fbed7ccc44a00dc93
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 5f656a097509e9998d6fb8f157d1910cc04b7799
+ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60642677"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67705153"
 ---
 # <a name="configure-azure-backup-reports"></a>Konfigurieren von Azure Backup-Berichten
 Dieser Artikel erläutert die Schritte zum Konfigurieren von Berichten für Azure Backup mit dem Recovery Services-Tresor. Außerdem erfahren Sie, wie Sie mit Power BI auf Berichte zugreifen. Nachdem Sie diese Schritte abgeschlossen haben, können Sie direkt Power BI aufrufen, um Berichte anzuzeigen, anzupassen und zu erstellen.
@@ -71,7 +71,7 @@ Diese Schritte zeigen, wie Sie das Speicherkonto für einen Recovery Services-Tr
       ![Schritt 9: Anzeigen der Diagnoseeinstellung](./media/backup-azure-configure-reports/diagnostic-setting-row.png)
 
 > [!NOTE]
-> Nachdem Sie die Berichte durch Speichern des Speicherkontos konfiguriert haben, warten Sie *24 Stunden*, bis der erste Datenpush abgeschlossen ist. Importieren Sie die Azure Backup-App erst danach in Power BI. Weitere Informationen finden Sie im Bereich [Häufig gestellte Fragen](#frequently-asked-questions).
+> Nachdem Sie die Berichte durch Speichern des Speicherkontos konfiguriert haben, warten Sie *24 Stunden*, bis der erste Datenpush abgeschlossen ist. Importieren Sie die Azure Backup-App erst danach in Power BI. Weitere Informationen finden Sie im Bereich [Häufig gestellte Fragen](backup-azure-monitor-alert-faq.md).
 >
 >
 
@@ -112,34 +112,6 @@ Wenn Sie den Bericht anpassen und freigeben möchten, erstellen Sie einen Arbeit
 
       ![Azure Backup-Berichtsregisterkarten](./media/backup-azure-configure-reports/reports-tab-view.png)
 
-
-## <a name="frequently-asked-questions"></a>Häufig gestellte Fragen
-
-### <a name="how-do-i-check-if-reporting-data-has-started-flowing-into-a-storage-account"></a>Wie überprüfe ich, ob bereits Berichtsdaten an ein Speicherkonto übermittelt werden?
-Öffnen Sie das konfigurierte Speicherkonto, und wählen Sie Container aus. Wenn der Container einen Eintrag für „insights-logs-azurebackupreport“ aufweist, bedeutet dies, dass Berichtsdaten übermittelt werden.
-
-### <a name="what-is-the-frequency-of-data-push-to-a-storage-account-and-the-azure-backup-content-pack-in-power-bi"></a>Wie oft werden Daten an das Speicherkonto und das Azure Backup-Inhaltspaket in Power BI mithilfe von Push übertragen?
-  Nach dem Aktivieren dauert es etwa 24 Stunden, bis Daten mithilfe von Push an ein Speicherkonto übertragen werden. Nach dem ersten Push gelten für die Aktualisierungshäufigkeit der Daten die Angaben in der folgenden Abbildung.
-
-  * Daten zu **Aufträgen**, **Warnungen**, **Sicherungselementen**, **Tresoren**, **geschützten Servern** und **Richtlinien** werden beim Protokollieren mithilfe von Push an das Speicherkonto des Kunden übertragen.
-
-  * Daten bezüglich des **Speichers** werden alle 24 Stunden mithilfe von Push an das Speicherkonto des Kunden übertragen.
-
-       ![Übermittlungshäufigkeit von Azure Backup-Berichtsdaten](./media/backup-azure-configure-reports/reports-data-refresh-cycle.png)
-
-  * Power BI verfügt über eine [täglich geplante Aktualisierung](https://powerbi.microsoft.com/documentation/powerbi-refresh-data/#what-can-be-refreshed). Sie können die Daten in Power BI für das Inhaltspaket manuell aktualisieren.
-
-### <a name="how-long-can-i-retain-reports"></a>Wie lange kann ich Berichte aufbewahren?
-Beim Einrichten eines Speicherkontos können Sie einen Aufbewahrungszeitraum für Berichtsdaten auswählen. Führen Sie Schritt 6 im Abschnitt [Konfigurieren des Speicherkontos für Berichte](backup-azure-configure-reports.md#configure-storage-account-for-reports) aus. Außerdem können Sie [Berichte in Excel analysieren](https://powerbi.microsoft.com/documentation/powerbi-service-analyze-in-excel/) und sie Ihren Anforderungen entsprechend für einen längeren Zeitraum aufbewahren.
-
-### <a name="will-i-see-all-my-data-in-reports-after-i-configure-the-storage-account"></a>Werden alle meine Daten in Berichten nach dem Konfigurieren des Speicherkontos angezeigt?
- Alle Daten, die nach der Konfiguration des Speicherkontos generiert werden, werden mithilfe von Push an das Speicherkonto übertragen und stehen in den Berichten zur Verfügung. Aufträge, die sich in Bearbeitung befinden, werden nicht mithilfe von Push für die Berichterstellung übertragen. Wenn ein Auftrag abgeschlossen wird oder fehlschlägt, wird er an die Berichte gesendet.
-
-### <a name="if-i-already-configured-the-storage-account-to-view-reports-can-i-change-the-configuration-to-use-another-storage-account"></a>Ich habe das Speicherkonto bereits so konfiguriert, dass Berichte angezeigt werden. Kann ich die Konfiguration ändern, um ein anderes Speicherkonto zu verwenden?
-Ja, Sie können die Konfiguration ändern und auf ein anderes Speicherkonto zeigen. Verwenden Sie beim Verbinden mit dem Azure Backup-Inhaltspaket das neu konfigurierte Speicherkonto. Sobald ein anderes Speicherkonto konfiguriert ist, werden neue Daten an dieses Speicherkonto übermittelt. Daten, die vor der Konfigurationsänderung stammen, verbleiben im älteren Speicherkonto.
-
-### <a name="can-i-view-reports-across-vaults-and-subscriptions"></a>Kann ich Berichte für verschiedene Tresore und Abonnements anzeigen?
-Ja, Sie können dasselbe Speicherkonto für verschiedene Tresore konfigurieren, um tresorübergreifende Berichte anzuzeigen. Sie können auch dasselbe Speicherkonto für Tresore in verschiedenen Abonnements verwenden. Dieses Speicherkonto lässt sich dann beim Verbinden mit dem Azure Backup-Inhaltspaket in Power BI verwenden, um die Berichte anzuzeigen. Das ausgewählte Speicherkonto muss sich in der gleichen Region wie der Recovery Services-Tresor befinden.
 
 ## <a name="troubleshooting-errors"></a>Problembehandlung
 | Fehlerdetails | Lösung |

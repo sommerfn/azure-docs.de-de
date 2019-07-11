@@ -8,12 +8,12 @@ ms.reviewer: jasonh
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 04/15/2019
-ms.openlocfilehash: 64856d53168a7676cf279da2d8675ce81e1985f7
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 2142fbf03daa6667b20db43f9212a2b5e6d7dd44
+ms.sourcegitcommit: cf438e4b4e351b64fd0320bf17cc02489e61406a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60447873"
+ms.lasthandoff: 07/08/2019
+ms.locfileid: "67657529"
 ---
 # <a name="copy-data-to-azure-data-explorer-using-azure-data-factory"></a>Kopieren von Daten in Azure Data Explorer mithilfe von Azure Data Factory 
 
@@ -141,7 +141,7 @@ Der neue verknüpfte Azure Data Explorer-Dienst wird erstellt, um die Daten in d
     * Wählen Sie **Fertig stellen** aus, um die Erstellung des verknüpften Diensts abzuschließen.
 
     > [!NOTE]
-    > Der Dienstprinzipal wird von Azure Data Factory für den Zugriff auf den Azure Data Explorer-Dienst verwendet. [Erstellen Sie einen Azure Active Directory (Azure AD)-Dienstprinzipal](/azure/azure-stack/azure-stack-create-service-principals#manage-service-principal-for-azure-ad) als Dienstprinzipal. Verwenden Sie nicht die **Azure Key Vault**-Methode.
+    > Der Dienstprinzipal wird von Azure Data Factory für den Zugriff auf den Azure Data Explorer-Dienst verwendet. [Erstellen Sie einen Azure Active Directory (Azure AD)-Dienstprinzipal](/azure-stack/operator/azure-stack-create-service-principals#manage-an-azure-ad-service-principal) als Dienstprinzipal. Verwenden Sie nicht die **Azure Key Vault**-Methode.
 
 1. Der **Zieldatenspeicher** wird geöffnet. Die erstellte Azure Data Explorer-Datenverbindung kann nun verwendet werden. Wählen Sie **Weiter** aus, um die Verbindung zu konfigurieren.
 
