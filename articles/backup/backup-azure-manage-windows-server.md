@@ -6,14 +6,14 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: backup
 ms.topic: conceptual
-ms.date: 8/21/2018
+ms.date: 07/08/2019
 ms.author: raynew
-ms.openlocfilehash: f7d97866bb3ae895f83fff248ceec2e83dd60bf9
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: b447290a6910d144703bb796290908d0fc21b924
+ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66688898"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67705137"
 ---
 # <a name="monitor-and-manage-recovery-services-vaults"></a>Überwachen und Verwalten von Recovery Services-Tresoren
 
@@ -100,7 +100,7 @@ Standardmäßig werden alle Details, im Bericht angezeigt, mit Ausnahme von **Ze
 * Warnung
 * Sicherungselement
 * Geschützter Server
-* Severity
+* severity
 * Duration
 * Erstellungszeit
 * Status
@@ -260,21 +260,6 @@ Auf der Kachel „Sicherungsspeicher“ im Dashboard wird der in Azure genutzte 
 * Cloud-LRS-Speicherverwendung des Tresors
 * Cloud-GRS-Speicherverwendung des Tresors
 
-
-## <a name="frequently-asked-questions"></a>Häufig gestellte Fragen
-
-### <a name="how-long-does-it-take-for-the-azure-backup-agent-job-status-to-reflect-in-the-portal"></a>Wie lange dauert es, bis der Auftragsstatus des Azure Backup-Agents im Portal angezeigt wird?
-Es kann bis zu 15 Minuten dauern, bis der Status des Azure Backup-Agent-Auftrags im Azure-Portal angezeigt wird.
-
-### <a name="when-a-backup-job-fails-how-long-does-it-take-to-raise-an-alert"></a>Wie lange dauert es, bis eine Warnung ausgelöst wird, wenn ein Sicherungsauftrag nicht erfolgreich ist?
-Innerhalb von 20 Minuten nach dem Azure-Sicherungsfehler wird eine Warnung ausgelöst.
-
-### <a name="is-there-a-case-where-an-email-wont-be-sent-if-notifications-are-configured"></a>Kann es vorkommen, dass eine E-Mail nicht gesendet wird, wenn Benachrichtigungen konfiguriert sind?
-Ja. In den folgenden Situationen werden keine Benachrichtigungen gesendet.
-
-* Stündliche Benachrichtigungen wurden konfiguriert, und eine Warnung wird ausgelöst und innerhalb dieser Stunde gelöst.
-* Ein Auftrag wurde abgebrochen.
-* Bei einem zweiten Sicherungsauftrag tritt ein Fehler auf, weil der ursprüngliche Sicherungsauftrag noch ausgeführt wird.
 
 ## <a name="troubleshooting-monitoring-issues"></a>Problembehandlung bei der Überwachung
 
