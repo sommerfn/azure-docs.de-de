@@ -7,15 +7,15 @@ author: erhopf
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
-ms.topic: overview
-ms.date: 05/02/2019
+ms.topic: conceptual
+ms.date: 07/05/2019
 ms.author: erhopf
-ms.openlocfilehash: 055d141cab8ece3fcb462573f6ed4d8941c19751
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 37d68a4d2b7658542ebcfdb5d22a10676a8e4d52
+ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67064127"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67603303"
 ---
 # <a name="speech-services-for-telephony-data"></a>Speech-Dienste für Telefoniedaten
 
@@ -36,7 +36,7 @@ Nachfolgend sind einige der Technologien und zugehörigen Features der Azure Spe
 
 Über den funktionalen Aspekt der Spracherkennungsdienste hinaus liegt ihr Hauptzweck – bei Einsatz im Callcenter – in der Verbesserung des Kundenerlebnisses. In dieser Hinsicht gibt es drei klare Bereiche:
 
-* Analysen nach dem Anruf, d.h. Batchverarbeitung von Anrufaufzeichnungen 
+* Analysen nach dem Anruf, d.h. Batchverarbeitung von Anrufaufzeichnungen
 * Analyseverarbeitung des Audiosignals in Echtzeit, um verschiedene Erkenntnisse während des Anrufs zu gewinnen (wobei die Stimmungserkennung ein bedeutender Anwendungsfall ist)
 * Virtuelle Assistenten (Bots), die entweder den Dialog zwischen dem Kunden und dem Bot führen, um das Problem des Kunden ohne Beteiligung eines Mitarbeiters zu lösen, oder die Anwendung von KI-Protokollen zur Unterstützung des Mitarbeiters
 
@@ -44,9 +44,9 @@ Die folgende Abbildung zeigt ein Diagramm der typischen Architektur zur Implemen
 
 ## <a name="speech-analytics-technology-components"></a>Technologiekomponenten für die Sprachanalyse
 
-Unabhängig davon, ob es sich um eine Situation nach dem Anruf oder in Echtzeit handelt, bietet Azure eine Reihe ausgereifter und innovativer Technologien zur Verbesserung des Kundenerlebnisses. 
+Unabhängig davon, ob es sich um eine Situation nach dem Anruf oder in Echtzeit handelt, bietet Azure eine Reihe ausgereifter und innovativer Technologien zur Verbesserung des Kundenerlebnisses.
 
-### <a name="speech-to-text-stt"></a>Spracherkennung 
+### <a name="speech-to-text-stt"></a>Spracherkennung
 
 Die [Spracherkennung](speech-to-text.md) ist das gefragteste Feature jeder Callcenterlösung. Da viele der nachgeschalteten Analyseprozesse auf transkribiertem Text basieren, ist die Wort-Fehler-Rate (Word Error Rate, WER) von größter Bedeutung. Eine besondere Herausforderung bei der Callcentertranskription sind die Geräusche, die im Callcenter vorherrschen (z.B. andere Mitarbeiter, die im Hintergrund sprechen), die große Bandbreite an Sprachregionen und Dialekten sowie die geringe Qualität des tatsächlichen Telefonsignals. WER steht in engem Zusammenhang damit, wie gut die Akustik- und Sprachmodelle für ein bestimmtes Gebietsschema trainiert sind. Daher ist es wichtig, dass Sie das Modell an Ihr Gebietsschema anpassen können. Unsere neuesten Unified-Modelle der Version 4.x stellen die Lösung im Hinblick auf Transkriptionsgenauigkeit und -latenz dar. Aufgrund des Trainings mit Zehntausenden von Stunden an Akustikdaten und Milliarden von lexikalischen Informationen sind Unified-Modelle die genauesten Modelle auf dem Markt für das Transkribieren von Callcenterdaten.
 
@@ -60,9 +60,9 @@ Es ist nicht ungewöhnlich, dass 35 % eines Supportanrufs aus sogenannten Sprech
 Einige Unternehmen experimentieren mit der Bereitstellung übersetzter Transkripte von Supportanrufen in Fremdsprachen, damit Bereitstellungsmanager die Erfahrungen der Kunden weltweit verstehen können. Unsere [Übersetzungsfunktionen](translation.md) sind unübertroffen. Wir können Audio in Audio oder Audio in Text aus einer großen Anzahl von Gebietsschemas übersetzen.
 
 ### <a name="text-to-speech"></a>Text-zu-Sprache
-Die [Sprachsynthese](text-to-speech.md) ist ein weiterer wichtiger Bereich bei der Implementierung von Bots, die mit den Kunden interagieren. Der typische Ablauf ist folgendermaßen: Der Kunde spricht, seine Stimme wird in Text transkribiert, der Text wird auf Absichten analysiert, eine Antwort wird basierend auf der erkannten Absicht synthetisiert und anschließend wird dem Kunden entweder ein Medienobjekt angezeigt oder es wird eine synthetisierte Sprachausgabe generiert. All dies muss natürlich schnell geschehen – daher ist die Latenz ein wichtiger Faktor für den Erfolg dieser Systeme. 
+Die [Sprachsynthese](text-to-speech.md) ist ein weiterer wichtiger Bereich bei der Implementierung von Bots, die mit den Kunden interagieren. Der typische Ablauf ist folgendermaßen: Der Kunde spricht, seine Stimme wird in Text transkribiert, der Text wird auf Absichten analysiert, eine Antwort wird basierend auf der erkannten Absicht synthetisiert und anschließend wird dem Kunden entweder ein Medienobjekt angezeigt oder es wird eine synthetisierte Sprachausgabe generiert. All dies muss natürlich schnell geschehen – daher ist die Latenz ein wichtiger Faktor für den Erfolg dieser Systeme.
 
-Unsere End-to-End-Latenz angesicht der verschiedenen beteiligten Technologien wie [Spracherkennung](speech-to-text.md), [LUIS](https://azure.microsoft.com/services/cognitive-services/language-understanding-intelligent-service/), [Bot Framework](https://dev.botframework.com/) und [Sprachsynthese](text-to-speech.md) ist recht kurz. 
+Unsere End-to-End-Latenz angesicht der verschiedenen beteiligten Technologien wie [Spracherkennung](speech-to-text.md), [LUIS](https://azure.microsoft.com/services/cognitive-services/language-understanding-intelligent-service/), [Bot Framework](https://dev.botframework.com/) und [Sprachsynthese](text-to-speech.md) ist recht kurz.
 
 Unsere neuen Stimmen sind außerdem nicht von menschlichen Stimmen zu unterscheiden. Sie können damit Ihrem Bot eine einzigartige Persönlichkeit verleihen.
 

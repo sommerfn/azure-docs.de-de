@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 04/10/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a5b3c9a0152144ac0d705c7d3f12c18cbc38398f
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 817eecce6c2c1be273b47494e8ecc14180394796
+ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67090147"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67705335"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-spotinst"></a>Tutorial: Azure Active Directory-Integration mit Spotinst
 
@@ -114,7 +114,7 @@ Führen Sie die folgenden Schritte aus, um das einmalige Anmelden von Azure AD b
 
     ![SSO-Informationen zur Domäne und zu den URLs für Spotinst](common/metadata-upload-additional-signon.png)
 
-    Geben Sie im Textfeld **Anmelde-URL** die URL ein: `https://console.spotinst.com`.
+    Geben Sie im Textfeld **Anmelde-URL** die URL ein: `https://console.spotinst.com/auth/saml`.
 
     > [!NOTE]
     > Der Wert für den Relayzustand entspricht nicht dem tatsächlichen Wert. Sie aktualisieren den Wert für den Relayzustand mit dem tatsächlichen Wert für den Relayzustand. Dies wird später in diesem Tutorial beschrieben.
