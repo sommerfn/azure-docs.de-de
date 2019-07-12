@@ -228,7 +228,7 @@ Jede Eigenschaft, die die Anwendung definieren muss, sollte der `application-pro
 | subject |Anwendungsdefinierte Nachrichtenzweck-ID, von Service Bus nicht interpretiert. |[Label](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage) |
 | reply-to |Anwendungsdefinierter Antwortpfadindikator, von Service Bus nicht interpretiert. |[ReplyTo](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage) |
 | correlation-id |Anwendungsdefinierte Korrelations-ID, von Service Bus nicht interpretiert. |[CorrelationId](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage) |
-| Inhaltstyp |Anwendungsdefinierter Inhaltstypindikator für den Haupttext, von Service Bus nicht interpretiert. |[ContentType](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage) |
+| content-type	 |Anwendungsdefinierter Inhaltstypindikator für den Haupttext, von Service Bus nicht interpretiert. |[ContentType](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage) |
 | content-encoding |Anwendungsdefinierter Inhaltscodierungsindikator für den Haupttext, von Service Bus nicht interpretiert. |Nicht über die Service Bus-API zugänglich. |
 | absolute-expiry-time |Deklariert, zu welchem absolutem Zeitpunkt die Nachricht abläuft. Bei Eingabe ignoriert (Header-TTL wird beachtet), autoritativ bei Ausgabe. |[ExpiresAtUtc](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage) |
 | creation-time |Deklariert, zu welchem Zeitpunkt die Nachricht erstellt wurde. Wird von Service Bus nicht verwendet. |Nicht über die Service Bus-API zugänglich. |
@@ -247,7 +247,7 @@ Einige andere Service Bus-Nachrichteneigenschaften sind nicht Teil der AMQP-Nach
 | x-opt-via-partition-key | Anwendungsdefinierter Partitionsschlüsselwert, wenn eine Transaktion zum Senden von Nachrichten über eine Übertragungswarteschlange verwendet werden soll. | [ViaPartitionKey](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage.viapartitionkey?view=azure-dotnet) |
 | x-opt-enqueued-time | Vom Dienst definierte UTC-Zeit, die den tatsächlichen Zeitpunkt des Einreihens der Nachricht darstellt. Wird bei der Eingabe ignoriert. | [EnqueuedTimeUtc](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage.enqueuedtimeutc?view=azure-dotnet) |
 | x-opt-sequence-number | Vom Dienst definierte eindeutige Nummer, die einer Nachricht zugewiesen ist. | [SequenceNumber](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage.sequencenumber?view=azure-dotnet) |
-| X-opt-offset | Vom Dienst definierte Warteschlangen-Sequenznummer der Nachricht. | [EnqueuedSequenceNumber](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage.enqueuedsequencenumber?view=azure-dotnet) |
+| x-opt-offset | Vom Dienst definierte Warteschlangen-Sequenznummer der Nachricht. | [EnqueuedSequenceNumber](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage.enqueuedsequencenumber?view=azure-dotnet) |
 | x-opt-locked-until | Vom Dienst definiert. Der Zeitpunkt (Datum und Uhrzeit), bis zu dem die Nachricht in der Warteschlange / im Abonnement gesperrt wird. | [LockedUntilUtc](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage.lockeduntilutc?view=azure-dotnet) |
 | x-opt-deadletter-source | Vom Dienst definiert. Die Quelle der ursprünglichen Nachricht, wenn die Nachricht von der Warteschlange für unzustellbare Nachrichten empfangen wird. | [DeadLetterSource](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage.deadlettersource?view=azure-dotnet) |
 
