@@ -254,7 +254,7 @@
         - name: Behandeln von Vorgängen mit langer Ausführungsdauer
           href: media-services-dotnet-long-operations.md
         - name: Spezifikation für die Liveerfassung von fragmentiertem MP4
-          href: media-services-fmp4-live-ingest-overview.md
+          href: ../media-services-fmp4-live-ingest-overview.md
         - name: Erste Schritte
           href: media-services-azure-media-clipper-getting-started.md
         - name: Laden von Videos
@@ -458,11 +458,11 @@
     - name: Spezifikationen
       items:
         - name: 'Liveerfassung: Spezifikation für die Liveerfassung von fragmentiertem MP4'
-          href: media-services-fmp4-live-ingest-overview.md
+          href: ../media-services-fmp4-live-ingest-overview.md
         - name: 'Liveerfassung: Signalisieren von zeitlich festgelegten Metadaten beim Livestreaming'
-          href: media-services-specifications-live-timed-metadata.md
+          href: ../media-services-specifications-live-timed-metadata.md
         - name: Smooth Streaming (HEVC)
-          href: media-services-specifications-ms-sstr-amendment-hevc.md
+          href: ../media-services-specifications-ms-sstr-amendment-hevc.md
 - name: Ressourcen
   items:
     - name: Azure Media Services-Community

@@ -137,6 +137,8 @@
           href: infrastructure-example.md
         - name: vCPU-Kontingente
           href: quotas.md
+    - name: Sicherheitsattribute
+      href: virtual-machines-linux-security-attributes.md
 - name: Anleitungen
   items:
     - name: Virtuelle Computer erstellen
