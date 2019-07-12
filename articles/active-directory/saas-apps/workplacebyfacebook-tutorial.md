@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 02/12/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 27173c8beeecf2be43e80f59df8907952734c06b
-ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
+ms.openlocfilehash: db14df2dc24afbc8f7982d8d1e4e6429c1c4b1ba
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/20/2019
-ms.locfileid: "65905220"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67086795"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-workplace-by-facebook"></a>Tutorial: Azure Active Directory-Integration mit Workplace by Facebook
 
@@ -58,7 +58,7 @@ In diesem Tutorial konfigurieren und testen Sie das einmalige Anmelden von Azure
 
 * Workplace by Facebook unterstützt **SP**-initiiertes einmaliges Anmelden.
 * Workplace by Facebook unterstützt die **Just-in-Time-Bereitstellung**.
-* Workplace by Facebook unterstützt die **[automatische Benutzerbereitstellung](workplacebyfacebook-provisioning-tutorial.md)**.
+* Workplace by Facebook unterstützt die **[automatische Benutzerbereitstellung](workplacebyfacebook-provisioning-tutorial.md)** .
 
 ## <a name="adding-workplace-by-facebook-from-the-gallery"></a>Hinzufügen von Workplace by Facebook aus dem Katalog
 
@@ -89,12 +89,12 @@ Damit das einmalige Anmelden funktioniert, muss zwischen einem Azure AD-Benutzer
 
 Zum Konfigurieren und Testen des einmaligen Anmeldens von Azure AD mit Workplace by Facebook müssen Sie die folgenden Bausteine ausführen:
 
-1. **[Konfigurieren des einmaligen Anmeldens von Azure AD](#configure-azure-ad-single-sign-on)**, um Ihren Benutzern das Verwenden dieses Features zu ermöglichen.
-2. **[Konfigurieren des einmaligen Anmeldens für Workplace by Facebook](#configure-workplace-by-facebook-single-sign-on)**, um die Einstellungen für einmaliges Anmelden auf der Anwendungsseite zu konfigurieren.
-3. **[Erstellen eines Azure AD-Testbenutzers](#create-an-azure-ad-test-user)**, um das einmalige Anmelden mit Azure AD mit dem Testbenutzer Britta Simon zu testen.
-4. **[Zuweisen des Azure AD-Testbenutzers](#assign-the-azure-ad-test-user)**, um Britta Simon für das einmalige Anmelden von Azure AD zu aktivieren.
-5. **[Erstellen eines Workplace by Facebook-Testbenutzers](#create-workplace-by-facebook-test-user)**, um eine Entsprechung von Britta Simon in Workplace by Facebook zu erhalten, die mit der Darstellung des Benutzers in Azure AD verknüpft ist.
-6. **[Testen der einmaligen Anmeldung](#test-single-sign-on)**, um zu überprüfen, ob die Konfiguration funktioniert.
+1. **[Konfigurieren des einmaligen Anmeldens von Azure AD](#configure-azure-ad-single-sign-on)** , um Ihren Benutzern das Verwenden dieses Features zu ermöglichen.
+2. **[Konfigurieren des einmaligen Anmeldens für Workplace by Facebook](#configure-workplace-by-facebook-single-sign-on)** , um die Einstellungen für einmaliges Anmelden auf der Anwendungsseite zu konfigurieren.
+3. **[Erstellen eines Azure AD-Testbenutzers](#create-an-azure-ad-test-user)** , um das einmalige Anmelden mit Azure AD mit dem Testbenutzer Britta Simon zu testen.
+4. **[Zuweisen des Azure AD-Testbenutzers](#assign-the-azure-ad-test-user)** , um Britta Simon für das einmalige Anmelden von Azure AD zu aktivieren.
+5. **[Erstellen eines Workplace by Facebook-Testbenutzers](#create-workplace-by-facebook-test-user)** , um eine Entsprechung von Britta Simon in Workplace by Facebook zu erhalten, die mit der Darstellung des Benutzers in Azure AD verknüpft ist.
+6. **[Testen der einmaligen Anmeldung](#test-single-sign-on)** , um zu überprüfen, ob die Konfiguration funktioniert.
 
 ### <a name="configure-azure-ad-single-sign-on"></a>Konfigurieren des einmaligen Anmeldens in Azure AD
 
@@ -174,7 +174,7 @@ Führen Sie zum Konfigurieren des einmaligen Anmeldens von Azure AD bei Workplac
 
     i. Allen Benutzern von Workplace wird jetzt die Azure AD-Anmeldeseite für die Authentifizierung angezeigt.
 
-4. **SAML Logout Redirect (optional)** - (SAML-Abmeldeumleitung (optional))
+4. **SAML Logout Redirect (optional)**  - (SAML-Abmeldeumleitung (optional))
 
     Optional können Sie angeben, dass Sie eine SAML-Abmelde-URL konfigurieren möchten, mit der auf die Azure AD-Abmeldeseite verwiesen werden kann. Wenn diese Einstellung aktiviert und konfiguriert wird, werden Benutzer nicht mehr auf die Workplace-Abmeldeseite verwiesen. Stattdessen werden Benutzer an die URL umgeleitet, die unter der Einstellung für die SAML-Abmeldeumleitung hinzugefügt wurde.
 

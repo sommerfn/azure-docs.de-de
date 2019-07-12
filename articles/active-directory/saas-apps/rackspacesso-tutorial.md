@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 04/15/2019
 ms.author: jeedes
-ms.openlocfilehash: fd420ea3fc4faae7fe4510a72204d71acaa3549a
-ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
+ms.openlocfilehash: 31826f5d4d88c977f859a009bface2fddf3a1c88
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/20/2019
-ms.locfileid: "65890789"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67093194"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-rackspace-sso"></a>Tutorial: Azure Active Directory-Integration mit Rackspace SSO
 
@@ -76,12 +76,12 @@ Bei der Verwendung des einmaligen Anmeldens mit Rackspace werden die Rackspace-B
 
 Zum Konfigurieren und Testen des einmaligen Anmeldens bei Rackspace SSO über Azure AD müssen Sie die folgenden Schritte ausführen:
 
-1. **[Konfigurieren des einmaligen Anmeldens von Azure AD](#configure-azure-ad-single-sign-on)**, um Ihren Benutzern das Verwenden dieses Features zu ermöglichen.
-2. **[Konfigurieren des einmaligen Anmeldens für Rackspace SSO](#configure-rackspace-sso-single-sign-on)**, um die Einstellungen für einmaliges Anmelden auf der Anwendungsseite zu konfigurieren
-3. **[Erstellen eines Azure AD-Testbenutzers](#create-an-azure-ad-test-user)**, um das einmalige Anmelden mit Azure AD mit dem Testbenutzer Britta Simon zu testen.
-4. **[Zuweisen des Azure AD-Testbenutzers](#assign-the-azure-ad-test-user)**, um Britta Simon für das einmalige Anmelden von Azure AD zu aktivieren.
-1. **[Einrichten der Attributzuordnung in der Rackspace-Systemsteuerung](#set-up-attribute-mapping-in-the-rackspace-control-panel)**, um Azure AD-Benutzern Rackspace Rollen zuzuweisen.
-1. **[Testen der einmaligen Anmeldung](#test-single-sign-on)**, um zu überprüfen, ob die Konfiguration funktioniert.
+1. **[Konfigurieren des einmaligen Anmeldens von Azure AD](#configure-azure-ad-single-sign-on)** , um Ihren Benutzern das Verwenden dieses Features zu ermöglichen.
+2. **[Konfigurieren des einmaligen Anmeldens für Rackspace SSO](#configure-rackspace-sso-single-sign-on)** , um die Einstellungen für einmaliges Anmelden auf der Anwendungsseite zu konfigurieren
+3. **[Erstellen eines Azure AD-Testbenutzers](#create-an-azure-ad-test-user)** , um das einmalige Anmelden mit Azure AD mit dem Testbenutzer Britta Simon zu testen.
+4. **[Zuweisen des Azure AD-Testbenutzers](#assign-the-azure-ad-test-user)** , um Britta Simon für das einmalige Anmelden von Azure AD zu aktivieren.
+1. **[Einrichten der Attributzuordnung in der Rackspace-Systemsteuerung](#set-up-attribute-mapping-in-the-rackspace-control-panel)** , um Azure AD-Benutzern Rackspace Rollen zuzuweisen.
+1. **[Testen der einmaligen Anmeldung](#test-single-sign-on)** , um zu überprüfen, ob die Konfiguration funktioniert.
 
 ### <a name="configure-azure-ad-single-sign-on"></a>Konfigurieren des einmaligen Anmeldens in Azure AD
 

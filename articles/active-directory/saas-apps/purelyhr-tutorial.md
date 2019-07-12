@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/27/2019
 ms.author: jeedes
-ms.openlocfilehash: b6e004ea613d1a3dfd47a2798e0298f41eab2d3d
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 99423568de7ff6686198120fd94e9c09287b21a8
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "65868611"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67093652"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-purelyhr"></a>Tutorial: Azure Active Directory-Integration mit PurelyHR
 
@@ -78,12 +78,12 @@ Damit einmaliges Anmelden funktioniert, muss eine Linkbeziehung zwischen einem A
 
 Zum Konfigurieren und Testen des einmaligen Anmeldens in Azure AD bei PurelyHR müssen Sie die folgenden Bausteine ausführen:
 
-1. **[Konfigurieren des einmaligen Anmeldens von Azure AD](#configure-azure-ad-single-sign-on)**, um Ihren Benutzern das Verwenden dieses Features zu ermöglichen.
-2. **[Konfigurieren des einmaligen Anmeldens für PurelyHR](#configure-purelyhr-single-sign-on)**, um die Einstellungen für einmaliges Anmelden auf der Anwendungsseite zu konfigurieren
-3. **[Erstellen eines Azure AD-Testbenutzers](#create-an-azure-ad-test-user)**, um das einmalige Anmelden mit Azure AD mit dem Testbenutzer Britta Simon zu testen.
-4. **[Zuweisen des Azure AD-Testbenutzers](#assign-the-azure-ad-test-user)**, um Britta Simon für das einmalige Anmelden von Azure AD zu aktivieren.
-5. **[Erstellen eines PurelyHR-Testbenutzers](#create-purelyhr-test-user)**, um eine Entsprechung von Britta Simon in PurelyHR zu erhalten, die mit ihrer Darstellung in Azure AD verknüpft ist
-6. **[Testen der einmaligen Anmeldung](#test-single-sign-on)**, um zu überprüfen, ob die Konfiguration funktioniert.
+1. **[Konfigurieren des einmaligen Anmeldens von Azure AD](#configure-azure-ad-single-sign-on)** , um Ihren Benutzern das Verwenden dieses Features zu ermöglichen.
+2. **[Konfigurieren des einmaligen Anmeldens für PurelyHR](#configure-purelyhr-single-sign-on)** , um die Einstellungen für einmaliges Anmelden auf der Anwendungsseite zu konfigurieren
+3. **[Erstellen eines Azure AD-Testbenutzers](#create-an-azure-ad-test-user)** , um das einmalige Anmelden mit Azure AD mit dem Testbenutzer Britta Simon zu testen.
+4. **[Zuweisen des Azure AD-Testbenutzers](#assign-the-azure-ad-test-user)** , um Britta Simon für das einmalige Anmelden von Azure AD zu aktivieren.
+5. **[Erstellen eines PurelyHR-Testbenutzers](#create-purelyhr-test-user)** , um eine Entsprechung von Britta Simon in PurelyHR zu erhalten, die mit ihrer Darstellung in Azure AD verknüpft ist
+6. **[Testen der einmaligen Anmeldung](#test-single-sign-on)** , um zu überprüfen, ob die Konfiguration funktioniert.
 
 ### <a name="configure-azure-ad-single-sign-on"></a>Konfigurieren des einmaligen Anmeldens in Azure AD
 
@@ -142,7 +142,7 @@ Führen Sie zum Konfigurieren des einmaligen Anmeldens von Azure AD mit PurelyHR
 
     ![Configure single sign-on](./media/purelyhr-tutorial/purelyhr-dashboard-sso-settings.png)  
 
-    a. Öffnen Sie das **Zertifikat (Base64)**, das Sie aus dem Azure-Portal heruntergeladen haben, in Editor, und kopieren Sie den Zertifikatwert. Fügen Sie den kopierten Wert in das Feld für das **X.509-Zertifikat** ein.
+    a. Öffnen Sie das **Zertifikat (Base64)** , das Sie aus dem Azure-Portal heruntergeladen haben, in Editor, und kopieren Sie den Zertifikatwert. Fügen Sie den kopierten Wert in das Feld für das **X.509-Zertifikat** ein.
 
     b. Fügen Sie im Feld **Idp Issuer URL** (Idp-Aussteller-URL) den **Azure AD-Bezeichner** ein, den Sie aus dem Azure-Portal kopiert haben.
 

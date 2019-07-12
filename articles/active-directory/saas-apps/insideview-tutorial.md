@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/20/2019
 ms.author: jeedes
-ms.openlocfilehash: 0fdabd237fa128326673d84e889387d03f184b00
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.openlocfilehash: 2149b8410104b39652b176895a31b42e094265f5
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/27/2019
-ms.locfileid: "66236575"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67100088"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-insideview"></a>Tutorial: Azure Active Directory-Integration mit InsideView
 
@@ -123,7 +123,7 @@ Führen Sie zum Konfigurieren des einmaligen Anmeldens von Azure AD mit InsideV
 
     1. **Azure AD-Bezeichner**
 
-    1. **Abmelde-URL**
+    1. **Abmelde-URL**:
 
 ### <a name="configure-insideview-single-sign-on"></a>Konfigurieren des einmaligen Anmeldens für InsideView
 
@@ -155,7 +155,7 @@ Führen Sie zum Konfigurieren des einmaligen Anmeldens von Azure AD mit InsideV
 
 ### <a name="create-an-azure-ad-test-user"></a>Erstellen eines Azure AD-Testbenutzers
 
-In diesem Abschnitt erstellen Sie im Azure-Portal einen Testbenutzer namens Britta Simon.
+In diesem Abschnitt erstellen Sie im Azure-Portal eine Testbenutzerin namens „Britta Simon“.
 
 1. Wählen Sie im Azure-Portal im linken Bereich die Option **Azure Active Directory** aus, und wählen Sie dann **Benutzer** und anschließend **Alle Benutzer** aus:
 

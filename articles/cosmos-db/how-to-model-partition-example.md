@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: sample
 ms.date: 05/23/2019
 ms.author: thweiss
-ms.openlocfilehash: c98a8187c0365abc8fdb2bedacc5216266cc5cad
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.openlocfilehash: 4bb99c8cbec88d23f9297dcbe8b13cc69cd0006c
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/27/2019
-ms.locfileid: "66240998"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67070680"
 ---
 # <a name="how-to-model-and-partition-data-on-azure-cosmos-db-using-a-real-world-example"></a>Modellieren und Partitionieren von Daten in Azure Cosmos DB anhand eines praktischen Beispiels
 
@@ -227,7 +227,7 @@ Auch hier filtert die ursprüngliche Abfrage nicht nach dem Partitionsschlüssel
 
 | **Latenz** | **Verbrauchte RUs** | **Leistung** |
 | --- | --- | --- |
-| 306 ms | 2.063,54 RUs | ⚠ |
+| 306 ms | 2\.063,54 RUs | ⚠ |
 
 ## <a name="reflecting-on-the-performance-of-v1"></a>Überlegungen zur Leistung von Version 1
 
@@ -479,7 +479,7 @@ Zum Optimieren dieser letzten Anforderung fügen wir unserem Entwurf daher einen
 
 Dieser Container ist nach `type` partitioniert, und der Typ ist bei unseren Elementen immer `post`. Dadurch wird sichergestellt, dass sich alle Elemente in diesem Container in derselben Partition befinden.
 
-Zum Erreichen der Denormalisierung müssen wir nur die Änderungsfeedpipeline verknüpfen, die wir zuvor hinzugefügt haben, um die Beiträge an den neuen Container zu verteilen. Wichtig ist hierbei, dass nur die 100 neuesten Beiträge gespeichert werden dürfen. Andernfalls kann der Inhalt des Containers die maximale Größe einer Partition überschreiten. Zu diesem Zweck wird jedes Mal, wenn ein Dokument im Container hinzugefügt wird, ein [nachgestellter Trigger](stored-procedures-triggers-udfs.md#triggers) aufgerufen:
+Zum Erreichen der Denormalisierung müssen wir nur die Änderungsfeedpipeline verknüpfen, die wir zuvor hinzugefügt haben, um die Beiträge an den neuen Container zu verteilen. Wichtig ist hierbei, dass nur die 100 neuesten Beiträge gespeichert werden dürfen. Andernfalls kann der Inhalt des Containers die maximale Größe einer Partition überschreiten. Zu diesem Zweck wird jedes Mal, wenn ein Dokument im Container hinzugefügt wird, ein [nachgestellter Trigger](stored-procedures-triggers-udfs.md#triggers) aufgerufen:
 
 ![Denormalisieren von Beiträgen im Container „feed“](./media/how-to-model-partition-example/denormalization-3.png)
 

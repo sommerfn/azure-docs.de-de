@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 04/23/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7f354d0413d023e7af6d1719d86e0fbff59cf2b2
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: 10d43de00c9daefdb86a92d92ebe2cfe39fd3248
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65813302"
+ms.lasthandoff: 06/17/2019
+ms.locfileid: "67164410"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-surveymonkey-enterprise"></a>Tutorial: Azure Active Directory-Integration mit SurveyMonkey Enterprise
 
@@ -77,12 +77,12 @@ Damit einmaliges Anmelden funktioniert, muss eine Linkbeziehung zwischen einem A
 
 Zum Konfigurieren und Testen des einmaligen Anmeldens von Azure AD bei SurveyMonkey Enterprise müssen Sie die folgenden Bausteine ausführen:
 
-1. **[Konfigurieren des einmaligen Anmeldens von Azure AD](#configure-azure-ad-single-sign-on)**, um Ihren Benutzern das Verwenden dieses Features zu ermöglichen.
-2. **[Konfigurieren des einmaligen Anmeldens für SurveyMonkey Enterprise](#configure-surveymonkey-enterprise-single-sign-on)**, um die Einstellungen für einmaliges Anmelden auf der Anwendungsseite zu konfigurieren.
-3. **[Erstellen eines Azure AD-Testbenutzers](#create-an-azure-ad-test-user)**, um das einmalige Anmelden mit Azure AD mit dem Testbenutzer Britta Simon zu testen.
-4. **[Zuweisen des Azure AD-Testbenutzers](#assign-the-azure-ad-test-user)**, um Britta Simon für das einmalige Anmelden von Azure AD zu aktivieren.
-5. **[Erstellen eines SurveyMonkey Enterprise-Testbenutzers](#create-surveymonkey-enterprise-test-user)**, um eine Entsprechung von Britta Simon in SurveyMonkey Enterprise zu erhalten, die mit ihrer Darstellung in Azure AD verknüpft ist.
-6. **[Testen der einmaligen Anmeldung](#test-single-sign-on)**, um zu überprüfen, ob die Konfiguration funktioniert.
+1. **[Konfigurieren des einmaligen Anmeldens von Azure AD](#configure-azure-ad-single-sign-on)** , um Ihren Benutzern das Verwenden dieses Features zu ermöglichen.
+2. **[Konfigurieren des einmaligen Anmeldens für SurveyMonkey Enterprise](#configure-surveymonkey-enterprise-single-sign-on)** , um die Einstellungen für einmaliges Anmelden auf der Anwendungsseite zu konfigurieren.
+3. **[Erstellen eines Azure AD-Testbenutzers](#create-an-azure-ad-test-user)** , um das einmalige Anmelden mit Azure AD mit dem Testbenutzer Britta Simon zu testen.
+4. **[Zuweisen des Azure AD-Testbenutzers](#assign-the-azure-ad-test-user)** , um Britta Simon für das einmalige Anmelden von Azure AD zu aktivieren.
+5. **[Erstellen eines SurveyMonkey Enterprise-Testbenutzers](#create-surveymonkey-enterprise-test-user)** , um eine Entsprechung von Britta Simon in SurveyMonkey Enterprise zu erhalten, die mit ihrer Darstellung in Azure AD verknüpft ist.
+6. **[Testen der einmaligen Anmeldung](#test-single-sign-on)** , um zu überprüfen, ob die Konfiguration funktioniert.
 
 ### <a name="configure-azure-ad-single-sign-on"></a>Konfigurieren des einmaligen Anmeldens in Azure AD
 
@@ -110,7 +110,7 @@ Führen Sie zum Konfigurieren des einmaligen Anmeldens von Azure AD mit SurveyMo
 
     ![SSO-Informationen zur Domäne und zu den URLs für SurveyMonkey Enterprise](common/both-signonurl.png)
 
-    Geben Sie im Textfeld **Anmelde-URL** eine URL ein: ` https://www.surveymonkey.com/user/sign-in/sso/?ut_source=megamenu`.
+    Geben Sie im Textfeld **Anmelde-URL** eine URL ein: `https://www.surveymonkey.com/user/sign-in/sso/?ut_source=megamenu`.
 
 6. Klicken Sie auf der Seite **Einmaliges Anmelden (SSO) mit SAML einrichten** im Abschnitt **SAML-Signaturzertifikat** auf **Herunterladen**, um den Ihren Anforderungen entsprechenden **Verbundmetadaten-XML**-Code aus den verfügbaren Optionen herunterzuladen und auf Ihrem Computer zu speichern.
 

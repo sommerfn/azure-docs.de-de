@@ -7,14 +7,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: personalizer
 ms.topic: overview
-ms.date: 05/07/2019
+ms.date: 06/07/2019
 ms.author: edjez
-ms.openlocfilehash: 6b2237f27fba5eaf952932cd6592052649400b96
-ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
+ms.openlocfilehash: d0a0a6101d876493188426d19f2fa845d20ee274
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/02/2019
-ms.locfileid: "65025493"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67055468"
 ---
 # <a name="how-personalizer-works"></a>Funktionsweise der Personalisierung
 
@@ -68,7 +68,7 @@ Personalisierung basiert auf innovativer Wissenschaft und Forschung im Bereich d
 
     Ihre spezifische Anwendung kann abweichende Kontextinformationen haben. 
 
-* **[Merkmale](concepts-features.md)**: Eine Einheit von Informationen über ein Inhaltselement oder einen Benutzerkontext.
+* **[Merkmale](concepts-features.md)** : Eine Einheit von Informationen über ein Inhaltselement oder einen Benutzerkontext.
 
 * **Relevanz**: Ein Maß dafür, wie der Benutzer auf die von der Rangfolge-API zurückgegebene Aktion reagiert hat, als eine Bewertung zwischen 0 und 1. Der Wert von 0 bis 1 wird von Ihrer Geschäftslogik festgelegt, basierend darauf, wie die Auswahl dabei geholfen hat, Ihre geschäftlichen Ziele der Personalisierung zu erreichen. 
 
@@ -79,6 +79,105 @@ Personalisierung basiert auf innovativer Wissenschaft und Forschung im Bereich d
 * **Inaktive Ereignisse**: Ein inaktives Ereignis ist eines, für das Sie die Rangfolge aufgerufen haben, sich aber nicht sicher sind, ob der Benutzer jemals das Ergebnis sehen wird, weil dies Entscheidungen der Clientanwendung unterliegt. Inaktive Ereignisse ermöglichen es Ihnen, Personalisierungsergebnisse zu erstellen und zu speichern und dann zu entscheiden, sie später zu verwerfen, ohne dass dies das Machine Learning-Modell beeinträchtigt.
 
 * **Modell**: Ein Personalisierungsmodell erfasst alle Daten, die über Benutzerverhalten gelernt wurden, erhält Trainingsdaten aus der Kombination der Argumente, die Sie an die Rangfolge- und Relevanzaufrufe senden, und besitzt ein Trainingsverhalten, das von der Lernrichtlinie bestimmt wird. 
+
+## <a name="example-use-cases-for-personalizer"></a>Beispielanwendungsfall für die Personalisierung
+
+* Absichtsklärung und -unterscheidung: Verhelfen Sie Ihren Benutzern zu einer besseren Erfahrung, wenn ihre Absicht nicht eindeutig ist, indem Sie eine Option anbieten, die für jeden Benutzer personalisiert ist.
+* Standardvorschläge für Menüs und Optionen: Lassen Sie den Bot als ersten Schritt das wahrscheinlichste Element auf personalisierte Weise vorschlagen, anstatt ein unpersönliches Menü oder eine Liste von Alternativen zu präsentieren.
+* Bot-Merkmale und Ton: Erwägen Sie für Bots, die Ton, Ausführlichkeit und Schreibstil variieren können, diese Eigenschaften auf personalisierte Weise zu variieren.
+* Benachrichtigungs- und Warnungsinhalt: Entscheiden Sie, welchen Text Sie für Warnmeldungen verwenden möchten, um die Benutzer stärker einzubeziehen.
+* Zeitliche Steuerung von Benachrichtigungen und Warnungen: Nutzen Sie personalisierte Informationen dazu, wann Benachrichtigungen am besten an Benutzer gesendet werden, um sie stärker einzubeziehen.
+
+## <a name="checklist-for-applying-personalizer"></a>Checkliste für die Anwendung der Personalisierung
+
+Sie können Personalisierung in folgenden Situationen anwenden:
+
+* Sie haben einen Unternehmens- oder Benutzerfreundlichkeitsziel für Ihre Anwendung.
+* Sie haben eine Stelle in Ihrer Anwendung, wo das Treffen einer kontextbezogenen Entscheidung, was den Benutzern angezeigt wird, dieses Ziel verbessern wird.
+* Die beste Auswahl kann und sollte aus dem kollektiven Benutzerverhalten und der Belohnungsgesamtbewertung abgeleitet werden.
+* Die Verwendung von maschinellem Lernen für die Personalisierung befolgt die [Leitlinien für die verantwortungsvolle Verwendung](ethics-responsible-use.md) und die für Ihr Team ausgewählten Optionen.
+* Die Entscheidung kann als Rangfolge der besten Option ([Aktion](concepts-features.md#actions-represent-a-list-of-options)) aus einer begrenzten Anzahl von Auswahlmöglichkeiten ausgedrückt werden.
+* Wie gut diese Option funktioniert hat, kann durch Ihre Geschäftslogik berechnet werden, indem Sie einen Aspekt des Benutzerverhaltens messen und in einer Zahl zwischen -1 und 1 ausdrücken.
+* Die Relevanzbewertung bringt nicht allzu viele verwirrende oder externe Faktoren mit sich, insbesondere ist die Experimentdauer kurz genug, sodass die Relevanzbewertung berechnet werden kann, während sie noch relevant ist.
+* Sie können den Kontext für die Rangfolge als Wörterbuch von mindestens 5 Merkmalen ausdrücken, von denen Sie glauben, dass sie beim Treffen der richtigen Auswahl hilfreich sind, und die keine personenbezogenen Informationen enthalten.
+* Sie haben Informationen über jede Aktion in Form eines Wörterbuchs mit mindestens 5 Attributen oder Merkmalen, von denen Sie denken, dass sie die Personalisierung bei der richtigen Wahl unterstützen.
+* Sie können Daten lange genug speichern, um einen Verlauf von mindestens 100.000 Interkationen zu sammeln.
+
+## <a name="machine-learning-considerations-for-applying-personalizer"></a>Erwägungen zum maschinellen Lernen bei der Anwendung der Personalisierung
+
+Personalisierung basiert auf vertiefendem Lernen, einem Ansatz für maschinelles Lernen, der über von Ihnen gegebenes Feedback gelernt wird. 
+
+Personalisierung lernt in folgenden Situationen am besten:
+* Es gibt genügend Ereignisse, um das Niveau optimaler Personalisierung halten zu können, wenn sich das Problem im Laufe der Zeit verschiebt (z. B. Vorlieben bei Nachrichten oder Mode). Personalisierung passt sich an kontinuierliche Änderungen in der realen Welt an, aber Ergebnisse werden nur dann optimal sein, wenn genügend Ereignisse und Daten zum Lernen vorhanden sind, um neue Muster zu ermitteln und sich auf diese einzustellen. Sie sollten einen Anwendungsfall auswählen, der häufig genug auftritt. Erwägen Sie, nach Anwendungsfällen zu suchen, die mindestens 500-mal am Tag auftreten.
+* Kontext und Aktionen besitzen genug Merkmale, um das Lernen zu fördern.
+* Es gibt weniger als 50 Aktionen, denen pro Aufruf ein Rang zugewiesen werden muss.
+* Ihre Datenaufbewahrungseinstellungen gestatten der Personalisierung das Sammeln ausreichender Daten, um Offlineauswertungen und Richtlinienoptimierungen durchzuführen. Hierbei handelt es sich normalerweise um mindestens 50.000 Datenpunkte.
+
+## <a name="how-to-use-personalizer-in-a-web-application"></a>Verwenden von Personalisierung in einer Webanwendung
+
+Das Hinzufügen einer Schleife zu einer Webanwendung umfasst folgende Aktionen:
+
+* Bestimmen Sie, welche Erfahrung Sie personalisieren möchten, welche Aktionen und Merkmale Sie haben, welche Kontextmerkmale verwendet werden sollen, und welche Belohnung Sie festlegen werden.
+* Fügen Sie einen Verweis auf das Personalisierung-SDK in Ihrer Anwendung hinzu.
+* Rufen Sie die Rang-API auf, wenn Sie bereit sind, zu personalisieren.
+* Speichern Sie die Ereignis-ID. Sie senden später eine Belohnung mit der Relevanz-API.
+1. Rufen Sie die Aktivierung für das Ereignis auf, sobald Sie sind Sie sicher, dass der Benutzer Ihre personalisierte Seite gesehen hat.
+1. Warten Sie auf die Auswahl des Benutzers aus nach Rang sortiertem Inhalt. 
+1. Rufen Sie Relevanz-API auf, um anzugeben, wie gut die Ausgabe der Rang-API funktioniert hat.
+
+## <a name="how-to-use-personalizer-with-a-chat-bot"></a>Verwenden von Personalisierung mit einem Chatbot
+
+In diesem Beispiel sehen Sie, wie mit Personalisierung ein Standardvorschlag gemacht wird, anstatt den Benutzer jedes Mal durch eine Reihe von Menüs oder Optionen zu schicken.
+
+* Rufen Sie den [Code](https://github.com/Azure-Samples/cognitive-services-personalizer-samples/tree/master/samples/ChatbotExample) für dieses Beispiel ab.
+* Richten Sie Ihre Bot-Lösung ein. Achten Sie darauf, Ihre LUIS-Anwendung zu veröffentlichen. 
+* Verwalten Sie Aufrufe der Rang- und Relevanz-API für Bots.
+    * Fügen Sie Code zum Verwalten der LUIS-Absichtsverarbeitung hinzu. Wenn **Keine** als am höchsten eingestufte Absicht zurückgegeben wird oder die Punktzahl der am höchsten eingestufte Absicht unter dem Schwellenwert Ihrer Geschäftslogik liegt, senden Sie die Absichtsliste an Personalisierung, um die Absichten zu bewerten.
+    * Zeigen Sie dem Benutzer die Absichtsliste als auswählbare Links an, wobei die erste Absicht die am höchsten eingestufte Absicht aus der Antwort der Rang-API ist.
+    * Erfassen Sie die Auswahl des Benutzers, und senden Sie diese im Aufruf der Relevanz-API. 
+
+### <a name="recommended-bot-patterns"></a>Empfohlene Bot-Muster
+
+* Rufen Sie die Rang-API der Personalisierung immer auf, wenn eine Unterscheidung erforderlich ist, anstatt Ergebnisse für jeden Benutzer zwischenzuspeichern. Das Ergebnis der Vereindeutigung einer Absicht kann sich im Laufe der Zeit für eine Person ändern, und wenn die Rang-API Abweichungen untersuchen kann, wird das allgemeine Lernen beschleunigt.
+* Wählen Sie eine Interaktion, die bei vielen Benutzern üblich ist, damit Sie genügend Daten zur Personalisierung haben. Beispielsweise können einleitende Fragen besser geeignet sein, als kleinere Klarstellungen tief im Konversationsgraphen, zu denen u. U. nur wenige Benutzer gelangen.
+* Verwenden Sie Rang-API-Aufrufe, um Konversationen vom Typ „erster Vorschlag ist richtig“ zu ermöglichen, bei denen der Benutzer gefragt wird „Möchten Sie X?“ oder „Meinten Sie X?“ und dann einfach bestätigen kann, anstatt dem Benutzer ein Menü mit Optionen zur Auswahl zu geben. Beispiel: Benutzer: „Ich möchte einen Kaffee bestellen.“ Bot: „Möchten Sie einen doppelten Espresso?“ Auf diese Weise ist auch das Relevanzsignal stark, da direkt auf den einen Vorschlag Bezug genommen wird.
+
+## <a name="how-to-use-personalizer-with-a-recommendation-solution"></a>Verwenden der Personalisierung mit einer Empfehlungslösung
+
+Verwenden Sie Ihr Empfehlungsmodul, um einen umfangreichen Katalog auf einige wenige Elemente zu herunterzufiltern, die dann als 30 mögliche Aktionen an die Rang-API gesendet werden können.
+
+Sie können Empfehlungsmodule mit der Personalisierung verwenden:
+
+* Richten Sie die [Empfehlungslösung](https://github.com/Microsoft/Recommenders/) ein. 
+* Rufen Sie beim Anzeigen einer Seite das Empfehlungsmodell auf, um eine kurze Liste mit Empfehlungen zu erhalten.
+* Rufen Sie die Personalisierung auf, um eine Rangfolge für die Ausgabe der Empfehlungslösung festzulegen.
+* Senden Sie mit dem Relevanz-API-Aufruf Feedback zu Ihrer Benutzeraktion.
+
+
+## <a name="pitfalls-to-avoid"></a>Vermeidbare Fehler
+
+* Verwenden Sie die Personalisierung nicht, wenn das personalisierte Verhalten nicht für alle Benutzer erkannt werden kann, sondern für bestimmte Benutzer gespeichert bleiben sollte oder aus einer benutzerspezifischen Liste von Alternativen stammt. Beispiel: Das Verwenden der Personalisierung für Vorschläge zu einer ersten Pizzabestellung aus einer Liste von 20 möglichen Menüelementen ist nützlich. Im Gegensatz dazu kann der Kontakt aus der Kontaktliste der Benutzer, der angerufen werden kann, wenn Hilfe bei der Kinderbetreuung benötigt wird (wie z. B. „Oma“), nicht für Ihre gesamte Benutzerbasis personalisiert werden.
+
+
+## <a name="adding-content-safeguards-to-your-application"></a>Hinzufügen von Sicherheitsmechanismen für Inhalt zu Ihrer Anwendung
+
+Wenn Ihre Anwendung starke Abweichungen bei den Inhalten zulässt, die den Benutzern angezeigt werden, und einige dieser Inhalte für einige Benutzer unsicher oder ungeeignet sind, sollten Sie im Voraus planen, um sicherzustellen, dass die richtigen Sicherheitsvorkehrungen getroffen werden, um zu verhindern, dass Ihre Benutzer unzulässige Inhalte sehen. Das beste Muster zum Implementieren von Sicherheitsmechanismen ist: Das beste Muster zum Implementieren von Sicherheitsmechanismen ist:
+    * Rufen Sie die Aktionen ab, denen ein Rang zugewiesen werden soll.
+    * Filtern Sie Aktionen aus, die nicht für die Zielgruppe geeignet sind.
+    * Weisen Sie nur den geeigneten Aktionen einen Rang zu.
+    * Zeigen Sie dem Benutzer die am besten bewertete Aktion an.
+
+In einigen Architekturen ist die obige Sequenz u. U. schwer zu implementieren. In diesem Fall gibt es einen alternativen Ansatz für die Implementierung von Sicherheitsmaßnahmen nach Rangzuweisung, es muss jedoch eine Vorkehrung getroffen werden, damit Aktionen, die nicht unter die Sicherheitsmaßnahmen fallen, nicht zum Trainieren des Personalisierungsmodells verwendet werden.
+
+* Rufen Sie die Aktionen, denen ein Rang zugewiesen werden soll, mit deaktivierter Lernfunktion ab.
+* Weisen Sie den Aktionen Ränge zu.
+* Überprüfen Sie, ob die erste Aktion gültig ist.
+    * Wenn die erste Aktion gültig ist, aktivieren Sie die Lernfunktion für diesen Rang, und zeigen Sie sie dann dem Benutzer an.
+    * Wenn die erste Aktion nicht gültig ist, aktivieren Sie das Lernen für diese Rangfolge nicht, und entscheiden Sie anhand Ihrer eigenen Logik oder alternativer Ansätze, was Sie dem Benutzer zeigen möchten. Auch wenn Sie die Option mit dem zweitbesten Rang verwenden, aktivieren Sie das Lernen für diese Rangfolge nicht.
+
+## <a name="verifying-adequate-effectiveness-of-personalizer"></a>Überprüfung der angemessenen Wirksamkeit der Personalisierung
+
+Sie können die Wirksamkeit der Personalisierung in regelmäßigen Abständen überwachen, indem Sie [Offlineauswertungen](how-to-offline-evaluation.md) durchführen.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

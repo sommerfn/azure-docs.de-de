@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/26/2019
 ms.author: jeedes
-ms.openlocfilehash: 79e9952aefc44b7c490bb9fe375487c1a3335fc8
-ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
+ms.openlocfilehash: 457ab3a0d5e816becbd2b32d858d5172951f27ad
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/20/2019
-ms.locfileid: "65901507"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67094118"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-predictix-ordering"></a>Tutorial: Azure Active Directory-Integration mit Predictix Ordering
 
@@ -139,13 +139,13 @@ Zum Konfigurieren des einmaligen Anmeldens aufseiten von Predictix Ordering müs
 
 ### <a name="create-an-azure-ad-test-user"></a>Erstellen eines Azure AD-Testbenutzers
 
-In diesem Abschnitt erstellen Sie im Azure-Portal einen Testbenutzer namens „Britta Simon“.
+In diesem Abschnitt erstellen Sie im Azure-Portal eine Testbenutzerin namens „Britta Simon“.
 
 1. Wählen Sie im Azure-Portal im linken Bereich die Option **Azure Active Directory** aus, und wählen Sie dann **Benutzer** und anschließend **Alle Benutzer** aus:
 
     ![„Alle Benutzer“ auswählen](common/users.png)
 
-2. Wählen Sie im oberen Bildschirmbereich die Option **Neuer Benutzer** aus:
+2. Wählen Sie oben im Bildschirm die Option **Neuer Benutzer** aus:
 
     ![„Neuer Benutzer“ auswählen](common/new-user.png)
 
@@ -155,7 +155,7 @@ In diesem Abschnitt erstellen Sie im Azure-Portal einen Testbenutzer namens „B
 
     1. Geben Sie in das Feld **Name** den Namen **BrittaSimon** ein.
   
-    1. Geben Sie im Feld **Benutzername** die Zeichenfolge **BrittaSimon@\<Ihreunternehmensdomäne>.\<Erweiterung>** ein. (Beispiel: BrittaSimon@contoso.com.)
+    1. Geben Sie im Feld **Benutzername** die Zeichenfolge **BrittaSimon@\<IhreUnternehmensdomäne>.\<Erweiterung>** ein. (Beispiel: BrittaSimon@contoso.com.)
 
     1. Aktivieren Sie das Kontrollkästchen **Kennwort anzeigen**, und notieren Sie sich den im Feld **Kennwort** angezeigten Wert.
 

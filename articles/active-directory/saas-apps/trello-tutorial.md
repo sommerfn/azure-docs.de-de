@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 01/02/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 453827b42d12333fd4f27761e7f73484fb749532
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 730ff5ff12f18d1f85b3ca53adb42fee41e19fb4
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "65865794"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67088292"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-trello"></a>Tutorial: Azure Active Directory-Integration mit Trello
 
@@ -93,7 +93,7 @@ Zum Konfigurieren und Testen des einmaligen Anmeldens in Azure AD bei Trello mü
 In diesem Abschnitt aktivieren Sie das einmalige Anmelden von Azure AD im Azure-Portal.
 
 > [!NOTE]
-> Sie sollten über ein **\<Unternehmens\>**-Schlüsselwort aus Trello verfügen. Wenn Sie nicht über das Schlüsselwort verfügen, wenden Sie sich an das [Trello-Supportteam](mailto:support@trello.com), um das Schlüsselwort für Ihr Unternehmen zu erhalten.
+> Sie sollten über ein **\<Unternehmens\>** -Schlüsselwort aus Trello verfügen. Wenn Sie nicht über das Schlüsselwort verfügen, wenden Sie sich an das [Trello-Supportteam](mailto:support@trello.com), um das Schlüsselwort für Ihr Unternehmen zu erhalten.
 
 Führen Sie zum Konfigurieren des einmaligen Anmeldens über Azure AD bei Trello die folgenden Schritte aus:
 

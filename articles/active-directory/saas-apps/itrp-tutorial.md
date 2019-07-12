@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/25/2019
 ms.author: jeedes
-ms.openlocfilehash: 626163bb512b7b3b651d016f21fc465c398a01e6
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.openlocfilehash: c3be09c998399cdca886f207bf5fc621bf51d8dd
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/27/2019
-ms.locfileid: "66236743"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67099599"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-itrp"></a>Tutorial: Azure Active Directory-Integration mit ITRP
 
@@ -131,7 +131,7 @@ Führen Sie zum Konfigurieren des einmaligen Anmeldens von Azure AD mit ITRP die
 
     1. **Azure AD-Bezeichner**
 
-    1. **Abmelde-URL**
+    1. **Abmelde-URL**:
 
 ### <a name="configure-itrp-single-sign-on"></a>Konfigurieren des einmaligen Anmeldens für ITRP
 
@@ -163,13 +163,13 @@ Führen Sie zum Konfigurieren des einmaligen Anmeldens von Azure AD mit ITRP die
 
 ### <a name="create-an-azure-ad-test-user"></a>Erstellen eines Azure AD-Testbenutzers
 
-In diesem Abschnitt erstellen Sie im Azure-Portal einen Testbenutzer namens Britta Simon.
+In diesem Abschnitt erstellen Sie im Azure-Portal eine Testbenutzerin namens „Britta Simon“.
 
 1. Wählen Sie im Azure-Portal im linken Bereich die Option **Azure Active Directory** aus, und wählen Sie dann **Benutzer** und anschließend **Alle Benutzer** aus:
 
     ![„Alle Benutzer“ auswählen](common/users.png)
 
-2. Wählen Sie im oberen Bildschirmbereich die Option **Neuer Benutzer** aus:
+2. Wählen Sie oben im Bildschirm die Option **Neuer Benutzer** aus:
 
     ![„Neuer Benutzer“ auswählen](common/new-user.png)
 

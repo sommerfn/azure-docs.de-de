@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/11/2019
 ms.author: jeedes
-ms.openlocfilehash: 9e7993ee1cb439ebeaa9f64bee55429aa54f9cee
-ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
+ms.openlocfilehash: 897685eb967e03cfd30182eec6b237e27386496c
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/20/2019
-ms.locfileid: "65903945"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67092151"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-sap-fiori"></a>Tutorial: Azure Active Directory-Integration mit SAP Fiori
 
@@ -82,7 +82,7 @@ Sie müssen die folgenden Aufgaben ausführen, um das einmalige Anmelden von Azu
 | --- | --- |
 | **[Konfigurieren des einmaligen Anmeldens von Azure AD](#configure-azure-ad-single-sign-on)** | Ermöglicht Ihren Benutzern die Verwendung dieses Features. |
 | **[Konfigurieren des einmaligen Anmeldens für SAP Fiori](#configure-sap-fiori-single-sign-on)** | Konfiguriert die Einstellungen für einmaliges Anmelden in der Anwendung. |
-| **[Erstellen eines Azure AD-Testbenutzers](#create-an-azure-ad-test-user)** | Testet das einmalige Anmelden von Azure AD für eine Benutzerin namens Britta Simon. |
+| **[Erstellen eines Azure AD-Testbenutzers](#create-an-azure-ad-test-user)** | Testet das einmalige Anmelden von Azure AD für einen Benutzer namens Britta Simon. |
 | **[Zuweisen des Azure AD-Testbenutzers](#assign-the-azure-ad-test-user)** | Ermöglicht Britta Simon die Verwendung des einmaligen Anmeldens von Azure AD. |
 | **[Erstellen eines SAP Fiori-Testbenutzers](#create-an-sap-fiori-test-user)** | Erstellt eine Entsprechung von Britta Simon in SAP Fiori, die mit ihrer Darstellung in Azure AD verknüpft ist. |
 | **[Testen des einmaligen Anmeldens](#test-single-sign-on)** | Überprüft, ob die Konfiguration funktioniert. |

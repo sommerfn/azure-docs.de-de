@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 04/24/2019
 ms.author: jeedes
-ms.openlocfilehash: 35886a65020d7cc5a77f9f413d2d65637cb18382
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: f83fdf1b30e3b9d2a8dea9a4fe3c820e15a3ca39
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64719327"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67085853"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-zscaler-zscloud"></a>Tutorial: Azure Active Directory-Integration von Zscaler ZSCloud
 
@@ -177,7 +177,7 @@ Führen Sie zum Konfigurieren des einmaligen Anmeldens von Azure AD mit Zscaler�
 
 5. Führen Sie im Fenster **Edit SAML** (SAML bearbeiten) die folgenden Schritte aus, und klicken Sie auf „Speichern“.  
             
-    ![Benutzer &amp; Authentifizierung verwalten](./media/zscaler-zscloud-tutorial/ic800208.png "Benutzer &amp;amp;amp; Authentifizierung verwalten")
+    ![Benutzer & Authentifizierung verwalten](./media/zscaler-zscloud-tutorial/ic800208.png "Benutzer &amp;amp;amp;amp; Authentifizierung verwalten")
     
     a. Fügen Sie in das Textfeld **SAML Portal URL** (SAML-Portal-URL) die **Anmelde-URL** ein, die Sie aus dem Azure-Portal kopiert haben.
 

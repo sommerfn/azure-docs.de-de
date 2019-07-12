@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 05/20/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2b9e4f5208eb1f6abb0d6fd786630c183a04ce50
-ms.sourcegitcommit: 3d4121badd265e99d1177a7c78edfa55ed7a9626
+ms.openlocfilehash: aba2d3bab7d709b4bb9ac18e4a9c6ed052a5fb83
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/30/2019
-ms.locfileid: "66388871"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67086969"
 ---
 # <a name="tutorial-integrate-workday-with-azure-active-directory"></a>Tutorial: Integrieren von Workday in Azure Active Directory
 
@@ -137,8 +137,8 @@ Gehen Sie wie folgt vor, um das einmalige Anmelden von Azure AD im Azure-Portal 
 
    > [!NOTE]
    > Der Wert des Umgebungsattributs wird an den Wert der Mandanten-URL gebunden:  
-   > - Wenn der Domänenname der Workday-Mandanten-URL mit „impl“ beginnt (z. B. *https:\//impl.workday.com/\<tenant\>/login-saml2.flex*) muss das Attribut **Environment** (Umgebung) auf „Implementation“ (Implementierung) festgelegt werden.  
-   > - Wenn der Domänenname anders beginnt, müssen Sie sich mit dem [Supportteam für den Workday-Client](https://www.workday.com/en-us/partners-services/services/support.html) in Verbindung setzen, um den passenden Wert für die **Umgebung** zu erhalten.
+   > \- Wenn der Domänenname der Workday-Mandanten-URL mit „impl“ beginnt (z. B. *https:\//impl.workday.com/\<tenant\>/login-saml2.flex*) muss das Attribut **Environment** (Umgebung) auf „Implementation“ (Implementierung) festgelegt werden.  
+   > \- Wenn der Domänenname anders beginnt, müssen Sie sich mit dem [Supportteam für den Workday-Client](https://www.workday.com/en-us/partners-services/services/support.html) in Verbindung setzen, um den passenden Wert für die **Umgebung** zu erhalten.
 
 4. Führen Sie im Abschnitt **SAML-Setup** die folgenden Schritte aus:
 

@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 12/17/2018
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b345656b30a9bb182c097a4c9e18d71a293bf420
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 13ab9752391519f38e843b9d625164e655348d28
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "65868098"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67091794"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-sap-cloud-platform"></a>Tutorial: Azure Active Directory-Integration mit SAP Cloud Platform
 
@@ -82,12 +82,12 @@ Damit einmaliges Anmelden funktioniert, muss eine Linkbeziehung zwischen einem A
 
 Zum Konfigurieren und Testen des einmaligen Anmeldens von Azure AD bei SAP Cloud Platform müssen die folgenden Schritte ausgeführt werden:
 
-1. **[Konfigurieren des einmaligen Anmeldens von Azure AD](#configure-azure-ad-single-sign-on)**, um Ihren Benutzern das Verwenden dieses Features zu ermöglichen.
-2. **[Konfigurieren des einmaligen Anmeldens für SAP Cloud Platform](#configure-sap-cloud-platform-single-sign-on)**, um die Einstellungen für einmaliges Anmelden auf der Anwendungsseite zu konfigurieren.
-3. **[Erstellen eines Azure AD-Testbenutzers](#create-an-azure-ad-test-user)**, um das einmalige Anmelden mit Azure AD mit dem Testbenutzer Britta Simon zu testen.
-4. **[Zuweisen des Azure AD-Testbenutzers](#assign-the-azure-ad-test-user)**, um Britta Simon für das einmalige Anmelden von Azure AD zu aktivieren.
-5. **[Erstellen eines SAP Cloud Platform-Testbenutzers](#create-sap-cloud-platform-test-user)**, um ein Pendant von Britta Simon in SAP Cloud Platform zu erhalten, das mit ihrer Darstellung in Azure AD verknüpft ist.
-6. **[Testen der einmaligen Anmeldung](#test-single-sign-on)**, um zu überprüfen, ob die Konfiguration funktioniert.
+1. **[Konfigurieren des einmaligen Anmeldens von Azure AD](#configure-azure-ad-single-sign-on)** , um Ihren Benutzern das Verwenden dieses Features zu ermöglichen.
+2. **[Konfigurieren des einmaligen Anmeldens für SAP Cloud Platform](#configure-sap-cloud-platform-single-sign-on)** , um die Einstellungen für einmaliges Anmelden auf der Anwendungsseite zu konfigurieren.
+3. **[Erstellen eines Azure AD-Testbenutzers](#create-an-azure-ad-test-user)** , um das einmalige Anmelden mit Azure AD mit dem Testbenutzer Britta Simon zu testen.
+4. **[Zuweisen des Azure AD-Testbenutzers](#assign-the-azure-ad-test-user)** , um Britta Simon für das einmalige Anmelden von Azure AD zu aktivieren.
+5. **[Erstellen eines SAP Cloud Platform-Testbenutzers](#create-sap-cloud-platform-test-user)** , um ein Pendant von Britta Simon in SAP Cloud Platform zu erhalten, das mit ihrer Darstellung in Azure AD verknüpft ist.
+6. **[Testen der einmaligen Anmeldung](#test-single-sign-on)** , um zu überprüfen, ob die Konfiguration funktioniert.
 
 ### <a name="configure-azure-ad-single-sign-on"></a>Konfigurieren des einmaligen Anmeldens in Azure AD
 
@@ -152,7 +152,7 @@ Führen Sie zum Konfigurieren des einmaligen Anmeldens von Azure AD bei SAP Clou
 
 ### <a name="configure-sap-cloud-platform-single-sign-on"></a>Konfigurieren des einmaligen Anmeldens für SAP Cloud Platform
 
-1. Melden Sie sich in einem anderen Webbrowserfenster unter `https://account.<landscape host>.ondemand.com/cockpit` (Beispiel: https://account.hanatrial.ondemand.com/cockpit)) beim SAP Cloud Platform-Cockpit an.
+1. Melden Sie sich in einem anderen Webbrowserfenster unter `https://account.<landscape host>.ondemand.com/cockpit` (Beispiel: https://account.hanatrial.ondemand.com/cockpit) ) beim SAP Cloud Platform-Cockpit an.
 
 2. Klicken Sie auf die Registerkarte **Vertrauen** .
    

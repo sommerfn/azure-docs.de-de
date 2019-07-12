@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/22/2019
 ms.author: jeedes
-ms.openlocfilehash: 480e799e0fe307b39ce8a2f0b026a04f507a6beb
-ms.sourcegitcommit: 6f043a4da4454d5cb673377bb6c4ddd0ed30672d
+ms.openlocfilehash: ed8e63a49702e8ba951990f8d7ff19b8f058fa74
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/08/2019
-ms.locfileid: "65408016"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67089401"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-tableau-server"></a>Tutorial: Azure Active Directory-Integration von Tableau Server
 
@@ -76,12 +76,12 @@ Damit einmaliges Anmelden funktioniert, muss eine Linkbeziehung zwischen einem A
 
 Zum Konfigurieren und Testen des einmaligen Anmeldens in Azure AD bei Tableau Server müssen Sie die folgenden Schritte ausführen:
 
-1. **[Konfigurieren des einmaligen Anmeldens von Azure AD](#configure-azure-ad-single-sign-on)**, um Ihren Benutzern das Verwenden dieses Features zu ermöglichen.
-2. **[Konfigurieren des einmaligen Anmeldens für Tableau Server](#configure-tableau-server-single-sign-on)**, um die Einstellungen für einmaliges Anmelden auf der Anwendungsseite zu konfigurieren.
-3. **[Erstellen eines Azure AD-Testbenutzers](#create-an-azure-ad-test-user)**, um das einmalige Anmelden mit Azure AD mit dem Testbenutzer Britta Simon zu testen.
-4. **[Zuweisen des Azure AD-Testbenutzers](#assign-the-azure-ad-test-user)**, um Britta Simon für das einmalige Anmelden von Azure AD zu aktivieren.
-5. **[Erstellen eines Tableau Server-Testbenutzers](#create-tableau-server-test-user)**, um eine Entsprechung von Britta Simon in Tableau Server zu erhalten, die mit ihrer Darstellung in Azure AD verknüpft ist
-6. **[Testen der einmaligen Anmeldung](#test-single-sign-on)**, um zu überprüfen, ob die Konfiguration funktioniert.
+1. **[Konfigurieren des einmaligen Anmeldens von Azure AD](#configure-azure-ad-single-sign-on)** , um Ihren Benutzern das Verwenden dieses Features zu ermöglichen.
+2. **[Konfigurieren des einmaligen Anmeldens für Tableau Server](#configure-tableau-server-single-sign-on)** , um die Einstellungen für einmaliges Anmelden auf der Anwendungsseite zu konfigurieren.
+3. **[Erstellen eines Azure AD-Testbenutzers](#create-an-azure-ad-test-user)** , um das einmalige Anmelden mit Azure AD mit dem Testbenutzer Britta Simon zu testen.
+4. **[Zuweisen des Azure AD-Testbenutzers](#assign-the-azure-ad-test-user)** , um Britta Simon für das einmalige Anmelden von Azure AD zu aktivieren.
+5. **[Erstellen eines Tableau Server-Testbenutzers](#create-tableau-server-test-user)** , um eine Entsprechung von Britta Simon in Tableau Server zu erhalten, die mit ihrer Darstellung in Azure AD verknüpft ist
+6. **[Testen der einmaligen Anmeldung](#test-single-sign-on)** , um zu überprüfen, ob die Konfiguration funktioniert.
 
 ### <a name="configure-azure-ad-single-sign-on"></a>Konfigurieren des einmaligen Anmeldens in Azure AD
 
@@ -122,7 +122,7 @@ Führen Sie zum Konfigurieren des einmaligen Anmeldens von Azure AD mit Tableau
 
     | NAME | Quellattribut | Namespace |
     | ---------------| --------------- | ----------- |
-    | username | user.userprincipalname | `https://schemas.xmlsoap.org/ws/2005/05/identity/claims` |
+    | userName | user.userprincipalname | `http://schemas.xmlsoap.org/ws/2005/05/identity/claims` |
     | | |
 
     a. Klicken Sie auf **Neuen Anspruch hinzufügen**, um das Dialogfeld **Benutzeransprüche verwalten** zu öffnen.
@@ -171,13 +171,13 @@ Führen Sie zum Konfigurieren des einmaligen Anmeldens von Azure AD mit Tableau
 
     a. Wählen Sie als **Authentication Method (Authentifizierungsmethode)** die Option „SAML“ aus.
 
-    b. Aktivieren Sie das Kontrollkästchen **Enable SAML Authentication for the server (SAML-Authentifizierung für den Server aktivieren)**.
+    b. Aktivieren Sie das Kontrollkästchen **Enable SAML Authentication for the server (SAML-Authentifizierung für den Server aktivieren)** .
 
     c. „Tableau Server return URL“: Die URL, auf die Tableau Server-Benutzer zugreifen, z. B. <http://tableau_server>. Ein Verwenden von `http://localhost` ist nicht zu empfehlen. Die Verwendung einer URL mit einem nachstehenden Schrägstrich (z.B. `http://tableau_server/`) wird nicht unterstützt. Kopieren Sie den Wert im Feld **Tableau Server return URL** (Tableau Server-Rückgabe-URL), und fügen Sie ihn im Azure-Portal im Abschnitt **Grundlegende SAML-Konfiguration** ins Textfeld **Anmelde-URL** ein.
 
     d. „SAML entity ID“: Die Entitäts-ID zur eindeutigen Identifizierung Ihrer Tableau Server-Installation durch den IdP. Sie können in dieses Feld erneut Ihre Tableau Server-URL eingeben, es muss jedoch nicht die Tableau Server-URL verwendet werden. Kopieren Sie den Wert im Feld **SAML entity ID** (SAML-Entitäts-ID), und fügen Sie ihn im Azure-Portal im Abschnitt **Grundlegende SAML-Konfiguration** ins Textfeld **Bezeichner** ein.
 
-    e. Klicken Sie auf **Download XML Metadata File (XML-Metadatendatei herunterladen)**, und öffnen Sie die Datei im Text-Editor. Suchen Sie nach „Assertion Consumer Service URL“ mit HTTP Post und Index 0, und kopieren Sie die URL. Fügen Sie sie im Azure-Portal im Abschnitt **Grundlegende SAML-Konfiguration** ins Textfeld **Reply URL** ein.
+    e. Klicken Sie auf **Download XML Metadata File (XML-Metadatendatei herunterladen)** , und öffnen Sie die Datei im Text-Editor. Suchen Sie nach „Assertion Consumer Service URL“ mit HTTP Post und Index 0, und kopieren Sie die URL. Fügen Sie sie im Azure-Portal im Abschnitt **Grundlegende SAML-Konfiguration** ins Textfeld **Reply URL** ein.
 
     f. Suchen Sie nach der Datei mit Ihren Verbundmetadaten, die Sie aus dem Azure-Portal heruntergeladen haben, und laden Sie sie in die **SAML Idp metadata file** hoch.
 

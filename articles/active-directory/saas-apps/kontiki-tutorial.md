@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 04/14/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bee7454942b9214eeb1253339446df370e20fe01
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: bfb154bce34b2ceda99b82c7ca3534b8a8ee0a1f
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65785836"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67098486"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-kontiki"></a>Tutorial: Azure Active Directory-Integration mit Kontiki
 
@@ -33,7 +33,7 @@ Die Integration von Kontiki in Azure AD bietet die folgenden Vorteile:
 * Benutzer können sich mit ihren Azure AD-Konten automatisch bei Kontiki anmelden (einmaliges Anmelden; Single Sign-On, SSO).
 * Sie können Ihre Konten an einem zentralen Ort, im Azure-Portal, verwalten.
 
-Weitere Informationen zur Integration von SaaS-Apps (Software as a Service) in Azure AD finden Sie unter [Einmaliges Anmelden bei Anwendungen in Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
+Weitere Informationen zur Integration von SaaS-Apps (Software-as-a-Service) in Azure AD finden Sie unter [Einmaliges Anmelden bei Anwendungen in Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -57,7 +57,7 @@ Damit Sie Kontiki in Azure AD integrieren können, müssen Sie Kontiki zur Liste
 
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
 
-1. Wählen Sie im linken Menü die Option **Azure Active Directory** aus.
+1. Wählen Sie im linken Menü **Azure Active Directory** aus.
 
     ![Die Option „Azure Active Directory“](common/select-azuread.png)
 
@@ -133,11 +133,11 @@ In diesem Abschnitt erstellen Sie im Azure-Portal eine Testbenutzerin mit dem Na
 
 1. Wählen Sie im Azure-Portal **Azure Active Directory** > **Benutzer** > **Alle Benutzer** aus.
 
-    ![Die Optionen „Benutzer“ und „Alle Benutzer“](common/users.png)
+    ![Optionen „Benutzer“ und „Alle Benutzer“](common/users.png)
 
 1. Wählen Sie **Neuer Benutzer** aus.
 
-    ![Die Option „Neuer Benutzer“](common/new-user.png)
+    ![Option „Neuer Benutzer“](common/new-user.png)
 
 1. Führen Sie im Bereich **Benutzer** die folgenden Schritte aus:
 
@@ -189,7 +189,7 @@ Nachdem Sie einmaliges Anmelden eingerichtet haben, werden Sie bei Auswahl von *
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Weitere Informationen finden Sie in diesen Artikeln:
+Weitere Informationen finden Sie in den folgenden Artikeln:
 
 - [Liste der Tutorials zur Integration von SaaS-Apps in Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 - [Einmaliges Anmelden bei Anwendungen in Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)

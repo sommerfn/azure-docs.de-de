@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 01/02/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 27028a4e95abd2f190dd1f37bb877ed28fe8aade
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 67a26207e4b031cd93be8c7e5eec43c72582fcda
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57838119"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67087696"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-unifi"></a>Tutorial: Azure Active Directory-Integration mit UNIFI
 
@@ -77,12 +77,12 @@ Damit einmaliges Anmelden funktioniert, muss eine Linkbeziehung zwischen einem A
 
 Zum Konfigurieren und Testen des einmaligen Anmeldens in Azure AD bei UNIFI müssen Sie die folgenden Bausteine ausführen:
 
-1. **[Konfigurieren des einmaligen Anmeldens von Azure AD](#configure-azure-ad-single-sign-on)**, um Ihren Benutzern das Verwenden dieses Features zu ermöglichen.
-2. **[Konfigurieren des einmaligen Anmeldens für UNIFI](#configure-unifi-single-sign-on)**, um die Einstellungen für einmaliges Anmelden auf der Anwendungsseite zu konfigurieren.
-3. **[Erstellen eines Azure AD-Testbenutzers](#create-an-azure-ad-test-user)**, um das einmalige Anmelden mit Azure AD mit dem Testbenutzer Britta Simon zu testen.
-4. **[Zuweisen des Azure AD-Testbenutzers](#assign-the-azure-ad-test-user)**, um Britta Simon für das einmalige Anmelden von Azure AD zu aktivieren.
-5. **[Erstellen eines UNIFI-Testbenutzers](#create-unifi-test-user)**, um eine Entsprechung von Britta Simon in UNIFI zu erhalten, die mit ihrer Darstellung in Azure AD verknüpft ist.
-6. **[Testen der einmaligen Anmeldung](#test-single-sign-on)**, um zu überprüfen, ob die Konfiguration funktioniert.
+1. **[Konfigurieren des einmaligen Anmeldens von Azure AD](#configure-azure-ad-single-sign-on)** , um Ihren Benutzern das Verwenden dieses Features zu ermöglichen.
+2. **[Konfigurieren des einmaligen Anmeldens für UNIFI](#configure-unifi-single-sign-on)** , um die Einstellungen für einmaliges Anmelden auf der Anwendungsseite zu konfigurieren.
+3. **[Erstellen eines Azure AD-Testbenutzers](#create-an-azure-ad-test-user)** , um das einmalige Anmelden mit Azure AD mit dem Testbenutzer Britta Simon zu testen.
+4. **[Zuweisen des Azure AD-Testbenutzers](#assign-the-azure-ad-test-user)** , um Britta Simon für das einmalige Anmelden von Azure AD zu aktivieren.
+5. **[Erstellen eines UNIFI-Testbenutzers](#create-unifi-test-user)** , um eine Entsprechung von Britta Simon in UNIFI zu erhalten, die mit ihrer Darstellung in Azure AD verknüpft ist.
+6. **[Testen der einmaligen Anmeldung](#test-single-sign-on)** , um zu überprüfen, ob die Konfiguration funktioniert.
 
 ### <a name="configure-azure-ad-single-sign-on"></a>Konfigurieren des einmaligen Anmeldens in Azure AD
 
@@ -148,7 +148,7 @@ Führen Sie zum Konfigurieren des einmaligen Anmeldens von Azure AD in UNIFI die
 
     b. Fügen Sie im Textfeld **Anbieter-URL** den Wert der **Anmelde-URL** ein, den Sie aus dem Azure-Portal kopiert haben.
 
-    c. Öffnen Sie das Zertifikat, dass Sie aus dem Azure-Portal heruntergeladen haben, in Editor, entfernen Sie die Tags **---BEGIN CERTIFICATE---** und **---END CERTIFICATE---**, und fügen Sie dann den restlichen Inhalt in das Textfeld **Certificate** (Zertifikat) ein.
+    c. Öffnen Sie das Zertifikat, dass Sie aus dem Azure-Portal heruntergeladen haben, in Editor, entfernen Sie die Tags **---BEGIN CERTIFICATE---** und **---END CERTIFICATE---** , und fügen Sie dann den restlichen Inhalt in das Textfeld **Certificate** (Zertifikat) ein.
 
     d. Aktivieren Sie das Kontrollkästchen **is Default Provider** (ist Standardanbieter).
 

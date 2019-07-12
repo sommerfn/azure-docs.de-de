@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 12/27/2018
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2019c61ccbffa1e68c1ef53c718d4839a604aa44
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 0bbbd73d1856ba5d3dc19873c56fce622b272939
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57849957"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67097337"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-mimecast-admin-console"></a>Tutorial: Azure Active Directory-Integration mit Mimecast Admin Console
 
@@ -76,12 +76,12 @@ Damit einmaliges Anmelden funktioniert, muss eine Linkbeziehung zwischen einem A
 
 Zum Konfigurieren und Testen des einmaligen Anmeldens von Azure AD bei Mimecast Admin Console müssen die folgenden Schritte ausgeführt werden:
 
-1. **[Konfigurieren des einmaligen Anmeldens von Azure AD](#configure-azure-ad-single-sign-on)**, um Ihren Benutzern das Verwenden dieses Features zu ermöglichen.
-2. **[Konfigurieren des einmaligen Anmeldens für Mimecast Admin Console](#configure-mimecast-admin-console-single-sign-on)**, um die Einstellungen für einmaliges Anmelden auf der Anwendungsseite zu konfigurieren.
-3. **[Erstellen eines Azure AD-Testbenutzers](#create-an-azure-ad-test-user)**, um das einmalige Anmelden mit Azure AD mit dem Testbenutzer Britta Simon zu testen.
-4. **[Zuweisen des Azure AD-Testbenutzers](#assign-the-azure-ad-test-user)**, um Britta Simon für das einmalige Anmelden von Azure AD zu aktivieren.
-5. **[Erstellen eines Mimecast Admin Console-Testbenutzers](#create-mimecast-admin-console-test-user)**, um eine Entsprechung von Britta Simon in Mimecast Admin Console zu erhalten, die mit ihrer Darstellung in Azure AD verknüpft ist.
-6. **[Testen der einmaligen Anmeldung](#test-single-sign-on)**, um zu überprüfen, ob die Konfiguration funktioniert.
+1. **[Konfigurieren des einmaligen Anmeldens von Azure AD](#configure-azure-ad-single-sign-on)** , um Ihren Benutzern das Verwenden dieses Features zu ermöglichen.
+2. **[Konfigurieren des einmaligen Anmeldens für Mimecast Admin Console](#configure-mimecast-admin-console-single-sign-on)** , um die Einstellungen für einmaliges Anmelden auf der Anwendungsseite zu konfigurieren.
+3. **[Erstellen eines Azure AD-Testbenutzers](#create-an-azure-ad-test-user)** , um das einmalige Anmelden mit Azure AD mit dem Testbenutzer Britta Simon zu testen.
+4. **[Zuweisen des Azure AD-Testbenutzers](#assign-the-azure-ad-test-user)** , um Britta Simon für das einmalige Anmelden von Azure AD zu aktivieren.
+5. **[Erstellen eines Mimecast Admin Console-Testbenutzers](#create-mimecast-admin-console-test-user)** , um eine Entsprechung von Britta Simon in Mimecast Admin Console zu erhalten, die mit ihrer Darstellung in Azure AD verknüpft ist.
+6. **[Testen der einmaligen Anmeldung](#test-single-sign-on)** , um zu überprüfen, ob die Konfiguration funktioniert.
 
 ### <a name="configure-azure-ad-single-sign-on"></a>Konfigurieren des einmaligen Anmeldens in Azure AD
 
@@ -164,7 +164,7 @@ Führen Sie zum Konfigurieren des einmaligen Anmeldens von Azure AD bei Mimecast
     >[!NOTE]
     >Die Werte für Anmelde-URL und Abmelde-URL sind bei Mimecast Admin Console gleich.
     
-    g. Öffnen Sie das Base64-Zertifikat, das Sie aus dem Azure-Portal heruntergeladen haben, in Editor, entfernen Sie die erste Zeile (*--*) und die letzte Zeile (*--*), und kopieren Sie den übrigen Inhalt in die Zwischenablage. Fügen Sie ihn anschließend in das Textfeld **Identity Provider Certificate (Metadata)** (Identitätsanbieterzertifikat (Metadaten)) ein.
+    g. Öffnen Sie das Base64-Zertifikat, das Sie aus dem Azure-Portal heruntergeladen haben, in Editor, entfernen Sie die erste Zeile ( *--* ) und die letzte Zeile ( *--* ), und kopieren Sie den übrigen Inhalt in die Zwischenablage. Fügen Sie ihn anschließend in das Textfeld **Identity Provider Certificate (Metadata)** (Identitätsanbieterzertifikat (Metadaten)) ein.
     
     h. Wählen Sie **Einmaliges Anmelden zulassen**aus.
     
@@ -188,7 +188,7 @@ Das Ziel dieses Abschnitts ist das Erstellen eines Testbenutzers namens Britta S
 
     a. Geben Sie im Feld **Name** den Namen **BrittaSimon** ein.
   
-    b. Geben Sie im Feld **Benutzername** Folgendes ein: **brittasimon\@ihreunternehmensdomäne.erweiterung**  
+    b. Geben Sie im Feld **Benutzername** Folgendes ein: **brittasimon\@ihreunternehmensdomäne.erweiterung**.  
     Zum Beispiel, BrittaSimon@contoso.com
 
     c. Aktivieren Sie das Kontrollkästchen **Kennwort anzeigen**, und notieren Sie sich den Wert, der im Feld „Kennwort“ angezeigt wird.

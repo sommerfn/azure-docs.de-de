@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 04/19/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 81a216e720523767f428036290aea7151c2dca34
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 38ce83df4d4de6d7816ee969a4fee153ad5457d8
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64708167"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67097993"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-linkedin-sales-navigator"></a>Tutorial: Integration von Azure Active Directory in LinkedIn Sales Navigator
 
@@ -128,7 +128,7 @@ Führen Sie zum Konfigurieren des einmaligen Anmeldens von Azure AD mit LinkedI
 
     | NAME | Quellattribut|
     | --- | --- |
-    | E-Mail| user.mail |
+    | email| user.mail |
     | department| user.department |
     | firstname| user.givenname |
     | lastname| user.surname |

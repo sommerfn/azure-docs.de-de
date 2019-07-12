@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 04/01/2019
 ms.author: jeedes
-ms.openlocfilehash: 83027e9fbc1826de727f123afe4507c2858c49ff
-ms.sourcegitcommit: 179918af242d52664d3274370c6fdaec6c783eb6
+ms.openlocfilehash: a6c1f893757baf1e6c85420b31997a5073cff684
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/13/2019
-ms.locfileid: "65560569"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67094593"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-percolate"></a>Tutorial: Azure Active Directory-Integration mit Percolate
 
@@ -152,13 +152,13 @@ Führen Sie zum Konfigurieren des einmaligen Anmeldens von Azure AD bei Percolat
 
 ### <a name="create-an-azure-ad-test-user"></a>Erstellen eines Azure AD-Testbenutzers
 
-In diesem Abschnitt erstellen Sie im Azure-Portal einen Testbenutzer namens Britta Simon.
+In diesem Abschnitt erstellen Sie im Azure-Portal eine Testbenutzerin namens „Britta Simon“.
 
 1. Wählen Sie im Azure-Portal im linken Bereich die Option **Azure Active Directory** aus, und wählen Sie dann **Benutzer** und anschließend **Alle Benutzer** aus:
 
     ![„Alle Benutzer“ auswählen](common/users.png)
 
-2. Wählen Sie im oberen Bildschirmbereich die Option **Neuer Benutzer** aus:
+2. Wählen Sie oben im Bildschirm die Option **Neuer Benutzer** aus:
 
     ![„Neuer Benutzer“ auswählen](common/new-user.png)
 

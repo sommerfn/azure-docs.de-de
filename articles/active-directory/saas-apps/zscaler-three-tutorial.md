@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 04/24/2019
 ms.author: jeedes
-ms.openlocfilehash: e2729a47771f2c3073d91cb5b0de4684b51badbd
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 3e68e7004858cf750bbe6186861442da1f9c6cdf
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64681871"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67085881"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-zscaler-three"></a>Tutorial: Azure Active Directory-Integration in Zscaler Three
 
@@ -174,7 +174,7 @@ Führen Sie zum Konfigurieren des einmaligen Anmeldens von Azure AD mit Zscaler 
 
 5. Führen Sie im Fenster **Edit SAML** (SAML bearbeiten) die folgenden Schritte aus, und klicken Sie auf „Speichern“.  
             
-    ![Benutzer &amp; Authentifizierung verwalten](./media/zscaler-three-tutorial/ic800208.png "Benutzer &amp;amp;amp; Authentifizierung verwalten")
+    ![Benutzer & Authentifizierung verwalten](./media/zscaler-three-tutorial/ic800208.png "Benutzer &amp;amp;amp;amp; Authentifizierung verwalten")
     
     a. Fügen Sie in das Textfeld **SAML Portal URL** (SAML-Portal-URL) die **Anmelde-URL** ein, die Sie aus dem Azure-Portal kopiert haben.
 

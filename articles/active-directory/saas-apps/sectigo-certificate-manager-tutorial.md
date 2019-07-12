@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 15-04-2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 573e06f0dd57b92f7621ecf77039159a64249f18
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: 2d7c7cf4972b1ee0a5add3b4611dc4c8655da875
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65786492"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67091536"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-sectigo-certificate-manager"></a>Tutorial: Azure Active Directory-Integration in Sectigo Certificate Manager
 
@@ -33,7 +33,7 @@ Die Integration von Sectigo Certificate Manager in Azure AD bietet Ihnen die fol
 * Benutzer können sich mit ihren Azure AD-Konten automatisch bei Sectigo Certificate Manager anmelden (einmaliges Anmelden; Single Sign-On, SSO).
 * Sie können Ihre Konten an einem zentralen Ort, im Azure-Portal, verwalten.
 
-Weitere Informationen zur Integration von SaaS-Apps (Software as a Service) in Azure AD finden Sie unter [Einmaliges Anmelden bei Anwendungen in Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
+Weitere Informationen zur Integration von SaaS-Apps (Software-as-a-Service) in Azure AD finden Sie unter [Einmaliges Anmelden bei Anwendungen in Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -57,7 +57,7 @@ Um Sectigo Certificate Manager in Azure AD zu integrieren, müssen Sie Sectigo C
 
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
 
-1. Wählen Sie im linken Menü die Option **Azure Active Directory** aus.
+1. Wählen Sie im linken Menü **Azure Active Directory** aus.
 
     ![Die Option „Azure Active Directory“](common/select-azuread.png)
 
@@ -81,9 +81,9 @@ Zum Konfigurieren und Testen des einmaligen Anmeldens von Azure AD bei Sectigo C
 
 | Aufgabe | BESCHREIBUNG |
 | --- | --- |
-| **[Konfigurieren des einmaligen Anmeldens in Azure AD](#configure-azure-ad-single-sign-on)** | Ermöglicht Ihren Benutzern, dieses Feature zu verwenden. |
+| **[Konfigurieren des einmaligen Anmeldens von Azure AD](#configure-azure-ad-single-sign-on)** | Ermöglicht Ihren Benutzern, dieses Feature zu verwenden. |
 | **[Konfigurieren des einmaligen Anmeldens für Sectigo Certificate Manager](#configure-sectigo-certificate-manager-single-sign-on)** | Konfiguriert die Einstellungen für einmaliges Anmelden in der Anwendung. |
-| **[Erstellen eines Azure AD-Testbenutzers](#create-an-azure-ad-test-user)** | Testet das einmalige Anmelden in Azure AD für einen Benutzer namens Britta Simon. |
+| **[Erstellen eines Azure AD-Testbenutzers](#create-an-azure-ad-test-user)** | Testet das einmalige Anmelden von Azure AD für einen Benutzer namens Britta Simon. |
 | **[Zuweisen des Azure AD-Testbenutzers](#assign-the-azure-ad-test-user)** | Ermöglicht Britta Simon die Verwendung des einmaligen Anmeldens in Azure AD. |
 | **[Erstellen eines Sectigo Certificate Manager-Testbenutzers](#create-a-sectigo-certificate-manager-test-user)** | Erstellt eine Entsprechung von Britta Simon in Sectigo Certificate Manager, die mit ihrer Darstellung in Azure AD verknüpft ist. |
 | **[Testen des einmaligen Anmeldens](#test-single-sign-on)** | Überprüft, ob die Konfiguration funktioniert. |
@@ -100,7 +100,7 @@ In diesem Abschnitt konfigurieren Sie das einmalige Anmelden von Azure AD bei Se
 
     ![Auswahlmodus für einmaliges Anmelden](common/select-saml-option.png)
 
-1. Wählen Sie im Bereich **Einmaliges Anmelden (SSO) mit SAML einrichten** die Option **Bearbeiten** (Stiftsymbol), um den Bereich **Grundlegende SAML-Konfiguration** zu öffnen.
+1. Wählen Sie im Bereich **Einmaliges Anmelden (SSO) mit SAML einrichten** die Option **Bearbeiten** (Stiftsymbol) aus, um den Bereich **Grundlegende SAML-Konfiguration** zu öffnen.
 
     ![Bearbeiten der SAML-Basiskonfiguration](common/edit-urls.png)
 
@@ -152,17 +152,17 @@ In diesem Abschnitt erstellen Sie im Azure-Portal eine Testbenutzerin mit dem Na
 
 1. Wählen Sie im Azure-Portal **Azure Active Directory** > **Benutzer** > **Alle Benutzer** aus.
 
-    ![Die Optionen „Benutzer“ und „Alle Benutzer“](common/users.png)
+    ![Optionen „Benutzer“ und „Alle Benutzer“](common/users.png)
 
 1. Wählen Sie **Neuer Benutzer** aus.
 
-    ![Die Option „Neuer Benutzer“](common/new-user.png)
+    ![Option „Neuer Benutzer“](common/new-user.png)
 
 1. Führen Sie im Bereich **Benutzer** die folgenden Schritte aus:
 
     1. Geben Sie in das Feld **Name** den Namen **BrittaSimon** ein.
   
-    1. Geben Sie im Feld **Benutzername** den Eintrag **brittasimon\@\<IhreUnternehmensdomäne>.\<Erweiterung\>** ein. Beispiel: **brittasimon\@contoso.com**
+    1. Geben Sie im Feld **Benutzername** den Namen **brittasimon\@\<IhreUnternehmensdomäne>.\<Erweiterung\>** ein. Beispiel: **brittasimon\@contoso.com**
 
     1. Aktivieren Sie das Kontrollkästchen **Kennwort anzeigen**. Notieren Sie sich den Wert, der im Feld **Kennwort** angezeigt wird.
 
@@ -190,7 +190,7 @@ In diesem Abschnitt gewähren Sie Britta Simon Zugriff auf Sectigo Certificate M
 
     ![Bereich „Zuweisung hinzufügen“](common/add-assign-user.png)
 
-1. Wählen Sie im Bereich **Benutzer und Gruppen** den Eintrag **Britta Simon** in der Benutzerliste aus. Wählen Sie **Auswählen**.
+1. Wählen Sie im Bereich **Benutzer und Gruppen** in der Benutzerliste **Britta Simon** aus. Wählen Sie **Auswählen**.
 
 1. Falls Sie in der SAML-Assertion einen Rollenwert erwarten, wählen Sie im Bereich **Rolle auswählen** die entsprechende Rolle für den Benutzer aus der Liste aus. Wählen Sie **Auswählen**.
 
@@ -208,7 +208,7 @@ Nachdem Sie einmaliges Anmelden eingerichtet haben, werden Sie bei Auswahl von *
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Weitere Informationen finden Sie in diesen Artikeln:
+Weitere Informationen finden Sie in den folgenden Artikeln:
 
 - [Liste der Tutorials zur Integration von SaaS-Apps in Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 - [Einmaliges Anmelden bei Anwendungen in Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)

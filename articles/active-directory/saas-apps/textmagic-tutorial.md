@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/07/2019
 ms.author: jeedes
-ms.openlocfilehash: c919d02a72565f42c125e6d123b48e2cedaea508
-ms.sourcegitcommit: 6f043a4da4454d5cb673377bb6c4ddd0ed30672d
+ms.openlocfilehash: 1184e282c8dc52cb616bcc47068d96fe61651da9
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/08/2019
-ms.locfileid: "65407976"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67088876"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-textmagic"></a>Tutorial: Azure Active Directory-Integration mit TextMagic
 
@@ -77,12 +77,12 @@ Damit einmaliges Anmelden funktioniert, muss eine Linkbeziehung zwischen einem A
 
 Zum Konfigurieren und Testen des einmaligen Anmeldens in Azure AD bei TextMagic müssen Sie die folgenden Bausteine ausführen:
 
-1. **[Konfigurieren des einmaligen Anmeldens von Azure AD](#configure-azure-ad-single-sign-on)**, um Ihren Benutzern das Verwenden dieses Features zu ermöglichen.
-2. **[Konfigurieren des einmaligen Anmeldens für TextMagic](#configure-textmagic-single-sign-on)**, um die Einstellungen für einmaliges Anmelden auf der Anwendungsseite zu konfigurieren
-3. **[Erstellen eines Azure AD-Testbenutzers](#create-an-azure-ad-test-user)**, um das einmalige Anmelden mit Azure AD mit dem Testbenutzer Britta Simon zu testen.
-4. **[Zuweisen des Azure AD-Testbenutzers](#assign-the-azure-ad-test-user)**, um Britta Simon für das einmalige Anmelden von Azure AD zu aktivieren.
-5. **[Erstellen eines TextMagic-Testbenutzers](#create-textmagic-test-user)**, um eine Entsprechung von Britta Simon in TextMagic zu erhalten, die mit ihrer Darstellung in Azure AD verknüpft ist
-6. **[Testen der einmaligen Anmeldung](#test-single-sign-on)**, um zu überprüfen, ob die Konfiguration funktioniert.
+1. **[Konfigurieren des einmaligen Anmeldens von Azure AD](#configure-azure-ad-single-sign-on)** , um Ihren Benutzern das Verwenden dieses Features zu ermöglichen.
+2. **[Konfigurieren des einmaligen Anmeldens für TextMagic](#configure-textmagic-single-sign-on)** , um die Einstellungen für einmaliges Anmelden auf der Anwendungsseite zu konfigurieren
+3. **[Erstellen eines Azure AD-Testbenutzers](#create-an-azure-ad-test-user)** , um das einmalige Anmelden mit Azure AD mit dem Testbenutzer Britta Simon zu testen.
+4. **[Zuweisen des Azure AD-Testbenutzers](#assign-the-azure-ad-test-user)** , um Britta Simon für das einmalige Anmelden von Azure AD zu aktivieren.
+5. **[Erstellen eines TextMagic-Testbenutzers](#create-textmagic-test-user)** , um eine Entsprechung von Britta Simon in TextMagic zu erhalten, die mit ihrer Darstellung in Azure AD verknüpft ist
+6. **[Testen der einmaligen Anmeldung](#test-single-sign-on)** , um zu überprüfen, ob die Konfiguration funktioniert.
 
 ### <a name="configure-azure-ad-single-sign-on"></a>Konfigurieren des einmaligen Anmeldens in Azure AD
 
@@ -116,10 +116,10 @@ Führen Sie zum Konfigurieren des einmaligen Anmeldens von Azure AD mit TextMag
 
     | NAME |   Quellattribut| Namespace  |
     | --------------- | --------------- | --------------- |
-    | company | user.companyname | https://schemas.xmlsoap.org/ws/2005/05/identity/claims |
-    | firstName               | user.givenname |  https://schemas.xmlsoap.org/ws/2005/05/identity/claims |
-    | lastName            | user.surname |  https://schemas.xmlsoap.org/ws/2005/05/identity/claims |
-    | phone               | user.telephonenumber |  https://schemas.xmlsoap.org/ws/2005/05/identity/claims |
+    | company | user.companyname | http://schemas.xmlsoap.org/ws/2005/05/identity/claims |
+    | firstName               | user.givenname |  http://schemas.xmlsoap.org/ws/2005/05/identity/claims |
+    | lastName            | user.surname |  http://schemas.xmlsoap.org/ws/2005/05/identity/claims |
+    | phone               | user.telephonenumber |  http://schemas.xmlsoap.org/ws/2005/05/identity/claims |
     | | |
 
     a. Klicken Sie auf **Neuen Anspruch hinzufügen**, um das Dialogfeld **Benutzeransprüche verwalten** zu öffnen.
@@ -166,13 +166,13 @@ Führen Sie zum Konfigurieren des einmaligen Anmeldens von Azure AD mit TextMag
 
     ![TextMagic-Konfiguration](./media/textmagic-tutorial/config2.png)
 
-    a. Fügen Sie den  **Azure AD-Bezeichner**, den Sie aus dem Azure-Portal kopiert haben, in das Textfeld  **Identity provider entity ID:** (Entitäts-ID des Identitätsanbieters:) ein.
+    a. Fügen Sie den  **Azure AD-Bezeichner**, den Sie aus dem Azure-Portal kopiert haben, in das Textfeld  **Identity provider entity ID:**  (Entitäts-ID des Identitätsanbieters:) ein.
 
-    b. Fügen Sie die  **Anmelde-URL**, die Sie aus dem Azure-Portal kopiert haben, in das Textfeld  **Identity provider SSO URL:** (SSO-URL des Identitätsanbieters) ein.
+    b. Fügen Sie die  **Anmelde-URL**, die Sie aus dem Azure-Portal kopiert haben, in das Textfeld  **Identity provider SSO URL:**  (SSO-URL des Identitätsanbieters) ein.
 
-    c. Fügen Sie die  **Abmelde-URL**, die Sie aus dem Azure-Portal kopiert haben, in das Textfeld  **Identity provider SLO URL:** (SLO-URL des Identitätsanbieters) ein.
+    c. Fügen Sie die  **Abmelde-URL**, die Sie aus dem Azure-Portal kopiert haben, in das Textfeld  **Identity provider SLO URL:**  (SLO-URL des Identitätsanbieters) ein.
 
-    d. Öffnen Sie das **Base64-codierte Zertifikat** im Editor, das Sie aus dem Azure-Portal heruntergeladen haben, kopieren Sie den Inhalt des Zertifikats in die Zwischenablage, und fügen Sie ihn anschließend in das Textfeld  **Public x509 certificate:** (Öffentliches x509-Zertifikat) ein.
+    d. Öffnen Sie das **Base64-codierte Zertifikat** im Editor, das Sie aus dem Azure-Portal heruntergeladen haben, kopieren Sie den Inhalt des Zertifikats in die Zwischenablage, und fügen Sie ihn anschließend in das Textfeld  **Public x509 certificate:**  (Öffentliches x509-Zertifikat) ein.
 
     e. Klicken Sie auf **Speichern**.
 

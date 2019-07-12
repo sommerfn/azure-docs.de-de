@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 02/25/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d9130717f7846c81bee2bf4892a13fcf6042257c
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 5e0ca336fd2ca24a7fe2fbc0d2d693c4f793362f
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59261722"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67099536"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-ivanti-service-manager-ism"></a>Tutorial: Azure Active Directory-Integration mit Ivanti Service Manager (ISM)
 
@@ -45,7 +45,7 @@ Um die Azure AD-Integration mit Ivanti Service Manager (ISM) konfigurieren zu k�
 
 In diesem Tutorial konfigurieren und testen Sie das einmalige Anmelden von Azure AD in einer Testumgebung.
 
-* Ivanti Service Manager (ISM) unterstützt **SP- und IDP-**-initiiertes einmaliges Anmelden.
+* Ivanti Service Manager (ISM) unterstützt **SP- und IDP-** -initiiertes einmaliges Anmelden.
 * Ivanti Service Manager (ISM) unterstützt die **Just-In-Time**-Benutzerbereitstellung.
 
 ## <a name="adding-ivanti-service-manager-ism-from-the-gallery"></a>Hinzufügen von Ivanti Service Manager (ISM) aus dem Katalog
@@ -77,12 +77,12 @@ Damit einmaliges Anmelden funktioniert, muss zwischen einem Azure AD-Benutzer un
 
 Führen Sie die folgenden Schritte aus, um das einmalige Anmelden von Azure AD bei Ivanti Service Manager (ISM) zu konfigurieren und zu testen:
 
-1. **[Konfigurieren des einmaligen Anmeldens von Azure AD](#configure-azure-ad-single-sign-on)**, um Ihren Benutzern das Verwenden dieses Features zu ermöglichen.
-2. **[Konfigurieren des einmaligen Anmeldens für Ivanti Service Manager (ISM)](#configure-ivanti-service-manager-ism-single-sign-on)**, um die Einstellungen für einmaliges Anmelden auf der Anwendungsseite zu konfigurieren.
-3. **[Erstellen eines Azure AD-Testbenutzers](#create-an-azure-ad-test-user)**, um das einmalige Anmelden mit Azure AD mit dem Testbenutzer Britta Simon zu testen.
-4. **[Zuweisen des Azure AD-Testbenutzers](#assign-the-azure-ad-test-user)**, um Britta Simon für das einmalige Anmelden von Azure AD zu aktivieren.
-5. **[Erstellen eines Ivanti Service Manager (ISM)-Testbenutzers](#create-ivanti-service-manager-ism-test-user)**, um eine Entsprechung von Britta Simon in Ivanti Service Manager (ISM) zu erhalten, die mit der Darstellung des Benutzers in Azure AD verknüpft ist.
-6. **[Testen der einmaligen Anmeldung](#test-single-sign-on)**, um zu überprüfen, ob die Konfiguration funktioniert.
+1. **[Konfigurieren des einmaligen Anmeldens von Azure AD](#configure-azure-ad-single-sign-on)** , um Ihren Benutzern das Verwenden dieses Features zu ermöglichen.
+2. **[Konfigurieren des einmaligen Anmeldens für Ivanti Service Manager (ISM)](#configure-ivanti-service-manager-ism-single-sign-on)** , um die Einstellungen für einmaliges Anmelden auf der Anwendungsseite zu konfigurieren.
+3. **[Erstellen eines Azure AD-Testbenutzers](#create-an-azure-ad-test-user)** , um das einmalige Anmelden mit Azure AD mit dem Testbenutzer Britta Simon zu testen.
+4. **[Zuweisen des Azure AD-Testbenutzers](#assign-the-azure-ad-test-user)** , um Britta Simon für das einmalige Anmelden von Azure AD zu aktivieren.
+5. **[Erstellen eines Ivanti Service Manager (ISM)-Testbenutzers](#create-ivanti-service-manager-ism-test-user)** , um eine Entsprechung von Britta Simon in Ivanti Service Manager (ISM) zu erhalten, die mit der Darstellung des Benutzers in Azure AD verknüpft ist.
+6. **[Testen der einmaligen Anmeldung](#test-single-sign-on)** , um zu überprüfen, ob die Konfiguration funktioniert.
 
 ### <a name="configure-azure-ad-single-sign-on"></a>Konfigurieren des einmaligen Anmeldens in Azure AD
 
@@ -125,7 +125,7 @@ Führen Sie die folgenden Schritte aus, um das einmalige Anmelden von Azure AD b
     > [!NOTE]
     > Hierbei handelt es sich um Beispielwerte. Sie müssen diese Werte mit dem tatsächlichen Bezeichner, der Antwort-URL und der Anmelde-URL aktualisieren. Wenden Sie sich an das [Supportteam für Ivanti Service Manager (ISM)](https://www.ivanti.com/support/contact), um diese Werte zu erhalten. Sie können sich auch die Muster im Abschnitt **Grundlegende SAML-Konfiguration** im Azure-Portal ansehen.
 
-6. Klicken Sie auf der Seite **Einmaliges Anmelden (SSO) mit SAML einrichten** im Abschnitt **SAML-Signaturzertifikat** auf **Herunterladen**, um das Ihrer Anforderung entsprechende Zertifikat (**Zertifikat (Rohdaten)**) aus den angegebenen Optionen herunterzuladen und auf Ihrem Computer zu speichern.
+6. Klicken Sie auf der Seite **Einmaliges Anmelden (SSO) mit SAML einrichten** im Abschnitt **SAML-Signaturzertifikat** auf **Herunterladen**, um das Ihrer Anforderung entsprechende Zertifikat (**Zertifikat (Rohdaten)** ) aus den angegebenen Optionen herunterzuladen und auf Ihrem Computer zu speichern.
 
     ![Downloadlink für das Zertifikat](common/certificateraw.png)
 
@@ -172,7 +172,7 @@ Das Ziel dieses Abschnitts ist das Erstellen eines Testbenutzers namens Britta S
 
 In diesem Abschnitt ermöglichen Sie Britta Simon das einmalige Anmelden von Azure, indem Sie ihr Zugriff auf Ivanti Service Manager (ISM) gewähren.
 
-1. Wählen Sie im Azure-Portal nacheinander die Optionen **Unternehmensanwendungen**, **Alle Anwendungen** und **Ivanti Service Manager (ISM)**.
+1. Wählen Sie im Azure-Portal nacheinander die Optionen **Unternehmensanwendungen**, **Alle Anwendungen** und **Ivanti Service Manager (ISM)** .
 
     ![Blatt „Unternehmensanwendungen“](common/enterprise-applications.png)
 

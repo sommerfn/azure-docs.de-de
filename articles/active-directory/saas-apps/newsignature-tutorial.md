@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 01/22/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 81351fc13ddf36d8aeb4fa5cecab10daf152406f
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: cdb6e034005902d478b94a12e2cbe44a00228735
+ms.sourcegitcommit: 978e1b8cac3da254f9d6309e0195c45b38c24eb5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "65870923"
+ms.lasthandoff: 07/03/2019
+ms.locfileid: "67551804"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-cloud-management-portal-for-microsoft-azure"></a>Tutorial: Azure Active Directory-Integration mit Cloud Management Portal for Microsoft Azure
 
@@ -76,12 +76,12 @@ Damit einmaliges Anmelden funktioniert, muss zwischen einem Azure AD-Benutzer un
 
 Zum Konfigurieren und Testen des einmaligen Anmeldens in Azure AD bei Cloud Management Portal for Microsoft Azure müssen Sie die folgenden Bausteine ausführen:
 
-1. **[Konfigurieren des einmaligen Anmeldens von Azure AD](#configure-azure-ad-single-sign-on)**, um Ihren Benutzern das Verwenden dieses Features zu ermöglichen.
-2. **[Konfigurieren des einmaligen Anmeldens für Cloud Management Portal for Microsoft Azure](#configure-cloud-management-portal-for-microsoft-azure-single-sign-on)**, um die Einstellungen für einmaliges Anmelden auf der Anwendungsseite zu konfigurieren
-3. **[Erstellen eines Azure AD-Testbenutzers](#create-an-azure-ad-test-user)**, um das einmalige Anmelden mit Azure AD mit dem Testbenutzer Britta Simon zu testen.
-4. **[Zuweisen des Azure AD-Testbenutzers](#assign-the-azure-ad-test-user)**, um Britta Simon für das einmalige Anmelden von Azure AD zu aktivieren.
-5. **[Erstellen eines Testbenutzers für Cloud Management Portal for Microsoft Azure](#create-cloud-management-portal-for-microsoft-azure-test-user)**, um eine Entsprechung von Britta Simon in Cloud Management Portal for Microsoft Azure zu erhalten, die mit ihrer Darstellung in Azure AD verknüpft ist
-6. **[Testen der einmaligen Anmeldung](#test-single-sign-on)**, um zu überprüfen, ob die Konfiguration funktioniert.
+1. **[Konfigurieren des einmaligen Anmeldens von Azure AD](#configure-azure-ad-single-sign-on)** , um Ihren Benutzern das Verwenden dieses Features zu ermöglichen.
+2. **[Konfigurieren des einmaligen Anmeldens für Cloud Management Portal for Microsoft Azure](#configure-cloud-management-portal-for-microsoft-azure-single-sign-on)** , um die Einstellungen für einmaliges Anmelden auf der Anwendungsseite zu konfigurieren
+3. **[Erstellen eines Azure AD-Testbenutzers](#create-an-azure-ad-test-user)** , um das einmalige Anmelden mit Azure AD mit dem Testbenutzer Britta Simon zu testen.
+4. **[Zuweisen des Azure AD-Testbenutzers](#assign-the-azure-ad-test-user)** , um Britta Simon für das einmalige Anmelden von Azure AD zu aktivieren.
+5. **[Erstellen eines Testbenutzers für Cloud Management Portal for Microsoft Azure](#create-cloud-management-portal-for-microsoft-azure-test-user)** , um eine Entsprechung von Britta Simon in Cloud Management Portal for Microsoft Azure zu erhalten, die mit ihrer Darstellung in Azure AD verknüpft ist
+6. **[Testen der einmaligen Anmeldung](#test-single-sign-on)** , um zu überprüfen, ob die Konfiguration funktioniert.
 
 ### <a name="configure-azure-ad-single-sign-on"></a>Konfigurieren des einmaligen Anmeldens in Azure AD
 
@@ -125,7 +125,7 @@ Führen Sie zum Konfigurieren des einmaligen Anmeldens von Azure AD mit Cloud Ma
     |--|
     | `https://<subdomain>.igcm.com/<instancename>` |
     | `https://<subdomain>.newsignature.com` |
-    | `https://<subdomain>.newsignature.com/<instancename>` |<instancename>`
+    | `https://<subdomain>.newsignature.com/<instancename>` |
 
     > [!NOTE]
     > Hierbei handelt es sich um Beispielwerte. Ersetzen Sie diese Werte durch die tatsächliche Anmelde-URL, den tatsächlichen Bezeichner und die tatsächliche Antwort-URL. Wenden Sie sich an das [Kundensupportteam von Cloud Management Portal for Microsoft Azure](mailto:jczernuszka@newsignature.com), um diese Werte zu erhalten. Sie können sich auch die Muster im Abschnitt **Grundlegende SAML-Konfiguration** im Azure-Portal ansehen.

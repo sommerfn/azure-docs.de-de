@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 04/14/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7a03bb2626525bf022b109105a7c6bc0dee23aea
-ms.sourcegitcommit: 6f043a4da4454d5cb673377bb6c4ddd0ed30672d
+ms.openlocfilehash: 148c2c46a911088d01ab83fe2d16e8ca81d272ff
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/08/2019
-ms.locfileid: "65407048"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67098788"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-lockpath-keylight"></a>Tutorial: Azure Active Directory-Integration in LockPath Keylight
 
@@ -78,12 +78,12 @@ Damit einmaliges Anmelden funktioniert, muss eine Linkbeziehung zwischen einem A
 
 Zum Konfigurieren und Testen des einmaligen Anmeldens in Azure AD mit LockPath Keylight müssen Sie die folgenden Schritte ausführen:
 
-1. **[Konfigurieren des einmaligen Anmeldens von Azure AD](#configure-azure-ad-single-sign-on)**, um Ihren Benutzern das Verwenden dieses Features zu ermöglichen.
-2. **[Konfigurieren des einmaligen Anmeldens für LockPath Keylight](#configure-lockpath-keylight-single-sign-on)**, um die Einstellungen für einmaliges Anmelden auf der Anwendungsseite zu konfigurieren
-3. **[Erstellen eines Azure AD-Testbenutzers](#create-an-azure-ad-test-user)**, um das einmalige Anmelden mit Azure AD mit dem Testbenutzer Britta Simon zu testen.
-4. **[Zuweisen des Azure AD-Testbenutzers](#assign-the-azure-ad-test-user)**, um Britta Simon für das einmalige Anmelden von Azure AD zu aktivieren.
-5. **[Erstellen eines LockPath Keylight-Testbenutzers](#create-lockpath-keylight-test-user)**, um ein Pendant zu Britta Simon in LockPath Keylight zu erhalten, das mit ihrer Darstellung in Azure AD verknüpft ist
-6. **[Testen der einmaligen Anmeldung](#test-single-sign-on)**, um zu überprüfen, ob die Konfiguration funktioniert.
+1. **[Konfigurieren des einmaligen Anmeldens von Azure AD](#configure-azure-ad-single-sign-on)** , um Ihren Benutzern das Verwenden dieses Features zu ermöglichen.
+2. **[Konfigurieren des einmaligen Anmeldens für LockPath Keylight](#configure-lockpath-keylight-single-sign-on)** , um die Einstellungen für einmaliges Anmelden auf der Anwendungsseite zu konfigurieren
+3. **[Erstellen eines Azure AD-Testbenutzers](#create-an-azure-ad-test-user)** , um das einmalige Anmelden mit Azure AD mit dem Testbenutzer Britta Simon zu testen.
+4. **[Zuweisen des Azure AD-Testbenutzers](#assign-the-azure-ad-test-user)** , um Britta Simon für das einmalige Anmelden von Azure AD zu aktivieren.
+5. **[Erstellen eines LockPath Keylight-Testbenutzers](#create-lockpath-keylight-test-user)** , um ein Pendant zu Britta Simon in LockPath Keylight zu erhalten, das mit ihrer Darstellung in Azure AD verknüpft ist
+6. **[Testen der einmaligen Anmeldung](#test-single-sign-on)** , um zu überprüfen, ob die Konfiguration funktioniert.
 
 ### <a name="configure-azure-ad-single-sign-on"></a>Konfigurieren des einmaligen Anmeldens in Azure AD
 
@@ -116,7 +116,7 @@ Führen Sie zum Konfigurieren des einmaligen Anmeldens von Azure AD mit LockPath
     > [!NOTE]
     > Hierbei handelt es sich um Beispielwerte. Ersetzen Sie diese Werte durch die tatsächlichen Werte für die Anmelde-URL, den Bezeichner und die Antwort-URL. Wenden Sie sich an das [Supportteam für den LockPath Keylight-Client](https://www.lockpath.com/contact/), um diese Werte zu erhalten. Sie können sich auch die Muster im Abschnitt **Grundlegende SAML-Konfiguration** im Azure-Portal ansehen.
 
-5. Klicken Sie auf der Seite **Einmaliges Anmelden (SSO) mit SAML einrichten** im Abschnitt **SAML-Signaturzertifikat** auf **Herunterladen**, um das Ihrer Anforderung entsprechende Zertifikat (**Zertifikat (Rohdaten)**) aus den angegebenen Optionen herunterzuladen und auf Ihrem Computer zu speichern.
+5. Klicken Sie auf der Seite **Einmaliges Anmelden (SSO) mit SAML einrichten** im Abschnitt **SAML-Signaturzertifikat** auf **Herunterladen**, um das Ihrer Anforderung entsprechende Zertifikat (**Zertifikat (Rohdaten)** ) aus den angegebenen Optionen herunterzuladen und auf Ihrem Computer zu speichern.
 
     ![Downloadlink für das Zertifikat](common/certificateraw.png)
 
@@ -172,11 +172,11 @@ Führen Sie zum Konfigurieren des einmaligen Anmeldens von Azure AD mit LockPath
 
     j. Legen Sie für **Sicherheitskonfiguration automatisch bereitstellen** die Einstellung **Standardbenutzerkonfiguration** fest.
 
-    k. Geben Sie im Textfeld **E-Mail-Attribut** die Zeichenfolge `https://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress` ein.
+    k. Geben Sie im Textfeld **E-Mail-Attribut** die Zeichenfolge `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress` ein.
 
-    l. Geben Sie `https://schemas.xmlsoap.org/ws/2005/05/identity/claims/givenname` in das Textfeld **Vornamen-Attribut** ein.
+    l. Geben Sie `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/givenname` in das Textfeld **Vornamen-Attribut** ein.
 
-    m. Geben Sie `https://schemas.xmlsoap.org/ws/2005/05/identity/claims/surname` in das Textfeld **Nachnamen-Attribut** ein.
+    m. Geben Sie `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/surname` in das Textfeld **Nachnamen-Attribut** ein.
 
     n. Klicken Sie auf **Speichern**.
 

@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/25/2019
 ms.author: jeedes
-ms.openlocfilehash: 6f742def0441b5ae18ad9da3a8ac9d280de8f824
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 2ce766da0521b787edec020d7dfc3de2a2d83b19
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "65867400"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67090704"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-signalfx"></a>Tutorial: Azure Active Directory-Integration von SignalFx
 
@@ -77,12 +77,12 @@ Damit einmaliges Anmelden funktioniert, muss eine Linkbeziehung zwischen einem A
 
 Führen Sie die folgenden Schritte aus, um das einmalige Anmelden von Azure AD mit SignalFx zu konfigurieren und zu testen:
 
-1. **[Konfigurieren des einmaligen Anmeldens von Azure AD](#configure-azure-ad-single-sign-on)**, um Ihren Benutzern das Verwenden dieses Features zu ermöglichen.
-2. **[Konfigurieren des einmaligen Anmeldens für SignalFx](#configure-signalfx-single-sign-on)**, um die Einstellungen für einmaliges Anmelden auf der Anwendungsseite zu konfigurieren.
-3. **[Erstellen eines Azure AD-Testbenutzers](#create-an-azure-ad-test-user)**, um das einmalige Anmelden mit Azure AD mit dem Testbenutzer Britta Simon zu testen.
-4. **[Zuweisen des Azure AD-Testbenutzers](#assign-the-azure-ad-test-user)**, um Britta Simon für das einmalige Anmelden von Azure AD zu aktivieren.
-5. **[Erstellen eines SignalFx-Testbenutzers](#create-signalfx-test-user)**, um eine Entsprechung von Britta Simon in SignalFx zu erhalten, die mit der Darstellung des Benutzers in Azure AD verknüpft ist.
-6. **[Testen der einmaligen Anmeldung](#test-single-sign-on)**, um zu überprüfen, ob die Konfiguration funktioniert.
+1. **[Konfigurieren des einmaligen Anmeldens von Azure AD](#configure-azure-ad-single-sign-on)** , um Ihren Benutzern das Verwenden dieses Features zu ermöglichen.
+2. **[Konfigurieren des einmaligen Anmeldens für SignalFx](#configure-signalfx-single-sign-on)** , um die Einstellungen für einmaliges Anmelden auf der Anwendungsseite zu konfigurieren.
+3. **[Erstellen eines Azure AD-Testbenutzers](#create-an-azure-ad-test-user)** , um das einmalige Anmelden mit Azure AD mit dem Testbenutzer Britta Simon zu testen.
+4. **[Zuweisen des Azure AD-Testbenutzers](#assign-the-azure-ad-test-user)** , um Britta Simon für das einmalige Anmelden von Azure AD zu aktivieren.
+5. **[Erstellen eines SignalFx-Testbenutzers](#create-signalfx-test-user)** , um eine Entsprechung von Britta Simon in SignalFx zu erhalten, die mit der Darstellung des Benutzers in Azure AD verknüpft ist.
+6. **[Testen der einmaligen Anmeldung](#test-single-sign-on)** , um zu überprüfen, ob die Konfiguration funktioniert.
 
 ### <a name="configure-azure-ad-single-sign-on"></a>Konfigurieren des einmaligen Anmeldens in Azure AD
 
@@ -162,7 +162,7 @@ Führen Sie die folgenden Schritte aus, um das einmalige Anmelden von Azure AD m
 
 1. Melden Sie sich an Ihrer SignalFx-Unternehmenswebsite als Administrator an.
 
-1. Klicken Sie in SignalFx oben auf **Integrations (Integrationen)**, um die Seite „Integrations“ zu öffnen.
+1. Klicken Sie in SignalFx oben auf **Integrations (Integrationen)** , um die Seite „Integrations“ zu öffnen.
 
     ![SignalFx-Integration](./media/signalfx-tutorial/tutorial_signalfx_intg.png)
 
@@ -170,7 +170,7 @@ Führen Sie die folgenden Schritte aus, um das einmalige Anmelden von Azure AD m
 
     ![SignalFx-SAML](./media/signalfx-tutorial/tutorial_signalfx_saml.png)
 
-1. Klicken Sie auf **NEW INTEGRATION (NEUE INTEGRATION)**, und führen Sie auf der Registerkarte **INSTALL (INSTALLIEREN)** die folgenden Schritte aus:
+1. Klicken Sie auf **NEW INTEGRATION (NEUE INTEGRATION)** , und führen Sie auf der Registerkarte **INSTALL (INSTALLIEREN)** die folgenden Schritte aus:
 
     ![SignalFx-SAML-Integrationsseite](./media/signalfx-tutorial/tutorial_signalfx_azure.png)
 
@@ -178,7 +178,7 @@ Führen Sie die folgenden Schritte aus, um das einmalige Anmelden von Azure AD m
 
     b. Kopieren Sie den Wert von **Integration ID** (Integrations-ID), und fügen Sie ihn im Azure-Portal im Abschnitt **Grundlegende SAML-Konfiguration** anstelle von `<integration ID>` im Textfeld **Antwort-URL** an die **Antwort-URL** an.
 
-    c. Klicken Sie auf **Upload File (Datei hochladen)**, um das vom Azure-Portal heruntergeladene **Base64-codierte Zertifikat** in das Textfeld **Certificate (Zertifikat)** hochzuladen.
+    c. Klicken Sie auf **Upload File (Datei hochladen)** , um das vom Azure-Portal heruntergeladene **Base64-codierte Zertifikat** in das Textfeld **Certificate (Zertifikat)** hochzuladen.
 
     d. Fügen Sie in das Textfeld **Issuer URL** (Aussteller-URL) den Wert des **Azure AD-Bezeichners** ein, den Sie aus dem Azure-Portal kopiert haben.
 

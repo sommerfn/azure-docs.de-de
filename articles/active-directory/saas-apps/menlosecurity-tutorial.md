@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 02/20/2019
 ms.author: jeedes
-ms.openlocfilehash: c2964169996aa3b2ac18c9c2accf358b7213c1c1
-ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
+ms.openlocfilehash: 8297b16ba5efa371adc4d9a20428f88a48545440
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/20/2019
-ms.locfileid: "65901559"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67097714"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-menlo-security"></a>Tutorial: Azure Active Directory-Integration mit Menlo Security
 
@@ -75,12 +75,12 @@ Damit einmaliges Anmelden funktioniert, muss eine Linkbeziehung zwischen einem A
 
 Zum Konfigurieren und Testen des einmaligen Anmeldens von Azure AD bei Menlo Security müssen Sie die folgenden Bausteine ausführen:
 
-1. **[Konfigurieren des einmaligen Anmeldens von Azure AD](#configure-azure-ad-single-sign-on)**, um Ihren Benutzern das Verwenden dieses Features zu ermöglichen.
-2. **[Konfigurieren des einmaligen Anmeldens für Menlo Security](#configure-menlo-security-single-sign-on)**, um die Einstellungen für einmaliges Anmelden auf der Anwendungsseite zu konfigurieren
-3. **[Erstellen eines Azure AD-Testbenutzers](#create-an-azure-ad-test-user)**, um das einmalige Anmelden mit Azure AD mit dem Testbenutzer Britta Simon zu testen.
-4. **[Zuweisen des Azure AD-Testbenutzers](#assign-the-azure-ad-test-user)**, um Britta Simon für das einmalige Anmelden von Azure AD zu aktivieren.
-5. **[Erstellen eines Menlo Security-Testbenutzers](#create-menlo-security-test-user)**, um eine Entsprechung von Britta Simon in Menlo Security zu erhalten, die mit ihrer Darstellung in Azure AD verknüpft ist
-6. **[Testen der einmaligen Anmeldung](#test-single-sign-on)**, um zu überprüfen, ob die Konfiguration funktioniert.
+1. **[Konfigurieren des einmaligen Anmeldens von Azure AD](#configure-azure-ad-single-sign-on)** , um Ihren Benutzern das Verwenden dieses Features zu ermöglichen.
+2. **[Konfigurieren des einmaligen Anmeldens für Menlo Security](#configure-menlo-security-single-sign-on)** , um die Einstellungen für einmaliges Anmelden auf der Anwendungsseite zu konfigurieren
+3. **[Erstellen eines Azure AD-Testbenutzers](#create-an-azure-ad-test-user)** , um das einmalige Anmelden mit Azure AD mit dem Testbenutzer Britta Simon zu testen.
+4. **[Zuweisen des Azure AD-Testbenutzers](#assign-the-azure-ad-test-user)** , um Britta Simon für das einmalige Anmelden von Azure AD zu aktivieren.
+5. **[Erstellen eines Menlo Security-Testbenutzers](#create-menlo-security-test-user)** , um eine Entsprechung von Britta Simon in Menlo Security zu erhalten, die mit ihrer Darstellung in Azure AD verknüpft ist
+6. **[Testen der einmaligen Anmeldung](#test-single-sign-on)** , um zu überprüfen, ob die Konfiguration funktioniert.
 
 ### <a name="configure-azure-ad-single-sign-on"></a>Konfigurieren des einmaligen Anmeldens in Azure AD
 
@@ -141,9 +141,9 @@ Führen Sie zum Konfigurieren des einmaligen Anmeldens von Azure AD mit Menlo S
 
     d. **SAML 2.0-Endpunkt**: Fügen Sie die **Anmelde-URL** ein, die Sie aus dem Azure-Portal kopiert haben.
 
-    e. **Dienstbezeichner (Aussteller)**: Fügen Sie den **Azure AD-Bezeichner** ein, den Sie aus dem Azure-Portal kopiert haben.
+    e. **Dienstbezeichner (Aussteller)** : Fügen Sie den **Azure AD-Bezeichner** ein, den Sie aus dem Azure-Portal kopiert haben.
 
-    f. **X.509-Zertifikat**: Öffnen Sie das **Zertifikat (Base64)**, das Sie aus dem Azure-Portal heruntergeladen haben, im Editor, und fügen Sie den Inhalt in dieses Feld ein.
+    f. **X.509-Zertifikat**: Öffnen Sie das **Zertifikat (Base64)** , das Sie aus dem Azure-Portal heruntergeladen haben, im Editor, und fügen Sie den Inhalt in dieses Feld ein.
 
     g. Klicken Sie auf **Speichern** , um die Einstellungen zu speichern.
 

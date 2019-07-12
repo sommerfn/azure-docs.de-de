@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 04/10/2019
 ms.author: jeedes
-ms.openlocfilehash: dbdf6847658e6a5a3999007f51b409e47a65e4cd
-ms.sourcegitcommit: cfbc8db6a3e3744062a533803e664ccee19f6d63
+ms.openlocfilehash: 7dab6f6b9215ead8cdcf513e226fd2fb8e59d8fc
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/21/2019
-ms.locfileid: "65988080"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67098282"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-leapsome"></a>Tutorial: Azure Active Directory-Integration mit Leapsome
 
@@ -185,9 +185,9 @@ Führen Sie zum Konfigurieren des einmaligen Anmeldens von Azure AD mit Leapsome
 
     c. Kopieren Sie den Wert **Reply URL (receives response from your identity provider)** (Antwort-URL (erhält die Antwort von Ihrem Identitätsanbieter)), und fügen Sie ihn im Azure-Portal im Abschnitt **Grundlegende SAML-Konfiguration** in das Textfeld **Antwort-URL** ein.
 
-    d. Fügen Sie im Textfeld **SSO Login URL (provided by identity provider)** (SSO-Anmelde-URL (von Ihrem Identitätsanbieter angegeben)) den Wert der **Anmelde-URL** ein, den Sie aus dem Azure-Portal kopiert haben.
+    d. Fügen Sie im Textfeld **SSO Login URL (provided by identity provider)** (SSO-Anmelde-URL (von Ihrem Identitätsanbieter bereitgestellt)) den Wert der **Anmelde-URL** ein, den Sie aus dem Azure-Portal kopiert haben.
 
-    e. Kopieren Sie das aus dem Azure-Portal heruntergeladene Zertifikat ohne die Kommentare `--BEGIN CERTIFICATE and END CERTIFICATE--`, und fügen Sie es in das Textfeld **Certificate (provided by identity provider)** (Zertifikat (von Ihrem Identitätsanbieter angegeben)) ein.
+    e. Kopieren Sie das aus dem Azure-Portal heruntergeladene Zertifikat ohne die Kommentare `--BEGIN CERTIFICATE and END CERTIFICATE--`, und fügen Sie es in das Textfeld **Certificate (provided by identity provider)** (Zertifikat (von Ihrem Identitätsanbieter bereitgestellt)) ein.
 
     f. Klicken Sie auf **SSO-EINSTELLUNGEN AKTUALISIEREN**.
 
