@@ -11,13 +11,13 @@ author: bonova
 ms.author: bonova
 ms.reviewer: carlrab, jovanpop, sachinp, sstein
 manager: craigg
-ms.date: 05/22/2019
-ms.openlocfilehash: 7ff8405bba39e274c4f9f0cbacb7c295564c877e
-ms.sourcegitcommit: 009334a842d08b1c83ee183b5830092e067f4374
+ms.date: 06/26/2019
+ms.openlocfilehash: a0846a7d03cc2f63af6747c8b8514b563c1d4a5d
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/29/2019
-ms.locfileid: "66303214"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67447804"
 ---
 # <a name="overview-azure-sql-database-managed-instance-resource-limits"></a>Übersicht über Ressourceneinschränkungen für verwaltete Azure SQL-Datenbank-Instanzen
 
@@ -32,40 +32,42 @@ Eine verwaltete Instanz weist Merkmale und Ressourceneinschränkungen auf, die v
 
 ### <a name="hardware-generation-characteristics"></a>Merkmale der Hardwaregeneration
 
-Eine verwaltete Azure SQL-Datenbank-Instanz kann auf zwei Hardwaregenerationen bereitgestellt werden: Gen4 und Gen5. Hardwaregenerationen weisen unterschiedliche Merkmale auf, die in der folgenden Tabelle beschrieben sind.
+Eine verwaltete Azure SQL-Datenbank-Instanz kann auf zwei Hardwaregenerationen bereitgestellt werden: Gen4 und Gen5. Hardwaregenerationen weisen unterschiedliche Merkmale auf, wie in der folgenden Tabelle beschrieben:
 
 |   | **Gen4** | **Gen5** |
 | --- | --- | --- |
 | Hardware | Intel E5-2673 v3-Prozessoren (Haswell) mit 2,4 GHz, angefügte SSD, virtueller Kern = 1 physischer Kern | Intel E5-2673 v4-Prozessoren (Broadwell) mit 2,3 GHz, schnelle NVMe-SSD, virtueller Kern = 1 LP (Hyperthread) |
-| V-Kerne | 8, 16, 24 virtuelle Kerne | 8, 16, 24, 32, 40, 64, 80 V-Kerne |
-| Arbeitsspeicher | 7 GB pro V-Kern | 5,1 GB pro virtuellem Kern |
-| Max. In-Memory-OLTP-Arbeitsspeicher | 3GB pro virtuellem Kern | 2,6GB pro virtuellem Kern |
+| V-Kerne | 8, 16, 24 virtuelle Kerne | 4, 8, 16, 24, 32, 40, 64, 80 virtuelle Kerne |
+| Arbeitsspeicher (Verhältnis Arbeitsspeicher/Kerne) | 7 GB pro V-Kern | 5,1 GB pro virtuellem Kern |
+| Max. In-Memory-OLTP-Arbeitsspeicher | Grenzwert für Instanzen: 3GB pro virtuellem Kern<br/>Grenzwerte für Datenbanken:<br/> – 8 Kerne: 8 GB pro Datenbank<br/> – 16 Kerne: 20 GB pro Datenbank<br/> – 24 Kerne: 36 GB pro Datenbank | Grenzwert für Instanzen: 2,5 GB pro virtuellem Kern<br/>Grenzwerte für Datenbanken:<br/> – 8 Kerne: 13 GB pro Datenbank<br/> – 16 Kerne: 32 GB pro Datenbank |
 | Max. Instanzspeichergröße (allgemeiner Zweck) |  8 TB | 8 TB |
 | Max. Instanzspeichergröße (unternehmenskritisch) | 1 TB | 1 TB, 2 TB oder 4 TB, je nach Anzahl der Kerne |
 
+> [!IMPORTANT]
+> Neue Gen4-Datenbanken werden in der Region „Australien, Osten“ nicht mehr unterstützt.
+
 ### <a name="service-tier-characteristics"></a>Merkmale des Diensttarifs
 
-Eine verwaltete Instanz verfügt über zwei Dienstebenen: „Universell“und „Unternehmenskritisch“. Diese Tarife bieten verschiedene Funktionen, die in der folgenden Tabelle beschrieben sind.
+Die verwaltete Instanz besitzt zwei Dienstebenen: „Universell“ und „Unternehmenskritisch“. Diese Tarife bieten verschiedene Funktionen, die in der folgenden Tabelle beschrieben sind.
 
 | **Feature** | **Allgemeiner Zweck** | **Unternehmenskritisch** |
 | --- | --- | --- |
-| Anzahl der virtuellen Kerne\* | Gen4: 8, 16, 24<br/>Gen5: 8, 16, 24, 32, 40, 64, 80 | Gen4: 8, 16, 24, 32 <br/> Gen5: 8, 16, 24, 32, 40, 64, 80 |
+| Anzahl der virtuellen Kerne\* | Gen4: 8, 16, 24<br/>Gen5: 4, 8, 16, 24, 32, 40, 64, 80 | Gen4: 8, 16, 24, 32 <br/> Gen5: 4, 8, 16, 24, 32, 40, 64, 80 |
 | Arbeitsspeicher | Gen4: 56GB – 168GB (7GB/V-Kern)<br/>Gen5: 40,8GB – 408GB (5,1GB/V-Kern) | Gen4: 56GB – 168GB (7GB/V-Kern)<br/>Gen5: 40,8GB – 408GB (5,1GB/V-Kern) |
-| Max. Instanzspeichergröße | 8 TB | Gen4: 1 TB <br/> Gen5: <br/>- 1 TB für 8, 16 virtuelle Kerne<br/>- 2 TB für 24 virtuelle Kerne<br/>- 4 TB für 32, 40, 64, 80 virtuelle Kerne |
+| Max. Instanzspeichergröße | – 2 TB für 4 virtuelle Kerne (nur Gen5)<br/>– 8 TB für andere Größen | Gen4: 1 TB <br/> Gen5: <br/>– 1 TB für 4, 8, 16 virtuelle Kerne<br/>- 2 TB für 24 virtuelle Kerne<br/>- 4 TB für 32, 40, 64, 80 virtuelle Kerne |
 | Max. Speicherkapazität pro Datenbank | Bestimmt durch die maximale Speichergröße pro Instanz | Bestimmt durch die maximale Speichergröße pro Instanz |
 | Max. Anzahl von Datenbanken pro Instanz | 100 | 100 |
 | Max. Datenbankdateien pro Instanz | Bis zu 280 | 32.767 Dateien pro Datenbank |
 | Daten-/Protokoll-IOPS (ungefähr) | 500 bis 7.500 pro Datei<br/>\*[Abhängig von der Dateigröße](https://docs.microsoft.com/azure/virtual-machines/windows/premium-storage-performance#premium-storage-disk-sizes)| 11K – 110K (1.375/V-Kern) |
 | Protokolldurchsatz | 3 MB/Sek. pro virtuellem Kern<br/>Max. 22 MB/Sek. pro Instanz | 4 MB/Sek. pro virtuellem Kern<br/>Max. 48 MB/Sek. pro Instanz|
-| Datendurchsatz (ungefähr) | 100 bis 250 MB/Sek. pro Datei<br/>\*[Abhängig von der Dateigröße](https://docs.microsoft.com/azure/virtual-machines/windows/premium-storage-performance#premium-storage-disk-sizes) | |
+| Datendurchsatz (ungefähr) | 100 bis 250 MB/Sek. pro Datei<br/>\*[Abhängig von der Dateigröße](https://docs.microsoft.com/azure/virtual-machines/windows/premium-storage-performance#premium-storage-disk-sizes) | – |
 | E/A-Wartezeit (ungefähr) | 5 – 10 ms | 1 – 2 ms |
 | Max. TempDB-Größe | 192 bis 1.920 GB (24 GB pro virtuellem Kern) | Keine Einschränkungen – beschränkt durch die maximale Instanzspeichergröße |
 | Max. Sitzungen | 30000 | 30000 |
 
-**Hinweise**:
-
-- Sowohl die Daten- als auch die Protokolldateigröße in den Benutzer- und Systemdatenbanken sind in der Instanzspeichergröße enthalten, die mit dem Grenzwert für die maximale Speichergröße verglichen wird. Ermitteln Sie mithilfe der Systemansicht <a href="https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-master-files-transact-sql">sys.master_files</a> den von Datenbanken verwendeten Gesamtspeicherplatz. Fehlerprotokolle werden nicht beibehalten und sind nicht in der Größe enthalten. Sicherungen sind nicht in der Speichergröße enthalten.
-- Durchsatz und IOPS hängen auch von der Seitengröße ab, die nicht explizit durch die verwaltete Instanz eingeschränkt wird.
+> [!NOTE]
+> - Sowohl die Daten- als auch die Protokolldateigröße in den Benutzer- und Systemdatenbanken sind in der Instanzspeichergröße enthalten, die mit dem Grenzwert für die maximale Speichergröße verglichen wird. Ermitteln Sie mithilfe der Systemansicht <a href="https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-master-files-transact-sql">sys.master_files</a> den von Datenbanken verwendeten Gesamtspeicherplatz. Fehlerprotokolle werden nicht beibehalten und sind nicht in der Größe enthalten. Sicherungen sind nicht in der Speichergröße enthalten.
+> - Durchsatz und IOPS hängen auch von der Seitengröße ab, die nicht explizit durch die verwaltete Instanz eingeschränkt wird.
 
 ## <a name="supported-regions"></a>Unterstützte Regionen
 
@@ -80,55 +82,33 @@ Für eine verwaltete Instanz wird derzeit nur die Bereitstellung bei folgenden A
 - [Clouddienstanbieter (CSP)](https://docs.microsoft.com/partner-center/csp-documents-and-learning-resources)
 - [Enterprise Dev/Test](https://azure.microsoft.com/offers/ms-azr-0148p/)
 - [Pay-As-You-Go Dev/Test](https://azure.microsoft.com/offers/ms-azr-0023p/)
-
-> [!NOTE]
-> Diese Einschränkung ist vorübergehend. Es werden in Zukunft neue Abonnementtypen bereitgestellt.
+- [Abonnements mit monatlicher Azure-Gutschrift für Visual Studio-Abonnenten](https://azure.microsoft.com/pricing/member-offers/credit-for-visual-studio-subscribers/)
 
 ## <a name="regional-resource-limitations"></a>Regionale Ressourcenbeschränkungen
 
 Unterstützte Abonnementtypen können eine begrenzte Anzahl von Ressourcen pro Region umfassen. Eine verwaltete Instanz weist zwei Standardbeschränkungen pro Azure-Region je nach Abonnementtyp auf:
 
 - **Subnetzlimit**: Die maximale Anzahl von Subnetzen bei Bereitstellung verwalteter Instanzen in einer einzelnen Region.
-- **Limit für die Anzahl der Instanzen**: Die maximale Anzahl von Instanzen, die in einer einzelnen Region bereitgestellt werden können.
+- **vCore Limit** (Limit für virtuelle Kerne): Die maximale Anzahl von virtuellen Kernen, die in einer einzelnen Region über alle Instanzen hinweg bereitgestellt werden können.
 
 > [!Note]
 > Diese Limits sind Standardeinstellungen und keine technischen Einschränkungen. Diese Limits können bei Bedarf erhöht werden, indem Sie eine spezielle [Supportanfrage im Azure-Portal](#obtaining-a-larger-quota-for-sql-managed-instance) erstellen, falls Sie mehr verwaltete Instanzen in der aktuellen Region benötigen. Alternativ können Sie auch neue verwaltete Instanzen in einer anderen Azure-Region erstellen, ohne Supportanfragen zu senden.
 
 In der folgenden Tabelle sind regionale Standardlimits für unterstützte Abonnements angegeben:
 
-|Abonnementtyp| Max. Anzahl von Subnetzen für verwaltete Instanzen | Max. Anzahl von Instanzen |Max. Anzahl von universellen verwalteten Instanzen*|Max. Anzahl von unternehmenskritischen verwalteten Instanzen*|
-| :---| :--- | :--- |:--- |:--- |
-|Nutzungsbasierte Bezahlung|1*|4*|4*|1*|
-|CSP |1*|4*|4*|1*|
-|Pay-as-you-go Dev/Test|1*|4*|4*|1*|
-|Enterprise Dev/Test|1*|4*|4*|1*|
-|EA|3**|12**|12**|3**|
+|Abonnementtyp| Max. Anzahl von Subnetzen für verwaltete Instanzen | Max number of vCore units* (Maximale Anzahl von virtuellen Kerneinheiten) |
+| :---| :--- | :--- |
+|Nutzungsbasierte Bezahlung|3|320|
+|CSP |8 (15 in manchen Regionen**)|960 (1440 in manchen Regionen**)|
+|Pay-as-you-go Dev/Test|3|320|
+|Enterprise Dev/Test|3|320|
+|EA|8 (15 in manchen Regionen**)|960 (1440 in manchen Regionen**)|
+|Visual Studio Enterprise|2 |64|
+|Visual Studio Professional und MSDN Platforms|2|32|
 
-\* Sie können entweder 1 unternehmenskritische oder 4 universelle Instanzen in einem Subnetz bereitstellen, sodass die Gesamtanzahl von „Instanzeinheiten“ im Subnetz niemals höher als 4 ist.
+\* Beachten Sie beim Planen Ihrer Bereitstellungen, dass ein unternehmenskritischer (BC) virtueller Kern (aufgrund zusätzlicher Redundanz) 4 x mehr Kapazität als ein universeller (GP) virtueller Kern verbraucht. Für Ihre Berechnungen also: 1 GP virtueller Kern = 1 virtuelle Kerneinheit, und 1 BC virtueller Kern = 4 virtuelle Kerneinheiten. Um die Nutzungsanalyse hinsichtlich der Standardgrenzwerte zu vereinfachen, fassen Sie die virtuellen Kerneinheiten für alle Subnetze in der Region zusammen, in der verwaltete Instanzen bereitgestellt werden, und vergleichen Sie die Ergebnisse mit den Grenzwerten für Instanzeinheiten Ihres Abonnementtyps. Der Grenzwert **Max number of vCore units** (Maximale Anzahl von virtuellen Kerneinheiten) gilt für jedes Abonnement in einer Region. Es gibt keinen Grenzwert pro individuellem Subnetz, außer dass die Summe aller in mehreren Subnetzen bereitgestellten virtuellen Kerne niedriger oder gleich der **maximalen Anzahl von virtuellen Kerneinheiten** sein muss.
 
-** Die maximale Anzahl von Instanzen in einer Dienstebene trifft dann zu, wenn keine Instanzen in einer anderen Dienstebene vorhanden sind. Falls Sie beabsichtigen, universelle und unternehmenskritische Instanzen im selben Subnetz zu kombinieren, verwenden Sie den folgenden Abschnitt als Referenz für zulässige Kombinationen. Als einfache Faustregel gilt: Die Gesamtanzahl von Subnetzen darf nicht höher als 3 und die Gesamtanzahl von Instanzeinheiten nicht höher als 12 sein.
-
-
-> [!IMPORTANT]
-> Beachten Sie beim Planen Ihrer Bereitstellungen, dass eine unternehmenskritische Instanz (aufgrund zusätzlicher Redundanz) im allgemeinen 4 x mehr Kapazität als eine universelle Instanz benötigt. Dies bedeutet für Ihre Berechnungen: 1 universelle Instanz = 1 Instanzeinheit und 1 unternehmenskritische Instanz = 4 Instanzeinheiten. Um die Nutzungsanalyse hinsichtlich der Standardgrenzwerte zu vereinfachen, fassen Sie die Instanzeinheiten für alle Subnetze in der Region zusammen, in der verwaltete Instanzen bereitgestellt werden, und vergleichen Sie die Ergebnisse mit den Grenzwerten für Instanzeinheiten Ihres Abonnementtyps.
-
-## <a name="strategies-for-deploying-mixed-general-purpose-and-business-critical-instances"></a>Strategien für die Bereitstellung einer Kombination aus universellen und unternehmenskritischen Instanzen
-
-Abonnements vom Typ [Enterprise Agreement (EA)](https://azure.microsoft.com/pricing/enterprise-agreement/) können Kombinationen aus universellen und unternehmenskritischen Instanzen umfassen. Es gibt jedoch einige Einschränkungen in Bezug auf die Platzierung der Instanzen im Subnetz.
-
-> [!Note]
-> Bei Abonnements vom Typ [Nutzungsbasierte Bezahlung](https://azure.microsoft.com/offers/ms-azr-0003p/) und [Clouddienstanbieter (CSP)](https://docs.microsoft.com/partner-center/csp-documents-and-learning-resources) können entweder eine unternehmenskritische oder bis zu vier universelle Instanzen vorhanden sein.
-
-Bei den folgenden Beispielen handelt es sich um Bereitstellungsfälle mit nicht leeren Subnetzen und einer Kombination der Dienstebenen „Universell“ und „Unternehmenskritisch“.
-
-|Anzahl von Subnetzen|Subnetz 1|Subnetz 2|Subnetz 3|
-|:---|:---|:---|:---|
-|1|1 universelle und bis zu 8 unternehmenskritische<br>2 universelle und bis zu 4 unternehmenskritische|–| –|
-|2|0 universelle, bis zu 4 unternehmenskritische|1 universelle, bis zu 4 unternehmenskritische<br>2 universelle, 0 unternehmenskritische|–|
-|2|1 universelle, 0 unternehmenskritische|0 universelle, bis zu 8 unternehmenskritische<br>1 universelle, bis zu 4 unternehmenskritische|–|
-|2|2 universelle, 0 unternehmenskritische|0 universelle, bis zu 4 unternehmenskritische|–|
-|3|1 universelle, 0 unternehmenskritische|1 universelle, 0 unternehmenskritische|0 universelle, bis zu 4 unternehmenskritische|
-|3|1 universelle, 0 unternehmenskritische|0 universelle, bis zu 4 unternehmenskritische|0 universelle, bis zu 4 unternehmenskritische|
+\*\* Höhere Grenzwerte für Subnetze und virtuelle Kerne sind in den folgenden Regionen verfügbar: „Australien, Osten“, „USA, Osten“, „USA, Osten 2“, „Europa, Norden“, „USA, Süden-Mitte“, „Asien, Südosten“, „Vereinigtes Königreich, Süden“, „Europa, Westen“, „USA, Westen 2“.
 
 ## <a name="obtaining-a-larger-quota-for-sql-managed-instance"></a>Abrufen eines größeren Kontingents für verwaltete SQL-Instanz
 
@@ -147,7 +127,7 @@ Leiten Sie den Prozess zum Abrufen eines größeren Kontingents auf folgende Wei
      ![Problemtyp „Kontingent“](media/sql-database-managed-instance-resource-limits/issue-type-quota.png)
 
 3. Klicken Sie auf **Weiter**.
-4. Führen Sie auf der Registerkarte „Problem“ für die neue Supportanfrage die folgenden Schritte aus:
+4. Führen Sie auf der Registerkarte **Problem** für die neue Supportanfrage die folgenden Schritte aus:
    - Wählen Sie unter **Schweregrad** den Schweregrad des Problems aus.
    - Geben Sie unter **Details** zusätzliche Informationen zu Ihrem Problem an, einschließlich Fehlermeldungen.
    - Fügen Sie unter **Dateiupload** eine Datei mit weiteren Informationen an (bis zu 4 MB).
@@ -156,9 +136,9 @@ Leiten Sie den Prozess zum Abrufen eines größeren Kontingents auf folgende Wei
 
      > [!IMPORTANT]
      > Eine gültige Anforderung sollte Folgendes enthalten:
-     > - Region, in der der Grenzwert für Abonnements erhöht werden muss
-     > - Erforderliche Anzahl von Instanzen pro Dienstebene in vorhandenen Subnetzen nach Erhöhung des Kontingents (wenn eines der vorhandenen Subnetze erweitert werden muss)
-     > - Erforderliche Anzahl neuer Subnetze und Gesamtanzahl der Instanzen pro Dienstebene in den neuen Subnetzen (wenn Sie verwaltete Instanzen in neuen Subnetzen bereitstellen müssen)
+     > - Region, in der der Grenzwert für Abonnements erhöht werden muss.
+     > - Erforderliche Anzahl von virtuellen Kernen pro Dienstebene in vorhandenen Subnetzen nach Erhöhung des Kontingents (wenn eines der vorhandenen Subnetze erweitert werden muss).
+     > - Erforderliche Anzahl neuer Subnetze und Gesamtanzahl der virtuellen Kerne pro Dienstebene in den neuen Subnetzen (wenn Sie verwaltete Instanzen in neuen Subnetzen bereitstellen müssen).
 
 5. Klicken Sie auf **Weiter**.
 6. Geben Sie auf der Registerkarte „Kontaktinformationen“ für die neue Supportanfrage Ihre bevorzugte Kontaktmethode (E-Mail oder Telefon) und die Kontaktdetails ein.

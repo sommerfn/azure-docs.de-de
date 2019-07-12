@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 04/29/2019
 ms.author: rolyon
 ms.custom: include file
-ms.openlocfilehash: 364d4a11772e6bb72e2e258503f3cce49dc61453
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.openlocfilehash: d791c4ba46587ac5709d72cb31bc76f087118b03
+ms.sourcegitcommit: f811238c0d732deb1f0892fe7a20a26c993bc4fc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67178786"
+ms.lasthandoff: 06/29/2019
+ms.locfileid: "67476249"
 ---
 ## <a name="create-one-or-more-access-reviews"></a>Erstellen einer oder mehrerer Zugriffsüberprüfungen
 
@@ -25,7 +25,7 @@ ms.locfileid: "67178786"
 
 1. Legen Sie das **Startdatum** fest. Standardmäßig findet eine Zugriffsüberprüfung einmalig statt. Sie beginnt an dem Tag, an dem sie erstellt wird, und endet nach einem Monat. Sie können Start- und Enddatum so ändern, dass der Start der Zugriffsüberprüfung in der Zukunft liegt und sie so lange dauert, wie Sie wünschen.
 
-    ![Erstellen einer Zugriffsüberprüfung – Start- und Enddatum](./media/active-directory-privileged-identity-management-access-reviews/start-end-dates.png)
+    ![Startdatum, Häufigkeit, Dauer, Ende, Anzahl und Enddatum](./media/active-directory-privileged-identity-management-access-reviews/start-end-dates.png)
 
 1. Wenn die Zugriffsüberprüfung wiederholt ausgeführt werden soll, ändern Sie die Einstellung **Häufigkeit** von **Einmal** in **Wöchentlich**, **Monatlich**,  **Vierteljährlich**, **Jährlich** oder **Halbjährlich**. Verwenden Sie den Schieberegler oder das Textfeld **Dauer**, um festzulegen, wie viele Tage Prüfer Eingaben für jede Überprüfung der Serie vornehmen können. Für eine monatliche Überprüfung kann beispielsweise eine maximale Dauer von 27 Tagen angegeben werden, um Überschneidungen zu vermeiden.
 
@@ -33,22 +33,22 @@ ms.locfileid: "67178786"
 
 1. Wählen Sie im Abschnitt **Benutzer** eine oder mehrere Rollen aus, deren Mitgliedschaft überprüft werden soll.
 
-    ![Erstellen einer Zugriffsüberprüfung: Benutzer](./media/active-directory-privileged-identity-management-access-reviews/users.png)
+    ![Benutzerbereich zum Überprüfen der Rollenmitgliedschaft](./media/active-directory-privileged-identity-management-access-reviews/users.png)
 
     > [!NOTE]
     > Bei der Auswahl mehrerer Rollen werden mehrere Zugriffsüberprüfungen erstellt. Bei der Auswahl von fünf Rollen werden z. B. fünf separate Zugriffsüberprüfungen erstellt.
 
     Wenn Sie eine Zugriffsüberprüfung für Azure AD-Rollen erstellen, sieht die Liste der zu überprüfenden Mitgliedschaften in etwa wie im folgenden Beispiel aus:
 
-    ![Erstellen einer Zugriffsüberprüfung: Überprüfen der Rollenmitgliedschaft](./media/active-directory-privileged-identity-management-access-reviews/review-membership.png)
+    ![Bereich „Mitgliedschaft überprüfen“ mit aufgeführten Azure AD-Rollen, die Sie auswählen können](./media/active-directory-privileged-identity-management-access-reviews/review-membership.png)
 
     Wenn Sie eine Zugriffsüberprüfung für Azure-Ressourcenrollen erstellen, sieht die Liste der zu überprüfenden Mitgliedschaften in etwa wie im folgenden Beispiel aus:
 
-    ![Erstellen einer Zugriffsüberprüfung: Überprüfen der Rollenmitgliedschaft](./media/active-directory-privileged-identity-management-access-reviews/review-membership-azure-resource-roles.png)
+    ![Bereich „Mitgliedschaft überprüfen“ mit aufgeführten Azure-Ressourcenrollen, die Sie auswählen können](./media/active-directory-privileged-identity-management-access-reviews/review-membership-azure-resource-roles.png)
 
 1. Wählen Sie im Abschnitt **Prüfer** mindestens eine Person für die Überprüfung aller Benutzer aus. Alternativ können Sie auswählen, dass die Mitglieder ihren eigenen Zugriff überprüfen.
 
-    ![Erstellen einer Zugriffsüberprüfung – Prüfer](./media/active-directory-privileged-identity-management-access-reviews/reviewers.png)
+    ![Liste der Prüfer mit ausgewählten Benutzer oder Mitgliedern (selbst)](./media/active-directory-privileged-identity-management-access-reviews/reviewers.png)
 
     - **Ausgewählte Benutzer**: Verwenden Sie diese Option, wenn Sie nicht wissen, wer Zugriff benötigt. Mit dieser Option können Sie die Überprüfungsdurchführung einem Ressourcenbesitzer oder Gruppen-Manager zuweisen.
     - **Mitglieder (selbst)** : Mit dieser Option können Benutzer ihre Rollenzuweisungen selbst überprüfen.
@@ -57,7 +57,7 @@ ms.locfileid: "67178786"
 
 1. Erweitern Sie den Abschnitt **Einstellungen nach Abschluss**, um anzugeben, was nach Abschluss der Überprüfung geschehen soll.
 
-    ![Einstellungen nach Abschluss](./media/active-directory-privileged-identity-management-access-reviews/upon-completion-settings.png)
+    ![Automatisch anzuwendende „Einstellungen nach Abschluss“, und falls die Überprüfung nicht reagieren sollte](./media/active-directory-privileged-identity-management-access-reviews/upon-completion-settings.png)
 
 1. Soll abgelehnten Benutzern automatisch der Zugriff entzogen werden, legen Sie **Ergebnisse automatisch auf Ressource anwenden** auf **Aktivieren** fest. Falls Sie die Ergebnisse nach Abschluss der Überprüfung manuell anwenden möchten, legen Sie die Einstellung auf **Deaktivieren** fest.
 
@@ -72,7 +72,7 @@ ms.locfileid: "67178786"
 
 1. Erweitern Sie den Abschnitt **Erweiterte Einstellungen**, um weitere Einstellungen anzugeben.
 
-    ![Erweiterte Einstellungen](./media/active-directory-privileged-identity-management-access-reviews/advanced-settings.png)
+    ![„Erweiterte Einstellungen“ für „Empfehlungen anzeigen“, „Bei Genehmigung Grund anfordern“, E-Mail-Benachrichtigungen und Erinnerungen](./media/active-directory-privileged-identity-management-access-reviews/advanced-settings.png)
 
 1. Legen Sie **Empfehlungen anzeigen** auf **Aktivieren** fest, damit den Prüfern die Systemempfehlungen auf der Grundlage der Zugriffsinformationen des Benutzers angezeigt werden.
 

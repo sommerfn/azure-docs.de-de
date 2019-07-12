@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: conceptual
-ms.date: 02/13/2019
+ms.date: 06/18/2019
 ms.author: aahi
-ms.openlocfilehash: 69c14c6b98b572bc413f5a35696269e13344387e
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 5e4f231db781b96fe204802555b56238b9e27e52
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66417310"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67442664"
 ---
 # <a name="language-and-region-support-for-the-text-analytics-api"></a>Sprach- und Regionsunterstützung für die Textanalyse-API
 
@@ -31,7 +31,14 @@ Bei Inhalten in einer seltener verwendeten Sprache können Sie die Sprachenerken
 
 ## <a name="sentiment-analysis-key-phrase-extraction-and-named-entity-recognition"></a>Standpunktanalyse, Schlüsselbegriffserkennung und Erkennung der benannten Entität.
 
-Für die Standpunktanalyse, Schlüsselbegriffserkennung und Entitätserkennung ist die Liste der unterstützten Sprachen selektiver, da die Analysetools auf die sprachlichen Regeln zusätzlicher Sprachen ausgelegt sind.
+Für die Standpunktanalyse, Schlüsselbegriffserkennung und Entitätserkennung ist die Liste der unterstützten Sprachen selektiver, da die Analysetools auf die sprachlichen Regeln zusätzlicher Sprachen ausgelegt sind. Die Unterstützung des vollständigen Satzes von [Entitätstypen](how-tos/text-analytics-how-to-entity-linking.md#supported-types-for-named-entity-recognition) ist derzeit auf die folgenden Sprachen begrenzt: 
+* Englisch
+* Chinesisch (vereinfacht)
+* Französisch
+* Deutsch
+* Spanisch
+
+Nur die als `Person`, `Location` und `Organization` benannten Entitäten werden für die anderen Sprachen zurückgegeben.
 
 ## <a name="language-list-and-status"></a>Liste und Status der Sprachen
 
@@ -58,13 +65,13 @@ Die Sprachunterstützung wird in der Vorschauversion eingeführt und soll allmä
 | Portugiesisch (Portugal) | `pt-PT`| ✔        |  ✔          | ✔ \*      |`pt` wird ebenfalls akzeptiert.|
 | Portugiesisch (Brasilien)   | `pt-BR`|          |  ✔   |  ✔ \*       |     |
 | Russisch     | `ru`          | ✔ \*     | ✔           |  ✔ \*           |     |
-| Spanisch     | `es`          | ✔        |            |   ✔ \*\*      |     | 
+| Spanisch     | `es`          | ✔        | ✔           |   ✔ \*\*      |     | 
 | Schwedisch     | `sv`          | ✔ \*     | ✔           |   ✔ \*          |     |
 | Türkisch     | `tr`          | ✔ \*     |             |   ✔ \*          |  |
 
 \* Die Sprachunterstützung befindet sich in der Vorschauversion.
 
-\*\* Die Erkennung der bekannten Entität und die [Entitätsverknüpfung](how-tos/text-analytics-how-to-entity-linking.md) sind jeweils für diese Sprache verfügbar.    
+\*\*Die [Erkennung der bekannten Entität](how-tos/text-analytics-how-to-entity-linking.md#named-entity-recognition-ner) und die [Entitätsverknüpfung](how-tos/text-analytics-how-to-entity-linking.md#entity-linking) sind jeweils für diese Sprache verfügbar.    
 
 ## <a name="see-also"></a>Weitere Informationen
 

@@ -2,48 +2,42 @@
 title: include file
 description: include file
 services: functions
-author: craigshoemaker
+author: ggailey777
 ms.service: functions
 ms.topic: include
-ms.date: 09/25/2018
-ms.author: cshoe
+ms.date: 05/25/2019
+ms.author: glenga
 ms.custom: include file
-ms.openlocfilehash: fc5b43dcdee394fea023124171fb42c1a18224dc
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.openlocfilehash: d62da82b4a4dd35532dd8776a9111689db469201
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67177857"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67448365"
 ---
-Erweiterungsbündel machen alle Bindungen, die vom Azure Functions-Team veröffentlicht wurden, durch eine Einstellung in der Datei *host.json* verfügbar. Stellen Sie für die lokale Entwicklung sicher, dass Sie über die neueste Version der [Azure Functions Core Tools](../articles/azure-functions/functions-run-local.md#install-the-azure-functions-core-tools) verfügen.
+## <a name="register-extensions"></a>Registrieren von Erweiterungen
 
-Um die Erweiterungsbündel zu verwenden, aktualisieren Sie die Datei *host.json* so, dass sie den folgenden Eintrag für `extensionBundle` enthält:
+Mit Ausnahme von HTTP- und Zeitauslösern werden Functions-Bindungen in der Laufzeitversion 2.x als Erweiterungspakete implementiert. In Version 2.x der Azure Functions Runtime müssen Sie die in Ihren Funktionen für die Bindungstypen verwendeten Erweiterungen explizit registrieren. Die Ausnahmen hierbei sind HTTP-Bindungen und Zeitauslöser, die keine Erweiterungen erfordern.
 
-```json
-{
-    "version": "2.0",
-    "extensionBundle": {
-        "id": "Microsoft.Azure.Functions.ExtensionBundle",
-        "version": "[1.*, 2.0.0)"
-    }
-}
+Sie können auch Bindungserweiterungen einzeln installieren, oder Sie können einen Erweiterungsbündelverweis in der Datei „host.json“ hinzufügen. Erweiterungsbündel wirken eventuellen Kompatibilitätsproblemen bei Paketen entgegen, wenn mehrere Bindungstypen verwendet werden. Es handelt sich hierbei um den empfohlenen Ansatz zum Registrieren von Bindungserweiterungen. Erweiterungsbündel beseitigen außerdem die Notwendigkeit der Installation des .NET Core 2.x SDK. 
+
+### <a name="extension-bundles"></a>Erweiterungsbündel
+
+[!INCLUDE [Register extensions](functions-extension-bundles.md)]
+
+Weitere Informationen finden Sie unter [Registrieren von Bindungserweiterungen von Azure Functions](../articles/azure-functions/functions-bindings-register.md#extension-bundles). Sie sollten Erweiterungsbündel in de Datei „host.json“ hinzufügen, bevor Sie der Datei „functions.json“ Bindungen hinzufügen.
+
+### <a name="register-individual-extensions"></a>Registrieren einzelner Erweiterungen
+
+Wenn Sie Erweiterungen installieren müssen, die nicht in einem Bündel enthalten sind, können Sie einzelne Erweiterungspakete für bestimmte Bindungen manuell registrieren. 
+
+> [!NOTE]
+> Um Erweiterungen mithilfe von `func extensions install` manuell zu registrieren, müssen Sie das .NET Core 2.x SDK installiert haben.
+
+Nachdem Sie Ihre Datei *function.json* aktualisiert haben, sodass sie alle von der Funktion benötigten Bindungen einschließt, führen Sie den folgenden Befehl im Projektordner aus.
+
+```bash
+func extensions install
 ```
 
-- Die `id`-Eigenschaft verweist auf den Namespace für Microsoft Azure Functions-Erweiterungsbündel.
-- Die `version` verweist auf die Version des Pakets.
-
-Bündelversionen werden erhöht, wenn sich Pakete im Bündel ändern. Hauptversionsänderungen erfolgen nur, wenn sich Pakete im Bündel um eine Hauptversion ändern. Die `version`-Eigenschaft verwendet die [Intervallnotation, um Versionsbereiche anzugeben](https://docs.microsoft.com/nuget/reference/package-versioning#version-ranges-and-wildcards). Die Functions Runtime wählt immer die zulässige Höchstversion aus, die durch den Versionsbereich oder das Intervall definiert ist.
-
-Wenn Sie in Ihrem Projekt auf die Erweiterungsbündel verweisen, stehen Ihren Funktionen alle Standardbindungen zur Verfügung. Folgende Bindungen sind im [Erweiterungsbündel](https://github.com/Azure/azure-functions-extension-bundles/blob/master/src/Microsoft.Azure.Functions.ExtensionBundle/extensions.json) verfügbar:
-
-|Paket  |Version  |
-|---------|---------|
-|Microsoft.Azure.WebJobs.Extensions.CosmosDB|3.0.3|
-|Microsoft.Azure.WebJobs.Extensions.DurableTask|1.8.0|
-|Microsoft.Azure.WebJobs.Extensions.EventGrid|2.0.0|
-|Microsoft.Azure.WebJobs.Extensions.EventHubs|3.0.3|
-|Microsoft.Azure.WebJobs.Extensions.SendGrid|3.0.0|
-|Microsoft.Azure.WebJobs.Extensions.ServiceBus|3.0.3|
-|Microsoft.Azure.WebJobs.Extensions.SignalRService|1.0.0|
-|Microsoft.Azure.WebJobs.Extensions.Storage|3.0.4|
-|Microsoft.Azure.WebJobs.Extensions.Twilio|3.0.0|
+Der Befehl liest die Datei *function.json*, um zu ermitteln, welche Pakete Sie benötigen, installiert diese und erzeugt das Erweiterungenprojekt neu. Er fügt alle neuen Bindungen an die aktuelle Version hinzu, aktualisiert aber keine vorhandenen Bindungen. Verwenden Sie die Option `--force`, um vorhandene Bindungen beim Installieren neuer auf die neueste Version zu aktualisieren.

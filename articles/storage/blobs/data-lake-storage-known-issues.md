@@ -8,12 +8,12 @@ ms.service: storage
 ms.topic: conceptual
 ms.date: 04/26/2019
 ms.author: normesta
-ms.openlocfilehash: 27adc0eeeabed2b1f2e86f301a60604a3d358b82
-ms.sourcegitcommit: e6d53649bfb37d01335b6bcfb9de88ac50af23bd
+ms.openlocfilehash: daf9199104047f714d568bd2796490b836243952
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/09/2019
-ms.locfileid: "65464724"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67443230"
 ---
 # <a name="known-issues-with-azure-data-lake-storage-gen2"></a>Bekannte Probleme mit Azure Data Lake Storage Gen2
 
@@ -23,7 +23,7 @@ In diesem Artikel werden die Funktionen und Tools aufgelistet, die noch nicht od
 
 ## <a name="blob-storage-apis"></a>Blob Storage-APIs
 
-Blob Storage-APIs sind deaktiviert, um unbeabsichtigte Probleme beim Datenzugriff zu vermeiden, die durch die fehlende Interoperabilität zwischen Blob Storage-APIs und Azure Data Lake Storage Gen2-APIs entstehen können.
+Blob Storage-APIs sind deaktiviert, um Probleme bei der Funktionsfähigkeit von Features zu vermeiden, die durch die fehlende Interoperabilität zwischen Blob Storage-APIs und Azure Data Lake Storage Gen2-APIs entstehen können.
 
 ### <a name="what-to-do-with-existing-tools-applications-and-services"></a>Vorgehensweise bei vorhandenen Tools, Anwendungen und Diensten
 
@@ -57,7 +57,6 @@ In der folgenden Tabelle werden die Funktionen und Tools aufgelistet, die noch n
 | **AzCopy** | Versionsspezifische Unterstützung <br><br>Verwenden Sie nur die neueste Version von AzCopy ([AzCopy v10](https://docs.microsoft.com/azure/storage/common/storage-use-azcopy-v10?toc=%2fazure%2fstorage%2ftables%2ftoc.json)). Frühere Versionen von AzCopy wie z. B. AzCopy v8.1 werden nicht unterstützt.|
 | **Richtlinien für die Azure Blob Storage-Lebenszyklusverwaltung** | Noch nicht unterstützt |
 | **Azure Content Delivery Network (CDN)** | Noch nicht unterstützt|
-| **Azure Event Grid** | Noch nicht unterstützt |
 | **Azure Search** |Noch nicht unterstützt|
 | **Azure Storage-Explorer** | Versionsspezifische Unterstützung <br><br>Verwenden Sie nur Version `1.6.0` oder höher. <br>Version `1.6.0` steht zum [kostenlosen Download](https://azure.microsoft.com/features/storage-explorer/) zur Verfügung.|
 | **Blobcontainer-ACLs** |Noch nicht unterstützt|

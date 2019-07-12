@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 05/02/2019
 ms.author: luisca
 ms.custom: seodec2018
-ms.openlocfilehash: ca9b3607041f75b1c866aa2813308312ad5d1017
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 8bea47467d141869b1a668668bc57451a882a54b
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65023748"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67448455"
 ---
 #  <a name="how-to-process-and-extract-information-from-images-in-cognitive-search-scenarios"></a>Verarbeiten und Extrahieren von Text aus Bildern in kognitiven Suchszenarien
 
@@ -30,7 +30,7 @@ Dieser Artikel geht etwas ausführlicher auf die Bildverarbeitung ein und bietet
 
 Im Rahmen der Dokumentaufschlüsselung steht ein neuer Satz von Indexerkonfigurationsparametern für die Behandlung von Bilddateien oder von Bildern zur Verfügung, die in Dateien eingebettet sind. Diese Parameter dienen zur Normalisierung von Bildern für die Weiterverarbeitung. Die Normalisierung dient zur Generierung einheitlicherer Bilder. Große Bilder werden auf eine maximale Höhe und Breite festgelegt, um sie nutzbar zu machen. Bei Bildern mit Metadaten zur Ausrichtung wird die Drehung angepasst, um vertikales Laden zu ermöglichen. Metadatenanpassungen werden in einem komplexen Typ erfasst, der für jedes Bild erstellt wird. 
 
-Die Bildnormalisierung kann nicht deaktiviert werden. Qualifikationen, die Bilder durchlaufen, erwarten normalisierte Bilder.
+Die Bildnormalisierung kann nicht deaktiviert werden. Qualifikationen, die Bilder durchlaufen, erwarten normalisierte Bilder. Das Aktivieren der Imagenormalisierung für einen Indexer erfordert, dass diesem Indexer ein Skillset angefügt wird.
 
 | Konfigurationsparameter | BESCHREIBUNG |
 |--------------------|-------------|

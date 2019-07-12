@@ -8,17 +8,48 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 05/13/2019
+ms.date: 06/26/2019
 ms.author: wolfma
 ms.custom: seodec18
-ms.openlocfilehash: f22b0fcac6099482addfcf56a20e0e828866326e
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 609443a4926fabd991846faee4a0a7dffe3a696b
+ms.sourcegitcommit: ac1cfe497341429cf62eb934e87f3b5f3c79948e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65606348"
+ms.lasthandoff: 07/01/2019
+ms.locfileid: "67490180"
 ---
 # <a name="release-notes"></a>Versionshinweise
+
+## <a name="speech-sdk-160-2019-june-release"></a>Speech SDK 1.6.0: Release von Juni 2019
+
+**Beispiele**
+*   Schnellstartbeispiele für Sprachsynthese auf UWP und Unity
+*   Schnellstartbeispiel für Swift unter iOS
+*   Unity-Beispiele für Sprach- und Absichtserkennung sowie Übersetzung
+*   Aktualisierte Schnellstartbeispiele für DialogServiceConnector
+
+**Verbesserungen/Änderungen**
+* Dialog „Namespace“:
+    * SpeechBotConnector wurde in DialogServiceConnector umbenannt.
+    * BotConfig wurde in DialogServiceConfig umbenannt.
+    * BotConfig::FromChannelSecret() wurde zu DialogServiceConfig::FromBotSecret() neu zugeordnet.
+    * Alle vorhandenen Direct Line Speech-Clients werden nach der Umbenennung weiterhin unterstützt.
+* Aktualisierung des TTS-REST-Adapter zur Unterstützung von Proxys, dauerhafte Verbindung
+* Verbesserung von Fehlermeldungen, wenn eine ungültige Region übergeben wird.
+* Swift/Objective-C:
+    * Verbesserte Fehlerberichterstellung: Methoden, die zu einem Fehler führen können, sind jetzt in zwei Versionen vorhanden: Eine, die ein `NSError`-Objekt für die Fehlerbehandlung bereitstellt, und eine, das eine Ausnahme auslöst. Das erste wird für Swift verfügbar gemacht. Diese Änderung erfordert Anpassungen an vorhandenem Swift-Code.
+    * Verbesserte Behandlung von Ereignissen
+
+**Fehlerbehebungen**
+*   Korrektur für TTS: hierbei führte SpeakTextAsync die Rückgabe aus, ohne darauf zu warten, bis das Audiorendering abgeschlossen war.
+*   Korrektur für das Marshalling von Zeichenfolgen in C#, um vollständige Sprachunterstützung zu ermöglichen.
+*   Korrektur für ein .NET Core-App-Problem beim Laden der Core-Bibliothek mit dem Zielframework net461 in Beispielen.
+*   Korrektur für gelegentlich Probleme beim Bereitstellen nativer Bibliotheken im Ausgabeordner in Beispielen.
+*   Korrektur für das zuverlässige Schließen von WebSockets.
+*   Korrektur für mögliche Abstürze beim Öffnen einer Verbindung bei sehr hoher Auslastung unter Linux.
+*   Korrektur für fehlende Metadaten im Frameworkbündel für macOS.
+*   Korrektur für Probleme mit `pip install --user` unter Windows.
+
 
 ## <a name="speech-sdk-151"></a>Speech SDK 1.5.1
 

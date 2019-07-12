@@ -16,12 +16,12 @@ ms.date: 06/13/2018
 ms.author: rogarana
 ms.custom: H1Hack27Feb2017
 ms.subservice: disks
-ms.openlocfilehash: 6f4bd125847aa789f6f3ed06e808b40738e12260
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 1c8d4d2b26b356c524523d73d53fd641eef5f3cb
+ms.sourcegitcommit: c63e5031aed4992d5adf45639addcef07c166224
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66304106"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67465840"
 ---
 # <a name="add-a-disk-to-a-linux-vm"></a>Hinzufügen eines Datenträgers zu einem virtuellen Linux-Computer
 In diesem Artikel wird gezeigt, wie Sie einen persistenten Datenträger an Ihren virtuellen Computer anfügen, um Ihre Daten beizubehalten, auch wenn der virtuelle Computer aufgrund einer Wartung oder Größenänderung neu bereitgestellt wird.
@@ -73,6 +73,9 @@ Die Ausgabe sieht in etwa wie das folgende Beispiel aus:
 [    8.079653] sd 3:0:1:0: [sdb] Attached SCSI disk
 [ 1828.162306] sd 5:0:0:0: [sdc] Attached SCSI disk
 ```
+
+> [!NOTE]
+> Es wird empfohlen, dass Sie die neuesten Versionen von „fdisk“ oder „parted“ verwenden, die für Ihre Distribution verfügbar sind.
 
 Hier ist *sdc* der Datenträger, den wir möchten. Partitionieren Sie den Datenträger mit `parted`. Wenn der Datenträger 2 TiB (Tebibytes) oder größer ist, müssen Sie die GPT-Partitionierung verwenden, wenn er kleiner als 2 TiB ist, können Sie entweder MBR- oder GPT-Partitionierung verwenden. Bei Verwendung der MBR-Partitionierung können Sie `fdisk` verwenden. Legen Sie ihn auf Partition 1 als primären Datenträger fest, und übernehmen Sie die anderen Standardwerte. Das folgende Beispiel startet den `fdisk` -Prozess auf */dev/sdc*:
 

@@ -13,15 +13,15 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 04/25/2019
+ms.date: 06/27/2019
 ms.author: cynthn
 ms.custom: ''
-ms.openlocfilehash: 1b760612d8d9a5ed0817ce662ed190f3477cd125
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: e5518d019800d2d194369225a060b9b728e21520
+ms.sourcegitcommit: c63e5031aed4992d5adf45639addcef07c166224
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65235851"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67465452"
 ---
 # <a name="create-a-shared-image-gallery-using-the-azure-portal"></a>Erstellen eines Katalogs mit freigegebenen Images über das Azure-Portal
 
@@ -53,6 +53,10 @@ Ersetzen Sie beim Durcharbeiten dieses Artikels bei Bedarf den Namen der Ressour
 ## <a name="create-vms-from-an-image"></a>Erstellen von VMs aus Images
 
 Wenn die Imageversion vollständig ist, können Sie neue VMs erstellen. 
+
+> [!IMPORTANT]
+> Sie können das Portal nicht verwenden, um einen virtuellen Computer aus einem Image in einem anderen Azure-Mandanten bereitzustellen. Zum Erstellen eines virtuellen Computers aus einem von Mandanten gemeinsam verwendeten Image müssen Sie die [Azure CLI](shared-images.md#create-a-vm) oder [PowerShell](../windows/shared-images.md#create-vms-from-an-image) verwenden.
+
 
 Dieses Beispiel erstellt den virtuellen Computer *myVMfromImage* in *myResourceGroup* im Rechenzentrum *USA, Osten*.
 
