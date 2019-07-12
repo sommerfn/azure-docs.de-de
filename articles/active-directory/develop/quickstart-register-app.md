@@ -17,12 +17,12 @@ ms.author: ryanwi
 ms.custom: aaddev
 ms.reviewer: aragra, lenalepa, sureshja
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9ec1d5fb13d7fb191bfee6194e69a217bcaddbb9
-ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
+ms.openlocfilehash: 541253cf3a8f2628ea0e76f1115ddc4a290daf62
+ms.sourcegitcommit: cf438e4b4e351b64fd0320bf17cc02489e61406a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/01/2019
-ms.locfileid: "67482569"
+ms.lasthandoff: 07/08/2019
+ms.locfileid: "67655482"
 ---
 # <a name="quickstart-register-an-application-with-the-microsoft-identity-platform"></a>Schnellstart: Registrieren einer Anwendung bei Microsoft Identity Platform
 
@@ -50,7 +50,7 @@ In dieser Schnellstartanleitung erfahren Sie, wie Sie eine Anwendung im Azure-Po
        - Geben Sie für Webanwendungen die Basis-URL Ihrer App an. `http://localhost:31544` kann beispielsweise die URL für eine Web-App sein, die auf einem lokalen Computer ausgeführt wird. Benutzer können diese URL nutzen, um sich an einer Webclientanwendung anzumelden.
        - Geben Sie für öffentliche Clientanwendungen den URI an, der von Azure AD zum Zurückgeben von Tokenantworten verwendet wird. Geben Sie einen für Ihre Anwendung spezifischen Wert ein (beispielsweise `myapp://auth`).
 
-     Spezifische Beispiele für Webanwendungen oder native Anwendungen finden Sie in unseren [Schnellstartanleitungen](https://docs.microsoft.com/azure/active-directory/develop/#quickstarts).
+     Spezifische Beispiele für Webanwendungen oder native Anwendungen finden Sie in unseren [Schnellstartanleitungen](https://docs.microsoft.com/azure/active-directory/develop).
 
 1. Wenn Sie so weit sind, klicken Sie auf **Registrieren**.
 
@@ -67,6 +67,6 @@ Azure AD weist Ihrer App eine eindeutige Anwendungs-ID (Client) zu und leitet Si
     - [Konfigurieren einer Clientanwendung für den Zugriff auf Web-APIs](quickstart-configure-app-access-web-apis.md)
     - [Konfigurieren einer Anwendung für das Verfügbarmachen von Web-APIs](quickstart-configure-app-expose-web-apis.md)
     - [Ändern der von einer Anwendung unterstützten Konten](quickstart-modify-supported-accounts.md)
-- Nutzen Sie eine [Schnellstartanleitung](https://docs.microsoft.com/azure/active-directory/develop/#quickstarts), um in kurzer Zeit eine App zu erstellen und Funktionen hinzuzufügen – etwa zum Abrufen von Token, Aktualisieren von Token, Anmelden eines Benutzers oder Anzeigen von Benutzerinformationen.
+- Nutzen Sie eine [Schnellstartanleitung](https://docs.microsoft.com/azure/active-directory/develop), um in kurzer Zeit eine App zu erstellen und Funktionen hinzuzufügen – etwa zum Abrufen von Token, Aktualisieren von Token, Anmelden eines Benutzers oder Anzeigen von Benutzerinformationen.
 - Um mehr über die beiden Azure AD-Objekte, die eine registrierte Anwendung darstellen, und die Beziehung zwischen ihnen zu erfahren, lesen Sie [Anwendungsobjekte und Dienstprinzipalobjekte](app-objects-and-service-principals.md).
 - Weitere Informationen zu den Brandingrichtlinien, die Sie bei der App-Entwicklung verwenden sollten, finden Sie unter [Brandingrichtlinien für Anwendungen](howto-add-branding-in-azure-ad-apps.md).
