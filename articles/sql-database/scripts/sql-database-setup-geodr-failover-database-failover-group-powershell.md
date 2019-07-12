@@ -1,6 +1,6 @@
 ---
-title: PowerShell-Beispiel – Failovergruppe bei der Georeplikation – einzelne Azure SQL-Datenbank | Microsoft-Dokumentation
-description: Azure PowerShell-Beispielskript zum Einrichten einer Failovergruppe für die aktive Georeplikation für eine Einzeldatenbank in Azure SQL-Datenbank und Ausführen eines Failovers.
+title: 'PowerShell-Beispiel: aktive Georeplikation – Einzeldatenbank in Azure SQL-Datenbank | Microsoft-Dokumentation'
+description: Azure PowerShell-Beispielskript zum Einrichten der aktiven Georeplikation für eine Einzeldatenbank in Azure SQL-Datenbank und Ausführen eines Failovers.
 services: sql-database
 ms.service: sql-database
 ms.subservice: high-availability
@@ -12,14 +12,14 @@ ms.author: mathoma
 ms.reviewer: carlrab
 manager: craigg
 ms.date: 03/12/2019
-ms.openlocfilehash: a90753d075f7f4db9dbae95fde979d471db3247c
-ms.sourcegitcommit: 1aefdf876c95bf6c07b12eb8c5fab98e92948000
+ms.openlocfilehash: 1733e117c2a5b0d58e37c3f5af451f949bd253f9
+ms.sourcegitcommit: d3b1f89edceb9bff1870f562bc2c2fd52636fc21
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/06/2019
-ms.locfileid: "66729191"
+ms.lasthandoff: 07/04/2019
+ms.locfileid: "67561484"
 ---
-# <a name="use-powershell-to-configure-an-active-geo-replication-failover-group-for-a-single-database-in-azure-sql-database"></a>Verwenden von PowerShell zum Konfigurieren einer Failovergruppe für die aktive Georeplikation für eine Einzeldatenbank in Azure SQL-Datenbank
+# <a name="use-powershell-to-configure-active-geo-replication-for-a-single-database-in-azure-sql-database"></a>Verwenden von PowerShell zum Konfigurieren der aktiven Georeplikation für eine Einzeldatenbank in Azure SQL-Datenbank
 
 Dieses PowerShell-Beispielskript konfiguriert eine Failovergruppe für die aktive Georeplikation für eine Einzeldatenbank und führt ein Failover zu einem sekundären Replikat der Datenbank aus.
 

@@ -12,12 +12,12 @@ ms.author: joke
 ms.reviwer: sstein
 manager: craigg
 ms.date: 03/13/2019
-ms.openlocfilehash: eb5066185f9301450a68276dd4b2ce2123231b34
-ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
+ms.openlocfilehash: 53e10636535c553ac5fa17b5f4aac1000cd138bc
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58666785"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67445385"
 ---
 # <a name="create-an-elastic-job-agent-using-powershell"></a>Erstellen eines Agents für elastische Aufträge mithilfe von PowerShell
 
@@ -285,6 +285,23 @@ $JobExecution | Get-AzSqlElasticJobStepExecution
 # Get the job target execution details
 $JobExecution | Get-AzSqlElasticJobTargetExecution -Count 2
 ```
+
+### <a name="job-execution-states"></a>Auftragsausführungsstatus
+
+In der folgenden Tabelle werden die möglichen Auftragsausführungsstatus aufgeführt:
+
+|Zustand|BESCHREIBUNG|
+|:---|:---|
+|**Erstellt** | Die Ausführung des Auftrags wurde gerade erstellt und wird noch nicht durchgeführt.|
+|**InProgress** | Der Auftrag wird zurzeit ausgeführt.|
+|**WaitingForRetry** | Die Aktion der Auftragsausführung konnte nicht abgeschlossen werden, und es wird auf einen erneuten Versuch gewartet.|
+|**Erfolgreich** | Der Auftrag wurde erfolgreich ausgeführt.|
+|**SucceededWithSkipped** | Der Auftrag wurde erfolgreich ausgeführt, aber einige seiner untergeordneten Schritte wurden übersprungen.|
+|**Fehler** | Bei der Ausführung des Auftrags sind Fehler aufgetreten und die Anzahl der möglichen Wiederholungsversuche ist ausgeschöpft.|
+|**TimedOut** | Für die Ausführung des Auftrags ist ein Timeout in Kraft getreten.|
+|**Canceled** | Die Ausführung des Auftrags wurde abgebrochen.|
+|**Übersprungen** | Die Auftragsausführung wurde übersprungen, weil eine andere Ausführung des gleichen Auftragsschritts bereits auf dem gleichen Ziel durchgeführt wurde.|
+|**WaitingForChildJobExecutions** | Die Ausführung des Auftrags wartet auf den Abschluss untergeordneter Schritte.|
 
 ## <a name="schedule-the-job-to-run-later"></a>Planen einer späteren Auftragsausführung
 

@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 12/17/2018
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 31df4cb9163e598bfde0c491d8088398c3204119
-ms.sourcegitcommit: 6f043a4da4454d5cb673377bb6c4ddd0ed30672d
+ms.openlocfilehash: e72ec4f9c512f6525f790d555794c1a120ac07c9
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/08/2019
-ms.locfileid: "65407993"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67093425"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-qlik-sense-enterprise"></a>Tutorial: Azure Active Directory-Integration mit Qlik Sense Enterprise
 
@@ -76,12 +76,12 @@ Damit einmaliges Anmelden funktioniert, muss eine Linkbeziehung zwischen einem A
 
 Zum Konfigurieren und Testen des einmaligen Anmeldens in Azure AD bei Qlik Sense Enterprise müssen Sie die folgenden Bausteine ausführen:
 
-1. **[Konfigurieren des einmaligen Anmeldens von Azure AD](#configure-azure-ad-single-sign-on)**, um Ihren Benutzern das Verwenden dieses Features zu ermöglichen.
-2. **[Konfigurieren des einmaligen Anmeldens für Qlik Sense Enterprise](#configure-qlik-sense-enterprise-single-sign-on)**, um die Einstellungen für einmaliges Anmelden auf der Anwendungsseite zu konfigurieren
-3. **[Erstellen eines Azure AD-Testbenutzers](#create-an-azure-ad-test-user)**, um das einmalige Anmelden mit Azure AD mit dem Testbenutzer Britta Simon zu testen.
-4. **[Zuweisen des Azure AD-Testbenutzers](#assign-the-azure-ad-test-user)**, um Britta Simon für das einmalige Anmelden von Azure AD zu aktivieren.
-5. **[Erstellen eines Qlik Sense Enterprise-Testbenutzers](#create-qlik-sense-enterprise-test-user)**, um eine Entsprechung von Britta Simon in Qlik Sense Enterprise zu erhalten, die mit ihrer Darstellung in Azure AD verknüpft ist
-6. **[Testen der einmaligen Anmeldung](#test-single-sign-on)**, um zu überprüfen, ob die Konfiguration funktioniert.
+1. **[Konfigurieren des einmaligen Anmeldens von Azure AD](#configure-azure-ad-single-sign-on)** , um Ihren Benutzern das Verwenden dieses Features zu ermöglichen.
+2. **[Konfigurieren des einmaligen Anmeldens für Qlik Sense Enterprise](#configure-qlik-sense-enterprise-single-sign-on)** , um die Einstellungen für einmaliges Anmelden auf der Anwendungsseite zu konfigurieren
+3. **[Erstellen eines Azure AD-Testbenutzers](#create-an-azure-ad-test-user)** , um das einmalige Anmelden mit Azure AD mit dem Testbenutzer Britta Simon zu testen.
+4. **[Zuweisen des Azure AD-Testbenutzers](#assign-the-azure-ad-test-user)** , um Britta Simon für das einmalige Anmelden von Azure AD zu aktivieren.
+5. **[Erstellen eines Qlik Sense Enterprise-Testbenutzers](#create-qlik-sense-enterprise-test-user)** , um eine Entsprechung von Britta Simon in Qlik Sense Enterprise zu erhalten, die mit ihrer Darstellung in Azure AD verknüpft ist
+6. **[Testen der einmaligen Anmeldung](#test-single-sign-on)** , um zu überprüfen, ob die Konfiguration funktioniert.
 
 ### <a name="configure-azure-ad-single-sign-on"></a>Konfigurieren des einmaligen Anmeldens in Azure AD
 
@@ -181,9 +181,9 @@ Führen Sie zum Konfigurieren des einmaligen Anmeldens von Azure AD mit Qlik Sen
 
     d. Geben Sie im Feld **SAML entity ID**den gleichen Wert wie im Feld „SAML host URI“ ein.
 
-    e. Unter **SAML IdP metadata** (SAML-IdP-Metadaten) wird die Datei gewählt, die Sie zuvor im Abschnitt **Edit Federation Metadata from Azure AD Configuration** (Verbundmetadaten der Azure AD-Konfiguration bearbeiten) bearbeitet haben.  **Vor dem Hochladen der IdP-Metadaten muss die Datei bearbeitet werden** , um Informationen zu entfernen und so den richtigen Ablauf zwischen Azure AD und dem Qlik Sense-Server sicherzustellen.  **Verwenden Sie die obige Anleitung, falls Sie die Datei noch bearbeiten müssen.**   Wenn die Datei bearbeitet wurde, können Sie auf die Schaltfläche zum Durchsuchen klicken und die bearbeitete Metadatendatei auswählen, um sie für die Konfiguration des virtuellen Proxys hochzuladen.
+    e. Unter **SAML IdP metadata** (SAML-IdP-Metadaten) wird die Datei gewählt, die Sie zuvor im Abschnitt **Edit Federation Metadata from Azure AD Configuration** (Verbundmetadaten der Azure AD-Konfiguration bearbeiten) bearbeitet haben.  **Vor dem Hochladen der IdP-Metadaten muss die Datei bearbeitet werden** , um Informationen zu entfernen und so den richtigen Ablauf zwischen Azure AD und dem Qlik Sense-Server sicherzustellen.  **Verwenden Sie die obige Anleitung, falls Sie die Datei noch bearbeiten müssen.**  Wenn die Datei bearbeitet wurde, können Sie auf die Schaltfläche zum Durchsuchen klicken und die bearbeitete Metadatendatei auswählen, um sie für die Konfiguration des virtuellen Proxys hochzuladen.
 
-    f. Geben Sie den Attributnamen oder den Schemaverweis für das SAML-Attribut ein, das für die **UserID** steht, die von Azure AD an den Qlik Sense-Server gesendet wird.  Informationen zum Schemaverweis sind auf den Azure-App-Bildschirmen zur Post-Konfiguration verfügbar.  Geben Sie zum Verwenden des Namensattributs `https://schemas.xmlsoap.org/ws/2005/05/identity/claims/name` ein.
+    f. Geben Sie den Attributnamen oder den Schemaverweis für das SAML-Attribut ein, das für die **UserID** steht, die von Azure AD an den Qlik Sense-Server gesendet wird.  Informationen zum Schemaverweis sind auf den Azure-App-Bildschirmen zur Post-Konfiguration verfügbar.  Geben Sie zum Verwenden des Namensattributs `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name` ein.
 
     g. Geben Sie den Wert für das Benutzerverzeichnis ( **user directory** ) ein, das Benutzern zugeordnet wird, wenn diese die Authentifizierung gegenüber dem Qlik Sense-Server über Azure AD durchführen.  Hartcodierte Werte müssen in **eckige Klammern []** gesetzt werden.  Geben Sie den Namen des Attributs in diesem Textfeld **ohne** eckige Klammern ein, um ein Attribut zu verwenden, das in der Azure AD-SAML-Assertion gesendet wird.
 
@@ -203,7 +203,7 @@ Führen Sie zum Konfigurieren des einmaligen Anmeldens von Azure AD mit Qlik Sen
 
     ![QlikSense][qs13]
 
-    Unter „Host white list“ sind die Hostnamen angegeben, die akzeptiert werden, wenn eine Verbindung mit dem Qlik Sense-Server hergestellt wird.  **Geben Sie den Hostnamen ein, der von Benutzern angegeben werden muss, wenn eine Verbindung mit dem Qlik Sense-Server hergestellt werden soll.**  Der Hostname ist der gleiche Wert wie der SAML-Host-URI ohne „https://“.
+    Unter „Host white list“ sind die Hostnamen angegeben, die akzeptiert werden, wenn eine Verbindung mit dem Qlik Sense-Server hergestellt wird.  **Geben Sie den Hostnamen ein, der von Benutzern angegeben werden muss, wenn eine Verbindung mit dem Qlik Sense-Server hergestellt werden soll.** Der Hostname ist der gleiche Wert wie der SAML-Host-URI ohne „https://“.
 
 11. Klicken Sie auf die Schaltfläche **Apply** (Anwenden).
 

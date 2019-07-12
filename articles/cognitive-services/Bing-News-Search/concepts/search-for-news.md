@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-news-search
 ms.topic: overview
-ms.date: 01/11/2019
+ms.date: 06/19/2019
 ms.author: scottwhi
-ms.openlocfilehash: 77f8e41b2271770e49c2e5c4d1591c213eaa257d
-ms.sourcegitcommit: 3d4121badd265e99d1177a7c78edfa55ed7a9626
+ms.openlocfilehash: da1dd68b8e155e121f26f5599207691877fbf0ca
+ms.sourcegitcommit: a52d48238d00161be5d1ed5d04132db4de43e076
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/30/2019
-ms.locfileid: "66383413"
+ms.lasthandoff: 06/20/2019
+ms.locfileid: "67274153"
 ---
 # <a name="search-for-news-with-the-bing-news-search-api"></a>Suchen nach Nachrichten mit der Bing-News-Suche-API
 
@@ -51,7 +51,7 @@ Wenn Sie News aus einer bestimmten Domäne abrufen möchten, verwenden Sie den A
 GET https://api.cognitive.microsoft.com/bing/v7.0/news/search?q=sailing+dinghies+site:contososailing.com&mkt=en-us HTTP/1.1
 ```
 
-Das folgende Beispiel zeigt die Antwort auf die vorherige Abfrage. Gemäß den [Anforderungen für die Verwendung und Anzeige](../useanddisplayrequirements.md) für die Bing-Suche-APIs müssen Sie alle Nachrichtenartikel in der in der Antwort angegebenen Reihenfolge anzeigen. Wenn der Artikel gruppierte Artikel enthält, sollten Sie angeben, dass verwandte Artikel existieren, und diese bei entsprechender Aufforderung anzeigen.
+Das folgende JSON-Beispiel zeigt die Antwort auf die vorherige Abfrage. Gemäß den [Anforderungen für die Verwendung und Anzeige](../useanddisplayrequirements.md) für die Bing-Suche-APIs müssen Sie alle Nachrichtenartikel in der in der Antwort angegebenen Reihenfolge anzeigen. Wenn der Artikel gruppierte Artikel enthält, sollten Sie angeben, dass verwandte Artikel existieren, und diese bei entsprechender Aufforderung anzeigen.
 
 ```json
 {
@@ -107,7 +107,7 @@ Wenn Bing die Kategorie des Nachrichtenartikels bestimmen kann, enthält der Art
 
 ## <a name="get-todays-top-news"></a>Abrufen der Top-Nachrichten von heute
 
-Um die wichtigsten Nachrichtenartikel von heute zu erhalten, erstellen Sie die gleiche Anforderung wie für allgemeine Nachrichten, allerdings ohne `q` festzulegen.
+Um die Top-Nachrichtenartikel von heute zu erhalten, können Sie die gleiche allgemeine Nachrichtenanfrage wie bisher senden, wobei Sie den Parameter `q` nicht setzen.
 
 ```http
 GET https://api.cognitive.microsoft.com/bing/v7.0/news/search?q=&mkt=en-us HTTP/1.1
@@ -119,7 +119,7 @@ X-MSEdge-ClientID: <blobFromPriorResponseGoesHere>
 Host: api.cognitive.microsoft.com
 ```
 
-Die Antwort für das Abrufen der wichtigsten Nachrichten ist fast die gleiche wie bei allgemeinen Nachrichten. Allerdings enthält die `news`-Antwort nicht das Feld `totalEstimatedMatches`, da eine festgelegte Anzahl von Ergebnissen vorhanden ist. Die Anzahl der wichtigsten Nachrichtenartikel kann je nach Nachrichtenzyklus variieren. Vergessen Sie nicht, mit `provider` die Quelle anzugeben.
+Die Antwort für das Abrufen der wichtigsten Nachrichten ist fast die gleiche wie bei allgemeinen Nachrichten. Allerdings enthält die `news`-Antwort nicht das Feld `totalEstimatedMatches`, da eine festgelegte Anzahl von Ergebnissen vorhanden ist. Die Anzahl der wichtigsten Nachrichtenartikel kann je nach Nachrichtenzyklus variieren. Vergessen Sie nicht, mit dem `provider`-Feld die Quelle anzugeben.
 
 ## <a name="get-news-by-category"></a>Abrufen von Nachrichten nach Kategorie
 

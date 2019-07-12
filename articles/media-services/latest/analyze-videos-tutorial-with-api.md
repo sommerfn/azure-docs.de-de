@@ -1,5 +1,5 @@
 ---
-title: 'Analysieren von Videos mit Media Services mithilfe von .NET: Azure | Microsoft-Dokumentation'
+title: Analysieren von Videos mit Azure Media Services | Microsoft Docs
 description: Führen Sie die Schritte in diesem Tutorial aus, um Videos mit Azure Media Services zu analysieren.
 services: media-services
 documentationcenter: ''
@@ -9,22 +9,25 @@ editor: ''
 ms.service: media-services
 ms.workload: ''
 ms.topic: tutorial
-ms.date: 04/21/2019
+ms.date: 06/19/2019
 ms.author: juliako
 ms.custom: seodec18
-ms.openlocfilehash: ead6fdc0ade4a24d162603b9dc3749726c0d8002
-ms.sourcegitcommit: 300cd05584101affac1060c2863200f1ebda76b7
+ms.openlocfilehash: 2c26ba24f0262f7cf43f80b4f4deae464581d08d
+ms.sourcegitcommit: a52d48238d00161be5d1ed5d04132db4de43e076
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/08/2019
-ms.locfileid: "65415645"
+ms.lasthandoff: 06/20/2019
+ms.locfileid: "67273891"
 ---
-# <a name="tutorial-analyze-videos-with-media-services-v3-using-net"></a>Tutorial: Analysieren von Videos mit Media Services v3 mithilfe von .NET
+# <a name="tutorial-analyze-videos-with-media-services-v3"></a>Tutorial: Analysieren von Videos mit Media Services v3
+
+> [!NOTE]
+> Obwohl in diesem Tutorial die [.NET SDK](https://docs.microsoft.com/dotnet/api/microsoft.azure.management.media.models.liveevent?view=azure-dotnet)-Beispiele verwendet werden, sind die allgemeinen Schritte für die [REST-API](https://docs.microsoft.com/rest/api/media/liveevents), die [CLI](https://docs.microsoft.com/cli/azure/ams/live-event?view=azure-cli-latest) oder für andere unterstützte [SDKs](media-services-apis-overview.md#sdks) dieselben.
 
 In diesem Tutorial wird gezeigt, wie Videos mit Azure Media Services analysiert werden. Es gibt viele Szenarien, in denen Sie umfassende Einblicke in aufgezeichnete Videos oder Audioinhalte erlangen möchten. Um beispielsweise eine höhere Kundenzufriedenheit zu erreichen, können Unternehmen eine Spracherkennung ausführen, um Kundensupportaufzeichnungen in einen durchsuchbaren Katalog mit Indizes und Dashboards umzuwandeln. Dann können sie Einblicke in ihr Geschäft erhalten, etwa eine Liste der häufigsten Beschwerden, Quellen solcher Beschwerden und weitere nützliche Informationen.
 
 Dieses Tutorial veranschaulicht folgende Vorgehensweisen:    
-
+ 
 > [!div class="checklist"]
 > * Herunterladen der in diesem Thema beschriebenen Beispiel-App
 > * Untersuchen des Codes für die Analyse des angegebenen Videos

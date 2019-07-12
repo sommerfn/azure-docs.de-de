@@ -12,12 +12,12 @@ ms.topic: quickstart
 ms.date: 04/11/2017
 ms.author: glenga
 ms.custom: mvc
-ms.openlocfilehash: a1d4af695807a6e2c5ef4ee74527083002bc6015
-ms.sourcegitcommit: 644de9305293600faf9c7dad951bfeee334f0ba3
+ms.openlocfilehash: ad9c50953447c1effee48eec5b0cb9f64386e6cc
+ms.sourcegitcommit: 1289f956f897786090166982a8b66f708c9deea1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/25/2019
-ms.locfileid: "54900765"
+ms.lasthandoff: 06/17/2019
+ms.locfileid: "67155576"
 ---
 # <a name="create-a-function-app-from-the-azure-portal"></a>Erstellen einer Funktionen-App im Azure-Portal
 
@@ -27,7 +27,7 @@ Für Azure-Funktionen-Apps wird die Infrastruktur von Azure App Service verwende
 
 [!INCLUDE [functions-create-function-app-portal](../../includes/functions-create-function-app-portal.md)]
 
-Geben Sie beim Erstellen einer Funktionen-App einen gültigen **App-Namen** an. Dieser darf nur Buchstaben, Zahlen und Bindestriche enthalten. Unterstriche (**_**) sind nicht zulässig.
+Geben Sie beim Erstellen einer Funktionen-App einen gültigen **App-Namen** an. Dieser darf nur Buchstaben, Zahlen und Bindestriche enthalten. Unterstriche ( **_** ) sind nicht zulässig.
 
 Speicherkontonamen müssen zwischen 3 und 24 Zeichen lang sein und dürfen nur Zahlen und Kleinbuchstaben enthalten. Der Name Ihres Speicherkontos muss innerhalb von Azure eindeutig sein. 
 
@@ -52,4 +52,7 @@ Weitere Informationen zu Speicherkontotypen finden Sie unter [Einführung in die
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-[!INCLUDE [Functions quickstart next steps](../../includes/functions-quickstart-next-steps.md)]
+Da das Azure-Portal das Erstellen und Ausprobieren von Funktionen erleichtert, empfehlen wir [lokale Entwicklung](functions-develop-local.md). Nach dem Erstellen einer Funktions-App im Portal müssen Sie immer noch eine Funktion hinzufügen. 
+
+> [!div class="nextstepaction"]
+> [Hinzufügen einer durch HTTP ausgelösten Funktion](functions-create-first-azure-function.md#create-function)

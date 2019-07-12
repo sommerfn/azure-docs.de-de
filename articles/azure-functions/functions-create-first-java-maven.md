@@ -10,14 +10,15 @@ ms.service: azure-functions
 ms.devlang: java
 ms.topic: quickstart
 ms.date: 08/10/2018
-ms.author: routlaw, glenga
+ms.author: routlaw
+ms.reviewer: glenga
 ms.custom: mvc, devcenter
-ms.openlocfilehash: ab705b6131bd43a7ab70bab16cef81d33f07c055
-ms.sourcegitcommit: be9fcaace62709cea55beb49a5bebf4f9701f7c6
+ms.openlocfilehash: da4de9185ba7371281c140c5f2456d85661c0af4
+ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/17/2019
-ms.locfileid: "65827409"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67706439"
 ---
 # <a name="create-your-first-function-with-java-and-maven"></a>Erstellen Ihrer ersten Funktion mit Java und Maven
 
@@ -62,8 +63,8 @@ mvn archetype:generate `
 
 ```cmd
 mvn archetype:generate ^
-    -DarchetypeGroupId=com.microsoft.azure ^
-    -DarchetypeArtifactId=azure-functions-archetype
+    "-DarchetypeGroupId=com.microsoft.azure" ^
+    "-DarchetypeArtifactId=azure-functions-archetype"
 ```
 
 Maven fordert Sie zur Eingabe der erforderlichen Werte für die Projektgenerierung auf. Informationen zu den Werten _groupId_, _artifactId_ und _version_ finden Sie in der Referenz [Maven-Benennungskonventionen](https://maven.apache.org/guides/mini/guide-naming-conventions.html). Der Wert _appName_ muss in Azure eindeutig sein. Deshalb generiert Maven standardmäßig einen App-Namen basierend auf den zuvor eingegebenen Wert _artifactId_. Der Wert _packageName_ bestimmt das Java-Paket für den generierten Funktionscode.
@@ -79,7 +80,7 @@ Define value for property 'appName' fabrikam-functions-20170927220323382:
 Confirm properties configuration: Y
 ```
 
-Maven erstellt die Projektdateien in einem neuen Ordner mit dem Namen _artifactId_ (in diesem Beispiel: `fabrikam-functions`). Bei dem generierten ausführungsbereiten Code im Projekt handelt es sich um eine einfache, [durch HTTP ausgelöste](/azure/azure-functions/functions-bindings-http-webhook) Funktion, die den Text der Anforderung ausgibt:
+Maven erstellt die Projektdateien in einem neuen Ordner mit dem Namen _artifactId_ (in diesem Beispiel: `fabrikam-functions`). Bei dem generierten ausführungsbereiten Code im Projekt handelt es sich um eine [durch HTTP ausgelöste](/azure/azure-functions/functions-bindings-http-webhook) Funktion, die den Text der Anforderung ausgibt:
 
 ```java
 public class Function {
@@ -108,7 +109,7 @@ public class Function {
 
 ```
 
-## <a name="reference-bindings"></a>Verweisbindungen
+## <a name="enable-extension-bundles"></a>Aktivieren von Erweiterungsbundles
 
 [!INCLUDE [functions-extension-bundles](../../includes/functions-extension-bundles.md)]
 
@@ -150,13 +151,13 @@ Verwenden Sie `Ctrl-C` im Terminal, um den Funktionscode anzuhalten.
 
 ## <a name="deploy-the-function-to-azure"></a>Bereitstellen der Funktion in Azure
 
-Bei dem Bereitstellungsprozess in Azure Functions werden die Anmeldeinformationen aus der Azure CLI verwendet. [Melden Sie sich zunächst über die Azure-Befehlszeilenschnittstelle an.](/cli/azure/authenticate-azure-cli?view=azure-cli-latest)
+Bei dem Bereitstellungsprozess in Azure Functions werden die Anmeldeinformationen aus der Azure CLI verwendet. [Melden Sie sich über die Azure CLI an](/cli/azure/authenticate-azure-cli?view=azure-cli-latest), ehe Sie fortfahren.
 
 ```azurecli
 az login
 ```
 
-Stellen Sie Ihren Code mit `azure-functions:deploy` als Maven-Ziel in einer neuen Funktionen-App bereit.
+Stellen Sie Ihren Code mit `azure-functions:deploy` als Maven-Ziel in einer neuen Funktionen-App bereit. Diese führt [Zip Deploy mit aktiviertem „Aus Paketdatei ausführen“](functions-deployment-technologies.md#zip-deploy)-Modus aus.
 
 > [!NOTE]
 > Wenn Sie Ihre Funktionen-App mit Visual Studio Code bereitstellen, vergessen Sie nicht, ein kostenpflichtiges Abonnement auszuwählen. Andernfalls tritt ein Fehler auf. Das Abonnement wird auf der linken Seite der IDE angezeigt.

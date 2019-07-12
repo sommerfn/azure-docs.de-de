@@ -11,28 +11,29 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 600d6b9f1eb8d8073e1658dd5b8196a3d8137e42
-ms.sourcegitcommit: 4cdd4b65ddbd3261967cdcd6bc4adf46b4b49b01
+ms.openlocfilehash: 738b4f47054081f0fb1b1a530bdf21cbf07a7726
+ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/06/2019
-ms.locfileid: "66733716"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67204698"
 ---
 # <a name="tutorial-configure-hybrid-azure-active-directory-join-for-federated-domains"></a>Tutorial: Konfigurieren der Azure Active Directory-Hybrideinbindung für Verbunddomänen
 
-Ähnlich wie ein Benutzer ist ein Gerät eine weitere zentrale Identität, die Sie schützen sowie jederzeit und überall zum Schutz Ihrer Ressourcen verwenden können. Dafür können Sie die Geräteidentitäten mit einer der folgenden Methoden in Azure AD bereitstellen und verwalten:
+Ähnlich wie ein Benutzer in Ihrer Organisation ist auch ein Gerät eine zentrale Identität, die Sie schützen möchten. Über die Identität eines Geräts können Sie Ihre Ressourcen jederzeit und von überall aus schützen. Dafür können Sie Geräteidentitäten mit einer der folgenden Methoden in Azure Active Directory (Azure AD) bereitstellen und verwalten:
 
 - Azure AD-Einbindung
 - Azure AD-Hybrideinbindung
 - Azure AD-Registrierung
 
-Durch das Bereitstellen Ihrer Geräte in Azure AD maximieren Sie die Produktivität Ihrer Benutzer durch einmaliges Anmelden (SSO) für Ihre gesamten Cloud- und lokalen Ressourcen. Gleichzeitig können Sie den Zugriff auf Ihre Cloud- und lokalen Ressourcen durch den [bedingten Zugriff](../active-directory-conditional-access-azure-portal.md) sichern.
+Durch das Bereitstellen Ihrer Geräte in Azure AD wird die Benutzerproduktivität über einmaliges Anmelden (SSO) für Ihre gesamten Cloud- und lokalen Ressourcen maximiert. Gleichzeitig können Sie den Zugriff auf Ihre Cloud- und lokalen Ressourcen durch den [bedingten Zugriff](../active-directory-conditional-access-azure-portal.md) sichern.
 
-In diesem Tutorial erfahren Sie, wie die Azure AD-Hybrideinbindung für in die AD-Domäne eingebundene Computer in einer Verbundumgebung mit AD FS konfiguriert wird.
+In diesem Tutorial erfahren Sie, wie die Azure AD-Hybrideinbindung für in die Active Directory-Domäne eingebundene Computer in einer Verbundumgebung mit Active Directory-Verbunddiensten (AD FS) konfiguriert wird.
 
 > [!NOTE]
-> Wenn Ihre Verbundumgebung einen anderen Identitätsanbieter als AD FS verwendet, müssen Sie sicherstellen, dass dieser Identitätsanbieter das WS-Trust-Protokoll unterstützt. WS-Trust ist erforderlich, um Ihre aktuellen über Azure AD Hybrid Join eingebundenen Windows-Geräte mit Azure AD zu authentifizieren. Falls Sie kompatible Windows-Geräte besitzen, die Sie über Azure AD Hybrid Join einbinden müssen, muss Ihr Identitätsanbieter darüber hinaus den Anspruch WIAORMULTIAUTHN unterstützen. 
+> Wenn in Ihrer Verbundumgebung ein anderer Identitätsanbieter als AD FS verwendet wird, müssen Sie sicherstellen, dass dieser Identitätsanbieter das WS-Trust-Protokoll unterstützt. WS-Trust ist erforderlich, um Ihre aktuellen über Azure AD Hybrid Join eingebundenen Windows-Geräte mit Azure AD zu authentifizieren. Wenn Sie kompatible Windows-Geräte besitzen, die Sie über Azure AD Hybrid Join einbinden möchten, muss Ihr Identitätsanbieter den Anspruch WIAORMULTIAUTHN unterstützen. 
 
+Folgendes wird vermittelt:
 
 > [!div class="checklist"]
 > * Konfigurieren der Hybrid-Azure AD-Einbindung
@@ -42,99 +43,99 @@ In diesem Tutorial erfahren Sie, wie die Azure AD-Hybrideinbindung für in die A
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-In diesem Tutorial wird vorausgesetzt, dass Sie mit Folgendem vertraut sind:
+In diesem Tutorial wird vorausgesetzt, dass Sie mit folgenden Artikeln vertraut sind:
 
-- [Einführung in die Geräteidentitätsverwaltung in Azure Active Directory](../device-management-introduction.md)
-- [Planen der Implementierung einer Azure Active Directory-Hybrideinbindung](hybrid-azuread-join-plan.md)
+- [Was ist eine Geräteidentität?](overview.md)
+- [Planen der Implementierung einer Azure AD-Hybrideinbindung](hybrid-azuread-join-plan.md)
 - [Kontrollierte Überprüfung der Azure AD-Hybrideinbindung](hybrid-azuread-join-control.md)
 
 Für die Konfiguration des Szenarios in diesem Tutorials benötigen Sie Folgendes:
 
 - Windows Server 2012 R2 mit AD FS
-- [Azure AD Connect](https://www.microsoft.com/download/details.aspx?id=47594) ab Version 1.1.819.0
+- [Azure AD Connect](https://www.microsoft.com/download/details.aspx?id=47594) Version 1.1.819.0 oder höher
 
-Ab Version 1.1.819.0 bietet Azure AD Connect einen Assistenten für die Konfiguration der Azure AD-Hybrideinbindung. Mit dem Assistenten können Sie den Konfigurationsprozess erheblich vereinfachen. Der entsprechende Assistent:
+Ab Version 1.1.819.0 enthält Azure AD Connect einen Assistenten, den Sie für die Konfiguration der Azure AD-Hybrideinbindung verwenden können. Mit dem Assistenten wird der Konfigurationsprozess erheblich vereinfacht. Der entsprechende Assistent:
 
-- Konfiguriert die Dienstverbindungspunkte (SCP) für die Geräteregistrierung
+- Konfiguriert die Dienstverbindungspunkte (SCPs) für die Geräteregistrierung
 - Sichert Ihre vorhandene Azure AD-Vertrauensstellung der vertrauenden Seite
 - Aktualisiert die Anspruchsregeln in Ihrer Azure AD-Vertrauensstellung
 
-Die Konfigurationsschritte in diesem Artikel basieren auf diesen Assistenten. Wenn Sie eine ältere Version von Azure AD Connect installiert haben, müssen Sie sie mindestens auf 1.1.819 aktualisieren. Wenn das Installieren der aktuellen Version von Azure AD Connect keine Option für Sie ist, informieren Sie sich über die [manuelle Konfiguration der Azure AD-Hybrideinbindung](https://docs.microsoft.com/azure/active-directory/devices/hybrid-azuread-join-manual).
+Die Konfigurationsschritte in diesem Artikel basieren auf der Verwendung des Azure AD Connect-Assistenten. Wenn Sie eine frühere Version von Azure AD Connect installiert haben, müssen Sie sie mindestens auf Version 1.1.819 aktualisieren, um den Assistenten verwenden zu können. Wenn die Installation der aktuellen Version von Azure AD Connect keine Option für Sie ist, informieren Sie sich über die [manuelle Konfiguration der Azure AD-Hybrideinbindung](hybrid-azuread-join-manual.md).
 
-für die Azure AD-Hybrideinbindung ist erforderlich, dass die Geräte innerhalb des Netzwerks Ihrer Organisation auf die folgenden Microsoft-Ressourcen zugreifen können:  
+Für die Azure AD-Hybrideinbindung müssen die Geräte innerhalb des Netzwerks Ihrer Organisation Zugriff auf die folgenden Microsoft-Ressourcen haben:  
 
 - `https://enterpriseregistration.windows.net`
 - `https://login.microsoftonline.com`
 - `https://device.login.microsoftonline.com`
-- STS Ihrer Organisation (Verbunddomänen)
-- [https://autologon.microsoftazuread-sso.com](`https://autologon.microsoftazuread-sso.com`) (Wenn Sie das nahtlose einmalige Anmelden verwenden oder verwenden möchten)
+- Sicherheitstokendienst (STS) Ihrer Organisation (für Verbunddomänen)
+- `https://autologon.microsoftazuread-sso.com` (Wenn Sie nahtloses einmaliges Anmelden verwenden oder verwenden möchten.)
 
-Ab Windows 10 1803 gilt Folgendes: Wenn für die sofortige Azure AD-Hybrideinbindung für Verbundumgebungen wie AD FS ein Fehler auftritt, nutzen wir Azure AD Connect, um das Computerobjekt in Azure AD zu synchronisieren. Dieses Objekt wird anschließend verwendet, um die Geräteregistrierung für die Azure AD-Hybrideinbindung durchzuführen. Vergewissern Sie sich, dass Azure AD die Computerobjekte der Geräte für die Azure AD-Hybrideinbindung mit Azure AD synchronisiert. Wenn die Computerobjekte zu bestimmten Organisationseinheiten (OEs) gehören, müssen diese OEs auch für die Synchronisierung in Azure AD Connect konfiguriert werden. Weitere Informationen zum Synchronisieren von Computerobjekten mit Azure AD Connect finden Sie im Artikel [Azure AD Connect-Synchronisierung: Konfigurieren der Filterung](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-sync-configure-filtering#organizational-unitbased-filtering).
+Ab Windows 10 1803 gilt Folgendes: Wenn bei der sofortigen Azure AD-Hybrideinbindung für Verbundumgebungen unter Verwendung von AD FS ein Fehler auftritt, nutzen wir Azure AD Connect, um das Computerobjekt in Azure AD zu synchronisieren. Dieses Objekt wird anschließend verwendet, um die Geräteregistrierung für die Azure AD-Hybrideinbindung durchzuführen. Vergewissern Sie sich, dass Azure AD Connect die Computerobjekte der Geräte für die Azure AD-Hybrideinbindung mit Azure AD synchronisiert. Wenn die Computerobjekte zu bestimmten Organisationseinheiten (OEs) gehören, müssen Sie diese Organisationseinheiten ebenfalls so konfigurieren, dass sie in Azure AD Connect synchronisiert werden. Weitere Informationen zum Synchronisieren von Computerobjekten mit Azure AD Connect finden Sie unter [Azure AD Connect-Synchronisierung: Konfigurieren der Filterung](../hybrid/how-to-connect-sync-configure-filtering.md#organizational-unitbased-filtering).
 
-Wenn für Ihre Organisation Zugriff auf das Internet über einen ausgehenden Proxy erforderlich ist, empfiehlt Microsoft die [Implementierung von WPAD (Web Proxy AutoDiscovery, Webproxy-AutoErmittlung)](https://docs.microsoft.com/previous-versions/tn-archive/cc995261(v%3dtechnet.10)), damit Windows 10-Computer Geräte bei Azure AD registrieren können. Wenn beim Konfigurieren und Verwalten von WPAD Probleme auftreten, lesen Sie die Informationen unter [Troubleshooting Automatic Detection](https://docs.microsoft.com/previous-versions/tn-archive/cc302643(v=technet.10)) (Problembehandlung bei der automatischen Ermittlung). 
+Wenn für Ihre Organisation Zugriff auf das Internet über einen ausgehenden Proxy erforderlich ist, empfiehlt Microsoft die [Implementierung von Web Proxy Auto-Discovery (WPAD)](https://docs.microsoft.com/previous-versions/tn-archive/cc995261(v%3dtechnet.10)), damit Windows 10-Computer Geräte bei Azure AD registrieren können. Wenn bei der Konfiguration und Verwaltung von WPAD Probleme auftreten, finden Sie entsprechende Informationen unter [Problembehandlung bei der automatischen Erkennung](https://docs.microsoft.com/previous-versions/tn-archive/cc302643(v=technet.10)). 
 
-Wenn Sie nicht die Webproxy-AutoErmittlung verwenden, aber Proxyeinstellungen auf Ihrem Computer konfigurieren müssen, können Sie dazu ab Windows 10 1709 [WinHTTP-Einstellungen mithilfe eines Gruppenrichtlinienobjekts (Group Policy Object, GPO) konfigurieren](https://blogs.technet.microsoft.com/netgeeks/2018/06/19/winhttp-proxy-settings-deployed-by-gpo/).
+Wenn Sie WPAD nicht verwenden und Proxyeinstellungen auf Ihrem Computer konfigurieren möchten, ist dies ab Windows 10 1709 möglich. Weitere Informationen finden Sie unter [Configure WinHTTP settings by using a group policy object (GPO)](https://blogs.technet.microsoft.com/netgeeks/2018/06/19/winhttp-proxy-settings-deployed-by-gpo/) (Konfigurieren von WinHTTP-Einstellungen über ein Gruppenrichtlinienobjekt (GPO)).
 
 > [!NOTE]
 > Wenn Sie Proxyeinstellungen auf Ihrem Computer mithilfe von WinHTTP-Einstellungen konfigurieren, können alle Computer, die keine Verbindung mit dem konfigurierten Proxy herstellen können, auch keine Internetverbindung herstellen.
 
-Wenn Ihre Organisation Internetzugriff über einen authentifizierten ausgehenden Proxy erfordert, müssen Sie sicherstellen, dass Ihre Windows 10-Computer erfolgreich beim ausgehenden Proxy authentifiziert werden können. Da Windows 10-Computer die Geräteregistrierung mithilfe von Computerkontext ausführen, muss die Authentifizierung bei ausgehenden Proxys mithilfe von Computerkontext konfiguriert werden. Erkundigen Sie sich beim Anbieter Ihres ausgehenden Proxys nach den Konfigurationsanforderungen.
+Wenn Ihre Organisation Internetzugriff über einen authentifizierten ausgehenden Proxy erfordert, müssen Sie sicherstellen, dass Ihre Windows 10-Computer erfolgreich beim ausgehenden Proxy authentifiziert werden können. Da Windows 10-Computer die Geräteregistrierung mithilfe von Computerkontext ausführen, müssen Sie die Authentifizierung bei ausgehenden Proxys mit dem Computerkontext konfigurieren. Erkundigen Sie sich beim Anbieter Ihres ausgehenden Proxys nach den Konfigurationsanforderungen.
 
 ## <a name="configure-hybrid-azure-ad-join"></a>Konfigurieren der Hybrid-Azure AD-Einbindung
 
-Zum Konfigurieren einer Azure AD-Hybrideinbindung mithilfe von Azure AD Connect benötigen Sie Folgendes:
+Zum Konfigurieren einer Azure AD-Hybrideinbindung mithilfe von Azure AD Connect benötigen Sie Folgendes:
 
-- Die Anmeldeinformationen eines globalen Administrators für Ihren Azure AD-Mandanten.  
-- Die Anmeldeinformationen eines Unternehmensadministrators für jede Gesamtstruktur.
-- Die Anmeldeinformationen Ihres AD FS-Administrators.
+- Die Anmeldeinformationen eines globalen Administrators für Ihren Azure AD-Mandanten  
+- Die Anmeldeinformationen eines Unternehmensadministrators für jede Gesamtstruktur
+- Die Anmeldeinformationen Ihres AD FS-Administrators
 
-**Konfigurieren einer Azure AD-Hybrideinbindung mithilfe von Azure AD Connect:**
+**So konfigurieren Sie eine Azure AD-Hybrideinbindung mithilfe von Azure AD Connect**
 
-1. Starten Sie Azure AD Connect, und klicken Sie dann auf **Konfigurieren**.
+1. Starten Sie Azure AD Connect, und wählen Sie dann **Konfigurieren** aus.
 
    ![Willkommen](./media/hybrid-azuread-join-federated-domains/11.png)
 
-1. Wählen Sie auf der Seite **Zusätzliche Aufgaben** die Option **Geräteoptionen konfigurieren**, und klicken Sie dann auf **Weiter**.
+1. Wählen Sie auf der Seite **Zusätzliche Aufgaben** die Option **Geräteoptionen konfigurieren** und dann **Weiter** aus.
 
    ![Zusätzliche Aufgaben](./media/hybrid-azuread-join-federated-domains/12.png)
 
-1. Klicken Sie auf der Seite **Übersicht** auf **Weiter**.
+1. Wählen Sie auf der Seite **Übersicht** die Option **Weiter** aus.
 
    ![Übersicht](./media/hybrid-azuread-join-federated-domains/13.png)
 
-1. Geben Sie auf der Seite **Mit Azure AD verbinden** die Anmeldeinformationen eines globalen Administrators für Ihren Azure AD-Mandanten ein und klicken Sie auf **Weiter**.
+1. Geben Sie auf der Seite **Mit Azure AD verbinden** die Anmeldeinformationen eines globalen Administrators für Ihren Azure AD-Mandanten ein, und wählen Sie **Weiter** aus.
 
    ![Stellen Sie eine Verbindung mit Azure AD her.](./media/hybrid-azuread-join-federated-domains/14.png)
 
-1. Wählen Sie auf der Seite **Geräteoptionen** die Option **Konfigurieren einer Azure AD-Hybrideinbindung** aus, und klicken Sie dann auf **Weiter**.
+1. Wählen Sie auf der Seite **Geräteoptionen** die Option **Hybrid-Azure AD-Einbindung konfigurieren** und dann **Weiter** aus.
 
    ![Geräteoptionen](./media/hybrid-azuread-join-federated-domains/15.png)
 
-1. Führen Sie auf der Seite **SCP** die folgenden Schritte aus, und klicken Sie dann auf **Weiter**:
+1. Führen Sie auf der Seite **SCP** die folgenden Schritte aus, und wählen Sie dann **Weiter** aus:
 
    ![SCP](./media/hybrid-azuread-join-federated-domains/16.png)
 
    1. Wählen Sie die Gesamtstruktur aus.
-   1. Wählen Sie den Authentifizierungsdienst aus. Sie müssen AD FS-Server auswählen – es sei denn, Ihre Organisation verfügt ausschließlich über Windows 10-Clients und Sie haben die Computer-/Gerätesynchronisierung konfiguriert, oder Ihre Organisation verwendet SeamlessSSO.
-   1. Klicken Sie auf **Hinzufügen**, um die Anmeldeinformationen eines Unternehmensadministrators einzugeben.
+   1. Wählen Sie den Authentifizierungsdienst aus. Sie müssen **AD FS-Server** auswählen – es sei denn, Ihre Organisation verfügt ausschließlich über Windows 10-Clients und Sie haben die Computer-/Gerätesynchronisierung konfiguriert, oder Ihre Organisation verwendet nahtlose einmaliges Anmelden.
+   1. Wählen Sie **Hinzufügen** aus, um die Anmeldeinformationen eines Unternehmensadministrators einzugeben.
 
-1. Wählen Sie auf der Seite **Gerätebetriebssysteme** die von den Geräten in Ihrer Active Directory-Umgebung verwendeten Betriebssysteme aus, und klicken Sie dann auf **Weiter**.
+1. Wählen Sie auf der Seite **Gerätebetriebssysteme** die Betriebssysteme der Geräte in Ihrer Active Directory-Umgebung und dann **Weiter** aus.
 
    ![Gerätebetriebssystem](./media/hybrid-azuread-join-federated-domains/17.png)
 
-1. Geben Sie auf der Seite **Verbundkonfiguration** die Anmeldeinformationen Ihres AD FS-Administrators ein, und klicken Sie dann auf **Weiter**.
+1. Geben Sie auf der Seite **Verbundkonfiguration** die Anmeldeinformationen Ihres AD FS-Administrators ein, und wählen Sie dann **Weiter** aus.
 
    ![Verbundkonfiguration](./media/hybrid-azuread-join-federated-domains/18.png)
 
-1. Klicken Sie auf der Seite **Bereit zur Konfiguration** auf **Konfigurieren**.
+1. Wählen Sie auf der Seite **Bereit zur Konfiguration** die Option **Konfigurieren** aus.
 
    ![Bereit zur Konfiguration](./media/hybrid-azuread-join-federated-domains/19.png)
 
-1. Klicken Sie auf der Seite **Konfiguration abgeschlossen** auf **Beenden**.
+1. Wählen Sie auf der Seite **Konfiguration abgeschlossen** die Option **Beenden** aus.
 
    ![Konfiguration abgeschlossen](./media/hybrid-azuread-join-federated-domains/20.png)
 
-## <a name="enable-windows-down-level-devices"></a>Aktivieren von kompatiblen Windows-Geräten
+## <a name="enable-windows-downlevel-devices"></a>Aktivieren von kompatiblen Windows-Geräten
 
 Wenn es sich bei einigen Ihrer in die Domäne eingebundenen Geräte um kompatible Windows-Geräte handelt, gehen Sie wie folgt vor:
 
@@ -143,49 +144,49 @@ Wenn es sich bei einigen Ihrer in die Domäne eingebundenen Geräte um kompatibl
 
 ### <a name="configure-the-local-intranet-settings-for-device-registration"></a>Konfigurieren der lokalen Intraneteinstellungen für die Geräteregistrierung
 
-Um die Einbindung in Hybrid-Azure AD für Ihre kompatiblen Windows-Geräte erfolgreich abzuschließen und Zertifikataufforderungen bei der Authentifizierung von Geräten gegenüber Azure AD zu vermeiden, können Sie eine Richtlinie auf Ihre in die Domäne eingebundenen Geräte übertragen, mit der die folgende URL in Internet Explorer der Zone „Lokales Intranet“ hinzugefügt wird:
+Um die Einbindung in Hybrid-Azure AD für Ihre kompatiblen Windows-Geräte erfolgreich abzuschließen und Zertifikataufforderungen bei der Authentifizierung von Geräten bei Azure AD zu vermeiden, können Sie eine Richtlinie auf Ihre in die Domäne eingebundenen Geräte übertragen, mit der die folgende URL in Internet Explorer der Zone „Lokales Intranet“ hinzugefügt wird:
 
 - `https://device.login.microsoftonline.com`
-- Der Sicherheitstokendienst Ihrer Organisation (STS – Verbunddomänen)
-- `https://autologon.microsoftazuread-sso.com` (für nahtloses einmaliges Anmelden).
+- STS Ihrer Organisation (für Verbunddomänen)
+- `https://autologon.microsoftazuread-sso.com` (für nahtloses einmaliges Anmelden)
 
 Außerdem müssen Sie in der lokalen Intranetzone des Benutzers die Option **Aktualisierungen der Statusleiste per Skript zulassen** aktivieren.
 
-### <a name="install-microsoft-workplace-join-for-windows-down-level-computers"></a>Installieren von Microsoft Workplace Join für kompatible Windows-Computer
+### <a name="install-microsoft-workplace-join-for-windows-downlevel-computers"></a>Installieren von Microsoft Workplace Join für kompatible Windows-Computer
 
-Zur Registrierung von kompatiblen Windows-Geräten müssen Organisationen [Microsoft Workplace Join für Computer installieren, auf denen nicht Windows 10 ausgeführt wird](https://www.microsoft.com/download/details.aspx?id=53554) (verfügbar im Microsoft Download Center).
+Zur Registrierung von kompatiblen Windows-Geräten müssen Organisationen [Microsoft Workplace Join für Computer installieren, auf denen nicht Windows 10 ausgeführt wird](https://www.microsoft.com/download/details.aspx?id=53554). Microsoft Workplace Join für Computer, auf denen nicht Windows 10 ausgeführt wird, steht im Microsoft Download Center zur Verfügung.
 
-Sie können das Paket mithilfe eines Softwareverteilungssystems wie  [System Center Configuration Manager](https://www.microsoft.com/cloud-platform/system-center-configuration-manager) bereitstellen. Das Paket unterstützt die Standardoptionen für die Installation im Hintergrund unter Verwendung des quiet-Parameters. Configuration Manager Current Branch bietet zusätzliche Vorteile gegenüber früheren Versionen, z.B. die Möglichkeit zur Nachverfolgung abgeschlossener Registrierungen.
+Sie können das Paket mithilfe eines Softwareverteilungssystems wie  [System Center Configuration Manager](https://www.microsoft.com/cloud-platform/system-center-configuration-manager) bereitstellen. Das Paket unterstützt die Standardoptionen für die Installation im Hintergrund unter Verwendung des `quiet`-Parameters. Configuration Manager Current Branch bietet zusätzliche Vorteile gegenüber früheren Versionen, z.B. die Möglichkeit zur Nachverfolgung abgeschlossener Registrierungen.
 
-Das Installationsprogramm erstellt einen geplanten Task auf dem System, der im Kontext des Benutzers ausgeführt wird. Der Task wird ausgelöst, wenn sich der Benutzer bei Windows anmeldet. Nach der Authentifizierung durch Azure AD verknüpft die Aufgabe das Gerät unter Verwendung der Benutzeranmeldeinformationen mit Azure AD.
+Das Installationsprogramm erstellt einen geplanten Task für das System, der im Kontext des Benutzers ausgeführt wird. Der Task wird ausgelöst, wenn sich der Benutzer bei Windows anmeldet. Nach der Authentifizierung durch Azure AD bindet der Task das Gerät unter Verwendung der Anmeldeinformationen des Benutzers im Hintergrund in Azure AD ein.
 
 ## <a name="verify-the-registration"></a>Überprüfen der Registrierung
 
-Zum Überprüfen des Geräteregistrierungsstatus in Ihrem Azure-Mandanten können Sie das Cmdlet **[Get-MsolDevice](https://docs.microsoft.com/powershell/msonline/v1/get-msoldevice)** im **[Azure Active Directory PowerShell-Modul](/powershell/azure/install-msonlinev1?view=azureadps-2.0)** verwenden.
+Zum Überprüfen des Geräteregistrierungsstatus in Ihrem Azure-Mandanten können Sie das Cmdlet **[Get-MsolDevice](/powershell/msonline/v1/get-msoldevice)** im [Azure Active Directory PowerShell-Modul](/powershell/azure/install-msonlinev1?view=azureadps-2.0) verwenden.
 
 Bei Verwendung des Cmdlets **Get-MSolDevice** zur Überprüfung der Dienstdetails:
 
 - Ein Objekt mit der **Geräte-ID**, die der ID auf dem Windows-Client entspricht, muss vorhanden sein.
-- Der Wert für **DeviceTrustType** muss **Domänenbeitritt** sein. Dies entspricht dem Status **Hybrid in Azure AD eingebunden** auf der Seite „Geräte“ im Azure AD-Portal.
+- Der Wert für **DeviceTrustType** muss **Domänenbeitritt** sein. Diese Einstellung entspricht dem Status **Hybrid in Azure AD eingebunden** unter **Geräte** im Azure AD-Portal.
 - Für Geräte, die für den bedingten Zugriff verwendet werden, muss **Aktiviert** den Wert **True** und **DeviceTrustLevel** den Wert **Verwaltet** haben.
 
-**So überprüfen Sie die Dienstdetails:**
+**So überprüfen Sie die Dienstdetails**
 
-1. Öffnen Sie **Windows PowerShell** als Administrator.
+1. Öffnen Sie Windows PowerShell als Administrator.
 1. Geben Sie `Connect-MsolService` ein, um die Verbindung mit Ihrem Azure-Mandanten herzustellen.  
-1. Geben Sie `get-msoldevice -deviceId <deviceId>`ein.
+1. Geben Sie `get-msoldevice -deviceId <deviceId>` ein.
 1. Vergewissern Sie sich, dass **Aktiviert** auf **True** festgelegt ist.
 
 ## <a name="troubleshoot-your-implementation"></a>Problembehandlung bei der Implementierung
 
-Wenn bei der Azure AD-Hybrideinbindung für in Domänen eingebundene Windows-Geräte Probleme auftreten, finden Sie weitere Informationen unter:
+Sollten bei der Azure AD-Hybrideinbindung für in Domänen eingebundene Windows-Geräte Probleme auftreten, finden Sie weitere Informationen unter:
 
-- [Problembehandlung für in Azure AD eingebundene aktuelle Windows-Hybridgeräte](troubleshoot-hybrid-join-windows-current.md)
-- [Problembehandlung für in Azure AD eingebundene kompatible Windows-Hybridgeräte](troubleshoot-hybrid-join-windows-legacy.md)
+- [Problembehandlung für in Azure AD eingebundene aktuelle Windows-Hybridgeräte](troubleshoot-hybrid-join-windows-current.md)
+- [Problembehandlung für in Azure AD eingebundene kompatible Windows-Hybridgeräte](troubleshoot-hybrid-join-windows-legacy.md)
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- Weitere Informationen zur Verwaltung von Geräten im Azure AD-Portal finden Sie unter [Verwalten von Geräten mithilfe des Azure-Portals](device-management-azure-portal.md).
+Erfahren Sie, wie Sie [Geräteidentitäten im Azure-Portal verwalten](device-management-azure-portal.md).
 
 <!--Image references-->
 [1]: ./media/active-directory-conditional-access-automatic-device-registration-setup/12.png

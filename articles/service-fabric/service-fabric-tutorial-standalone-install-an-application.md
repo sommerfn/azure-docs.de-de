@@ -15,12 +15,12 @@ ms.workload: NA
 ms.date: 05/11/2018
 ms.author: dekapur
 ms.custom: mvc
-ms.openlocfilehash: 5bc326bbc16ef93d484425f26b6f8226150c77c6
-ms.sourcegitcommit: 009334a842d08b1c83ee183b5830092e067f4374
+ms.openlocfilehash: 58daa53dba8f18c3f73253008fe687ba8b0d0839
+ms.sourcegitcommit: a52d48238d00161be5d1ed5d04132db4de43e076
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/29/2019
-ms.locfileid: "66302420"
+ms.lasthandoff: 06/20/2019
+ms.locfileid: "67274076"
 ---
 # <a name="tutorial-deploy-an-application-on-your-service-fabric-standalone-cluster"></a>Tutorial: Bereitstellen einer Anwendung in Ihrem eigenständigen Service Fabric-Cluster
 
@@ -61,7 +61,7 @@ Die heruntergeladene Anwendung kann direkt über Visual Studio in einem Cluster 
 
 4. Klicken Sie im Projektmappen-Explorer mit der rechten Maustaste auf das Anwendungsprojekt `Voting`, und klicken Sie anschließend auf **Veröffentlichen**.
 
-5. Klicken Sie auf das Dropdownmenü für den **Verbindungsendpunkt**, und geben Sie den öffentlichen DNS-Namen eines der Knoten in Ihrem Cluster ein.  Zum Beispiel, `ec2-34-215-183-77.us-west-2.compute.amazonaws.com:19000`
+5. Klicken Sie auf das Dropdownmenü für den **Verbindungsendpunkt**, und geben Sie den öffentlichen DNS-Namen eines der Knoten in Ihrem Cluster ein.  Beispiel: `ec2-34-215-183-77.us-west-2.compute.amazonaws.com:19000`. Beachten Sie, dass in Azure ein voll qualifizierter Domänenname (Fully Qualified Domain Name, FQDN) nicht automatisch vergeben wird, aber einfach [auf der VM-Übersichtsseite eingerichtet werden kann](https://docs.microsoft.com/azure/virtual-machines/linux/portal-create-fqdn).
 
 6. Öffnen Sie Ihren bevorzugten Browser, und geben Sie die Clusteradresse ein (also den Verbindungsendpunkt, den diese App am Port 8080 bereitstellt; Beispiel: ec2-34-215-183-77.us-west-2.compute.amazonaws.com:8080).
 

@@ -8,12 +8,12 @@ manager: jeconnoc
 ms.topic: tutorial
 ms.service: openshift
 ms.date: 05/14/2019
-ms.openlocfilehash: 651236c25ed912ebd7399d351677a67e3826278c
-ms.sourcegitcommit: 009334a842d08b1c83ee183b5830092e067f4374
+ms.openlocfilehash: 9094fa441ff5ffdd5f579fd072ffaa303961314d
+ms.sourcegitcommit: 82efacfaffbb051ab6dc73d9fe78c74f96f549c2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/29/2019
-ms.locfileid: "66306185"
+ms.lasthandoff: 06/20/2019
+ms.locfileid: "67304272"
 ---
 # <a name="tutorial-create-an-azure-red-hat-openshift-cluster"></a>Tutorial: Erstellen eines Azure Red Hat OpenShift-Clusters
 
@@ -106,6 +106,10 @@ az group create --name $CLUSTER_NAME --location $LOCATION
 ### <a name="optional-connect-the-clusters-virtual-network-to-an-existing-virtual-network"></a>Optional: Verbinden des virtuellen Netzwerks des Clusters mit einem vorhandenen virtuellen Netzwerk
 
 Wenn Sie keine Peeringverbindung zwischen dem virtuellen Netzwerk (VNET) des von Ihnen erstellten Clusters und einem vorhandenen VNET herstellen müssen, überspringen Sie diesen Schritt.
+
+Wenn Sie ein Peering mit einem Netzwerk durchführen, das nicht vom Standardabonnement abgedeckt wird, müssen Sie auch den Anbieter „Microsoft.ContainerService“ registrieren. Führen Sie dazu in diesem Abonnement den folgenden Befehl aus. Wenn sich andernfalls das VNET, mit dem Sie ein Peering durchführen, im selben Abonnement befindet, können Sie den Registrierungsschritt überspringen. 
+
+`az provider register -n Microsoft.ContainerService --wait`
 
 Rufen Sie zuerst die ID des vorhandenen VNETs ab. Die ID weist diese Form auf: `/subscriptions/{subscription id}/resourceGroups/{resource group of VNET}/providers/Microsoft.Network/virtualNetworks/{VNET name}`.
 

@@ -11,15 +11,15 @@ ms.devlang: na
 ms.topic: overview
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 03/13/2019
+ms.date: 06/12/2019
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: db9424ff4ddd2663ae1342294181dc885c6ed937
-ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
+ms.openlocfilehash: 4a5352e96e522a8bd32c428957b3bbfd62c5fa9b
+ms.sourcegitcommit: a52d48238d00161be5d1ed5d04132db4de43e076
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/04/2019
-ms.locfileid: "66479544"
+ms.lasthandoff: 06/20/2019
+ms.locfileid: "67275923"
 ---
 # <a name="what-is-role-based-access-control-rbac-for-azure-resources"></a>Was ist die rollenbasierte Zugriffssteuerung (Role-Based Access Control, RBAC) für Azure-Ressourcen?
 
@@ -72,9 +72,9 @@ Azure umfasst mehrere [integrierte Rollen](built-in-roles.md), die Sie verwenden
 - [Leser](built-in-roles.md#reader) können vorhandene Azure-Ressourcen anzeigen.
 - Mit einem [Benutzerzugriffsadministrator](built-in-roles.md#user-access-administrator) können Sie den Benutzerzugriff auf Azure-Ressourcen verwalten.
 
-Die verbleibenden integrierten Rollen ermöglichen die Verwaltung bestimmter Azure-Ressourcen. Mit der Rolle [Mitwirkender von virtuellen Computern](built-in-roles.md#virtual-machine-contributor) können Benutzer beispielsweise virtuelle Computer erstellen und verwalten. Sollten die integrierten Rollen nicht den Ansprüchen Ihrer Organisation genügen, können Sie Ihre eigenen [benutzerdefinierten Rollen für Azure-Ressourcen](custom-roles.md) erstellen.
+Die verbleibenden integrierten Rollen ermöglichen die Verwaltung bestimmter Azure-Ressourcen. Mit der Rolle [Mitwirkender von virtuellen Computern](built-in-roles.md#virtual-machine-contributor) können Benutzer beispielsweise virtuelle Computer erstellen und verwalten. Sollten die integrierten Rollen den individuellen Ansprüchen Ihrer Organisation nicht genügen, können Sie Ihre eigenen [benutzerdefinierten Rollen für Azure-Ressourcen](custom-roles.md) erstellen.
 
-Azure hat Datenvorgänge eingeführt (derzeit in der Vorschauversion), durch die Sie Zugriff auf Daten in einem Objekt erteilen können. Wenn ein Benutzer z.B. über Lesezugriff auf Daten in einem Speicherkonto verfügt, kann er die Blobs in diesem Speicherkonto lesen. Weitere Informationen finden Sie unter [Grundlegendes zu Rollendefinitionen für Azure-Ressourcen](role-definitions.md).
+Mit Datenvorgängen in Azure können Sie Zugriff auf Daten in einem Objekt erteilen. Wenn ein Benutzer z.B. über Lesezugriff auf Daten in einem Speicherkonto verfügt, kann er die Blobs in diesem Speicherkonto lesen. Weitere Informationen finden Sie unter [Grundlegendes zu Rollendefinitionen für Azure-Ressourcen](role-definitions.md).
 
 ### <a name="scope"></a>`Scope`
 
@@ -108,10 +108,7 @@ Was geschieht bei mehreren überlappenden Rollenzuweisungen? RBAC ist ein additi
 
 ## <a name="deny-assignments"></a>Ablehnungszuweisungen
 
-Früher war RBAC ein Modell, in dem es nur Zulassungen und keine Ablehnungen gab, jetzt unterstützt RBAC jedoch auch Ablehnungszuweisungen auf eingeschränkte Weise. Ähnlich wie eine Rollenzuweisung verknüpft eine *Ablehnungszuweisung* in einem bestimmten Bereich einen Satz von Aktionen mit einem Benutzer, einer Gruppe, einem Dienstprinzipal oder einer verwalteten Identität, um den Zugriff zu verweigern. In einer Rollenzuweisung wird einen Satz von Aktionen definiert, die *zulässig* sind, während in einer Ablehnungszuweisung eine Reihe von Aktionen definiert wird, die *nicht zulässig* sind. Das heißt, Ablehnungszuweisungen blockieren Aktionen für bestimmte Benutzer, auch wenn diese durch eine Rollenzuweisung Zugriff erhalten. Ablehnungszuweisungen haben Vorrang vor Rollenzuweisungen. Weitere Informationen finden Sie unter [Grundlegendes zu Ablehnungszuweisungen](deny-assignments.md) und [Anzeigen von Ablehnungszuweisungen für Azure-Ressourcen mit dem Azure-Portal](deny-assignments-portal.md).
-
-> [!NOTE]
-> Zu diesem Zeitpunkt können Sie nur dann Ihre eigenen Ablehnungszuweisungen hinzufügen, wenn Sie Azure Blueprints verwenden. Weitere Informationen finden Sie unter [Schützen neuer Ressourcen mit Azure Blueprints-Ressourcensperren](../governance/blueprints/tutorials/protect-new-resources.md).
+Früher war RBAC ein Modell, in dem es nur Zulassungen und keine Ablehnungen gab, jetzt unterstützt RBAC jedoch auch Ablehnungszuweisungen auf eingeschränkte Weise. Ähnlich wie eine Rollenzuweisung verknüpft eine *Ablehnungszuweisung* in einem bestimmten Bereich einen Satz von Aktionen mit einem Benutzer, einer Gruppe, einem Dienstprinzipal oder einer verwalteten Identität, um den Zugriff zu verweigern. In einer Rollenzuweisung wird einen Satz von Aktionen definiert, die *zulässig* sind, während in einer Ablehnungszuweisung eine Reihe von Aktionen definiert wird, die *nicht zulässig* sind. Das heißt, Ablehnungszuweisungen blockieren Aktionen für bestimmte Benutzer, auch wenn diese durch eine Rollenzuweisung Zugriff erhalten. Ablehnungszuweisungen haben Vorrang vor Rollenzuweisungen. Weitere Informationen finden Sie unter [Verstehen von Ablehnungszuweisungen für Azure-Ressourcen](deny-assignments.md).
 
 ## <a name="how-rbac-determines-if-a-user-has-access-to-a-resource"></a>Ermitteln des Benutzerzugriffs auf eine Ressource durch RBAC
 

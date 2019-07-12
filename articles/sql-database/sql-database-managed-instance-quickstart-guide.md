@@ -12,12 +12,12 @@ ms.author: jovanpop
 ms.reviewer: sstein, carlr
 manager: craigg
 ms.date: 03/25/2019
-ms.openlocfilehash: 739afe52403633b1a37f57f0005a85972cc78a39
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: ec0007e2d53a3fd3cae158375b696379d923b4b3
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59360171"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67447766"
 ---
 # <a name="getting-started-with-azure-sql-database-managed-instance"></a>Erste Schritte mit verwalteten Azure SQL-Datenbank-Instanzen
 
@@ -79,3 +79,4 @@ In den Artikeln in diesen Schnellstarts erfahren Sie, wie Sie schnell eine verwa
 - Machen Sie sich mit der [allgemeinen Liste mit unterstützten Features in verwalteten Instanzen](sql-database-features.md) sowie mit [Details und bekannten Problemen](sql-database-managed-instance-transact-sql-information.md) vertraut.
 - Informieren Sie sich über [technische Eigenschaften der verwalteten Instanz](sql-database-managed-instance-resource-limits.md#instance-level-resource-limits).
 - Weiterführende Schrittanleitungen finden Sie unter [Verwenden einer verwalteten Instanz in Azure SQL-Datenbank](sql-database-howto-managed-instance.md).
+- [Identifizieren der richtigen Azure SQL Datenbank-SKU/Verwaltete-Instanz-SKU für Ihre lokale Datenbank](/sql/dma/dma-sku-recommend-sql-db/).

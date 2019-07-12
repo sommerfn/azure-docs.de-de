@@ -10,12 +10,12 @@ ms.subservice: qna-maker
 ms.topic: quickstart
 ms.date: 02/04/2019
 ms.author: diberry
-ms.openlocfilehash: 85d5fa1cc036737497e276413985e0828e3b51f6
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: c6fddec80da1baa852a2f3712a94b785d775919e
+ms.sourcegitcommit: 6e6813f8e5fa1f6f4661a640a49dc4c864f8a6cb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65788716"
+ms.lasthandoff: 06/17/2019
+ms.locfileid: "67151044"
 ---
 # <a name="quickstart-create-a-knowledge-base-in-qna-maker-using-java"></a>Schnellstart: Erstellen einer Wissensdatenbank in QnA Maker mithilfe von Java
 
@@ -100,7 +100,7 @@ Wiederholen Sie den Aufruf, bis er erfolgreich abgeschlossen wird oder ein Fehle
 ```
 
 ## <a name="add-a-main-method"></a>Hinzufügen einer main-Methode
-Die main-Methode erstellt die Wissensdatenbank und fragt anschließend den Status ab. Die **Vorgangs-ID** für „create“ wird im Feld **Location** des POST-Antwortheaders zurückgegeben und anschließend als Teil der Route in der GET-Anforderung verwendet. Die `while`-Schleife fragt den Status erneut ab, sofern er nicht abgeschlossen ist.
+Die main-Methode erstellt die Wissensdatenbank und fragt anschließend den Status ab. Die Vorgangs-ID wird im Feld **Location** des POST-Antwortheaders zurückgegeben und anschließend als Teil der Route in der GET-Anforderung verwendet. Die `while`-Schleife fragt den Status erneut ab, sofern er nicht abgeschlossen ist.
 
 [!code-java[Add main method](~/samples-qnamaker-java/documentation-samples/quickstarts/create-knowledge-base/CreateKB.java?range=152-191 "Add main method")]
 

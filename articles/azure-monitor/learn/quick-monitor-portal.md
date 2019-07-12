@@ -5,17 +5,17 @@ services: application-insights
 keywords: ''
 author: mrbullwinkle
 ms.author: mbullwin
-ms.date: 04/01/2019
+ms.date: 06/26/2019
 ms.service: application-insights
 ms.custom: mvc
 ms.topic: quickstart
 manager: carmonm
-ms.openlocfilehash: 08745c3ef3d4996340ec40af496f8f0a5e0201c3
-ms.sourcegitcommit: 1fbc75b822d7fe8d766329f443506b830e101a5e
+ms.openlocfilehash: 6d26cedb0dd836846d7e9f00539fe101c944f478
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/14/2019
-ms.locfileid: "65595735"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67442205"
 ---
 # <a name="start-monitoring-your-aspnet-web-application"></a>Starten der Überwachung Ihrer ASP.NET-Webanwendung
 
@@ -63,13 +63,13 @@ Sie können jetzt Application Insights im Azure-Portal öffnen, um verschiedene 
 
 1. Erweitern Sie im Projektmappen-Explorer den Ordner **Verbundene Dienste** (Wolkensymbol mit Stecker), klicken Sie mit der rechten Maustaste auf den Ordner **Application Insights**, und klicken Sie anschließend auf **Application Insights-Portal öffnen**.  Sie sehen einige Informationen zu Ihrer Anwendung sowie verschiedene Optionen.
 
-    ![Anwendungszuordnung](media/quick-monitor-portal/4overview.png)
+    ![Anwendungszuordnung](media/quick-monitor-portal/04-overview.png)
 
 2. Klicken Sie auf **Anwendungsübersicht**, um ein visuelles Layout der Abhängigkeitsbeziehungen zwischen den Komponenten Ihrer Anwendung zu erhalten.  Jede Komponente zeigt KPIs wie z.B. Last, Leistung, Fehler und Warnungen an.
 
-    ![Anwendungszuordnung](media/quick-monitor-portal/5appmap.png)
+    ![Anwendungszuordnung](media/quick-monitor-portal/05-appmap.png)
 
-3. Klicken Sie für eine der Anwendungskomponenten auf das Symbol für die **App-Analyse**: ![Anwendungszuordnung](media/quick-monitor-portal/app-analytics-icon.png) **In Analytics anzeigen**. Dadurch wird die **Application Insights-Analyse** geöffnet, die eine erweiterte Abfragesprache zum Analysieren aller Daten bereitstellt, die von Application Insights gesammelt werden.  In diesem Fall wird eine Abfrage für Sie generiert, die die Anzahl von Anforderungen als Diagramm darstellt. Sie können selbst Abfragen zum Analysieren anderer Daten schreiben.
+3. Klicken Sie für eine der Anwendungskomponenten auf das Symbol für die **App-Analyse**: ![Anwendungszuordnung](media/quick-monitor-portal/app-viewinlogs-icon.png) **In Protokollen anzeigen (Analytics)** . Dadurch wird **Protokolle (Analytics)** geöffnet. Hier steht eine erweiterte Abfragesprache zum Analysieren aller Daten zur Verfügung, die von Application Insights gesammelt werden. In diesem Fall wird eine Abfrage für Sie generiert, die die Anzahl von Anforderungen als Diagramm darstellt. Sie können selbst Abfragen zum Analysieren anderer Daten schreiben.
 
     ![Analytics](media/quick-monitor-portal/6viewanalytics.png)
 

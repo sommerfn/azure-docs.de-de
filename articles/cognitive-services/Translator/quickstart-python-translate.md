@@ -3,19 +3,19 @@ title: 'Schnellstart: Übersetzen von Text, Python – Textübersetzungs-API'
 titleSuffix: Azure Cognitive Services
 description: In dieser Schnellstartanleitung übersetzen Sie in weniger als zehn Minuten Text von einer Sprache in eine andere. Dazu verwenden Sie die Textübersetzungs-API mit Python.
 services: cognitive-services
-author: erhopf
+author: swmachan
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: quickstart
 ms.date: 06/04/2019
-ms.author: erhopf
-ms.openlocfilehash: 48e6aa8c098c702095c9e25207f04eef7fd46a4f
-ms.sourcegitcommit: adb6c981eba06f3b258b697251d7f87489a5da33
+ms.author: swmachan
+ms.openlocfilehash: 689aa655967910c0114f50eac522df00c5659d1b
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/04/2019
-ms.locfileid: "66514699"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67444907"
 ---
 # <a name="quickstart-use-the-translator-text-api-to-translate-a-string-using-python"></a>Schnellstart: Verwenden der Textübersetzungs-API zum Übersetzen einer Zeichenfolge mit Python
 
@@ -36,7 +36,10 @@ Erstellen Sie in Ihrer bevorzugten IDE oder Ihrem bevorzugten Editor ein neues P
 
 ```python
 # -*- coding: utf-8 -*-
-import os, requests, uuid, json
+import os
+import requests
+import uuid
+import json
 ```
 
 > [!NOTE]
@@ -92,13 +95,15 @@ headers = {
 }
 ```
 
+Wenn Sie ein Cognitive Services-Abonnement mehrerer Dienste verwenden, müssen Sie auch `Ocp-Apim-Subscription-Region` in Ihre Anforderungsparameter aufnehmen. [Erfahren Sie mehr über die Authentifizierung mit dem Abonnement für mehrere Dienste](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference#authentication). 
+
 ## <a name="create-a-request-to-translate-text"></a>Erstellen einer Anforderung zum Übersetzen von Text
 
 Definieren Sie die Zeichenfolge (oder Zeichenfolgen), die Sie übersetzen möchten:
 
 ```python
 body = [{
-    'text' : 'Hello World!'
+    'text': 'Hello World!'
 }]
 ```
 
@@ -114,7 +119,8 @@ response = request.json()
 Im letzten Schritt werden die Ergebnisse ausgegeben. In diesem Codeausschnitt werden die Ergebnisse übersichtlicher gemacht, indem die Schlüssel sortiert, Einzüge festgelegt und Element- und Schlüsseltrennzeichen deklariert werden.
 
 ```python
-print(json.dumps(response, sort_keys=True, indent=4, ensure_ascii=False, separators=(',', ': ')))
+print(json.dumps(response, sort_keys=True, indent=4,
+                 ensure_ascii=False, separators=(',', ': ')))
 ```
 
 ## <a name="put-it-all-together"></a>Korrektes Zusammenfügen

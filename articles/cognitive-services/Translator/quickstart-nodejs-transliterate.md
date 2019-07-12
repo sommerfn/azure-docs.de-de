@@ -3,19 +3,19 @@ title: 'Schnellstart: Transliteration von Text, Node.js: Textübersetzungs-API'
 titleSuffix: Azure Cognitive Services
 description: In dieser Schnellstartanleitung erfahren Sie, wie Sie Text mithilfe von Node.js und der Textübersetzungs-REST-API zwischen Skripts transliterieren (konvertieren). In diesem Beispiel wird Japanisch in das lateinische Alphabet transliteriert.
 services: cognitive-services
-author: erhopf
+author: swmachan
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: quickstart
 ms.date: 06/04/2019
-ms.author: erhopf
-ms.openlocfilehash: a76e2c386e9c82b70a7945b4670d60caf9856036
-ms.sourcegitcommit: adb6c981eba06f3b258b697251d7f87489a5da33
+ms.author: swmachan
+ms.openlocfilehash: c7b5a75f9c73ef470ebb84a8b42f7400c81f0b96
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/04/2019
-ms.locfileid: "66515118"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67444968"
 ---
 # <a name="quickstart-use-the-translator-text-api-to-transliterate-text-with-nodejs"></a>Schnellstart: Verwenden der Textübersetzungs-API für die Transliteration von Text mit Node.js
 
@@ -93,9 +93,11 @@ let options = {
 };
 ```
 
-### <a name="authentication"></a>Authentication
+Eine Anforderung lässt sich am einfachsten authentifizieren, indem Sie den Abonnementschlüssel als `Ocp-Apim-Subscription-Key`-Header übergeben. Diese Vorgehensweise wird in diesem Beispiel verwendet. Alternativ können Sie den Abonnementschlüssel durch ein Zugriffstoken ersetzen und dieses als `Authorization`-Header übergeben, um Ihre Anforderung zu überprüfen. 
 
-Eine Anforderung lässt sich am einfachsten authentifizieren, indem Sie den Abonnementschlüssel als `Ocp-Apim-Subscription-Key`-Header übergeben. Diese Vorgehensweise wird in diesem Beispiel verwendet. Alternativ können Sie den Abonnementschlüssel durch ein Zugriffstoken ersetzen und dieses als `Authorization`-Header übergeben, um Ihre Anforderung zu überprüfen. Weitere Informationen finden Sie unter [Authentifizierung](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference#authentication).
+Wenn Sie ein Cognitive Services-Abonnement mehrerer Dienste verwenden, müssen Sie auch `Ocp-Apim-Subscription-Region` in Ihre Anforderungsheader aufnehmen. 
+
+Weitere Informationen finden Sie unter [Authentifizierung](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference#authentication).
 
 ## <a name="make-the-request-and-print-the-response"></a>Senden der Anforderung und Ausgeben der Antwort
 

@@ -5,13 +5,13 @@ ms.service: cosmos-db
 ms.topic: tutorial
 author: deborahc
 ms.author: dech
-ms.date: 05/20/2019
-ms.openlocfilehash: 9e7342ebcbcf536b26e6cf7fb89e3cf58666d24f
-ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
+ms.date: 06/21/2019
+ms.openlocfilehash: d7d9d62525161e6871cafd65cf5cd2c403cf0579
+ms.sourcegitcommit: 08138eab740c12bf68c787062b101a4333292075
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/20/2019
-ms.locfileid: "65953959"
+ms.lasthandoff: 06/22/2019
+ms.locfileid: "67331774"
 ---
 # <a name="use-the-azure-cosmos-emulator-for-local-development-and-testing"></a>Verwenden des Azure Cosmos-Emulators für lokale Entwicklungs- und Testvorgänge
 
@@ -413,6 +413,57 @@ Navigieren Sie in Ihrem Browser zu folgender URL, um den Daten-Explorer zu öffn
 
     https://<emulator endpoint provided in response>/_explorer/index.html
 
+## Ausführung unter Mac oder Linux<a id="mac"></a>
+
+Der Cosmos-Emulator kann derzeit nur unter Windows ausgeführt werden. Benutzer mit Mac oder Linux können den Emulator auf einer Windows-VM ausführen, die einen Hypervisor wie Parallels oder VirtualBox hostet. Dies kann mithilfe folgender Schritte ermöglicht werden.
+
+Führen Sie innerhalb der Windows-VM den folgenden Befehl aus, und notieren Sie sich die IPv4-Adresse.
+
+```cmd
+ipconfig.exe
+```
+
+Innerhalb Ihrer Anwendung müssen Sie den URI für das DocumentClient-Objekt ändern, um die von `ipconfig.exe` zurückgegebene IPv4-Adresse zu verwenden. Der nächste Schritt ist, die CA-Validierung bei der Erstellung des DocumentClient-Objekts zu umgehen. Dazu müssen Sie dem DocumentClient-Konstruktor einen HttpClientHandler zur Verfügung stellen, der eine eigene Implementierung für ServerCertificateCustomValidationCallback hat.
+
+Unten sehen Sie ein Beispiel für den Code.
+
+```csharp
+using System;
+using Microsoft.Azure.Documents;
+using Microsoft.Azure.Documents.Client;
+using System.Net.Http;
+
+namespace emulator
+{
+    class Program
+    {
+        static async void Main(string[] args)
+        {
+            string strEndpoint = "https://10.135.16.197:8081/";  //IPv4 address from ipconfig.exe
+            string strKey = "C2y6yDjf5/R+ob0N8A7Cgv30VRDJIWEHLM+4QDU5DE2nQ9nDuVTqobD4b8mGGyPMbIZnqyMsEcaGQy67XIw/Jw==";
+
+            //Work around the CA validation
+            var httpHandler = new HttpClientHandler()
+            {
+                ServerCertificateCustomValidationCallback = (req,cert,chain,errors) => true
+            };
+
+            //Pass http handler to document client
+            using (DocumentClient client = new DocumentClient(new Uri(strEndpoint), strKey, httpHandler))
+            {
+                Database database = await client.CreateDatabaseIfNotExistsAsync(new Database { Id = "myDatabase" });
+                Console.WriteLine($"Created Database: id - {database.Id} and selfLink - {database.SelfLink}");
+            }
+        }
+    }
+}
+```
+
+Starten Sie schließlich den Cosmos-Emulator auf der Windows-VM mit den folgenden Optionen über die Befehlszeile.
+
+```cmd
+Microsoft.Azure.Cosmos.Emulator.exe /AllowNetworkAccess /Key=C2y6yDjf5/R+ob0N8A7Cgv30VRDJIWEHLM+4QDU5DE2nQ9nDuVTqobD4b8mGGyPMbIZnqyMsEcaGQy67XIw/Jw==
+```
 
 ## <a name="troubleshooting"></a>Problembehandlung
 
@@ -450,7 +501,7 @@ Zum Sammeln von Debugablaufverfolgungen führen Sie die folgenden Befehle an ein
 ### <a id="uninstall"></a>Deinstallieren des lokalen Emulators
 
 1. Schließen Sie alle geöffneten Instanzen des lokalen Emulators, indem Sie mit der rechten Maustaste auf der Taskleiste auf das Symbol für den Azure Cosmos-Emulator klicken und anschließend auf „Beenden“ klicken. Bis alle Instanzen beendet wurden, kann unter Umständen eine Minute vergehen.
-2. Geben Sie in das Windows-Suchfeld **Apps & Features** ein, und klicken Sie auf das Ergebnis **Apps & Features (Systemeinstellungen)**.
+2. Geben Sie in das Windows-Suchfeld **Apps & Features** ein, und klicken Sie auf das Ergebnis **Apps & Features (Systemeinstellungen)** .
 3. Scrollen Sie in der Liste der Apps zu **Azure Cosmos DB-Emulator**, wählen ihn aus, und klicken Sie auf **Deinstallieren**. Bestätigen Sie den Vorgang, und klicken Sie erneut auf **Deinstallieren**.
 4. Wenn die App deinstalliert ist, navigieren Sie zu `%LOCALAPPDATA%\CosmosDBEmulator` und löschen den Ordner.
 

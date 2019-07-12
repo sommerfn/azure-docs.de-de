@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 05/03/2019
 ms.author: jeedes
-ms.openlocfilehash: 611867cf5606d5a1078706e1c0f67f673a7fa500
-ms.sourcegitcommit: 25a60179840b30706429c397991157f27de9e886
+ms.openlocfilehash: aa3548a71e403728cbec4b8df2b0dce1cf6abde7
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/28/2019
-ms.locfileid: "66254561"
+ms.lasthandoff: 06/17/2019
+ms.locfileid: "67164476"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-mitel-micloud-connect"></a>Tutorial: Azure Active Directory-Integration in Mitel MiCloud Connect
 
@@ -148,7 +148,7 @@ Um MiCloud Connect mit einmaligem Anmelden für Azure AD zu konfigurieren, emp
 
 ### <a name="create-an-azure-ad-test-user"></a>Erstellen eines Azure AD-Testbenutzers 
 
-In diesem Abschnitt erstellen Sie im Azure-Portal einen Testbenutzer namens Britta Simon.
+In diesem Abschnitt erstellen Sie im Azure-Portal eine Testbenutzerin namens „Britta Simon“.
 
 1. Klicken Sie im Azure-Portal im linken Bereich auf **Azure Active Directory**, auf **Benutzer** und dann auf **Alle Benutzer**.
 
@@ -210,7 +210,7 @@ Erstellen Sie in Ihrem MiCloud Connect-Konto einen Benutzer mit den folgenden D
 * **Geschäftliche E-Mail-Adresse:** `brittasimon@<yourcompanydomain>.<extension>`   
 (Beispiel: [brittasimon@contoso.com](mailto:brittasimon@contoso.com))
 
-* **Benutzername:** `brittasimon@<yourcompanydomain>.<extension> `  
+* **Benutzername:** `brittasimon@<yourcompanydomain>.<extension>`  
 (Beispiel: [brittasimon@contoso.com](mailto:brittasimon@contoso.com). Der Benutzername ist in der Regel mit der geschäftlichen E-Mail-Adresse des Benutzers identisch.)
 
 **HINWEIS:** Der MiCloud Connect-Benutzername muss mit der E-Mail-Adresse des Benutzers in Azure identisch sein.

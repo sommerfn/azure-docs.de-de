@@ -3,19 +3,19 @@ title: 'Schnellstart: Abrufen einer Liste mit den unterstützten Sprachen, Pytho
 titleSuffix: Azure Cognitive Services
 description: In dieser Schnellstartanleitung rufen Sie eine Liste mit den für Übersetzung, Transliteration und Wörterbuchsuche unterstützten Sprachen sowie Beispiele ab. Hierzu verwenden Sie die Textübersetzungs-API mit Python.
 services: cognitive-services
-author: erhopf
+author: swmachan
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: quickstart
 ms.date: 06/04/2019
-ms.author: erhopf
-ms.openlocfilehash: fe2ab3952b68243f7e95ebf754a42e58006f012b
-ms.sourcegitcommit: adb6c981eba06f3b258b697251d7f87489a5da33
+ms.author: swmachan
+ms.openlocfilehash: 23a850723e4f7b4df2a8fca969380156586d6aae
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/04/2019
-ms.locfileid: "66514730"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67444922"
 ---
 # <a name="quickstart-use-the-translator-text-api-to-get-a-list-of-supported-languages-using-python"></a>Schnellstart: Verwenden der Textübersetzungs-API zum Abrufen einer Liste unterstützter Sprachen mit Python
 
@@ -33,7 +33,10 @@ Erstellen Sie in Ihrer bevorzugten IDE oder Ihrem bevorzugten Editor ein neues P
 
 ```python
 # -*- coding: utf-8 -*-
-import os, requests, uuid, json
+import os
+import requests
+import uuid
+import json
 ```
 
 > [!NOTE]
@@ -67,6 +70,8 @@ headers = {
 }
 ```
 
+Wenn Sie ein Cognitive Services-Abonnement mehrerer Dienste verwenden, müssen Sie auch `Ocp-Apim-Subscription-Region` in Ihre Anforderungsparameter aufnehmen. [Erfahren Sie mehr über die Authentifizierung mit dem Abonnement für mehrere Dienste](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference#authentication). 
+
 ## <a name="create-a-request-to-get-a-list-of-supported-languages"></a>Erstellen einer Anforderung zum Abrufen einer Liste mit unterstützten Sprachen
 
 Wir erstellen mit dem `requests`-Modul eine GET-Anforderung. Hierfür werden zwei Argumente verwendet, nämlich die verkettete URL und die Anforderungsheader:
@@ -81,7 +86,8 @@ response = request.json()
 Im letzten Schritt werden die Ergebnisse ausgegeben. In diesem Codeausschnitt werden die Ergebnisse übersichtlicher gemacht, indem die Schlüssel sortiert, Einzüge festgelegt und Element- und Schlüsseltrennzeichen deklariert werden.
 
 ```python
-print(json.dumps(response, sort_keys=True, indent=4, ensure_ascii=False, separators=(',', ': ')))
+print(json.dumps(response, sort_keys=True, indent=4,
+                 ensure_ascii=False, separators=(',', ': ')))
 ```
 
 ## <a name="put-it-all-together"></a>Korrektes Zusammenfügen

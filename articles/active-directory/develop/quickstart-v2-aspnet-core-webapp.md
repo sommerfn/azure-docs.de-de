@@ -17,12 +17,12 @@ ms.date: 04/11/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e51437a99217316ead50d4075be52f089225e618
-ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
+ms.openlocfilehash: 04d13786dc731627ba2000ab6069ea06ed3183ba
+ms.sourcegitcommit: d2785f020e134c3680ca1c8500aa2c0211aa1e24
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65190872"
+ms.lasthandoff: 07/04/2019
+ms.locfileid: "67565457"
 ---
 # <a name="quickstart-add-sign-in-with-microsoft-to-an-aspnet-core-web-app"></a>Schnellstart: Hinzufügen von „Bei Microsoft anmelden“ zu einer ASP.NET Core-Web-App
 
@@ -86,6 +86,10 @@ In diesem Schnellstart erfahren Sie, wie eine ASP. NET Core-Web-App persönliche
     "TenantId": "Enter_the_Tenant_Info_Here"
     ```
 
+> [!div class="sxs-lookup" renderon="portal"]
+> > [!NOTE]
+> > Dieser Schnellstart unterstützt Enter_the_Supported_Account_Info_Here.
+
 > [!div renderon="docs"]
 > Hinweis:
 > - `Enter_the_Application_Id_here`: Die **Anwendungs-ID (Client)** für die im Azure-Portal registrierte Anwendung. Den Wert für **Anwendungs-ID (Client)** finden Sie auf der Seite **Übersicht** der App.
@@ -95,7 +99,7 @@ In diesem Schnellstart erfahren Sie, wie eine ASP. NET Core-Web-App persönliche
 >   - Unterstützt Ihre Anwendung **Alle Microsoft-Kontobenutzer** ersetzen Sie diesen Wert durch `common`.
 >
 > > [!TIP]
-> > Die Werte für **Anwendungs-ID (Client)**, **Verzeichnis-ID (Mandant)** und **Unterstützte Kontotypen** finden Sie im Azure-Portal auf der Seite **Übersicht** der App.
+> > Die Werte für **Anwendungs-ID (Client)** , **Verzeichnis-ID (Mandant)** und **Unterstützte Kontotypen** finden Sie im Azure-Portal auf der Seite **Übersicht** der App.
 
 ## <a name="more-information"></a>Weitere Informationen
 

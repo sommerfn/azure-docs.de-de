@@ -7,15 +7,15 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.custom: mvc
 ms.topic: quickstart
-ms.date: 05/02/2019
-ms.openlocfilehash: 8a0397440e2b10bf1ad6b4f1be999888e09bad8f
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.date: 06/12/2019
+ms.openlocfilehash: a1ccfd23338e2ee18c335fe8bd9869ecdf9c2f08
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65148127"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67120814"
 ---
-# <a name="quickstart-create-an-apache-kafka-on-hdinsight-cluster"></a>Schnellstart: Erstellen eines Apache Kafka-Clusters in HDInsight
+# <a name="quickstart-create-apache-kafka-cluster-in-azure-hdinsight-using-powershell"></a>Schnellstart: Erstellen eines Apache Kafka-Clusters in Azure HDInsight mithilfe von PowerShell
 
 [Apache Kafka](https://kafka.apache.org/) ist eine verteilte Open Source-Streamingplattform. Sie wird häufig als Nachrichtenbroker eingesetzt, da sie eine ähnliche Funktionalität wie eine Veröffentlichen-Abonnieren-Nachrichtenwarteschlange aufweist. 
 
@@ -23,14 +23,11 @@ In dieser Schnellstartanleitung lernen Sie, wie Sie mithilfe von Azure PowerShel
 
 [!INCLUDE [delete-cluster-warning](../../../includes/hdinsight-delete-cluster-warning.md)]
 
-> [!IMPORTANT]  
-> Auf die Kafka-API kann nur von Ressourcen im gleichen virtuellen Netzwerk zugegriffen werden. In dieser Schnellstartanleitung greifen Sie über SSH direkt auf den Cluster zu. Wenn Sie eine Verbindung zwischen anderen Diensten, Netzwerken und virtuellen Computern und Kafka herstellen möchten, müssen Sie zunächst ein virtuelles Netzwerk und anschließend die Ressourcen in diesem Netzwerk erstellen.
->
-> Weitere Informationen finden Sie im Dokument [Herstellen einer Verbindung mit Apache Kafka über ein virtuelles Azure-Netzwerk](apache-kafka-connect-vpn-gateway.md).
+Auf die Kafka-API kann nur von Ressourcen im gleichen virtuellen Netzwerk zugegriffen werden. In dieser Schnellstartanleitung greifen Sie über SSH direkt auf den Cluster zu. Wenn Sie eine Verbindung zwischen anderen Diensten, Netzwerken und virtuellen Computern und Kafka herstellen möchten, müssen Sie zunächst ein virtuelles Netzwerk und anschließend die Ressourcen in diesem Netzwerk erstellen. Weitere Informationen finden Sie im Dokument [Herstellen einer Verbindung mit Apache Kafka in HDInsight über ein virtuelles Azure-Netzwerk](apache-kafka-connect-vpn-gateway.md).
+
+Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) erstellen, bevor Sie beginnen.
 
 ## <a name="prerequisites"></a>Voraussetzungen
-
-* Ein Azure-Abonnement. Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) erstellen, bevor Sie beginnen.
 
 * Das PowerShell-[Az-Modul](https://docs.microsoft.com/powershell/azure/overview) ist installiert.
 
@@ -132,19 +129,13 @@ New-AzHDInsightCluster `
         -DisksPerWorkerNode $disksPerNode
 ```
 
-> [!WARNING]  
-> Das Erstellen des HDInsight-Clusters kann bis zu 20 Minuten dauern.
+Das Erstellen des HDInsight-Clusters kann bis zu 20 Minuten dauern.
 
-> [!TIP]  
-> Mit dem Parameter `-DisksPerWorkerNode` wird die Skalierbarkeit von Kafka in HDInsight konfiguriert. Kafka in HDInsight verwendet den lokalen Datenträger der virtuellen Computer im Cluster, um Daten zu speichern. Da Kafka sehr E/A-intensiv ist, wird [Azure Managed Disks](../../virtual-machines/windows/managed-disks-overview.md) verwendet, um einen hohen Durchsatz zu ermöglichen und mehr Speicher pro Knoten bereitzustellen. 
->
-> Der Typ des verwalteten Datenträgers kann entweder __Standard__ (HDD) oder __Premium__ (SSD) sein. Der Typ des Datenträgers hängt von der VM-Größe ab, die von den Workerknoten (Kafka-Broker) verwendet werden. Premium-Datenträger werden automatisch mit virtuellen Computern der DS- und GS-Serie verwendet. Alle anderen virtuellen Computertypen verwenden den Standardtyp. Sie können den VM-Typ mit dem `-WorkerNodeSize`-Parameter festlegen. Weitere Informationen zu Parametern finden Sie in der Dokumentation [New-AzHDInsightCluster](/powershell/module/az.HDInsight/New-azHDInsightCluster).
+Mit dem Parameter `-DisksPerWorkerNode` wird die Skalierbarkeit von Kafka in HDInsight konfiguriert. Kafka in HDInsight verwendet den lokalen Datenträger der virtuellen Computer im Cluster, um Daten zu speichern. Da Kafka sehr E/A-intensiv ist, wird [Azure Managed Disks](../../virtual-machines/windows/managed-disks-overview.md) verwendet, um einen hohen Durchsatz zu ermöglichen und mehr Speicher pro Knoten bereitzustellen.
 
+Der Typ des verwalteten Datenträgers kann entweder __Standard__ (HDD) oder __Premium__ (SSD) sein. Der Typ des Datenträgers hängt von der VM-Größe ab, die von den Workerknoten (Kafka-Broker) verwendet werden. Premium-Datenträger werden automatisch mit virtuellen Computern der DS- und GS-Serie verwendet. Alle anderen virtuellen Computertypen verwenden den Standardtyp. Sie können den VM-Typ mit dem `-WorkerNodeSize`-Parameter festlegen. Weitere Informationen zu Parametern finden Sie in der Dokumentation [New-AzHDInsightCluster](/powershell/module/az.HDInsight/New-azHDInsightCluster).
 
-> [!IMPORTANT]  
-> Wenn Sie die Verwendung von mehr als 32 Workerknoten planen (entweder bei Erstellung des Clusters oder durch eine Skalierung des Clusters nach der Erstellung), müssen Sie mit dem `-HeadNodeSize`-Parameter eine VM-Größe von mindestens 8 Kernen und 14 GB Arbeitsspeicher (RAM) angeben.
->
-> Weitere Informationen zu Knotengrößen und den damit verbundenen Kosten finden Sie unter [HDInsight – Preise](https://azure.microsoft.com/pricing/details/hdinsight/).
+Wenn Sie die Verwendung von mehr als 32 Workerknoten planen (entweder bei Erstellung des Clusters oder durch eine Skalierung des Clusters nach der Erstellung), müssen Sie mit dem `-HeadNodeSize`-Parameter eine VM-Größe von mindestens 8 Kernen und 14 GB Arbeitsspeicher (RAM) angeben. Weitere Informationen zu Knotengrößen und den damit verbundenen Kosten finden Sie unter [HDInsight – Preise](https://azure.microsoft.com/pricing/details/hdinsight/).
 
 ## <a name="connect-to-the-cluster"></a>Verbinden mit dem Cluster
 
@@ -202,16 +193,13 @@ In diesem Abschnitt rufen Sie die Hostinformationen aus der Apache Ambari-REST-A
 
     Geben Sie bei entsprechender Aufforderung den Namen des Kafka-Clusters ein.
 
-3. Verwenden Sie den folgenden Befehl, um eine Umgebungsvariable mit Zookeeper-Hostinformationen festzulegen:
+3. Verwenden Sie den folgenden Befehl, um eine Umgebungsvariable mit Zookeeper-Hostinformationen festzulegen. Dieser Befehl ruft alle Zookeeper-Hosts ab und gibt dann nur die ersten beiden Einträge zurück. Diese Redundanz ist hilfreich, wenn ein Host nicht erreichbar ist.
 
     ```bash
     export KAFKAZKHOSTS=`curl -sS -u admin -G https://$CLUSTERNAME.azurehdinsight.net/api/v1/clusters/$CLUSTERNAME/services/ZOOKEEPER/components/ZOOKEEPER_SERVER | jq -r '["\(.host_components[].HostRoles.host_name):2181"] | join(",")' | cut -d',' -f1,2`
     ```
 
     Geben Sie das Kennwort des Anmeldekontos für den Cluster (nicht des SSH-Kontos) ein, wenn Sie dazu aufgefordert werden.
-
-    > [!NOTE]  
-    > Dieser Befehl ruft alle Zookeeper-Hosts ab und gibt dann nur die ersten beiden Einträge zurück. Diese Redundanz ist hilfreich, wenn ein Host nicht erreichbar ist.
 
 4. Vergewissern Sie sich mithilfe des folgenden Befehls, dass die Umgebungsvariable korrekt festgelegt ist:
 
@@ -257,15 +245,13 @@ Kafka speichert Datenströme in *Themen*. Mit dem Hilfsprogramm `kafka-topics.sh
 
     * Jede Partition wird auf drei Workerknoten im Cluster repliziert.
 
-        > [!IMPORTANT]  
-        > Wenn Sie den Cluster in einer Azure-Region mit drei Fehlerdomänen erstellt haben, verwenden Sie den Replikationsfaktor 3. Verwenden Sie andernfalls den Replikationsfaktor 4.
+        Wenn Sie den Cluster in einer Azure-Region mit drei Fehlerdomänen erstellt haben, verwenden Sie den Replikationsfaktor 3. Verwenden Sie andernfalls den Replikationsfaktor 4.
         
         In Regionen mit drei Fehlerdomänen ermöglicht der Replikationsfaktor 3 die Verteilung von Replikaten auf die Fehlerdomänen. In Regionen mit zwei Fehlerdomänen ermöglicht der Replikationsfaktor 4 die gleichmäßige Verteilung von Replikaten auf die Domänen.
         
         Informationen zur Anzahl von Fehlerdomänen in einer Region finden Sie im Dokument [Verwalten der Verfügbarkeit virtueller Linux-Computer](../../virtual-machines/windows/manage-availability.md#use-managed-disks-for-vms-in-an-availability-set).
 
-        > [!IMPORTANT]   
-        > Azure-Fehlerdomänen sind Kafka nicht bekannt. Beim Erstellen von Partitionsreplikaten für Themen kann es daher vorkommen, dass die Replikate nicht ordnungsgemäß für Hochverfügbarkeit verteilt werden.
+        Azure-Fehlerdomänen sind Kafka nicht bekannt. Beim Erstellen von Partitionsreplikaten für Themen kann es daher vorkommen, dass die Replikate nicht ordnungsgemäß für Hochverfügbarkeit verteilt werden.
 
         Verwenden Sie das [Tool zum Ausgleichen von Apache Kafka-Partitionen](https://github.com/hdinsight/hdinsight-kafka-tools), um Hochverfügbarkeit zu gewährleisten. Dieses Tool muss über eine SSH-Verbindung mit dem Hauptknoten des Kafka-Clusters ausgeführt werden.
 
@@ -324,8 +310,7 @@ Gehen Sie wie folgt vor, um Datensätze im zuvor erstellten Testthema zu speiche
    
     Die Datensätze werden mit dem Befehl aus dem Thema abgerufen und angezeigt. Mit `--from-beginning` wird der Consumer angewiesen, am Anfang des Datenstroms zu beginnen, damit alle Datensätze abgerufen werden.
 
-    > [!NOTE]  
-    > Falls Sie eine ältere Version von Kafka verwenden, ersetzen Sie `--bootstrap-server $KAFKABROKERS` durch `--zookeeper $KAFKAZKHOSTS`.
+    Falls Sie eine ältere Version von Kafka verwenden, ersetzen Sie `--bootstrap-server $KAFKABROKERS` durch `--zookeeper $KAFKAZKHOSTS`.
 
 4. Drücken Sie __STRG+C__, um den Consumer zu beenden.
 

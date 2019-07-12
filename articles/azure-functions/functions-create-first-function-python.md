@@ -11,12 +11,12 @@ ms.service: azure-functions
 ms.custom: mvc
 ms.devlang: python
 manager: jeconnoc
-ms.openlocfilehash: ea890a49fc7b6a153ece183b153f5bc2a49760b5
-ms.sourcegitcommit: 600d5b140dae979f029c43c033757652cddc2029
+ms.openlocfilehash: 5ef30fbf647492f79c64508d8306868aa1f6b278
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/04/2019
-ms.locfileid: "66496570"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67444575"
 ---
 # <a name="create-an-http-triggered-function-in-azure"></a>Erstellen einer durch HTTP ausgelösten Funktion in Azure
 
@@ -32,9 +32,9 @@ Für den Einstieg müssen Sie über Folgendes verfügen:
 
 + Installieren von [Python 3.6](https://www.python.org/downloads/)
 
-+ Installieren von [Azure Functions Core Tools](./functions-run-local.md#v2), Version 2.6.666 oder höher
++ Installation von [Azure Functions Core Tools](./functions-run-local.md#v2), Version 2.6.1071 oder höher.
 
-+ Installieren Sie die [Azure CLI](/cli/azure/install-azure-cli) (Version 2.x oder höher).
++ Installation von [Azure CLI](/cli/azure/install-azure-cli), Version 2.x oder höher.
 
 + Ein aktives Azure-Abonnement.
 
@@ -44,18 +44,18 @@ Für den Einstieg müssen Sie über Folgendes verfügen:
 
 Um Python-Funktionen lokal entwickeln und testen zu können, müssen Sie in einer Python 3.6-Umgebung arbeiten. Führen Sie die folgenden Befehle aus, um eine virtuelle Umgebung mit dem Namen `.env` zu erstellen und zu aktivieren.
 
-### <a name="bash-or-a-terminal-window"></a>Bash oder Terminalfenster:
+### <a name="bash"></a>Bash:
 
 ```bash
-python3.6 -m venv .env
-source .env/bin/activate
+python3.6 -m venv .venv
+source .venv/bin/activate
 ```
 
 ### <a name="powershell-or-a-windows-command-prompt"></a>PowerShell oder eine Windows-Eingabeaufforderung:
 
 ```powershell
-py -3.6 -m venv .env
-.env\scripts\activate
+py -3.6 -m venv .venv
+.venv\scripts\activate
 ```
 
 Die verbleibenden Befehle werden in der virtuellen Umgebung ausgeführt.
@@ -66,7 +66,7 @@ Ein Functions-Projekt stellt das Äquivalent einer Funktions-App in Azure dar. E
 
 Führen Sie in der virtuellen Umgebung den folgenden Befehl aus, und wählen Sie dabei **python** als Workerruntime aus.
 
-```command
+```console
 func init MyFunctionProj
 ```
 
@@ -78,25 +78,17 @@ Es wird ein Ordner mit dem Namen _MyFunctionProj_ erstellt, der die folgenden dr
 
 Navigieren Sie zum neuen MyFunctionProj-Ordner:
 
-```command
+```console
 cd MyFunctionProj
 ```
 
 Aktualisieren Sie als Nächstes die host.json-Datei, um Erweiterungsbundles zu aktivieren.  
 
-## <a name="reference-bindings"></a>Verweisbindungen
-
-Erweiterungsbundles vereinfachen im weiteren Verlauf das Hinzufügen von Bindungserweiterungen. Durch sie entfällt außerdem die Notwendigkeit, das .NET Core 2.x SDK zu installieren. Für Erweiterungsbundles ist Version 2.6.1071 der Core Tools oder eine neuere Version erforderlich. 
-
-[!INCLUDE [functions-extension-bundles](../../includes/functions-extension-bundles.md)]
-
-Jetzt können Sie Ihrem Projekt eine Funktion hinzufügen.
-
 ## <a name="create-a-function"></a>Erstellen einer Funktion
 
 Führen Sie den folgenden Befehl aus, um Ihrem Projekt eine Funktion hinzuzufügen:
 
-```command
+```console
 func new
 ```
 

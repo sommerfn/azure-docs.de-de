@@ -1,6 +1,6 @@
 ---
 title: 'Schnellstart: Erstellen von Apache Hadoop-Clustern mit Resource Manager – Azure HDInsight'
-description: Erfahren Sie, wie Sie HDInsight-Cluster erstellen.
+description: In diesem Schnellstart erstellen Sie einen Apache Hadoop-Cluster in Azure HDInsight mit einer Resource Manager-Vorlage.
 keywords: Erste Schritte mit Hadoop, Hadoop Linux, Hadoop-Schnellstart, erste Schritte mit Hive, Hive-Schnellstart
 ms.service: hdinsight
 author: hrasheed-msft
@@ -8,13 +8,13 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.custom: hdinsightactive,hdiseo17may2017,mvc,seodec18
 ms.topic: quickstart
-ms.date: 05/14/2019
-ms.openlocfilehash: 9084e8e0fe7707b5f115df80792cea102772b8e9
-ms.sourcegitcommit: 4c2b9bc9cc704652cc77f33a870c4ec2d0579451
+ms.date: 06/12/2019
+ms.openlocfilehash: 89d25c9c0a45b740bfb60a71f6d85bfbf4a4686a
+ms.sourcegitcommit: aa66898338a8f8c2eb7c952a8629e6d5c99d1468
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/17/2019
-ms.locfileid: "65861644"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67459866"
 ---
 # <a name="quickstart-create-apache-hadoop-cluster-in-azure-hdinsight-using-resource-manager-template"></a>Schnellstart: Erstellen eines Apache Hadoop-Clusters in Azure HDInsight mit einer Resource Manager-Vorlage
 
@@ -59,11 +59,8 @@ Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](htt
 > [!NOTE]  
 > Andere Methoden zur Erstellung von Clustern und Informationen zu den in diesem Schnellstart verwendeten Eigenschaften finden Sie unter [Erstellen von HDInsight-Clustern](../hdinsight-hadoop-provision-linux-clusters.md).
 
-## <a name="troubleshoot"></a>Problembehandlung
-
-Falls beim Erstellen von HDInsight-Clustern Probleme auftreten, sehen Sie sich die [Voraussetzungen für die Zugriffssteuerung](../hdinsight-hadoop-customize-cluster-linux.md#access-control) an.
-
 ## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
+
 Nachdem Sie den Schnellstart abgeschlossen haben, können Sie den Cluster löschen. Mit HDInsight werden Ihre Daten im Azure-Speicher gespeichert, sodass Sie einen Cluster problemlos löschen können, wenn er nicht verwendet wird. Für einen HDInsight-Cluster fallen auch dann Gebühren an, wenn er nicht verwendet wird. Da die Gebühren für den Cluster erheblich höher sind als die Kosten für den Speicher, ist es sinnvoll, nicht verwendete Cluster zu löschen.
 
 > [!NOTE]  
@@ -84,37 +81,4 @@ Nachdem Sie den Schnellstart abgeschlossen haben, können Sie den Cluster lösch
 In diesem Schnellstart haben Sie erfahren, wie Sie einen Apache Hadoop-Cluster in HDInsight mit einer Resource Manager-Vorlage erstellen. Im nächsten Artikel erfahren Sie, wie Sie mithilfe von Hadoop in HDInsight einen ETL-Vorgang zum Extrahieren, Transformieren und Laden von Daten ausführen.
 
 > [!div class="nextstepaction"]
->[Extrahieren, Transformieren und Laden von Daten mithilfe von Apache Hive in HDInsight](../hdinsight-analyze-flight-delay-data-linux.md)
-
-Wenn Sie mit eigenen Daten arbeiten und mehr darüber wissen möchten, wie Daten in HDInsight gespeichert oder verwendet werden, finden Sie weitere Informationen in folgenden Artikeln:
-
-* Informationen zur Verwendung von Azure Storage durch HDInsight finden Sie unter [Verwenden von Azure Storage mit HDInsight](../hdinsight-hadoop-use-blob-storage.md).
-* Informationen zum Erstellen eines HDInsight-Clusters mit Data Lake Storage finden Sie unter [Schnellstart: Einrichten von Clustern in HDInsight](../../storage/data-lake-storage/quickstart-create-connect-hdi-cluster.md)
-* Informationen zum Hochladen von Daten in HDInsight finden Sie im Artikel zum [Hochladen von Daten für Hadoop-Aufträge in HDInsight](../hdinsight-upload-data.md).
-* [Verwenden von Azure Data Lake Storage Gen2 mit Azure HDInsight-Clustern](../hdinsight-hadoop-use-data-lake-storage-gen2.md)
-
-Weitere Informationen zur Datenanalyse mit HDInsight finden Sie in den folgenden Artikeln:
-
-* Weitere Informationen zum Verwenden von Hive mit HDInsight (etwa zum Ausführen von Hive-Abfragen in Visual Studio) finden Sie unter [Verwenden von Apache Hive mit HDInsight](hdinsight-use-hive.md).
-* Informationen zu Pig (einer Sprache zum Transformieren von Daten) finden Sie unter [Verwenden von Apache Pig mit HDInsight](hdinsight-use-pig.md).
-* Informationen zu MapReduce (einer Möglichkeit zum Schreiben von Programmen, die Daten in Hadoop verarbeiten) finden Sie im Artikel zum [Verwenden von MapReduce mit HDInsight](hdinsight-use-mapreduce.md).
-* Informationen zur Verwendung der HDInsight-Tools für Visual Studio zum Analysieren von Daten in HDInsight finden Sie unter [Erste Schritte bei der Verwendung von Hadoop-Tools für Visual Studio für HDInsight](apache-hadoop-visual-studio-tools-get-started.md).
-* Informationen zum Analysieren von Daten in HDInsight unter Verwendung von HDInsight Tools for Visual Studio Code finden Sie unter [Verwenden von Azure HDInsight Tools for Visual Studio Code](../hdinsight-for-vscode.md).
-
-
-Weitere Informationen zum Erstellen und Verwalten von HDInsight-Clustern finden Sie in folgenden Artikeln:
-
-* Informationen zum Verwalten eines Linux-basierten HDInsight-Clusters finden Sie unter [Verwalten von HDInsight-Clustern mit Apache Ambari](../hdinsight-hadoop-manage-ambari.md).
-* Informationen zu den Optionen, die Sie beim Erstellen eines HDInsight-Clusters auswählen können, finden Sie unter [Erstellen von HDInsight unter Linux mit benutzerdefinierten Optionen](../hdinsight-hadoop-provision-linux-clusters.md).
-
-Weitere Informationen zum Erstellen von HDinsight-Clustern mithilfe von Azure Resource Manager-Vorlagen finden Sie unter:
-
-* [Azure-Schnellstartvorlagen](https://azure.microsoft.com/resources/templates/?resourceType=Microsoft.Hdinsight&pageNumber=1&sort=Popular).
-* [Azure-Vorlagenreferenz](https://docs.microsoft.com/azure/templates/microsoft.hdinsight/allversions).
-
-[1]: ../HDInsight/apache-hadoop-visual-studio-tools-get-started.md
-
-[hdinsight-provision]: hdinsight-provision-linux-clusters.md
-[hdinsight-upload-data]: hdinsight-upload-data.md
-[hdinsight-use-hive]: hdinsight-use-hive.md
-[hdinsight-use-pig]: hdinsight-use-pig.md
+>[Extrahieren, Transformieren und Laden von Daten mithilfe von Interactive Query in HDInsight](../interactive-query/interactive-query-tutorial-analyze-flight-data.md)

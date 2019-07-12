@@ -12,15 +12,15 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 01/18/2019
+ms.date: 06/17/2019
 ms.author: magattus
 ms.custom: mvc
-ms.openlocfilehash: dc43e2ad2668a7d3a808e398857cbf1d28c9aa1c
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.openlocfilehash: 6a41df70340da626a849804155ca245d95b6da46
+ms.sourcegitcommit: 156b313eec59ad1b5a820fabb4d0f16b602737fc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65150873"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67190504"
 ---
 # <a name="tutorial-configure-https-on-an-azure-cdn-custom-domain"></a>Tutorial: Konfigurieren von HTTPS in einer benutzerdefinierten Azure CDN-Domäne
 
@@ -50,7 +50,11 @@ In diesem Tutorial lernen Sie Folgendes:
 
 Bevor Sie die Schritte in diesem Tutorial ausführen können, müssen Sie zunächst ein CDN-Profil und mindestens einen CDN-Endpunkt erstellen. Weitere Informationen finden Sie unter [Quickstart: Erstellen eines Azure CDN-Profils und -Endpunkts](cdn-create-new-endpoint.md).
 
-Zusätzlich müssen Sie Ihrem CDN-Endpunkt eine benutzerdefinierte Azure CDN-Domäne zuordnen. Weitere Informationen finden Sie unter [Tutorial: Hinzufügen einer benutzerdefinierten Domäne zum Azure CDN-Endpunkt](cdn-map-content-to-custom-domain.md)
+Zusätzlich müssen Sie Ihrem CDN-Endpunkt eine benutzerdefinierte Azure CDN-Domäne zuordnen. Weitere Informationen finden Sie unter [Tutorial: Hinzufügen einer benutzerdefinierten Domäne zum Azure CDN-Endpunkt](cdn-map-content-to-custom-domain.md) 
+
+> [!IMPORTANT]
+> CDN-verwaltete Zertifikate sind für Stamm- oder Apex-Domänen nicht verfügbar. Wenn Ihre benutzerdefinierte Azure CDN-Domäne eine Stamm- oder Apex-Domäne ist, müssen Sie die Funktion „Bereitstellen eines eigenen Zertifikats“ verwenden. 
+>
 
 ---
 
@@ -170,7 +174,7 @@ Wenn Sie Ihr eigenes Zertifikat verwenden, ist keine Domänenüberprüfung erfor
 
 Ihr CNAME-Eintrag sollte im folgenden Format vorliegen, wobei *Name* Ihr benutzerdefinierter Domänenname und *Wert* Ihr CDN-Endpunkt-Hostname ist:
 
-| NAME            | Type  | Wert                 |
+| NAME            | type  | Wert                 |
 |-----------------|-------|-----------------------|
 | <www.contoso.com> | CNAME | contoso.azureedge.net |
 
@@ -178,17 +182,17 @@ Weitere Informationen über CNAME-Einträge finden Sie unter [Erstellen Sie die 
 
 Wenn Ihr CNAME-Eintrag im richtigen Format vorliegt, überprüft DigiCert automatisch Ihren benutzerdefinierten Domänennamen und erstellt ein dediziertes Zertifikat für Ihren Domänennamen. DigiCert sendet Ihnen keine Bestätigungs-E-Mail, und Sie müssen Ihre Anforderung nicht genehmigen. Das Zertifikat ist ein Jahr lang gültig und wird automatisch verlängert, bevor es abläuft. Fahren Sie mit [Warten auf die Weitergabe](#wait-for-propagation) fort. 
 
-Die automatische Überprüfung dauert normalerweise einige Minuten. Öffnen Sie ein Supportticket, falls Ihre Domäne nicht innerhalb einer Stunde validiert wurde.
+Die automatische Überprüfung dauert normalerweise einige Stunden. Öffnen Sie ein Supportticket, falls Ihre Domäne nicht innerhalb von 24 Stunden validiert wurde.
 
 >[!NOTE]
 >Wenn Sie über einen CAA-Datensatz (Certificate Authority Authorization) bei Ihrem DNS-Anbieter verfügen, muss dieser DigiCert als gültige Zertifizierungsstelle enthalten. Ein CAA-Datensatz ermöglicht es Domänenbesitzern, ihrem jeweiligen DNS-Anbieter mitzuteilen, welche Zertifizierungsstellen zum Ausstellen von Zertifikaten für ihre Domäne autorisiert sind. Wenn eine Zertifizierungsstelle einen Auftrag für ein Zertifikat für eine Domäne empfängt, für die ein CAA-Datensatz vorliegt und die Zertifizierungsstelle nicht als autorisierter Aussteller angegeben ist, darf sie das Zertifikat für die Domäne oder Unterdomäne nicht ausstellen. Informationen zum Verwalten von CAA-Einträgen finden Sie unter [Manage CAA records](https://support.dnsimple.com/articles/manage-caa-record/) (Verwalten von CAA-Einträgen). Ein Tool für CAA-Einträge finden Sie unter [CAA Record Helper](https://sslmate.com/caa/) (Hilfsprogramm für CAA-Einträge).
 
 ### <a name="custom-domain-is-not-mapped-to-your-cdn-endpoint"></a>Benutzerdefinierte Domäne ist Ihrem CDN-Endpunkt nicht zugeordnet
 
-Wenn der CNAME-Eintrag für Ihren Endpunkt nicht mehr vorhanden ist oder die cdnverify-Unterdomäne enthält, folgen Sie den weiteren Anweisungen in diesem Schritt.
-
 >[!NOTE]
->Für das Profil **Azure CDN von Akamai** ist derzeit keine E-Mail-basierte Überprüfung der Eigentümerschaft einer benutzerdefinierten Domäne möglich. Dieses Feature befindet sich momentan in unserem Backlog. 
+>Für das Profil **Azure CDN von Akamai** ist derzeit keine E-Mail-basierte Überprüfung der Eigentümerschaft einer benutzerdefinierten Domäne möglich. Wenn Sie **Azure CDN von Akamai** verwenden, muss Ihre benutzerdefinierte Domäne wie oben beschrieben mit einem CNAME-Eintrag Ihrem CDN-Endpunkt zugeordnet werden.  Dieses Feature befindet sich momentan in unserem Backlog. 
+
+Wenn der CNAME-Eintrag die cdnverify-Unterdomäne enthält, folgen Sie den weiteren Anweisungen in diesem Schritt.
 
 Nachdem Sie eine Anforderung zur Aktivierung von HTTPS für Ihre benutzerdefinierte Domäne übermittelt haben, überprüft die DigiCert-CA, ob die Domäne wirklich Ihnen gehört. Hierzu setzt sich DigiCert mit dem Registranten der Domäne in Verbindung, der in den [WHOIS](http://whois.domaintools.com/)-Registranteninformationen der Domäne angegeben ist. Der Kontakt wird über die E-Mail-Adresse (Standardverfahren) oder die Telefonnummer in der WHOIS-Registrierung hergestellt. HTTPS wird für Ihre benutzerdefinierte Domäne erst nach Abschluss der Domänenüberprüfung aktiviert. Die Genehmigung der Domäne muss innerhalb von sechs Werktagen erfolgen. Anforderungen, die nicht innerhalb von sechs Werktagen genehmigt werden, werden automatisch abgebrochen. 
 

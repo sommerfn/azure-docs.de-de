@@ -15,16 +15,16 @@ ms.topic: overview
 ms.date: 01/04/2017
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: a3ff9b6fc1abf36bf2feddf518e4e920f18a3c23
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.openlocfilehash: 5ce8abd08f82a2a8b69cc996bfd8f7f060bb8c23
+ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/27/2019
-ms.locfileid: "60835344"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67205045"
 ---
 # <a name="app-service-overview"></a>App Service: Übersicht
 
-*Azure App Service* ist ein Dienst zum Hosten von Webanwendungen, REST-APIs und mobilen Back-Ends. Sie können in Ihrer bevorzugten Sprache entwickeln, z.B. .NET, .NET Core, Java, Ruby, Node.js, PHP oder Python. Anwendungen können in Windows- und Linux-basierten Umgebungen problemlos ausgeführt und skaliert werden. Informationen zu Linux-basierten Umgebungen finden Sie unter [Einführung in Azure App Service unter Linux](containers/app-service-linux-intro.md). 
+*Azure App Service* ist ein HTTP-basierter Dienst zum Hosten von Webanwendungen, REST-APIs und mobilen Back-Ends. Sie können in Ihrer bevorzugten Sprache entwickeln, z.B. .NET, .NET Core, Java, Ruby, Node.js, PHP oder Python. Anwendungen können in Windows- und Linux-basierten Umgebungen problemlos ausgeführt und skaliert werden. Informationen zu Linux-basierten Umgebungen finden Sie unter [Einführung in Azure App Service unter Linux](containers/app-service-linux-intro.md). 
 
 App Service ergänzt Ihre Anwendung nicht nur um die Leistungsfähigkeit von Microsoft Azure, z.B. Sicherheit, Lastenausgleich, automatische Skalierung und automatisierte Verwaltung. Sie können auch die Vorteile ihrer DevOps-Funktionen nutzen, z.B. dauerhafte Bereitstellung über Azure DevOps, GitHub, Docker Hub und andere Quellen, Paketverwaltung, Stagingumgebung, benutzerdefinierte Domäne und SSL-Zertifikate. 
 

@@ -12,12 +12,12 @@ ms.author: jovanpop
 ms.reviewer: carlr
 manager: craigg
 ms.date: 02/04/2019
-ms.openlocfilehash: 0dc9d18ea4dae6ea0f45d1a91392eb1994e6e80e
-ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
+ms.openlocfilehash: 7b52453bab661531461a2bec2f15f7659ec15a1c
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55757202"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67441720"
 ---
 # <a name="getting-started-with-single-databases-in-azure-sql-database"></a>Erste Schritte mit Einzeldatenbanken in Azure SQL-Datenbank
 
@@ -51,3 +51,4 @@ In diesen Schnellstartanleitungen erfahren Sie, wie Sie Ihre Datenbank schnell e
 - Weiterführende Schrittanleitungen finden Sie unter [Verwenden eines Singleton in Azure SQL-Datenbank](sql-database-howto-single-database.md).
 - Sehen Sie sich weitere Beispielskripts für [PowerShell](sql-database-powershell-samples.md) und die [Azure-Befehlszeilenschnittstelle](sql-database-cli-samples.md) an.
 - Informieren Sie sich ausführlicher über die [Verwaltungs-API](sql-database-single-databases-manage.md), die Sie zum Konfigurieren Ihrer Datenbanken verwenden können.
+- [Identifizieren der richtigen Azure SQL Datenbank-SKU/Verwaltete-Instanz-SKU für Ihre lokale Datenbank](/sql/dma/dma-sku-recommend-sql-db/).

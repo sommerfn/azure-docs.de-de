@@ -9,12 +9,12 @@ ms.date: 09/26/2018
 ms.topic: tutorial
 description: Schnelle Kubernetes-Entwicklung mit Containern und Microservices in Azure
 keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, Container, Helm, Service Mesh, Service Mesh-Routing, kubectl, k8s
-ms.openlocfilehash: e461f210dc5b2d0dda0eabd5ea80dfcdc9ccebfb
-ms.sourcegitcommit: 51a7669c2d12609f54509dbd78a30eeb852009ae
+ms.openlocfilehash: 30f912e9c1573b32247bb3c2a3f7d4026436748b
+ms.sourcegitcommit: 837dfd2c84a810c75b009d5813ecb67237aaf6b8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/30/2019
-ms.locfileid: "66392813"
+ms.lasthandoff: 07/02/2019
+ms.locfileid: "67503035"
 ---
 # <a name="get-started-on-azure-dev-spaces-with-nodejs"></a>Erste Schritte in Azure Dev Spaces mit Node.js
 
@@ -134,24 +134,27 @@ Suchen Sie in der Konsolenausgabe nach Informationen zur öffentlichen URL, die 
 
 ```
 (pending registration) Service 'webfrontend' port 'http' will be available at <url>
+Service 'webfrontend' port 'http' is available at http://webfrontend.1234567890abcdef1234.eus.azds.io/
 Service 'webfrontend' port 80 (TCP) is available at 'http://localhost:<port>'
 ```
 
-Öffnen Sie diese URL in einem Browserfenster. Dort sollten Sie sehen, dass die Web-App geladen wird. Wenn der Container ausgeführt wird, wird die Ausgabe von `stdout` und `stderr` an das Terminalfenster gestreamt.
+Identifizieren Sie die öffentliche URL für den Dienst in der Ausgabe des Befehls `up`. Sie endet mit `.azds.io`. Im obigen Beispiel lautet die öffentliche URL `http://webfrontend.1234567890abcdef1234.eus.azds.io/`.
+
+Um Ihre Web-App anzuzeigen, öffnen Sie die öffentliche URL in einem Browser. Beachten Sie auch, dass die Ausgabe von `stdout` und `stderr` an das Terminalfenster *azds trace* gestreamt wird, während Sie mit Ihrer Web-App interagieren. Sie sehen auch Nachverfolgungsinformationen für HTTP-Anforderungen, während sie das System durchlaufen. Dies erleichtert Ihnen während der Entwicklung die Nachverfolgung komplexer, sich auf mehrere Dienste beziehender Aufrufe. Die von Azure Dev Spaces hinzugefügte Instrumentierung stellt diese Anforderungsverfolgung zur Verfügung.
 
 > [!Note]
-> Beim ersten Ausführen kann es mehrere Minuten dauern, bis das öffentliche DNS bereit ist. Wenn die öffentliche URL nicht aufgelöst wird, können Sie die alternative URL `http://localhost:<portnumber>` verwenden, die in der Konsolenausgabe angezeigt wird. Bei Verwendung der localhost-URL kann es so aussehen, als ob der Container lokal ausgeführt wird, während er stattdessen unter AKS ausgeführt wird. Um die Interaktion mit dem Dienst auf Ihrem lokalen Computer zu erleichtern, erstellt Azure Dev Spaces einen temporären SSH-Tunnel zu dem in Azure ausgeführten Container. Sie können später zurückkehren und versuchen, die öffentliche URL zu verwenden, wenn der DNS-Eintrag bereit ist.
+> Zusätzlich zur öffentlichen URL können Sie die alternative URL `http://localhost:<portnumber>` verwenden, die in der Konsolenausgabe angezeigt wird. Bei Verwendung der localhost-URL kann es so aussehen, als ob der Container lokal ausgeführt wird, während er stattdessen unter Azure ausgeführt wird. Azure Dev Spaces nutzt die Kubernetes-Funktionalität *Portweiterleitung*, um den Port von „localhost“ dem Container zuzuordnen, der in AKS ausgeführt wird. Dies erleichtert die Interaktion mit dem Dienst auf dem lokalen Computer.
 
 ### <a name="update-a-content-file"></a>Aktualisieren einer Inhaltsdatei
 Bei Azure Dev Spaces geht es nicht nur um die Ausführung von Code in Kubernetes: Mit diesem Dienst sollen Codeänderungen in einer Kubernetes-Umgebung in der Cloud schnell und iterativ sichtbar gemacht werden.
 
-1. Navigieren Sie zur Datei `./public/index.html`, und ändern Sie die HTML. Legen Sie beispielsweise als Hintergrundfarbe der Seite einen Blauton fest:
+1. Navigieren Sie zur Datei `./public/index.html`, und ändern Sie die HTML. Legen Sie beispielsweise [in Zeile 15](https://github.com/Azure/dev-spaces/blob/master/samples/nodejs/getting-started/webfrontend/public/index.html#L15) als Hintergrundfarbe der Seite einen Blauton fest:
 
     ```html
     <body style="background-color: #95B9C7; margin-left:10px; margin-right:10px;">
     ```
 
-2. Speichern Sie die Datei . Kurz darauf wird im Terminalfenster eine Nachricht mit dem Hinweis angezeigt, dass eine Datei im ausgeführten Container aktualisiert wurde.
+1. Speichern Sie die Datei . Kurz darauf wird im Terminalfenster eine Nachricht mit dem Hinweis angezeigt, dass eine Datei im ausgeführten Container aktualisiert wurde.
 1. Aktualisieren Sie die Anzeige im Browser. Daraufhin sollte die Farbaktualisierung angezeigt werden.
 
 Was ist passiert? Für Änderungen an Inhaltsdateien (etwa HTML und CSS) ist kein Neustart des Node.js-Prozesses erforderlich. Ein aktiver `azds up`-Befehl synchronisiert daher automatisch alle geänderten Inhaltsdateien direkt im ausgeführten Container in Azure, sodass Inhaltsänderungen schnell sichtbar werden.
@@ -161,7 +164,7 @@ Was ist passiert? Für Änderungen an Inhaltsdateien (etwa HTML und CSS) ist kei
 
 Um dieses Problem zu beheben, fügen Sie ein `viewport`-META-Tag hinzu:
 1. Öffnen Sie die Datei `./public/index.html`.
-1. Fügen Sie im vorhandenen `head`-Element ein `viewport`-META-Tag hinzu:
+1. Fügen Sie im vorhandenen `head`-Element, das [in Zeile 6](https://github.com/Azure/dev-spaces/blob/master/samples/nodejs/getting-started/webfrontend/public/index.html#L6) beginnt, ein `viewport`-META-Tag hinzu:
 
     ```html
     <head>
@@ -225,16 +228,24 @@ Drücken Sie **F5**, um Ihren Code in Kubernetes zu debuggen.
 Wie beim Befehl `up` wird der Code mit der Entwicklungsumgebung synchronisiert, wenn Sie das Debuggen starten, und ein Container wird erstellt und in Kubernetes bereitgestellt. Dieses Mal ist der Debugger an den Remotecontainer angefügt.
 
 > [!Tip]
-> Auf der Statusleiste von VS Code wird eine klickbare URL angezeigt.
+> Die Visual Studio Code-Statusleiste ändert sich in orange, was bedeutet, dass der Debugger angefügt ist. Sie zeigt auch eine klickbare URL an, die Sie verwenden können, um Ihre Website schnell zu öffnen.
 
 ![](media/common/vscode-status-bar-url.png)
 
-Legen Sie einen Breakpoint in einer serverseitigen Codedatei fest, beispielsweise in `app.get('/api'...` in `server.js`. Aktualisieren Sie die Browserseite, oder klicken Sie auf die Schaltfläche „Say It Again“ (Wiederholen). Dadurch sollte der Breakpoint erreicht werden, und Sie sollten den Code schrittweise durchlaufen können.
+Legen Sie einen Haltepunkt in einer serverseitigen Codedatei fest, beispielsweise in `app.get('/api'...` in [Zeile 13 von `server.js`](https://github.com/Azure/dev-spaces/blob/master/samples/nodejs/getting-started/webfrontend/server.js#L13). 
+
+    ```javascript
+    app.get('/api', function (req, res) {
+        res.send('Hello from webfrontend');
+    });
+    ```
+
+Aktualisieren Sie die Browserseite, oder klicken Sie auf die Schaltfläche *Say It Again* (Wiederholen). Dadurch sollte der Haltepunkt erreicht werden, und Sie sollten den Code schrittweise durchlaufen können.
 
 Sie besitzen wie bei der lokalen Ausführung des Codes Vollzugriff auf Debuginformationen, etwa Aufrufliste, lokale Variablen, Ausnahmeinformationen usw.
 
 ### <a name="edit-code-and-refresh-the-debug-session"></a>Bearbeiten von Code und Aktualisieren der Debugsitzung
-Nehmen Sie bei aktivem Debugger eine Codeänderung vor. Ändern Sie beispielsweise erneut die Begrüßungsmeldung:
+Nehmen Sie bei aktivem Debugger eine Codeänderung vor. Ändern Sie beispielsweise erneut die Begrüßungsmeldung in [Zeile 13 von `server.js`](https://github.com/Azure/dev-spaces/blob/master/samples/nodejs/getting-started/webfrontend/server.js#L13):
 
 ```javascript
 app.get('/api', function (req, res) {
@@ -242,9 +253,9 @@ app.get('/api', function (req, res) {
 });
 ```
 
-Speichern Sie die Datei, und klicken Sie im Bereich für **Debugaktionen** auf die Schaltfläche **Aktualisieren**. 
+Speichern Sie die Datei, und klicken Sie im Bereich **Debugaktionen** auf die Schaltfläche **Neu starten**. 
 
-![](media/get-started-node/debug-action-refresh-nodejs.png)
+![](media/common/debug-action-refresh.png)
 
 Das Neuerstellen und erneute Bereitstellen eines neuen Containerimages bei jeder vorgenommenen Codeänderung kann geraume Zeit in Anspruch nehmen. Daher startet Azure Dev Spaces den Node.js-Prozess zwischen den Debugsitzungen neu, um den Bearbeitungs-/Debugging-Kreislauf zu beschleunigen.
 

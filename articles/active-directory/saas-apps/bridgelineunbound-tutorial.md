@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 02/08/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 419defd3c1ce154d392ab5249a64b420cc89255b
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 2a958c693699cb83274e840f7cf36efceadc2ce5
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57874018"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67106003"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-bridgeline-unbound"></a>Tutorial: Azure Active Directory-Integration mit Bridgeline Unbound
 
@@ -77,12 +77,12 @@ Damit einmaliges Anmelden funktioniert, muss eine Linkbeziehung zwischen einem A
 
 Zum Konfigurieren und Testen des einmaligen Anmeldens in Azure AD bei Bridgeline Unbound müssen Sie die folgenden Bausteine ausführen:
 
-1. **[Konfigurieren des einmaligen Anmeldens von Azure AD](#configure-azure-ad-single-sign-on)**, um Ihren Benutzern das Verwenden dieses Features zu ermöglichen.
-2. **[Konfigurieren des einmaligen Anmeldens für Bridgeline Unbound ](#configure-bridgeline-unbound-single-sign-on)**, um die Einstellungen für einmaliges Anmelden auf der Anwendungsseite zu konfigurieren
-3. **[Erstellen eines Azure AD-Testbenutzers](#create-an-azure-ad-test-user)**, um das einmalige Anmelden mit Azure AD mit dem Testbenutzer Britta Simon zu testen.
-4. **[Zuweisen des Azure AD-Testbenutzers](#assign-the-azure-ad-test-user)**, um Britta Simon für das einmalige Anmelden von Azure AD zu aktivieren.
-5. **[Erstellen eines Bridgeline Unbound-Testbenutzers](#create-bridgeline-unbound-test-user)**, um eine Entsprechung von Britta Simon in Bridgeline Unbound zu erhalten, die mit der Darstellung des Benutzers in Azure AD verknüpft ist
-6. **[Testen der einmaligen Anmeldung](#test-single-sign-on)**, um zu überprüfen, ob die Konfiguration funktioniert.
+1. **[Konfigurieren des einmaligen Anmeldens von Azure AD](#configure-azure-ad-single-sign-on)** , um Ihren Benutzern das Verwenden dieses Features zu ermöglichen.
+2. **[Konfigurieren des einmaligen Anmeldens für Bridgeline Unbound ](#configure-bridgeline-unbound-single-sign-on)** , um die Einstellungen für einmaliges Anmelden auf der Anwendungsseite zu konfigurieren
+3. **[Erstellen eines Azure AD-Testbenutzers](#create-an-azure-ad-test-user)** , um das einmalige Anmelden mit Azure AD mit dem Testbenutzer Britta Simon zu testen.
+4. **[Zuweisen des Azure AD-Testbenutzers](#assign-the-azure-ad-test-user)** , um Britta Simon für das einmalige Anmelden von Azure AD zu aktivieren.
+5. **[Erstellen eines Bridgeline Unbound-Testbenutzers](#create-bridgeline-unbound-test-user)** , um eine Entsprechung von Britta Simon in Bridgeline Unbound zu erhalten, die mit der Darstellung des Benutzers in Azure AD verknüpft ist
+6. **[Testen der einmaligen Anmeldung](#test-single-sign-on)** , um zu überprüfen, ob die Konfiguration funktioniert.
 
 ### <a name="configure-azure-ad-single-sign-on"></a>Konfigurieren des einmaligen Anmeldens in Azure AD
 

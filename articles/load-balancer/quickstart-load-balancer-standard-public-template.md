@@ -1,73 +1,98 @@
 ---
-title: 'Schnellstart: Erstellen einer Load Balancer Standard-Instanz: Azure Resource Manager-Vorlage'
+title: 'Schnellstart: Erstellen eines Lastenausgleichs im Tarif „Standard“: Azure Resource Manager-Vorlage'
 titlesuffix: Azure Load Balancer
-description: In diesem Schnellstart wird gezeigt, wie Sie mithilfe einer Azure Resource Manager-Vorlage eine Load Balancer Standard-Instanz erstellen.
+description: In diesem Schnellstart wird gezeigt, wie Sie mithilfe einer Azure Resource Manager-Vorlage einen Lastenausgleich im Tarif „Standard“ erstellen.
 services: load-balancer
 documentationcenter: na
 author: KumudD
 manager: twooley
-Customer intent: I want to create a Standard Load Balancer by using Azure Resource Manager template so that I can load balance internet traffic to VMs.
+Customer intent: I want to create a Standard load balancer by using an Azure Resource Manager template so that I can load balance internet traffic to VMs.
 ms.service: load-balancer
 ms.devlang: na
 ms.topic: quickstart
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 05/30/2019
+ms.date: 06/19/2019
 ms.author: kumud
 ms.custom: mvc
-ms.openlocfilehash: 0e47560ca43b23f4779da701f3e6f11f53a6b1ce
-ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
+ms.openlocfilehash: 00dbb29cac30f2a3bbecf71727c79617e24af3e0
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/04/2019
-ms.locfileid: "66480403"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67441311"
 ---
-# <a name="quickstart-create-a-standard-load-balancer-to-load-balance-vms-by-using-azure-resource-manager-template"></a>Schnellstart: Erstellen einer Load Balancer Standard-Instanz für den Lastenausgleich virtueller Computer mithilfe einer Azure Resource Manager-Vorlage
+# <a name="quickstart-create-a-standard-load-balancer-to-load-balance-vms-by-using-an-azure-resource-manager-template"></a>Schnellstart: Erstellen eines Lastenausgleichs im Tarif „Standard“ für virtuelle Computer mithilfe einer Azure Resource Manager-Vorlage
 
-Durch die Verteilung der eingehenden Anforderungen auf mehrere virtuelle Computer bietet ein Lastenausgleich ein höheres Maß an Verfügbarkeit und Skalierbarkeit. Sie können eine Azure Resource Manager-Vorlage verwenden, um einen Load Balancer für den Lastenausgleich virtueller Computer zu erstellen. In dieser Schnellstartanleitung erfahren Sie, wie Sie für den Lastenausgleich virtueller Computer einen Load Balancer im Tarif „Standard“ verwenden.
+Durch die Verteilung der eingehenden Anforderungen auf mehrere virtuelle Computer (VMs) bietet ein Lastenausgleich ein höheres Maß an Verfügbarkeit und Skalierbarkeit. Dieser Schnellstart zeigt Ihnen, wie Sie eine Azure Resource Manager-Vorlage bereitstellen, die einen Lastenausgleich im Tarif „Standard“ für VMs erstellt.
 
 Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) erstellen, bevor Sie beginnen.
 
-## <a name="create-a-standard-load-balancer"></a>Schnellstart: Erstellen einer Load Balancer Standard-Instanz mit Azure PowerShell
+## <a name="create-a-standard-load-balancer"></a>Erstellen eines Load Balancers im Tarif „Standard“
 
-In diesem Abschnitt erstellen Sie eine Load Balancer Standard-Instanz für den Lastenausgleich virtueller Computer. Ein Load Balancer im Standard-Tarif unterstützt nur eine öffentliche Standard-IP-Adresse. Wenn Sie einen Load Balancer im Standard-Tarif erstellen, müssen Sie für diesen auch eine neue öffentliche Standard-IP-Adresse erstellen, die als Front-End konfiguriert ist. Dieses hat standardmäßig den Namen *LoadBalancerFrontend*. Es gibt viele Methoden zum Erstellen einer Load Balancer Standard-Instanz. In diesem Schnellstart verwenden Sie Azure PowerShell, um eine [Resource Manager-Vorlage](https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/101-load-balancer-standard-create/azuredeploy.json) bereitzustellen. Resource Manager-Vorlagen sind JSON-Dateien, mit denen die Ressourcen definiert werden, die Sie für Ihre Lösung bereitstellen müssen. Weitere Informationen zu den Konzepten der Bereitstellung und Verwaltung Ihrer Azure-Lösungen finden Sie in der [Dokumentation zu Azure Resource Manager](/azure/azure-resource-manager/). Weitere Vorlagen für Azure Load Balancer finden Sie unter [Azure-Schnellstartvorlagen](https://azure.microsoft.com/resources/templates/?resourceType=Microsoft.Network&pageNumber=1&sort=Popular).
+Ein Lastenausgleich im Tarif „Standard“ unterstützt nur eine öffentliche Standard-IP-Adresse. Wenn Sie einen Lastenausgleich im Tarif „Standard“ erstellen, müssen Sie auch eine neue öffentliche Standard-IP-Adresse erstellen, die für diesen Lastenausgleich als Front-End konfiguriert ist.
 
-Wählen Sie zum Bereitstellen der Vorlage **Jetzt testen** aus, um die Azure Cloud Shell zu öffnen, und fügen Sie anschließend das folgende PowerShell-Skript in das Shellfenster ein. Klicken Sie zum Einfügen des Codes mit der rechten Maustaste auf das Shell-Fenster, und wählen Sie **Einfügen** aus.
+Es gibt viele Methoden zum Erstellen eines Lastenausgleichs im Tarif „Standard“. In diesem Schnellstart verwenden Sie Azure PowerShell, um eine [Resource Manager-Vorlage](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-load-balancer-standard-create/azuredeploy.json) bereitzustellen. Resource Manager-Vorlagen sind JSON-Dateien, mit denen die Ressourcen definiert werden, die Sie für Ihre Lösung bereitstellen müssen.
 
-```azurepowershell-interactive
-$projectName = Read-Host -Prompt "Enter a project name with 12 or less letters or numbers that is used to generate Azure resource names"
-$location = Read-Host -Prompt "Enter the location (i.e. centralus)"
-$adminUserName = Read-Host -Prompt "Enter the virtual machine administrator account name"
-$adminPassword = Read-Host -Prompt "Enter the virtual machine administrator password" -AsSecureString
+Weitere Informationen zu den Konzepten der Bereitstellung und Verwaltung Ihrer Azure-Lösungen finden Sie in der [Dokumentation zu Azure Resource Manager](/azure/azure-resource-manager/). Weitere Vorlagen zum Azure Load Balancer finden Sie unter [Azure-Schnellstartvorlagen](https://azure.microsoft.com/resources/templates/?resourceType=Microsoft.Network&pageNumber=1&sort=Popular).
 
-$resourceGroupName = "${projectName}rg"
-$templateUri = "https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/101-load-balancer-standard-create/azuredeploy.json"
+1. Wählen Sie **Try it** (Ausprobieren) im folgenden Codeblock aus, um Azure Cloud Shell zu öffnen. Folgen Sie dann den Anweisungen, um sich bei Azure anzumelden.
 
-New-AzResourceGroup -Name $resourceGroupName -Location $location
-New-AzResourceGroupDeployment -ResourceGroupName $resourceGroupName -TemplateUri $templateUri -projectName $projectName -location $location -adminUsername $adminUsername -adminPassword $adminPassword
-```
+   ```azurepowershell-interactive
+   $projectName = Read-Host -Prompt "Enter a project name with 12 or less letters or numbers that is used to generate Azure resource names"
+   $location = Read-Host -Prompt "Enter the location (i.e. centralus)"
+   $adminUserName = Read-Host -Prompt "Enter the virtual machine administrator account name"
+   $adminPassword = Read-Host -Prompt "Enter the virtual machine administrator password" -AsSecureString
 
-Beachten Sie, dass der Ressourcengruppenname dem Projektnamen mit dem Zusatz **rg** entspricht. Sie benötigen den Ressourcengruppennamen im nächsten Abschnitt.  Die Erstellung der Ressourcen dauert einige Minuten.
+   $resourceGroupName = "${projectName}rg"
+   $templateUri = "https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-load-balancer-standard-create/azuredeploy.json"
 
-## <a name="test-the-load-balancer"></a>Testen des Load Balancers
+   New-AzResourceGroup -Name $resourceGroupName -Location $location
+   New-AzResourceGroupDeployment -ResourceGroupName $resourceGroupName -TemplateUri $templateUri -projectName $projectName -location $location -adminUsername $adminUsername -adminPassword $adminPassword
+
+   Write-Host "Press [ENTER] to continue."
+   ```
+
+   Warten Sie, bis die Aufforderung in der Konsole angezeigt wird.
+
+1. Wählen Sie **Copy** (Kopieren) im vorherigen Codeblock aus, um das PowerShell-Skript zu kopieren.
+
+1. Klicken Sie mit der rechten Maustaste auf den Shellkonsolenbereich, und wählen Sie **Einfügen** aus.
+
+1. Gehen Sie die Werte ein.
+
+   Die Vorlagenbereitstellung erstellt drei Verfügbarkeitszonen. Verfügbarkeitszonen werden nur in [bestimmten Regionen](../availability-zones/az-overview.md) unterstützt. Verwenden Sie eine der unterstützten Regionen. Wenn Sie nicht sicher sind, geben Sie **centralus** ein.
+
+   Der Ressourcengruppenname ist der Projektname mit dem Zusatz **rg**. Sie benötigen den Ressourcengruppennamen im nächsten Abschnitt.
+
+Das Bereitstellen der Vorlage dauert ungefähr 10 Minuten.
+
+## <a name="test-the-load-balancer"></a>Testen des Lastenausgleichs
 
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
+
 1. Wählen Sie im linken Bereich **Ressourcengruppen** aus.
-1. Wählen Sie die Ressourcengruppe aus, die Sie im vorherigen Abschnitt erstellt haben.  Der Ressourcengruppenname entspricht standardmäßig dem Projektnamen mit dem Zusatz **rg**.
-1. Wählen Sie den Load Balancer aus.  Es ist nur ein Load Balancer vorhanden. Der Standardname entspricht dem Projektnamen mit dem Zusatz **-lb**.
-1. Kopieren Sie die öffentliche IP-Adresse (nur den IP-Adressteil), und fügen Sie den kopierten Inhalt in die Adressleiste des Browsers ein. Die Standardseite des IIS-Webservers wird im Browser angezeigt.
+
+1. Wählen Sie die Ressourcengruppe aus, die Sie im vorherigen Abschnitt erstellt haben. Der Ressourcengruppenname entspricht standardmäßig dem Projektnamen mit dem Zusatz **rg**.
+
+1. Wählen Sie den Load Balancer aus. Sein Standardname entspricht dem Projektnamen mit dem Zusatz **-lb**.
+
+1. Kopieren Sie nur den IP-Adressteil der öffentlichen IP-Adresse, und fügen Sie ihn in die Adressleiste des Browsers ein. Der Browser zeigt die Standardseite des Internetinformationsdienste-Webservers (Internet Information Services, IIS) an.
 
    ![IIS-Webserver](./media/tutorial-load-balancer-standard-zonal-portal/load-balancer-test.png)
 
-Sie können vom Clientcomputer aus eine erzwungene Aktualisierung Ihres Webbrowsers durchführen, um zu verfolgen, wie der Load Balancer den Datenverkehr auf alle drei virtuellen Computer verteilt.
+Sie können vom Clientcomputer aus eine erzwungene Aktualisierung Ihres Webbrowsers durchführen, um zu verfolgen, wie der Lastenausgleich den Datenverkehr auf alle drei virtuellen Computer verteilt.
 
 ## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
 
-Löschen Sie die Ressourcengruppe, den Load Balancer und alle zugehörigen Ressourcen, wenn Sie sie nicht mehr benötigen. Wählen Sie hierzu im Azure-Portal die Ressourcengruppe aus, die den Load Balancer enthält, und wählen Sie anschließend **Ressourcengruppe löschen** aus.
+Sie können die Ressourcengruppe, den Lastenausgleich und alle dazugehörigen Ressourcen löschen, wenn Sie sie nicht mehr benötigen. Wählen Sie hierzu im Azure-Portal die Ressourcengruppe aus, die den Lastenausgleich enthält, und wählen Sie anschließend **Ressourcengruppe löschen** aus.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-In diesem Schnellstart haben Sie eine Load Balancer Standard-Instanz erstellt, virtuelle Computer angefügt, die Datenverkehrsregel für den Load Balancer sowie einen Integritätstest konfiguriert und den Load Balancer getestet. Weitere Informationen zu Azure Load Balancer finden Sie in den Tutorials zu Azure Load Balancer.
+In diesem Schnellstart haben Sie einen Lastenausgleich im Tarif „Standard“ erstellt, virtuelle Computer angefügt, die Datenverkehrsregel für den Lastenausgleich konfiguriert, einen Integritätstest durchgeführt und den Lastenausgleich getestet.
+
+Weitere Informationen zum Lastenausgleich finden Sie in den Tutorials.
 
 > [!div class="nextstepaction"]
 > [Azure Load Balancer-Tutorials](tutorial-load-balancer-standard-public-zone-redundant-portal.md)
+ 

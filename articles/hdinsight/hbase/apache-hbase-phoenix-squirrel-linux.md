@@ -1,19 +1,19 @@
 ---
 title: 'Schnellstart: Abfragen von Apache HBase in Azure HDInsight – Apache Phoenix'
-description: Informationen zum Verwenden von Apache Phoenix in HDInsight. Darüber hinaus erhalten Sie Informationen zum Installieren und Einrichten von SQLLine für die Verbindung mit einem HBase-Cluster in HDInsight auf Ihrem Computer.
+description: In diesem Schnellstart erfahren Sie, wie Sie Apache Phoenix in HDInsight verwenden. Darüber hinaus erhalten Sie Informationen zum Installieren und Einrichten von SQLLine für die Verbindung mit einem HBase-Cluster in HDInsight auf Ihrem Computer.
 author: hrasheed-msft
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: quickstart
-ms.date: 05/08/2019
+ms.date: 06/12/2019
 ms.author: hrasheed
-ms.openlocfilehash: 46606a991ce878a3335c2c605a4040c9520d5128
-ms.sourcegitcommit: 1fbc75b822d7fe8d766329f443506b830e101a5e
+ms.openlocfilehash: 20af6d32d03ae5d4fe37b1a37198ef1f2c50ec95
+ms.sourcegitcommit: e5dcf12763af358f24e73b9f89ff4088ac63c6cb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/14/2019
-ms.locfileid: "65596204"
+ms.lasthandoff: 06/14/2019
+ms.locfileid: "67137422"
 ---
 # <a name="quickstart-query-apache-hbase-in-azure-hdinsight-with-apache-phoenix"></a>Schnellstart: Abfragen von Apache HBase in Azure HDInsight mit Apache Phoenix
 
@@ -126,10 +126,3 @@ In diesem Schnellstart haben Sie erfahren, wie Sie mit Apache Phoenix HBase-Abfr
 
 > [!div class="nextstepaction"]
 > [Apache Phoenix in HDInsight](../hdinsight-phoenix-in-hdinsight.md)
-
-## <a name="see-also"></a>Siehe auch
-
-* [SQLLine-Handbuch](http://sqlline.sourceforge.net/#manual).
-* [Apache Phoenix-Grammatik](https://phoenix.apache.org/language/index.html).
-* [Apache Phoenix in 15 minutes or less](https://phoenix.apache.org/Phoenix-in-15-minutes-or-less.html) (Apache Phoenix in höchstens 15 Minuten)
-* [HDInsight HBase overview (Übersicht über HDInsight HBase)](./apache-hbase-overview.md)

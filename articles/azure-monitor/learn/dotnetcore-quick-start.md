@@ -5,17 +5,17 @@ services: application-insights
 keywords: ''
 author: mrbullwinkle
 ms.author: mbullwin
-ms.date: 05/22/2019
+ms.date: 06/26/2019
 ms.service: application-insights
 ms.custom: mvc
 ms.topic: quickstart
 manager: carmonm
-ms.openlocfilehash: a4bbb43cb00eeb5a9e741016e1648ce915935eb9
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.openlocfilehash: 931de532aa6e09b2cd00955df6ba1f05d7e4f42c
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/27/2019
-ms.locfileid: "66236593"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67428511"
 ---
 # <a name="start-monitoring-your-aspnet-core-web-application"></a>Starten der Überwachung Ihrer ASP.NET Core-Webanwendung
 
@@ -47,16 +47,16 @@ Application Insights kann Telemetriedaten von jeder mit dem Internet verbundenen
 
 1. Klicken Sie auf **Ressource erstellen** > **Entwicklertools** > **Application Insights**.
 
-   ![Hinzufügen einer Application Insights-Ressource](./media/dotnetcore-quick-start/1createresourceappinsight.png)
+   > [!NOTE]
+   >Wenn Sie zum ersten Mal eine Application Insights-Ressource erstellen, können Sie mehr dazu im Dokument [Erstellen einer Application Insights-Ressource](https://docs.microsoft.com/azure/azure-monitor/app/create-new-resource) erfahren.
 
     Ein Dialogfeld für die Konfiguration wird geöffnet. Füllen Sie die Eingabefelder anhand der Informationen in der folgenden Tabelle aus:
 
-    | Einstellungen        |  Wert           | BESCHREIBUNG  |
+   | Einstellungen        |  Wert           | BESCHREIBUNG  |
    | ------------- |:-------------|:-----|
    | **Name**      | Global eindeutiger Wert | Der Name, der die zu überwachende App identifiziert. |
-   | **Anwendungstyp** | ASP.NET-Webanwendung | Der Typ der zu überwachenden App. |
    | **Ressourcengruppe**     | myResourceGroup      | Der Name der neuen Ressourcengruppe, die Application Insights-Daten hosten soll. |
-   | **Location** | USA (Ost) | Wählen Sie einen Standort in Ihrer Nähe oder in der Nähe des Standorts, in dem Ihre App gehostet wird. |
+   | **Location** | East US | Wählen Sie einen Standort in Ihrer Nähe oder in der Nähe des Standorts, in dem Ihre App gehostet wird. |
 
 2. Klicken Sie auf **Create**.
 
@@ -101,7 +101,7 @@ Application Insights kann Telemetriedaten von jeder mit dem Internet verbundenen
 
 ## <a name="video"></a>Video
 
-- Ein externes Video mit ausführlichen Informationen zum [Konfigurieren von Application Insights mit .NET Core und Visual Studio](https://www.youtube.com/watch?v=NoS9UhcR4gA&t) von Grund auf
+- Ein externes Video mit ausführlichen Informationen zum [Konfigurieren von Application Insights mit .NET Core und Visual Studio](https://www.youtube.com/watch?v=NoS9UhcR4gA&t) von Grund auf.
 - Ein externes Video mit ausführlichen Informationen zum [Konfigurieren von Application Insights mit .NET Core und Visual Studio Code](https://youtu.be/ygGt84GDync) von Grund auf
 
 ## <a name="clean-up-resources"></a>Bereinigen von Ressourcen

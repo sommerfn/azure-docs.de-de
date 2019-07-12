@@ -1,6 +1,6 @@
 ---
-title: Hochladen, Codieren und Streamen mit Azure Media Services v3 unter Verwendung von .NET | Microsoft-Dokumentation
-description: Führen Sie die Schritte in diesem Tutorial aus, um eine Datei hochzuladen, das Video zu codieren und Ihre Inhalte mit Media Services v3 unter Verwendung von .NET zu streamen.
+title: Hochladen, Codieren und Streamen mit Azure Media Services v3 | Microsoft-Dokumentation
+description: Führen Sie die Schritte in diesem Tutorial aus, um eine Datei hochzuladen, das Video zu codieren und Ihre Inhalte mit Media Services v3 zu streamen.
 services: media-services
 documentationcenter: ''
 author: Juliako
@@ -12,14 +12,17 @@ ms.topic: tutorial
 ms.custom: mvc
 ms.date: 03/22/2019
 ms.author: juliako
-ms.openlocfilehash: 66ee2c110edfdbd0e33c69d45dee8040654d421a
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.openlocfilehash: 46a1add812d5721e36d8af030195c42542dc360c
+ms.sourcegitcommit: a52d48238d00161be5d1ed5d04132db4de43e076
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65149146"
+ms.lasthandoff: 06/20/2019
+ms.locfileid: "67273247"
 ---
-# <a name="tutorial-upload-encode-and-stream-videos-using-net"></a>Tutorial: Hochladen, Codieren und Streamen von Videos mithilfe von .NET
+# <a name="tutorial-upload-encode-and-stream-videos"></a>Tutorial: Hochladen, Codieren und Streamen von Videos
+
+> [!NOTE]
+> Obwohl in diesem Tutorial die [.NET SDK](https://docs.microsoft.com/dotnet/api/microsoft.azure.management.media.models.liveevent?view=azure-dotnet)-Beispiele verwendet werden, sind die allgemeinen Schritte für die [REST-API](https://docs.microsoft.com/rest/api/media/liveevents), die [CLI](https://docs.microsoft.com/cli/azure/ams/live-event?view=azure-cli-latest) oder für andere unterstützte [SDKs](media-services-apis-overview.md#sdks) dieselben.
 
 Azure Media Services ermöglicht das Codieren Ihrer Mediendateien in Formate, die mit einer Vielzahl von Browsern und Geräten wiedergegeben werden können. So können Sie Ihre Inhalte beispielsweise im HLS-Format von Apple oder im MPEG DASH-Format streamen. Vor dem Streamen sollten Sie Ihre digitale Mediendatei in hoher Qualität codieren. Anleitungen zur Codierung finden Sie im [Codierungskonzept](encoding-concept.md). In diesem Tutorial wird eine lokale Videodatei hochgeladen und die hochgeladene Datei codiert. Sie können auch Inhalt codieren, den Sie über eine HTTPS-URL zugänglich machen. Weitere Informationen finden Sie unter [Erstellen einer Auftragseingabe aus einer HTTP(S)-URL](job-input-from-http-how-to.md).
 

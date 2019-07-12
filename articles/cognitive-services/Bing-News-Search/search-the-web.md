@@ -1,22 +1,22 @@
 ---
 title: Was ist die Bing-News-Suche-API?
 titlesuffix: Azure Cognitive Services
-description: Erfahren Sie, wie Sie mit der Bing News-Suche-API im Web nach aktuellen Schlagzeilen in mehreren Kategorien suchen, einschließlich Überschriften und Trendthemen.
+description: Erfahren Sie, wie Sie mit der Bing News-Suche-API im Web in verschiedenen Kategorien nach aktuellen Schlagzeilen suchen, einschließlich Überschriften und Trendthemen.
 services: cognitive-services
 author: swhite-msft
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-news-search
 ms.topic: overview
-ms.date: 01/10/2019
+ms.date: 06/19/2019
 ms.author: scottwhi
 ms.custom: seodec2018
-ms.openlocfilehash: e02f81ef6bdf8bf4dc39b70cb7a2d9330660d1d6
-ms.sourcegitcommit: 3d4121badd265e99d1177a7c78edfa55ed7a9626
+ms.openlocfilehash: d4d8c35869fbfc13220aba037a97aadd3cea01c2
+ms.sourcegitcommit: a52d48238d00161be5d1ed5d04132db4de43e076
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/30/2019
-ms.locfileid: "66390295"
+ms.lasthandoff: 06/20/2019
+ms.locfileid: "67272718"
 ---
 # <a name="what-is-the-bing-news-search-api"></a>Was ist die Bing-News-Suche-API?
 

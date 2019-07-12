@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: pod
 ms.topic: tutorial
-ms.date: 05/15/2019
+ms.date: 06/25/2019
 ms.author: alkohli
-ms.openlocfilehash: 672bcc3d0cb15ef348d090ed6c5a38d6912465ef
-ms.sourcegitcommit: 600d5b140dae979f029c43c033757652cddc2029
+ms.openlocfilehash: c74ed93383ea880900a5428a6f24b5b44a3ff135
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/04/2019
-ms.locfileid: "66496310"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67443150"
 ---
 # <a name="tutorial-copy-data-to-azure-data-box-via-nfs"></a>Tutorial: Kopieren von Daten in eine Azure Data Box über NFS
 
@@ -88,6 +88,12 @@ Nachdem Sie eine Verbindung mit den Data Box-Freigaben hergestellt haben, kopier
 - Falls von Data Box hochgeladene Daten gleichzeitig von anderen Anwendungen außerhalb von Data Box hochgeladen werden, kann dies zu Fehlern bei Uploadaufträgen und zu Datenbeschädigungen führen.
 - Es wird empfohlen, SMB und NFS nicht gleichzeitig zu verwenden und Daten nicht an dasselbe Endziel in Azure zu kopieren. In solchen Fällen kann das endgültige Ergebnis nicht bestimmt werden.
 - **Erstellen Sie immer einen Ordner für die Dateien, die Sie unter die Freigabe kopieren möchten, und kopieren Sie die Dateien dann in diesen Ordner**. Der Ordner, der unter der Blockblob- und der Seitenblob Freigabe erstellt wurde, entspricht einem Container, in den Daten als Blobs hochgeladen werden. Es ist nicht möglich, Dateien direkt in den *root*-Ordner im Speicherkonto zu kopieren.
+- Beim Einlesen von groß- und kleinschreibungsabhängigen Verzeichnis- und Dateinamen aus einer NFS-Freigabe für NFS auf Data Box: 
+    - Die Groß-/Kleinschreibung wird im Namen beibehalten.
+    - Bei Dateien wird die Groß-/Kleinschreibung nicht berücksichtigt.
+    
+    Wenn Sie beispielsweise `SampleFile.txt` und `Samplefile.Txt` kopieren, bleiben die Groß-/Kleinbuchstaben im Namen erhalten, wenn Sie ihn nach Data Box kopieren, aber die zweite Datei überschreibt die erste, da diese als die gleiche Datei betrachtet wird.
+
 
 Wenn Sie einen Linux-Hostcomputer verwenden, verwenden Sie ein Kopierhilfsprogramm wie Robocopy. Einige der verfügbaren Alternativen in Linux sind [rsync](https://rsync.samba.org/), [FreeFileSync](https://www.freefilesync.org/), [Unison](https://www.cis.upenn.edu/~bcpierce/unison/) oder [Ultracopier](https://ultracopier.first-world.info/).  
 

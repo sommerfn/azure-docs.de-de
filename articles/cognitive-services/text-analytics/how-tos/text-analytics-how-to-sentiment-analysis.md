@@ -9,12 +9,12 @@ ms.subservice: text-analytics
 ms.topic: sample
 ms.date: 02/26/2019
 ms.author: aahi
-ms.openlocfilehash: 0c42e7f8b1fffb9cf998f4cee8d30405a8df74a4
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.openlocfilehash: d4269a99a8e535692e4897630a7edd9b27347d41
+ms.sourcegitcommit: 82efacfaffbb051ab6dc73d9fe78c74f96f549c2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "60011298"
+ms.lasthandoff: 06/20/2019
+ms.locfileid: "67304032"
 ---
 # <a name="example-how-to-detect-sentiment-with-text-analytics"></a>Beispiel: Ermitteln von Standpunkten mit der Textanalyse
 
@@ -90,7 +90,7 @@ Details zur Anforderungsdefinition finden Sie unter [Aufrufen der Textanalyse-RE
 
 ## <a name="step-2-post-the-request"></a>Schritt 2: Übermitteln der Anforderung
 
-Die Analyse erfolgt, wenn die Anforderung eingeht. Der Dienst akzeptiert bis zu 100 Anforderungen pro Minute. Jede Anforderung darf maximal 1 MB groß sein.
+Die Analyse erfolgt, wenn die Anforderung eingeht. Weitere Informationen zur Größe und Anzahl von Anforderungen, die Sie pro Minute und Sekunde senden können, finden Sie in der Übersicht im Abschnitt [Datengrenzwerte](../overview.md#data-limits).
 
 Vergessen Sie nicht, dass der Dienst zustandslos ist. In Ihrem Konto werden keine Daten gespeichert. Die Ergebnisse werden direkt in der Antwort zurückgegeben.
 

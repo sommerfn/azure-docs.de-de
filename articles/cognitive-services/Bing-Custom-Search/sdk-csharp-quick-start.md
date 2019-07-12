@@ -1,21 +1,21 @@
 ---
 title: 'Schnellstart: Aufrufen Ihres Endpunkts für die benutzerdefinierte Bing-Suche mit dem C# SDK | Microsoft-Dokumentation'
 titleSuffix: Azure Cognitive Services
-description: Einrichten des SDK für die benutzerdefinierte Suche für die Konsolenanwendung in C#
+description: Verwenden Sie das SDK für die benutzerdefinierte Bing-Suche für C#, um Ihre benutzerdefinierte Suchinstanz zu durchsuchen.
 services: cognitive-services
 author: swhite-msft
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-custom-search
 ms.topic: quickstart
-ms.date: 09/06/2018
+ms.date: 06/18/2019
 ms.author: scottwhi
-ms.openlocfilehash: 9e13edce77819d5ef8cfc3b6becff9fb82224a83
-ms.sourcegitcommit: 1fbc75b822d7fe8d766329f443506b830e101a5e
+ms.openlocfilehash: 0381df439d0c0904e8741bb1f31b179566c72ec5
+ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/14/2019
-ms.locfileid: "65595964"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67206180"
 ---
 # <a name="quickstart-call-your-bing-custom-search-endpoint-using-the-c-sdk"></a>Schnellstart: Aufrufen Ihres Endpunkts für die benutzerdefinierte Bing-Suche mit dem C# SDK 
 
@@ -27,7 +27,7 @@ Verwenden Sie diese Schnellstartanleitung, um mit dem Anfordern von Suchergebnis
 - Microsoft [.NET Core](https://www.microsoft.com/net/download/core)
 - Eine beliebige Edition von [Visual Studio 2017 oder höher](https://www.visualstudio.com/downloads/)
 - Unter Linux/macOS kann diese Anwendung mit [Mono](https://www.mono-project.com/) ausgeführt werden
-- Ein installiertes [NuGet-Paket für die benutzerdefinierte Suche](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Search.CustomSearch/1.2.0). 
+- Das NuGet-Paket für die [benutzerdefinierte Bing-Suche](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Search.CustomSearch/1.2.0). 
     - Klicken Sie im **Projektmappen-Explorer** in Visual Studio mit der rechten Maustaste auf Ihr Projekt, und wählen Sie im Menü **NuGet-Pakete verwalten** aus. Installieren Sie das `Microsoft.Azure.CognitiveServices.Search.CustomSearch`-Paket. Bei der Installation des NuGet-Pakets für die benutzerdefinierte Suche werden gleichzeitig die folgenden Assemblys installiert:
         - Microsoft.Rest.ClientRuntime
         - Microsoft.Rest.ClientRuntime.Azure

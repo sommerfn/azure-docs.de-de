@@ -13,12 +13,12 @@ ms.author: sstein
 ms.reviewer: ''
 manager: craigg
 ms.date: 03/25/2019
-ms.openlocfilehash: 86f29f07df6174ecead852fada73ac05f8682fca
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: b060c971218561f285dbd2292529e01a0069d357
+ms.sourcegitcommit: 72f1d1210980d2f75e490f879521bc73d76a17e1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59359982"
+ms.lasthandoff: 06/14/2019
+ms.locfileid: "67147736"
 ---
 # <a name="quickstart-use-sql-server-management-studio-to-connect-and-query-an-azure-sql-database"></a>Schnellstart: Verwenden von SQL Server Management Studio zum Herstellen der Verbindung mit einer Instanz von Azure SQL-Datenbank und deren Abfrage
 
@@ -26,7 +26,7 @@ In dieser Schnellstartanleitung verwenden Sie [SQL Server Management Studio][ssm
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-- Eine Azure SQL-Datenbank. In den folgenden Schnellstartanleitungen erfahren Sie jeweils, wie Sie eine Datenbank in Azure SQL-Datenbank erstellen und anschließend konfigurieren:
+Eine Azure SQL-Datenbank. In den folgenden Schnellstartanleitungen erfahren Sie jeweils, wie Sie eine Datenbank in Azure SQL-Datenbank erstellen und anschließend konfigurieren:
 
   || Einzeldatenbank | Verwaltete Instanz |
   |:--- |:--- |:---|
@@ -37,7 +37,6 @@ In dieser Schnellstartanleitung verwenden Sie [SQL Server Management Studio][ssm
   |||[Verbindung von einer lokalen Ressource](sql-database-managed-instance-configure-p2s.md)
   |Laden von Daten|Laden von Adventure Works gemäß Schnellstartanleitung|[Wiederherstellen von Wide World Importers](sql-database-managed-instance-get-started-restore.md)
   |||Wiederherstellen oder Importieren von Adventure Works über eine [BACPAC-Datei](sql-database-import.md) von [GitHub](https://github.com/Microsoft/sql-server-samples/tree/master/samples/databases/adventure-works)|
-  |||
 
   > [!IMPORTANT]
   > Die Skripts in diesem Artikel sind für die Adventure Works-Datenbank geschrieben. Bei einer verwalteten Instanz müssen Sie entweder die Adventure Works-Datenbank in eine Instanzdatenbank importieren oder die Skripts in diesem Artikel zur Verwendung der Wide World Importers-Datenbank anpassen.
@@ -87,7 +86,7 @@ Stellen Sie in SMSS eine Verbindung mit Ihrer Azure SQL-Datenbank-Serverinstanz 
 
 5. Erweitern Sie zum Anzeigen der Objekte der Datenbank **Datenbanken** und dann **mySampleDatabase**.
 
-   ![Datenbankobjekte anzeigen](./media/sql-database-connect-query-ssms/connected.png)  
+   ![mySampleDatabase-Objekte](./media/sql-database-connect-query-ssms/connected.png)  
 
 ## <a name="query-data"></a>Abfragen von Daten
 
@@ -106,7 +105,7 @@ Führen Sie diesen [SELECT](https://msdn.microsoft.com/library/ms189499.aspx)-Tr
 
 3. Wählen Sie auf der Symbolleiste **Ausführen** aus, um Daten aus den Tabellen `Product` und `ProductCategory` abzurufen.
 
-    ![Abfrage zum Abrufen von Daten aus zwei Tabellen](./media/sql-database-connect-query-ssms/query2.png)
+    ![Abfrage, um Daten aus den Tabellen „Product“ und „ProductCategory“ abzurufen](./media/sql-database-connect-query-ssms/query2.png)
 
 ## <a name="insert-data"></a>Einfügen von Daten
 
@@ -146,7 +145,7 @@ Führen Sie diesen [INSERT](https://msdn.microsoft.com/library/ms174335.aspx)-Tr
 
 2. Wählen Sie **Execute**(Ausführen). Das folgende Ergebnis wird angezeigt:
 
-   ![result](./media/sql-database-connect-query-ssms/result.png)
+   ![Ergebnis der Abfrage der Product-Tabelle](./media/sql-database-connect-query-ssms/result.png)
 
 ## <a name="update-data"></a>Aktualisieren von Daten
 

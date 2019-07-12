@@ -3,19 +3,19 @@ title: 'Schnellstart: Abrufen einer Liste mit den unterstützten Sprachen, C#: T
 titleSuffix: Azure Cognitive Services
 description: In dieser Schnellstartanleitung rufen Sie mit der Textübersetzungs-API eine Liste der für Übersetzung, Transliteration und Wörterbuchsuche unterstützten Sprachen ab.
 services: cognitive-services
-author: erhopf
+author: swmachan
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: quickstart
 ms.date: 06/04/2019
-ms.author: erhopf
-ms.openlocfilehash: e5e57757fbd80ca8e90b9997440050a751914a8a
-ms.sourcegitcommit: adb6c981eba06f3b258b697251d7f87489a5da33
+ms.author: swmachan
+ms.openlocfilehash: 5b5bf33c70b9f8827f1f55378e9caf4d1c858bed
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/04/2019
-ms.locfileid: "66514956"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67449419"
 ---
 # <a name="quickstart-use-the-translator-text-api-to-get-a-list-of-supported-languages-using-c"></a>Schnellstart: Verwenden der Textübersetzungs-API zum Abrufen einer Liste unterstützter Sprachen mit C#
 
@@ -114,6 +114,8 @@ var jsonResponse = response.Content.ReadAsStringAsync().Result;
 Console.WriteLine(PrettyPrint(jsonResponse));
 Console.WriteLine("Press any key to continue.");
 ```
+
+Wenn Sie ein Cognitive Services-Abonnement mehrerer Dienste verwenden, müssen Sie auch `Ocp-Apim-Subscription-Region` in Ihre Anforderungsparameter aufnehmen. [Erfahren Sie mehr über die Authentifizierung mit dem Abonnement für mehrere Dienste](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference#authentication). 
 
 Um die Antwort mit „Schöndruck“ (Formatierung für die Antwort) ausgeben möchten, fügen Sie diese Funktion Ihrer „Program“-Klasse hinzu:
 ```

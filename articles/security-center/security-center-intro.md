@@ -3,7 +3,7 @@ title: Was ist Azure Security Center?| Microsoft-Dokumentation
 description: Sie erhalten Informationen zu Azure Security Center, zu dessen wichtigsten Funktionen und dazu, wie es funktioniert.
 services: security-center
 documentationcenter: na
-author: rkarlin
+author: monhaber
 manager: barbkess
 editor: ''
 ms.assetid: 45b9756b-6449-49ec-950b-5ed1e7c56daa
@@ -13,14 +13,14 @@ ms.topic: overview
 ms.custom: mvc
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 1/15/2019
-ms.author: rkarlin
-ms.openlocfilehash: 13526268480c69798ee52078f7448605fc1afa9a
-ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
+ms.date: 6/06/2019
+ms.author: v-mohabe
+ms.openlocfilehash: 28e85f2e9caacc0cc30dcc1a073414c34bc2ab0e
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/02/2019
-ms.locfileid: "57242036"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67064326"
 ---
 # <a name="what-is-azure-security-center"></a>Was ist Azure Security Center?
 
@@ -125,6 +125,10 @@ Mit Security Center können Sie die Anfälligkeit für Brute-Force-Angriffe verr
 ### <a name="protect-data-services"></a>Schützen von Datendiensten
 
 Security Center enthält Funktionen, mit denen Sie eine automatische Klassifizierung Ihrer Daten in Azure SQL durchführen können. Sie können auch Bewertungen für potenzielle Sicherheitsrisiken für Azure SQL- und Storage-Dienste sowie Empfehlungen zu ihrer Entschärfung erhalten.
+
+### <a name="protect-iot-and-hybrid-cloud-workloads-preview"></a>Schützen von IoT und Hybridcloudworkloads (Vorschau)
+
+Azure Security Center für IoT (Internet of Things, Internet der Dinge) vereinfacht den Schutz von Hybridworkloads durch eine einheitliche Sichtbarkeit und Konfiguration, adaptiven Schutz vor Bedrohungen, intelligente Bedrohungserkennung und Gegenmaßnahmen für Workloads, die am Edge, lokal, in Azure oder in anderen Clouds ausgeführt werden. Weitere Informationen finden Sie in der [Dokumentation zu Azure Security Center für IoT (Vorschau)](https://docs.microsoft.com/azure/asc-for-iot/).
 
 ## <a name="get-secure-faster"></a>Schnellerer Aufbau des Schutzes
 

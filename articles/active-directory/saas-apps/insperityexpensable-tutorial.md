@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/25/2019
 ms.author: jeedes
-ms.openlocfilehash: dd0c35d23541512e1ed021a57526ac50f7a68e26
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 43b24bec557d1cc879be9568bea451f1a8b0b310
+ms.sourcegitcommit: c0419208061b2b5579f6e16f78d9d45513bb7bbc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67100143"
+ms.lasthandoff: 07/08/2019
+ms.locfileid: "67625316"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-insperity-expensable"></a>Tutorial: Azure Active Directory-Integration mit Insperity ExpensAble
 
@@ -108,7 +108,7 @@ Führen Sie zum Konfigurieren des einmaligen Anmeldens von Azure AD in Insperit
     Geben Sie im Textfeld **Anmelde-URL** eine URL im folgenden Format ein: `https://server.expensable.com/esapp/Authenticate?companyId=<company ID>`
 
     > [!NOTE]
-    > Dieser Wert entspricht nicht dem tatsächlichen Wert. Ersetzen Sie diesen Wert durch die tatsächliche Anmelde-URL. Wenden Sie sich an das [Kundensupportteam von Insperity ExpensAble](http://expensable.com/support/support-overview), um den Wert zu erhalten. Sie können sich auch die Muster im Abschnitt **Grundlegende SAML-Konfiguration** im Azure-Portal ansehen.
+    > Dieser Wert entspricht nicht dem tatsächlichen Wert. Ersetzen Sie diesen Wert durch die tatsächliche Anmelde-URL. Wenden Sie sich an das [Kundensupportteam von Insperity ExpensAble](https://www.insperity.com/products/expense-management/support/express/), um den Wert zu erhalten. Sie können sich auch die Muster im Abschnitt **Grundlegende SAML-Konfiguration** im Azure-Portal ansehen.
 
 5. Klicken Sie auf der Seite **Einmaliges Anmelden (SSO) mit SAML einrichten** im Abschnitt **SAML-Signaturzertifikat** auf **Herunterladen**, um das Ihrer Anforderung entsprechende **Zertifikat (Base64)** aus den angegebenen Optionen herunterzuladen und auf Ihrem Computer zu speichern.
 
@@ -126,7 +126,7 @@ Führen Sie zum Konfigurieren des einmaligen Anmeldens von Azure AD in Insperit
 
 ### <a name="configure-insperity-expensable-single-sign-on"></a>Konfigurieren des einmaligen Anmeldens für Insperity ExpensAble
 
-Zum Konfigurieren des einmaligen Anmeldens aufseiten von **Insperity ExpensAble** müssen Sie das heruntergeladene **Zertifikat (Base64)** und die kopierten URLs aus dem Azure-Portal an das [Supportteam von Insperity ExpensAble](http://expensable.com/support/support-overview) senden. Es führt die Einrichtung durch, damit die SAML-SSO-Verbindung auf beiden Seiten richtig festgelegt ist.
+Zum Konfigurieren des einmaligen Anmeldens aufseiten von **Insperity ExpensAble** müssen Sie das heruntergeladene **Zertifikat (Base64)** und die kopierten URLs aus dem Azure-Portal an das [Supportteam von Insperity ExpensAble](https://www.insperity.com/products/expense-management/support/express/) senden. Es führt die Einrichtung durch, damit die SAML-SSO-Verbindung auf beiden Seiten richtig festgelegt ist.
 
 ### <a name="create-an-azure-ad-test-user"></a>Erstellen eines Azure AD-Testbenutzers
 
@@ -181,7 +181,7 @@ In diesem Abschnitt ermöglichen Sie Britta Simon die Verwendung des einmaligen 
 
 ### <a name="create-insperity-expensable-test-user"></a>Erstellen eines Insperity ExpensAble-Testbenutzers
 
-In diesem Abschnitt erstellen Sie in Insperity ExpensAble eine Benutzerin namens „Britta Simon“. Wenden Sie sich an das [Supportteam von Insperity ExpensAble](http://expensable.com/support/support-overview), um die Benutzer der Insperity ExpensAble-Plattform hinzuzufügen. Benutzer müssen erstellt und aktiviert werden, damit Sie einmaliges Anmelden verwenden können.
+In diesem Abschnitt erstellen Sie in Insperity ExpensAble eine Benutzerin namens „Britta Simon“. Wenden Sie sich an das [Supportteam von Insperity ExpensAble](https://www.insperity.com/products/expense-management/support/express/), um die Benutzer der Insperity ExpensAble-Plattform hinzuzufügen. Benutzer müssen erstellt und aktiviert werden, damit Sie einmaliges Anmelden verwenden können.
 
 ### <a name="test-single-sign-on"></a>Testen des einmaligen Anmeldens
 

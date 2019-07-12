@@ -10,12 +10,12 @@ ms.subservice: text-analytics
 ms.topic: quickstart
 ms.date: 05/28/2019
 ms.author: assafi
-ms.openlocfilehash: a8b41f6853e9c91e64de903960b880e44f22ed55
-ms.sourcegitcommit: 8c49df11910a8ed8259f377217a9ffcd892ae0ae
+ms.openlocfilehash: 82297842a56930cec2b4de90998b4ffb904543bb
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/29/2019
-ms.locfileid: "66297797"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67446967"
 ---
 # <a name="quickstart-use-the-net-sdk-and-c-to-call-the-text-analytics-service"></a>Schnellstart: Verwenden des .NET SDK mit C# für das Aufrufen des Textanalysediensts
 <a name="HOLTop"></a>
@@ -30,7 +30,8 @@ Technische Informationen finden Sie im SDK für .NET unter der [Referenz für di
 ## <a name="prerequisites"></a>Voraussetzungen
 
 * Eine beliebige Edition von [Visual Studio 2017 oder höher]
-* Textanalyse-[SDK für .NET](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Language.TextAnalytics)
+* Das Textanalyse-[SDK für .NET](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Language.TextAnalytics)
+
 [!INCLUDE [cognitive-services-text-analytics-signup-requirements](../../../../includes/cognitive-services-text-analytics-signup-requirements.md)]
 
 Sie benötigen außerdem den [Endpunkt und den Zugriffsschlüssel](../How-tos/text-analytics-how-to-access-key.md), die bei der Registrierung für Sie generiert wurden.

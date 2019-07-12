@@ -8,12 +8,12 @@ ms.topic: overview
 ms.date: 05/24/2019
 ms.author: tamram
 ms.subservice: blobs
-ms.openlocfilehash: e8a68ca87307e1265c200f2e05464ff87983c1e6
-ms.sourcegitcommit: 25a60179840b30706429c397991157f27de9e886
+ms.openlocfilehash: e216503cac2db55115bd4c1b5bf0e2f6e50355fc
+ms.sourcegitcommit: 156b313eec59ad1b5a820fabb4d0f16b602737fc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/28/2019
-ms.locfileid: "66258403"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67190858"
 ---
 # <a name="introduction-to-azure-blob-storage"></a>Einführung in Azure Blob Storage
 
@@ -29,7 +29,7 @@ Blob Storage bietet drei Typen von Ressourcen:
 
 Im folgenden Diagramm ist die Beziehung zwischen diesen Ressourcen dargestellt.
 
-![Diagramm der Blob Storage-Architektur](./media/storage-blob-introduction/blob1.png)
+![Beziehung zwischen Kontoblob und Containerressource](./media/storage-blob-introduction/blob1.png)
 
 ### <a name="storage-accounts"></a>Speicherkonten
 
@@ -56,7 +56,7 @@ Azure Storage unterstützt drei Arten von Blobs:
 
 * In **Blockblobs** werden Text- und Binärdaten bis zu einer Größe von ca. 4,7 TB gespeichert. Blockblobs bestehen aus Datenblöcken, die einzeln verwaltet werden können.
 * **Anfügeblobs** bestehen wie Blockblobs aus Blöcken, sind aber für Anfügevorgänge optimiert. Anfügeblobs sind beispielsweise ideal für Szenarien, bei denen es um das Protokollieren von Daten virtueller Computer geht.
-* In **Seitenblobs** werden Random-Access-Dateien mit einer Größe von bis zu 8 TB gespeichert. Seitenblobs speichern die VHD-Dateien (Virtual Hard Drive, virtuelle Festplatte), die als Datenträger für Azure-VMs fungieren. Weitere Informationen zu Seitenblobs finden Sie in der [Übersicht über Azure-Seitenblobs](storage-blob-pageblob-overview.md).
+* In **Seitenblobs** werden Random-Access-Dateien mit einer Größe von bis zu 8 TB gespeichert. Seitenblobs speichern VHD-Dateien (Virtual Hard Drive, virtuelle Festplatte) und fungieren als Datenträger für Azure-VMs. Weitere Informationen zu Seitenblobs finden Sie in der [Übersicht über Azure-Seitenblobs](storage-blob-pageblob-overview.md).
 
 Weitere Informationen zu den verschiedenen Blobtypen finden Sie unter [Understanding Block Blobs, Append Blobs, and Page Blobs](https://docs.microsoft.com/rest/api/storageservices/understanding-block-blobs--append-blobs--and-page-blobs) (Grundlegendes zu Block-, Anfüge- und Seitenblobs).
 

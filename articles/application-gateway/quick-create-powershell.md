@@ -5,15 +5,15 @@ services: application-gateway
 author: vhorne
 ms.service: application-gateway
 ms.topic: quickstart
-ms.date: 1/11/2019
+ms.date: 06/11/2019
 ms.author: victorh
 ms.custom: mvc
-ms.openlocfilehash: 6c472c30514e6acd3b21822e31f2cefc0da5bc98
-ms.sourcegitcommit: 1aefdf876c95bf6c07b12eb8c5fab98e92948000
+ms.openlocfilehash: c0e80b1354302f227cb448391c7a92100049cc3a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/06/2019
-ms.locfileid: "66729652"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67053353"
 ---
 # <a name="quickstart-direct-web-traffic-with-azure-application-gateway---azure-powershell"></a>Schnellstart: Weiterleiten von Webdatenverkehr per Azure Application Gateway – Azure PowerShell
 
@@ -36,7 +36,7 @@ Wenn Sie Azure PowerShell lokal installieren und verwenden möchten, müssen Sie
 
 ### <a name="resource-group"></a>Ressourcengruppe
 
-In Azure ordnen Sie verwandte Ressourcen einer Ressourcengruppe zu. Sie können entweder eine vorhandene Ressourcengruppe verwenden oder eine neue erstellen. In diesem Beispiel erstellen wir mit dem Cmdlet [New-AzResourceGroup](/powershell/module/Az.resources/new-Azresourcegroup) wie folgt eine neue Ressourcengruppe: 
+In Azure ordnen Sie verwandte Ressourcen einer Ressourcengruppe zu. Sie können entweder eine vorhandene Ressourcengruppe verwenden oder eine neue erstellen. In diesem Beispiel erstellen Sie mit dem Cmdlet [New-AzResourceGroup](/powershell/module/Az.resources/new-Azresourcegroup) wie folgt eine neue Ressourcengruppe: 
 
 ```azurepowershell-interactive
 New-AzResourceGroup -Name myResourceGroupAG -Location eastus
@@ -44,7 +44,7 @@ New-AzResourceGroup -Name myResourceGroupAG -Location eastus
 
 ### <a name="required-network-resources"></a>Erforderliche Netzwerkressourcen
 
-Für die Kommunikation in Azure zwischen den von Ihnen erstellten Ressourcen ist ein virtuelles Netzwerk erforderlich.  Das Subnetz für das Anwendungsgateway kann nur Anwendungsgateways enthalten. Andere Ressourcen sind nicht zulässig.  Sie können entweder ein neues Subnetz für Application Gateway erstellen oder ein bereits vorhandenes verwenden. In diesem Beispiel erstellen Sie zwei Subnetze: eines für das Anwendungsgateway und eines für die Back-End-Server. Je nach Anwendungsfall können Sie die Front-End-IP-Adresse von Application Gateway als öffentliche oder als private IP-Adresse konfigurieren. In diesem Beispiel wählen wir eine öffentliche Front-End-IP-Adresse.
+Für die Kommunikation in Azure zwischen den von Ihnen erstellten Ressourcen ist ein virtuelles Netzwerk erforderlich.  Das Subnetz für das Anwendungsgateway kann nur Anwendungsgateways enthalten. Andere Ressourcen sind nicht zulässig.  Sie können entweder ein neues Subnetz für Application Gateway erstellen oder ein bereits vorhandenes verwenden. In diesem Beispiel erstellen Sie zwei Subnetze: eines für das Anwendungsgateway und eines für die Back-End-Server. Je nach Anwendungsfall können Sie die Front-End-IP-Adresse von Application Gateway als öffentliche oder als private IP-Adresse konfigurieren. In diesem Beispiel verwenden Sie eine öffentliche Front-End-IP-Adresse.
 
 1. Erstellen Sie durch Aufrufen von [New-AzVirtualNetworkSubnetConfig](/powershell/module/Az.network/new-Azvirtualnetworksubnetconfig) die Subnetzkonfigurationen.
 2. Erstellen Sie durch Aufrufen von [New-AzVirtualNetwork](/powershell/module/Az.network/new-Azvirtualnetwork) das virtuelle Netzwerk mit den Subnetzkonfigurationen. 
@@ -109,7 +109,7 @@ for ($i=1; $i -le 2; $i++)
   Add-AzVMNetworkInterface `
     -VM $vm `
     -Id $nic.Id
-  Set-AzVMBootDiagnostics `
+  Set-AzVMBootDiagnostic `
     -VM $vm `
     -Disable
   New-AzVM -ResourceGroupName myResourceGroupAG -Location EastUS -VM $vm
@@ -219,7 +219,7 @@ New-AzApplicationGateway `
 IIS ist für die Erstellung des Anwendungsgateways zwar nicht erforderlich, Sie haben die Installation in dieser Schnellstartanleitung aber ausgeführt, um zu überprüfen, ob Azure das Anwendungsgateway erfolgreich erstellt hat. Testen des Anwendungsgateways mit IIS:
 
 1. Führen Sie [Get-AzPublicIPAddress](/powershell/module/Az.network/get-Azpublicipaddress) aus, um die öffentliche IP-Adresse des Anwendungsgateways abzurufen. 
-2. Kopieren Sie die öffentliche IP-Adresse, und fügen Sie sie in die Adressleiste des Browsers ein. Wenn Sie den Browser aktualisieren, sollte der Name des virtuellen Computers angezeigt werden. Eine gültige Antwort überprüft, ob das Anwendungsgateway erfolgreich erstellt wurde und erfolgreich eine Verbindung mit dem Back-End herstellen kann.
+2. Kopieren Sie die öffentliche IP-Adresse, und fügen Sie sie in die Adressleiste des Browsers ein. Wenn Sie den Browser aktualisieren, sollte der Name des virtuellen Computers angezeigt werden. Eine gültige Antwort bestätigt, dass das Anwendungsgateway erfolgreich erstellt wurde und eine Verbindung mit dem Back-End herstellen kann.
 
 ```azurepowershell-interactive
 Get-AzPublicIPAddress -ResourceGroupName myResourceGroupAG -Name myAGPublicIPAddress

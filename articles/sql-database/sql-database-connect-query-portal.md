@@ -8,17 +8,17 @@ ms.subservice: development
 ms.custom: ''
 ms.devlang: ''
 ms.topic: quickstart
-author: AyoOlubeko
-ms.author: ayolubek
+author: Ninarn
+ms.author: ninarn
 ms.reviewer: carlrab
 manager: craigg
-ms.date: 02/12/2019
-ms.openlocfilehash: b2109afe6760eb87269a33ed74784149c2bf3e03
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.date: 06/28/2019
+ms.openlocfilehash: 52041ba3c057e871b60f283f293dd79a18f3b21e
+ms.sourcegitcommit: 79496a96e8bd064e951004d474f05e26bada6fa0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58105793"
+ms.lasthandoff: 07/02/2019
+ms.locfileid: "67508758"
 ---
 # <a name="quickstart-use-the-azure-portals-sql-query-editor-to-connect-and-query-data"></a>Schnellstart: Verwenden des SQL-Abfrage-Editors im Azure-Portal zum Verbinden und Abfragen von Daten
 
@@ -32,14 +32,14 @@ Für dieses Tutorial benötigen Sie Folgendes:
 
   || Einzeldatenbank |
   |:--- |:--- |
-  | Erstellen| [Portal](sql-database-single-database-get-started.md) | 
-  || [BEFEHLSZEILENSCHNITTSTELLE (CLI)](scripts/sql-database-create-and-configure-database-cli.md) | 
-  || [PowerShell](scripts/sql-database-create-and-configure-database-powershell.md) | 
-  | Konfigurieren | [IP-Firewallregel auf Serverebene](sql-database-server-level-firewall-rule.md)| 
+  | Erstellen| [Portal](sql-database-single-database-get-started.md) |
+  || [BEFEHLSZEILENSCHNITTSTELLE (CLI)](scripts/sql-database-create-and-configure-database-cli.md) |
+  || [PowerShell](scripts/sql-database-create-and-configure-database-powershell.md) |
+  | Konfigurieren | [IP-Firewallregel auf Serverebene](sql-database-server-level-firewall-rule.md)|
   |||
 
 > [!NOTE]
-> Stellen Sie sicher, dass die Option **Zugriff auf Azure-Dienste erlauben** in den SQL Server-Firewalleinstellungen auf **EIN** festgelegt ist. Mit dieser Option erhält der SQL-Abfrage-Editor Zugriff auf Ihre Datenbanken und Data Warehouses.
+> Der Abfrage-Editor verwendet die Ports 443 und 1443 zum Kommunizieren.  Stellen Sie sicher, dass Sie ausgehenden HTTPS-Datenverkehr auf diesen Ports aktiviert haben. Sie müssen auch Ihre ausgehende IP-Adresse den Firewallzulassungsregeln des Servers hinzufügen, um auf Ihre Datenbanken und Data Warehouses zugreifen zu können.
 
 ## <a name="sign-in-the-azure-portal"></a>Anmelden beim Azure-Portal
 
@@ -49,13 +49,13 @@ Melden Sie sich beim [Azure-Portal](https://portal.azure.com/) an.
 
 1. Wählen Sie im Menü auf der linken Seite **SQL-Datenbanken** und anschließend **mySampleDatabase** aus.
 
-2. Suchen Sie im linken Menü nach **Abfrage-Editor (Vorschau)**, und wählen Sie die Option aus. Die Seite **Anmeldung** wird angezeigt.
+2. Suchen Sie im linken Menü nach **Abfrage-Editor (Vorschau)** , und wählen Sie die Option aus. Die Seite **Anmeldung** wird angezeigt.
 
     ![Suchen des Abfrage-Editors](./media/sql-database-connect-query-portal/find-query-editor.PNG)
 
 3. Wählen Sie im Dropdownmenü **Autorisierungstyp** die Option **SQL Server-Authentifizierung** aus, und geben Sie die Benutzer-ID und das Kennwort des Serveradministratorkontos ein, das zum Erstellen der Datenbank verwendet wurde.
 
-    ![Anmelden](./media/sql-database-connect-query-portal/login-menu.png) 
+    ![Anmelden](./media/sql-database-connect-query-portal/login-menu.png)
 
 4. Klicken Sie auf **OK**.
 
@@ -78,8 +78,8 @@ Wenn Sie einen Active Directory-Administrator (AD) konfigurieren, können Sie ei
 
 4. Wählen Sie auf der Symbolleiste der AD-Administratorseite **Speichern** aus.
 
-5. Navigieren Sie zur Datenbank **mySampleDatabase**, und wählen Sie im linken Menü **Abfrage-Editor (Vorschau)** aus. Die Seite **Anmeldung** wird angezeigt. Falls Sie ein AD-Administrator sind, wird auf der rechten Seite unterhalb von **Active Directory single sign-on** (Active Directory-SSO) eine Meldung mit dem Hinweis angezeigt, dass Sie angemeldet wurden. 
-   
+5. Navigieren Sie zur Datenbank **mySampleDatabase**, und wählen Sie im linken Menü **Abfrage-Editor (Vorschau)** aus. Die Seite **Anmeldung** wird angezeigt. Falls Sie ein AD-Administrator sind, wird auf der rechten Seite unterhalb von **Active Directory single sign-on** (Active Directory-SSO) eine Meldung mit dem Hinweis angezeigt, dass Sie angemeldet wurden.
+
 6. Klicken Sie auf **OK**.
 
 
@@ -160,7 +160,7 @@ Führen Sie die folgende [DELETE](https://msdn.microsoft.com/library/ms189835.as
 
 Bei der Verwendung des Abfrage-Editors sind ein paar Dinge zu beachten:
 
-* Sie können den Abfrage-Editor nicht verwenden, um SQL Server-Datenbanken in einem virtuellen Netzwerk abzufragen.
+* Der Abfrage-Editor verwendet die Ports 443 und 1443 zum Kommunizieren.  Stellen Sie sicher, dass Sie ausgehenden HTTPS-Datenverkehr auf diesen Ports aktiviert haben. Sie müssen auch Ihre ausgehende IP-Adresse den Firewallzulassungsregeln des Servers hinzufügen, um auf Ihre Datenbanken und Data Warehouses zugreifen zu können.
 
 * Durch Drücken von F5 wird die Seite des Abfrage-Editors aktualisiert, und aktuell bearbeitete Abfragen gehen verloren.
 

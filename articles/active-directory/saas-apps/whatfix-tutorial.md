@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 05/17/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9fa088aa331621409103997755b2344f2dd70c64
-ms.sourcegitcommit: cfbc8db6a3e3744062a533803e664ccee19f6d63
+ms.openlocfilehash: 3bc061cca3a2c57d2ebccb0fc09f8168c2fad253
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/21/2019
-ms.locfileid: "65992943"
+ms.lasthandoff: 06/17/2019
+ms.locfileid: "67163964"
 ---
 # <a name="tutorial-integrate-whatfix-with-azure-active-directory"></a>Tutorial: Integrieren von Whatfix in Azure Active Directory
 
@@ -139,7 +139,7 @@ Wenn Sie im Zugriffsbereich die Kachel „Whatfix“ auswählen, sollten Sie aut
 
 ## <a name="additional-resources"></a>Weitere Ressourcen
 
-- [Liste mit den Tutorials zur Integration von SaaS-Apps in Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [Liste der Tutorials zur Integration von SaaS-Apps in Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
 - [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 

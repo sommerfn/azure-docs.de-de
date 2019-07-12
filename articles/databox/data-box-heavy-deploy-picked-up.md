@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: heavy
 ms.topic: tutorial
-ms.date: 05/28/2019
+ms.date: 07/01/2019
 ms.author: alkohli
-ms.openlocfilehash: 31185900ede0fae74a04f98eaecee7379fb1c4fe
-ms.sourcegitcommit: ef06b169f96297396fc24d97ac4223cabcf9ac33
+ms.openlocfilehash: 3903e14e8923f6d29f2a88c61aead0cfc605b5b5
+ms.sourcegitcommit: 79496a96e8bd064e951004d474f05e26bada6fa0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/31/2019
-ms.locfileid: "66427810"
+ms.lasthandoff: 07/02/2019
+ms.locfileid: "67508678"
 ---
 # <a name="tutorial-return-azure-data-box-heavy-and-verify-data-upload-to-azure-preview"></a>Tutorial: Zurücksenden von Azure Data Box Heavy und Überprüfen des Datenuploads in Azure (Vorschauversion)
 
@@ -43,11 +43,11 @@ Stellen Sie Folgendes sicher, bevor Sie beginnen:
 ## <a name="ship-data-box-heavy-back"></a>Zurücksenden von Data Box Heavy
 
 1. Stellen Sie sicher, dass das Gerät ausgeschaltet ist und alle Kabel entfernt wurden. Wickeln Sie die vier Netzkabel auf, und legen Sie sie in die Ablage (auf der Rückseite des Geräts).
-2. In den USA und Europa wird der Versand des Geräts über FedEx abgewickelt.
+2. Das Gerät versendet LTL-Fracht per FedEx in die USA und DHL in die EU.
 
-    1. Vereinbaren Sie unter der lokalen Telefonnummer Ihres Transportdienstleisters einen Abholtermin.
-    2. Wenden Sie sich an [Data Box Operations](mailto:DataBoxOps@microsoft.com), um sie über die Abholung zu informieren und das Adressetikett für den Rückversand zu erhalten.
-    3. Das Adressetikett muss im durchsichtigen Bereich an der Gerätevorderseite angebracht werden.
+    1. Wenden Sie sich an [Data Box Operations](mailto:DataBoxOps@microsoft.com), um sie über die Abholung zu informieren und das Adressetikett für den Rückversand zu erhalten.
+    2. Vereinbaren Sie unter der lokalen Telefonnummer Ihres Transportdienstleisters einen Abholtermin.
+    3. Achten Sie darauf, dass der Adressaufkleber gut sichtbar auf der Außenseite der Sendung angebracht ist.
     4. Achten Sie darauf, dass die alten Adressaufkleber des vorherigen Versands vom Gerät entfernt wurden.
 3. Nachdem Data Box Heavy von Ihrem Transportdienstleister abgeholt und gescannt wurde, ändert sich der Auftragsstatus im Portal in **Abgeholt**. Außerdem wird eine Nachverfolgungs-ID angezeigt.
 

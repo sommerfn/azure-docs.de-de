@@ -10,14 +10,14 @@ ms.devlang: na
 ms.topic: overview
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 08/29/2018
+ms.date: 04/08/2019
 ms.author: sharadag
-ms.openlocfilehash: 2d4c93b7ef707f5b09bc2f5f93d56c50c1bb3458
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 20cfcea4a8b58c1c01a7c710163b7320ff96d65c
+ms.sourcegitcommit: 08138eab740c12bf68c787062b101a4333292075
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60736325"
+ms.lasthandoff: 06/22/2019
+ms.locfileid: "67330833"
 ---
 # <a name="what-is-azure-front-door-service"></a>Was ist Azure Front Door Service?
 Über Azure Front Door Service können Sie das globale Routing für Ihren Webdatenverkehr definieren, verwalten und überwachen, indem Sie es für beste Leistung und sofortiges globales Failover bei Hochverfügbarkeit optimieren. Mit Front Door können Sie Ihre globalen (mehrere Regionen) Consumer- und Unternehmensanwendungen in stabile und hochleistungsfähige personalisierte moderne Anwendungen, APIs und Inhalte transformieren, die eine globale Zielgruppe mit Azure erreichen.
@@ -60,6 +60,13 @@ Front Door unterstützt auch HTTPS für benutzerdefinierte Domänennamen. Verwen
 Azure Front Door ermöglicht es Ihnen, WAF-Regeln (Web Application Firewall) für Zugriffssteuerung zu erstellen, um Ihren HTTP/HTTPS-Workload vor Missbrauch auf Basis von Client-IP-Adressen, Landeskennzahl und HTTP-Parametern zu schützen. Darüber hinaus ermöglicht es Ihnen Front Door, Ratenbegrenzungsregeln zur Bekämpfung von schädlichem Bot-Datenverkehr zu erstellen. 
 
 Die Door-Plattform selbst wird durch [Azure DDoS Protection](../virtual-network/ddos-protection-overview.md) Basic geschützt. Zum weiteren Schutz kann Azure DDoS Protection Standard auf Ihren VNETs aktiviert werden und Ressourcen vor Vermittlungsschichtangriffen (TCP/UDP) über automatische Optimierung und Risikominderung schützen. Front Door ist ein Layer 7-Reverseproxy. Er erlaubt nur Webdatenverkehr über Back-Ends und blockiert standardmäßig andere Arten von Datenverkehr.
+
+## <a name="url-redirection"></a>URL-Umleitung
+Da die Branche darauf drängt, nur sichere Kommunikation zu unterstützen, wird erwartet, dass Webanwendungen jeden HTTP-Datenverkehr automatisch zu HTTPS umleiten. Dadurch wird sichergestellt, dass die gesamte Kommunikation zwischen Benutzern und Anwendung über einen verschlüsselten Pfad stattfindet. 
+
+In der Regel haben Anwendungsbesitzer diese Anforderung durch Erstellen eines dedizierten Diensts gelöst, dessen einziger Zweck darin bestand, über HTTP empfangene Anfragen zu HTTPS umzuleiten. Azure Front Door Service unterstützt die Möglichkeit, Datenverkehr von HTTP zu HTTPS umzuleiten. Dies vereinfacht die Anwendungskonfiguration, optimiert die Ressourcennutzung und ermöglicht neue Umleitungsszenarien wie etwa die globale und pfadbasierte Umleitung. Die URL-Umleitung von Azure Front Door Service beschränkt sich nicht auf die HTTP-zu-HTTPS-Umleitung, sondern unterstützt auch die Umleitung zu einem anderen Hostnamen, zu einem anderen Pfad oder sogar zu einer neuen Abfragezeichenfolge in der URL.
+
+Weitere Informationen finden Sie unter [Umleiten von Datenverkehr](front-door-url-redirect.md) mit Azure Front Door Service.
 
 ## <a name="url-rewrite"></a>URL Rewrite
 Front Door unterstützt [URL Rewrite](front-door-url-rewrite.md), indem es Ihnen ermöglicht, einen optionalen benutzerdefinierten Weiterleitungspfad zu konfigurieren, der beim Erstellen der Anforderung zum Weiterleiten an das Back-End verwendet werden soll. Außerdem ermöglicht es Ihnen Front Door, einen Hostheader so zu konfigurieren, dass er beim Weiterleiten der Anforderung an Ihr Back-End gesendet wird.

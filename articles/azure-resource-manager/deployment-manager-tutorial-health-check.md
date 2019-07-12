@@ -4,21 +4,16 @@ description: Verwenden Sie Resource Manager-Vorlagen mit dem Azure-Bereitstellun
 services: azure-resource-manager
 documentationcenter: ''
 author: mumian
-manager: dougeby
-editor: tysonn
 ms.service: azure-resource-manager
-ms.workload: multiple
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.date: 05/31/2019
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: d43a0e7c48db9dd42c7cf3b52e5d4072a4827898
-ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
+ms.openlocfilehash: 0e8a9fefdf92f568001cc3352fe83a85157acf9a
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/04/2019
-ms.locfileid: "66479175"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67442581"
 ---
 # <a name="tutorial-use-health-check-in-azure-deployment-manager-public-preview"></a>Tutorial: Verwenden der Integritätsprüfung im Azure-Bereitstellungs-Manager (Public Preview)
 
@@ -41,7 +36,10 @@ Dieses Tutorial enthält die folgenden Aufgaben:
 > * Überprüfen der Rolloutbereitstellung
 > * Bereinigen von Ressourcen
 
-Die REST-API-Referenz für den Azure-Bereitstellungs-Manager finden Sie [hier](https://docs.microsoft.com/rest/api/deploymentmanager/).
+Zusätzliche Ressourcen:
+
+- Die [REST-API-Referenz für den Azure-Bereitstellungs-Manager](https://docs.microsoft.com/rest/api/deploymentmanager/).
+- [Ein Beispiel zum Azure-Bereitstellungs-Manager](https://github.com/Azure-Samples/adm-quickstart).
 
 Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/) erstellen, bevor Sie beginnen.
 
@@ -59,7 +57,7 @@ In der Produktion nutzen Sie üblicherweise einen oder mehrere Überwachungsanbi
 Die beiden folgenden Dateien dienen zum Bereitstellen der Azure-Funktion. Sie müssen diese Dateien für das Tutorial nicht herunterladen.
 
 * Eine Resource Manager-Vorlage unter [https://armtutorials.blob.core.windows.net/admtutorial/deploy_hc_azure_function.json](https://armtutorials.blob.core.windows.net/admtutorial/deploy_hc_azure_function.json). Diese Vorlage wird zum Erstellen einer Azure-Funktion bereitgestellt.
-* Eine ZIP-Datei mit dem Quellcode der Azure-Funktion: [http://armtutorials.blob.core.windows.net/admtutorial/ADMHCFunction0417.zip](http://armtutorials.blob.core.windows.net/admtutorial/ADMHCFunction0417.zip). Diese ZIP-Datei wird von der Resource Manager-Vorlage aufgerufen.
+* Eine ZIP-Datei mit dem Quellcode der Azure-Funktion: [https://armtutorials.blob.core.windows.net/admtutorial/ADMHCFunction0417.zip](https://armtutorials.blob.core.windows.net/admtutorial/ADMHCFunction0417.zip). Diese ZIP-Datei wird von der Resource Manager-Vorlage aufgerufen.
 
 Wählen Sie zum Bereitstellen der Azure-Funktion **Jetzt testen** aus, um Azure Cloud Shell zu öffnen, und fügen Sie anschließend das folgende Skript in das Shell-Fenster ein.  Klicken Sie zum Einfügen des Codes mit der rechten Maustaste auf das Shell-Fenster, und wählen Sie **Einfügen** aus.
 

@@ -4,20 +4,20 @@ description: In dieser Schnellstartanleitung werden die ersten Schritte zum Erst
 services: stream-analytics
 author: mamccrea
 ms.author: mamccrea
-ms.date: 06/03/2019
+ms.date: 06/21/2019
 ms.topic: quickstart
 ms.service: stream-analytics
 ms.custom: mvc
-ms.openlocfilehash: 4efb8aa21622abddca1add3d8b2fcb523cf45da5
-ms.sourcegitcommit: 600d5b140dae979f029c43c033757652cddc2029
+ms.openlocfilehash: e05d293760b88cd02fdffae60e762f040a4d1311
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/04/2019
-ms.locfileid: "66493385"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67449229"
 ---
 # <a name="quickstart-create-a-stream-analytics-job-by-using-the-azure-portal"></a>Schnellstart: Erstellen eines Stream Analytics-Auftrags mithilfe des Azure-Portals
 
-Dieser Schnellstart veranschaulicht die ersten Schritte beim Erstellen eines Stream Analytics-Auftrags. In dieser Schnellstartanleitung definieren Sie einen Stream Analytics-Auftrag, der Echtzeit-Streamingdaten liest und Nachrichten filtert, bei denen die Temperatur über 27 liegt. Ihr Stream Analytics-Auftrag liest Daten von einem IoT Hub-Gerät, transformiert die Daten und schreibt sie zurück in einen Container im Blobspeicher. Die in dieser Schnellstartanleitung verwendeten Eingabedaten werden von einem Raspberry Pi-Onlinesimulator generiert. 
+Dieser Schnellstart veranschaulicht die ersten Schritte beim Erstellen eines Stream Analytics-Auftrags. In dieser Schnellstartanleitung definieren Sie einen Stream Analytics-Auftrag, der Echtzeit-Streamingdaten liest und Nachrichten filtert, bei denen die Temperatur über 27 liegt. Ihr Stream Analytics-Auftrag liest Daten von IoT Hub, transformiert die Daten und schreibt sie zurück in einen Container im Blobspeicher. Die in dieser Schnellstartanleitung verwendeten Eingabedaten werden von einem Raspberry Pi-Onlinesimulator generiert. 
 
 ## <a name="before-you-begin"></a>Voraussetzungen
 
@@ -27,7 +27,7 @@ Dieser Schnellstart veranschaulicht die ersten Schritte beim Erstellen eines Str
 
 ## <a name="prepare-the-input-data"></a>Vorbereiten der Eingabedaten
 
-Vor dem Definieren des Stream Analytics-Auftrags sollten Sie die Daten vorbereiten, die später als Auftragseingabe konfiguriert werden. Führen Sie die folgenden Schritte aus, um die für den Auftrag erforderlichen Eingabedaten vorzubereiten:
+Vor dem Definieren des Stream Analytics-Auftrags sollten Sie die Eingabedaten vorbereiten. Die Echtzeit-Sensordaten werden an IoT-Hub übertragen; IoT-Hub wird später als Auftragseingabe konfiguriert. Führen Sie die folgenden Schritte aus, um die für den Auftrag erforderlichen Eingabedaten vorzubereiten:
 
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com/) an.
 
@@ -179,7 +179,7 @@ In diesem Abschnitt konfigurieren Sie eine IoT Hub-Geräteeingabe für den Strea
 
 ## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
 
-Löschen Sie die Ressourcengruppe, den Streamingauftrag und alle dazugehörigen Ressourcen, wenn Sie sie nicht mehr benötigen. Durch das Löschen des Auftrags verhindern Sie, dass Kosten für die vom Auftrag verbrauchten Streamingeinheiten anfallen. Wenn Sie den Auftrag in Zukunft verwenden möchten, können Sie ihn beenden und später bei Bedarf neu starten. Wenn Sie diesen Auftrag nicht weiter verwenden möchten, löschen Sie alle von diesem Schnellstart erstellten Ressourcen. Führen Sie dazu folgende Schritte aus:
+Löschen Sie die Ressourcengruppe, den Stream Analytics-Auftrag und alle dazugehörigen Ressourcen, wenn Sie sie nicht mehr benötigen. Durch das Löschen des Auftrags verhindern Sie, dass Kosten für die vom Auftrag verbrauchten Streamingeinheiten anfallen. Wenn Sie den Auftrag in Zukunft verwenden möchten, können Sie ihn beenden und später bei Bedarf neu starten. Wenn Sie diesen Auftrag nicht weiter verwenden möchten, löschen Sie alle von diesem Schnellstart erstellten Ressourcen. Führen Sie dazu folgende Schritte aus:
 
 1. Klicken Sie im Azure-Portal im Menü auf der linken Seite auf **Ressourcengruppen** und dann auf den Namen der erstellten Ressource.  
 

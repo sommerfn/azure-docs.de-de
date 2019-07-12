@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.custom: mvc
 ms.date: 04/10/2019
 ms.author: spelluru
-ms.openlocfilehash: a946443e1d1e66a1ae8f70671ff328cdf47ff009
-ms.sourcegitcommit: cfbc8db6a3e3744062a533803e664ccee19f6d63
+ms.openlocfilehash: 315f8d30b7c7559947c599edd0e18eaa5a99ac22
+ms.sourcegitcommit: 6cb4dd784dd5a6c72edaff56cf6bcdcd8c579ee7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/21/2019
-ms.locfileid: "65992012"
+ms.lasthandoff: 07/02/2019
+ms.locfileid: "67513639"
 ---
 # <a name="quickstart-use-azure-portal-to-create-a-service-bus-queue"></a>Schnellstart: Erstellen einer Service Bus-Warteschlange mithilfe des Azure-Portals
 In dieser Schnellstartanleitung wird beschrieben, wie Sie Nachrichten an eine Service Bus-Warteschlange senden und von ihr empfangen. Sie verwenden das [Azure-Portal][Azure portal], um einen Messaging-Namespace und eine Warteschlange innerhalb dieses Namespace zu erstellen und die Anmeldeinformationen dieses Namespace für die Autorisierung zu beschaffen. Anschließend wird gezeigt, wie Sie für diese Warteschlange das Senden und Empfangen von Nachrichten über die [.NET-Standardbibliothek](https://www.nuget.org/packages/Microsoft.Azure.ServiceBus) durchführen.
@@ -35,7 +35,7 @@ Damit Sie dieses Tutorial ausführen können, müssen folgende Komponenten insta
 
 ## <a name="send-and-receive-messages"></a>Senden und Empfangen von Nachrichten
 
-Nachdem der Namespace und die Warteschlange bereitgestellt wurden und Sie über die erforderlichen Anmeldeinformationen verfügen, sind Sie zum Senden und Empfangen von Nachrichten bereit. Sie können sich den Code in [diesem GitHub-Ordner mit Beispielen](https://github.com/Azure/azure-service-bus/tree/master/samples/Java/azure-servicebus/TopicFilters) ansehen.
+Nachdem der Namespace und die Warteschlange bereitgestellt wurden und Sie über die erforderlichen Anmeldeinformationen verfügen, sind Sie zum Senden und Empfangen von Nachrichten bereit. Sie können sich den Code in [diesem GitHub-Ordner mit Beispielen](https://github.com/Azure/azure-service-bus/tree/master/samples/DotNet/Microsoft.Azure.ServiceBus/TopicFilters) ansehen.
 
 Gehen Sie wie folgt vor, um den Code auszuführen:
 

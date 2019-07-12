@@ -17,12 +17,12 @@ ms.author: ryanwi
 ms.custom: aaddev
 ms.reviewer: aragra, lenalepa, sureshja
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 156b26454aad6d6fd3230e19b47a938841331aec
-ms.sourcegitcommit: f6c85922b9e70bb83879e52c2aec6307c99a0cac
+ms.openlocfilehash: 9ec1d5fb13d7fb191bfee6194e69a217bcaddbb9
+ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/11/2019
-ms.locfileid: "65545711"
+ms.lasthandoff: 07/01/2019
+ms.locfileid: "67482569"
 ---
 # <a name="quickstart-register-an-application-with-the-microsoft-identity-platform"></a>Schnellstart: Registrieren einer Anwendung bei Microsoft Identity Platform
 
@@ -46,7 +46,7 @@ In dieser Schnellstartanleitung erfahren Sie, wie Sie eine Anwendung im Azure-Po
        | **Konten in einem beliebigen Organisationsverzeichnis** | Wählen Sie diese Option, wenn Sie alle Kunden aus dem Unternehmens- und Bildungsbereich ansprechen möchten.<br><br>Diese Option ist für reine Azure AD-Apps mit mehreren Mandanten vorgesehen.<br><br>Wenn Sie die App als reine Azure AD-App mit einem einzelnen Mandanten registriert haben, können Sie sie über das Blatt **Authentifizierung** in eine Azure AD-App mit mehreren Mandanten (und wieder zurück in eine App mit einem einzelnen Mandanten) verwandeln. |
        | **Konten in allen Organisationsverzeichnissen und persönliche Microsoft-Konten** | Verwenden Sie diese Option, um die breiteste Kundengruppe anzusprechen.<br><br>Diese Option ist für Azure AD-Apps mit mehreren Mandanten und für persönliche Microsoft-Konten vorgesehen.<br><br>Wenn Sie die App als Azure AD-App mit mehreren Mandanten und für persönliche Microsoft-Konten registriert haben, können Sie dies über die Benutzeroberfläche nicht ändern. In diesem Fall müssen die unterstützten Kontotypen mithilfe des Anwendungsmanifest-Editors geändert werden. |
 
-   - **Umleitungs-URI (optional)**: Wählen Sie die Art der App aus, die Sie erstellen (**Web** oder **Öffentlicher Client (Mobilgerät und Desktop)**), und geben Sie dann den Umleitungs-URI (oder die Antwort-URL) für Ihre Anwendung ein.
+   - **Umleitungs-URI (optional)** : Wählen Sie die Art der App aus, die Sie erstellen (**Web** oder **Öffentlicher Client (Mobilgerät und Desktop)** ), und geben Sie dann den Umleitungs-URI (oder die Antwort-URL) für Ihre Anwendung ein.
        - Geben Sie für Webanwendungen die Basis-URL Ihrer App an. `http://localhost:31544` kann beispielsweise die URL für eine Web-App sein, die auf einem lokalen Computer ausgeführt wird. Benutzer können diese URL nutzen, um sich an einer Webclientanwendung anzumelden.
        - Geben Sie für öffentliche Clientanwendungen den URI an, der von Azure AD zum Zurückgeben von Tokenantworten verwendet wird. Geben Sie einen für Ihre Anwendung spezifischen Wert ein (beispielsweise `myapp://auth`).
 
@@ -54,11 +54,11 @@ In dieser Schnellstartanleitung erfahren Sie, wie Sie eine Anwendung im Azure-Po
 
 1. Wenn Sie so weit sind, klicken Sie auf **Registrieren**.
 
-    [![Registrieren einer neuen Anwendung im Azure-Portal](./media/quickstart-add-azure-ad-app-preview/new-app-registration-expanded.png)](./media/quickstart-add-azure-ad-app-preview/new-app-registration-expanded.png#lightbox)
+    [![Bildschirm zum Registrieren einer neuen Anwendung im Azure-Portal](./media/quickstart-add-azure-ad-app-preview/new-app-registration-expanded.png)](./media/quickstart-add-azure-ad-app-preview/new-app-registration-expanded.png#lightbox)
 
 Azure AD weist Ihrer App eine eindeutige Anwendungs-ID (Client) zu und leitet Sie zur Seite **Übersicht** Ihrer Anwendung weiter. Wenn Sie Ihrer Anwendung weitere Funktionen hinzufügen möchten, können Sie weitere Konfigurationsoptionen wie Branding, Zertifikate und Geheimnisse, API-Berechtigungen und Ähnliches auswählen.
 
-[![Übersichtsseite der neu registrierten App](./media/quickstart-add-azure-ad-app-preview/new-app-overview-page-expanded.png)](./media/quickstart-add-azure-ad-app-preview/new-app-overview-page-expanded.png#lightbox)
+[![Beispiel der Übersichtsseite einer neu registrierten App](./media/quickstart-add-azure-ad-app-preview/new-app-overview-page-expanded.png)](./media/quickstart-add-azure-ad-app-preview/new-app-overview-page-expanded.png#lightbox)
 
 ## <a name="next-steps"></a>Nächste Schritte
 

@@ -5,19 +5,19 @@ services: virtual-wan
 author: cherylmc
 ms.service: virtual-wan
 ms.topic: overview
-ms.date: 03/20/2019
+ms.date: 06/11/2019
 ms.author: cherylmc
 Customer intent: As someone with a networking background, I want to understand what Virtual WAN is and if it is the right choice for my Azure network.
-ms.openlocfilehash: 6dae42dcc8b74b682c7226916482228058db6154
-ms.sourcegitcommit: 02d17ef9aff49423bef5b322a9315f7eab86d8ff
+ms.openlocfilehash: 7ee6b2dd07a89de4f5347e82bde19990dbb6c995
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58336251"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67077539"
 ---
 # <a name="what-is-azure-virtual-wan"></a>Was ist Azure Virtual WAN?
 
-Der Netzwerkdienst Azure Virtual WAN bietet optimierte und automatisierte Branch-Konnektivität mit und durch Azure. Azure-Regionen dienen als Hubs, die Sie auswählen können, um Branches mit ihnen zu verbinden. Sobald die Branches verbunden sind, können Sie den Azure-Backbone nutzen, um Branch-zu-VNet- und Branch-zu-Branch-Konnektivität herzustellen. Eine Liste der Partner und Standorte, die Virtual WAN-VPN unterstützen, finden Sie in dem Artikel [Virtual WAN-Partner und -Standorte](virtual-wan-locations-partners.md).
+Der Netzwerkdienst Azure Virtual WAN bietet optimierte und automatisierte Branch-Konnektivität mit und durch Azure. Azure-Regionen dienen als Hubs, die Sie auswählen können, um Branches mit ihnen zu verbinden. Sie können das Azure-Backbone nutzen, um auch Verbindungen mit Branches herzustellen und die Branch-to-VNET-Konnektivität zu nutzen. Wir haben eine Liste von Partnern, die die Automatisierung der Konnektivität mit Azure Virtual WAN-VPN unterstützen. Weitere Informationen finden Sie in dem Artikel [Virtual WAN-Partner und -Standorte](virtual-wan-locations-partners.md).
 
 Azure Virtual WAN vereint zahlreiche Azure-Cloudkonnektivitätsdienste (z. B. Site-to-Site-VPN (allgemein verfügbar), ExpressRoute (Vorschau), Point-to-Site-Benutzer-VPN (Vorschau)) auf einer einzigen Betriebsoberfläche. Die Konnektivität mit Azure-VNets wird mithilfe virtueller Netzwerkverbindungen hergestellt.
 

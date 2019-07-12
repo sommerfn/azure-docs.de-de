@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 01/02/2019
 ms.author: pryerram
 ms.custom: mvc
-ms.openlocfilehash: c88977f465de6d9b89bd2d9c4cf67402fe6f563f
-ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
+ms.openlocfilehash: 4ae02a494949e92ad8e59cd35e46b6ce246ae7cc
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/07/2019
-ms.locfileid: "65228150"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67115005"
 ---
 # <a name="tutorial-use-azure-key-vault-with-a-windows-virtual-machine-in-net"></a>Tutorial: Verwenden von Azure Key Vault mit einem virtuellen Windows-Computer in .NET
 
@@ -53,7 +53,11 @@ Wenn Sie MSI für einen Azure-Dienst aktivieren (beispielsweise für Azure Virtu
 
 Als Nächstes ruft Ihr Code einen lokalen, für die Azure-Ressource verfügbaren Metadatendienst auf, um ein Zugriffstoken zu erhalten. Ihr Code verwendet das vom lokalen MSI-Endpunkt erhaltene Zugriffstoken für die Authentifizierung bei einem Azure Key Vault-Dienst. 
 
-## <a name="log-in-to-azure"></a>Anmelden an Azure
+## <a name="create-resources-and-assign-permissions"></a>Erstellen von Ressourcen und Zuweisen von Berechtigungen
+
+Bevor Sie mit der Programmierung beginnen, müssen Sie einige Ressourcen erstellen, ein Geheimnis in Ihren Schlüsseltresor legen und Berechtigungen zuweisen.
+
+### <a name="sign-in-to-azure"></a>Anmelden bei Azure
 
 Geben Sie Folgendes ein, um sich mithilfe der Azure-Befehlszeilenschnittstelle bei Azure anzumelden:
 
@@ -61,13 +65,11 @@ Geben Sie Folgendes ein, um sich mithilfe der Azure-Befehlszeilenschnittstelle b
 az login
 ```
 
-## <a name="create-a-resource-group"></a>Erstellen einer Ressourcengruppe
+### <a name="create-a-resource-group"></a>Erstellen einer Ressourcengruppe
 
-Eine Azure-Ressourcengruppe ist ein logischer Container, in dem Azure-Ressourcen bereitgestellt und verwaltet werden.
+Eine Azure-Ressourcengruppe ist ein logischer Container, in dem Azure-Ressourcen bereitgestellt und verwaltet werden. Erstellen Sie mit dem Befehl [az group create](/cli/azure/group#az-group-create) eine Ressourcengruppe. 
 
-Erstellen Sie mit dem Befehl [az group create](/cli/azure/group#az-group-create) eine Ressourcengruppe. 
-
-Wählen Sie anschließend einen Namen für die Ressourcengruppe aus, und fügen Sie einen Wert für den Platzhalter ein. Im folgenden Beispiel wird eine Ressourcengruppe am Standort „USA, Westen“ erstellt:
+Die Ressourcengruppe wird in diesem Beispiel am Standort „USA, Westen“ erstellt:
 
 ```azurecli
 # To list locations: az account list-locations --output table
@@ -76,9 +78,9 @@ az group create --name "<YourResourceGroupName>" --location "West US"
 
 Ihre neu erstellte Ressourcengruppe wird im gesamten Tutorial verwendet.
 
-## <a name="create-a-key-vault"></a>Erstellen eines Schlüsseltresors
+### <a name="create-a-key-vault-and-populate-it-with-a-secret"></a>Erstellen eines Schlüsseltresors und Auffüllen mit einem Geheimnis
 
-Geben Sie zum Erstellen eines Schlüsseltresors in der Ressourcengruppe, die Sie im vorherigen Schritt erstellt haben, die folgenden Informationen ein:
+Um einen Schlüsseltresor in Ihrer Ressourcengruppe zu erstellen, verwenden Sie den Befehl [az keyvault create](/cli/azure/keyvault?view=azure-cli-latest#az-keyvault-create) mit folgenden Informationen:
 
 * Name des Schlüsseltresors: eine Zeichenfolge mit 3 bis 24 Zeichen, die nur Zahlen (0–9), Buchstaben (a–z, A–Z) und Bindestriche (-) enthalten darf.
 * Ressourcengruppenname
@@ -89,9 +91,8 @@ az keyvault create --name "<YourKeyVaultName>" --resource-group "<YourResourceGr
 ```
 An diesem Punkt ist nur Ihr Azure-Konto zum Ausführen von Vorgängen für den neuen Schlüsseltresor autorisiert.
 
-## <a name="add-a-secret-to-the-key-vault"></a>Hinzufügen eines Geheimnisses zum Schlüsseltresor
+Fügen Sie nun Ihrem Schlüsseltresor mit dem Befehl [az keyvault secret set](/cli/azure/keyvault/secret?view=azure-cli-latest#az-keyvault-secret-set) ein Geheimnis hinzu.
 
-Wir fügen ein Geheimnis hinzu, um die Vorgehensweise zu veranschaulichen. Bei diesem Geheimnis kann es sich beispielsweise um eine SQL-Verbindungszeichenfolge oder um beliebige andere Informationen handeln, die sowohl sicher aufbewahrt werden als auch für Ihre Anwendung verfügbar sein müssen.
 
 Geben Sie den folgenden Befehl ein, um im Schlüsseltresor ein Geheimnis namens **AppSecret** zu erstellen:
 
@@ -101,15 +102,15 @@ az keyvault secret set --vault-name "<YourKeyVaultName>" --name "AppSecret" --va
 
 Dieses Geheimnis speichert den Wert **MySecret**.
 
-## <a name="create-a-virtual-machine"></a>Erstellen eines virtuellen Computers
-Mithilfe einer der folgenden Methoden können Sie einen virtuellen Computer erstellen:
+### <a name="create-a-virtual-machine"></a>Erstellen eines virtuellen Computers
+Erstellen Sie mit einer der folgenden Methoden einen virtuellen Computer:
 
 * [Die Azure-CLI](https://docs.microsoft.com/azure/virtual-machines/windows/quick-create-cli)
 * [PowerShell](https://docs.microsoft.com/azure/virtual-machines/windows/quick-create-powershell)
 * [Azure-Portal](https://docs.microsoft.com/azure/virtual-machines/windows/quick-create-portal)
 
-## <a name="assign-an-identity-to-the-vm"></a>Zuweisen einer Identität zum virtuellen Computer
-In diesem Schritt erstellen Sie mithilfe des folgenden Befehls in der Azure CLI eine systemseitig zugewiesene Identität für den virtuellen Computer:
+### <a name="assign-an-identity-to-the-vm"></a>Zuweisen einer Identität zum virtuellen Computer
+Erstellen Sie für den virtuellen Computer mit dem Befehl [az vm identity assign](/cli/azure/vm/identity?view=azure-cli-latest#az-vm-identity-assign) eine vom System zugewiesene Identität:
 
 ```azurecli
 az vm identity assign --name <NameOfYourVirtualMachine> --resource-group <YourResourceGroupName>
@@ -124,31 +125,47 @@ Beachten Sie die systemseitig zugewiesene Identität, die im folgenden Code ange
 }
 ```
 
-## <a name="assign-permissions-to-the-vm-identity"></a>Zuweisen von Berechtigungen für die VM-Identität
-Jetzt können Sie Ihrem Schlüsseltresor die zuvor erstellten Identitätsberechtigungen zuweisen, indem Sie den folgenden Befehl ausführen:
+### <a name="assign-permissions-to-the-vm-identity"></a>Zuweisen von Berechtigungen für die VM-Identität
+Weisen Sie Ihrem Schlüsseltresor mit dem Befehl [az keyvault set-policy](/cli/azure/keyvault?view=azure-cli-latest#az-keyvault-set-policy) die zuvor erstellten Identitätsberechtigungen zu:
 
 ```azurecli
 az keyvault set-policy --name '<YourKeyVaultName>' --object-id <VMSystemAssignedIdentity> --secret-permissions get list
 ```
 
-## <a name="log-on-to-the-virtual-machine"></a>Anmelden beim virtuellen Computer
+### <a name="sign-in-to-the-virtual-machine"></a>Anmelden beim virtuellen Computer
 
 Führen Sie die Anweisungen unter [Herstellen einer Verbindung mit einem virtuellen Azure-Computer unter Windows und Anmelden auf diesem Computer](https://docs.microsoft.com/azure/virtual-machines/windows/connect-logon) aus, um sich beim virtuellen Computer anzumelden.
 
-## <a name="install-net-core"></a>.NET Core installieren
+## <a name="set-up-the-console-app"></a>Einrichten der Konsolen-App
+
+Erstellen Sie eine Konsolen-App, und installieren Sie die erforderlichen Pakete mit dem `dotnet`-Befehl.
+
+### <a name="install-net-core"></a>.NET Core installieren
 
 Wechseln Sie zur [.NET-Downloadseite](https://www.microsoft.com/net/download), um .NET Core zu installieren.
 
-## <a name="create-and-run-a-sample-net-app"></a>Erstellen und Ausführen einer .NET-Beispiel-App
+### <a name="create-and-run-a-sample-net-app"></a>Erstellen und Ausführen einer .NET-Beispiel-App
 
 Öffnen Sie eine Eingabeaufforderung.
 
 Sie können „Hallo Welt“ auf der Konsole ausgeben, indem Sie die folgenden Befehle ausführen:
 
-```batch
+```console
 dotnet new console -o helloworldapp
 cd helloworldapp
 dotnet run
+```
+
+### <a name="install-the-packages"></a>Installieren der Pakete
+
+ Installieren Sie im Konsolenfenster die für diesen Schnellstart erforderlichen .NET-Pakete:
+
+ ```console
+dotnet add package System.IO;
+dotnet add package System.Net;
+dotnet add package System.Text;
+dotnet add package Newtonsoft.Json;
+dotnet add package Newtonsoft.Json.Linq;
 ```
 
 ## <a name="edit-the-console-app"></a>Bearbeiten der Konsolen-App

@@ -5,17 +5,17 @@ ms.topic: include
 ms.date: 11/27/2018
 ms.author: glenga
 ms.openlocfilehash: 031a460862cf12efa02c139074e5a7066f0526c6
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66132291"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67177889"
 ---
 ## <a name="sign-in-to-azure"></a>Anmelden bei Azure
 
 Bevor Sie Ihre App veröffentlichen können, müssen Sie sich bei Azure anmelden.
 
-1. Wählen Sie im Bereich **Azure:  Funktionen** die Option **Sign in to Azure...** (Bei Azure anmelden...) aus. Falls Sie über kein Konto verfügen, können Sie ein **kostenloses Azure-Konto erstellen**.
+1. Wählen Sie im Bereich **Azure: Funktionen** die Option **Bei Azure anmelden...** aus. Falls Sie über kein Konto verfügen, können Sie ein **kostenloses Azure-Konto erstellen**.
 
     ![localhost-Antwort der Funktion im Browser](./media/functions-sign-in-vs-code/functions-sign-into-azure.png)
 

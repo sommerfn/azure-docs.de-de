@@ -12,12 +12,12 @@ manager: celestedg
 ms.reviewer: mal
 ms.custom: it-pro, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: cb26a5056ba4cec14218af70f1561c17e637102c
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: 16a2438133f545c57d1046a0c4db94135f8a426d
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65813122"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67113197"
 ---
 # <a name="tutorial-enforce-multi-factor-authentication-for-b2b-guest-users"></a>Tutorial: Erzwingen der mehrstufigen Authentifizierung für B2B-Gastbenutzer
 
@@ -142,4 +142,4 @@ Löschen Sie den Testbenutzer und die Testrichtlinie für bedingten Zugriff, wen
 7.  Wählen Sie in der Liste **Richtlinienname** das Kontextmenü (...) für Ihre Testrichtlinie und dann **Löschen** aus. Klicken Sie auf **Ja**, um zu bestätigen.
 
 ## <a name="next-steps"></a>Nächste Schritte
-In diesem Tutorial haben Sie eine Richtlinie für bedingten Zugriff erstellt, die voraussetzt, dass Gastbenutzer beim Anmelden in einer Ihrer Cloud-Apps MFA verwenden. Weitere Informationen zum Hinzufügen von Gastbenutzern für die Zusammenarbeit finden Sie unter [Hinzufügen von Benutzern für die Azure Active Directory B2B-Zusammenarbeit im Azure-Portal](add-users-administrator.md).
+In diesem Tutorial haben Sie eine Richtlinie für bedingten Zugriff erstellt, die voraussetzt, dass Gastbenutzer zum Anmelden bei einer Ihrer Cloud-Apps MFA verwenden. Weitere Informationen zum Hinzufügen von Gastbenutzern für die Zusammenarbeit finden Sie unter [Hinzufügen von Benutzern für die Azure Active Directory B2B-Zusammenarbeit im Azure-Portal](add-users-administrator.md).

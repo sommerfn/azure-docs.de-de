@@ -5,15 +5,15 @@ author: dominicbetts
 ms.author: dobett
 ms.date: 06/10/2019
 ms.topic: overview
-ms.service: iot-industrialiot
+ms.service: industrial-iot
 services: iot-industrialiot
 manager: philmea
-ms.openlocfilehash: 0af4fcb6ea87069f3dea73f33828abd4f4bb06f4
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: 3b386171afc7916e5e803c39a9c7b3520752e6fd
+ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67451281"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67603749"
 ---
 # <a name="run-opc-publisher"></a>Ausführen von OPC Publisher
 
@@ -695,7 +695,7 @@ Die Konfiguration der zu veröffentlichenden Knoten kann mit den direkten IoT Hu
 
 OPC Publisher implementiert einige zusätzliche direkte IoT Hub-Methodenaufrufe, um Folgendes zu lesen:
 
-- Allgemeine Informationen
+- Allgemeine Informationen.
 - Diagnoseinformationen in OPC-Sitzungen, Abonnements und überwachten Elementen
 - Diagnoseinformationen zu IoT Hub-Nachrichten und -Ereignissen
 - Startprotokoll

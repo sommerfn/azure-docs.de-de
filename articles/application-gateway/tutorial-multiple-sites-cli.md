@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 5/20/2019
 ms.author: victorh
 ms.custom: mvc
-ms.openlocfilehash: 9c99b534a40b5c87cf511c75ccdb19df4d9aaf63
-ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
+ms.openlocfilehash: caf82fdab8a841e5c49616a40216a788d877a81b
+ms.sourcegitcommit: 837dfd2c84a810c75b009d5813ecb67237aaf6b8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/20/2019
-ms.locfileid: "65955655"
+ms.lasthandoff: 07/02/2019
+ms.locfileid: "67501971"
 ---
 # <a name="create-an-application-gateway-that-hosts-multiple-web-sites-using-the-azure-cli"></a>Erstellen eines Anwendungsgateways als Host für mehrere Websites mit der Azure-Befehlszeilenschnittstelle
 
@@ -233,7 +233,7 @@ Die Verwendung von A-Einträgen wird nicht empfohlen, weil sich die VIP beim Neu
 
 ## <a name="test-the-application-gateway"></a>Testen des Anwendungsgateways
 
-Geben Sie Ihren Domänennamen in die Adressleiste Ihres Browsers ein. Z.B. http://www.contoso.com.
+Geben Sie Ihren Domänennamen in die Adressleiste Ihres Browsers ein. Beispiel: http:\//www.contoso.com.
 
 ![Testen der Contoso-Website im Anwendungsgateway](./media/tutorial-multiple-sites-cli/application-gateway-nginxtest1.png)
 

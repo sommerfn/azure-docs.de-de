@@ -11,14 +11,14 @@ ms.service: azure-functions
 ms.custom: mvc
 ms.devlang: python
 manager: jeconnoc
-ms.openlocfilehash: aaeee4238110faa7a842073af8431b30b885db3c
-ms.sourcegitcommit: e7d4881105ef17e6f10e8e11043a31262cfcf3b7
+ms.openlocfilehash: c2565a5549cbca08b987883e5905f09070b5ab2c
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/29/2019
-ms.locfileid: "64870021"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67443198"
 ---
-# <a name="add-an-azure-storage-queue-binding-to-your-function"></a>Hinzufügen einer Azure Storage-Warteschlangenbindung zu Ihrer Funktion
+# <a name="add-an-azure-storage-queue-binding-to-your-python-function"></a>Hinzufügen einer Azure Storage-Warteschlangenbindung zu Ihrer Python-Funktion
 
 Azure Functions gestattet Ihnen das Verbinden von Azure-Diensten und anderen Ressourcen mit Funktionen, ohne dass Sie Ihren eigenen Integrationscode schreiben müssen. Diese *Bindungen*, die sowohl Eingabe als auch Ausgabe darstellen, werden innerhalb der Funktionsdefinition deklariert. Daten von Bindungen werden der Funktion als Parameter bereitgestellt. Ein Trigger ist ein spezieller Typ Eingabebindung. Während eine Funktion nur einen Trigger hat, kann sie mehrere Ein- und Ausgabebindungen haben. Weitere Informationen finden Sie unter [Konzepte der Trigger und Bindungen in Azure Functions](functions-triggers-bindings.md).
 
@@ -32,7 +32,7 @@ Bevor Sie mit diesem Artikel beginnen, führen Sie die Schritte in [Teil 1 des P
 
 ## <a name="download-the-function-app-settings"></a>Herunterladen der Funktions-App-Einstellungen
 
-Im vorherigen Schnellstartartikel haben Sie eine Funktions-App in Azure zusammen mit einem Speicherkonto erstellt. Die Verbindungszeichenfolge für dieses Konto wird sicher in App-Einstellungen in Azure gespeichert. In diesem Artikel schreiben Sie Nachrichten in eine Speicherwarteschlange in demselben Konto. Um eine Verbindung mit Ihrem Speicherkonto herzustellen, wenn die Funktion lokal ausgeführt wird, müssen Sie App-Einstellungen in die Datei „local.settings.json“ herunterladen. Führen Sie den folgenden Azure Functions Core Tools-Befehl aus, um Einstellungen in „local.settings.json“ herunterzuladen, und ersetzen Sie dabei `<APP_NAME>` durch den Namen Ihrer Funktions-App aus dem vorherigen Artikel:
+Im vorherigen Schnellstartartikel haben Sie zusammen mit dem erforderlichen Storage-Konto eine Funktions-App in Azure erstellt. Die Verbindungszeichenfolge für dieses Konto wird sicher in App-Einstellungen in Azure gespeichert. In diesem Artikel schreiben Sie Nachrichten in eine Speicherwarteschlange in demselben Konto. Um eine Verbindung mit Ihrem Speicherkonto herzustellen, wenn die Funktion lokal ausgeführt wird, müssen Sie App-Einstellungen in die Datei „local.settings.json“ herunterladen. Führen Sie den folgenden Azure Functions Core Tools-Befehl aus, um Einstellungen in „local.settings.json“ herunterzuladen, und ersetzen Sie dabei `<APP_NAME>` durch den Namen Ihrer Funktions-App aus dem vorherigen Artikel:
 
 ```bash
 func azure functionapp fetch-app-settings <APP_NAME>
@@ -44,6 +44,12 @@ Möglicherweise müssen Sie sich bei Ihrem Azure-Konto anmelden.
 > Da sie Geheimnisse enthält, wird die lokale Datei „local.settings.json“ nie veröffentlicht, und sie sollte auch aus der Quellcodeverwaltung ausgeschlossen werden.
 
 Sie benötigen den Wert `AzureWebJobsStorage`, bei dem es sich um die Verbindungszeichenfolge des Speicherkontos handelt. Sie verwenden diese Verbindung, um sicherzustellen, dass die Ausgabebindung wie erwartet funktioniert.
+
+## <a name="enable-extension-bundles"></a>Aktivieren von Erweiterungsbundles
+
+[!INCLUDE [functions-extension-bundles](../../includes/functions-extension-bundles.md)]
+
+Dann können Sie dem Projekt eine Storage-Ausgabebindung hinzufügen.
 
 ## <a name="add-an-output-binding"></a>Hinzufügen einer Ausgabebindung
 
@@ -117,8 +123,8 @@ def main(req: func.HttpRequest, msg: func.Out[func.QueueMessage]) -> str:
         return func.HttpResponse(f"Hello {name}!")
     else:
         return func.HttpResponse(
-             "Please pass a name on the query string or in the request body",
-             status_code=400
+            "Please pass a name on the query string or in the request body",
+            status_code=400
         )
 ```
 
@@ -133,7 +139,7 @@ func host start
 ```
 
 > [!NOTE]  
-> Da Sie im vorherige Artikel Erweiterungsbündel in der Datei „host.json“ aktivieren mussten, wurde die [Storage-Bindungserweiterung](functions-bindings-storage-blob.md#packages---functions-2x) während des Starts für Sie heruntergeladen und installiert.
+> Da Sie im vorherige Artikel Erweiterungsbündel in der Datei „host.json“ aktivieren mussten, wurde die [Storage-Bindungserweiterung](functions-bindings-storage-blob.md#packages---functions-2x) zusammen mit den übrigen Microsoft-Bindungserweiterungen während des Starts für Sie heruntergeladen und installiert.
 
 Kopieren Sie die URL Ihrer `HttpTrigger`-Funktion aus der Runtimeausgabe, und fügen Sie sie in die Adressleiste Ihres Browsers ein. Hängen Sie anschließend die Abfragezeichenfolge `?name=<yourname>` an diese URL an, und führen Sie die Anforderung aus. Sie sollten dieselbe Antwort im Browser sehen, wie bereits im vorherigen Artikel.
 

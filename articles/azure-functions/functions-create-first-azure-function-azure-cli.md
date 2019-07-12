@@ -12,12 +12,12 @@ ms.service: azure-functions
 ms.custom: mvc
 ms.devlang: azure-cli
 manager: jeconnoc
-ms.openlocfilehash: 7be055588b58d20464639169ac8012c378900ff1
-ms.sourcegitcommit: e7d4881105ef17e6f10e8e11043a31262cfcf3b7
+ms.openlocfilehash: 625fcda4b612fdeda940f9219238ac79354dd056
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/29/2019
-ms.locfileid: "64866596"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67444663"
 ---
 # <a name="create-your-first-function-from-the-command-line"></a>Erstellen Ihrer ersten Funktion über die Befehlszeile
 
@@ -65,7 +65,7 @@ Verwenden Sie den folgenden Befehl, um zu dem neuen Projektordner `MyFunctionPro
 cd MyFunctionProj
 ```
 
-## <a name="reference-bindings"></a>Verweisbindungen
+## <a name="enable-extension-bundles"></a>Aktivieren von Erweiterungsbundles
 
 [!INCLUDE [functions-extension-bundles](../../includes/functions-extension-bundles.md)]
 
