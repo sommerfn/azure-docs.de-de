@@ -5,15 +5,15 @@ services: virtual-wan
 author: cherylmc
 ms.service: virtual-wan
 ms.topic: tutorial
-ms.date: 04/02/2019
+ms.date: 06/10/2019
 ms.author: cherylmc
 Customer intent: As someone with a networking background, I want to connect my corporate on-premises network(s) to my VNets using Virtual WAN and ExpressRoute.
-ms.openlocfilehash: d43cdec9e906087c98759a478ebc0c86beaa1354
-ms.sourcegitcommit: 18a0d58358ec860c87961a45d10403079113164d
+ms.openlocfilehash: edf5e04b7cf9b5c79666c54fbeca49858cf21079
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/05/2019
-ms.locfileid: "66693273"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67077504"
 ---
 # <a name="tutorial-create-an-expressroute-association-using-azure-virtual-wan-preview"></a>Tutorial: Erstellen einer ExpressRoute-Zuordnung per Azure Virtual WAN (Vorschauversion)
 
@@ -47,8 +47,8 @@ Bevor Sie Virtual WAN konfigurieren können, müssen Sie Ihr Abonnement zunächs
 
 **Hinweise zur Vorschauversion:**
 
-Die ExpressRoute-Leitung muss in einem Land/einer Region aktiviert werden, das/die [ExpressRoute Global Reach](https://docs.microsoft.com/azure/expressroute/expressroute-faqs#where-is-expressroute-global-reach-supported) unterstützt.
-Zum Herstellen einer Verbindung mit dem Virtual WAN-Hub muss eine ExpressRoute Premium-Leitung verwendet werden. 
+  * Die ExpressRoute-Leitung muss in einem Land/einer Region aktiviert werden, das/die [ExpressRoute Global Reach](https://docs.microsoft.com/azure/expressroute/expressroute-faqs#where-is-expressroute-global-reach-supported) unterstützt.
+  * Zum Herstellen einer Verbindung mit dem Virtual WAN-Hub muss eine ExpressRoute Premium-Leitung verwendet werden. 
 
 ## <a name="vnet"></a>1. Erstellen eines virtuellen Netzwerks
 

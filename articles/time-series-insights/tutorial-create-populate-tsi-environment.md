@@ -5,16 +5,16 @@ services: time-series-insights
 author: ashannon7
 ms.service: time-series-insights
 ms.topic: tutorial
-ms.date: 04/26/2019
+ms.date: 06/18/2019
 ms.author: dpalled
 manager: cshankar
 ms.custom: seodec18
-ms.openlocfilehash: b8b46db043113f29f559ad44855d19f0d6ca73c3
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.openlocfilehash: 06a450c47c7264bdecb663c9f71e3a9753df5e1e
+ms.sourcegitcommit: a52d48238d00161be5d1ed5d04132db4de43e076
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/27/2019
-ms.locfileid: "66244160"
+ms.lasthandoff: 06/20/2019
+ms.locfileid: "67273537"
 ---
 # <a name="tutorial-create-an-azure-time-series-insights-environment"></a>Tutorial: Erstellen einer Azure Time Series Insights-Umgebung
 
@@ -40,14 +40,50 @@ In diesem Tutorial wird der Prozess zum Erstellen einer Azure Time Series Insigh
 
 ## <a name="overview"></a>Übersicht
 
-Die Time Series Insights-Umgebung ist der Ort, an dem Gerätedaten erfasst und gespeichert werden. Nach dem Speichern der Daten können der [Azure Time Series Insights-Explorer](time-series-quickstart.md) und die [Time Series Insights-Abfrage-API](/rest/api/time-series-insights/ga-query-api) verwendet werden, um die Daten abzufragen und zu analysieren. Azure IoT Hub ist der Verbindungspunkt, der von allen (simulierten oder physischen) Geräten zum sicheren Herstellen einer Verbindung und zum Übertragen von Daten in die Azure-Cloud verwendet wird. Wie in der [Übersicht über Time Series Insights](time-series-insights-overview.md) beschrieben, dient Azure IoT Hub auch als Ereignisquelle zum Streamen von Daten in eine Time Series Insights-Umgebung. In diesem Tutorial wird ein [IoT Solution Accelerator](/azure/iot-accelerators/) genutzt, um Beispieltelemetriedaten zu generieren und an IoT Hub zu streamen.
+Die Time Series Insights-Umgebung ist der Ort, an dem Gerätedaten erfasst und gespeichert werden. Nach dem Speichern können der [Azure Time Series Insights-Explorer](time-series-quickstart.md) und die [Time Series Insights-Abfrage-API](/rest/api/time-series-insights/ga-query-api) verwendet werden, um die Daten abzufragen und zu analysieren.
+
+Azure IoT Hub ist die Ereignisquelle, die von allen (simulierten oder physischen) Geräten in diesem Tutorial zum sicheren Herstellen einer Verbindung und zum Übertragen von Daten in Ihre Azure-Cloud verwendet wird.
+
+In diesem Tutorial wird auch ein [IoT Solution Accelerator](https://www.azureiotsolutions.com) genutzt, um Beispieltelemetriedaten zu generieren und an IoT Hub zu streamen.
 
 >[!TIP]
-> Mit IoT Solution Accelerators werden für Unternehmen geeignete vorkonfigurierte Lösungen bereitgestellt, mit denen Sie die Entwicklung von benutzerdefinierten IoT-Lösungen beschleunigen können.
+> Mit [IoT Solution Accelerators](https://www.azureiotsolutions.com) werden für Unternehmen konzipierte vorkonfigurierte Lösungen bereitgestellt, mit denen Sie die Entwicklung benutzerdefinierter IoT-Lösungen beschleunigen können.
+
+## <a name="create-a-device-simulation"></a>Erstellen einer Gerätesimulation
+
+Erstellen Sie zunächst die Lösung für die Gerätesimulation, mit der Testdaten zum Auffüllen Ihrer Time Series Insights-Umgebung generiert werden.
+
+1. Rufen Sie in einem separaten Fenster oder auf einer separaten Registerkarte [azureiotsolutions.com](https://www.azureiotsolutions.com) auf. Melden Sie sich mit demselben Azure-Abonnementkonto an, und wählen Sie den Accelerator **Gerätesimulation** aus.
+
+   [![Ausführen des Accelerators „Gerätesimulation“](media/tutorial-create-populate-tsi-environment/sa-main.png)](media/tutorial-create-populate-tsi-environment/sa-main.png#lightbox)
+
+1. Geben Sie auf der Lösungsseite **Gerätesimulation erstellen** die erforderlichen Parameter ein:
+
+   Parameter|BESCHREIBUNG
+   ---|---
+   **Bereitstellungsname** | Mit diesem eindeutigen Wert wird eine neue Ressourcengruppe erstellt. Die aufgelisteten Azure-Ressourcen werden erstellt und der Ressourcengruppe zugewiesen.
+   **Azure-Abonnement** | Geben Sie dasselbe Abonnement an, das Sie auch bei der Erstellung Ihrer Time Series Insights-Umgebung im vorherigen Abschnitt verwendet haben.
+   **Bereitstellungsoptionen** | Wählen Sie **Provision new IoT Hub** (Neuen IoT Hub bereitstellen) aus, um einen für dieses Tutorial spezifischen neuen IoT-Hub zu erstellen.
+   **Azure-Standort** | Geben Sie dieselbe Region an, die Sie auch bei der Erstellung Ihrer Time Series Insights-Umgebung im vorherigen Abschnitt verwendet haben.
+
+   Wählen Sie nach Abschluss des Vorgangs die Option **Lösung erstellen** aus, um die Azure-Ressourcen der Lösung bereitzustellen. Dieser Vorgang kann bis zu 20 Minuten dauern.
+
+   [![Bereitstellen der Gerätesimulationslösung](media/tutorial-create-populate-tsi-environment/sa-create-device-sim-solution.png)](media/tutorial-create-populate-tsi-environment/sa-create-device-sim-solution.png#lightbox)
+
+1. Nachdem die Bereitstellung abgeschlossen ist, ändert sich der Text über Ihrer neuen Lösung von **Wird bereitgestellt...** in **Bereit**.
+
+   >[!IMPORTANT]
+   > Wählen Sie noch nicht **Starten** aus. Lassen Sie diese Webseite geöffnet, da Sie später hierhin zurückkehren.
+
+   [![Bereitstellung der Gerätesimulationslösung abgeschlossen](media/tutorial-create-populate-tsi-environment/sa-create-device-sim-solution-dashboard-ready.png)](media/tutorial-create-populate-tsi-environment/sa-create-device-sim-solution-dashboard-ready.png#lightbox)
+
+1. Anschließend können Sie die neu erstellten Ressourcen im Azure-Portal überprüfen. Auf der Seite **Ressourcengruppen** wurde eine neue Ressourcengruppe mit dem **Lösungsnamen** erstellt, den Sie im letzten Schritt angegeben haben. Notieren Sie sich die Ressourcen, die für die Gerätesimulation erstellt wurden.
+
+   [![Ressourcen für die Gerätesimulation](media/tutorial-create-populate-tsi-environment/ap-device-sim-solution-resources.png)](media/tutorial-create-populate-tsi-environment/ap-device-sim-solution-resources.png#lightbox)
 
 ## <a name="create-an-environment"></a>Erstellen einer Umgebung
 
-Erstellen Sie zunächst unter Ihrem Azure-Abonnement eine Time Series Insights-Umgebung.
+Erstellen Sie zweitens in Ihrem Azure-Abonnement eine Time Series Insights-Umgebung.
 
 1. Melden Sie sich unter Verwendung Ihres Azure-Abonnementkontos beim [Azure-Portal](https://portal.azure.com) an. 
 1. Wählen Sie oben links die Option **+ Ressource erstellen**. 
@@ -59,119 +95,36 @@ Erstellen Sie zunächst unter Ihrem Azure-Abonnement eine Time Series Insights-U
 
    Parameter|BESCHREIBUNG
    ---|---
-   **Umgebungsname** | Wählen Sie einen eindeutigen Namen für die Time Series Insights-Umgebung aus. Die Namen werden vom Time Series Insights-Explorer und von Abfrage-APIs verwendet.
+   **Umgebungsname** | Wählen Sie einen eindeutigen Namen für die Time Series Insights-Umgebung aus. Die Namen werden vom Time Series Insights-Explorer und von [Abfrage-APIs](https://docs.microsoft.com/rest/api/time-series-insights/ga-query) verwendet.
    **Abonnement** | Abonnements sind Container für Azure-Ressourcen. Wählen Sie ein Abonnement aus, um die Time Series Insights-Umgebung zu erstellen.
    **Ressourcengruppe** | Eine Ressourcengruppe ist ein Container für Azure-Ressourcen. Wählen Sie eine vorhandene Ressourcengruppe für die Time Series Insights-Umgebungsressource aus, oder erstellen Sie eine neue.
-   **Location** | Wählen Sie eine Rechenzentrumsregion für Ihre Time Series Insights-Umgebung aus. Belassen Sie die Time Series Insights-Umgebung in derselben Region wie die anderen IoT-Ressourcen, um zusätzliche Bandbreitenkosten und Wartezeit zu vermeiden.
-   **Preise für SKUs** | Wählen Sie den erforderlichen Durchsatz aus. Wählen Sie `S1` aus, um die niedrigsten Kosten zu erzielen und die geringste Anfangskapazität zu erhalten.
-   **Capacity** | Die Kapazität ist der Multiplikator, der auf die Eingangsrate, Speicherkapazität und Kosten der ausgewählten SKU angewendet wird. Sie können die Kapazität nach der Erstellung ändern. Wählen Sie die Kapazität „1“ aus, um die niedrigsten Kosten zu erzielen.
+   **Location** | Wählen Sie eine Rechenzentrumsregion für Ihre Time Series Insights-Umgebung aus. Erstellen Sie die Time Series Insights-Umgebung in derselben Region wie andere IoT-Ressourcen, um zusätzliche Wartezeit zu vermeiden.
+   **Tier** | Wählen Sie den erforderlichen Durchsatz aus. Wählen Sie **S1** aus.
+   **Capacity** | Die Kapazität ist der Multiplikator, der auf die Eingangsrate und Speicherkapazität der ausgewählten SKU angewendet wird. Sie können die Kapazität nach der Erstellung ändern. Wählen Sie als Kapazität **1**.
 
-   Wählen Sie nach Abschluss des Vorgangs die Option **Erstellen** aus, um mit dem Bereitstellungsprozess zu beginnen.
+   Klicken Sie abschließend auf **Überprüfen + erstellen**, um mit dem nächsten Schritt fortzufahren.
 
    [![Erstellen einer Time Series Insights-Umgebungsressource](media/tutorial-create-populate-tsi-environment/ap-create-resource-tsi-params.png)](media/tutorial-create-populate-tsi-environment/ap-create-resource-tsi-params.png#lightbox)
+
+1. Verbinden Sie nun die Time Series Insights-Umgebung mit dem vom Solution Accelerator erstellten IoT-Hub. Legen Sie **Hub auswählen** auf `Select existing` fest. Wählen Sie dann den IoT-Hub, der vom Solution Accelerator erstellt wurde, als Sie **IoT Hub-Name** festgelegt haben.
+
+   [![Herstellen einer Verbindung der Time Series Insights-Umgebung mit dem erstellten IoT-Hub](media/tutorial-create-populate-tsi-environment/ap-create-resource-iot-hub.png)](media/tutorial-create-populate-tsi-environment/ap-create-resource-iot-hub.png#lightbox)
 
 1. Im Bereich **Benachrichtigungen** können Sie den Abschluss der Bereitstellung überwachen. 
 
    [![Bereitstellung der Time Series Insights-Umgebung erfolgreich abgeschlossen](media/tutorial-create-populate-tsi-environment/ap-create-resource-tsi-deployment-succeeded.png)](media/tutorial-create-populate-tsi-environment/ap-create-resource-tsi-deployment-succeeded.png#lightbox)
 
-## <a name="create-a-device-simulation"></a>Erstellen einer Gerätesimulation
-
-Erstellen Sie als Nächstes die Lösung für die Gerätesimulation, mit der Testdaten zum Auffüllen Ihrer Time Series Insights-Umgebung generiert werden.
-
-1. Rufen Sie in einem separaten Fenster oder auf einer separaten Registerkarte [azureiotsolutions.com](https://www.azureiotsolutions.com) auf. Melden Sie sich mit demselben Azure-Abonnementkonto an, und wählen Sie den Accelerator **Gerätesimulation** aus.
-
-   [![Ausführen des Accelerators „Gerätesimulation“](media/tutorial-create-populate-tsi-environment/sa-main.png)](media/tutorial-create-populate-tsi-environment/sa-main.png#lightbox)
-
-1. Geben Sie auf der Lösungsseite **Gerätesimulation erstellen** die erforderlichen Parameter ein:
-
-   Parameter|BESCHREIBUNG
-   ---|---
-   **Lösungsname** | Mit diesem eindeutigen Wert wird eine neue Ressourcengruppe erstellt. Die aufgelisteten Azure-Ressourcen werden erstellt und der Ressourcengruppe zugewiesen.
-   **Abonnement** | Geben Sie dasselbe Abonnement an, das Sie auch bei der Erstellung Ihrer Time Series Insights-Umgebung im vorherigen Abschnitt verwendet haben.
-   **Region** | Geben Sie dieselbe Region an, die Sie auch bei der Erstellung Ihrer Time Series Insights-Umgebung im vorherigen Abschnitt verwendet haben.
-   **Optionale Azure-Ressourcen bereitstellen** | Lassen Sie **IoT Hub** aktiviert. Die simulierten Geräte verwenden IoT Hub, um eine Verbindung herzustellen oder Daten zu streamen.
-
-   Wählen Sie nach Abschluss des Vorgangs die Option **Lösung erstellen** aus, um die Azure-Ressourcen der Lösung bereitzustellen. Dieser Vorgang kann 6 bis 7 Minuten dauern.
-
-   [![Bereitstellen der Gerätesimulationslösung](media/tutorial-create-populate-tsi-environment/sa-create-device-sim-solution.png)](media/tutorial-create-populate-tsi-environment/sa-create-device-sim-solution.png#lightbox)
-
-1. Nachdem die Bereitstellung abgeschlossen ist, ändert sich der Text über Ihrer neuen Lösung von **Wird bereitgestellt...** in **Bereit**.
-
-   >[!IMPORTANT]
-   > Wählen Sie noch nicht **Starten** aus. Lassen Sie diese Webseite geöffnet, da Sie später hierhin zurückkehren.
-
-   [![Bereitstellung der Gerätesimulationslösung abgeschlossen](media/tutorial-create-populate-tsi-environment/sa-create-device-sim-solution-dashboard-ready.png)](media/tutorial-create-populate-tsi-environment/sa-create-device-sim-solution-dashboard-ready.png#lightbox)
-
-1. Wechseln Sie zurück zum Azure-Portal, und sehen Sie sich die neu erstellten Ressourcen unter Ihrem Abonnement an. Auf der Seite **Ressourcengruppen** des Portals wurde eine neue Ressourcengruppe mit dem **Lösungsnamen** erstellt, den Sie im letzten Schritt angegeben haben. Beachten Sie auch alle Ressourcen, die zur Unterstützung der Gerätesimulationslösung erstellt wurden.
-
-   [![Ressourcen für die Gerätesimulationslösung](media/tutorial-create-populate-tsi-environment/ap-device-sim-solution-resources.png)](media/tutorial-create-populate-tsi-environment/ap-device-sim-solution-resources.png#lightbox)
-
-## <a name="connect-the-environment-to-the-iot-hub"></a>Herstellen der Verbindung mit dem IoT Hub
-
-Sie haben jetzt gelernt, wie Sie zwei Gruppen von Ressourcen erstellen, die sich jeweils in einer eigenen Ressourcengruppe befinden:
-
-- Eine leere Time Series Insights-Umgebung.
-- Per Solution Accelerator generierte Ressourcen für die Gerätesimulationslösung, einschließlich IoT Hub
-
-Beachten Sie, dass die simulierten Geräte für das Streamen von Gerätedaten über eine Verbindung mit einem IoT Hub verfügen müssen. Zum Einrichten des Datenflusses in die Time Series Insights-Umgebung müssen Sie sowohl Konfigurationsänderungen an Ihrem IoT-Hub als auch an der Time Series Insights-Umgebung vornehmen.
-
-### <a name="iot-hub-configuration-define-a-consumer-group"></a>Konfiguration des IoT-Hubs: Definieren einer Consumergruppe
-
-IoT Hub stellt verschiedene Endpunkte für das Teilen von Funktionalität mit anderen Akteuren bereit. Der Endpunkt „Ereignisse“ ermöglicht anderen Anwendungen die Nutzung der Daten, wenn diese an eine IoT Hub-Instanz gestreamt werden. „Consumergruppen“ verfügen über einen speziellen Mechanismus, über den Anwendungen lauschen und Daten per Pullvorgang vom IoT-Hub übertragen können.
-
-Als Nächstes definieren Sie die neue Eigenschaft **Consumergruppe** auf dem IoT Hub-Endpunkt **Ereignisse** der Gerätesimulationslösung.
-
-1. Navigieren Sie im Azure-Portal zur Seite **Übersicht** der Ressourcengruppe, die Sie für die Gerätesimulationslösung erstellt haben. Wählen Sie die IoT Hub-Ressource aus.
-
-   [![Ressourcengruppe für die Gerätesimulationslösung](media/tutorial-create-populate-tsi-environment/ap-add-iot-hub-consumer-group-view-rg.png)](media/tutorial-create-populate-tsi-environment/ap-add-iot-hub-consumer-group-view-rg.png#lightbox)
-
-   Notieren Sie sich auch den **Namen** der IoT Hub-Ressource, die für die Lösung generiert wurde. Sie werden später darauf verweisen.
-
-1. Scrollen Sie nach unten, und wählen Sie die Seite **Endpunkte** und dann den Endpunkt **Ereignisse** aus. Geben Sie auf der Seite mit den **Eigenschaften** für den Endpunkt unter der Consumergruppe „$Default“ einen eindeutigen Namen für Ihren Endpunkt ein. Wählen Sie **Speichern** aus.
-
-   [![IoT Hub-Endpunkte für Gerätesimulationslösung](media/tutorial-create-populate-tsi-environment/ap-add-iot-hub-consumer-group-create.png)](media/tutorial-create-populate-tsi-environment/ap-add-iot-hub-consumer-group-create.png#lightbox)
-
-### <a name="environment-configuration-define-an-event-source"></a>Konfiguration der Umgebung: Definieren einer Ereignisquelle
-
-Stellen Sie jetzt eine Verbindung zwischen dem neuen IoT Hub-Ereignisendpunkt **Consumergruppe** und der Time Series Insights-Umgebung (als **Ereignisquelle**) her.
-
-1. Navigieren Sie zur Seite **Übersicht** der Ressourcengruppe, die Sie für die Time Series Insights-Umgebung erstellt haben. Wählen Sie die Time Series Insights-Umgebung aus.
-
-   [![Time Series Insights-Umgebung: Ressourcengruppe und Umgebung](media/tutorial-create-populate-tsi-environment/ap-add-env-event-source-view-rg.png)](media/tutorial-create-populate-tsi-environment/ap-add-env-event-source-view-rg.png#lightbox)
-
-1. Wählen Sie auf der Seite für die Time Series Insights-Umgebung die Option **Ereignisquellen** aus. Wählen Sie dann **+ Hinzufügen** aus.
-
-   [![Time Series Insights-Umgebung: Übersicht](media/tutorial-create-populate-tsi-environment/ap-add-env-event-source-add.png)](media/tutorial-create-populate-tsi-environment/ap-add-env-event-source-add.png#lightbox)
-
-1. Geben Sie auf der Seite **Neue Ereignisquelle** die erforderlichen Parameter ein:
-
-   Parameter|BESCHREIBUNG
-   ---|---
-   **Name der Ereignisquelle** | Hier ist ein eindeutiger Wert erforderlich, der zum Benennen der Ereignisquelle verwendet wird.
-   **Quelle** | Wählen Sie **IoT Hub** aus.
-   **Importoption** | Wählen Sie den Standardwert `Use IoT hub from available subscriptions` aus. Diese Option bewirkt, dass die nächste Dropdownliste mit den verfügbaren Abonnements aufgefüllt wird.
-   **Abonnement** | Wählen Sie dasselbe Abonnement aus, in dem Sie die Time Series Insights-Umgebung und die Ressourcen für die Gerätesimulation erstellt haben.
-   **IoT Hub-Name** | Hier sollte standardmäßig der zuvor notierte IoT Hub-Name angezeigt werden. Wählen Sie den richtigen IoT Hub aus, falls dies nicht der Fall ist.
-   **IoT Hub-Richtlinienname** | Wählen Sie **iothubowner** aus.
-   **IoT Hub-Consumergruppe** | Hier sollte standardmäßig der Name der zuvor erstellten IoT Hub-Consumergruppe angezeigt werden. Wählen Sie den richtigen Consumergruppennamen aus, wenn dies nicht der Fall ist.
-   **Ereignisserialisierungsformat** | Behalten Sie den Standardwert `JSON` bei.
-   **Name der Timestamp-Eigenschaft** | Geben Sie `timestamp` an.
-
-   Klicken Sie abschließend auf **Erstellen**, um die Ereignisquelle hinzuzufügen. Wenn Sie auf die Seite **Übersicht** zurückkehren, wird zusammen mit Ihrer Time Series Insights-Umgebung die neue Ressource „Time Series Insights-Ereignisquelle“ angezeigt.
-
-   [![Time Series Insights-Umgebung: Neue Ereignisquelle](media/tutorial-create-populate-tsi-environment/ap-add-env-event-source-add-event-source.png)](media/tutorial-create-populate-tsi-environment/ap-add-env-event-source-add-event-source.png#lightbox)
-
 ## <a name="run-device-simulation-to-stream-data"></a>Ausführen einer Gerätesimulation zum Streamen von Daten
 
-Nachdem nun die gesamte Konfigurationsarbeit abgeschlossen ist, ist es an der Zeit, die Time Series Insights-Umgebung mit Beispieldaten von den simulierten Geräten aufzufüllen.
+Füllen Sie nach Abschluss der Bereitstellung und anfänglichen Konfiguration die Time Series Insights-Umgebung mit Beispieldaten von durch den [Solution Accelerator erzeugten simulierten Geräten](#create-a-device-simulation) auf.
 
-Im [Abschnitt „Erstellen einer Gerätesimulation“](#create-a-device-simulation) wurden per Accelerator mehrere Azure-Ressourcen zur Unterstützung der Lösung erstellt. Zusammen mit dem oben beschriebenen IoT Hub wurde eine Azure App Service-Webanwendung generiert, um Telemetriedaten für simulierte Geräte zu erstellen und zu übertragen.
+Zusammen mit dem IoT-Hub wurde eine Azure App Service-Webanwendung generiert, um Telemetriedaten für simulierte Geräte zu erstellen und zu übertragen.
 
 1. Wechseln Sie zurück zum [Solution Accelerators-Dashboard](https://www.azureiotsolutions.com/Accelerators#dashboard). Melden Sie sich an, falls dies erforderlich ist, indem Sie dasselbe Azure-Konto wie im gesamten bisherigen Tutorial verwenden. Sie können jetzt unter Ihrer Lösung für die „Gerätesimulation“ die Option **Starten** auswählen.
 
      [![Solution Accelerators-Dashboard](media/tutorial-create-populate-tsi-environment/sa-create-device-sim-solution-dashboard.png)](media/tutorial-create-populate-tsi-environment/sa-create-device-sim-solution-dashboard.png#lightbox)
 
-1. Die Web-App für die Gerätesimulation wird gestartet. Der erste Ladevorgang kann einige Sekunden dauern. Sie werden auch zum Erteilen der Zustimmung zur Gewährung der Berechtigung „Sie anmelden und Ihr Profil lesen“ für die Webanwendung aufgefordert. Mit dieser Berechtigung kann die Anwendung die Benutzerprofilinformationen abrufen, die zur Unterstützung der Funktionsweise einer Anwendung erforderlich sind:
+1. Die Web-App für die Gerätesimulation fordert Sie zunächst auf, der Webanwendung die Berechtigung „Sie anmelden und Ihr Profil lesen“ zu erteilen. Mit dieser Berechtigung kann die Anwendung die Benutzerprofilinformationen abrufen, die zur Unterstützung der Funktionsweise einer Anwendung erforderlich sind:
 
      [![Gerätesimulation – Zustimmung für Webanwendung](media/tutorial-create-populate-tsi-environment/sawa-signin-consent.png)](media/tutorial-create-populate-tsi-environment/sawa-signin-consent.png#lightbox)
 
@@ -219,7 +172,7 @@ In diesem letzten Abschnitt überprüfen Sie, ob die Telemetriedaten in der Time
 
 ## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
 
-In diesem Tutorial werden mehrere ausgeführte Azure-Dienste erstellt, um die Time Series Insights-Umgebung und die Gerätesimulationslösung zu unterstützen. Falls Sie diese Tutorialreihe nicht oder erst später fertig stellen möchten, empfehlen wir, alle Ressourcen zu löschen, damit keine unnötigen Kosten entstehen.
+In diesem Tutorial werden mehrere ausgeführte Azure-Dienste erstellt, um die Time Series Insights-Umgebung und die Gerätesimulationslösung zu unterstützen. Navigieren Sie zurück zum Azure-Portal, um sie zu entfernen.
 
 Gehen Sie im Azure-Portal im Menü auf der linken Seite wie folgt vor:
 

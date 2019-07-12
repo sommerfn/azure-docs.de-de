@@ -1,48 +1,51 @@
 ---
-title: Includedatei
-description: Includedatei
+title: include file
+description: include file
 services: digital-twins
-author: alinamstanciu
+author: dsk-2015
 ms.service: digital-twins
 ms.topic: include
-ms.date: 12/17/2018
-ms.author: alinast
+ms.date: 06/28/2019
+ms.author: dkshir
 ms.custom: include file
-ms.openlocfilehash: e8027e16cc1f58fbadbb35ae241ab29010005586
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.openlocfilehash: 324f41055cf333081f308a3ff533ff7df6b33038
+ms.sourcegitcommit: f811238c0d732deb1f0892fe7a20a26c993bc4fc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66153733"
+ms.lasthandoff: 06/29/2019
+ms.locfileid: "67479193"
 ---
-1. Öffnen Sie im [Azure-Portal](https://portal.azure.com) im linken Bereich **Azure Active Directory**, und öffnen Sie dann den Bereich **Eigenschaften**. Kopieren Sie **Verzeichnis-ID** in eine temporäre Datei. Mit diesem Wert konfigurieren Sie im nächsten Abschnitt eine Beispielanwendung.
+>[!NOTE]
+>Dieser Abschnitt enthält Anweisungen für die neue [Azure AD-App-Registrierung](https://docs.microsoft.com/azure/active-directory/develop/quickstart-register-app). Wenn Sie noch über eine ältere native App-Registrierung verfügen, können Sie diese verwenden, solange sie unterstützt wird. Wenn aus irgendeinem Grund die neue Art der App-Registrierung in Ihrem Setup nicht funktioniert, können Sie außerdem versuchen, eine ältere native AAD-App zu erstellen. Lesen Sie für weitere Anweisungen [Registrieren Ihrer Azure Digital Twins-App mit älterem Azure Active Directory](../articles/digital-twins/how-to-use-legacy-aad.md). 
 
-    ![ID des Azure Active Directory-Verzeichnisses](./media/digital-twins-permissions/aad-app-reg-tenant.png)
+1. Öffnen Sie im [Azure-Portal](https://portal.azure.com) im linken Bereich **Azure Active Directory**, und öffnen Sie dann den Bereich **App-Registrierungen**. Klicken Sie auf die Schaltfläche **Neue Registrierung**.
 
-1. Öffnen Sie den Bereich **App-Registrierungen**, und wählen Sie dann die Schaltfläche **Registrierung einer neuen Anwendung**.
+    ![App registriert](./media/digital-twins-permissions/aad-app-register.png)
 
-    ![Bereich „App-Registrierungen“](./media/digital-twins-permissions/aad-app-reg-start.png)
-
-1. Geben Sie im Feld **Name** einen Anzeigenamen für diese App-Registrierung ein. Wählen Sie unter **Anwendungstyp** die Option **Nativ** und unter **Umleitungs-URI** die Option `https://microsoft.com` aus. Klicken Sie auf **Erstellen**.
+1. Geben Sie im Feld **Name** einen Anzeigenamen für diese App-Registrierung ein. Wählen Sie im Abschnitt **Umleitungs-URI (optional)** **öffentlicher Client (mobil & Desktop)** im Dropdownmenü auf der linken Seite, und geben Sie `https://microsoft.com` in das Textfeld auf der rechten Seite ein. Wählen Sie **Registrieren**.
 
     ![Bereich zum „Erstellen“](./media/digital-twins-permissions/aad-app-reg-create.png)
 
-1. Öffnen Sie die registrierte App, und kopieren Sie den Wert im Feld **Anwendungs-ID** in eine temporäre Datei. Dieser Wert identifiziert Ihre Azure Active Directory-App. Mit der Anwendungs-ID konfigurieren Sie in den folgenden Abschnitten Ihre Beispielanwendung.
+1. Um sicherzustellen, dass [die App als *native App*](https://docs.microsoft.com/azure/active-directory/develop/scenario-desktop-app-registration) registriert ist, öffnen Sie den Bereich **Authentifizierung** für Ihre App-Registrierung, und scrollen Sie in diesem Bereich nach unten. Wählen Sie im Abschnitt **Standardclienttyp** **Ja** für **Anwendung als öffentlichen Client behandeln**. 
+
+    ![Standardmäßig nativ](./media/digital-twins-permissions/aad-app-default-native.png)
+
+1.  Öffnen Sie den Bereich **Übersicht** Ihrer registrierten App, und kopieren Sie die Werte der folgenden Elemente in eine temporäre Datei. Mit diesen Werten konfigurieren Sie in den folgenden Abschnitten Ihre Beispielanwendung.
+
+    - **Anwendungs-ID (Client)**
+    - **Verzeichnis-ID (Mandant)**
 
     ![ID der Azure Active Directory-Anwendung](./media/digital-twins-permissions/aad-app-reg-app-id.png)
 
-1. Öffnen des Bereichs Ihrer App-Registrierung Wählen Sie **Einstellungen** > **Erforderliche Berechtigungen** aus, und gehen Sie dann wie folgt vor:
+1. Öffnen Sie den Bereich **API-Berechtigungen** für Ihre App-Registrierung. Wählen Sie die Schaltfläche **Berechtigung hinzufügen** aus. Wählen Sie im Bereich **API-Berechtigungen anfordern**  die Registerkarte **Von meiner Organisation verwendete APIs** aus, und suchen Sie dann nach **Azure Smart Space**. Wählen Sie die API **Azure Smart Spaces Service** aus.
 
-   a. Wählen Sie links oben **Hinzufügen** aus, um den Bereich **API-Zugriff hinzufügen** zu öffnen.
+    ![Search-API](./media/digital-twins-permissions/aad-app-search-api.png)
 
-   b. Wählen Sie **API auswählen**, und suchen Sie nach **Azure Digital Twins**. Wenn die API damit nicht gefunden wird, suchen Sie stattdessen nach **Azure Smart Spaces**.
+1. Die ausgewählte API wird als **Azure Digital Twins** im gleichen Bereich **API-Berechtigungen anfordern** angezeigt. Aktivieren Sie das Dropdownmenü **Lesen (1)** und dann das Kontrollkästchen **Read.Write**. Wählen Sie die Schaltfläche **Berechtigungen hinzufügen** aus.
 
-   c. Wählen Sie die Option **Azure Digital Twins (Azure Smart Spaces Service)** und dann **Auswählen**.
+    ![Hinzufügen von API-Berechtigungen](./media/digital-twins-permissions/aad-app-req-permissions.png)
 
-   d. Wählen Sie **Berechtigungen auswählen** aus. Aktivieren Sie das Kontrollkästchen **Lese-/Schreibzugriff** für delegierte Berechtigungen, und wählen Sie **Auswählen** aus.
+1. Je nach Einstellungen Ihrer Organisation müssen Sie möglicherweise zusätzliche Schritte unternehmen, um dem Administrator Zugriff auf diese API zu gewähren. Wenden Sie sich für weitere Informationen an Ihren den Administrator. Sobald der Administratorzugriff genehmigt wurde, wird die Spalte **ADMINISTRATOREINWILLIGUNG ERFORDERLICH** im Bereich **API-Berechtigungen** ähnlich wie folgt für Ihre APIs angezeigt:
 
-   e. Wählen Sie im Bereich **API-Zugriff hinzufügen** die Option **Fertig** aus.
+    ![Hinzufügen von API-Berechtigungen](./media/digital-twins-permissions/aad-app-admin-consent.png)
 
-   f. Wählen Sie im Bereich **Erforderliche Berechtigungen** die Schaltfläche **Berechtigungen erteilen**, und akzeptieren Sie die angezeigte Bestätigung.
-
-      ![Bereich „Erforderliche Berechtigungen“](./media/digital-twins-permissions/aad-app-req-permissions.png)

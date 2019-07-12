@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 04/29/2019
 ms.author: msangapu
-ms.openlocfilehash: d4a93bbd823db59d688f77a626b1225519fb7b44
-ms.sourcegitcommit: 6f043a4da4454d5cb673377bb6c4ddd0ed30672d
+ms.openlocfilehash: d1176d2d70dcd4de3e4287a1973de027c061f291
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/08/2019
-ms.locfileid: "65407612"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67055553"
 ---
 # <a name="tutorial-create-a-multi-container-preview-app-in-web-app-for-containers"></a>Tutorial: Erstellen einer App mit mehreren Containern (Vorschauversion) über Web-App für Container
 
@@ -314,7 +314,7 @@ Ihre App mit mehreren Containern wird jetzt in Web-App für Container ausgeführ
 
 ### <a name="configure-environment-variables"></a>Konfigurieren von Umgebungsvariablen
 
-Für die Nutzung des beständigen Speichers aktivieren Sie die Einstellung in App Service. Verwenden Sie zum Vornehmen dieser Änderung in Cloud Shell den Befehl [az webapp config appsettings set](/cli/azure/webapp/config/appsettings?view=azure-cli-latest#az-webapp-config-appsettings-set). Bei App-Einstellungen wird die Groß-/Kleinschreibung berücksichtigt und die Einstellungen sind durch Leerzeichen getrennt.
+Für die Nutzung von beständigem Speicher aktivieren Sie diese Einstellung in App Service. Verwenden Sie zum Vornehmen dieser Änderung in Cloud Shell den Befehl [az webapp config appsettings set](/cli/azure/webapp/config/appsettings?view=azure-cli-latest#az-webapp-config-appsettings-set). Bei App-Einstellungen wird die Groß-/Kleinschreibung berücksichtigt und die Einstellungen sind durch Leerzeichen getrennt.
 
 ```azurecli-interactive
 az webapp config appsettings set --resource-group myResourceGroup --name <app-name> --settings WEBSITES_ENABLE_APP_SERVICE_STORAGE=TRUE
@@ -492,7 +492,7 @@ WordPress stellt die Verbindung mit dem Redis-Server her. Der **Status** der Ver
 
 ![WordPress stellt die Verbindung mit dem Redis-Server her. Der **Status** der Verbindung wird auf derselben Seite angezeigt.][6]
 
-**Glückwunsch!**. Sie haben für WordPress eine Verbindung mit Redis hergestellt. Für die App, die jetzt für die Produktion bereit ist, werden nun **Azure Database for MySQL, beständiger Speicher und Redis** verwendet. Sie können Ihren App Service-Plan jetzt auf mehrere Instanzen horizontal hochskalieren.
+**Glückwunsch!** . Sie haben für WordPress eine Verbindung mit Redis hergestellt. Für die App, die jetzt für die Produktion bereit ist, werden nun **Azure Database for MySQL, beständiger Speicher und Redis** verwendet. Sie können Ihren App Service-Plan jetzt auf mehrere Instanzen horizontal hochskalieren.
 
 ## <a name="find-docker-container-logs"></a>Zugreifen auf Docker-Containerprotokolle
 

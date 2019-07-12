@@ -4,12 +4,12 @@ ms.service: container-registry
 ms.topic: include
 ms.date: 05/02/2019
 ms.author: danlep
-ms.openlocfilehash: 6e0175173f17ae0958522517360b94ee80f3b2f9
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.openlocfilehash: 40cc1856a5e943ca5596e7d11712febadd30e3ec
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66148987"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67133119"
 ---
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -25,11 +25,14 @@ Ihr Abonnement muss eine Azure-Containerregistrierung enthalten, um dieses Tutor
 
 Um nach einem Commit in einem Git-Repository einen Task auslösen zu können, benötigt ACR Tasks ein persönliches Zugriffstoken (Personal Access Token, PAT) für den Zugriff auf das Repository. Besitzen Sie noch kein PAT, führen Sie die folgenden Schritte aus, um eins in GitHub zu erstellen:
 
-1. Navigieren Sie zur PAT-Erstellungsseite von GitHub (https://github.com/settings/tokens/new).
+1. Navigieren Sie zur PAT-Erstellungsseite von GitHub (https://github.com/settings/tokens/new ).
 1. Geben Sie eine kurze **Beschreibung** für das Token ein (beispielsweise „ACR Tasks-Demo“).
-1. Aktivieren Sie unter **repo** die Kontrollkästchen **repo:status** und **public_repo**.
+1. Wählen Sie Bereiche für ACR, um auf das Repository zuzugreifen. Um wie in diesem Tutorial auf ein öffentliches Repository zuzugreifen, aktivieren Sie unter **repo** erst **repo:status** und dann **public_repo**.
 
    ![Screenshot der Seite zum Generieren eines persönlichen Zugriffstokens in GitHub][build-task-01-new-token]
+
+   > [!NOTE]
+   > Um ein persönliches Zugriffstoken für den Zugriff auf ein *privates* Repository zu generieren, wählen Sie den Bereich für die vollständige **Repository**steuerung.
 
 1. Klicken Sie auf die Schaltfläche **Generate token** (Token generieren). Unter Umständen werden Sie zur Bestätigung Ihres Kennworts aufgefordert.
 1. Kopieren und speichern Sie das generierte Token an einem **sicheren Ort**. Das Token wird im nächsten Abschnitt beim Definieren einer Aufgabe benötigt.

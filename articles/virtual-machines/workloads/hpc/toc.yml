@@ -1,12 +1,14 @@
 - name: Dokumentation zu High Performance Computing
   items:
     - name: Übersicht
-      href: 'https://docs.microsoft.com/azure/architecture/topics/high-performance-computing/'
+      items:
+        - name: HPC für virtuelle Computer der H-Serie
+          href: overview.md
     - name: Konfiguration
       items:
         - name: Optimierung für Linux
           href: configure.md
-        - name: Aktivieren von Infiniband
+        - name: Aktivieren von InfiniBand
           href: enable-infiniband.md
     - name: Einrichten von MPI
       href: setup-mpi.md

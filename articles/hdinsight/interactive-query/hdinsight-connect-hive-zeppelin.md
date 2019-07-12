@@ -1,6 +1,6 @@
 ---
 title: 'Schnellstart: Ausführen von Apache Hive-Abfragen in Azure HDInsight – Apache Zeppelin'
-description: Erfahren Sie, wie Sie Apache Zeppelin zum Ausführen von Apache Hive-Abfragen verwenden.
+description: In diesem Schnellstart erfahren Sie, wie Sie Apache Hive-Abfragen mit Apache Zeppelin ausführen können.
 keywords: hdinsight, hadoop, hive, interactive query, LLAP
 author: hrasheed-msft
 ms.reviewer: jasonh
@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: quickstart
 ms.date: 05/06/2019
 ms.author: hrasheed
-ms.openlocfilehash: f4b8495646e83005dc48e8a729a0e5987b832721
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: 1642c64b0b14c2e290aad689399b59d896660a28
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65801034"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67056697"
 ---
 # <a name="quickstart-execute-apache-hive-queries-in-azure-hdinsight-with-apache-zeppelin"></a>Schnellstart: Ausführen von Apache Hive-Abfragen in Azure HDInsight mit Apache Zeppelin
 
@@ -83,12 +83,3 @@ In diesem Schnellstart haben Sie erfahren, wie Sie mit Apache Zeppelin Apache Hi
 
 > [!div class="nextstepaction"]
 > [Herstellen einer Verbindung mit Azure HDInsight und Ausführen von Apache Hive-Abfragen mit Data Lake-Tools für Visual Studio](../hadoop/apache-hadoop-visual-studio-tools-get-started.md)
-
-## <a name="see-also"></a>Weitere Informationen
-
-* [Visualisieren von Apache Hive-Daten mit Microsoft Power BI in Azure HDInsight](../hadoop/apache-hadoop-connect-hive-power-bi.md)
-* [Visualisieren von Interactive Query-Apache Hive-Daten mit Power BI in Azure HDInsight](./apache-hadoop-connect-hive-power-bi-directquery.md)
-* [Verbinden von Excel mit Hadoop in Azure HDInsight mithilfe des Microsoft Hive ODBC-Treibers](../hadoop/apache-hadoop-connect-excel-hive-odbc-driver.md).
-* [Verbinden von Excel mit Apache Hadoop mithilfe von Power Query](../hadoop/apache-hadoop-connect-excel-power-query.md)
-* [Verwenden von Azure HDInsight-Tools für Visual Studio Code](../hdinsight-for-vscode.md)
-* [Upload data to HDInsight (Hochladen von Daten in HDInsight)](../hdinsight-upload-data.md).

@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d5defdf2d33d32042775271fe01aba377687ae75
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: bdbdd0253478200d39501444ae649b87b77e65a4
+ms.sourcegitcommit: 79496a96e8bd064e951004d474f05e26bada6fa0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58891564"
+ms.lasthandoff: 07/02/2019
+ms.locfileid: "67509053"
 ---
 # <a name="quickstart-block-access-when-a-session-risk-is-detected-with-azure-active-directory-conditional-access"></a>Schnellstart: Blockieren des Zugriffs, wenn ein Sitzungsrisiko beim bedingten Azure Active Directory-Zugriff erkannt wird  
 
@@ -33,11 +33,8 @@ Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](htt
 Für die Durchführung des Szenarios im Rahmen dieses Tutorials benötigen Sie Folgendes:
 
 - **Zugriff auf eine Azure AD Premium P2-Edition**: Der bedingte Zugriff ist zwar eine Funktion von Azure AD Premium P1. Dennoch benötigen Sie eine P2-Edition, da für das Szenario in dieser Schnellstartanleitung Identity Protection erforderlich ist.
-
 - **Identity Protection**: Für das Szenario in dieser Schnellstartanleitung muss Identity Protection aktiviert sein. Informationen zum Aktivieren von Identity Protection finden Sie unter [Aktivieren von Azure Active Directory Identity Protection](../identity-protection/enable.md).
-
-- **Tor Browser**: Mit dem [Tor Browser](https://www.torproject.org/projects/torbrowser.html.en) können Sie Ihre Privatsphäre online schützen. Identity Protection erkennt eine Anmeldung von einem Tor Browser als **Anmeldungen von anonymen IP-Adressen**. Anmeldungen dieser Art weisen eine mittlere Risikostufe auf. Weitere Informationen finden Sie unter [Azure Active Directory-Risikoereignisse](../reports-monitoring/concept-risk-events.md).  
-
+- **Tor Browser**: Mit dem [Tor Browser](https://www.torproject.org/projects/torbrowser.html.en) können Sie Ihre Privatsphäre online schützen. Identity Protection erkennt eine Anmeldung von einem Tor Browser als Anmeldungen von anonymen IP-Adressen. Anmeldungen dieser Art weisen eine mittlere Risikostufe auf. Weitere Informationen finden Sie unter [Azure Active Directory-Risikoereignisse](../reports-monitoring/concept-risk-events.md).  
 - **Ein Testkonto mit dem Namen Alain Charon**: Informationen zum Erstellen eines Testkontos finden Sie unter [Hinzufügen von cloudbasierten Benutzern](../fundamentals/add-users-azure-active-directory.md#add-a-new-user).
 
 ## <a name="test-your-sign-in"></a>Testen Ihrer Anmeldung
@@ -49,7 +46,7 @@ Mit diesem Schritt soll sichergestellt werden, dass Sie mit dem Tor Browser übe
 1. Melden Sie sich bei Ihrem [Azure-Portal](https://portal.azure.com) als **Alain Charon** an.
 1. Melden Sie sich ab.
 
-## <a name="create-your-conditional-access-policy"></a>Erstellen der Richtlinie für bedingten Zugriff
+## <a name="create-your-conditional-access-policy"></a>Erstellen Ihrer Richtlinie für bedingten Zugriff
 
 Für das Szenario in dieser Schnellstartanleitung wird eine Anmeldung über einen Tor Browser verwendet, um ein erkanntes Risikoereignis vom Typ **Anmeldungen von anonymen IP-Adressen** zu generieren. Dieses Risikoereignis weist eine mittlere Risikostufe auf. Reagieren Sie auf dieses Risikoereignis, indem Sie die Bedingung für das Anmelderisiko auf „Mittel“ festlegen. In einer Produktionsumgebung sollten Sie die Bedingung für das Anmelderisiko entweder auf „Hoch“ oder auf „Mittel“ und „Hoch“ festlegen.
 
@@ -64,10 +61,9 @@ In diesem Abschnitt wird gezeigt, wie Sie die erforderliche Richtlinie für bedi
 
 ![Richtlinie erstellen](./media/app-sign-in-risk/130.png)
 
-**So konfigurieren Sie die Richtlinie für bedingten Zugriff**
+**So konfigurieren Sie die Richtlinie für bedingten Zugriff:**
 
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) als globaler Administrator, Sicherheitsadministrator oder Administrator für bedingten Zugriff an.
-
 1. Klicken Sie im Azure-Portal auf der linken Navigationsleiste auf **Azure Active Directory**.
 
    ![Azure Active Directory](./media/app-sign-in-risk/02.png)
@@ -93,13 +89,9 @@ In diesem Abschnitt wird gezeigt, wie Sie die erforderliche Richtlinie für bedi
    ![Bedingter Zugriff](./media/app-sign-in-risk/107.png)
 
    1. Klicken Sie auf **Benutzer und Gruppen auswählen**, und wählen Sie dann **Benutzer und Gruppen** aus.
-
    1. Klicken Sie auf **Auswählen**.
-
    1. Wählen Sie auf der Seite **Auswählen** den Eintrag **Alain Charon** aus, und klicken Sie dann auf **Auswählen**.
-
    1. Klicken Sie auf der Seite **Benutzer und Gruppen** auf **Fertig**.
-
 1. Klicken Sie auf **Cloud-Apps**.
 
    ![Cloud-Apps](./media/app-sign-in-risk/08.png)
@@ -109,9 +101,7 @@ In diesem Abschnitt wird gezeigt, wie Sie die erforderliche Richtlinie für bedi
    ![Bedingter Zugriff](./media/app-sign-in-risk/109.png)
 
    1. Klicken Sie auf **Alle Cloud-Apps**.
-
    1. Klicken Sie auf **Fertig**.
-
 1. Klicken Sie auf **Bedingungen**.
 
    ![Zugriffssteuerung](./media/app-sign-in-risk/19.png)
@@ -121,15 +111,10 @@ In diesem Abschnitt wird gezeigt, wie Sie die erforderliche Richtlinie für bedi
    ![Risikostufe für die Anmeldung](./media/app-sign-in-risk/21.png)
 
    1. Klicken Sie auf **Anmelderisiko**.
-
    1. Legen Sie **Konfigurieren** auf **Ja** fest.
-
    1. Legen Sie die Risikostufe für die Anmeldung auf **Mittel** fest.
-
    1. Klicken Sie auf **Auswählen**.
-
    1. Klicken Sie auf der Seite **Bedingungen** auf **Fertig**.
-
 1. Klicken Sie im Abschnitt **Zugriffssteuerungen** auf **Gewähren**.
 
    ![Zugriffssteuerung](./media/app-sign-in-risk/10.png)
@@ -139,9 +124,7 @@ In diesem Abschnitt wird gezeigt, wie Sie die erforderliche Richtlinie für bedi
    ![Bedingter Zugriff](./media/app-sign-in-risk/105.png)
 
    1. Wählen Sie **Zugriff blockieren** aus.
-
    1. Klicken Sie auf **Auswählen**.
-
 1. Klicken Sie im Abschnitt **Richtlinie aktivieren** auf **Ein**.
 
    ![Richtlinie aktivieren](./media/app-sign-in-risk/18.png)
@@ -156,7 +139,7 @@ Wenn Sie das **What-If-Richtlinientool** für dieses Szenario verwenden, muss di
 
 ![Benutzer](./media/app-sign-in-risk/117.png)
 
-**So werten Sie die Richtlinie für bedingten Zugriff aus**
+**So werten Sie die Richtlinie für bedingten Zugriff aus:**
 
 1. Klicken Sie auf der Seite [Bedingter Zugriff – Richtlinien](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ConditionalAccessBlade/Policies) im Menü am oberen Rand auf **What If**.  
 
@@ -185,7 +168,6 @@ Melden Sie sich zum Testen der Richtlinie mit dem Tor Browser bei Ihrem [Azure-P
 Löschen Sie den Testbenutzer, wenn er nicht mehr benötigt wird, und löschen Sie auch den Tor Browser und die Richtlinie für bedingten Zugriff:
 
 - Wenn Sie nicht wissen, wie ein Azure AD-Benutzer gelöscht wird, lesen Sie [Löschen von Benutzern aus Azure AD](../fundamentals/add-users-azure-active-directory.md#delete-a-user).
-
 - Zum Löschen Ihrer Richtlinie wählen Sie die Richtlinie aus, und klicken Sie dann in der Symbolleiste für den Schnellzugriff auf **Löschen**.
 
    ![Multi-Factor Authentication](./media/app-sign-in-risk/33.png)

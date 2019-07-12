@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c37a58cb9f9d1082d02854f43e511e5431d90c13
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: ba684209b497792cd2f520f6b530168959e62d7f
+ms.sourcegitcommit: 79496a96e8bd064e951004d474f05e26bada6fa0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58894250"
+ms.lasthandoff: 07/02/2019
+ms.locfileid: "67506911"
 ---
 # <a name="quickstart-require-terms-of-use-to-be-accepted-before-accessing-cloud-apps"></a>Schnellstart: Fordern der Annahme von Nutzungsbedingungen vor dem Zugreifen auf Cloud-Apps
 
@@ -54,11 +54,8 @@ Dieser Abschnitt enthält die Schritte, die Sie zum Erstellen von Beispielnutzun
 **So erstellen Sie Ihre Nutzungsbedingungen**
 
 1. Erstellen Sie in Microsoft Word ein neues Dokument.
-
 1. Geben Sie **Meine Nutzungsbedingungen** ein, und speichern Sie das Dokument unter **mytou.pdf** auf Ihrem Computer.
-
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) als globaler Administrator, Sicherheitsadministrator oder Administrator für bedingten Zugriff an.
-
 1. Klicken Sie im Azure-Portal auf der linken Navigationsleiste auf **Azure Active Directory**.
 
    ![Azure Active Directory](./media/require-tou/02.png)
@@ -80,20 +77,14 @@ Dieser Abschnitt enthält die Schritte, die Sie zum Erstellen von Beispielnutzun
    ![Nutzungsbedingungen](./media/require-tou/112.png)
 
    1. Geben Sie im Textfeld **Name** den Text **Meine Nutzungsbedingungen** ein.
-
    1. Geben Sie im Textfeld **Anzeigename** den Text **Meine Nutzungsbedingungen** ein.
-
    1. Laden Sie Ihre Nutzungsbedingungen als PDF-Datei hoch.
-
    1. Wählen Sie unter **Sprache** die Option **Englisch** aus.
-
    1. Wählen Sie für **Benutzer müssen die Nutzungsbedingungen erweitern** die Option **Ein** aus.
-
    1. Wählen Sie für **Mit Richtlinienvorlagen für bedingten Zugriff erzwingen** die Option **Benutzerdefinierte Richtlinie** aus.
-
    1. Klicken Sie auf **Create**.
 
-## <a name="create-your-conditional-access-policy"></a>Erstellen der Richtlinie für bedingten Zugriff
+## <a name="create-your-conditional-access-policy"></a>Erstellen Ihrer Richtlinie für bedingten Zugriff
 
 In diesem Abschnitt wird gezeigt, wie Sie die erforderliche Richtlinie für bedingten Zugriff erstellen. Für das Szenario in diesem Schnellstart wird Folgendes verwendet:
 
@@ -110,7 +101,7 @@ Legen Sie in Ihrer Richtlinie Folgendes fest:
 
 ![Richtlinie erstellen](./media/require-tou/1234.png)
 
-**So konfigurieren Sie die Richtlinie für bedingten Zugriff**
+**So konfigurieren Sie die Richtlinie für bedingten Zugriff:**
 
 1. Geben Sie auf der Seite **Neu** im Textfeld **Name** den Text **Nutzungsbedingungen für Isabella erforderlich** ein.
 
@@ -125,13 +116,9 @@ Legen Sie in Ihrer Richtlinie Folgendes fest:
    ![Benutzer und Gruppen](./media/require-tou/24.png)
 
    1. Klicken Sie auf **Benutzer und Gruppen auswählen**, und wählen Sie dann **Benutzer und Gruppen** aus.
-
    1. Klicken Sie auf **Auswählen**.
-
    1. Wählen Sie auf der Seite **Auswählen** den Benutzer **Isabella Simonsen** aus, und klicken Sie dann auf **Auswählen**.
-
    1. Klicken Sie auf der Seite **Benutzer und Gruppen** auf **Fertig**.
-
 1. Klicken Sie auf **Cloud-Apps**.
 
    ![Cloud-Apps](./media/require-tou/08.png)
@@ -141,13 +128,9 @@ Legen Sie in Ihrer Richtlinie Folgendes fest:
    ![Auswählen der Cloud-Apps](./media/require-tou/26.png)
 
    1. Klicken Sie auf **Apps auswählen**.
-
    1. Klicken Sie auf **Auswählen**.
-
    1. Wählen Sie auf der Seite **Auswählen** die Option **Microsoft Azure Management** aus, und klicken Sie dann auf **Auswählen**.
-
    1. Klicken Sie auf der Seite **Cloud-Apps** auf **Fertig**.
-
 1. Klicken Sie im Abschnitt **Zugriffssteuerungen** auf **Gewähren**.
 
    ![Zugriffssteuerung](./media/require-tou/10.png)
@@ -157,11 +140,8 @@ Legen Sie in Ihrer Richtlinie Folgendes fest:
    ![Gewährung](./media/require-tou/111.png)
 
    1. Wählen Sie **Zugriff gewähren** aus.
-
    1. Wählen Sie **Meine Nutzungsbedingungen** aus.
-
    1. Klicken Sie auf **Auswählen**.
-
 1. Klicken Sie im Abschnitt **Richtlinie aktivieren** auf **Ein**.
 
    ![Richtlinie aktivieren](./media/require-tou/18.png)
@@ -170,9 +150,9 @@ Legen Sie in Ihrer Richtlinie Folgendes fest:
 
 ## <a name="evaluate-a-simulated-sign-in"></a>Auswerten einer simulierten Anmeldung
 
-Nachdem Sie nun Ihre Richtlinie für bedingten Zugriff konfiguriert haben, möchten Sie wahrscheinlich wissen, ob sie erwartungsgemäß funktioniert. Verwenden Sie im ersten Schritt das What If-Richtlinientool des bedingten Zugriffs, um eine Anmeldung für Ihren Testbenutzer zu simulieren. Die Simulation schätzt die Auswirkungen dieser Anmeldungen auf Ihre Richtlinien ab und generiert einen Simulationsbericht.  
+Nachdem Sie nun Ihre Richtlinie für bedingten Zugriff konfiguriert haben, möchten Sie wahrscheinlich wissen, ob sie erwartungsgemäß funktioniert. Verwenden Sie im ersten Schritt das What-If-Richtlinientool des bedingten Zugriffs, um eine Anmeldung für Ihren Testbenutzer zu simulieren. Die Simulation schätzt die Auswirkungen dieser Anmeldungen auf Ihre Richtlinien ab und generiert einen Simulationsbericht.  
 
-Legen Sie zum Initialisieren des What If-Richtlinienauswertungstools Folgendes fest:
+Legen Sie zum Initialisieren des **What If**-Richtlinienauswertungstools Folgendes fest:
 
 - Benutzer: **Isabella Simonsen**
 - Cloud-App: **Microsoft Azure Management**
@@ -184,7 +164,7 @@ Durch Klicken auf **What If** wird ein Simulationsbericht mit folgenden Informat
 
 ![What If-Richtlinientool](./media/require-tou/79.png)
 
-**So werten Sie die Richtlinie für bedingten Zugriff aus**
+**So werten Sie die Richtlinie für bedingten Zugriff aus:**
 
 1. Klicken Sie auf der Seite [Bedingter Zugriff – Richtlinien](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ConditionalAccessBlade/Policies) im Menü am oberen Rand auf **What If**.  
 
@@ -199,15 +179,10 @@ Durch Klicken auf **What If** wird ein Simulationsbericht mit folgenden Informat
    ![Cloud-Apps](./media/require-tou/16.png)
 
    1. Klicken Sie auf **Cloud-Apps**.
-
    1. Klicken Sie auf der Seite **Cloud-Apps** auf **Apps auswählen**.
-
    1. Klicken Sie auf **Auswählen**.
-
    1. Wählen Sie auf der Seite **Auswählen** die Option **Microsoft Azure Management** aus, und klicken Sie dann auf **Auswählen**.
-
    1. Klicken Sie auf der Seite „Cloud-Apps“ auf **Fertig**.
-
 1. Klicken Sie auf **What If**.
 
 ## <a name="test-your-conditional-access-policy"></a>Testen der Richtlinie für bedingten Zugriff
@@ -223,7 +198,6 @@ Um Ihre Richtlinie zu testen, versuchen Sie, sich im [Azure-Portal](https://port
 Löschen Sie den Testbenutzer, wenn er nicht mehr benötigt wird, und löschen Sie auch die Richtlinie für bedingten Zugriff:
 
 - Wenn Sie nicht wissen, wie ein Azure AD-Benutzer gelöscht wird, lesen Sie [Löschen von Benutzern aus Azure AD](../fundamentals/add-users-azure-active-directory.md#delete-a-user).
-
 - Zum Löschen Ihrer Richtlinie wählen Sie die Richtlinie aus, und klicken Sie dann in der Symbolleiste für den Schnellzugriff auf **Löschen**.
 
     ![Multi-Factor Authentication](./media/require-tou/33.png)

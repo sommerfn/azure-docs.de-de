@@ -7,26 +7,26 @@ ms.service: virtual-desktop
 ms.topic: tutorial
 ms.date: 04/12/2019
 ms.author: helohr
-ms.openlocfilehash: 1e53f76f564c0970ac1f291d2125807441500de6
-ms.sourcegitcommit: bb85a238f7dbe1ef2b1acf1b6d368d2abdc89f10
+ms.openlocfilehash: 44c823653ecbad1c4dd1fd35b676c8a6d8bd1620
+ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/10/2019
-ms.locfileid: "65523314"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67206657"
 ---
-# <a name="tutorial-create-service-principals-and-role-assignments-with-powershell"></a>Tutorial: Erstellen von Dienstprinzipalen und Rollenzuweisungen mit PowerShell
+# <a name="tutorial-create-service-principals-and-role-assignments-by-using-powershell"></a>Tutorial: Erstellen von Dienstprinzipalen und Rollenzuweisungen mit PowerShell
 
 Dienstprinzipale sind Identitäten, die Sie in Azure Active Directory erstellen können, um Rollen und Berechtigungen für einen bestimmten Zweck zuzuweisen. In Windows Virtual Desktop (Vorschauversion) können Sie einen Dienstprinzipal für folgende Zwecke erstellen:
 
-- Automatisieren von bestimmten Verwaltungsaufgaben für Windows Virtual Desktop
-- Verwenden als Anmeldeinformationen anstelle von MFA-Benutzern beim Ausführen einer Azure Resource Manager-Vorlage für Windows Virtual Desktop
+- Automatisieren von bestimmten Verwaltungsaufgaben für Windows Virtual Desktop.
+- Verwenden als Anmeldeinformationen anstelle von MFA-Benutzern beim Ausführen einer Azure Resource Manager-Vorlage für Windows Virtual Desktop.
 
 In diesem Tutorial lernen Sie Folgendes:
 
 > [!div class="checklist"]
-> * Erstellen eines Dienstprinzipals in Azure Active Directory
-> * Erstellen einer Rollenzuweisung in Windows Virtual Desktop
-> * Anmelden an Windows Virtual Desktop mit dem Dienstprinzipal
+> * Erstellen Sie einen Dienstprinzipal in Azure Active Directory.
+> * Erstellen einer Rollenzuweisung in Windows Virtual Desktop.
+> * Anmelden bei Windows Virtual Desktop mit dem Dienstprinzipal.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -72,7 +72,7 @@ New-RdsRoleAssignment -RoleDefinitionName "RDS Owner" -ApplicationId $svcPrincip
 
 ## <a name="sign-in-with-the-service-principal"></a>Anmelden mit dem Dienstprinzipal
 
-Nachdem Sie eine Rollenzuweisung für den Dienstprinzipal erstellt haben, sollten Sie jetzt sicherstellen, dass die Anmeldung an Windows Virtual Desktop mit dem Dienstprinzipal möglich ist, indem Sie das folgende Cmdlet ausführen:
+Nachdem Sie eine Rollenzuweisung für den Dienstprinzipal erstellt haben, müssen Sie sicherstellen, dass die Anmeldung an Windows Virtual Desktop mit dem Dienstprinzipal möglich ist, indem Sie das folgende Cmdlet ausführen:
 
 ```powershell
 $creds = New-Object System.Management.Automation.PSCredential($svcPrincipal.AppId, (ConvertTo-SecureString $svcPrincipalCreds.Value -AsPlainText -Force))

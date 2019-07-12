@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: personalizer
 ms.topic: overview
-ms.date: 05/13/2019
+ms.date: 06/07/2019
 ms.author: edjez
-ms.openlocfilehash: 302f1e18a23bdef9247693f84d3a924370b63f80
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.openlocfilehash: c64d43301fd173203bd1625b8d37120b71c22805
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/27/2019
-ms.locfileid: "66244247"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67077414"
 ---
 # <a name="reward-scores-indicate-success-of-personalization"></a>Relevanzbewertungen geben den Erfolg der Personalisierung an.
 
@@ -30,6 +30,18 @@ Die Relevanzergebnisse werden mithilfe der [Relevanz-API](https://docs.microsoft
 Die Relevanzergebnisse werden nach dem Benutzerverhalten übermittelt, wobei ein Zeitraum von mehreren Tagen vergehen kann. Die maximale Zeitspanne, die die Personalisierung wartet, bevor ein Ereignis als ohne Relevanz oder als Standardrelevanz eingestuft wird, kann im Azure-Portal mit der [Reward Wait Time](#reward-wait-time) (Relevanzwartezeit) konfiguriert werden.
 
 Wenn die Relevanzbewertung für ein Ereignis nicht innerhalb der **Reward Wait Time** (Relevanzwartezeit) empfangen wurde, wird die **Default Reward** (Standardrelevanz) angewandt. In der Regel ist die **[Default Reward](how-to-settings.md#configure-reward-settings-for-the-feedback-loop-based-on-use-case)** (Standardrelevanz) als 0 (null) konfiguriert.
+
+
+## <a name="behaviors-and-data-to-consider-for-rewards"></a>Für Relevanz zu berücksichtigende Verhalten und Daten
+
+Berücksichtigen Sie diese Signale und Verhalten für den Kontext der Relevanzbewertung:
+
+* Direkte Benutzereingabe für Vorschläge, wenn es um Optionen geht („Meinen Sie X?“).
+* Sitzungsdauer.
+* Zeit zwischen Sitzungen.
+* Standpunktanalyse der Interaktionen des Benutzers.
+* Direkte Fragen und Mini-Umfragen, bei denen der Bot den Benutzer um Feedback bezüglich Nutzen und Richtigkeit bittet.
+* Reaktion auf Warnungen oder Verzögerung bei Reaktion auf Warnungen.
 
 ## <a name="composing-reward-scores"></a>Erstellen von Relevanzbewertungen
 

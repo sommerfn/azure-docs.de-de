@@ -10,12 +10,12 @@ manager: carmonm
 ms.topic: tutorial
 ms.custom: mvc
 ms.date: 05/07/2019
-ms.openlocfilehash: 4287efedfc35da762825c5562cf88e64987192f1
-ms.sourcegitcommit: 300cd05584101affac1060c2863200f1ebda76b7
+ms.openlocfilehash: ee232b54bc4d65d6380a6f2a1d1c88ee7dcf53c3
+ms.sourcegitcommit: 5cb0b6645bd5dff9c1a4324793df3fdd776225e4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/08/2019
-ms.locfileid: "65414762"
+ms.lasthandoff: 06/21/2019
+ms.locfileid: "67312662"
 ---
 # <a name="tutorial-automate-handling-emails-and-attachments-with-azure-logic-apps"></a>Tutorial: Automatisieren der Verarbeitung von E-Mails und Anlagen mit Azure Logic Apps
 
@@ -145,7 +145,7 @@ Erstellen Sie nun mithilfe des in diesen Schritten bereitgestellten Codeausschni
 
    | Einstellung | Wert | BESCHREIBUNG |
    | ------- | ----- | ----------- |
-   | **App-Name** | CleanTextFunctionApp | Ein global eindeutiger und aussagekräftiger Name für Ihre Funktions-App. |
+   | **App-Name** | <*Funktions-App-Name*> | Der beschreibende und global eindeutige Name Ihrer Funktions-App, in diesem Beispiel „CleanTextFunctionApp“. Geben Sie daher einen anderen Namen an, z.B. „MyCleanTextFunctionApp“. |
    | **Abonnement** | <*Name Ihres Azure Abonnements*> | Das gleiche Azure-Abonnement, das Sie auch zuvor verwendet haben. | 
    | **Ressourcengruppe** | LA-Tutorial-RG | Die gleiche Azure-Ressourcengruppe, die Sie auch zuvor verwendet haben. |
    | **Hostingplan** | Verbrauchstarif | Diese Einstellung bestimmt die Zuordnung und Skalierung von Ressourcen (beispielsweise Rechenleistung) zum Ausführen Ihrer Funktions-App. Weitere Informationen finden Sie im [Vergleich der Hostingpläne](../azure-functions/functions-scale.md). | 
@@ -168,7 +168,7 @@ Erstellen Sie nun mithilfe des in diesen Schritten bereitgestellten Codeausschni
 
    Sie können auch die [Azure CLI](../azure-functions/functions-create-first-azure-function-azure-cli.md) oder [PowerShell und Resource Manager-Vorlagen](../azure-resource-manager/resource-group-template-deploy.md) verwenden, um eine Funktionen-App zu erstellen.
 
-2. Erweitern Sie unter **Funktionen-Apps** den Knoten **CleanTextFunctionApp**, und wählen Sie **Funktionen** aus. Wählen Sie auf der Funktionen-Symbolleiste **Neue Funktion** aus.
+2. Erweitern Sie unter **Funktions-Apps** Ihre Funktions-App („CleanTextFunctionApp“ in diesem Beispiel), und wählen Sie **Funktionen** aus. Wählen Sie auf der Funktionen-Symbolleiste **Neue Funktion** aus.
 
    ![Erstellen einer neuen Funktion](./media/tutorial-process-email-attachments-workflow/function-app-new-function.png)
 
@@ -210,7 +210,7 @@ Erstellen Sie nun mithilfe des in diesen Schritten bereitgestellten Codeausschni
    }
    ```
 
-6. Wenn Sie fertig sind, wählen Sie **Speichern** aus. Klicken Sie unter dem Pfeilsymbol (**<**) am rechten Rand des Editors auf **Testen**, um die Funktion zu testen.
+6. Wenn Sie fertig sind, wählen Sie **Speichern** aus. Klicken Sie unter dem Pfeilsymbol ( **<** ) am rechten Rand des Editors auf **Testen**, um die Funktion zu testen.
 
    ![Öffnen des Testbereichs](./media/tutorial-process-email-attachments-workflow/function-choose-test.png)
 
@@ -260,7 +260,7 @@ Fügen Sie als Nächstes einen [Trigger](../logic-apps/logic-apps-overview.md#lo
 
 1. Geben Sie im Designer in das Suchfeld „Wenn eine neue E-Mail empfangen wird“ als Filter ein. Wählen Sie den folgenden Trigger für Ihren E-Mail-Anbieter aus: **When a new email arrives - <*your-email-provider*>** (Wenn eine neue E-Mail eingeht – <Ihr E-Mail-Anbieter>)
 
-   Beispiel: 
+   Beispiel:
 
    ![Wählen Sie den folgenden Trigger für den E-Mail-Anbieter aus: „When a new email arrives“ (Wenn eine neue E-Mail eingeht)](./media/tutorial-process-email-attachments-workflow/add-trigger-when-email-arrives.png)
 
@@ -316,7 +316,7 @@ Nun fügen Sie eine Bedingung hinzu, die nur E-Mails auswählt, die über Anlage
    ![Auswählen von „Bedingung“](./media/tutorial-process-email-attachments-workflow/select-condition.png)
 
    1. Versehen Sie die Bedingung mit einem aussagekräftigeren Namen. 
-   Klicken Sie auf der Titelleiste der Bedingung auf die **Schaltfläche mit den Auslassungspunkten** (**...**) und anschließend auf **Umbenennen**.
+   Klicken Sie auf der Titelleiste der Bedingung auf die **Schaltfläche mit den Auslassungspunkten** ( **...** ) und anschließend auf **Umbenennen**.
 
       ![Umbenennen der Bedingung](./media/tutorial-process-email-attachments-workflow/condition-rename.png)
 
@@ -399,7 +399,7 @@ Dieser Schritt fügt Ihre zuvor erstellte Azure-Funktion der Logik-App hinzu und
 
    ![Auswählen einer Aktion für „Azure-Funktion auswählen“](./media/tutorial-process-email-attachments-workflow/add-action-azure-function.png)
 
-3. Wählen Sie die Funktions-App aus, die Sie zuvor erstellt haben: **CleanTextFunctionApp**
+3. Wählen Sie die Sie zuvor erstellte Funktions-App („CleanTextFunctionApp“ in diesem Beispiel) aus:
 
    ![Auswählen Ihrer Azure-Funktions-App](./media/tutorial-process-email-attachments-workflow/add-action-select-azure-function-app.png)
 
@@ -626,7 +626,7 @@ Fügen Sie als Nächstes eine Aktion hinzu, damit Ihre Logik-App E-Mails zur Üb
    ||||
 
    > [!NOTE]
-   > Wenn Sie ein Feld mit einem Array auswählen (beispielsweise das Feld **Inhalt** – ein Array mit Anlagen), schließt der Designer die Aktion, die auf dieses Feld verweist, automatisch in eine For Each-Schleife ein. Auf diese Weise kann Ihre Logik-App diese Aktion für jedes Arrayelement durchführen. Wenn Sie die Schleife entfernen möchten, entfernen Sie das Feld für das Array, verschieben Sie die verweisende Aktion aus der Schleife, klicken Sie auf der Titelleiste der Schleife auf die Auslassungspunkte (**...**), und klicken Sie anschließend auf **Löschen**.
+   > Wenn Sie ein Feld mit einem Array auswählen (beispielsweise das Feld **Inhalt** – ein Array mit Anlagen), schließt der Designer die Aktion, die auf dieses Feld verweist, automatisch in eine For Each-Schleife ein. Auf diese Weise kann Ihre Logik-App diese Aktion für jedes Arrayelement durchführen. Wenn Sie die Schleife entfernen möchten, entfernen Sie das Feld für das Array, verschieben Sie die verweisende Aktion aus der Schleife, klicken Sie auf der Titelleiste der Schleife auf die Auslassungspunkte ( **...** ), und klicken Sie anschließend auf **Löschen**.
 
 6. Speichern Sie Ihre Logik-App.
 

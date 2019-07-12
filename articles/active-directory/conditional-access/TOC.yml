@@ -52,22 +52,22 @@
           href: howto-baseline-protect-azure.md
     - name: Blockieren älterer Authentifizierungsmethoden
       href: block-legacy-authentication.md
-    - name: Migrieren von klassischen Richtlinien
-      href: policy-migration.md
-    - name: Steuerelemente für Anmeldehäufigkeit und Browserpersistenz
-      href: howto-conditional-access-session-lifetime.md
+    - name: Bedingter Zugriff für MFA-Registrierung
+      href: '../authentication/howto-registration-mfa-sspr-combined.md#conditional-access-policies-for-combined-registration'
     - name: Vorschreiben der Verwendung genehmigter Client-Apps
       href: app-based-conditional-access.md
     - name: App-Schutzrichtlinie erforderlich
       href: app-protection-based-conditional-access.md
     - name: Vorschreiben der Verwendung verwalteter Geräte
       href: require-managed-devices.md
-    - name: Vorschreiben vertrauenswürdiger Netzwerke für die MFA-Registrierung
-      href: '../authentication/howto-registration-mfa-sspr-combined.md#conditional-access-policies-for-combined-registration'
     - name: Vorschreiben der Verwendung der MFA für Zugriffsversuche von nicht vertrauenswürdigen Netzwerken
       href: untrusted-networks.md
     - name: Vorschreiben der Verwendung von Nutzungsbedingungen
       href: terms-of-use.md
+    - name: Steuerelemente für Anmeldehäufigkeit und Browserpersistenz
+      href: howto-conditional-access-session-lifetime.md
+    - name: Migrieren von klassischen Richtlinien
+      href: policy-migration.md
 - name: Verweis
   items:
     - name: Technische Referenz

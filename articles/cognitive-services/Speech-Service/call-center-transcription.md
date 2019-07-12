@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: overview
 ms.date: 05/02/2019
 ms.author: erhopf
-ms.openlocfilehash: 7d844f4d2ad77f5b7cc53275a24167e5f2e71b78
-ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
+ms.openlocfilehash: 055d141cab8ece3fcb462573f6ed4d8941c19751
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/02/2019
-ms.locfileid: "65025381"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67064127"
 ---
 # <a name="speech-services-for-telephony-data"></a>Speech-Dienste für Telefoniedaten
 
@@ -34,7 +34,7 @@ Nachfolgend sind einige der Technologien und zugehörigen Features der Azure Spe
 
 ## <a name="azure-technology-for-call-centers"></a>Azure-Technologie für Callcenter
 
-Über den funktionalen Aspekt der Speech-Dienste hinaus liegt ihr Hauptzweck – bei Einsatz im Callcenter – in der Verbesserung des Kundenerlebnisses. In dieser Hinsicht gibt es drei klare Bereiche: 
+Über den funktionalen Aspekt der Spracherkennungsdienste hinaus liegt ihr Hauptzweck – bei Einsatz im Callcenter – in der Verbesserung des Kundenerlebnisses. In dieser Hinsicht gibt es drei klare Bereiche:
 
 * Analysen nach dem Anruf, d.h. Batchverarbeitung von Anrufaufzeichnungen 
 * Analyseverarbeitung des Audiosignals in Echtzeit, um verschiedene Erkenntnisse während des Anrufs zu gewinnen (wobei die Stimmungserkennung ein bedeutender Anwendungsfall ist)
@@ -48,25 +48,25 @@ Unabhängig davon, ob es sich um eine Situation nach dem Anruf oder in Echtzeit 
 
 ### <a name="speech-to-text-stt"></a>Spracherkennung 
 
-Die [Spracherkennung](speech-to-text.md) ist das gefragteste Feature jeder Callcenterlösung. Da viele der nachgeschalteten Analyseprozesse auf transkribiertem Text basieren, ist die Wort-Fehler-Rate (Word Error Rate, WER) von größter Bedeutung. Eine besondere Herausforderung bei der Callcentertranskription sind die Geräusche, die im Callcenter vorherrschen (z.B. andere Mitarbeiter, die im Hintergrund sprechen), die große Bandbreite an Gebietsschemas und Dialekten sowie die geringe Qualität des eigentlichen Telefonsignals. WER steht in engem Zusammenhang damit, wie gut die Akustik- und Sprachmodelle für ein bestimmtes Gebietsschema trainiert sind. Daher ist es wichtig, dass Sie das Modell an Ihr Gebietsschema anpassen können. Unsere neuesten Unified-Modelle der Version 4.x stellen die Lösung im Hinblick auf Transkriptionsgenauigkeit und -latenz dar. Aufgrund des Trainings mit Zehntausenden von Stunden an Akustikdaten und Milliarden von lexikalischen Informationen sind Unified-Modelle die genauesten Modelle auf dem Markt für das Transkribieren von Callcenterdaten.
+Die [Spracherkennung](speech-to-text.md) ist das gefragteste Feature jeder Callcenterlösung. Da viele der nachgeschalteten Analyseprozesse auf transkribiertem Text basieren, ist die Wort-Fehler-Rate (Word Error Rate, WER) von größter Bedeutung. Eine besondere Herausforderung bei der Callcentertranskription sind die Geräusche, die im Callcenter vorherrschen (z.B. andere Mitarbeiter, die im Hintergrund sprechen), die große Bandbreite an Sprachregionen und Dialekten sowie die geringe Qualität des tatsächlichen Telefonsignals. WER steht in engem Zusammenhang damit, wie gut die Akustik- und Sprachmodelle für ein bestimmtes Gebietsschema trainiert sind. Daher ist es wichtig, dass Sie das Modell an Ihr Gebietsschema anpassen können. Unsere neuesten Unified-Modelle der Version 4.x stellen die Lösung im Hinblick auf Transkriptionsgenauigkeit und -latenz dar. Aufgrund des Trainings mit Zehntausenden von Stunden an Akustikdaten und Milliarden von lexikalischen Informationen sind Unified-Modelle die genauesten Modelle auf dem Markt für das Transkribieren von Callcenterdaten.
 
 ### <a name="sentiment"></a>Stimmung
 Die Beurteilung, ob das Erlebnis für den Kunden positiv war, ist einer der wichtigsten Bereiche der Sprachanalyse in Bezug auf Callcenter. Die [Batch-Transkriptions-API](batch-transcription.md) bietet eine Stimmungsanalyse anhand von Äußerungen. Sie können die als Bestandteil eines Anruftranskripts erhaltenen Werte aggregieren, um die Stimmung beim Anruf sowohl für den Mitarbeiter als auch den Kunden zu ermitteln.
 
 ### <a name="silence-non-talk"></a>Stille (Sprechpause)
-Es ist nicht ungewöhnlich, dass 35 Prozent eines Supportanrufs aus sogenannten Sprechpausen bestehen. Hier einige Szenarien, in denen es zu Sprechpausen kommt: Mitarbeiter schlagen die früheren Interaktionen mit einem Kunden nach, Mitarbeiter verwenden Tools, die es ihnen ermöglichen, auf den Desktop des Kunden zuzugreifen und Funktionen auszuführen, Kunden befinden sich in der Warteschleife für eine Übertragung usw. Es ist äußerst wichtig zu beurteilen, wann bei einem Anruf Stille eintritt, da es eine Reihe bedeutender Empfindungen der Kunden gibt, die bei dieser Art von Szenarien und zum Zeitpunkt des Auftretens im Anruf erfolgen.
+Es ist nicht ungewöhnlich, dass 35 % eines Supportanrufs aus sogenannten Sprechpausen bestehen. Hier einige Szenarien, in denen es zu Sprechpausen kommt: Mitarbeiter schlagen die früheren Interaktionen mit einem Kunden nach, Mitarbeiter verwenden Tools, die es ihnen ermöglichen, auf den Desktop des Kunden zuzugreifen und Funktionen auszuführen, Kunden befinden sich in der Warteschleife für eine Übertragung usw. Es ist äußerst wichtig zu beurteilen, wann bei einem Anruf Stille eintritt, da es eine Reihe bedeutender Empfindungen der Kunden gibt, die bei dieser Art von Szenarien und zum Zeitpunkt des Auftretens im Anruf erfolgen.
 
 ### <a name="translation"></a>Sprachübersetzung
 Einige Unternehmen experimentieren mit der Bereitstellung übersetzter Transkripte von Supportanrufen in Fremdsprachen, damit Bereitstellungsmanager die Erfahrungen der Kunden weltweit verstehen können. Unsere [Übersetzungsfunktionen](translation.md) sind unübertroffen. Wir können Audio in Audio oder Audio in Text aus einer großen Anzahl von Gebietsschemas übersetzen.
 
-### <a name="text-to-speech"></a>Sprachsynthese
+### <a name="text-to-speech"></a>Text-zu-Sprache
 Die [Sprachsynthese](text-to-speech.md) ist ein weiterer wichtiger Bereich bei der Implementierung von Bots, die mit den Kunden interagieren. Der typische Ablauf ist folgendermaßen: Der Kunde spricht, seine Stimme wird in Text transkribiert, der Text wird auf Absichten analysiert, eine Antwort wird basierend auf der erkannten Absicht synthetisiert und anschließend wird dem Kunden entweder ein Medienobjekt angezeigt oder es wird eine synthetisierte Sprachausgabe generiert. All dies muss natürlich schnell geschehen – daher ist die Latenz ein wichtiger Faktor für den Erfolg dieser Systeme. 
 
-Unsere End-to-End-Latenz ist ziemlich gering, wenn man die verschiedenen beteiligten Technologien wie [Spracherkennung](speech-to-text.md), [LUIS](https://azure.microsoft.com/services/cognitive-services/language-understanding-intelligent-service/), [Bot Framework](https://dev.botframework.com/) und [Sprachsynthese](text-to-speech.md) bedenkt. 
+Unsere End-to-End-Latenz angesicht der verschiedenen beteiligten Technologien wie [Spracherkennung](speech-to-text.md), [LUIS](https://azure.microsoft.com/services/cognitive-services/language-understanding-intelligent-service/), [Bot Framework](https://dev.botframework.com/) und [Sprachsynthese](text-to-speech.md) ist recht kurz. 
 
 Unsere neuen Stimmen sind außerdem nicht von menschlichen Stimmen zu unterscheiden. Sie können damit Ihrem Bot eine einzigartige Persönlichkeit verleihen.
 
-### <a name="search"></a>Suche
+### <a name="search"></a>Suchen,
 Ein weiterer Schwerpunkt der Analyse ist das Erkennen von Interaktionen, bei denen ein bestimmtes Ereignis oder Erlebnis aufgetreten ist. Dazu werden in der Regel zwei Ansätze verwendet: entweder eine Ad-hoc-Suche, bei der der Benutzer einfach einen Ausdruck eingibt und das System antwortet, oder eine strukturiertere Abfrage, bei der ein Analytiker eine Reihe logischer Anweisungen erstellen kann, die ein Szenario in einem Anruf bezeichnen, und anschließend jeder Anruf anhand diese Reihe von Abfragen indiziert werden kann. Ein gutes Suchbeispiel ist die weitverbreitete Erklärung „Dieser Anruf wird zum Zweck der Qualitätssicherung aufgezeichnet… “, da viele Unternehmen sicherstellen möchten, dass die Mitarbeiter dies den Kunden mitteilen, bevor der Anruf tatsächlich aufgezeichnet wird. Die meisten Analysesysteme sind in der Lage, das durch Abfrage-/Suchalgorithmen ermittelte Verhalten als Trend anzugeben – diese Trendberichte sind schließlich eine der wichtigsten Funktionen eines Analysesystems. Mithilfe des [Cognitive Services-Verzeichnisses](https://azure.microsoft.com/services/cognitive-services/directory/search/) kann Ihre End-to-End-Lösung durch Indizierungs- und Suchfunktionen deutlich verbessert werden.
 
 ### <a name="key-phrase-extraction"></a>Schlüsselwortextraktion
@@ -79,10 +79,10 @@ Nachfolgend werden die Batchverarbeitung und die Echtzeitpipelines für die Spra
 Für die Transkription umfangreicher Audiodaten haben wir die [Batch-Transkriptions-API](batch-transcription.md) entwickelt. Die Batch-Transkriptions-API wurde entwickelt, um große Mengen an Audiodaten asynchron zu transkribieren. Im Hinblick auf die Transkription von Callcenterdaten stützt sich unsere Lösung auf folgende Säulen:
 
 * **Genauigkeit**: Mit Unified-Modellen der vierten Generation bieten wir unübertroffene Transkriptionsqualität.
-* **Latenz**: Uns ist bewusst, dass umfangreiche Transkriptionen schnell benötigt werden. Die über die [Batch-Transkriptions-API](batch-transcription.md) eingeleiteten Transkriptionsaufträge werden sofort in die Warteschlange gestellt, und sobald der Auftrag ausgeführt wird, erfolgt die Ausführung schneller als bei der Echtzeittranskription.
+* **Latenz**: Uns ist bewusst, dass umfangreiche Transkriptionen schnell benötigt werden. Die über die [Batch-Transkriptions-API](batch-transcription.md) eingeleiteten Transkriptionsaufträge werden sofort in die Warteschlange gestellt. Sobald der Auftrag gestartet wird, erfolgt die Ausführung schneller als bei der Echtzeittranskription.
 * **Sicherheit:** Wir wissen, dass Anrufe sensible Daten enthalten können. Sie können sich darauf verlassen, dass die Sicherheit bei uns höchste Priorität hat. Unser Dienst ist nach ISO, SOC, HIPAA und PCI zertifiziert.
 
-Callcenter generieren täglich große Mengen an Audiodaten. Wenn Ihr Unternehmen Telefoniedaten an einem zentralen Ort (z.B. Azure Storage) speichert, können Sie mit der [Batch-Transkriptions-API]((batch-transcription.md) Transkriptionen asynchron anfordern und empfangen.
+Callcenter generieren täglich große Mengen an Audiodaten. Wenn Ihr Unternehmen Telefoniedaten an einem zentralen Ort (z.B. Azure Storage) speichert, können Sie mit der [Batch-Transkriptions-API](batch-transcription.md) Transkriptionen asynchron anfordern und empfangen.
 
 Eine typische Lösung verwendet die folgenden Dienste:
 
@@ -98,7 +98,7 @@ Die oben genannten Technologien werden von uns intern zur Unterstützung von Mic
 
 Einige Unternehmen müssen Gespräche in Echtzeit transkribieren. Die Echtzeittranskription kann verwendet werden, um Schlüsselwörter zu identifizieren und die Suche nach gesprächsrelevanten Inhalten und Ressourcen auszulösen, um die Stimmung zu überwachen, die Barrierefreiheit zu verbessern oder Übersetzungen für Kunden und Mitarbeiter bereitzustellen, die keine Muttersprachler sind.
 
-Für Szenarien, die eine Echtzeittranskription erfordern, wird die Verwendung des [Speech SDK](speech-sdk.md) empfohlen. Derzeit ist die Spracherkennung in [mehr als 20 Sprachen](language-support.md) verfügbar, und das SDK steht in C++, C#, Java, Python, Node.js und Javascript bereit. Beispiele in den einzelnen Sprachen können Sie auf [GitHub](https://github.com/Azure-Samples/cognitive-services-speech-sdk) finden. Aktuelle Neuigkeiten und Updates finden Sie unter [Versionshinweise](releasenotes.md).
+Für Szenarien, die eine Echtzeittranskription erfordern, wird die Verwendung des [Speech SDK](speech-sdk.md) empfohlen. Derzeit ist die Spracherkennung in [mehr als 20 Sprachen](language-support.md) verfügbar. Das SDK steht in C++, C#, Java, Python, Node.js, Objective-C und JavaScript bereit. Beispiele in den einzelnen Sprachen können Sie auf [GitHub](https://github.com/Azure-Samples/cognitive-services-speech-sdk) finden. Aktuelle Neuigkeiten und Updates finden Sie unter [Versionshinweise](releasenotes.md).
 
 Die oben genannten Technologien werden von uns intern zur Echtzeitanalyse von Microsoft-Kundenanrufen während des Gesprächs verwendet.
 
@@ -121,7 +121,7 @@ Die Azure Speech-Dienste funktionieren bestens mit integrierten Modellen, könn
 | Spracherkennung | [Akustikmodell](how-to-customize-acoustic-models.md) | Erstellen Sie ein benutzerdefiniertes Akustikmodell für Anwendungen, Tools oder Geräte, die in speziellen Umgebungen (etwa in einem Auto oder in einer Produktionshalle) verwendet werden, in denen jeweils besondere Aufzeichnungsverhältnisse herrschen. Beispiele wären etwa Sprecher mit Akzent, bestimmte Hintergrundgeräusche oder die Verwendung eines bestimmten Mikrofons für die Aufzeichnung. |
 | | [Sprachmodell](how-to-customize-language-model.md) | Erstellen Sie ein benutzerdefiniertes Sprachmodell, um die Transkription spezifischen Vokabulars und spezifischer Grammatik (beispielsweise aus der Medizin- oder IT-Branche) zu verbessern. |
 | | [Aussprachemodell](how-to-customize-pronunciation.md) | Durch ein benutzerdefiniertes Aussprachemodell können Sie die phonetische Form und Darstellung eines Worts oder Begriffs definieren. Dies ist für die Verarbeitung angepasster Benennungen wie Produktnamen oder Akronymen hilfreich. Erforderlich ist zu Beginn lediglich eine Aussprachedatei – eine einfache TXT-Datei. |
-| Sprachsynthese | [Voicefont](how-to-customize-voice-font.md) | Mithilfe benutzerdefinierter Voicefonts können Sie eine wiedererkennbare, einzigartige Stimme für Ihre Marke erstellen. Für den Einstieg reicht bereits eine kleine Datenmenge aus. Je mehr Daten Sie bereitstellen, desto natürlicher und menschenähnlicher klingt Ihr Voicefont. |
+| Text-zu-Sprache | [Voicefont](how-to-customize-voice-font.md) | Mithilfe benutzerdefinierter Voicefonts können Sie eine wiedererkennbare, einzigartige Stimme für Ihre Marke erstellen. Für den Einstieg reicht bereits eine kleine Datenmenge aus. Je mehr Daten Sie bereitstellen, desto natürlicher und menschenähnlicher klingt Ihr Voicefont. |
 
 ## <a name="sample-code"></a>Beispielcode
 

@@ -6,15 +6,15 @@ author: alkohli
 ms.service: databox
 ms.subservice: disk
 ms.topic: tutorial
-ms.date: 05/06/2019
+ms.date: 06/25/2019
 ms.author: alkohli
 Customer intent: As an IT admin, I need to be able to order Data Box Disk to upload on-premises data from my server onto Azure.
-ms.openlocfilehash: 8df9c2a5e45cf222debc733b3e051c3f707715c5
-ms.sourcegitcommit: 6ea7f0a6e9add35547c77eef26f34d2504796565
+ms.openlocfilehash: 7e7a1f119a2f2b0e60645cb776b26c124910cacb
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/14/2019
-ms.locfileid: "65603092"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67448209"
 ---
 # <a name="tutorial-return-azure-data-box-disk-and-verify-data-upload-to-azure"></a>Tutorial: Zurücksenden von Azure Data Box Disk und Überprüfen des Datenuploads in Azure
 
@@ -88,7 +88,7 @@ Wenn Sie das Gerät in Europa zurückgeben möchten, gehen Sie wie folgt vor:
 
 ### <a name="pick-up-in-asia-pacific-region"></a>Abholung in der Asien-Pazifik-Region
 
-Dieser Abschnitt enthält Anweisungen für die Abholung in Japan, Korea und Australien.
+Dieser Abschnitt enthält Anweisungen für die Abholung in Japan, Korea, Australien und Singapur.
 
 #### <a name="pick-up-in-australia"></a>Abholung in Australien
 
@@ -103,43 +103,64 @@ Bei Azure-Datencentern in Australien ist aus Sicherheitsgründen eine zusätzlic
 
 #### <a name="pick-up-in-japan"></a>Abholung in Japan
 
-1. Legen Sie den Rücksendeschein der japanischen Post für eine Nachnahmesendung („Chakubarai“) bei.
-2. Geben Sie auf dem Rücksendeschein den Namen und die Adresse Ihres Unternehmens als Absender an.
-3. Fordern Sie unter der gebührenfreien Nummer 0800-0800-111 eine Abholung durch die japanische Post an. Geben Sie die siebenstellige Postleitzahl für die Abholadresse ein, um an die nächstgelegene Poststelle weitergeleitet zu werden.
-    - Die verfügbaren Abholzeiten hängen von der jeweiligen Poststelle ab.
-    - Geben Sie an, dass es sich um eine Sendung vom Typ "Japan Post Chakubarai Yu-Pack" handelt.
-    - Verwenden Sie den Nachnahme-Rücksendeschein („Chakubarai“), der in der Lieferung enthalten war.
-4. Sollte in der Lieferung kein solcher Rücksendeschein enthalten gewesen sein, senden Sie eine E-Mail an unseren Partner *Quantium Solutions*: `Customerservice.JP@quantiumsolutions.com`. *Quantium Solutions* fordert eine Abholung bei der japanischen Post an und sorgt dafür, dass Sie den Rücksendeschein bei der Abholung erhalten.
-    - Geben Sie die Referenznummer in der Spalte für Bemerkungen auf dem Nachnahme-Rücksendeschein („Chakubarai“) an, den Sie von der japanischen Post erhalten.
-    - Geben Sie die Lieferanschrift wie unten gezeigt an:   
-        ```
-        3F N7 Prologis Park Tokyo Ohta, 1-3-6 Tokai Ohta-ku, Tokyo 143-0001
-        Microsoft Service Center c/o Quantium Solutions Japan
-        TEL: 03-5755-0150
-        ```
+1. Tragen Sie den Namen Ihres Unternehmens und Ihre Adressdaten als Absenderinformationen in den Rücksendeschein ein.
+2. Senden Sie Quantium Solutions über die folgende E-Mail-Vorlage eine E-Mail.
 
-Sollte der Nachnahme-Rücksendeschein („Chakubarai“) nicht vorhanden sein, können Sie die Abholung per E-Mail veranlassen. Verwenden Sie dazu die folgende E-Mail-Vorlage:
+    - Wenn der Rücksendeschein der japanischen Post für eine Nachnahmesendung („Chakubarai“) nicht enthalten war oder fehlt, merken Sie sich das in dieser E-Mail an. Quantium Solutions Japan fordert die japanischen Post dann auf, den Rücksendeschein bei der Abholung mitzubringen.
+    - Wenn Sie mehrere Bestellungen haben, senden Sie jeweils eine E-Mail, um sicherzustellen, dass einzelne die Bestellungen einzeln abgeholt werden.
 
-```
-To: Customerservice.JP@quantiumsolutions.com
-Subject: Pickup request for Azure Data Box Disk｜Job Name： 
-Body: 
-- Azure Data Box Disk job name：
-- Reference number:  
-- Requested pickup date：mmdd (Select a requested time slot from below).
-    a. 08：00-13：00 
-    b. 13：00-15：00 
-    c. 15：00-17：00 
-    d. 17：00-19：00 
-```
+    ```
+    To: Customerservice.JP@quantiumsolutions.com
+    Subject: Pickup request for Azure Data Box Disk｜Job Name： 
+    Body: 
+    - Japan Post Yu-Pack tracking number (reference number)：
+    - Requested pickup date：mmdd (Select a requested time slot from below).
+        a. 08：00-13：00 
+        b. 13：00-15：00 
+        c. 15：00-17：00 
+        d. 17：00-19：00 
+    ```
+
+3. Nachdem die Abholung gebucht wurde, erhalten Sie eine E-Mail-Bestätigung von Quantium Solutions. Die E-Mail-Bestätigung enthält auch Informationen zum Nachnahme-Rücksendeschein („Chakubarai“).
+
+Bei Bedarf können Sie sich über die folgenden Informationen an den Quantium Solution-Support (japanische Sprache) wenden: 
+
+- E-Mail: Customerservice.JP@quantiumsolutions.com 
+- Telefon：03-5755-0150 
 
 #### <a name="pick-up-in-korea"></a>Abholung in Korea
 
 1. Legen Sie den Rücksendeschein bei.
-2. Gehen Sie zum Anfordern der Abholung wie folgt vor:
-    1. Rufen Sie unter 070-8231-1418 die Hotline von *Quantium Solutions International* an (Geschäftszeiten: Montag bis Freitag, 10 bis 17 Uhr). Geben Sie *Microsoft pickup* (Microsoft-Abholung) und die Nummer des Rücksendescheins an, um eine Abholung zu veranlassen.  
-    2. Ist die Hotline überlastet, senden Sie eine E-Mail mit dem Betreff *Microsoft Pickup* und der Nummer des Rücksendescheins an `microsoft@rocketparcel.com`.
+2. Gehen Sie zum Anfordern der Abholung wie folgt vor, wenn der Rücksendeschein vorliegt:
+    1. Rufen Sie unter 070-8231-1418 die Hotline von *Quantium Solutions International* an (Geschäftszeiten: Montag bis Freitag, 10 bis 17 Uhr). Geben Sie *Microsoft Azure Pickup* (Microsoft Azure-Abholung) und die Service Request-Nummer an, um eine Abholung zu veranlassen.  
+    2. Ist die Hotline überlastet, senden Sie eine E-Mail`microsoft@rocketparcel.com` mit dem Betreff *Microsoft Azure Pickup* und der Service Request-Nummer an.
     3. Sollte der Kurier den Abholtermin nicht einhalten, rufen Sie die Hotline von *Quantium Solutions International* an, um eine alternative Lösung zu finden. 
+    4. Sie erhalten eine E-Mail-Bestätigung des Abholplans.
+3. Dieser Schritt ist nur erforderlich, wenn der Nachnahme-Rücksendeschein nicht vorliegt. Gehen Sie zum Anfordern der Abholung wie folgt vor:
+    1. Rufen Sie unter 070-8231-1418 die Hotline von *Quantium Solutions International* an (Geschäftszeiten: Montag bis Freitag, 10 bis 17 Uhr). Geben Sie *Microsoft Azure Pickup* (Microsoft Azure-Abholung) und die Service Request-Nummer an, um eine Abholung zu veranlassen. Geben Sie an, dass Sie einen Rückschein benötigen, um die Abholung zu veranlassen. Geben Sie Absender (Kunde), Empfänger-Informationen (Azure-Rechenzentrum) und die Referenznummer (Service Request-Nummer) an. 
+    2. Ist die Hotline überlastet, senden Sie eine E-Mail`microsoft@rocketparcel.com` mit dem Betreff *Microsoft Azure Pickup* und der Service Request-Nummer an.
+    3. Sollte der Kurier den Abholtermin nicht einhalten, rufen Sie die Hotline von *Quantium Solutions International* an, um eine alternative Lösung zu finden. 
+    4. Bei einer Anforderung per Telefon erhalten Sie eine mündliche Bestätigung.
+
+### <a name="pick-up-in-singapore"></a>Abholung in Singapur
+
+1. Drucken Sie das Adressetikett aus, und bringen Sie es auf der Box an. Sollte das Etikett beschädigt oder verloren gegangen sein:
+    - Navigieren Sie zu **Übersicht > Versandetikett herunterladen**.
+
+        ![Versandetikett herunterladen](media/data-box-disk-deploy-picked-up/download-shipping-label.png)
+
+        Mit dieser Aktion können Sie wie unten gezeigt ein Etikett für den Rückversand herunterladen.
+
+        ![Beispiel für Versandetikett](media/data-box-disk-deploy-picked-up/exmple-shipping-label.png)
+    - Bringen Sie das Etikett am Gerät an. Vergewissern Sie sich, dass das Etikett gut sichtbar ist.
+
+2. Gehen Sie zum Anfordern der Abholung wie folgt vor:
+    - Rufen Sie die **SingPost**-Hotline unter **6845 6485** während der Geschäftszeiten an (Montag bis Freitag, 9 bis 17 Uhr).  
+    - Geben Sie *Microsoft Azure Pickup* (Microsoft Azure-Abholung) und die Service Request-Nummer (Nachverfolgungsnummer auf dem Rücksendeetikett) an, um eine Abholung zu veranlassen. 
+    - Sie erhalten eine mündliche Bestätigung des Abholplans. 
+    - Sollte der Kurier den Abholtermin nicht einhalten, rufen Sie **SingPost** unter **6845 6485** an, um eine alternative Lösung zu finden. 
+3. Übergeben Sie die Box an den Kurier. 
+
 
 ## <a name="verify-data-upload-to-azure"></a>Überprüfen des Datenuploads in Azure
 
@@ -156,6 +177,8 @@ Die Daten werden automatisch kopiert, nachdem die Datenträger im Azure-Rechenze
 Nachdem der Kopiervorgang abgeschlossen ist, wird der Auftragsstatus in **Completed** (Abgeschlossen) geändert.
 
 ![Kopieren der Daten abgeschlossen](media/data-box-disk-deploy-picked-up/data-box-portal-completed.png)
+
+Wenn beim Kopieren Fehler auftreten, finden Sie weitere Informationen unter [Problembehandlung bei Uploadfehlern ](data-box-disk-troubleshoot-upload.md).
 
 Stellen Sie sicher, dass sich Ihre Daten in den Speicherkonten befinden, bevor Sie sie aus der Quelle löschen. Ihre Daten können sich an folgenden Orten befinden:
 

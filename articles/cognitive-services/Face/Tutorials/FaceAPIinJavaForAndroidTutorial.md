@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: face-api
 ms.topic: tutorial
-ms.date: 02/06/2019
+ms.date: 07/03/2019
 ms.author: pafarley
-ms.openlocfilehash: 5c7f2e86d6fe63d309c74d7304f1c19a714b6471
-ms.sourcegitcommit: f7be3cff2cca149e57aa967e5310eeb0b51f7c77
+ms.openlocfilehash: 366c0c50cee521c5e70496403fd77211a875065f
+ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/15/2019
-ms.locfileid: "56312523"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67606757"
 ---
 # <a name="tutorial-create-an-android-app-to-detect-and-frame-faces-in-an-image"></a>Tutorial: Erstellen einer Android-App zum Erkennen und Umranden von Gesichtern in einem Bild
 
@@ -100,7 +100,7 @@ Erweitern Sie im Bereich **Project** (Projekt) die Option **app** (App) und dann
 
 ## <a name="upload-image-and-detect-faces"></a>Hochladen eines Bilds und Erkennen von Gesichtern
 
-Ihre App erkennt Gesichter durch Aufrufen der **FaceServiceClient.detect**-Methode, die die [Detect](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236)-REST-API umschließt und eine Liste von **Face**-Instanzen zurückgibt.
+Ihre App erkennt Gesichter durch Aufrufen der **faceClient.Face.DetectWithStreamAsync**-Methode, die die [Detect](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236)-REST-API umschließt und eine Liste von **Face**-Instanzen zurückgibt.
 
 Die Position jedes zurückgegebenen **Face**-Elements wird mit einem Rechteck angegeben, und außerdem werden einige optionale Gesichtsmerkmale angezeigt. In diesem Beispiel werden nur die Rechtecke um Gesichter angefordert.
 

@@ -8,12 +8,12 @@ ms.author: rgarcia
 ms.date: 02/24/2019
 ms.topic: overview
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: cd004e1eb6a40648c52dd3b5aee0ec38bff8f9b3
-ms.sourcegitcommit: 009334a842d08b1c83ee183b5830092e067f4374
+ms.openlocfilehash: 73979ec3bd1d667453a186ea1f20bbeddc12db8f
+ms.sourcegitcommit: a52d48238d00161be5d1ed5d04132db4de43e076
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/29/2019
-ms.locfileid: "66304181"
+ms.lasthandoff: 06/20/2019
+ms.locfileid: "67273314"
 ---
 # <a name="frequently-asked-questions-about-azure-spatial-anchors"></a>Häufig gestellte Fragen zu Azure Spatial Anchors
 
@@ -78,7 +78,7 @@ Für Azure Spatial Anchors werden [Servicevertrag & Bestimmungen](https://go.mic
 Die Zeitpunkte für die allgemeine Verfügbarkeit (General Availability, GA) werden in Kürze bekanntgegeben.
 
 **F: Gelten bestimmte Drosselungslimits?**
- 
+
 **A:** Ja, es gelten Drosselungslimits.  Es ist nicht zu erwarten, dass Sie diese Limits bei typischen Vorgängen der Anwendungsentwicklung und beim Testen überschreiten. Für Produktionsbereitstellungen haben wir das Ziel, die hohen Skalierungsanforderungen unserer Kunden zu unterstützen. [Nehmen Sie Kontakt mit uns auf](mailto:azuremrs@microsoft.com), um dies mit uns zu besprechen. Während dieser Phase der Vorschauversion haben wir unsere Tiering- und Preisstruktur noch nicht veröffentlicht, aber dies soll in Kürze erfolgen.
 
 **F: In welchen Regionen ist Azure Spatial Anchors verfügbar?**
@@ -125,3 +125,7 @@ Wenn Sie einen Anker erstellen, erfasst das Client-SDK die Umgebungsinformatione
 **F: Ist die Nutzung mit Xamarin möglich?**
 
 **A:** Ja. Wir stellen kein Xamarin SDK bereit, aber wir rechnen damit, dass Entwickler Azure Spatial Anchors in ihren Xamarin-Apps nutzen können, indem sie die Integration mit der Azure Spatial Anchors-API durchführen.
+
+**F: Welche Ports und Protokolle verwendet Azure Spatial Anchors?**
+
+**A:** Azure Spatial Anchors kommuniziert über den TCP-Port 443 mithilfe eines verschlüsselten Protokolls. Für die Authentifizierung wird [Azure Active Directory](https://docs.microsoft.com/azure/active-directory/) verwendet, das über HTTPS und Port 443 kommuniziert.

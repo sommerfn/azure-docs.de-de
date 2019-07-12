@@ -7,14 +7,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: pod
 ms.topic: overview
-ms.date: 05/20/2019
+ms.date: 06/19/2019
 ms.author: alkohli
-ms.openlocfilehash: 0f71d9b4400041db50cb3e24940e922acde55edc
-ms.sourcegitcommit: cfbc8db6a3e3744062a533803e664ccee19f6d63
+ms.openlocfilehash: 94ba0040b1de7e1f03825f1cd2ef2a6536343d96
+ms.sourcegitcommit: a52d48238d00161be5d1ed5d04132db4de43e076
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/21/2019
-ms.locfileid: "65991686"
+ms.lasthandoff: 06/20/2019
+ms.locfileid: "67271742"
 ---
 # <a name="what-is-azure-data-box-heavy-preview"></a>Was ist Azure Data Box Heavy? (Vorschauversion)
 
@@ -62,14 +62,14 @@ Das Data Box Heavy-Gerät weist in dieser Version folgende Merkmale auf.
 
 | Spezifikationen                                          | BESCHREIBUNG              |
 |---------------------------------------------------------|--------------------------|
-| Weight                                                  | ~ 227 kg                |
+| Weight                                                  | ~ 227 kg <br>Gerät auf Feststellrädern für den Transport|
 | Dimensionen                                              | Breite: 66 cm Höhe: 71 cm Länge: 122 cm |
-| Platzbedarf im Rack                                              | Kann nicht in ein Rack eingebaut werden.|
+| Platzbedarf im Rack                                              | Nicht im Rack einbaubar|
 | Erforderliche Kabel                                         | 4 geerdete 120 V/10 A-Netzkabel (NEMA 5-15) enthalten <br> Das Gerät unterstützt bis zu 240 V Netzspannung und weist C-13-Kaltgerätekupplungen auf <br> Verwenden Sie Netzwerkkabel, die mit [Mellanox MCX314A-BCCT](https://store.mellanox.com/products/mellanox-mcx314a-bcct-connectx-3-pro-en-network-interface-card-40-56gbe-dual-port-qsfp-pcie3-0-x8-8gt-s-rohs-r6.html) kompatibel sind.  |
-|Potenz                                                    | 4 eingebaute Netzteile (PSUs), die gemeinsam übergreifend über beide Geräteknoten verwendet werden|
+| Potenz                                                    | 4 eingebaute Netzteile (PSUs), die gemeinsam übergreifend über beide Geräteknoten verwendet werden <br> 1\.200 Watt Nennleistung|
 | Speicherkapazität                                        | ~ 1 PB unformatiert, 70 Datenträger mit jeweils 14 TB <br> 770 TB nutzbare Kapazität|
-|Anzahl von Knoten                                          | 2 unabhängige Knoten pro Gerät (je 500 TB) |
-| Netzwerkschnittstellen pro Knoten                             | 4 Netzwerkschnittstellen pro Knoten <br> MGMT, DATA3 <ul><li> 2 X 1-GbE-Schnittstellen </li><li> MGMT dient zur Verwaltung, ist nicht vom Benutzer konfigurierbar und wird zur Ersteinrichtung verwendet </li><li> DATA3 ist eine vom Benutzer konfigurierbare Datenschnittstelle, standardmäßig DHCP (Dynamic Host Configuration Protocol)</li><li>1-GbE-Netzwerkschnittstellen können auch als 10-GbE-Schnittstellen konfiguriert werden</li></ul>DATA1-, DATA2-Datenschnittstellen <ul><li>2 X 40-GbE-Schnittstellen </li><li> Standardmäßig DHCP oder statische, vom Benutzer konfigurierbare Datenschnittstellen</li>|
+| Anzahl von Knoten                                          | 2 unabhängige Knoten pro Gerät (je 500 TB) |
+| Netzwerkschnittstellen pro Knoten                             | 4 Netzwerkschnittstellen pro Knoten <br><br> MGMT, DATA3 <ul><li> 2 X 1-GbE-Schnittstellen </li><li> MGMT dient zur Verwaltung und Ersteinrichtung und ist nicht vom Benutzer konfigurierbar </li><li> DATA3 ist vom Benutzer konfigurierbar und standardmäßig DHCP (Dynamic Host Configuration Protocol)</li><li>Die 1-GbE-Netzwerkschnittstellen können auch als 10-GbE-Schnittstellen konfiguriert werden</li></ul>DATA1-, DATA2-Datenschnittstellen <ul><li>2 X 40-GbE-Schnittstellen </li><li> Für DHCP (Standard) vom Benutzer konfigurierbar oder statisch</li></ul>|
 
 
 ## <a name="components"></a>Komponenten

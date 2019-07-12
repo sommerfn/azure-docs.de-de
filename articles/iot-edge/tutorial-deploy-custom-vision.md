@@ -5,26 +5,27 @@ services: iot-edge
 author: kgremban
 manager: philmea
 ms.author: kgremban
-ms.date: 11/01/2018
+ms.date: 06/25/2019
 ms.topic: tutorial
 ms.service: iot-edge
 ms.custom: mvc, seodec18
-ms.openlocfilehash: a0530739428e18d01209f94345ae53dfb743d80b
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.openlocfilehash: 12b141f9aa75231adae9f64c57709f290883b420
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/27/2019
-ms.locfileid: "66239685"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67433937"
 ---
 # <a name="tutorial-perform-image-classification-at-the-edge-with-custom-vision-service"></a>Tutorial: Durchführen von Bildklassifizierungen im Edge-Bereich mit dem Custom Vision Service
 
-Azure IoT Edge kann Workloads aus der Cloud an den Edge-Bereich verlagern und so die Effizienz Ihrer IoT-Lösung steigern. Diese Funktion eignet sich besonders für Dienste, die große Datenmengen verarbeiten – also beispielsweise für Modelle für maschinelles Sehen. Mit dem [Custom Vision Service](../cognitive-services/custom-vision-service/home.md) können Sie benutzerdefinierte Bildklassifizierungen erstellen und auf Geräten als Container bereitstellen. Die Kombination dieser beiden Dienste ermöglicht es Ihnen, Erkenntnisse aus Bildern oder Videostreams zu gewinnen, ohne zuvor sämtliche Daten an einen externen Ort zu übertragen. Custom Vision bietet eine Klassifizierung, die ein Bild mit einem trainierten Modell vergleicht, um Erkenntnisse zu generieren. 
+Azure IoT Edge kann Workloads aus der Cloud an den Edge-Bereich verlagern und so die Effizienz Ihrer IoT-Lösung steigern. Diese Funktion eignet sich besonders für Dienste, die große Datenmengen verarbeiten – also beispielsweise für Modelle für maschinelles Sehen. Mit dem [Custom Vision Service](../cognitive-services/custom-vision-service/home.md) können Sie benutzerdefinierte Bildklassifizierungen erstellen und auf Geräten als Container bereitstellen. Die Kombination dieser beiden Dienste ermöglicht es Ihnen, Erkenntnisse aus Bildern oder Videostreams zu gewinnen, ohne zuvor sämtliche Daten an einen externen Ort zu übertragen. Custom Vision bietet eine Klassifizierung, die ein Bild mit einem trainierten Modell vergleicht, um Erkenntnisse zu generieren.
 
-So kann mit Custom Vision auf einem IoT Edge-Gerät beispielsweise ermittelt werden, ob das Verkehrsaufkommen auf einer Autobahn höher ist als normal oder ob in einem Parkhaus noch Parkplätze in einer Reihe frei sind. Diese Erkenntnisse können an einen anderen Dienst weitergegeben werden, um Aktionen auszuführen. 
+So kann mit Custom Vision auf einem IoT Edge-Gerät beispielsweise ermittelt werden, ob das Verkehrsaufkommen auf einer Autobahn höher ist als normal oder ob in einem Parkhaus noch Parkplätze in einer Reihe frei sind. Diese Erkenntnisse können an einen anderen Dienst weitergegeben werden, um Aktionen auszuführen.
 
-In diesem Tutorial lernen Sie Folgendes: 
+In diesem Tutorial lernen Sie Folgendes:
 
 > [!div class="checklist"]
+>
 > * Erstellen einer Bildklassifizierung mit Custom Vision
 > * Entwickeln eines IoT Edge-Moduls, das den Custom Vision-Webserver auf Ihrem Gerät abfragt
 > * Senden der Ergebnisse der Bildklassifizierung an IoT Hub
@@ -72,10 +73,11 @@ Nachdem Sie Ihre Bildklassifizierung erstellt und trainiert haben, können Sie s
    | ----- | ----- |
    | NAME | Geben Sie einen Namen für Ihr Projekt an (beispielsweise **EdgeTreeClassifier**). |
    | BESCHREIBUNG | Eine optionale Projektbeschreibung. |
-   | Ressourcengruppe | Übernehmen Sie den Standardwert **Eingeschränkte Testversion**. |
+   | Ressourcengruppe | Wählen Sie eine Ihrer Azure-Ressourcengruppen aus, die eine Custom Vision-Dienstressource enthält, oder **erstellen Sie eine neue**, wenn Sie noch keine hinzugefügt haben. |
    | Projekttypen | **Klassifizierung** |
-   | Klassifizierungstypen | **Multiclass (single tag per image)** (Multiklasse (einzelnes Tag pro Bild)) | 
+   | Klassifizierungstypen | **Multiclass (single tag per image)** (Multiklasse (einzelnes Tag pro Bild)) |
    | Domänen | **General (compact)** (Allgemein (kompakt)) |
+   | Exportieren von Funktionen | **Basisplattformen (Tensorflow, CoreML, ONNX...)** |
 
 5. Wählen Sie **Projekt erstellen** aus.
 

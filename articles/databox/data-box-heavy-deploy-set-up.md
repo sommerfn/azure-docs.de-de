@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: heavy
 ms.topic: tutorial
-ms.date: 05/24/2019
+ms.date: 06/19/2019
 ms.author: alkohli
-ms.openlocfilehash: f2f6b544b56977b3f1bfb6a4fb46a9f1e3bcc294
-ms.sourcegitcommit: ef06b169f96297396fc24d97ac4223cabcf9ac33
+ms.openlocfilehash: d4cdc9b6c31c62080fed5a8528577fef72c01c3f
+ms.sourcegitcommit: a52d48238d00161be5d1ed5d04132db4de43e076
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/31/2019
-ms.locfileid: "66427942"
+ms.lasthandoff: 06/20/2019
+ms.locfileid: "67271705"
 ---
 # <a name="tutorial-cable-and-connect-to-your-azure-data-box-heavy-preview"></a>Tutorial: Verkabeln und Herstellen der Verbindung mit Azure Data Box Heavy (Vorschauversion)
 
@@ -79,7 +79,7 @@ Gehen Sie zur Verkabelung Ihres Geräts wie folgt vor:
 Gehen Sie wie folgt vor, um die Netzwerkverkabelung für einen der Knoten des Geräts vorzunehmen:
 
 1. Verbinden Sie den Hostcomputer über ein Cat 6-Netzwerkkabel vom Typ RJ45 (blaues Kabel in der Abbildung) mit dem 1-GBit/s-Verwaltungsanschluss.
-2. Verbinden Sie mindestens eine 40 GBit/s-Netzwerkschnittstelle für die Datenübertragung (bevorzugt gegenüber 1 GBit/s) über ein Twinax-QSFP+-Kupferkabel (schwarze Kabel in der Abbildung). Verwenden Sie bei Verwendung eines 10-GBit/s-Switchs ein Twinax-SFP+-Kupferkabel mit einem QSFP+-auf-SFP+-Adapter (QSA-Adapter), um die 40-GBit/s-Netzwerkschnittstelle für die Datenübertragung anzuschließen.
+2. Verwenden Sie das QSFP+-Kupferkabel (Glasfaser oder Kupfer), um mindestens eine Netzwerkschnittstelle mit 40 GBit/s (bevorzugt gegenüber 1 GBit/s) für die Datenübertragung anzuschließen. Verwenden Sie bei Verwendung eines 10-GBit/s-Switchs ein SFP+-Kabel mit einem QSFP+-auf-SFP+-Adapter (QSA-Adapter), um die 40-GBit/s-Netzwerkschnittstelle für die Datenübertragung anzuschließen.
 
     ![Data Box Heavy: verkabelte Anschlüsse](media/data-box-heavy-deploy-set-up/data-box-heavy-ports-cabled.png)
 

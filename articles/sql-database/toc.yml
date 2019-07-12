@@ -30,6 +30,8 @@
       items:
         - name: IP-Firewallregeln auf Serverebene
           href: sql-database-server-level-firewall-rule.md
+        - name: Konfigurieren des öffentlichen Endpunkts in der verwalteten Instanz
+          href: sql-database-managed-instance-public-endpoint-configure.md
         - name: Client-VM-Verbindung mit einer verwalteten Instanz
           href: sql-database-managed-instance-configure-vm.md
         - name: Point-to-Site-Verbindung mit einer verwalteten Instanz
@@ -512,8 +514,6 @@
           href: sql-database-managed-instance-threat-detection.md
         - name: Herstellen einer Verbindung mit Anwendungen
           href: sql-database-managed-instance-connect-app.md
-        - name: Konfigurieren eines öffentlichen Endpunkts
-          href: sql-database-managed-instance-public-endpoint-configure.md
     - name: Laden und Verschieben von Daten
       items:
         - name: Kopieren einer Datenbank innerhalb von Azure

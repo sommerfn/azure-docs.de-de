@@ -2,22 +2,22 @@
 title: 'Tutorial: Bereitstellen von Azure Digital Twins | Microsoft-Dokumentation'
 description: In diesem Tutorial erfahren Sie, wie Sie Ihre Instanz von Azure Digital Twins bereitstellen und Ihre räumlichen Ressourcen konfigurieren.
 services: digital-twins
-author: dsk-2015
+author: alinamstanciu
 ms.custom: seodec18
 ms.service: digital-twins
 ms.topic: tutorial
-ms.date: 12/17/2018
-ms.author: dkshir
-ms.openlocfilehash: 096df62305af91ac85ce9ddbcff5b0160aaa4e8a
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.date: 06/26/2019
+ms.author: alinast
+ms.openlocfilehash: 15a152d6941a8c77cae2ef7771be93db4ddceae4
+ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57537455"
+ms.lasthandoff: 07/01/2019
+ms.locfileid: "67484690"
 ---
-# <a name="tutorial-deploy-azure-digital-twins-and-configure-a-spatial-graph"></a>Tutorial: Bereitstellen von Azure Digital Twins und Konfigurieren eines Raumgraphen
+# <a name="tutorial-deploy-azure-digital-twins-preview-and-configure-a-spatial-graph"></a>Tutorial: Bereitstellen von Azure Digital Twins (Vorschauversion) und Konfigurieren eines Raumgraphen
 
-Mit dem Azure Digital Twins-Dienst können Sie Personen, Orte und Geräte in einem kohärenten räumlichen System zusammenbringen. In dieser Tutorialreihe wird veranschaulicht, wie Sie mit Azure Digital Twins die Raumbelegung mit optimalen Temperatur- und Luftqualitätsbedingungen ermitteln. 
+Mit dem Azure Digital Twins-Dienst (Vorschauversion) können Sie Personen, Orte und Geräte in einem kohärenten räumlichen System zusammenbringen. In dieser Tutorialreihe wird veranschaulicht, wie Sie mit Azure Digital Twins die Raumbelegung mit optimalen Temperatur- und Luftqualitätsbedingungen ermitteln. 
 
 In den Tutorials wird anhand einer .NET-Konsolenanwendung Schritt für Schritt erläutert, wie Sie ein Szenario für ein Bürogebäude erstellen. Das Gebäude hat mehrere Etagen und Räume auf jeder Etage. Die Räume sind mit Geräten mit angeschlossenen Sensoren zur Erkennung von Bewegungen, der Umgebungstemperatur und der Luftqualität ausgestattet. 
 
@@ -103,7 +103,7 @@ Wenn Sie die Beispiele für [Quickstart: Find available rooms](quickstart-view-o
 1. Öffnen Sie in Visual Studio Code die Datei [appSettings.json](https://github.com/Azure-Samples/digital-twins-samples-csharp/blob/master/occupancy-quickstart/src/appSettings.json) des Projekts **occupancy-quickstart**. Aktualisieren Sie die folgenden Werte:
    * **ClientId**: Geben Sie die Anwendungs-ID Ihrer Azure AD-App-Registrierung ein. Diese ID haben Sie sich im Abschnitt zum [Festlegen der App-Berechtigungen](#permissions) notiert.
    * **Tenant**: Geben Sie die Verzeichnis-ID Ihres [Azure AD-Mandanten](https://docs.microsoft.com/azure/active-directory/develop/quickstart-create-new-tenant) ein. Diese ID haben Sie sich ebenfalls im Abschnitt zum [Festlegen der App-Berechtigungen](#permissions) notiert.
-   * **BaseUrl**: Geben Sie die URL Ihrer Digital Twins-Instanz ein. Diese URL erhalten Sie, indem Sie die Platzhalter in der folgenden URL durch die Werte für Ihre Instanz ersetzen: `https://yourDigitalTwinsName.yourLocation.azuresmartspaces.net/management/api/v1.0/`. Alternativ können Sie die Verwaltungs-API-URL aus dem [Abschnitt zur Bereitstellung](#deploy) ändern, um die URL zu erhalten. Ersetzen Sie **swagger/** durch **api/v1.0/**.
+   * **BaseUrl**: Geben Sie die URL Ihrer Digital Twins-Instanz ein. Diese URL erhalten Sie, indem Sie die Platzhalter in der folgenden URL durch die Werte für Ihre Instanz ersetzen: `https://yourDigitalTwinsName.yourLocation.azuresmartspaces.net/management/api/v1.0/`. Alternativ können Sie die Verwaltungs-API-URL aus dem [Abschnitt zur Bereitstellung](#deploy) ändern, um die URL zu erhalten. Ersetzen Sie **swagger/** durch **api/v1.0/** .
 
 1. Zeigen Sie eine Liste der Digital Twins-Funktionen an, die Sie mithilfe des Beispiels erkunden können. Führen Sie den folgenden Befehl aus:
 

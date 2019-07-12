@@ -1,21 +1,24 @@
 ---
 title: Konfigurieren von Multimaster-Features in Azure Cosmos DB
 description: Hier erfahren Sie, wie Sie Multimaster in Ihren Anwendungen in Azure Cosmos DB konfigurieren.
-author: rimman
+author: markjbrown
 ms.service: cosmos-db
 ms.topic: sample
-ms.date: 05/23/2019
-ms.author: rimman
-ms.openlocfilehash: 1d9fa7380f62165d360888fd8cb03919f1736297
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.date: 07/02/2019
+ms.author: mjbrown
+ms.openlocfilehash: 73b4ada713e264aaa2504fe4d4f504e07ae45181
+ms.sourcegitcommit: 084630bb22ae4cf037794923a1ef602d84831c57
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/27/2019
-ms.locfileid: "66244746"
+ms.lasthandoff: 07/03/2019
+ms.locfileid: "67538079"
 ---
 # <a name="configure-multi-master-in-your-applications-that-use-azure-cosmos-db"></a>Konfigurieren von Multimaster in Ihren Anwendungen, die Azure Cosmos DB verwenden
 
-Damit Sie das Multimaster-Feature in Ihren Anwendungen nutzen können, müssen Sie Multiregionen-Schreibvorgänge (Schreibvorgänge in mehreren Regionen) aktivieren und die Multihoming-Funktionalität in Azure Cosmos DB konfigurieren. Um Multihoming zu konfigurieren, legen Sie die Region fest, in der die Anwendung bereitgestellt wird.
+Sobald ein Konto mit mehreren aktivierten Schreibbereichen erstellt wurde, müssen Sie in ConnectionPolicy für DocumentClient zwei Änderungen vornehmen, um die Multimaster- und Multihomingfunktionen in Azure Cosmos DB zu aktivieren. Legen Sie in ConnectionPolicy das UseMultipleWriteLocations-Element auf TRUE fest, und übergeben Sie den Namen der Region, in der die Anwendung bereitgestellt wird, an SetCurrentLocation. Dadurch wird die PreferredLocations-Eigenschaft basierend auf der geografischen Nähe zum eingegebenen Standort aufgefüllt. Wenn dem Konto später eine neue Region hinzugefügt wird, muss die Anwendung nicht aktualisiert oder neu bereitgestellt werden. Sie erkennt automatisch die nähere Region und greift automatisch darauf zurück, wenn ein regionales Ereignis eintritt.
+
+> [!TIP]
+> Cosmos-Konten, die ursprünglich nicht für Multimaster konfiguriert waren, können ohne Ausfallzeiten migriert werden. Weitere Informationen finden unter [Konfigurieren mehrerer Schreibregionen](how-to-manage-database-account.md#configure-multiple-write-regions).
 
 ## <a id="netv2"></a>.NET SDK v2
 

@@ -2,22 +2,22 @@
 title: 'Tutorial: Überwachen eines Gebäudebereichs mit Azure Digital Twins | Microsoft-Dokumentation'
 description: In diesem Tutorial erfahren Sie, wie Sie mit Azure Digital Twins Ihre räumlichen Ressourcen bereitstellen und die Arbeitsbedingungen überwachen.
 services: digital-twins
-author: dsk-2015
+author: alinamstanciu
 ms.custom: seodec18
 ms.service: digital-twins
 ms.topic: tutorial
-ms.date: 12/27/2018
-ms.author: dkshir
-ms.openlocfilehash: ad6c2625dc56dc3a3155183a04b712122a3b10f1
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.date: 06/26/2019
+ms.author: alinast
+ms.openlocfilehash: 3ebfa9b54007d0b409780e6a549bdd2411b94810
+ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57535381"
+ms.lasthandoff: 07/01/2019
+ms.locfileid: "67484674"
 ---
-# <a name="tutorial-provision-your-building-and-monitor-working-conditions-with-azure-digital-twins"></a>Tutorial: Bereitstellen des Gebäudes und Überwachen der Arbeitsbedingungen mit Azure Digital Twins
+# <a name="tutorial-provision-your-building-and-monitor-working-conditions-with-azure-digital-twins-preview"></a>Tutorial: Bereitstellen des Gebäudes und Überwachen der Arbeitsbedingungen mit Azure Digital Twins (Vorschauversion)
 
-In diesem Tutorial wird veranschaulicht, wie Sie Ihre Gebäudebereiche mit Azure Digital Twins auf die gewünschten Temperaturbedingungen und weitere Komfortwerte überwachen. Nach dem [Konfigurieren des Beispielgebäudes](tutorial-facilities-setup.md) können Sie wie hier beschrieben das Gebäude bereitstellen und benutzerdefinierte Funktionen für Ihre Sensordaten ausführen.
+In diesem Tutorial wird veranschaulicht, wie Sie Ihre Gebäudebereiche mit Azure Digital Twins (Vorschauversion) auf die gewünschten Temperaturbedingungen und weitere Komfortwerte überwachen. Nach dem [Konfigurieren des Beispielgebäudes](tutorial-facilities-setup.md) können Sie wie hier beschrieben das Gebäude bereitstellen und benutzerdefinierte Funktionen für Ihre Sensordaten ausführen.
 
 In diesem Tutorial lernen Sie Folgendes:
 
@@ -43,14 +43,14 @@ Sie können eine Reihe spezifischer Bedingungen definieren, die Sie in den Gerä
 
 Öffnen Sie die Datei **src\actions\provisionSample.yaml** aus dem Beispielprojekt **occupancy-quickstart** in Visual Studio Code. Beachten Sie den Abschnitt, der mit dem Typ **matchers** beginnt. Jeder Eintrag unter diesem Typ erstellt einen Abgleicher mit dem angegebenen **Namen**. Der Abgleicher überwacht einen Sensor vom Typ **dataTypeValue**. Beachten Sie die Beziehung zum Gebäudebereich namens *Focus Room A1*, der einen Knoten **devices** mit einigen Sensoren enthält. Stellen Sie zum Bereitstellen eines Abgleichers, der einen dieser Sensoren nachverfolgt, sicher, dass dessen **dataTypeValue**-Wert mit dem **dataType**-Wert des Sensors übereinstimmt. 
 
-Fügen Sie den folgenden Abgleicher unterhalb der vorhandenen Abgleicher hinzu. Stellen Sie sicher, dass die Schlüssel korrekt angepasst sind und Leerzeichen nicht durch Tabstopps ersetzt werden.
+Fügen Sie den folgenden Abgleicher unterhalb der vorhandenen Abgleicher hinzu. Stellen Sie sicher, dass die Schlüssel korrekt angepasst sind und Leerzeichen nicht durch Tabstopps ersetzt werden. Diese Zeilen sind auch in der Datei *provisionSample.yaml* als auskommentierte Zeilen vorhanden. Sie können ihre Kommentierung aufheben, indem Sie jeweils das Zeichen `#` am Zeilenanfang entfernen.
 
 ```yaml
       - name: Matcher Temperature
         dataTypeValue: Temperature
 ```
 
-Dieser Abgleicher überwacht den Sensor SAMPLE_SENSOR_TEMPERATURE, den Sie im [ersten Tutorial](tutorial-facilities-setup.md) hinzugefügt haben. Diese Zeilen sind auch in der Datei *provisionSample.yaml* als auskommentierte Zeilen vorhanden. Sie können ihre Kommentierung aufheben, indem Sie jeweils das Zeichen `#` am Zeilenanfang entfernen.
+Dieser Abgleicher überwacht den Sensor SAMPLE_SENSOR_TEMPERATURE, den Sie im [ersten Tutorial](tutorial-facilities-setup.md) hinzugefügt haben. 
 
 <a id="udf"></a>
 

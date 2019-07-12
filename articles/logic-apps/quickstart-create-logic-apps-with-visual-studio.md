@@ -11,12 +11,12 @@ ms.custom: mvc
 ms.reviewer: klam, LADocs
 ms.suite: integration
 ms.date: 04/25/2019
-ms.openlocfilehash: afa539bc3369e4f9d9ecf27340436e0be70a03ad
-ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
+ms.openlocfilehash: a8857d62b3078d78bdd0a339ebadf766ddb2fb43
+ms.sourcegitcommit: 2d3b1d7653c6c585e9423cf41658de0c68d883fa
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65190575"
+ms.lasthandoff: 06/20/2019
+ms.locfileid: "67295819"
 ---
 # <a name="quickstart-create-automated-tasks-processes-and-workflows-with-azure-logic-apps---visual-studio"></a>Schnellstart: Erstellen von automatisierten Aufgaben, Prozessen und Workflows mit Azure Logic Apps – Visual Studio
 
@@ -104,6 +104,9 @@ Wenn Sie über Ihr Azure-Ressourcengruppenobjekt verfügen, erstellen Sie Ihre L
 1. Öffnen Sie im Projektmappen-Explorer das Kontextmenü der Datei **LogicApp.json**. Wählen Sie **Öffnen mit Logik-App-Designer** aus. (Tastatur: STRG+L)
 
    ![Öffnen der Datei „LogicApp.json“ mit dem Logik-App-Designer](./media/quickstart-create-logic-apps-with-visual-studio/open-logic-app-designer.png)
+
+   > [!TIP]
+   > Wenn Sie diesen Befehl in Visual Studio 2019 nicht finden, überprüfen Sie, ob Sie das letzte Update für Visual Studio installiert haben.
 
    Visual Studio fordert Sie zur Angabe Ihres Azure-Abonnements und einer Azure-Ressourcengruppe auf, um Ressourcen für Ihre Logik-App und Verbindungen zu erstellen und bereitzustellen.
 

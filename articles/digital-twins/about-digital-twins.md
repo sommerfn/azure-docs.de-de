@@ -3,38 +3,37 @@ title: Übersicht über Azure Digital Twins | Microsoft-Dokumentation
 description: Hier finden Sie weitere Informationen zu Azure Digital Twins – einer Azure IoT-Lösung für Raumintelligenz.
 author: julieseto
 ms.author: jseto
-ms.date: 12/14/2018
+ms.date: 05/31/2019
 ms.topic: overview
 ms.service: digital-twins
 services: digital-twins
 manager: bertvanhoof
 ms.custom: mvc
-ms.openlocfilehash: 2848f9ce97c2bdad59d86031c5894219875b6059
-ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
+ms.openlocfilehash: 0bbbb924cace93e44af84fd96926a2d7153dd5f8
+ms.sourcegitcommit: aa66898338a8f8c2eb7c952a8629e6d5c99d1468
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/15/2018
-ms.locfileid: "53437111"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67459020"
 ---
 # <a name="overview-of-azure-digital-twins"></a>Übersicht über Azure Digital Twins
 
-Azure Digital Twins ist ein Azure IoT-Dienst zur Erstellung umfassender Modelle der physischen Umgebung. Er kann Raumintelligenzgraphen erstellen, um die Beziehungen und Interaktionen zwischen Personen, Bereichen und Geräten zu modellieren.
+Azure Digital Twins (Vorschauversion) ist ein Azure IoT-Dienst zur Erstellung umfassender Modelle der physischen Umgebung. Er kann Raumintelligenzgraphen erstellen, um die Beziehungen und Interaktionen zwischen Personen, Bereichen und Geräten zu modellieren.
 
-Mit Azure Digital Twins lassen sich Daten aus einem physischen Bereich abfragen anstatt von vielen verschiedenen Sensoren. Dieser Dienst hilft Ihnen bei der Erstellung wiederverwendbarer, hochgradig skalierbarer und raumbezogener Umgebungen, die Streamingdaten aus der digitalen und der physischen Welt miteinander verknüpfen. Ihre Apps werden durch diese äußerst relevanten kontextbezogenen Features noch besser. Azure Digital Twins kann für die folgenden Beispielaufgaben zu folgenden Zwecken genutzt werden:
+Mit Azure Digital Twins lassen sich Daten aus einem physischen Bereich abfragen anstatt von vielen verschiedenen Sensoren. Dieser Dienst hilft Ihnen bei der Erstellung wiederverwendbarer, hochgradig skalierbarer und raumbezogener Umgebungen, die Streamingdaten aus der digitalen und der physischen Welt miteinander verknüpfen. Ihre Apps werden durch diese äußerst relevanten kontextbezogenen Features noch besser. 
+
+Azure Digital Twins gilt für alle Arten von Umgebungen, wie z.B. Lagerhallen, Büros, Schulen, Krankenhäuser und Banken. Der Dienst kann sogar für Stadien, Fabriken, Parkplätze, Parks, intelligente Stromnetze und Städte verwendet werden. Nachfolgend sind einige Szenarien aufgeführt, in denen Azure Digital Twins hilfreich sein kann:
 
 - Vorhersagen des Wartungsbedarfs für eine Fabrik
 - Analysieren des Energiebedarfs für ein Stromnetz in Echtzeit
 - Optimieren der Verwendung der verfügbaren Fläche für ein Büro
-
-Der Anwendungsbereich von Azure Digital Twins umfasst alle Arten von Umgebungen. Lagerhäuser, Büros, Schulen, Krankenhäuser und Banken sind nur einige Beispiele. Der Dienst kann sogar für Stadien, Fabriken, Parkplätze, Parks, intelligente Stromnetze und Städte verwendet werden. Azure Digital Twins kann in den folgenden Beispielszenarien zu folgenden Zwecken genutzt werden:
-
 - Nachverfolgung der Tagestemperatur in mehreren Bundesländern
 - Überwachung intensiv genutzter Drohnenpfade
 - Erkennung autonomer Fahrzeuge
 - Analyse der Raumbelegung eines Gebäudes
 - Ermittlung der am stärksten ausgelasteten Kasse in einem Ladengeschäft
 
-Über Azure Digital Twins kann für jedes geschäftliche Szenario eine entsprechende digitale Instanz bereitgestellt werden.
+Über Azure Digital Twins kann wahrscheinlich für jedes geschäftliche Szenario eine entsprechende digitale Instanz bereitgestellt werden.
 
 Im folgenden Video wird Azure Digital Twins genauer betrachtet.
 
@@ -46,13 +45,13 @@ Azure Digital Twins verfügt über die folgenden wichtigen Funktionen.
 
 ### <a name="spatial-intelligence-graph"></a>Raumintelligenzgraph
 
-Der [*Raumintelligenzgraph*](./concepts-objectmodel-spatialgraph.md) oder *Raumgraph* ist eine virtuelle Darstellung der physischen Umgebung. Sie können ihn zum Modellieren der Beziehungen zwischen Personen, Orten und Geräten zu modellieren.
+Der [*Raumintelligenzgraph*](./concepts-objectmodel-spatialgraph.md#graph) oder *Raumgraph* ist eine virtuelle Darstellung der physischen Umgebung. Sie können ihn zum Modellieren der Beziehungen zwischen Personen, Orten und Geräten zu modellieren.
 
 Stellen Sie sich eine intelligente Versorger-App vor, die zahlreiche Stromzähler eines Viertels umfasst. Das Versorgungsunternehmen muss den Stromverbrauch und die Abrechnung präzise überwachen und prognostizieren. Jedes Gerät und jeder Sensor muss im Kontext des Orts und des Kunden, der die Abrechnung erhält, modelliert werden. Solche komplexen Beziehungen können mithilfe des Raumintelligenzgraphen modelliert werden.
 
 ### <a name="digital-twin-object-models"></a>Objektmodelle für digitale Zwillinge
 
-[Objektmodelle für digitale Zwillinge](./concepts-objectmodel-spatialgraph.md) sind vordefinierte Geräteprotokolle und ein Datenschema. Sie stimmen die domänenspezifischen Anforderungen Ihrer Lösung ab, um die Entwicklung zu beschleunigen und zu vereinfachen.
+[Objektmodelle für digitale Zwillinge](./concepts-objectmodel-spatialgraph.md#model) sind vordefinierte Geräteprotokolle und ein Datenschema. Sie stimmen die domänenspezifischen Anforderungen Ihrer Lösung ab, um die Entwicklung zu beschleunigen und zu vereinfachen.
 
 So kann beispielsweise eine Raumbelegungsanwendung vordefinierte Bereichstypen wie Campus, Gebäude, Etage, Raum usw. verwenden.
 

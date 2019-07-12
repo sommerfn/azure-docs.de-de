@@ -9,14 +9,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: tutorial
-ms.date: 12/21/2018
+ms.date: 06/12/2019
 ms.author: diberry
-ms.openlocfilehash: 8ab24d478efa0d0006cff618d7760d4396d0e45e
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: 6007f88af4d1049a87851b3808c66693173a648a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55859928"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67069244"
 ---
 # <a name="tutorial-extract-free-form-data-with-patternany-entity"></a>Tutorial: Extrahieren von Freiformdaten mit der Entität „pattern.any“
 
@@ -65,24 +65,20 @@ Die unterschiedlichen Längen enthalten Wörter, die es LUIS erschweren, das End
 |Wurde {FormName} in Französisch veröffentlicht[?]|
 
 ## <a name="import-example-app"></a>Importieren der Beispiel-App
-Fahren Sie mit der im letzten Tutorial erstellten App mit dem Namen **HumanResources** fort. 
 
-Führen Sie die folgenden Schritte aus:
+1. Laden Sie die [App-JSON-Datei](https://github.com/Azure-Samples/cognitive-services-language-understanding/blob/master/documentation-samples/tutorials/custom-domain-pattern-roles-HumanResources.json) herunter, und speichern Sie sie.
 
-1.  Laden Sie die [App-JSON-Datei](https://github.com/Azure-Samples/cognitive-services-language-understanding/blob/master/documentation-samples/tutorials/custom-domain-pattern-roles-HumanResources.json) herunter, und speichern Sie sie.
+1. Importieren Sie im [LUIS-Portal](https://www.luis.ai) auf der Seite **Meine Apps** den JSON-Code in eine neue Anwendung.
 
-2. Importieren Sie den JSON-Code in eine neue App.
-
-3. Klonen Sie die Version von der Registerkarte **Versionen** aus dem Abschnitt **Verwalten**, und geben Sie ihr den Namen `patt-any`. Durch Klonen können Sie ohne Auswirkungen auf die ursprüngliche Version mit verschiedenen Features von LUIS experimentieren. Da der Versionsname als Teil der URL-Route verwendet wird, darf er keine Zeichen enthalten, die in einer URL ungültig sind.
+1. Klonen Sie die Version von der Registerkarte **Versionen** aus dem Abschnitt **Verwalten**, und geben Sie ihr den Namen `patt-any`. Durch Klonen können Sie ohne Auswirkungen auf die ursprüngliche Version mit verschiedenen Features von LUIS experimentieren. Da der Versionsname als Teil der URL-Route verwendet wird, darf er keine Zeichen enthalten, die in einer URL ungültig sind.
 
 ## <a name="add-example-utterances"></a>Hinzufügen von Beispieläußerungen 
-Entfernen Sie die vordefinierte keyPhrase-Entität, wenn es schwierig ist, die FormName-Entität zu erstellen und zu bezeichnen. 
 
 1. Wählen Sie **Erstellen** im oberen Navigationsbereich und dann **Absichten** im linken Navigationsbereich aus.
 
-2. Wählen Sie **FindForm** in der Absichtenliste aus.
+1. Wählen Sie **FindForm** in der Absichtenliste aus.
 
-3. Fügen Sie einige Beispieläußerungen hinzu:
+1. Fügen Sie einige Beispieläußerungen hinzu:
 
     |Beispieläußerung|
     |--|
@@ -94,13 +90,13 @@ Entfernen Sie die vordefinierte keyPhrase-Entität, wenn es schwierig ist, die F
     Ohne eine Pattern.any-Entität wäre es für LUIS schwierig, zu verstehen, wo der Titel des Formulars endet, weil viele Variationen des Formularnamens vorliegen.
 
 ## <a name="create-a-patternany-entity"></a>Erstellen einer Pattern.any-Entität
-Die Pattern.any-Entität extrahiert Entitäten unterschiedlicher Länge. Sie funktioniert nur in einem Muster, da das Muster Anfang und Ende der Entität kennzeichnet. Wenn Ihr Muster eine Pattern.any-Entität enthält und Entitäten falsch extrahiert, verwenden Sie eine [explizite Liste](luis-concept-patterns.md#explicit-lists), um dieses Problem zu beheben. 
+Die Pattern.any-Entität extrahiert Entitäten unterschiedlicher Länge. Sie funktioniert nur in einem Muster, da das Muster Anfang und Ende der Entität kennzeichnet.  
 
 1. Wählen Sie im linken Navigationsbereich **Entitäten** aus.
 
-2. Wählen Sie **Neue Entität erstellen** aus, geben Sie den Namen `FormName` ein, und wählen Sie **Pattern.any** als Typ aus. Wählen Sie **Fertig**aus. 
+1. Wählen Sie **Neue Entität erstellen** aus, geben Sie den Namen `FormName` ein, und wählen Sie **Pattern.any** als Typ aus. Wählen Sie **Fertig**aus. 
 
-    Sie können die Entität in der Absicht nicht bezeichnen, weil eine Pattern.any-Entität nur in einem Muster gültig ist. 
+    Sie können die Entität in den Beispieläußerungen einer Absicht nicht beschriften, da Pattern.any nur in einem Muster gültig ist. 
 
     Wenn Sie möchten, dass die extrahierten Daten weitere Entitäten einschließen, z.B. „number“ oder datetimeV2, müssen Sie eine zusammengesetzte Entität erstellen, die Pattern.any als auch „number“ und datetimeV2 enthält.
 
@@ -108,9 +104,9 @@ Die Pattern.any-Entität extrahiert Entitäten unterschiedlicher Länge. Sie fun
 
 1. Wählen Sie im linken Navigationsbereich **Muster** aus.
 
-2. Wählen Sie die Absicht **FindForm** aus.
+1. Wählen Sie die Absicht **FindForm** aus.
 
-3. Geben Sie die folgenden Vorlagenäußerungen ein, die die neue Entität verwenden:
+1. Geben Sie die folgenden Vorlagenäußerungen ein, die die neue Entität verwenden:
 
     |Vorlagenäußerungen|
     |--|
@@ -121,8 +117,6 @@ Die Pattern.any-Entität extrahiert Entitäten unterschiedlicher Länge. Sie fun
 
     Wenn Sie Variationen des Formulars wie z.B. einfache Anführungszeichen statt doppelter Anführungszeichen oder einen Punkt anstelle eines Fragezeichens berücksichtigen möchten, erstellen Sie für jede Variation ein neues Muster.
 
-4. Wenn Sie die keyPhrase-Entität entfernt haben, fügen Sie sie wieder der App hinzu. 
-
 ## <a name="train-the-luis-app"></a>Trainieren der LUIS-App
 
 [!INCLUDE [LUIS How to Train steps](../../../includes/cognitive-services-luis-tutorial-how-to-train.md)]
@@ -130,15 +124,20 @@ Die Pattern.any-Entität extrahiert Entitäten unterschiedlicher Länge. Sie fun
 ## <a name="test-the-new-pattern-for-free-form-data-extraction"></a>Testen des neuen Musters für das Extrahieren von Freiformdaten
 1. Wählen Sie auf der oberen Leiste **Test** aus, um den Testbereich zu öffnen. 
 
-2. Geben Sie die folgende Äußerung ein: 
+1. Geben Sie die folgende Äußerung ein: 
 
     `Where is the form Understand your responsibilities as a member of the community and who needs to sign it after I read it?`
 
-3. Wählen Sie unter dem Ergebnis **Überprüfen** aus, um die Testergebnisse für die Entität und die Absicht anzuzeigen.
+1. Wählen Sie unter dem Ergebnis **Überprüfen** aus, um die Testergebnisse für die Entität und die Absicht anzuzeigen.
 
     Zuerst wird die Entität `FormName` gefunden, und danach das Muster, das die Absicht angibt. Wenn bei einem Testergebnis die Entitäten nicht erkannt wurden und damit das Muster nicht gefunden wurde, müssen Sie der Absicht (nicht dem Muster) weitere Beispieläußerungen hinzufügen.
 
-4. Schließen Sie den Testbereich durch Auswählen der Schaltfläche **Test** auf der oberen Navigationsleiste.
+1. Schließen Sie den Testbereich durch Auswählen der Schaltfläche **Test** auf der oberen Navigationsleiste.
+
+## <a name="using-an-explicit-list"></a>Verwenden einer expliziten Liste
+
+Wenn Ihr Muster eine Pattern.any-Entität enthält und Entitäten falsch extrahiert, verwenden Sie eine [explizite Liste](luis-concept-patterns.md#explicit-lists), um dieses Problem zu beheben.
+
 
 ## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
 

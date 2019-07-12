@@ -10,12 +10,12 @@ ms.subservice: text-analytics
 ms.topic: overview
 ms.date: 04/04/2019
 ms.author: aahi
-ms.openlocfilehash: d8f8d110a13e768d93f0be3c4baaf5715436f2ed
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: d8d2aed16b5af60c44501e6d72332783a164ff91
+ms.sourcegitcommit: f811238c0d732deb1f0892fe7a20a26c993bc4fc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59502413"
+ms.lasthandoff: 06/29/2019
+ms.locfileid: "67478389"
 ---
 # <a name="example-user-scenarios-for-the-text-analytics-api"></a>Beispielbenutzerszenarien für die Textanalyse-API
 
@@ -29,7 +29,7 @@ Gewinnen Sie Erkenntnisse aus den Ergebnissen von Kunden- und Mitarbeiterbefragu
 
 ## <a name="analyze-recorded-inbound-customer-calls"></a>Analysieren aufgezeichneter eingehender Kundenanrufe
 
-Gewinnen Sie Erkenntnisse aus Anrufen beim Kundendienst mithilfe der Sprachsynthese, Standpunktanalyse und Schlüsselbegriffserkennung. Zeigen Sie die Ergebnisse im Power BI-Dashboard oder in einem Portal an, um Kunden besser zu verstehen, Trends im Kundendienst aufzuzeigen und die Kundenbindung zu fördern. Senden Sie API-Anforderungen als Batch für die Berichterstellung oder in Echtzeit für Eingriffe. 
+Gewinnen Sie Erkenntnisse aus Anrufen beim Kundendienst mithilfe der Sprachsynthese, Standpunktanalyse und Schlüsselbegriffserkennung. Zeigen Sie die Ergebnisse im Power BI-Dashboard oder in einem Portal an, um Kunden besser zu verstehen, Trends im Kundendienst aufzuzeigen und die Kundenbindung zu fördern. Senden Sie API-Anforderungen als Batch für die Berichterstellung oder in Echtzeit für Eingriffe. Siehe [Hinzufügen von Code](https://github.com/rlagh2/callcenteranalytics).
 
 ![Abbildung mit einer Beschreibung, wie das Gewinnen von Erkenntnissen aus Anrufen beim Kundendienst mithilfe der Standpunktanalyse automatisiert werden kann](media/use-cases/azure-inbound.svg)
 

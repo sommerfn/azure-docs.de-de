@@ -5,28 +5,28 @@ keywords: ''
 services: application-insights
 author: lgayhardt
 ms.author: lagayhar
-ms.date: 01/11/2019
+ms.date: 07/3/2019
 ms.service: application-insights
 ms.custom: mvc
 ms.topic: tutorial
 manager: carmonm
-ms.openlocfilehash: 3abe0511200bf5828b485b15a4b8a512731c4ffa
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: fa91933c2243cd1a2737f93f796314330b6cf5a0
+ms.sourcegitcommit: 5bdd50e769a4d50ccb89e135cfd38b788ade594d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58082125"
+ms.lasthandoff: 07/03/2019
+ms.locfileid: "67541508"
 ---
 # <a name="create-custom-kpi-dashboards-using-azure-application-insights"></a>Erstellen benutzerdefinierter KPI-Dashboards mithilfe von Azure Application Insights
 
-Sie können mehrere Dashboards im Azure-Portal erstellen, wobei jedes Kacheln enthält, die Daten aus mehreren Azure-Ressourcen in verschiedenen Ressourcengruppen und Abonnements visualisieren.  Außerdem lassen sich verschiedene Diagramme und Ansichten aus Azure Application Insights anheften, um benutzerdefinierte Dashboards zu erstellen, mit denen Sie einen vollständigen Überblick über die Integrität und Leistung der Anwendung erhalten.  Dieses Tutorial führt Sie durch die Erstellung eines benutzerdefinierten Dashboards, das mehrere Daten- und Visualisierungstypen aus Azure Application Insights enthält.  Folgendes wird vermittelt:
+Sie können mehrere Dashboards im Azure-Portal erstellen, wobei jedes Kacheln enthält, die Daten aus mehreren Azure-Ressourcen in verschiedenen Ressourcengruppen und Abonnements visualisieren.  Außerdem lassen sich verschiedene Diagramme und Ansichten aus Azure Application Insights anheften, um benutzerdefinierte Dashboards zu erstellen, mit denen Sie einen vollständigen Überblick über die Integrität und Leistung der Anwendung erhalten. Dieses Tutorial führt Sie durch die Erstellung eines benutzerdefinierten Dashboards, das mehrere Daten- und Visualisierungstypen aus Azure Application Insights enthält.  Folgendes wird vermittelt:
 
 > [!div class="checklist"]
 > * Erstellen eines benutzerdefinierten Dashboards in Azure
 > * Hinzufügen einer Kachel aus dem Kachelkatalog
-> * Hinzufügen von Standardmetriken in Application Insights zum Dashboard 
+> * Hinzufügen von Standardmetriken in Application Insights zum Dashboard
 > * Hinzufügen eines benutzerdefinierten Metrikdiagramms in Application Insights zum Dashboard
-> * Hinzufügen der Ergebnisse einer Analytics-Abfrage zum Dashboard 
+> * Hinzufügen der Ergebnisse einer Protokolle (Analytics)-Abfrage zum Dashboard
 
 
 
@@ -34,9 +34,9 @@ Sie können mehrere Dashboards im Azure-Portal erstellen, wobei jedes Kacheln en
 
 Für dieses Tutorial benötigen Sie Folgendes:
 
-- Stellen Sie eine .NET-Anwendung in Azure bereit, und [aktivieren Sie das Application Insights SDK](../../azure-monitor/app/asp-net.md). 
+- Stellen Sie eine .NET-Anwendung in Azure bereit, und [aktivieren Sie das Application Insights SDK](../../azure-monitor/app/asp-net.md).
 
-## <a name="log-in-to-azure"></a>Anmelden an Azure
+## <a name="sign-in-to-azure"></a>Anmelden bei Azure
 Melden Sie sich unter [https://portal.azure.com](https://portal.azure.com) beim Azure-Portal an.
 
 ## <a name="create-a-new-dashboard"></a>Erstellen eines neuen Dashboards
@@ -56,20 +56,16 @@ Ein einzelnes Dashboard kann Ressourcen aus mehreren Anwendungen, Ressourcengrup
 1. Klicken Sie oben auf dem Bildschirm auf **Anpassung abgeschlossen**, um den Bearbeitungsmodus für die Kachel zu beenden.
 
 ## <a name="add-health-overview"></a>Hinzufügen der Integritätsübersicht
-Ein Dashboard, das nur statischen Text enthält, ist nicht besonders interessant. Fügen Sie daher eine Kachel aus Application Insights hinzu, um Informationen zu Ihrer Anwendung darzustellen.  Application Insights-Kacheln lassen sich aus dem Kachelkatalog hinzufügen oder direkt von Application Insights-Bildschirmen anheften.  Dadurch können Sie Diagramme und Ansichten konfigurieren, mit denen Sie bereits vertraut sind, bevor Sie diese an Ihr Dashboard anheften.  Fügen Sie zuerst die Standardübersicht über die Integrität Ihrer Anwendung hinzu.  Dies erfordert keine Konfiguration und ermöglicht minimale Anpassungen im Dashboard.
+Ein Dashboard, das statischen Text enthält, ist nicht besonders interessant. Fügen Sie daher eine Kachel aus Application Insights hinzu, um Informationen zu Ihrer Anwendung darzustellen.  Application Insights-Kacheln lassen sich aus dem Kachelkatalog hinzufügen oder direkt von Application Insights-Bildschirmen anheften.  Dadurch können Sie Diagramme und Ansichten konfigurieren, mit denen Sie bereits vertraut sind, bevor Sie diese an Ihr Dashboard anheften.  Fügen Sie zuerst die Standardübersicht über die Integrität Ihrer Anwendung hinzu.  Dies erfordert keine Konfiguration und ermöglicht minimale Anpassungen im Dashboard.
 
 
 1. Wählen Sie auf dem Startbildschirm Ihre **Application Insights**-Ressource aus.
-2. Klicken Sie im Bereich **Übersicht** auf das Reißzweckensymbol, um die Kachel zum zuletzt angezeigten Dashboard hinzuzufügen.  
-
-    ![Übersichtszeitachse anheften](media/tutorial-app-dashboards/3overview.png)
+2. Klicken Sie im Bereich **Übersicht** auf das ![Stecknadelsymbol](media/tutorial-app-dashboards/pushpin.png), um die Kachel zum zuletzt angezeigten Dashboard hinzuzufügen.  
  
-3. Oben rechts wird eine Benachrichtigung mit dem Hinweis angezeigt, dass die Kachel an Ihr Dashboard angeheftet wurde. Klicken Sie in der Benachrichtigung auf **An Dashboard angeheftet**, um zum Dashboard zurückzukehren oder den Bereich „Dashboard“ zu verwenden.
+3. Rechts oben wird eine Benachrichtigung mit dem Hinweis angezeigt, dass die Kachel an Ihr Dashboard angeheftet wurde. Klicken Sie in der Benachrichtigung auf **An Dashboard angeheftet**, um zum Dashboard zurückzukehren oder den Bereich „Dashboard“ zu verwenden.
 4. Diese Kachel wurde Ihrem Dashboard hinzugefügt. Wählen Sie **Bearbeiten**, um die Positionierung der Kachel zu ändern. Klicken Sie darauf, ziehen Sie sie an die gewünschte Position, und klicken Sie dann auf **Anpassung abgeschlossen**. Ihr Dashboard verfügt jetzt über eine Kachel mit hilfreichen Informationen.
 
     ![Dashboard mit einer Übersichtszeitachse](media/tutorial-app-dashboards/4dashboard-edit.png)
-
-
 
 ## <a name="add-custom-metric-chart"></a>Hinzufügen eines benutzerdefinierten Metrikdiagramms
 Im Bereich **Metriken** können Sie eine Metrik grafisch darstellen, die von Application Insights über einen Zeitraum hinweg mit optionalen Filtern und Gruppierungen erfasst wurde.  Wie alle anderen Elemente in Application Insights auch, können Sie dieses Diagramm dem Dashboard hinzufügen.  Dies erfordert aber kleine Anpassungen.
@@ -78,22 +74,18 @@ Im Bereich **Metriken** können Sie eine Metrik grafisch darstellen, die von App
 1. Klicken Sie auf **Metriken**.  
 2. Ein leeres Diagramm wurde bereits erstellt, und Sie werden aufgefordert, eine Metrik hinzuzufügen.  Fügen Sie dem Diagramm eine Metrik hinzu sowie optional einen Filter und eine Gruppierung.  Im folgenden Beispiel wird die Anzahl der Serveranforderungen gruppiert nach Erfolg dargestellt.  Dies bietet einen aktuellen Überblick über erfolgreiche und fehlgeschlagene Anforderungen.
 
-    ![Hinzufügen von Metriken](media/tutorial-app-dashboards/5sumserverrequests.png)
+    ![Hinzufügen von Metriken](media/tutorial-app-dashboards/metrics.png)
 
 4. Wählen Sie rechts die Option **An Dashboard anheften** aus. Dadurch wird die Ansicht dem letzten Dashboard hinzugefügt, mit dem Sie gearbeitet haben.
 
-    ![PIN-Metrikdiagramm](media/tutorial-app-dashboards/6sumserverrequests-pin.png)
-
-3.  Oben rechts wird eine Benachrichtigung mit dem Hinweis angezeigt, dass die Kachel an Ihr Dashboard angeheftet wurde. Klicken Sie in der Benachrichtigung auf **An Dashboard angeheftet**, um zum Dashboard zurückzukehren oder das Blatt „Dashboard“ zu verwenden.
+3.  Rechts oben wird eine Benachrichtigung mit dem Hinweis angezeigt, dass die Kachel an Ihr Dashboard angeheftet wurde. Klicken Sie in der Benachrichtigung auf **An Dashboard angeheftet**, um zum Dashboard zurückzukehren oder das Blatt „Dashboard“ zu verwenden.
 
 4. Diese Kachel wurde Ihrem Dashboard hinzugefügt. Wählen Sie **Bearbeiten**, um die Positionierung der Kachel zu ändern. Klicken Sie darauf, ziehen Sie sie an die gewünschte Position, und klicken Sie dann auf **Anpassung abgeschlossen**.
 
-    ![Dashboard mit Metriken](media/tutorial-app-dashboards/7dashboard-edit2.png)
+## <a name="add-logs-analytics-query"></a>Exportieren einer Protokolle (Analytics)-Abfrage
+Azure Application Insights-Protokolle (Analytics) bietet eine leistungsfähige Abfragesprache, mit der Sie alle von Application Insights erfassten Daten analysieren können. Sie können Ihrem Dashboard die Ausgabe einer Protokollabfrage genauso wie Diagramme und andere Ansichten hinzufügen.
 
-## <a name="add-analytics-query"></a>Exportieren einer Analytics-Abfrage
-Azure Application Insights Analytics bietet eine umfangreiche Abfragesprache, mit der Sie alle von Application Insights erfassten Daten analysieren können.  Sie können Ihrem Dashboard die Ausgabe einer Analytics-Abfrage genauso wie Diagramme und andere Ansichten hinzufügen.   
-
-Da es sich bei Azure Applications Insights Analytics um einen separaten Dienst handelt, müssen Sie Ihr Dashboard dafür freigeben, damit eine Analytics-Abfrage eingeschlossen werden kann. Wenn Sie ein Azure-Dashboard freigeben, können Sie es als Azure-Ressource veröffentlichen, wodurch es für andere Benutzer und Ressourcen verfügbar wird.  
+Da es sich bei Azure Applications Insights-Protokolle (Analytics) um einen separaten Dienst handelt, müssen Sie Ihr Dashboard dafür freigeben, damit eine Protokollabfrage eingeschlossen werden kann. Wenn Sie ein Azure-Dashboard freigeben, können Sie es als Azure-Ressource veröffentlichen, wodurch es für andere Benutzer und Ressourcen verfügbar wird.  
 
 1. Klicken Sie dazu oben im Dashboard auf **Freigeben**.
 
@@ -101,42 +93,35 @@ Da es sich bei Azure Applications Insights Analytics um einen separaten Dienst h
 
 2. Behalten Sie für **Dashboardname** den ursprünglichen bei, und legen Sie für **Abonnementname** denselben wie für das Dashboard fest.  Klicken Sie auf **Veröffentlichen**.  Das Dashboard ist jetzt für andere Abonnements und Dienste verfügbar.  Sie können optional bestimmte Benutzer definieren, die Zugriff auf das Dashboard haben sollen.
 1. Wählen Sie auf dem Startbildschirm die **Application Insights**-Ressource aus.
-2. Klicken Sie oben im Bildschirm auf **Analytics**, um das Analytics-Portal zu öffnen.
-
-    ![Starten von Analytics](media/tutorial-app-dashboards/9analytics.png)
-
+2. Klicken Sie auf der linken Seite unter „Überwachung“ auf **Protokolle (Analytics)** , um das Portal „Protokolle (Analytics)“ zu öffnen.
 3. Geben Sie die folgende Abfrage ein, die die zehn am häufigsten angeforderten Seiten und die Anzahl der Anforderungen zurückgibt:
 
-    ```
+    ``` Kusto
     requests
     | summarize count() by name
     | sort by count_ desc
-    | take 10 
+    | take 10
     ```
 
 4. Klicken Sie auf **Ausführen**, um die Ergebnisse der Abfrage zu überprüfen.
-5. Klicken Sie auf das Reißzweckensymbol, und wählen Sie den Namen des Dashboards aus. Im Gegensatz zu den vorherigen Schritten, in denen das zuletzt verwendete Dashboard genutzt wurde, müssen Sie für diese Option ein Dashboard auswählen, weil die Analytics-Konsole ein separater Dienst ist und aus allen verfügbaren, freigegebenen Dashboards eine Auswahl treffen muss.
+5. Klicken Sie auf das Stecknadelsymbol, ![Stecknadelsymbol](media/tutorial-app-dashboards/pushpin.png) und wählen Sie den Namen des Dashboards aus. Im Gegensatz zu den vorherigen Schritten, in denen das zuletzt verwendete Dashboard genutzt wurde, müssen Sie für diese Option ein Dashboard auswählen, weil die Protokolle (Analytics)-Konsole ein separater Dienst ist und aus allen verfügbaren, freigegebenen Dashboards eine Auswahl treffen muss.
 
-    ![Anheften der Analytics-Abfrage](media/tutorial-app-dashboards/10query.png)
+5. Fügen Sie eine weitere Abfrage hinzu, bevor Sie zum Dashboard zurückkehren. Rendern Sie sie dieses Mal jedoch als Diagramm, um die verschiedenen Möglichkeiten der Visualisierung von Protokollabfragen in einem Dashboard kennenzulernen. Beginnen Sie mit der folgenden Abfrage, die die zehn häufigsten Vorgänge mit den meisten Ausnahmen zusammenfasst.
 
-5. Fügen Sie eine weitere Abfrage hinzu, bevor Sie zum Dashboard zurückkehren. Rendern Sie sie dieses Mal jedoch als Diagramm, um die verschiedenen Möglichkeiten der Visualisierung von Analytics-Abfragen in einem Dashboard kennenzulernen.  Beginnen Sie mit der folgenden Abfrage, die die zehn häufigsten Vorgänge mit den meisten Ausnahmen zusammenfasst.
-
-    ```
+    ``` Kusto
     exceptions
     | summarize count() by operation_Name
     | sort by count_ desc
-    | take 10 
+    | take 10
     ```
 
 6. Klicken Sie auf **Diagramm**, und ändern Sie es in ein **Ringdiagramm**, um die Ausgabe anzuzeigen.
 
-    ![Analytics-Diagramm](media/tutorial-app-dashboards/11querychart.png)
+    ![Diagramm von Protokolle (Analytics)](media/tutorial-app-dashboards/11querychart.png)
 
-6. Klicken Sie auf das Reißzweckensymbol, um das Diagramm an Ihr Dashboard anzuheften, und klicken Sie dieses Mal auf den Link, um zum Dashboard zurückzukehren.
+6. Klicken Sie auf das Stecknadelsymbol, ![Stecknadelsymbol](media/tutorial-app-dashboards/pushpin.png) um das Diagramm an Ihr Dashboard anzuheften, und klicken Sie dieses Mal auf den Link, um zum Dashboard zurückzukehren.
 4. Die Ergebnisse der Abfragen werden Ihrem Dashboard jetzt in dem Format hinzugefügt, das Sie ausgewählt haben.  Klicken Sie auf die einzelnen Ergebnisse, ziehen Sie sie an die gewünschte Position, und klicken Sie dann auf **Anpassung abgeschlossen**.
-5. Wählen Sie das Stiftsymbol für jeden Titel aus, um einen aussagekräftigen Titel einzugeben.
-
-    ![Dashboard mit Analytics](media/tutorial-app-dashboards/12edit-title.png)
+5. Klicken Sie auf das Stiftsymbol ![Stiftsymbol](media/tutorial-app-dashboards/pencil.png) jedes Titels, um einen aussagekräftigen Titel einzugeben.
 
 5. Wählen Sie **Freigeben**, um die Änderungen an Ihrem Dashboard erneut zu veröffentlichen, das jetzt eine Vielzahl von Diagrammen und Visualisierungen aus Application Insights enthält.
 

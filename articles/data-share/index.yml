@@ -10,7 +10,7 @@ metadata:
   ms.topic: landing-page
   ms.date: 07/10/2019
 abstract:
-  description: '<p>Die Vorschauversion von Azure Data Share ist ein sicherer Dienst für die Freigabe von Daten für Drittanbieter-Organisationen. Wählen Sie die Datasets aus, die Sie freigeben möchten, fügen Sie Empfänger hinzu, und starten Sie die Datenfreigabe mit der Möglichkeit, Ihre Datenfreigabebeziehungen zu verwalten, zu überwachen und zu steuern. </p><p>Erfahren Sie in unseren Tutorials, wie Azure Data Share verwendet wird.</p>'
+  description: '<p>Die Vorschauversion von Azure Data Share ist ein sicherer Dienst für die Freigabe von Daten für Drittanbieter-Organisationen. Wählen Sie die Datasets aus, die Sie freigeben möchten, fügen Sie Empfänger hinzu, und starten Sie die Datenfreigabe mit der Möglichkeit, Ihre Datenfreigabebeziehungen zu verwalten, zu überwachen und zu steuern. </p><p>Erfahren Sie in unseren Tutorials und Schrittanleitungen, wie Azure Data Share verwendet wird.</p>'
   aside:
     image:
       alt: null

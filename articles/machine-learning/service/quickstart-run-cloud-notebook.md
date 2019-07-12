@@ -10,12 +10,12 @@ author: sdgilley
 ms.author: sgilley
 ms.date: 05/14/2019
 ms.custom: seodec18
-ms.openlocfilehash: 3e360b019a0c275c5ce0f9986fabd5dfc847f130
-ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
+ms.openlocfilehash: 68f24d4d019af873a0ca45792a3cbcc3dd3c3c3f
+ms.sourcegitcommit: f811238c0d732deb1f0892fe7a20a26c993bc4fc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/20/2019
-ms.locfileid: "66015282"
+ms.lasthandoff: 06/29/2019
+ms.locfileid: "67476040"
 ---
 # <a name="quickstart-use-a-cloud-based-notebook-server-to-get-started-with-azure-machine-learning"></a>Schnellstart: Verwenden eines cloudbasierten Notebook-Servers für die ersten Schritte mit Azure Machine Learning
 
@@ -74,15 +74,20 @@ Nachdem Ihre VM ausgeführt wird, verwenden Sie den Abschnitt **Notebook-VMs**, 
 
 1. Auf der Jupyter Notebook-Webseite ist der oberste Ordnername Ihr Benutzername.  Wählen Sie diesen Ordner aus.
 
+    > [!TIP]
+    > Dieser Ordner befindet sich auf dem [Speichercontainer](concept-workspace.md#resources) in Ihrem Arbeitsbereich und nicht auf der Notebook-VM selbst.  Sie können die Notebook-VM löschen und dennoch Ihre gesamte Arbeit behalten.  Wenn Sie später eine neue Notebook-VM erstellen, lädt sie diesen Ordner.
+
 1. Der Beispielordnername enthält eine Versionsnummer, z. B. **samples-1.0.33.1**.  Wählen Sie den Beispielordner aus.
 
-1. Wählen Sie das Notebook **Schnellstart** aus.
+1. Wählen Sie den Ordner **Schnellstart** aus.
 
 ## <a name="run-the-notebook"></a>Ausführen des Notebooks
 
 Führen Sie ein Notebook aus, das den Wert von Pi schätzt und den Fehler in Ihrem Arbeitsbereich protokolliert.
 
 1. Wählen Sie **01.run-experiment.ipynb**, um das Notebook zu öffnen.
+
+1. Wenn Sie eine Warnung „Kernel nicht gefunden“ sehen, wählen Sie den Kernel **Python 3.6 - AzureML** (ungefähr in der Mitte der Liste) aus, und setzen Sie ihn fest.
 
 1. Klicken Sie in der ersten Codezelle ein, und wählen Sie **Run** (Ausführen) aus.
 
@@ -113,11 +118,11 @@ Führen Sie ein Notebook aus, das den Wert von Pi schätzt und den Fehler in Ihr
 
 1. Klicken Sie auf den **Link zum Azure-Portal**, um Informationen zur Ausführung in Ihrem Arbeitsbereich anzuzeigen.  Über diesen Link wird Ihr Arbeitsbereich im Azure-Portal geöffnet.
 
-1. Die angezeigten Plots protokollierter Werte wurden automatisch im Arbeitsbereich erstellt. Wenn Sie mehrere Werte mit dem gleichen Namensparameter protokollieren, wird für Sie automatisch ein Plot generiert.
+1. Die angezeigten Plots protokollierter Werte wurden automatisch im Arbeitsbereich erstellt. Wenn Sie mehrere Werte mit dem gleichen Namensparameter protokollieren, wird für Sie automatisch ein Plot generiert. Beispiel:
 
    ![Anzeigen des Verlaufs](./media/quickstart-run-cloud-notebook/web-results.png)
 
-Da der Code für die Pi-Annäherung willkürliche Werte verwendet, enthalten Ihre Plots andere Werte.  
+Da der Code für die Pi-Annäherung willkürliche Werte verwendet, könnten Ihre Plots anders aussehen.  
 
 ## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
 
@@ -152,7 +157,9 @@ In dieser Schnellstart haben Sie die folgenden Aufgaben erledigt:
 * Ausführen des Notebooks.
 * Anzeigen der protokollierten Fehlerwerte in Ihrem Arbeitsbereich  Dieses Beispiel zeigt, wie der Arbeitsbereich Sie bei der Nachverfolgung der in einem Skript generierten Informationen unterstützt. 
 
-Durchsuchen Sie auf der Jupyter Notebook-Webseite andere Notebooks im Beispielordner, um mehr über Azure Machine Learning Service zu erfahren.
+Öffnen und starten Sie auf der Jupyter Notebook-Webseite im Ordner **Schnellstart** das Notebook **02.deploy-web-service.ipynb**, um zu erfahren, wie man einen Webdienst bereitstellt.
+
+Durchsuchen Sie auch auf der Jupyter Notebook-Webseite andere Notebooks im Beispielordner, um mehr über Azure Machine Learning Service zu erfahren.
 
 Führen Sie Machine Learning-Tutorials zum Trainieren und Bereitstellen eines Modells aus, um sich ausführlicher mit dem Workflow zu beschäftigen:  
 

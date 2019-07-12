@@ -4,14 +4,14 @@ description: Hier erfahren Sie, wie Sie die Gebühr für eine Anforderungseinhei
 author: ThomasWeiss
 ms.service: cosmos-db
 ms.topic: sample
-ms.date: 05/23/2019
+ms.date: 06/14/2019
 ms.author: thweiss
-ms.openlocfilehash: 0671556a1ad049782090ffede509072adbac4c6a
-ms.sourcegitcommit: c05618a257787af6f9a2751c549c9a3634832c90
+ms.openlocfilehash: 07ca6278da6dd1f50f017f389c2c1389a42196f4
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/30/2019
-ms.locfileid: "66416035"
+ms.lasthandoff: 06/17/2019
+ms.locfileid: "67163837"
 ---
 # <a name="find-the-request-unit-charge-in-azure-cosmos-db"></a>Ermitteln der Gebühr für eine Anforderungseinheit in Azure Cosmos DB
 
@@ -302,3 +302,4 @@ Informationen zum Optimieren Ihres RU-Verbrauchs finden Sie in diesen Artikeln:
 * [Globales Skalieren von bereitgestelltem Durchsatz](scaling-throughput.md)
 * [Bereitstellen des Durchsatzes für Container und Datenbanken](set-throughput.md)
 * [Bereitstellen des Durchsatzes für einen Container](how-to-provision-container-throughput.md)
+* [Überwachen und Debuggen mit Metriken in Azure Cosmos DB](use-metrics.md)

@@ -285,7 +285,7 @@
           href: online-backup-and-restore.md
         - name: Compliance
           href: compliance.md
-    - name: Ressourceneinschränkungen
+    - name: Dienstkontingente
       href: concepts-limits.md
 - name: Cassandra- und MongoDB-API sowie weitere APIs
   expanded: true
@@ -632,6 +632,8 @@
           href: key-value-store-cost.md
     - name: Problembehandlung
       items:
+        - name: Beheben von Problemen mit der Abfrageleistung
+          href: troubleshoot-query-performance.md
         - name: Problembehandlung für das Java Async SDK
           href: troubleshoot-java-async-sdk.md
         - name: Problembehandlung für das .NET SDK

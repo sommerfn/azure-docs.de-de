@@ -1,28 +1,33 @@
 ---
-title: Erste Schritte mit einem HBase-Beispiel in HDInsight – Azure
-description: Verwenden Sie dieses Apache HBase-Beispiel für die ersten Schritte mit Hadoop in HDInsight. Erstellen Sie über die HBase-Shell Tabellen und fragen Sie diese mit Hive ab.
+title: 'Tutorial: Verwenden von Apache HBase in Azure HDInsight'
+description: Folgen Sie diesem Apache HBase-Tutorial für die ersten Schritte mit Hadoop in HDInsight. Erstellen Sie über die HBase-Shell Tabellen und fragen Sie diese mit Hive ab.
 keywords: hbasecommand, HBase-Beispiel
 author: hrasheed-msft
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive,hdiseo17may2017
-ms.topic: conceptual
-ms.date: 05/27/2019
+ms.topic: tutorial
+ms.date: 06/25/2019
 ms.author: hrasheed
-ms.openlocfilehash: 9d94a976c08cdb5184ea4c5e2cd70ac039d78378
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 48b02a042b55af9ff65f57220f7a64c9cbde8848
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66384698"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67445544"
 ---
-# <a name="get-started-with-an-apache-hbase-example-in-hdinsight"></a>Erste Schritte mit einem Apache HBase-Beispiel in HDInsight
+# <a name="tutorial-use-apache-hbase-in-azure-hdinsight"></a>Tutorial: Verwenden von Apache HBase in Azure HDInsight
 
-Hier erfahren Sie, wie Sie einen [Apache HBase](https://hbase.apache.org/)-Cluster in HDInsight erstellen, HBase-Tabellen erstellen und Tabellen mit [Apache Hive](https://hive.apache.org/) abfragen.  Allgemeine Informationen zu HBase finden Sie in der [Übersicht über HDInsight HBase](./apache-hbase-overview.md).
+Dieses Tutorial zeigt, wie Sie in Azure HDInsight einen Apache HBase-Cluster erstellen, HBase-Tabellen anlegen und Tabellen mit Apache Hive abfragen können.  Allgemeine Informationen zu HBase finden Sie in der [Übersicht über HDInsight HBase](./apache-hbase-overview.md).
 
-[!INCLUDE [delete-cluster-warning](../../../includes/hdinsight-delete-cluster-warning.md)]
+In diesem Tutorial lernen Sie Folgendes:
 
-Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) erstellen, bevor Sie beginnen.
+> [!div class="checklist"]
+> * Erstellen eines Apache HBase-Clusters
+> * Erstellen von HBase-Tabellen und Einfügen von Daten
+> * Verwenden von Apache Hive zum Abfragen von Apache HBase
+> * Verwenden der HBase-REST-APIs mit Curl
+> * Überprüfen des Clusterstatus
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -30,10 +35,9 @@ Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](htt
 
 * Bash. In den Beispielen dieses Artikels wird die Bash-Shell unter Windows 10 für die cURL-Befehle verwendet. Die Installationsschritte finden Sie unter [Windows Subsystem for Linux Installation Guide for Windows 10](https://docs.microsoft.com/windows/wsl/install-win10) (Windows-Subsystem für Linux: Installationshandbuch für Windows 10).  Es funktionieren auch andere [Unix-Shells](https://www.gnu.org/software/bash/).  Die cURL-Beispiele können mit einigen geringfügigen Änderungen auch an einer Windows-Eingabeaufforderung verwendet werden.  Alternativ können Sie das Windows PowerShell-Cmdlet [Invoke-RestMethod](https://docs.microsoft.com/powershell/module/microsoft.powershell.utility/invoke-restmethod) verwenden.
 
-
 ## <a name="create-apache-hbase-cluster"></a>Erstellen eines Apache HBase-Clusters
 
-Beim folgenden Verfahren wird eine Azure Resource Manager-Vorlage verwendet, um einen HBase-Cluster und das abhängige Azure Storage-Standardkonto zu erstellen. Informationen zu den Parametern, die in diesem Verfahren und in anderen Verfahren zur Clustererstellung verwendet werden, finden Sie unter [Erstellen von Linux-basierten Hadoop-Clustern in HDInsight](../hdinsight-hadoop-provision-linux-clusters.md). Weitere Informationen zur Verwendung von Data Lake Storage Gen2 finden Sie unter [Schnellstart: Einrichten von Clustern in HDInsight](../../storage/data-lake-storage/quickstart-create-connect-hdi-cluster.md).
+Beim folgenden Verfahren wird eine Azure Resource Manager-Vorlage verwendet, um einen HBase-Cluster und das abhängige Azure Storage-Standardkonto zu erstellen. Informationen zu den Parametern, die in diesem Verfahren und in anderen Verfahren zur Clustererstellung verwendet werden, finden Sie unter [Erstellen von Linux-basierten Hadoop-Clustern in HDInsight](../hdinsight-hadoop-provision-linux-clusters.md).
 
 1. Wählen Sie die folgende Abbildung aus, um die Vorlage im Azure-Portal zu öffnen. Die Vorlage finden Sie unter [Azure-Schnellstartvorlagen](https://azure.microsoft.com/resources/templates/).
 
@@ -56,12 +60,11 @@ Beim folgenden Verfahren wird eine Azure Resource Manager-Vorlage verwendet, um 
 
 3. Wählen Sie **Ich stimme den oben genannten Geschäftsbedingungen zu**, und wählen Sie anschließend **Kaufen** aus. Das Erstellen eines Clusters dauert ca. 20 Minuten.
 
-> [!NOTE]  
-> Nachdem Sie den HBase-Cluster gelöscht haben, können Sie im gleichen Standardblobcontainer einen neuen HBase-Cluster erstellen. Der neue Cluster übernimmt die im vorherigen Cluster erstellten HBase-Tabellen. Es wird empfohlen, die HBase-Tabellen vor dem Löschen des Clusters zu deaktivieren, um Inkonsistenzen zu vermeiden.
+Nachdem Sie den HBase-Cluster gelöscht haben, können Sie im gleichen Standardblobcontainer einen neuen HBase-Cluster erstellen. Der neue Cluster übernimmt die im vorherigen Cluster erstellten HBase-Tabellen. Es wird empfohlen, die HBase-Tabellen vor dem Löschen des Clusters zu deaktivieren, um Inkonsistenzen zu vermeiden.
 
 ## <a name="create-tables-and-insert-data"></a>Erstellen von Tabellen und Einfügen von Daten
 
-Sie können SSH verwenden, um eine Verbindung mit Apache HBase-Clustern herzustellen, und dann mithilfe von [Apache HBase Shell](https://hbase.apache.org/0.94/book/shell.html) HBase-Tabellen erstellen, Daten einfügen und Daten abfragen. Weitere Informationen finden Sie unter [Verwenden von SSH mit Linux-basiertem Hadoop in HDInsight unter Linux, Unix oder OS X](../hdinsight-hadoop-linux-use-ssh-unix.md).
+Sie können SSH verwenden, um eine Verbindung mit Apache HBase-Clustern herzustellen, und dann mithilfe von [Apache HBase Shell](https://hbase.apache.org/0.94/book/shell.html) HBase-Tabellen erstellen, Daten einfügen und Daten abfragen.
 
 Den meisten Benutzern werden die Daten im Tabellenformat angezeigt:
 
@@ -149,8 +152,7 @@ Eine Datei mit Beispieldaten finden Sie in einem öffentlichen Blobcontainer: `w
 
 Sie haben die Option, eine Textdatei zu erstellen und die Datei in Ihr eigenes Speicherkonto hochzuladen. Anweisungen hierzu finden Sie unter [Hochladen von Daten für Apache Hadoop-Aufträge in HDInsight](../hdinsight-upload-data.md).
 
-> [!NOTE]  
-> In der folgenden Prozedur wird die soeben erstellte HBase-Kontakttabelle verwendet.
+In der folgenden Prozedur wird die soeben erstellte HBase-Tabelle `Contacts` verwendet.
 
 1. Führen Sie über Ihre geöffnete SSH-Verbindung den folgenden Befehl aus, um die Datendatei in das StoreFiles-Format zu konvertieren und unter dem mit `Dimporttsv.bulk.output` angegebenen relativen Pfad zu speichern.
 
@@ -178,7 +180,7 @@ Sie können Daten in HBase-Tabellen mithilfe von [Apache Hive](https://hive.apac
 
     Weitere Informationen zu Beeline finden Sie unter [Verwenden von Hive mit Hadoop in HDInsight über Beeline](../hadoop/apache-hadoop-use-hive-beeline.md).
 
-1. Führen Sie das folgende [HiveQL](https://cwiki.apache.org/confluence/display/Hive/LanguageManual)-Skript aus, um eine der HBase-Tabelle zugeordnete Hive-Tabelle zu erstellen. Stellen Sie vor Ausführung dieser Anweisung sicher, dass Sie die zuvor in diesem Lernprogramm erwähnte Beispieltabelle über die HBase-Shell erstellt haben.
+1. Führen Sie das folgende [HiveQL](https://cwiki.apache.org/confluence/display/Hive/LanguageManual)-Skript aus, um eine der HBase-Tabelle zugeordnete Hive-Tabelle zu erstellen. Stellen Sie vor Ausführung dieser Anweisung sicher, dass Sie die zuvor in diesem Artikel erwähnte Beispieltabelle über die HBase-Shell erstellt haben.
 
     ```hiveql
     CREATE EXTERNAL TABLE hbasecontacts(rowkey STRING, name STRING, homephone STRING, officephone STRING, officeaddress STRING)
@@ -270,16 +272,17 @@ Weitere Informationen zu HBase-REST finden Sie im [Referenzleitfaden zu Apache H
 >   
 >        {"status":"ok","version":"v1"}
 
-
 ## <a name="check-cluster-status"></a>Überprüfen des Clusterstatus
 
 HBase in HDInsight wird mit einer Web-Benutzeroberfläche ausgeliefert, über die Cluster überwacht werden können. In dieser Web-Benutzeroberfläche können Sie Statistiken und Informationen zu Regionen anfordern.
 
 **So greifen Sie auf die HBase Master-Benutzeroberfläche zu**
 
-1. Melden Sie sich unter `https://Clustername.azurehdinsight.net` an der Ambari-Webbenutzeroberfläche an.
-2. Klicken Sie im linken Menü auf **HBase**.
-3. Klicken Sie am oberen Rand der Seite auf **Quicklinks**, zeigen Sie auf den aktiven Zookeeper-Knotenlink, und klicken Sie anschließend auf **HBase Master-Benutzeroberfläche**.  Die Benutzeroberfläche wird in einer anderen Browserregisterkarte geöffnet:
+1. Melden Sie sich unter `https://CLUSTERNAME.azurehdinsight.net` bei der Benutzeroberfläche von Ambari Web an, wobei `CLUSTERNAME` der Name Ihres HBase-Clusters ist.
+
+1. Wählen Sie im linken Menü **HBase** aus.
+
+1. Klicken Sie am oberen Rand der Seite auf **Quicklinks**, zeigen Sie auf den aktiven Zookeeper-Knotenlink, und klicken Sie anschließend auf **HBase Master-Benutzeroberfläche**.  Die Benutzeroberfläche wird in einer anderen Browserregisterkarte geöffnet:
 
    ![Benutzeroberfläche HDInsight HBase HMaster](./media/apache-hbase-tutorial-get-started-linux/hdinsight-hbase-hmaster-ui.png)
 
@@ -291,20 +294,19 @@ HBase in HDInsight wird mit einer Web-Benutzeroberfläche ausgeliefert, über di
    - Tasks
    - Softwareattribute
 
-## <a name="delete-the-cluster"></a>Löschen des Clusters
+## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
 
-Es wird empfohlen, die HBase-Tabellen vor dem Löschen des Clusters zu deaktivieren, um Inkonsistenzen zu vermeiden.
+Es wird empfohlen, die HBase-Tabellen vor dem Löschen des Clusters zu deaktivieren, um Inkonsistenzen zu vermeiden. Sie können den HBase-Befehl `disable 'Contacts'` verwenden. Wenn Sie diese Anwendung nicht mehr benötigen, gehen Sie wie folgt vor, um den erstellten HBase-Cluster zu löschen:
 
-[!INCLUDE [delete-cluster-warning](../../../includes/hdinsight-delete-cluster-warning.md)]
-
-## <a name="troubleshoot"></a>Problembehandlung
-
-Falls beim Erstellen von HDInsight-Clustern Probleme auftreten, sehen Sie sich die [Voraussetzungen für die Zugriffssteuerung](../hdinsight-hadoop-customize-cluster-linux.md#access-control) an.
+1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com/) an.
+1. Geben Sie oben im **Suchfeld** den Suchbegriff **HDInsight** ein.
+1. Wählen Sie unter **Dienste** die Option **HDInsight-Cluster** aus.
+1. Klicken Sie in der daraufhin angezeigten Liste mit den HDInsight-Clustern neben dem Cluster, den Sie für dieses Tutorial erstellt haben, auf die Auslassungspunkte ( **...** ).
+1. Klicken Sie auf **Löschen**. Klicken Sie auf **Ja**.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-In diesem Artikel haben Sie erfahren, wie Sie einen Apache HBase-Cluster erstellen, Tabellen erstellen und die Daten in diesen Tabellen über die HBase-Shell anzeigen. Außerdem haben Sie gelernt, wie Sie für die Daten in HBase-Tabellen eine Hive-Abfrage ausführen und wie Sie mit den HBase C#-REST-APIs HBase-Tabellen erstellen und Daten aus diesen Tabellen abrufen.
+In diesem Tutorial haben Sie erfahren, wie Sie einen Apache HBase-Cluster erstellen, Tabellen erstellen und die Daten in diesen Tabellen über die HBase-Shell anzeigen. Außerdem haben Sie gelernt, wie Sie für die Daten in HBase-Tabellen eine Hive-Abfrage ausführen und wie Sie mit den HBase C#-REST-APIs HBase-Tabellen erstellen und Daten aus diesen Tabellen abrufen. Weitere Informationen finden Sie unter:
 
-Weitere Informationen finden Sie unter:
-
-* [Überblick über Apache HBase in HDInsight: Eine NoSQL-Datenbank, die BigTable-ähnliche Funktionen für Apache Hadoop bereitstellt](./apache-hbase-overview.md): Apache HBase ist eine Open-Source-NoSQL-Datenbank von Apache, die auf Apache Hadoop basiert und wahlfreien Zugriff und starke Konsistenz für große Mengen unstrukturierter und teilstrukturierter Daten bietet.
+> [!div class="nextstepaction"]
+> [HDInsight HBase overview (Übersicht über HDInsight HBase)](./apache-hbase-overview.md)

@@ -10,12 +10,12 @@ ms.subservice: acoustics
 ms.topic: tutorial
 ms.date: 03/20/2019
 ms.author: michem
-ms.openlocfilehash: 48a1c4350b438761aa2e2d8c7e57a872c86ca292
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 6b49a6b9e235414cd63eacdbad523bbda8646963
+ms.sourcegitcommit: 82efacfaffbb051ab6dc73d9fe78c74f96f549c2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59797174"
+ms.lasthandoff: 06/20/2019
+ms.locfileid: "67304307"
 ---
 # <a name="project-acoustics-unreal-bake-tutorial"></a>Unreal-Bakingtutorial für Projekt Akustik
 In diesem Dokument wird das Übermitteln eines Akustikbakingvorgangs mithilfe der Unreal-Editor-Erweiterung beschrieben.
@@ -208,7 +208,7 @@ Wenn Sie einschätzen möchten, wie viel ein bestimmter Bake-Vorgang kosten wird
 Es gibt vier Datendateien, die von diesem Plug-In an verschiedenen Speicherorten erstellt wurden. Nur eine davon ist zur Laufzeit erforderlich. Diese befindet sich im Ordner „Content/Acoustics“ Ihres Projekts, der dem Paketpfad des Projekts automatisch hinzugefügt wird. Die anderen drei befinden sich im Ordner „Acoustics Data“ und werden nicht in das Paket aufgenommen.
 
 * **[Projekt]/Config/ProjectAcoustics.cfg:** In dieser Datei werden die Daten gespeichert, die Sie in die Felder auf der Akustikmodus-Benutzeroberfläche eingeben. Der Speicherort und der Name dieser Datei können nicht geändert werden. In dieser Datei werden weitere Werte gespeichert, die sich auf den Bake-Vorgang auswirken, diese sind jedoch für fortgeschrittene Benutzer gedacht und sollten nicht geändert werden.
-* **[Projekt]/Content/Acoustics/[Levelname]\_AcousticsData.ace:** Diese Datei wurde während der Bake-Simulation erstellt und enthält die Suchdaten, die von der Runtime verwendet wurden, um die Akustik der Szene zu rendern. Der Speicherort und der Name dieser Datei können mithilfe der Felder auf der Registerkarte **Probes** (Tests) geändert werden.
+* **[Projekt]/Content/Acoustics/[Levelname]\_AcousticsData.ace:** Diese Datei wurde während der Bake-Simulation erstellt und enthält die Suchdaten, die von der Runtime verwendet wurden, um die Akustik der Szene zu rendern. Der Speicherort und der Name dieser Datei können mithilfe der Felder auf der Registerkarte **Probes** (Tests) geändert werden. Wenn Sie diese Datei nach der Erstellung umbenennen möchten, löschen Sie das UAsset aus Ihrem Unreal-Projekt, benennen Sie die Datei außerhalb von Unreal im Datei-Explorer um, und importieren Sie diese Datei dann erneut in Unreal, um ein neues UAsset zu erstellen. Die Umbenennung des UAssets selbst funktioniert nicht.
 * **[Projekt]/Plugins/ProjectAcoustics/AcousticsData/[Levelname]\_AcousticsData.vox:** Diese Datei speichert die in Voxel konvertierte Akustikgeometrie und die Materialeigenschaften. Diese wurden mithilfe der Schaltfläche **Calculate** (Berechnen) auf der Registerkarte **Probes** (Prüfpunkte) berechnet. Der Speicherort und der Name dieser Datei können mithilfe der Felder auf der Registerkarte **Probes** (Tests) geändert werden.
 * **[Projekt]/Plugins/ProjectAcoustics/AcousticsData/[Levelname]\_AcousticsData\_config.xml:** In dieser Datei werden die Parameter gespeichert, die mithilfe der Schaltfläche **Calculate** (Berechnen) auf der Registerkarte **Probes** (Prüfpunkte) berechnet wurden. Der Speicherort und der Name dieser Datei können mithilfe der Felder auf der Registerkarte **Probes** (Tests) geändert werden.
 

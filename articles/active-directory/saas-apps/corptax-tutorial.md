@@ -1,6 +1,6 @@
 ---
-title: 'Tutorial: Azure Active Directory-Integration mit CorpTax | Microsoft-Dokumentation'
-description: Erfahren Sie, wie Sie das einmalige Anmelden zwischen Azure Active Directory und CorpTax konfigurieren.
+title: 'Tutorial: Azure Active Directory-Integration mit Corptax | Microsoft-Dokumentation'
+description: Erfahren Sie, wie Sie das einmalige Anmelden zwischen Azure Active Directory und Corptax konfigurieren.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -8,27 +8,28 @@ manager: daveba
 ms.reviewer: barbkess
 ms.assetid: fdad2893-41f4-4056-b6d2-ec3d050eb350
 ms.service: active-directory
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 12/17/2018
+ms.date: 04/02/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f150522c8ea4d3bcb69b7ffe274f1d40d831ab2b
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 7cd09a35d5796cdc4267c9d01a901b4e3b812d7c
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57864914"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67104398"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-corptax"></a>Tutorial: Azure Active Directory-Integration mit CorpTax
+# <a name="tutorial-azure-active-directory-integration-with-corptax"></a>Tutorial: Azure Active Directory-Integration mit Corptax
 
-In diesem Tutorial erfahren Sie, wie Sie CorpTax in Azure Active Directory (Azure AD) integrieren.
-Die Integration von CorpTax in Azure AD bietet die folgenden Vorteile:
+In diesem Tutorial erfahren Sie, wie Sie Corptax in Azure Active Directory (Azure AD) integrieren.
+Die Integration von Corptax in Azure AD bietet die folgenden Vorteile:
 
-* Sie können in Azure AD steuern, wer Zugriff auf CorpTax hat.
-* Sie können Ihren Benutzern ermöglichen, sich mit ihren Azure AD-Konten automatisch bei CorpTax anzumelden (einmaliges Anmelden; Single Sign-On, SSO).
+* Sie können in Azure AD steuern, wer Zugriff auf Corptax hat.
+* Sie können Ihren Benutzern ermöglichen, sich mit ihren Azure AD-Konten automatisch bei Corptax anzumelden (einmaliges Anmelden; Single Sign-On, SSO).
 * Sie können Ihre Konten über das Azure-Portal an einem zentralen Ort verwalten.
 
 Weitere Informationen zur Integration von SaaS-Apps in Azure AD finden Sie unter [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
@@ -36,22 +37,22 @@ Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](htt
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-Um die Azure AD-Integration mit CorpTax konfigurieren zu können, benötigen Sie Folgendes:
+Um die Azure AD-Integration mit Corptax konfigurieren zu können, benötigen Sie Folgendes:
 
-* Ein Azure AD-Abonnement Wenn Sie keine Azure AD-Umgebung besitzen, können Sie [hier](https://azure.microsoft.com/pricing/free-trial/) eine einmonatige Testversion anfordern.
-* CorpTax-Abonnement, für das einmaliges Anmelden aktiviert ist
+* Ein Azure AD-Abonnement Sollten Sie über keine Azure AD-Umgebung verfügen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/) verwenden.
+* Corptax-Abonnement, für das einmaliges Anmelden aktiviert ist
 
 ## <a name="scenario-description"></a>Beschreibung des Szenarios
 
 In diesem Tutorial konfigurieren und testen Sie das einmalige Anmelden von Azure AD in einer Testumgebung.
 
-* CorpTax unterstützt **SP**-initiiertes einmaliges Anmelden.
+* Corptax unterstützt **SP**-initiiertes einmaliges Anmelden.
 
-## <a name="adding-corptax-from-the-gallery"></a>Hinzufügen von CorpTax aus dem Katalog
+## <a name="adding-corptax-from-the-gallery"></a>Hinzufügen von Corptax aus dem Katalog
 
-Zum Konfigurieren der Integration von CorpTax in Azure AD müssen Sie CorpTax aus dem Katalog der Liste der verwalteten SaaS-Apps hinzufügen.
+Zum Konfigurieren der Integration von Corptax in Azure AD müssen Sie Corptax aus dem Katalog der Liste der verwalteten SaaS-Apps hinzufügen.
 
-**Um CorpTax aus dem Katalog hinzuzufügen, führen Sie die folgenden Schritte aus:**
+**Um Corptax aus dem Katalog hinzuzufügen, führen Sie die folgenden Schritte aus:**
 
 1. Klicken Sie im linken Navigationsbereich des **[Azure-Portals](https://portal.azure.com)** auf das Symbol für **Azure Active Directory**.
 
@@ -65,31 +66,31 @@ Zum Konfigurieren der Integration von CorpTax in Azure AD müssen Sie CorpTax a
 
     ![Schaltfläche „Neue Anwendung“](common/add_new_app.png)
 
-4. Geben Sie im Suchfeld **CorpTax** ein, wählen Sie im Ergebnisbereich **CorpTax** aus, und klicken Sie dann auf die Schaltfläche **Hinzufügen**, um die Anwendung hinzuzufügen.
+4. Geben Sie im Suchfeld **Corptax** ein, wählen Sie im Ergebnisbereich **Corptax** aus, und klicken Sie dann auf die Schaltfläche **Hinzufügen**, um die Anwendung hinzuzufügen.
 
-     ![CorpTax in der Ergebnisliste](common/search_new_app.png)
+    ![Corptax in der Ergebnisliste](common/search_new_app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfigurieren und Testen des einmaligen Anmeldens in Azure AD
 
-In diesem Abschnitt konfigurieren und testen Sie das einmalige Anmelden von Azure AD bei CorpTax mithilfe eines Testbenutzers namens **Britta Simon**.
-Damit einmaliges Anmelden funktioniert, muss eine Linkbeziehung zwischen einem Azure AD-Benutzer und dem entsprechenden Benutzer in CorpTax eingerichtet werden.
+In diesem Abschnitt konfigurieren und testen Sie das einmalige Anmelden von Azure AD bei Corptax mithilfe eines Testbenutzers namens **Britta Simon**.
+Damit einmaliges Anmelden funktioniert, muss eine Linkbeziehung zwischen einem Azure AD-Benutzer und dem entsprechenden Benutzer in Corptax eingerichtet werden.
 
-Zum Konfigurieren und Testen des einmaligen Anmeldens in Azure AD bei CorpTax müssen Sie die folgenden Bausteine ausführen:
+Zum Konfigurieren und Testen des einmaligen Anmeldens in Azure AD bei Corptax müssen Sie die folgenden Bausteine ausführen:
 
-1. **[Konfigurieren des einmaligen Anmeldens von Azure AD](#configure-azure-ad-single-sign-on)**, um Ihren Benutzern das Verwenden dieses Features zu ermöglichen.
-2. **[Konfigurieren des einmaligen Anmeldens für CorpTax](#configure-corptax-single-sign-on)**, um die Einstellungen für einmaliges Anmelden auf der Anwendungsseite zu konfigurieren
-3. **[Erstellen eines Azure AD-Testbenutzers](#create-an-azure-ad-test-user)**, um das einmalige Anmelden mit Azure AD mit dem Testbenutzer Britta Simon zu testen.
-4. **[Erstellen eines CorpTax-Testbenutzers](#create-corptax-test-user)**, um ein Pendant von Britta Simon in CorpTax zu erhalten, das mit ihrer Darstellung in Azure AD verknüpft ist.
-5. **[Zuweisen des Azure AD-Testbenutzers](#assign-the-azure-ad-test-user)**, um Britta Simon für das einmalige Anmelden von Azure AD zu aktivieren.
-6. **[Testen der einmaligen Anmeldung](#test-single-sign-on)**, um zu überprüfen, ob die Konfiguration funktioniert.
+1. **[Konfigurieren des einmaligen Anmeldens von Azure AD](#configure-azure-ad-single-sign-on)** , um Ihren Benutzern das Verwenden dieses Features zu ermöglichen.
+2. **[Konfigurieren des einmaligen Anmeldens für Corptax](#configure-corptax-single-sign-on)** , um die Einstellungen für einmaliges Anmelden auf der Anwendungsseite zu konfigurieren
+3. **[Erstellen eines Azure AD-Testbenutzers](#create-an-azure-ad-test-user)** , um das einmalige Anmelden mit Azure AD mit dem Testbenutzer Britta Simon zu testen.
+4. **[Zuweisen des Azure AD-Testbenutzers](#assign-the-azure-ad-test-user)** , um Britta Simon für das einmalige Anmelden von Azure AD zu aktivieren.
+5. **[Erstellen eines Corptax-Testbenutzers](#create-corptax-test-user)** , um ein Pendant von Britta Simon in Corptax zu erhalten, das mit ihrer Darstellung in Azure AD verknüpft ist.
+6. **[Testen der einmaligen Anmeldung](#test-single-sign-on)** , um zu überprüfen, ob die Konfiguration funktioniert.
 
 ### <a name="configure-azure-ad-single-sign-on"></a>Konfigurieren des einmaligen Anmeldens in Azure AD
 
 In diesem Abschnitt aktivieren Sie das einmalige Anmelden von Azure AD im Azure-Portal.
 
-Führen Sie zum Konfigurieren des einmaligen Anmeldens von Azure AD bei CorpTax die folgenden Schritte aus:
+Führen Sie zum Konfigurieren des einmaligen Anmeldens von Azure AD bei Corptax die folgenden Schritte aus:
 
-1. Wählen Sie im [Azure-Portal](https://portal.azure.com/) auf der Anwendungsintegrationsseite für **CorpTax** die Option **Einmaliges Anmelden** aus.
+1. Wählen Sie im [Azure-Portal](https://portal.azure.com/) auf der Anwendungsintegrationsseite für **Corptax** die Option **Einmaliges Anmelden** aus.
 
     ![Konfigurieren des Links für einmaliges Anmelden](common/select_sso.png)
 
@@ -103,17 +104,17 @@ Führen Sie zum Konfigurieren des einmaligen Anmeldens von Azure AD bei CorpTax
 
 4. Führen Sie im Abschnitt **Grundlegende SAML-Konfiguration** die folgenden Schritte aus:
 
-    ![SSO-Informationen zur Domäne und zu den URLs für CorpTax](common/sp_intiated.png)
+    ![SSO-Informationen zur Domäne und zu den URLs für Corptax](common/sp_intiated.png)
 
     Geben Sie im Textfeld **Anmelde-URL** eine URL ein: `https://asp.corptax.com`.
 
-8. Klicken Sie auf der Seite **Einmaliges Anmelden (SSO) mit SAML einrichten** im Abschnitt **SAML-Signaturzertifikat** auf **Herunterladen**, um die **Verbundmetadaten-XML** herunterzuladen, und speichern Sie sie auf Ihrem Computer.
+5. Klicken Sie auf der Seite **Einmaliges Anmelden (SSO) mit SAML einrichten** im Abschnitt **SAML-Signaturzertifikat** auf **Herunterladen**, um die **Verbundmetadaten-XML** herunterzuladen, und speichern Sie sie auf Ihrem Computer.
 
     ![Downloadlink für das Zertifikat](common/metadataxml.png)
 
-### <a name="configure-corptax-single-sign-on"></a>Konfigurieren des einmaligen Anmeldens für CorpTax
+### <a name="configure-corptax-single-sign-on"></a>Konfigurieren des einmaligen Anmeldens für Corptax
 
-Zum Konfigurieren des einmaligen Anmeldens bei **CorpTax** müssen Sie die heruntergeladene **Verbundmetadaten-XML**-Datei an das [CorpTax-Supportteam](mailto:bgraves@corptax.com) senden. Es führt die Einrichtung durch, damit die SAML-SSO-Verbindung auf beiden Seiten richtig festgelegt ist.
+Zum Konfigurieren des einmaligen Anmeldens bei **Corptax** müssen Sie die heruntergeladene **Verbundmetadaten-XML**-Datei an das [Corptax-Supportteam](https://connect.corptax.com/) senden. Es führt die Einrichtung durch, damit die SAML-SSO-Verbindung auf beiden Seiten richtig festgelegt ist.
 
 ### <a name="create-an-azure-ad-test-user"></a>Erstellen eines Azure AD-Testbenutzers
 
@@ -133,7 +134,7 @@ Das Ziel dieses Abschnitts ist das Erstellen eines Testbenutzers namens Britta S
 
     a. Geben Sie im Feld **Name** den Namen **BrittaSimon** ein.
 
-    b. Geben Sie im Feld **Benutzername** Folgendes ein: **brittasimon\@ihreunternehmensdomäne.erweiterung**.  
+    b. Geben Sie im Feld **Benutzername** die Zeichenfolge `brittasimon\@yourcompanydomain.extension` ein.  
     Zum Beispiel, BrittaSimon@contoso.com
 
     c. Aktivieren Sie das Kontrollkästchen **Kennwort anzeigen**, und notieren Sie sich den Wert, der im Feld „Kennwort“ angezeigt wird.
@@ -142,15 +143,15 @@ Das Ziel dieses Abschnitts ist das Erstellen eines Testbenutzers namens Britta S
 
 ### <a name="assign-the-azure-ad-test-user"></a>Zuweisen des Azure AD-Testbenutzers
 
-In diesem Abschnitt ermöglichen Sie Britta Simon die Verwendung des einmaligen Anmeldens von Azure, indem Sie den Zugriff auf CorpTax gewähren.
+In diesem Abschnitt ermöglichen Sie Britta Simon die Verwendung des einmaligen Anmeldens von Azure, indem Sie den Zugriff auf Corptax gewähren.
 
-1. Wählen Sie im Azure-Portal die Option **Unternehmensanwendungen** aus, und wählen Sie dann **Alle Anwendungen** und **CorpTax** aus.
+1. Wählen Sie im Azure-Portal die Option **Unternehmensanwendungen** aus, und wählen Sie dann **Alle Anwendungen** und **Corptax** aus.
 
     ![Blatt „Unternehmensanwendungen“](common/enterprise_applications.png)
 
-2. Geben Sie in der Anwendungsliste **CorpTax** ein, und wählen Sie den Eintrag aus.
+2. Geben Sie in der Anwendungsliste **Corptax** ein, und wählen Sie den Eintrag aus.
 
-    ![CorpTax-Link in der Anwendungsliste](common/all_applications.png)
+    ![Corptax-Link in der Anwendungsliste](common/all_applications.png)
 
 3. Wählen Sie im Menü auf der linken Seite **Benutzer und Gruppen** aus.
 
@@ -166,18 +167,18 @@ In diesem Abschnitt ermöglichen Sie Britta Simon die Verwendung des einmaligen 
 
 7. Klicken Sie im Dialogfeld **Zuweisung hinzufügen** auf die Schaltfläche **Zuweisen**.
 
-### <a name="create-corptax-test-user"></a>Erstellen eines CorpTax-Testbenutzers
+### <a name="create-corptax-test-user"></a>Erstellen eines Corptax-Testbenutzers
 
-In diesem Abschnitt erstellen Sie in CorpTax einen Benutzer namens Britta Simon. Wenden Sie sich an das  [CorpTax-Supportteam](mailto:bgraves@corptax.com), um Benutzer auf der CorpTax-Plattform hinzuzufügen. Benutzer müssen erstellt und aktiviert werden, damit Sie einmaliges Anmelden verwenden können.
+In diesem Abschnitt erstellen Sie in Corptax einen Benutzer namens Britta Simon. Wenden Sie sich an das  [Corptax-Supportteam](https://connect.corptax.com/), um Benutzer auf der Corptax-Plattform hinzuzufügen. Benutzer müssen erstellt und aktiviert werden, damit Sie einmaliges Anmelden verwenden können.
 
 ### <a name="test-single-sign-on"></a>Testen des einmaligen Anmeldens
 
 In diesem Abschnitt testen Sie die Azure AD-Konfiguration für einmaliges Anmelden über den Zugriffsbereich.
-Wenn Sie im Zugriffsbereich auf die Kachel „CorpTax“ klicken, sollten Sie zur folgenden CorpTax-Seite weitergeleitet werden. 
+Wenn Sie im Zugriffsbereich auf die Kachel „Corptax“ klicken, sollten Sie zur folgenden Corptax-Seite weitergeleitet werden. 
 
 ![image](media/corptax-tutorial/corptaxlogin.png)
 
-Geben Sie im Textfeld **Umgebung** Ihre entsprechende Umgebung ein, dann sollten Sie automatisch auf der CorpTax-Seite angemeldet werden, für die Sie das einmalige Anmelden eingerichtet haben. Weitere Informationen zum Zugriffsbereich finden Sie unter [Einführung in den Zugriffsbereich](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+Geben Sie im Textfeld **Umgebung** Ihre entsprechende Umgebung ein, dann sollten Sie automatisch auf der Corptax-Seite angemeldet werden, für die Sie das einmalige Anmelden eingerichtet haben. Weitere Informationen zum Zugriffsbereich finden Sie unter [Einführung in den Zugriffsbereich](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
 ## <a name="additional-resources"></a>Weitere Ressourcen
 

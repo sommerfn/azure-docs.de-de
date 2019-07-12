@@ -12,14 +12,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
 ms.custom: mvc
-ms.date: 04/24/2019
+ms.date: 06/11/2019
 ms.author: spelluru
-ms.openlocfilehash: bdcc4349f84a35b312ecb3ad6205273b62c2e989
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 803fe6eff8804dbd407642386865fe975c8db524
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64722715"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67123266"
 ---
 # <a name="tutorial-set-up-a-classroom-lab"></a>Tutorial: Einrichten eines Classroom-Labs 
 In diesem Tutorial richten Sie ein Classroom-Lab mit virtuellen Computern ein, die von den Teilnehmern im Classroom verwendet werden.  
@@ -48,7 +48,7 @@ Ein Labbesitzer kann andere Benutzer zur Rolle **Ersteller des Labs** hinzufüge
 
         ![Erstellen eines Classroom-Labs](../media/tutorial-setup-classroom-lab/new-lab-window.png)
 4. Führen Sie auf der Seite **Select virtual machine specifications** (Spezifikationen für virtuellen Computer auswählen) die folgenden Schritte aus:
-    1. Wählen Sie eine **Größe** für die virtuellen Computer (VMs), die im Lab erstellt werden. Derzeit sind die folgenden Größen zulässig: **Klein**, **Mittel**, **Groß** und **GPU**.
+    1. Wählen Sie eine **Größe** für die virtuellen Computer (VMs), die im Lab erstellt werden. Derzeit sind die folgenden Größen zulässig: **Klein**, **Mittel**, **Mittel (Virtualisierung)** , **Groß** und **GPU**.
     3. Wählen Sie das **VM-Image** aus, das zum Erstellen von VMs im Lab verwendet werden soll. Bei Auswahl eines Linux-Images wird eine Option zum Aktivieren der Remotedesktopverbindung angezeigt. Ausführliche Informationen finden Sie unter [Aktivieren der Remotedesktopverbindung für Linux](how-to-enable-remote-desktop-linux.md).
     4. Klicken Sie auf **Weiter**.
 
@@ -69,9 +69,11 @@ Ein Labbesitzer kann andere Benutzer zur Rolle **Ersteller des Labs** hinzufüge
 
     ![Seite „Vorlage konfigurieren“ nach Abschluss des Vorgangs](../media/tutorial-setup-classroom-lab/configure-template-after-complete.png)
 8. Führen Sie auf der Seite **Vorlage konfigurieren** die folgenden Schritte aus: Diese Schritte sind für das Tutorial **optional**.
-    1. Stellen Sie eine Verbindung mit der Vorlage für virtuelle Computer her, indem Sie **Verbinden** wählen. Handelt es sich um einen virtuellen Computer mit Linux-Vorlage, legen Sie fest, ob eine Verbindung per SSH oder RDP (sofern RDP aktiviert ist) hergestellt werden soll.
-    2. Installieren und konfigurieren Sie die Software in der Vorlage für virtuelle Computer.     
-    3. Geben Sie eine **Beschreibung** für die Vorlage ein.
+    2. Stellen Sie eine Verbindung mit der Vorlage für virtuelle Computer her, indem Sie **Verbinden** wählen. Handelt es sich um einen virtuellen Computer mit Linux-Vorlage, legen Sie fest, ob eine Verbindung per SSH oder RDP (sofern RDP aktiviert ist) hergestellt werden soll.
+    1. Klicken Sie auf **Kennwort zurücksetzen**, um das Kennwort für die VM zurückzusetzen. 
+    1. Installieren und konfigurieren Sie die Software in der Vorlage für virtuelle Computer. 
+    1. **Beenden** Sie den virtuellen Computer.  
+    1. Geben Sie eine **Beschreibung** für die Vorlage ein.
 9. Wählen Sie auf der Vorlagenseite die Option **Weiter**. 
 10. Führen Sie auf der Seite **Vorlage veröffentlichen** die folgenden Aktionen durch. 
     1. Wenn Sie die Vorlage sofort veröffentlichen möchten, wählen Sie **Veröffentlichen** aus.  
@@ -107,6 +109,40 @@ Ein Labbesitzer kann andere Benutzer zur Rolle **Ersteller des Labs** hinzufüge
 
     ![Benutzerliste](../media/how-to-configure-student-usage/users-list-new.png)
 
+## <a name="set-quotas-for-users"></a>Festlegen von Kontingenten für Benutzer
+Mithilfe der folgenden Schritte können Sie Kontingente pro Benutzer festlegen: 
+
+1. Wählen Sie im linken Menü **Benutzer** aus, wenn die Seite noch nicht aktiv ist. 
+2. Wählen Sie auf der Symbolleiste **Quota per user:** (Kontingent pro Benutzer:) aus. 
+3. Geben Sie auf der Seite **Quota per user** die Anzahl der Stunden an, die Sie jedem Benutzer (Kursteilnehmer) zuteilen möchten: 
+    1. **0 hours (schedule only)** (0 Stunden [nur Zeitplan]). Benutzer können ihre VMs nur während der geplanten Zeit nutzen, oder wenn Sie als Lab-Besitzer die VMs für sie einschalten.
+
+        ![Null Stunden – nur geplante Zeit](../media/how-to-configure-student-usage/zero-hours.png)
+    1. **Total number of lab hours per user** (Gesamtanzahl der Lab-Stunden pro Benutzer). Benutzer können ihre VMs **zusätzlich zur geplanten Zeit** für die festgelegte (in diesem Feld angegebene) Anzahl von Stunden nutzen. Wenn Sie diese Option auswählen, geben Sie die **Anzahl der Stunden** in das Textfeld ein. 
+
+        ![Anzahl von Stunden pro Benutzer](../media/how-to-configure-student-usage/number-of-hours-per-user.png)
+    4. Wählen Sie **Speichern** aus. 
+5. Jetzt sehen Sie auf der Symbolleiste die geänderten Werte: **Kontingent pro Benutzer: &lt;Anzahl Stunden&gt;** . 
+
+    ![Kontingent pro Benutzer](../media/how-to-configure-student-usage/quota-per-user.png)
+
+## <a name="set-a-schedule-for-the-lab"></a>Festlegen eines Zeitplans für das Lab
+Wenn Sie die Kontingenteinstellung mit **0 hours (schedule only)** konfiguriert haben, müssen Sie einen Zeitplan für das Lab festlegen. In diesem Tutorial legen Sie den Zeitplan auf wöchentliche Wiederholung fest.
+
+1. Wechseln Sie zur Seite **Zeitpläne**, und wählen Sie auf der Symbolleiste **Zeitplan hinzufügen** aus. 
+
+    ![Schaltfläche „Zeitplan hinzufügen“ auf der Seite „Zeitpläne“](../media/how-to-create-schedules/add-schedule-button.png)
+2. Wechseln Sie auf der Seite **Zeitplan hinzufügen** oben zu **Wöchentlich**. 
+3. Wählen Sie unter **Schedule days (required)** (Tage planen (erforderlich)) die Tage aus, an denen der Zeitplan wirksam sein soll. Im folgenden Beispiel sind Montag bis Freitag ausgewählt. 
+4. Geben Sie im Feld **Von** das **Startdatum des Zeitplans** ein, oder wählen Sie ein Datum aus, indem Sie die **Kalenderschaltfläche** auswählen. Dies ist ein Pflichtfeld. 
+5. Geben Sie unter **Enddatum des Zeitplans** ein Enddatum ein, an dem die virtuellen Computer heruntergefahren werden sollen, oder wählen Sie eines aus. 
+6. Wählen Sie für **Startzeit** die Zeit aus, zu der die virtuellen Computer gestartet werden sollen. Die Startzeit ist erforderlich, wenn keine Beendigungszeit festgelegt ist. Wählen Sie **Remove start event** (Startereignis entfernen) aus, wenn Sie nur die Beendigungszeit angeben möchten. Wenn die **Startzeit** deaktiviert ist, wählen Sie neben der Dropdownliste die Option **Add start event** (Startereignis hinzufügen) aus, um sie zu aktivieren. 
+7. Wählen Sie für **Beendigungszeit** die Zeit aus, zu der die virtuellen Computer heruntergefahren werden sollen. Die Beendigungszeit ist erforderlich, wenn keine Startzeit festgelegt ist. Wählen Sie **Remove stop event** (Beendigungsereignis entfernen) aus, wenn Sie nur die Startzeit angeben möchten. Wenn die **Endzeit** deaktiviert ist, wählen Sie neben der Dropdownliste die Option **Add stop event** (Beendigungsereignis hinzufügen) aus, um sie zu aktivieren.
+8. Wählen Sie für **Time zone (required)** (Zeitzone (erforderlich)) die Zeitzone für die angegebenen Start- und Beendigungszeiten aus.  
+9. Geben Sie für **Hinweise** eine Beschreibung oder Anmerkungen zu diesem Zeitplan ein. 
+10. Wählen Sie **Speichern** aus. 
+
+    ![Wöchentlicher Zeitplan](../media/how-to-create-schedules/add-schedule-page-weekly.png)
 
 ## <a name="send-an-email-with-the-registration-link"></a>Senden einer E-Mail mit dem Registrierungslink
 

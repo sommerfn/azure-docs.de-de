@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: tutorial
 ms.date: 01/11/2018
 ms.author: yexu
-ms.openlocfilehash: 1bc4bd9b95dc7e45b9b90fbe096ed71c5aa9bedf
-ms.sourcegitcommit: f0f21b9b6f2b820bd3736f4ec5c04b65bdbf4236
+ms.openlocfilehash: 6a9d6ec651cd365995ce63a8dff6d60c8b23dec1
+ms.sourcegitcommit: 5cb0b6645bd5dff9c1a4324793df3fdd776225e4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58447234"
+ms.lasthandoff: 06/21/2019
+ms.locfileid: "67312638"
 ---
 # <a name="incrementally-load-data-from-an-azure-sql-database-to-azure-blob-storage"></a>Inkrementelles Laden von Daten aus Azure SQL-Datenbank in Azure Blob Storage
 In diesem Tutorial erstellen Sie eine Azure Data Factory mit einer Pipeline, bei der Deltadaten aus einer Tabelle in Azure SQL-Datenbank in Azure Blob Storage geladen werden. 
@@ -46,10 +46,10 @@ Allgemeines Lösungsdiagramm:
 
 Hier sind die wesentlichen Schritte beim Erstellen dieser Lösung aufgeführt: 
 
-1. **Select the watermark column (Wählen Sie die Grenzwert-Spalte aus)**.
+1. **Select the watermark column (Wählen Sie die Grenzwert-Spalte aus)** .
     Wählen Sie eine Spalte im Quelldatenspeicher aus, die verwendet werden kann, um die neuen oder aktualisierten Datensätze für jede Ausführung in Segmente aufzuteilen. Normalerweise steigen die Daten in dieser ausgewählten Spalte (z.B. Last_modify_time oder ID), wenn Zeilen erstellt oder aktualisiert werden. Der maximale Wert in dieser Spalte wird als Grenzwert verwendet.
 
-2. **Prepare a data store to store the watermark value (Vorbereiten eines Datenspeichers zum Speichern des Grenzwerts)**. In diesem Tutorial speichern Sie den Grenzwert in einer SQL-Datenbank.
+2. **Prepare a data store to store the watermark value (Vorbereiten eines Datenspeichers zum Speichern des Grenzwerts)** . In diesem Tutorial speichern Sie den Grenzwert in einer SQL-Datenbank.
     
 3. **Erstellen einer Pipeline mit dem folgenden Workflow:** 
     
@@ -215,7 +215,7 @@ In diesem Tutorial erstellen Sie eine Pipeline mit zwei Lookup-Aktivitäten, ein
     7. Vergewissern Sie sich auf der Registerkarte **Verbindung**, dass unter **Verknüpfter Dienst** die Option **AzureSqlDatabaseLinkedService** ausgewählt ist.
        
         ![Fenster für neuen verknüpften Dienst](./media/tutorial-incremental-copy-portal/azure-sql-linked-service-settings.png)
-10. Wählen Sie unter **Tabelle** die Option **[dbo].[watermarktable]**. Klicken Sie auf **Datenvorschau**, wenn Sie für die Daten der Tabelle eine Vorschau anzeigen möchten.
+10. Wählen Sie unter **Tabelle** die Option **[dbo].[watermarktable]** . Klicken Sie auf **Datenvorschau**, wenn Sie für die Daten der Tabelle eine Vorschau anzeigen möchten.
 
     ![Grenzwertdataset – Verbindungseinstellungen](./media/tutorial-incremental-copy-portal/watermark-dataset-connection-settings.png)
 11. Wechseln Sie zum Pipeline-Editor, indem Sie oben auf die Registerkarte „Pipeline“ oder in der Strukturansicht auf der linken Seite auf den Namen der Pipeline klicken. Vergewissern Sie sich im Eigenschaftenfenster für die **Lookup**-Aktivität, dass im Feld **Source Dataset** (Quelldataset) die Option **WatermarkDataset** ausgewählt ist. 
@@ -234,11 +234,11 @@ In diesem Tutorial erstellen Sie eine Pipeline mit zwei Lookup-Aktivitäten, ein
 16. Wechseln Sie zur Registerkarte **Verbindung**, und führen Sie die folgenden Schritte aus: 
 
     1. Wählen Sie unter **Verknüpfter Dienst** die Option **AzureSqlDatabaseLinkedService**.
-    2. Wählen Sie unter „Tabelle“ die Option **[dbo].[data_source_table]**. Zu einem späteren Zeitpunkt des Tutorials geben Sie eine Abfrage für dieses Dataset an. Die Abfrage hat Vorrang vor der Tabelle, die Sie in diesem Schritt angeben. 
+    2. Wählen Sie unter „Tabelle“ die Option **[dbo].[data_source_table]** . Zu einem späteren Zeitpunkt des Tutorials geben Sie eine Abfrage für dieses Dataset an. Die Abfrage hat Vorrang vor der Tabelle, die Sie in diesem Schritt angeben. 
 
         ![Zweite Lookup-Aktivität – Neues Dataset](./media/tutorial-incremental-copy-portal/source-dataset-connection.png)
 17. Wechseln Sie zum Pipeline-Editor, indem Sie oben auf die Registerkarte „Pipeline“ oder in der Strukturansicht auf der linken Seite auf den Namen der Pipeline klicken. Vergewissern Sie sich im Eigenschaftenfenster für die **Lookup**-Aktivität, dass im Feld **Source Dataset** (Quelldataset) die Option **SourceDataset** ausgewählt ist. 
-18. Wählen Sie im Feld **Abfrage verwenden** die Option **Abfrage**, und geben Sie die folgende Abfrage ein: Sie wählen hierbei in der Tabelle **data_source_table** lediglich den höchsten Wert von **LastModifytime** aus. Wenn Sie diese Abfrage nicht verwenden, ruft das Dataset alle Zeilen der Tabelle ab, für die Sie in der Datasetdefinition den Tabellennamen (data_source_table) angegeben haben.
+18. Wählen Sie im Feld **Abfrage verwenden** die Option **Abfrage**, und geben Sie die folgende Abfrage ein: Sie wählen hierbei in der Tabelle **data_source_table** lediglich den höchsten Wert von **LastModifytime** aus. Stellen Sie sicher, dass Sie **Nur erste Zeile** mit einem Häkchen versehen haben.
 
     ```sql
     select MAX(LastModifytime) as NewWatermarkvalue from data_source_table
@@ -306,10 +306,10 @@ In diesem Tutorial erstellen Sie eine Pipeline mit zwei Lookup-Aktivitäten, ein
     1. Wählen Sie unter **Name der gespeicherten Prozedur** die Option **usp_write_watermark**. 
     2. Klicken Sie zum Angeben von Werten für die Parameter der gespeicherten Prozedur auf **Import parameter** (Importparameter), und geben Sie die folgenden Werte für die Parameter ein: 
 
-        | NAME | Type | Wert | 
+        | NAME | type | Wert | 
         | ---- | ---- | ----- | 
         | LastModifiedtime | DateTime | @{activity('LookupNewWaterMarkActivity').output.firstRow.NewWatermarkvalue} |
-        | TableName | Zeichenfolge | @{activity('LookupOldWaterMarkActivity').output.firstRow.TableName} |
+        | TableName | string | @{activity('LookupOldWaterMarkActivity').output.firstRow.TableName} |
 
     ![Stored Procedure-Aktivität – Einstellungen für gespeicherte Prozeduren](./media/tutorial-incremental-copy-portal/sproc-activity-stored-procedure-settings.png)
 27. Klicken Sie zum Überprüfen der Pipelineeinstellungen in der Symbolleiste auf **Überprüfen**. Vergewissern Sie sich, dass keine Validierungsfehler vorliegen. Schließen Sie das Fenster **Pipeline Validation Report** (Pipelineüberprüfungsbericht), indem Sie auf >> klicken.   

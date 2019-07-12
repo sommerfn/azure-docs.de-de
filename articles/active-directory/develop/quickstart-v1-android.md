@@ -17,12 +17,12 @@ ms.author: ryanwi
 ms.reviewer: brandwe, jmprieur, saeeda
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6a05d8b9182451fc52dd1860dac1dcce57ba2c55
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.openlocfilehash: 6023e4bd4028cf1679051b6665297afd00b1eba7
+ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66121995"
+ms.lasthandoff: 07/01/2019
+ms.locfileid: "67482658"
 ---
 # <a name="quickstart-sign-in-users-and-call-the-microsoft-graph-api-from-an-android-app"></a>Schnellstart: Benutzeranmeldung und Aufrufen der Microsoft Graph-API aus einer Android-App
 
@@ -45,7 +45,7 @@ Zu Beginn benötigen Sie einen Azure AD-Mandanten zum Erstellen von Benutzern un
 
 ## <a name="scenario-sign-in-users-and-call-the-microsoft-graph"></a>Szenario: Anmelden von Benutzern und Aufrufen von Microsoft Graph
 
-![Topologie](./media/quickstart-v1-android/active-directory-android-topology.png)
+![Zeigt die Azure AD- und Android-Topologie](./media/quickstart-v1-android/active-directory-android-topology.png)
 
 Sie können diese App für alle Azure AD-Konten verwenden. Sie unterstützt einzelinstanzen- und mehrinstanzenfähige Szenarien (dies wird Schritt für Schritt erläutert). Sie veranschaulicht, wie Sie Apps erstellen können, die über Microsoft Graph eine Verbindung mit Unternehmensbenutzern herstellen und auf deren Azure- und Office 365-Daten zugreifen. Während des Authentifizierungsvorgangs muss sich der Endbenutzer anmelden und den Berechtigungen der Anwendung zustimmen. In manchen Fällen ist für die App möglicherweise die Zustimmung eines Administrators erforderlich. Der Großteil der Logik in diesem Beispiel zeigt, wie die Authentifizierung eines Endbenutzers erfolgt und ein Grundaufruf an Microsoft Graph ausgegeben wird.
 

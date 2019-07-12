@@ -12,12 +12,12 @@ ms.date: 04/08/2019
 ms.author: mimart
 ms.reviewer: arvinh,luleon
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fa18bc637ec31a1f83b5cab090e008715c5e0c2a
-ms.sourcegitcommit: be9fcaace62709cea55beb49a5bebf4f9701f7c6
+ms.openlocfilehash: 0f6707c780931eac58e2a870c321385e63bd948a
+ms.sourcegitcommit: 978e1b8cac3da254f9d6309e0195c45b38c24eb5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/17/2019
-ms.locfileid: "65825014"
+ms.lasthandoff: 07/03/2019
+ms.locfileid: "67550465"
 ---
 # <a name="tutorial-configure-saml-based-single-sign-on-for-an-application-with-azure-active-directory"></a>Tutorial: Konfigurieren des SAML-basierten einmaligen Anmeldens für eine Anwendung mit Azure Active Directory
 
@@ -138,7 +138,7 @@ So weisen Sie einen Benutzer oder eine Gruppe zur Anwendung zu:
 
 Sie sind fast fertig.  Im letzten Schritt müssen Sie die Anwendung so einrichten, dass Azure AD als SAML-Identitätsanbieter verwendet wird. 
 
-1. Scrollen Sie nach unten zum Abschnitt **<applicationName> einrichten**. In diesem Tutorial heißt dieser Abschnitt **Set up GitHub-test**. 
+1. Scrollen Sie nach unten zum Abschnitt **\<applicationName> einrichten**. In diesem Tutorial heißt dieser Abschnitt **GitHub-test einrichten**. 
 2. Kopieren Sie den Wert aus jeder Zeile dieses Abschnitts. Fügen Sie die einzelnen Werte in der entsprechenden Zeile im Abschnitt **Grundlegende SAML-Konfiguration** ein. Kopieren Sie beispielsweise den Wert **Anmelde-URL** aus dem Abschnitt **GitHub-test einrichten**, und fügen Sie ihn in das Feld **Anmelde-URL** im Abschnitt **Grundlegende SAML-Konfiguration** ein usw.
 3. Wenn Sie alle Werte in die entsprechenden Felder eingefügt haben, klicken Sie auf **Speichern**.
 
@@ -147,7 +147,7 @@ Sie sind fast fertig.  Im letzten Schritt müssen Sie die Anwendung so einrichte
 Sie können Ihre Einstellungen jetzt testen.  
 
 1. Öffnen Sie die SSO-Einstellungen für Ihre Anwendung. 
-2. Scrollen Sie zum Abschnitt **Einmaliges Anmelden mit <applicationName> überprüfen**. In diesem Tutorial heißt dieser Abschnitt **GitHub-test einrichten**.
+2. Scrollen Sie zum Abschnitt **Einmaliges Anmelden mit \<applicationName> überprüfen**. In diesem Tutorial heißt dieser Abschnitt **GitHub-test einrichten**.
 3. Klicken Sie auf **Test**. Die Testoptionen werden angezeigt.
 4. Klicken Sie auf **Als aktueller Benutzer anmelden**. Dadurch können Sie zunächst überprüfen, ob einmaliges Anmelden für Sie als Administrator funktioniert.
 

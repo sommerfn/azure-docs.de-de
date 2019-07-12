@@ -10,14 +10,15 @@ ms.workload: web
 ms.devlang: python
 ms.topic: tutorial
 ms.date: 03/27/2019
-ms.author: beverst;cephalin
+ms.author: cephalin
+ms.reviewer: beverst
 ms.custom: seodec18
-ms.openlocfilehash: b3d262a33ecbc35ada278019ee0998486bc92efe
-ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
+ms.openlocfilehash: 3fbc9429da393f4df14ade57d6bd20219b5fcfa2
+ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59678920"
+ms.lasthandoff: 07/07/2019
+ms.locfileid: "67617519"
 ---
 # <a name="build-a-python-and-postgresql-app-in-azure-app-service"></a>Erstellen einer Python- und PostgreSQL-App in Azure App Service
 
@@ -286,7 +287,8 @@ In diesem Schritt stellen Sie die mit PostgreSQL verbundene Python-Anwendung in 
 Django überprüft den `HTTP_HOST`-Header in eingehenden Anforderungen. Damit Ihre Django-App in App Service funktioniert, müssen Sie den vollqualifizierten Domänennamen der App den zulässigen Hosts hinzufügen. Öffnen Sie _azuresite/settings.py_, und suchen Sie nach der Einstellung `ALLOWED_HOSTS`. Ändern Sie die Zeile wie folgt:
 
 ```python
-ALLOWED_HOSTS = [os.environ['WEBSITE_SITE_NAME'] + '.azurewebsites.net', '127.0.0.1'] if 'WEBSITE_SITE_NAME' in os.environ else []
+ALLOWED_HOSTS = [os.environ['WEBSITE_SITE_NAME'] + '.azurewebsites.net',
+                 '127.0.0.1'] if 'WEBSITE_SITE_NAME' in os.environ else []
 ```
 
 Django unterstützt auch nicht die [Bereitstellung von statischen Dateien in der Produktion](https://docs.djangoproject.com/en/2.1/howto/static-files/deployment/), sodass Sie dies manuell aktivieren müssen. Für dieses Tutorial verwenden Sie [WhiteNoise](https://whitenoise.evans.io/en/stable/). Das WhiteNoise-Paket ist bereits in _requirements.txt_ enthalten. Sie müssen lediglich Django für dessen Verwendung konfigurieren. 

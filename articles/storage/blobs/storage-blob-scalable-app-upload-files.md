@@ -10,12 +10,12 @@ ms.date: 02/20/2018
 ms.author: rogarana
 ms.custom: mvc
 ms.subservice: blobs
-ms.openlocfilehash: 63de2045498b312580640859c1911046f9785d8e
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: 83a888a28c1d1e51a1fe59649dfb956cd0f72203
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65794362"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67071425"
 ---
 # <a name="upload-large-amounts-of-random-data-in-parallel-to-azure-storage"></a>Paralleles Hochladen großer Mengen von Zufallsdaten in ein Azure Storage-Konto
 
@@ -31,7 +31,7 @@ Im zweiten Teil der Reihe lernen Sie Folgendes:
 
 Azure Blob Storage stellt einen skalierbaren Dienst zum Speichern Ihrer Daten bereit. Um sicherzustellen, dass Ihre Anwendung so leistungsfähig wie möglich ist, sollten Sie die Funktionsweise von Blobspeicher verstehen. Es ist unverzichtbar, die Grenzwerte für Azure-Blobspeicher zu kennen. Informationen zu diesen Grenzwerten finden Sie unter [Skalierbarkeitsziele für Azure Blob Storage](../common/storage-scalability-targets.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json#azure-blob-storage-scale-targets).
 
-[Partitionsbenennung](../common/storage-performance-checklist.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json#subheading47) ist ein weiterer wichtiger Faktor beim Entwerfen einer Hochleistungsanwendung mithilfe von Blobspeichern. Für Azure-Speicher wird ein bereichsbasiertes Partitionierungsschema verwendet, um Skalierung und Lastausgleich vorzunehmen. Diese Konfiguration bedeutet, dass Dateien mit ähnlichen Benennungskonventionen oder Präfixen in derselben Partition gespeichert werden. Diese Logik beinhaltet den Namen des Containers, in den die Dateien hochgeladen werden. In diesem Tutorial verwenden Sie Dateien, die sowohl GUIDs für Namen als auch zufällig generierten Inhalt haben. Die Dateien werden dann in fünf verschiedene Container mit zufälligen Namen hochgeladen.
+[Partitionsbenennung](../common/storage-performance-checklist.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json#subheading47) ist ein weiterer potenziell wichtiger Faktor beim Entwerfen einer Hochleistungsanwendung, die Blobs verwendet. Bei Blockgrößen größer oder gleich 4 MiB werden [Blockblobs mit hohem Durchsatz](https://azure.microsoft.com/blog/high-throughput-with-azure-blob-storage/) verwendet, bei denen die Partitionsbenennung die Leistung nicht beeinträchtigt. Bei Blockgrößen kleiner als 4 MiB wird von Azure-Speicher ein bereichsbasiertes Partitionierungsschema verwendet, um Skalierung und Lastenausgleich vorzunehmen. Diese Konfiguration bedeutet, dass Dateien mit ähnlichen Benennungskonventionen oder Präfixen in derselben Partition gespeichert werden. Diese Logik beinhaltet den Namen des Containers, in den die Dateien hochgeladen werden. In diesem Tutorial verwenden Sie Dateien, die sowohl GUIDs für Namen als auch zufällig generierten Inhalt haben. Die Dateien werden dann in fünf verschiedene Container mit zufälligen Namen hochgeladen.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -71,7 +71,7 @@ Zusätzlich zum Festlegen der Thread- und der Verbindungsgrenzwerte werden die [
 
 |Eigenschaft|Wert|BESCHREIBUNG|
 |---|---|---|
-|[ParallelOperationThreadCount](/dotnet/api/microsoft.azure.storage.blob.blobrequestoptions.paralleloperationthreadcount)| 8| Die Einstellung bewirkt, dass der Blob beim Hochladen in Blöcke aufgeteilt wird. Soll die höchste Leistung erzielt werden, muss dieser Wert gleich dem Achtfachen der Anzahl von Kernen sein. |
+|[ParallelOperationThreadCount](/dotnet/api/microsoft.azure.storage.blob.blobrequestoptions.paralleloperationthreadcount)| 8| Die Einstellung bewirkt, dass der Blob beim Hochladen in Blöcke aufgeteilt wird. Wenn die höchste Leistung erzielt werden soll, muss dieser Wert dem Achtfachen der Anzahl von Kernen entsprechen. |
 |[DisableContentMD5Validation](/dotnet/api/microsoft.azure.storage.blob.blobrequestoptions.disablecontentmd5validation)| true| Diese Eigenschaft deaktiviert die Überprüfung des MD5-Hashs des hochgeladenen Inhalts. Die Deaktivierung der MD5-Überprüfung führt zu einer schnelleren Übertragung. Die Gültigkeit oder Integrität der übertragenen Dateien wird jedoch nicht bestätigt.   |
 |[StoreBlobContentMD5](/dotnet/api/microsoft.azure.storage.blob.blobrequestoptions.storeblobcontentmd5)| false| Diese Eigenschaft bestimmt, ob ein MD5-Hash berechnet und mit der Datei gespeichert wird.   |
 | [RetryPolicy](/dotnet/api/microsoft.azure.storage.blob.blobrequestoptions.retrypolicy)| 2-Sekunden-Backoff mit max. 10 Wiederhol. |Bestimmt die Wiederholungsrichtlinie von Anforderungen. Nach einem Verbindungsfehler erfolgt eine Wiederholung. In diesem Beispiel wird eine [ExponentialRetry](/dotnet/api/microsoft.azure.batch.common.exponentialretry)-Richtlinie mit einem Backoff von 2 Sekunden und maximal 10 Wiederholungen konfiguriert. Diese Einstellung ist wichtig, wenn Ihre Anwendung den [Blobspeicher-Skalierbarkeitszielen](../common/storage-scalability-targets.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json#azure-blob-storage-scale-targets) nahekommt.  |

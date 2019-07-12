@@ -13,15 +13,15 @@ ms.workload: web
 ms.tgt_pltfrm: na
 ms.devlang: nodejs
 ms.topic: tutorial
-ms.date: 06/06/201
+ms.date: 06/06/2019
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: 1b43463537f620eb59f78184de41ec37c26b97ed
-ms.sourcegitcommit: 7042ec27b18f69db9331b3bf3b9296a9cd0c0402
+ms.openlocfilehash: bbb064c358eba2dd64ba9ae86540a30cb56adb66
+ms.sourcegitcommit: ccb9a7b7da48473362266f20950af190ae88c09b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/06/2019
-ms.locfileid: "66742838"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67595032"
 ---
 # <a name="tutorial-map-an-existing-custom-dns-name-to-azure-app-service"></a>Tutorial: Zuordnen eines vorhandenen benutzerdefinierten DNS-Namens zu Azure App Service
 
@@ -68,7 +68,7 @@ Wählen Sie im linken Menü **App Services** und anschließend den Namen der App
 
 Die Verwaltungsseite der App Service-App wird angezeigt.  
 
-<a name="checkpricing"></a>
+<a name="checkpricing" aria-hidden="true"></a>
 
 ### <a name="check-the-pricing-tier"></a>Überprüfen des Tarifs
 
@@ -82,7 +82,7 @@ Der aktuelle Tarif der App wird durch einen blauen Rahmen hervorgehoben. Vergewi
 
 Wenn sich der App Service-Plan nicht im Tarif **F1** befindet, schließen Sie die Seite **Zentral hochskalieren**, und fahren Sie mit [Zuordnen eines CNAME-Eintrags](#cname) fort.
 
-<a name="scaleup"></a>
+<a name="scaleup" aria-hidden="true"></a>
 
 ### <a name="scale-up-the-app-service-plan"></a>Zentrales Hochskalieren des App Service-Plans
 
@@ -96,7 +96,7 @@ Wenn die unten angegebene Benachrichtigung angezeigt wird, ist der Skalierungsvo
 
 ![Bestätigung des Skalierungsvorgangs](./media/app-service-web-tutorial-custom-domain/scale-notification.png)
 
-<a name="cname"></a>
+<a name="cname" aria-hidden="true"></a>
 
 ## <a name="map-your-domain"></a>Zuordnen Ihrer Domäne
 
@@ -162,7 +162,7 @@ Wenn Sie einen Schritt ausgelassen haben oder Ihnen zu einem früheren Zeitpunkt
 
 ![Überprüfungsfehler](./media/app-service-web-tutorial-custom-domain/verification-error-cname.png)
 
-<a name="a"></a>
+<a name="a" aria-hidden="true"></a>
 
 ### <a name="map-an-a-record"></a>Zuordnen eines A-Eintrags
 
@@ -213,7 +213,7 @@ Wenn die Einträge hinzugefügt werden, sieht die Seite mit den DNS-Einträgen w
 
 ![Seite der DNS-Einträge](./media/app-service-web-tutorial-custom-domain/a-record.png)
 
-<a name="enable-a"></a>
+<a name="enable-a" aria-hidden="true"></a>
 
 #### <a name="enable-the-a-record-mapping-in-the-app"></a>Aktivieren der Zuordnung von A-Einträgen in der App
 
@@ -246,7 +246,7 @@ Wenn Sie einen Schritt ausgelassen haben oder Ihnen zu einem früheren Zeitpunkt
 
 ![Überprüfungsfehler](./media/app-service-web-tutorial-custom-domain/verification-error.png)
 
-<a name="wildcard"></a>
+<a name="wildcard" aria-hidden="true"></a>
 
 ### <a name="map-a-wildcard-domain"></a>Zuordnen einer Platzhalterdomäne
 
@@ -310,7 +310,7 @@ Falls Sie zu der URL Ihrer benutzerdefinierten Domäne navigieren und dabei eine
 - Der konfigurierten benutzerdefinierten Domäne fehlt ein A-Eintrag und/oder ein CNAME-Eintrag.
 - Im Browserclient ist die alte IP-Adresse Ihrer Domäne zwischengespeichert. Leeren Sie den Cache, und testen Sie die DNS-Auflösung erneut. Auf einem Windows-Computer können Sie den Cache mithilfe von `ipconfig /flushdns` leeren.
 
-<a name="virtualdir"></a>
+<a name="virtualdir" aria-hidden="true"></a>
 
 ## <a name="migrate-an-active-domain"></a>Migrieren einer aktiven Domäne
 

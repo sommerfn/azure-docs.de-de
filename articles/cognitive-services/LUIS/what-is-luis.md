@@ -7,14 +7,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: overview
-ms.date: 01/23/2019
+ms.date: 06/11/2019
 ms.author: diberry
-ms.openlocfilehash: 2bb50f985b99a3fb62e7b8a61bb0f9ce2dd402e1
-ms.sourcegitcommit: bb85a238f7dbe1ef2b1acf1b6d368d2abdc89f10
+ms.openlocfilehash: 569b33d299f52f0da50d8a8992420754aa85b533
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/10/2019
-ms.locfileid: "65522007"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67062169"
 ---
 # <a name="what-is-language-understanding-luis"></a>Worum handelt es sich bei Language Understanding (LUIS)?
 
@@ -101,7 +101,7 @@ LUIS verfügt über Tools, Versionsverwaltung und Kollaboration mit anderen LUIS
 LUIS kann als REST-API mit allen Produkten, Diensten oder Frameworks eingesetzt werden, die HTTP-Anforderungen stellen. Die folgende Liste enthält die am häufigsten mit LUIS verwendeten Microsoft-Produkte und -Dienste.
 
 Die am häufigsten verwendete Clientanwendung für LUIS ist:
-* [Web-App-Bot](https://docs.microsoft.com/azure/bot-service/?view=azure-bot-service-3.0) erstellt schnell einen LUIS-fähigen Chatbot für die Kommunikation mit einem Benutzer über die Texteingabe. Verwendet [Bot Framework][bot-framework] Version [3.x](https://github.com/Microsoft/BotBuilder) oder [4.x](https://github.com/Microsoft/botbuilder-dotnet) für eine vollständige Bot-Oberfläche.
+* [Web-App-Bot](https://docs.microsoft.com/azure/bot-service/?view=azure-bot-service-4.0) erstellt schnell einen LUIS-fähigen Chatbot für die Kommunikation mit einem Benutzer über die Texteingabe. Verwendet [Bot Framework][bot-framework] Version [4.x](https://github.com/Microsoft/botbuilder-dotnet) für eine vollständige Bot-Erfahrung.
 
 Tools zum schnellen und einfachen Nutzen von LUIS mit einem Bot:
 * [LUIS-CLI](https://github.com/Microsoft/botbuilder-tools/tree/master/packages/LUIS) Mit dem NPM-Paket sind Erstellungen und Vorhersagen entweder mit einem eigenständigen Befehlszeilentool oder als Import möglich. 

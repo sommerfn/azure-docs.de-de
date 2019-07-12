@@ -2,18 +2,18 @@
 title: 'Tutorial: Analysieren von Ereignissen aus dem Azure Digital Twins-Setup | Microsoft-Dokumentation'
 description: In diesem Tutorial erfahren Sie, wie Sie Ereignisse in Ihren Azure Digital Twins-Gebäudebereichen mit Azure Time Series Insights visualisieren und analysieren.
 services: digital-twins
-author: dsk-2015
+author: alinamstanciu
 ms.custom: seodec18
 ms.service: digital-twins
 ms.topic: tutorial
 ms.date: 12/18/2018
-ms.author: dkshir
-ms.openlocfilehash: 0c441974b40f35bcc39aec05e5ffe66b68e46c10
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.author: alinast
+ms.openlocfilehash: 3f6111457d3438b80ace8cd557747ab8c799efd3
+ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57542266"
+ms.lasthandoff: 07/01/2019
+ms.locfileid: "67484738"
 ---
 # <a name="tutorial-visualize-and-analyze-events-from-your-azure-digital-twins-spaces-by-using-time-series-insights"></a>Tutorial: Visualisieren und Analysieren von Ereignissen in den Azure Digital Twins-Gebäudebereichen mit Time Series Insights
 
@@ -52,7 +52,7 @@ Mit dem [Event Hubs](../event-hubs/event-hubs-about.md)-Dienst können Sie eine 
 
 1. Geben Sie einen **Namen** für den Event Hubs-Namespace ein. Wählen Sie unter **Tarif** die Option **Standard** sowie Ihr **Abonnement**, die **Ressourcengruppe**, die Sie für Ihre Digital Twins-Instanz verwendet haben, sowie den **Standort** aus. Klicken Sie auf **Erstellen**.
 
-1. Wählen Sie in der Event Hubs-Namespacebereitstellung unter **RESSOURCE** den Namespace aus.
+1. Wählen Sie in der Event Hubs-Namespacebereitstellung erst den Bereich **Übersicht** und dann **Zu Ressource wechseln** aus.
 
     ![Event Hubs-Namespace nach der Bereitstellung](./media/tutorial-facilities-analyze/open-event-hub-ns.png)
 
@@ -132,17 +132,19 @@ Mit dem [Event Hubs](../event-hubs/event-hubs-about.md)-Dienst können Sie eine 
 
 1. Suchen Sie nach einer neuen **Time Series Insights**-Ressource, und wählen Sie sie aus. Klicken Sie auf **Erstellen**.
 
-1. Geben Sie einen **Namen** für Ihre Time Series Insights-Instanz ein, und wählen Sie dann Ihr **Abonnement** aus. Wählen Sie die **Ressourcengruppe**, die Sie für Ihre Digital Twins-Instanz verwendet haben, und den **Standort** aus. Klicken Sie auf **Erstellen**.
+1. Geben Sie einen **Namen** für Ihre Time Series Insights-Instanz ein, und wählen Sie dann Ihr **Abonnement** aus. Wählen Sie die **Ressourcengruppe**, die Sie für Ihre Digital Twins-Instanz verwendet haben, und den **Standort** aus. Klicken Sie auf **Weiter: Ereignisquelle** oder die Registerkarte **Ereignisquelle**.
 
     ![Auswahl zum Erstellen einer Time Series Insights-Instanz](./media/tutorial-facilities-analyze/create-tsi.png)
 
-1. Öffnen Sie nach der Bereitstellung die Time Series Insights-Umgebung und dann den Bereich **Ereignisquellen**. Wählen Sie im oberen Bereich die Schaltfläche **Hinzufügen**, um eine Consumergruppe hinzuzufügen.
-
-1. Geben Sie im Bereich **Neue Ereignisquelle** einen **Namen** ein, und stellen Sie sicher, dass die anderen Werte korrekt ausgewählt sind. Wählen Sie unter **Event Hub-Richtliniennamen** den Namen **ManageSend** und anschließend die im vorherigen Abschnitt erstellte Consumergruppe für **Event Hub-Consumergruppe** aus. Klicken Sie auf **Erstellen**.
+1. Geben Sie auf der Registerkarte **Ereignisquelle** einen **Namen** ein. Wählen Sie **Ereignishub** als **Quelltyp** aus, und stellen Sie sicher, dass die anderen Werte ordnungsgemäß ausgewählt sind. Wählen Sie unter **Event Hub-Richtlinienname** den Namen **ManageSend** und anschließend die im vorherigen Abschnitt erstellte Consumergruppe für **Event Hub-Consumergruppe** aus. Klicken Sie auf **Überprüfen + erstellen**.
 
     ![Auswahl zum Erstellen einer Ereignisquelle](./media/tutorial-facilities-analyze/tsi-event-source.png)
 
-1. Öffnen Sie den Bereich **Übersicht** für Ihre Time Series Insights-Umgebung, und wählen Sie oben die Schaltfläche **Zur Umgebung wechseln**. Falls eine Datenzugriffswarnung angezeigt wird, öffnen Sie den Bereich **Datenzugriffsrichtlinien** für Ihre Time Series Insights-Instanz, und wählen Sie **Hinzufügen**, die Rolle **Mitwirkender** und anschließend den gewünschten Benutzer aus.
+1. Überprüfen Sie im Bereich **Überprüfen + erstellen** die von Ihnen eingegebenen Informationen, und klicken Sie auf **Erstellen**.
+
+1. Wählen Sie im Bereitstellungsbereich die Time Series Insights-Ressource aus, die Sie gerade erstellt haben. Der Bereich **Übersicht** für Ihre Time Series Insights-Umgebung wird geöffnet.
+
+1. Klicken Sie oben auf die Schaltfläche **Zur Umgebung wechseln**. Falls eine Datenzugriffswarnung angezeigt wird, öffnen Sie den Bereich **Datenzugriffsrichtlinien** für Ihre Time Series Insights-Instanz, und wählen Sie **Hinzufügen**, die Rolle **Mitwirkender** und anschließend den gewünschten Benutzer aus.
 
 1. Die Schaltfläche **Zur Umgebung wechseln** öffnet den [Time Series Insights-Explorer](../time-series-insights/time-series-insights-explorer.md). Wenn keine Ereignisse angezeigt werden, simulieren Sie Geräteereignisse, indem Sie zum Projekt **device-connectivity** des Digital Twins-Beispiels navigieren und `dotnet run` ausführen.
 

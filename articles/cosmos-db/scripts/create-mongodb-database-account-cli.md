@@ -6,14 +6,14 @@ ms.author: mjbrown
 ms.service: cosmos-db
 ms.subservice: cosmosdb-mongo
 ms.topic: sample
-ms.date: 10/26/2018
+ms.date: 7/2/2019
 ms.reviewer: sngun
-ms.openlocfilehash: 8aae88b24cee64136fb247744325424a446a7bbf
-ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
+ms.openlocfilehash: a256a0ff5164ec9b25aea3849f20643ee3719fac
+ms.sourcegitcommit: 5bdd50e769a4d50ccb89e135cfd38b788ade594d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54043157"
+ms.lasthandoff: 07/03/2019
+ms.locfileid: "67541422"
 ---
 # <a name="create-an-azure-cosmos-db-account-with-azure-cosmos-dbs-api-for-mongodb-using-azure-cli"></a>Erstellen eines Azure Cosmos DB-Kontos mit der Azure Cosmos DB-API für MongoDB mithilfe der Azure CLI
 
@@ -22,6 +22,8 @@ Dieses CLI-Beispielskript erstellt ein Cosmos-Konto mit der Azure Cosmos DB-API 
 [!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
 
 Wenn Sie die Befehlszeilenschnittstelle lokal installieren und verwenden möchten, müssen Sie für dieses Thema die Azure CLI in Version 2.0 oder höher ausführen. Führen Sie `az --version` aus, um die Version zu finden. Informationen zum Durchführen einer Installation oder eines Upgrades finden Sei bei Bedarf unter [Installieren der Azure CLI](/cli/azure/install-azure-cli).
+
+[!NOTE] Weitere Informationen zu Benennungskonventionen für Datenbanken und Container finden Sie unter [Arbeiten mit Datenbanken, Container und Elemente in Azure Cosmos DB](../databases-containers-items.md).
 
 ## <a name="sample-script"></a>Beispielskript
 

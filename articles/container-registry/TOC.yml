@@ -41,10 +41,14 @@
   items:
     - name: Containerregistrierungs-SKUs
       href: container-registry-skus.md
+    - name: 'Registrierungen, Repositorys und Images'
+      href: container-registry-concepts.md
     - name: Imagespeicher
       href: container-registry-storage.md
     - name: Inhaltsformate
       href: container-registry-image-formats.md
+    - name: Markierung und Versionierung von Images
+      href: container-registry-image-tag-version.md
     - name: Georeplikation
       href: container-registry-geo-replication.md
     - name: Registrierung – bewährte Methoden

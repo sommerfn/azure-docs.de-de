@@ -4,25 +4,22 @@ description: Verwenden Sie Resource Manager-Vorlagen mit dem Azure-Bereitstellun
 services: azure-resource-manager
 documentationcenter: ''
 author: mumian
-manager: dougeby
-editor: tysonn
 ms.service: azure-resource-manager
-ms.workload: multiple
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.date: 05/23/2019
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: aa58d0405176a63ff9d1cc25b572f3f3754dbbdc
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.openlocfilehash: a42ccb1c0e60f5bf1568ccea13392186577f2875
+ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/27/2019
-ms.locfileid: "66238855"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67205723"
 ---
 # <a name="tutorial-use-azure-deployment-manager-with-resource-manager-templates-public-preview"></a>Tutorial: Verwenden des Azure-Bereitstellungs-Managers mit Resource Manager-Vorlagen (Public Preview)
 
-Hier erfahren Sie, wie Sie Ihre Anwendungen mit dem [Azure-Bereitstellungs-Manager](./deployment-manager-overview.md) über mehrere Regionen hinweg bereitstellen. Um den Bereitstellungs-Manager verwenden zu können, müssen zwei Vorlagen erstellt werden:
+Hier erfahren Sie, wie Sie Ihre Anwendungen mit dem [Azure-Bereitstellungs-Manager](./deployment-manager-overview.md) über mehrere Regionen hinweg bereitstellen. Wenn Sie einen schnelleren Ansatz bevorzugen, erstellen Sie mit dem [Schnellstart für den Azure-Bereitstellungs-Manager](https://github.com/Azure-Samples/adm-quickstart) die erforderlichen Konfigurationen in Ihrem Abonnement und passt die Artefakte an, um eine Anwendung über mehrere Regionen hinweg bereitzustellen. Im Schnellstart werden dieselben Aufgaben wie in diesem Tutorial ausgeführt.
+
+Um den Bereitstellungs-Manager verwenden zu können, müssen zwei Vorlagen erstellt werden:
 
 * **Eine Topologievorlage:** Beschreibt, welche Azure-Ressourcen Ihre Anwendungen umfassen und wo sie bereitgestellt werden sollen.
 * **Eine Rolloutvorlage:** Beschreibt die Schritte, die beim Bereitstellen Ihrer Anwendungen ausgeführt werden müssen.
@@ -44,7 +41,10 @@ Dieses Tutorial enthält die folgenden Aufgaben:
 > * Bereitstellen der neueren Version
 > * Bereinigen von Ressourcen
 
-Die REST-API-Referenz für den Azure-Bereitstellungs-Manager finden Sie [hier](https://docs.microsoft.com/rest/api/deploymentmanager/).
+Zusätzliche Ressourcen:
+
+* Die [REST-API-Referenz für den Azure-Bereitstellungs-Manager](https://docs.microsoft.com/rest/api/deploymentmanager/).
+* [Tutorial: Verwenden der Integritätsprüfung im Azure-Bereitstellungs-Manager (Public Preview)](./deployment-manager-tutorial-health-check.md).
 
 Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/) erstellen, bevor Sie beginnen.
 

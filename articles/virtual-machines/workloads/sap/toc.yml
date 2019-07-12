@@ -128,6 +128,8 @@
           href: dbms_guide_ibm.md
         - name: Hochverfügbarkeit von IBM DB2 LUW auf Azure-VMs unter SUSE Linux Enterprise Server
           href: dbms-guide-ha-ibm.md
+        - name: Hochverfügbarkeit von IBM DB2 LUW auf virtuellen Azure-Computern unter Red Hat Enterprise Linux Server
+          href: high-availability-guide-rhel-ibm-db2-luw.md
         - name: Azure Virtual Machines – SAP ASE-DBMS-Bereitstellung für SAP-Workload
           href: dbms_guide_sapase.md
         - name: 'Bereitstellung von SAP MaxDB, SAP liveCache und SAP Content Server in Azure'

@@ -13,15 +13,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 06/06/2019
+ms.date: 06/14/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bec4cb17f2d25cd00ef115a78736c95eaf26d95f
-ms.sourcegitcommit: 45e4466eac6cfd6a30da9facd8fe6afba64f6f50
+ms.openlocfilehash: bd06eafca2c508bc73fa2b327235621797be417c
+ms.sourcegitcommit: a52d48238d00161be5d1ed5d04132db4de43e076
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/07/2019
-ms.locfileid: "66752450"
+ms.lasthandoff: 06/20/2019
+ms.locfileid: "67274196"
 ---
 # <a name="tutorial-integrate-otsuka-shokai-with-azure-active-directory"></a>Tutorial: Integrieren von Otsuka Shokai in Azure Active Directory
 
@@ -29,7 +29,6 @@ In diesem Tutorial erfahren Sie, wie Sie Otsuka Shokai in Azure Active Director
 
 * Sie können in Azure AD steuern, wer Zugriff auf Otsuka Shokai hat.
 * Ermöglichen Sie es Ihren Benutzern, sich mit ihren Azure AD-Konten automatisch bei Otsuka Shokai anzumelden.
-* Verwalten Sie Ihre Konten zentral im Azure-Portal.
 
 Weitere Informationen zur Integration von SaaS-Apps in Azure AD finden Sie unter [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
@@ -112,17 +111,15 @@ Gehen Sie wie folgt vor, um das einmalige Anmelden von Azure AD im Azure-Portal 
 
     g. Klicken Sie auf **Speichern**.
 
-1. Klicken Sie auf der Seite **Einmaliges Anmelden (SSO) mit SAML einrichten** im Abschnitt **SAML-Signaturzertifikat** auf die Schaltfläche „Kopieren“, um die **App-Verbundmetadaten-URL** zu kopieren, und speichern Sie sie im Editor.
-
-   ![Downloadlink für das Zertifikat](common/copy-metadataurl.png)
-
-1. Kopieren Sie im Abschnitt **Otsuka Shokai einrichten** die entsprechenden URLs gemäß Ihren Anforderungen.
-
-   ![Kopieren der Konfiguration-URLs](common/copy-configuration-urls.png)
-
 ### <a name="configure-otsuka-shokai"></a>Konfigurieren von Otsuka Shokai
 
-Zum Konfigurieren des einmaligen Anmeldens aufseiten von **Otsuka Shokai** müssen Sie die **App-Verbundmetadaten-URL** an das [Supportteam von Otsuka Shokai](mailto:Tatsuya.Satoh@otsuka-shokai.co.jp) senden. Es führt die Einrichtung durch, damit die SAML-SSO-Verbindung auf beiden Seiten richtig festgelegt ist.
+1. Wenn Sie in der App für einmaliges Anmelden (SSO) eine Verbindung mit „Meine Seite“ des Kunden herstellen, wird der Assistent für die SSO-Einstellung gestartet.
+
+2. Wenn Otsuka-ID nicht registriert ist, fahren Sie mit der Registrierung einer neuen Otsuka-ID fort.   Wenn Sie die Otsuka-ID registriert haben, fahren Sie mit der Verknüpfungseinstellung fort.
+
+3. Fahren Sie bis zum Ende fort.Wenn der obere Bildschirm angezeigt wird, nachdem Sie sich bei „Meine Seite“ des Kunden angemeldet haben, sind die SSO-Einstellungen abgeschlossen.
+
+4. Wenn Sie sich das nächste Mal in der SSO-App mit „Meine Seite“ des Kunden verbinden, wird nach dem Öffnen des Anleitungsbildschirms der obere Bildschirm angezeigt, nachdem Sie sich bei „Meine Seite“ des Kunden angemeldet haben.
 
 ### <a name="create-an-azure-ad-test-user"></a>Erstellen eines Azure AD-Testbenutzers
 
@@ -156,7 +153,7 @@ In diesem Abschnitt ermöglichen Sie B. Simon die Verwendung des einmaligen Anm
 
 ### <a name="create-otsuka-shokai-test-user"></a>Erstellen eines Otsuka Shokai-Testbenutzers
 
-In diesem Abschnitt erstellen Sie in Otsuka Shokai einen Benutzer namens B. Simon. Wenden Sie sich an das  [Otsuka Shokai-Supportteam](mailto:Tatsuya.Satoh@otsuka-shokai.co.jp), um die Benutzer auf der Otsuka Shokai-Plattform hinzuzufügen. Benutzer müssen erstellt und aktiviert werden, damit Sie einmaliges Anmelden verwenden können.
+Beim ersten Zugriff auf den Otsuka Shokai erfolgt eine Neuregistrierung des SaaS-Kontos. Darüber hinaus werden wir zum Zeitpunkt der Neuerstellung auch das Azure AD-Konto und das SaaS-Konto zuordnen.
 
 ### <a name="test-sso"></a>Testen des einmaligen Anmeldens
 
