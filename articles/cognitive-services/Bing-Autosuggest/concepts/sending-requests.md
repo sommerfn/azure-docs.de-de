@@ -8,18 +8,18 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-autosuggest
 ms.topic: quickstart
-ms.date: 02/20/2019
+ms.date: 06/27/2019
 ms.author: scottwhi
-ms.openlocfilehash: abcce52e126e01d25434a90260a220c9aa337f5b
-ms.sourcegitcommit: 3d4121badd265e99d1177a7c78edfa55ed7a9626
+ms.openlocfilehash: fe35901f7d084fd96cb4c164e957391bfe2346a9
+ms.sourcegitcommit: 5bdd50e769a4d50ccb89e135cfd38b788ade594d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/30/2019
-ms.locfileid: "66382694"
+ms.lasthandoff: 07/03/2019
+ms.locfileid: "67542622"
 ---
 # <a name="sending-requests-to-the-bing-autosuggest-api"></a>Senden von Anforderungen an die Bing-Vorschlagssuche-API
 
-Wenn Ihre Anwendung Abfragen an eine der Bing-Suche-APIs senden, können Sie die Bing-Vorschlagssuche-API verwenden, um die Suchumgebung des Benutzers zu verbessern. Die Bing-Vorschlagssuche-API gibt eine Liste vorgeschlagener Abfragen basierend auf der unvollständigen Abfragezeichenfolge im Suchfeld zurück. Bei der Eingabe von Zeichen in das Suchfeld Ihrer Anwendung können Sie Vorschläge in einer Dropdownliste anzeigen. In diesem Artikel erfahren Sie mehr über das Senden von Anforderungen an diese API.
+Wenn Ihre Anwendung Abfragen an eine der Bing-Suche-APIs senden, können Sie die Bing-Vorschlagssuche-API verwenden, um die Suchumgebung des Benutzers zu verbessern. Die Bing-Vorschlagssuche-API gibt eine Liste vorgeschlagener Abfragen basierend auf der unvollständigen Abfragezeichenfolge im Suchfeld zurück. Bei der Eingabe von Zeichen in das Suchfeld Ihrer Anwendung können Sie Vorschläge in einer Dropdownliste anzeigen. In diesem Artikel erfahren Sie mehr über das Senden von Anforderungen an diese API. 
 
 ## <a name="bing-autosuggest-api-endpoint"></a>Endpunkt der Bing-Vorschlagssuche-API
 
@@ -44,7 +44,7 @@ Beispiele für grundlegende Anforderungen, die die Vorschlagssuche-API verwenden
 ## <a name="bing-autosuggest-api-requests"></a>Anforderungen für die Bing-Vorschlagssuche-API
 
 > [!NOTE]
-> Bei Anforderungen für die Bing-Vorschlagssuche-API muss das HTTPS-Protokoll verwendet werden.
+> * Bei Anforderungen für die Bing-Vorschlagssuche-API muss das HTTPS-Protokoll verwendet werden.
 
 Alle Anforderungen sollten von einem Server stammen. Wird der Schlüssel zusammen mit einer Clientanwendung verteilt, erhöht sich das Risiko, dass eine böswillige dritte Partei darauf zugreift. Aufrufe über einen Server ermöglichen zudem die Verwendung eines einzelnen Upgradepunkts für zukünftige Updates.
 
@@ -95,11 +95,13 @@ Im folgenden Beispiel wird eine Anforderung gezeigt, die die vorgeschlagene Abfr
 
 Wenn Sie zuvor noch keine der Bing-APIs aufgerufen haben, lassen Sie den Client-ID-Header weg. Schließen Sie den Client-ID-Header nur ein, wenn Sie bereits eine Bing-API aufgerufen haben und Bing eine Client-ID für die Kombination aus Benutzer und Gerät zurückgegeben hat.
 
-Das folgende Beispiel zeigt die Antwort auf die vorherige Anforderung. Die Antwort enthält eine Web-Vorschlagsgruppe, die eine Liste von Abfragevorschlägen enthält. Jeder Vorschlag enthält die Felder `displayText`, `query` und `url`.
+Die folgende Webvorschlagsgruppe ist eine Antwort auf die oben genannte Anforderung. Die Gruppe enthält eine Liste von Vorschlägen für Suchanfragen, wobei jeder Vorschlag ein `displayText`-, `query`- und `url`-Feld enthält.
 
 Das `displayText`-Feld enthält die vorgeschlagene Abfrage, die Sie zum Auffüllen der Dropdownliste des Suchfelds verwenden. Sie müssen alle in der Antwort enthaltenen Vorschläge in der angegebenen Reihenfolge anzeigen.  
 
-Wenn der Benutzer eine Abfrage aus der Dropdownliste auswählt, können Sie damit eine der [Bing-Suche-API](https://docs.microsoft.com/azure/cognitive-services/bing-web-search/bing-api-comparison?toc=%2Fen-us%2Fazure%2Fcognitive-services%2Fbing-autosuggest%2Ftoc.json&bc=%2Fen-us%2Fazure%2Fbread%2Ftoc.json) aufrufen und die Ergebnisse selbst anzeigen oder den Benutzer unter Verwendung des zurückgegebenen Felds `url` zur Bing-Ergebnisseite weiterleiten. Im folgenden Beispiel wird die Bing-Websuche-API verwendet:
+Wenn der Benutzer eine Abfrage aus der Dropdownliste auswählt, können Sie damit eine der [Bing-Suche-API](https://docs.microsoft.com/azure/cognitive-services/bing-web-search/bing-api-comparison?toc=%2Fen-us%2Fazure%2Fcognitive-services%2Fbing-autosuggest%2Ftoc.json&bc=%2Fen-us%2Fazure%2Fbread%2Ftoc.json) aufrufen und die Ergebnisse selbst anzeigen oder den Benutzer unter Verwendung des zurückgegebenen Felds `url` zur Bing-Ergebnisseite weiterleiten.
+
+[!INCLUDE [cognitive-services-bing-url-note](../../../../includes/cognitive-services-bing-url-note.md)]
 
 ```json
 BingAPIs-TraceId: 76DD2C2549B94F9FB55B4BD6FEB6AC

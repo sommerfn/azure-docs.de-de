@@ -10,12 +10,12 @@ ms.subservice: acoustics
 ms.topic: overview
 ms.date: 03/20/2019
 ms.author: kegodin
-ms.openlocfilehash: 1fc125322b83a0eb51095fac21dee05c7ffb39c1
-ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
+ms.openlocfilehash: 73b8980b0ea2d1adbd814026f026358e25dcbb55
+ms.sourcegitcommit: 837dfd2c84a810c75b009d5813ecb67237aaf6b8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58313616"
+ms.lasthandoff: 07/02/2019
+ms.locfileid: "67502956"
 ---
 # <a name="what-is-project-acoustics"></a>Was ist „Projekt: Akustik“?
 Projekt Akustik ist eine Wellenakustik-Engine für interaktive 3D-Erfahrungen. Sie modelliert Welleneffekte wie Beugung, Portale und Hall in komplexen Szenen ohne manuelle Zonenmarkierung. Außerdem schließt sie eine Integration von Spiele-Engines und Audiomiddleware ein. Die Philosophie hinter Projekt Akustik ist vergleichbar mit einer statischen Beleuchtung: Das Baking einer detaillierten Physik wird offline ausgeführt, um eine physische Baseline bereitzustellen, und die künstlerischen Ziele werden mithilfe einer einfachen Runtime mit ausdrucksstarken Entwurfssteuerelementen erreicht.
@@ -51,7 +51,7 @@ Die Projekt Akustik-Runtime-Plug-Ins können derzeit auf den folgenden Plattform
   * Um Binärdateien und Support für die Xbox zu erhalten, kontaktieren Sie uns über das nachstehende Registrierungsformular.
 
 ## <a name="contact-us"></a>Kontakt
-* [Projekt Akustik-Foren](https://social.msdn.microsoft.com/Forums/en-US/home?forum=projectacoustics)
+* [Erläuterung zum Projekt Akustik und Meldung von Problemen](https://github.com/microsoft/ProjectAcoustics/issues)
 * [Melden Sie sich an, um aktuelle Informationen zu Projekt Akustik zu erhalten.](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbRwMoAEhDCLJNqtVIPwQN6rpUOFRZREJRR0NIQllDOTQ1U0JMNVc4OFNFSy4u)
 
 ## <a name="next-steps"></a>Nächste Schritte

@@ -1,6 +1,6 @@
 ---
-title: Includedatei
-description: Includedatei
+title: include file
+description: include file
 services: active-directory
 documentationcenter: dev-center-name
 author: jmprieur
@@ -14,12 +14,12 @@ ms.workload: identity
 ms.date: 04/10/2019
 ms.author: jmprieur
 ms.custom: include file
-ms.openlocfilehash: ae17ef749a353cd60227e31ba4dadf328b1dc935
-ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
+ms.openlocfilehash: 301abe95b245603e5414eef84ce74cdc8de01d19
+ms.sourcegitcommit: 79496a96e8bd064e951004d474f05e26bada6fa0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/04/2019
-ms.locfileid: "66482397"
+ms.lasthandoff: 07/02/2019
+ms.locfileid: "67509856"
 ---
 # <a name="call-the-microsoft-graph-api-from-a-windows-desktop-app"></a>Aufrufen der Microsoft Graph-API aus einer Windows Desktop-App
 
@@ -28,7 +28,7 @@ In diesem Leitfaden wird gezeigt, wie eine native Windows Desktop .NET-Anwendung
 Am Ende dieses Leitfadens kann Ihre Anwendung eine geschützte API aufrufen, die persönliche Konten (outlook.com, live.com und andere) verwendet. Die Anwendung kann auch Geschäfts-, Schul- und Unikonten aus Unternehmen oder Organisationen nutzen, die Azure Active Directory verwenden.  
 
 > [!NOTE]
-> Für diesen Leitfaden wird Visual Studio 2015 Update 3 oder Visual Studio 2019 vorausgesetzt. Sie verfügen über keine dieser Versionen? Sie können Visual Studio 2019 [hier](https://www.visualstudio.com/downloads/) kostenlos herunterladen.
+> Für diesen Leitfaden wird Visual Studio 2015 Update 3, Visual Studio 2017 oder Visual Studio 2019 vorausgesetzt. Haben Sie keine dieser Versionen? Sie können Visual Studio 2019 [hier](https://www.visualstudio.com/downloads/) kostenlos herunterladen.
 
 ## <a name="how-the-sample-app-generated-by-this-guide-works"></a>Funktionsweise der über diesen Leitfaden generierten Beispiel-App
 

@@ -16,16 +16,16 @@ ms.topic: tutorial
 ms.date: 03/27/2019
 ms.author: msangapu
 ms.custom: seodec18
-ms.openlocfilehash: 8463ffcb9d9983ff435c01f75dd48f68bde31767
-ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
+ms.openlocfilehash: b48ec72a1f0a4178dad66ed31c544399e90c5293
+ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/13/2019
-ms.locfileid: "59545601"
+ms.lasthandoff: 07/01/2019
+ms.locfileid: "67484495"
 ---
 # <a name="tutorial-build-a-custom-image-and-run-in-app-service-from-a-private-registry"></a>Tutorial: Erstellen eines benutzerdefinierten Images und Ausführen in App Service über eine private Registrierung
 
-[App Service](app-service-linux-intro.md) verfügt über integrierte Docker-Images unter Linux mit Unterstützung für bestimmte Versionen, z. B. PHP 7.0 und Node.js 4.5. Für App Service wird die Containertechnologie von Docker genutzt, um sowohl integrierte als auch benutzerdefinierte Images als „Platform-as-a-Service“ zu hosten. In diesem Tutorial wird beschrieben, wie Sie ein benutzerdefiniertes Image erstellen und in App Service ausführen. Dieses Muster ist hilfreich, wenn die integrierten Images nicht die Sprache Ihrer Wahl verwenden oder Ihre Anwendung eine bestimmte Konfiguration erfordert, die nicht in den integrierten Images bereitgestellt wird.
+[App Service](app-service-linux-intro.md) verfügt über integrierte Docker-Images unter Linux mit Unterstützung für bestimmte Versionen, z.B. PHP 7.3 und Node.js 10.14. Für App Service wird die Containertechnologie von Docker genutzt, um sowohl integrierte als auch benutzerdefinierte Images als „Platform-as-a-Service“ zu hosten. In diesem Tutorial wird beschrieben, wie Sie ein benutzerdefiniertes Image erstellen und in App Service ausführen. Dieses Muster ist hilfreich, wenn die integrierten Images nicht die Sprache Ihrer Wahl verwenden oder Ihre Anwendung eine bestimmte Konfiguration erfordert, die nicht in den integrierten Images bereitgestellt wird.
 
 In diesem Tutorial lernen Sie Folgendes:
 
@@ -155,7 +155,7 @@ Vergewissern Sie sich, dass die Anmeldung erfolgreich war.
 
 ### <a name="push-image-to-azure-container-registry"></a>Übertragen des Images zu Azure Container Registry mithilfe von Push
 
-Kennzeichnen Sie Ihr lokales Image für die Azure Container Registry. Beispiel: 
+Kennzeichnen Sie Ihr lokales Image für die Azure Container Registry. Beispiel:
 ```bash
 docker tag mydockerimage <azure-container-registry-name>.azurecr.io/mydockerimage:v1.0.0
 ```
@@ -211,7 +211,7 @@ Nach Erstellung der Web-App zeigt die Azure CLI eine Ausgabe wie im folgenden Be
 
 ### <a name="configure-registry-credentials-in-web-app"></a>Konfigurieren von Anmeldeinformationen für die Registrierung in der Web-App
 
-Damit App Service das private Image per Pullvorgang abrufen kann, sind Informationen zu Ihrer Registrierung und zum Image erforderlich. Stellen Sie diese Informationen in der Cloud Shell mit dem Befehl [`az webapp config container set`](/cli/azure/webapp/config/container?view=azure-cli-latest#az-webapp-config-container-set) bereit. Ersetzen Sie *\<app-name>*, *\<azure-container-registry-name>*, _\<registry-username>_ und _\<password>_.
+Damit App Service das private Image per Pullvorgang abrufen kann, sind Informationen zu Ihrer Registrierung und zum Image erforderlich. Stellen Sie diese Informationen in der Cloud Shell mit dem Befehl [`az webapp config container set`](/cli/azure/webapp/config/container?view=azure-cli-latest#az-webapp-config-container-set) bereit. Ersetzen Sie *\<app-name>* , *\<azure-container-registry-name>* , _\<registry-username>_ und _\<password>_ .
 
 ```azurecli-interactive
 az webapp config container set --name <app-name> --resource-group myResourceGroup --docker-custom-image-name <azure-container-registry-name>.azurecr.io/mydockerimage:v1.0.0 --docker-registry-server-url https://<azure-container-registry-name>.azurecr.io --docker-registry-server-user <registry-username> --docker-registry-server-password <password>
@@ -278,7 +278,7 @@ SSH ermöglicht die sichere Kommunikation zwischen einem Container und einem Cli
     > [!NOTE]
     > Diese Konfiguration erlaubt keine externen Verbindungen zum Container. SSH ist nur über die Kudu/SCM-Website verfügbar. Die Authentifizierung für die Kudu/SCM-Website wird über Ihr Azure-Konto durchgeführt.
 
-* Die [Dockerfile](https://github.com/Azure-Samples/docker-django-webapp-linux/blob/master/Dockerfile#L18) kopiert die Datei [sshd_config](https://github.com/Azure-Samples/docker-django-webapp-linux/blob/master/sshd_config file in the repository) in das Verzeichnis */etc/ssh/*.
+* Die [Dockerfile](https://github.com/Azure-Samples/docker-django-webapp-linux/blob/master/Dockerfile#L18) kopiert die Datei [sshd_config](https://github.com/Azure-Samples/docker-django-webapp-linux/blob/master/sshd_config) in das Repository in das Verzeichnis */etc/ssh/* .
 
     ```Dockerfile
     COPY sshd_config /etc/ssh/
@@ -347,7 +347,7 @@ Sie haben Folgendes gelernt:
 Fahren Sie mit dem nächsten Tutorial fort, um zu erfahren, wie Sie Ihrer App einen benutzerdefinierten DNS-Namen zuordnen.
 
 > [!div class="nextstepaction"]
-> [Tutorial: Zuordnen eines vorhandenen benutzerdefinierten DNS-Namens zu Azure App Service](../app-service-web-tutorial-custom-domain.md)
+> [Tutorial: Zuordnen eines benutzerdefinierten DNS-Namens zu Ihrer App](../app-service-web-tutorial-custom-domain.md)
 
 Oder sehen Sie sich weitere Ressourcen an:
 
@@ -355,4 +355,4 @@ Oder sehen Sie sich weitere Ressourcen an:
 > [Konfigurieren eines benutzerdefinierten Containers](configure-custom-container.md)
 
 > [!div class="nextstepaction"]
-> [Tutorial: Erstellen einer App mit mehreren Containern (Vorschauversion) über Web-App für Container](tutorial-multi-container-app.md)
+> [Tutorial: WordPress-App mit mehreren Containern](tutorial-multi-container-app.md)

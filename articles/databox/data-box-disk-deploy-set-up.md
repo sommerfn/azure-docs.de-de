@@ -6,15 +6,15 @@ author: alkohli
 ms.service: databox
 ms.subservice: disk
 ms.topic: tutorial
-ms.date: 10/31/2018
+ms.date: 06/13/2019
 ms.author: alkohli
 Customer intent: As an IT admin, I need to be able to order Data Box Disk to upload on-premises data from my server onto Azure.
-ms.openlocfilehash: 34d62df989da80c84bad92a90fc2253c416a4924
-ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
+ms.openlocfilehash: 688c33a098bb34a6b39937579e2e25591786c531
+ms.sourcegitcommit: 72f1d1210980d2f75e490f879521bc73d76a17e1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64939645"
+ms.lasthandoff: 06/14/2019
+ms.locfileid: "67147490"
 ---
 # <a name="tutorial-unpack-connect-and-unlock-azure-data-box-disk"></a>Tutorial: Entpacken, Verbinden und Entsperren von Azure Data Box Disk
 
@@ -123,7 +123,9 @@ Führen Sie die folgenden Schritte aus, um Ihre Datenträger anzuschließen und 
     ```  
 8. Nachdem der Datenträger entsperrt wurde, können Sie den Inhalt des Datenträgers anzeigen.    
 
-    ![Inhalt des Data Box-Datenträgers](media/data-box-disk-deploy-set-up/data-box-disk-content.png) 
+    ![Inhalt des Data Box-Datenträgers](media/data-box-disk-deploy-set-up/data-box-disk-content.png)
+
+Wenn beim Entsperren der Datenträger Probleme auftreten, finden Sie unter [Behandlung von Problemen beim Entsperren](data-box-disk-troubleshoot-unlock.md) weitere Informationen. 
 
 ## <a name="unlock-disks-on-linux-client"></a>Entsperren von Datenträgern auf Linux-Client
 
@@ -253,6 +255,9 @@ Führen Sie die folgenden Schritte aus, um Ihre Datenträger anzuschließen und 
 8. Nachdem der Datenträger entsperrt wurde, können Sie zum Bereitstellungspunkt wechseln und den Inhalt des Datenträgers anzeigen. Nun können Sie die Daten in *BlockBlob*- oder *PageBlob*-Ordner kopieren. 
 
     ![Inhalt des Data Box-Datenträgers](media/data-box-disk-deploy-set-up/data-box-disk-content-linux.png)
+
+
+Wenn beim Entsperren der Datenträger Probleme auftreten, finden Sie unter [Behandlung von Problemen beim Entsperren](data-box-disk-troubleshoot-unlock.md) weitere Informationen. 
 
 ## <a name="next-steps"></a>Nächste Schritte
 

@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 04/16/2019
 ms.author: alkohli
 Customer intent: As an IT admin, I need to be able to order Data Box Disk to upload on-premises data from my server onto Azure.
-ms.openlocfilehash: f5c498fc3f3fe051070b3565041e506bc40fceda
-ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.openlocfilehash: 70890dcd72cadc55e56410381a94ac071b248a91
+ms.sourcegitcommit: 72f1d1210980d2f75e490f879521bc73d76a17e1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64925169"
+ms.lasthandoff: 06/14/2019
+ms.locfileid: "67147526"
 ---
 # <a name="tutorial-copy-data-to-azure-data-box-disk-and-verify"></a>Tutorial: Kopieren von Daten auf die Azure Data Box Disk und Durchführen der Überprüfung
 
@@ -223,7 +223,7 @@ Dieses optionale Verfahren kann verwendet werden, wenn Sie mehrere Datenträger 
  
 7. Öffnen Sie ein Eingabeaufforderungsfenster. 
 
-8. Führen Sie die Datei `DataBoxDiskSplitCopy.exe` aus. Type
+8. Führen Sie die Datei `DataBoxDiskSplitCopy.exe` aus. type
 
     `DataBoxDiskSplitCopy.exe PrepImport /config:<Your-config-file-name.json>`
 
@@ -250,6 +250,8 @@ Dieses optionale Verfahren kann verwendet werden, wenn Sie mehrere Datenträger 
 
     `DataBoxDiskSplitCopy.exe PrepImport /config:<configFile.json> /ResumeSession`
 
+Wenn bei Verwenden des Tools „Aufteilen/Kopieren“ Fehler auftreten, siehe [Beheben von Fehlern beim Tool „Aufteilen/Kopieren“](data-box-disk-troubleshoot-data-copy.md).
+
 Nachdem der Datenkopiervorgang abgeschlossen ist, können Sie mit der Überprüfung Ihrer Daten fortfahren. Wenn Sie das Aufteilen/Kopieren-Tool verwendet haben, können Sie die Überprüfung überspringen (mit dem Aufteilen/Kopieren-Tool wird auch eine Überprüfung durchgeführt) und mit dem nächsten Tutorial fortfahren.
 
 
@@ -270,6 +272,8 @@ Falls Sie das Aufteilen/Kopieren-Tool nicht zum Kopieren der Daten verwendet hab
     > - Verwenden Sie Option 1, wenn Sie ein großes Dataset mit kleinen Dateien (KB-Bereich) verwenden. Mit dieser Option werden die Dateien nur überprüft, da die Generierung der Prüfsumme ggf. sehr lange dauern und die Leistung deutlich verlangsamt sein kann.
 
 3. Führen Sie den Befehl für jeden Datenträger einzeln aus, wenn Sie mehrere Datenträger verwenden möchten.
+
+Wenn während der Validierung Fehler auftreten, siehe [Beheben von Validierungsfehlern](data-box-disk-troubleshoot.md).
 
 ## <a name="next-steps"></a>Nächste Schritte
 

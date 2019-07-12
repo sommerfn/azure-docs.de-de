@@ -5,18 +5,18 @@ services: application-insights
 keywords: ''
 author: mrbullwinkle
 ms.author: mbullwin
-ms.date: 04/22/2019
+ms.date: 06/26/2019
 ms.service: application-insights
 ms.reviewer: daviste
 ms.custom: mvc
 ms.topic: quickstart
 manager: carmonm
-ms.openlocfilehash: 67ddedbaca88d46e706c9a143100b215a0d16a90
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: b8ce08c662e1615b62160e0c681a2fe8dbcb2be1
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64683428"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67447041"
 ---
 # <a name="start-analyzing-your-mobile-app-with-app-center-and-application-insights"></a>Analysieren Ihrer mobilen Apps mit App Center und Application Insights
 
@@ -68,17 +68,17 @@ Um sicherzustellen, dass Ihre benutzerdefinierten Ereignisse empfangen werden, w
 Sobald Ihre App benutzerdefinierte Ereignisse sendet und diese von App Center empfangen werden, müssen Sie eine Application Insights-Ressource für App Center im Azure-Portal erstellen:
 
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com/) an.
-2. Klicken Sie auf **Ressource erstellen** > **Verwaltungstools** > **Application Insights**.
+2. Klicken Sie auf **Ressource erstellen** > **Entwicklertools** > **Application Insights**.
 
-    ![Hinzufügen einer Application Insights-Ressource](./media/mobile-center-quickstart/add-b.png)
+    > [!NOTE]
+    > Wenn Sie zum ersten Mal eine Application Insights-Ressource erstellen, können Sie mehr dazu im Dokument [Erstellen einer Application Insights-Ressource](https://docs.microsoft.com/azure/azure-monitor/app/create-new-resource) erfahren.
 
     Ein Konfigurationsfeld wird geöffnet. Füllen Sie die Eingabefelder anhand der Informationen in der unten stehenden Tabelle aus.
 
     | Einstellungen        |  Wert           | BESCHREIBUNG  |
    | ------------- |:-------------|:-----|
    | **Name**      | Ein global eindeutiger Wert wie z.B. „myApp-iOS“ | Der Name, der die zu überwachende App identifiziert. |
-   | **Anwendungstyp** | App Center-Anwendung | Der Typ der zu überwachenden App. |
-   | **Ressourcengruppe**     | Eine neue Ressourcengruppe, oder eine vorhandene aus dem Menü | Die Ressourcengruppe, in der die neue Application Insights-Ressource erstellt werden soll |
+     | **Ressourcengruppe**     | Eine neue Ressourcengruppe, oder eine vorhandene aus dem Menü | Die Ressourcengruppe, in der die neue Application Insights-Ressource erstellt werden soll |
    | **Location** | Ein Standort aus dem Menü | Wählen Sie einen Standort in Ihrer Nähe oder in der Nähe des Standorts, in dem Ihre App gehostet wird. |
 
 3. Klicken Sie auf **Create**.
@@ -89,9 +89,7 @@ Wenn Ihre App mehrere Plattformen unterstützt (iOS, Android usw.), ist es am si
 
 In Ihrer neuen Application Insights-Ressource auf der Seite **Übersicht**. Kopieren Sie den Instrumentierungsschlüssel aus Ihrer Ressource.
 
-   ![Schaltfläche „Analytics“ in Application Insights](./media/mobile-center-quickstart/overview-01.png)
-
-Führen Sie in der App Center-Instanz für Ihre App Folgendes durch:
+Führen Sie in der [App Center](https://appcenter.ms/)-Instanz für Ihre App Folgendes durch:
 
 1. Klicken Sie auf der Seite **Einstellungen** auf **Exportieren**.
 2. Klicken Sie auf **Neuer Export**, wählen Sie **Application Insights** aus, und klicken Sie anschließend auf **Anpassen**.
@@ -108,13 +106,11 @@ Um Ihnen bei der ersten Verbindung mehr Daten zur Verfügung zu stellen, werden 
 
 Application Insights kann die Telemetriedaten zu benutzerdefinierten Ereignissen aus Ihrer App abfragen, segmentieren, filtern und analysieren. Diese Funktionen reichen über diejenigen in App Center hinaus.
 
-1. **Abfragen der Telemetriedaten zu benutzerdefinierten Ereignissen.** Klicken Sie auf der Seite **Übersicht** in Application Insights auf **Analytics**. 
+1. **Abfragen der Telemetriedaten zu benutzerdefinierten Ereignissen.** Klicken Sie auf der Seite **Übersicht** in Application Insights auf **Protokolle (Analytics)** .
 
-   ![Schaltfläche „Analytics“ in Application Insights](./media/mobile-center-quickstart/analytics-001.png)
-
-   Das Analytics-Portal von Application Insights, das mit Ihrer Application Insights-Ressource verknüpft ist, wird geöffnet. Über das Analytics-Portal können Sie Ihre Daten direkt mit Ihrer Log Analytics-Abfragesprache abfragen, sodass Sie komplexe Fragen zu Ihrer App und deren Benutzern arbiträr stellen können.
+   Das Protokolle (Analytics)-Portal von Application Insights, das mit Ihrer Application Insights-Ressource verknüpft ist, wird geöffnet. Über das Protokolle (Analytics)-Portal können Sie Ihre Daten direkt mit Ihrer Log Analytics-Abfragesprache abfragen, sodass Sie beliebige komplexe Fragen zu Ihrer App und deren Benutzern stellen können.
    
-   Öffnen Sie im Analytics-Portal eine neue Registerkarte, und fügen Sie anschließend die folgende Abfrage ein. Sie gibt die Anzahl der verschiedenen Benutzer zurück, die in den letzten 24 Stunden ein benutzerdefiniertes Ereignis gesendet haben, nach der Anzahl geordnet.
+   Öffnen Sie im Protokolle (Analytics)-Portal eine neue Registerkarte, und fügen Sie anschließend die folgende Abfrage ein. Sie gibt die Anzahl der verschiedenen Benutzer zurück, die in den letzten 24 Stunden ein benutzerdefiniertes Ereignis gesendet haben, nach der Anzahl geordnet.
 
    ```AIQL
    customEvents
@@ -123,7 +119,7 @@ Application Insights kann die Telemetriedaten zu benutzerdefinierten Ereignissen
    | order by dcount_user_Id desc 
    ```
 
-   ![Analytics-Portal](./media/mobile-center-quickstart/analytics-portal-001.png)
+   ![Protokolle (Analytics)-Portal](./media/mobile-center-quickstart/analytics-portal-001.png)
 
    1. Wählen Sie die Abfrage aus, indem Sie im Text-Editor an eine beliebige Stelle in der Abfrage klicken.
    2. Klicken Sie auf **Los**, um die Abfrage auszuführen. 

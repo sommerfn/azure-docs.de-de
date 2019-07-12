@@ -2,20 +2,20 @@
 title: Was ist Azure Active Directory? – Azure Active Directory | Microsoft-Dokumentation
 description: Hier finden Sie eine Übersicht und konzeptionelle Informationen zu Azure Active Directory, u. a. Terminologie, Informationen zu verfügbaren Lizenzen und eine Liste der zugehörigen Features mit Links zu weiteren Informationen.
 services: active-directory
-author: eross-msft
+author: msaburnley
 manager: daveba
 ms.service: active-directory
 ms.topic: overview
 ms.date: 05/08/2019
-ms.author: lizross
+ms.author: ajburnle
 ms.custom: it-pro, seodec18, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ce8fad7f0dc76aad306e0f2a8e26692ec997952c
-ms.sourcegitcommit: 399db0671f58c879c1a729230254f12bc4ebff59
+ms.openlocfilehash: 8fafa7bd95801be46025727b2261fc95bc539988
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/09/2019
-ms.locfileid: "65470362"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67440545"
 ---
 # <a name="what-is-azure-active-directory"></a>Was ist Azure Active Directory?
 
@@ -48,7 +48,7 @@ Zur Erweiterung Ihrer Azure AD-Implementierung können Sie auch kostenpflichtige
 >
 >Azure Active Directory Premium P1, Premium P2 und Azure Active Directory Basic werden derzeit in China nicht unterstützt. Weitere Informationen zu den Preisen von Azure AD erhalten Sie im [Azure Active Directory-Forum](https://azure.microsoft.com/support/community/?product=active-directory).
 
-- **Azure Active Directory Free:** Bietet Benutzer- und Gruppenverwaltung, lokale Verzeichnissynchronisierung und einfache Berichte sowie einmaliges Anmelden für Azure, Office 365 und zahlreiche beliebte SaaS-Apps.
+- **Azure Active Directory Free:** Bietet Benutzer- und Gruppenverwaltung, lokale Verzeichnissynchronisierung, einfache Berichte, Self-Service-Kennwortänderung für Cloudbenutzer sowie einmaliges Anmelden für Azure, Office 365 und zahlreiche beliebte SaaS-Apps.
 
 - **Azure Active Directory Basic:** Basic bietet neben den Features der Free-Edition auch cloudorientierten App-Zugriff, gruppenbasierte Zugriffsverwaltung, Self-Service-Kennwortzurücksetzung für Cloud-Apps sowie den Azure AD-Anwendungsproxy, mit dem Sie lokale Web-Apps über Azure AD veröffentlichen können.
 
@@ -66,12 +66,14 @@ Zum besseren Verständnis von Azure AD und der dazugehörigen Dokumentation soll
 
 |Begriff oder Konzept|BESCHREIBUNG|
 |---------------|-----------|
+|Identity| Etwas, das authentifiziert werden kann. Eine Identität kann ein Benutzer mit Benutzername und Kennwort sein. Zu Identitäten gehören auch Anwendungen oder andere Server, die eine Authentifizierung durch geheime Schlüssel oder Zertifikate erfordern können.|
+|Konto| Eine Identität, der Daten zugeordnet sind. Ohne Identität können Sie nicht über ein Konto verfügen.|
+|Azure AD-Konto| Eine über Azure AD oder einen anderen Microsoft-Clouddienst (beispielsweise Office 365) erstellte Identität. Identitäten werden in Azure AD gespeichert und sind für die Clouddienstabonnements Ihrer Organisation zugänglich. Dieses Konto wird manchmal auch als Geschäfts-, Schul- oder Unikonto bezeichnet.|
 |Azure-Abonnement| Dient zur Bezahlung für Azure-Clouddienste. Sie können über mehrere Abonnements verfügen, und die Abonnements sind mit einer Kreditkarte verknüpft.|
 |Azure-Mandant| Eine dedizierte, vertrauenswürdige Instanz von Azure AD, die automatisch erstellt wird, wenn sich Ihre Organisation für ein Abonnement eines Microsoft-Clouddiensts wie Microsoft Azure, Microsoft Intune oder Office 365 registriert. Ein Azure-Mandant stellt eine einzelne Organisation dar.|
 |Einzelner Mandant| Azure-Mandanten, die auf andere Dienste in einer dedizierten Umgebung zugreifen, werden als einzelne Mandanten betrachtet.|
 |Mehrinstanzenfähig| Azure-Mandanten, die auf andere Dienste in einer gemeinsam genutzten Umgebung mit mehreren Organisationen zugreifen, werden als mehrinstanzenfähig betrachtet.|
 |Azure AD-Verzeichnis|Jeder Azure-Mandant verfügt über ein dediziertes und vertrauenswürdiges Azure AD-Verzeichnis. Das Azure AD-Verzeichnis umfasst die Benutzer, Gruppen und Apps des Mandanten und dient zum Ausführen von Identitäts- und Zugriffsverwaltungsfunktionen für Mandantenressourcen.|
-|Azure AD-Konto | Eine über Azure AD oder einen anderen Microsoft-Clouddienst (beispielsweise Office 365) erstellte Identität. Identitäten werden in Azure AD gespeichert und sind für die Clouddienstabonnements Ihrer Organisation zugänglich. Dieses Konto wird manchmal auch als Geschäfts-, Schul- oder Unikonto bezeichnet.|
 |Benutzerdefinierte Domäne|Jedes neue Azure AD-Verzeichnis verfügt über einen anfänglichen Domänennamen im Format „<Domänenname>.onmicrosoft.com“. Neben diesem anfänglichen Namen können Sie der Liste die Domänenamen Ihrer Organisation hinzufügen – einschließlich der Namen, die Sie für Ihre geschäftliche Tätigkeit nutzen und die von Benutzern für den Zugriff auf Ihre Organisationsressourcen verwendet werden. Durch Hinzufügen benutzerdefinierter Domänennamen können Sie Benutzernamen erstellen, mit denen Ihre Benutzer vertraut sind (beispielsweise alain@contoso.com).|
 |Kontoadministrator|Diese klassische Abonnementadministratorrolle ist konzeptionell der Abrechnungsbesitzer eines Abonnements. Sie hat Zugriff auf das [Azure-Kontocenter](https://account.azure.com/Subscriptions) und ermöglicht die Verwaltung sämtlicher Abonnements in einem Konto. Weitere Informationen finden Sie unter [Administratorrollen für klassische Abonnements, Azure RBAC-Rollen und Azure AD-Administratorrollen](../../role-based-access-control/rbac-and-directory-admin-roles.md).|
 |Dienstadministrator|Diese klassische Abonnementadministratorrolle ermöglicht die Verwaltung sämtlicher Azure-Ressourcen (einschließlich Zugriff). Sie hat den gleichen Zugriff wie ein Benutzer, dem für den Abonnementbereich die Rolle „Besitzer“ zugewiesen ist. Weitere Informationen finden Sie unter [Administratorrollen für klassische Abonnements, Azure RBAC-Rollen und Azure AD-Administratorrollen](../../role-based-access-control/rbac-and-directory-admin-roles.md).|

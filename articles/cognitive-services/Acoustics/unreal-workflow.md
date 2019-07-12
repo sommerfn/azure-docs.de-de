@@ -10,12 +10,12 @@ ms.subservice: acoustics
 ms.topic: tutorial
 ms.date: 03/20/2019
 ms.author: kegodin
-ms.openlocfilehash: 38276757d0472582c3cf5035e1f52d34158a7e38
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 1692032b093cd6189cac3ea3f63c563d9accd8ed
+ms.sourcegitcommit: f811238c0d732deb1f0892fe7a20a26c993bc4fc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59784675"
+ms.lasthandoff: 06/29/2019
+ms.locfileid: "67477829"
 ---
 # <a name="project-acoustics-unrealwwise-design-tutorial"></a>Entwurfstutorial für Projekt Akustik in Unreal/Wwise
 Dieses Tutorial beschreibt die Entwurfseinrichtung und den -workflow für Projekt Akustik in Unreal und Wwise.
@@ -122,6 +122,11 @@ Wenn Sie das Streamen akustischer Daten selbst verwalten möchten, anstatt autom
 Die Kachelgröße muss bereits vor dem Aufrufen von „Force Load Tile“ (Laden der Kachel erzwingen) festgelegt werden. Beispielsweise können Sie auf diese Weise eine ACE-Datei laden, die Kachelgröße festlegen und den Stream in einer Region beginnen:
 
 ![Screenshot der Optionen für Streamingeinrichtung in Unreal](media/streaming-setup.png)
+
+Die in diesem Beispiel verwendete Azure Blueprint-Funktion „Load Acoustics Data“ hat die folgenden Parameter:
+
+* **Target** (Ziel): Den Akteur AcousticsSpace.
+* **Neues Baking:** Das zu ladende Objekt mit den Akustikdaten. Wenn Sie dieses Feld leer lassen bzw. auf NULL festlegen, wird der aktuelle Bakingvorgang entladen, ohne einen neuen zu laden.
 
 ### <a name="optionally-query-for-surface-proximity"></a>Optionales Abfragen der Nähe zu einer Fläche
 Wenn Sie sehen möchten, wie nah sich Flächen in einer bestimmten Richtung um den Zuhörer befinden, können Sie die Funktion „Query Distance“ (Entfernung abfragen) verwenden. Diese Funktion kann zum Steuern direktional verzögerter Reflexionen oder für andere Spiellogik, die von der Nähe zu Flächen abhängt, nützlich sein. Die Abfrage ist weniger aufwendig als das Aussenden von Strahlen, da die Ergebnisse aus der Akustiksuchtabelle abgerufen werden.

@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.date: 02/06/2018
 ms.author: mhopkins
 ms.reviewer: cbrooks
-ms.openlocfilehash: 41cb37eb9d96752d4732731d2a36d9bc892cbaa5
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.openlocfilehash: c3743c62dcbdccc2a119cfec570df96c622390c7
+ms.sourcegitcommit: 5bdd50e769a4d50ccb89e135cfd38b788ade594d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66159810"
+ms.lasthandoff: 07/03/2019
+ms.locfileid: "67540328"
 ---
 # <a name="quickstart-use-net-to-create-a-queue-in-azure-storage"></a>Schnellstart: Erstellen einer Warteschlange in Azure Storage mithilfe von .NET
 
@@ -187,9 +187,9 @@ Console.WriteLine();
 
 Als Nächstes wird am Ende der Warteschlange eine Nachricht hinzugefügt. 
 
-Die Nachricht muss in einem Format vorliegen, das in eine XML-Anforderung mit UTF-8-Codierung eingeschlossen werden kann, und kann bis zu 64 KB groß sein. Für Nachrichten mit Binärdaten empfiehlt Microsoft die Verwendung der Base64-Codierung.
+Die Nachricht muss in einem Format vorliegen, das in eine XML-Anforderung mit UTF-8-Codierung eingeschlossen werden kann, und kann bis zu 64 KB groß sein. Für Nachrichten mit Binärdaten empfiehlt Microsoft die Base64-Codierung der Nachricht.
 
-Die maximale Gültigkeitsdauer für eine Nachricht beträgt standardmäßig sieben Tage. Für die Gültigkeitsdauer der Nachricht kann eine beliebige positive Zahl angegeben werden. Soll die Gültigkeit der Nachricht nicht ablaufen, geben Sie „-1“ an.
+Die maximale Gültigkeitsdauer für eine Nachricht beträgt standardmäßig sieben Tage. Sie können für die Gültigkeitsdauer der Nachricht eine beliebige positive Zahl angeben.
 
 ```csharp
 // Create a message and add it to the queue. Set expiration time to 14 days.
@@ -199,6 +199,12 @@ Console.WriteLine("Added message '{0}' to queue '{1}'", message.Id, queue.Name);
 Console.WriteLine("Message insertion time: {0}", message.InsertionTime.ToString());
 Console.WriteLine("Message expiration time: {0}", message.ExpirationTime.ToString());
 Console.WriteLine();
+```
+
+Um eine Nachricht hinzuzufügen, die nicht abläuft, verwenden Sie `Timespan.FromSeconds(-1)` in Ihrem Aufruf von [AddMessageAsync](/dotnet/api/microsoft.azure.storage.queue.cloudqueue.addmessageasync).
+
+```csharp
+await queue.AddMessageAsync(message, TimeSpan.FromSeconds(-1), null, null, null);
 ```
 
 ### <a name="peek-a-message-from-the-queue"></a>Einsehen einer Nachricht aus der Warteschlange
