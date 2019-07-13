@@ -189,9 +189,9 @@ In diesem Artikel konfigurieren Sie die Hive-Aktivität, um einen HDInsight Hado
 
     |Eigenschaft  |Wert  |
     |---------|---------|
-    |NAME | Geben Sie einen Namen für die Data Factory ein. Dieser Name muss global eindeutig sein.|
-    |Abonnement | Wählen Sie Ihr Azure-Abonnement. |
-    |Ressourcengruppe | Wählen Sie **Vorhandene verwenden** und dann die Ressourcengruppe aus, die Sie mit dem PowerShell-Skript erstellt haben. |
+    |Name | Geben Sie einen Namen für die Data Factory ein. Dieser Name muss global eindeutig sein.|
+    |Subscription | Wählen Sie Ihr Azure-Abonnement. |
+    |Resource group | Wählen Sie **Vorhandene verwenden** und dann die Ressourcengruppe aus, die Sie mit dem PowerShell-Skript erstellt haben. |
     |Version | **V2** beibehalten. |
     |Location | Der Standort wird automatisch auf die Region festgelegt, die Sie beim Erstellen der Ressourcengruppe zuvor angegeben haben. Für dieses Tutorial wird der Standort auf **USA, Osten** festgelegt. |
 
@@ -230,7 +230,7 @@ In diesem Abschnitt erstellen Sie zwei verknüpfte Dienste in Ihrer Data Factory
 
     |Eigenschaft |Wert |
     |---|---|
-    |NAME |Geben Sie `HDIStorageLinkedService` ein.|
+    |Name |Geben Sie `HDIStorageLinkedService` ein.|
     |Azure-Abonnement |Wählen Sie in der Dropdownliste Ihr Abonnement aus.|
     |Speicherkontoname |Wählen Sie das Azure Storage-Konto aus, das Sie als Teil des PowerShell-Skripts erstellt haben.|
 
@@ -252,7 +252,7 @@ In diesem Abschnitt erstellen Sie zwei verknüpfte Dienste in Ihrer Data Factory
 
     | Eigenschaft | Wert |
     | --- | --- |
-    | NAME | Geben Sie `HDInsightLinkedService` ein.|
+    | Name | Geben Sie `HDInsightLinkedService` ein.|
     | type | Wählen Sie **HDInsight bedarfsgesteuert** aus. |
     | Mit Azure-Speicher verknüpfter Dienst | Wählen Sie `HDIStorageLinkedService` aus. |
     | Clustertyp | Wählen Sie **hadoop** aus. |
@@ -260,7 +260,7 @@ In diesem Abschnitt erstellen Sie zwei verknüpfte Dienste in Ihrer Data Factory
     | Dienstprinzipal-ID | Geben Sie die Anwendungs-ID des Azure Active Directory-Dienstprinzipals an, den Sie zur Vorbereitung erstellt haben. |
     | Dienstprinzipalschlüssel | Geben Sie den Authentifizierungsschlüssel für den Azure Active Directory-Dienstprinzipal an. |
     | Clusternamenspräfix | Geben Sie einen Wert an, der allen von der Data Factory erstellten Clustertypen vorangestellt wird. |
-    |Abonnement |Wählen Sie in der Dropdownliste Ihr Abonnement aus.|
+    |Subscription |Wählen Sie in der Dropdownliste Ihr Abonnement aus.|
     | Auswählen der Ressourcengruppe | Wählen Sie die Ressourcengruppe, die Sie zuvor mit dem PowerShell-Skript erstellt haben, aus.|
     |Region auswählen | Wählen Sie in der Dropdownliste eine Region aus.|
     | Betriebssystemtyp/SSH-Benutzername für den Cluster | Geben Sie einen SSH-Benutzernamen ein, üblicherweise `sshuser`. |

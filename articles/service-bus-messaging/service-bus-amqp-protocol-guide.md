@@ -228,7 +228,7 @@ Jede Eigenschaft, die die Anwendung definieren muss, sollte der `application-pro
 | subject |Anwendungsdefinierte Nachrichtenzweck-ID, von Service Bus nicht interpretiert. |[Label](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage) |
 | reply-to |Anwendungsdefinierter Antwortpfadindikator, von Service Bus nicht interpretiert. |[ReplyTo](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage) |
 | correlation-id |Anwendungsdefinierte Korrelations-ID, von Service Bus nicht interpretiert. |[CorrelationId](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage) |
-| content-type	 |Anwendungsdefinierter Inhaltstypindikator für den Haupttext, von Service Bus nicht interpretiert. |[ContentType](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage) |
+| content-type |Anwendungsdefinierter Inhaltstypindikator für den Haupttext, von Service Bus nicht interpretiert. |[ContentType](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage) |
 | content-encoding |Anwendungsdefinierter Inhaltscodierungsindikator für den Haupttext, von Service Bus nicht interpretiert. |Nicht über die Service Bus-API zugänglich. |
 | absolute-expiry-time |Deklariert, zu welchem absolutem Zeitpunkt die Nachricht abläuft. Bei Eingabe ignoriert (Header-TTL wird beachtet), autoritativ bei Ausgabe. |[ExpiresAtUtc](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage) |
 | creation-time |Deklariert, zu welchem Zeitpunkt die Nachricht erstellt wurde. Wird von Service Bus nicht verwendet. |Nicht über die Service Bus-API zugänglich. |
