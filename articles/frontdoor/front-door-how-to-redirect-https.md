@@ -3,16 +3,16 @@ title: Erstellen einer Front Door-Ressource mit Umleitung von HTTP zu HTTPS übe
 description: Erfahren Sie, wie Sie mithilfe des Azure-Portals eine Front Door-Ressource mit Datenverkehr erstellen, der von HTTP zu HTTPS umgeleitet wird.
 services: front-door
 author: sharad4u
-ms.service: front-door
+ms.service: frontdoor
 ms.topic: article
 ms.date: 5/21/2019
 ms.author: sharadag
-ms.openlocfilehash: a07b19c49630cc925e719aaa1d46476a1edc58f5
-ms.sourcegitcommit: 08138eab740c12bf68c787062b101a4333292075
+ms.openlocfilehash: 7fabc1e3445d3dbd357700ffde3caeb985cc60c4
+ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/22/2019
-ms.locfileid: "67332347"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67601956"
 ---
 # <a name="create-a-front-door-with-http-to-https-redirection-using-the-azure-portal"></a>Erstellen einer Front Door-Ressource mit Umleitung von HTTP zu HTTPS über das Azure-Portal
 
@@ -29,7 +29,7 @@ Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](htt
 
 ## <a name="create-a-front-door-with-an-existing-web-app-resource"></a>Erstellen einer Front Door-Ressource mit einer vorhandenen Web-App-Ressource
 
-1. Melden Sie sich unter [https://portal.azure.com](https://portal.azure.com) am Azure-Portal an.
+1. Melden Sie sich unter [https://portal.azure.com](https://portal.azure.com) beim Azure-Portal an.
 2. Klicken Sie in der linken oberen Ecke des Azure-Portals auf **Ressource erstellen**.
 3. Suchen Sie mithilfe der Suchleiste nach **Front Door.**  Klicken Sie auf **Erstellen**, wenn Sie den Ressourcentyp gefunden haben.
 4. Wählen Sie ein Abonnement aus, und verwenden Sie dann eine vorhandene Ressourcengruppe, oder erstellen Sie eine neue Ressourcengruppe. Beachten Sie, dass sich der Speicherort, der in der Benutzeroberfläche abgefragt wird, nur auf die Ressourcengruppe bezieht. Die Front Door-Konfiguration wird an allen [POP-Standorten von Azure Front Door](https://docs.microsoft.com/azure/frontdoor/front-door-faq#what-are-the-pop-locations-for-azure-front-door-service) bereitgestellt.
