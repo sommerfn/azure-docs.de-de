@@ -45,7 +45,8 @@
 - name: Anleitungen
   items:
     - name: Ändern der Größe und Zuschneiden von Miniaturansichten
-      href: resize-and-crop-thumbnails.md
+      maintainContext: true
+      href: ../bing-web-search/resize-and-crop-thumbnails.md
 - name: Konzepte
   items:
     - name: Suchen nach Entitäten

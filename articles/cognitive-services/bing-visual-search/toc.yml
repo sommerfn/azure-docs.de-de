@@ -58,7 +58,8 @@
     - name: Gewinnen von Erkenntnissen per Token
       href: use-insights-token.md
     - name: Ändern der Größe und Zuschneiden von Miniaturansichten
-      href: resize-and-crop-thumbnails.md
+      maintainContext: true
+      href: ../bing-web-search/resize-and-crop-thumbnails.md
     - name: Suchen nach einem Bild mithilfe von Bildauswertungstoken
       href: tutorial-visual-search-insights-token.md
     - name: Erstellen einer Einzelseiten-Web-App

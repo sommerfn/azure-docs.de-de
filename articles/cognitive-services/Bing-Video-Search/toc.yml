@@ -52,7 +52,8 @@
     - name: Einteilen von Videos in Seiten
       href: paging-videos.md
     - name: Ändern der Größe und Zuschneiden von Miniaturansichten
-      href: resize-and-crop-thumbnails.md
+      maintainContext: true
+      href: ../bing-web-search/resize-and-crop-thumbnails.md
     - name: Upgrade von v5 auf v7
       href: bing-video-upgrade-guide-v5-to-v7.md
 - name: Konzepte

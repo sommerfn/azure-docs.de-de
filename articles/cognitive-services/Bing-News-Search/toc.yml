@@ -51,7 +51,8 @@
     - name: Einteilen von Nachrichten in Seiten
       href: paging-news.md
     - name: Ändern der Größe und Zuschneiden von Miniaturansichten
-      href: resize-and-crop-thumbnails.md
+      maintainContext: true
+      href: ../bing-web-search/resize-and-crop-thumbnails.md
     - name: Upgrade von v5 auf v7 der API
       href: bing-news-upgrade-guide-v5-to-v7.md
     - name: Arbeiten mit Visual Studio
