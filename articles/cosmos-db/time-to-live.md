@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 05/21/2019
 ms.author: rimman
 ms.reviewer: sngun
-ms.openlocfilehash: 692e0ec575904ff0a70b8c73268d2df62e776bb6
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 0b32665b09eb02c337a12ac3cfc2b474fa82711a
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65978789"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67447247"
 ---
 # <a name="time-to-live-ttl-in-azure-cosmos-db"></a>Gültigkeitsdauer (TTL) in Azure Cosmos DB 
 
@@ -45,6 +45,42 @@ Der Wert für die Gültigkeitsdauer wird in Sekunden festgelegt und als Deltawer
 * Wurde die Gültigkeitsdauer für einen Container auf „-1“ festgelegt, läuft die Gültigkeit eines Elements in diesem Container, dessen Gültigkeitsdauer auf „n“ festgelegt ist, nach n Sekunden ab. Die Gültigkeit der übrigen Elemente läuft dagegen nicht ab. 
 
 Das Löschen von Elementen auf der Grundlage der Gültigkeitsdauer ist kostenlos. Bei Elementen, die nach Ablauf der Gültigkeitsdauer gelöscht werden, fallen keine zusätzlichen Kosten an (sprich: es werden keine zusätzlichen RUs genutzt).
+
+## <a name="examples"></a>Beispiele
+
+Dieser Abschnitt zeigt einige Beispiele mit anderen Gültigkeitsdauerwerten, die Containern und Elementen zugewiesen werden:
+
+### <a name="example-1"></a>Beispiel 1
+
+Gültigkeitsdauer (TTL) für Container wird auf null festgelegt (DefaultTimeToLive = null)
+
+|Gültigkeitsdauer (TTL) für Element| Ergebnis|
+|---|---|
+|ttl = null|    Gültigkeitsdauer (TTL) ist deaktiviert. Das Element läuft nie ab (Standardeinstellung).|
+|ttl = -1   |Gültigkeitsdauer (TTL) ist deaktiviert. Das Element läuft nie ab.|
+|ttl = 2000 |Gültigkeitsdauer (TTL) ist deaktiviert. Das Element läuft nie ab.|
+
+
+### <a name="example-2"></a>Beispiel 2
+
+Gültigkeitsdauer (TTL) für Container wird auf -1 festgelegt (DefaultTimeToLive = -1)
+
+|Gültigkeitsdauer (TTL) für Element| Ergebnis|
+|---|---|
+|ttl = null |Gültigkeitsdauer (TTL) ist aktiviert. Das Element läuft nie ab (Standardeinstellung).|
+|ttl = -1   |Gültigkeitsdauer (TTL) ist aktiviert. Das Element läuft nie ab.|
+|ttl = 2000 |Gültigkeitsdauer (TTL) ist aktiviert. Das Element läuft nach 2000 Sekunden ab.|
+
+
+### <a name="example-3"></a>Beispiel 3
+
+Gültigkeitsdauer (TTL) für Container wird auf 1000 festgelegt (DefaultTimeToLive = 1000)
+
+|Gültigkeitsdauer (TTL) für Element| Ergebnis|
+|---|---|
+|ttl = null|    Gültigkeitsdauer (TTL) ist aktiviert. Das Element läuft nach 1000 Sekunden ab (Standardeinstellung).|
+|ttl = -1   |Gültigkeitsdauer (TTL) ist aktiviert. Das Element läuft nie ab.|
+|ttl = 2000 |Gültigkeitsdauer (TTL) ist aktiviert. Das Element läuft nach 2000 Sekunden ab.|
 
 ## <a name="next-steps"></a>Nächste Schritte
 

@@ -6,22 +6,37 @@ author: alkohli
 ms.service: databox
 ms.subservice: pod
 ms.topic: article
-ms.date: 05/28/2019
+ms.date: 06/24/2019
 ms.author: alkohli
-ms.openlocfilehash: 0c454c5f19ebefc7f91df62511448dbedb93dfc4
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: bc0681a8ea15f736a7b253d6bd7ba2f7928d2a32
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66257289"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67439398"
 ---
 # <a name="troubleshoot-issues-related-to-azure-data-box-and-azure-data-box-heavy"></a>Behandeln von Problemen mit Azure Data Box und Azure Data Box Heavy
 
-In diesem Artikel finden Sie Informationen zum Beheben von Problemen, die mit Azure Data Box oder Azure Data Box Heavy auftreten können.
+In diesem Artikel finden Sie Informationen zum Beheben von Problemen, die mit Azure Data Box oder Azure Data Box Heavy auftreten können. Der Artikel enthält die Liste der möglichen Fehler, die beim Kopieren von Daten in Data Box oder beim Hochladen von Daten aus Data Box auftreten können.
 
-## <a name="errors-during-data-copy"></a>Fehler während des Datenkopiervorgangs
+## <a name="error-classes"></a>Fehlerklassen
 
-Alle Fehler, die beim Kopieren von Daten auftreten, werden in den folgenden Abschnitten zusammengefasst.
+Fehler in Data Box und Data Box Heavy lassen sich wie folgt zusammenfassen:
+
+| Fehlerkategorie*        | BESCHREIBUNG        | Empfohlene Maßnahme    |
+|----------------------------------------------|---------|--------------------------------------|
+| Container- oder Freigabenamen | Die Namen der Container oder Freigaben folgen nicht den Benennungsregeln für Azure.  |Laden Sie die Fehlerlisten herunter. <br> Benennen Sie die Container oder Freigaben um. [Weitere Informationen](#container-or-share-name-errors)  |
+| Größenbeschränkung für Container oder Freigaben | Die Datengesamtmenge in Containern oder Freigaben überschreitet den Azure-Grenzwert.   |Laden Sie die Fehlerlisten herunter. <br> Verringern Sie die Datengesamtmenge im Container oder in den Freigaben. [Weitere Informationen](#container-or-share-size-limit-errors)|
+| Objekt- oder Dateigrößenbeschränkung | Die Objekte oder Dateien in Containern oder Freigaben überschreiten den Azure-Grenzwert.|Laden Sie die Fehlerlisten herunter. <br> Verringern Sie die Dateigröße im Container oder in den Freigaben. [Weitere Informationen](#object-or-file-size-limit-errors) |    
+| Daten- oder Dateityp | Das Datenformat oder der Dateityp wird nicht unterstützt. |Laden Sie die Fehlerlisten herunter. <br> Stellen Sie für Seitenblobs oder verwaltete Datenträger sicher, dass die Daten auf 512 Bytes ausgerichtet sind und in die vorab erstellten Ordner kopiert werden. [Weitere Informationen](#data-or-file-type-errors) |
+| Nicht kritische Blob- oder Dateifehler  | Die Blob- oder Dateinamen folgen nicht den Benennungsregeln von Azure, oder der Dateityp wird nicht unterstützt. | Diese Blobs oder Dateien werden ggf. nicht kopiert, oder die Namen können geändert werden. [Erfahren Sie, wie Sie diese Fehler beheben](#non-critical-blob-or-file-errors). |
+
+\* Die ersten vier Fehlerkategorien sind kritische Fehler und müssen behoben werden, bevor Sie mit der Vorbereitung der Auslieferung fortfahren können.
+
+
+## <a name="container-or-share-name-errors"></a>Container- oder Freigabenamenfehler
+
+Hierbei handelt es sich um Fehler in Bezug auf Container- und Freigabenamen.
 
 ### <a name="errorcontainerorsharenamelength"></a>ERROR_CONTAINER_OR_SHARE_NAME_LENGTH     
 
@@ -78,17 +93,9 @@ Alle Fehler, die beim Kopieren von Daten auftreten, werden in den folgenden Absc
 
     Weitere Informationen finden Sie in den Azure-Namenskonventionen für [Containernamen](https://docs.microsoft.com/rest/api/storageservices/naming-and-referencing-containers--blobs--and-metadata#container-names) und [Freigabenamen](https://docs.microsoft.com/rest/api/storageservices/naming-and-referencing-shares--directories--files--and-metadata#share-names).
 
-### <a name="errorcontainerorsharenamedisallowedfortype"></a>ERROR_CONTAINER_OR_SHARE_NAME_DISALLOWED_FOR_TYPE
+## <a name="container-or-share-size-limit-errors"></a>Größenbeschränkungsfehler für Container oder Freigaben
 
-**Fehlerbeschreibung:** Für verwaltete Datenträgerfreigaben wurden falsche Containernamen angegeben.
-
-**Vorgeschlagene Lösung:** Für verwaltete Datenträger innerhalb der einzelnen Freigaben werden jeweils die folgenden Ordner erstellt, die Containern in Ihrem Speicherkonto entsprechen: SSD Premium, HDD Standard und SSD Standard. Diese Ordner entsprechen der Leistungsstufe für den verwalteten Datenträger.
-
-- Stellen Sie sicher, dass Sie Ihre Seitenblobdaten (VHDs) in einen dieser vorhandenen Ordner kopieren. Nur Daten aus diesen vorhandenen Containern werden in Azure hochgeladen.
-- Andere Ordner, die auf der gleichen Ebene wie „SSD Premium“, „HDD Standard“ und „SSD Standard“ erstellt werden, entsprechen keiner gültigen Leistungsstufe und können nicht verwendet werden.
-- Entfernen Sie Dateien oder Ordner, die außerhalb der Leistungsstufen erstellt wurden.
-
-Weitere Informationen finden Sie unter [Kopieren verwalteter Datenträger](data-box-deploy-copy-data-from-vhds.md#connect-to-data-box).
+Hierbei handelt es sich um Fehler im Zusammenhang mit Daten, die die zulässige Datengröße in einem Container oder einer Freigabe überschreiten.
 
 ### <a name="errorcontainerorsharecapacityexceeded"></a>ERROR_CONTAINER_OR_SHARE_CAPACITY_EXCEEDED
 
@@ -97,6 +104,65 @@ Weitere Informationen finden Sie unter [Kopieren verwalteter Datenträger](data-
 **Vorgeschlagene Lösung:** Laden Sie auf der lokalen Webbenutzeroberfläche auf der Seite **Verbinden und kopieren** die Fehlerdateien herunter, und überprüfen Sie sie.
 
 Ermitteln Sie die Ordner, die dieses Problem in den Fehlerprotokollen enthalten, und stellen Sie sicher, dass die Dateien in diesem Ordner kleiner als 5 TB sind.
+
+
+## <a name="object-or-file-size-limit-errors"></a>Objekt- oder Dateigrößenbeschränkungs-Fehler
+
+Hierbei handelt es sich um Fehler im Zusammenhang mit Daten, die die maximale Größe des Objekts oder der Datei überschreiten, die in Azure zulässig ist. 
+
+### <a name="errorbloborfilesizelimit"></a>ERROR_BLOB_OR_FILE_SIZE_LIMIT
+
+**Fehlerbeschreibung:** Die Datei ist zu groß zum Hochladen.
+
+**Vorgeschlagene Lösung:** Die Größe des Blobs oder der Datei überschreitet den maximal zulässigen Grenzwert für den Upload.
+
+- Laden Sie auf der lokalen Webbenutzeroberfläche auf der Seite **Verbinden und kopieren** die Fehlerdateien herunter, und überprüfen Sie sie.
+- Stellen Sie sicher, dass die Blob- und Dateigrößen die Größenbeschränkungen für Azure-Objekte nicht überschreiten.
+
+## <a name="data-or-file-type-errors"></a>Daten- oder Dateitypfehler
+
+Hierbei handelt es sich um Fehler in Bezug auf einen nicht unterstützten Datei- oder Datentyp, der im Container oder in einer Freigabe gefunden wurde. 
+
+### <a name="errorbloborfilesizealignment"></a>ERROR_BLOB_OR_FILE_SIZE_ALIGNMENT
+
+**Fehlerbeschreibung:** Der Blob- oder Dateiname ist nicht ordnungsgemäß ausgerichtet.
+
+**Vorgeschlagene Lösung:** Die Seitenblobfreigabe in Data Box oder Data Box Heavy unterstützt nur Dateien, die 512 Byte zuordnen (z.B. VHD/VHDX). Alle Daten, die in die Seitenblobfreigabe kopiert werden, werden in Azure als Seitenblobs hochgeladen.
+
+Entfernen Sie alle Daten, die keine VHD-/VHDX-Daten sind, aus der Seitenblobfreigabe. Sie können Freigeben für Blockblobs oder Azure-Dateien für generische Daten verwenden.
+
+Weitere Informationen finden Sie in der [Übersicht über Seitenblobs](../storage/blobs/storage-blob-pageblob-overview.md).
+
+### <a name="errorbloborfiletypeunsupported"></a>ERROR_BLOB_OR_FILE_TYPE_UNSUPPORTED
+
+**Fehlerbeschreibung:** Eine Freigabe auf einem verwalteten Datenträger enthält einen nicht unterstützten Dateityp. Nur feste VHDs sind zulässig.
+
+**Vorgeschlagene Lösung:**
+
+- Stellen Sie sicher, dass Sie nur feste VHDs hochladen, um verwaltete Datenträger zu erstellen.
+- VHDX-Dateien oder **dynamische** und **differenzierende** VHDs werden nicht unterstützt.
+
+### <a name="errordirectorydisallowedfortype"></a>ERROR_DIRECTORY_DISALLOWED_FOR_TYPE
+
+**Fehlerbeschreibung:** In den vorab erstellten Ordnern für die verwalteten Datenträger sind keine Verzeichnisse zulässig. Nur feste VHDs sind in diesen Ordnern zulässig.
+
+**Vorgeschlagene Lösung:** Für verwaltete Datenträger innerhalb der einzelnen Freigaben werden jeweils die folgenden drei Ordner erstellt, die Containern in Ihrem Speicherkonto entsprechen: SSD Premium, HDD Standard und SSD Standard. Diese Ordner entsprechen der Leistungsstufe für den verwalteten Datenträger.
+
+- Stellen Sie sicher, dass Sie Ihre Seitenblobdaten (VHDs) in einen dieser vorhandenen Ordner kopieren.
+- Ordner und Verzeichnisse sind in diesen vorhandenen Ordnern nicht zulässig. Entfernen Sie alle Ordner, die Sie in den bereits vorhandenen Ordnern erstellt haben.
+
+Weitere Informationen finden Sie unter [Kopieren verwalteter Datenträger](data-box-deploy-copy-data-from-vhds.md#connect-to-data-box).
+
+### <a name="reparsepointerror"></a>REPARSE_POINT_ERROR
+
+**Fehlerbeschreibung:** Symbolische Verknüpfungen sind unter Linux unzulässig. 
+
+**Vorgeschlagene Lösung:** Die symbolischen Verknüpfungen sind normalerweise Links, Pipes und ähnliche Dateien. Entfernen Sie die Verknüpfungen, oder lösen Sie die Verknüpfungen auf, und kopieren Sie die Daten.
+
+
+## <a name="non-critical-blob-or-file-errors"></a>Nicht kritische Blob- oder Dateifehler
+
+Alle Fehler, die beim Kopieren von Daten auftreten, werden in den folgenden Abschnitten zusammengefasst.
 
 ### <a name="errorbloborfilenamecharactercontrol"></a>ERROR_BLOB_OR_FILE_NAME_CHARACTER_CONTROL
 
@@ -163,42 +229,16 @@ Weitere Informationen finden Sie in den Azure-Namenskonventionen für Blobnamen 
 - Laden Sie auf der lokalen Webbenutzeroberfläche auf der Seite **Verbinden und kopieren** die Fehlerdateien herunter, und überprüfen Sie sie.
 - Stellen Sie sicher, dass die [Blobnamen](https://docs.microsoft.com/rest/api/storageservices/Naming-and-Referencing-Containers--Blobs--and-Metadata#blob-names) und [Dateinamen](https://docs.microsoft.com/rest/api/storageservices/naming-and-referencing-shares--directories--files--and-metadata#directory-and-file-names) den Azure-Namenskonventionen entsprechen.
 
-### <a name="errorbloborfilesizelimit"></a>ERROR_BLOB_OR_FILE_SIZE_LIMIT
 
-**Fehlerbeschreibung:** Die Datei ist zu groß zum Hochladen.
+### <a name="errorcontainerorsharenamedisallowedfortype"></a>ERROR_CONTAINER_OR_SHARE_NAME_DISALLOWED_FOR_TYPE
 
-**Vorgeschlagene Lösung:** Die Größe des Blobs oder der Datei überschreitet den maximal zulässigen Grenzwert für den Upload.
+**Fehlerbeschreibung:** Für verwaltete Datenträgerfreigaben wurden falsche Containernamen angegeben.
 
-- Laden Sie auf der lokalen Webbenutzeroberfläche auf der Seite **Verbinden und kopieren** die Fehlerdateien herunter, und überprüfen Sie sie.
-- Stellen Sie sicher, dass die Blob- und Dateigrößen die Größenbeschränkungen für Azure-Objekte nicht überschreiten.
+**Vorgeschlagene Lösung:** Für verwaltete Datenträger innerhalb der einzelnen Freigaben werden jeweils die folgenden Ordner erstellt, die Containern in Ihrem Speicherkonto entsprechen: SSD Premium, HDD Standard und SSD Standard. Diese Ordner entsprechen der Leistungsstufe für den verwalteten Datenträger.
 
-### <a name="errorbloborfilesizealignment"></a>ERROR_BLOB_OR_FILE_SIZE_ALIGNMENT
-
-**Fehlerbeschreibung:** Der Blob- oder Dateiname ist nicht ordnungsgemäß ausgerichtet.
-
-**Vorgeschlagene Lösung:** Die Seitenblobfreigabe in Data Box oder Data Box Heavy unterstützt nur Dateien, die 512 Byte zuordnen (z.B. VHD/VHDX). Alle Daten, die in die Seitenblobfreigabe kopiert werden, werden in Azure als Seitenblobs hochgeladen.
-
-Entfernen Sie alle Daten, die keine VHD-/VHDX-Daten sind, aus der Seitenblobfreigabe. Sie können Freigeben für Blockblobs oder Azure-Dateien für generische Daten verwenden.
-
-Weitere Informationen finden Sie in der [Übersicht über Seitenblobs](../storage/blobs/storage-blob-pageblob-overview.md).
-
-### <a name="errorbloborfiletypeunsupported"></a>ERROR_BLOB_OR_FILE_TYPE_UNSUPPORTED
-
-**Fehlerbeschreibung:** Eine Freigabe auf einem verwalteten Datenträger enthält einen nicht unterstützten Dateityp. Nur feste VHDs sind zulässig.
-
-**Vorgeschlagene Lösung:**
-
-- Stellen Sie sicher, dass Sie nur feste VHDs hochladen, um verwaltete Datenträger zu erstellen.
-- VHDX-Dateien oder **dynamische** und **differenzierende** VHDs werden nicht unterstützt.
-
-### <a name="errordirectorydisallowedfortype"></a>ERROR_DIRECTORY_DISALLOWED_FOR_TYPE
-
-**Fehlerbeschreibung:** In den vorab erstellten Ordnern für die verwalteten Datenträger sind keine Verzeichnisse zulässig. Nur feste VHDs sind in diesen Ordnern zulässig.
-
-**Vorgeschlagene Lösung:** Für verwaltete Datenträger innerhalb der einzelnen Freigaben werden jeweils die folgenden drei Ordner erstellt, die Containern in Ihrem Speicherkonto entsprechen: SSD Premium, HDD Standard und SSD Standard. Diese Ordner entsprechen der Leistungsstufe für den verwalteten Datenträger.
-
-- Stellen Sie sicher, dass Sie Ihre Seitenblobdaten (VHDs) in einen dieser vorhandenen Ordner kopieren.
-- Ordner und Verzeichnisse sind in diesen vorhandenen Ordnern nicht zulässig. Entfernen Sie alle Ordner, die Sie in den bereits vorhandenen Ordnern erstellt haben.
+- Stellen Sie sicher, dass Sie Ihre Seitenblobdaten (VHDs) in einen dieser vorhandenen Ordner kopieren. Nur Daten aus diesen vorhandenen Containern werden in Azure hochgeladen.
+- Andere Ordner, die auf der gleichen Ebene wie „SSD Premium“, „HDD Standard“ und „SSD Standard“ erstellt werden, entsprechen keiner gültigen Leistungsstufe und können nicht verwendet werden.
+- Entfernen Sie Dateien oder Ordner, die außerhalb der Leistungsstufen erstellt wurden.
 
 Weitere Informationen finden Sie unter [Kopieren verwalteter Datenträger](data-box-deploy-copy-data-from-vhds.md#connect-to-data-box).
 

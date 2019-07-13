@@ -8,14 +8,14 @@ author: ecfan
 ms.author: estfan
 ms.reviewer: klam, LADocs
 ms.topic: article
-ms.date: 05/21/2018
+ms.date: 06/20/2019
 tags: connectors
-ms.openlocfilehash: ea3e97db9ec560306788943d92a7670025f38bdc
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: d9c29837e99d327112e6a9d648a5c56cc35e8555
+ms.sourcegitcommit: 2d3b1d7653c6c585e9423cf41658de0c68d883fa
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60958585"
+ms.lasthandoff: 06/20/2019
+ms.locfileid: "67296691"
 ---
 # <a name="create-and-manage-blobs-in-azure-blob-storage-with-azure-logic-apps"></a>Erstellen und Verwalten von Blobs in Azure-Blobspeicher mit Azure Logic Apps
 
@@ -30,12 +30,21 @@ Angenommen, Sie verfügen über ein Tool, das auf einer Azure-Website aktualisie
 >
 > * Wenn Sie API Management bereits verwenden, können Sie diesen Dienst für das Szenario nutzen. Weitere Informationen finden Sie unter [Einfache Unternehmensintegrationsarchitektur](https://aka.ms/aisarch).
 
-Falls Sie noch nicht mit Logik-Apps vertraut sind, finden Sie weitere Informationen unter [Was ist Azure Logic Apps?](../logic-apps/logic-apps-overview.md) und [Schnellstart: Erstellen Ihres ersten automatisierten Workflows mit Azure Logic Apps – Azure-Portal](../logic-apps/quickstart-create-first-logic-app-workflow.md).
-Connectorspezifische technische Informationen finden Sie in der <a href="https://docs.microsoft.com/connectors/azureblobconnector/" target="blank">Referenz zu Azure Blob Storage</a>.
+Falls Sie noch nicht mit Logik-Apps vertraut sind, finden Sie weitere Informationen unter [Was ist Azure Logic Apps?](../logic-apps/logic-apps-overview.md) und [Schnellstart: Erstellen Ihres ersten automatisierten Workflows mit Azure Logic Apps – Azure-Portal](../logic-apps/quickstart-create-first-logic-app-workflow.md). Connectorspezifische technische Informationen finden Sie in der [Referenz zu Azure Blob Storage](/connectors/azureblobconnector/).
+
+## <a name="limits"></a>Einschränkungen
+
+* Standardmäßig können Azure Blob Storage-Aktionen Dateien mit einer Größe von *50 MB oder kleiner* lesen oder schreiben. Zum Verarbeiten von Dateien, die größer als 50 MB und maximal 1.024 MB groß sind, unterstützen Azure Blob Storage-Aktionen [Nachrichtensegmentierung](../logic-apps/logic-apps-handle-large-messages.md). Die Aktion **Get blob content** (Blobinhalt abrufen) verwendet implizit die Blockerstellung.
+
+* Azure Blob Storage-Trigger unterstützen keine Segmentierung. Trigger wählen beim Anfordern von Dateiinhalten nur Dateien aus, die 50 MB oder kleiner sind. Befolgen Sie das folgende Muster, um Dateien abzurufen, die größer als 50 MB sind:
+
+  * Verwenden Sie einen Azure Blob Storage-Trigger, der Dateieigenschaften zurückgibt, z.B. **When a blob is added or modified (properties only)** (Beim Hinzufügen oder Ändern eines Blobs (nur Eigenschaften)).
+
+  * Lassen Sie auf den Trigger die Azure Blob Storage-Aktion **Get blob content** (Blobinhalt abrufen) folgen, die die vollständige Datei liest und implizit Segmentierung verwendet.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-* Wenn Sie nicht über ein Azure-Abonnement verfügen, können Sie sich <a href="https://azure.microsoft.com/free/" target="_blank">für ein kostenloses Azure-Konto registrieren</a>.
+* Ein Azure-Abonnement. Wenn Sie nicht über ein Azure-Abonnement verfügen, können Sie sich [für ein kostenloses Azure-Konto registrieren](https://azure.microsoft.com/free/).
 
 * Ein [Azure-Speicherkonto und -Speichercontainer](../storage/blobs/storage-quickstart-blobs-portal.md)
 
@@ -47,13 +56,13 @@ Connectorspezifische technische Informationen finden Sie in der <a href="https:/
 
 In Azure Logic Apps muss jede Logik-App mit einem [Trigger](../logic-apps/logic-apps-overview.md#logic-app-concepts) beginnen, der ausgelöst wird, wenn ein bestimmtes Ereignis eintritt oder eine bestimmte Bedingung erfüllt wird. Bei jeder Auslösung des Triggers erstellt das Logic Apps-Modul eine Logik-App-Instanz und startet die Ausführung des Workflows Ihrer App.
 
-In diesem Beispiel wird veranschaulicht, wie Sie einen Logik-App-Workflow mit dem Trigger **Azure Blob Storage – Beim Hinzufügen oder Ändern eines Blobs (nur Eigenschaften)** starten können, wenn die Eigenschaften eines Blobs in Ihrem Speichercontainer hinzugefügt oder aktualisiert werden. 
+In diesem Beispiel wird veranschaulicht, wie Sie einen Logik-App-Workflow mit dem Trigger **When a blob is added or modified (properties only)** (Beim Hinzufügen oder Ändern eines Blobs (nur Eigenschaften)) starten können, wenn die Eigenschaften eines Blobs in Ihrem Speichercontainer hinzugefügt oder aktualisiert werden.
 
-1. Erstellen Sie im Azure-Portal oder in Visual Studio eine leere Logik-App, die den Logik-App-Designer öffnet. In diesem Beispiel wird das Azure-Portal verwendet.
+1. Erstellen Sie im [Azure-Portal](https://portal.azure.com) oder in Visual Studio eine leere Logik-App, die den Logik-App-Designer öffnet. In diesem Beispiel wird das Azure-Portal verwendet.
 
 2. Geben Sie im Suchfeld „azure blob“ als Filter ein. Wählen Sie in der Triggerliste den gewünschten Trigger aus.
 
-   In diesem Beispiel wird folgender Trigger verwendet: **Azure Blob Storage – Beim Hinzufügen oder Ändern eines Blobs (nur Eigenschaften)**
+   In diesem Beispiel wird folgender Trigger verwendet: **When a blob is added or modified (properties only)** (Beim Hinzufügen oder Ändern eines Blobs (nur Eigenschaften))
 
    ![Trigger auswählen](./media/connectors-create-api-azureblobstorage/azure-blob-trigger.png)
 
@@ -79,22 +88,22 @@ In diesem Beispiel wird veranschaulicht, wie Sie einen Logik-App-Workflow mit de
 
 In Azure Logic Apps handelt es sich bei einer [Aktion](../logic-apps/logic-apps-overview.md#logic-app-concepts) um einen Schritt in Ihrem Workflow, der einem Trigger oder einer anderen Aktion folgt. Bei diesem Beispiel beginnt die Logik-App mit dem [Trigger „Wiederholung“](../connectors/connectors-native-recurrence.md).
 
-1. Öffnen Sie im Azure-Portal oder in Visual Studio Ihre Logik-App im Logik-App-Designer. In diesem Beispiel wird das Azure-Portal verwendet.
+1. Öffnen Sie im [Azure-Portal](https://portal.azure.com) oder in Visual Studio Ihre Logik-App im Logik-App-Designer. In diesem Beispiel wird das Azure-Portal verwendet.
 
-2. Wählen Sie im Logik-App-Designer unter dem Trigger oder der Aktion die Optionen **Neuer Schritt** > **Aktion hinzufügen** aus.
+2. Wählen Sie im Logik-App-Designer unter dem Trigger oder der Aktion die Option **Neuer Schritt** aus.
 
    ![Hinzufügen einer Aktion](./media/connectors-create-api-azureblobstorage/add-action.png) 
 
-   Um eine Aktion zwischen vorhandenen Schritten hinzuzufügen, bewegen Sie den Mauszeiger über den Verbindungspfeil. 
-   Wählen Sie das daraufhin angezeigte Pluszeichen ( **+** ) aus, und wählen Sie dann **Aktion hinzufügen** aus.
+   Um eine Aktion zwischen vorhandenen Schritten hinzuzufügen, bewegen Sie den Mauszeiger über den Verbindungspfeil. Wählen Sie das daraufhin angezeigte Pluszeichen ( **+** ) und dann **Aktion hinzufügen** aus.
 
 3. Geben Sie im Suchfeld „azure blob“ als Filter ein. Wählen Sie in der Liste mit den Aktionen die gewünschte Aktion aus.
 
-   In diesem Beispiel wird diese Aktion verwendet: **Azure Blob Storage – Blobinhalt abrufen**
+   In diesem Beispiel wird diese Aktion verwendet: **Get blob content** (Blobinhalt abrufen)
 
-   ![Aktion select](./media/connectors-create-api-azureblobstorage/azure-blob-action.png) 
+   ![Aktion select](./media/connectors-create-api-azureblobstorage/azure-blob-action.png)
 
-4. Wenn Sie zum Angeben von Verbindungsdetails aufgefordert werden, können Sie [jetzt Ihre Azure Blob Storage-Verbindung erstellen](#create-connection). Falls Ihre Verbindung bereits besteht, können Sie die erforderlichen Informationen für die Aktion angeben.
+4. Wenn Sie zum Angeben von Verbindungsdetails aufgefordert werden, können Sie [jetzt Ihre Azure Blob Storage-Verbindung erstellen](#create-connection).
+Falls Ihre Verbindung bereits besteht, können Sie die erforderlichen Informationen für die Aktion angeben.
 
    Wählen Sie für dieses Beispiel die gewünschte Datei aus.
 
@@ -120,11 +129,6 @@ In diesem Beispiel wird nur der Inhalt für ein Blob abgerufen. Fügen Sie zum A
 ## <a name="connector-reference"></a>Connector-Referenz
 
 Technische Details wie Trigger, Aktionen und Limits, wie sie in der OpenAPI-Datei (ehemals Swagger) des Connectors beschrieben werden, finden Sie auf der [Referenzseite des Connectors](/connectors/azureblobconnector/).
-
-## <a name="get-support"></a>Support
-
-* Sollten Sie Fragen haben, besuchen Sie das [Azure Logic Apps-Forum](https://social.msdn.microsoft.com/Forums/en-US/home?forum=azurelogicapps).
-* Wenn Sie Features vorschlagen oder für Vorschläge abstimmen möchten, besuchen Sie die [Website für Logic Apps-Benutzerfeedback](https://aka.ms/logicapps-wish).
 
 ## <a name="next-steps"></a>Nächste Schritte
 

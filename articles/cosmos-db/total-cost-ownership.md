@@ -7,14 +7,14 @@ ms.topic: conceptual
 ms.date: 05/21/2019
 ms.author: rimman
 ms.reviewer: sngun
-ms.openlocfilehash: e603435a49894a9b8faa2df9b49a8572b94eecb5
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 861aacb3e4c288ea7f55c5906534b728e9cd22b6
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65965591"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67447203"
 ---
-# <a name="total-cost-of-ownershiptco-with-azure-cosmos-db"></a>Gesamtkosten mit Azure Cosmos DB
+# <a name="total-cost-of-ownership-tco-with-azure-cosmos-db"></a>Gesamtkosten mit Azure Cosmos DB
 
 Azure Cosmos DB ist mit differenzierter Mehrinstanzenfähigkeit und Ressourcenkontrolle konzipiert. Dank dieses Designs kann Azure Cosmos DB zu deutlich niedrigeren Kosten betrieben werden und hilft so dem Benutzer, Geld zu sparen. Azure Cosmos DB unterstützt derzeit mehr als 280 Kundenworkloads auf einem einzelnen Computer (wobei sich die Dichte ständig erhöht) und zigtausend Kundenworkloads innerhalb eines Clusters. Für Replikate von Kundenworkloads wird ein Lastenausgleich über verschiedene Computer in einem Cluster und über mehrere Cluster in einem Rechenzentrum hinweg vorgenommen. Weitere Informationen finden Sie unter [Azure Cosmos DB: Erweitern der Grenzen global verteilter Datenbanken](https://azure.microsoft.com/blog/azure-cosmos-db-pushing-the-frontier-of-globally-distributed-databases/). Aufgrund der Ressourcenkontrolle, der Mehrinstanzenfähigkeit und der nativen Integration in die übrige Azure-Infrastruktur ist Azure Cosmos DB im Durchschnitt um das 4- bis 6-Fache günstiger als MongoDB, Cassandra oder andere OSS-NoSQL-Datenbanken, die über IaaS ausgeführt werden, und bis um das 10-Fache günstiger als lokal ausgeführte Datenbank-Engines. Lesen Sie hierzu das Whitepaper [Total Cost of (Non) Ownership of a NoSQL Database Cloud Service](https://documentdbportalstorage.blob.core.windows.net/papers/11.15.2017/NoSQL%20TCO%20paper.pdf) (Gesamtkosten eines NoSQL-Datenbank-Clouddiensts).
 

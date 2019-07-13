@@ -7,18 +7,18 @@ ms.topic: conceptual
 ms.date: 05/23/2019
 ms.author: sngun
 ms.custom: seodec18
-ms.openlocfilehash: a3b4886bc175311e9a0e61f3dfb99b1fe7e1a679
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 757366f1d1f94d11438be4df0772ce1155f71cee
+ms.sourcegitcommit: 5cb0b6645bd5dff9c1a4324793df3fdd776225e4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66236758"
+ms.lasthandoff: 06/21/2019
+ms.locfileid: "67310589"
 ---
 # <a name="azure-cosmos-db-as-a-key-value-store--cost-overview"></a>Azure Cosmos DB als Schlüsselwertspeicher – Kostenübersicht
 
 Azure Cosmos DB ist ein global verteilter Datenbankdienst mit mehreren Modellen für die mühelose Erstellung hochverfügbarer, umfangreicher Anwendungen. Standardmäßig indiziert Azure Cosmos DB automatisch alle erfassten Daten effizient. Dies ermöglicht schnelle und konsistente [SQL](how-to-sql-query.md)-Abfragen (und [JavaScript](stored-procedures-triggers-udfs.md)-Abfragen) für jede Art von Daten. 
 
-In diesem Artikel werden die Kosten von Azure Cosmos DB für einfache Schreib- und Lesevorgänge bei Verwendung als Schlüssel-/Wertspeicher beschrieben. Zu den Schreibvorgängen zählen Einfügungen, Ersetzungen, Löschungen und Upserts von Dokumenten. Neben der Garantie einer SLA mit einer Verfügbarkeit von 99,99 Prozent für alle Konten mit einer einzelnen Region und für alle Konten mit mehreren Regionen und gelockerter Konsistenz sowie einer Leseverfügbarkeit von 99,999 Prozent für alle Datenbankkonten mit mehreren Regionen bietet Azure Cosmos DB eine garantierte Wartezeit von weniger als 10 ms für Lesevorgänge bzw. von weniger als 15 ms für die (indizierten) Schreibvorgänge (im 99 Perzentil). 
+In diesem Artikel werden die Kosten von Azure Cosmos DB für einfache Schreib- und Lesevorgänge bei Verwendung als Schlüssel-/Wertspeicher beschrieben. Zu den Schreibvorgängen zählen Einfügungen, Ersetzungen, Löschungen und Upserts von Dokumenten. Neben der Garantie einer SLA mit einer Verfügbarkeit von 99,99 Prozent für alle Konten mit einer einzelnen Region und für alle Konten mit mehreren Regionen und gelockerter Konsistenz sowie einer Leseverfügbarkeit von 99,999 Prozent für alle Datenbankkonten mit mehreren Regionen bietet Azure Cosmos DB eine garantierte Wartezeit von weniger als 10 ms für Lesevorgänge bzw. für die (indizierten) Schreibvorgänge (im 99. Perzentil). 
 
 ## <a name="why-we-use-request-units-rus"></a>Gründe für die Verwendung von Anforderungseinheiten (Request Units, RUs)
 

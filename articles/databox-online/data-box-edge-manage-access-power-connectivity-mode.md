@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: article
-ms.date: 06/03/2019
+ms.date: 06/24/2019
 ms.author: alkohli
-ms.openlocfilehash: 8937f4c47f0fa84d4ec371e951cff8a2fdaa8481
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 2426ecd9c480b0cc236295384ae04c60051f37ce
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66476902"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67442967"
 ---
 # <a name="manage-access-power-and-connectivity-mode-for-your-azure-data-box-edge"></a>Verwalten des Zugriffs, der Energieeinstellungen und des Konnektivitätsmodus für Azure Data Box Edge
 
@@ -66,7 +66,7 @@ Wenn Sie den Aktivierungsschlüssel für das Data Box Edge-Gerät generieren o
 -  Erstellen einer Freigabe mit einem zugeordneten Speicherkonto
 -  Erstellen eines Benutzers, der auf die Freigaben auf dem Gerät zugreifen kann
 
-Sie müssen über `User`-Zugriff auf den Active Directory-Mandanten verfügen, da Sie die Aktion `Read all directory objects` ausführen können müssen. Gastbenutzer sind nicht zur Aktion `Read all directory objects` berechtigt. Für Gastbenutzer tritt bei Vorgängen wie dem Generieren eines Aktivierungsschlüssels, dem Erstellen einer Freigabe auf Ihrem Data Box Edge-Gerät oder dem Erstellen eines Benutzers jeweils ein Fehler auf.
+Sie müssen über `User`-Zugriff auf den Active Directory-Mandanten verfügen, da Sie die Aktion `Read all directory objects` ausführen können müssen. Gastbenutzer sind nicht zur Aktion `Read all directory objects` berechtigt. Für Gastbenutzer tritt bei Vorgängen wie dem Generieren eines Aktivierungsschlüssels, dem Erstellen einer Freigabe auf Ihrem Data Box Edge-Gerät, dem Erstellen eines Benutzers, dem Konfigurieren der Edge-Computerrolle und dem Zurücksetzen des Gerätekennworts jeweils ein Fehler auf.
 
 Weitere Informationen dazu, wie Sie Benutzern den Zugriff auf die Azure Active Directory-Graph-API ermöglichen können, finden Sie unter [Standardzugriff für Administratoren, Benutzer und Gastbenutzer](https://docs.microsoft.com/previous-versions/azure/ad/graph/howto/azure-ad-graph-api-permission-scopes#default-access-for-administrators-users-and-guest-users-).
 

@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 05/20/2019
 ms.author: sngun
 ms.custom: seodec18
-ms.openlocfilehash: 4935e06389266f049b8f7f79ca6fb9380f33c864
-ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
+ms.openlocfilehash: 89c04a55138d57fd2ff37a96f2bc92b12d1780d9
+ms.sourcegitcommit: a12b2c2599134e32a910921861d4805e21320159
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/20/2019
-ms.locfileid: "65954154"
+ms.lasthandoff: 06/24/2019
+ms.locfileid: "67341233"
 ---
 # <a name="frequently-asked-questions-about-different-apis-in-azure-cosmos-db"></a>Häufig gestellte Fragen zu unterschiedlichen APIs in Azure Cosmos DB
 
@@ -163,7 +163,7 @@ Die von SQL-API-Konten unterstützte SQL-Abfragesprache ist eine erweiterte Teil
 
 ### <a name="does-the-sql-api-support-sql-aggregation-functions"></a>Werden SQL-Aggregationsfunktionen von der SQL-API unterstützt?
 
-Die SQL-API unterstützt per SQL-Grammatik Aggregation mit geringer Latenz und beliebiger Größe über die Aggregationsfunktionen `COUNT`, `MIN`, `MAX`, `AVG` und `SUM`. Weitere Informationen finden Sie unter [Aggregationsfunktionen](how-to-sql-query.md#Aggregates).
+Die SQL-API unterstützt per SQL-Grammatik Aggregation mit geringer Latenz und beliebiger Größe über die Aggregationsfunktionen `COUNT`, `MIN`, `MAX`, `AVG` und `SUM`. Weitere Informationen finden Sie unter [Aggregationsfunktionen](sql-query-aggregates.md).
 
 ### <a name="how-does-the-sql-api-provide-concurrency"></a>Wie stellt die SQL-API Parallelität bereit?
 
@@ -744,11 +744,11 @@ Ja. Sie können unter Verwendung der regulären Syntax einen zusammengesetzten P
 
 ### <a name="can-i-use-stable-loader-for-data-loading"></a>Kann ich Daten mithilfe von „sstable loader“ laden?
 
-Nein. In der Vorschauversion wird das sstable-Ladeprogramm nicht unterstützt.
+Nein. Das sstable-Ladeprogramm wird nicht unterstützt.
 
 ### <a name="can-an-on-premises-apache-cassandra-cluster-be-paired-with-azure-cosmos-dbs-cassandra-api"></a>Kann ein lokaler Apache Cassandra-Cluster mit der Cassandra-API von Azure Cosmos DB gekoppelt werden?
 
-Derzeit ist Azure Cosmos DB für Cloudumgebungen optimiert und kann ohne zusätzlichen Aufwand betrieben werden. Wenn Sie Kopplung benötigen, senden Sie eine E-Mail mit einer Beschreibung Ihres Szenarios an [askcosmosdbcassandra@microsoft.com](mailto:askcosmosdbcassandra@microsoft.com).
+Derzeit ist Azure Cosmos DB für Cloudumgebungen optimiert und kann ohne zusätzlichen Aufwand betrieben werden. Wenn Sie Kopplung benötigen, senden Sie eine E-Mail mit einer Beschreibung Ihres Szenarios an [askcosmosdbcassandra@microsoft.com](mailto:askcosmosdbcassandra@microsoft.com). Wir arbeiten an einem Angebot, um die Kopplung des Cassandra-Clusters der lokalen/anderen Cloud mit der Cassandra-API von Cosomos DB zu unterstützen.
 
 ### <a name="does-cassandra-api-provide-full-backups"></a>Bietet die Cassandra-API vollständige Sicherungen?
 
@@ -763,15 +763,12 @@ Sie können für das Konto beliebig viele Regionen hinzufügen und steuern, wohi
 
 ### <a name="does-the-apache-cassandra-api-index-all-attributes-of-an-entity-by-default"></a>Indiziert die Apache Cassandra-API standardmäßig alle Attribute einer Entität?
 
-Ja, alle Attribute einer Entität werden standardmäßig von Azure Cosmos DB indiziert. Weitere Informationen finden Sie unter [Azure Cosmos DB: Indizierungsrichtlinien](index-policy.md). Sie profitieren von garantierter Leistung mit konsistenter Indizierung und Schreibvorgängen mit dauerhaftem Commit im Quorum.
+Für die Cassandra API ist Unterstützung der Sekundärindizierung geplant, um die Erstellung eines selektiven Index für bestimmte Attribute zu unterstützen. 
 
-### <a name="does-this-mean-i-dont-have-to-create-more-than-one-index-to-satisfy-the-queries"></a>Bedeutet dies, dass ich nicht mehrere Indizes erstellen muss, um Abfragen zu bedienen?
-
-Ja. Azure Cosmos DB ermöglicht die automatische Indizierung aller Attribute ganz ohne Schemadefinition. Dank dieser Automatisierung können sich Entwickler auf die Anwendung konzentrieren und verlieren keine Zeit mehr mit der Indexerstellung und -verwaltung. Weitere Informationen finden Sie unter [Azure Cosmos DB: Indizierungsrichtlinien](index-policy.md).
 
 ### <a name="can-i-use-the-new-cassandra-api-sdk-locally-with-the-emulator"></a>Kann ich das neue SDK der Cassandra-API lokal mit dem Emulator verwenden?
 
-Wir planen die Unterstützung dieser Funktion in der Zukunft.
+Ja, diese Möglichkeit wird unterstützt.
 
 ### <a name="azure-cosmos-db-as-a-platform-seems-to-have-lot-of-capabilities-such-as-change-feed-and-other-functionality-will-these-capabilities-be-added-to-the-cassandra-api"></a>Azure Cosmos DB als Plattform verfügt anscheinend über viele Funktionen wie z. B. Änderungsfeed und andere. Werden diese Funktionen auch noch in der Cassandra-API hinzugefügt?
 

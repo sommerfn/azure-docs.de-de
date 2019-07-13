@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 05/20/2019
 ms.author: rimman
 ms.custom: rimman
-ms.openlocfilehash: 956f63dd92c82df0998cfaca76c7ecf5b10f053e
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 3cf075c2909b35bb08ca4cb24aaa3b99597f34c6
+ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65953859"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67203524"
 ---
 # <a name="data-modeling-in-azure-cosmos-db"></a>Datenmodellierung in Azure Cosmos DB
 
@@ -176,9 +176,9 @@ Die Aktie *zaza* kann jeden Tag mehrere Hundert Mal gehandelt werden, und Tausen
 
 ## <a name="referencing-data"></a>Verweisen auf Daten
 
-Das Einbetten von Daten funktioniert somit in vielen Fällen gut, aber es ist klar, dass es Szenarien gibt, bei denen das Denormalisieren von Daten mehr Probleme verursacht als es wert ist. Was also können wir jetzt tun?
+Das Einbetten von Daten funktioniert in vielen Fällen gut, aber es gibt Szenarien, bei denen das Denormalisieren von Daten mehr Probleme verursacht als es wert ist. Was also können wir jetzt tun?
 
-Relationale Datenbanken sind nicht der einzige Ort, an dem Sie Beziehungen zwischen Entitäten herstellen können. In einer Dokumentdatenbank können sich Informationen in einem Dokument befinden, die sich eigentlich auf Daten in anderen Dokumenten beziehen. Ich plädiere jetzt nicht eine Sekunde für das Erstellen von Systemen, die besser für eine relationale Datenbank in Azure Cosmos DB oder eine andere Dokumentdatenbank geeignet wären, aber einfache Beziehungen sind in Ordnung und können sehr nützlich sein.
+Relationale Datenbanken sind nicht der einzige Ort, an dem Sie Beziehungen zwischen Entitäten herstellen können. In einer Dokumentdatenbank können sich Informationen in einem Dokument befinden, die sich auf Daten in anderen Dokumenten beziehen. Es wird nicht empfohlen, Systeme zu erstellen, die besser für eine relationale Datenbank in Azure Cosmos DB oder eine andere Dokumentdatenbank geeignet wären, aber einfache Beziehungen sind in Ordnung und können sinnvoll sein.
 
 Im JSON-Abschnitt unten verwenden wir das vorherige Beispiel eines Aktienportfolios, aber dieses Mal verweisen wir auf den Aktieneintrag im Portfolio, anstatt ihn einzubetten. Auf diese Weise müssen wir nur dieses eine Aktiendokument aktualisieren, wenn sich der Aktieneintrag mehrmals am Tag ändert.
 

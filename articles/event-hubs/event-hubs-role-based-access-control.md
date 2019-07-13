@@ -11,12 +11,12 @@ ms.topic: article
 ms.custom: seodec18
 ms.date: 05/21/2019
 ms.author: shvija
-ms.openlocfilehash: ae970b9612154a6463c4bf44a65da71a20c81635
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: dfdeee9591b5d6ccbadadaef83c6598dd0e850d8
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65978306"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67448141"
 ---
 # <a name="active-directory-role-based-access-control-preview"></a>Rollenbasierte Zugriffssteuerung in Active Directory (Vorschau)
 
@@ -29,10 +29,10 @@ Eine Anwendung, die die rollenbasierte Zugriffssteuerung von Azure AD verwendet,
 ## <a name="event-hubs-roles-and-permissions"></a>Event Hubs-Rollen und -Berechtigungen
 Azure stellt die folgenden integrierten Rollen für die rollenbasierte Zugriffssteuerung zum Autorisieren des Zugriffs auf einen Event Hubs-Namespace bereit:
 
-Die Rolle [Event Hubs-Datenbesitzer (Preview)](../role-based-access-control/built-in-roles.md#service-bus-data-owner) ermöglicht den Datenzugriff auf einen Event Hubs-Namespace und seine Entitäten (Warteschlangen, Themen, Abonnements und Filter).
+Die Rolle [Azure Event Hubs-Datenbesitzer (Vorschau)](../role-based-access-control/built-in-roles.md#azure-event-hubs-data-owner-preview) ermöglicht den Datenzugriff auf einen Event Hubs-Namespace und seine Entitäten (Warteschlangen, Themen, Abonnements und Filter).
 
 >[!IMPORTANT]
-> Früher haben wir das Hinzufügen einer verwalteten Identität zur Rolle **Besitzer** oder **Mitwirkender** unterstützt. Die Berechtigungen für den Datenzugriff für die Rolle **Besitzer** und **Mitwirkender** werden jedoch nicht mehr berücksichtigt. Wenn Sie die Rolle **Besitzer** oder **Mitwirkender** verwenden, wechseln Sie zur Verwendung der Rolle **Event Hubs-Datenbesitzer**.
+> Früher haben wir das Hinzufügen einer verwalteten Identität zur Rolle **Besitzer** oder **Mitwirkender** unterstützt. Die Berechtigungen für den Datenzugriff für die Rolle **Besitzer** und **Mitwirkender** werden jedoch nicht mehr berücksichtigt. Wenn Sie die Rolle **Besitzer** oder **Mitwirkender** verwenden, wechseln Sie zur Verwendung der Rolle **Azure Event Hubs-Datenbesitzer (Vorschau)** .
 
 
 ## <a name="use-event-hubs-with-an-azure-ad-domain-user-account"></a>Verwenden von Event Hubs mit einem Azure AD-Domänenbenutzerkonto
