@@ -7,12 +7,12 @@ ms.date: 05/10/2019
 ms.topic: article
 ms.service: virtual-machines-linux
 manager: jeconnoc
-ms.openlocfilehash: cf8264cbad3c5c88c58cff3b95cb5c68adf0686c
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: a577a2a2a3b21cb027ba699450631a627f4f7a39
+ms.sourcegitcommit: 837dfd2c84a810c75b009d5813ecb67237aaf6b8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65538295"
+ms.lasthandoff: 07/02/2019
+ms.locfileid: "67501879"
 ---
 # <a name="preview-create-an-azure-image-builder-template"></a>Vorschau: Erstellen einer Azure Image Builder-Vorlage 
 
@@ -55,7 +55,7 @@ Das grundlegende Format der Vorlage:
 
 „Location“ entspricht der Region, in der das benutzerdefinierte Image erstellt wird. Die Image Builder-Preview unterstützt die folgenden Regionen:
 
-- USA (Ost)
+- East US
 - USA (Ost) 2
 - USA, Westen-Mitte
 - USA (Westen)
@@ -331,6 +331,8 @@ Diese Vorgehensweise wird von Windows-Verzeichnissen und Linux-Pfaden unterstüt
  
  
 Wenn beim Herunterladen der Datei oder beim Platzieren der Datei im festgelegten Verzeichnis ein Fehler auftritt, schlägt der Anpassungsschritt fehl. Dies wird im Protokoll „customization.log“ dokumentiert.
+
+>> Notiz! Der File Customizer ist nur für kleine Dateidownloads geeignet, < 20MB. Für größere Dateidownloads verwenden Sie einen Skript- oder Inline-Befehl, den Verwendungscode zum Herunterladen von Dateien, wie z.B. Linux`wget` oder`curl`, Windows,`Invoke-WebRequest` .
 
 Dateien in der Dateianpassung können mithilfe der [verwalteten Dienstidentität](https://github.com/danielsollondon/azvmimagebuilder/tree/master/quickquickstarts/7_Creating_Custom_Image_using_MSI_to_Access_Storage) aus Azure Storage heruntergeladen werden.
 

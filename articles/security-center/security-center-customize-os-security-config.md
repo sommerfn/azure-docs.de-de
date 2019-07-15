@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 3/20/2019
 ms.author: rkarlin
-ms.openlocfilehash: d9dc9f3a4ab964b66e3a2cb03f4aad442c5665e9
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 7095992253fbbe5aafce1eab889965250f5d59a8
+ms.sourcegitcommit: 978e1b8cac3da254f9d6309e0195c45b38c24eb5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64573607"
+ms.lasthandoff: 07/03/2019
+ms.locfileid: "67551371"
 ---
 # <a name="customize-os-security-configurations-in-azure-security-center-preview"></a>Anpassen der Sicherheitskonfigurationen von Betriebssystemen in Azure Security Center (Vorschau)
 
@@ -56,13 +56,11 @@ Um die standardmäßige Sicherheitskonfiguration von Betriebssystemen in Securit
 
 1.  Öffnen Sie das Dashboard **Security Center**.
 
-2.  Wählen Sie im linken Bereich **Sicherheitsrichtlinie**.      
+2.  Wählen Sie im linken Bereich **„Preise & Einstellungen“** aus.
 
     ![Sicherheitsrichtlinie – Liste](media/security-center-customize-os-security-config/manual-provision.png)
 
-3.  Klicken Sie in der Zeile des Abonnements, das Sie anpassen möchten, auf **Einstellungen bearbeiten**.
-
-4. Wählen Sie **Sicherheitskonfigurationen bearbeiten** aus.  
+4. Wählen Sie das passende Abonnement aus und wählen Sie dann **„Sicherheitskonfigurationen bearbeiten“** aus.  
 
     ![Das Fenster „Sicherheitskonfigurationen bearbeiten“](media/security-center-customize-os-security-config/blade.png)
 

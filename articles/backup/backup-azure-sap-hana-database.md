@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 05/06/2019
 ms.author: raynew
-ms.openlocfilehash: 5ed41013535e4591d88bff5c017c1fcf4c4053cc
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: a16ed7134fc9f3c159715f58f116de3fb30e8aca
+ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65238124"
+ms.lasthandoff: 07/01/2019
+ms.locfileid: "67481137"
 ---
 # <a name="back-up-an-sap-hana-database"></a>Sichern einer SAP HANA-Datenbank
 
@@ -22,15 +22,13 @@ ms.locfileid: "65238124"
 > [!NOTE]
 > Dieses Feature ist zurzeit als öffentliche Preview verfügbar. Es ist derzeit nicht für den Einsatz in Produktionsumgebungen bereit und verfügt nicht über eine garantierte SLA. 
 
-
 ## <a name="scenario-support"></a>Unterstützung von Szenarien
 
 **Unterstützung** | **Details**
 --- | ---
 **Unterstützte geografische Räume** | Australien, Südosten; Australien, Osten <br> Brasilien Süd <br> Kanada, Mitte; Kanada, Osten <br> Asien, Südosten; Asien, Osten <br> USA, Osten; USA, Osten 2; USA, Westen-Mitte; USA, Westen; USA, Westen 2, USA, Norden-Mitte; USA, Mitte; USA, Süden-Mitte<br> Indien, Mitte; Indien, Süden <br> „Japan, Osten“, „Japan, Westen“<br> Korea, Mitte, Korea, Süden <br> „Europa, Norden“, „Europa, Westen“ <br> Vereinigtes Königreich, Süden; Vereinigtes Königreich, Westen
 **Unterstützte VM-Betriebssysteme** | SLES 12 mit SP2 oder SP3.
-**Unterstützte HANA-Versionen** | SSDC in HANA 1.x, MDC in HANA 2.x <= SPS03
-
+**Unterstützte HANA-Versionen** | SDC auf HANA 1.x, MDC auf HANA 2.x <= SPS03
 
 ### <a name="current-limitations"></a>Aktuelle Einschränkungen
 
@@ -39,12 +37,9 @@ ms.locfileid: "65238124"
 - Sie können nur Datenbanken im Modus für zentrales Hochskalieren sichern.
 - Sie können Datenbankprotokolle alle 15 Minuten sichern. Protokollsicherungen werden erst nach dem erfolgreichen Abschluss einer vollständigen Sicherung der Datenbank übertragen.
 - Sie können vollständige und differenzielle Sicherungen ausführen. Inkrementelle Sicherungen werden derzeit nicht unterstützt.
-- Nachdem Sie die Sicherungsrichtlinie auf SAP HANA-Sicherungen angewendet haben, kann sie nicht mehr geändert werden. Wenn Sie Sicherungen mit unterschiedlichen Einstellungen ausführen möchten, müssen Sie eine neue Richtlinie erstellen oder eine andere Richtlinie zuweisen. 
-    - Klicken Sie zum Erstellen einer neuen Richtlinie im Tresor auf **Richtlinien** > **Sicherungsrichtlinien** >  **+ Hinzufügen** > **SAP HANA in Azure-VM**, und legen Sie die Richtlinieneinstellungen fest.
-    - Wenn Sie eine andere Richtlinie zuweisen möchten, klicken Sie in den Eigenschaften des virtuellen Computers, auf dem die Datenbank ausgeführt wird, auf den Namen der aktuellen Richtlinie. Auf der Seite **Sicherungsrichtlinie** können Sie dann eine andere Richtlinie für die Sicherung auswählen.
-
-
-
+- Nachdem Sie die Sicherungsrichtlinie auf SAP HANA-Sicherungen angewendet haben, kann sie nicht mehr geändert werden. Wenn Sie Sicherungen mit unterschiedlichen Einstellungen ausführen möchten, müssen Sie eine neue Richtlinie erstellen oder eine andere Richtlinie zuweisen.
+  - Klicken Sie zum Erstellen einer neuen Richtlinie im Tresor auf **Richtlinien** > **Sicherungsrichtlinien** >  **+ Hinzufügen** > **SAP HANA in Azure-VM**, und legen Sie die Richtlinieneinstellungen fest.
+  - Wenn Sie eine andere Richtlinie zuweisen möchten, klicken Sie in den Eigenschaften des virtuellen Computers, auf dem die Datenbank ausgeführt wird, auf den Namen der aktuellen Richtlinie. Auf der Seite **Sicherungsrichtlinie** können Sie dann eine andere Richtlinie für die Sicherung auswählen.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -57,14 +52,16 @@ Führen Sie vor dem Konfigurieren von Sicherungen unbedingt die folgenden Schrit
 
         ![Option für Paketinstallation](./media/backup-azure-sap-hana-database/hana-package.png)
 
-2.  Installieren und aktivieren Sie auf dem virtuellen Computer die im offiziellen SLES-Paket/auf den offiziellen SLES-Medien enthaltenen ODBC-Treiberpakete mithilfe von zypper. Gehen Sie dabei wie folgt vor:
+2. Installieren und aktivieren Sie auf dem virtuellen Computer die im offiziellen SLES-Paket/auf den offiziellen SLES-Medien enthaltenen ODBC-Treiberpakete mithilfe von zypper. Gehen Sie dabei wie folgt vor:
 
-    ``` 
+    ```unix
     sudo zypper update
     sudo zypper install unixODBC
     ```
-4.  Lassen Sie eine Verbindung des virtuellen Computers mit dem Internet zu, damit er Azure erreichen kann, wie nachstehend beschrieben.
 
+3. Erlauben Sie die Verbindung von der VM zum Internet, so dass sie Azure erreichen kann, wie in der [folgenden](#set-up-network-connectivity) Vorgehensweise beschrieben.
+
+4. Führen Sie das Vorregistrierungsskript in der virtuellen Maschine aus, auf der HANA als Root-Benutzer installiert ist. Das Skript wird im [Portal](#discover-the-databases) im Flow bereitgestellt und ist erforderlich, um die [richtigen Berechtigungen](backup-azure-sap-hana-database-troubleshoot.md#setting-up-permissions) einzurichten.
 
 ### <a name="set-up-network-connectivity"></a>Einrichten der Netzwerkkonnektivität
 
@@ -80,7 +77,7 @@ Führen Sie das Onboarding in die öffentliche Vorschau wie folgt durch:
 - Registrieren Sie im Portal Ihre Abonnement-ID bei dem Recovery Services-Dienstanbieter [gemäß der Beschreibung in diesem Artikel](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-register-provider-errors#solution-3---azure-portal). 
 - Führen Sie bei Verwendung von PowerShell das folgende Cmdlet aus. Der Vorgang sollte mit „Registered“ (Registriert) abgeschlossen werden.
 
-    ```
+    ```powershell
     PS C:>  Register-AzProviderFeature -FeatureName "HanaBackup" –ProviderNamespace Microsoft.RecoveryServices
     ```
 
@@ -89,7 +86,6 @@ Führen Sie das Onboarding in die öffentliche Vorschau wie folgt durch:
 [!INCLUDE [How to create a Recovery Services vault](../../includes/backup-create-rs-vault.md)]
 
 ## <a name="discover-the-databases"></a>Ermitteln der Datenbanken
-
 
 1. Klicken Sie im Tresor unter **Erste Schritte** auf **Sicherung**. Wählen Sie unter **Wo wird Ihre Workload ausgeführt?** den Eintrag **SAP HANA in Azure-VM** aus.
 2. Klicken Sie auf **Ermittlung starten**. Dadurch wird die Ermittlung nicht geschützter Linux-VMs in der Tresorregion initiiert.
@@ -104,7 +100,7 @@ Führen Sie das Onboarding in die öffentliche Vorschau wie folgt durch:
 6. Azure Backup ermittelt alle SAP HANA-Datenbanken auf dem virtuellen Computer. Während der Ermittlung registriert Azure Backup den virtuellen Computer beim Tresor und installiert eine Erweiterung auf dem VM. Für die Datenbank wird kein Agent installiert.
 
     ![Ermitteln von SAP HANA-Datenbanken](./media/backup-azure-sap-hana-database/hana-discover.png)
-    
+
 ## <a name="configure-backup"></a>Konfigurieren der Sicherung  
 
 Aktivieren Sie jetzt die Sicherung.
@@ -116,6 +112,7 @@ Aktivieren Sie jetzt die Sicherung.
 5. Verfolgen Sie den Fortschritt der Sicherungskonfiguration im Portal im  **Benachrichtigungsbereich** .
 
 ### <a name="create-a-backup-policy"></a>Erstellen einer Sicherungsrichtlinie
+
 Eine Sicherungsrichtlinie legt fest, wann Sicherungen erstellt und wie lange sie aufbewahrt werden.
 
 - Eine Richtlinie wird auf Tresorebene erstellt.
@@ -189,6 +186,5 @@ Führen Sie die folgenden Schritte aus, wenn Sie (mit HANA Studio) eine lokale S
 
 ## <a name="next-steps"></a>Nächste Schritte
 
+[Erfahren Sie](backup-azure-sap-hana-database-troubleshoot.md), wie Sie häufige Fehler bei der Verwendung von SAP HANA-Backups in Azure VMs beheben können.
 Erfahren Sie mehr über das [Sichern virtueller Azure-Computer](backup-azure-arm-vms-prepare.md).
-
-

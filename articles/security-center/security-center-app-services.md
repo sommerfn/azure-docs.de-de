@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 1/27/2019
 ms.author: v-mohabe
-ms.openlocfilehash: b18267b1443b257a575bf2e1199b9f8fa8c419fc
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 6a6b5b6e247bd7c105286b86257a6ae11c1d1c60
+ms.sourcegitcommit: 978e1b8cac3da254f9d6309e0195c45b38c24eb5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65966818"
+ms.lasthandoff: 07/03/2019
+ms.locfileid: "67551863"
 ---
 # <a name="protect-app-service-with-azure-security-center"></a>Schützen von App Services mit Azure Security Center
 Dieser Artikel unterstützt Sie bei der Verwendung des Azure Security Center zum Überwachen und Schützen Ihrer Anwendungen, die zusätzlich zu App Services laufen.
@@ -47,9 +47,8 @@ Das Security Center ist nativ in den App Service integriert, wodurch die Notwend
 ## <a name="enabling-monitoring-and-protection-of-app-service"></a>Aktivieren der Überwachung und des Schutz von App Service
 
 1. Wählen Sie in Azure „Security Center“.
-2. Wechseln Sie zu **Sicherheitsrichtlinie**, und wählen Sie ein Abonnement.
-3. Klicken Sie am Ende der Zeile des Abonnements auf **Einstellungen bearbeiten**.
-4. Schalten Sie Ihren Tarif unter **Tarif** in der Zeile **App Service** auf **Aktiviert** um.
+2. Wechseln Sie zu **„Preise & Einstellungen“** und wählen Sie ein Abonnement.
+3. Schalten Sie Ihren Tarif unter **Tarif** in der Zeile **App Service** auf **Aktiviert** um.
 
 ![App Service-Umschaltung](./media/security-center-app-services/app-services-toggle.png)
 

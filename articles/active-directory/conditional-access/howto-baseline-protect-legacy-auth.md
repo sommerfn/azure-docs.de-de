@@ -1,6 +1,6 @@
 ---
 title: 'Basisrichtlinie zum Blockieren der Legacyauthentifizierung (Vorschau): Azure Active Directory'
-description: Richtlinien für den bedingten Zugriff, um Legacyauthentifizierungsprotokolle zu blockieren
+description: Richtlinien von Conditional Access, um Legacy-Authentifizierungsprotokolle zu blockieren
 services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb, rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e7eebc68ae8a55d636f3bc85e179bd7d6813be8d
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.openlocfilehash: b8e9ea8956d87e2ec47cc65495e81d8a0f0ad8cb
+ms.sourcegitcommit: d3b1f89edceb9bff1870f562bc2c2fd52636fc21
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/27/2019
-ms.locfileid: "66235552"
+ms.lasthandoff: 07/04/2019
+ms.locfileid: "67560919"
 ---
 # <a name="baseline-policy-block-legacy-authentication-preview"></a>Basisrichtlinie: Blockieren der Legacyauthentifizierung (Vorschau)
 
@@ -28,8 +28,6 @@ Um Ihren Benutzern den einfachen Zugriff auf Ihre Cloud-Apps zu ermöglichen, un
 Heute stammt ein Großteil aller gefährdenden Anmeldeversuche von Legacyauthentifizierungen. Die Legacyauthentifizierung unterstützt keine mehrstufige Authentifizierung (Multi-Factor Authentication, MFA). Auch wenn Sie eine MFA-Richtlinie für Ihr Verzeichnis aktiviert haben, kann ein böswilliger Benutzer sich mithilfe eines älteren Protokolls authentifizieren und MFA umgehen.
 
 Die beste Möglichkeit zum Schutz Ihres Kontos vor böswilligen Authentifizierungsanforderungen durch ältere Protokolle ist, alle diese Versuche zu blockieren. Um Ihnen das Blockieren aller Anmeldeanforderungen von älteren Protokollen zu erleichtern, haben wir genau dafür eine Basisrichtlinie erstellt.
-
-![Blockieren der Legacyauthentifizierung mit bedingtem Zugriff](./media/howto-baseline-protect-legacy-auth/baseline-policy-block-legacy-authentication.png)
 
 **Blockieren der Legacyauthentifizierung** ist die [Basisrichtlinie](concept-baseline-protection.md), die alle Authentifizierungsanforderungen älterer Protokolle blockiert. Die erfolgreiche Anmeldung aller Benutzer setzt moderne Authentifizierung voraus. In Verbindung mit den anderen Basisrichtlinien werden alle Anfragen von älteren Protokollen blockiert, und alle Benutzer müssen bei Anforderung MFA verwenden. Diese Richtlinie blockiert nicht Exchange ActiveSync.
 
@@ -43,7 +41,7 @@ Bevor Sie die Legacyauthentifizierung in Ihrem Verzeichnis blockieren können, m
 
 Durch das Filtern werden Ihnen nur Anmeldeversuche von Legacyauthentifizierungsprotokollen angezeigt. Bei Klicken auf jeden einzelnen Anmeldeversuch werden Ihnen weitere Details angezeigt. Das **Client-App**-Feld auf der Registerkarte **Grundlegende Informationen** gibt an, welche Legacyauthentifizierungsprotokolle verwendet wurden.
 
-Diese Protokolle geben an, welche Benutzer weiterhin von der Legacyauthentifizierung abhängig sind, und welche Anwendungen ältere Protokolle für Authentifizierungsanforderungen verwenden. Implementieren Sie für Benutzer, die nicht in diesen Protokollen enthalten sind und nachweislich keine Legacyauthentifizierung verwenden, eine Richtlinie für bedingten Zugriff, oder aktivieren Sie die **Basisrichtlinie: Blockieren der Legacyauthentifizierung** nur für diese Benutzer.
+Diese Protokolle geben an, welche Benutzer weiterhin von der Legacyauthentifizierung abhängig sind, und welche Anwendungen ältere Protokolle für Authentifizierungsanforderungen verwenden. Für Benutzer, die nicht in diesen Protokollen erscheinen und bestätigt wurden, dass sie keine Legacy-Authentifizierung verwenden, implementieren Sie eine Conditional Access Richtlinie oder aktivieren Sie die **Baseline Richtlinie: Blockieren Sie die Legacy-Authentifizierung** nur für diese Benutzer.
 
 ## <a name="moving-away-from-legacy-authentication"></a>Der Abschied von der Legacyauthentifizierung
 
@@ -107,17 +105,16 @@ Die **Basisrichtlinie: Blockieren der Legacyauthentifizierung (Vorschau)** ist v
 
 Gehen Sie wie folgt vor, um diese Richtlinie zu aktivieren und Ihre Organisation zu schützen:
 
-1. Melden Sie sich beim  **Azure-Portal** als globaler Administrator, Sicherheitsadministrator oder Administrator für bedingten Zugriff an.
+1. Melden Sie sich am  **Azure-Portal**  als globaler Administrator, Sicherheitsadministrator oder Conditional Access-Administrator an.
 1. Navigieren Sie zu **Azure Active Directory** > **Bedingter Zugriff**.
 1. Wählen Sie in der Liste der Richtlinien den Eintrag **Basisrichtlinie: Blockieren der Legacyauthentifizierung (Vorschau)** aus.
 1. Legen Sie **Richtlinie aktivieren** auf **Richtlinie sofort verwenden** fest.
-1. Fügen Sie ausgeschlossene Benutzer hinzu, indem Sie auf **Benutzer** > **Ausgeschlossene Benutzer auswählen** klicken und die Benutzer auswählen, die ausgeschlossen werden sollen. Klicken Sie auf **Auswählen** und dann auf **Fertig**.
 1. Klicken Sie auf  **Speichern**.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
 Weitere Informationen finden Sie unter
 
-* [Baselineschutzrichtlinien für bedingten Zugriff](concept-baseline-protection.md)
+* [Conditional Access Richtlinien für den Basisschutz](concept-baseline-protection.md)
 * [Fünf Schritte zum Sichern Ihrer Identitätsinfrastruktur](../../security/azure-ad-secure-steps.md)
-* [Was ist der bedingte Zugriff in Azure Active Directory?](overview.md)
+* [Was ist Conditional Access im Azure Active Directory?](overview.md)

@@ -17,12 +17,12 @@ ms.author: ryanwi
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: cb0cfb06e95cadbb549f669e5d59bdb0d795c896
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 357c83cfd0ae3fed8b13419e72f50fcb90c04186
+ms.sourcegitcommit: 978e1b8cac3da254f9d6309e0195c45b38c24eb5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65545855"
+ms.lasthandoff: 07/03/2019
+ms.locfileid: "67550653"
 ---
 # <a name="xamarin-android-specific-considerations-with-msalnet"></a>Besondere Überlegungen zu Xamarin.Android mit MSAL.NET
 In diesem Artikel erfahren Sie mehr über die besonderen Überlegungen zur Verwendung von Xamarin.Android mit der Microsoft-Authentifizierungsbibliothek für .NET (MSAL.NET).
@@ -97,7 +97,7 @@ Führen Sie folgende Schritte durch, um diese Probleme zu beheben:
 
 ### <a name="error-the-name-authenticationcontinuationhelper-does-not-exist-in-the-current-context"></a>Fehler Der Name „AuthenticationContinuationHelper“ ist im aktuellen Kontext nicht vorhanden.
 
-Dies liegt eventuell daran, dass Visual Studio die Datei „Android.csproj*“ nicht ordnungsgemäß aktualisiert hat. Manchmal enthält der **<HintPath>** -Dateipfad fälschlicherweise „netstandard13“ statt **monoandroid90**.
+Dies liegt eventuell daran, dass Visual Studio die Datei „Android.csproj*“ nicht ordnungsgemäß aktualisiert hat. Manchmal enthält der **\<HintPath>** Dateipfad fälschlicherweise netstandard13 anstelle von **monoandroid90**.
 
 ```xml
 <Reference Include="Microsoft.Identity.Client, Version=3.0.4.0, Culture=neutral, PublicKeyToken=0a613f4dd989e8ae,

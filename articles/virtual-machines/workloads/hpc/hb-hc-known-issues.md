@@ -4,7 +4,7 @@ description: Hier finden Sie Informationen zu bekannten Problemen bei VM-Größe
 services: virtual-machines
 documentationcenter: ''
 author: vermagit
-manager: jeconnoc
+manager: gwallace
 editor: ''
 tags: azure-resource-manager
 ms.service: virtual-machines
@@ -12,12 +12,12 @@ ms.workload: infrastructure-services
 ms.topic: article
 ms.date: 05/07/2019
 ms.author: amverma
-ms.openlocfilehash: ff65f3937069be87e922dad9287ba22380632329
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 8d4b57fb2fee3849e102868c86fe3cab465fc70d
+ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66809792"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67707781"
 ---
 # <a name="known-issues-with-hb-series-and-hc-series-vms"></a>Bekannte Probleme bei virtuellen Computern der HB-Serie und der HC-Serie
 
@@ -31,13 +31,13 @@ Virtuelle Computer der HB-Serie können momentan nur 228 GB RAM für virtuelle
 
 Der beschleunigte Netzwerkbetrieb von Azure ist momentan nicht aktiviert. Dies ändert sich im Laufe des Vorschauzeitraums aber noch. Kunden erhalten eine entsprechende Benachrichtigung, wenn dieses Feature unterstützt wird.
 
+## <a name="qp0-access-restriction"></a>qp0 Zugriffsbeschränkung
+
+Um einen Low-Level-Hardwarezugriff zu verhindern, der zu Sicherheitsschwachstellen führen kann, ist Queue Pair 0 für Gast-VMs nicht zugänglich. Dies sollte nur Aktionen betreffen, die typischerweise mit der Verwaltung des ConnectX-5 NIC und der Ausführung einiger InfiniBand-Diagnosen wie ibdiagnet verbunden sind, nicht aber Endbenutzeranwendungen selbst.
+
 ## <a name="ud-transport"></a>UD-Transport
 
-DCT (Dynamically Connected Transport) wird von der HB-Serie anfangs noch nicht unterstützt. Die DCT-Unterstützung wird im Laufe der Zeit implementiert. RC-Transporte (Reliable Connection) und UD-Transporte (Unreliable Datagram) werden dagegen unterstützt.
-
-## <a name="azure-batch"></a>Azure Batch
-
-Während sich die virtuellen Computer der HB-Serie in der Vorschauphase befinden, muss ein Batch-Konto im Modus „Benutzerabonnement“ (nicht im Modus „Dienst“) verwendet werden.
+Beim Start unterstützen die HB- und HC-Serien keinen Dynamically Connected Transport (DCT). Die DCT-Unterstützung wird im Laufe der Zeit implementiert. RC-Transporte (Reliable Connection) und UD-Transporte (Unreliable Datagram) werden dagegen unterstützt.
 
 ## <a name="gss-proxy"></a>GSS Proxy
 
