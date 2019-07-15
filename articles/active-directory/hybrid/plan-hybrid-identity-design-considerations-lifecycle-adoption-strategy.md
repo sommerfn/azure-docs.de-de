@@ -17,12 +17,12 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.custom: seohack1
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: aff695307fc97e9f2acfd44f7434d5cbb26ef53e
-ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
+ms.openlocfilehash: 85f600c8bd46e699e80bf7b596574dc01467ef79
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/20/2019
-ms.locfileid: "65950831"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67109313"
 ---
 # <a name="determine-hybrid-identity-lifecycle-adoption-strategy"></a>Ermitteln der Strategie für die Übernahme des Hybrididentitätslebenszyklus
 In dieser Aufgabe definieren Sie die Identitätsverwaltungsstrategie für Ihre Hybrididentitätslösung, um die geschäftlichen Anforderungen zu erfüllen, die Sie in [Ermitteln von Aufgaben der Hybrididentitätsverwaltung](plan-hybrid-identity-design-considerations-hybrid-id-management-tasks.md)definiert haben.

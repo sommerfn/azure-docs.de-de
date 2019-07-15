@@ -18,12 +18,12 @@ ms.author: ryanwi
 ms.reviewer: hirsin
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ce0c1c4dcf7e4ff0c82157af83aa15544cf092e2
-ms.sourcegitcommit: f6c85922b9e70bb83879e52c2aec6307c99a0cac
+ms.openlocfilehash: 7582cd8453b25f071c18566f09d2155a6377a0a6
+ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/11/2019
-ms.locfileid: "65544743"
+ms.lasthandoff: 07/01/2019
+ms.locfileid: "67482171"
 ---
 # <a name="microsoft-identity-platform-and-oauth-20-on-behalf-of-flow"></a>Microsoft Identity Platform und der On-Behalf-Of-Fluss von OAuth2.0
 
@@ -42,7 +42,7 @@ Es wird davon ausgegangen, dass der Benutzer in einer Anwendung authentifiziert 
 
 Die folgenden Schritte entsprechen dem OBO-Fluss und werden anhand des folgenden Diagramms erläutert.
 
-![OAuth2.0 – On-Behalf-Of-Fluss](./media/v2-oauth2-on-behalf-of-flow/protocols-oauth-on-behalf-of-flow.png)
+![Zeigt den On-Behalf-Of-Fluss von OAuth 2.0](./media/v2-oauth2-on-behalf-of-flow/protocols-oauth-on-behalf-of-flow.png)
 
 1. Die Clientanwendung stellt mit Token A eine Anforderung an die API A (mit dem Anspruch `aud` von API A).
 1. API A wird beim Tokenausstellungs-Endpunkt der Microsoft Identity Platform authentifiziert und fordert ein Token für den Zugriff auf API B an.
@@ -163,7 +163,7 @@ Das folgende Beispiel zeigt eine erfolgreiche Antwort auf eine Anforderung eines
 
 ### <a name="error-response-example"></a>Beispiel für eine fehlerhafte Antwort
 
-Der Tokenendpunkt gibt bei dem Versuch, ein Zugriffstoken für eine nachgelagerte API zu erhalten, einen Fehler zurück, wenn der Zugriff auf die nachgelagerte API durch eine Richtlinie wie mehrstufige Authentifizierung begrenzt ist. Der Dienst der mittleren Ebene zeigt diesen Fehler der Clientanwendung an, so dass diese der Richtlinie entsprechend die geeignete Benutzerinteraktion bieten kann.
+Der Tokenendpunkt gibt bei dem Versuch, ein Zugriffstoken für eine nachgelagerte API abzurufen, einen Fehler zurück, wenn für die nachgelagerte API eine Richtlinie für bedingten Zugriff (z. B. mehrstufige Authentifizierung) festgelegt ist. Der Dienst der mittleren Ebene zeigt diesen Fehler der Clientanwendung an, damit die Clientanwendung die entsprechende Benutzerinteraktion bereitstellen kann, um die Richtlinie für bedingten Zugriff zu erfüllen.
 
 ```
 {

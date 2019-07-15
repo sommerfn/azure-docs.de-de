@@ -13,12 +13,12 @@ ms.author: lizross
 ms.reviewer: jeffsta
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3ba36825805ff54165a3e6c4e221550cc30b07d3
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.openlocfilehash: aed332f32fa9fdc154c72e45914e642a9dad4993
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/27/2019
-ms.locfileid: "66235183"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67055712"
 ---
 # <a name="what-is-the-azure-active-directory-architecture"></a>Was ist die Azure Active Directory-Architektur?
 Mit Azure Active Directory (Azure AD) können Sie den Zugriff auf Azure-Dienste und Ressourcen für Ihre Benutzer sicher verwalten. In Azure AD ist eine vollständige Suite mit Funktionen zur Identitätsverwaltung enthalten. Weitere Informationen zu Azure AD-Features finden Sie unter [Was ist Azure Active Directory?](active-directory-whatis.md).
@@ -95,7 +95,7 @@ Das Verzeichnismodell lautet „Letztliche Konsistenz“. Ein typisches Problem 
 
 Azure AD bietet Lese-/Schreibkonsistenz für Anwendungen, die auf ein sekundäres Replikat abzielen, indem die zugehörigen Schreibvorgänge an das primäre Replikat weitergeleitet und synchron dazu die Schreibvorgänge zurück auf das sekundäre Replikat verschoben werden.
 
-Anwendungsschreibvorgänge, für die die Graph-API von Azure AD verwendet wird, werden in Bezug auf die Beibehaltung der Affinität mit einem Verzeichnisreplikat für Schreib-/Lesekonsistenz abstrahiert. Der Graph-Dienst von Azure AD verfügt über eine logische Sitzung mit einer Affinität mit einem sekundären Replikat, das für Lesevorgänge verwendet wird. Die Affinität wird in einem „Replikattoken“ erfasst, das vom Graphdienst mithilfe eines verteilten Cache zwischengespeichert wird. Dieses Token wird dann für nachfolgende Vorgänge in derselben logischen Sitzung verwendet. 
+Anwendungsschreibvorgänge, für die die Graph-API von Azure AD verwendet wird, werden in Bezug auf die Beibehaltung der Affinität mit einem Verzeichnisreplikat für Schreib-/Lesekonsistenz abstrahiert. Der Graph-Dienst von Azure AD verfügt über eine logische Sitzung mit einer Affinität mit einem sekundären Replikat, das für Lesevorgänge verwendet wird. Die Affinität wird in einem „Replikattoken“ erfasst, das vom Diagrammdienst mithilfe eines verteilten Cache im sekundären Replikatdatencenter zwischengespeichert wird. Dieses Token wird dann für nachfolgende Vorgänge in derselben logischen Sitzung verwendet. Um weiterhin dieselbe logische Sitzung zu verwenden, müssen nachfolgende Anforderungen an das gleiche Azure AD-Datencenter geroutet werden. Es ist nicht möglich, eine logische Sitzung fortzusetzen, wenn die Verzeichnisclientanforderungen an mehrere Azure AD-Datenzentren geroutet werden. Falls dies passiert, verfügt der Client über mehrere logische Sitzungen mit unabhängigen Lese-/Schreibkonsistenzen.
 
  >[!NOTE]
  >Schreibvorgänge werden sofort auf dem sekundären Replikat repliziert, für das die Lesevorgänge der logischen Sitzung ausgestellt wurden.

@@ -16,12 +16,12 @@ ms.date: 05/16/2019
 ms.author: rolyon
 ms.reviewer: ''
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ce51f4df50de50cef06bba699ca7c6f76bc5d166
-ms.sourcegitcommit: 3ced637c8f1f24256dd6ac8e180fff62a444b03c
+ms.openlocfilehash: 73c1717249abac30847f96073ee6daf7d98112d7
+ms.sourcegitcommit: 156b313eec59ad1b5a820fabb4d0f16b602737fc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/17/2019
-ms.locfileid: "65833247"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67190333"
 ---
 # <a name="edit-and-manage-an-existing-access-package-in-azure-ad-entitlement-management-preview"></a>Bearbeiten und Verwalten eines vorhandenen Zugriffspakets in der Azure AD-Berechtigungsverwaltung (Vorschauversion)
 
@@ -348,4 +348,5 @@ In der Azure AD-Berechtigungsverwaltung werden Massenänderungen an Zuweisungen 
 
 ## <a name="next-steps"></a>Nächste Schritte
 
+- [Hinzufügen eines Katalogbesitzers oder Zugriffspaket-Managers](entitlement-management-delegate.md#add-a-catalog-owner-or-an-access-package-manager)
 - [Anforderungsprozess und E-Mail-Benachrichtigungen](entitlement-management-process.md)

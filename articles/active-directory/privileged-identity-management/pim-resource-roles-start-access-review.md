@@ -15,12 +15,12 @@ ms.date: 04/29/2019
 ms.author: rolyon
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 78e4de5bbc56f95c0e903b1dac4e8481373716f3
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 0067bd6dc2f47c5460220295d486910d9195782d
+ms.sourcegitcommit: f811238c0d732deb1f0892fe7a20a26c993bc4fc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65143499"
+ms.lasthandoff: 06/29/2019
+ms.locfileid: "67476266"
 ---
 # <a name="create-an-access-review-of-azure-resource-roles-in-pim"></a>Erstellen einer Zugriffsüberprüfung für Azure-Ressourcenrollen in PIM
 
@@ -44,7 +44,7 @@ In diesem Artikel wird beschrieben, wie Sie eine oder mehrere Zugriffsüberprüf
 
 1. Klicken Sie unter „Verwalten“ auf **Zugriffsüberprüfungen**.
 
-    ![Azure-Ressourcen: Zugriffsüberprüfungen](./media/pim-resource-roles-start-access-review/access-reviews.png)
+    ![Azure-Ressourcen – Liste der Zugriffsüberprüfungen mit dem Status aller Überprüfungen](./media/pim-resource-roles-start-access-review/access-reviews.png)
 
 
 [!INCLUDE [Privileged Identity Management access reviews](../../../includes/active-directory-privileged-identity-management-access-reviews.md)]
@@ -54,7 +54,7 @@ In diesem Artikel wird beschrieben, wie Sie eine oder mehrere Zugriffsüberprüf
 
 Klicken Sie nach dem Festlegen der Einstellungen für eine Zugriffsüberprüfung auf **Starten**. Die Zugriffsüberprüfung wird in der Liste mit einer Angabe des Status angezeigt.
 
-![Liste mit den Zugriffsüberprüfungen](./media/pim-resource-roles-start-access-review/access-reviews-list.png)
+![Liste der Zugriffsüberprüfungen mit dem Status einer gestarteten Überprüfung](./media/pim-resource-roles-start-access-review/access-reviews-list.png)
 
 Standardmäßig sendet Azure AD kurz nach dem Start der Überprüfung eine E-Mail an die Prüfer. Wenn Sie nicht möchten, dass Azure AD die E-Mail sendet, stellen Sie sicher, dass die Prüfer darüber in Kenntnis gesetzt werden, dass sie eine ausstehende Zugriffsüberprüfung abschließen müssen. Sie können ihnen die Anweisungen zum [Durchführen einer Zugriffsüberprüfung für Azure-Ressourcenrollen in PIM](pim-resource-roles-perform-access-review.md) anzeigen.
 
@@ -62,7 +62,7 @@ Standardmäßig sendet Azure AD kurz nach dem Start der Überprüfung eine E-Mai
 
 Sie können den Fortschritt der Überprüfungen durch die Prüfer auf der Seite **Übersicht** der Zugriffsüberprüfung nachverfolgen. Zugriffsrechte werden im Verzeichnis erst geändert, wenn die [Überprüfung abgeschlossen](pim-resource-roles-complete-access-review.md) ist.
 
-![Fortschritt der Zugriffsüberprüfungen](./media/pim-resource-roles-start-access-review/access-review-overview.png)
+![Übersichtsseite der Zugriffsüberprüfung mit den Details der Überprüfung](./media/pim-resource-roles-start-access-review/access-review-overview.png)
 
 Führen Sie bei einer einmaligen Überprüfung nach Ablauf des Zeitraums für die Zugriffsüberprüfung oder nach Beenden der Zugriffsüberprüfung durch den Administrator die Schritte unter [Abschließen einer Zugriffsüberprüfung für Azure-Ressourcenrollen in PIM](pim-resource-roles-complete-access-review.md) aus, um die Ergebnisse anzuzeigen und anzuwenden.  
 

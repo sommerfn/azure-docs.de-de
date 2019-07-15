@@ -14,12 +14,12 @@ ms.date: 03/26/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 706a826d1b256e95e459d2a44cdb13ee56c70599
-ms.sourcegitcommit: f24fdd1ab23927c73595c960d8a26a74e1d12f5d
+ms.openlocfilehash: 969d08888002c97453cb2af18f42371227676597
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58499130"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67109480"
 ---
 # <a name="custom-installation-of-azure-ad-connect"></a>Benutzerdefinierte Installation von Azure AD Connect
 Die **benutzerdefinierten Einstellungen** von Azure AD Connect werden verwendet, wenn Sie mehr Optionen für die Installation benötigen. Sie kommen zum Einsatz, wenn Sie über mehrere Gesamtstrukturen verfügen oder optionale Features konfigurieren möchten, die nicht Teil der Expressinstallation sind. Sie werden in allen Fällen verwendet, in denen die Option [**Expressinstallation**](how-to-connect-install-express.md) für Ihre Bereitstellung oder Topologie nicht ausreicht.
@@ -113,7 +113,7 @@ Wenn Sie die Verwendung der [gruppenbasierten Filterung](#sync-filtering-based-o
 
 Möglicherweise sind bestimmte Domänen aufgrund von Beschränkungen der Firewall nicht erreichbar. Diese Domänen sind standardmäßig nicht ausgewählt und mit einer Warnung versehen.  
 ![Nicht erreichbare Domänen](./media/how-to-connect-install-custom/unreachable.png)  
- Falls diese Warnung angezeigt wird, sollten Sie sich vergewissern, dass die entsprechenden Domänen tatsächlich nicht erreichbar sind und die Warnung zu erwarten ist.
+Falls diese Warnung angezeigt wird, sollten Sie sich vergewissern, dass die entsprechenden Domänen tatsächlich nicht erreichbar sind und die Warnung zu erwarten ist.
 
 ### <a name="uniquely-identifying-your-users"></a>Eindeutige Identifizierung der Benutzer
 
@@ -302,7 +302,7 @@ Diese Konfiguration wird verwendet, um die Verbundbeziehung zwischen AD FS und A
 
 ![Azure AD-Domäne](./media/how-to-connect-install-custom/adfs6.png)
 
-### <a name="verify-the-azure-ad-domain-selected-for-federation"></a>Überprüfen der für den Verbund ausgewählten Azure AD-Domäne 
+### <a name="verify-the-azure-ad-domain-selected-for-federation"></a>Überprüfen der für den Verbund ausgewählten Azure AD-Domäne
 Wenn Sie die Domäne in einem Verbund verwenden möchten, stellt Azure AD Connect die erforderlichen Informationen zur Überprüfung einer nicht überprüften Domäne bereit. Informationen zur Verwendung dieser Informationen finden Sie unter [Hinzufügen und Überprüfen der Domäne](../active-directory-domains-add-azure-portal.md).
 
 ![Azure AD-Domäne](./media/how-to-connect-install-custom/verifyfeddomain.png)

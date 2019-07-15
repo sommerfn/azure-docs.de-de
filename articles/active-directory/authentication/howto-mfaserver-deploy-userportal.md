@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 66a75ee7746d0ab04b505544f91f2905fa392902
-ms.sourcegitcommit: 49c8204824c4f7b067cd35dbd0d44352f7e1f95e
+ms.openlocfilehash: 6f6feceff234bed51bcf6adf34f51313fa348d77
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/22/2019
-ms.locfileid: "58370362"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67056051"
 ---
 # <a name="user-portal-for-the-azure-multi-factor-authentication-server"></a>Benutzerportal für den Azure Multi-Factor Authentication-Server
 
@@ -27,6 +27,9 @@ Die Benutzer melden sich mit ihrem normalen Benutzernamen und Kennwort am Benutz
 Es können Benutzerportaladministratoren eingerichtet werden, und ihnen kann die Berechtigung zum Hinzufügen neuer Benutzer und zum Aktualisieren vorhandener Benutzer erteilt werden.
 
 Abhängig von Ihrer Umgebung können Sie das Benutzerportal auf dem gleichen Server wie den Azure Multi-Factor Authentication-Server oder auf einem anderen, mit dem Internet verbundenen Server bereitstellen.
+
+> [!IMPORTANT]
+> Ab dem 1. Juli 2019 bietet Microsoft keine MFA-Server mehr für neue Bereitstellungen an. Neue Kunden, die eine Multi-Factor Authentication für ihre Benutzer einrichten möchten, können stattdessen die cloudbasierte Multi-Factor Authentication von Azure verwenden. Bestehende Kunden, die ihren MFA-Server vor dem 1. Juli aktiviert haben, können weiterhin die neusten Versionen und zukünftige Updates herunterladen sowie Anmeldedaten zur Aktivierung generieren.
 
 ![MFA Server-Benutzerportal: Anmeldeseite](./media/howto-mfaserver-deploy-userportal/portal.png)
 
@@ -99,10 +102,10 @@ Wenn Sie das Benutzerportal auf einem anderen Server als dem Azure Multi-Factor 
 4. Navigieren Sie zu **C:\inetpub\wwwroot\MultiFactorAuth**.
 5. Bearbeiten Sie die Datei „Web.Config“ im Editor.
 
-    * Suchen Sie den Schlüssel **"USE_WEB_SERVICE_SDK"**, und ändern Sie **value="false"** in **value="true"**.
-    * Suchen Sie den Schlüssel **"WEB_SERVICE_SDK_AUTHENTICATION_USERNAME"**, und ändern Sie **value=""** in **value="DOMÄNE\Benutzer"**, wobei es sich bei „DOMÄNE\Benutzer“ um ein Dienstkonto handelt, das der Gruppe „PhoneFactor Admins“ angehört.
-    * Suchen Sie den Schlüssel **"WEB_SERVICE_SDK_AUTHENTICATION_PASSWORD"**, und ändern Sie **value=""** in **value="Kennwort"**, wobei es sich bei „Kennwort“ um das Kennwort für das Dienstkonto aus der vorherigen Zeile handelt.
-    * Suchen Sie den Wert **https://www.contoso.com/MultiFactorAuthWebServiceSdk/PfWsSdk.asmx**, und ändern Sie die Platzhalter-URL in die Webdienst-SDK-URL aus Schritt 2.
+    * Suchen Sie den Schlüssel **"USE_WEB_SERVICE_SDK"** , und ändern Sie **value="false"** in **value="true"** .
+    * Suchen Sie den Schlüssel **"WEB_SERVICE_SDK_AUTHENTICATION_USERNAME"** , und ändern Sie **value=""** in **value="DOMÄNE\Benutzer"** , wobei es sich bei „DOMÄNE\Benutzer“ um ein Dienstkonto handelt, das der Gruppe „PhoneFactor Admins“ angehört.
+    * Suchen Sie den Schlüssel **"WEB_SERVICE_SDK_AUTHENTICATION_PASSWORD"** , und ändern Sie **value=""** in **value="Kennwort"** , wobei es sich bei „Kennwort“ um das Kennwort für das Dienstkonto aus der vorherigen Zeile handelt.
+    * Suchen Sie den Wert **https://www.contoso.com/MultiFactorAuthWebServiceSdk/PfWsSdk.asmx** , und ändern Sie die Platzhalter-URL in die Webdienst-SDK-URL aus Schritt 2.
     * Speichern Sie die Datei „Web.Config“, und schließen Sie den Editor.
 
 6. Öffnen Sie auf einem beliebigen Computer einen Webbrowser, und navigieren Sie zu der URL, unter der das Benutzerportal installiert wurde (Beispiel: https://mfa.contoso.com/MultiFactorAuth). Stellen Sie sicher, dass keine Zertifikatswarnungen oder -fehler angezeigt werden.

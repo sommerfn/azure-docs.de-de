@@ -11,18 +11,21 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 45ff198f55ff769667cfaef2dd8665d2c34314e9
-ms.sourcegitcommit: cfbc8db6a3e3744062a533803e664ccee19f6d63
+ms.openlocfilehash: 231375c94163f098cce86bdbbf285a58957a9927
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/21/2019
-ms.locfileid: "65987759"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67056112"
 ---
 # <a name="configure-azure-multi-factor-authentication-server-to-work-with-ad-fs-20"></a>Konfigurieren des Azure Multi-Factor Authentication-Servers zur Verwendung von AD FS 2.0
 
 Dieser Artikel richtet sich an Organisationen, die sind in einem Azure Active Directory-Verbund befinden und lokale Ressourcen oder Ressourcen in der Cloud schützen möchten. Schützen Sie Ihre Ressourcen mithilfe des Azure Multi-Factor Authentication-Servers, und konfigurieren Sie ihn für die Verwendung von AD FS, damit für wichtige Endpunkte die zweistufige Überprüfung ausgelöst wird.
 
 In dieser Dokumentation wird die Verwendung von Azure Multi-Factor Authentication-Server mit AD FS 2.0 behandelt. Weitere Informationen zu AD FS finden Sie unter [Schützen von Cloudressourcen und lokalen Ressourcen mithilfe von Azure Multi-Factor Authentication-Server mit AD FS unter Windows Server 2012 R2](howto-mfaserver-adfs-2012.md).
+
+> [!IMPORTANT]
+> Ab dem 1. Juli 2019 bietet Microsoft keine MFA-Server mehr für neue Bereitstellungen an. Neue Kunden, die eine Multi-Factor Authentication für ihre Benutzer einrichten möchten, können stattdessen die cloudbasierte Multi-Factor Authentication von Azure verwenden. Bestehende Kunden, die ihren MFA-Server vor dem 1. Juli aktiviert haben, können weiterhin die neusten Versionen und zukünftige Updates herunterladen sowie Anmeldedaten zur Aktivierung generieren.
 
 ## <a name="secure-ad-fs-20-with-a-proxy"></a>Schützen von AD FS 2.0 mit einem Proxy
 

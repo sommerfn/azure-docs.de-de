@@ -18,12 +18,12 @@ ms.author: ryanwi
 ms.custom: aaddev
 ms.reviewer: sureshja
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 47626cbd8d5b8a5ddf7cc5c6ea42fb9453e5bfb2
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 822990ebc2eb5edbdbc6611a4f3729bc5cfadc55
+ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65540669"
+ms.lasthandoff: 07/01/2019
+ms.locfileid: "67482895"
 ---
 # <a name="application-and-service-principal-objects-in-azure-active-directory"></a>Anwendungs- und Dienstprinzipalobjekte in Azure Active Directory
 
@@ -45,7 +45,7 @@ In den folgenden Abschnitten sehen Sie, wie das Azure AD-Anwendungsmodell eine A
 
 ## <a name="application-registration"></a>Anwendungsregistrierung
 
-Wenn Sie eine Azure AD-Anwendung im [Azure-Portal][AZURE-Portal] registrieren, werden im Azure AD-Mandanten zwei Objekte erstellt:
+Wenn Sie eine Azure AD-Anwendung im [Azure-Portal][AZURE-Portal] registrieren, werden in Ihrem Azure AD-Mandanten zwei Objekte erstellt:
 
 - ein Anwendungsobjekt und
 - ein Dienstprinzipalobjekt
@@ -60,7 +60,7 @@ Um auf Ressourcen zugreifen zu können, die von einem Azure AD-Mandanten geschü
 
 Der Sicherheitsprinzipal definiert die Zugriffsrichtlinie und Berechtigungen für den Benutzer/die Anwendung im Azure AD-Mandanten. Dies aktiviert die Kernfunktionen wie die Authentifizierung des Benutzers/der Anwendung während der Anmeldung und die Autorisierung beim Zugriff auf Ressourcen.
 
-Wenn eine Anwendung die Berechtigung zum Zugriff auf Ressourcen in einem Mandanten erhält (bei der Registrierung oder [Zustimmung](developer-glossary.md#consent)), wird ein Dienstprinzipalobjekt erstellt. Die [ServicePrincipal-Entität][MS-Graph-Sp-Entity] von Microsoft Graph definiert das Schema für die Objekteigenschaften eines Dienstprinzipalobjekts.
+Wenn eine Anwendung die Berechtigung zum Zugriff auf Ressourcen in einem Mandanten erhält (bei der Registrierung oder [Zustimmung](developer-glossary.md#consent)), wird ein Dienstprinzipalobjekt erstellt. Die [ServicePrincipal-Entität][MS-Graph-Sp-Entity] von Microsoft Graph definiert das Schema für die Eigenschaften eines Dienstprinzipalobjekts.
 
 ### <a name="application-and-service-principal-relationship"></a>Beziehung zwischen Anwendung und Dienstprinzipal
 
@@ -83,7 +83,7 @@ Das folgende Diagramm veranschaulicht die Beziehung zwischen einem Anwendungsobj
 - **Contoso:** Der Mandant, der von der Organisation Contoso (einem Endkunden der **Personal-App**) verwendet wird
 - **Fabrikam:** Der von der Organisation Fabrikam (ebenfalls ein Endkunde der **Person-App**) verwendete Mandant
 
-![Beziehung zwischen einem Anwendungsobjekt und einem Dienstprinzipalobjekt](./media/app-objects-and-service-principals/application-objects-relationship.svg)
+![Beziehung zwischen einem App-Objekt und einem Dienstprinzipalobjekt](./media/app-objects-and-service-principals/application-objects-relationship.svg)
 
 Dieses Beispielszenario:
 
@@ -96,8 +96,8 @@ Dieses Beispielszenario:
 ## <a name="next-steps"></a>Nächste Schritte
 
 - Sie können den [Microsoft Graph-Tester](https://developer.microsoft.com/graph/graph-explorer) verwenden, um die Anwendungs- und die Dienstprinzipalobjekte abzufragen.
-- Sie können auf das Anwendungsobjekt einer Anwendung über die Microsoft Graph-API, den Anwendungsmanifest-Editor im [Azure-Portal][AZURE-Portal] oder [Azure AD-PowerShell-Cmdlets](https://docs.microsoft.com/powershell/azure/overview?view=azureadps-2.0) zugreifen, wie von der OData-[Application-Entität][MS-Graph-App-Entity] dargestellt.
-- Sie können auf das Dienstprinzipalobjekt einer Anwendung über die Microsoft Graph-API oder [Azure AD-PowerShell-Cmdlets](https://docs.microsoft.com/powershell/azure/overview?view=azureadps-2.0) zugreifen, wie von der OData-[ServicePrincipal-Entität][MS-Graph-Sp-Entity] dargestellt.
+- Sie können auf das Anwendungsobjekt einer Anwendung über die Microsoft Graph-API, den Anwendungsmanifest-Editor im [Azure-Portal][AZURE-Portal] oder [Azure AD PowerShell-Cmdlets](https://docs.microsoft.com/powershell/azure/overview?view=azureadps-2.0) zugreifen, wie von der OData-[Application-Entität][MS-Graph-App-Entity] dargestellt.
+- Sie können auf das Dienstprinzipalobjekt einer Anwendung über die Microsoft Graph-API oder [Azure AD PowerShell-Cmdlets](https://docs.microsoft.com/powershell/azure/overview?view=azureadps-2.0) zugreifen, wie von der OData-[ServicePrincipal-Entität][MS-Graph-Sp-Entity] dargestellt.
 
 <!--Image references-->
 

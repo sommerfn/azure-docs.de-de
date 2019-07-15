@@ -14,12 +14,12 @@ ms.subservice: pim
 ms.date: 04/09/2019
 ms.author: rolyon
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 786b5ed99cce29c7217bfa42446821848ca8e05f
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 1b9ca4862f129b2da23a1d1ad8bb0b1bd0a5078f
+ms.sourcegitcommit: f811238c0d732deb1f0892fe7a20a26c993bc4fc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60288157"
+ms.lasthandoff: 06/29/2019
+ms.locfileid: "67476274"
 ---
 # <a name="discover-azure-resources-to-manage-in-pim"></a>Ermitteln von Azure-Ressourcen zur Verwaltung in PIM
 
@@ -37,15 +37,15 @@ Beim erstmaligen Einrichten von PIM für Azure-Ressourcen müssen Sie die Ressou
 
     Falls Sie PIM für Azure-Ressourcen zum ersten Mal verwenden, wird der Bereich „Ressourcen ermitteln“ angezeigt.
 
-    ![Erstmaliges Ermitteln von Ressourcen](./media/pim-resource-roles-discover-resources/discover-resources-first-run.png)
+    ![Bereich „Ressourcen ermitteln“ ohne aufgeführte Ressourcen bei der ersten Verwendung](./media/pim-resource-roles-discover-resources/discover-resources-first-run.png)
 
     Wenn ein anderer Ressourcen- oder Verzeichnisadministrator in Ihrer Organisation bereits Azure-Ressourcen in PIM verwaltet, sehen Sie eine Liste der Ressourcen, die derzeit verwaltet werden.
 
-    ![Bereich „Ressourcen ermitteln“](./media/pim-resource-roles-discover-resources/discover-resources.png)
+    ![Bereich „Ressourcen ermitteln“ mit einer Auflistung der derzeit verwalteten Ressourcen](./media/pim-resource-roles-discover-resources/discover-resources.png)
 
 1. Klicken Sie auf **Ressourcen ermitteln**, um den Ermittlungsvorgang zu starten.
 
-    ![Bereich „Ermittlung“](./media/pim-resource-roles-discover-resources/discovery-pane.png)
+    ![Bereich „Ermittlung“ mit einer Auflistung von verwaltbaren Ressourcen wie Abonnements und Verwaltungsgruppen](./media/pim-resource-roles-discover-resources/discovery-pane.png)
 
 1. Verwenden Sie im Bereich „Ermittlung“ **Ressourcenzustandsfilter** und **Ressourcentyp auswählen** zum Filtern der Verwaltungsgruppen oder Abonnements, für die Sie eine Schreibberechtigung haben. An einfachsten ist es wohl, mit **Alle** zu starten.
 
@@ -58,11 +58,11 @@ Beim erstmaligen Einrichten von PIM für Azure-Ressourcen müssen Sie die Ressou
     > [!NOTE]
     > Sobald eine Verwaltungsgruppe oder ein Abonnement auf „Verwaltet“ festgelegt ist, kann dies nicht mehr rückgängig gemacht werden. Dadurch wird verhindert, dass andere Ressourcenadministratoren PIM-Einstellungen entfernen.
 
-    ![Ermittlung: Ressource verwalten](./media/pim-resource-roles-discover-resources/discovery-manage-resource.png)
+    ![Bereich „Ermittlung“, in dem eine Ressource ausgewählt und die Option „Ressource verwalten“ hervorgehoben ist](./media/pim-resource-roles-discover-resources/discovery-manage-resource.png)
 
 1. Wenn eine Meldung angezeigt wird, in der Sie das Onboarding der ausgewählten Ressource zum Verwalten bestätigen sollen, klicken Sie auf **Ja**.
 
-    ![Meldung „Ermittlung: Ressource verwalten“](./media/pim-resource-roles-discover-resources/discovery-manage-resource-message.png)
+    ![Meldung zur Bestätigung des Onboardings der ausgewählten Ressourcen zur Verwaltung](./media/pim-resource-roles-discover-resources/discovery-manage-resource-message.png)
 
 ## <a name="next-steps"></a>Nächste Schritte
 

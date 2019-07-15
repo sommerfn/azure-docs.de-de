@@ -17,12 +17,12 @@ ms.date: 02/07/2019
 ms.author: joflore
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: cdacdf604ab7a4ded7ddf302a217084630f60b31
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: cc6f822f20da55488c559c081129c3f177367123
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59699030"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67108969"
 ---
 # <a name="how-to-configure-risk-policies-in-azure-active-directory-identity-protection-refreshed"></a>Anleitung: Konfigurieren von Risikorichtlinien in Azure Active Directory Identity Protection (aktualisiert)
 

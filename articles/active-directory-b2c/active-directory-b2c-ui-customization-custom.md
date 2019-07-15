@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 12/18/2018
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: c3c97e786e2147f043a63b90b886e01eb5944cb4
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 0a051b0e853b60dfc1f5b6c3453d9ed8361f1748
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66507669"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67438817"
 ---
 # <a name="customize-the-user-interface-of-your-application-using-a-custom-policy-in-azure-active-directory-b2c"></a>Anpassen der Benutzeroberfläche einer Anwendung mithilfe einer benutzerdefinierten Richtlinie in Azure Active Directory B2C
 
@@ -79,18 +79,19 @@ Gehen Sie wie folgt vor, um diesen HTML-Inhalt im Blob-Speicher zu hosten:
 
 Gehen Sie wie folgt vor, um im Blob-Speicher einen öffentlichen Container zu erstellen:
 
-1. Klicken Sie auf die Registerkarte **Übersicht**.
-2. Klicken Sie auf **Container**.
-3. Geben Sie unter **Name** den Text **$root** ein.
-4. Setzen Sie **Zugriffstyp** auf **Blob**.
-5. Klicken Sie auf **$root**, um den neuen Container zu öffnen.
+1. Wählen Sie unter **Blob-Dienst** im linken Menü die Option **Blobs** aus.
+2. Klicken Sie auf **+Container**.
+3. Geben Sie im Feld **Name** die Zeichenfolge *root* ein. Dies kann ein Name Ihrer Wahl sein, z. B. *wingtiptoys*, aber in diesem Beispiel verwenden wir der Einfachheit halber *root*.
+4. Wählen Sie für **Öffentliche Zugriffsebene** die Option **Blob** aus, und klicken Sie dann auf **OK**.
+5. Klicken Sie auf **root**, um den neuen Container zu öffnen.
 6. Klicken Sie auf **Hochladen**.
 7. Klicken Sie auf das Ordnersymbol neben **Datei auswählen**.
-8. Wechseln Sie zur Datei **customize-ui.html**, die Sie zuvor im Abschnitt „Seite für die Benutzeroberflächenanpassung“ erstellt haben.
-9. Klicken Sie auf **Hochladen**.
-10. Wählen Sie das Blob „customize-ui.html“ aus, das Sie hochgeladen haben.
-11. Klicken Sie neben **URL** auf **Kopieren**.
-12. Fügen Sie in einem Browser die kopierte URL ein, und navigieren Sie zur Website. Falls ein Zugriff auf die Website nicht möglich ist, sollten Sie sicherstellen, dass der Zugriffstyp für den Container auf **Blob** festgelegt ist.
+8. Navigieren Sie zur Datei **customize-ui.html**, die Sie zuvor im Abschnitt „Seite für die Benutzeroberflächenanpassung“ erstellt haben, und wählen Sie die Datei aus.
+9. Wenn Sie die Datei in einen Unterordner hochladen möchten, erweitern Sie die Option **Erweitert**, und geben Sie im Feld **In Ordner hochladen** einen Ordnernamen ein.
+10. Wählen Sie die Option **Hochladen**.
+11. Wählen Sie das Blob **customize-ui.html** aus, das Sie hochgeladen haben.
+12. Wählen Sie rechts neben dem Textfeld **URL** das Symbol **In Zwischenablage kopieren** aus, um die URL in die Zwischenablage zu kopieren.
+13. Navigieren Sie im Webbrowser zu der kopierten URL, um zu überprüfen, ob auf das hochgeladene Blob zugegriffen werden kann. Wenn ein Zugriff darauf nicht möglich ist und beispielsweise ein Fehler vom Typ `ResourceNotFound` auftritt, stellen Sie sicher, dass der Zugriffstyp für den Container auf **Blob** festgelegt ist.
 
 ## <a name="configure-cors"></a>Konfigurieren von CORS
 
@@ -159,6 +160,7 @@ Um die Anpassung der Benutzeroberfläche zu konfigurieren, kopieren Sie die **Co
 
 ## <a name="reference"></a>Verweis
 
+### <a name="sample-templates"></a>Beispielvorlagen
 Beispielvorlagen für die Benutzeroberflächenanpassung finden Sie hier:
 
 ```
@@ -174,6 +176,16 @@ Der Ordner „sample_templates/wingtip“ enthält die folgenden HTML-Dateien:
 | *selfasserted.html* | Verwenden Sie diese Datei als Vorlage für eine Seite zum Anmelden an einem sozialen Netzwerk, eine Seite zum Registrieren für ein lokales Konto oder eine Seite zum Anmelden an einem lokalen Konto. |
 | *unified.html* | Verwenden Sie diese Datei als Vorlage für eine einheitliche Registrierungs- oder Anmeldeseite. |
 | *updateprofile.html* | Verwenden Sie diese Datei als Vorlage für eine Seite zum Aktualisieren von Profilen. |
+
+Nachfolgend finden Sie die auszuführenden Schritte zur Verwendung des Beispiels. 
+1. Klonen Sie das Repository auf Ihrem lokalen Computer. Wählen Sie unter „sample_templates“ einen Vorlagenordner aus. Sie können `wingtip` oder `contoso` verwenden.
+2. Laden Sie alle Dateien aus den Ordnern `css`, `fonts` und `images` in den Blob-Speicher hoch, wie in den vorherigen Abschnitten beschrieben. 
+3. Öffnen Sie als Nächstes jede HTML-Datei (\*.html) im Stammverzeichnis von `wingtip` oder `contoso` (je nachdem, welchen Ordner Sie im ersten Schritt ausgewählt haben), und ersetzen Sie alle Vorkommen von „http://localhost“ durch die URLs der Dateien aus den Ordnern „css“, „images“ und „fonts“, die Sie in Schritt 2 hochgeladen haben.
+4. Speichern Sie die HTML-Dateien (\*.html), und laden Sie die Dateien in den Blob-Speicher hoch.
+5. Ändern Sie jetzt die Erweiterungsdatei, wie zuvor unter [Ändern der Erweiterungsdatei](#modify-the-extensions-file) erwähnt.
+6. Falls Schriftarten, Bilder oder CSS-Dateien fehlen, überprüfen Sie die Verweise in der Erweiterungsrichtlinie sowie die HTML-Dateien (\*.html).
+
+### <a name="content-defintion-ids"></a>Inhaltsdefinitions-IDs
 
 Im Abschnitt „Ändern von benutzerdefinierten Registrierungs- oder Anmelderichtlinien“ haben Sie die Inhaltsdefinition für `api.idpselections` konfiguriert. Der vollständige Satz mit IDs für die Inhaltsdefinition, die vom Azure AD B2C Identity Experience Framework erkannt werden, und die dazugehörigen Beschreibungen sind in der folgenden Tabelle enthalten:
 

@@ -5,27 +5,27 @@ services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 05/20/2019
+ms.date: 07/01/2019
 ms.topic: conceptual
 ms.service: cost-management
 manager: micflan
 ms.custom: ''
-ms.openlocfilehash: f4c296aeefacc9516303ad75dd8b7d67325e38ee
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 4c1c987befe928d316b11c6ecd379be76f8f80d4
+ms.sourcegitcommit: ac1cfe497341429cf62eb934e87f3b5f3c79948e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65969051"
+ms.lasthandoff: 07/01/2019
+ms.locfileid: "67490144"
 ---
 # <a name="understand-cost-management-data"></a>Grundlegendes zu Cost Management-Daten
 
-Dieser Artikel hilft Ihnen, besser zu verstehen, welche Daten in Azure Cost Management enthalten sind. Und es wird erläutert, wie oft Daten verarbeitet, gesammelt, angezeigt und geschlossenen werden. Die Nutzung von Azure wird Ihnen monatlich in Rechnung gestellt. Ihre Azure-Abonnementart bestimmt jedoch, wann Ihr Abrechnungsmonat endet. Wie oft Cost Management Nutzungsdaten erhält, hängt von verschiedenen Faktoren ab. Zu diesen Faktoren gehört unter anderem, wie lange die Verarbeitung der Daten dauert und wie häufig Azure-Dienste die Nutzung an das Abrechnungssystem weitergeben.
+Dieser Artikel soll Ihnen helfen, die in Azure Cost Management enthaltenen Azure-Kosten und -Nutzungsdaten besser zu verstehen. Zudem wird darin erläutert, wie oft Daten verarbeitet, gesammelt, angezeigt und geschlossen werden. Die Nutzung von Azure wird Ihnen monatlich in Rechnung gestellt. Bei Abrechnungszeiträumen/Abrechnungszyklen handelt es sich um monatliche Zeiträume. Die Start- und Enddaten von Zyklen variieren jedoch je nach Abonnementtyp. Wie oft Cost Management Nutzungsdaten erhält, hängt von verschiedenen Faktoren ab. Zu diesen Faktoren gehört unter anderem, wie lange die Verarbeitung der Daten dauert und wie häufig Azure-Dienste die Nutzung an das Abrechnungssystem weitergeben.
 
-Cost Management umfasst alle Nutzungen und Käufe, einschließlich Reservierungen und Angebote von Drittanbietern für Enterprise Agreement-Konten (EA). MCA-Konten (Microsoft-Kundenvereinbarung) und nutzungsbasierte Abonnements umfassen nur die Nutzung von Azure- und Marketplace-Diensten. Support- und andere Kosten sind nicht enthalten. Kosten werden so lange geschätzt, bis eine Rechnung generiert wurde, und sie werden nicht bei Guthaben berücksichtigt.
+Cost Management umfasst alle Nutzungen und Käufe, einschließlich Reservierungen und Angebote von Drittanbietern für Enterprise Agreement-Konten (EA). Konten der Microsoft-Kundenvereinbarung (Microsoft Customer Agreement, MCA) und einzelne Abonnements mit nutzungsbasierter Bezahlung umfassen nur die Nutzung von Azure- und Marketplace-Diensten. Support- und andere Kosten sind nicht enthalten. Kosten werden so lange geschätzt, bis eine Rechnung generiert wurde, und sie werden nicht bei Guthaben berücksichtigt.
 
-## <a name="supported-microsoft-offers"></a>Unterstützte Microsoft-Angebote
+## <a name="supported-microsoft-azure-offers"></a>Unterstützte Microsoft Azure-Angebote
 
-Die folgenden Informationen zeigen die derzeit unterstützten [Microsoft Azure-Angebote](https://azure.microsoft.com/support/legal/offer-details/) im Azure Cost Management.  Ein Azure-Angebot ist der Typ von Azure-Abonnement, das Sie besitzen.
+Die folgenden Informationen bieten eine Übersicht über die derzeit von Azure Cost Management unterstützten [Microsoft Azure-Angebote](https://azure.microsoft.com/support/legal/offer-details/). Die unterzeichnete Vereinbarung für ein Azure-Angebot bestimmt den Typ Ihres Azure-Abonnements.
 
 | Category (Kategorie)  | **Angebotsname** | **Kontingent-ID** | **Angebotsnummer** |
 | --- | --- | --- | --- |
@@ -49,7 +49,7 @@ Die folgenden Informationen zeigen die derzeit unterstützten [Microsoft Azure-A
 | **Visual Studio** | [Visual Studio Enterprise](https://azure.microsoft.com/offers/ms-azr-0063p)            | MSDN_2014-09-01 | MS-AZR-0063P |
 | **Visual Studio** | [Visual Studio Enterprise: BizSpark](https://azure.microsoft.com/offers/ms-azr-0064p)  | MSDN_2014-09-01 | MS-AZR-0064P |
 
-Die folgende Tabelle zeigt die nicht unterstützten Angebote:
+In der folgenden Tabelle sind die Azure-Angebote aufgeführt, die nicht von Cost Management unterstützt werden.
 
 | Category (Kategorie)  | **Angebotsname** | **Kontingent-ID** | **Angebotsnummer** |
 | --- | --- | --- | --- |
@@ -66,7 +66,7 @@ Die folgende Tabelle zeigt die nicht unterstützten Angebote:
 | **Supportpläne** | Azure Government Pro-Direct Support | Default_2014-09-01 | MS-AZR-USGOV-0042P |
 | **Supportpläne** | Azure Government Developer Support  | Default_2014-09-01 | MS-AZR-USGOV-0043P |
 
-Für Kunden mit Angeboten der Kategorie „Nutzungsbasierte Zahlung“, „MSDN“ und „Visual Studio“ stehen seit dem 02.10.2018 Daten in Cost Management zur Verfügung. Um auf Daten in Ihrem Abonnement zuzugreifen, die vor dem 02.10.2018 entstanden sind, können Sie das [Azure-Kontocenter](https://account.azure.com/subscriptions) verwenden, um Ihre Nutzungsdetails in einer CSV-Datei herunterzuladen, oder Sie können die [Usage Details API](/rest/api/consumption/usagedetails) verwenden.
+Für Kunden mit Angeboten der Kategorien „Nutzungsbasierte Bezahlung“, „MSDN“ und „Visual Studio“ stehen seit dem 02.10.2018 Daten in Cost Management zur Verfügung. Um auf Daten in Ihrem Abonnement zuzugreifen, die vor dem 02.10.2018 entstanden sind, können Sie das [Azure-Kontocenter](https://account.azure.com/subscriptions) verwenden, um Ihre Nutzungsdetails in einer CSV-Datei herunterzuladen, oder Sie können die [Usage Details API](/rest/api/consumption/usagedetails) verwenden.
 
 ## <a name="determine-your-offer-type"></a>Bestimmen des Angebotstyps
 Wenn Sie keine Daten für ein Abonnement sehen und feststellen möchten, ob Ihr Abonnement zu den unterstützten Angeboten gehört, können Sie überprüfen, ob Ihr Abonnement unterstützt wird. Um zu überprüfen, ob ein Azure-Abonnement unterstützt wird, melden Sie sich beim [Azure-Portal](https://portal.azure.com) an. Wählen Sie anschließend **Alle Dienste** im linken Menübereich aus. Wählen Sie in der Liste der Dienste **Abonnements** aus. Klicken Sie im Menü der Abonnentenliste auf das Abonnement, das Sie überprüfen möchten. Ihr Abonnement wird auf der Registerkarte „Übersicht“ angezeigt und Sie können das **Angebot** und **Angebots-ID** sehen. Die folgende Abbildung zeigt ein Beispiel.
@@ -116,7 +116,7 @@ Abonnements mit nutzungsbasierter Bezahlung – Wenn der Abrechnungsmonat am 15.
 
 ### <a name="rerated-data"></a>Neu bewertete Daten
 
-Unabhängig davon, ob Sie die [Cost Management-APIs](https://aka.ms/costmgmt/docs), Power BI oder das Azure-Portal zum Abrufen von Daten verwenden, ist zu erwarten, dass die Gebühren des aktuellen Abrechnungszeitraums neu bewertet werden und sich somit ändern, bis die Rechnung geschlossen ist.
+Unabhängig davon, ob Sie die [Cost Management-APIs](index.yml), Power BI oder das Azure-Portal zum Abrufen von Daten verwenden, ist zu erwarten, dass die Gebühren des aktuellen Abrechnungszeitraums neu bewertet werden und sich somit ändern, bis die Rechnung geschlossen ist.
 
 ## <a name="usage-data-update-frequency-varies"></a>Die Häufigkeit der Aktualisierung der Nutzungsdaten variiert.
 
@@ -129,7 +129,7 @@ Einige Dienste geben die Nutzung häufiger als andere ab. Daher können Sie für
 
 ## <a name="historical-data-might-not-match-invoice"></a>Verlaufsdaten stimmen möglicherweise nicht mit Rechnung überein
 
-Verlaufsdaten für Angebote, die auf Guthaben oder Vorauszahlung basieren, stimmen möglicherweise nicht mit Ihrer Rechnung überein. Bei einigen Azure-Angeboten der Kategorie „Nutzungsbasierte Zahlung“, „MSDN“ und „Visual Studio“ können Azure-Guthaben und Vorauszahlungen auf die Rechnung angewendet werden. Die in Cost Management angezeigten Verlaufsdaten basieren allerdings nur auf den geschätzten Nutzungsgebühren. Cost Management-Verlaufsdaten enthalten keine Zahlungen und Guthaben. Daher stimmen die Verlaufsdaten, die für die folgenden Angebote angezeigt werden, möglicherweise nicht genau mit Ihrer Rechnung überein.
+Verlaufsdaten für Angebote, die auf Guthaben oder Vorauszahlung basieren, stimmen möglicherweise nicht mit Ihrer Rechnung überein. Bei einigen Azure-Angeboten der Kategorien „Nutzungsbasierte Bezahlung“, „MSDN“ und „Visual Studio“ können Azure-Guthaben und Vorauszahlungen auf die Rechnung angewendet werden. Die in Cost Management angezeigten Verlaufsdaten basieren allerdings nur auf den geschätzten Nutzungsgebühren. Cost Management-Verlaufsdaten enthalten keine Zahlungen und Guthaben. Daher stimmen die Verlaufsdaten, die für die folgenden Angebote angezeigt werden, möglicherweise nicht genau mit Ihrer Rechnung überein.
 
 -   MS-AZR-0029P
 -   MS-AZR-0064P

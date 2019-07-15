@@ -1,5 +1,5 @@
 ---
-title: 'Azure AD Connect: Migrieren vom Verbund, PHS für Azure AD | Microsoft-Dokumentation'
+title: 'Azure AD Connect: Migrieren vom Verbund zu PHS für Azure AD | Microsoft-Dokumentation'
 description: Dieser Artikel enthält Informationen zum Umstellen Ihrer Hybrididentitätsumgebung vom Verbund auf die Kennworthashsynchronisierung.
 services: active-directory
 author: billmath
@@ -12,12 +12,12 @@ ms.date: 05/31/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a1d2c587129f9f9f09c8f3871748449dc7b1755b
-ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
+ms.openlocfilehash: 9ce9c0c6d4f9002b061afd2ad09f02266d452979
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/04/2019
-ms.locfileid: "66474028"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67109263"
 ---
 # <a name="migrate-from-federation-to-password-hash-synchronization-for-azure-active-directory"></a>Migrieren vom Verbund zur Kennworthashsynchronisierung für Azure Active Directory
 

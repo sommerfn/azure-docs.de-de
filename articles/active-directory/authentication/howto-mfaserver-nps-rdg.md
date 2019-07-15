@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0bc47f1f3e7022b566181220e203d33564b5b93b
-ms.sourcegitcommit: 49c8204824c4f7b067cd35dbd0d44352f7e1f95e
+ms.openlocfilehash: a129030e8071dc590562ca5ca203d8d735f0449e
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/22/2019
-ms.locfileid: "58372164"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67052551"
 ---
 # <a name="remote-desktop-gateway-and-azure-multi-factor-authentication-server-using-radius"></a>Remotedesktopgateway und Azure Multi-Factor Authentication-Server mithilfe von RADIUS
 
@@ -25,6 +25,9 @@ Häufig nutzt das Remotedesktopgateway (RD-Gateway) die lokalen [Netzwerkrichtli
 Verwenden Sie das RD-Gateway und RADIUS für die Integration in MFA-Server, da die Windows-Authentifizierung für Terminaldienste für Server 2012 R2 nicht unterstützt wird.
 
 Installieren Sie den Multi-Factor Authentication-Server auf einem separaten Server, von dem die RADIUS-Anforderung per Proxy an NPS auf dem Remotedesktop-Gatewayserver zurückgegeben wird. Nachdem NPS den Benutzernamen und das Kennwort überprüft hat, wird eine Antwort an den Multi-Factor Authentication-Server zurückgegeben. Der MFA-Server führt dann den zweiten Authentifizierungsschritt aus und gibt ein Ergebnis an das Gateway zurück.
+
+> [!IMPORTANT]
+> Ab dem 1. Juli 2019 bietet Microsoft keine MFA-Server mehr für neue Bereitstellungen an. Neue Kunden, die eine Multi-Factor Authentication für ihre Benutzer einrichten möchten, können stattdessen die cloudbasierte Multi-Factor Authentication von Azure verwenden. Bestehende Kunden, die ihren MFA-Server vor dem 1. Juli aktiviert haben, können weiterhin die neusten Versionen und zukünftige Updates herunterladen sowie Anmeldedaten zur Aktivierung generieren.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 

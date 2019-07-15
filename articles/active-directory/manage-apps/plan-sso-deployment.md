@@ -12,12 +12,12 @@ ms.date: 05/22/2019
 ms.author: baselden
 ms.reviewer: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 29569302d20e23c95b6508a5b58c7ed96e005885
-ms.sourcegitcommit: 600d5b140dae979f029c43c033757652cddc2029
+ms.openlocfilehash: e5278d504c43688bf064b869982938db52b1b1bf
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/04/2019
-ms.locfileid: "66498592"
+ms.lasthandoff: 06/17/2019
+ms.locfileid: "67164956"
 ---
 # <a name="plan-a-single-sign-on-deployment"></a>Planen einer Bereitstellung für einmaliges Anmelden
 

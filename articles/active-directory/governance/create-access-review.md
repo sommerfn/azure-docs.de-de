@@ -15,12 +15,12 @@ ms.date: 05/21/2019
 ms.author: rolyon
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1ef72f1649c3f3e0af7fba53b2e8dbcee49d4b59
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: c83a38b68fcc2e70b4e17bd62e11ac429dd32950
+ms.sourcegitcommit: f811238c0d732deb1f0892fe7a20a26c993bc4fc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66734562"
+ms.lasthandoff: 06/29/2019
+ms.locfileid: "67471918"
 ---
 # <a name="create-an-access-review-of-groups-or-applications-in-azure-ad-access-reviews"></a>Erstellen einer Zugriffsüberprüfung für Gruppen oder Anwendungen in Azure AD-Zugriffsüberprüfungen
 
@@ -43,7 +43,7 @@ Weitere Informationen finden Sie unter [Welche Benutzer benötigen Lizenzen?](ac
 
 1. Klicken Sie auf **Neue Zugriffsüberprüfung**, um eine neue Zugriffsüberprüfung zu erstellen.
 
-    ![Zugriffsüberprüfung – Steuerelemente](./media/create-access-review/access-reviews.png)
+    ![Bereich „Zugriffsüberprüfungen“ in Identity Governance](./media/create-access-review/access-reviews.png)
 
 1. Benennen Sie die Zugriffsüberprüfung. Wahlweise können Sie jeder Überprüfung eine Beschreibung hinzufügen. Den Prüfern werden Name und Beschreibung angezeigt.
 
@@ -91,7 +91,7 @@ Weitere Informationen finden Sie unter [Welche Benutzer benötigen Lizenzen?](ac
 
 1. Erweitern Sie den Abschnitt **Einstellungen nach Abschluss**, um anzugeben, was nach Abschluss der Überprüfung geschehen soll.
 
-    ![Einstellungen nach Abschluss](./media/create-access-review/upon-completion-settings.png)
+    ![Erstellen einer Zugriffsüberprüfung – Einstellungen nach Abschluss](./media/create-access-review/upon-completion-settings.png)
 
 1. Soll abgelehnten Benutzern automatisch der Zugriff entzogen werden, legen Sie **Ergebnisse automatisch auf Ressource anwenden** auf **Aktivieren** fest. Falls Sie die Ergebnisse nach Abschluss der Überprüfung manuell anwenden möchten, legen Sie die Einstellung auf **Deaktivieren** fest.
 
@@ -106,7 +106,7 @@ Weitere Informationen finden Sie unter [Welche Benutzer benötigen Lizenzen?](ac
 
 1. Erweitern Sie den Abschnitt **Erweiterte Einstellungen**, um weitere Einstellungen anzugeben.
 
-    ![Erweiterte Einstellungen](./media/create-access-review/advanced-settings.png)
+    ![Erstellen einer Zugriffsüberprüfung – Erweiterte Einstellungen](./media/create-access-review/advanced-settings.png)
 
 1. Legen Sie **Empfehlungen anzeigen** auf **Aktivieren** fest, damit den Prüfern die Systemempfehlungen auf der Grundlage der Zugriffsinformationen des Benutzers angezeigt werden.
 
@@ -122,7 +122,7 @@ Weitere Informationen finden Sie unter [Welche Benutzer benötigen Lizenzen?](ac
 
 Klicken Sie nach dem Festlegen der Einstellungen für eine Zugriffsüberprüfung auf **Starten**. Die Zugriffsüberprüfung wird in der Liste mit einer Angabe des Status angezeigt.
 
-![Liste mit den Zugriffsüberprüfungen](./media/create-access-review/access-reviews-list.png)
+![Liste der Zugriffsüberprüfungen mit jeweiligem Status](./media/create-access-review/access-reviews-list.png)
 
 Standardmäßig sendet Azure AD kurz nach dem Start der Überprüfung eine E-Mail an die Prüfer. Wenn Sie nicht möchten, dass Azure AD die E-Mail sendet, stellen Sie sicher, dass die Prüfer darüber in Kenntnis gesetzt werden, dass sie eine ausstehende Zugriffsüberprüfung abschließen müssen. Sie können ihnen die Anweisungen zum [Überprüfen des Zugriffs auf Gruppen oder Anwendungen](perform-access-review.md) anzeigen. Wenn Ihre Überprüfung für Gäste gedacht ist, die ihren eigenen Zugriff überprüfen sollen, können Sie ihnen die Anweisungen zum [Überprüfen des eigenen Zugriffs auf Gruppen oder Anwendungen ](review-your-access.md) anzeigen.
 

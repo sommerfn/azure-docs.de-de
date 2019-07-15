@@ -16,12 +16,12 @@ ms.date: 09/10/2018
 ms.author: mimart
 ms.reviewer: asteen
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 504c1bdeb05ecb6372be0edf023c480acac8a8a7
-ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
+ms.openlocfilehash: 7ee8802aeb2a760e255ab4f5e99010dfedc45e0d
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/20/2019
-ms.locfileid: "65956843"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67108302"
 ---
 # <a name="problems-signing-in-to-a-microsoft-application"></a>Probleme beim Anmelden bei Microsoft-Anwendungen
 

@@ -17,12 +17,12 @@ ms.author: ryanwi
 ms.reviewer: zachowd, lenalepa, jesakowi
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2edbf5548f5e230986f0a1786d67fb4580e574e2
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 7b9d272c8a01eeed58278a6e7f0cec147b01a10e
+ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66235442"
+ms.lasthandoff: 07/01/2019
+ms.locfileid: "67482937"
 ---
 # <a name="azure-active-directory-consent-framework"></a>Azure Active Directory-Zustimmungsframework
 
@@ -50,7 +50,7 @@ Die folgenden Schritte zeigen, wie das Zustimmungsframework auf der Benutzerober
 
 1. Nachdem der Benutzer sich angemeldet hat, ermittelt Azure AD, ob für den Benutzer eine Seite für die Zustimmungserteilung angezeigt werden muss. Das Ergebnis dieser Ermittlung ist davon abhängig, ob der Benutzer (oder der Administrator seiner Organisation) die Anwendungszustimmung bereits erteilt hat. Wenn die Zustimmung noch nicht erteilt wurde, fordert Azure AD den Benutzer zur Zustimmung auf und zeigt an, welche Berechtigungen für die Funktionalität benötigt werden. Der Berechtigungssatz, der im Dialogfeld für die Zustimmung angezeigt wird, ist identisch mit der Auswahl unter **Delegierte Berechtigungen** im Azure-Portal.
 
-    ![Oberfläche für die Benutzerzustimmung](./media/quickstart-v1-integrate-apps-with-azure-ad/consent.png)
+    ![Abbildung eines Beispiels für im Zustimmungsdialogfeld angezeigte Berechtigungen](./media/quickstart-v1-integrate-apps-with-azure-ad/consent.png)
 
 1. Nachdem der Benutzer seine Zustimmung erteilt hat, wird ein Autorisierungscode an Ihre Anwendung zurückgegeben, mit dem ein Zugriffs- und Aktualisierungstoken abgerufen wird. Weitere Informationen zu diesem Ablauf finden Sie unter [Web API](web-api.md) (Web-API).
 

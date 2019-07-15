@@ -16,12 +16,12 @@ ms.date: 05/23/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 235877ac8f84e695e5f81770d33b6fed89a5f241
-ms.sourcegitcommit: 8c49df11910a8ed8259f377217a9ffcd892ae0ae
+ms.openlocfilehash: b13b23e59595acf8c637a2ef58c8098256920bea
+ms.sourcegitcommit: cf438e4b4e351b64fd0320bf17cc02489e61406a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/29/2019
-ms.locfileid: "66298794"
+ms.lasthandoff: 07/08/2019
+ms.locfileid: "67654044"
 ---
 # <a name="azure-ad-connect-version-release-history"></a>Azure AD Connect: Verlauf der Versionsveröffentlichungen
 Das Azure Active Directory-Team (Azure AD) aktualisiert Azure AD Connect regelmäßig mit neuen Features und Funktionen. Nicht alle Erweiterungen gelten für alle Benutzergruppen.
@@ -191,7 +191,7 @@ Dieser Hotfixbuild behebt eine Regression im vorherigen Build, bei der das Kennw
  
 ## <a name="118820"></a>1.1.882.0  
 
-7.9.2018: als Download veröffentlicht; kein Release für automatisches Upgrade 
+7\.9.2018: als Download veröffentlicht; kein Release für automatisches Upgrade 
 
 ### <a name="fixed-issues"></a>Behobene Probleme  
 
@@ -408,7 +408,7 @@ Sie sperren den Zugriff auf das AD DS-Konto durch die Implementierung der folgen
 *   Entfernen aller ACEs für das angegebene Objekt, mit Ausnahme von ACEs für SELF Wir möchten die Standardberechtigungen für SELF beibehalten.
 *   Weisen Sie diese speziellen Berechtigungen zu:
 
-Type     | NAME                          | Access               | Gilt für
+type     | NAME                          | Access               | Gilt für
 ---------|-------------------------------|----------------------|--------------|
 ZULASSEN    | SYSTEM                        | Vollzugriff         | Dieses Objekt  |
 ZULASSEN    | Organisationsadministratoren             | Vollzugriff         | Dieses Objekt  |
@@ -889,7 +889,7 @@ Azure AD Connect-Synchronisierung
 * Eine Dienstkonfiguration im Azure AD-Mandanten gibt an, ob die Kennwortsynchronisierung für den Mandanten aktiviert ist. Früher konnte es leicht zu einer falschen Dienstkonfiguration durch Azure AD Connect kommen, wenn ein aktiver Server und ein Stagingserver vorhanden waren. Jetzt versucht Azure AD Connect, die Dienstkonfiguration nur entsprechend dem aktiven Azure AD Connect-Server vorzunehmen.
 * Der Azure AD Connect-Assistent erkennt jetzt, wenn im lokalen AD der AD-Papierkorb nicht aktiviert ist, und gibt eine entsprechende Warnung aus.
 * Früher trat beim Export nach Azure AD eine Zeitüberschreitung auf, und der Export schlug fehl, wenn die Gesamtgröße der Objekte im Batch einen bestimmten Schwellenwert überschritt. Jetzt versucht der Synchronisierungsdienst, die Objekte in einzelnen kleineren Batches erneut zu senden, wenn das Problem auftritt.
-* Die Anwendung Synchronization Service Key Management wurde aus dem Windows-Startmenü entfernt. Die Verwaltung der Verschlüsselungsschlüssel wird weiterhin über die Befehlszeilenschnittstelle mithilfe von „miiskmu.exe“ unterstützt. Informationen zum Verwalten von Verschlüsselungsschlüsseln finden Sie im Artikel [Abandoning the Azure AD Connect Sync encryption key](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnectsync-change-serviceacct-pass#abandoning-the-azure-ad-connect-sync-encryption-key) (Verwerfen des Verschlüsselungsschlüssels der Azure AD Connect-Synchronisierung) (in englischer Sprache).
+* Die Anwendung Synchronization Service Key Management wurde aus dem Windows-Startmenü entfernt. Die Verwaltung der Verschlüsselungsschlüssel wird weiterhin über die Befehlszeilenschnittstelle mithilfe von „miiskmu.exe“ unterstützt. Informationen zum Verwalten von Verschlüsselungsschlüsseln finden Sie im Artikel [Abandoning the Azure AD Connect Sync encryption key](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnectsync-change-serviceacct-pass#abandoning-the-adsync-service-account-encryption-key) (Verwerfen des Verschlüsselungsschlüssels der Azure AD Connect-Synchronisierung) (in englischer Sprache).
 * Wenn Sie früher das Kennwort für das Dienstkonto der Azure AD Connect-Synchronisierung geändert heben, konnte der Synchronisierungsdienst nicht ordnungsgemäß gestartet werden, bis der Verschlüsselungsschlüssel verworfen und das Kennwort für das Dienstkonto der Azure AD Connect-Synchronisierung erneut initialisiert wurde. Jetzt ist dieser Prozess nicht mehr erforderlich.
 
 Desktop-SSO

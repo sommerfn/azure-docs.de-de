@@ -16,12 +16,12 @@ ms.date: 04/02/2018
 ms.author: rolyon
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a064fc67bf94ba6aa443e429fe83179d84cada84
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 147b1714c88fd93a3098ecf7a28164a227af29de
+ms.sourcegitcommit: f811238c0d732deb1f0892fe7a20a26c993bc4fc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65602704"
+ms.lasthandoff: 06/29/2019
+ms.locfileid: "67476298"
 ---
 # <a name="extend-or-renew-azure-resource-role-assignments-in-pim"></a>Verlängern oder Erneuern von Zuweisungen von Azure-Ressourcenrollen in PIM
 
@@ -45,30 +45,30 @@ Die folgenden Schritte beschreiben den Prozess für das Anfordern, Bearbeiten bz
 
 Mitglieder einer Rollenzuweisung können die Verlängerung von ablaufenden Rollenzuweisungen direkt über die Registerkarte **Berechtigt** oder **Aktiv** auf der Seite **Meine Rollen** einer Ressource und über die oberste Ebene von **Meine Rollen** im PIM-Portal durchführen. Mitglieder können die Verlängerung von berechtigten und aktiven (zugewiesenen) Rollen anfordern, die innerhalb der nächsten 14 Tage ablaufen.
 
-![Verlängern von Rollen](media/pim-resource-roles-renew-extend/aadpim-rbac-extend-ui.png)
+![Azure-Ressourcen – Seite „Meine Rollen“, auf der die berechtigten Rollen mit der Spalte „Aktion“ aufgelistet werden](media/pim-resource-roles-renew-extend/aadpim-rbac-extend-ui.png)
 
 Wenn der Endzeitpunkt der Zuweisung innerhalb von 14 Tagen liegt, wird die Schaltfläche **Verlängern** auf der Benutzeroberfläche zu einem aktiven Link. Im folgenden Beispiel wird angenommen, dass der 27. März das aktuelle Datum ist.
 
-![Schaltfläche „Verlängern“](media/pim-resource-roles-renew-extend/aadpim-rbac-extend-within-14.png)
+![Spalte „Aktion“ mit Links zum Aktivieren oder Verlängern](media/pim-resource-roles-renew-extend/aadpim-rbac-extend-within-14.png)
 
 Wählen Sie **Verlängern**, um das Anforderungsformular zu öffnen und eine Verlängerung dieser Rollenzuweisung anzufordern.
 
-![Öffnen des Anforderungsformulars](media/pim-resource-roles-renew-extend/aadpim-rbac-extend-role-assignment-request.png)
+![Bereich zum Verlängern einer Rollenzuweisung mit dem Feld „Grund“](media/pim-resource-roles-renew-extend/aadpim-rbac-extend-role-assignment-request.png)
 
 Erweitern Sie **Zuweisungsdetails**, um Informationen zur ursprünglichen Zuweisung anzuzeigen. Geben Sie einen Grund für die Verlängerungsanforderung an, und wählen Sie **Verlängern**.
 
 >[!Note]
 >Wir empfehlen Ihnen, die Details zum Grund der Verlängerung einzufügen und außerdem den Verlängerungszeitraum anzugeben (falls bekannt).
 
-![Verlängern einer Rollenzuweisung](media/pim-resource-roles-renew-extend/aadpim-rbac-extend-form-complete.png)
+![Bereich zum Verlängern der Rollenzuweisung mit erweiterten Zuweisungsdetails](media/pim-resource-roles-renew-extend/aadpim-rbac-extend-form-complete.png)
 
 Die Ressourcenadministratoren erhalten nach kurzer Zeit eine E-Mail-Benachrichtigung mit der Aufforderung, die Verlängerungsanforderung zu überprüfen. Falls bereits eine Verlängerungsanforderung übermittelt wurde, wird oben im Azure-Portal eine Popupbenachrichtigung angezeigt, in der der Fehler erklärt wird.
 
-![Benachrichtigung mit Erläuterung zum Fehler](media/pim-resource-roles-renew-extend/aadpim-rbac-extend-failed-existing-request.png)
+![Benachrichtigung, in der erklärt wird, dass bereits eine ausstehende Anforderung zur Verlängerung einer Rollenzuweisung vorhanden ist](media/pim-resource-roles-renew-extend/aadpim-rbac-extend-failed-existing-request.png)
 
-Navigieren Sie links zur Registerkarte **Ausstehende Anforderungen**, um den Status der Anforderung anzuzeigen oder sie zu stornieren.
+Navigieren Sie im linken Bereich zur Seite **Ausstehende Anforderungen**, um den Status der Anforderung anzuzeigen oder sie zu stornieren.
 
-![Ausstehende Anforderungen](media/pim-resource-roles-renew-extend/aadpim-rbac-extend-cancel-request.png)
+![Azure-Ressourcen – Seite „Ausstehende Anforderungen“ mit einer Auflistung ausstehender Anforderungen und einem Link zum Stornieren](media/pim-resource-roles-renew-extend/aadpim-rbac-extend-cancel-request.png)
 
 ### <a name="admin-approve"></a>Genehmigung durch Administrator
 
@@ -76,11 +76,11 @@ Wenn ein Mitglied eine Anforderung zur Verlängerung einer Rollenzuweisung über
 
 Zusätzlich zur Verwendung des Links aus der E-Mail können Administratoren Anforderungen genehmigen oder ablehnen, indem sie zum PIM-Administrationsportal wechseln und im linken Bereich die Option **Anforderung genehmigen** auswählen.
 
-![Screenshot des Fehlers](media/pim-resource-roles-renew-extend/aadpim-rbac-extend-admin-approve-grid.png)
+![Azure-Ressourcen – Seite „Anforderungen genehmigen“ mit einer Auflistung von Anforderungen und Links zum Genehmigen oder Ablehnen](media/pim-resource-roles-renew-extend/aadpim-rbac-extend-admin-approve-grid.png)
 
 Wenn ein Administrator die Option **Genehmigen** oder **Ablehnen** wählt, werden die Details der Anforderung zusammen mit einem Feld zum Angeben der Begründung für die Überwachungsprotokolle angezeigt.
 
-![Anforderung zum Genehmigen einer Rollenzuweisung](media/pim-resource-roles-renew-extend/aadpim-rbac-extend-admin-approve-blade.png)
+![Bereich zum Genehmigen der Rollenzuweisungsanforderung mit der Begründung des Anforderers, dem Zuweisungstyp, der Startzeit, der Endzeit und dem Grund](media/pim-resource-roles-renew-extend/aadpim-rbac-extend-admin-approve-blade.png)
 
 Beim Genehmigen einer Anforderung zur Verlängerung der Rollenzuweisung können Ressourcenadministratoren einen neuen Start- und Endzeitpunkt und einen neuen Zuweisungstyp wählen. Das Ändern des Zuweisungstyps kann erforderlich sein, wenn der Administrator begrenzten Zugriff gewähren möchte (z.B. nur für einen Tag), damit eine bestimmte Aufgabe erfüllt werden kann. In diesem Beispiel kann der Administrator die Zuweisung von **Berechtigt** in **Aktiv** ändern. Das bedeutet, dass sie dem Anfordernden Zugriff gewähren können, ohne dass er aktiviert werden muss.
 
@@ -90,7 +90,7 @@ Wenn ein Rollenmitglied vergisst, eine Verlängerung der Rollenmitgliedschaft an
 
 Navigieren Sie in PIM zur Ressourcenrolle oder zur Ansicht für ein Mitglied, um eine Rollenmitgliedschaft zu verlängern. Suchen Sie das Mitglied, das eine Verlängerung anfordert. Wählen Sie dann **Verlängern** in der Aktionsspalte.
 
-![Verlängern einer Rollenmitgliedschaft](media/pim-resource-roles-renew-extend/aadpim-rbac-extend-admin-extend.png)
+![Azure-Ressourcen – Seite „Mitglieder“, auf der die berechtigten Rollen mit Links zum Verlängern aufgelistet werden](media/pim-resource-roles-renew-extend/aadpim-rbac-extend-admin-extend.png)
 
 ## <a name="renew-role-assignments"></a>Erneuern von Rollenzuweisungen
 
@@ -100,13 +100,13 @@ Der Prozess zum Erneuern einer abgelaufenen Rollenzuweisung ist vom Konzept her 
 
 Mitglieder, die nicht mehr auf Ressourcen zugreifen können, können bis zu 30 Tage auf den Verlauf der abgelaufenen Zuweisungen zugreifen. Navigieren Sie dazu im linken Bereich zu **Meine Rollen** und wählen Sie die Registerkarte **Abgelaufene Rollen** im Abschnitt der Azure-Ressourcenrollen.
 
-![Registerkarte „Abgelaufene Rollen“](media/pim-resource-roles-renew-extend/aadpim-rbac-renew-from-myroles.png)
+![Seite „Meine Rollen“ – Registerkarte „Abgelaufene Rollen“](media/pim-resource-roles-renew-extend/aadpim-rbac-renew-from-myroles.png)
 
 In der Liste der Rollen werden die Standardeinstellungen für **Berechtigte Rollen** angezeigt. Verwenden Sie das Dropdownmenü, um zwischen berechtigten und aktiven zugewiesenen Rollen umzuschalten.
 
 Wählen Sie die Aktion **Erneuern**, um für Rollenzuweisungen in der Liste eine Erneuerung anzufordern. Geben Sie dann einen Grund für Ihre Anforderung an. Es ist hilfreich, zusätzlich zum weiteren Kontext einen Gültigkeitszeitraum anzugeben, um dem Ressourcenadministrator die Entscheidung über die Genehmigung oder Ablehnung zu erleichtern.
 
-![Erneuern einer Rollenzuweisung](media/pim-resource-roles-renew-extend/aadpim-rbac-renew-request-form.png)
+![Bereich zum Erneuern einer Rollenzuweisung mit dem Feld „Grund“](media/pim-resource-roles-renew-extend/aadpim-rbac-renew-request-form.png)
 
 Nach dem Übermitteln der Anforderung werden die Ressourcenadministratoren über eine ausstehende Anforderung zur Erneuerung einer Rollenzuweisung informiert.
 
@@ -114,11 +114,11 @@ Nach dem Übermitteln der Anforderung werden die Ressourcenadministratoren über
 
 Ressourcenadministratoren können über den Link in der E-Mail-Benachrichtigung auf die Erneuerungsanforderung zugreifen, oder sie können über das Azure-Portal auf PIM zugreifen und im linken Bereich die Option **Anforderungen genehmigen** wählen.
 
-![Genehmigen von Anforderungen](media/pim-resource-roles-renew-extend/aadpim-rbac-extend-admin-approve-grid.png)
+![Azure-Ressourcen – Seite „Anforderungen genehmigen“ mit einer Auflistung von Anforderungen und Links zum Genehmigen oder Ablehnen](media/pim-resource-roles-renew-extend/aadpim-rbac-extend-admin-approve-grid.png)
 
 Wenn ein Administrator die Option **Genehmigen** oder **Ablehnen** wählt, werden die Details der Anforderung zusammen mit einem Feld zum Angeben der Begründung für die Überwachungsprotokolle angezeigt.
 
-![Genehmigen einer Rollenzuweisung](media/pim-resource-roles-renew-extend/aadpim-rbac-extend-admin-approve-blade.png)
+![Bereich zum Genehmigen der Rollenzuweisungsanforderung mit der Begründung des Anforderers, dem Zuweisungstyp, der Startzeit, der Endzeit und dem Grund](media/pim-resource-roles-renew-extend/aadpim-rbac-extend-admin-approve-blade.png)
 
 Beim Genehmigen einer Anforderung zur Erneuerung der Rollenzuweisung müssen Ressourcenadministratoren einen neuen Start- und Endzeitpunkt und einen neuen Zuweisungstyp eingeben. 
 
@@ -128,7 +128,7 @@ Ressourcenadministratoren können abgelaufene Rollenzuweisungen im linken Naviga
 
 Um eine Liste mit allen abgelaufenen Rollenzuweisungen anzuzeigen, wählen Sie auf dem Bildschirm **Mitglieder** die Option **Abgelaufenen Rollen**.
 
-![Abgelaufene Rollen](media/pim-resource-roles-renew-extend/aadpim-rbac-renew-from-member-blade.png)
+![Azure-Ressourcen – Seite „Mitglieder“, auf der die abgelaufenen Rollen mit Links zum Erneuern aufgelistet werden](media/pim-resource-roles-renew-extend/aadpim-rbac-renew-from-member-blade.png)
 
 ## <a name="next-steps"></a>Nächste Schritte
 

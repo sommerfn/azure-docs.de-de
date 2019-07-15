@@ -5,17 +5,17 @@ services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 05/20/2019
+ms.date: 07/01/2019
 ms.topic: conceptual
 ms.service: cost-management
 manager: micflan
 ms.custom: ''
-ms.openlocfilehash: 717c0f110ebbeee53e2c9b9207350385288d57c3
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 699707953ae06afa9cbf3cc7286f94917ba0efca
+ms.sourcegitcommit: ac1cfe497341429cf62eb934e87f3b5f3c79948e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65991376"
+ms.lasthandoff: 07/01/2019
+ms.locfileid: "67490110"
 ---
 # <a name="understand-and-work-with-scopes"></a>Verstehen von und Arbeiten mit Bereichen
 
@@ -100,19 +100,19 @@ Azure-Abonnements werden unter Registrierungskonten geschachtelt. Abrechnungsben
 
 Abrechnungsbenutzer haben keinen Zugriff auf Verwaltungsgruppen, da sie nicht explizit zu einem bestimmten Abrechnungskonto gehören. Der Zugriff muss Verwaltungsgruppen explizit gewährt werden. In Verwaltungsgruppen werden Kosten aus allen geschachtelten Abonnements zusammengetragen. Allerdings enthalten sie nur nutzungsbasierte Käufe. Sie enthalten keine Käufe wie Reservierungen und Marketplace-Angebote von Drittanbietern. Um diese Kosten anzuzeigen, verwenden Sie das EA-Abrechnungskonto.
 
-## <a name="individual-agreement-pay-as-you-go-scopes"></a>Bereiche für Einzelverträge (nutzungsbasierte Zahlung)
+## <a name="individual-agreement-scopes"></a>Bereiche für einzelne Verträge
 
-Abonnements mit nutzungsbasierter Zahlung, einschließlich zugehöriger Typen wie kostenlose und Testversionen und Entwicklungs-/Testangebote, haben keinen expliziten Abrechnungskontobereich. Stattdessen hat jedes Abonnement einen Kontobesitzer oder Kontoadministrator, der mit dem EA-Kontobesitzer vergleichbar ist.
+Für aus einzelnen Angeboten wie nutzungsbasierte Bezahlung und verwandten Typen (z. B. kostenlose Testversionen und Entwicklungs-/Testangebote) erstellte Azure-Abonnements gibt es keinen expliziten Abrechnungskontobereich. Stattdessen hat jedes Abonnement einen Kontobesitzer oder Kontoadministrator, der mit dem EA-Kontobesitzer vergleichbar ist.
 
 - [**Abrechnungskonto**](../billing/billing-view-all-accounts.md): Stellt einen Besitzer mit einem einzelnen Konto für ein oder mehrere Azure-Abonnements dar. Unterstützt derzeit nicht das Gewähren des Zugriffs für mehrere Personen oder des Zugriffs auf aggregierte Kostenansichten.
 
     Ressourcentyp: Nicht zutreffend
 
-Kontoadministratoren für Abonnements mit nutzungsbasierter Zahlung können im [Azure-Kontocenter](https://account.azure.com/subscriptions) Abrechnungsdaten einsehen und verwalten, wie z.B. Rechnungen und Zahlungen. Sie können jedoch im Azure-Portal keine Kostendaten einsehen und keine Ressourcen verwalten. Um dem Kontoadministrator Zugriff zu gewähren, verwenden Sie die zuvor genannten Cost Management-Rollen.
+Kontoadministratoren für einzelne Azure-Abonnements können im [Azure-Kontocenter](https://account.azure.com/subscriptions) Abrechnungsdaten wie Rechnungen und Zahlungen anzeigen und verwalten. Sie können jedoch im Azure-Portal keine Kostendaten einsehen und keine Ressourcen verwalten. Um dem Kontoadministrator Zugriff zu gewähren, verwenden Sie die zuvor genannten Cost Management-Rollen.
 
-Im Gegensatz zu EA können Kontoadministratoren für Abonnements mit nutzungsbasierter Zahlung ihre Rechnungen im Azure-Portal einsehen. Beachten Sie, dass die Rollen „Cost Management-Leser“ und „Cost Management-Mitwirkender“ keinen Zugriff auf Rechnungen bieten. Weitere Informationen finden Sie unter [Gewähren von Zugriff auf Rechnungen für nutzungsbasierte Zahlung](../billing/billing-manage-access.md#give-access-to-billing).
+Im Gegensatz zu EA können Kontoadministratoren für einzelne Azure-Abonnements ihre Rechnungen im Azure-Portal anzeigen. Beachten Sie, dass die Rollen „Cost Management-Leser“ und „Cost Management-Mitwirkender“ keinen Zugriff auf Rechnungen bieten. Weitere Informationen finden Sie unter [Gewähren des Zugriffs auf Rechnungen](../billing/billing-manage-access.md##give-read-only-access-to-billing).
 
-## <a name="customer-agreement-scopes"></a>Bereiche für Microsoft-Kundenvereinbarung
+## <a name="microsoft-customer-agreement-scopes"></a>Bereiche für Microsoft-Kundenvereinbarung
 
 Abrechnungskonten der Microsoft-Kundenvereinbarung haben die folgenden Bereiche:
 
@@ -148,7 +148,7 @@ Cloud Solution Provider-Partner (CSP) werden derzeit in Cost Management nicht un
 
 ## <a name="switch-between-scopes-in-cost-management"></a>Umschalten zwischen Bereichen in Cost Management
 
-Alle Cost Management-Ansichten im Azure-Portal enthalten links oben die Option **Bereich**. Hierüber können Sie den Bereich rasch ändern. Klicken Sie auf **Bereich**, um die Bereichsauswahl zu öffnen. Hier werden Abrechnungskonten, die Stammverwaltungsgruppe und alle Abonnements angezeigt, die nicht unter der Stammverwaltungsgruppe geschachtelt sind. Um einen Bereich auszuwählen, klicken Sie auf den Hintergrund, um ihn zu markieren, und dann unten auf **Auswählen**. Für eine Detailsuche in geschachtelten Bereichen, wie beispielsweise Ressourcengruppen in einem Abonnement, klicken Sie auf den Link „Bereichsname“. Um den übergeordneten Bereich auf einer geschachtelten Ebene auszuwählen, klicken Sie oben in der Bereichsauswahl auf **Diesen &lt;Bereich&gt; auswählen**.
+Alle Cost Management-Ansichten im Azure-Portal enthalten links oben die Auswahloption **Bereich**. Hierüber können Sie den Bereich rasch ändern. Klicken Sie auf **Bereich**, um die Bereichsauswahl zu öffnen. Hier werden Abrechnungskonten, die Stammverwaltungsgruppe und alle Abonnements angezeigt, die nicht unter der Stammverwaltungsgruppe geschachtelt sind. Um einen Bereich auszuwählen, klicken Sie auf den Hintergrund, um ihn zu markieren, und dann unten auf **Auswählen**. Für eine Detailsuche in geschachtelten Bereichen, wie beispielsweise Ressourcengruppen in einem Abonnement, klicken Sie auf den Link „Bereichsname“. Um den übergeordneten Bereich auf einer geschachtelten Ebene auszuwählen, klicken Sie oben in der Bereichsauswahl auf **Diesen &lt;Bereich&gt; auswählen**.
 
 ## <a name="identify-the-resource-id-for-a-scope"></a>Bestimmen der Ressourcen-ID eines Bereichs
 

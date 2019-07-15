@@ -16,12 +16,12 @@ ms.workload: identity
 ms.date: 12/12/2017
 ms.author: markvi
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1a6797c7bd0c6bd8ce8d3f51b42cb4c2b1338fd6
-ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
+ms.openlocfilehash: 1eb5600a9793963a722967e1bbe702cf3b2f670e
+ms.sourcegitcommit: 72f1d1210980d2f75e490f879521bc73d76a17e1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/20/2019
-ms.locfileid: "65950482"
+ms.lasthandoff: 06/14/2019
+ms.locfileid: "67147115"
 ---
 # <a name="faqs-and-known-issues-with-managed-identities-for-azure-resources"></a>Häufig gestellte Fragen und bekannte Probleme mit verwalteten Identitäten für Azure-Ressourcen
 
@@ -84,8 +84,8 @@ Nein. Verwaltete Identitäten unterstützen derzeit keine verzeichnisübergreife
 
 ### <a name="what-azure-rbac-permissions-are-required-to-managed-identity-on-a-resource"></a>Welche Azure RBAC-Berechtigungen sind für eine verwaltete Identität auf einer Ressource erforderlich? 
 
-- Systemseitig zugewiesene verwaltete Identität: Sie benötigen Schreibberechtigungen für die Ressource. Beispiel:  Microsoft.Compute/virtualMachines/write – Oder – Diese Aktion ist in ressourcenspezifischen integrierten Rollen wie [Mitwirkender von virtuellen Computern](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#virtual-machine-contributor) enthalten.
-- Benutzerseitig zugewiesene verwaltete Identität: Sie benötigen Schreibberechtigungen für die Ressource. Beispiel:  Microsoft.Compute/virtualMachines/write. Zusätzlich zu der Rollenzuweisung [Operator für verwaltete Identität](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#managed-identity-operator) für die verwaltete Identität. 
+- Systemseitig zugewiesene verwaltete Identität: Sie benötigen Schreibberechtigungen für die Ressource. Für virtuelle Computer benötigen Sie z.B. „Microsoft.Compute/virtualMachines/write“. Diese Aktion ist in ressourcenspezifischen integrierten Rollen wie [Mitwirkender von virtuellen Computern](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#virtual-machine-contributor) enthalten.
+- Benutzerseitig zugewiesene verwaltete Identität: Sie benötigen Schreibberechtigungen für die Ressource. Für virtuelle Computer benötigen Sie z.B. „Microsoft.Compute/virtualMachines/write“. Zusätzlich zu der Rollenzuweisung [Operator für verwaltete Identität](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#managed-identity-operator) für die verwaltete Identität.
 
 ### <a name="how-do-you-restart-the-managed-identities-for-azure-resources-extension"></a>Wie wird die Erweiterung für verwaltete Identitäten für Azure-Ressourcen neu gestartet?
 Unter Windows und bestimmten Versionen von Linux kann das folgende Cmdlet verwendet werden, um die Erweiterung manuell neu zu starten, wenn sie beendet wurde:

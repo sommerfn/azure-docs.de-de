@@ -14,12 +14,12 @@ ms.subservice: report-monitor
 ms.date: 04/18/2019
 ms.author: markvi
 ms.reviewer: dhanyahk
-ms.openlocfilehash: 6ae14ec152975717af5d55780bcc39aa87c4b01a
-ms.sourcegitcommit: 6f043a4da4454d5cb673377bb6c4ddd0ed30672d
+ms.openlocfilehash: 9433714c06dfad09270a6033f38a99471bcd517a
+ms.sourcegitcommit: 6cb4dd784dd5a6c72edaff56cf6bcdcd8c579ee7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/08/2019
-ms.locfileid: "65406591"
+ms.lasthandoff: 07/02/2019
+ms.locfileid: "67513618"
 ---
 # <a name="how-to-use-azure-monitor-workbooks-for-azure-active-directory-reports"></a>Verwenden von Azure Monitor-Arbeitsmappen für Azure Active Directory-Berichte
 
@@ -37,7 +37,7 @@ Dieser Artikel:
 
 - Setzt voraus, dass Sie mit dem [Erstellen interaktiver Berichte mit Monitor-Arbeitsmappen](https://docs.microsoft.com/azure/azure-monitor/app/usage-workbooks) vertraut sind.
 
-- Erläutert die Verwendung von Monitor-Arbeitsmappen, damit Sie die Auswirkungen Ihrer Richtlinien für bedingten Zugriff verstehen, zum Beheben von Anmeldefehlern und zum Identifizieren von Legacyauthentifizierungen.
+- Erläutert die Verwendung von Monitor-Arbeitsmappen, um die Auswirkungen Ihrer Richtlinien für bedingten Zugriff verstehen, Anmeldefehler beheben und Legacyauthentifizierungen identifizieren zu können.
  
 
 
@@ -57,7 +57,7 @@ So greifen Sie auf Arbeitsmappen zu
 
 2. Klicken Sie im linken Navigationsmenü auf **Azure Active Directory**.
 
-3. Wählen Sie im Abschnitt **Überwachung** die Option **Einblicke** aus. 
+3. Wählen Sie im Abschnitt **Überwachung** die Option **Arbeitsmappen** aus. 
 
     ![„Einblicke“ auswählen](./media/howto-use-azure-monitor-workbooks/41.png)
 

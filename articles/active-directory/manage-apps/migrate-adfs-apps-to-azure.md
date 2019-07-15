@@ -13,12 +13,12 @@ ms.devlang: na
 ms.date: 03/02/2018
 ms.author: mimart
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f77e322ffd7eec78fe13650f40c93f914706d557
-ms.sourcegitcommit: be9fcaace62709cea55beb49a5bebf4f9701f7c6
+ms.openlocfilehash: 272d5194b2922e57aca0d63fd62c222e17a29c53
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/17/2019
-ms.locfileid: "65824627"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67108253"
 ---
 # <a name="move-applications-from-ad-fs-to-azure-ad"></a>Verschieben von Anwendungen aus AD FS in Azure AD 
 

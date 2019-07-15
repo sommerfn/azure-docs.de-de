@@ -3,16 +3,15 @@ title: Einrichten einer Quelltransformation in der Mapping Data Flow-Funktion vo
 description: Erfahren Sie, wie Sie eine Quelltransformation in Mapping Data Flow einrichten.
 author: kromerm
 ms.author: makromer
-ms.reviewer: douglasl
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 02/12/2019
-ms.openlocfilehash: 51c1ea7b554178f7fb3f264bf731ffd5872ceea2
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.openlocfilehash: 4f77eafd3309d7c1d679c126b1a5eb1ff0e9a28d
+ms.sourcegitcommit: ac1cfe497341429cf62eb934e87f3b5f3c79948e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/27/2019
-ms.locfileid: "66234549"
+ms.lasthandoff: 07/01/2019
+ms.locfileid: "67490091"
 ---
 # <a name="source-transformation-for-mapping-data-flow"></a>Quelltransformation für Mapping Data Flow 
 
@@ -65,13 +64,13 @@ Sie können die Spaltennamen später in einer select-Transformation ändern. Ver
 
 Auf der Registerkarte **Optimieren** für die Quelltransformation wird möglicherweise der Partitionstyp **Quelle** angezeigt. Diese Option ist nur verfügbar, wenn die Quelle eine Azure SQL-Datenbank ist. Dies liegt daran, dass Data Factory versucht, parallele Verbindungen herzustellen, um umfangreiche Abfragen für Ihre SQL-Datenbankquelle auszuführen.
 
-![Einstellungen der Quellpartition](media/data-flow/sourcepart2.png "Partitionierung")
+![Einstellungen der Quellpartition](media/data-flow/sourcepart3.png "Partitionierung")
 
 Sie verfügen nicht über Partitionsdaten in Ihrer SQL-Datenbank-Quelle, Partitionen sind aber besonders hilfreich für große Abfragen. Sie können Ihre Partitionierung auf eine Spalte oder einer Abfrage basieren.
 
 ### <a name="use-a-column-to-partition-data"></a>Verwenden einer Spalte zum Partitionieren von Daten
 
-Wählen Sie in Ihrer Quelltabelle eine Spalte aus, nach der partitioniert werden soll. Legen Sie auch die maximale Anzahl von Verbindungen fest.
+Wählen Sie in Ihrer Quelltabelle eine Spalte aus, nach der partitioniert werden soll. Legen Sie auch die Anzahl von Partitionen fest.
 
 ### <a name="use-a-query-to-partition-data"></a>Verwenden einer Abfrage zum Partitionieren von Daten
 
@@ -84,9 +83,39 @@ Wählen Sie die Einstellungen zum Verwalten von Dateien in Ihrer Quelle aus.
 ![Einstellungen für eine neue Quelle](media/data-flow/source2.png "Einstellungen für neue Quelle")
 
 * **Platzhalterpfad:** Wählen Sie in Ihrem Quellordner eine Reihe von Dateien aus, die einem Muster entsprechen. Diese Einstellung überschreibt alle Dateien in Ihrer Datasetdefinition.
+
+Beispiele für Platzhalter:
+
+* ```*```: Stellt eine beliebige Zeichenfolge dar
+* ```**```: Stellt rekursive Verzeichnisschachtelung dar
+* ```?```: Ersetzt ein Zeichen
+* ```[]```: Stimmt mit einem oder mehreren Zeichen in den Klammern überein
+
+* ```/data/sales/**/*.csv```: Ruft alle CSV-Dateien unter „/data/sales“ ab
+* ```/data/sales/20??/**```: Ruft alle Dateien aus dem 20. Jahrhundert ab
+* ```/data/sales/2004/*/12/[XY]1?.csv```: Ruft alle CSV-Dateien aus Dezember 2004 ab, die mit X oder Y und einer zweistelligen Zahl als Präfix beginnen
+
+Der Container muss im Dataset angegeben werden. Daher muss Ihr Platzhalterpfad auch den Ordnerpfad des Stammordners enthalten.
+
 * **Liste der Dateien:** Dies ist eine Dateigruppe. Erstellen Sie eine Textdatei mit einer Liste der relativen Pfade der zu verarbeitenden Dateien. Verweisen Sie auf diese Textdatei.
 * **Spalte für die Speicherung im Dateinamen:** Speichern Sie den Namen der Quelldatei in einer Spalte in den Daten. Geben Sie hier einen neuen Namen ein, um die Zeichenfolge für den Dateinamen zu speichern.
 * **Nach der Fertigstellung:** Wählen Sie aus, ob Sie nach dem Ausführen des Datenflusses nichts mit der Quelldatei anstellen, die Quelldatei löschen oder die Quelldateien verschieben möchten. Die Pfade für das Verschieben sind relative Pfade.
+
+Um Quelldateien an einen anderen Speicherort nach der Verarbeitung zu verschieben, wählen Sie zuerst für den Dateivorgang die Option „Verschieben“ aus. Legen Sie dann das Quellverzeichnis („from“/„aus“) fest. Wenn Sie keine Platzhalter für Ihren Pfad verwenden, entspricht die Einstellung „from“ dem Quellordner.
+
+Wenn Sie einen Quellpfad mit Platzhaltern verwenden, z. B.:
+
+```/data/sales/20??/**/*.csv```
+
+Geben Sie „from“ beispielsweise wie folgt an:
+
+```/data/sales```
+
+Und „to“ können Sie wie folgt angeben:
+
+```/backup/priorSales```
+
+In diesem Fall werden alle Unterverzeichnisse von „/data/sales“, die erstellt wurden, relativ zu „/backup/priorSales“ verschoben.
 
 ### <a name="sql-datasets"></a>SQL-Datasets
 
@@ -94,6 +123,14 @@ Wenn sich Ihre Quelle in SQL-Datenbank oder SQL Data Warehouse befindet, stehen 
 
 * **Query** (Abfrage): Geben Sie eine SQL-Abfrage für die Quelle ein. Diese Einstellung überschreibt jede Tabelle, die Sie im Dataset ausgewählt haben. Beachten Sie, dass **Order By**-Klauseln hier nicht unterstützt werden. Sie können aber eine vollständige SELECT FROM-Anweisung festlegen. Sie können auch benutzerdefinierte Tabellenfunktionen verwenden. **select * from udfGetData()** ist eine benutzerdefinierte Funktion in SQL, die eine Tabelle zurückgibt. Diese Abfrage generiert eine Quelltabelle, die Sie in Ihrem Datenfluss verwenden können.
 * **Batchgröße**: Geben Sie eine Batchgröße ein, um große Datenmengen in Leseblöcke zu segmentieren.
+* **Isolationsstufe**: Der Standardwert für SQL-Quellen in ADF-Mapping Data Flows lautet „Lesen nicht zugesichert“. Sie können die Isolationsstufe hier in einen der folgenden Werte ändern:
+* Lesen zugesichert
+* Lesen nicht zugesichert
+* Wiederholbarer Lesevorgang
+* Serialisierbar
+* Keine (Isolationsstufe ignorieren)
+
+![Isolationsstufe](media/data-flow/isolationlevel.png "Isolationsstufe")
 
 > [!NOTE]
 > Die Dateivorgänge werden nur ausgeführt, wenn der Datenfluss anhand der Aktivität zum Ausführen des Datenflusses in einer Pipeline über eine Pipelineausführung ausgeführt wird (Debuggen der Pipeline oder Ausführung). Dateivorgänge werden *nicht* im Datenfluss-Debugmodus ausgeführt.
@@ -109,6 +146,12 @@ Wenn in Ihrer Textdatei kein Schema definiert ist, wählen Sie **Datentyp erkenn
 Sie können die Spaltendatentypen in einer späteren Transformation für abgeleitete Spalten ändern. Verwenden Sie eine Transformation, um die Spaltennamen zu ändern.
 
 ![Einstellungen für Standarddatenformate](media/data-flow/source2.png "Standardformate")
+
+### <a name="add-dynamic-content"></a>Dynamischen Inhalt hinzufügen
+
+Wenn Sie im Bereich für die Einstellungen in die Felder klicken, wird ein Link „Dynamischen Inhalt hinzufügen“ angezeigt. Wenn Sie darauf klicken, wird der Ausdrucks-Generator gestartet. Im Ausdrucks-Generator können Sie Werte für Einstellungen mithilfe von Ausdrücken, statischen Literalwerten oder Parametern dynamisch festlegen.
+
+![Parameter](media/data-flow/params6.png "Parameter")
 
 ## <a name="next-steps"></a>Nächste Schritte
 

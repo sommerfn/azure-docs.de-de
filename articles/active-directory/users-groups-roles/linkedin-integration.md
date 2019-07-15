@@ -13,12 +13,12 @@ ms.author: curtand
 ms.reviewer: beengen
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1130885cc3168582935264ffaad9fd7a8ba3c60b
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 36ca46d6df9c32f23d3051d1205c3c6b39e69f5a
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64920267"
+ms.lasthandoff: 06/17/2019
+ms.locfileid: "67164711"
 ---
 # <a name="integrate-linkedin-account-connections-in-azure-active-directory"></a>Integrieren von LinkedIn-Kontoverbindungen in Azure Active Directory
 
@@ -44,7 +44,7 @@ Sie können LinkedIn-Kontoverbindungen nur für die Benutzer aktivieren, auf die
 1. Gestatten Sie Benutzern unter **LinkedIn-Kontoverbindungen** das Verbinden ihrer Konten, damit sie in einigen Microsoft-Anwendungen auf ihre LinkedIn-Verbindungen zugreifen können. Es werden keine Daten freigegeben, bis der Benutzer der Verbindung seiner Konten zustimmt.
 
     * Wählen Sie **Ja** aus, um den Dienst für alle Benutzer in Ihrer Organisation zu aktivieren.
-    * Wählen Sie **Ausgewählt** aus, um nur eine Gruppe von ausgewählten Benutzern in Ihrer Organisation zu aktivieren.
+    * Wählen Sie **Ausgewählte Gruppe** aus, um den Dienst nur für eine Gruppe von ausgewählten Benutzern in Ihrer Organisation zu aktivieren.
     * Wählen Sie **Nein** aus, um die Zustimmung für alle Benutzer in Ihrer Organisation zu widerrufen.
 
     ![Integrieren von LinkedIn-Kontoverbindungen in der Organisation](./media/linkedin-integration/linkedin-integration.png)

@@ -1,6 +1,6 @@
 ---
-title: Kopieren von Daten in/aus SQL Server mithilfe von Azure Data Factory | Microsoft-Dokumentation
-description: Informationen zum Verschieben von Daten in und aus einer SQL Server-Datenbank, die lokal oder mithilfe von Azure Data Factory in einer Azure-VM gehostet wird.
+title: Kopieren von Daten in und aus SQL Server mithilfe von Azure Data Factory | Microsoft-Dokumentation
+description: Hier finden Sie Informationen zum Verschieben von Daten in eine und aus einer SQL Server-Datenbank, die lokal oder auf einem virtuellen Azure-Computer mithilfe von Azure Data Factory gehostet wird.
 services: data-factory
 documentationcenter: ''
 author: linda33wj
@@ -10,61 +10,62 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 04/08/2019
+ms.date: 06/13/2019
 ms.author: jingwang
-ms.openlocfilehash: d28f6ed1957f8f6ae7ff7eb49f8ce4cbdec62266
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.openlocfilehash: a6767c7c8931898c44fd748dbe4299b8ed23eb9c
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65147420"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67443291"
 ---
-# <a name="copy-data-to-and-from-sql-server-using-azure-data-factory"></a>Kopieren von Daten in und aus SQL Server mithilfe von Azure Data Factory
-> [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
+# <a name="copy-data-to-and-from-sql-server-by-using-azure-data-factory"></a>Kopieren von Daten in und aus SQL Server mithilfe von Azure Data Factory
+> [!div class="op_single_selector" title1="Wählen Sie die von Ihnen verwendete Version von Azure Data Factory aus:"]
 > * [Version 1](v1/data-factory-sqlserver-connector.md)
 > * [Aktuelle Version](connector-sql-server.md)
 
-In diesem Artikel wird beschrieben, wie Sie die Kopieraktivität in Azure Data Factory verwenden, um Daten in und aus einer SQL Server-Datenbank zu kopieren. Er baut auf dem Artikel zur [Übersicht über die Kopieraktivität](copy-activity-overview.md) auf, der eine allgemeine Übersicht über die Kopieraktivität enthält.
+In diesem Artikel wird beschrieben, wie Sie die Kopieraktivität in Azure Data Factory verwenden, um Daten in eine und aus einer SQL Server-Datenbank zu kopieren. Dieser Artikel baut auf dem Artikel [Kopieraktivität in Azure Data Factory](copy-activity-overview.md) auf, der eine allgemeine Übersicht über die Kopieraktivität enthält.
 
 ## <a name="supported-capabilities"></a>Unterstützte Funktionen
 
-Sie können Daten aus einem beliebigen unterstützten Senkendatenspeicher in eine oder aus einer SQL Server-Datenbank in einen beliebigen unterstützten Quelldatenspeicher kopieren. Eine Liste der Datenspeicher, die als Quellen oder Senken für die Kopieraktivität unterstützt werden, finden Sie in der Tabelle [Unterstützte Datenspeicher](copy-activity-overview.md#supported-data-stores-and-formats).
+Sie können Daten aus einer SQL Server-Datenbank in jeden unterstützten Senkendatenspeicher kopieren und umgekehrt. Zudem können Sie Daten aus jedem unterstützten Quelldatenspeicher in eine SQL Server-Datenbank kopieren. Eine Liste der Datenspeicher, die als Quellen oder Senken für die Kopieraktivität unterstützt werden, finden Sie in der Tabelle [Unterstützte Datenspeicher](copy-activity-overview.md#supported-data-stores-and-formats).
 
 Dieser SQL Server-Connector unterstützt insbesondere Folgendes:
 
 - Die SQL Server-Versionen 2016, 2014, 2012, 2008 R2, 2008 und 2005
-- Kopieren von Dateien unter Verwendung der Authentifizierung des Typs **SQL** oder **Windows**
-- Als Quelle das Abrufen von Daten mithilfe einer SQL-Abfrage oder gespeicherten Prozedur.
+- Kopieren von Daten unter Verwendung der SQL- oder Windows-Authentifizierung
+- Als Quelle das Abrufen von Daten mithilfe einer SQL-Abfrage oder gespeicherten Prozedur
 - Als Senke das Anfügen von Daten an die Zieltabelle oder Aufrufen einer gespeicherten Prozedur mit benutzerdefinierter Logik während des Kopiervorgangs
 
-SQL Server [Always Encrypted](https://docs.microsoft.com/sql/relational-databases/security/encryption/always-encrypted-database-engine?view=sql-server-2017) wird derzeit nicht unterstützt.
+>[!NOTE]
+>SQL Server [Always Encrypted](https://docs.microsoft.com/sql/relational-databases/security/encryption/always-encrypted-database-engine?view=sql-server-2017) wird von diesem Connector aktuell nicht unterstützt. Um dieses Problem zu umgehen, können Sie einen [generischen ODBC-Connector](connector-odbc.md) und einen ODBC-Treiber für SQL Server verwenden. Befolgen Sie [diese Anleitung](https://docs.microsoft.com/sql/connect/odbc/using-always-encrypted-with-the-odbc-driver?view=sql-server-2017) zum Herunterladen des ODBC-Treibers und zum Konfigurieren der Verbindungszeichenfolgen.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-Zum Kopieren von Daten aus einer SQL Server-Datenbank, die nicht öffentlich zugänglich ist, müssen Sie eine selbstgehostete Integration Runtime einrichten. Im Artikel [Selbstgehostete Integration Runtime](create-self-hosted-integration-runtime.md) finden Sie Details. Die Integration Runtime bietet einen integrierten SQL Server-Datenbanktreiber. Daher müssen beim Kopieren von Daten in bzw. aus einer SQL Server-Datenbank keine Treiber manuell installiert werden.
+Zum Kopieren von Daten aus einer SQL Server-Datenbank, die nicht öffentlich zugänglich ist, müssen Sie eine selbstgehostete Integration Runtime einrichten. Weitere Informationen finden Sie unter [Selbstgehostete Integration Runtime](create-self-hosted-integration-runtime.md). Die Integration Runtime stellt einen integrierten SQL Server-Datenbanktreiber bereit. Sie müssen keinen Treiber manuell installieren, wenn Sie Daten aus der oder in die SQL Server-Datenbank kopieren.
 
-## <a name="getting-started"></a>Erste Schritte
+## <a name="get-started"></a>Erste Schritte
 
 [!INCLUDE [data-factory-v2-connector-get-started](../../includes/data-factory-v2-connector-get-started.md)]
 
-Die folgenden Abschnitte enthalten Details zu Eigenschaften, die zum Definieren von Data Factory-Entitäten speziell für den SQL Server-Connector verwendet werden.
+Die folgenden Abschnitte enthalten Details zu Eigenschaften, die zum Definieren von Data Factory-Entitäten speziell für den SQL Server-Datenbankconnector verwendet werden.
 
 ## <a name="linked-service-properties"></a>Eigenschaften des verknüpften Diensts
 
-Folgende Eigenschaften werden für den mit SQL Server verknüpften Dienst unterstützt:
+Die folgenden Eigenschaften werden für den mit SQL Server verknüpften Dienst unterstützt:
 
 | Eigenschaft | BESCHREIBUNG | Erforderlich |
 |:--- |:--- |:--- |
-| type | Die type-Eigenschaft muss auf Folgendes festgelegt werden: **SqlServer** | Ja |
-| connectionString |Geben Sie „connectionString“-Informationen an, die zum Herstellen einer Verbindung mit der SQL Server-Datenbank mithilfe der SQL- oder Windows-Authentifizierung benötigt werden. Sehen Sie sich die folgenden Beispiele an.<br/>Markieren Sie dieses Feld als „SecureString“, um es sicher in Data Factory zu speichern. Sie können auch das Kennwort in Azure Key Vault speichern und bei Verwendung der SQL-Authentifizierung die `password`-Konfiguration aus der Verbindungszeichenfolge pullen. Ausführlichere Informationen finden Sie im JSON-Beispiel unter der Tabelle und im Artikel [Speichern von Anmeldeinformationen in Azure Key Vault](store-credentials-in-key-vault.md). |Ja |
-| userName |Geben Sie den Benutzernamen an, wenn Sie die Windows-Authentifizierung verwenden. Beispiel: **Domainname\\Benutzername**. |Nein  |
-| password |Geben Sie das Kennwort für das Benutzerkonto an, das Sie für „userName“ angegeben haben. Markieren Sie dieses Feld als SecureString, um es sicher in Data Factory zu speichern, oder [verweisen Sie auf ein in Azure Key Vault gespeichertes Geheimnis](store-credentials-in-key-vault.md). |Nein  |
-| connectVia | Die [Integration Runtime](concepts-integration-runtime.md), die zum Herstellen einer Verbindung mit dem Datenspeicher verwendet werden muss. Sie können die selbstgehostete Integration Runtime oder Azure Integration Runtime verwenden (sofern Ihr Datenspeicher öffentlich zugänglich ist). Wenn keine Option angegeben ist, wird die standardmäßige Azure Integration Runtime verwendet. |Nein  |
+| type | Die type-Eigenschaft muss auf **SqlServer** festgelegt sein. | Ja |
+| connectionString |Geben Sie **connectionString**-Informationen an, die zum Herstellen einer Verbindung mit der SQL Server-Datenbank mithilfe der SQL- oder Windows-Authentifizierung benötigt werden. Sehen Sie sich die folgenden Beispiele an.<br/>Kennzeichnen Sie dieses Feld als **SecureString**, um es sicher in Azure Data Factory zu speichern. Sie können auch ein Kennwort in Azure Key Vault speichern. Bei Verwendung der SQL-Authentifizierung pullen Sie die `password`-Konfiguration aus der Verbindungszeichenfolge. Weitere Informationen finden Sie im JSON-Beispiel unter der Tabelle sowie unter [Speichern von Anmeldeinformationen in Azure Key Vault](store-credentials-in-key-vault.md). |Ja |
+| userName |Geben Sie einen Benutzernamen an, wenn Sie die Windows-Authentifizierung verwenden. Ein Beispiel lautet **domainname\\username**. |Nein |
+| password |Geben Sie das Kennwort für das Benutzerkonto an, das Sie für den Benutzernamen angegeben haben. Kennzeichnen Sie dieses Feld als **SecureString**, um es sicher in Azure Data Factory zu speichern. Alternativ können Sie [auf ein in Azure Key Vault gespeichertes Geheimnis verweisen](store-credentials-in-key-vault.md). |Nein |
+| connectVia | Diese [Integration Runtime](concepts-integration-runtime.md) wird zum Herstellen einer Verbindung mit dem Datenspeicher verwendet. Sie können eine selbstgehostete Integration Runtime oder die Azure Integration Runtime verwenden, sofern Ihr Datenspeicher öffentlich zugänglich ist. Wenn keine Option angegeben ist, wird die standardmäßige Azure Integration Runtime verwendet. |Nein |
 
 >[!TIP]
 >Wenn ein Fehler mit dem Fehlercode „UserErrorFailedToConnectToSqlServer“ auftritt und eine Meldung wie „Das Sitzungslimit für die Datenbank ist XXX und wurde erreicht“ angezeigt wird, fügen Sie `Pooling=false` zu Ihrer Verbindungszeichenfolge hinzu, und versuchen Sie es erneut.
 
-**Beispiel 1: SQL-Authentifizierung**
+**Beispiel 1: SQL-Authentifizierung verwenden**
 
 ```json
 {
@@ -85,7 +86,7 @@ Folgende Eigenschaften werden für den mit SQL Server verknüpften Dienst unters
 }
 ```
 
-**Beispiel 2: Verwenden der SQL-Authentifizierung mit Kennwort in Azure Key Vault**
+**Beispiel 2: Verwenden der SQL-Authentifizierung mit einem Kennwort in Azure Key Vault**
 
 ```json
 {
@@ -114,7 +115,7 @@ Folgende Eigenschaften werden für den mit SQL Server verknüpften Dienst unters
 }
 ```
 
-**Beispiel 3: Verwenden der Windows-Authentifizierung**
+**Beispiel 3: Windows-Authentifizierung verwenden**
 
 ```json
 {
@@ -142,16 +143,16 @@ Folgende Eigenschaften werden für den mit SQL Server verknüpften Dienst unters
 
 ## <a name="dataset-properties"></a>Dataset-Eigenschaften
 
-Eine vollständige Liste mit den Abschnitten und Eigenschaften, die zum Definieren von Datasets zur Verfügung stehen, finden Sie im Artikel zu Datasets. Dieser Abschnitt enthält eine Liste der Eigenschaften, die vom Dataset „SQL Server“ unterstützt werden.
+Eine vollständige Liste mit den Abschnitten und Eigenschaften, die zum Definieren von Datasets zur Verfügung stehen, finden Sie im Artikel zu Datasets. Dieser Abschnitt enthält eine Liste der Eigenschaften, die vom SQL Server-Dataset unterstützt werden.
 
-Zum Kopieren von Daten aus der bzw. in die SQL Server-Datenbank werden die folgenden Eigenschaften unterstützt:
+Zum Kopieren von Daten aus einer und in eine SQL Server-Datenbank werden die folgenden Eigenschaften unterstützt:
 
 | Eigenschaft | BESCHREIBUNG | Erforderlich |
 |:--- |:--- |:--- |
-| type | Die type-Eigenschaft des Datasets muss auf folgenden Wert festgelegt werden: **SqlServerTable** | Ja |
-| tableName |Name der Tabelle oder Sicht in der SQL Server-Datenbankinstanz, auf die der verknüpfte Dienst verweist. | Quelle: Nein, Senke: Ja |
+| type | Die type-Eigenschaft des Datasets muss auf **SqlServerTable** festgelegt werden. | Ja |
+| tableName |Diese Eigenschaft ist der Name der Tabelle oder Ansicht in der SQL Server-Datenbankinstanz, auf die der verknüpfte Dienst verweist. | Quelle: Nein, Senke: Ja |
 
-**Beispiel:**
+**Beispiel**
 
 ```json
 {
@@ -173,25 +174,25 @@ Zum Kopieren von Daten aus der bzw. in die SQL Server-Datenbank werden die folge
 
 ## <a name="copy-activity-properties"></a>Eigenschaften der Kopieraktivität
 
-Eine vollständige Liste mit den Abschnitten und Eigenschaften zum Definieren von Aktivitäten finden Sie im Artikel [Pipelines](concepts-pipelines-activities.md). Dieser Abschnitt enthält eine Liste der Eigenschaften, die von der Quelle und Senke „SQL Server“ unterstützt werden.
+Eine vollständige Liste mit den Abschnitten und Eigenschaften zum Definieren von Aktivitäten finden Sie im Artikel [Pipelines](concepts-pipelines-activities.md). Dieser Abschnitt enthält eine Liste der Eigenschaften, die von der SQL Server-Quelle und -Senke unterstützt werden.
 
-### <a name="sql-server-as-source"></a>SQL Server als Quelle
+### <a name="sql-server-as-a-source"></a>SQL Server als Quelle
 
-Legen Sie zum Kopieren von Daten aus SQL Server den Quellentyp in der Kopieraktivität auf **SqlSource** fest. Folgende Eigenschaften werden im Abschnitt **source** der Kopieraktivität unterstützt:
+Legen Sie zum Kopieren von Daten aus SQL Server den Quellentyp in der Kopieraktivität auf **SqlSource** fest. Die folgenden Eigenschaften werden im Abschnitt „source“ der Kopieraktivität unterstützt:
 
 | Eigenschaft | BESCHREIBUNG | Erforderlich |
 |:--- |:--- |:--- |
-| type | Die type-Eigenschaft der Quelle der Kopieraktivität muss auf Folgendes festgelegt werden: **SqlSource** | Ja |
-| sqlReaderQuery |Verwendet die benutzerdefinierte SQL-Abfrage zum Lesen von Daten. Beispiel: `select * from MyTable`. |Nein  |
-| sqlReaderStoredProcedureName |Der Name der gespeicherten Prozedur, die Daten aus der Quelltabelle liest. Die letzte SQL-Anweisung muss eine SELECT-Anweisung in der gespeicherten Prozedur sein. |Nein  |
-| storedProcedureParameters |Parameter für die gespeicherte Prozedur.<br/>Zulässige Werte: Name/Wert-Paare. Die Namen und die Groß-/Kleinschreibung von Parametern müssen denen der Parameter der gespeicherten Prozedur entsprechen. |Nein  |
+| type | Die type-Eigenschaft der Quelle der Kopieraktivität muss auf **SqlSource** festgelegt sein. | Ja |
+| sqlReaderQuery |Verwendet die benutzerdefinierte SQL-Abfrage zum Lesen von Daten. Ein Beispiel ist `select * from MyTable`. |Nein |
+| sqlReaderStoredProcedureName |Diese Eigenschaft ist der Name der gespeicherten Prozedur, die Daten aus der Quelltabelle liest. Die letzte SQL-Anweisung muss eine SELECT-Anweisung in der gespeicherten Prozedur sein. |Nein |
+| storedProcedureParameters |Diese Parameter werden für die gespeicherte Prozedur verwendet.<br/>Zulässige Werte sind Namen oder Name-Wert-Paare. Die Namen und die Groß-/Kleinschreibung von Parametern müssen den Namen und der Groß-/Kleinschreibung der Parameter der gespeicherten Prozedur entsprechen. |Nein |
 
 **Beachten Sie Folgendes:**
 
-- Wenn **sqlReaderQuery** für „SqlSource“ angegeben ist, wendet die Kopieraktivität diese Abfrage auf die Quelle „SQL Server“ an, um die Daten abzurufen. Alternativ dazu können Sie eine gespeicherte Prozedur angeben, indem Sie **sqlReaderStoredProcedureName** und **storedProcedureParameters** angeben (sofern die gespeicherten Prozeduren Parameter verwenden).
-- Ohne Angabe von „sqlReaderQuery“ oder „sqlReaderStoredProcedureName“ werden die im Abschnitt „structure“ des JSON-Codes des Datasets definierten Spalten zum Erstellen einer Abfrage (`select column1, column2 from mytable`) verwendet, die auf die SQL Server-Datenbank angewendet wird. Falls die Datasetdefinition nicht den Abschnitt „structure“ enthält, werden alle Spalten der Tabelle ausgewählt.
+- Wenn **sqlReaderQuery** für **SqlSource** angegeben ist, führt die Kopieraktivität diese Abfrage für die SQL Server-Quelle aus, um die Daten abzurufen. Sie können auch eine gespeicherte Prozedur angeben, indem Sie **sqlReaderStoredProcedureName** und **storedProcedureParameters** angeben, sofern die gespeicherten Prozeduren Parameter verwenden.
+- Ohne Angabe von **sqlReaderQuery** oder **sqlReaderStoredProcedureName** werden die im Abschnitt „structure“ des JSON-Codes des Datasets definierten Spalten zum Erstellen einer Abfrage verwendet. Die Abfrage `select column1, column2 from mytable` wird für die SQL Server-Instanz ausgeführt. Falls die Datasetdefinition keinen Abschnitt „structure“ enthält, werden alle Spalten der Tabelle ausgewählt.
 
-**Beispiel: Verwenden von SQL-Abfragen**
+**Beispiel: Verwenden einer SQL-Abfrage**
 
 ```json
 "activities":[
@@ -223,7 +224,7 @@ Legen Sie zum Kopieren von Daten aus SQL Server den Quellentyp in der Kopierakti
 ]
 ```
 
-**Beispiel: Verwenden von gespeicherten Prozeduren**
+**Beispiel: Verwenden einer gespeicherten Prozedur**
 
 ```json
 "activities":[
@@ -259,7 +260,7 @@ Legen Sie zum Kopieren von Daten aus SQL Server den Quellentyp in der Kopierakti
 ]
 ```
 
-**Die Definition der gespeicherten Prozedur:**
+**Definition der gespeicherten Prozedur**
 
 ```sql
 CREATE PROCEDURE CopyTestSrcStoredProcedureWithParameters
@@ -278,22 +279,22 @@ END
 GO
 ```
 
-### <a name="sql-server-as-sink"></a>SQL Server als Senke
+### <a name="sql-server-as-a-sink"></a>SQL Server als Senke
 
-Legen Sie zum Kopieren von Daten in SQL Server den Senkentyp in der Kopieraktivität auf **SqlSink** fest. Folgende Eigenschaften werden im Abschnitt **sink** der Kopieraktivität unterstützt:
+> [!TIP]
+> Weitere Informationen zum unterstützten Schreibverhalten, zu unterstützten Konfigurationen und bewährten Methoden finden Sie unter [Bewährte Methode zum Laden von Daten in SQL Server](#best-practice-for-loading-data-into-sql-server).
+
+Legen Sie zum Kopieren von Daten in SQL Server den Senkentyp in der Kopieraktivität auf **SqlSink** fest. Die folgenden Eigenschaften werden im Abschnitt „sink“ der Kopieraktivität unterstützt:
 
 | Eigenschaft | BESCHREIBUNG | Erforderlich |
 |:--- |:--- |:--- |
-| type | Die type-Eigenschaft der Senke der Kopieraktivität muss auf Folgendes festgelegt sein: **SqlSink** | Ja |
-| writeBatchSize |Anzahl der Zeilen, die in die SQL-Tabelle **pro Batch** eingefügt werden sollen.<br/>Zulässige Werte: Ganze Zahlen (Anzahl der Zeilen). Standardmäßig bestimmt Data Factory die geeignete Batchgröße dynamisch anhand der Zeilengröße. |Nein  |
-| writeBatchTimeout |Die Wartezeit für den Abschluss der Batcheinfügung, bis das Timeout wirksam wird.<br/>Zulässige Werte: Zeitraum Beispiel: „00:30:00“ (30 Minuten). |Nein  |
-| preCopyScript |Geben Sie eine auszuführende SQL-Abfrage für die Copy-Aktivität an, ehe Daten in SQL Server geschrieben werden. Sie wird pro Ausführung der Copy-Aktivität nur einmal aufgerufen. Sie können diese Eigenschaft nutzen, um die vorab geladenen Daten zu bereinigen. |Nein  |
-| sqlWriterStoredProcedureName |Der Name der gespeicherten Prozedur, die definiert, wie Quelldaten in der Zieltabelle angewendet werden (etwa durch Ausführen von Upserts oder Transformationen mit eigener Geschäftslogik). <br/><br/>Beachten Sie, dass diese gespeicherte Prozedur **pro Batch aufgerufen wird**. Verwenden Sie bei einem Vorgang, der nur einmal ausgeführt wird und nicht mit Quelldaten in Zusammenhang steht (etwa Löschen/Kürzen), die `preCopyScript`-Eigenschaft. |Nein  |
-| storedProcedureParameters |Parameter für die gespeicherte Prozedur.<br/>Zulässige Werte: Name/Wert-Paare. Die Namen und die Groß-/Kleinschreibung von Parametern müssen denen der Parameter der gespeicherten Prozedur entsprechen. |Nein  |
-| sqlWriterTableType |Geben Sie einen Tabellentypnamen an, der in der gespeicherten Prozedur verwendet werden soll. Die Kopieraktivität macht die verschobenen Daten in einer temporären Tabelle mit diesem Tabellentyp verfügbar. Der gespeicherte Prozedurcode kann dann die kopierten Daten mit vorhandenen Daten zusammenführen. |Nein  |
-
-> [!TIP]
-> Beim Kopieren von Daten in SQL Server fügt die Kopieraktivität Daten standardmäßig an die Senkentabelle an. Um einen UPSERT-Vorgang oder zusätzliche Geschäftslogik auszuführen, verwenden Sie die in „SqlSink“ gespeicherte Prozedur. Weitere Informationen finden Sie unter [Aufrufen einer gespeicherten Prozedur für die SQL-Senke](#invoking-stored-procedure-for-sql-sink).
+| type | Die type-Eigenschaft der Senke der Kopieraktivität muss auf **SqlSink** festgelegt sein. | Ja |
+| writeBatchSize |Anzahl der Zeilen, die in die SQL-Tabelle *pro Batch* eingefügt werden sollen.<br/>Zulässige Werte sind Integer-Werte für die Anzahl der Zeilen. Standardmäßig bestimmt Azure Data Factory die geeignete Batchgröße dynamisch anhand der Zeilengröße. |Nein |
+| writeBatchTimeout |Diese Eigenschaft gibt die Wartezeit für den Abschluss der Batcheinfügung an, bevor ein Timeout auftritt.<br/>Zulässige Werte werden für den Zeitraum verwendet. Beispiel: „00:30:00“ für 30 Minuten. |Nein |
+| preCopyScript |Diese Eigenschaft gibt eine SQL-Abfrage für die Kopieraktivität an, die vor dem Schreiben von Daten in SQL Server ausgeführt wird. Sie wird pro Ausführung der Kopieraktivität nur einmal aufgerufen. Sie können diese Eigenschaft nutzen, um die vorab geladenen Daten zu bereinigen. |Nein |
+| sqlWriterStoredProcedureName |Dies ist der Name der gespeicherten Prozedur, die definiert, wie Quelldaten auf eine Zieltabelle angewandt werden.<br/>Diese gespeicherte Prozedur wird *pro Batch aufgerufen*. Auf einen Vorgang auszuführen, der nur einmal ausgeführt wird und nicht mit Quelldaten in Zusammenhang steht (etwa Löschen/Kürzen), verwenden Sie die `preCopyScript`-Eigenschaft. |Nein |
+| storedProcedureParameters |Diese Parameter werden für die gespeicherte Prozedur verwendet.<br/>Zulässige Werte sind Namen oder Name-Wert-Paare. Die Namen und die Groß-/Kleinschreibung der Parameter müssen denen der Parameter der gespeicherten Prozedur entsprechen. |Nein |
+| sqlWriterTableType |Diese Eigenschaft gibt einen Tabellentypnamen an, der in der gespeicherten Prozedur verwendet werden soll. Die Kopieraktivität macht die verschobenen Daten in einer temporären Tabelle mit diesem Tabellentyp verfügbar. Der gespeicherte Prozedurcode kann dann die kopierten Daten mit vorhandenen Daten zusammenführen. |Nein |
 
 **Beispiel 1: Anfügen von Daten**
 
@@ -327,9 +328,9 @@ Legen Sie zum Kopieren von Daten in SQL Server den Senkentyp in der Kopieraktivi
 ]
 ```
 
-**Beispiel 2: Aufrufen einer gespeicherten Prozedur während des Kopierens für den upsert-Vorgang**
+**Beispiel 2: Aufrufen einer gespeicherten Prozedur während des Kopiervorgangs**
 
-Weitere Informationen finden Sie unter [Aufrufen einer gespeicherten Prozedur für die SQL-Senke](#invoking-stored-procedure-for-sql-sink).
+Weitere Informationen finden Sie unter [Aufrufen einer gespeicherten Prozedur aus einer SQL-Senke](#invoke-a-stored-procedure-from-a-sql-sink).
 
 ```json
 "activities":[
@@ -366,84 +367,76 @@ Weitere Informationen finden Sie unter [Aufrufen einer gespeicherten Prozedur f�
 ]
 ```
 
-## <a name="identity-columns-in-the-target-database"></a>Identitätsspalten in der Zieldatenbank
+## <a name="best-practice-for-loading-data-into-sql-server"></a>Bewährte Methode zum Laden von Daten in SQL Server
 
-Dieser Abschnitt enthält ein Beispiel zum Kopieren von Daten aus einer Quelltabelle ohne eine Identitätsspalte in eine Zieltabelle mit einer Identitätsspalte.
+Wenn Sie Daten in SQL Server kopieren, ist möglicherweise ein anderes Schreibverhalten erforderlich:
 
-**Quelltabelle:**
+- [Anfügen](#append-data): Meine Quelldaten enthalten nur neue Datensätze.
+- [Upsert](#upsert-data): Meine Quelldaten umfassen sowohl Einfügungen als auch Aktualisierungen.
+- [Überschreiben](#overwrite-the-entire-table): Ich möchte die gesamte Dimensionstabelle jedes Mal neu laden.
+- [Schreiben von Daten mit benutzerdefinierter Logik](#write-data-with-custom-logic): Ich benötige eine zusätzliche Verarbeitung vor dem endgültigen Einfügen in die Zieltabelle.
+
+Informationen zur Konfiguration in Azure Data Factory und zu den bewährten Methoden finden Sie in den entsprechenden Abschnitten.
+
+### <a name="append-data"></a>Anfügen von Daten
+
+Das Anfügen von Daten stellt das Standardverhalten dieses SQL Server-Senkenconnectors dar. Azure Data Factory führt eine Masseneinfügung aus, um Daten effizient in Ihre Tabelle zu schreiben. Sie können die Quelle und Senke in der Kopieraktivität entsprechend konfigurieren.
+
+### <a name="upsert-data"></a>Durchführen von Upsert für Daten
+
+**Option 1:** Wenn Sie eine große Menge von Daten kopieren müssen, gehen Sie folgendermaßen vor, um einen Upsert-Vorgang auszuführen: 
+
+- Verwenden Sie zunächst eine [temporäre Tabelle](https://docs.microsoft.com/sql/t-sql/statements/create-table-transact-sql?view=sql-server-2017#temporary-tables) für das Massenladen aller Datensätze mithilfe der Kopieraktivität. Weil Vorgänge für temporäre Tabellen nicht protokolliert werden, können Sie Millionen von Datensätzen in wenigen Sekunden laden.
+- Führen Sie in Azure Data Factory eine Aktivität der gespeicherten Prozedur aus, um eine [MERGE](https://docs.microsoft.com/sql/t-sql/statements/merge-transact-sql?view=azuresqldb-current)- oder INSERT-/UPDATE-Anweisung anzuwenden. Verwenden Sie die temporäre Tabelle als Quelle für die Ausführung aller Aktualisierungen oder Einfügungen als einzelne Transaktion. Auf diese Weise reduzieren Sie die Anzahl von Roundtrips und Protokollvorgängen. Am Ende der Aktivität der gespeicherten Prozedur kann die temporäre Tabelle abgeschnitten werden, damit sie für den nächsten Upsert-Zyklus bereit ist.
+
+Sie können beispielsweise in Azure Data Factory eine Pipeline mit einer **Kopieraktivität** erstellen, die mit einer **Aktivität der gespeicherten Prozedur** verkettet ist. Erstere kopiert Daten aus Ihrem Quellspeicher in eine temporäre Datenbanktabelle (z. B. **##UpsertTempTable** als Tabellenname im Dataset). Letztere ruft dann eine gespeicherte Prozedur auf, um die Quelldaten aus der temporären Tabelle in der Zieltabelle zusammenzuführen und die temporäre Tabelle zu bereinigen.
+
+![Upsert](./media/connector-azure-sql-database/azure-sql-database-upsert.png)
+
+Definieren Sie in Ihrer Datenbank eine gespeicherte Prozedur mit MERGE-Logik (wie im folgenden Beispiel), auf die über die vorherige Aktivität der gespeicherten Prozedur gezeigt wird. Angenommen, das Ziel ist die Tabelle **Marketing** mit den drei Spalten: **ProfileID**, **State** und **Category**. Führen Sie den Upsert-Vorgang basierend auf der Spalte **ProfileID** aus.
 
 ```sql
-create table dbo.SourceTbl
-(
-    name varchar(100),
-    age int
-)
+CREATE PROCEDURE [dbo].[spMergeData]
+AS
+BEGIN
+    MERGE TargetTable AS target
+    USING ##UpsertTempTable AS source
+    ON (target.[ProfileID] = source.[ProfileID])
+    WHEN MATCHED THEN
+        UPDATE SET State = source.State
+    WHEN NOT matched THEN
+        INSERT ([ProfileID], [State], [Category])
+      VALUES (source.ProfileID, source.State, source.Category);
+    
+    TRUNCATE TABLE ##UpsertTempTable
+END
 ```
 
-**Zieltabelle:**
+**Option 2:** Sie können auch [eine gespeicherte Prozedur in der Kopieraktivität aufrufen](#invoke-a-stored-procedure-from-a-sql-sink). Dabei wird jede Zeile in der Quelltabelle ausgeführt, statt Masseneinfügen als Standardansatz in der Kopieraktivität zu verwenden, was für umfangreiche Upsert-Vorgänge nicht geeignet ist.
 
-```sql
-create table dbo.TargetTbl
-(
-    identifier int identity(1,1),
-    name varchar(100),
-    age int
-)
-```
+### <a name="overwrite-the-entire-table"></a>Überschreiben der gesamten Tabelle
 
-Beachten Sie, dass die Zieltabelle über eine Identitätsspalte verfügt.
+Sie können die **preCopyScript**-Eigenschaft in einer Kopieraktivitätssenke konfigurieren. In diesem Fall führt Azure Data Factory für jede ausgeführte Kopieraktivität zuerst das Skript aus. Dann wird der Kopiervorgang ausgeführt, um die Daten einzufügen. Beispiel: Um die gesamte Tabelle mit den neuesten Daten zu überschreiben, geben Sie ein Skript an, um erst alle Datensätze zu löschen, bevor die neuen Daten durch Massenladen aus der Quelle eingefügt werden.
 
-**Definition der Quell-Dataset-JSON**
+### <a name="write-data-with-custom-logic"></a>Schreiben von Daten mit benutzerdefinierter Logik
 
-```json
-{
-    "name": "SampleSource",
-    "properties": {
-        "type": " SqlServerTable",
-        "linkedServiceName": {
-            "referenceName": "TestIdentitySQL",
-            "type": "LinkedServiceReference"
-        },
-        "typeProperties": {
-            "tableName": "SourceTbl"
-        }
-    }
-}
-```
+Die Schritte zum Schreiben von Daten mit benutzerdefinierter Logik ähneln den im Abschnitt [Durchführen von Upsert für Daten](#upsert-data) beschriebenen Schritten. Wenn Sie vor dem endgültigen Einfügen von Quelldaten in die Zieltabelle eine zusätzliche Verarbeitung im größeren Maßstab anwenden möchten, können Sie eine der beiden folgenden Aktionen ausführen: 
 
-**Definition der Ziel-Dataset-JSON**
+- Laden Sie die Daten in eine temporäre Tabelle, und rufen Sie dann eine gespeicherte Prozedur auf. 
+- Rufen Sie eine gespeicherte Prozedur während des Kopiervorgangs auf.
 
-```json
-{
-    "name": "SampleTarget",
-    "properties": {
-        "structure": [
-            { "name": "name" },
-            { "name": "age" }
-        ],
-        "type": "SqlServerTable",
-        "linkedServiceName": {
-            "referenceName": "TestIdentitySQL",
-            "type": "LinkedServiceReference"
-        },
-        "typeProperties": {
-            "tableName": "TargetTbl"
-        }
-    }
-}
-```
+## <a name="invoke-a-stored-procedure-from-a-sql-sink"></a> Aufrufen der gespeicherten Prozedur von der SQL-Senke
 
-Beachten Sie, dass die Quell- und die Zieltabelle unterschiedliche Schemas besitzen (das Ziel verfügt über eine zusätzliche Spalte mit der Identität). In diesem Szenario müssen Sie eine **structure** -Eigenschaft in der Definition des Zieldatasets angeben, die nicht die Identitätsspalte enthält.
+Beim Kopieren von Daten in eine SQL Server-Datenbank können Sie auch eine vom Benutzer angegebene gespeicherte Prozedur mit zusätzlichen Parametern konfigurieren und aufrufen.
 
-## <a name="invoking-stored-procedure-for-sql-sink"></a> Aufrufen der gespeicherten Prozedur von der SQL-Senke
+> [!TIP]
+> Beim Aufrufen einer gespeicherten Prozedur werden die Daten zeilenweise statt mithilfe eines Massenvorgangs verarbeitet, was bei umfangreichen Kopiervorgängen nicht empfohlen wird. Weitere Informationen finden Sie unter [Bewährte Methode zum Laden von Daten in SQL Server](#best-practice-for-loading-data-into-sql-server).
 
-Beim Kopieren von Daten in eine SQL Server-Datenbank kann eine vom Benutzer angegebene gespeicherte Prozedur konfiguriert und mit zusätzlichen Parametern aufgerufen werden.
+Sie können eine gespeicherte Prozedur nutzen, wenn integrierte Kopiermechanismen nicht den Zweck erfüllen. Ein Beispiel hierfür ist ein Szenario, in dem Sie vor dem endgültigen Einfügen von Quelldaten in die Zieltabelle eine zusätzliche Verarbeitung anwenden möchten. Beispiele für eine zusätzliche Verarbeitung sind das Zusammenführen von Spalten, das Suchen nach zusätzlichen Werten und das Einfügen von Daten in mehr als eine Tabelle.
 
-Eine gespeicherte Prozedur kann genutzt werden, wenn integrierte Kopiermechanismen nicht den Zweck erfüllen. Sie wird in der Regel genutzt, wenn ein Upsert-Vorgang (Insert + Update, Einfügen + Aktualisieren) oder eine zusätzliche Verarbeitung (Zusammenführen von Spalten, Suchen nach zusätzlichen Werten, Einfügen in mehrere Tabellen usw.) vor dem endgültigen Einfügen von Quelldaten in die Zieltabelle durchgeführt werden muss.
+Das folgende Beispiel zeigt, wie Sie eine gespeicherte Prozedur verwenden, um einen einfachen Upsert-Vorgang in eine Tabelle in der SQL Server-Datenbank auszuführen. Im Beispiel wird angenommen, dass Eingabedaten vorhanden sind und die Senkentabelle **Marketing** drei Spalten enthält: **ProfileID**, **State** und **Category**. Führen Sie den Upsert-Vorgang basierend auf der Spalte **ProfileID** aus, und wenden Sie ihn nur auf eine bestimmte Kategorie an.
 
-Das folgende Beispiel zeigt, wie Sie eine gespeicherte Prozedur verwenden, um einen einfachen Upsert-Vorgang in eine Tabelle in der SQL Server-Datenbank auszuführen. Wenn Eingabedaten vorhanden sind und die Senkentabelle **Marketing** heißt, sind drei Spalten vorhanden: **ProfileID**, **State** und **Category**. Führen Sie den Upsert-Vorgang basierend auf der Spalte **ProfileID** aus, und wenden Sie ihn nur auf eine bestimmte Kategorie an.
-
-**Ausgabedataset:** Der „tableName“ sollte in Ihrer gespeicherten Prozedur denselben Tabellentypparameternamen haben. Im Folgenden finden Sie das Skript für die gespeicherte Prozedur:
+**Ausgabedataset:** Der „tableName“ entspricht dem Parameternamen des Tabellentyps in Ihrer gespeicherten Prozedur wie im folgenden Skript für die gespeicherte Prozedur gezeigt:
 
 ```json
 {
@@ -462,7 +455,7 @@ Das folgende Beispiel zeigt, wie Sie eine gespeicherte Prozedur verwenden, um ei
 }
 ```
 
-Definieren Sie den Abschnitt **SqlSink** in der Kopieraktivität wie folgt.
+Definieren Sie den Abschnitt **SqlSink** in der Kopieraktivität wie folgt:
 
 ```json
 "sink": {
@@ -477,7 +470,7 @@ Definieren Sie den Abschnitt **SqlSink** in der Kopieraktivität wie folgt.
 }
 ```
 
-Definieren Sie die gespeicherte Prozedur in der Datenbank mit demselben Namen wie **SqlWriterStoredProcedureName**. Sie verarbeitet die Eingabedaten aus der angegebenen Quelle und führt sie mit der Ausgabetabelle zusammen. Der Parametername des Tabellentyps in der gespeicherten Prozedur muss mit dem Element **tableName** identisch sein, das im Dataset definiert ist.
+Definieren Sie in Ihrer Datenbank die gespeicherte Prozedur mit dem gleichen Namen wie **SqlWriterStoredProcedureName**. Sie verarbeitet die Eingabedaten aus der angegebenen Quelle und führt sie mit der Ausgabetabelle zusammen. Der Parametername des Tabellentyps in der gespeicherten Prozedur entspricht dem im Dataset definierten **tableName**.
 
 ```sql
 CREATE PROCEDURE spOverwriteMarketing @Marketing [dbo].[MarketingType] READONLY, @category varchar(256)
@@ -494,7 +487,7 @@ BEGIN
 END
 ```
 
-Definieren Sie in der Datenbank den Tabellentyp mit demselben Namen wie „sqlWriterTableType“. Beachten Sie, dass das Schema des Tabellentyps mit dem Schema übereinstimmen sollte, das von den Eingabedaten zurückgegeben wird.
+Definieren Sie in Ihrer Datenbank den Tabellentyp mit dem gleichen Namen wie **sqlWriterTableType**. Das Schema des Tabellentyps muss mit dem Schema übereinstimmen, das von den Eingabedaten zurückgegeben wird.
 
 ```sql
 CREATE TYPE [dbo].[MarketingType] AS TABLE(
@@ -508,9 +501,9 @@ Das Feature der gespeicherten Prozedur nutzt [Tabellenwertparameter](https://msd
 
 ## <a name="data-type-mapping-for-sql-server"></a>Datentypzuordnung für SQL Server
 
-Beim Kopieren von Daten in/aus SQL Server werden die folgenden Zuordnungen von SQL Server-Datentypen zu Azure Data Factory-Zwischendatentypen verwendet. Unter [Schema- und Datentypzuordnungen](copy-activity-schema-and-type-mapping.md) erfahren Sie, wie Sie Aktivitätszuordnungen für Quellschema und Datentyp in die Senke kopieren.
+Beim Kopieren von Daten aus und in SQL Server werden die folgenden Zuordnungen von SQL Server-Datentypen zu Azure Data Factory-Zwischendatentypen verwendet. Informationen dazu, wie die Kopieraktivität das Quellschema und den Datentyp zur Senke zuordnet, finden Sie unter [Schema- und Datentypzuordnungen](copy-activity-schema-and-type-mapping.md).
 
-| SQL Server-Datentyp | Data Factory-Zwischendatentyp |
+| SQL Server-Datentyp | Azure Data Factory-Zwischendatentyp |
 |:--- |:--- |
 | bigint |Int64 |
 | binary |Byte[] |
@@ -543,29 +536,29 @@ Beim Kopieren von Daten in/aus SQL Server werden die folgenden Zuordnungen von S
 | uniqueidentifier |Guid |
 | varbinary |Byte[] |
 | varchar |String, Char[] |
-| xml |xml |
+| Xml |Xml |
 
 >[!NOTE]
-> Für Datentypen, die dem Zwischendatentyp „Decimal“ zugeordnet sind, unterstützt ADF derzeit eine maximale Genauigkeit von 28. Daten mit einer höheren Genauigkeit müssen in SQL-Abfragen ggf. in eine Zeichenfolge konvertiert werden.
+> Für Datentypen, die dem Zwischentyp „Decimal“ zugeordnet sind, unterstützt Azure Data Factory derzeit eine Genauigkeit von bis zu 28. Wenn Ihre Daten eine höhere Genauigkeit als 28 erfordern, erwägen Sie, sie per SQL-Abfrage in eine Zeichenfolge zu konvertieren.
 
-## <a name="troubleshooting-connection-issues"></a>Beheben von Verbindungsproblemen
+## <a name="troubleshoot-connection-issues"></a>Beheben von Verbindungsproblemen
 
-1. Konfigurieren Sie Ihren SQL-Server, um Remoteverbindungen zu akzeptieren. Starten Sie **SQL Server Management Studio**, klicken Sie mit der rechten Maustaste auf **Server**, und klicken Sie dann auf **Eigenschaften**. Wählen Sie in der Liste den Eintrag **Verbindungen** aus, und aktivieren Sie das Kontrollkästchen **Remoteverbindungen mit diesem Server zulassen**.
+1. Konfigurieren Sie Ihre SQL Server-Instanz für das Zulassen von Remoteverbindungen. Starten Sie **SQL Server Management Studio**, klicken Sie mit der rechten Maustaste auf **Server**, und wählen Sie **Eigenschaften** aus. Wählen Sie in der Liste den Eintrag **Verbindungen** aus, und aktivieren Sie das Kontrollkästchen **Remoteverbindungen mit diesem Server zulassen**.
 
     ![Aktivieren von Remoteverbindungen](media/copy-data-to-from-sql-server/AllowRemoteConnections.png)
 
-    Ausführliche Schritte finden Sie im Abschnitt zum [Konfigurieren der Serverkonfigurationsoption für den Remotezugriff](https://msdn.microsoft.com/library/ms191464.aspx) .
+    Ausführliche Schritte finden Sie unter [Konfigurieren der Serverkonfigurationsoption „Remotezugriff“](https://msdn.microsoft.com/library/ms191464.aspx).
 
-2. Starten Sie den **SQL Server-Konfigurations-Manager**. Erweitern Sie **SQL Server-Netzwerkkonfiguration** für die gewünschte Instanz, und wählen Sie **Protokolle für MSSQLSERVER** aus. Im rechten Bereich werden Protokolle angezeigt. Aktivieren Sie TCP/IP, indem Sie mit der rechten Maustaste auf **TCP/IP** klicken und anschließend auf **Aktivieren** klicken.
+2. Starten Sie den **SQL Server-Konfigurations-Manager**. Erweitern Sie **SQL Server-Netzwerkkonfiguration** für die gewünschte Instanz, und wählen Sie **Protokolle für MSSQLSERVER** aus. Die Protokolle werden im rechten Bereich angezeigt. Aktivieren Sie TCP/IP, indem Sie mit der rechten Maustaste auf **TCP/IP** klicken und **Aktivieren** auswählen.
 
     ![TCP/IP aktivieren](./media/copy-data-to-from-sql-server/EnableTCPProptocol.png)
 
-    Weitere Methoden zum Aktivieren des TCP/IP-Protokolls finden Sie unter [Aktivieren oder Deaktivieren eines Servernetzwerkprotokolls](https://msdn.microsoft.com/library/ms191294.aspx) .
+    Weitere Informationen und alternative Methoden zum Aktivieren von TCP/IP finden Sie unter [Aktivieren oder Deaktivieren eines Servernetzwerkprotokolls](https://msdn.microsoft.com/library/ms191294.aspx).
 
 3. Doppelklicken Sie im gleichen Fenster auf **TCP/IP**, um das Fenster **TCP/IP-Eigenschaften** zu öffnen.
-4. Wechseln Sie zur Registerkarte **IP-Adressen** . Scrollen Sie nach unten zum Abschnitt **IPAll** . Notieren Sie sich den **TCP-Port** (Standardwert ist **1433**).
-5. Erstellen Sie auf dem Computer eine **Regel für die Windows-Firewall** , um eingehenden Datenverkehr über diesen Port zuzulassen.  
-6. **Überprüfen der Verbindung**: Verwenden Sie SQL Server Management Studio auf einem anderen Computer, um mit dem vollqualifizierten Namen eine Verbindung mit der SQL Server-Instanz herzustellen. Beispiel: `"<machine>.<domain>.corp.<company>.com,1433"`.
+4. Wechseln Sie zur Registerkarte **IP-Adressen** . Scrollen Sie nach unten zum Abschnitt **IPAll**. Notieren Sie sich den **TCP-Port**. Der Standardport ist **1433**.
+5. Erstellen Sie auf dem Computer eine **Regel für die Windows-Firewall** , um eingehenden Datenverkehr über diesen Port zuzulassen. 
+6. **Überprüfen der Verbindung**: Verwenden Sie SQL Server Management Studio auf einem anderen Computer, um mit dem vollqualifizierten Namen eine Verbindung mit der SQL Server-Instanz herzustellen. Ein Beispiel ist `"<machine>.<domain>.corp.<company>.com,1433"`.
 
 ## <a name="next-steps"></a>Nächste Schritte
 Eine Liste der Datenspeicher, die als Quellen und Senken für die Kopieraktivität in Azure Data Factory unterstützt werden, finden Sie unter [Unterstützte Datenspeicher](copy-activity-overview.md##supported-data-stores-and-formats).

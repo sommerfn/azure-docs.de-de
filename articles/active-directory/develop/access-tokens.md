@@ -16,12 +16,12 @@ ms.author: ryanwi
 ms.reviewer: hirsin
 ms.custom: fasttrack-edit
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ea1e47939913435b5b7040c0e6d01b1208d709d3
-ms.sourcegitcommit: e9a46b4d22113655181a3e219d16397367e8492d
+ms.openlocfilehash: 355e61fdfd9847e54a4bd13ac3b0f2d416c05812
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/21/2019
-ms.locfileid: "65962896"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67111960"
 ---
 # <a name="microsoft-identity-platform-access-tokens"></a>Microsoft Identity Platform-Zugriffstoken
 
@@ -77,10 +77,10 @@ Ansprüche sind nur enthalten, wenn ein Wert zum Füllen des Anspruchs vorhanden
 |Anspruch | Format | BESCHREIBUNG |
 |--------|--------|-------------|
 | `typ` | Zeichenfolge – immer „JWT“ | Gibt an, dass das Token ein JWT ist.|
-| `nonce` | Zeichenfolge | Ein eindeutiger Bezeichner, der zum Schutz vor Token-Replay-Angriffen verwendet wird. Ihre Ressource kann diesen Wert zum Schutz vor Wiedergaben aufzeichnen. |
-| `alg` | Zeichenfolge | Gibt den Algorithmus an, mit dem das Token signiert wurde, beispielsweise „RS256“. |
-| `kid` | Zeichenfolge | Gibt den Fingerabdruck des öffentlichen Schlüssels an, der zum Signieren dieses Tokens verwendet wird. Wird in v1.0- und v2.0-Zugriffstoken ausgegeben. |
-| `x5t` | Zeichenfolge | Hat dieselbe Funktion (hinsichtlich Verwendung und Wert) wie `kid`. `x5t` ist ein Legacyanspruch, der aus Kompatibilitätsgründen nur in v1.0-Zugriffstoken ausgegeben wird. |
+| `nonce` | string | Ein eindeutiger Bezeichner, der zum Schutz vor Token-Replay-Angriffen verwendet wird. Ihre Ressource kann diesen Wert zum Schutz vor Wiedergaben aufzeichnen. |
+| `alg` | string | Gibt den Algorithmus an, mit dem das Token signiert wurde, beispielsweise „RS256“. |
+| `kid` | string | Gibt den Fingerabdruck des öffentlichen Schlüssels an, der zum Signieren dieses Tokens verwendet wird. Wird in v1.0- und v2.0-Zugriffstoken ausgegeben. |
+| `x5t` | string | Hat dieselbe Funktion (hinsichtlich Verwendung und Wert) wie `kid`. `x5t` ist ein Legacyanspruch, der aus Kompatibilitätsgründen nur in v1.0-Zugriffstoken ausgegeben wird. |
 
 ### <a name="payload-claims"></a>Nutzlastansprüche
 
@@ -99,8 +99,8 @@ Ansprüche sind nur enthalten, wenn ein Wert zum Füllen des Anspruchs vorhanden
 | `appidacr` | 0, 1 oder 2 | Ist nur in v1.0-Token vorhanden. Gibt an, wie der Client authentifiziert wurde. Bei einem öffentlichen Client ist der Wert 0. Wenn die Client-ID und der geheime Clientschlüssel verwendet werden, ist der Wert 1. Wenn ein Clientzertifikat für die Authentifizierung verwendet wurde, lautet der Wert 2. |
 | `azp` | Zeichenfolge, eine GUID | Nur in v2.0-Token enthalten, ersetzt `appid`. Die Anwendungs-ID des Clients, der das Token verwendet. Die Anwendung kann als sie selbst oder im Auftrag eines Benutzers agieren. Die Anwendungs-ID stellt in der Regel ein Anwendungsobjekt dar, kann aber auch ein Dienstprinzipalobjekt in Azure AD darstellen. |
 | `azpacr` | 0, 1 oder 2 | Nur in v2.0-Token enthalten, ersetzt `appidacr`. Gibt an, wie der Client authentifiziert wurde. Bei einem öffentlichen Client ist der Wert 0. Wenn die Client-ID und der geheime Clientschlüssel verwendet werden, ist der Wert 1. Wenn ein Clientzertifikat für die Authentifizierung verwendet wurde, lautet der Wert 2. |
-| `preferred_username` | Zeichenfolge | Der primäre Benutzername, der den Benutzer darstellt. Dabei kann es sich um eine E-Mail-Adresse, eine Telefonnummer oder einen generischen Benutzernamen ohne bestimmtes Format handeln. Der Wert kann geändert werden und sich im Laufe der Zeit ändern. Da er geändert werden kann, darf dieser Wert nicht verwendet werden, um Autorisierungsentscheidungen zu treffen.  Er kann jedoch für Benutzernamenhinweise verwendet werden. Der Bereich `profile` ist erforderlich, um diesen Anspruch zu empfangen. |
-| `name` | Zeichenfolge | Ein lesbarer Wert, der den Antragsteller des Tokens angibt. Der Wert ist nicht zwingend eindeutig, kann geändert werden und dient nur zu Anzeigezwecken. Der Bereich `profile` ist erforderlich, um diesen Anspruch zu empfangen. |
+| `preferred_username` | string | Der primäre Benutzername, der den Benutzer darstellt. Dabei kann es sich um eine E-Mail-Adresse, eine Telefonnummer oder einen generischen Benutzernamen ohne bestimmtes Format handeln. Der Wert kann geändert werden und sich im Laufe der Zeit ändern. Da er geändert werden kann, darf dieser Wert nicht verwendet werden, um Autorisierungsentscheidungen zu treffen.  Er kann jedoch für Benutzernamenhinweise verwendet werden. Der Bereich `profile` ist erforderlich, um diesen Anspruch zu empfangen. |
+| `name` | string | Ein lesbarer Wert, der den Antragsteller des Tokens angibt. Der Wert ist nicht zwingend eindeutig, kann geändert werden und dient nur zu Anzeigezwecken. Der Bereich `profile` ist erforderlich, um diesen Anspruch zu empfangen. |
 | `scp` | Zeichenfolge, eine durch Leerzeichen getrennte Liste von Bereichen | Die von Ihrer Anwendung verfügbar gemachte Gruppe von Bereichen, für die die Clientanwendung eine Einwilligung angefordert (und empfangen) hat. Ihre App sollte überprüfen, ob diese Bereiche gültige, von Ihrer App verfügbar gemachte Bereiche sind, und Autorisierungsentscheidungen basierend auf dem Wert der Bereiche treffen. Wird nur für [Benutzertoken](#user-and-application-tokens) verwendet. |
 | `roles` | Array von Zeichenfolgen, eine Liste der Berechtigungen | Die von Ihrer Anwendung verfügbar gemachte Gruppe von Berechtigungen, für die der anfordernden Anwendung bzw. dem anfordernden Benutzer die Berechtigung zum Aufrufen gewährt wurde. Bei [Anwendungstoken](#user-and-application-tokens) wird dieser Anspruch während des Flows für [Clientanmeldeinformationen](v1-oauth2-client-creds-grant-flow.md) anstelle von Benutzerbereichen verwendet.  Bei [Benutzertoken](#user-and-application-tokens) wird dieser Wert mit den Rollen aufgefüllt, die dem Benutzer für die Zielanwendung zugewiesen wurden. |
 | `wids` | Array von [RoleTemplateID](https://docs.microsoft.com/azure/active-directory/users-groups-roles/directory-assign-admin-roles#role-template-ids)-GUIDs | Gibt die mandantenweiten Rollen an, die diesem Benutzer aus dem Abschnitt mit Rollen auf der Seite[Administratorrollen](https://docs.microsoft.com/azure/active-directory/users-groups-roles/directory-assign-admin-roles#role-template-ids) zugewiesen wurden.  Dieser Anspruch wird über die `groupMembershipClaims`-Eigenschaft des [Anwendungsmanifests](reference-app-manifest.md) anwendungsspezifisch konfiguriert.  Der Wert muss auf „All“ oder „DirectoryRole“ festgelegt werden.  Ist in Token, die über den impliziten Flow abgerufen wurden, aufgrund von Beschränkungen der Tokenlänge u. U. nicht enthalten. |
@@ -110,7 +110,7 @@ Ansprüche sind nur enthalten, wenn ein Wert zum Füllen des Anspruchs vorhanden
 | `sub` | Zeichenfolge, eine GUID | Der Prinzipal, für den das Token Informationen zusichert, z. B. der Benutzer einer App. Dieser Wert ist unveränderlich und kann nicht erneut zugewiesen oder wiederverwendet werden. Er kann für die sichere Durchführung von Autorisierungsüberprüfungen verwendet werden, z.B. wenn das Token verwendet wird, um auf eine Ressource zuzugreifen. Er kann auch als Schlüssel in Datenbanktabellen verwendet werden. Da der Antragsteller immer in den Token vorhanden ist, die Azure AD ausstellt, wird die Nutzung dieses Werts in einem allgemeinen Autorisierungssystem empfohlen. Der Antragsteller ist allerdings ein paarweiser Bezeichner: Er gilt nur für eine bestimmte Anwendungs-ID. Wenn sich ein Benutzer bei zwei verschiedenen Apps mit zwei verschiedenen Client-IDs anmeldet, erhalten diese Apps zwei unterschiedliche Werte für den Antragstelleranspruch. Dies kann abhängig von den Architektur- und Datenschutzanforderungen möglicherweise wünschenswert sein oder nicht. Siehe auch den `oid`-Anspruch (der innerhalb eines Mandanten für alle Apps immer gleich bleibt). |
 | `oid` | Zeichenfolge, eine GUID | Der unveränderliche Bezeichner für ein Objekt in der Microsoft Identity Platform (in diesem Fall ein Benutzerkonto). Er kann auch verwendet werden, um Autorisierungsüberprüfungen auf sichere Weise durchzuführen, und er kann als Schlüssel in Datenbanktabellen genutzt werden. Diese ID identifiziert den Benutzer anwendungsübergreifend eindeutig: Zwei verschiedene Anwendungen, die den gleichen Benutzer anmelden, erhalten den gleichen Wert im `oid`-Anspruch. Dies bedeutet, dass `oid` beim Senden von Abfragen an Microsoft-Onlinedienste wie Microsoft Graph verwendet werden kann. Microsoft Graph gibt diese ID als `id`-Eigenschaft für ein bestimmtes Benutzerkonto zurück. Da mit `oid` mehrere Apps Benutzer korrelieren können, ist der `profile`-Bereich erforderlich, um diesen Anspruch zu erhalten. Beachten Sie Folgendes: Wenn ein einzelner Benutzer in mehreren Mandanten vorhanden ist, enthält der Benutzer in jedem Mandanten eine andere Objekt-ID. Sie werden als unterschiedliche Konten betrachtet, obwohl sich der Benutzer bei jedem Konto mit den gleichen Anmeldeinformationen anmeldet. |
 | `tid` | Zeichenfolge, eine GUID | Stellt den Azure AD-Mandanten dar, aus dem der Benutzer stammt. Bei Geschäfts- und Schulkonten ist die GUID die unveränderliche Mandanten-ID der Organisation, zu der der Benutzer gehört. Für persönliche Konten lautet der Wert `9188040d-6c67-4c5b-b112-36a304b66dad`. Der Bereich `profile` ist erforderlich, um diesen Anspruch zu empfangen. |
-| `unique_name` | Zeichenfolge | Ist nur in v1.0-Token vorhanden. Ein lesbarer Wert, der Aufschluss über den Antragsteller des Tokens gibt. Es wird nicht garantiert, dass der Wert innerhalb eines Mandanten eindeutig ist. Er sollte daher nur zu Anzeigezwecken verwendet werden. |
+| `unique_name` | string | Ist nur in v1.0-Token vorhanden. Ein lesbarer Wert, der Aufschluss über den Antragsteller des Tokens gibt. Es wird nicht garantiert, dass der Wert innerhalb eines Mandanten eindeutig ist. Er sollte daher nur zu Anzeigezwecken verwendet werden. |
 | `uti` | Nicht transparente Zeichenfolge | Ein interner Anspruch, der von Azure zum erneuten Überprüfen von Token verwendet wird. Ressourcen sollten diesen Anspruch nicht verwenden. |
 | `rh` | Nicht transparente Zeichenfolge | Ein interner Anspruch, der von Azure zum erneuten Überprüfen von Token verwendet wird. Ressourcen sollten diesen Anspruch nicht verwenden. |
 | `ver` | Zeichenfolge, `1.0` oder `2.0` | Gibt die Version des Zugriffstokens an. |
@@ -121,15 +121,15 @@ Die folgenden Ansprüche werden ggf. in v1.0-Token eingeschlossen, sind standard
 
 | Anspruch | Format | BESCHREIBUNG |
 |-----|--------|-------------|
-| `ipaddr`| Zeichenfolge | Die IP-Adresse, mit der sich der Benutzer authentifiziert hat. |
+| `ipaddr`| string | Die IP-Adresse, mit der sich der Benutzer authentifiziert hat. |
 | `onprem_sid`| Zeichenfolge, im [SID-Format](https://docs.microsoft.com/windows/desktop/SecAuthZ/sid-components) | In Fällen, in denen der Benutzer über eine lokale Authentifizierung verfügt, gibt dieser Anspruch die SID an. Sie können `onprem_sid` für die Autorisierung in älteren Anwendungen verwenden.|
 | `pwd_exp`| Ganze Zahl, ein UNIX-Zeitstempel | Gibt an, wann das Kennwort des Benutzers abläuft. |
-| `pwd_url`| Zeichenfolge | Eine URL, an die Benutzer zum Zurücksetzen ihres Kennworts weitergeleitet werden können. |
+| `pwd_url`| string | Eine URL, an die Benutzer zum Zurücksetzen ihres Kennworts weitergeleitet werden können. |
 | `in_corp`| boolean | Signalisiert, ob sich der Client aus dem Unternehmensnetzwerk anmeldet. Andernfalls ist der Anspruch nicht enthalten. |
-| `nickname`| Zeichenfolge | Ein zusätzlicher Name für den Benutzer, der vom Vor- oder Nachnamen abweicht.|
-| `family_name` | Zeichenfolge | Gibt den Nachnamen des Benutzers entsprechend der Definition im Benutzerobjekt an. |
-| `given_name` | Zeichenfolge | Gibt den Vornamen des Benutzers entsprechend der Definition im Benutzerobjekt an. |
-| `upn` | Zeichenfolge | Der Benutzername des Benutzers. Hierbei kann es sich um eine Telefonnummer, E-Mail-Adresse oder unformatierte Zeichenfolge handeln. Dieser Anspruch sollte nur zu Anzeigezwecken und zum Bereitstellen von Hinweisen zum Benutzernamen in Szenarien mit erneuter Authentifizierung verwendet werden. |
+| `nickname`| string | Ein zusätzlicher Name für den Benutzer, der vom Vor- oder Nachnamen abweicht.|
+| `family_name` | string | Gibt den Nachnamen des Benutzers entsprechend der Definition im Benutzerobjekt an. |
+| `given_name` | string | Gibt den Vornamen des Benutzers entsprechend der Definition im Benutzerobjekt an. |
+| `upn` | string | Der Benutzername des Benutzers. Hierbei kann es sich um eine Telefonnummer, E-Mail-Adresse oder unformatierte Zeichenfolge handeln. Dieser Anspruch sollte nur zu Anzeigezwecken und zum Bereitstellen von Hinweisen zum Benutzernamen in Szenarien mit erneuter Authentifizierung verwendet werden. |
 
 #### <a name="the-amr-claim"></a>`amr`-Anspruch
 

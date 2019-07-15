@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 12/19/2018
 ms.author: martincoetzer
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6e1fa72f8c7edf76ec46663fd62ee40a3a16e8cd
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: ff59b93603af61fd8ea571966a3c43a06929ae04
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58886079"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67113485"
 ---
 # <a name="create-a-resilient-access-control-management-strategy-with-azure-active-directory"></a>Erstellen einer robusten Verwaltungsstrategie für die Zugriffssteuerung in Azure Active Directory
 
@@ -117,12 +117,12 @@ Eine Notfallplanrichtlinie für den bedingten Zugriff ist eine **deaktivierte Ri
 * Konfigurieren Sie einen Satz von Fallbackrichtlinien für den Fall, dass eine Unterbrechung in einem Anmeldeinformationentyp auftritt oder ein Zugriffssteuerungsmechanismus den Zugriff auf Ihre Apps beeinträchtigt. Konfigurieren Sie eine Richtlinie im deaktivierten Zustand, die den Domänenbeitritt als Steuerung erfordert, als Sicherung für eine aktive Richtlinie, die einen MFA-Drittanbieter erfordert.
 * Reduzieren Sie das Risiko, dass Hacker Kennwörter erraten, wenn MFA nicht erforderlich ist, anhand der im Whitepaper [Password Guidance (Kennwortleitfaden)](https://aka.ms/passwordguidance) beschriebenen Methoden.
 * Stellen Sie [Azure AD-Self-Service-Kennwortzurücksetzung](https://docs.microsoft.com/azure/active-directory/authentication/quickstart-sspr) und [Azure AD-Kennwortschutz](https://docs.microsoft.com/azure/active-directory/authentication/howto-password-ban-bad-on-premises-deploy) bereit, um sicherzustellen, dass Benutzer keine gängigen Kennwörter und Begriffe verwenden, die Sie sperren möchten.
-* Verwenden Sie Richtlinien, die den Zugriff innerhalb der Apps beschränken, wenn eine bestimmte Authentifizierungsebene nicht erreicht wird, statt eines einfachen Zurücksetzens auf Vollzugriff. Beispiel: 
+* Verwenden Sie Richtlinien, die den Zugriff innerhalb der Apps beschränken, wenn eine bestimmte Authentifizierungsebene nicht erreicht wird, statt eines einfachen Zurücksetzens auf Vollzugriff. Beispiel:
   * Konfigurieren Sie eine Sicherungsrichtlinie, die den eingeschränkten Sitzungsanspruch auf Exchange und SharePoint sendet.
   * Wenn Ihre Organisation Microsoft Cloud App Security verwendet, ziehen Sie ein Fallback auf eine Richtlinie in Betracht, die MCAS aktiviert, und dann erlaubt MCAS schreibgeschützten Zugriff, jedoch kein Hochladen.
 * Benennen Sie Ihre Richtlinien so, dass Sie sie bei einer Unterbrechung problemlos wiederfinden. Der Richtlinienname muss die folgenden Elemente enthalten:
   * Eine *Bezeichnungsnummer* für die Richtlinie.
-  * Anzuzeigender Text, diese Richtlinie dient nur für Notfälle. Beispiel:  **IM NOTFALL AKTIVIEREN** 
+  * Anzuzeigender Text, diese Richtlinie dient nur für Notfälle. Beispiel:  **IM NOTFALL AKTIVIEREN**
   * Die *Unterbrechung*, für die sie gilt. Beispiel:  **Bei MFA-Unterbrechung**
   * Eine *Sequenznummer*, die angibt, in welcher Reihenfolge die Richtlinien aktiviert werden müssen.
   * Die *Apps*, für die sie gilt.

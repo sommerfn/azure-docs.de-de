@@ -16,12 +16,12 @@ ms.date: 04/15/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3b00afa3d1001ee7c48997e41fd6042763bcc9aa
-ms.sourcegitcommit: fec96500757e55e7716892ddff9a187f61ae81f7
+ms.openlocfilehash: cd41bdfb90e5e8428a747832c10fe23a2cac4560
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/16/2019
-ms.locfileid: "59616593"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67109404"
 ---
 # <a name="azure-active-directory-pass-through-authentication-frequently-asked-questions"></a>Azure Active Directory-Passthrough-Authentifizierung: Häufig gestellte Fragen
 
@@ -37,7 +37,7 @@ Die Passthrough-Authentifizierung ist ein kostenloses Feature. Sie benötigen f�
 
 ## <a name="is-pass-through-authentication-available-in-the-microsoft-azure-germany-cloudhttpswwwmicrosoftdecloud-deutschland-and-the-microsoft-azure-government-cloudhttpsazuremicrosoftcomfeaturesgov"></a>Ist die Passthrough-Authentifizierung in der Cloud [Microsoft Azure Deutschland](https://www.microsoft.de/cloud-deutschland) und der Cloud [Azure Government](https://azure.microsoft.com/features/gov/) verfügbar?
 
- Nein. Die Passthrough-Authentifizierung ist nur in der weltweiten Instanz von Azure AD verfügbar.
+Nein. Die Passthrough-Authentifizierung ist nur in der weltweiten Instanz von Azure AD verfügbar.
 
 ## <a name="does-conditional-accessactive-directory-conditional-access-azure-portalmd-work-with-pass-through-authentication"></a>Funktioniert der [bedingte Zugriff](../active-directory-conditional-access-azure-portal.md) mit der Passthrough-Authentifizierung?
 
@@ -49,7 +49,7 @@ Ja, die Passthrough-Authentifizierung unterstützt `Alternate ID` als Benutzerna
 
 ## <a name="does-password-hash-synchronization-act-as-a-fallback-to-pass-through-authentication"></a>Kann die Kennworthashsynchronisierung als Fallback für die Passthrough-Authentifizierung verwendet werden?
 
- Nein. Bei der Passthrough-Authentifizierung wird _kein_ automatisches Failover auf die Kennworthashsynchronisierung ausgeführt. Um Benutzeranmeldefehler zu vermeiden, sollten Sie die Passthrough-Authentifizierung für [Hochverfügbarkeit](how-to-connect-pta-quick-start.md#step-4-ensure-high-availability) konfigurieren.
+Nein. Bei der Passthrough-Authentifizierung wird _kein_ automatisches Failover auf die Kennworthashsynchronisierung ausgeführt. Um Benutzeranmeldefehler zu vermeiden, sollten Sie die Passthrough-Authentifizierung für [Hochverfügbarkeit](how-to-connect-pta-quick-start.md#step-4-ensure-high-availability) konfigurieren.
 
 ## <a name="what-happens-when-i-switch-from-password-hash-synchronization-to-pass-through-authentication"></a>Was geschieht, wenn ich von der Kennworthashsynchronisierung auf die Passthrough-Authentifizierung umstelle?
 

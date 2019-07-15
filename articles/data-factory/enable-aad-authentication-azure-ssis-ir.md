@@ -12,12 +12,12 @@ ms.date: 5/14/2019
 author: swinarko
 ms.author: sawinark
 manager: craigg
-ms.openlocfilehash: a67436f09d6e28db8d19679e446ac4cf98383709
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: f3d0aaee624bdba169f13313bb57a3ebe8075592
+ms.sourcegitcommit: ac1cfe497341429cf62eb934e87f3b5f3c79948e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65593802"
+ms.lasthandoff: 07/01/2019
+ms.locfileid: "67490071"
 ---
 # <a name="enable-azure-active-directory-authentication-for-azure-ssis-integration-runtime"></a>Aktivieren der Azure Active Directory-Authentifizierung für Azure-SSIS Integration Runtime
 
@@ -146,17 +146,7 @@ Die verwaltete Azure SQL-Datenbank-Instanz unterstützt das direkte Erstellen ei
 
 ### <a name="configure-azure-ad-authentication-for-azure-sql-database-managed-instance"></a>Konfigurieren der Azure AD-Authentifizierung für die verwaltete Azure SQL-Datenbank-Instanz
 
-1.   Wählen Sie im Azure-Portal im Navigationsbereich links **Alle Dienste** -> **SQL-Server** aus.
-
-2.   Wählen Sie die verwaltete Instanz aus, die mit Azure AD-Authentifizierung konfiguriert werden soll.
-
-3.   Klicken Sie auf dem Blatt im Abschnitt **Einstellungen** auf **Active Directory-Administrator**.
-
-4.   Wählen Sie in der Befehlsleiste **Administrator festlegen** aus.
-
-5.   Wählen Sie ein Azure AD-Benutzerkonto als Administrator des Servers aus, und klicken Sie dann auf **Auswählen**.
-
-6.   Wählen Sie in der Befehlsleiste **Speichern** aus.
+Führen Sie die unter [Bereitstellen eines Azure Active Directory-Administrators für Ihre verwaltete SQL-Datenbank-Instanz](https://docs.microsoft.com/azure/sql-database/sql-database-aad-authentication-configure#provision-an-azure-active-directory-administrator-for-your-managed-instance) beschriebenen Schritte aus.
 
 ### <a name="add-the-managed-identity-for-your-adf-as-a-user-in-azure-sql-database-managed-instance"></a>Hinzufügen der verwalteten Identität für Ihre ADF als Benutzer in der verwalteten Azure SQL-Datenbank-Instanz
 
@@ -164,7 +154,7 @@ Für den nächsten Schritt benötigen Sie [Microsoft SQL Server Management Stud
 
 1.  Starten Sie SSMS.
 
-2.  Stellen Sie eine Verbindung mit der verwalteten Instanz über Ihr SQL/Active Directory-Administratorkonto her.
+2.  Stellen Sie über ein SQL Server-Konto (ein **Sysadmin**-Konto) eine Verbindung mit Ihrer verwalteten Instanz her. Dabei handelt es sich um eine temporäre Einschränkung, die aufgehoben wird, sobald Azure AD-Serverprinzipale (Anmeldungen) für die verwaltete Azure SQL-Datenbank-Instanz allgemein verfügbar sind. Wenn Sie versuchen, die Anmeldung mit einem Azure AD-Administratorkonto zu erstellen, wird der folgende Fehler angezeigt: Meldung 15247, Ebene 16, Status 1, Zeile 1: Der Benutzer besitzt keine Berechtigung zum Ausführen dieser Aktion.
 
 3.  Erweitern Sie im **Objekt-Explorer** unter **Datenbanken** ->  den Ordner **Systemdatenbanken**.
 

@@ -16,12 +16,12 @@ ms.author: mimart
 ms.reviewer: japere
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c5eff7925599931104440213112ce288fd521b61
-ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
+ms.openlocfilehash: d15bb4a1cd19af70b29d1d74f43e137cf884c4db
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/04/2019
-ms.locfileid: "66473780"
+ms.lasthandoff: 06/17/2019
+ms.locfileid: "67164091"
 ---
 # <a name="enable-remote-access-to-sharepoint-with-azure-ad-application-proxy"></a>Aktivieren des Remotezugriffs auf SharePoint per Azure AD-Anwendungsproxy
 
@@ -129,7 +129,7 @@ Nachdem Sie KCD konfiguriert haben, können Sie nun den Azure AD-Anwendungsproxy
    1. Wählen Sie auf der Anwendungsseite im Portal **Einmaliges Anmelden** aus.
    2. Legen Sie den Modus für einmaliges Anmelden auf **Integrierte Windows-Authentifizierung** fest.
    3. Legen Sie „Interner Anwendungs-SPN“ auf den zuvor festgelegten Wert fest. In diesem Beispiel wäre das **HTTP/SharePoint**.
-   4. Wählen Sie im Feld „Delegierte Identität für Anmeldung“ den Eintrag **Name des lokalen SAM-Kontos** aus.
+   4. Wählen Sie im Feld „Delegierte Identität für Anmeldung“ die am besten geeignete Option für Ihre Active Directory-Gesamtstrukturkonfiguration aus. Wenn Sie beispielsweise in Ihrer Gesamtstruktur über eine einzelne AD-Domäne verfügen, wählen Sie **Name des lokalen SAM-Kontos** aus (wie unten dargestellt), aber wenn sich Ihre Benutzer nicht in derselben Domäne wie SharePoint und die Anwendungsproxy-Connectorserver befinden, dann wählen Sie  **Lokaler Benutzerprinzipalname** aus (nicht dargestellt).
 
    ![Konfigurieren der integrierten Windows-Authentifizierung für einmaliges Anmelden](./media/application-proxy-integrate-with-sharepoint-server/configure-iwa.png)
 

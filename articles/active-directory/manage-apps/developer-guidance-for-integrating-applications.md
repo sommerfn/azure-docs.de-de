@@ -13,12 +13,12 @@ ms.date: 10/30/2018
 ms.author: mimart
 ms.custom: seohack1
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fd51bfd377aed2a7edd8c64d2f3dc99c3388e45a
-ms.sourcegitcommit: be9fcaace62709cea55beb49a5bebf4f9701f7c6
+ms.openlocfilehash: ba54f8042c20a00f8d559ddce28e007a93afaace
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/17/2019
-ms.locfileid: "65824670"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67108284"
 ---
 # <a name="develop-line-of-business-apps-for-azure-active-directory"></a>Entwickeln von Branchen-Apps für Azure Active Directory
 Dieser Leitfaden bietet eine Übersicht über die Entwicklung von Branchenanwendungen (Line of Business, LoB) für Azure Active Directory (AD) und richtet sich primär an globale Administratoren von Active Directory/Office 365.

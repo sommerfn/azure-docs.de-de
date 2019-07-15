@@ -7,12 +7,12 @@ ms.reviewer: orspodek
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 06/03/2019
-ms.openlocfilehash: 7d9c21b46f760055846194f52f1594f25b1ee989
-ms.sourcegitcommit: 600d5b140dae979f029c43c033757652cddc2029
+ms.openlocfilehash: 5854a8974a4d2a9dbc1aa690dc2340fd806f4219
+ms.sourcegitcommit: ac1cfe497341429cf62eb934e87f3b5f3c79948e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/04/2019
-ms.locfileid: "66494744"
+ms.lasthandoff: 07/01/2019
+ms.locfileid: "67490130"
 ---
 # <a name="ingest-blobs-into-azure-data-explorer-by-subscribing-to-event-grid-notifications"></a>Erfassen von Blobs in Azure Data Explorer durch das Abonnieren von Event Grid-Benachrichtigungen
 
@@ -112,10 +112,10 @@ Stellen Sie nun über Azure Data Explorer eine Verbindung mit der Event Grid-Ins
      **Einstellung** | **Empfohlener Wert** | **Feldbeschreibung**
     |---|---|---|
     | Table | *TestTable* | Die Tabelle, die Sie unter **TestDatabase** erstellt haben. |
-    | Datenformat | *JSON* | Folgende Formate werden unterstützt: Avro, CSV, JSON, MULTILINE JSON, PSV, SOH, SCSV, TSV und TXT. |
+    | Datenformat | *JSON* | Folgende Formate werden unterstützt: Avro, CSV, JSON, MULTILINE JSON, PSV, SOH, SCSV, TSV und TXT. Unterstützte Komprimierungsoptionen: Zip und gzip |
     | Spaltenzuordnung | *TestMapping* | Die Zuordnung, die Sie in **TestDatabase** erstellt haben, um eingehende JSON-Daten den Spaltennamen und Datentypen von **TestTable** zuzuordnen.|
     | | |
-
+    
 ## <a name="generate-sample-data"></a>Generieren von Beispieldaten
 
 Nachdem nun eine Verbindung zwischen Azure Data Explorer und dem Speicherkonto besteht, können Sie Beispieldaten erstellen und in den Blobspeicher hochladen.

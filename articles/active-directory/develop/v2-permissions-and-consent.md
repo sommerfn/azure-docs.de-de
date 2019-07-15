@@ -18,12 +18,12 @@ ms.author: ryanwi
 ms.reviewer: hirsin, jesakowi, jmprieur
 ms.custom: fasttrack-edit
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 717607de6d9d193a7373637d0d0fcd879b54fed0
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 73b832002d1c15505e8ae845ac2585548c8e080f
+ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65544880"
+ms.lasthandoff: 07/01/2019
+ms.locfileid: "67482144"
 ---
 # <a name="permissions-and-consent-in-the-microsoft-identity-platform-endpoint"></a>Berechtigungen und Zustimmung im Microsoft Identity Platform-Endpunkt
 
@@ -89,7 +89,7 @@ Bei einer App-Anmeldung mit [OpenID Connect](active-directory-v2-protocols.md) m
 
 Der Bereich `email` kann zusammen mit dem Bereich `openid` und weiteren Bereichen verwendet werden. Er gibt der App Zugriff auf die primäre E-Mail-Adresse des Benutzers in Form des Anspruchs `email` . Der Anspruch `email` ist nur in einem Token enthalten, wenn dem Benutzerkonto eine E-Mail-Adresse zugewiesen ist (dies ist nicht immer der Fall). Bei Verwendung des Bereichs `email` sollte die Verarbeitung durch Ihre App auch dann möglich sein, wenn der Anspruch `email` nicht im Token vorhanden ist.
 
-### <a name="profile"></a>Profil
+### <a name="profile"></a>profile
 
 Der Bereich `profile` kann zusammen mit dem Bereich `openid` und weiteren Bereichen verwendet werden. Er ermöglicht der App Zugriff auf eine Vielzahl von Benutzerinformationen. Dazu gehören u.a. Vorname, Nachname, bevorzugter Benutzername und Objekt-ID des Benutzers. Eine vollständige Liste der verfügbaren Profilansprüche im Parameter „id_tokens“ für einen bestimmten Benutzer finden Sie in der [`id_tokens`-Referenz](id-tokens.md).
 
@@ -124,7 +124,7 @@ Nachdem der Benutzer seine Anmeldeinformationen eingegeben hat, überprüft der 
 > [!NOTE]
 > Zu diesem Zeitpunkt werden die Berechtigungen `offline_access` („Zugriff auf Daten erhalten, auf die Sie Zugriff gewährt haben“) und `user.read` („Anmelden und Ihr Profil lesen“) automatisch in die erste Einwilligung für eine Anwendung aufgenommen.  Diese Berechtigungen sind im Allgemeinen für die ordnungsgemäße Funktionalität der App erforderlich – `offline_access` gibt der App Zugriff auf Aktualisierungstoken, die für native und Web-Apps entscheidend sind, während `user.read` Zugriff auf den `sub`-Anspruch gewährt, sodass der Client oder die App den Benutzer im Laufe der Zeit korrekt identifizieren und auf rudimentäre Benutzerinformationen zugreifen kann.  
 
-![Zustimmung im Arbeitskonto](./media/v2-permissions-and-consent/work_account_consent.png)
+![Screenshot eines Beispiels für die Zustimmung im Arbeitskonto](./media/v2-permissions-and-consent/work_account_consent.png)
 
 Wenn der Benutzer die Berechtigungsanforderung genehmigt, wird die Einwilligung aufgezeichnet, und der Benutzer muss bei nachfolgenden Anmeldungen bei der Anwendung nicht erneut seine Einwilligung erteilen.
 

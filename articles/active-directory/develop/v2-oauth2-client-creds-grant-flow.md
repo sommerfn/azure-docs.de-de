@@ -18,12 +18,12 @@ ms.author: ryanwi
 ms.reviewer: hirsin
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 485f79f79c52067e89fa0a606e76a533c312fb84
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 85a32244a9aff9319343fd7d3961941973aa9d9a
+ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65545092"
+ms.lasthandoff: 07/01/2019
+ms.locfileid: "67482252"
 ---
 # <a name="microsoft-identity-platform-and-the-oauth-20-client-credentials-flow"></a>Microsoft Identity Platform und der Fluss von OAuth 2.0-Clientanmeldeinformationen
 
@@ -42,7 +42,7 @@ In der üblicheren *dreibeinigen OAuth-Autorisierung* wird einer Clientanwendung
 
 Der gesamte Clientanmeldeinformations-Flow ist im folgenden Diagramm dargestellt. Wir beschreiben die einzelnen Schritte weiter unten in diesem Artikel.
 
-![Clientanmeldeinformations-Flow](./media/v2-oauth2-client-creds-grant-flow/convergence-scenarios-client-creds.svg)
+![Diagramm des Clientanmeldeinformations-Flows](./media/v2-oauth2-client-creds-grant-flow/convergence-scenarios-client-creds.svg)
 
 ## <a name="get-direct-authorization"></a>Erhalten der direkten Autorisierung
 
@@ -92,7 +92,7 @@ Durch das Anmelden des Benutzers bei Ihrer App können Sie die Organisation iden
 Wenn Sie dazu bereit sind, vom Administrator der Organisation Berechtigungen anzufordern, können Sie den Benutzer zum *Endpunkt für die Administratorzustimmung* von Microsoft Identity Platform umleiten.
 
 > [!TIP]
-> Führen Sie diese Anforderung in Postman aus. (Verwenden Sie die ID Ihrer eigenen Anwendung, um optimale Ergebnisse zu erzielen – die Tutorialanwendung fordert keine nützlichen Berechtigungen an.) [![Ausführen in Postman](./media/v2-oauth2-auth-code-flow/runInPostman.png)](https://app.getpostman.com/run-collection/f77994d794bab767596d)
+> Führen Sie diese Anforderung in Postman aus. (Verwenden Sie die ID Ihrer eigenen Anwendung, um optimale Ergebnisse zu erzielen – die Tutorialanwendung fordert keine nützlichen Berechtigungen an.) [![Diese Anforderung in Postman ausführen](./media/v2-oauth2-auth-code-flow/runInPostman.png)](https://app.getpostman.com/run-collection/f77994d794bab767596d)
 
 ```
 // Line breaks are for legibility only.
@@ -154,7 +154,7 @@ Nachdem Sie eine erfolgreiche Antwort vom App-Bereitstellungsendpunkt erhalten h
 Sobald Sie die notwendige Autorisierung für Ihre Anwendung erhalten haben, können Sie mit dem Abrufen von Zugriffstoken für APIs fortfahren. Um ein Token über die Gewährung von Clientanmeldeinformationen zu erhalten, senden Sie eine POST-Anforderung an den `/token`-Microsoft Identity Platform-Endpunkt:
 
 > [!TIP]
-> Führen Sie diese Anforderung in Postman aus. (Verwenden Sie die ID Ihrer eigenen Anwendung, um optimale Ergebnisse zu erzielen – die Tutorialanwendung fordert keine nützlichen Berechtigungen an.) [![Ausführen in Postman](./media/v2-oauth2-auth-code-flow/runInPostman.png)](https://app.getpostman.com/run-collection/f77994d794bab767596d)
+> Führen Sie diese Anforderung in Postman aus. (Verwenden Sie die ID Ihrer eigenen Anwendung, um optimale Ergebnisse zu erzielen – die Tutorialanwendung fordert keine nützlichen Berechtigungen an.) [![Diese Anforderung in Postman ausführen](./media/v2-oauth2-auth-code-flow/runInPostman.png)](https://app.getpostman.com/run-collection/f77994d794bab767596d)
 
 ### <a name="first-case-access-token-request-with-a-shared-secret"></a>Erster Fall: Zugriffstokenanforderung mit einem gemeinsamen Geheimnis
 

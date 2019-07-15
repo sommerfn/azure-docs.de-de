@@ -14,16 +14,16 @@ ms.date: 03/18/2019
 ms.author: curtand
 ms.reviewer: sumitp
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2fc6e31afbb7ced4699afef38b67b637914198e4
-ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
+ms.openlocfilehash: f95c0596d7a2b55867cdb7ed9355006500e89242
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65192415"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67065494"
 ---
-# <a name="powershell-examples-for-group-based-licensing-in-azure-ad"></a>PowerShell-Beispiele für die gruppenbasierte Lizenzierung in Azure AD
+# <a name="powershell-and-graph-examples-for-group-based-licensing-in-azure-ad"></a>PowerShell- und Microsoft Graph-Beispiele für die gruppenbasierte Lizenzierung in Azure AD
 
-Die vollständige Funktionalität für die gruppenbasierte Lizenzierung steht über das [Azure-Portal](https://portal.azure.com) zur Verfügung. Die Unterstützung von PowerShell und Microsoft Graph ist zurzeit eingeschränkt. Es gibt jedoch einige nützliche Aufgaben, die mithilfe der vorhandenen [MSOnline-PowerShell-Cmdlets](https://docs.microsoft.com/powershell/msonline/v1/azureactivedirectory) und Microsoft Graph ausgeführt werden können. Dieses Dokument enthält Beispiele zu den verfügbaren Möglichkeiten.
+Die vollständige Funktionalität für die gruppenbasierte Lizenzierung steht über das [Azure-Portal](https://portal.azure.com) zur Verfügung. Die Unterstützung von PowerShell und Microsoft Graph ist zurzeit auf schreibgeschützte Vorgänge beschränkt. Es gibt jedoch einige nützliche Aufgaben, die mithilfe der vorhandenen [MSOnline-PowerShell-Cmdlets](https://docs.microsoft.com/powershell/msonline/v1/azureactivedirectory) und Microsoft Graph ausgeführt werden können. Dieses Dokument enthält Beispiele zu den verfügbaren Möglichkeiten.
 
 > [!NOTE]
 > Bevor Sie mit der Ausführung von Cmdlets beginnen, stellen Sie zunächst mithilfe des Cmdlets `Connect-MsolService` eine Verbindung mit Ihrer Organisation her.

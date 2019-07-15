@@ -16,12 +16,12 @@ ms.author: mimart
 ms.reviewer: arvinh
 ms.custom: aaddev;it-pro;seohack1
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a62f44783d63131812794a4b55f0e9f9f3b45f27
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 4a51401bcb8d282fef10b0b06e646b652bf5f8e8
+ms.sourcegitcommit: 6cb4dd784dd5a6c72edaff56cf6bcdcd8c579ee7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66742481"
+ms.lasthandoff: 07/02/2019
+ms.locfileid: "67513397"
 ---
 # <a name="using-system-for-cross-domain-identity-management-scim-to-automatically-provision-users-and-groups-from-azure-active-directory-to-applications"></a>Automatisches Bereitstellen von Benutzern und Gruppen aus Azure Active Directory für Anwendungen mit SCIM (System for Cross-domain Identity Management)
 
@@ -259,10 +259,10 @@ Dieser Abschnitt enthält vom Azure AD-SCIM-Client ausgegebene SCIM-Beispielanfo
 
 #### <a name="get-user"></a>Benutzer abrufen
 
-###### <a name="request"></a>Anforderung
+###### <a name="request-1"></a>Anforderung
 *GET /Users/5d48a0a8e9f04aa38008* 
 
-###### <a name="response"></a>response
+###### <a name="response-1"></a>Antwort
 *HTTP/1.1 200 OK*
 ```json
 {
@@ -290,10 +290,10 @@ Dieser Abschnitt enthält vom Azure AD-SCIM-Client ausgegebene SCIM-Beispielanfo
 ```
 #### <a name="get-user-by-query"></a>Benutzer nach Abfrage abrufen
 
-##### <a name="request"></a>Anforderung
+##### <a name="request-2"></a>Anforderung
 *GET /Users?filter=userName eq "Test_User_dfeef4c5-5681-4387-b016-bdf221e82081"*
 
-##### <a name="response"></a>response
+##### <a name="response-2"></a>Antwort
 *HTTP/1.1 200 OK*
 ```json
 {
@@ -329,10 +329,10 @@ Dieser Abschnitt enthält vom Azure AD-SCIM-Client ausgegebene SCIM-Beispielanfo
 
 #### <a name="get-user-by-query---zero-results"></a>Benutzer nach Abfrage abrufen – keine Ergebnisse
 
-##### <a name="request"></a>Anforderung
+##### <a name="request-3"></a>Anforderung
 *GET /Users?filter=userName eq "non-existent user"*
 
-##### <a name="response"></a>response
+##### <a name="response-3"></a>Antwort
 *HTTP/1.1 200 OK*
 ```json
 {
@@ -347,7 +347,7 @@ Dieser Abschnitt enthält vom Azure AD-SCIM-Client ausgegebene SCIM-Beispielanfo
 
 #### <a name="update-user-multi-valued-properties"></a>Benutzer aktualisieren [mehrwertige Eigenschaften]
 
-##### <a name="request"></a>Anforderung
+##### <a name="request-4"></a>Anforderung
 *PATCH /Users/6764549bef60420686bc HTTP/1.1*
 ```json
 {
@@ -367,7 +367,7 @@ Dieser Abschnitt enthält vom Azure AD-SCIM-Client ausgegebene SCIM-Beispielanfo
 }
 ```
 
-##### <a name="response"></a>response
+##### <a name="response-4"></a>Antwort
 *HTTP/1.1 200 OK*
 ```json
 {
@@ -396,7 +396,7 @@ Dieser Abschnitt enthält vom Azure AD-SCIM-Client ausgegebene SCIM-Beispielanfo
 
 #### <a name="update-user-single-valued-properties"></a>Benutzer aktualisieren [einwertige Eigenschaften]
 
-##### <a name="request"></a>Anforderung
+##### <a name="request-5"></a>Anforderung
 *PATCH /Users/5171a35d82074e068ce2 HTTP/1.1*
 ```json
 {
@@ -409,7 +409,7 @@ Dieser Abschnitt enthält vom Azure AD-SCIM-Client ausgegebene SCIM-Beispielanfo
 }
 ```
 
-##### <a name="response"></a>response
+##### <a name="response-5"></a>Antwort
 *HTTP/1.1 200 OK*
 ```json
 {
@@ -439,10 +439,10 @@ Dieser Abschnitt enthält vom Azure AD-SCIM-Client ausgegebene SCIM-Beispielanfo
 
 #### <a name="delete-user"></a>Benutzer löschen
 
-##### <a name="request"></a>Anforderung
+##### <a name="request-6"></a>Anforderung
 *DELETE /Users/5171a35d82074e068ce2 HTTP/1.1*
 
-##### <a name="response"></a>response
+##### <a name="response-6"></a>Antwort
 *HTTP/1.1 204 No Content*
 
 ### <a name="group-operations"></a>Vorgänge für Gruppen
@@ -454,7 +454,7 @@ Dieser Abschnitt enthält vom Azure AD-SCIM-Client ausgegebene SCIM-Beispielanfo
 
 #### <a name="create-group"></a>Erstellen einer Gruppe
 
-##### <a name="request"></a>Anforderung
+##### <a name="request-7"></a>Anforderung
 *POST /Groups HTTP/1.1*
 ```json
 {
@@ -468,7 +468,7 @@ Dieser Abschnitt enthält vom Azure AD-SCIM-Client ausgegebene SCIM-Beispielanfo
 }
 ```
 
-##### <a name="response"></a>response
+##### <a name="response-7"></a>Antwort
 *HTTP/1.1 201 Created*
 ```json
 {
@@ -488,10 +488,10 @@ Dieser Abschnitt enthält vom Azure AD-SCIM-Client ausgegebene SCIM-Beispielanfo
 
 #### <a name="get-group"></a>Gruppe abrufen
 
-##### <a name="request"></a>Anforderung
+##### <a name="request-8"></a>Anforderung
 *GET /Groups/40734ae655284ad3abcc?excludedAttributes=members HTTP/1.1*
 
-##### <a name="response"></a>response
+##### <a name="response-8"></a>Antwort
 *HTTP/1.1 200 OK*
 ```json
 {
@@ -509,10 +509,10 @@ Dieser Abschnitt enthält vom Azure AD-SCIM-Client ausgegebene SCIM-Beispielanfo
 
 #### <a name="get-group-by-displayname"></a>Gruppe nach „displayName“ abrufen
 
-##### <a name="request"></a>Anforderung
+##### <a name="request-9"></a>Anforderung
 *GET /Groups?excludedAttributes=members&filter=displayName eq "displayName" HTTP/1.1*
 
-##### <a name="response"></a>response
+##### <a name="response-9"></a>Antwort
 *HTTP/1.1 200 OK*
 ```json
 {
@@ -536,7 +536,7 @@ Dieser Abschnitt enthält vom Azure AD-SCIM-Client ausgegebene SCIM-Beispielanfo
 ```
 #### <a name="update-group-non-member-attributes"></a>Gruppe aktualisieren [Nichtmitglieder-Attribute]
 
-##### <a name="request"></a>Anforderung
+##### <a name="request-10"></a>Anforderung
 *PATCH /Groups/fa2ce26709934589afc5 HTTP/1.1*
 ```json
 {
@@ -549,12 +549,12 @@ Dieser Abschnitt enthält vom Azure AD-SCIM-Client ausgegebene SCIM-Beispielanfo
 }
 ```
 
-##### <a name="response"></a>response
+##### <a name="response-10"></a>Antwort
 *HTTP/1.1 204 No Content*
 
 ### <a name="update-group-add-members"></a>Gruppe aktualisieren [Mitglieder hinzufügen]
 
-##### <a name="request"></a>Anforderung
+##### <a name="request-11"></a>Anforderung
 *PATCH /Groups/a99962b9f99d4c4fac67 HTTP/1.1*
 ```json
 {
@@ -570,12 +570,12 @@ Dieser Abschnitt enthält vom Azure AD-SCIM-Client ausgegebene SCIM-Beispielanfo
 }
 ```
 
-##### <a name="response"></a>response
+##### <a name="response-11"></a>Antwort
 *HTTP/1.1 204 No Content*
 
 #### <a name="update-group-remove-members"></a>Gruppe aktualisieren [Mitglieder entfernen]
 
-##### <a name="request"></a>Anforderung
+##### <a name="request-12"></a>Anforderung
 *PATCH /Groups/a99962b9f99d4c4fac67 HTTP/1.1*
 ```json
 {
@@ -591,15 +591,15 @@ Dieser Abschnitt enthält vom Azure AD-SCIM-Client ausgegebene SCIM-Beispielanfo
 }
 ```
 
-##### <a name="response"></a>response
+##### <a name="response-12"></a>Antwort
 *HTTP/1.1 204 No Content*
 
 #### <a name="delete-group"></a>Gruppe löschen
 
-##### <a name="request"></a>Anforderung
+##### <a name="request-13"></a>Anforderung
 *DELETE /Groups/cdb1ce18f65944079d37 HTTP/1.1*
 
-##### <a name="response"></a>response
+##### <a name="response-13"></a>Antwort
 *HTTP/1.1 204 No Content*
 
 
@@ -1331,7 +1331,7 @@ Gruppenressourcen werden durch die Schema-ID, `urn:ietf:params:scim:schemas:core
 | mailNickname |externalId |
 | manager |manager |
 | mobile |phoneNumbers[type eq "mobile"].value |
-| objectId |ID |
+| objectId |id |
 | postalCode |addresses[type eq "work"].postalCode |
 | proxy-Addresses |emails[type eq "other"].Value |
 | physical-Delivery-OfficeName |addresses[type eq "other"].Formatted |
@@ -1348,7 +1348,7 @@ Gruppenressourcen werden durch die Schema-ID, `urn:ietf:params:scim:schemas:core
 | mail |emails[type eq "work"].value |
 | mailNickname |displayName |
 | members |members |
-| objectId |ID |
+| objectId |id |
 | proxyAddresses |emails[type eq "other"].Value |
 
 ## <a name="allow-ip-addresses-used-by-the-azure-ad-provisioning-service-to-make-scim-requests"></a>Zulassen, dass vom Azure AD-Bereitstellungsdienst verwendete IP-Adressen SCIM-Anforderungen senden
