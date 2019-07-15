@@ -56,6 +56,8 @@
           href: best-practices-distributive-collaborative-development-environment.md
         - name: Integration mit Azure DevOps
           href: devtest-lab-dev-ops.md
+        - name: Verwenden von Anspruchsfunktionen
+          href: devtest-lab-use-claim-capabilities.md
         - name: Szenarien
           items:
             - name: Gängige Szenarien für die Verwendung von DevTest Labs

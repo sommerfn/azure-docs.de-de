@@ -443,6 +443,13 @@
           href: ./partner-center-portal/offer-creation-checklist.md
         - name: Erstellen eines SaaS-Angebots
           href: ./partner-center-portal/create-new-saas-offer.md
+        - name: Getaktete SaaS-Abrechnung
+          href: ./partner-center-portal/saas-metered-billing.md
+          items:
+            - name: Marketplace-Messungsdienst-APIs – Häufig gestellte Fragen
+              href: ./partner-center-portal/marketplace-metering-service-apis-faq.md
+            - name: Marketplace-Messungsdienst-APIs
+              href: ./partner-center-portal/marketplace-metering-service-apis.md
         - name: SaaS-Fulfillment-APIs
           href: ./partner-center-portal/pc-saas-fulfillment-apis.md
           items:
@@ -452,6 +459,8 @@
               href: ./partner-center-portal/pc-saas-fulfillment-api-v2.md
             - name: SaaS-Fulfillment-APIs v1 (veraltet)
               href: ./partner-center-portal/pc-saas-fulfillment-api-v1.md
+            - name: SaaS-Fulfillment-APIs – Häufig gestellte Fragen
+              href: ./partner-center-portal/saas-fulfillment-apis-faq.md
     - name: Veröffentlichungsstatus
       href: ./partner-center-portal/publishing-status.md
     - name: Aktualisieren vorhandener Angebote

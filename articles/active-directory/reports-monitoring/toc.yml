@@ -58,7 +58,7 @@
           href: howto-power-bi-content-pack.md
         - name: Konfigurieren der Voraussetzungen für die Berichterstellungs-API
           href: howto-configure-prerequisites-for-reporting-api.md
-        - name: Verwenden von Azure Monitor-Arbeitsmappen
+        - name: Verwenden von Azure AD-Arbeitsmappen
           href: howto-use-azure-monitor-workbooks.md
     - name: Überwachung
       items:
@@ -87,6 +87,8 @@
 - name: Verweis
   expanded: true
   items:
+    - name: Azure AD PowerShell-Cmdlets für die Berichterstellung
+      href: reference-powershell-reporting.md
     - name: API-Referenz zu Überwachungsprotokollen
       href: 'https://developer.microsoft.com/graph/docs/api-reference/beta/resources/directoryaudit'
     - name: API-Referenz zu Anmeldeprotokollen

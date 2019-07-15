@@ -103,7 +103,7 @@
               href: ../common/storage-security-guide.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
             - name: Speicherdienstverschlüsselung
               href: ../common/storage-service-encryption.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-            - name: Autorisierung
+            - name: Authorization
               href: ../common/storage-auth.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
               items:
                 - name: Authentifizierung über Azure AD
@@ -352,8 +352,12 @@
               href: ../common/storage-initiate-account-failover.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
             - name: Wiederherstellen von gelöschten Blobs
               href: storage-blob-soft-delete.md
-        - name: Verwenden des Speicheremulators
-          href: ../common/storage-use-emulator.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+        - name: Verwenden eines Speicheremulators
+          items:
+            - name: Verwenden des Azurite-Open-Source-Emulators
+              href: ../common/storage-use-azurite.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+            - name: Verwenden des Azure Storage-Emulators
+              href: ../common/storage-use-emulator.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
         - name: Festlegen und Abrufen von Eigenschaften und Metadaten
           href: storage-properties-metadata.md
         - name: Hosten einer statischen Website

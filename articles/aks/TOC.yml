@@ -126,6 +126,8 @@
           href: virtual-kubelet.md
         - name: Verwenden der automatischen Skalierungsfunktion für Cluster (Vorschauversion)
           href: cluster-autoscaler.md
+        - name: Verwenden von Verfügbarkeitszonen (Vorschauversion)
+          href: availability-zones.md
         - name: Verwenden mehrerer Knotenpools (Vorschauversion)
           href: use-multiple-node-pools.md
         - name: Bereitstellen von AKS mit Terraform
@@ -315,6 +317,8 @@
         - name: Azure DevOps-Projekt
           href: ../devops-project/azure-devops-project-aks.md
           maintainContext: true
+        - name: Startprogramm für Bereitstellungscenter
+          href: deployment-center-launcher.md
     - name: Problembehandlung
       items:
         - name: Häufige Probleme

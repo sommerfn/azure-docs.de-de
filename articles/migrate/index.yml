@@ -14,13 +14,30 @@ metadata:
   ms.date: 11/22/2017
   ms.author: raynew
 abstract:
-  description: Mit Azure Migrate können Sie die Eignung lokaler Computer für die Migration zu Azure ermitteln und bewerten. Darüber hinaus werden mit diesem Dienst Größen und Kosten für die Ausführung virtueller Azure-Computer geschätzt.
+  description: 'Azure Migrate hilft Ihnen bei der Migration in die Azure-Cloud. Azure Migrate bietet einen zentralen Hub zum Nachverfolgen der Ermittlung, Bewertung und Migration von lokalen Workloads und virtuellen Cloud-Computern. Der Hub stellt Azure Migrate-Tools für die Bewertung und Migration sowie integrierte Tools von unabhängigen Softwareanbietern (ISVs) bereit.'
 sections:
   - title: Schritt-für-Schritt-Tutorials
     items:
       - type: paragraph
-        text: 'Erfahren Sie, wie Sie virtuelle VMware-Computer für die Migration zu Azure bewerten.'
+        text: 'Ermitteln, Bewerten und Migrieren von virtuellen VMware-Computern zu Azure'
+      - type: list
+        style: ordered
+        items:
+          - html: <a href="tutorial-prepare-vmware">Vorbereiten von virtuellen VMware-Computern auf die Bewertung und Migration zu Azure</a>
+          - html: <a href="tutorial-assess-vmware">Bewerten von virtuellen VMware-Computern für die Migration zu Azure</a>
+          - html: <a href="tutorial-migrate-vmware">Migrieren von virtuellen VMware-Computern zu Azure ohne Agents</a>
+          - html: <a href="tutorial-migrate-vmware-agent">Migrieren von virtuellen VMware-Computern zu Azure mit Agent-basierter Migration</a>
+      - type: paragraph
+        text: 'Ermitteln, Bewerten und Migrieren von virtuellen Hyper-V-Computern zu Azure'
+      - type: list
+        style: ordered
+        items:
+          - html: <a href="tutorial-prepare-hyper-v">Vorbereiten von virtuellen Hyper-V-Computern auf die Bewertung und Migration zu Azure</a>
+          - html: <a href="tutorial-assess-hyper-v">Bewerten von virtuellen Hyper-V-Computern für die Migration zu Azure</a>
+          - html: <a href="tutorial-migrate-hyper-v">Migrieren von virtuellen Hyper-V-Computern zu Azure</a>
+      - type: paragraph
+        text: 'Erfahren Sie, wie physische Server, virtualisierte Computer und virtuelle Cloud-Computer zu Azure migriert werden.'
       - type: list
         style: unordered
         items:
-          - html: <a href="tutorial-assessment-vmware">Erkunden und Bewerten von lokalen virtuellen VMware-Computern</a>
+          - html: <a href="tutorial-migrate-physical-virtual-machines">Migrieren von physischen oder virtuellen Servern zu Azure</a>

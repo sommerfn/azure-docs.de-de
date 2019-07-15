@@ -22,6 +22,8 @@
       href: apache-spark-load-data-run-query.md
     - name: Ausführen von Apache Spark-Abfragen mithilfe von IntelliJ
       href: apache-spark-intellij-tool-plugin.md
+    - name: Fehler beim Debuggen eines Spark-Auftrags in IntelliJ (Vorschauversion)
+      href: apache-spark-intellij-tool-failure-debug.md
     - name: Analysieren von Daten mithilfe von BI-Tools
       href: apache-spark-use-bi-tools.md
     - name: Ausführen eines Streamingauftrags

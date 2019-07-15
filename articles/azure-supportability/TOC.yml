@@ -6,16 +6,18 @@
   href: create-manage-support-requests-using-access-control.md
 - name: Anfordern einer Kontingenterhöhung
   items:
-    - name: Anforderungen zur Kontingenterhöhung für Resource Manager-Bereitstellungsmodelle
+    - name: Erhöhung des vCPU-Grenzwerts für Compute
       items:
-        - name: Erhöhung des vCPU-Grenzwerts für die VM-Serie
-          href: per-vm-quota-requests.md
-        - name: Erhöhung des Grenzwerts der gesamten regionalen vCPUs
-          href: regional-quota-requests.md
-        - name: Erhöhung des Grenzwerts für Netzwerke
-          href: networking-quota-requests.md
-    - name: Anforderungen zur Kontingenterhöhung für klassische Bereitstellungsmodelle
-      href: classic-deployment-model-quota-increase-requests.md
+        - name: Resource Manager-Bereitstellungsmodell
+          items:
+            - name: Erhöhung des vCPU-Grenzwerts für die VM-Serie
+              href: per-vm-quota-requests.md
+            - name: Erhöhung des Grenzwerts der gesamten regionalen vCPUs
+              href: regional-quota-requests.md
+        - name: Klassisches Bereitstellungsmodell
+          href: classic-deployment-model-quota-increase-requests.md
+    - name: Erhöhung des Grenzwerts für Netzwerke
+      href: networking-quota-requests.md
 - name: Beheben von Abonnementproblemen im Zusammenhang mit Region oder SKU
   href: sku-series-unavailable.md
 - name: Verweis
