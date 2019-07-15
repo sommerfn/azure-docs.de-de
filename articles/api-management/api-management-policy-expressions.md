@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/22/2019
 ms.author: apimpm
-ms.openlocfilehash: 9a19165f9ac15f7a40aea0501f960b06efbd63a3
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 22be5509a93d0713b8113ba17debfda3cf576006
+ms.sourcegitcommit: 79496a96e8bd064e951004d474f05e26bada6fa0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66304360"
+ms.lasthandoff: 07/02/2019
+ms.locfileid: "67508959"
 ---
 # <a name="api-management-policy-expressions"></a>Richtlinienausdrücke in API Management
 Die in diesem Artikel erörterte Syntax für Richtlinienausdrücke entspricht C# 7. Jeder Ausdruck besitzt Zugriff auf die implizit bereitgestellte [Kontextvariable](api-management-policy-expressions.md#ContextVariables) und eine zulässige [Teilmenge](api-management-policy-expressions.md#CLRTypes) von .NET Framework-Typen.
@@ -74,7 +74,7 @@ Ausdrücke können als Attributwerte oder Textwerte in beliebigen API Management
 ## <a name="CLRTypes"></a> In Richtlinienausdrücken zulässige .NET Framework-Typen
 Die folgende Tabelle enthält die .NET Framework-Typen und die zugehörigen Mitglieder, die in Richtlinienausdrücken zulässig sind.
 
-|Type|Unterstützte Member|
+|type|Unterstützte Member|
 |--------------|-----------------------|
 |Newtonsoft.Json.Formatting|Alle|
 |Newtonsoft.Json.JsonConvert|SerializeObject, DeserializeObject|
@@ -94,19 +94,19 @@ Die folgende Tabelle enthält die .NET Framework-Typen und die zugehörigen Mitg
 |System.Byte|Alle|
 |System.Char|Alle|
 |System.Collections.Generic.Dictionary<TKey, TValue>|Alle|
-|System.Collections.Generic.HashSet<T>|Alle|
-|System.Collections.Generic.ICollection<T>|Alle|
+|System.Collections.Generic.HashSet\<T>|Alle|
+|System.Collections.Generic.ICollection\<T>|Alle|
 |System.Collections.Generic.IDictionary<TKey, TValue>|Alle|
-|System.Collections.Generic.IEnumerable<T>|Alle|
-|System.Collections.Generic.IEnumerator<T>|Alle|
-|System.Collections.Generic.IList<T>|Alle|
-|System.Collections.Generic.IReadOnlyCollection<T>|Alle|
+|System.Collections.Generic.IEnumerable\<T>|Alle|
+|System.Collections.Generic.IEnumerator\<T>|Alle|
+|System.Collections.Generic.IList\<T>|Alle|
+|System.Collections.Generic.IReadOnlyCollection\<T>|Alle|
 |System.Collections.Generic.IReadOnlyDictionary<TKey, TValue>|Alle|
-|System.Collections.Generic.ISet<T>|Alle|
+|System.Collections.Generic.ISet\<T>|Alle|
 |System.Collections.Generic.KeyValuePair<TKey, TValue>|Alle|
-|System.Collections.Generic.List<T>|Alle|
-|System.Collections.Generic.Queue<T>|Alle|
-|System.Collections.Generic.Stack<T>|Alle|
+|System.Collections.Generic.List\<T>|Alle|
+|System.Collections.Generic.Queue\<T>|Alle|
+|System.Collections.Generic.Stack\<T>|Alle|
 |System.Convert|Alle|
 |System.DateTime|(Konstruktor), Add, AddDays, AddHours, AddMilliseconds, AddMinutes, AddMonths, AddSeconds, AddTicks, AddYears, Date, Day, DayOfWeek, DayOfYear, DaysInMonth, Hour, IsDaylightSavingTime, IsLeapYear, MaxValue, Millisecond, Minute, MinValue, Month, Now, Parse, Second, Subtract, Ticks, TimeOfDay, Today, ToString, UtcNow, Year|
 |System.DateTimeKind|UTC|
@@ -216,7 +216,7 @@ Eine Variable namens `context` steht implizit in jedem [Richtlinienausdruck](api
 |<a id="ref-context-lasterror"></a>context.LastError|Source: string<br /><br /> Reason: string<br /><br /> Message: string<br /><br /> Scope: string<br /><br /> Section: string<br /><br /> Path: string<br /><br /> PolicyId: string<br /><br /> Weitere Informationen zu context.LastError finden Sie unter [Fehlerbehandlung](api-management-error-handling-policies.md).|
 |<a id="ref-context-operation"></a>context.Operation|Id: string<br /><br /> Method: string<br /><br /> Name: string<br /><br /> UrlTemplate: string|
 |<a id="ref-context-product"></a>context.Product|Apis: IEnumerable<[IApi](#ref-iapi)\><br /><br /> ApprovalRequired: bool<br /><br /> Groups: IEnumerable<[IGroup](#ref-igroup)\><br /><br /> Id: string<br /><br /> Name: string<br /><br /> State: enum ProductState {NotPublished, Published}<br /><br /> SubscriptionLimit: int?<br /><br /> SubscriptionRequired: bool|
-|<a id="ref-context-request"></a>context.Request|Hauptteil: [IMessageBody](#ref-imessagebody)<br /><br /> Certificate: System.Security.Cryptography.X509Certificates.X509Certificate2<br /><br /> [Headers](#ref-context-request-headers): IReadOnlyDictionary<string, string[]><br /><br /> IpAddress: string<br /><br /> MatchedParameters: IReadOnlyDictionary<string, string><br /><br /> Method: string<br /><br /> OriginalUrl: [IUrl](#ref-iurl)<br /><br /> Url: [IUrl](#ref-iurl)|
+|<a id="ref-context-request"></a>context.Request|Hauptteil: [IMessageBody](#ref-imessagebody) oder `null`, wenn die Anforderung keinen Text hat.<br /><br /> Certificate: System.Security.Cryptography.X509Certificates.X509Certificate2<br /><br /> [Headers](#ref-context-request-headers): IReadOnlyDictionary<string, string[]><br /><br /> IpAddress: string<br /><br /> MatchedParameters: IReadOnlyDictionary<string, string><br /><br /> Method: string<br /><br /> OriginalUrl: [IUrl](#ref-iurl)<br /><br /> Url: [IUrl](#ref-iurl)|
 |<a id="ref-context-request-headers"></a>string context.Request.Headers.GetValueOrDefault(headerName: string, defaultValue: string)|headerName: string<br /><br /> defaultValue: string<br /><br /> Gibt durch Trennzeichen getrennte Anforderungsheaderwerte oder `defaultValue` zurück, wenn der Header nicht gefunden wurde.|
 |<a id="ref-context-response"></a>context.Response|Hauptteil: [IMessageBody](#ref-imessagebody)<br /><br /> [Headers](#ref-context-response-headers): IReadOnlyDictionary<string, string[]><br /><br /> StatusCode: int<br /><br /> StatusReason: string|
 |<a id="ref-context-response-headers"></a>string context.Response.Headers.GetValueOrDefault(headerName: string, defaultValue: string)|headerName: string<br /><br /> defaultValue: string<br /><br /> Gibt durch Trennzeichen getrennte Antwortheaderwerte oder `defaultValue` zurück, wenn der Header nicht gefunden wurde.|

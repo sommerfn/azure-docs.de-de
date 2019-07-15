@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 080a37a88e46117a9963f07c14d64f00c6bae6d5
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 4dbe3039845b1c9160e4f4fa3007cad1f588f71e
+ms.sourcegitcommit: d3b1f89edceb9bff1870f562bc2c2fd52636fc21
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64570477"
+ms.lasthandoff: 07/04/2019
+ms.locfileid: "67560756"
 ---
 # <a name="integrate-your-existing-nps-infrastructure-with-azure-multi-factor-authentication"></a>Integrieren Ihrer vorhandenen NPS-Infrastruktur in Azure Multi-Factor Authentication
 
@@ -76,14 +76,14 @@ Wenn Sie die Erweiterung installieren, benötigen Sie die Verzeichnis-ID und die
 
 Der NPS-Server muss über die Ports 80 und 443 mit den folgenden URLs kommunizieren können.
 
-* https:\//adnotifications.windowsazure.com  
-* https:\//login.microsoftonline.com
+- [https://adnotifications.windowsazure.com](https://adnotifications.windowsazure.com)
+- [https://login.microsoftonline.com](https://login.microsoftonline.com)
 
 Darüber hinaus ist eine Verbindung zu den folgenden URLs erforderlich, um die [Einrichtung des Adapters mit dem bereitgestellten PowerShell-Skript](#run-the-powershell-script) abzuschließen.
 
-- https:\//login.microsoftonline.com
-- https:\//provisioningapi.microsoftonline.com
-- https:\//aadcdn.msauth.net
+- [https://login.microsoftonline.com](https://login.microsoftonline.com)
+- [https://provisioningapi.microsoftonline.com](https://provisioningapi.microsoftonline.com)
+- [https://aadcdn.msauth.net](https://aadcdn.msauth.net)
 
 ## <a name="prepare-your-environment"></a>Vorbereiten der Umgebung
 
@@ -121,9 +121,14 @@ Zwei Faktoren haben Einfluss darauf, welche Authentifizierungsmethoden mit der B
 1. Der Kennwortverschlüsselungsalgorithmus wird zwischen dem RADIUS-Client (VPN, NetScaler-Server oder andere) und den NPS-Servern verwendet.
    - **PAP** unterstützt alle Authentifizierungsmethoden von Azure MFA in der Cloud: Telefonanruf, unidirektionale Textnachricht, Benachrichtigung über eine mobile App und Überprüfungscode in der mobilen App.
    - **CHAPV2** und **EAP** unterstützt Telefonanruf und Benachrichtigung über eine mobile App.
-2. Die Eingabemethoden, die von der Clientanwendung (VPN, NetScaler-Server oder andere) verarbeitet werden kann. Beispiel: Verfügt der VPN-Client über Mittel, die es dem Benutzer erlauben, einen Überprüfungscode aus einem Text oder einer mobilen App einzugeben?
 
-Verwenden Sie bei der Bereitstellung der NPS-Erweiterung diese Faktoren, um auszuwerten, welche Methoden für Benutzer verfügbar sind. Wenn Ihr RADIUS-Client PAP unterstützt, der Client UX jedoch über kein Eingabefeld für einen Überprüfungscode verfügt, sind der Telefonanruf und die Benachrichtigung über eine mobile App die zwei unterstützten Optionen.
+      > [!NOTE]
+      > Verwenden Sie bei der Bereitstellung der NPS-Erweiterung diese Faktoren, um auszuwerten, welche Methoden für Benutzer verfügbar sind. Wenn Ihr RADIUS-Client PAP unterstützt, der Client UX jedoch über kein Eingabefeld für einen Überprüfungscode verfügt, sind der Telefonanruf und die Benachrichtigung über eine mobile App die zwei unterstützten Optionen.
+      >
+      > Wenn Ihre VPN-Client UX kein Eingabefeld unterstützt und Sie die Netzwerkzugriffsrichtlinie konfiguriert haben, dann kann zwar die Authentifizierung erfolgreich sein, aber keines der RADIUS-Attribute, die in der Netzwerkrichtlinie konfiguriert werden, werden auf das Netzwerkzugriffsgerät, wie den RRAS-Server, oder den VPN-Client angewendet. Daraus resultiert, dass der VPN-Client mehr, weniger oder fast keinen Zugriff haben kann, als gewünscht.
+      >
+
+2. Die Eingabemethoden, die von der Clientanwendung (VPN, NetScaler-Server oder andere) verarbeitet werden kann. Beispiel: Verfügt der VPN-Client über Mittel, die es dem Benutzer erlauben, einen Überprüfungscode aus einem Text oder einer mobilen App einzugeben?
 
 Sie können [nicht unterstützte Authentifizierungsmethoden](howto-mfa-mfasettings.md#verification-methods) in Azure deaktivieren.
 
@@ -132,11 +137,10 @@ Sie können [nicht unterstützte Authentifizierungsmethoden](howto-mfa-mfasettin
 Bevor Sie die NPS-Erweiterung bereitstellen und verwenden, müssen Benutzer, die die zweistufige Überprüfung durchführen müssen, für MFA registriert werden. Vorher benötigen Sie zum Testen der Erweiterung bei der Bereitstellung zumindest ein Testkonto, das vollständig für Multi-Factor Authentication registriert ist.
 
 Führen Sie die folgende Schritte aus, um ein Testkonto einzurichten:
-1. Melden Sie sich bei [https://aka.ms/mfasetup](https://aka.ms/mfasetup) mit einem Testkonto an. 
-2. Befolgen Sie die Anweisungen zum Einrichten einer Überprüfungsmethode.
-3. Erstellen Sie eine Richtlinie für den bedingten Zugriff, oder [ändern Sie den Benutzerstatus](howto-mfa-userstates.md), sodass eine zweistufige Überprüfung für das Testkonto erforderlich ist. 
 
-Ihre Benutzer müssen auch diese Schritte zum Registrieren befolgen, bevor sie sich mit der NPS-Erweiterung authentifizieren können.
+1. Melden Sie sich bei [https://aka.ms/mfasetup](https://aka.ms/mfasetup) mit einem Testkonto an.
+2. Befolgen Sie die Anweisungen zum Einrichten einer Überprüfungsmethode.
+3. [Erstellen Sie eine bedingte Zugriffsrichtline](howto-mfa-getstarted.md#create-conditional-access-policy) für eine mehrstufige Authentifizierung beim Testkonto.
 
 ## <a name="install-the-nps-extension"></a>Installieren der NPS-Erweiterung
 
@@ -189,6 +193,14 @@ Wenn das vorherige Computerzertifikat abgelaufen ist und ein neues Zertifikat ge
 > [!NOTE]
 > Wenn Sie Ihre eigenen Zertifikate verwenden, statt diese mit dem PowerShell-Skript zu generieren, stellen Sie sicher, dass sie den NPS-Namenskonventionen entsprechen. Der Antragstellernamen muss **CN=\<Mandanten-ID\>,OU=Microsoft NPS Extension** sein. 
 
+### <a name="certificate-rollover"></a>Zertifikatrollover
+
+Mit der Veröffentlichung von Version 1.0.1.32 der NPS-Erweiterung wird jetzt das Lesen von mehreren Zertifikaten unterstützt. Diese Funktion hilft Ihnen dabei, Zertifikatupdates vor ihrem Ablauf einzuführen. Wenn Ihre Organisation eine ältere Version der NPS-Erweiterung verwendet, dann sollten Sie sie auf 1.0.1.32 oder neuer aktualisieren.
+
+Zertifikat, die vom `AzureMfaNpsExtnConfigSetup.ps1`-Skript erstellt werden, sind 2 Jahre gültig. IT-Organisationen sollten ein Auge auf das Ablaufdatum von Zertifikaten haben. Zertifikate für die NPS-Erweiter werden im Zertifikatspeicher des lokalen Computers unter „persönlich“ gespeichert und der Mandanten-ID zugeteilt, die zum Skript gehört.
+
+Wenn ein Zertifikat sich seinem Ablaufdatum nähert, dann sollten Sie ein neues Zertifikat erstellen, das es ersetzt.  Dies können Sie durch erneutes Ausführen von `AzureMfaNpsExtnConfigSetup.ps1` erreichen. Behalten Sie dazu die Mandanten-ID bei, wenn Sie dazu aufgefordert werden. Wiederholen Sie diesen Vorgang auf jedem NPS-Server in Ihrer Umgebung.
+
 ## <a name="configure-your-nps-extension"></a>Konfigurieren der NPS-Erweiterung
 
 Dieser Abschnitt enthält Überlegungen zum Entwurf und Vorschläge für erfolgreiche Bereitstellungen der NPS-Erweiterung.
@@ -225,7 +237,7 @@ Suchen Sie das vom Installationsprogramm erstellte selbstsignierte Zertifikat im
 
 Selbstsignierte Zertifikate, die mit dem Skript *AzureMfaNpsExtnConfigSetup.ps1* generiert werden, haben eine Gültigkeitsdauer von zwei Jahren. Wenn Sie überprüfen, ob das Zertifikat installiert ist, sollten Sie auch überprüfen, ob das Zertifikat nicht abgelaufen ist.
 
--------------------------------------------------------------
+---
 
 ### <a name="how-can-i-verify-that-my-client-cert-is-associated-to-my-tenant-in-azure-active-directory"></a>Wie kann ich überprüfen, ob mein Clientzertifikat meinem Mandanten in Azure Active Directory zugeordnet ist?
 
@@ -251,13 +263,13 @@ Wenn Sie diesen Befehl ausgeführt haben, rufen Sie Laufwerk „C:“ auf, suche
 
 Die Zeitstempel „Valid-From“ und „Valid-Until“ in einem vom Menschen lesbaren Format dienen zum Herausfiltern offensichtlicher Fehler, wenn der Befehl mehrere Zertifikate zurückgibt.
 
--------------------------------------------------------------
+---
 
 ### <a name="why-cant-i-sign-in"></a>Warum kann ich mich nicht anmelden?
 
 Überprüfen Sie, ob Ihr Kennwort nicht abgelaufen ist. Die NPS-Erweiterung unterstützt nicht das Ändern von Kennwörtern im Rahmen des Anmeldeworkflows. Wenden Sie sich an das IT-Team Ihrer Organisation, um weitere Unterstützung zu erhalten.
 
--------------------------------------------------------------
+---
 
 ### <a name="why-are-my-requests-failing-with-adal-token-error"></a>Warum misslingen meine Anforderungen mit ADAL-Tokenfehler?
 
@@ -268,19 +280,19 @@ Dieser Fehler kann verschiedene Gründe haben. Gehen Sie zur Problembehandlung f
 3. Überprüfen Sie, ob das Zertifikat Ihrem Mandanten in Azure AD zugeordnet ist.
 4. Überprüfen Sie auf dem Server, auf dem die Erweiterung ausgeführt wird, ob auf https://login.microsoftonline.com/ zugegriffen werden kann.
 
--------------------------------------------------------------
+---
 
 ### <a name="why-does-authentication-fail-with-an-error-in-http-logs-stating-that-the-user-is-not-found"></a>Warum misslingt die Authentifizierung mit einem Fehler in den HTTP-Protokollen, der besagt, dass der Benutzer nicht gefunden wurde?
 
 Überprüfen Sie, ob AD Connect ausgeführt wird und der Benutzer in Windows Active Directory und Azure Active Directory vorhanden ist.
 
--------------------------------------------------------------
+---
 
 ### <a name="why-do-i-see-http-connect-errors-in-logs-with-all-my-authentications-failing"></a>Warum enthalten meine Protokolle HTTP-Verbindungs- und Authentifizierungsfehler?
 
 Überprüfen Sie auf dem Server, auf dem die NPS-Erweiterung ausgeführt wird, ob auf https://adnotifications.windowsazure.com zugegriffen werden kann.
 
--------------------------------------------------------------
+---
 
 ### <a name="why-is-authentication-not-working-despite-a-valid-certificate-being-present"></a>Warum funktioniert die Authentifizierung trotz eines gültigen Zertifikats nicht?
 
@@ -291,6 +303,10 @@ Um festzustellen, ob ein gültiges Zertifikat vorhanden ist, überprüfen Sie ü
 ## <a name="managing-the-tlsssl-protocols-and-cipher-suites"></a>Verwalten von TLS/SSL-Protokollen und Verschlüsselungssammlungen
 
 Es empfiehlt sich, ältere und weniger leistungsstarke Verschlüsselungssammlungen zu deaktivieren oder zu entfernen, sofern diese nicht von Ihrer Organisation benötigt werden. Informationen zur Durchführung dieser Aufgabe finden Sie im Artikel [Verwalten von SSL/TLS-Protokollen und Verschlüsselungssammlungen für AD FS](https://docs.microsoft.com/windows-server/identity/ad-fs/operations/manage-ssl-protocols-in-ad-fs).
+
+### <a name="additional-troubleshooting"></a>Weitere Informationen zur Problembehandlung
+
+Zusätzliche Anleitungen zur Problembehandlung und mögliche Lösungen finden Sie im Artikel [„Auflösen von Fehlermeldungen in der NPS-Erweiterung für Azure Multi-Factor Authentication“](howto-mfa-nps-extension-errors.md).
 
 ## <a name="next-steps"></a>Nächste Schritte
 

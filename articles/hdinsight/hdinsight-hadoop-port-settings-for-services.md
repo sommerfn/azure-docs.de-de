@@ -8,12 +8,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/27/2019
 ms.author: hrasheed
-ms.openlocfilehash: 16041d2b7a971c9ba479c133261930b38d130792
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 77e7aec1797a4b33068430371ba0969d1737746e
+ms.sourcegitcommit: 79496a96e8bd064e951004d474f05e26bada6fa0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66252776"
+ms.lasthandoff: 07/02/2019
+ms.locfileid: "67508794"
 ---
 # <a name="ports-used-by-apache-hadoop-services-on-hdinsight"></a>Ports für Apache Hadoop-Dienste in HDInsight
 
@@ -41,7 +41,7 @@ Alle Knoten eines HDInsight-Clusters befinden sich in einem Azure Virtual Networ
 | sshd |23 |SSH |Stellt eine Verbindung zwischen Clients und SSHD auf dem sekundären Hauptknoten her. Weitere Informationen finden Sie unter [Verwenden von SSH mit Linux-basiertem Hadoop in HDInsight unter Linux, Unix oder OS X](hdinsight-hadoop-linux-use-ssh-unix.md). |
 | Ambari |443 |HTTPS |Ambari-Webbenutzeroberfläche. Siehe [Verwalten von HDInsight mithilfe der Apache Ambari-Webbenutzeroberfläche](hdinsight-hadoop-manage-ambari.md) |
 | Ambari |443 |HTTPS |Ambari-REST-API. Siehe [Verwalten von HDInsight mithilfe der Apache Ambari-REST-API](hdinsight-hadoop-manage-ambari-rest-api.md) |
-| WebHCat |443 |HTTPS |HCatalog-REST-API. Siehe [Verwenden von Apache Hive mit Curl](hadoop/apache-hadoop-use-pig-curl.md), [Verwenden von Apache Pig mit Curl](hadoop/apache-hadoop-use-pig-curl.md), [Verwenden von MapReduce mit Curl](hadoop/apache-hadoop-use-mapreduce-curl.md) |
+| WebHCat |443 |HTTPS |HCatalog-REST-API. Weitere Informationen finden Sie unter [„Verwenden von MapReduce mit Curl“](hadoop/apache-hadoop-use-mapreduce-curl.md) |
 | HiveServer2 |443 |ODBC |Stellt per ODBC ein Verbindung mit Hive her. Siehe [Verbinden von Excel mit HDInsight mithilfe des Microsoft ODBC-Treibers](hadoop/apache-hadoop-connect-excel-hive-odbc-driver.md). |
 | HiveServer2 |443 |JDBC |Stellt per JDBC ein Verbindung mit Apache Hive her. Siehe [Herstellen einer Verbindung mit Apache Hive unter HDInsight per Hive-JDBC-Treiber](hadoop/apache-hadoop-connect-hive-jdbc-driver.md) |
 

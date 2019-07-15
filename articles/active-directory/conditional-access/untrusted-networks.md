@@ -2,28 +2,21 @@
 title: Vorschreiben der mehrstufigen Authentifizierung (MFA) für den Zugriff von nicht vertrauenswürdigen Netzwerken mit bedingtem Zugriff von Azure Active Directory (Azure AD) | Microsoft-Dokumentation
 description: Erfahren Sie, wie Sie eine Richtlinie für bedingten Zugriff in Azure Active Directory (Azure AD) für Zugriffsversuche von nicht vertrauenswürdigen Netzwerken konfigurieren.
 services: active-directory
-keywords: bedingter Zugriff auf Apps, bedingter Zugriff mit Azure AD, sicherer Zugriff auf Unternehmensressourcen, Richtlinien für bedingten Zugriff
-documentationcenter: ''
-author: MicrosoftGuyJFlo
-manager: daveba
-editor: ''
-ms.subservice: conditional-access
-ms.assetid: 8c1d978f-e80b-420e-853a-8bbddc4bcdad
 ms.service: active-directory
-ms.devlang: na
+ms.subservice: conditional-access
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: identity
 ms.date: 12/10/2018
 ms.author: joflore
+author: MicrosoftGuyJFlo
+manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ebf8cb1c3b49975356389c7c9444aff319326f74
-ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
+ms.openlocfilehash: 6b75e9aa3c588f5046ec55c0d809ca74060ad9c2
+ms.sourcegitcommit: 79496a96e8bd064e951004d474f05e26bada6fa0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58518863"
+ms.lasthandoff: 07/02/2019
+ms.locfileid: "67509342"
 ---
 # <a name="how-to-require-mfa-for-access-from-untrusted-networks-with-conditional-access"></a>Gewusst wie: Vorschreiben der Verwendung der MFA für den Zugriff von nicht vertrauenswürdigen Netzwerken mit bedingtem Zugriff   
 
@@ -38,8 +31,6 @@ In diesem Artikel wird davon ausgegangen, dass Sie mit Folgendem vertraut sind:
 - Mit den [grundlegenden Konzepten](overview.md) des bedingten Azure AD-Zugriffs 
 - Mit den [Best Practices](best-practices.md) für das Konfigurieren von Richtlinien für bedingten Zugriff im Azure-Portal
 
-
-
 ## <a name="scenario-description"></a>Beschreibung des Szenarios
 
 Um das Gleichgewicht zwischen Sicherheit und Produktivität zu gewährleisten, kann es ausreichen, dass für die Anmeldung über das Netzwerk Ihrer Organisation lediglich ein Kennwort erforderlich ist. Beim Zugriff über eine nicht vertrauenswürdige Netzwerkadresse besteht jedoch ein erhöhtes Risiko, dass die Anmeldung nicht von berechtigten Benutzern durchgeführt wird. Um dieses Risiko zu vermeiden, können Sie den Zugriff von nicht vertrauenswürdigen Netzwerken blockieren. Alternativ können Sie auch eine mehrstufige Authentifizierung (MFA) verlangen, um sicher zu sein, dass ein Versuch vom legitimen Besitzer des Kontos unternommen wurde. 
@@ -47,15 +38,10 @@ Um das Gleichgewicht zwischen Sicherheit und Produktivität zu gewährleisten, k
 Mit dem bedingten Zugriff in Azure AD können Sie diese Anforderung mit einer einzigen Richtlinie erfüllen, die den Zugriff gewährt: 
 
 - Für ausgewählte Cloud-Apps
-
 - Für ausgewählte Benutzer und Gruppen  
-
 - Mit erforderlicher mehrstufiger Authentifizierung 
-
 - Beim Zugriff von: 
-
-    - Einer nicht als vertrauenswürdig eingestuften Adresse
-
+   - Einer nicht als vertrauenswürdig eingestuften Adresse
 
 ## <a name="implementation"></a>Implementierung
 
@@ -65,27 +51,21 @@ Typischerweise besitzt Ihre Organisation einen oder mehrere Adressbereiche, z.B.
 Sie können einen benannten Speicherort wie folgt konfigurieren:
 
 - Festlegen dieses Bereichs (199.30.16.0/24) 
-
 - Zuweisen eines beschreibenden Namens wie **Unternehmensnetzwerk** 
-
 
 Anstatt zu versuchen, alle Standorte zu definieren, die nicht vertrauenswürdig sind, können Sie:
 
 - Alle Standorte einschließen 
 
-    ![Bedingter Zugriff](./media/untrusted-networks/02.png)
+   ![Bedingter Zugriff](./media/untrusted-networks/02.png)
 
 - Alle vertrauenswürdigen Standorte ausschließen 
 
-    ![Bedingter Zugriff](./media/untrusted-networks/01.png)
-
-
+   ![Bedingter Zugriff](./media/untrusted-networks/01.png)
 
 ## <a name="policy-deployment"></a>Richtlinienbereitstellung
 
 Mit dem in diesem Artikel beschriebenen Ansatz können Sie nun eine Richtlinie für den bedingten Zugriff für nicht vertrauenswürdige Standorte konfigurieren. Um die erwartete Funktionsweise der Richtlinie sicherzustellen, empfiehlt es sich, sie zu testen, bevor Sie sie in der Produktionsumgebung verwenden. Idealerweise sollten Sie in einem Testmandanten überprüfen, ob die neue Richtlinie wie erwartet funktioniert. Weitere Informationen finden Sie unter [Wie stellen Sie eine neue Richtlinie bereit?](best-practices.md#how-should-you-deploy-a-new-policy) 
-
-
 
 ## <a name="next-steps"></a>Nächste Schritte
 

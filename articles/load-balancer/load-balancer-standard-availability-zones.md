@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/27/2018
 ms.author: kumud
-ms.openlocfilehash: 6f33be6e418366f57d243f578035b5c87079c99e
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 0820285555110e8e85bff814f4774d6da6443f69
+ms.sourcegitcommit: ac1cfe497341429cf62eb934e87f3b5f3c79948e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60734455"
+ms.lasthandoff: 07/01/2019
+ms.locfileid: "67491987"
 ---
 # <a name="standard-load-balancer-and-availability-zones"></a>Load Balancer Standard und Verfügbarkeitszonen
 
@@ -186,7 +186,7 @@ Load Balancer ist im Kontext von Verfügbarkeitszonen absichtlich flexibel. Sie 
 
 Load Balancer macht es Ihnen leicht, eine einzelne IP-Adresse als zonenredundantes Front-End einzusetzen. Eine zonenredundante IP-Adresse kann sicher eine zonale Ressource in einer Zone bedienen und einen oder mehrere Zonenfehler überstehen kann, solange eine Zone in der Region fehlerfrei ist. Andererseits ist ein zonales Front-End eine Reduzierung des Diensts auf eine einzelne Zone und von der jeweiligen Zone abhängig.
 
-Zonenredundanz impliziert weder einen störungsfreien Datenpfad noch eine störungsfreie Steuerebene; es ist ausdrücklich eine Datenebene. Zonenredundante Datenströme können alle Zonen verwenden, und die Datenströme eines Kunden verwenden alle fehlerfreien Zonen in einer Region. Bei Ausfall einer Zone sind Datenströme, die zu diesem Zeitpunkt fehlerfreie Zonen verwenden, nicht betroffen.  Datenströme, die zum Zeitpunkt des Zonenausfalls eine Zone verwenden, können beeinträchtigt werden, aber Anwendungen können wiederhergestellt werden, und diese Datenströme können in den verbleibenden fehlerfreien Zonen innerhalb der Region nach erneuter Übertragung oder Wiederherstellung fortgeführt werden, wenn Azure den Zonenausfall in den Griff bekommen hat.
+Zonenredundanz impliziert weder einen störungsfreien Datenpfad noch eine störungsfreie Steuerebene; es ist ausdrücklich eine Datenebene. Zonenredundante Datenströme können alle Zonen verwenden, und die Datenströme eines Kunden verwenden alle fehlerfreien Zonen in einer Region. Bei Ausfall einer Zone sind Datenströme, die zu diesem Zeitpunkt fehlerfreie Zonen verwenden, nicht betroffen.  Datenströme, die zum Zeitpunkt des Zonenausfalls eine Zone verwenden, können beeinträchtigt werden, aber Anwendungen können wiederhergestellt werden. Diese Datenströme können in den verbleibenden fehlerfreien Zonen innerhalb der Region nach erneuter Übertragung oder Wiederherstellung fortgeführt werden, wenn Azure den Zonenausfall in den Griff bekommen hat.
 
 ### <a name="xzonedesign"></a> Zonenübergreifende Grenzen
 

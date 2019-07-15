@@ -14,12 +14,12 @@ ms.date: 11/08/2018
 ms.author: mimart
 ms.reviewer: japere
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c22d44b02b3cc25c855361cab17132c46fa04794
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: d896a45931512b925491e05ff6e5eef8a856d83d
+ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65783696"
+ms.lasthandoff: 07/01/2019
+ms.locfileid: "67481325"
 ---
 # <a name="publish-applications-on-separate-networks-and-locations-using-connector-groups"></a>Veröffentlichen von Anwendungen in getrennten Netzwerken und an getrennten Standorten mithilfe von Connectorgruppen
 
@@ -42,7 +42,7 @@ Erstellen Sie mit diesen Schritten beliebig viele Connectorgruppen.
 1. Wählen Sie **Azure Active Directory** > **Unternehmensanwendungen** > **Anwendungsproxy** aus.
 2. Wählen Sie **Neue Connectorgruppe**. Das Blatt „Neue Connectorgruppe“ wird geöffnet.
 
-   ![Neue Connectorgruppe auswählen](./media/application-proxy-connector-groups/new-group.png)
+   ![Zeigt den Auswahlbildschirm für eine neue Connectorgruppe](./media/application-proxy-connector-groups/new-group.png)
 
 3. Bennen Sie Ihre neue Connectorgruppe, und verwenden Sie das Dropdownmenü, um auszuwählen, welche Connectoren dieser Gruppe angehören sollen.
 4. Wählen Sie **Speichern** aus.
@@ -74,25 +74,25 @@ Für IaaS-Anwendungen mit Cloudzugriff bieten Connectorgruppen einen gemeinsamen
 
 Betrachten Sie z.B. eine Organisation, die über eine Reihe virtueller Computer verfügt, die über ein eigenes, per IaaS gehostetes virtuelles Netzwerk verbunden sind. Damit Mitarbeiter die Anwendungen verwenden können, sind diese privaten Netzwerke über Site-to-Site-VPN mit dem Unternehmensnetzwerk verbunden. Für Mitarbeiter, die vor Ort im lokalen Netzwerk arbeiten, funktioniert dieses Setup gut. Für Remotemitarbeiter ist die Konfiguration allerdings möglicherweise nicht ganz ideal, da sie weitere lokale Infrastruktur zum Weiterleiten des Zugriffs erfordert, wie in der folgenden Abbildung veranschaulicht:
 
-![AzureAD-IaaS-Netzwerk](./media/application-proxy-connector-groups/application-proxy-iaas-network.png)
+![Ein Diagramm, das das Azure AD IaaS-Netzwerk veranschaulicht](./media/application-proxy-connector-groups/application-proxy-iaas-network.png)
   
 Mit Azure AD-Anwendungsproxy-Connectorgruppen können Sie einen gemeinsamen Dienst zum Sichern des Zugriffs auf alle Anwendungen verwenden, ohne weitere Abhängigkeiten in Ihrem Unternehmensnetzwerk einzuführen:
 
-![AzureAD-IaaS – mehrere Cloudanbieter](./media/application-proxy-connector-groups/application-proxy-multiple-cloud-vendors.png)
+![Mehrere Cloudanbieter für AzureAD-IaaS](./media/application-proxy-connector-groups/application-proxy-multiple-cloud-vendors.png)
 
 ### <a name="multi-forest--different-connector-groups-for-each-forest"></a>Mehrere Gesamtstrukturen – verschiedene Connectorgruppen für jede Gesamtstruktur
 
 Die meisten Kunden, die den Anwendungsproxy bereitgestellt haben, verwenden dessen Funktionen zum einmaligen Anmelden (Single Sign-On, SSO) mithilfe der eingeschränkten Kerberos-Delegierung (Kerberos Constrained Delegation, KCD). Zu diesem Zweck müssen die Computer des Connectors einer Domäne beigetreten sein, die die Benutzer an die Anwendung delegieren kann. Die eingeschränkte Kerberos-Delegierung unterstützt gesamtstrukturübergreifende Funktionen. In Unternehmen jedoch, die über Umgebungen mit mehreren Gesamtstrukturen ohne gegenseitige Vertrauensstellung verfügen, kann kein einzelner Connector für alle Gesamtstrukturen verwendet werden. 
 
 In diesem Fall kann für jede Gesamtstruktur ein spezifischer Connector bereitgestellt und für Anwendungen eingerichtet werden, die nur für die Benutzer dieser bestimmten Gesamtstruktur veröffentlicht wurden. Jede Connectorgruppe repräsentiert eine andere Gesamtstruktur. Während der Mandant und der größte Teil der Funktionalität für alle Gesamtstrukturen gleich sind, können Benutzer mithilfe von Azure AD-Gruppen ihren spezifischen Gesamtstrukturanwendungen zugewiesen werden.
- 
+
 ### <a name="disaster-recovery-sites"></a>Standorte für die Notfallwiederherstellung
 
 Bei Standorten für die Notfallwiederherstellung gibt es zwei verschiedene Herangehensweisen, je nach Implementierung Ihrer Standorte:
 
 * Wenn Ihr Standort für die Notfallwiederherstellung im Aktiv-Aktiv-Modus erstellt wurde und exakt die gleichen Netzwerk- und AD-Einstellungen wie Ihr Hauptstandort aufweist, können Sie die Connectors im Standort für die Notfallwiederherstellung in der gleichen Connectorgruppe wie für den Hauptstandort erstellen. So kann Azure AD Failover selbstständig erkennen.
 * Wenn Ihr Standort für die Notfallwiederherstellung von Ihrem Hauptstandort getrennt ist, können Sie im Standort für die Notfallwiederherstellung eine andere Connectorgruppe erstellen. Hierbei gibt es zwei Möglichkeiten: Sie erstellen Sicherungsanwendungen, oder Sie leiten die vorhandene Anwendung nach Bedarf an die Connectorgruppe für die Notfallwiederherstellung weiter.
- 
+
 ### <a name="serve-multiple-companies-from-a-single-tenant"></a>Bereitstellen von Diensten für mehrere Unternehmen über einen einzigen Mandanten
 
 Es gibt viele verschiedene Möglichkeiten, ein Modell zu implementieren, in dem ein einzelner Dienstanbieter Dienste im Zusammenhang mit Azure AD für mehrere Unternehmen bereitstellt und verwaltet. Connectorgruppen helfen den Administratoren dabei, die Connectors und Anwendungen auf verschiedene Gruppen aufzuteilen. Eine Möglichkeit – die sich für kleinere Unternehmen eignet – besteht darin, einen einzelnen Azure AD-Mandanten einzurichten, während die verschiedenen Unternehmen über einen eigenen Domänennamen und eigene Netzwerke verfügen. Dies gilt auch für M&A-Szenarien (Mergers & Acquisitions) sowie Situationen, in denen eine einzelne IT-Abteilung aus regulatorischen oder geschäftlichen Gründen Dienste für mehrere Unternehmen bereitstellt. 
@@ -100,32 +100,30 @@ Es gibt viele verschiedene Möglichkeiten, ein Modell zu implementieren, in dem 
 ## <a name="sample-configurations"></a>Beispielkonfigurationen
 
 Im Folgenden finden Sie einige Beispiele, die Sie implementieren können, wie etwa die folgenden Connectorgruppen.
- 
+
 ### <a name="default-configuration--no-use-for-connector-groups"></a>Standardkonfiguration – nicht für Connectorgruppen
 
 Wenn Sie keine Connectorgruppen verwenden, sieht Ihre Konfiguration in etwa folgendermaßen aus:
 
-![Azure AD – keine Connectorgruppen](./media/application-proxy-connector-groups/application-proxy-sample-config-1.png)
- 
+![Beispiel für Azure AD ohne Connectorgruppen](./media/application-proxy-connector-groups/application-proxy-sample-config-1.png)
+
 Diese Konfiguration ist für kleine Bereitstellungen und Tests ausreichend. Sie funktioniert auch dann gut, wenn Ihre Organisation über eine flache Netzwerktopologie verfügt.
- 
+
 ### <a name="default-configuration-and-an-isolated-network"></a>Standardkonfiguration und ein isoliertes Netzwerk
 
-Diese Konfiguration ist eine Weiterentwicklung der Standardkonfiguration und umfasst eine spezifische App, die in einem isolierten Netzwerk – z.B. einem virtuellen IaaS-Netzwerk – ausgeführt wird: 
+Diese Konfiguration ist eine Weiterentwicklung der Standardkonfiguration und umfasst eine spezifische App, die in einem isolierten Netzwerk – z.B. einem virtuellen IaaS-Netzwerk – ausgeführt wird:
 
-![Azure AD – keine Connectorgruppen](./media/application-proxy-connector-groups/application-proxy-sample-config-2.png)
- 
+![Beispiel für Azure AD ohne Connectorgruppen](./media/application-proxy-connector-groups/application-proxy-sample-config-2.png)
+
 ### <a name="recommended-configuration--several-specific-groups-and-a-default-group-for-idle"></a>Empfohlene Konfiguration – mehrere spezifische Gruppen und eine Standardgruppe für den Ruhezustand
 
 Bei der empfohlenen Konfiguration für große und komplexe Organisationen ist die Standardconnectorgruppe als Gruppe eingerichtet, die keine Dienste für Anwendungen bereitstellt und für neu installierte Connectors oder Connectors im Ruhezustand verwendet wird. Die Dienste für alle Anwendungen werden über benutzerdefinierte Connectorgruppen bereitgestellt. Diese Konfiguration unterstützt die oben beschriebenen Szenarien in ihrer ganzen Komplexität.
 
-Im folgenden Beispiel verfügt das Unternehmen über zwei Rechenzentren: A und B. Jeder Standort verfügt über zwei Connectors. In jedem Standort werden unterschiedliche Anwendungen ausgeführt. 
+Im folgenden Beispiel verfügt das Unternehmen über zwei Rechenzentren: A und B. Jeder Standort verfügt über zwei Connectors. In jedem Standort werden unterschiedliche Anwendungen ausgeführt.
 
-![Azure AD – keine Connectorgruppen](./media/application-proxy-connector-groups/application-proxy-sample-config-3.png)
- 
+![Beispiel eines Unternehmens mit 2 Datencentern und 2 Connectors](./media/application-proxy-connector-groups/application-proxy-sample-config-3.png)
+
 ## <a name="next-steps"></a>Nächste Schritte
 
 * [Grundlegendes zu Azure AD-Anwendungsproxyconnectors](application-proxy-connectors.md)
 * [Aktivieren der einmaligen Anmeldung](what-is-single-sign-on.md)
-
-

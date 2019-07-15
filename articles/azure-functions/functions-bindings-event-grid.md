@@ -4,19 +4,19 @@ description: Behandlung von Event Grid-Ereignissen in Azure Functions.
 services: functions
 documentationcenter: na
 author: craigshoemaker
-manager: jeconnoc
+manager: gwallace
 keywords: ''
 ms.service: azure-functions
 ms.devlang: multiple
 ms.topic: reference
 ms.date: 09/04/2018
 ms.author: cshoe
-ms.openlocfilehash: b2ab07e40ac2652d97e912f8c7bd3b8893bfc114
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: f48eced2ebcc4ad92c5124194ed2e2df92f64f11
+ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58094159"
+ms.lasthandoff: 07/01/2019
+ms.locfileid: "67480664"
 ---
 # <a name="event-grid-trigger-for-azure-functions"></a>Event Grid-Trigger für Azure Functions
 
@@ -213,6 +213,7 @@ Dies ist der Python-Code:
 ```python
 import logging
 import azure.functions as func
+
 
 def main(event: func.EventGridEvent):
     logging.info("Python Event Grid function processed a request.")
@@ -555,7 +556,7 @@ Mit der Event Grid-Triggerfunktion werden Protokolle ähnlich denen im folgenden
 
 ## <a name="local-testing-with-ngrok"></a>Lokales Testen mit ngrok
 
-Eine weitere Möglichkeit zum lokalen Testen eines Event Grid-Triggers ist die Automatisierung der HTTP-Verbindung zwischen dem Internet und dem Entwicklungscomputer. Dazu können Sie das Open-Source-Tool [ngrok](https://ngrok.com/) verwenden:
+Eine weitere Möglichkeit zum lokalen Testen eines Event Grid-Triggers ist die Automatisierung der HTTP-Verbindung zwischen dem Internet und dem Entwicklungscomputer. Dies können Sie mit einem Tool wie [ngrok](https://ngrok.com/) tun:
 
 1. [Erstellen Sie einen ngrok-Endpunkt](#create-an-ngrok-endpoint).
 1. [Führen Sie die Event Grid-Triggerfunktion aus](#run-the-event-grid-trigger-function).

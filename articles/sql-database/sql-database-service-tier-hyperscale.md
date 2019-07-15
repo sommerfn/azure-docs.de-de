@@ -12,12 +12,12 @@ ms.author: sstein
 ms.reviewer: ''
 manager: craigg
 ms.date: 05/06/2019
-ms.openlocfilehash: 0fe098bd644762fb291eb623a7b41cd987c7fa26
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: 4aeda5612b2b3e9e2073a65320b238266c8bb33a
+ms.sourcegitcommit: 084630bb22ae4cf037794923a1ef602d84831c57
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65779188"
+ms.lasthandoff: 07/03/2019
+ms.locfileid: "67537865"
 ---
 # <a name="hyperscale-service-tier-for-up-to-100-tb"></a>Dienstebene „Hyperscale“ für bis zu 100TB
 
@@ -38,7 +38,7 @@ Die Dienstebene „Hyperscale“ in Azure SQL-Datenbank ist die neueste Diensteb
 Die Dienstebene „Hyperscale“ in Azure SQL-Datenbank bietet folgende zusätzliche Funktionen:
 
 - Unterstützung für eine Datenbankgröße von bis zu 100 TB
-- Nahezu sofortige Datenbanksicherungen (basierend auf in Azure Blob Storage gespeicherten Dateimomentaufnahmen) unabhängig von der Größe und ohne E/A-Auswirkung auf Compute   
+- Nahezu sofortige Datenbanksicherungen (basierend auf in Azure Blob Storage gespeicherten Dateimomentaufnahmen) unabhängig von der Größe und ohne E/A-Auswirkung auf Computeressourcen  
 - Schnelle Datenbankwiederherstellungen (basierend auf Dateimomentaufnahmen) in Minuten statt Stunden oder Tagen (kein von der Datengröße abhängiger Vorgang)
 - Höhere Gesamtleistung aufgrund eines höheren Protokolldurchsatzes und schnellere Transaktionscommits unabhängig von Datenmengen
 - Schnelle horizontale Hochskalierung: Sie können einen oder mehrere schreibgeschützte Knoten zur Abladung Ihrer Leseworkload und zur Verwendung als unmittelbar betriebsbereite Standbyserver bereitstellen.
@@ -111,7 +111,7 @@ Mit der Möglichkeit, weitere Computeknoten schnell hoch- bzw. herunterzufahren,
 
 Eine Hyperscale-Datenbank kann über das [Azure-Portal](https://portal.azure.com) oder mit [T-SQL](https://docs.microsoft.com/sql/t-sql/statements/create-database-transact-sql?view=azuresqldb-current), [Powershell](https://docs.microsoft.com/powershell/module/azurerm.sql/new-azurermsqldatabase) oder [CLI](https://docs.microsoft.com/cli/azure/sql/db#az-sql-db-create) erstellt werden. Hyperscale-Datenbanken stehen nur bei Verwendung des [vCore-basierten Kaufmodells](sql-database-service-tiers-vcore.md) zur Verfügung.
 
-Mit dem folgenden T-SQL-Befehl wird eine Hyperscale-Datenbank erstellt. Sie müssen sowohl die Edition als auch das Dienstziel in der `CREATE DATABASE`-Anweisung angeben.
+Mit dem folgenden T-SQL-Befehl wird eine Hyperscale-Datenbank erstellt. Sie müssen sowohl die Edition als auch das Dienstziel in der `CREATE DATABASE`-Anweisung angeben. Eine Liste mit gültigen Servicezielen finden Sie bei den [Ressourcenbegrenzungen](https://docs.microsoft.com/azure/sql-database/sql-database-vcore-resource-limits-single-databases#hyperscale-service-tier).
 
 ```sql
 -- Create a HyperScale Database
@@ -146,8 +146,8 @@ Wenn Sie im Rahmen der Wiederherstellung im Notfall oder einer Übung, wegen ein
 1. Erstellen Sie eine SQL-Datenbank-Serverinstanz in der Zielregion, wenn Sie dort noch keinen geeigneten Server haben.  Dieser Server muss zu demselben Abonnement wie der ursprüngliche Server (Quelle) gehören.
 2. Befolgen Sie die Anweisungen im Thema [Geowiederherstellung](https://docs.microsoft.com/azure/sql-database/sql-database-recovery-using-backups#geo-restore) der Seite zum Wiederherstellen von Azure SQL-Datenbank-Instanzen aus automatischen Sicherungen.
 
-#### <a name="notes-on-geo-restores-of-a-hyperscale-database"></a>Hinweise zur Geowiederherstellung einer Hyperscale-Datenbank
-Weil Quelle und Ziel sich in unterschiedlichen Regionen befinden, kann die Datenbank nicht wie in Nicht-Geowiederherstellungen Momentaufnahmenspeicher mit der Quelldatenbank gemeinsam nutzen, was zu einem sehr schnellen Abschluss führt.  Bei einer Geowiederherstellung einer Hyperscale-Datenbank werden auch dann Anpassungen des Datenumfangs durchgeführt, wenn das Ziel sich in der gekoppelten Region des georeplizierten Speichers befindet.  Dies bedeutet, dass die für eine Geowiederherstellung erforderliche Zeit zur Größe der wiederhergestellten Datenbank proportional ist.  Wenn das Ziel in der gekoppelten Region ist, befindet sich die Kopie in einem Rechenzentrum, was wesentlich schneller ist als eine Langstreckenkopie über das Internet, aber es werden immer noch alle Bits kopiert.
+> [!NOTE]
+> Weil Quelle und Ziel sich in unterschiedlichen Regionen befinden, kann die Datenbank nicht wie in Nicht-Geowiederherstellungen Momentaufnahmenspeicher mit der Quelldatenbank gemeinsam nutzen, was zu einem sehr schnellen Abschluss führt.  Bei einer Geowiederherstellung einer Hyperscale-Datenbank werden auch dann Anpassungen des Datenumfangs durchgeführt, wenn das Ziel sich in der gekoppelten Region des georeplizierten Speichers befindet.  Dies bedeutet, dass die für eine Geowiederherstellung erforderliche Zeit zur Größe der wiederhergestellten Datenbank proportional ist.  Wenn das Ziel in der gekoppelten Region ist, befindet sich die Kopie in einem Rechenzentrum, was wesentlich schneller ist als eine Langstreckenkopie über das Internet, aber es werden immer noch alle Bits kopiert.
 
 ## <a name=regions></a>Verfügbare Regionen
 
@@ -161,7 +161,7 @@ Die Hyperskalierung für Azure SQL-Datenbank-Ebene ist zurzeit in den folgenden 
 - China, Osten 2
 - China, Norden 2
 - Asien, Osten
-- USA (Ost)
+- East US
 - USA (Ost) 2
 - Frankreich, Mitte
 - Japan, Osten
@@ -225,7 +225,7 @@ Hierbei handelt es sich um die aktuellen Einschränkungen der Hyperscale-Dienste
 
 | Problem | BESCHREIBUNG |
 | :---- | :--------- |
-| Im Bereich „Sicherungen verwalten“ für einen logischen Server werden Hyperscale-Datenbanken nicht angezeigt und vom SQL-Server gefiltert->  | Hyperscale verfügt über eine separate Methode zum Verwalten von Sicherungen, sodass die Einstellungen für langfristige Aufbewahrung und Aufbewahrung von Point-in-Time-Sicherungen nicht gelten/ungültig werden. Deshalb werden Hyperscale-Datenbanken nicht im Bereich „Sicherungen verwalten“ angezeigt. |
+| Im Bereich „Sicherungen verwalten“ für einen logischen Server werden Hyperscale-Datenbanken nicht angezeigt und vom SQL-Server gefiltert.  | Hyperscale verfügt über eine separate Methode zum Verwalten von Sicherungen, sodass die Einstellungen für langfristige Aufbewahrung und Aufbewahrung von Point-in-Time-Sicherungen nicht gelten/ungültig werden. Deshalb werden Hyperscale-Datenbanken nicht im Bereich „Sicherungen verwalten“ angezeigt. |
 | Point-in-Time-Wiederherstellung | Nachdem eine Datenbank zur Dienstebene „Hyperscale“ migriert wurde, wird die Wiederherstellung des Zustands zu einem bestimmten Zeitpunkt vor der Migration nicht unterstützt.|
 | Wiederherstellung einer Nicht-Hypserscale-DB in einer Hypserscale-DB und umgekehrt | Sie können weder eine Hyperscale-Datenbank in einer Nicht-Hyperscale-Datenbank noch eine Nicht-Hyperscale-Datenbank in einer Hyperscale-Datenbank wiederherstellen.|
 | Wenn eine Datenbankdatei während der Migration aufgrund einer aktiven Workload anwächst und den Grenzwert von 1 TB pro Datei überschreitet, kann die Migration nicht ausgeführt werden | Gegenmaßnahmen: <br> – Migrieren Sie die Datenbank möglichst zu einem Zeitpunkt, wenn keine Aktualisierungsworkload ausgeführt wird.<br> – Versuchen Sie erneut, die Migration auszuführen. Dies ist erfolgreich, solange der Grenzwert von 1 TB während der Migration nicht überschritten wird.|

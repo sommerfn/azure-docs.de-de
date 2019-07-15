@@ -11,18 +11,21 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 093849e10e9776327a54ea3a9ae22b863a528d37
-ms.sourcegitcommit: 49c8204824c4f7b067cd35dbd0d44352f7e1f95e
+ms.openlocfilehash: bc67fb216451bd19fe8cfb327c101aa989228b01
+ms.sourcegitcommit: 084630bb22ae4cf037794923a1ef602d84831c57
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/22/2019
-ms.locfileid: "58367863"
+ms.lasthandoff: 07/03/2019
+ms.locfileid: "67536912"
 ---
 # <a name="ldap-authentication-and-azure-multi-factor-authentication-server"></a>LDAP-Authentifizierung und Azure Multi-Factor Authentication-Server
 
 Standardmäßig ist der Azure Multi-Factor Authentication-Server zum Importieren oder Synchronisieren von Benutzern aus Active Directory konfiguriert. Er kann jedoch auch zum Binden an andere LDAP-Verzeichnisse konfiguriert sein, z. B. an ein ADAM-Verzeichnis oder einen bestimmten Active Directory-Domänencontroller. Wenn die Verbindung mit einem Verzeichnis über LDAP besteht, kann der Azure Multi-Factor Authentication-Server als LDAP-Proxy zur Ausführung von Authentifizierungen fungieren. Dies ermöglicht auch die Verwendung einer LDAP-Bindung als RADIUS-Ziel für die Vorauthentifizierung von Benutzern bei der IIS-Authentifizierung oder für die primäre Authentifizierung im Azure MFA-Benutzerportal.
 
 Zum Verwenden der Multi-Factor Authentication als LDAP-Proxy fügen Sie den Azure Multi-Factor Authentication-Server zwischen dem LDAP-Client (beispielsweise VPN-Appliance, Anwendung) und dem LDAP-Verzeichnisserver ein. Der Azure Multi-Factor Authentication-Server muss für die Kommunikation sowohl mit den Clientservern als auch dem LDAP-Verzeichnis konfiguriert werden. In dieser Konfiguration akzeptiert der Azure Multi-Factor Authentication-Server LDAP-Anforderungen von Clientservern und -anwendungen und leitet sie zur Überprüfung der primären Anmeldeinformationen an den Ziel-LDAP-Verzeichnisserver weiter. Wenn das LDAP-Verzeichnis die primären Anmeldeinformationen validiert, führt Azure Multi-Factor Authentication eine zweite Identitätsüberprüfung durch und sendet eine Antwort zurück an den LDAP-Client. Die gesamte Authentifizierung ist nur erfolgreich, wenn sowohl die LDAP-Serverauthentifizierung als auch die Überprüfung in zwei Schritten erfolgreich ist.
+
+> [!IMPORTANT]
+> Ab dem 1. Juli 2019 bietet Microsoft keine MFA-Server mehr für neue Bereitstellungen an. Neue Kunden, die eine Multi-Factor Authentication für ihre Benutzer einrichten möchten, können stattdessen die cloudbasierte Multi-Factor Authentication von Azure verwenden. Bestehende Kunden, die ihren MFA-Server vor dem 1. Juli aktiviert haben, können weiterhin die neusten Versionen und zukünftige Updates herunterladen sowie Anmeldedaten zur Aktivierung generieren.
 
 ## <a name="configure-ldap-authentication"></a>Konfigurieren der LDAP-Authentifizierung
 
@@ -47,9 +50,12 @@ Wiederholen Sie diese Schritte, um weitere LDAP-Clients hinzuzufügen.
 
 Wenn die Multi-Factor Authentication zum Empfangen von LDAP-Authentifizierungen konfiguriert ist, müssen diese Authentifizierungen per Proxy an das LDAP-Verzeichnis weitergegeben werden. Daher zeigt die Registerkarte "Ziel" nur eine einzelne, grau unterlegte Option zum Verwenden eines LDAP-Ziels an.
 
+> [!NOTE]
+> Es gibt keine Garantie dafür, dass die Verzeichnisintegration mit anderen Verzeichnissen als Active Directory Domain Services funktioniert.
+
 1. Zum Konfigurieren der LDAP-Verzeichnisverbindung klicken Sie auf das Symbol **Verzeichnisintegration**.
 2. Aktivieren Sie auf der Registerkarte „Einstellungen“ das Optionsfeld **Bestimmte LDAP-Konfiguration verwenden**.
-3. Wählen Sie **Bearbeiten…**.
+3. Wählen Sie **Bearbeiten…** .
 4. Füllen Sie im Dialogfeld "LDAP-Konfiguration bearbeiten" die Felder mit den Informationen aus, die für die Verbindung mit dem LDAP-Verzeichnis erforderlich sind. Beschreibungen der Felder sind in der Hilfedatei zum Azure Multi-Factor Authentication-Server enthalten.
 
     ![LDAP-Konfiguration für Verzeichnisintegration](./media/howto-mfaserver-dir-ldap/ldap.png)
@@ -58,7 +64,7 @@ Wenn die Multi-Factor Authentication zum Empfangen von LDAP-Authentifizierungen 
 6. Wenn der Test der LDAP-Verbindung erfolgreich war, klicken Sie auf die Schaltfläche **OK**.
 7. Klicken Sie auf die Registerkarte **Filter**. Der Server ist für das Laden von Containern, Sicherheitsgruppen und Benutzern aus Active Directory vorkonfiguriert. Wenn Sie eine Bindung an ein anderes LDAP-Verzeichnis benötigen, müssen Sie wahrscheinlich die angezeigten Filter bearbeiten. Klicken Sie auf den Link **Hilfe**, um weitere Informationen zu Filtern zu erhalten.
 8. Klicken Sie auf die Registerkarte **Attribute** . Der Server ist so vorkonfiguriert, dass Attribute aus Active Directory zugeordnet werden.
-9. Bei einer Bindung an ein anderes LDAP-Verzeichnis oder bei Änderung der vorkonfigurierten Attributzuordnungen klicken Sie auf **Bearbeiten...**.
+9. Bei einer Bindung an ein anderes LDAP-Verzeichnis oder bei Änderung der vorkonfigurierten Attributzuordnungen klicken Sie auf **Bearbeiten...** .
 10. Ändern Sie im Dialogfeld "Attribute bearbeiten" die LDAP-Attributzuordnungen für Ihr Verzeichnis. Attributnamen können eingegeben oder ausgewählt werden, indem Sie auf die Schaltfläche **...** neben jedem Feld klicken. Klicken Sie auf den Link **Hilfe**, um weitere Informationen zu Attributen zu erhalten.
 11. Klicken Sie auf die Schaltfläche **OK**.
 12. Klicken Sie auf das Symbol **Unternehmenseinstellungen**, und wählen Sie die Registerkarte **Benutzernamenauflösung** aus.

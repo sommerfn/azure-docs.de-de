@@ -5,14 +5,14 @@ author: rayne-wiselman
 ms.service: site-recovery
 services: site-recovery
 ms.topic: conceptual
-ms.date: 05/30/2019
+ms.date: 6/27/2019
 ms.author: raynew
-ms.openlocfilehash: 8f4e78f7e16f775a852b4c8172d1fa9fd70ec341
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 6a0e07f338da039be1660e59510b24bcd44eed0c
+ms.sourcegitcommit: ac1cfe497341429cf62eb934e87f3b5f3c79948e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66417837"
+ms.lasthandoff: 07/01/2019
+ms.locfileid: "67491742"
 ---
 # <a name="what-workloads-can-you-protect-with-azure-site-recovery"></a>Welche Workloads können mit Azure Site Recovery geschützt werden?
 
@@ -35,7 +35,7 @@ Site Recovery trägt wie folgt zum Schutz und zur Wiederherstellung auf Anwendun
 * App-unabhängige Bereitstellung von Replikation für alle Workloads, die auf einem unterstützten Computer ausgeführt werden
 * Nahezu synchrone Replikation mit geringen RPOs von bis zu 30 Sekunden, um die Anforderungen der meisten kritischen Apps von Unternehmen zu erfüllen
 * Anwendungskonsistente Momentaufnahmen für Anwendungen mit einer oder mehreren Ebenen
-* Integration mit SQL Server AlwaysOn und Partnerschaft mit anderen Replikationstechnologien auf Anwendungsebene, einschließlich Active Directory-Replikation, SQL AlwaysOn, Exchange-Datenbankverfügbarkeitsgruppen und Oracle Data Guard.
+* Integration mit SQL Server AlwaysOn und Partnerschaft mit anderen Replikationstechnologien auf Anwendungsebene, einschließlich Active Directory-Replikation, SQL AlwaysOn, Exchange-Datenbankverfügbarkeitsgruppen.
 * Flexible Wiederherstellungspläne, die die Wiederherstellung des gesamten Anwendungsstapels mit einem einzigen Mausklick und das Einfügen von externen Skripts und manuellen Aktionen in den Plan ermöglichen
 * Erweiterte Netzwerkverwaltung in Site Recovery und Azure, um die App-Netzwerkanforderungen zu vereinfachen, z. B. das Reservieren von IP-Adressen, Konfigurieren des Lastenausgleichs und Integrieren in Azure Traffic Manager, um Netzwerk-Switchovers mit niedrigem RTO zu erzielen.
 * Eine umfassende Automatisierungsbibliothek bietet produktionsbereite, anwendungsspezifische Skripts, die heruntergeladen und in Wiederherstellungspläne integriert werden können.

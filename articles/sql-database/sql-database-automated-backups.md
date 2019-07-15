@@ -11,17 +11,17 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, carlrab
 manager: craigg
-ms.date: 05/20/2019
-ms.openlocfilehash: 1c81f5748d1e3edff4902eb462b9beea78acd8bc
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.date: 06/27/2019
+ms.openlocfilehash: 1eeb37ce74b3e2f57588197d6bb88f59944c61cf
+ms.sourcegitcommit: aa66898338a8f8c2eb7c952a8629e6d5c99d1468
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65951656"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67460666"
 ---
 # <a name="automated-backups"></a>Automatisierte Sicherungen
 
-SQL-Datenbank erstellt automatisch die Datenbanksicherungen, für die eine Speicherdauer von mindestens 7 und maximal 35 Tagen gilt. Es wird [georedundanter Azure-Speicher mit Lesezugriff (RA-GRS)](../storage/common/storage-redundancy-grs.md#read-access-geo-redundant-storage) verwendet, um sicherzustellen, dass diese auch dann beibehalten werden, wenn das Rechenzentrum nicht verfügbar ist. Diese Sicherungen werden automatisch und ohne zusätzliche Kosten erstellt. Sie müssen keinerlei Aktionen durchführen. Datenbanksicherungen sind ein wesentlicher Bestandteil jeder Strategie für Geschäftskontinuität und Notfallwiederherstellung, da Ihre Daten vor versehentlichen Beschädigungen und Löschungen geschützt werden. Falls es gemäß Ihren Sicherheitsregeln erforderlich ist, dass Ihre Sicherungen über einen längeren Zeitraum verfügbar sind (bis zu 10 Jahre), können Sie eine [Langzeitaufbewahrung](sql-database-long-term-retention.md) in Singleton-Datenbanken und Pools für elastische Datenbanken konfigurieren.
+SQL-Datenbank erstellt automatisch die Datenbanksicherungen, für die eine Speicherdauer von mindestens 7 und maximal 35 Tagen gilt. Es wird [georedundanter Azure-Speicher mit Lesezugriff (RA-GRS)](../storage/common/storage-redundancy-grs.md#read-access-geo-redundant-storage) verwendet, um sicherzustellen, dass diese auch dann beibehalten werden, wenn das Rechenzentrum nicht verfügbar ist. Diese Sicherungskopien werden automatisch erstellt. Datenbanksicherungen sind ein wesentlicher Bestandteil jeder Strategie für Geschäftskontinuität und Notfallwiederherstellung, da Ihre Daten vor versehentlichen Beschädigungen und Löschungen geschützt werden. Falls es gemäß Ihren Sicherheitsregeln erforderlich ist, dass Ihre Sicherungen über einen längeren Zeitraum verfügbar sind (bis zu 10 Jahre), können Sie eine [Langzeitaufbewahrung](sql-database-long-term-retention.md) in Singleton-Datenbanken und Pools für elastische Datenbanken konfigurieren.
 
 [!INCLUDE [GDPR-related guidance](../../includes/gdpr-intro-sentence.md)]
 
@@ -32,7 +32,7 @@ SQL-Datenbank nutzt SQL Server-Technologie, um wöchentlich [vollständige Siche
 Sie können diese Sicherungen für Folgendes verwenden:
 
 - **Stellen Sie für eine vorhandene Datenbank den Stand zu einem vergangenen Zeitpunkt wieder her**, der innerhalb des Aufbewahrungszeitraums liegt, indem Sie das Azure-Portal, Azure PowerShell, die Azure CLI oder die REST-API verwenden. In Einzeldatenbanken und Pools für elastische Datenbanken wird mit diesem Vorgang eine neue Datenbank auf demselben Server erstellt, auf dem sich auch die ursprüngliche Datenbank befindet. Bei einer verwalteten Instanz kann mit diesem Vorgang eine Kopie der Datenbank in derselben oder einer anderen verwalteten Instanz unter demselben Abonnement erstellt werden.
-  - **[Ändern Sie den Aufbewahrungszeitraum der Sicherung](#how-to-change-the-pitr-backup-retention-period)** (bis zu 35 Tage), um Ihre Sicherungsrichtlinie zu konfigurieren.
+  - **[Ändern Sie den Aufbewahrungszeitraum der Sicherung](#how-to-change-the-pitr-backup-retention-period)** (zwischen 7 und 35 Tagen), um Ihre Sicherungsrichtlinie zu konfigurieren.
   - **Ändern Sie die Langzeitaufbewahrung in bis zu zehn Jahre** für Einzeldatenbanken und Pools für elastische Datenbanken, indem Sie [das Azure-Portal](sql-database-long-term-backup-retention-configure.md#configure-long-term-retention-policies) oder [Azure PowerShell](sql-database-long-term-backup-retention-configure.md#use-powershell-to-configure-long-term-retention-policies-and-restore-backups) verwenden.
 - **Stellen Sie für eine gelöschte Datenbank den Stand zum Zeitpunkt des Löschvorgangs wieder her**, oder den Stand zu einem beliebigen anderen Zeitpunkt innerhalb des Aufbewahrungszeitraums. Die gelöschte Datenbank kann nur auf demselben logischen Server oder der verwalteten Instanz wiederhergestellt werden, auf dem bzw. der die ursprüngliche Datenbank erstellt wurde.
 - **Stellen Sie eine Datenbank in einer anderen geografischen Region wieder her**. Die Geowiederherstellung ermöglicht die Wiederherstellung nach dem Ausfall einer geografischen Region, wenn Sie keinen Zugriff auf Ihren Server und Ihre Datenbank haben. Dabei wird eine neue Datenbank auf einem beliebigen Server an einem beliebigen Ort der Welt erstellt.

@@ -3,15 +3,15 @@ title: Aktivieren der Replikation von virtuellen VMware-Computern für die Notfa
 description: In diesem Artikel wird beschrieben, wie Sie mithilfe von Azure Site Recovery die Replikation von virtuellen VMware-Computern für die Notfallwiederherstellung in Azure aktivieren.
 author: Rajeswari-Mamilla
 ms.service: site-recovery
-ms.date: 05/10/2019
+ms.date: 06/28/2019
 ms.topic: conceptual
 ms.author: ramamill
-ms.openlocfilehash: add0f8252bdae6857b28deeb7de4c1d09973e452
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 3f4e4afb4d94a7b2e2a6b246a371cf6234577463
+ms.sourcegitcommit: ac1cfe497341429cf62eb934e87f3b5f3c79948e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65540753"
+ms.lasthandoff: 07/01/2019
+ms.locfileid: "67491732"
 ---
 # <a name="enable-replication-to-azure-for-vmware-vms"></a>Aktivieren der Replikation in Azure für VMware-VMs
 
@@ -37,11 +37,13 @@ Wenn Sie virtuelle VMware-Computer replizieren, beachten Sie Folgendes:
 ## <a name="enable-replication"></a>Aktivieren der Replikation
 
 Bevor Sie die Schritte in diesem Abschnitt ausführen, beachten Sie die Folgendes:
-* Azure Site Recovery führt jetzt bei allen neuen Replikationen die Replikation direkt auf verwaltete Datenträger aus. Der Prozessserver schreibt Replikationsprotokolle in ein Cachespeicherkonto in der Zielregion. Diese Protokolle werden verwendet, um Wiederherstellungspunkte in verwalteten Replikatdatenträgern zu erstellen.
+* Azure Site Recovery führt jetzt bei allen neuen Replikationen die Replikation direkt auf verwaltete Datenträger aus. Der Prozessserver schreibt Replikationsprotokolle in ein Cachespeicherkonto in der Zielregion. Diese Protokolle werden verwendet, um die Wiederherstellungspunkte auf verwalteten Replikatdatenträger mit der Benennungskonvention „asrseeddisk“ zu erstellen.
+* Powershell-Unterstützung für die Replikation auf verwaltete Datenträger ist ab [Az.RecoveryServices-Modulversion 2.0.0](https://www.powershellgallery.com/packages/Az.RecoveryServices/2.0.0-preview) verfügbar 
 * Zum Zeitpunkt des Failovers wird der von Ihnen ausgewählte Wiederherstellungspunkt verwendet, um den verwalteten Zieldatenträger zu erstellen.
 * Virtuelle Computer, die zuvor für die Replikation in Zielspeicherkonten konfiguriert wurden, sind davon nicht betroffen.
 * Eine Replikation in Speicherkonten für einen neuen virtuellen Computer ist nur über die REST-API (Representational State Transfer) und Powershell verfügbar. Verwenden Sie die Azure REST-API-Version 2016-08-10 oder 2018-01-10 für die Replikation in Speicherkonten.
 
+Führen Sie die folgenden Schritte aus, um die Replikation zu aktivieren:
 1. Fahren Sie fort mit **Schritt 2: Replizieren Sie die Anwendung** > **Quelle**. Wählen Sie nach der erstmaligen Aktivierung der Replikation im Tresor die Option **+Replizieren** aus, um die Replikation für weitere virtuelle Computer zu aktivieren.
 2. Wählen Sie auf der Seite **Quelle** unter **Quelle** den Konfigurationsserver aus.
 3. Wählen Sie unter **Computertyp** die Option **Virtuelle Computer** oder **Physische Computer** aus.

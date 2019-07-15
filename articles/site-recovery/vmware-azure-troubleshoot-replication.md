@@ -5,14 +5,14 @@ author: mayurigupta13
 manager: rochakm
 ms.service: site-recovery
 ms.topic: article
-ms.date: 03/14/2019
+ms.date: 06/27/2019
 ms.author: mayg
-ms.openlocfilehash: 3221b2bd18b8b0756f280d88fffc6016d0498b8f
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: c005dcee78e2a9338dc7a816e06d9a78a2f355b6
+ms.sourcegitcommit: ac1cfe497341429cf62eb934e87f3b5f3c79948e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64924826"
+ms.lasthandoff: 07/01/2019
+ms.locfileid: "67491671"
 ---
 # <a name="troubleshoot-replication-issues-for-vmware-vms-and-physical-servers"></a>Beheben von Problemen bei der Replikation von VMware-VMs und physischen Servern
 
@@ -77,6 +77,13 @@ Stellen Sie sicher, dass es keine Probleme im Zusammenhang mit Konnektivität, B
         - VSS-Dienst
         - Azure Site Recovery-VSS-Anbieter
         - VDS-Dienst
+
+- Wenn Sie SQL oder Exchange-Workloads ausführen, sollten Sie die Protokolle dieser Anwendungsschreiber auf Fehler überprüfen. Häufige Fehler und ihre Lösungen werden in den folgenden Artikeln thematisiert:
+    -  [Automatische Schließoption der SQL Server-Datenbank ist TRUE](https://support.microsoft.com/help/4504104)
+    - [SQL Server 2008 R2 zeigt einen nicht wiederholbaren Fehler](https://support.microsoft.com/help/4504103)
+    - [Bekanntes Problem in SQL Server 2016 und 2017](https://support.microsoft.com/help/4493364)
+    - [Häufige Probleme mit Exchange Servers 2013 und 2016](https://support.microsoft.com/help/4037535)
+
 
 ### <a name="source-machines-with-high-churn-error-78188"></a>Quellcomputer mit hoher Änderungsrate [Fehler 78188]
 

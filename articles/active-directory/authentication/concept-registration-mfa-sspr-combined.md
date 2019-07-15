@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahenry
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 572f8694d31728a3ca570f6ddb60475e13d71e80
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.openlocfilehash: fc0e80ec7a378d44000565034ce47d95c78b777e
+ms.sourcegitcommit: 084630bb22ae4cf037794923a1ef602d84831c57
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/27/2019
-ms.locfileid: "66235585"
+ms.lasthandoff: 07/03/2019
+ms.locfileid: "67537006"
 ---
 # <a name="combined-security-information-registration-preview"></a>Kombinierte Registrierung von Sicherheitsinformationen (Vorschauversion)
 
@@ -136,6 +136,8 @@ Ein Benutzer, der zuvor mindestens eine Methode eingerichtet hat, die für die m
 ## <a name="next-steps"></a>Nächste Schritte
 
 [Aktivieren der kombinierten Registrierung in Ihrem Mandanten](howto-registration-mfa-sspr-combined.md)
+
+[Nutzungs- und Insights-Berichte für SSPR und MFA](howto-authentication-methods-usage-insights.md)
 
 [Verfügbare Methoden für Multi-Factor Authentication und SSPR](concept-authentication-methods.md)
 

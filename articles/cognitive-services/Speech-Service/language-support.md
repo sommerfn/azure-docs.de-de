@@ -8,15 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 03/19/2019
+ms.date: 07/05/2019
 ms.author: erhopf
 ms.custom: seodec18
-ms.openlocfilehash: 9b8e12220f220bd8183675d13e25bdcab02707fd
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 006b9401a3418e3b2b3803fa0b7897b28887d14a
+ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65020844"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67606605"
 ---
 # <a name="language-and-region-support-for-the-speech-services"></a>Sprach- und Regionsunterstützung für den Spracherkennungsdienst
 
@@ -24,7 +24,7 @@ Für verschiedene Funktionen von Speech Services werden verschiedene Sprachen un
 
 ## <a name="speech-to-text"></a>Spracherkennung
 
-Die Microsoft-Spracherkennungs-API unterstützt die folgenden Sprachen. Es sind verschiedene Anpassungsebenen für jede Sprache verfügbar.
+Sowohl die Microsoft-Spracherkennungs-API und die REST-API unterstützen die folgenden Sprachen (Gebietsschemas). Es sind verschiedene Anpassungsebenen für jede Sprache verfügbar.
 
   Code | Sprache | [Anpassung der Akustik](how-to-customize-acoustic-models.md) | [Anpassung der Sprache](how-to-customize-language-model.md) | [Anpassung der Aussprache](how-to-customize-pronunciation.md)
  ------|----------|---------------------|---------------------|-------------------------

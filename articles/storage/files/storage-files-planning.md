@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 04/25/2019
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 9144165a3ce593dce11b5e50ce5f0af9f0afa480
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.openlocfilehash: d720f60bff1aa4510ac26ac092c42eb98871c851
+ms.sourcegitcommit: 5bdd50e769a4d50ccb89e135cfd38b788ade594d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/27/2019
-ms.locfileid: "66237655"
+ms.lasthandoff: 07/03/2019
+ms.locfileid: "67540338"
 ---
 # <a name="planning-for-an-azure-files-deployment"></a>Planung für eine Azure Files-Bereitstellung
 
@@ -76,21 +76,31 @@ Wenn Sie über die Azure-Dateisynchronisierung auf Ihre Azure-Dateifreigabe zugr
 
 Azure Files bietet zwei Leistungsstufen: Standard und Premium.
 
-* **Standard-Dateifreigaben** werden durch rotierende Festplattenlaufwerke (HDDs) gestützt, die eine zuverlässige Leistung für E/A-Workloads bieten, die weniger anfällig für Leistungsschwankungen sind, z.B. Dateifreigaben für allgemeine Zwecke und Dev/Test-Umgebungen. Standard-Dateifreigaben sind nur in einem nutzungsbasierten Abrechnungsmodell verfügbar.
-* **Premium-Dateifreigaben (Vorschauversion)** werden durch Solid-State-Laufwerke (SSDs) gestützt, die konsistent hohe Leistung und niedrige Latenz im einstelligen Millisekundenbereich für die meisten E/A-Vorgänge für Workloads mit besonders umfassenden E/A bieten. Dadurch sind sie für eine Vielzahl von Workloads wie Datenbanken, Websitehosting, Entwicklungsumgebungen usw. geeignet. Premium-Dateifreigaben sind nur in einem Abrechnungsmodell nach Bereitstellung verfügbar. Premium-Dateifreigaben verwenden ein von Standarddateifreigaben separates Bereitstellungsmodell.
+### <a name="standard-file-shares"></a>Standarddateifreigaben
+
+Standard-Dateifreigaben beruhen auf Festplattenlaufwerken (HDDs). Standard-Dateifreigaben bieten eine zuverlässige Leistung für E/A-Workloads, die weniger anfällig für Leistungsschwankungen sind, z. B. Dateifreigaben für allgemeine Zwecke und Dev/Test-Umgebungen. Standard-Dateifreigaben sind nur in einem nutzungsbasierten Abrechnungsmodell verfügbar.
+
+Standard-Dateifreigaben stehen in Größen von bis zu 5 TiB als GA-Angebot zur Verfügung. Größere Dateifreigaben, die zwischen 5 und 100 TiB haben, stehen derzeit als Vorschauversion zur Verfügung.
+
+> [!IMPORTANT]
+> Weitere Informationen finden Sie unter [Onboarding für größere Dateifreigaben (Standard-Tarif)](#onboard-to-larger-file-shares-standard-tier). Dort finden Sie Anweisungen zum Onboarding sowie Umfang und Einschränkungen der Vorschauversion.
+
+### <a name="premium-file-shares"></a>Premium-Dateifreigaben
+
+Premium-Dateifreigaben beruhen auf Solid State Drives (SSDs). Premium-Dateifreigaben bieten konsistent hohe Leistung und niedrige Latenz im einstelligen Millisekundenbereich für die meisten E/A-Vorgänge für Workloads mit besonders umfassenden E/A. Dadurch sind sie für eine Vielzahl von Workloads wie Datenbanken, Websitehosting und Entwicklungsumgebungen geeignet. Premium-Dateifreigaben sind nur in einem Abrechnungsmodell nach Bereitstellung verfügbar. Premium-Dateifreigaben verwenden ein von Standarddateifreigaben separates Bereitstellungsmodell.
 
 Azure Backup ist für Premium-Dateifreigaben verfügbar, und Azure Kubernetes Service unterstützt Premium-Dateifreigaben ab Version 1.13.
 
 Wenn Sie erfahren möchten, wie Sie eine Premium-Dateifreigabe erstellen, lesen Sie unseren Artikel zu diesem Thema: [Erstellen einer Azure- Premium-Dateifreigabe](storage-how-to-create-premium-fileshare.md).
 
-Derzeit ist eine direkte Konvertierung zwischen einer Standard- und einer Premium-Dateifreigabe nicht möglich. Wenn Sie zu einem der beiden Tarifen wechseln möchten, müssen Sie eine neue Dateifreigabe in diesem Tarif erstellen und die Daten von Ihrer ursprünglichen Freigabe manuell in die von Ihnen erstellte neue Freigabe kopieren. Sie können dazu eines der von Azure Files unterstützten Kopiertools wie AzCopy verwenden.
+Derzeit ist eine direkte Konvertierung zwischen einer Standard- und einer Premium-Dateifreigabe nicht möglich. Wenn Sie zu einem der beiden Tarifen wechseln möchten, müssen Sie eine neue Dateifreigabe in diesem Tarif erstellen und die Daten von Ihrer ursprünglichen Freigabe manuell in die von Ihnen erstellte neue Freigabe kopieren. Sie können dazu eines der von Azure Files unterstützten Kopiertools wie Robocopy oder AzCopy verwenden.
 
 > [!IMPORTANT]
-> Premium-Dateifreigaben sind noch in der Vorschauphase und nur mit LRS und in den meisten Regionen verfügbar, die Speicherkonten anbieten. Um herauszufinden, ob Premium-Dateifreigaben derzeit in Ihrer Region verfügbar sind, lesen Sie die Seite [Verfügbare Produkte nach Region](https://azure.microsoft.com/global-infrastructure/services/?products=storage) für Azure.
+> Premium-Dateifreigaben sind nur mit LRS und in den meisten Regionen verfügbar, die Speicherkonten anbieten. Um herauszufinden, ob Premium-Dateifreigaben derzeit in Ihrer Region verfügbar sind, lesen Sie die Seite [Verfügbare Produkte nach Region](https://azure.microsoft.com/global-infrastructure/services/?products=storage) für Azure.
 
 ### <a name="provisioned-shares"></a>Bereitgestellte Freigaben
 
-Premium-Dateifreigaben (Vorschau) werden basierend auf einem festen Verhältnis aus GiB/IOPS/Durchsatz bereitgestellt. Für jedes bereitgestellte GiB erhält die Freigabe 1 IOPS und einen Durchsatz von 0,1 MiB/s bis zum maximalen Grenzwert pro Freigabe. Die kleinste zulässige Bereitstellung beträgt 100 GiB mit den minimalen Werten für IOPS/Durchsatz.
+Premium-Dateifreigaben werden basierend auf einem festen Verhältnis aus GiB/IOPS/Durchsatz bereitgestellt. Für jedes bereitgestellte GiB erhält die Freigabe 1 IOPS und einen Durchsatz von 0,1 MiB/s bis zum maximalen Grenzwert pro Freigabe. Die kleinste zulässige Bereitstellung beträgt 100 GiB mit den minimalen Werten für IOPS/Durchsatz.
 
 Auf einer Best-Effort-Basis können alle Freigaben für 60 Minuten oder länger (je nach Größe der Freigabe) auf bis zu 3 IOPS pro GiB an bereitgestelltem Speicher erhöht werden (Burst). Neue Freigaben beginnen mit dem vollständigen Burstguthaben, basierend auf der bereitgestellten Kapazität.
 
@@ -116,11 +126,14 @@ Die folgende Tabelle zeigt einige Beispiele dieser Formeln für die bereitgestel
 |100         | 100     | Bis zu 300     | 66   | 44   |
 |500         | 500     | Bis zu 1.500   | 90   | 60   |
 |1024       | 1024   | Bis zu 3.072   | 122   | 81   |
-|5.120       | 5.120   | Bis zu 15.360  | 368   | 245   |
+|5\.120       | 5\.120   | Bis zu 15.360  | 368   | 245   |
 |10.240      | 10.240  | Bis zu 30.720  | 675 | 450   |
-|33.792      | 33.792  | Bis zu 100.000 | 2.088 | 1.392   |
-|51.200      | 51.200  | Bis zu 100.000 | 3.132 | 2.088   |
-|102.400     | 100.000 | Bis zu 100.000 | 6.204 | 4.136   |
+|33.792      | 33.792  | Bis zu 100.000 | 2\.088 | 1\.392   |
+|51.200      | 51.200  | Bis zu 100.000 | 3\.132 | 2\.088   |
+|102.400     | 100.000 | Bis zu 100.000 | 6\.204 | 4\.136   |
+
+> [!NOTE]
+> Die Leistung der Dateifreigabe hängt unter anderem von den Computernetzwerklimits, von der verfügbaren Netzwerkbandbreite, E/A-Größen und Parallelität ab. Um eine maximale Leistung zu erreichen, können Sie die Last auf mehrere VMs verteilen. Weitere Informationen über gängige Leistungsprobleme und deren Lösungen finden Sie im [Handbuch zur Problembehandlung](storage-troubleshooting-files-performance.md).
 
 ### <a name="bursting"></a>Bursting
 
@@ -178,9 +191,51 @@ Beachten Sie diese Punkte, wenn Sie sich für eine Replikationsoption entscheide
 * Die asynchrone Replikation beinhaltet eine Verzögerung zwischen dem Zeitpunkt, zu dem diese Daten in der primären Region geschrieben werden, und dem Zeitpunkt, zu dem sie in der sekundären Region repliziert werden. Bei einem regionalen Notfall gehen Änderungen, die noch nicht in der sekundären Region repliziert wurden, möglicherweise verloren, wenn die Daten nicht in der primären Region wiederhergestellt werden können.
 * Mit GRS ist das Replikat nicht für den Lese- oder Schreibzugriff verfügbar, sofern von Microsoft kein Failover in der sekundären Region initiiert wird. Im Fall eines Failovers erhalten Sie nach Abschluss des Failovers Lese- und Schreibzugriff auf diese Daten. Weitere Informationen finden Sie im [Leitfaden zur Notfallwiederherstellung](../common/storage-disaster-recovery-guidance.md).
 
+## <a name="onboard-to-larger-file-shares-standard-tier"></a>Onboarding für größere Dateifreigaben (Standard-Tarif)
+
+Dieser Abschnitt gilt nur für Standarddateifreigaben. Alle Premium-Dateifreigaben sind als ein GA-Angebot mit 100 TiB verfügbar.
+
+### <a name="restrictions"></a>Einschränkungen
+
+- Sie müssen ein neues universelles Speicherkonto einrichten (vorhandene Speicherkonten können nicht erweitert werden).
+- Die Konvertierung von LRS zu GRS-Konten ist bei neuen Speicherkonten, die nach Annahme des Abonnements für die größeren Dateifreigabevorschauen erstellt wurden, nicht mehr möglich.
+
+### <a name="regional-availability"></a>Regionale Verfügbarkeit
+
+Standard-Dateifreigaben sind für alle Region bis zu 5 TiB verfügbar. In einigen Regionen sind sie mit einem Limit von 100 TiB verfügbar. Diese sind hier aufgeführt:
+
+|Region  |Unterstützte Redundanz  |Unterstützt vorhandene Speicherkonten  |
+|---------|---------|---------|
+|Asien, Südosten     |LRS|Nein         |
+|Europa, Westen     |LRS|Nein         |
+|USA, Westen 2     |LRS, ZRS|Nein         |
+
+
+### <a name="steps-to-onboard"></a>Schritte des Onboardings
+
+Führen Sie die folgenden PowerShell-Befehle aus, um Ihr Abonnement für die größere Dateifreigabevorschauversion anzumelden:
+
+```powershell
+Register-AzProviderFeature -FeatureName AllowLargeFileShares -ProviderNamespace Microsoft.Storage
+Register-AzResourceProvider -ProviderNamespace Microsoft.Storage
+```
+Ihr Abonnement wird automatisch genehmigt, sobald beide Befehle ausgeführt werden.
+
+Mit dem folgenden Befehl können Sie Ihren Registrierungsstatus überprüfen:
+
+```powershell
+Get-AzProviderFeature -FeatureName AllowLargeFileShares -ProviderNamespace Microsoft.Storage
+```
+
+Es kann bis zu 15 Minuten dauern, bis Ihr Status auf „registriert“ aktualisiert wurde. Sie können die Funktion trotzdem schon vorher benutzen.
+
+### <a name="use-larger-file-shares"></a>Verwenden von größeren Dateifreigaben
+
+Erstellen Sie ein neues, universelles v2 Speicherkonto und eine neue Dateifreigabe, um größere Dateifreigabe nutzen zu können.
+
 ## <a name="data-growth-pattern"></a>Muster des Datenwachstums
 
-Die maximale Größe einer Azure-Dateifreigabe ist derzeit 5 TiB (100 TiB für Premium-Dateifreigaben in Public Preview). Aufgrund dieser aktuellen Einschränkung müssen Sie das erwartete Wachstum berücksichtigen, wenn Sie eine Azure-Dateifreigabe bereitstellen.
+Die maximale Größe einer Azure-Dateifreigabe beträgt derzeit 5 TiB (100 TiB in der Vorschauversion). Aufgrund dieser aktuellen Einschränkung müssen Sie das erwartete Wachstum berücksichtigen, wenn Sie eine Azure-Dateifreigabe bereitstellen.
 
 Mithilfe der Azure-Dateisynchronisierung können mehrere Azure-Dateifreigaben mit einem einzelnen Windows-Dateiserver synchronisiert werden. Dadurch können Sie sicherstellen, dass ältere große Dateifreigaben, über die Sie möglicherweise lokal verfügen, in die Azure-Dateisynchronisierung übertragen werden können. Weitere Informationen finden Sie unter [Planung für die Bereitstellung einer Azure-Dateisynchronisierung](storage-files-planning.md).
 

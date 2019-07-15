@@ -6,13 +6,13 @@ ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: conceptual
-ms.date: 06/03/2019
-ms.openlocfilehash: 02ae9673f1dc402ee1500b466d7e259263ef3262
-ms.sourcegitcommit: 600d5b140dae979f029c43c033757652cddc2029
+ms.date: 06/30/2019
+ms.openlocfilehash: 65795b5b4dea8d2cdeecf5f78f9de751f275dac0
+ms.sourcegitcommit: 084630bb22ae4cf037794923a1ef602d84831c57
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/04/2019
-ms.locfileid: "66494847"
+ms.lasthandoff: 07/03/2019
+ms.locfileid: "67537594"
 ---
 # <a name="connect-to-azure-data-explorer-with-odbc"></a>Herstellen einer Verbindung mit Azure Data Explorer mithilfe der ODBC
 
@@ -20,7 +20,13 @@ Die Open Database Connectivity ([ODBC](/sql/odbc/reference/odbc-overview)) ist e
 
 Im Hintergrund rufen Anwendungen Funktionen in der ODBC-Schnittstelle ab, die in datenbankspezifischen Modulen (*Treibern*) implementiert sind. Azure Data Explorer unterstützt eine Teilmenge des SQL Server-Kommunikationsprotokolls ([MS-TDS](/azure/kusto/api/tds/)) und kann daher den ODBC-Treiber für SQL Server verwenden.
 
-In diesem Artikel erfahren Sie, wie Sie den SQL Server-ODBC-Treiber verwenden, damit Sie aus jeder Anwendung, die die ODBC unterstützt, eine Verbindung mit Azure Data Explorer herstellen können.
+Anhand des folgenden Videos lernen Sie, wie Sie eine ODBC-Verbindung erstellen können. 
+
+> [!VIDEO https://www.youtube.com/embed/qA5wxhrOwog]
+
+Alternativ können Sie auch [die ODBC-Datenquelle](#configure-the-odbc-data-source) wie unten beschrieben konfigurieren. 
+
+In diesem Artikel erfahren Sie, wie Sie den SQL Server-ODBC-Treiber verwenden, damit Sie aus jeder Anwendung, die die ODBC unterstützt, eine Verbindung mit Azure Data Explorer herstellen können. 
 
 ## <a name="prerequisites"></a>Voraussetzungen
 

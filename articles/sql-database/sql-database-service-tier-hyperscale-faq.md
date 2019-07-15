@@ -12,12 +12,12 @@ ms.author: sstein
 ms.reviewer: ''
 manager: craigg
 ms.date: 05/06/2019
-ms.openlocfilehash: 38d9ad007b67756bdca0c6f98267aa16ba38ee9d
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 49d1e171d4d4b2210a98c59332f4842e23a2f2b9
+ms.sourcegitcommit: 084630bb22ae4cf037794923a1ef602d84831c57
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65791427"
+ms.lasthandoff: 07/03/2019
+ms.locfileid: "67537852"
 ---
 # <a name="faq-about-azure-sql-hyperscale-databases"></a>FAQs zu Azure SQL-Datenbank Hyperscale
 
@@ -53,7 +53,7 @@ Die auf virtuellen Kernen basierenden Dienstebenen unterscheiden sich in erster 
 | **Speichertyp** | Alle |Storage Premium (remote, pro Instanz) | Entkoppelter Speicher mit lokalem SSD-Cache (pro Instanz) | Äußerst schneller lokaler SSD-Speicher (pro Instanz) |
 | **Speichergröße** | Einzeldatenbank/Pool für elastische Datenbanken | 5 GB – 4 TB | Bis zu 100 TB | 5 GB – 4 TB |
 | | Verwaltete Instanz  | 32 GB – 8 TB | – | 32 GB – 4 TB |
-| **E/A-Durchsatz** | Einzeldatenbank** | 500 IOPS pro V-Kern mit maximal 7.000 IOPS | Noch unbekannt | 5\.000 IOPS mit maximal 200.000 IOPS|
+| **E/A-Durchsatz** | Einzeldatenbank** | 500 IOPS pro V-Kern mit maximal 7.000 IOPS | Hyperscale ist eine mehrstufige Architektur mit Caching auf mehreren Ebenen. Die tatsächlichen IOPs hängen von der Workload ab. | 5\.000 IOPS mit maximal 200.000 IOPS|
 | | Verwaltete Instanz | Hängt von der Größe der Datei ab | – | Verwaltete Instanz: Hängt von der Größe der Datei ab|
 |**Verfügbarkeit**|Alle|1 Replikat, keine Replikate mit Leseskalierung, kein lokaler Cache | Mehrere Replikate, bis zu 15 Replikate mit Leseskalierung, teilweise lokaler Cache | 3 Replikate, 1 Replikat mit Leseskalierung, zonenredundante Hochverfügbarkeit, vollständiger lokaler Cache |
 |**Sicherungen**|Alle|RA-GRS, 7 - 35 Tage (standardmäßig 7 Tage)| RA-GRS, 7-35 Tage (Standard: 7 Tage), konstante Zeitpunktwiederherstellung (Point-in-Time Recovery, PITR) | RA-GRS, 7 - 35 Tage (standardmäßig 7 Tage) |
@@ -79,7 +79,7 @@ Die Dienstebene „Hyperscale“ für Azure SQL-Datenbank ist derzeit in den unt
 
 Ja. Weitere Informationen und Beschränkungen hinsichtlich der Anzahl von Hyperscale-Datenbanken pro logischem Server finden Sie unter [Ressourceneinschränkungen in SQL-Datenbank für Einzeldatenbanken und Pooldatenbanken auf einem logischen Server](sql-database-resource-limits-logical-server.md).
 
-### <a name="what-are-the-performance-characteristic-of-a-hyperscale-database"></a>Welche Leistungsmerkmale weist eine Hyperscale-Datenbank auf?
+### <a name="what-are-the-performance-characteristics-of-a-hyperscale-database"></a>Welche Leistungsmerkmale weist eine Hyperscale-Datenbank auf?
 
 Die Hyperscale-Architektur von SQL-Datenbank bietet eine hohe Leistung und einen hohen Durchsatz und unterstützt außerdem große Datenbankgrößen. 
 
@@ -94,7 +94,7 @@ SQL-Datenbank Hyperscale bietet schnelle Skalierbarkeit basierend auf Ihrem Work
 
   Mit Hyperscale erhalten Sie auch die Möglichkeit, mindestens einen zusätzlichen Computeknoten bereitzustellen, mit dem Sie Ihre Leseanforderungen verarbeiten können. Dies bedeutet, dass Sie diese zusätzlichen Computeknoten als schreibgeschützte Knoten verwenden können, um Ihre Leseworkload vom primären Computeknoten auszulagern. Diese Knoten sind nicht nur schreibgeschützt, sondern dienen außerdem als unmittelbar betriebsbereite Standbyserver im Falle eines Failovers vom primären Knoten.
 
-  Die Bereitstellung der einzelnen zusätzlichen Computeknoten kann in konstanter Zeit erfolgen und stellt einen Onlinevorgang dar. Sie können eine Verbindung mit diesen zusätzlichen schreibgeschützten Computeknoten herstellen, indem Sie das `ApplicationIntent`-Argument in Ihrer Verbindungszeichenfolge auf `read_only` festlegen. Verbindungen, die mit `read-only` markiert sind, werden automatisch an einen der zusätzlichen schreibgeschützten Computeknoten weitergeleitet.
+  Die Bereitstellung der einzelnen zusätzlichen Computeknoten kann in konstanter Zeit erfolgen und stellt einen Onlinevorgang dar. Sie können eine Verbindung mit diesen zusätzlichen schreibgeschützten Computeknoten herstellen, indem Sie das `ApplicationIntent`-Argument in Ihrer Verbindungszeichenfolge auf `readonly` festlegen. Verbindungen, die mit `readonly` markiert sind, werden automatisch an einen der zusätzlichen schreibgeschützten Computeknoten weitergeleitet.
 
 ## <a name="deep-dive-questions"></a>Vertiefende Fragen
 
@@ -349,7 +349,7 @@ Durch den Endbenutzer. Dies ist kein automatischer Vorgang.
 
 Ja. Die temp-Datenbank wird automatisch zentral hochskaliert, je größer der Computebedarf wird.  
 
-### <a name="can-i-provision-multiple-primary-computes-such-as-a-multi-master-system-where-multiple-primary-compute-heads-can-drive-a-higher-level-of-concurrency"></a>Können mehrere primäre Computeknoten wie ein Multimastersystem bereitgestellt werden, bei dem mehrere primäre Computeheads zu einem höheren Maß an Parallelität führen können?
+### <a name="can-i-provision-multiple-primary-compute-nodes-such-as-a-multi-master-system-where-multiple-primary-compute-heads-can-drive-a-higher-level-of-concurrency"></a>Können mehrere primäre Computeknoten wie ein Multimastersystem bereitgestellt werden, bei dem mehrere primäre Computeheads zu einem höheren Maß an Parallelität führen können?
 
 Nein. Nur der primäre Computeknoten akzeptiert Lese-/Schreibanforderungen. Sekundäre Computeknoten akzeptieren nur schreibgeschützte Anforderungen.
 
@@ -361,7 +361,7 @@ Es werden standardmäßig zwei Replikate für Hyperscale-Datenbanken erstellt. S
 
 ### <a name="how-do-i-connect-to-these-secondary-compute-nodes"></a>Wie wird eine Verbindung mit diesen sekundären Computeknoten hergestellt?
 
-Sie können eine Verbindung mit diesen zusätzlichen schreibgeschützten Computeknoten herstellen, indem Sie das `ApplicationIntent`-Argument in Ihrer Verbindungszeichenfolge auf `read_only` festlegen. Verbindungen, die mit `read-only` markiert sind, werden automatisch an einen der zusätzlichen schreibgeschützten Computeknoten weitergeleitet.  
+Sie können eine Verbindung mit diesen zusätzlichen schreibgeschützten Computeknoten herstellen, indem Sie das `ApplicationIntent`-Argument in Ihrer Verbindungszeichenfolge auf `readonly` festlegen. Verbindungen, die mit `readonly` markiert sind, werden automatisch an einen der zusätzlichen schreibgeschützten Computeknoten weitergeleitet.  
 
 ### <a name="can-i-create-a-dedicated-endpoint-for-the-read-scale-replica"></a>Kann ein dedizierter Endpunkt für das Replikat mit Leseskalierung erstellt werden?
 

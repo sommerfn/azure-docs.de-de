@@ -1,6 +1,6 @@
 ---
 title: 'Basisrichtlinie: MFA für Administratoren verlangen – Azure Active Directory'
-description: Richtlinie für bedingten Zugriff, die verlangt, dass Administratoren die mehrstufige Authentifizierung (Multi-Factor Authentication, MFA) verwenden
+description: Richtlinie für bedingten Zugriff, um eine mehrstufige Authentifizierung für Administratoren zu erfordern
 services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
@@ -11,23 +11,23 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb, rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a1ce48126c3e8867ac7f2696d8cf7db992a9a60a
-ms.sourcegitcommit: 13cba995d4538e099f7e670ddbe1d8b3a64a36fb
+ms.openlocfilehash: 4474283b9a233e39497cd05f0f04ea0984f02401
+ms.sourcegitcommit: d3b1f89edceb9bff1870f562bc2c2fd52636fc21
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/22/2019
-ms.locfileid: "66003546"
+ms.lasthandoff: 07/04/2019
+ms.locfileid: "67560950"
 ---
-# <a name="baseline-policy-require-mfa-for-admins"></a>Basisrichtlinie: Anfordern von MFA für Administratoren
+# <a name="baseline-policy-require-mfa-for-admins-preview"></a>Basisrichtlinie: Benötigt MFA für Admins (Vorschau)
 
 Benutzer mit Zugriff auf privilegierte Konten haben uneingeschränkten Zugriff auf Ihre Umgebung. Aufgrund der weitreichenden Befugnisse, die diese Konten haben, sollten Sie sie mit Bedacht verwalten. Eine gängige Methode, um den Schutz von privilegierten Konten zu verbessern, ist eine stärkere Form der Kontoüberprüfung bei der Anmeldung. In Azure Active Directory können Sie eine striktere Kontoüberprüfung erreichen, indem Sie eine mehrstufige Authentifizierung (Multi-Factor Authentication, MFA) anfordern.
 
-**MFA für Administratoren verlangen** ist eine [Basisrichtlinie](concept-baseline-protection.md), die verlangt, dass Administratoren mit den folgenden privilegierten Rollen bei jeder Anmeldung MFA verwenden:
+**MFA für Administratoren erforderlich (Vorschau)**  ist eine [Basisrichtlinie](concept-baseline-protection.md), die MFA jedes Mal erfordert, wenn sich eine der folgenden privilegierten Administratorrollen anmeldet:
 
 * Globaler Administrator
 * SharePoint-Administrator
 * Exchange-Administrator
-* Administrator für bedingten Zugriff
+* Administrator für den bedingten Zugriff
 * Sicherheitsadministrator
 * Helpdeskadministrator/Kennwortadministrator
 * Rechnungsadministrator
@@ -35,47 +35,36 @@ Benutzer mit Zugriff auf privilegierte Konten haben uneingeschränkten Zugriff a
 
 Beim Aktivieren der Richtlinie „MFA für Administratoren verlangen“ müssen sich die obigen neun Administratorrollen mit der Authenticator-App für MFA registrieren. Sobald die MFA-Registrierung abgeschlossen ist, müssen Administratoren bei jeder Anmeldung MFA ausführen.
 
-![Basisrichtlinie: MFA für Administratoren verlangen](./media/howto-baseline-protect-administrators/baseline-policy-require-mfa-for-admins.png)
-
 ## <a name="deployment-considerations"></a>Überlegungen zur Bereitstellung
 
-Weil die Richtlinie **MFA für Administratoren verlangen** für alle wichtigen Administratoren gilt, sind verschiedene Aspekte zu berücksichtigen, um eine reibungslose Bereitstellung sicherzustellen. Beispielsweise müssen Benutzer und Dienstprinzipale in Azure AD identifiziert werden, die MFA nicht ausführen dürfen oder sollen, sowie die von Ihrer Organisation verwendeten Anwendungen und Clients, die keine moderne Authentifizierung unterstützen.
+Da die Richtlinie **„MFA für Administratoren erforderlich“ (Vorschau)** für alle kritischen Administratoren gilt, müssen mehrere Überlegungen angestellt werden, um eine reibungslose Bereitstellung zu gewährleisten. Beispielsweise müssen Benutzer und Dienstprinzipale in Azure AD identifiziert werden, die MFA nicht ausführen dürfen oder sollen, sowie die von Ihrer Organisation verwendeten Anwendungen und Clients, die keine moderne Authentifizierung unterstützen.
 
 ### <a name="legacy-protocols"></a>Ältere Protokolle
 
-Ältere Authentifizierungsprotokolle (IMAP, SMTP, POP3 usw.) werden von E-Mail-Clients für Authentifizierungsanforderungen verwendet. Diese Protokolle unterstützen keine mehrstufige Authentifizierung (Multi-Factor Authentication, MFA). Die meisten der von Microsoft festgestellten Kontosicherheitsverletzungen werden durch Angriffe verursacht, die sich gegen ältere Protokolle richten und versuchen, die MFA zu umgehen. Um sicherzustellen, dass die MFA bei der Anmeldung mit einem Administratorkonto obligatorisch ist und von Angreifern nicht umgangen werden kann, blockiert diese Richtlinie alle Authentifizierungsanforderungen, die über ältere Protokolle für Administratorkonten ausgeführt werden.
+Ältere Authentifizierungsprotokolle (IMAP, SMTP, POP3 usw.) werden von E-Mail-Clients für Authentifizierungsanforderungen verwendet. Diese Protokolle unterstützen keine Multi-Factor Authentication. Die meisten der von Microsoft festgestellten Kontosicherheitsverletzungen werden durch Angriffe verursacht, die sich gegen ältere Protokolle richten und versuchen, die MFA zu umgehen. Um sicherzustellen, dass die MFA bei der Anmeldung mit einem Administratorkonto obligatorisch ist und von Angreifern nicht umgangen werden kann, blockiert diese Richtlinie alle Authentifizierungsanforderungen, die über ältere Protokolle für Administratorkonten ausgeführt werden.
 
 > [!WARNING]
-> Stellen Sie vor dem Aktivieren dieser Richtlinie sicher, dass Ihre Administratoren keine älteren Authentifizierungsprotokolle verwenden. Weitere Informationen finden Sie im Artikel [Blockieren der Legacyauthentifizierung bei Azure AD mit bedingtem Zugriff](howto-baseline-protect-legacy-auth.md#identify-legacy-authentication-use).
-
-### <a name="user-exclusions"></a>Ausschluss von Benutzern
-
-Diese Basisrichtlinie bietet Ihnen die Möglichkeit, Benutzer auszuschließen. Es wird empfohlen, die folgenden Konten auszuschließen, bevor Sie die Richtlinie für Ihren Mandanten aktivieren:
-
-* **Notfallzugriffs**- oder **Break-Glass**-Konten, um eine mandantenweite Kontosperrung zu vermeiden. In dem unwahrscheinlichen Fall, dass alle Administratoren aus dem Mandanten ausgeschlossen sind, können Sie sich mit Ihrem Administratorkonto für den Notfallzugriff beim Mandanten anmelden und Maßnahmen ergreifen, um den Zugriff wiederherzustellen.
-   * Weitere Informationen finden Sie im Artikel [Verwalten von Konten für den Notfallzugriff in Azure AD](../users-groups-roles/directory-emergency-access.md).
-* **Dienstkonten** und **Dienstprinzipale**, z. B. das Konto für die Azure AD Connect-Synchronisierung. Dienstkonten sind nicht interaktive Konten, die an keinen bestimmten Benutzer gebunden sind. Sie werden normalerweise von Back-End-Diensten verwendet und ermöglichen den programmgesteuerten Zugriff auf Anwendungen. Dienstkonten sollten ausgeschlossen werden, weil die MFA nicht programmgesteuert abgeschlossen werden kann.
-   * Wenn Ihre Organisation diese Konten in Skripts oder Code verwendet, sollten Sie in Betracht ziehen, diese durch  [verwaltete Identitäten](../managed-identities-azure-resources/overview.md) zu ersetzen. Als vorübergehende Problemumgehung können Sie diese spezifischen Konten aus der Basisrichtlinie ausschließen.
-* Benutzer, die kein Smartphone besitzen oder verwenden können.
-   * Diese Richtlinie erfordert, dass sich Administratoren mithilfe der Microsoft Authenticator-App für MFA registrieren.
+> Stellen Sie vor dem Aktivieren dieser Richtlinie sicher, dass Ihre Administratoren keine älteren Authentifizierungsprotokolle verwenden. Weitere Informationen finden Sie im Artikel [Gewusst wie: Blockieren Sie die Legacy-Authentifizierung für Azure AD mit Conditional Access ](howto-baseline-protect-legacy-auth.md#identify-legacy-authentication-use)für weitere Informationen.
 
 ## <a name="enable-the-baseline-policy"></a>Aktivieren der Basisrichtlinie
 
-Die **Basisrichtlinie: MFA für Administratoren verlangen** ist vorkonfiguriert und wird im Azure-Portal auf dem Blatt „Bedingter Zugriff“ ganz oben angezeigt.
+Die **Basisrichtlinie: MFA für Administratoren benötigt (Vorschau)** ist vorkonfiguriert und wird oben angezeigt, wenn Sie zur Ansicht Bedingter Zugriff im Microsoft Azure-Portal navigieren.
 
 Gehen Sie wie folgt vor, um diese Richtlinie zu aktivieren und Ihre Administratoren zu schützen:
 
-1. Melden Sie sich beim  **Azure-Portal** als globaler Administrator, Sicherheitsadministrator oder Administrator für bedingten Zugriff an.
+1. Melden Sie sich im  **Azure-Portal**  als globaler Administrator, Sicherheitsadministrator oder Administrator mit Conditional Access an.
 1. Navigieren Sie zu **Azure Active Directory** > **Bedingter Zugriff**.
-1. Wählen Sie in der Liste der Richtlinien den Eintrag **Basisrichtlinie: MFA für Administratoren verlangen** aus.
+1. Wählen Sie in der Liste der Richtlinien den Eintrag **Basisrichtlinie: Benötigt MFA für Admins (Vorschau)** .
 1. Legen Sie **Richtlinie aktivieren** auf **Richtlinie sofort verwenden** fest.
-1. Fügen Sie ausgeschlossene Benutzer hinzu, indem Sie auf **Benutzer** > **Ausgeschlossene Benutzer auswählen** klicken und die Benutzer auswählen, die ausgeschlossen werden sollen. Klicken Sie auf **Auswählen** und dann auf **Fertig**.
-1. Klicken Sie auf **Speichern**.
+1. Klicken Sie auf  **Speichern**.
+
+> [!WARNING]
+> Es gab eine Option, **Richtlinie in Zukunft automatisch aktivieren**, wenn diese Richtlinie in der Vorschau war. Wir haben diese Option entfernt, um plötzliche Benutzerauswirkungen zu minimieren. Wenn Sie diese Option ausgewählt haben, als sie verfügbar war, ist **Richtlinie Nicht verwenden** jetzt automatisch ausgewählt. Wenn sie diese Basisrichtlinie verwenden möchten, schauen Sie sich die obigen Schritte an, um sie zu aktivieren.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
 Weitere Informationen finden Sie unter
 
-* [Baselineschutzrichtlinien für bedingten Zugriff](concept-baseline-protection.md)
+* [Conditonal Access grundlegende Schutzrichtlinien](concept-baseline-protection.md)
 * [Fünf Schritte zum Sichern Ihrer Identitätsinfrastruktur](../../security/azure-ad-secure-steps.md)
-* [Was ist der bedingte Zugriff in Azure Active Directory?](overview.md)
+* [Was ist Conditional Access im Azure Active Directory?](overview.md)

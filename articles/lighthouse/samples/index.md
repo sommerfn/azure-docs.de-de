@@ -7,12 +7,12 @@ ms.service: lighthouse
 ms.topic: sample
 ms.date: 07/11/2019
 ms.author: jenhayes
-ms.openlocfilehash: 3bc4446b1964b28963166c92b59b55f782ceb67c
-ms.sourcegitcommit: 47ce9ac1eb1561810b8e4242c45127f7b4a4aa1a
+ms.openlocfilehash: c0266bd3c88dccc8b0413e617bb4a5fcadbf3720
+ms.sourcegitcommit: 6b41522dae07961f141b0a6a5d46fd1a0c43e6b2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67808070"
+ms.lasthandoff: 07/15/2019
+ms.locfileid: "67971350"
 ---
 # <a name="azure-lighthouse-samples"></a>Azure Lighthouse-Beispiele
 
@@ -21,7 +21,7 @@ Die folgende Tabelle enthält Links zu wichtigen Azure Resource Manager-Vorlagen
 | **Vorlage** | **Beschreibung** |
 |---------|---------|
 | [create-multiple-rgs](https://github.com/Azure/Azure-Lighthouse-samples/tree/master/Azure-Delegated-Resource-Management/templates/create-multiple-rgs) | Erstellt mehrere Ressourcengruppen mithilfe einer einzelnen Azure Resource Manager-Vorlage. |
-| [cross-rg-deployment](https://github.com/Azure/Azure-Lighthouse-samples/tree/master/Azure-Delegated-Resource-Management/cross-rg-deployment) | Stellt Speicherkonten in zwei verschiedenen Ressourcengruppen bereit. |
+| [cross-rg-deployment](https://github.com/Azure/Azure-Lighthouse-samples/tree/master/Azure-Delegated-Resource-Management/templates/cross-rg-deployment) | Stellt Speicherkonten in zwei verschiedenen Ressourcengruppen bereit. |
 | [cross-subscription-deployment](https://github.com/Azure/Azure-Lighthouse-samples/tree/master/Azure-Delegated-Resource-Management/templates/cross-subscription-deployment) | Stellt Azure Resource Manager-Vorlagen in mehreren Abonnements bereit. |
 | [delegated-resource-management](https://github.com/Azure/Azure-Lighthouse-samples/tree/master/Azure-Delegated-Resource-Management/templates/delegated-resource-management) | Führt das Onboarding des Abonnements eines Kunden der delegierten Azure-Ressourcenverwaltung durch. |
 | [deploy-azure-mgmt-services](https://github.com/Azure/Azure-Lighthouse-samples/tree/master/Azure-Delegated-Resource-Management/templates/deploy-azure-mgmt-services) | Erstellt Azure-Verwaltungsdienste, verknüpft sie miteinander und stellt zusätzliche Lösungen bereit. |

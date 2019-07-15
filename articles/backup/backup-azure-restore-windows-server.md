@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 9/7/2018
 ms.author: saurse
-ms.openlocfilehash: d58b51f06c21c787e4aa720c803ab6533544d55c
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 9c2f8ce0dfb866826de549946bc3ee1acc2b677f
+ms.sourcegitcommit: aa66898338a8f8c2eb7c952a8629e6d5c99d1468
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60238620"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67460260"
 ---
 # <a name="restore-files-to-windows-by-using-the-azure-resource-manager-deployment-model"></a>Wiederherstellen von Dateien in Windows mit dem Azure Resource Manager-Bereitstellungsmodell
 
@@ -97,7 +97,7 @@ Bei diesen Schritte wird die folgende Terminologie verwendet:
 * *Beispieltresor:* der Recovery Services-Tresor, bei dem der Quellcomputer und der Zielcomputer registriert sind. <br/>
 
 > [!NOTE]
-> Sicherungen können nicht auf einem Zielcomputer wiederhergestellt werden, auf dem eine ältere Version des Betriebssystems ausgeführt wird. Beispielsweise kann eine Sicherung, die von einem Windows 7-Computer erstellt wurde, auf einem Windows 8-Computer (oder höher) wiederhergestellt werden. Es ist aber nicht möglich, eine Sicherung, die von einem Windows 8-Computer erstellt wurde, auf einem Windows 7-Computer wiederherzustellen.
+> Sicherungen können nicht auf einem Zielcomputer wiederhergestellt werden, auf dem eine ältere Version des Betriebssystems ausgeführt wird. Beispielsweise kann eine Sicherung, die von einem Windows 7-Computer erstellt wurde, auf einem Windows 7-Computer (oder höher) wiederhergestellt werden. Es ist aber nicht möglich, eine Sicherung, die von einem Windows 8-Computer erstellt wurde, auf einem Windows 7-Computer wiederherzustellen.
 >
 >
 

@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 988e8982b6f06fb1210330c5cafdb696892794fe
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.openlocfilehash: dd4c6952aab1581a968fc671141792c0e16a7d46
+ms.sourcegitcommit: 084630bb22ae4cf037794923a1ef602d84831c57
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/27/2019
-ms.locfileid: "66235527"
+ms.lasthandoff: 07/03/2019
+ms.locfileid: "67536968"
 ---
 # <a name="reports-in-azure-multi-factor-authentication"></a>Berichte in Azure Multi-Factor Authentication
 
@@ -188,5 +188,6 @@ Die folgende Tabelle kann verwendet werden, um die Problembehandlung für die me
 
 ## <a name="next-steps"></a>Nächste Schritte
 
+* [Nutzungs- und Insights-Berichte für SSPR und MFA](howto-authentication-methods-usage-insights.md)
 * [Für Benutzer](../user-help/multi-factor-authentication-end-user.md)
 * [Bereitstellungsort](concept-mfa-whichversion.md)

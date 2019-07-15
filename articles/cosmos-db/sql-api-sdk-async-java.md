@@ -6,14 +6,14 @@ ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.devlang: java
 ms.topic: reference
-ms.date: 3/5/2019
+ms.date: 07/01/2019
 ms.author: moderakh
-ms.openlocfilehash: 356838f16f7f13506657326bae5dbe994d54bdd5
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 3cafa4d5aecaa4c8f3863c3269ec02793340e3e6
+ms.sourcegitcommit: 79496a96e8bd064e951004d474f05e26bada6fa0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "57570095"
+ms.lasthandoff: 07/02/2019
+ms.locfileid: "67509266"
 ---
 # <a name="azure-cosmos-db-async-java-sdk-for-sql-api-release-notes-and-resources"></a>Azure Cosmos DB Async Java SDK für die SQL-API: Versionshinweise und Ressourcen
 > [!div class="op_single_selector"]
@@ -43,6 +43,16 @@ Das Async Java SDK für die SQL-API unterscheidet sich vom Java SDK für die SQL
 | **Unterstützte Mindestlaufzeit**|[JDK 8](https://aka.ms/azure-jdks) | 
 
 ## <a name="release-notes"></a>Versionshinweise
+
+### <a name="a-name250250"></a><a name="2.5.0"/>2.5.0
+* TCP-Modus ist jetzt standardmäßig aktiviert
+* Die Abfragemetriken für übergreifende Partitionen geben jetzt alle Partitionen zurück
+* „Global Strong“ funktioniert jetzt ordnungsgemäß
+* Failover für Abfragen wiederholt bei Multimaster nicht ordnungsgemäß
+* Abhängigkeitsbumps für Sicherheits-Hotfixes
+
+### <a name="a-name245245"></a><a name="2.4.5"/>2.4.5
+* Fehlerbehebung für Hash V2-Support
 
 ### <a name="a-name243243"></a><a name="2.4.3"/>2.4.3
 * Fehlerbehebung für Ressourcenverlust bei client#close()  ([Github 88](https://github.com/Azure/azure-cosmosdb-java/issues/88)).
@@ -148,20 +158,20 @@ Anforderungen an Cosmos DB mithilfe eines deaktivierten SDK werden vom Dienst ab
 | --- | --- | --- |
 | [2.4.3](#2.4.3) |5\. März 2019|--- |
 | [2.4.2](#2.4.2) |1\. März 2019|--- |
-| [2.4.1](#2.4.1) |20\. Februar 2019|--- |
+| [2.4.1](#2.4.1) |20. Februar 2019|--- |
 | [2.4.0](#2.4.0) |8\. Februar 2019|--- |
-| [2.4.0-beta-1](#2.4.0-beta-1) |04\. Februar 2019|--- |
-| [2.3.1](#2.3.1) |15\. Januar 2019|--- |
-| [2.3.0](#2.3.0) |29\. November 2018|--- |
+| [2.4.0-beta-1](#2.4.0-beta-1) |04. Februar 2019|--- |
+| [2.3.1](#2.3.1) |15. Januar 2019|--- |
+| [2.3.0](#2.3.0) |29. November 2018|--- |
 | [2.2.2](#2.2.2) |8\. November 2018|--- |
 | [2.2.1](#2.2.1) |2\. November 2018|--- |
-| [2.2.0](#2.2.0) |22\. September 2018|--- |
+| [2.2.0](#2.2.0) |22. September 2018|--- |
 | [2.1.0](#2.1.0) |5\. September 2018|--- |
-| [2.0.1](#2.0.1) |16\. August 2018|--- |
-| [2.0.0](#2.0.0) |20\. Juni 2018|--- |
-| [1.0.2](#1.0.2) |18\. Mai 2018|--- |
-| [1.0.1](#1.0.1) |20\. April 2018|--- |
-| [1.0.0](#1.0.0) |27\. Februar 2018|--- |
+| [2.0.1](#2.0.1) |16. August 2018|--- |
+| [2.0.0](#2.0.0) |20. Juni 2018|--- |
+| [1.0.2](#1.0.2) |18. Mai 2018|--- |
+| [1.0.1](#1.0.1) |20. April 2018|--- |
+| [1.0.0](#1.0.0) |27. Februar 2018|--- |
 
 ## <a name="faq"></a>Häufig gestellte Fragen
 [!INCLUDE [cosmos-db-sdk-faq](../../includes/cosmos-db-sdk-faq.md)]

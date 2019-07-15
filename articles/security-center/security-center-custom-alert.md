@@ -14,32 +14,31 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/29/2018
 ms.author: rkarlin
-ms.openlocfilehash: a5deee4209001d8c2212033c2d547d7c4199bd25
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 984bd4d5db210679884655721be0cbcdac8c1705
+ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65192621"
+ms.lasthandoff: 07/01/2019
+ms.locfileid: "67485276"
 ---
 # <a name="custom-alert-rules-in-azure-security-center-preview"></a>Benutzerdefinierte Warnungsregeln in Azure Security Center (Vorschauversion)
 In diesem Dokument erfahren Sie, wie Sie benutzerdefinierte Warnungsregeln in Azure Security Center erstellen.
 
 > [!NOTE]
-> Benutzerdefinierte Warnungen werden am 30. Juni 2019 eingestellt.
+> Benutzerdefinierte Benachrichtigungen, die vom Security Center außer Kraft gesetzt wurden. 
 
 ## <a name="retirement-of-custom-alert-rules-in-azure-security-center"></a>Einstellung von benutzerdefinierten Warnungsregeln in Azure Security Center
 
-Die Funktion der benutzerdefinierten Warnungen wird am 30. Juni 2019 aufgrund der Außerbetriebnahme der zugrunde liegenden Infrastruktur eingestellt. Im Zeitraum bis zur Einstellung können Benutzer vorhandene benutzerdefinierte Warnungsregeln bearbeiten, aber keine neuen Regeln mehr hinzufügen.
+Die Funktion der benutzerdefinierten Warnungen wurde am 30. Juni 2019 aufgrund der Außerbetriebnahme der zugrunde liegenden Infrastruktur eingestellt. Jegliche benutzerdefinierte Benachrichtigungen, die vor der Außerbetriebnahme definiert wurden, werden nicht ausgeführt. Sicherheitswarnungen, die auf diesen benutzerdefinierten Benachrichtigungsregeln basieren, werden nicht generiert. Sie können Abfragen Ihrer benutzerdefinierten Benachrichtigungsregeln im Security Center weiterhin einsehen, um sie in den folgenden alternativen Möglichkeiten wieder herzustellen:
+
 Den Benutzern wird empfohlen, eine der folgenden Aktionen auszuführen:
-- Integrieren von [Azure Sentinel](https://azure.microsoft.com/services/azure-sentinel/) mit einem Mausklick, um vorhandene Warnungen automatisch zu migrieren und neue Warnungen zu erstellen
+- Aktivieren Sie [Azure Sentinel](https://azure.microsoft.com/services/azure-sentinel/) und verwenden Sie die integrierte [Analysefunktion](https://docs.microsoft.com/azure/sentinel/tutorial-detect-threats), um die Benachrichtigungsregeln wiederherzustellen.
 - Neuerstellen von Warnungen mit Azure Monitor-Protokollwarnungen
                                      
-Wenn Sie Ihre vorhandenen Warnungen beibehalten und nach Azure Sentinel migrieren möchten, [starten Sie Azure Sentinel](https://portal.azure.com/#create/Microsoft.ASI/preview). Wählen Sie als ersten Schritt den Arbeitsbereich aus, in dem Ihre benutzerdefinierten Warnungen gespeichert sind. Wählen Sie dann das Menüelement „Analytics“ aus, damit Ihre Warnungen automatisch migriert werden.
+Wenn Sie Ihre vorhandenen Warnungen beibehalten und in Azure Sentinel wiederherstellen möchten, [starten Sie Azure Sentinel](https://portal.azure.com/#create/Microsoft.ASI/preview). Wählen Sie als ersten Schritt den Arbeitsbereich aus, in dem Ihre benutzerdefinierten Warnungen gespeichert sind. Wählen Sie dann das Menüelement „Analytics“ aus, damit Sie Ihre benutzerdefinierten Benachrichtigungsregeln einrichten können. Weitere Informationen finden Sie auf der Seite [„Dokumentation“](https://docs.microsoft.com/azure/sentinel/tutorial-detect-threats).
 
 > [!NOTE]
-> Die Migration von benutzerdefinierten Warnungen nach Azure Sentinel ist eine einmalige Migration aller Ihrer benutzerdefinierten Warnungen im ausgewählten Arbeitsbereich. Nach Abschluss der Migration kann auf die benutzerdefinierten Warnungen für diesen ausgewählten Arbeitsbereich über Azure Security Center nicht mehr zugegriffen werden.
->
-> Benutzerdefinierte Warnungen mithilfe von Abfragen des Typs [Search](https://docs.microsoft.com/azure/azure-monitor/log-query/search-queries)- oder [Union](https://docs-analytics-eus.azurewebsites.net/queryLanguage/query_language_unionoperator.html)-Anweisungen werden in Azure Sentinel nicht unterstützt und deshalb nicht migriert. Bitte bearbeiten Sie diese Warnungen, bevor Sie die Migration durchführen.
+> Benutzerdefinierte Warnungen mithilfe von Abfragen des Typs [Search](https://docs.microsoft.com/azure/azure-monitor/log-query/search-queries)- oder [Union](https://docs-analytics-eus.azurewebsites.net/queryLanguage/query_language_unionoperator.html)-Anweisungen werden in Azure Sentinel nicht unterstützt. Bitte bearbeiten Sie diese Warnungen, bevor Sie die Migration durchführen.
 
 Wenn Sie Ihre Warnungen unter Verwendung von Azure Monitor-Protokollwarnungen neu erstellen möchten, lesen Sie den Artikel: [Erstellen, Anzeigen und Verwalten von Protokollwarnungen mithilfe von Azure Monitor](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-log). Er enthält Anleitungen zum Erstellen von Protokollwarnungen. Zum Anzeigen einer allgemeinen Übersicht über Protokollwarnungen in Azure Monitor klicken Sie [hier](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-unified-log).
 

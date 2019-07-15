@@ -6,14 +6,14 @@ author: sogup
 manager: vijayts
 ms.service: backup
 ms.topic: conceptual
-ms.date: 05/21/2019
+ms.date: 06/28/2019
 ms.author: sogup
-ms.openlocfilehash: 9d4d1db808446cb010e6551bdcec514fc550d802
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 0248e169f5d502cce8723f594f438b87ab088f3a
+ms.sourcegitcommit: 978e1b8cac3da254f9d6309e0195c45b38c24eb5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65966321"
+ms.lasthandoff: 07/03/2019
+ms.locfileid: "67551613"
 ---
 # <a name="frequently-asked-questions-back-up-azure-vms"></a>Häufig gestellte Fragen – Sicherung von Azure-VMs
 
@@ -46,10 +46,6 @@ Wenn Sie ein „VM-Mitwirkender“ sind, können Sie die Sicherung der VM aktivi
 Stellen Sie sicher, dass Sie in der Ressourcengruppe für den Recovery Services-Tresor über Schreibberechtigungen verfügen, wenn der Recovery Services-Tresor und die VM unterschiedliche Ressourcengruppen aufweisen.  
 
 
-### <a name="what-azure-vms-can-you-back-up-using-azure-backup"></a>Welche Azure-VMs können mithilfe von Azure Backup gesichert werden?
-
-Überprüfen Sie die [Supportmatrix](backup-support-matrix-iaas.md) auf Supportdetails und -einschränkungen.
-
 ### <a name="does-an-on-demand-backup-job-use-the-same-retention-schedule-as-scheduled-backups"></a>Wird bei bedarfsbasierten Sicherungsaufträgen der gleiche Aufbewahrungszeitplan verwendet wie bei geplanten Sicherungen?
 Nein. Geben Sie die Beibehaltungsdauer für einen bedarfsgesteuerten Sicherungsauftrag an. Bei Aufträgen, die über das Portal ausgelöst werden, beträgt die Aufbewahrungsdauer standardmäßig 30 Tage.
 
@@ -73,23 +69,23 @@ Wenn Sie die vom Azure Backup-Dienst erstellte Ressourcengruppe sperren, treten 
 
 Der Benutzer muss die Sperre aufheben und die Wiederherstellungspunkt-Sammlung aus dieser Ressourcengruppe löschen, damit die künftigen Sicherungen erfolgreich sind. [Gehen Sie folgendermaßen vor](backup-azure-troubleshoot-vm-backup-fails-snapshot-timeout.md#clean-up-restore-point-collection-from-azure-portal), um die Wiederherstellungspunkt-Sammlung zu entfernen.
 
-### <a name="does-the-backup-policy-consider-daylight-saving-time-dst"></a>Berücksichtigt die Sicherungsrichtlinie die Sommerzeit?
-Nein. Das Datum und die Uhrzeit auf Ihrem lokalen Computer stimmt mit der aktuellen lokalen Zeit überein (Sommerzeit berücksichtigt). Die festgelegte Zeit für geplante Sicherungen kann aufgrund der Sommerzeit von der lokalen Zeit abweichen.
-
-### <a name="how-many-data-disks-can-i-attach-to-a-vm-backed-up-by-azure-backup"></a>Wie viele Datenträger kann ich an eine VM anfügen, die durch Azure Backup gesichert wird?
-Azure Backup kann VMs mit bis zu 16 Datenträgern sichern. Unterstützung für 16 Datenträger wird in der [sofortigen Wiederherstellung](backup-instant-restore-capability.md) bereitgestellt.
 
 ### <a name="does-azure-backup-support-standard-ssd-managed-disk"></a>Unterstützt Azure Backup verwaltete SSD Standard-Datenträger?
 Azure Backup unterstützt [verwaltete SSD Standard-Datenträger](https://azure.microsoft.com/blog/announcing-general-availability-of-standard-ssd-disks-for-azure-virtual-machine-workloads/). Verwaltete SSD-Datenträger stellen eine neue Art von dauerhaftem Speicher für Azure-VMs bereit. Unterstützung für verwaltete SSD-Datenträger wird in der [sofortigen Wiederherstellung](backup-instant-restore-capability.md) bereitgestellt.
 
 ### <a name="can-we-back-up-a-vm-with-a-write-accelerator-wa-enabled-disk"></a>Können ich eine VM mit einem Datenträger mit aktivierter Schreibbeschleunigung sichern?
-Momentaufnahmen können auf dem Datenträger mit aktivierter Schreibbeschleunigung nicht erstellt werden. Der Azure Backup-Dienst kann den Datenträger mit aktivierter Schreibbeschleunigung jedoch von der Sicherung ausschließen. Der Ausschluss von Datenträgern für VMs mit Datenträgern mit aktivierter Schreibbeschleunigung wird nur für Abonnements unterstützt, für die ein Upgrade auf die sofortige Wiederherstellung durchgeführt wurde.
+Momentaufnahmen können auf dem Datenträger mit aktivierter Schreibbeschleunigung nicht erstellt werden. Der Azure Backup-Dienst kann den Datenträger mit aktivierter Schreibbeschleunigung jedoch von der Sicherung ausschließen.
 
 ### <a name="i-have-a-vm-with-write-accelerator-wa-disks-and-sap-hana-installed-how-do-i-back-up"></a>Ich verfüge über eine VM mit Datenträgern mit Schreibbeschleunigung und installiertem SAP HANA. Wie kann ich diese sichern?
 Azure Backup kann den Datenträger mit aktivierter Schreibbeschleunigung nicht sichern, kann ihn aber von der Sicherung ausschließen. Die Sicherung bietet jedoch keine Datenbankkonsistenz, da die Informationen auf dem Datenträger mit aktivierter Schreibbeschleunigung nicht gesichert werden. Sie können Datenträger mit dieser Konfiguration sichern, wenn Sie eine Sicherung des Betriebssystemdatenträgers möchten, sowie Sicherungen von Datenträgern ohne aktivierte Schreibbeschleunigung durchführen.
 
 Wir verfügen über eine private Vorschau zu einer SAP HANA-Sicherung mit einer RPO von 15 Minuten. Diese ist ähnlich wie die Sicherung von SQL-Datenbank aufgebaut und verwendet die Schnittstelle „backInt“ für Drittanbieterlösungen, die durch SAP HANA zertifiziert sind. Wenn Sie interessiert sind, schreiben Sie uns an `AskAzureBackupTeam@microsoft.com` eine E-Mail mit dem Betreff **Sign up for private preview for backup of SAP HANA in Azure VMs** (Registrierung für die private Vorschau zur Sicherung von SAP HANA in Azure-VMs).
 
+### <a name="what-is-the-maximum-delay-i-can-expect-in-backup-start-time-from-the-scheduled-backup-time-i-have-set-in-my-vm-backup-policy"></a>Mit welchen maximalen Verzögerung muss ich bei der Startzeit der Sicherungskopie im Vergleich zu der geplanten Sicherungszeit, die ich in meiner VM-Sicherungsrichtlinie eingerichtet habe, rechnen?
+Die geplante Sicherung wird innerhalb von 2 Stunden nach der geplanten Sicherungszeit ausgelöst. Beispiel: Wenn 100 VMs eine Sicherungsstartzeit von 2:00 haben, dann laufen die Sicherungen für alle 100 VMs spätestens um 4:00. Wenn die geplanten Sicherungen aufgrund eines Ausfalls und Fortsetzen/Wiederholen pausiert wurden, dann kann es sein, dass die Sicherung außerhalb dieses geplanten 2-Stunden-Fensters geschieht.
+
+### <a name="what-is-the-minimum-allowed-retention-range-for-daily-backup-point"></a>Welches ist die geringste zulässige Beibehaltungsdauer für den täglichen Sicherungspunkt?
+Die Sicherungsrichtlinien von Azure Virtual Machine unterstützen eine Mindestbeibehaltungsdauer zwischen 7 und 9999 Tagen. Jegliche Modifikationen einer vorhandenen VM-Sicherungsrichtlinie mit weniger als 7 Tagen benötigen ein Update, um die Mindestbeibehaltungsdauer von 7 Tagen einzuhalten.
 
 ## <a name="restore"></a>Restore
 

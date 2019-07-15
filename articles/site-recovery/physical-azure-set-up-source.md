@@ -6,14 +6,14 @@ author: Rajeswari-Mamilla
 manager: rochakm
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 04/14/2019
+ms.date: 07/0/2019
 ms.author: ramamill
-ms.openlocfilehash: 5f0578026e95378065fc68198434e347a87eb1fe
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 44588fedd53b363c43a369eeb1917ccaec58d948
+ms.sourcegitcommit: 79496a96e8bd064e951004d474f05e26bada6fa0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "62123913"
+ms.lasthandoff: 07/02/2019
+ms.locfileid: "67508770"
 ---
 # <a name="set-up-the-configuration-server-for-disaster-recovery-of-physical-servers-to-azure"></a>Einrichten des Konfigurationsservers für die Notfallwiederherstellung von physischen Servern in Azure
 
@@ -24,7 +24,7 @@ Dieser Artikel beschreibt, wie Sie Ihre lokale Umgebung einrichten, um mit dem R
 In diesem Artikel wird davon ausgegangen, dass Sie über Folgendes bereits verfügen:
 - Einen Recovery Services-Tresor im [Azure-Portal](https://portal.azure.com "Azure-Portal").
 - Einen physischen Computer, um den Konfigurationsserver zu installieren.
-- Wenn Sie TLS 1.0 auf dem Computer deaktiviert haben, auf dem der Konfigurationsserver installiert wird, stellen Sie sicher, dass TLS 1.2 aktiviert ist und .NET Framework Version 4.6 oder höher auf dem Computer (mit deaktivierter starker Kryptografie) installiert ist. [Weitere Informationen](https://support.microsoft.com/help/4033999/how-to-resolve-azure-site-recovery-agent-issues-after-disabling-tls-1)
+- Wenn Sie TLS 1.0 auf dem Computer deaktiviert haben, auf dem der Konfigurationsserver installiert wird, stellen Sie sicher, dass TLS 1.2 aktiviert ist und .NET Framework Version 4.6 oder höher auf dem Computer (mit aktivierter starker Kryptografie) installiert ist. [Weitere Informationen](https://support.microsoft.com/help/4033999/how-to-resolve-azure-site-recovery-agent-issues-after-disabling-tls-1)
 
 ### <a name="configuration-server-minimum-requirements"></a>Mindestanforderungen für den Konfigurationsserver
 Die folgende Tabelle enthält die minimalen Hardware-, Software- und Netzwerkanforderungen für einen Konfigurationsserver.

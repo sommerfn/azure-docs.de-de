@@ -6,14 +6,14 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: article
-ms.date: 05/30/2019
+ms.date: 06/30/2019
 ms.author: raynew
-ms.openlocfilehash: a02a2be7fb3ed942b1359949e18ba7d3dee824ae
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 8d1471188999182623a57db50d3205a859c160a2
+ms.sourcegitcommit: ac1cfe497341429cf62eb934e87f3b5f3c79948e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66399972"
+ms.lasthandoff: 07/01/2019
+ms.locfileid: "67491798"
 ---
 # <a name="fail-over-vms-and-physical-servers"></a>Ausführen eines Failovers für virtuelle Computer und physische Server 
 
@@ -70,9 +70,9 @@ Virtuelle Computer/physische Server, die mit Site Recovery geschützt sind, unte
 
 > [!NOTE]
 > Während Sie für virtuelle Hyper-V-Computer ein Failover von einem lokalen Standort zu einem anderen lokalen Standort durchführen, müssen Sie wie folgt vorgehen, um zurück zum primären lokalen Standort zu gelangen: Wählen Sie zuerst die Option **Umgekehrt replizieren**, um die Daten des virtuellen Computers zurück an den primären Standort zu replizieren, und lösen Sie dann ein Failover aus. Wenn der primäre virtuelle Computer nicht verfügbar ist, müssen Sie den virtuellen Computer vor Beginn des Vorgangs **Umgekehrt replizieren** aus einer Sicherung wiederherstellen.   
-> 
-> 
-> ## <a name="failover-job"></a>Failoverauftrag
+ 
+ 
+## <a name="failover-job"></a>Failoverauftrag
 
 ![Failover](./media/site-recovery-failover/FailoverJob.png)
 
@@ -111,7 +111,7 @@ Es kann ratsam sein, bei einem Failover bestimmte Aktionen zu automatisieren. Hi
 ## <a name="post-failover-considerations"></a>Überlegungen nach dem Failover
 Orientieren Sie sich nach einem Failover an den folgenden Empfehlungen:
 ### <a name="retaining-drive-letter-after-failover"></a>Beibehalten von Laufwerkbuchstaben nach einem Failover
-Wenn Sie nach dem Failover den Laufwerkbuchstaben des virtuellen Computers beibehalten möchten, können Sie die **SAN-Richtlinie** für den virtuellen Computer auf **OnlineAll** festlegen. [Weitere Informationen](https://support.microsoft.com/help/3031135/how-to-preserve-the-drive-letter-for-protected-virtual-machines-that-are-failed-over-or-migrated-to-azure).
+Azure Site Recovery kümmert sich um die Aufbewahrung von Laufwerkbuchstaben. [Erfahren Sie mehr](vmware-azure-exclude-disk.md#example-1-exclude-the-sql-server-tempdb-disk) darüber, wie dies funktioniert, wenn Sie einige Datenträger ausschließen.
 
 ## <a name="prepare-to-connect-to-azure-vms-after-failover"></a>Vorbereiten der Verbindungsherstellung mit Azure-VMs nach dem Failover
 

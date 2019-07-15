@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 10/01/2018
 ms.author: gracez
-ms.openlocfilehash: 6324da55c8af4934185fa39a106939844788adba
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 33907437ab330278bdf7b023f6a93bd96e78cbad
+ms.sourcegitcommit: d3b1f89edceb9bff1870f562bc2c2fd52636fc21
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60653715"
+ms.lasthandoff: 07/04/2019
+ms.locfileid: "67561334"
 ---
 # <a name="migrate-from-bing-speech-to-the-speech-service"></a>Migrieren von der Bing-Spracheingabe zum Spracherkennungsdienst
 
@@ -69,7 +69,7 @@ Die WebSockets-Protokolle des Spracherkennungsdiensts sind auch mit den Protokol
 
 Wenn Sie eine Bing-Spracheingabe-Clientbibliothek für eine bestimmte Programmiersprache verwenden, erfordert die Migration zum [Spracherkennungs-SDK](speech-sdk.md) Änderungen an Ihrer Anwendung, weil es sich um eine andere API handelt. Das Spracherkennungs-SDK kann Ihren Code einfacher gestalten und Ihnen auch Zugriff auf neue Features bieten.
 
-Das Spracherkennungs-SDK unterstützt derzeit C# (Windows 10, UWP, .NET Standard), Java (Android und benutzerdefinierte Geräte), Objective C (iOS), C++ (Windows und Linux) und JavaScript. APIs sind auf den verschiedenen Plattformen ähnlich, was die Entwicklung für mehrere Plattformen erleichtert.
+Das Spracherkennungs-SDK unterstützt derzeit C# ([mehr darüber hier](https://aka.ms/csspeech)), Java (Android und benutzerdefinierte Geräte), Objective C (iOS), C++ (Windows und Linux) und JavaScript. APIs sind auf den verschiedenen Plattformen ähnlich, was die Entwicklung für mehrere Plattformen erleichtert.
 
 Die Spracherkennungsdienste bieten keinen globalen Endpunkt. Ermitteln Sie, ob Ihre Anwendung effizient funktioniert, wenn sie einen einzigen regionalen Endpunkt für den gesamten Datenverkehr verwendet. Wenn nicht, verwenden Sie die Geolokalisierung, um den effizientesten Endpunkt zu bestimmen. Sie benötigen für jede verwendete Region ein separates Spracherkennungsdienst-Abonnement.
 

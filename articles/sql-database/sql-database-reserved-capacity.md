@@ -11,13 +11,13 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: sstein, carlrab
 manager: craigg
-ms.date: 04/26/2019
-ms.openlocfilehash: 74a52df4eab8a3e471e541889cde74846af00fb8
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.date: 07/01/2019
+ms.openlocfilehash: 8c99ae1aa96e41173fb6e4d7303979d8fc167003
+ms.sourcegitcommit: ac1cfe497341429cf62eb934e87f3b5f3c79948e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64574193"
+ms.lasthandoff: 07/01/2019
+ms.locfileid: "67491607"
 ---
 # <a name="prepay-for-sql-database-compute-resources-with-azure-sql-database-reserved-capacity"></a>Vorauszahlen von SQL-Datenbank-Computeressourcen mit reservierter Azure SQL-Datenbank-Kapazität
 
@@ -28,7 +28,7 @@ Sie müssen die Reservierung keinen bestimmten SQL-Datenbank-Instanzen (Singleto
 
 Sie können die reservierte Azure SQL-Datenbank-Kapazität über das [Azure-Portal](https://portal.azure.com) erwerben. So erwerben Sie eine reservierte SQL-Datenbank-Kapazität
 
-- Ihnen muss die Besitzerrolle für mindestens ein Enterprise-Abonnement oder ein Abonnement mit nutzungsbasierter Bezahlung zugeordnet sein.
+- Ihnen muss die Besitzerrolle für mindestens ein Enterprise-Abonnement oder ein individuelles Abonnement mit nutzungsbasierter Bezahlung zugeordnet sein.
 - Bei Enterprise-Abonnements muss im [EA-Portal](https://ea.azure.com) die Option **Reservierte Instanzen hinzufügen** aktiviert werden. Wenn diese Einstellung deaktiviert ist, müssen Sie ein EA-Administrator für das Abonnement sein.
 - Für das Cloud Solution Provider-Programm (CSP) können nur die Administrator- oder Vertriebs-Agents reservierte SQL-Datenbank-Kapazitäten kaufen.
 
@@ -52,7 +52,7 @@ Nehmen Sie beispielsweise an, Sie führen einen Pool für elastische Gen5-Datenb
     | Feld      | BESCHREIBUNG|
     |:------------|:--------------|
     |NAME        |Der Name dieser Reservierung|
-    |Abonnement|Das Abonnement, das für die Zahlung der Reservierung von SQL-Datenbank-Kapazitäten verwendet wird. Die Zahlungsmethode für das Abonnement wird mit Vorauszahlungen für die Reservierung von SQL-Datenbank-Kapazitäten belastet. Der Abonnementtyp muss „Enterprise Agreement“ (Angebotsnummern: MS-AZR-0017P oder MS-AZR-0148P) oder „Nutzungsbasierte Zahlung“ (Angebotsnummern: MS-AZR-0003P oder MS-AZR-0023P) sein. Bei einem Enterprise-Abonnement werden die Gebühren vom Verpflichtungsguthaben der Reservierung abgezogen oder als Überschreitung belastet. Bei einem Abonnement mit nutzungsbasierter Zahlung wird die Kreditkarte mit den Gebühren belastet, oder die Gebühren werden für die Zahlung auf Rechnung in Rechnung gestellt.|
+    |Abonnement|Das Abonnement, das für die Zahlung der Reservierung von SQL-Datenbank-Kapazitäten verwendet wird. Die Zahlungsmethode für das Abonnement wird mit Vorauszahlungen für die Reservierung von SQL-Datenbank-Kapazitäten belastet. Der Abonnementtyp muss „Enterprise Agreement“ (Angebotsnummern: MS-AZR-0017P oder MS-AZR-0148P) oder ein einzelnen Vereinbarung mit Preisen für nutzungsbasierte Bezahlung (Angebotsnummern: MS-AZR-0003P oder MS-AZR-0023P) sein. Bei einem Enterprise-Abonnement werden die Gebühren vom Verpflichtungsguthaben der Reservierung abgezogen oder als Überschreitung belastet. Bei einem individuellen Abonnement mit Preisen für nutzungsbasierte Zahlung wird die Kreditkarte mit den Gebühren belastet, oder die Gebühren werden für Zahlung auf Rechnung in Rechnung gestellt.|
     |`Scope`       |Der Umfang der Reservierung virtueller Kerne kann ein Abonnement oder mehrere Abonnements (freigegebener Bereich) umfassen. Optionen: <br/><br/>**Einzelabonnement:** Der Rabatt auf die Reservierung virtueller Kerne wird auf SQL-Datenbank-Instanzen in diesem Abonnement angewandt. <br/><br/>**Gemeinsames Abonnement:** Der Rabatt auf die Reservierung virtueller Kerne wird auf SQL-Datenbank-Instanzen angewandt, die in einem beliebigen Abonnement innerhalb des Abrechnungskontexts ausgeführt werden. Für Enterprise-Kunden stellt der freigegebene Bereich die Registrierung dar und umfasst alle Abonnements in der Registrierung. Für Kunden mit nutzungsbasierter Zahlung stellt der freigegebene Bereich alle Abonnements mit nutzungsbasierter Zahlung dar, die vom Kontoadministrator erstellt wurden.|
     |Region      |Die Azure-Region, die durch die Reservierung von SQL-Datenbank-Kapazitäten abgedeckt wird.|
     |Bereitstellungstyp|Der SQL-Ressourcentyp, für den Sie die Reservierung erwerben möchten.|
@@ -77,6 +77,10 @@ Weitere Informationen zum Umtausch oder zur Rückerstattung von Reservierungen f
 
 Die Flexibilität der V-Kern-Größe ermöglicht ein zentrales Hoch- oder Herunterskalieren innerhalb einer Leistungsstufe und Region, ohne den Vorteil reservierter Kapazität einzubüßen. Mit der reservierten Kapazität von SQL-Datenbank erhalten Sie außerdem die Flexibilität, Ihre aktiven Datenbanken vorübergehend zwischen Pools und Einzeldatenbanken im Rahmen des normalen Betriebs (innerhalb derselben Region und Leistungsstufe) zu verschieben, ohne den Vorteil reservierter Kapazität einzubüßen. Dank eines nicht angewendeten Puffers in Ihrer Reservierung können Sie effektiv Leistungsspitzen verwalten, ohne Ihr Budget zu überschreiten.
 
+## <a name="need-help-contact-us"></a>Sie brauchen Hilfe? Kontakt
+
+Wenn Sie weitere Fragen haben oder Hilfe benötigen, [erstellen Sie eine Supportanfrage](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest).
+
 ## <a name="next-steps"></a>Nächste Schritte
 
 Der Rabatt auf die Reservierung virtueller Kerne wird automatisch auf die Anzahl der SQL-Datenbank-Instanzen angewendet, die dem Reservierungsumfang und den -attributen reservierter SQL-Datenbank-Instanzen entsprechen. Sie können den Reservierungsumfang von SQL-Datenbank-Kapazitäten über das [Azure-Portal](https://portal.azure.com), PowerShell, die CLI oder die API aktualisieren.
@@ -91,7 +95,3 @@ Weitere Informationen zu Azure-Reservierungen finden Sie in den folgenden Artike
 - [Grundlegendes zur Nutzung von Azure-Reservierungen für das Abonnement mit nutzungsbasierter Bezahlung](../billing/billing-understand-reserved-instance-usage.md)
 - [Grundlegendes zur Nutzung von Azure-Reservierungen für den Konzernbeitritt](../billing/billing-understand-reserved-instance-usage-ea.md)
 - [Verkaufen Microsoft Azure Reserved Instances](https://docs.microsoft.com/partner-center/azure-reservations)
-
-## <a name="need-help-contact-us"></a>Sie brauchen Hilfe? Kontakt
-
-Wenn Sie weitere Fragen haben oder Hilfe benötigen, [erstellen Sie eine Supportanfrage](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest).

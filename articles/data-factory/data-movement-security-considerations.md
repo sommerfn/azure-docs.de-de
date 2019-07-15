@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 06/15/2018
 ms.author: abnarain
-ms.openlocfilehash: 635b45fe7f0108795c34f51081fa374c604036b2
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 3dab2da2d54efe73b7b782800b190ea8aac2b5cd
+ms.sourcegitcommit: aa66898338a8f8c2eb7c952a8629e6d5c99d1468
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66153306"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67460683"
 ---
 #  <a name="security-considerations-for-data-movement-in-azure-data-factory"></a>Sicherheitsüberlegungen für Datenverschiebung in Azure Data Factory
 > [!div class="op_single_selector" title1="Wählen Sie die von Ihren verwendete Version des Data Factory-Diensts aus:"]
@@ -119,7 +119,7 @@ Die Anmeldeinformationen für Ihre lokalen Datenspeicher sind immer verschlüsse
 
 
 #### <a name="ports-used-when-encrypting-linked-service-on-self-hosted-integration-runtime"></a>Beim Verschlüsseln des verknüpften Diensts auf der selbstgehosteten Integration Runtime verwendete Ports
-Standardmäßig verwendet PowerShell den Port 8050 auf dem Computer mit der selbstgehosteten Integration Runtime für die sichere Kommunikation. Dieser Port kann bei Bedarf geändert werden.  
+Standardmäßig verwendet PowerShell den Port 8060 auf dem Computer mit der selbstgehosteten Integration Runtime für die sichere Kommunikation. Dieser Port kann bei Bedarf geändert werden.  
 
 ![HTTPS-Port für das Gateway](media/data-movement-security-considerations/https-port-for-gateway.png)
 
@@ -197,7 +197,7 @@ Ja. Ausführlichere Informationen finden Sie [hier](https://azure.microsoft.com/
 
 **Welche Portanforderungen sind erforderlich, damit die selbstgehostete Integration Runtime funktioniert?**
 
-Die selbstgehostete Integration Runtime erstellt HTTP-basierte Verbindungen für den Zugriff auf das Internet. Der ausgehende Ports 443 muss geöffnet sein, damit die selbstgehostete Integration Runtime diese Verbindung herstellen kann. Öffnen Sie den eingehenden Port 8050 nur auf Computerebene (nicht auf Ebene der Unternehmensfirewall) für die Anwendung zur Anmeldeinformationsverwaltung. Wenn Azure SQL-Datenbank oder Azure SQL Data Warehouse als Quelle oder Ziel verwendet wird, müssen Sie auch den Port 1433 öffnen. Weitere Informationen finden Sie im Abschnitt [Azure Data Factory – Sicherheitsüberlegungen für Datenverschiebung](#firewall-configurations-and-whitelisting-ip-address-of-gateway). 
+Die selbstgehostete Integration Runtime erstellt HTTP-basierte Verbindungen für den Zugriff auf das Internet. Der ausgehende Ports 443 muss geöffnet sein, damit die selbstgehostete Integration Runtime diese Verbindung herstellen kann. Öffnen Sie den eingehenden Port 8060 nur auf Computerebene (nicht auf Ebene der Unternehmensfirewall) für die Anwendung zur Anmeldeinformationsverwaltung. Wenn Azure SQL-Datenbank oder Azure SQL Data Warehouse als Quelle oder Ziel verwendet wird, müssen Sie auch den Port 1433 öffnen. Weitere Informationen finden Sie im Abschnitt [Azure Data Factory – Sicherheitsüberlegungen für Datenverschiebung](#firewall-configurations-and-whitelisting-ip-address-of-gateway). 
 
 
 ## <a name="next-steps"></a>Nächste Schritte

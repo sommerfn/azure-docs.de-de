@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 05/06/2019
 ms.author: raynew
-ms.openlocfilehash: a16ed7134fc9f3c159715f58f116de3fb30e8aca
-ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
+ms.openlocfilehash: 1c5c38e9af58aa9468fb0e22491327d3a35f0dda
+ms.sourcegitcommit: cf438e4b4e351b64fd0320bf17cc02489e61406a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/01/2019
-ms.locfileid: "67481137"
+ms.lasthandoff: 07/08/2019
+ms.locfileid: "67656660"
 ---
 # <a name="back-up-an-sap-hana-database"></a>Sichern einer SAP HANA-Datenbank
 
@@ -26,7 +26,7 @@ ms.locfileid: "67481137"
 
 **Unterstützung** | **Details**
 --- | ---
-**Unterstützte geografische Räume** | Australien, Südosten; Australien, Osten <br> Brasilien Süd <br> Kanada, Mitte; Kanada, Osten <br> Asien, Südosten; Asien, Osten <br> USA, Osten; USA, Osten 2; USA, Westen-Mitte; USA, Westen; USA, Westen 2, USA, Norden-Mitte; USA, Mitte; USA, Süden-Mitte<br> Indien, Mitte; Indien, Süden <br> „Japan, Osten“, „Japan, Westen“<br> Korea, Mitte, Korea, Süden <br> „Europa, Norden“, „Europa, Westen“ <br> Vereinigtes Königreich, Süden; Vereinigtes Königreich, Westen
+**Unterstützte geografische Räume** | Australien, Südosten; Australien, Osten <br> Brasilien Süd <br> Kanada, Mitte; Kanada, Osten <br> Asien, Südosten; Asien, Osten <br> USA, Osten; USA, Osten 2; USA, Westen-Mitte; USA, Westen; USA, Westen 2, USA, Norden-Mitte; USA, Mitte; USA, Süden-Mitte<br> Indien, Mitte; Indien, Süden <br> „Japan, Osten“, „Japan, Westen“<br> Korea, Mitte, Korea, Süden <br> „Europa, Norden“, „Europa, Westen“ <br> Vereinigtes Königreich, Süden; Vereinigtes Königreich, Westen
 **Unterstützte VM-Betriebssysteme** | SLES 12 mit SP2 oder SP3.
 **Unterstützte HANA-Versionen** | SDC auf HANA 1.x, MDC auf HANA 2.x <= SPS03
 

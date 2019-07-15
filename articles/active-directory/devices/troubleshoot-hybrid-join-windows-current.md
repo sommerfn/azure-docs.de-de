@@ -2,26 +2,21 @@
 title: Beheben von Problemen mit Geräten unter Windows 10 und Windows Server 2016 mit Hybrideinbindung in Azure Active Directory | Microsoft-Dokumentation
 description: Beheben von Problemen mit Geräten unter Windows 10 und Windows Server 2016 mit Hybrideinbindung in Azure Active Directory
 services: active-directory
-documentationcenter: ''
-author: MicrosoftGuyJFlo
-manager: daveba
-ms.assetid: cdc25576-37f2-4afb-a786-f59ba4c284c2
 ms.service: active-directory
 ms.subservice: devices
-ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
-ms.date: 11/08/2017
+ms.topic: troubleshooting
+ms.date: 06/28/2019
 ms.author: joflore
+author: MicrosoftGuyJFlo
+manager: daveba
 ms.reviewer: jairoc
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: dcb7dc356c8101c1b0907818b45618ef6372c691
-ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
+ms.openlocfilehash: dfb4b03fb57efecff587a91dfc2ad293be96d9ba
+ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58517435"
+ms.lasthandoff: 07/01/2019
+ms.locfileid: "67481603"
 ---
 # <a name="troubleshooting-hybrid-azure-active-directory-joined-windows-10-and-windows-server-2016-devices"></a>Beheben von Problemen mit Geräten unter Windows 10 und Windows Server 2016 mit Hybrideinbindung in Azure Active Directory 
 
@@ -35,14 +30,10 @@ Weitere Informationen zu anderen Windows-Clients finden Sie unter [Beheben von P
 In diesem Artikel wird vorausgesetzt, dass Sie [Geräte mit Hybrideinbindung in Azure Active Directory konfiguriert haben](hybrid-azuread-join-plan.md), um die folgenden Szenarien zu unterstützen:
 
 - Gerätebasierter bedingter Zugriff
-
 - [Unternehmensroaming von Einstellungen](../active-directory-windows-enterprise-state-roaming-overview.md)
-
 - [Windows Hello for Business](../active-directory-azureadjoin-passport-deployment.md)
 
-
 Dieses Dokument enthält Anleitungen zur Problembehandlung zum Beheben potenzieller Probleme. 
-
 
 Für Windows 10 und Windows Server 2016 unterstützt ein Azure Active Directory-Hybridbeitritt das Windows 10-Update vom November 2015 und höher. Es wird empfohlen, das Anniversary Update zu verwenden.
 
@@ -53,8 +44,6 @@ Für Windows 10 und Windows Server 2016 unterstützt ein Azure Active Directory-
 1. Öffnen Sie die Eingabeaufforderung als Administrator.
 
 2. Geben Sie **dsregcmd /status** ein.
-
-
 
 ```
 +----------------------------------------------------------------------+
@@ -101,8 +90,6 @@ WamDefaultAuthority: organizations
          AzureAdPrt: YES
 ```
 
-
-
 ## <a name="step-2-evaluate-the-join-status"></a>Schritt 2: Bewerten des Beitrittsstatus 
 
 Überprüfen Sie die folgenden Felder, und stellen Sie sicher, dass sie die erwarteten Werte aufweisen:
@@ -114,22 +101,14 @@ Dieses Feld gibt an, ob das Gerät in Azure AD eingebunden ist. Wenn der Wert **
 **Mögliche Ursachen:**
 
 - Fehler bei der Authentifizierung des Computers für den Beitritt.
-
 - In der Organisation gibt es einen HTTP-Proxy, der von dem Computer nicht gefunden werden kann.
-
 - Der Computer kann Azure AD für die Authentifizierung oder Azure DRS für die Registrierung nicht erreichen.
-
 - Der Computer befindet sich möglicherweise nicht im internen Unternehmensnetzwerk oder im VPN mit direktem Zugriff auf einen lokalen AD-Domänencontroller.
-
 - Wenn der Computer über ein TPM verfügt, befindet sich dieses möglicherweise in einem fehlerhaften Zustand.
-
 - Möglicherweise liegt eine Fehlkonfiguration in Diensten vor, die früher im Dokument aufgeführt wurden und die Sie erneut überprüfen müssen. Typische Beispiele:
-
-    - Auf dem Verbundserver sind keine WS-Trust-Endpunkte aktiviert.
-
-    - Ihr Verbundserver lässt möglicherweise keine eingehende Authentifizierung von Computern in Ihrem Netzwerk über die integrierte Windows-Authentifizierung zu.
-
-    - Es gibt kein Dienstverbindungspunkt-Objekt, das auf Ihren verifizierten Domänennamen in Azure AD in der Active Directory-Gesamtstruktur verweist, zu der der Computer gehört.
+   - Auf dem Verbundserver sind keine WS-Trust-Endpunkte aktiviert.
+   - Ihr Verbundserver lässt möglicherweise keine eingehende Authentifizierung von Computern in Ihrem Netzwerk über die integrierte Windows-Authentifizierung zu.
+   - Es gibt kein Dienstverbindungspunkt-Objekt, das auf Ihren verifizierten Domänennamen in Azure AD in der Active Directory-Gesamtstruktur verweist, zu der der Computer gehört.
 
 ---
 
@@ -150,9 +129,7 @@ Dieses Feld gibt an, ob das Gerät bei Azure AD als privates Gerät registriert 
 Diese Felder geben an, ob der Benutzer sich bei der Anmeldung beim Gerät erfolgreich bei Azure AD authentifiziert hat. Wenn die Werte **NO** lauten, kann dies die folgenden Ursachen haben:
 
 - Dem Gerät wurde bei der Registrierung ein ungültiger Speicherschlüssel (STK) im TPM zugewiesen (prüfen Sie den KeySignTest bei der Ausführung mit erhöhten Rechten).
-
 - Alternative Anmelde-ID.
-
 - HTTP-Proxy nicht gefunden.
 
 ## <a name="next-steps"></a>Nächste Schritte

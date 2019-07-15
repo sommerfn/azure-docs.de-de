@@ -9,12 +9,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 05/08/2019
 ms.author: geg
-ms.openlocfilehash: 19b249a76a339ce870609fbcdceaf70bf79a6ea2
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 62e10f382882e70d488f9814cb00c2b86b8b9691
+ms.sourcegitcommit: aa66898338a8f8c2eb7c952a8629e6d5c99d1468
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65906509"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67460234"
 ---
 # <a name="restore-azure-vms"></a>Wiederherstellen virtueller Azure-Computer
 
@@ -185,7 +185,7 @@ Nach dem Wiederherstellen einer VM gibt es eine Reihe von Dingen zu beachten:
 
 - Erweiterungen, die während der Konfiguration der Sicherung installiert, aber nicht aktiviert sind. Falls ein Problem auftritt, installieren Sie die Erweiterungen neu.
 - Wenn die gesicherte VM eine statische IP-Adresse hatte, hat die wiederhergestellte VM eine dynamische IP-Adresse, um Konflikte zu vermeiden. Sie können [eine statische IP-Adresse zur wiederhergestellten VM hinzufügen](../virtual-network/virtual-networks-reserved-private-ip.md#how-to-add-a-static-internal-ip-to-an-existing-vm).
-- Für eine wiederhergestellte VM gibt es keine Verfügbarkeitsgruppe. Wenn Sie die Option „Datenträger wiederherstellen“ verwenden, können Sie [eine Verfügbarkeitsgruppe](../virtual-machines/windows/tutorial-availability-sets.md) angeben, wenn Sie eine VM vom Datenträger aus mit der angegebenen Vorlage oder PowerShell erstellen.
+- Für eine wiederhergestellte VM gibt es keine Verfügbarkeitsgruppe. Wenn Sie die Option „Datenträger wiederherstellen“ verwenden, können Sie dann [eine Verfügbarkeitsgruppe](../virtual-machines/windows/tutorial-availability-sets.md) angeben, wenn Sie eine VM vom Datenträger aus mit der angegebenen Vorlage oder PowerShell erstellen.
 - Bei Verwendung einer Cloud-Init-basierten Linux-Verteilung wie etwa Ubuntu wird das Kennwort aus Sicherheitsgründen nach der Wiederherstellung blockiert. Verwenden Sie zum [Zurücksetzen des Kennworts](../virtual-machines/linux/reset-password.md) die VMAccess-Erweiterung auf dem wiederhergestellten virtuellen Computer. Wir empfehlen, bei diesen Verteilungen SSH-Schlüssel zu verwenden, sodass Sie das Kennwort nach der Wiederherstellung nicht zurücksetzen müssen.
 
 

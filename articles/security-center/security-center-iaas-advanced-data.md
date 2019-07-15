@@ -12,33 +12,33 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 05/22/2019
+ms.date: 05/29/2019
 ms.author: monhaber
-ms.openlocfilehash: 9806f92a3f00df60cd75315eca427836348e7534
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.openlocfilehash: ed94b92a34e2989c9f2226c344ac4d34a279eeac
+ms.sourcegitcommit: 978e1b8cac3da254f9d6309e0195c45b38c24eb5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/27/2019
-ms.locfileid: "66244293"
+ms.lasthandoff: 07/03/2019
+ms.locfileid: "67551837"
 ---
-# <a name="advanced-data-security-for-sql-servers-on-iaas"></a>Advanced Data Security für SQL Server-Instanzen in IaaS
-Advanced Data Security für SQL Server-Instanzen in IaaS ist ein einheitliches Paket für erweiterte SQL-Sicherheitsfunktionen. Dazu zählen aktuell die Funktionen zur Ermittlung und Verringerung potenzieller Datenbankschwachstellen und Erkennung ungewöhnlicher Aktivitäten, die eine Bedrohung für Ihre Datenbank darstellen können.
+# <a name="advanced-data-security-for-sql-servers-on-azure-virtual-machines-public-preview"></a>Erweiterte Datensicherheit für SQL-Server auf Azure Virtual Machines (Public Preview)
+Advanced Data Security für SQL Server-Instanzen auf Azure Virtual Machines ist ein einheitliches Paket für erweiterte SQL-Sicherheitsfunktionen. Derzeit (in der öffentlichen Vorschau) enthält es Funktionen zum Aufzeigen und Mindern potenzieller Datenbank-Schwachstellen und zum Erkennen anomaler Aktivitäten, die auf eine Bedrohung für Ihre Datenbank hinweisen könnten. 
 
-Dieses Sicherheitsangebot für SQL Server-Instanzen in IaaS basiert auf der gleichen grundlegenden Technologie, die auch im [Advanced Data Security-Paket für Azure SQL-Datenbank](https://docs.microsoft.com/azure/sql-database/sql-database-advanced-data-security) verwendet wird.
+Dieses Sicherheitsangebot für SQL Server-Instanzen auf Azure-VMs basiert auf der gleichen grundlegenden Technologie, die auch im [Advanced Data Security-Paket für Azure SQL-Datenbank](https://docs.microsoft.com/azure/sql-database/sql-database-advanced-data-security) verwendet wird.
 
 
 ## <a name="overview"></a>Übersicht
 
-Advanced Data Security (ADS) stellt eine Reihe erweiterter SQL-Sicherheitsfunktionen bereit, die eine Sicherheitsrisikobewertung und Advanced Threat Protection umfassen.
+Advanced Data Security stellt eine Reihe erweiterter SQL-Sicherheitsfunktionen bereit, die eine Sicherheitsrisikobewertung und Advanced Threat Protection umfassen.
 
 * [Sicherheitsrisikobewertung](https://docs.microsoft.com/azure/sql-database/sql-vulnerability-assessment) ist ein einfach zu konfigurierender Dienst, mit dem potenzielle Schwachstellen in der Datenbank ermittelt, nachverfolgt und behoben werden können. Er bietet Einblicke in Ihren Sicherheitsstatus, enthält die Schritte zum Beheben von Sicherheitsproblemen und verbessert Ihre Datenbanksicherheit.
 * [Advanced Threat Protection](https://docs.microsoft.com/azure/sql-database/sql-database-threat-detection-overview) erkennt Anomalien bei Aktivitäten, die auf ungewöhnliche und potenziell schädliche Versuche hinweisen, auf SQL Server zuzugreifen oder diesen zu nutzen. Sie überwacht Ihre Datenbank fortlaufend auf verdächtige Aktivitäten und stellt handlungsorientierte Sicherheitswarnungen bei anomalen Datenbankzugriffsmustern bereit. Diese Warnungen enthalten Details zur verdächtigen Aktivität sowie empfohlene Maßnahmen zur Untersuchung und Abwehr der Bedrohung.
 
-## <a name="get-started-with-ads-for-iaas"></a>Erste Schritte mit ADS für IaaS
+## <a name="get-started-with-advanced-data-security-for-sql-on-azure-vms"></a>Erste Schritte mit Advanced Data Security für SQL auf Azure-VMs
 
-Die folgenden Schritte bilden den Einstieg in ADS für IaaS.
+Die folgenden Schritte helfen Ihnen, sich in Advanced Data Security for SQL auf Azure VMs Public Preview zurechtzufinden.
 
-### <a name="set-up-ads-for-iaas"></a>Einrichten von ADS für IaaS
+### <a name="set-up-advanced-data-security-for-sql-on-azure-vms"></a>Einrichten von Advanced Data Security für SQL auf Azure-VMs
 
 **Voraussetzungen**: Sie benötigen einen Log Analytics-Arbeitsbereich zum Speichern der zu analysierenden Sicherheitsprotokolle. Wenn Sie noch nicht über einen Arbeitsbereich verfügen, können Sie ihn anhand der Erläuterungen unter [Erstellen eines Log Analytics-Arbeitsbereichs im Azure-Portal](https://docs.microsoft.com/azure/azure-monitor/learn/quick-create-workspace) auf einfache Weise erstellen.
 
@@ -95,7 +95,7 @@ Sie können die aktuellen Sicherheitswarnungen anzeigen und verwalten.
 
 Sie können eine Liste von Empfängern festlegen, die eine E-Mail-Benachrichtigung erhalten sollen, wenn ASC-Warnungen generiert werden. Die E-Mail enthält einen direkten Link zur Warnung in Azure Security Center mit allen relevanten Details. 
 
-1. Wechseln Sie zu **Security Center** > **Sicherheitsrichtlinie**, und klicken Sie in der Zeile des jeweiligen Abonnements auf **Einstellungen bearbeiten >** .
+1. Gehen Sie zu **Security Center** >  **Preise & Einstellungen** und klicken Sie auf das entsprechende Abonnement
 
     ![Abonnementeinstellungen](./media/security-center-advanced-iaas-data/subscription-settings.png)
 
@@ -120,7 +120,7 @@ Das Dashboard zur Sicherheitsrisikobewertung bietet eine Übersicht über die Be
 
 Sie können die Ergebnisse und Berichte zur Sicherheitsrisikobewertung direkt aus Log Analytics heraus anzeigen.
 
-1. Navigieren Sie zum Log Analytics-Arbeitsbereich mit der ADS-Lösung.
+1. Navigieren Sie zu Ihrem Log Analytics-Arbeitsbereich mit der Advanced Data Security-Lösung.
 1. Navigieren Sie zu **Lösungen**, und wählen Sie die Lösung **SQL-Sicherheitsrisikobewertung** aus.
 1. Klicken Sie im Bereich **Zusammenfassung** auf **Zusammenfassung anzeigen**, und wählen Sie Ihren **Bericht zur SQL-Sicherheitsrisikobewertung** aus.
 
@@ -130,7 +130,7 @@ Sie können die Ergebnisse und Berichte zur Sicherheitsrisikobewertung direkt au
 
     ![Letzte 7 Tage festlegen](./media/security-center-advanced-iaas-data/ads-sql-server-2.png)
 
-1. Um weitere Details anzuzeigen, klicken Sie auf eines der Dashboardelemente. Beispiel: 
+1. Um weitere Details anzuzeigen, klicken Sie auf eines der Dashboardelemente. Beispiel:
 
    1. Klicken Sie im Abschnitt mit der Zusammenfassung zu Überprüfungen mit Fehlern auf eine Sicherheitsüberprüfung, um eine Log Analytics-Tabelle mit den Ergebnissen für diese Überprüfung bei allen Datenbanken anzuzeigen **.** Die Überprüfungen mit Ergebnissen werden zuerst aufgeführt.
 
@@ -142,10 +142,10 @@ Sie können die Ergebnisse und Berichte zur Sicherheitsrisikobewertung direkt au
 
 1. Sie können beliebige Log Analytics-Abfragen für die Ergebnisdaten Ihrer Sicherheitsrisikobewertung ausführen, um die Daten entsprechend Ihren Anforderungen aufzuteilen.
 
-## <a name="advanced-threat-protection-for-sql-servers-on-iaas-alerts"></a>Warnung der Advanced Threat Protection für SQL Server-Instanzen in IaaS
+## <a name="advanced-threat-protection-for-sql-servers-on-azure-vms-alerts"></a>Warnungen der Advanced Threat Protection für SQL Server-Instanzen auf Azure-VMs
 Warnungen werden bei ungewöhnlichen und potenziell schädlichen Zugriffsversuchen oder Exploit-Vorgängen für SQL Server-Instanzen generiert. Diese Ereignisse können die folgenden Warnungen auslösen:
 
-### <a name="anomalous-access-pattern-alerts"></a>Warnungen zu ungewöhnlichen Zugriffsmustern
+### <a name="anomalous-access-pattern-alerts-supported-in-public-preview"></a>Anomale Zugriffsmusterwarnungen (unterstützt in Public Preview)
 
 * **Zugriff von einem ungewöhnlichen Ort**: Diese Warnung wird ausgelöst, wenn eine Änderung des Zugriffsmusters für SQL Server erfolgt ist, weil sich eine Person von einem ungewöhnlichen Ort aus bei SQL Server angemeldet hat. Mögliche Ursachen:
      * Ein Angreifer oder böswilliger ehemaliger Mitarbeiter hat auf Ihren SQL Server zugegriffen.

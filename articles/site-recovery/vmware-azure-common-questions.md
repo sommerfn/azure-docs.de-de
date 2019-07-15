@@ -5,15 +5,15 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 services: site-recovery
-ms.date: 05/30/2019
+ms.date: 06/27/2019
 ms.topic: conceptual
 ms.author: raynew
-ms.openlocfilehash: 59be8e0585f0bedcafc868ee42f5113509c9c4ef
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 79118fb053c7064fa29730680feb0434f45f031a
+ms.sourcegitcommit: ac1cfe497341429cf62eb934e87f3b5f3c79948e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66417778"
+ms.lasthandoff: 07/01/2019
+ms.locfileid: "67491694"
 ---
 # <a name="common-questions-about-vmware-to-azure-replication"></a>Allgemeine Fragen zur VMware-zu-Azure-Replikation
 
@@ -85,6 +85,10 @@ Für eine detaillierte Kostenschätzung können Sie das Bereitstellungsplanertoo
 ### <a name="is-there-any-difference-in-cost-between-replicating-to-storage-or-directly-to-managed-disks"></a>Besteht ein Unterschied zwischen der Replikation im Speicher und direkt in verwalteten Datenträgern?
 
 Die Berechnung der Kosten für verwaltete Datenträger unterscheidet sich etwas von der für Speicherkonten. [Weitere Informationen](https://azure.microsoft.com/pricing/details/managed-disks/) zu den Preisen für verwaltete Datenträger.
+
+### <a name="is-there-any-difference-in-cost-when-replicating-to-general-purpose-v2-storage-account"></a>Gibt es einen Kostenunterschied bei der Replikation zu einem universellen v2 Speicherkonto?
+
+Normalerweise treten erhöhte Transaktionskosten bei GPV2-Speicherkonten auf, da viele Transaktionen über Azure Site Recovery durchgeführt werden. [Erfahren Sie mehr](../storage/common/storage-account-upgrade.md#pricing-and-billing), um die Änderung einschätzen zu können.
 
 ## <a name="mobility-service"></a>Mobilitätsdienst
 
@@ -293,7 +297,7 @@ Updates in den Versionen 9.24 und höher zeigen jetzt die [Integrität des Proze
 
 ### <a name="how-do-i-update-the-process-server-to-version-924-or-later-for-accurate-health-information"></a>Wie aktualisiere ich den Prozessserver auf Version 9.24 oder höher, um genaue Integritätsinformationen zu erhalten?
 
-Ab [Version 9.24](service-updates-how-to.md#links-to-currently-supported-update-rollups) wurden weitere Warnungen hinzugefügt, um die Integrität des Prozessservers anzuzeigen. [Aktualisieren Sie Ihre Site Recovery-Komponenten auf Version 9.24 oder höher] (service-updates-how-to.md#links-to-currently-supported-update-rollups), damit alle Warnungen generiert werden.
+Ab [Version 9.24](service-updates-how-to.md#links-to-currently-supported-update-rollups) wurden weitere Warnungen hinzugefügt, um die Integrität des Prozessservers anzuzeigen. [Aktualisieren Sie Ihre Site Recovery-Komponenten auf Version 9.24 oder neuer,](service-updates-how-to.md#links-to-currently-supported-update-rollups) damit alle Benachrichtigung generiert werden.
 
 ## <a name="failover-and-failback"></a>Failover und Failback
 

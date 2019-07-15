@@ -7,31 +7,31 @@ manager: cgronlun
 tags: azure-portal
 ms.service: search
 ms.topic: conceptual
-ms.date: 05/08/2019
+ms.date: 07/01/2019
 ms.author: heidist
 ms.custom: seodec2018
-ms.openlocfilehash: 00422209302bbcc2139be4f6b490f0bb2816c051
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 892a79f898e2448096ad4b252a18e0713bb32e52
+ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65539290"
+ms.lasthandoff: 07/01/2019
+ms.locfileid: "67485305"
 ---
 # <a name="choose-a-pricing-tier-for-azure-search"></a>Auswählen eines Tarifs für Azure Search
 
-Beim Erstellen eines Azure Search-Diensts erfolgt das [Erstellen einer Ressource](search-create-service-portal.md) basierend auf einem Tarif oder einer SKU, der/die für die Lebensdauer des Diensts festgelegt ist. Folgende Tarife sind verfügbar: „Free“, „Basic“, „Standard“ und „Speicheroptimiert“. „Standard“ und „Speicheroptimiert“ werden mit verschiedenen Konfigurationen und Kapazitäten bereitgestellt.
+Beim Erstellen eines Azure Search-Diensts erfolgt das [Erstellen einer Ressource](search-create-service-portal.md) basierend auf einem Tarif (oder einer SKU), der für die Lebensdauer des Diensts festgelegt ist. Folgende Tarife sind verfügbar: „Free“, „Basic“, „Standard“ und „Speicheroptimiert“. „Standard“ und „Speicheroptimiert“ werden mit verschiedenen Konfigurationen und Kapazitäten bereitgestellt.
 
-Die meisten Kunden starten mit dem Tarif „Free“, um den Dienst vorab zu testen. Später kann für Entwicklungs- und Produktionsbereitstellungen ein Upgrade auf einen höheren Tarif vorgenommen werden. Im Tarif „Free“ können alle Schnellstarts und Tutorials durchgeführt werden, auch jene für die ressourcenintensive kognitive Suche.
+Die meisten Kunden starten mit dem Tarif „Free“, um den Dienst vorab zu testen. Nach der Auswertung wird oftmals ein zweiter Dienst mit einem der höheren Tarifen erstellst, der für Entwicklungs- und Produktionsbereitstellungen ist. Im Tarif „Free“ können alle Schnellstarts und Tutorials durchgeführt werden, auch jene für die ressourcenintensive kognitive Suche.
 
 > [!NOTE]
-> Microsoft bietet derzeit die Tarife vom Typ „Speicheroptimiert“ als günstigere Vorschauversionen zum Testen und Experimentieren an, um Feedback zu sammeln. Die endgültigen Preise werden später bekannt gegeben, wenn diese Tarife allgemein verfügbar sind. Wir raten davon ab, diese Tarife für Produktionsanwendungen zu verwenden.
+> Ab dem 1. Juli stehen alle Tarife allgemein zur Verfügung, einschließlich des datenspeicheroptimierten Tarifs. Weitere Einzelheiten zu den Preisen finden Sie auf der [Preisseite](https://azure.microsoft.com/pricing/details/search/).
 
 Tarife geben die Merkmale der Hardware wieder, die den Dienst hostet (anstelle von Funktionen), und unterscheiden sich durch:
 
 + Anzahl der Indizes, die erstellt werden können
 + Größe und Geschwindigkeit von Partitionen (physischer Speicher)
 
-Obwohl alle Tarife, einschließlich des Tarifs „Free“, in der Regel Featureparität bieten, können größere Workloads höhere Tarife erforderlich machen. Beispielsweise enthält die [KI-Indizierung mit Cognitive Services](cognitive-search-concept-intro.md) Qualifikationen mit langer Laufzeit, die bei einem kostenlosen Dienst zu einem Timeout führen, sofern es sich nicht um ein kleines Dataset handelt.
+Obwohl alle Tarife, einschließlich des Tarifs „Free“, in der Regel Featureparität bieten, können größere Workloads höhere Tarife erforderlich machen. Beispielsweise enthält die [KI-Erweiterungen mit Cognitive Services](cognitive-search-concept-intro.md) Qualifikationen mit langer Laufzeit, die bei einem kostenlosen Dienst zu einem Timeout führen, sofern es sich nicht um ein kleines Dataset handelt.
 
 > [!NOTE] 
 > Eine Ausnahme bei der Featureparität bilden die [Indexer](search-indexer-overview.md), die in „S3 HD“ nicht verfügbar sind.
@@ -60,7 +60,11 @@ In der folgenden Tabelle sind die verfügbaren Tarife aufgeführt. Weitere Infor
 
 ## <a name="how-billing-works"></a>Funktionsweise der Abrechnung
 
-Bei Azure Search können auf drei Arten Kosten anfallen, dabei wird auch zwischen festen und variablen Komponenten unterschieden. In diesem Abschnitt werden die drei Abrechnungskomponenten „Basiskosten für den Dienst“, „Gebühren für ausgehende Daten“ und „Um KI erweiterte Indizierung“ beschrieben.
+Es gibt drei Arten, wie Kosten in Azure Search entstehen können. Dieser Abschnitt beschreibt die drei Komponenten der Abrechnung: 
+
++ Grundlegende Dienstkosten
++ Kosten für ausgehende Daten (oder Bandbreite)
++ KI-Erweiterungen
 
 ### <a name="core-service-costs-fixed-and-variable"></a>Basiskosten für den Dienst (fest und variabel)
 
@@ -98,9 +102,9 @@ Die Verwendung von [Azure Search-Indexern](search-indexer-overview.md) kann je n
 
 Für ausgehende Daten fallen Gebühren an, wenn sich die Dienste in verschiedenen Regionen befinden. Diese Gebühren sind nicht Teil Ihrer eigentlichen Azure Search-Rechnung. Sie werden hier jedoch erwähnt, weil die Kosten für eine Datenübertragung per Pull aus unterschiedlichen Regionen mithilfe von Daten oder um KI erweiterte Indexer in Ihrer Gesamtrechnung aufgeführt werden.
 
-### <a name="ai-enriched-indexing-with-cognitive-services"></a>Um KI erweiterte Indizierung mit Cognitive Services
+### <a name="ai-enrichments-with-cognitive-services"></a>KI-Erweiterungen mit Cognitive Services
 
-Für die [KI-Indizierung mit Cognitive Services](cognitive-search-concept-intro.md) sollten Sie eine abrechenbare Cognitive Services-Ressource in derselben Region wie Azure Search im S0-Tarif für die nutzungsbasierte Bezahlung der Verarbeitung anfügen. Durch das Anfügen von Cognitive Services fallen keine festen Kosten an. Sie bezahlen nur für die benötigte Verarbeitung.
+Für die [KI-Erweiterung mit Cognitive Services](cognitive-search-concept-intro.md) sollten Sie eine abrechenbare Cognitive Services-Ressource in derselben Region wie Azure Search im S0-Tarif für die nutzungsbasierte Bezahlung der Verarbeitung anfügen. Durch das Anfügen von Cognitive Services fallen keine festen Kosten an. Sie bezahlen nur für die benötigte Verarbeitung.
 
 Für die Extraktion von Bildern während der Dokumententschlüsselung fällt eine Azure Search-Gebühr an. Die Abrechnung erfolgt gemäß der Anzahl von Bildern, die Sie aus den Dokumenten extrahieren. Das Extrahieren von Text ist derzeit kostenlos.
 

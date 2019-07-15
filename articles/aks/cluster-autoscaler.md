@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 05/31/2019
 ms.author: iainfou
-ms.openlocfilehash: 58552914f369c49eed33ccefbb7736cf8dbf1fc6
-ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
+ms.openlocfilehash: c4fe05c96b1006a7d110caa019619ce8be396fe8
+ms.sourcegitcommit: ac1cfe497341429cf62eb934e87f3b5f3c79948e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/04/2019
-ms.locfileid: "66475650"
+ms.lasthandoff: 07/01/2019
+ms.locfileid: "67491553"
 ---
 # <a name="preview---automatically-scale-a-cluster-to-meet-application-demands-on-azure-kubernetes-service-aks"></a>Vorschau: Automatisches Skalieren eines Clusters zur Erfüllung von Anwendungsanforderungen in Azure Kubernetes Service (AKS)
 
@@ -28,34 +28,38 @@ In diesem Artikel wird gezeigt, wie Sie die Autoskalierung für Cluster in einem
 
 ## <a name="before-you-begin"></a>Voraussetzungen
 
-Der Artikel setzt voraus, dass Sie mindestens Version 2.0.65 der Azure-Befehlszeilenschnittstelle (Azure CLI) ausführen. Führen Sie `az --version` aus, um die Version zu finden. Wenn Sie eine Installation oder ein Upgrade ausführen müssen, finden Sie unter [Installieren von Azure CLI 2.0][azure-cli-install] Informationen dazu.
+Der Artikel setzt voraus, dass Sie mindestens Version 2.0.65 der Azure-Befehlszeilenschnittstelle (Azure CLI) ausführen. Führen Sie `az --version` aus, um die Version zu finden. Informationen zum Durchführen einer Installation oder eines Upgrades finden Sei bei Bedarf unter [Installieren der Azure CLI][azure-cli-install].
 
 ### <a name="install-aks-preview-cli-extension"></a>Installieren der CLI-Erweiterung „aks-preview“
 
-AKS-Cluster mit Unterstützung der Autoskalierung für Cluster müssen VM-Skalierungsgruppen verwenden und Kubernetes-Version *1.12.7* oder höher ausführen. Die Unterstützung von Skalierungsgruppen befindet sich in der Vorschau. Um dieses Feature zu aktivieren und Cluster mit Verwendung von Skalierungsgruppen zu erstellen, installieren Sie zuerst die Azure CLI-Erweiterung *aks-preview* mit dem Befehl [az extension add][az-extension-add], wie im folgenden Beispiel gezeigt:
+Um die Cluster-Autoskalierung verwenden zu können, benötigen Sie die *aks-preview* CLI-Erweiterung Version 0.4.1 oder höher. Installieren Sie die *aks-preview* Azure CLI Erweiterung mit dem Befehl [az extension add][az-extension-add] command, then check for any available updates using the [az extension update][az-extension-update]:
 
 ```azurecli-interactive
+# Install the aks-preview extension
 az extension add --name aks-preview
-```
 
-> [!NOTE]
-> Wenn Sie zuvor die Erweiterung *aks-preview* installiert haben, verwenden Sie den Befehl `az extension update --name aks-preview`, um alle verfügbaren Updates zu installieren.
+# Update the extension to make sure you have the latest version installed
+az extension update --name aks-preview
+```
 
 ### <a name="register-scale-set-feature-provider"></a>Registrieren des Anbieters des Skalierungsgruppenfeatures
 
 Um einen AKS zu erstellen, der Skalierungsgruppen verwendet, müssen Sie auch ein Featureflag für Ihr Abonnement aktivieren. Um das Featureflag *VMSSPreview* zu registrieren, verwenden Sie den Befehl [az feature register][az-feature-register], wie im folgenden Beispiel gezeigt:
 
+> [!CAUTION]
+> Wenn Sie eine Funktion in einem Abonnement registrieren, können Sie die Registrierung dieser Funktion derzeit nicht aufheben. Nachdem Sie einige Previewfunktionen aktiviert haben, können Standardwerte für alle AKS-Cluster verwendet werden, die dann im Abonnement erstellt werden. Aktivieren Sie keine Previewfunktionen in Produktionsabonnements. Verwenden Sie ein separates Abonnement, um Previewfunktionen zu testen und Feedback zu erhalten.
+
 ```azurecli-interactive
 az feature register --name VMSSPreview --namespace Microsoft.ContainerService
 ```
 
-Es dauert einige Minuten, bis der Status *Registered (Registriert)* angezeigt wird. Sie können den Registrierungsstatus mithilfe des Befehls [az feature list][az-feature-list] überprüfen:
+Es dauert einige Minuten, bis der Status *Registered (Registriert)* angezeigt wird. Sie können den Registrierungsstatus mit dem Befehl [az feature list][az-feature-list] überprüfen:
 
 ```azurecli-interactive
 az feature list -o table --query "[?contains(name, 'Microsoft.ContainerService/VMSSPreview')].{Name:name,State:properties.state}"
 ```
 
-Wenn Sie fertig sind, aktualisieren Sie die Registrierung des *Microsoft.ContainerService*-Ressourcenanbieters mit dem Befehl [az provider register][az-provider-register]:
+Wenn Sie bereit sind, aktualisieren Sie die Registrierung des *Microsoft.ContainerService* Ressourcenanbieters mit dem Befehl[ az provider register][az-provider-register]:
 
 ```azurecli-interactive
 az provider register --namespace Microsoft.ContainerService
@@ -66,7 +70,6 @@ az provider register --namespace Microsoft.ContainerService
 Die folgenden Einschränkungen gelten für die Erstellung und Verwaltung von AKS-Clustern, die die automatische Clusterskalierung verwenden:
 
 * Das Add-On für das HTTP-Anwendungsrouting kann nicht verwendet werden.
-* Zurzeit können nicht mehrere Knotenpools verwendet werden (derzeit als Vorschau in AKS).
 
 ## <a name="about-the-cluster-autoscaler"></a>Grundlegendes zur Autoskalierung für Cluster
 
@@ -185,9 +188,10 @@ In diesem Artikel wurde gezeigt, wie Sie die Anzahl von AKS-Knoten automatisch s
 [az-provider-register]: /cli/azure/provider#az-provider-register
 [aks-support-policies]: support-policies.md
 [aks-faq]: faq.md
+[az-extension-add]: /cli/azure/extension#az-extension-add
+[az-extension-update]: /cli/azure/extension#az-extension-update
 
 <!-- LINKS - external -->
 [az-aks-update]: https://github.com/Azure/azure-cli-extensions/tree/master/src/aks-preview
-[terms-of-use]: https://azure.microsoft.com/support/legal/preview-supplemental-terms/
 [autoscaler-scaledown]: https://github.com/kubernetes/autoscaler/blob/master/cluster-autoscaler/FAQ.md#what-types-of-pods-can-prevent-ca-from-removing-a-node
 [autoscaler-parameters]: https://github.com/kubernetes/autoscaler/blob/master/cluster-autoscaler/FAQ.md#what-are-the-parameters-to-ca

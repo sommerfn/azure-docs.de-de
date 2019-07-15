@@ -11,14 +11,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 06/06/2019
+ms.date: 07/03/2019
 ms.author: Kumud
-ms.openlocfilehash: ec68038a5b0fe7edca095e0d9b190d5da09c8e82
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 08670c8aa6d5c9830ab84bc848bac38063bd41c0
+ms.sourcegitcommit: 978e1b8cac3da254f9d6309e0195c45b38c24eb5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66754708"
+ms.lasthandoff: 07/03/2019
+ms.locfileid: "67550921"
 ---
 # <a name="metrics-and-health-diagnostics-for-standard-load-balancer"></a>Metriken und Integritätsdiagnosen für Standard Load Balancer
 
@@ -85,7 +85,7 @@ So rufen Sie die Datenpfadverfügbarkeit für Ihre Standard Load Balancer-Ressou
 Die Metrik wird durch eine aktive bandinterne Messung generiert. Ein Sondierungsdienst innerhalb der Region löst Datenverkehr für diese Messung aus. Der Dienst wird aktiviert, sobald Sie eine Bereitstellung mit einem öffentliche Front-End erstellen, und wird weiter ausgeführt, bis Sie das Front-End entfernen. 
 
 >[!NOTE]
->Interne Front-Ends werden zu diesem Zeitpunkt nicht unterstützt. 
+>Die Datenpfadverfügbarkeit (VIP-Verfügbarkeit) ist nicht für interne Load Balancer-Front-Ends verfügbar. 
 
 Ein Paket, das dem Front-End und der Regel Ihrer Bereitstellung entspricht, wird regelmäßig generiert. Es durchläuft die Region von der Quelle bis zu dem Host, auf dem sich ein virtueller Computer im Back-End-Pool befindet. Die Load Balancer-Infrastruktur führt dieselben Lastenausgleichs- und Übersetzungsvorgänge aus, wie sie dies für jeden anderen Datenverkehr tut. Diese Sondierung erfolgt bandintern auf Ihrem Endpunkt mit Lastenausgleich. Sobald der Test (Sondierung) auf dem Computehost eingeht, auf dem sich ein fehlerfreier virtueller Computer im Back-End-Pool befindet, generiert der Computehost eine Antwort an den Sondierungsdienst. Ihr virtueller Computer „sieht“ diesen Datenverkehr nicht.
 
@@ -208,6 +208,10 @@ In der folgenden Tabelle sind die verschiedenen Ressourcenintegritätsstatus und
 | Verfügbar | Ihre öffentliche Standard Load Balancer-Ressource ist fehlerfrei und verfügbar. |
 | Nicht verfügbar | Ihre öffentliche Standard Load Balancer-Ressource ist nicht fehlerfrei. Wählen Sie **Azure Monitor** > **Metriken** aus, um eine Diagnose der Integrität auszuführen.<br>(Der Status *Nicht verfügbar* kann auch bedeuten, dass die Ressource nicht mit Ihrem öffentliche Standard Load Balancer verbunden ist.) |
 | Unknown | Der Ressourcenintegritätsstatus für Ihre öffentliche Standard Load Balancer-Ressource wurde noch nicht aktualisiert.<br>(Der Status *Unbekannt* kann auch bedeuten, dass die Ressource nicht mit Ihrem öffentliche Standard Load Balancer verbunden ist.)  |
+
+## <a name="limitations"></a>Einschränkungen 
+
+- Die Datenpfadverfügbarkeit (VIP-Verfügbarkeit) ist nicht für interne Load Balancer-Front-Ends verfügbar.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

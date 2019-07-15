@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 05/30/2019
 ms.author: raynew
-ms.openlocfilehash: 25cf3914274e73e0789aa87e9288649d1b0cb1eb
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 9f985260175e5f54a17799ef07b3a280f42b716e
+ms.sourcegitcommit: ac1cfe497341429cf62eb934e87f3b5f3c79948e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66399570"
+ms.lasthandoff: 07/01/2019
+ms.locfileid: "67491890"
 ---
 # <a name="azure-to-azure-disaster-recovery-architecture"></a>Architektur der Notfallwiederherstellung von Azure zu Azure
 
@@ -31,7 +31,7 @@ Die an der Notfallwiederherstellung beteiligten Komponenten für Azure-VMs werde
 **VMs in der Quellregion** | Eine von mehreren Azure-VMs in einer [unterstützten Quellregion](azure-to-azure-support-matrix.md#region-support).<br/><br/> Die VMs können unter beliebigen [unterstützten Betriebssystemen](azure-to-azure-support-matrix.md#replicated-machine-operating-systems) ausgeführt werden.
 **Speicher der Quell-VM** | Virtuelle Azure-Computer können verwaltet werden oder über nicht verwaltete Datenträger verfügen, die über mehrere Speicherkonten verteilt sind.<br/><br/>[Erfahren Sie mehr](azure-to-azure-support-matrix.md#replicated-machines---storage) über die unterstützten Azure Storage-Varianten.
 **VM-Quellnetzwerke** | Die VMs können sich in einem oder mehreren Subnetzen in einem virtuellen Netzwerk (VNET) in der Quellregion befinden. [Erfahren Sie mehr](azure-to-azure-support-matrix.md#replicated-machines---networking) über die Netzwerkanforderungen.
-**Cachespeicherkonto** | Sie benötigen ein Cachespeicherkonto im Quellnetzwerk. Während der Replikation werden VM-Änderungen im Cache gespeichert, bevor sie an den Zielspeicher gesendet werden.<br/><br/> Ein Cache stellt sicher, dass die Auswirkungen auf die auf dem virtuellen Computer ausgeführten Produktionsanwendungen möglichst gering sind.<br/><br/> [Erfahren Sie mehr](azure-to-azure-support-matrix.md#cache-storage) über die Anforderungen an den Cachespeicher. 
+**Cachespeicherkonto** | Sie benötigen ein Cachespeicherkonto im Quellnetzwerk. Während der Replikation werden VM-Änderungen im Cache gespeichert, bevor sie an den Zielspeicher gesendet werden.  Cachespeicherkonten müssen Standardkonten sein.<br/><br/> Ein Cache stellt sicher, dass die Auswirkungen auf die auf dem virtuellen Computer ausgeführten Produktionsanwendungen möglichst gering sind.<br/><br/> [Erfahren Sie mehr](azure-to-azure-support-matrix.md#cache-storage) über die Anforderungen an den Cachespeicher. 
 **Zielressourcen** | Zielressourcen werden während der Replikation und bei einem Failover verwendet. Site Recovery kann standardmäßig Zielressourcen einrichten, Sie können diese aber auch selbst erstellen oder bearbeiten.<br/><br/> Überprüfen Sie in der Zielregion, ob Sie virtuelle Computer erstellen können und ob Ihr Abonnement über ausreichend Ressourcen zur Unterstützung der VM-Größen verfügt, die in der Zielregion benötigt werden. 
 
 ![Replikationsquelle und -ziel](./media/concepts-azure-to-azure-architecture/enable-replication-step-1.png)

@@ -12,22 +12,28 @@ manager: daveba
 ms.reviewer: michmcla
 ms.custom: seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f97b4ee364ecadde7738b8fe077f21d5732365f6
-ms.sourcegitcommit: 49c8204824c4f7b067cd35dbd0d44352f7e1f95e
+ms.openlocfilehash: eac6cff0f0f12daaf772549f547aafd670600d61
+ms.sourcegitcommit: 084630bb22ae4cf037794923a1ef602d84831c57
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/22/2019
-ms.locfileid: "58371808"
+ms.lasthandoff: 07/03/2019
+ms.locfileid: "67536980"
 ---
 # <a name="directory-integration-between-azure-mfa-server-and-active-directory"></a>Verzeichnisintegration zwischen Azure MFA-Server und Active Directory
 
 Verwenden Sie den Abschnitt „Verzeichnisintegration“ des Azure MFA-Servers für die Integration in Active Directory oder ein anderes LDAP-Verzeichnis. Sie können Attribute für das Verzeichnisschema konfigurieren und die automatische Synchronisierung von Benutzern einrichten.
+
+> [!IMPORTANT]
+> Ab dem 1. Juli 2019 bietet Microsoft keine MFA-Server mehr für neue Bereitstellungen an. Neue Kunden, die eine Multi-Factor Authentication für ihre Benutzer einrichten möchten, können stattdessen die cloudbasierte Multi-Factor Authentication von Azure verwenden. Bestehende Kunden, die ihren MFA-Server vor dem 1. Juli aktiviert haben, können weiterhin die neusten Versionen und zukünftige Updates herunterladen sowie Anmeldedaten zur Aktivierung generieren.
 
 ## <a name="settings"></a>Einstellungen
 
 Standardmäßig ist der Azure MFA-Server (Multi-Factor Authentication) zum Importieren oder Synchronisieren von Benutzern aus Active Directory konfiguriert.  Auf der Registerkarte „Verzeichnisintegration“ können Sie das Standardverhalten außer Kraft setzen und die Bindung an ein anderes LDAP-Verzeichnis, ADAM-Verzeichnis oder einen speziellen Active Directory-Domänencontroller festlegen.  Außerdem ist die Verwendung der LDAP-Authentifizierung als Proxy für LDAP oder für die LDAP-Bindung als RADIUS-Ziel, die Vorauthentifizierung für die IIS-Authentifizierung oder die primäre Authentifizierung für das Benutzerportal möglich.  In der folgenden Tabelle sind die einzelnen Einstellungen beschrieben.
 
 ![Bearbeiten der LDAP-Konfiguration im MFA-Server](./media/howto-mfaserver-dir-ad/dirint.png)
+
+> [!NOTE]
+> Es gibt keine Garantie dafür, dass die Verzeichnisintegration mit anderen Verzeichnissen als Active Directory Domain Services funktioniert.
 
 | Feature | BESCHREIBUNG |
 | --- | --- |
@@ -121,7 +127,7 @@ Die folgende Tabelle enthält zusätzliche Informationen zu den einzelnen Einste
 | Synchronisierung alle |Geben Sie das Zeitintervall an, wie lange der Multi-Factor Authentication-Server-Dienst zwischen dem Abrufen und Verarbeiten von Änderungen wartet. <br><br> Hinweis: Das angegebene Intervall ist der Zeitraum zwischen dem Startzeitpunkt der jeweiligen Zyklen.  Wenn die Zeit zum Verarbeiten von Änderungen das Intervall überschreitet, startet der Dienst sofort wieder einen Abruf. |
 | Nicht mehr in Active Directory vorhandene Benutzer entfernen |Wenn dieses Kontrollkästchen aktiviert ist, verarbeitet der Multi-Factor Authentication-Server-Dienst von Active Directory gelöschte veraltete Benutzer und entfernt den dazugehörigen Multi-Factor Authentication-Server-Benutzer. |
 | Immer vollständige Synchronisierung ausführen |Wenn dieses Kontrollkästchen aktiviert ist, führt der Multi-Factor Authentication-Server-Dienst immer eine vollständige Synchronisierung durch.  Wenn dieses Kontrollkästchen deaktiviert ist, führt der Multi-Factor Authentication-Server-Dienst eine inkrementelle Synchronisierung durch, indem nur geänderte Benutzer abgefragt werden.  Diese Option ist standardmäßig deaktiviert. <br><br>Bei der Deaktivierung wird vom Azure MFA-Server nur dann eine inkrementelle Synchronisierung durchgeführt, wenn das Verzeichnis die DirSync-Steuerung unterstützt und die Kontobindung an das Verzeichnis über Berechtigungen zum Durchführen von inkrementellen DirSync-Abfragen verfügt.  Falls das Konto nicht die entsprechenden Berechtigungen besitzt oder mehrere Domänen an der Synchronisierung beteiligt sind, wird vom Azure MFA-Server eine vollständige Synchronisierung durchgeführt. |
-| Administratorgenehmigung erfordern, wenn mehr als X Benutzer deaktiviert oder entfernt werden |Synchronisierungselemente können konfiguriert werden, um Benutzer zu deaktivieren oder zu entfernen, die nicht mehr Mitglied des Containers oder einer Sicherheitsgruppe des Elements sind.  Als Sicherheitsmaßnahme kann die Administratorgenehmigung erforderlich gemacht werden, wenn die Anzahl der zu deaktivierenden oder zu entfernenden Benutzer einen Schwellenwert überschreitet.  Wenn dieses Kontrollkästchen aktiviert ist, ist ab dem angegebenen Schwellenwert eine Genehmigung erforderlich.  Der Standardwert ist 5, und der zulässige Bereich liegt zwischen 1 und 999. <br><br>  Die Genehmigung wird durchgeführt, indem zuerst eine E-Mail-Benachrichtigung an Administratoren gesendet wird. Die E-Mail-Benachrichtigung enthält eine Anleitung zum Überprüfen und Genehmigen der Deaktivierung und Entfernung von Benutzern.  Wenn die Benutzeroberfläche des Multi-Factor Authentication-Servers gestartet wird, wird eine Aufforderung zur Genehmigung angezeigt. |
+| Administratorgenehmigung erfordern, wenn mehr als X Benutzer deaktiviert oder entfernt werden |Synchronisierungselemente können konfiguriert werden, um Benutzer zu deaktivieren oder zu entfernen, die nicht mehr Mitglied des Containers oder einer Sicherheitsgruppe des Elements sind.  Als Sicherheitsmaßnahme kann die Administratorgenehmigung erforderlich gemacht werden, wenn die Anzahl der zu deaktivierenden oder zu entfernenden Benutzer einen Schwellenwert überschreitet.  Wenn dieses Kontrollkästchen aktiviert ist, ist ab dem angegebenen Schwellenwert eine Genehmigung erforderlich.  Der Standardwert ist 5, und der zulässige Bereich liegt zwischen 1 und 999. <br><br> Die Genehmigung wird durchgeführt, indem zuerst eine E-Mail-Benachrichtigung an Administratoren gesendet wird. Die E-Mail-Benachrichtigung enthält eine Anleitung zum Überprüfen und Genehmigen der Deaktivierung und Entfernung von Benutzern.  Wenn die Benutzeroberfläche des Multi-Factor Authentication-Servers gestartet wird, wird eine Aufforderung zur Genehmigung angezeigt. |
 
 Mit der Schaltfläche **Jetzt synchronisieren** können Sie für die angegebenen Synchronisierungselemente eine vollständige Synchronisierung durchführen.  Eine vollständige Synchronisierung ist jeweils erforderlich, wenn Synchronisierungselemente hinzugefügt, geändert, entfernt oder neu angeordnet werden.  Sie ist auch erforderlich, bevor der AdSync-Dienst der Multi-Factor Authentication betriebsbereit ist, da hiermit der Ausgangspunkt festgelegt wird, ab dem der Dienst die Abfrage auf inkrementelle Änderungen durchführt.  Wenn Änderungen an Synchronisierungselementen vorgenommen wurden, aber keine vollständige Synchronisierung durchgeführt wurde, wird die Aufforderung „Jetzt synchronisieren“ angezeigt.
 

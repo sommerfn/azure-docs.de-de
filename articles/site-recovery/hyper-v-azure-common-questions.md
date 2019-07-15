@@ -5,15 +5,15 @@ services: site-recovery
 author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
-ms.date: 05/30/2019
+ms.date: 06/30/2019
 ms.topic: conceptual
 ms.author: raynew
-ms.openlocfilehash: 9979cb97ec578a59ba8263f2eb1fe53d41db862f
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 36c109e083873e9c4ec63ebe34f5c5c0cfb6eeb1
+ms.sourcegitcommit: ac1cfe497341429cf62eb934e87f3b5f3c79948e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66399457"
+ms.lasthandoff: 07/01/2019
+ms.locfileid: "67491812"
 ---
 # <a name="common-questions---hyper-v-to-azure-disaster-recovery"></a>Allgemeine Fragen: Hyper-V-Notfallwiederherstellung in Azure
 
@@ -26,6 +26,10 @@ Nähere Informationen finden Sie unter [Site Recovery – Preise](https://azure.
 
 ### <a name="how-do-i-pay-for-azure-vms"></a>Wie zahle ich für Azure-VMs?
 Während der Replikation werden Daten zu Azure-Speicher repliziert, und Sie bezahlen keine VM-Änderungen. Wenn Sie einen Failover zu Azure ausführen, erstellt Site Recovery automatisch Azure-IaaS-VMs. Danach werden Ihnen die Computeressourcen in Rechnung gestellt, die Sie in Azure nutzen.
+
+### <a name="is-there-any-difference-in-cost-when-replicating-to-general-purpose-v2-storage-account"></a>Gibt es einen Kostenunterschied bei der Replikation zu einem universellen v2 Speicherkonto?
+
+Normalerweise treten erhöhte Transaktionskosten bei GPV2-Speicherkonten auf, da viele Transaktionen über Azure Site Recovery durchgeführt werden. [Erfahren Sie mehr](../storage/common/storage-account-upgrade.md#pricing-and-billing), um die Änderung einschätzen zu können.
 
 ## <a name="azure"></a>Azure
 

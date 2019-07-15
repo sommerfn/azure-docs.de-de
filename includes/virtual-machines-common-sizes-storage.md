@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 04/17/2019
 ms.author: azcspmt;jonbeck;cynthn
 ms.custom: include file
-ms.openlocfilehash: de998265188b1482be22225bba3c6ab3d58e562b
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: b98aebfd7bef3edff8e046d7ef1c388ea57afa04
+ms.sourcegitcommit: ac1cfe497341429cf62eb934e87f3b5f3c79948e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66755581"
+ms.lasthandoff: 07/01/2019
+ms.locfileid: "67501234"
 ---
 Datenspeicheroptimierte VM-Größen bieten hohen Datenträgerdurchsatz und E/A und eignen sich ideal für Big Data, SQL, NoSQL-Datenbanken, Datawarehousing und große transaktionale Datenbanken.  Beispiele bilden Cassandra, MongoDB, Cloudera und Redis. Dieser Artikel enthält Informationen zur Anzahl von vCPUs, Datenträgern und NICs sowie zum lokalen Speicherdurchsatz und zur Netzwerkbandbreite für die einzelnen optimierten Größen.
 
@@ -35,11 +35,12 @@ Storage Premium Unterstützt
 
 Storage Premium-Zwischenspeicherung: Nicht unterstützt
 
-| Größe          | vCPU | Arbeitsspeicher (GiB) | Temporäre Datenträger<sup>1</sup> (GiB) | NVMe-Datenträger<sup>2</sup> | NVMe-Datenträger-Datendurchsatz<sup>3</sup> (Lese-IOPS/MBit/s) | Maximaler Datenträgerdurchsatz ohne Cache: (IOPS/MB/s)<sup>4</sup> | Max. Anzahl Datenträger | Maximale Anzahl NICs/Erwartete Netzwerkbandbreite (MBps) |
+| Size          | vCPU | Arbeitsspeicher (GiB) | Temporäre Datenträger<sup>1</sup> (GiB) | NVMe-Datenträger<sup>2</sup> | NVMe-Datenträger-Datendurchsatz<sup>3</sup> (Lese-IOPS/MBit/s) | Maximaler Datenträgerdurchsatz ohne Cache: (IOPS/MB/s)<sup>4</sup> | Max. Anzahl Datenträger | Maximale Anzahl NICs/Erwartete Netzwerkbandbreite (MBps) |
 |---------------|-----------|-------------|--------------------------|----------------|---------------------------------------------------|-------------------------------------------|------------------------------|------------------------------| 
-| Standard_L8s_v2   |  8 |  64 |  80 |  1x1,92 TB  | 400.000/2.000 | 8\.000/160 | 16 | 2/3.200  |
-| Standard_L16s_v2  | 16 | 128 | 160 |  2x1,92 TB  | 800.000/4.000 | 16.000/320 | 32 | 4/6.400  |
-| Standard_L32s_v2  | 32 | 256 | 320 |  4x1,92 TB  | 1.500.000/8.000    | 32.000/640 | 32 | 8/12.800 |
+| Standard_L8s_v2   |  8 |  64 |  80 |  1x1,92 TB  | 400.000/2.000  | 8\.000/160   | 16 | 2/3.200  |
+| Standard_L16s_v2  | 16 | 128 | 160 |  2x1,92 TB  | 800.000/4.000  | 16.000/320  | 32 | 4/6.400  |
+| Standard_L32s_v2  | 32 | 256 | 320 |  4x1,92 TB  | 1.500.000/8.000    | 32.000/640  | 32 | 8/12.800 |
+| Standard_L48s_v2  | 48 | 384 | 480 |  6x1,92 TB  | 2,2M / 14000   | 48000/960  | 32 | 8/16.000+ |
 | Standard_L64s_v2  | 64 | 512 | 640 |  8x1,92 TB  | 2.900.000/16.000   | 64.000/1.280 | 32 | 8/16.000+ |
 | Standard_L80s_v2<sup>5</sup> | 80 | 640 | 800 | 10x1,92 TB   | 3.800.000/20.000   | 80.000/1.400 | 32 | 8/16.000+ |
 

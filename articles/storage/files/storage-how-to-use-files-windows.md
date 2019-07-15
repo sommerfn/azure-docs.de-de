@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 06/07/2018
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 899bf4bbf201ae785a4f49c7f278de75fb48945e
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 02a8b825a513c75ef7c037348ccaecdf5026ded2
+ms.sourcegitcommit: d3b1f89edceb9bff1870f562bc2c2fd52636fc21
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64926270"
+ms.lasthandoff: 07/04/2019
+ms.locfileid: "67560474"
 ---
 # <a name="use-an-azure-file-share-with-windows"></a>Verwenden einer Azure-Dateifreigabe mit Windows
 [Azure Files](storage-files-introduction.md) ist das benutzerfreundliche Clouddateisystem von Microsoft. Azure-Dateifreigaben können in Windows und Windows Server nahtlos verwendet werden. In diesem Artikel werden die Überlegungen zur Verwendung einer Azure-Dateifreigabe mit Windows und Windows Server behandelt.
@@ -234,7 +234,7 @@ Die folgende Tabelle enthält ausführliche Informationen zum Status von SMB 1 f
 
 | Windows-Version                           | SMB 1-Standardstatus | Deaktivierungs-/Entfernungsmethode       | 
 |-------------------------------------------|----------------------|-----------------------------|
-| Windows Server 2019 (Vorschauversion)             | Deaktiviert             | Entfernen mit Windows-Funktion |
+| Windows Server 2019                       | Deaktiviert             | Entfernen mit Windows-Funktion |
 | Windows Server, Versionen ab 1709            | Deaktiviert             | Entfernen mit Windows-Funktion |
 | Windows 10, Versionen ab 1709                | Deaktiviert             | Entfernen mit Windows-Funktion |
 | Windows Server 2016                       | Enabled              | Entfernen mit Windows-Funktion |
@@ -246,7 +246,7 @@ Die folgende Tabelle enthält ausführliche Informationen zum Status von SMB 1 f
 | Windows 7                                 | Enabled              | Deaktivieren mit Registrierung       | 
 
 ### <a name="auditing-smb-1-usage"></a>Überwachung der Verwendung von SMB 1
-> Gilt für Windows Server 2019 (Vorschauversion), den halbjährlichen Windows Server-Kanal (Versionen 1709 und 1803), Windows Server 2016, Windows 10 (Versionen 1507, 1607, 1703, 1709 und 1803), Windows Server 2012 R2 und Windows 8.1
+> Gilt für Windows Server 2019, den halbjährlichen Windows Server-Kanal (Versionen 1709 und 1803), Windows Server 2016, Windows 10 (Versionen 1507, 1607, 1703, 1709 und 1803), Windows Server 2012 R2 und Windows 8.1
 
 Vor dem Entfernen von SMB 1 in Ihrer Umgebung kann es von Vorteil sein, die Verwendung von SMB 1 zu überwachen, um festzustellen, ob Clients durch die Änderung beschädigt werden. Wenn Anforderungen für SMB-Dateifreigaben mit SMB 1 erfolgen, wird im Ereignisprotokoll unter `Applications and Services Logs > Microsoft > Windows > SMBServer > Audit` ein Überwachungsereignis aufgezeichnet. 
 
@@ -260,7 +260,7 @@ Set-SmbServerConfiguration –AuditSmb1Access $true
 ```
 
 ### <a name="removing-smb-1-from-windows-server"></a>Entfernen von SMB 1 von Windows Server
-> Gilt für Windows Server 2019 (Vorschauversion), den halbjährlichen Windows Server-Kanal (Versionen 1709 und 1803), Windows Server 2016, Windows Server 2012 R2
+> Gilt für Windows Server 2019, den halbjährlichen Windows Server-Kanal (Versionen 1709 und 1803), Windows Server 2016, Windows Server 2012 R2
 
 Zum Entfernen von SMB 1 von einer Windows Server-Instanz führen Sie das folgende Cmdlet in einer PowerShell-Sitzung mit erhöhten Rechten aus:
 

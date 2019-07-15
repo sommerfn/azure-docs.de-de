@@ -5,15 +5,15 @@ services: expressroute
 author: charwen
 ms.service: expressroute
 ms.topic: conceptual
-ms.date: 02/21/2019
+ms.date: 07/01/2019
 ms.author: charwen
 ms.custom: seodec18
-ms.openlocfilehash: 4a1f9556413df7ad8954171d2b446419d3bc2975
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: fdd267937db589156aa5eddc7608323b143266de
+ms.sourcegitcommit: 79496a96e8bd064e951004d474f05e26bada6fa0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60366567"
+ms.lasthandoff: 07/02/2019
+ms.locfileid: "67508838"
 ---
 # <a name="configure-expressroute-and-site-to-site-coexisting-connections-using-powershell"></a>Konfigurieren von parallel bestehenden ExpressRoute- und Standort-zu-Standort-Verbindungen mithilfe von PowerShell
 > [!div class="op_single_selector"]
@@ -216,7 +216,30 @@ Für diese Konfiguration werden unter Umständen Cmdlets verwendet, mit denen Si
    ```azurepowershell-interactive
    $vnet = Set-AzVirtualNetwork -VirtualNetwork $vnet
    ```
-4. Sie verfügen nun über ein virtuelles Netzwerk ohne Gateways. Zum Erstellen neuer Gateways und Einrichten der Verbindungen führen Sie die Schritte im vorherigen Abschnitt aus.
+4. Sie verfügen nun über ein virtuelles Netzwerk ohne Gateways. Verwenden Sie die folgenden Beispiele, um neue Gateways zu erstellen und die Verbindungen einzurichten:
+
+   Legen Sie die Variablen fest.
+
+    ```azurepowershell-interactive
+   $gwSubnet = Get-AzVirtualNetworkSubnetConfig -Name "GatewaySubnet" -VirtualNetwork $vnet
+   $gwIP = New-AzPublicIpAddress -Name "ERGatewayIP" -ResourceGroupName $resgrp.ResourceGroupName -Location $location -AllocationMethod Dynamic
+   $gwIP = New-AzPublicIpAddress -Name "ERGatewayIP" -ResourceGroupName $resgrp.ResourceGroupName -Location $location -AllocationMethod Dynamic
+   $gwConfig = New-AzVirtualNetworkGatewayIpConfig -Name "ERGatewayIpConfig" -SubnetId $gwSubnet.Id -PublicIpAddressId $gwIP.Id
+   $gwConfig = New-AzVirtualNetworkGatewayIpConfig -Name "ERGatewayIpConfig" -SubnetId $gwSubnet.Id -PublicIpAddressId $gwIP.Id
+   ```
+
+   Erstellen Sie das Gateway.
+
+   ```azurepowershell-interactive
+   $gw = New-AzVirtualNetworkGateway -Name <yourgatewayname> -ResourceGroupName <yourresourcegroup> -Location <yourlocation) -IpConfigurations $gwConfig -GatewayType "ExpressRoute" -GatewaySku Standard
+   ```
+
+   Erstellen Sie die Verbindung.
+
+   ```azurepowershell-interactive
+   $ckt = Get-AzExpressRouteCircuit -Name "YourCircuit" -ResourceGroupName "YourCircuitResourceGroup"
+   New-AzVirtualNetworkGatewayConnection -Name "ERConnection" -ResourceGroupName $resgrp.ResourceGroupName -Location $location -VirtualNetworkGateway1 $gw -PeerId $ckt.Id -ConnectionType ExpressRoute
+   ```
 
 ## <a name="to-add-point-to-site-configuration-to-the-vpn-gateway"></a>So fügen Sie dem VPN Gateway eine Punkt-zu-Standort-Konfiguration hinzu
 

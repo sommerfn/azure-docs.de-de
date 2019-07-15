@@ -4,14 +4,14 @@ description: Hier erfahren Sie, wie Sie bereitgestellten Durchsatz für Ihre Azu
 author: rimman
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 05/20/2019
+ms.date: 06/14/2019
 ms.author: rimman
-ms.openlocfilehash: 598a1562127a67c78f67cdd02b00d83d4a606739
-ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
+ms.openlocfilehash: adf0891203321ca02c47494f1865ca78a833e301
+ms.sourcegitcommit: d3b1f89edceb9bff1870f562bc2c2fd52636fc21
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/20/2019
-ms.locfileid: "65953547"
+ms.lasthandoff: 07/04/2019
+ms.locfileid: "67561394"
 ---
 # <a name="provision-throughput-on-containers-and-databases"></a>Bereitstellen des Durchsatzes für Container und Datenbanken
 
@@ -71,8 +71,10 @@ Die folgende Abbildung zeigt, wie eine physische Partition eine bzw. mehrere log
 Sie können die beiden Modelle kombinieren. Es ist erlaubt, Durchsatz sowohl auf Datenbank- als auch auf Containerebene bereitzustellen. Das folgende Beispiel zeigt die Vorgehensweise bei der Bereitstellung von Durchsatz für eine Azure Cosmos-Datenbank und einen Container:
 
 * Sie können eine Azure Cosmos-Datenbank mit dem Namen *Z* erstellen und für diese als Durchsatz *K* RUs bereitstellen. 
-* Als Nächstes erstellen Sie die fünf Container *A*, *B*, *C*, *D* und *E* innerhalb der Datenbank.
-* Sie können explizit *P* RUs des bereitgestellten Durchsatzes für den Container mit dem Namen *B* konfigurieren.
+* Als Nächstes erstellen Sie die fünf Container *A*, *B*, *C*, *D* und *E* innerhalb der Datenbank. Achten Sie beim Erstellen von Container B darauf, die Option zum Bereitstellen von dediziertem Durchsatz für diesen Container **** zu aktivieren, und konfigurieren Sie explizit *P* RUs des bereitgestellten Durchsatzes für diesen Container. Beachten Sie, dass Sie freigegebenen und dedizierten Durchsatz nur beim Erstellen der Datenbank und des Containers konfigurieren können. 
+
+   ![Festlegen des Durchsatzes auf Containerebene](./media/set-throughput/coll-level-throughput.png)
+
 * Der Durchsatz von *K* RUs ist für die vier Container *A*, *C*, *D*, und *E* freigegeben. Die genaue für *A*, *C*, *D* oder *E* verfügbare Durchsatzmenge variiert. Es gibt keine SLAs für die einzelnen Containerdurchsätze.
 * Für den Container *B* wird jederzeit ein Durchsatz von *P* RUs sichergestellt. Er wird durch SLAs abgedeckt.
 
@@ -88,7 +90,7 @@ Sie können den Mindestdurchsatz eines Containers oder einer Datenbank programmg
 
 Bei Verwendung des .NET SDK ermöglicht Ihnen die [DocumentClient.ReadOfferAsync](https://docs.microsoft.com/dotnet/api/microsoft.azure.documents.client.documentclient.readofferasync?view=azure-dotnet)-Methode das Abrufen des Mindestdurchsatzes eines Containers oder einer Datenbank. 
 
-Sie können den bereitgestellten Durchsatz eines Containers oder einer Datenbank jederzeit skalieren. 
+Sie können den bereitgestellten Durchsatz eines Containers oder einer Datenbank jederzeit skalieren. Wenn ein Skalierungsvorgang durchgeführt wird, um den Durchsatz zu steigern, dann kann es aufgrund der Systemtasks zur Bereitstellung der erforderlichen Ressourcen länger dauern. Sie können den Status des Skalierungsvorgangs im Azure-Portal oder programmgesteuert mit den SDKs überprüfen. Wenn Sie .Net SDK verwenden, erhalten Sie den Status des Skalierungsvorgangs mit der `DocumentClient.ReadOfferAsync`-Methode.
 
 ## <a name="comparison-of-models"></a>Vergleich der Modelle
 
@@ -96,7 +98,6 @@ Sie können den bereitgestellten Durchsatz eines Containers oder einer Datenbank
 |---------|---------|---------|
 |Minimale RUs |400 (Nach den ersten vier Containern benötigt jeder weitere Container mindestens 100 RUs pro Sekunde.) |400|
 |Minimale RUs pro Container|100|400|
-|Erforderliche minimale RUs für die Nutzung von 1 GB Speicher|40|40|
 |Maximale RUs|Unbegrenzt, in der Datenbank|Unbegrenzt, im Container|
 |RUs zugewiesen oder verfügbar für einen bestimmten Container|Keine Garantien. Die einem bestimmten Container zugewiesenen RUs hängen von den Eigenschaften ab. Bei diesen Eigenschaften kann es sich um die Partitionsschlüssel der Container, die den Durchsatz gemeinsam nutzen, um die Verteilung der Workload oder um die Anzahl von Containern handeln. |Alle RUs, die für den Container konfiguriert wurden, sind ausschließlich für diesen Container reserviert.|
 |Maximale Speicherkapazität für einen Container|Unbegrenzt.|Unbegrenzt.|

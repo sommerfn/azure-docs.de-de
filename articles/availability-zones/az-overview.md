@@ -13,15 +13,15 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 05/30/2019
+ms.date: 06/20/2019
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: eefb5f3ea10d72cdf355fc810147414fe1714d67
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 848d0eddb9870f7690989e5bfa01985883e4308e
+ms.sourcegitcommit: 79496a96e8bd064e951004d474f05e26bada6fa0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66417006"
+ms.lasthandoff: 07/02/2019
+ms.locfileid: "67508865"
 ---
 # <a name="what-are-availability-zones-in-azure"></a>Was sind Verfügbarkeitszonen in Azure?
 Verfügbarkeitszonen sind ein Hochverfügbarkeitsangebot, das Anwendungen und Daten vor Ausfällen von Rechenzentren schützt. Verfügbarkeitszonen sind eindeutige physische Standorte in einer Azure-Region. Jede Zone besteht aus mindestens einem Rechenzentrum, dessen Stromversorgung, Kühlung und Netzwerkbetrieb unabhängig funktionieren. Zur Gewährleistung der Resilienz sind in allen aktivierten Regionen mindestens drei separate Zonen vorhanden. Die physische Trennung von Verfügbarkeitszonen innerhalb einer Region schützt Anwendungen und Daten vor Ausfällen von Rechenzentren. Zonenredundante Dienste replizieren Ihre Anwendungen und Daten zum Schutz vor einzelnen Fehlerquellen über Verfügbarkeitszonen hinweg. Mit Verfügbarkeitszonen bietet Azure die branchenweit beste Betriebszeit-SLA von 99,99 % für VMs. Die vollständige [Azure-SLA](https://azure.microsoft.com/support/legal/sla/virtual-machines/) erläutert die garantierte Verfügbarkeit von Azure insgesamt.
@@ -44,7 +44,7 @@ Die folgenden Kombinationen von Azure-Diensten und -Regionen unterstützen Verf�
 
 |                                 |Amerika |              |           |           | Europa |              |          |              | Asien-Pazifik |                 |
 |----------------------------|----------|----------|---------|---------|--------------|------------|--------|----------|----------|-------------|
-|          |USA (Mitte)|USA (Ost)|USA (Ost) 2|USA, Westen 2|Frankreich, Mitte|Nordeuropa|UK, Süden|Europa, Westen|Japan, Osten|Asien, Südosten|
+|          |USA (Mitte)|East US|USA (Ost) 2|USA, Westen 2|Frankreich, Mitte|Nordeuropa|UK, Süden|Europa, Westen|Japan, Osten|Asien, Südosten|
 | **Compute**                         |            |              |           |           |                |              |          |             |            |                |
 | Virtuelle Linux-Computer          | &#10003;   | &#10003;     | &#10003;  | &#10003;  | &#10003;       | &#10003;     | &#10003; | &#10003;    | &#10003;   | &#10003;       |
 | Virtuelle Windows-Computer        | &#10003;   | &#10003;     | &#10003;  | &#10003;  | &#10003;       | &#10003;     | &#10003; | &#10003;    | &#10003;   | &#10003;       |
@@ -56,11 +56,13 @@ Die folgenden Kombinationen von Azure-Diensten und -Regionen unterstützen Verf�
 | Standard-IP-Adresse        | &#10003;   | &#10003;     | &#10003;  | &#10003;  | &#10003;       | &#10003;     | &#10003; | &#10003;    | &#10003;   | &#10003;       |
 | Load Balancer Standard     | &#10003;   | &#10003;     | &#10003;  | &#10003;  | &#10003;       | &#10003;     | &#10003; | &#10003;    | &#10003;   | &#10003;       |
 | VPN Gateway                     | &#10003;   |              | &#10003;  | &#10003;  | &#10003;       | &#10003;     |          | &#10003;    |            | &#10003;       |
-| ExpressRoute                    | &#10003;   |              | &#10003;  | &#10003;  | &#10003;       | &#10003;     |          | &#10003;    |            | &#10003;       |
+| ExpressRoute-Gateway   | &#10003;   |              | &#10003;  | &#10003;  | &#10003;       | &#10003;     |          | &#10003;    |            | &#10003;       |
 | Application Gateway   | &#10003;   | &#10003;     | &#10003;  | &#10003;  | &#10003;       | &#10003;     |          | &#10003;    | &#10003;       | &#10003;       |
+| Azure Firewall           | &#10003;   | &#10003;     | &#10003;  | &#10003;  | &#10003;       | &#10003;     | &#10003; | &#10003;    |  &#10003;       | &#10003;       |
 | **Datenbanken**                     |            |              |           |           |                |              |          |             |            |                |
 | SQL-Datenbank                    | &#10003;   | &#10003;     | &#10003;  | &#10003;  | &#10003;       | &#10003;     | &#10003; | &#10003;    |            | &#10003;       |
-| Azure Cosmos DB                    |    |    |   |  |       |     | &#10003; |     |            | &#10003;       |
+| Azure Cache for Redis           | &#10003;   | &#10003;     | &#10003;  | &#10003;  | &#10003;       | &#10003;     | &#10003; | &#10003;    |  &#10003;       | &#10003;       |
+| Azure Cosmos DB                    | &#10003;   |  &#10003;  |  &#10003; |  |       |     | &#10003; |     |            | &#10003;       |
 | **Analyse**                       |            |              |           |           |                |              |          |             |            |                |
 | Event Hubs                      | &#10003;   |              | &#10003;  | &#10003;  | &#10003;       | &#10003;     |          | &#10003;    |            | &#10003;       |
 | **Integration**                     |            |              |           |           |                |              |          |             |            |                |
@@ -87,7 +89,7 @@ Es fallen keine zusätzlichen Kosten für virtuelle Computer an, die in einer Ve
 - [Georedundante Notfallwiederherstellung in Service Bus](../service-bus-messaging/service-bus-geo-dr.md#availability-zones)
 - [Erstellen eines zonenredundanten Gateways für virtuelle Netzwerke](../vpn-gateway/create-zone-redundant-vnet-gateway.md)
 - [Hinzufügen einer zonenredundanten Region für Azure Cosmos DB](../cosmos-db/high-availability.md#availability-zone-support)
-
+- [Erste Schritte mit Azure Cache für Redis-Verfügbarkeitszonen](https://aka.ms/redis/az/getstarted)
 
 ## <a name="next-steps"></a>Nächste Schritte
 - [Schnellstartvorlagen](https://aka.ms/azqs)

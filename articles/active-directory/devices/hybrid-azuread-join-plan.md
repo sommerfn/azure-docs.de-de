@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c476c2b326045db37c54a358d68f4b5f8bbaed9a
-ms.sourcegitcommit: 79496a96e8bd064e951004d474f05e26bada6fa0
+ms.openlocfilehash: abb050eb527e65b4fd31f3251d37fef7d51e867e
+ms.sourcegitcommit: cf438e4b4e351b64fd0320bf17cc02489e61406a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2019
-ms.locfileid: "67509592"
+ms.lasthandoff: 07/08/2019
+ms.locfileid: "67655973"
 ---
 # <a name="how-to-plan-your-hybrid-azure-active-directory-join-implementation"></a>Anleitung: Planen der Implementierung einer Azure Active Directory-Hybrideinbindung
 
@@ -87,7 +87,7 @@ Wenn Sie das Systemvorbereitungstool (Sysprep) verwenden und ein Image einer nie
 
 Wenn Sie zusätzliche VMs mit einer Momentaufnahme des virtuellen Computers erstellen, stellen Sie sicher, dass diese Momentaufnahme nicht von einem Computer stammt, der bereits als Azure AD-Hybrideinbindung bei Azure AD registriert ist.
 
-Wenn Ihre in die Windows 10-Domäne eingebundenen Geräte bereits für Ihren Mandanten bei [Azure AD registriert](https://docs.microsoft.com/azure/active-directory/devices/overview#azure-ad-registered-devices) sind, wird dringend empfohlen, diesen Status vor dem Aktivieren von Azure AD Hybrid Join zu entfernen. In Windows 10 Release 1809 wurden die folgenden Änderungen vorgenommen, um diesen Doppelstatus zu vermeiden:
+Wenn Ihre in die Windows 10-Domäne eingebundenen Geräte bereits für Ihren Mandanten bei [Azure AD registriert](https://docs.microsoft.com/azure/active-directory/devices/overview#getting-devices-in-azure-ad) sind, wird dringend empfohlen, diesen Status vor dem Aktivieren von Azure AD Hybrid Join zu entfernen. In Windows 10 Release 1809 wurden die folgenden Änderungen vorgenommen, um diesen Doppelstatus zu vermeiden:
 
 - Eine etwaige Registrierung bei Azure AD würde nach der Azure AD-Hybrideinbindung des Geräts automatisch entfernt werden.
 - Sie können verhindern, dass Ihr in die Domäne eingebundenes Gerät bei Azure AD registriert wird, indem Sie diesen Registrierungsschlüssel hinzufügen: HKLM\SOFTWARE\Policies\Microsoft\Windows\WorkplaceJoin, "BlockAADWorkplaceJoin"=dword:00000001.

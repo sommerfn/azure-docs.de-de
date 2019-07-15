@@ -12,21 +12,23 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 05/22/2019
+ms.date: 07/03/2019
 ms.author: ryanwi
 ms.reviewer: paulgarn, hirsin
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8c0e5035331cbe4f54926f0ae60ae0c5c31f6a9a
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 60eeb420c723e22b771b4b86b55c2ce7d6a23659
+ms.sourcegitcommit: 084630bb22ae4cf037794923a1ef602d84831c57
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66119719"
+ms.lasthandoff: 07/03/2019
+ms.locfileid: "67536827"
 ---
 # <a name="how-to-provide-optional-claims-to-your-azure-ad-app"></a>Gewusst wie: Bereitstellen optionaler Ansprüche für Ihre Azure AD-App
 
-Dieses Feature wird von Anwendungsentwicklern verwendet, um anzugeben, welche Ansprüche in Token enthalten sein sollen, die an ihre Anwendung gesendet werden. Sie können optionale Ansprüche zu folgenden Zwecken verwenden:
+Anwendungsentwickler können optionale Ansprüche in ihren Azure AD-Apps verwenden, um anzugeben, welche Ansprüche für Tokens vorhanden sein sollen, die an ihre Anwendungen geschickt werden. 
+
+Sie können optionale Ansprüche zu folgenden Zwecken verwenden:
 
 - Auswählen zusätzlicher Ansprüche, die in Token für Ihre Anwendung aufgenommen werden sollen
 - Ändern des Verhaltens bestimmter Ansprüche, die von Azure AD in Token zurückgegeben werden
@@ -34,13 +36,13 @@ Dieses Feature wird von Anwendungsentwicklern verwendet, um anzugeben, welche An
 
 Die Listen der Standardansprüche finden Sie in der Anspruchsdokumentation unter [Zugriffstoken](access-tokens.md) und [id_token](id-tokens.md). 
 
-Zwar werden optionale Ansprüche von Token der Formate v1.0 und v2.0 sowie von SAML-Token unterstützt, sie besitzen jedoch den größten Wert bei der Umstellung von v1.0 auf v2.0. Eines der Ziele des [v2.0 Azure AD-Endpunkts](active-directory-appmodel-v2-overview.md) ist eine geringere Tokengröße, um optimale Leistung von Clients zu gewährleisten. Daher sind mehrere Ansprüche, die zuvor in den Zugriffs- und ID-Token enthalten waren, nicht mehr in v2.0-Token vorhanden und müssen für einzelne Anwendungen speziell angefordert werden.
+Zwar werden optionale Ansprüche von Token der Formate v1.0 und v2.0 sowie von SAML-Token unterstützt, sie besitzen jedoch den größten Wert bei der Umstellung von v1.0 auf v2.0. Eines der Ziele des [v2.0 Microsoft Identity Platform-Endpunkts](active-directory-appmodel-v2-overview.md) ist eine geringere Tokengröße, um optimale Leistung von Clients zu gewährleisten. Daher sind mehrere Ansprüche, die zuvor in den Zugriffs- und ID-Token enthalten waren, nicht mehr in v2.0-Token vorhanden und müssen für einzelne Anwendungen speziell angefordert werden.
 
 **Tabelle 1: Anwendbarkeit**
 
-| Kontotyp | V1.0-Token | V2.0-Token  |
+| Kontotyp | v1.0-Token | v2.0-Token  |
 |--------------|---------------|----------------|
-| Persönliches Microsoft-Konto  | –  | Unterstützt|
+| Persönliches Microsoft-Konto  | –  | Unterstützt |
 | Azure AD-Konto      | Unterstützt | Unterstützt |
 
 ## <a name="v10-and-v20-optional-claims-set"></a>Gruppe optionaler Ansprüche in v1.0 und v2.0
@@ -70,7 +72,7 @@ Die Gruppe optionaler Ansprüche, die standardmäßig zur Verwendung in Anwendun
 | `xms_pl`                   | Bevorzugte Benutzersprache  | JWT ||Die bevorzugte Sprache des Benutzers, falls festgelegt. Wird in Szenarios mit Gastzugriff aus dem Basismandanten abgerufen. Format: Sprachraum-Land (z.B.: en-us) |
 | `xms_tpl`                  | Bevorzugte Mandantensprache| JWT | | Die bevorzugte Sprache des Ressourcenmandanten, falls festgelegt. Format: Sprachraum (z.B.: en) |
 | `ztdid`                    | ID der Bereitstellung ohne manuelles Eingreifen | JWT | | Die für [Windows Autopilot](https://docs.microsoft.com/windows/deployment/windows-autopilot/windows-10-autopilot) verwendete Geräteidentität |
-| `email`                    | Die adressierbaren E-Mail-Adresse dieses Benutzers, wenn der Benutzer über eine verfügt.  | JWT, SAML | MSA, AAD | Dieser Wert ist standardmäßig enthalten, wenn der Benutzer ein Gast im Mandanten ist.  Für verwaltete Benutzer (Benutzer innerhalb des Mandanten) muss er über diese optionale Anforderung oder – nur in V2. 0 – mit dem OpenID-Bereich angefordert werden.  Für verwaltete Benutzer muss die E-Mail-Adresse im [Office-Verwaltungsportal](https://portal.office.com/adminportal/home#/users) festgelegt sein.| 
+| `email`                    | Die adressierbaren E-Mail-Adresse dieses Benutzers, wenn der Benutzer über eine verfügt.  | JWT, SAML | MSA, Azure AD | Dieser Wert ist standardmäßig enthalten, wenn der Benutzer ein Gast im Mandanten ist.  Für verwaltete Benutzer (Benutzer innerhalb des Mandanten) muss er über diese optionale Anforderung oder – nur in V2. 0 – mit dem OpenID-Bereich angefordert werden.  Für verwaltete Benutzer muss die E-Mail-Adresse im [Office-Verwaltungsportal](https://portal.office.com/adminportal/home#/users) festgelegt sein.| 
 | `groups`| Optionale Formatierung für Gruppenansprüche |JWT, SAML| |Wird in Verbindung mit der Einstellung „GroupMembershipClaims“ im [Anwendungsmanifest](reference-app-manifest.md) verwendet, das ebenfalls festgelegt sein muss. Weitere Informationen finden Sie weiter unten unter [Gruppenansprüche](#Configuring-group-optional claims). Weitere Informationen zu Gruppenansprüchen finden Sie unter [Konfigurieren von Gruppenansprüchen](../hybrid/how-to-connect-fed-group-claims.md).
 | `acct`             | Benutzerkontostatus im Mandanten. | JWT, SAML | | Wenn der Benutzer dem Mandanten angehört, lautet der Wert `0`. Bei einem Gastbenutzer lautet der Wert `1`. |
 | `upn`                      | Anspruch „UserPrincipalName“. | JWT, SAML  |           | Obwohl dieser Anspruch automatisch hinzugefügt wird, können Sie ihn als einen optionalen Anspruch angeben, um zusätzliche Eigenschaften zum Ändern des Verhaltens im Fall eines Gastbenutzer anzufügen.  |
@@ -89,8 +91,8 @@ Diese Ansprüche sind in Azure AD v1.0-Token immer enthalten, jedoch nie in v2.0
 | `pwd_url`     | Kennwortänderungs-URL             | Eine URL, die der Benutzer besuchen kann, um sein Kennwort zu ändern.   |   |
 | `in_corp`     | Innerhalb des Unternehmensnetzwerks        | Signalisiert, ob sich der Client aus dem Unternehmensnetzwerk anmeldet. Andernfalls ist der Anspruch nicht enthalten.   |  Basierend auf den Einstellungen für [vertrauenswürdige IP-Adressen](../authentication/howto-mfa-mfasettings.md#trusted-ips) in der MFA.    |
 | `nickname`    | Spitzname                        | Ein zusätzlicher Name für den Benutzer, der vom Vor- oder Nachnamen abweicht. | 
-| `family_name` | Last Name (Nachname)                       | Gibt den Nachnamen des Benutzers entsprechend der Definition im Benutzerobjekt an. <br>„family_name“: „Miller“ | In MSA und AAD unterstützt   |
-| `given_name`  | Vorname                      | Gibt den Vornamen des Benutzers entsprechend der Definition im Benutzerobjekt an.<br>"given_name": "Frank"                   | In MSA und AAD unterstützt  |
+| `family_name` | Last Name (Nachname)                       | Gibt den Nachnamen des Benutzers entsprechend der Definition im Benutzerobjekt an. <br>„family_name“: „Miller“ | In MSA und Azure AD unterstützt   |
+| `given_name`  | Vorname                      | Gibt den Vornamen des Benutzers entsprechend der Definition im Benutzerobjekt an.<br>"given_name": "Frank"                   | In MSA und Azure AD unterstützt  |
 | `upn`         | Benutzerprinzipalname | Ein Bezeichner für den Benutzer, der mit dem Parameter „username_hint“ verwendet werden kann.  Dies ist kein dauerhafter Bezeichner für den Benutzer und sollte möglichst nicht zur Datenzuordnung verwendet werden. | Informationen zur Konfiguration des Anspruchs finden Sie weiter unten unter [Zusätzliche Eigenschaften](#additional-properties-of-optional-claims). |
 
 ### <a name="additional-properties-of-optional-claims"></a>Zusätzliche Eigenschaften optionaler Ansprüche
@@ -166,7 +168,7 @@ Deklariert die von einer Anwendung angeforderten optionalen Ansprüche. Eine Anw
 
 **Tabelle 5: Eigenschaften des Typs „OptionalClaims“**
 
-| NAME        | Type                       | BESCHREIBUNG                                           |
+| NAME        | type                       | BESCHREIBUNG                                           |
 |-------------|----------------------------|-------------------------------------------------------|
 | `idToken`     | Sammlung (OptionalClaim) | Die optionalen Ansprüche, die im JWT-ID-Token zurückgegeben werden. |
 | `accessToken` | Sammlung (OptionalClaim) | Die optionalen Ansprüche, die im JWT-Zugriffstoken zurückgegeben werden. |
@@ -179,7 +181,7 @@ Wenn durch einen bestimmten Anspruch unterstützt, können Sie auch das Verhalte
 
 **Tabelle 6: Eigenschaften des Typs „OptionalClaim“**
 
-| NAME                 | Type                    | BESCHREIBUNG                                                                                                                                                                                                                                                                                                   |
+| NAME                 | type                    | BESCHREIBUNG                                                                                                                                                                                                                                                                                                   |
 |----------------------|-------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | `name`                 | Edm.String              | Der Name des optionalen Anspruchs.                                                                                                                                                                                                                                                                           |
 | `source`               | Edm.String              | Die Quelle (Verzeichnisobjekt) des Anspruchs. Es gibt vordefinierte Ansprüche und benutzerdefinierte Ansprüche aus Erweiterungseigenschaften. Wenn der Quellwert „null“ ist, ist der Anspruch ein vordefinierter optionaler Anspruch. Wenn der Quellwert „user“ ist, ist der Wert in der „name“-Eigenschaft die Erweiterungseigenschaft aus dem Benutzerobjekt. |
@@ -190,7 +192,8 @@ Wenn durch einen bestimmten Anspruch unterstützt, können Sie auch das Verhalte
 Zusätzlich zu den optionalen Standardansprüchen können Sie auch Token so konfigurieren, dass sie Verzeichnisschemaerweiterungen enthalten. Weitere Informationen finden Sie unter [Verzeichnisschemaerweiterungen](https://msdn.microsoft.com/Library/Azure/Ad/Graph/howto/azure-ad-graph-api-directory-schema-extensions). Diese Funktion ist nützlich, um zusätzliche Benutzerinformationen anzufügen, die von Ihrer App verwendet werden können, z. B. einen zusätzlichen Bezeichner oder eine wichtige Konfigurationsoption, die vom Benutzer festgelegt wurde. 
 
 > [!Note]
-> Verzeichnisschemaerweiterungen sind eine auf AAD beschränkte Funktion, d. h., wenn Ihr Anwendungsmanifest eine benutzerdefinierte Erweiterung erfordert und sich ein MSA-Benutzer bei Ihrer App anmeldet, werden diese Erweiterungen nicht zurückgegeben.
+> - Verzeichnisschemaerweiterungen sind eine auf Azure AD beschränkte Funktion, d. h., wenn Ihr Anwendungsmanifest eine benutzerdefinierte Erweiterung erfordert und sich ein MSA-Benutzer bei Ihrer App anmeldet, werden diese Erweiterungen nicht zurückgegeben.
+> - Die optionalen Ansprüche von Azure AD funktionieren nur mit der Azure AD-Erweiterung und nicht mit der Microsoft Graph-Verzeichniserweiterung. Für beide APIs ist die `Directory.ReadWriteAll`-Berechtigung erforderlich, die nur von Administratoren erteilt werden kann.
 
 ### <a name="directory-extension-formatting"></a>Formatierung der Verzeichniserweiterung
 
@@ -206,8 +209,9 @@ Innerhalb der SAML-Token werden diese Ansprüche mit dem folgenden URI-Format au
    > Die Fähigkeit, Gruppennamen für Benutzer und Gruppen auszugeben, die lokal synchronisiert werden, befindet sich noch in der Phase der öffentlichen Vorschau.
 
 Dieser Abschnitt behandelt die Konfigurationsoptionen unter den optionalen Ansprüchen, um die in Gruppenansprüchen verwendeten Gruppenattribute von der Standardgruppen-ObjectID in von lokalem Windows Active Directory synchronisierte Attribute zu ändern.
+
 > [!IMPORTANT]
-> Unter [Konfigurieren von Gruppenansprüchen für Anwendungen mit Azure Active Directory](../hybrid/how-to-connect-fed-group-claims.md) finden Sie weitere Informationen, einschließlich wichtiger Einschränkungen für die öffentliche Vorschau von Gruppenansprüchen aus lokalen Attributen.
+> Unter [Konfigurieren von Gruppenansprüchen für Anwendungen mit Azure AD](../hybrid/how-to-connect-fed-group-claims.md) finden Sie weitere Informationen, einschließlich wichtiger Einschränkungen für die öffentliche Vorschau von Gruppenansprüchen aus lokalen Attributen.
 
 1. Wählen Sie im Portal folgende Optionen aus: Azure Active Directory > Anwendungsregistrierungen > Anwendung auswählen > Manifest.
 

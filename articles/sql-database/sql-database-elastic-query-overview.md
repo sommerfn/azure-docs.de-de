@@ -11,13 +11,13 @@ author: MladjoA
 ms.author: mlandzic
 ms.reviewer: sstein
 manager: craigg
-ms.date: 01/19/2019
-ms.openlocfilehash: fad9437a631254d6c60d6d97267ae111d195040f
-ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
+ms.date: 07/01/2019
+ms.openlocfilehash: 5188862c50895c8e3f1bdecb4e08d39409bb5f9e
+ms.sourcegitcommit: ac1cfe497341429cf62eb934e87f3b5f3c79948e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/01/2019
-ms.locfileid: "55567450"
+ms.lasthandoff: 07/01/2019
+ms.locfileid: "67491665"
 ---
 # <a name="azure-sql-database-elastic-query-overview-preview"></a>Übersicht über elastische Abfragen in Azure SQL-Datenbank (Vorschau)
 
@@ -77,13 +77,13 @@ Eine elastische Abfrage kann verwendet werden, um Daten in einer SQL-Datenbank a
 
 **Abbildung 2** Vertikale Partitionierung – Verwenden einer elastischen Abfrage zum Abfragen von Verweisdaten
 
-![ Vertikale Partitionierung – Verwenden einer elastischen Abfrage zum Abfragen von Verweisdaten][3]
+![Vertikale Partitionierung – Verwenden einer elastischen Abfrage zum Abfragen von Verweisdaten][3]
 
 **Datenbankübergreifende Abfragen:** Elastische Abfragen ermöglichen Anwendungsfälle, die das Abfragen mehrerer SQL-Datenbank-Instanzen erfordern. Abbildung 3 zeigt vier unterschiedliche Datenbanken: CRM, Bestand, Personal und Produkte. Abfragen, die auf eine der Datenbanken angewendet werden, benötigen außerdem Zugriff auf eine oder alle anderen Datenbanken. Bei Verwenden einer elastischen Abfrage können Sie Ihre Datenbank für diesen Fall konfigurieren, indem Sie einige einfache DDL-Anweisungen auf jede der vier Datenbanken anwenden. Nach dieser einmaligen Konfiguration ist der Zugriff auf eine Remotetabelle so einfach wie das Verweisen auf eine lokale Tabelle in Ihren T-SQL-Abfragen oder in Ihren BI-Tools. Dieser Ansatz wird empfohlen, wenn von den Remoteabfragen keine umfangreichen Ergebnisse zurückgegeben werden.
 
 **Abbildung 3** Vertikale Partitionierung – Verwenden einer elastischen Abfrage zum Abfragen verschiedener Datenbanken
 
-![ Vertikale Partitionierung – Verwenden einer elastischen Abfrage zum Abfragen verschiedener Datenbanken][4]
+![Vertikale Partitionierung – Verwenden einer elastischen Abfrage zum Abfragen verschiedener Datenbanken][4]
 
 Die folgenden Schritte dienen zum Konfigurieren elastischer Datenbankabfragen für Szenarien mit vertikaler Partitionierung, die Zugriff auf eine Tabelle in einer Remoteinstanz von SQL-Datenbank mit demselben Schema erfordern:
 
@@ -100,7 +100,7 @@ Das Verwenden einer elastischen Abfrage für Berichtsaufgaben auf einer Datenebe
 
 **Abbildung 4** Horizontale Partitionierung – Verwenden einer elastischen Abfrage von Datenebenen mit Sharding für die Berichterstellung
 
-![ Horizontale Partitionierung – Verwenden einer elastischen Abfrage von Datenebenen mit Sharding für die Berichterstellung][5]
+![Horizontale Partitionierung – Verwenden einer elastischen Abfrage von Datenebenen mit Sharding für die Berichterstellung][5]
 
 > [!NOTE]
 > Die elastische Abfragedatenbank (Hauptknoten) kann eine separate Datenbank oder aber die gleiche Datenbank sein, die als Host für die Shardzuordnung fungiert.
@@ -140,9 +140,10 @@ Elastische Abfragen sind in den Kosten für Azure SQL-Datenbanken enthalten. Bea
 * Das Erstellen von Skripts für externe Datenquellen oder externe Tabellen in SSMS oder SSDT wird noch nicht unterstützt.
 * Import/Export für SQLDB unterstützt noch keine externen Datenquellen und externen Tabellen. Wenn Sie Import/Export verwenden müssen, löschen Sie diese Objekte vor dem Exportieren, und erstellen Sie sie nach dem Importieren neu.
 * Elastische Abfragen unterstützen derzeit nur den schreibgeschützten Zugriff auf externe Tabellen. Sie können jedoch die vollständige T-SQL-Funktionalität für die Datenbank nutzen, in der die externe Tabelle definiert ist. Dies kann beispielsweise hilfreich sein, um temporäre Ergebnisse z.B. mithilfe von „SELECT <column_list> INTO <local_table>“ dauerhaft zu speichern, oder um gespeicherte Prozeduren für die elastische Abfragedatenbank zu definieren, die auf externe Tabellen verweisen.
-* Mit Ausnahme von „nvarchar(max)“ werden LOB-Typen in externen Tabellendefinitionen nicht unterstützt. Um dieses Problem zu umgehen, können Sie eine Sicht für die Remotedatenbank erstellen, die den LOB-Typ in „nvarchar(max)“ umwandelt, ihre externe Tabelle für die Sicht anstatt für die Basistabelle definieren und sie in Ihren Abfragen in den ursprünglichen LOB-Typ rückumwandeln.
+* Mit Ausnahme von „nvarchar(max)“ (einschließlich räumlicher Typen) werden LOB-Typen in externen Tabellendefinitionen nicht unterstützt. Um dieses Problem zu umgehen, können Sie eine Sicht für die Remotedatenbank erstellen, die den LOB-Typ in „nvarchar(max)“ umwandelt, ihre externe Tabelle für die Sicht anstatt für die Basistabelle definieren und sie in Ihren Abfragen in den ursprünglichen LOB-Typ rückumwandeln.
 * Durch Spalten vom Datentyp „nvarchar(max)“ im Resultset werden erweiterte Batchverarbeitungstechniken deaktiviert, die bei der Implementierung elastischer Abfragen verwendet werden und möglicherweise die Leistung der Abfragen für eine Größenordnung oder sogar zwei Größenordnungen in nicht kanonischen Anwendungsfällen beeinträchtigen, in denen eine Vielzahl von nicht aggregierten Daten infolge der Abfrage übertragen werden.
 * Spaltenstatistiken werden für externe Tabellen derzeit nicht unterstützt. Tabellenstatistiken werden unterstützt, müssen aber manuell erstellt werden.
+* Elastische Abfragen funktionieren nur mit Azure SQL-Datenbank. Sie können sie nicht für Abfragen von lokalen SQL Servern oder SQL Servern in einem VM verwenden.
 
 ## <a name="feedback"></a>Feedback
 

@@ -10,14 +10,14 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 04/26/2018
+ms.date: 07/02/2019
 ms.author: jingwang
-ms.openlocfilehash: 7c75793a696137a1d4cc24fa94877a7fb4e4247a
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 1a56006e5209a8ff6c15a2c626a752c00fcf131e
+ms.sourcegitcommit: 79496a96e8bd064e951004d474f05e26bada6fa0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66243921"
+ms.lasthandoff: 07/02/2019
+ms.locfileid: "67509178"
 ---
 # <a name="copy-data-from-sap-ecc-using-azure-data-factory"></a>Kopieren von Daten aus SAP ECC mithilfe von Azure Data Factory
 
@@ -124,7 +124,7 @@ Legen Sie zum Kopieren von Daten aus SAP ECC den Quelltyp in der Kopieraktivitä
 | Eigenschaft | BESCHREIBUNG | Erforderlich |
 |:--- |:--- |:--- |
 | type | Die type-Eigenschaft der Quelle der Kopieraktivität muss auf Folgendes festgelegt werden: **SapEccSource** | Ja |
-| query | OData-Abfrageoptionen zum Filtern von Daten. Beispiel: „$select=Name,Description&$top=10“.<br/><br/>Das SAP ECC-Connector kopiert Daten aus der kombinierten URL: (im verknüpften Dienst angegebene URL)/(im Dataset angegebener Pfad)?(in der Quelle der Kopieraktivität angegebene Abfrage). Lesen Sie hierzu [OData-URL-Komponenten](https://www.odata.org/documentation/odata-version-3-0/url-conventions/). | Nein |
+| query | OData-Abfrageoptionen zum Filtern von Daten. Beispiel: „$select=Name,Description&$top=10“.<br/><br/>Der SAP ECC-Connector kopiert Daten aus der kombinierten URL: `(url specified in linked service)/(path specified in dataset)?(query specified in copy activity source)`. Lesen Sie hierzu [OData-URL-Komponenten](https://www.odata.org/documentation/odata-version-3-0/url-conventions/). | Nein |
 
 **Beispiel:**
 

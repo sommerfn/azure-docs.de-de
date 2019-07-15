@@ -9,12 +9,12 @@ ms.subservice: anomaly-detector
 ms.topic: article
 ms.date: 03/26/2019
 ms.author: aahi
-ms.openlocfilehash: 766d009be3cd664d928a3c12f5fea38c26bbbdde
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 1ad4a67d7737733e4c910d3495be29860769f27e
+ms.sourcegitcommit: f811238c0d732deb1f0892fe7a20a26c993bc4fc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64692194"
+ms.lasthandoff: 06/29/2019
+ms.locfileid: "67477810"
 ---
 # <a name="best-practices-for-using-the-anomaly-detector-api"></a>Best Practices bei der Verwendung der Anomalieerkennungs-API
 
@@ -51,7 +51,7 @@ Nachfolgend ist dasselbe Dataset unter Verwendung der Batchanomalieerkennung auf
 
 ## <a name="data-preparation"></a>Vorbereitung der Daten
 
-Die Anomalieerkennungs-API akzeptiert als JSON-Anforderungsobjekt formatierte Zeitreihendaten. Eine Zeitreihe kann aus beliebigen numerischen Daten bestehen, die über die Zeit sequenziell erfasst werden. Sie können Fenster Ihrer Zeitreihendaten an den Anomalieerkennungs-API-Endpunkt senden, um die Leistung der API zu verbessern. Dabei können zwischen 12 (Minimum) und 8640 (Maximum) Datenpunkten gesendet werden. 
+Die Anomalieerkennungs-API akzeptiert als JSON-Anforderungsobjekt formatierte Zeitreihendaten. Eine Zeitreihe kann aus beliebigen numerischen Daten bestehen, die über die Zeit sequenziell erfasst werden. Sie können Fenster Ihrer Zeitreihendaten an den Anomalieerkennungs-API-Endpunkt senden, um die Leistung der API zu verbessern. Dabei können zwischen 12 (Minimum) und 8640 (Maximum) Datenpunkten gesendet werden. [Granularität](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.anomalydetector.models.granularity?view=azure-dotnet-preview) wird als die Rate definiert, mit der Ihre Daten erfasst werden. 
 
 Datenpunkte, die an die Anomalieerkennungs-API gesendet werden, müssen einen gültigen Zeitstempel der koordinierten Weltzeit (UTC) und einen numerischen Wert aufweisen. 
 
@@ -68,6 +68,15 @@ Datenpunkte, die an die Anomalieerkennungs-API gesendet werden, müssen einen g�
         "value": 29615278
       },
     ]
+}
+```
+
+Wenn Ihre Daten mit einem nicht standardmäßigen Intervall erfasst werden, können Sie dies über das Hinzufügen des `customInterval`-Attributs in Ihrer Anforderung spezifizieren. Wenn Ihre Reihe zum Beispiel alle 5 Minuten erfasst wird, dann können Sie die folgende JSON-Anforderung hinzufügen:
+
+```json
+{
+    "granularity" : "minutely", 
+    "customInterval" : 5
 }
 ```
 

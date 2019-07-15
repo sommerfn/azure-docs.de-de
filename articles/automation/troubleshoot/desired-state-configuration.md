@@ -4,17 +4,17 @@ description: Dieser Artikel enthält Informationen zur Behandlung von Problemen 
 services: automation
 ms.service: automation
 ms.subservice: ''
-author: georgewallace
-ms.author: gwallace
+author: bobbytreed
+ms.author: robreed
 ms.date: 04/16/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 7cb0d77a266dbe8afd331782965e7e9a44663671
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 53fef426c927c690a3b697055f467f6cd35c532c
+ms.sourcegitcommit: f811238c0d732deb1f0892fe7a20a26c993bc4fc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66514465"
+ms.lasthandoff: 06/29/2019
+ms.locfileid: "67477521"
 ---
 # <a name="troubleshoot-desired-state-configuration-dsc"></a>Behandeln von Problemen mit Konfiguration des gewünschten Zustands (Desired State Configuration, DSC)
 
@@ -164,6 +164,24 @@ Dieser Fehler tritt in der Regel auf, wenn dem Knoten ein Knotenkonfigurationsna
 
 * Stellen Sie sicher, dass Sie dem Knoten einen Knotenkonfigurationsnamen zuweisen, der genau mit dem im Dienst vorhandenen Namen übereinstimmt.
 * Sie können festlegen, dass kein Knotenkonfigurationsname angegeben werden soll. In dem Fall erfolgt ein Onboarding des Knotens, aber keine Zuweisung einer Knotenkonfiguration.
+
+### <a name="failure-linux-temp-noexec"></a>Szenario: Anwenden einer Konfiguration in Linux, dabei tritt allgemeiner Fehler auf
+
+#### <a name="issue"></a>Problem
+
+Wenn Sie eine Konfiguration in Linux anwenden, bei der der folgende Fehler auftritt:
+
+```error
+This event indicates that failure happens when LCM is processing the configuration. ErrorId is 1. ErrorDetail is The SendConfigurationApply function did not succeed.. ResourceId is [resource]name and SourceInfo is ::nnn::n::resource. ErrorMessage is A general error occurred, not covered by a more specific error code..
+```
+
+#### <a name="cause"></a>Ursache
+
+Kunden haben festgestellt, dass die aktuelle Version von DSC Konfiguration nicht übernimmt, wenn der „/tmp“-Speicherort als „noexec“ eingerichtet ist.
+
+#### <a name="resolution"></a>Lösung
+
+* Entfernen Sie die Option „noexec“ aus dem Speicherort „/tmp“.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

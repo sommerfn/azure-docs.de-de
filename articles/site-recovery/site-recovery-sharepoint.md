@@ -5,14 +5,14 @@ author: sujayt
 manager: rochakm
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 11/27/2018
+ms.date: 6/27/2019
 ms.author: sutalasi
-ms.openlocfilehash: 5f477cf20b817d7a6c8be856636bf1e3755b5424
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 4b4edec43d01878bbc5899487f6ee1d2816eb135
+ms.sourcegitcommit: ac1cfe497341429cf62eb934e87f3b5f3c79948e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61472110"
+ms.lasthandoff: 07/01/2019
+ms.locfileid: "67491834"
 ---
 # <a name="set-up-disaster-recovery-for-a-multi-tier-sharepoint-application-for-disaster-recovery-using-azure-site-recovery"></a>Einrichten der Notfallwiederherstellung für eine SharePoint-Anwendung mit mehreren Ebenen mithilfe von Azure Site Recovery
 
@@ -196,7 +196,7 @@ Befolgen Sie [diese Anleitung](site-recovery-test-failover-to-azure.md), um ein 
 
 Eine Anleitung zum Ausführen des Testfailovers für AD und DNS finden Sie im Dokument [Test failover considerations for AD and DNS](site-recovery-active-directory.md#test-failover-considerations) (Überlegungen zum Testfailover für AD und DNS).
 
-Eine Anleitung zum Ausführen des Testfailovers für SQL Always ON-Verfügbarkeitsgruppen finden Sie im Dokument [Doing Test failover for SQL Server Always On](site-recovery-sql.md#steps-to-do-a-test-failover) (Durchführen des Testfailovers für SQL Server Always On).
+Eine Anleitung zum Ausführen des Testfailovers für SQL Always ON-Verfügbarkeitsgruppen finden Sie im Dokument [Performing Application DR with Azure Site Recovery and doing Test failover](site-recovery-sql.md#disaster-recovery-of-application) (Durchführen von Application DR mit Azure Site Recovery und Testfailover).
 
 ## <a name="doing-a-failover"></a>Durchführen eines Failovers
 Befolgen Sie [diese Anleitung](site-recovery-failover.md), um ein Failover durchzuführen.

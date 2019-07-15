@@ -1,30 +1,34 @@
 ---
 title: Verwenden des Azure-Portals zum Bereitstellen von Azure-Ressourcen | Microsoft Docs
 description: Verwenden Sie das Azure-Portal und Azure Resource Manager zum Bereitstellen Ihrer Ressourcen.
-services: azure-resource-manager,azure-portal
-documentationcenter: ''
 author: tfitzmac
 ms.service: azure-resource-manager
-ms.workload: multiple
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
-ms.date: 08/03/2018
+ms.date: 06/27/2019
 ms.author: tomfitz
-ms.openlocfilehash: 7b28129a3afe9f78d0ef749fa0c7759082c5f758
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: a171d9b4f054c942eebb08e7e11dd1164545f408
+ms.sourcegitcommit: aa66898338a8f8c2eb7c952a8629e6d5c99d1468
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60520585"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67460289"
 ---
 # <a name="deploy-resources-with-resource-manager-templates-and-azure-portal"></a>Bereitstellen von Ressourcen mit Azure Resource Manager-Vorlagen und Azure-Portal
 
-In diesem Artikel wird veranschaulicht, wie Sie mit dem [Azure-Portal](https://portal.azure.com) und [Azure Resource Manager](resource-group-overview.md) Ihre Azure-Ressourcen bereitstellen. Informationen zum Verwalten von Ressourcen finden Sie unter [Verwalten von Azure-Ressourcen unter Verwendung des Azure-Portals](manage-resources-portal.md).
+Erfahren Sie, wie Sie mit dem [Azure-Portal](https://portal.azure.com) und [Azure Resource Manager](resource-group-overview.md) Ihre Azure-Ressourcen bereitstellen. Informationen zum Verwalten von Ressourcen finden Sie unter [Verwalten von Azure-Ressourcen unter Verwendung des Azure-Portals](manage-resources-portal.md).
 
-## <a name="create-resource-group"></a>Ressourcengruppe erstellen
+Zur Bereitstellung von Azure-Ressourcen mit dem Azure-Portal sind normalerweise zwei Schritte notwendig:
 
-1. Wählen Sie zum Erstellen einer leeren Ressourcengruppe die Option **Ressourcengruppen**.
+- Erstellen Sie eine Ressourcengruppe.
+- Bereitstellen von Ressourcen in der Ressourcengruppe.
+
+Außerdem können Sie eine Azure Resource Manager-Vorlage erstellen, um Azure-Ressourcen bereitzustellen.
+
+In diesem Artikel werden beide Methoden beschrieben.
+
+## <a name="create-a-resource-group"></a>Erstellen einer Ressourcengruppe
+
+1. Wählen Sie **„Ressourcengruppen“** im [Azure-Portal](https://portal.azure.com), um eine neue Ressourcengruppe zu erstellen.
 
    ![Auswählen von Ressourcengruppen](./media/resource-group-template-deploy-portal/select-resource-groups.png)
 
@@ -32,41 +36,37 @@ In diesem Artikel wird veranschaulicht, wie Sie mit dem [Azure-Portal](https://p
 
    ![Hinzufügen von Ressourcengruppen](./media/resource-group-template-deploy-portal/add-resource-group.png)
 
-1. Geben Sie einen Namen und einen Speicherort an, und wählen Sie ggf. ein Abonnement aus. Sie müssen einen Standort für die Ressourcengruppe angeben, da diese Metadaten zu den Ressourcen speichert. Aus Compliance-Gründen sollten Sie angeben, wo diese Metadaten gespeichert werden. Im Allgemeinen wird die Angabe eines Standorts empfohlen, an dem sich der Großteil Ihrer Ressourcen befindet. Durch die Verwendung des gleichen Standorts können Sie die Vorlage vereinfachen.
+1. Wählen Sie die folgenden Eigenschaftswerte aus, bzw. geben Sie sie ein:
+
+    - **Abonnement**: Wählen Sie ein Azure-Abonnement aus.
+    - **Ressourcengruppe**: Geben Sie der Ressourcengruppe einen Namen.
+    - **Region**: Geben Sie einen Azure-Standort an. Dort speichert die Ressourcengruppe Metadaten über die Ressourcen. Aus Compliance-Gründen sollten Sie angeben, wo diese Metadaten gespeichert werden. Im Allgemeinen wird die Angabe eines Standorts empfohlen, an dem sich der Großteil Ihrer Ressourcen befindet. Durch die Verwendung des gleichen Standorts können Sie die Vorlage vereinfachen.
 
    ![Festlegen von Gruppenwerten](./media/resource-group-template-deploy-portal/set-group-properties.png)
 
-   Wenn Sie die Eigenschaften festgelegt haben, klicken Sie auf **Erstellen**.
+1. Klicken Sie auf **Überprüfen + erstellen**.
+1. Überprüfen Sie die Werte, und wählen Sie dann **„Erstellen“** .
+1. Wählen Sie **„Aktualisieren“** , damit die neue Ressourcengruppe in der Liste erscheint.
 
-1. Klicken Sie zum Anzeigen Ihrer neuen Ressourcengruppe auf **Aktualisieren**.
+## <a name="deploy-resources-to-a-resource-group"></a>Bereitstellen von Ressourcen in einer Ressourcengruppe
 
-   ![Aktualisieren von Ressourcengruppen](./media/resource-group-template-deploy-portal/refresh-resource-groups.png)
+Nachdem Sie eine Ressourcengruppe erstellt haben, können Sie Ressourcen für die Gruppe über den Marketplace bereitstellen. Der Marketplace bietet vordefinierte Lösungen für gängige Szenarien.
 
-## <a name="deploy-resources-from-marketplace"></a>Bereitstellen von Ressourcen über den Marketplace
-
-Nachdem Sie eine Ressourcengruppe erstellt haben, können Sie Ressourcen dafür über den Marketplace bereitstellen. Der Marketplace bietet vordefinierte Lösungen für gängige Szenarien.
-
-1. Klicken Sie zum Starten einer Bereitstellung auf **Ressource erstellen**.
+1. Klicken Sie zum Starten einer Bereitstellung auf **„Ressource erstellen“** im [Azure-Portal](https://portal.azure.com).
 
    ![Neue Ressource](./media/resource-group-template-deploy-portal/new-resources.png)
 
-1. Suchen Sie den Typ der Ressource, die Sie bereitstellen möchten.
+1. Suchen Sie den Typ der Ressource, die Sie bereitstellen möchten. Die Ressource sind in Kategorien organisiert. Falls die gewünschte bereitzustellende Lösung nicht angezeigt wird, können Sie im Marketplace danach suchen. Im folgenden Screenshot ist der Ubuntu-Server ausgewählt.
 
    ![Ressourcentyp auswählen](./media/resource-group-template-deploy-portal/select-resource-type.png)
 
-1. Falls die gewünschte bereitzustellende Lösung nicht angezeigt wird, können Sie im Marketplace danach suchen. Beispiel: Wenn Sie eine Wordpress-Lösung suchen, beginnen Sie mit der Eingabe von **Wordpress**, und wählen Sie die gewünschte Option aus.
-
-   ![Durchsuchen von Marketplace](./media/resource-group-template-deploy-portal/search-resource.png)
-
-1. Je nach ausgewähltem Ressourcentyp müssen Sie einige relevante Eigenschaften festlegen, bevor die Bereitstellung beginnen kann. Für alle Typen müssen Sie eine Zielressourcengruppe auswählen. Die folgende Abbildung zeigt, wie Sie eine Web-App erstellen und in der erstellten Ressourcengruppe bereitstellen.
+1. Je nach ausgewähltem Ressourcentyp müssen Sie einige relevante Eigenschaften festlegen, bevor die Bereitstellung beginnen kann. Für alle Typen müssen Sie eine Zielressourcengruppe auswählen. Die folgende Abbildung zeigt, wie Sie einen virtuellen Linux-Computer erstellen und in der erstellten Ressourcengruppe bereitstellen.
 
    ![Ressourcengruppe erstellen](./media/resource-group-template-deploy-portal/select-existing-group.png)
 
    Alternativ können Sie eine Ressourcengruppe beim Bereitstellen Ihrer Ressourcen erstellen. Wählen Sie **Neu erstellen** aus, und benennen Sie die Ressourcengruppe.
 
-   ![Erstellen einer neuen Ressourcengruppe](./media/resource-group-template-deploy-portal/select-new-group.png)
-
-1. Die Bereitstellung wird gestartet. Der Vorgang kann mehrere Minuten dauern. Nachdem die Bereitstellung abgeschlossen wurde, wird eine Benachrichtigung angezeigt.
+1. Die Bereitstellung wird gestartet. Die Bereitstellung kann mehrere Minuten dauern. Einige Ressourcen brauchen länger als andere. Nachdem die Bereitstellung abgeschlossen wurde, wird eine Benachrichtigung angezeigt. Wählen Sie **„Zu Ressource wechseln“** und öffnen sie es.
 
    ![Anzeigen einer Benachrichtigung](./media/resource-group-template-deploy-portal/view-notification.png)
 
@@ -81,61 +81,53 @@ Wenn Sie eine Bereitstellung ausführen möchten, ohne eine der Vorlagen im Mark
 > [!NOTE]
 > Für die Portalschnittstelle wird das Verweisen auf ein [Geheimnis aus einem Key Vault](resource-manager-keyvault-parameter.md) nicht unterstützt. Verwenden Sie stattdessen [PowerShell](resource-group-template-deploy.md) oder [Azure CLI](resource-group-template-deploy-cli.md), um Ihre Vorlage lokal oder über einen externen URI bereitzustellen.
 
-1. Klicken Sie zum Bereitstellen einer benutzerdefinierten Vorlage über das Portal auf **Ressource erstellen**, suchen Sie nach **Vorlagenbereitstellung**, und wählen Sie diese Option aus.
+1. Klicken Sie zum Bereitstellen einer benutzerdefinierten Vorlage über das Portal auf **„Ressource erstellen“** und suchen Sie nach **„Vorlage“** . Wählen Sie dann **„Vorlagenbereitstellung“** aus.
 
    ![Suchen der Vorlagenbereitstellung](./media/resource-group-template-deploy-portal/search-template.png)
 
 1. Klicken Sie auf **Erstellen**.
+1. Zum Erstellen einer Vorlage werden verschiedene Optionen angezeigt:
 
-   ![Klicken auf „Erstellen“](./media/resource-group-template-deploy-portal/show-template-option.png)
-
-1. Zum Erstellen einer Vorlage werden verschiedene Optionen angezeigt. Wählen Sie **Eigene Vorlage im Editor erstellen**.
+    - **Eigene Vorlage im Editor erstellen**: Erstellen Sie eine Vorlage mit dem Vorlageneditor des Portals.  Der Editor kann ein Vorlagenschema für eine Ressource hinzufügen.
+    - **Gängige Vorlagen**: Es gibt vier gängige Vorlagen für das Erstellen von virtuellen Linux-Computern, virtuellen Windows-Computern, Webanwendungen und einer Azure SQL-Datenbank.
+    - **GitHub-Schnellstartvorlage laden**: Verwenden Sie eine vorhandene [Schnellstartvorlage](https://azure.microsoft.com/resources/templates/).
 
    ![Anzeigen der Optionen](./media/resource-group-template-deploy-portal/see-options.png)
 
-1. Sie haben eine leere Vorlage, die zum Anpassen verfügbar ist.
+    Dieses Tutorial zeigt Ihnen, wie Sie eine Schnellstartvorlage laden.
 
-   ![Erstellen der Vorlage](./media/resource-group-template-deploy-portal/blank-template.png)
+1. Geben Sie unter **„GitHub-Schnellstartvorlage laden“** **„101-storage-account-create“** ein oder wählen Sie es aus.
 
-1. Sie können die JSON-Syntax manuell bearbeiten oder eine vorgefertigte Vorlage aus dem [Katalog mit Schnellstartvorlagen](https://azure.microsoft.com/resources/templates/) auswählen. In diesem Artikel verwenden Sie jedoch die Option **Ressource hinzufügen**.
+    Sie haben zwei Möglichkeiten:
 
-   ![Bearbeiten der Vorlage](./media/resource-group-template-deploy-portal/select-add-resource.png)
+    - **Auswahl der Vorlage**: Stellen Sie die Vorlage bereit.
+    - **Bearbeiten der Vorlage**: Bearbeiten Sie die Schnellstartvorlage, bevor Sie sie bereitstellen.
 
-1. Klicken Sie auf **Speicherkonto**, und geben Sie einen Namen ein. Klicken Sie auf **OK**, wenn Sie die Werte eingegeben haben.
+1. Wählen Sie **„Bearbeiten der Vorlage“** aus, um sich den Vorlageneditor des Portals anzusehen. Diese Vorlage wird in den Editor geladen. Bitte beachten Sie, dass es zwei Parameter gibt: **„storageAccountType“** und **„location“** .
 
-   ![Auswählen des Speicherkontos](./media/resource-group-template-deploy-portal/add-storage-account.png)
+   ![Erstellen der Vorlage](./media/resource-group-template-deploy-portal/show-json.png)
 
-1. Der Editor fügt automatisch JSON als Ressourcentyp hinzu. Beachten Sie, dass ein Parameter zum Festlegen des Speicherkontotyps enthalten ist. Wählen Sie **Speichern** aus.
+1. Nehmen Sie eine geringfügige Änderung an der Vorlage vor. Aktualisieren Sie zum Beispiel die Variabel **„storageAccountName“** auf:
 
-   ![Anzeigen der Vorlage](./media/resource-group-template-deploy-portal/show-json.png)
+    ```json
+    "storageAccountName": "[concat('azstore', uniquestring(resourceGroup().id))]"
+    ```
 
-1. Nun haben Sie die Möglichkeit, die in der Vorlage definierten Ressourcen bereitzustellen. Stimmen Sie für die Bereitstellung den Geschäftsbedingungen zu, und klicken Sie auf **Kaufen**.
+1. Wählen Sie **Speichern** aus. Jetzt sehen Sie die Bereitstellungsschnittstelle für Vorlagen im Portal. Sie sehen außerdem die zwei Parameter, die Sie in der Vorlage definiert haben.
+1. Geben Sie die Eigenschaftswerte ein oder wählen Sie sie aus:
 
-   ![Bereitstellen der Vorlage](./media/resource-group-template-deploy-portal/provide-custom-template-values.png)
+    - **Abonnement**: Wählen Sie ein Azure-Abonnement aus.
+    - **Ressourcengruppe**: Wählen Sie **„Neu erstellen“** , und vergeben Sie einen Namen.
+    - **Standort**: Wählen Sie einen Azure-Standort aus.
+    - **Speicherkontotyp**: Verwenden Sie den Standardwert.
+    - **Standort**: Verwenden Sie den Standardwert.
+    - **Ich stimme den oben genannten Geschäftsbedingungen zu**: Aktivieren Sie dieses Kontrollkästchen.
 
-## <a name="deploy-resources-from-a-template-saved-to-your-account"></a>Bereitstellen von Ressourcen aus einer in Ihrem Konto gespeicherten Vorlage
-
-Über das Portal können Sie eine Vorlage in Ihrem Azure-Konto speichern und später erneut bereitstellen. Weitere Informationen zu Vorlagen finden Sie unter [Erstellen und Bereitstellen Ihrer ersten Azure Resource Manager-Vorlage](resource-manager-create-first-template.md).
-
-1. Klicken Sie zum Suchen der gespeicherten Vorlagen auf **Weitere Dienste**.
-
-   ![Weitere Dienste](./media/resource-group-template-deploy-portal/more-services.png)
-
-1. Suchen Sie nach **Vorlagen**, und wählen Sie diese Option.
-
-   ![Suchen nach Vorlagen](./media/resource-group-template-deploy-portal/find-templates.png)
-
-1. Wählen Sie in der Liste der Vorlagen, die in Ihrem Konto gespeichert sind, diejenige aus, mit der Sie arbeiten möchten.
-
-   ![Gespeicherte Vorlagen](./media/resource-group-template-deploy-portal/saved-templates.png)
-
-1. Wählen Sie **Bereitstellen** aus, um diese gespeicherte Vorlage erneut bereitzustellen.
-
-   ![Bereitstellen der gespeicherten Vorlage](./media/resource-group-template-deploy-portal/deploy-saved-template.png)
+1. Wählen Sie die Option **Kaufen**.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
 - Informationen zum Anzeigen von Überwachungsprotokollen finden Sie unter [Überwachen von Vorgängen mit Resource Manager](./resource-group-audit.md).
 - Informationen zum Beheben von Bereitstellungsfehlern finden Sie unter [Anzeigen von Bereitstellungsvorgängen](./resource-manager-deployment-operations.md).
 - Informationen zum Exportieren einer Vorlage aus einer Bereitstellung oder Ressourcengruppe finden Sie unter [Exportieren von Azure Resource Manager-Vorlagen](./manage-resource-groups-portal.md#export-resource-groups-to-templates).
-- Informationen zum sicheren Rollout Ihres Dienst über mehrere Regionen finden Sie im Artikel zum [Bereitstellungs-Manager](./deployment-manager-overview.md).
+- Informationen zum sicheren Rollout Ihres Dienst über mehrere Regionen finden Sie im Artikel zum [Azure-Bereitstellungs-Manager](./deployment-manager-overview.md).

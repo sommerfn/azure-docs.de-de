@@ -1,7 +1,7 @@
 ---
-title: 'Schnellstart: Python und REST-APIs – Azure Search'
-description: Erstellen und laden Sie einen Index mit Python, Jupyter Notebooks und der Azure Search-REST-API, und fragen Sie den Index ab.
-ms.date: 05/23/2019
+title: 'Python Schnellstart: Erstellen, Laden und Abfragen von Indizes mit Hilfe von Azure Search REST APIs - Azure Search'
+description: Erklärt, wie Sie einen Index erstellen, Daten laden und Abfragen mit Python, Jupyter Notebooks und der Azure Search REST API ausführen.
+ms.date: 06/20/2019
 author: heidisteen
 manager: cgronlun
 ms.author: heidist
@@ -10,23 +10,23 @@ ms.service: search
 ms.devlang: rest-api
 ms.topic: conceptual
 ms.custom: seodec2018
-ms.openlocfilehash: 99b4ec0be8e9fa631c5081edd42474ea89dc5dc3
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.openlocfilehash: 613879abd4c5c09450b690b793500a99428cff29
+ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/27/2019
-ms.locfileid: "66244791"
+ms.lasthandoff: 07/01/2019
+ms.locfileid: "67485470"
 ---
-# <a name="quickstart-create-an-azure-search-index-using-jupyter-python-notebooks"></a>Schnellstart: Erstellen eines Azure Search-Index mithilfe von Python-Jupyter Notebooks
+# <a name="quickstart-create-an-azure-search-index-in-python-using-jupyter-notebooks"></a>Schnellstart: Erstellen eines Azure Search-Index mithilfe von Python-Jupyter Notebooks
 > [!div class="op_single_selector"]
 > * [Python (REST)](search-get-started-python.md)
 > * [PowerShell (REST)](search-create-index-rest-api.md)
 > * [C#](search-create-index-dotnet.md)
-> * [Postman (REST)](search-fiddler.md)
+> * [Postman (REST)](search-get-started-postman.md)
 > * [Portal](search-create-index-portal.md)
 > 
 
-Erstellen Sie ein Jupyter Notebook, mit dem ein Azure Search-Index mithilfe von Python und den [Azure Search-REST-APIs](https://docs.microsoft.com/rest/api/searchservice/) erstellt, geladen und abgefragt wird. In diesem Artikel wird erläutert, wie Sie ein Notebook Schritt für Schritt von Grund auf neu erstellen. Alternativ können Sie ein abgeschlossenes Notebook ausführen. Eine Kopie können Sie unter [Azure Search Python Samples repository](https://github.com/Azure-Samples/azure-search-python-samples) herunterladen.
+Erstellen Sie ein Jupyter Notebook, mit dem ein Azure Search-Index mithilfe von Python und den [Azure Search-REST-APIs](https://docs.microsoft.com/rest/api/searchservice/) erstellt, geladen und abgefragt wird. In diesem Artikel wird erläutert, wie Sie ein Notebook Schritt für Schritt von Grund auf neu erstellen. Alternativ können Sie ein abgeschlossenes Notebook ausführen. Um eine Kopie herunterzuladen, [gehen Sie zum Repository azure-search-python-samples](https://github.com/Azure-Samples/azure-search-python-samples).
 
 Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) erstellen, bevor Sie beginnen.
 
@@ -46,7 +46,7 @@ Für REST-Aufrufe sind die Dienst-URL und ein Zugriffsschlüssel für jede Anfor
 
 1. Rufen Sie unter **Einstellungen** > **Schlüssel** einen Administratorschlüssel ab, um Vollzugriff auf den Dienst zu erhalten. Es gibt zwei austauschbare Administratorschlüssel – diese wurden zum Zweck der Geschäftskontinuität bereitgestellt, falls Sie einen Rollover für einen Schlüssel durchführen müssen. Für Anforderungen zum Hinzufügen, Ändern und Löschen von Objekten können Sie den primären oder den sekundären Schlüssel verwenden.
 
-![Abrufen eines HTTP-Endpunkts und Zugriffsschlüssels](media/search-fiddler/get-url-key.png "Abrufen eines HTTP-Endpunkts und Zugriffsschlüssels")
+![Abrufen eines HTTP-Endpunkts und Zugriffsschlüssels](media/search-get-started-postman/get-url-key.png "Abrufen eines HTTP-Endpunkts und Zugriffsschlüssels")
 
 Für alle an Ihren Dienst gesendeten Anforderungen ist ein API-Schlüssel erforderlich. Ein gültiger Schlüssel stellt anforderungsbasiert eine Vertrauensstellung her zwischen der Anwendung, die die Anforderung versendet, und dem Dienst, der sie verarbeitet.
 
@@ -88,22 +88,19 @@ Starten Sie in dieser Aufgabe ein Jupyter-Notebook, und stellen Sie sicher, dass
 
    Im Gegensatz dazu gibt eine leere Indexsammlung folgende Antwort zurück: `{'@odata.context': 'https://mydemo.search.windows.net/$metadata#indexes(name)', 'value': []}`
 
-> [!Tip]
-> Ein kostenloser Dienst ist auf drei Indizes, Indexer und Datenquellen beschränkt. In diesem Schnellstart wird jeweils ein Objekt davon erstellt. Stellen Sie sicher, dass Sie Platz zum Erstellen neuer Objekte haben, bevor wir fortfahren.
-
-## <a name="1---create-an-index"></a>1. Erstellen eines Index
+## <a name="1---create-an-index"></a>1\. Erstellen eines Index
 
 Sofern Sie nicht das Portal verwenden, muss im Dienst ein Index vorhanden sein, bevor Sie Daten laden können. Für diesen Schritt wird die [REST-API für die Indexerstellung](https://docs.microsoft.com/rest/api/searchservice/create-index) verwendet, um ein Indexschema an den Dienst zu pushen.
 
 Erforderliche Elemente eines Index sind beispielsweise ein Name, Feldsammlung und ein Schlüssel. Mit der Feldsammlung wird die Struktur eines *Dokuments* definiert. Jedes Feld verfügt über Name, Typ und Attribute zur Bestimmung der Nutzung des Felds (z.B. Volltextsuche, Filterbarkeit oder Abrufbarkeit in Suchergebnissen). In einem Index muss eines der Felder vom Typ `Edm.String` als *Schlüssel* für die Dokumentidentität angegeben werden.
 
-Dieser Index hat den Namen „hotels-py“ und verfügt über die unten angegebenen Felddefinitionen. Es ist eine Teilmenge eines größeren [Hotelindexes](https://github.com/Azure-Samples/azure-search-sample-data/blob/master/hotels/Hotels_IndexDefinition.JSON), der in anderen exemplarischen Vorgehensweisen verwendet wird. Wir haben ihn in diesem Schnellstart gekürzt.
+Dieser Index trägt den Namen „hotels-quickstart“ und hat die Felddefinitionen, die Sie unten sehen. Es ist eine Teilmenge eines größeren [Hotelindexes](https://github.com/Azure-Samples/azure-search-sample-data/blob/master/hotels/Hotels_IndexDefinition.JSON), der in anderen exemplarischen Vorgehensweisen verwendet wird. Wir haben ihn in diesem Schnellstart gekürzt.
 
 1. Fügen Sie in der nächsten Zelle das folgende Beispiel in einer Zelle ein, um das Schema bereitzustellen. 
 
     ```python
     index_schema = {
-       "name": "hotels-py",  
+       "name": "hotels-quickstart",  
        "fields": [
          {"name": "HotelId", "type": "Edm.String", "key": "true", "filterable": "true"},
          {"name": "HotelName", "type": "Edm.String", "searchable": "true", "filterable": "false", "sortable": "true", "facetable": "false"},
@@ -147,7 +144,7 @@ Dieser Index hat den Namen „hotels-py“ und verfügt über die unten angegebe
 
 <a name="load-documents"></a>
 
-## <a name="2---load-documents"></a>2. Laden von Dokumenten
+## <a name="2---load-documents"></a>2\. Laden von Dokumenten
 
 Senden Sie eine HTTP POST-Anforderung an den URL-Endpunkt Ihres Index, um Dokumente per Pushvorgang zu übertragen. Die REST-API ist [Hinzufügen, Aktualisieren oder Löschen von Dokumenten](https://docs.microsoft.com/rest/api/searchservice/addupdate-or-delete-documents). Die Dokumente stammen von [HotelsData](https://github.com/Azure-Samples/azure-search-sample-data/blob/master/hotels/HotelsData_toAzureSearch.JSON) auf GitHub.
 
@@ -236,10 +233,10 @@ Senden Sie eine HTTP POST-Anforderung an den URL-Endpunkt Ihres Index, um Dokume
     }
     ```   
 
-2. Formulieren Sie die Anforderung in einer anderen Zelle. Diese POST-Anforderung ist auf die Dokumentensammlung des Index „hotels-py“ ausgerichtet und pusht die im vorherigen Schritt angegebenen Dokumente.
+2. Formulieren Sie die Anforderung in einer anderen Zelle. Diese POST-Anfrage zielt auf die Dokumentsammlung des Hotelschnellstart-Index ab und verschiebt die im vorherigen Schritt bereitgestellten Dokumente.
 
    ```python
-   url = endpoint + "indexes/hotels-py/docs/index" + api_version
+   url = endpoint + "indexes/hotels-quickstart/docs/index" + api_version
    response  = requests.post(url, headers=headers, json=documents)
    index_content = response.json()
    pprint(index_content)
@@ -249,60 +246,67 @@ Senden Sie eine HTTP POST-Anforderung an den URL-Endpunkt Ihres Index, um Dokume
 
     ![Senden von Dokumenten an einen Index](media/search-get-started-python/load-index.png "Senden von Dokumenten an einen Index")
 
-## <a name="3---search-an-index"></a>3. Durchsuchen eines Index
+## <a name="3---search-an-index"></a>3\. Durchsuchen eines Index
 
 In diesem Schritt wird beschrieben, wie Sie einen Index mit der [REST-API zum Durchsuchen von Dokumenten](https://docs.microsoft.com/rest/api/searchservice/search-documents) abfragen.
 
+1. Geben Sie in einer Zelle einen Suchbegriff an, der eine leere Suche (search=*) ausführt und eine unrangierte Liste (search score = 1.0) beliebiger Dokumente zurückgibt. Standardmäßig gibt Azure Search 50 Übereinstimmungen auf einmal zurück. Wie strukturiert, liefert diese Anfrage eine komplette Dokumentstückliste und Werte zurück. Fügen Sie $count=true hinzu, um eine Anzahl aller Dokumente in den Ergebnissen zu erhalten.
 
-1. Geben Sie in einer neuen Zelle einen Abfrageausdruck an. Im folgenden Beispiel werden die Begriffe „hotels“ und „wifi“ gesucht. Zudem wird die *Anzahl* der übereinstimmenden Dokumente zurückgegeben und *ausgewählt*, welche Felder in den Suchergebnissen enthalten sein sollen.
+   ```python
+   searchstring = '&search=*&$count=true'
+   ```
+
+1. Geben Sie in einer neuen Zelle das folgende Beispiel für die Suche nach den Begriffen "Hotels" und "WLAN" an. Fügen Sie $select hinzu, um festzulegen, welche Felder in die Suchergebnisse aufgenommen werden sollen.
 
    ```python
    searchstring = '&search=hotels wifi&$count=true&$select=HotelId,HotelName'
    ```
 
-2. Formulieren Sie eine Anforderung in einer anderen Zelle. Diese GET-Anforderung ist auf die Dokumentensammlung des Index „hotels-py“ ausgerichtet und fügt die Abfrage an, die Sie im vorherigen Schritt angegeben haben.
+1. Formulieren Sie eine Anforderung in einer anderen Zelle. Diese GET-Anfrage zielt auf die Dokumentsammlung des Hotels-Schnellstartindex ab und fügt die im vorherigen Schritt angegebene Abfrage an.
 
    ```python
-   url = endpoint + "indexes/hotels-py/docs" + api_version + searchstring
+   url = endpoint + "indexes/hotels-quickstart/docs" + api_version + searchstring
    response  = requests.get(url, headers=headers, json=searchstring)
    query = response.json()
    pprint(query)
    ```
 
-3. Führen Sie die einzelnen Schritte aus. Die Ergebnisse sollten in etwa der folgenden Ausgabe ähneln. 
+1. Führen Sie die einzelnen Schritte aus. Die Ergebnisse sollten in etwa der folgenden Ausgabe ähneln. 
 
     ![Durchsuchen eines Index](media/search-get-started-python/search-index.png "Durchsuchen eines Index")
 
-4. Probieren Sie einige andere Abfragebeispiele aus, um ein Gefühl für die Syntax zu bekommen. Sie können die Suchzeichenfolge durch die folgenden Beispiele ersetzen und die Suchanforderung dann erneut ausführen. 
+1. Probieren Sie einige andere Abfragebeispiele aus, um ein Gefühl für die Syntax zu bekommen. Sie können `searchstring` die Suchzeichenfolge durch die folgenden Beispiele ersetzen und die Suchanforderung dann erneut ausführen. 
 
    Anwenden eines Filters: 
 
    ```python
-   searchstring = '&search=*&$filter=Rating gt 4&$select=HotelId,HotelName,Description'
+   searchstring = '&search=*&$filter=Rating gt 4&$select=HotelId,HotelName,Description,Rating'
    ```
 
    Verwenden der beiden oberen Ergebnisse:
 
    ```python
-   searchstring = '&search=boutique&$top=2&$select=HotelId,HotelName,Description'
+   searchstring = '&search=boutique&$top=2&$select=HotelId,HotelName,Description,Category'
    ```
 
     Sortieren nach einem bestimmten Feld:
 
    ```python
-   searchstring = '&search=pool&$orderby=Address/City&$select=HotelId, HotelName, Address/City, Address/StateProvince'
+   searchstring = '&search=pool&$orderby=Address/City&$select=HotelId, HotelName, Address/City, Address/StateProvince, Tags'
    ```
 
 ## <a name="clean-up"></a>Bereinigen 
 
-Es ist ratsam, den Index zu löschen, wenn Sie ihn nicht mehr benötigen. Für einen kostenlosen Dienst gilt eine Beschränkung auf drei Indizes. Es kann ratsam sein, alle Indizes zu löschen, die Sie nicht aktiv verwenden, um Platz für andere Tutorials freizugeben.
+Es ist ratsam, den Index zu löschen, wenn Sie ihn nicht mehr benötigen. Für einen kostenlosen Dienst gilt eine Beschränkung auf drei Indizes. Sie sollten alle Indizes löschen, die Sie nicht aktiv verwenden, um Platz für andere Tutorials zu schaffen.
+
+Der einfachste Weg, Objekte zu löschen, ist über das Portal, aber da es sich um einen Python-Schnellstart handelt, liefert die folgende Syntax das gleiche Ergebnis:
 
    ```python
-  url = endpoint + "indexes/hotels-py" + api_version
+  url = endpoint + "indexes/hotels-quickstart" + api_version
   response  = requests.delete(url, headers=headers)
    ```
 
-Sie können die Indexlöschung überprüfen, indem Sie eine Liste der vorhandenen Indizes zurückgeben. Wenn „hotels-py“ nicht mehr vorhanden ist, wurde die Anforderung erfolgreich ausgeführt.
+Sie können das Löschen von Indizes verifizieren, indem Sie eine Liste der vorhandenen Indizes anfordern. Wenn der Hotel-Schnellstart weg ist, dann wissen Sie, dass Ihre Anfrage erfolgreich war.
 
 ```python
 url = endpoint + "indexes" + api_version + "&$select=name"

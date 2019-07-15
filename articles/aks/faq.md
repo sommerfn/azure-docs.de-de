@@ -6,14 +6,14 @@ author: iainfoulds
 manager: jeconnoc
 ms.service: container-service
 ms.topic: article
-ms.date: 06/03/2019
+ms.date: 07/03/2019
 ms.author: iainfou
-ms.openlocfilehash: 1cc03cbcffc5253e8b357b6702cd21c45740ff81
-ms.sourcegitcommit: adb6c981eba06f3b258b697251d7f87489a5da33
+ms.openlocfilehash: d4fa365e1ed055fa8ddeb8fd475e152af84a3b71
+ms.sourcegitcommit: d3b1f89edceb9bff1870f562bc2c2fd52636fc21
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/04/2019
-ms.locfileid: "66514489"
+ms.lasthandoff: 07/04/2019
+ms.locfileid: "67560450"
 ---
 # <a name="frequently-asked-questions-about-azure-kubernetes-service-aks"></a>Häufig gestellte Fragen zu Azure Kubernetes Service (AKS)
 
@@ -21,32 +21,34 @@ Dieser Artikel behandelt häufig gestellte Fragen zu Azure Kubernetes Service (A
 
 ## <a name="which-azure-regions-currently-provide-aks"></a>In welchen Azure-Regionen wird AKS derzeit zur Verfügung gestellt?
 
-Eine vollständige Liste der verfügbaren Regionen finden Sie unter [AKS-Regionen und Verfügbarkeit][aks-regions].
+Eine vollständige Liste der verfügbaren Regionen finden Sie unter [„AKS-Regionen und Verfügbarkeit“][aks-regions].
 
 ## <a name="does-aks-support-node-autoscaling"></a>Unterstützt AKS die automatische Skalierung von Knoten?
 
-Ja, die automatische Skalierung ist ab Kubernetes 1.10 über den [Kubernetes Autoscaler][auto-scaler] verfügbar. Informationen zum manuellen Konfigurieren und Verwenden der automatischen Skalierungsfunktion für Cluster finden Sie unter [Cluster Autoscaler in AKS][aks-cluster-autoscale].
-
-Sie können auch die integrierte automatischen Skalierungsfunktion für Cluster verwenden (derzeit in der Vorschau in AKS), um die Skalierung von Knoten zu verwalten. Weitere Informationen hierzu finden Sie unter [Automatisches Skalieren eines Clusters zur Erfüllung von Anwendungsanforderungen in Azure Kubernetes Service (AKS)][aks-cluster-autoscaler].
-
-## <a name="does-aks-support-kubernetes-rbac"></a>Unterstützt AKS Kubernetes RBAC?
-
-Ja, die rollenbasierte Zugriffssteuerung von Kubernetes (Role-Based Access Control, RBAC) ist standardmäßig aktiviert, wenn Cluster mit der Azure-Befehlszeilenschnittstelle erstellt werden. Sie können RBAC für Cluster aktivieren, die über das Azure-Portal oder mithilfe von Vorlagen erstellt wurden.
+Ja. Die Möglichkeit, Agentknoten in AKS horizontal zu skalieren, existiert derzeit in der Vorschauversion. Weitere Informationen finden Sie unter [„Automatisches Skalieren eines Clusters zur Erfüllung von Anwendungsanforderungen in AKS“][aks-cluster-autoscaler] for instructions. AKS autoscaling is based on the [Kubernetes autoscaler][auto-scaler].
 
 ## <a name="can-i-deploy-aks-into-my-existing-virtual-network"></a>Kann ich AKS in meinem vorhandenen virtuellen Netzwerk bereitstellen?
 
 Ja, Sie können einen AKS-Cluster in einem vorhandenen virtuellen Netzwerk mithilfe des [erweiterten Netzwerkfeatures][aks-advanced-networking] bereitstellen.
 
+## <a name="can-i-limit-who-has-access-to-the-kubernetes-api-server"></a>Kann ich einschränken, wer Zugriff auf den Kubernetes-API-Server hat?
+
+Ja. Sie können den Zugriff auf den Kubernetes-API-Server mit [„Vom API-Server autorisierte IP-Bereiche“][api-server-authorized-ip-ranges] einschränken, wovon es derzeit eine Vorschauversion gibt.
+
 ## <a name="can-i-make-the-kubernetes-api-server-accessible-only-within-my-virtual-network"></a>Kann ich den Kubernetes-API-Server nur innerhalb meines virtuellen Netzwerks zugänglich machen?
 
-Derzeit leider nicht. Der Kubernetes-API-Server wird als öffentlicher vollqualifizierter Domänenname (FQDN) verfügbar gemacht. Den Zugriff auf Ihren Cluster können Sie mit [Kubernetes RBAC und Azure Active Directory (Azure AD)][aks-rbac-aad] steuern.
+Noch nicht, aber dies ist schon in der Planung. Der Fortschritt kann im [AKS GitHub-Repository][private-clusters-github-issue] nachverfolgt werden.
+
+## <a name="can-i-have-different-vm-sizes-in-a-single-cluster"></a>Kann ich verschiedene VM-Größen in einem einzigen Cluster haben?
+
+Ja. Sie können verschiedene Größen für virtuelle Computer in Ihrem AKS-Cluster einsetzen, indem Sie [mehrere Knotenpools][multi-node-pools] einsetzen, wovon es derzeit eine Vorschauversion gibt.
 
 ## <a name="are-security-updates-applied-to-aks-agent-nodes"></a>Werden Sicherheitsupdates auf AKS-Agent-Knoten angewendet?
 
 Azure wendet automatisch Sicherheitspatches auf die Linux-Knoten in Ihrem Cluster an, und zwar gemäß einem nächtlichen Zeitplan. Sie sind jedoch dafür verantwortlich, dass diese Linux-Knoten bei Bedarf neu gestartet werden. Sie haben mehrere Möglichkeiten für Neustarts von Knoten:
 
 - Manuell über das Azure-Portal oder die Azure-CLI.
-- Durch ein Upgrade des AKS-Clusters. Durch Clusterupgrades [werden Knoten automatisch abgesperrt und ausgeglichen][cordon-drain] und anschließend neue Knoten mit dem neuesten Ubuntu-Image und einer neuen Patchversion oder einer Kubernetes-Nebenversion online geschaltet. Weitere Informationen finden Sie unter [Aktualisieren eines AKS-Clusters][aks-upgrade].
+- Durch ein Upgrade des AKS-Clusters. Der Cluster führt ein Upgrade für [Absperren und Ausgleichen von Knoten][cordon-drain] durch automatically and then bring a new node online with the latest Ubuntu image and a new patch version or a minor Kubernetes version. For more information, see [Upgrade an AKS cluster][aks-upgrade].
 - Mit [Kured](https://github.com/weaveworks/kured), einem Open Source-Neustartdaemon für Kubernetes. Kured wird als [DaemonSet](https://kubernetes.io/docs/concepts/workloads/controllers/daemonset/) ausgeführt und überwacht jeden Knoten auf das Vorhandensein einer Datei, die angibt, dass ein Neustart erforderlich ist. Neustarts des Betriebssystems werden clusterübergreifend verwaltet, wobei derselbe [Vorgang des Absperrens und Ausgleichens][cordon-drain] wie bei einem Clusterupgrade angewandt wird.
 
 Weitere Informationen zur Verwendung von kured finden Sie unter [Apply security and kernel updates to nodes in Azure Kubernetes Service (AKS)][node-updates-kured] (Anwenden von Sicherheits- und Kernelupdates auf Knoten in Azure Kubernetes Service (AKS)).
@@ -144,12 +146,14 @@ AKS-Agent-Knoten werden als standardmäßige Azure-VMs abgerechnet. Wenn Sie als
 [node-updates-kured]: node-updates-kured.md
 [aks-preview-cli]: /cli/azure/ext/aks-preview/aks
 [az-aks-create]: /cli/azure/aks#az-aks-create
-[aks-rm-template]: /rest/api/aks/managedclusters/createorupdate#managedcluster
+[aks-rm-template]: /azure/templates/microsoft.containerservice/2019-06-01/managedclusters
 [aks-cluster-autoscaler]: cluster-autoscaler.md
 [nodepool-upgrade]: use-multiple-node-pools.md#upgrade-a-node-pool
 [aks-windows-cli]: windows-container-cli.md
 [aks-windows-limitations]: windows-node-limitations.md
 [reservation-discounts]: ../billing/billing-save-compute-costs-reservations.md
+[api-server-authorized-ip-ranges]: ./api-server-authorized-ip-ranges.md
+[multi-node-pools]: ./use-multiple-node-pools.md
 
 <!-- LINKS - external -->
 
@@ -158,3 +162,4 @@ AKS-Agent-Knoten werden als standardmäßige Azure-VMs abgerechnet. Wenn Sie als
 [hexadite]: https://github.com/Hexadite/acs-keyvault-agent
 [admission-controllers]: https://kubernetes.io/docs/reference/access-authn-authz/admission-controllers/
 [keyvault-flexvolume]: https://github.com/Azure/kubernetes-keyvault-flexvol
+[private-clusters-github-issue]: https://github.com/Azure/AKS/issues/948

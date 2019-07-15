@@ -6,14 +6,14 @@ author: mayurigupta13
 manager: rochakm
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 4/18/2019
+ms.date: 6/27/2019
 ms.author: mayg
-ms.openlocfilehash: bf4cce8a224db81b8db7fae6a69b8b578bb3d47a
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 35fa26112a6026ab05bd59b38621de7ee802c715
+ms.sourcegitcommit: ac1cfe497341429cf62eb934e87f3b5f3c79948e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60772304"
+ms.lasthandoff: 07/01/2019
+ms.locfileid: "67491891"
 ---
 # <a name="azure-expressroute-with-azure-site-recovery"></a>Azure ExpressRoute mit Azure Site Recovery
 
@@ -25,20 +25,15 @@ In diesem Artikel wird beschrieben, wie Sie Azure ExpressRoute mit Azure Site Re
 
 Eine ExpressRoute-Verbindung stellt eine logische Verbindung zwischen der lokalen Infrastruktur und den Microsoft-Clouddiensten über einen Konnektivitätsanbieter dar. Sie können mehrere ExpressRoute-Verbindungen bestellen. Alle Verbindungen können sich in derselben Region oder in verschiedenen Regionen befinden und über verschiedene Konnektivitätsanbieter mit dem jeweiligen Standort verbunden sein. Weitere Informationen zu ExpressRoute-Verbindungen finden Sie [hier](../expressroute/expressroute-circuit-peerings.md).
 
-## <a name="expressroute-routing-domains"></a>ExpressRoute-Routingdomänen
-
-Einer ExpressRoute-Verbindung sind mehrere Routingdomänen zugeordnet:
--   [Privates Azure-Peering](../expressroute/expressroute-circuit-peerings.md#privatepeering): Azure-Computedienste, sprich virtuelle Computer (IaaS) und Clouddienste (PaaS), die in einem virtuellen Netzwerk bereitgestellt werden, können über die private Peeringdomäne verbunden werden. Die private Peeringdomäne gilt als vertrauenswürdige Erweiterung Ihres Kernnetzwerks für Microsoft Azure.
--   [Öffentliches Azure-Peering](../expressroute/expressroute-circuit-peerings.md#publicpeering): Dienste wie Azure Storage, SQL-Datenbanken und Websites werden über öffentliche IP-Adressen angeboten. Über die öffentliche Peeringrouting-Domäne können Sie eine private Verbindung mit unter öffentlichen IP-Adressen gehosteten Diensten herstellen (darunter VIPs Ihrer Clouddienste). Öffentliches Peering wird für Neuerstellungen nicht mehr unterstützt, und stattdessen sollte Microsoft-Peering für Azure-PaaS-Dienste verwendet werden.
--   [Microsoft-Peering](../expressroute/expressroute-circuit-peerings.md#microsoftpeering): Verbindungen mit Onlinediensten von Microsoft (Office 365, Dynamics 365 und Azure-PaaS-Dienste) erfolgen über das Microsoft-Peering. Microsoft-Peering ist die empfohlene Routingdomäne für die Verbindung mit Azure-PaaS-Diensten.
-
-Weitere Informationen zu und eine Gegenüberstellung von ExpressRoute-Routingdomänen finden Sie [hier](../expressroute/expressroute-circuit-peerings.md#peeringcompare).
+Einer ExpressRoute-Verbindung sind mehrere Routingdomänen zugeordnet. Weitere Informationen zu und eine Gegenüberstellung von ExpressRoute-Routingdomänen finden Sie [hier](../expressroute/expressroute-circuit-peerings.md#peeringcompare).
 
 ## <a name="on-premises-to-azure-replication-with-expressroute"></a>Replikation zwischen einem lokalen Standort und Azure mit ExpressRoute
 
 Azure Site Recovery ermöglicht die Notfallwiederherstellung und Migration zu Azure für lokale [Hyper-V-Computer](hyper-v-azure-architecture.md), [virtuelle VMware-Computer](vmware-azure-architecture.md) und [physische Server](physical-azure-architecture.md). In allen Szenarien der Migration von einem lokalen Standort zu Azure werden die Replikationsdaten an ein Azure Storage-Konto gesendet und darin gespeichert. Während der Replikation zahlen Sie keine Gebühren für die VM. Wenn Sie einen Failover zu Azure ausführen, erstellt Site Recovery automatisch Azure-IaaS-VMs.
 
-Site Recovery repliziert Daten über einen öffentlichen Endpunkt in ein Azure Storage-Konto. Um ExpressRoute für die Site Recovery-Replikation zu verwenden, können Sie [öffentliches Peering](../expressroute/expressroute-circuit-peerings.md#publicpeering) (veraltet, für neue Erstellungen nicht mehr verwenden) oder [Microsoft-Peering](../expressroute/expressroute-circuit-peerings.md#microsoftpeering) nutzen. Microsoft-Peering ist die empfohlene Routingdomäne für die Replikation. Stellen Sie sicher, dass die [Netzwerkanforderungen](vmware-azure-configuration-server-requirements.md#network-requirements) auch für die Replikation erfüllt sind. Nach dem Failover virtueller Computer oder Server zu einem virtuellen Azure-Netzwerk können Sie mit [privatem Peering](../expressroute/expressroute-circuit-peerings.md#privatepeering) auf sie zugreifen. Replikation über privates Peering wird nicht unterstützt.
+Site Recovery repliziert Daten über einen öffentlichen Endpunkt in ein Azure Storage-Konto oder in verwaltete Replikatdatenträger. Um ExpressRoute für den Site Recovery-Replikationsdatenverkehr zu verwenden, können Sie [Microsoft-Peering](../expressroute/expressroute-circuit-peerings.md#microsoftpeering) oder ein vorhandenes [öffentliches Peering](../expressroute/expressroute-circuit-peerings.md#publicpeering) (veraltet, für neue Erstellungen nicht mehr verwenden) verwenden. Microsoft-Peering ist die empfohlene Routingdomäne für die Replikation. Bitte beachten Sie, dass Replikation über privates Peering nicht unterstützt wird.
+
+Stellen Sie sicher, dass die [Netzwerkanforderungen](vmware-azure-configuration-server-requirements.md#network-requirements) auch für den Konfigurationsserver erfüllt sind. Der Konfigurationsserver muss für die Orchestrierung der Site Recovery-Replikation eine Verbindung mit bestimmten URLs aufnehmen. Für diese Verbindung können Sie ExpressRoute nicht nutzen. 
 
 Wenn Sie den Proxy vor Ort verwenden und ExpressRoute für den Replikationsdatenverkehr verwenden möchten, müssen Sie die Proxyumgehungsliste auf dem Konfigurationsserver und den Prozessservern konfigurieren. Führen Sie die folgenden Schritte aus:
 
@@ -48,6 +43,8 @@ Wenn Sie den Proxy vor Ort verwenden und ExpressRoute für den Replikationsdaten
 - Fügen Sie in der Umgehungsliste die Azure-Speicher-URL *.blob.core.windows.net hinzu.
 
 Dadurch wird sichergestellt, dass nur Replikationsdatenverkehr über ExpressRoute fließt, während die Kommunikation über Proxy laufen kann.
+
+Nach dem Failover virtueller Computer oder Server zu einem virtuellen Azure-Netzwerk können Sie mit [privatem Peering](../expressroute/expressroute-circuit-peerings.md#privatepeering) auf sie zugreifen. 
 
 Dieses kombinierte Szenario ist im folgenden Diagramm dargestellt: ![Konnektivität zwischen lokalen Ressourcen und Azure mit ExpressRoute](./media/concepts-expressroute-with-site-recovery/site-recovery-with-expressroute.png)
 

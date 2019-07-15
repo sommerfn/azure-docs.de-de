@@ -4,7 +4,7 @@ description: Hier finden Sie Antworten auf die häufigsten Fragen zu virtuellen 
 services: virtual-machines-linux
 documentationcenter: ''
 author: cynthn
-manager: jeconnoc
+manager: gwallace
 editor: ''
 tags: azure-resource-management
 ms.assetid: 3648e09c-1115-4818-93c6-688d7a54a353
@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/08/2019
 ms.author: cynthn
-ms.openlocfilehash: 0623a7aff15184822ee8abde0b3c751f8a105b5b
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: ae636917a32aae823d0d31b415f9ef9ac16e9c2f
+ms.sourcegitcommit: 2e4b99023ecaf2ea3d6d3604da068d04682a8c2d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65463581"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67667774"
 ---
 # <a name="frequently-asked-question-about-linux-virtual-machines"></a>Häufig gestellte Fragen zu virtuellen Linux-Computern
 Dieser Artikel enthält einige häufig gestellte Fragen zu virtuellen Linux-Computern, die in Azure mit dem Resource Manager-Bereitstellungsmodell erstellt wurden. Die Windows-Version dieses Themas finden Sie unter [Häufig gestellte Fragen zu virtuellen Windows-Computern](../windows/faq.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
@@ -29,7 +29,7 @@ Dieser Artikel enthält einige häufig gestellte Fragen zu virtuellen Linux-Comp
 Alle Abonnenten können Serversoftware auf einem virtuellen Azure-Computer ausführen. Weitere Informationen finden Sie unter [Linux auf von Azure unterstützten Distributionen](endorsed-distros.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
 
 ## <a name="how-much-storage-can-i-use-with-a-virtual-machine"></a>Wie viel Speicher kann mit einem virtuellen Computer verwendet werden?
-Jeder Datenträger kann bis zu 4 TB (4.095 GB) groß sein. Die Anzahl der Datenträger, die Sie verwenden können, hängt von der Größe des virtuellen Computers ab. Ausführliche Informationen finden Sie unter [Größen für virtuelle Computer](sizes.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
+Jeder Datenträger kann bis zu 32,767 GiB groß sein. Die Anzahl der Datenträger, die Sie verwenden können, hängt von der Größe des virtuellen Computers ab. Ausführliche Informationen finden Sie unter [Größen für virtuelle Computer](sizes.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
 
 Azure Managed Disks ist die empfohlene Lösung für die dauerhafte Speicherung von Daten auf Datenträgern, die mit Azure Virtual Machines verwendet werden. Sie können für jeden virtuellen Computer mehrere Datenträger (Managed Disks) verwenden. Managed Disks bietet zwei Arten von permanentem Speicher: verwaltete Datenträger der Tarife Premium und Standard. Informationen zu den Preisen finden Sie unter [Verwaltete Datenträger – Preise](https://azure.microsoft.com/pricing/details/managed-disks).
 
@@ -74,6 +74,7 @@ Die folgenden Benutzernamen sind nicht zulässig:
 | `john`          | `owner`   | `root`             | `server` |
 | `sql`           | `support` | `support_388945a0` | `sys`    |
 | `test2`         | `test3`   | `user4`            | `user5`  |
+| `video`         |
 
 ## <a name="what-are-the-password-requirements-when-creating-a-vm"></a>Welche Anforderungen an das Kennwort gelten beim Erstellen eines virtuellen Computers?
 

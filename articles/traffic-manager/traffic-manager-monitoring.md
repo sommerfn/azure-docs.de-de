@@ -2,20 +2,20 @@
 title: Azure Traffic Manager-Endpunktüberwachung | Microsoft Docs
 description: In diesem Artikel wird beschrieben, wie Traffic Manager die Endpunktüberwachung und das automatische Endpunktfailover verwendet, um Azure-Kunden bei der Bereitstellung von Anwendungen mit hoher Verfügbarkeit zu unterstützen.
 services: traffic-manager
-author: KumudD
+author: asudbring
 ms.service: traffic-manager
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 12/04/2018
-ms.author: kumud
-ms.openlocfilehash: 083bdf9c5aec640fbbd7757b307ac47178e0b14b
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.author: allensu
+ms.openlocfilehash: 8df1c29bc5230e925d05be9fd356de050a9b0f06
+ms.sourcegitcommit: 978e1b8cac3da254f9d6309e0195c45b38c24eb5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58076138"
+ms.lasthandoff: 07/03/2019
+ms.locfileid: "67550360"
 ---
 # <a name="traffic-manager-endpoint-monitoring"></a>Traffic Manager-Endpunktüberwachung
 
@@ -69,12 +69,12 @@ Der Überwachungsstatus von Endpunkten ist ein Wert, der von Traffic Manager gen
 
 | Profilstatus | Endpunktstatus | Überwachungsstatus von Endpunkten | Notizen |
 | --- | --- | --- | --- |
-| Deaktiviert |Aktiviert |Inaktiv |Das Profil wurde deaktiviert. Obwohl der Endpunktstatus immer noch „Aktiviert“ lautet, hat der Profilstatus („Deaktiviert“) Vorrang. Endpunkte in deaktivierten Profilen werden nicht überwacht. Ein „NXDOMAIN“-Antwortcode wird für die DNS-Abfrage zurückgegeben. |
+| Deaktiviert |Enabled |Inaktiv |Das Profil wurde deaktiviert. Obwohl der Endpunktstatus immer noch „Aktiviert“ lautet, hat der Profilstatus („Deaktiviert“) Vorrang. Endpunkte in deaktivierten Profilen werden nicht überwacht. Ein „NXDOMAIN“-Antwortcode wird für die DNS-Abfrage zurückgegeben. |
 | &lt;beliebig&gt; |Deaktiviert |Deaktiviert |Der Endpunkt wurde deaktiviert. Deaktivierte Endpunkte werden nicht überwacht. Der Endpunkt wird nicht in DNS-Antworten einbezogen und kann daher auch keinen Datenverkehr empfangen. |
-| Aktiviert |Aktiviert |Online |Der Endpunkt wird überwacht und ist fehlerfrei. Er wird in DNS-Antworten einbezogen und kann Datenverkehr empfangen. |
-| Aktiviert |Aktiviert |Heruntergestuft |Bei Integritätsprüfungen im Rahmen der Endpunktüberwachung werden Fehler erkannt. Der Endpunkt wird nicht in DNS-Antworten einbezogen und empfängt keinen Datenverkehr. <br>Eine Ausnahme ist der Fall, in dem alle Endpunkte heruntergestuft und in der Abfrageantwort zurückgegeben werden.</br>|
-| Aktiviert |Aktiviert |CheckingEndpoint |Der Endpunkt wird überwacht, die Ergebnisse der ersten Überprüfung wurden jedoch noch nicht empfangen. CheckingEndpoint ist ein temporärer Status, der in der Regel unmittelbar nach dem Hinzufügen oder Aktivieren eines Endpunkts im Profil auftritt. Ein Endpunkt in diesem Status kann in DNS-Antworten einbezogen werden und Datenverkehr empfangen. |
-| Aktiviert |Aktiviert |Beendet |Der Clouddienst oder die Web-App, auf den bzw. die der Endpunkt zeigt, wird nicht ausgeführt. Überprüfen Sie die Einstellungen des Clouddiensts oder der Web-App. Dies kann auch vorkommen, wenn der Endpunkt ein geschachtelter Endpunkt ist und das untergeordnete Profil deaktiviert oder inaktiv ist. <br>Ein Endpunkt mit dem Status „Beendet“ wird nicht überwacht. Er wird nicht in DNS-Antworten einbezogen und empfängt keinen Datenverkehr. Eine Ausnahme ist der Fall, in dem alle Endpunkte heruntergestuft und in der Abfrageantwort zurückgegeben werden.</br>|
+| Enabled |Enabled |Online |Der Endpunkt wird überwacht und ist fehlerfrei. Er wird in DNS-Antworten einbezogen und kann Datenverkehr empfangen. |
+| Enabled |Enabled |Heruntergestuft |Bei Integritätsprüfungen im Rahmen der Endpunktüberwachung werden Fehler erkannt. Der Endpunkt wird nicht in DNS-Antworten einbezogen und empfängt keinen Datenverkehr. <br>Eine Ausnahme ist der Fall, in dem alle Endpunkte heruntergestuft und in der Abfrageantwort zurückgegeben werden.</br>|
+| Enabled |Enabled |CheckingEndpoint |Der Endpunkt wird überwacht, die Ergebnisse der ersten Überprüfung wurden jedoch noch nicht empfangen. CheckingEndpoint ist ein temporärer Status, der in der Regel unmittelbar nach dem Hinzufügen oder Aktivieren eines Endpunkts im Profil auftritt. Ein Endpunkt in diesem Status kann in DNS-Antworten einbezogen werden und Datenverkehr empfangen. |
+| Enabled |Enabled |Beendet |Die Web-App, auf den bzw. die der Endpunkt zeigt, wird nicht ausgeführt. Überprüfen Sie die Web-App-Einstellungen. Dies kann auch vorkommen, wenn der Endpunkt ein geschachtelter Endpunkt ist und das untergeordnete Profil deaktiviert oder inaktiv ist. <br>Ein Endpunkt mit dem Status „Beendet“ wird nicht überwacht. Er wird nicht in DNS-Antworten einbezogen und empfängt keinen Datenverkehr. Eine Ausnahme ist der Fall, in dem alle Endpunkte heruntergestuft und in der Abfrageantwort zurückgegeben werden.</br>|
 
 Ausführlichere Informationen zur Berechnung des Überwachungsstatus bei geschachtelten Endpunkten finden Sie unter [Geschachtelte Traffic Manager-Profile](traffic-manager-nested-profiles.md).
 
@@ -88,20 +88,21 @@ Der Überwachungsstatus von Profilen ist das Ergebnis einer Kombination aus dem 
 | Profilstatus (wie konfiguriert) | Überwachungsstatus von Endpunkten | Überwachungsstatus von Profilen | Notizen |
 | --- | --- | --- | --- |
 | Deaktiviert |&lt;beliebig&gt; oder ein Profil ohne definierte Endpunkte. |Deaktiviert |Das Profil wurde deaktiviert. |
-| Aktiviert |Der Status mindestens eines Endpunkts lautet „Heruntergestuft“. |Heruntergestuft |Überprüfen Sie die einzelnen Endpunkt-Statuswerte, um zu ermitteln, für welche Endpunkte weitere Aufmerksamkeit erforderlich ist. |
-| Aktiviert |Der Status mindestens eines Endpunkts lautet „Online“. Kein Endpunkt weist den Status „Heruntergestuft“ auf. |Online- |Der Dienst akzeptiert Datenverkehr. Es ist keine weitere Aktion erforderlich. |
-| Aktiviert |Der Status mindestens eines Endpunkts lautet „CheckingEndpoint“. Es befinden sich keine Endpunkte in den Status „Online“ oder „Heruntergestuft“. |CheckingEndpoints |Dieser Übergangsstatus tritt auf, wenn ein Profil erstellt oder aktiviert wird. Die Endpunktintegrität wird zum ersten Mal überprüft. |
-| Aktiviert |Der Status aller Endpunkte im Profil ist „Deaktiviert“ oder „Beendet“, oder im Profil wurden keine Endpunkte definiert. |Inaktiv |Es sind keine Endpunkte aktiv, das Profil ist jedoch weiterhin aktiviert. |
+| Enabled |Der Status mindestens eines Endpunkts lautet „Heruntergestuft“. |Heruntergestuft |Überprüfen Sie die einzelnen Endpunkt-Statuswerte, um zu ermitteln, für welche Endpunkte weitere Aufmerksamkeit erforderlich ist. |
+| Enabled |Der Status mindestens eines Endpunkts lautet „Online“. Kein Endpunkt weist den Status „Heruntergestuft“ auf. |Online- |Der Dienst akzeptiert Datenverkehr. Es ist keine weitere Aktion erforderlich. |
+| Enabled |Der Status mindestens eines Endpunkts lautet „CheckingEndpoint“. Es befinden sich keine Endpunkte in den Status „Online“ oder „Heruntergestuft“. |CheckingEndpoints |Dieser Übergangsstatus tritt auf, wenn ein Profil erstellt oder aktiviert wird. Die Endpunktintegrität wird zum ersten Mal überprüft. |
+| Enabled |Der Status aller Endpunkte im Profil ist „Deaktiviert“ oder „Beendet“, oder im Profil wurden keine Endpunkte definiert. |Inaktiv |Es sind keine Endpunkte aktiv, das Profil ist jedoch weiterhin aktiviert. |
 
 ## <a name="endpoint-failover-and-recovery"></a>Endpunktfailover und -wiederherstellung
 
 Traffic Manager überprüft regelmäßig die Integrität jedes Endpunkts, einschließlich fehlerhafter Endpunkte. Traffic Manager erkennt, wenn ein Endpunkt fehlerfrei wird, und nimmt ihn wieder in den Kreislauf auf.
 
 Ein Endpunkt ist fehlerhaft, wenn eines der folgenden Ereignisse eintritt:
+
 - Bei Verwendung des Überwachungsprotokolls HTTP oder HTTPS:
     - Eine „Nicht-200“-Antwort oder eine Antwort, die nicht den in der Einstellung **Erwartete Statuscodebereiche** angegebenen Statusbereich enthält, wird empfangen (einschließlich eines anderen 2xx-Codes oder einer 301/302-Umleitung).
 - Bei Verwendung des Überwachungsprotokolls TCP: 
-    - Eine andere Antwort als ACK oder SYN-ACK wird als Reaktion auf die von Traffic Manager gesendete SYNC-Anforderung empfangen, um zu versuchen, eine Verbindung herzustellen.
+    - Eine andere Antwort als ACK oder SYN-ACK wird als Reaktion auf die von Traffic Manager gesendete SYN-Anforderung empfangen, um zu versuchen, eine Verbindung herzustellen.
 - Timeout 
 - Alle anderen Verbindungsprobleme, die dazu führen, dass der Endpunkt nicht erreichbar ist.
 
@@ -141,7 +142,7 @@ Wenn ein Endpunkt den Status „Heruntergestuft“ aufweist, wird er nicht mehr 
 Weitere Informationen finden Sie unter [Traffic Manager-Methoden für das Datenverkehrsrouting](traffic-manager-routing-methods.md).
 
 > [!NOTE]
-> Eine Ausnahme des normalen Datenverkehrsrouting-Verhaltens tritt auf, wenn alle auswählbaren Endpunkte den Status „Heruntergestuft“ aufweisen. Traffic Manager wählt die beste Lösung und *antwortet so, als befänden sich alle heruntergestuften Endpunkte im Status „Online“*. Dieses Verhalten ist besser als die Alternative, bei der für die DNS-Antwort keinerlei Endpunkte zurückgegeben würden. Deaktivierte oder beendete Endpunkte werden nicht überwacht und daher für den Datenverkehr als nicht auswählbar betrachtet.
+> Eine Ausnahme des normalen Datenverkehrsrouting-Verhaltens tritt auf, wenn alle auswählbaren Endpunkte den Status „Heruntergestuft“ aufweisen. Traffic Manager wählt die beste Lösung und *antwortet so, als befänden sich alle heruntergestuften Endpunkte im Status „Online“* . Dieses Verhalten ist besser als die Alternative, bei der für die DNS-Antwort keinerlei Endpunkte zurückgegeben würden. Deaktivierte oder beendete Endpunkte werden nicht überwacht und daher für den Datenverkehr als nicht auswählbar betrachtet.
 >
 > Diese Bedingung wird häufig durch eine falsche Konfiguration des Dienst verursacht, wie z.B.:
 >
@@ -151,8 +152,6 @@ Weitere Informationen finden Sie unter [Traffic Manager-Methoden für das Datenv
 > Wenn die Traffic Manager-Integritätsprüfungen nicht richtig konfiguriert sind, führt dieses Verhalten dazu, dass es aufgrund des Datenverkehrsroutings so aussieht, *als ob* Traffic Manager richtig funktioniert. Allerdings kann in diesem Fall kein Endpunktfailover durchgeführt werden. Dies wirkt sich auf die Gesamtverfügbarkeit der Anwendung aus. Es ist wichtig, sicherzustellen, dass das Profil den Status „Online“ aufweist, und nicht den Status „Heruntergestuft“. Der Status „Online“ weist darauf hin, dass die Traffic Manager-Integritätsprüfungen wie gewünscht durchgeführt werden.
 
 Weitere Informationen zur Behandlung von Fehlern bei Integritätsprüfungen finden Sie unter [Problembehandlung beim Status „Heruntergestuft“ in Azure Traffic Manager](traffic-manager-troubleshooting-degraded.md).
-
-
 
 ## <a name="next-steps"></a>Nächste Schritte
 

@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 07/23/2018
 ms.author: mbullwin
-ms.openlocfilehash: cf818756f583974a8a9b53a9a0cce31dd93d042b
-ms.sourcegitcommit: 8c49df11910a8ed8259f377217a9ffcd892ae0ae
+ms.openlocfilehash: 2966f90dcb381e439c00a6540ef9a01bd24f8743
+ms.sourcegitcommit: d3b1f89edceb9bff1870f562bc2c2fd52636fc21
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/29/2019
-ms.locfileid: "66299300"
+ms.lasthandoff: 07/04/2019
+ms.locfileid: "67561185"
 ---
 # <a name="troubleshooting-no-data---application-insights-for-net"></a>Problembehandlung ohne Daten – Application Insights für .NET
 ## <a name="some-of-my-telemetry-is-missing"></a>Einige meiner Telemetriedaten fehlen
@@ -28,13 +28,13 @@ ms.locfileid: "66299300"
 
 *Daten gehen nach dem Zufallsprinzip verloren.*
 
-* Überprüfen Sie, ob es im [Telemetriekanal](telemetry-channels.md#does-applicationinsights-channel-offer-guaranteed-telemetry-delivery-or-what-are-the-scenarios-where-telemetry-can-be-lost) zu Datenverlust kommt.
+* Überprüfen Sie, ob es im [Telemetriekanal](telemetry-channels.md#does-the-application-insights-channel-guarantee-telemetry-delivery-if-not-what-are-the-scenarios-in-which-telemetry-can-be-lost) zu Datenverlust kommt.
 
 * Suchen Sie nach bekannten Problemen im [Github-Repository](https://github.com/Microsoft/ApplicationInsights-dotnet/issues) zum Telemetriekanal.
 
 *In der Konsolen-App oder in der Web-App kommt es beim Beenden der App zu Datenverlusten.*
 
-* Der SDK-Kanal speichert Telemetriedaten im Puffer und sendet sie in Batches. Wenn die Anwendung gerade heruntergefahren wird, müssen Sie möglicherweise [Flush()](api-custom-events-metrics.md#flushing-data) explizit aufrufen. Das Verhalten von `Flush()` hängt vom tatsächlich verwendeten [Kanal](telemetry-channels.md#built-in-telemetrychannels) ab.
+* Der SDK-Kanal speichert Telemetriedaten im Puffer und sendet sie in Batches. Wenn die Anwendung gerade heruntergefahren wird, müssen Sie möglicherweise [Flush()](api-custom-events-metrics.md#flushing-data) explizit aufrufen. Das Verhalten von `Flush()` hängt vom tatsächlich verwendeten [Kanal](telemetry-channels.md#built-in-telemetry-channels) ab.
 
 ## <a name="no-data-from-my-server"></a>Keine Daten vom Server
 *Ich habe meine App auf meinem Webserver installiert, und nun werden mit keine Telemetriedaten von ihm angezeigt. Auf dem Entwicklungscomputer hat dies aber funktioniert.*
@@ -215,7 +215,9 @@ Befolgen Sie diese Anweisungen, um Problembehandlungsprotokolle für Ihr Framewo
 
 ### <a name="net-core"></a>.NET Core
 
-1. Installieren Sie das Paket [Microsoft.AspNetCore.ApplicationInsights.HostingStartup](https://www.nuget.org/packages/Microsoft.AspNetCore.ApplicationInsights.HostingStartup) von NuGet. Die Version, die Sie installieren, muss mit der aktuell installierten Version von `Microsoft.ApplicationInsights` übereinstimmen.
+1. Installieren Sie das Paket [Microsoft.AspNet.ApplicationInsights.HostingStartup](https://www.nuget.org/packages/Microsoft.AspNet.ApplicationInsights.HostingStartup) von NuGet. Die Version, die Sie installieren, muss mit der aktuell installierten Version von `Microsoft.ApplicationInsights` übereinstimmen.
+
+Die neuste Version von Microsoft.ApplicationInsights.AspNetCore ist 2.7.1. Sie bezieht sich auf Microsoft.ApplicationInsights Version 2.10. Deswegen sollten Sie Version 2.10.0 von Microsoft.AspNet.ApplicationInsights.HostingStartup installieren.
 
 2. Ändern Sie die `ConfigureServices`-Methode in Ihrer `Startup.cs`-Klasse:
 
@@ -232,6 +234,27 @@ Befolgen Sie diese Anweisungen, um Problembehandlungsprotokolle für Ihr Framewo
 3. Starten Sie den Prozess neu, sodass diese neuen Einstellungen vom SDK übernommen werden.
 
 4. Setzen Sie diese Änderungen zurück, wenn Sie fertig sind.
+
+
+## <a name="PerfView"></a> Sammeln Sie Protokolle mit PerfView
+[PerfView](https://github.com/Microsoft/perfview) ist ein kostenloses Diagnose- und Leistungsanalysetool, das durch die Sammlung und Visualisierung von Daten aus verschiedenen Quellen dabei hilft, CPU-, Speicher- und andere Probleme aufzuzeigen.
+
+Application Insights-SDK protokolliert EventSource-Protokolle zur eigenen Fehlerbehebung, die von PerfView festgehalten werden können.
+
+Laden Sie PerfView herunter, um Protokolle zu erfassen, und führen Sie dann den folgenden Befehl aus:
+```cmd
+PerfView.exe collect -MaxCollectSec:300 -NoGui /onlyProviders=*Microsoft-ApplicationInsights-Core,*Microsoft-ApplicationInsights-Data,*Microsoft-ApplicationInsights-WindowsServer-TelemetryChannel,*Microsoft-ApplicationInsights-Extensibility-AppMapCorrelation-Dependency,*Microsoft-ApplicationInsights-Extensibility-AppMapCorrelation-Web,*Microsoft-ApplicationInsights-Extensibility-DependencyCollector,*Microsoft-ApplicationInsights-Extensibility-HostingStartup,*Microsoft-ApplicationInsights-Extensibility-PerformanceCollector,*Microsoft-ApplicationInsights-Extensibility-PerformanceCollector-QuickPulse,*Microsoft-ApplicationInsights-Extensibility-Web,*Microsoft-ApplicationInsights-Extensibility-WindowsServer,*Microsoft-ApplicationInsights-WindowsServer-Core,*Microsoft-ApplicationInsights-Extensibility-EventSourceListener,*Microsoft-ApplicationInsights-AspNetCore
+```
+
+Sie können diese Parameter nach Bedarf ändern.
+- **MaxCollectSec**. Richten Sie dieses Parameter ein, damit PerfView nicht unbegrenzt läuft und die Leistung Ihres Servers beeinträchtigt.
+- **OnlyProviders**. Richten Sie dieses Parameter so ein, dass nur Protokolle aus dem SDK gesammelt werden. Sie können diese Liste basierend auf Ihren eigenen Untersuchungen anpassen. 
+- **NoGui**. Richten Sie dieses Parameter so ein, dass es Protokolle ohne die Gui sammelt.
+
+
+Weitere Informationen erhalten Sie unter:
+- [Recording performance traces with PerfView (Aufzeichnung von Leistungsablaufverfolgungen mit PerfView)](https://github.com/dotnet/roslyn/wiki/Recording-performance-traces-with-PerfView).
+- [Application Insights-Ereignisquellen](https://github.com/microsoft/ApplicationInsights-Home/tree/master/Samples/ETW)
 
 ## <a name="still-not-working"></a>Noch nicht funktionsfähig ...
 * [Application Insights-Forum](https://social.msdn.microsoft.com/Forums/vstudio/en-US/home?forum=ApplicationInsights)

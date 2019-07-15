@@ -12,12 +12,12 @@ ms.date: 05/08/2019
 ms.author: celested
 ms.reviewer: arvinh,luleon
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e34e6257b4800387470cdc1b7d624bf3ebd1d3e6
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 95b7cbcf4e485dc93d49b9559dcb7d0d4f597ebe
+ms.sourcegitcommit: 978e1b8cac3da254f9d6309e0195c45b38c24eb5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65989256"
+ms.lasthandoff: 07/03/2019
+ms.locfileid: "67550354"
 ---
 # <a name="configure-single-sign-on-to-non-gallery-applications-in-microsoft-identity-platform"></a>Konfigurieren des einmaligen Anmeldens bei nicht im Katalog enthaltenen Anwendungen auf der Microsoft Identity Platform
 
@@ -186,7 +186,7 @@ So weisen Sie Ihrer Anwendung einen neuen Benutzer oder eine neue Gruppe zu:
 3. Wählen Sie **Benutzer und Gruppen (\<Anzahl> ausgewählt)** aus. Die Seite **Benutzer und Gruppen** wird geöffnet und zeigt eine Liste der verfügbaren Benutzer und Gruppen an.
 4. Geben Sie einen Namen ein, oder scrollen Sie, um den Benutzer oder die Gruppe in der Liste zu finden, den bzw. die Sie zuweisen möchten.
 5. Wählen Sie jeden Benutzer und jede Gruppe aus, den/die Sie hinzufügen möchten, und klicken Sie dann auf die Schaltfläche **Auswählen**. Die Seite **Benutzer und Gruppen** wird geschlossen.
-6. Wählen Sie auf der Seite **Zuweisungen hinzufügen** die Option **Zuweisen** aus. Die Seite **<application name> – Benutzer und Gruppen** wird geöffnet und zeigt die zusätzlichen Benutzer in der Liste an.
+6. Wählen Sie auf der Seite **Zuweisungen hinzufügen** die Option **Zuweisen** aus. Die Seite **\< Anwendungsname> – Benutzer und Gruppen** wird geöffnet und zeigt die zusätzlichen Benutzer in der Liste an.
 
    ![Benutzer und Gruppen einer Anwendung](./media/configure-single-sign-on-non-gallery-applications/application-users-and-groups.png)
 

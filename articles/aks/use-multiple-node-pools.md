@@ -2,17 +2,17 @@
 title: Verwenden mehrerer Knotenpools in Azure Kubernetes Service (AKS)
 description: Informationen zum Erstellen und Verwalten mehrerer Knotenpools für einen Cluster in Azure Kubernetes Service (AKS)
 services: container-service
-author: iainfoulds
+author: mlearned
 ms.service: container-service
 ms.topic: article
 ms.date: 05/17/2019
-ms.author: iainfou
-ms.openlocfilehash: 48fdb251fa0302c2755281644a804c74ae80a63e
-ms.sourcegitcommit: ac1cfe497341429cf62eb934e87f3b5f3c79948e
+ms.author: mlearned
+ms.openlocfilehash: 2c4a0f57edb49ca2b2bc13bd9240b01c2b0556d3
+ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/01/2019
-ms.locfileid: "67491538"
+ms.lasthandoff: 07/07/2019
+ms.locfileid: "67613975"
 ---
 # <a name="preview---create-and-manage-multiple-node-pools-for-a-cluster-in-azure-kubernetes-service-aks"></a>Vorschau – Erstellen und Verwalten mehrerer Knotenpools für einen Cluster in Azure Kubernetes Service (AKS)
 

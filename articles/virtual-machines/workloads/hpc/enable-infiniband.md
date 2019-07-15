@@ -4,7 +4,7 @@ description: Hier erfahren Sie, wie Sie InfiniBand mit SR-IOV aktivieren.
 services: virtual-machines
 documentationcenter: ''
 author: vermagit
-manager: jeconnoc
+manager: gwallace
 editor: ''
 tags: azure-resource-manager
 ms.service: virtual-machines
@@ -12,27 +12,26 @@ ms.workload: infrastructure-services
 ms.topic: article
 ms.date: 05/15/2019
 ms.author: amverma
-ms.openlocfilehash: 879b1eed7bf4778d4d49f6f991d6d74214d33823
-ms.sourcegitcommit: 084630bb22ae4cf037794923a1ef602d84831c57
+ms.openlocfilehash: 2e28627359f339a3bf818a15d6a5c8e456fb554a
+ms.sourcegitcommit: 66237bcd9b08359a6cce8d671f846b0c93ee6a82
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/03/2019
-ms.locfileid: "67537659"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67797522"
 ---
 # <a name="enable-infiniband-with-sr-iov"></a>Aktivieren von InfiniBand mit SR-IOV
-
 
 Am einfachsten können Sie Ihr benutzerdefiniertes VM-Image mit InfiniBand (IB) konfigurieren, indem Sie Ihrer Bereitstellung die VM-Erweiterung „InfiniBandDriverLinux“ oder „InfiniBandDriverWindows“ hinzufügen. Dies ist auch die empfohlene Vorgehensweise.
 Informationen zur Verwendung dieser VM-Erweiterungen finden Sie [hier](https://docs.microsoft.com/azure/virtual-machines/linux/sizes-hpc#rdma-capable-instances) (Linux) bzw. [hier](https://docs.microsoft.com/azure/virtual-machines/windows/sizes-hpc#rdma-capable-instances) (Windows).
 
-Wenn Sie InfiniBand manuell auf SR-IOV-fähigen virtuellen Computern (derzeit aus der HB- und HC-Serie) konfigurieren möchten, führen Sie die folgenden Schritte aus. Diese Schritte gelten nur für RHEL/CentOS. Für Ubuntu (16.04 und 18.04) und SLES (12 SP4 und 15) reichen die integrierten Treiber aus. Für Ubuntu: 
-
+Wenn Sie InfiniBand manuell auf SR-IOV-fähigen virtuellen Computern (derzeit aus der HB- und HC-Serie) konfigurieren möchten, führen Sie die folgenden Schritte aus. Diese Schritte gelten nur für RHEL/CentOS. Für Ubuntu (16.04 und 18.04) und SLES (12 SP4 und 15) reichen die integrierten Treiber aus.
 
 ## <a name="manually-install-ofed"></a>Manuelles Installieren von OFED
 
 Installieren Sie die neuesten MLNX_OFED-Treiber für ConnectX-5 von [Mellanox](https://www.mellanox.com/page/products_dyn?product_family=26).
 
 RHEL/CentOS (Beispiel für 7.6):
+
 ```bash
 sudo yum install -y kernel-devel python-devel
 sudo yum install -y redhat-rpm-config rpm-build gcc-gfortran gcc-c++
