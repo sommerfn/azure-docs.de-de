@@ -16,12 +16,12 @@ ms.author: mimart
 ms.reviewer: harshja
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8cd29fc00a1c25a7c092393591060ca7e2938155
-ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
+ms.openlocfilehash: 2ce02d829e0e8a66748e98ec586f35820969dc54
+ms.sourcegitcommit: 0ebc62257be0ab52f524235f8d8ef3353fdaf89e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/01/2019
-ms.locfileid: "67481266"
+ms.lasthandoff: 07/10/2019
+ms.locfileid: "67724029"
 ---
 # <a name="wildcard-applications-in-the-azure-active-directory-application-proxy"></a>Platzhalteranwendungen im Azure Active Directory-Anwendungsproxy
 
@@ -45,7 +45,9 @@ Sie können Anwendungen mit Platzhaltern veröffentlichen, wenn sowohl interne a
 
 > http(s)://*.\<Domäne\>
 
-Beispiel: `http(s)://*.adventure-works.com`. Obwohl die internen und externen URLs unterschiedliche Domänen verwenden können, hat es sich bewährt, wenn diese identisch sind. Beim Veröffentlichen der Anwendung wird ein Fehler angezeigt, wenn eine der URLs keinen Platzhalter aufweist.
+Beispiel: `http(s)://*.adventure-works.com`.
+
+Obwohl die internen und externen URLs unterschiedliche Domänen verwenden können, hat es sich bewährt, wenn diese identisch sind. Beim Veröffentlichen der Anwendung wird ein Fehler angezeigt, wenn eine der URLs keinen Platzhalter aufweist.
 
 Wenn weitere Anwendungen mit anderen Konfigurationseinstellungen vorhanden sind, müssen Sie diese Ausnahmen als separate Anwendungen veröffentlichen, um die für den Platzhalter festgelegten Standardwerte zu überschreiben. Anwendungen ohne Platzhalter haben stets Vorrang vor Platzhalteranwendungen. Aus Sicht der Konfiguration sind diese „nur“ normale Anwendungen.
 
@@ -60,7 +62,7 @@ Stellen Sie zunächst sicher, dass Sie diesen Anforderung entsprechen.
 Während [benutzerdefinierte Domänen](application-proxy-configure-custom-domain.md) für alle anderen Anwendungen optional sind, stellen Sie eine Voraussetzung für Platzhalteranwendungen dar. Zum Erstellen benutzerdefinierter Domänen müssen Sie die folgenden Schritte ausführen:
 
 1. Erstellen einer überprüften Domäne in Azure.
-2. Hochladen eines SSL-Zertifikats im PFX-Format in Ihren Anwendungsproxy
+1. Hochladen eines SSL-Zertifikats im PFX-Format in Ihren Anwendungsproxy
 
 Erwägen Sie die Verwendung eines Platzhalterzertifikats für die Anwendung, die Sie erstellen möchten. Alternativ können Sie auch ein Zertifikat verwenden, in dem nur bestimmte Anwendungen aufgelistet werden. In diesem Fall kann über die Platzhalteranwendung nur auf die im Zertifikat aufgeführten Anwendungen zugegriffen werden.
 
@@ -99,7 +101,7 @@ Sie können eine Anwendung aus der Platzhalteranwendung wie folgt ausschließen:
 
 Das Veröffentlichen einer Anwendung als normale Anwendung ist die bevorzugte Methode, um eine Anwendung aus einem Platzhalter auszuschließen. Veröffentlichen Sie die ausgeschlossenen Anwendungen vor den Platzhalteranwendungen, um sicherzustellen, dass Ihre Ausnahmen von Anfang an erzwungen werden. Die spezifischste Anwendung hat immer Vorrang – eine als `budgets.finance.adventure-works.com` veröffentlichte Anwendung hat Vorrang vor der Anwendung `*.finance.adventure-works.com`, die wiederum Vorrang vor der Anwendung `*.adventure-works.com` hat.
 
-Außerdem können Sie den Platzhalter über Ihre DNS-Verwaltung so einschränken, dass dieser nur für bestimmte Anwendungen funktioniert. Als bewährte Methode sollten Sie einen CNAME-Eintrag erstellen, der einen Platzhalter enthält und dem Format der von Ihnen festgelegten externen URL entspricht. Stattdessen können Sie auch bestimmte Anwendungs-URLs auf die Platzhalter verweisen lassen. Anstelle von `*.adventure-works.com` lassen Sie beispielsweise `hr.adventure-works.com`, `expenses.adventure-works.com` und `travel.adventure-works.com individually` auf `000aa000-11b1-2ccc-d333-4444eee4444e.tenant.runtime.msappproxy.net` verweisen. 
+Außerdem können Sie den Platzhalter über Ihre DNS-Verwaltung so einschränken, dass dieser nur für bestimmte Anwendungen funktioniert. Als bewährte Methode sollten Sie einen CNAME-Eintrag erstellen, der einen Platzhalter enthält und dem Format der von Ihnen festgelegten externen URL entspricht. Stattdessen können Sie auch bestimmte Anwendungs-URLs auf die Platzhalter verweisen lassen. Anstelle von `*.adventure-works.com` lassen Sie beispielsweise `hr.adventure-works.com`, `expenses.adventure-works.com` und `travel.adventure-works.com individually` auf `000aa000-11b1-2ccc-d333-4444eee4444e.tenant.runtime.msappproxy.net` verweisen.
 
 Wenn Sie diese Option verwenden, benötigen Sie ggf. einen weiteren CNAME-Eintrag für den Wert `AppId.domain`, z.B. `00000000-1a11-22b2-c333-444d4d4dd444.adventure-works.com`, der auch auf das gleiche Ziel verweist. Sie finden die **App-ID** auf der Seite mit den Anwendungseigenschaften der Platzhalteranwendung:
 
@@ -110,7 +112,7 @@ Wenn Sie diese Option verwenden, benötigen Sie ggf. einen weiteren CNAME-Eintra
 Die Platzhalteranwendung wird im [MyApps-Panel](https://myapps.microsoft.com) mit nur einer Kachel dargestellt. Diese Kachel ist standardmäßig ausgeblendet. So blenden Sie die Kachel ein und weisen Benutzern eine bestimmte Zielseite zu:
 
 1. Befolgen Sie die Richtlinien zum [Festlegen einer Homepage-URL](application-proxy-configure-custom-home-page.md).
-2. Setzen Sie **Anwendung anzeigen** auf der Eigenschaftenseite für die Anwendung auf **true**.
+1. Setzen Sie **Anwendung anzeigen** auf der Eigenschaftenseite für die Anwendung auf **true**.
 
 ### <a name="kerberos-constrained-delegation"></a>Eingeschränkte Kerberos-Delegierung
 
