@@ -102,6 +102,8 @@
           href: manage-database-permissions.md
         - name: Überprüfen der Clusterintegrität
           href: check-cluster-health.md
+        - name: Auswählen der VM-SKU eines Clusters
+          href: manage-cluster-choose-sku.md
         - name: Verwalten von horizontaler Clusterskalierung
           href: manage-cluster-horizontal-scaling.md
         - name: Verwalten von vertikaler Clusterskalierung

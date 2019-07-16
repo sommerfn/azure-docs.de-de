@@ -59,9 +59,9 @@
           href: isv-create-sso-documentation.md
         - name: Planen einer Bereitstellung mit einmaligem Anmelden
           href: plan-sso-deployment.md
-    - name: One-Click-SSO
+    - name: Einmaliges Anmelden mit einem Klick
       items:
-        - name: Was ist One-Click-SSO?
+        - name: Konfiguration der einmaligen Anmeldung mit einem Klick
           href: one-click-sso-tutorial.md
     - name: Bereitstellen von Benutzern und Gruppen
       items:

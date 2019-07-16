@@ -280,8 +280,10 @@
               href: platform/custom-fields.md
         - name: Konfigurieren der Anwendung
           items:
-            - name: Azure-Apps
+            - name: Von Azure gehostete Apps
               items:
+                - name: Virtueller Azure-Computer und Azure-VM-Skalierungsgruppe
+                  href: app/azure-vm-vmss-apps.md
                 - name: Azure App Service
                   href: app/azure-web-apps.md
                 - name: Azure Cloud Services
@@ -709,8 +711,8 @@
               href: platform/metrics-getting-started.md
             - name: Erweiterte Funktionen von Metrik-Explorer
               href: platform/metrics-charts.md
-            - name: Beispiele für Metrikdiagramme
-              href: platform/metric-chart-samples.md
+            - name: Protokollbasierte Metriken
+              href: platform/app-insights-metrics.md
             - name: Problembehandlung für Metrikdiagramme
               href: platform/metrics-troubleshoot.md
         - name: Protokolle

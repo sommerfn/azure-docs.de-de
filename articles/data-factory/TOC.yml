@@ -564,6 +564,8 @@
           href: solution-template-copy-files-multiple-containers.md
         - name: Kopieren neuer Dateien basierend auf „LastModifiedDate“
           href: solution-template-copy-new-files-lastmodifieddate.md
+        - name: Verschieben von Dateien
+          href: solution-template-move-files.md
         - name: Massenkopieren mit Steuertabelle
           href: solution-template-bulk-copy-with-control-table.md
         - name: Deltakopie mit Steuertabelle
@@ -574,6 +576,8 @@
       items:
         - name: Problembehandlung für Aktivitäten
           href: data-factory-troubleshoot-guide.md
+        - name: Problembehandlung bei der Verwaltung von Azure-SSIS IR
+          href: ssis-integration-runtime-management-troubleshoot.md
         - name: Problembehandlung für die Paketausführung in Azure-SSIS IR
           href: ssis-integration-runtime-ssis-activity-faq.md
 - name: Verweis
