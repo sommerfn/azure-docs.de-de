@@ -1681,7 +1681,7 @@ Im Allgemeinen kann eine zahlenbasierte Transformation nur auf Datasets angewend
 |------------------------|  
 |Die Moduldefinitionsdatei enthält Fehler.|  
 |Die Moduldefinitionsdatei „{0}“ enthält Fehler.|  
-|Die Moduldefinitionsdatei „{0}“ enthält Fehler. [https://login.microsoftonline.com/tfp/00000000-0000-0000-0000-000000000000/b2c_1a_tp_sign-up-or-sign-in/v2.0/]({1})|  
+|Die Moduldefinitionsdatei „{0}“ enthält Fehler. {1}|  
   
 
 ## <a name="error-0114"></a>Fehler 0114  
@@ -2082,7 +2082,7 @@ Lösung:
 |Ausnahmemeldungen|  
 |------------------------|  
 |Fehler beim Zugriff auf GitHub.|  
-|Fehler beim Zugriff auf GitHub. [https://login.microsoftonline.com/tfp/00000000-0000-0000-0000-000000000000/b2c_1a_tp_sign-up-or-sign-in/v2.0/]({0})|  
+|Fehler beim Zugriff auf GitHub. {0}|  
   
 
 ## <a name="error-0148"></a>Fehler 0148  

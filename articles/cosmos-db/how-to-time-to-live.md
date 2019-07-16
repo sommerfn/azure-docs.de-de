@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: sample
 ms.date: 05/23/2019
 ms.author: mjbrown
-ms.openlocfilehash: b5eb57562dac498c0e5bf2960007f52ad1117ac2
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.openlocfilehash: 618e7e19b20f361aa0a8c668e9621a29db43772d
+ms.sourcegitcommit: 66237bcd9b08359a6cce8d671f846b0c93ee6a82
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/27/2019
-ms.locfileid: "66244774"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67797753"
 ---
 # <a name="configure-time-to-live-in-azure-cosmos-db"></a>Konfigurieren der Gültigkeitsdauer in Azure Cosmos DB
 
@@ -35,6 +35,11 @@ Gehen Sie wie folgt vor, um die Gültigkeitsdauer für einen Container ohne Abla
    * Klicken Sie zum Speichern der Änderungen auf **Speichern**.
 
    ![Konfigurieren der Gültigkeitsdauer über das Azure-Portal](./media/how-to-time-to-live/how-to-time-to-live-portal.png)
+
+
+- Wenn „DefaultTimeToLive“ auf „0“ festgelegt ist, ist die Gültigkeitsdauer deaktiviert.
+- Wenn „DefaultTimeToLive“ auf „-1“ festgelegt ist, ist die Gültigkeitsdauer aktiviert (ohne Standardwert).
+- Wenn „DefaultTimeToLive“ auf einen beliebigen anderen Wert festgelegt ist (mit Ausnahme von „0“), ist die Gültigkeitsdauer aktiviert.
 
 ## <a name="enable-time-to-live-on-a-container-using-sdk"></a>Aktivieren der Gültigkeitsdauer für einen Container per SDK
 

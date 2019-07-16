@@ -14,18 +14,20 @@ ms.topic: tutorial
 ms.date: 02/24/2019
 ms.author: yegu
 ms.custom: mvc
-ms.openlocfilehash: 9cbdfe957587977b01bc46b46818856f789f46d8
-ms.sourcegitcommit: 51a7669c2d12609f54509dbd78a30eeb852009ae
+ms.openlocfilehash: 78c64786f523aa424e8a9816e42db70e2a2997c2
+ms.sourcegitcommit: 66237bcd9b08359a6cce8d671f846b0c93ee6a82
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/30/2019
-ms.locfileid: "66393613"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67798466"
 ---
 # <a name="tutorial-use-dynamic-configuration-in-an-aspnet-core-app"></a>Tutorial: Verwenden der dynamischen Konfiguration in einer ASP.NET Core-App
 
-ASP.NET Core verfügt über ein austauschbares Konfigurationssystem, die Konfigurationsdaten aus vielen verschiedenen Quellen lesen kann. Änderungen können nebenbei verarbeitet werden, ohne dass eine Anwendung neu gestartet werden muss. ASP.NET Core unterstützt die Bindung von Konfigurationseinstellungen an stark typisierte .NET-Klassen. Sie werden mithilfe der verschiedenen `IOptions<T>`-Muster in Ihren Code eingefügt. Eines dieser Muster (`IOptionsSnapshot<T>`) lädt die Anwendungskonfiguration automatisch neu, wenn die zugrunde liegenden Daten geändert werden.
+ASP.NET Core verfügt über ein austauschbares Konfigurationssystem, die Konfigurationsdaten aus vielen verschiedenen Quellen lesen kann. Änderungen können nebenbei verarbeitet werden, ohne dass eine Anwendung neu gestartet werden muss. ASP.NET Core unterstützt die Bindung von Konfigurationseinstellungen an stark typisierte .NET-Klassen. Sie werden mithilfe der verschiedenen `IOptions<T>`-Muster in Ihren Code eingefügt. Eines dieser Muster (`IOptionsSnapshot<T>`) lädt die Anwendungskonfiguration automatisch neu, wenn die zugrunde liegenden Daten geändert werden. Sie können `IOptionsSnapshot<T>` in Controller in Ihrer Anwendung einfügen, um auf die aktuellste Konfiguration zuzugreifen, die in Azure App Configuration gespeichert ist.
 
-Sie können `IOptionsSnapshot<T>` in Controller in Ihrer Anwendung einfügen, um auf die aktuellste Konfiguration zuzugreifen, die in Azure App Configuration gespeichert ist. Sie können auch die ASP.NET Core-Clientbibliothek von App Configuration einrichten, um alle Änderungen eines App-Konfigurationsspeichers kontinuierlich zu überwachen und abzurufen. Sie definieren das periodische Abrufintervall.
+Sie können auch die App Configuration-ASP.NET Core-Clientbibliothek einrichten, um eine Reihe von Konfigurationseinstellungen dynamisch per Middleware zu aktualisieren. Solange die Web-App weiterhin Anforderungen empfängt, werden die Konfigurationseinstellungen über den Konfigurationsspeicher aktualisiert.
+
+Um die Einstellungen auf dem aktuellen Stand zu halten und zu viele Aufrufe des Konfigurationsspeichers zu vermeiden, wird ein Cache für jede Einstellung verwendet. Bis der zwischengespeicherte Wert einer Einstellung abgelaufen ist, wird der Wert vom Aktualisierungsvorgang nicht aktualisiert. Dies gilt auch, wenn sich der Wert im Konfigurationsspeicher geändert hat. Die Standardablaufzeit jeder Anforderung beträgt 30 Sekunden, aber dies kann bei Bedarf außer Kraft gesetzt werden.
 
 In diesem Tutorial wird veranschaulicht, wie Sie dynamische Konfigurationsupdates in Ihrem Code implementieren können. Dies baut auf der Web-App auf, die in den Schnellstartanleitungen vorgestellt wurde. Führen Sie zuerst den Schnellstart [Erstellen einer ASP.NET Core-App mit Azure App Configuration](./quickstart-aspnet-core-app.md) durch, bevor Sie fortfahren.
 
@@ -45,7 +47,7 @@ Installieren Sie für dieses Tutorial das [.NET Core SDK](https://dotnet.microso
 
 ## <a name="reload-data-from-app-configuration"></a>Erneutes Laden von Daten aus App Configuration
 
-1. Öffnen Sie die Datei *Program.cs*, und aktualisieren Sie die `CreateWebHostBuilder`-Methode, indem Sie die `config.AddAzureAppConfiguration()`-Methode hinzufügen.
+1. Öffnen Sie die Datei *Program.cs*, und aktualisieren Sie die `CreateWebHostBuilder`-Methode, um die `config.AddAzureAppConfiguration()`-Methode hinzuzufügen.
 
     ```csharp
     public static IWebHostBuilder CreateWebHostBuilder(string[] args) =>
@@ -53,19 +55,22 @@ Installieren Sie für dieses Tutorial das [.NET Core SDK](https://dotnet.microso
             .ConfigureAppConfiguration((hostingContext, config) =>
             {
                 var settings = config.Build();
+
                 config.AddAzureAppConfiguration(options =>
+                {
                     options.Connect(settings["ConnectionStrings:AppConfig"])
-                           .Watch("TestApp:Settings:BackgroundColor")
-                           .Watch("TestApp:Settings:FontColor")
-                           .Watch("TestApp:Settings:Message"));
+                           .ConfigureRefresh(refresh =>
+                           {
+                               refresh.Register("TestApp:Settings:BackgroundColor")
+                                      .Register("TestApp:Settings:FontColor")
+                                      .Register("TestApp:Settings:Message")
+                           });
+                }
             })
             .UseStartup<Startup>();
     ```
 
-    Der zweite Parameter in der `.Watch`-Methode ist das Abrufintervall, in dem die ASP.NET-Clientbibliothek einen App-Konfigurationsspeicher abfragt. Die Clientbibliothek überprüft die spezifische Konfigurationseinstellung, um festzustellen, ob Änderungen vorgenommen wurden.
-    
-    > [!NOTE]
-    > Das Standardabrufintervall für die Erweiterungsmethode `Watch` beträgt 30 Sekunden, wenn kein anderes Intervall angegeben wurde.
+    Die `ConfigureRefresh`-Methode wird genutzt, um die Einstellungen anzugeben, die zum Aktualisieren der Konfigurationsdaten mit dem App-Konfigurationsspeicher verwendet werden, wenn ein Aktualisierungsvorgang ausgelöst wird. Um wirklich einen Aktualisierungsvorgang auszulösen, muss eine Aktualisierungsmiddleware für die Anwendung konfiguriert werden. Hiermit können die Konfigurationsdaten dann aktualisiert werden, wenn es zu einer Änderung kommt.
 
 2. Fügen Sie die Datei *Settings.cs* hinzu, mit der eine neue `Settings`-Klasse definiert und implementiert wird.
 
@@ -98,6 +103,21 @@ Installieren Sie für dieses Tutorial das [.NET Core SDK](https://dotnet.microso
         services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
     }
     ```
+
+4. Aktualisieren Sie die `Configure`-Methode so, dass Middleware hinzugefügt wird, mit der die für die Aktualisierung registrierten Konfigurationseinstellungen aktualisiert werden können, während die ASP.NET Core-Web-App weiterhin Anforderungen empfängt.
+
+    ```csharp
+    public void Configure(IApplicationBuilder app, IHostingEnvironment env)
+    {
+        app.UseAzureAppConfiguration();
+        app.UseMvc();
+    }
+    ```
+    
+    Die Middleware nutzt die in der `AddAzureAppConfiguration`-Methode in `Program.cs` angegebene Aktualisierungskonfiguration, um eine Aktualisierung für jede Anforderung auszulösen, die von der ASP.NET Core-Web-App empfangen wird. Für jede Anforderung wird ein Aktualisierungsvorgang ausgelöst, und die Clientbibliothek überprüft, ob der zwischengespeicherte Wert für die registrierten Konfigurationseinstellungen abgelaufen ist. Für abgelaufene zwischengespeicherten Werte werden die Werte für die Einstellungen mit dem App-Konfigurationsspeicher aktualisiert, und die verbleibenden Werte bleiben unverändert.
+    
+    > [!NOTE]
+    > Die Standardablaufzeit für eine Konfigurationseinstellung beträgt 30 Sekunden, aber dieser Wert kann außer Kraft gesetzt werden. Rufen Sie hierzu die `SetCacheExpiration`-Methode im Initialisierer für die Optionen auf, die als Argument an die `ConfigureRefresh`-Methode übergeben wird.
 
 ## <a name="use-the-latest-configuration-data"></a>Verwenden der aktuellsten Konfigurationsdaten
 
@@ -177,9 +197,12 @@ Installieren Sie für dieses Tutorial das [.NET Core SDK](https://dotnet.microso
     | TestAppSettings:FontColor | lightGray |
     | TestAppSettings:Message | Daten aus Azure App Configuration – jetzt mit Liveupdates! |
 
-6. Aktualisieren Sie die Browserseite, um die neuen Konfigurationseinstellungen anzuzeigen.
+6. Aktualisieren Sie die Browserseite, um die neuen Konfigurationseinstellungen anzuzeigen. Unter Umständen ist mehr als eine Aktualisierung der Browserseite erforderlich, damit die Änderungen widergespiegelt werden.
 
     ![Schnellstart: Lokale Aktualisierung der App](./media/quickstarts/aspnet-core-app-launch-local-after.png)
+    
+    > [!NOTE]
+    > Da die Konfigurationseinstellungen mit einer Standardablaufzeit von 30 Sekunden zwischengespeichert werden, werden alle Änderungen, die an den Einstellungen im App-Konfigurationsspeicher vorgenommen werden, nur nach Ablauf des Caches in der Web-App widergespiegelt.
 
 ## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
 

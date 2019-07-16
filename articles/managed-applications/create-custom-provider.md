@@ -7,20 +7,20 @@ ms.service: managed-applications
 ms.topic: tutorial
 ms.date: 05/01/2019
 ms.author: evanhi
-ms.openlocfilehash: e4196cf59537be5194ceb510a1b7b066c97de19a
-ms.sourcegitcommit: 6f043a4da4454d5cb673377bb6c4ddd0ed30672d
+ms.openlocfilehash: 41200139ef55fa1ae441192e2d81b5228cf29bad
+ms.sourcegitcommit: 66237bcd9b08359a6cce8d671f846b0c93ee6a82
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/08/2019
-ms.locfileid: "65410219"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67795315"
 ---
-# <a name="tutorial-create-custom-provider-and-deploy-custom-resources"></a>Tutorial: Erstellen eines benutzerdefinierten Anbieters und Bereitstellen von benutzerdefinierten Ressourcen
+# <a name="quickstart-create-custom-provider-and-deploy-custom-resources"></a>Schnellstart: Erstellen eines benutzerdefinierten Anbieters und Bereitstellen von benutzerdefinierten Ressourcen
 
-In diesem Tutorial erstellen Sie Ihren eigenen Ressourcenanbieter und stellen benutzerdefinierte Ressourcentypen für diesen Ressourcenanbieter bereit. Weitere Informationen zu benutzerdefinierten Anbietern finden Sie unter [Azure Custom Providers (Vorschau): Übersicht](custom-providers-overview.md).
+In dieser Schnellstartanleitung erstellen Sie Ihren eigenen Ressourcenanbieter und stellen benutzerdefinierte Ressourcentypen für diesen Ressourcenanbieter bereit. Weitere Informationen zu benutzerdefinierten Anbietern finden Sie unter [Azure Custom Providers (Vorschau): Übersicht](custom-providers-overview.md).
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-Zum Durchführen der Schritte in diesem Tutorial müssen Sie REST-Vorgänge aufrufen. Es gibt [verschiedene Möglichkeiten zum Senden von REST-Anforderungen](/rest/api/azure/). Wenn Sie noch nicht über ein Tool für REST-Vorgänge verfügen, installieren Sie [ARMClient](https://github.com/projectkudu/ARMClient). Es handelt sich um ein Open-Source-Befehlszeilentool, das den Aufruf der Azure Resource Manager-API vereinfacht.
+In dieser Schnellstartanleitung müssen REST-Vorgänge aufgerufen werden. Es gibt [verschiedene Möglichkeiten zum Senden von REST-Anforderungen](/rest/api/azure/). Wenn Sie noch nicht über ein Tool für REST-Vorgänge verfügen, installieren Sie [ARMClient](https://github.com/projectkudu/ARMClient). Es handelt sich um ein Open-Source-Befehlszeilentool, das den Aufruf der Azure Resource Manager-API vereinfacht.
 
 ## <a name="deploy-custom-provider"></a>Bereitstellen eines benutzerdefinierten Anbieters
 
@@ -122,7 +122,7 @@ Sie erhalten die folgende Antwort:
 
 ## <a name="create-resource-type"></a>Erstellen des Ressourcentyps
 
-Um den benutzerdefinierten Ressourcentyp zu erstellen, können Sie die Ressource in einer Vorlage bereitstellen. Dieser Ansatz wird in der Vorlage gezeigt, die Sie in diesem Tutorial bereitgestellt haben. Sie können auch eine PUT-Anforderung für den Ressourcentyp senden.
+Um den benutzerdefinierten Ressourcentyp zu erstellen, können Sie die Ressource in einer Vorlage bereitstellen. Dieser Ansatz wird in der Vorlage gezeigt, die Sie in dieser Schnellstartanleitung bereitgestellt haben. Sie können auch eine PUT-Anforderung für den Ressourcentyp senden.
 
 ```
 PUT https://management.azure.com/subscriptions/<sub-id>/resourceGroups/<rg-name>/providers/Microsoft.CustomProviders/resourceProviders/<provider-name>/users/<resource-name>?api-version=2018-09-01-preview
