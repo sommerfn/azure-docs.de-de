@@ -54,34 +54,32 @@
       href: migrate-replication-appliance.md
     - name: Bewährte Methoden für Bewertungen
       href: best-practices-assessment.md
-    - name: Bewertungsberechnungen
+    - name: Bewertungsübersicht
       href: concepts-assessment-calculation.md
     - name: Visualisierung von Abhängigkeiten
       href: concepts-dependency-visualization.md
 - name: Anleitungen
   items:
-    - name: 'Migrationsbeispiele: Contoso-Serie'
-      href: contoso-migration-overview.md
-    - name: Bereitstellen einer Appliance für die VMware-Bewertung/-Migration (ohne Agent)
+    - name: Arbeiten mit einer vorherigen Version
+      href: migrate-v1.md
+    - name: Bereitstellen einer VMware-Appliance
       href: how-to-set-up-appliance-vmware.md
-    - name: Bereitstellen einer Appliance für die Hyper-V-Bewertung/-Migration
+    - name: Bereitstellen einer Hyper-V-Appliance
       href: how-to-set-up-appliance-hyper-v.md
-    - name: Erstes Hinzufügen eines Bewertungs-/Migrationstools
+    - name: Erstmaliges Hinzufügen eines Tools
       href: how-to-add-tool-first-time.md
     - name: Hinzufügen von Bewertungstools
       href: how-to-assess.md
-    - name: Hinzufügen von Migrationstools
-      href: how-to-migrate.md
     - name: Gruppieren von Computern für die Bewertung
-      items:
-        - name: Erstellen einer Gruppe
-          href: how-to-create-a-group.md
-        - name: Gruppieren von Computern mithilfe von Computerabhängigkeiten
-          href: how-to-create-group-machine-dependencies.md
-        - name: Einschränken einer Gruppe mithilfe von Gruppenabhängigkeiten
-          href: how-to-create-group-dependencies.md
+      href: how-to-create-a-group.md
+    - name: Gruppieren von Computern mithilfe der Visualisierung von Abhängigkeiten
+      href: how-to-create-group-machine-dependencies.md
+    - name: Erstellen einer Bewertung
+      href: how-to-create-assessment.md
     - name: Anpassen einer Bewertung
       href: how-to-modify-assessment.md
+    - name: Hinzufügen von Migrationstools
+      href: how-to-migrate.md
     - name: Skalieren der Bewertung und Migration
       items:
         - name: Bewerten einer großen Anzahl von virtuellen VMware-Computern
@@ -90,6 +88,10 @@
           href: scale-hyper-v-assessment.md
         - name: Automatisieren der Migration zahlreicher virtueller Computer
           href: how-to-migrate-at-scale.md
+    - name: 'Migrationsbeispiele: Contoso-Serie'
+      href: contoso-migration-overview.md
+- name: Problembehandlung
+  items:
     - name: Problembehandlung für Azure Migrate
       href: troubleshooting-general.md
 - name: Ressourcen
