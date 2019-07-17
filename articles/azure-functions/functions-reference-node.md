@@ -275,10 +275,10 @@ Ermöglicht das Schreiben in die Streamingfunktionsprotokolle auf Standard-Ablau
 
 | Methode                 | BESCHREIBUNG                                |
 | ---------------------- | ------------------------------------------ |
-| **Fehler(_Meldung_)**   | Schreibt in Protokollierung auf Fehlerebene oder niedriger.   |
-| **warn(_Meldung_)**    | Schreibt in Protokollierung auf Warnungsebene oder niedriger. |
-| **info(_Meldung_)**    | Schreibt in Protokollierung auf Informationsebene oder niedriger.    |
-| **verbose(_Meldung_)** | Schreibt in Protokollierung auf ausführlicher Ebene.           |
+| **error(_message_)**   | Schreibt in Protokollierung auf Fehlerebene oder niedriger.   |
+| **warn(_message_)**    | Schreibt in Protokollierung auf Warnungsebene oder niedriger. |
+| **info(_message_)**    | Schreibt in Protokollierung auf Informationsebene oder niedriger.    |
+| **verbose(_message_)** | Schreibt in Protokollierung auf ausführlicher Ebene.           |
 
 Das folgende Beispiel schreibt auf Warnungs-Ablaufverfolgungsebene ein Protokoll:
 
