@@ -167,7 +167,7 @@ Wenn Sie die Funktion für die Offlinesynchronisierung verwenden, definieren Sie
 | --- | --- |
 | id | Integer 64 |
 | itemId | string |
-| properties | Binärdaten |
+| properties | Binary Data |
 | table | string |
 | tableKind | Integer 16 |
 
@@ -180,7 +180,7 @@ Wenn Sie die Funktion für die Offlinesynchronisierung verwenden, definieren Sie
 | --- | --- |
 | id |string |
 | operationId |Integer 64 |
-| properties |Binärdaten |
+| properties |Binary Data |
 | tableKind |Integer 16 |
 
  **MS_TableConfig**
