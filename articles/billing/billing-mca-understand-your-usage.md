@@ -1,40 +1,36 @@
 ---
-title: Begriffe in der CSV-Datei für die Azure-Nutzung und -Gebühren bei abgeschlossener Microsoft-Kundenvereinbarung | Microsoft-Dokumentation
-description: Informationen zu den Abschnitten der CSV-Datei für die Azure-Nutzung und -Gebühren für Ihr Abrechnungsprofil
-services: ''
-documentationcenter: ''
+title: Begriffe in der Datei zu Azure-Nutzung und -Gebühren für eine Microsoft-Kundenvereinbarung
+description: Informationen zu den Abschnitten der CSV-Datei zu Azure-Nutzung und -Gebühren in Ihrem Abrechnungsprofil.
 author: bandersmsft
-manager: alherz
-editor: ''
+manager: jureid
 tags: billing
 ms.service: billing
 ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 08/31/2017
+ms.date: 07/01/2019
 ms.author: banders
-ms.openlocfilehash: 8f71f42386ce49d4d7178cb03d28d74edacd7e39
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: d11e31366ea5aa15cf7a790eaee800fa2ea6dabe
+ms.sourcegitcommit: ac1cfe497341429cf62eb934e87f3b5f3c79948e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60371307"
+ms.lasthandoff: 07/01/2019
+ms.locfileid: "67490626"
 ---
-# <a name="understand-terms-on-your-azure-usage-and-charges-csv-for-a-microsoft-customer-agreement"></a>Begriffe in der CSV-Datei für die Azure-Nutzung und -Gebühren bei abgeschlossener Microsoft-Kundenvereinbarung
+# <a name="terms-in-the-azure-usage-and-charges-file-for-a-microsoft-customer-agreement"></a>Begriffe in der Datei zu Azure-Nutzung und -Gebühren für eine Microsoft-Kundenvereinbarung
 
-Dieser Artikel bezieht sich auf ein Abrechnungskonto für eine Microsoft-Kundenvereinbarung. [Überprüfen Sie, ob Sie Zugriff auf eine Microsoft-Kundenvereinbarung haben](#check-access-to-a-microsoft-customer-agreement).
+Dieser Artikel bezieht sich auf ein Abrechnungskonto für eine Microsoft-Kundenvereinbarung. [Überprüfen Sie, ob Sie Zugriff auf eine Microsoft-Kundenvereinbarung haben.](#check-access-to-a-microsoft-customer-agreement)
 
-Die CSV-Datei zur Azure-Nutzung und den Azure-Gebühren enthält die tägliche Nutzung und die Nutzung auf Ebene von Verbrauchseinheiten für den aktuellen Abrechnungszeitraum.
+Die CSV-Datei zu Azure-Nutzung und -Gebühren enthält die tägliche Nutzung und die Nutzung auf Verbrauchseinheitenebene für den aktuellen Abrechnungszeitraum.
 
-Informationen zum Abrufen der Datei für die Azure-Nutzung und Gebühren finden Sie unter [Herunterladen oder Anzeigen von Rechnungen](billing-download-azure-daily-usage.md).
-Sie ist als Datei mit kommagetrennten Werten (CSV) verfügbar, die Sie in einem Tabellenkalkulationsprogramm öffnen können.
+Informationen zum Abrufen der Datei für die Azure-Nutzung und Gebühren finden Sie unter [Herunterladen oder Anzeigen von Rechnungen](billing-download-azure-daily-usage.md). Sie ist als Datei mit kommagetrennten Werten (CSV) verfügbar, die Sie in einem Tabellenkalkulationsprogramm öffnen können.
 
 Nutzungsgebühren sind die **monatlichen** Gesamtgebühren für ein Abonnement. Die Nutzungsgebühren berücksichtigen keine Guthaben oder Rabatte.
 
-## <a name="changes-in-the-enterprise-agreement-azure-usage-and-charges-csv"></a>Änderungen an der CSV-Datei für die Azure-Nutzung und -Gebühren (Enterprise Agreement)
+## <a name="changes-from-azure-ea-usage-and-charges"></a>Änderungen gegenüber Azure EA-Nutzung und -Gebühren
 
-Wenn Sie Enterprise Agreement-Kunde sind, werden Sie feststellen, dass sich die Begriffe in der CSV-Datei für die Azure-Nutzung mit Abrechnungsprofil von den Begriffen in der CSV-Datei für die Azure-Nutzung mit Enterprise Agreement unterscheiden. Hier finden Sie eine Zuordnung der Begriffe für die Nutzung mit Enterprise Agreement zu den Begriffen für die Nutzung mit Abrechnungsprofil:
+Wenn Sie EA-Kunde sind, werden Sie feststellen, dass sich die Begriffe in der CSV-Datei für die Azure-Nutzung im Abrechnungsprofil von den Begriffen in der CSV-Datei für die Azure-Nutzung mit Enterprise Agreement unterscheiden. Hier finden Sie eine Zuordnung der Begriffe für die Nutzung mit Enterprise Agreement zu den Begriffen für die Nutzung mit Abrechnungsprofil:
 
 | CSV-Datei für die Azure-Nutzung mit Enterprise Agreement | CSV-Datei für die Azure-Nutzung und -Gebühren mit Microsoft-Kundenvereinbarung |
 | --- | --- |
@@ -49,7 +45,7 @@ Wenn Sie Enterprise Agreement-Kunde sind, werden Sie feststellen, dass sich die 
 | MeterRegion | meterRegion |
 | MeterName | meterName |
 | ConsumedQuantity | quantity |
-| ResourceRate | effectivePrice | <!-- this was highlighted -->
+| ResourceRate | effectivePrice |
 | ExtendedCost | cost |
 | ResourceLocation | resourceLocation |
 | ConsumedService | consumedService |
@@ -59,17 +55,15 @@ Wenn Sie Enterprise Agreement-Kunde sind, werden Sie feststellen, dass sich die 
 | AdditionalInfo | additionalInfo |
 | `Tags` | tags |
 | StoreServiceIdentifier | – |
-| Abteilungsname | invoiceSection | <!-- this was highlighted -->
+| Abteilungsname | invoiceSection |
 | CostCenter | costCenter |
 | UnitOfMeasure | unitofMeasure |
-| ResourceGroup | Ressourcengruppe |
-| ChargesBilledSeparately | isAzureCreditEligible | <!-- this was highlighted -->
+| ResourceGroup | resourceGroup |
+| ChargesBilledSeparately | isAzureCreditEligible |
 
-<!-- TO DO: Marketplace CSV? -->
+## <a name="detailed-terms-and-descriptions"></a>Detaillierte Begriffe und Beschreibungen
 
-## <a name="detailed-terms-and-descriptions-in-your-azure-usage-and-charges-file"></a>Begriffe und ausführliche Beschreibungen für die Datei für die Azure-Nutzung und -Gebühren
-
-Im folgenden Abschnitt werden die wichtigen Begriffe in der Datei für die Azure-Nutzung und -Gebühren erläutert.
+Die Datei zu Azure-Nutzung und -Gebühren enthält die folgenden Begriffe.
 
 Begriff | BESCHREIBUNG
 --- | ---
@@ -120,16 +114,16 @@ serviceInfo2 | Ein Legacyfeld, in dem optionale dienstspezifische Metadaten erfa
 additionalInfo | Weitere dienstspezifische Metadaten
 tags | Die Tags, die Sie der Ressource zuweisen
 
-### <a name="how-do-i-make-sure-that-the-charges-in-my-azure-usage-and-charges-file-are-correct"></a>Wie stelle ich sicher, dass die aufgeführten Gebühren in der Datei für die Azure-Nutzung und -Gebühren richtig sind?
+### <a name="make-sure-that-charges-are-correct"></a>Sicherstellen, dass Gebühren stimmen
 
-Wenn Sie mehr über eine Gebühr in Ihrer Datei mit detaillierten Nutzungsdaten erfahren möchten, lesen Sie den Abschnitt [Grundlegendes zu den Gebühren auf der Rechnung für eine Microsoft-Kundenvereinbarung](billing-mca-understand-your-bill.md).
+Wenn Sie sicherstellen möchten, dass die Gebühren in Ihrer detaillierten Nutzungsdatei stimmen, können Sie sie überprüfen. Siehe [Grundlegendes zu den Gebühren auf der Rechnung für Ihr Abrechnungsprofil](billing-mca-understand-your-bill.md).
 
 ## <a name="check-access-to-a-microsoft-customer-agreement"></a>Überprüfen des Zugriffs auf eine Microsoft-Kundenvereinbarung
 [!INCLUDE [billing-check-mca](../../includes/billing-check-mca.md)]
 
 ## <a name="need-help-contact-us"></a>Sie brauchen Hilfe? Wenden Sie sich an uns.
 
-Wenn Sie Fragen haben oder Hilfe benötigen, [erstellen Sie eine Supportanfrage](https://go.microsoft.com/fwlink/?linkid=2083458).
+Wenn Sie weitere Fragen haben oder Hilfe benötigen, [erstellen Sie eine Supportanfrage](https://go.microsoft.com/fwlink/?linkid=2083458).
 
 ## <a name="next-steps"></a>Nächste Schritte
 

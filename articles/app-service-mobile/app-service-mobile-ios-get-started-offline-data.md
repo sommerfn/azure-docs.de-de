@@ -2,7 +2,7 @@
 title: Aktivieren der Offlinesynchronisierung mit mobilen iOS-Apps | Microsoft-Dokumentation
 description: Erfahren Sie, wie Sie mobile Azure App Service-Apps verwenden, um Offlinedaten in iOS-Anwendungen zwischenzuspeichern und zu synchronisieren.
 documentationcenter: ios
-author: conceptdev
+author: elamalani
 manager: crdun
 editor: ''
 services: app-service\mobile
@@ -12,17 +12,21 @@ ms.workload: mobile
 ms.tgt_pltfrm: mobile-ios
 ms.devlang: objective-c
 ms.topic: article
-ms.date: 10/01/2016
-ms.author: crdun
-ms.openlocfilehash: 1283f812799fe71ef6987dbc7fab092aed4d3417
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.date: 06/25/2019
+ms.author: emalani
+ms.openlocfilehash: f7ae3e7a33ae7df70214ed171b00cc2accbaccb5
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "62112649"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67446373"
 ---
 # <a name="enable-offline-syncing-with-ios-mobile-apps"></a>Aktivieren der Offlinesynchronisierung mit mobilen iOS-Apps
 [!INCLUDE [app-service-mobile-selector-offline](../../includes/app-service-mobile-selector-offline.md)]
+
+> [!NOTE]
+> Im Rahmen von Visual Studio App Center wird in neue und integrierte Dienste investiert, die für die Entwicklung mobiler Anwendungen von zentraler Bedeutung sind. Entwickler können **Build**-, **Test**- und **Verteilungs**dienste nutzen, um eine Pipeline für Continuous Integration und Delivery einzurichten. Nach der Bereitstellung der App können Entwickler den Status und die Nutzung ihrer App mithilfe der **Analyse**- und **Diagnose**dienste überwachen und mit Benutzern über den **Push**dienst interagieren. Entwickler können auch den **Authentifizierung**sdienst nutzen, um ihre Benutzer zu authentifizieren, und den **Daten**dienst, um App-Daten dauerhaft in der Cloud zu speichern und zu synchronisieren. Besuchen Sie noch heute das [App Center](https://appcenter.ms/?utm_source=zumo&utm_campaign=app-service-mobile-ios-get-started-offline-data).
+>
 
 ## <a name="overview"></a>Übersicht
 In diesem Tutorial wird die Offlinesynchronisierung mit der Mobile Apps-Funktion von Azure App Service für iOS behandelt. Durch die Offlinesynchronisierung können Endbenutzer mit einer mobilen App interagieren, um Daten anzuzeigen, hinzuzufügen oder zu ändern, auch wenn keine Verbindung mit dem Netzwerk besteht. Änderungen werden in einer lokalen Datenbank gespeichert. Sobald das Gerät wieder online ist, werden die Änderungen mit dem Remote-Back-End synchronisiert.
@@ -159,11 +163,11 @@ Wenn Sie die Funktion für die Offlinesynchronisierung verwenden, definieren Sie
 
 ![MS_TableOperations-Tabellenattribute][defining-core-data-tableoperations-entity]
 
-| Attribut | Type |
+| Attribut | type |
 | --- | --- |
 | id | Integer 64 |
 | itemId | string |
-| properties |Binary Data |
+| properties | Binärdaten |
 | table | string |
 | tableKind | Integer 16 |
 
@@ -172,18 +176,18 @@ Wenn Sie die Funktion für die Offlinesynchronisierung verwenden, definieren Sie
 
  ![MS_TableOperationErrors-Tabellenattribute][defining-core-data-tableoperationerrors-entity]
 
-| Attribut | Type |
+| Attribut | type |
 | --- | --- |
 | id |string |
 | operationId |Integer 64 |
-| properties |Binary Data |
+| properties |Binärdaten |
 | tableKind |Integer 16 |
 
  **MS_TableConfig**
 
  ![][defining-core-data-tableconfig-entity]
 
-| Attribut | Type |
+| Attribut | type |
 | --- | --- |
 | id |string |
 | key |string |
@@ -195,7 +199,7 @@ Wenn Sie die Funktion für die Offlinesynchronisierung verwenden, definieren Sie
 
 **TodoItem**
 
-| Attribut | Type | Hinweis |
+| Attribut | type | Hinweis |
 | --- | --- | --- |
 | id | Zeichenfolge, als erforderlich gekennzeichnet |Primärschlüssel im Remotespeicher |
 | complete | Boolean | To-do-Elementfeld |

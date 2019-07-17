@@ -3,7 +3,7 @@ title: 'Gewusst wie: Verwenden des Azure Mobile Apps SDK für Android | Microsof
 description: 'Gewusst wie: Verwenden des Azure Mobile Apps SDK für Android'
 services: app-service\mobile
 documentationcenter: android
-author: conceptdev
+author: elamalani
 manager: crdun
 ms.assetid: 5352d1e4-7685-4a11-aaf4-10bd2fa9f9fc
 ms.service: app-service-mobile
@@ -11,16 +11,20 @@ ms.workload: mobile
 ms.tgt_pltfrm: mobile-android
 ms.devlang: java
 ms.topic: article
-ms.date: 03/07/2019
-ms.author: crdun
-ms.openlocfilehash: 45b5ac0c9b3535e5cc5efdc6827d694b41e0b8dd
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.date: 06/25/2019
+ms.author: emalani
+ms.openlocfilehash: 6a6db136926a7f9d631c717f5cab6c025d97fb48
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60859391"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67443543"
 ---
 # <a name="how-to-use-the-azure-mobile-apps-sdk-for-android"></a>Gewusst wie: Verwenden des Azure Mobile Apps SDK für Android
+
+> [!NOTE]
+> Im Rahmen von Visual Studio App Center wird in neue und integrierte Dienste investiert, die für die Entwicklung mobiler Apps von zentraler Bedeutung sind. Entwickler können **Build**-, **Test**- und **Verteilungs**dienste nutzen, um eine Pipeline für Continuous Integration und Delivery einzurichten. Nach der Bereitstellung der App können Entwickler den Status und die Nutzung ihrer App mithilfe der **Analyse**- und **Diagnose**dienste überwachen und mit Benutzern über den **Push**dienst interagieren. Entwickler können auch den **Authentifizierung**sdienst nutzen, um ihre Benutzer zu authentifizieren, und den **Daten**dienst, um App-Daten dauerhaft in der Cloud zu speichern und zu synchronisieren. Besuchen Sie noch heute das [App Center](https://appcenter.ms/?utm_source=zumo&utm_campaign=app-service-mobile-android-how-to-use-client-library).
+>
 
 Diese Anleitung beschreibt die Verwendung des Android-Client-SDK für Mobile Apps, um häufige Szenarien, wie z.B. die Folgenden zu implementieren:
 
@@ -29,11 +33,11 @@ Diese Anleitung beschreibt die Verwendung des Android-Client-SDK für Mobile App
 * Behandeln von Fehlern
 * Anpassen des Clients
 
-Dieser Leitfaden konzentriert sich auf die Clientseite des Android-SDK.  Weitere Informationen zu den serverseitigen SDKs für mobile Apps finden Sie unter [Arbeiten mit dem .NET-Back-End-SDK][10] oder [Verwenden des Node.js-Back-End-SDKs][11].
+Dieser Leitfaden konzentriert sich auf die Clientseite des Android-SDK.  Weitere Informationen zu den serverseitigen SDKs für mobile Apps finden Sie unter [Arbeiten mit dem .NET-Back-End-SDK][10] or [How to use the Node.js backend SDK][11].
 
 ## <a name="reference-documentation"></a>Referenzdokumentation
 
-Sie finden die [Javadocs-API-Referenz][12] für die Android-Clientbibliothek auf GitHub.
+Sie finden die [Referenz zur Javadocs-API][12] für die Android-Clientbibliothek auf GitHub.
 
 ## <a name="supported-platforms"></a>Unterstützte Plattformen
 
@@ -197,7 +201,7 @@ public final void setPriority(Integer priority) {
 }
 ```
 
-Informationen zum Erstellen zusätzlicher Tabellen in Ihrem Mobile Apps-Back-End, finden Sie unter [Vorgehensweise: Definieren eines Tabellencontrollers][15] (.NET-Back-End) oder [Definieren von Tabellen mit einem dynamischen Schema][16] (Node.js-Back-End).
+Informationen zum Erstellen zusätzlicher Tabellen in Ihrem Mobile Apps-Back-End, finden Sie unter [Vorgehensweise: Definieren eines Tabellencontrollers][15] (.NET backend) or [Define Tables using a Dynamic Schema][16] (Node.js-Back-End).
 
 Eine Azure Mobile Apps-Back-End-Tabelle definiert fünf spezielle Felder, von denen vier für Clients verfügbar sind:
 
@@ -267,7 +271,7 @@ public class ToDoItem
 
 ### <a name="create-a-table-reference"></a>Erstellen eines Tabellenverweises
 
-Um auf eine Tabelle zuzugreifen, erstellen Sie zuerst ein [MobileServiceTable][8]-Objekt durch Aufrufen der **getTable**-Methode im [MobileServiceClient][9].  Diese Methode verfügt über zwei Überladungen:
+Um auf eine Tabelle zuzugreifen, erstellen Sie zuerst ein [MobileServiceTable][8]-Objekt durch Aufrufen der **getTable**-Methode für [MobileServiceClient][9].  Diese Methode verfügt über zwei Überladungen:
 
 ```java
 public class MobileServiceClient {
@@ -382,7 +386,7 @@ List<ToDoItem> results = mToDoTable
     .execute().get();
 ```
 
-Eine detailliertere Erörterung und weitere Beispiele für die Filterung finden Sie im Blogbeitrag [Exploring the richness of the Android client query model][20].
+Eine detailliertere Besprechung und weitere Beispiele für Filter finden Sie unter [Exploring the richness of the Android client query model][20](Untersuchen der umfassenden Möglichkeiten des Android-Clientabfragemodells).
 
 ### <a name="sorting"></a>Sortieren zurückgegebener Daten
 
@@ -697,7 +701,7 @@ mJsonToDoTable = mClient.getTable("ToDoItem");
 Nachdem Sie eine Instanz der **MobileServiceJsonTable**erstellt haben, steht dieser Instanz praktisch die gleiche API zur Verfügung wie beim typisierten Programmiermodell. In einigen Fällen akzeptieren die Methoden einen nicht typisierten Parameter anstelle eines typisierten Parameters.
 
 ### <a name="json_insert"></a>Einfügen in nicht typisierte Tabellen
-Der folgende Code zeigt, wie Sie Elemente einfügen können. Sie müssen zunächst ein [JsonObject][1] erstellen, das Teil der [gson][3]-Bibliothek ist.
+Der folgende Code zeigt, wie Sie Elemente einfügen können. Der erste Schritt ist die Erstellung einer [JsonObject][1], which is part of the [gson][3]-Bibliothek.
 
 ```java
 JsonObject jsonItem = new JsonObject();

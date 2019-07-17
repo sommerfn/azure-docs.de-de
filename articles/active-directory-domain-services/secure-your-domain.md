@@ -3,7 +3,7 @@ title: Schützen Ihrer verwalteten Azure Active Directory Domain Services-Domän
 description: Schützen Ihrer verwalteten Domäne
 services: active-directory-ds
 documentationcenter: ''
-author: MikeStephens-MS
+author: iainfoulds
 manager: daveba
 editor: curtand
 ms.assetid: 6b4665b5-4324-42ab-82c5-d36c01192c2a
@@ -13,14 +13,14 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/20/2019
-ms.author: mstephen
-ms.openlocfilehash: ab371553a96f3a8d393c8b773c4024d04fd171a1
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.date: 06/28/2019
+ms.author: iainfou
+ms.openlocfilehash: e94cd9ca049cfdfd2321ce046714506ed1f23390
+ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66245409"
+ms.lasthandoff: 07/01/2019
+ms.locfileid: "67483279"
 ---
 # <a name="secure-your-azure-ad-domain-services-managed-domain"></a>Schützen Ihrer verwalteten Azure AD Domain Services-Domäne
 Dieser Artikel unterstützt Sie beim Schützen Ihrer verwalteten Domäne. Sie können die Verwendung unsicherer Verschlüsselungssammlungen und die Synchronisierung von NTLM-Anmeldeinformationshashes deaktivieren.
@@ -56,6 +56,11 @@ $securitySettings = @{"DomainSecuritySettings"=@{"NtlmV1"="Disabled";"SyncNtlmPa
 // Apply the settings to the managed domain.
 Set-AzResource -Id $DomainServicesResource.ResourceId -Properties $securitySettings -Verbose -Force
 ```
+
+> [!IMPORTANT]
+> Benutzer (und Dienstkonten) können keine einfachen LDAP-Bindungen vornehmen, wenn Sie die Synchronisierung von NTLM-Kennworthashes für Ihre Azure AD Domain Services-Instanz deaktiviert haben.  Weitere Informationen zum Deaktivieren der Synchronisierung von NTLM-Kennworthashes finden Sie unter [Schützen Ihrer verwalteten Azure AD Domain Services-Domäne](secure-your-domain.md).
+>
+>
 
 ## <a name="next-steps"></a>Nächste Schritte
 * [Grundlegendes zur Synchronisierung in Azure AD Domain Services](synchronization.md)

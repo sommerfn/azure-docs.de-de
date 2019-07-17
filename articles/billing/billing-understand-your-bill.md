@@ -1,33 +1,29 @@
 ---
-title: Grundlegendes zu Ihrer Azure-Rechnung | Microsoft-Dokumentation
-description: Es wird beschrieben, wie Sie die Nutzung und Abrechnung Ihres Azure-Abonnements anzeigen und besser verstehen können.
-services: ''
-documentationcenter: ''
-author: tonguyen10
+title: Grundlegendes zu Ihrer Azure-Rechnung
+description: Informationen, wie Sie die Nutzung und Abrechnung Ihres Azure-Abonnements erfassen und verstehen können.
+author: bandersmsft
 manager: jureid
-editor: ''
 tags: billing
-ms.assetid: 32eea268-161c-4b93-8774-bc435d78a8c9
 ms.service: billing
 ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 02/19/2019
+ms.date: 07/01/2019
 ms.author: banders
-ms.openlocfilehash: 4303b79a7ee69d029504bf6ca2359f6e6070e5b8
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: c8b0d6febbffb80cb4e8bcbf62febb51d059282c
+ms.sourcegitcommit: ac1cfe497341429cf62eb934e87f3b5f3c79948e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60370156"
+ms.lasthandoff: 07/01/2019
+ms.locfileid: "67490311"
 ---
 # <a name="understand-your-microsoft-azure-bill"></a>Grundlegendes zu Ihrer Microsoft Azure-Rechnung
-Um Ihre Azure-Rechnung besser zu verstehen, können Sie sie mit der Datei, die die ausführlichen Angaben zur täglichen Nutzung enthält, und den Kostenverwaltungsberichten im Azure-Portal vergleichen.
+Um Ihre Azure-Rechnung zu verstehen, können Sie sie mit der Datei, die die ausführlichen Angaben zur täglichen Nutzung enthält, und den Kostenverwaltungsberichten im Azure-Portal vergleichen.
 
 Dieser Artikel gilt nicht für Azure-Kunden mit einem Enterprise Agreement (EA-Kunden). Wenn Sie ein EA-Kunde sind, finden Sie weitere Informationen unter [Erläuterungen zur Rechnung für Azure-Kunden mit Enterprise Agreement](billing-understand-your-bill-ea.md).
 
-Dieser Artikel gilt nicht für Azure-Kunden mit einer Microsoft-Kundenvereinbarung. Wenn Sie über ein Rechnungskonto für eine Microsoft-Kundenvereinbarung verfügen, finden Sie Informationen dazu unter [Erläuterungen zu Azure-Gebühren auf der Rechnung zur Microsoft-Kundenvereinbarung](billing-mca-understand-your-bill.md).
+Dieser Artikel gilt nicht für Azure-Kunden mit einer [Microsoft-Kundenvereinbarung](#check-access-to-a-microsoft-customer-agreement). Wenn Sie über eine Microsoft-Kundenvereinbarung verfügen, finden Sie Informationen dazu unter [Erläuterungen zu Azure-Gebühren auf der Rechnung zur Microsoft-Kundenvereinbarung](billing-mca-understand-your-bill.md).
 
 Eine Erläuterung der Abrechnung im Azure Cloud Solution Provider-Programm (Azure CSP) einschließlich Abrechnungszyklus, Preisgestaltung und Nutzung finden Sie unter [Übersicht zur Azure CSP-Abrechnung](/azure/cloud-solution-provider/billing/azure-csp-billing-overview/).
 
@@ -39,7 +35,7 @@ Wenn Sie zu einer Gebühr in Ihrer Rechnung weitere Informationen erhalten möch
 
 ### <a name="option-1-compare-usage-and-costs-with-usage-file"></a>Option 1: Vergleichen von Nutzung und Kosten mit der Nutzungsdatei
 
-Die CSV-Datei mit ausführlichen Nutzungsdaten enthält Ihre Gebühren nach Abrechnungszeitraum und Daten zur täglichen Nutzung. Informationen zum Abrufen der Datei finden Sie unter [Abrufen von Azure-Rechnungen und täglichen Nutzungsdaten](billing-download-azure-invoice-daily-usage-date.md).
+Die CSV-Datei mit ausführlichen Nutzungsdaten enthält Ihre Gebühren nach Abrechnungszeitraum und Daten zur täglichen Nutzung. Informationen zum Herunterladen oder Anzeigen der Datei finden Sie unter [Abrufen von Azure-Rechnungen und täglichen Nutzungsdaten](billing-download-azure-invoice-daily-usage-date.md).
 
 Ihre Nutzungsgebühren werden auf der Ebene der Verbrauchseinheiten angezeigt. Die Bedeutung der folgenden Benennungen ist in der Rechnung und in der Datei mit ausführlichen Nutzungsdaten identisch. Beispielsweise entspricht der Abrechnungszyklus in der Rechnung dem Abrechnungszeitraum in der Datei mit ausführlichen Nutzungsdaten.
 
@@ -47,14 +43,14 @@ Ihre Nutzungsgebühren werden auf der Ebene der Verbrauchseinheiten angezeigt. D
  | --- | --- |
 |Billing Cycle | Billing Period |
  |NAME |Meter Category |
- |Type |Meter Subcategory |
+ |type |Meter Subcategory |
  |Resource |Meter Name |
  |Region |Meter Region |
  |Consumed |Consumed Quantity |
  |Enthalten |Included Quantity |
  |Billable |Overage Quantity |
 
-Der Abschnitt zu den **Nutzungsgebühren** Ihrer Rechnung enthält den Gesamtwert aller Verbrauchseinheiten, die während des Abrechnungszeitraums genutzt wurden. Im folgenden Screenshot wird beispielsweise eine Nutzungsgebühr für den Azure Scheduler-Dienst gezeigt.
+Der Abschnitt zu den **Nutzungsgebühren** Ihrer Rechnung zeigt den Gesamtwert aller einzelnen Verbrauchseinheiten im Abrechnungszeitraum. In der folgenden Abbildung wird beispielsweise eine Nutzungsgebühr für den Azure Scheduler-Dienst gezeigt.
 
 ![Nutzungsgebühren (Rechnung)](./media/billing-understand-your-bill/1.png)
 
@@ -62,7 +58,7 @@ Dieselbe Gebühr wird im Abschnitt **Statement** (Auszug) der CSV-Datei mit ausf
 
 ![Nutzungsgebühren (CSV-Datei)](./media/billing-understand-your-bill/2.png)
 
-Eine Aufstellung dieser Gebühren finden Sie in der CSV-Datei im Abschnitt **Tägliche Nutzung**. Filtern Sie unter *Kategorie der Abrechnungseinheit* nach *Planer*. Sie können sehen, an welchen Tagen die Verbrauchseinheit verwendet wurde und wie hoch der Verbrauch war. Zu Vergleichszwecken sind auch Informationen zu *Ressource* und *Ressourcengruppe* aufgeführt. Die Werte unter *Verbraucht* sollten zusammen die in der Rechnung enthaltene Summe ergeben.
+Eine Aufstellung dieser Gebühren finden Sie in der CSV-Datei im Abschnitt **Tägliche Nutzung**. Filtern Sie unter *Kategorie der Abrechnungseinheit* nach *Planer*. Sie können sehen, an welchen Tagen die Verbrauchseinheit verwendet wurde und wie hoch der Verbrauch war. Zu Vergleichszwecken werden auch Informationen zu *Ressource* und *Ressourcengruppe* gezeigt. Die Werte unter *Verbraucht* sollten addiert die in der Rechnung enthaltene Summe ergeben.
 
 ![Abschnitt zur täglichen Nutzung in der CSV-Datei](./media/billing-understand-your-bill/3.png)
 
@@ -84,7 +80,7 @@ Mithilfe des Azure-Portals können Sie auch Ihre Gebühren überprüfen. Um eine
 
    ![Kostenanalyseansicht im Azure-Portal](./media/billing-understand-your-bill/4.png)
 
-1. Wählen Sie diese Zeile aus, um die Aufschlüsselung der täglichen Kosten anzuzeigen.
+1. Wählen Sie die Zeile mit der Gebühr aus, um die tägliche Kostenaufschlüsselung anzuzeigen.
 
    ![Ansicht „Kostenverlauf“ im Azure-Portal](./media/billing-understand-your-bill/5.png)
 
@@ -135,6 +131,9 @@ Um den Status Ihrer Zahlung zu erfragen, [erstellen Sie ein Supportticket](https
   - [Gesamtkostenrechner](https://aka.ms/azure-tco-calculator)
   - [Detaillierte Preisinformationen für jeden Dienst](https://azure.microsoft.com/pricing/)
 - [Überprüfen Sie Nutzung und Kosten regelmäßig im Azure-Portal](billing-getting-started.md#costs).
+
+## <a name="check-access-to-a-microsoft-customer-agreement"></a>Überprüfen des Zugriffs auf eine Microsoft-Kundenvereinbarung
+[!INCLUDE [billing-check-mca](../../includes/billing-check-mca.md)]
 
 ## <a name="need-help-contact-us"></a>Sie brauchen Hilfe? Wenden Sie sich an uns.
 

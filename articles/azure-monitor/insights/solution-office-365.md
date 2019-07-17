@@ -6,18 +6,18 @@ documentationcenter: ''
 author: bwren
 manager: carmonm
 editor: ''
-ms.service: operations-management-suite
+ms.service: azure-monitor
 ms.workload: tbd
 ms.tgt_pltfrm: na
 ms.topic: article
-ms.date: 05/29/2019
+ms.date: 07/01/2019
 ms.author: bwren
-ms.openlocfilehash: 4c7e1225a8da1e20bc90986d1530b781f7f2c11a
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 3f4b0ad8b7aad01472a76db67f2c07e03e978e41
+ms.sourcegitcommit: 2e4b99023ecaf2ea3d6d3604da068d04682a8c2d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66357576"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67673045"
 ---
 # <a name="office-365-management-solution-in-azure-preview"></a>Office 365-Verwaltungslösung in Azure (Vorschau)
 
@@ -25,7 +25,7 @@ ms.locfileid: "66357576"
 
 
 > [!NOTE]
-> Die empfohlene Methode zum Installieren und Konfigurieren der Office 365-Lösung ist das Aktivieren des [Office 365-Connectors](../../sentinel/connect-office-365.md) in [Azure Sentinel](../../sentinel/overview.md), statt die Schritte in diesem Artikel auszuführen. Dies ist eine aktualisierte Version der Office 365-Lösung mit einer verbesserten Konfigurationsumgebung. Verwenden Sie zum Herstellen einer Verbindung mit Azure AD-Protokollen den [Azure AD-Connector von Azure Sentinel](../../sentinel/connect-azure-active-directory.md), mit dem umfangreichere Protokolldaten als bei den Office 365-Verwaltungsprotokollen bereitgestellt werden. 
+> Die empfohlene Methode zum Installieren und Konfigurieren der Office 365-Lösung ist das Aktivieren des [Office 365-Connectors](../../sentinel/connect-office-365.md) in [Azure Sentinel](../../sentinel/overview.md), statt die Schritte in diesem Artikel auszuführen. Dies ist eine aktualisierte Version der Office 365-Lösung mit einer verbesserten Konfigurationsumgebung. Verwenden Sie zum Herstellen einer Verbindung mit Azure AD-Protokollen entweder den [Azure AD-Connector von Azure Sentinel](../../sentinel/connect-azure-active-directory.md), oder [konfigurieren Sie Azure AD-Diagnoseeinstellungen](../../active-directory/reports-monitoring/howto-integrate-activity-logs-with-log-analytics.md), die umfangreichere Protokolldaten als Office 365-Verwaltungsprotokolle bieten. 
 >
 > Beim [Integrieren von Azure Sentinel](../../sentinel/quickstart-onboard.md) geben Sie den Log Analytics-Arbeitsbereich an, in dem die Office 365-Lösung installiert werden soll. Nachdem Sie den Connector aktiviert haben, ist die Lösung im Arbeitsbereich verfügbar und wird auf genau die gleiche Weise wie alle anderen installierten Überwachungslösungen verwendet.
 >
@@ -541,7 +541,7 @@ Die folgenden Eigenschaften gelten für alle Office 365-Datensätze.
 
 | Eigenschaft | Description |
 |:--- |:--- |
-| Type | *OfficeActivity* |
+| type | *OfficeActivity* |
 | ClientIP | Die IP-Adresse des Geräts, das verwendet wurde, als die Aktivität protokolliert wurde. Die IP-Adresse wird im IPv4- oder IPv6-Adressformat angezeigt. |
 | OfficeWorkload | Office 365-Dienst, auf den sich der Datensatz bezieht.<br><br>AzureActiveDirectory<br>Exchange<br>SharePoint|
 | Vorgang | Der Name der Benutzer- oder Administratoraktivität.  |

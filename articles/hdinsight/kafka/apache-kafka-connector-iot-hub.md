@@ -8,12 +8,12 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 11/06/2018
-ms.openlocfilehash: 420800e718c8f98bfd3d5d7383829d5aa5472828
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 5559d243573ea04400007cdce0e71009dc91e27a
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64698158"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67446436"
 ---
 # <a name="use-apache-kafka-on-hdinsight-with-azure-iot-hub"></a>Verwendung von Apache Kafka in HDInsight mit Azure IoT Hub
 
@@ -37,7 +37,7 @@ Weitere Informationen zur Connect-API finden Sie unter [https://kafka.apache.org
 
 * Ein Edgeknoten im Kafka-Cluster. Weitere Informationen finden Sie im Dokument [Verwenden leerer Edgeknoten in Hadoop-Clustern in HDInsight](../hdinsight-apps-use-edge-node.md).
 
-* Einen Azure IoT Hub. Im Rahmen dieses Tutorials wird das Dokument [Verbinden des Raspberry Pi-Onlinesimulators mit Azure IoT Hub (Node.js)](https://docs.microsoft.com/azure/iot-hub/iot-hub-raspberry-pi-web-simulator-get-started) empfohlen.
+* Einen Azure IoT Hub. In Rahmen dieses Artikels wird das Dokument [Verbinden des Raspberry Pi-Onlinesimulators mit Azure IoT Hub (Node.js)](https://docs.microsoft.com/azure/iot-hub/iot-hub-raspberry-pi-web-simulator-get-started) empfohlen.
 
 * Einen SSH-Client. Bei den Schritten in diesem Dokument wird SSH für die Verbindungsherstellung mit dem Cluster verwendet. Weitere Informationen finden Sie im Dokument [Herstellen einer Verbindung mit HDInsight (Hadoop) per SSH](../hdinsight-hadoop-linux-use-ssh-unix.md).
 
@@ -238,14 +238,14 @@ Um die Quelle für die Arbeit mit Ihrer IoT Hub-Instanz zu konfigurieren, führe
 
     Suchen Sie im Editor nach den folgenden Einträgen, und ändern Sie sie:
 
-   * `Kafka.Topic=PLACEHOLDER`: Ersetzen Sie  durch `iotin`. Die vom IoT Hub empfangenen Nachrichten werden in das Thema `iotin` platziert.
+   * `Kafka.Topic=PLACEHOLDER`: Ersetzen Sie `PLACEHOLDER` durch `iotin`. Die vom IoT Hub empfangenen Nachrichten werden in das Thema `iotin` platziert.
    * `IotHub.EventHubCompatibleName=PLACEHOLDER`: Ersetzen Sie `PLACEHOLDER` durch den Event Hub-kompatiblen Namen.
    * `IotHub.EventHubCompatibleEndpoint=PLACEHOLDER`: Ersetzen Sie `PLACEHOLDER` durch den Event Hub-kompatiblen Endpunkt.
    * `IotHub.Partitions=PLACEHOLDER`: Ersetzen Sie `PLACEHOLDER` durch die Anzahl von Partitionen aus den vorherigen Schritten.
-   * `IotHub.AccessKeyName=PLACEHOLDER`: Ersetzen Sie  durch `service`.
+   * `IotHub.AccessKeyName=PLACEHOLDER`: Ersetzen Sie `PLACEHOLDER` durch `service`.
    * `IotHub.AccessKeyValue=PLACEHOLDER`: Ersetzen Sie `PLACEHOLDER` durch den Primärschlüssel der Richtlinie `service`.
    * `IotHub.StartType=PLACEHOLDER`: Ersetzen Sie `PLACEHOLDER` durch ein Datum im UTC-Format. Dieses Datum bezieht sich auf den Zeitpunkt, an dem der Connector mit der Prüfung auf Nachrichten begonnen hat. Das Datumsformat ist `yyyy-mm-ddThh:mm:ssZ`.
-   * `BatchSize=100`: Ersetzen Sie  durch `5`. Diese Änderung bewirkt, dass der Connector Nachrichten in Kafka liest, sobald fünf neue Nachrichten in IoT Hub vorhanden sind.
+   * `BatchSize=100`: Ersetzen Sie `100` durch `5`. Diese Änderung bewirkt, dass der Connector Nachrichten in Kafka liest, sobald fünf neue Nachrichten in IoT Hub vorhanden sind.
 
      Eine Beispielkonfiguration finden Sie unter [https://github.com/Azure/toketi-kafka-connect-iothub/blob/master/README_Source.md](https://github.com/Azure/toketi-kafka-connect-iothub/blob/master/README_Source.md).
 
@@ -271,7 +271,7 @@ Um die Senkenverbindung für die Arbeit mit Ihrer IoT Hub-Instanz zu konfigurier
 
     Suchen Sie im Editor nach den folgenden Einträgen, und ändern Sie sie:
 
-   * `topics=PLACEHOLDER`: Ersetzen Sie  durch `iotout`. Nachrichten, die in das Thema `iotout` geschrieben wurden, werden an IoT Hub weitergeleitet.
+   * `topics=PLACEHOLDER`: Ersetzen Sie `PLACEHOLDER` durch `iotout`. Nachrichten, die in das Thema `iotout` geschrieben wurden, werden an IoT Hub weitergeleitet.
    * `IotHub.ConnectionString=PLACEHOLDER`: Ersetzen Sie `PLACEHOLDER` durch die Verbindungszeichenfolge für die Richtlinie `service`.
 
      Eine Beispielkonfiguration finden Sie unter [https://github.com/Azure/toketi-kafka-connect-iothub/blob/master/README_Sink.md](https://github.com/Azure/toketi-kafka-connect-iothub/blob/master/README_Sink.md).

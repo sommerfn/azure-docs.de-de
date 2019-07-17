@@ -10,14 +10,14 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 04/26/2019
+ms.date: 07/01/2019
 ms.author: jingwang
-ms.openlocfilehash: 481b19d0121e93c84d123579e91bcbfb9fb50815
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 3f7bf3ce8c01e82fa69b3b041b573b4b31a719d2
+ms.sourcegitcommit: 6cb4dd784dd5a6c72edaff56cf6bcdcd8c579ee7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66356962"
+ms.lasthandoff: 07/02/2019
+ms.locfileid: "67514092"
 ---
 # <a name="copy-data-from-and-to-dynamics-365-common-data-service-or-dynamics-crm-by-using-azure-data-factory"></a>Kopieren von Daten aus und nach Dynamics 365 (Common Data Service) oder Dynamics CRM mithilfe von Azure Data Factory
 
@@ -27,7 +27,13 @@ In diesem Artikel wird beschrieben, wie Sie die Kopieraktivität in Azure Data F
 
 Sie können Daten aus Dynamics 365 (Common Data Service) oder Dynamics CRM in jeden unterstützten Senkendatenspeicher kopieren. Zudem können Sie Daten aus jedem unterstützten Quelldatenspeicher in Dynamics 365 (Common Data Service) oder Dynamics CRM kopieren. Eine Liste der Datenspeicher, die als Quellen oder Senken für die Kopieraktivität unterstützt werden, finden Sie in der Tabelle [Unterstützte Datenspeicher](copy-activity-overview.md#supported-data-stores-and-formats).
 
-Dieser Dynamics-Connector unterstützt insbesondere folgende Dynamics-Versionen und -Authentifizierungstypen. (IFD ist die Abkürzung für „Internet Facing Deployment“ [Bereitstellung mit Internetzugriff].)
+Dieser Dynamics-Connector unterstützt die Dynamics-Versionen 7.x bis 9.x sowohl online als auch lokal. Dies umfasst insbesondere Folgendes:
+
+- Version 7.x ist Dynamics CRM 2015 zugeordnet
+- Version 8.x ist Dynamics CRM 2016 und der frühen Version von Dynamics 365 zugeordnet
+- Version 9.x ist der neueren Version von Dynamics 365 zugeordnet
+
+In der folgenden Tabelle finden Sie Informationen zu den unterstützten Authentifizierungstypen und Konfigurationen für die jeweiligen Dynamics-Versionen/-Produkte. (IFD ist die Abkürzung für „Internet Facing Deployment“ [Bereitstellung mit Internetzugriff].)
 
 | Dynamics-Versionen | Authentifizierungstypen | Beispiele für verknüpfte Dienste |
 |:--- |:--- |:--- |
@@ -43,6 +49,8 @@ Für Dynamics 365 werden insbesondere die folgenden Anwendungstypen unterstützt
 - Dynamics 365 for Marketing
 
 Andere Anwendungstypen wie z.B. Finance and Operations, Talent usw. werden von diesem Connector nicht unterstützt.
+
+Dieser Dynamics-Connector basiert auf [Dynamics XRM-Tools](https://docs.microsoft.com/dynamics365/customer-engagement/developer/build-windows-client-applications-xrm-tools).
 
 >[!TIP]
 >Sie können den [Dynamics AX-Connector](connector-dynamics-ax.md) verwenden, um Daten aus **Dynamics 365 for Finance and Operations** zu kopieren.
@@ -341,9 +349,8 @@ Konfigurieren Sie anhand der folgenden Zuordnungstabelle den entsprechenden Data
 | AttributeType.State | Int32 | ✓ | ✓ |
 | AttributeType.Status | Int32 | ✓ | ✓ |
 
-
 > [!NOTE]
-> Die Dynamics-Datentypen „AttributeType.CalendarRules“ und „AttributeType.PartyList“ werden nicht unterstützt.
+> Die Dynamics-Datentypen AttributeType.CalendarRules, AttributeType.MultiSelectPicklist und AttributeType.PartyList werden nicht unterstützt.
 
 ## <a name="next-steps"></a>Nächste Schritte
 Eine Liste der Datenspeicher, die als Quellen und Senken für die Kopieraktivität in Data Factory unterstützt werden, finden Sie unter [Unterstützte Datenspeicher](copy-activity-overview.md#supported-data-stores-and-formats).

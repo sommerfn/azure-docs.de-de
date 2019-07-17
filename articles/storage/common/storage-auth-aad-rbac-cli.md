@@ -5,20 +5,20 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: article
-ms.date: 03/21/2019
+ms.date: 06/26/2019
 ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: common
-ms.openlocfilehash: dc2beda1ae017b5e81fddf08d0c7e88c785bcdf5
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 1e29b8e23927ef2ff70416d1adc76e2b2b3f2d8a
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65153881"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67443710"
 ---
 # <a name="grant-access-to-azure-blob-and-queue-data-with-rbac-using-azure-cli"></a>Gewähren von Zugriff auf Azure-Blob- und -Warteschlangendaten mit RBAC über die Azure CLI
 
-Azure Active Directory (Azure AD) autorisiert Rechte für den Zugriff auf abgesicherte Ressourcen über die [rollenbasierte Zugriffssteuerung (RBAC)](../../role-based-access-control/overview.md). Azure Storage bietet eine Reihe integrierter RBAC-Rollen mit allgemeinen Berechtigungssätzen für den Zugriff auf Blob- und Warteschlangendaten. 
+Azure Active Directory (Azure AD) autorisiert Rechte für den Zugriff auf abgesicherte Ressourcen über die [rollenbasierte Zugriffssteuerung (RBAC)](../../role-based-access-control/overview.md). Azure Storage bietet eine Reihe integrierter RBAC-Rollen mit allgemeinen Berechtigungssätzen für den Zugriff auf Blob- und Warteschlangendaten.
 
 Wenn einem Azure AD-Sicherheitsprinzipal eine RBAC-Rolle zugewiesen wird, gewährt Azure diesem Sicherheitsprinzipal Zugriff auf diese Ressourcen. Der Zugriff kann auf die Ebene des Abonnements, der Ressourcengruppe, des Speicherkontos oder eines einzelnen Containers oder einer Warteschlange begrenzt werden. Eine Azure AD-Sicherheitsprinzipal kann ein Benutzer, eine Gruppe, ein Anwendungsdienstprinzipal oder eine [verwaltete Identität für Azure-Ressourcen](../../active-directory/managed-identities-azure-resources/overview.md) sein.
 
@@ -52,9 +52,9 @@ Storage Queue Data Message Sender         Allows for sending of Azure Storage qu
 Storage Queue Data Reader                 Allows for read access to Azure Storage queues and queue messages
 ```
 
-## <a name="assign-an-rbac-role-to-a-user"></a>Zuweisen einer RBAC-Rolle zu einem Benutzer
+## <a name="assign-an-rbac-role-to-a-security-principal"></a>Zuweisen einer RBAC-Rolle zu einem Sicherheitsprinzipal
 
-Verwenden Sie den Befehl [az role assignment create](/cli/azure/role/assignment#az-role-assignment-create), um einem Benutzer eine RBAC-Rolle zuzuweisen. Das Format des Befehls kann je nach Bereich der Zuweisung unterschiedlich sein. In den folgenden Beispielen wird veranschaulicht, wie Sie einem Benutzer eine Rolle in verschiedenen Bereichen zuweisen können.
+Verwenden Sie den Befehl [az role assignment create](/cli/azure/role/assignment#az-role-assignment-create), um einem Sicherheitsprinzipal eine RBAC-Rolle zuzuweisen. Das Format des Befehls kann je nach Bereich der Zuweisung unterschiedlich sein. Die folgenden Beispiele zeigen, wie Sie einem Benutzer eine Rolle in verschiedenen Bereichen zuweisen können. Sie können jedoch den gleichen Befehl verwenden, um eine Rolle einem beliebigen Sicherheitsprinzipal zuzuordnen.
 
 ### <a name="container-scope"></a>Containerbereich
 

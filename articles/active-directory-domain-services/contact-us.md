@@ -3,7 +3,7 @@ title: 'Azure Active Directory Domain Services: Wenden Sie sich an uns | Microso
 description: Wenden Sie sich an das Produktteam der Azure AD Domain Services
 services: active-directory-ds
 documentationcenter: ''
-author: MikeStephens-MS
+author: iainfoulds
 manager: daveba
 editor: curtand
 ms.assetid: 662362c3-1a5e-4e94-ae09-8e4254443697
@@ -13,27 +13,32 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 05/22/2019
-ms.author: mstephen
-ms.openlocfilehash: 26bce79e2be19d83612f95d8be245323f77ae7f3
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.date: 06/28/2019
+ms.author: iainfou
+ms.openlocfilehash: 83d1011d28eb13ed2e45587df8d385ebf19abbd1
+ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66245359"
+ms.lasthandoff: 07/01/2019
+ms.locfileid: "67483332"
 ---
 # <a name="azure-ad-domain-services---contact-us"></a>Azure AD Domain Services – so erreichen Sie uns
-## <a name="contact-the-product-team"></a>Wenden Sie sich an das Produktteam
-Falls Probleme mit Ihrer verwalteten Domäne auftreten, überprüfen Sie, ob diese sich mit den Schritten in diesem [Leitfaden zur Problembehandlung](troubleshoot.md) beheben lassen. Falls sich die Probleme nicht beseitigen lassen, können Sie uns gern kontaktieren.
 
-Sie können uns eine E-Mail senden an: [Azure AD Domain Services – Feedback](mailto:aaddsfb@microsoft.com).
+## <a name="feedback"></a>Feedback
+Wenn Sie Feedback zu unserem Dienst oder nicht technische Fragen haben, können Sie Ihre Anfrage an die Produktgruppe „Azure AD Domain Service“ leiten, indem Sie uns eine E-Mail senden: [Azure AD Domain Services – Feedback](mailto:aaddsfb@microsoft.com). E-Mails an diese Adresse werden überprüft. Mitglieder der Produktgruppe **fordern** ggf. weitere Informationen an. Anfragen nach technischem Support an diese E-Mail-Adresse werden nicht beantwortet.
 
-Stellen Sie folgende Informationen bereit, damit wir das Problem untersuchen können:
+## <a name="technical-assistance"></a>Technische Unterstützung
+Falls Probleme mit Ihrer verwalteten Domäne auftreten, überprüfen Sie, ob diese sich mit den Schritten in diesem [Leitfaden zur Problembehandlung](troubleshoot.md) beheben lassen. Wenn weiterhin Probleme auftreten, melden Sie sich beim Azure-Portal an. Öffnen Sie die Startseite von **Azure AD Domain Services**, und wählen im Aktionsbereich unter **Support + Problembehandlung** die Option **Neue Supportanfrage** aus.
 
-* Die **Mandanten-ID/Verzeichnis-ID** Ihres Azure AD-Verzeichnisses. Die Mandanten-ID ist die GUID im Feld „Verzeichnis-ID“ auf der [Seite „Eigenschaften“ Ihres Verzeichnisses](https://ms.portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/Properties).
-* Den **DNS-Domänennamen** , den Sie für Ihre über die Azure AD Domain Services verwaltete Domäne konfiguriert haben.
+![Neue Supportanfrage](./media/contact-us/supportRequest.png) 
 
-## <a name="provide-feedback"></a>Feedback geben
-Sie können uns Ihr Feedback zu Azure AD Domain Services auch gerne über den **[Azure Active Directory User Voice-Kanal](https://feedback.azure.com/forums/169401-azure-active-directory/)** mitteilen.
+Füllen Sie jeden Abschnitt der Supportanfrage so detailliert wie möglich aus. Wenn Sie einen Dienst wählen, stellen Sie sicher, dass Sie **Azure Active Directory Domain Services (VM – Domänencontroller)** auswählen, damit Ihre Anfrage an den richtigen Supportmitarbeiter weitergeleitet wird.
 
-Stellen Sie Ihrer Frage oder Ihrem Feedback das Kürzel **„AADDS“** voran, um uns zu erreichen.
+> [!IMPORTANT]
+> Wählen Sie **Azure Active Directory-Verzeichnisse, Domänen und Objekte** in der Liste der Dienste aus, um Hilfe bei der Domänenüberprüfung in Azure Active Directory zu erhalten.
+>
+> 
+
+## <a name="feature-requests"></a>Funktionsanfragen
+Haben Sie eine Idee, wie wir Azure Active Directory Domain Services verbessern können? Wir möchten gerne davon erfahren. Wechseln Sie zu den Azure-Foren für Feedback, navigieren Sie zur Kategorie [Domain Services](https://feedback.azure.com/forums/169401-azure-active-directory?category_id=160593), und stellen Sie uns Ihre Idee vor. Mitglieder der Produktgruppe überprüfen diese Anfragen.
+

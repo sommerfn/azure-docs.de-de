@@ -5,16 +5,16 @@ ms.date: 04/30/2019
 ms.topic: include
 ms.service: virtual-machines-linux
 manager: jeconnoc
-ms.openlocfilehash: e1b3b5fe603072069cb3a19c7597fcc1872fefd7
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.openlocfilehash: 6eedc095f155a77cddf48211dbc4a677bf188112
+ms.sourcegitcommit: 837dfd2c84a810c75b009d5813ecb67237aaf6b8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67178073"
+ms.lasthandoff: 07/02/2019
+ms.locfileid: "67509849"
 ---
 Standardisierte VM-Images ermöglichen es Organisationen, in die Cloud zu migrieren und die Konsistenz der Bereitstellung sicherzustellen. Die Images beinhalten üblicherweise vordefinierte Sicherheits- und Konfigurationseinstellungen und die notwendige Software. Das Einrichten Ihrer eigenen Imaging-Pipeline erfordert Zeit, Infrastruktur und Setup, aber mit dem Azure VM Image Builder stellen Sie eine einfache Konfiguration zur Verfügung, die Ihr Image beschreibt, senden es an den Dienst, und das Image wird erstellt und verteilt.
  
-Mit dem Azure VM Image Builder (Azure Image Builder) können Sie mit einem Windows- oder Linux-basierten Azure Marketplace-Image, vorhandenen benutzerdefinierten Images oder Red Hat Enterprise Linux (RHEL) ISO starten und beginnen, Ihre eigenen Anpassungen vorzunehmen. Da der Image Builder auf [HashiCorp Packer](https://packer.io/) aufbaut, können Sie auch Ihre vorhandenen Packer Shell Provisioner-Skripts importieren. Sie können auch angeben, wo Ihre Images gehostet werden sollen – im Azure-Katalog mit freigegebenen Images (virtual-machines-common-shared-image-galleries.md), als verwaltetes Image oder als VHD.
+Mit dem Azure VM Image Builder (Azure Image Builder) können Sie mit einem Windows- oder Linux-basierten Azure Marketplace-Image, vorhandenen benutzerdefinierten Images oder Red Hat Enterprise Linux (RHEL) ISO starten und beginnen, Ihre eigenen Anpassungen vorzunehmen. Da der Image Builder auf [HashiCorp Packer](https://packer.io/) aufbaut, können Sie auch Ihre vorhandenen Packer Shell Provisioner-Skripts importieren. Sie können auch angeben, wo Ihre Images gehostet werden sollen: in [Azure Shared Image Gallery](https://docs.microsoft.com/azure/virtual-machines/windows/shared-image-galleries), als verwaltetes Image oder als VHD.
 
 > [!IMPORTANT]
 > Azure Image Builder ist derzeit als öffentliche Vorschauversion verfügbar.
@@ -35,7 +35,7 @@ In der Vorschauversion werden diese Funktionen unterstützt:
 
 ## <a name="regions"></a>Regions
 Der Azure Image Builder-Dienst wird in folgenden Regionen als Vorschauversion verfügbar sein. Images können außerhalb dieser Regionen verteilt werden.
-- USA (Ost)
+- East US
 - USA (Ost) 2
 - USA, Westen-Mitte
 - USA (Westen)
@@ -50,6 +50,12 @@ AIB unterstützt Basisbetriebssystem-Images aus dem Azure Marketplace:
 - Windows 2016
 - Windows 2019
 
+AIB-Datei unterstützt RHEL ISO als Quelle für:
+- RHEL 7.3
+- RHEL 7.4
+- RHEL 7.5
+
+RHEL 7.6 wird nicht unterstützt, jedoch getestet.
 
 ## <a name="how-it-works"></a>So funktioniert's
 
@@ -65,9 +71,9 @@ Der Azure Image Builder ist ein vollständig verwalteter Azure-Dienst, der für 
 ![Schematische Darstellung des Azure Image Builder-Prozesses](./media/virtual-machines-image-builder-overview/image-builder-process.png)
 
 1. Erstellen Sie die Imagevorlage als eine JSON-Datei an. Diese.json-Datei enthält Informationen über die Imagequelle, Anpassungen und Verteilung. Im [GitHub-Repository für Azure Image Builder](https://github.com/danielsollondon/azvmimagebuilder/tree/master/quickquickstarts) finden Sie zahlreiche Beispiele.
-1. Durch Senden an den Dienst wird in der von Ihnen angegebenen Ressourcengruppe ein Image-Vorlagenartefakt erstellt. Im Hintergrund lädt der Image Builder das Quellimage oder ISO und bei Bedarf Skripts herunter. Diese werden in einer separaten Ressourcengruppe gespeichert, die automatisch in Ihrem Abonnement im folgenden Format erstellt wird: IT_<DestinationResourceGroup>_<TemplateName>. 
-1. Sobald die Imagevorlage erstellt ist, können Sie mit den Zusammenstelle des Images beginnen. Im Hintergrund verwendet der Image Builder die Vorlagen- und Quelldateien, um eine VM, ein Netzwerk und einen Speicher in der Ressourcengruppe IT_<DestinationResourceGroup>_<TemplateName> zu erstellen.
-1. Im Rahmen der Imageerstellung verteilt Image Builder das Bild entsprechend der Vorlage und löscht dann die zusätzlichen Ressourcen in der Ressourcengruppe IT_<DestinationResourceGroup>_<TemplateName>, die für den Prozess erstellt wurde.
+1. Durch Senden an den Dienst wird in der von Ihnen angegebenen Ressourcengruppe ein Image-Vorlagenartefakt erstellt. Im Hintergrund lädt der Image Builder das Quellimage oder ISO und bei Bedarf Skripts herunter. Diese werden in einer separaten Ressourcengruppe gespeichert, die automatisch in Ihrem Abonnement im folgenden Format erstellt wird: IT_\<Zielressourcengruppe>_\<Vorlagenname>. 
+1. Sobald die Imagevorlage erstellt ist, können Sie mit den Zusammenstelle des Images beginnen. Im Hintergrund verwendet der Image Builder die Vorlagen- und Quelldateien, um eine VM, ein Netzwerk und einen Speicher in der Ressourcengruppe IT_\<Zielressourcengruppe>_\<Vorlagenname> zu erstellen.
+1. Im Rahmen der Imageerstellung verteilt Image Builder das Bild entsprechend der Vorlage und löscht dann die zusätzlichen Ressourcen in der Ressourcengruppe IT_\<Zielressourcengruppe>_\<Vorlagenname>, die für den Prozess erstellt wurde.
 
 
 ## <a name="permissions"></a>Berechtigungen

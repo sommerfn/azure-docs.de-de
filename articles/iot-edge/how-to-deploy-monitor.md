@@ -5,38 +5,36 @@ keywords: ''
 author: kgremban
 manager: philmea
 ms.author: kgremban
-ms.date: 02/19/2019
+ms.date: 06/17/2019
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.custom: seodec18
-ms.openlocfilehash: 69ba0a882c0e52e7c0d063b8f77e7a0fe22526a1
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 83e2490821f59adeb37958c6c31403121a40274e
+ms.sourcegitcommit: 5bdd50e769a4d50ccb89e135cfd38b788ade594d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "62126362"
+ms.lasthandoff: 07/03/2019
+ms.locfileid: "67540904"
 ---
 # <a name="deploy-and-monitor-iot-edge-modules-at-scale-using-the-azure-portal"></a>Bedarfsgerechtes Bereitstellen und Überwachen von IoT Edge-Modulen mithilfe des Azure-Portals
 
-[!INCLUDE [iot-edge-how-to-deploy-monitor-selector](../../includes/iot-edge-how-to-deploy-monitor-selector.md)]
+Erstellen Sie eine **automatische IoT Edge-Bereitstellung** im Azure-Portal zum gleichzeitigen Verwalten laufender Bereitstellungen vieler Geräte. Automatische Bereitstellungen für IoT Edge sind Teil des Features [Automatische Geräteverwaltung](/azure/iot-hub/iot-hub-automatic-device-management) von IoT Hub. Bereitstellungen sind dynamische Prozesse, mit denen Sie mehrere Module auf mehreren Geräten bereitstellen, Status und Integrität der Module nachverfolgen und bei Bedarf Änderungen vornehmen können. 
 
-Mit Azure IoT Edge können Sie Analysen in die Edge-Ebene verlagern und erhalten eine Cloudschnittstelle, um Ihre IoT Edge-Geräte auch ohne physischen Zugriff darauf zu verwalten und zu überwachen. Die Möglichkeit zur Remoteverwaltung von Geräten wird immer wichtiger, weil Lösungen für das Internet der Dinge immer umfangreicher und komplexer werden. Azure IoT Edge wurde entwickelt, um Ihre Unternehmensziele unabhängig davon zu unterstützen, wie viele Geräte Sie hinzufügen.
-
-Sie können einzelne Geräte verwalten und die dafür erforderlichen Modelle einzeln bereitstellen. Wenn Sie jedoch Änderungen an Geräten in großem Umfang vornehmen möchten, können Sie eine **automatische IoT Edge-Bereitstellung** erstellen, das Teil der automatischen Geräteverwaltung in IoT Hub ist. Bereitstellungen sind dynamische Prozesse, mit denen Sie mehrere Module gleichzeitig auf mehreren Geräten bereitstellen, Status und Integrität der Module nachverfolgen und bei Bedarf Änderungen vornehmen können. 
+Weitere Informationen finden Sie unter [Grundlegendes zu automatischen IoT Edge-Bereitstellungen für einzelne Geräte oder nach Bedarf](module-deployment-monitoring.md).
 
 ## <a name="identify-devices-using-tags"></a>Identifizieren von Geräten mithilfe von Tags
 
-Bevor Sie eine Bereitstellung erstellen können, müssen Sie angeben können, welche Geräte Sie ansprechen möchten. Azure IoT Edge erkennt Geräte anhand von **Tags** im Gerätezwilling. Jedes Gerät kann mehrere Tags aufweisen, und Sie können diese auf jede beliebige Weise definieren, die für Ihre Lösung sinnvoll erscheint. Wenn Sie beispielsweise einen Campus mit intelligenten Gebäuden verwalten, können Sie einem Gerät etwa die folgenden Tags hinzufügen:
+Bevor Sie eine Bereitstellung erstellen können, müssen Sie angeben können, welche Geräte Sie ansprechen möchten. Azure IoT Edge erkennt Geräte anhand von **Tags** im Gerätezwilling. Jedes Gerät kann mehrere Tags aufweisen, die Sie auf eine für Ihre Lösung sinnvolle Weise definieren können. Wenn Sie beispielsweise einen Campus mit intelligenten Gebäuden verwalten, können Sie einem Gerät etwa die folgenden Tags hinzufügen:
 
 ```json
 "tags":{
-    "location":{
-        "building": "20",
-        "floor": "2"
-    },
-    "roomtype": "conference",
-    "environment": "prod"
+  "location":{
+    "building": "20",
+    "floor": "2"
+  },
+  "roomtype": "conference",
+  "environment": "prod"
 }
 ```
 
@@ -58,24 +56,21 @@ Zum Erstellen einer Bereitstellung müssen fünf Schritte ausgeführt werden. Di
 
 ### <a name="step-2-add-modules-optional"></a>Schritt 2: Hinzufügen von Modulen (optional)
 
-Es gibt zwei Arten von Modulen, die Sie einer Bereitstellung hinzufügen können. Das erste Modul basiert dabei auf einem Azure-Dienst wie Storage Account oder Stream Analytics. Das zweite Modul verwendet Ihren eigenen Code. Sie können einer Bereitstellung mehrere Module beider Typen hinzufügen. 
+Sie können einer Bereitstellung bis zu 20 Module hinzufügen. 
 
-Wenn Sie eine Bereitstellung ohne Module erstellen, werden alle aktuellen Module von den Geräten entfernt. 
-
->[!NOTE]
->Azure Functions unterstützt die automatisierte Azure-Dienstbereitstellung noch nicht. Verwenden Sie die benutzerdefinierte Modulbereitstellung, um diesen Dienst manuell zu Ihrer Bereitstellung hinzuzufügen. 
+Wenn Sie eine Bereitstellung ohne Module erstellen, werden alle aktuellen Module von den Zielgeräten entfernt. 
 
 Führen Sie die folgenden Schritte aus, um ein Modul aus Azure Stream Analytics hinzuzufügen:
 
 1. Klicken Sie im Abschnitt **Bereitstellungsmodule** der Seite auf **Hinzufügen**.
 1. Klicken Sie auf **Azure Stream Analytics-Modul**.
 1. Wählen Sie im Dropdownmenü Ihr **Abonnement** aus.
-1. Wählen Sie im Dropdownmenü Ihren **Edgeauftrag** aus.
+1. Wählen Sie im Dropdownmenü Ihren **IoT Edge-Auftrag** aus.
 1. Klicken Sie auf **Speichern**, um Ihr Modul zur Bereitstellung hinzuzufügen. 
 
 So fügen Sie benutzerdefinierten Code als Modul oder aber ein Azure-Dienstmodul manuell hinzu:
 
-1. Geben Sie im Abschnitt **Container Registry-Einstellungen** der Seite die Namen und Anmeldeinformationen für private Containerregistrierungen an, die die Modulimages für diese Bereitstellung enthalten. Der Edge-Agent gibt den Fehler 500 zurück, wenn die Anmeldeinformationen einer Containerregistrierung für ein Docker-Image nicht gefunden wurden.
+1. Geben Sie im Abschnitt **Container Registry-Einstellungen** der Seite die Namen und Anmeldeinformationen für private Containerregistrierungen an, die die Modulimages für diese Bereitstellung enthalten. Der IoT Edge-Agent gibt den Fehler 500 zurück, wenn die Anmeldeinformationen einer Containerregistrierung für ein Docker-Image nicht gefunden wurden.
 1. Klicken Sie im Abschnitt **Bereitstellungsmodule** der Seite auf **Hinzufügen**.
 1. Klicken Sie auf **IoT Edge-Modul**.
 1. Geben Sie dem Modul einen **Namen**.
@@ -84,13 +79,13 @@ So fügen Sie benutzerdefinierten Code als Modul oder aber ein Azure-Dienstmodul
 1. Wählen Sie über das Dropdownmenü eine **Neustartrichtlinie** aus. Sie können zwischen folgenden Optionen wählen: 
    * **Immer**: Das Modul wird stets neu gestartet, wenn es aus irgendeinem Grund beendet wird.
    * **Nie**: Das Modul wird niemals neu gestartet, wenn es aus irgendeinem Grund beendet wird.
-   * **On-failed** (Bei Absturz): Das Modul wird neu gestartet, wenn es abgestürzt ist, aber nicht ordnungsgemäß heruntergefahren wurde. 
-   * **On-unhealthy** (Bei Fehler): Das Modul wird neu gestartet, wenn es abstürzt oder einen Integritätsfehlerstatus zurückgibt. Die Implementierung der Integritätsstatusfunktion ist modulspezifisch unterschiedlich. 
+   * **on-failure** (Bei Absturz): Das Modul wird neu gestartet, wenn es abgestürzt ist, aber nicht ordnungsgemäß heruntergefahren wurde. 
+   * **on-unhealthy** (Bei Fehler): Das Modul wird neu gestartet, wenn es abstürzt oder einen Integritätsfehlerstatus zurückgibt. Die Implementierung der Integritätsstatusfunktion ist modulspezifisch unterschiedlich. 
 1. Wählen Sie über das Dropdownmenü den **Gewünschten Status** für das Modul aus. Sie können zwischen folgenden Optionen wählen:
    * **Wird ausgeführt**: Dies ist die Standardoption. Das Modul wird unmittelbar nach Bereitstellung gestartet.
    * **Beendet**: Nach der Bereitstellung verbleibt das Modul im Leerlauf, bis der Start durch Sie oder ein anderes Modul ausgelöst wird.
 1. Klicken Sie auf **Gewünschte Eigenschaften für Modulzwilling festlegen**, wenn Sie Tags oder andere Eigenschaften zum Modulzwilling hinzufügen möchten.
-1. Geben Sie **Umgebungsvariablen** für dieses Modul ein. Umgebungsvariablen stellen zusätzliche Informationen für ein Modul bereit und erleichtern so den Konfigurationsprozess.
+1. Geben Sie **Umgebungsvariablen** für dieses Modul ein. Umgebungsvariablen stellen einem Modul Konfigurationsinformationen zur Verfügung.
 1. Klicken Sie auf **Speichern**, um Ihr Modul zur Bereitstellung hinzuzufügen. 
 
 Nachdem Sie alle Module für eine Bereitstellung konfiguriert haben, klicken Sie auf **Weiter**, um mit Schritt 3 fortzufahren.
@@ -109,20 +104,20 @@ Metriken bieten zusammenfassende Angaben zu den verschiedenen Zuständen, die ei
 
 1. Geben Sie eine Abfrage unter **Metrikkriterien** ein. Diese Abfrage basiert auf [gemeldeten Eigenschaften](module-edgeagent-edgehub.md#edgehub-reported-properties) eines IoT Edge-Hub-Modulzwillings. Die Metrik stellt die Anzahl der von der Abfrage zurückgegebenen Zeilen dar.
 
-Beispiel:
+   Beispiel:
 
-```sql
-SELECT deviceId FROM devices
-  WHERE properties.reported.lastDesiredStatus.code = 200
-```
+   ```sql
+   SELECT deviceId FROM devices
+     WHERE properties.reported.lastDesiredStatus.code = 200
+   ```
 
 ### <a name="step-5-target-devices"></a>Schritt 5: Zielgeräte
 
 Mit der Tageigenschaft Ihrer Geräte wählen Sie bestimmte Geräte als Ziele aus, die diese Bereitstellung erhalten sollen. 
 
-Da mehrere Bereitstellungen dasselbe Gerät als Ziel verwenden können, sollten Sie für jede Bereitstellung eine Priorität festlegen. Tritt irgendwann ein Konflikt auf, dann „gewinnt“ die Bereitstellung mit der höchsten Priorität (höhere Werte deuten auf eine höhere Priorität hin). Haben zwei Bereitstellungen dieselbe Priorität, dann wird jeweils diejenige verwendet, die später erstellt wurde. 
+Da mehrere Bereitstellungen dasselbe Gerät als Ziel verwenden können, sollten Sie für jede Bereitstellung eine Priorität festlegen. Wenn irgendwann ein Konflikt auftritt, „gewinnt“ die Bereitstellung mit der höchsten Priorität (höhere Werte deuten auf eine höhere Priorität hin). Haben zwei Bereitstellungen dieselbe Priorität, dann wird jeweils diejenige verwendet, die später erstellt wurde. 
 
-1. Geben Sie eine positive ganze Zahl als **Priorität** für die Bereitstellung ein. Wenn mindestens zwei Bereitstellungen auf dasselbe Gerät ausgerichtet sind, wird die Bereitstellung mit dem höchsten numerischen Wert für die Priorität angewendet.
+1. Geben Sie eine positive ganze Zahl als **Priorität** für die Bereitstellung ein.
 1. Geben Sie unter **Zielbedingung** eine Bedingung ein, um festzulegen, auf welche Geräte diese Bereitstellung angewendet werden soll. Die Bedingung basiert auf den Gerätezwillingstags oder auf den gemeldeten Gerätezwillingseigenschaften und muss dem Ausdrucksformat entsprechen. Beispiel: `tags.environment='test'` oder `properties.reported.devicemodel='4000x'`. 
 1. Klicken Sie auf **Weiter**, um mit dem letzten Schritt fortzufahren.
 
@@ -134,7 +129,7 @@ Da mehrere Bereitstellungen dasselbe Gerät als Ziel verwenden können, sollten 
 
 Azure Marketplace ist ein Onlinemarktplatz für Anwendungen und Dienste, in dem sie eine breite Palette an Unternehmensanwendungen und -lösungen durchsuchen können, die für die Ausführung unter Azure, einschließlich [IoT Edge-Modulen](https://azuremarketplace.microsoft.com/marketplace/apps/category/internet-of-things?page=1&subcategories=iot-edge-modules), zertifiziert und optimiert sind. Sie können auch über das Azure-Portal unter **Ressource erstellen** auf den Azure Marketplace zugreifen.
 
-Sie können ein IoT Edge-Modul entweder über Azure Marketplace oder das Azure-Portal folgendermaßen installieren:
+Sie können ein IoT Edge-Modul entweder über Azure Marketplace oder das Azure-Portal folgendermaßen bereitstellen:
 
 1. Suchen Sie ein Modul, und beginnen Sie den Bereitstellungsprozess.
 
@@ -168,8 +163,8 @@ So zeigen Sie ausführliche Informationen zu einer Bereitstellung an und überwa
    * **Zielbedingung**: Tag, das zur Definition von Zielgeräten verwendet wird
    * **Priorität**: Prioritätsnummer, die der Bereitstellung zugewiesen wurde
    * Mit **System metrics** - **Targeted** (Systemmetriken – Ziel) wird die Anzahl von Gerätezwillingen in IoT Hub angegeben, die die Zielbedingung erfüllen, und **Angewendet** gibt die Anzahl von Geräten an, auf deren Gerätezwillinge in IoT Hub die Bereitstellungsinhalte angewendet wurde. 
-   * **Gerätemetriken**: Die Anzahl von Edge-Geräten in der Bereitstellung, für die von der IoT Edge-Clientruntime eine Erfolgs- oder Fehlermeldung ausgegeben wurde.
-   * **Benutzerdefinierte Metriken**: Die Anzahl der Edge-Geräte in der Bereitstellung, die Daten für in der Bereitstellung definierte Metriken melden.
+   * **Gerätemetriken**: Die Anzahl von IoT Edge-Geräten in der Bereitstellung, für die von der IoT Edge-Clientruntime eine Erfolgs- oder Fehlermeldung ausgegeben wurde.
+   * **Benutzerdefinierte Metriken**: Die Anzahl der IoT Edge-Geräte in der Bereitstellung, die Daten für in der Bereitstellung definierte Metriken melden.
    * **Erstellungszeit**: Zeitstempel der Bereitstellungserstellung. Dieser Zeitstempel wird zur Konfliktlösung verwendet, wenn zwei Bereitstellungen dieselbe Priorität haben. 
 1. Wählen Sie die Bereitstellung aus, die Sie überwachen möchten.  
 1. Überprüfen Sie die Bereitstellungsdetails. Sie können über Registerkarten die Details der Bereitstellung überprüfen.
@@ -217,4 +212,4 @@ Wenn Sie eine Bereitstellung löschen, übernehmen alle Geräte die Bereitstellu
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Weitere Informationen über das [Bereitstellen von Modulen auf Edge-Geräten](module-deployment-monitoring.md).
+Erfahren Sie mehr zum [Bereitstellen von Modulen auf IoT Edge-Geräten](module-deployment-monitoring.md).

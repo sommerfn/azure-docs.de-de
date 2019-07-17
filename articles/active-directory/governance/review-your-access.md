@@ -15,12 +15,12 @@ ms.date: 05/21/2019
 ms.author: rolyon
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6b38422b22885ad96c6681abe58b897155809521
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 22f12255bf14ca424a8a79107e7ca8e403552b62
+ms.sourcegitcommit: f811238c0d732deb1f0892fe7a20a26c993bc4fc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66113186"
+ms.lasthandoff: 06/29/2019
+ms.locfileid: "67471745"
 ---
 # <a name="review-access-for-yourself-to-groups-or-applications-in-azure-ad-access-reviews"></a>Überprüfen des eigenen Zugriffs auf Gruppen oder Anwendungen mit Azure AD-Zugriffsüberprüfungen
 
@@ -40,7 +40,7 @@ Bei einer Zugriffsüberprüfung müssen Sie zuerst die Zugriffsüberprüfung suc
 
 1. Achten Sie auf eine E-Mail von Microsoft, in der Sie zur Überprüfung des Zugriffs aufgefordert werden. Nachfolgend ist eine Beispiel-E-Mail zum Überprüfen Ihres Zugriffs auf eine Gruppe abgebildet.
 
-    ![E-Mail zur Zugriffsüberprüfung](./media/review-your-access/access-review-email.png)
+    ![Beispiel-E-Mail von Microsoft zum Überprüfen Ihres Zugriffs auf eine Gruppe](./media/review-your-access/access-review-email.png)
 
 1. Klicken Sie auf den Link **Zugriff überprüfen**, um die Zugriffsüberprüfung zu öffnen.
 
@@ -48,7 +48,7 @@ Wenn Sie keine E-Mail haben, können Sie Ihre ausstehenden Zugriffsüberprüfung
 
 1. Melden Sie sich auf [https://myapps.microsoft.com](https://myapps.microsoft.com) im MyApps-Portal an.
 
-    ![MyApps-Portal](./media/review-your-access/myapps-access-panel.png)
+    ![MyApps-Portal mit Apps, für die Sie Berechtigungen haben](./media/review-your-access/myapps-access-panel.png)
 
 1. Klicken Sie oben rechts auf der Seite auf das Benutzersymbol, neben dem Ihr Name und Ihre Standardorganisation angezeigt werden. Werden mehrere Organisationen aufgelistet, wählen Sie die Organisation aus, die eine Zugriffsüberprüfung angefordert hat.
 
@@ -56,7 +56,7 @@ Wenn Sie keine E-Mail haben, können Sie Ihre ausstehenden Zugriffsüberprüfung
 
     Wenn die Kachel nicht angezeigt wird, sind für diese Organisation keine Zugriffsüberprüfungen auszuführen. Daher ist zurzeit keine Aktion erforderlich.
 
-    ![Liste mit den Zugriffsüberprüfungen](./media/review-your-access/access-reviews-list.png)
+    ![Liste mit ausstehenden Zugriffsüberprüfungen für Ihre Apps und Gruppen](./media/review-your-access/access-reviews-list.png)
 
 1. Klicken Sie bei der Zugriffsüberprüfung, die Sie durchführen möchten, auf den Link **Überprüfung starten**.
 
@@ -68,13 +68,13 @@ Nachdem Sie die Zugriffsüberprüfung geöffnet haben, wird Ihr Zugriff angezeig
 
     Wenn Sie aufgefordert werden, den Zugriff für andere Benutzer zu überprüfen, sieht die Seite anders aus. Weitere Informationen finden Sie unter [Zugriffsüberprüfung von Gruppen oder Anwendungen](perform-access-review.md).
 
-    ![Durchführen der Zugriffsüberprüfung](./media/review-your-access/perform-access-review.png)
+    ![Offene Zugriffsüberprüfung, in der Sie gefragt werden, ob Sie weiterhin Zugriff auf eine Gruppe benötigen](./media/review-your-access/perform-access-review.png)
 
 1. Klicken Sie auf **Ja**, um den Zugriff zu behalten, oder klicken Sie auf **Nein**, um Ihren Zugriff zu entfernen.
 
 1. Wenn Sie auf **Ja** klicken, müssen Sie möglicherweise im Feld **Grund** eine Begründung angeben.
 
-    ![Durchführen der Zugriffsüberprüfung](./media/review-your-access/perform-access-review-submit.png)
+    ![Abgeschlossene Zugriffsüberprüfung, in der Sie gefragt werden, ob Sie weiterhin Zugriff auf eine Gruppe benötigen](./media/review-your-access/perform-access-review-submit.png)
 
 1. Klicken Sie auf **Submit**.
 

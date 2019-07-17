@@ -11,14 +11,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/08/2019
+ms.date: 06/13/2019
 ms.author: getroyer
-ms.openlocfilehash: ab3b742d50cc141420f9bffa1961a6e170b99d2a
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.openlocfilehash: fe9886429a5e894f40c04b1f65094e412c1dc9e2
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/27/2019
-ms.locfileid: "66234353"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67441203"
 ---
 # <a name="use-azure-data-science-virtual-machines"></a>Verwenden von Azure Data Science VMs
 
@@ -51,11 +51,22 @@ Diese Werte erhalten Sie im Azure-Portal auf der DSVM-Seite.
 
 ## <a name="accessing-azure-notebooks-files-from-the-dsvm"></a>Zugriff auf Azure Notebooks-Dateien über die DSVM
 
+Dateisystemzugriff wird für DSVM-Versionen ab 19.06.15 unterstützt. Um die Version zu überprüfen, stellen Sie zuerst über SSH eine Verbindung mit Ihrer DSVM her und führen dann den folgenden Befehl aus: `curl -H Metadata:true "http://169.254.169.254/metadata/instance?api-version=2018-10-01"` (Sie müssen die hier angegebene IP-Adresse verwenden). Die Versionsnummer wird in der Ausgabe für „Version“ angezeigt.
+
 Damit die Parität der Dateipfade mit der **Free Compute**-Ebene gewährleistet ist, können Sie auf einer DSVM nur jeweils ein Projekt auf einmal öffnen. Sie müssen das erste Projekt zuerst herunterfahren, bevor Sie ein neues öffnen können.
+
+Wenn ein Projekt auf einer VM ausgeführt wird, werden die Dateien in das Stammverzeichnis des Jupyter-Servers aufgenommen (das Verzeichnis, das in JupyterHub angezeigt wird), wodurch die Standarddateien in Azure Notebooks ersetzt werden. Wenn Sie die VM mithilfe der **Herunterfahren**-Schaltfläche auf der Benutzeroberfläche des Notebooks herunterfahren, stellt Azure Notebooks die Standarddateien wieder her.
 
 ![Schaltfläche zum Herunterfahren in Azure Notebooks](media/shutdown.png)
 
-Wenn ein Projekt auf einer VM ausgeführt wird, werden die Dateien in das Stammverzeichnis des Jupyter-Servers aufgenommen (das Verzeichnis, das in JupyterHub angezeigt wird), wodurch die Standarddateien in Azure Notebooks ersetzt werden. Wenn Sie die VM mithilfe der **Herunterfahren**-Schaltfläche auf der Benutzeroberfläche des Notebooks herunterfahren, stellt Azure Notebooks die Standarddateien wieder her.
+## <a name="create-new-dsvm-users"></a>Erstellen neuer DSVM-Benutzer
+
+Wenn mehrere Benutzer eine DSVM gemeinsam nutzen, können Sie vermeiden, dass sie sich gegenseitig blockieren, indem Sie für jeden Notebook-Benutzer einen DSVM-Benutzer erstellen und verwenden:
+
+1. Navigieren Sie im [Azure-Portal](https://portal.azure.com) zu Ihrem virtuellen Computer.
+1. Klicken Sie am linken Rand unter **Support und Problembehandlung** auf **Kennwort zurücksetzen**.
+1. Geben Sie einen neuen Benutzernamen und ein Kennwort ein, und klicken Sie auf **Aktualisieren**. (Vorhandene Benutzernamen sind nicht betroffen.)
+1. Wiederholen Sie den vorherigen Schritt für alle weiteren Benutzer.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

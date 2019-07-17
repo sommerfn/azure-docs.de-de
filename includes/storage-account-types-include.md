@@ -8,19 +8,19 @@ ms.topic: include
 ms.date: 03/23/2019
 ms.author: tamram
 ms.custom: include file
-ms.openlocfilehash: d96e69fb526cff633c78e9ac8a1679762014cd4b
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 14de5283197778464993b80b312a690662e066ab
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67133121"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67443747"
 ---
 Azure Storage bietet mehrere Arten von Speicherkonten. Jeder Typ unterstützt unterschiedliche Features und verfügt über ein eigenes Preismodell. Informieren Sie sich vor dem Erstellen eines Speicherkontos genau über diese Unterschiede, um den Kontotyp zu ermitteln, der sich für Ihre Anwendungen am besten eignet. Folgende Speicherkontotypen stehen zur Verfügung:
 
 - **Konten vom Typ „Allgemein v2“:** Grundlegender Speicherkontotyp für Blobs, Dateien, Warteschlangen und Tabellen. Empfohlen für die meisten Azure Storage-Szenarien.
 - **Konten vom Typ „Allgemein v1“:** Legacy-Speicherkontotyp für Blobs, Dateien, Warteschlangen und Tabellen. Verwenden Sie nach Möglichkeit Konten vom Typ „Allgemein v2“.
 - **Konten vom Typ „Blockblobspeicher“** : Reine Blobspeicherkonten mit Premium-Leistungsmerkmalen. Für Szenarien mit hohen Transaktionsraten empfohlen, die kleinere Objekte verwenden oder gleichbleibend geringe Speicherlatenz erfordern.
-- **FileStorage-Speicherkonten (Vorschau):** Reine Dateispeicherkonten mit Premium-Leistungsmerkmalen Empfohlen für Unternehmens- oder Hochleistungsanwendungen
+- **FileStorage-Speicherkonten**: Reine Dateispeicherkonten mit Premium-Leistungsmerkmalen Empfohlen für Unternehmens- oder Hochleistungsanwendungen
 - **Konten vom Typ „Blobspeicher“:** Reine Blobspeicherkonten. Verwenden Sie nach Möglichkeit Konten vom Typ „Allgemein v2“.
 
 Die folgende Tabelle beschreibt die Speicherkontotypen und ihre jeweiligen Funktionen:
@@ -30,7 +30,7 @@ Die folgende Tabelle beschreibt die Speicherkontotypen und ihre jeweiligen Funkt
 | Allgemein v2   | Blob, Datei, Warteschlange, Tabelle und Datenträger       | Standard, Premium<div role="complementary" aria-labelledby="premium-performance"><sup>5</sup></div> | Heiß, Kalt, Archiv<div role="complementary" aria-labelledby="archive"><sup>3</sup></div> | LRS, GRS, RA-GRS, ZRS<div role="complementary" aria-labelledby="zone-redundant-storage"><sup>4</sup></div> | Ressourcen-Manager             | Verschlüsselt              |
 | Allgemein v1   | Blob, Datei, Warteschlange, Tabelle und Datenträger       | Standard, Premium<div role="complementary" aria-labelledby="premium-performance"><sup>5</sup></div> | –                            | LRS, GRS, RA-GRS                  | Resource Manager, klassisch    | Verschlüsselt              |
 | Blockblobspeicher   | Blob (nur Blockblobs und Anfügeblobs) | Premium                       | –                            | LRS                               | Ressourcen-Manager             | Verschlüsselt              |
-| FileStorage (Vorschauversion)   | Nur Dateien | Premium                       | –                            | LRS                               | Ressourcen-Manager             | Verschlüsselt              |
+| FileStorage   | Nur Dateien | Premium                       | –                            | LRS                               | Ressourcen-Manager             | Verschlüsselt              |
 | Blob Storage         | Blob (nur Blockblobs und Anfügeblobs) | Standard                      | Heiß, Kalt, Archiv<div role="complementary" aria-labelledby="archive"><sup>3</sup></div> | LRS, GRS, RA-GRS                  | Ressourcen-Manager             | Verschlüsselt              |
 
 <div id="deployment-model"><sup>1</sup>Die Verwendung des Azure Resource Manager-Bereitstellungsmodells wird empfohlen. Speicherkonten, die das klassische Bereitstellungsmodell verwenden, können an einigen Standorten weiterhin erstellt werden, und vorhandene klassische Konten werden weiterhin unterstützt. Weitere Informationen finden Sie unter <a href="https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-deployment-model">Azure Resource Manager-Bereitstellung im Vergleich zur klassischen Bereitstellung: Grundlegendes zu Bereitstellungsmodellen und zum Status von Ressourcen</a>.</div>

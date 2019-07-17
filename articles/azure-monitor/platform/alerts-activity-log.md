@@ -5,14 +5,14 @@ author: msvijayn
 services: azure-monitor
 ms.service: azure-monitor
 ms.topic: conceptual
-ms.date: 09/15/2018
+ms.date: 06/25/2019
 ms.author: vinagara
-ms.openlocfilehash: f25321fa5a13ed5a39a62a4115bb0bc10306d36f
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 8183c7070b5d42e1c7a96fc0d64974658b2ec7d0
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66244955"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67448927"
 ---
 # <a name="create-view-and-manage-activity-log-alerts-using-azure-monitor"></a>Erstellen, Anzeigen und Verwalten von Aktivitätsprotokollwarnungen mit Azure Monitor  
 
@@ -24,16 +24,17 @@ Diese Warnungen gelten für Azure-Ressourcen und können mit einer Azure Resourc
 > [!IMPORTANT]
 > Warnungen zur Service Health-Benachrichtigung können nicht über die Schnittstelle zur Erstellung von Aktivitätsprotokollwarnungen erstellt werden. Weitere Informationen zum Erstellen und Verwenden von Dienstintegritätsbenachrichtigungen finden Sie unter [Erstellen von Aktivitätsprotokollwarnungen zu Dienstbenachrichtigungen](alerts-activity-log-service-notifications.md).
 
+Stellen Sie beim Erstellen der Warnungsregeln Folgendes sicher:
+
+- Das Abonnement im Bereich unterscheidet sich nicht von dem Abonnement, unter dem die Warnung erstellt wird.
+- Folgende Kriterien müssen verwendet werden: Ebene/Status/Aufrufer/Ressourcengruppe/Ressourcen-ID/Ressourcentyp/Ereigniskategorie, unter der die Warnung konfiguriert wird.
+- Der JSON-Code der Warnungskonfiguration enthält keine „anyOf“-Bedingung oder geschachtelten Bedingungen (nur ein „allOf“-Element ohne weitere „allOf“/„anyOf“-Elemente ist zulässig).
+- Wenn die Kategorie „Administration“ lautet. Sie müssen mindestens eine der oben genannten Kriterien in der Warnung angeben. Eine Warnung, die jedes Mal aktiviert wird, wenn ein Ereignis in den Aktivitätsprotokollen erstellt wird, kann nicht erstellt werden.
+
+
 ## <a name="azure-portal"></a>Azure-Portal
 
-> [!NOTE]
-> 
->  Stellen Sie beim Erstellen der Warnungsregeln Folgendes sicher:
-> 
-> - Das Abonnement im Bereich unterscheidet sich nicht von dem Abonnement, unter dem die Warnung erstellt wird.
-> - Folgende Kriterien müssen verwendet werden: Ebene/Status/Aufrufer/Ressourcengruppe/Ressourcen-ID/Ressourcentyp/Ereigniskategorie, unter der die Warnung konfiguriert wird.
-> - Der JSON-Code der Warnungskonfiguration enthält keine „anyOf“-Bedingung oder geschachtelten Bedingungen (nur ein „allOf“-Element ohne weitere „allOf“/„anyOf“-Elemente ist zulässig).
-> - Wenn die Kategorie „Administration“ lautet. Sie müssen mindestens eine der oben genannten Kriterien in der Warnung angeben. Eine Warnung, die jedes Mal aktiviert wird, wenn ein Ereignis in den Aktivitätsprotokollen erstellt wird, kann nicht erstellt werden.
+Im Azure-Portal kann der Benutzer Warnungsregeln für Aktivitätsprotokolle erstellen und ändern. Außerdem ist die Umgebung in das Aktivitätsprotokoll von Azure integriert, um eine nahtlose Erstellung von Warnmeldungen für bestimmte Ereignisse von Interesse zu gewährleisten.
 
 ### <a name="create-with-azure-portal"></a>Erstellen mit dem Azure-Portal
 
@@ -220,11 +221,11 @@ Dabei enthält die Datei „sampleActivityLogAlert.parameters.json“ die Werte 
 
 In Aktivitätsprotokollwarnungen stehen folgende dedizierte PowerShell-Cmdlets zur Verfügung:
 
-- [Set-AzActivityLogAlert](https://docs.microsoft.com/powershell/module/az.monitor/Set-AzActivityLogAlert?view=azps-1.3.0): Erstellt eine neue oder aktualisiert eine vorhandene Aktivitätsprotokollwarnung.
-- [Get-AzActivityLogAlert](https://docs.microsoft.com/powershell/module/az.monitor/Get-AzActivityLogAlert?view=azps-1.3.0): Ruft mindestens eine Aktivitätsprotokoll-Warnungsressource ab.
-- [Enable-AzActivityLogAlert](https://docs.microsoft.com/powershell/module/az.monitor/Enable-AzActivityLogAlert?view=azps-1.3.0): Aktiviert eine vorhandene Aktivitätsprotokollwarnung und legt deren Tags fest.
-- [Disable-AzActivityLogAlert](https://docs.microsoft.com/powershell/module/az.monitor/Disable-AzActivityLogAlert?view=azps-1.3.0): Deaktiviert eine vorhandene Aktivitätsprotokollwarnung und legt deren Tags fest.
-- [Remove-AzActivityLogAlert](https://docs.microsoft.com/powershell/module/az.monitor/Remove-AzActivityLogAlert?view=azps-1.3.0): Entfernt eine Aktivitätsprotokollwarnung.
+- [Set-AzActivityLogAlert](https://docs.microsoft.com/powershell/module/az.monitor/Set-AzActivityLogAlert): Erstellt eine neue oder aktualisiert eine vorhandene Aktivitätsprotokollwarnung.
+- [Get-AzActivityLogAlert](https://docs.microsoft.com/powershell/module/az.monitor/Get-AzActivityLogAlert): Ruft mindestens eine Aktivitätsprotokoll-Warnungsressource ab.
+- [Enable-AzActivityLogAlert](https://docs.microsoft.com/powershell/module/az.monitor/Enable-AzActivityLogAlert): Aktiviert eine vorhandene Aktivitätsprotokollwarnung und legt deren Tags fest.
+- [Disable-AzActivityLogAlert](https://docs.microsoft.com/powershell/module/az.monitor/Disable-AzActivityLogAlert): Deaktiviert eine vorhandene Aktivitätsprotokollwarnung und legt deren Tags fest.
+- [Remove-AzActivityLogAlert](https://docs.microsoft.com/powershell/module/az.monitor/Remove-AzActivityLogAlert): Entfernt eine Aktivitätsprotokollwarnung.
 
 ## <a name="cli"></a>Befehlszeilenschnittstelle (CLI)
 

@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 04/26/2018
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: ed056bf28881f391ed1ba16a875259e8e420b39d
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 2c173da9bfb60f74b90a17f4f3c5ea6f930ca528
+ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "66138091"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67705835"
 ---
 # <a name="tutorial-authenticate-and-authorize-users-end-to-end-in-azure-app-service-on-linux"></a>Tutorial: Umfassendes Authentifizieren und Autorisieren von Benutzern in Azure App Service unter Linux
 
@@ -101,7 +101,7 @@ az webapp create --resource-group myAuthResourceGroup --plan myAuthAppServicePla
 
 ### <a name="configure-cors"></a>Konfigurieren von CORS
 
-Dieser Schritt bezieht sich nicht auf die Authentifizierung und Autorisierung. Sie benötigen diesen jedoch später zum [Aufrufen der Back-End-API über den Front-End-Browsercode](#call-api-securely-from-browser-code), sodass Ihr Browser domänenübergreifende API-Aufrufe über Ihre App „Angular.js“ ausführen kann. App Service unter Linux weist keine integrierten CORS-Funktionen wie [sein Pendant für Windows](../app-service-web-tutorial-rest-api.md#add-cors-functionality) auf, weshalb Sie diese manuell für die Back-End-App hinzufügen müssen.
+Dieser Schritt bezieht sich nicht auf die Authentifizierung und Autorisierung. Sie benötigen diesen jedoch später zum [Aufrufen der Back-End-API über den Front-End-Browsercode](#call-api-securely-from-browser-code), sodass Ihr Browser domänenübergreifende API-Aufrufe über Ihre App „Angular.js“ ausführen kann. App Service für Linux unterstützt wie das [Windows-Pendant](../app-service-web-tutorial-rest-api.md#add-cors-functionality) jetzt ebenfalls CORS-Funktionen.
 
 Öffnen Sie im lokalen Repository die Datei _Startup.cs_. Fügen Sie der `ConfigureServices(IServiceCollection services)`-Methode die folgende Codezeile hinzu:
 
@@ -109,7 +109,7 @@ Dieser Schritt bezieht sich nicht auf die Authentifizierung und Autorisierung. S
 services.AddCors();
 ```
 
-Fügen Sie der `Configure(IApplicationBuilder app)`-Methode die folgende Codezeile zu Beginn hinzu (ersetzen Sie  *\<Name_der_Front-End-App>*):
+Fügen Sie der `Configure(IApplicationBuilder app)`-Methode die folgende Codezeile zu Beginn hinzu (ersetzen Sie  *\<Name_der_Front-End-App>* ):
 
 ```csharp
 app.UseCors(builder =>
@@ -242,7 +242,7 @@ Sie verwenden Azure Active Directory als Identitätsanbieter. Weitere Informatio
 
 ### <a name="enable-authentication-and-authorization-for-back-end-app"></a>Aktivieren der Authentifizierung und Autorisierung für die Back-End-App
 
-Öffnen Sie im [Azure-Portal](https://portal.azure.com) die Verwaltungsseite Ihrer Back-End-App, indem Sie im Menü auf der linken Seite auf Folgendes klicken: **Resource groups** > **myAuthResourceGroup** > _\<back\_end\_app\_name>_.
+Öffnen Sie im [Azure-Portal](https://portal.azure.com) die Verwaltungsseite Ihrer Back-End-App, indem Sie im Menü auf der linken Seite auf Folgendes klicken: **Resource groups** > **myAuthResourceGroup** >  _\<back\_end\_app\_name>_ .
 
 ![In Azure App Service ausgeführte ASP.NET Core-API](./media/tutorial-auth-aad/portal-navigate-back-end.png)
 
@@ -303,7 +303,7 @@ Melden Sie sich am [Azure-Ressourcen-Explorer](https://resources.azure.com) an. 
 
 ![In Azure App Service ausgeführte ASP.NET Core-API](./media/tutorial-auth-aad/resources-enable-write.png)
 
-Klicken Sie im linken Browser auf **subscriptions** > **_&lt;Ihr\_Abonnement>_** > **resourceGroups** > **myAuthResourceGroup** > **providers** > **Microsoft.Web** > **sites** > **_\<Front-\_End-\_App-\_Name>_** > **config** > **authsettings**.
+Klicken Sie im linken Browser auf **subscriptions** > ** _&lt;Ihr\_Abonnement>_**  > **resourceGroups** > **myAuthResourceGroup** > **providers** > **Microsoft.Web** > **sites** >  ** _\<Front-\_End-\_App-\_Name>_**  > **config** > **authsettings**.
 
 Klicken Sie in der Ansicht **authsettings** auf **Bearbeiten**. Legen Sie `additionalLoginParams` auf die folgende JSON-Zeichenfolge fest, indem Sie die kopierte Anwendungs-ID verwenden. 
 

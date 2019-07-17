@@ -2,18 +2,18 @@
 title: Tutorial zu Kubernetes in Azure – Skalieren von Anwendungen
 description: In diesem Azure Kubernetes Service-Tutorial (AKS) erfahren Sie, wie Knoten und Pods im Kubernetes skaliert und die horizontale automatische Pod-Skalierung implementiert werden.
 services: container-service
-author: tylermsft
+author: mlearned
 ms.service: container-service
 ms.topic: tutorial
 ms.date: 12/19/2018
-ms.author: twhitney
+ms.author: mlearned
 ms.custom: mvc
-ms.openlocfilehash: 062e16c0d196cf91d6e0adde46ed973f1c0d1191
-ms.sourcegitcommit: 009334a842d08b1c83ee183b5830092e067f4374
+ms.openlocfilehash: 5a942aa10f36df55ac232defa610102700e3995b
+ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/29/2019
-ms.locfileid: "66304424"
+ms.lasthandoff: 07/07/2019
+ms.locfileid: "67614196"
 ---
 # <a name="tutorial-scale-applications-in-azure-kubernetes-service-aks"></a>Tutorial: Skalieren von Anwendungen in Azure Kubernetes Service (AKS)
 
@@ -28,13 +28,13 @@ In den wieteren Tutorials wird die Anwendung Azure Vote auf eine neue Version ak
 
 ## <a name="before-you-begin"></a>Voraussetzungen
 
-In den vorherigen Tutorials wurde eine Anwendung als Containerimage verpackt. Dieses Image wurde in Azure Container Registry hochgeladen, und Sie haben einen AKS-Cluster erstellt. Die Anwendung wurde dann für den AKS-Cluster bereitgestellt. Wenn Sie diese Schritte nicht ausgeführt haben und dies jetzt nachholen möchten, sollten Sie mit [Tutorial 1: Erstellen von Containerimages][aks-tutorial-prepare-app] beginnen.
+In den vorherigen Tutorials wurde eine Anwendung als Containerimage verpackt. Dieses Image wurde in Azure Container Registry hochgeladen, und Sie haben einen AKS-Cluster erstellt. Die Anwendung wurde dann für den AKS-Cluster bereitgestellt. Wenn Sie diese Schritte nicht ausgeführt haben und dies jetzt nachholen möchten, beginnen Sie mit [Tutorial 1: Erstellen von Containerimages][aks-tutorial-prepare-app].
 
-Für dieses Tutorial müssen Sie mindestens Version 2.0.53 der Azure CLI ausführen. Führen Sie `az --version` aus, um die Version zu finden. Wenn Sie eine Installation oder ein Upgrade ausführen müssen, finden Sie unter [Installieren von Azure CLI 2.0][azure-cli-install] Informationen dazu.
+Für dieses Tutorial müssen Sie mindestens Version 2.0.53 der Azure CLI ausführen. Führen Sie `az --version` aus, um die Version zu finden. Informationen zum Durchführen einer Installation oder eines Upgrades finden Sei bei Bedarf unter [Installieren der Azure CLI][azure-cli-install].
 
 ## <a name="manually-scale-pods"></a>Manuelles Skalieren von Pods
 
-Wenn in vorhergehenden Tutorials das Azure Vote-Front-End und eine Redis-Instanz bereitgestellt wurden, wurde ein einzelnes Replikat erstellt. Zum Anzeigen der Anzahl und Status von Pods in Ihrem Cluster verwenden Sie den Befehl [kubectl get][kubectl-get] wie folgt:
+Wenn in vorhergehenden Tutorials das Azure Vote-Front-End und eine Redis-Instanz bereitgestellt wurden, wurde ein einzelnes Replikat erstellt. Verwenden Sie den Befehl [kubectl get][kubectl-get] wie folgt, um Anzahl und Status der Pods in Ihrem Cluster anzuzeigen:
 
 ```console
 kubectl get pods
@@ -70,13 +70,13 @@ azure-vote-front-3309479140-qphz8   1/1       Running   0          3m
 
 ## <a name="autoscale-pods"></a>Automatisches Skalieren von Pods
 
-Kubernetes unterstützt [die automatische horizontale Skalierung von Pods][kubernetes-hpa], um die Anzahl von Pods in einer Bereitstellung je nach CPU-Nutzung und anderen ausgewählten Metriken anzupassen. Der [Metrics Server][metrics-server] wird verwendet, um die Ressourcenverwendung für Kubernetes bereitzustellen, und in AKS-Clustern der Version 1.10 und höher wird er automatisch bereitgestellt. Verwenden Sie zum Anzeigen der Version Ihres AKS-Clusters den Befehl [az aks show][az-aks-show]. Dies ist im folgenden Beispiel dargestellt:
+Kubernetes unterstützt die [automatische horizontale Skalierung][kubernetes-hpa] von Pods, um die Anzahl von Pods in einer Bereitstellung je nach CPU-Nutzung und anderen Metriken anzupassen. Der Metrics Server wird verwendet, um die Ressourcenverwendung für Kubernetes bereitzustellen, und in AKS-Clustern ab der Version 1.10 wird er automatisch bereitgestellt. Verwenden Sie zum Anzeigen der Version Ihres AKS-Clusters den Befehl [az aks show][az-aks-show], wie im folgenden Beispiel zu sehen:
 
 ```azurecli
 az aks show --resource-group myResourceGroup --name myAKSCluster --query kubernetesVersion
 ```
 
-Installieren Sie den Metrics Server, wenn Ihr AKS-Cluster eine ältere Version als *1.10* aufweist. Andernfalls können Sie diesen Schritt überspringen. Um die Installation auszuführen, klonen Sie das GitHub-Repository `metrics-server`, und installieren Sie die Beispiele für Ressourcendefinitionen. Informationen zum Anzeigen des Inhalts dieser YAML-Definitionen finden Sie unter [Metrics Server for Kubernetes 1.8+][metrics-server-github] (Metrikserver für Kubernetes 1.8+).
+Installieren Sie den Metrics Server, wenn Ihr AKS-Cluster eine ältere Version als *1.10* aufweist. Andernfalls können Sie diesen Schritt überspringen. Um die Installation auszuführen, klonen Sie das GitHub-Repository `metrics-server`, und installieren Sie die Beispiele für Ressourcendefinitionen. Informationen zum Anzeigen des Inhalts dieser YAML-Definitionen finden Sie unter [Metrics Server for Kubernetes 1.8+][metrics-server-github] (Metrics Server für Kubernetes 1.8+).
 
 ```console
 git clone https://github.com/kubernetes-incubator/metrics-server.git

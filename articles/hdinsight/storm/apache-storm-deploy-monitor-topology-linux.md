@@ -8,12 +8,12 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 02/22/2018
-ms.openlocfilehash: c8b05886ae338bb73b0f4ddce4d02a1f1a926a45
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: ac1a4c77589f4ef88c9ee862cb871b376ca8a0fe
+ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67078244"
+ms.lasthandoff: 07/01/2019
+ms.locfileid: "67483852"
 ---
 # <a name="deploy-and-manage-apache-storm-topologies-on-azure-hdinsight"></a>Bereitstellen und Verwalten von Apache Storm-Topologien in Azure HDInsight 
 
@@ -21,11 +21,12 @@ Dieses Dokument enthält die Grundlagen zur Verwaltung und Überwachung von [Apa
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-* **Storm unter Linux in einem HDInsight-Cluster**: Informationen zum Erstellen eines Clusters finden Sie unter [Erste Schritte mit Apache Storm in HDInsight](apache-storm-tutorial-get-started-linux.md) .
+* Ein Apache Storm-Cluster in HDInsight. Siehe [Erstellen von Apache Hadoop-Clustern im Azure-Portal](../hdinsight-hadoop-create-linux-clusters-portal.md), und wählen Sie **Storm** für **Clustertyp** aus.
 
-* (Optional) **Erfahrung mit SSH und SCP**: Weitere Informationen finden Sie unter [Verwenden von SSH mit Linux-basiertem Hadoop in HDInsight unter Linux, Unix oder OS X](../hdinsight-hadoop-linux-use-ssh-unix.md).
 
-* (Optional) **Visual Studio**: Azure SDK 2.5.1 oder höher und die Data Lake-Tools für Visual Studio. Weitere Informationen finden Sie unter [Erste Schritte mit den Data Lake-Tools für Visual Studio](../hadoop/apache-hadoop-visual-studio-tools-get-started.md).
+* (Optional) Vertrautheit mit SSH und SCP: Weitere Informationen finden Sie unter [Verwenden von SSH mit Linux-basiertem Hadoop in HDInsight unter Linux, Unix oder OS X](../hdinsight-hadoop-linux-use-ssh-unix.md).
+
+* (Optional) Visual Studio: Azure SDK 2.5.1 oder höher und die Data Lake-Tools für Visual Studio. Weitere Informationen finden Sie unter [Erste Schritte mit den Data Lake-Tools für Visual Studio](../hadoop/apache-hadoop-visual-studio-tools-get-started.md).
 
     Eine der folgenden Versionen von Visual Studio:
 

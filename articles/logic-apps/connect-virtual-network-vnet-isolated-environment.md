@@ -9,12 +9,12 @@ ms.author: estfan
 ms.reviewer: klam, LADocs
 ms.topic: conceptual
 ms.date: 05/20/2019
-ms.openlocfilehash: bd1f06c93a75673f86f0c52f78cad8a60f7a1a1e
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: b48257cc8e10deb1ec922806f62a6c435069f66f
+ms.sourcegitcommit: c63e5031aed4992d5adf45639addcef07c166224
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65961453"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67467098"
 ---
 # <a name="connect-to-azure-virtual-networks-from-azure-logic-apps-by-using-an-integration-service-environment-ise"></a>Herstellen einer Verbindung mit virtuellen Azure-Netzwerken in Azure Logic Apps mithilfe einer Integrationsdienstumgebung
 
@@ -64,7 +64,7 @@ Weitere Informationen zu Integrationsdienstumgebungen finden Sie unter [Zugriff 
 
 Wenn Sie eine Integrationsdienstumgebung mit einem virtuellen Netzwerk verwenden, besteht ein häufiges Einrichtungsproblem darin, dass ein oder mehrere Ports blockiert sind. Die Connectors, die Sie zum Herstellen von Verbindungen zwischen Ihrer Integrationsdienstumgebung und dem Zielsystem verwenden, können außerdem eigene Portanforderungen aufweisen. Wenn Sie beispielsweise über den FTP-Connector mit einem FTP-System kommunizieren, stellen Sie sicher, dass der Port, den Sie auf diesem FTP-System verwenden, wie z.B. Port 21 zum Senden von Befehlen, verfügbar ist.
 
-Sie können [Netzwerksicherheitsgruppen](../virtual-network/security-overview.md), [indem Sie den Datenverkehr in Subnetzen filtern](../virtual-network/tutorial-filter-network-traffic.md), um den Datenverkehr in den Subnetzen des virtuellen Netzwerks zu steuern, in denen Sie die Integrationsdienstumgebung bereitstellen. In Ihrer Integrationsdienstumgebung müssen aber bestimmte Ports zu dem virtuellen Netzwerk, das Netzwerksicherheitsgruppen verwendet, offen sein. Auf diese Weise bleibt Ihre Integrationsdienstumgebung im Zugriff und kann ordnungsgemäß funktionieren, sodass Sie den Zugriff auf Ihre Integrationsdienstumgebung nicht verlieren. Andernfalls, wenn erforderlichen Ports nicht verfügbar sind, funktioniert Ihre Integrationsdienstumgebung nicht mehr.
+Um den Datenverkehr durch die Subnetze des virtuellen Netzwerks zu steuern, in denen Sie Ihre ISE bereitstellen, können Sie optional [Netzwerksicherheitsgruppen (NSGs)](../virtual-network/security-overview.md) in Ihrem virtuellen Netzwerk einrichten, indem Sie den [Netzwerkverkehr durch Subnetze](../virtual-network/tutorial-filter-network-traffic.md) filtern. Wenn Sie diese Route wählen, stellen Sie sicher, dass Ihre ISE bestimmte Ports, wie in der folgenden Tabelle beschrieben, in dem virtuellen Netzwerk öffnet, das die NSGs verwendet. Wenn in Ihrem virtuellen Netzwerk bereits NSGs oder Firewalls vorhanden sind, stellen Sie sicher, dass sie diese Ports öffnen. Auf diese Weise bleibt Ihre Integrationsdienstumgebung im Zugriff und kann ordnungsgemäß funktionieren, sodass Sie den Zugriff auf Ihre Integrationsdienstumgebung nicht verlieren. Andernfalls, wenn erforderlichen Ports nicht verfügbar sind, funktioniert Ihre Integrationsdienstumgebung nicht mehr.
 
 In diesen Tabellen werden die Ports in Ihrem virtuellen Netzwerk beschrieben, die Ihre Integrationsdienstumgebung verwendet, und wo diese Ports verwendet werden. Die [Resource Manager-Diensttags](../virtual-network/security-overview.md#service-tags) stellen eine Gruppe von IP-Adresspräfixen dar, deren Aufgabe es ist, die Komplexität bei der Erstellung von Sicherheitsregeln zu verringern.
 

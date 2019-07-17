@@ -3,7 +3,7 @@ title: Hinzufügen von Authentifizierung zu Apache Cordova mit Mobile Apps| Micr
 description: Erfahren Sie, wie Sie Mobile Apps in Azure App Service verwenden, um die Benutzer Ihrer Apache Cordova-App über verschiedene Identitätsanbieter, einschließlich Google, Facebook, Twitter und Microsoft, zu authentifizieren.
 services: app-service\mobile
 documentationcenter: javascript
-author: conceptdev
+author: elamalani
 manager: crdun
 editor: ''
 ms.assetid: 10dd6dc9-ddf5-423d-8205-00ad74929f0d
@@ -12,17 +12,21 @@ ms.workload: na
 ms.tgt_pltfrm: mobile-html
 ms.devlang: javascript
 ms.topic: article
-ms.date: 10/30/2016
-ms.author: crdun
-ms.openlocfilehash: 23b5967782cf237ed5af2b802aabbbf9c2f781e7
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.date: 06/25/2019
+ms.author: emalani
+ms.openlocfilehash: b0634038dbf5771ac1aa0bc00d007e758171b238
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "62114209"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67443507"
 ---
 # <a name="add-authentication-to-your-apache-cordova-app"></a>Hinzufügen von Authentifizierung zu Ihrer Apache Cordova-App
 [!INCLUDE [app-service-mobile-selector-get-started-users](../../includes/app-service-mobile-selector-get-started-users.md)]
+
+> [!NOTE]
+> Im Rahmen von Visual Studio App Center wird in neue und integrierte Dienste investiert, die für die Entwicklung mobiler Anwendungen von zentraler Bedeutung sind. Entwickler können **Build**-, **Test**- und **Verteilungs**dienste nutzen, um eine Pipeline für Continuous Integration und Delivery einzurichten. Nach der Bereitstellung der App können Entwickler den Status und die Nutzung ihrer App mithilfe der **Analyse**- und **Diagnose**dienste überwachen und mit Benutzern über den **Push**dienst interagieren. Entwickler können auch den **Authentifizierung**sdienst nutzen, um ihre Benutzer zu authentifizieren, und den **Daten**dienst, um App-Daten dauerhaft in der Cloud zu speichern und zu synchronisieren. Besuchen Sie noch heute das [App Center](https://appcenter.ms/?utm_source=zumo&utm_campaign=app-service-mobile-cordova-get-started-users).
+>
 
 ## <a name="summary"></a>Zusammenfassung
 In diesem Tutorial fügen Sie dem Aufgabenlisten-Schnellstartprojekt unter Apache Cordova mithilfe eines unterstützten Identitätsanbieters eine Authentifizierung hinzu. Dieses Tutorial baut auf dem Tutorial [Erste Schritte mit Mobile Apps] auf, das Sie zuerst abschließen müssen.

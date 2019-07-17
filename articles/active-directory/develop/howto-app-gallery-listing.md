@@ -18,12 +18,12 @@ ms.author: ryanwi
 ms.reviewer: elisol, bryanla
 ms.custom: aaddev, seoapril2019
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 005e5c92a16760d8eec5dc37526f4b1f2dbd751c
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 41b407b4343db4f594049c4b1027fe4279dab840
+ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65540548"
+ms.lasthandoff: 07/01/2019
+ms.locfileid: "67482949"
 ---
 # <a name="how-to-list-your-application-in-the-azure-active-directory-application-gallery"></a>Gewusst wie: Auflisten Ihrer Anwendung zum Azure Active Directory-Anwendungskatalog
 
@@ -117,21 +117,21 @@ Um eine bestehende Anwendung im Azure AD-App-Katalog zu aktualisieren oder zu en
 
 Kunden können die Anforderung zum Auflisten einer Anwendung übermitteln, indem sie auf **App-Anforderungen nach Kunden** -> **Neue Anforderung übermitteln** klicken.
 
-![Kachel „Kunden haben Apps angefordert“](./media/howto-app-gallery-listing/customer-submit-request.png)
+![Zeigt die Kachel „Kunden haben Apps angefordert“](./media/howto-app-gallery-listing/customer-submit-request.png)
 
 Unten sehen Sie den Fluss für von Kunden angeforderten Anwendungen:
 
-![Fluss für von Kunden angeforderten Anwendungen](./media/howto-app-gallery-listing/customer-request.png)
+![Zeigt den Flow „Kunden haben Apps angefordert“](./media/howto-app-gallery-listing/customer-request.png)
 
 ## <a name="timelines"></a>Zeitpläne
 
 Das Auflisten einer SAML 2.0- oder WS-Fed-Anwendung im Katalog dauert etwa 7 bis 10 Werktage.
 
-   ![Zeitachse für Auflistung einer SAML-Anwendung in der Galerie](./media/howto-app-gallery-listing/timeline.png)
+   ![Zeitachse für Auflistung einer SAML-Anwendung im Katalog](./media/howto-app-gallery-listing/timeline.png)
 
 Das Auflisten einer OpenID Connect-Anwendung im Katalog dauert etwa 2 bis 5 Werktage.
 
-   ![Zeitachse für Auflistung einer SAML-Anwendung in der Galerie](./media/howto-app-gallery-listing/timeline2.png)
+   ![Zeitachse für Auflistung einer SAML-Anwendung im Katalog](./media/howto-app-gallery-listing/timeline2.png)
 
 ## <a name="escalations"></a>Eskalationen
 

@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 04/10/2019
 ms.author: juergent
-ms.openlocfilehash: a74dd1a932cac41081786f76938a5b35de62d878
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 7464ea481d4c95856b78a83a875f2cd24c00705b
+ms.sourcegitcommit: 837dfd2c84a810c75b009d5813ecb67237aaf6b8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64689712"
+ms.lasthandoff: 07/02/2019
+ms.locfileid: "67503324"
 ---
 [1928533]: https://launchpad.support.sap.com/#/notes/1928533
 [2015553]: https://launchpad.support.sap.com/#/notes/2015553
@@ -78,8 +78,8 @@ Bevor Sie mit einer Installation beginnen, lesen Sie zunächst die folgenden SAP
 | --- |
 | [Wiki der SAP Community](https://wiki.scn.sap.com/wiki/display/HOME/SAPonLinuxNotes): Enthält alle erforderlichen SAP-Hinweise für Linux |
 | [SAP NetWeaver auf virtuellen Azure-Computern unter Linux – Planungs- und Implementierungshandbuch][planning-guide] |
-| [Einrichten von IBM Db2 HADR auf virtuellen Azure-Computern (VMs)][deployment-guide] (dieser Artikel) |
-| [Azure Virtual Machines DBMS-Bereitstellung (Datenbank-Manager) für SAP unter Linux][dbms-guide] Handbuch |
+| [Bereitstellung von Azure Virtual Machines für SAP unter Linux][deployment-guide] (dieser Artikel) |
+| Anleitung [Azure Virtual Machines DBMS-Bereitstellung (Datenbank-Manager) für SAP unter Linux][dbms-guide] |
 | [Prüfliste für die Planung und Bereitstellung von SAP-Workloads in Azure][azr-sap-plancheck] |
 | [Leitfäden für bewährte Methoden zu SUSE Linux Enterprise Server für SAP-Anwendungen 12 SP3][sles-for-sap-bp] |
 | [SUSE Linux Enterprise High Availability Extension 12 SP3][sles-ha-guide] |
@@ -496,13 +496,12 @@ Wenn Sie die Installation vor der Erstellung der Db2 HADR-Konfiguration durchgef
 
 Verwenden Sie das Konfigurationstool J2EE, um die JDBC-URL zu überprüfen oder zu aktualisieren. Da das Konfigurationstool J2EE ein grafisches Tool ist, muss ein X-Server installiert sein:
  
-1. Melden Sie sich beim primären Anwendungsserver der J2EE-Instanz an, und führen Sie Folgendes aus:
-     <pre><code>sudo /usr/sap/*SID*/*Instance*/j2ee/configtool/configtool.sh</code></pre>
+1. Melden Sie sich beim primären Anwendungsserver der J2EE-Instanz an, und führen Sie Folgendes aus: `sudo /usr/sap/*SID*/*Instance*/j2ee/configtool/configtool.sh`
 1. Wählen Sie im linken Bereich die Option **security store** aus.
 1. Wählen Sie im rechten Bereich den Schlüssel „jdbc/pool/\<SAPSID>/url“ aus.
 1. Ändern Sie den Hostnamen in der JDBC-URL in den virtuellen Hostnamen.
-     <pre><code>jdbc:db2://db-virt-hostname:5912/TSP:deferPrepares=0</code></pre>
-1. Wählen Sie **Hinzufügen** aus.
+     `jdbc:db2://db-virt-hostname:5912/TSP:deferPrepares=0`
+1. Wählen Sie **Hinzufügen**.
 1. Um die Änderungen zu speichern, klicken Sie auf das Datenträgersymbol in der oberen linken Ecke.
 1. Schließen Sie das Konfigurationstool.
 1. Starten Sie die Java-Instanz neu.

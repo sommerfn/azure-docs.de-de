@@ -10,12 +10,12 @@ ms.subservice: computer-vision
 ms.topic: quickstart
 ms.date: 04/17/2019
 ms.author: pafarley
-ms.openlocfilehash: 9b126d5ccbbf3cb1f22163ffb6ac53a8aff61004
-ms.sourcegitcommit: 8e76be591034b618f5c11f4e66668f48c090ddfd
+ms.openlocfilehash: c03568ece97bdaad86f4564debf9f3b2fa14c6ed
+ms.sourcegitcommit: 1572b615c8f863be4986c23ea2ff7642b02bc605
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/29/2019
-ms.locfileid: "66357333"
+ms.lasthandoff: 07/10/2019
+ms.locfileid: "67786646"
 ---
 # <a name="azure-cognitive-services-computer-vision-sdk-for-python"></a>Azure Cognitive Services: SDK für maschinelles Sehen für Python
 
@@ -38,7 +38,7 @@ Weitere Dokumentationen:
 ## <a name="prerequisites"></a>Voraussetzungen
 
 * [Python 3.6+][python]
-* Kostenloser [Schlüssel für maschinelles Sehen][computervision_resource] und zugeordneter Endpunkt. Diese Werte werden beim Erstellen der Instanz des Clientobjekts [ComputerVisionClient][ref_computervisionclient] benötigt. Die Werte können mit einer der folgenden Methoden ermittelt werden.
+* Kostenloser [Schlüssel für maschinelles Sehen][computervision_resource] und zugeordneter Endpunkt. Diese Werte werden beim Erstellen der Instanz des Clientobjekts „ComputerVisionClient“ benötigt. Die Werte können mit einer der folgenden Methoden ermittelt werden.
 
 ### <a name="if-you-dont-have-an-azure-subscription"></a>Vorgehensweise ohne Azure-Abonnement
 
@@ -84,7 +84,7 @@ source cogsrv-vision-env/bin/activate
 
 ### <a name="install-the-sdk"></a>Installieren des SDKs
 
-Installieren Sie das [Azure Cognitive Services SDK für maschinelles Sehen für Python][pypi_computervision] mit [pip][pip]:
+Installieren Sie das [Azure Cognitive Services SDK für maschinelles Sehen für Python][pypi_computervision] mit „pip“:
 
 ```Bash
 pip install azure-cognitiveservices-vision-computervision
@@ -154,7 +154,7 @@ Für die folgenden Aufgaben wird ein Clientobjekt vom Typ [ComputerVisionClient]
 
 ### <a name="analyze-an-image"></a>Analysieren von Bildern
 
-Mit [`analyze_image`][ref_computervisionclient_analyze_image] können verschiedene Aspekte eines Bilds analysiert werden. Verwenden Sie die Eigenschaft [`visual_features`][ref_computervision_model_visualfeatures], um festzulegen, welche Analysen für das Bild ausgeführt werden sollen. Gängige Werte sind `VisualFeatureTypes.tags` und `VisualFeatureTypes.description`.
+Mit [`analyze_image`][ref_computervisionclient_analyze_image] können verschiedene Aspekte eines Bilds analysiert werden. Verwenden Sie die Eigenschaft „visual_features“, um festzulegen, welche Analysen für das Bild ausgeführt werden sollen. Gängige Werte sind `VisualFeatureTypes.tags` und `VisualFeatureTypes.description`.
 
 ```Python
 url = "https://upload.wikimedia.org/wikipedia/commons/thumb/1/12/Broadway_and_Times_Square_by_night.jpg/450px-Broadway_and_Times_Square_by_night.jpg"
@@ -216,7 +216,7 @@ for caption in analysis.captions:
 
 ### <a name="get-text-from-image"></a>Extrahieren von Text aus einem Bild
 
-Sie können handschriftlichen oder gedruckten Text aus einem Bild extrahieren. Dazu sind zwei SDK-Aufrufe erforderlich: [`batch_read_file`](https://docs.microsoft.com/python/api/azure-cognitiveservices-vision-computervision/azure.cognitiveservices.vision.computervision.computervisionclient?view=azure-python#batch-read-file-url--mode--custom-headers-none--raw-false----operation-config-) und [`get_read_operation_result`](https://docs.microsoft.com/python/api/azure-cognitiveservices-vision-computervision/azure.cognitiveservices.vision.computervision.computervisionclient?view=azure-python#get-read-operation-result-operation-id--custom-headers-none--raw-false----operation-config-). Der Aufruf von `batch_read_file` ist asynchron. In den Ergebnissen des Aufrufs von `get_read_operation_result` müssen Sie anhand von [`TextOperationStatusCodes`][ref_computervision_model_textoperationstatuscodes] überprüfen, ob der erste Aufruf abgeschlossen wurde, bevor Sie die Textdaten extrahieren. Die Ergebnisse enthalten den Text sowie die Koordinaten des umgebenden Rechtecks für den Text.
+Sie können handschriftlichen oder gedruckten Text aus einem Bild extrahieren. Dazu sind zwei SDK-Aufrufe erforderlich: [`batch_read_file`](https://docs.microsoft.com/python/api/azure-cognitiveservices-vision-computervision/azure.cognitiveservices.vision.computervision.computervisionclient?view=azure-python) und [`get_read_operation_result`](https://docs.microsoft.com/python/api/azure-cognitiveservices-vision-computervision/azure.cognitiveservices.vision.computervision.computervisionclient?view=azure-python). Der Aufruf von `batch_read_file` ist asynchron. In den Ergebnissen des Aufrufs von `get_read_operation_result` müssen Sie anhand von [`TextOperationStatusCodes`][ref_computervision_model_textoperationstatuscodes] überprüfen, ob der erste Aufruf abgeschlossen wurde, bevor Sie die Textdaten extrahieren. Die Ergebnisse enthalten den Text sowie die Koordinaten des umgebenden Rechtecks für den Text.
 
 ```Python
 # import models
@@ -286,7 +286,7 @@ image.save('thumbnail.jpg')
 
 ### <a name="general"></a>Allgemein
 
-Wenn Sie bei Verwendung des Python SDK mit dem Clientobjekt [ComputerVisionClient][ref_computervisionclient] interagieren, wird für die Rückgabe von Fehlern die Klasse [`ComputerVisionErrorException`][ref_computervision_computervisionerrorexception] verwendet. Die von dem Dienst zurückgegebenen Fehler entsprechen den HTTP-Statuscodes, die für REST-API-Anforderungen zurückgegeben werden.
+Wenn Sie bei Verwendung des Python SDK mit dem Clientobjekt [ComputerVisionClient][ref_computervisionclient] interagieren, wird für die Rückgabe von Fehlern die Klasse „ComputerVisionErrorException“ verwendet. Die von dem Dienst zurückgegebenen Fehler entsprechen den HTTP-Statuscodes, die für REST-API-Anforderungen zurückgegeben werden.
 
 Wenn Sie also beispielsweise versuchen, ein Bild mit einem ungültigen Schlüssel zu analysieren, wird ein Fehler vom Typ `401` zurückgegeben. Im folgenden Codeausschnitt wird der [Fehler][ref_httpfailure] ordnungsgemäß behandelt, indem die Ausnahme abgefangen wird und zusätzliche Fehlerinformationen angezeigt werden.
 
@@ -312,7 +312,7 @@ except HTTPFailure as e:
 
 ### <a name="handle-transient-errors-with-retries"></a>Behandeln von vorübergehenden Fehlern mit Wiederholungen
 
-Bei der Verwendung des [ComputerVisionClient][ref_computervisionclient]-Clients kann es zu vorübergehenden Fehlern kommen. Diese können auf durch den Dienst erzwungene [Ratenlimits][computervision_request_units] oder auf andere vorübergehende Probleme (etwa auf Netzwerkausfälle) zurückzuführen sein. Informationen zur Behandlung solcher Fehler finden Sie im Leitfaden für Cloudentwurfsmuster unter [Wiederholungsmuster][azure_pattern_retry] sowie unter dem dazugehörigen [Trennschalter-Muster][azure_pattern_circuit_breaker].
+Bei der Verwendung des [ComputerVisionClient][ref_computervisionclient]-Clients kann es zu vorübergehenden Fehlern kommen. Diese können auf durch den Dienst erzwungene Ratenlimits oder auf andere vorübergehende Probleme (etwa auf Netzwerkausfälle) zurückzuführen sein. Informationen zur Behandlung solcher Fehler finden Sie im Leitfaden für Cloudentwurfsmuster unter [Wiederholungsmuster][azure_pattern_retry] sowie unter dem dazugehörigen [Trennschalter-Muster][azure_pattern_circuit_breaker].
 
 ## <a name="next-steps"></a>Nächste Schritte
 

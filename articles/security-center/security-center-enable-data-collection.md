@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 04/02/2019
+ms.date: 10/06/2019
 ms.author: v-mohabe
-ms.openlocfilehash: 8fed3ce98b23c5ac1cc97b88a278c5946f06af8e
-ms.sourcegitcommit: e9a46b4d22113655181a3e219d16397367e8492d
+ms.openlocfilehash: 86d48360e37f26d19d15c62a8109c030d421c661
+ms.sourcegitcommit: 978e1b8cac3da254f9d6309e0195c45b38c24eb5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/21/2019
-ms.locfileid: "65968707"
+ms.lasthandoff: 07/03/2019
+ms.locfileid: "67551881"
 ---
 # <a name="data-collection-in-azure-security-center"></a>Datensammlung in Azure Security Center
 Security Center sammelt Daten von Ihren virtuellen Azure-Computern (VMs), VM-Skalierungsgruppen, IaaS-Containern und Azure-fremden Computern (auch lokal), um sie auf Sicherheitslücken und Bedrohungen zu überwachen. Die Daten werden mithilfe von Microsoft Monitoring Agent gesammelt. Der Agent liest verschiedene sicherheitsrelevante Konfigurationen und Ereignisprotokolle auf dem Computer und kopiert die Daten zur Analyse in Ihren Arbeitsbereich. Beispiele für Daten dieser Art: Betriebssystemtyp und -version, Betriebssystemprotokolle (Windows-Ereignisprotokolle), ausgeführte Prozesse, Computername, IP-Adressen und angemeldeter Benutzer. Darüber hinaus kopiert der Microsoft Monitoring Agent Absturzabbilddateien in Ihren Arbeitsbereich.
@@ -31,12 +31,11 @@ Dieser Artikel enthält Anleitungen zum Installieren von Microsoft Monitoring Ag
 > [!NOTE]
 > - Die Datensammlung ist nur für Computeressourcen (virtuelle Computer, VM-Skalierungsgruppen, IaaS-Container und Azure-fremde Computer) erforderlich. Sie können auch von Azure Security Center profitieren, wenn Sie keine Agents bereitstellen. Allerdings ist dann die Sicherheit eingeschränkt, und die oben aufgeführten Funktionen werden nicht unterstützt.  
 > - Die Liste der unterstützten Plattformen finden Sie unter [Unterstützte Plattformen in Azure Security Center](security-center-os-coverage.md).
-> - Für VM-Skalierungsgruppen wird die Datensammlung derzeit nicht unterstützt.
-> - Ganz gleich, ob Sie einen neuen oder vorhandenen Arbeitsbereich verwenden, fallen für das Speichern von Daten in Log Analytics möglicherweise zusätzliche Gebühren für die Datenspeicherung an. Details finden Sie in der Preisübersicht.
+> - Ganz gleich, ob Sie einen neuen oder vorhandenen Arbeitsbereich verwenden, fallen für das Speichern von Daten in Log Analytics möglicherweise zusätzliche Gebühren für die Datenspeicherung an. Weitere Informationen finden Sie auf der [Seite mit der Preisübersicht](https://azure.microsoft.com/pricing/details/security-center/).
 
 ## Aktivieren der automatischen Bereitstellung von Microsoft Monitoring Agent <a name="auto-provision-mma"></a>
 
-Zum Erfassen der Daten von den Computern müssen Sie Microsoft Monitoring Agent installiert haben.  Die Installation des Agents kann automatisch (empfohlen) oder manuell erfolgen.  
+Zum Erfassen der Daten von den Computern muss der Microsoft Monitoring Agent installiert sein.  Die Installation des Agents kann automatisch (empfohlen) oder manuell erfolgen.  
 
 >[!NOTE]
 > Die automatische Bereitstellung ist standardmäßig deaktiviert. Um die Installation der standardmäßigen automatischen Bereitstellung in Security Center festzulegen, legen Sie die Option auf **Ein** fest.
@@ -47,12 +46,12 @@ Bei aktivierter automatischer Bereitstellung wird Microsoft Monitoring Agent von
 
 
 So aktivieren Sie die automatische Bereitstellung von Microsoft Monitoring Agent:
-1. Klicken Sie im Hauptmenü von Security Center auf **Sicherheitsrichtlinie**.
-2. Klicken Sie in der Spalte „Einstellungen“ für das gewünschte Abonnement in der Liste auf **Einstellungen bearbeiten**.
+1. Klicken Sie im Hauptmenü von „Security Center“ auf **Preise & Einstellungen**.
+2. Klicken Sie auf das entsprechende Abonnement
 
    ![Wählen Sie das Abonnement aus.][7]
 
-3. Klicken Sie unter **Sicherheitsrichtlinie** auf **Datensammlung**.
+3. Klicken Sie auf **Datensammlung**.
 4. Wählen Sie unter **Automatische Bereitstellung** die Option **Ein** aus, um die automatische Bereitstellung zu aktivieren.
 5. Wählen Sie **Speichern** aus.
 
@@ -88,9 +87,7 @@ Auswählen eines von Security Center erstellten Arbeitsbereichs:
 
 > [!NOTE]
 > Der Log Analytics-Tarif von Arbeitsbereichen, die vom Security Center erstellt wurden, hat keine Auswirkungen auf die Security Center-Abrechnung. Die Abrechnung von Security Center basiert immer auf Ihrer Security Center-Sicherheitsrichtlinie und den installierten Lösungen in einem Arbeitsbereich. Für den Free-Tarif aktiviert Security Center die Lösung *SecurityCenterFree* im Standardarbeitsbereich. Für den Standard-Tarif aktiviert Security Center aktiviert die Lösung *Security* im Standardarbeitsbereich.
-> Für das Speichern von Daten in Log Analytics fallen möglicherweise zusätzliche Gebühren für die Datenspeicherung an. Details finden Sie in der Preisübersicht.
-
-Weitere Informationen zu Preisen finden Sie unter [Security Center – Preise](https://azure.microsoft.com/pricing/details/security-center/).
+> Für das Speichern von Daten in Log Analytics fallen möglicherweise zusätzliche Gebühren für die Datenspeicherung an. Weitere Informationen finden Sie auf der [Seite mit der Preisübersicht](https://azure.microsoft.com/pricing/details/security-center/).
 
 Weitere Informationen zu vorhandenen Log Analytics-Konten finden Sie unter [Log Analytics-Bestandskunden](security-center-faq.md#existingloganalyticscust).
 
@@ -102,7 +99,7 @@ Zum Verwenden Ihres vorhandenen Log Analytics-Arbeitsbereichs benötigen Sie Les
 
 > [!NOTE]
 > Im vorhandenen Arbeitsbereich aktivierte Lösungen gelten für virtuelle Azure-Computer, die damit verbunden sind. Bei gebührenpflichtigen Lösungen kann dies mit zusätzlichen Kosten verbunden sein. Stellen Sie aus Datenschutzgründen sicher, dass sich der ausgewählte Arbeitsbereich in der richtigen geografischen Region befindet.
-> Für das Speichern von Daten in Log Analytics fallen möglicherweise zusätzliche Gebühren für die Datenspeicherung an. Details finden Sie in der Preisübersicht.
+> Für das Speichern von Daten in Log Analytics fallen möglicherweise zusätzliche Gebühren für die Datenspeicherung an. Weitere Informationen finden Sie auf der [Seite mit der Preisübersicht](https://azure.microsoft.com/pricing/details/security-center/).
 
 So wählen Sie einen vorhandenen Log Analytics-Arbeitsbereich aus:
 
@@ -134,11 +131,11 @@ So wählen Sie einen vorhandenen Log Analytics-Arbeitsbereich aus:
 
 5. Wählen Sie den Tarif für den gewünschten Arbeitsbereich aus, mit dem Sie Microsoft Monitoring Agent festlegen möchten. <br>Zur Verwendung eines vorhandenen Arbeitsbereichs legen Sie den Tarif für den Arbeitsbereich fest. Dadurch wird im Arbeitsbereich eine Security Center-Lösung installiert, falls noch keine vorhanden ist.
 
-    a.  Wählen Sie im Hauptmenü von Security Center die Option **Sicherheitsrichtlinie** aus.
+    a.  Klicken Sie im Hauptmenü von „Security Center“ auf **Preise & Einstellungen**.
      
-    b.  Wählen Sie den Arbeitsbereich aus, in dem Sie die Agent-Verbindung herstellen möchten. Klicken Sie hierzu in der Spalte „Einstellungen“ für das gewünschte Abonnement in der Liste auf **Einstellungen bearbeiten**.
-        ![Arbeitsbereich auswählen][8] c. Legen Sie den Tarif fest.
-        ![Tarif auswählen][9] 
+    b.  Wählen Sie den gewünschten Arbeitsbereich aus, in dem Sie den Agent verbinden möchten.
+        ![Arbeitsbereich auswählen][7] c. Legen Sie den Tarif fest.
+        ![Tarif auswählen][9]
    
    >[!NOTE]
    >Wenn für den Arbeitsbereich bereits eine **Security**- oder **SecurityCenterFree**-Lösung aktiviert ist, werden die Preise automatisch festgelegt. 
@@ -150,7 +147,7 @@ Wenn Sie einen Arbeitsbereich zum Speichern Ihrer Daten auswählen, sind alle Ar
 ## <a name="data-collection-tier"></a>Datensammlungsebene
 Das Auswählen einer Datensammlungsebene in Azure Security Center hat nur Auswirkung auf die Speicherung von Sicherheitsereignissen in Ihrem Log Analytics-Arbeitsbereich. Der Log Analytics-Agent sammelt und analysiert weiterhin die Sicherheitsereignisse, die für die Bedrohungserkennung von Azure Security Center erforderlich sind, unabhängig davon, auf welcher Ebene Sicherheitsereignisse ggf. in Ihrem Log Analytics-Arbeitsbereich gespeichert werden sollen. Wenn Sie Sicherheitsereignisse in Ihrem Arbeitsbereich speichern, können Sie diese Ereignisse in Ihrem Arbeitsbereich untersuchen, durchsuchen und überprüfen. 
 > [!NOTE]
-> Für das Speichern von Daten in Log Analytics fallen möglicherweise zusätzliche Gebühren für die Datenspeicherung an. Details finden Sie in der Preisübersicht.
+> Für das Speichern von Daten in Log Analytics fallen möglicherweise zusätzliche Gebühren für die Datenspeicherung an. Weitere Informationen finden Sie auf der [Seite mit der Preisübersicht](https://azure.microsoft.com/pricing/details/security-center/).
 > 
 > Sie können die passende Filterrichtlinie für Ihre Abonnements und Arbeitsbereiche auswählen. Dabei haben Sie die Wahl zwischen vier Gruppen von Ereignissen, die in Ihrem Arbeitsbereich gespeichert werden sollen: 
 
@@ -194,7 +191,7 @@ Im Anschluss finden Sie eine vollständige Aufschlüsselung der Sicherheits- und
 >
 
 So wählen Sie Ihre Filterrichtlinie:
-1. Wählen Sie auf dem Blatt **Sicherheitsrichtlinie – Datensammlung** unter **Sicherheitsereignisse** Ihre Filterrichtlinie aus.
+1. Wählen Sie auf der Seite **Datensammlung** unter **Sicherheitsereignisse** Ihre Filterrichtlinie aus.
 2. Wählen Sie **Speichern** aus.
 
    ![Auswählen der Filterrichtlinie][5]
@@ -205,8 +202,10 @@ Die folgenden Anwendungsfälle geben an, wie die automatische Bereitstellung fun
 
 - Microsoft Monitoring Agent ist auf dem Computer installiert, jedoch nicht als Erweiterung (direkter Agent).<br>
 Wenn Microsoft Monitoring Agent direkt auf dem virtuellen Computer (also nicht als Azure-Erweiterung) installiert ist, installiert Security Center die Microsoft Monitoring Agent-Erweiterung und aktualisiert diesen ggf. auf die neueste Version.
-Der installierte Agent erstellt seine Berichte weiterhin für die bereits konfigurierten Arbeitsbereiche und darüber hinaus für den in Security Center konfigurierten Arbeitsbereich (Multihosting wird unterstützt).
+Der installierte Agent erstellt seine Berichte weiterhin für die bereits konfigurierten Arbeitsbereiche und darüber hinaus für den in Security Center konfigurierten Arbeitsbereich (Multi-Homing wird auf Windows-Computern unterstützt).
 Wenn der konfigurierte Arbeitsbereich ein Benutzerarbeitsbereich ist (nicht der Standardarbeitsbereich von Security Center), müssen Sie darin die Lösung „security“ oder „securityFree“ installieren, damit Security Center mit der Verarbeitung von Ereignissen von VMs und Computern, die ihre Berichte in diesem Arbeitsbereich erstellen, beginnen kann.<br>
+<br>
+Auf Linux-Computern wird das Multi-Homing von Agents noch nicht unterstützt, weshalb, wenn eine bestehende Agent-Installation erkannt wird, keine automatische Bereitstellung erfolgt und die Konfiguration des Computers nicht geändert wird.
 <br>
 Wenn für vorhandene Computer in Abonnements, die vor dem 17.03.2019 in Security Center integriert wurden, ein vorhandener Agent erkannt wurde, wird die Microsoft Monitoring Agent-Erweiterung nicht installiert, und der Computer ist nicht betroffen. Für diese Computer wird die Empfehlung „Monitoring Agent-Integritätsprobleme auf Ihren Computern beheben“ angezeigt, damit Sie die Installationsprobleme des Agents auf diesen Computern beheben können.
 

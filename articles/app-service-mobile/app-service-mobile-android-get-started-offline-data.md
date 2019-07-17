@@ -2,7 +2,7 @@
 title: Aktivieren der Offlinesynchronisierung für Ihre mobile Azure-App (Android)
 description: Erfahren Sie, wie Sie mobile App Service-Apps verwenden, um Offlinedaten in Ihrer Android-Anwendung zwischenzuspeichern und zu synchronisieren.
 documentationcenter: android
-author: conceptdev
+author: elamalani
 manager: crdun
 services: app-service\mobile
 ms.assetid: 32a8a079-9b3c-4faf-8588-ccff02097224
@@ -11,17 +11,21 @@ ms.workload: mobile
 ms.tgt_pltfrm: mobile-android
 ms.devlang: java
 ms.topic: article
-ms.date: 10/01/2016
-ms.author: crdun
-ms.openlocfilehash: a20c79acce8c9dc9051651a0473fd07b8e62f5de
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.date: 06/25/2019
+ms.author: emalani
+ms.openlocfilehash: 3fe5b176d864fd4cdd1ff49d8c064495663aa3b0
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "62126901"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67443576"
 ---
 # <a name="enable-offline-sync-for-your-android-mobile-app"></a>Aktivieren der Offlinesynchronisierung für Ihre mobile Android-App
 [!INCLUDE [app-service-mobile-selector-offline](../../includes/app-service-mobile-selector-offline.md)]
+
+> [!NOTE]
+> Im Rahmen von Visual Studio App Center wird in neue und integrierte Dienste investiert, die für die Entwicklung mobiler Anwendungen von zentraler Bedeutung sind. Entwickler können **Build**-, **Test**- und **Verteilungs**dienste nutzen, um eine Pipeline für Continuous Integration und Delivery einzurichten. Nach der Bereitstellung der App können Entwickler den Status und die Nutzung ihrer App mithilfe der **Analyse**- und **Diagnose**dienste überwachen und mit Benutzern über den **Push**dienst interagieren. Entwickler können auch den **Authentifizierung**sdienst nutzen, um ihre Benutzer zu authentifizieren, und den **Daten**dienst, um App-Daten dauerhaft in der Cloud zu speichern und zu synchronisieren. Besuchen Sie noch heute das [App Center](https://appcenter.ms/?utm_source=zumo&utm_campaign=app-service-mobile-android-get-started-offline-data).
+>
 
 ## <a name="overview"></a>Übersicht
 In diesem Tutorial wird die Offlinesynchronisierungsfunktion von Azure Mobile Apps für Android behandelt. Die Offlinesynchronisierung ermöglicht Endbenutzern die Interaktion mit einer mobilen App (also das &mdash;Anzeigen, Hinzufügen oder Ändern von Daten&mdash;), auch wenn keine Netzwerkverbindung besteht. Änderungen werden in einer lokalen Datenbank gespeichert. Sobald das Gerät wieder online ist, werden diese Änderungen mit dem Remote-Back-End synchronisiert.

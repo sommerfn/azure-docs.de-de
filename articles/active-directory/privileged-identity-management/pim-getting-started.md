@@ -14,12 +14,12 @@ ms.date: 04/09/2019
 ms.author: rolyon
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 651dc4efa653e7a4eb77f153280579ffd87fe8f7
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 408991ffc3922986234f7d40e1cd589b1d126ba1
+ms.sourcegitcommit: f811238c0d732deb1f0892fe7a20a26c993bc4fc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60290000"
+ms.lasthandoff: 06/29/2019
+ms.locfileid: "67476484"
 ---
 # <a name="start-using-pim"></a>Einstieg in die Verwendung von PIM
 
@@ -56,25 +56,25 @@ Um PIM in Ihrem Verzeichnis verwenden zu können, müssen Sie PIM zuerst aktivie
 
 1. Klicken Sie in der Liste auf **PIM zustimmen**.
 
-    ![PIM zustimmen](./media/pim-getting-started/consent-pim.png)
+    ![PIM zustimmen, um PIM zu aktivieren](./media/pim-getting-started/consent-pim.png)
 
 1. Klicken Sie auf **Meine Identität überprüfen**, um Ihre Identität mit Azure MFA zu überprüfen. Sie werden aufgefordert, ein Konto auszuwählen.
 
-    ![Konto auswählen](./media/pim-getting-started/pick-account.png)
+    ![Fenster „Konto auswählen“, um Ihre Identität zu bestätigen](./media/pim-getting-started/pick-account.png)
 
 1. Wenn weitere Informationen zur Überprüfung erforderlich sind, werden Sie durch den Prozess geführt. Weitere Informationen finden Sie unter [Hilfe bei der zweistufigen Überprüfung](https://go.microsoft.com/fwlink/p/?LinkId=708614).
 
-    ![Weitere Informationen erforderlich](./media/pim-getting-started/more-information-required.png)
+    ![Fenster „Weitere Informationen erforderlich“, wenn Ihre Organisation weitere Informationen benötigt](./media/pim-getting-started/more-information-required.png)
 
     Sie könnten beispielsweise zum Angeben der Telefonüberprüfung aufgefordert werden.
 
-    ![Zusätzliche Sicherheitsüberprüfung](./media/pim-getting-started/additional-security-verification.png)
+    ![Zusätzliche Sicherheitsüberprüfung mit der Frage nach Kontaktmöglichkeiten](./media/pim-getting-started/additional-security-verification.png)
 
 1. Klicken Sie nach Abschluss des Überprüfungsprozesses auf die Schaltfläche **Zustimmen**.
 
 1. Klicken Sie in der daraufhin angezeigten Meldung auf **Ja**, um der Verwendung des PIM-Diensts zuzustimmen.
 
-    ![Meldung: PIM zustimmen](./media/pim-getting-started/consent-pim-message.png)
+    ![Meldung „Pim zustimmen“, um den Zustimmungsprozess abzuschließen](./media/pim-getting-started/consent-pim-message.png)
 
 ## <a name="sign-up-pim-for-azure-ad-roles"></a>Registrieren von PIM für Azure AD-Rollen
 
@@ -100,7 +100,7 @@ Nachdem Sie PIM für Ihr Verzeichnis aktiviert haben, müssen Sie PIM für die V
 
 Sobald PIM eingerichtet ist, können Sie Ihre Identitätsverwaltungsaufgaben ausführen.
 
-![Aufgaben der obersten Ebene für PIM – Screenshot](./media/pim-getting-started/pim-quickstart-tasks.png)
+![Navigationsfenster in PIM mit den Optionen „Aufgaben“ und „Verwalten“](./media/pim-getting-started/pim-quickstart-tasks.png)
 
 | „Aufgaben“ und „Verwalten“ | BESCHREIBUNG |
 | --- | --- |
@@ -125,11 +125,11 @@ Um das Öffnen von PIM zu vereinfachen, sollten Sie Ihrem Azure-Portal-Dashboard
 
 1. Aktivieren Sie die Option **Blatt an Dashboard anheften**, um das Blatt „PIM-Schnellstart“ an das Dashboard anzuheften.
 
-    ![Blatt an Dashboard anheften](./media/pim-getting-started/pim-quickstart-pin-to-dashboard.png)
+    ![Stecknadelsymbol, um PIM-Blatt an Dashboard anzuheften](./media/pim-getting-started/pim-quickstart-pin-to-dashboard.png)
 
     Im Azure-Dashboard wird eine Kachel wie diese angezeigt:
 
-    ![Kachel „PIM-Schnellstart“](./media/pim-getting-started/pim-quickstart-dashboard-tile.png)
+    ![Kachel „PIM-Schnellstart“ im Dashboard](./media/pim-getting-started/pim-quickstart-dashboard-tile.png)
 
 ## <a name="next-steps"></a>Nächste Schritte
 

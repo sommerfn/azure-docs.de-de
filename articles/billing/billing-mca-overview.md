@@ -1,91 +1,87 @@
 ---
-title: Erste Schritte mit Ihrem Abrechnungskonto für eine Microsoft-Kundenvereinbarung – Azure | Microsoft-Dokumentation
+title: Erste Schritte mit dem Abrechnungskonto für eine Microsoft-Kundenvereinbarung – Azure
 description: Grundlegendes zum Abrechnungskonto für eine Microsoft-Kundenvereinbarung
-services: billing
-documentationcenter: ''
-author: amberbhargava
+author: bandersmsft
 manager: amberbhargava
-editor: banders
 ms.service: billing
 ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 02/28/2019
+ms.date: 07/01/2019
 ms.author: banders
-ms.openlocfilehash: ea625a61ed600dbaa22fef85987e9570a6fb7dbc
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 87483c967641489e9548f38c99eebbf121d0d252
+ms.sourcegitcommit: ac1cfe497341429cf62eb934e87f3b5f3c79948e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60371450"
+ms.lasthandoff: 07/01/2019
+ms.locfileid: "67490746"
 ---
-# <a name="get-started-with-your-billing-account-for-a-microsoft-customer-agreement"></a>Erste Schritte mit Ihrem Abrechnungskonto für eine Microsoft-Kundenvereinbarung
+# <a name="get-started-with-your-microsoft-customer-agreement-billing-account"></a>Erste Schritte mit dem Abrechnungskonto für eine Microsoft-Kundenvereinbarung
 
-Für jede von Ihnen unterzeichnete Microsoft-Vereinbarung über die Verwendung von Azure wird ein Abrechnungskonto erstellt. Sie verwenden Ihr Abrechnungskonto zum Verwalten der Abrechnung und zum Nachverfolgen von Kosten. Sie können über Zugriff auf mehrere Abrechnungskonten verfügen. So könnten Sie sich für Ihre persönlichen Projekte für Azure registriert haben. Und außerdem könnten Sie auch über das Enterprise Agreement Ihrer Organisation oder über eine Microsoft-Kundenvereinbarung auf Azure zugreifen. Für jedes dieser Szenarien würden Sie über ein separates Abrechnungskonto verfügen.
+Ein Abrechnungskonto wird erstellt, wenn Sie sich für die Nutzung von Azure registrieren. Sie verwenden Ihr Abrechnungskonto zum Verwalten Ihrer Rechnungen und Zahlungen sowie zum Nachverfolgen von Kosten. Sie können über Zugriff auf mehrere Abrechnungskonten verfügen. So könnten Sie sich für Ihre persönlichen Projekte für Azure registriert haben. Und außerdem könnten Sie auch über das Enterprise Agreement Ihrer Organisation oder über eine Microsoft-Kundenvereinbarung auf Azure zugreifen. Für jedes dieser Szenarien würden Sie über ein separates Abrechnungskonto verfügen.
 
-Dieser Artikel bezieht sich auf ein Abrechnungskonto für eine Microsoft-Kundenvereinbarung. [Überprüfen Sie, ob Sie Zugriff auf eine Microsoft-Kundenvereinbarung haben](#check-access-to-a-microsoft-customer-agreement).
+Dieser Artikel bezieht sich auf ein Abrechnungskonto für eine Microsoft-Kundenvereinbarung. [Überprüfen Sie, ob Sie Zugriff auf eine Microsoft-Kundenvereinbarung haben.](#check-access-to-a-microsoft-customer-agreement)
 
-## <a name="understand-billing-account"></a>Grundlegendes zum Abrechnungskonto
+## <a name="your-billing-account"></a>Ihr Abrechnungskonto
 
 Ihr Abrechnungskonto für die Microsoft-Kundenvereinbarung enthält ein oder mehrere Abrechnungsprofile, mit denen Sie Ihre Rechnungen und Zahlungsmethoden verwalten können. Jedes Abrechnungsprofil enthält einen oder mehrere Rechnungsabschnitte, mit denen Sie die Kosten auf der Rechnung des Abrechnungsprofils organisieren können.
 
-Im folgenden Diagramm ist die Beziehung zwischen einem Abrechnungskonto und den Abrechnungsprofilen und Rechnungsabschnitten dargestellt.
+Das folgende Diagramm zeigt die Beziehung zwischen einem Abrechnungskonto, Abrechnungsprofilen und Rechnungsabschnitten.
 
 ![Diagramm mit der Abrechnungshierarchie für eine Microsoft-Kundenvereinbarung](./media/billing-mca-overview/mca-billing-hierarchy.png)
 
-Die Rollen für das Abrechnungskonto verfügen über die höchste Berechtigungsstufe. Standardmäßig erhalten nur globale Administratoren für die Azure Active Directory-Instanz Ihrer Organisation Zugriff auf das Abrechnungskonto. Diese Rollen sollten Benutzern zugewiesen werden, die Rechnungen anzeigen und Kosten für Ihre gesamte Organisation nachverfolgen müssen. Bei diesen Benutzern handelt es sich beispielsweise um Leiter der Finanzabteilung oder IT-Manager. Weitere Informationen finden Sie unter [Rollen und Aufgaben für ein Abrechnungskonto](billing-understand-mca-roles.md#billing-account-roles-and-tasks).
+Die Rollen für das Abrechnungskonto verfügen über die höchste Berechtigungsstufe. Standardmäßig erhält nur der Benutzer, der sich für Azure registriert hat, Zugriff auf das Abrechnungskonto. Diese Rollen sollten Benutzern zugewiesen werden, die Rechnungen anzeigen und Kosten für Ihre gesamte Organisation nachverfolgen müssen. Bei diesen Benutzern handelt es sich beispielsweise um Leiter der Finanzabteilung oder IT-Manager. Weitere Informationen finden Sie unter [Rollen und Aufgaben für ein Abrechnungskonto](billing-understand-mca-roles.md#billing-account-roles-and-tasks).
 
-## <a name="understand-billing-profiles"></a>Grundlegendes zu Abrechnungsprofilen
+## <a name="billing-profiles"></a>Abrechnungsprofile
 
-Mit einem Abrechnungsprofil können Sie Ihre Rechnung(en) und Zahlungsmethoden verwalten. Eine monatliche Rechnung wird für Azure-Abonnements und andere Produkte generiert, die über das Abrechnungsprofil erworben wurden. Die Zahlungsmethoden werden für die Bezahlung der Rechnung verwendet.
+Mit einem Abrechnungsprofil können Sie Ihre Rechnung(en) und Zahlungsmethoden verwalten. Am Anfang jedes Kalendermonats wird in Ihrem Konto eine monatliche Rechnung für jedes Abrechnungsprofil erstellt. Die Rechnung enthält die jeweiligen Gebühren für alle Azure-Abonnements und andere Käufe aus dem Vormonat.
 
-Für Ihr Abrechnungskonto wird automatisch ein Abrechnungsprofil erstellt. Sie können neue Abrechnungsprofile erstellen, um zusätzliche Rechnungen einzurichten. So können Sie beispielsweise verschiedene Rechnungen für jede Abteilung oder für jedes Projekt in Ihrer Organisation verwenden.
-
-Sie können auch Rechnungsabschnitte erstellen, um die Kosten auf einer Rechnung des Abrechnungsprofils zu organisieren. Im jeweiligen Abschnitt werden die Gebühren für Azure-Abonnements und Produkte aufgeführt, die für den Rechnungsabschnitt erworben wurden. Die Rechnung des Abrechnungsprofils umfasst die Gebühren für alle Rechnungsabschnitte.
+Für Ihr Abrechnungskonto wird automatisch ein Abrechnungsprofil erstellt. Es enthält standardmäßig einen Rechnungsabschnitt. Sie können bei Bedarf weitere Rechnungsbereiche erstellen, damit Sie Ihre Kosten einfacher nachverfolgen und organisieren können, z.B. nach Projekt, Abteilung oder Entwicklungsumgebung. Diese Bereiche werden auf der Rechnung im Abrechnungsprofil angezeigt. Sie zeigen den Verbrauch der einzelnen Abonnements sowie die zugehörigen Käufe.
 
 Die Rollen für die Abrechnungsprofile verfügen über Berechtigungen zum Anzeigen und Verwalten von Rechnungen und Zahlungsmethoden. Weisen Sie diese Rollen Benutzern zu, die Rechnungen bezahlen. Bei diesen Benutzern handelt es sich beispielsweise um Mitglieder des Buchhaltungsteams in Ihrer Organisation. Weitere Informationen finden Sie unter [Rollen und Aufgaben für ein Abrechnungsprofil](billing-understand-mca-roles.md#billing-profile-roles-and-tasks).
 
-### <a name="monthly-invoice-generated-for-each-billing-profile"></a>Eine für jedes Abrechnungsprofil generierte Monatsrechnung
+### <a name="each-billing-profile-gets-a-monthly-invoice"></a>Jedes Abrechnungsprofil erhält eine monatliche Rechnung
 
-Für jedes Abrechnungsprofil wird am Rechnungsdatum eine Monatsrechnung generiert. Die Rechnung enthält alle Gebühren für den vorherigen Monat.
+Am Anfang jedes Monats wird eine monatliche Rechnung für jedes Abrechnungsprofil erstellt. Die Rechnung enthält alle Gebühren des vorherigen Monats.
 
 Im Azure-Portal können Sie die Rechnung anzeigen, Dokumente herunterladen und die Einstellung ändern, um zukünftige Rechnungen per E-Mail zu erhalten. Weitere Informationen finden Sie unter [Herunterladen von Rechnungen für eine Microsoft-Kundenvereinbarung](billing-download-azure-invoice-daily-usage-date.md#download-invoices-for-a-microsoft-customer-agreement).
 
-### <a name="invoices-paid-through-payment-methods"></a>Bezahlung von Rechnungen über Zahlungsmethoden
+### <a name="invoice-payment-methods"></a>Zahlungsmethoden für Rechnungen
 
 Jedes Abrechnungsprofil verfügt über eigene Zahlungsmethoden, die zum Bezahlen der Rechnungen verwendet werden. Die folgenden Zahlungsmethoden werden unterstützt:
 
-| Type             | Definition  |
+| type             | Definition  |
 |------------------|-------------|
-|Azure-Gutschriften    |  Gutschriften werden automatisch auf den in Rechnung gestellten Gesamtbetrag der Rechnung angewendet, um den Betrag zu berechnen, den Sie bezahlen müssen. Weitere Informationen finden Sie unter [Nachverfolgen des Azure-Guthabens für das Abrechnungsprofil](billing-mca-check-azure-credits-balance.md). |
-|Scheck oder Überweisung | Sie können den fälligen Rechnungsbetrag per Scheck oder Überweisung bezahlen. Die Anweisungen für die Zahlung sind auf der Rechnung angegeben. |
+|Azure-Gutschriften    |  Guthaben werden automatisch auf die in Frage kommenden Gebühren auf Ihrer Rechnung angerechnet, wodurch sich der von Ihnen zu zahlende Betrag verringert. Weitere Informationen finden Sie unter [Nachverfolgen des Azure-Guthabens für das Abrechnungsprofil](billing-mca-check-azure-credits-balance.md). |
+|Scheck/Überweisung | Wenn Ihr Konto für die Zahlung per Scheck/Überweisung genehmigt wurde. Sie können den fälligen Rechnungsbetrag per Scheck oder Überweisung bezahlen. Die Anweisungen für die Zahlung sind auf der Rechnung angegeben. |
+|Kreditkarte | Kunden, die sich über die Azure-Website für Azure registrieren, können per Kreditkarte zahlen. |
 
-### <a name="control-azure-marketplace-and-reservation-purchases-by-applying-policies"></a>Steuern von Azure Marketplace- und Azure-Reservierungseinkäufen durch das Anwenden von Richtlinien
+### <a name="apply-policies-to-control-purchases"></a>Anwenden von Richtlinien zum Steuern von Käufen
 
-Wenden Sie Richtlinien an, um die über ein Abrechnungsprofil getätigten Einkäufe zu steuern. Sie können Richtlinien festlegen, um den Erwerb von Azure-Reservierungen und Marketplace-Produkten zu deaktivieren. Wenn die Richtlinien angewendet werden, können die für die Rechnungsabschnitte im Abrechnungsprofil erstellten Abonnements nicht zum Erwerben von Azure-Reservierungen und Marketplace-Produkten verwendet werden.
+Wenden Sie Richtlinien an, um Azure Marketplace- und -Reservierungskäufe mithilfe eines Abrechnungsprofils zu steuern. Sie können Richtlinien festlegen, um den Erwerb von Azure-Reservierungen und Marketplace-Produkten zu deaktivieren. Wenn die Richtlinien angewendet werden, können Abonnements, die dem Abrechnungsprofil in Rechnung gestellt werden, nicht für diese Käufe verwendet werden.
 
-### <a name="allow-users-to-create-azure-subscriptions-by-enabling-azure-plans"></a>Benutzern das Erstellen von Azure-Abonnements durch Aktivieren von Azure-Plänen erlauben
+### <a name="azure-plans-determine-pricing-and-service-level-agreement-for-subscriptions"></a>Azure-Pläne legen Preise und Vereinbarungen zum Servicelevel für Abonnements fest
 
-Azure-Pläne werden beim Erstellen eines Abrechnungsprofils automatisch aktiviert. Alle Rechnungsabschnitte im Abrechnungsprofil erhalten Zugriff auf diese Pläne. Benutzer mit Zugriff auf den Rechnungsabschnitt können die Pläne verwenden, um Azure-Abonnements zu erstellen. Azure-Abonnements können nur erstellt werden, wenn ein Azure-Plan für das Abrechnungsprofil aktiviert ist. Die folgenden Azure-Pläne werden in Abrechnungskonten für Microsoft-Kundenvereinbarungen unterstützt:
+Azure-Pläne legen die Preise und Vereinbarungen zum Servicelevel für Azure-Abonnements fest. Sie werden beim Erstellen eines Abrechnungsprofils automatisch aktiviert. Diese Pläne können in allen Rechnungsabschnitten verwendet werden, die dem Abrechnungsprofil zugeordnet sind. Benutzer mit Zugriff auf den Rechnungsabschnitt können die Pläne verwenden, um Azure-Abonnements zu erstellen. Die folgenden Azure-Pläne werden in Abrechnungskonten für Microsoft-Kundenvereinbarungen unterstützt:
 
 | Plan             | Definition  |
 |------------------|-------------|
 |Microsoft Azure-Plan   | Dieser Plan ermöglicht Benutzern das Erstellen von Abonnements, die beliebige Workloads ausführen können. Weitere Informationen finden Sie unter [Microsoft Azure-Plan](https://azure.microsoft.com/offers/ms-azr-0017g/). |
 |Microsoft Azure-Plan für Dev/Test | Dieser Plan ermöglicht Visual Studio-Abonnenten das Erstellen von Abonnements, die auf Entwicklungs- oder Testworkloads beschränkt sind. Für diese Abonnements ergeben sich Vorteile wie niedrigere Tarife und der Zugriff auf exklusive Images virtueller Computer im Azure-Portal. Weitere Informationen finden Sie unter [Microsoft Azure-Plan für Dev/Test](https://azure.microsoft.com/offers/ms-azr-0148g/).|
 
-## <a name="understand-invoice-sections"></a>Grundlegendes zu Rechnungsabschnitten
+## <a name="invoice-sections"></a>Rechnungsabschnitte
 
-Erstellen Sie Rechnungsabschnitte, um die Kosten auf einer Rechnung des Abrechnungsprofils zu organisieren. Möglicherweise benötigen Sie z. B. eine einzelne Rechnung für Ihre Organisation, möchten jedoch die Kosten nach Abteilung, Team oder Projekt organisieren. In diesem Szenario verwenden Sie ein einzelnes Abrechnungsprofil, in dem Sie einen Rechnungsabschnitt für jede Abteilung, jedes Team oder Projekt erstellen.
+Erstellen Sie Rechnungsabschnitte, um die Kosten auf Ihrer Rechnung zu organisieren. Möglicherweise benötigen Sie z. B. eine einzelne Rechnung für Ihre Organisation, möchten jedoch die Kosten nach Abteilung, Team oder Projekt organisieren. In diesem Szenario verwenden Sie ein einzelnes Abrechnungsprofil, in dem Sie einen Rechnungsabschnitt für jede Abteilung, jedes Team oder Projekt erstellen.
 
-Beim Erstellen eines Rechnungsabschnitts können Sie anderen Benutzern die Berechtigung zum Erstellen von Azure-Abonnements für den Abschnitt zuweisen. Alle Nutzungsgebühren und Einkäufe für die Abonnements werden dann im entsprechenden Abschnitt der Rechnung angezeigt.
+Beim Erstellen eines Rechnungsabschnitts können Sie anderen Benutzern die Berechtigung zum Erstellen von Azure-Abonnements zuweisen, die dem Abschnitt in Rechnung gestellt werden. Alle Nutzungsgebühren und Einkäufe für die Abonnements werden dann dem Abschnitt in Rechnung gestellt.
 
 Die Rollen für den Rechnungsabschnitt verfügen über Berechtigungen zum Steuern, wer Azure-Abonnements erstellen darf. Weisen Sie diese Rollen Benutzern zu, die Ihre Azure-Umgebung für Teams in der Organisation einrichten. Bei diesen Benutzern handelt es sich beispielsweise um technische Leiter und technische Architekten. Weitere Informationen finden Sie unter [Rollen und Aufgaben für einen Rechnungsabschnitt](billing-understand-mca-roles.md#invoice-section-roles-and-tasks).
 
 ## <a name="check-access-to-a-microsoft-customer-agreement"></a>Überprüfen des Zugriffs auf eine Microsoft-Kundenvereinbarung
 [!INCLUDE [billing-check-mca](../../includes/billing-check-mca.md)]
 
-## <a name="need-help-contact-support"></a>Sie brauchen Hilfe? Support kontaktieren
+## <a name="need-help-contact-support"></a>Sie brauchen Hilfe? Wenden Sie sich an den Support.
 
 [Wenden Sie sich an den Support](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade), falls Sie weitere Hilfe benötigen, um das Problem schnell beheben zu lassen.
 

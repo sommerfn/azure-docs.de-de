@@ -8,12 +8,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 01/09/2018
 ms.author: hrasheed
-ms.openlocfilehash: 6af25b95aa3a38c4a2e9f3bd8147604dccae0abb
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 02b5b7a3673b3df3ba27e7814851e3519e473633
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64715148"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67448728"
 ---
 # <a name="use-external-packages-with-jupyter-notebooks-in-apache-spark-clusters-on-hdinsight"></a>Verwenden externer Pakete mit Jupyter Notebooks in Apache Spark-Clustern unter HDInsight
 > [!div class="op_single_selector"]
@@ -61,7 +61,7 @@ Sie benötigen Folgendes:
 
 1. Im obigen Codeausschnitt werden die Maven-Koordinaten für das externe Paket im zentralen Maven-Repository erwartet. In diesem Codeausschnitt ist `com.databricks:spark-csv_2.10:1.4.0` die Maven-Koordinate für das Paket **spark-csv** . Nachstehend finden Sie eine Anleitung zur Erstellung von Koordinaten für ein Paket.
    
-    a. Suchen Sie das Paket im Maven-Repository. In diesem Tutorial verwenden wir [spark-csv](https://search.maven.org/#artifactdetails%7Ccom.databricks%7Cspark-csv_2.10%7C1.4.0%7Cjar).
+    a. Suchen Sie das Paket im Maven-Repository. In diesem Artikel verwenden wir [spark-csv](https://search.maven.org/#artifactdetails%7Ccom.databricks%7Cspark-csv_2.10%7C1.4.0%7Cjar).
    
     b. Sammeln Sie im Repository die Werte für **GroupId**, **ArtifactId** und **Version**. Vergewissern Sie sich, dass die erfassten Werte Ihrem Cluster entsprechen. In diesem Fall wird ein Scala 2.10- und Spark 1.4.0-Paket verwendet, möglicherweise müssen Sie jedoch für die jeweilige Scala- oder Spark-Version in Ihrem Cluster andere Versionen auswählen. Sie können die Scala-Version im Cluster ermitteln, indem Sie `scala.util.Properties.versionString` im Spark Jupyter-Kernel oder in Spark-Submit ausführen. Sie können die Spark-Version im Cluster ermitteln, indem Sie `sc.version` für Jupyter Notebooks ausführen.
    

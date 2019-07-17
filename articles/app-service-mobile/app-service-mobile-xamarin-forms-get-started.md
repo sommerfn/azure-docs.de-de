@@ -3,7 +3,7 @@ title: Erste Schritte mit Mobile Apps unter Verwendung von Xamarin.Forms
 description: In diesem Einführungstutorial erfahren Sie, wie Sie Mobile Apps für die Xamarin.Forms-Entwicklung verwenden.
 services: app-service\mobile
 documentationcenter: xamarin
-author: conceptdev
+author: elamalani
 manager: crdun
 ms.assetid: 5e692220-cc89-4548-96c8-35259722acf5
 ms.service: app-service-mobile
@@ -11,19 +11,24 @@ ms.workload: mobile
 ms.tgt_pltfrm: mobile-xamarin
 ms.devlang: dotnet
 ms.topic: conceptual
-ms.date: 05/09/2019
-ms.author: crdun
-ms.openlocfilehash: b0719f6ac2f99f9e665b1265665752dd53ccbaf0
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.date: 06/25/2019
+ms.author: emalani
+ms.openlocfilehash: bca0f0de7de321060635459c4435525f650c7467
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/27/2019
-ms.locfileid: "66242660"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67446318"
 ---
 # <a name="create-a-xamarinforms-app-with-azure"></a>Erstellen einer Xamarin.Forms-App mit Azure
 
 [!INCLUDE [app-service-mobile-selector-get-started](../../includes/app-service-mobile-selector-get-started.md)]
 
+> [!NOTE]
+> Im Rahmen von Visual Studio App Center wird in neue und integrierte Dienste investiert, die für die Entwicklung mobiler Anwendungen von zentraler Bedeutung sind. Entwickler können **Build**-, **Test**- und **Verteilungs**dienste nutzen, um eine Pipeline für Continuous Integration und Delivery einzurichten. Nach der Bereitstellung der App können Entwickler den Status und die Nutzung ihrer App mithilfe der **Analyse**- und **Diagnose**dienste überwachen und mit Benutzern über den **Push**dienst interagieren. Entwickler können auch den **Authentifizierung**sdienst nutzen, um ihre Benutzer zu authentifizieren, und den **Daten**dienst, um App-Daten dauerhaft in der Cloud zu speichern und zu synchronisieren. Besuchen Sie noch heute das [App Center](https://appcenter.ms/?utm_source=zumo&utm_campaign=app-service-mobile-xamarin-forms-get-started).
+>
+
+## <a name="overview"></a>Übersicht
 Dieses Tutorial zeigt, wie Sie einer mobilen Xamarin.Forms-App mithilfe des Mobile Apps-Features von Azure App Service als Back-End einen cloudbasierten Back-End-Dienst hinzufügen. Sie erstellen sowohl ein neues Mobile Apps-Back-End als auch eine einfache Xamarin.Forms-Aufgabenlisten-App, die App-Daten in Azure speichert.
 
 Das Abschließen dieses Lernprogramms ist eine Voraussetzung für alle anderen Mobile Apps-Lernprogramme für Xamarin.Forms.
@@ -48,19 +53,7 @@ Für dieses Tutorial benötigen Sie Folgendes:
 
 Die Visual Studio-Tools für Xamarin sind zum Öffnen der Projektmappe erforderlich. Informationen finden Sie in den [Xamarin-Installationsanweisungen][Install Xamarin]. Sind die Tools bereits installiert, führen Sie die folgenden Schritte aus, um die Projektmappe herunterzuladen und zu öffnen:
 
-### <a name="visual-studio"></a>Visual Studio
-
-1. Öffnen Sie das [Azure-Portal](https://portal.azure.com/).
-
-2. Klicken Sie auf dem Blatt „Einstellungen“ für Ihre mobile App auf **Schnellstart** (unter „Bereitstellung“) > **Xamarin.Forms**. Klicken Sie unter Schritt 3 auf **Neue App erstellen** , falls noch nicht ausgewählt.  Klicken Sie dann auf die Schaltfläche **Herunterladen** .
-
-   Dadurch wird ein Projekt heruntergeladen, das eine mit Ihrer mobilen App verbundene Clientanwendung enthält. Speichern Sie die komprimierte Projektdatei auf dem lokalen Computer und merken Sie sich, wo Sie sie gespeichert haben.
-
-3. Extrahieren Sie das Projekt, das Sie heruntergeladen haben, und öffnen Sie es dann in Visual Studio.
-
-4. Führen Sie die nachstehenden Anweisungen aus, um die Android- oder Windows-Projekte bzw. das iOS-Projekt (sofern ein Mac-Computer im Netzwerk verfügbar ist) auszuführen.
-
-### <a name="visual-studio-for-mac"></a>Visual Studio für Mac
+### <a name="visual-studio-windows-and-mac"></a>Visual Studio (Windows und Mac)
 
 1. Wechseln Sie zum [Azure-Portal](https://portal.azure.com/), und navigieren Sie zu der mobilen App, die Sie erstellt haben. Suchen Sie auf dem Blatt `Overview` nach der URL, die den öffentlichen Endpunkt für Ihre mobile App darstellt. Beispiel: Der Websitename für meinen App-Namen „test123“ lautet https://test123.azurewebsites.net.
 

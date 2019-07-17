@@ -11,15 +11,15 @@ ms.service: azure-monitor
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 04/26/2019
+ms.date: 06/06/2019
 ms.author: magoedte
 ms.subservice: ''
-ms.openlocfilehash: e0b9faeb796653abb4c061884ab2fbb78e867e71
-ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.openlocfilehash: bcfefc9698f7f251e99531750e19e7c06395e064
+ms.sourcegitcommit: cf438e4b4e351b64fd0320bf17cc02489e61406a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64918978"
+ms.lasthandoff: 07/08/2019
+ms.locfileid: "67655706"
 ---
 # <a name="manage-usage-and-costs-with-azure-monitor-logs"></a>Verwalten von Nutzung und Kosten mit Azure Monitor-Protokollen
 
@@ -58,6 +58,9 @@ Die Gebühren für Log Analytics fließen in Ihre Azure-Rechnung ein. Die Detail
 Sie können eine tägliche Obergrenze konfigurieren und die tägliche Erfassung für Ihren Arbeitsbereich einschränken. Dabei ist jedoch Vorsicht geboten, da dieses Limit möglichst nicht erreicht werden sollte.  Andernfalls verlieren Sie die Daten des restlichen Tages. Dies kann sich auf Azure-Dienste und -Lösungen auswirken, deren Funktionalität unter Umständen von der Verfügbarkeit aktueller Daten im Arbeitsbereich abhängt.  Infolgedessen kann auch die Integrität von Ressourcen, die IT-Diensten zugrunde liegen, nicht mehr zuverlässig überwacht werden, und es können keine Warnungen empfangen werden.  Die tägliche Obergrenze ist dazu gedacht, einen unerwarteten Anstieg des Datenvolumens aus Ihren verwalteten Ressourcen zu verhindern und den Grenzwert einzuhalten – oder ungeplante Gebühren für Ihren Arbeitsbereich zu vermeiden.  
 
 Bei Erreichen des Tageslimits werden für den Rest des Tages keine kostenpflichtigen Datentypen mehr gesammelt. Im oberen Seitenbereich erscheint ein Warnbanner für den ausgewählten Log Analytics-Arbeitsbereich, und an die Tabelle *Operation* wird unter der Kategorie **LogManagement** ein Vorgangsereignis gesendet. Die Datensammlung wird nach der unter *Daily limit will be set at* (Tageslimit wird festgelegt um) definierten Zurücksetzungszeit fortgesetzt. Es empfiehlt sich, eine Warnungsregel auf der Grundlage dieses Vorgangsereignisses zu definieren und so zu konfigurieren, dass bei Erreichen des Tageslimits für Daten eine Benachrichtigung erfolgt. 
+
+> [!NOTE]
+> Die tägliche Obergrenze verhindert nicht, dass Daten von Azure Security Center gesammelt werden.
 
 ### <a name="identify-what-daily-data-limit-to-define"></a>Identifizieren des zu definierenden Tageslimits für Daten
 
@@ -102,13 +105,17 @@ Die folgenden Schritte zeigen, wie Sie die Aufbewahrungsdauer von Protokolldaten
 3. Passen Sie mithilfe des Schiebereglers die Anzahl von Tagen an, und klicken Sie anschließend auf **OK**.  Wenn Sie sich im Tarif *Free* befinden, können Sie den Datenaufbewahrungszeitraum nicht ändern. Sie müssen in einen kostenpflichtigen Tarif wechseln, um diese Einstellung zu steuern.
 
     ![Ändern des Datenaufbewahrungszeitraums für den Arbeitsbereich](media/manage-cost-storage/manage-cost-change-retention-01.png)
+    
+Die Aufbewahrungsdauer kann auch [über ARM](https://docs.microsoft.com/azure/azure-monitor/platform/template-workspace-configuration#configure-a-log-analytics-workspace) mithilfe des Parameters `dataRetention` festgelegt werden. Wenn Sie die Datenaufbewahrung auf 30 Tage festlegen, können Sie außerdem mit dem Parameter `immediatePurgeDataOn30Days` eine sofortige Bereinigung älterer Daten auslösen, was für konformitätsrelevante Szenarien nützlich sein kann. Diese Funktionalität wird ausschließlich über ARM verfügbar gemacht. 
 
 ## <a name="legacy-pricing-tiers"></a>Legacytarife
 
-Wenn Sie ein Enterprise Agreement vor dem 1. Juli 2018 unterzeichnet haben oder wenn Sie bereits einen Log Analytics-Arbeitsbereich in einem Abonnement erstellt haben, können Sie weiterhin auf den Tarif *Free* zugreifen. Wenn Ihr Abonnement nicht an eine vorhandene EA-Registrierung gebunden ist, steht der Tarif *Free* nicht zur Verfügung, wenn Sie nach dem 2. April 2018 einen Arbeitsbereich in einem neuen Abonnement erstellen.  Im Tarif *Free* ist die Aufbewahrung von Daten auf sieben Tage beschränkt.  Für die Legacytarife *Eigenständig* oder *Pro Knoten* sowie den aktuellen einzigen Tarif für 2018 sind die gesammelten Daten für die letzten 31 Tage verfügbar. Im Tarif *Free* liegt das Erfassungslimit bei 500MB pro Tag. Sollten Sie dieses zulässige Volumen immer wieder überschreiten, können Sie Ihren Arbeitsbereich auf einen anderen Tarif umstellen, um Daten über diesen Grenzwert hinaus zu sammeln. 
+Abonnements, die vor dem 2. April 2018 einen Log Analytics-Arbeitsbereich oder eine Application Insights-Ressource enthielten oder mit einem Enterprise Agreement verknüpft sind, das vor dem 1. Februar 2019 abgeschlossen wurde, haben weiterhin Zugriff auf die Legacytarife: **Free**, **Eigenständig (Pro GB)** und **Pro Knoten (OMS)** .  Für Arbeitsbereiche im Tarif „Free“ ist die tägliche Datenerfassung auf 500 MB beschränkt (mit Ausnahme von Sicherheitsdaten, die von Azure Security Center gesammelt werden). Darüber hinaus ist die Datenaufbewahrung auf sieben Tage beschränkt. Der Tarif „Free“ dient nur zu Evaluierungszwecken. Für Arbeitsbereiche im Tarif „Eigenständig“ oder „Pro Knoten“ gilt eine vom Benutzer festlegbare Datenaufbewahrungsfrist von bis zu zwei Jahren. Vor April 2016 erstellte Arbeitsbereiche haben auch Zugriff auf die ursprünglichen Tarife **Standard** und **Premium**. Weitere Informationen zu Einschränkungen von Tarifen finden Sie [hier](https://docs.microsoft.com/azure/azure-subscription-service-limits#log-analytics-workspaces).
 
 > [!NOTE]
 > Wenn Sie die Berechtigungen nutzen möchten, die Sie durch den Kauf der OMS E1-Suite, OMS E2-Suite oder des OMS-Add-Ons für System Center erwerben, wählen Sie den Tarif *Pro Knoten* für Log Analytics aus.
+
+Die ersten Nutzer von Log Analytics haben auch Zugriff auf die ursprünglichen Tarife **Standard** und **Premium**, die eine feste Datenaufbewahrung von 30 bzw. 365 Tagen vorsehen. 
 
 ## <a name="changing-pricing-tier"></a>Ändern des Tarifs
 
@@ -121,17 +128,15 @@ Wenn Ihr Log Analytics-Arbeitsbereich über Zugriff auf Legacytarife verfügt, k
 3. Wählen Sie unter **Tarif** einen Tarif aus, und klicken Sie anschließend auf **Auswählen**.  
     ![Ausgewählter Tarif](media/manage-cost-storage/workspace-pricing-tier-info.png)
 
-Wenn Sie Ihren Arbeitsbereich in den aktuellen Tarif verschieben möchten, müssen Sie das [Überwachungspreismodell Ihres Abonnements in Azure Monitor](usage-estimated-costs.md#moving-to-the-new-pricing-model) ändern. Dadurch ändert sich der Tarif für alle Arbeitsbereiche in diesem Abonnement.
-
-> [!NOTE]
-> Sie erhalten weitere Informationen zum Festlegen des Tarifs, wenn Sie [eine Azure Resource Manager-Vorlage](template-workspace-configuration.md#create-a-log-analytics-workspace) zur Erstellung eines Arbeitsbereichs verwenden, und stellen sicher, dass Ihre Azure Resource Manager-Vorlagenbereitstellung erfolgreich ist, unabhängig davon, ob das Abonnement im alten oder neuen Preismodell enthalten ist. 
-
+Sie können auch den [Tarif über ARM](https://docs.microsoft.com/azure/azure-monitor/platform/template-workspace-configuration#configure-a-log-analytics-workspace) mithilfe des Parameters `ServiceTier` festlegen. 
 
 ## <a name="troubleshooting-why-log-analytics-is-no-longer-collecting-data"></a>Beheben des Problems, dass Log Analytics keine Daten mehr erfasst
 
 Wenn Sie den kostenlosen Legacytarif nutzen und an einem Tag mehr als 500MB Daten gesendet haben, wird die Datensammlung für den Rest des Tages beendet. Das Erreichen des Tageslimits ist häufig die Ursache dafür, dass Log Analytics die Datensammlung beendet oder Daten scheinbar fehlen.  Log Analytics erstellt ein Ereignis vom Typ „Operation“, wenn die Datensammlung beginnt und endet. Führen Sie die folgende Abfrage in der Suche aus, um zu überprüfen, ob Sie das Tageslimit erreichen und Daten fehlen: 
 
-`Operation | where OperationCategory == 'Data Collection Status'`
+```kusto
+Operation | where OperationCategory == 'Data Collection Status'
+```
 
 Wenn die Datensammlung beendet wird, hat „OperationStatus“ den Wert **Warning** (Warnung). Wenn die Datensammlung beginnt, hat „OperationStatus“ den Wert **Succeeded** (Erfolgreich). Die folgende Tabelle beschreibt die Gründe, warum die Datensammlung endet, und eine empfohlene Aktion zum Fortsetzen der Datensammlung:  
 
@@ -151,44 +156,65 @@ Eine höhere Nutzung wird durch eine bzw. beide der folgenden Bedingungen verurs
 
 ## <a name="understanding-nodes-sending-data"></a>Ermitteln der Knoten, die Daten senden
 
-Um die Anzahl von Computern (Knoten) zu ermitteln, die im letzten Monat täglich Daten gemeldet haben, verwenden Sie die folgende Abfrage:
+Um die Anzahl von Computern zu ermitteln, die im letzten Monat täglich Heartbeats gemeldet haben, verwenden Sie die folgende Abfrage:
 
-`Heartbeat | where TimeGenerated > startofday(ago(31d))
+```kusto
+Heartbeat | where TimeGenerated > startofday(ago(31d))
 | summarize dcount(Computer) by bin(TimeGenerated, 1d)    
-| render timechart`
+| render timechart
+```
 
-Zum Abrufen einer Liste von Computern, die **kostenpflichtige Datentypen** senden (einige Datentypen sind kostenlos), verwenden Sie die `_IsBillable`-[Eigenschaft](log-standard-properties.md#_isbillable):
+Um eine Liste von Computern abzurufen, die als Knoten berechnet werden, wenn für den Arbeitsbereich der Legacytarif „Pro Knoten“ gilt, suchen Sie Knoten, die **kostenpflichtige Datentypen** senden (einige Datentypen sind kostenlos). Verwenden Sie dazu die `_IsBillable`-[Eigenschaft](log-standard-properties.md#_isbillable) und das linke Feld des vollständig qualifizierten Domänennamens. So wird die Liste der Computer mit kostenpflichtigen Daten zurückgegeben:
 
-`union withsource = tt * 
+```kusto
+union withsource = tt * 
 | where _IsBillable == true 
 | extend computerName = tolower(tostring(split(Computer, '.')[0]))
 | where computerName != ""
-| summarize TotalVolumeBytes=sum(_BilledSize) by computerName`
+| summarize TotalVolumeBytes=sum(_BilledSize) by computerName
+```
 
-Verwenden Sie diese `union withsource = tt *`-Abfragen mit Bedacht, da umfassende Scans verschiedener Datentypen kostenintensiv sind. Diese Abfrage ersetzt die ältere Methode der Abfrage von Informationen pro Computer durch den Datentyp für die Nutzung.  
+Die Anzahl der ermittelten kostenpflichtigen Knoten kann wie folgt geschätzt werden: 
 
-Die Abfrage kann so erweitert werden, dass die Anzahl der Computer pro Stunde zurückgegeben wird, die abgerechnete Datentypen senden (auf diese Weise werden in Log Analytics abrechenbare Knoten für den älteren Tarif pro Knoten berechnet):
-
-`union withsource = tt * 
+```kusto
+union withsource = tt * 
 | where _IsBillable == true 
 | extend computerName = tolower(tostring(split(Computer, '.')[0]))
 | where computerName != ""
-| summarize dcount(computerName) by bin(TimeGenerated, 1h) | sort by TimeGenerated asc`
+| billableNodes=dcount(computerName)
+```
+
+> [!NOTE]
+> Verwenden Sie diese `union withsource = tt *`-Abfragen mit Bedacht, da umfassende Scans verschiedener Datentypen kostenintensiv sind. Diese Abfrage ersetzt die ältere Methode der Abfrage von Informationen pro Computer durch den Datentyp für die Nutzung.  
+
+Um genauer zu berechnen, was tatsächlich in Rechnung gestellt wird, ermitteln Sie die Anzahl der Computer pro Stunde, die kostenpflichtige Datentypen senden. (Für Arbeitsbereiche im Legacytarif „Pro Knoten“ berechnet Log Analytics die Anzahl der Knoten, die abgerechnet werden müssen, auf Stundenbasis.) 
+
+```kusto
+union withsource = tt * 
+| where _IsBillable == true 
+| extend computerName = tolower(tostring(split(Computer, '.')[0]))
+| where computerName != ""
+| summarize billableNodes=dcount(computerName) by bin(TimeGenerated, 1h) | sort by TimeGenerated asc
+```
 
 ## <a name="understanding-ingested-data-volume"></a>Grundlegendes zur erfassten Datenmenge
 
 Auf der Seite **Nutzung und geschätzte Kosten** zeigt das Diagramm *Datenerfassung pro Lösung* die Gesamtmenge an gesendeten Daten sowie die von jeder Lösung gesendete Datenmenge an. Auf diese Weise können Sie Trends ermitteln, z.B. ob die Gesamtdatennutzung (oder die Nutzung durch eine bestimmte Lösung) ansteigt, konstant bleibt oder abnimmt. Um diese Daten zu generieren, wird die folgende Abfrage verwendet:
 
-`Usage | where TimeGenerated > startofday(ago(31d))| where IsBillable == true
-| summarize TotalVolumeGB = sum(Quantity) / 1024 by bin(TimeGenerated, 1d), Solution| render barchart`
+```kusto
+Usage | where TimeGenerated > startofday(ago(31d))| where IsBillable == true
+| summarize TotalVolumeGB = sum(Quantity) / 1024 by bin(TimeGenerated, 1d), Solution| render barchart
+```
 
 Beachten Sie, dass durch die Klausel „where IsBillable = true“ Datentypen bestimmter Lösungen herausgefiltert werden, für die keine Erfassungsgebühren anfallen. 
 
 Sie können einen Drilldown durchführen, um Datentrends für spezifische Datentypen anzuzeigen. So können Sie beispielsweise die Daten aufgrund von IIS-Protokollen untersuchen:
 
-`Usage | where TimeGenerated > startofday(ago(31d))| where IsBillable == true
+```kusto
+Usage | where TimeGenerated > startofday(ago(31d))| where IsBillable == true
 | where DataType == "W3CIISLog"
-| summarize TotalVolumeGB = sum(Quantity) / 1024 by bin(TimeGenerated, 1d), Solution| render barchart`
+| summarize TotalVolumeGB = sum(Quantity) / 1024 by bin(TimeGenerated, 1d), Solution| render barchart
+```
 
 ### <a name="data-volume-by-computer"></a>Datenmenge nach Computer
 
@@ -197,24 +223,19 @@ Um die **Größe** der pro Computer erfassten abrechenbaren Ereignisse anzuzeige
 ```kusto
 union withsource = tt * 
 | where _IsBillable == true 
-| summarize Bytes=sum(_BilledSize) by  Computer | sort by Bytes nulls last
+| extend computerName = tolower(tostring(split(Computer, '.')[0]))
+| summarize Bytes=sum(_BilledSize) by  computerName | sort by Bytes nulls last
 ```
 
 Die `_IsBillable`-[Eigenschaft](log-standard-properties.md#_isbillable) gibt an, ob für die erfassten Daten Gebühren anfallen.
 
-Um die **Anzahl** von erfassten Ereignissen pro Computer anzuzeigen, führen Sie diese Abfrage aus:
-
-```kusto
-union withsource = tt *
-| summarize count() by Computer | sort by count_ nulls last
-```
-
-Um die Anzahl von Ereignissen pro Computer anzuzeigen, für die Gebühren anfallen, verwenden Sie diese Abfrage: 
+Um die Anzahl von Ereignissen pro Computer anzuzeigen, für die **Gebühren** anfallen, verwenden Sie diese Abfrage: 
 
 ```kusto
 union withsource = tt * 
 | where _IsBillable == true 
-| summarize count() by Computer  | sort by count_ nulls last
+| extend computerName = tolower(tostring(split(Computer, '.')[0]))
+| summarize eventCount=count() by computerName  | sort by count_ nulls last
 ```
 
 Wenn Sie die Anzahl für gebührenpflichtigen Datentypen anzeigen möchten, die Daten an einen bestimmten Computer senden, verwenden Sie Folgendes:
@@ -389,6 +410,11 @@ Legen Sie beim Erstellen der Warnung für die zweite Abfrage Folgendes fest, wen
 Geben Sie eine vorhandene [Aktionsgruppe](action-groups.md) an, oder erstellen Sie eine neue, damit Sie benachrichtigt werden, wenn die Protokollwarnung Kriterien erfüllt.
 
 Wenn Sie eine Warnung erhalten, können Sie die Schritte im folgenden Abschnitt verwenden, um per Problembehandlung zu ermitteln, warum die Nutzung höher als erwartet ist.
+
+## <a name="limits-summary"></a>Zusammenfassung der Grenzwerte
+
+Es gibt einige zusätzliche Log Analytics-Grenzwerte, von denen einige vom Log Analytics-Tarif abhängen. Diese sind [hier](https://docs.microsoft.com/azure/azure-subscription-service-limits#log-analytics-workspaces) dokumentiert.
+
 
 ## <a name="next-steps"></a>Nächste Schritte
 

@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
-ms.date: 01/31/2018
+ms.date: 06/28/2019
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5c81a9f3891130f1c6fc2f1a665d7065fb983227
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 150ecbdfcc21ee7ec0bf54fd5b824bc93e0c76ce
+ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60358119"
+ms.lasthandoff: 07/01/2019
+ms.locfileid: "67483317"
 ---
 # <a name="azure-active-directory-smart-lockout"></a>Azure Active Directory Smart Lockout
 
@@ -41,7 +41,9 @@ Smart Lockout ist in Hybridbereitstellungen integrierbar und kann mittels Kennwo
 Bei Verwendung der [Passthrough-Authentifizierung](../hybrid/how-to-connect-pta.md) muss Folgendes sichergestellt werden:
 
 * Der Azure AD-Sperrschwellenwert ist **kleiner** als der Schwellenwert für eine Active Directory-Kontosperrung. Legen Sie die Werte so fest, dass der Schwellenwert für eine Active Directory-Kontosperrung mindestens das Zwei- oder Dreifache des Azure AD-Sperrschwellenwerts beträgt. 
-* Die Azure AD-Sperrdauer (in **Sekunden**) ist **länger** als die Active Directory-Zurücksetzungsdauer des Kontosperrungszählers (in **Minuten**).
+* Die Azure AD-Sperrdauer muss länger als die Active Directory-Zurücksetzungsdauer des Kontosperrungszählers festgelegt sein. Beachten Sie, dass die Azure AD-Dauer in Sekunden und die AD-Dauer in Minuten festgelegt wird. 
+
+Wenn Sie beispielsweise möchten, dass Ihr Azure AD-Zähler höher als der AD-Wert ist, dann ist die Azure AD-Dauer 120 Sekunden (2 Minuten), während Ihr lokales AD auf 1 Minute (60 Sekunden) festgelegt ist.
 
 > [!IMPORTANT]
 > Derzeit können die Cloudkonten der Benutzer nicht von einem Administrator entsperrt werden, wenn sie von Smart Lockout gesperrt wurden. Der Administrator muss warten, bis die Sperrdauer abgelaufen ist.

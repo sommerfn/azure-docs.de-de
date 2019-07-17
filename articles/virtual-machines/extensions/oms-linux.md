@@ -4,7 +4,7 @@ description: Stellen Sie den Log Analytics-Agent mithilfe einer VM-Erweiterung a
 services: virtual-machines-linux
 documentationcenter: ''
 author: roiyz-msft
-manager: jeconnoc
+manager: gwallace
 editor: ''
 tags: azure-resource-manager
 ms.assetid: c7bbf210-7d71-4a37-ba47-9c74567a9ea6
@@ -13,14 +13,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
-ms.date: 06/06/2019
+ms.date: 07/01/2019
 ms.author: roiyz
-ms.openlocfilehash: 8b24af016349db0fcfb4106a1e69da395e3d0150
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 7d8192a3b6ff732481a4d48f6e188b4bb3989cda
+ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66755153"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67705932"
 ---
 # <a name="azure-monitor-virtual-machine-extension-for-linux"></a>Azure Monitor-VM-Erweiterung für Linux
 
@@ -47,7 +47,7 @@ Die Log Analytics-Agent-Erweiterung kann für folgende Linux-Distributionen ausg
 | Red Hat Enterprise Linux-Server | 6 (x86/x64) und 7 (x64) |
 | Debian GNU/Linux | 8 und 9 (x86/x64) |
 | Ubuntu | 14.04 LTS (x86/x64), 16.04 LTS (x86/x64) und 18.04 LTS (x64) |
-| SUSE Linux Enterprise Server | 12 (x64) |
+| SUSE Linux Enterprise Server | 12 (x64) und 15 (x64) |
 
 >[!NOTE]
 >OpenSSL unter Version 1.x wird auf keiner Plattform unterstützt, und Version 1.10 wird nur auf x86_64-Plattformen (64 Bit) unterstützt.  
@@ -73,7 +73,8 @@ Die folgende Tabelle enthält eine Zuordnung der Version der Azure Monitor-VM-Er
 
 | Version der Azure Monitor-VM-Erweiterung unter Linux | Log Analytics-Agent-Paketversion | 
 |--------------------------------|--------------------------|
-|1.10.0 | [1.10.0-1](https://github.com/microsoft/OMS-Agent-for-Linux/releases/tag/OMSAgent_v1.10.0-1) |
+| 1.11.9 | [1.11.0-7](https://github.com/microsoft/OMS-Agent-for-Linux/releases/tag/OMSAgent_v1.11.0-7) |
+| 1.10.0 | [1.10.0-1](https://github.com/microsoft/OMS-Agent-for-Linux/releases/tag/OMSAgent_v1.10.0-1) |
 | 1.9.1 | [1.9.0-0](https://github.com/Microsoft/OMS-Agent-for-Linux/releases/tag/OMSAgent_v1.9.0-0) |
 | 1.8.11 | [1.8.1-256](https://github.com/Microsoft/OMS-Agent-for-Linux/releases/tag/OMSAgent_v1.8.1.256)| 
 | 1.8.0 | [1.8.0-256](https://github.com/Microsoft/OMS-Agent-for-Linux/releases/tag/1.8.0-256)| 

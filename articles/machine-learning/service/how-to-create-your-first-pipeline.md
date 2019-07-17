@@ -11,12 +11,12 @@ ms.author: sanpil
 author: sanpil
 ms.date: 05/02/2019
 ms.custom: seodec18
-ms.openlocfilehash: c87685673052d2cfbc961d3bb717c9cd274872af
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 948594a43cec92aa62386b041ce8c96a0558995e
+ms.sourcegitcommit: c63e5031aed4992d5adf45639addcef07c166224
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67059242"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67466914"
 ---
 # <a name="create-and-run-a-machine-learning-pipeline-by-using-azure-machine-learning-sdk"></a>Erstellen und Ausführen einer Machine Learning-Pipeline mit dem Azure Machine Learning SDK
 
@@ -58,7 +58,7 @@ Erstellen Sie die Ressourcen, die zum Ausführen einer Pipeline erforderlich sin
 ### <a name="set-up-a-datastore"></a>Einrichten eines Datenspeichers
 Ein Datenspeicher speichert die Daten für den Zugriff durch die Pipeline. Jeder Arbeitsbereich verfügt über einen Standarddatenspeicher. Sie können weitere Datenspeicher registrieren. 
 
-Wenn Sie Ihren Arbeitsbereich erstellen, werden [Azure Files](https://docs.microsoft.com/azure/storage/files/storage-files-introduction) und [Azure Blob Storage](https://docs.microsoft.com/azure/storage/blobs/storage-blobs-introduction) standardmäßig an den Arbeitsbereich angefügt. Azure Files ist der Standarddatenspeicher für einen Arbeitsbereich, aber Sie können auch Blob Storage als Datenspeicher verwenden. Weitere Informationen finden Sie unter [Entscheidung zwischen Azure-Blobs, Azure Files und Azure-Datenträgern](https://docs.microsoft.com/azure/storage/common/storage-decide-blobs-files-disks). 
+Wenn Sie Ihren Arbeitsbereich erstellen, werden [Azure Files](https://docs.microsoft.com/azure/storage/files/storage-files-introduction) und [Azure Blob Storage](https://docs.microsoft.com/azure/storage/blobs/storage-blobs-introduction) standardmäßig an den Arbeitsbereich angefügt. Azure Blob Storage ist der Standarddatenspeicher für einen Arbeitsbereich, aber Sie können auch Blobspeicher als Datenspeicher verwenden. Weitere Informationen finden Sie unter [Entscheidung zwischen Azure-Blobs, Azure Files und Azure-Datenträgern](https://docs.microsoft.com/azure/storage/common/storage-decide-blobs-files-disks). 
 
 ```python
 # Default datastore (Azure file storage)

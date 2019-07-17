@@ -2,18 +2,18 @@
 title: Einführung in Azure Kubernetes Service
 description: Lernen Sie die Features und Vorteile von Azure Kubernetes Service zur Bereitstellung und Verwaltung containerbasierter Anwendungen in Azure kennen.
 services: container-service
-author: iainfoulds
+author: mlearned
 ms.service: container-service
 ms.topic: overview
 ms.date: 05/06/2019
-ms.author: iainfou
+ms.author: mlearned
 ms.custom: mvc
-ms.openlocfilehash: b14e4b452c1dcd92cc3e5447428c28f1d2c5b18e
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.openlocfilehash: 5515951a9bde596935f4c603ffd9e088f74dee45
+ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/27/2019
-ms.locfileid: "65073815"
+ms.lasthandoff: 07/07/2019
+ms.locfileid: "67615160"
 ---
 # <a name="azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS)
 
@@ -23,7 +23,7 @@ Sie können einen AKS-Cluster im Azure-Portal, mit der Azure-Befehlszeilenschnit
 
 Weitere Informationen zu Kubernetes-Grundlagen finden Sie unter [Grundlegende Kubernetes-Konzepte für AKS][concepts-clusters-workloads].
 
-Führen Sie zum Einstieg den AKS-Schnellstart [im Azure-Portal][aks-portal] oder [mit der Azure CLI][aks-cli] durch.
+Absolvieren Sie zum Einstieg die AKS-Schnellstartanleitung [im Azure-Portal][aks-portal] oder über die Azure-Befehlszeilenschnittstelle.
 
 ## <a name="access-security-and-monitoring"></a>Zugriff, Sicherheit und Überwachung
 
@@ -31,15 +31,15 @@ Für verbesserte Sicherheit und Verwaltung ermöglicht AKS Ihnen die Integration
 
 ### <a name="identity-and-security-management"></a>Identitäts- und Sicherheitsverwaltung
 
-Um den Zugriff auf Clusterressourcen zu beschränken, unterstützt AKS [die rollenbasierte Kubernetes-Zugriffssteuerung (RBAC, Role-Based Access Control )][kubernetes-rbac]. Mit RBAC können Sie den Zugriff auf Kubernetes-Ressourcen und -Namespaces sowie die Berechtigungen für diese Ressourcen steuern. Sie können auch einen AKS-Cluster für die Azure Active Directory-Integration (AD) konfigurieren. Mit der Azure AD-Integration kann der Kubernetes-Zugriff auf der Grundlage vorhandener Identität und Gruppenmitgliedschaft konfiguriert werden. Ihren vorhandenen Azure AD-Benutzern und -Gruppen kann der Zugriff auf AKS-Ressourcen und eine integrierte Anmeldeerfahrung gewährt werden.
+Zur Einschränkung des Zugriffs auf Clusterressourcen unterstützt AKS die [rollenbasierte Zugriffssteuerung (Role-Based Access Control, RBAC) von Kubernetes][kubernetes-rbac]. Mit RBAC können Sie den Zugriff auf Kubernetes-Ressourcen und -Namespaces sowie die Berechtigungen für diese Ressourcen steuern. Sie können auch einen AKS-Cluster für die Azure Active Directory-Integration (AD) konfigurieren. Mit der Azure AD-Integration kann der Kubernetes-Zugriff auf der Grundlage vorhandener Identität und Gruppenmitgliedschaft konfiguriert werden. Ihren vorhandenen Azure AD-Benutzern und -Gruppen kann der Zugriff auf AKS-Ressourcen und eine integrierte Anmeldeerfahrung gewährt werden.
 
 Weitere Informationen zur Identität finden Sie unter [Zugriffs- und Identitätsoptionen für AKS][concepts-identity].
 
-Wie Sie Ihre AKS-Cluster sichern, erfahren Sie unter [Integrieren von Azure Active Directory in AKS – Vorschauversion][aks-aad].
+Wie Sie Ihre AKS-Cluster schützen, erfahren Sie unter [Integrieren von Azure Active Directory in AKS – Vorschauversion][aks-aad].
 
 ### <a name="integrated-logging-and-monitoring"></a>Integrierte Protokollierung und Überwachung
 
-Um die Leistung Ihrer AKS-Cluster und bereitgestellten Anwendungen zu verstehen, sammelt Azure Monitor für die Containerintegrität Arbeitsspeicher- und Prozessormetriken aus Containern, Knoten und Controllern. Containerprotokolle sind verfügbar, und Sie können auch [die Kubernetes-Master-Protokolle überprüfen][aks-master-logs]. Diese Überwachungsdaten werden in Ihrem Azure Log Analytics-Arbeitsbereich gespeichert und stehen über das Azure-Portal, die Azure CLI und einen REST-Endpunkt zur Verfügung.
+Um die Leistung Ihrer AKS-Cluster und bereitgestellten Anwendungen zu verstehen, sammelt Azure Monitor für die Containerintegrität Arbeitsspeicher- und Prozessormetriken aus Containern, Knoten und Controllern. Containerprotokolle sind verfügbar, und Sie können auch [die Kubernetes-Masterprotokolle überprüfen][aks-master-logs]. Diese Überwachungsdaten werden in Ihrem Azure Log Analytics-Arbeitsbereich gespeichert und stehen über das Azure-Portal, die Azure CLI und einen REST-Endpunkt zur Verfügung.
 
 Weitere Informationen finden Sie unter [Überwachen der Integrität von Azure Kubernetes Service-Containern (AKS) (Vorschauversion)][container-health].
 
@@ -57,7 +57,7 @@ Weitere Informationen finden Sie unter [Skalieren eines Azure Kubernetes Service
 
 Azure Kubernetes Service bietet mehrere Kubernetes-Versionen. Wenn in AKS neue Versionen verfügbar werden, können Sie mithilfe des Azure-Portals oder der Azure CLI ein Clusterupgrade ausführen. Während des Upgradevorgangs werden die Knoten sorgfältig isoliert und ausgeglichen, um ausgeführte Anwendungen möglichst wenig zu beeinträchtigen.
 
-Weitere Informationen zu Lebenszyklusversionen finden Sie unter [Unterstützte Kubernetes-Versionen in Azure Kubernetes Service (AKS)][aks-supported versions]. Informationen zu Aktualisierungsschritten finden Sie unter [Durchführen eines Upgrades für einen Azure Kubernetes Service-Cluster (AKS)][aks-upgrade].
+Weitere Informationen zu Lebenszyklusversionen finden Sie unter [Unterstützte Kubernetes-Versionen in Azure Kubernetes Service (AKS)][aks-supported versions]. Informationen zu Aktualisierungsschritten finden Sie unter „Durchführen eines Upgrades für einen Azure Kubernetes Service-Cluster (AKS)“.
 
 ### <a name="gpu-enabled-nodes"></a>GPU-fähige Knoten
 
@@ -71,7 +71,7 @@ Um Workloads von Anwendungen zu unterstützen, können Sie die Speichervolumes f
 
 Weitere Informationen finden Sie unter [Speicheroptionen für Anwendungen in AKS][concepts-storage].
 
-Erste Schritte mit dynamischen persistenten Volumes unter Verwendung von [Azure-Datenträgern][azure-disk] oder [Azure Files][azure-files].
+Erste Schritte mit dynamischen persistenten Volumes unter Verwendung von [Azure-Datenträgern][azure-disk] oder Azure Files.
 
 ## <a name="virtual-networks-and-ingress"></a>Virtuelle Netzwerke und Eingang
 
@@ -95,13 +95,13 @@ Darüber hinaus ermöglicht Azure Dev Spaces eine schnelle, iterative Kubernetes
 
 Das Azure DevOps-Projekt bietet eine Lösung, mit der Sie vorhanden Code und das Git-Repository ganz einfach in Azure einbinden können. Mit dem DevOps-Projekt werden automatisch Azure-Ressourcen wie AKS erstellt, in Azure DevOps Services eine Releasepipeline mit einer Buildpipeline für CI erstellt, eine Releasepipeline für CD eingerichtet und anschließend eine Azure Application Insights-Ressource für die Überwachung erstellt.
 
-Weitere Informationen finden Sie unter [Tutorial: Deploy your ASP.NET Core App to Azure Kubernetes Service (AKS) with the Azure DevOps Project][azure-devops] (Tutorial: Bereitstellen Ihrer ASP.NET Core-App in Azure Kubernetes Service (AKS) mit dem Azure DevOps-Projekt).
+Weitere Informationen finden Sie unter [Übersicht über Azure DevOps Projects][azure-devops].
 
 ## <a name="docker-image-support-and-private-container-registry"></a>Docker-Imageunterstützung und private Containerregistrierung
 
 AKS unterstützt das Docker-Imageformat. Zur privaten Speicherung Ihrer Docker-Images können Sie AKS in die Azure Container Registry (ACR) integrieren.
 
-Wie Sie private Imagespeicher erstellen, erfahren Sie unter [Azure Container Registry][acr-docs].
+Wie Sie private Imagespeicher erstellen, erfahren Sie unter [Einführung in private Docker-Containerregistrierungen in Azure][acr-docs].
 
 ## <a name="kubernetes-certification"></a>Kubernetes-Zertifizierung
 
@@ -116,7 +116,7 @@ Azure Kubernetes Service (AKS) erfüllt die Anforderungen von SOC, ISO, PCI-DSS 
 Erfahren Sie mehr über die Bereitstellung und Verwaltung von AKS mit dem Azure CLI-Schnellstart.
 
 > [!div class="nextstepaction"]
-> [Schnellstart: Bereitstellen eines Azure Kubernetes Service-Clusters (AKS)][aks-cli]
+> [Schnellstart: Bereitstellen eines AKS-Clusters (Azure Kubernetes Service) über die Azure-Befehlszeilenschnittstelle][aks-cli]
 
 <!-- LINKS - external -->
 [aks-engine]: https://github.com/Azure/aks-engine
