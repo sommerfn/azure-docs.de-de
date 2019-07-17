@@ -292,6 +292,8 @@
       displayName: 'module, import'
 - name: Komponentenübergreifende Szenarien
   items:
+    - name: Senden einer E-Mail aus einem Runbook mithilfe von SendGrid
+      href: automation-send-email.md
     - name: Runbook-Katalog
       href: automation-runbook-gallery.md
     - name: Überwachen von Runbooks mit Metrikwarnungen

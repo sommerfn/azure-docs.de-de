@@ -292,6 +292,14 @@
               href: ../common/storage-account-manage.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
             - name: Aktualisieren eines Speicherkontos
               href: ../common/storage-account-upgrade.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+        - name: Erstellen und Verwalten von Containern
+          items:
+            - name: Erstellen oder Löschen eines Containers (.NET)
+              href: storage-blob-container-create.md
+            - name: Auflisten von Containern (.NET)
+              href: storage-blob-containers-list.md
+            - name: Verwalten von Eigenschaften und Metadaten (.NET)
+              href: storage-blob-container-properties-metadata.md
         - name: Sichern von Blobdaten
           items:
             - name: Autorisieren des Zugriffs auf Blobdaten
@@ -358,8 +366,6 @@
               href: ../common/storage-use-azurite.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
             - name: Verwenden des Azure Storage-Emulators
               href: ../common/storage-use-emulator.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-        - name: Festlegen und Abrufen von Eigenschaften und Metadaten
-          href: storage-properties-metadata.md
         - name: Hosten einer statischen Website
           href: storage-blob-static-website-how-to.md
         - name: Zuordnen von Azure CDN zu einer benutzerdefinierten Domäne für den Zugriff über HTTPS

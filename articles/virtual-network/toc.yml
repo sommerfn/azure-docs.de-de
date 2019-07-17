@@ -91,7 +91,7 @@
           href: virtual-network-tcpip-performance-tuning.md
     - name: Bereitstellen
       items:
-        - name: IPv6 für Azure VNET
+        - name: IPv6 für VNET – Load Balancer Basic
           items:
             - name: Azure PowerShell
               href: virtual-network-ipv4-ipv6-dual-stack-powershell.md
@@ -99,6 +99,14 @@
               href: virtual-network-ipv4-ipv6-dual-stack-cli.md
             - name: Resource Manager-Vorlage
               href: ipv6-configure-template-json.md
+        - name: IPv6 für VNET – Load Balancer Standard
+          items:
+            - name: Azure PowerShell
+              href: virtual-network-ipv4-ipv6-dual-stack-standard-load-balancer-powershell.md
+            - name: Azure-Befehlszeilenschnittstelle
+              href: virtual-network-ipv4-ipv6-dual-stack-standard-load-balancer-cli.md
+            - name: Resource Manager-Vorlage
+              href: ipv6-configure-standard-load-balancer-template-json.md
         - name: Netzwerksicherheitsgruppen
           items:
             - name: Azure PowerShell

@@ -94,10 +94,12 @@
           href: stream-analytics-clean-up-your-job.md
         - name: Koppeln von Aufträgen für Zuverlässigkeit
           href: stream-analytics-job-reliability.md
-        - name: Authentifizieren mit einer verwalteten Identität
+        - name: Authentifizieren mit einer verwalteten Identität – ADLS Gen 1-Ausgabe
           href: stream-analytics-managed-identities-adls.md
         - name: Verwenden der SQL-Referenzdaten
           href: sql-reference-data.md
+        - name: Authentifizieren mit einer verwalteten Identität – BLOB-Ausgabe
+          href: blob-output-managed-identity.md
     - name: Erstellen von Lösungen
       items:
         - name: Twitter-Stimmungsanalyse

@@ -17,6 +17,8 @@
       href: notifications.md
     - name: Welche Anmeldeverfahren stehen zur Verfügung?
       href: flows.md
+    - name: Identity Protection und B2B-Benutzer
+      href: concept-identity-protection-b2b.md
 - name: Anleitungen
   expanded: true
   items:

@@ -208,6 +208,8 @@
               href: sap-ascs-ha-multi-sid-wsfc-file-share.md
     - name: Azure Site Recovery für die SAP-Notfallwiederherstellung
       href: '../../../site-recovery/site-recovery-workload.md#protect-sap'
+    - name: Azure-Näherungsplatzierungsgruppen für optimale Netzwerklatenz mit SAP-Anwendungen
+      href: sap-proximity-placement-scenarios.md
 - name: AAD-SAP-Identitätsintegration und einmaliges Anmelden
   items:
     - name: Integration in SAP Cloud
