@@ -283,7 +283,7 @@ Wenn Sie den Anfangswert für die Variable festlegen, muss er mit dem richtigen 
 |:--|:--|:--|:--|
 | string   | Wert in doppelte Anführungszeichen einschließen  | "\"Hello world\"" | "Hello world" |
 | numeric  | Numerische Werte in einfache Anführungszeichen einschließen| "64" | 64 |
-| boolean  | **true** oder **false** in Anführungszeichen einschließen.  Beachten Sie, dass dieser Wert klein geschrieben werden muss. | „true“ | true |
+| boolean  | **true** oder **false** in Anführungszeichen einschließen.  Beachten Sie, dass dieser Wert klein geschrieben werden muss. | "true" | true |
 | datetime | Serialisierter Datumswert.<br>Mit dem Cmdlet ConvertTo-Json in PowerShell können Sie diesen Wert für ein bestimmtes Datum generieren.<br>Beispiel: Get-Date "5/24/2017 13:14:57" \| ConvertTo-Json | "\\/Date(1495656897378)\\/" | 2017-05-24 13:14:57 |
 
 ## <a name="modules"></a>Module
