@@ -1,25 +1,25 @@
 ---
 title: 'Schnellstart: Erkennen und Umranden von Gesichtern in einem Bild mit dem Python SDK'
 titleSuffix: Azure Cognitive Services
-description: In dieser Schnellstartanleitung erstellen Sie ein einfaches Python-Skript, das mithilfe der Gesichtserkennungs-API Gesichter in einem Remotebild erkennt und umrandet.
+description: In diesem Schnellstart erstellen Sie ein Python-Skript, das mithilfe der Gesichtserkennungs-API Gesichter in einem Remotebild erkennt und umrandet.
 services: cognitive-services
 author: SteveMSFT
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: face-api
 ms.topic: quickstart
-ms.date: 11/13/2018
+ms.date: 07/03/2018
 ms.author: sbowles
-ms.openlocfilehash: b816f4b78921c4bace1d15dd408b3fd701a3d6c5
-ms.sourcegitcommit: a12b2c2599134e32a910921861d4805e21320159
+ms.openlocfilehash: 741dd18a3b8da5e44d77c24d46adb8d550322281
+ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/24/2019
-ms.locfileid: "67339371"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67603294"
 ---
 # <a name="quickstart-create-a-python-script-to-detect-and-frame-faces-in-an-image"></a>Schnellstart: Erstellen eines Python-Skripts zum Erkennen und Umranden von Gesichtern in einem Bild
 
-In dieser Schnellstartanleitung erstellen Sie ein einfaches Python-Skript, das mithilfe der Azure-Gesichtserkennungs-API über das Python SDK menschliche Gesichter in einem Remotebild erkennt und umrandet. Die Anwendung zeigt ein ausgewähltes Bild und zeichnet einen Rahmen um jedes erkannte Gesicht.
+In diesem Schnellstart erstellen Sie ein Python-Skript, das mithilfe der Azure-Gesichtserkennungs-API über das Python SDK menschliche Gesichter in einem Remotebild erkennt und umrandet. Die Anwendung zeigt ein ausgewähltes Bild und zeichnet einen Rahmen um jedes erkannte Gesicht.
 
 Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) erstellen, bevor Sie beginnen. 
 
@@ -39,7 +39,7 @@ pip install cognitive_face
 
 ## <a name="detect-faces-in-an-image"></a>Gesichtserkennung in einem Bild
 
-Erstellen Sie ein neues Python-Skript mit dem Namen _FaceQuickstart.py_, und fügen Sie den folgenden Code hinzu. Dies ist die Kernfunktionen der Gesichtserkennung. Sie müssen `<Subscription Key>` durch den Wert Ihres Schlüssels ersetzen. Darüber hinaus müssen Sie unter Umständen den Wert von `BASE_URL` in die korrekte Regions-ID für Ihren Schlüssel ändern. (Eine Liste aller Regionsendpunkte finden Sie in den [Dokumenten zur Gesichtserkennungs-API](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236).) Abonnementschlüssel für kostenlose Testversionen werden in der Region **westus** generiert. Legen Sie optional `img_url` auf die URL des Bilds fest, das Sie verwenden möchten.
+Erstellen Sie ein neues Python-Skript mit dem Namen _FaceQuickstart.py_, und fügen Sie den folgenden Code hinzu. Dieser Code behandelt die Kernfunktionen der Gesichtserkennung. Sie müssen `<Subscription Key>` durch den Wert Ihres Schlüssels ersetzen. Darüber hinaus müssen Sie unter Umständen den Wert von `BASE_URL` in die korrekte Regions-ID für Ihren Schlüssel ändern. (Eine Liste aller Regionsendpunkte finden Sie in den [Dokumenten zur Gesichtserkennungs-API](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236).) Abonnementschlüssel für kostenlose Testversionen werden in der Region **westus** generiert. Legen Sie optional `img_url` auf die URL des Bilds fest, das Sie verwenden möchten.
 
 Das Skript erkennt Gesichter durch Aufrufen der **cognitive_face.face.detect**-Methode, die die [Detect](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236)-REST-API umschließt und eine Liste mit Gesichtern zurückgibt.
 
@@ -64,11 +64,11 @@ print(faces)
 
 Führen Sie die App mit dem Befehl `python FaceQuickstart.py` aus. Im Konsolenfenster sollte ungefähr folgende Textantwort angezeigt werden:
 
-```shell
+```console
 [{'faceId': '26d8face-9714-4f3e-bfa1-f19a7a7aa240', 'faceRectangle': {'top': 124, 'left': 459, 'width': 227, 'height': 227}}]
 ```
 
-Dies ist eine Liste der erkannten Gesichter. Jeder Eintrag in der Liste ist eine **dict**-Instanz, wobei `faceId` eine eindeutige ID für das erkannte Gesicht ist und `faceRectangle` die Position des erkannten Gesichts beschreibt. 
+Die Ausgabe stellt eine Liste der erkannten Gesichtern dar. Jeder Eintrag in der Liste ist eine **dict**-Instanz, wobei `faceId` eine eindeutige ID für das erkannte Gesicht ist und `faceRectangle` die Position des erkannten Gesichts beschreibt. 
 
 > [!NOTE]
 > Gesichts-IDs laufen nach 24 Stunden ab. Gesichtserkennungsdaten müssen explizit gespeichert werden, wenn Sie sie langfristig aufbewahren möchten.
@@ -83,7 +83,7 @@ from io import BytesIO
 from PIL import Image, ImageDraw
 ```
 
-Fügen Sie anschließend am Ende des Skripts den folgenden Code hinzu. Dadurch wird eine einfache Funktion zum Analysieren der Rechteckkoordinaten erstellt und Pillow zum Zeichnen von Rechtecken im ursprünglichen Bild verwendet. Anschließend wird das Bild in Ihrer standardmäßigen Bildanzeige angezeigt.
+Fügen Sie anschließend am Ende des Skripts den folgenden Code hinzu. Dieser Code erstellt eine einfache Funktion zum Analysieren der Rechteckkoordinaten und verwendet Pillow zum Zeichnen von Rechtecken im ursprünglichen Bild. Anschließend wird das Bild in Ihrer standardmäßigen Bildanzeige angezeigt.
 
 ```python
 # Convert width height to a point in a rectangle

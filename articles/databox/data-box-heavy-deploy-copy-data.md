@@ -6,16 +6,16 @@ author: alkohli
 ms.service: databox
 ms.subservice: heavy
 ms.topic: tutorial
-ms.date: 05/28/2019
+ms.date: 07/03/2019
 ms.author: alkohli
-ms.openlocfilehash: 8ee96f2e06071d60eb97596687387fd80ba14cc3
-ms.sourcegitcommit: 600d5b140dae979f029c43c033757652cddc2029
+ms.openlocfilehash: 1c45e06159e4c2850efa2d3ab3290647961fb7e1
+ms.sourcegitcommit: ccb9a7b7da48473362266f20950af190ae88c09b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/04/2019
-ms.locfileid: "66496275"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67592416"
 ---
-# <a name="tutorial-copy-data-to-azure-data-box-heavy-via-smb-preview"></a>Tutorial: Kopieren von Daten auf Azure Data Box Heavy über SMB (Vorschauversion)
+# <a name="tutorial-copy-data-to-azure-data-box-heavy-via-smb"></a>Tutorial: Kopieren von Daten auf Azure Data Box Heavy über SMB
 
 In diesem Tutorial wird beschrieben, wie Sie über die lokale Webbenutzeroberfläche eine Verbindung mit Ihrem Hostcomputer herstellen und Daten kopieren.
 
@@ -206,7 +206,7 @@ Nachdem Sie eine Verbindung mit der SMB-Freigabe hergestellt haben, beginnen Sie
 
 2. Verwenden Sie zum Optimieren der Leistung die folgenden Robocopy-Parameter beim Kopieren der Daten. (Die folgenden Zahlen stellen jeweils den Idealfall dar.)
 
-    | Plattform    | Überwiegend kleine Dateien (< 512 KB)    | Überwiegend mittelgroße Dateien (512 KB bis 1 MB)  | Überwiegend große Dateien (> 1 MB)                             |
+    | Plattform    | Überwiegend kleine Dateien < 512 KB    | Überwiegend mittelgroße Dateien (512 KB bis 1 MB)  | Überwiegend große Dateien > 1 MB                             |
     |-------------|--------------------------------|----------------------------|----------------------------|
     | Data Box Heavy | Sechs Robocopy-Sitzungen <br> 24 Threads pro Sitzung | Sechs Robocopy-Sitzungen <br> 16 Threads pro Sitzung | Sechs Robocopy-Sitzungen <br> 16 Threads pro Sitzung |
 

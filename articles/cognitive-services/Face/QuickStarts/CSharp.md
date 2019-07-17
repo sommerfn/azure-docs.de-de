@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: face-api
 ms.topic: quickstart
-ms.date: 03/27/2019
+ms.date: 07/03/2019
 ms.author: pafarley
-ms.openlocfilehash: 40c9fac27f45699d4c56e57480dcfde1b0ffb64d
-ms.sourcegitcommit: 956749f17569a55bcafba95aef9abcbb345eb929
+ms.openlocfilehash: 349ae3450b5817b5cfe9c95c41d159e3daca7a39
+ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58629916"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67603395"
 ---
 # <a name="quickstart-detect-faces-in-an-image-using-the-face-rest-api-and-c"></a>Schnellstart: Erkennen von Gesichtern in einem Bild mit der Gesichtserkennungs-REST-API und C#
 
@@ -30,7 +30,7 @@ Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](htt
 
 ## <a name="create-the-visual-studio-project"></a>Erstellen des Visual Studio-Projekts
 
-1. Erstellen Sie in Visual Studio ein neues Projekt vom Typ **Konsolen-App (.NET Framework)**, und nennen Sie es **FaceDetection**. 
+1. Erstellen Sie in Visual Studio ein neues Projekt vom Typ **Konsolen-App (.NET Framework)** , und nennen Sie es **FaceDetection**. 
 1. Sollte Ihre Projektmappe noch andere Projekte enthalten, wählen Sie dieses Projekt als das alleinige Startprojekt aus.
 
 ## <a name="add-face-detection-code"></a>Hinzufügen von Code für die Gesichtserkennung
@@ -77,7 +77,7 @@ namespace DetectFace
 
 ### <a name="receive-image-input"></a>Empfangen der Bildeingabe
 
-Fügen Sie der **Main**-Methode der **Program**-Klasse den folgenden Code hinzu. Dadurch wird der Benutzer über die Konsole aufgefordert, eine Bild-URL einzugeben. Anschließend wird eine weitere Methode (**MakeAnalysisRequest**) aufgerufen, um das Bild an diesem Speicherort zu verarbeiten.
+Fügen Sie der **Main**-Methode der **Program**-Klasse den folgenden Code hinzu. Durch diesen Code wird der Benutzer über die Konsole aufgefordert, eine Bild-URL einzugeben. Anschließend wird eine weitere Methode (**MakeAnalysisRequest**) aufgerufen, um das Bild an diesem Speicherort zu verarbeiten.
 
 ```csharp
         static void Main(string[] args)
@@ -162,7 +162,7 @@ Sie definieren die Hilfsmethoden in den folgenden Schritten.
 
 ### <a name="process-the-input-image-data"></a>Verarbeiten der Eingabebilddaten
 
-Fügen Sie der **Program**-Klasse die folgende Methode hinzu. Dadurch wird das Bild unter der angegebenen URL in ein Bytearray konvertiert.
+Fügen Sie der **Program**-Klasse die folgende Methode hinzu. Durch diese Methode wird das Bild unter der angegebenen URL in ein Bytearray konvertiert.
 
 ```csharp
         // Returns the contents of the specified file as a byte array.
@@ -179,7 +179,7 @@ Fügen Sie der **Program**-Klasse die folgende Methode hinzu. Dadurch wird das B
 
 ### <a name="parse-the-json-response"></a>Analysieren der JSON-Antwort
 
-Fügen Sie der **Program**-Klasse die folgende Methode hinzu. Dadurch wird die JSON-Antwort formatiert, sodass sie leichter lesbar ist. Ihre App schreibt diese Zeichenfolgendaten in die Konsole. Anschließend können Sie die Klasse und den Namespace schließen.
+Fügen Sie der **Program**-Klasse die folgende Methode hinzu. Durch diese Methode wird die JSON-Antwort formatiert, damit sie besser lesbar ist. Ihre App schreibt diese Zeichenfolgendaten in die Konsole. Anschließend können Sie die Klasse und den Namespace schließen.
 
 ```csharp
         // Formats the given JSON string by adding line breaks and indents.
@@ -250,7 +250,7 @@ Fügen Sie der **Program**-Klasse die folgende Methode hinzu. Dadurch wird die J
 
 ## <a name="run-the-app"></a>Ausführen der App
 
-Eine erfolgreiche Antwort zeigt Gesichtserkennungsdaten in leicht lesbarem JSON-Format an. Beispiel: 
+Eine erfolgreiche Antwort zeigt Gesichtserkennungsdaten in leicht lesbarem JSON-Format an. Beispiel:
 
 ```json
 [

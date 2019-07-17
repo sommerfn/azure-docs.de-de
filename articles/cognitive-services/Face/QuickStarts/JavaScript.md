@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: face-api
 ms.topic: quickstart
-ms.date: 02/07/2019
+ms.date: 07/03/2019
 ms.author: pafarley
-ms.openlocfilehash: d1aa3e3a23acf82af8435cbb075fac38353500e5
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: 70c496aef0ff2f34c917fd594767d464cab3e625
+ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57538730"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67603422"
 ---
 # <a name="quickstart-detect-faces-in-an-image-using-the-rest-api-and-javascript"></a>Schnellstart: Erkennen von Gesichtern in einem Bild mit der REST-API und JavaScript
 
@@ -41,7 +41,7 @@ Erstellen Sie eine neue HTML-Datei namens *detectFaces.html*, und fügen Sie ihr
 </html>
 ```
 
-Fügen Sie anschließend innerhalb des Elements `body` des Dokuments den folgenden Code hinzu. Dadurch wird eine einfache Benutzeroberfläche mit einem URL-Feld, einer Schaltfläche für die Gesichtsanalyse (**Analyze face**), einem Antwortbereich und einem Bereich für die Bildanzeige eingerichtet.
+Fügen Sie anschließend innerhalb des Elements `body` des Dokuments den folgenden Code hinzu. Mit diesem Code wird eine einfache Benutzeroberfläche mit einem URL-Feld, einer Schaltfläche für die Gesichtsanalyse (**Analyze face**), einem Antwortbereich und einem Bereich für die Bildanzeige eingerichtet.
 
 ```html
 <h1>Detect Faces:</h1>
@@ -65,7 +65,7 @@ Image to analyze: <input type="text" name="inputImage" id="inputImage"
 
 ## <a name="write-the-javascript-script"></a>Schreiben des JavaScript-Skripts
 
-Fügen Sie in Ihrem Dokument den folgenden Code direkt über dem Element `h1` hinzu. Dadurch wird der JavaScript-Code zum Aufrufen der Gesichtserkennungs-API eingerichtet.
+Fügen Sie in Ihrem Dokument den folgenden Code direkt über dem Element `h1` hinzu. Mit diesem Code wird der JavaScript-Code zum Aufrufen der Gesichtserkennungs-API eingerichtet.
 
 ```html
 <script type="text/javascript">
@@ -140,7 +140,7 @@ Sie müssen das Feld `subscriptionKey` mit dem Wert Ihres Abonnementschlüssels 
 
 ![GettingStartCSharpScreenshot](../Images/face-detect-javascript.png)
 
-Eine erfolgreiche JSON-Antwort sieht in etwa wie folgt aus:
+Der folgende Text ist ein Beispiel für eine erfolgreiche JSON-Antwort.
 
 ```json
 [

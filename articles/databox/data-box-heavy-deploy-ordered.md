@@ -6,16 +6,16 @@ author: alkohli
 ms.service: databox
 ms.subservice: heavy
 ms.topic: tutorial
-ms.date: 05/29/2019
+ms.date: 07/03/2019
 ms.author: alkohli
-ms.openlocfilehash: 8453a3592c1822489a3724dacdf8f0ff5e8492f1
-ms.sourcegitcommit: ef06b169f96297396fc24d97ac4223cabcf9ac33
+ms.openlocfilehash: c7fbd37ff8d40f27e0ca18a6f9816d3d96422ab9
+ms.sourcegitcommit: ccb9a7b7da48473362266f20950af190ae88c09b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/31/2019
-ms.locfileid: "66427909"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67592409"
 ---
-# <a name="tutorial-order-azure-data-box-heavy-preview"></a>Tutorial: Bestellen von Azure Data Box Heavy (Vorschauversion)
+# <a name="tutorial-order-azure-data-box-heavy"></a>Tutorial: Bestellen von Azure Data Box Heavy
 
 
 Azure Data Box Heavy ist eine Hybridlösung, mit der Sie Ihre lokalen Daten auf schnelle, einfache und zuverlässige Weise in Azure importieren können. Sie übertragen Ihre Daten auf ein von Microsoft bereitgestelltes Speichergerät mit einer nutzbaren Kapazität von etwa 770 TB und senden es anschließend an Microsoft zurück. Diese Daten werden dann in Azure hochgeladen.
@@ -36,7 +36,7 @@ Bevor Sie das Gerät bereitstellen, müssen die folgenden Konfigurationsvorausse
 
 Stellen Sie Folgendes sicher, bevor Sie beginnen:
 
-- Das Gerät passt durch normale Türen und Zugänge. Vergewissern Sie sich jedoch, dass das Gerät durch alle Ihre Zugänge passt. (Abmessungen des Geräts: Breite: 66,04 cm, Länge: 121,92 cm, Höhe: 71,12 cm)
+- Das Gerät passt durch normale Türen und Zugänge. Vergewissern Sie sich jedoch, dass das Gerät durch alle Ihre Zugänge passt. (Abmessungen des Geräts: Breite: 66,04 cm, Länge: 121,92 cm, Höhe: 71,12 cm)
 - Falls sich der Aufstellungsort des Geräts nicht im Erdgeschoss befindet, muss das gewünschte Stockwerk über einen Aufzug oder über eine Rampe erreichbar sein. Das Gerät wiegt rund 227 kg.
 - In Ihrem Datencenter muss ein ebener Aufstellungsort mit einer Netzwerkverbindung verfügbar sein, der genügend Platz für ein Gerät dieser Größe bietet.
 
@@ -95,7 +95,7 @@ Führen Sie die folgenden Schritte im Azure-Portal aus, um ein Gerät zu bestell
     
     |Einstellung  |Wert  |
     |---------|---------|
-    |Name     | Geben Sie einen Anzeigenamen an, um die Bestellung nachzuverfolgen. <br> Der Name kann zwischen 3 und 24 Zeichen lang sein und darf nur Buchstaben, Zahlen und Bindestriche enthalten. <br> Der Name muss mit einem Buchstaben oder einer Zahl beginnen und enden.      |
+    |NAME     | Geben Sie einen Anzeigenamen an, um die Bestellung nachzuverfolgen. <br> Der Name kann zwischen 3 und 24 Zeichen lang sein und darf nur Buchstaben, Zahlen und Bindestriche enthalten. <br> Der Name muss mit einem Buchstaben oder einer Zahl beginnen und enden.      |
     |Ressourcengruppe     | Verwenden Sie eine vorhandene Ressourcengruppe, oder erstellen Sie eine neue Ressourcengruppe. <br> Eine Ressourcengruppe ist ein logischer Container für die Ressourcen, die zusammen verwaltet oder bereitgestellt werden können.         |
     |Azure-Zielregion     | Wählen Sie eine Region für Ihr Speicherkonto aus. <br> Weitere Informationen finden Sie unter [Regionale Verfügbarkeit](https://azure.microsoft.com/global-infrastructure/services/?products=databox).        |
     |Speicherziel     | Wählen Sie Speicherkonten, verwaltete Datenträger oder beides aus. <br> Wählen Sie basierend auf der angegebenen Azure-Region mindestens ein Speicherkonto in der gefilterten Liste eines vorhandenen Speicherkontos aus. <br>Data Box Heavy kann mit bis zu zehn Speicherkonten verknüpft werden. <br> Sie können auch ein neues Speicherkonto vom Typ **Universell V1** oder **Universell V2** oder ein **Blob Storage-Konto** erstellen. <br> Azure Data Lake Storage Gen 2-Konten werden nicht unterstützt. Weitere Informationen finden Sie unter [Unterstützte Speicherkonten](data-box-heavy-system-requirements.md#supported-storage-accounts). <br>Speicherkonten mit virtuellen Netzwerken werden unterstützt. Aktivieren Sie in den Netzwerkfirewalleinstellungen des Speicherkontos die vertrauenswürdigen Dienste, um dem Data Box-Dienst die Verwendung geschützter Speicherkonten zu ermöglichen. Weitere Informationen zum Hinzufügen von Azure Data Box als vertrauenswürdiger Dienst finden Sie [hier](../storage/common/storage-network-security.md#exceptions).|

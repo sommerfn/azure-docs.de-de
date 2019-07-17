@@ -8,18 +8,18 @@ manager: cgronlun
 ms.service: cognitive-services
 ms.subservice: custom-vision
 ms.topic: tutorial
-ms.date: 03/11/2019
+ms.date: 07/03/2019
 ms.author: pafarley
-ms.openlocfilehash: 51b2cd42fabe6406f88388e99459a6f3dd3e69f5
-ms.sourcegitcommit: be9fcaace62709cea55beb49a5bebf4f9701f7c6
+ms.openlocfilehash: b4b10591069b71a4e70769f5bdcd6149768c5007
+ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/17/2019
-ms.locfileid: "65827649"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67604024"
 ---
 # <a name="tutorial-recognize-azure-service-logos-in-camera-pictures"></a>Tutorial: Erkennen von Azure-Dienstlogos in Bildern von der Kamera
 
-In diesem Tutorial erkunden Sie eine Beispiel-App, die Azure Custom Vision im Rahmen eines größeren Szenarios verwendet. Die AI Visual Provision-App (eine Xamarin.Forms-App für mobile Plattformen) analysiert Kamerabilder von Azure-Dienstlogos und stellt dann die eigentlichen Dienste im Azure-Konto des Benutzers bereit. Hier erfahren Sie, wie Custom Vision in Verbindung mit anderen Komponenten verwendet wird, um eine nützliche End-to-End-Anwendung bereitzustellen. Führen Sie das gesamte App-Szenario selbst aus, oder führen Sie einfach den Custom Vision-Teil des Setups durch, und erkunden Sie, wie dieser von der App genutzt wird.
+In diesem Tutorial erkunden Sie eine Beispiel-App, die Azure Custom Vision im Rahmen eines größeren Szenarios verwendet. Die AI Visual Provision-App (eine Xamarin.Forms-App für mobile Plattformen) analysiert Kamerabilder von Azure-Dienstlogos und stellt dann die eigentlichen Dienste im Azure-Konto des Benutzers bereit. Hier erfahren Sie, wie Custom Vision in Verbindung mit anderen Komponenten verwendet wird, um eine nützliche End-to-End-Anwendung bereitzustellen. Sie können das gesamte App-Szenario für sich selbst ausführen oder lediglich den Custom Vision-Teil des Setups absolvieren und sich ansehen, wie dieser von der App genutzt wird.
 
 In diesem Lernprogramm lernen Sie Folgendes:
 
@@ -51,7 +51,7 @@ Melden Sie sich bei der [Custom Vision-Website](https://customvision.ai/) an, un
 
 Trainieren Sie als Nächstes den Algorithmus für die Logoerkennung, indem Sie Bilder von Azure-Dienstlogos hochladen und manuell markieren bzw. taggen. Im AIVisualProvision-Repository finden Sie eine Reihe von Trainingsbildern, die Sie hierfür verwenden können. Wählen Sie auf der Website auf der Registerkarte **Training Images** (Trainingsbilder) die Schaltfläche **Bilder hinzufügen**. Navigieren Sie anschließend zum Ordner **Documents/Images/Training_DataSet** des Repositorys. Sie müssen die Logos manuell in jedem Bild markieren. Wenn Sie dieses Projekt nur testen möchten, kann es daher ratsam sein, nur eine Teilmenge der Bilder hochzuladen. Laden Sie mindestens 15 Instanzen jedes Tags hoch, das Sie verwenden möchten.
 
-Wählen Sie nach dem Hochladen der Trainingsbilder das erste Bild in der Anzeige aus. Daraufhin wird das Fenster zum Anwenden der Markierung angezeigt. Zeichnen Sie Rahmen, und weisen Sie Tags für die Logos in jedem Bild zu. 
+Wählen Sie nach dem Hochladen der Trainingsbilder das erste Bild in der Anzeige aus. Daraufhin wird das Markierungsfenster geöffnet. Zeichnen Sie Rahmen, und weisen Sie Tags für die Logos in jedem Bild zu. 
 
 ![Markieren von Logos auf der Custom Vision-Website](media/azure-logo-tutorial/tag-logos.png)
 
@@ -63,13 +63,13 @@ Navigieren Sie nach dem Markieren eines Bilds nach rechts, um das nächste Bild 
 
 ## <a name="train-the-object-detector"></a>Trainieren der Objekterkennung
 
-Legen Sie im linken Bereich den Schalter **Tags** auf **Markiert** fest, um Ihre Bilder anzuzeigen. Wählen Sie anschließend die grüne Schaltfläche am oberen Rand der Seite, um das Modell zu trainieren. Hierdurch wird der Algorithmus dafür trainiert, die gleichen Tags in neuen Bildern zu erkennen. Zudem wird das Modell anhand einiger Ihrer vorhandenen Bilder getestet, um Genauigkeitsbewertungen zu generieren.
+Legen Sie im linken Bereich den Schalter **Tags** auf **Markiert** fest, um Ihre Bilder anzuzeigen. Wählen Sie anschließend die grüne Schaltfläche am oberen Rand der Seite, um das Modell zu trainieren. Der Algorithmus wird darauf trainiert, die gleichen Tags in neuen Bildern zu erkennen. Zudem wird das Modell anhand einiger Ihrer vorhandenen Bilder getestet, um Genauigkeitsbewertungen zu generieren.
 
 ![Custom Vision-Website mit Registerkarte „Training Images“ (Trainingsbilder). In diesem Screenshot ist die Schaltfläche „Train“ (Trainieren) hervorgehoben.](media/azure-logo-tutorial/train-model.png)
 
 ## <a name="get-the-prediction-url"></a>Abrufen der Vorhersage-URL
 
-Nachdem Sie das Modell trainiert haben, können Sie es in Ihre App integrieren. Zu diesem Zweck müssen Sie die Endpunkt-URL (die Adresse des Modells, das von der App abgefragt wird) und den Vorhersageschlüssel (um der App Zugriff auf Vorhersageanforderungen zu gewähren) abrufen. Wählen Sie auf der Registerkarte **Leistung** oben auf der Seite die Schaltfläche **Prediction URL** (Vorhersage-URL).
+Nachdem Sie das Modell trainiert haben, können Sie es in Ihre App integrieren. Sie müssen die Endpunkt-URL (die Adresse des Modells, das von der App abgefragt wird) und den Vorhersageschlüssel (um der App Zugriff auf Vorhersageanforderungen zu gewähren) abrufen. Wählen Sie auf der Registerkarte **Leistung** oben auf der Seite die Schaltfläche **Prediction URL** (Vorhersage-URL).
 
 ![Custom Vision-Website mit dem Fenster für die Vorhersage-API, in dem eine URL-Adresse und ein API-Schlüssel angezeigt werden](media/azure-logo-tutorial/cusvis-endpoint.png)
 

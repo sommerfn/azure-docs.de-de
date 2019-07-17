@@ -1,21 +1,21 @@
 ---
 title: 'Tutorial: Gesichtserkennungs-API, C#'
 titleSuffix: Azure Cognitive Services
-description: Erstellen Sie eine einfache Windows-App, die die Gesichtserkennungs-API von Cognitive Services verwendet, um Merkmale von Gesichtern in einem Bild zu erkennen.
+description: Hier erfahren Sie, wie Sie eine Windows-App erstellen, die die Gesichtserkennungs-API von Cognitive Services verwendet, um Merkmale von Gesichtern in einem Bild zu erkennen.
 services: cognitive-services
 author: ghogen
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: face-api
 ms.topic: tutorial
-ms.date: 05/07/2018
+ms.date: 07/03/2019
 ms.author: ghogen
-ms.openlocfilehash: 492161a9a47627db8a06686daf953e99ca652e02
-ms.sourcegitcommit: be9fcaace62709cea55beb49a5bebf4f9701f7c6
+ms.openlocfilehash: 7907a79289149d9e165dd6df0c09bee596e624e2
+ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/17/2019
-ms.locfileid: "65827663"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67606812"
 ---
 # <a name="connecting-to-cognitive-services-face-api-by-using-connected-services-in-visual-studio"></a>Herstellen einer Verbindung mit der Gesichtserkennungs-API von Cognitive Services mithilfe der verbundenen Dienste in Visual Studio
 

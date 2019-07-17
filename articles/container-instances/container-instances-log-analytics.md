@@ -1,24 +1,24 @@
 ---
 title: Protokollierung für Containerinstanzen mit Azure Monitor-Protokollen
-description: Hier erfahren Sie, wie Sie Containerausgaben (STDOUT und STDERR) an Azure Monitor-Protokolle senden.
+description: Hier erfahren Sie, wie Sie Protokolle aus Azure Container Instances an Azure Monitor-Protokolle senden.
 services: container-instances
 author: dlepow
 ms.service: container-instances
 ms.topic: overview
-ms.date: 07/17/2018
+ms.date: 07/09/2019
 ms.author: danlep
-ms.openlocfilehash: 13f1fa92365c284ed10bd7c0a1b2fdefef50b29e
-ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
+ms.openlocfilehash: cab0bc4d2d0491c70a1d2f11f3a5d5d831ade6cf
+ms.sourcegitcommit: dad277fbcfe0ed532b555298c9d6bc01fcaa94e2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56879704"
+ms.lasthandoff: 07/10/2019
+ms.locfileid: "67722645"
 ---
 # <a name="container-instance-logging-with-azure-monitor-logs"></a>Protokollierung für Containerinstanzen mit Azure Monitor-Protokollen
 
-Log Analytics-Arbeitsbereiche bieten einen zentralen Ort für das Speichern und Abfragen von Protokolldaten – und zwar nicht nur von Azure-Ressourcen, sondern auch von lokalen Ressourcen und Ressourcen in anderen Clouds. In Azure Container Instances ist die Unterstützung für das Senden von Daten an Azure Monitor-Protokolle bereits integriert.
+Log Analytics-Arbeitsbereiche bieten einen zentralen Ort zum Speichern und Abfragen von Protokolldaten – sowohl für Azure-Ressourcen als auch für lokale Ressourcen und Ressourcen in anderen Clouds. In Azure Container Instances ist die Unterstützung für das Senden von Daten an Azure Monitor-Protokolle bereits integriert.
 
-Um Containerinstanzdaten an Azure Monitor-Protokolle senden zu können, müssen Sie unter Verwendung der Azure-Befehlszeilenschnittstelle (oder unter Verwendung von Cloud Shell) und einer YAML-Datei eine Containergruppe erstellen. In den folgenden Abschnitten wird beschrieben, wie Sie eine Containergruppe mit aktivierter Protokollierung erstellen und Protokolle abfragen.
+Um Containerinstanzdaten an Azure Monitor-Protokolle senden zu können, müssen Sie beim Erstellen einer Containergruppe die ID und den Arbeitsbereichsschlüssel eines Log Analytics-Arbeitsbereichs angeben. In den folgenden Abschnitten wird beschrieben, wie Sie eine Containergruppe mit aktivierter Protokollierung erstellen und Protokolle abfragen.
 
 [!INCLUDE [azure-monitor-log-analytics-rebrand](../../includes/azure-monitor-log-analytics-rebrand.md)]
 
@@ -36,7 +36,7 @@ Azure Container Instances benötigt die Berechtigung zum Senden von Daten an Ihr
 So erhalten Sie die Log Analytics-Arbeitsbereichs-ID und den Primärschlüssel:
 
 1. Navigieren Sie im Azure-Portal zu Ihrem Log Analytics-Arbeitsbereich.
-1. Wählen Sie unter **EINSTELLUNGEN** die Option **Erweiterte Einstellungen** aus.
+1. Wählen Sie unter **Einstellungen** die Option **Erweiterte Einstellungen** aus.
 1. Klicken Sie auf **Verbundene Quellen** > **Windows-Server** (oder **Linux-Server**, ID und Schlüssel sind für beide identisch).
 1. Notieren Sie sich Folgendes:
    * **ARBEITSBEREICHS-ID**
@@ -46,11 +46,11 @@ So erhalten Sie die Log Analytics-Arbeitsbereichs-ID und den Primärschlüssel:
 
 Mit der Log Analytics-Arbeitsbereichs-ID und dem Primärschlüssel können Sie nun eine protokollierungsfähige Containergruppe erstellen.
 
-In den folgenden Beispielen werden zwei Möglichkeiten zum Erstellen einer Containergruppe mit einem einzelnen [fluentd][fluentd]-Container gezeigt: Azure CLI und Azure CLI mit einer YAML-Vorlage. Der Fluentd-Container generiert mehrere Ausgabezeilen in der Standardkonfiguration. Da diese Ausgabe an Ihren Log Analytics-Arbeitsbereich gesendet wird, eignet sie sich gut zur Veranschaulichung der Anzeige und Abfrage von Protokollen.
+In den folgenden Beispielen werden zwei Möglichkeiten zum Erstellen einer Containergruppe mit einem einzelnen Container ([fluentd][fluentd]) gezeigt: Azure CLI und Azure CLI mit einer YAML-Vorlage. Der Fluentd-Container generiert mehrere Ausgabezeilen in der Standardkonfiguration. Da diese Ausgabe an Ihren Log Analytics-Arbeitsbereich gesendet wird, eignet sie sich gut zur Veranschaulichung der Anzeige und Abfrage von Protokollen.
 
 ### <a name="deploy-with-azure-cli"></a>Bereitstellen über die Azure-Befehlszeilenschnittstelle
 
-Für eine Bereitstellung über die Azure-Befehlszeilenschnittstelle geben Sie die Parameter `--log-analytics-workspace` und `--log-analytics-workspace-key` im Befehl [az container create][az-container-create] an. Ersetzen Sie die beiden Arbeitsbereichswerte durch die Werten, die Sie im vorherigen Schritt erhalten haben (und aktualisieren Sie den Ressourcengruppennamen), bevor Sie den folgenden Befehl ausführen.
+Für eine Bereitstellung über die Azure-Befehlszeilenschnittstelle geben Sie im Befehl [az container create][az-container-create] die Parameter `--log-analytics-workspace` und `--log-analytics-workspace-key` an. Ersetzen Sie die beiden Arbeitsbereichswerte durch die Werten, die Sie im vorherigen Schritt erhalten haben (und aktualisieren Sie den Ressourcengruppennamen), bevor Sie den folgenden Befehl ausführen.
 
 ```azurecli-interactive
 az container create \
@@ -66,7 +66,7 @@ az container create \
 Verwenden Sie diese Methode, wenn Sie Containergruppen lieber mit YAML bereitstellen möchten. Der folgende YAML-Code definiert eine Containergruppe mit einem einzelnen Container. Kopieren Sie den YAML-Code in eine neue Datei, und ersetzen Sie `LOG_ANALYTICS_WORKSPACE_ID` und `LOG_ANALYTICS_WORKSPACE_KEY` durch die im vorherigen Schritt erhaltenen Werte. Speichern Sie die Datei unter dem Namen **deploy-aci.yaml**.
 
 ```yaml
-apiVersion: 2018-06-01
+apiVersion: 2018-10-01
 location: eastus
 name: mycontainergroup001
 properties:
@@ -100,12 +100,14 @@ Sie sollten kurz nach Ausgabe des Befehls eine Antwort von Azure mit den Bereits
 
 ## <a name="view-logs-in-azure-monitor-logs"></a>Anzeigen von Protokollen in Azure Monitor-Protokollen
 
-Nach der Bereitstellung der Containergruppe kann es bis zu 10 Minuten dauern, bis die ersten Protokolleinträge im Azure-Portal angezeigt werden. Öffnen Sie zum Anzeigen der Protokolle der Containergruppe Ihren Log Analytics-Arbeitsbereich, und führen Sie die folgenden Schritte aus:
+Nach der Bereitstellung der Containergruppe kann es bis zu 10 Minuten dauern, bis die ersten Protokolleinträge im Azure-Portal angezeigt werden. So zeigen Sie die Protokolle der Containergruppe an:
 
-1. Wählen Sie in der Übersicht **OMS-Arbeitsbereich** die Option **Protokollsuche** aus. OMS-Arbeitsbereiche werden jetzt als Log Analytics-Arbeitsbereiche bezeichnet.  
-1. Klicken Sie unter **Weitere Abfragen zum Ausprobieren** auf den Link **Alle gesammelten Daten**.
+1. Navigieren Sie im Azure-Portal zu Ihrem Log Analytics-Arbeitsbereich.
+1. Wählen Sie unter **Allgemein** die Option **Protokolle** aus.  
+1. Geben Sie die folgende Abfrage ein: `search *`.
+1. Wählen Sie **Ausführen** aus.
 
-Von der Abfrage `search *` sollten mehrere Ergebnisse angezeigt werden. Falls anfangs keine Ergebnisse angezeigt werden, warten Sie einige Minuten, und klicken Sie dann auf die Schaltfläche **AUSFÜHREN**, um die Abfrage erneut auszuführen. Standardmäßig werden Protokolleinträge als Listenansicht angezeigt. Wählen Sie **Tabelle**, um die Protokolleinträge in einem komprimierten Format anzuzeigen. Sie können dann eine Zeile erweitern, um den Inhalt eines einzelnen Protokolleintrags anzuzeigen.
+Von der Abfrage `search *` sollten mehrere Ergebnisse angezeigt werden. Falls anfangs keine Ergebnisse angezeigt werden, warten Sie einige Minuten, und wählen Sie dann die Schaltfläche **Ausführen** aus, um die Abfrage erneut auszuführen. Protokolleinträge werden standardmäßig im Format **Tabelle** angezeigt. Sie können dann eine Zeile erweitern, um den Inhalt eines einzelnen Protokolleintrags anzuzeigen.
 
 ![Protokollsuchergebnisse im Azure-Portal][log-search-01]
 

@@ -8,17 +8,17 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: computer-vision
 ms.topic: quickstart
-ms.date: 03/11/2019
+ms.date: 07/03/2019
 ms.author: pafarley
 ms.custom: seodec18
-ms.openlocfilehash: f76b61d3cc39f8ae35e1bf03316e7618b7136380
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.openlocfilehash: 80d3478a684ef2fa686ac33b8492ec91be11ac6f
+ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "60003784"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67605981"
 ---
-# <a name="quickstart-analyze-a-local-image-using-the-rest-api-and-curl-in-computer-vision"></a>Schnellstart: Analysieren eines lokalen Bilds mit der REST-API und cURL in der Maschinelles Sehen-API
+# <a name="quickstart-analyze-a-local-image-using-the-computer-vision-rest-api-and-curl"></a>Schnellstart: Analysieren eines lokalen Bilds mit der Maschinelles Sehen-REST-API und cURL
 
 In dieser Schnellstartanleitung analysieren Sie mithilfe der REST-API von Maschinelles Sehen ein lokal gespeichertes Bild, um visuelle Merkmale zu extrahieren. Mit der Methode [Analyze Image](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa) können Sie basierend auf dem Inhalt des Bilds visuelle Merkmale extrahieren.
 
@@ -42,7 +42,7 @@ Führen Sie zum Erstellen und Ausführen des Beispiels die folgenden Schritte au
 1. Öffnen Sie ein Eingabeaufforderungsfenster.
 1. Fügen Sie den Befehl aus dem Text-Editor in das Eingabeaufforderungsfenster ein, und führen Sie den Befehl aus.
 
-```console
+```bash
 curl -H "Ocp-Apim-Subscription-Key: <Subscription Key>" -H "Content-Type: application/octet-stream" "https://westcentralus.api.cognitive.microsoft.com/vision/v2.0/analyze?visualFeatures=Categories,Description&details=Landmarks&language=en" --data-binary "<localImage>"
 ```
 
@@ -105,10 +105,6 @@ Eine erfolgreiche Antwort wird im JSON-Format zurückgegeben. Die Beispielanwend
   }
 }
 ```
-
-## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
-
-Wenn Sie das Eingabeaufforderungsfenster und den Text-Editor nicht mehr benötigen, schließen Sie sie.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

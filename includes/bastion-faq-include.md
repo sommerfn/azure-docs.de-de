@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 06/17/2019
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: e29a9265e010c3f442b742faf62b16dae02739fa
-ms.sourcegitcommit: 156b313eec59ad1b5a820fabb4d0f16b602737fc
+ms.openlocfilehash: 29ab9b3c33aae6005510c34b207c7f87714149e5
+ms.sourcegitcommit: ccb9a7b7da48473362266f20950af190ae88c09b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67191139"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67608188"
 ---
 ### <a name="preview"></a>Wie kann ich die Public Preview nutzen?
 
@@ -56,3 +56,7 @@ Zum Herstellen einer Verbindung sind die folgenden Rollen erforderlich:
 ### <a name="previewbill"></a>Preise: Fallen für die Teilnahme an der Vorschau Gebühren an?
 
 Während der Public Preview werden nur teilweise Gebühren in Rechnung gestellt. Für die Bereitstellung gilt allerdings auch keine SLA. Weitere Informationen hierzu finden Sie in der [Preisübersicht](https://aka.ms/BastionHostPricing).
+
+### <a name="previewbill"></a>Warum erhalte ich vor Beginn der Bastion-Sitzung die Fehlermeldung „Ihre Sitzung ist abgelaufen.“?
+
+Eine Sitzung darf nur über das Azure-Portal initiiert werden. Melden Sie sich beim Azure-Portal an, und starten Sie Ihre Sitzung erneut. Dieser Fehler ist zu erwarten, wenn Sie direkt von einer anderen Browsersitzung oder -registerkarte aus zu der URL navigieren. Er trägt zum Schutz Ihrer Sitzung bei und sorgt dafür, dass nur über das Azure-Portal auf die Sitzung zugegriffen werden kann.

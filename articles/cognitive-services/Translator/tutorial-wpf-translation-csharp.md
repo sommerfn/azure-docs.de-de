@@ -10,12 +10,12 @@ ms.subservice: translator-text
 ms.topic: tutorial
 ms.date: 06/04/2019
 ms.author: swmachan
-ms.openlocfilehash: b300c40b4a9c832a0df87f7cfc6e6a9558d766f6
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: 36d85e11133e7197212ae1b37609628689b68a13
+ms.sourcegitcommit: cf438e4b4e351b64fd0320bf17cc02489e61406a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67448226"
+ms.lasthandoff: 07/08/2019
+ms.locfileid: "67657942"
 ---
 # <a name="tutorial-create-a-translation-app-with-wpf"></a>Tutorial: Erstellen einer Übersetzungs-App mit WPF
 
@@ -62,7 +62,7 @@ Als Erstes richten wir unser Projekt in Visual Studio ein.
 1. Öffnen Sie Visual Studio. Wählen Sie anschließend **Datei > Neu > Projekt**.
 2. Suchen Sie im linken Bereich nach **Visual C#** , und wählen Sie diese Option aus. Wählen Sie anschließend im mittleren Bereich die Option **WPF-App (.NET Framework)** .
    ![Erstellen einer WPF-App in Visual Studio](media/create-wpf-project-visual-studio.png)
-3. Geben Sie Ihrem Projekt einen Namen, legen Sie die Version des Frameworks auf **.NET Framework 4.5.2 oder höher** fest, und klicken Sie dann auf **OK**.
+3. Geben Sie Ihrem Projekt den Namen `MSTranslatorTextDemo`, legen Sie die Frameworkversion auf **.NET Framework 4.5.2 oder höher** fest, und klicken Sie dann auf **OK**.
 4. Ihr Projekt wurde erstellt. Sie sehen, dass zwei Registerkarten geöffnet sind: `MainWindow.xaml` und `MainWindow.xaml.cs`. In diesem Tutorial fügen wir diesen beiden Dateien Code hinzu. Die erste Datei dient für die Benutzeroberfläche der App, und die zweite Datei ist für unsere Aufrufe der Textübersetzung und der Bing-Rechtschreibprüfung bestimmt.
    ![Prüfen Ihrer Umgebung](media/blank-wpf-project.png)
 
@@ -82,6 +82,7 @@ Wir fügen unserem Projekt Assemblys hinzu, um Objekte zu serialisieren und zu d
    * [System.Runtime.Serialization](https://docs.microsoft.com/dotnet/api/system.runtime.serialization)
    * [System.Web](https://docs.microsoft.com/dotnet/api/system.web)
    * [System.Web.Extensions](https://docs.microsoft.com/dotnet/api/system.web)
+   * [System.Windows](https://docs.microsoft.com/dotnet/api/system.windows)
 3. Nachdem Sie diese Verweise Ihrem Projekt hinzugefügt haben, können Sie auf **OK** klicken, um den **Verweis-Manager** zu schließen.
 
 > [!NOTE]
@@ -197,7 +198,7 @@ Unser gesamtes Projekt ist in der `MainWindow : Window`-Klasse gekapselt. Wir be
        // authentication options, see: https://docs.microsoft.com/azure/cognitive-services/authentication.
        const string COGNITIVE_SERVICES_KEY = "YOUR_COG_SERVICES_KEY";
        // Endpoints for Translator Text and Bing Spell Check
-       public static readonly string TEXT_TRANSLATION_API_ENDPOINT = "https://api.cognitive.microsofttranslator.com/{0}?api- version=3.0";
+       public static readonly string TEXT_TRANSLATION_API_ENDPOINT = "https://api.cognitive.microsofttranslator.com/{0}?api-version=3.0";
        const string BING_SPELL_CHECK_API_ENDPOINT = "https://westus.api.cognitive.microsoft.com/bing/v7.0/spellcheck/";
        // An array of language codes
        private string[] languageCodes;
@@ -211,7 +212,7 @@ Unser gesamtes Projekt ist in der `MainWindow : Window`-Klasse gekapselt. Wir be
        {
            Exception e = (Exception)args.ExceptionObject;
            MessageBox.Show("Caught " + e.Message, "Error", MessageBoxButton.OK, MessageBoxImage.Error);
-           System.Windows.app.Current.Shutdown();
+           System.Windows.Application.Current.Shutdown();
        }
        // MainWindow constructor
        public MainWindow()
@@ -224,7 +225,7 @@ Unser gesamtes Projekt ist in der `MainWindow : Window`-Klasse gekapselt. Wir be
                MessageBox.Show("One or more invalid API subscription keys.\n\n" +
                    "Put your keys in the *_API_SUBSCRIPTION_KEY variables in MainWindow.xaml.cs.",
                    "Invalid Subscription Key(s)", MessageBoxButton.OK, MessageBoxImage.Error);
-               System.Windows.app.Current.Shutdown();
+               System.Windows.Application.Current.Shutdown();
            }
            else
            {

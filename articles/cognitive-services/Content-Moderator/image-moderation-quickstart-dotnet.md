@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: content-moderator
 ms.topic: quickstart
-ms.date: 03/20/2019
+ms.date: 07/03/2019
 ms.author: sajagtap
-ms.openlocfilehash: 9cc18ce1fde5de354e3da5e384c08ada1927d097
-ms.sourcegitcommit: 563f8240f045620b13f9a9a3ebfe0ff10d6787a2
+ms.openlocfilehash: d9a28dcd4af68cf9c00eb3d338c4bd83c8d89ecc
+ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/01/2019
-ms.locfileid: "58757228"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67604119"
 ---
 # <a name="quickstart-analyze-images-for-objectionable-content-in-c"></a>Schnellstart: Analysieren von Bildern auf unzulässige Inhalte in C#
 
@@ -34,7 +34,7 @@ Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](htt
 
 ## <a name="create-the-visual-studio-project"></a>Erstellen des Visual Studio-Projekts
 
-1. Erstellen Sie in Visual Studio ein neues Projekt vom Typ **Konsolen-App (.NET Framework)**, und nennen Sie es **ImageModeration**. 
+1. Erstellen Sie in Visual Studio ein neues Projekt vom Typ **Konsolen-App (.NET Framework)** , und nennen Sie es **ImageModeration**. 
 1. Sollte Ihre Projektmappe noch andere Projekte enthalten, wählen Sie dieses Projekt als das alleinige Startprojekt aus.
 1. Rufen Sie die erforderlichen NuGet-Pakete ab. Klicken Sie im Projektmappen-Explorer mit der rechten Maustaste auf das Projekt, wählen Sie **NuGet-Pakete verwalten** aus, suchen Sie nach den folgenden Paketen, und installieren Sie sie:
     - Microsoft.Azure.CognitiveServices.ContentModerator
@@ -60,7 +60,7 @@ Fügen Sie der Datei *Program.cs* den folgenden Code hinzu, um einen Content Mod
 
 ### <a name="set-up-input-and-output-targets"></a>Einrichten von Ein- und Ausgabezielen
 
-Fügen Sie der Klasse **Program** in _Program.cs_ die folgenden statischen Felder hinzu. Diese geben die Dateien für die Eingabe (Bildinhalte) und die Ausgabe (JSON-Inhalte) an.
+Fügen Sie der Klasse **Program** in _Program.cs_ die folgenden statischen Felder hinzu. Diese Felder dienen zum Angeben der Dateien für die Eingabe (Bildinhalte) und die Ausgabe (JSON-Inhalte).
 
 [!code-csharp[](~/cognitive-services-content-moderator-samples/documentation-samples/csharp/image-moderation-quickstart-dotnet.cs?range=49-53)]
 
@@ -86,13 +86,13 @@ Fügen Sie der **Program**-Klasse die folgende Methode hinzu. Diese Methode wert
 
 ### <a name="load-the-input-images"></a>Laden der Eingabebilder
 
-Fügen Sie der Methode **Main** in der Klasse **Program** den folgenden Code hinzu. Dadurch wird das Programm für den Abruf von Auswertungsdaten für jede Bild-URL in der Eingabedatei eingerichtet. Die Daten werden anschließend in eine einzelne Ausgabedatei geschrieben.
+Fügen Sie der Methode **Main** in der Klasse **Program** den folgenden Code hinzu. Durch diesen Code wird das Programm für den Abruf von Auswertungsdaten für jede Bild-URL in der Eingabedatei eingerichtet. Die Daten werden anschließend in eine einzelne Ausgabedatei geschrieben.
 
 [!code-csharp[](~/cognitive-services-content-moderator-samples/documentation-samples/csharp/image-moderation-quickstart-dotnet.cs?range=17-46)]
 
 ## <a name="run-the-program"></a>Ausführen des Programms
 
-Das Programm schreibt JSON-Zeichenfolgendaten in die Datei _ModerationOutput.json_. Die in dieser Schnellstartanleitung verwendeten Beispielbilder führen zu folgender Ausgabe. Beachten Sie, dass jedes Bild über unterschiedliche Abschnitte für `ImageModeration`, `FaceDetection` und `TextDetection` verfügt. Diese entsprechen den drei API-Aufrufen aus der Methode **EvaluateImage**.
+Das Programm schreibt JSON-Zeichenfolgendaten in die Datei _ModerationOutput.json_. Die in dieser Schnellstartanleitung verwendeten Beispielbilder führen zu folgender Ausgabe. Jedes Bild verfügt über unterschiedliche Abschnitte für `ImageModeration`, `FaceDetection` und `TextDetection`. Diese entsprechen den drei API-Aufrufen aus der Methode **EvaluateImage**.
 
 ```json
 [{

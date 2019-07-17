@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: content-moderator
 ms.topic: tutorial
-ms.date: 01/18/2019
+ms.date: 07/03/2019
 ms.author: pafarley
-ms.openlocfilehash: 5d31285ca305ba7fefdf31b4a97e3183f58b3e3b
-ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
+ms.openlocfilehash: dd06330e82850cc44bc0f4d36ba7caf596ace939
+ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/07/2019
-ms.locfileid: "65233812"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67603518"
 ---
 # <a name="tutorial-moderate-facebook-posts-and-commands-with-azure-content-moderator"></a>Tutorial: Moderieren von Facebook-Posts und -Kommentaren mit Azure Content Moderator
 
@@ -48,11 +48,11 @@ Informationen zum Registrieren für das [Content Moderator-Prüfungstool](https:
 
 ## <a name="configure-image-moderation-workflow"></a>Konfigurieren des Workflows für die Bildmoderation
 
-Informationen zur Erstellung eines benutzerdefinierten Bildworkflows finden Sie unter [Definieren, Testen und Verwenden von Workflows](review-tool-user-guide/workflows.md). So wird es für Content Moderator ermöglicht, Bilder automatisch auf Facebook zu überprüfen und einige davon an das Prüfungstool zu senden. Notieren Sie sich den **Namen** des Workflows.
+Informationen zur Erstellung eines benutzerdefinierten Bildworkflows finden Sie unter [Definieren, Testen und Verwenden von Workflows](review-tool-user-guide/workflows.md). Mithilfe dieses Workflows überprüft Content Moderator automatisch Bilder auf Facebook und sendet einige davon an das Prüfungstool. Notieren Sie sich den **Namen** des Workflows.
 
 ## <a name="configure-text-moderation-workflow"></a>Konfigurieren des Workflows für die Textmoderation
 
-Verwenden Sie wieder den Leitfaden [Definieren, Testen und Verwenden von Workflows](review-tool-user-guide/workflows.md), und erstellen Sie nun einen benutzerdefinierten Textworkflow. Content Moderator kann dann automatisch den Textinhalt überprüfen. Notieren Sie sich den **Namen** des Workflows.
+Verwenden Sie erneut den Leitfaden [Definieren, Testen und Verwenden von Workflows](review-tool-user-guide/workflows.md), und erstellen Sie nun einen benutzerdefinierten Textworkflow. Dieser Workflow wird von Content Moderator zur automatischen Überprüfung von Textinhalten verwendet. Notieren Sie sich den **Namen** des Workflows.
 
 ![Konfigurieren des Textworkflows](images/text-workflow-configure.PNG)
 
@@ -77,7 +77,7 @@ Melden Sie sich beim [Azure-Portal](https://portal.azure.com/) an, und führen S
     | cm:TextWorkflow | Name des Workflows für Text |
     | cm:CallbackEndpoint | URL für die CMListener-Funktionen-App, die Sie später in diesem Leitfaden erstellen |
     | fb:VerificationToken | Ein von Ihnen erstelltes geheimes Token, das zum Abonnieren der Facebook-Feedereignisse verwendet wird |
-    | fb:PageAccessToken | Das Zugriffstoken für die Facebook-Graph-API läuft nicht ab und lässt die Funktion zum Ausblenden/Löschen von Posts in Ihrem Namen zu Sie rufen dies in einem späteren Schritt ab. |
+    | fb:PageAccessToken | Das Zugriffstoken für die Facebook-Graph-API läuft nicht ab und lässt die Funktion zum Ausblenden/Löschen von Posts in Ihrem Namen zu Dieses Token erhalten Sie in einem späteren Schritt. |
 
     Klicken Sie oben auf der Seite auf die Schaltfläche **Speichern**.
 

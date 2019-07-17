@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: face-api
 ms.topic: quickstart
-ms.date: 03/27/2019
+ms.date: 07/03/2019
 ms.author: pafarley
-ms.openlocfilehash: 57605f9bd1a39435e27a2f2c56c06cf3bfb38605
-ms.sourcegitcommit: 956749f17569a55bcafba95aef9abcbb345eb929
+ms.openlocfilehash: bf4d11a18932d20e7dcc7580ebe5aa4e060c5a88
+ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58630700"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67606779"
 ---
 # <a name="quickstart-detect-faces-in-an-image-using-the-face-net-sdk"></a>Schnellstart: Erkennen von Gesichtern in einem Bild mit dem Azure Face .NET SDK
 
@@ -30,7 +30,7 @@ Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](htt
 
 ## <a name="create-the-visual-studio-project"></a>Erstellen des Visual Studio-Projekts
 
-1. Erstellen Sie in Visual Studio ein neues Projekt vom Typ **Konsolen-App (.NET Framework)**, und nennen Sie es **FaceDetection**. 
+1. Erstellen Sie in Visual Studio ein neues Projekt vom Typ **Konsolen-App (.NET Framework)** , und nennen Sie es **FaceDetection**. 
 1. Sollte Ihre Projektmappe noch andere Projekte enthalten, wählen Sie dieses Projekt als das alleinige Startprojekt aus.
 1. Rufen Sie die erforderlichen NuGet-Pakete ab. Klicken Sie im Projektmappen-Explorer mit der rechten Maustaste auf Ihr Projekt, und wählen Sie **NuGet-Pakete verwalten...** aus. Klicken Sie auf die Registerkarte **Durchsuchen**, und wählen Sie **Vorabversion einbeziehen** aus. Suchen Sie anschließend das folgende Paket, und installieren Sie es:
     - [Microsoft.Azure.CognitiveServices.Vision.Face 2.2.0-preview](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Vision.Face/2.2.0-preview)
@@ -60,13 +60,13 @@ Fügen Sie als Nächstes die **Main**-Methode der **Program**-Klasse mit folgend
 
 [!code-csharp[](~/cognitive-services-vision-csharp-sdk-quickstarts/Face/Program.cs?range=36-41)]
 
-Fügen Sie ebenfalls in der **Main**-Methode den folgenden Code hinzu, um den neu erstellten Gesichtserkennungsclient zum Erkennen von Gesichtern in einem Remotebild und einem lokalen Bild zu verwenden. Als Nächstes werden die Erkennungsmethoden definiert. 
+Fügen Sie ebenfalls in der **Main**-Methode den folgenden Code hinzu, um den neu erstellten Gesichtserkennungsclient zum Erkennen von Gesichtern in einem Remotebild und in einem lokalen Bild zu verwenden. Als Nächstes werden die Erkennungsmethoden definiert. 
 
 [!code-csharp[](~/cognitive-services-vision-csharp-sdk-quickstarts/Face/Program.cs?range=43-50)]
 
 ### <a name="detect-faces"></a>Erkennen von Gesichtern
 
-Fügen Sie der **Program**-Klasse die folgende Methode hinzu. Sie nutzt den Client für den Gesichtserkennungsdienst zum Erkennen von Gesichtern in einem Remotebild, auf das mit einer URL verwiesen wird. Beachten Sie, dass das Feld `faceAttributes` verwendet wird: Die `faceList` hinzugefügten **DetectedFace**-Objekte besitzen die angegebenen Attribute (in diesem Fall Alter und Geschlecht).
+Fügen Sie der **Program**-Klasse die folgende Methode hinzu. Sie nutzt den Client für den Gesichtserkennungsdienst zum Erkennen von Gesichtern in einem Remotebild, auf das mit einer URL verwiesen wird. Sie nutzt das Feld `faceAttributes`. Die Objekte vom Typ **DetectedFace**, die `faceList` hinzugefügt wurden, haben die angegebenen Attribute (in diesem Fall Alter und Geschlecht).
 
 [!code-csharp[](~/cognitive-services-vision-csharp-sdk-quickstarts/Face/Program.cs?range=52-74)]
 
@@ -86,7 +86,7 @@ Definieren Sie abschließend die **DisplayAttributes**-Methode, um Gesichtsattri
 
 ## <a name="run-the-app"></a>Ausführen der App
 
-Eine erfolgreiche Antwort zeigt das Geschlecht und Alter für jedes Gesicht im Bild an. Beispiel: 
+Eine erfolgreiche Antwort zeigt das Geschlecht und Alter für jedes Gesicht im Bild an. Beispiel:
 
 ```
 https://upload.wikimedia.org/wikipedia/commons/3/37/Dagestani_man_and_woman.jpg

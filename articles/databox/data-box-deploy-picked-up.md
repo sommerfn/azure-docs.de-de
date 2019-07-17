@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: pod
 ms.topic: tutorial
-ms.date: 03/19/2019
+ms.date: 7/08/2019
 ms.author: alkohli
-ms.openlocfilehash: 5b43241be4e161cd6051dce02a3574fbdb580f28
-ms.sourcegitcommit: 6ea7f0a6e9add35547c77eef26f34d2504796565
+ms.openlocfilehash: db0f0ac3073687b7c1cd8ca60e459e4bb3aa03f4
+ms.sourcegitcommit: c0419208061b2b5579f6e16f78d9d45513bb7bbc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/14/2019
-ms.locfileid: "65606234"
+ms.lasthandoff: 07/08/2019
+ms.locfileid: "67626358"
 ---
 # <a name="tutorial-return-azure-data-box-and-verify-data-upload-to-azure"></a>Tutorial: Zurücksenden der Azure Data Box und Überprüfen des Datenuploads in Azure
 
@@ -41,9 +41,17 @@ Stellen Sie Folgendes sicher, bevor Sie beginnen:
 
 ## <a name="ship-data-box-back"></a>Zurücksenden der Data Box
 
-1. Stellen Sie sicher, dass das Gerät ausgeschaltet ist und die Kabel entfernt wurden. Wickeln Sie das mit dem Gerät gelieferte Netzkabel auf, und befestigen Sie es sicher an der Rückseite des Geräts.
-2. Stellen Sie sicher, dass das Adressetikett auf dem Freihanddisplay angezeigt wird, und vereinbaren Sie einen Abholtermin mit Ihrem Kurierdienst. Falls das Adressetikett beschädigt oder nicht mehr vorhanden ist oder nicht in der E-Ink-Anzeige angezeigt wird, wenden Sie sich an den Microsoft-Support. Sofern dies vom Support empfohlen wird, können Sie im Azure-Portal zu **Übersicht > Versandetikett herunterladen** navigieren. Laden Sie das Versandetikett herunter, und bringen Sie es am Gerät an. 
-3. Planen Sie die Abholung durch UPS, falls Sie das Gerät zurücksenden. So planen Sie die Abholung:
+Vergewissern Sie sich, dass die Daten vollständig auf das Gerät kopiert wurden, und dass die **Versandvorbereitung** erfolgreich war. Die Vorgehensweise hängt von der Region ab, in der das Gerät versendet wird.
+
+
+### <a name="ship-in-us-canada-europe"></a>Versand in den USA, in Kanada oder in Europa
+
+Wenn Sie das Gerät in den USA, in Kanada oder in Europa zurücksenden möchten, gehen Sie wie folgt vor:
+
+1. Vergewissern Sie sich, dass das Gerät ausgeschaltet ist und die Kabel entfernt wurden. 
+2. Wickeln Sie das mit dem Gerät gelieferte Netzkabel auf, und befestigen Sie es sicher an der Rückseite des Geräts.
+3. Stellen Sie sicher, dass das Adressetikett auf dem Freihanddisplay angezeigt wird, und vereinbaren Sie einen Abholtermin mit Ihrem Kurierdienst. Falls das Adressetikett beschädigt oder nicht mehr vorhanden ist oder nicht in der E-Ink-Anzeige angezeigt wird, wenden Sie sich an den Microsoft-Support. Sofern dies vom Support empfohlen wird, können Sie im Azure-Portal zu **Übersicht > Versandetikett herunterladen** navigieren. Laden Sie das Versandetikett herunter, und bringen Sie es am Gerät an. 
+4. Planen Sie die Abholung durch UPS, falls Sie das Gerät zurücksenden. So planen Sie die Abholung:
 
     - Rufen Sie Ihre lokale UPS-Versandstelle an (landes-/regionsspezifische gebührenfreie Telefonnummer).
     - Geben Sie bei dem Telefonat die Nachverfolgungsnummer für die Rücksendung an, die Sie in der E-Ink-Anzeige oder auf dem gedruckten Etikett finden.
@@ -51,6 +59,72 @@ Stellen Sie Folgendes sicher, bevor Sie beginnen:
 
     Wenn Sie keine Abholung planen können oder möchten, können Sie die Data Box auch an der nächstgelegenen Versandstelle abgeben.
 4. Nachdem die Data Box vom Kurierdienst abgeholt und eingescannt wurde, wird der Status der Bestellung im Portal in **Abgeholt** geändert. Außerdem wird eine Nachverfolgungs-ID angezeigt.
+
+### <a name="ship-in-asia-pacific-region"></a>Versand in der Asien-Pazifik-Region
+
+#### <a name="ship-in-australia"></a>Versand in Australien
+
+Bei Azure-Datencentern in Australien ist aus Sicherheitsgründen eine zusätzliche Benachrichtigung erforderlich. Alle eingehenden Lieferungen müssen vorab angekündigt werden. Gehen Sie für den Versand in Australien wie folgt vor:
+
+
+1. Bewahren Sie den Originalversandkarton des Geräts für den Rückversand auf.
+2. Vergewissern Sie sich, dass die Daten vollständig auf das Gerät kopiert wurden, und dass die **Versandvorbereitung** erfolgreich war.
+3. Schalten Sie das Gerät aus, und entfernen Sie die Kabel.
+4. Wickeln Sie das mitgelieferte Netzkabel auf, und befestigen Sie es sicher an der Rückseite des Geräts.
+5. Fordern Sie per E-Mail bei Quantium Solutions eine Abholung an. Geben Sie dabei die Servicereferenznummer aus dem Azure-Portal an. Verwenden Sie die folgende E-Mail-Vorlage: *Request for reverse shipping label with TAU code*. Geben Sie in der E-Mail folgende Informationen an: 
+
+    ```
+    To: Azure@quantiumsolutions.com
+    Subject: Pickup request for Azure｜Reference number：XXX XXX XXX
+    Body: 
+    - Company name：
+    - Address:
+    - Contact name:
+    - Contact number:
+    - Requested pickup date: mm/dd
+    ```
+6. Von Quantium Solutions Australia erhalten Sie eine E-Mail mit einem Rücksendeetikett.
+7. Drucken Sie das Rücksendeetikett aus, und bringen Sie es am Versandkarton an.
+8. Übergeben Sie das Paket an den Versanddienstleister.
+
+Bei Bedarf können Sie sich per E-Mail (Azure@quantiumsolutions.com) oder telefonisch mit dem Support von Quantium Solutions in Verbindung setzen.
+
+
+Beachten Sie bei telefonischen Anfragen im Zusammenhang mit Ihrer Bestellung Folgendes:
+
+- Fordern Sie zuerst per E-Mail eine Abholung an.
+- Geben Sie am Telefon den Namen Ihrer Bestellung an.
+
+#### <a name="ship-in-japan"></a>Versand in Japan 
+
+1. Bewahren Sie den Originalversandkarton des Geräts für den Rückversand auf.
+2. Schalten Sie das Gerät aus, und entfernen Sie die Kabel.
+3. Wickeln Sie das mitgelieferte Netzkabel auf, und befestigen Sie es sicher an der Rückseite des Geräts.
+4. Tragen Sie den Namen Ihres Unternehmens und Ihre Adressdaten als Absenderinformationen in den Rücksendeschein ein.
+5. Senden Sie Quantium Solutions über die folgende E-Mail-Vorlage eine E-Mail.
+
+    - Falls der Rücksendeschein der japanischen Post für eine Nachnahmesendung („Chakubarai“) nicht enthalten war oder fehlt, weisen Sie in dieser E-Mail darauf hin. Quantium Solutions Japan fordert die japanische Post dann auf, den Rücksendeschein bei der Abholung mitzubringen.
+    - Senden Sie bei mehreren Bestellungen eine E-Mail, um sicherzustellen, dass die einzelnen Bestellungen abgeholt werden.
+
+    ```
+    To: Customerservice.JP@quantiumsolutions.com
+    Subject: Pickup request for Azure Data Box｜Job name： 
+    Body: 
+    - Japan Post Yu-Pack tracking number (reference number)：
+    - Requested pickup date：mmdd (Select a requested time slot from below).
+    a. 08：00-13：00 
+    b. 13：00-15：00 
+    c. 15：00-17：00 
+    d. 17：00-19：00 
+    ```
+
+3. Nachdem die Abholung gebucht wurde, erhalten Sie eine E-Mail-Bestätigung von Quantium Solutions. Die E-Mail-Bestätigung enthält auch Informationen zum Nachnahme-Rücksendeschein („Chakubarai“).
+
+Den Support von Quantium Solution erreichen Sie bei Bedarf wie folgt (in japanische Sprache): 
+
+- E-Mail-Adresse: Customerservice.JP@quantiumsolutions.com 
+- Telefonnummer: 03-5755-0150 
+
 
 ## <a name="verify-data-upload-to-azure"></a>Überprüfen des Datenuploads in Azure
 

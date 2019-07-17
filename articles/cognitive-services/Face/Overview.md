@@ -7,14 +7,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: face-api
 ms.topic: overview
-ms.date: 02/20/2019
+ms.date: 07/03/2019
 ms.author: pafarley
-ms.openlocfilehash: c45fd508c14c368c6c9057b9fdeea8df9d8a52c3
-ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
+ms.openlocfilehash: 4be33f781dec93fd9fe1b1846322672266cd7350
+ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/20/2019
-ms.locfileid: "65905689"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67606912"
 ---
 # <a name="what-is-the-azure-face-api"></a>Was ist die Azure-Gesichtserkennungs-API?
 
@@ -59,11 +59,11 @@ Mit der API für die Gruppierung wird eine Gruppe von unbekannten Gesichtern anh
 
 Die Identify-API wird zum Identifizieren eines erkannten Gesichts anhand einer Datenbank mit Personen verwendet. Diese Funktion kann bei der automatischen Bildmarkierung von Software für die Fotoverwaltung hilfreich sein. Die Datenbank wird im Voraus erstellt und kann im Lauf der Zeit bearbeitet werden.
 
-Die folgende Abbildung enthält ein Beispiel für eine Datenbank mit dem Namen „myfriends“. Jede Gruppe kann bis zu 1 Million unterschiedliche Personenobjekte enthalten. Für jedes Personenobjekt können bis zu 248 Gesichter registriert sein.
+Die folgende Abbildung enthält ein Beispiel für eine Datenbank mit dem Namen `"myfriends"`. Jede Gruppe kann bis zu 1 Million unterschiedliche Personenobjekte enthalten. Für jedes Personenobjekt können bis zu 248 Gesichter registriert sein.
 
 ![Raster mit drei Spalten für unterschiedliche Personen, jeweils mit drei Zeilen mit Bildern von Gesichtern](./Images/person.group.clare.jpg)
 
-Nachdem eine Datenbank erstellt und trainiert wurde, können Sie die Identifizierung eines neuen erkannten Gesichts für die Gruppe durchführen. Wenn das Gesicht als eine Person aus der Gruppe erkannt wird, wird das Personenobjekt zurückgegeben.
+Nachdem Sie eine Datenbank erstellt und trainiert haben, können Sie die Identifizierung eines neuen erkannten Gesichts für die Gruppe durchführen. Wenn das Gesicht als eine Person aus der Gruppe erkannt wird, wird das Personenobjekt zurückgegeben.
 
 Weitere Informationen zur Personenidentifizierung finden Sie in den Konzepten der [Gesichtserkennung](concepts/face-recognition.md) oder der Referenzdokumentation zur [Identify-API](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395239).
 

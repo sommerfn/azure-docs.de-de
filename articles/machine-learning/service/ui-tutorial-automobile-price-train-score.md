@@ -9,114 +9,211 @@ ms.service: machine-learning
 ms.subservice: core
 ms.topic: tutorial
 ms.date: 04/06/2019
-ms.openlocfilehash: e37e99323c92adad0b9e897af8c276a8ac153371
-ms.sourcegitcommit: adb6c981eba06f3b258b697251d7f87489a5da33
+ms.openlocfilehash: 21f5a2d93b708e93f124bd44177bb7852dfbd86a
+ms.sourcegitcommit: dad277fbcfe0ed532b555298c9d6bc01fcaa94e2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/04/2019
-ms.locfileid: "66515635"
+ms.lasthandoff: 07/10/2019
+ms.locfileid: "67720538"
 ---
 # <a name="tutorial-predict-automobile-price-with-the-visual-interface"></a>Tutorial: Prognostizieren von Automobilpreisen mithilfe der grafischen Benutzeroberfläche
 
 In diesem Tutorial befassen Sie sich eingehend mit dem Entwickeln einer Vorhersagelösung mithilfe der grafischen Benutzeroberfläche von Azure Machine Learning Service. Am Ende dieses Tutorials verfügen Sie über eine Lösung, mit der Sie den Preis jedes Autos basierend auf den von Ihnen an die Lösung gesendeten technischen Spezifikationen prognostizieren können.
 
-Dieses Tutorial ist [eine Fortsetzung des Schnellstarts](ui-quickstart-run-experiment.md) und **der erste Teil einer zweiteiligen Tutorialreihe**. Sie müssen die Schnellstartanleitung jedoch nicht durcharbeiten, bevor Sie mit diesem Tutorial beginnen.
-
-Im ersten Teil der Tutorialreihe lernen Sie Folgendes:
+Im ersten Teil des Tutorials lernen Sie Folgendes:
 
 > [!div class="checklist"]
-> * Importieren und Bereinigen von Daten (die gleichen Schritte wie im Schnellstart)
+> * Importieren und Bereinigen von Daten
 > * Trainieren eines Machine Learning-Modells
 > * Bewerten und Auswerten eines Modells
 
-Im [zweiten Teil](ui-tutorial-automobile-price-deploy.md) der Tutorialreihe erfahren Sie, wie Sie Ihr Vorhersagemodell als Azure-Webdienst bereitstellen.
-
-> [!NOTE]
-> Eine abgeschlossene Version dieses Tutorials ist als Beispielexperiment verfügbar.
-> Navigieren Sie auf der Seite „Experimente“ zu **Neu hinzufügen** > **Beispiel 1 – Regression: Automobile Price Prediction(Basic)** (Automobilpreisvorhersage (Standard))
-
+Im [zweiten Teil](ui-tutorial-automobile-price-deploy.md) des Tutorials erfahren Sie, wie Sie Ihr Vorhersagemodell als Azure-Webdienst bereitstellen.
 
 > [!VIDEO https://www.microsoft.com/videoplayer/embed/RE2X1GY]
 
+Eine abgeschlossene Version dieses Tutorials ist als Beispielexperiment verfügbar.
+
+Wählen Sie auf der Seite **Experimente** die Option **Neu hinzufügen** und anschließend das Experiment **Sample 1 - Regression: Automobile Price Prediction(Basic)** (Beispiel 1: Regression: Automobilpreisvorhersage (einfach)) aus.
+
 ## <a name="create-a-workspace"></a>Erstellen eines Arbeitsbereichs
 
-Wenn Sie über einen Azure Machine Learning Service-Arbeitsbereich verfügen, fahren Sie mit dem [nächsten Abschnitt](#open-the-visual-interface-webpage) fort. Andernfalls erstellen Sie jetzt einen Arbeitsbereich.
+Wenn Sie über einen Azure Machine Learning Service-Arbeitsbereich verfügen, fahren Sie mit dem [nächsten Abschnitt](#open-the-visual-interface-webpage) fort.
 
 [!INCLUDE [aml-create-portal](../../../includes/aml-create-in-portal.md)]
 
 ## <a name="open-the-visual-interface-webpage"></a>Öffnen der Webseite der grafischen Benutzeroberfläche
 
-1. Öffnen Sie Ihren Arbeitsbereich im [Azure-Portal](https://portal.azure.com/).  
+1. Öffnen Sie Ihren Arbeitsbereich im [Azure-Portal](https://portal.azure.com/).
 
-1. Wählen Sie in Ihrem Arbeitsbereich die Option **Grafische Benutzeroberfläche** aus.  Wählen Sie dann **Grafische Benutzeroberfläche starten** aus.  
+1. Wählen Sie in Ihrem Arbeitsbereich die Option **Grafische Benutzeroberfläche** aus. Wählen Sie dann **Grafische Benutzeroberfläche starten** aus. 
 
     ![Screenshot des Azure-Portals, in dem dargestellt ist, wie der Zugriff auf die grafische Benutzeroberfläche über einen Machine Learning Service-Arbeitsbereich erfolgt](./media/ui-tutorial-automobile-price-train-score/launch-ui.png)
 
-    Die Webseite der Benutzeroberfläche wird auf einer neuen Browserseite geöffnet.  
+## <a name="create-your-first-experiment"></a>Erstellen Ihres ersten Experiments
 
-## <a name="import-and-clean-your-data"></a>Importieren und Bereinigen Ihrer Daten
-
-Als Erstes müssen Sie die Daten bereinigen. Wenn Sie den Schnellstart abgeschlossen haben, können Sie Ihr Experiment mit den vorbereiteten Daten hier wiederverwenden. Wenn Sie den Schnellstart nicht abgeschlossen haben, überspringen Sie den nächsten Abschnitt, und [starten Sie mit einem neuen Experiment](#start-from-a-new-experiment).
-
-### <a name="reuse-the-quickstart-experiment"></a>Wiederverwenden des Schnellstartexperiments
-
-1. Öffnen Sie das Schnellstartexperiment.
-
-1. Wählen Sie unten im Fenster die Option **Save As** (Speichern unter) aus.
-
-1. Geben Sie im daraufhin angezeigten Popupdialogfeld einen neuen Namen ein.
-
-    ![Screenshot, in dem das Umbenennen eines Experiments in „Tutorial – Predict Automobile Price“ (Tutorial – Automobilpreisvorhersage) dargestellt ist](./media/ui-tutorial-automobile-price-train-score/save-a-copy.png)
-
-1. Das Experiment sollte in etwa wie folgt aussehen:
-
-    ![Screenshot des erwarteten Zustands des Experiments. Das Automobildataset wird mit dem Modul zum Auswählen von Spalten verbunden, das wiederum mit dem Modul zum Bereinigen fehlender Daten verbunden wird.](./media/ui-tutorial-automobile-price-train-score/save-copy-result.png)
-
-Wenn Sie das Schnellstartexperiment erfolgreich wiederverwendet haben, überspringen Sie den nächsten Abschnitt, um mit dem [Trainieren Ihres Modells](#train-the-model) zu beginnen.
-
-### <a name="start-from-a-new-experiment"></a>Starten mit einem neuen Experiment
-
-Wenn Sie den Schnellstart nicht abgeschlossen haben, führen Sie die folgenden Schritte aus, um schnell ein neues Experiment zu erstellen, das das Automobildataset importiert und bereinigt.
+Die grafische Benutzeroberfläche bietet einen interaktiven, visuellen Arbeitsbereich für die Erstellung von Predictive Analytics-Modellen. Fügen Sie Datasets und Analysemodule per Drag & Drop einer interaktiven Canvas hinzu, und verknüpfen Sie sie zu einem *Experiment*.
 
 1. Erstellen Sie ein neues Experiment, indem Sie unten im Fenster der grafischen Benutzeroberfläche die Option **+Neu** auswählen.
 
-1. Wählen Sie **Experimente** >  **Blank Experiment** (Leeres Experiment) aus.
+    ![Hinzufügen eines neuen Experiments](./media/ui-tutorial-automobile-price-train-score/add-new.png)
+
+1. Wählen Sie **Leeres Experiment** aus.
 
 1. Wählen Sie oben im Canvas-Panel den Standardexperimentnamen **Experimented Created on ...** (Experiment erstellt am ...) aus, und geben Sie einen aussagekräftigen Namen ein. Beispielsweise **Automobile price prediction** (Automobilpreisvorhersage). Der Name muss nicht eindeutig sein.
 
-1. Links vom Experimentbereich finden Sie eine Palette mit Datensätzen und Modulen. Um nach Modulen zu suchen, verwenden Sie das Suchfeld am oberen Rand der Modulpalette. Geben Sie im Suchfeld das Wort **automobile** ein, um nach dem Dataset mit dem Namen **Automobile price data (Raw)** (Automobilpreisdaten (Roh)) zu suchen. Ziehen Sie das Dataset in den Experimentbereich.
+## <a name="add-data"></a>Hinzufügen von Daten
 
-    ![Screenshot der Suche nach dem Automobilpreis-Dataset](./media/ui-tutorial-automobile-price-train-score/automobile-dataset.png)
+Grundvoraussetzung für Machine Learning sind Daten. Diese Benutzeroberfläche enthält bereits einige Beispieldatasets, die Sie verwenden können. Alternativ können Sie auch Daten aus bereits vorhandenen Quellen importieren. Verwenden Sie für dieses Tutorial das Beispieldataset **Automobile Price Data (Raw)** (Automobilpreisdaten (Rohdaten)). 
 
-    Da Sie jetzt über die Daten verfügen, können Sie ein Modul hinzufügen, mit dem die Spalte **normalized-losses** (normalisierte Verluste) vollständig entfernt wird. Fügen Sie dann ein weiteres Modul hinzu, mit dem alle Zeilen entfernt werden, in denen Daten fehlen.
+1. Links vom Experimentbereich finden Sie eine Palette mit Datensätzen und Modulen. Wählen Sie **Saved Datasets** (Gespeicherte Datasets) und dann **Samples** (Beispiele) aus, um die verfügbaren Beispieldatasets anzuzeigen.
 
-1. Geben Sie im Suchfeld die Wörter **select columns** (Spalten auswählen) ein, um nach dem Modul **Select Columns in Dataset** (Spalten im Dataset auswählen) zu suchen. Ziehen Sie es dann in den Experimentbereich. Mit diesem Modul können Sie auswählen, welche Datenspalten in das Modell eingeschlossen bzw. daraus ausgeschlossen werden sollen.
+1. Wählen Sie das Dataset **Automobile Price Data (raw)** aus, und ziehen Sie es in den Experimentbereich.
 
-1. Verbinden Sie den Ausgabeport des Datasets **Automobile price data (Raw)** (Automobilpreisdaten (roh)) mit dem Eingabeport von „Select Columns in Dataset“ (Spalten in Dataset auswählen).
+   ![Ziehen von Daten in den Experimentbereich](./media/ui-tutorial-automobile-price-train-score/drag-data.png)
 
-    ![Animierte GIF, die zeigt, wie das Modul für Automobilpreisdaten mit dem Modul zum Auswählen von Spalten verbunden wird](./media/ui-tutorial-automobile-price-train-score/connect-modules.gif)
+## <a name="select-columns"></a>Spalten auswählen
 
-1. Wählen Sie das Modul „Select Columns in Dataset“ (Spalten im Dataset auswählen) aus, und wählen Sie dann im Bereich **Properties** (Eigenschaften) die Option **Launch column selector** (Spaltenauswahl starten) aus.
+Wählen Sie die Datenspalten aus, mit denen Sie arbeiten möchten. Konfigurieren Sie das Modul zunächst so, dass alle verfügbaren Spalten angezeigt werden.
 
-   1. Wählen Sie auf der linken Seite die Option **With rules** (Mit Regeln) aus.
+> [!TIP]
+> Wenn Sie den Namen der gewünschten Daten oder des Moduls kennen, verwenden Sie die Suchleiste oben in der Palette, um sie schnell zu finden. Dieses Verfahren wird im weiteren Verlauf des Tutorials verwendet.
 
-   1. Wählen Sie neben **Beginnen mit** die Option **Alle Spalten** aus. Mit diesen Regeln wird **Select Columns in Dataset** angewiesen, alle Spalten zu durchlaufen (mit Ausnahme derer, die wir jetzt ausschließen werden).
 
-   1. Wählen Sie in den Dropdownlisten die Optionen **Ausschließen** und **Spaltennamen** aus, und geben Sie dann im Textfeld die Zeichenfolge **normalized-losses** ein.
+1. Geben Sie im Suchfeld **Select** (Auswählen) ein, um nach dem Modul **Select Columns in Dataset** (Spalten im Dataset auswählen) zu suchen.
 
-   1. Wählen Sie die Schaltfläche „OK“ aus, um die Spaltenauswahl zu schließen (unten rechts).
+1. Klicken Sie auf **Select Columns in Dataset**, und ziehen Sie das Modul in den Experimentbereich. Legen Sie das Modul unter dem Dataset ab, das Sie zuvor hinzugefügt haben.
 
-     Der Eigenschaftenbereich für **Select Columns in Dataset** zeigt nun an, dass mit Ausnahme von **normalized-losses** alle Spalten des Datasets übergeben werden.
+1. Verbinden Sie das Dataset mit dem Modul **Select Columns in Dataset**: Klicken Sie auf den Ausgabeport des Datasets, ziehen Sie ihn auf den Eingabeport des Moduls **Select Columns in Dataset**, und lassen Sie die Maustaste dann los. Das Dataset und das Modul bleiben verbunden, auch wenn Sie diese im Bereich verschieben.
 
-1. Fügen Sie dem Modul **Select Columns in Dataset** einen Kommentar hinzu, indem Sie auf das Modul doppelklicken und „normalized-losses ausschließen“ eingeben. Auf diese Weise können Sie auf einen Blick sehen, welche Funktion das Modul in Ihrem Experiment erfüllt.
+    > [!TIP]
+    > Datasets und Module verfügen über Ein- und Ausgabe-Anschlüsse, die in Form kleiner Kreise dargestellt werden: Eingabe-Anschlüsse oben und Ausgabe-Anschlüsse unten. Zum Erstellen eines Datenflusses über Ihr Experiment verbinden Sie einen Ausgabeport eines Moduls mit dem Eingabeport eines anderen Moduls.
+    >
 
-    ![Screenshot der richtigen Konfiguration des Moduls zum Auswählen von Spalten](./media/ui-tutorial-automobile-price-train-score/select-columns.png)
+    ![Verbinden von Modulen](./media/ui-tutorial-automobile-price-train-score/connect-modules.gif)
 
-1. Geben Sie im Suchfeld das Wort **Clean** ein, um nach dem Modul **Clean Missing Data** (Fehlende Daten bereinigen) zu suchen. Ziehen Sie das Modul **Clean Missing Data** in den Experimentbereich, und verbinden Sie es mit dem Modul **Select Columns in Dataset**.
+    Das rote Ausrufezeichen gibt an, dass Sie die Eigenschaften für das Modul noch nicht festgelegt haben.
 
-1. Klicken Sie im **Eigenschaftenbereich** unter **Cleaning mode** (Reinigungsmodus) auf die Option **Remove entire row** (Gesamte Zeile entfernen). Mit diesen Optionen wird **Clean Missing Data** (Fehlende Daten bereinigen) angewiesen, Daten durch das Entfernen von Zeilen mit fehlenden Werten zu bereinigen. Doppelklicken Sie auf das Modul, und geben Sie den Kommentar "Remove missing value rows" ein.
+1. Wählen Sie das Modul **Select Columns in Dataset** aus.
 
-![Screenshot der richtigen Konfiguration des Moduls „Clean Missing Data“](./media/ui-tutorial-automobile-price-train-score/clean-missing-data.png)
+1. Wählen Sie im Bereich **Eigenschaften** rechts neben der Canvas **Spalten bearbeiten** aus.
+
+    Wählen Sie im Dialogfeld **Select columns** (Spalten auswählen) die Option **ALL COLUMNS** (Alle Spalten) aus, und schließen Sie **alle Features** ein. Das Dialogfeld sollte wie folgt aussehen:
+
+     ![Spaltenauswahl](./media/ui-tutorial-automobile-price-train-score/select-all.png)
+
+1. Wählen Sie unten rechts **OK** aus, um die Spaltenauswahl zu schließen.
+
+## <a name="run-the-experiment"></a>Ausführen des Experiments
+
+Sie können zu einem beliebigen Zeitpunkt auf den Ausgabeport eines Datasets oder eines Moduls klicken, um die Daten an diesem Punkt im Datenfluss anzuzeigen. Wenn die Option **Visualize** (Visualisieren) deaktiviert ist, müssen Sie das Experiment zuerst ausführen.
+
+Ein Experiment wird auf einem Computeziel ausgeführt. Dabei handelt es sich um eine an Ihren Arbeitsbereich angefügte Computeressource. Wenn Sie ein Computeziel erstellen, können Sie es für künftige Ausführungen wiederverwenden.
+
+[!INCLUDE [aml-ui-create-training-compute](../../../includes/aml-ui-create-training-compute.md)]
+
+Nachdem das Computeziel verfügbar ist, wird das Experiment ausgeführt. Nach Abschluss der Ausführung wird für die einzelnen Module jeweils ein grünes Häkchen angezeigt.
+
+
+## <a name="preview-the-data"></a>Vorschau der Daten
+
+Nachdem Sie nun Ihr erstes Experiment durchgeführt haben, können Sie die Daten visualisieren, um mehr über das zu verwendende Dataset zu erfahren.
+
+1. Wählen Sie den Ausgabeport am unteren Rand des Moduls **Select Columns in Dataset** aus, und wählen Sie dann **Visualize** (Visualisieren) aus.
+
+1. Klicken Sie im Datenfenster auf verschiedene Spalten, um Informationen zu dieser Spalte anzuzeigen.
+
+    In diesem Dataset steht jede Zeile für ein Fahrzeug, und die Variablen, die den einzelnen Fahrzeugen zugeordnet sind, werden als Spalten angezeigt. Es gibt 205 Zeilen und 26 Spalten in diesem Dataset.
+
+     Jedes Mal, wenn Sie auf eine Datenspalte klicken, werden links die Informationen **Statistics** (Statistik) und das Bild **Visualization** (Visualisierung) dieser Spalte angezeigt. Wenn Sie beispielsweise auf **num-of-doors** klicken, sehen Sie, dass diese Spalte 2 eindeutige Werte und 2 fehlende Werte aufweist. Scrollen Sie nach unten, um die Werte anzuzeigen: zwei und vier Türen.
+
+     ![Vorschau der Daten](./media/ui-tutorial-automobile-price-train-score/preview-data.gif)
+
+1. Klicken Sie auf jede Spalte, um weitere Informationen zum Dataset zu erhalten, und überlegen Sie, ob die Spalten hilfreich sind, um den Preis eines Autos vorherzusagen.
+
+## <a name="prepare-data"></a>Vorbereiten von Daten
+
+DataSets müssen vor der Analyse normalerweise vorverarbeitet werden. Bei der Visualisierung des Datasets sind Ihnen unter Umständen einige fehlende Werte aufgefallen. Damit das Modell die Daten richtig analysieren kann, müssen diese fehlenden Werte bereinigt werden. Sie entfernen alle Zeilen, in denen Werte fehlen. Außerdem enthält die Spalte **normalized-losses** viele fehlende Werte, daher schließen wir diese Spalte ganz aus dem Modell aus.
+
+> [!TIP]
+> Die Bereinigung fehlender Werte aus den Eingabedaten ist eine Voraussetzung für die Verwendung der meisten Module.
+
+### <a name="remove-column"></a>Entfernen der Spalte
+
+Entfernen Sie zunächst die Spalte **normalized-losses** vollständig.
+
+1. Wählen Sie das Modul **Select Columns in Dataset** aus.
+
+1. Wählen Sie im Bereich **Eigenschaften** rechts neben der Canvas **Spalten bearbeiten** aus.
+
+    * Lassen Sie **With rules** (Mit Regeln) und **ALL COLUMNS** (Alle Spalten) ausgewählt.
+
+    * Wählen Sie in den Dropdownlisten die Optionen **Ausschließen** und **Spaltennamen** aus, und klicken Sie auf das Textfeld. Geben Sie **normalized-losses** ein.
+
+    * Wählen Sie unten rechts **OK** aus, um die Spaltenauswahl zu schließen.
+
+    ![Ausschließen einer Spalte](./media/ui-tutorial-automobile-price-train-score/exclude-column.png)
+        
+    Der Eigenschaftenbereich für „Select Columns in Dataset“ zeigt nun an, dass mit Ausnahme von **normalized-losses** alle Spalten des Datasets übergeben werden.
+        
+    Der Eigenschaftenbereich zeigt, dass die Spalte **normalized-losses** ausgeschlossen wurde.
+        
+    ![Eigenschaftenbereich](./media/ui-tutorial-automobile-price-train-score/property-pane.png)
+        
+    Sie können einen Kommentar zu einem Modul eingeben, indem Sie auf das Modul doppelklicken und Text eingeben. Auf diese Weise können Sie mit einem Blick sehen, welche Funktion das Modul in Ihrem Experiment erfüllt. 
+
+1. Doppelklicken Sie auf das Modul **Select Columns in Dataset**, und geben Sie den Kommentar „Exclude normalized losses“ (Normalisierte Verluste ausschließen) ein. 
+    
+    Nachdem Sie den Kommentar eingeben haben, klicken Sie außerhalb des Moduls. Ein Pfeil nach unten wird angezeigt, um anzugeben, dass das Modul einen Kommentar enthält.
+
+1. Klicken Sie auf den Pfeil nach unten, um den Kommentar anzuzeigen.
+
+    Das Modul zeigt jetzt einen Pfeil nach oben an, mit dem der Kommentar ausgeblendet werden kann.
+        
+    ![Kommentare](./media/ui-tutorial-automobile-price-train-score/comments.png)
+
+### <a name="clean-missing-data"></a>Fehlende Daten bereinigen
+
+Wenn Sie ein Modell trainieren, müssen Sie etwas bezüglich der fehlenden Daten unternehmen. In diesem Fall fügen Sie ein Modul hinzu, um alle restlichen Zeilen zu entfernen, in denen Daten fehlen.
+
+1. Geben Sie im Suchfeld das Wort **Clean** ein, um nach dem Modul **Clean Missing Data** (Fehlende Daten bereinigen) zu suchen.
+
+1. Ziehen Sie das Modul **Clean Missing Data** in den Experimentbereich, und verbinden Sie es mit dem Modul **Select Columns in Dataset**. 
+
+1. Klicken Sie im Eigenschaftenbereich unter **Cleaning mode** (Bereinigungsmodus) auf die Option **Remove entire row** (Gesamte Zeile entfernen).
+
+    Mit diesen Optionen wird **Clean Missing Data** (Fehlende Daten bereinigen) angewiesen, Daten durch das Entfernen von Zeilen mit fehlenden Werten zu bereinigen.
+
+1. Doppelklicken Sie auf das Modul, und geben Sie den Kommentar "Remove missing value rows" ein.
+ 
+    ![Entfernen von Zeilen](./media/ui-tutorial-automobile-price-train-score/remove-rows.png)
+
+    Ihr Experiment sollte in etwa wie folgt aussehen:
+    
+    ![select-column](./media/ui-tutorial-automobile-price-train-score/experiment-clean.png)
+
+## <a name="visualize-the-results"></a>Visualisieren der Ergebnisse
+
+Da Sie Änderungen an den Modulen in Ihrem Experiment vorgenommen haben, hat sich der Status in „In draft“ (Entwurf) geändert.  Um die neuen bereinigten Daten zu visualisieren, müssen Sie zuerst das Experiment erneut ausführen.
+
+1. Wählen Sie unten **Run** (Ausführen) aus, um das Experiment auszuführen.
+
+    Dieses Mal können Sie das Computeziel wiederverwenden, das Sie zuvor erstellt haben.
+
+1. Wählen Sie **Run**  im Dialogfeld aus.
+
+   ![Ausführen des Experiments](./media/ui-tutorial-automobile-price-train-score/select-compute.png)
+
+1. Wenn die Ausführung abgeschlossen ist, klicken Sie mit der rechten Maustaste auf das Modul **Clean Missing Data**, um die neuen bereinigten Daten zu visualisieren.
+
+    ![Visualisieren bereinigter Daten](./media/ui-tutorial-automobile-price-train-score/visualize-cleaned.png)
+
+1. Klicken Sie auf die verschiedenen Spalten im Fenster mit den bereinigten Daten, um sich anzusehen, wie sich die Daten geändert haben.
+
+    ![Visualisieren bereinigter Daten](media/ui-tutorial-automobile-price-train-score/visualize-result.png)
+
+    Es gibt jetzt 193 Zeilen und 25 Spalten.
+
+    Wenn Sie auf **num-of-doors** klicken, sehen Sie, dass diese Spalte noch immer 2 eindeutige Werte aufweist, aber 0 fehlende Werte. Klicken Sie auf die restlichen Spalten, um zu überprüfen, ob das Dataset noch fehlende Daten aufweist. 
 
 ## <a name="train-the-model"></a>Modelltraining
 
@@ -154,8 +251,9 @@ Verwenden Sie Ihre Daten sowohl zum Trainieren als auch zum Testen des Modells, 
 
     ![Screenshot der richtigen Konfiguration des Moduls für die Spaltenauswahl. With rules (Mit Regeln) > Include column names (Spaltennamen einschließen) > „price“ (Preis)](./media/ui-tutorial-automobile-price-train-score/select-price.png)
 
-    Das Experiment sollte jetzt wie folgt aussehen:
-    ![Screenshot der richtigen Konfiguration des Experiments nach dem Hinzufügen des Moduls „Train Model“.](./media/ui-tutorial-automobile-price-train-score/train-graph.png)
+    Ihr Experiment sollte wie folgt aussehen:
+
+    ![Screenshot der richtigen Konfiguration des Experiments nach dem Hinzufügen des Moduls „Train Model“ (Modell trainieren)](./media/ui-tutorial-automobile-price-train-score/train-graph.png)
 
 ### <a name="run-the-training-experiment"></a>Ausführen des Trainingsexperiments
 
@@ -219,7 +317,7 @@ Die von Ihnen auf der grafischen Benutzeroberfläche erstellten Experimente kön
 
 Im ersten Teil dieses Tutorial haben Sie die folgenden Schritte ausgeführt:
 
-* Wiederverwenden des im Schnellstart erstellten Experiments
+* Erstellen eines Experiments
 * Vorbereiten der Daten
 * Modelltraining
 * Bewerten und Auswerten des Modells

@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: face-api
 ms.topic: quickstart
-ms.date: 03/27/2019
+ms.date: 07/03/2019
 ms.author: pafarley
-ms.openlocfilehash: 280143d54e516fb626bb2d5afd01653e03d8a82c
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 2ed1a20bf47771d927c0d58730fa0eb4471572af
+ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59490445"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67603368"
 ---
 # <a name="quickstart-detect-faces-in-an-image-using-the-rest-api-and-php"></a>Schnellstart: Erkennen von Gesichtern in einem Bild mit der REST-API und PHP
 
@@ -43,7 +43,7 @@ Erstellen Sie eine neue HTML-Datei namens *detectFaces.html*, und fügen Sie ihr
 
 ## <a name="write-the-php-script"></a>Schreiben des PHP-Skripts
 
-Fügen Sie innerhalb des Elements `body` des Dokuments den folgenden Code hinzu. Dadurch wird eine einfache Benutzeroberfläche mit einem URL-Feld, einer Schaltfläche für die Gesichtsanalyse (**Analyze face**), einem Antwortbereich und einem Bereich für die Bildanzeige eingerichtet.
+Fügen Sie innerhalb des Elements `body` des Dokuments den folgenden Code hinzu. Mit diesem Code wird eine einfache Benutzeroberfläche mit einem URL-Feld, einer Schaltfläche für die Gesichtsanalyse (**Analyze face**), einem Antwortbereich und einem Bereich für die Bildanzeige eingerichtet.
 
 ```php
 <?php

@@ -12,12 +12,12 @@ ms.topic: overview
 ms.workload: tbd
 ms.date: 04/19/2019
 ms.author: yegu
-ms.openlocfilehash: b25cc8c04aed8cd333ff4de5b12db6674323787d
-ms.sourcegitcommit: 51a7669c2d12609f54509dbd78a30eeb852009ae
+ms.openlocfilehash: c7a7e7994ef5e16640f59efdc672f6793bc4f18d
+ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/30/2019
-ms.locfileid: "66393600"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67706469"
 ---
 # <a name="keys-and-values"></a>Schlüssel und Werte
 
@@ -94,7 +94,7 @@ Sie können auch die folgenden Bezeichnungsmuster verwenden:
 | `label=1.0.*` | Übereinstimmung mit Bezeichnungen, die mit **1.0.** beginnen |
 | `label=*.0.0` | Übereinstimmung mit Bezeichnungen, die auf **.0.0** enden |
 | `label=*.0.*` | Übereinstimmung mit Bezeichnungen, die **.0.** enthalten |
-| `label=%00,1.0.0` | Übereinstimmung mit den Bezeichnungen `null` oder **1.0.1**, auf fünf CSVs beschränkt |
+| `label=%00,1.0.0` | Übereinstimmung mit den Bezeichnungen `null` oder **1.0.0**, auf fünf CSVs beschränkt |
 
 ## <a name="values"></a>Werte
 

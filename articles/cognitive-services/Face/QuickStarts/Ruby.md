@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: face-api
 ms.topic: quickstart
-ms.date: 02/07/2019
+ms.date: 07/03/2019
 ms.author: pafarley
-ms.openlocfilehash: 52faef37dbd9a3ce324db9665f04d6ac9b223d9c
-ms.sourcegitcommit: f7be3cff2cca149e57aa967e5310eeb0b51f7c77
+ms.openlocfilehash: 6583db5b1403f70593d586a610f4d06be15c729b
+ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/15/2019
-ms.locfileid: "56312394"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67603355"
 ---
 # <a name="quickstart-detect-faces-in-an-image-using-the-rest-api-and-ruby"></a>Schnellstart: Erkennen von Gesichtern in einem Bild mit der REST-API und Ruby
 
@@ -28,7 +28,7 @@ In dieser Schnellstartanleitung verwenden Sie die Azure-Gesichtserkennungs-REST-
 
 ## <a name="write-the-script"></a>Schreiben des Skripts
 
-Erstellen Sie eine neue Datei namens _faceDetection.rb_, und fügen Sie ihr den folgenden Code hinzu. Dadurch wird die Gesichtserkennungs-API für eine bestimmte Bild-URL aufgerufen.
+Erstellen Sie eine neue Datei namens _faceDetection.rb_, und fügen Sie ihr den folgenden Code hinzu. Mit diesem Code wird die Gesichtserkennungs-API für eine bestimmte Bild-URL aufgerufen.
 
 ```ruby
 require 'net/http'
@@ -74,7 +74,7 @@ Führen Sie das Ruby-Skript mit dem folgenden Befehl aus:
 ruby faceDetection.rb
 ```
 
-Daraufhin sollte in der Konsole eine JSON-Zeichenfolge mit erkannten Gesichtsdaten ausgegeben werden. Eine erfolgreiche JSON-Antwort sieht in etwa wie folgt aus:
+Daraufhin sollte in der Konsole eine JSON-Zeichenfolge mit erkannten Gesichtsdaten ausgegeben werden. Der folgende Text ist ein Beispiel für eine erfolgreiche JSON-Antwort.
 
 ```json
 [

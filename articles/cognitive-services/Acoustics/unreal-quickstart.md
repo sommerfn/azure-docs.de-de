@@ -10,12 +10,12 @@ ms.subservice: acoustics
 ms.topic: quickstart
 ms.date: 03/20/2019
 ms.author: kegodin
-ms.openlocfilehash: 691f49e9be8aabe9a3e229bfd3b35ab183f9fed9
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: a78df2d4d84487399da10ca722550639a92e71bf
+ms.sourcegitcommit: 66237bcd9b08359a6cce8d671f846b0c93ee6a82
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59492404"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67798142"
 ---
 # <a name="project-acoustics-unrealwwise-quickstart"></a>Schnellstart für Projekt Akustik mit Unreal/Wwise
 In diesem Schnellstart experimentieren Sie mit Entwurfssteuerelementen von Projekt Akustik mithilfe der bereitgestellten Beispielinhalte für die Unreal Engine und Wwise.
@@ -50,14 +50,16 @@ Für das Unreal-Plug-In für Projekt Akustik müssen zusätzliche Funktionen aus
 
     ![Screenshot des Windows-Explorer-Fensters mit dem Skript zum Patchen des Wwise-Projekts](media/patch-wwise-script.png)
 
-* Wenn das DirectX SDK nicht installiert ist, müssen Sie in `AcousticsGame\Plugins\Wwise\Source\AkAudio\AkAudio.Build.cs` die Zeile mit „DXSDK_DIR“ auskommentieren.
+* Wenn das DirectX SDK nicht installiert ist, müssen Sie in `AcousticsGame\Plugins\Wwise\Source\AkAudio\AkAudio.Build.cs` abhängig von der verwendeten Wwise-Version ggf. die Zeile mit `DXSDK_DIR` auskommentieren:
 
     ![Screenshot des Code-Editors mit der auskommentierten DXSDK-Zeile](media/directx-sdk-comment.png)
 
 ### <a name="open-the-unreal-project"></a>Öffnen Sie das Unreal-Projekt. 
 Sie werden gefragt, ob die Module neu erstellt werden sollen. Klicken Sie auf „Ja“.
 
-Wenn beim Öffnen des Projekts Buildfehler auftreten, vergewissern Sie sich, dass Sie das Wwise-Plug-In für Projekt Akustik in derselben Wwise-Version installiert haben, die auch im Projekt Akustik-Beispielprojekt verwendet wird.
+>Wenn beim Öffnen des Projekts Buildfehler auftreten, vergewissern Sie sich, dass Sie das Wwise-Plug-In für Projekt Akustik in derselben Wwise-Version installiert haben, die auch im Projekt Akustik-Beispielprojekt verwendet wird.
+
+>Wenn Sie nicht [AudioKinetic Wwise](https://www.audiokinetic.com/products/wwise/) 2018.1.6 verwenden, müssen die Soundbänke neu generiert werden, damit die Audioausgabe im Beispielprojekt funktioniert.
 
 ## <a name="experiment-with-project-acoustics-design-controls"></a>Experimentieren mit den Entwurfssteuerelementen von Projekt Akustik
 Hören Sie sich die Szene an, indem Sie im Unity-Editor auf die Wiedergabeschaltfläche klicken. Navigieren Sie auf dem Desktop mit den Tasten W, A, S, D und mit der Maus. Um Tastenkombinationen für weitere Steuerelemente anzuzeigen, drücken Sie **F1**. Hier sind einige Entwurfsaktivitäten, die Sie ausprobieren können:

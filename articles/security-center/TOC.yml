@@ -127,16 +127,38 @@
           href: security-center-apply-disk-encryption.md
         - name: Systemupdates anwenden
           href: security-center-apply-system-updates.md
+        - name: Aktivieren der Verschlüsselung für das Speicherkonto
+          href: security-center-enable-encryption-for-storage-account.md
+        - name: VM-Agent aktivieren
+          href: security-center-enable-vm-agent.md
         - name: Endpoint Protection installieren
           href: security-center-install-endpoint-protection.md
         - name: Neustart nach Systemupdates
           href: 'security-center-apply-system-updates.md#reboot-after-system-updates'
+        - name: Optimieren von Sicherheitskonfigurationen
+          href: security-center-remediate-os-vulnerabilities.md
+        - name: Betriebssystemversion aktualisieren
+          href: security-center-update-os-version.md
         - name: Keine Sicherheitsrisikobewertung installiert
           href: security-center-vulnerability-assessment-recommendations.md
+        - name: Web Application Firewall hinzufügen
+          href: security-center-add-web-application-firewall.md
         - name: Finalize application protection (Anwendungsschutz abschließen)
           href: 'security-center-add-web-application-firewall.md#finalize-application-protection'
+        - name: Hinzufügen einer Firewall der nächsten Generation
+          href: security-center-add-next-generation-firewall.md
+        - name: Aktivieren von Netzwerksicherheitsgruppen
+          href: security-center-enable-network-security-groups.md
+        - name: Einschränken des Zugriffs über Endpunkte mit Internetzugriff
+          href: security-center-restrict-access-through-internet-facing-endpoints.md
         - name: Datenverkehr nur durch Firewall der nächsten Generation leiten
           href: 'security-center-add-next-generation-firewall.md#route-traffic-through-ngfw-only'
+        - name: Aktivieren der Überwachung und Bedrohungserkennung in SQL-Datenbanken
+          href: security-center-enable-auditing-on-sql-databases.md
+        - name: Aktivieren der Überwachung und Bedrohungserkennung in SQL Server-Instanzen
+          href: security-center-enable-auditing-on-sql-servers.md
+        - name: Transparent Data Encryption aktivieren
+          href: security-center-enable-transparent-data-encryption.md
         - name: Berichte zu Bedrohungen
           href: security-center-threat-report.md
         - name: Benutzerdefinierte Warnungen

@@ -39,7 +39,7 @@ In diesem Artikel werden folgende Vorgehensweisen behandelt:
 > * Einrichten einer Netzwerkumgebung zu Testzwecken
 > * Bereitstellen einer Firewall
 > * Erstellen einer Standardroute
-> * Konfigurieren einer Anwendungsregel zum Zulassen des Zugriffs auf „www.google.com“
+> * Konfigurieren einer Anwendungsregel zum Zulassen des Zugriffs auf [www.google.com]\(www.google.com)
 > * Konfigurieren einer Netzwerkregel, um den Zugriff auf externe DNS-Server zuzulassen
 > * Testen der Firewall
 

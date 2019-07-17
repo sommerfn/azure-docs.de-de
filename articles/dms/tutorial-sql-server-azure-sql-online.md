@@ -10,13 +10,13 @@ ms.service: dms
 ms.workload: data-services
 ms.custom: mvc, tutorial
 ms.topic: article
-ms.date: 05/08/2019
-ms.openlocfilehash: 266e4a16a69d7200fbe8b58bc20339b6979db877
-ms.sourcegitcommit: 300cd05584101affac1060c2863200f1ebda76b7
+ms.date: 07/09/2019
+ms.openlocfilehash: e5666a64e4160964e2c1b35707a0f064edb72460
+ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/08/2019
-ms.locfileid: "65415918"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67706909"
 ---
 # <a name="tutorial-migrate-sql-server-to-a-single-database-or-pooled-database-in-azure-sql-database-online-using-dms"></a>Tutorial: Onlinemigration von SQL Server zu einer Einzel- oder Pooldatenbank in Azure SQL-Datenbank mit DMS
 
@@ -46,7 +46,7 @@ In diesem Artikel wird eine Onlinemigration von SQL Server zu einer Einzel- oder
 
 Für dieses Tutorial benötigen Sie Folgendes:
 
-- Laden Sie [SQL Server 2012 oder höher](https://www.microsoft.com/sql-server/sql-server-downloads) (beliebige Edition) herunter, und installieren Sie es.
+- Laden Sie [SQL Server 2012 oder höher](https://www.microsoft.com/sql-server/sql-server-downloads) herunter, und installieren Sie es.
 - Aktivieren Sie das TCP/IP-Protokoll (dieses wird während der SQL Server Express-Installation standardmäßig deaktiviert), indem Sie die Anweisungen im Artikel [Aktivieren oder Deaktivieren eines Servernetzwerkprotokolls](https://docs.microsoft.com/sql/database-engine/configure-windows/enable-or-disable-a-server-network-protocol#SSMSProcedure) befolgen.
 - Erstellen Sie eine Einzeldatenbank (oder eine in einem Pool zusammengefasste Datenbank) in Azure SQL-Datenbank gemäß der Anleitung im Artikel [Schnellstart: Erstellen einer Einzeldatenbank in Azure SQL-Datenbank über das Azure-Portal](https://docs.microsoft.com/azure/sql-database/sql-database-single-database-get-started).
 
