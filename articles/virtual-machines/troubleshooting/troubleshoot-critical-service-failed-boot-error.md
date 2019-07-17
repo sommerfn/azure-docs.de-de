@@ -30,7 +30,7 @@ Dieser Artikel beschreibt den Fehler „CRITICAL SERVICE FAILED“ (FEHLER BEIM 
 
 Eine Windows-VM wird nicht gestartet. Beim Überprüfen der Startscreenshots unter [Startdiagnose](./boot-diagnostics.md) wird eine der folgenden Fehlermeldungen auf einem Bluescreen angezeigt:
 
-- „Your PC ran into a problem and needs to restart. You can restart. For more information about this issue and possible fixes, visit https://windows.com/stopcode. Wenn Sie sich an den Support wenden, stellen Sie die folgenden Informationen bereit: Stillstandcode: CRITICAL SERVICE FAILED (FEHLER BEIM KRITISCHEN DIENST) 
+- „Your PC ran into a problem and needs to restart. You can restart. For more information about this issue and possible fixes, visit https://windows.com/stopcode. If you call a support person, give them this info: Stop code: CRITICAL SERVICE FAILED (Auf dem PC ist ein Fehler aufgetreten. Sie können den PC neu starten. Informationen zu diesem Problem finden Sie unter „https://windows.com/stopcode“. Wenn Sie sich an den Support wenden, stellen Sie die folgenden Informationen bereit: „Abbruchcode: FEHLER BEIM KRITISCHEN DIENST“) 
 - „Your PC ran into a problem and needs to restart. We're just collecting some error info, and then we'll restart for you. If you'd like to know more, you can search online later for this error: CRITICAL_SERVICE_FAILED“ (Auf dem PC ist ein Fehler aufgetreten. Er muss neu gestartet werden. Wir sammeln Fehlerinformationen und starten dann den PC für Sie neu. Wenn Sie weitere Informationen benötigen, können Sie später online nach dem folgenden Fehler suchen: CRITICAL_SERVICE_FAILED)
 
 ## <a name="cause"></a>Ursache
