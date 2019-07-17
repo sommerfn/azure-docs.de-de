@@ -156,7 +156,7 @@ In der folgenden Tabelle werden die Parameter und Werte beschrieben, die zum Ers
 | Standort für diese Warnungsregel |East US |
 | ResourceGroup |montest |
 | TargetResourceId |/subscriptions/s1/resourceGroups/montest/providers/Microsoft.Compute/virtualMachines/testconfig |
-| „MetricName“ für die Warnung, die erstellt wird |PhysicalDisk(_Total)\Disk Writes/sec. See the `Get-MetricDefinitions` cmdlet about how to retrieve the exact metric names |
+| „MetricName“ für die Warnung, die erstellt wird |\PhysicalDisk(_Total)\Disk Writes/sec. See the `Get-MetricDefinitions` cmdlet about how to retrieve the exact metric names |
 | operator |GreaterThan |
 | Schwellenwert (Anzahl/s für diese Metrik) |1 |
 | WindowSize (Format: hh:mm:ss) |00:05:00 |
