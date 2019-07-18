@@ -7,19 +7,19 @@ author: mdgattuso
 manager: danielgi
 editor: sohamnchatterjee
 ms.assetid: 669ef140-a6dd-4b62-9b9d-3f375a14215e
-ms.service: cdn
+ms.service: azure-cdn
 ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 05/19/2019
 ms.author: magattus
-ms.openlocfilehash: 63f6156e6e1a94c49b2147f7c25da35c247c701d
-ms.sourcegitcommit: 08138eab740c12bf68c787062b101a4333292075
+ms.openlocfilehash: b6b4db89210bcc572e3780667f7a3e88dc5f1d28
+ms.sourcegitcommit: 920ad23613a9504212aac2bfbd24a7c3de15d549
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/22/2019
-ms.locfileid: "67331869"
+ms.lasthandoff: 07/15/2019
+ms.locfileid: "68226580"
 ---
 # <a name="azure-cdn-coverage-by-metro"></a>Azure CDN-Abdeckung nach Metropolregion 
 > [!div class="op_single_selector"]
@@ -44,7 +44,7 @@ Dieser Artikel enthält die aktuellen Metropolregionen mit POP-Standorten (Point
 | Afrika | Kapstadt, Südafrika<br />Johannesburg, Südafrika | Johannesburg, Südafrika | Südafrika |
 | Naher Osten | Dubai, Vereinigte Arabische Emirate | Maskat, Oman<br />Fujirah, Vereinigte Arabische Emirate | Katar<br />Vereinigte Arabische Emirate |
 | Indien | Chennai, Indien<br />Hyderabad, Indien<br />Mumbai, Indien<br />Neu-Delhi, Indien | Bengaluru (Bangalore), Indien<br />Chennai, Indien<br />Mumbai, Indien<br />Neu-Delhi, Indien<br /> | Indien |
-| Asien | Hongkong<br />Osaka, Japan<br />Tokio, Japan<br />Kuala Lumpur, Malaysia<br />Manila, Philippinen<br />Singapur<br />Busan, Südkorea<br />Seoul, Südkorea<br />Taipei, Taiwan<br />Bangkok, Thailand | Hongkong<br />Batam, Indonesien<br />Jakarta, Indonesien<br />Osaka, Japan<br />Tokio, Japan<br />Singapur<br />Seoul, Südkorea<br />Kaohsiung, Taiwan | Hongkong<br />Indonesien<br />Israel<br />Japan<br />Macau (SAR)<br />Malaysia<br />Philippinen<br />Singapur<br />Südkorea<br />Taiwan<br />Thailand<br />Türkei<br />Vietnam |
+| Asien | Hongkong<br />Osaka, Japan<br />Tokio, Japan<br />Kuala Lumpur, Malaysia<br />Manila, Philippinen<br />Singapur<br />Busan, Südkorea<br />Seoul, Südkorea<br />Taipei, Taiwan<br />Bangkok, Thailand | Hongkong<br />Batam, Indonesien<br />Jakarta, Indonesien<br />Osaka, Japan<br />Tokio, Japan<br />Singapur<br />Seoul, Südkorea<br />Kaohsiung, Taiwan<br />Taipei, Taiwan | Hongkong<br />Indonesien<br />Israel<br />Japan<br />Macau (SAR)<br />Malaysia<br />Philippinen<br />Singapur<br />Südkorea<br />Taiwan<br />Thailand<br />Türkei<br />Vietnam |
 | Australien und Neuseeland | Brisbane, Australien<br />Melbourne, Australien<br />Perth, Australien<br />Sydney, Australien<br />Auckland, Neuseeland | Melbourne, Australien<br />Sydney, Australien<br />Auckland, Neuseeland | Australien<br />Neuseeland |
 
 

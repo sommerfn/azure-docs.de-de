@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 04/25/2019
 ms.author: pepogors
-ms.openlocfilehash: 8ba4763e8d4835911d33d21c0f5bb431851a649b
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: fe0af4ca7b6860fff19f4df3165a975c42b54a03
+ms.sourcegitcommit: 9a699d7408023d3736961745c753ca3cec708f23
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67444716"
+ms.lasthandoff: 07/16/2019
+ms.locfileid: "68277773"
 ---
 # <a name="capacity-planning-and-scaling-for-azure-service-fabric"></a>Kapazitätsplanung und Skalierung für Azure Service Fabric
 
@@ -80,15 +80,6 @@ Führen Sie nach dem Deklarieren der Knoteneigenschaften und Platzierungseinschr
 4. Wiederholen Sie den Anforderungen entsprechend die Schritte 1 bis 3. Skalieren Sie allerdings auf keinen Fall die Anzahl der Instanzen auf den primären Knotentypen auf einen Wert herunter, der unter dem liegt, den die Zuverlässigkeitsstufe verlangt. Eine Liste der empfohlenen Instanzen finden Sie unter [Planen der Service Fabric-Clusterkapazität ](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-capacity).
 5. Nachdem alle virtuellen Computer ausgeschaltet sind (dargestellt als „Inaktiv“), zeigt „fabric:/System/InfrastructureService/[Knotenname]“ einen Fehlerstatus an. Anschließend können Sie die Clusterressource aktualisieren, um den Knotentyp zu entfernen. Sie können entweder die Bereitstellung per ARM-Vorlage verwenden oder die Clusterressource über [Azure Resource Manager](https://resources.azure.com) bearbeiten. Dadurch wird ein Clusterupgrade gestartet, bei dem der Dienst „fabric:/System/InfrastructureService/[Knotentyp]“ mit dem Fehlerzustand entfernt wird.
  6. Anschließend können Sie optional die VM-Skalierungsgruppe löschen – die Knoten werden aber in der Ansicht im Service Fabric Explorer weiterhin als „Inaktiv“ angezeigt. Der letzte Schritt ist die Bereinigung mit dem Befehl `Remove-ServiceFabricNodeState`.
-
-### <a name="example-scenario"></a>Beispielszenario
-Ein unterstütztes Szenario für eine vertikale Skalierung: Sie möchten Ihren Service Fabric-Cluster und die Anwendung ohne Ausfallzeiten der Anwendung von einem nicht verwalteten Datenträger zu verwalteten Datenträgern migrieren. 
-
-Sie können eine neue VM-Skalierungsgruppe mit verwalteten Datenträgern bereitstellen und ein Anwendungsupgrade mit Platzierungseinschränkungen für die bereitgestellte Kapazität durchführen. Ihr Service Fabric-Cluster kann dann Ihre Workload mit der bereitgestellten Knotenkapazität für den Cluster planen. Der Rollout erfolgt durch die Upgradedomäne und ohne Ausfallzeiten der Anwendung. 
-
-Back-End-Poolendpunkte für die [Azure Load Balancer-SKU „Basic“](https://docs.microsoft.com/azure/load-balancer/load-balancer-overview#skus) können virtuelle Computer in einer einzelnen Verfügbarkeitsgruppe oder einer VM-Skalierungsgruppe sein. Dies bedeutet, dass Sie beim Verschieben Ihrer Service Fabric-Systemanwendung zwischen Skalierungsgruppen keinen Lastenausgleich mit der Basic-SKU verwenden können, ohne dass der Verwaltungsendpunkt Ihres Service Fabric-Clusters zeitweilig nicht verfügbar ist. Dies gilt auch, wenn der Cluster und die Anwendung noch ausgeführt werden.
-
-Benutzer stellen häufig einen Lastenausgleich mit Standard-SKU bereit, wenn sie einen Austausch der virtuellen IP-Adresse (VIP) zwischen Ressourcen mit einem Lastenausgleich mit Basic-SKU und Standard-SKU durchführen. Diese Technik begrenzt alle zukünftigen Zugriffseinschränkungen beim VIP-Austausch auf ungefähr 30 Sekunden.
 
 ## <a name="horizontal-scaling"></a>Horizontale Skalierung
 

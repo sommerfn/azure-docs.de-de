@@ -14,13 +14,14 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/26/2017
-ms.author: malop; kumud
-ms.openlocfilehash: 07c8087043526a8eb0bf7a1963a761c40c11a925
-ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
+ms.author: malop
+ms.reviewer: kumud
+ms.openlocfilehash: b26f876fbe07b1667a579fc040562f1d6ee8a85e
+ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67202850"
+ms.lasthandoff: 07/15/2019
+ms.locfileid: "67871798"
 ---
 # <a name="virtual-network-traffic-routing"></a>Routing von Datenverkehr für virtuelle Netzwerke
 
@@ -98,7 +99,7 @@ Beim Erstellen einer benutzerdefinierten Route können Sie die folgenden Typen d
 
 Es ist nicht möglich, **VNet-Peering** oder **VirtualNetworkServiceEndpoint** als Typ des nächsten Hops in benutzerdefinierten Routen anzugeben. Routen mit **VNet-Peering** oder **VirtualNetworkServiceEndpoint** als Typ des nächsten Hops werden von Azure nur dann erstellt, wenn Sie ein VNet-Peering oder einen Dienstendpunkt konfigurieren.
 
-## <a name="next-hop-types-across-azure-tools"></a>**Typ des nächsten Hops für Azure-Tools**
+## <a name="next-hop-types-across-azure-tools"></a>Typ des nächsten Hops für Azure-Tools
 
 Der Name, der für Typen des nächsten Hops angezeigt und referenziert wird, unterscheidet sich für das Azure-Portal und Befehlszeilentools und die Bereitstellungsmodelle „Azure Resource Manager“ und „klassisch“. In der folgenden Tabelle sind die Namen aufgeführt, die zum Verweisen auf den Typ des nächsten Hops mit den unterschiedlichen Tools und [Bereitstellungsmodellen](../azure-resource-manager/resource-manager-deployment-model.md?toc=%2fazure%2fvirtual-network%2ftoc.json) verwendet werden:
 

@@ -6,12 +6,12 @@ ms.service: azure-resource-manager
 ms.topic: reference
 ms.date: 06/07/2019
 ms.author: tomfitz
-ms.openlocfilehash: 4f1bc1415fbb875120d7b64128cae69e1e3f442c
-ms.sourcegitcommit: a12b2c2599134e32a910921861d4805e21320159
+ms.openlocfilehash: 72bb11cd064c90c2bbe1e9e6452dcbf07fe37817
+ms.sourcegitcommit: 770b060438122f090ab90d81e3ff2f023455213b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/24/2019
-ms.locfileid: "67339845"
+ms.lasthandoff: 07/17/2019
+ms.locfileid: "68304866"
 ---
 # <a name="tag-support-for-azure-resources"></a>Tagunterstützung für Azure-Ressourcen
 In diesem Artikel erfahren Sie, ob ein Ressourcentyp [Tags](resource-group-using-tags.md) unterstützt. Die Spalte mit der Bezeichnung **Tagunterstützung** zeigt an, ob der Ressourcentyp eine Eigenschaft für das Tag hat. Die Spalte mit der Bezeichnung **Tag in Kostenbericht** gibt an, ob dieser Ressourcentyp das Tag an den Kostenbericht übergibt.
@@ -890,7 +890,7 @@ Um die Daten als Datei mit durch Trennzeichen getrennten Werten abzurufen, laden
 | trafficmanagerprofiles | Ja | Ja |
 | trafficmanagerprofiles/heatMaps | Nein |  Nein |
 | virtualHubs | Ja | Ja |
-| virtualNetworkGateways | Ja | Nein |
+| virtualNetworkGateways | Ja | Ja |
 | virtualNetworks | Ja | Ja |
 | virtualNetworks/subnets | Nein |  Nein |
 | virtualNetworkTaps | Ja | Ja |

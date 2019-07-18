@@ -3,7 +3,6 @@ title: Löschen eines Subnetzes nach Löschen einer verwalteten Azure SQL-Datenb
 description: Erfahren Sie, wie Sie ein virtuelles Azure-Netzwerk nach Löschen einer verwalteten Azure SQL-Datenbank-Instanz löschen.
 services: sql-database
 ms.service: sql-database
-ms.subservice: management
 ms.custom: ''
 ms.devlang: ''
 ms.topic: conceptual
@@ -12,12 +11,12 @@ ms.author: danil
 ms.reviewer: douglas, carlrab, sstein
 manager: craigg
 ms.date: 06/26/2019
-ms.openlocfilehash: 4679ecda210fa78aad4315bc6602b67dd1795ce9
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: ead7ea91e172f608c5364e4d5164d2a71dbf2f5f
+ms.sourcegitcommit: a8b638322d494739f7463db4f0ea465496c689c6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67427975"
+ms.lasthandoff: 07/17/2019
+ms.locfileid: "68297620"
 ---
 # <a name="delete-a-subnet-after-deleting-an-azure-sql-database-managed-instance"></a>Löschen eines Subnetzes nach Löschen einer verwalteten Azure SQL-Datenbank-Instanz
 

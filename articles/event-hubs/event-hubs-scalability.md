@@ -14,12 +14,12 @@ ms.workload: na
 ms.custom: seodec18
 ms.date: 06/18/2019
 ms.author: shvija
-ms.openlocfilehash: 3eb20013a6b3afaddce10f2e4652add0edf22a9a
-ms.sourcegitcommit: a52d48238d00161be5d1ed5d04132db4de43e076
+ms.openlocfilehash: c46b333f2cc304cc12ddf78670b60940c7bc0db3
+ms.sourcegitcommit: 441e59b8657a1eb1538c848b9b78c2e9e1b6cfd5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/20/2019
-ms.locfileid: "67276527"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67827678"
 ---
 # <a name="scaling-with-event-hubs"></a>Skalierung mit Event Hubs
 
@@ -48,14 +48,14 @@ Der Event Hubs-Dienst erhöht den Durchsatz, wenn die Last den minimalen Schwell
 Weitere Informationen zum Feature für die automatische Vergrößerung finden Sie unter [Automatisches Skalieren von Durchsatzeinheiten](event-hubs-auto-inflate.md).
 
 ## <a name="partitions"></a>Partitionen
+[!INCLUDE [event-hubs-partitions](../../includes/event-hubs-partitions.md)]
 
-Mit Partitionen können Sie die Skalierung für Ihre Downstreamverarbeitung durchführen. Aufgrund des partitionierten Consumermodells, das Event Hubs mit Partitionen bietet, können Sie die horizontale Skalierung bei gleichzeitiger Verarbeitung Ihrer Ereignisse vornehmen. Ein Event Hub kann über bis zu 32 Partitionen verfügen.
+### <a name="partition-key"></a>Partitionsschlüssel
 
-Es wird empfohlen, Durchsatzeinheiten und Partitionen 1:1 aufeinander abzustimmen, um eine optimale Skalierung zu erreichen. Eine einzelne Partition weist einen garantierten Ein- und Ausgang von bis zu einer Durchsatzeinheit auf. Sie können zwar einen höheren Durchsatz auf einer Partition erzielen, aber die Leistung ist nicht garantiert. Aus diesem Grund wird dringend empfohlen, dass die Anzahl der Partitionen in einem Event Hub größer oder gleich der Anzahl der Durchsatzeinheiten ist.
+Mit einem [Partitionsschlüssel](event-hubs-programming-guide.md#partition-key) können Sie eingehende Ereignisdaten spezifischen Partitionen zuordnen und die Daten so organisieren. Der Partitionsschlüssel ist ein vom Absender bereitgestellter Wert, der an einen Event Hub übergeben wird. Er wird über eine statische Hashfunktion verarbeitet, die die Partitionszuweisung erstellt. Wenn Sie beim Veröffentlichen eines Ereignisses keinen Partitionsschlüssel angeben, wird eine Roundrobinzuordnung verwendet.
 
-Angesichts des Gesamtdurchsatzes, den Sie planen zu benötigen, kennen Sie die Anzahl der benötigten Durchsatzeinheiten und die minimale Anzahl der Partitionen, aber wie viele Partitionen sollten Sie verwenden? Wählen Sie die Anzahl der Partitionen basierend auf der zu erreichenden Downstreamparallelität und Ihren zukünftigen Durchsatzanforderungen. Für die Anzahl der Partitionen, die Sie innerhalb eines Event Hubs verwenden, fällt keine Gebühr an.
+Dem Ereignisherausgeber ist nur der Partitionsschlüssel bekannt, nicht die Partition, auf der die Ereignisse veröffentlicht werden. Dieses Entkoppeln von Schlüssel und Partition entbindet den Absender davon, zu viel über die Downstreamverarbeitung wissen zu müssen. Eine gerätebezogene oder für einen Benutzer eindeutige Identität stellt einen guten Partitionsschlüssel dar, es können aber auch andere Attribute wie z. B. Geografie zum Gruppieren von verwandten Ereignissen in einer einzelnen Partition verwendet werden.
 
-Ausführliche Informationen zu Event Hubs-Preisen finden Sie unter [Event Hubs-Preise](https://azure.microsoft.com/pricing/details/event-hubs/).
 
 ## <a name="next-steps"></a>Nächste Schritte
 Weitere Informationen zu Event Hubs finden Sie unter den folgenden Links:

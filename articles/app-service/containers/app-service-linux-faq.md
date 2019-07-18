@@ -4,7 +4,7 @@ description: Häufig gestellte Fragen (FAQ) zu Azure App Service unter Linux.
 keywords: Azure App Service, Web-App, FAQ, Linux, OSS, Web-App für Container, mehrere Container, Multicontainer
 services: app-service
 documentationCenter: ''
-author: yili
+author: msangapu-msft
 manager: stefsch
 editor: ''
 ms.assetid: ''
@@ -14,14 +14,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 10/30/2018
-ms.author: yili
+ms.author: msangapu
 ms.custom: seodec18
-ms.openlocfilehash: dbf63ff47b11c2e75966b4a4b91fb1b00b40d216
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: ec571555415a912a31b094722bd47f67210a0372
+ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65594280"
+ms.lasthandoff: 07/07/2019
+ms.locfileid: "67617350"
 ---
 # <a name="azure-app-service-on-linux-faq"></a>Häufig gestellte Fragen (FAQ) zu Azure App Service unter Linux
 
@@ -119,10 +119,7 @@ Ja. Bei einer Git-Bereitstellung erkennt Kudu, dass Sie eine PHP-Anwendung berei
 
 **Ich verwende meinen eigenen benutzerdefinierten Container. Ich möchte, dass die Plattform eine SMB-Freigabe im Verzeichnis `/home/` bereitstellt.**
 
-Legen Sie die App-Einstellung `WEBSITES_ENABLE_APP_SERVICE_STORAGE` auf *TRUE* fest. Bitte beachten Sie, dass das Containerneustarts verursacht, wenn Änderungen am Plattformspeicher vorgenommen werden.
-
->[!NOTE]
->Wenn die Einstellung `WEBSITES_ENABLE_APP_SERVICE_STORAGE` nicht angegeben oder auf *FALSE* festgelegt ist, wird das Verzeichnis `/home/` nicht über Skalierungsinstanzen freigegeben. Außerdem werden dort geschriebene Dateien nicht über Neustarts hinweg beibehalten.
+Wenn die Einstellung `WEBSITES_ENABLE_APP_SERVICE_STORAGE` **nicht angegeben** oder auf *TRUE* festgelegt ist, wird das Verzeichnis `/home/` nicht über Skalierungsinstanzen **freigegeben** und geschriebene Dateien werden **über Neustarts hinweg beibehalten**. Das explizite Festlegen von `WEBSITES_ENABLE_APP_SERVICE_STORAGE` auf *FALSE* deaktiviert die Bereitstellung.
 
 **Mein benutzerdefinierter Container benötigt für den Start sehr lange, und die Plattform startet den Container neu, bevor er den Startvorgang abgeschlossen hat.**
 

@@ -9,14 +9,14 @@ editor: ''
 ms.service: media-services
 ms.workload: ''
 ms.topic: article
-ms.date: 04/27/2019
+ms.date: 07/11/2019
 ms.author: juliako
-ms.openlocfilehash: ab74b778757aefc22f66e8b52d1f1d922526f14a
-ms.sourcegitcommit: 2d3b1d7653c6c585e9423cf41658de0c68d883fa
+ms.openlocfilehash: 831ba217e99d1610383320ddf5706c6acfcdf48a
+ms.sourcegitcommit: fa45c2bcd1b32bc8dd54a5dc8bc206d2fe23d5fb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/20/2019
-ms.locfileid: "67296136"
+ms.lasthandoff: 07/12/2019
+ms.locfileid: "67848900"
 ---
 # <a name="streaming-endpoints"></a>Streamingendpunkte 
 
@@ -55,19 +55,17 @@ SLA-Informationen finden Sie unter [Preise und SLA](https://azure.microsoft.com/
 
 Feature|Standard|Premium
 ---|---|---
-Erste 15 Tage kostenlos <sup>1</sup>| Ja |Nein
 Throughput |Bis zu 600 MBit/s; kann einen deutlich höheren effektiven Durchsatz bereitstellen, wenn ein CDN verwendet wird.|200 Mbit/s pro Streamingeinheit. Kann einen deutlich höheren effektiven Durchsatz bereitstellen, wenn ein CDN verwendet wird.
 CDN|Azure CDN, CDN eines Drittanbieters oder kein CDN.|Azure CDN, CDN eines Drittanbieters oder kein CDN.
 Die Abrechnung erfolgt anteilsmäßig| Täglich|Täglich
 Dynamische Verschlüsselung|Ja|Ja
 Dynamische Paketerstellung|Ja|Ja
 Skalieren|Automatische Skalierung bis zum Zieldurchsatz.|Zusätzliche SUs
-IP-Filterung/G20/benutzerdefinierter Host <sup>2</sup>|Ja|Ja
+IP-Filterung/G20/Benutzerdefinierter Host  <sup>1</sup>|Ja|Ja
 Progressiver Download|Ja|Ja
 Empfohlene Verwendung |Für den Großteil der Streamingszenarien empfohlen.|Professionelle Nutzung.
 
-<sup>1</sup> Die kostenlose Testversion gilt nur für neu erstellte Media Services-Konten und den Standardstreamingendpunkt.<br/>
-<sup>2</sup> Wird nur direkt am Streamingendpunkt verwendet, wenn das CDN nicht auf dem Endpunkt aktiviert ist.<br/>
+<sup>1</sup> Wird nur direkt am Streamingendpunkt verwendet, wenn das CDN am Endpunkt nicht aktiviert ist.<br/>
 
 ## <a name="properties"></a>Properties 
 
