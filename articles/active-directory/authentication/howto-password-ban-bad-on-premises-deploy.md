@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jsimmons
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 134ab2a5f0b1b1569cdf4747f5bbe3f895ba4e8f
-ms.sourcegitcommit: 2d3b1d7653c6c585e9423cf41658de0c68d883fa
+ms.openlocfilehash: 8487f82b123b42f9d6a6f0fbd6d6cbb240bf9fdc
+ms.sourcegitcommit: 1572b615c8f863be4986c23ea2ff7642b02bc605
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/20/2019
-ms.locfileid: "67293018"
+ms.lasthandoff: 07/10/2019
+ms.locfileid: "67785529"
 ---
 # <a name="deploy-azure-ad-password-protection"></a>Bereitstellen des Kennwortschutzes für Azure AD
 
@@ -44,7 +44,7 @@ Nachdem das Feature für einen angemessenen Zeitraum im Überwachungsmodus ausge
    > Die Bereitstellung von Proxydiensten ist eine obligatorische Voraussetzung für das Bereitstellen des Kennwortschutzes von Azure AD, auch wenn der Domänencontroller möglicherweise über eine direkte ausgehende Internetverbindung verfügt. 
    >
 * Auf allen Computern, auf denen der Azure AD-Kennwortschutz-Proxydienst installiert werden soll, muss .NET 4.7 installiert sein.
-  .NET 4.7 sollte bereits auf einem vollständig aktualisierten Windows-Server installiert sein. Wenn dies nicht der Fall ist, laden Sie das Installationsprogramm unter [.NET Framework 4.7-Offlineinstallationsprogramm für Windows](https://support.microsoft.com/en-us/help/3186497/the-net-framework-4-7-offline-installer-for-windows) herunter, und führen Sie es aus.
+  .NET 4.7 sollte bereits auf einem vollständig aktualisierten Windows-Server installiert sein. Wenn dies nicht der Fall ist, laden Sie das Installationsprogramm unter [.NET Framework 4.7-Offlineinstallationsprogramm für Windows](https://support.microsoft.com/help/3186497/the-net-framework-4-7-offline-installer-for-windows) herunter, und führen Sie es aus.
 * Alle Computer (auch Domänencontroller), auf denen Azure AD-Kennwortschutzkomponenten installiert sind, müssen über eine Installation der Universal C-Runtime verfügen. Sie können die Runtime abrufen, indem Sie sicherstellen, dass Sie über alle Updates von Windows Update verfügen. Sie können sie auch in einem betriebssystemspezifischen Updatepaket abrufen. Weitere Informationen finden Sie unter [Update für die Universal C-Runtime in Windows](https://support.microsoft.com/help/2999226/update-for-uniersal-c-runtime-in-windows).
 * Netzwerkkonnektivität muss zwischen mindestens einem Domänencontroller in jeder Domäne und mindestens einem Server bestehen, der den Proxydienst für Kennwortschutz hostet. Diese Konnektivität muss es dem Domänencontroller gestatten, auf den RPC-Endpunktzuordnungsport 135 und den RPC-Serverport für den Proxydienst zuzugreifen. Der RPC-Serverport ist standardmäßig ein dynamischer RPC-Port. Er kann jedoch so konfiguriert werden, dass er einen [statischen Port verwendet](#static).
 * Alle Computer, die den Proxydienst hosten, müssen auf die folgenden Endpunkte zugreifen können:

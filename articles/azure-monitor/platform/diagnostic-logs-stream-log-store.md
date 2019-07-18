@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 04/18/2019
 ms.author: johnkem
 ms.subservice: logs
-ms.openlocfilehash: 13eb1a8fcea2f74cda5921a51b8c2e8816be975f
-ms.sourcegitcommit: 82efacfaffbb051ab6dc73d9fe78c74f96f549c2
+ms.openlocfilehash: e8e6276a38f06b5c6ebb24c89f3733b9fd7220f7
+ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/20/2019
-ms.locfileid: "67303708"
+ms.lasthandoff: 07/07/2019
+ms.locfileid: "67612842"
 ---
 # <a name="stream-azure-diagnostic-logs-to-log-analytics-workspace-in-azure-monitor"></a>Streamen von Azure-Diagnoseprotokollen an einen Log Analytics-Arbeitsbereich in Azure Monitor
 
@@ -98,6 +98,30 @@ Das Argument `--resource-group` ist nur erforderlich, wenn `--workspace` keine O
 ## <a name="how-do-i-query-the-data-from-a-log-analytics-workspace"></a>Wie frage ich die Daten aus einem Log Analytics-Arbeitsbereich ab?
 
 Auf dem Blatt „Protokolle“ im Azure Monitor-Portal können Sie Diagnoseprotokolle im Rahmen der Protokollverwaltungslösung unter der AzureDiagnostics-Tabelle abfragen. Es gibt auch [verschiedene Überwachungslösungen für Azure-Ressourcen](../../azure-monitor/insights/solutions.md), die Sie installieren können, um sofort Informationen zu den an Azure Monitor gesendeten Protokolldaten zu erhalten.
+
+### <a name="examples"></a>Beispiele
+
+```Kusto
+// Resources that collect diagnostic logs into this Log Analytics workspace, using Diagnostic Settings
+AzureDiagnostics
+| distinct _ResourceId
+```
+```Kusto
+// Resource providers collecting diagnostic logs into this Log Analytics worksapce, with log volume per category
+AzureDiagnostics
+| summarize count() by ResourceProvider, Category
+```
+```Kusto
+// Resource types collecting diagnostic logs into this Log Analytics workspace, with number of resources onboarded
+AzureDiagnostics
+| summarize ResourcesOnboarded=dcount(_ResourceId) by ResourceType
+```
+```Kusto
+// Operations logged by specific resource provider, in this example - KeyVault
+AzureDiagnostics
+| where ResourceProvider == "MICROSOFT.KEYVAULT"
+| distinct OperationName
+```
 
 ## <a name="azure-diagnostics-vs-resource-specific"></a>Der Azure-Diagnose-Modus und der ressourcenspezifische Modus im Vergleich  
 Sobald ein Log Analytics-Ziel in einer Azure-Diagnose-Konfiguration aktiviert wird, gibt es zwei Möglichkeiten für die Anzeige von Daten in Ihrem Arbeitsbereich:  

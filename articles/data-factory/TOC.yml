@@ -564,12 +564,12 @@
           href: solution-template-copy-files-multiple-containers.md
         - name: Kopieren neuer Dateien basierend auf „LastModifiedDate“
           href: solution-template-copy-new-files-lastmodifieddate.md
+        - name: Massenkopieren aus Datenbank
+          href: solution-template-bulk-copy-with-control-table.md
+        - name: Deltakopie aus Datenbank
+          href: solution-template-delta-copy-with-control-table.md
         - name: Verschieben von Dateien
           href: solution-template-move-files.md
-        - name: Massenkopieren mit Steuertabelle
-          href: solution-template-bulk-copy-with-control-table.md
-        - name: Deltakopie mit Steuertabelle
-          href: solution-template-delta-copy-with-control-table.md
         - name: Transformieren von Daten mit Databricks
           href: solution-template-databricks-notebook.md
     - name: Handbuch zur Problembehandlung

@@ -55,7 +55,9 @@
       items:
         - name: Problembehandlung für in Azure AD eingebundene aktuelle Windows-Hybridgeräte
           href: troubleshoot-hybrid-join-windows-current.md
-        - name: Problembehandlung für in Azure AD eingebundene ältere Windows-Hybridgeräte
+        - name: Troubleshooting mithilfe von dsregcmd
+          href: troubleshoot-device-dsregcmd.md
+        - name: Troubleshooting für in Azure AD eingebundene kompatible Windows-Hybridgeräte
           href: troubleshoot-hybrid-join-windows-legacy.md
         - name: Problembehandlung für Enterprise State Roaming
           href: enterprise-state-roaming-troubleshooting.md

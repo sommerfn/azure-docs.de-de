@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: philmea
-ms.openlocfilehash: b1edd4777839c947cf8f60bb6857f939553e2603
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: e6947a4f15797028274d49069d9e2787b143860d
+ms.sourcegitcommit: 837dfd2c84a810c75b009d5813ecb67237aaf6b8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65467613"
+ms.lasthandoff: 07/02/2019
+ms.locfileid: "67503227"
 ---
 # <a name="configure-the-application-dashboard"></a>Konfigurieren des Anwendungsdashboards
 
@@ -41,6 +41,8 @@ Wenn ein Bediener jetzt das Standarddashboard der Anwendung anzeigt, wird die ne
 ![Registerkarte „Dashboard“ mit Anzeige der Einstellungen und Eigenschaften für die Kachel](media/howto-configure-homepage/image4a.png)
 
 Sie können weitere Kacheltypen in der Bibliothek untersuchen, um zu erfahren, wie Sie das Standarddashboard der Anwendung weiter anpassen können.
+
+Mehr über die Verwendung von Kacheln in Azure IoT Central erfahren Sie unter [Verwenden von Dashboardkacheln](howto-use-tiles.md).
 
 ## <a name="next-steps"></a>Nächste Schritte
 

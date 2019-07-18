@@ -388,18 +388,26 @@
               items:
                 - name: Web-Apps
                   href: app/java-get-started.md
+                - name: Web-Apps (2.5.0-BETA)
+                  href: app/java-get-started-25-beta.md
                 - name: Docker-Apps
                   href: app/docker.md
                 - name: Protokollablaufverfolgungen
                   href: app/java-trace-logs.md
+                - name: Protokollablaufverfolgungen (2.5.0-BETA)
+                  href: app/java-trace-logs-25-beta.md
                 - name: UNIX-Metriken
                   href: app/java-collectd.md
                 - name: Abhängigkeiten
                   href: app/java-agent.md
+                - name: Abhängigkeiten (2.5.0-BETA)
+                  href: app/java-agent-25-beta.md
                 - name: Filtern von Telemetriedaten
                   href: app/java-filter-telemetry.md
                 - name: Mikrometer-Metriken
                   href: app/micrometer-java.md
+                - name: Micrometer-Metriken (2.5.0-BETA)
+                  href: app/micrometer-java-25-beta.md
                 - name: Konfigurieren einer Spring Boot Initializer-App
                   href: /java/azure/spring-framework/configure-spring-boot-java-applicationinsights
             - name: Node.js-Apps

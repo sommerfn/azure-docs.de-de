@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 03/14/2019
 ms.reviewer: vitalyg
 ms.author: cithomas
-ms.openlocfilehash: c94167929782a2deca7bba19924bfe67dd46bf29
-ms.sourcegitcommit: 3d4121badd265e99d1177a7c78edfa55ed7a9626
+ms.openlocfilehash: 4da91150999864c64ead28b74242e85d23a51ead
+ms.sourcegitcommit: 5cb0b6645bd5dff9c1a4324793df3fdd776225e4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/30/2019
-ms.locfileid: "66388387"
+ms.lasthandoff: 06/21/2019
+ms.locfileid: "67310451"
 ---
 # <a name="sampling-in-application-insights"></a>Erstellen von Stichproben in Application Insights
 
@@ -53,7 +53,7 @@ Während die Stichprobenerstellung mit adaptivem oder festem Prozentsatz aktiv i
 
 Die adaptive Stichprobenerstellung ist für das Application Insights SDK für ASP.NET Version 2.0.0-beta3 und höher sowie für das Microsoft.ApplicationInsights.AspNetCore SDK Version 2.2.0-beta1 und höher verfügbar und ist standardmäßig aktiviert.
 
-Die adaptive Stichprobenermittlung wirkt sich auf die Menge der Telemetriedaten aus, die von Ihrer Webserver-App an den Application Insights-Dienstendpunkt gesendet werden. Die Menge wird automatisch angepasst, damit sie eine festgelegte maximale Datenverkehrsrate nicht überschreitet, und über die Einstellung `MaxTelemetryItemsPerSecond` gesteuert. Wenn die Anwendung wenig Telemetriedaten erzeugt (z. B. beim Debuggen oder aufgrund geringer Nutzung), werden keine Stichproben für Elemente erstellt, so lange die Datenmenge unter `MaxTelemetryItemsPerSecond` liegt. Wenn die Menge an Telemetriedaten zunimmt, wird die Stichprobenrate angepasst, um die Zielmenge zu erreichen.
+Die adaptive Stichprobenermittlung wirkt sich auf die Menge der Telemetriedaten aus, die von Ihrer Webserver-App an den Application Insights-Dienstendpunkt gesendet werden. Die Menge wird automatisch angepasst, damit sie eine festgelegte maximale Datenverkehrsrate nicht überschreitet, und über die Einstellung `MaxTelemetryItemsPerSecond` gesteuert. Wenn die Anwendung wenig Telemetriedaten erzeugt (z. B. beim Debuggen oder aufgrund geringer Nutzung), werden keine Elemente vom Prozessor für Stichprobenentnahmen gelöscht, solange die Datenmenge unter `MaxTelemetryItemsPerSecond` liegt. Wenn die Menge an Telemetriedaten zunimmt, wird die Stichprobenrate angepasst, um die Zielmenge zu erreichen.
 
 Um die Zielmenge zu erreichen, werden einige der generierten Telemetriedaten verworfen. Aber wie bei den anderen Methoden für die Stichprobenerstellung behält der Algorithmus zugehörige Telemetrieelemente bei. So sind Sie beispielsweise in der Lage, in Search die zu einer bestimmten Ausnahme gehörende Anforderung in den Telemetriedaten zu ermitteln.
 
@@ -313,7 +313,7 @@ Im Metrik-Explorer werden Kennzahlen wie beispielsweise die Anzahl von Anforderu
                     <Add name = "SamplingPercentage" value = "50" />
                 </Processor>
             </BuiltInProcessors>
-        <TelemetryProcessors/>
+        </TelemetryProcessors>
     ```
 
 3. Sie können bestimmte Telemetriedatentypen mithilfe der folgenden Tags innerhalb des Processor-Tags FixedRateSamplingTelemetryProcessor in die Stichprobenerstellung einschließen oder von ihr ausschließen.

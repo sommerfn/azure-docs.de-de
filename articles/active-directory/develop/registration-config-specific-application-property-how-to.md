@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 06/28/2019
 ms.author: ryanwi
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9bccaa28d34ebff47c7de73a4d9b3d8296ae9fef
-ms.sourcegitcommit: f811238c0d732deb1f0892fe7a20a26c993bc4fc
+ms.openlocfilehash: b01ff1e2d0c9bc926d54bd54716e0579ef395ec0
+ms.sourcegitcommit: cf438e4b4e351b64fd0320bf17cc02489e61406a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/29/2019
-ms.locfileid: "67476123"
+ms.lasthandoff: 07/08/2019
+ms.locfileid: "67655992"
 ---
 # <a name="how-to-fill-out-specific-fields-for-a-custom-developed-application"></a>Ausfüllen bestimmter Felder für eine benutzerdefiniert entwickelte Anwendung
 
@@ -43,7 +43,7 @@ Dieser Artikel enthält eine kurze Beschreibung aller verfügbaren Felder im Anw
 |------------------|------------------------------------------------------------------------------------------|
 | NAME             | Der Namen der Anwendung. Dieser sollte mindestens vier Zeichen umfassen.                |
 | Unterstützte Kontotypen| Wählen Sie die Konten aus, die Ihre Anwendung unterstützen soll: „Nur Konten in diesem Organisationsverzeichnis“, „Konten in einem beliebigen Organisationsverzeichnis“ oder „Konten in allen Organisationsverzeichnissen und persönliche Microsoft-Konten“.  |
-| Umleitungs-URI (optional) | Wählen Sie die Art der App aus, die Sie erstellen (**Web** oder **Öffentlicher Client (Mobilgerät und Desktop)** ), und geben Sie dann den Umleitungs-URI (oder die Antwort-URL) für Ihre Anwendung ein. Geben Sie für Webanwendungen die Basis-URL Ihrer App an. http://localhost:31544 kann beispielsweise die URL für eine Web-App sein, die auf einem lokalen Computer ausgeführt wird. Benutzer können diese URL nutzen, um sich an einer Webclientanwendung anzumelden. Geben Sie für öffentliche Clientanwendungen den URI an, der von Azure AD zum Zurückgeben von Tokenantworten verwendet wird. Geben Sie einen für Ihre Anwendung spezifischen Wert ein (z. B. „myapp://auth“). Spezifische Beispiele für Webanwendungen oder native Anwendungen finden Sie in unseren [Schnellstartanleitungen](https://docs.microsoft.com/azure/active-directory/develop/#quickstarts).|
+| Umleitungs-URI (optional) | Wählen Sie die Art der App aus, die Sie erstellen (**Web** oder **Öffentlicher Client (Mobilgerät und Desktop)** ), und geben Sie dann den Umleitungs-URI (oder die Antwort-URL) für Ihre Anwendung ein. Geben Sie für Webanwendungen die Basis-URL Ihrer App an. http://localhost:31544 kann beispielsweise die URL für eine Web-App sein, die auf einem lokalen Computer ausgeführt wird. Benutzer können diese URL nutzen, um sich an einer Webclientanwendung anzumelden. Geben Sie für öffentliche Clientanwendungen den URI an, der von Azure AD zum Zurückgeben von Tokenantworten verwendet wird. Geben Sie einen für Ihre Anwendung spezifischen Wert ein (z. B. „myapp://auth“). Spezifische Beispiele für Webanwendungen oder native Anwendungen finden Sie in unseren [Schnellstartanleitungen](https://docs.microsoft.com/azure/active-directory/develop).|
 
 Wenn Sie die oben aufgeführten Felder ausgefüllt haben, wird Ihre Anwendung im Azure-Portal registriert, und Sie werden auf die Übersichtsseite der Anwendung weitergeleitet. Die Einstellungsseiten im linken Bereich unter **Verwalten** enthalten weitere Felder, über die Sie Ihre Anwendung weiter anpassen können. In den folgenden Tabellen werden alle Felder beschrieben. Ihnen wird möglicherweise nur ein Teil dieser Felder angezeigt, je nachdem, ob Sie eine Webanwendung oder eine öffentliche Clientanwendung erstellt haben.
 

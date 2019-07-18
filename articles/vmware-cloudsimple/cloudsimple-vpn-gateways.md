@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: vmware
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: a91d0f75b7e27065bd2ee0ea430a859d265afacb
-ms.sourcegitcommit: 08138eab740c12bf68c787062b101a4333292075
+ms.openlocfilehash: 2eae81f357904bd5034d7409ef42b681d1085930
+ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/22/2019
-ms.locfileid: "67332047"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67695217"
 ---
 # <a name="vpn-gateways-overview"></a>Übersicht über VPN-Gateways
 
@@ -43,8 +43,6 @@ Zu den Anwendungsfällen von Site-to-Site-VPN gehören:
 > Darüber hinaus müssen Sie TCP MSS mit höchstens 1078 Byte verknüpfen. Wenn Ihre VPN-Geräte MSS-Clamping nicht unterstützen, können Sie stattdessen auch den MTU-Wert der Tunnelschnittstelle auf 1118 Byte festlegen. 
 
 ### <a name="cryptographic-parameters"></a>Kryptografische Parameter
-
-Für eine Standort-zu-Standort-VPN-Verbindung werden die folgenden kryptografischen Standardparameter verwendet, um eine sichere Verbindung herzustellen.  Wenn Sie eine Verbindung von einem lokalen VPN-Gerät herstellen, müssen die Parameter übereinstimmen.
 
 Für eine Standort-zu-Standort-VPN-Verbindung werden die folgenden kryptografischen Standardparameter verwendet, um eine sichere Verbindung herzustellen.  Wenn Sie eine Verbindung von einem lokalen VPN-Gerät herstellen, verwenden Sie irgendeinen der folgenden Parameter, der von Ihrem lokalen VPN-Gateway unterstützt wird.
 

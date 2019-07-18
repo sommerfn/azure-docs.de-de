@@ -16,12 +16,12 @@ ms.date: 07/11/2017
 ms.author: mimart
 ms.reviewer: asteen
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d41ec1f510b028a2ffe2554bfcbd77bc439c4e79
-ms.sourcegitcommit: a52d48238d00161be5d1ed5d04132db4de43e076
+ms.openlocfilehash: 23e6a3d0b533dccc3c3111382b014907d5c026ab
+ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/20/2019
-ms.locfileid: "67272946"
+ms.lasthandoff: 07/07/2019
+ms.locfileid: "67612661"
 ---
 # <a name="an-app-page-shows-an-error-message-after-the-user-signs-in"></a>App-Seite, auf der eine Fehlermeldung angezeigt wird, nachdem sich ein Benutzer angemeldet hat
 
@@ -99,7 +99,7 @@ Um den Benutzer-ID-Wert zu ändern, führen Sie die folgenden Schritte aus:
 
 ## <a name="change-the-nameid-format"></a>Ändern des NameID-Formats
 
-Wenn die Anwendung ein anderes Format für das **NameID**-Attribut (Benutzer-ID) erwartet, finden Sie unter [Bearbeiten der NameID](https://docs.microsoft.com/azure/active-directory/develop/active-directory-saml-claims-customization.md#editing-nameid) weitere Informationen dazu, wie Sie das NameID-Format anpassen.
+Wenn die Anwendung ein anderes Format für das **NameID**-Attribut (Benutzer-ID) erwartet, finden Sie unter [Bearbeiten der NameID](https://docs.microsoft.com/azure/active-directory/develop/active-directory-saml-claims-customization#editing-nameid) weitere Informationen dazu, wie Sie das NameID-Format anpassen.
 
 Azure AD wählt das Format für das **NameID**-Attribut (Benutzer-ID) auf Grundlage des ausgewählten Werts oder des Formats aus, das in der SAML-Authentifizierungsanforderung von der App angefordert wird. Weitere Informationen finden Sie im Abschnitt „NameIDPolicy“ des Artikels [Single sign-on SAML protocol (SAML-Protokoll für einmaliges Anmelden)](https://docs.microsoft.com/azure/active-directory/develop/single-sign-on-saml-protocol#nameidpolicy).
 

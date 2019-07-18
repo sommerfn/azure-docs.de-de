@@ -8,16 +8,16 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 06/21/2019
-ms.openlocfilehash: e4a6d169b50eff1b0e166bea098e28e65bad8cab
-ms.sourcegitcommit: 08138eab740c12bf68c787062b101a4333292075
+ms.openlocfilehash: ed50dfd7e3c423c1c26a7dc19ae60dcb319f1850
+ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/22/2019
-ms.locfileid: "67329305"
+ms.lasthandoff: 07/07/2019
+ms.locfileid: "67621618"
 ---
 # <a name="using-reference-data-for-lookups-in-stream-analytics"></a>Verwenden von Referenzdaten für Suchvorgänge in Stream Analytics
 
-Verweisdaten (auch als Nachschlagetabelle bezeichnet) stellen ein begrenztes statisches oder sich nur langsam veränderndes Dataset dar, das für die Suche oder die Erweiterung Ihrer Datenströme verwendet wird. In einem IoT-Szenario können Sie beispielsweise Metadaten zu Sensoren (die sich nicht oft ändern) in Verweisdaten speichern und mit IoT-Echtzeitdatenströmen verknüpfen. Azure Stream Analytics lädt Verweisdaten in den Arbeitsspeicher, um eine Streamverarbeitung mit geringer Wartezeit zu erreichen. Für den Einsatz von Verweisdaten in Ihrem Azure Stream Analytics-Auftrag verwenden Sie in der Regel [Verweisdaten für JOIN-Vorgänge](https://msdn.microsoft.com/library/azure/dn949258.aspx) in Ihrer Abfrage. 
+Verweisdaten (auch als Nachschlagetabelle bezeichnet) stellen ein begrenztes statisches oder sich nur langsam veränderndes Dataset dar, das für die Suche oder die Erweiterung Ihrer Datenströme verwendet wird. In einem IoT-Szenario können Sie beispielsweise Metadaten zu Sensoren (die sich nicht oft ändern) in Verweisdaten speichern und mit IoT-Echtzeitdatenströmen verknüpfen. Azure Stream Analytics lädt Verweisdaten in den Arbeitsspeicher, um eine Streamverarbeitung mit geringer Wartezeit zu erreichen. Für den Einsatz von Verweisdaten in Ihrem Azure Stream Analytics-Auftrag verwenden Sie in der Regel [Verweisdaten für JOIN-Vorgänge](https://docs.microsoft.com/stream-analytics-query/reference-data-join-azure-stream-analytics) in Ihrer Abfrage. 
 
 In Stream Analytics werden Azure Blob Storage und Azure SQL-Datenbank als Speicherebene für Verweisdaten unterstützt. Zudem können Sie Verweisdaten von Azure Data Factory in Blob Storage transformieren und/oder kopieren, um [eine beliebige Anzahl von cloudbasierten und lokalen Datenspeichern zu verwenden](../data-factory/copy-activity-overview.md).
 
@@ -89,7 +89,7 @@ Um die SQL-Datenbank-Verweisdaten zu konfigurieren, müssen Sie zunächst eine E
 |**Eigenschaftenname**|**Beschreibung**  |
 |---------|---------|
 |Eingabealias|Ein Anzeigename, der in der Auftragsabfrage verwendet wird, um auf diese Eingabe zu verweisen.|
-|Abonnement|Auswählen Ihres Abonnements|
+|Subscription|Auswählen Ihres Abonnements|
 |Datenbank|Die Azure SQL-Datenbank mit den Verweisdaten.|
 |Username|Der Benutzername, der Ihrer Azure SQL-Datenbank-Instanz zugeordnet ist.|
 |Kennwort|Das Kennwort, das Ihrer Azure SQL-Datenbank-Instanz zugeordnet ist.|

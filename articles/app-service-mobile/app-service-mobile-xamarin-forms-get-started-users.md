@@ -3,7 +3,7 @@ title: Erste Schritte der Authentifizierung für Mobile Apps in der Xamarin.Form
 description: Erfahren Sie, wie Sie Mobile Apps zum Authentifizieren von Benutzern Ihrer Xamarin.Forms-App über eine Vielzahl von Identitätsanbietern nutzen können, darunter AAD, Google, Facebook, Twitter und Microsoft.
 services: app-service\mobile
 documentationcenter: xamarin
-author: panarasi
+author: elamalani
 manager: crdun
 editor: ''
 ms.assetid: 9c55e192-c761-4ff2-8d88-72260e9f6179
@@ -12,17 +12,21 @@ ms.workload: mobile
 ms.tgt_pltfrm: mobile-xamarin
 ms.devlang: dotnet
 ms.topic: article
-ms.date: 09/24/2018
-ms.author: panarasi
-ms.openlocfilehash: 2945cefc18a378b31700104049f1a14a1f320136
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.date: 06/25/2019
+ms.author: emalani
+ms.openlocfilehash: f1777fcb5a4e7899da982bd9d1d35905cb408ad2
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66019787"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67446302"
 ---
 # <a name="add-authentication-to-your-xamarin-forms-app"></a>Hinzufügen von Authentifizierung zu Ihrer Xamarin Forms-App
 [!INCLUDE [app-service-mobile-selector-get-started-users](../../includes/app-service-mobile-selector-get-started-users.md)]
+
+> [!NOTE]
+> Im Rahmen von Visual Studio App Center wird in neue und integrierte Dienste investiert, die für die Entwicklung mobiler Apps von zentraler Bedeutung sind. Entwickler können **Build**-, **Test**- und **Verteilungs**dienste nutzen, um eine Pipeline für Continuous Integration und Delivery einzurichten. Nach der Bereitstellung der App können Entwickler den Status und die Nutzung ihrer App mithilfe der **Analyse**- und **Diagnose**dienste überwachen und mit Benutzern über den **Push**dienst interagieren. Entwickler können auch den **Authentifizierung**sdienst nutzen, um ihre Benutzer zu authentifizieren, und den **Daten**dienst, um App-Daten dauerhaft in der Cloud zu speichern und zu synchronisieren. Besuchen Sie noch heute das [App Center](https://appcenter.ms/?utm_source=zumo&utm_campaign=app-service-mobile-xamarin-forms-get-started-users).
+>
 
 ## <a name="overview"></a>Übersicht
 In diesem Thema wird die Authentifizierung von Benutzern einer mobilen App Service-App über Ihre Clientanwendung veranschaulicht. In diesem Tutorial fügen Sie dem Xamarin Forms-Schnellstartprojekt durch Verwenden eines von App Service unterstützten Identitätsanbieters eine Authentifizierungsfunktion hinzu. Nach der erfolgreichen Authentifizierung und Autorisierung durch Ihre mobile App wird die Benutzer-ID angezeigt, und Sie erhalten Zugriff auf beschränkte Tabellendaten.
@@ -30,7 +34,7 @@ In diesem Thema wird die Authentifizierung von Benutzern einer mobilen App Servi
 ## <a name="prerequisites"></a>Voraussetzungen
 Wir empfehlen Ihnen, zuerst das Tutorial [Erstellen einer Xamarin.Forms-App][1] durchzuarbeiten, um für dieses Tutorial das bestmögliche Ergebnis zu erzielen. Nach Abschluss dieses Tutorials verfügen Sie über ein Xamarin Forms-Projekt, bei dem es sich um eine TodoList-App für mehrere Plattformen handelt.
 
-Wenn Sie das heruntergeladene Schnellstart-Serverprojekt nicht verwenden, müssen Sie Ihrem Projekt das Authentifizierungs-Erweiterungspaket hinzufügen. Weitere Informationen zu Servererweiterungspaketen finden Sie unter [Arbeiten Sie mit dem .NET-Back-End-Server SDK für Azure Mobile Apps][2].
+Wenn Sie das heruntergeladene Schnellstart-Serverprojekt nicht verwenden, müssen Sie Ihrem Projekt das Authentifizierungs-Erweiterungspaket hinzufügen. Weitere Informationen zu Servererweiterungspaketen finden Sie unter [Work with the .NET backend server SDK for Azure Mobile Apps][2](in englischer Sprache).
 
 ## <a name="register-your-app-for-authentication-and-configure-app-services"></a>Registrieren Ihrer App für die Authentifizierung und Konfigurieren von App Services
 [!INCLUDE [app-service-mobile-register-authentication](../../includes/app-service-mobile-register-authentication.md)]
@@ -39,7 +43,7 @@ Wenn Sie das heruntergeladene Schnellstart-Serverprojekt nicht verwenden, müsse
 
 Eine sichere Authentifizierung erfordert, dass Sie ein neues URL-Schema für Ihre App definieren. Dies ermöglicht dem Authentifizierungssystem die erneute Umleitung an Ihre App, sobald der Authentifizierungsprozess abgeschlossen ist. In diesem Tutorial verwenden wir ausschließlich das URL-Schema _appname_. Sie können jedoch ein beliebiges URL-Schema auswählen und verwenden. Es sollte für Ihre mobile Anwendung eindeutig sein. So aktivieren Sie die Umleitung auf der Serverseite
 
-1. Wählen Sie im [Azure-Portal][8] Ihre App Service-Instanz aus.
+1. Wählen Sie im [Azure-Portal][8] App Service aus.
 
 2. Klicken Sie auf die Menüoption **Authentifizierung/Autorisierung**.
 
@@ -53,7 +57,8 @@ Eine sichere Authentifizierung erfordert, dass Sie ein neues URL-Schema für Ihr
 [!INCLUDE [app-service-mobile-restrict-permissions-dotnet-backend](../../includes/app-service-mobile-restrict-permissions-dotnet-backend.md)]
 
 ## <a name="add-authentication-to-the-portable-class-library"></a>Hinzufügen der Authentifizierung zur portablen Klassenbibliothek
-Mobile Apps verwendet die [LoginAsync][3]-Erweiterungsmethode auf dem [MobileServiceClient][4], um für einen Benutzer die Anmeldung mit der App Service-Authentifizierung durchzuführen. In diesem Beispiel wird ein vom Server verwalteter Authentifizierungsfluss verwendet, bei dem in der App die Anmeldeoberfläche des Anbieters angezeigt wird. Weitere Informationen finden Sie unter [Vom Server verwaltete Authentifizierung][5]. Sie können stattdessen auch die [vom Client verwaltete Authentifizierung][6] verwenden, um in Ihrer Produktions-App eine bessere Benutzeroberfläche bereitzustellen.
+Mobile Apps verwendet die [LoginAsync][3] extension method on the [MobileServiceClient][4] to sign in a user with App Service authentication. This sample
+uses a server-managed authentication flow that displays the provider's sign-in interface in the app. For more information, see [Server-managed authentication][5]. Sie können stattdessen auch die [Vom Client verwaltete Authentifizierung][6] verwenden, um in Ihrer Produktions-App eine bessere Benutzeroberfläche bereitzustellen.
 
 Für die Authentifizierung mit einem Xamarin Forms-Projekt definieren Sie in der portablen Klassenbibliothek für die App eine **IAuthenticate**-Schnittstelle. Fügen Sie anschließend der Benutzeroberfläche, die in der portablen Klassenbibliothek definiert ist, die Schaltfläche **Anmelden** hinzu. Diese Schaltfläche wird zum Starten der Authentifizierung verwendet. Nach der erfolgreichen Authentifizierung werden die Daten aus dem mobilen App-Back-End geladen.
 
@@ -165,7 +170,7 @@ In diesem Abschnitt wird das Implementieren der **IAuthenticate** -Schnittstelle
             return success;
         }
 
-    Falls Sie einen anderen Identitätsanbieter als Facebook verwenden, müssen Sie für [MobileServiceAuthenticationProvider][7] einen anderen Wert auswählen.
+    Falls Sie einen anderen Identitätsanbieter als Facebook verwenden, müssen Sie für [MobileServiceAuthenticationProvider][7]einen anderen Wert auswählen.
 
 6. Aktualisieren Sie die Datei **AndroidManifest.xml**, indem Sie im `<application>`-Element folgenden XML-Code hinzufügen:
 
@@ -314,7 +319,7 @@ In diesem Abschnitt wird das Implementieren der **IAuthenticate**-Schnittstelle 
             return success;
         }
 
-    Falls Sie einen anderen Identitätsanbieter als Facebook verwenden, müssen Sie für [MobileServiceAuthenticationProvider][7] einen anderen Wert auswählen.
+    Falls Sie einen anderen Identitätsanbieter als Facebook verwenden, müssen Sie für [MobileServiceAuthenticationProvider][7]einen anderen Wert auswählen.
 
 1. Fügen Sie im Konstruktor für die **MainPage**-Klasse vor dem Aufruf von `LoadApplication()` die folgende Codezeile hinzu:
 

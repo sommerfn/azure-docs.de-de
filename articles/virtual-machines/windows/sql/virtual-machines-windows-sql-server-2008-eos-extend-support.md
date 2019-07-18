@@ -14,12 +14,12 @@ ms.workload: iaas-sql-server
 ms.date: 04/08/2019
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: ecb7030fa3652525a36ce15d66ea6e5daf9c3296
-ms.sourcegitcommit: 82efacfaffbb051ab6dc73d9fe78c74f96f549c2
+ms.openlocfilehash: b16fecd6db1f4bed319c832795a2252f8de96c6c
+ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/20/2019
-ms.locfileid: "67304226"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67607139"
 ---
 # <a name="extend-support-for-sql-server-2008-and-sql-server-2008-r2-with-azure"></a>Verlängerung des Supports für SQL Server 2008 und SQL Server 2008 R2 mit Azure
 
@@ -43,7 +43,7 @@ Auf über den Marketplace bereitgestellten Images ist die SQL-IaaS-Erweiterung b
 ## <a name="licensing"></a>Lizenzierung
 Bereitstellungen von SQL Server 2008 R2 mit nutzungsbasierter Bezahlung können in den [Azure-Hybridvorteil (AHB)](https://azure.microsoft.com/pricing/hybrid-benefit/) konvertiert werden.
 
-Um eine Software Assurance-basierte Lizenz in nutzungsbasierte Bezahlung zu konvertieren, sollten sich Kunden beim SQL-VM-[Ressourcenanbieter](virtual-machines-windows-sql-ahb.md#register-sql-server-vm-with-sql-resource-provider) registrieren. Nach der Registrierung beim SQL-VM-Ressourcenanbieter ist der SQL-Lizenztyp zwischen AHB und nutzungsbasierter Bezahlung austauschbar.
+Um eine Software Assurance-basierte Lizenz in nutzungsbasierte Bezahlung zu konvertieren, sollten sich Kunden beim SQL-VM-[Ressourcenanbieter](virtual-machines-windows-sql-register-with-resource-provider.md) registrieren. Nach der Registrierung beim SQL-VM-Ressourcenanbieter ist der SQL-Lizenztyp zwischen AHB und nutzungsbasierter Bezahlung austauschbar.
 
 Selbst installierte SQL Server 2008- oder SQL Server 2008 R2-Instanzen auf virtuellen Azure-Computern können beim SQL-Ressourcenanbieter registriert werden, wodurch ihr Lizenztyp auf die nutzungsbasierte Bezahlung umgestellt wird.
 
@@ -69,7 +69,7 @@ Es gibt folgende Lösungen für die Notfallwiederherstellung von SQL Server am 
 - **Azure Site Recovery**: Sie können Ihren virtuellen Computer mithilfe der Azure Site Recovery-Replikation zonen- und regionsübergreifend replizieren. SQL Server erfordert App-konsistente Momentaufnahmen, um die Wiederherstellung im Notfall zu gewährleisten. Azure Site Recovery bietet für die Notfallwiederherstellung von SQL Server am Ende des Supportlebenszyklus ein RPO von mindestens 1 Stunde und ein RTO von mindestens 2 Stunden + SQL Server-Wiederherstellungszeit.
 
 ## <a name="security-patching"></a>Sicherheitspatches
-Erweiterte Sicherheitsupdates für SQL Server-VMs werden über die Microsoft Update-Kanäle übermittelt, sobald die SQL Server-VM beim SQL-[Ressourcenanbieter](virtual-machines-windows-sql-ahb.md#register-sql-server-vm-with-sql-resource-provider) registriert wurde. Patches können manuell oder automatisch heruntergeladen werden.
+Erweiterte Sicherheitsupdates für SQL Server-VMs werden über die Microsoft Update-Kanäle übermittelt, sobald die SQL Server-VM beim SQL-[Ressourcenanbieter](virtual-machines-windows-sql-register-with-resource-provider.md) registriert wurde. Patches können manuell oder automatisch heruntergeladen werden.
 
 **Automatisiertes Patchen** ist standardmäßig aktiviert. Beim automatisierten Patchen kann Azure automatisch Patches für SQL Server und das Betriebssystem anwenden. Sie können einen Wochentag, eine Uhrzeit und eine Dauer für das Wartungsfenster angeben, wenn die SQL-IaaS-Erweiterung installiert wurde. Azure führt das Patchen in diesem Wartungsfenster durch. Für die Zeitplanung des Wartungsfensters wird die Uhrzeit des VM-Gebietsschemas verwendet.  Weitere Informationen finden Sie unter [Automatisches Patchen für SQL Server auf virtuellen Azure-Computern](virtual-machines-windows-sql-automated-patching.md).
 

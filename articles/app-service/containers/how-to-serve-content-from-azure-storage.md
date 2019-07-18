@@ -8,16 +8,16 @@ ms.workload: web
 ms.topic: article
 ms.date: 2/04/2019
 ms.author: msangapu-msft
-ms.openlocfilehash: 6b4e145a693aabbf1a00d732e2fd602e7c887a03
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: e6284174089419cd201d094bcb1a8c7e865d2892
+ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65956015"
+ms.lasthandoff: 07/01/2019
+ms.locfileid: "67484416"
 ---
 # <a name="serve-content-from-azure-storage-in-app-service-on-linux"></a>Bereitstellen von Inhalt aus Azure Storage in App Service unter Linux
 
-Diese Anleitung verdeutlicht die Bereitstellen statischen Inhalts in App Service unter Linux mithilfe von [Azure Storage](/azure/storage/common/storage-introduction). Zu den Vorteilen gehören sicherer Inhalt, die Portabilität des Inhalts, Zugriff auf mehrere Apps und mehrere Übertragungsmethoden. 
+Diese Anleitung verdeutlicht die Bereitstellen statischen Inhalts in App Service unter Linux mithilfe von [Azure Storage](/azure/storage/common/storage-introduction). Zu den Vorteilen gehören sicherer Inhalt, die Portabilität des Inhalts, Zugriff auf mehrere Apps und mehrere Übertragungsmethoden.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -28,6 +28,8 @@ Diese Anleitung verdeutlicht die Bereitstellen statischen Inhalts in App Service
 
 > [!NOTE]
 > Azure Storage ist ein nicht standardmäßiger Speicher und wird separat berechnet, nicht im Lieferumfang der Web-App enthalten.
+>
+> „Bring Your Own Storage“ unterstützt die Verwendung der Storage Firewall-Konfiguration aufgrund von Infrastrukturbeschränkungen nicht.
 >
 
 Erstellen Sie ein [Azure-Speicherkonto](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account?tabs=azure-cli).

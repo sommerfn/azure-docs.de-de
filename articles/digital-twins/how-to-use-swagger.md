@@ -6,15 +6,15 @@ manager: alinast
 ms.service: digital-twins
 services: digital-twins
 ms.topic: conceptual
-ms.date: 06/03/2019
+ms.date: 06/29/2019
 ms.author: v-adgera
 ms.custom: seodec18
-ms.openlocfilehash: 842c35a1575c7bcf6f547fb04d5680178b3bee78
-ms.sourcegitcommit: 1aefdf876c95bf6c07b12eb8c5fab98e92948000
+ms.openlocfilehash: 0b8c2b50e00c8e9727b09a454504d214a3060fe4
+ms.sourcegitcommit: 837dfd2c84a810c75b009d5813ecb67237aaf6b8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/06/2019
-ms.locfileid: "66730408"
+ms.lasthandoff: 07/02/2019
+ms.locfileid: "67502695"
 ---
 # <a name="azure-digital-twins-swagger-reference-documentation"></a>Referenzdokumentation: Azure Digital Twins-Swagger
 
@@ -92,14 +92,12 @@ Die Beispiele enthalten auch Fehlercodes zur Unterstützung beim Debuggen oder V
 
 ## <a name="swagger-oauth-20-authorization"></a>Swagger-OAuth 2.0-Autorisierung
 
-Weitere Informationen zum interaktiven Testen von Anforderungen, die durch OAuth 2.0 geschützt sind, finden Sie in der [offiziellen Dokumentation](https://swagger.io/docs/specification/authentication/oauth2/).
-
 > [!NOTE]
-> Der Benutzerprinzipal, der die Azure Digital Twins-Ressource erstellt hat, verfügt über eine Raumadministrator-Rollenzuweisung und kann zusätzliche Rollenzuweisungen für andere Benutzer erstellen.
+> * Der Benutzerprinzipal, der die Azure Digital Twins-Ressource erstellt hat, verfügt über eine Raumadministrator-Rollenzuweisung und kann zusätzliche Rollenzuweisungen für andere Benutzer erstellen. Derartige Benutzer und ihre Rollen können zum Aufrufen der APIs autorisiert werden.
 
-1. Führen Sie die Schritte in [diesem Schnellstart](https://docs.microsoft.com/azure/active-directory/develop/quickstart-v1-integrate-apps-with-azure-ad) aus, um eine Azure AD-Anwendung vom Typ ***Web-App/API*** zu erstellen. Alternativ können Sie eine vorhandene App-Registrierung wiederverwenden.
+1. Führen Sie die Schritte in [dieser Schnellstartanleitung](https://docs.microsoft.com/azure/active-directory/develop/quickstart-v1-integrate-apps-with-azure-ad) aus, oder [registrieren Sie Ihre Azure Digital Twins-App mit Azure Active Directory Legacy](./how-to-use-legacy-aad.md), um eine Azure AD-Anwendung zu erstellen und zu konfigurieren. Alternativ können Sie eine vorhandene App-Registrierung wiederverwenden.
 
-2. Fügen Sie der App-Registrierung die folgende Antwort-URL hinzu:
+1. Fügen Sie der App-Registrierung die folgende Antwort-URL hinzu:
 
     ```plaintext
     https://YOUR_SWAGGER_URL/ui/oauth2-redirect-html
@@ -108,29 +106,23 @@ Weitere Informationen zum interaktiven Testen von Anforderungen, die durch OAuth
     |---------|---------|---------|
     | YOUR_SWAGGER_URL | Dokumentations-URL Ihrer Verwaltungs-REST-API aus dem Portal  | `https://yourDigitalTwinsName.yourLocation.azuresmartspaces.net/management/swagger` |
 
-3. Erteilen Sie die Berechtigungen für den Zugriff auf Azure Digital Twins durch Ihre App. Geben Sie unter **Erforderliche Berechtigungen** `Azure Digital Twins` ein, und wählen Sie **Delegierte Berechtigungen** aus. Wählen Sie dann **Berechtigungen erteilen** aus.
-
-    ![Azure AD-App-Registrierungen, API hinzufügen](../../includes/media/digital-twins-permissions/aad-app-req-permissions.png)
-
-4. Konfigurieren Sie das Anwendungsmanifest so, dass impliziter OAuth 2.0-Fluss zulässig ist. Klicken Sie auf **Manifest**, um das Anwendungsmanifest für Ihre App zu öffnen. Legen Sie *oauth2AllowImplicitFlow* auf `true` fest.
-
-    ![Impliziter Azure AD-Fluss](../../includes/media/digital-twins-permissions/aad-app-allow-implicit-flow.png)
-
-5. Kopieren Sie die ID Ihrer Azure AD-App.
+1. Kopieren Sie die ID Ihrer Azure AD-App.
 
 Nach Abschluss der Azure Active Directory-Registrierung:
 
-6. Klicken Sie auf Ihrer Swagger-Seite auf die Schaltfläche **Autorisieren**.
+1. Wählen Sie auf Ihrer Swagger-Seite die Schaltfläche **Autorisieren** aus.
 
-    [![Auf die Swagger-Schaltfläche „Autorisieren“ klicken](media/how-to-use-swagger/swagger-select-authorize-btn.png)](media/how-to-use-swagger/swagger-select-authorize-btn.png#lightbox)
+    [![Swagger-Schaltfläche „Autorisieren“ auswählen](media/how-to-use-swagger/swagger-select-authorize-btn.png)](media/how-to-use-swagger/swagger-select-authorize-btn.png#lightbox)
 
-7. Fügen Sie die Anwendungs-ID in das Feld **client_id** ein.
+1. Fügen Sie die Anwendungs-ID in das Feld **client_id** ein.
 
     [![Swagger-Feld „client_id“](media/how-to-use-swagger/swagger-auth-form.png)](media/how-to-use-swagger/swagger-auth-form.png#lightbox)
 
-8. Sie werden dann zum folgenden Erfolgsmodal umgeleitet.
+1. Sie werden dann zum folgenden Erfolgsmodal umgeleitet.
 
-    [![Swagger-Umleitungsmodal](media/how-to-use-swagger/swagger_auth_redirect.PNG)](media/how-to-use-swagger/swagger_auth_redirect.PNG#lightbox)
+    [![Swagger-Umleitungsmodal](media/how-to-use-swagger/swagger_auth_redirect.png)](media/how-to-use-swagger/swagger_auth_redirect.png#lightbox)
+
+Weitere Informationen zum interaktiven Testen von Anforderungen, die durch OAuth 2.0 geschützt sind, finden Sie in der [offiziellen Dokumentation](https://swagger.io/docs/specification/authentication/oauth2/).
 
 ## <a name="next-steps"></a>Nächste Schritte
 
