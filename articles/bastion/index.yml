@@ -30,6 +30,6 @@ sections:
         style: unordered
         items:
           - html: <a href="/azure/bastion/bastion-create-host-portal">Erstellen und Ändern eines Azure Bastion-Hosts</a>
-          - html: <a href="/azure/bastion/bastion-connect-vm-ssh">Herstellen einer Verbindung mit einem virtuellen Windows-Computer</a>
-          - html: <a href="/azure/bastion/bastion-connect-vm-rdp">Herstellen einer Verbindung mit einem virtuellen Linux-Computer</a>
+          - html: <a href="/azure/bastion/bastion-connect-vm-rdp">Herstellen einer Verbindung mit einem virtuellen Windows-Computer</a>
+          - html: <a href="/azure/bastion/bastion-connect-vm-ssh">Herstellen einer Verbindung mit einem virtuellen Linux-Computer</a>
           - html: <a href="/azure/bastion/bastion-faq">Lesen der häufig gestellten Fragen zu Azure Bastion</a>
