@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 11/08/2018
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: b628f88e3d0d644cf5a9471be1d7a766c2b9575b
-ms.sourcegitcommit: 22c97298aa0e8bd848ff949f2886c8ad538c1473
+ms.openlocfilehash: b4b70a45758f697c469895bcef6ea8d203065e26
+ms.sourcegitcommit: 470041c681719df2d4ee9b81c9be6104befffcea
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/14/2019
-ms.locfileid: "67143940"
+ms.lasthandoff: 07/12/2019
+ms.locfileid: "67853978"
 ---
 # <a name="advanced-usage-of-authentication-and-authorization-in-azure-app-service"></a>Erweiterte Verwendung der Authentifizierung und Autorisierung in Azure App Service
 
@@ -186,7 +186,7 @@ Wenn das Zugriffstoken Ihres Anbieters (nicht das [Sitzungstoken](#extend-sessio
 - **Microsoft-Konto**: Wählen Sie beim [Konfigurieren der Authentifizierungseinstellungen für das Microsoft-Konto](configure-authentication-provider-microsoft.md) den Bereich `wl.offline_access` aus.
 - **Azure Active Directory:** Führen Sie in [https://resources.azure.com](https://resources.azure.com) folgende Schritte aus:
     1. Wählen Sie am oberen Seitenrand die Option **Lesen/Schreiben** aus.
-    2. Navigieren Sie im linken Browser zu **subscriptions** >  ** _\<Name des\_Abonnements_**  > **resourceGroups** >  _ **\<Name\_der\_Ressourcengruppe>** _ > **providers** > **Microsoft.Web** > **sites** >  _ **\<App\_Name>** _ > **config** > **authsettings**. 
+    2. Navigieren Sie im linken Browser zu **subscriptions** >  ** _\<Name des\_Abonnements_**  > **resourceGroups** >  ** _\<Name\_der\_Ressourcengruppe>_**  > **providers** > **Microsoft.Web** > **sites** >  ** _\<App\_Name>_**  > **config** > **authsettings**. 
     3. Klicken Sie auf **Edit**.
     4. Ändern Sie die folgende Eigenschaft. Ersetzen Sie _\<app\_id>_ mit der ID der Azure Active Directory-Anwendung des Diensts, auf den Sie zugreifen möchten.
 
@@ -233,7 +233,7 @@ az webapp auth update --resource-group <group_name> --name <app_name> --token-re
 
 Die Anmeldung über mehrere Domänen ist sowohl bei Microsoft-Konten als auch bei Azure Active Directory möglich. Microsoft-Konten lassen beispielsweise _outlook.com_-, _live.com_- und _hotmail.com_-Konten zu. Azure Active Directory lässt eine beliebige Anzahl von benutzerdefinierten Domänen für die Anmeldekonten zu. Dieses Verhalten ist für eine interne App möglicherweise nicht wünschenswert, wenn nicht jeder Benutzer mit einem _outlook.com_-Konto über Zugriff verfügen soll. Gehen Sie folgendermaßen vor, um den Domänennamen der Anmeldekonten zu beschränken.
 
-Navigieren Sie in [https://resources.azure.com](https://resources.azure.com) zu **subscriptions** >  ** _\< Name des\_ Abonnements_**  > **resourceGroups** >  _ **\< Name\_ der\_ Ressourcengruppe>** _ > **providers** > **Microsoft.Web** > **sites** >  _ **\< App\_ Name>** _ > **config** > **authsettings**. 
+Navigieren Sie in [https://resources.azure.com](https://resources.azure.com) zu **subscriptions** >  ** _\< Name des\_ Abonnements_**  > **resourceGroups** >  ** _\< Name\_ der\_ Ressourcengruppe>_**  > **providers** > **Microsoft.Web** > **sites** >  ** _\< App\_ Name>_**  > **config** > **authsettings**. 
 
 Klicken Sie auf **Bearbeiten**, ändern Sie die folgende Eigenschaft, und klicken Sie dann auf **Put**. Achten Sie darauf, _\<Domänen\_Name>_ durch die gewünschte Domäne zu ersetzen.
 
