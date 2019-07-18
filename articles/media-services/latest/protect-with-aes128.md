@@ -13,14 +13,17 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/21/2019
 ms.author: juliako
-ms.openlocfilehash: c957a98cdb6c195f7ed9b41dabc66a32714f57e7
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: f7f68398cb473ca166d328ee15a92f3c848840f2
+ms.sourcegitcommit: a52d48238d00161be5d1ed5d04132db4de43e076
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65142526"
+ms.lasthandoff: 06/20/2019
+ms.locfileid: "67273297"
 ---
 # <a name="tutorial-use-aes-128-dynamic-encryption-and-the-key-delivery-service"></a>Tutorial: Verwenden der dynamischen AES-128-Verschlüsselung und des Schlüsselübermittlungsdiensts
+
+> [!NOTE]
+> Obwohl in diesem Tutorial die [.NET SDK](https://docs.microsoft.com/dotnet/api/microsoft.azure.management.media.models.liveevent?view=azure-dotnet)-Beispiele verwendet werden, sind die allgemeinen Schritte für die [REST-API](https://docs.microsoft.com/rest/api/media/liveevents), die [CLI](https://docs.microsoft.com/cli/azure/ams/live-event?view=azure-cli-latest) und für andere unterstützte [SDKs](media-services-apis-overview.md#sdks) dieselben.
 
 Mithilfe von Media Services können Sie HTTP Live Streaming (HLS), MPEG-DASH und Smooth Streaming, die mit dem AES verschlüsselt sind, mithilfe von 128-Bit-Verschlüsselungsschlüsseln bereitstellen. Media Services stellt außerdem den Schlüsselübermittlungsdienst bereit, der Verschlüsselungsschlüssel an autorisierte Benutzer übermittelt. Wenn Ihr Video von Media Services dynamisch verschlüsselt werden soll, ordnen Sie den Verschlüsselungsschlüssel zu Streaminglocator zu und konfigurieren außerdem die Richtlinie für den Inhaltsschlüssel. Wenn ein Stream von einem Player angefordert wird, verwendet Media Services den angegebenen Schlüssel, um Ihren Inhalt dynamisch mit AES-128 zu verschlüsseln. Um den Stream zu entschlüsseln, fordert der Player den Schlüssel vom Schlüsselübermittlungsdienst an. Um zu ermitteln, ob der Benutzer berechtigt ist, den Schlüssel zu erhalten, wertet der Dienst die Richtlinie für Inhaltsschlüssel aus, die Sie für den Schlüssel angegeben haben.
 

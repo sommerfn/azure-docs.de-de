@@ -14,12 +14,12 @@ ms.devlang: python
 ms.topic: article
 ms.date: 04/10/2019
 ms.author: aschhab
-ms.openlocfilehash: 6d95e4a0a7aeedef2fc7e635d2e49ea68c3ba0ca
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: b74238ee49fe0d96d218f1800a33a9d60badc6d5
+ms.sourcegitcommit: a12b2c2599134e32a910921861d4805e21320159
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65992045"
+ms.lasthandoff: 06/24/2019
+ms.locfileid: "67341713"
 ---
 # <a name="how-to-use-service-bus-queues-with-python"></a>Verwenden von Service Bus-Warteschlangen mit Python
 
@@ -45,13 +45,13 @@ Das **ServiceBusClient**-Objekt ermöglicht Ihnen, mit Warteschlangen zu arbeite
 from azure.servicebus import ServiceBusClient
 ```
 
-Der folgende Code erstellt ein **ServiceBusClient**-Objekt. Ersetzen Sie `mynamespace`, `sharedaccesskeyname` und `sharedaccesskey` durch Ihren Namespace, SAS (Shared Access Signature)-Schlüsselnamen und -wert.
+Der folgende Code erstellt ein **ServiceBusClient**-Objekt. Ersetzen Sie `<CONNECTION STRING>` durch die Verbindungszeichenfolge (connectionString) Ihres Service Bus (ServiceBus).
 
 ```python
 sb_client = ServiceBusClient.from_connection_string('<CONNECTION STRING>')
 ```
 
-Den Namen und Wert des SAS-Schlüssels finden Sie in den Verbindungsinformationen des [Azure-Portals][Azure portal] oder im Bereich **Eigenschaften** von Visual Studio, wenn Sie den Service Bus-Namespace im Server-Explorer auswählen (wie im vorherigen Abschnitt gezeigt).
+Den Namen und Wert des SAS-Schlüssels finden Sie in den Verbindungsinformationen des [Azure-Portals][Azure portal] oder im Bereich **Eigenschaften** von Visual Studio, wenn Sie den Service Bus-Namespace (wie im vorherigen Abschnitt gezeigt) im Server-Explorer auswählen.
 
 ```python
 sb_client.create_queue("taskqueue")
@@ -128,7 +128,7 @@ Falls die Anwendung nach der Verarbeitung der Nachricht, aber vor Abrufen der Me
 ## <a name="next-steps"></a>Nächste Schritte
 Nachdem Sie nun mit den Grundlagen von Service Bus-Warteschlangen vertraut sind, finden Sie in den folgenden Artikeln weitere Informationen.
 
-* [Warteschlangen, Themen und Abonnements][Queues, topics, and subscriptions]
+* [Service Bus-Warteschlangen, -Themen und -Abonnements][Queues, topics, and subscriptions]
 
 [Azure portal]: https://portal.azure.com
 [Python Azure Service Bus package]: https://pypi.python.org/pypi/azure-servicebus  

@@ -11,12 +11,12 @@ ms.workload: ''
 ms.topic: article
 ms.date: 04/27/2019
 ms.author: juliako
-ms.openlocfilehash: 3e1a5d8ba8b6d0ec8e3ec1ba9506a88ee87d8ed1
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: ab74b778757aefc22f66e8b52d1f1d922526f14a
+ms.sourcegitcommit: 2d3b1d7653c6c585e9423cf41658de0c68d883fa
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66515738"
+ms.lasthandoff: 06/20/2019
+ms.locfileid: "67296136"
 ---
 # <a name="streaming-endpoints"></a>Streamingendpunkte 
 
@@ -27,7 +27,7 @@ Beim Erstellen eines Media Services-Kontos wird ein **Standard**-Streamingendpun
 > [!NOTE]
 > Um das Streaming von Videos zu starten, muss der **Streamingendpunkt**, von dem aus Sie das Video streamen möchten, gestartet werden. 
 >  
-> Abgerechnet werden nur ausgeführte Streamingendpunkte.
+> Es werden nur ausgeführte Streamingendpunkte abgerechnet.
 
 ## <a name="naming-convention"></a>Benennungskonvention
 
@@ -41,7 +41,7 @@ Es gibt zwei **Streamingendpunkt**-Typen: **Standard** (Vorschau) und **Premium*
 
 Die Typen werden in der folgenden Tabelle beschrieben:  
 
-|Type|Skalierungseinheiten|BESCHREIBUNG|
+|type|Skalierungseinheiten|BESCHREIBUNG|
 |--------|--------|--------|  
 |**Standard**|0|Der standardmäßige Streamingendpunkt ist ein **Standard**-Typ, kann aber durch Anpassen der `scaleUnits` in den Premium-Typ geändert werden.|
 |**Premium**|>0|**Premium**-Streamingendpunkte eignen sich für komplexere Workloads und bieten eine dedizierte und skalierbare Bandbreitenkapazität. Zum **Premium**-Typ wechseln Sie, indem Sie `scaleUnits` (Streamingeinheiten) anpassen. `scaleUnits` stellen eine dedizierte Ausgangskapazität bereit, die in Schritten von jeweils 200 MBit/s erworben werden kann. Bei Verwendung des **Premium**-Typs stellt jede aktivierte Einheit zusätzliche Bandbreitenkapazität für die Anwendung bereit. |
@@ -69,7 +69,7 @@ Empfohlene Verwendung |Für den Großteil der Streamingszenarien empfohlen.|Prof
 <sup>1</sup> Die kostenlose Testversion gilt nur für neu erstellte Media Services-Konten und den Standardstreamingendpunkt.<br/>
 <sup>2</sup> Wird nur direkt am Streamingendpunkt verwendet, wenn das CDN nicht auf dem Endpunkt aktiviert ist.<br/>
 
-## <a name="properties"></a>Eigenschaften 
+## <a name="properties"></a>Properties 
 
 Dieser Abschnitt enthält detaillierte Informationen zu einigen Streamingendpunkt-Eigenschaften. Beispiele zum Erstellen eines neuen Streamingendpunkts und Beschreibungen aller Eigenschaften finden Sie unter [Streamingendpunkte](https://docs.microsoft.com/rest/api/media/streamingendpoints/create). 
 
@@ -143,7 +143,7 @@ Sie müssen zudem die Funktionsweise des adaptiven Streamings berücksichtigen. 
 
 Nachdem ein Streamingendpunkt mit aktiviertem CDN bereitgestellt wurde, gibt es eine definierte Wartezeit auf Media Services, bevor das DNS-Update durchgeführt wird, um den Streamingendpunkt dem CDN-Endpunkt zuzuordnen.
 
-Wenn Sie das CDN später deaktivieren bzw. aktivieren möchten, muss Ihr Streamingendpunkt den Zustand **Beendet** haben. Es kann bis zu zwei Stunden dauern, bis die Azure CDN-Integration aktiviert ist und die Änderungen auf allen CDN-POPs aktiv sind. Sie können jedoch Ihren Streamingendpunkt starten und von ihm aus unterbrechungsfrei streamen. Sobald die Integration abgeschlossen ist, wird der Stream vom CDN übermittelt. Während der Bereitstellungsphase hat Ihr Streamingendpunkt den Zustand **Wird gestartet**, und seine Leistung ist ggf. eingeschränkt.
+Wenn Sie das CDN später deaktivieren bzw. aktivieren möchten, muss Ihr Streamingendpunkt den Zustand **Beendet** haben. Es kann bis zu zwei Stunden dauern, bis die Azure CDN-Integration aktiviert ist und die Änderungen auf allen CDN-POPs aktiv sind. Sie können jedoch Ihren Streamingendpunkt starten und von ihm aus unterbrechungsfrei streamen. Sobald die Integration abgeschlossen ist, wird der Stream vom CDN übermittelt. Während der Bereitstellungsphase hat Ihr Streamingendpunkt den Zustand **Wird gestartet**, und seine Leistung ist eventuell eingeschränkt.
 
 Wenn der standardmäßige Streamingendpunkt erstellt wird, ist er standardmäßig mit Verizon Standard konfiguriert. Sie können Verizon Premium- oder Akamai Standard-Anbieter über REST-APIs konfigurieren. 
 

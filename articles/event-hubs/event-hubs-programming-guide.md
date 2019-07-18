@@ -9,12 +9,12 @@ ms.custom: seodec18
 ms.topic: article
 ms.date: 12/06/2018
 ms.author: shvija
-ms.openlocfilehash: 29814cb8aef09a8ead30d6daa615554dd55135dd
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 2af076153725dc91caaf07b710acf21ebc143fb0
+ms.sourcegitcommit: a52d48238d00161be5d1ed5d04132db4de43e076
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60764363"
+ms.lasthandoff: 06/20/2019
+ms.locfileid: "67273661"
 ---
 # <a name="programming-guide-for-azure-event-hubs"></a>Programmierhandbuch für Azure Event Hubs
 Dieser Artikel erörtert einige gängige Szenarien zum Schreiben von Code mit Azure Event Hubs. Hierbei wird ein grundlegendes Verständnis von Event Hubs vorausgesetzt. Eine konzeptuelle Übersicht über Event Hubs finden Sie unter [Übersicht über Event Hubs](event-hubs-what-is-event-hubs.md).
@@ -70,6 +70,9 @@ for (var i = 0; i < numMessagesToSend; i++)
 ```
 
 ## <a name="partition-key"></a>Partitionsschlüssel
+
+> [!NOTE]
+> Informationen zu Partitionen finden Sie in [diesem Artikel](event-hubs-features.md#partitions), wenn Sie mit diesen nicht vertraut sind. 
 
 Beim Senden von Daten können Sie einen gehashten Wert angeben, um eine Partitionszuweisung zu generieren. Sie geben die Partition mithilfe der Eigenschaft [PartitionSender.PartitionID](/dotnet/api/microsoft.azure.eventhubs.partitionsender.partitionid) an. Wenn Sie sich für Partitionen entscheiden, müssen Sie jedoch zwischen Verfügbarkeit und Konsistenz wählen. 
 

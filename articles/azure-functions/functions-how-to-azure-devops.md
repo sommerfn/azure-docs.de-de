@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 04/18/2019
 ms.author: aelnably
 ms.custom: ''
-ms.openlocfilehash: 27b5dc9ccee8647d4fbb617063865df18b80bc5d
-ms.sourcegitcommit: cfbc8db6a3e3744062a533803e664ccee19f6d63
+ms.openlocfilehash: 9806a982982971b1b3ac9c28454e17813b2ad2a5
+ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/21/2019
-ms.locfileid: "65990279"
+ms.lasthandoff: 07/01/2019
+ms.locfileid: "67479870"
 ---
 # <a name="continuous-delivery-using-azure-devops"></a>Continuous Delivery mit Azure DevOps
 
@@ -36,9 +36,7 @@ Jede Sprache verfügt über bestimmte Buildschritte zum Erstellen eines Bereitst
 Sie können die YAML-Datei zum Erstellen Ihrer .NET-Anwendung mithilfe des folgenden Beispiels erstellen:
 
 ```yaml
-jobs:
-  - job: Build
-    pool:
+pool:
       vmImage: 'VS2017-Win2016'
 steps:
 - script: |
@@ -69,9 +67,7 @@ steps:
 Sie können die YAML-Datei zum Erstellen Ihrer JavaScript-Anwendung mithilfe des folgenden Beispiels erstellen:
 
 ```yaml
-jobs:
-  - job: Build
-    pool:
+pool:
       vmImage: ubuntu-16.04 # Use 'VS2017-Win2016' if you have Windows native +Node modules
 steps:
 - bash: |
@@ -99,9 +95,7 @@ steps:
 Sie können die YAML-Datei zum Erstellen Ihrer Python-Anwendung mithilfe des folgenden Beispiels erstellen (Python wird nur für Azure Functions unter Linux unterstützt):
 
 ```yaml
-jobs:
-  - job: Build
-    pool:
+pool:
       vmImage: ubuntu-16.04
 steps:
 - task: UsePythonVersion@0
@@ -129,6 +123,25 @@ steps:
     PathtoPublish: '$(System.DefaultWorkingDirectory)/build$(Build.BuildId).zip'
     name: 'drop'
 ```
+#### <a name="powershell"></a>PowerShell
+
+Sie können das folgende Beispiel verwenden, um Ihre YAML-Datei zum Packen Ihrer PowerShell-App zu erstellen. PowerShell wird nur für Windows Azure Functions unterstützt:
+
+```yaml
+pool:
+      vmImage: 'VS2017-Win2016'
+steps:
+- task: ArchiveFiles@2
+  displayName: "Archive files"
+  inputs:
+    rootFolderOrFile: "$(System.DefaultWorkingDirectory)"
+    includeRootFolder: false
+    archiveFile: "$(System.DefaultWorkingDirectory)/build$(Build.BuildId).zip"
+- task: PublishBuildArtifacts@1
+  inputs:
+    PathtoPublish: '$(System.DefaultWorkingDirectory)/build$(Build.BuildId).zip'
+    name: 'drop'
+```
 
 ### <a name="deploy-your-app"></a>Bereitstellen Ihrer App
 
@@ -145,6 +158,10 @@ steps:
     azureSubscription: '<Azure service connection>'
     appType: functionApp
     appName: '<Name of function app>'
+    #Uncomment the next lines to deploy to a deployment slot
+    #deployToSlotOrASE: true
+    #resourceGroupName: '<Resource Group Name>'
+    #slotName: '<Slot name>'
 ```
 
 #### <a name="linux-function-app"></a>Linux-Funktions-App
@@ -158,6 +175,11 @@ steps:
     azureSubscription: '<Azure service connection>'
     appType: functionAppLinux
     appName: '<Name of function app>'
+    #Uncomment the next lines to deploy to a deployment slot
+    #Note that deployment slots is not supported for Linux Dynamic SKU
+    #deployToSlotOrASE: true
+    #resourceGroupName: '<Resource Group Name>'
+    #slotName: '<Slot name>'
 ```
 
 ## <a name="template-based-pipeline"></a>Vorlagenbasierte Pipeline
@@ -175,6 +197,10 @@ Nachdem Sie die Quelle des Codes konfiguriert haben, suchen Sie nach Azure Func
 
 ![Azure Functions-Buildvorlagen](media/functions-how-to-azure-devops/build-templates.png)
 
+In einigen Fällen weisen die Buildartefakte eine bestimmte Ordnerstruktur auf, und Sie müssen möglicherweise die Option **Stammordnernamen für Archivpfade voranstellen** aktivieren.
+
+![Stammordner voranstellen](media/functions-how-to-azure-devops/prepend-root-folder.png)
+
 #### <a name="javascript-apps"></a>JavaScript-Apps
 
 Wenn Ihre JavaScript-App von nativen Windows-Modulen abhängig ist, müssen Sie Folgendes aktualisieren:
@@ -183,19 +209,17 @@ Wenn Ihre JavaScript-App von nativen Windows-Modulen abhängig ist, müssen Sie 
 
   ![Ändern des Build-Agent-Betriebssystems](media/functions-how-to-azure-devops/change-agent.png)
 
-- Das Skript im Schritt **Builderweiterungen** der Vorlage in `IF EXIST *.csproj dotnet build extensions.csproj --output ./bin`
-
-  ![Ändern des Skripts](media/functions-how-to-azure-devops/change-script.png)
-
 ### <a name="deploy-your-app"></a>Bereitstellen Ihrer App
 
 Wenn Sie eine neue Releasepipeline erstellen, suchen Sie nach der Azure Functions-Releasevorlage.
 
 ![](media/functions-how-to-azure-devops/release-template.png)
 
+Das Bereitstellen in einem Bereitstellungsslot wird in der Releasevorlage nicht unterstützt.
+
 ## <a name="creating-an-azure-pipeline-using-the-azure-cli"></a>Erstellen einer Azure-Pipeline mithilfe der Azure-Befehlszeilenschnittstelle
 
-Der [Befehl](/cli/azure/functionapp/devops-pipeline#az-functionapp-devops-pipeline-create) `az functionapp devops-pipeline create` erstellt eine Azure-Pipeline zum Erstellen und Veröffentlichen von Codeänderungen in Ihrem Repository. Der Befehl generiert eine neue YAML-Datei, die die Build- und Releasepipeline definiert und an Ihr Repository committet.
+Der [Befehl](/cli/azure/functionapp/devops-pipeline#az-functionapp-devops-pipeline-create) `az functionapp devops-pipeline create` erstellt eine Azure-Pipeline zum Erstellen und Veröffentlichen von Codeänderungen in Ihrem Repository. Der Befehl generiert eine neue YAML-Datei, die die Build- und Releasepipeline definiert und an Ihr Repository committet. Das Bereitstellen in einem Bereitstellungsslot wird vom Azure CLI-Befehl nicht unterstützt.
 Die Voraussetzungen für diesen Befehl hängen vom Speicherort des Codes ab:
 
 - Code in GitHub:

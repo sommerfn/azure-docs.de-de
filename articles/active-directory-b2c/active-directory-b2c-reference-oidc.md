@@ -10,12 +10,13 @@ ms.topic: conceptual
 ms.date: 04/16/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 85639e2648131f9475ad2ae77f31d43e64bf82e7
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.custom: fasttrack-edit
+ms.openlocfilehash: 0c855a3e0280e1fadf2362f2d8959beff2f5d00a
+ms.sourcegitcommit: a52d48238d00161be5d1ed5d04132db4de43e076
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66509201"
+ms.lasthandoff: 06/20/2019
+ms.locfileid: "67271967"
 ---
 # <a name="web-sign-in-with-openid-connect-in-azure-active-directory-b2c"></a>Webanmeldungen mit OpenID Connect in Azure Active Directory B2C
 
@@ -152,7 +153,9 @@ Nachdem Sie das ID-Token vollständig überprüft haben, können Sie eine Sitzun
 
 Wenn Ihre Webanwendung nur Benutzerflows ausführen soll, können Sie die nächsten Abschnitte überspringen. Diese Abschnitte gelten nur für Webanwendungen, die authentifizierte Aufrufe an eine Web-API durchführen müssen und die auch von Azure AD B2C geschützt werden.
 
-Sie können den erhaltenen Autorisierungscode (mit `response_type=code+id_token`) für ein Token für die gewünschte Ressource einlösen, indem Sie eine `POST`-Anforderung an den `/token`-Endpunkt senden. Derzeit ist die einzige Ressource, für die Sie ein Token anfordern können, die Back-End-Web-API Ihrer Anwendung. Für das Anfordern eines Tokens für sich selbst wird die Client-ID der Anwendung als Bereich verwendet:
+Sie können den erhaltenen Autorisierungscode (mit `response_type=code+id_token`) für ein Token für die gewünschte Ressource einlösen, indem Sie eine `POST`-Anforderung an den `/token`-Endpunkt senden. In Azure AD B2C können Sie [Zugriffstoken für andere APIs](active-directory-b2c-access-tokens.md#request-a-token) wie gewohnt anfordern, indem Sie ihre Bereiche in der Anforderung angeben.
+
+Sie haben auch die Möglichkeit, ein Zugriffstoken für die Web-API Ihres App-Back-Ends anzufordern, indem Sie die Client-ID der App als angeforderten Bereich verwenden. Dies führt dazu, dass ein Zugriffstoken mit dieser Client-ID als Zielgruppe erstellt wird:
 
 ```
 POST fabrikamb2c.onmicrosoft.com/oauth2/v2.0/token?p=b2c_1_sign_in HTTP/1.1

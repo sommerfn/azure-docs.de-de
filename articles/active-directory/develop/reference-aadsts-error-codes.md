@@ -17,12 +17,12 @@ ms.author: ryanwi
 ms.reviewer: hirsin, justhu
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 287e4ee53a108d1e2b83d4a8b11a98a2c7727721
-ms.sourcegitcommit: f6c85922b9e70bb83879e52c2aec6307c99a0cac
+ms.openlocfilehash: 3d6ed5c80d5c3241a9a328a2427ed8b920790635
+ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/11/2019
-ms.locfileid: "65545590"
+ms.lasthandoff: 07/01/2019
+ms.locfileid: "67482482"
 ---
 # <a name="authentication-and-authorization-error-codes"></a>Authentifizierungs- und Autorisierungsfehlercodes
 
@@ -105,7 +105,7 @@ Suchen Sie nach Informationen zu den AADSTS-Fehlercodes, die vom Azure Active Di
 | AADSTS50127 | BrokerAppNotInstalled: Der Benutzer muss für den Zugriff auf diesen Inhalt eine Broker-App installieren. |
 | AADSTS50128 | Ungültiger Domänenname: Es wurden keine Informationen zur Identifizierung des Mandanten in der Anforderung gefunden bzw. nicht über angegebene Anmeldeinformationen impliziert. |
 | AADSTS50129 | DeviceIsNotWorkplaceJoined: Um das Gerät zu registrieren, ist ein Workplace Join erforderlich. |
-| AADSTS50131 | ConditionalAccessFailed: Gibt verschiedene bedingte Zugriffsfehler an, z.B. schlechten Windows-Gerätezustand, aufgrund verdächtiger Aktivitäten blockierte Anforderung, Zugriffsrichtlinie oder Sicherheitsrichtlinienentscheidungen. |
+| AADSTS50131 | ConditionalAccessFailed: Gibt verschiedene bedingte Zugriffsfehler an, z. B. schlechten Windows-Gerätezustand, aufgrund verdächtiger Aktivitäten blockierte Anforderung, Zugriffsrichtlinie oder Sicherheitsrichtlinienentscheidungen. |
 | AADSTS50132 | SsoArtifactInvalidOrExpired: Die Sitzung ist aufgrund von Kennwortablauf oder aktueller Kennwortänderung ungültig. |
 | AADSTS50133 | SsoArtifactRevoked: Die Sitzung ist aufgrund von Kennwortablauf oder aktueller Kennwortänderung ungültig. |
 | AADSTS50134 | DeviceFlowAuthorizeWrongDatacenter: Falsches Rechenzentrum. Um eine Anforderung zu autorisieren, die von einer App im OAuth 2.0-Geräteflow eingeleitet wurde, muss die autorisierende Seite sich im selben Rechenzentrum befinden wie demjenigen, aus dem die ursprüngliche Anforderung stammt. |
@@ -215,6 +215,7 @@ Suchen Sie nach Informationen zu den AADSTS-Fehlercodes, die vom Azure Active Di
 | AADSTS90093 | GraphUserUnauthorized: Es wurde ein Graph mit einem unzulässigen Fehlercode für die Anforderung zurückgegeben. |
 | AADSTS90094 | AdminConsentRequired: Die Zustimmung des Administrators ist erforderlich. |
 | AADSTS90100 | InvalidRequestParameter: Der Parameter ist leer oder ungültig. |
+| AADSTS901002 | AADSTS901002: Der Anforderungsparameter „resource“ wird nicht unterstützt. |
 | AADSTS90101 | InvalidEmailAddress: Es wurde keine gültige E-Mail-Adresse angegeben. Die E-Mail-Adresse muss dieses Format aufweisen: `someone@example.com`. |
 | AADSTS90102 | InvalidUriParameter: Der Wert muss ein absoluter URI sein. |
 | AADSTS90107 | InvalidXml: Die Anforderung ist nicht gültig. Stellen Sie sicher, dass Ihre Daten keine ungültigen Zeichen enthalten.|

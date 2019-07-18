@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 06/04/2019
 ms.author: pullabhk
 ms.assetid: 01169af5-7eb0-4cb0-bbdb-c58ac71bf48b
-ms.openlocfilehash: 1e85b633024b5a3e85874707ae9a1f068e7a328d
-ms.sourcegitcommit: f9448a4d87226362a02b14d88290ad6b1aea9d82
+ms.openlocfilehash: 7c53d8fe0ee5bbfdbe180aa4d18d8c7b7fab29c2
+ms.sourcegitcommit: 2d3b1d7653c6c585e9423cf41658de0c68d883fa
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/07/2019
-ms.locfileid: "66808525"
+ms.lasthandoff: 06/20/2019
+ms.locfileid: "67295296"
 ---
 # <a name="monitoring-at-scale-using-azure-monitor"></a>Überwachen im gewünschten Umfang mithilfe von Azure Monitor
 
@@ -29,7 +29,7 @@ Der [integrierte Artikel zu Überwachung und Warnungen](backup-azure-monitoring-
 ## <a name="using-log-analytics-workspace"></a>Verwenden des Log Analytics-Arbeitsbereichs
 
 > [!NOTE]
-> Daten aus Azure VM-Sicherungen, MAB Agent, System Center DPM (SC-DPM), SQL-Sicherungen in Azure-VMs werden über Diagnoseeinstellungen in den Log Analytics-Arbeitsbereich übertragen. Die Unterstützung für Azure-Dateifreigabesicherungen, Microsoft Azure Backup Server (MABS) wird in Kürze verfügbar.
+> Daten aus Sicherungen von virtuellen Azure-Computern, MAB Agent, System Center DPM (SC-DPM), SQL-Sicherungen in virtuellen Azure-Computern und Sicherungen der Azure-Dateifreigabe werden über Diagnoseeinstellungen in den Log Analytics-Arbeitsbereich übertragen. Die Unterstützung für Microsoft Azure Backup Server (MABS) ist in Kürze verfügbar.
 
 Wir nutzen die Möglichkeiten von zwei Azure-Diensten – **Diagnoseeinstellungen** (um Daten von mehreren Azure Resource Manager-Ressourcen an eine andere Ressource zu senden) und **Log Analytics** (LA – um benutzerdefinierte Benachrichtigungen zu generieren, in denen Sie andere Benachrichtigungskanäle über Aktionsgruppen definieren können) für die Überwachung. In den folgenden Abschnitten wird beschrieben, wie Sie LA zur Überwachung von Azure Backup im gewünschten Umfang verwenden können.
 
@@ -47,6 +47,9 @@ Sie können einen LA-Arbeitsbereich aus einem anderen Abonnement als Ziel auswä
 ### <a name="deploying-solution-to-log-analytics-workspace"></a>Bereitstellen einer Lösung für den Log Analytics-Arbeitsbereich
 
 Sobald sich die Daten innerhalb des LA-Arbeitsbereichs befinden, stellen Sie [eine GitHub-Vorlage](https://azure.microsoft.com/resources/templates/101-backup-oms-monitoring/) in LA bereit, um die Daten zu visualisieren. Stellen Sie sicher, dass Sie die gleiche Ressourcengruppe, den gleichen Arbeitsbereichsnamen und den gleichen Speicherort angeben, um den Arbeitsbereich ordnungsgemäß zu bestimmen, und installieren Sie dann diese Vorlage.
+
+> [!NOTE]
+> Benutzern, die keine Warnungen oder Sicherungs-/Wiederherstellungsaufträge in ihrem LA-Arbeitsbereich haben, wird im Portal möglicherweise ein Fehler mit dem Code „BadArgumentError“ angezeigt. Benutzer können diesen Fehler ignorieren und die Lösung weiterhin verwenden. Sobald der Datenfluss des entsprechenden Typs in den Arbeitsbereich beginnt, zeigen die Visualisierungen das Gleiche an, und Benutzern wird dieser Fehler nicht mehr angezeigt.
 
 ### <a name="view-azure-backup-data-using-log-analytics-la"></a>Anzeigen von Azure Backup-Daten mit Log Analytics (LA)
 

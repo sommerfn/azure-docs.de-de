@@ -6,27 +6,27 @@ ms.author: zhongc
 ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
-ms.date: 05/06/2019
-ms.openlocfilehash: 80843abe130f1388a5d4081adab7b9128446763b
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.date: 06/21/2019
+ms.openlocfilehash: 5929ff439bc31e16643e5c57868cd6b68f9cd99c
+ms.sourcegitcommit: 08138eab740c12bf68c787062b101a4333292075
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65761993"
+ms.lasthandoff: 06/22/2019
+ms.locfileid: "67329574"
 ---
 # <a name="azure-stream-analytics-solution-patterns"></a>Lösungsmuster in Azure Stream Analytics
 
 Wie viele andere Dienste in Azure wird Stream Analytics am besten mit anderen Diensten verwendet, um eine größere End-to-End-Lösung zu erstellen. Dieser Artikel beschreibt einfache Azure Stream Analytics-Lösungen und verschiedene Architekturmuster. Sie können auf Basis dieser Muster komplexere Lösungen entwickeln. Die in diesem Artikel beschriebenen Muster können in einer Vielzahl von Szenarien verwendet werden. Beispiele für Muster für bestimmte Szenarien finden Sie unter [Azure-Lösungsarchitekturen](https://azure.microsoft.com/solutions/architecture/?product=stream-analytics).
 
-## <a name="create-a-stream-analytics-job-with-a-real-time-dashboard"></a>Erstellen eines Stream Analytics-Auftrags mit einem Echtzeitdashboard
+## <a name="create-a-stream-analytics-job-to-power-real-time-dashboarding-experience"></a>Erstellen eines Stream Analytics-Auftrags zur Förderung von Dashboarding in Echtzeit
 
-Da Azure Stream Analytics sehr benutzerfreundlich ist, können Sie schnell Echtzeitdashboards und Warnungen bereitstellen. Eine einfache Lösung erfasst Ereignisse von Event Hubs oder IoT Hub und [speist das Power BI-Dashboard mit einem Streamingdataset](/power-bi/service-real-time-streaming). Weitere Informationen finden Sie in dem ausführlichen Tutorial [Analysieren von Telefonanrufdaten mit Stream Analytics und Visualisieren der Ergebnisse in einem Power BI-Dashboard](stream-analytics-manage-job.md).
+Mithilfe von Azure Stream Analytics können Sie schnell Echtzeitdashboards und Warnungen bereitstellen. Eine einfache Lösung erfasst Ereignisse von Event Hubs oder IoT Hub und [speist das Power BI-Dashboard mit einem Streamingdataset](/power-bi/service-real-time-streaming). Weitere Informationen finden Sie in dem ausführlichen Tutorial [Analysieren von Telefonanrufdaten mit Stream Analytics und Visualisieren der Ergebnisse in einem Power BI-Dashboard](stream-analytics-manage-job.md).
 
 ![ASA – Power BI-Dashboard](media/stream-analytics-solution-patterns/pbidashboard.png)
 
 Diese Lösung kann in nur wenigen Minuten im Azure-Portal erstellt werden. Sie erfordert keine aufwändige Codierung, und die Geschäftslogik wird in der SQL-Sprache geschrieben.
 
-Dieses Echtzeit-Dashboard-Lösungsmuster bietet die geringste Latenz zwischen der Ereignisquelle und dem Power BI-Dashboard in einem Browser. Azure Stream Analytics ist der einzige Azure-Dienst mit dieser integrierten Funktion.
+Dieses Lösungsmuster bietet das geringste Maß an Latenz zwischen der Ereignisquelle und dem Power BI-Dashboard in einem Browser. Azure Stream Analytics ist der einzige Azure-Dienst mit dieser integrierten Funktion.
 
 ## <a name="use-sql-for-dashboard"></a>Verwenden von SQL für das Dashboard
 
@@ -34,19 +34,19 @@ Das Power BI-Dashboard bietet niedrige Latenz, aber es kann nicht verwendet werd
 
 ![ASA – SQL-Dashboard](media/stream-analytics-solution-patterns/sqldashboard.png)
 
-Die Verwendung der SQL-Datenbank bietet Ihnen mehr Flexibilität auf Kosten erhöhter Latenz. Diese Lösung ist optimal für Aufträge, bei denen die Latenzanforderungen über einer Sekunde liegen. Mit dieser Methode können Sie das Power BI-Hilfsprogramm maximal ausnutzen, um Daten gezielter für Berichte auszuwerten. Sie erhalten auch die Flexibilität der Verwendung anderer Dashboardlösungen, wie z.B. Tableau.
+Die Verwendung der SQL-Datenbank bietet Ihnen zwar mehr Flexibilität, aber auf Kosten leicht erhöhter Latenz. Diese Lösung ist optimal für Aufträge, bei denen die Latenzanforderungen über einer Sekunde liegen. Mit dieser Methode können Sie die Funktionen von Power BI in vollem Umfang ausnutzen, um Daten gezielter für Berichte auszuwerten, und Sie erhalten mehr Optionen zur Visualisierung. Sie erhalten auch die Flexibilität der Verwendung anderer Dashboardlösungen, wie z.B. Tableau.
 
-SQL ist kein Datenspeicher mit hohem Durchsatz, und der maximale Durchsatz zu einer SQL-Datenbank von Azure Stream Analytics beträgt 24 MB/s. Wenn die Ereignisquellen in der Lösung Daten mit höherer Rate produzieren, müssen Sie die Ausgaberate an SQL mit der Verarbeitungslogik in Stream Analytics reduzieren. Techniken wie z.B. Filtern, Aggregat im Fenstermodus, Musterabgleich mit temporalen Verknüpfungen und Analysefunktionen können verwendet werden. Techniken, mit denen die Ausgaberate an SQL weiter optimiert werden kann, werden in [Azure Stream Analytics-Ausgabe an Azure SQL-Datenbank](stream-analytics-sql-output-perf.md) beschrieben.
+SQL ist kein Datenspeicher mit hohem Durchsatz. Der maximale Durchsatz von Azure Stream Analytics auf eine SQL-Datenbank liegt derzeit bei etwa 24 MB/s. Wenn die Ereignisquellen in der Lösung Daten mit höherer Rate produzieren, müssen Sie die Ausgaberate an SQL mit der Verarbeitungslogik in Stream Analytics reduzieren. Techniken wie z.B. Filtern, Aggregat im Fenstermodus, Musterabgleich mit temporalen Verknüpfungen und Analysefunktionen können verwendet werden. Techniken, mit denen die Ausgaberate an SQL weiter optimiert werden kann, werden in [Azure Stream Analytics-Ausgabe an Azure SQL-Datenbank](stream-analytics-sql-output-perf.md) beschrieben.
 
 ## <a name="incorporate-real-time-insights-into-your-application-with-event-messaging"></a>Integrieren von Echtzeiteinblicken in Ihre Anwendung mit Ereignisnachrichten
 
 Die zweithäufigste Verwendung von Stream Analytics ist das Generieren von Echtzeitwarnungen. Bei diesem Lösungsmuster kann Geschäftslogik in Stream Analytics zum Erkennen von [temporalen und räumlichen Mustern](stream-analytics-geospatial-functions.md) oder [Anomalien](stream-analytics-machine-learning-anomaly-detection.md) und anschließendem Generieren von Warnsignalen verwendet werden. Hier kann im Gegensatz zur Dashboardlösung, wo Stream Analytics Power BI als bevorzugten Endpunkt verwendet, eine Anzahl von Zwischendatensenken verwendet werden. Zu diesen Senken zählen Event Hubs, Service Bus und Azure Functions. Als Entwickler der Anwendung müssen Sie entscheiden, welche Datensenke am besten für Ihr Szenario geeignet sind.
 
-Downstreamereignis-Verarbeitungslogik muss zum Generieren von Warnungen in Ihren vorhandenen Geschäftsworkflow implementiert werden. Da Sie benutzerdefinierte Logik in Azure Functions implementieren können, ist Azure Functions die schnellste Möglichkeit, diese Integration durchzuführen. Ein Tutorial zur Verwendung von Azure Functions als Ausgabe für einen Stream Analytics-Auftrag finden Sie unter [Ausführen von Azure Functions in Azure Stream Analytics-Aufträgen](stream-analytics-with-azure-functions.md). Azure Functions unterstützt auch verschiedene Arten von Benachrichtigungen einschließlich Text und E-Mail. Logic Apps kann auch für eine solche Integration verwendet werden, mit Event Hubs zwischen Stream Analytics und Logic Apps.
+Downstreamereignis-Verarbeitungslogik muss zum Generieren von Warnungen in Ihren vorhandenen Geschäftsworkflow implementiert werden. Da Sie benutzerdefinierte Logik in Azure Functions implementieren können, stellt diese Lösung die schnellste Möglichkeit dar, diese Integration durchzuführen. Ein Tutorial zur Verwendung von Azure Functions als Ausgabe für einen Stream Analytics-Auftrag finden Sie unter [Ausführen von Azure Functions in Azure Stream Analytics-Aufträgen](stream-analytics-with-azure-functions.md). Azure Functions unterstützt auch verschiedene Arten von Benachrichtigungen einschließlich Text und E-Mail. Logic Apps kann auch für eine solche Integration verwendet werden, mit Event Hubs zwischen Stream Analytics und Logic Apps.
 
 ![ASA – Ereignisnachrichten-App](media/stream-analytics-solution-patterns/eventmessagingapp.png)
 
-Event Hubs bietet auf der anderen Seite den flexibelsten Integrationspunkt. Viele andere Dienste wie Azure Data Explorer and Time Series Insight können Ereignisse von Event Hubs verarbeiten. Es können direkt Verbindungen von Diensten mit der Event Hubs-Senke von Azure Stream Analytics hergestellt werden, um die Lösung fertigzustellen. Event Hubs ist auch der Nachrichtenbroker mit dem höchsten Durchsatz, der für solche Integrationsszenarien in Azure verfügbar ist.
+Event Hubs bietet auf der anderen Seite den flexibelsten Integrationspunkt. Viele andere Dienste wie Azure Data Explorer and Time Series Insights können Ereignisse von Event Hubs verarbeiten. Es können direkt Verbindungen von Diensten mit der Event Hubs-Senke von Azure Stream Analytics hergestellt werden, um die Lösung fertigzustellen. Event Hubs ist auch der Nachrichtenbroker mit dem höchsten Durchsatz, der für solche Integrationsszenarien in Azure verfügbar ist.
 
 ## <a name="dynamic-applications-and-websites"></a>Dynamische Anwendungen und Websites
 

@@ -4,20 +4,22 @@ description: Verwenden Sie das Azure-Portal, um eine Azure Resource Manager-Vorl
 author: tfitzmac
 ms.service: azure-resource-manager
 ms.topic: conceptual
-ms.date: 05/09/2019
+ms.date: 06/19/2019
 ms.author: tomfitz
-ms.openlocfilehash: ea9499da3dac67635a48704f439f6592c6ed467e
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: e482bf99013b9bec9dfbf64c4e8ad5a8a43ff540
+ms.sourcegitcommit: 2d3b1d7653c6c585e9423cf41658de0c68d883fa
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65515066"
+ms.lasthandoff: 06/20/2019
+ms.locfileid: "67296305"
 ---
 # <a name="single-and-multi-resource-export-to-template-in-azure-portal"></a>Exportieren von einzelnen und mehreren Ressourcen in eine Vorlage im Azure-Portal
 
 Um bei der Erstellung von Azure Resource Manager-Vorlagen zu helfen, können Sie eine Vorlage aus vorhandenen Ressourcen exportieren. Die exportierte Vorlage hilft Ihnen, die JSON-Syntax und die Eigenschaften zu verstehen, die Ihre Ressourcen bereitstellen. Zum Automatisieren zukünftiger Bereitstellungen beginnen Sie mit der exportierten Vorlage und passen Sie sie an Ihr Szenario an.
 
 Mit Resource Manager können Sie eine oder mehrere Ressourcen für den Export in eine Vorlage auswählen. Sie können sich auf genau die Ressourcen konzentrieren, die in der Vorlage erforderlich sind.
+
+In diesem Artikel wird das Exportieren von Vorlagen über das Portal veranschaulicht. Sie können auch die [Azure CLI](manage-resource-groups-cli.md#export-resource-groups-to-templates), [Azure PowerShell](manage-resource-groups-powershell.md#export-resource-groups-to-templates) oder die [REST-API](/rest/api/resources/resourcegroups/exporttemplate) verwenden.
 
 ## <a name="choose-the-right-export-option"></a>Auswählen der richtigen Exportoption
 
@@ -114,7 +116,7 @@ Sie können die Vorlage exportieren, die für die Bereitstellung vorhandener Res
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- Weitere Informationen zu Azure Resource Manager finden Sie unter [Übersicht über den Azure Resource Manager](./resource-group-overview.md).
+- Informationen zum Exportieren von Vorlagen mit der [Azure CLI](manage-resource-groups-cli.md#export-resource-groups-to-templates), [Azure PowerShell](manage-resource-groups-powershell.md#export-resource-groups-to-templates) oder der [REST-API](/rest/api/resources/resourcegroups/exporttemplate).
 - Informationen zur Resource Manager-Vorlagensyntax finden Sie unter [Verstehen der Struktur und Syntax von Azure Resource Manager-Vorlagen](./resource-group-authoring-templates.md).
 - Informationen zum Entwickeln von Vorlagen finden Sie in den [Schritt-für-Schritt-Tutorials](/azure/azure-resource-manager/).
 - Informationen zum Anzeigen der Vorlagenschemas für Azure Resource Manager finden Sie in der [Referenz zu Vorlagen](/azure/templates/).

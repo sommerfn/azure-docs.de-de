@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 04/08/2019
 ms.author: tamram
 ms.subservice: tables
-ms.openlocfilehash: a428abd95f955a16d03c4ab86f05644f6db65da5
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 63a81e390c113d10378973f928ffb58d71e8628e
+ms.sourcegitcommit: 2d3b1d7653c6c585e9423cf41658de0c68d883fa
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "62101424"
+ms.lasthandoff: 06/20/2019
+ms.locfileid: "67295113"
 ---
 # <a name="table-design-patterns"></a>Entwurfsmuster für die Tabelle
 Dieser Abschnitt beschreibt einige Muster, die zur Verwendung mit Tabellenspeicherdienstlösungen geeignet sind. Darüber hinaus wird gezeigt, wie Sie einige der in anderen Artikeln zum Tabellenspeicherentwurf angesprochenen Probleme und Kompromisse praktisch behandeln können. Das folgende Diagramm fasst die Beziehungen zwischen den verschiedenen Mustern zusammen:  
@@ -574,7 +574,25 @@ if (retrieveResult.Result != null)
 Beachten Sie, dass in diesem Beispiel erwartet wird, dass die abgerufene Entität den Typ **EmployeeEntity**hat.  
 
 ### <a name="retrieving-multiple-entities-using-linq"></a>Abrufen von mehreren Entitäten mithilfe von LINQ
-Sie können mehrere Entitäten abrufen, indem Sie LINQ mit der Speicherclientbibliothek verwenden und eine Abfrage mit einer **where** -Klausel angeben. Um einen Tabellenscan zu vermeiden, sollten Sie immer den **PartitionKey**-Wert in die where-Klausel einschließen (und möglichst auch den **RowKey**-Wert, um Tabellen- und Partitionsscans zu vermeiden). Der Tabellenspeicherdienst unterstützt eine begrenzte Anzahl von Vergleichsoperatoren (größer als, größer als oder gleich, kleiner als, kleiner als oder gleich, gleich und ungleich) zur Verwendung in der WHERE-Klausel. Der folgende C#-Codeausschnitt sucht alle Mitarbeiter, deren Nachname mit „B“ beginnt (vorausgesetzt, in **RowKey** ist der Nachname gespeichert) und die der Vertriebsabteilung angehören (vorausgesetzt, in **PartitionKey** ist der Name der Abteilung gespeichert):  
+Sie können LINQ zum Abrufen mehrerer Entitäten aus dem Tabellenspeicherdienst verwenden, wenn Sie die Standardbibliothek für Tabellen in Microsoft Azure Cosmos verwenden. 
+
+```cli
+dotnet add package Microsoft.Azure.Cosmos.Table
+```
+
+Geben Sie Namespaces an, damit die folgenden Beispiele funktionieren:
+
+```csharp
+using System.Linq;
+using Microsoft.Azure.Cosmos.Table;
+using Microsoft.Azure.Cosmos.Table.Queryable;
+```
+
+Bei „employeeTable“ handelt es sich um ein „CloudTable“-Objekt, das eine „CreateQuery<ITableEntity>()“-Methode implementiert, die eine „TableQuery<ITableEntity>“ zurückgibt. Objekte dieses Typs implementieren eine „iQueryable“-Schnittstelle und ermöglichen die Verwendung von LINQ-Abfrageausdrücken und der Punktnotationssyntax.
+
+Das Abrufen von mehreren Entitäten erfolgt durch das Angeben einer Abfrage mit einer **where**-Klausel. Um einen Tabellenscan zu vermeiden, sollten Sie immer den **PartitionKey**-Wert in die where-Klausel einschließen (und möglichst auch den **RowKey**-Wert, um Tabellen- und Partitionsscans zu vermeiden). Der Tabellenspeicherdienst unterstützt eine begrenzte Anzahl von Vergleichsoperatoren (größer als, größer als oder gleich, kleiner als, kleiner als oder gleich, gleich und ungleich) zur Verwendung in der WHERE-Klausel. 
+
+Der folgende C#-Codeausschnitt sucht alle Mitarbeiter, deren Nachname mit „B“ beginnt (vorausgesetzt, in **RowKey** ist der Nachname gespeichert) und die der Vertriebsabteilung angehören (vorausgesetzt, in **PartitionKey** ist der Name der Abteilung gespeichert):  
 
 ```csharp
 TableQuery<EmployeeEntity> employeeQuery = employeeTable.CreateQuery<EmployeeEntity>();

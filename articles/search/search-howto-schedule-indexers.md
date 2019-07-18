@@ -10,12 +10,12 @@ ms.service: search
 ms.devlang: rest-api
 ms.topic: conceptual
 ms.custom: seodec2018
-ms.openlocfilehash: 764fca8d3cb4cd9c40d7880043637f89ef1a8578
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 4bf931b19b7490a94f30afde49038cdc7573fab3
+ms.sourcegitcommit: 82efacfaffbb051ab6dc73d9fe78c74f96f549c2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66755478"
+ms.lasthandoff: 06/20/2019
+ms.locfileid: "67302242"
 ---
 # <a name="how-to-schedule-indexers-for-azure-search"></a>Festlegen eines Zeitplans für Indexer in Azure Search
 Ein Indexer wird normal einmal ausgeführt, und zwar sofort nach der Erstellung. Sie können ihn über das Portal, die REST-API oder das .NET SDK nach Bedarf erneut ausführen. Sie können den Indexer auch so konfigurieren, dass er regelmäßig nach einem Zeitplan ausgeführt wird.
@@ -43,6 +43,9 @@ Betrachten wir ein Beispiel, um dies zu konkreter veranschaulichen. Angenommen, 
 * Die erste Indexerausführung beginnt am 1. Juni 2019 um oder gegen 8:00 Uhr (UTC). Angenommen, diese Ausführung dauert 20 Minuten (oder hat eine andere Dauer unter 1 Stunde).
 * Die zweite Indexerausführung beginnt am 1. Juni 2019 um oder gegen 9:00 Uhr (UTC). Angenommen, diese Ausführung dauert 70 Minuten – also mehr als einer Stunde – und wird erst gegen 10:10 Uhr (UTC) abgeschlossen.
 * Der Start der dritten Ausführung ist für 10:00 Uhr (UTC) geplant, aber zu diesem Zeitpunkt ist die vorherige Ausführung noch nicht abgeschlossen. Diese geplante Ausführung wird dann übersprungen. Die nächste Ausführung des Indexers startet somit erst um 11:00 Uhr (UTC).
+
+> [!NOTE]
+> Wenn ein Indexer auf einen bestimmten Zeitplan festgelegt ist, im gleichen Dokument bei erneuter Ausführung aber immer wieder ein Fehler auftritt, wird der Indexer in selteneren Intervallen ausgeführt (bis hin zum Maximum von mindestens einmal in 24 Stunden), bis die Ausführung fehlerfrei verläuft.  Wenn Sie der Meinung sind, dass Sie das Problem behoben haben, das dafür gesorgt hat, dass der Indexer an einem bestimmten Punkt hängengeblieben ist, können Sie eine bedarfsgesteuerte Ausführung des Indexers veranlassen. Wenn diese Ausführung erfolgreich verläuft, wird der Indexer wieder im festgelegten Zeitplanintervall ausgeführt.
 
 <a name="portal"></a>
 

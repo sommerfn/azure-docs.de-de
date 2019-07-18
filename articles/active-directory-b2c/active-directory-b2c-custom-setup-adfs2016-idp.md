@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 11/07/2018
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 4510074619ff513b7284819d88fdb2532e4ce33a
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 2c469b333c6896d33b440bfadf0ebbdbeece71a3
+ms.sourcegitcommit: a52d48238d00161be5d1ed5d04132db4de43e076
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66510427"
+ms.lasthandoff: 06/20/2019
+ms.locfileid: "67272132"
 ---
 # <a name="add-adfs-as-a-saml-identity-provider-using-custom-policies-in-azure-active-directory-b2c"></a>Hinzufügen von AD FS als SAML-Identitätsanbieter mithilfe benutzerdefinierter Richtlinien in Azure Active Directory B2C
 
@@ -101,6 +101,10 @@ Nun haben Sie Ihre Richtlinie so konfiguriert, dass Azure AD B2C mit Ihrem AD FS
 1. Wählen Sie in Ihrem Azure AD B2C-Mandanten auf der Seite **Benutzerdefinierte Richtlinien** die Option **Richtlinie hochladen** aus.
 2. Aktivieren Sie **Richtlinie überschreiben, sofern vorhanden**, navigieren Sie dann zur Datei *TrustFrameworkExtensions.xml*, und wählen Sie die Datei aus.
 3. Klicken Sie auf **Hochladen**.
+
+> [!NOTE]
+> In der B2C-Erweiterung von Visual Studio Code wird „socialIdpUserId“ verwendet. Für AD FS ist auch eine Richtlinie für soziale Netzwerke als Identitätsanbieter erforderlich.
+>
 
 ## <a name="register-the-claims-provider"></a>Registrieren des Anspruchsanbieters
 

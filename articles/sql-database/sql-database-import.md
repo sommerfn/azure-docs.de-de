@@ -11,13 +11,13 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 manager: craigg
-ms.date: 03/12/2019
-ms.openlocfilehash: 98b316f8a9c1c8ceba91870af4ff67b1aa854a9b
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.date: 06/20/2019
+ms.openlocfilehash: 0b92fb9c9bf022adce4cc0dd3e58ce8e476ed5b7
+ms.sourcegitcommit: 82efacfaffbb051ab6dc73d9fe78c74f96f549c2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65785339"
+ms.lasthandoff: 06/20/2019
+ms.locfileid: "67303509"
 ---
 # <a name="quickstart-import-a-bacpac-file-to-a-database-in-azure-sql-database"></a>Schnellstart: Importieren einer BACPAC-Datei in eine Datenbank in Azure SQL-Datenbank
 
@@ -35,6 +35,9 @@ Das [Azure-Portal](https://portal.azure.com) unterstützt *nur* das Erstellen ei
 > [!NOTE]
 > Bei [einer verwalteten Instanz](sql-database-managed-instance.md) ist es derzeit nicht möglich, eine Datenbank aus einer BACPAC-Datei über das Azure-Portal in eine Instanzdatenbank zu migrieren. Verwenden Sie zum Importieren in eine verwalteten Instanz SQL Server Management Studio oder SQLPackage.
 
+> [!NOTE]
+> Die Computer, die über das Portal oder Powershell übermittelte Import-/Exportanforderungen verarbeiten, müssen die bacpac-Datei sowie die vom Datenebenenanwendungs-Framework (DacFX) generierten temporären Dateien speichern. Der erforderliche Speicherplatz schwankt bei Datenbanken mit derselben Größe enorm, und es kann bis zu drei Mal so viel Speicherplatz benötigt werden wie die Größe der Datenbank selbst. Der lokale Speicherplatz von Computern, die die Import-/Exportanforderung ausführen, beträgt nur 450 GB. Daher könnten einige Anforderungen möglicherweise fehlschlagen und die Fehlermeldung "There is not enough space on the disk" (Es ist nicht genügend Speicherplatz auf dem Datenträger vorhanden) ausgegeben werden. In diesem Fall besteht die Problemumgehung darin, „sqlpackage.exe“ auf einem Computer mit ausreichend Speicherplatz auszuführen. Verwenden Sie zum Importieren/Exportieren von Datenbanken mit mehr als 150 GB [SqlPackage](#import-from-a-bacpac-file-using-sqlpackage), um dieses Problem zu vermeiden.
+ 
 1. Wenn Sie über das Azure-Portal aus einer BACPAC-Datei in eine neue Einzeldatenbank importieren möchten, öffnen Sie die entsprechende Seite für den Datenbankserver, und wählen Sie auf der Symbolleiste **Datenbank importieren** aus.  
 
    ![Datenbankimport 1](./media/sql-database-import/import1.png)
@@ -81,10 +84,12 @@ SqlPackage.exe /a:Import /sf:testExport.bacpac /tdn:NewDacFX /tsn:apptestserver.
 > [!NOTE]
 > Bei [einer verwalteten Instanz](sql-database-managed-instance.md) ist es derzeit nicht möglich, eine Datenbank aus einer BACPAC-Datei über Azure PowerShell in eine Instanzdatenbank zu migrieren. Verwenden Sie zum Importieren in eine verwalteten Instanz SQL Server Management Studio oder SQLPackage.
 
+> [!NOTE]
+> Die Computer, die über das Portal oder Powershell übermittelte Import-/Exportanforderungen verarbeiten, müssen die bacpac-Datei sowie die vom Datenebenenanwendungs-Framework (DacFX) generierten temporären Dateien speichern. Der erforderliche Speicherplatz schwankt bei Datenbanken mit derselben Größe enorm, und es kann bis zu drei Mal so viel Speicherplatz benötigt werden wie die Größe der Datenbank selbst. Der lokale Speicherplatz von Computern, die die Import-/Exportanforderung ausführen, beträgt nur 450 GB. Daher könnten einige Anforderungen möglicherweise fehlschlagen und die Fehlermeldung "There is not enough space on the disk" (Es ist nicht genügend Speicherplatz auf dem Datenträger vorhanden) ausgegeben werden. In diesem Fall besteht die Problemumgehung darin, „sqlpackage.exe“ auf einem Computer mit ausreichend Speicherplatz auszuführen. Verwenden Sie zum Importieren/Exportieren von Datenbanken mit mehr als 150 GB [SqlPackage](#import-from-a-bacpac-file-using-sqlpackage), um dieses Problem zu vermeiden.
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 > [!IMPORTANT]
-> Das PowerShell Azure Resource Manager-Modul wird von der Azure SQL-Datenbank weiterhin unterstützt, aber alle zukünftigen Entwicklungen erfolgen für das Az.Sql-Modul. Informationen zu diesen Cmdlets finden Sie unter [AzureRM.Sql](https://docs.microsoft.com/powershell/module/AzureRM.Sql/). Die Argumente für die Befehle im Az- und den AzureRm-Modulen sind im Wesentlichen identisch.
+> Das PowerShell Azure Resource Manager-Modul wird von Azure SQL-Datenbank weiterhin unterstützt, aber alle zukünftigen Entwicklungen erfolgen für das Az.Sql-Modul. Informationen zu diesen Cmdlets finden Sie unter [AzureRM.Sql](https://docs.microsoft.com/powershell/module/AzureRM.Sql/). Die Argumente für die Befehle im Az- und den AzureRm-Modulen sind im Wesentlichen identisch.
 
 Verwenden Sie das [New-AzSqlDatabaseImport](/powershell/module/az.sql/new-azsqldatabaseimport)-Cmdlet, um eine Anforderung für einen Datenbankimport beim Azure SQL-Datenbank-Dienst einzureichen. Je nach Größe der Datenbank nimmt der Importvorgang einige Zeit in Anspruch.
 

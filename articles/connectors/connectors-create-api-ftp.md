@@ -6,16 +6,16 @@ ms.service: logic-apps
 ms.suite: integration
 author: ecfan
 ms.author: estfan
-ms.reviewer: divswa, LADocs
+ms.reviewer: divswa, klam, LADocs
 ms.topic: article
-ms.date: 10/15/2018
+ms.date: 06/19/2019
 tags: connectors
-ms.openlocfilehash: e5aeaa707c7a839483484c524e982204d6fe055c
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 66f1d726dcfa1a077abbff0d9f028036db43cc25
+ms.sourcegitcommit: 2d3b1d7653c6c585e9423cf41658de0c68d883fa
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60408554"
+ms.lasthandoff: 06/20/2019
+ms.locfileid: "67293095"
 ---
 # <a name="create-monitor-and-manage-ftp-files-by-using-azure-logic-apps"></a>Erstellen, Überwachen und Verwalten von FTP-Dateien mithilfe von Azure Logic Apps
 
@@ -30,13 +30,31 @@ Sie können Trigger verwenden, die Antworten von Ihrem FTP-Server erhalten und d
 
 ## <a name="limits"></a>Einschränkungen
 
-* FTP-Aktionen unterstützen nur Dateien, die *50 MB oder kleiner* sind, sofern Sie nicht die Option [Nachrichtenblöcke](../logic-apps/logic-apps-handle-large-messages.md) verwenden, mit der Sie diesen Grenzwert überschreiten können. FTP-Trigger unterstützen derzeit keine Blockerstellung.
-
 * Der FTP-Connector unterstützt nur explizites FTP über SSL (FTPS) und ist nicht kompatibel mit implizitem FTPS.
+
+* Standardmäßig können FTP-Aktionen Dateien mit einer Größe von *50 MB oder kleiner* lesen oder schreiben. FTP-Aktionen unterstützen die [Nachrichtensegmentierung](../logic-apps/logic-apps-handle-large-messages.md), um Dateien zu verarbeiten, die größer als 50 MB sind. Die Aktion **Get file content** (Dateiinhalt abrufen) verwendet implizit die Nachrichtensegmentierung.
+
+* FTP-Trigger unterstützen keine Segmentierung. Trigger wählen beim Anfordern von Dateiinhalten nur Dateien aus, die 50 MB oder kleiner sind. Befolgen Sie das folgende Muster, um Dateien abzurufen, die größer als 50 MB sind:
+
+  * Verwenden Sie einen FTP-Trigger, der Dateieigenschaften wie beispielsweise **When a file is added or modified (properties only) (Wenn eine Datei hinzugefügt oder geändert wird (nur Eigenschaften))** .
+
+  * Auf den Trigger muss die FTP-Aktion **Get file content** (Dateiinhalt abrufen) folgen, die die vollständige Datei liest und implizit Segmentierung verwendet.
+
+## <a name="how-ftp-triggers-work"></a>Funktionsweise von FTP-Triggern
+
+Die FTP-Trigger rufen das FTP-Dateisystem ab und suchen nach jeder Datei, die seit dem letzten Abruf geändert wurde. Bei einigen Tools können Sie den Zeitstempel beibehalten, wenn sich die Dateien ändern. In diesen Fällen müssen Sie diese Funktion deaktivieren, sodass der Trigger arbeiten kann. Hier sind einige gängige Einstellungen:
+
+| SFTP-Client | Aktion |
+|-------------|--------|
+| Winscp | Navigieren Sie zu **Optionen** > **Voreinstellungen** > **Übertragen** > **Bearbeiten** > **Zeitstempel beibehalten** > **Deaktivieren**. |
+| FileZilla | Wechseln Sie zu **Übertragung** > **Änderungszeitpunkt der übertragenen Dateien beibehalten** > **Deaktivieren**. |
+|||
+
+Wenn ein Trigger eine neue Datei findet, überprüft er, ob die neue Datei vollständig ist und nicht nur teilweise geschrieben wurde. Zum Beispiel werden bei einer Datei möglicherweise gerade Änderungen vorgenommen, wenn der Trigger den Dateiserver überprüft. Um zu vermeiden, dass eine nur zum Teil geschriebene Datei zurückgegeben wird, vermerkt der Trigger den Zeitstempel für die Datei mit den kürzlichen Änderungen, gibt diese Datei jedoch nicht sofort zurück. Der Trigger gibt die Datei erst dann zurück, wenn der Server erneut abgerufen wird. Dieses Verhalten kann in manchen Fällen zu Verzögerungen führen, die bis zu zweimal länger als das Abrufintervall des Triggers sein können.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-* Ein Azure-Abonnement. Wenn Sie nicht über ein Azure-Abonnement verfügen, können Sie sich <a href="https://azure.microsoft.com/free/" target="_blank">für ein kostenloses Azure-Konto registrieren</a>. 
+* Ein Azure-Abonnement. Wenn Sie nicht über ein Azure-Abonnement verfügen, können Sie sich [für ein kostenloses Azure-Konto registrieren](https://azure.microsoft.com/free/).
 
 * Die Adresse Ihres FTP-Hostservers und die zugehörigen Anmeldeinformationen.
 
@@ -56,22 +74,13 @@ Sie können Trigger verwenden, die Antworten von Ihrem FTP-Server erhalten und d
 
    Oder
 
-   Wählen Sie für vorhandene Logik-Apps im letzten Schritt zum Hinzufügen einer Aktion die Option **Neuer Schritt** und dann **Aktion hinzufügen** aus. 
-   Geben Sie im Suchfeld den Begriff „ftp“ als Filter ein. 
-   Wählen Sie in der Liste mit den Aktionen die gewünschte Aktion aus.
+   Wählen Sie für vorhandene Logik-Apps im letzten Schritt zum Hinzufügen einer Aktion die Option **Neuer Schritt** und dann **Aktion hinzufügen** aus. Geben Sie im Suchfeld den Begriff „ftp“ als Filter ein. Wählen Sie in der Liste mit den Aktionen die gewünschte Aktion aus.
 
-   Wenn Sie zwischen Schritten eine Aktion einfügen möchten, bewegen Sie den Mauszeiger über den Pfeil zwischen den Schritten. 
-   Wählen Sie das daraufhin angezeigte Pluszeichen ( **+** ) und dann **Aktion hinzufügen** aus.
+   Wenn Sie zwischen Schritten eine Aktion einfügen möchten, bewegen Sie den Mauszeiger über den Pfeil zwischen den Schritten. Wählen Sie das daraufhin angezeigte Pluszeichen ( **+** ) aus, und klicken Sie auf **Aktion hinzufügen**.
 
 1. Geben Sie die erforderlichen Informationen zu Ihrer Verbindung ein, und wählen Sie dann **Erstellen** aus.
 
 1. Geben Sie die erforderlichen Details für Ihren ausgewählten Trigger oder Ihre ausgewählte Aktion an, und fahren Sie mit dem Erstellen Ihres Logik-App-Workflows fort.
-
-Beim Anfordern von Dateiinhalten ruft der Trigger keine Dateien ab, die größer als 50 MB sind. Befolgen Sie das folgende Muster, um Dateien abzurufen, die größer als 50 MB sind:
-
-* Verwenden Sie einen Trigger, der Dateieigenschaften zurückgibt, z.B. **Beim Hinzufügen oder Ändern einer Datei (nur Eigenschaften)** .
-
-* Auf den Trigger muss eine Aktion folgen, die die gesamte Datei liest (etwa **Dateiinhalt über Pfad abrufen**), und die Aktion muss [Nachrichtenblöcke](../logic-apps/logic-apps-handle-large-messages.md) verwenden.
 
 ## <a name="examples"></a>Beispiele
 
@@ -79,17 +88,9 @@ Beim Anfordern von Dateiinhalten ruft der Trigger keine Dateien ab, die größer
 
 ### <a name="ftp-trigger-when-a-file-is-added-or-modified"></a>FTP-Trigger: When a file is added or modified (Wenn eine Datei hinzugefügt oder geändert wird)
 
-Dieser Trigger startet einen Logik-App-Workflow, wenn er erkennt, dass eine Datei auf einem FTP-Server hinzugefügt oder geändert wurde. Sie können z.B. eine Bedingung hinzufügen, die den Inhalt der Datei überprüft und entscheidet, ob dieser Inhalt abgerufen wird. Die Entscheidung basiert darauf, ob der Inhalt eine bestimmte Bedingung erfüllt oder nicht. Zum Schluss können Sie eine Aktion hinzufügen, die den Inhalt der Datei abruft und in einem Ordner auf dem SFTP-Server ablegt. 
+Dieser Trigger startet einen Logik-App-Workflow, wenn er erkennt, dass eine Datei auf einem FTP-Server hinzugefügt oder geändert wurde. Sie können z.B. eine Bedingung hinzufügen, die den Inhalt der Datei überprüft und entscheidet, ob dieser Inhalt abgerufen wird. Die Entscheidung basiert darauf, ob der Inhalt eine bestimmte Bedingung erfüllt oder nicht. Zum Schluss können Sie eine Aktion hinzufügen, die den Inhalt der Datei abruft und in einem Ordner auf dem SFTP-Server ablegt.
 
 **Beispiel für Unternehmen**: Sie können mit diesem Trigger beispielsweise einen FTP-Ordner auf neue Dateien überwachen, in denen Kundenbestellungen beschrieben werden. Dann können Sie eine FTP-Aktion wie **Dateiinhalt abrufen** verwenden, um den Inhalt einer Bestellung zur weiteren Verarbeitung und Speicherung in einer Bestelldatenbank abzurufen.
-
-Beim Anfordern von Dateiinhalten können Trigger keine Dateien abrufen, die größer als 50 MB sind. Befolgen Sie das folgende Muster, um Dateien abzurufen, die größer als 50 MB sind: 
-
-* Verwenden Sie einen Trigger, der Dateieigenschaften zurückgibt, z.B. **Beim Hinzufügen oder Ändern einer Datei (nur Eigenschaften)** .
-
-* Auf den Trigger muss eine Aktion folgen, die die gesamte Datei liest (etwa **Dateiinhalt über Pfad abrufen**), und die Aktion muss [Nachrichtenblöcke](../logic-apps/logic-apps-handle-large-messages.md) verwenden.
-
-Eine gültige und funktionale Logik-App erfordert einen Trigger und mindestens eine Aktion. Stellen Sie also sicher, dass Sie eine Aktion hinzufügen, nachdem Sie einen Trigger hinzugefügt haben.
 
 Das folgende Beispiel zeigt diesen Trigger: **Wenn eine Datei hinzugefügt oder geändert wird**
 
@@ -101,8 +102,7 @@ Das folgende Beispiel zeigt diesen Trigger: **Wenn eine Datei hinzugefügt oder 
 
 1. Geben Sie die erforderlichen Informationen zu Ihrer Verbindung ein, und wählen Sie dann **Erstellen** aus.
 
-   Standardmäßig werden mit diesem Connector Dateien im Textformat übertragen. 
-   Um Dateien im Binärformat zu übertragen, z.B. für Fälle mit Codierung, wählen Sie **Binäre Übertragung** aus.
+   Standardmäßig werden mit diesem Connector Dateien im Textformat übertragen. Wählen Sie beispielsweise in Fällen mit Codierung **Binary Transport** (Binäre Übertragung) aus, um Dateien im Binärformat zu übertragen.
 
    ![Erstellen einer FTP-Serververbindung](./media/connectors-create-api-ftp/create-ftp-connection-trigger.png)  
 
@@ -120,23 +120,17 @@ Nachdem Ihre Logik-App jetzt über einen Trigger verfügt, fügen Sie die Aktion
 
 ### <a name="ftp-action-get-content"></a>FTP-Aktion: Inhalte abrufen
 
-Diese Aktion ruft den Inhalt einer Datei auf einem FTP-Server ab, wenn diese Datei hinzugefügt oder aktualisiert wird. So können Sie z. B. den Trigger aus dem vorherigen Beispiel und eine Aktion hinzufügen, die den Inhalt der Datei abruft, nachdem diese Datei hinzugefügt oder bearbeitet wurde. 
-
-Beim Anfordern von Dateiinhalten können Trigger keine Dateien abrufen, die größer als 50 MB sind. Befolgen Sie das folgende Muster, um Dateien abzurufen, die größer als 50 MB sind: 
-
-* Verwenden Sie einen Trigger, der Dateieigenschaften zurückgibt, z.B. **Beim Hinzufügen oder Ändern einer Datei (nur Eigenschaften)** .
-
-* Auf den Trigger muss eine Aktion folgen, die die gesamte Datei liest (etwa **Dateiinhalt über Pfad abrufen**), und die Aktion muss [Nachrichtenblöcke](../logic-apps/logic-apps-handle-large-messages.md) verwenden.
+Diese Aktion ruft den Inhalt einer Datei auf einem FTP-Server ab, wenn diese Datei hinzugefügt oder aktualisiert wird. So können Sie z. B. den Trigger aus dem vorherigen Beispiel und eine Aktion hinzufügen, die den Inhalt der Datei abruft, nachdem diese Datei hinzugefügt oder bearbeitet wurde.
 
 Hier sehen Sie ein Beispiel für diese Aktion: **Abrufen von Inhalten**
 
-1. Wählen Sie unter dem Trigger oder anderen Aktionen **Neuer Schritt** aus. 
+1. Wählen Sie unter dem Trigger oder anderen Aktionen **Neuer Schritt** aus.
 
 1. Geben Sie im Suchfeld den Begriff „ftp“ als Filter ein. Wählen Sie in der Liste mit den Aktionen diese Aktion aus: **Dateiinhalte abrufen - FTP**
 
    ![Auswählen einer FTP-Aktion](./media/connectors-create-api-ftp/select-ftp-action.png)  
 
-1. Wenn Sie bereits über eine Verbindung zu Ihrem FTP-Server und Konto verfügen, wechseln Sie zum nächsten Schritt. Andernfalls stellen Sie die erforderlichen Informationen zu dieser Verbindung bereit, und wählen Sie dann **Erstellen** aus: 
+1. Wenn Sie bereits über eine Verbindung zu Ihrem FTP-Server und Konto verfügen, wechseln Sie zum nächsten Schritt. Andernfalls stellen Sie die erforderlichen Informationen zu dieser Verbindung bereit, und wählen Sie dann **Erstellen** aus:
 
    ![Erstellen einer FTP-Serververbindung](./media/connectors-create-api-ftp/create-ftp-connection-action.png)
 
@@ -153,11 +147,6 @@ Hier sehen Sie ein Beispiel für diese Aktion: **Abrufen von Inhalten**
 ## <a name="connector-reference"></a>Connector-Referenz
 
 Technische Details zu Triggern, Aktionen und Beschränkungen aus der OpenAPI-Beschreibung (ehemals Swagger) des Connectors finden Sie auf der [Referenzseite des Connectors](/connectors/ftpconnector/).
-
-## <a name="get-support"></a>Support
-
-* Sollten Sie Fragen haben, besuchen Sie das [Azure Logic Apps-Forum](https://social.msdn.microsoft.com/Forums/en-US/home?forum=azurelogicapps).
-* Wenn Sie Features vorschlagen oder für Vorschläge abstimmen möchten, besuchen Sie die [Website für Logic Apps-Benutzerfeedback](https://aka.ms/logicapps-wish).
 
 ## <a name="next-steps"></a>Nächste Schritte
 

@@ -7,17 +7,19 @@ ms.author: jeanb
 ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
-ms.date: 05/15/2019
-ms.openlocfilehash: ff2930fbe0e53c4b3c1223f87919c0913296d07c
-ms.sourcegitcommit: adb6c981eba06f3b258b697251d7f87489a5da33
+ms.date: 06/21/2019
+ms.openlocfilehash: a41c3f60d4b949f78c0755f97c9ef7e6302d78d8
+ms.sourcegitcommit: 08138eab740c12bf68c787062b101a4333292075
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/04/2019
-ms.locfileid: "66515914"
+ms.lasthandoff: 06/22/2019
+ms.locfileid: "67330000"
 ---
 # <a name="troubleshoot-azure-stream-analytics-by-using-diagnostics-logs"></a>Problembehandlung bei Azure Stream Analytics mit Diagnoseprotokollen
 
 In einigen Fällen beendet ein Azure Stream Analytics-Auftrag unerwartet die Verarbeitung. Es ist wichtig, diese Art von Ereignissen behandeln zu können. Fehler können durch ein unerwartetes Abfrageergebnis, die Verbindung zu Geräten oder einen unerwarteten Dienstausfall verursacht werden. Durch die Diagnoseprotokolle in Stream Analytics können Sie die Ursache der Probleme bei ihrem Auftreten feststellen und die Wiederherstellungszeit verkürzen.
+
+Es wird dringend empfohlen, für sämtliche Produktionsaufträge Diagnoseprotokolle zu aktivieren.
 
 ## <a name="log-types"></a>Protokolltypen
 
@@ -62,7 +64,7 @@ Sie sollten unbedingt Diagnoseprotokolle aktivieren und an Azure Monitor-Protoko
 
     ![Blattnavigation zu Diagnoseprotokollen](./media/stream-analytics-job-diagnostic-logs/diagnostic-logs-monitoring.png)  
 
-2.  Erstellen Sie einen **Namen** in **Diagnoseeinstellungen**, und aktivieren Sie das Kontrollkästchen neben **An Log Analytics senden**. Fügen Sie dann einen bereits vorhandenen **Log Analytics-Arbeitsbereich** hinzu, oder erstellen Sie einen neuen. Aktivieren Sie die Kontrollkästchen für **Ausführung** und **Erstellung** unter **LOG** und **AllMetrics** unter **METRIK**. Klicken Sie auf **Speichern**.
+2.  Erstellen Sie einen **Namen** in **Diagnoseeinstellungen**, und aktivieren Sie das Kontrollkästchen neben **An Log Analytics senden**. Fügen Sie dann einen bereits vorhandenen **Log Analytics-Arbeitsbereich** hinzu, oder erstellen Sie einen neuen. Aktivieren Sie die Kontrollkästchen für **Ausführung** und **Erstellung** unter **LOG** und **AllMetrics** unter **METRIK**. Klicken Sie auf **Speichern**. Es wird empfohlen, einen Log Analytics-Arbeitsbereich in derselben Azure-Region zu verwenden, in der auch Ihr Stream Analytics-Auftrag ausgeführt wird, um zusätzliche Kosten zu vermeiden.
 
     ![Einstellungen für Diagnoseprotokolle](./media/stream-analytics-job-diagnostic-logs/diagnostic-settings.png)
 
@@ -113,13 +115,13 @@ Ausführungsprotokolle enthalten Informationen zu Ereignissen, die während der 
 
 ### <a name="data-errors"></a>Datenfehler
 
-Alle Fehler, die auftreten, während der Auftrag Daten in dieser Kategorie von Protokollen verarbeitet. Diese Protokolle werden am häufigsten bei Lese-, Serialisierungs- und Schreibvorgängen von Daten erstellt. Diese Protokolle enthalten keine Verbindungsfehler. Verbindungsfehler werden als generische Ereignisse behandelt.
+Alle Fehler, die auftreten, während der Auftrag Daten in dieser Kategorie von Protokollen verarbeitet. Diese Protokolle werden am häufigsten bei Lese-, Serialisierungs- und Schreibvorgängen von Daten erstellt. Diese Protokolle enthalten keine Verbindungsfehler. Verbindungsfehler werden als generische Ereignisse behandelt. Weitere Informationen zu den Gründen für verschiedene Fehler bei der Ein- und Ausgabe von Daten finden Sie im Artikel [Datenfehler in Azure Stream Analytics](https://docs.microsoft.com/azure/stream-analytics/data-errors).
 
 NAME | BESCHREIBUNG
 ------- | -------
 `Source` | Name der Auftragseingabe oder -ausgabe, bei der der Fehler aufgetreten ist.
 `Message` | Mit dem Fehler verknüpfte Meldung.
-Type | Fehlertyp. Beispiele: **DataConversionError**, **CsvParserError** oder **ServiceBusPropertyColumnMissingError**.
+type | Fehlertyp. Beispiele: **DataConversionError**, **CsvParserError** oder **ServiceBusPropertyColumnMissingError**.
 Daten | Enthält Daten, die hilfreich sind, um die Ursache des Fehlers genau zu lokalisieren. Unterliegt je nach Größe Kürzungen.
 
 Je nach dem Wert für **operationName** entsprechen Datenfehler folgendem Schema:
@@ -140,7 +142,7 @@ NAME | BESCHREIBUNG
 -------- | --------
 Error | (optional) Fehlerinformationen. In der Regel sind dies Ausnahmeinformationen, sofern diese verfügbar sind.
 `Message`| Protokollmeldung.
-Type | Meldungstyp. Wird der internen Kategorisierung von Fehlern zugeordnet. Beispiele: **JobValidationError** oder **BlobOutputAdapterInitializationFailure**.
+type | Meldungstyp. Wird der internen Kategorisierung von Fehlern zugeordnet. Beispiele: **JobValidationError** oder **BlobOutputAdapterInitializationFailure**.
 Korrelations-ID | Ein [GUID](https://en.wikipedia.org/wiki/Universally_unique_identifier)-Wert, der die Auftragsausführung eindeutig identifiziert. Alle Ausführungsprotokolleinträge ab dem Zeitpunkt, an dem der Auftrag gestartet wird, bis zum Beenden des Auftrags weisen denselben Wert für **Korrelations-ID** auf.
 
 ## <a name="next-steps"></a>Nächste Schritte
@@ -149,4 +151,4 @@ Korrelations-ID | Ein [GUID](https://en.wikipedia.org/wiki/Universally_unique_id
 * [Erste Schritte mit Stream Analytics](stream-analytics-real-time-fraud-detection.md)
 * [Skalieren von Stream Analytics-Aufträgen](stream-analytics-scale-jobs.md)
 * [Referenz zur Stream Analytics-Abfragesprache](https://msdn.microsoft.com/library/azure/dn834998.aspx)
-* [Referenz zur REST-API für die Stream Analytics-Verwaltung](https://msdn.microsoft.com/library/azure/dn835031.aspx)
+* [Datenfehler in Azure Stream Analytics](https://docs.microsoft.com/azure/stream-analytics/data-errors)

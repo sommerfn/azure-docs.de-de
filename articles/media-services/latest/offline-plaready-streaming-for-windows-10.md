@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/01/2019
 ms.author: willzhan
-ms.openlocfilehash: d3ff97dc86ea6932ba51a4a30e53edf1082d5305
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: ae5fdd51d9bc1a3e7e2521c6ca1ff64d884c96f8
+ms.sourcegitcommit: a12b2c2599134e32a910921861d4805e21320159
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64937483"
+ms.lasthandoff: 06/24/2019
+ms.locfileid: "67341780"
 ---
 # <a name="offline-playready-streaming-for-windows-10"></a>Offlinestreaming mit PlayReady für Windows 10
 
@@ -27,6 +27,9 @@ Azure Media Services unterstützt Download und Offlinewiedergabe mit DRM-Schutz.
 
 - [Offlinestreaming mit FairPlay für iOS](offline-fairplay-for-ios.md)
 - [Offlinestreaming mit Widevine für Android](offline-widevine-for-android.md)
+
+> [!NOTE]
+> Offline-DRM wird nur für eine einzelne Anforderung für eine Lizenz in Rechnung gestellt, wenn Sie den Inhalt herunterladen. Fehler werden nicht in Rechnung gestellt.
 
 ## <a name="overview"></a>Übersicht
 

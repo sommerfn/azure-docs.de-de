@@ -8,17 +8,17 @@ manager: kfile
 ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
-ms.date: 05/17/2019
-ms.openlocfilehash: 60cddf15ee8a93aa01a72fdc124fa27e68184e04
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.date: 06/21/2019
+ms.openlocfilehash: 54296f0b4aed22457a5218154111a42ad01ec262
+ms.sourcegitcommit: 08138eab740c12bf68c787062b101a4333292075
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65916045"
+ms.lasthandoff: 06/22/2019
+ms.locfileid: "67329338"
 ---
 # <a name="understand-and-adjust-streaming-units"></a>Überblick über Streamingeinheiten und Informationen zu Anpassungen
 
-Streamingeinheiten stellen die Computeressourcen dar, die zur Ausführung eines Auftrags zugeordnet werden. Je höher die Anzahl von Streamingeinheiten ist, desto mehr CPU- und Arbeitsspeicherressourcen werden Ihrem Auftrag zugeordnet. Mit dieser Kapazität können Sie sich auf die Abfragelogik konzentrieren. Zudem wird der Bedarf zur Verwaltung der Hardware abstrahiert, um Ihren Stream Analytics-Auftrag rechtzeitig auszuführen.
+Streamingeinheiten stellen die Computeressourcen dar, die zur Ausführung eines Stream Analytics-Auftrags ausgewählt werden. Je höher die Anzahl von Streamingeinheiten ist, desto mehr CPU- und Arbeitsspeicherressourcen werden Ihrem Auftrag zugeordnet. Mit dieser Kapazität können Sie sich auf die Abfragelogik konzentrieren. Zudem wird der Bedarf zur Verwaltung der Hardware abstrahiert, um Ihren Stream Analytics-Auftrag rechtzeitig auszuführen.
 
 Um eine Streamingverarbeitung mit geringer Latenz zu erreichen, führen Azure Stream Analytics-Aufträge (ASA) die gesamte Verarbeitung im Arbeitsspeicher durch. Wenn nicht genügend Arbeitsspeicher vorhanden ist, tritt beim Streamingauftrag ein Fehler auf. Daher ist es bei einem Produktionsauftrag wichtig, die Ressourcennutzung eines Streamingauftrags zu überwachen und sicherzustellen, dass genügend Ressourcen zugewiesen werden, um die Aufträge rund um die Uhr auszuführen.
 
@@ -59,7 +59,7 @@ Temporale (zeitlich orientierte) Abfrageelemente sind die Kerngruppe der zustand
 
 Beachten Sie, dass ein Auftrag mit komplexer Abfragelogik eine hohe prozentuelle Auslastung der SUs aufweisen kann, wenn er nicht kontinuierlich Eingabeereignisse empfängt. Dies kann nach einer plötzlichen Spitze bei den Eingabe- und Ausgabeereignissen auftreten. Möglicherweise wird der Zustand des Auftrags im Arbeitsspeicher weiterhin beibehalten, wenn die Abfrage komplex ist.
 
-Die Speichereinheitnutzung in % kann für einen kurzen Zeitraum plötzlich auf 0 fallen, bevor wieder die erwartete Ebene erreicht wird. Dies geschieht aufgrund von vorübergehenden Fehlern oder durch vom System initiierte Upgrades.
+Die Speichereinheitnutzung in % kann für einen kurzen Zeitraum plötzlich auf 0 fallen, bevor wieder die erwartete Ebene erreicht wird. Dies geschieht aufgrund von vorübergehenden Fehlern oder durch vom System initiierte Upgrades. Wenn Sie die Anzahl der Streamingeinheiten für einen Auftrag erhöhen, wird die Speichereinheitennutzung in Prozent möglicherweise nicht verringert, wenn Ihre Abfrage nicht [vollständig parallel](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-parallelization) verläuft.
 
 ## <a name="stateful-query-logicin-temporal-elements"></a>Zustandsbehaftete Abfragelogik in temporalen Elementen
 Eine einzigartige Funktion eines Azure Stream Analytics-Auftrags besteht darin, eine zustandsbehaftete Verarbeitung wie etwa Aggregate, temporale Verknüpfungen und temporale Analysefunktionen im Fenstermodus auszuführen. Die einzelnen Operatoren enthalten Zustandsinformationen. Die maximale Fenstergröße für diese Abfrageelemente beträgt sieben Tage. 
@@ -85,7 +85,7 @@ Beispiel: In der folgenden Abfrage ist die mit `clusterid` verknüpfte Zahl die 
    GROUP BY  clusterid, tumblingwindow (minutes, 5)
    ```
 
-Um Probleme zu beheben, die durch eine hohe Kardinalität in der vorherigen Abfrage verursacht wurden, können Sie Ereignisse an den durch `clusterid` partitionierten Event Hub senden und die Abfrage horizontal hochskalieren, indem Sie dem System die separate Verarbeitung aller Eingangspartitionen durch **PARTITION BY** ermöglichen. Dies wird im folgenden Beispiel gezeigt:
+Zum Beheben von Problemen, die durch hohe Kardinalität in der vorherigen Abfrage verursacht wurden, können Sie Ereignisse an den von `clusterid` partitionierten Event Hub senden und die Abfrage erweitern, indem Sie dem System die separate Verarbeitung aller Eingangspartitionen durch **PARTITION BY** ermöglichen. Dies wird im folgenden Beispiel gezeigt:
 
    ```sql
    SELECT count(*) 

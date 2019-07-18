@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: conceptual
 ms.date: 02/28/2019
 ms.author: iainfou
-ms.openlocfilehash: 5ce3290f7af32b10e1dfbf9b72686e5d30c885bb
-ms.sourcegitcommit: 087ee51483b7180f9e897431e83f37b08ec890ae
+ms.openlocfilehash: afb7acda67eb5818ace8169dc4e98fb86bdbeaa7
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/31/2019
-ms.locfileid: "66431316"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67442002"
 ---
 # <a name="network-concepts-for-applications-in-azure-kubernetes-service-aks"></a>Netzwerkkonzepte für Anwendungen in Azure Kubernetes Service (AKS)
 
@@ -74,19 +74,51 @@ Weitere Informationen finden Sie unter [Konfigurieren von kubernet-Netzwerken f�
 
 ### <a name="azure-cni-advanced-networking"></a>Azure CNI-Netzwerke – „Advanced“ (Erweitert)
 
-Mit Azure CNI erhält jeder Pod eine IP-Adresse aus dem Subnetz und kann direkt angesprochen werden. Diese IP-Adressen müssen in Ihrem Netzwerkadressraum eindeutig sein und im Voraus geplant werden. Jeder Knoten verfügt über einen Konfigurationsparameter für die maximale Anzahl von Pods, die er unterstützt. Die entsprechende Anzahl von IP-Adressen pro Knoten wird dann im Voraus für diesen Knoten reserviert. Dieser Ansatz erfordert mehr Planung und führt oft zu einer Erschöpfung der IP-Adresse oder der Notwendigkeit, Cluster in einem größeren Subnetz neu zu erstellen, wenn die Anforderungen Ihrer Anwendung wachsen.
+Mit Azure CNI erhält jeder Pod eine IP-Adresse aus dem Subnetz und kann direkt angesprochen werden. Diese IP-Adressen müssen in Ihrem Netzwerkadressraum eindeutig sein und im Voraus geplant werden. Jeder Knoten verfügt über einen Konfigurationsparameter für die maximale Anzahl von Pods, die er unterstützt. Die entsprechende Anzahl von IP-Adressen pro Knoten wird dann im Voraus für diesen Knoten reserviert. Dieser Ansatz erfordert mehr Planung, da andernfalls die IP-Adressen ausgehen können oder der Cluster in einem größeren Subnetz neu erstellt werden muss, wenn die Anforderungen Ihrer Anwendung zunehmen.
 
 Knoten verwenden das Kubernetes-Plug-In [Azure Container Networking Interface (CNI)][cni-networking].
 
 ![Diagramm mit zwei Knoten jeweils mit Bridges für die Verbindungsherstellung mit einem Azure VNET][advanced-networking-diagram]
 
-Azure CNI bietet die folgenden Funktionen über kubenet-Netzwerke:
+Weitere Informationen finden Sie unter [Konfigurieren der Azure CNI für einen AKS-Cluster][aks-configure-advanced-networking].
 
-- Jedem Pod im Cluster wird eine IP-Adresse im virtuellen Netzwerk zugewiesen. Die Pods können direkt mit anderen Pods im Cluster und mit anderen Knoten im virtuellen Netzwerk kommunizieren.
-- Pods in einem Subnetz mit aktivierten Dienstendpunkten können eine sichere Verbindung mit Azure-Diensten (z. B. Azure Storage und SQL-Datenbank) herstellen.
-- Sie können benutzerdefinierte Routen (UDRs) zum Weiterleiten von Datenverkehr von Pods an virtuelle Netzwerkgeräte erstellen.
+### <a name="compare-network-models"></a>Vergleich der Netzwerkmodelle
 
-Weitere Informationen finden Sie unter [Konfigurieren der Azure CNI für ein AKS-Cluster][aks-configure-advanced-networking].
+Sowohl kubenet als auch Azure CNI bieten Netzwerkkonnektivität für Ihre AKS-Cluster. Es gibt jedoch jeweils Vor- und Nachteile. Ganz allgemein gelten die folgenden Überlegungen:
+
+* **kubenet**
+    * Spart IP-Adressraum
+    * Verwendet den internen oder externen Lastenausgleich von Kubernetes, um die Pods von außerhalb des Clusters zu erreichen
+    * Erfordert eine manuelle Verwaltung und Wartung von benutzerdefinierten Routen (UDRs)
+    * Maximal 400 Knoten pro Cluster
+* **Azure CNI**
+    * Pods erhalten vollständige virtuelle Netzwerkkonnektivität und können direkt von außerhalb des Clusters erreicht werden.
+    * Erfordert mehr IP-Adressraum
+
+Folgende Unterschiede treten im Verhalten von kubenet und Azure CNI auf:
+
+| Funktion                                                                                   | Kubenet   | Azure CNI |
+|----------------------------------------------------------------------------------------------|-----------|-----------|
+| Bereitstellen von Clustern in vorhandenen oder neuen virtuellen Netzwerken                                            | Unterstützt – benutzerdefinierte Routen werden manuell angewandt. | Unterstützt |
+| Pod-Pod-Konnektivität                                                                         | Unterstützt | Unterstützt |
+| Pod-VM-Konnektivität; VM im gleichen virtuellen Netzwerk                                          | Funktioniert, wenn vom Pod initiiert | Funktioniert in beide Richtungen |
+| Pod-VM-Konnektivität; VM in virtuellem Peernetzwerk                                            | Funktioniert, wenn vom Pod initiiert | Funktioniert in beide Richtungen |
+| Lokaler Zugriff per VPN oder ExpressRoute                                                | Funktioniert, wenn vom Pod initiiert | Funktioniert in beide Richtungen |
+| Zugriff auf Ressourcen, die von Dienstendpunkten geschützt werden                                             | Unterstützt | Unterstützt |
+| Verfügbarmachen von Kubernetes-Diensten über einen Lastenausgleichsdienst, App Gateway oder einen Eingangscontroller | Unterstützt | Unterstützt |
+| Standard: Azure DNS und private Zonen                                                          | Unterstützt | Unterstützt |
+
+### <a name="support-scope-between-network-models"></a>Supportumfang der Netzwerkmodelle
+
+Unabhängig vom verwendeten Netzwerkmodell können kubenet und Azure CNI mit einer der folgenden Methoden bereitgestellt werden:
+
+* Die Azure-Plattform kann die Ressourcen des virtuellen Netzwerks automatisch erstellen und konfigurieren, wenn Sie einen AKS-Cluster erstellen.
+* Sie können die Ressourcen des virtuellen Netzwerks manuell erstellen und konfigurieren und an diese Ressourcen anfügen, wenn Sie Ihren AKS-Cluster erstellen.
+
+Auch wenn Funktionen wie Dienstendpunkte oder benutzerdefinierte Routen (UDRs) mit kubenet und Azure CNI unterstützt werden, legen die [Supportrichtlinien für AKS][support-policies] fest, welche Änderungen Sie vornehmen können. Beispiel:
+
+* Wenn Sie die Ressourcen des virtuellen Netzwerks für einen AKS-Cluster manuell erstellen, werden Sie unterstützt, wenn Sie Ihre eigenen benutzerdefinierten Routen oder Dienstendpunkte konfigurieren.
+* Wenn die Azure-Plattform die Ressourcen des virtuellen Netzwerks automatisch für Ihren AKS-Cluster erstellt, werden manuelle Änderungen an diesen von AKS verwalteten Ressourcen zum Konfigurieren Ihrer eigenen benutzerdefinierten Routen oder Dienstendpunkte nicht unterstützt.
 
 ## <a name="ingress-controllers"></a>Eingangscontroller
 
@@ -96,7 +128,7 @@ Wenn Sie einen Dienst des Typs "LoadBalancer" erstellen, wird eine zugrunde lieg
 
 ![Diagramm mit Eingangsdatenverkehrsfluss in einem AKS-Cluster][aks-ingress]
 
-In AKS können Sie mit NGINX (oder ähnlich) eine Dateneingangsressource erstellen oder die AKS-Funktion für das HTTP-Anwendungsrouting verwenden. Wenn Sie das HTTP-Anwendungsrouting für einen AKS-Cluster aktivieren, erstellt die Azure-Plattform den Eingangscontroller und einen *externen DNS-Controller*. Wenn in Kubernetes neue Eingangsressourcen erstellt werden, werden in einer clusterspezifischen DNS-Zone die erforderlichen DNS-A-Einträge erstellt. Weitere Informationen finden Sie unter [HTTP-Anwendungsrouting][aks-http-routing].
+In AKS können Sie mit NGINX (oder ähnlich) eine Dateneingangsressource erstellen oder die AKS-Funktion für das HTTP-Anwendungsrouting verwenden. Wenn Sie das HTTP-Anwendungsrouting für einen AKS-Cluster aktivieren, erstellt die Azure-Plattform den Eingangscontroller und einen *externen DNS-Controller*. Wenn in Kubernetes neue Eingangsressourcen erstellt werden, werden in einer clusterspezifischen DNS-Zone die erforderlichen DNS-A-Einträge erstellt. Weitere Informationen finden Sie unter [Bereitstellen von HTTP-Anwendungsrouting][aks-http-routing].
 
 Ein weiteres allgemeines Feature des Dateneingangs ist die SSL/TLS-Terminierung. Bei großen Webanwendungen, auf die über HTTPS zugegriffen wird, kann die TLS-Terminierung durch die Eingangsressource erfolgen und braucht nicht innerhalb der Anwendung verarbeitet zu werden. Um die automatische Generierung und Konfiguration der TLS-Zertifizierung bereitzustellen, können Sie die Eingangsressource für die Verwendung von Anbietern wie Let's Encrypt konfigurieren. Weitere Informationen zum Konfigurieren eines NGINX-Eingangscontrollers mit Let's Encrypt finden Sie unter [Eingang und TLS][aks-ingress-tls].
 
@@ -116,9 +148,9 @@ Weitere Informationen finden Sie unter [Sicherer Datenverkehr zwischen Pods durc
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Um mit AKS-Netzwerken zu beginnen, erstellen und konfigurieren Sie einen AKS-Cluster mit Ihren eigenen IP-Adressbereichen unter Verwendung von [kubenet][aks-configure-kubenet-networking] oder [Azure CNI][aks-configure-advanced-networking].
+Um mit AKS-Netzwerken zu beginnen, erstellen und konfigurieren Sie einen AKS-Cluster mit Ihren eigenen IP-Adressbereichen unter Verwendung von [kubenet][aks-configure-kubenet-networking] or [Azure CNI][aks-configure-advanced-networking].
 
-Entsprechenden bewährte Methoden finden Sie unter [Best Practices für Netzwerkkonnektivität und Sicherheit in AKS][operator-best-practices-network].
+Entsprechende bewährte Methoden finden Sie unter [Best Practices für Netzwerkkonnektivität und Sicherheit in AKS][operator-best-practices-network].
 
 Weitere Informationen zu den wesentlichen Konzepten von Kubernetes und AKS finden Sie in den folgenden Artikeln:
 
@@ -151,3 +183,4 @@ Weitere Informationen zu den wesentlichen Konzepten von Kubernetes und AKS finde
 [aks-concepts-identity]: concepts-identity.md
 [use-network-policies]: use-network-policies.md
 [operator-best-practices-network]: operator-best-practices-network.md
+[support-policies]: support-policies.md

@@ -16,12 +16,12 @@ ms.date: 09/09/2018
 ms.author: mimart
 ms.reviwer: japere
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9d16efbd8ea2fa37ac9572e9dc1ba3ef67deaeaf
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 10dfcf337dc75a202e781e931f38783291a72fe7
+ms.sourcegitcommit: a52d48238d00161be5d1ed5d04132db4de43e076
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65784396"
+ms.lasthandoff: 06/20/2019
+ms.locfileid: "67272743"
 ---
 # <a name="an-assigned-application-is-not-appearing-on-the-access-panel"></a>Eine zugewiesene Anwendung wird im Zugriffsbereich nicht angezeigt.
 
@@ -399,7 +399,7 @@ Um eine Anwendung aus dem Azure AD-Katalog hinzuzufügen, führen Sie folgende S
 
 Nach kurzer Zeit wird der Konfigurationsbereich der Anwendung angezeigt.
 
-#### <a name="configure-the-application-for-password-single-sign-on"></a>Konfigurieren der Anwendung für das einmalige Anmelden per Kennwort
+#### <a name="configure-the-application-for-password-single-sign-on-1"></a> Konfigurieren der Anwendung für einmaliges Anmelden per Kennwort
 
 Um das einmalige Anmelden für eine Anwendung zu konfigurieren, führen Sie folgende Schritte aus:
 

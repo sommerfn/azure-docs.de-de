@@ -4,17 +4,17 @@ description: Mit dieser Lösung für die VM-Verwaltung werden Ihre virtuellen Az
 services: automation
 ms.service: automation
 ms.subservice: process-automation
-author: georgewallace
-ms.author: gwallace
+author: bobbytreed
+ms.author: robreed
 ms.date: 05/21/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: d4e1ad106b928c41bd6940d7c3713b5fb34afe3a
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 39ba577580424bf8283d64198bb3068b82869c51
+ms.sourcegitcommit: f811238c0d732deb1f0892fe7a20a26c993bc4fc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66389112"
+ms.lasthandoff: 06/29/2019
+ms.locfileid: "67476877"
 ---
 # <a name="startstop-vms-during-off-hours-solution-in-azure-automation"></a>Lösung zum Starten/Beenden von VMs außerhalb der Geschäftszeiten in Azure Automation
 
@@ -140,7 +140,7 @@ Führen Sie die folgenden Schritte aus, um die Lösung zum Starten/Beenden von V
    Hier erhalten Sie folgende Aufforderung:
    - Geben Sie einen Wert für die Zielressourcengruppennamen(**Target ResourceGroup Names**) ein. Dies sind Werte von Ressourcengruppen mit virtuellen Computern, die mit dieser Lösung verwaltet werden. Sie können mehrere Namen eingeben und die Namen jeweils durch ein Komma trennen (Groß-/Kleinschreibung wird nicht berücksichtigt). Die Verwendung eines Platzhalterzeichens wird unterstützt, wenn Sie einen Vorgang für VMs in allen Ressourcengruppen des Abonnements durchführen möchten. Dieser Wert wird in den Variablen **External_Start_ResourceGroupNames** und **External_Stop_ResourceGroupNames** gespeichert.
    - Geben Sie die **VM Exclude List (string)** (VM-Ausschlussliste (Zeichenfolge)) an. Dies ist der Wert von einem oder mehreren virtuellen Computern der Zielressourcengruppe. Sie können mehrere Namen eingeben und die Namen jeweils durch ein Komma trennen (Groß-/Kleinschreibung wird nicht berücksichtigt). Platzhalter können verwendet werden. Dieser Wert wird in der Variablen **External_ExcludeVMNames** gespeichert.
-   - Wählen Sie einen **Zeitplan** aus. Dieser Wert ist ein wiederkehrendes Datum und eine Uhrzeit zum Starten und Beenden der virtuellen Computer in den Zielressourcengruppen. Der Zeitplan ist standardmäßig für den Zeitpunkt 30 Minuten nach der aktuellen Uhrzeit konfiguriert. Es kann keine andere Region ausgewählt werden. Falls Sie den Zeitplan nach dem Konfigurieren der Lösung für Ihre Zeitzone konfigurieren möchten, helfen Ihnen die Informationen unter [Ändern des Zeitplans für das Starten und Herunterfahren](#modify-the-startup-and-shutdown-schedules) weiter.
+   - Wählen Sie einen **Zeitplan** aus. Wählen Sie ein Datum und eine Uhrzeit für Ihren Zeitplan aus. Ein wiederkehrender täglicher Zeitplan wird ab der von Ihnen gewählten Zeit erstellt. Es kann keine andere Region ausgewählt werden. Falls Sie den Zeitplan nach dem Konfigurieren der Lösung für Ihre Zeitzone konfigurieren möchten, helfen Ihnen die Informationen unter [Ändern des Zeitplans für das Starten und Herunterfahren](#modify-the-startup-and-shutdown-schedules) weiter.
    - Um **E-Mail-Benachrichtigungen** von einer Aktionsgruppe zu empfangen, übernehmen Sie den Standardwert **Ja**, und geben Sie eine gültige E-Mail-Adresse an. Wenn Sie **Nein** auswählen, sich aber zu einem späteren Zeitpunkt entscheiden, dass Sie E-Mail-Benachrichtigungen erhalten möchten, können Sie die erstellte [Aktionsgruppe](../azure-monitor/platform/action-groups.md) mit gültigen E-Mail-Adressen, die durch Komma getrennt sind, aktualisieren. Außerdem müssen Sie die folgenden Warnungsregeln aktivieren:
 
      - AutoStop_VM_Child

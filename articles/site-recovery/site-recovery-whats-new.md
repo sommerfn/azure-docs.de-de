@@ -5,20 +5,75 @@ services: site-recovery
 author: rayne-wiselman
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 05/30/2019
+ms.date: 06/18/2019
 ms.author: raynew
-ms.openlocfilehash: 50e1cb95249f0108430e978ae3ffe23b6edc778d
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 0bfaf848b0b700c8d745acf8c6a63c898dc91140
+ms.sourcegitcommit: a52d48238d00161be5d1ed5d04132db4de43e076
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66418385"
+ms.lasthandoff: 06/20/2019
+ms.locfileid: "67272872"
 ---
 # <a name="whats-new-in-site-recovery"></a>Neuerungen in Site Recovery
 
 Der [Azure Site Recovery](site-recovery-overview.md)-Dienst wird laufend aktualisiert und verbessert. Um Sie auf dem Laufenden zu halten, bietet Ihnen dieser Artikel Informationen zu den neuesten Releases, neuen Features und neuen Inhalten. Diese Seite wird regelmäßig aktualisiert.
 
 Wenn Sie Vorschläge für Site Recovery-Funktionen haben, freuen wir uns über Ihr [Feedback](https://feedback.azure.com/forums/256299-site-recovery).
+
+
+## <a name="updates-june-2019"></a>Updates (Juni 2019)
+
+### <a name="update-rollup-37"></a>Updaterollup 37
+
+Mit dem [Updaterollup 37](https://support.microsoft.com/help/4508614/) werden die folgenden Updates bereitgestellt.
+
+**Aktualisieren** | **Details**
+--- | ---
+**Anbieter und Agents** | Updates für Site Recovery-Agents und -Anbieter (wie im Rollup beschrieben)
+**Problemkorrekturen/Verbesserungen** | Mehrere Fehlerbehebungen und Verbesserungen (wie im Rollup beschrieben)
+
+
+### <a name="vmwarephysical-server-disaster-recovery"></a>Notfallwiederherstellung für VMware/physische Server
+
+In der folgenden Tabelle werden die Features aufgeführt, die in diesem Monat neu hinzugefügt wurden.
+
+**Feature** | **Details**
+--- | ---
+**GPT-Partitionen** | Ab dem Updaterollup 37 (Mobility Service-Version 9.25.5241.1) werden bis zu fünf GPT-Partitionen in der UEFI unterstützt. Vor diesem Update waren es vier.
+
+
+
+## <a name="updates-may-2019"></a>Updates (Mai 2019)
+
+### <a name="update-rollup-36"></a>Updaterollup 36
+
+Mit dem [Updaterollup 36](https://support.microsoft.com/help/4503156) werden die folgenden Updates bereitgestellt.
+
+**Aktualisieren** | **Details**
+--- | ---
+**Anbieter und Agents** | Ein Update für Site Recovery-Agents und -Anbieter (wie im Rollup beschrieben)
+**Problemkorrekturen/Verbesserungen** | Mehrere Fehlerbehebungen und Verbesserungen (wie im Rollup beschrieben)
+
+### <a name="azure-vm-disaster-recovery"></a>Notfallwiederherstellung für virtuelle Azure-Computer
+
+In der folgenden Tabelle werden die Features aufgeführt, die in diesem Monat neu hinzugefügt wurden.
+
+**Feature** | **Details**
+--- | ---
+**Replizieren von hinzugefügten Datenträgern** | Mit diesem Feature können Sie die Replikation für Datenträger aktivieren, die einer bereits für die Notfallwiederherstellung aktivierten Azure-VM hinzugefügt wurden. [Weitere Informationen](azure-to-azure-enable-replication-added-disk.md)
+**Automatische Updates** | Beim Konfigurieren von automatischen Updates für die Mobility Service-Erweiterung, die auf für die Notfallwiederherstellung aktivierten Azure-VMs ausgeführt wird, können Sie jetzt ein vorhandenes Automation-Konto auswählen, statt das von Site Recovery erstellte Standardkonto zu verwenden. [Weitere Informationen](azure-to-azure-autoupdate.md)
+
+
+### <a name="vmwarephysical-server-disaster-recovery"></a>Notfallwiederherstellung für VMware/physische Server
+
+In der folgenden Tabelle werden die Features aufgeführt, die in diesem Monat neu hinzugefügt wurden.
+
+**Feature** | **Details**
+--- | ---
+**Überwachen des Prozessservers** | Zur Notfallwiederherstellung von lokalen VMware-VMs und physischen Servern können Sie Probleme auf Prozessservern überwachen und beheben. Gleichzeitig haben Sie Zugriff auf verbesserte Berichte und Benachrichtigungen zur Serverintegrität. [Weitere Informationen](vmware-physical-azure-monitor-process-server.md) 
+
+
+
 
 
 ## <a name="updates-march-2019"></a>Updates (März 2019)
@@ -32,8 +87,9 @@ Mit dem [Updaterollup 35](https://support.microsoft.com/en-us/help/4494485/updat
 **Anbieter und Agents** | Ein Update für Site Recovery-Agents und -Anbieter (wie im Rollup beschrieben)
 **Problemkorrekturen/Verbesserungen** | Mehrere Fehlerbehebungen und Verbesserungen (wie im Rollup beschrieben)
 
-#### <a name="vmwarephysical-server-disaster-recovery"></a>Notfallwiederherstellung für VMware/physische Server
-Im Update neu hinzugefügte Features.
+### <a name="vmwarephysical-server-disaster-recovery"></a>Notfallwiederherstellung für VMware/physische Server
+
+In der folgenden Tabelle werden die Features aufgeführt, die in diesem Monat neu hinzugefügt wurden.
 
 **Feature** | **Details**
 --- | ---
@@ -63,8 +119,8 @@ Mit dem [Updaterollup 33](https://support.microsoft.com/help/4489582/update-roll
 **Problemkorrekturen/Verbesserungen** | Mehrere Fehlerbehebungen und Verbesserungen (wie im Rollup beschrieben).
 
 
-#### <a name="azure-vm-disaster-recovery"></a>Notfallwiederherstellung für virtuelle Azure-Computer 
-Im Update neu hinzugefügte Features.
+### <a name="azure-vm-disaster-recovery"></a>Notfallwiederherstellung für virtuelle Azure-Computer 
+In der folgenden Tabelle werden die Features aufgeführt, die in diesem Monat neu hinzugefügt wurden.
 
 **Feature** | **Details**
 --- | ---
@@ -73,8 +129,8 @@ Im Update neu hinzugefügte Features.
 **Direkte Speicherplätze** | Sie können nun die Notfallwiederherstellung für Apps auf Azure-VMs mit [direkten Speicherplätzen](https://docs.microsoft.com/windows-server/storage/storage-spaces/storage-spaces-direct-overview) für Hochverfügbarkeit einrichten.  Die Verwendung direkten Speicherplätzen (S2D) in Verbindung mit Site Recovery bietet einen umfassenden Schutz von Azure-VM-Workloads. Mit S2D können Sie einen Gastcluster in Azure hosten. Dies ist besonders nützlich, wenn eine VM eine kritische Anwendung hostet, wie z.B. SAP ASCS Layer, SQL Server oder den Dateiserver für die horizontale Skalierung.
 
 
-#### <a name="vmwarephysical-server-disaster-recovery"></a>Notfallwiederherstellung für VMware/physische Server
-Im Update neu hinzugefügte Features.
+### <a name="vmwarephysical-server-disaster-recovery"></a>Notfallwiederherstellung für VMware/physische Server
+In der folgenden Tabelle werden die Features aufgeführt, die in diesem Monat neu hinzugefügt wurden.
 
 **Feature** | **Details**
 --- | ---
@@ -83,6 +139,7 @@ Im Update neu hinzugefügte Features.
 
 
 ## <a name="updates-january-2019"></a>Updates (Januar 2019)
+
 
 ### <a name="accelerated-networking-azure-vms"></a>Beschleunigter Netzwerkbetrieb (Azure-VMs)
 
@@ -99,16 +156,19 @@ Mit dem [Updaterollup 32](https://support.microsoft.com/help/4485985/update-roll
 **Anbieter und Agents** | Ein Update für Site Recovery-Agents und -Anbieter (wie im Rollup beschrieben).
 **Problemkorrekturen/Verbesserungen** | Mehrere Fehlerbehebungen und Verbesserungen (wie im Rollup beschrieben).
 
-#### <a name="azure-vm-disaster-recovery"></a>Notfallwiederherstellung für virtuelle Azure-Computer
+### <a name="azure-vm-disaster-recovery"></a>Notfallwiederherstellung für virtuelle Azure-Computer
 
-Im Update neu hinzugefügte Features.
+In der folgenden Tabelle werden die Features aufgeführt, die in diesem Monat neu hinzugefügt wurden.
 
 **Feature** | **Details**
 --- | ---
 **Linux-Unterstützung** | Es wurde Unterstützung für Red Hat Workstation 6/7 und für neue Kernelversionen für Ubuntu, Debian und SUSE hinzugefügt.
 **Direkte Speicherplätze** | Site Recovery unterstützt Azure-VMs mit direkten Speicherplätzen (S2D).
 
-#### <a name="vmware-vmsphysical-servers-replication"></a>Replikation von VMware-VMs/physischen Servern 
+### <a name="vmware-vmsphysical-servers-disaster-recovery"></a>Notfallwiederherstellung von VMware-VMs und physischen Servern
+
+In der folgenden Tabelle werden die Features aufgeführt, die in diesem Monat neu hinzugefügt wurden.
+ 
 **Feature** | **Details**
 --- | ---
 **Linux-Unterstützung** | Es wurde Unterstützung für Red Hat Enterprise Linux 7.6, Red Hat Workstation 6/7, Oracle Linux 6.10/7.6 und für neue Kernelversionen für Ubuntu, Debian und SUSE hinzugefügt.
@@ -123,9 +183,8 @@ Mit dem [Updaterollup 31](https://support.microsoft.com/help/4478871/update-roll
 **Anbieter und Agents** | Ein Update für Site Recovery-Agents und -Anbieter (wie im Rollup beschrieben).
 **Problemkorrekturen/Verbesserungen** | Mehrere Fehlerbehebungen und Verbesserungen (wie im Rollup beschrieben).
 
-#### <a name="vmware-vmsphysical-servers-replication"></a>Replikation von VMware-VMs/physischen Servern 
-Im Update neu hinzugefügte Features.
-
+### <a name="vmware-vmsphysical-servers-replication"></a>Replikation von VMware-VMs/physischen Servern 
+In der folgenden Tabelle werden die Features aufgeführt, die in diesem Monat neu hinzugefügt wurden.
 **Feature** | **Details**
 --- | ---
 **Linux-Unterstützung** | Es wurde Unterstützung für Oracle Linux 6.8 und 6.9/7.0 und für den UEK5-Kernel hinzugefügt.
@@ -135,8 +194,8 @@ Im Update neu hinzugefügte Features.
 **Failover** | Verbesserte Failoverzeit für VMware-VMs, bei denen „storvsc“ und „vsbus“ keine Starttreiber sind.
 **UEFI-Unterstützung** | Azure-VMs unterstützen den Starttyp UEFI nicht. Sie können lokale physische Server mit UEFI nun mithilfe von Site Recovery zu Azure migrieren. Site Recovery migriert den Server, indem der Starttyp vor der Migration in BIOS konvertiert wird. Site Recovery hat diese Konvertierung zuvor nur für VMs unterstützt. Physische Server mit Windows Server 2012 oder höher werden nun unterstützt.
 
-#### <a name="azure-vm-disaster-recovery"></a>Notfallwiederherstellung für virtuelle Azure-Computer
-Im Update neu hinzugefügte Features.
+### <a name="azure-vm-disaster-recovery"></a>Notfallwiederherstellung für virtuelle Azure-Computer
+In der folgenden Tabelle werden die Features aufgeführt, die in diesem Monat neu hinzugefügt wurden.
 
 **Feature** | **Details**
 --- | ---
@@ -176,8 +235,8 @@ Mit dem [Updaterollup 30](https://support.microsoft.com/help/4468181/azure-site-
 **Anbieter und Agents** | Ein Update für Site Recovery-Agents und -Anbieter (wie im Rollup beschrieben).
 **Problemkorrekturen/Verbesserungen** | Mehrere Fehlerbehebungen und Verbesserungen (wie im Rollup beschrieben).
 
-#### <a name="azure-vm-disaster-recovery"></a>Notfallwiederherstellung für virtuelle Azure-Computer
-Im Update neu hinzugefügte Features.
+### <a name="azure-vm-disaster-recovery"></a>Notfallwiederherstellung für virtuelle Azure-Computer
+In der folgenden Tabelle werden die Features aufgeführt, die in diesem Monat neu hinzugefügt wurden.
 
 **Feature** | **Details**
 --- | ---
@@ -208,8 +267,8 @@ Mit dem [Updaterollup 28](https://support.microsoft.com/help/4460079/update-roll
 **Anbieter und Agents** | Ein Update für Site Recovery-Agents und -Anbieter (wie im Rollup beschrieben).
 **Problemkorrekturen/Verbesserungen** | Mehrere Fehlerbehebungen und Verbesserungen (wie im Rollup beschrieben).
 
-#### <a name="azure-vms-disaster-recovery"></a>Notfallwiederherstellung von Azure-VMs 
-Im Update neu hinzugefügte Features.
+### <a name="azure-vms-disaster-recovery"></a>Notfallwiederherstellung von Azure-VMs 
+In der folgenden Tabelle werden die Features aufgeführt, die in diesem Monat neu hinzugefügt wurden.
 
 **Feature** | **Details**
 --- | ---
@@ -217,8 +276,8 @@ Im Update neu hinzugefügte Features.
 **Unterstützung für Clouds** | Die Notfallwiederherstellung für Azure-VMs in der Azure Deutschland-Cloud wird nun unterstützt.
 **Abonnementübergreifende Notfallwiederherstellung** | Die Replikation von Azure-VMs von einer Region zu einer anderen Region in einem anderen Abonnement innerhalb desselben Azure Active Directory-Mandanten wird nun unterstützt. [Weitere Informationen](https://aka.ms/cross-sub-blog)
 
-#### <a name="vmware-vmphysical-server-disaster-recovery"></a>Notfallwiederherstellung für VMware-VM/physische Server 
-Im Update neu hinzugefügte Features.
+### <a name="vmware-vmphysical-server-disaster-recovery"></a>Notfallwiederherstellung für VMware-VM/physische Server 
+In der folgenden Tabelle werden die Features aufgeführt, die in diesem Monat neu hinzugefügt wurden.
 
 **Feature** | **Details**
 --- | ---
@@ -237,17 +296,17 @@ Mit dem [Updaterollup 27](https://support.microsoft.com/help/4055712/update-roll
 **Anbieter und Agents** | Ein Update für Site Recovery-Agents und -Anbieter (wie im Rollup beschrieben).
 **Problemkorrekturen/Verbesserungen** | Mehrere Fehlerbehebungen und Verbesserungen (wie im Rollup beschrieben).
 
-#### <a name="azure-vms-disaster-recovery"></a>Notfallwiederherstellung von Azure-VMs 
+### <a name="azure-vms-disaster-recovery"></a>Notfallwiederherstellung von Azure-VMs 
 
-Im Update neu hinzugefügte Features.
+In der folgenden Tabelle werden die Features aufgeführt, die in diesem Monat neu hinzugefügt wurden.
 
 **Feature** | **Details**
 --- | ---
 **Linux-Unterstützung** | Es wurde Unterstützung für Red Hat Enterprise Linux 7.5 hinzugefügt.
 
-#### <a name="vmware-vmphysical-server-disaster-recovery"></a>Notfallwiederherstellung für VMware-VM/physische Server 
+### <a name="vmware-vmphysical-server-disaster-recovery"></a>Notfallwiederherstellung für VMware-VM/physische Server 
 
-Im Update neu hinzugefügte Features.
+In der folgenden Tabelle werden die Features aufgeführt, die in diesem Monat neu hinzugefügt wurden.
 
 **Feature** | **Details**
 --- | ---

@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 03/26/2019
 ms.author: erhopf
 ms.custom: seodec18
-ms.openlocfilehash: 8ebd871c314d3ecbc0c89e6c9081926558b181fd
-ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
+ms.openlocfilehash: 08bf1363f3c6c9b68243cc10ffb2785f53e02107
+ms.sourcegitcommit: a12b2c2599134e32a910921861d4805e21320159
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/07/2019
-ms.locfileid: "65237093"
+ms.lasthandoff: 06/24/2019
+ms.locfileid: "67342194"
 ---
 # <a name="text-to-speech-rest-api"></a>Text-to-Speech-REST-API
 
@@ -49,7 +49,7 @@ Der Endpunkt `voices/list` ermöglicht es Ihnen, eine vollständige Liste der St
 | Kanada, Mitte | `https://canadacentral.tts.speech.microsoft.com/cognitiveservices/voices/list` |
 | USA (Mitte) | `https://centralus.tts.speech.microsoft.com/cognitiveservices/voices/list` |
 | Asien, Osten | `https://eastasia.tts.speech.microsoft.com/cognitiveservices/voices/list` |
-| USA (Ost) | `https://eastus.tts.speech.microsoft.com/cognitiveservices/voices/list` |
+| East US | `https://eastus.tts.speech.microsoft.com/cognitiveservices/voices/list` |
 | USA (Ost) 2 | `https://eastus2.tts.speech.microsoft.com/cognitiveservices/voices/list` |
 | Frankreich, Mitte | `https://francecentral.tts.speech.microsoft.com/cognitiveservices/voices/list` |
 | Indien, Mitte | `https://centralindia.tts.speech.microsoft.com/cognitiveservices/voices/list` |
@@ -168,7 +168,7 @@ Diese Tabelle führt die erforderlichen und optionalen Header für Text-to-Speec
 
 ### <a name="audio-outputs"></a>Audioausgaben
 
-Dies ist eine Liste der unterstützten Audioformate, die in jeder Anforderung als `X-Microsoft-OutputFormat`-Header gesendet werden. Es wird jeweils eine Bitrate und ein Codierungstyp angegeben. Der Speech-Dienst unterstützt Audioausgaben mit 24kHz, 16kHz und 8kHz.
+Dies ist eine Liste der unterstützten Audioformate, die in jeder Anforderung als `X-Microsoft-OutputFormat`-Header gesendet werden. Es wird jeweils eine Bitrate und ein Codierungstyp angegeben. Der Spracherkennungsdienst unterstützt Audioausgaben mit 24 kHz, 16 kHz und 8 kHz.
 
 |||
 |-|-|
@@ -181,7 +181,7 @@ Dies ist eine Liste der unterstützten Audioformate, die in jeder Anforderung al
 | `audio-24khz-48kbitrate-mono-mp3` | |
 
 > [!NOTE]
-> Wenn die ausgewählte Stimme und das ausgewählte Ausgabeformat unterschiedliche Bitraten aufweisen, wird das Audio nach Bedarf neu gesampelt. 24-KHz-Stimmen unterstützen keine `audio-16khz-16kbps-mono-siren`- und `riff-16khz-16kbps-mono-siren`-Ausgabeformate.
+> Wenn die ausgewählte Stimme und das ausgewählte Ausgabeformat unterschiedliche Bitraten aufweisen, wird das Audio nach Bedarf neu gesampelt. Jedoch unterstützen 24 khz-Stimmen keine `audio-16khz-16kbps-mono-siren`- und `riff-16khz-16kbps-mono-siren`-Ausgabeformate.
 
 ### <a name="request-body"></a>Anforderungstext
 
@@ -225,6 +225,7 @@ Der HTTP-Statuscode jeder Antwort zeigt den Erfolg oder allgemeine Fehler an.
 | 400 | Ungültige Anforderung | Ein erforderlicher Parameter fehlt, ist leer oder Null. Oder der an einen erforderlichen oder optionalen Parameter übergebene Wert ist ungültig. Ein häufiges Problem sind zu lange Kopfzeilen. |
 | 401 | Nicht autorisiert | Die Anforderung ist nicht autorisiert. Stellen Sie sicher, dass Ihr Abonnementschlüssel oder -token gültig ist und sich in der richtigen Region befindet. |
 | 413 | Anforderungsentität zu groß | Die SSML-Eingabe umfasst mehr als 1024 Zeichen. |
+| 415 | Nicht unterstützter Medientyp | Möglicherweise wurde der falsche `Content-Type`-Wert bereitgestellt. `Content-Type` sollte auf `application/ssml+xml` festgelegt sein. | 
 | 429 | Zu viele Anforderungen | Sie haben das Kontingent oder die Rate der Anforderungen überschritten, das bzw. die für Ihr Abonnement zulässig ist. |
 | 502 | Ungültiges Gateway | Netzwerk- oder serverseitiges Problem. Kann auch auf ungültige Header hinweisen. |
 

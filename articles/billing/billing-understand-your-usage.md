@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/24/2019
 ms.author: banders
-ms.openlocfilehash: 9ff9b6b5313026d2102b98659183fa97c6a5ef84
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 2eb9f8e19be2a7b6220bc34bf4ce0c72c4ac0b4f
+ms.sourcegitcommit: a52d48238d00161be5d1ed5d04132db4de43e076
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64683985"
+ms.lasthandoff: 06/20/2019
+ms.locfileid: "67275057"
 ---
 # <a name="understand-the-terms-in-your-azure-usage-and-charges-file"></a>Grundlegendes zu den Bedingungen in der Datei für die Azure-Nutzung und -Gebühren
 
@@ -72,6 +72,7 @@ InvoiceSection | MCA | Siehe „InvoiceSectionName“.
 InvoiceSectionId | EA, MCA | Eindeutiger Bezeichner für EA-Abteilung oder MCA-Rechnungsabschnitt.
 InvoiceSectionName | EA, MCA | Name für EA-Abteilung oder MCA-Rechnungsabschnitt.
 IsAzureCreditEligible | EA, MCA | Gibt an, ob die Gebühr mit einer Azure-Gutschrift bezahlt werden kann (Werte: True, False).
+IsEstimated | Alle | Gibt an, ob der Abrechnungszeitraum geschlossen/beendet wird. Bis die Rechnung erstellt wird, können die Nutzungsdaten während des Abrechnungszeitraums schwanken. Diese Datensätze werden als „Geschätzt“ markiert.
 Location | EA, MCA | Standort des Rechenzentrums, in dem die Ressource ausgeführt wird.
 MeterCategory | Alle | Name der Klassifizierungskategorie der Verbrauchseinheit. Beispiele: *Clouddienste* und *Netzwerk*.
 MeterId | Alle | Der eindeutige Bezeichner für die Verbrauchseinheit.

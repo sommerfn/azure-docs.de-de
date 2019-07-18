@@ -7,16 +7,16 @@ ms.topic: article
 ms.author: mbaldwin
 ms.date: 04/05/2019
 ms.custom: seodec18
-ms.openlocfilehash: db289e5b5be23176e8589f408a86734181129ebe
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: ffdda51c4739dfad6c326a5c90f4a93ebfb321cd
+ms.sourcegitcommit: 2d3b1d7653c6c585e9423cf41658de0c68d883fa
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65978491"
+ms.lasthandoff: 06/20/2019
+ms.locfileid: "67294899"
 ---
 # <a name="enable-azure-disk-encryption-for-linux-iaas-vms"></a>Aktivieren von Azure Disk Encryption für virtuelle Linux-IaaS-Computer 
 
-Es gibt viele Szenarien für die Aktivierung der Datenträgerverschlüsselung. Die Schritte können je nach Szenario variieren. In den folgenden Abschnitten werden diese Szenarien für virtuelle Linux-IaaS-Computer ausführlicher beschrieben. Bevor Sie die Datenträgerverschlüsselung verwenden können, müssen die [Azure Disk Encryption-Voraussetzungen](azure-security-disk-encryption-prerequisites.md) erfüllt werden, und es ist ratsam, den Abschnitt [Additional prerequisites for Linux IaaS VMs](azure-security-disk-encryption-prerequisites.md#bkmk_LinuxPrereq) (Zusätzliche Voraussetzungen für virtuelle Linux-IaaS-Computer) durchzulesen.
+Es gibt viele Szenarien für die Aktivierung der Datenträgerverschlüsselung. Die Schritte können je nach Szenario variieren. In den folgenden Abschnitten werden diese Szenarien für virtuelle Linux-IaaS-Computer ausführlicher beschrieben. Bevor Sie die Datenträgerverschlüsselung verwenden können, müssen die [Azure Disk Encryption-Voraussetzungen](azure-security-disk-encryption-prerequisites.md) erfüllt werden, und der Abschnitt [Additional prerequisites for Linux IaaS VMs](azure-security-disk-encryption-prerequisites.md#additional-prerequisites-for-linux-iaas-vms) (Zusätzliche Voraussetzungen für virtuelle Linux-IaaS-Computer) durchgelesen werden.
 
 Erstellen Sie eine [Momentaufnahme](../virtual-machines/windows/snapshot-copy-managed-disk.md), und sichern Sie die Datenträger, bevor diese verschlüsselt werden. Durch Sicherungen wird sichergestellt, dass eine Wiederherstellungsoption verfügbar ist, falls während der Verschlüsselung ein unerwarteter Fehler auftritt. Für VMs mit verwalteten Datenträgern ist eine Sicherung erforderlich, bevor die Verschlüsselung durchgeführt wird. Nach dem Erstellen einer Sicherung können Sie das Cmdlet „Set-AzVMDiskEncryptionExtension“ verwenden, um verwaltete Datenträger durch das Angeben des Parameters „-skipVmBackup“ zu verschlüsseln. Weitere Informationen zum Sichern und Wiederherstellen von verschlüsselten VMs finden Sie im Artikel [Azure Backup](../backup/backup-azure-vms-encryption.md). 
 

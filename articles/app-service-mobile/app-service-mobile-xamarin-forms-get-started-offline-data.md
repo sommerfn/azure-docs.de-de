@@ -2,7 +2,7 @@
 title: Aktivieren der Offlinesynchronisierung für Ihre Azure Mobile App (Xamarin.Forms) | Microsoft-Dokumentation
 description: Erfahren Sie, wie Sie mobile App Service-Apps verwenden, um Offlinedaten in Ihrer Xamarin.Forms-Anwendung zwischenzuspeichern und zu synchronisieren.
 documentationcenter: xamarin
-author: conceptdev
+author: elamalani
 manager: yochayk
 editor: ''
 services: app-service\mobile
@@ -12,22 +12,26 @@ ms.workload: mobile
 ms.tgt_pltfrm: mobile-xamarin-ios
 ms.devlang: dotnet
 ms.topic: article
-ms.date: 10/04/2016
-ms.author: crdun
-ms.openlocfilehash: 506c59ca24aeafbac59b1508bb78142051302765
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.date: 06/25/2019
+ms.author: emalani
+ms.openlocfilehash: 53f339d5450965c992f6528ff294e0d37ec2f7f6
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "62127878"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67446285"
 ---
 # <a name="enable-offline-sync-for-your-xamarinforms-mobile-app"></a>Aktivieren der Offlinesynchronisierung für Ihre mobile Xamarin.Forms-App
 [!INCLUDE [app-service-mobile-selector-offline](../../includes/app-service-mobile-selector-offline.md)]
 
+> [!NOTE]
+> Im Rahmen von Visual Studio App Center wird in neue und integrierte Dienste investiert, die für die Entwicklung mobiler Apps von zentraler Bedeutung sind. Entwickler können **Build**-, **Test**- und **Verteilungs**dienste nutzen, um eine Pipeline für Continuous Integration und Delivery einzurichten. Nach der Bereitstellung der App können Entwickler den Status und die Nutzung ihrer App mithilfe der **Analyse**- und **Diagnose**dienste überwachen und mit Benutzern über den **Push**dienst interagieren. Entwickler können auch den **Authentifizierung**sdienst nutzen, um ihre Benutzer zu authentifizieren, und den **Daten**dienst, um App-Daten dauerhaft in der Cloud zu speichern und zu synchronisieren. Besuchen Sie noch heute das [App Center](https://appcenter.ms/?utm_source=zumo&utm_campaign=app-service-mobile-xamarin-forms-get-started-offline-data).
+>
+
 ## <a name="overview"></a>Übersicht
 In diesem Tutorial wird die Funktion zur Offlinesynchronisierung von Azure Mobile Apps für Xamarin.Forms eingeführt. Die Offlinesynchronisierung ermöglicht Endbenutzern die Interaktion mit einer mobilen App (Anzeigen, Hinzufügen und Ändern von Daten) auch ohne Netzwerkverbindung. Änderungen werden in einer lokalen Datenbank gespeichert. Sobald das Gerät wieder online ist, werden diese Änderungen mit dem Remotedienst synchronisiert.
 
-Dieses Tutorial basiert auf der Xamarin.Forms-Schnellstartlösung für Mobile Apps, die Sie beim Durcharbeiten des Tutorials [Erstellen einer Xamarin iOS-App] erstellen. Die Schnellstartlösung für Xamarin.Forms enthält den Code zur Unterstützung der Offlinesynchronisierung, die lediglich aktiviert werden muss. In diesem Tutorial aktualisieren Sie die Schnellstartlösung, um die Offlinefunktionen von Azure Mobile Apps zu aktivieren. Außerdem gehen wir speziell auf den offlinespezifischen Code in der App ein. Wenn Sie die heruntergeladene Schnellstartlösung nicht verwenden, müssen Sie Ihrem Projekt die Datenzugriffs-Erweiterungspakete hinzufügen. Weitere Informationen zu Servererweiterungspaketen finden Sie unter [Arbeiten Sie mit dem .NET-Back-End-Server SDK für Azure Mobile Apps][1].
+Dieses Tutorial basiert auf der Xamarin.Forms-Schnellstartlösung für Mobile Apps, die Sie beim Durcharbeiten des Tutorials [Erstellen einer Xamarin iOS-App] erstellen. Die Schnellstartlösung für Xamarin.Forms enthält den Code zur Unterstützung der Offlinesynchronisierung, die lediglich aktiviert werden muss. In diesem Tutorial aktualisieren Sie die Schnellstartlösung, um die Offlinefunktionen von Azure Mobile Apps zu aktivieren. Außerdem gehen wir speziell auf den offlinespezifischen Code in der App ein. Wenn Sie die heruntergeladene Schnellstartlösung nicht verwenden, müssen Sie Ihrem Projekt die Datenzugriffs-Erweiterungspakete hinzufügen. Weitere Informationen zu Servererweiterungspaketen finden Sie unter [Work with the .NET backend server SDK for Azure Mobile Apps][1](in englischer Sprache).
 
 Weitere Informationen zur Offlinesynchronisierungsfunktion finden Sie im Thema [Offlinedatensynchronisierung in Azure Mobile Apps][2].
 
@@ -42,7 +46,7 @@ Der Code für die Offlinesynchronisierung wird mit C#-Präprozessordirektiven in
 
    * **Windows 8.1-Runtime:** Installieren Sie [SQLite für Windows 8.1][3].
    * **Windows Phone 8.1:** Installieren Sie [SQLite für Windows Phone 8.1][4].
-   * **Universelle Windows-Plattform:** Installieren Sie [SQLite für die universelle Windows-Plattform][5].
+   * **Universelle Windows-Plattform** Installieren Sie [SQLite für die universelle Windows-Plattform][5].
 
      Obwohl die Schnellstartlösung kein universelles Windows-Projekt enthält, wird die universelle Windows-Plattform mit Xamarin.Forms unterstützt.
 4. (Optional) Klicken Sie in jedem Windows-App-Projekt mit der rechten Maustaste auf **Verweise** > **Verweis hinzufügen...** , und erweitern Sie dann den Ordner **Windows** > **Erweiterungen**.
@@ -118,7 +122,7 @@ Im Beispiel wird die **SyncAsync**-Methode nur beim Starten und bei einer Anford
 
 Bei einem Pullvorgang für eine Tabelle mit ausstehenden lokalen Updates, die durch den Kontext verfolgt werden, löst dieser Pullvorgang automatisch einen vorherigen Kontextpush aus. Beim Aktualisieren, Hinzufügen und Abschließen von Elementen in diesem Beispiel können Sie den expliziten **PushAsync**-Aufruf weglassen.
 
-Im bereitgestellten Code werden alle Datensätze in der TodoItem-Remotetabelle abgefragt, es ist aber auch möglich, Datensätze durch Übergeben einer Abfrage-ID und Abfrage an **PushAsync**zu filtern. Weitere Informationen finden Sie unter [Offlinedatensynchronisierung in Azure Mobile Apps][2] im Abschnitt *Inkrementelle Synchronisierung*.
+Im bereitgestellten Code werden alle Datensätze in der TodoItem-Remotetabelle abgefragt, es ist aber auch möglich, Datensätze durch Übergeben einer Abfrage-ID und Abfrage an **PushAsync**zu filtern. Weitere Informationen finden Sie unter *Offlinedatensynchronisierung in Azure Mobile Apps* im Abschnitt [Inkrementelle Synchronisierung][2].
 
 ## <a name="run-the-client-app"></a>Ausführen der Client-App
 Nach dem Aktivieren der Offlinesynchronisierung führen Sie die Clientanwendung mindestens einmal auf jeder Plattform aus, um die lokale Speicherdatenbank aufzufüllen. Weiter unten simulieren Sie ein Offlineszenario und ändern die Daten im lokalen Speicher, während die App offline ist.

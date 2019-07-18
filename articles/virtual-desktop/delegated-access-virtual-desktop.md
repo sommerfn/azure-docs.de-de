@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: conceptual
 ms.date: 03/21/2019
 ms.author: helohr
-ms.openlocfilehash: 250aea52de63a6397ce00e9cadcadf3a8ba39858
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 41cf5f8bcc69e181350a63d215fb0d78d43dcfdf
+ms.sourcegitcommit: a52d48238d00161be5d1ed5d04132db4de43e076
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60870505"
+ms.lasthandoff: 06/20/2019
+ms.locfileid: "67272817"
 ---
 # <a name="delegated-access-in-windows-virtual-desktop-preview"></a>Delegierter Zugriff in Windows Virtual Desktop (Vorschauversion)
 
@@ -42,11 +42,11 @@ Der delegierte Zugriff in Windows Virtual Desktop verfügt über mehrere integri
 
 ## <a name="powershell-cmdlets-for-role-assignments"></a>PowerShell-Cmdlets für Rollenzuweisungen
 
-Sie können die folgenden Cmdlets ausführen, um Rollenzuweisungen zu erstellen, anzuzeigen und zu bearbeiten:
+Sie können die folgenden Cmdlets ausführen, um Rollenzuweisungen zu erstellen, anzuzeigen und zu entfernen:
 
 * Mit **Get-RdsRoleAssignment** wird eine Liste mit Rollenzuweisungen angezeigt.
 * Mit **New-RdsRoleAssignment** wird eine neue Rollenzuweisung erstellt.
-* Mit **Set-RdsRoleAssignment** werden Rollenzuweisungen bearbeitet.
+* Mit **Remove-RdsRoleAssignment** werden Rollenzuweisungen gelöscht.
 
 ### <a name="accepted-parameters"></a>Akzeptierte Parameter
 

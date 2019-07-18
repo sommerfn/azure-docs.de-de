@@ -7,23 +7,23 @@ ms.service: container-service
 ms.topic: article
 ms.date: 04/19/2019
 ms.author: pabouwer
-ms.openlocfilehash: 33d86ab8c88b45c7787620773f0df6e7fe888cf3
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: c7c234e181e10499e532436bfde05ed89bdc7d28
+ms.sourcegitcommit: c63e5031aed4992d5adf45639addcef07c166224
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65850414"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67465689"
 ---
 # <a name="install-and-use-istio-in-azure-kubernetes-service-aks"></a>Installieren und Verwenden von Istio in Azure Kubernetes Service (AKS)
 
-[Istio][istio-github] ist ein Open Source-Service Mesh, das eine Reihe wichtiger Funktionen für Microservices in einem Kubernetes-Cluster bietet. Zu diesen Funktionen gehören: Verwaltung des Datenverkehrs, Dienstidentität und -sicherheit, Richtlinienerzwingung und Telemetrie. Weitere Informationen zu Istio finden Sie in der offiziellen Dokumentation [What is Istio? (Was ist Istio)][istio-docs-concepts].
+[Istio][istio-github] is an open-source service mesh that provides a key set of functionality across the microservices in a Kubernetes cluster. These features include traffic management, service identity and security, policy enforcement, and observability. For more information about Istio, see the official [What is Istio?][istio-docs-concepts] – Dokumentation.
 
 In diesem Artikel wird gezeigt, wie Sie Istio installieren. Die Istio-Clientbinärdatei `istioctl` wird auf Ihrem Clientcomputer installiert, und anschließend werden die Istio-Komponenten in einem Kubernetes-Cluster in AKS installiert.
 
 > [!NOTE]
 > Diese Anweisungen beziehen sich auf die Istio-Version `1.1.3`.
 >
-> Der Istio-Versionen `1.1.x` wurden vom Istio-Team mit den Kubernetes-Versionen `1.11`, `1.12` und `1.13` getestet. Weitere Istio-Versionen finden Sie unter [GitHub – Istio-Releases][istio-github-releases]. Weitere Informationen zu den Releases finden Sie unter [Istio – Versionshinweise][istio-release-notes].
+> Der Istio-Versionen `1.1.x` wurden vom Istio-Team mit den Kubernetes-Versionen `1.11`, `1.12` und `1.13` getestet. Weitere Istio-Versionen finden Sie unter [GitHub – Istio-Releases][istio-github-releases] and information about each of the releases at [Istio - Release Notes][istio-release-notes].
 
 In diesem Artikel werden folgende Vorgehensweisen behandelt:
 
@@ -83,6 +83,8 @@ Verwenden Sie in PowerShell `Invoke-WebRequest` zum Herunterladen des neuesten I
 $ISTIO_VERSION="1.1.3"
 
 # Windows
+# Use TLS 1.2
+[Net.ServicePointManager]::SecurityProtocol = "tls12"
 $ProgressPreference = 'SilentlyContinue'; Invoke-WebRequest -URI "https://github.com/istio/istio/releases/download/$ISTIO_VERSION/istio-$ISTIO_VERSION-win.zip" -OutFile "istio-$ISTIO_VERSION.zip"
 Expand-Archive -Path "istio-$ISTIO_VERSION.zip" -DestinationPath .
 ```
@@ -208,7 +210,7 @@ Wenn Sie diesen Punkt erreichen, haben Sie die Istio-CRDs erfolgreich installier
 > [!IMPORTANT]
 > Führen Sie alle Schritte in diesem Abschnitt im Ordner der obersten Ebene des Istio-Release aus, das Sie heruntergeladen und extrahiert haben.
 
-Wir installieren [Grafana][grafana] und [Kiali][kiali] als Teil unserer Istio-Installation. Grafana stellt Analyse- und Überwachungsdashboards bereit, und Kiali bietet ein Übersichtsdashboard für das Dienstmesh. Bei diesem Setup erfordert jede dieser Komponenten Anmeldeinformationen, die als ein [Geheimnis][kubernetes-secrets] bereitgestellt werden müssen.
+Wir installieren [Grafana][grafana] and [Kiali][kiali] als Teil unserer Istio-Installation. Grafana stellt Analyse- und Überwachungsdashboards bereit, und Kiali bietet ein Übersichtsdashboard für das Dienstmesh. Bei diesem Setup erfordert jede dieser Komponenten Anmeldeinformationen, die als ein [Geheimnis][kubernetes-secrets] bereitgestellt werden müssen.
 
 Bevor Sie die Istio-Komponenten installieren können, müssen Sie die Geheimnisse für Grafana und Kiali erstellen. Sie erstellen diese Geheimnisse durch Ausführen der entsprechenden Befehle für Ihre Umgebung.
 
@@ -409,7 +411,7 @@ kiali-5c4cdbb869-s28dv                   1/1       Running     0          6m26s
 prometheus-67599bf55b-pgxd8              1/1       Running     0          6m26s
 ```
 
-Es sollen zwei `istio-init-crd-*`-Pods mit dem Status `Completed` vorhanden sein. Diese Pods waren verantwortlich für die Ausführung der Aufträge zur Erstellung der CRDs in einem vorherigen Schritt. Alle anderen Pods sollten den Status `Running` aufweisen. Wenn Ihre Pods nicht diesen Status haben, warten Sie ein oder zwei Minuten, bis dies der Fall ist. Wenn einer der Pods ein Problem meldet, verwenden Sie den Befehl [kubectl describe pod] [ kubectl-describe], um die Ausgabe und den Status des betreffenden Pods zu überprüfen.
+Es sollen zwei `istio-init-crd-*`-Pods mit dem Status `Completed` vorhanden sein. Diese Pods waren verantwortlich für die Ausführung der Aufträge zur Erstellung der CRDs in einem vorherigen Schritt. Alle anderen Pods sollten den Status `Running` aufweisen. Wenn Ihre Pods nicht diesen Status haben, warten Sie ein oder zwei Minuten, bis dies der Fall ist. Wenn einer der Pods ein Problem meldet, verwenden Sie den Befehl [kubectl describe pod][kubectl-describe], um die Ausgabe und den Status des betreffenden Pods zu überprüfen.
 
 ## <a name="accessing-the-add-ons"></a>Zugreifen auf die Add-Ons
 

@@ -1,6 +1,6 @@
 ---
-title: Authentifizieren des Zugriffs auf Azure-Blobs und -Warteschlangen mit Azure Active Directory | Microsoft-Dokumentation
-description: Authentifizieren Sie den Zugriff auf Azure-Blobs und -Warteschlangen mit Azure Active Directory.
+title: Autorisieren des Zugriffs auf Azure-Blobs und -Warteschlangen mit Azure Active Directory | Microsoft-Dokumentation
+description: Autorisieren Sie den Zugriff auf Azure-Blobs und -Warteschlangen mit Azure Active Directory.
 services: storage
 author: tamram
 ms.service: storage
@@ -9,30 +9,30 @@ ms.date: 04/21/2019
 ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: common
-ms.openlocfilehash: 66051bd0f8be349f748c72218d538bba273be8f6
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 8033dda4059a52cea2b775fc8765a9f2a91b96dd
+ms.sourcegitcommit: 82efacfaffbb051ab6dc73d9fe78c74f96f549c2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65147267"
+ms.lasthandoff: 06/20/2019
+ms.locfileid: "67302429"
 ---
-# <a name="authenticate-access-to-azure-blobs-and-queues-using-azure-active-directory"></a>Authentifizieren des Zugriffs auf Azure-Blobs und -Warteschlangen mit Azure Active Directory
+# <a name="authorize-access-to-azure-blobs-and-queues-using-azure-active-directory"></a>Autorisieren des Zugriffs auf Azure-Blobs und -Warteschlangen mit Azure Active Directory
 
-Azure Storage unterstützt Authentifizierung und Autorisierung mit Azure Active Directory (AD) für Blob- und Warteschlangendienste. Mit Azure AD können Sie mit der rollenbasierten Zugriffssteuerung (Role-Based Access Control, RBAC) den Zugriff auf Benutzer-, Gruppen- oder Anwendungsdienstprinzipale gewährleisten. 
+Azure Storage unterstützt mithilfe von Azure Active Directory (Azure AD) das Autorisieren von Anforderungen an Blob- und Queue Storage. Mit Azure AD können Sie die rollenbasierte Zugriffssteuerung (RBAC) zum Gewähren von Berechtigungen für einen Sicherheitsprinzipal verwenden, bei dem es sich um einen Benutzer, eine Gruppe oder einen Anwendungsdienstprinzipal handelt. Der Sicherheitsprinzipal wird von Azure AD authentifiziert, um ein OAuth 2.0-Token zurückzugeben. Das Token kann zum Autorisieren einer Anforderung für den Zugriff auf eine Ressource in Blob- oder Queue Storage verwendet werden.
 
-Die Authentifizierung von Benutzern oder Anwendungen mithilfe von Azure AD-Anmeldeinformationen bietet mehr Sicherheit und Benutzerfreundlichkeit als andere Autorisierungsmethoden. Während Sie weiterhin die Autorisierung mit gemeinsam verwendetem Schlüssel mit Ihren Anwendungen verwenden können, macht Azure AD das Speichern Ihrer Kontozugriffsschlüssel mit Ihrem Code überflüssig. Sie können auch weiterhin Shared Access Signatures für zum Gewähren eines differenzierten Zugriffs auf Ressourcen in Ihrem Speicherkonto verwenden. Azure AD bietet jedoch ähnliche Funktionen, bei denen Sie weder SAS-Token verwalten noch sich um das Widerrufen einer gefährdeten SAS kümmern müssen. Microsoft empfiehlt, nach Möglichkeit die Azure AD-Authentifizierung für Ihre Azure Storage-Anwendungen zu nutzen.
+Das Autorisieren von Benutzern oder Anwendungen mithilfe eines von Azure AD zurückgegebenen OAuth 2.0-Tokens bietet mehr Sicherheit und Benutzerfreundlichkeit als die Autorisierung mit gemeinsam verwendeten Schlüsseln oder freigegebenen Zugriffssignaturen (SAS). Mit Azure AD müssen Kontozugriffsschlüssel mit Ihrem Code und potenziellen Sicherheitsrisiken nicht gespeichert werden. Während Sie weiterhin die Autorisierung mit gemeinsam verwendetem Schlüssel mit Ihren Anwendungen verwenden können, macht Azure AD das Speichern Ihrer Kontozugriffsschlüssel mit Ihrem Code überflüssig. Sie können auch weiterhin Shared Access Signatures für zum Gewähren eines differenzierten Zugriffs auf Ressourcen in Ihrem Speicherkonto verwenden. Azure AD bietet jedoch ähnliche Funktionen, bei denen Sie weder SAS-Token verwalten noch sich um das Widerrufen einer gefährdeten SAS kümmern müssen. Microsoft empfiehlt, nach Möglichkeit die Azure AD-Autorisierung für Ihre Azure Storage-Anwendungen zu nutzen.
 
-Die Authentifizierung und Autorisierung mit Azure AD-Anmeldeinformationen ist für alle universellen Speicherkonten sowie alle Blob Storage-Konten in allen öffentlichen Regionen und nationalen Clouds verfügbar. Die Azure AD-Autorisierung wird nur für Speicherkonten unterstützt, die mit dem Azure Resource Manager-Bereitstellungsmodell erstellt wurden.
+Die Autorisierung mit Azure AD ist für alle universellen Speicherkonten sowie alle Blob Storage-Konten in allen öffentlichen Regionen und nationalen Clouds verfügbar. Die Azure AD-Autorisierung wird nur für Speicherkonten unterstützt, die mit dem Azure Resource Manager-Bereitstellungsmodell erstellt wurden.
 
 ## <a name="overview-of-azure-ad-for-blobs-and-queues"></a>Übersicht über Azure AD für Blobs und Warteschlangen
 
 Wenn ein Sicherheitsprinzipal (ein Benutzer, eine Gruppe oder eine Anwendung) versucht, auf eine Blob- oder Warteschlangenressource zuzugreifen, muss die Anforderung autorisiert werden, sofern es sich nicht um ein Blob für den anonymen Zugriff handelt. Mit Azure AD ist der Zugriff auf eine Ressource ein zweistufiger Prozess. Zunächst wird die Identität des Sicherheitsprinzipals authentifiziert, und ein OAuth 2.0-Token wird zurückgegeben. Anschließend wird das Token als Teil einer Anforderung an den Blob- oder Warteschlangendienst übergeben und vom Dienst verwendet, um den Zugriff auf die angegebene Ressource zu autorisieren.
 
-Für den Authentifizierungsschritt ist es erforderlich, dass eine Anwendung zur Laufzeit ein OAuth 2.0-Zugriffstoken anfordert. Wenn eine Anwendung in einer Azure-Entität, z. B. einem virtuellen Azure-Computer, einer VM-Skalierungsgruppe oder einer Azure Functions-App, ausgeführt wird, kann der Zugriff auf Blobs oder Warteschlangen über eine [verwaltete Identität](../../active-directory/managed-identities-azure-resources/overview.md) erfolgen. Informationen zur Autorisierung von Anforderungen über eine verwaltete Identität an den Azure Blob- oder Warteschlangendienst finden Sie unter [Authentifizieren des Zugriffs auf Blobs und Warteschlangen mit Azure Active Directory und verwalteten Identitäten für Azure-Ressourcen](storage-auth-aad-msi.md).
+Für den Authentifizierungsschritt ist es erforderlich, dass eine Anwendung zur Laufzeit ein OAuth 2.0-Zugriffstoken anfordert. Wenn eine Anwendung in einer Azure-Entität, z. B. einem virtuellen Azure-Computer, einer VM-Skalierungsgruppe oder einer Azure Functions-App, ausgeführt wird, kann der Zugriff auf Blobs oder Warteschlangen über eine [verwaltete Identität](../../active-directory/managed-identities-azure-resources/overview.md) erfolgen. Informationen zur Autorisierung von Anforderungen über eine verwaltete Identität an den Azure Blob- oder Warteschlangendienst finden Sie unter [Authorize access to blobs and queues with Azure Active Directory and managed identities for Azure Resources (Autorisieren des Zugriffs auf Blobs und Warteschlangen mit Azure Active Directory und verwalteten Identitäten für Azure-Ressourcen)](storage-auth-aad-msi.md).
 
 Für den Autorisierungsschritt ist es erforderlich, dem Sicherheitsprinzipal mindestens eine RBAC-Rolle zuzuweisen. Azure Storage umfasst RBAC-Rollen mit gängigen Gruppen von Berechtigungen für Blob- und Warteschlangendaten. Die möglichen Berechtigungen eines Sicherheitsprinzipals sind durch die Rollen vorgegeben, die dem Prinzipal zugewiesen sind. Weitere Informationen zum Zuweisen von RBAC-Rollen in Azure Storage finden Sie unter [Verwalten der Zugriffsrechte für Azure Storage-Daten mit RBAC](storage-auth-aad-rbac.md).
 
-Für native Anwendungen und Webanwendungen, die Anforderungen an den Azure Blob- oder Warteschlangendienst senden, kann die Authentifizierung auch mit Azure AD erfolgen. Informationen zum Anfordern eines Zugriffstokens und seiner Verwendung zum Autorisieren der Anforderungen für Blob- oder Warteschlangendaten finden Sie unter [Authentifizieren mit Azure AD über eine Azure Storage-Anwendung](storage-auth-aad-app.md).
+Für native Anwendungen und Webanwendungen, die Anforderungen an den Azure Blob- oder Warteschlangendienst senden, kann die Autorisierung auch mit Azure AD erfolgen. Informationen zum Anfordern eines Zugriffstokens und seiner Verwendung zum Autorisieren der Anforderungen für Blob- oder Warteschlangendaten finden Sie unter [Authorize access to Azure Storage with Azure AD from an Azure Storage application (Autorisieren des Zugriffs auf Azure Storage mit Azure AD über eine Azure Storage-Anwendung)](storage-auth-aad-app.md).
 
 ## <a name="assigning-rbac-roles-for-access-rights"></a>Zuweisen von RBAC-Rollen für Zugriffsrechte
 
@@ -50,7 +50,7 @@ Informationen zum Zuweisen einer integrierten RBAC-Rolle zu einem Sicherheitspri
 - [Gewähren von Zugriff auf Azure-Blob- und -Warteschlangendaten mit RBAC über die Azure CLI](storage-auth-aad-rbac-cli.md)
 - [Gewähren von Zugriff auf Azure-Blob- und -Warteschlangendaten mit RBAC über PowerShell](storage-auth-aad-rbac-powershell.md)
 
-Weitere Informationen dazu, wie integrierte Rollen für Azure Storage definiert sind, finden Sie unter [Grundlegendes zu Rollendefinitionen](../../role-based-access-control/role-definitions.md#management-and-data-operations-preview). Weitere Informationen zum Erstellen benutzerdefinierter RBAC-Rollen finden Sie unter [Erstellen benutzerdefinierter Rollen für die rollenbasierte Zugriffssteuerung in Azure](../../role-based-access-control/custom-roles.md).
+Weitere Informationen dazu, wie integrierte Rollen für Azure Storage definiert sind, finden Sie unter [Grundlegendes zu Rollendefinitionen](../../role-based-access-control/role-definitions.md#management-and-data-operations). Weitere Informationen zum Erstellen benutzerdefinierter RBAC-Rollen finden Sie unter [Erstellen benutzerdefinierter Rollen für die rollenbasierte Zugriffssteuerung in Azure](../../role-based-access-control/custom-roles.md).
 
 ### <a name="access-permissions-for-data-operations"></a>Zugriffsberechtigungen für Datenvorgänge
 
@@ -62,7 +62,7 @@ Einzelheiten zu den Berechtigungen, die für spezifische Vorgänge des Blob- ode
 
 ## <a name="access-data-with-an-azure-ad-account"></a>Zugreifen auf Daten über ein Azure AD-Konto
 
-Der Zugriff auf Blob- oder Warteschlangendaten über das Azure-Portal, PowerShell oder die Azure-Befehlszeilenschnittstelle kann über das Azure AD-Konto eines Benutzers oder über die Kontozugriffsschlüssel (Authentifizierung über gemeinsam verwendete Schlüssel) autorisiert werden.
+Der Zugriff auf Blob- oder Warteschlangendaten über das Azure-Portal, PowerShell oder die Azure-Befehlszeilenschnittstelle kann über das Azure AD-Konto eines Benutzers oder über die Kontozugriffsschlüssel (Autorisierung mit gemeinsam verwendetem Schlüssel) autorisiert werden.
 
 ### <a name="data-access-from-the-azure-portal"></a>Datenzugriff über das Azure-Portal
 
@@ -78,12 +78,12 @@ Wenn Sie zu einem Container oder einer Warteschlange navigieren, wird im Azure-P
 
 In der Azure-Befehlszeilenschnittstelle und PowerShell ist die Anmeldung mit Azure AD-Anmeldeinformationen möglich. Nach der Anmeldung wird Ihre Sitzung unter diesen Anmeldeinformationen ausgeführt. Weitere Informationen finden Sie unter [Ausführen von Azure CLI- oder PowerShell-Befehlen mit Azure AD-Anmeldeinformationen für den Zugriff auf Blob- oder Warteschlangendaten](storage-auth-aad-script.md).
 
-## <a name="azure-ad-authentication-over-smb-for-azure-files"></a>Azure AD-Authentifizierung per SMB für Azure Files
+## <a name="azure-ad-authorization-over-smb-for-azure-files"></a>Azure AD-Autorisierung über SMB für Azure Files
 
-Azure Files unterstützt die Authentifizierung mit Azure AD über SMB nur für in die Domäne eingebundene virtuelle Computer (Vorschau). Informationen zur Verwendung von Azure AD über SMB für Azure Files finden Sie unter [Übersicht über die Azure Active Directory-Authentifizierung über SMB für Azure Files (Vorschau)](../files/storage-files-active-directory-overview.md).
+Azure Files unterstützt die Autorisierung mit Azure AD über SMB nur für in die Domäne eingebundene virtuelle Computer (Vorschauversion). Informationen zur Verwendung von Azure AD über SMB für Azure Files finden Sie unter [Übersicht über die Azure Active Directory-Autorisierung über SMB für Azure Files (Vorschauversion)](../files/storage-files-active-directory-overview.md).
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- [Authentifizieren des Zugriffs auf Blobs und Warteschlangen mit Azure Active Directory und verwalteten Identitäten für Azure-Ressourcen](storage-auth-aad-msi.md)
+- [Authorize access to blobs and queues with Azure Active Directory and managed identities for Azure Resources (Autorisieren des Zugriffs auf Blobs und Warteschlangen mit Azure Active Directory und verwalteten Identitäten für Azure-Ressourcen)](storage-auth-aad-msi.md)
 - [Authentifizieren mit Azure Active Directory aus einer Anwendung für den Zugriff auf Blobs und Warteschlangen](storage-auth-aad-app.md)
 - [Azure Storage support for Azure Active Directory based access control generally available](https://azure.microsoft.com/blog/azure-storage-support-for-azure-ad-based-access-control-now-generally-available/) (Azure Storage-Unterstützung für Azure Active Directory-basierte Zugriffssteuerung allgemein verfügbar)

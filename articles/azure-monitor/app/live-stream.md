@@ -13,16 +13,16 @@ ms.topic: conceptual
 ms.date: 04/22/2019
 ms.reviewer: sdash
 ms.author: mbullwin
-ms.openlocfilehash: bc85de0c8ec89ea88d2bae8e3f226da7d3163f53
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 607da7983cabe4c36c01171ba8d88c752b99ce3d
+ms.sourcegitcommit: 82efacfaffbb051ab6dc73d9fe78c74f96f549c2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64721091"
+ms.lasthandoff: 06/20/2019
+ms.locfileid: "67303812"
 ---
 # <a name="live-metrics-stream-monitor--diagnose-with-1-second-latency"></a>Live Metrics Stream: Überwachung und Diagnose mit einer Latenzzeit von 1 Sekunde
 
-Überprüfen Sie die Funktionsfähigkeit Ihrer Livewebanwendung in der Produktion mithilfe von Live Metrics Stream von [Application Insights](../../azure-monitor/app/app-insights-overview.md). Wählen und filtern Sie Metriken und Leistungsindikatoren für die Überwachung in Echtzeit, ohne dass der Dienst beeinträchtigt wird. Überprüfen Sie Stapelüberwachungen von fehlerhaften Anforderungen und Ausnahmen. In Kombination mit [Profiler](../../azure-monitor/app/profiler.md), [Snapshot Debugger](../../azure-monitor/app/snapshot-debugger.md) und [Leistungstests](../../azure-monitor/app/monitor-web-app-availability.md#performance-tests) bietet Live Metrics Stream ein leistungsfähiges und nicht invasives Diagnosetool für Ihre Livewebsite.
+Überprüfen Sie die Funktionsfähigkeit Ihrer Livewebanwendung in der Produktion mithilfe von Live Metrics Stream von [Application Insights](../../azure-monitor/app/app-insights-overview.md). Wählen und filtern Sie Metriken und Leistungsindikatoren für die Überwachung in Echtzeit, ohne dass der Dienst beeinträchtigt wird. Überprüfen Sie Stapelüberwachungen von fehlerhaften Anforderungen und Ausnahmen. Zusammen mit dem [Profiler](../../azure-monitor/app/profiler.md) und dem [Momentaufnahmedebugger](../../azure-monitor/app/snapshot-debugger.md) stellt Live Metrics Stream ein leistungsfähiges und nicht invasives Diagnosetool für Ihre Live-Website dar.
 
 Mit Live Metrics Stream haben Sie folgende Möglichkeiten:
 
@@ -192,15 +192,6 @@ Wenn Sie jedoch alle verbundenen Server erkennen und ihnen vertrauen, können Si
 >[!NOTE]
 >Es wird dringend empfohlen, dass Sie den authentifizierten Kanal vor dem Eingeben von potenziell vertraulichen Informationen wie der Kunden-ID in den Filterkriterien einrichten.
 >
-
-## <a name="generating-a-performance-test-load"></a>Generieren einer Leistungstestauslastung
-
-Verwenden Sie das Blatt „Leistungstest“, wenn Sie die Auswirkungen einer zunehmenden Auslastung überwachen möchten. Beim Leistungstest werden Anforderungen von mehreren gleichzeitigen Benutzern simuliert. Sie können entweder „manuelle Tests“ (Ping-Tests) einer einzelnen URL oder einen [Webleistungstest mit mehreren Schritten](../../azure-monitor/app/monitor-web-app-availability.md#multi-step-web-tests) ausführen, den Sie hochladen (auf dieselbe Weise wie einen Verfügbarkeitstest).
-
-> [!TIP]
-> Öffnen Sie nach dem Erstellen des Leistungstests den Test und das Live Stream-Blatt in separaten Fenstern. So können Sie sehen, wann der Leistungstest in der Warteschlange gestartet wird, und gleichzeitig den Livestream überwachen.
->
-
 
 ## <a name="troubleshooting"></a>Problembehandlung
 

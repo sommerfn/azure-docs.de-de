@@ -10,12 +10,12 @@ ms.date: 01/17/2019
 ms.author: tamram
 ms.reviewer: artek
 ms.subservice: common
-ms.openlocfilehash: 5f8d8d96e15fe3b59cb288a9a1cf6c547312fe67
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 16f38f6aae11f7bf806b7bad76db8f739fb2823d
+ms.sourcegitcommit: a7ea412ca4411fc28431cbe7d2cc399900267585
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65951309"
+ms.lasthandoff: 06/25/2019
+ms.locfileid: "67357078"
 ---
 # <a name="designing-highly-available-applications-using-ra-grs"></a>Entwerfen hochverfügbarer Anwendungen mithilfe von RA-GRS
 
@@ -212,6 +212,33 @@ Die folgende Tabelle zeigt ein Beispiel dafür, was passieren kann, wenn Sie die
 In diesem Beispiel wird davon ausgegangen, dass der Client bei T5 zum Lesen aus der sekundären Region wechselt. Er kann die **Administratorrollenentität** zu diesem Zeitpunkt erfolgreich lesen, die Entität enthält jedoch einen Wert für die Anzahl der Administratoren, die nicht konsistent mit der Anzahl der **Mitarbeiterentitäten** ist, die zu diesem Zeitpunkt in der sekundären Region als Administratoren gekennzeichnet sind. Der Client konnte diesen Wert anzeigen, es besteht jedoch das Risiko, dass es sich um inkonsistente Informationen handelt. Wahlweise kann der Client versuchen, festzustellen, ob die **Administratorrolle** möglicherweise inkonsistent ist, da die Aktualisierungen nicht in der richtigen Reihenfolge vorliegen, und anschließend können die Benutzer über diese Tatsache informiert werden.
 
 Um möglicherweise inkonsistente Daten zu erkennen, kann der Client den Wert des *Zeitpunkts der letzten Synchronisierung* verwenden, den Sie jederzeit durch eine Abfrage eines Speicherdiensts abrufen können. Dadurch können Sie den Zeitpunkt der letzten Datenkonsistenz in der sekundären Region und den Zeitpunkt feststellen, zu dem der Dienst alle Transaktionen vor diesem Zeitpunkt angewendet hat. Im Beispiel oben wird nach dem Einfügen der **Mitarbeiterentität** in der sekundären Region durch den Dienst der Zeitpunkt der letzten Synchronisierung auf *T1* festgelegt. Der Wert bleibt *T1*, bis der Dienst die **Mitarbeiterentität** in der sekundären Region aktualisiert, sobald sie auf *T6* festgelegt wird. Wenn der Client den Zeitpunkt der letzten Synchronisierung beim Lesen der Entität bei *T5* abruft, kann dieser ihn mit dem Zeitstempel der Entität vergleichen. Wenn der Zeitstempel der Entität nach dem Zeitpunkt der letzten Synchronisierung liegt, ist die Entität möglicherweise inkonsistent, und Sie können die entsprechende Aktion für Ihre Anwendung ausführen. Die Verwendung dieses Felds erfordert, dass Sie wissen, wann die letzte Aktualisierung des primären Replikats abgeschlossen wurde.
+
+## <a name="getting-the-last-sync-time"></a>Abrufen des Zeitpunkts der letzten Synchronisierung
+
+Sie können den Zeitpunkt der letzten Synchronisierung mithilfe von PowerShell oder der Azure CLI abrufen, um festzustellen, wann das letzte Mal Daten in die sekundäre Region geschrieben wurden.
+
+### <a name="powershell"></a>PowerShell
+
+Rufen Sie den Zeitpunkt der letzten Synchronisierung für das Speicherkonto mithilfe von PowerShell ab, indem Sie die Eigenschaft **GeoReplicationStats.LastSyncTime** des Speicherkontos überprüfen. Denken Sie daran, die Platzhalterwerte durch Ihre eigenen Werte zu ersetzen:
+
+```powershell
+$lastSyncTime = $(Get-AzStorageAccount -ResourceGroupName <resource-group> `
+    -Name <storage-account> `
+    -IncludeGeoReplicationStats).GeoReplicationStats.LastSyncTime
+```
+
+### <a name="azure-cli"></a>Azure-Befehlszeilenschnittstelle
+
+Rufen Sie den Zeitpunkt der letzten Synchronisierung für das Speicherkonto mithilfe der Azure CLI ab, indem Sie die Eigenschaft **geoReplicationStats.lastSyncTime** des Speicherkontos überprüfen. Verwenden Sie den Parameter `--expand`, um Werte für die unter **geoReplicationStats** geschachtelten Eigenschaften zurückzugeben. Denken Sie daran, die Platzhalterwerte durch Ihre eigenen Werte zu ersetzen:
+
+```azurecli
+$lastSyncTime=$(az storage account show \
+    --name <storage-account> \
+    --resource-group <resource-group> \
+    --expand geoReplicationStats \
+    --query geoReplicationStats.lastSyncTime \
+    --output tsv)
+```
 
 ## <a name="testing"></a>Testen
 

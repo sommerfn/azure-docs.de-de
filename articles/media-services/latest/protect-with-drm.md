@@ -14,14 +14,17 @@ ms.topic: conceptual
 ms.date: 05/25/2019
 ms.author: juliako
 ms.custom: seodec18
-ms.openlocfilehash: ce3b7a29f6f57b2bc309c719dbbab6c4574f0a46
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 4f1618260f6bfa0491e919e8aab1841e61603e5b
+ms.sourcegitcommit: a52d48238d00161be5d1ed5d04132db4de43e076
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66306484"
+ms.lasthandoff: 06/20/2019
+ms.locfileid: "67273256"
 ---
 # <a name="tutorial-use-drm-dynamic-encryption-and-license-delivery-service"></a>Tutorial: Verwenden der dynamischen DRM-Verschlüsselung und des Lizenzbereitstellungsdiensts
+
+> [!NOTE]
+> Obwohl in diesem Tutorial die [.NET SDK](https://docs.microsoft.com/dotnet/api/microsoft.azure.management.media.models.liveevent?view=azure-dotnet)-Beispiele verwendet werden, sind die allgemeinen Schritte für die [REST-API](https://docs.microsoft.com/rest/api/media/liveevents), die [CLI](https://docs.microsoft.com/cli/azure/ams/live-event?view=azure-cli-latest) und für andere unterstützte [SDKs](media-services-apis-overview.md#sdks) dieselben.
 
 Mithilfe von Azure Media Services können Sie Streams mit Microsoft PlayReady-, Google Widevine- und Apple FairPlay-Lizenzen verschlüsselt übermitteln. Ausführliche Erläuterungen finden Sie unter [Inhaltsschutz mit dynamischer Verschlüsselung](content-protection-overview.md).
 

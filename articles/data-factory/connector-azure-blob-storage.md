@@ -9,12 +9,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 04/29/2019
 ms.author: jingwang
-ms.openlocfilehash: 1ff20322f1d4f6024d4f41037ca18c327a0cc21f
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 3be075b78d8388b7146a9a3180ca825fc6476108
+ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65233184"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67206033"
 ---
 # <a name="copy-data-to-or-from-azure-blob-storage-by-using-azure-data-factory"></a>Kopieren von Daten nach oder aus Azure Blob Storage mit Azure Data Factory
 > [!div class="op_single_selector" title1="Wählen Sie die von Ihren verwendete Version des Data Factory-Diensts aus:"]
@@ -60,7 +60,10 @@ Der Azure Blob-Connector unterstützt die folgenden Authentifizierungstypen (Det
 - [Verwaltete Identitäten für Azure-Ressourcenauthentifizierung](#managed-identity)
 
 >[!NOTE]
->HDInsight, Azure Machine Learning und die Azure SQL Data Warehouse PolyBase-Last unterstützen nur Authentifizierung mit dem Azure Blob Storage-Kontoschlüssel.
+>Wenn Sie mit PolyBase Daten in SQL Data Warehouse laden und Ihr Quell- oder Stagingblobspeicher mit einem Virtual Network-Endpunkt konfiguriert ist, müssen Sie zur Authentifizierung eine verwaltete Identität und die selbstgehostete Integration Runtime in der Version 3.18 oder höher verwenden. Im Abschnitt [Verwaltete Identitäten für Azure-Ressourcenauthentifizierung](#managed-identity) sind weitere Konfigurationsvoraussetzungen aufgeführt.
+
+>[!NOTE]
+>HDInsights- und Azure Machine Learning-Aktivitäten unterstützen nur die Kontoschlüsselauthentifizierung für Azure-Blobspeicher.
 
 ### <a name="account-key-authentication"></a>Kontoschlüsselauthentifizierung
 
@@ -272,6 +275,9 @@ Informationen zur Azure Storage-Authentifizierung im Allgemeinen finden Sie unte
 
     - Weisen Sie **Als Quelle** in der Zugriffssteuerung (IAM) mindestens die Rolle **Storage-Blobdatenleser** zu.
     - Weisen Sie **Als Senke** in der Zugriffssteuerung (IAM) mindestens die Rolle **Mitwirkender an Storage-Blobdaten** zu.
+
+>[!IMPORTANT]
+>Wenn Sie mit PolyBase Daten aus einem Quell- oder Stagingblob in SQL Data Warehouse laden und eine verwaltete Identität zur Authentifizierung bei dem Blob verwenden, müssen Sie auch die Schritte 1 und 2 im [zugehörigen Leitfaden](../sql-database/sql-database-vnet-service-endpoint-rule-overview.md#impact-of-using-vnet-service-endpoints-with-azure-storage) ausführen. Registrieren Sie in Schritt 1 zuerst Ihren SQL-Datenbank-Server bei Azure Active Directory (Azure AD). Weisen Sie dann in Schritt 2 Ihrem SQL-Datenbank-Server die Rolle „Mitwirkender an Storage-Blobdaten“ zu. Alles Weitere erledigt Data Factory. Wenn Ihr Blobspeicher mit einem Azure Virtual Network-Endpunkt konfiguriert ist und Sie mit PolyBase Daten daraus laden, müssen Sie zur Authentifizierung eine verwaltete Identität verwenden.
 
 Diese Eigenschaften werden für den mit Azure Blob Storage verknüpften Dienst unterstützt:
 

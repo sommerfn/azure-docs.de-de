@@ -7,23 +7,25 @@ ms.author: mamccrea
 ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
-ms.date: 12/06/2018
+ms.date: 6/21/2019
 ms.custom: seodec18
-ms.openlocfilehash: e43e1034abe4bbe3d31a46ab3b98b0efe612b852
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: cb81c73f7946a10bae0470a55dcf1c0d55c2b847
+ms.sourcegitcommit: 08138eab740c12bf68c787062b101a4333292075
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66159449"
+ms.lasthandoff: 06/22/2019
+ms.locfileid: "67330054"
 ---
-# <a name="clean-up-your-azure-stream-analytics-job"></a>Bereinigen Ihres Azure Stream Analytics-Auftrags
+# <a name="stop-or-delete-your-azure-stream-analytics-job"></a>Beenden oder Löschen Ihres Azure Stream Analytics-Auftrags
 
-Azure Stream Analytics-Aufträge können auf einfache Weise über das Azure-Portal, Azure PowerShell, das Azure SDK für .NET oder die REST-API gelöscht werden. Ein Stream Analytics-Auftrag kann nicht wiederhergestellt werden, nachdem er gelöscht wurde.
+Azure Stream Analytics-Aufträge können auf einfache Weise über das Azure-Portal, Azure PowerShell, das Azure SDK für .NET oder die REST-API beendet oder gelöscht werden. Ein Stream Analytics-Auftrag kann nicht wiederhergestellt werden, nachdem er gelöscht wurde.
 
 >[!NOTE] 
 >Wenn Sie Ihren Stream Analytics-Auftrag beenden, werden die Daten nur im Eingabe- und Ausgabespeicher beibehalten, z.B. in Event Hubs oder Azure SQL-Datenbank. Wenn Sie die Daten aus Azure entfernen müssen, führen Sie das folgende Verfahren zum Entfernen der Eingabe- und Ausgaberessourcen Ihres Stream Analytics-Auftrags aus.
 
 ## <a name="stop-a-job-in-azure-portal"></a>Beenden eines Auftrags im Azure-Portal
+
+Wenn Sie einen Auftrag beenden, wird die Bereitstellung von Ressourcen aufgehoben, und die Verarbeitung von Verarbeitungsereignissen wird beendet. Außerdem fallen keine weiteren Gebühren mehr für diesen Auftrag an. Trotzdem bleiben all Ihre Konfiguration erhalten, und Sie können den Auftrag später neu starten. 
 
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an. 
 
@@ -35,6 +37,9 @@ Azure Stream Analytics-Aufträge können auf einfache Weise über das Azure-Port
 
 
 ## <a name="delete-a-job-in-azure-portal"></a>Löschen eines Auftrags im Azure-Portal
+
+>[!WARNING] 
+>Ein Stream Analytics-Auftrag kann nicht wiederhergestellt werden, nachdem er gelöscht wurde.
 
 1. Melden Sie sich beim Azure-Portal an. 
 

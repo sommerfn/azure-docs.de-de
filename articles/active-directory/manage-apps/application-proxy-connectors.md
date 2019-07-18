@@ -12,12 +12,12 @@ ms.date: 11/15/2018
 ms.author: mimart
 ms.reviewer: japere
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 51ad6ea2abcc18b985e9c45fbfb1ffba98fb2c1f
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 674d055c40ff594f0e4e05ec512b9124b1d7ab77
+ms.sourcegitcommit: a12b2c2599134e32a910921861d4805e21320159
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66113085"
+ms.lasthandoff: 06/24/2019
+ms.locfileid: "67341335"
 ---
 # <a name="understand-azure-ad-application-proxy-connectors"></a>Grundlegendes zu Azure AD-Anwendungsproxyconnectors
 
@@ -34,7 +34,7 @@ Für die erfolgreiche Bereitstellung des Anwendungsproxys benötigen Sie mindest
 ### <a name="windows-server"></a>Windows-Server
 Sie benötigen einen Server, auf dem Windows Server 2012 R2 oder höher ausgeführt wird und auf dem Sie den Anwendungsproxy-Connector installieren können. Der Server muss eine Verbindung mit den Anwendungsproxydiensten in Azure sowie mit den lokalen Anwendungen herstellen können, die Sie veröffentlichen.
 
-Auf dem Windows-Server muss TLS 1.2 aktiviert werden, bevor Sie den Anwendungsproxy-Connector installieren. Vorhandene Connectors mit Versionen vor 1.5.612.0 nutzen bis auf Weiteres die früheren Versionen von TLS weiter. So aktivieren Sie TLS 1.2
+Auf dem Windows-Server muss TLS 1.2 aktiviert werden, bevor Sie den Anwendungsproxy-Connector installieren. So aktivieren Sie TLS 1.2 auf dem Server
 
 1. Legen Sie die folgenden Registrierungsschlüssel fest:
     

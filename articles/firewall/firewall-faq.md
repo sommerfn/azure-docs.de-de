@@ -5,14 +5,14 @@ services: firewall
 author: vhorne
 ms.service: firewall
 ms.topic: conceptual
-ms.date: 5/30/2019
+ms.date: 6/21/2019
 ms.author: victorh
-ms.openlocfilehash: 75b1131f2853cb444481b9c7a6c96e28f8537538
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 933b4167f25db5a01cf1160f5e781a1fe31afc6b
+ms.sourcegitcommit: 82efacfaffbb051ab6dc73d9fe78c74f96f549c2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66384672"
+ms.lasthandoff: 06/20/2019
+ms.locfileid: "67304602"
 ---
 # <a name="azure-firewall-faq"></a>Azure Firewall – Häufig gestellte Fragen
 
@@ -76,7 +76,6 @@ Der Azure Firewall-Dienst ergänzt die Funktionen der Netzwerksicherheitsgruppen
 
 Azure Firewall ist ein verwalteter Dienst mit mehreren Schutzebenen, z. B. Plattformschutz mit NSGs auf NIC-Ebene (nicht sichtbar).  NSGs auf Subnetzebene sind im Azure Firewall-Subnetz nicht erforderlich und deaktiviert, um zu verhindern, dass es zu Dienstunterbrechungen kommt.
 
-
 ## <a name="how-do-i-set-up-azure-firewall-with-my-service-endpoints"></a>Wie richte ich Azure Firewall für meine Dienstendpunkte ein?
 
 Für den sicheren Zugriff auf PaaS-Dienste werden Dienstendpunkte empfohlen. Sie können Dienstendpunkte im Azure Firewall-Subnetz aktivieren und diese im verbundenen virtuellen Spoke-Netzwerk deaktivieren. Auf diese Weise profitieren Sie von beiden Features: von der Dienstendpunktsicherheit und der zentralen Protokollierung des gesamten Datenverkehrs.
@@ -123,6 +122,10 @@ Ja, Sie können Azure Firewall in einem virtuellen Hubnetzwerk verwenden, um den
 ## <a name="can-azure-firewall-forward-and-filter-network-traffic-between-subnets-in-the-same-virtual-network-or-peered-virtual-networks"></a>Kann Azure Firewall den Netzwerkdatenverkehr zwischen Subnetzen im selben virtuellen Netzwerk oder über mittels Peering verknüpfte virtuelle Netzwerke weiterleiten und filtern?
 
 Ja. Die Konfiguration der UDRs zur Umleitung des Datenverkehrs zwischen Subnetzen im gleichen VNET erfordert jedoch zusätzliche Anstrengungen. Während die Verwendung des VNET-Adressbereichs als Zielpräfix für den UDR ausreicht, wird auch der gesamte Datenverkehr von einem Computer zu einem anderen Computer im gleichen Subnetz über die Azure Firewall-Instanz geleitet. Um dies zu vermeiden, fügen Sie eine Route für das Subnetz in den UDR mit dem Typ **VNET** für den nächsten Hop ein. Das Verwalten dieser Routen kann umständlich und fehleranfällig sein. Die empfohlene Methode für die interne Netzwerksegmentierung ist die Verwendung von Netzwerksicherheitsgruppen, die keine UDRs erfordern.
+
+## <a name="does-azure-firewall-outbound-snat-between-private-networks"></a>Übermittelt Azure Firewall SNAT bei privaten Netzwerken?
+
+Azure Firewall bietet kein SNAT, wenn die Ziel-IP-Adresse ein privater IP-Bereich gemäß [IANA RFC 1918](https://tools.ietf.org/html/rfc1918) ist. Wenn Ihre Organisation einen öffentlichen IP-Adressbereich für private Netzwerke verwendet, leitet Azure Firewall den Datenverkehr per SNAT an eine der privaten IP-Adressen der Firewall in AzureFirewallSubnet weiter.
 
 ## <a name="is-forced-tunnelingchaining-to-a-network-virtual-appliance-supported"></a>Wird erzwungenes Tunneling bzw. die erzwungene Verkettung mit einem virtuellen Netzwerkgerät unterstützt?
 

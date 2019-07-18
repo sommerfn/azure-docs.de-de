@@ -1,24 +1,27 @@
 ---
 title: 'Bereitstellen des Azure Blob Storage-Moduls für Geräte: Azure IoT Edge | Microsoft-Dokumentation'
 description: Stellen Sie ein Azure Blob Storage-Modul für Ihr IoT Edge-Gerät bereit, um Daten am Edge zu speichern.
-author: kgremban
-ms.author: kgremban
-ms.date: 05/21/2019
+author: arduppal
+ms.author: arduppal
+ms.date: 06/19/2019
 ms.topic: article
 ms.service: iot-edge
 ms.custom: seodec18
 ms.reviewer: arduppal
-manager: philmea
-ms.openlocfilehash: d844e81de9cfb556e91ab5c0d5a8074c822cce0a
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+manager: mchad
+ms.openlocfilehash: 468e4fca5e67850949e7d5826e4bc88fa504b9d6
+ms.sourcegitcommit: 2d3b1d7653c6c585e9423cf41658de0c68d883fa
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65990468"
+ms.lasthandoff: 06/20/2019
+ms.locfileid: "67295185"
 ---
 # <a name="deploy-the-azure-blob-storage-on-iot-edge-module-to-your-device"></a>Bereitstellen des Moduls „Azure Blob Storage auf IoT Edge“ auf Ihrem Gerät
 
 Es gibt mehrere Möglichkeiten, wie Sie Module auf einem IoT Edge-Gerät bereitstellen können. Alle sind für Azure Blob Storage auf IoT Edge-Module geeignet. Die beiden einfachsten Methoden stellen die Verwendung des Azure-Portals oder von Visual Studio Code-Vorlagen dar.
+
+> [!NOTE]
+> Azure Blob Storage in IoT Edge ist als [öffentliche Vorschau](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) verfügbar.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -88,35 +91,35 @@ Ein Bereitstellungsmanifest ist ein JSON-Dokument, das beschreibt, welche Module
      > [!IMPORTANT]
      > Die zweite Hälfte des Werts für die Speicherverzeichnisbindung verweist auf einen bestimmten Ort im Modul und darf nicht geändert werden. Die Speicherverzeichnisbindung muss immer mit **:/blobroot** (Linux-Container) bzw. mit **:C:/BlobRoot** (Windows-Container) enden.
 
-    ![Aktualisieren der Modulcontainer-Erstellungsoptionen – Portal](./media/how-to-store-data-blob/edit-module.png)
-
-1. Legen Sie die Eigenschaften für das [Tiering](how-to-store-data-blob.md#tiering-properties) und die [Gültigkeitsdauer](how-to-store-data-blob.md#time-to-live-properties) für Ihr Modul fest, indem Sie den folgenden JSON-Code kopieren und in das Feld **Gewünschte Eigenschaften für Modulzwilling festlegen** einfügen. Konfigurieren Sie die jeweilige Eigenschaft mit einem entsprechenden Wert, speichern Sie, und fahren Sie mit der Bereitstellung fort.
+1. Legen Sie [deviceToCloudUploadProperties](how-to-store-data-blob.md#devicetoclouduploadproperties) und [deviceAutoDeleteProperties](how-to-store-data-blob.md#deviceautodeleteproperties) für das Modul fest, indem Sie den folgenden JSON-Code kopieren und in das Feld **Set module twin's desired properties** (Gewünschte Eigenschaften für Modulzwilling festlegen) einfügen. Konfigurieren Sie die jeweilige Eigenschaft mit einem entsprechenden Wert, speichern Sie, und fahren Sie mit der Bereitstellung fort.
 
    ```json
    {
      "properties.desired": {
-       "ttlSettings": {
-         "ttlOn": <true, false>,
-         "timeToLiveInMinutes": <timeToLiveInMinutes>
+       "deviceAutoDeleteProperties": {
+         "deleteOn": <true, false>,
+         "deleteAfterMinutes": <timeToLiveInMinutes>,
+         "retainWhileUploading":<true,false>
        },
-       "tieringSettings": {
-         "tieringOn": <true, false>,
-         "backlogPolicy": "<NewestFirst, OldestFirst>",
-         "remoteStorageConnectionString": "DefaultEndpointsProtocol=https;AccountName=<your Azure Storage Account Name>;AccountKey=<your Azure Storage Account Key>; EndpointSuffix=<your end point suffix>",
-         "tieredContainers": {
+       "deviceToCloudUploadProperties": {
+         "uploadOn": <true, false>,
+         "uploadOrder": "<NewestFirst, OldestFirst>",
+         "cloudStorageConnectionString": "DefaultEndpointsProtocol=https;AccountName=<your Azure Storage Account Name>;AccountKey=<your Azure Storage Account Key>; EndpointSuffix=<your end point suffix>",
+         "storageContainersForUpload": {
            "<source container name1>": {
              "target": "<target container name1>"
            }
-         }
+         },
+         "deleteAfterUpload":<true,false>
        }
      }
    }
 
       ```
 
-   ![Festlegen der Eigenschaften für Tiering und Gültigkeitsdauer](./media/how-to-store-data-blob/iotedge_custom_module.png)
+   ![Festlegen der Optionen für die Containererstellung sowie der Eigenschaften „deviceAutoDeleteProperties“ und „deviceToCloudUploadProperties“](./media/how-to-deploy-blob/iotedge-custom-module.png)
 
-   Informationen zur Konfiguration des Tierings und der Gültigkeitsdauer nach der Bereitstellung Ihres Moduls finden Sie unter [Edit Module Twin](https://github.com/Microsoft/vscode-azure-iot-toolkit/wiki/Edit-Module-Twin) (Bearbeiten des Modulzwillings). Weitere Informationen zu gewünschten Eigenschaften finden Sie unter [Definieren oder Aktualisieren gewünschter Eigenschaften](module-composition.md#define-or-update-desired-properties).
+   Informationen zum Konfigurieren von „deviceToCloudUploadProperties“ und „deviceAutoDeleteProperties“ nach Bereitstellung Ihres Moduls finden Sie unter [Edit the Module Twin](https://github.com/Microsoft/vscode-azure-iot-toolkit/wiki/Edit-Module-Twin) (Bearbeiten des Modulzwillings). Weitere Informationen zu gewünschten Eigenschaften finden Sie unter [Definieren oder Aktualisieren gewünschter Eigenschaften](module-composition.md#define-or-update-desired-properties).
 
 1. Wählen Sie **Speichern** aus.
 
@@ -158,7 +161,7 @@ Azure IoT Edge bietet Vorlagen in Visual Studio Code, mit denen Sie Edgelösunge
    | Ordner auswählen | Wählen Sie den Speicherort auf Ihrem Entwicklungscomputer aus, an dem Visual Studio Code die Projektmappendateien erstellen soll. |
    | Provide a solution name (Projektmappennamen angeben) | Geben Sie für Ihre Projektmappe einen aussagekräftigen Namen ein, oder übernehmen Sie den Standardnamen **EdgeSolution**. |
    | Select module template (Modulvorlage auswählen) | Wählen Sie die Option **Vorhandenes Modul (vollständige Image-URL angeben)** aus. |
-   | Provide a module name (Modulname angeben) | Geben Sie einen klein geschriebenen Namen für das Modul ein (beispielsweise **azureblobstorage**).<br /><br />Es ist wichtig, für das Modul „Azure Blob Storage auf IoT Edge“ einen Namen in Kleinbuchstaben zu verwenden. IoT Edge beachtet bei Modulverweisen die Groß-/Kleinschreibung, und das Storage SDK verwendet standardmäßig Kleinbuchstaben. |
+   | Provide a module name (Modulname angeben) | Geben Sie einen klein geschriebenen Namen für das Modul ein (beispielsweise **azureblobstorageoniotedge**).<br /><br />Es ist wichtig, für das Modul „Azure Blob Storage auf IoT Edge“ einen Namen in Kleinbuchstaben zu verwenden. IoT Edge beachtet bei Modulverweisen die Groß-/Kleinschreibung, und das Storage SDK verwendet standardmäßig Kleinbuchstaben. |
    | Provide Docker image for the module (Docker-Image für das Modul angeben) | Geben Sie den Image-URI an: **mcr.microsoft.com/azure-blob-storage:latest** |
 
    Visual Studio Code verwendet die angegebenen Informationen, erstellt eine IoT Edge-Projektmappe, und lädt diese in einem neuen Fenster. Die Lösungsvorlage erstellt eine Bereitstellungsmanifestvorlage, die Ihr Blob Storage-Modulimage enthält, allerdings müssen Sie die Erstellungsoptionen des Moduls konfigurieren.
@@ -182,7 +185,7 @@ Azure IoT Edge bietet Vorlagen in Visual Studio Code, mit denen Sie Edgelösunge
       }
       ```
 
-      ![Aktualisieren des Moduls „createOptions“: Visual Studio Code](./media/how-to-store-data-blob/create-options.png)
+      ![Aktualisieren des Moduls „createOptions“: Visual Studio Code](./media/how-to-deploy-blob/create-options.png)
 
 1. Ersetzen Sie `<your storage account name>` durch einen leicht zu merkenden Namen. Kontonamen sollten 3 bis 24 Zeichen lang sein und nur Kleinbuchstaben und Zahlen enthalten. Leerzeichen sind nicht zulässig.
 
@@ -196,32 +199,34 @@ Azure IoT Edge bietet Vorlagen in Visual Studio Code, mit denen Sie Edgelösunge
       > [!IMPORTANT]
       > Die zweite Hälfte des Werts für die Speicherverzeichnisbindung verweist auf einen bestimmten Ort im Modul und darf nicht geändert werden. Die Speicherverzeichnisbindung muss immer mit **:/blobroot** (Linux-Container) bzw. mit **:C:/BlobRoot** (Windows-Container) enden.
 
-1. Konfigurieren Sie die Eigenschaften für das [Tiering](how-to-store-data-blob.md#tiering-properties) und die [Gültigkeitsdauer](how-to-store-data-blob.md#time-to-live-properties) für Ihr Modul, indem Sie der Datei *deployment.template.json* den folgenden JSON-Code hinzufügen. Konfigurieren Sie die jeweilige Eigenschaft mit einem entsprechenden Wert, und speichern Sie die Datei.
+1. Konfigurieren Sie [deviceToCloudUploadProperties](how-to-store-data-blob.md#devicetoclouduploadproperties) und [deviceAutoDeleteProperties](how-to-store-data-blob.md#deviceautodeleteproperties) für Ihr Modul, indem Sie der Datei *deployment.template.json* den folgenden JSON-Code hinzufügen. Konfigurieren Sie die jeweilige Eigenschaft mit einem entsprechenden Wert, und speichern Sie die Datei.
 
    ```json
    "<your azureblobstorageoniotedge module name>":{
      "properties.desired": {
-       "ttlSettings": {
-         "ttlOn": <true, false>,
-         "timeToLiveInMinutes": <timeToLiveInMinutes>
+       "deviceAutoDeleteProperties": {
+         "deleteOn": <true, false>,
+         "deleteAfterMinutes": <timeToLiveInMinutes>,
+         "retainWhileUploading": <true, false>
        },
-       "tieringSettings": {
-         "tieringOn": <true, false>,
-         "backlogPolicy": "<NewestFirst, OldestFirst>",
-         "remoteStorageConnectionString": "DefaultEndpointsProtocol=https;AccountName=<your Azure Storage Account Name>;AccountKey=<your Azure Storage Account Key>;EndpointSuffix=<your end point suffix>",
-         "tieredContainers": {
+       "deviceToCloudUploadProperties": {
+         "uploadOn": <true, false>,
+         "uploadOrder": "<NewestFirst, OldestFirst>",
+         "cloudStorageConnectionString": "DefaultEndpointsProtocol=https;AccountName=<your Azure Storage Account Name>;AccountKey=<your Azure Storage Account Key>;EndpointSuffix=<your end point suffix>",
+         "storageContainersForUpload": {
            "<source container name1>": {
              "target": "<target container name1>"
            }
-         }
+         },
+         "deleteAfterUpload": <true, false>
        }
      }
    }
    ```
 
-   ![Festlegen der gewünschten Eigenschaften für azureblobstorageoniotedge: Visual Studio Code](./media/how-to-store-data-blob/tiering_ttl.png)
+   ![Festlegen der gewünschten Eigenschaften für azureblobstorageoniotedge: Visual Studio Code](./media/how-to-deploy-blob/devicetocloud-deviceautodelete.png)
 
-   Informationen zur Konfiguration des Tierings und der Gültigkeitsdauer nach der Bereitstellung Ihres Moduls finden Sie unter [Edit Module Twin](https://github.com/Microsoft/vscode-azure-iot-toolkit/wiki/Edit-Module-Twin) (Bearbeiten des Modulzwillings). Weitere Informationen zu Containererstellungsoptionen, Neustartrichtlinien und gewünschtem Status finden Sie unter [Gewünschte EdgeAgent-Eigenschaften](module-edgeagent-edgehub.md#edgeagent-desired-properties).
+   Informationen zum Konfigurieren von „deviceToCloudUploadProperties“ und „deviceAutoDeleteProperties“ nach Bereitstellung Ihres Moduls finden Sie unter [Edit the Module Twin](https://github.com/Microsoft/vscode-azure-iot-toolkit/wiki/Edit-Module-Twin) (Bearbeiten des Modulzwillings). Weitere Informationen zu Containererstellungsoptionen, Neustartrichtlinien und gewünschtem Status finden Sie unter [Gewünschte EdgeAgent-Eigenschaften](module-edgeagent-edgehub.md#edgeagent-desired-properties).
 
 1. Speichern Sie die Datei *deployment.template.json*.
 

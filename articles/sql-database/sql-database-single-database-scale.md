@@ -12,12 +12,12 @@ ms.author: sstein
 ms.reviewer: carlrab
 manager: craigg
 ms.date: 04/26/2019
-ms.openlocfilehash: 1048b4e2ac3a8523d5539ddc1a1bdaca3ec2d912
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 311015aff5ea7020043ad8e43fd987144cdcbf52
+ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65074263"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67206747"
 ---
 # <a name="scale-single-database-resources-in-azure-sql-database"></a>Skalieren von Einzeldatenbankressourcen in Azure SQL-Datenbank
 
@@ -56,7 +56,7 @@ Zum Ändern der Dienstebene oder der Computegröße eines Singleton müssen haup
 
 ### <a name="latency-of-changing-service-tier-or-rescaling-compute-size"></a>Wartezeit beim Ändern der Dienstebene oder beim Skalieren der Computegröße
 
-Die Wartezeit beim Ändern der Dienstebene oder beim Skalieren der Computegröße einer Einzeldatenbank oder eines Pools für elastische Datenbanken wird wie folgt parametrisiert:
+Die geschätzte Latenz beim Ändern der Dienstebene oder beim Skalieren der Computegröße einer Einzeldatenbank oder eines Pools für elastische Datenbanken wird wie folgt parametrisiert:
 
 |Dienstebene|Einzeldatenbank des Tarifs „Basic“,</br>Standard (S0-S1)|Pools für elastische Datenbanken des Tarifs „Basic“,</br>Standard (S2-S12), </br>Hyperscale, </br>Einzeldatenbank oder Pool für elastische Datenbanken des Tarifs „Universell“|Einzeldatenbank oder Pool für elastische Datenbanken der Tarife „Premium“ oder „Unternehmenskritisch“|
 |:---|:---|:---|:---|

@@ -7,25 +7,25 @@ ms.service: container-service
 ms.topic: article
 ms.date: 03/04/2019
 ms.author: iainfou
-ms.openlocfilehash: 1b5d18a3dfd1181fd06b58fd58f496457e24b58e
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 50a2161be4ee70f7ae5c8baa3816eb9f9943a5d2
+ms.sourcegitcommit: a7ea412ca4411fc28431cbe7d2cc399900267585
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65956377"
+ms.lasthandoff: 06/25/2019
+ms.locfileid: "67358020"
 ---
 # <a name="use-an-internal-load-balancer-with-azure-kubernetes-service-aks"></a>Verwenden eines internen Lastenausgleichs mit Azure Kubernetes Service (AKS)
 
 Zum Einschränken des Zugriffs auf Ihre Anwendungen in Azure Kubernetes Service (AKS) können Sie einen internen Lastenausgleich erstellen und verwenden. Durch einen internen Lastenausgleich können nur Anwendungen, die im gleichen virtuellen Netzwerk wie der Kubernetes-Cluster ausgeführt werden, auf einen Kubernetes-Dienst zugreifen. In diesem Artikel erfahren Sie, wie Sie einen internen Lastenausgleich mit Azure Kubernetes Service (AKS) erstellen und verwenden.
 
 > [!NOTE]
-> Azure Load Balancer ist in zwei SKUs verfügbar: *Basic* und *Standard*. AKS unterstützt derzeit die *Basic*-SKU. Wenn Sie die *Standard*-SKU verwenden möchten, können Sie die Upstream-[aks-engine][aks-engine] verwenden. Weitere Informationen finden Sie unter [Vergleich der Azure Load Balancer-SKUs][azure-lb-comparison].
+> Azure Load Balancer ist in zwei SKUs verfügbar: *Basic* und *Standard*. In der Standardeinstellung wird die *Basic*-SKU verwendet, wenn ein Dienstmanifest verwendet wird, um in AKS einen Lastenausgleich zu erstellen. Weitere Informationen finden Sie unter [Vergleich der Azure Load Balancer-SKUs][azure-lb-comparison].
 
 ## <a name="before-you-begin"></a>Voraussetzungen
 
-Es wird vorausgesetzt, dass Sie über ein AKS-Cluster verfügen. Wenn Sie noch einen AKS-Cluster benötigen, erhalten Sie weitere Informationen im AKS-Schnellstart. Verwenden Sie dafür entweder die [Azure CLI][aks-quickstart-cli] oder das [Azure-Portal][aks-quickstart-portal].
+Es wird vorausgesetzt, dass Sie über ein AKS-Cluster verfügen. Wenn Sie einen AKS-Cluster benötigen, erhalten Sie weitere Informationen im AKS-Schnellstart zur Verwendung der [Azure-Befehlszeilenschnittstelle][aks-quickstart-cli] or [using the Azure portal][aks-quickstart-portal].
 
-Außerdem muss mindestens die Version 2.0.59 der Azure CLI installiert und konfiguriert sein. Führen Sie  `az --version` aus, um die Version zu ermitteln. Wenn Sie eine Installation oder ein Upgrade ausführen müssen, finden Sie weitere Informationen unter [Installieren der Azure CLI][install-azure-cli].
+Außerdem muss mindestens die Version 2.0.59 der Azure CLI installiert und konfiguriert sein. Führen Sie  `az --version` aus, um die Version zu ermitteln. Wenn Sie eine Installation oder ein Upgrade ausführen müssen, finden Sie weitere Informationen unter [Installieren der Azure-Befehlszeilenschnittstelle][install-azure-cli].
 
 Der AKS-Clusterdienstprinzipal benötigt die Berechtigung zum Verwalten von Netzwerkressourcen, wenn Sie ein bestehendes Subnetz oder eine vorhandene Ressourcengruppe verwenden. Im Allgemeinen weisen Sie die Rolle *Netzwerkmitwirkender* Ihrem Dienstprinzipal für die delegierten Ressourcen zu. Weitere Informationen zu Berechtigungen finden Sie unter [Delegieren des AKS-Zugriffs auf andere Azure-Ressourcen][aks-sp].
 
@@ -48,7 +48,7 @@ spec:
     app: internal-app
 ```
 
-Stellen Sie den internen Lastenausgleich über den Befehl [kubectl apply]kubectl-apply] bereit, und geben Sie den Namen Ihres YAML-Manifests an:
+Stellen Sie den internen Lastenausgleich über den Befehl [kubectl-apply][kubectl-apply] bereit, und geben Sie den Namen Ihres YAML-Manifests an:
 
 ```console
 kubectl apply -f internal-lb.yaml
@@ -96,7 +96,7 @@ internal-app   LoadBalancer   10.0.184.168   10.240.0.25   80:30225/TCP   4m
 
 ## <a name="use-private-networks"></a>Verwenden privater Netzwerke
 
-Beim Erstellen des AKS-Clusters können Sie erweiterte Netzwerkeinstellungen angeben. Dadurch können Sie den Cluster in einem vorhandenen virtuellen Azure-Netzwerk und in Subnetzen bereitstellen. In einem Szenario wird der AKS-Cluster in einem privaten Netzwerk bereitgestellt, das mit Ihrer lokalen Umgebung verbunden ist, und nur intern zugängliche Dienste werden ausgeführt. Weitere Informationen finden Sie unter „Konfigurieren eigener virtueller Subnetze mit [Kubernetes][use-kubenet] oder [Azure CNI][advanced-networking]“.
+Beim Erstellen des AKS-Clusters können Sie erweiterte Netzwerkeinstellungen angeben. Dadurch können Sie den Cluster in einem vorhandenen virtuellen Azure-Netzwerk und in Subnetzen bereitstellen. In einem Szenario wird der AKS-Cluster in einem privaten Netzwerk bereitgestellt, das mit Ihrer lokalen Umgebung verbunden ist, und nur intern zugängliche Dienste werden ausgeführt. Weitere Informationen finden Sie in den Abschnitten zum Konfigurieren eigener virtueller Subnetze mit [Kubernetes][use-kubenet] or [Azure CNI][advanced-networking].
 
 Wenn Sie einen internen Lastenausgleich in einem AKS-Cluster bereitstellen möchten, der ein privates Netzwerk verwendet, sind keine Änderungen an den vorherigen Schritten erforderlich. Der Lastenausgleich wird in derselben Ressourcengruppe wie der AKS-Cluster erstellt. Dabei wird er jedoch wie im folgenden Beispiel gezeigt mit Ihrem privaten virtuellen Netzwerk und Subnetz verbunden:
 
@@ -141,6 +141,7 @@ Wie jede andere Kubernetes-Ressource können Sie auch einen Dienst direkt lösch
 Erfahren Sie mehr über Kubernetes-Dienste in der [Kubernetes-Dienstdokumentation][kubernetes-services].
 
 <!-- LINKS - External -->
+[kubectl-apply]: https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#apply
 [kubernetes-services]: https://kubernetes.io/docs/concepts/services-networking/service/
 [aks-engine]: https://github.com/Azure/aks-engine
 

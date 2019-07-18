@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 05/31/2019
 ms.author: abnarain
-ms.openlocfilehash: 7c86577abe1e8e158299e3a6aee2cff7f3568241
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 7b0b637bdbab8f85c87d28473dda8f2e8f8a086e
+ms.sourcegitcommit: 5cb0b6645bd5dff9c1a4324793df3fdd776225e4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66427140"
+ms.lasthandoff: 06/21/2019
+ms.locfileid: "67312057"
 ---
 # <a name="integration-runtime-in-azure-data-factory"></a>Integrationslaufzeit in Azure Data Factory
 Bei der Integrationslaufzeit (Integration Runtime, IR) handelt es sich um die Computeinfrastruktur, mit der Azure Data Factory die folgenden Datenintegrationsfunktionen für verschiedene Netzwerkumgebungen bereitstellt:
@@ -74,7 +74,7 @@ Informationen zur Erstellung und Konfiguration einer Azure IR finden Sie in den 
 Eine selbstgehostete Integrationslaufzeit ermöglicht Folgendes:
 
 - Ausführen einer Kopieraktivität zwischen einem Clouddatenspeicher und einem Datenspeicher im privaten Netzwerk.
-- Bereitstellen der folgenden Transformationsaktivitäten für Computeressourcen im lokalen Netzwerk oder im virtuellen Azure-Netzwerk: HDInsight Hive-Aktivität (Bring Your Own Cluster, BYOC), HDInsight Pig-Aktivität (BYOC), HDInsight MapReduce-Aktivität (BYOC), HDInsight Spark-Aktivität (BYOC), HDInsight-Streamingaktivität (BYOC), Machine Learning-Batchausführungsaktivität, Machine Learning-Ressourcenaktualisierungsaktivitäten, Aktivität „Gespeicherte Prozedur“, U-SQL-Aktivität für Data Lake Analytics, benutzerdefinierte .NET-Aktivität, Lookup-Aktivität und Aktivität „Metadaten abrufen“.
+- Bereitstellen der folgenden Transformationsaktivitäten für Computeressourcen im lokalen Netzwerk oder im virtuellen Azure-Netzwerk: HDInsight Hive-Aktivität (Bring Your Own Cluster, BYOC), HDInsight Pig-Aktivität (BYOC), HDInsight MapReduce-Aktivität (BYOC), HDInsight Spark-Aktivität (BYOC), HDInsight-Streamingaktivität (BYOC), Machine Learning-Batchausführungsaktivität, Machine Learning-Ressourcenaktualisierungsaktivitäten, Aktivität „Gespeicherte Prozedur“, U-SQL-Aktivität für Data Lake Analytics, benutzerdefinierte Aktivität (wird in Azure Batch ausgeführt), Lookup-Aktivität und Aktivität „Metadaten abrufen“.
 
 > [!NOTE] 
 > Verwenden Sie die selbstgehostete Integrationslaufzeit zum Unterstützen von Datenspeichern, für die „Bring-your-own Driver“ erforderlich ist, z.B. SAP Hana, MySQL usw.  Weitere Informationen finden Sie unter [Unterstützte Datenspeicher](copy-activity-overview.md#supported-data-stores-and-formats).

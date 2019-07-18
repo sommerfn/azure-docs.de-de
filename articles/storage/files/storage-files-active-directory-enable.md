@@ -5,16 +5,16 @@ services: storage
 author: roygara
 ms.service: storage
 ms.topic: article
-ms.date: 01/02/2019
+ms.date: 06/19/2019
 ms.author: rogarana
-ms.openlocfilehash: 26251ebd3c83f6cd44203e1d3cc5f1b523a0d8d9
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 80d871bdc17c3f93e113b08201d6c53f29bfeff0
+ms.sourcegitcommit: 2d3b1d7653c6c585e9423cf41658de0c68d883fa
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66237789"
+ms.lasthandoff: 06/20/2019
+ms.locfileid: "67295618"
 ---
-# <a name="enable-azure-active-directory-authentication-over-smb-for-azure-files-preview"></a>Aktivieren der Azure Active Directory-Authentifizierung über SMB für Azure Files (Vorschau)
+# <a name="enable-azure-active-directory-domain-service-authentication-over-smb-for-azure-files-preview"></a>Aktivieren der Azure Active Directory-Authentifizierung über SMB für Azure Files (Vorschauversion)
 [!INCLUDE [storage-files-aad-auth-include](../../../includes/storage-files-aad-auth-include.md)]
 
 Eine Übersicht über die Azure AD-Authentifizierung über SMB für Azure Files finden Sie unter [Übersicht über die Azure Active Directory-Authentifizierung über SMB für Azure Files (Vorschau)](storage-files-active-directory-overview.md).
@@ -143,15 +143,14 @@ Die folgende benutzerdefinierte Rollenvorlage bietet Änderungsberechtigungen au
   "IsCustom": true,
   "Description": "Allows for read, write and delete access to Azure File Share over SMB",
   "Actions": [
-    "*"
-  ],
-  "NotActions": [
-    "Microsoft.Authorization/*/Delete",
-        "Microsoft.Authorization/*/Write",
-        "Microsoft.Authorization/elevateAccess/Action"
+    "Microsoft.Storage/storageAccounts/fileServices/*"
   ],
   "DataActions": [
-    "*"
+    "Microsoft.Storage/storageAccounts/fileServices/*"
+  ],
+  "NotDataActions": [
+    "Microsoft.Storage/storageAccounts/fileServices/fileshares/files/modifypermissions/action",
+    "Microsoft.Storage/storageAccounts/fileServices/fileshares/files/actassuperuser/action"
   ],
   "AssignableScopes": [
         "/subscriptions/<Subscription-ID>"
@@ -169,10 +168,10 @@ Die folgende benutzerdefinierte Rollenvorlage bietet Leseberechtigungen auf Frei
   "IsCustom": true,
   "Description": "Allows for read access to Azure File Share over SMB",
   "Actions": [
-    "*/read"
+    "Microsoft.Storage/storageAccounts/fileServices/*/read"
   ],
   "DataActions": [
-    "*/read"
+    "Microsoft.Storage/storageAccounts/fileServices/*/read"
   ],
   "AssignableScopes": [
         "/subscriptions/<Subscription-ID>"

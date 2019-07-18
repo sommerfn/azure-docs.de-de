@@ -11,35 +11,38 @@ author: oslake
 ms.author: moslake
 ms.reviewer: sstein, carlrab
 manager: craigg
-ms.date: 06/05/2019
-ms.openlocfilehash: c79d6a42cf7986bf120c406ceddfe2b024119435
-ms.sourcegitcommit: 1aefdf876c95bf6c07b12eb8c5fab98e92948000
+ms.date: 06/12/2019
+ms.openlocfilehash: afa575c9015cbb21386d23101b74456822dfa33c
+ms.sourcegitcommit: a52d48238d00161be5d1ed5d04132db4de43e076
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/06/2019
-ms.locfileid: "66729072"
+ms.lasthandoff: 06/20/2019
+ms.locfileid: "67275466"
 ---
-# <a name="sql-database-serverless-preview"></a>SQL-Datenbank – serverlos (Vorschau)
+# <a name="azure-sql-database-serverless-preview"></a>Azure SQL-Datenbank – serverlos (Vorschauversion)
+
+Azure SQL-Datenbank – serverlos (Vorschauversion) ist eine Computeebene für Einzeldatenbanken, bei der auf Workloadbedarf basierende Computeressourcen automatisch skaliert werden und die Nutzung sekundengenau abrechnet wird. Wenn nur der verwendete Speicher in Rechnung gestellt wird, hält die serverlose Computeebene außerdem Datenbanken während inaktiver Zeiträume automatisch an und startet diese wieder, wenn es wieder zu Aktivität kommt.
 
 ## <a name="serverless-compute-tier"></a>Serverlose Computeebene
 
-SQL-Datenbank – serverlos (Vorschau) ist eine Einzeldatenbank-Computeebene, bei der die Computeressourcen automatische skaliert und Nutzung sekundengenau abgerechnet wird. 
-
-Eine Datenbank in der serverlosen Computeebene wird durch den Computebereich parametrisiert, den sie nutzen kann, sowie durch eine Verzögerung durch automatisches Anhalten.
+Die serverlose Computeebene für eine Einzeldatenbank wird durch einen automatischen Computeskalierungsbereich und eine Verzögerung durch automatisches Anhalten parametrisiert.  Die Konfiguration dieser Parameter beeinflusst die Leistung und Computekosten der Datenbank.
 
 ![Abrechnung – serverlos](./media/sql-database-serverless/serverless-billing.png)
 
-### <a name="performance"></a>Leistung
+### <a name="performance-configuration"></a>Leistungskonfiguration
 
-- Die Mindestanzahl und die maximale Anzahl virtueller Kerne sind konfigurierbare Parameter, die den Bereich der Computekapazität definieren, die für die Datenbank verfügbar ist. Arbeitsspeicher- und E/A-Limits sind proportional zum angegebenen V-Kern-Bereich.  
-- Die Verzögerung durch automatisches Anhalten ist ein konfigurierbarer Parameter, der die Zeitspanne definiert, für welche die Datenbank inaktiv sein muss, bevor sie automatisch pausiert wird. Bei der nächsten Anmeldung wird die Ausführung der Datenbank automatisch fortgesetzt.
+- Die **Mindestanzahl virtueller Kerne** und die **maximale Anzahl virtueller Kerne** sind konfigurierbare Parameter, die den Bereich der Computekapazität definieren, die für die Datenbank verfügbar ist. Arbeitsspeicher- und E/A-Limits sind proportional zum angegebenen V-Kern-Bereich.  
+- Die **Verzögerung durch automatisches Anhalten** ist ein konfigurierbarer Parameter, der die Zeitspanne definiert, für die die Datenbank inaktiv sein muss, bevor sie automatisch pausiert wird. Bei der nächsten Anmeldung oder einer anderen Aktivität wird die Ausführung der Datenbank automatisch fortgesetzt.  Alternativ kann das automatische Anhalten deaktiviert werden.
 
-### <a name="pricing"></a>Preise
+### <a name="cost"></a>Kosten
 
-- Die Gesamtrechnung für eine serverlose Datenbank setzt sich aus der Summe der Computerechnung und der Speicherrechnung zusammen.
-Die Abrechnung für die Nutzung von Computeressourcen basiert auf der Menge der genutzten V-Kerne und des genutzten Speichers (pro Sekunde).
-- Die mindestens berechneten Computeressourcen basieren auf den Minimalwerten für V-Kerne und Speicher.
-- Bei angehaltener Datenbank wird lediglich Speicher in Rechnung gestellt.
+- Die Kosten für eine serverlose Datenbank setzen sich aus der Summe der Computekosten und der Speicherkosten zusammen.
+- Wenn die Computenutzung zwischen dem minimal und dem maximal konfigurierten Grenzwert liegt, basieren die Computekosten auf den verwendeten virtuellen Kernen und dem verwendeten Speicher.
+- Wenn die Computenutzung unter dem minimal konfigurierten Grenzwert liegt, basieren die Computekosten auf der konfigurierten Mindestanzahl an virtuellen Kernen und Speicher.
+- Wenn die Datenbank angehalten wird, fallen keine Computekosten an, und es wird nur der verwendete Speicher berechnet.
+- Die Speicherkosten werden auf die gleiche Weise berechnet wie in der bereitgestellten Computeebene.
+
+Weitere Informationen finden Sie unter [Abrechnung](sql-database-serverless.md#billing).
 
 ## <a name="scenarios"></a>Szenarien
 
@@ -73,11 +76,11 @@ Die folgende Tabelle enthält eine Zusammenfassung der Unterschiede zwischen der
 
 „SQL-Datenbank – serverlos“ wird derzeit nur von der Ebene „Universell“ auf Hardware der Generation 5 im vCore-basierten Kaufmodell unterstützt.
 
-## <a name="autoscale"></a>Autoscale
+## <a name="autoscaling"></a>Automatische Skalierung
 
 ### <a name="scaling-responsiveness"></a>Reaktionsfähigkeit hinsichtlich der Skalierung
 
-Im Allgemeinen werden Datenbanken auf einem Computer mit ausreichender Kapazität zum unterbrechungsfreien Erfüllen des Ressourcenbedarfs für beliebige Volumen von angeforderten Computeressourcen innerhalb der Grenzen unterstützt, die durch den Wert für die maximale Anzahl virtueller Kerne festgelegt sind. Gelegentlich tritt automatisch ein Lastenausgleich auf, wenn der Computer den Ressourcenbedarf nicht innerhalb weniger Minuten erfüllen kann. Die Datenbank bleibt während des Lastenausgleichs online, mit Ausnahme einer kurzen Zeitspanne am Schluss des Vorgangs, wenn Verbindungen verworfen werden.
+Im Allgemeinen werden serverlose Datenbanken auf einem Computer mit ausreichender Kapazität zum unterbrechungsfreien Erfüllen des Ressourcenbedarfs für beliebige Volumen von angeforderten Computeressourcen innerhalb der Grenzen unterstützt, die durch den Wert für die maximale Anzahl virtueller Kerne festgelegt sind. Gelegentlich tritt automatisch ein Lastenausgleich auf, wenn der Computer den Ressourcenbedarf nicht innerhalb weniger Minuten erfüllen kann. Beispiel: Wenn vier virtuelle Kerne benötigt werden, aber nur zwei virtuelle Kerne verfügbar sind, dauert es unter Umständen einige Minuten, bis ein Lastausgleich vorgenommen wurde und vier virtuelle Kerne bereitgestellt werden. Die Datenbank bleibt während des Lastenausgleichs online, mit Ausnahme einer kurzen Zeitspanne am Schluss des Vorgangs, wenn Verbindungen verworfen werden.
 
 ### <a name="memory-management"></a>Speicherverwaltung
 
@@ -98,9 +101,9 @@ Sowohl in serverlosen als auch in bereitgestellten Computedatenbanken können Ca
 
 Der SQL-Cache wächst an, während Daten auf die gleiche Weise und mit der gleichen Geschwindigkeit wie für bereitgestellte Datenbanken vom Datenträger abgerufen werden. Wenn die Datenbank ausgelastet ist, kann die Größe des Caches uneingeschränkt bis zum maximalen Arbeitsspeichergrenzwert zunehmen.
 
-## <a name="autopause-and-autoresume"></a>Automatisches Anhalten und automatisches Fortsetzen
+## <a name="autopausing-and-autoresuming"></a>Automatisches Anhalten und automatisches Fortsetzen
 
-### <a name="autopause"></a>Automatisches Anhalten
+### <a name="autopausing"></a>Automatisches Anhalten
 
 Das automatische Anhalten wird ausgelöst, wenn die folgenden Bedingungen für die Dauer der Verzögerung für automatisches Anhalten erfüllt sind:
 
@@ -115,9 +118,9 @@ Das automatische Anhalten wird von den folgenden Features nicht unterstützt.  D
 - Langzeitaufbewahrung (Long-Term Retention, LTR) von Sicherungen.
 - In SQL-Datensynchronisierung verwendete Synchronisierungsdatenbank
 
-Das automatische Anhalten wird während der Bereitstellung bestimmter Dienstupdates vorübergehend verhindert, die zum Installieren des Updates erfordern, dass die Datenbank online ist.  In solchen Fällen ist das automatische Anhalten wieder zulässig, sobald das Dienstupdate abgeschlossen ist.
+Das automatische Anhalten wird während der Bereitstellung bestimmter Dienstupdates vorübergehend verhindert, die erfordern, dass die Datenbank online ist.  In solchen Fällen ist das automatische Anhalten wieder zulässig, sobald das Dienstupdate abgeschlossen ist.
 
-### <a name="autoresume"></a>Automatisches Fortsetzen
+### <a name="autoresuming"></a>Automatisches Fortsetzen
 
 Das automatische Fortsetzen wird ausgelöst, wenn eine der folgenden Bedingungen erfüllt ist:
 
@@ -136,7 +139,7 @@ Das automatische Fortsetzen wird ausgelöst, wenn eine der folgenden Bedingungen
 |Ändern bestimmter Datenbankmetadaten|Hinzufügen von neuen Datenbanktags.<br>Ändern der Mindest- und Höchstwerte für virtuelle Kerne oder der Verzögerung für das automatische Anhalten.|
 |SQL Server Management Studio (SSMS)|Durch Verwendung von SSMS Version 18 und Öffnen eines neuen Abfragefensters für eine Datenbank auf dem Server wird jede automatisch angehaltene Datenbank auf dem betreffenden Server fortgesetzt. Dieses Verhalten tritt nicht auf, wenn SSMS Version 17.9.1 verwendet wird und IntelliSense deaktiviert ist.|
 
-Das automatische Fortsetzen wird ebenfalls während der Bereitstellung bestimmter Dienstupdates ausgelöst, die zum Installieren des Updates erfordern, dass die Datenbank online ist.
+Das automatische Fortsetzen wird ebenfalls während der Bereitstellung bestimmter Dienstupdates ausgelöst, die erfordern, dass die Datenbank online ist.
 
 ### <a name="connectivity"></a>Konnektivität
 
@@ -148,7 +151,7 @@ Die Wartezeit für das automatische Fortsetzen und das automatische Anhalten ein
 
 ## <a name="onboarding-into-serverless-compute-tier"></a>Integration in die serverlose Computeebene
 
-Beim Erstellen einer neuen Datenbank bzw. Verschieben einer vorhandenen Datenbank in eine serverlose Computeebene gilt dasselbe Muster wie beim Erstellen einer neuen Datenbank in der bereitgestellten Computeebene; dieser Vorgang umfasst die folgenden zwei Schritte:
+Beim Erstellen einer neuen Datenbank bzw. Verschieben einer vorhandenen Datenbank in eine serverlose Computeebene gilt dasselbe Muster wie beim Erstellen einer neuen Datenbank in der bereitgestellten Computeebene. Dieser Vorgang umfasst die folgenden zwei Schritte:
 
 1. Geben Sie den Namen des Dienstziels an. Das Dienstziel schreibt die Dienstebene, die Hardwaregeneration und die maximale Anzahl von virtuellen Kernen vor. Die folgende Tabelle enthält die verschiedenen Optionen für Dienstziele:
 
@@ -163,18 +166,20 @@ Beim Erstellen einer neuen Datenbank bzw. Verschieben einer vorhandenen Datenban
    |Parameter|Auswahlmöglichkeiten für Werte|Standardwert|
    |---|---|---|---|
    |Mindestanzahl virtueller Kerne|Beliebiger Wert aus {0,5, 1, 2, 4}, darf Maximalwert für V-Kerne nicht überschreiten|0,5 V-Kerne|
-   |Verzögerung für das automatische Anhalten|Min: 360 Minuten (sechs Stunden)<br>Max: 10.080 Minuten (sieben Tage)<br>Inkremente: 60 Minuten<br>Automatisches Anhalten deaktivieren: -1|360 Minuten|
+   |Verzögerung für das automatische Anhalten|Minimum: 360 Minuten (sechs Stunden)<br>Maximum: 10.080 Minuten (sieben Tage)<br>Inkremente: 60 Minuten<br>Automatisches Anhalten deaktivieren: -1|360 Minuten|
 
 > [!NOTE]
 > Das Verschieben einer vorhandenen Datenbank in eine serverlose Computeebene oder das Ändern der Computegröße mithilfe von T-SQL wird derzeit nicht unterstützt. Diese Vorgänge können jedoch über das Azure-Portal oder PowerShell ausgeführt werden.
 
-### <a name="create-new-serverless-database-using-azure-portal"></a>Erstellen einer neuen serverlosen Datenbank über das Azure-Portal
+### <a name="create-new-database-in-serverless-compute-tier"></a>Erstellen einer neuen Datenbank in der serverlosen Computeebene 
+
+#### <a name="use-azure-portal"></a>Verwenden des Azure-Portals
 
 Weitere Informationen finden Sie unter [Schnellstart: Erstellen einer Einzeldatenbank in Azure SQL-Datenbank über das Azure-Portal](sql-database-single-database-get-started.md).
 
-### <a name="create-new-serverless-database-using-powershell"></a>Erstellen einer neuen serverlosen Datenbank unter Verwendung von PowerShell
+#### <a name="use-powershell"></a>Verwenden von PowerShell
 
-Im folgenden Beispiel wird eine neue Datenbank in der serverlosen Computeebene erstellt, die durch das Dienstziel GP_S_Gen5_4 definiert wird; es werden Standardwerte für die Mindestanzahl virtueller Kerne und die Verzögerung für das automatische Anhalten angegeben.
+Das folgende Beispiel erstellt eine neue Datenbank in der serverlosen Computeebene.  In diesem Beispiel werden die Mindestanzahl virtueller Kerne, die maximale Anzahl virtueller Kerne und die Verzögerung für das automatische Anhalten explizit angegeben.
 
 ```powershell
 New-AzSqlDatabase `
@@ -189,9 +194,11 @@ New-AzSqlDatabase `
   -AutoPauseDelayInMinutes 720
 ```
 
-### <a name="move-provisioned-compute-database-into-serverless-compute-tier"></a>Verschieben einer bereitgestellten Computedatenbank in die serverlose Computeebene
+### <a name="move-database-from-provisioned-compute-tier-into-serverless-compute-tier"></a>Verschieben einer Datenbank aus der bereitgestellten Computeebene in die serverlose Computeebene
 
-Im folgenden Beispiel wird eine vorhandene einzelne Datenbank aus der bereitgestellten Computeebene in die serverlose Computeebene verschoben. In diesem Beispiel werden die Mindestanzahl virtueller Kerne, die maximale Anzahl virtueller Kerne und die Verzögerung für das automatische Anhalten explizit angegeben.
+#### <a name="use-powershell"></a>Verwenden von PowerShell
+
+Im folgenden Beispiel wird eine Datenbank aus der bereitgestellten Computeebene in die serverlose Computeebene verschoben. In diesem Beispiel werden die Mindestanzahl virtueller Kerne, die maximale Anzahl virtueller Kerne und die Verzögerung für das automatische Anhalten explizit angegeben.
 
 ```powershell
 Set-AzSqlDatabase
@@ -206,7 +213,7 @@ Set-AzSqlDatabase
   -AutoPauseDelayInMinutes 1440
 ```
 
-### <a name="move-serverless-database-into-provisioned-compute-tier"></a>Verschieben einer serverlosen Datenbank in die bereitgestellte Computeebene
+### <a name="move-database-from-serverless-compute-tier-into-provisioned-compute-tier"></a>Verschieben einer Datenbank aus der serverlosen Computeebene in die bereitgestellte Computeebene
 
 Eine serverlose Datenbank kann auf die gleiche Weise in eine bereitgestellte Computeebene verschoben werden wie eine bereitgestellte Datenbank in eine serverlose Computeebene.
 
@@ -214,13 +221,19 @@ Eine serverlose Datenbank kann auf die gleiche Weise in eine bereitgestellte Com
 
 ### <a name="maximum-vcores"></a>Maximale Anzahl virtueller Kerne
 
+#### <a name="use-powershell"></a>Verwenden von PowerShell
+
 Das Ändern der maximalen Anzahl virtueller Kerne erfolgt durch Ausführen des Befehls [Set-AzSqlDatabase](https://docs.microsoft.com/powershell/module/az.sql/set-azsqldatabase) in PowerShell mit dem `MaxVcore`-Argument.
 
 ### <a name="minimum-vcores"></a>Mindestanzahl virtueller Kerne
 
+#### <a name="use-powershell"></a>Verwenden von PowerShell
+
 Das Ändern der Mindestanzahl virtueller Kerne erfolgt durch Ausführen des Befehls [Set-AzSqlDatabase](https://docs.microsoft.com/powershell/module/az.sql/set-azsqldatabase) in PowerShell mit dem `MinVcore`-Argument.
 
 ### <a name="autopause-delay"></a>Verzögerung für das automatische Anhalten
+
+#### <a name="use-powershell"></a>Verwenden von PowerShell
 
 Das Ändern der Verzögerung für das automatische Anhalten erfolgt durch Ausführen des Befehls [Set-AzSqlDatabase](https://docs.microsoft.com/powershell/module/az.sql/set-azsqldatabase) in PowerShell mit dem `AutoPauseDelayInMinutes`-Argument.
 
@@ -228,7 +241,7 @@ Das Ändern der Verzögerung für das automatische Anhalten erfolgt durch Ausfü
 
 ### <a name="resources-used-and-billed"></a>Genutzte und berechnete Ressourcen
 
-Die Ressourcen einer serverlosen Datenbank werden durch die folgenden Einheiten gekapselt:
+Die Ressourcen einer serverlosen Datenbank werden von App-Paket, SQL-Instanz und Benutzerressourcenpool-Entitäten gekapselt.
 
 #### <a name="app-package"></a>App-Paket
 
@@ -240,6 +253,8 @@ Der Benutzerressourcenpool ist die „Innengrenze“ der Ressourcenverwaltung f�
 
 ### <a name="metrics"></a>metrics
 
+Metriken für die Überwachung des Ressourcenverbrauchs des App-Pakets und Benutzerpools einer serverlosen Datenbank sind in der folgenden Tabelle aufgeführt:
+
 |Entität|Metrik|BESCHREIBUNG|Units|
 |---|---|---|---|
 |App-Paket|app_cpu_percent|Prozentsatz der von der App genutzten virtuellen Kerne, bezogen auf die maximal zulässigen virtuellen Kerne für die App.|Prozentsatz|
@@ -250,10 +265,6 @@ Der Benutzerressourcenpool ist die „Innengrenze“ der Ressourcenverwaltung f�
 |Benutzerpool|log_IO_percent|Prozentsatz der von der Benutzerworkload genutzten Protokollrate (MB/s), bezogen auf die maximal zulässige Protokollrate (MB/s) für die Benutzerworkload.|Prozentsatz|
 |Benutzerpool|workers_percent|Prozentsatz der von der Benutzerworkload genutzten Worker, bezogen auf die maximal zulässige Anzahl von Workern für die Benutzerworkload.|Prozentsatz|
 |Benutzerpool|sessions_percent|Prozentsatz der von der Benutzerworkload genutzten Sitzungen, bezogen auf die maximal zulässige Anzahl von Sitzungen für die Benutzerworkload.|Prozentsatz|
-____
-
-> [!NOTE]
-> Metriken sind im Azure-Portal im Datenbankbereich für eine einzelne Datenbank unter **Überwachung** verfügbar.
 
 ### <a name="pause-and-resume-status"></a>Status für Anhalten und Fortsetzen
 
@@ -303,7 +314,7 @@ Die genaue Berechnung der Computekosten für dieses Beispiel lautet:
 |1:00 - 2:00|1|12|Verwendeter Arbeitsspeicher|12 GB * 1/3 * 3600 Sekunden = 14400 Sekunden für virtuelle Kerne|
 |2:00 - 8:00|0|0|Mindestens bereitgestellter Arbeitsspeicher|3 GB * 1/3 * 21.600 Sekunden = 21.600 Sekunden für virtuelle Kerne|
 |8:00 - 24:00|0|0|Keine Berechnung von Computeleistung während des Anhaltens|0 Sekunden für virtuelle Kerne|
-|Gesamte berechnete Sekunden für virtuelle Kerne in 24 Stunden||||50\.400 Sekunden für virtuelle Kerne|
+|Gesamte berechnete Sekunden für virtuelle Kerne in 24 Stunden||||50.400 Sekunden für virtuelle Kerne|
 
 Angenommen, der Compute-Einzelpreis beträgt 0,000073 USD/V-Kern/Sekunde.  Die Computeleistung, die für diesen 24-Stunden-Zeitraum berechnet wird, ist dann das Produkt aus dem Preis der Compute-Einheit und den berechneten Sekunden für virtuelle Kerne: 0,000073 USD/V-Kern/Sekunde · 50.400 Sekunden für virtuelle Kerne = 3,68 USD
 

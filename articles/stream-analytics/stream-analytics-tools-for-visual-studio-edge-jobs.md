@@ -1,6 +1,6 @@
 ---
-title: Stream Analytics Data Box Edge-Aufträge in Azure Stream Analytics-Tools für Visual Studio
-description: In diesem Artikel wird beschrieben, wie Sie Ihre Stream Analytics Data Box Edge-Aufträge mit den Stream Analytics-Tools für Visual Studio verwenden.
+title: Stream Analytics-Edge-Aufträge in Azure Stream Analytics-Tools für Visual Studio
+description: In diesem Artikel wird beschrieben, wie Sie mithilfe der Stream Analytics-Tools für Visual Studio Aufträge für Stream Analytics auf IoT Edge schreiben, debuggen und erstellen können.
 services: stream-analytics
 author: su-jie
 ms.author: sujie
@@ -9,16 +9,16 @@ ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 12/07/2018
 ms.custom: seodec18
-ms.openlocfilehash: 242fb2daebfe9eb6e5a0c73c2c4c0e91a3131032
-ms.sourcegitcommit: 009334a842d08b1c83ee183b5830092e067f4374
+ms.openlocfilehash: 1601bf6c73d9f3450959773c85385bc8ef907a66
+ms.sourcegitcommit: 08138eab740c12bf68c787062b101a4333292075
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/29/2019
-ms.locfileid: "66304160"
+ms.lasthandoff: 06/22/2019
+ms.locfileid: "67329960"
 ---
-# <a name="develop-stream-analytics-data-box-edge-jobs-using-visual-studio-tools"></a>Entwickeln von Stream Analytics Data Box Edge-Aufträgen mit Visual Studio-Tools
+# <a name="develop-stream-analytics-edge-jobs-using-visual-studio-tools"></a>Entwickeln von Stream Analytics-Edgeaufträgen mit Visual Studio-Tools
 
-In diesem Tutorial erfahren Sie, wie Sie die Stream Analytics-Tools für Visual Studio verwenden. Sie erfahren, wie Sie Ihre Stream Analytics Data Box Edge-Aufträge schreiben, debuggen und erstellen. Nachdem Sie den Auftrag erstellt und getestet haben, können Sie ihn im Azure-Portal auf Ihren Geräten bereitstellen. 
+In diesem Tutorial erfahren Sie, wie Sie die Stream Analytics-Tools für Visual Studio verwenden. Sie erfahren, wie Sie Stream Analytics-Edge-Aufträge schreiben, debuggen und erstellen können. Nachdem Sie den Auftrag erstellt und getestet haben, können Sie ihn im Azure-Portal auf Ihren Geräten bereitstellen. 
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -28,15 +28,15 @@ Zum Durchführen dieses Tutorials benötigen Sie Folgendes:
 
 * Befolgen Sie die [Installationsanweisungen](stream-analytics-tools-for-visual-studio-edge-jobs.md) für die Stream Analytics-Tools für Visual Studio.
  
-## <a name="create-a-stream-analytics-data-box-edge-project"></a>Erstellen eines Stream Analytics Data Box Edge-Projekts 
+## <a name="create-a-stream-analytics-edge-project"></a>Erstellen eines Stream Analytics-Edge-Projekts 
 
 Klicken Sie in Visual Studio auf **Datei** > **Neu** > **Projekt**. Navigieren Sie auf der linken Seite zur Liste **Vorlagen**, und erweitern Sie **Azure Stream Analytics** > **Stream Analytics Edge** > **Azure Stream Analytics Edge Application** (Azure Stream Analytics > Stream Analytics-Edge > Azure Stream Analytics-Edge-Anwendung). Geben Sie einen Namen, Speicherort und Projektmappennamen für Ihr Projekt ein, und klicken Sie auf **OK**.
 
-![Neues Stream Analytics Data Box Edge-Projekt in Visual Studio](./media/stream-analytics-tools-for-visual-studio-edge-jobs/new-stream-analytics-edge-project.png)
+![Neues Stream Analytics-Edge-Projekt in Visual Studio](./media/stream-analytics-tools-for-visual-studio-edge-jobs/new-stream-analytics-edge-project.png)
 
 Nachdem das Projekt erstellt wurde, wechseln Sie zum **Projektmappen-Explorer**, um die Ordnerhierarchie anzuzeigen.
 
-![Projektmappen-Explorer-Ansicht des Stream Analytics Data Box Edge-Auftrags](./media/stream-analytics-tools-for-visual-studio-edge-jobs/edge-project-in-solution-explorer.png)
+![Projektmappen-Explorer-Ansicht des Stream Analytics Edge-Auftrags](./media/stream-analytics-tools-for-visual-studio-edge-jobs/edge-project-in-solution-explorer.png)
 
  
 ## <a name="choose-the-correct-subscription"></a>Auswählen des richtigen Abonnements
@@ -63,15 +63,14 @@ Nachdem das Projekt erstellt wurde, wechseln Sie zum **Projektmappen-Explorer**,
  
 ## <a name="define-the-transformation-query"></a>Definieren der Transformationsabfrage
 
-In den Stream Analytics Data Box Edge-Umgebungen bereitgestellte Stream Analytics-Aufträge unterstützen den Großteil der [Stream Analytics-Abfragesprachereferenz](https://msdn.microsoft.com/azure/stream-analytics/reference/stream-analytics-query-language-reference?f=255&MSPPError=-2147217396). Die folgenden Vorgänge werden jedoch noch nicht für Stream Analytics Data Box Edge-Aufträge unterstützt: 
+In Stream Analytics auf IoT Edge-Umgebungen bereitgestellte Stream Analytics-Aufträge unterstützen den Großteil der [Referenz zur Stream Analytics-Abfragesprache](https://msdn.microsoft.com/azure/stream-analytics/reference/stream-analytics-query-language-reference?f=255&MSPPError=-2147217396). Die folgenden Vorgänge werden gegenwärtig jedoch nicht für Stream Analytics-Edge-Aufträge unterstützt: 
 
 
 |**Kategorie**  | **Befehl**  |
 |---------|---------|
-|Räumliche Operatoren |<ul><li>CreatePoint</li><li>CreatePolygon</li><li>CreateLineString</li><li>ST_DISTANCE</li><li>ST_WITHIN</li><li>ST_OVERLAPS</li><li>ST_INTERSECTS</li></ul> |
-|Andere Operatoren | <ul><li>PARTITION BY</li><li>TIMESTAMP BY OVER</li><li>DISTINCT</li><li>Ausdrucksparameter im COUNT-Operator</li><li>Mikrosekunden in DATE- und TIME-Funktionen</li><li>JavaScript-UDA (dieses Feature ist noch immer als Vorschauversion für in der Cloud bereitgestellte Aufträge verfügbar)</li></ul>   |
+|Andere Operatoren | <ul><li>PARTITION BY</li><li>TIMESTAMP BY OVER</li><li>JavaScript UDF</li><li>Benutzerdefinierte Aggregate (User-Defined Aggregates, UDA).</li><li>GetMetadataPropertyValue</li><li>Verwendung von mehr als 14 Aggregaten in einem einzigen Schritt</li></ul>   |
 
-Wenn Sie im Portal einen Stream Analytics Data Box Edge-Auftrag erstellen und dabei einen nicht unterstützten Operator verwenden, warnt der Compiler Sie automatisch.
+Wenn Sie im Portal einen Stream Analytics-Edge-Auftrag erstellen und dabei einen nicht unterstützten Operator verwenden, warnt der Compiler Sie automatisch.
 
 Definieren Sie in Visual Studio die folgende Transformationsabfrage im Abfrage-Editor (Datei **script.asaql**).
 
@@ -105,15 +104,15 @@ Um die Abfrage lokal zu testen, sollten Sie die Beispieldaten hochladen. Sie kö
 
 2. Um den Auftrag an Azure zu übermitteln, navigieren Sie zum Abfrage-Editor, und wählen Sie **Submit to Azure** (An Azure senden) aus.  
 
-3. Ein Popupfenster wird geöffnet. In diesem können Sie auswählen, ob Sie einen vorhandenen Stream Analytics Data Box Edge-Auftrag aktualisieren oder einen neuen Auftrag erstellen möchten. Wenn Sie einen vorhandenen Auftrag aktualisieren, wird dadurch die gesamte Auftragskonfiguration ersetzt. In diesem Szenario veröffentlichen Sie einen neuen Auftrag. Wählen Sie **Create a New Azure Stream Analytics Job** (Neuen Azure Stream Analytics-Auftrag erstellen) aus, geben Sie einen Namen für Ihren Auftrag ein (z. B. **MyASAEdgeJob**), wählen Sie das erforderliche **Abonnement**, die **Ressourcengruppe** und den **Speicherort** aus, und klicken Sie auf **Senden**.
+3. Ein Popupfenster wird geöffnet. In diesem können Sie auswählen, ob Sie einen vorhandenen Stream Analytics-Edge-Auftrag aktualisieren oder einen neuen Auftrag erstellen möchten. Wenn Sie einen vorhandenen Auftrag aktualisieren, wird dadurch die gesamte Auftragskonfiguration ersetzt. In diesem Szenario veröffentlichen Sie einen neuen Auftrag. Wählen Sie **Create a New Azure Stream Analytics Job** (Neuen Azure Stream Analytics-Auftrag erstellen) aus, geben Sie einen Namen für Ihren Auftrag ein (z. B. **MyASAEdgeJob**), wählen Sie das erforderliche **Abonnement**, die **Ressourcengruppe** und den **Speicherort** aus, und klicken Sie auf **Senden**.
 
    ![Übermitteln des Stream Analytics-Auftrags an Azure aus Visual Studio](./media/stream-analytics-tools-for-visual-studio-edge-jobs/submit-stream-analytics-job-to-azure.png)
  
-   Jetzt ist Ihr Stream Analytics Data Box Edge-Auftrag erstellt. Sie können ihn wie im [Tutorial zum Ausführen von Aufträgen unter IoT Edge](stream-analytics-edge.md) beschrieben auf Ihren Geräten bereitstellen. 
+   Damit haben Sie Ihren Stream Analytics-Edge-Auftrag vollständig erstellt. Sie können ihn wie im [Tutorial zum Ausführen von Aufträgen unter IoT Edge](stream-analytics-edge.md) beschrieben auf Ihren Geräten bereitstellen. 
 
 ## <a name="manage-the-job"></a>Verwalten des Auftrags 
 
-Sie können den Status des Auftrags und das Auftragsdiagramm im Server-Explorer anzeigen. Erweitern Sie im **Server-Explorer** unter **Stream Analytics** das Abonnement und die Ressourcengruppe, in dem/der Sie den Stream Analytics Data Box Edge-Auftrag bereitgestellt haben. Sie sehen, dass MyASAEdgeJob den Status **Erstellt** aufweist. Erweitern Sie Ihren Auftragsknoten, und doppelklicken Sie darauf, um die Auftragsansicht zu öffnen.
+Sie können den Status des Auftrags und das Auftragsdiagramm im Server-Explorer anzeigen. Erweitern Sie im **Server-Explorer** unter **Stream Analytics** das Abonnement und die Ressourcengruppe, in der Sie den Stream Analytics-Edge-Auftrag bereitgestellt haben. Sie sehen, dass MyASAEdgeJob den Status **Erstellt** aufweist. Erweitern Sie Ihren Auftragsknoten, und doppelklicken Sie darauf, um die Auftragsansicht zu öffnen.
 
 ![Server-Explorer-Optionen für die Auftragsverwaltung](./media/stream-analytics-tools-for-visual-studio-edge-jobs/server-explorer-options.png)
  

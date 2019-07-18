@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 09/20/2018
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 8ade695f1930c11f2d2d7ab7e0430910bd6f8705
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 4ae821dc9ae0d739526b91bad76bca544cad2fb0
+ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66508643"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67203710"
 ---
 # <a name="set-up-sign-in-with-an-azure-active-directory-account-using-custom-policies-in-azure-active-directory-b2c"></a>Einrichten der Anmeldung mit einem Azure Active Directory-Konto mithilfe benutzerdefinierter Richtlinien in Azure Active Directory B2C 
 
@@ -132,7 +132,7 @@ Um ein Token vom Azure AD-Endpunkt zu erhalten, müssen Sie die Protokolle defin
 5. Legen Sie den Wert von **METADATA** auf `https://login.windows.net/your-AD-tenant-name.onmicrosoft.com/.well-known/openid-configuration` fest, wobei `your-AD-tenant-name` der Name Ihres Azure AD-Mandanten ist. Zum Beispiel, `https://login.windows.net/fabrikam.onmicrosoft.com/.well-known/openid-configuration`
 6. Öffnen Sie Ihren Browser, und wechseln Sie zu der URL **METADATA**, die Sie gerade aktualisiert haben, suchen Sie nach dem **issuer**-Objekt, kopieren Sie den Wert, und fügen Sie ihn in den Wert für **ProviderName** in der XML-Datei ein.
 8. Legen Sie **client_id** und **IdTokenAudience** auf die Anwendungs-ID aus der Anwendungsregistrierung fest.
-9. Aktualisieren Sie unter **CryptograhicKeys** den Wert für **StorageReferenceId** auf den Richtlinienschlüssel, den Sie definiert haben. Beispiel: `ContosoAppSecret`.
+9. Aktualisieren Sie unter **CryptographicKeys** den Wert für **StorageReferenceId** auf den Richtlinienschlüssel, den Sie definiert haben. Beispiel: `ContosoAppSecret`.
 
 ### <a name="upload-the-extension-file-for-verification"></a>Hochladen der Erweiterungsdatei zur Überprüfung
 

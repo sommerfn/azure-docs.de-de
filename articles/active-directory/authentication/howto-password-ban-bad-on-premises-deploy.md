@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jsimmons
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 256215b1976598b961ada7210e5ee92c9f72d440
-ms.sourcegitcommit: 8fc5f676285020379304e3869f01de0653e39466
+ms.openlocfilehash: 134ab2a5f0b1b1569cdf4747f5bbe3f895ba4e8f
+ms.sourcegitcommit: 2d3b1d7653c6c585e9423cf41658de0c68d883fa
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/09/2019
-ms.locfileid: "65506871"
+ms.lasthandoff: 06/20/2019
+ms.locfileid: "67293018"
 ---
 # <a name="deploy-azure-ad-password-protection"></a>Bereitstellen des Kennwortschutzes für Azure AD
 
@@ -36,6 +36,7 @@ Nachdem das Feature für einen angemessenen Zeitraum im Überwachungsmodus ausge
 
 ## <a name="deployment-requirements"></a>Bereitstellungsanforderungen
 
+* Lizenzanforderungen für den Azure AD-Kennwortschutz finden Sie im Artikel [Beseitigen falscher Kennwörter in Ihrer Organisation](concept-password-ban-bad.md#license-requirements).
 * Alle Domänencontroller, auf denen der DC-Agent-Dienst für Azure AD-Kennwortschutz installiert wird, müssen Windows Server 2012 oder höher ausführen. Diese Anforderung bedeutet nicht, dass sich die Active Directory-Domäne oder die Gesamtstruktur ebenfalls in einer Windows Server 2012-Domäne oder auf einer Funktionsebene der Gesamtstruktur befinden muss. Wie unter [Entwurfsprinzipien](concept-password-ban-bad-on-premises.md#design-principles) ausgeführt, gibt es für das Ausführen des DC-Agents oder der Proxy-Software keine Mindestanforderungen an die Domänenfunktionsebene (DFL) oder die Funktionsebene der Gesamtstruktur (FFL).
 * Auf allen Computern, auf denen der DC-Agent-Dienst installiert werden soll, muss .NET 4.5 installiert sein.
 * Alle Computer, auf denen der Proxydienst für Azure AD-Kennwortschutz installiert wird, müssen Windows Server 2012 R2 oder höher ausführen.
@@ -144,7 +145,7 @@ Es gibt zwei erforderliche Installationsprogramme für den Azure AD-Kennwortschu
    > Es kann zu einer spürbaren Verzögerung bis zum Abschluss kommen, wenn dieses Cmdlet zum ersten Mal für einen bestimmten Azure-Mandanten ausgeführt wird. Wenn kein Fehler gemeldet wird, müssen Sie sich keine Gedanken über diese Verzögerung machen.
 
 1. Registrieren Sie die Gesamtstruktur.
-   * Sie müssen die lokale Active Directory-Gesamtstruktur mit den erforderlichen Anmeldeinformationen für die Kommunikation mit Azure unter Verwendung des PowerShell-Cmdlets `Register-AzureADPasswordProtectionForest` initialisieren. Das Cmdlet erfordert die Anmeldeinformationen des globalen Administrators für Ihren Azure AD-Mandanten. Es benötigt außerdem ein Konto mit lokalen Active Directory-Domänenadministratorberechtigungen in der Stammdomäne der Gesamtstruktur. Dieser Schritt wird pro Gesamtstruktur einmal ausgeführt.
+   * Sie müssen die lokale Active Directory-Gesamtstruktur mit den erforderlichen Anmeldeinformationen für die Kommunikation mit Azure unter Verwendung des PowerShell-Cmdlets `Register-AzureADPasswordProtectionForest` initialisieren. Das Cmdlet erfordert die Anmeldeinformationen des globalen Administrators für Ihren Azure AD-Mandanten. Es benötigt außerdem lokale Active Directory-Unternehmensadministratorrechte. Dieser Schritt wird pro Gesamtstruktur einmal ausgeführt.
 
       Das Cmdlet `Register-AzureADPasswordProtectionForest` unterstützt die folgenden drei Authentifizierungsmodi.
 
@@ -265,7 +266,7 @@ Es gibt zwei erforderliche Installationsprogramme für den Azure AD-Kennwortschu
 
    Sie können den DC-Agent-Dienst auf einem Computer installieren, der noch kein Domänencontroller ist. In diesem Fall wird der Dienst gestartet und ausgeführt, bleibt aber inaktiv, bis der Computer zum Domänencontroller höher gestuft wird.
 
-   Die Softwareinstallation kann mit MSI-Standardprozeduren automatisiert werden. Beispiel: 
+   Die Softwareinstallation kann mit MSI-Standardprozeduren automatisiert werden. Beispiel:
 
    `msiexec.exe /i AzureADPasswordProtectionDCAgentSetup.msi /quiet /qn`
 

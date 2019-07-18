@@ -1,38 +1,34 @@
 ---
-title: Azure Data Factory-Mappingdatenfluss-Transformation für abgeleitete Spalten
-description: 'Gewusst wie: Transformieren von Daten nach Maß mit Azure Data Factory-Mappingdatenfluss-Transformation für abgeleitete Spalten'
+title: 'Transformieren von abgeleiteten Spalten in Mapping Data Flow: Azure Data Factory | Microsoft-Dokumentation'
+description: Informationen zum bedarfsorientierten Transformieren von Daten in Azure Data Factory mithilfe von Mapping Data Flow-Transformationen von abgeleiteten Spalten
 author: kromerm
 ms.author: makromer
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 10/08/2018
-ms.openlocfilehash: 6568e5ebf356bb0e6b4ac8ff6059cd093f8da821
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 941c629fd8359edc7fc1cf364a6735314044d95e
+ms.sourcegitcommit: 5cb0b6645bd5dff9c1a4324793df3fdd776225e4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64917583"
+ms.lasthandoff: 06/21/2019
+ms.locfileid: "67312190"
 ---
-# <a name="mapping-data-flow-derived-column-transformation"></a>Mappingdatenfluss-Transformation für abgeleitete Spalten
+# <a name="derived-column-transformation-in-mapping-data-flow"></a>Transformieren von abgeleiteten Spalten in Mapping Data Flow
 
 [!INCLUDE [notes](../../includes/data-factory-data-flow-preview.md)]
 
 Verwenden Sie die Transformation für abgeleitete Spalten, um in Ihrem Datenfluss neue Spalten zu generieren oder vorhandene Felder zu ändern.
 
-![Spalte ableiten](media/data-flow/dc1.png "Abgeleitete Spalte")
+## <a name="derived-column-settings"></a>Einstellungen für abgeleitete Spalten
 
-Sie können in einer einzigen Transformation für abgeleitete Spalten mehrere Aktionen für abgeleitete Spalten ausführen. Klicken Sie auf „Spalte hinzufügen“, um beim Schritt einer Einzeltransformation mehr als eine Spalte zu transformieren.
+Sie können eine bereits vorhandene Spalte löschen, indem Sie diese über die Dropdownliste mit den Spalten auswählen. Alternativ können Sie auch das Feld „Spaltenauswahl“ als Textfeld verwenden und den Namen der neuen Spalte eingeben. Den Ausdruck der abgeleiteten Spalte können Sie erstellen, indem Sie auf das Feld „Ausdruck eingeben“ klicken, um den [Data Flow-Ausdrucks-Generator](concepts-data-flow-expression-builder.md) zu öffnen.
 
-Wählen Sie im Feld „Spalte“ eine vorhandene Spalte aus, die mit einem neuen abgeleiteten Wert überschrieben werden soll, oder klicken Sie auf „Neue Spalte erstellen“, um eine neue Spalte mit dem neu abgeleiteten Wert zu erstellen.
+![Einstellungen für abgeleitete Spalten](media/data-flow/dc1.png "Einstellungen für abgeleitete Spalten")
 
-Über das Textfeld „Ausdruck“ wird der Ausdrucks-Generator geöffnet, in dem Sie den Ausdruck für die abgeleiteten Spalten mithilfe der Ausdrucksfunktionen erstellen können.
+Sie können weitere abgeleitete Spalten hinzufügen, indem Sie mit der Maus auf eine Spalte zeigen und auf das Symbol „+“ klicken. Klicken Sie anschließend entweder auf „Spalte hinzufügen“ oder auf „Add column pattern“ (Spaltenmuster hinzufügen). Spaltenmuster können nützlich sein, wenn sich Ihre Spaltennamen von den Quellen unterscheiden. Weitere Informationen finden Sie unter [Column Patterns (Spaltenmuster)](concepts-data-flow-column-pattern.md).
 
-## <a name="column-patterns"></a>Spaltenmuster
-
-Wenn die Spaltennamen aus Ihren Quellen variabel sind, möchten Sie möglicherweise in der abgeleiteten Spalte Transformationen mithilfe von Spaltenmustern anstelle von benannten Spalten verwenden. Weitere Informationen finden Sie im Artikel [Schemaabweichung](concepts-data-flow-schema-drift.md).
-
-![Spaltenmuster](media/data-flow/columnpattern.png "Spaltenmuster")
+![Auswahl neuer abgeleiteter Spalten](media/data-flow/columnpattern.png "New derived column selection")
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Erfahren Sie mehr über die [Data Factory-Ausdruckssprache für Transformationen](https://aka.ms/dataflowexpressions) und den [Ausdrucks-Generator](concepts-data-flow-expression-builder.md).
+- Weitere Informationen finden Sie unter [Mapping Data Flow expression language (Mapping Data Flow-Ausdruckssprache)](data-flow-expression-functions.md).

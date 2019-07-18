@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 04/25/2019
 ms.author: anantr
 ms.component: alerts
-ms.openlocfilehash: 6e97826499842a257f6402bd5268edc4cd6a486e
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 212e6b042caec5f24a620dc491dc674417816df7
+ms.sourcegitcommit: 5cb0b6645bd5dff9c1a4324793df3fdd776225e4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66734916"
+ms.lasthandoff: 06/21/2019
+ms.locfileid: "67310380"
 ---
 # <a name="action-rules-preview"></a>Aktionsregeln (Vorschau)
 
@@ -30,6 +30,8 @@ In vielen häufig auftretenden Szenarios wäre es nützlich, die Benachrichtigun
 
 Zwar können Sie mit Warnungsregeln die Aktionsgruppe definieren, die ausgelöst wird, wenn eine Warnung generiert wird, jedoch verfügen Kunden meist über eine allgemeine Aktionsgruppe für den gesamten Umfang ihrer Vorgänge. Beispielsweise würde ein Team, das für die Ressourcengruppe „ContosoRG“ zuständig ist, vermutlich dieselbe Aktionsgruppe für alle innerhalb von definierten „ContosoRG“ Warnungsregeln definieren. Mit Aktionsregeln können Sie diesen Prozess vereinfachen, indem Sie Aktionen nach Maß definieren, sodass eine Aktionsgruppe für jede Warnung ausgelöst werden kann, die im konfigurierten Bereich generiert wird. So könnte das Team aus dem zuvor beschriebenen Beispiel nun eine Aktionsregel für „ContosoRG“ definieren, die die gleiche Aktionsgruppe für alle darin generierten Warnungen auslöst.
 
+> [!NOTE]
+> Derzeit sind auf Service Health-Warnungen keine Aktionsregeln anwendbar.
 
 ## <a name="configuring-an-action-rule"></a>Konfigurieren einer Aktionsregel
 

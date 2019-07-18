@@ -5,18 +5,28 @@ services: vpn-gateway
 author: anzaman
 ms.service: vpn-gateway
 ms.topic: conceptional
-ms.date: 04/22/2019
+ms.date: 06/12/2019
 ms.author: alzam
-ms.openlocfilehash: 3880c847c54136dfd3ba1ecfe0178565091e229f
-ms.sourcegitcommit: 8fc5f676285020379304e3869f01de0653e39466
+ms.openlocfilehash: 6c85f47a2e3691306d59c5c44856fd08c07f2d36
+ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/09/2019
-ms.locfileid: "65510201"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67202888"
 ---
 # <a name="set-up-alerts-on-diagnostic-log-events-from-vpn-gateway"></a>Einrichten von Warnungen für Diagnoseprotokollereignisse vom VPN Gateway
 
-Dieser Artikel hilft Ihnen bei der Einrichtung von Warnungen, die auf Diagnoseprotokollereignissen vom Azure VPN Gateway basieren.
+In diesem Artikel erfahren Sie, wie Sie mit Azure Log Analytics Warnungen einrichten, die auf Diagnoseprotokollereignissen von Azure VPN Gateway basieren. 
+
+Die folgenden Protokolle sind in Azure verfügbar:
+
+|***Name*** | ***Beschreibung*** |
+|---        | ---               |
+|GatewayDiagnosticLog | Enthält Diagnoseprotokolle für Konfigurationsereignisse, wichtige Änderungen und Wartungsereignisse, die das Gateway betreffen. |
+|TunnelDiagnosticLog | Enthält Ereignisse, die die Änderung des Tunnelzustands betreffen. Ereignisse im Zusammenhang mit der Herstellung und Trennung der Tunnelverbindung beinhalten ggf. eine Zusammenfassung, in der die Ursache der Zustandsänderung beschrieben wird. |
+|RouteDiagnosticLog | Enthält Änderungen an statische Routen und BGP-Ereignisse, die am Gateway auftreten. |
+|IKEDiagnosticLog | Enthält IKE-Kontrollnachrichten und -ereignisse, die am Gateway erfasst werden. |
+|P2SDiagnosticLog | Enthält Point-to-Site-Kontrollnachrichten und -ereignisse, die am Gateway erfasst werden. |
 
 ## <a name="setup"></a>Einrichten von Warnungen
 

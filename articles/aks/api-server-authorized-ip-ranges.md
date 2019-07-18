@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 05/06/2019
 ms.author: iainfou
-ms.openlocfilehash: 185c16e76094fe55a54fb17bef24fcd03d7b54f0
-ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
+ms.openlocfilehash: d425fc3e037b43321a278fb16781e86dfafef15c
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/04/2019
-ms.locfileid: "66475155"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67441527"
 ---
 # <a name="preview---secure-access-to-the-api-server-using-authorized-ip-address-ranges-in-azure-kubernetes-service-aks"></a>Vorschau – sicherer Zugriff auf den API-Server mit autorisierten IP-Adressbereichen in Azure Kubernetes Service (AKS)
 
@@ -23,41 +23,45 @@ Dieser Artikel veranschaulicht die Verwendung vom API-Server autorisierter IP-Ad
 > [!IMPORTANT]
 > AKS-Previewfunktionen stehen gemäß dem Self-Service- und Aktivierungsprinzip zur Verfügung. Sie werden zum Sammeln von Feedback und Fehlern mithilfe unserer Community bereitgestellt. In der Vorschauversion sind diese Features nicht für den Einsatz in der Produktion vorgesehen. Features in der öffentlichen Vorschau unterliegen dem Prinzip des „bestmöglichen Supports“. Unterstützung durch die Teams für den technischen AKS-Support steht nur während der Geschäftszeiten in der Zeitzone „Pacific Standard Time“ (PST) zur Verfügung. Weitere Informationen hierzu finden Sie in den folgenden Supportartikeln:
 >
-> * [Unterstützungsrichtlinien für Azure Kubernetes Service][aks-support-policies]
+> * [AKS-Supportrichtlinien][aks-support-policies]
 > * [Häufig gestellte Fragen zum Azure-Support][aks-faq]
 
 ## <a name="before-you-begin"></a>Voraussetzungen
 
 Vom API-Server autorisierte IP-Adressbereiche funktionieren nur für neue AKS-Cluster, die Sie erstellen. In diesem Artikel wird beschrieben, wie Sie einen AKS-Cluster über die Azure-Befehlszeilenschnittstelle erstellen.
 
-Azure CLI-Version 2.0.61 oder höher muss installiert und konfiguriert sein. Führen Sie  `az --version` aus, um die Version zu ermitteln. Wenn Sie eine Installation oder ein Upgrade ausführen müssen, finden Sie weitere Informationen unter [Installieren der Azure CLI][install-azure-cli].
+Azure CLI-Version 2.0.61 oder höher muss installiert und konfiguriert sein. Führen Sie  `az --version` aus, um die Version zu ermitteln. Wenn Sie eine Installation oder ein Upgrade ausführen müssen, finden Sie weitere Informationen unter [Installieren der Azure-Befehlszeilenschnittstelle][install-azure-cli].
 
 ### <a name="install-aks-preview-cli-extension"></a>Installieren der CLI-Erweiterung „aks-preview“
 
-Die CLI-Befehle zum Konfigurieren der vom API-Server autorisierten IP-Adressbereiche sind in der *aks-preview*-CLI-Erweiterung verfügbar. Installieren Sie die Azure CLI-Erweiterung *aks-preview* mit dem Befehl [az extension add][az-extension-add], wie im folgenden Beispiel gezeigt:
+Zum Konfigurieren der vom API-Server autorisierten IP-Adressbereiche benötigen Sie die CLI-Erweiterung *aks-preview* in Version 0.4.1 oder höher. Installieren Sie die Erweiterung *aks-preview* der Azure-Befehlszeilenschnittstelle mit dem Befehl [az extension add][az-extension-add] command, then check for any available updates using the [az extension update][az-extension-update]:
 
 ```azurecli-interactive
+# Install the aks-preview extension
 az extension add --name aks-preview
-```
 
-> [!NOTE]
-> Wenn Sie zuvor die Erweiterung *aks-preview* installiert haben, installieren Sie alle verfügbaren Updates mit dem Befehl `az extension update --name aks-preview`.
+# Update the extension to make sure you have the latest version installed
+az extension update --name aks-preview
+```
 
 ### <a name="register-feature-flag-for-your-subscription"></a>Registrieren des Featureflags für Ihr Abonnement
 
 Um vom API-Server autorisierte IP-Adressbereiche verwenden zu können, müssen Sie zuerst ein Featureflag in Ihrem Abonnement aktivieren. Verwenden Sie den Befehl [az feature register][az-feature-register] wie im folgenden Beispiel gezeigt, um das Featureflag *APIServerSecurityPreview* zu registrieren:
 
+> [!CAUTION]
+> Wenn Sie eine Funktion in einem Abonnement registrieren, können Sie die Registrierung dieser Funktion derzeit nicht aufheben. Nachdem Sie einige Previewfunktionen aktiviert haben, können Standardwerte für alle AKS-Cluster verwendet werden, die dann im Abonnement erstellt werden. Aktivieren Sie keine Previewfunktionen in Produktionsabonnements. Verwenden Sie ein separates Abonnement, um Previewfunktionen zu testen und Feedback zu erhalten.
+
 ```azurecli-interactive
 az feature register --name APIServerSecurityPreview --namespace Microsoft.ContainerService
 ```
 
-Es dauert einige Minuten, bis der Status *Registered (Registriert)* angezeigt wird. Sie können den Registrierungsstatus mithilfe des Befehls [az feature list][az-feature-list] überprüfen:
+Es dauert einige Minuten, bis der Status *Registered (Registriert)* angezeigt wird. Sie können den Registrierungsstatus mit dem Befehl [az feature list][az-feature-list] überprüfen:
 
 ```azurecli-interactive
 az feature list -o table --query "[?contains(name, 'Microsoft.ContainerService/APIServerSecurityPreview')].{Name:name,State:properties.state}"
 ```
 
-Wenn Sie fertig sind, aktualisieren Sie die Registrierung des *Microsoft.ContainerService*-Ressourcenanbieters mit dem Befehl [az provider register][az-provider-register]:
+Wenn Sie bereit sind, aktualisieren Sie die Registrierung des *Microsoft.ContainerService*-Ressourcenanbieters mit dem Befehl [az provider register][az-provider-register]:
 
 ```azurecli-interactive
 az provider register --namespace Microsoft.ContainerService
@@ -127,7 +131,7 @@ az network vnet subnet create \
     --address-prefixes 10.200.0.0/16
 ```
 
-Installieren Sie zum Erstellen einer Azure Firewall-Instanz die *azure-firewall*-CLI-Erweiterung mithilfe des Befehls [az extension add][az-extension-add]. Erstellen Sie dann eine Firewall mithilfe des [az network firewall create] [ az-network-firewall-create]-Befehls. Im folgenden Beispiel wird eine Azure Firewall-Instanz mit dem Namen *myAzureFirewall* erstellt:
+Installieren Sie zum Erstellen einer Azure Firewall-Instanz die CLI-Erweiterung *azure-firewall* mithilfe des Befehls [az extension add][az-extension-add] command. Then, create a firewall using the [az network firewall create][az-network-firewall-create]. Im folgenden Beispiel wird eine Azure Firewall-Instanz mit dem Namen *myAzureFirewall* erstellt:
 
 ```azurecli-interactive
 # Install the CLI extension for Azure Firewall
@@ -139,7 +143,7 @@ az network firewall create \
     --name myAzureFirewall
 ```
 
-Einer Azure Firewall-Instanz wird eine öffentliche IP-Adresse zugewiesen, über die ausgehender Datenverkehr läuft. Erstellen Sie eine öffentliche Adresse mit dem [az network public-ip create][az-network-public-ip-create]-Befehl, und erstellen Sie dann eine IP-Konfiguration auf der Firewall mithilfe des [az network firewall ip-config create][az-network-firewall-ip-config-create]-Befehls, die die öffentliche IP-Adresse anwendet:
+Einer Azure Firewall-Instanz wird eine öffentliche IP-Adresse zugewiesen, über die ausgehender Datenverkehr läuft. Erstellen Sie eine öffentliche Adresse mit [az network public-ip create][az-network-public-ip-create] command, then create an IP configuration on the firewall using the [az network firewall ip-config create][az-network-firewall-ip-config-create], wodurch die folgende öffentliche IP-Adresse angewandt wird:
 
 ```azurecli-interactive
 # Create a public IP address for the firewall
@@ -158,7 +162,7 @@ az network firewall ip-config create \
     --public-ip-address myAzureFirewallPublicIP
 ```
 
-Jetzt erstellen Sie die Azure Firewall-Netzwerkregel, um sämtlichen *TCP*-Datenverkehr *zuzulassen*, mit dem [az network firewall network-rule create][az-network-firewall-network-rule-create]-Befehl. Im folgenden Beispiel wird eine Netzwerkregel mit dem Namen *AllowTCPOutbound* für Datenverkehr mit einer beliebigen Quell- oder Zieladresse erstellt:
+Jetzt erstellen Sie die Azure Firewall-Netzwerkregel, um sämtlichen *TCP*-Datenverkehr *zuzulassen*, mit dem Befehl [az network firewall network-rule create][az-network-firewall-network-rule-create]. Im folgenden Beispiel wird eine Netzwerkregel mit dem Namen *AllowTCPOutbound* für Datenverkehr mit einer beliebigen Quell- oder Zieladresse erstellt:
 
 ```azurecli-interactive
 az network firewall network-rule create \
@@ -192,7 +196,7 @@ FIREWALL_INTERNAL_IP=$(az network firewall show \
 K8S_ENDPOINT_IP=$(kubectl get endpoints -o=jsonpath='{.items[?(@.metadata.name == "kubernetes")].subsets[].addresses[].ip}')
 ```
 
-Abschließend erstellen Sie eine Route in der vorhandenen AKS-Netzwerkroutentabelle mithilfe des [az network route-table route create][az-network-route-table-route-create]-Befehls, der dem Datenverkehr die Verwendung der Azure Firewall-Appliance für die Kommunikation mit dem API-Server erlaubt.
+Abschließend erstellen Sie mithilfe des Befehls [az network route-table route create][az-network-route-table-route-create] eine Route in der vorhandenen AKS-Netzwerkroutingtabelle, die dem Datenverkehr die Verwendung der Azure Firewall-Appliance für die Kommunikation mit dem API-Server erlaubt.
 
 ```azurecli-interactive
 az network route-table route create \
@@ -212,7 +216,7 @@ Notieren Sie sich die öffentliche IP-Adresse Ihrer Azure Firewall-Appliance. Di
 
 Um die vom API-Server autorisierten IP-Adressbereiche zu aktivieren, geben Sie eine Liste der autorisierten IP-Adressbereiche an. Wenn Sie einen CIDR-Bereich angeben, beginnen Sie mit der ersten IP-Adresse im Bereich. *137.117.106.90/29* ist z.B. ein gültiger Bereich, aber stellen Sie sicher, dass Sie die erste IP-Adresse im Bereich angeben, z.B. *137.117.106.88/29*.
 
-Geben Sie mit dem [az aks update][az-aks-update]-Befehl die zulässigen *--api-server-authorized-ip-ranges* (vom API-Server autorisierten IP-Adressbereiche) an. Diese IP-Adressbereiche sind in der Regel die von Ihren lokalen Netzwerken verwendeten Adressbereiche. Fügen Sie die öffentliche IP-Adresse Ihrer eigenen Azure Firewall-Instanz hinzu, die sie im vorherigen Schritt abgerufen haben, wie z.B. *20.42.25.196/32*.
+Geben Sie mit dem Befehl [az aks update][az-aks-update] die zulässigen *--api-server-authorized-ip-ranges* (vom API-Server autorisierten IP-Adressbereiche) an. Diese IP-Adressbereiche sind in der Regel die von Ihren lokalen Netzwerken verwendeten Adressbereiche. Fügen Sie die öffentliche IP-Adresse Ihrer eigenen Azure Firewall-Instanz hinzu, die sie im vorherigen Schritt abgerufen haben, wie z.B. *20.42.25.196/32*.
 
 Im folgenden Beispiel werden vom API-Server autorisierte IP-Adressbereiche für den Cluster namens *myAKSCluster* in der Ressourcengruppe *myResourceGroup* aktiviert. Die zu autorisierenden IP-Adressbereiche sind *20.42.25.196/32* (die öffentliche IP-Adresse der Azure Firewall-Instanz) und dann *172.0.0.10/16* und *168.10.0.10/18*:
 
@@ -225,7 +229,7 @@ az aks update \
 
 ## <a name="update-or-disable-authorized-ip-ranges"></a>Aktualisieren oder Deaktivieren autorisierter IP-Adressbereiche
 
-Zum Aktualisieren oder Deaktivieren autorisierter IP-Adressbereiche verwenden Sie erneut den [az aks update][az-aks-update]-Befehl. Geben Sie den aktualisierten CIDR-Bereich an, den Sie zulassen möchten, oder geben Sie einen leeren Bereich an, um vom API-Server autorisierte IP-Adressbereiche zu deaktivieren, wie im folgenden Beispiel gezeigt:
+Zum Aktualisieren oder Deaktivieren autorisierter IP-Adressbereiche verwenden Sie erneut den Befehl [az aks update][az-aks-update]. Geben Sie den aktualisierten CIDR-Bereich an, den Sie zulassen möchten, oder geben Sie einen leeren Bereich an, um vom API-Server autorisierte IP-Adressbereiche zu deaktivieren, wie im folgenden Beispiel gezeigt:
 
 ```azurecli-interactive
 az aks update \
@@ -238,7 +242,7 @@ az aks update \
 
 In diesem Artikel haben Sie vom API-Server autorisierte IP-Adressbereiche aktiviert. Dieser Ansatz ist ein Aspekt Ihrer sicheren Ausführung eines AKS-Clusters.
 
-Weitere Informationen finden Sie unter [Sicherheitskonzepte für Anwendungen und Cluster in Azure Kubernetes Service (AKS)][concepts-security] und [Best Practices für Clustersicherheit und Upgrades in Azure Kubernetes Service (AKS)][operator-best-practices-cluster-security].
+Weitere Informationen finden Sie unter [Sicherheitskonzepte für Anwendungen und Cluster in Azure Kubernetes Service (AKS)][concepts-security] and [Best practices for cluster security and upgrades in AKS][operator-best-practices-cluster-security].
 
 <!-- LINKS - external -->
 [azure-firewall-costs]: https://azure.microsoft.com/pricing/details/azure-firewall/
@@ -265,3 +269,5 @@ Weitere Informationen finden Sie unter [Sicherheitskonzepte für Anwendungen und
 [az-network-route-table-route-create]: /cli/azure/network/route-table/route#az-network-route-table-route-create
 [aks-support-policies]: support-policies.md
 [aks-faq]: faq.md
+[az-extension-add]: /cli/azure/extension#az-extension-add
+[az-extension-update]: /cli/azure/extension#az-extension-update

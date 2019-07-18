@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 01/31/2019
 ms.author: jeffpatt
 ms.subservice: files
-ms.openlocfilehash: 26055727e308f8c05aece31746434d7e9a0a5abd
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 9cd1be26f6832fffb86dfefd0d93d9dbb393c0f0
+ms.sourcegitcommit: 82efacfaffbb051ab6dc73d9fe78c74f96f549c2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65555943"
+ms.lasthandoff: 06/20/2019
+ms.locfileid: "67303874"
 ---
 # <a name="troubleshoot-azure-file-sync"></a>Problembehandlung für Azure-Dateisynchronisierung
 Mit der Azure-Dateisynchronisierung können Sie die Dateifreigaben Ihrer Organisation in Azure Files zentralisieren, ohne auf die Flexibilität, Leistung und Kompatibilität eines lokalen Dateiservers verzichten zu müssen. Mit der Azure-Dateisynchronisierung werden Ihre Windows Server-Computer zu einem schnellen Cache für Ihre Azure-Dateifreigabe. Sie können ein beliebiges Protokoll verwenden, das unter Windows Server verfügbar ist, um lokal auf Ihre Daten zuzugreifen, z.B. SMB, NFS und FTPS. Sie können weltweit so viele Caches wie nötig nutzen.
@@ -245,17 +245,16 @@ Um diese Fehler anzuzeigen, führen Sie das PowerShell-Skript **FileSyncErrorsRe
 | HRESULT | HRESULT (dezimal) | Fehlerzeichenfolge | Problem | Wiederherstellung |
 |---------|-------------------|--------------|-------|-------------|
 | 0x80c80207 | -2134375929 | ECS_E_SYNC_CONSTRAINT_CONFLICT | Eine Datei- oder Verzeichnisänderung kann noch nicht synchronisiert werden, da ein abhängiger Ordner noch nicht synchronisiert ist. Dieses Element wird synchronisiert, sobald die abhängigen Änderungen synchronisiert wurden. | Keine weiteren Maßnahmen erforderlich. |
-| 0x7b | 123 | ERROR_INVALID_NAME | Der Datei- oder Verzeichnisname ist ungültig. | Benennen Sie die jeweiligen Datei oder das betreffende Verzeichnis um. Weitere Informationen finden Sie unter [Behandlung von nicht unterstützten Zeichen](https://docs.microsoft.com/azure/storage/files/storage-sync-files-troubleshoot?tabs=portal1%2Cazure-portal#handling-unsupported-characters). |
-| 0x8007007b | -2147024773 | STIERR_INVALID_DEVICE_NAME | Der Datei- oder Verzeichnisname ist ungültig. | Benennen Sie die jeweiligen Datei oder das betreffende Verzeichnis um. Weitere Informationen finden Sie unter [Behandlung von nicht unterstützten Zeichen](https://docs.microsoft.com/azure/storage/files/storage-sync-files-troubleshoot?tabs=portal1%2Cazure-portal#handling-unsupported-characters). |
+| 0x8007007b | -2147024773 | ERROR_INVALID_NAME | Der Datei- oder Verzeichnisname ist ungültig. | Benennen Sie die jeweiligen Datei oder das betreffende Verzeichnis um. Weitere Informationen finden Sie unter [Behandlung von nicht unterstützten Zeichen](https://docs.microsoft.com/azure/storage/files/storage-sync-files-troubleshoot?tabs=portal1%2Cazure-portal#handling-unsupported-characters). |
 | 0x80c80018 | -2134376424 | ECS_E_SYNC_FILE_IN_USE | Eine Datei kann nicht synchronisiert werden, da sie momentan verwendet wird. Die Datei wird synchronisiert, wenn sie nicht mehr verwendet wird. | Keine weiteren Maßnahmen erforderlich. Die Azure-Dateisynchronisierung erstellt einmal pro Tag eine temporäre VSS-Momentaufnahme auf dem Server, um Dateien mit offenen Handles zu synchronisieren. |
 | 0x80c8031d | -2134375651 | ECS_E_CONCURRENCY_CHECK_FAILED | Eine Datei wurde geändert, doch die Änderung wurde noch nicht von der Synchronisierung erkannt. Die Synchronisierung wird aktualisiert, sobald diese Änderung erkannt wurde. | Keine weiteren Maßnahmen erforderlich. |
 | 0x80c8603e | -2134351810 | ECS_E_AZURE_STORAGE_SHARE_SIZE_LIMIT_REACHED | Die Datei kann nicht synchronisiert werden, da das Limit für die Azure-Dateifreigabe erreicht ist. | Um dieses Problem zu beheben, lesen Sie den Abschnitt [Sie haben das Speicherlimit für die Azure-Dateifreigabe erreicht](https://docs.microsoft.com/azure/storage/files/storage-sync-files-troubleshoot?tabs=portal1%2Cazure-portal#-2134351810) in diesem Leitfaden zur Problembehandlung. |
 | 0x80070005 | -2147024891 | E_ACCESSDENIED | Dieser Fehler kann aus den folgenden Gründen auftreten: Die Datei ist über eine nicht unterstützte Lösung (z.B. NTFS EFS) verschlüsselt, ihr Löschstatus steht aus, oder sie befindet sich in einem schreibgeschützten DFS-R-Replikationsordner. | Wenn die Datei von einer nicht unterstützten Lösung verschlüsselt wird, entschlüsseln Sie die Datei, und verwenden Sie eine unterstützte Verschlüsselungslösung. Eine Liste der unterstützten Lösungen finden Sie im Abschnitt [Verschlüsselungslösungen](https://docs.microsoft.com/azure/storage/files/storage-sync-files-planning#encryption-solutions) im Planungshandbuch. Wenn sich die Datei im Status „Zum Löschen ausstehend“ befindet, wird die Datei gelöscht, sobald alle offenen Dateihandles geschlossen sind. Wenn die Datei sich in einem schreibgeschützten DFS-R-Replikationsordner befindet, unterstützt Azure Files Sync keine Serverendpunkte in schreibgeschützten DFS-R-Replikationsordnern. Weitere Informationen finden Sie im [Planungshandbuch](https://docs.microsoft.com/azure/storage/files/storage-sync-files-planning#distributed-file-system-dfs).
-| 0x20 | 32 | ERROR_SHARING_VIOLATION | Eine Datei kann nicht synchronisiert werden, da sie momentan verwendet wird. Die Datei wird synchronisiert, wenn sie nicht mehr verwendet wird. | Keine weiteren Maßnahmen erforderlich. |
+| 0x80070020 | -2147024864 | ERROR_SHARING_VIOLATION | Eine Datei kann nicht synchronisiert werden, da sie momentan verwendet wird. Die Datei wird synchronisiert, wenn sie nicht mehr verwendet wird. | Keine weiteren Maßnahmen erforderlich. |
 | 0x80c80017 | -2134376425 | ECS_E_SYNC_OPLOCK_BROKEN | Eine Datei wurde während der Synchronisierung geändert, deshalb muss sie erneut synchronisiert werden. | Keine weiteren Maßnahmen erforderlich. |
 
 #### <a name="handling-unsupported-characters"></a>Behandlung von nicht unterstützten Zeichen
-Wenn das PowerShell-Skript **FileSyncErrorsReport.ps1** Fehler aufgrund von nicht unterstützten Zeichen (Fehlercodes 0x7b und 0x8007007b) anzeigt, sollten Sie die jeweiligen Zeichen aus den entsprechenden Dateinamen entfernen oder ändern. PowerShell gibt diese Zeichen wahrscheinlich als Fragezeichen oder leere Rechtecke aus, da die meisten dieser Zeichen keine standardisierte visuelle Codierung aufweisen. Mit dem [Auswertungstool](storage-sync-files-planning.md#evaluation-tool) können Sie nicht unterstützte Zeichen identifizieren.
+Wenn das PowerShell-Skript **FileSyncErrorsReport.ps1** Fehler aufgrund von nicht unterstützten Zeichen (Fehlercode 0x8007007b) anzeigt, sollten Sie diese Zeichen aus den entsprechenden Dateinamen entfernen oder darin ändern. PowerShell gibt diese Zeichen wahrscheinlich als Fragezeichen oder leere Rechtecke aus, da die meisten dieser Zeichen keine standardisierte visuelle Codierung aufweisen. Mit dem [Auswertungstool](storage-sync-files-planning.md#evaluation-tool) können Sie nicht unterstützte Zeichen identifizieren.
 
 Die folgende Tabelle enthält alle Unicode-Zeichen, die die Azure-Dateisynchronisierung noch nicht unterstützt.
 
@@ -863,6 +862,8 @@ Wenn Probleme mit der Azure-Dateisynchronisierung auf einem Server auftreten, f�
 
 Wenn das Problem nicht behoben wird, führen Sie das AFSDiag-Tool aus:
 1. Erstellen Sie eine Verzeichnis zum Speichern der Ausgabe von AFSDiag (z.B. „C:\Ausgabe“).
+    > [!NOTE]
+    >AFSDiag löscht vor der Protokollerfassung den gesamten Inhalt des Ausgabeverzeichnisses. Geben Sie einen Speicherort für die Ausgaben an, der keine Daten enthält.
 2. Öffnen Sie ein PowerShell-Fenster mit erhöhten Rechten, und führen Sie die folgenden Befehle aus (drücken Sie nach jedem Befehl die EINGABETASTE):
 
     ```powershell

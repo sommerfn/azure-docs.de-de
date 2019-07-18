@@ -12,23 +12,24 @@ ms.devlang: dotNet
 ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 1/17/2019
+ms.date: 6/6/2019
 ms.author: srrengar
-ms.openlocfilehash: 520961fb4bd126ef878a779c10fb5689b8692c73
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: e7ae4c77f958bacabea50b7193817cd41ea54aa9
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64683731"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67449784"
 ---
-# <a name="eventstore-service-overview"></a>Übersicht über den EventStore-Dienst
+# <a name="eventstore-overview"></a>EventStore-Übersicht
 
 >[!NOTE]
 >Ab Service Fabric-Version 6.4 sind die EventStore-APIs nur für in Azure ausgeführte Windows-Cluster verfügbar. Wir arbeiten daran, diese Funktionalität sowohl für Linux als auch für unseren eigenständigen Cluster zu portieren.
 
 ## <a name="overview"></a>Übersicht
 
-Der EventStore-Dienst wurde in Version 6.2 eingeführt und ist eine Überwachungsoption in Service Fabric. EventStore bietet eine Möglichkeit, den Zustand Ihres Clusters oder Ihrer Workloads zu einem bestimmten Zeitpunkt zu verstehen. EventStore ist ein zustandsbehafteter Service Fabric-Dienst, der Ereignisse vom Cluster verwaltet. Die Ereignisse werden über Service Fabric-Explorer, REST und APIs bereitgestellt. EventStore fragt den Cluster direkt ab, um Diagnosedaten zu einer beliebigen Entität im Cluster abzurufen. Diese Daten können Sie bei den folgenden Aufgaben unterstützen:
+Der EventStore-Dienst wurde in Version 6.2 eingeführt und ist eine Überwachungsoption in Service Fabric. EventStore bietet eine Möglichkeit, den Zustand Ihres Clusters oder Ihrer Workloads zu einem bestimmten Zeitpunkt zu verstehen.
+EventStore ist ein zustandsbehafteter Service Fabric-Dienst, der Ereignisse vom Cluster verwaltet. Die Ereignisse werden über Service Fabric-Explorer, REST und APIs bereitgestellt. EventStore fragt den Cluster direkt ab, um Diagnosedaten zu einer beliebigen Entität im Cluster abzurufen. Diese Daten können Sie bei den folgenden Aufgaben unterstützen:
 
 * Diagnostizieren von Problemen bei der Entwicklung oder bei Tests oder an den Punkten, an denen Sie möglicherweise eine Überwachungspipeline verwenden.
 * Sicherstellen, dass am Cluster vorgenommene Verwaltungsaktionen ordnungsgemäß verarbeitet werden.
@@ -39,7 +40,7 @@ Der EventStore-Dienst wurde in Version 6.2 eingeführt und ist eine Überwachung
 Unter [Service Fabric-Ereignisse](service-fabric-diagnostics-event-generation-operational.md) finden Sie eine vollständige Auflistung der in EventStore verfügbaren Ereignisse.
 
 >[!NOTE]
->Ab Service Fabric-Version 6.2 sind die EventStore-APIs derzeit nur für unter Azure ausgeführte Windows-Cluster als Vorschauversion verfügbar. Wir arbeiten daran, diese Funktionalität sowohl für Linux als auch für unseren eigenständigen Cluster zu portieren.
+>Ab Service Fabric-Version 6.4 sind die EventStore-APIs und die Benutzeroberfläche allgemein verfügbar für Azure-Windows-Cluster. Wir arbeiten daran, diese Funktionalität sowohl für Linux als auch für unseren eigenständigen Cluster zu portieren.
 
 Der EventStore-Dienst kann nach Ereignissen abgefragt werden, die in Ihrem Cluster für jede Entität und jeden Entitätstyp verfügbar sind. Dies bedeutet, dass Sie Ereignisse auf den folgenden Ebenen abfragen können:
 * Cluster: Ereignisse in Bezug auf den Cluster selbst (z.B. Clusterupgrade).
@@ -70,9 +71,21 @@ Fügen Sie in der Datei [„fabricSettings.json“ in Ihrem Cluster](service-fab
     ],
 ```
 
-### <a name="azure-cluster"></a>Azure-Cluster
+### <a name="azure-cluster-version-65"></a>Azure-Clusterversion 6.5+
+Wenn Ihre Azure-Cluster auf Version 6.5 oder höher aktualisiert werden, wird EventStore automatisch in Ihrem Cluster aktiviert. Zur Deaktivierung müssen Sie die Clustervorlage mit folgenden Informationen aktualisieren:
 
-In der Azure Resource Manager-Vorlage Ihres Clusters können Sie den EventStore-Dienst aktivieren, indem Sie ein [Cluster-Konfigurations-Upgrade](service-fabric-cluster-config-upgrade-azure.md) durchführen und den folgenden Code hinzufügen. Sie können PlacementConstraints verwenden, um die Replikate des EventStore-Dienstes auf einen bestimmten NodeType zu festzulegen, z.B. einen NodeType, der für die Systemdienste bestimmt ist. Die Abschnitt `upgradeDescription` konfiguriert das Konfigurationsupgrade, um einen Neustart auf den Knoten auszulösen. Sie können den Abschnitt in einem weiteren Update entfernen.
+* Verwenden Sie mindestens die API-Version `2019-03-01`. 
+* Fügen Sie im Abschnitt mit den Eigenschaften in Ihrem Cluster den folgenden Code hinzu.
+  ```json  
+    "fabricSettings": [
+      …
+    ],
+    "eventStoreServiceEnabled": false
+  ```
+
+### <a name="azure-cluster-version-64"></a>Azure-Clusterversion 6.4
+
+Wenn Sie Version 6.4 verwenden, können Sie Ihre Azure Resource Manager-Vorlage so bearbeiten, dass der EventStore-Dienst aktiviert wird. Dazu führen Sie ein [Upgrade der Clusterkonfiguration](service-fabric-cluster-config-upgrade-azure.md) durch und fügen den folgenden Code hinzu. Sie können PlacementConstraints verwenden, um die Replikate des EventStore-Diensts auf einen bestimmten NodeType festzulegen, z. B. einen NodeType, der für die Systemdienste bestimmt ist. Die Abschnitt `upgradeDescription` konfiguriert das Konfigurationsupgrade, um einen Neustart auf den Knoten auszulösen. Sie können den Abschnitt in einem weiteren Update entfernen.
 
 ```json
     "fabricSettings": [

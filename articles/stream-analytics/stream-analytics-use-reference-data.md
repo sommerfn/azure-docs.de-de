@@ -4,20 +4,20 @@ description: In diesem Artikel wird beschrieben, wie Sie Referenzdaten nutzen, u
 services: stream-analytics
 author: jseb225
 ms.author: jeanb
-manager: kfile
 ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
-ms.date: 01/29/2019
-ms.openlocfilehash: 93c65429ef7581f4a7d2e268034e4056d6f000c8
-ms.sourcegitcommit: 51a7669c2d12609f54509dbd78a30eeb852009ae
+ms.date: 06/21/2019
+ms.openlocfilehash: e4a6d169b50eff1b0e166bea098e28e65bad8cab
+ms.sourcegitcommit: 08138eab740c12bf68c787062b101a4333292075
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/30/2019
-ms.locfileid: "66393119"
+ms.lasthandoff: 06/22/2019
+ms.locfileid: "67329305"
 ---
 # <a name="using-reference-data-for-lookups-in-stream-analytics"></a>Verwenden von Referenzdaten für Suchvorgänge in Stream Analytics
-Verweisdaten werden auch als Nachschlagetabelle bezeichnet und sind ein begrenztes statisches oder sich nur langsam veränderndes Dataset, das für die Suche oder Korrelation mit Ihrem Datenstrom verwendet wird. In einem IoT-Szenario können Sie beispielsweise Metadaten zu Sensoren (die sich nicht oft ändern) in Verweisdaten speichern und mit IoT-Echtzeitdatenströmen verknüpfen. Azure Stream Analytics lädt Verweisdaten in den Arbeitsspeicher, um eine Streamverarbeitung mit geringer Wartezeit zu erreichen. Für den Einsatz von Verweisdaten in Ihrem Azure Stream Analytics-Auftrag verwenden Sie in der Regel [Verweisdaten für JOIN-Vorgänge](https://msdn.microsoft.com/library/azure/dn949258.aspx) in Ihrer Abfrage. 
+
+Verweisdaten (auch als Nachschlagetabelle bezeichnet) stellen ein begrenztes statisches oder sich nur langsam veränderndes Dataset dar, das für die Suche oder die Erweiterung Ihrer Datenströme verwendet wird. In einem IoT-Szenario können Sie beispielsweise Metadaten zu Sensoren (die sich nicht oft ändern) in Verweisdaten speichern und mit IoT-Echtzeitdatenströmen verknüpfen. Azure Stream Analytics lädt Verweisdaten in den Arbeitsspeicher, um eine Streamverarbeitung mit geringer Wartezeit zu erreichen. Für den Einsatz von Verweisdaten in Ihrem Azure Stream Analytics-Auftrag verwenden Sie in der Regel [Verweisdaten für JOIN-Vorgänge](https://msdn.microsoft.com/library/azure/dn949258.aspx) in Ihrer Abfrage. 
 
 In Stream Analytics werden Azure Blob Storage und Azure SQL-Datenbank als Speicherebene für Verweisdaten unterstützt. Zudem können Sie Verweisdaten von Azure Data Factory in Blob Storage transformieren und/oder kopieren, um [eine beliebige Anzahl von cloudbasierten und lokalen Datenspeichern zu verwenden](../data-factory/copy-activity-overview.md).
 
@@ -43,7 +43,7 @@ Um die Verweisdaten zu konfigurieren, müssen Sie zunächst eine Eingabe vom Typ
 
 ### <a name="static-reference-data"></a>Statische Referenzdaten
 
-Wenn sich Ihre Referenzdaten voraussichtlich nicht ändern, wird die Unterstützung für statische Referenzdaten aktiviert, indem in der Eingabekonfiguration ein statischer Pfad angegeben wird. Azure Stream Analytics findet das Blob unter dem angegebenen Pfad. {date}- und {time}-Ersetzungstoken sind nicht erforderlich. Referenzdaten sind in Stream Analytics unveränderlich. Aus diesem Grund wird das Überschreiben eines statischen Referenzdatenblobs nicht empfohlen.
+Wenn sich Ihre Referenzdaten voraussichtlich nicht ändern, wird die Unterstützung für statische Referenzdaten aktiviert, indem in der Eingabekonfiguration ein statischer Pfad angegeben wird. Azure Stream Analytics findet das Blob unter dem angegebenen Pfad. {date}- und {time}-Ersetzungstoken sind nicht erforderlich. Da Verweisdaten in Stream Analytics unveränderlich sind, wird nicht empfohlen, statische Verweisdatenblobs zu überschreiben.
 
 ### <a name="generate-reference-data-on-a-schedule"></a>Generieren von Verweisdaten nach einem Zeitplan
 
@@ -54,7 +54,7 @@ Azure Stream Analytics führt in einem Intervall von einer Minute automatisch ei
 > [!NOTE]
 > Stream Analytics-Aufträge suchen derzeit nur dann nach der Blobaktualisierung, wenn die Zeit des Computers die im Blobnamen codierte Zeit erreicht. Der Auftrag sucht beispielsweise am 16. April 2015 ab 17:30 Uhr (UTC-Zeitzone) zum frühestmöglichen Zeitpunkt nach `sample/2015-04-16/17-30/products.csv`. Er sucht *nie* nach einem Blob mit einer codierten Zeit vor der letzten Erkennung.
 > 
-> Beispiel: Nachdem der Auftrag das Blob `sample/2015-04-16/17-30/products.csv` gefunden hat, werden alle Dateien ignoriert, deren codierte Zeit vor 17:30 Uhr am 16. April 2015 liegt. Wenn im gleichen Container also nachträglich das Blob `sample/2015-04-16/17-25/products.csv` erstellt wird, wird es vom Auftrag nicht verwendet.
+> Nachdem der Auftrag das Blob `sample/2015-04-16/17-30/products.csv` gefunden hat, werden alle Dateien ignoriert, deren codierte Zeit vor 17:30 Uhr am 16. April 2015 liegt. Wenn im gleichen Container also nachträglich das Blob `sample/2015-04-16/17-25/products.csv` erstellt wird, verwendet der Auftrag es nicht.
 > 
 > Analog dazu gilt: Wenn `sample/2015-04-16/17-30/products.csv` erst am 16. April 2015 um 22:03 Uhr erstellt wird und im Container kein Blob mit einer früheren Zeit enthalten ist, verwendet der Auftrag diese Datei ab dem 16. April 2015, 22:03 Uhr. Bis dahin werden die vorherigen Verweisdaten verwendet.
 > 

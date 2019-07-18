@@ -5,18 +5,15 @@ services: azure-resource-manager
 documentationcenter: ''
 author: mumian
 ms.service: azure-resource-manager
-ms.workload: multiple
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 02/11/2019
 ms.author: jgao
-ms.openlocfilehash: 8ae86d8bc7914a7a9c41eee93bb16b2f774993b9
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 3d6a102b794ca9c43e1dd18f923f6ce224596499
+ms.sourcegitcommit: 2d3b1d7653c6c585e9423cf41658de0c68d883fa
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60550494"
+ms.lasthandoff: 06/20/2019
+ms.locfileid: "67296259"
 ---
 # <a name="manage-azure-resource-manager-resource-groups-by-using-azure-powershell"></a>Verwalten von Azure Resource Manager-Gruppen mithilfe von Azure PowerShell
 
@@ -122,10 +119,12 @@ Sie können Ressourcengruppen und Ressourcen Tags zuordnen, um sie logisch zu or
 
 ## <a name="export-resource-groups-to-templates"></a>Exportieren von Ressourcengruppen in Vorlagen
 
-Nach dem erfolgreichen Einrichten der Ressourcengruppe sollten Sie die Resource Manager-Vorlage für die Ressourcengruppe anzeigen lassen. Das Exportieren der Vorlage hat zwei Vorteile:
+Nach dem Einrichten der Ressourcengruppe können Sie eine Resource Manager-Vorlage für die Ressourcengruppe anzeigen lassen. Das Exportieren der Vorlage hat zwei Vorteile:
 
 - Automatisieren zukünftiger Bereitstellungen der Lösung, da die Vorlage die gesamte Infrastruktur enthält.
 - Überblick über Vorlagensyntax, indem Sie sich die JavaScript Object Notation (JSON) zu Ihrer Lösung ansehen.
+
+Verwenden Sie das Cmdlet [Export-AzResourceGroup](/powershell/module/az.resources/Export-AzResourceGroup), und geben Sie den Namen der Ressourcengruppe an, um alle Ressourcen in einer Ressourcengruppe zu exportieren.
 
 ```azurepowershell-interactive
 $resourceGroupName = Read-Host -Prompt "Enter the Resource Group name"
@@ -133,7 +132,87 @@ $resourceGroupName = Read-Host -Prompt "Enter the Resource Group name"
 Export-AzResourceGroup -ResourceGroupName $resourceGroupName
 ```
 
-Weitere Informationen finden Sie unter [Exportieren einer Ressourcengruppe](./manage-resource-groups-portal.md#export-resource-groups-to-templates).
+Die Vorlage wird als lokale Datei gespeichert.
+
+Anstatt alle Ressourcen in der Ressourcengruppe zu exportieren, können Sie die zu exportierenden Ressourcen auswählen.
+
+Übergeben Sie die Ressourcen-ID, um eine Ressource zu exportieren.
+
+```azurepowershell-interactive
+$resource = Get-AzResource `
+  -ResourceGroupName <resource-group-name> `
+  -ResourceName <resource-name> `
+  -ResourceType <resource-type>
+Export-AzResourceGroup `
+  -ResourceGroupName <resource-group-name> `
+  -Resource $resource.ResourceId
+```
+
+Übergeben Sie die Ressourcen-IDs in einem Array, um mehr als eine Ressource zu exportieren.
+
+```azurepowershell-interactive
+Export-AzResourceGroup `
+  -ResourceGroupName <resource-group-name> `
+  -Resource @($resource1.ResourceId, $resource2.ResourceId)
+```
+
+Wenn Sie die Vorlage exportieren, können Sie angeben, ob in der Vorlage Parameter verwendet werden sollen. Parameter für Ressourcennamen sind zwar standardmäßig enthalten, haben jedoch keinen Standardwert. Sie müssen diesen Parameterwert während der Bereitstellung übergeben.
+
+```json
+"parameters": {
+  "serverfarms_demoHostPlan_name": {
+    "defaultValue": null,
+    "type": "String"
+  },
+  "sites_webSite3bwt23ktvdo36_name": {
+    "defaultValue": null,
+    "type": "String"
+  }
+}
+```
+
+In der Ressource wird der Parameter für den Namen verwendet.
+
+```json
+"resources": [
+  {
+    "type": "Microsoft.Web/serverfarms",
+    "apiVersion": "2016-09-01",
+    "name": "[parameters('serverfarms_demoHostPlan_name')]",
+    ...
+  }
+]
+```
+
+Wenn Sie beim Exportieren der Vorlage den `-IncludeParameterDefaultValue`-Parameter verwenden, enthält der Vorlagenparameter einen Standardwert, der auf den aktuellen Wert festgelegt ist. Sie können entweder diesen Standardwert verwenden oder den Standardwert überschreiben, indem Sie einen anderen Wert übergeben.
+
+```json
+"parameters": {
+  "serverfarms_demoHostPlan_name": {
+    "defaultValue": "demoHostPlan",
+    "type": "String"
+  },
+  "sites_webSite3bwt23ktvdo36_name": {
+    "defaultValue": "webSite3bwt23ktvdo36",
+    "type": "String"
+  }
+}
+```
+
+Wenn Sie beim Exportieren der Vorlage den `-SkipResourceNameParameterization`-Parameter verwenden, sind in der Vorlage keine Parameter für Ressourcennamen enthalten. Stattdessen wird der Ressourcenname der Ressource direkt auf den aktuellen Wert festgelegt. Sie können den Namen während der Bereitstellung nicht anpassen.
+
+```json
+"resources": [
+  {
+    "type": "Microsoft.Web/serverfarms",
+    "apiVersion": "2016-09-01",
+    "name": "demoHostPlan",
+    ...
+  }
+]
+```
+
+Weitere Informationen finden Sie unter [Single and multi-resource export to template in Azure portal (Exportieren von einzelnen und mehreren Ressourcen in eine Vorlage im Azure-Portal)](./export-template-portal.md).
 
 ## <a name="manage-access-to-resource-groups"></a>Verwalten des Zugriffs auf Ressourcengruppen
 

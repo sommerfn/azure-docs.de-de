@@ -6,14 +6,14 @@ author: cherylmc
 tags: azure-resource-manager
 ms.service: vpn-gateway
 ms.topic: conceptual
-ms.date: 5/21/2019
+ms.date: 6/18/2019
 ms.author: cherylmc
-ms.openlocfilehash: 6b66a9cf28faccf5ba22bc016297f1d53febe533
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 07bcf50a816c090ccef846909dff671486e514c4
+ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66157317"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67203056"
 ---
 # <a name="configure-a-point-to-site-connection-to-a-vnet-using-native-azure-certificate-authentication-azure-portal"></a>Konfigurieren einer Point-to-Site-Verbindung mit einem VNET unter Verwendung der nativen Azure-Zertifikatauthentifizierung: Azure-Portal
 
@@ -41,7 +41,7 @@ Sie können die folgenden Werte zum Erstellen einer Testumgebung oder zum besser
 * **Subnetzadressbereich:** 192.168.1.0/24
 * **Abonnement:** Falls Sie über mehrere Abonnements verfügen, vergewissern Sie sich, dass Sie das richtige Abonnement verwenden.
 * **Ressourcengruppe:** TestRG
-* **Standort:** USA (Ost)
+* **Standort:** East US
 * **GatewaySubnet:** 192.168.200.0/24<br>
 * **DNS-Server:** (optional) IP-Adresse des DNS-Servers, der für die Namensauflösung verwendet werden soll
 * **Name des Gateways des virtuellen Netzwerks:** VNet1GW
@@ -98,7 +98,7 @@ Der Clientadresspool ist ein Bereich privater IP-Adressen, die Sie angeben. Den 
 2. Klicken Sie auf **Jetzt konfigurieren**, um die Konfigurationsseite zu öffnen.
 
    ![Jetzt konfigurieren](./media/vpn-gateway-howto-point-to-site-resource-manager-portal/configurenow.png)
-3. Fügen Sie auf der Konfigurationsseite **Punkt-zu-Standort** im Feld **Adresspool** den privaten IP-Adressbereich hinzu, den Sie verwenden möchten. VPN-Clients wird aus dem von Ihnen angegebenen Bereich dynamisch eine IP-Adresse zugewiesen. Klicken Sie auf **Speichern**, um die Einstellung zu überprüfen und zu speichern.
+3. Fügen Sie auf der Konfigurationsseite **Punkt-zu-Standort** im Feld **Adresspool** den privaten IP-Adressbereich hinzu, den Sie verwenden möchten. VPN-Clients wird aus dem von Ihnen angegebenen Bereich dynamisch eine IP-Adresse zugewiesen. Der Wert der kleinstmöglichen Subnetzmaske beträgt 29 Bit für die Aktiv/Passiv-Konfiguration und 28 Bit für die Aktiv/Aktiv-Konfiguration. Klicken Sie auf **Speichern**, um die Einstellung zu überprüfen und zu speichern.
 
    ![Clientadresspool](./media/vpn-gateway-howto-point-to-site-resource-manager-portal/addresspool.png)
 

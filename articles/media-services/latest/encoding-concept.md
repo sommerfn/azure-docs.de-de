@@ -9,15 +9,15 @@ editor: ''
 ms.service: media-services
 ms.workload: ''
 ms.topic: article
-ms.date: 05/10/2019
+ms.date: 06/08/2019
 ms.author: juliako
 ms.custom: seodec18
-ms.openlocfilehash: 25b3209bed98ea217db9e414caa6f08cee6d8c89
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: b0a71e8b3ffff822521a23aafd6764bcce9bd4d4
+ms.sourcegitcommit: 82efacfaffbb051ab6dc73d9fe78c74f96f549c2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65761881"
+ms.lasthandoff: 06/20/2019
+ms.locfileid: "67303934"
 ---
 # <a name="encoding-with-media-services"></a>Codierung mit Media Services
 
@@ -25,7 +25,7 @@ Der Begriff Codierung beschreibt in Media Services den Prozess der Konvertierung
 
 Das Übermitteln der Videos an Geräte und Anwendungen erfolgt in der Regel durch [progressiven Download](https://en.wikipedia.org/wiki/Progressive_download) oder über [Adaptive Bitrate Streaming](https://en.wikipedia.org/wiki/Adaptive_bitrate_streaming). 
 
-* Zur Bereitstellung per progressivem Download können Sie Azure Media Services zum Konvertieren Ihrer digitalen Mediendatei (Mezzanine) in eine [MP4](https://en.wikipedia.org/wiki/MPEG-4_Part_14)-Datei verwenden, die das Video, das mit dem [H.264](https://en.wikipedia.org/wiki/H.264/MPEG-4_AVC)-Codec codiert wurde, und die Audiodatei, die mit dem [AAC](https://en.wikipedia.org/wiki/Advanced_Audio_Coding)-Codec codiert wurde, enthält. Diese MP4-Datei wird in ein Medienobjekt in Ihrem Speicherkonto geschrieben. Sie können die Azure Storage-APIs oder -SDKs verwenden (z. B. [Storage-REST-API](../../storage/common/storage-rest-api-auth.md), [JAVA SDK](../../storage/blobs/storage-quickstart-blobs-java-v10.md) oder .[NET SDK](../../storage/blobs/storage-quickstart-blobs-dotnet.md)), um die Datei direkt herunterzuladen. Wenn Sie das Ausgabemedienobjekt mit einem bestimmten Containernamen im Speicher erstellt haben, verwenden Sie die diesen Speicherort. Andernfalls können Sie Media Services verwenden, um [die Medienobjektcontainer-URLs aufzulisten](https://docs.microsoft.com/rest/api/media/assets/listcontainersas). 
+* Zur Bereitstellung per progressivem Download können Sie Azure Media Services zum Konvertieren einer digitalen Mediendatei (Mezzanine) in eine [MP4](https://en.wikipedia.org/wiki/MPEG-4_Part_14)-Datei verwenden, die das Video, das mit dem [H.264](https://en.wikipedia.org/wiki/H.264/MPEG-4_AVC)-Codec codiert wurde, sowie die Audiodatei enthält, die mit dem [AAC](https://en.wikipedia.org/wiki/Advanced_Audio_Coding)-Codec codiert wurde. Diese MP4-Datei wird in ein Medienobjekt in Ihrem Speicherkonto geschrieben. Sie können die Azure Storage-APIs oder -SDKs verwenden (z. B. [Storage-REST-API](../../storage/common/storage-rest-api-auth.md), [JAVA SDK](../../storage/blobs/storage-quickstart-blobs-java-v10.md) oder .[NET SDK](../../storage/blobs/storage-quickstart-blobs-dotnet.md)), um die Datei direkt herunterzuladen. Wenn Sie das Ausgabemedienobjekt mit einem bestimmten Containernamen im Speicher erstellt haben, verwenden Sie die diesen Speicherort. Andernfalls können Sie Media Services verwenden, um [die Medienobjektcontainer-URLs aufzulisten](https://docs.microsoft.com/rest/api/media/assets/listcontainersas). 
 * Die Mezzanine-Datei muss mit mehreren Bitraten (hoch bis niedrig) codiert werden, um Inhalte für die Übermittlung durch das Adaptive Bitrate Streaming vorzubereiten. Mit abnehmender Bitrate wird auch die Auflösung des Videos verringert, um eine gleichmäßige Qualitätsminderung zu gewährleisten. Dies führt zu einer sogenannten Codierungsleiter, also einer Tabelle mit Auflösungen und Bitraten. Weitere Informationen hierzu erhalten Sie unter [auto-generated adaptive bitrate ladder (Automatisches Generieren einer Reihe von adaptiven Bitraten)](autogen-bitrate-ladder.md). Sie können Media Services zum Codieren Ihrer Mezzanine-Dateien mit mehreren Bitraten verwenden. Dabei erhalten Sie einige MP4-Dateien und zugeordnete Streaming-Konfigurationsdateien, die in ein Medienobjekt in Ihrem Speicherkonto geschrieben werden. Sie können dann die Funktion [Dynamische Paketerstellung](dynamic-packaging-overview.md) in Media Services verwenden, um das Video über Streamingprotokolle wie [MPEG-DASH](https://en.wikipedia.org/wiki/Dynamic_Adaptive_Streaming_over_HTTP) oder [HLS](https://en.wikipedia.org/wiki/HTTP_Live_Streaming) bereitzustellen. Dazu müssen Sie einen [Streaminglocator](streaming-locators-concept.md) und Streaming-URLs erstellen, die dem unterstützten Protokoll entsprechen. Dieses kann dann je nach Funktionen von Geräten/Anwendungen an diese übergeben werden.
 
 Das folgende Diagramm zeigt den Workflow für bedarfsgesteuerte Codierung mit der dynamischen Paketerstellung.
@@ -47,11 +47,46 @@ Ab Januar 2019 wird bei der Codierung mit Media Encoder Standard zum Erzeugen vo
 > [!NOTE]
 > Sie sollten weder die MPI-Datei ändern oder entfernen noch beliebige Abhängigkeiten vom Vorhandensein (oder Nichtvorhandensein) einer solchen Datei in Ihren Dienst integrieren.
 
+### <a name="creating-job-input-from-an-https-url"></a>Erstellen einer Auftragseingabe aus einer HTTPS-URL
+
+Wenn Sie Aufträge zur Verarbeitung von Videos übermitteln, müssen Sie Media Services mitteilen, wo sich das Eingabevideo befindet. Eine der Optionen ist die Angabe einer HTTPS-URL als Auftragseingabe. Media Services v3 unterstützt derzeit keine segmentierte Transfercodierung über HTTPS-URLs. 
+
+#### <a name="examples"></a>Beispiele
+
+* [Codieren über eine HTTPS-URL mit .NET](stream-files-dotnet-quickstart.md)
+* [Codieren über eine HTTPS-URL mit REST](stream-files-tutorial-with-rest.md)
+* [Codieren über eine HTTPS-URL mit einer CLI](stream-files-cli-quickstart.md)
+* [Codieren über eine HTTPS-URL mit Node.js](stream-files-nodejs-quickstart.md)
+
+### <a name="creating-job-input-from-a-local-file"></a>Erstellen einer Auftragseingabe aus einer lokalen Datei
+
+Das Eingabevideo kann als Media Service-Medienobjekt gespeichert werden. In diesem Fall erstellen Sie ein Eingabemedienobjekt basierend auf einer Datei (die lokal oder in Azure Blob Storage gespeichert ist). 
+
+#### <a name="examples"></a>Beispiele
+
+[Codieren einer lokalen Datei mithilfe von integrierten Voreinstellungen](job-input-from-local-file-how-to.md)
+
+### <a name="creating-job-input-with-subclipping"></a>Erstellen von Auftragseingaben mithilfe von Subclips
+
+Beim Codieren eines Videos können Sie ebenfalls angeben, dass die Quelldatei zugeschnitten oder in Subclips unterteilt werden soll. Dadurch erzeugen Sie eine Ausgabe, die nur den gewünschten Teil des Eingabevideos enthält. Dies funktioniert mit jeder [Transformation](https://docs.microsoft.com/rest/api/media/transforms), die entweder mit den [BuiltInStandardEncoderPreset](https://docs.microsoft.com/rest/api/media/transforms/createorupdate#builtinstandardencoderpreset)-Voreinstellungen oder mit den [StandardEncoderPreset](https://docs.microsoft.com/rest/api/media/transforms/createorupdate#standardencoderpreset)-Voreinstellungen erstellt wird. 
+
+Sie können angeben, dass ein [Auftrag](https://docs.microsoft.com/rest/api/media/jobs/create) mit einem einzelnen Clip eines On-Demand-Videos oder aus einem Livearchiv (einem aufgezeichneten Ereignis) erstellt werden soll. Bei der Auftragseingabe kann es sich um ein Objekt oder um eine HTTPS-URL handeln.
+
+> [!TIP]
+> Wenn Sie einen Subclip Ihres Videos streamen möchten, ohne das Video erneut zu codieren, sollten Sie [Manifeste mithilfe des dynamischen Packagers vorfiltern](filters-dynamic-manifest-overview.md).
+
+#### <a name="examples"></a>Beispiele
+
+Beispiele finden Sie hier:
+
+* [Subclip a video with .NET (Erstellen von Subclips mit .NET)](subclip-video-dotnet-howto.md)
+* [Subclip a video with REST (Erstellen von Subclips mit REST)](subclip-video-rest-howto.md)
+
 ## <a name="built-in-presets"></a>Integrierte Voreinstellungen
 
 Media Services unterstützt derzeit die folgenden integrierten Codierungsvoreinstellungen:  
 
-### <a name="builtinstandardencoderpreset-preset"></a>Voreinstellung „BuiltInStandardEncoderPreset“
+### <a name="builtinstandardencoderpreset"></a>BuiltInStandardEncoderPreset
 
 [BuiltInStandardEncoderPreset](https://docs.microsoft.com/rest/api/media/transforms/createorupdate#builtinstandardencoderpreset) wird zum Festlegen einer integrierten Voreinstellung für die Codierung des Eingabevideos mit dem Standard-Encoder verwendet. 
 
@@ -71,7 +106,7 @@ Die aktuellste Liste der Voreinstellungen finden Sie unter [Integrierte Voreinst
 
 Informationen zur Verwendung der Voreinstellungen finden Sie unter [Hochladen, Codieren und Streamen von Dateien](stream-files-tutorial-with-api.md).
 
-### <a name="standardencoderpreset-preset"></a>Voreinstellung „StandardEncoderPreset“
+### <a name="standardencoderpreset"></a>StandardEncoderPreset
 
 [StandardEncoderPreset](https://docs.microsoft.com/rest/api/media/transforms/createorupdate#standardencoderpreset) beschreibt die Einstellungen, die beim Codieren des Eingabevideos mit dem Standard-Encoder verwendet werden sollen. Verwenden Sie diese Voreinstellung, wenn Sie Transformationseinstellungen anpassen. 
 
@@ -82,9 +117,11 @@ Beim Erstellen von benutzerdefinierten Voreinstellungen gelten die folgenden Üb
 - Alle Werte für Höhe und Breite in AVC-Inhalt müssen ein Vielfaches von 4 sein.
 - In Azure Media Services v3 werden alle Codierungsbitraten in Bits pro Sekunde angegeben. Dies unterscheidet sich von den Voreinstellungen bei unseren v2-APIs. Dort wurden Kilobits pro Sekunde (KBit/s) als Einheit verwendet. Wenn beispielsweise die Bitrate in v2 als 128 (Kilobits/Sekunde) angegeben wurde, würde sie in v3 auf 128.000 (Bits/Sekunde) festgelegt.
 
-#### <a name="examples"></a>Beispiele
+### <a name="customizing-presets"></a>Anpassen von Voreinstellungen
 
 Media Services unterstützt die vollständige Anpassung aller Werte in Voreinstellungen zum Erfüllen Ihrer spezifischen Codierungsanforderungen. Beispiele zum Anpassen von Encodervoreinstellungen finden Sie unter:
+
+#### <a name="examples"></a>Beispiele
 
 - [Anpassen von Voreinstellungen mit .NET](customize-encoder-presets-how-to.md)
 - [Anpassen von Voreinstellungen mit der CLI](custom-preset-cli-howto.md)
@@ -104,7 +141,7 @@ Im Artikel [Azure Media Services-Community](media-services-community.md) finden 
 
 ## <a name="next-steps"></a>Nächste Schritte
 
+* [Hochladen, Codieren und Streamen mit Media Services](stream-files-tutorial-with-api.md)
 * [Codieren aus einer HTTPS-URL mithilfe von integrierten Voreinstellungen](job-input-from-http-how-to.md)
 * [Codieren einer lokalen Datei mithilfe von integrierten Voreinstellungen](job-input-from-local-file-how-to.md)
 * [Entwickeln einer benutzerdefinierten Voreinstellung für Ihr spezielles Szenario oder Ihre Geräteanforderungen](customize-encoder-presets-how-to.md)
-* [Hochladen, Codieren und Streamen mit Media Services](stream-files-tutorial-with-api.md)

@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 12/19/2018
 ms.author: heidist
 ms.custom: seodec2018
-ms.openlocfilehash: 8923c94409dcf079179ed0464046e39ef7654c4c
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 8c067b6e238fab2970e5e40f0660a5c7555a8f2e
+ms.sourcegitcommit: 82efacfaffbb051ab6dc73d9fe78c74f96f549c2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65949830"
+ms.lasthandoff: 06/20/2019
+ms.locfileid: "67302231"
 ---
 # <a name="how-to-index-large-data-sets-in-azure-search"></a>Indizieren großer Datasets in Azure Search
 
@@ -54,7 +54,7 @@ Indexerzeitpläne sind ein wichtiger Mechanismus zum Verarbeiten von großen Dat
 
 Standardmäßig startet die geplante Indizierung zu bestimmten Zeitintervallen. Dabei wird ein Vorgang in der Regel abgeschlossen, bevor die Indizierung zum nächsten geplanten Intervall fortgesetzt wird. Wenn der Vorgang jedoch nicht innerhalb des Intervalls abgeschlossen wird, wird der Indexer beendet, da ein Timeout auftritt. Beim nächsten Intervall wird die Verarbeitung an der Stelle fortgesetzt, an der sie während des letzten Intervalls unterbrochen wurde. Dabei verfolgt das System nach, an welcher Stelle dies der Fall ist. 
 
-Das heißt in der Praxis, dass Sie für Indexladungen, die sich über mehrere Tage erstrecken, einen 24-Stunden-Zeitplan für den Indexer festlegen können. Wenn eine Indizierung für den nächsten 24-Stunden-Zyklus fortgesetzt wird, startet diese bei dem letzten erfolgreich verarbeiteten Dokument neu. Auf diese Weise kann sich ein Indexer über mehrere Tage hinweg durch das Dokumentbacklog durcharbeiten, bis alle nicht verarbeitete Dokumente verarbeitet wurden. Weitere Informationen zu diesem Ansatz finden Sie unter [Indizieren großer Datasets](search-howto-indexing-azure-blob-storage.md#indexing-large-datasets). Weitere Informationen zum Festlegen der Zeitpläne im Allgemeinen finden Sie unter [Anforderungssyntax](https://docs.microsoft.com/rest/api/searchservice/Create-Indexer#request-syntax).
+Das heißt in der Praxis, dass Sie für Indexladungen, die sich über mehrere Tage erstrecken, einen 24-Stunden-Zeitplan für den Indexer festlegen können. Wenn eine Indizierung für den nächsten 24-Stunden-Zyklus fortgesetzt wird, startet diese bei dem letzten erfolgreich verarbeiteten Dokument neu. Auf diese Weise kann sich ein Indexer über mehrere Tage hinweg durch das Dokumentbacklog durcharbeiten, bis alle nicht verarbeitete Dokumente verarbeitet wurden. Weitere Informationen zu diesem Ansatz finden Sie unter [Indizieren großer Datasets](search-howto-indexing-azure-blob-storage.md#indexing-large-datasets). Weitere Informationen zum Festlegen der Zeitpläne im Allgemeinen finden Sie unter [Erstellen von Indexer-REST-API](https://docs.microsoft.com/rest/api/searchservice/Create-Indexer#request-syntax) oder [How to schedule indexers for Azure Search (Festlegen eines Zeitplans für Indexer in Azure Search)](search-howto-schedule-indexers.md).
 
 <a name="parallel-indexing"></a>
 

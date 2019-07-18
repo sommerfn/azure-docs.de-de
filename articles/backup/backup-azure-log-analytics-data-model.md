@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 02/26/2019
 ms.author: adigan
-ms.openlocfilehash: dd4dad2cc3e541d3b6866c02341161dc1d9e1e6c
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 801516ae2cfad891098c16f8cd6e9a4c7f157a93
+ms.sourcegitcommit: a12b2c2599134e32a910921861d4805e21320159
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61234920"
+ms.lasthandoff: 06/24/2019
+ms.locfileid: "67342013"
 ---
 # <a name="log-analytics-data-model-for-azure-backup-data"></a>Log Analytics-Datenmodell für Azure Backup-Daten
 
@@ -50,7 +50,7 @@ Diese Tabelle enthält Details zu warnungsbezogenen Feldern.
 | OperationName |Text |Name des aktuellen Vorgangs, z.B. Warnung |
 | Category (Kategorie) |Text |Kategorie der Diagnosedaten, die mithilfe von Push in Azure Monitor-Protokolle übertragen werden Immer „AzureBackupReport“ |
 | Resource |Text |Die Ressource, für die Daten erfasst werden; zeigt den Recovery Services-Tresornamen an |
-| ProtectedServerUniqueId_s |Text |Eindeutiger Bezeichner des geschützten Servers, der der Warnung zugeordnet ist |
+| ProtectedContainerUniqueId_s |Text |Eindeutiger Bezeichner des geschützten Servers, der der Warnung zugeordnet ist (war ProtectedServerUniqueId_s in V1)|
 | VaultUniqueId_s |Text |Eindeutiger Bezeichner des geschützten Tresors, der der Warnung zugeordnet ist |
 | SourceSystem |Text |Quellsystem der aktuellen Daten: Azure |
 | resourceId |Text |Eindeutiger Bezeichner der Ressource, zu der Daten gesammelt werden. Beispiel: eine Ressourcen-ID des Recovery Services-Tresors |
@@ -67,10 +67,12 @@ Diese Tabelle enthält Details zu Feldern in Bezug auf Sicherungselemente.
 | --- | --- | --- |
 | EventName_s |Text |Name der Veranstaltung. Immer „AzureBackupCentralReport“ |  
 | BackupItemUniqueId_s |Text |Eindeutiger Bezeichner des Sicherungselements |
-| BackupItemId_s |Text |Bezeichner des Sicherungselements |
+| BackupItemId_s |Text |Bezeichner des Sicherungselements (dieses Feld gilt nur für das V1-Schema) |
 | BackupItemName_s |Text |Name des Sicherungselements |
 | BackupItemFriendlyName_s |Text |Anzeigename des Sicherungselements |
 | BackupItemType_s |Text |Typ des Sicherungselements, z.B. VM, FileFolder |
+| BackupItemProtectionState_s |Text |Schutzstatus des Sicherungselements |
+| BackupItemAppVersion_s |Text |Anwendungsversion des Sicherungselements |
 | ProtectionState_s |Text |Aktueller Schutzstatus des Sicherungselements, z.B. „Geschützt“, „Schutz beendet“ |
 | ProtectionGroupName_s |Text | Name der Schutzgruppe, in der das Sicherungselement geschützt wird, (falls zutreffend) für System Center Data Protection Manager (SC DPM) und Microsoft Azure Backup Server (MABS)|
 | SecondaryBackupProtectionState_s |Text |Gibt an, ob der sekundäre Schutz für das Sicherungselement aktiviert ist|
@@ -103,8 +105,7 @@ Diese Tabelle enthält Details zur Zuordnung von Sicherungselementen zu verschie
 | Category (Kategorie) |Text |Dieses Feld repräsentiert die Kategorie der Diagnosedaten, die an Log Analytics übermittelt werden: AzureBackupReport |
 | OperationName |Text |Dieses Feld repräsentiert den Namen des aktuellen Vorgangs: BackupItemAssociation |
 | Resource |Text |Die Ressource, für die Daten erfasst werden; zeigt den Recovery Services-Tresornamen an |
-| PolicyUniqueId_g |Text |Eindeutiger Bezeichner der Richtlinie, die dem Sicherungselement zugeordnet ist |
-| ProtectedServerUniqueId_s |Text |Eindeutiger Bezeichner des geschützten Servers, der dem Sicherungselement zugeordnet ist |
+| ProtectedContainerUniqueId_s |Text |Eindeutiger Bezeichner des geschützten Servers, der dem Sicherungselement zugeordnet ist (war ProtectedServerUniqueId_s in V1) |
 | VaultUniqueId_s |Text |Eindeutiger Bezeichner des Tresors, der das Sicherungselement enthält |
 | SourceSystem |Text |Quellsystem der aktuellen Daten: Azure |
 | resourceId |Text |Ressourcenbezeichner der Daten, die erfasst werden. Beispiel: Ressourcen-ID des Recovery Services-Tresors |
@@ -249,13 +250,14 @@ Diese Tabelle enthält grundlegende Felder zu geschützten Containern (ehemals �
 | ProtectedContainerOSType_s |Text |Betriebssystemtyp des geschützten Containers |
 | ProtectedContainerOSVersion_s |Text |Betriebssystemversion des geschützten Containers |
 | AgentVersion_s |Text |Versionsnummer der Agentsicherung oder des Schutzagenten (im Fall von SC DPM und MABS) |
-| BackupManagementType_s |Text |Anbietertyp für die Sicherung, z.B. IaaSVM, FileFolder |
-| EntityState_s |Text |Aktueller Status des Objekts des geschützten Servers, z.B. Aktiv, Gelöscht |
+| BackupManagementType_s |Text |Anbietertyp für die durchgeführte Sicherung. Beispielsweise IaaSVM, FileFolder. |
+| EntityState_s |Text |Aktueller Status des Objekts des geschützten Servers. Beispielsweise Active (Aktiv), Deleted (Gelöscht). |
 | ProtectedContainerFriendlyName_s |Text |Anzeigename des geschützten Servers |
 | ProtectedContainerName_s |Text |Name des geschützten Containers |
-| ProtectedContainerWorkloadType_s |Text |Typ des geschützten Containers, der gesichert wird, z. B. IaaSVMContainer |
+| ProtectedContainerWorkloadType_s |Text |Typ des gesicherten geschützten Containers. Beispielsweise IaaSVMContainer. |
 | ProtectedContainerLocation_s |Text |Gibt an, ob der geschützte Container ein lokaler Container ist oder sich in Azure befindet |
 | ProtectedContainerType_s |Text |Gibt an, ob der geschützte Container ein Server oder ein Container ist |
+| ProtectedContainerProtectionState_s’  |Text |Schutzstatus des geschützten Containers |
 
 ### <a name="storage"></a>Storage
 
@@ -263,7 +265,7 @@ Diese Tabelle enthält Details zu speicherbezogenen Feldern.
 
 | Feld | Datentyp | BESCHREIBUNG |
 | --- | --- | --- |
-| CloudStorageInBytes_s |Dezimalzahl |Von Sicherungen belegter Sicherungsspeicher in der Cloud, berechnet anhand des letzten Werts |
+| CloudStorageInBytes_s |Dezimalzahl |Von Sicherungen belegter Sicherungsspeicher in der Cloud, wobei die Berechnung basierend auf dem letzten Wert erfolgt (dieses Feld gilt nur für das V1-Schema).|
 | ProtectedInstances_s |Dezimalzahl |Anzahl der geschützten Instanzen, die zum Berechnen von Front-End-Speicher in der Abrechnung verwendet werden, berechnet anhand des letzten Werts |
 | EventName_s |Text |Dieses Feld stellt den Namen des Ereignisses dar, es lautet immer „AzureBackupCentralReport“ |
 | SchemaVersion_s |Text |Dieses Feld gibt die aktuelle Version des Schemas an: **V2** |
@@ -280,6 +282,10 @@ Diese Tabelle enthält Details zu speicherbezogenen Feldern.
 | ResourceGroup |Text |Ressourcengruppe der Ressource (z.B. Recovery Services-Tresor), zu der Daten gesammelt werden |
 | ResourceProvider |Text |Ressourcenanbieter, für den Daten gesammelt werden. Beispiel: Microsoft.RecoveryServices |
 | ResourceType |Text |Ressourcentyp, für den Daten gesammelt werden. Beispiel: Tresore |
+| StorageUniqueId_s |Text |Eindeutige ID, mithilfe derer die Speicherentität bestimmt wird |
+| StorageType_s |Text |Typ des Speichers, z. B. Cloud-, Volumen-, Datenträgerspeicher |
+| StorageName_s |Text |Name der Speicherentität, z. B. E:\ |
+| StorageTotalSizeInGBs_s |Text |Gesamtgröße des von der Speicherentität verwendeten Speichers in GB|
 
 ### <a name="storageassociation"></a>StorageAssociation
 

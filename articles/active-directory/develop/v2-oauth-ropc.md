@@ -17,12 +17,12 @@ ms.author: ryanwi
 ms.reviewer: hirsin
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 04d2be76072866da2b21718f60fd0c9a5923b15b
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: da111311de7b873be6453862ffcbd56fe546ea7f
+ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65545106"
+ms.lasthandoff: 07/01/2019
+ms.locfileid: "67482379"
 ---
 # <a name="microsoft-identity-platform-and-the-oauth-20-resource-owner-password-credential"></a>Microsoft Identity Platform und die OAuth 2.0-Kennwortanmeldeinformationen des Ressourcenbesitzers
 
@@ -39,7 +39,7 @@ Die Microsoft Identity Platform unterstützt die [Gewährung für Kennwortanmeld
 
 Dieses Diagramm zeigt den ROPC-Flow:
 
-![ROPC-Flow](./media/v2-oauth2-ropc/v2-oauth-ropc.svg)
+![Diagramm mit ROPC-Flow (Resource Owner Password Credential)](./media/v2-oauth2-ropc/v2-oauth-ropc.svg)
 
 ## <a name="authorization-request"></a>Authorization request (Autorisierungsanforderung)
 
@@ -47,7 +47,7 @@ Der ROPC-Flow ist eine einzelne Anforderung &mdash; die Clientidentifikation und
 
 > [!TIP]
 > Führen Sie diese Anforderung in Postman aus.
-> [![Ausführen in Postman](./media/v2-oauth2-auth-code-flow/runInPostman.png)](https://app.getpostman.com/run-collection/f77994d794bab767596d)
+> [![Diese Anforderung in Postman ausführen](./media/v2-oauth2-auth-code-flow/runInPostman.png)](https://app.getpostman.com/run-collection/f77994d794bab767596d)
 
 
 ```

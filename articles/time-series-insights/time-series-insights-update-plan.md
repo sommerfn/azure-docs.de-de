@@ -10,12 +10,12 @@ services: time-series-insights
 ms.topic: conceptual
 ms.date: 04/30/2019
 ms.custom: seodec18
-ms.openlocfilehash: 435e5f2163270672ac5f1f5695ca2fe9be22ee6b
-ms.sourcegitcommit: 3d4121badd265e99d1177a7c78edfa55ed7a9626
+ms.openlocfilehash: 5f89105abc21f5ef6cce53ea55622a808f947e86
+ms.sourcegitcommit: a7ea412ca4411fc28431cbe7d2cc399900267585
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/30/2019
-ms.locfileid: "66388729"
+ms.lasthandoff: 06/25/2019
+ms.locfileid: "67357304"
 ---
 # <a name="plan-your-azure-time-series-insights-preview-environment"></a>Planen Ihrer Azure Time Series Insights Preview-Umgebung
 
@@ -88,5 +88,8 @@ Weitere Informationen finden Sie unter [Gestalten von Ereignissen](./time-series
 
 ## <a name="next-steps"></a>Nächste Schritte
 
+- Planen Sie mithilfe des Artikels [Einführung in Azure Advisor](../advisor/advisor-overview.md) Ihre Konfigurationseinstellungen für die Geschäftswiederherstellung.
+
 - Weitere Informationen zu [Speicherung und Dateneingang](./time-series-insights-update-storage-ingress.md) finden Sie in der Time Series Insights-Vorschauversion.
+
 - Weitere Informationen zu [Datenmodellierung](./time-series-insights-update-tsm.md) finden Sie in der Time Series Insights-Vorschauversion.

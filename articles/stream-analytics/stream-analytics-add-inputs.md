@@ -4,23 +4,22 @@ description: In diesem Artikel wird das Konzept von Eingaben in einem Azure Stre
 services: stream-analytics
 author: jseb225
 ms.author: jeanb
-manager: kfile
 ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
-ms.date: 04/25/2018
-ms.openlocfilehash: 408a77dd5409f8604a059d3bc7f37ffe1e3d6ba2
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.date: 06/11/2019
+ms.openlocfilehash: 87e260c97a748807929a0e7021e3efb2ae8f8e7b
+ms.sourcegitcommit: 08138eab740c12bf68c787062b101a4333292075
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57855366"
+ms.lasthandoff: 06/22/2019
+ms.locfileid: "67329287"
 ---
 # <a name="understand-inputs-for-azure-stream-analytics"></a>Grundlegendes zu Eingaben für Azure Stream Analytics
 
 Azure Stream Analytics-Aufträge stellen eine Verbindung mit einer oder mehreren Dateneingaben her. Jede Eingabe definiert eine Verbindung mit einer vorhandenen Datenquelle. Stream Analytics akzeptiert eingehende Daten aus verschiedenen Arten von Ereignisquellen einschließlich Event Hubs, IoT Hub und Blob Storage. Auf die Eingaben wird in der SQL-Streamingabfrage, die Sie für jeden Auftrag schreiben, namentlich verwiesen. In der Abfrage können Sie mehrere Eingaben verknüpfen, um Daten zu kombinieren oder Streamingdaten anhand einer Suche mit Verweisdaten zu vergleichen, und die Ergebnisse an Ausgaben übergeben. 
 
-Stream Analytics bietet eine erstklassige Integration von drei Arten von Ressourcen als Eingaben:
+Stream Analytics bietet eine erstklassige Integration in drei Arten von Ressourcen als Eingaben:
 - [Azure Event Hubs](https://azure.microsoft.com/services/event-hubs/)
 - [Azure IoT Hub](https://azure.microsoft.com/services/iot-hub/) 
 - [Azure Blob Storage](https://azure.microsoft.com/services/storage/blobs/) 
@@ -38,7 +37,7 @@ Ein Datenstrom ist eine ungebundene Abfolge von Ereignissen im Verlauf der Zeit.
 Weitere Informationen zu Streamingdateneingaben finden Sie unter [Streamen von Daten als Eingabe in Stream Analytics](stream-analytics-define-inputs.md).
 
 ### <a name="reference-data-input"></a>Verweisdateneingabe
-Stream Analytics unterstützt auch Eingaben wie *Verweisdaten*. Verweisdaten sind entweder vollständig statisch oder werden nur langsam geändert. Sie werden normalerweise zum Ausführen von Korrelationen und Suchvorgängen verwendet. Beispielsweise können Sie Daten in der Datenstromeingabe mit den Daten in den Verweisdaten verknüpfen – ähnlich wie bei einer SQL-Verknüpfung zum Suchen statischer Werte. Azure Blob Storage ist derzeit die einzige unterstützte Eingabequelle für Verweisdaten. Quellblobs für Verweisdaten weisen ein Limit von 300 MB auf, je nach Abfragekomplexität und zugeordneten Streamingeinheiten.
+Stream Analytics unterstützt auch Eingaben wie *Verweisdaten*. Verweisdaten sind entweder vollständig statisch oder werden nur langsam geändert. Sie werden normalerweise zum Ausführen von Korrelationen und Suchvorgängen verwendet. Beispielsweise können Sie Daten in der Datenstromeingabe mit den Daten in den Verweisdaten verknüpfen – ähnlich wie bei einer SQL-Verknüpfung zum Suchen statischer Werte. Azure Blob Storage und Azure SQL-Datenbank werden derzeit als Eingabequellen für Verweisdaten unterstützt. Quellblobs für Referenzdaten dürfen je nach Komplexität der Abfrage und zugeordneten Streamingeinheiten nicht mehr als 300 MB umfassen (weitere Informationen finden Sie im Abschnitt [Größenbeschränkung](stream-analytics-use-reference-data.md#size-limitation) in der Dokumentation zu Referenzdaten).
 
 Weitere Informationen zu Verweisdateneingaben finden Sie unter [Verwenden von Verweisdaten für Suchvorgänge in Stream Analytics](stream-analytics-use-reference-data.md).
 

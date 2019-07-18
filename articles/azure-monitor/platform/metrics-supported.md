@@ -8,12 +8,12 @@ ms.topic: reference
 ms.date: 05/20/2019
 ms.author: ancav
 ms.subservice: metrics
-ms.openlocfilehash: f3907cbc46bd226ef8e90d2061f2d36b2afabf8a
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 490b96698268fb8717bc1169c2cceb932aad913c
+ms.sourcegitcommit: a52d48238d00161be5d1ed5d04132db4de43e076
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65957158"
+ms.lasthandoff: 06/20/2019
+ms.locfileid: "67273789"
 ---
 # <a name="supported-metrics-with-azure-monitor"></a>Unterstützte Metriken von Azure Monitor
 
@@ -676,14 +676,14 @@ Azure Monitor bietet verschiedene Methoden für die Interaktion mit Metriken, z.
 |d2c.endpoints.latency.serviceBusQueues|Routing: Nachrichtenwartezeit für Service Bus-Warteschlange|Millisekunden|Durchschnitt|Durchschnittliche Wartezeit (Millisekunden) zwischen dem Eingang der Nachricht beim IoT Hub und dem Eingang der Nachricht bei einem Service Bus-Warteschlangenendpunkt.|Keine Dimensionen|
 |d2c.endpoints.egress.serviceBusTopics|Routing: An Service Bus-Thema übermittelte Nachrichten|Count|Gesamt|Die Häufigkeit, mit der das IoT Hub-Routing erfolgreich Nachrichten an Service Bus-Themaendpunkte übermittelt hat.|Keine Dimensionen|
 |d2c.endpoints.latency.serviceBusTopics|Routing: Nachrichtenwartezeit für Service Bus-Thema|Millisekunden|Durchschnitt|Durchschnittliche Wartezeit (Millisekunden) zwischen dem Eingang der Nachricht beim IoT Hub und dem Eingang der Nachricht bei einem Service Bus-Themaendpunkt.|Keine Dimensionen|
-|d2c.endpoints.egress.builtIn.events|Routing: An Nachrichten/Ereignisse übermittelte Nachrichten|Count|Gesamt|Die Häufigkeit, mit der das IoT Hub-Routing erfolgreich Nachrichten an den integrierter Endpunkt (Nachrichten/Ereignisse) übermittelt hat.|Keine Dimensionen|
-|d2c.endpoints.latency.builtIn.events|Routing: Nachrichtenwartezeit für Nachrichten/Ereignisse|Millisekunden|Durchschnitt|Durchschnittliche Wartezeit (Millisekunden) zwischen dem Eingang der Nachricht beim IoT Hub und dem Eingang der Telemetrienachricht beim integrierten Endpunkt (Nachrichten/Ereignisse).|Keine Dimensionen|
+|d2c.endpoints.egress.builtIn.events|Routing: An Nachrichten/Ereignisse übermittelte Nachrichten|Count|Gesamt|Die Häufigkeit, mit der das IoT Hub-Routing erfolgreich Nachrichten an den integrierter Endpunkt (Nachrichten/Ereignisse) übermittelt hat. Diese Metrik beginnt nur dann zu arbeiten, wenn Routing für IoT-Hub aktiviert ist (https://aka.ms/iotrouting).|Keine Dimensionen|
+|d2c.endpoints.latency.builtIn.events|Routing: Nachrichtenwartezeit für Nachrichten/Ereignisse|Millisekunden|Durchschnitt|Durchschnittliche Wartezeit (Millisekunden) zwischen dem Eingang der Nachricht beim IoT Hub und dem Eingang der Telemetrienachricht beim integrierten Endpunkt (Nachrichten/Ereignisse). Diese Metrik beginnt nur dann zu arbeiten, wenn Routing für IoT-Hub aktiviert ist (https://aka.ms/iotrouting).|Keine Dimensionen|
 |d2c.endpoints.egress.storage|Routing: An den Speicher übermittelte Nachrichten|Count|Gesamt|Die Häufigkeit, mit der das IoT Hub-Routing erfolgreich Nachrichten an Speicherendpunkte übermittelt hat.|Keine Dimensionen|
 |d2c.endpoints.latency.storage|Routing: Nachrichtenwartezeit für Speicher|Millisekunden|Durchschnitt|Durchschnittliche Wartezeit (Millisekunden) zwischen dem Eingang der Nachricht beim IoT Hub und dem Eingang der Nachricht bei einem Speicherendpunkt.|Keine Dimensionen|
 |d2c.endpoints.egress.storage.bytes|Routing: An den Speicher übermittelte Daten|Byte|Gesamt|Die Datenmenge (Bytes), die das IoT Hub-Routing an die Speicherendpunkte übermittelt.|Keine Dimensionen|
 |d2c.endpoints.egress.storage.blobs|Routing: An den Speicher übermittelte Blobs|Count|Gesamt|Die Häufigkeit, mit der das IoT Hub-Routing Blobs an Speicherendpunkte übermittelt hat.|Keine Dimensionen|
-|EventGridDeliveries|Event Grid-Übermittlungen (Vorschau)|Count|Gesamt|Die Anzahl von Anforderungen für IoT Hub zum Ausgeben von Ereignissen an Event Grid. Diese Anzahl umfasst erfolgreiche und fehlgeschlagene Anforderungen. Verwenden Sie die Dimension „Result“ für die Anzahl der verschiedenen Antworttypen. Wenn Sie sehen möchten, woher die Anforderungen stammen, verwenden Sie die Dimension „EventType“.|Result, EventType|
-|EventGridLatency|Event Grid-Wartezeit (Vorschau)|Millisekunden|Durchschnitt|Die durchschnittliche Wartezeit (in Millisekunden) zwischen dem Ereigniseingang bei IoT Hub und dem Ereigniseingang in Event Grid. Diese Zahl ist ein Durchschnittswert für alle Ereignistypen. Verwenden Sie die Dimension „EventType“, um die Wartezeit für einen bestimmten Ereignistyp anzuzeigen.|EventType|
+|EventGridDeliveries|Event Grid-Übermittlungen (Vorschau)|Count|Gesamt|Die Anzahl von IoT Hub-Ereignissen, die in Event Grid veröffentlicht werden. Verwenden Sie die Dimension „Result“ für die Anzahl der erfolgreichen und fehlerhaften Anforderungen. Die „EventType“-Dimension zeigt den Typ des Ereignisses an(https://aka.ms/ioteventgrid).|Result, EventType|
+|EventGridLatency|Die durchschnittliche Wartezeit (in Millisekunden) für den Zeitraum zwischen der Generierung des Iot Hub-Ereignisses und der Veröffentlichung des Ereignisses in Event Grid. Diese Zahl ist ein Durchschnittswert für alle Ereignistypen. Verwenden Sie die Dimension „EventType“, um die Wartezeit für einen bestimmten Ereignistyp anzuzeigen.|EventType|
 |d2c.twin.read.success|Successful twin reads from devices (Erfolgreiche Zwillingslesevorgänge von Geräten)|Count|Gesamt|Gibt die Anzahl von erfolgreichen Zwillingslesevorgängen an, die vom Gerät initiiert wurden.|Keine Dimensionen|
 |d2c.twin.read.failure|Failed twin reads from devices (Nicht erfolgreiche Zwillingslesevorgänge von Geräten)|Count|Gesamt|Gibt die Anzahl von nicht erfolgreichen Zwillingslesevorgängen an, die vom Gerät initiiert wurden.|Keine Dimensionen|
 |d2c.twin.read.size|Response size of twin reads from devices (Antwortgröße von Zwillingslesevorgängen von Geräten)|Byte|Durchschnitt|Durchschnitts-, Minimal- und Maximalwert für alle erfolgreichen Zwillingslesevorgänge, die vom Gerät initiiert wurden.|Keine Dimensionen|
@@ -800,7 +800,7 @@ Azure Monitor bietet verschiedene Methoden für die Interaktion mit Metriken, z.
 |CaptureBacklog|Backlog erfassen.|Count|Gesamt|Erfassen des Backlogs für Microsoft.EventHub.|EntityName|
 |CapturedMessages|Erfasste Nachrichten.|Count|Gesamt|Erfasste Nachrichten für Microsoft.EventHub.|EntityName|
 |CapturedBytes|Erfasste Bytes.|Byte|Gesamt|Erfasste Bytes für Microsoft.EventHub.|EntityName|
-|Größe|Größe|Byte|Durchschnitt|Größe eines EventHub in Bytes.|EntityName|
+|Size|Size|Byte|Durchschnitt|Größe eines EventHub in Bytes.|EntityName|
 |INREQS|Eingehende Anforderungen (veraltet)|Count|Gesamt|Gesamtzahl eingehender Sendeanforderungen für einen Namespace (veraltet)|Keine Dimensionen|
 |SUCCREQ|Erfolgreiche Anforderungen (veraltet)|Count|Gesamt|Gesamtzahl erfolgreicher Anforderungen für einen Namespace (veraltet)|Keine Dimensionen|
 |FAILREQ|Fehlerhafte Anforderungen (veraltet)|Count|Gesamt|Gesamtzahl fehlerhafter Anforderungen für einen Namespace (veraltet)|Keine Dimensionen|
@@ -839,8 +839,8 @@ Azure Monitor bietet verschiedene Methoden für die Interaktion mit Metriken, z.
 |CaptureBacklog|Backlog erfassen. (Vorschau)|Count|Gesamt|Erfassen des Backlogs für Microsoft.EventHub. (Vorschau)|Keine Dimensionen|
 |CapturedMessages|Erfasste Nachrichten. (Vorschau)|Count|Gesamt|Erfasste Nachrichten für Microsoft.EventHub. (Vorschau)|Keine Dimensionen|
 |CapturedBytes|Erfasste Bytes. (Vorschau)|Byte|Gesamt|Erfasste Bytes für Microsoft.EventHub. (Vorschau)|Keine Dimensionen|
-|CPU|CPU (Vorschau)|Percent|Maximum|CPU-Auslastung für den Event Hub-Cluster in Prozent|Rolle|
-|AvailableMemory|Verfügbarer Arbeitsspeicher (Vorschau)|Count|Maximum|Verfügbarer Arbeitsspeicher für den Event Hub-Cluster in Byte|Rolle|
+|CPU|CPU (Vorschau)|Percent|Maximum|CPU-Auslastung für den Event Hub-Cluster in Prozent|Role|
+|AvailableMemory|Verfügbarer Arbeitsspeicher (Vorschau)|Count|Maximum|Verfügbarer Arbeitsspeicher für den Event Hub-Cluster in Byte|Role|
 
 ## <a name="microsofthdinsightclusters"></a>Microsoft.HDInsight/clusters
 
@@ -1389,7 +1389,7 @@ Azure Monitor bietet verschiedene Methoden für die Interaktion mit Metriken, z.
 |IncomingMessages|Eingehende Nachrichten (Vorschau)|Count|Gesamt|Eingehende Nachrichten für Microsoft.ServiceBus. (Vorschau)|EntityName|
 |OutgoingMessages|Ausgehende Nachrichten (Vorschau)|Count|Gesamt|Ausgehende Nachrichten für Microsoft.ServiceBus. (Vorschau)|EntityName|
 |ActiveConnections|Aktive Verbindungen (Vorschau)|Count|Gesamt|Aktive Verbindungen gesamt für Microsoft.ServiceBus. (Vorschau)|Keine Dimensionen|
-|Größe|Größe (Vorschau)|Byte|Durchschnitt|Größe einer Warteschlange/eines Themas in Bytes (Vorschau)|EntityName|
+|Size|Größe (Vorschau)|Byte|Durchschnitt|Größe einer Warteschlange/eines Themas in Bytes (Vorschau)|EntityName|
 |Meldungen|Anzahl von Nachrichten in einer Warteschlange/einem Thema (Vorschau)|Count|Durchschnitt|Anzahl von Nachrichten in einer Warteschlange/einem Thema (Vorschau)|EntityName|
 |ActiveMessages|Anzahl von aktiven Nachrichten in einer Warteschlange/einem Thema (Vorschau)|Count|Durchschnitt|Anzahl von aktiven Nachrichten in einer Warteschlange/einem Thema (Vorschau)|EntityName|
 |DeadletteredMessages|Anzahl von unzustellbaren Nachrichten in einer Warteschlange/einem Thema (Vorschau)|Count|Durchschnitt|Anzahl von unzustellbaren Nachrichten in einer Warteschlange/einem Thema (Vorschau)|EntityName|

@@ -6,13 +6,13 @@ ms.service: security
 ms.topic: article
 ms.author: cabailey
 manager: barbkess
-ms.date: 05/07/2019
-ms.openlocfilehash: 468e392cd2c45d79cbb24f8d737a6e83fbcd2725
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.date: 06/20/2019
+ms.openlocfilehash: 0ee2dde5a941d069f5b745eafb35df780f657a47
+ms.sourcegitcommit: 5cb0b6645bd5dff9c1a4324793df3fdd776225e4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65080684"
+ms.lasthandoff: 06/21/2019
+ms.locfileid: "67312619"
 ---
 # <a name="customer-lockbox-for-microsoft-azure"></a>Kunden-Lockbox für Microsoft Azure
 
@@ -97,7 +97,7 @@ Die folgenden Dienste und Szenarien sind derzeit für Kunden-Lockbox allgemein v
 ### <a name="remote-desktop-access-to-virtual-machines"></a>Remotedesktopzugriff auf virtuelle Computer
 
 Kunden-Lockbox ist derzeit für Remotedesktop-Zugriffsanforderungen auf virtuelle Computer aktiviert. Die folgenden Workloads werden unterstützt:
-- Platform as a Service (PaaS) – Version 1
+- Platform-as-a-Service (PaaS): Azure Cloud Services (Webrolle und Workerrolle)
 - Infrastructure-as-a-Service (IaaS) – Windows und Linux (nur Azure Resource Manager)
 - VM-Skalierungsgruppen – Windows und Linux
 

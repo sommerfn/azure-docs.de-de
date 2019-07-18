@@ -11,12 +11,12 @@ ms.subservice: core
 ms.topic: conceptual
 ms.date: 05/02/2019
 ms.custom: seodec18
-ms.openlocfilehash: df05bd984667283b0ccc143ba14fff6b35d69144
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 9c003ebaed645fcdefb379eb100220ccc2207d82
+ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66753181"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67202978"
 ---
 # <a name="configure-automated-ml-experiments-in-python"></a>Konfigurieren automatisierter ML-Experimente in Python
 
@@ -125,7 +125,7 @@ automl_config = AutoMLConfig(****, data_script=project_folder + "/get_data.py", 
 
 Das `get_data`-Skript kann Folgendes zurückgeben:
 
-Schlüssel | Type | Gegenseitiger Ausschluss mit    | BESCHREIBUNG
+Schlüssel | type | Gegenseitiger Ausschluss mit    | BESCHREIBUNG
 ---|---|---|---
 X | Pandas-Datenrahmen oder NumPy-Array | data_train, label, columns |  Alle Funktionen zum Trainieren.
 y | Pandas-Datenrahmen oder NumPy-Array |   label   | Labeldaten zum Trainieren. Bei der Klassifizierung muss es ein Array von ganzen Zahlen sein.
@@ -258,6 +258,20 @@ automl_config = AutoMLConfig(task='forecasting',
 ```
 
 ## <a name="run-experiment"></a>Ausführen des Experiments
+
+Für automatisierte ML-Experimente müssen Sie ein `Experiment`-Objekt erstellen. Dieses ist ein benanntes Objekt in einem `Workspace`, das verwendet wird, um Experimente durchzuführen.
+
+```python
+from azureml.core.experiment import Experiment
+
+ws = Workspace.from_config()
+
+# Choose a name for the experiment and specify the project folder.
+experiment_name = 'automl-classification'
+project_folder = './sample_projects/automl-classification'
+
+experiment = Experiment(ws, experiment_name)
+```
 
 Übermitteln Sie das auszuführende Experiment, um ein Modell zu generieren. Übergeben Sie die Methode `AutoMLConfig` an die `submit`-Methode, um das Modell zu generieren.
 

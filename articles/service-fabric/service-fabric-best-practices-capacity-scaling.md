@@ -1,5 +1,5 @@
 ---
-title: Azure Service Fabric – bewährte Methoden für die Kapazitätsplanung und Skalierung | Microsoft-Dokumentation
+title: Kapazitätsplanung und Skalierung für Azure Service Fabric | Microsoft-Dokumentation
 description: Bewährte Methoden für die Planung und Skalierung von Service Fabric-Clustern und -Anwendungen.
 services: service-fabric
 documentationcenter: .net
@@ -14,45 +14,52 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 04/25/2019
 ms.author: pepogors
-ms.openlocfilehash: 9bddb6552b11dd506ee3e2c1c416c15da11048b7
-ms.sourcegitcommit: 25a60179840b30706429c397991157f27de9e886
+ms.openlocfilehash: 8ba4763e8d4835911d33d21c0f5bb431851a649b
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/28/2019
-ms.locfileid: "66258754"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67444716"
 ---
-# <a name="capacity-planning-and-scaling"></a>Kapazitätsplanung und Skalierung
+# <a name="capacity-planning-and-scaling-for-azure-service-fabric"></a>Kapazitätsplanung und Skalierung für Azure Service Fabric
 
-Vor der Erstellung eines Azure Service Fabric-Clusters oder der Skalierung von Computeressourcen, die den Cluster hosten, ist es wichtig, die Kapazität zu planen. Weitere Informationen zur Planung der Kapazität finden Sie unter [Planen der Service Fabric-Clusterkapazität](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-capacity). Weitere bewährte Methoden zur Skalierbarkeit von Clustern finden Sie unter [Überlegungen zur Service Fabric-Skalierbarkeit](https://docs.microsoft.com/azure/architecture/reference-architectures/microservices/service-fabric#scalability-considerations).
+Vor der Erstellung eines Azure Service Fabric-Clusters oder der Skalierung von Computeressourcen, die den Cluster hosten, ist es wichtig, die Kapazität zu planen. Weitere Informationen zur Planung der Kapazität finden Sie unter [Planen der Service Fabric-Clusterkapazität](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-capacity). Weitere bewährte Methoden zur Skalierbarkeit von Clustern finden Sie unter [Überlegungen zur Skalierbarkeit](https://docs.microsoft.com/azure/architecture/reference-architectures/microservices/service-fabric#scalability-considerations) bei Service Fabric.
 
-Neben der Berücksichtigung der Merkmale von Knotentypen und Clustern sollten Sie einplanen, dass Skalierungsvorgänge für eine Produktionsumgebung länger als eine Stunde dauern, unabhängig von der Anzahl der hinzugefügten virtuellen Computer.
+Neben der Berücksichtigung der Merkmale von Knotentypen und Clustern sollten Sie einplanen, dass Skalierungsvorgänge für eine Produktionsumgebung länger als eine Stunde dauern. Dieser Aspekt gilt unabhängig von der Anzahl der hinzugefügten virtuellen Computer.
 
-## <a name="auto-scaling"></a>Automatische Skalierung
-Skalierungsvorgänge sollten über die Bereitstellung von Azure Resource Manager-Vorlagen erfolgen, da es sich bewährt hat, [Ressourcenkonfigurationen als Code]( https://docs.microsoft.com/azure/service-fabric/service-fabric-best-practices-infrastructure-as-code) zu behandeln, und die Verwendung der automatischen Skalierung von VM-Skalierungsgruppen dazu führt, dass in der Resource Manager-Vorlage mit Versionsangabe die Instanzanzahl der VM-Skalierungsgruppen ungenau definiert wird, sodass sich das Risiko erhöht, dass zukünftige Bereitstellungen zu unbeabsichtigten Skalierungsvorgängen führen. Im Allgemeinen sollten Sie die automatische Skalierung in folgenden Fällen verwenden:
+## <a name="autoscaling"></a>Automatische Skalierung
+Sie sollten Skalierungsvorgänge über Azure Resource Manager-Vorlagen ausführen, da dies als bewährte Methode für [Ressourcenkonfigurationen als Code]( https://docs.microsoft.com/azure/service-fabric/service-fabric-best-practices-infrastructure-as-code) gilt. 
+
+Durch die Verwendung der automatischen Skalierung über VM-Skalierungsgruppen definiert Ihre versionierte Resource Manager-Vorlage die Anzahl von Instanzen für VM-Skalierungsgruppen falsch. Durch eine falsche Definition steigt das Risiko, dass zukünftige Bereitstellungen unbeabsichtigte Skalierungsvorgänge verursachen. Im Allgemeinen sollten Sie die automatische Skalierung in folgenden Fällen verwenden:
 
 * Die Bereitstellung Ihrer Resource Manager-Vorlagen mit der deklarierten geeigneten Kapazität unterstützt Ihren Anwendungsfall nicht.
-  * Zusätzlich zur manuellen Skalierung können Sie eine [Pipeline für Continuous Integration und Continuous Delivery in Azure DevOps Services mit Bereitstellungsprojekten für Azure-Ressourcengruppen](https://docs.microsoft.com/azure/vs-azure-tools-resource-groups-ci-in-vsts) konfigurieren. Diese wird im Allgemeinen durch eine Logik-App ausgelöst, die Leistungsmetriken für virtuelle Computer nutzt, die über die [Azure Monitor-REST-API](https://docs.microsoft.com/azure/azure-monitor/platform/rest-api-walkthrough) abgefragt werden, sodass die automatische Skalierung basierend auf beliebig festgelegten Metriken durchgeführt wird und gleichzeitig der Azure Resource Manager-Mehrwert optimiert wird.
-* Sie müssen jeweils nur 1 Knoten einer VM-Skalierungsgruppe horizontal skalieren.
-  * Für das horizontale Hochskalieren um jeweils 3 oder mehr Knoten sollten Sie [einen Service Fabric-Cluster durch Hinzufügen einer VM-Skalierungsgruppe skalieren](https://docs.microsoft.com/azure service-fabric/virtual-machine-scale-set-scale-node-type-scale-out), und es ist am sichersten, VM-Skalierungsgruppen jeweils um 1 Knoten horizontal herunter- und hochzuskalieren.
+     
+   Sie können zusätzlich zur manuellen Skalierung eine [Continuous Integration- und Continuous Delivery-Pipeline in Azure DevOps Services mithilfe von Bereitstellungsprojekten für Azure-Ressourcengruppen](https://docs.microsoft.com/azure/vs-azure-tools-resource-groups-ci-in-vsts) konfigurieren. Diese Pipeline wird meist durch eine Logik-App ausgelöst, die Leistungsmetriken von virtuellen Computern nutzt, die über die [Azure Monitor-REST-API](https://docs.microsoft.com/azure/azure-monitor/platform/rest-api-walkthrough) abgefragt wurden. Die Pipeline führt eine effektive automatische Skalierung basierend auf Ihren gewünschten Metriken durch und optimiert gleichzeitig die Resource Manager-Vorlagen.
+* Sie müssen jeweils nur einen Knoten einer VM-Skalierungsgruppe horizontal skalieren.
+   
+   Zum Erweitern um drei oder mehr Knoten gleichzeitig sollten Sie [einen Service Fabric-Cluster durch das Hinzufügen einer VM-Skalierungsgruppe erweitern](virtual-machine-scale-set-scale-node-type-scale-out.md). Es ist am sichersten, das Hoch- und Herunterskalieren von VM-Skalierungsgruppen horizontal und mit jeweils einem Knoten durchzuführen.
 * Für den Service Fabric-Cluster ist die Zuverlässigkeitsstufe „Silber“ oder höher und die Dauerhaftigkeitsstufe „Silber“ oder höher für alle Skalierungsgruppen festgelegt, für die Sie Regeln für die automatische Skalierung konfigurieren.
-  * Die mit den Regeln für die automatische Skalierung festgelegte minimale Kapazität muss größer oder gleich fünf VM-Instanzen und größer oder gleich der minimalen Zuverlässigkeitsstufe für den primären Knotentyp sein.
+  
+   Die Mindestkapazität für Regeln zur automatischen Skalierung beträgt fünf VM-Instanzen. Zudem muss sie gleich oder größer dem der minimalen Zuverlässigkeitsstufe für Ihren primären Knotentyp sein.
 
 > [!NOTE]
-> Der zustandsbehaftete Azure Service Fabric-Dienst „fabric:/System/InfastructureService/<NODE_TYPE_NAME>“ wird auf jedem Knotentyp mit der Dauerhaftigkeitsstufe „Silber“ oder einer höheren Dauerhaftigkeitsstufe ausgeführt. Dies ist der einzige Systemdienst, dessen Ausführung in Azure auf allen Knotentypen Ihres Clusters unterstützt wird.
+> Der zustandsbehaftete Service Fabric-Dienst „fabric:/System/InfastructureService/<KNOTENTYPNAME>“ wird auf jedem Knotentyp mit der Dauerhaftigkeit „Silber“ oder höher ausgeführt. Dies ist der einzige Systemdienst, dessen Ausführung in Azure auf allen Clusterknotentypen unterstützt wird.
 
 ## <a name="vertical-scaling-considerations"></a>Überlegungen zur vertikalen Skalierung
 
 Die [vertikale Skalierung](https://docs.microsoft.com/azure/service-fabric/virtual-machine-scale-set-scale-node-type-scale-out) eines Knotentyps in Azure Service Fabric erfordert mehrere Schritte und Überlegungen. Beispiel:
 
 * Der Cluster muss vor der Skalierung fehlerfrei sein. Andernfalls wird der Cluster nur weiter destabilisiert.
-* Für alle Knotentypen des Service Fabric-Clusters, die zustandsbehaftete Dienste hosten, ist die **Dauerhaftigkeitsstufe „Silber“ oder höher** erforderlich.
+* Für alle Knotentypen des Service Fabric-Clusters, die zustandsbehaftete Dienste hosten, ist die Dauerhaftigkeitsstufe „Silber“ oder höher erforderlich.
 
 > [!NOTE]
 > Der primäre Knotentyp, der zustandsbehaftete Service Fabric-Systemdienste hostet, muss mindestens die Dauerhaftigkeitsstufe „Silber“ aufweisen. Nachdem Sie die Dauerhaftigkeitsstufe „Silber“ aktiviert haben, werden Clustervorgänge wie das Aktualisieren, Hinzufügen oder Entfernen von Knoten langsamer durchgeführt, da im System die Optimierung der Datensicherheit Vorrang vor der Geschwindigkeit von Vorgängen hat.
 
-Die vertikale Skalierung einer VM-Skalierungsgruppe ist ein destruktiver Vorgang. Skalieren Sie den Cluster stattdessen horizontal durch Hinzufügen einer neuen Skalierungsgruppe mit der gewünschten SKU, und migrieren Sie die Dienste zu der gewünschten SKU, um den vertikalen Skalierungsvorgang sicher abzuschließen. Die Änderung der SKU einer VM-Skalierungsgruppenressource ist ein destruktiver Vorgang, da für die Hosts ein Reimaging durchgeführt wird, bei dem alle lokal persistenten Zustände entfernt werden.
+Die vertikale Skalierung einer VM-Skalierungsgruppe ist ein destruktiver Vorgang. Führen Sie stattdessen eine horizontale Skalierung Ihres Clusters aus, indem Sie eine neue Skalierungsgruppe mit der gewünschten SKU hinzufügen. Migrieren Sie dann Ihre Dienste zur gewünschten SKU, um die sichere vertikale Skalierung abzuschließen. Die Änderung der SKU einer VM-Skalierungsgruppenressource ist ein destruktiver Vorgang, da für die Hosts ein Reimaging durchgeführt wird, bei dem alle lokal persistenten Zustände entfernt werden.
 
-Für Ihren Cluster werden [Knoteneigenschaften und Platzierungseinschränkungen](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-resource-manager-cluster-description#node-properties-and-placement-constraints) in Service Fabric verwendet, um festzulegen, wo die Anwendungsdienste gehostet werden. Deklarieren Sie bei der vertikalen Skalierung des primären Knotentyps identische Eigenschaftswerte für das Element `"nodeTypeRef"`, das sich in der Service Fabric-Erweiterung für VM-Skalierungsgruppen befindet. Der folgende Codeausschnitt der Resource Manager-Vorlage zeigt die Eigenschaften, die Sie deklarieren, mit dem gleichen Wert für die neu bereitgestellten Skalierungsgruppen, für die die Skalierung durchgeführt wird, und wird nur als vorübergehend zustandsbehaftet für den Cluster unterstützt:
+Für Ihren Cluster werden [Knoteneigenschaften und Platzierungseinschränkungen](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-resource-manager-cluster-description#node-properties-and-placement-constraints) in Service Fabric verwendet, um festzulegen, wo die Anwendungsdienste gehostet werden. Wenn Sie Ihren primären Knotentyp vertikal skalieren, deklarieren Sie identische Eigenschaftswerte für `"nodeTypeRef"`. Sie finden diese Werte in der Service Fabric-Erweiterung für VM-Skalierungsgruppen. 
+
+Der folgende Codeausschnitt einer Resource Manager-Vorlage zeigt die Eigenschaften, die Sie deklarieren. Er enthält den gleichen Wert für die neu bereitgestellten Skalierungsgruppen, zu denen Sie skalieren. Er wird nur als temporärer zustandsbehafteter Dienst für Ihren Cluster unterstützt.
 
 ```json
 "settings": {
@@ -62,28 +69,37 @@ Für Ihren Cluster werden [Knoteneigenschaften und Platzierungseinschränkungen]
 
 > [!NOTE]
 > Führen Sie den Cluster nicht länger als für den Abschluss eines erfolgreichen vertikalen Skalierungsvorgangs erforderlich mit mehreren Skalierungsgruppen aus, die den gleichen Eigenschaftswert für `nodeTypeRef` verwenden.
+>
 > Überprüfen Sie Vorgänge immer in Testumgebungen, bevor Sie Änderungen in der Produktionsumgebung vornehmen. Standardmäßig weisen die Systemdienste des Service Fabric-Clusters nur für den primären Zielknotentyp eine Platzierungseinschränkung auf.
 
 Führen Sie nach dem Deklarieren der Knoteneigenschaften und Platzierungseinschränkungen die folgenden Schritte für jeweils eine VM-Instanz aus. Dies ermöglicht, dass die Systemdienste (und Ihre zustandsbehafteten Dienste) ordnungsgemäß auf der VM-Instanz heruntergefahren werden, die Sie entfernen, und gleichzeitig neue Replikate an anderer Stelle erstellt werden.
 
-1. Führen Sie in PowerShell `Disable-ServiceFabricNode` mit der Absicht „RemoveNode“ aus, um den Knoten zu deaktivieren, der entfernt werden soll. Entfernen Sie den Knotentyp mit der höchsten Zahl. Entfernen Sie bei einem Cluster mit sechs Knoten beispielsweise die VM-Instanz „MyNodeType_5“.
+1. Führen Sie in PowerShell `Disable-ServiceFabricNode` mit der Absicht `RemoveNode` aus, um den Knoten zu deaktivieren, der entfernt werden soll. Entfernen Sie den Knotentyp mit der höchsten Zahl. Entfernen Sie bei einem Cluster mit sechs Knoten beispielsweise die VM-Instanz „MyNodeType_5“.
 2. Führen Sie `Get-ServiceFabricNode` aus, um sicherzustellen, dass der Status des Knotens tatsächlich in „Deaktiviert“ geändert wurde. Falls nicht, warten Sie, bis der Knoten deaktiviert ist. Dies kann für jeden Knoten einige Stunden dauern. Fahren Sie erst fort, nachdem der Status des Knotens in „Deaktiviert“ geändert wurde.
-3. Verringern Sie die Anzahl der virtuellen Computer in diesem Knotentyp um 1. Damit wird die höchste VM-Instanz entfernt.
+3. Verringern Sie die Anzahl der virtuellen Computer in diesem Knotentyp um 1. Damit wird die höchste VM-Instanz entfernt.
 4. Wiederholen Sie den Anforderungen entsprechend die Schritte 1 bis 3. Skalieren Sie allerdings auf keinen Fall die Anzahl der Instanzen auf den primären Knotentypen auf einen Wert herunter, der unter dem liegt, den die Zuverlässigkeitsstufe verlangt. Eine Liste der empfohlenen Instanzen finden Sie unter [Planen der Service Fabric-Clusterkapazität ](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-capacity).
+5. Nachdem alle virtuellen Computer ausgeschaltet sind (dargestellt als „Inaktiv“), zeigt „fabric:/System/InfrastructureService/[Knotenname]“ einen Fehlerstatus an. Anschließend können Sie die Clusterressource aktualisieren, um den Knotentyp zu entfernen. Sie können entweder die Bereitstellung per ARM-Vorlage verwenden oder die Clusterressource über [Azure Resource Manager](https://resources.azure.com) bearbeiten. Dadurch wird ein Clusterupgrade gestartet, bei dem der Dienst „fabric:/System/InfrastructureService/[Knotentyp]“ mit dem Fehlerzustand entfernt wird.
+ 6. Anschließend können Sie optional die VM-Skalierungsgruppe löschen – die Knoten werden aber in der Ansicht im Service Fabric Explorer weiterhin als „Inaktiv“ angezeigt. Der letzte Schritt ist die Bereinigung mit dem Befehl `Remove-ServiceFabricNodeState`.
 
-> [!NOTE]
-> Ein unterstütztes Szenario für die Durchführung einer vertikalen Skalierung ist: Ich kann meinen Service Fabric-Cluster und meine -Anwendung ohne Ausfallzeiten der Anwendung von „Nicht verwalteter Datenträger“ zu „Verwalteter Datenträger“ migrieren. Durch die Bereitstellung einer neuen VM-Skalierungsgruppe mit verwalteten Datenträgern und die Durchführung eines Anwendungsupgrades mit Platzierungseinschränkungen, die auf die bereitgestellte Kapazität ausgerichtet sind, kann Ihr Service Fabric-Cluster die Workload gemäß der Kapazität der bereitgestellten Clusterknoten planen, die von der Upgradedomäne ohne Ausfallzeiten der Anwendung eingeführt wird. [Azure Load Balancers Basic-SKU](https://docs.microsoft.com/azure/load-balancer/load-balancer-overview#skus): Back-End-Poolendpunkte können virtuelle Computer in einer einzelnen Verfügbarkeitsgruppe oder VM-Skalierungsgruppe sein. Das bedeutet, dass Sie keinen Load Balancer mit Basic-SKU verwenden können, wenn Sie Ihre Service Fabric Systems-Anwendung zwischen den Skalierungsgruppen verschieben, ohne eine temporäre Nichterreichbarkeit Ihres Endpunkts für die Service Fabric-Clusterverwaltung zu verursachen, obwohl der Cluster und seine Anwendung noch ausgeführt werden. In der Regel stellen Sie einen Load Balancer mit Standard-SKU zur Verfügung, wenn Sie einen Wechsel der der virtuellen IP-Adresse (VIP) zwischen Load Balancer-Ressourcen mit Basic-SKU und Load Balancer-Ressourcen mit Standard-SKU durchführen, um die zukünftig für den VIP-Wechsel erforderlichen 30 Sekunden (ungefähre Angabe) der Nichterreichbarkeit zu verringern.
+### <a name="example-scenario"></a>Beispielszenario
+Ein unterstütztes Szenario für eine vertikale Skalierung: Sie möchten Ihren Service Fabric-Cluster und die Anwendung ohne Ausfallzeiten der Anwendung von einem nicht verwalteten Datenträger zu verwalteten Datenträgern migrieren. 
+
+Sie können eine neue VM-Skalierungsgruppe mit verwalteten Datenträgern bereitstellen und ein Anwendungsupgrade mit Platzierungseinschränkungen für die bereitgestellte Kapazität durchführen. Ihr Service Fabric-Cluster kann dann Ihre Workload mit der bereitgestellten Knotenkapazität für den Cluster planen. Der Rollout erfolgt durch die Upgradedomäne und ohne Ausfallzeiten der Anwendung. 
+
+Back-End-Poolendpunkte für die [Azure Load Balancer-SKU „Basic“](https://docs.microsoft.com/azure/load-balancer/load-balancer-overview#skus) können virtuelle Computer in einer einzelnen Verfügbarkeitsgruppe oder einer VM-Skalierungsgruppe sein. Dies bedeutet, dass Sie beim Verschieben Ihrer Service Fabric-Systemanwendung zwischen Skalierungsgruppen keinen Lastenausgleich mit der Basic-SKU verwenden können, ohne dass der Verwaltungsendpunkt Ihres Service Fabric-Clusters zeitweilig nicht verfügbar ist. Dies gilt auch, wenn der Cluster und die Anwendung noch ausgeführt werden.
+
+Benutzer stellen häufig einen Lastenausgleich mit Standard-SKU bereit, wenn sie einen Austausch der virtuellen IP-Adresse (VIP) zwischen Ressourcen mit einem Lastenausgleich mit Basic-SKU und Standard-SKU durchführen. Diese Technik begrenzt alle zukünftigen Zugriffseinschränkungen beim VIP-Austausch auf ungefähr 30 Sekunden.
 
 ## <a name="horizontal-scaling"></a>Horizontale Skalierung
 
-Die horizontale Skalierung in Service Fabric kann [manuell](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-scale-up-down) oder [programmgesteuert](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-programmatic-scaling) erfolgen.
+Sie können die horizontale Skalierung entweder [manuell](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-scale-up-down) oder [programmgesteuert](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-programmatic-scaling) durchführen.
 
 > [!NOTE]
 > Wenn Sie einen Knotentyp mit der Dauerhaftigkeitsstufe „Silber“ oder „Gold“ skalieren, wird der Skalierungsvorgang langsam durchgeführt.
 
 ### <a name="scaling-out"></a>Horizontales Skalieren
 
-Skalieren Sie einen Service Fabric-Cluster horizontal hoch, indem Sie die Anzahl der Instanzen für eine bestimmte VM-Skalierungsgruppe erhöhen. Sie können das horizontale Hochskalieren programmgesteuert durchführen, indem Sie mithilfe des Azure-Clients und der ID für die gewünschte Skalierungsgruppe die Kapazität erhöhen.
+Skalieren Sie einen Service Fabric-Cluster horizontal hoch, indem Sie die Anzahl der Instanzen für eine bestimmte VM-Skalierungsgruppe erhöhen. Sie können das horizontale Hochskalieren programmgesteuert durchführen, indem Sie mithilfe von `AzureClient` und der ID für die gewünschte Skalierungsgruppe die Kapazität erhöhen.
 
 ```c#
 var scaleSet = AzureClient.VirtualMachineScaleSets.GetById(ScaleSetId);
@@ -92,6 +108,7 @@ scaleSet.Update().WithCapacity(newCapacity).Apply();
 ```
 
 Für ein manuelles horizontales Hochskalieren aktualisieren Sie die Kapazität in der SKU-Eigenschaft der gewünschten [VM-Skalierungsgruppe](https://docs.microsoft.com/rest/api/compute/virtualmachinescalesets/createorupdate#virtualmachinescalesetosprofile).
+
 ```json
 "sku": {
     "name": "[parameters('vmNodeType0Size')]",
@@ -109,10 +126,10 @@ Beim horizontalen Herunterskalieren müssen mehr Aspekte berücksichtigt werden 
 
 Beim manuellen Herunterskalieren gehen Sie folgendermaßen vor:
 
-1. Führen Sie in PowerShell `Disable-ServiceFabricNode` mit der Absicht „RemoveNode“ aus, um den Knoten zu deaktivieren, der entfernt werden soll. Entfernen Sie den Knotentyp mit der höchsten Zahl. Entfernen Sie bei einem Cluster mit sechs Knoten beispielsweise die VM-Instanz „MyNodeType_5“.
+1. Führen Sie in PowerShell `Disable-ServiceFabricNode` mit der Absicht `RemoveNode` aus, um den Knoten zu deaktivieren, der entfernt werden soll. Entfernen Sie den Knotentyp mit der höchsten Zahl. Entfernen Sie bei einem Cluster mit sechs Knoten beispielsweise die VM-Instanz „MyNodeType_5“.
 2. Führen Sie `Get-ServiceFabricNode` aus, um sicherzustellen, dass der Status des Knotens tatsächlich in „Deaktiviert“ geändert wurde. Falls nicht, warten Sie, bis der Knoten deaktiviert ist. Dies kann für jeden Knoten einige Stunden dauern. Fahren Sie erst fort, nachdem der Status des Knotens in „Deaktiviert“ geändert wurde.
-3. Verringern Sie die Anzahl der virtuellen Computer in diesem Knotentyp um 1. Damit wird die höchste VM-Instanz entfernt.
-4. Wiederholen Sie den Anforderungen entsprechend die Schritte 1 bis 3. Skalieren Sie allerdings auf keinen Fall die Anzahl der Instanzen auf den primären Knotentypen auf einen Wert herunter, der unter dem liegt, den die Zuverlässigkeitsstufe verlangt. Eine Liste der empfohlenen Instanzen finden Sie unter [Planen der Service Fabric-Clusterkapazität ](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-capacity).
+3. Verringern Sie die Anzahl der virtuellen Computer in diesem Knotentyp um 1. Damit wird die höchste VM-Instanz entfernt.
+4. Wiederholen Sie ggf. die Schritte 1 bis 3, bis die gewünschte Kapazität bereitgestellt wird. Skalieren Sie auf keinen Fall die Anzahl der Instanzen des primären Knotentyps auf einen Wert herunter, der unter dem von der Zuverlässigkeitsstufe vorgegebenen liegt. Eine Liste der empfohlenen Instanzen finden Sie unter [Planen der Service Fabric-Clusterkapazität ](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-capacity).
 
 Um manuell horizontal herunterzuskalieren, aktualisieren Sie die Kapazität in der SKU-Eigenschaft der gewünschten [VM-Skalierungsgruppe](https://docs.microsoft.com/rest/api/compute/virtualmachinescalesets/createorupdate#virtualmachinescalesetosprofile).
 
@@ -124,9 +141,7 @@ Um manuell horizontal herunterzuskalieren, aktualisieren Sie die Kapazität in d
 }
 ```
 
-1. Wiederholen Sie die Schritte 1 bis 3, bis die gewünschte Kapazität bereitgestellt wird. Skalieren Sie auf keinen Fall die Anzahl der Instanzen des primären Knotentyps auf einen Wert herunter, der unter dem von der Zuverlässigkeitsstufe vorgegebenen liegt. Ausführliche Informationen zu Zuverlässigkeitsstufen und der jeweils erforderlichen Anzahl von Instanzen finden Sie unter [Planen der Service Fabric-Clusterkapazität](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-capacity).
-
-Damit das horizontale Herunterskalieren programmgesteuert durchgeführt werden kann, müssen Sie den Knoten auf das Herunterfahren vorbereiten. Dies umfasst das Suchen und Deaktivieren des zu entfernenden Knotens, d.h. des Knotens der höchsten Instanz. Beispiel:
+Damit das horizontale Herunterskalieren programmgesteuert durchgeführt werden kann, müssen Sie den Knoten auf das Herunterfahren vorbereiten. Ermitteln Sie den Knoten, der entfernt werden soll (der Knoten der höchsten Instanz). Beispiel:
 
 ```c#
 using (var client = new FabricClient())
@@ -143,7 +158,7 @@ using (var client = new FabricClient())
         .FirstOrDefault();
 ```
 
-Nachdem Sie den zu entfernenden Knoten identifiziert haben, deaktivieren und entfernen Sie ihn, und verwenden Sie dabei die gleiche `FabricClient`-Instanz (in diesem Fall `client`) und dem gleichen Namen der Knoteninstanz (in diesem Fall `instanceIdString`), die Sie im Code oben verwendet haben:
+Deaktivieren und entfernen Sie den Knoten, und verwenden Sie dabei die gleiche `FabricClient`-Instanz (in diesem Fall `client`) und die gleiche Knoteninstanz (in diesem Fall `instanceIdString`), die Sie im vorherigen Code verwendet haben:
 
 ```c#
 var scaleSet = AzureClient.VirtualMachineScaleSets.GetById(ScaleSetId);
@@ -152,7 +167,7 @@ var scaleSet = AzureClient.VirtualMachineScaleSets.GetById(ScaleSetId);
 ServiceEventSource.Current.ServiceMessage(Context, $"Disabling node {mostRecentLiveNode.NodeName}");
 await client.ClusterManager.DeactivateNodeAsync(mostRecentLiveNode.NodeName, NodeDeactivationIntent.RemoveNode);
 
-// Wait (up to a timeout) for the node to gracefully shutdown
+// Wait (up to a timeout) for the node to gracefully shut down
 var timeout = TimeSpan.FromMinutes(5);
 var waitStart = DateTime.Now;
 while ((mostRecentLiveNode.NodeStatus == System.Fabric.Query.NodeStatus.Up || mostRecentLiveNode.NodeStatus == System.Fabric.Query.NodeStatus.Disabling) &&
@@ -162,25 +177,27 @@ while ((mostRecentLiveNode.NodeStatus == System.Fabric.Query.NodeStatus.Up || mo
     await Task.Delay(10 * 1000);
 }
 
-// Decrement VMSS capacity
+// Decrement virtual machine scale set capacity
 var newCapacity = (int)Math.Max(MinimumNodeCount, scaleSet.Capacity - 1); // Check min count 
 
 scaleSet.Update().WithCapacity(newCapacity).Apply();
 ```
 
 > [!NOTE]
-> Wenn Sie einen Cluster herunterskalieren, wird der entfernte Knoten bzw. die entfernte VM-Instanz im Service Fabric Explorer in einem fehlerhaften Zustand angezeigt. Eine Erklärung dieses Verhaltens finden Sie unter [Verhaltensweisen von Service Fabric Explorer, die Sie möglicherweise beobachten](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-scale-up-down#behaviors-you-may-observe-in-service-fabric-explorer). Ihre Möglichkeiten:
+> Wenn Sie einen Cluster zentral herunterskalieren, wird der entfernte Knoten bzw. die entfernte VM-Instanz im Service Fabric Explorer mit einem fehlerhaften Zustand angezeigt. Eine Erklärung dieses Verhaltens finden Sie unter [Verhaltensweisen von Service Fabric Explorer, die Sie möglicherweise beobachten](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-scale-up-down#behaviors-you-may-observe-in-service-fabric-explorer). Ihre Möglichkeiten:
 > * Rufen Sie den Befehl [Remove-ServiceFabricNodeState](https://docs.microsoft.com/powershell/module/servicefabric/remove-servicefabricnodestate?view=azureservicefabricps) mit dem entsprechenden Knotennamen auf.
-> * Stellen Sie in Ihrem Cluster eine [service-fabric-autoscale-helper-Anwendung](https://github.com/Azure/service-fabric-autoscale-helper/) bereit, die sicherstellt, dass herunterskalierte Knoten aus dem Service Fabric Explorer gelöscht werden.
+> * Stellen Sie die [Service Fabric-Hilfsanwendung für die Autoskalierung](https://github.com/Azure/service-fabric-autoscale-helper/) in Ihrem Cluster bereit. Diese Anwendung stellt sicher, dass die herunterskalierten Knoten im Service Fabric Explorer entfernt werden.
 
 ## <a name="reliability-levels"></a>Zuverlässigkeitsstufen
 
-Die [Zuverlässigkeitsstufe](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-capacity) ist eine Eigenschaft der Service Fabric-Clusterressource und kann für einzelne Knotentypen nicht unterschiedlich konfiguriert werden. Sie steuert den Replikationsfaktor der Systemdienste für den Cluster und ist eine Einstellung auf Ebene der Clusterressource. Die Zuverlässigkeitsstufe bestimmt die Mindestanzahl von Knoten, über die Ihr primärer Knotentyp verfügen muss. Für die Zuverlässigkeitsstufe können folgende Werte festgelegt werden:
+Die [Zuverlässigkeitsstufe](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-capacity) ist eine Eigenschaft der Service Fabric-Clusterressource. Sie kann für die einzelnen Knotentypen nicht unterschiedlich konfiguriert werden. Sie steuert den Replikationsfaktor der Systemdienste für den Cluster und ist eine Einstellung auf Ebene der Clusterressource. 
 
-* Platin: Die Systemdienste werden mit der Replikatgruppen-Zielanzahl 7 und neun Startknoten ausgeführt.
-* Gold: Die Systemdienste werden mit der Replikatgruppen-Zielanzahl 7 und sieben Startknoten ausgeführt.
-* Silber: Die Systemdienste werden mit der Replikatgruppen-Zielanzahl 5 und fünf Startknoten ausgeführt.
-* Bronze: Die Systemdienste werden mit der Replikatgruppen-Zielanzahl 3 und drei Startknoten ausgeführt.
+Die Zuverlässigkeitsstufe bestimmt die Mindestanzahl von Knoten, über die Ihr primärer Knotentyp verfügen muss. Für die Zuverlässigkeitsstufe können folgende Werte festgelegt werden:
+
+* Platin: Die Systemdienste werden mit der Replikatgruppen-Zielanzahl 7 und 9 Startknoten ausgeführt.
+* Gold: Die Systemdienste werden mit der Replikatgruppen-Zielanzahl 7 und 7 Startknoten ausgeführt.
+* Silber: Die Systemdienste werden mit der Replikatgruppen-Zielanzahl 5 und 5 Startknoten ausgeführt.
+* Bronze: Die Systemdienste werden mit der Replikatgruppen-Zielanzahl 3 und 3 Startknoten ausgeführt.
 
 Die minimale empfohlene Zuverlässigkeitsstufe ist „Silber“.
 
@@ -195,9 +212,11 @@ Die Zuverlässigkeitsstufe wird im Abschnitt der Eigenschaften der Ressource [Mi
 ## <a name="durability-levels"></a>Dauerhaftigkeitsstufen
 
 > [!WARNING]
-> Knotentypen, die mit der Dauerhaftigkeitsstufe „Bronze“ ausgeführt werden, erhalten _keine Berechtigungen_. Das bedeutet, dass die Infrastrukturaufträge, die sich auf die zustandslosen Workloads auswirken, nicht angehalten oder verzögert werden. Dies kann sich auf Ihre Workloads auswirken. Verwenden Sie die Dauerhaftigkeitsstufe „Bronze“ nur für Knotentypen, die zustandslose Workloads ausführen. Verwenden Sie für Produktionsworkloads mindestens die Dauerhaftigkeitsstufe „Silber“, um Zustandskonsistenz sicherzustellen. Wählen Sie die entsprechende Zuverlässigkeitsstufe basierend auf den Anweisungen in der [Dokumentation zur Kapazitätsplanung](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-capacity) aus.
+> Knotentypen, die mit der Dauerhaftigkeitsstufe „Bronze“ ausgeführt werden, erhalten _keine Berechtigungen_. Die Infrastrukturaufträge, die sich auf die zustandslosen Workloads auswirken, werden nicht angehalten oder verzögert. Dies kann sich auf Ihre Workloads auswirken. 
+>
+> Verwenden Sie die Dauerhaftigkeitsstufe „Bronze“ nur für Knotentypen, die zustandslose Workloads ausführen. Verwenden Sie für Produktionsworkloads mindestens die Dauerhaftigkeitsstufe „Silber“, um Zustandskonsistenz sicherzustellen. Wählen Sie die entsprechende Zuverlässigkeitsstufe basierend auf den Anweisungen in der [Dokumentation zur Kapazitätsplanung](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-capacity) aus.
 
-Die Dauerhaftigkeitsstufe muss in zwei Ressourcen festgelegt werden: Im Erweiterungsprofil der [VM-Skalierungsgruppenressource](https://docs.microsoft.com/rest/api/compute/virtualmachinescalesets/createorupdate#virtualmachinescalesetosprofile):
+Die Dauerhaftigkeitsstufe muss in zwei Ressourcen festgelegt werden: Eine ist das Erweiterungsprofil der [VM-Skalierungsgruppenressource](https://docs.microsoft.com/rest/api/compute/virtualmachinescalesets/createorupdate#virtualmachinescalesetosprofile):
 
 ```json
 "extensionProfile": {
@@ -212,7 +231,7 @@ Die Dauerhaftigkeitsstufe muss in zwei Ressourcen festgelegt werden: Im Erweiter
 }
 ```
 
-Und unter `nodeTypes` in der Ressource [Microsoft.ServiceFabric/clusters](https://docs.microsoft.com/azure/templates/microsoft.servicefabric/2018-02-01/clusters) 
+Die andere finden Sie unter `nodeTypes` in der Ressource [Microsoft.ServiceFabric/Clusterressource](https://docs.microsoft.com/azure/templates/microsoft.servicefabric/2018-02-01/clusters): 
 
 ```json
 "nodeTypes": [

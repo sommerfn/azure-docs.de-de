@@ -7,12 +7,12 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 06/03/2019
-ms.openlocfilehash: 1ec4786291d6e2e5be6785e52cf3ab5bb5bbc690
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 982c5dcc052f92afe381235db0bf066262fd82c6
+ms.sourcegitcommit: 82efacfaffbb051ab6dc73d9fe78c74f96f549c2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66754534"
+ms.lasthandoff: 06/20/2019
+ms.locfileid: "67304281"
 ---
 # <a name="migrate-to-granular-role-based-access-for-cluster-configurations"></a>Migrieren zu präzisem rollenbasiertem Zugriff für Clusterkonfigurationen
 
@@ -23,9 +23,9 @@ Wir führen einige wichtige Änderungen ein, um differenzierteren rollenbasierte
 Bisher konnten Geheimnisse von Clusterbenutzern mit den [RBAC-Rollen](https://docs.microsoft.com/azure/role-based-access-control/rbac-and-directory-admin-roles) „Besitzer“, „Mitwirkender“ oder „Leser“ über die HDInsight-API abgerufen werden, da sie jedem zur Verfügung standen, der die Berechtigung `*/read` besaß.
 In Zukunft wird für den Zugriff auf diese Geheimnisse die Berechtigung `Microsoft.HDInsight/clusters/configurations/*` erforderlich sein, d. h., dass Benutzer mit der Rolle „Leser“ nicht mehr darauf zugreifen können. Geheimnisse sind als Werte definiert, mit denen ein Zugriff mit erhöhten Rechten möglich ist, als es die Rolle eines Benutzers gestatten sollte. Dazu zählen Werte wie Clustergateway-HTTP-Anmeldeinformationen, Speicherkontenschlüssel und Datenbankanmeldeinformationen.
 
-Wir führen außerdem eine neue Rolle [HDInsight-Clusteroperator](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#hdinsight-cluster-operator) ein, die imstande ist, Geheimnisse ohne die Verwaltungsberechtigungen der Rollen „Mitwirkender“ oder „Besitzer“ abzurufen. Zusammenfassung:
+Wir führen außerdem eine neue Rolle ein ([HDInsight-Clusteroperator](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#hdinsight-cluster-operator)), mit der Geheimnisse ohne die Administratorberechtigungen der Rollen „Mitwirkender“ oder „Besitzer“ abgerufen werden können. Zusammenfassung:
 
-| Rolle                                  | Bisher                                                                                       | Zukünftige Entwicklung       |
+| Role                                  | Bisher                                                                                       | Zukünftige Entwicklung       |
 |---------------------------------------|--------------------------------------------------------------------------------------------------|-----------|
 | Leser                                | - Lesezugriff, einschließlich Geheimnisse                                                                   | - Lesezugriff, **mit Ausnahme von** Geheimnissen |           |   |   |
 | HDInsight-Clusteroperator<br>(Neue Rolle) | –                                                                                              | - Lese-/Schreibzugriff, einschließlich Geheimnisse         |   |   |
@@ -155,7 +155,7 @@ Aktualisieren Sie auf [Az PowerShell, Version 2.0.0](https://www.powershellgalle
 
 ## <a name="add-the-hdinsight-cluster-operator-role-assignment-to-a-user"></a>Hinzufügen der HDInsight-Clusteroperator-Rollenzuweisung zu einem Benutzer
 
-Ein Benutzer mit der Rolle [Mitwirkender](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#contributor) oder [Besitzer](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#owner) kann Benutzern die Rolle [HDInsight-Clusteroperator](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#hdinsight-cluster-operator) zuweisen, denen Sie Lese-/Schreibzugriff auf sensible HDInsight-Clusterkonfigurationswerte (wie Clustergateway-Anmeldeinformationen und Speicherkontoschlüssel) erteilen möchten.
+Ein Benutzer mit der Rolle [Mitwirkender](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#contributor) oder [Besitzer](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#owner) kann Benutzern, die Lese-/Schreibzugriff auf sensible HDInsight-Clusterkonfigurationswerte (wie Anmeldeinformationen für das Clustergateway und Speicherkontoschlüssel) haben sollten, die Rolle [HDInsight-Clusteroperator](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#hdinsight-cluster-operator) zuweisen.
 
 ### <a name="using-the-azure-cli"></a>Verwenden der Azure-Befehlszeilenschnittstelle
 

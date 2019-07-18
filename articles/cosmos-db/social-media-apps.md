@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 05/28/2019
 ms.author: maquaran
-ms.openlocfilehash: 8206bff765b59ddc5d6be2388145bf51e1000241
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 45e27b37ca7a1718674914fbe9203b7dc64475b1
+ms.sourcegitcommit: a12b2c2599134e32a910921861d4805e21320159
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66256874"
+ms.lasthandoff: 06/24/2019
+ms.locfileid: "67342102"
 ---
 # <a name="going-social-with-azure-cosmos-db"></a>Soziale Medien mit Azure Cosmos DB
 
@@ -96,7 +96,7 @@ Die Erstellung von Feeds ist nunmehr lediglich eine Frage der Erstellung von Dok
         {"relevance":7, "post":"w34r-qeg6-ref6-8565"}
     ]
 
-Sie können einen Datenstrom „Aktuell“ mit den Beiträgen verwenden, die nach dem Erstellungsdatum sortiert sind. Oder Sie können den Datenstrom „Am beliebtesten“ mit den Beiträgen verwenden, die in den letzten 24 Stunden die meisten „Gefällt mir“-Markierungen erhalten haben. Sie können sogar für jeden Benutzer basierend auf einer Logik, z.B. Follower und Interessen, einen benutzerdefinierten Datenstrom implementieren. Es handelt sich dabei dann immer noch um eine Liste mit Beiträgen. Relevant ist an dieser Stelle, wie diese Listen erstellt werden. Die Leseleistung bleibt davon unberührt. Sobald Sie eine dieser Listen erhalten, schicken Sie mit dem [IN-Operator](how-to-sql-query.md#WhereClause) eine einzelne Abfrage an Cosmos DB, um Seiten mit Beiträgen gleichzeitig abzurufen.
+Sie können einen Datenstrom „Aktuell“ mit den Beiträgen verwenden, die nach dem Erstellungsdatum sortiert sind. Oder Sie können den Datenstrom „Am beliebtesten“ mit den Beiträgen verwenden, die in den letzten 24 Stunden die meisten „Gefällt mir“-Markierungen erhalten haben. Sie können sogar für jeden Benutzer basierend auf einer Logik, z.B. Follower und Interessen, einen benutzerdefinierten Datenstrom implementieren. Es handelt sich dabei dann immer noch um eine Liste mit Beiträgen. Relevant ist an dieser Stelle, wie diese Listen erstellt werden. Die Leseleistung bleibt davon unberührt. Sobald Sie eine dieser Listen erhalten, schicken Sie mit dem [IN-Schlüsselwort](sql-query-keywords.md#in) eine einzelne Abfrage an Cosmos DB, um Seiten mit Beiträgen gleichzeitig abzurufen.
 
 Die Feeddatenströme könnten mithilfe von [Azure App Services](https://azure.microsoft.com/services/app-service/)-Hintergrundprozessen erstellt werden: [WebJobs](../app-service/webjobs-create.md). Nach der Erstellung eines Beitrags kann die Hintergrundverarbeitung mit [Azure Storage](https://azure.microsoft.com/services/storage/)-[Warteschlangen](../storage/queues/storage-dotnet-how-to-use-queues.md) und WebJobs mithilfe des [Azure WebJobs-SDK](https://github.com/Azure/azure-webjobs-sdk/wiki) ausgelöst werden. Diese Funktionen implementieren die Verteilung der Beiträge innerhalb der Streams, basierend auf Ihrer eigenen benutzerdefinierten Logik.
 

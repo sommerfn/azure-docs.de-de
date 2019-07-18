@@ -1,5 +1,5 @@
 ---
-title: Automatisierte ML-Algorithmusauswahl und -optimierung
+title: Was ist automatisiertes maschinelles Lernen?/ automl
 titleSuffix: Azure Machine Learning service
 description: Erfahren Sie, wie der Azure Machine Learning-Dienst automatisch einen Algorithmus für Sie auswählen und ein Modell daraus generieren kann, um Ihnen Zeit zu sparen, indem er die von Ihnen angegebenen Parameter und Kriterien verwendet, um den besten Algorithmus für Ihr Modell auszuwählen.
 services: machine-learning
@@ -9,18 +9,18 @@ ms.topic: conceptual
 ms.reviewer: jmartens
 author: nacharya1
 ms.author: nilesha
-ms.date: 05/21/2019
+ms.date: 06/20/2019
 ms.custom: seodec18
-ms.openlocfilehash: 88e4e305e0f66c61ab4d73bcfef21319b4d02946
-ms.sourcegitcommit: cfbc8db6a3e3744062a533803e664ccee19f6d63
+ms.openlocfilehash: 137ef1ad78548053f3c5b8f30b7d83f2370f62da
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/21/2019
-ms.locfileid: "65989815"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67442432"
 ---
 # <a name="what-is-automated-machine-learning"></a>Was ist automatisiertes maschinelles Lernen?
 
-Automatisiertes maschinelles Lernen, auch als automatisiertes ML bezeichnet, ist der Prozess des Automatisierens der zeitaufwändigen, iterativen Aufgaben der Entwicklung eines Machine Learning-Modells. Es versetzt Data Scientists, Analysten und Entwickler in die Lage, ML-Modelle mit hoher Skalierbarkeit, Effizienz und Produktivität zu erstellen und gleichzeitig die Modellqualität zu erhalten.
+Automatisiertes maschinelles Lernen, auch als autoML bezeichnet, ist der Prozess des Automatisierens der zeitaufwändigen, iterativen Aufgaben der Entwicklung eines Machine Learning-Modells. Es versetzt Data Scientists, Analysten und Entwickler in die Lage, ML-Modelle mit hoher Skalierbarkeit, Effizienz und Produktivität zu erstellen und gleichzeitig die Modellqualität zu erhalten.
 
 Die Entwicklung traditioneller Machine Learning-Modelle ist ressourcenintensiv und erfordert viel Fachwissen und Zeit, um Dutzende von Modellen zu erstellen und zu vergleichen. Sie arbeiten mit automatisiertem ML, wenn Sie möchten, dass Azure Machine Learning mit der von Ihnen angegebenen Zielmetrik ein Modell für Sie trainiert und optimiert. Der Dienst durchläuft die ML-Algorithmen dann iterativ im Zusammenspiel mit Featureauswahlen, wobei für jede Iteration ein Modell mit einer Trainingsbewertung erzeugt wird. Je höher die Bewertung ist, desto besser wird das Modell als „passend“ für Ihre Daten angesehen.
 
@@ -51,11 +51,11 @@ Mithilfe von **Azure Machine Learning Service** können Sie automatisierte ML-Tr
 
 1. **Übermitteln der Trainingsausführung.**
 
-  ![Automatisiertes maschinelles Lernen](./media/how-to-automated-ml/automl-concept-diagram.png)
+  ![Automatisiertes maschinelles Lernen](./media/how-to-automated-ml/automl-concept-diagram2.png)
 
 Während des Trainings erstellt der Azure Machine Learning Service eine Reihe von parallelen Pipelines, die unterschiedliche Algorithmen und Parametern ausprobieren. Die Ausführung wird beendet, sobald die im Experiment definierten Beendigungskriterien erreicht werden.
 
-Sie können die protokollierten Ausführungsinformationen auch untersuchen. Sie enthalten die während der Ausführung erfassten Metriken. Bei der Trainingsausführung wird ein serialisiertes Python-Objekt (`.pkl`-Datei) generiert, das die Vorabverarbeitung des Modells und der Daten enthält.
+Sie können die protokollierten Ausführungsinformationen auch untersuchen. Sie enthalten die während der Ausführung [erfassten Metriken](how-to-understand-accuracy-metrics.md). Bei der Trainingsausführung wird ein serialisiertes Python-Objekt (`.pkl`-Datei) generiert, das die Vorabverarbeitung des Modells und der Daten enthält.
 
 Obwohl die Modellerstellung automatisiert ist, können Sie auch [ermitteln, wie wichtig oder relevant Features für die generierten Modelle sind](how-to-configure-auto-train.md#explain).
 
@@ -89,6 +89,14 @@ Zusätzliche erweiterte Vorverarbeitung und Featurebereitstellung sind ebenfalls
 
 + Python SDK: Angeben von `"preprocess": True` für die [`AutoMLConfig`-Klasse](https://docs.microsoft.com/python/api/azureml-train-automl/azureml.train.automl.automlconfig?view=azure-ml-py).
 
+
+## <a name="time-series-forecasting"></a>Zeitreihenvorhersagen
+Die Erstellung von Vorhersagen ist ein integraler Bestandteil jedes Unternehmens, unabhängig davon, ob es sich um Einnahmen, Lagerbestände, Umsätze oder Kundennachfrage handelt. Sie können automatisiertes maschinelles Lernen verwenden, um verschiedene Techniken und Ansätze zu kombinieren. Außerdem erhalten Sie dabei eine beliebte und hochwertige Zeitreihenprognose. 
+
+Automatisierte Zeitreihenexperimente werden als multivariate Regressionsprobleme behandelt. Zeitreihenwerte aus der Vergangenheit werden pivotiert und dienen so zusammen mit anderen Vorhersageelementen als zusätzliche Dimensionen für den Regressor. Dieser Ansatz hat im Gegensatz zu klassischen Zeitreihenmethoden den Vorteil, dass mehrere kontextbezogene Variablen und deren Beziehungen zueinander beim Training auf natürliche Weise integriert werden. Beim automatisierten maschinellen Lernen wird ein zwar einfaches, aber häufig in interne Verzweigungen unterteiltes Modell für alle Elemente im Dataset und in den Vorhersagehorizonten erlernt. Dadurch sind mehr Daten verfügbar, um Modellparameter zu schätzen, und die Generalisierung von unbekannten Reihen wird möglich. 
+
+Hier erhalten Sie weitere Informationen und ein Beispiel zum [automatisierten maschinellen Lernen für die Zeitreihenvorhersage](how-to-auto-train-forecast.md).
+
 ## <a name="ensemble-models"></a>Ensemblemodelle
 
 Sie können Ensemblemodelle mit automatisiertem Machine Learning mit dem [Caruana-Algorithmus für die Ensembleauswahl mit sortierter Ensembleinitialisierung](http://www.niculescu-mizil.org/papers/shotgun.icml04.revised.rev2.pdf) trainieren. Das Lernen mit Ensembles verbessert die Ergebnisse des maschinellen Lernens und die Vorhersageleistung, da nicht einzelne Modelle verwendet, sondern zahlreiche Modelle kombiniert werden. Die Ensembleiteration erscheint als letzte Iteration Ihrer Ausführung.
@@ -101,20 +109,23 @@ Mit Azure Machine Learning können Sie automatisiertes ML verwenden, um ein Pyth
 
 Automatisiertes ML ist auch in anderen Lösungen von Microsoft verfügbar:
 
-+ In .NET-Apps mit Visual Studio und Visual Studio Code mit [ML.NET](https://docs.microsoft.com/dotnet/machine-learning/automl-overview).
-+ [HDInsight](../../hdinsight/spark/apache-spark-run-machine-learning-automl.md): Die automatisierten ML-Trainingsaufträge werden in Spark in HDInsight-Clustern parallel horizontal hochskaliert.
-+ [Power BI](https://docs.microsoft.com/power-bi/service-machine-learning-automated).
+|Integrationen|BESCHREIBUNG|
+|------------|-----------|
+|[ML.NET](https://docs.microsoft.com/dotnet/machine-learning/automl-overview)|Automatische Modellauswahl und Training in .NET-Apps mithilfe von Visual Studio und Visual Studio Code (mit Machine Learning mit Automatisierung per ML.NET (Vorschauversion)).|
+|[HDInsight](../../hdinsight/spark/apache-spark-run-machine-learning-automl.md)|Sie können Ihre automatisierten ML-Trainingsaufträge in Spark in HDInsight-Clustern parallel horizontal hochskalieren.|
+|[PowerBI](https://docs.microsoft.com/power-bi/service-machine-learning-automated)|Sie können Machine Learning-Modelle direkt in Power BI (Vorschauversion) aufrufen.|
+|[SQL Server](https://cloudblogs.microsoft.com/sqlserver/2019/01/09/how-to-automate-machine-learning-on-sql-server-2019-big-data-clusters/)|Erstellen Sie neue Modelle für das maschinelle Lernen über Ihre Daten in Big Data-Clustern von SQL Server 2019.|
 
 ## <a name="next-steps"></a>Nächste Schritte
 
 Erfahren Sie, wie Modelle mithilfe des automatisierten maschinellen Lernens erstellt werden, und sehen Sie sich Beispiele dazu an:
 
-+ [Tutorial: Automatisches Trainieren eines Klassifizierungsmodells mithilfe von Azure Automated Machine Learning](tutorial-auto-train-models.md)
++ [Tutorial: Automatisches Trainieren eines Regressionsmodell mithilfe von Azure Automated Machine Learning](tutorial-auto-train-models.md)
 
 + Konfigurieren Sie die Einstellungen für ein automatisches Trainingsexperiment:
   + Verwenden Sie in der Benutzeroberfläche des Azure-Portals [die folgenden Schritte](how-to-create-portal-experiments.md).
   + Mit dem Python SDK [verwenden Sie diese Schritte](how-to-configure-auto-train.md).
-  
+
 + Erfahren Sie, wie automatisches Training mithilfe von Zeitreihendaten funktioniert, indem Sie [diese Schritte verwenden](how-to-auto-train-forecast.md).
 
-+ Testen Sie [Jupyter Notebook-Beispiele](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/).
++ Testen Sie [Jupyter Notebook-Beispiele für automatisiertes maschinelles Lernen](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/)

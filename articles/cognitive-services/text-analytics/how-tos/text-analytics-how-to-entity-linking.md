@@ -10,12 +10,12 @@ ms.subservice: text-analytics
 ms.topic: article
 ms.date: 04/16/2019
 ms.author: aahi
-ms.openlocfilehash: c8319dbcb8cebe51dae2a4d7e8d9749c3ab7674f
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: ff4f9af82024e9d39ad89a39bcb2fe4130de9101
+ms.sourcegitcommit: 82efacfaffbb051ab6dc73d9fe78c74f96f549c2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65231429"
+ms.lasthandoff: 06/20/2019
+ms.locfileid: "67304179"
 ---
 # <a name="how-to-use-named-entity-recognition-in-text-analytics"></a>Verwenden der Erkennung benannter Entitäten in der Textanalyse
 
@@ -31,7 +31,7 @@ Die Entitätsverknüpfung ist die Möglichkeit, die Identität einer im Text gef
 ### <a name="named-entity-recognition-ner"></a>Erkennung benannter Entitäten (NER)
 Die Erkennung benannter Entitäten (Named Entity Recognition, NER) ist die Möglichkeit, unterschiedliche Entitäten im Text zu identifizieren und sie in vordefinierte Klassen zu kategorisieren. Die unterstützten Klassen von Entitäten sind unten aufgeführt.
 
-In [Version 2.1](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v2-1/operations/5ac4251d5b4ccd1554da7634) der Textanalyse sind sowohl die Entitätsverknüpfung als auch die Erkennung benannter Entitäten verfügbar.
+In [Version 2.1](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v2-1/operations/5ac4251d5b4ccd1554da7634) der Textanalyse sind sowohl die Entitätsverknüpfung als auch die Erkennung benannter Entitäten für mehrere Sprachen verfügbar. Weitere Information finden Sie im Artikel zu den [unterstützten Sprachen](../language-support.md#sentiment-analysis-key-phrase-extraction-and-named-entity-recognition). 
 
 ### <a name="language-support"></a>Sprachunterstützung
 
@@ -39,7 +39,7 @@ Zum Verwenden der Entitätsverknüpfung in verschiedenen Sprachen ist die Nutzun
 
 ## <a name="supported-types-for-named-entity-recognition"></a>Unterstützte Typen für die Erkennung benannter Entitäten
 
-| Type  | SubType | Beispiel |
+| type  | SubType | Beispiel |
 |:-----------   |:------------- |:---------|
 | Person        | N/V\*         | „Jeff“, „Bill Gates“     |
 | Location      | N/V\*         | „Redmond, Washington“, „Paris“  |
@@ -105,7 +105,7 @@ Details zur Anforderungsdefinition finden Sie unter [Aufrufen der Textanalyse-RE
 
 ## <a name="step-2-post-the-request"></a>Schritt 2: Übermitteln der Anforderung
 
-Die Analyse erfolgt, wenn die Anforderung eingeht. Der Dienst akzeptiert bis zu 100 Anforderungen pro Sekunde und 1000 Anforderungen pro Minute. Jede Anforderung darf maximal 1 MB groß sein.
+Die Analyse erfolgt, wenn die Anforderung eingeht. Weitere Informationen zur Größe und Anzahl von Anforderungen, die Sie pro Minute und Sekunde senden können, finden Sie in der Übersicht im Abschnitt [Datengrenzwerte](../overview.md#data-limits).
 
 Vergessen Sie nicht, dass der Dienst zustandslos ist. In Ihrem Konto werden keine Daten gespeichert. Die Ergebnisse werden direkt in der Antwort zurückgegeben.
 

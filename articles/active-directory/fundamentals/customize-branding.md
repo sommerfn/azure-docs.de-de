@@ -11,14 +11,14 @@ ms.topic: conceptual
 ms.date: 09/18/2018
 ms.author: lizross
 ms.reviewer: kexia
-ms.custom: it-pro, seodec18
+ms.custom: fasttrack-edit
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 277e7663c978e64ee1440e14583e884b768b3139
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: bef3960e5c117a131b59a65196214c51e01bd3c8
+ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65441640"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67204574"
 ---
 # <a name="add-branding-to-your-organizations-azure-active-directory-sign-in-page"></a>Hinzufügen von Branding zur Azure Active Directory-Anmeldeseite Ihrer Organisation
 Verwenden Sie das Logo und benutzerdefinierte Farbschemas Ihrer Organisation, um Ihren Azure Active Directory-Anmeldeseiten (Azure AD) ein konsistentes Aussehen und Verhalten zu verleihen. Ihre Anmeldeseiten werden angezeigt, wenn sich Benutzer bei webbasierten Apps Ihrer Organisation wie Office 365 anmelden, die Azure AD als Identitätsanbieter verwenden.
@@ -58,7 +58,7 @@ Ihr benutzerdefiniertes Branding wird nicht sofort angezeigt, wenn Ihre Benutzer
 
         - **Bannerlogo.** Wählen Sie eine PNG- oder JPG-Version Ihres Logos aus, das auf der Anmeldeseite angezeigt werden soll, nachdem der Benutzer einen Benutzernamen eingegeben hat, sowie auf der Portalseite **Meine Apps**.
             
-            Das Bild darf nicht höher als 36 Pixel oder breiter als 245 Pixel sein. Wir empfehlen, ein transparentes Bild zu verwenden, weil der Hintergrund unter Umständen nicht mit Ihrem Logohintergrund übereinstimmt. Wir empfehlen ferner, um das Bild herum keine Auffüllung vorzunehmen, da Ihr Logo sonst klein wirken könnte.
+            Das Bild darf nicht höher als 60 Pixel oder breiter als 280 Pixel sein. Wir empfehlen, ein transparentes Bild zu verwenden, weil der Hintergrund unter Umständen nicht mit Ihrem Logohintergrund übereinstimmt. Wir empfehlen ferner, um das Bild herum keine Auffüllung vorzunehmen, da Ihr Logo sonst klein wirken könnte.
 
         - **Hinweis auf den Benutzernamen.** Geben Sie den Hinweistext ein, der Benutzern angezeigt wird, wenn sie ihren Benutzernamen vergessen haben. Dieser Text muss im Unicode-Format sein, darf keine Links oder Code enthalten und darf maximal 64 Zeichen lang sein. Wenn sich Gäste bei Ihrer App anmelden, wird empfohlen, diesen Hinweis nicht hinzuzufügen.
 

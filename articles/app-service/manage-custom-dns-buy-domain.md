@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 11/24/2017
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: 4b26446845d004b4dd92807c0b5ec0ada9ed181f
-ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
+ms.openlocfilehash: 6bba176a27cc70321915654e3e2e62320f22c16c
+ms.sourcegitcommit: 5cb0b6645bd5dff9c1a4324793df3fdd776225e4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/04/2019
-ms.locfileid: "66475222"
+ms.lasthandoff: 06/21/2019
+ms.locfileid: "67310141"
 ---
 # <a name="buy-a-custom-domain-name-for-azure-app-service"></a>Kaufen eines benutzerdefinierten Domänennamens für Azure App Service
 
@@ -147,7 +147,7 @@ Auf der Seite **Benutzerdefinierte Domänen** werden Ihnen die ausgewählten Hos
 ![](./media/custom-dns-web-site-buydomains-web-app/dncmntask-cname-buydomains-hostnames-added.png)
 
 > [!NOTE]
-> Die Bezeichnung **Nicht sicher** für Ihre benutzerdefinierte Domäne bedeutet, dass diese noch nicht an ein SSL-Zertifikat gebunden ist und dass für alle HTTPS-Anforderungen von einem Browser an Ihre benutzerdefinierte Domäne abhängig vom Browser eine Warnung oder ein Fehler angezeigt wird. Informationen zum Konfigurieren der SSL-Bindung finden Sie unter [Kaufen und Konfigurieren eines SSL-Zertifikats für Azure App Service](web-sites-purchase-ssl-web-site.md).
+> Die Bezeichnung **Nicht sicher** für Ihre benutzerdefinierte Domäne bedeutet, dass diese noch nicht an ein SSL-Zertifikat gebunden ist und für alle HTTPS-Anforderungen über einen Browser an Ihre benutzerdefinierte Domäne abhängig vom Browser entweder eine Warnung oder ein Fehler angezeigt wird. Informationen zum Konfigurieren der SSL-Bindung finden Sie unter [Kaufen und Konfigurieren eines SSL-Zertifikats für Azure App Service](web-sites-purchase-ssl-web-site.md).
 >
 
 Um den Hostnamen zu testen, navigieren Sie zu den aufgelisteten Hostnamen im Browser. Versuchen Sie wie im Beispiel im vorstehenden Screenshot, zu den Seiten _kontoso.net_ und _www\.kontoso.net_ zu navigieren.

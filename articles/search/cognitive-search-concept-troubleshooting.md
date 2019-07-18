@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 02/02/2019
 ms.author: luisca
 ms.custom: seodec2018
-ms.openlocfilehash: c97ccd82a9c09e10572733040e238443cbf777da
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: c0de4d2b9ad0d009b9cd363d19a2de3f29d810d4
+ms.sourcegitcommit: 82efacfaffbb051ab6dc73d9fe78c74f96f549c2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64696594"
+ms.lasthandoff: 06/20/2019
+ms.locfileid: "67303451"
 ---
 # <a name="troubleshooting-tips-for-cognitive-search"></a>Tipps zur Problembehandlung bei der kognitiven Suche
 
@@ -94,7 +94,10 @@ Die Bildanalyse ist selbst für einfache Fälle rechenintensiv, sodass die Verar
 
 Die maximale Laufzeit variiert je nach Tarif: mehrere Minuten beim Free-Tarif, 24-Stunden-Indizierung bei abrechenbaren Tarifen. Wenn die Verarbeitung nicht innerhalb eines 24-Stunden-Zeitraums für die bedarfsgesteuerte Verarbeitung abgeschlossen werden kann, wechseln Sie zu einem Zeitplan, damit der Indexer die Verarbeitung dort fortsetzt, wo sie unterbrochen wurde. 
 
-Bei geplanten Indexern wird die Indizierung beim letzten erfolgreich verarbeiteten Dokument planmäßig fortgesetzt. Durch die Verwendung eines wiederkehrenden Zeitplans kann sich der Indexer über eine Reihe von Stunden oder Tagen durch den Rückstand der Bilder arbeiten, bis schließlich alle Bilder verarbeitet sind. Weitere Informationen zur Zeitplansyntax finden Sie unter [Schritt 3: Erstellen eines Indexers](search-howto-indexing-azure-blob-storage.md#step-3-create-an-indexer).
+Bei geplanten Indexern wird die Indizierung beim letzten erfolgreich verarbeiteten Dokument planmäßig fortgesetzt. Durch die Verwendung eines wiederkehrenden Zeitplans kann sich der Indexer über eine Reihe von Stunden oder Tagen durch den Rückstand der Bilder arbeiten, bis schließlich alle Bilder verarbeitet sind. Weitere Informationen zur Zeitplansyntax finden Sie unter [Schritt 3: Erstellen eines Indexers](search-howto-indexing-azure-blob-storage.md#step-3-create-an-indexer) oder [How to schedule indexers for Azure Search (Festlegen eines Zeitplans für Indexer in Azure Search)](search-howto-schedule-indexers.md).
+
+> [!NOTE]
+> Wenn ein Indexer auf einen bestimmten Zeitplan festgelegt ist, im gleichen Dokument bei erneuter Ausführung aber immer wieder ein Fehler auftritt, wird der Indexer in selteneren Intervallen ausgeführt (bis hin zum Maximum von mindestens einmal in 24 Stunden), bis die Ausführung fehlerfrei verläuft.  Wenn Sie der Meinung sind, dass Sie das Problem behoben haben, das dafür gesorgt hat, dass der Indexer an einem bestimmten Punkt hängengeblieben ist, können Sie eine bedarfsgesteuerte Ausführung des Indexers veranlassen. Wenn diese Ausführung erfolgreich verläuft, wird der Indexer wieder im festgelegten Zeitplanintervall ausgeführt.
 
 Bei der portalbasierten Indizierung (wie im Schnellstart beschrieben) wird durch die Indexeroption „Einmal ausführen“ die Verarbeitung auf eine Stunde (`"maxRunTime": "PT1H"`) eingeschränkt. Sie können das Verarbeitungsfenster auch erweitern.
 

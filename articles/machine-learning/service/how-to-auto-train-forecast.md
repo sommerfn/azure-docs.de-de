@@ -9,13 +9,13 @@ ms.service: machine-learning
 ms.subservice: core
 ms.reviewer: trbye
 ms.topic: conceptual
-ms.date: 05/02/2019
-ms.openlocfilehash: c7f4b6d8aa614a460772fb7af11f9b83dc3fc979
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.date: 06/20/2019
+ms.openlocfilehash: 4a3ab9094080ab257a885bb7a745fc83948327c2
+ms.sourcegitcommit: 08138eab740c12bf68c787062b101a4333292075
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65800812"
+ms.lasthandoff: 06/22/2019
+ms.locfileid: "67331683"
 ---
 # <a name="auto-train-a-time-series-forecast-model"></a>Automatisches Trainieren eines Modells für die Zeitreihenprognose
 
@@ -26,6 +26,14 @@ In diesem Artikel erfahren Sie, wie Sie im Azure Machine Learning-Dienst ein Reg
 * Ausführen von Vorhersagen mit Zeitreihendaten
 
 > [!VIDEO https://www.microsoft.com/videoplayer/embed/RE2X1GW]
+
+Sie können automatisiertes Machine Learning verwenden, um verschiedene Techniken und Ansätze zu kombinieren. Außerdem erhalten Sie dabei eine beliebte und hochwertige Zeitreihenprognose. Automatisierte Zeitreihenexperimente werden als multivariate Regressionsprobleme behandelt. Zeitreihenwerte aus der Vergangenheit werden pivotiert und dienen so zusammen mit anderen Vorhersageelementen als zusätzliche Dimensionen für den Regressor. 
+
+Dieser Ansatz hat im Gegensatz zu klassischen Zeitreihenmethoden den Vorteil, dass mehrere kontextbezogene Variablen und deren Beziehungen zueinander beim Training auf natürliche Weise integriert werden. In der Praxis können bei Vorhersageanwendungen mehrere Faktoren die Vorhersage beeinflussen. Wenn z. B. Verkaufszahlen vorhergesagt werden sollen, wird das Ergebnis auf der Grundlage von Interaktionen von Trends aus der Vergangenheit, des Wechselkurses und des Preises berechnet. Ein weiterer Vorteil ist, dass alle aktuellen Innovationen bei Regressionsmodellen direkt auf die Vorhersagen angewendet werden.
+
+Sie können u. a. [konfigurieren](#config), wie weit die Vorhersage in die Zukunft reichen soll (Vorhersagehorizont), und ob es Verzögerungen geben soll. Beim automatisierten Machine Learning wird ein zwar einfaches, aber häufig in interne Verzweigungen unterteiltes Modell für alle Elemente im Dataset und in den Vorhersagehorizonten erlernt. Dadurch sind mehr Daten verfügbar, um Modellparameter zu schätzen, und die Generalisierung von unbekannten Reihen wird möglich. 
+
+Features, die aus den Trainingsdaten extrahiert werden, spielen eine wichtige Rolle. Zudem werden beim automatisierten Machine Learning einige Standardschritte für die Vorverarbeitung durchgeführt, und es werden zusätzliche Zeitreihenfeatures generiert, um saisonale Auswirkungen zu erfassen und die Vorhersage so genau wie möglich zu gestalten. 
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -69,6 +77,7 @@ y_test = X_test.pop("sales_quantity").values
 > [!NOTE]
 > Stellen Sie beim Trainieren eines Modells für die Vorhersage zukünftiger Werte sicher, dass alle während des Trainings verwendeten Features beim Ausführen von Vorhersagen für Ihren gewünschten Vorhersagehorizont verwendet werden können. Wenn Sie also beispielsweise eine Nachfrageprognose erstellen, lässt sich die Trainingsgenauigkeit durch die Einbeziehung eines Features für den aktuellen Aktienkurs erheblich verbessern. Wenn Sie bei Ihrer Vorhersage allerdings einen Vorhersagehorizont verwenden, der weit in der Zukunft liegt, lassen sich zukünftige Aktienkurse für zukünftige Zeitreihenpunkte ggf. nicht präzise vorhersagen, was sich nachteilig auf die Modellgenauigkeit auswirken kann.
 
+<a name="config"></a>
 ## <a name="configure-and-run-experiment"></a>Konfigurieren und Ausführen des Experiments
 
 Bei Vorhersageaufgaben nutzt das automatisierte maschinelle Lernen spezifische Vorverarbeitungs- und Schätzschritte für Zeitreihendaten. Folgende Vorverarbeitungsschritte werden ausgeführt:
@@ -85,7 +94,7 @@ Das Objekt `AutoMLConfig` definiert die erforderlichen Einstellungen und Daten f
 |-------|-------|-------|
 |`time_column_name`|Dient zum Angeben der Datetime-Spalte in den Eingabedaten, die zum Erstellen der Zeitreihe sowie zum Ableiten des Intervalls verwendet wird.|✓|
 |`grain_column_names`|Namen zum Definieren individueller Reihengruppen in den Eingabedaten. Ohne definierte Granularität wird bei dem Dataset von einer einzelnen Zeitreihe ausgegangen.||
-|`max_horizon`|Maximaler gewünschter Vorhersagehorizont in Einheiten des Zeitreihenintervalls.|✓|
+|`max_horizon`|Definiert den maximal gewünschten Vorhersagehorizont in Einheiten von Zeitreihen. Die Einheiten basieren auf dem Zeitintervall Ihrer Trainingsdaten, z. B. monatlich oder wöchentlich, die vorhergesagt werden sollen.|✓|
 |`target_lags`|*n* Zeiträume zum Weiterleiten von Verzögerungszielwerten vor dem Trainieren des Modells.||
 |`target_rolling_window_size`|*n* Historische Zeiträume zum Generieren der vorhergesagten Werte, < = Größe Trainingsmenge. Wenn nicht angegeben, ist *n* die vollständige Trainingsmenge.||
 

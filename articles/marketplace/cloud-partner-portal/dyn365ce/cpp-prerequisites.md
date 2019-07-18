@@ -7,12 +7,12 @@ ms.service: marketplace
 ms.topic: conceptual
 ms.date: 03/13/2019
 ms.author: pabutler
-ms.openlocfilehash: dd2e68c820a8c9e503a3539fd50bf3fba68e3949
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 9cfec65843012e781c8a8dd06cbc4d1225b0dd36
+ms.sourcegitcommit: a12b2c2599134e32a910921861d4805e21320159
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66257523"
+ms.lasthandoff: 06/24/2019
+ms.locfileid: "67338897"
 ---
 # <a name="dynamics-365-for-customer-engagement-prerequisites"></a>Voraussetzungen für „Dynamics 365 for Customer Engagement“
 
@@ -40,7 +40,7 @@ Ihre Dynamics 365 for Customer Engagement-Anwendung muss den [Microsoft AppSourc
 
 Die geschäftlichen Anforderungen umfassen die folgenden verfahrenstechnischen, vertraglichen und rechtlichen Verpflichtungen:
 
-* Sie müssen im [Microsoft Partner Network (MPN)](https://partners.microsoft.com/PartnerProgram/simplifiedenrollment.aspx) registriert sein oder ein registrierter Cloud Marketplace-Herausgeber sein. Sollten Sie sich nicht registriert haben, führen Sie die Schritte in [Weg zum Cloud Marketplace-Herausgeber](https://docs.microsoft.com/azure/marketplace/become-publisher) aus.  (Verwenden Sie für den dritten Schritt stattdessen das [Antragsformular für AppSource-Partner](https://appsource.microsoft.com/partners/signup)). 
+* Sie müssen im [Microsoft Partner Network (MPN)](https://partners.microsoft.com/PartnerProgram/simplifiedenrollment.aspx) registriert sein oder ein registrierter Cloud Marketplace-Herausgeber sein. Sollten Sie sich nicht registriert haben, führen Sie die Schritte in [Weg zum Cloud Marketplace-Herausgeber](https://docs.microsoft.com/azure/marketplace/become-publisher) aus.  (Sie können außerdem auch Kontakt zum [Onboarding-Team für Dynamics 365 for Customer Engagement](https://experience.dynamics.com/isvengage/) aufnehmen.)
 
     >[!NOTE]
     >Sie sollten dasselbe Microsoft Developer Center-Registrierungskonto für die Anmeldung beim Cloud-Partnerportal verwenden. Sie sollten für Ihre Azure Marketplace-Angebote nur ein Microsoft-Konto verwenden. Dieses Konto sollte nicht speziell für einzelne Dienste oder Angebote vorgesehen sein.

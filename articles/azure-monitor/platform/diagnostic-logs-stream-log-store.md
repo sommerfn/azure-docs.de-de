@@ -8,16 +8,16 @@ ms.topic: conceptual
 ms.date: 04/18/2019
 ms.author: johnkem
 ms.subservice: logs
-ms.openlocfilehash: b17978da3195b364f868d33ab7ad9faa1544e9ec
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 13eb1a8fcea2f74cda5921a51b8c2e8816be975f
+ms.sourcegitcommit: 82efacfaffbb051ab6dc73d9fe78c74f96f549c2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60238005"
+ms.lasthandoff: 06/20/2019
+ms.locfileid: "67303708"
 ---
 # <a name="stream-azure-diagnostic-logs-to-log-analytics-workspace-in-azure-monitor"></a>Streamen von Azure-Diagnoseprotokollen an einen Log Analytics-Arbeitsbereich in Azure Monitor
 
-**[Azure-Diagnoseprotokolle](diagnostic-logs-overview.md)** können über das Portal, über PowerShell-Cmdlets oder die Azure CLI nahezu in Echtzeit an einen Log Analytics-Arbeitsbereich in Azure Monitor gestreamt werden.
+**[Azure-Diagnose-Protokolle](diagnostic-logs-overview.md)** können über das Portal, über PowerShell-Cmdlets oder die Azure CLI nahezu in Echtzeit an einen Log Analytics-Arbeitsbereich in Azure Monitor gestreamt werden.
 
 ## <a name="what-you-can-do-with-diagnostics-logs-in-a-log-analytics-workspace"></a>Verwendungsmöglichkeiten für Diagnoseprotokolle in einem Log Analytics-Arbeitsbereich
 
@@ -60,7 +60,7 @@ Der Log Analytics-Arbeitsbereich muss sich nicht unter demselben Abonnement befi
 
 4. Klicken Sie auf **Speichern**.
 
-Nach einigen Augenblicken wird die neue Einstellung in der Liste der Einstellungen für diese Ressource angezeigt, und Diagnoseprotokolle werden an diesen Arbeitsbereich gestreamt, sobald neue Ereignisdaten generiert werden. Beachten Sie, dass zwischen der Ausgabe eines Ereignisses und der Anzeige in Log Analytics möglicherweise bis zu 15 Minuten vergehen.
+Nach einigen Augenblicken wird die neue Einstellung in der Liste der Einstellungen für diese Ressource angezeigt, und Diagnoseprotokolle werden an diesen Arbeitsbereich gestreamt, sobald neue Ereignisdaten generiert werden. Möglicherweise vergehen bis zu 15 Minuten zwischen der Ausgabe eines Ereignisses und dessen Anzeige in Log Analytics.
 
 ### <a name="via-powershell-cmdlets"></a>Verwenden von PowerShell-Cmdlets
 
@@ -99,37 +99,81 @@ Das Argument `--resource-group` ist nur erforderlich, wenn `--workspace` keine O
 
 Auf dem Blatt „Protokolle“ im Azure Monitor-Portal können Sie Diagnoseprotokolle im Rahmen der Protokollverwaltungslösung unter der AzureDiagnostics-Tabelle abfragen. Es gibt auch [verschiedene Überwachungslösungen für Azure-Ressourcen](../../azure-monitor/insights/solutions.md), die Sie installieren können, um sofort Informationen zu den an Azure Monitor gesendeten Protokolldaten zu erhalten.
 
+## <a name="azure-diagnostics-vs-resource-specific"></a>Der Azure-Diagnose-Modus und der ressourcenspezifische Modus im Vergleich  
+Sobald ein Log Analytics-Ziel in einer Azure-Diagnose-Konfiguration aktiviert wird, gibt es zwei Möglichkeiten für die Anzeige von Daten in Ihrem Arbeitsbereich:  
+- **Azure-Diagnose:** Legacymethode, die heutzutage von den meisten Azure-Diensten genutzt wird. In diesem Modus werden alle Daten zu einer Diagnose-Einstellung, die auf einen bestimmten Arbeitsbereich verweisen, in der Tabelle _AzureDiagnostics_ angezeigt. 
+<br><br>Da viele Ressourcen Daten an dieselbe Tabelle (_AzureDiagnostics_) senden, stellt das Schema dieser Tabelle die Obermenge der Schemas aller erfassten einzelnen Datentypen dar. Wenn Sie beispielsweise Diagnose-Einstellungen für die Sammlung der folgenden Datentypen erstellt haben, die alle an denselben Arbeitsbereich gesendet werden, wird Folgendes generiert:
+    - Überwachungsprotokolle der Ressource 1 (mit einem Schema, das aus den Spalten A, B und C besteht)  
+    - Fehlerprotokolle der Ressource 2 (mit einem Schema, das aus den Spalten D, E und F besteht)  
+    - Datenflussprotokolle der Ressourcen 3 (mit einem Schema, das aus den Spalten G, H und I besteht)  
+
+    Die Azure-Diagnosetabelle sieht mit einigen Beispieldaten wie folgt aus:  
+
+    | ResourceProvider | Category (Kategorie) | Eine Datei | b | C | D | E | F | G | H | I |
+    | -- | -- | -- | -- | -- | -- | -- | -- | -- | -- | -- |
+    | Microsoft.Resource1 | AuditLogs | x1 | y1 | z1 |
+    | Microsoft.Resource2 | ErrorLogs | | | | q1 | w1 | e1 |
+    | Microsoft.Resource3 | DataFlowLogs | | | | | | | j1 | k1 | l1|
+    | Microsoft.Resource2 | ErrorLogs | | | | q2 | w2 | e2 |
+    | Microsoft.Resource3 | DataFlowLogs | | | | | | | j3 | k3 | l3|
+    | Microsoft.Resource1 | AuditLogs | x5 | y5 | z5 |
+    | ... |
+
+- **Ressourcenspezifisch:** In diesem Modus werden individuelle Tabellen in dem ausgewählten Arbeitsbereich für die einzelnen Kategorien erstellt, die bei der Konfiguration der Diagnose-Einstellungen ausgewählt werden. Diese neuere Methode erleichtert die Suche nach Daten durch eine explizite Unterteilung in verschiedene Aspekte: Es gibt zu jeder Kategorie eine Tabelle. Außerdem werden dynamische Typen unterstützt. Für ausgewählte Azure-Ressourcentypen wie [Azure Active Directory](https://docs.microsoft.com/azure/active-directory/reports-monitoring/howto-analyze-activity-logs-log-analytics)- oder [Intune](https://docs.microsoft.com/intune/review-logs-using-azure-monitor)-Protokolle ist dieser Modus bereits verfügbar. Es wird erwartet, dass mit der Zeit sämtliche Datentypen zum ressourcenspezifischen Modus migrieren. 
+
+    Im obigen Beispiel hätte das zur Folge, dass zwei Tabellen erstellt werden: 
+    - Die Tabelle _AuditLogs_:
+
+        | ResourceProvider | Category (Kategorie) | Eine Datei | b | C |
+        | -- | -- | -- | -- | -- |
+        | Microsoft.Resource1 | AuditLogs | x1 | y1 | z1 |
+        | Microsoft.Resource1 | AuditLogs | x5 | y5 | z5 |
+        | ... |
+
+    - Die Tabelle _ErrorLogs_:  
+
+        | ResourceProvider | Category (Kategorie) | D | E | F |
+        | -- | -- | -- | -- | -- | 
+        | Microsoft.Resource2 | ErrorLogs | q1 | w1 | e1 |
+        | Microsoft.Resource2 | ErrorLogs | q2 | w2 | e2 |
+        | ... |
+
+    - Die Tabelle _DataFlowLogs_:  
+
+        | ResourceProvider | Category (Kategorie) | G | H | I |
+        | -- | -- | -- | -- | -- | 
+        | Microsoft.Resource3 | DataFlowLogs | j1 | k1 | l1|
+        | Microsoft.Resource3 | DataFlowLogs | j3 | k3 | l3|
+        | ... |
+
+    Zudem hat die Verwendung des ressourcenspezifischen Modus u. a. den Vorteil, dass die Leistung sowohl in Bezug auf die Latenz bei der Datenerfassung als auch auf die Abfragezeiten verbessert wird, dass Schemas und die zugehörigen Strukturen besser erkannt werden können und dass RBAC-Rechte für bestimmte Rollen vergeben werden können.
+
+### <a name="selecting-azure-diagnostic-vs-resource-specific-mode"></a>Auswählen des Azure-Diagnose-Modus und des ressourcenspezifischen Modus im Vergleich
+Bei den meisten Azure-Ressourcen können Sie nicht zwischen dem Azure-Diagnose-Modus oder dem ressourcenspezifischen Modus auswählen. Stattdessen wählt die jeweilige Ressource automatisch eine Methode für die mit ihr im Zusammenhang stehenden Daten aus. Wenn Sie wissen möchten, welcher Modus angewendet wird, finden Sie weitere Informationen in der Dokumentation zu der jeweiligen Ressource, die Sie für das Senden von Daten an Log Analytics ausgewählt haben. 
+
+Wie bereits im vorherigen Abschnitt erwähnt, ist unser langfristiges Ziel, dass für alle Azure-Dienste unter Azure Monitor der ressourcenspezifische Modus verwendet wird. Damit dieser Übergang erleichtert wird und sichergestellt ist, dass in diesem Zusammenhang keine Daten verloren gehen, bieten Ihnen einige Azure-Dienste eine Auswahlmöglichkeit, sobald Sie ein Onboarding auf Log Analytics durchführen:  
+   ![Auswahl eines Modus in den Diagnose-Einstellungen](media/diagnostic-logs-stream-log-store/diagnostic-settings-mode-selector.png)
+
+Es wird **dringend** empfohlen, für jede neu erstellte Diagnose-Einstellung den ressourcenspezifischen Modus auszuwählen, um spätere komplizierte Migrationen zu vermeiden.  
+
+Für bereits vorhandene Diagnose-Einstellungen können Sie rückwirkend vom Azure-Diagnose-Modus zum ressourcenspezifischen Modus wechseln, sobald diese Möglichkeit für die jeweilige Azure-Ressource aktiviert wurde. Bereits erfasste Daten sind weiterhin so lange über die Tabelle _AzureDiagnostics_ abrufbar, bis sie gemäß Ihren Einstellungen für die Datenaufbewahrung gelöscht werden. Jegliche neuen Daten werden hingegen an die jeweilige dedizierte Tabelle gesendet. Das bedeutet, dass für alle neuen Abfragen, die sowohl alte als auch neue Daten betreffen (bis die alten Daten gelöscht werden), ein [Union](https://docs.microsoft.com/azure/kusto/query/unionoperator)-Operator benötigt wird, um die beiden Datasets zu verknüpfen.
+
+Informieren Sie sich im Blog zu [Azure-Updates](https://azure.microsoft.com/updates/) über Neuigkeiten zu Azure-Diensten, die Protokolle im ressourcenspezifischen Modus unterstützen.
+
 ### <a name="known-limitation-column-limit-in-azurediagnostics"></a>Bekannte Einschränkung: Spaltenlimit in Azure-Diagnose
-Da viele SEND-Datentypen von Ressourcen an dieselbe Tabelle (_Azure-Diagnose_) gesendet werden, stellt das Schema dieser Tabelle die Obermenge der Schemata aller erfassten einzelnen Datentypen dar. Wenn Sie beispielsweise Diagnoseeinstellungen für die Sammlung der folgenden Datentypen erstellt haben, werden sie alle an denselben Arbeitsbereich gesendet:
-- Überwachungsprotokolle der Ressource 1 (mit einem Schema, das aus den Spalten A, B und C besteht)  
-- Fehlerprotokolle der Ressource 2 (mit einem Schema, das aus den Spalten D, E und F besteht)  
-- Datenflussprotokolle der Ressourcen 3 (mit einem Schema, das aus den Spalten G, H und I besteht)  
- 
-Die Azure-Diagnosetabelle sieht mit einigen Beispieldaten wie folgt aus:  
- 
-| ResourceProvider | Category (Kategorie) | Eine Datei | b | C | D | E | F | G | H | I |
-| -- | -- | -- | -- | -- | -- | -- | -- | -- | -- | -- |
-| Microsoft.Resource1 | AuditLogs | x1 | y1 | z1 |
-| Microsoft.Resource2 | ErrorLogs | | | | q1 | w1 | e1 |
-| Microsoft.Resource3 | DataFlowLogs | | | | | | | j1 | k1 | l1|
-| Microsoft.Resource2 | ErrorLogs | | | | q2 | w2 | e2 |
-| Microsoft.Resource3 | DataFlowLogs | | | | | | | j3 | k3 | l3|
-| Microsoft.Resource1 | AuditLogs | x5 | y5 | z5 |
-| ... |
- 
-Eine einzelne Azure-Protokolltabelle ist explizit auf maximal 500 Spalten begrenzt. Sobald dieser Wert erreicht ist, werden alle Zeilen, die Daten in einer Spalte außerhalb der ersten 500 Spalten enthalten, zum Zeitpunkt der Erfassung gelöscht. Die Azure-Diagnosetabelle ist besonders anfällig für diese Begrenzung. Üblicherweise wird sie relevant, wenn eine Vielzahl von Datenquellen oder mehrere sehr ausführliche Datenquellen an denselben Arbeitsbereich gesendet werden. 
- 
+Eine einzelne Azure-Protokolltabelle ist explizit auf maximal 500 Spalten begrenzt. Sobald dieser Wert erreicht ist, werden alle Zeilen, die Daten in einer Spalte außerhalb der ersten 500 Spalten enthalten, zum Zeitpunkt der Erfassung gelöscht. Die Azure-Diagnosetabelle ist besonders anfällig für diese Begrenzung. Üblicherweise wird sie relevant, wenn eine Vielzahl von Datenquellen oder mehrere umfangreiche Datenquellen an denselben Arbeitsbereich gesendet werden. 
+
 #### <a name="azure-data-factory"></a>Azure Data Factory  
-Azure Data Factory ist aufgrund eines sehr detaillierten Protokollsatzes eine Ressource, von der bekannt ist, dass sie besonders von dieser Begrenzung betroffen ist. Dies gilt insbesondere für Folgendes:  
+Azure Data Factory ist aufgrund sehr detaillierter Protokolle eine Ressource, die besonders von dieser Begrenzung betroffen ist. Insbesondere gilt Folgendes für sämtliche Diagnose-Einstellungen, die konfiguriert wurden, bevor der ressourcenspezifische Modus aktiviert oder aufgrund von Abwärtskompatibilität ausgewählt wurde:  
 - *Für eine Aktivität in Ihrer Pipeline definierte Benutzerparameter*: Für jeden eindeutig benannten Benutzerparameter wird für jede Aktivität eine neue Spalte erstellt. 
-- *Aktivitätseingaben und -ausgaben*: Diese variieren von Aktivität zu Aktivität und generieren aufgrund ihrer ausführlichen Natur eine große Anzahl von Spalten. 
+- *Aktivitätseingaben und -ausgaben:* Diese variieren von Aktivität zu Aktivität und generieren eine hohe Anzahl von Spalten, weil sie sehr umfangreich sind. 
  
-Wie bei den weiter unten aufgeführten allgemeineren Vorschlägen zur Problemumgehung wird empfohlen, ADF-Protokolle in einem eigenen Arbeitsbereich zu isolieren, um die Wahrscheinlichkeit zu minimieren, dass diese Protokolle Auswirkungen auf andere Protokolltypen haben, die in Ihren Arbeitsbereichen erfasst werden. Kuratierte Protokolle für Azure Data Factory sind bald verfügbar.
+Wie in den umfassenderen Vorschlägen zur Problemumgehung beschrieben, wird empfohlen, Protokolle zu migrieren, um den ressourcenspezifischen Modus so schnell wie möglich verwenden zu können. Wenn Sie dafür nicht sofort eine Gelegenheit finden, können Sie als Zwischenlösung ADF-Protokolle in einem eigenen Arbeitsbereich isolieren, um die Wahrscheinlichkeit zu minimieren, dass diese Protokolle Auswirkungen auf andere Protokolltypen haben, die in Ihren Arbeitsbereichen erfasst werden. 
  
 #### <a name="workarounds"></a>Problemumgehungen
-Kurzfristig, d. h. bis zur Neudefinition der Obergrenze von 500 Spalten, wird empfohlen, ausführliche Datentypen an separate Arbeitsbereiche zu senden, um die Wahrscheinlichkeit zu verringern, dass die Obergrenze erreicht wird.
+Bis der ressourcenspezifische Modus für alle Azure-Dienste aktiviert ist, wird als kurzfristige Lösung für Dienste empfohlen, die den Modus noch nicht unterstützen, ausführliche Datentypen, die von diesen Diensten veröffentlicht werden, in separate Arbeitsbereiche zu unterteilen. Dadurch wird die Wahrscheinlichkeit verringert, dass die Grenzwerte erreicht werden.  
  
-Längerfristig wird Azure-Diagnose von einem einheitlichen Schema mit geringer Dichte zu individuellen Tabellen pro Datentyp wechseln. In Verbindung mit der Unterstützung dynamischer Typen wird dies die Verwendbarkeit der in Azure-Protokollen mithilfe des Azure-Diagnosemechanismus erfassten Daten erheblich verbessern. Sie können dies bereits für ausgewählte Azure-Ressourcentypen wie [Azure Active Directory](https://docs.microsoft.com/azure/active-directory/reports-monitoring/howto-analyze-activity-logs-log-analytics)- oder [Intune](https://docs.microsoft.com/intune/review-logs-using-azure-monitor)-Protokolle sehen. Suchen Sie im Blog zu [Azure-Updates](https://azure.microsoft.com/updates/) nach Nachrichten über neue Ressourcentypen in Azure, die diese kuratierten Protokolle unterstützen.
+Längerfristig soll ein Übergang vom Azure-Diagnose-Modus hin zu allen Azure-Diensten erfolgen, die den ressourcenspezifischen Modus unterstützen. Es wird empfohlen, so schnell wie möglich zu diesem Modus zu wechseln, um Probleme aufgrund der Grenze von 500 Spalten zu vermeiden.  
 
 
 ## <a name="next-steps"></a>Nächste Schritte

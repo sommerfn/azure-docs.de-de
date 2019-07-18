@@ -10,12 +10,13 @@ ms.topic: conceptual
 ms.date: 05/06/2018
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: eb99cd94dca2a463c275dd5d4fab540b4fc55318
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.custom: fasttrack-edit
+ms.openlocfilehash: 4cbca467b50dd0e43132b6d09dc0785c501fca0f
+ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66510448"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67204677"
 ---
 # <a name="manage-user-data-in-azure-active-directory-b2c"></a>Verwalten von Benutzerdaten in Azure Active Directory B2C
 
@@ -25,7 +26,7 @@ ms.locfileid: "66510448"
 
 ## <a name="delete-user-data"></a>Löschen von Benutzerdaten
 
-Benutzerdaten werden im Azure AD B2C-Verzeichnis und in den Überwachungsprotokollen gespeichert. Alle Daten zur Benutzerüberwachung werden in Azure AD B2C 30 Tage lang aufbewahrt. Falls Sie Benutzerdaten innerhalb dieser 30-Tage-Frist löschen möchten, können Sie den Vorgang [Einen Benutzer löschen](/previous-versions/azure/ad/graph/api/users-operations#DeleteUser) verwenden. Ein DELETE-Vorgang ist für alle Azure AD B2C-Mandanten erforderlich, auf denen sich Daten befinden können. 
+Benutzerdaten werden im Azure AD B2C-Verzeichnis und in den Überwachungsprotokollen gespeichert. Alle Daten zur Benutzerüberwachung werden in Azure AD B2C sieben Tage lang aufbewahrt. Falls Sie Benutzerdaten innerhalb dieser 7-Tage-Frist löschen möchten, können Sie den Vorgang [Einen Benutzer löschen](/previous-versions/azure/ad/graph/api/users-operations#DeleteUser) verwenden. Ein DELETE-Vorgang ist für alle Azure AD B2C-Mandanten erforderlich, auf denen sich Daten befinden können. 
 
 Jedem Benutzer in Azure AD B2C wird eine Objekt-ID zugewiesen. Mit der Objekt-ID erhalten Sie einen eindeutigen Bezeichner, den Sie zum Löschen von Benutzerdaten in Azure AD B2C verwenden können. Je nach Architektur kann die Objekt-ID auch ein nützlicher Korrelationsbezeichner für andere Dienste sein, z.B. Datenbanken in den Bereichen Finanzen, Marketing und Kundenbeziehungsmanagement. 
 

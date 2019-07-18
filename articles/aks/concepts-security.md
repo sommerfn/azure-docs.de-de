@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: conceptual
 ms.date: 03/01/2019
 ms.author: iainfou
-ms.openlocfilehash: 2e655627267546d88f76a2487817bca3153ee91d
-ms.sourcegitcommit: 1289f956f897786090166982a8b66f708c9deea1
+ms.openlocfilehash: 69ec3869f7bfd74b150db537a01e604cae87570f
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/17/2019
-ms.locfileid: "65074014"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67441995"
 ---
 # <a name="security-concepts-for-applications-and-clusters-in-azure-kubernetes-service-aks"></a>Sicherheitskonzepte für Anwendungen und Cluster in Azure Kubernetes Service (AKS)
 
@@ -30,15 +30,15 @@ In diesem Artikel werden die wichtigsten Konzepte vorgestellt, mit denen Sie Anw
 
 In AKS sind die Kubernetes-Masterkomponenten Bestandteil des verwalteten Diensts, der von Microsoft bereitgestellt wird. Jeder AKS-Cluster verfügt über seinen eigenen dedizierten Kubernetes-Master mit einem einzelnen Mandanten, um API-Server, Scheduler usw. bereitzustellen. Dieser Master wird von Microsoft verwaltet und gepflegt.
 
-Standardmäßig verwendet der Kubernetes-API-Server eine öffentliche IP-Adresse mit vollqualifiziertem Domänennamen (FQDN). Mithilfe der rollenbasierten Zugriffssteuerung von Kubernetes und Azure Active Directory können Sie den Zugriff auf den API-Server steuern. Weitere Informationen finden Sie unter [Azure AD-Integration mit AKS][aks-aad].
+Standardmäßig verwendet der Kubernetes-API-Server eine öffentliche IP-Adresse mit vollqualifiziertem Domänennamen (FQDN). Mithilfe der rollenbasierten Zugriffssteuerung von Kubernetes und Azure Active Directory können Sie den Zugriff auf den API-Server steuern. Weitere Informationen finden Sie unter [Azure AD-Integration mit AKS][aks-aad].
 
 ## <a name="node-security"></a>Knotensicherheit
 
 AKS-Knoten sind virtuelle Azure-Computer, die von Ihnen verwaltet und gepflegt werden. Linux-Knoten führen eine optimierte Ubuntu-Distribution mit der Moby-Containerruntime aus. Windows Server-Knoten (derzeit in der Vorschauversion in AKS) führen eine optimierte Version von Windows Server 2019 aus. Auch sie verwenden die Moby-Containerruntime. Wenn ein AKS-Cluster erstellt oder zentral hochskaliert wird, werden die Knoten automatisch mit den aktuellen Betriebssystem-Sicherheitsupdates und -konfigurationen bereitgestellt.
 
-Die Azure-Plattform wendet über Nacht automatisch Betriebssystem-Sicherheitspatches auf die Linux-Knoten an. Wenn ein Betriebssystem-Sicherheitsupdate für Linux einen Neustart des Hosts erfordert, wird dieser Neustart nicht automatisch ausgeführt. Sie können die Linux-Knoten manuell neu starten. Eine andere gängige Methode ist die Verwendung von [kured][kured], einem Open-Source-Neustartdaemon für Kubernetes. Kured wird als ein [DaemonSet][aks-daemonsets] ausgeführt und überwacht jeden Knoten auf das Vorhandensein einer Datei, die angibt, dass ein Neustart erforderlich ist. Neustarts werden clusterübergreifend verwaltet, wobei derselbe [Vorgang des Absperrens und Ausgleichens](#cordon-and-drain) wie bei einem Clusterupgrade angewendet wird.
+Die Azure-Plattform wendet über Nacht automatisch Betriebssystem-Sicherheitspatches auf die Linux-Knoten an. Wenn ein Betriebssystem-Sicherheitsupdate für Linux einen Neustart des Hosts erfordert, wird dieser Neustart nicht automatisch ausgeführt. Sie können die Linux-Knoten manuell neu starten. Eine gängige Methode ist auch die Verwendung von [Kured][kured], an open-source reboot daemon for Kubernetes. Kured runs as a [DaemonSet][aks-daemonsets]. Kured überwacht jeden Knoten auf das Vorhandensein einer Datei, die angibt, dass ein Neustart erforderlich ist. Neustarts werden clusterübergreifend verwaltet, wobei derselbe [Vorgang des Absperrens und Ausgleichens](#cordon-and-drain) wie bei einem Clusterupgrade angewendet wird.
 
-Für Windows Server-Knoten (derzeit in der Vorschauversion in AKS) werden die neuesten Updates von Windows Update nicht automatisch ausgeführt und angewendet. Sie sollten in regelmäßigen Abständen ein Upgrade für die Windows Server-Knotenpools in Ihrem AKS-Cluster durchführen, passend zum Windows Update-Freigabezyklus und Ihrem eigenen Validierungsprozess. Während dieses Upgrades werden Knoten erstellt, die das neueste Windows Server-Image und die neuesten Windows Server-Patches ausführen und die älteren Knoten entfernen. Weitere Informationen zu diesem Prozess finden Sie unter [Upgrade a node pool in AKS (Durchführen eines Upgrades für einen Knotenpool in AKS)][nodepool-upgrade].
+Für Windows Server-Knoten (derzeit in der Vorschauversion in AKS) werden die neuesten Updates von Windows Update nicht automatisch ausgeführt und angewendet. Sie sollten in regelmäßigen Abständen ein Upgrade für die Windows Server-Knotenpools in Ihrem AKS-Cluster durchführen, passend zum Windows Update-Freigabezyklus und Ihrem eigenen Validierungsprozess. Während dieses Upgrades werden Knoten erstellt, die das neueste Windows Server-Image und die neuesten Windows Server-Patches ausführen und die älteren Knoten entfernen. Weitere Informationen zu diesem Prozess finden Sie unter [Durchführen eines Upgrades für einen Knotenpool in AKS][nodepool-upgrade].
 
 Knoten werden in einem Subnetz des privaten virtuellen Netzwerks ohne öffentliche IP-Adresse bereitgestellt. Zur Problembehandlung und Verwaltung ist SSH standardmäßig aktiviert. Dieser SSH-Zugriff ist nur über die interne IP-Adresse verfügbar.
 
@@ -73,13 +73,13 @@ Zum Filtern des Datenverkehrsflusses in virtuellen Netzwerken verwendet Azure Ne
 
 Ein Kubernetes-*Geheimnis* wird verwendet, um sensible Daten wie Anmeldeinformationen oder Schlüssel in Pods einzufügen. Zuerst erstellen Sie ein Geheimnis mit der Kubernetes-API. Wenn Sie Ihren Pod oder die Bereitstellung definieren, kann ein bestimmtes Geheimnis angefordert werden. Geheimnisse werden nur für Knoten bereitgestellt, die über einen eingeplanten Pod verfügen, der es benötigt, und das Geheimnis wird in *tmpfs* gespeichert, nicht auf den Datenträger geschrieben. Wenn der letzte Pod auf einem Knoten gelöscht wird, der ein Geheimnis benötigt, wird das Geheimnis aus dem Verzeichnis „tmpfs“ des Knotens gelöscht. Geheimnisse werden in einem bestimmten Namespace gespeichert, und nur Pods im gleichen Namespace können darauf zugreifen.
 
-Die Verwendung von Geheimnissen reduziert die vertraulichen Informationen, die im YAML-Manifest für den Pod oder den Dienst definiert werden. Stattdessen fordern Sie im Rahmen Ihres YAML-Manifests das im Kubernetes-API-Server gespeicherte Geheimnis an. Mit diesem Ansatz erhält nur der spezielle Pod Zugriff auf das Geheimnis.
+Die Verwendung von Geheimnissen reduziert die vertraulichen Informationen, die im YAML-Manifest für den Pod oder den Dienst definiert werden. Stattdessen fordern Sie im Rahmen Ihres YAML-Manifests das im Kubernetes-API-Server gespeicherte Geheimnis an. Mit diesem Ansatz erhält nur der spezielle Pod Zugriff auf das Geheimnis. Hinweis: Die unformatierten geheimen Manifestdateien enthalten die geheimen Daten im Base64-Format (weitere Einzelheiten finden Sie in der [offiziellen Dokumentation][secret-risks]). Aus diesem Grund sollte diese Datei wie vertrauliche Daten behandelt und nie in die Quellcodeverwaltung committet werden.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
 Die ersten Schritte zum Sichern Ihrer AKS-Cluster sind unter [Aktualisieren eines AKS-Clusters][aks-upgrade-cluster] beschrieben.
 
-Entsprechenden bewährte Methoden finden Sie unter [Best Practices für Clustersicherheit und Upgrades in Azure Kubernetes Service (AKS)][operator-best-practices-cluster-security].
+Entsprechende bewährte Methoden finden Sie unter [Best Practices für Clustersicherheit und Upgrades in Azure Kubernetes Service (AKS)][operator-best-practices-cluster-security].
 
 Weitere Informationen zu den wesentlichen Konzepten von Kubernetes und AKS finden Sie in den folgenden Artikeln:
 
@@ -92,6 +92,7 @@ Weitere Informationen zu den wesentlichen Konzepten von Kubernetes und AKS finde
 <!-- LINKS - External -->
 [kured]: https://github.com/weaveworks/kured
 [kubernetes-network-policies]: https://kubernetes.io/docs/concepts/services-networking/network-policies/
+[secret-risks]: https://kubernetes.io/docs/concepts/configuration/secret/#risks
 
 <!-- LINKS - Internal -->
 [aks-daemonsets]: concepts-clusters-workloads.md#daemonsets

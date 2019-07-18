@@ -6,12 +6,12 @@ ms.service: azure-resource-manager
 ms.topic: reference
 ms.date: 06/07/2019
 ms.author: tomfitz
-ms.openlocfilehash: 8b7e6d234984e84f5b238d657281dd8b1b9ec423
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 4f1bc1415fbb875120d7b64128cae69e1e3f442c
+ms.sourcegitcommit: a12b2c2599134e32a910921861d4805e21320159
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67056884"
+ms.lasthandoff: 06/24/2019
+ms.locfileid: "67339845"
 ---
 # <a name="tag-support-for-azure-resources"></a>Tagunterstützung für Azure-Ressourcen
 In diesem Artikel erfahren Sie, ob ein Ressourcentyp [Tags](resource-group-using-tags.md) unterstützt. Die Spalte mit der Bezeichnung **Tagunterstützung** zeigt an, ob der Ressourcentyp eine Eigenschaft für das Tag hat. Die Spalte mit der Bezeichnung **Tag in Kostenbericht** gibt an, ob dieser Ressourcentyp das Tag an den Kostenbericht übergibt.
@@ -864,8 +864,8 @@ Um die Daten als Datei mit durch Trennzeichen getrennten Werten abzurufen, laden
 | dnszones/TXT | Nein |  Nein |
 | expressRouteCircuits | Ja  | Nein |
 | expressRouteServiceProviders | Nein |  Nein |
-| frontdoors | Ja | Ja |
-| frontdoorWebApplicationFirewallPolicies | Ja | Ja |
+| frontdoors | Ja, aber nur eingeschränkt (siehe [Hinweis weiter unten](#frontdoor)) | Ja |
+| frontdoorWebApplicationFirewallPolicies | Ja, aber nur eingeschränkt (siehe [Hinweis weiter unten](#frontdoor)) | Ja |
 | getDnsResourceReference | Nein |  Nein |
 | interfaceEndpoints | Ja | Ja |
 | internalNotify | Nein |  Nein |
@@ -898,6 +898,10 @@ Um die Daten als Datei mit durch Trennzeichen getrennten Werten abzurufen, laden
 | vpnGateways | Ja | Nein |
 | vpnSites | Ja | Ja |
 | webApplicationFirewallPolicies | Ja | Ja |
+
+<a id="frontdoor" />
+
+Für Azure Front Door Service können Sie beim Erstellen von Ressourcen zwar Tags anwenden, aber das Aktualisieren und Hinzufügen von Tags wird derzeit nicht unterstützt.
 
 ## <a name="microsoftnotificationhubs"></a>Microsoft.NotificationHubs
 | Ressourcentyp | Tagunterstützung | Tag in Kostenbericht |

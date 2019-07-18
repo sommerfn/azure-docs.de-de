@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: vmware
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: c9689a468e8784eb4ec3590011e02a37d92d6b9c
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: a91d0f75b7e27065bd2ee0ea430a859d265afacb
+ms.sourcegitcommit: 08138eab740c12bf68c787062b101a4333292075
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67083401"
+ms.lasthandoff: 06/22/2019
+ms.locfileid: "67332047"
 ---
 # <a name="vpn-gateways-overview"></a>Übersicht über VPN-Gateways
 
@@ -26,7 +26,7 @@ CloudSimple stellt zwei Arten von VPN-Gateways bereit:
 
 ## <a name="site-to-site-vpn-gateway"></a>Standort-zu-Standort-VPN-Gateway
 
-Ein Standort-zu-Standort-VPN-Gateway (Site-to-Site-VPN-Gateway) wird verwendet, um verschlüsselten Datenverkehr zwischen einem CloudSimple-Regionsnetzwerk und einem lokalen Rechenzentrum zu senden. Verwenden Sie diese Verbindung, um die Subnetze oder den CIDR-Bereich für Netzwerkdatenverkehr zwischen Ihrem lokalen Netzwerk und dem CloudSimple-Regionsnetzwerk zu definieren.
+Ein Standort-zu-Standort-VPN-Gateway (Site-to-Site-VPN-Gateway) wird verwendet, um verschlüsselten Datenverkehr zwischen einem CloudSimple-Regionsnetzwerk und einem lokalen Rechenzentrum zu senden. Verwenden Sie diese Verbindung, um die Subnetze oder den CIDR-Bereich für die Kommunikation zwischen Ihrem lokalen Netzwerk und dem CloudSimple-Regionsnetzwerk zu definieren.
 
 Das VPN-Gateway ermöglicht es Ihnen, Dienste vom lokalen Standort in Ihrer privaten Cloud und Dienste in Ihrer privaten Cloud aus dem lokalen Netzwerk zu nutzen.  CloudSimple stellt einen richtlinienbasierten VPN-Server bereit, über den Sie Verbindungen aus Ihrem lokalen Netzwerk herstellen können.
 
@@ -38,6 +38,9 @@ Zu den Anwendungsfällen von Site-to-Site-VPN gehören:
 * Zugriff auf Workloads, die in Ihrer privaten Cloud ausgeführt werden, aus Ihrem lokalen Netzwerk.
 
 ![Topologie einer Site-to-Site-VPN-Verbindung](media/cloudsimple-site-to-site-vpn-connection.png)
+
+> [!IMPORTANT]
+> Darüber hinaus müssen Sie TCP MSS mit höchstens 1078 Byte verknüpfen. Wenn Ihre VPN-Geräte MSS-Clamping nicht unterstützen, können Sie stattdessen auch den MTU-Wert der Tunnelschnittstelle auf 1118 Byte festlegen. 
 
 ### <a name="cryptographic-parameters"></a>Kryptografische Parameter
 

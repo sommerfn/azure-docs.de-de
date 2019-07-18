@@ -7,12 +7,12 @@ ms.topic: article
 ms.author: mbaldwin
 ms.date: 03/15/2019
 ms.custom: seodec18
-ms.openlocfilehash: 201998168b0709b1608ffad2565518e15d47e52c
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 70cb7f53032dca2b0fedbf4581b88aea07960515
+ms.sourcegitcommit: 2d3b1d7653c6c585e9423cf41658de0c68d883fa
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66234301"
+ms.lasthandoff: 06/20/2019
+ms.locfileid: "67294881"
 ---
 # <a name="azure-disk-encryption-prerequisites-previous-release"></a>Voraussetzungen für Azure Disk Encryption (Vorgängerversion)
 
@@ -24,30 +24,65 @@ Bevor Sie Azure Disk Encryption auf Azure-IaaS-VMs für die unterstützten Szena
 
 > [!WARNING]
 > - Einige Empfehlungen führen möglicherweise zu einer erhöhten Daten-, Netzwerk- oder Computeressourcenauslastung, was zusätzliche Lizenz- oder Abonnementkosten nach sich ziehen kann. Sie müssen über ein gültiges aktives Azure-Abonnement verfügen, um in den unterstützten Regionen Ressourcen in Azure zu erstellen.
-> - Wenn Sie zuvor [Azure Disk Encryption mit Azure AD-App](azure-security-disk-encryption-prerequisites-aad.md) zum Verschlüsseln dieses virtuellen Computers verwendet haben, müssen Sie diese Verschlüsselungsoption auch weiterhin für Ihren virtuellen Computer verwenden. Sie können [Azure Disk Encryption](azure-security-disk-encryption-prerequisites.md) nicht auf diesem verschlüsselten virtuellen Computer verwenden, da dies kein unterstütztes Szenario ist. Das bedeutet, das Verlassen der AAD-Anwendung für diesen verschlüsselten virtuellen Computer wird noch nicht unterstützt. 
+> - Wenn Sie zuvor [Azure Disk Encryption mit Azure AD-App](azure-security-disk-encryption-prerequisites-aad.md) zum Verschlüsseln dieses virtuellen Computers verwendet haben, müssen Sie diese Verschlüsselungsoption auch weiterhin für Ihren virtuellen Computer verwenden. Sie können [Azure Disk Encryption](azure-security-disk-encryption-prerequisites.md) auf dieser verschlüsselten VM nicht verwenden, da dies kein unterstütztes Szenario ist. Das bedeutet, das Verlassen der AAD-Anwendung für diese verschlüsselte VM wird noch nicht unterstützt. 
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-## <a name="bkmk_OSs"></a> Unterstützte Betriebssysteme
-Azure Disk Encryption wird auf folgenden Betriebssystemen unterstützt:
+## <a name="supported-operating-systems"></a>Unterstützte Betriebssysteme
 
-- Windows Server-Versionen: Windows Server 2008 R2, Windows Server 2012, Windows Server 2012 R2 und Windows Server 2016.
-  - Für Windows Server 2008 R2 müssen Sie .NET Framework 4.5 installieren, bevor Sie die Verschlüsselung in Azure aktivieren. Sie können die Installation über Windows Update durchführen mit dem optionalen Update Microsoft.NET Framework 4.5.2 für Windows Server 2008 R2 x64-basierte Systeme ([KB2901983](https://support.microsoft.com/kb/2901983)).    
+### <a name="windows"></a>Windows
+
+- Windows Server-Versionen: Windows Server 2008 R2, Windows Server 2012, Windows Server 2012 R2, Windows Server 2016, Windows Server 2012 R2 Server Core und Windows Server 2016 Server Core.
+Für Windows Server 2008 R2 müssen Sie .NET Framework 4.5 installieren, bevor Sie die Verschlüsselung in Azure aktivieren. Sie können die Installation über Windows Update mit dem optionalen Update Microsoft.NET Framework 4.5.2 für Windows Server 2008 R2 x64-basierte Systeme (KB2901983) durchführen.
+- Windows Server 2012 R2 Core und Windows Server 2016 Core werden von Azure Disk Encryption unterstützt, sobald die „BdeHdCfg“-Komponente auf der VM installiert ist.
 - Windows-Clientversionen: Windows 8-Client und Windows 10-Client.
-- Azure Disk Encryption wird nur für bestimmte auf dem Azure-Katalog basierenden Linux-Serverdistributionen und -Versionen unterstützt. Die Liste der derzeit unterstützten Versionen finden Sie unter [Häufig gestellte Fragen zu Azure Disk Encryption](azure-security-disk-encryption-faq.md#bkmk_LinuxOSSupport).
+
+### <a name="linux"></a>Linux 
+
+Azure Disk Encryption wird von einer Teilmenge der [Azure zugelassenen Linux-Distributionen](../virtual-machines/linux/endorsed-distros.md) unterstützt, die selbst eine Teilmenge aller möglichen Linux-Serverdistributionen ist.
+
+![Venn-Diagramm zu den Linux-Serverdistributionen, die Azure Disk Encryption unterstützen.](./media/azure-security-disk-encryption-faq/ade-supported-distros.png)
+
+Nicht von Azure zugelassene Linux-Serverdistributionen unterstützen Azure Disk Encryption nicht. Von den zugelassenen Distributionen unterstützen nur die folgenden Distributionen und Versionen Azure Disk Encryption:
+
+| Linux-Distribution | Version | Für die Verschlüsselung unterstützter Volumetyp|
+| --- | --- |--- |
+| Ubuntu | 18,04| Betriebssystem- und andere Datenträger |
+| Ubuntu | 16.04| Betriebssystem- und andere Datenträger |
+| Ubuntu | 14.04.5</br>[für Azure optimierter Kernel aktualisiert auf 4.15 oder eine höhere Version](azure-security-disk-encryption-tsg.md#bkmk_Ubuntu14) | Betriebssystem- und andere Datenträger |
+| RHEL | 7.6 | Betriebssystem- und andere Datenträger (siehe der Hinweis unten) |
+| RHEL | 7,5 | Betriebssystem- und andere Datenträger (siehe der Hinweis unten) |
+| RHEL | 7.4 | Betriebssystem- und andere Datenträger (siehe der Hinweis unten) |
+| RHEL | 7.3 | Betriebssystem- und andere Datenträger (siehe der Hinweis unten) |
+| RHEL | 7.2 | Betriebssystem- und andere Datenträger (siehe der Hinweis unten) |
+| RHEL | 6,8 | Datenträger für Daten (siehe der Hinweis unten) |
+| RHEL | 6.7 | Datenträger für Daten (siehe der Hinweis unten) |
+| CentOS | 7.6 | Betriebssystem- und andere Datenträger |
+| CentOS | 7,5 | Betriebssystem- und andere Datenträger |
+| CentOS | 7.4 | Betriebssystem- und andere Datenträger |
+| CentOS | 7.3 | Betriebssystem- und andere Datenträger |
+| CentOS | 7.2n | Betriebssystem- und andere Datenträger |
+| CentOS | 6,8 | Datenträger |
+| openSUSE | 42.3 | Datenträger |
+| SLES | 12-SP4 | Datenträger |
+| SLES | 12-SP3 | Datenträger |
+
+> [!NOTE]
+> Die neue ADE-Implementierung wird für Betriebssystem- und andere Datenträger für RHEL7-Images mit nutzungsbasierter Bezahlung unterstützt. ADE wird derzeit nicht für RHEL-BYOS-Images (Bring-Your-Own-Subscription) unterstützt. Weitere Informationen finden Sie unter [Azure Disk Encryption für Linux](azure-security-disk-encryption-linux.md).
+
 - Azure Disk Encryption setzt voraus, dass Ihr Schlüsseltresor und die VMs zur selben Azure-Region und zum selben Azure-Abonnement gehören. Bei einer Konfiguration der Ressourcen in unterschiedlichen Regionen kann Azure Disk Encryption nicht aktiviert werden.
 
-## <a name="bkmk_LinuxPrereq"></a> Zusätzliche Voraussetzungen für Linux-IaaS-VMs 
+#### <a name="additional-prerequisites-for-linux-iaas-vms"></a>Zusätzliche Voraussetzungen für virtuelle Linux-IaaS-Computer 
 
-- Azure Disk Encryption für Linux setzt 7 GB RAM auf dem virtuellen Computer voraus, um die Verschlüsselung von Betriebssystemdatenträgern für [unterstützte Images](azure-security-disk-encryption-faq.md#bkmk_LinuxOSSupport) zu aktivieren. Sobald die Verschlüsselung des Betriebssystemdatenträgers abgeschlossen ist, kann die VM so konfiguriert werden, dass sie mit weniger Speicherplatz läuft.
+- Für Azure Disk Encryption muss das „dm-crypt“-Modul und das „vfat“-Modul im System vorhanden sein. Wenn das „vfat“-Modul aus dem Standardimage entfernt oder dort deaktiviert wird, kann das System nicht mehr das Schlüsselvolume lesen und damit auch nicht den Schlüssel abrufen, der zum Entsperren der Datenträger bei nachfolgenden Neustarts erforderlich ist. Schritte zum Härten des Systems, die das vfat-Modul aus dem System entfernen, sind nicht mit Azure Disk Encryption kompatibel. 
 - Vor dem Aktivieren der Verschlüsselung müssen die zu verschlüsselnden Datenträger ordnungsgemäß in „/etc/fstab“ aufgelistet werden. Verwenden Sie für diesen Eintrag einen persistenten Blockgerätenamen, da Gerätenamen im Format „/dev/sdX“ beim Neustart, insbesondere nach Anwendung der Verschlüsselung, nicht zuverlässig mit demselben Datenträger verknüpft werden können. Weitere Informationen zu diesem Verhalten finden Sie unter: [Behandeln von Problemen mit geänderten Gerätenamen von Linux-VMs](../virtual-machines/linux/troubleshoot-device-names-problems.md)
-- Stellen Sie sicher, dass die Einstellungen für „/etc/fstab“ ordnungsgemäß für die Einbindung konfiguriert sind. Um diese Einstellungen zu konfigurieren, führen Sie den Befehl „mount -a“ aus, oder starten Sie die VM neu, und lösen Sie das Einbinden so erneut aus. Wenn der Vorgang abgeschlossen wurde, überprüfen Sie die Ausgabe des Befehls „lsblk“, um zu sehen, ob das gewünschte Laufwerk noch eingebunden ist. 
-  - Wenn die Datei „/etc/fstab“ das Laufwerk vor der Aktivierung der Verschlüsselung nicht richtig einbindet, kann Azure Disk Encryption es nicht richtig einbinden.
+- Stellen Sie sicher, dass die Einstellungen für „/etc/fstab“ ordnungsgemäß für die Einbindung konfiguriert sind. Um diese Einstellungen zu konfigurieren, führen Sie den Befehl „mount -a“ aus, oder starten Sie die VM neu, und lösen Sie das Einbinden so erneut aus. Wenn der Vorgang abgeschlossen wurde, sehen Sie sich die Ausgabe des Befehls „lsblk“ an, um zu überprüfen, ob das Laufwerk noch eingebunden ist. 
+  - Wenn die Datei „/etc/fstab“ das Laufwerk vor der Aktivierung der Verschlüsselung nicht ordnungsgemäß einbindet, kann auch Azure Disk Encryption es nicht richtig einbinden.
   - Azure Disk Encryption verschiebt die Einbindungsinformationen aus „/etc/fstab“ in die eigene Konfigurationsdatei als Teil des Verschlüsselungsprozesses. Der Eintrag fehlt in „/etc/fstab“, nachdem die Verschlüsselung des Datenlaufwerks abgeschlossen wurde.
-  -  Nach dem Neustart dauert es einige Zeit, bis Azure Disk Encryption die neu verschlüsselten Datenträger eingebunden hat. Sie sind nach einem Neustart nicht sofort verfügbar. Der Prozess benötigt Zeit, um die verschlüsselten Laufwerke zu starten, zu entsperren und dann einzubinden, bevor sie für andere Prozesse verfügbar sind. Dies kann je nach Systemeigenschaften mehr als eine Minute nach dem Neustart dauern.
+  - Stellen Sie vor der Verschlüsselung sicher, dass alle Dienste und Prozesse beendet wurden, die in bereitgestellten Datenträgern schreiben oder diese deaktivieren könnten, um zu verhindern, dass sie nach einem Neustart neu gestartet werden. Die Dienste und Prozesse könnten Dateien auf diesen Partitionen öffnen. So wird verhindert, dass sie nach der Verschlüsselungsprozedur nochmals bereitgestellt werden und die Verschlüsselung dadurch fehlschlägt. 
+  - Nach dem Neustart dauert es einige Zeit, bis Azure Disk Encryption die neu verschlüsselten Datenträger eingebunden hat. Sie sind nach einem Neustart nicht sofort verfügbar. Der Prozess benötigt Zeit, um die verschlüsselten Laufwerke zu starten, zu entsperren und dann einzubinden, bevor sie für andere Prozesse verfügbar sind. Dies kann je nach Systemeigenschaften mehr als eine Minute nach dem Neustart dauern.
 
-Ein Beispiel für Befehle, die verwendet werden können, um Datenträger einzubinden und die notwendigen „/etc/fstab“-Einträge zu erstellen, finden Sie in den [Zeilen 197–205 dieser Skriptdatei](https://github.com/ejarvi/ade-cli-getting-started/blob/master/validate.sh#L197-L205). 
-
+Ein Beispiel für Befehle, die verwendet werden können, um Datenträger einzubinden und die notwendigen „/etc/fstab“-Einträge zu erstellen, finden Sie in den [Zeilen 244–248 dieser Skriptdatei](https://github.com/ejarvi/ade-cli-getting-started/blob/master/validate.sh#L244-L248). 
 
 ## <a name="bkmk_GPO"></a> Netzwerk und Gruppenrichtlinie
 

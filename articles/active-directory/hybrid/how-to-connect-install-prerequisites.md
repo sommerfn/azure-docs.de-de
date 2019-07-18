@@ -16,12 +16,12 @@ ms.date: 05/08/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5f7219578932a259f48b0109d433dcba9ff28d1f
-ms.sourcegitcommit: 8fc5f676285020379304e3869f01de0653e39466
+ms.openlocfilehash: f2916c9aba7d404ff4ad380d249bd507fadf71ea
+ms.sourcegitcommit: 5cb0b6645bd5dff9c1a4324793df3fdd776225e4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/09/2019
-ms.locfileid: "65508042"
+ms.lasthandoff: 06/21/2019
+ms.locfileid: "67310074"
 ---
 # <a name="prerequisites-for-azure-ad-connect"></a>Voraussetzungen für Azure AD Connect
 Dieses Thema beschreibt die Voraussetzungen und die Hardwareanforderungen für Azure AD Connect.
@@ -48,8 +48,11 @@ Vor der Installation von Azure AD Connect gibt es einige Dinge, die Sie benötig
 * Es wird empfohlen, den [Active Directory-Papierkorb zu aktivieren](how-to-connect-sync-recycle-bin.md).
 
 ### <a name="azure-ad-connect-server"></a>Azure AD Connect-Server
+>[!IMPORTANT]
+>Der Azure AD Connect-Server enthält wichtige Identitätsdaten und sollte wie unter [Active Directory-Verwaltungsebenenmodell](https://docs.microsoft.com/windows-server/identity/securing-privileged-access/securing-privileged-access-reference-material#ADATM_BM) beschrieben als Komponente der Ebene 0 behandelt werden.
+
 * Azure AD Connect kann nicht auf Small Business Server oder Windows Server Essentials vor 2019 (Windows Server Essentials 2019 wird unterstützt) installiert werden. Der Server muss Windows Server Standard oder höher verwenden.
-* Vom Installieren von Azure AD Connect auf einem Domänencontroller wird aufgrund von Sicherheitsmaßnahmen und einschränkenden Einstellungen abgeraten, die die ordnungsgemäße Installation von Azure AD Connect verhindern können.
+* Vom Installieren von Azure AD Connect auf einem Domänencontroller wird aufgrund von Sicherheitsmaßnahmen und einschränkenden Einstellungen abgeraten, die die ordnungsgemäße Installation von Azure AD Connect verhindern können.
 * Auf dem Azure AD Connect Server muss eine vollständige GUI installiert sein. Eine Installation unter Server Core wird **nicht unterstützt**.
 >[!IMPORTANT]
 >Die Installation von Azure AD Connect auf Small Business Servern, Server Essentials oder Server Core wird nicht unterstützt.
@@ -169,7 +172,7 @@ Vor der Version 1.1.614.0 verwendet Azure AD Connect standardmäßig TLS 1.0 fü
 * Wenn der Zielserver zu einer Domäne gehört, stellen Sie sicher, dass die Windows-Remoteverwaltung aktiviert ist.
   * Verwenden Sie in einem PSH-Befehlsfenster mit erhöhten Rechten den Befehl `Enable-PSRemoting –force`
 * Wenn der Zielserver kein mit in die Domäne eingebundener WAP-Computer ist, gibt es einige zusätzliche Anforderungen.
-  * Auf dem Zielcomputer (WAP-Computer): 
+  * Auf dem Zielcomputer (WAP-Computer):
     * Stellen Sie sicher, dass der WinRM-Dienst (Windows-Remoteverwaltung/WS-Verwaltung) über das Dienste-Snap-In ausgeführt wird.
     * Verwenden Sie in einem PSH-Befehlsfenster mit erhöhten Rechten den Befehl `Enable-PSRemoting –force`
   * Auf dem Computer, auf dem der Assistent ausgeführt wird (wenn der Zielcomputer nicht der Domäne beigetreten ist oder sich in einer nicht vertrauenswürdigen Domäne befindet):

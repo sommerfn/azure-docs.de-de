@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: required
 ms.date: 5/8/2017
 ms.author: aljo
-ms.openlocfilehash: ee19be45915b3ff1253ec721f4334fead19647b8
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 2445b37e8152d8f55dad6eff057d273851dc2209
+ms.sourcegitcommit: a12b2c2599134e32a910921861d4805e21320159
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60723593"
+ms.lasthandoff: 06/24/2019
+ms.locfileid: "67340680"
 ---
 # <a name="reliable-collection-object-serialization-in-azure-service-fabric"></a>Reliable Collection-Objektserialisierung in Azure Service Fabric
 Reliable Collection repliziert und speichert seine Elemente, um sicherzustellen, dass sie über Computer- und Stromausfälle hinaus erhalten bleiben.
@@ -55,7 +55,7 @@ Reliable State Manager verfügt über integrierte Serialisierungsprogramme für 
 
 Benutzerdefinierte Serialisierungsprogramme werden häufig zum Steigern der Leistung oder zum Verschlüsseln der Daten über das Netzwerk und auf dem Datenträger verwendet. Neben anderen Gründen sind benutzerdefinierte Serialisierungsprogramme häufig effizienter als generische Serialisierungsprogramme, da sie Informationen über den Typ nicht serialisieren müssen. 
 
-[IReliableStateManager.TryAddStateSerializer<T>](https://docs.microsoft.com/dotnet/api/microsoft.servicefabric.data.ireliablestatemanager.tryaddstateserializer) wird zum Registrieren eines benutzerdefinierten Serialisierungsprogramms für den angegebenen Typ T verwendet. Diese Registrierung sollte bei der Erstellung der StatefulServiceBase erfolgen, um sicherzustellen, dass vor Beginn der Wiederherstellung alle Reliable Collections über Zugriff auf die relevanten Serialisierungsprogramme zum Lesen ihrer persistenten Daten verfügen.
+[IReliableStateManager.TryAddStateSerializer\<T>](https://docs.microsoft.com/dotnet/api/microsoft.servicefabric.data.ireliablestatemanager.tryaddstateserializer) wird zum Registrieren eines benutzerdefinierten Serialisierungsprogramms für den angegebenen Typ T verwendet. Diese Registrierung sollte bei der Erstellung der StatefulServiceBase erfolgen, um sicherzustellen, dass vor Beginn der Wiederherstellung alle Reliable Collections über Zugriff auf die relevanten Serialisierungsprogramme zum Lesen ihrer persistenten Daten verfügen.
 
 ```csharp
 public StatefulBackendService(StatefulServiceContext context)
@@ -73,10 +73,10 @@ public StatefulBackendService(StatefulServiceContext context)
 
 ### <a name="how-to-implement-a-custom-serializer"></a>Implementieren eines benutzerdefinierten Serialisierungsprogramms
 
-Ein benutzerdefiniertes Serialisierungsprogramm muss die [IStateSerializer<T>](https://docs.microsoft.com/dotnet/api/microsoft.servicefabric.data.istateserializer-1)-Schnittstelle implementieren.
+Ein benutzerdefiniertes Serialisierungsprogramm muss die [IStateSerializer\<T>](https://docs.microsoft.com/dotnet/api/microsoft.servicefabric.data.istateserializer-1)-Schnittstelle implementieren.
 
 > [!NOTE]
-> IStateSerializer<T> umfasst Schreib- und Leseüberladungen, die einen zusätzlichen T-Wert verwenden, den Basiswert. Diese API ist für die differenzielle Serialisierung bestimmt. Aktuell ist das Feature der differenziellen Serialisierung nicht verfügbar. Daher werden diese beiden Überladungen nicht aufgerufen, solange die differenzielle Serialisierung nicht verfügbar gemacht und aktiviert wurde.
+> IStateSerializer\<T> umfasst Schreib- und Leseüberladungen, die einen zusätzlichen T-Wert verwenden – den Basiswert. Diese API ist für die differenzielle Serialisierung bestimmt. Aktuell ist das Feature der differenziellen Serialisierung nicht verfügbar. Daher werden diese beiden Überladungen nicht aufgerufen, solange die differenzielle Serialisierung nicht verfügbar gemacht und aktiviert wurde.
 
 Es folgt ein Beispiel für einen benutzerdefinierten Typ „OrderKey“, der vier Eigenschaften enthält.
 

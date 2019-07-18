@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.service: cost-management
 manager: ormaoz
 ms.custom: ''
-ms.openlocfilehash: 007b6c409dde248a4dde7a15fd16b543add234bc
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 57e66d449b194662bfc03f7e130cf49c02a15793
+ms.sourcegitcommit: a52d48238d00161be5d1ed5d04132db4de43e076
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64871151"
+ms.lasthandoff: 06/20/2019
+ms.locfileid: "67275710"
 ---
 # <a name="manage-aws-costs-and-usage-in-azure"></a>Verwalten von AWS-Kosten und -Nutzung in Azure
 
@@ -129,6 +129,8 @@ Verwenden Sie die folgenden Informationen zur Problembehandlung, um häufig auft
 
 ### <a name="no-permission-to-aws-linked-accounts"></a>Keine Berechtigung für verknüpfte AWS-Konten
 
+**Fehlercode:** _Nicht autorisiert_
+
 Es gibt zwei Möglichkeiten, Berechtigungen für den Zugriff auf die Kosten verknüpfter AWS-Konten zu erhalten:
 
 - Lassen Sie sich den Zugriff auf die Verwaltungsgruppe erteilen, die die verknüpften AWS-Konten enthält.
@@ -136,7 +138,11 @@ Es gibt zwei Möglichkeiten, Berechtigungen für den Zugriff auf die Kosten verk
 
 Standardmäßig ist der AWS-Connectorersteller der Besitzer aller Objekte, die der Connector erstellt hat, einschließlich des konsolidierten AWS-Kontos und des verknüpften AWS-Kontos.
 
+Zum Überprüfen der Connectoreinstellungen benötigen Sie mindestens die Rolle „Mitwirkender“, da Leser Connectoreinstellungen nicht überprüfen können.
+
 ### <a name="collection-failed-with-assumerole"></a>Fehler bei der Sammlung: AssumeRole
+
+**Fehlercode:** _FailedToAssumeRole_
 
 Dieser Fehler bedeutet, dass Azure Cost Management die AWS AssumeRole-API nicht aufrufen kann. Dieses Problem kann aufgrund eines Problems mit der Rollendefinition auftreten. Vergewissern Sie sich, dass die folgenden Bedingungen erfüllt sind:
 
@@ -147,11 +153,23 @@ Dieser Fehler bedeutet, dass Azure Cost Management die AWS AssumeRole-API nicht 
 
 ### <a name="collection-failed-with-access-denied"></a>Fehler bei der Sammlung: Zugriff verweigert
 
+- **Fehlercode:** _AccessDeniedReportDefinitions_ 
+- **Fehlercode:** _AccessDeniedListReports_ 
+- **Fehlercode:** _AccessDeniedDownloadReport_ 
+
 Diese Fehlermeldung bedeutet, dass Azure Cost Management nicht auf die im Amazon S3-Bucket gespeicherten CUR-Dateien zugreifen kann. Stellen Sie sicher, dass die mit der Rolle verknüpfte AWS JSON-Richtlinie dem Beispiel am Ende des Abschnitts [Erstellen einer Rolle und Richtlinie AWS](aws-integration-set-up-configure.md#create-a-role-and-policy-in-aws) entspricht.
 
-### <a name="connector-error-with-failedtofindreport"></a>Connectorfehler: FailedToFindReport
+### <a name="collection-failed-since-we-did-not-find-the-cost-and-usage-report"></a>Fehler bei der Sammlung: Bericht „Cost and Usage“ (Kosten und Nutzung) konnte nicht gefunden werden
+
+**Fehlercode:** _FailedToFindReport_
 
 Dieser Fehler bedeutet, dass Azure Cost Management den im Connector definierten Kosten- und Nutzungsbericht nicht finden kann. Stellen Sie sicher, dass er nicht gelöscht wurde und dass die mit der Rolle verknüpfte AWS JSON-Richtlinie dem Beispiel am Ende des Abschnitts [Erstellen einer Rolle und Richtlinie AWS](aws-integration-set-up-configure.md#create-a-role-and-policy-in-aws) entspricht.
+
+### <a name="unable-to-create-or-verify-connector-due-to-cost-and-usage-report-definitions-mismatch"></a>Fehler: Connector kann aufgrund von nicht übereinstimmenden Berichtsdefinitionen für „Cost and Usage“ (Kosten und Nutzung) nicht erstellt oder überprüft werden
+
+**Fehlercode:** _ReportIsNotValid_
+
+Dieser Fehler bezieht sich auf die Definition des AWS-Berichts „Cost and Usage“ (Kosten und Nutzung), für den bestimmte Einstellungen benötigt werden. Die Anforderungen finden Sie unter [Erstellen eines „Cost and Usage“-Berichts (Kosten und Nutzung) in AWS](aws-integration-set-up-configure.md#create-a-cost-and-usage-report-in-aws).
 
 ## <a name="next-steps"></a>Nächste Schritte
 

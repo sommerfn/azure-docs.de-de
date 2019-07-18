@@ -5,18 +5,15 @@ services: azure-resource-manager
 documentationcenter: ''
 author: mumian
 ms.service: azure-resource-manager
-ms.workload: multiple
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 02/11/2019
 ms.author: jgao
-ms.openlocfilehash: 9245d4c01816d26e262b1c8bd35015e2a6a9558c
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: c50a96b2598b89d5072a9441162d198163156c8d
+ms.sourcegitcommit: 2d3b1d7653c6c585e9423cf41658de0c68d883fa
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60550545"
+ms.lasthandoff: 06/20/2019
+ms.locfileid: "67296271"
 ---
 # <a name="manage-azure-resource-manager-resource-groups-by-using-azure-cli"></a>Verwalten von Azure Resource Manager-Gruppen mithilfe der Azure CLI
 
@@ -142,7 +139,7 @@ az group export --name $resourceGroupName
 
 Das Skript zeigt die Vorlage in der Konsole an.  Kopieren Sie die JSON, und speichern Sie sie als Datei.
 
-Weitere Informationen finden Sie unter [Exportieren einer Ressourcengruppe](./manage-resource-groups-portal.md#export-resource-groups-to-templates).
+Weitere Informationen finden Sie unter [Single and multi-resource export to template in Azure portal (Exportieren von einzelnen und mehreren Ressourcen in eine Vorlage im Azure-Portal)](./export-template-portal.md).
 
 ## <a name="manage-access-to-resource-groups"></a>Verwalten des Zugriffs auf Ressourcengruppen
 

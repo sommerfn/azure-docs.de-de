@@ -11,12 +11,12 @@ ms.subservice: language-understanding
 ms.topic: article
 ms.date: 05/07/2019
 ms.author: diberry
-ms.openlocfilehash: 9d650a17ddfac6461341e50c4693e4522d9628b3
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: b8b0cebf4ba47f875caacfcfbf89b84551b41333
+ms.sourcegitcommit: a12b2c2599134e32a910921861d4805e21320159
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65148196"
+ms.lasthandoff: 06/24/2019
+ms.locfileid: "67341858"
 ---
 # <a name="create-a-new-luis-app-in-the-luis-portal"></a>Erstellen einer LUIS-App im LUIS-Portal
 Es gibt zwei Verfahren zum Erstellen einer LUIS-App. Sie können eine LUIS-App im [LUIS](https://www.luis.ai)-Portal oder mithilfe der LUIS-Erstellungs-[APIs](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5890b47c39e2bb052c5b9c2f) erstellen.
@@ -65,7 +65,7 @@ Sie können eine neue App mit den Erstellungs-APIs auf zwei Arten erstellen:
 
 Mögliche Fehler: 
 
-* Eine App mit diesem Namen ist bereits vorhanden. Importieren Sie die App erneut, und legen Sie für **Optionaler Name** einen neuen Namen fest. 
+* Eine App mit diesem Namen ist bereits vorhanden. Importieren Sie die App erneut, und legen Sie für **Optional Name** (Optionaler Name) einen neuen Namen fest, um dies zu beheben. 
 
 ## <a name="export-app-for-backup"></a>Exportieren der App für die Sicherung
 

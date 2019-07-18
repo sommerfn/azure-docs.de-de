@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.reviewer: mbullwin
 ms.date: 05/29/2019
 ms.author: dalek
-ms.openlocfilehash: ebcb0922335a2bdc5423ec4e4bfce7c1cd71c46a
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 188911fa3fb872c8db1612406bf3d4e9b36d837b
+ms.sourcegitcommit: 82efacfaffbb051ab6dc73d9fe78c74f96f549c2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66357263"
+ms.lasthandoff: 06/20/2019
+ms.locfileid: "67303839"
 ---
 # <a name="manage-usage-and-costs-for-application-insights"></a>Verwalten der Nutzung und der Kosten für Application Insights
 
@@ -38,11 +38,12 @@ Die Preise für [Azure Application Insights][start] basieren auf dem verbrauchte
 * Die Datenvolumengebühren Ihrer Anwendung werden jetzt ab April 2018 auf einem neuen Verbrauchszähler mit dem Namen **Data Ingestion** gemeldet. Diese neue Verbrauchseinheit wird von Überwachungstechnologien wie Applications Insights und Log Analytics gemeinsam genutzt und steht derzeit unter dem Dienstnamen **Log Analytics** zur Verfügung. 
 * [Live Metrics Stream](../../azure-monitor/app/live-stream.md)-Daten werden bei der Preisgestaltung nicht berechnet.
 
-Aktuelle Preise in Ihrer Währung und Region finden Sie auf der Seite [Application Insights – Preise][pricing].
+> [!NOTE]
+> Sämtliche Preise, die auf den in diesem Artikel enthaltenen Screenshots angezeigt werden, dienen nur zu Beispielzwecken. Aktuelle Preise in Ihrer Währung und für Ihre Region finden Sie auf der Seite [Application Insights – Preise][pricing].
 
 ### <a name="multi-step-web-tests"></a>Webtests mit mehreren Schritten
 
-Für [mehrstufige Webtests](../../azure-monitor/app/monitor-web-app-availability.md#multi-step-web-tests) wird eine zusätzliche Gebühr erhoben. Mehrstufige Webtests sind Webtests, die eine Sequenz von Aktionen ausführen.
+Für [mehrstufige Webtests](../../azure-monitor/app/availability-multistep.md) wird eine zusätzliche Gebühr erhoben. Mehrstufige Webtests sind Webtests, die eine Sequenz von Aktionen ausführen.
 
 Es gibt keine gesonderte Gebühr für *Pingtests* einer einzelnen Seite. Telemetriedaten aus Pingtests und mehrstufigen Tests werden ebenso wie andere Telemetriedaten aus Ihrer App in Rechnung gestellt.
 
@@ -53,7 +54,7 @@ Application Insights erleichtert das Verständnis der basierend auf den aktuelle
 ![Auswählen von Preisen](./media/pricing/pricing-001.png)
 
 A. Überprüfen Sie Ihr Datenvolumen für den Monat. Dies schließt alle nach einer beliebigen [Stichprobenerstellung](../../azure-monitor/app/sampling.md) in Ihren Server- und Client-Apps sowie Verfügbarkeitstests empfangenen und beibehaltenen Daten ein.  
-B: Für [Webtests mit mehreren Schritten](../../azure-monitor/app/monitor-web-app-availability.md#multi-step-web-tests) wird eine gesonderte Gebühr erhoben. (Darin nicht enthalten sind einfache Verfügbarkeitstests, die von der Gebühr für das Datenvolumen abgedeckt sind.)  
+B: Für [Webtests mit mehreren Schritten](../../azure-monitor/app/availability-multistep.md) wird eine gesonderte Gebühr erhoben. (Darin nicht enthalten sind einfache Verfügbarkeitstests, die von der Gebühr für das Datenvolumen abgedeckt sind.)  
 C. Zeigen Sie Trends zum Datenvolumen für den letzten Monat an.  
 D: Aktivieren Sie die Datenerfassungs-[Stichprobenerstellung](../../azure-monitor/app/sampling.md).   
 E. Legen Sie die Obergrenze für das tägliche Datenvolumen fest.  

@@ -11,14 +11,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: ne
 ms.topic: article
-ms.date: 06/04/2019
+ms.date: 06/19/2019
 ms.author: juliako
-ms.openlocfilehash: f7f6aa000101f4c0de69d4d0922624b4020af8fb
-ms.sourcegitcommit: 6932af4f4222786476fdf62e1e0bf09295d723a1
+ms.openlocfilehash: f26467a250314fa8a6fe401f4ec1d6a999b6bb4d
+ms.sourcegitcommit: 2d3b1d7653c6c585e9423cf41658de0c68d883fa
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/05/2019
-ms.locfileid: "66688672"
+ms.lasthandoff: 06/20/2019
+ms.locfileid: "67296211"
 ---
 # <a name="live-events-and-live-outputs"></a>Liveereignisse und Liveausgaben
 
@@ -27,20 +27,23 @@ Mit Azure Media Services können Sie Ihren Kunden Liveereignisse in der Azure Cl
 > [!TIP]
 > Für Kunden, die von Media Services v2-APIs migrieren, ersetzt die **Liveereignis**-Entität **Channel** in v2, und **Liveausgabe** ersetzt**Programm**.
 
-
 ## <a name="live-events"></a>Liveereignisse
 
-[Liveereignisse](https://docs.microsoft.com/rest/api/media/liveevents) sorgen für das Erfassen und Verarbeiten von Livevideofeeds. Wenn Sie ein Liveereignis erstellen, wird ein Eingangsendpunkt erstellt, mit dem Sie ein Livesignal von einem Remoteencoder senden können. Der Remoteliveencoder sendet den Datenfeed an diesen Eingangsendpunkt, entweder über [RTMP](https://www.adobe.com/devnet/rtmp.html) oder über das [Smooth Streaming](https://msdn.microsoft.com/library/ff469518.aspx)-Protokoll (fragmentiertes MP4). Für das Smooth Streaming-Erfassungsprotokoll werden die URL-Schemas `http://` und `https://` unterstützt. Für das RTMP-Erfassungsprotokoll werden die URL-Schemas `rtmp://` und `rtmps://` unterstützt. 
+[Liveereignisse](https://docs.microsoft.com/rest/api/media/liveevents) sorgen für das Erfassen und Verarbeiten von Livevideofeeds. Wenn Sie ein Liveereignis erstellen, wird ein primärer und ein sekundärer Eingabeendpunkt erstellt, mit dem Sie ein Livesignal von einem Remoteencoder senden können. Der Remoteliveencoder sendet den Beitragsfeed an diesen Eingabeendpunkt, entweder über [RTMP](https://www.adobe.com/devnet/rtmp.html) oder über das [Smooth Streaming](https://msdn.microsoft.com/library/ff469518.aspx)-Eingabeprotokoll (fragmentiertes MP4). Der Inhalt für das RTMP-Erfassungsprotokoll kann ohne Verschlüsselung (`rtmp://`) oder sicher verschlüsselt über das Netzwerk (`rtmps://`) gesendet werden. Für das Smooth Streaming-Erfassungsprotokoll werden die URL-Schemas `http://` und `https://` unterstützt.  
 
 ## <a name="live-event-types"></a>Liveereignistypen
 
-Für ein [Liveereignis](https://docs.microsoft.com/rest/api/media/liveevents) ist einer von zwei Typen möglich: Pass-Through und Livecodierung. 
+Für ein [Liveereignis](https://docs.microsoft.com/rest/api/media/liveevents) ist einer von zwei Typen möglich: Pass-Through und Livecodierung. Die Typen werden während der Erstellung mit [LiveEventEncodingType](https://docs.microsoft.com/rest/api/media/liveevents/create#liveeventencodingtype) festgelegt:
+
+* **LiveEventEncodingType.None**: Ein lokaler Liveencoder sendet einen Datenstrom mit mehreren Bitraten. Der erfasste Datenstrom durchläuft das Liveereignis ohne weitere Verarbeitung. 
+* **LiveEventEncodingType.Standard**: Ein lokaler Liveencoder sendet einen Datenstrom mit einer einzigen Bitrate an das Liveereignis, und Media Services erstellt Datenströme mit mehreren Bitraten. Wenn der Beitragsfeed eine Auflösung von 720p oder höher hat, bewirkt die Voreinstellung **Default720p**, dass eine Reihe von 6 Auflösungs-/Bitrate-Paaren codiert wird.
+* **LiveEventEncodingType.Premium1080p**: Ein lokaler Liveencoder sendet einen Datenstrom mit einer einzigen Bitrate an das Liveereignis, und Media Services erstellt Datenströme mit mehreren Bitraten. Die Voreinstellung „Default1080p“ gibt den Ausgabesatz von Auflösungs-/Bitrate-Paaren an. 
 
 ### <a name="pass-through"></a>Pass-Through
 
 ![Pass-Through](./media/live-streaming/pass-through.svg)
 
-Wenn Sie das **Liveereignis** vom Typ „Pass-Through“ verwenden, stützen Sie sich auf Ihren lokalen Liveencoder, um einen Videostream mit mehreren Bitraten zu erzeugen und als Beitragsfeed an das Liveereignis zu senden (über RTMP oder das Protokoll für fragmentiertes MP4). Das Liveereignis leitet dann die eingehenden Videostreams ohne weitere Bearbeitung weiter. Ein LiveEvent vom Typ „Pass-Through“ ist für Liveereignisse mit langer Laufzeit oder für ein lineares 24x365-Livestreaming optimiert. Geben Sie beim Erstellen dieses Liveereignistyps „None“ (LiveEventEncodingType.None) an.
+Wenn Sie das **Liveereignis** vom Typ „Pass-Through“ verwenden, stützen Sie sich auf Ihren lokalen Liveencoder, um einen Videostream mit mehreren Bitraten zu erzeugen und als Beitragsfeed an das Liveereignis zu senden (über RTMP oder das Protokoll für fragmentiertes MP4). Das Liveereignis leitet dann die eingehenden Videostreams ohne weitere Bearbeitung weiter. Ein Liveereignis vom Typ „Pass-Through“ ist für Liveereignisse mit langer Laufzeit oder für ein lineares 24x365-Livestreaming optimiert. Geben Sie beim Erstellen dieses Liveereignistyps „None“ (LiveEventEncodingType.None) an.
 
 Sie können den Beitragsfeed mit einer Auflösung von bis zu 4K und einer Bildrate von 60 Bildern/Sekunde senden, entweder mit H.264/AVC- oder H.265/HEVC-Videocodecs und AAC-Audiocodec (AAC-LC, HE-AACv1 oder HE-AACv2).  Weitere Informationen finden Sie im Artikel [Vergleich von Liveereignistypen](live-event-types-comparison.md).
 
@@ -54,14 +57,14 @@ Ein .NET-Codebeispiel finden Sie in [MediaV3LiveApp](https://github.com/Azure-Sa
 
 ![Livecodierung](./media/live-streaming/live-encoding.svg)
 
-Wenn Sie die Livecodierung mit Media Services verwenden, konfigurieren Sie Ihren lokalen Liveencoder so, dass er ein Video mit einer einzelnen Bitrate als Beitragsfeed an das Liveereignis sendet (über RTMP oder das Protokoll für fragmentiertes MP4). Das Liveereignis codiert diesen eingehenden Stream mit einer einzelnen Bitrate in einen [Videostream mit mehreren Bitraten](https://en.wikipedia.org/wiki/Adaptive_bitrate_streaming) und stellt ihn über Protokolle wie MPEG-DASH, HLS und Smooth Streaming für Wiedergabegeräte zur Verfügung. Geben Sie beim Erstellen dieses Liveereignistyps den Codierungstyp **Standard** (LiveEventEncodingType.Standard) an.
+Wenn Sie die Livecodierung mit Media Services verwenden, konfigurieren Sie Ihren lokalen Liveencoder so, dass er ein Video mit einer einzelnen Bitrate als Beitragsfeed an das Liveereignis sendet (über RTMP oder das Protokoll für fragmentiertes MP4). Sie richten danach ein Liveereignis ein, das den eingehenden Datenstrom mit einer einzelnen Bitrate in einen [Videostream mit mehreren Bitraten](https://en.wikipedia.org/wiki/Adaptive_bitrate_streaming) codiert und die Ausgabe über Protokolle wie MPEG-DASH, HLS und Smooth Streaming für Wiedergabegeräte zur Verfügung stellt.
 
-Sie können den Beitragsfeed mit einer Auflösung von bis zu 1080p und einer Bildrate von 30 Bildern/Sekunde senden, mit den H.264/AVC- oder H.265/HEVC-Videocodecs und dem AAC-Audiocodec (AAC-LC, HE-AACv1 oder HE-AACv2). Weitere Informationen finden Sie im Artikel [Vergleich von Liveereignistypen](live-event-types-comparison.md).
+Bei Verwendung der Livecodierung können Sie den Beitragsfeed nur mit einer Auflösung von bis zu 1080p und einer Bildfrequenz von 30 Bildern/Sekunde senden (mit den H.264/AVC-Videocodecs und dem AAC-Audiocodec (AAC-LC, HE-AACv1 oder HE-AACv2)). Beachten Sie, dass Pass-Through-Liveereignisse Auflösungen von bis zu 4K und 60 Bildern/Sekunde unterstützen. Weitere Informationen finden Sie im Artikel [Vergleich von Liveereignistypen](live-event-types-comparison.md).
 
-Bei Verwendung der Livecodierung (Einstellung **Standard** für Liveereignis) wird mit der Codierungsvoreinstellung definiert, wie der eingehende Datenstrom in mehrere Bitraten oder Ebenen codiert wird. Weitere Informationen finden Sie auf der Seite mit den [Systemvoreinstellungen](live-event-types-comparison.md#system-presets).
+Die Auflösungen und Bitraten, die in der Ausgabe vom Liveencoder enthalten sind, werden durch die Voreinstellung bestimmt. Wird ein **Standard**-Liveencoder (LiveEventEncodingType.Standard) verwendet, gibt die Voreinstellung *Default720p* 6 Auflösungs-/Bitrate-Paare an, die von 720p und 3,5 MBit/s bis 192p und 200 Kbit/s reichen. Bei Verwendung eines **Premium1080p**-Liveencoders (LiveEventEncodingType.Premium1080p) gibt die Voreinstellung *Default1080p* allerdings 6 Auflösungs-/Bitrate-Paare an, die von 1080p und 3,5 MBit/s bis 180p und 200 KBit/s reichen. Weitere Informationen finden Sie auf der Seite mit den [Systemvoreinstellungen](live-event-types-comparison.md#system-presets).
 
 > [!NOTE]
-> Derzeit lautet der einzige zulässige Voreinstellungswert für den Standardtyp von Liveereignissen *Default720p*. Wenden Sie sich an amshelp@microsoft.com, falls Sie eine benutzerdefinierte Voreinstellung für die Livecodierung verwenden müssen. Geben Sie hierbei die gewünschte Tabelle mit den Angaben zur Auflösung und zu den Bitraten an. Vergewissern Sie sich, dass nur eine Ebene mit 720p und maximal sechs Ebenen vorhanden sind.
+> Öffnen Sie ein Supportticket über das Azure-Portal, wenn Sie die Voreinstellung für Livecodierung anpassen müssen. Geben Sie hierbei die gewünschte Tabelle mit den Angaben zur Auflösung und zu den Bitraten an. Vergewissern Sie sich, dass nur eine Ebene mit 720p (bei Anforderung einer Voreinstellung für einen „Standard“-Liveencoder) oder mit 1080p (bei Anforderung einer Voreinstellung für einen „Premium1080p“-Liveencoder) und maximal sechs Ebenen vorhanden sind.
 
 ## <a name="live-event-creation-options"></a>Erstellungsoptionen für Liveereignisse
 
@@ -84,49 +87,62 @@ Sie können Nicht-Vanity-URLs oder Vanity-URLs verwenden.
 
 * Nicht-Vanity-URL
 
-    Die Nicht-Vanity-URL ist der Standardmodus in AMS v3. Sie erhalten das Liveereignis potenziell schnell, aber die Erfassungs-URL ist erst bekannt, wenn das Liveereignis gestartet wurde. Die URL ändert sich, wenn Sie das Liveereignis starten/beenden. <br/>Nicht-Vanity-URLs sind in Szenarien nützlich, in denen ein Endbenutzer das Streaming mithilfe einer App durchführen möchte, die App auf ein Liveereignis wartet und eine dynamische Erfassungs-URL kein Problem darstellt.
+    Die Nicht-Vanity-URL ist der Standardmodus in Media Services v3. Sie erhalten das Liveereignis potenziell schnell, aber die Erfassungs-URL ist erst bekannt, wenn das Liveereignis gestartet wurde. Die URL ändert sich, wenn Sie das Liveereignis starten/beenden. <br/>Nicht-Vanity-URLs sind in Szenarien nützlich, in denen ein Endbenutzer das Streaming mithilfe einer App durchführen möchte, die App auf ein Liveereignis wartet und eine dynamische Erfassungs-URL kein Problem darstellt.
+    
+    Sie können Media Services das Zugriffstoken für das Liveereignis automatisch generieren lassen, wenn eine Clientanwendung vor dem Erstellen des Liveereignisses keine Erfassungs-URL generieren muss.
 * Vanity-URL
 
     Der Vanitymodus wird von großen Medienanstalten bevorzugt, die Hardware-Rundfunkencoder verwenden und diese nicht beim Starten des Liveereignisses neu konfigurieren möchten. Dabei wird eine vorhersagbare Erfassungs-URL gewünscht, die sich nicht im Lauf der Zeit ändert.
     
-    Zum Festlegen dieses Modus setzen Sie `vanityUrl` zum Zeitpunkt der Erstellung auf `true` (der Standardwert ist `false`). Sie müssen auch Ihr eigenes Zugriffstoken übergeben (um ein zufälliges Token in der URL zu vermeiden). Legen Sie `LiveEventInput.accessToken` zum Zeitpunkt der Erstellung auf einen eindeutigen Bezeichner fest. Sobald der Modus festgelegt ist, kann er nicht aktualisiert werden.
+    Zum Festlegen dieses Modus setzen Sie `vanityUrl` zum Zeitpunkt der Erstellung auf `true` (der Standardwert ist `false`). Sie müssen zum Zeitpunkt der Erstellung außerdem Ihr eigenes Zugriffstoken (`LiveEventInput.accessToken`) übergeben. Sie geben den Tokenwert an, um ein zufälliges Token in der URL zu vermeiden. Das Zugriffstoken muss eine gültige GUID-Zeichenfolge (mit oder ohne Bindestriche) sein. Sobald der Modus festgelegt ist, kann er nicht aktualisiert werden.
 
+    Das Zugriffstoken muss in Ihrem Rechenzentrum eindeutig sein. Wenn Ihre Anwendung eine Vanity-URL verwenden muss, wird empfohlen, immer eine neue GUID-Instanz für das Zugriffstoken zu erstellen (statt vorhandene GUIDs wiederzuverwenden). 
+
+    Verwenden Sie die folgenden APIs, um die Vanity-URL zu aktivieren, und legen Sie für das Zugriffstoken eine gültige GUID-Zeichenfolge fest (beispielsweise `"accessToken": "1fce2e4b-fb15-4718-8adc-68c6eb4c26a7"`).  
+    
+    |Sprache|Aktivieren der Vanity-URL|Festlegen des Zugriffstokens|
+    |---|---|---|
+    |REST|[properties.vanityUrl](https://docs.microsoft.com/rest/api/media/liveevents/create#liveevent)|[LiveEventInput.accessToken](https://docs.microsoft.com/rest/api/media/liveevents/create#liveeventinput)|
+    |Befehlszeilenschnittstelle (CLI)|[--vanity-url](https://docs.microsoft.com/cli/azure/ams/live-event?view=azure-cli-latest#az-ams-live-event-create)|[--access-token](https://docs.microsoft.com/cli/azure/ams/live-event?view=azure-cli-latest#optional-parameters)|
+    |.NET|[LiveEvent.VanityUrl](https://docs.microsoft.com/dotnet/api/microsoft.azure.management.media.models.liveevent.vanityurl?view=azure-dotnet#Microsoft_Azure_Management_Media_Models_LiveEvent_VanityUrl)|[LiveEventInput.AccessToken](https://docs.microsoft.com/dotnet/api/microsoft.azure.management.media.models.liveeventinput.accesstoken?view=azure-dotnet#Microsoft_Azure_Management_Media_Models_LiveEventInput_AccessToken)|
+    
 ### <a name="live-ingest-url-naming-rules"></a>Benennungsregeln für Liveerfassungs-URLs
 
-Die nachstehende *zufällige* Zeichenfolge ist eine 128-Bit-Hexadezimalzahl (sie umfasst 32 Zeichen von 0 bis 9 und a bis f).<br/>
-Das nachstehende *Zugriffstoken* wird zum Angeben einer festen URL benötigt. Es handelt sich ebenfalls um eine 128-Bit-Hexadezimalzahl.
+* Die nachstehende *zufällige* Zeichenfolge ist eine 128-Bit-Hexadezimalzahl (sie umfasst 32 Zeichen von 0 bis 9 und a bis f).
+* *your access token*: Die von Ihnen festgelegte gültige GUID-Zeichenfolge bei Verwendung des Vanity-Modus. Beispiel: `"1fce2e4b-fb15-4718-8adc-68c6eb4c26a7"`.
+* *Datenstromname:* Gibt den Datenstromnamen für eine bestimmte Verbindung an. Der Wert des Datenstromnamens wird in der Regel von dem von Ihnen verwendeten Liveencoder hinzugefügt. Sie können den Liveencoder so konfigurieren, dass Sie zum Beschreiben der Verbindung einen beliebigen Namen (z. B. „video1_audio1“, „video2_audio1“ oder „stream“) verwenden können.
 
 #### <a name="non-vanity-url"></a>Nicht-Vanity-URL
 
 ##### <a name="rtmp"></a>RTMP
 
-`rtmp://<random 128bit hex string>.channel.media.azure.net:1935/<access token>`
-`rtmp://<random 128bit hex string>.channel.media.azure.net:1936/<access token>`
-`rtmps://<random 128bit hex string>.channel.media.azure.net:2935/<access token>`
-`rtmps://<random 128bit hex string>.channel.media.azure.net:2936/<access token>`
+`rtmp://<random 128bit hex string>.channel.media.azure.net:1935/live/<auto-generated access token>/<stream name>`<br/>
+`rtmp://<random 128bit hex string>.channel.media.azure.net:1936/live/<auto-generated access token>/<stream name>`<br/>
+`rtmps://<random 128bit hex string>.channel.media.azure.net:2935/live/<auto-generated access token>/<stream name>`<br/>
+`rtmps://<random 128bit hex string>.channel.media.azure.net:2936/live/<auto-generated access token>/<stream name>`<br/>
 
 ##### <a name="smooth-streaming"></a>Smooth Streaming
 
-`http://<random 128bit hex string>.channel.media.azure.net/<access token>/ingest.isml`
-`https://<random 128bit hex string>.channel.media.azure.net/<access token>/ingest.isml`
+`http://<random 128bit hex string>.channel.media.azure.net/<auto-generated access token>/ingest.isml/streams(<stream name>)`<br/>
+`https://<random 128bit hex string>.channel.media.azure.net/<auto-generated access token>/ingest.isml/streams(<stream name>)`<br/>
 
 #### <a name="vanity-url"></a>Vanity-URL
 
 ##### <a name="rtmp"></a>RTMP
 
-`rtmp://<live event name>-<ams account name>-<region abbrev name>.channel.media.azure.net:1935/<access token>`
-`rtmp://<live event name>-<ams account name>-<region abbrev name>.channel.media.azure.net:1936/<access token>`
-`rtmps://<live event name>-<ams account name>-<region abbrev name>.channel.media.azure.net:2935/<access token>`
-`rtmps://<live event name>-<ams account name>-<region abbrev name>.channel.media.azure.net:2936/<access token>`
+`rtmp://<live event name>-<ams account name>-<region abbrev name>.channel.media.azure.net:1935/live/<your access token>/<stream name>`<br/>
+`rtmp://<live event name>-<ams account name>-<region abbrev name>.channel.media.azure.net:1936/live/<your access token>/<stream name>`<br/>
+`rtmps://<live event name>-<ams account name>-<region abbrev name>.channel.media.azure.net:2935/live/<your access token>/<stream name>`<br/>
+`rtmps://<live event name>-<ams account name>-<region abbrev name>.channel.media.azure.net:2936/live/<your access token>/<stream name>`<br/>
 
 ##### <a name="smooth-streaming"></a>Smooth Streaming
 
-`http://<live event name>-<ams account name>-<region abbrev name>.channel.media.azure.net/<access token>/ingest.isml`
-`https://<live event name>-<ams account name>-<region abbrev name>.channel.media.azure.net/<access token>/ingest.isml`
+`http://<live event name>-<ams account name>-<region abbrev name>.channel.media.azure.net/<your access token>/ingest.isml/streams(<stream name>)`<br/>
+`https://<live event name>-<ams account name>-<region abbrev name>.channel.media.azure.net/<your access token>/ingest.isml/streams(<stream name>)`<br/>
 
 ## <a name="live-event-preview-url"></a>Vorschau-URL für Liveereignisse
 
-Sobald das **Liveereignis** Daten aus dem Beitragsfeed empfängt, können Sie über den zugehörigen Vorschauendpunkt eine Vorschau anzeigen und den Empfang des Livestreams bestätigen, bevor Sie mit der Veröffentlichung fortfahren. Nachdem Sie sich von der Qualität des Vorschaustreams überzeugt haben, können Sie das Liveereignis verwenden, um den Livestream (vorab erstellte) **Streamingendpunkte** für die Übertragung verfügbar zu machen. Hierzu erstellen Sie eine neue [Liveausgabe](https://docs.microsoft.com/rest/api/media/liveoutputs) für das **Liveereignis**. 
+Sobald das **Liveereignis** Daten aus dem Beitragsfeed empfängt, können Sie über den zugehörigen Vorschauendpunkt eine Vorschau anzeigen und den Empfang des Livestreams bestätigen, bevor Sie mit der Veröffentlichung fortfahren. Nachdem Sie sich von der Qualität des Datenstroms der Vorschauversion überzeugt haben, können Sie das Liveereignis verwenden, um den Livestream durch (vorab erstellte) **Streamingendpunkte** für die Übertragung verfügbar zu machen. Hierzu erstellen Sie eine neue [Liveausgabe](https://docs.microsoft.com/rest/api/media/liveoutputs) für das **Liveereignis**. 
 
 > [!IMPORTANT]
 > Vergewissern Sie sich, dass das Video an die Vorschau-URL übertragen wird, bevor Sie fortfahren.

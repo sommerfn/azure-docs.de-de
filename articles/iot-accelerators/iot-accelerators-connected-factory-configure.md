@@ -8,12 +8,12 @@ services: iot-accelerators
 ms.topic: conceptual
 ms.date: 12/12/2017
 ms.author: dobett
-ms.openlocfilehash: 3fd160fbccfb5298cefed6a731797ca6962b997c
-ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
+ms.openlocfilehash: 3ddbf5832424cdafad2c29254f51754203c7f079
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53602272"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67428318"
 ---
 # <a name="configure-the-connected-factory-solution-accelerator"></a>Konfigurieren des Solution Accelerators für Connected Factory
 
@@ -29,7 +29,7 @@ Jede der Fabrikanlagen von Contoso verfügt über Produktionslinien mit jeweils 
 * Teststation
 * Verpackungsstation
 
-Diese OPC UA-Server umfassen OPC UA-Knoten, und der [OPC-Herausgeber](https://github.com/Azure/iot-edge-opc-publisher) sendet die Werte dieser Knoten an die Connected Factory-Lösung. Dies umfasst:
+Diese OPC UA-Server umfassen OPC UA-Knoten, und der [OPC-Herausgeber](overview-opc-publisher.md) sendet die Werte dieser Knoten an die Connected Factory-Lösung. Dies umfasst:
 
 * Aktueller Betriebsstatus, beispielsweise der aktuelle Energieverbrauch.
 * Produktionsinformationen wie z.B. die Anzahl der produzierten Produkte.
@@ -267,7 +267,7 @@ Eigenschaften in dieser Kategorie definieren die visuelle Darstellung des Connec
 * NAME
 * BESCHREIBUNG
 * Image
-* Standort
+* Location
 * Units
 * Visible
 
@@ -282,7 +282,7 @@ Die OEE/KPI-Zahlen für die Connected Factory-Simulation werden parametrisiert d
 * Die OPC UA-Knotenwerte, die in die Berechnung einbezogen werden sollen.
 * Art der Berechnung der Zahl aus den Telemetriewerten.
 
-Connected Factory verwendet die von https://www.oeefoundation.org veröffentlichten OEE-Formeln.
+Connected Factory verwendet die von [http://www.oeefoundation.org](http://www.oeefoundation.org) veröffentlichten OEE-Formeln.
 
 OPC UA-Knotenobjekte in Stationen ermöglichen eine Kennzeichnung für die Verwendung in der OEE/KPI-Berechnung. Die Eigenschaft **Relevance** gibt an, für welche OEE/KPI-Zahl der OPC UA-Knoten verwendet werden soll. Die Eigenschaft **OpCode** definiert, wie der Wert in die Berechnung einbezogen wird.
 
@@ -307,7 +307,7 @@ Für bestimmte Vorgänge, z.B. zur Visualisierung des letzten Werts oder zum Ers
 
   Identifiziert den Knotenwert im OPC UA-Server. Das Format der Eigenschaft muss der OPC UA-Spezifikation entsprechen. In den erfassten Nachrichten wird diese Eigenschaft als **NodeId** gesendet.
 
-Auf [dieser](https://github.com/Azure/iot-edge-opc-publisher) GitHub-Seite erhalten Sie weitere Informationen dazu, wie die Telemetriedaten mit dem OPC-Herausgeber in der Connected Factory-Lösung erfasst werden.
+Unter [What is OPC Publisher?](overview-opc-publisher.md) (Was ist der OPC-Herausgeber?) erhalten Sie weitere Informationen dazu, wie die Telemetriedaten in der Lösung „Connected Factory“ (Vernetzte Fabrik) erfasst werden.
 
 ## <a name="example-how-kpi1-is-calculated"></a>Beispiel: KPI1-Berechnung
 
@@ -340,4 +340,4 @@ Ein Merkmal des **NumberOfManufactureredProducts**-Knotens ist, dass der zugehö
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Als nächster Schritt wird empfohlen, dass Sie das [Bereitstellen eines Gateways unter Windows oder Linux für den Solution Accelerator für Connected Factory](iot-accelerators-connected-factory-gateway-deployment.md) kennenlernen.
+Als nächsten Schritt bietet sich an, zu lernen, wie Sie die [Lösung „Connected Factory“ (Vernetzte Fabrik) anpassen](iot-accelerators-connected-factory-customize.md).

@@ -10,12 +10,12 @@ ms.subservice: custom-vision
 ms.topic: conceptual
 ms.date: 03/25/2019
 ms.author: anroth
-ms.openlocfilehash: 85abc4a50710629d3485d05115698e59a93fc96e
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 9cff5fdac39be2338305cd37a4b2328a28a48255
+ms.sourcegitcommit: a52d48238d00161be5d1ed5d04132db4de43e076
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60995626"
+ms.lasthandoff: 06/20/2019
+ms.locfileid: "67269259"
 ---
 # <a name="limits-and-quotas"></a>Grenzen und Kontingente
 
@@ -26,8 +26,8 @@ Es wird erwartet, dass die Anzahl der Bilder pro Projekt und die Anzahl der Tags
 ||**F0**|**S0**|
 |-----|-----|-----|
 |Projekte|2|100|
-|Trainingsbilder pro Projekt |5\.000|100\.000|
-|Vorhersagen pro Monat|10\.000 |Unbegrenzt|
+|Trainingsbilder pro Projekt |5\.000|100.000|
+|Vorhersagen pro Monat|10.000 |Unbegrenzt|
 |Tags pro Projekt|50|500|
 |Iterationen |10|10|
 |Mindestanzahl der gekennzeichneten Bilder pro Tag, Klassifizierung (> 50 empfohlen) |5|5|
@@ -39,3 +39,5 @@ Es wird erwartet, dass die Anzahl der Bilder pro Projekt und die Anzahl der Tags
 |[Sonstige API-Aufrufe](https://go.microsoft.com/fwlink/?linkid=865446) (Transaktionen pro Sekunde)|10|10|
 |Maximale Bildgröße (Upload des Trainingsbilds) |6 MB|6 MB|
 |Maximale Bildgröße (Vorhersage)|4 MB|4 MB|
+|Maximale Anzahl von Regionen pro Objekterkennungs-Trainingsimage|200|200|
+|Maximale Anzahl von Tags pro Klassifizierungsimage|30|30|

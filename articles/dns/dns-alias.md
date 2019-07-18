@@ -5,14 +5,14 @@ services: dns
 author: vhorne
 ms.service: dns
 ms.topic: article
-ms.date: 5/13/2019
+ms.date: 6/7/2019
 ms.author: victorh
-ms.openlocfilehash: b34baa6f1ba91935fc6307dbb1617393786043b9
-ms.sourcegitcommit: 18a0d58358ec860c87961a45d10403079113164d
+ms.openlocfilehash: 5dfc00b1193117c22ba1c763bb0e75d9c4712222
+ms.sourcegitcommit: a52d48238d00161be5d1ed5d04132db4de43e076
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/05/2019
-ms.locfileid: "66692849"
+ms.lasthandoff: 06/20/2019
+ms.locfileid: "67275739"
 ---
 # <a name="azure-dns-alias-records-overview"></a>Azure DNS-Aliaseinträge – Übersicht
 
@@ -29,7 +29,7 @@ Aliaseintragssätze werden für die folgenden Eintragstypen in einer Azure DNS-Z
 
 ## <a name="capabilities"></a>Funktionen
 
-- **Verweisen auf eine öffentliche IP-Ressource aus einem DNS-A/AAAA-Eintragssatz:** Sie können einen A/AAAA-Eintragssatz erstellen und zu einem Aliaseintragssatz machen, um auf eine öffentliche IP-Ressource zu verweisen. Der DNS-Ressourceneintragssatz wird automatisch aktualisiert, wenn die öffentliche IP-Adresse geändert oder gelöscht wird. Verbleibende DNS-Einträge, die auf falsche IP-Adressen verweisen, werden vermieden.
+- **Verweisen auf eine öffentliche IP-Ressource aus einem DNS-A/AAAA-Eintragssatz:** Sie können einen A/AAAA-Eintragssatz erstellen und zu einem Aliaseintragssatz machen, um auf eine öffentliche IP-Ressource zu verweisen. Der DNS-Ressourceneintragssatz verändert sich automatisch, wenn die öffentliche IP-Adresse geändert oder gelöscht wird. Verbleibende DNS-Einträge, die auf falsche IP-Adressen verweisen, werden vermieden.
 
 - **Verweisen auf ein Traffic Manager-Profil aus einem DNS-A/AAAA/CNAME-Eintragssatz:** Sie können einen A/AAAA- oder einen CNAME-Eintragssatz erstellen und ihn über Aliaseinträge an ein Traffic Manager-Profil verweisen. Dies ist besonders nützlich, wenn Sie Datenverkehr an einem Zonen-Apex weiterleiten müssen, weil herkömmliche CNAME-Einträge für einen Zonen-Apex nicht unterstützt werden. Beispiel: Ihr Traffic Manager-Profil heißt „myprofile.trafficmanager.net“, und die DNS-Zone Ihres Unternehmens heißt „contoso.com“. Sie können einen Aliaseintragssatz vom Typ A/AAAA für „contoso.com“ (den Zonen-Apex) erstellen und an „myprofile.trafficmanager.net“ verweisen.
 - **Verweisen auf einen Endpunkt eines Azure Content Delivery Network (CDN)** Dies ist nützlich, wenn Sie statische Websites mit Azure Storage und Azure CDN erstellen.
@@ -45,7 +45,7 @@ Ein verbreitetes Problem bei herkömmlichen DNS-Einträgen sind verwaiste Eintr�
 
 Wenn bei einem herkömmlichen DNS-Zoneneintrag die Ziel-IP-Adresse oder der CNAME nicht mehr vorhanden ist, muss der zugeordnete DNS-Eintrag manuell aktualisiert werden. In einigen Organisationen wird diese manuelle Aktualisierung aufgrund von Problemen beim Vorgang oder aufgrund der Trennung von Rollen und zugeordneten Berechtigungsebenen möglicherweise nicht rechtzeitig durchgeführt. So kann es beispielsweise sein, dass eine Rolle zum Löschen von CNAMEs oder IP-Adressen autorisiert ist, die zu einer Anwendung gehören. Sie verfügt aber möglicherweise nicht über die erforderlichen Berechtigungen, um den DNS-Eintrag zu aktualisieren, der auf diese Ziele verweist. Eine Verzögerung bei der Aktualisierung des DNS-Eintrags kann für die Benutzer potenziell zu einem Ausfall führen.
 
-Aliaseinträge verhindern verbleibende Verweise durch eine enge Kopplung des Lebenszyklus eines DNS-Eintrags an eine Azure-Ressource. Stellen Sie sich beispielsweise einen DNS-Eintrag vor, der als Aliaseintrag qualifiziert wird, um auf eine öffentliche IP-Adresse oder auf ein Traffic Manager-Profil zu verweisen. Wenn die zugrunde liegenden Ressourcen gelöscht werden, wird gleichzeitig auch der DNS-Aliaseintrag entfernt.
+Aliaseinträge verhindern verbleibende Verweise durch eine enge Kopplung des Lebenszyklus eines DNS-Eintrags an eine Azure-Ressource. Stellen Sie sich beispielsweise einen DNS-Eintrag vor, der als Aliaseintrag qualifiziert wird, um auf eine öffentliche IP-Adresse oder auf ein Traffic Manager-Profil zu verweisen. Wenn Sie diese zugrunde liegenden Ressourcen löschen, wird der DNS-Aliaseintrag ein leerer Eintragssatz. Er verweist nicht mehr auf die gelöschte Ressource.
 
 ### <a name="update-dns-record-set-automatically-when-application-ip-addresses-change"></a>Automatisches Aktualisieren von DNS-Eintragssätzen bei Änderung von Anwendungs-IP-Adressen
 
@@ -56,7 +56,7 @@ Dieses Szenario ähnelt dem vorherigen Szenario. Möglicherweise wird eine Anwen
 Das DNS-Protokoll verhindert die Zuweisung von CNAME-Einträgen am Zonen-Apex. Wenn die Domäne beispielsweise „contoso.com“ heißt, können Sie CNAME-Einträge für „bezeichnung.contoso.com“, aber keinen CNAME-Eintrag für „contoso.com“ selbst erstellen.
 Diese Einschränkung stellt Anwendungsbesitzer, die über Anwendungen mit Lastenausgleich hinter [Azure Traffic Manager](../traffic-manager/traffic-manager-overview.md) verfügen, vor ein Problem. Da für die Verwendung eines Traffic Manager-Profils die Erstellung eines CNAME-Eintrags erforderlich ist, kann vom Zonen-Apex aus nicht auf das Traffic Manager-Profil verwiesen werden.
 
-Dieses Problem kann mithilfe von Aliaseinträgen gelöst werden. Im Gegensatz zu CNAME-Einträgen können Aliaseinträge am Zonen-Apex erstellt werden, und Anwendungsbesitzer können damit Ihren Zonen-Apex-Eintrag an ein Traffic Manager-Profil mit externen Endpunkten verweisen. Anwendungsbesitzer können auf das gleiche Traffic Manager-Profil verweisen, das auch für andere Domänen innerhalb ihrer DNS-Zone verwendet wird.
+Dieses Problem wird mithilfe von Aliaseinträgen gelöst. Im Gegensatz zu CNAME-Einträgen werden Aliaseinträge am Zonen-Apex erstellt, und Anwendungsbesitzer können damit Ihren Zonen-Apex-Eintrag an ein Traffic Manager-Profil mit externen Endpunkten verweisen. Anwendungsbesitzer verweisen auf das gleiche Traffic Manager-Profil, das auch für andere Domänen innerhalb ihrer DNS-Zone verwendet wird.
 
 So können beispielsweise „contoso.com“ und „www\.contoso.com“ jeweils auf das gleiche Traffic Manager-Profil verweisen. Weitere Informationen zur Verwendung von Aliaseinträgen mit Azure Traffic Manager-Profilen finden Sie im Abschnitt „Nächste Schritte“.
 
@@ -66,7 +66,7 @@ Genau wie ein Traffic Manager-Profil können Sie auch Aliasdatensätze verwenden
 
 Wenn Ihre statische Website „www.contoso.com“ heißt, können Ihre Benutzer mit „contoso.com“ auf Ihre Website zugreifen, ohne dem DNS-Namen „www“ voranstellen zu müssen.
 
-Wie zuvor beschrieben, werden CNAME-Einträge an der Zonenspitze nicht unterstützt. Daher können Sie keinen CNAME-Eintrag verwenden, um mit „contoso.com“ auf Ihren CDN-Endpunkt zu verweisen. Stattdessen können Sie einen Aliaseintrag verwenden, um direkt an der Zonenspitze auf einen CDN-Endpunkt zu verweisen.
+Wie zuvor beschrieben, werden CNAME-Einträge am Zonen-Apex nicht unterstützt. Daher können Sie keinen CNAME-Eintrag verwenden, um mit „contoso.com“ auf Ihren CDN-Endpunkt zu verweisen. Stattdessen können Sie einen Aliaseintrag verwenden, um direkt an der Zonenspitze auf einen CDN-Endpunkt zu verweisen.
 
 > [!NOTE]
 > Das Verweisen einer Zonenspitze auf CDN-Endpunkte für Azure CDN von Akamai wird derzeit nicht unterstützt.

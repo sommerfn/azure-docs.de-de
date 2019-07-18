@@ -1,48 +1,57 @@
 ---
-title: Konfigurieren einer Verbindungszeichenfolge für Azure Storage | Microsoft-Dokumentation
-description: Konfigurieren Sie eine Verbindungszeichenfolge für ein Azure Storage-Konto. Eine Verbindungszeichenfolge enthält die erforderlichen Informationen zum Autorisieren des Zugriffs auf ein Speicherkonto aus Ihrer Anwendung zur Laufzeit.
+title: Konfigurieren einer Verbindungszeichenfolge für Azure Storage
+description: Konfigurieren Sie eine Verbindungszeichenfolge für ein Azure Storage-Konto. Eine Verbindungszeichenfolge enthält die erforderlichen Informationen zum Autorisieren des Zugriffs auf ein Speicherkonto aus Ihrer Anwendung zur Laufzeit mithilfe der Autorisierung mit einem gemeinsam verwendeten Schlüssel.
 services: storage
 author: tamram
 ms.service: storage
 ms.topic: article
-ms.date: 04/12/2017
+ms.date: 06/20/2019
 ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: common
-ms.openlocfilehash: ef01cf194ea7a0afea033d2888df946208073e41
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 7c83b382f8aca3d8fda1c0de4785c51f3f3b1fc5
+ms.sourcegitcommit: 82efacfaffbb051ab6dc73d9fe78c74f96f549c2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65874110"
+ms.lasthandoff: 06/20/2019
+ms.locfileid: "67302519"
 ---
 # <a name="configure-azure-storage-connection-strings"></a>Konfigurieren von Azure Storage-Verbindungszeichenfolgen
 
-Eine Verbindungszeichenfolge enthält die erforderlichen Authentifizierungsinformationen zum Zugriff auf Daten in einem Azure Storage-Konto aus Ihrer Anwendung zur Laufzeit. Sie können Verbindungszeichenfolgen konfigurieren, um Folgendes zu tun:
+Eine Verbindungszeichenfolge enthält die erforderlichen Authentifizierungsinformationen für den Zugriff auf Daten in einem Azure Storage-Konto aus Ihrer Anwendung zur Laufzeit mithilfe der Authentifizierung mithilfe der Autorisierung mit einem gemeinsam verwendeten Schlüssel. Sie können Verbindungszeichenfolgen konfigurieren, um Folgendes zu tun:
 
 * Verbinden mit dem Azure-Speicheremulator
 * Zugreifen auf ein Speicherkonto in Azure
 * Zugreifen auf angegebene Ressourcen in Azure über eine Shared Access Signature (SAS)
 
+[!INCLUDE [storage-recommend-azure-ad-include](../../../includes/storage-recommend-azure-ad-include.md)]
+
 [!INCLUDE [storage-account-key-note-include](../../../includes/storage-account-key-note-include.md)]
 
-## <a name="storing-your-connection-string"></a>Speichern der Verbindungszeichenfolge
+## <a name="view-and-copy-a-connection-string"></a>Anzeigen und Kopieren einer Verbindungszeichenfolge
+
+[!INCLUDE [storage-view-keys-include](../../../includes/storage-view-keys-include.md)]
+
+## <a name="store-a-connection-string"></a>Speichern einer Verbindungszeichenfolge
+
 Die Anwendung muss zur Laufzeit auf die Verbindungszeichenfolge zugreifen, um bei Azure Storage eingehende Anforderungen zu autorisieren. Es gibt mehrere Möglichkeiten, die Verbindungszeichenfolge zu speichern:
 
+* Sie können die Verbindungszeichenfolge in einer Umgebungsvariable speichern.
 * Eine Anwendung, die auf dem Desktop oder auf einem Gerät ausgeführt wird, kann die Verbindungszeichenfolge in der Datei **app.config** oder **web.config** speichern. Fügen Sie die Verbindungszeichenfolge dem Abschnitt **AppSettings** in diesen Dateien hinzu.
 * Eine Anwendung, die in einem Clouddienst in Azure ausgeführt wird, kann die Verbindungszeichenfolge zumeist im [Azure-Dienstkonfigurationsschema (CSCFG-Datei)](https://msdn.microsoft.com/library/ee758710.aspx) speichern. Fügen Sie die Verbindungszeichenfolge zum Abschnitt **ConfigurationSettings** der Dienstkonfigurationsdatei hinzu.
-* Sie können die Verbindungszeichenfolge direkt in Ihrem Code verwenden. In den meisten Fällen sollten Sie die Verbindungszeichenfolge jedoch in einer Konfigurationsdatei speichern.
 
 Das Speichern der Verbindungszeichenfolge in der Konfigurationsdatei erleichtert die Aktualisierung der Verbindungszeichenfolge, um zwischen dem Speicheremulator und einem Azure-Speicherkonto in der Cloud zu wechseln. Sie müssen die Verbindungszeichenfolge nur so bearbeiten, dass sie auf Ihre Zielumgebung verweist.
 
 Über den [Microsoft Azure Configuration Manager](https://www.nuget.org/packages/Microsoft.Azure.ConfigurationManager/) können Sie zur Laufzeit auf die Verbindungszeichenfolge zugreifen, unabhängig davon, wo Ihre Anwendung ausgeführt wird.
 
-## <a name="create-a-connection-string-for-the-storage-emulator"></a>Erstellen einer Verbindungszeichenfolge für den Speicheremulator
+## <a name="configure-a-connection-string-for-the-storage-emulator"></a>Konfigurieren einer Verbindungszeichenfolge für den Speicheremulator
+
 [!INCLUDE [storage-emulator-connection-string-include](../../../includes/storage-emulator-connection-string-include.md)]
 
 Weitere Informationen zum Speicheremulator finden Sie unter [Einsatz des Azure-Speicheremulators für Entwicklung und Tests](storage-use-emulator.md).
 
-## <a name="create-a-connection-string-for-an-azure-storage-account"></a>Erstellen einer Verbindungszeichenfolge für ein Azure-Speicherkonto
+## <a name="configure-a-connection-string-for-an-azure-storage-account"></a>Konfigurieren einer Verbindungszeichenfolge für ein Azure-Speicherkonto
+
 Um eine Verbindungszeichenfolge für Ihr Azure-Speicherkonto zu erstellen, verwenden Sie das folgende Format. Geben Sie an, ob Sie über HTTPS (empfohlen) oder HTTP eine Verbindung mit dem Speicherkonto herstellen möchten, ersetzen Sie `myAccountName` durch den Namen Ihres Speicherkontos, und ersetzen Sie `myAccountKey` durch Ihren Kontozugriffsschlüssel:
 
 `DefaultEndpointsProtocol=[http|https];AccountName=myAccountName;AccountKey=myAccountKey`
@@ -58,9 +67,11 @@ Obwohl Azure Storage sowohl HTTP als auch HTTPS in einer Verbindungszeichenfolge
 >
 
 ## <a name="create-a-connection-string-using-a-shared-access-signature"></a>Erstellen einer Verbindungszeichenfolge mit einer Shared Access Signature
+
 [!INCLUDE [storage-use-sas-in-connection-string-include](../../../includes/storage-use-sas-in-connection-string-include.md)]
 
 ## <a name="create-a-connection-string-for-an-explicit-storage-endpoint"></a>Erstellen einer Verbindungszeichenfolge für einen bestimmten Speicherendpunkt
+
 Sie können die Dienstendpunkte in Ihrer Verbindungszeichenfolge explizit angeben, anstatt die Standardendpunkte zu verwenden. Um eine Verbindungszeichenfolge zu erstellen, die einen expliziten Endpunkt festlegt, geben Sie für jeden Dienst den vollständigen Dienstendpunkt einschließlich der Protokollspezifikation (HTTPS (empfohlen) oder HTTP) im folgenden Format an:
 
 ```
@@ -107,6 +118,7 @@ Wenn Sie einen Speicherendpunkt einer benutzerdefinierten Domäne zugeordnet hab
 >
 
 ### <a name="create-a-connection-string-with-an-endpoint-suffix"></a>Erstellen einer Verbindungszeichenfolge mit einem Endpunktsuffix
+
 Zum Erstellen einer Verbindungszeichenfolge für den Speicherdienst in Regionen oder Instanzen mit anderen Endpunktsuffixen, z.B. für Azure China 21Vianet oder Azure Government, verwenden Sie das folgende Format der Verbindungszeichenfolge. Geben Sie an, ob Sie über HTTPS (empfohlen) oder HTTP eine Verbindung mit dem Speicherkonto herstellen möchten, ersetzen Sie `myAccountName` durch den Namen Ihres Speicherkontos, `myAccountKey` durch Ihren Kontozugriffsschlüssel und `mySuffix` durch das URI-Suffix:
 
 ```
@@ -126,9 +138,11 @@ EndpointSuffix=core.chinacloudapi.cn;
 ```
 
 ## <a name="parsing-a-connection-string"></a>Analysieren einer Verbindungszeichenfolge
+
 [!INCLUDE [storage-cloud-configuration-manager-include](../../../includes/storage-cloud-configuration-manager-include.md)]
 
 ## <a name="next-steps"></a>Nächste Schritte
+
 * [Einsatz des Azure-Speicheremulators für Entwicklung und Tests](storage-use-emulator.md)
 * [Azure Storage-Explorer](storage-explorers.md)
 * [Verwenden von Shared Access Signatures (SAS)](storage-dotnet-shared-access-signature-part-1.md)

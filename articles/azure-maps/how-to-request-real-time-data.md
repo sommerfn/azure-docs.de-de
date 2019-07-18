@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.custom: mvc
-ms.openlocfilehash: bb99a3c063f69aa5aeb00efdb51319a53d05b2d1
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: aaab5ef4d8fc3d60a12f9e9f85f2846695fd1ab4
+ms.sourcegitcommit: 08138eab740c12bf68c787062b101a4333292075
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67067603"
+ms.lasthandoff: 06/22/2019
+ms.locfileid: "67329673"
 ---
 # <a name="request-real-time-data-using-the-azure-maps-mobility-service"></a>Anfordern von Echtzeitdaten mithilfe von Azure Maps Mobility Service
 
@@ -113,22 +113,23 @@ In unserem Beispiel verwenden wir die Stadt-ID „522“ (für den Bereich „S
             }
         ]
     }
+    ```
 
 
-## Real-time data for bike docking station
+## <a name="real-time-data-for-bike-docking-station"></a>Echtzeitdaten für E-Bike-Ladestationen
 
-The [Get Transit Dock Info API](https://aka.ms/AzureMapsMobilityTransitDock) of the Azure Maps Mobility Service, allows to request static and real-time information such as availability and vacancy information for a given bike or scooter docking station. We will make a request to get real-time data for a docking station for bikes.
+Mithilfe der [API zum Anfordern von Informationen zu Ladestationen](https://aka.ms/AzureMapsMobilityTransitDock) von Azure Maps Mobility Service können statische Informationen sowie Echtzeitinformationen wie die Verfügbarkeit von Ladestationen für E-Bikes und E-Scooter abgefragt werden. Nachfolgend erfahren Sie, wie Sie Echtzeitdaten für eine E-Bike-Ladestation anfordern.
 
-In order to make a request to the Get Transit Dock Info API, you will need the **dockId** for that station. You can get the dock ID by making a search request to the [Get Nearby Transit API](https://aka.ms/AzureMapsMobilityNearbyTransit) and setting the **objectType** parameter to "bikeDock". Follow the steps below to get real-time data of a docking station for bikes.
+Sie benötigen die entsprechende ID (**dockID**) der betreffenden Station, um eine Anforderung an die API zum Anfordern von Informationen zu Ladestationen zu stellen. Diese ID erhalten Sie, indem Sie eine Suchanforderung an die [API zum Anfordern von Transportmitteln in der Nähe](https://aka.ms/AzureMapsMobilityNearbyTransit) stellen und den Parameter **objectType** auf „bikeDock“ festlegen. Führen Sie die im Folgenden beschriebenen Schritte aus, um Echtzeitdaten zu Ladestationen für E-Bikes abzurufen.
 
 
-### Get dock ID
+### <a name="get-dock-id"></a>Abrufen der DockID
 
-To get **dockID**, follow the steps below to make a request to the Get Nearby Transit API:
+Führen Sie die hier angegebenen Schritte aus, um eine Anforderung an die API zum Anfordern von Transportmitteln in der Nähe zu stellen und die **dockID** abzurufen:
 
-1. In Postman, click **New Request** | **GET request** and name it **Get dock ID**.
+1. Klicken Sie in Postman auf **New Request** (Neue Anforderung)  | **GET request** (GET-Anforderung), und nennen Sie sie **Get Route info** (Routeninformationen abrufen).
 
-2.  On the Builder tab, select the **GET** HTTP method, enter the following request URL, and click **Send**.
+2.  Wählen Sie auf der Registerkarte „Builder“ die HTTP-Methode **GET** aus, geben Sie die folgende Anforderungs-URL ein, und klicken Sie auf **Send** (Senden).
  
     ```HTTP
     https://atlas.microsoft.com/mobility/transit/nearby/json?subscription-key={subscription-key}&api-version=1.0&metroId=121&query=40.7663753,-73.9627498&radius=100&objectType=bikeDock

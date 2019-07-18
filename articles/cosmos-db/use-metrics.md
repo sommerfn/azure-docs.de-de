@@ -5,24 +5,48 @@ ms.service: cosmos-db
 author: kanshiG
 ms.author: sngun
 ms.topic: conceptual
-ms.date: 05/23/2019
+ms.date: 06/18/2019
 ms.reviewer: sngun
-ms.openlocfilehash: b7633b75bbb6d37c68a562560a6459e35d03b810
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: ef457fe8c21bc7e62f910a78913069df32bea1a3
+ms.sourcegitcommit: a52d48238d00161be5d1ed5d04132db4de43e076
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66242540"
+ms.lasthandoff: 06/20/2019
+ms.locfileid: "67275683"
 ---
 # <a name="monitor-and-debug-with-metrics-in-azure-cosmos-db"></a>Überwachen und Debuggen mit Metriken in Azure Cosmos DB
 
-Azure Cosmos DB bietet Metriken für Durchsatz, Speicher, Konsistenz, Verfügbarkeit und Latenz. Das [Azure-Portal](https://portal.azure.com) bietet eine aggregierte Ansicht dieser Metriken. Für detailliertere Metriken sind das Client-SDK und die [Diagnoseprotokolle](./logging.md) verfügbar.
+Azure Cosmos DB bietet Metriken für Durchsatz, Speicher, Konsistenz, Verfügbarkeit und Latenz. Das Azure-Portal bietet eine aggregierte Ansicht dieser Metriken. Sie können Azure Cosmos DB-Metriken auch über die Azure Monitor-API anzeigen. Informationen zum Anzeigen von Metriken von Azure Monitor finden Sie im Artikel [Abrufen von Metriken von Azure Monitor](cosmos-db-azure-monitor-metrics.md). 
 
 Dieser Artikel behandelt häufige Anwendungsfälle und zeigt, wie Azure Cosmos DB-Metriken zum Analysieren und Beheben der Probleme verwendet werden können. Metriken werden alle fünf Minuten erfasst und sieben Tage lang gespeichert.
 
+## <a name="view-metrics-from-azure-portal"></a>Anzeigen von Metriken über das Azure-Portal
+
+1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com/) an.
+
+1. Öffnen Sie den Bereich **Metriken**. Der Bereich „Metriken“ zeigt standardmäßig Metriken für den Speicher, Index und die Anforderungseinheiten für alle Datenbanken in Ihrem Azure Cosmos-Konto an. Sie können diese Metriken pro Datenbank, Container oder Region filtern. Sie können die Metriken auch mit einer bestimmten Zeitgranularität filtern. Weitere Informationen zu den Durchsatz-, Speicher-, Verfügbarkeits-, Latenz- und Konsistenzmetriken werden auf separaten Registerkarten bereitgestellt. 
+
+   ![Cosmos DB-Leistungsmetriken im Azure-Portal](./media/use-metrics/performance-metrics.png)
+
+Die folgenden Metriken sind im Bereich **Metriken** verfügbar: 
+
+* **Durchsatzmetrik**: Diese Metrik zeigt die Anzahl der genutzten oder fehlerhaften Anforderungen an (Antwortcode 429), da der Durchsatz oder die bereitgestellte Speicherkapazität für den Container überschritten wurde.
+
+* **Speichermetrik**: Diese Metrik zeigt die Größe der Daten und die Indexnutzung an.
+
+* **Verfügbarkeitsmetrik**: Diese Metrik zeigt den Prozentsatz erfolgreicher Anforderungen von der Gesamtzahl der Anforderungen pro Stunde an. Die Erfolgsrate wird durch Azure Cosmos DB-SLAs definiert.
+
+* **Latenzmetrik**: Diese Metrik zeigt die Wartezeit beim Lesen und Schreiben an, die von Azure Cosmos DB in der Region, in der Ihr Konto ausgeführt wird, gemessen wird. Sie können die regionsübergreifende Wartezeit für ein georepliziertes Konto visualisieren. Diese Metrik stellt nicht die End-to-End-Anforderungswartezeit dar.
+
+* **Konsistenzmetrik**: Diese Metrik informiert über die Konsistenz für das ausgewählte Konsistenzmodell. Diese Metrik zeigt für Konten in mehreren Regionen auch die Wartezeit für die Replikation zwischen den ausgewählten Regionen an.
+
+* **Systemmetrik**: Diese Metrik zeigt an, wie viele Metadatenanforderungen von der Masterpartition bereitgestellt werden. Diese hilft auch beim Identifizieren der gedrosselten Anforderungen.
+
+In den folgenden Abschnitten werden allgemeine Szenarios erläutert, in denen Sie Azure Cosmos DB-Metriken verwenden können. 
+
 ## <a name="understand-how-many-requests-are-succeeding-or-causing-errors"></a>Ermitteln der Anzahl von Anforderungen, die erfolgreich ausgeführt werden oder Fehler verursachen
 
-Rufen Sie zunächst das [Azure-Portal](https://portal.azure.com) auf, und navigieren Sie zum Blatt **Metriken**. Suchen Sie im Blatt das Diagramm **Anzahl von Anforderungen pro 1 Minute, die die Kapazität überschritten haben**. In diesem Diagramm wird die Summe der nach Statuscode segmentierten Anforderungen für jede einzelne Minute angezeigt. Weitere Informationen zu HTTP-Statuscodes finden Sie unter [HTTP Status Codes for Azure Cosmos DB](https://docs.microsoft.com/rest/api/cosmos-db/http-status-codes-for-cosmosdb) (HTTP-Statuscodes für Azure Cosmos DB).
+Rufen Sie zunächst das [Azure-Portal](https://portal.azure.com) auf, und navigieren Sie zum Blatt **Metriken**. Suchen Sie im Blatt das Diagramm **Anzahl von Anforderungen pro Minute, die die Kapazität überschritten haben. In diesem Diagramm wird die Summe der nach Statuscode segmentierten Anforderungen für jede einzelne Minute angezeigt. Weitere Informationen zu HTTP-Statuscodes finden Sie unter [HTTP Status Codes for Azure Cosmos DB](https://docs.microsoft.com/rest/api/cosmos-db/http-status-codes-for-cosmosdb) (HTTP-Statuscodes für Azure Cosmos DB).
 
 Der häufigste Fehlerstatuscode ist 429 (Ratenbegrenzung/Drosselung). Dieser Fehler besagt, dass Anforderungen an Azure Cosmos DB den bereitgestellten Durchsatz überschreiten. Die gängigste Lösung für dieses Problem ist das [zentrale Hochskalieren der Anforderungseinheiten](./set-throughput.md) (Request Units, RUs) für die angegebene Sammlung.
 
@@ -87,5 +111,6 @@ IReadOnlyDictionary<string, QueryMetrics> metrics = result.QueryMetrics;
 
 Jetzt wissen Sie, wie Sie mit den Metriken im Azure-Portal Problembereiche überwachen und Probleme beheben können. In den folgenden Artikeln erfahren Sie mehr darüber, wie Sie die Datenbankleistung verbessern können:
 
+* Informationen zum Anzeigen von Metriken von Azure Monitor finden Sie im Artikel [Abrufen von Metriken von Azure Monitor](cosmos-db-azure-monitor-metrics.md). 
 * [Leistungs- und Skalierungstests mit Azure Cosmos DB](performance-testing.md)
 * [Leistungstipps für Azure Cosmos DB](performance-tips.md)

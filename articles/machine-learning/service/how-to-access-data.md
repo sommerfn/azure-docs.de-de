@@ -11,12 +11,12 @@ author: mx-iao
 ms.reviewer: sgilley
 ms.date: 05/24/2019
 ms.custom: seodec18
-ms.openlocfilehash: 93fc9a4e9e44bd7e8db3d49fe390ebe273c45ce9
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 638d7bfb0e396874415c1055c4b707a65caffa4e
+ms.sourcegitcommit: a52d48238d00161be5d1ed5d04132db4de43e076
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66239043"
+ms.lasthandoff: 06/20/2019
+ms.locfileid: "67269307"
 ---
 # <a name="access-data-from-your-datastores"></a>Zugreifen auf Daten aus Ihren Datenspeichern
 
@@ -59,7 +59,19 @@ ds = ws.get_default_datastore()
 
 ### <a name="register-your-own-datastore-with-the-workspace"></a>Registrieren Ihres eigenen Datenspeichers im Arbeitsbereich
 
-Wenn Sie bereits über eine Azure Storage-Instanz verfügen, können Sie diesen Speicher als Datenspeicher in Ihrem Arbeitsbereich registrieren.   Alle Registriermethoden befinden sich in der [`Datastore`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.datastore(class)?view=azure-ml-py)-Klasse und weisen das Format „register_azure_*“ auf. 
+Wenn Sie bereits über eine Azure Storage-Instanz verfügen, können Sie diesen Speicher als Datenspeicher in Ihrem Arbeitsbereich registrieren. 
+
+<a name="store"></a>
+
+####  <a name="storage-guidance"></a>Leitfaden für Speicher
+
+Es wird empfohlen, Blobspeicher und Blobdatenspeicher zu verwenden. Für Blobs stehen sowohl der Standard- als auch der Premiumspeicher zur Verfügung. Der Premiumspeicher ist zwar teurer, aber dennoch die bevorzugte Option, da er höhere Durchsätze ermöglicht. Dies kann sich vor allem bei einem Training mit einem großen Dataset positiv auf die Ausführungsgeschwindigkeit auswirken. Weitere Informationen zu den Kosten von Speicherkonten stellt der [Azure-Preisrechner](https://azure.microsoft.com/pricing/calculator/?service=machine-learning-service) bereit.
+
+>[!NOTE]
+> Azure Machine Learning Service unterstützt weitere Arten von Datenspeichern, die für bestimmte Szenarios nützlich sein können. Wenn Sie für das Training beispielsweise in einer Datenbank gespeicherte Daten verwenden müssen, können Sie AzureSQLDatabaseDatastore oder AzurePostgreSqlDatastore nutzen. Eine Übersicht über die verfügbaren Datenspeichertypen finden Sie in der [entsprechenden Tabelle](#matrix).
+
+#### <a name="register-your-datastore"></a>Registrieren des Datenspeichers
+Alle Registriermethoden befinden sich in der [`Datastore`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.datastore(class)?view=azure-ml-py)-Klasse und weisen das Format „register_azure_*“ auf.
 
 In den folgenden Beispielen wird gezeigt, wie Sie einen Azure-Blobcontainer oder eine Azure-Dateifreigabe als Datenspeicher registrieren können.
 
@@ -178,6 +190,7 @@ ds.path('./bar').as_download()
 > [!NOTE]
 > Jedes `ds`- oder `ds.path`-Objekt wird in den Namen einer Umgebungsvariablen des Formats `"$AZUREML_DATAREFERENCE_XXXX"` aufgelöst, deren Wert für den Einbindungs-/Downloadpfad im Zielcompute steht. Der Datenspeicherpfad auf dem Zielcompute stimmt möglicherweise nicht mit dem Ausführungspfad für das Trainingsskript überein.
 
+<a name="matrix"></a>
 ### <a name="training-compute-and-datastore-matrix"></a>Training-Compute- und Datenspeichermatrix
 
 Die folgende Matrix zeigt die verfügbaren Datenzugriffsfunktionen für die verschiedenen Training-Computeziele- und Datenspeicherszenarien. Weitere Informationen zu den [Training-Computezielen für Azure Machine Learning](how-to-set-up-training-targets.md#compute-targets-for-training).
@@ -194,7 +207,7 @@ Die folgende Matrix zeigt die verfügbaren Datenzugriffsfunktionen für die vers
 | Azure DataLake Analytics       |–                                           |–                                           |[ML&nbsp;Pipelines](concept-ml-pipelines.md)             |–                                                                         |
 
 > [!NOTE]
-> Es gibt möglicherweise Szenarien, in denen hoch iterativ, umfangreiche Datenverarbeitungsprozesse schneller mit [`as_download()`] anstelle von [`as_mount()`] ausgeführt werden; dies kann im Experiment überprüft werden.
+> Es gibt möglicherweise Szenarios, in denen umfangreiche Datenverarbeitungsprozesse mit vielen Wiederholungen schneller mit `as_download()` anstelle von `as_mount()` ausgeführt werden. Dies können Sie in Experimenten überprüfen.
 
 ### <a name="examples"></a>Beispiele 
 

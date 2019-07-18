@@ -7,12 +7,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 04/24/2019
 ms.author: jlian
-ms.openlocfilehash: 8eac70db0c563f102dfa0e3fcece9d4604582cce
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 6afebfe9a5db713e31fed0acd2e8ad7244f30037
+ms.sourcegitcommit: a52d48238d00161be5d1ed5d04132db4de43e076
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65595647"
+ms.lasthandoff: 06/20/2019
+ms.locfileid: "67274918"
 ---
 # <a name="understand-iot-hub-metrics"></a>Grundlegendes zu IoT Hub-Metriken
 
@@ -60,14 +60,14 @@ IoT Hub bietet mehrere Metriken, um Ihnen einen Überblick über die Integrität
 |d2c<br>.endpoints<br>.latency<br>.serviceBusQueues|Routing: Nachrichtenwartezeit für Service Bus-Warteschlange|Millisekunden|Durchschnitt|Durchschnittliche Wartezeit (Millisekunden) zwischen dem Eingang der Nachricht beim IoT Hub und dem Eingang der Nachricht bei einem Service Bus-Warteschlangenendpunkt.|Keine Dimensionen|
 |d2c<br>.endpoints<br>.egress<br>.serviceBusTopics|Routing: An Service Bus-Thema übermittelte Nachrichten|Count|Gesamt|Die Häufigkeit, mit der das IoT Hub-Routing erfolgreich Nachrichten an Service Bus-Themaendpunkte übermittelt hat.|Keine Dimensionen|
 |d2c<br>.endpoints<br>.latency<br>.serviceBusTopics|Routing: Nachrichtenwartezeit für Service Bus-Thema|Millisekunden|Durchschnitt|Durchschnittliche Wartezeit (Millisekunden) zwischen dem Eingang der Nachricht beim IoT Hub und dem Eingang der Nachricht bei einem Service Bus-Themaendpunkt.|Keine Dimensionen|
-|d2c<br>.endpoints<br>.egress<br>.builtIn<br>.events|Routing: An Nachrichten/Ereignisse übermittelte Nachrichten|Count|Gesamt|Die Häufigkeit, mit der das IoT Hub-Routing erfolgreich Nachrichten an den integrierter Endpunkt (Nachrichten/Ereignisse) übermittelt hat.|Keine Dimensionen|
-|d2c<br>.endpoints<br>.latency<br>.builtIn.events|Routing: Nachrichtenwartezeit für Nachrichten/Ereignisse|Millisekunden|Durchschnitt|Durchschnittliche Wartezeit (Millisekunden) zwischen dem Eingang der Nachricht beim IoT Hub und dem Eingang der Telemetrienachricht beim integrierten Endpunkt (Nachrichten/Ereignisse).|Keine Dimensionen|
+|d2c<br>.endpoints<br>.egress<br>.builtIn<br>.events|Routing: An Nachrichten/Ereignisse übermittelte Nachrichten|Count|Gesamt|Die Häufigkeit, mit der das IoT Hub-Routing erfolgreich Nachrichten an den integrierter Endpunkt (Nachrichten/Ereignisse) übermittelt hat. Diese Metrik beginnt nur dann zu arbeiten, wenn Routing für IoT-Hub aktiviert ist (https://aka.ms/iotrouting).|Keine Dimensionen|
+|d2c<br>.endpoints<br>.latency<br>.builtIn.events|Routing: Nachrichtenwartezeit für Nachrichten/Ereignisse|Millisekunden|Durchschnitt|Durchschnittliche Wartezeit (Millisekunden) zwischen dem Eingang der Nachricht beim IoT Hub und dem Eingang der Telemetrienachricht beim integrierten Endpunkt (Nachrichten/Ereignisse). Diese Metrik beginnt nur dann zu arbeiten, wenn Routing für IoT-Hub aktiviert ist (https://aka.ms/iotrouting).|Keine Dimensionen|
 |d2c<br>.endpoints<br>.egress<br>.storage|Routing: An den Speicher übermittelte Nachrichten|Count|Gesamt|Die Häufigkeit, mit der das IoT Hub-Routing erfolgreich Nachrichten an Speicherendpunkte übermittelt hat.|Keine Dimensionen|
 |d2c<br>.endpoints<br>.latency<br>.storage|Routing: Nachrichtenwartezeit für Speicher|Millisekunden|Durchschnitt|Durchschnittliche Wartezeit (Millisekunden) zwischen dem Eingang der Nachricht beim IoT Hub und dem Eingang der Nachricht bei einem Speicherendpunkt.|Keine Dimensionen|
 |d2c<br>.endpoints<br>.egress<br>.storage<br>.bytes|Routing: An den Speicher übermittelte Daten|Byte|Gesamt|Die Datenmenge (Bytes), die das IoT Hub-Routing an die Speicherendpunkte übermittelt.|Keine Dimensionen|
 |d2c<br>.endpoints<br>.egress<br>.storage<br>.blobs|Routing: An den Speicher übermittelte Blobs|Count|Gesamt|Die Häufigkeit, mit der das IoT Hub-Routing Blobs an Speicherendpunkte übermittelt hat.|Keine Dimensionen|
-|EventGridDeliveries|Event Grid-Übermittlungen (Vorschau)|Count|Gesamt|Die Anzahl von Anforderungen für IoT Hub zum Ausgeben von Ereignissen an Event Grid. Diese Anzahl umfasst erfolgreiche und fehlgeschlagene Anforderungen. Verwenden Sie die Dimension „Result“ für die Anzahl der verschiedenen Antworttypen. Wenn Sie sehen möchten, woher die Anforderungen stammen, verwenden Sie die Dimension „EventType“.|Result, EventType|
-|EventGridLatency|Event Grid-Wartezeit (Vorschau)|Millisekunden|Durchschnitt|Die durchschnittliche Wartezeit (in Millisekunden) zwischen dem Ereigniseingang bei IoT Hub und dem Ereigniseingang in Event Grid. Diese Zahl ist ein Durchschnittswert für alle Ereignistypen. Verwenden Sie die Dimension „EventType“, um die Wartezeit für einen bestimmten Ereignistyp anzuzeigen.|EventType|
+|EventGridDeliveries|Event Grid-Übermittlungen (Vorschau)|Count|Gesamt|Die Anzahl von IoT Hub-Ereignissen, die in Event Grid veröffentlicht werden. Verwenden Sie die Dimension „Result“ für die Anzahl der erfolgreichen und fehlerhaften Anforderungen. Die „EventType“-Dimension zeigt den Typ des Ereignisses an(https://aka.ms/ioteventgrid). Wenn Sie sehen möchten, woher die Anforderungen stammen, verwenden Sie die Dimension „EventType“.|Result, EventType|
+|EventGridLatency|Event Grid-Wartezeit (Vorschau)|Millisekunden|Durchschnitt|Die durchschnittliche Wartezeit (in Millisekunden) für den Zeitraum zwischen der Generierung des Iot Hub-Ereignisses und der Veröffentlichung des Ereignisses in Event Grid. Diese Zahl ist ein Durchschnittswert für alle Ereignistypen. Verwenden Sie die Dimension „EventType“, um die Wartezeit für einen bestimmten Ereignistyp anzuzeigen.|EventType|
 |d2c<br>.twin<br>.read<br>.success|Successful twin reads from devices (Erfolgreiche Zwillingslesevorgänge von Geräten)|Count|Gesamt|Gibt die Anzahl von erfolgreichen Zwillingslesevorgängen an, die vom Gerät initiiert wurden.|Keine Dimensionen|
 |d2c<br>.twin<br>.read<br>.failure|Failed twin reads from devices (Nicht erfolgreiche Zwillingslesevorgänge von Geräten)|Count|Gesamt|Gibt die Anzahl von nicht erfolgreichen Zwillingslesevorgängen an, die vom Gerät initiiert wurden.|Keine Dimensionen|
 |d2c<br>.twin<br>.read<br>.size|Response size of twin reads from devices (Antwortgröße von Zwillingslesevorgängen von Geräten)|Byte|Durchschnitt|Durchschnitts-, Minimal- und Maximalwert für alle erfolgreichen Zwillingslesevorgänge, die vom Gerät initiiert wurden.|Keine Dimensionen|

@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 02/20/2019
 ms.author: absha
-ms.openlocfilehash: f5dfa34760bcef23bf54d65b35e3ad8f48cc2ee5
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 49b6b49d908a7426e7cfd1bae5260ff399d9953b
+ms.sourcegitcommit: a52d48238d00161be5d1ed5d04132db4de43e076
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60831832"
+ms.lasthandoff: 06/20/2019
+ms.locfileid: "67273233"
 ---
 # <a name="application-gateway-components"></a>Application Gateway-Komponenten
 
@@ -26,7 +26,9 @@ Eine Front-End-IP-Adresse ist die IP-Adresse, die einem Anwendungsgateway zugeor
 
 ### <a name="static-versus-dynamic-public-ip-address"></a>Statische und dynamische öffentliche IP-Adresse im Vergleich
 
-Die v2-SKU von Azure Application Gateway unterstützt sowohl statische interne als auch statische öffentliche IP-Adressen, während die v1-SKU nur statische interne IP-Adressen unterstützt. Die VIP-Adresse (virtuelle IP-Adresse) kann sich ändern, wenn ein Anwendungsgateway beendet und gestartet wird.
+Die V2-SKU von Azure Application Gateway kann so konfiguriert werden, dass sowohl statische interne IP-Adressen als auch statische öffentliche IP-Adressen oder ausschließlich Letztere konfiguriert werden. Nur statische interne IP-Adressen werden nicht unterstützt.
+
+Die V1-SKU kann so konfiguriert werden, dass sowohl statische interne IP-Adressen als auch dynamische öffentliche IP-Adressen verwendet werden. Sie kann auch so eingestellt werden, dass nur eine dieser beiden Optionen verwendet wird. Die dynamische IP-Adresse der Application Gateway-Instanz ändert sich nicht, solange das Gateway aktiv ist. Sie kann sich nur dann ändern, wenn Sie das Gateway anhalten oder starten. Wenn beispielsweise Systemfehler auftreten oder Updates und Azure-Hostupdates durchgeführt werden, ändert sich die IP-Adresse nicht. 
 
 Der einem Anwendungsgateway zugeordnete DNS-Name ändert sich während des Lebenszyklus des Gateways nicht. Daher wird empfohlen, einen CNAME-Alias zu verwenden und damit auf die DNS-Adresse des Anwendungsgateways zu verweisen.
 

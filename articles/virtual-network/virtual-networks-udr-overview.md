@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/26/2017
 ms.author: malop; kumud
-ms.openlocfilehash: e0d27b92b4f0b7da8f96e4b1cc9695537db0e643
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 07c8087043526a8eb0bf7a1963a761c40c11a925
+ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65851143"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67202850"
 ---
 # <a name="virtual-network-traffic-routing"></a>Routing von Datenverkehr für virtuelle Netzwerke
 
@@ -39,7 +39,6 @@ Jede Route enthält ein Adresspräfix und einen Typ des nächsten Hops. Wenn Dat
 |Standard|Für das virtuelle Netzwerk eindeutig                           |Virtuelles Netzwerk|
 |Standard|0.0.0.0/0                                               |Internet       |
 |Standard|10.0.0.0/8                                              |Keine           |
-|Standard|172.16.0.0/12                                           |Keine           |
 |Standard|192.168.0.0/16                                          |Keine           |
 |Standard|100.64.0.0/10                                           |Keine           |
 
@@ -49,7 +48,7 @@ Die in der obigen Tabelle aufgeführten Typen des nächsten Hops geben an, wie D
 * **Internet**: Leitet Datenverkehr, der vom Adresspräfix angegeben wird, in das Internet weiter. Für die Systemstandardroute wird das Adresspräfix 0.0.0.0/0 angegeben. Wenn Sie die Standardrouten von Azure nicht außer Kraft setzen, leitet Azure Datenverkehr für alle Adressen, die nicht von einem Adressbereich in einem virtuellen Netzwerk angegeben sind, in das Internet weiter. Es gilt aber folgende Ausnahme: Wenn die Zieladresse die Adresse von einem der Azure-Dienste ist, leitet Azure den Datenverkehr über das Azure-Backbonenetzwerk direkt an den Dienst weiter, und nicht in das Internet. Der Datenverkehr zwischen Azure-Diensten wird nicht über das Internet übertragen. Dies gilt unabhängig davon, in welcher Azure-Region das virtuelle Netzwerk vorhanden ist oder in welcher Azure-Region eine Instanz des Azure-Diensts bereitgestellt wird. Sie können die Standardsystemroute von Azure für das Adresspräfix 0.0.0.0/0 durch eine [benutzerdefinierte Route](#custom-routes) außer Kraft setzen.<br>
 * **Keine**: Datenverkehr, der an den Typ **Keine** des nächsten Hops weitergeleitet wird, wird verworfen und nicht an Orte außerhalb des Subnetzes weitergeleitet. Azure erstellt automatisch Standardrouten für die folgenden Adresspräfixe:<br>
 
-    * **10.0.0.0/8, 172.16.0.0/12 und 192.168.0.0/16**: Für die private Nutzung in RFC 1918 reserviert.<br>
+    * **10.0.0.0/8 und 192.168.0.0/16**: Für die private Nutzung in RFC 1918 reserviert.<br>
     * **100.64.0.0/10**: In RFC 6598 reserviert.
 
     Wenn Sie einen der obigen Adressbereiche innerhalb des Adressraums eines virtuellen Netzwerks zuweisen, ändert Azure den Typ des nächsten Hops für die Route automatisch von **Keine** in **Virtuelles Netzwerk**. Wenn Sie einen Adressbereich dem Adressraum eines virtuellen Netzwerks zuweisen, der eines der vier reservierten Adresspräfixe enthält (aber nicht identisch damit ist), entfernt Azure die Route für das Präfix und fügt eine Route für das von Ihnen hinzugefügte Adresspräfix mit **Virtuelles Netzwerk** als Typ des nächsten Hops hinzu.
@@ -210,7 +209,7 @@ Mit den Pfeilen ist der Weg des Datenverkehrs angegeben.
 
 Die Routentabelle für *Subnet1* in der Abbildung enthält die folgenden Routen:
 
-|ID  |`Source` |Zustand  |Adresspräfixe    |Typ des nächsten Hops          |IP-Adresse des nächsten Hops|Name der benutzerdefinierten Route| 
+|id  |`Source` |Zustand  |Adresspräfixe    |Typ des nächsten Hops          |IP-Adresse des nächsten Hops|Name der benutzerdefinierten Route| 
 |----|-------|-------|------              |-------                |--------           |--------      |
 |1   |Standard|Ungültig|10.0.0.0/16         |Virtuelles Netzwerk        |                   |              |
 |2   |Benutzer   |Aktiv |10.0.0.0/16         |Virtuelles Gerät      |10.0.100.4         |Within-VNet1  |
@@ -253,10 +252,9 @@ Die Routentabelle für *Subnet2* in der Abbildung enthält die folgenden Routen:
 |Standard |Aktiv |0.0.0.0/0           |Internet                  |                   |
 |Standard |Aktiv |10.0.0.0/8          |Keine                      |                   |
 |Standard |Aktiv |100.64.0.0/10       |Keine                      |                   |
-|Standard |Aktiv |172.16.0.0/12       |Keine                      |                   |
 |Standard |Aktiv |192.168.0.0/16      |Keine                      |                   |
 
-Die Routentabelle für *Subnet2* enthält alle von Azure erstellten Standardrouten und das optionale VNet-Peering sowie die optionalen Routen des Gateways für virtuelle Netzwerke. Azure hat die optionalen Routen allen Subnetzen im virtuellen Netzwerk hinzugefügt, als das Gateway und das Peering dem virtuellen Netzwerk hinzugefügt wurden. Azure hat die Routen für die Adresspräfixe 10.0.0.0/8, 172.16.0.0/12, 192.168.0.0/16 und 100.64.0.0/10 aus der Routentabelle für *Subnet1* entfernt, als die benutzerdefinierte Route für das Adresspräfix 0.0.0.0/0 *Subnet1* hinzugefügt wurde.  
+Die Routentabelle für *Subnet2* enthält alle von Azure erstellten Standardrouten und das optionale VNet-Peering sowie die optionalen Routen des Gateways für virtuelle Netzwerke. Azure hat die optionalen Routen allen Subnetzen im virtuellen Netzwerk hinzugefügt, als das Gateway und das Peering dem virtuellen Netzwerk hinzugefügt wurden. Azure hat die Routen für die Adresspräfixe 10.0.0.0/8, 192.168.0.0/16 und 100.64.0.0/10 aus der Routentabelle für *Subnet1* entfernt, als die benutzerdefinierte Route für das Adresspräfix 0.0.0.0/0 *Subnet1* hinzugefügt wurde.  
 
 ## <a name="next-steps"></a>Nächste Schritte
 

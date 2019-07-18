@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 04/23/2019
 ms.author: vitalyg
 ms.subservice: metrics
-ms.openlocfilehash: cff1bbefc3c54f7f9c02c646bd9eef528fe28c73
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 73ef5cc00b5154dbdbc92911d17740c7d13038ec
+ms.sourcegitcommit: a12b2c2599134e32a910921861d4805e21320159
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64939567"
+ms.lasthandoff: 06/24/2019
+ms.locfileid: "67341977"
 ---
 # <a name="troubleshooting-metrics-charts"></a>Problembehandlung für Metrikdiagramme
 
@@ -73,7 +73,7 @@ Das Sammeln von **Gastbetriebssystem**-Metriken erfordert die Konfiguration der 
 
 ## <a name="error-retrieving-data-message-on-dashboard"></a>Meldung „Fehler beim Abrufen von Daten“ im Dashboard
 
-Dieses Problem tritt häufig auf, wenn Ihr Dashboard mit einer Metrik erstellt wurde, die später nicht mehr verwendet und aus Azure entfernt wurde. Um sicherzustellen, dass dies der Fall ist, öffnen Sie die Registerkarte **Metriken** Ihrer Ressource, und überprüfen Sie die verfügbaren Metriken in der Metrikauswahl. Wenn die Metrik nicht angezeigt wird, wurde die Metrik aus Azure entfernt. Wenn eine Metrik veraltet ist, existiert in der Regel eine bessere neue Metrik, die eine ähnliche Sicht auf die Ressourcenintegrität bietet.
+Dieses Problem kann auftreten, wenn Ihr Dashboard mit einer Metrik erstellt wurde, die später nicht mehr verwendet und aus Azure entfernt wurde. Um sicherzustellen, dass dies der Fall ist, öffnen Sie die Registerkarte **Metriken** Ihrer Ressource, und überprüfen Sie die verfügbaren Metriken in der Metrikauswahl. Wenn die Metrik nicht angezeigt wird, wurde die Metrik aus Azure entfernt. Wenn eine Metrik veraltet ist, existiert in der Regel eine bessere neue Metrik, die eine ähnliche Sicht auf die Ressourcenintegrität bietet.
 
 **Lösung:** Aktualisieren Sie die fehlerhafte Kachel, indem Sie eine alternative Metrik für Ihr Diagramm im Dashboard auswählen. Sie können [eine Liste der verfügbaren Metriken für Azure-Dienste](metrics-supported.md) anzeigen.
 
