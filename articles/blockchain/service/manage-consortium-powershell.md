@@ -10,12 +10,12 @@ ms.topic: article
 ms.service: azure-blockchain
 ms.reviewer: zeyadr
 manager: femila
-ms.openlocfilehash: 4bb72bc3fe8b85a8d2aed88e02f5f3150abb6899
-ms.sourcegitcommit: 600d5b140dae979f029c43c033757652cddc2029
+ms.openlocfilehash: 9f76597a91c0e22f57d1ba66ff1a16eea9002af0
+ms.sourcegitcommit: a6873b710ca07eb956d45596d4ec2c1d5dc57353
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/04/2019
-ms.locfileid: "66493665"
+ms.lasthandoff: 07/16/2019
+ms.locfileid: "68250086"
 ---
 # <a name="manage-consortium-members-in-azure-blockchain-service-by-using-powershell"></a>Verwalten der Konsortiumsmitglieder in Azure Blockchain Service mithilfe von PowerShell
 
@@ -191,8 +191,10 @@ Verwenden Sie dieses Cmdlet, um die Attribute eines Blockchainmitglieds festzule
 
 Konsortiumsadministratoren können **DisplayName** (Anzeigename) und **Role** (Rolle) für alle Mitglieder festlegen. Konsortiumsmitglieder mit Benutzerrolle können nur ihren eigenen Mitgliedsanzeigenamen ändern.
 
-`Set-BlockchainMember -Name <String> [-DisplayName <String>] [-AccountAddress <String>] [-Role <String>]
- -Members <IContract> -Web3Account <IAccount> -Web3Client <IClient>`
+```
+Set-BlockchainMember -Name <String> [-DisplayName <String>] [-AccountAddress <String>] [-Role <String>]
+ -Members <IContract> -Web3Account <IAccount> -Web3Client <IClient>
+```
 
 | Parameter | BESCHREIBUNG | Erforderlich |
 |-----------|-------------|:--------:|
@@ -217,8 +219,10 @@ Verwenden Sie die Cmdlets zum Verwalten der Einladung von Konsortiumsmitgliedern
 
 Verwenden Sie dieses Cmdlet, um neue Mitglieder zum Konsortium einzuladen.
 
-`New-BlockchainMemberInvitation -SubscriptionId <String> -Role <String> -Members <IContract>
- -Web3Account <IAccount> -Web3Client <IClient>`
+```
+New-BlockchainMemberInvitation -SubscriptionId <String> -Role <String> -Members <IContract>
+ -Web3Account <IAccount> -Web3Client <IClient>
+```
 
 | Parameter | BESCHREIBUNG | Erforderlich |
 |-----------|-------------|:--------:|
@@ -264,8 +268,10 @@ SubscriptionId                       Role CorrelationId
 
 Verwenden Sie dieses Cmdlet, um die Einladung eines Konsortiumsmitglieds zu widerrufen.
 
-`Remove-BlockchainMemberInvitation -SubscriptionId <String> -Members <IContract> -Web3Account <IAccount>
- -Web3Client <IClient>`
+```
+Remove-BlockchainMemberInvitation -SubscriptionId <String> -Members <IContract> -Web3Account <IAccount>
+ -Web3Client <IClient>
+```
 
 | Parameter | BESCHREIBUNG | Erforderlich |
 |-----------|-------------|:--------:|
@@ -284,8 +290,10 @@ $ContractConnection | Remove-BlockchainMemberInvitation -SubscriptionId <Subscri
 
 Verwenden Sie dieses Cmdlet, um die **Rolle** für eine vorhandene Einladung festzulegen. Nur Konsortiumsadministratoren können Einladungen ändern.
 
-`Set-BlockchainMemberInvitation -SubscriptionId <String> -Role <String> -Members <IContract>
- -Web3Account <IAccount> -Web3Client <IClient>`
+```
+Set-BlockchainMemberInvitation -SubscriptionId <String> -Role <String> -Members <IContract>
+ -Web3Account <IAccount> -Web3Client <IClient>
+```
 
 | Parameter | BESCHREIBUNG | Erforderlich |
 |-----------|-------------|:--------:|

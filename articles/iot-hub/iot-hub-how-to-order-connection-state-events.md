@@ -7,12 +7,12 @@ author: ash2017
 ms.topic: conceptual
 ms.date: 04/11/2019
 ms.author: asrastog
-ms.openlocfilehash: f4baab6e0909144efc613572207e7f24c4b4fe1f
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: a020221d841682d1e18d2b728a732ec4dfc35ef3
+ms.sourcegitcommit: 6b41522dae07961f141b0a6a5d46fd1a0c43e6b2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66743257"
+ms.lasthandoff: 07/15/2019
+ms.locfileid: "67988280"
 ---
 # <a name="order-device-connection-events-from-azure-iot-hub-using-azure-cosmos-db"></a>Sortieren von Geräteverbindungsereignissen von Azure IoT Hub mithilfe von Azure Cosmos DB
 
@@ -24,9 +24,9 @@ Die Sequenznummer ist eine Zeichenfolgendarstellung einer Hexadezimalzahl. Sie k
 
 * Ein aktives Azure-Konto. Wenn Sie noch nicht über eines verfügen, können Sie ein [kostenloses Konto erstellen](https://azure.microsoft.com/pricing/free-trial/).
 
-* Ein aktives Azure Cosmos DB-SQL-API-Konto. Wenn Sie noch keines erstellt haben, finden Sie unter [Erstellen eines Datenbankkontos](../cosmos-db/create-sql-api-dotnet.md#create-an-azure-cosmos-db-account) eine exemplarische Vorgehensweise.
+* Ein aktives Azure Cosmos DB-SQL-API-Konto. Wenn Sie noch keines erstellt haben, finden Sie unter [Erstellen eines Datenbankkontos](../cosmos-db/create-sql-api-java.md#create-a-database-account) eine exemplarische Vorgehensweise.
 
-* Eine Sammlung in der Datenbank. Eine exemplarische Vorgehensweise finden Sie unter [Hinzufügen einer Sammlung](../cosmos-db/create-sql-api-dotnet.md#add-a-database-and-a-collection). Wenn Sie Ihre Sammlung erstellen, verwenden Sie `/id` als Partitionsschlüssel.
+* Eine Sammlung in der Datenbank. Eine exemplarische Vorgehensweise finden Sie unter [Hinzufügen einer Sammlung](../cosmos-db/create-sql-api-java.md#add-a-container). Wenn Sie Ihre Sammlung erstellen, verwenden Sie `/id` als Partitionsschlüssel.
 
 * Eine IoT Hub-Instanz in Azure. Wenn Sie noch keinen erstellt haben, finden Sie unter [Erste Schritte mit IoT Hub](iot-hub-csharp-csharp-getstarted.md) eine exemplarische Vorgehensweise.
 

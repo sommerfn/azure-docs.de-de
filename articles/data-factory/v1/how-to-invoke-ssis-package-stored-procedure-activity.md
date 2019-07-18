@@ -13,12 +13,12 @@ ms.devlang: powershell
 ms.topic: conceptual
 ms.date: 01/19/2018
 ms.author: jingwang
-ms.openlocfilehash: d61874a57801a6c02af885cab6a97ed38da1deb1
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 030617d3afd73c68793ca0a1d6185264c92b791f
+ms.sourcegitcommit: 64798b4f722623ea2bb53b374fb95e8d2b679318
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66156625"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67839897"
 ---
 # <a name="invoke-an-ssis-package-using-stored-procedure-activity-in-azure-data-factory"></a>Aufrufen eines SSIS-Pakets mithilfe einer Aktivität einer gespeicherten Prozedur in Azure Data Factory
 In diesem Artikel wird das Aufrufen eines SSIS-Pakets aus einer Azure Data Factory-Pipeline mithilfe einer Aktivität einer gespeicherten Prozedur beschrieben. 
@@ -33,134 +33,6 @@ Die exemplarische Vorgehensweise in diesem Artikel verwendet eine Azure SQL-Date
 
 ### <a name="create-an-azure-ssis-integration-runtime"></a>Erstellen einer Azure SSIS Integration Runtime
 Erstellen Sie eine Azure-SSIS Integration Runtime, falls Sie noch keine besitzen. Befolgen Sie dazu die ausführliche Anleitung unter [Tutorial: Bereitstellen von SSIS-Paketen](../tutorial-create-azure-ssis-runtime-portal.md) befolgen. Sie können nicht Data Factory, Version 1 zum Erstellen einer Azure SSIS-Integration Runtime verwenden. 
-
-## <a name="azure-portal"></a>Azure-Portal
-In diesem Abschnitt erstellen Sie mithilfe des Azure-Portals eine Data Factory-Pipeline mit einer Aktivität einer gespeicherten Prozedur, die ein SSIS-Paket aufruft.
-
-### <a name="create-a-data-factory"></a>Erstellen einer Data Factory
-Der erste Schritt besteht darin, eine Data Factory mit dem Azure-Portal zu erstellen. 
-
-1. Navigieren Sie zum [Azure-Portal](https://portal.azure.com). 
-2. Klicken Sie im Menü auf der linken Seite nacheinander auf **Neu**, **Data + Analytics** und **Data Factory**. 
-   
-   ![Neu -> Data Factory](./media/how-to-invoke-ssis-package-stored-procedure-activity/new-azure-data-factory-menu.png)
-2. Geben Sie auf der Seite **Neue Data Factory** unter **Name** den Namen **ADFTutorialDataFactory** ein. 
-      
-     ![Seite „Neue Data Factory“](./media/how-to-invoke-ssis-package-stored-procedure-activity/new-azure-data-factory.png)
- 
-   Der Name der Azure Data Factory muss **global eindeutig**sein. Sollte für das Feld „Name“ der folgende Fehler auftreten, ändern Sie den Namen der Data Factory (beispielsweise in „<IhrName>ADFTutorialDataFactory“). Benennungsregeln für Data Factory-Artefakte finden Sie im Artikel [Azure Data Factory – Benennungsregeln](data-factory-naming-rules.md).
-
-    `Data factory name ADFTutorialDataFactory is not available`
-3. Wählen Sie Ihr **Azure-Abonnement** aus, in dem die Data Factory erstellt werden soll. 
-4. Führen Sie für die **Ressourcengruppe** einen der folgenden Schritte aus:
-     
-   - Wählen Sie die Option **Use existing**(Vorhandene verwenden) und dann in der Dropdownliste eine vorhandene Ressourcengruppe. 
-   - Wählen Sie **Neu erstellen**, und geben Sie den Namen einer Ressourcengruppe ein.   
-         
-     Weitere Informationen über Ressourcengruppen finden Sie unter [Verwenden von Ressourcengruppen zum Verwalten von Azure-Ressourcen](../../azure-resource-manager/resource-group-overview.md).  
-4. Wählen Sie **V1** als **Version** aus.
-5. Wählen Sie den **Standort** für die Data Factory aus. In der Dropdownliste werden nur Standorte angezeigt, die von Data Factory unterstützt werden. Die von der Data Factory verwendeten Datenspeicher (Azure Storage, Azure SQL-Datenbank usw.) und Computedienste (HDInsight usw.) können sich an anderen Standorten befinden.
-6. Wählen Sie die Option **An Dashboard anheften** aus.     
-7. Klicken Sie auf **Create**.
-8. Auf dem Dashboard sehen Sie die folgende Kachel mit dem Status: **Deploying data factory** (Data Factory wird bereitgestellt...). 
-
-     ![Kachel „Die Data Factory wird bereitgestellt“](media//how-to-invoke-ssis-package-stored-procedure-activity/deploying-data-factory.png)
-9. Nach Abschluss der Erstellung wird die Seite **Data Factory** wie in der Abbildung angezeigt.
-   
-     ![Data Factory-Startseite](./media/how-to-invoke-ssis-package-stored-procedure-activity/data-factory-home-page.png)
-10. Klicken Sie auf die Kachel **Verfassen und bereitstellen**, um den Data Factory-Editor zu starten.
-
-    ![Data Factory Editor](./media/how-to-invoke-ssis-package-stored-procedure-activity/data-factory-editor.png)
-
-### <a name="create-an-azure-sql-database-linked-service"></a>Erstellen eines verknüpften Azure SQL-Datenbank-Diensts
-In diesem Schritt erstellen Sie einen verknüpften Dienst, um Ihre Azure SQL-Datenbank, in der der SSIS-Katalog gehostet ist, mit der Data Factory zu verbinden. Die Data Factory verwendet Informationen in diesem verknüpften Dienst zum Herstellen der Verbindung mit der SSISDB-Datenbank und führt eine gespeicherte Prozedur zum Ausführen eines SSIS-Pakets aus. 
-
-1. Klicken Sie im Data Factory-Editor im Menü auf **Neuer Datenspeicher** und dann auf **Azure SQL-Datenbank**. 
-
-    ![Neuer Datenspeicher > Azure SQL-Datenbank](./media/how-to-invoke-ssis-package-stored-procedure-activity/new-azure-sql-database-linked-service-menu.png)
-2. Führen Sie im rechten Bereich folgende Schritte durch:
-
-    1. Ersetzen Sie `<servername>` durch den Namen Ihres Azure SQL-Servers. 
-    2. Ersetzen Sie `<databasename>` durch **SSISDB** (Name der SSIS-Katalogdatenbank). 
-    3. Ersetzen Sie `<username@servername>` durch den Namen des Benutzers, der Zugriff auf den Azure SQL-Server hat. 
-    4. Ersetzen Sie `<password>` durch das Kennwort für den Benutzer. 
-    5. Stellen Sie den verknüpften Dienst bereit, indem Sie auf der Symbolleiste auf die Schaltfläche **Bereitstellen** klicken. 
-
-        ![Mit Azure SQL-Datenbank verknüpfter Dienst](./media/how-to-invoke-ssis-package-stored-procedure-activity/azure-sql-database-linked-service-definition.png)
-
-### <a name="create-a-dummy-dataset-for-output"></a>Erstellen eines Dummydatasets für die Ausgabe
-Dieses Ausgabedataset ist ein Dummy-Dataset, das die Grundlage für den Zeitplan der Pipeline bildet. Beachten Sie, dass „Frequency“ auf „Hour“ und „interval“ auf „1“ festgelegt ist. Daher wird die Pipeline einmal pro Stunde innerhalb der Anfangs- und Endzeiten der Pipeline ausgeführt. 
-
-1. Klicken Sie im linken Bereich des Data Factory-Editors auf **... Mehr** -> **Neues Dataset** -> **Azure SQL**.
-
-    ![Mehr > Neues Dataset](./media/how-to-invoke-ssis-package-stored-procedure-activity/new-dataset-menu.png)
-2. Ersetzen Sie den folgenden JSON-Ausschnitt im rechten Bereich des JSON-Editors. 
-    
-    ```json
-    {
-        "name": "sprocsampleout",
-        "properties": {
-            "type": "AzureSqlTable",
-            "linkedServiceName": "AzureSqlLinkedService",
-            "typeProperties": { },
-            "availability": {
-                "frequency": "Hour",
-                "interval": 1
-            }
-        }
-    }
-    ```
-3. Klicken Sie in der Symbolleiste auf **Bereitstellen** . Mit dieser Aktion wird das Dataset für den Azure Data Factory-Dienst bereitgestellt. 
-
-### <a name="create-a-pipeline-with-stored-procedure-activity"></a>Erstellen einer Pipeline mit einer Aktivität einer gespeicherten Prozedur 
-In diesem Schritt erstellen Sie eine Pipeline mit einer Aktivität einer gespeicherten Prozedur. Die Aktivität ruft die gespeicherte Prozedur „sp_executesql“ auf, um Ihr SSIS-Paket auszuführen. 
-
-1. Klicken Sie im linken Bereich auf **... More** (Mehr), und klicken Sie auf **Neue Pipeline**.
-2. Kopieren Sie den folgenden JSON-Ausschnitt im JSON-Editor: 
-
-    > [!IMPORTANT]
-    > Ersetzen Sie &lt;folder name&gt;, &lt;project name&gt;, &lt;package name&gt; durch die Namen von Ordner, Projekt und Paket im SSIS-Katalog, und speichern Sie dann die Datei.
-
-    ```json
-    {
-        "name": "MyPipeline",
-        "properties": {
-            "activities": [{
-                "name": "SprocActivitySample",
-                "type": "SqlServerStoredProcedure",
-                "typeProperties": {
-                    "storedProcedureName": "sp_executesql",
-                    "storedProcedureParameters": {
-                        "stmt": "DECLARE @return_value INT, @exe_id BIGINT, @err_msg NVARCHAR(150)    EXEC @return_value=[SSISDB].[catalog].[create_execution] @folder_name=N'<folder name>', @project_name=N'<project name>', @package_name=N'<package name>', @use32bitruntime=0, @runinscaleout=1, @useanyworker=1, @execution_id=@exe_id OUTPUT    EXEC [SSISDB].[catalog].[set_execution_parameter_value] @exe_id, @object_type=50, @parameter_name=N'SYNCHRONIZED', @parameter_value=1    EXEC [SSISDB].[catalog].[start_execution] @execution_id=@exe_id, @retry_count=0    IF(SELECT [status] FROM [SSISDB].[catalog].[executions] WHERE execution_id=@exe_id)<>7 BEGIN SET @err_msg=N'Your package execution did not succeed for execution ID: ' + CAST(@exe_id AS NVARCHAR(20)) RAISERROR(@err_msg,15,1) END"
-                    }
-                },
-                "outputs": [{
-                    "name": "sprocsampleout"
-                }],
-                "scheduler": {
-                    "frequency": "Hour",
-                    "interval": 1
-                }
-            }],
-            "start": "2018-01-19T00:00:00Z",
-            "end": "2018-01-19T05:00:00Z",
-            "isPaused": false
-        }
-    }    
-    ```
-3. Klicken Sie in der Symbolleiste auf **Bereitstellen** . Mit dieser Aktion wird die Pipeline für den Azure Data Factory-Dienst bereitgestellt. 
-
-### <a name="monitor-the-pipeline-run"></a>Überwachen der Pipelineausführung
-Für den Zeitplan des Ausgabedatasets ist ein Stundenintervall definiert. Die Endzeit der Pipeline ist auf fünf Stunden nach der Startzeit festgelegt. Aus diesem Grund werden fünf Pipelineausführungen angezeigt. 
-
-1. Schließen Sie die Editorfenster, um die Startseite für die Data Factory zu sehen. Klicken Sie auf die Kachel **Überwachung und Verwaltung**. 
-
-    ![Kachel "Diagramm"](./media/how-to-invoke-ssis-package-stored-procedure-activity/monitor-manage-tile.png)
-2. Ändern Sie **Startzeit** und **Endzeit** in **01/18/2018 08:30 AM** bzw. **01/20/2018 08:30 AM**, und klicken Sie auf **Übernehmen**. Sie sollten die **Aktivitätsfenster** sehen können, die der Pipelineausführung zugeordnet sind. 
-
-    ![Aktivitätsfenster](./media/how-to-invoke-ssis-package-stored-procedure-activity/activity-windows.png)
-
-Weitere Informationen zu Überwachungspipelines finden Sie unter [Überwachen und Verwalten von Azure Data Factory-Pipelines mit der App „Überwachung und Verwaltung“](data-factory-monitor-manage-app.md).
 
 ## <a name="azure-powershell"></a>Azure PowerShell
 In diesem Abschnitt erstellen Sie mithilfe von Azure PowerShell eine Data Factory-Pipeline mit einer Aktivität einer gespeicherten Prozedur, die ein SSIS-Paket aufruft.

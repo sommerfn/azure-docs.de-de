@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/20/2019
 ms.author: iainfou
-ms.openlocfilehash: 38403efd72843e7cd6d1afff5ff65a15af39c107
-ms.sourcegitcommit: f811238c0d732deb1f0892fe7a20a26c993bc4fc
+ms.openlocfilehash: 6b808126fe4366d3ca3cc19c674b489ec3055665
+ms.sourcegitcommit: b2db98f55785ff920140f117bfc01f1177c7f7e2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/29/2019
-ms.locfileid: "67473968"
+ms.lasthandoff: 07/16/2019
+ms.locfileid: "68234154"
 ---
 # <a name="check-the-health-of-an-azure-ad-domain-services-managed-domain"></a>Überprüfen der Integrität einer verwalteten Azure AD Domain Services-Domäne
 
@@ -43,10 +43,10 @@ Der Status oben rechts auf der Seite „Integrität“ zeigt die Gesamtintegrit�
 
 | Status | Symbol | Erklärung |
 | --- | :----: | --- |
-| Wird ausgeführt | <img src= "./media/active-directory-domain-services-alerts/running-icon.png" width = "15"> | Ihre verwaltete Domäne wird ohne Probleme ausgeführt, und es liegen keine kritischen Fehler oder Warnmeldungen vor. Für die Domäne können ggf. Warnungen vom Typ „Information“ bestehen. |
-| Eingreifen erforderlich (Warnung) | <img src= "./media/active-directory-domain-services-alerts/warning-icon.png" width = "15"> | Für Ihre verwaltete Domäne liegen keine kritischen Warnungen vor, aber es ist mindestens eine Warnmeldung vorhanden, die ein Eingreifen erforderlich macht. |
-| Eingreifen erforderlich (Kritisch) | <img src= "./media/active-directory-domain-services-alerts/critical-icon.png" width = "15"> | Für Ihre verwaltete Domäne liegt mindestens eine kritische Warnung vor. Außerdem sind ggf. Warnmeldungen oder Warnungen vom Typ „Information“ vorhanden. |
-| Wird bereitgestellt | <img src= "./media/active-directory-domain-services-alerts/deploying-icon.png" width = "15"> | Die Domäne wird gerade bereitgestellt. |
+| Wird ausgeführt | <img src= "./media/active-directory-domain-services-alerts/running-icon.png" width = "15" alt="Green check mark for running"> | Ihre verwaltete Domäne wird ohne Probleme ausgeführt, und es liegen keine kritischen Fehler oder Warnmeldungen vor. Für die Domäne können ggf. Warnungen vom Typ „Information“ bestehen. |
+| Eingreifen erforderlich (Warnung) | <img src= "./media/active-directory-domain-services-alerts/warning-icon.png" width = "15" alt="Yellow exclamation mark for warning"> | Für Ihre verwaltete Domäne liegen keine kritischen Warnungen vor, aber es ist mindestens eine Warnmeldung vorhanden, die ein Eingreifen erforderlich macht. |
+| Eingreifen erforderlich (Kritisch) | <img src= "./media/active-directory-domain-services-alerts/critical-icon.png" width = "15" alt="Red exclamation mark for critical"> | Für Ihre verwaltete Domäne liegt mindestens eine kritische Warnung vor. Außerdem sind ggf. Warnmeldungen oder Warnungen vom Typ „Information“ vorhanden. |
+| Wird bereitgestellt | <img src= "./media/active-directory-domain-services-alerts/deploying-icon.png" width = "15" alt="Blue circular arrows for deploying"> | Die Domäne wird gerade bereitgestellt. |
 
 ## <a name="monitors"></a>Monitore
 Monitore sind Aspekte Ihrer verwalteten Domäne, die von Azure AD Domain Services regelmäßig überwacht werden. Die beste Möglichkeit, Ihre Monitore in einem fehlerfreien Zustand zu halten, ist das Beheben der Probleme aller aktiven Warnungen für Ihre verwaltete Domäne.

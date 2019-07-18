@@ -6,12 +6,12 @@ ms.service: data-share
 ms.topic: overview
 ms.date: 07/10/2019
 ms.author: joanpo
-ms.openlocfilehash: 1e0d640c5434c27695b90ee7fd4c20a4959c24b3
-ms.sourcegitcommit: 1572b615c8f863be4986c23ea2ff7642b02bc605
+ms.openlocfilehash: 7d4e51ec9564bfb123cf73d9fe89d040f42fe650
+ms.sourcegitcommit: 47ce9ac1eb1561810b8e4242c45127f7b4a4aa1a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/10/2019
-ms.locfileid: "67788984"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67807541"
 ---
 # <a name="what-is-azure-data-share-preview"></a>Was ist Azure Data Share (Vorschauversion)?
 
@@ -78,14 +78,6 @@ Azure Data Share nutzt die zugrunde liegende Sicherheit, die von Azure angeboten
 Zugriffssteuerungen können auf der Azure Data Share-Ressourcenebene festgelegt werden, um sicherzustellen, dass nur von berechtigten Personen darauf zugegriffen wird. 
 
 Azure Data Share nutzt verwaltete Identitäten für Azure-Ressourcen (bisher als MSIs bezeichnet), um die automatische Identitätsverwaltung in Azure Active Directory durchzuführen. Verwaltete Identitäten für Azure-Ressourcen werden für den Zugriff auf die Speicherkonten genutzt, die für die Datenfreigabe verwendet werden. Zwischen einem Datenanbieter und einem Datenconsumer findet kein Austausch von Anmeldeinformationen statt. Weitere Informationen finden Sie unter [Dienste, die verwaltete Identitäten für Azure-Ressourcen unterstützen](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/services-support-managed-identities). 
-
-## <a name="pricing"></a>Preise
-
-Bei Azure Data Share (Vorschauversion) werden zwei Komponenten berechnet. Die erste Komponente ist die Verwaltung der Datenfreigabe. Während der Vorschauphase ist die Verwaltung der Datenfreigabe kostenlos.
-
-Die zweite Komponente ist die Verschiebung. Bei Aure Data Share werden Kosten für das Verschieben von Daten vom Azure-Mandanten des Datenanbieters auf den Azure-Mandanten des Datenconsumers berechnet. Sie bezahlen für die Datasetverschiebung pro Vorgang und für den Computeaufwand, der für die Verschiebung eines Datasets erforderlich ist. Der Computeaufwand für die Datasetverschiebung wird pro V-Kern-Stunde berechnet. Computekosten für die Datasetverschiebung werden anteilig pro Minute berechnet und dann aufgerundet. Während der Vorschauphase sind Vorgänge für die Datasetverschiebung kostenlos. 
-
-Weitere Informationen zu den Preisen finden Sie auf der [Seite mit den Preisen](https://azure.microsoft.com/pricing/) für Azure Data Share.
 
 ## <a name="supported-regions"></a>Unterstützte Regionen
 

@@ -5,13 +5,13 @@ author: ajlam
 ms.author: andrela
 ms.service: mariadb
 ms.topic: conceptual
-ms.date: 09/24/2018
-ms.openlocfilehash: 0a1ead1580f6764fec7d1d18daa38bf093f242f2
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.date: 07/11/2019
+ms.openlocfilehash: c19ec06ce353d653086fa693dde975a55f51f823
+ms.sourcegitcommit: 64798b4f722623ea2bb53b374fb95e8d2b679318
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61364436"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67839253"
 ---
 # <a name="replicate-data-into-azure-database-for-mariadb"></a>Replizieren von Daten in Azure Database for MariaDB
 
@@ -37,7 +37,6 @@ Die [*Systemdatenbank „mysql“* ](https://mariadb.com/kb/en/library/the-mysql
 
 ### <a name="other"></a>Andere
 - Die Datenreplikation wird nur in den Tarifen Universell und Arbeitsspeicheroptimiert unterstützt.
-- IDs globaler Transaktionen (GTIDs) werden nicht unterstützt.
 
 ## <a name="next-steps"></a>Nächste Schritte
 - Erfahren Sie, wie Sie [die Datenreplikation einrichten](howto-data-in-replication.md).

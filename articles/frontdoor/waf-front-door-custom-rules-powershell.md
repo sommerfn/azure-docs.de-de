@@ -10,13 +10,14 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/21/2019
-ms.author: kumud;tyao
-ms.openlocfilehash: ff8330ab8aec7f0e9aa92409ce1eafd5be5ceeaf
-ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
+ms.author: kumud
+ms.reviewer: tyao
+ms.openlocfilehash: e9509172ac96a601235cc16e0d6d83c9b2f51902
+ms.sourcegitcommit: fa45c2bcd1b32bc8dd54a5dc8bc206d2fe23d5fb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67605752"
+ms.lasthandoff: 07/12/2019
+ms.locfileid: "67849119"
 ---
 # <a name="configure-a-web-application-firewall-policy-using-azure-powershell"></a>Konfigurieren einer Web Application Firewall-Richtlinie mit Azure PowerShell
 Die Azure Web Application Firewall-Richtlinie (WAF-Richtlinie) definiert die Überprüfungen, die erforderlich sind, wenn eine Anforderung in Front Door eingeht.

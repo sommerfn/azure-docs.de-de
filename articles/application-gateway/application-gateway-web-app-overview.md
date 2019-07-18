@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 03/18/2019
 ms.author: victorh
-ms.openlocfilehash: 256fb42be8fec056ed7d10cfc4197a1b5a33fac1
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 66e4a578e3f443f4cbc3f6e5467cf9a86adf05fe
+ms.sourcegitcommit: a8b638322d494739f7463db4f0ea465496c689c6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66807166"
+ms.lasthandoff: 07/17/2019
+ms.locfileid: "68297048"
 ---
 # <a name="application-gateway-support-for-multi-tenant-back-ends-such-as-app-service"></a>Application Gateway-Unterstützung für mehrinstanzenfähige Back-Ends wie App Service
 
@@ -62,4 +62,4 @@ Weitere Informationen zum Beheben solcher Probleme finden Sie im Artikel zur [Be
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Unter [Konfigurieren von App Service mit Application Gateway](https://docs.microsoft.com/azure/application-gateway/create-web-app) erfahren Sie, wie Sie ein Anwendungsgateway mit einer mehrinstanzenfähigen App wie einer Azure App Service-Web-App als Back-End-Poolelement einrichten.
+Unter [Konfigurieren von App Service mit Application Gateway](https://docs.microsoft.com/azure/application-gateway/configure-web-app-portal) erfahren Sie, wie Sie ein Anwendungsgateway mit einer mehrinstanzenfähigen App wie einer Azure App Service-Web-App als Back-End-Poolelement einrichten.

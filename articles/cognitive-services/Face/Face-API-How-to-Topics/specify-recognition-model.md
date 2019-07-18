@@ -10,12 +10,12 @@ ms.subservice: face-api
 ms.topic: conceptual
 ms.date: 03/28/2019
 ms.author: longl
-ms.openlocfilehash: 0f1069c4a3d0a841b792cedf5a5a90aec80a4cc9
-ms.sourcegitcommit: ccb9a7b7da48473362266f20950af190ae88c09b
+ms.openlocfilehash: fd60923351970dfe5aa5705a0508dbd39941ef58
+ms.sourcegitcommit: a6873b710ca07eb956d45596d4ec2c1d5dc57353
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67592967"
+ms.lasthandoff: 07/16/2019
+ms.locfileid: "68254345"
 ---
 # <a name="specify-a-face-recognition-model"></a>Angeben eines Gesichtserkennungsmodells
 
@@ -45,8 +45,7 @@ Wenn Sie die API [Face – Detect] (Gesicht – Erkennen) verwenden, weisen Sie 
 
 Optional können Sie den Parameter _returnRecognitionModel_ (Standardwert **false**) angeben, um festzulegen, ob _recognitionModel_ als Antwort zurückgegeben werden soll. Eine Anforderungs-URL für die REST-API [Face – Detect] sieht also wie folgt aus:
 
-`https://westus.api.cognitive.microsoft.com/face/v1.0/detect[?returnFaceId][&returnFaceLandmarks][&returnFaceAttributes][&recognitionModel][&returnRecognitionModel]
-&subscription-key=<Subscription key>`
+`https://westus.api.cognitive.microsoft.com/face/v1.0/detect[?returnFaceId][&returnFaceLandmarks][&returnFaceAttributes][&recognitionModel][&returnRecognitionModel]&subscription-key=<Subscription key>`
 
 Wenn Sie die Clientbibliothek verwenden, können Sie den Wert für `recognitionModel` zuweisen, indem Sie eine Zeichenfolge übergeben, die die Version darstellt.
 Wenn Sie diesen Wert nicht zuweisen, wird die Standardmodellversion (_recognition_01_) verwendet. Nachfolgend ist ein Codebeispiel für die .NET-Clientbibliothek aufgeführt.

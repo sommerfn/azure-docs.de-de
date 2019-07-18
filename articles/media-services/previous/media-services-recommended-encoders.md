@@ -9,12 +9,12 @@ ms.author: johndeu
 ms.date: 03/20/2019
 ms.topic: article
 ms.service: media-services
-ms.openlocfilehash: 373ce1d10af87603b1bdd6339c94891187c35d8c
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: fc481129e652c6dacd15a5a6d039a9118393e8f1
+ms.sourcegitcommit: 470041c681719df2d4ee9b81c9be6104befffcea
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60332651"
+ms.lasthandoff: 07/12/2019
+ms.locfileid: "67854240"
 ---
 # <a name="recommended-on-premises-encoders"></a>Empfohlene lokale Encoder
 Beim Livestreaming mit Azure Media Services können Sie angeben, wie der Kanal den Eingabedatenstrom empfangen soll. Wenn Sie sich für die Verwendung eines lokalen Encoders mit einem Livecodierkanal entscheiden, sollte der Encoder einen qualitativ hochwertigen Datenstrom mit Einzelbitrate als Ausgabe übertragen. Ziehen Sie dagegen einen lokalen Encoder mit Pass-Through-Kanal vor, dann muss Ihr Encoder einen Stream mit Mehrfachbitrate als Ausgabe übertragen. Weitere Informationen finden Sie unter [Livestreaming mit lokalen Encodern](media-services-live-streaming-with-onprem-encoders.md).
@@ -54,7 +54,7 @@ Pass-Through-Kanalüberprüfung
 4. Erstellen Sie ein veröffentlichtes Live-Ereignis.
 5. Lassen Sie Ihren Live-Encoder ungefähr 10 Minuten lang laufen.
 6. Beenden Sie das Live-Ereignis.
-7. Starten Sie einen Streaming-Endpunkt, verwenden Sie einen Player wie [Azure Media Player](https://ampdemo.azureedge.net/azuremediaplayer.html), um das archivierte Medienobjekt zu betrachten und sicherzustellen, dass die Wiedergabe in keiner der Qualitätsstufen sichtbare Störungen aufweist (oder beobachten und validieren Sie dies alternativ über die Vorschau-URL während der Live-Sitzung vor Schritt 6).
+7. Starten Sie einen Streaming-Endpunkt, verwenden Sie einen Player wie [Azure Media Player](https://aka.ms/azuremediaplayer), um das archivierte Medienobjekt zu betrachten und sicherzustellen, dass die Wiedergabe in keiner der Qualitätsstufen sichtbare Störungen aufweist (oder beobachten und validieren Sie dies alternativ über die Vorschau-URL während der Live-Sitzung vor Schritt 6).
 8. Vermerken Sie die Medienobjekt-ID, die veröffentlichte Streaming-URL für das Livearchiv und die Einstellungen sowie die verwendete Version Ihres Live-Encoders.
 9. Setzen Sie jeweils nach Erstellen einer Probe den Kanalzustand zurück.
 10. Wiederholen Sie die Schritte 3 bis 9 für alle Konfigurationen, die von Ihrem Encoder unterstützt werden (mit und ohne Werbesignalisierung oder Untertiteln sowie in verschiedenen Codiergeschwindigkeiten).
@@ -66,7 +66,7 @@ Livecodierkanal-Überprüfung
 4. Erstellen Sie ein veröffentlichtes Live-Ereignis.
 5. Lassen Sie Ihren Live-Encoder ungefähr 10 Minuten lang laufen.
 6. Beenden Sie das Live-Ereignis.
-7. Starten Sie einen Streaming-Endpunkt, verwenden Sie einen Player wie [Azure Media Player](https://ampdemo.azureedge.net/azuremediaplayer.html), um das archivierte Medienobjekt zu betrachten und sicherzustellen, dass die Wiedergabe in keiner der Qualitätsstufen sichtbare Störungen aufweist (oder beobachten und validieren Sie dies alternativ über die Vorschau-URL während der Live-Sitzung vor Schritt 6).
+7. Starten Sie einen Streaming-Endpunkt, verwenden Sie einen Player wie [Azure Media Player](https://aka.ms/azuremediaplayer), um das archivierte Medienobjekt zu betrachten und sicherzustellen, dass die Wiedergabe in keiner der Qualitätsstufen sichtbare Störungen aufweist (oder beobachten und validieren Sie dies alternativ über die Vorschau-URL während der Live-Sitzung vor Schritt 6).
 8. Vermerken Sie die Medienobjekt-ID, die veröffentlichte Streaming-URL für das Livearchiv und die Einstellungen sowie die verwendete Version Ihres Live-Encoders.
 9. Setzen Sie jeweils nach Erstellen einer Probe den Kanalzustand zurück.
 10. Wiederholen Sie die Schritte 3 bis 9 für alle Konfigurationen, die von Ihrem Encoder unterstützt werden (mit und ohne Werbesignalisierung oder Untertiteln sowie in verschiedenen Codiergeschwindigkeiten).
@@ -77,7 +77,7 @@ Livecodierkanal-Überprüfung
 3. Konfigurieren Sie Ihren Encoder so, dass er einen Livestream mit Mehrfachbitrate ausgibt.
 4. Erstellen Sie ein veröffentlichtes Live-Ereignis.
 5. Lassen Sie Ihren Live-Encoder für mindestens eine Woche laufen.
-6. Verwenden Sie einen Player wie [Azure Media Player](https://ampdemo.azureedge.net/azuremediaplayer.html), um das Live-Streaming gelegentlich zu beobachten (oder archivierte Medienobjekte), um sicherzustellen, dass die Wiedergabe keine sichtbaren Störungen aufweist.
+6. Verwenden Sie einen Player wie [Azure Media Player](https://aka.ms/azuremediaplayer), um das Live-Streaming gelegentlich zu beobachten (oder archivierte Medienobjekte), um sicherzustellen, dass die Wiedergabe keine sichtbaren Störungen aufweist.
 7. Beenden Sie das Live-Ereignis.
 8. Vermerken Sie die Medienobjekt-ID, die veröffentlichte Streaming-URL für das Livearchiv und die Einstellungen sowie die verwendete Version Ihres Live-Encoders.
 

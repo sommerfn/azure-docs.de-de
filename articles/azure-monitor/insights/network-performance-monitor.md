@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 02/20/2018
 ms.author: vinigam
-ms.openlocfilehash: a5d5a9e07c28ab3059872f4d187c96586456a200
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: a1a69e02a2630ab2b0466856ca87e8f88fc4d9d8
+ms.sourcegitcommit: 770b060438122f090ab90d81e3ff2f023455213b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64916760"
+ms.lasthandoff: 07/17/2019
+ms.locfileid: "68304813"
 ---
 # <a name="network-performance-monitor-solution-in-azure"></a>Netzwerkleistungsmonitor-Lösung in Azure
 
@@ -45,7 +45,7 @@ Weitere Informationen zu den verschiedenen vom [Netzwerkleistungsmonitor](https:
 NPM kann die Konnektivität zwischen Netzwerken und Anwendungen in jedem Teil der Welt von einem Arbeitsbereich aus überwachen, der in einer der folgenden Regionen gehostet wird:
 * Europa, Westen
 * USA, Westen-Mitte
-* USA (Ost)
+* East US
 * Japan, Osten
 * Südostasien
 * Australien, Südosten
@@ -249,7 +249,7 @@ Alle im Dashboard des Netzwerkleistungsmonitors und auf den Drilldownseiten graf
 
 Der Netzwerkleistungsmonitor verwendet die Warnfunktionen von [Azure Monitor](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-unified-alerts).
 
-Das bedeutet, dass alle Benachrichtigungen mithilfe von [Aktionsgruppen](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-action-groups#overview) verwaltet werden.  
+Das bedeutet, dass alle Benachrichtigungen mithilfe von [Aktionsgruppen](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-action-groups) verwaltet werden.  
 
 Gehen Sie als NPM-Benutzer wie folgt vor, um eine Warnung über Log Analytics zu erstellen: 
 1. Es wird ein Link angezeigt, der Sie zum Azure-Portal umleitet. Klicken Sie darauf, um das Portal aufzurufen.

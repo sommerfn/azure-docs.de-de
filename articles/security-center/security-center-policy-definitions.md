@@ -13,13 +13,13 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 5/19/2019
-ms.author: monhaber
-ms.openlocfilehash: 25ed9cb624474d5da56d385f4e9c155918ec8eab
-ms.sourcegitcommit: ef06b169f96297396fc24d97ac4223cabcf9ac33
+ms.author: v-mohabe
+ms.openlocfilehash: db7811a925846337487801a63e0f0c4584179c06
+ms.sourcegitcommit: a8b638322d494739f7463db4f0ea465496c689c6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/31/2019
-ms.locfileid: "66428335"
+ms.lasthandoff: 07/17/2019
+ms.locfileid: "68295522"
 ---
 # <a name="azure-security-policies-monitored-by-security-center"></a>In Security Center überwachte Azure-Sicherheitsrichtlinien
 Dieser Artikel enthält eine Liste mit Azure Policy-Definitionen, die Sie in Azure Security Center überwachen können. Weitere Informationen zu Sicherheitsrichtlinien finden Sie unter [Arbeiten mit Sicherheitsrichtlinien](tutorial-security-policy.md).

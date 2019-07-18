@@ -9,12 +9,12 @@ ms.author: robreed
 ms.topic: conceptual
 ms.date: 08/08/2018
 manager: carmonm
-ms.openlocfilehash: 8a505e88ff92c5227d3b42da2adaf1dce58e6fbb
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: ca53d85a09727b75f68da8d049ac3fcd6723a041
+ms.sourcegitcommit: af58483a9c574a10edc546f2737939a93af87b73
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65441516"
+ms.lasthandoff: 07/17/2019
+ms.locfileid: "68302267"
 ---
 # <a name="onboarding-machines-for-management-by-azure-automation-state-configuration"></a>Onboarding von Computern zur Verwaltung durch Azure Automation DSC
 
@@ -56,7 +56,7 @@ Wählen Sie einen virtuellen Azure-Computer aus, der integriert werden soll.
 
 Wenn auf dem Computer nicht die PowerShell-Erweiterung für Konfiguration des gewünschten Zustands installiert ist und der Energiezustand ausgeführt wird, klicken Sie auf **Verbinden**.
 
-Geben Sie unter **Registrierung**die Werte des [lokalen Konfigurations-Managers von PowerShell DSC](/powershell/dsc/metaconfig4) ein, die für Ihren Anwendungsfall erforderlich sind, und geben Sie optional eine Knotenkonfiguration an, die dem virtuellen Computer zugewiesen werden soll.
+Geben Sie unter **Registrierung**die Werte des [lokalen Konfigurations-Managers von PowerShell DSC](/powershell/dsc/managing-nodes/metaconfig) ein, die für Ihren Anwendungsfall erforderlich sind, und geben Sie optional eine Knotenkonfiguration an, die dem virtuellen Computer zugewiesen werden soll.
 
 ![Onboarding](./media/automation-dsc-onboarding/DSC_Onboarding_6.png)
 

@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: shlo
 robots: noindex
-ms.openlocfilehash: f43bf3e9158b7d02f6b0f6147559962da855bfbb
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.openlocfilehash: 279a016d60ecb1bc80baf92a7fa60365145e397d
+ms.sourcegitcommit: 64798b4f722623ea2bb53b374fb95e8d2b679318
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67701755"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67836266"
 ---
 # <a name="azure-data-factory---json-scripting-reference"></a>Azure Data Factory – JSON-Skiptreferenz
 > [!NOTE]
@@ -2457,7 +2457,7 @@ Die folgende Tabelle enthält eine Beschreibung der JSON-Elemente, die für den 
 | type |Legen Sie die type-Eigenschaft auf **OnPremisesSqlServer** fest. |Ja |
 | connectionString |Geben Sie "connectionString"-Informationen an, die zum Herstellen einer Verbindung mit der lokalen SQL Server-Datenbank mithilfe der SQL Server- oder Windows-Authentifizierung benötigt werden. |Ja |
 | gatewayName |Name des Gateways, das der Data Factory-Dienst zum Herstellen einer Verbindung mit der lokalen SQL Server-Datenbank verwenden soll. |Ja |
-| username |Geben Sie den Benutzernamen an, wenn Sie die Windows-Authentifizierung verwenden. Beispiel: **Domainname\\Benutzername**. |Nein |
+| username |Geben Sie den Benutzernamen an, wenn Sie die Windows-Authentifizierung verwenden. Beispiel: **Domainname\\username**. |Nein |
 | password |Geben Sie das Kennwort für das Benutzerkonto an, das Sie für den Benutzernamen angegeben haben. |Nein |
 
 Sie können Anmeldeinformationen mithilfe des **New-AzDataFactoryEncryptValue**-Cmdlets verschlüsseln und wie im folgenden Beispiel gezeigt in der Verbindungszeichenfolge verwenden (**EncryptedCredential**-Eigenschaft):
@@ -5063,7 +5063,7 @@ Die folgende Tabelle enthält eine Beschreibung der JSON-Elemente, die für den 
 | type |Legen Sie die type-Eigenschaft auf **OnPremisesSqlServer** fest. |Ja |
 | connectionString |Geben Sie "connectionString"-Informationen an, die zum Herstellen einer Verbindung mit der lokalen SQL Server-Datenbank mithilfe der SQL Server- oder Windows-Authentifizierung benötigt werden. |Ja |
 | gatewayName |Name des Gateways, das der Data Factory-Dienst zum Herstellen einer Verbindung mit der lokalen SQL Server-Datenbank verwenden soll. |Ja |
-| username |Geben Sie den Benutzernamen an, wenn Sie die Windows-Authentifizierung verwenden. Beispiel: **Domainname\\Benutzername**. |Nein |
+| username |Geben Sie den Benutzernamen an, wenn Sie die Windows-Authentifizierung verwenden. Beispiel: **Domainname\\username**. |Nein |
 | password |Geben Sie das Kennwort für das Benutzerkonto an, das Sie für den Benutzernamen angegeben haben. |Nein |
 
 Sie können Anmeldeinformationen mithilfe des **New-AzDataFactoryEncryptValue**-Cmdlets verschlüsseln und wie im folgenden Beispiel gezeigt in der Verbindungszeichenfolge verwenden (**EncryptedCredential**-Eigenschaft):
@@ -5698,5 +5698,5 @@ Ausführliche Informationen finden Sie im Artikel [Use custom activities in Data
 ## <a name="next-steps"></a>Nächste Schritte
 Arbeiten Sie die folgenden Tutorials durch:
 
-- [Tutorial: Erstellen einer Pipeline mit einer Kopieraktivität](data-factory-copy-activity-tutorial-using-azure-portal.md)
-- [Tutorial: Erstellen einer Pipeline mit einer Hive-Aktivität](data-factory-build-your-first-pipeline-using-editor.md)
+- [Tutorial: Erstellen einer Pipeline mit einer Kopieraktivität](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)
+- [Tutorial: Erstellen einer Pipeline mit einer Hive-Aktivität](data-factory-build-your-first-pipeline.md)

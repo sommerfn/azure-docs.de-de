@@ -13,13 +13,13 @@ ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 6/08/2018
-ms.author: v-jamebr
-ms.openlocfilehash: df3156688f018aee4717271557220396827dd9e2
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.author: chackdan
+ms.openlocfilehash: f1717cfb7980fc481f01c51c04d076aa2ca0f67d
+ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66306827"
+ms.lasthandoff: 07/15/2019
+ms.locfileid: "67876489"
 ---
 # <a name="create-service-fabric-container-running-apache-tomcat-server-on-linux"></a>Erstellen eines auf einem Apache Tomcat-Server ausgeführten Service Fabric-Containers unter Linux
 Apache Tomcat ist eine beliebte Open Source-Implementierung der Java Servlet- und Java Server-Technologien. In diesem Artikel wird gezeigt, wie Sie einen Container mit Apache Tomcat und eine einfache Webanwendung erstellen, den Container für einen Service Fabric-Cluster unter Linux bereitstellen und eine Verbindung mit der Webanwendung herstellen können.  

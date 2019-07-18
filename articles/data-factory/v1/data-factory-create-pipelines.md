@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: shlo
 robots: noindex
-ms.openlocfilehash: ee34c91787ede0431c71b0fd96d2c040717dbca2
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 58db6f9903c4dc02c2d76f3784b004972621a000
+ms.sourcegitcommit: 64798b4f722623ea2bb53b374fb95e8d2b679318
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60487389"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67836499"
 ---
 # <a name="pipelines-and-activities-in-azure-data-factory"></a>Pipelines und Aktivitäten in Azure Data Factory
 > [!div class="op_single_selector" title1="Wählen Sie die von Ihren verwendete Version des Data Factory-Diensts aus:"]
@@ -290,8 +290,7 @@ Weitere Informationen finden Sie unter [Planung und Ausführung](data-factory-sc
 ## <a name="create-and-monitor-pipelines"></a>Erstellen und Überwachen von Pipelines
 Sie können mit einem dieser Tools oder SDKs Pipelines erstellen.
 
-- Kopier-Assistent.
-- Azure-Portal
+- Kopier-Assistent
 - Visual Studio
 - Azure PowerShell
 - Azure Resource Manager-Vorlage

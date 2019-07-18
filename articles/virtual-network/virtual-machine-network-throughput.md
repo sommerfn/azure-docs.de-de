@@ -13,13 +13,14 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 4/26/2019
-ms.author: kumud,steveesp, mareat
-ms.openlocfilehash: 9d74e53c754367ecfa63642514db93354fcadf25
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.author: steveesp
+ms.reviewer: kumud, mareat
+ms.openlocfilehash: f5694e18d5743118e2b6e73708dd3acb17151198
+ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65153726"
+ms.lasthandoff: 07/15/2019
+ms.locfileid: "67874942"
 ---
 # <a name="virtual-machine-network-bandwidth"></a>Netzwerkdurchsatz virtueller Computer
 
@@ -57,7 +58,7 @@ Zurzeit unterstützt der Azure-Netzwerkstapel 250.000 Netzwerkflows insgesamt m
 
 ||VMs mit weniger als 8 CPU-Kernen|VMs mit mehr als 8 CPU-Kernen|
 |---|---|---|
-|<b>Gute Leistung</b>|100\.000 Flows |250\.000 Flows|
+|<b>Gute Leistung</b>|100.000 Flows |250.000 Flows|
 |<b>Abgeminderte Leistung</b>|Über 100.000 Flows|Über 250.000 Flows|
 |<b>Grenzwert für Flows</b>|1 Mio. Flows|1 Mio. Flows|
 

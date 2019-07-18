@@ -9,13 +9,13 @@ ms.service: cognitive-services
 ms.subservice: acoustics
 ms.topic: conceptual
 ms.date: 04/05/2019
-ms.author: KyleStorck
-ms.openlocfilehash: 8684cf16e41c763db01c064242cc5466b1c83f01
-ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
+ms.author: kylsto
+ms.openlocfilehash: ba7c71c666ae8f90d499bfe52303537aeb112a77
+ms.sourcegitcommit: a8b638322d494739f7463db4f0ea465496c689c6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/07/2019
-ms.locfileid: "67621413"
+ms.lasthandoff: 07/17/2019
+ms.locfileid: "68296713"
 ---
 # <a name="project-acoustics-bake-resolution"></a>Projekt Akustik: Bakingauflösung
 Diese konzeptuelle Übersicht beschreibt den Unterschied zwischen groben und feinen Auflösungen beim Akustikbaking. Sie wählen diese Einstellung während des Schritts zur Stichprobenerstellung des Bakingworkflows aus.

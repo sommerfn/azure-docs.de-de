@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: shlo
 robots: noindex
-ms.openlocfilehash: 6b16b6c4de8c8d2d7a821dd476f07c8ab1135408
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: f88d83a851ad878ac9ee9b0195816d2ca35e4c13
+ms.sourcegitcommit: 64798b4f722623ea2bb53b374fb95e8d2b679318
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60487254"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67839370"
 ---
 # <a name="datasets-in-azure-data-factory"></a>Datasets in Azure Data Factory
 > [!div class="op_single_selector" title1="Wählen Sie die von Ihren verwendete Version des Data Factory-Diensts aus:"]
@@ -328,7 +328,6 @@ Ein Dataset sollte, sofern es nicht von Data Factory erzeugt wird, es als **exte
 Sie können Datasets mit einem dieser Tools oder SDKs erstellen:
 
 - Kopier-Assistent
-- Azure-Portal
 - Visual Studio
 - PowerShell
 - Azure Resource Manager-Vorlage

@@ -10,12 +10,12 @@ ms.subservice: face-api
 ms.topic: conceptual
 ms.date: 05/16/2019
 ms.author: yluiu
-ms.openlocfilehash: fbefbea171a8559466117c55703a14268b4c4c99
-ms.sourcegitcommit: ccb9a7b7da48473362266f20950af190ae88c09b
+ms.openlocfilehash: 26ab3cb247309aa21791ca5a984f39ef40ce9a78
+ms.sourcegitcommit: a6873b710ca07eb956d45596d4ec2c1d5dc57353
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67592938"
+ms.lasthandoff: 07/16/2019
+ms.locfileid: "68249634"
 ---
 # <a name="specify-a-face-detection-model"></a>Angeben eines Gesichtserkennungsmodells
 
@@ -45,8 +45,7 @@ Bei Verwendung der API [Face – Detect] können Sie die Modellversion mit dem `
 
 Eine Anforderungs-URL für die REST-API [Face – Detect] sieht wie folgt aus:
 
-`https://westus.api.cognitive.microsoft.com/face/v1.0/detect[?returnFaceId][&returnFaceLandmarks][&returnFaceAttributes][&recognitionModel][&returnRecognitionModel][&detectionModel]
-&subscription-key=<Subscription key>`
+`https://westus.api.cognitive.microsoft.com/face/v1.0/detect[?returnFaceId][&returnFaceLandmarks][&returnFaceAttributes][&recognitionModel][&returnRecognitionModel][&detectionModel]&subscription-key=<Subscription key>`
 
 Wenn Sie die Clientbibliothek verwenden, können Sie den Wert für `detectionModel` zuweisen, indem Sie eine geeignete Zeichenfolge übergeben. Wenn Sie diesen Wert nicht zuweisen, verwendet die API die Standardmodellversion (`detection_01`). Nachfolgend ist ein Codebeispiel für die .NET-Clientbibliothek aufgeführt.
 

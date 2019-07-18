@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/20/2019
 ms.author: iainfou
-ms.openlocfilehash: b21c5c517b1f4a1cbcbf2028a079793c70996d58
-ms.sourcegitcommit: f811238c0d732deb1f0892fe7a20a26c993bc4fc
+ms.openlocfilehash: 29a6cb69a818ed11e5f20dddd7299c01fbefbf47
+ms.sourcegitcommit: b2db98f55785ff920140f117bfc01f1177c7f7e2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/29/2019
-ms.locfileid: "67473115"
+ms.lasthandoff: 07/16/2019
+ms.locfileid: "68234020"
 ---
 # <a name="join-an-ubuntu-virtual-machine-in-azure-to-a-managed-domain"></a>Einbinden eines virtuellen Ubuntu-Computers in Azure in eine verwaltete Domäne
 Dieser Artikel zeigt, wie ein virtueller Ubuntu Linux-Computer einer durch Azure AD Domain Services verwalteten Domäne beitritt.
@@ -57,15 +57,16 @@ Befolgen Sie die Anweisungen im Artikel [Anmelden bei einem virtuellen Computer 
 ## <a name="configure-the-hosts-file-on-the-linux-virtual-machine"></a>Konfigurieren der Hostdatei auf dem virtuellen Linux-Computer
 Bearbeiten Sie in Ihrem SSH-Terminal die Datei „/etc/hosts“, und aktualisieren Sie die IP-Adresse und den Hostnamen Ihres Computers.
 
-```
+```console
 sudo vi /etc/hosts
 ```
 
 Geben Sie in der Hostdatei die folgenden Wert ein:
 
-```
+```console
 127.0.0.1 contoso-ubuntu.contoso100.com contoso-ubuntu
 ```
+
 „contoso100.com“ steht für den DNS-Domänennamen Ihrer verwalteten Domäne. „contoso-ubuntu“ steht für den Hostnamen des virtuellen Ubuntu-Computers, den Sie in die verwaltete Domäne einbinden.
 
 
@@ -74,12 +75,13 @@ Als Nächstes installieren Sie Pakete, die für den Domänenbeitritt auf dem vir
 
 1.  Geben Sie in Ihrem SSH-Terminal folgenden Befehl ein, um die Paketlisten aus den Repositorys herunterzuladen. Dieser Befehl aktualisiert die Paketlisten, um Informationen zu den neuesten Paketversionen und deren Abhängigkeiten zu erhalten.
 
-    ```
+    ```console
     sudo apt-get update
     ```
 
 2. Geben Sie folgenden Befehl ein, um die erforderlichen Pakete zu installieren.
-    ```
+
+    ```console
       sudo apt-get install krb5-user samba sssd sssd-tools libnss-sss libpam-sss ntp ntpdate realmd adcli
     ```
 
@@ -87,27 +89,26 @@ Als Nächstes installieren Sie Pakete, die für den Domänenbeitritt auf dem vir
 
     > [!TIP]
     > Wenn der Name Ihrer verwalteten Domäne „contoso100.com“ ist, geben Sie als Bereich „CONTOSO100.COM“ ein. Denken Sie daran, dass der Bereichsname in Großbuchstaben angegeben werden muss.
-    >
-    >
 
 
 ## <a name="configure-the-ntp-network-time-protocol-settings-on-the-linux-virtual-machine"></a>Konfigurieren der NTP-Einstellungen (NTP = Network Time Protocol) auf dem virtuellen Linux-Computer
 Das Datum und die Uhrzeit Ihres virtuellen Ubuntu-Computers müssen mit der verwalteten Domäne synchronisiert werden. Fügen Sie den NTP-Hostnamen Ihrer verwalteten Domäne in die Datei „/etc/ntp.conf“ hinzu.
 
-```
+```console
 sudo vi /etc/ntp.conf
 ```
 
 Geben Sie folgenden Wert in die Datei „ntp.conf“ ein, und speichern Sie die Datei:
 
-```
+```console
 server contoso100.com
 ```
+
 „contoso100.com“ steht für den DNS-Domänennamen Ihrer verwalteten Domäne.
 
 Synchronisieren Sie jetzt das Datum und die Uhrzeit des virtuellen Ubuntu-Computers mit dem NTP-Server, und starten Sie anschließend den NTP-Dienst:
 
-```
+```console
 sudo systemctl stop ntp
 sudo ntpdate contoso100.com
 sudo systemctl start ntp
@@ -119,7 +120,7 @@ Nachdem die erforderlichen Pakete auf dem virtuellen Linux-Computer installiert 
 
 1. Ermitteln Sie die durch Azure AD-Domänendienste verwaltete Domäne. Geben Sie in Ihrem SSH-Terminal folgenden Befehl ein:
 
-    ```
+    ```console
     sudo realm discover CONTOSO100.COM
     ```
 
@@ -136,7 +137,7 @@ Nachdem die erforderlichen Pakete auf dem virtuellen Linux-Computer installiert 
     > * Geben Sie den Domänennamen in Großbuchstaben an. Andernfalls führt kinit zu einem Fehler.
     >
 
-    ```
+    ```console
     kinit bob@CONTOSO100.COM
     ```
 
@@ -144,9 +145,8 @@ Nachdem die erforderlichen Pakete auf dem virtuellen Linux-Computer installiert 
 
     > [!TIP]
     > Verwenden Sie das gleiche Benutzerkonto, das Sie im vorherigen Schritt („kinit“) angegeben haben.
-    >
 
-    ```
+    ```console
     sudo realm join --verbose CONTOSO100.COM -U 'bob@CONTOSO100.COM' --install=/
     ```
 
@@ -155,29 +155,34 @@ Wenn der Computer erfolgreich in die verwaltete Domäne eingebunden wurde, sollt
 
 ## <a name="update-the-sssd-configuration-and-restart-the-service"></a>Aktualisieren der SSSD-Konfiguration und Neustart des Diensts
 1. Geben Sie in Ihrem SSH-Terminal folgenden Befehl ein. Öffnen Sie die Datei „sssd.conf“ und, nehmen Sie folgende Änderung vor
-    ```
+    
+    ```console
     sudo vi /etc/sssd/sssd.conf
     ```
 
 2. Kommentieren Sie die Zeile **use_fully_qualified_names = True** aus, und speichern Sie die Datei.
-    ```
+    
+    ```console
     # use_fully_qualified_names = True
     ```
 
 3. Starten Sie den SSSD-Dienst neu.
-    ```
+    
+    ```console
     sudo service sssd restart
     ```
 
 
 ## <a name="configure-automatic-home-directory-creation"></a>Konfigurieren der automatischen Erstellung des Basisverzeichnisses
 Geben Sie folgende Befehle in Ihren PuTTY-Terminal ein, um die automatische Erstellung des Basisverzeichnisses nach der Anmeldung von Benutzern zu aktivieren:
-```
+
+```console
 sudo vi /etc/pam.d/common-session
 ```
 
 Fügen Sie in dieser Datei unter der Zeile „session optional pam_sss.so“ folgende Zeile hinzu, und speichern Sie die Datei:
-```
+
+```console
 session required pam_mkhomedir.so skel=/etc/skel/ umask=0077
 ```
 
@@ -186,17 +191,20 @@ session required pam_mkhomedir.so skel=/etc/skel/ umask=0077
 Überprüfen Sie, ob der Computer der verwalteten Domäne erfolgreich beigetreten ist. Stellen Sie über eine andere SSH-Verbindung eine Verbindung zur beigetretenen Domäne des virtuellen Ubuntu-Computers her. Verwenden Sie ein Domänenbenutzerkonto, und überprüfen Sie anschließend, ob das Benutzerkonto ordnungsgemäß aufgelöst wurde.
 
 1. Geben Sie in Ihrem SSH-Terminal den folgenden Befehl ein, um über SSH eine Verbindung zu dem der Domäne beigetretenen virtuellen Ubuntu-Computer herzustellen. Verwenden Sie ein Domänenkonto, das zu der verwalteten Domäne gehört (in diesem Fall z.B. 'bob@CONTOSO100.COM').
-    ```
+    
+    ```console
     ssh -l bob@CONTOSO100.COM contoso-ubuntu.contoso100.com
     ```
 
 2. Geben Sie in Ihrem SSH-Terminal den folgenden Befehl ein, um zu ermitteln, ob das Basisverzeichnis ordnungsgemäß initialisiert wurde.
-    ```
+    
+    ```console
     pwd
     ```
 
 3. Geben Sie in Ihrem SSH-Terminal den folgenden Befehl ein, um zu ermitteln, ob die Gruppenmitgliedschaften ordnungsgemäß aufgelöst wurden.
-    ```
+    
+    ```console
     id
     ```
 
@@ -205,12 +213,14 @@ session required pam_mkhomedir.so skel=/etc/skel/ umask=0077
 Sie können Mitgliedern der Gruppe „AAD DC-Administratoren“ Administratorrechte für den virtuellen Ubuntu-Computer erteilen. Die sudo-Datei befindet sich unter /etc/sudoers. Die Mitglieder von AD-Gruppen, die in der Datei „sudoers“ hinzugefügt werden, können sudo ausführen.
 
 1. Stellen Sie in Ihrem SSH-Terminal sicher, dass sie mit Administratorrechten angemeldet sind. Sie können während der Erstellung des virtuellen Computers das von Ihnen angegebene lokale Administratorkonto verwenden. Führen Sie den folgenden Befehl aus:
-    ```
+    
+    ```console
     sudo vi /etc/sudoers
     ```
 
 2. Fügen Sie folgenden Eintrag zur Datei „/etc/sudoers“ hinzu, und speichern Sie die Datei:
-    ```
+    
+    ```console
     # Add 'AAD DC Administrators' group members as admins.
     %AAD\ DC\ Administrators ALL=(ALL) NOPASSWD:ALL
     ```

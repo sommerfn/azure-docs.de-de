@@ -3,17 +3,17 @@ title: Auslösen von Azure Functions mithilfe von Webhooks in Azure IoT Central
 description: Erstellen Sie eine Funktions-App, die immer dann ausgeführt wird, wenn eine Regel in Azure IoT Central ausgelöst wird.
 author: viv-liu
 ms.author: viviali
-ms.date: 03/26/2019
+ms.date: 07/09/2019
 ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: peterpr
-ms.openlocfilehash: 0d92e9bdf8ec207e5ef0e3f891c162182b5a4fff
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 92d6f005018040e20c2df72dbc608a47bc8d9f08
+ms.sourcegitcommit: fa45c2bcd1b32bc8dd54a5dc8bc206d2fe23d5fb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60518345"
+ms.lasthandoff: 07/12/2019
+ms.locfileid: "67849020"
 ---
 # <a name="trigger-azure-functions-using-webhooks-in-azure-iot-central"></a>Auslösen von Azure Functions mithilfe von Webhooks in Azure IoT Central
 

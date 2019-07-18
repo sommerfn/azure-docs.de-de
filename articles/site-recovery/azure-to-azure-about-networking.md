@@ -7,13 +7,13 @@ manager: rochakm
 ms.service: site-recovery
 ms.topic: article
 ms.date: 3/29/2019
-ms.author: sujayt
-ms.openlocfilehash: a6c9c690efe8b75cd1a939de1c68cf4e5bd40d70
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.author: sutalasi
+ms.openlocfilehash: 844563e03529e472624b35d2b545c3e432e4ea17
+ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60789753"
+ms.lasthandoff: 07/15/2019
+ms.locfileid: "67876298"
 ---
 # <a name="about-networking-in-azure-to-azure-replication"></a>Netzwerkkonzepte für die Replikation zwischen Azure-Standorten
 
@@ -77,7 +77,7 @@ Die Site Recovery-IP-Adressbereiche lauten wie folgt:
    USA Nord Mitte | 23.96.195.247 | 168.62.249.226
    Nordeuropa | 40.69.212.238 | 52.169.18.8
    Europa, Westen | 52.166.13.64 | 40.68.93.145
-   USA (Ost) | 13.82.88.226 | 104.45.147.24
+   East US | 13.82.88.226 | 104.45.147.24
    USA (Westen) | 40.83.179.48 | 104.40.26.199
    USA Süd Mitte | 13.84.148.14 | 104.210.146.250
    USA (Mitte) | 40.69.144.231 | 52.165.34.144

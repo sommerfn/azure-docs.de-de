@@ -12,16 +12,16 @@ ms.topic: reference
 ms.date: 04/29/2019
 ms.reviewer: mbullwin
 ms.author: nimolnar
-ms.openlocfilehash: 832f927f81b57fd16c202b855d8f1dbe0617ad56
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 839ab291a99de646053b638520ce43f459d5c41f
+ms.sourcegitcommit: a8b638322d494739f7463db4f0ea465496c689c6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65149899"
+ms.lasthandoff: 07/17/2019
+ms.locfileid: "68297010"
 ---
 # <a name="dependency-auto-collection"></a>Automatisches Sammeln von Abhängigkeiten
 
-Unten ist die Liste mit den derzeit unterstützten Abhängigkeitsaufrufen angegeben, die automatisch als Abhängigkeiten erkannt werden, ohne dass am Code Ihrer Anwendung zusätzliche Änderungen erforderlich sind. Es sind ausgehende Aufrufe von Kommunikationsbibliotheken, Speicherclients, Protokollierungs- und Metrikbibliotheken sowie eingehende Aufrufe von Anwendungsframeworks und Servern aufgeführt. Diese Abhängigkeiten werden in Application Insights in den Ansichten [Anwendungsübersicht](https://docs.microsoft.com/azure/application-insights/app-insights-app-map) und [Transaktionsdiagnose](https://docs.microsoft.com/azure/application-insights/app-insights-transaction-diagnostics) visualisiert. Falls Ihre Abhängigkeit in der Liste unten nicht angegeben ist, können Sie sie per [TrackDependency-Aufruf](https://docs.microsoft.com/azure/application-insights/app-insights-api-custom-events-metrics#trackdependency) trotzdem manuell nachverfolgen.
+Unten ist die Liste mit den derzeit unterstützten Abhängigkeitsaufrufen angegeben, die automatisch als Abhängigkeiten erkannt werden, ohne dass am Code Ihrer Anwendung zusätzliche Änderungen erforderlich sind. Diese Abhängigkeiten werden in Application Insights in den Ansichten [Anwendungsübersicht](https://docs.microsoft.com/azure/application-insights/app-insights-app-map) und [Transaktionsdiagnose](https://docs.microsoft.com/azure/application-insights/app-insights-transaction-diagnostics) visualisiert. Falls Ihre Abhängigkeit in der Liste unten nicht angegeben ist, können Sie sie per [TrackDependency-Aufruf](https://docs.microsoft.com/azure/application-insights/app-insights-api-custom-events-metrics#trackdependency) trotzdem manuell nachverfolgen.
 
 ## <a name="net"></a>.NET
 
@@ -38,11 +38,6 @@ Unten ist die Liste mit den derzeit unterstützten Abhängigkeitsaufrufen angege
 | [ServiceBus-Client-SDK](https://www.nuget.org/packages/Microsoft.Azure.ServiceBus) | 3.0.0 |
 | <b>Speicherclients</b>|  |
 | ADO.NET | 4.5 und höher |
-| <b>Protokollierungsbibliotheken</b> |  |
-| ILogger | 1.1 und höher |
-| System.Diagnostics.Trace | 4.5 und höher |
-| [nLog](https://www.nuget.org/packages/NLog/) | 4.4.12 und höher |
-| [log4net](https://www.nuget.org/packages/log4net/) | 2.0.8 und höher unter NetStandard 1.3, 2.0.6 und höher unter .NET 4.5 und höher |
 
 ## <a name="java"></a>Java
 | App-Server | Versionen |

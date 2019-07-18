@@ -4,7 +4,7 @@ titlesuffix: Azure Load Balancer
 description: In dieser Schnellstartanleitung wird gezeigt, wie Sie über das Azure-Portal einen öffentlichen Load Balancer erstellen.
 services: load-balancer
 documentationcenter: na
-author: KumudD
+author: asudbring
 manager: twooley
 Customer intent: I want to create a Basic Load balancer so that I can load balance internet traffic to VMs.
 ms.service: load-balancer
@@ -13,14 +13,14 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/26/2019
-ms.author: kumud
+ms.author: allensu
 ms.custom: seodec18
-ms.openlocfilehash: db781899a3fe0d13d030943ed3ab4ebd3d105ad1
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 9819111c8264493648233f40252db4fb4410aaf1
+ms.sourcegitcommit: 9a699d7408023d3736961745c753ca3cec708f23
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64727572"
+ms.lasthandoff: 07/16/2019
+ms.locfileid: "68274083"
 ---
 # <a name="quickstart-create-a-basic-load-balancer-by-using-the-azure-portal"></a>Schnellstart: Erstellen eines Load Balancers im Tarif „Basic“ über das Azure-Portal
 
@@ -39,11 +39,11 @@ Erstellen Sie zunächst einen öffentlichen Load Balancer im Tarif „Basic“ �
 
     | Einstellung                 | Wert                                              |
     | ---                     | ---                                                |
-    | Abonnement               | Wählen Sie Ihr Abonnement aus.    |    
-    | Ressourcengruppe         | Wählen Sie **Neu erstellen**, und geben Sie *MyResourceGroupLB* in das Textfeld ein.|
+    | Subscription               | Wählen Sie Ihr Abonnement aus.    |    
+    | Resource group         | Wählen Sie **Neu erstellen**, und geben Sie *MyResourceGroupLB* in das Textfeld ein.|
     | NAME                   | *myLoadBalancer*                                   |
     | Region         | Wählen Sie **Europa, Westen** aus.                                        |
-    | Type          | Wählen Sie **Öffentlich** aus.                                        |
+    | type          | Wählen Sie **Öffentlich** aus.                                        |
     | SKU           | Wählen Sie **Basic** aus.                          |
     | Öffentliche IP-Adresse | Wählen Sie **Neu erstellen**. |
     | Name der öffentlichen IP-Adresse              | *MyPublicIP*   |

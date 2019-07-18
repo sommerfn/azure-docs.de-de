@@ -9,12 +9,12 @@ ms.reviewer: jamesbak
 ms.date: 12/06/2018
 ms.service: storage
 ms.subservice: data-lake-storage-gen2
-ms.openlocfilehash: abe3f67141011c765f9de93bcf51998ddae002cb
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.openlocfilehash: 50d39aa3c6341e61e383c5584ab2992e3fea3189
+ms.sourcegitcommit: 9a699d7408023d3736961745c753ca3cec708f23
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67696143"
+ms.lasthandoff: 07/16/2019
+ms.locfileid: "68278087"
 ---
 # <a name="the-azure-blob-filesystem-driver-abfs-a-dedicated-azure-storage-driver-for-hadoop"></a>Der Azure-Blobdateisystemtreiber (ABFS): Ein dedizierter Azure Storage-Treiber für Hadoop
 
@@ -55,11 +55,11 @@ Der ABFS-Treiber unterstützt zwei Formen der Authentifizierung, sodass die Hado
 
 Die gesamte Konfiguration für den ABFS-Treiber ist in der Konfigurationsdatei <code>core-site.xml</code> gespeichert. Bei Hadoop-Distributionen mit [Ambari](https://ambari.apache.org/) kann die Konfiguration auch über das Webportal oder über die Ambari-REST-API verwaltet werden.
 
-Details zu allen unterstützten Konfigurationseinträgen finden Sie in der [offiziellen Hadoop-Dokumentation](https://hadoop.apache.org/docs/current/hadoop-azure/index.html).
+Details zu allen unterstützten Konfigurationseinträgen finden Sie in der [offiziellen Hadoop-Dokumentation](https://hadoop.apache.org/docs/r3.2.0/hadoop-azure/abfs.html).
 
 ### <a name="hadoop-documentation"></a>Hadoop-Dokumentation
 
-Der ABFS-Treiber ist vollständig in der [offiziellen Hadoop-Dokumentation](https://github.com/apache/hadoop/blob/trunk/hadoop-tools/hadoop-azure/src/site/markdown/abfs.md) dokumentiert.
+Der ABFS-Treiber ist vollständig in der [offiziellen Hadoop-Dokumentation](https://hadoop.apache.org/docs/r3.2.0/hadoop-azure/abfs.html) dokumentiert.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

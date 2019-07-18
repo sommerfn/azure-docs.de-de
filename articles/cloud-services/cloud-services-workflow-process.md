@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: tbd
 ms.date: 04/08/2019
 ms.author: kwill
-ms.openlocfilehash: 7c8459a6694663a49203b6ec21a760d3e6bd60c3
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: e7b3146ffa0f4b828f1a28d3bc51b26db194244c
+ms.sourcegitcommit: a6873b710ca07eb956d45596d4ec2c1d5dc57353
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60480745"
+ms.lasthandoff: 07/16/2019
+ms.locfileid: "68249500"
 ---
 #    <a name="workflow-of-windows-azure-classic-vm-architecture"></a>Workflow der klassischen Windows-Azure-VM-Architektur 
 Dieser Artikel bietet eine Übersicht über die Workflowprozesse, die beim Bereitstellen oder Aktualisieren einer Azure-Ressource (z. B. einer VM) stattfinden. 
@@ -84,7 +84,7 @@ Das folgende Diagramm zeigt die Architektur von Azure-Ressourcen.
 5. WindowsAzureGuestAgent richtet das Gastbetriebssystem ein (Firewall, ACLs, LocalStorage usw.), kopiert eine neue XML-Konfigurationsdatei in das Verzeichnis „c:\Config“ und startet dann den WaHostBootstrapper-Prozess.
 6. Für Webrollen mit der IIS-Vollversion startet WaHostBootstrapper den IISConfigurator-Prozess und weist ihn an, alle vorhandenen AppPools für die Webrolle aus IIS zu löschen.
 7. WaHostBootstrapper liest die **Startaufgaben** aus „E:\RoleModel.xml“ und beginnt mit ihrer Ausführung. WaHostBootstrapper wartet, bis alle einfachen Aufgaben abgeschlossen sind und eine Erfolgsmeldung zurückgegeben haben.
-8. Für Webrollen mit der IIS-Vollversion weist WaHostBootstrapper IISConfigurator an, den IIS-AppPool zu konfigurieren, und verweist die Website auf `E:\Sitesroot\<index>`, wobei `<index>` ein 0-basierter Index für die Anzahl von <Sites>-Elementen ist, die für den Dienst definiert sind.
+8. Für Webrollen mit der IIS-Vollversion weist WaHostBootstrapper IISConfigurator an, den IIS-AppPool zu konfigurieren, und verweist die Website auf `E:\Sitesroot\<index>`, wobei `<index>` ein 0-basierter Index für die Anzahl von `<Sites>`-Elementen ist, die für den Dienst definiert sind.
 9. WaHostBootstrapper startet den Hostprozess je nach Rollentyp:
     1. **Workerrolle**: „WaWorkerHost.exe“ wird gestartet. WaHostBootstrapper führt die OnStart()-Methode aus. Nach Abschluss dieser Methode startet WaHostBootstrapper die Ausführung der Run()-Methode. Danach markiert er die Rolle als „Bereit“ und fügt sie gleichzeitig der Lastenausgleichsrotation hinzu (wenn „InputEndpoints“ definiert sind). Anschließend überprüft WaHostBootstrapper in einer Schleife den Rollenstatus.
     1. **SDK 1.2-HWC-Webrolle**: WaWebHost wird gestartet. WaHostBootstrapper führt die OnStart()-Methode aus. Nach Abschluss dieser Methode startet WaHostBootstrapper die Ausführung der Run()-Methode. Danach markiert er die Rolle als „Bereit“ und fügt sie gleichzeitig der Lastenausgleichsrotation hinzu. WaWebHost gibt eine Aufwärmanforderung aus (GET /do.rd_runtime_init). Alle Webanforderungen werden an „WaWebHost.exe“ gesendet. Anschließend überprüft WaHostBootstrapper in einer Schleife den Rollenstatus.
@@ -102,27 +102,27 @@ Dieses Protokoll enthält Statusaktualisierungen sowie Heartbeatbenachrichtigung
  
 **WaHostBootstrapper**
 
-C:\Resources\Directory\<BereitstellungsID>.<role>.DiagnosticStore\WaHostBootstrapper.log
+`C:\Resources\Directory\<deploymentID>.<role>.DiagnosticStore\WaHostBootstrapper.log`
  
 **WaWebHost**
 
-C:\Resources\Directory\<GUID>.<role>\WaWebHost.log
+`C:\Resources\Directory\<guid>.<role>\WaWebHost.log`
  
 **WaIISHost**
 
-C:\Resources\Directory\<BereitstellungsID>.<role>\WaIISHost.log
+`C:\Resources\Directory\<deploymentID>.<role>\WaIISHost.log`
  
 **IISConfigurator**
 
-C:\Resources\Directory\<BereitstellungsID>.<role>\IISConfigurator.log
+`C:\Resources\Directory\<deploymentID>.<role>\IISConfigurator.log`
  
 **IIS-Protokolle**
 
-C:\Resources\Directory\<GUID>.<role>.DiagnosticStore\LogFiles\W3SVC1
+`C:\Resources\Directory\<guid>.<role>.DiagnosticStore\LogFiles\W3SVC1`
  
 **Windows-Ereignisprotokolle**
 
-D:\Windows\System32\Winevt\Logs
+`D:\Windows\System32\Winevt\Logs`
  
 
 

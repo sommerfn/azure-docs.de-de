@@ -8,16 +8,16 @@ ms.custom: ''
 ms.devlang: ''
 ms.topic: conceptual
 author: jovanpop-msft
-ms.author: jovanpop-msft
+ms.author: jovanpop
 ms.reviewer: sstein
 manager: craigg
 ms.date: 02/07/2019
-ms.openlocfilehash: b972ea985a09457d8b6a17a292e18754761f5a6e
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: ef64fa1285efc2c271d8d7f37bdecabd67242cc0
+ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66479199"
+ms.lasthandoff: 07/15/2019
+ms.locfileid: "67874959"
 ---
 # <a name="general-purpose-service-tier---azure-sql-database"></a>Dienstebene „Universell“ – Azure SQL-Datenbank
 

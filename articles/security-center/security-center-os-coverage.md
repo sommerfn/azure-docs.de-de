@@ -13,13 +13,13 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 6/03/2019
-ms.author: monhaber
-ms.openlocfilehash: e2d66db2ae3c379db86d40603d919489fdf15eed
-ms.sourcegitcommit: 22c97298aa0e8bd848ff949f2886c8ad538c1473
+ms.author: v-mohabe
+ms.openlocfilehash: 02d993d760338356fa29ee58a03215e14d6583f1
+ms.sourcegitcommit: a8b638322d494739f7463db4f0ea465496c689c6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/14/2019
-ms.locfileid: "67144257"
+ms.lasthandoff: 07/17/2019
+ms.locfileid: "68295608"
 ---
 # <a name="platforms-and-features-supported-by-azure-security-center"></a>Von Azure Security Center unterstützte Features und Plattformen
 
@@ -136,7 +136,7 @@ Informationen darüber, wann Empfehlungen für die einzelnen Schutzfunktionen ge
 |Subnetze|✔| Nicht verfügbar|
 |NICs|✔| Nicht verfügbar|
 |NSGs|✔| Nicht verfügbar|
-|Abonnement|✔ **| ✔|
+|Subscription|✔ **| ✔|
 |Batch|✔| Nicht verfügbar|
 |Service Fabric|✔| Nicht verfügbar|
 |Automation-Konto|✔| Nicht verfügbar|

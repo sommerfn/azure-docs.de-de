@@ -8,17 +8,17 @@ ms.service: virtual-machines-windows
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-windows
 ms.topic: article
-ms.date: 05/02/2019
+ms.date: 07/01/2019
 ms.author: cynthn
 ms.subservice: disks
-ms.openlocfilehash: feadb5798a1b7917bc30daac4bd28b61bc28671c
-ms.sourcegitcommit: dad277fbcfe0ed532b555298c9d6bc01fcaa94e2
+ms.openlocfilehash: f821089bb9f46bcf63350519953d6cff843351f5
+ms.sourcegitcommit: 47ce9ac1eb1561810b8e4242c45127f7b4a4aa1a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/10/2019
-ms.locfileid: "67722789"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67808042"
 ---
-# <a name="preview-ephemeral-os-disks-for-azure-vms"></a>Vorschau: Kurzlebige Betriebssystemdatenträger für virtuelle Azure-Computer
+# <a name="ephemeral-os-disks-for-azure-vms"></a>Kurzlebige Betriebssystemdatenträger für virtuelle Azure-Computer
 
 [!INCLUDE [virtual-machines-common-ephemeral](../../../includes/virtual-machines-common-ephemeral.md)]
  

@@ -4,7 +4,7 @@ titlesuffix: Azure Load Balancer
 description: In diesem Schnellstart wird gezeigt, wie Sie über das Azure-Portal eine Load Balancer Standard-Instanz erstellen.
 services: load-balancer
 documentationcenter: na
-author: KumudD
+author: asudbring
 manager: twooley
 Customer intent: I want to create a Standard Load Balancer so that I can load balance internet traffic to VMs.
 ms.service: load-balancer
@@ -13,14 +13,14 @@ ms.topic: quickstart
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/11/2019
-ms.author: kumud
+ms.author: allensu
 ms.custom: mvc
-ms.openlocfilehash: 79ba86fd32248da240706fda2d8b5fcf8323263d
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.openlocfilehash: c8df0daac25a79bbbd67577c30b0a2da62d037da
+ms.sourcegitcommit: 9a699d7408023d3736961745c753ca3cec708f23
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65143205"
+ms.lasthandoff: 07/16/2019
+ms.locfileid: "68273839"
 ---
 # <a name="quickstart-create-a-standard-load-balancer-to-load-balance-vms-using-the-azure-portal"></a>Schnellstart: Erstellen eines Load Balancers im Tarif „Standard“ für den Lastenausgleich virtueller Computer über das Azure-Portal
 
@@ -41,11 +41,11 @@ In diesem Abschnitt erstellen Sie eine Load Balancer Standard-Instanz für den L
 
     | Einstellung                 | Wert                                              |
     | ---                     | ---                                                |
-    | Abonnement               | Wählen Sie Ihr Abonnement aus.    |    
-    | Ressourcengruppe         | Wählen Sie **Neu erstellen** aus, und geben Sie *myResourceGroupSLB* in das Textfeld ein.|
+    | Subscription               | Wählen Sie Ihr Abonnement aus.    |    
+    | Resource group         | Wählen Sie **Neu erstellen** aus, und geben Sie *myResourceGroupSLB* in das Textfeld ein.|
     | NAME                   | *myLoadBalancer*                                   |
     | Region         | Wählen Sie **Europa, Westen** aus.                                        |
-    | Type          | Wählen Sie **Öffentlich** aus.                                        |
+    | type          | Wählen Sie **Öffentlich** aus.                                        |
     | SKU           | Wählen Sie **Standard** aus.                          |
     | Öffentliche IP-Adresse | Wählen Sie **Neu erstellen**. |
     | Name der öffentlichen IP-Adresse              | Geben Sie *myPublicIP* in das Textfeld ein.   |
@@ -114,8 +114,8 @@ In diesem Abschnitt erstellen Sie ein virtuelles Netzwerk sowie drei virtuelle C
     | ------- | ----- |
     | NAME | Geben Sie *myVNet* ein. |
     | Adressraum | Geben Sie *10.1.0.0/16* ein. |
-    | Abonnement | Wählen Sie Ihr Abonnement aus.|
-    | Ressourcengruppe | Wählen Sie die vorhandene Ressource *myResourceGroupSLB* aus. |
+    | Subscription | Wählen Sie Ihr Abonnement aus.|
+    | Resource group | Wählen Sie die vorhandene Ressource *myResourceGroupSLB* aus. |
     | Location | Wählen Sie **Europa, Westen** aus.|
     | Subnetzname | Geben Sie *myBackendSubnet* ein. |
     | Subnetzadressbereich | Geben Sie *10.1.0.0/24* ein. |

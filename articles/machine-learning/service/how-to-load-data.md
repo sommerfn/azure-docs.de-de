@@ -10,14 +10,14 @@ ms.author: sihhu
 author: MayMSFT
 manager: cgronlun
 ms.reviewer: jmartens
-ms.date: 02/22/2019
+ms.date: 07/12/2019
 ms.custom: seodec18
-ms.openlocfilehash: fef3281f1f4e727b58878439e3f6456fee3b6241
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 0fa60198af66154e0ddc703f90224adf5be89447
+ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66752933"
+ms.lasthandoff: 07/15/2019
+ms.locfileid: "67876411"
 ---
 # <a name="load-and-read-data-with-the-azure-machine-learning-data-prep-sdk"></a>Laden und Lesen von Daten mit dem Azure Machine Learning Data Prep SDK
 In diesem Artikel lernen Sie verschiedene Methoden zum Laden von Daten mit dem Azure Machine Learning Data Prep SDK kennen.  Das SDK unterstützt mehrere Datenerfassungsfeatures, z. B.:
@@ -28,7 +28,7 @@ In diesem Artikel lernen Sie verschiedene Methoden zum Laden von Daten mit dem A
 
 > [!Important]
 > Probieren Sie beim Erstellen einer neuen Projektmappe die [Azure Machine Learning-Datasets](how-to-explore-prepare-data.md) (Vorschauversion) für die Datenuntersuchung und -vorbereitung aus. Datasets ist die nächste Version des SDK für die Datenvorbereitung und bietet erweiterte Funktionen zum Verwalten von Datasets in KI-Lösungen.
-> Wenn Sie das `azureml-dataprep`-Paket verwenden, um einen Datenfluss mit Ihren Transformationen zu erstellen, anstatt das `azureml-datasets`-Paket zum Erstellen eines Datensatzes zu verwenden, können Sie später keine Snapshots oder Datensätze mit Versionsangabe verwenden.
+
 
 Die folgende Tabelle zeigt eine Auswahl von Funktionen, die zum Laden von Daten aus gängigen Dateitypen verwendet werden.
 
@@ -128,7 +128,7 @@ Ausgabe:
 
 Standardmäßig wird der Datentyp vom Azure Machine Learning Data Prep SDK nicht geändert. Die Datenquelle, über den der Lesevorgang erfolgt, ist eine Textdatei. Das SDK liest also alle Werte als Zeichenfolgen. In diesem Beispiel sollten die numerischen Spalten als Zahlen analysiert werden. Legen Sie den Parameter `inference_arguments` auf `InferenceArguments.current_culture()` fest, um die Spaltentypen während des Dateilesevorgangs automatisch abzuleiten und zu konvertieren.
 
-```
+```python
 dflow = dprep.read_csv(path='https://dpreptestfiles.blob.core.windows.net/testfiles/read_csv_duplicate_headers.csv',
                           skip_rows=1,
                           inference_arguments=dprep.InferenceArguments.current_culture())
@@ -228,7 +228,7 @@ dflow = dprep.read_sql(ds, "SELECT top 100 * FROM [SalesLT].[Product]")
 dflow.head(5)
 ```
 
-| |ProductID|NAME|ProductNumber|Farbe|StandardCost|ListPrice|Größe|Weight|ProductCategoryID|ProductModelID|SellStartDate|SellEndDate|DiscontinuedDate|ThumbNailPhoto|ThumbnailPhotoFileName|rowguid|ModifiedDate| |
+| |ProductID|NAME|ProductNumber|Farbe|StandardCost|ListPrice|Size|Weight|ProductCategoryID|ProductModelID|SellStartDate|SellEndDate|DiscontinuedDate|ThumbNailPhoto|ThumbnailPhotoFileName|rowguid|ModifiedDate| |
 |-|---------|----|-------------|-----|------------|---------|----|------|-----------------|--------------|-------------|-----------|----------------|--------------|----------------------|-------|------------|-|
 |0|680|HL Road Frame - Black, 58|FR-R92B-58|Schwarz|1059.3100|1431.50|58|1016.04|18|6|2002-06-01 00:00:00+00:00|Keine|Keine|b'GIF89aP\x001\x00\xf7\x00\x00\x00\x00\x00\x80...|no_image_available_small.gif|43dd68d6-14a4-461f-9069-55309d90ea7e|2008-03-11 |0:01:36.827000+00:00|
 |1|706|HL Road Frame - Red, 58|FR-R92R-58|Rot|1059.3100|1431.50|58|1016.04|18|6|2002-06-01 00:00:00+00:00|Keine|Keine|b'GIF89aP\x001\x00\xf7\x00\x00\x00\x00\x00\x80...|no_image_available_small.gif|9540ff17-2712-4c90-a3d1-8ce5568b2462|2008-03-11 |10:01:36.827000+00:00|

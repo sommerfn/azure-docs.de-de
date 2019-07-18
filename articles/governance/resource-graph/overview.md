@@ -7,12 +7,12 @@ ms.date: 05/06/2019
 ms.topic: overview
 ms.service: resource-graph
 manager: carmonm
-ms.openlocfilehash: 4724789dd1a0893c5ef4ab112306c185f0e87da7
-ms.sourcegitcommit: a52d48238d00161be5d1ed5d04132db4de43e076
+ms.openlocfilehash: d78c640f4269c799d3d371e6dd9db477faf96694
+ms.sourcegitcommit: 47ce9ac1eb1561810b8e4242c45127f7b4a4aa1a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/20/2019
-ms.locfileid: "67274381"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67807423"
 ---
 # <a name="overview-of-the-azure-resource-graph-service"></a>Übersicht über den Azure Resource Graph-Dienst
 
@@ -28,6 +28,8 @@ In dieser Dokumentation wird jedes Feature ausführlich beschrieben.
 > [!NOTE]
 > Azure Resource Graph hebt mit der neuen Oberfläche zum Durchsuchen aller Ressourcen und dem [Änderungsverlauf](../policy/how-to/determine-non-compliance.md#change-history-preview) mit 
 > _visuellem Diff_ von Azure Policy die Suchleiste des Azure-Portals auf eine neue Höhe. Sie dient zur Unterstützung von Kunden, die umfangreiche Umgebungen verwalten.
+
+[!INCLUDE [service-provider-management-toolkit](../../../includes/azure-lighthouse-supported-service.md)]
 
 ## <a name="how-does-resource-graph-complement-azure-resource-manager"></a>Wie Resource Graph Azure Resource Manager ergänzt
 

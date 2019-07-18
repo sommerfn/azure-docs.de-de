@@ -12,12 +12,12 @@ ms.author: aamalvea
 ms.reviewer: carlrab
 manager: craigg
 ms.date: 01/30/2019
-ms.openlocfilehash: 928338a911efae051df7164239dbd19f9317338a
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 235d29c876616948516bbe4309ddd630bc3f6dca
+ms.sourcegitcommit: 470041c681719df2d4ee9b81c9be6104befffcea
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60584606"
+ms.lasthandoff: 07/12/2019
+ms.locfileid: "67852587"
 ---
 # <a name="planning-for-azure-maintenance-events-in-azure-sql-database"></a>Planen von Azure-Wartungsereignissen in Azure SQL-Datenbank
 
@@ -41,7 +41,7 @@ Durchschnittlich sollten 1,7 geplante Wartungsereignisse pro Monat auftreten.
 
 ## <a name="resource-health"></a>Resource Health
 
-Wenn für Ihre SQL-Datenbank Anmeldefehler auftreten, überprüfen Sie im Fenster [Resource Health](../service-health/resource-health-overview.md#getting-started) im [Azure-Portal](https://portal.azure.com) den aktuellen Status. Der Abschnitt „Integritätsverlauf“ enthält den Grund für die Ausfallzeit für jedes Ereignis (wenn verfügbar).
+Wenn für Ihre SQL-Datenbank Anmeldefehler auftreten, überprüfen Sie im Fenster [Resource Health](../service-health/resource-health-overview.md#get-started) im [Azure-Portal](https://portal.azure.com) den aktuellen Status. Der Abschnitt „Integritätsverlauf“ enthält den Grund für die Ausfallzeit für jedes Ereignis (wenn verfügbar).
 
 
 ## <a name="next-steps"></a>Nächste Schritte

@@ -7,12 +7,12 @@ ms.date: 12/06/2018
 ms.topic: overview
 ms.service: azure-policy
 manager: carmonm
-ms.openlocfilehash: 2dd31ab29479fade21d27b8e2c23952f905f530a
-ms.sourcegitcommit: 59fd8dc19fab17e846db5b9e262a25e1530e96f3
+ms.openlocfilehash: da045a561fba81bf9a5e412a6f2bf0a6160acfa7
+ms.sourcegitcommit: 47ce9ac1eb1561810b8e4242c45127f7b4a4aa1a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/21/2019
-ms.locfileid: "65979157"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67807449"
 ---
 # <a name="overview-of-the-azure-policy-service"></a>Übersicht über den Azure Policy-Dienst
 
@@ -25,6 +25,8 @@ Azure Policy ist ein Dienst in Azure, mit dem Sie Richtlinien erstellen, zuweise
 
 > [!IMPORTANT]
 > Die Kompatibilitätsprüfung von Azure Policy wird nun unabhängig vom Tarif für alle Zuweisungen bereitgestellt. Sollten die Kompatibilitätsdaten für Ihre Zuweisungen nicht angezeigt werden, vergewissern Sie sich, dass das Abonnement beim Ressourcenanbieter „Microsoft.PolicyInsights“ registriert ist.
+
+[!INCLUDE [service-provider-management-toolkit](../../../includes/azure-lighthouse-supported-service.md)]
 
 ## <a name="how-is-it-different-from-rbac"></a>Worin unterscheidet sich dies von der rollenbasierten Zugriffssteuerung (RBAC)?
 
@@ -45,7 +47,7 @@ Wenn keine der integrierten Rollen über die erforderlichen Berechtigungen verf�
 
 Die Erstellung und Implementierung einer Richtlinie in Azure Policy beginnt mit dem Erstellen einer Richtliniendefinition. Jede Richtliniendefinition verfügt über Bedingungen, unter denen sie erzwungen wird. Des Weiteren verfügt sie über einen definierten Effekt, der wirksam wird, wenn die Bedingungen erfüllt sind.
 
-In Azure Policy bieten wir mehrere integrierte Richtlinien an, die standardmäßig zur Verfügung stehen. Beispiel: 
+In Azure Policy bieten wir mehrere integrierte Richtlinien an, die standardmäßig zur Verfügung stehen. Beispiel:
 
 - **SQL Server-Version 12.0 erforderlich**: Überprüft, ob für alle Server mit SQL Server die Version 12.0 verwendet wird. Alle Server, die diese Kriterien nicht erfüllen, werden abgelehnt.
 - **Zulässige Speicherkonten-SKUs**: Bestimmt, ob ein bereitzustellendes Speicherkonto innerhalb einer Gruppe von SKU-Größen liegt. Alle Speicherkonten, die nicht der definierten Gruppe von SKU-Größen entsprechen, werden abgelehnt.
@@ -104,7 +106,7 @@ Stellen Sie sich beispielsweise ein Szenario vor, in dem Sie die Initiativdefini
 
 | Richtlinie | Name des Parameters |Typ des Parameters  |Hinweis |
 |---|---|---|---|
-| policyA | allowedLocations | Array  |Dieser Parameter erwartet eine Liste von Zeichenfolgen als Wert, da der Parametertyp als Array definiert wurde. |
+| policyA | allowedLocations | array  |Dieser Parameter erwartet eine Liste von Zeichenfolgen als Wert, da der Parametertyp als Array definiert wurde. |
 | policyB | allowedSingleLocation |Zeichenfolge |Dieser Parameter erwartet ein Wort als Wert, da der Parametertyp als Zeichenfolge definiert wurde. |
 
 In diesem Szenario haben Sie bei der Definition der Initiativparameter für **initiativeC** drei Optionen:

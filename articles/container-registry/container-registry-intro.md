@@ -8,12 +8,12 @@ ms.topic: overview
 ms.date: 06/28/2019
 ms.author: stevelas
 ms.custom: seodec18, mvc
-ms.openlocfilehash: b8b4b5fc3ec15d921ff5580aff4d0202be1d38b9
-ms.sourcegitcommit: 66237bcd9b08359a6cce8d671f846b0c93ee6a82
+ms.openlocfilehash: 3502a2ec7c56d01abe2ceb9f61db9c1c2d8179a0
+ms.sourcegitcommit: af58483a9c574a10edc546f2737939a93af87b73
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67797896"
+ms.lasthandoff: 07/17/2019
+ms.locfileid: "68302335"
 ---
 # <a name="introduction-to-private-docker-container-registries-in-azure"></a>Einführung in private Docker-Containerregistrierungen in Azure
 
@@ -30,7 +30,7 @@ Rufen Sie Images aus einer Azure-Containerregistrierung für verschiedene Bereit
 * **Skalierbare Orchestrierungssysteme** zum Verwalten von Anwendungen in Containern über Cluster mit Hosts hinweg, z.B. [DC/OS](https://kubernetes.io/docs/), [Docker Swarm](https://docs.mesosphere.com/) und [Kubernetes](https://docs.docker.com/swarm/).
 * **Azure-Dienste**, die die bedarfsorientierte Erstellung und Ausführung von Anwendungen unterstützen, z. B. [Azure Kubernetes Service (AKS)](../aks/index.yml), [App Service](../app-service/index.yml), [Batch](../batch/index.yml), [Service Fabric](/azure/service-fabric/) und andere.
 
-Entwickler können im Rahmen eines Workflows der Containerentwicklung auch eine Pushübertragung in eine Containerregistrierung durchführen. Sie können Daten beispielsweise mit einem Tool für Continuous Integration und Continuous Delivery an eine Containerregistrierung wie etwa [Azure Pipelines](/azure/devops/pipelines/get-started/what-is-azure-pipelines.md) oder [Jenkins](https://jenkins.io/) übertragen.
+Entwickler können im Rahmen eines Workflows der Containerentwicklung auch eine Pushübertragung in eine Containerregistrierung durchführen. Sie können Daten beispielsweise mit einem Tool für Continuous Integration und Continuous Delivery an eine Containerregistrierung wie etwa [Azure Pipelines](/azure/devops/pipelines/get-started/what-is-azure-pipelines) oder [Jenkins](https://jenkins.io/) übertragen.
 
 Konfigurieren Sie ACR Tasks für das automatische erneute Erstellen von Anwendungsimages, wenn die Basisimages aktualisiert werden, oder automatisieren Sie Imagebuilds, wenn Ihr Team Code in einem Git-Repository committet. Erstellen Sie Tasks mit mehreren Schritten, um das parallele Erstellen, Testen und Patchen mehrerer Containerimages in der Cloud zu automatisieren.
 

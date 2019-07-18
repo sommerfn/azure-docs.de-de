@@ -2,14 +2,14 @@
 author: tfitzmac
 ms.service: azure-resource-manager
 ms.topic: include
-ms.date: 04/19/2019
+ms.date: 07/12/2019
 ms.author: tomfitz
-ms.openlocfilehash: 8bd16378e9c82a011309c12cf241b59d03405a77
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.openlocfilehash: 5e251402a89f84a0aa67eee676c1794207dd24fb
+ms.sourcegitcommit: 10251d2a134c37c00f0ec10e0da4a3dffa436fb3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67178457"
+ms.lasthandoff: 07/13/2019
+ms.locfileid: "67869889"
 ---
 | Resource | Standardlimit | Maximales Limit |
 | --- | --- | --- |
@@ -33,7 +33,7 @@ ms.locfileid: "67178457"
 | Ausgaben |64 |64 |
 | Vorlagenausdruck |24.576 Zeichen |24.576 Zeichen |
 | Ressourcen in exportierten Vorlagen |200 |200 | 
-| Vorlagengröße |1 MB |1 MB |
+| Vorlagengröße |4 MB |4 MB |
 | Parameterdateigröße |64 KB |64 KB |
 
 Sie können einige Vorlagengrenzwerte überschreiten, indem Sie eine geschachtelte Vorlage verwenden. Weitere Informationen finden Sie unter [Verwenden von verknüpften Vorlagen bei der Bereitstellung von Azure-Ressourcen](../articles/azure-resource-manager/resource-group-linked-templates.md). Um die Anzahl von Parametern, Variablen oder Ausgaben zu reduzieren, können Sie mehrere Werte in einem Objekt kombinieren. Weitere Informationen finden Sie unter [Objekte als Parameter](../articles/azure-resource-manager/resource-manager-objects-as-parameters.md).
