@@ -2,36 +2,36 @@
 title: Zugreifen per SSH auf Azure Kubernetes Service-Clusterknoten (AKS)
 description: Erfahren Sie, wie Sie eine SSH-Verbindung mit Azure Kubernetes Service-Clusterknoten (AKS) zur Problembehandlung und für Wartungsaufgaben erstellen.
 services: container-service
-author: iainfoulds
+author: mlearned
 ms.service: container-service
 ms.topic: article
 ms.date: 05/24/2019
-ms.author: iainfou
-ms.openlocfilehash: 57eacca75d711c5125a2856a7b6219cd2ec5306b
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.author: mlearned
+ms.openlocfilehash: 6ddd1b160110e7a751f54f89b387a62d94e9308e
+ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66242030"
+ms.lasthandoff: 07/07/2019
+ms.locfileid: "67614485"
 ---
 # <a name="connect-with-ssh-to-azure-kubernetes-service-aks-cluster-nodes-for-maintenance-or-troubleshooting"></a>Herstellen einer SSH-Verbindung mit Azure Kubernetes Service-Clusterknoten (AKS) zur Wartung oder Problembehandlung
 
-Während des Lebenszyklus des Azure Kubernetes Service-Clusters (AKS) müssen Sie möglicherweise auf einen AKS-Knoten zugreifen. Dieser Zugriff kann zur Wartung, Protokollsammlung oder für andere Vorgänge der Problembehandlung erforderlich sein. Sie können mithilfe von SSH (Secure Shell) auf AKS-Knoten zugreifen, einschließlich Windows Server-Knoten (zurzeit in der Vorschauversion in AKS). Außerdem können Sie [RDP-Verbindungen (Remotedesktopprotokoll) zum Herstellen einer Verbindung zu Windows Server-Knoten verwenden][aks-windows-rdp]. Aus Sicherheitsgründen werden die AKS-Knoten nicht im Internet verfügbar gemacht.
+Während des Lebenszyklus des Azure Kubernetes Service-Clusters (AKS) müssen Sie möglicherweise auf einen AKS-Knoten zugreifen. Dieser Zugriff kann zur Wartung, Protokollsammlung oder für andere Vorgänge der Problembehandlung erforderlich sein. Sie können mithilfe von SSH (Secure Shell) auf AKS-Knoten zugreifen, einschließlich Windows Server-Knoten (zurzeit in der Vorschauversion in AKS). Außerdem können Sie [RDP-Verbindungen (Remotedesktopprotokoll) zum Herstellen einer Verbindung mit Windows Server-Knoten verwenden][aks-windows-rdp]. Aus Sicherheitsgründen werden die AKS-Knoten nicht im Internet verfügbar gemacht.
 
 In diesem Artikel wird gezeigt, wie Sie eine SSH-Verbindung mit einem AKS-Knoten über die privaten IP-Adressen erstellen.
 
 ## <a name="before-you-begin"></a>Voraussetzungen
 
-Es wird vorausgesetzt, dass Sie über ein AKS-Cluster verfügen. Wenn Sie noch einen AKS-Cluster benötigen, erhalten Sie weitere Informationen im AKS-Schnellstart. Verwenden Sie dafür entweder die [Azure CLI][aks-quickstart-cli] oder das [Azure-Portal][aks-quickstart-portal].
+Es wird vorausgesetzt, dass Sie über ein AKS-Cluster verfügen. Wenn Sie noch einen AKS-Cluster benötigen, erhalten Sie weitere Informationen in der AKS-Schnellstartanleitung. Verwenden Sie dafür die [Azure CLI][aks-quickstart-cli]or [using the Azure portal][aks-quickstart-portal].
 
-Außerdem muss mindestens die Version 2.0.64 der Azure CLI installiert und konfiguriert sein. Führen Sie  `az --version` aus, um die Version zu ermitteln. Wenn Sie eine Installation oder ein Upgrade ausführen müssen, finden Sie weitere Informationen unter [Installieren der Azure CLI][install-azure-cli].
+Außerdem muss mindestens die Version 2.0.64 der Azure-Befehlszeilenschnittstelle installiert und konfiguriert sein. Führen Sie  `az --version` aus, um die Version zu ermitteln. Wenn Sie eine Installation oder ein Upgrade ausführen müssen, finden Sie weitere Informationen unter [Installieren der Azure CLI][install-azure-cli].
 
 ## <a name="add-your-public-ssh-key"></a>Hinzufügen Ihres öffentlichen SSH-Schlüssels
 
-Standardmäßig werden SSH-Schlüssel abgerufen oder generiert und dann beim Erstellen eines AKS-Clusters den Knoten hinzugefügt. Wenn Sie andere SSH-Schlüssel angeben müssen als die, die Sie beim Erstellen Ihres AKS-Clusters verwendet haben, fügen Sie unter Linux Ihren öffentlichen SSH-Schlüssel den AKS-Knoten hinzu. Bei Bedarf können Sie einen SSH-Schlüssel mithilfe von [macOS, Linux][ssh-nix] oder [Windows][ssh-windows] erstellen. Speichern Sie das Schlüsselpaar in einem OpenSSH-Format anstelle des PuTTY-Standardformats für private Schlüssel, wenn Sie PuttyGen zum Erstellen des Schlüsselpaars verwenden.
+Standardmäßig werden SSH-Schlüssel abgerufen oder generiert und dann beim Erstellen eines AKS-Clusters den Knoten hinzugefügt. Wenn Sie andere SSH-Schlüssel angeben müssen als die, die Sie beim Erstellen Ihres AKS-Clusters verwendet haben, fügen Sie unter Linux Ihren öffentlichen SSH-Schlüssel den AKS-Knoten hinzu. Bei Bedarf können Sie einen SSH-Schlüssel mithilfe von [macOS, Linux][ssh-nix] erstellen. Speichern Sie das Schlüsselpaar in einem OpenSSH-Format anstelle des PuTTY-Standardformats für private Schlüssel, wenn Sie PuttyGen zum Erstellen des Schlüsselpaars verwenden.
 
 > [!NOTE]
-> Derzeit können SSH-Schlüssel Linux-Knoten nur mithilfe der Azure-Befehlszeilenschnittstelle (Azure CLI) hinzugefügt werden. Verwenden Sie, wenn Sie Windows Server-Knoten verwenden, die beim Erstellen des AKS-Clusters bereitgestellten SSH-Schlüssel, und fahren Sie mit dem Schritt [Abrufen der AKS-Knotenadresse](#get-the-aks-node-address) fort. Andernfalls können Sie [RDP-Verbindungen (Remotedesktopprotokoll) zum Herstellen einer Verbindung zu Windows Server-Knoten verwenden][aks-windows-rdp].
+> Derzeit können SSH-Schlüssel Linux-Knoten nur mithilfe der Azure-Befehlszeilenschnittstelle (Azure CLI) hinzugefügt werden. Verwenden Sie, wenn Sie Windows Server-Knoten verwenden, die beim Erstellen des AKS-Clusters bereitgestellten SSH-Schlüssel, und fahren Sie mit dem Schritt [Abrufen der AKS-Knotenadresse](#get-the-aks-node-address) fort. Andernfalls können Sie [RDP-Verbindungen (Remotedesktopprotokoll) zum Herstellen einer Verbindung mit Windows Server-Knoten verwenden][aks-windows-rdp].
 
 Die Schritte zum Abrufen der privaten IP-Adresse der AKS-Knoten unterscheidet sich je nach Typ des AKS-Clusters, den Sie ausführen:
 
@@ -42,7 +42,7 @@ Die Schritte zum Abrufen der privaten IP-Adresse der AKS-Knoten unterscheidet si
 
 Führen Sie die folgenden Schritte aus, um unter Linux einem AKS-Knoten Ihren SSH-Schlüssel hinzuzufügen:
 
-1. Rufen Sie den Ressourcengruppennamen für Ihre AKS-Clusterressourcen mit [az aks show][az-aks-show] ab. Geben Sie Ihre eigene Hauptressourcengruppe und den Namen Ihres AKS-Clusters an. Der Clustername wird der Variablen namens *CLUSTER_RESOURCE_GROUP* zugewiesen:
+1. Rufen Sie den Ressourcengruppennamen für Ihre AKS-Clusterressourcen mit [az aks show][az-aks-show] ab. Der Clustername wird der Variablen namens *CLUSTER_RESOURCE_GROUP* zugewiesen. Ersetzen Sie *myResourceGroup* durch den Namen der Ressourcengruppe, in der Ihr AKS-Cluster gespeichert ist:
 
     ```azurecli-interactive
     CLUSTER_RESOURCE_GROUP=$(az aks show --resource-group myResourceGroup --name myAKSCluster --query nodeResourceGroup -o tsv)
@@ -76,7 +76,7 @@ Führen Sie die folgenden Schritte aus, um unter Linux einem AKS-Knoten Ihren SS
 
 Um Ihren SSH-Schlüssel einem Linux AKS-Knoten hinzuzufügen, der Teil einer VM-Skalierungsgruppe ist, führen Sie die folgenden Schritte aus:
 
-1. Rufen Sie den Ressourcengruppennamen für Ihre AKS-Clusterressourcen mit [az aks show][az-aks-show] ab. Geben Sie Ihre eigene Hauptressourcengruppe und den Namen Ihres AKS-Clusters an. Der Clustername wird der Variablen namens *CLUSTER_RESOURCE_GROUP* zugewiesen:
+1. Rufen Sie den Ressourcengruppennamen für Ihre AKS-Clusterressourcen mit [az aks show][az-aks-show] ab. Der Clustername wird der Variablen namens *CLUSTER_RESOURCE_GROUP* zugewiesen. Ersetzen Sie *myResourceGroup* durch den Namen der Ressourcengruppe, in der Ihr AKS-Cluster gespeichert ist:
 
     ```azurecli-interactive
     CLUSTER_RESOURCE_GROUP=$(az aks show --resource-group myResourceGroup --name myAKSCluster --query nodeResourceGroup -o tsv)
@@ -88,7 +88,7 @@ Um Ihren SSH-Schlüssel einem Linux AKS-Knoten hinzuzufügen, der Teil einer VM-
     SCALE_SET_NAME=$(az vmss list --resource-group $CLUSTER_RESOURCE_GROUP --query [0].name -o tsv)
     ```
 
-1. Um Ihre SSH-Schlüssel den Knoten in einer VM-Skalierungsgruppe hinzuzufügen, verwenden Sie den Befehl [az vmss extension set][az-vmss-extension-set]. Die Clusterressourcengruppe und der Name der VM-Skalierungsgruppe werden anhand der oben genannten Befehle bereitgestellt. Der Benutzername für die AKS-Knoten lautet standardmäßig *azureuser*. Aktualisieren Sie bei Bedarf den Speicherort Ihres eigenen öffentlichen SSH-Schlüssels, z.B. *~/.ssh/id_rsa.pub*:
+1. Verwenden Sie den Befehl [az vmss extension set][az-vmss-extension-set], um Ihre SSH-Schlüssel den Knoten in einer VM-Skalierungsgruppe hinzuzufügen. Die Clusterressourcengruppe und der Name der VM-Skalierungsgruppe werden anhand der oben genannten Befehle bereitgestellt. Der Benutzername für die AKS-Knoten lautet standardmäßig *azureuser*. Aktualisieren Sie bei Bedarf den Speicherort Ihres eigenen öffentlichen SSH-Schlüssels, z.B. *~/.ssh/id_rsa.pub*:
 
     ```azurecli-interactive
     az vmss extension set  \
@@ -117,7 +117,7 @@ Die AKS-Knoten werden nicht im Internet öffentlich verfügbar gemacht. Zum Hers
 
 ### <a name="ssh-to-regular-aks-clusters"></a>SSH für normale AKS-Cluster
 
-Zeigen Sie die private IP-Adresse eines AKS-Clusterknotens mit dem Befehl [az vm list-ip-addresses][az-vm-list-ip-addresses] an. Geben Sie den Namen Ihrer eigenen AKS-Clusterressourcengruppe an, den Sie in einem vorherigen Schritt mit [az-aks-show][az-aks-show] abgerufen haben:
+Verwenden Sie zum Anzeigen der privaten IP-Adresse eines AKS-Clusterknotens den Befehl [az vm list-ip-addresses][az-vm-list-ip-addresses]:
 
 ```azurecli-interactive
 az vm list-ip-addresses --resource-group $CLUSTER_RESOURCE_GROUP -o table
@@ -224,7 +224,7 @@ Wenn Sie fertig sind, führen Sie `exit` für die SSH-Sitzung und dann `exit` f�
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Wenn Sie zusätzliche Problembehandlungsdaten benötigen, können Sie [die Kubelet-Protokolle anzeigen][view-kubelet-logs] oder [die Kubernetes-Masterknotenprotokolle anzeigen][view-master-logs].
+Wenn Sie zusätzliche Problembehandlungsdaten benötigen, können Sie [die Kubelet-Protokolle anzeigen][view-kubelet-logs] or [view the Kubernetes master node logs][view-master-logs].
 
 <!-- EXTERNAL LINKS -->
 [kubectl-get]: https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#get

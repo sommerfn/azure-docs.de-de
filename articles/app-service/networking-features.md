@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 05/28/2019
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: 666430a11fb95871eb601b2a38eb7b97ad16119f
-ms.sourcegitcommit: 600d5b140dae979f029c43c033757652cddc2029
+ms.openlocfilehash: 362f0b32ea99d0b888ea9f1efa0cd4ea74eb2fa1
+ms.sourcegitcommit: a12b2c2599134e32a910921861d4805e21320159
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/04/2019
-ms.locfileid: "66498552"
+ms.lasthandoff: 06/24/2019
+ms.locfileid: "67338494"
 ---
 # <a name="app-service-networking-features"></a>App Service-Netzwerkfunktionen
 
@@ -124,7 +124,7 @@ Mit App Service-Hybridverbindungen wird es ermöglicht, in Ihren Apps **ausgehen
 
 ![Netzwerkdatenfluss für Hybridverbindungen](media/networking-features/hybrid-connections.png)
 
-Die Funktion „App Service-Hybridverbindungen“ setzt auf der Funktionalität für Azure Relay-Hybridverbindungen auf. In App Service wird eine spezielle Form der Funktion verwendet, die es nur unterstützt, dass ausgehende Aufrufe aus Ihrer App an einen TCP-Host und -Port ausgeführt werden. Dieser Host und Port müssen nur auf dem Host aufgelöst werden, auf dem der HCM installiert ist. Wenn die App in App Service eine DNS-Suche (DNS-Lookup) für den Host und den Port ausführt, die in Ihrer Hybridverbindung definiert sind, wird der Datenverkehr automatisch umgeleitet, sodass er über die Hybridverbindung und den Hybridverbindungs-Manager nach außen gesendet wird. Weitere Informationen über Hybridverbindungen finden Sie in der Dokumentation zu [Azure App Service-Hybridverbindungen][hybridconn].
+Die Funktion „App Service-Hybridverbindungen“ setzt auf der Funktionalität für Azure Relay-Hybridverbindungen auf. In App Service wird eine spezielle Form der Funktion verwendet, die es nur unterstützt, dass ausgehende Aufrufe aus Ihrer App an einen TCP-Host und -Port ausgeführt werden. Dieser Host und Port müssen nur auf dem Host aufgelöst werden, auf dem der HCM installiert ist. Wenn die App in App Service eine DNS-Suche (DNS-Lookup) für den Host und den Port ausführt, die in Ihrer Hybridverbindung definiert sind, wird der Datenverkehr automatisch umgeleitet, sodass er über die Hybridverbindung und den Hybridverbindungs-Manager nach außen gesendet wird. Weitere Informationen über Hybrid Connections finden Sie in der Dokumentation zu [Azure App Service Hybrid Connections][hybridconn].
 
 Diese Funktion wird üblicherweise für Folgendes verwendet:
 
@@ -138,7 +138,7 @@ Da die Funktion Zugriff auf lokale Ressourcen ohne eine eingehende Firewalllück
 
 Hybridverbindungen sind nicht für die Entwicklung beliebt, sondern werden auch in zahlreichen Produktionsanwendungen verwendet. Sie eignen sich hervorragend für den Zugriff auf einen Webdienst oder eine Datenbank, sind aber nicht für Situationen geeignet, in denen sehr viele Verbindungen zu erstellen sind. 
 
-### <a name="gateway-required-vnet-integration"></a>Gatewaygeforderte VNet-Integration 
+### <a name="gateway-required-vnet-integration"></a>VNET-Integration, die ein Gateway erfordert 
 
 Die Funktion „Gatewaygeforderte App Service-VNet-Integration“ ermöglicht, dass in Ihrer App **ausgehende** Anforderungen an ein virtuelles Azure-Netzwerk gesendet werden. Mit der Funktion wird der Host, auf dem Ihre App ausgeführt wird, über einen Punkt-zu-Standort-VPN mit einem virtuellen Netzwerkgateway in Ihrem VNet verbunden. Wenn Sie die Funktion konfigurieren, erhält Ihre App eine der Punkt-zu-Standort-Adressen, die jeder Instanz zugewiesen sind. Über diese Funktion können Sie auf Ressourcen zugreifen, die sich in einer beliebigen Region in klassischen oder in Resource Manager-VNets befinden. 
 

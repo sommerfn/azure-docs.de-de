@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 8/24/2018
 ms.author: pkc
-ms.openlocfilehash: a931de8be07d41cf4daab63aa7691973ee158452
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 667ee6a49238c1ecaabec631cb72804b0c4b2323
+ms.sourcegitcommit: 82efacfaffbb051ab6dc73d9fe78c74f96f549c2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60545060"
+ms.lasthandoff: 06/20/2019
+ms.locfileid: "67304252"
 ---
 # <a name="azure-service-fabric-support-options"></a>Supportoptionen für Azure Service Fabric
 
@@ -43,7 +43,7 @@ Weitere Informationen:
 
 ## <a name="report-production-issues-or-request-paid-support-for-standalone-service-fabric-clusters"></a>Melden von Produktionsproblemen oder Anfordern von kostenpflichtigem Support für eigenständige Service Fabric-Cluster
 
-Um Probleme mit Ihrem in lokalen oder anderen Clouds bereitgestellten Service Fabric-Cluster zu melden, erstellen Sie im [Microsoft-Support-Portal](https://support.microsoft.com/oas/default.aspx?prid=16146) ein Ticket für Professional Support.
+Um Probleme mit Ihrem in lokalen oder anderen Clouds bereitgestellten Service Fabric-Cluster zu melden, erstellen Sie im [Microsoft-Support-Portal](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview) ein Ticket für Professional Support.
 
 Weitere Informationen:
 
@@ -60,7 +60,7 @@ Melden Sie Azure Service Fabric-Probleme im [Git-Repository für Service Fabric-
 
 ### <a name="stackoverflow-and-msdn-forums"></a>StackOverflow und MSDN-Foren
 
-Das [Service Fabric-Tag auf StackOverflow][stackoverflow] und das [Service Fabric-Forum auf MSDN][msdn-forum] eignen sich für Fragen zur Funktionsweise der Plattform und zur Durchführung bestimmter Aufgaben.
+Das [Service Fabric-Tag auf StackOverflow][stackoverflow] eignet sich für Fragen zur Funktionsweise der Plattform und zur Durchführung bestimmter Aufgaben.
 
 ### <a name="azure-feedback-forum"></a>Azure-Feedbackforum
 

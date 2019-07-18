@@ -8,16 +8,15 @@ author: divyaswarnkar
 ms.author: divswa
 ms.reviewer: jonfan, estfan, LADocs
 ms.topic: article
-ms.assetid: 447ffb8e-3e91-4403-872b-2f496495899d
-ms.date: 04/05/2019
-ms.openlocfilehash: 26d653b873e959f0804e0456ed87ee68c39413e5
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.date: 06/22/2019
+ms.openlocfilehash: 4bfee4ec442c9e7b0351b0fd0c6a2b8e163a2541
+ms.sourcegitcommit: 08138eab740c12bf68c787062b101a4333292075
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64720676"
+ms.lasthandoff: 06/22/2019
+ms.locfileid: "67330304"
 ---
-# <a name="create-and-manage-trading-partner-agreements-by-using-azure-logic-apps-and-enterprise-integration-pack"></a>Erstellen und Verwalten von Handelspartnerverträgen mithilfe von Azure Logic Apps und Enterprise Integration Pack
+# <a name="create-and-manage-trading-partner-agreements-in-azure-logic-apps"></a>Erstellen und Verwalten von Handelspartnerverträgen in Azure Logic Apps
 
 Ein [Handelspartnervertrag](../logic-apps/logic-apps-enterprise-integration-partners.md) 
  hilft Organisationen und Unternehmen bei der reibungslosen Kommunikation, indem das branchenübliche Protokoll definiert wird, das beim Austausch von B2B-Nachrichten (Business-to-Business) verwendet wird. ** Vereinbarungen bieten allgemeine Vorteile. Beispiel:
@@ -27,6 +26,8 @@ Ein [Handelspartnervertrag](../logic-apps/logic-apps-enterprise-integration-part
 * Sie können einfach erstellt, verwaltet und zum Erstellen von Unternehmensintegrationslösungen verwendet werden.
 
 In diesem Artikel wird gezeigt, wie Sie eine AS2-, EDIFACT- oder X12-Vereinbarung erstellen, die Sie beim Erstellen von Unternehmensintegrationslösungen für B2B-Szenarien mithilfe von [Enterprise Integration Pack](../logic-apps/logic-apps-enterprise-integration-overview.md) und [Azure Logic Apps](../logic-apps/logic-apps-overview.md) verwenden können. Nachdem Sie eine Vereinbarung erstellt haben, können Sie dann die AS2-, EDIFACT- oder X12-Connectors für den Austausch von B2B-Nachrichten verwenden.
+
+Weitere Informationen zum Austauschen von RosettaNet-Nachrichten finden Sie unter [Exchange RosettaNet messages (Austauschen von RosettaNet-Nachrichten)](../logic-apps/logic-apps-enterprise-integration-rosettanet.md).
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -65,8 +66,8 @@ Wählen Sie im Azure-Hauptmenü die Option **Alle Dienste** aus. Geben Sie im Su
    | **Hostidentität** | Ja | <*host-partner-identifier*> | Der Bezeichner des Hostpartners. |
    | **Gastpartner** | Ja | <*guest-partner-name*> | Der Gastpartner stellt die Organisation dar, die Geschäfte mit dem Hostpartner tätigt. |
    | **Gastidentität** | Ja | <*guest-partner-identifier*> | Der Bezeichner des Gastpartners. |
-   | **Empfangseinstellungen** | Variabel | Variabel | Diese Eigenschaften legen fest, wie alle eingehenden Nachrichten behandelt werden sollen, die von der Vereinbarung empfangen werden. Weitere Informationen finden Sie unter dem jeweiligen Vereinbarungstyp: <p>- [AS2-Nachrichteneinstellungen](../logic-apps/logic-apps-enterprise-integration-as2-message-settings.md) <br>- [EDIFACT-Nachrichteneinstellungen](logic-apps-enterprise-integration-edifact.md) <br>- [X12-Nachrichteneinstellungen](logic-apps-enterprise-integration-x12.md) |
-   | **Sendeeinstellungen** | Variabel | Variabel | Diese Eigenschaften legen fest, wie alle ausgehenden Nachrichten behandelt werden sollen, die von der Vereinbarung gesendet werden. Weitere Informationen finden Sie unter dem jeweiligen Vereinbarungstyp: <p>- [AS2-Nachrichteneinstellungen](../logic-apps/logic-apps-enterprise-integration-as2-message-settings.md) <br>- [EDIFACT-Nachrichteneinstellungen](logic-apps-enterprise-integration-edifact.md) <br>- [X12-Nachrichteneinstellungen](logic-apps-enterprise-integration-x12.md) |
+   | **Empfangseinstellungen** | Varies | Varies | Diese Eigenschaften legen fest, wie der Hostpartner alle Nachrichten vom in der Vereinbarung angegebenen Gastpartner empfängt. Weitere Informationen finden Sie unter dem jeweiligen Vereinbarungstyp: <p>- [AS2-Nachrichteneinstellungen](../logic-apps/logic-apps-enterprise-integration-as2-message-settings.md) <br>- [EDIFACT-Nachrichteneinstellungen](logic-apps-enterprise-integration-edifact.md) <br>- [X12-Nachrichteneinstellungen](logic-apps-enterprise-integration-x12.md) |
+   | **Sendeeinstellungen** | Varies | Varies | Die Eigenschaften legen fest, wie der Hostpartner alle Nachrichten an den in der Vereinbarung angegebenen Gastpartner sendet. Weitere Informationen finden Sie unter dem jeweiligen Vereinbarungstyp: <p>- [AS2-Nachrichteneinstellungen](../logic-apps/logic-apps-enterprise-integration-as2-message-settings.md) <br>- [EDIFACT-Nachrichteneinstellungen](logic-apps-enterprise-integration-edifact.md) <br>- [X12-Nachrichteneinstellungen](logic-apps-enterprise-integration-x12.md) |
    |||||
 
 1. Wenn Sie die Erstellung Ihrer Vereinbarung abgeschlossen haben, wählen Sie auf der Seite **Hinzufügen** die Option **OK** aus, und kehren Sie zu Ihrem Integrationskonto zurück.

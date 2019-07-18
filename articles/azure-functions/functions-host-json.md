@@ -10,12 +10,12 @@ ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 09/08/2018
 ms.author: glenga
-ms.openlocfilehash: ddd3b0889eedd55f809dbb57b2ef41a2ae3f9c94
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 89c4723e83979f89721677146810abdf99fb5d11
+ms.sourcegitcommit: 5cb0b6645bd5dff9c1a4324793df3fdd776225e4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65521392"
+ms.lasthandoff: 06/21/2019
+ms.locfileid: "67310481"
 ---
 # <a name="hostjson-reference-for-azure-functions-2x"></a>host.json-Referenz für Azure Functions 2.x  
 
@@ -147,7 +147,7 @@ Eine Liste der Funktionen, die vom Auftragshost ausgeführt werden. Ein leeres A
 
 ## <a name="functiontimeout"></a>functionTimeout
 
-Gibt die Timeoutdauer für alle Funktionen an. Bei einem serverlosen Verbrauchsplan liegt der gültige Bereich zwischen 1 Sekunde und 10 Minuten, wobei der Standardwert bei 5 Minuten liegt. Bei einem App Service-Plan gibt es keine allgemeine Beschränkung, und der Standardwert hängt von der Version der Runtime ab. In Version 2.x ist der Standardwert für einen App Service-Plan 30 Minuten. In Version 1.x ist er *null*, was keinen Timeout angibt.
+Gibt die Timeoutdauer für alle Funktionen an. Bei einem serverlosen Verbrauchsplan liegt der gültige Bereich zwischen 1 Sekunde und 10 Minuten, wobei der Standardwert bei 5 Minuten liegt. Bei einem dedizierten App Service-Plan gibt es keine allgemeine Beschränkung, und der Standardwert beträgt 30 Minuten. Der Wert `-1` gibt eine unbegrenzte Ausführung an.
 
 ```json
 {
@@ -177,7 +177,7 @@ Konfigurationseinstellungen für [Host Health Monitor](https://github.com/Azure/
 |healthCheckInterval|10 Sekunden|Das Zeitintervall zwischen den regelmäßigen Integritätsüberprüfungen im Hintergrund. | 
 |healthCheckWindow|2 Minuten|Ein variables Zeitfenster, das in Zusammenhang mit der `healthCheckThreshold`-Einstellung verwendet wird.| 
 |healthCheckThreshold|6|Maximale Anzahl von fehlerhaften Integritätsüberprüfungen, bevor ein Neustart des Hosts initiiert wird.| 
-|counterThreshold|0.80|Der Schwellenwert, an dem ein Leistungsindikator als fehlerhaft betrachtet wird.| 
+|counterThreshold|0,80|Der Schwellenwert, an dem ein Leistungsindikator als fehlerhaft betrachtet wird.| 
 
 ## <a name="http"></a>http
 

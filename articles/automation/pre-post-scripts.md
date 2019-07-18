@@ -4,17 +4,17 @@ description: In diesem Artikel wird beschrieben, wie Sie Pre- und Post-Skripts f
 services: automation
 ms.service: automation
 ms.subservice: update-management
-author: georgewallace
-ms.author: gwallace
+author: bobbytreed
+ms.author: robreed
 ms.date: 05/17/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 7317b634ee4c8886ce5c99bb2b3395d7d1f646d5
-ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
+ms.openlocfilehash: 94ec7c54e8e49685ad0289102f092516bcb0acfc
+ms.sourcegitcommit: f811238c0d732deb1f0892fe7a20a26c993bc4fc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/20/2019
-ms.locfileid: "65913864"
+ms.lasthandoff: 06/29/2019
+ms.locfileid: "67478256"
 ---
 # <a name="manage-pre-and-post-scripts"></a>Verwalten von Pre- und Post-Skripts
 
@@ -239,9 +239,10 @@ if (<My custom error logic>)
     throw "There was an error, abort deployment"
 }
 ```
+
 ## <a name="known-issues"></a>Bekannte Probleme
 
-* Sie können keine Objekte oder Arrays an Parameter übergeben, wenn Sie Pre- und Post-Skripts verwenden. Andernfalls tritt bei der Ausführung des Runbooks ein Fehler auf.
+* Sie können keine Booleschen Werte, Objekte oder Arrays an Parameter übergeben, wenn Sie Pre- und Post-Skripts verwenden. Andernfalls tritt bei der Ausführung des Runbooks ein Fehler auf. Eine Liste mit allen unterstützten Typen finden Sie unter [Parameter](#passing-parameters).
 
 ## <a name="next-steps"></a>Nächste Schritte
 

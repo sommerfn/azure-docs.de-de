@@ -1,20 +1,20 @@
 ---
-title: Automatische Skalierung und zonenredundantes Application Gateway in Azure
+title: Automatische Skalierung und zonenredundantes Application Gateway v2
 description: In diesem Artikel werden die Standard_v2- und WAF_v2-SKU der Azure-Anwendung vorgestellt, die Autoskalierung und zonenredundante Features umfassen.
 services: application-gateway
 author: vhorne
 ms.service: application-gateway
 ms.topic: article
-ms.date: 5/22/2019
+ms.date: 6/13/2019
 ms.author: victorh
-ms.openlocfilehash: 8e17c5e34ec3e2397c3054b1d0e0d97dbf410db2
-ms.sourcegitcommit: cfbc8db6a3e3744062a533803e664ccee19f6d63
+ms.openlocfilehash: 6aad0502b5739906d1fa8fa896f8d0af8cc38e30
+ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/21/2019
-ms.locfileid: "65986871"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67205009"
 ---
-# <a name="autoscaling-and-zone-redundant-application-gateway"></a>Automatische Skalierung und zonenredundantes Application Gateway 
+# <a name="autoscaling-and-zone-redundant-application-gateway-v2"></a>Automatische Skalierung und zonenredundantes Application Gateway v2 
 
 Application Gateway und Web Application Firewall (WAF) sind auch in einer Standard_v2- und WAF_v2-SKU verfügbar. Die v2-SKU bietet Leistungsverbesserungen und zusätzliche Unterstützung für wichtige neue Features wie automatische Skalierung und Zonenredundanz sowie Unterstützung für statische VIPs. Vorhandene Features in der Standard- and WAF-SKU werden in der neuen v2-SKU weiterhin unterstützt. Es gelten aber einige wenige Ausnahmen, die im Abschnitt mit dem [Vergleich](#differences-with-v1-sku) aufgeführt sind.
 
@@ -24,7 +24,7 @@ Die neue v2-SKU enthält die folgenden Verbesserungen:
 - **Zonenredundanz**: Eine Application Gateway- oder WAF-Bereitstellung kann sich über mehrere Verfügbarkeitszonen erstrecken, sodass nicht mehr in jeder Zone mit einem Traffic Manager separate Application Gateway-Instanzen bereitgestellt werden müssen. Sie können eine einzelne Zone oder mehrere Zonen mit bereitgestellten Application Gateway-Instanzen auswählen, um für größere Stabilität gegenüber Zonenausfällen zu sorgen. Der Back-End-Pool für Anwendungen kann auf ähnliche Weise auf Verfügbarkeitszonen verteilt werden.
 
   Zonenredundanz ist nur dort verfügbar, wo auch Azure-Zonen verfügbar sind. In anderen Regionen werden alle anderen Features unterstützt. Weitere Informationen finden Sie unter [Was sind Verfügbarkeitszonen in Azure?](../availability-zones/az-overview.md#services-support-by-region)
-- **Statische VIP**: Die Application Gateway v2-SKU unterstützt exklusiv den statischen VIP-Typ. Dadurch wird sichergestellt, dass die Application Gateway zugeordnete VIP während des Lebenszyklus der Bereitstellung unverändert bleibt, selbst nach einem Neustart.
+- **Statische VIP**: Die Application Gateway v2-SKU unterstützt exklusiv den statischen VIP-Typ. Dadurch wird sichergestellt, dass die dem Application Gateway zugeordnete VIP während des Lebenszyklus der Bereitstellung unverändert bleibt, selbst nach einem Neustart.  Es gibt keine statische VIP in v1, daher müssen Sie für das Routing des Domänennamens an App Services über das Application Gateway die URL des Application Gateways anstelle der IP-Adresse verwenden.
 - **Erneutes Generieren von Headern**: Application Gateway ermöglicht Ihnen das Hinzufügen, Entfernen oder Aktualisieren von HTTP-Anforderungs- und Antwortheadern mit dem v2-SKU. Weitere Informationen finden Sie unter [Erneutes Generieren von HTTP-Headern mit Application Gateway](rewrite-http-headers.md).
 - **Key Vault-Integration (Vorschau)** : Application Gateway v2 unterstützt die Integration mit Key Vault (in der öffentlichen Vorschau) für Serverzertifikate, die an HTTPS-fähige Listener angefügt sind. Weitere Informationen finden Sie unter [SSL-Terminierung mit Key Vault-Zertifikaten](key-vault-certs.md).
 - **Azure Kubernetes Service-Eingangscontroller (Vorschau)** : Der Application Gateway v2-Eingangscontroller ermöglicht die Verwendung von Azure Application Gateway als Eingang für einen Azure Kubernetes Service (AKS), der als AKS-Cluster bezeichnet wird. Weitere Informationen finden Sie auf der [Dokumentationsseite](https://azure.github.io/application-gateway-kubernetes-ingress/).
@@ -55,6 +55,8 @@ Leitfaden für Compute-Einheit:
 > Jede Instanz kann derzeit etwa 10 Kapazitätseinheiten unterstützen.
 > Die Anzahl der Anforderungen, die eine Compute-Einheit verarbeiten kann, hängt von verschiedenen Kriterien wie Größe des TLS-Zertifikatschlüssels, Schlüsselaustauschalgorithmus, erneutes Generieren von Headern und – im Fall von WAF – Größe der eingehenden Anforderung ab. Es wird empfohlen, Anwendungstests auszuführen, um die Anforderungsrate pro Compute-Einheit zu ermitteln. Sowohl Kapazitätseinheit als auch Compute-Einheit werden vor Beginn der Abrechnung als Metrik zur Verfügung gestellt.
 
+Die folgende Tabelle enthält die Beispielpreise und dient lediglich zur Veranschaulichung.
+
 **Preise in der Region „USA, Osten“** :
 
 |              SKU-Name                             | Festpreis ($/Std)  | Preis nach Kapazitätseinheit ($/KE-Std)   |
@@ -69,7 +71,7 @@ Weitere Preisinformationen finden Sie in der [Preisübersicht](https://azure.mic
 Es wird ein Application Gateway Standard_v2 ohne automatische Skalierung im manuellen Skalierungsmodus mit fester Kapazität von fünf Instanzen bereitgestellt.
 
 Festpreis = 744 (Stunden) * 0,20 $ = 148,8 $ <br>
-Kapazitätseinheiten = 744 (Stunden) 10 Kapazitätseinheiten pro Instanz * fünf Instanzen * 0,008 $ pro Kapazitätseinheitsstunde = 297,6 $
+Kapazitätseinheiten = 744 (Stunden) * 10 Kapazitätseinheiten pro Instanz * 5 Instanzen * 0,008 $ pro Kapazitätseinheitsstunde = 297,6 $
 
 Gesamtpreis = 148,8 $ + 297,6 $ = 446,4 $
 
@@ -83,6 +85,9 @@ Preis nach Kapazitätseinheit = 744 (Stunden) * Max. (25/50 Compute-Einheit für
 
 Gesamtpreis = 148,8 $ + 23,81 $ = 172,61 $
 
+> [!NOTE]
+> Die Max-Funktion gibt den größten Wert in einem Wertepaar zurück.
+
 **Beispiel 3**
 
 Es wird ein Application Gateway WAF_v2 für einen Monat bereitgestellt. Während dieses Zeitraums empfängt es 25 neue SSL-Verbindungen/Sekunde, Datenübertragung von durchschnittlich 8,88 MBit/s, und stellt 80 Anforderungen pro Sekunde. Bei kurzlebigen Verbindungen und unter der Voraussetzung, dass die Berechnung der Compute-Einheiten für die Anwendung 10 RPS pro Compute-Einheit unterstützt, ist der Preis wie folgt:
@@ -92,6 +97,9 @@ Festpreis = 744 (Stunden) * 0,36 $ = 267,84 $
 Preis nach Kapazitätseinheit = 744 (Stunden) * Max. (Compute-Einheit Max. (25/50 für Verbindungen/Sekunde, 80/10 WAF-RPS), 8,88/2,22 Kapazitätseinheit für Durchsatz) * 0,0144 $ = 744 * 8 * 0,0144 = 85,71 $
 
 Gesamtpreis = 267,84 $ + 85,71 $ = 353,55 $
+
+> [!NOTE]
+> Die Max-Funktion gibt den größten Wert in einem Wertepaar zurück.
 
 ## <a name="scaling-application-gateway-and-waf-v2"></a>Skalierung von Application Gateway und WAF v2
 
@@ -140,7 +148,11 @@ In der folgenden Tabelle werden die Features der einzelnen SKUs gegenübergestel
 |FIPS-Modus|Diese werden derzeit nicht unterstützt.|
 |Reiner ILB-Modus|Dies wird derzeit nicht unterstützt. Öffentlicher und ILB-Modus kombiniert werden unterstützt.|
 |NetWatcher-Integration|Nicht unterstützt.|
-|Azure Support Center-Integration|Noch nicht verfügbar.
+|Integrieren von Azure Security Center|Noch nicht verfügbar.
+
+## <a name="migrate-from-v1-to-v2"></a>Migrieren von v1 zu v2
+
+Im PowerShell-Katalog ist ein Azure PowerShell-Skript verfügbar, mit dessen Hilfe Sie Ihr v1-Application Gateway / Ihre v1-WAF zur v2-SKU mit automatischer Skalierung migrieren können. Mithilfe dieses Skript können Sie die Konfiguration von Ihrem v1-Gateway kopieren. Die Datenverkehrsmigration liegt weiterhin in Ihrer Verantwortung. Weitere Informationen finden Sie unter [Migrieren von Azure Application Gateway und Web Application Firewall von v1 zu v2](migrate-v1-v2.md).
 
 ## <a name="next-steps"></a>Nächste Schritte
 

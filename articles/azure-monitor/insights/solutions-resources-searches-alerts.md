@@ -200,7 +200,7 @@ Dieser Abschnitt ist optional. Fügen Sie ihn für eine Warnung aufgrund metrisc
 |:--|:--|:--|
 | TriggerCondition | Ja | Gibt an, ob der Schwellenwert für die Gesamtanzahl der Verstöße oder für aufeinander folgende Verstöße gegen folgende Werte steht:<br><br>**Insgesamt<br>Aufeinander folgende** |
 | Operator | Ja | Operator für den Vergleich der folgenden Werte:<br><br>**gt = Greater Than (Größer als)<br>lt = Less Than (Kleiner als)** |
-| Wert | Ja | Häufigkeit, mit der die Kriterien erfüllt werden müssen, um die Warnung auszulösen. |
+| Value | Ja | Häufigkeit, mit der die Kriterien erfüllt werden müssen, um die Warnung auszulösen. |
 
 
 #### <a name="throttling"></a>Drosselung

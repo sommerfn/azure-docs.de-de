@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/09/2017
 ms.author: apimpm
-ms.openlocfilehash: a78c03537d7fb3db6afa0c4a4e84c4746146ca85
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: e8519bf436e1af19a22a840f48bf1bfccdae99b2
+ms.sourcegitcommit: a12b2c2599134e32a910921861d4805e21320159
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60657831"
+ms.lasthandoff: 06/24/2019
+ms.locfileid: "67341267"
 ---
 # <a name="api-templates-in-azure-api-management"></a>API-Vorlagen in Azure API Management
 
@@ -44,7 +44,7 @@ Mit den Vorlagen in diesem Abschnitt können Sie den Inhalt der API-Seiten im En
 
 [!INCLUDE [premium-dev-standard-basic.md](../../includes/api-management-availability-premium-dev-standard-basic.md)]
   
-##  <a name="APIList"></a> API-Liste  
+## <a name="APIList"></a> API-Liste  
  Mit der Vorlage für die **API-Liste** können Sie den Text der API-Listenseite im Entwicklerportal anpassen.  
   
  ![Entwicklerportal-API-Liste](./media/api-management-api-templates/APIM-Developer-Portal-Templates-API-List.png "APIM-Entwicklerportal API-Vorlagenliste")  
@@ -112,7 +112,7 @@ Mit den Vorlagen in diesem Abschnitt können Sie den Inhalt der API-Seiten im En
 }  
 ```  
   
-##  <a name="Product"></a> Vorgang  
+## <a name="Product"></a> Vorgang  
  Mit der Vorlage für den **Vorgang** können Sie den Text der Vorgangsseite im Entwicklerportal anpassen.  
   
  ![Vorgangsseite im Entwicklerportal](./media/api-management-api-templates/APIM-Developer-Portal-templates-Operation-page.png "Vorgangsseite mit Vorlagen des APIM-Entwicklerportals")  
@@ -642,7 +642,7 @@ Mit den Vorlagen in diesem Abschnitt können Sie den Inhalt der API-Seiten im En
 }  
 ```  
   
-##  <a name="CodeSamples"></a> Codebeispiele  
+## <a name="CodeSamples"></a> Codebeispiele  
  Mit den folgenden Vorlagen können Sie den Text der einzelnen Codebeispiele auf der Vorgangsseite anpassen.  
   
  ![Codebeispiele für Vorlagen im Entwicklerportal](./media/api-management-api-templates/APIM-Developer-Portal-Templates-Code-samples.png "Codebeispiele für Vorlagen im APIM-Entwicklerportal")  
@@ -663,7 +663,7 @@ Mit den Vorlagen in diesem Abschnitt können Sie den Inhalt der API-Seiten im En
   
 -   [Ruby](#Ruby)  
   
-###  <a name="Curl"></a> Curl  
+### <a name="Curl"></a> Curl  
  Mit der Vorlage **DocumentationSamplesCurl** können Sie das Codebeispiel im Abschnitt mit den Codebeispielen auf der Vorlagenseite anpassen.  
   
 #### <a name="default-template"></a>Standardvorlage  
@@ -716,12 +716,12 @@ curl -v -X {{method}} "{{scheme}}://{{host}}{{path}}{{query | escape }}"
 }  
 ```  
   
-###  <a name="CSharp"></a> C#  
+### <a name="CSharp"></a> C#  
  Mit der Vorlage **DocumentationSamplesCsharp** können Sie das Codebeispiel im Abschnitt mit den Codebeispielen auf der Vorlagenseite anpassen.  
   
 #### <a name="default-template"></a>Standardvorlage  
   
-```xml  
+```csharp  
 using System;  
 using System.Net.Http.Headers;  
 using System.Text;  
@@ -895,12 +895,12 @@ namespace CSHttpClientSample
 }  
 ```  
   
-###  <a name="Stub"></a> Java  
+### <a name="Stub"></a> Java  
  Mit der Vorlage **DocumentationSamplesJava** können Sie das Codebeispiel im Abschnitt mit den Codebeispielen auf der Vorlagenseite anpassen.  
   
 #### <a name="default-template"></a>Standardvorlage  
   
-```xml  
+```java  
 // // This sample uses the Apache HTTP client from HTTP Components (http://hc.apache.org/httpcomponents-client-ga/)  
 import java.net.URI;  
 import org.apache.http.HttpEntity;  
@@ -991,12 +991,12 @@ public class JavaSample
 }  
 ```  
   
-###  <a name="JavaScript"></a> JavaScript  
+### <a name="JavaScript"></a> JavaScript  
  Mit der Vorlage **DocumentationSamplesJs** können Sie das Codebeispiel im Abschnitt mit den Codebeispielen auf der Vorlagenseite anpassen.  
   
 #### <a name="default-template"></a>Standardvorlage  
   
-```xml  
+```html  
 <!DOCTYPE html>  
 <html>  
 <head>  
@@ -1080,12 +1080,12 @@ public class JavaSample
 }  
 ```  
   
-###  <a name="ObjectiveC"></a> Objective C  
+### <a name="ObjectiveC"></a> Objective C  
  Mit der Vorlage **DocumentationSamplesObjc** können Sie das Codebeispiel im Abschnitt mit den Codebeispielen auf der Vorlagenseite anpassen.  
   
 #### <a name="default-template"></a>Standardvorlage  
   
-```xml  
+```objective-c  
 #import <Foundation/Foundation.h>  
   
 int main(int argc, const char * argv[])  
@@ -1192,12 +1192,12 @@ int main(int argc, const char * argv[])
 }  
 ```  
   
-###  <a name="PHP"></a> PHP  
+### <a name="PHP"></a> PHP  
  Mit der Vorlage **DocumentationSamplesPhp** können Sie das Codebeispiel im Abschnitt mit den Codebeispielen auf der Vorlagenseite anpassen.  
   
 #### <a name="default-template"></a>Standardvorlage  
   
-```xml  
+```php  
 <?php  
 // This sample uses the HTTP_Request2 PHP library (https://github.com/pear/HTTP_Request2)  
 require_once 'HTTP/Request2.php';  
@@ -1282,12 +1282,12 @@ catch (HttpException $ex)
 }  
 ```  
   
-###  <a name="Python"></a> Python  
+### <a name="Python"></a> Python  
  Mit der Vorlage **DocumentationSamplesPython** können Sie das Codebeispiel im Abschnitt mit den Codebeispielen auf der Vorlagenseite anpassen.  
   
 #### <a name="default-template"></a>Standardvorlage  
   
-```xml  
+```python  
 ########### Python 2.7 #############  
 import httplib, urllib, base64  
   
@@ -1363,7 +1363,7 @@ except Exception as e:
     print("[Errno {0}] {1}".format(e.errno, e.strerror))  
   
 ####################################  
-```  
+```
   
 #### <a name="controls"></a>Kontrollen  
  Die Codebeispielvorlagen lassen die Verwendung von [Seitensteuerelementen](api-management-page-controls.md) nicht zu.  
@@ -1400,12 +1400,12 @@ except Exception as e:
 }  
 ```  
   
-###  <a name="Ruby"></a> Ruby  
+### <a name="Ruby"></a> Ruby  
  Mit der Vorlage **DocumentationSamplesRuby** können Sie das Codebeispiel im Abschnitt mit den Codebeispielen auf der Vorlagenseite anpassen.  
   
 #### <a name="default-template"></a>Standardvorlage  
   
-```xml  
+```ruby  
 require 'net/http'  
   
 uri = URI('{{scheme}}://{{host}}{{path}}')  
