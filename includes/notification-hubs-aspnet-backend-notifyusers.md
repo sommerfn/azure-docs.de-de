@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 03/22/2019
 ms.author: spelluru
 ms.custom: include file
-ms.openlocfilehash: 28eac814364b56f59b8edc6f59209a6d742ff403
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.openlocfilehash: 590ba4b7a61fa437767d99ac6b9ae3e0fa94edc3
+ms.sourcegitcommit: 6b41522dae07961f141b0a6a5d46fd1a0c43e6b2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67178337"
+ms.lasthandoff: 07/15/2019
+ms.locfileid: "68227796"
 ---
 ## <a name="create-the-webapi-project"></a>Erstellen des WebAPI-Projekts
 
@@ -158,7 +158,7 @@ In diesem Abschnitt wird dem WebAPI-Back-End ein neuer Controller hinzugefügt, 
 
 3. Wählen Sie in der Ergebnisliste die Option **Microsoft Azure Notification Hubs** und anschließend **Installieren** aus. Schließen Sie die Installation ab, und schließen Sie dann das Fenster des NuGet-Paket-Managers.
 
-    Dadurch wird mithilfe des [Microsoft.Azure.NotificationHubs-NuGet-Pakets](http://www.nuget.org/packages/Microsoft.Azure.NotificationHubs/) ein Verweis auf das Azure Notification Hubs-SDK hinzugefügt.
+    Dadurch wird mithilfe des [Microsoft.Azure.NotificationHubs-NuGet-Pakets](https://www.nuget.org/packages/Microsoft.Azure.NotificationHubs/) ein Verweis auf das Azure Notification Hubs-SDK hinzugefügt.
 
 4. Erstellen Sie eine neue Klassendatei, die die Verbindung mit dem Notification Hub darstellt, der zum Senden von Benachrichtigungen verwendet wird. Klicken Sie im Projektmappen-Explorer mit der rechten Maustaste auf den Ordner **Modelle**, und wählen Sie dann **Hinzufügen** und anschließend **Klasse** aus. Nennen Sie die neue Klasse **Notifications.cs**, und wählen Sie dann **Hinzufügen** aus, um die Klasse zu generieren.
 
@@ -170,7 +170,7 @@ In diesem Abschnitt wird dem WebAPI-Back-End ein neuer Controller hinzugefügt, 
     using Microsoft.Azure.NotificationHubs;
     ```
 
-6. Ersetzen Sie die Definition der Klasse `Notifications` durch den folgenden Code und die beiden Platzhalter durch die Verbindungszeichenfolge (mit Vollzugriff) für Ihren Notification Hub bzw. durch den Namen des Hubs (verfügbar im [Azure-Portal](http://portal.azure.com)):
+6. Ersetzen Sie die Definition der Klasse `Notifications` durch den folgenden Code und die beiden Platzhalter durch die Verbindungszeichenfolge (mit Vollzugriff) für Ihren Notification Hub bzw. durch den Namen des Hubs (verfügbar im [Azure-Portal](https://portal.azure.com)):
 
     ```csharp
     public class Notifications

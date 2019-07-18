@@ -14,17 +14,16 @@ ms.topic: tutorial
 ms.date: 01/22/2018
 ms.author: shlo
 robots: noindex
-ms.openlocfilehash: 9d273886b3add43818af80915e42b4aa7ca69a89
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 0f18fc8a18cbcf5d85b68ed40790eda36d653812
+ms.sourcegitcommit: 64798b4f722623ea2bb53b374fb95e8d2b679318
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "66146889"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67836574"
 ---
 # <a name="tutorial-build-your-first-azure-data-factory-using-azure-powershell"></a>Tutorial: Erstellen der ersten Azure Data Factory mit Azure PowerShell
 > [!div class="op_single_selector"]
 > * [Übersicht und Voraussetzungen](data-factory-build-your-first-pipeline.md)
-> * [Azure-Portal](data-factory-build-your-first-pipeline-using-editor.md)
 > * [Visual Studio](data-factory-build-your-first-pipeline-using-vs.md)
 > * [PowerShell](data-factory-build-your-first-pipeline-using-powershell.md)
 > * [Resource Manager-Vorlage](data-factory-build-your-first-pipeline-using-arm.md)
@@ -164,8 +163,8 @@ In diesem Schritt verknüpfen Sie einen bedarfsgesteuerten HDInsight-Cluster mit
 
    | Eigenschaft | BESCHREIBUNG |
    |:--- |:--- |
-   | ClusterSize |Gibt die Größe des HDInsight-Clusters an. |
-   | TimeToLive |Gibt die Leerlaufzeit des HDInsight-Clusters an, bevor er gelöscht wird. |
+   | clusterSize |Gibt die Größe des HDInsight-Clusters an. |
+   | timeToLive |Gibt die Leerlaufzeit des HDInsight-Clusters an, bevor er gelöscht wird. |
    | linkedServiceName |Gibt das Speicherkonto an, das verwendet wird, um die von HDInsight generierten Protokolle zu speichern. |
 
     Beachten Sie folgende Punkte:

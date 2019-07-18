@@ -14,17 +14,16 @@ ms.topic: tutorial
 ms.date: 01/22/2018
 ms.author: shlo
 robots: noindex
-ms.openlocfilehash: 2d816ab2f14be8574f77491807d4dbd071487f42
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: f3c4fc379ac932e66c5d02e08e72ef4d16db638b
+ms.sourcegitcommit: 64798b4f722623ea2bb53b374fb95e8d2b679318
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "66163898"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67836702"
 ---
 # <a name="tutorial-create-a-data-factory-by-using-visual-studio"></a>Tutorial: Erstellen einer Data Factory mit Visual Studio
 > [!div class="op_single_selector" title="Tools/SDKs"]
 > * [Übersicht und Voraussetzungen](data-factory-build-your-first-pipeline.md)
-> * [Azure-Portal](data-factory-build-your-first-pipeline-using-editor.md)
 > * [Visual Studio](data-factory-build-your-first-pipeline-using-vs.md)
 > * [PowerShell](data-factory-build-your-first-pipeline-using-powershell.md)
 > * [Resource Manager-Vorlage](data-factory-build-your-first-pipeline-using-arm.md)
@@ -82,7 +81,7 @@ Wir erstellen mit Visual Studio nun eine Azure Data Factory.
     ![Projektmappen-Explorer](./media/data-factory-build-your-first-pipeline-using-vs/solution-explorer.png)
 
 ### <a name="create-linked-services"></a>Erstellen von verknüpften Diensten
-In diesem Schritt erstellen Sie zwei verknüpfte Dienste: **Azure Storage** und **HDInsight (bedarfsgesteuert)**. 
+In diesem Schritt erstellen Sie zwei verknüpfte Dienste: **Azure Storage** und **HDInsight (bedarfsgesteuert)** . 
 
 Mit dem verknüpften Azure Storage-Dienst wird Ihr Azure Storage-Konto mit der Data Factory verknüpft, indem die Verbindungsinformationen bereitgestellt werden. Der Data Factory-Dienst verwendet die Verbindungszeichenfolge der Einstellung des verknüpften Diensts, um zur Laufzeit eine Verbindung mit dem Azure-Speicher herzustellen. Dieser Speicher enthält Eingabe- und Ausgabedaten für die Pipeline und die Hive-Skriptdatei, die von der Hive-Aktivität verwendet wird. 
 
@@ -124,8 +123,8 @@ Bei einem verknüpften bedarfsgesteuerten HDInsight-Dienst wird der HDInsight-Cl
 
     Eigenschaft | BESCHREIBUNG
     -------- | ----------- 
-    ClusterSize | Gibt die Größe des HDInsight-Hadoop-Clusters an.
-    TimeToLive | Gibt die Leerlaufzeit des HDInsight-Clusters an, bevor er gelöscht wird.
+    clusterSize | Gibt die Größe des HDInsight-Hadoop-Clusters an.
+    timeToLive | Gibt die Leerlaufzeit des HDInsight-Clusters an, bevor er gelöscht wird.
     linkedServiceName | Gibt das Speicherkonto an, das verwendet wird, um die vom HDInsight-Hadoop-Cluster generierten Protokolle zu speichern. 
 
     > [!IMPORTANT]

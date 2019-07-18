@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 06/24/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1dc537a631cd083da0f902fb4fcd44d47756eeba
-ms.sourcegitcommit: f811238c0d732deb1f0892fe7a20a26c993bc4fc
+ms.openlocfilehash: 9bf8b4d696a3784988a92fc24de1ae6964786e07
+ms.sourcegitcommit: 64798b4f722623ea2bb53b374fb95e8d2b679318
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/29/2019
-ms.locfileid: "67471771"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67836444"
 ---
 # <a name="tutorial-integrate-cisco-webex-with-azure-active-directory"></a>Tutorial: Integrieren von Cisco Webex in Azure Active Directory
 
@@ -133,13 +133,13 @@ Gehen Sie wie folgt vor, um das einmalige Anmelden von Azure AD im Azure-Portal 
 
 2. Wählen **Settings** (Einstellungen) aus, und klicken Sie im Bereich **Authentication** (Authentifizierung) auf **Modify** (Ändern).
 
-    ![Configure single sign-on](./media/cisco-spark-tutorial/tutorial_cisco_spark_10.png)
+    ![Configure single sign-on](./media/cisco-spark-tutorial/tutorial-cisco-spark-10.png)
   
 3. Wählen Sie **Integrate a 3rd-party identity provider. (Advanced)** (Identitätsanbieter von Drittanbieter integrieren (Erweitert)) aus, und wechseln Sie zum nächsten Bildschirm.
 
 4. Laden Sie auf der Seite **Import Idp Metadata** (IdP-Metadaten importieren) die Azure AD-Metadatendatei hoch, indem Sie diese entweder per Drag & Drop auf die Seite ziehen oder sie mithilfe der Option zum Durchsuchen auswählen. Wählen Sie anschließend **Require certificate signed by a certificate authority in Metadata (more secure)** (Signatur einer Zertifizierungsstelle in den Metadaten erzwingen (sicherer)) aus, und klicken Sie auf **Weiter**.
 
-    ![Configure single sign-on](./media/cisco-spark-tutorial/tutorial_cisco_spark_11.png)
+    ![Configure single sign-on](./media/cisco-spark-tutorial/tutorial-cisco-spark-11.png)
 
 5. Wählen Sie **Test SSO Connection** (SSO-Verbindung testen) aus, und authentifizieren Sie sich, wenn eine neue Browserregisterkarte geöffnet wird, durch Ihre Anmeldung bei Azure AD.
 
@@ -147,7 +147,7 @@ Gehen Sie wie folgt vor, um das einmalige Anmelden von Azure AD im Azure-Portal 
 
 ### <a name="create-an-azure-ad-test-user"></a>Erstellen eines Azure AD-Testbenutzers
 
-In diesem Abschnitt erstellen Sie im Azure-Portal einen Testbenutzer mit dem Namen B. Simon.
+In diesem Abschnitt erstellen Sie im Azure-Portal einen Testbenutzer mit dem Namen B. Simon.
 
 1. Wählen Sie im linken Bereich des Microsoft Azure-Portals **Azure Active Directory** > **Benutzer** > **Alle Benutzer** aus.
 1. Wählen Sie oben im Bildschirm die Option **Neuer Benutzer** aus.
@@ -182,13 +182,13 @@ In diesem Abschnitt erstellen Sie in Cisco Webex einen Benutzer mit dem Namen Br
 
 2. Klicken Sie auf **Users** und dann auf **Manage Users**.
    
-    ![Configure single sign-on](./media/cisco-spark-tutorial/tutorial_cisco_spark_12.png) 
+    ![Configure single sign-on](./media/cisco-spark-tutorial/tutorial-cisco-spark-12.png) 
 
 3. Wählen Sie im Fenster **Manage User** (Benutzer verwalten) die Option **Manually add or modify users** (Benutzer manuell hinzufügen oder ändern) aus, und klicken Sie auf **Weiter**.
 
 4. Wählen Sie **Names and Email address** (Namen und E-Mail-Adressen) aus. Füllen Sie das Textfeld anschließend wie folgt aus:
 
-    ![Configure single sign-on](./media/cisco-spark-tutorial/tutorial_cisco_spark_13.png) 
+    ![Configure single sign-on](./media/cisco-spark-tutorial/tutorial-cisco-spark-13.png) 
 
     a. Geben Sie im Textfeld **Vorname** den Vornamen des Benutzers ein (beispielsweise **B**).
 

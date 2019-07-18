@@ -8,14 +8,14 @@ manager: daauld
 ms.service: cognitive-services
 ms.subservice: custom-vision
 ms.topic: quickstart
-ms.date: 03/21/2019
+ms.date: 07/15/2019
 ms.author: areddish
-ms.openlocfilehash: 3c0ca2b031b96abfdb598de7ec9553ebd5f18601
-ms.sourcegitcommit: ccb9a7b7da48473362266f20950af190ae88c09b
+ms.openlocfilehash: 92713fe16e482a3ed65b9593581749270b67a487
+ms.sourcegitcommit: 9a699d7408023d3736961745c753ca3cec708f23
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67592983"
+ms.lasthandoff: 07/16/2019
+ms.locfileid: "68277591"
 ---
 # <a name="quickstart-create-an-image-classification-project-with-the-custom-vision-nodejs-sdk"></a>Schnellstart: Erstellen eines Bildklassifizierungsprojekts mit dem Custom Vision SDK für Node.js
 
@@ -30,7 +30,7 @@ Dieser Artikel enthält Informationen und Beispielcode für die ersten Schritte 
 
 Führen Sie in PowerShell den folgenden Befehl aus, um das Custom Vision Service SDK für Node.js zu installieren:
 
-```powershell
+```shell
 npm install @azure/cognitiveservices-customvision-training
 npm install @azure/cognitiveservices-customvision-prediction
 ```
@@ -50,8 +50,8 @@ Fügen Sie Ihrem Skript den folgenden Code hinzu, um ein neues Custom Vision Ser
 ```javascript
 const util = require('util');
 const fs = require('fs');
-const TrainingApiClient = require("azure-cognitiveservices-customvision-training");
-const PredictionApiClient = require("azure-cognitiveservices-customvision-prediction");
+const TrainingApiClient = require("@azure/cognitiveservices-customvision-training");
+const PredictionApiClient = require("@azure/cognitiveservices-customvision-prediction");
 
 const setTimeoutPromise = util.promisify(setTimeout);
 
@@ -76,8 +76,8 @@ const trainer = new TrainingApiClient(trainingKey, endPoint);
 Fügen Sie am Ende der Datei *sample.js* den folgenden Code hinzu, um Ihrem Projekt Klassifizierungstags hinzuzufügen:
 
 ```javascript
-    const hemlockTag = await trainer.createTag(sampleProject.id, "Hemlock");
-    const cherryTag = await trainer.createTag(sampleProject.id, "Japanese Cherry");
+const hemlockTag = await trainer.createTag(sampleProject.id, "Hemlock");
+const cherryTag = await trainer.createTag(sampleProject.id, "Japanese Cherry");
 ```
 
 ### <a name="upload-and-tag-images"></a>Hochladen und Kennzeichnen von Bildern
@@ -88,22 +88,22 @@ Um dem Projekt die Beispielbilder hinzuzufügen, fügen Sie nach der Erstellung 
 > Legen Sie *sampleDataRoot* auf den Pfad zu den Bildern fest. Dieser ist abhängig davon, wo Sie das Cognitive Services SDK-Beispielprojekt für Node.js zuvor heruntergeladen haben.
 
 ```javascript
-    console.log("Adding images...");
-    let fileUploadPromises = [];
+console.log("Adding images...");
+let fileUploadPromises = [];
 
-    const hemlockDir = `${sampleDataRoot}/Hemlock`;
-    const hemlockFiles = fs.readdirSync(hemlockDir);
-    hemlockFiles.forEach(file => {
-        fileUploadPromises.push(trainer.createImagesFromData(sampleProject.id, fs.readFileSync(`${hemlockDir}/${file}`), { tagIds: [hemlockTag.id] }));
-    });
+const hemlockDir = `${sampleDataRoot}/Hemlock`;
+const hemlockFiles = fs.readdirSync(hemlockDir);
+hemlockFiles.forEach(file => {
+    fileUploadPromises.push(trainer.createImagesFromData(sampleProject.id, fs.readFileSync(`${hemlockDir}/${file}`), { tagIds: [hemlockTag.id] }));
+});
 
-    const cherryDir = `${sampleDataRoot}/Japanese Cherry`;
-    const japaneseCherryFiles = fs.readdirSync(cherryDir);
-    japaneseCherryFiles.forEach(file => {
-        fileUploadPromises.push(trainer.createImagesFromData(sampleProject.id, fs.readFileSync(`${cherryDir}/${file}`), { tagIds: [cherryTag.id] }));
-    });
+const cherryDir = `${sampleDataRoot}/Japanese Cherry`;
+const japaneseCherryFiles = fs.readdirSync(cherryDir);
+japaneseCherryFiles.forEach(file => {
+    fileUploadPromises.push(trainer.createImagesFromData(sampleProject.id, fs.readFileSync(`${cherryDir}/${file}`), { tagIds: [cherryTag.id] }));
+});
 
-    await Promise.all(fileUploadPromises);
+await Promise.all(fileUploadPromises);
 ```
 
 ### <a name="train-the-classifier-and-publish"></a>Trainieren der Klassifizierung und Veröffentlichen
@@ -111,20 +111,20 @@ Um dem Projekt die Beispielbilder hinzuzufügen, fügen Sie nach der Erstellung 
 Dieser Code erstellt die erste Iteration im Projekt und veröffentlicht anschließend diese Iteration im Vorhersageendpunkt. Der Name der veröffentlichten Iteration kann zum Senden von Vorhersageanforderungen verwendet werden. Eine Iteration ist erst im Vorhersageendpunkt verfügbar, wenn sie veröffentlicht wurde.
 
 ```javascript
-    console.log("Training...");
-    let trainingIteration = await trainer.trainProject(sampleProject.id);
+console.log("Training...");
+let trainingIteration = await trainer.trainProject(sampleProject.id);
 
-    // Wait for training to complete
-    console.log("Training started...");
-    while (trainingIteration.status == "Training") {
-        console.log("Training status: " + trainingIteration.status);
-        await setTimeoutPromise(1000, null);
-        trainingIteration = await trainer.getIteration(sampleProject.id, trainingIteration.id)
-    }
+// Wait for training to complete
+console.log("Training started...");
+while (trainingIteration.status == "Training") {
     console.log("Training status: " + trainingIteration.status);
-    
-    // Publish the iteration to the end point
-    await trainer.publishIteration(sampleProject.id, trainingIteration.id, publishIterationName, predictionResourceId);
+    await setTimeoutPromise(1000, null);
+    trainingIteration = await trainer.getIteration(sampleProject.id, trainingIteration.id)
+}
+console.log("Training status: " + trainingIteration.status);
+
+// Publish the iteration to the end point
+await trainer.publishIteration(sampleProject.id, trainingIteration.id, publishIterationName, predictionResourceId);
 ```
 
 ### <a name="get-and-use-the-published-iteration-on-the-prediction-endpoint"></a>Abrufen und Verwenden der veröffentlichten Iteration für den Vorhersageendpunkt
@@ -149,13 +149,13 @@ Um ein Bild an den Vorhersageendpunkt zu senden und die Vorhersage abzurufen, f�
 
 Führen Sie *sample.js* aus.
 
-```powershell
+```shell
 node sample.js
 ```
 
 Die Ausgabe der Anwendung sollte dem folgenden Text ähneln:
 
-```
+```console
 Creating project...
 Adding images...
 Training...

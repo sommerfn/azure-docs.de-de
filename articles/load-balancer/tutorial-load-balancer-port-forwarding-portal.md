@@ -4,7 +4,7 @@ titlesuffix: Azure Load Balancer
 description: In diesem Tutorial wird gezeigt, wie Sie die Portweiterleitung per Azure Load Balancer konfigurieren, um in einem virtuellen Azure-Netzwerk eine Verbindung mit VMs zu erstellen.
 services: load-balancer
 documentationcenter: na
-author: KumudD
+author: asudbring
 manager: twooley
 Customer intent: As an IT administrator, I want to configure port forwarding in Azure Load Balancer to remotely connect to VMs in an Azure virtual network.
 ms.service: load-balancer
@@ -13,14 +13,14 @@ ms.topic: tutorial
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/26/2019
-ms.author: kumud
+ms.author: allensu
 ms.custom: seodec18
-ms.openlocfilehash: db94f1d241223a9c54a6e3d516840dd17fd0c576
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.openlocfilehash: ee4ed818364d04f03caedc8b876ea29c41cb59b7
+ms.sourcegitcommit: 9a699d7408023d3736961745c753ca3cec708f23
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "60007507"
+ms.lasthandoff: 07/16/2019
+ms.locfileid: "68273450"
 ---
 # <a name="tutorial-configure-port-forwarding-in-azure-load-balancer-using-the-portal"></a>Tutorial: Konfigurieren der Portweiterleitung im Azure Load Balancer mit dem Portal
 
@@ -49,11 +49,11 @@ Erstellen Sie zunächst einen öffentlichen Load Balancer im Tarif „Standard�
 
     | Einstellung                 | Wert                                              |
     | ---                     | ---                                                |
-    | Abonnement               | Wählen Sie Ihr Abonnement aus.    |    
-    | Ressourcengruppe         | Wählen Sie **Neu erstellen**, und geben Sie *MyResourceGroupLB* in das Textfeld ein.|
+    | Subscription               | Wählen Sie Ihr Abonnement aus.    |    
+    | Resource group         | Wählen Sie **Neu erstellen**, und geben Sie *MyResourceGroupLB* in das Textfeld ein.|
     | NAME                   | *myLoadBalancer*                                   |
     | Region         | Wählen Sie **Europa, Westen** aus.                                        |
-    | Type          | Wählen Sie **Öffentlich** aus.                                        |
+    | type          | Wählen Sie **Öffentlich** aus.                                        |
     | SKU           | Wählen Sie **Standard** aus.                          |
     | Öffentliche IP-Adresse | Wählen Sie **Neu erstellen**. |
     | Name der öffentlichen IP-Adresse              | Geben Sie *myPublicIP* in das Textfeld ein.   |

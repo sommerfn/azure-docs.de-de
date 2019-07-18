@@ -12,16 +12,16 @@ ms.devlang: na
 ms.topic: tutorial
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 04/11/2019
+ms.date: 07/16/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 42b7e59e39adbb485738ca66b7ad8e5ba8293ddc
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: ff2089e8abdde8e6a99de1be2be070fb457fa632
+ms.sourcegitcommit: 9a699d7408023d3736961745c753ca3cec708f23
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65784989"
+ms.lasthandoff: 07/16/2019
+ms.locfileid: "68276641"
 ---
 # <a name="call-microsoft-graph-api-from-a-universal-windows-platform-application-xaml"></a>Aufrufen der Microsoft Graph-API über eine UWP-Anwendung (XAML)
 
@@ -147,7 +147,7 @@ Dieser Abschnitt zeigt, wie Sie über die MSAL ein Token für die Microsoft Grap
         }
 
         /// <summary>
-        /// Call AcquireTokenAsync - to acquire a token requiring user to sign-in
+        /// Call AcquireTokenInteractive - to acquire a token requiring user to sign-in
         /// </summary>
         private async void CallGraphButton_Click(object sender, RoutedEventArgs e)
         {
@@ -385,7 +385,7 @@ Grundlegende Informationen zum Token, das über `AcquireTokenInteractive` oder `
 |Eigenschaft  |Format  |BESCHREIBUNG |
 |---------|---------|---------|
 |**Benutzername** |<span>user@domain.com</span> |Der zur Identifizierung des Benutzers verwendete Benutzername|
-|**Ablaufdatum des Tokens** |Datetime |Die Uhrzeit, zu der das Token abläuft. MSAL verlängert die Ablauffrist, indem das Token bei Bedarf verlängert wird.|
+|**Ablaufdatum des Tokens** |DateTime |Die Uhrzeit, zu der das Token abläuft. MSAL verlängert die Ablauffrist, indem das Token bei Bedarf verlängert wird.|
 
 ### <a name="more-information-about-scopes-and-delegated-permissions"></a>Weitere Informationen zu Bereichen und delegierten Berechtigungen
 

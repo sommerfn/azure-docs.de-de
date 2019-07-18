@@ -8,16 +8,16 @@ ms.topic: include
 ms.date: 04/19/2018
 ms.author: dobett
 ms.custom: include file
-ms.openlocfilehash: a7a86c6a2661a8a1f30491391fc76f4dc5d71f54
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.openlocfilehash: 367a0b1d17f8d5ebe4f46835ace963b00e75354e
+ms.sourcegitcommit: 6b41522dae07961f141b0a6a5d46fd1a0c43e6b2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67178716"
+ms.lasthandoff: 07/15/2019
+ms.locfileid: "68229252"
 ---
 So erstellen Sie eine IoT Hub-Instanz über das Azure-Portal:
 
-1. Melden Sie sich beim [Azure-Portal](http://portal.azure.com) an.
+1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
 
 1. Wählen Sie **Ressource erstellen** > **Internet der Dinge (IoT)**  > **IoT Hub** aus.
 
@@ -27,8 +27,8 @@ So erstellen Sie eine IoT Hub-Instanz über das Azure-Portal:
 
     | Einstellung | Wert |
     | ------- | ----- |
-    | Abonnement | Wählen Sie Ihr Azure-Abonnement in der Dropdownliste aus. |
-    | Ressourcengruppe | Erstellen Sie eine neue Ressourcengruppe. In diesem Tutorial wird der Name **tutorials-iot-hub-rg** verwendet. |
+    | Subscription | Wählen Sie Ihr Azure-Abonnement in der Dropdownliste aus. |
+    | Resource group | Erstellen Sie eine neue Ressourcengruppe. In diesem Tutorial wird der Name **tutorials-iot-hub-rg** verwendet. |
     | Region | In diesem Tutorial wird **USA, Westen** verwendet. Sie können die Region auswählen, die Ihnen am nächsten ist. |
     | NAME | Im folgenden Screenshot wird der Name **tutorials-iot-hub** verwendet. Sie müssen einen eigenen eindeutigen Namen wählen, wenn Sie Ihren Hub erstellen. |
 

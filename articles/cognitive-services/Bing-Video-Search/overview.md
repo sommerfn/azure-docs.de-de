@@ -10,12 +10,12 @@ ms.subservice: bing-video-search
 ms.topic: overview
 ms.date: 06/26/2019
 ms.author: scottwhi
-ms.openlocfilehash: 7b17c03b464ed7ccc13de2221c8e4cb36be05c3f
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: 64d6613a5bfb9b13500d2263d2f826d342972639
+ms.sourcegitcommit: 10251d2a134c37c00f0ec10e0da4a3dffa436fb3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67442705"
+ms.lasthandoff: 07/13/2019
+ms.locfileid: "67867850"
 ---
 # <a name="what-is-the-bing-video-search-api"></a>Worum handelt es sich bei der Bing-Videosuche-API?
 
@@ -27,7 +27,7 @@ ms.locfileid: "67442705"
 |-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | [In Echtzeit vorgeschlagene Suchbegriffe](concepts/sending-requests.md#suggest-search-terms-with-the-bing-autosuggest-api) | Verwenden Sie die [Bing-Vorschlagssuche-API](../bing-autosuggest/get-suggested-search-terms.md), um während der Eingabe Suchvorschläge anzuzeigen und die Benutzerfreundlichkeit Ihrer App zu verbessern. |
 | [Filtern und Einschränken von Videoergebnissen](concepts/get-videos.md#filtering-videos)                      | Filtern Sie durch die Bearbeitung von Abfrageparametern die zurückgegebenen Videos.                                                                                                       |
-| [Zuschneiden, Ändern der Größe und Anzeigen Miniaturansichten](resize-and-crop-thumbnails.md)                                                | Für die von der Bing-Videosuche-API zurückgegebenen Videos können Miniaturansichten als Vorschau bearbeitet und angezeigt werden.                                                                                      |
+| [Zuschneiden, Ändern der Größe und Anzeigen Miniaturansichten](../bing-web-search/resize-and-crop-thumbnails.md)                                                | Für die von der Bing-Videosuche-API zurückgegebenen Videos können Miniaturansichten als Vorschau bearbeitet und angezeigt werden.                                                                                      |
 | [Abrufen von beliebten Videos](trending-videos.md) | Suchen Sie nach beliebten Videos aus der ganzen Welt.                                                                                                          |
 | [Gewinnen von Erkenntnissen aus Videos](video-insights.md) | Richten Sie eine Suche nach beliebten Videos aus der ganzen Welt ein.                                                                                                          |
 

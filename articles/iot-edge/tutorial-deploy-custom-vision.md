@@ -9,12 +9,12 @@ ms.date: 06/25/2019
 ms.topic: tutorial
 ms.service: iot-edge
 ms.custom: mvc, seodec18
-ms.openlocfilehash: 12b141f9aa75231adae9f64c57709f290883b420
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: 629b484d27d863727d180bb3e2d01b605ca539a6
+ms.sourcegitcommit: fa45c2bcd1b32bc8dd54a5dc8bc206d2fe23d5fb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67433937"
+ms.lasthandoff: 07/12/2019
+ms.locfileid: "67850132"
 ---
 # <a name="tutorial-perform-image-classification-at-the-edge-with-custom-vision-service"></a>Tutorial: Durchführen von Bildklassifizierungen im Edge-Bereich mit dem Custom Vision Service
 
@@ -141,17 +141,9 @@ Eine Projektmappe ist eine logische Methode, um mehrerer Module für eine einzel
 
 1. Wählen Sie in Visual Studio Code **Ansicht** > **Terminal** aus, um das in Visual Studio Code integrierte Terminal zu öffnen.
 
-2. Geben Sie im integrierten Terminal den folgenden Befehl ein, um **Cookiecutter** zu installieren (oder zu aktualisieren). Cookiecutter wird zum Erstellen der IoT Edge-Python-Modulvorlage in VS Code verwendet:
+1. Klicken Sie auf **Ansicht** > **Befehlspalette**, um die VS Code-Befehlspalette zu öffnen. 
 
-    ```cmd/sh
-    pip install --upgrade --user cookiecutter
-    ```
-   >[!Note]
-   >Vergewissern Sie sich, dass sich das Verzeichnis, in dem Cookiecutter installiert wird, im `Path` Ihrer Umgebung befindet, damit das Programm über eine Eingabeaufforderung aufgerufen werden kann.
-
-3. Klicken Sie auf **Ansicht** > **Befehlspalette**, um die VS Code-Befehlspalette zu öffnen. 
-
-4. Geben Sie in der Befehlspalette den Befehl **Azure IoT Edge: New IoT Edge Solution** (Azure IoT Edge: Neue IoT Edge-Projektmappe) ein, und führen Sie ihn aus. Geben Sie in der Befehlspalette die folgenden Informationen an, um die Projektmappe zu erstellen: 
+1. Geben Sie in der Befehlspalette den Befehl **Azure IoT Edge: New IoT Edge Solution** (Azure IoT Edge: Neue IoT Edge-Projektmappe) ein, und führen Sie ihn aus. Geben Sie in der Befehlspalette die folgenden Informationen an, um die Projektmappe zu erstellen: 
 
    | Feld | Wert |
    | ----- | ----- |

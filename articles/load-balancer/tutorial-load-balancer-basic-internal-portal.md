@@ -4,7 +4,7 @@ titlesuffix: Azure Load Balancer
 description: In diesem Tutorial wird gezeigt, wie Sie einen internen Load Balancer im Tarif „Basic“ über das Azure-Portal erstellen.
 services: load-balancer
 documentationcenter: na
-author: KumudD
+author: asudbring
 manager: twooley
 Customer intent: As an IT administrator, I want to create a load balancer that load balances incoming internal traffic to virtual machines within a specific zone in a region.
 ms.service: load-balancer
@@ -13,14 +13,14 @@ ms.topic: tutorial
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/27/2019
-ms.author: kumud
+ms.author: allensu
 ms.custom: seodec18
-ms.openlocfilehash: 56568cfb8fc659308475e581955e5acbdfd32b44
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 09a73b5d97e46797dd880f64383fdf03fd591f3d
+ms.sourcegitcommit: 9a699d7408023d3736961745c753ca3cec708f23
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59489313"
+ms.lasthandoff: 07/16/2019
+ms.locfileid: "68273499"
 ---
 # <a name="tutorial-balance-internal-traffic-load-with-a-basic-load-balancer-in-the-azure-portal"></a>Tutorial: Ausgleichen der internen Datenverkehrslast mithilfe eines Lastenausgleichs im Tarif „Basic“ über das Azure-Portal
 
@@ -91,11 +91,11 @@ Erstellen Sie einen internen Load Balancer im Tarif „Basic“, indem Sie das P
 
     | Einstellung                 | Wert                                              |
     | ---                     | ---                                                |
-    | Abonnement               | Wählen Sie Ihr Abonnement aus.    |    
-    | Ressourcengruppe         | Wählen Sie **Neu erstellen**, und geben Sie *MyResourceGroupLB* in das Textfeld ein.|
+    | Subscription               | Wählen Sie Ihr Abonnement aus.    |    
+    | Resource group         | Wählen Sie **Neu erstellen**, und geben Sie *MyResourceGroupLB* in das Textfeld ein.|
     | NAME                   | *myLoadBalancer*                                   |
     | Region         | Wählen Sie **Europa, Westen** aus.                                        |
-    | Type          | Wählen Sie **Intern** aus.                                        |
+    | type          | Wählen Sie **Intern** aus.                                        |
     | SKU           | Wählen Sie **Basic** aus.                          |
     | Virtuelles Netzwerk           | Wählen Sie *MyVNet* aus.                          |    
     | IP-Adresszuweisung              | Wählen Sie **Statisch** aus.   |

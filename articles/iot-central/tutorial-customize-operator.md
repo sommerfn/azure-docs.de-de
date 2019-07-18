@@ -3,17 +3,17 @@ title: Anpassen der Ansichten für Bediener in Azure IoT Central | Microsoft-Dok
 description: Als Ersteller können Sie die Ansichten für Bediener in Ihrer Azure IoT Central-Anwendung anpassen.
 author: sandeeppujar
 ms.author: sandeepu
-ms.date: 03/26/2019
+ms.date: 07/09/2019
 ms.topic: tutorial
 ms.service: iot-central
 services: iot-central
 ms.custom: mvc
-ms.openlocfilehash: 7fc42b24090b5fc68176fea2c7b993643ea24200
-ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
+ms.openlocfilehash: ced771002ca9f542f89dbf74ba4a4745ad2a0339
+ms.sourcegitcommit: fa45c2bcd1b32bc8dd54a5dc8bc206d2fe23d5fb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59678223"
+ms.lasthandoff: 07/12/2019
+ms.locfileid: "67850178"
 ---
 # <a name="tutorial-customize-the-azure-iot-central-operators-view"></a>Tutorial: Anpassen der Azure IoT Central-Ansicht für Bediener
 

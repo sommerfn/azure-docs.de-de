@@ -13,18 +13,17 @@ ms.topic: tutorial
 ms.date: 01/22/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 49d6a06c2cd13c240a0843ef29fd6cc832c30384
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: e2f4f214523d9d42761323ec02ca6dae4c20bba6
+ms.sourcegitcommit: 64798b4f722623ea2bb53b374fb95e8d2b679318
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "66122578"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67839431"
 ---
 # <a name="tutorial-create-a-pipeline-with-copy-activity-using-net-api"></a>Tutorial: Erstellen einer Pipeline mit Kopieraktivität mithilfe der .NET-API
 > [!div class="op_single_selector"]
 > * [Übersicht und Voraussetzungen](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)
 > * [Kopier-Assistent](data-factory-copy-data-wizard-tutorial.md)
-> * [Azure-Portal](data-factory-copy-activity-tutorial-using-azure-portal.md)
 > * [Visual Studio](data-factory-copy-activity-tutorial-using-visual-studio.md)
 > * [PowerShell](data-factory-copy-activity-tutorial-using-powershell.md)
 > * [Azure Resource Manager-Vorlage](data-factory-copy-activity-tutorial-using-azure-resource-manager-template.md)
@@ -136,7 +135,7 @@ Nach diesen Schritten sollten Sie über vier Werte verfügen:
    2. Führen Sie den folgenden Befehl zum Installieren des Azure Active Directory-Pakets aus (Sie verwenden die Active Directory-API im Code): `Install-Package Microsoft.IdentityModel.Clients.ActiveDirectory -Version 2.19.208020213`
 4. Fügen Sie der Datei **App.config** den folgenden **appSettings**-Abschnitt hinzu. Diese Einstellungen werden von der Hilfsmethode **GetAuthorizationHeader**verwendet.
 
-    Ersetzen Sie die Werte für **&lt;Anwendungs-ID&gt;**, **&lt;Kennwort&gt;**, **&lt;Abonnement-ID&gt;** und **&lt;Mandanten-ID&gt;** durch Ihre eigenen Werte.
+    Ersetzen Sie die Werte für **&lt;Anwendungs-ID&gt;** , **&lt;Kennwort&gt;** , **&lt;Abonnement-ID&gt;** und **&lt;Mandanten-ID&gt;** durch Ihre eigenen Werte.
 
     ```xml
     <?xml version="1.0" encoding="utf-8" ?>

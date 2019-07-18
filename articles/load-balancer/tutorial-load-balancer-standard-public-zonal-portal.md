@@ -4,7 +4,7 @@ titlesuffix: Azure Load Balancer
 description: In diesem Tutorial wird gezeigt, wie Sie einen Load Balancer Standard mit einem zonalen Front-End erstellen, um mit dem Azure-Portal einen Lastenausgleich für virtuelle Computer innerhalb einer Verfügbarkeitszone vorzunehmen.
 services: load-balancer
 documentationcenter: na
-author: KumudD
+author: asudbring
 manager: twooley
 Customer intent: As an IT administrator, I want to create a load balancer that load balances incoming internet traffic to virtual machines within a specific zone in a region.
 ms.service: load-balancer
@@ -13,14 +13,14 @@ ms.topic: tutorial
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/27/2019
-ms.author: kumud
+ms.author: allensu
 ms.custom: seodec18
-ms.openlocfilehash: 563b54fe9b4ab65cd8d3008e9d3955618194031f
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 0ec9fae1ce4ef976d5f50e1d8d8412354706c5f8
+ms.sourcegitcommit: 9a699d7408023d3736961745c753ca3cec708f23
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57899545"
+ms.lasthandoff: 07/16/2019
+ms.locfileid: "68273398"
 ---
 # <a name="tutorial-load-balance-vms-within-an-availability-zone-with-standard-load-balancer-by-using-the-azure-portal"></a>Tutorial: Durchführen eines Lastenausgleichs für virtuelle Computer innerhalb einer Verfügbarkeitszone mit Load Balancer Standard im Azure-Portal
 
@@ -52,11 +52,11 @@ Für Load Balancer Standard wird nur eine öffentliche Standard-IP-Adresse unter
 
     | Einstellung                 | Wert                                              |
     | ---                     | ---                                                |
-    | Abonnement               | Wählen Sie Ihr Abonnement aus.    |    
-    | Ressourcengruppe         | Wählen Sie **Neu erstellen**, und geben Sie *MyResourceGroupZLB* in das Textfeld ein.|
+    | Subscription               | Wählen Sie Ihr Abonnement aus.    |    
+    | Resource group         | Wählen Sie **Neu erstellen**, und geben Sie *MyResourceGroupZLB* in das Textfeld ein.|
     | NAME                   | *myLoadBalancer*                                   |
     | Region         | Wählen Sie **Europa, Westen** aus.                                        |
-    | Type          | Wählen Sie **Öffentlich** aus.                                        |
+    | type          | Wählen Sie **Öffentlich** aus.                                        |
     | SKU           | Wählen Sie **Standard** aus.                          |
     | Öffentliche IP-Adresse | Wählen Sie **Neu erstellen**. |
     | Name der öffentlichen IP-Adresse              | Geben Sie *myPublicIP* in das Textfeld ein.   |

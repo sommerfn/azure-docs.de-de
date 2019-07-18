@@ -12,12 +12,12 @@ ms.topic: overview
 ms.date: 02/06/2019
 ms.author: aahi
 ms.custom: seodec2018
-ms.openlocfilehash: c8213e7d725c7c06d40555176fff24be4cff7607
-ms.sourcegitcommit: 3d4121badd265e99d1177a7c78edfa55ed7a9626
+ms.openlocfilehash: 044cdde8e7c2f79835f4197ae70f7f0dc8d9ccec
+ms.sourcegitcommit: af58483a9c574a10edc546f2737939a93af87b73
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/30/2019
-ms.locfileid: "66388672"
+ms.lasthandoff: 07/17/2019
+ms.locfileid: "68302669"
 ---
 # <a name="what-is-the-bing-image-search-api"></a>Was ist die Bing-Bildersuche-API?
 
@@ -31,7 +31,7 @@ Die Bing-Bildersuche-API gibt als Suchergebnisse ausschließlich Bilder zurück.
 |-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | [In Echtzeit vorgeschlagene Suchbegriffe](https://docs.microsoft.com/azure/cognitive-services/bing-image-search/concepts/bing-image-search-sending-queries) | Verwenden Sie die [Bing-Vorschlagssuche-API](../bing-autosuggest/get-suggested-search-terms.md), um während der Eingabe Suchvorschläge anzuzeigen und die Benutzerfreundlichkeit Ihrer App zu verbessern. |
 | [Filtern und Einschränken von Bildergebnissen](https://docs.microsoft.com/azure/cognitive-services/bing-image-search/concepts/bing-image-search-get-images)                       | Bearbeiten Sie Abfrageparameter, um die von Bing zurückgegebenen Bilder zu filtern.                                                                                                       |
-| [Zuschneiden, Ändern der Größe und Anzeigen Miniaturansichten](https://docs.microsoft.com/azure/cognitive-services/bing-image-search/resize-and-crop-thumbnails)                                                | Für die von der Bing-Bildersuche zurückgegebenen Bilder können Miniaturansichten als Vorschau bearbeitet und angezeigt werden.                                                                                      |
+| [Zuschneiden, Ändern der Größe und Anzeigen Miniaturansichten](https://docs.microsoft.com/azure/cognitive-services/bing-web-search/resize-and-crop-thumbnails)                                                | Für die von der Bing-Bildersuche zurückgegebenen Bilder können Miniaturansichten als Vorschau bearbeitet und angezeigt werden.                                                                                      |
 | [Pivotieren und Erweitern der Suchabfragen von Benutzern](https://docs.microsoft.com/azure/cognitive-services/bing-image-search/concepts/bing-image-search-sending-queries)               | Erweitern Sie Ihre Suchfunktionen, indem Sie von Bing vorgeschlagene Suchbegriffe in Abfragen einschließen und anzeigen.                                                                    |
 | [Abrufen von beliebten Bildern](https://review.docs.microsoft.com/azure/cognitive-services/bing-image-search/trending-images)                                                                     | Richten Sie eine Suche nach beliebten Bildern aus der ganzen Welt ein.                                                                                                          |
 
