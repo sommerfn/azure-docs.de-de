@@ -188,7 +188,7 @@ Dieser Abschnitt ist ein Pflichtabschnitt. Er definiert die Eigenschaften für d
 | Elementname | Erforderlich | description |
 |:--|:--|:--|
 | Operator | Ja | Operator für den Vergleich der folgenden Werte:<br><br>**gt = Greater Than (Größer als)<br>lt = Less Than (Kleiner als)** |
-| Wert | Ja | Der Wert zum Vergleich der Ergebnisse |
+| Value | Ja | Der Wert zum Vergleich der Ergebnisse |
 
 ##### <a name="metricstrigger"></a>MetricsTrigger
 Dieser Abschnitt ist optional. Fügen Sie ihn für eine Warnung aufgrund metrischer Messungen ein.
