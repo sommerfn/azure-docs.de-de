@@ -10,12 +10,12 @@ ms.subservice: text-analytics
 ms.topic: conceptual
 ms.date: 06/18/2019
 ms.author: aahi
-ms.openlocfilehash: 5e4f231db781b96fe204802555b56238b9e27e52
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: 558ce8950a1848f0cddc247f60dd4e75dd20ccf0
+ms.sourcegitcommit: 770b060438122f090ab90d81e3ff2f023455213b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67442664"
+ms.lasthandoff: 07/17/2019
+ms.locfileid: "68305479"
 ---
 # <a name="language-and-region-support-for-the-text-analytics-api"></a>Sprach- und Regionsunterstützung für die Textanalyse-API
 
@@ -48,13 +48,13 @@ Die Sprachunterstützung wird in der Vorschauversion eingeführt und soll allmä
 |:----------- |:-------------:|:---------:|:-----------:|:-----------:|:-----------:
 | Arabisch      | `ar`          |           |             | ✔ \*                     | |
 | Tschechisch       | `cs`          |           |             | ✔ \*                     | |
-| Chinesisch (vereinfacht) | `zh-CN`|           |             | ✔ \*        |    |
+| Chinesisch (vereinfacht) | `zh-CN`|           |             | ✔         |    |
 | Dänisch      | `da`          | ✔ \*     | ✔           | ✔ \*            |     |
 | Niederländisch       | `nl`          | ✔ \*     | ✔          |  ✔ \*           |     |
 | Englisch     | `en`          | ✔        | ✔           |  ✔ \*\*     |      |
 | Finnisch     | `fi`          | ✔ \*     | ✔           |  ✔ \*           |     |
-| Französisch      | `fr`          | ✔        | ✔           |  ✔ \*           |     |
-| Deutsch      | `de`          | ✔ \*     | ✔           |  ✔ \*          |     |
+| Französisch      | `fr`          | ✔        | ✔           |  ✔            |     |
+| Deutsch      | `de`          | ✔ \*     | ✔           |  ✔           |     |
 | Griechisch       | `el`          | ✔ \*     |             |            |     |
 | Ungarisch   | `hu`          |           |             |  ✔ \*          |     | 
 | Italienisch     | `it`          | ✔ \*     | ✔           |  ✔ \*           |     |

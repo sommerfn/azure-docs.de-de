@@ -12,13 +12,14 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/15/2018
-ms.author: yagup;kumud
-ms.openlocfilehash: 07bff578b27df13c65eb912a64b6a44b97175d37
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.author: kumud
+ms.reviewer: yagup
+ms.openlocfilehash: ca3174ad69185da88bf89c843f641dd2b20d9ac5
+ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67051671"
+ms.lasthandoff: 07/15/2019
+ms.locfileid: "67872487"
 ---
 # <a name="traffic-analytics"></a>Traffic Analytics
 
@@ -60,7 +61,7 @@ Datenverkehranalysen für Netzwerksicherheitsgruppen werden in den folgenden Reg
 
 * Kanada, Mitte
 * USA, Westen-Mitte
-* USA (Ost)
+* East US
 * USA (Ost) 2
 * USA Nord Mitte
 * USA Süd Mitte
@@ -87,7 +88,7 @@ Datenverkehranalysen für Netzwerksicherheitsgruppen werden in den folgenden Reg
 Der Log Analytics-Arbeitsbereich muss in den folgenden Regionen vorhanden sein:
 * Kanada, Mitte
 * USA, Westen-Mitte
-* USA (Ost)
+* East US
 * USA (Ost) 2
 * USA Süd Mitte
 * USA (Westen)
@@ -112,7 +113,7 @@ Der Log Analytics-Arbeitsbereich muss in den folgenden Regionen vorhanden sein:
 
 Ihr Konto muss Mitglied in einer der folgenden [integrierten Azure-Rollen](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json) sein:
 
-|Bereitstellungsmodell   | Rolle                   |
+|Bereitstellungsmodell   | Role                   |
 |---------          |---------               |
 |Ressourcen-Manager   | Owner (Besitzer)                  |
 |                   | Mitwirkender            |

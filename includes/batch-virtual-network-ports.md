@@ -12,15 +12,15 @@ ms.devlang: na
 ms.topic: include
 ms.tgt_pltfrm: na
 ms.workload: ''
-ms.date: 04/10/2019
+ms.date: 07/16/2019
 ms.author: lahugh
 ms.custom: include file
-ms.openlocfilehash: a794852e68fdb2bf52717aaa6441880bd1d51139
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: 48f5d9b4c1ef68b8295d531a5e5b447fed3a7945
+ms.sourcegitcommit: a6873b710ca07eb956d45596d4ec2c1d5dc57353
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67436269"
+ms.lasthandoff: 07/16/2019
+ms.locfileid: "68286201"
 ---
 ### <a name="general-requirements"></a>Allgemeine Anforderungen
 
@@ -28,9 +28,9 @@ ms.locfileid: "67436269"
 
 * Der Pool, der das VNET verwendet, kann bis zu 4.096 Knoten umfassen.
 
-* Das für den Pool angegebene Subnetz muss über ausreichend nicht zugewiesene IP-Adressen verfügen, um die Anzahl virtueller Computer aufnehmen zu können, die für den Pool geplant sind, d. h. die Summe der `targetDedicatedNodes`- und `targetLowPriorityNodes`-Eigenschaften des Pools. Wenn das Subnetz nicht über ausreichend nicht zugewiesene IP-Adressen verfügt, belegt der Pool teilweise die Computeknoten und es tritt ein Anpassungsfehler auf. 
+* Das für den Pool angegebene Subnetz muss über ausreichend nicht zugewiesene IP-Adressen verfügen, um die Anzahl virtueller Computer aufnehmen zu können, die für den Pool geplant sind, d. h. die Summe der `targetDedicatedNodes`- und `targetLowPriorityNodes`-Eigenschaften des Pools. Wenn das Subnetz nicht über ausreichend nicht zugewiesene IP-Adressen verfügt, belegt der Pool teilweise die Computeknoten und es tritt ein Anpassungsfehler auf. 
 
-* Ihr Azure Storage-Endpunkt muss von jedem benutzerdefinierten DNS-Server aufgelöst werden, der Ihr VNET bedient. Insbesondere URLs im Format `<account>.table.core.windows.net`, `<account>.queue.core.windows.net` und `<account>.blob.core.windows.net` müssen auflösbar sein. 
+* Ihr Azure Storage-Endpunkt muss von jedem benutzerdefinierten DNS-Server aufgelöst werden, der Ihr VNET bedient. Insbesondere URLs im Format `<account>.table.core.windows.net`, `<account>.queue.core.windows.net` und `<account>.blob.core.windows.net` müssen auflösbar sein. 
 
 Darüber hinaus gelten ggf. noch weitere VNET-Anforderungen. Diese hängen jedoch davon ab, ob sich der Batch-Pool in der Konfiguration des virtuellen Computers oder in der Cloud Services-Konfiguration befindet. Für neue Poolbereitstellungen in einem VNET wird die Konfiguration des virtuellen Computers empfohlen.
 
@@ -82,10 +82,10 @@ Sie müssen keine NSGs auf der Subnetzebene angeben, da Batch eigene NSGs konfig
 **Subnetz-ID:** Verwenden Sie den *Ressourcenbezeichner* des Subnetzes, wenn Sie das Subnetz über die Batch-APIs angeben. Die Subnetz-ID hat folgendes Format:
 
   ```
-  /subscriptions/{subscription}/resourceGroups/{group}/providers/Microsoft.ClassicVirtualNetwork /virtualNetworks/{network}/subnets/{subnet}
+  /subscriptions/{subscription}/resourceGroups/{group}/providers/Microsoft.ClassicNetwork /virtualNetworks/{network}/subnets/{subnet}
   ```
 
-**Berechtigungen:** Der Dienstprinzipal `MicrosoftAzureBatch` muss für das angegebene VNET über die RBAC-Rolle `Classic Virtual Machine Contributor` verfügen.
+**Berechtigungen:** Der Dienstprinzipal `Microsoft Azure Batch` muss für das angegebene VNET über die RBAC-Rolle `Classic Virtual Machine Contributor` verfügen.
 
 #### <a name="network-security-groups"></a>Netzwerksicherheitsgruppen
 

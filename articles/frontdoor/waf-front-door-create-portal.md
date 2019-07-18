@@ -12,13 +12,14 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/31/2019
-ms.author: kumud;tyao
-ms.openlocfilehash: 15a80dac0e0601480e22ad960f2827f3d8f290c0
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.author: kumud
+ms.reviewer: tyao
+ms.openlocfilehash: abaef0fb521d848134885a06591b0656c60c67e6
+ms.sourcegitcommit: fa45c2bcd1b32bc8dd54a5dc8bc206d2fe23d5fb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66479065"
+ms.lasthandoff: 07/12/2019
+ms.locfileid: "67846391"
 ---
 # <a name="create-a-waf-policy-for-azure-front-door-by-using-the-azure-portal"></a>Erstellen einer WAF-Richtlinie für Azure Front Door im Azure-Portal
 
@@ -37,8 +38,8 @@ Erstellen Sie zuerst im Portal mithilfe des verwalteten Standardregelsatzes eine
 
     | Einstellung                 | Wert                                              |
     | ---                     | ---                                                |
-    | Abonnement            |Wählen Sie den Namen Ihres Front Door-Abonnements aus.|
-    | Ressourcengruppe          |Wählen Sie den Namen Ihrer Front Door-Ressourcengruppe aus.|
+    | Subscription            |Wählen Sie den Namen Ihres Front Door-Abonnements aus.|
+    | Resource group          |Wählen Sie den Namen Ihrer Front Door-Ressourcengruppe aus.|
     | Richtlinienname             |Geben Sie einen eindeutigen Namen für Ihre WAF-Richtlinie ein.|
 
    ![Erstellen einer WAF-Richtlinie](./media/waf-front-door-create-portal/basic.png)

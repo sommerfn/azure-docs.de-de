@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/20/2019
 ms.author: iainfou
-ms.openlocfilehash: d34f6c9ea014759ec2ba310786cd524ff69094af
-ms.sourcegitcommit: f811238c0d732deb1f0892fe7a20a26c993bc4fc
+ms.openlocfilehash: c4a04f55f4f69521f00ed450a2d3d1a80b56761c
+ms.sourcegitcommit: b2db98f55785ff920140f117bfc01f1177c7f7e2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/29/2019
-ms.locfileid: "67473342"
+ms.lasthandoff: 07/16/2019
+ms.locfileid: "68234092"
 ---
 # <a name="join-a-centos-linux-virtual-machine-to-a-managed-domain"></a>Einbinden eines virtuellen CentOS Linux-Computers in eine verwaltete Domäne
 Dieser Artikel beschreibt, wie ein virtueller CentOS Linux-Computer einer durch Azure AD Domain Services verwalteten Domäne beitritt.
@@ -57,24 +57,25 @@ Befolgen Sie die Anweisungen im Artikel [Anmelden bei einem virtuellen Computer 
 ## <a name="configure-the-hosts-file-on-the-linux-virtual-machine"></a>Konfigurieren der Hostdatei auf dem virtuellen Linux-Computer
 Bearbeiten Sie in Ihrem SSH-Terminal die Datei „/etc/hosts“, und aktualisieren Sie die IP-Adresse und den Hostnamen Ihres Computers.
 
-```
+```console
 sudo vi /etc/hosts
 ```
 
 Geben Sie in der Hostdatei die folgenden Wert ein:
 
-```
+```console
 127.0.0.1 contoso-centos.contoso100.com contoso-centos
 ```
+
 „contoso100.com“ steht für den DNS-Domänennamen Ihrer verwalteten Domäne. „contoso-centos“ steht für den Hostnamen des virtuellen CentOS-Computers, den Sie in die verwaltete Domäne einbinden.
 
 
 ## <a name="install-required-packages-on-the-linux-virtual-machine"></a>Installieren der erforderlichen Pakete auf dem virtuellen Linux-Computer
 Als Nächstes installieren Sie Pakete, die für den Domänenbeitritt auf dem virtuellen Computer erforderlich sind. Geben Sie die folgenden Befehl in Ihrem SSH-Terminal ein, um die erforderlichen Pakete zu installieren:
 
-    ```
-    sudo yum install realmd sssd krb5-workstation krb5-libs oddjob oddjob-mkhomedir samba-common-tools
-    ```
+```console
+sudo yum install realmd sssd krb5-workstation krb5-libs oddjob oddjob-mkhomedir samba-common-tools
+```
 
 
 ## <a name="join-the-linux-virtual-machine-to-the-managed-domain"></a>Einbinden der virtuellen Linux-Computers in die verwaltete Domäne
@@ -82,7 +83,7 @@ Nachdem die erforderlichen Pakete auf dem virtuellen Linux-Computer installiert 
 
 1. Ermitteln Sie die durch Azure AD-Domänendienste verwaltete Domäne. Geben Sie in Ihrem SSH-Terminal folgenden Befehl ein:
 
-    ```
+    ```console
     sudo realm discover CONTOSO100.COM
     ```
 
@@ -97,9 +98,8 @@ Nachdem die erforderlichen Pakete auf dem virtuellen Linux-Computer installiert 
     > [!TIP]
     > * Geben Sie einen Benutzer an, der zur Gruppe „AAD DC-Administratoren“ gehört.
     > * Geben Sie den Domänennamen in Großbuchstaben an. Andernfalls führt kinit zu einem Fehler.
-    >
 
-    ```
+    ```console
     kinit bob@CONTOSO100.COM
     ```
 
@@ -107,9 +107,8 @@ Nachdem die erforderlichen Pakete auf dem virtuellen Linux-Computer installiert 
 
     > [!TIP]
     > Verwenden Sie das gleiche Benutzerkonto, das Sie im vorherigen Schritt („kinit“) angegeben haben.
-    >
 
-    ```
+    ```console
     sudo realm join --verbose CONTOSO100.COM -U 'bob@CONTOSO100.COM'
     ```
 
@@ -120,17 +119,20 @@ Wenn der Computer erfolgreich in die verwaltete Domäne eingebunden wurde, sollt
 Überprüfen Sie, ob der Computer der verwalteten Domäne erfolgreich beigetreten ist. Stellen Sie über eine andere SSH-Verbindung eine Verbindung mit der Domäne her, der der virtuelle CentOS-Computers beigetreten ist. Verwenden Sie ein Domänenbenutzerkonto, und überprüfen Sie anschließend, ob das Benutzerkonto ordnungsgemäß aufgelöst wurde.
 
 1. Geben Sie in Ihrem SSH-Terminal den folgenden Befehl ein, um über SSH eine Verbindung mit dem der Domäne beigetretenen virtuellen CentOS-Computer herzustellen. Verwenden Sie ein Domänenkonto, das zu der verwalteten Domäne gehört (in diesem Fall z.B. 'bob@CONTOSO100.COM').
-    ```
+    
+    ```console
     ssh -l bob@CONTOSO100.COM contoso-centos.contoso100.com
     ```
 
 2. Geben Sie in Ihrem SSH-Terminal den folgenden Befehl ein, um zu ermitteln, ob das Basisverzeichnis ordnungsgemäß initialisiert wurde.
-    ```
+   
+    ```console
     pwd
     ```
 
 3. Geben Sie in Ihrem SSH-Terminal den folgenden Befehl ein, um zu ermitteln, ob die Gruppenmitgliedschaften ordnungsgemäß aufgelöst wurden.
-    ```
+    
+    ```console
     id
     ```
 

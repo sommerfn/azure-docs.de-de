@@ -14,13 +14,13 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 12/18/2018
-ms.author: rajraj
-ms.openlocfilehash: bab264769576b6e5478236c452d7de920d887c1a
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.author: drewm
+ms.openlocfilehash: f97c7e6971fb9c58a3f08959c00c84e64e160916
+ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60617978"
+ms.lasthandoff: 07/15/2019
+ms.locfileid: "67871958"
 ---
 # <a name="choosing-the-right-number-of-fault-domains-for-virtual-machine-scale-set"></a>Auswählen der richtigen Anzahl von Fehlerdomänen für VM-Skalierungsgruppen
 VM-Skalierungsgruppen werden in Azure-Regionen ohne Zonen standardmäßig mit fünf Fehlerdomänen erstellt. Für die Regionen, die Zonenbereitstellung von VM-Skalierungsgruppen unterstützen, ist der Standardwert der Anzahl von Fehlerdomänen eine für jede Zone. FD = 1 bedeutet in diesem Fall, dass die zur Skalierungsgruppe gehörenden VM-Instanzen auf bestmögliche Weise über viele Racks verteilt werden.
@@ -47,4 +47,4 @@ az vmss create \
 Die Erstellung und Konfiguration aller Ressourcen und virtuellen Computer der Skalierungsgruppe dauert einige Minuten.
 
 ## <a name="next-steps"></a>Nächste Schritte
-- Erfahren Sie mehr über [Verfügbarkeits-und Redundanzfeatures](../virtual-machines/windows/regions-and-availability.md) für Azure-Umgebungen.
+- Erfahren Sie mehr über [Verfügbarkeits-und Redundanzfeatures](../virtual-machines/windows/availability.md) für Azure-Umgebungen.

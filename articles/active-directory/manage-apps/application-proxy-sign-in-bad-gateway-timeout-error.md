@@ -16,29 +16,28 @@ ms.date: 05/21/2019
 ms.author: mimart
 ms.reviewer: asteen
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7499dbe1f3f0b89a11814ad1b65a52bb9ba9fd05
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 734aeac1f4f2850d73dcdc9f9cc6ceac45708884
+ms.sourcegitcommit: 47ce9ac1eb1561810b8e4242c45127f7b4a4aa1a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66016076"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67807726"
 ---
 # <a name="cant-access-this-corporate-application-error-when-using-an-application-proxy-application"></a>Fehler „Zugriff auf diese Unternehmensanwendung nicht möglich“ bei Verwendung der Anwendungsproxyanwendung
 
 In diesem Artikel erhalten Sie Unterstützung bei der Problembehandlung von häufigen Fehlern, wenn der Fehler „Zugriff auf diese Unternehmens-App nicht möglich“ in einer Azure AD-Anwendungsproxyanwendung auftritt.
 
 ## <a name="overview"></a>Übersicht
+
 Wenn dieser Fehler angezeigt wird, suchen Sie den Statuscode auf der Seite mit dem Fehler. Es handelt sich bei dem Code wahrscheinlich um einen der folgenden Statuscodes:
 
--   **Gatewaytimeout:** Der Anwendungsproxydienst kann den Connector nicht erreichen. Dieser Fehler deutet in der Regel auf ein Problem mit der Connectorzuweisung, dem Connector selbst oder den Netzwerkregeln für den Connector hin.
-
--   **Ungültiges Gateway:** Der Connector kann die Back-End-Anwendung nicht erreichen. Dieser Fehler kann auf eine Fehlkonfiguration der Anwendung hinweisen.
-
--   **Verboten:** Der Benutzer ist nicht autorisiert, auf die Anwendung zuzugreifen. Dieser Fehler kann vorkommen, wenn der Benutzer der Anwendung in Azure Active Directory nicht zugewiesen ist oder wenn der Benutzer auf dem Back-End nicht über die Berechtigung zum Zugriff auf die Anwendung verfügt.
+- **Gatewaytimeout:** Der Anwendungsproxydienst kann den Connector nicht erreichen. Dieser Fehler deutet in der Regel auf ein Problem mit der Connectorzuweisung, dem Connector selbst oder den Netzwerkregeln für den Connector hin.
+- **Ungültiges Gateway:** Der Connector kann die Back-End-Anwendung nicht erreichen. Dieser Fehler kann auf eine Fehlkonfiguration der Anwendung hinweisen.
+- **Verboten:** Der Benutzer ist nicht autorisiert, auf die Anwendung zuzugreifen. Dieser Fehler kann vorkommen, wenn der Benutzer der Anwendung in Azure Active Directory nicht zugewiesen ist oder wenn der Benutzer auf dem Back-End nicht über die Berechtigung zum Zugriff auf die Anwendung verfügt.
 
 Den Code finden Sie im Text der Fehlermeldung im Feld „Statuscode“ unten links. Überprüfen Sie auch, ob auf der Seite im unteren Bereich zusätzliche Tipps vorhanden sind.
 
-   ![Fehler „Gatewaytimeout“](./media/application-proxy-sign-in-bad-gateway-timeout-error/connection-problem.png)
+![Beispiel: Fehler „Gatewaytimeout“](./media/application-proxy-sign-in-bad-gateway-timeout-error/connection-problem.png)
 
 Informationen zur Behandlung der grundlegenden Ursache für diesen Fehler und weitere Informationen zu den vorgeschlagenen Fehlerbehebungen finden Sie im entsprechenden Abschnitt weiter unten.
 
@@ -46,18 +45,14 @@ Informationen zur Behandlung der grundlegenden Ursache für diesen Fehler und we
 
 Ein Gatewaytimeout tritt auf, wenn der Dienst versucht, den Connector zu erreichen, und dies nicht innerhalb des Timeoutfensters möglich ist. Dieser Fehler wird normalerweise durch eine Anwendung verursacht, die einer Connectorgruppe ohne funktionierende Connectors zugewiesen ist, oder wenn einige vom Connector benötigte Ports geschlossen sind.
 
-
 ## <a name="bad-gateway-errors"></a>Fehler „Ungültiges Gateway“
 
 Der Fehler „Ungültiges Gateway“ gibt an, dass der Connector die Back-End-Anwendung nicht erreichen kann. Stellen Sie sicher, dass Sie die richtige Anwendung veröffentlicht haben. Häufige Ursachen dieses Fehlers sind Folgende:
 
--   Ein Tippfehler oder ein Fehler in der internen URL
-
--   Ein nicht veröffentlichtes Stammverzeichnis der Anwendung. Beispiel: <http://expenses/reimbursement> wird veröffentlicht, jedoch wird versucht, auf <http://expenses> zuzugreifen.
-
--   Probleme mit der Konfiguration der eingeschränkten Kerberos-Delegierung (KCD)
-
--   Probleme mit der Back-End-Anwendung
+- Ein Tippfehler oder ein Fehler in der internen URL
+- Ein nicht veröffentlichtes Stammverzeichnis der Anwendung. Beispiel: <http://expenses/reimbursement> wird veröffentlicht, jedoch wird versucht, auf <http://expenses> zuzugreifen.
+- Probleme mit der Konfiguration der eingeschränkten Kerberos-Delegierung (KCD)
+- Probleme mit der Back-End-Anwendung
 
 ## <a name="forbidden-errors"></a>Fehler „Verboten“
 
@@ -76,18 +71,13 @@ Als ersten schnellen Schritt können Sie die interne URL überprüfen und korrig
 So überprüfen Sie, ob die Anwendung einer funktionierenden Connectorgruppe zugewiesen wurde
 
 1. Öffnen Sie die Anwendung im Verwaltungsportal, indem Sie zu **Azure Active Directory** navigieren und dann auf **Unternehmensanwendungen** und **Alle Anwendungen** klicken. Öffnen Sie die Anwendung, und wählen Sie dann im linken Menü **Anwendungsproxy** aus.
+1. Sehen Sie sich das Feld „Connectorgruppe“ an. Wenn keine aktiven Connectors in der Gruppe vorhanden sind, wird eine Warnung angezeigt. Wenn keine Warnungen angezeigt werden, setzen Sie den Vorgang fort und überprüfen, ob alle erforderlichen Ports zulässig sind.
+1. Wird die falsche Connectorgruppe angezeigt, wählen Sie die richtige Gruppe über die Dropdownliste aus, und bestätigen Sie, dass keine Warnungen mehr angezeigt werden. Wird die gewünschte Connectorgruppe angezeigt, klicken Sie auf die Warnung und öffnen die Seite zur Connectorverwaltung.
+1. Hier stehen Ihnen mehrere Möglichkeiten zur weiteren Problembehebung zur Verfügung:
 
-2. Sehen Sie sich das Feld „Connectorgruppe“ an. Wenn keine aktiven Connectors in der Gruppe vorhanden sind, wird eine Warnung angezeigt. Wenn keine Warnungen angezeigt werden, setzen Sie den Vorgang fort und überprüfen, ob alle erforderlichen Ports zulässig sind.
-
-3. Wird die falsche Connectorgruppe angezeigt, wählen Sie die richtige Gruppe über die Dropdownliste aus, und bestätigen Sie, dass keine Warnungen mehr angezeigt werden. Wird die gewünschte Connectorgruppe angezeigt, klicken Sie auf die Warnung und öffnen die Seite zur Connectorverwaltung.
-
-4. Hier stehen Ihnen mehrere Möglichkeiten zur weiteren Problembehebung zur Verfügung:
-
-   * Verschieben Sie einen aktiven Connector in die Gruppe: Wenn Sie über einen aktiven Connector verfügen, der dieser Gruppe angehören sollte und uneingeschränkten Zugriff auf die Back-End-Anwendung hat, können Sie den Connector in die zugewiesene Gruppe verschieben. Klicken Sie hierzu auf den Connector. Verwenden Sie im Feld „Connectorgruppe“ die Dropdownliste, um die richtige Gruppe auszuwählen, und klicken Sie dann auf „Speichern“.
-
-   * Herunterladen eines neuen Connectors für diese Gruppe: Auf dieser Seite finden Sie den Link zum [Herunterladen eines neuen Connectors](https://download.msappproxy.net/Subscription/d3c8b69d-6bf7-42be-a529-3fe9c2e70c90/Connector/Download). Installieren Sie den Connector auf einem Computer mit direktem Zugriff auf die Back-End-Anwendung. In der Regel ist der Connector auf dem selben Server wie die Anwendung installiert. Verwenden Sie den Downloadlink, um einen Connector auf den Zielcomputer herunterzuladen. Als Nächstes klicken Sie auf den Connector und verwenden die Dropdownliste „Connectorgruppe“, um sicherzustellen, dass er der richtigen Gruppe angehört.
-
-   * Untersuchen eines inaktiven Connectors: Wenn ein Connector als inaktiv angezeigt wird, kann er den Dienst nicht erreichen. Dieser Fehler liegt in der Regel darin begründet, dass einige erforderliche Ports blockiert werden. Um das Problem zu beheben, setzen Sie den Vorgang fort und überprüfen, ob alle erforderlichen Ports zulässig sind.
+   - Verschieben Sie einen aktiven Connector in die Gruppe: Wenn Sie über einen aktiven Connector verfügen, der dieser Gruppe angehören sollte und uneingeschränkten Zugriff auf die Back-End-Anwendung hat, können Sie den Connector in die zugewiesene Gruppe verschieben. Klicken Sie hierzu auf den Connector. Verwenden Sie im Feld „Connectorgruppe“ die Dropdownliste, um die richtige Gruppe auszuwählen, und klicken Sie dann auf „Speichern“.
+   - Herunterladen eines neuen Connectors für diese Gruppe: Auf dieser Seite finden Sie den Link zum [Herunterladen eines neuen Connectors](https://download.msappproxy.net/Subscription/d3c8b69d-6bf7-42be-a529-3fe9c2e70c90/Connector/Download). Installieren Sie den Connector auf einem Computer mit direktem Zugriff auf die Back-End-Anwendung. In der Regel ist der Connector auf dem selben Server wie die Anwendung installiert. Verwenden Sie den Downloadlink, um einen Connector auf den Zielcomputer herunterzuladen. Als Nächstes klicken Sie auf den Connector und verwenden die Dropdownliste „Connectorgruppe“, um sicherzustellen, dass er der richtigen Gruppe angehört.
+   - Untersuchen eines inaktiven Connectors: Wenn ein Connector als inaktiv angezeigt wird, kann er den Dienst nicht erreichen. Dieser Fehler liegt in der Regel darin begründet, dass einige erforderliche Ports blockiert werden. Um das Problem zu beheben, setzen Sie den Vorgang fort und überprüfen, ob alle erforderlichen Ports zulässig sind.
 
 Testen Sie nach dem Ausführen der Schritte die Anwendung erneut, um sicherzustellen, dass die Anwendung einer Gruppe funktionierender Connectors zugewiesen ist. Wenn der Fehler immer noch auftritt, fahren Sie mit dem nächsten Abschnitt fort.
 
@@ -97,7 +87,7 @@ Informationen zur Überprüfung, ob alle erforderlichen Ports geöffnet sind, fi
 
 ## <a name="check-for-other-connector-errors"></a>Überprüfen auf andere Connectorfehler
 
-Wenn keine der oben genannten Schritte das Problem beheben, sollten Sie im nächsten Schritt nach Problemen oder Fehlern mit dem Connector selbst suchen. Einige häufig auftretende Fehler sind im [Problembehandlungsdokument](https://docs.microsoft.com/azure/active-directory/active-directory-application-proxy-troubleshoot#connector-errors) aufgeführt. 
+Wenn keine der oben genannten Schritte das Problem beheben, sollten Sie im nächsten Schritt nach Problemen oder Fehlern mit dem Connector selbst suchen. Einige häufig auftretende Fehler sind im [Problembehandlungsdokument](https://docs.microsoft.com/azure/active-directory/active-directory-application-proxy-troubleshoot#connector-errors) aufgeführt.
 
 Sie können auch direkt auf die Connectorprotokolle zugreifen, um Fehler zu ermitteln. Eine Vielzahl der Fehlermeldungen enthält genauere Empfehlungen für Fehlerbehebungen. Informationen zum Anzeigen der Protokolle finden Sie in der [Dokumentation zu Connectors](application-proxy-connectors.md#under-the-hood).
 
@@ -105,7 +95,7 @@ Sie können auch direkt auf die Connectorprotokolle zugreifen, um Fehler zu ermi
 
 Wenn die oben genannten Schritte das Problem nicht beheben konnten, können einige andere Ursachen vorliegen. So identifizieren Sie das Problem
 
-Wenn Ihre Anwendung für die integrierte Windows-Authentifizierung (IWA) konfiguriert ist, testen Sie die Anwendung ohne einmaliges Anmelden. Wenn dies nicht der Fall ist, lesen Sie im nächsten Absatz weiter. Öffnen Sie die Anwendung zum Überprüfen ohne einmaliges Anmelden über **Unternehmensanwendungen**, und wechseln Sie zum Menü **Einmaliges Anmelden**. Ändern Sie die Auswahl in der Dropdownliste von „Integrierte Windows-Authentifizierung“ in „Azure AD-SSO deaktiviert“. 
+Wenn Ihre Anwendung für die integrierte Windows-Authentifizierung (IWA) konfiguriert ist, testen Sie die Anwendung ohne einmaliges Anmelden. Wenn dies nicht der Fall ist, lesen Sie im nächsten Absatz weiter. Öffnen Sie die Anwendung zum Überprüfen ohne einmaliges Anmelden über **Unternehmensanwendungen**, und wechseln Sie zum Menü **Einmaliges Anmelden**. Ändern Sie die Auswahl in der Dropdownliste von „Integrierte Windows-Authentifizierung“ in „Azure AD-SSO deaktiviert“.
 
 Öffnen Sie einen Browser, und versuchen Sie erneut, auf die Anwendung zuzugreifen. Es sollte eine Authentifizierungsaufforderung angezeigt und anschließend die Anwendung geöffnet werden. Wenn eine Authentifizierung möglich ist, wird das Problem durch die Konfiguration der eingeschränkten Kerberos-Delegierung (Kerberos Constrained Delegation, KCD) verursacht, die das einmalige Anmelden ermöglicht. Weitere Informationen finden Sie auf der Seite zur Problembehandlung bei der KCD.
 
@@ -114,4 +104,5 @@ Wenn die Fehlermeldung weiterhin angezeigt wird, wechseln Sie zum Computer, auf 
 Wenn die Anwendung von diesem Computer aus erreicht werden kann, sollten Sie nach Problemen und Fehlern des Connectors selbst suchen. Einige häufig auftretende Fehler sind im [Problembehandlungsdokument](application-proxy-troubleshoot.md#connector-errors) aufgeführt. Sie können auch direkt auf die Connectorprotokolle zugreifen, um Fehler zu ermitteln. Anhand vieler Fehlermeldungen können Sie genauere Empfehlungen für Fehlerbehebungen erhalten. Informationen zum Verständnis der Protokolle finden Sie in der [Connectordokumentation](application-proxy-connectors.md#under-the-hood).
 
 ## <a name="next-steps"></a>Nächste Schritte
+
 [Grundlegendes zu Azure AD-Anwendungsproxyconnectors](application-proxy-connectors.md)
