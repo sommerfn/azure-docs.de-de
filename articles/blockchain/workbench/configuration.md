@@ -55,7 +55,7 @@ Die Geschäftslogik einer Anwendung kann als Zustandsautomat modelliert werden, 
 
 | Feld | Description | Erforderlich | Max. Länge |
 |-------|-------------|:--------:|-----------:|
-| NAME | Eindeutiger Workflowname. Der entsprechende intelligente Vertrag muss den gleichen **Namen** für die jeweilige Vertragsklasse verwenden. | Ja | 50 |
+| Name | Eindeutiger Workflowname. Der entsprechende intelligente Vertrag muss den gleichen **Namen** für die jeweilige Vertragsklasse verwenden. | Ja | 50 |
 | DisplayName | Der Anzeigename des Workflows | Ja | 255 |
 | Description | Die Beschreibung des Workflows | Nein | 255 |
 | Initiators | Sammlung von [Anwendungsrollen](#application-roles). Rollen, die Benutzern zugeordnet sind, die zum Erstellen von Verträgen im Workflow berechtigt sind. | Ja | |
