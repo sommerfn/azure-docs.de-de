@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: philmea
-ms.openlocfilehash: a1641c4f3ae4eaa175657db8ff4064fa2202aea6
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: c048ae8c0daba0e467a9243f4dd83f8d95921e10
+ms.sourcegitcommit: 837dfd2c84a810c75b009d5813ecb67237aaf6b8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67053013"
+ms.lasthandoff: 07/02/2019
+ms.locfileid: "67502651"
 ---
 # <a name="create-and-manage-personal-dashboards"></a>Erstellen und Verwalten persönlicher Dashboards
 
@@ -38,6 +38,8 @@ Wenn Sie jetzt Ihr persönliches Dashboard öffnen, wird Sie die neue Kachel mit
 ![Registerkarte „Dashboard“ mit Anzeige der Einstellungen und Eigenschaften für die Kachel](media/howto-personalize-dashboard/personaldashboard.png)
 
 Sie können andere Kacheltypen in der Bibliothek ausprobieren, um herauszufinden, wie Sie Ihre persönlichen Dashboards weiter anpassen können.
+
+Mehr über die Verwendung von Kacheln in Azure IoT Central erfahren Sie unter [Verwenden von Dashboardkacheln](howto-use-tiles.md).
 
 ## <a name="manage-dashboards"></a>Dashboards verwalten
 

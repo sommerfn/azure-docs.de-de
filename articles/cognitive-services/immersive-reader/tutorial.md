@@ -1,20 +1,21 @@
 ---
-title: 'Tutorial: Starten des plastischen Readers (Node.js)'
+title: 'Tutorial: Starten des plastischen Readers mithilfe von Node.js'
 titleSuffix: Azure Cognitive Services
 description: In diesem Tutorial erstellen Sie eine Node.js-Anwendung, die Plastischer Reader startet.
 services: cognitive-services
 author: metanMSFT
+manager: nitinme
 ms.service: cognitive-services
 ms.subservice: immersive-reader
 ms.topic: tutorial
 ms.date: 06/20/2019
 ms.author: metan
-ms.openlocfilehash: ac90496c950d8a563bf8794b4c1bb105b6c12232
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: f8697042ed46e0ff333f736454346908d76cf039
+ms.sourcegitcommit: dad277fbcfe0ed532b555298c9d6bc01fcaa94e2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67444067"
+ms.lasthandoff: 07/10/2019
+ms.locfileid: "67718375"
 ---
 # <a name="tutorial-launch-the-immersive-reader-nodejs"></a>Tutorial: Starten des plastischen Readers (Node.js)
 

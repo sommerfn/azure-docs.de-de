@@ -6,15 +6,15 @@ ms.service: firewall
 services: firewall
 ms.topic: overview
 ms.custom: mvc
-ms.date: 6/26/2019
+ms.date: 7/10/2019
 ms.author: victorh
 Customer intent: As an administrator, I want to evaluate Azure Firewall so I can determine if I want to use it.
-ms.openlocfilehash: 9a875f4450b700fc9db74b4402471e282f8e9dab
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: da82f6c93045b38aed887860c6d5c45c93b2260b
+ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67442907"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67703953"
 ---
 # <a name="what-is-azure-firewall"></a>Was ist Azure Firewall?
 
@@ -30,7 +30,7 @@ Azure Firewall bietet die folgenden Features:
 
 Hochverfügbarkeit ist integriert, sodass keine zusätzlichen Lastenausgleichsmodule erforderlich sind und Sie nichts konfigurieren müssen.
 
-## <a name="availability-zones-public-preview"></a>Verfügbarkeitszonen (öffentliche Vorschauversion)
+## <a name="availability-zones"></a>Verfügbarkeitszonen
 
 Zur Erhöhung der Verfügbarkeit kann Azure Firewall während der Bereitstellung so konfiguriert werden, dass mehrere Verfügbarkeitszonen abgedeckt werden. Mit Verfügbarkeitszonen erhöht sich die Verfügbarkeit auf eine Betriebszeit von 99,99 %. Weitere Informationen finden Sie in der [Vereinbarung zum Servicelevel (SLA) für Azure Firewall](https://azure.microsoft.com/support/legal/sla/azure-firewall/v1_0/). Die SLA für 99,99 % Betriebszeit wird angeboten, wenn zwei oder mehr Verfügbarkeitszonen ausgewählt werden.
 
@@ -51,7 +51,7 @@ Azure Firewall kann entsprechend Ihren Anforderungen zentral hochskaliert werden
 
 ## <a name="application-fqdn-filtering-rules"></a>FQDN-Anwendungsfilterregeln
 
-Sie können den ausgehenden HTTP/S-Datenverkehr auf eine angegebene Liste vollständig qualifizierter Domänennamen (FQDN) einschließlich Platzhalter beschränken. Dieses Feature erfordert keine SSL-Beendigung.
+Sie können den ausgehenden HTTP/S-Datenverkehr oder Azure SQL-Datenverkehr (Vorschau) auf eine angegebene Liste vollqualifizierter Domänennamen (FQDNs) einschließlich Platzhalter beschränken. Dieses Feature erfordert keine SSL-Beendigung.
 
 ## <a name="network-traffic-filtering-rules"></a>Filterregeln für den Netzwerkdatenverkehr
 
@@ -77,7 +77,11 @@ Alle IP-Adressen für ausgehenden Datenverkehr des virtuellen Netzwerks werden i
 
 Der eingehende Netzwerkdatenverkehr zur öffentlichen IP-Adresse Ihrer Firewall wird in die privaten IP-Adressen in Ihren virtuellen Netzwerken übersetzt (Destination Network Address Translation) und gefiltert.
 
-## <a name="multiple-public-ips-public-preview"></a>Mehrere öffentliche IP-Adressen (öffentliche Vorschauversion)
+## <a name="multiple-public-ip-addresses"></a>Mehrere öffentliche IP-Adressen
+
+> [!IMPORTANT]
+> Azure Firewall mit mehreren öffentlichen IP-Adressen ist über Azure PowerShell, die Azure CLI, REST und Vorlagen verfügbar. Die Portalbenutzeroberfläche wird nach und nach zu den Regionen hinzugefügt und wird nach Abschluss des Rollouts in allen Regionen verfügbar sein.
+
 
 Sie können der Firewall mehrere öffentliche IP-Adressen zuordnen (bis zu 100).
 
@@ -85,9 +89,6 @@ Dies ermöglicht die folgenden Szenarien:
 
 - **DNAT:** Sie können mehrere Standardportinstanzen auf Ihre Back-End-Server übersetzen. Wenn Sie beispielsweise zwei öffentliche IP-Adressen haben, können Sie den TCP-Port 3389 (RDP) für beide IP-Adressen übersetzen.
 - **SNAT:** Für ausgehende SNAT-Verbindungen stehen zusätzliche Ports zur Verfügung, was das Potenzial für die Überlastung des SNAT-Ports reduziert. Derzeit wählt Azure Firewall nach dem Zufallsprinzip die öffentliche IP-Quelladresse aus, die für eine Verbindung verwendet werden soll. Wenn Sie in Ihrem Netzwerk über eine nachgeschaltete Filterung verfügen, müssen Sie alle öffentlichen IP-Adressen zulassen, die mit Ihrer Firewall verbunden sind.
-
-> [!NOTE]
-> Wenn Sie während der öffentlichen Vorschau eine öffentliche IP-Adresse in einer laufenden Firewall hinzufügen oder entfernen, funktioniert die bestehende eingehende Konnektivität mit DNAT-Regeln möglicherweise 40–120 Sekunden lang nicht. Sie können die erste öffentliche IP-Adresse, die der Firewall zugewiesen wurde, nicht entfernen, es sei denn, die Firewall ist nicht zugewiesen oder wurde gelöscht.
 
 ## <a name="azure-monitor-logging"></a>Azure Monitor-Protokollierung
 
@@ -108,10 +109,10 @@ Netzwerkfilterregeln für andere Protokolle als TCP/UDP (z.B. ICMP) funktioniere
 |Threat Intelligence-Warnungen sind möglicherweise maskiert.|Netzwerkregeln mit Ziel 80/443 für ausgehende Filterung maskieren Threat Intelligence-Warnungen, wenn diese für den Modus „Alert only“ (Nur Warnen) konfiguriert sind.|Erstellen Sie die ausgehende Filterung für 80/443 mithilfe von Anwendungsregeln. Oder ändern Sie den Threat Intelligence-Modus zu **Alert and Deny** (Warnen und Verweigern).|
 |Azure Firewall verwendet Azure DNS nur für die Namensauflösung.|Azure Firewall löst FQDNs nur mit Azure DNS auf. Ein benutzerdefinierter DNS-Server wird nicht unterstützt. Dies hat keine Auswirkungen auf die DNS-Auflösung in anderen Subnetzen.|Wir arbeiten daran, diese Beschränkung zu lockern.|
 |Azure Firewall-SNAT/DNAT funktioniert für private IP-Ziele nicht|Die Azure Firewall-SNAT/DNAT-Unterstützung ist auf eingehenden/ausgehenden Internetdatenverkehr beschränkt. SNAT/DNAT funktioniert derzeit für private IP-Ziele nicht. Beispiel: Spoke zu Spoke.|Dies ist eine aktuelle Beschränkung.|
-|Erste öffentliche IP-Adresse kann nicht entfernt werden|Sie können die erste öffentliche IP-Adresse, die der Firewall zugewiesen wurde, nicht entfernen, es sei denn, die Firewall ist nicht zugewiesen oder wurde gelöscht.|Dies ist beabsichtigt.|
-|Wenn Sie eine öffentliche IP-Adresse hinzufügen oder entfernen, funktionieren die DNAT-Regeln möglicherweise vorübergehend nicht.| Wenn Sie eine öffentliche IP-Adresse in einer laufenden Firewall hinzufügen oder entfernen, funktioniert die bestehende eingehende Konnektivität mit DNAT-Regeln möglicherweise 40–120 Sekunden lang nicht.|Dies ist eine Einschränkung der öffentlichen Vorschauversion für diese Funktion.|
+|Erste Konfiguration der öffentlichen IP-Adresse kann nicht entfernt werden|Jede öffentliche Azure Firewall-IP-Adresse ist einer *IP-Konfiguration* zugewiesen.  Die erste IP-Konfiguration wird während der Bereitstellung der Firewall zugewiesen und enthält in der Regel auch einen Verweis auf das Firewallsubnetz (sofern dies nicht über eine Vorlagenbereitstellung explizit anders konfiguriert wurde). Sie können diese IP-Konfiguration nicht löschen, weil damit die Zuordnung der Firewall aufgehoben würde. Sie können die öffentliche IP-Adresse, die dieser IP-Konfiguration zugeordnet ist, weiterhin ändern oder entfernen, wenn der Firewall mindestens eine andere öffentliche IP-Adresse zur Verwendung zur Verfügung steht.|Dies ist beabsichtigt.|
 |Verfügbarkeitszonen können nur während der Bereitstellung konfiguriert werden.|Verfügbarkeitszonen können nur während der Bereitstellung konfiguriert werden. Sie können keine Verfügbarkeitszonen konfigurieren, nachdem eine Firewall bereitgestellt wurde.|Dies ist beabsichtigt.|
 |SNAT für eingehende Verbindungen|Zusätzlich zu DNAT werden Verbindungen über die öffentliche IP-Adresse der Firewall (eingehend) per SNAT in eine der privaten öffentlichen IP-Adressen übersetzt. Diese Anforderung gilt derzeit (auch für Aktiv/Aktiv-NVAs), um symmetrisches Routing sicherzustellen.|Um die ursprüngliche Quelle für HTTP/S beizubehalten, können Sie [XFF](https://en.wikipedia.org/wiki/X-Forwarded-For)-Header verwenden. Verwenden Sie beispielsweise einen Dienst wie [Azure Front Door](../frontdoor/front-door-http-headers-protocol.md#front-door-service-to-backend) vor der Firewall. Sie können auch WAF als Teil von Azure Front Door verwenden und mit der Firewall verketten.
+|SQL-FQDN-Filterung wird nur im Proxymodus unterstützt (Port 1433)|Für Azure SQL-Datenbank, Azure SQL Data Warehouse und verwaltete SQL-Datenbank-Instanzen gilt:<br><br>Während der Vorschau wird die SQL-FQDN-Filterung nur im Proxymodus unterstützt (Port 1433).<br><br>Für Azure SQL-IaaS gilt:<br><br>Wenn Sie keine Standardports verwenden, können Sie diese Ports in den Anwendungsregeln angeben.|Für SQL im Umleitungsmodus – die Standardeinstellung beim Herstellen von Verbindungen aus Azure heraus – können Sie den Zugriff stattdessen mit dem SQL-Diensttag in den Azure Firewall-Netzwerkregeln filtern.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

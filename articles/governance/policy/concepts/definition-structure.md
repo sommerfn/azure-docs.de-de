@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-policy
 manager: carmonm
 ms.custom: seodec18
-ms.openlocfilehash: 91dd1ebc457bfeed5c9e8d0d62ecc23740ca5d8d
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 398efd36e6c8d82a5090b7446c95abb2d1bfbca1
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65979549"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67428758"
 ---
 # <a name="azure-policy-definition-structure"></a>Struktur von Azure Policy-Definitionen
 
@@ -72,6 +72,10 @@ Alle Azure Policy-Beispiele sind unter [Azure Policy-Beispiele](../samples/index
 
 ## <a name="mode"></a>Mode
 
+**Mode** ist konfiguriert, je nachdem, ob die Richtlinie auf eine Azure Resource Manager-oder Ressourcenanbieter-Eigenschaft abzielt.
+
+### <a name="resource-manager-modes"></a>Ressourcen-Manager-Modi
+
 Der Modus (**mode**) bestimmt, welche Ressourcentypen für eine Richtlinie ausgewertet werden. Unterstützte Modi:
 
 - `all`: Ressourcengruppen und alle Ressourcentypen werden ausgewertet.
@@ -80,6 +84,13 @@ Der Modus (**mode**) bestimmt, welche Ressourcentypen für eine Richtlinie ausge
 Es wird empfohlen, **mode** in den meisten Fällen auf `all` zu setzen. Alle über das Portal erstellten Richtliniendefinitionen verwenden für „mode“ die Option `all`. Wenn Sie PowerShell oder die Azure CLI verwenden, können Sie den **mode**-Parameter manuell angeben. Wenn die Richtliniendefinition keinen Wert für **mode** enthält, wird dieser in Azure PowerShell standardmäßig auf `all` und in der Azure CLI auf `null` festgelegt. Der Modus `null` entspricht dem Verwenden von `indexed`, um Abwärtskompatibilität zu unterstützen.
 
 `indexed` sollte beim Erstellen von Richtlinien verwendet werden, die Tags oder Speicherorte erzwingen. Dies ist nicht erforderlich, verhindert aber, dass Ressourcen, die keine Tags und Speicherorte unterstützen, bei der Konformitätsprüfung als nicht konform angezeigt werden. Die Ausnahme sind **Ressourcengruppen**. Richtlinien zum Erzwingen von Speicherort oder Tags für eine Ressourcengruppe sollten **mode** auf `all` festlegen und speziell auf den Typ `Microsoft.Resources/subscriptions/resourceGroups` abzielen. Ein Beispiel finden Sie unter [Ressourcengruppen-Tags erzwingen](../samples/enforce-tag-rg.md). Eine Liste der Ressourcen, die Tags unterstützen, finden Sie unter [Tagunterstützung für Azure-Ressourcen](../../../azure-resource-manager/tag-support.md).
+
+### <a name="resource-provider-modes"></a>Ressourcenanbietermodi
+
+Der einzige derzeit unterstützte Ressourcenanbietermodus ist `Microsoft.ContainerService.Data` zur Verwaltung der Zugangscontrollerregeln für [Azure Kubernetes Service](../../../aks/intro-kubernetes.md).
+
+> [!NOTE]
+> [Azure Policy für Kubernetes](rego-for-aks.md) ist in der Public Preview-Phase und unterstützt nur integrierte Richtliniendefinitionen.
 
 ## <a name="parameters"></a>Parameter
 
@@ -389,6 +400,7 @@ Azure Policy unterstützt die folgenden Auswirkungstypen:
 - **AuditIfNotExists** aktiviert das Überwachen, wenn eine Ressource nicht vorhanden ist.
 - **DeployIfNotExists** stellt eine Ressource bereit, falls noch keine vorhanden ist.
 - **Deaktiviert** wertet Ressourcen nicht auf Konformität mit der Richtlinienregel aus.
+- **EnforceRegoPolicy** konfiguriert den Open Policy Agent-Zugangscontroller in Azure Kubernetes Service (Vorschauversion).
 
 Für **append**müssen Sie die folgenden Details angeben:
 

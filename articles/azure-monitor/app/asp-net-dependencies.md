@@ -10,14 +10,14 @@ ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
-ms.date: 12/06/2018
+ms.date: 06/25/2019
 ms.author: mbullwin
-ms.openlocfilehash: 479b810c5a66917bde5754d32991fb489ea26c9b
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 3c0c670cf9d6ea9ff8ada292777211c69b3edb2a
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66299292"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67445918"
 ---
 # <a name="dependency-tracking-in-azure-application-insights"></a>Abhängigkeitsnachverfolgung in Azure Application Insights 
 
@@ -104,7 +104,7 @@ Bei ASP.NET-Anwendungen wird die vollständige SQL-Abfrage mithilfe der Bytecode
 | --- | --- |
 | Azure-Web-App |In der Systemsteuerung Ihrer Web-App [öffnen Sie das Application Insights-Blatt](../../azure-monitor/app/azure-web-apps.md), und aktivieren Sie SQL-Befehle unter .NET. |
 | IIS-Server (Azure-VM, lokal usw.) | [Installieren Sie den Statusmonitor auf Ihrem Server, auf dem die Anwendung ausgeführt wird](../../azure-monitor/app/monitor-performance-live-website-now.md), und starten Sie IIS neu.
-| Azure Cloud Service |[Verwenden Sie den Starttask](../../azure-monitor/app/cloudservices.md) zum [Installieren des Statusmonitors](monitor-performance-live-website-now.md#download). |
+| Azure Cloud Service | Hinzufügen der [Starttask zum Installieren des Statusmonitors](../../azure-monitor/app/cloudservices.md#set-up-status-monitor-to-collect-full-sql-queries-optional) <br> Ihre App sollte durch die Installation der NuGet-Pakete für [ASP.NET](https://docs.microsoft.com/azure/azure-monitor/app/asp-net)- oder [ASP.NET Core-Anwendungen](https://docs.microsoft.com/azure/azure-monitor/app/asp-net-core.) zur Buildzeit in das ApplicationInsights-SDK integriert werden |
 | IIS Express | Nicht unterstützt
 
 In den oben genannten Fällen können Sie die ordnungsgemäße Installation der Instrumentierungs-Engine überprüfen, indem Sie sicherstellen, dass die SDK-Version der erfassten `DependencyTelemetry` „rddp“ lautet. „rdddsd“ oder „rddf“ weisen darauf hin, dass Abhängigkeiten über DiagnosticSource- oder EventSource-Rückrufe gesammelt werden und die vollständige SQL-Abfrage daher nicht erfasst wird.
@@ -113,47 +113,25 @@ In den oben genannten Fällen können Sie die ordnungsgemäße Installation der 
 
 * [Anwendungszuordnung](app-map.md) visualisiert Abhängigkeiten zwischen Ihrer App und angrenzenden Komponenten.
 * Die [Transaktionsdiagnose](transaction-diagnostics.md) zeigt einheitliche, korrelierte Serverdaten.
-* [Das Blatt „Browser“](javascript.md#ajax-performance) zeigt AJAX-Aufrufe von Browsern Ihrer Benutzer.
+* [Die Registerkarte „Browser“](javascript.md#ajax-performance) enthält AJAX-Aufrufe von Browsern Ihrer Benutzer.
 * Navigieren Sie zu langsamen oder fehlgeschlagenen Aufrufen, um ihre Abhängigkeitsaufrufe zu überprüfen.
-* [Analyse](#analytics) kann verwendet werden, um Abhängigkeitsdaten abzufragen.
+* [Analyse](#logs-analytics) kann verwendet werden, um Abhängigkeitsdaten abzufragen.
 
 ## <a name="diagnosis"></a>Diagnostizieren langsamer Anforderungen
 
 Jedes Anforderungsereignis bezieht sich auf Abhängigkeitsaufrufe, Ausnahmen und andere Ereignisse, die nachverfolgt werden, während Ihre App die Anforderung verarbeitet. Wenn einige Anforderungen also eine schlechte Leistung zeigen, können Sie herausfinden, ob es an langsamen Antworten einer Abhängigkeit liegt.
 
-Wir sehen uns nun ein Beispiel dazu an.
-
 ### <a name="tracing-from-requests-to-dependencies"></a>Ablaufverfolgung von Anforderungen bis Abhängigkeiten
 
-Öffnen Sie das Blatt „Performance“, und betrachten Sie das Raster der Anforderungen:
+Öffnen Sie die Registerkarte **Leistung**, und navigieren Sie zur Registerkarte **Abhängigkeiten** im oberen Bereich (neben „Vorgänge“).
 
-![Liste der Anforderungen mit Mittelwerten und Anzahlen](./media/asp-net-dependencies/02-reqs.png)
+Klicken Sie unter „Gesamt“ auf einen **Abhängigkeitsnamen**. Nach der Auswahl einer Abhängigkeit wird rechts ein Diagramm mit der Verteilung der Dauer für diese Abhängigkeit angezeigt.
 
-Die zuerst aufgeführte Instanz dauert lange. Mal sehen, ob wir herausfinden, wo die Zeit beansprucht wird.
+![Klicken Sie auf der Registerkarte „Leistung“ im oberen Bereich auf die Registerkarte „Abhängigkeiten“ und dann im Diagramm auf den Namen einer Abhängigkeit](./media/asp-net-dependencies/2-perf-dependencies.png)
 
-Klicken Sie auf diese Zeile, um einzelne Anforderungsereignisse anzuzeigen:
+Klicken Sie unten rechts auf die blaue Schaltfläche **Stichproben**, und klicken Sie dann auf eine Stichprobe, um die End-to-End-Transaktionsdetails anzuzeigen.
 
-![Liste der Anforderungsinstanzen](./media/asp-net-dependencies/03-instances.png)
-
-Klicken Sie auf eine beliebige Instanz mit langer Ausführungsdauer, um diese näher zu überprüfen, und scrollen Sie nach unten zu den Remoteabhängigkeitsaufrufen, die im Zusammenhang mit dieser Anforderung bestehen:
-
-![Finden von Aufrufen von Remoteabhängigkeiten, Identifizieren ungewöhnlich langer Laufzeiten](./media/asp-net-dependencies/04-dependencies.png)
-
-Der Großteil der Zeit zur Verarbeitung dieser Anforderung wurde für einen Aufruf eines lokalen Diensts aufgewendet.
-
-Wählen Sie diese Zeile aus, um weitere Informationen zu erhalten:
-
-![Klicken Sie sich durch diese Remoteabhängigkeit, um die Ursache herauszufinden](./media/asp-net-dependencies/05-detail.png)
-
-Offenbar liegt das Problem bei dieser Abhängigkeit. Nachdem das Problem jetzt identifiziert ist, müssen wir noch herausfinden, warum dieser Aufruf so lange dauert.
-
-### <a name="request-timeline"></a>Anfordern der Zeitachse
-
-In einem anderen Fall handelt es sich nicht um einen Abhängigkeitsaufruf mit langer Ausführungsdauer. Wenn wir aber zur Zeitachsenansicht wechseln, können wir sehen, wo die Verzögerung in unserer internen Verarbeitung aufgetreten ist:
-
-![Finden von Aufrufen von Remoteabhängigkeiten, Identifizieren ungewöhnlich langer Laufzeiten](./media/asp-net-dependencies/04-1.png)
-
-Es scheint eine große Unterbrechung nach dem ersten Abhängigkeitsaufruf zu geben, daher sollten wir den Code betrachten, um den Grund dafür herauszufinden.
+![Klicken auf eine Stichprobe, um die End-to-End-Transaktionsdetails anzuzeigen](./media/asp-net-dependencies/3-end-to-end.png)
 
 ### <a name="profile-your-live-site"></a>Erstellen eines Profils Ihrer Livewebsite
 
@@ -161,35 +139,35 @@ Sie möchten wissen, was am längsten gedauert hat? Der [Application Insights-Pr
 
 ## <a name="failed-requests"></a>Anforderungsfehler
 
-Anforderungsfehler können auch fehlgeschlagenen Aufrufen von Abhängigkeiten zugeordnet werden. Wir können erneut bis zum Problem durchklicken.
+Anforderungsfehler können auch fehlgeschlagenen Aufrufen von Abhängigkeiten zugeordnet werden.
 
-![Klicken Sie auf das Diagramm mit Anforderungsfehlern](./media/asp-net-dependencies/06-fail.png)
+Sie können links zur Registerkarte **Fehler** navigieren und dann im oberen Bereich auf die Registerkarte **Abhängigkeiten** klicken.
 
-Klicken Sie auf einen Anforderungsfehler, und sehen Sie sich die zugeordneten Ereignisse an.
+![Klicken Sie auf das Diagramm mit Anforderungsfehlern](./media/asp-net-dependencies/4-fail.png)
 
-![Klicken Sie auf den Anforderungstyp, klicken Sie auf die Instanz, um eine andere Ansicht derselben Instanz abzurufen, und klicken Sie darauf, um Details zur Ausnahme zu erhalten.](./media/asp-net-dependencies/07-faildetail.png)
+Hier können Sie die Fehler bei der Anzahl der Abhängigkeiten anzeigen. Um weitere Details zu einem Fehler abzurufen, versuchen Sie, in der Tabelle im unteren Bereich auf den Namen einer Abhängigkeit zu klicken. Sie können unten rechts auf die blaue Schaltfläche **Abhängigkeiten** klicken, um die End-to-End-Transaktionsdetails abzurufen.
 
-## <a name="analytics"></a>Analytics
+## <a name="logs-analytics"></a>Protokolle (Analytics)
 
 Sie können Abhängigkeiten in der [Abfragesprache Kusto](/azure/kusto/query/) verfolgen. Hier einige Beispiele.
 
 * Suchen fehlgeschlagener Abhängigkeitsaufrufe:
 
-```
+``` Kusto
 
     dependencies | where success != "True" | take 10
 ```
 
 * Suchen von AJAX-Aufrufen:
 
-```
+``` Kusto
 
     dependencies | where client_Type == "Browser" | take 10
 ```
 
 * Suchen von mit Anforderungen verbundenen Abhängigkeitsaufrufen:
 
-```
+``` Kusto
 
     dependencies
     | where timestamp > ago(1d) and  client_Type != "Browser"
@@ -200,17 +178,13 @@ Sie können Abhängigkeiten in der [Abfragesprache Kusto](/azure/kusto/query/) v
 
 * Suchen von mit Seitenaufrufen verbundenen AJAX-Aufrufen:
 
-```
+``` Kusto 
 
     dependencies
     | where timestamp > ago(1d) and  client_Type == "Browser"
     | join (browserTimings | where timestamp > ago(1d))
       on operation_Id
 ```
-
-## <a name="video"></a>Video
-
-> [!VIDEO https://channel9.msdn.com/events/Connect/2016/112/player]
 
 ## <a name="frequently-asked-questions"></a>Häufig gestellte Fragen
 
@@ -220,7 +194,6 @@ Sie können Abhängigkeiten in der [Abfragesprache Kusto](/azure/kusto/query/) v
 
 ## <a name="open-source-sdk"></a>Open Source SDK
 Wie jedes Application Insights-SDK ist auch das Modul zur Abhängigkeitserfassung ein Open Source-Modul. Lesen Sie den Code, tragen Sie zum Code bei, oder melden Sie Issues im [offiziellen GitHub-Repository](https://github.com/Microsoft/ApplicationInsights-dotnet-server).
-
 
 ## <a name="next-steps"></a>Nächste Schritte
 

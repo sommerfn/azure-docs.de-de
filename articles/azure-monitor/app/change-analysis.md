@@ -1,6 +1,6 @@
 ---
-title: Azure Monitor-Anwendungsänderungsanalyse – Verwenden der Azure Monitor-Anwendungsänderungsanalyse zum Ermitteln von Änderungen, die zu Problemen/Ausfällen der Livewebsite führen können | Microsoft-Dokumentation
-description: Behandeln von Anwendungsproblemen der Livewebsite in Azure App Services mit der Azure Monitor-Anwendungsänderungsanalyse
+title: Verwenden der Anwendungsänderungsanalyse in Azure Monitor für die Suche nach Web-App-Problemen | Microsoft-Dokumentation
+description: Verwenden der Anwendungsänderungsanalyse in Azure Monitor zum Behandeln von Anwendungsproblemen auf Live-Websites in Azure App Service.
 services: application-insights
 author: cawams
 manager: carmonm
@@ -10,131 +10,131 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 05/07/2019
 ms.author: cawa
-ms.openlocfilehash: 5bd3816e65398283de85b4551a137b3f97db4cc7
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.openlocfilehash: 45df8f9e57223ea60a11c6af2187d362184cae2b
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/27/2019
-ms.locfileid: "66226340"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67443378"
 ---
-# <a name="application-change-analysis-public-preview"></a>Anwendungsänderungsanalyse (Public Preview)
+# <a name="use-application-change-analysis-preview-in-azure-monitor"></a>Verwenden der Anwendungsänderungsanalyse (Vorschau) in Azure Monitor
 
-Wenn es zu einem Problem/Ausfall der Livewebsite kommt, ist es wichtig, die Grundursache schnell bestimmen zu können. Mithilfe von Standardüberwachungslösungen können Sie schnell erkennen, dass ein Problem vorliegt, und häufig auch die fehlerhafte Komponente identifizieren. Dies führt aber nicht immer zu einer sofortigen Erklärung, warum der Fehler auftritt. Vor fünf Minuten hat Ihre Website noch funktioniert, jetzt ist sie fehlerhaft. Was hat sich in den letzten fünf Minuten geändert? Für die Beantwortung dieser Frage ist das neue Feature, die Azure Monitor-Anwendungsänderungsanalyse, konzipiert. Basierend auf dem Funktionsumfang von [Azure Resource Graph](https://docs.microsoft.com/azure/governance/resource-graph/overview) liefert die Anwendungsänderungsanalyse Erkenntnisse über Azure-Anwendungsänderungen, um die Transparenz zu erhöhen und die durchschnittliche Reparaturzeit (Mean Time To Repair, MTTR) zu verkürzen.
+Wenn es zu einem Problem oder Ausfall einer Live-Website kommt, ist es wichtig, die Grundursache schnell bestimmen zu können. Die Standardüberwachungslösungen machen Sie möglicherweise auf ein Problem aufmerksam. Sie geben unter Umständen sogar an, bei welcher Komponente der Fehler aufgetreten ist. In den meisten Fällen geht aus dieser Warnung jedoch die Fehlerursache nicht direkt hervor. Sie wissen, dass Ihre Website vor fünf Minuten noch funktioniert hat, und jetzt nicht mehr. Was hat sich in den letzten fünf Minuten geändert? Für die Beantwortung dieser Frage ist die Anwendungsänderungsanalyse in Azure Monitor konzipiert.
+
+Basierend auf dem Funktionsumfang von [Azure Resource Graph](https://docs.microsoft.com/azure/governance/resource-graph/overview) liefert die Änderungsanalyse Erkenntnisse über Azure-Anwendungsänderungen, um die Transparenz zu erhöhen und die durchschnittliche Reparaturzeit (Mean Time To Repair, MTTR) zu verkürzen.
 
 > [!IMPORTANT]
-> Die Azure Monitor-Anwendungsänderungsanalyse befindet sich derzeit in der öffentlichen Vorschau.
-> Diese Vorschauversion wird ohne Vereinbarung zum Servicelevel bereitgestellt und ist nicht für Produktionsworkloads vorgesehen. Manche Features werden möglicherweise nicht unterstützt oder sind nur eingeschränkt verwendbar.
-> Weitere Informationen finden Sie unter [Zusätzliche Nutzungsbestimmungen für Microsoft Azure-Vorschauen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+> Die Änderungsanalyse befindet sich derzeit in der Vorschauphase. Diese Vorschauversion wird ohne Vereinbarung zum Servicelevel bereitgestellt. Diese Version wird nicht für die Produktion empfohlen. Manche Funktionen werden möglicherweise nicht unterstützt oder sind nur eingeschränkt verwendbar. Weitere Informationen finden Sie unter [Zusätzliche Nutzungsbestimmungen für Microsoft Azure-Vorschauversionen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
-## <a name="overview-of-change-analysis-service"></a>Übersicht über den Änderungsanalysedienst
-Der Änderungsanalysedienst erkennt verschiedene Arten von Änderungen von der Infrastrukturebene bis hin zur Anwendungsbereitstellung. Es handelt sich um einen Azure-Ressourcenanbieter auf Abonnementebene, der Ressourcenänderungen im Abonnement untersucht und Daten für verschiedene Diagnosetools bereitstellt, damit die Benutzer verstehen, welche Änderungen möglicherweise Probleme verursacht haben.
+## <a name="overview"></a>Übersicht
 
-Das folgende Diagramm zeigt die Architektur des Änderungsanalysediensts: ![Architekturdiagramm zum Abruf von Änderungsdaten und Bereitstellung der Daten für Clienttools durch den Änderungsanalysedienst](./media/change-analysis/overview.png)
+Die Änderungsanalyse erkennt von der Infrastrukturebene bis hin zur Anwendungsbereitstellung verschiedene Arten von Änderungen. Es handelt sich um einen Azure-Ressourcenanbieter auf Abonnementebene, der Ressourcenänderungen im Abonnement überprüft. Die Änderungsanalyse stellt Daten für verschiedene Diagnosetools bereit, damit der Benutzer besser verstehen kann, welche Änderungen möglicherweise zu Problemen geführt haben.
 
-Derzeit ist das Tool in die Diagnose und Problembehandlung für App Services-Web-Apps integriert. Informationen zum Aktivieren und Anzeigen von Änderungen an einer Web-App finden Sie im Abschnitt *Änderungsanalysedienst für App Services-Web-Apps*.
+Das folgende Diagramm zeigt die Architektur der Änderungsanalyse:
+
+![Architekturdiagramm zum Abrufen von Änderungsdaten und Bereitstellung dieser Daten für Clienttools durch die Änderungsanalyse](./media/change-analysis/overview.png)
+
+Derzeit ist die Änderungsanalyse in die **Diagnose und Problembehandlung** für App Service-Web-Apps integriert. Informationen zum Aktivieren der Änderungserkennung und zum Anzeigen von Änderungen in der Web-App finden Sie im Abschnitt *Änderungsanalyse für die Web-Apps-Funktion* weiter unten.
 
 ### <a name="azure-resource-manager-deployment-changes"></a>Bereitstellungsänderungen in Azure Resource Manager
-Durch Nutzung von [Azure Resource Graph](https://docs.microsoft.com/azure/governance/resource-graph/overview) stellt das Änderungsanalysetool einen Verlauf dar, wie sich die Azure-Ressourcen, die Ihre Anwendung hosten, im Laufe der Zeit verändert haben. Wenn beispielsweise einer Web-App ein Tag hinzugefügt wurde, ist die Änderung im Änderungsanalysetool enthalten.
-Diese Informationen sind immer verfügbar, solange der `Microsoft.ChangeAnalysis`-Ressourcenanbieter in das Azure-Abonnement integriert ist.
 
-### <a name="web-application-deployment-and-configuration-changes"></a>Bereitstellungs- und Konfigurationsänderungen einer Webanwendung
-Das Änderungsanalysetool erfasst alle 4 Stunden den Bereitstellungs- und Konfigurationszustand einer Anwendung, um die Unterschiede zu berechnen und anzugeben, was sich geändert hat. Solche Änderungen sind beispielsweise Änderungen an Umgebungsvariablen der Anwendung, Änderungen der IP-Konfigurationsregel, Änderungen der verwalteten Dienstidentität, Änderungen der SSL-Einstellungen usw.
-Im Gegensatz zu Resource Manager-Änderungen ist diese Art von Änderungsinformationen möglicherweise nicht sofort im Tool verfügbar. Zum Anzeigen der letzten Änderungen verwenden Sie die Schaltfläche für das sofortige Überprüfen auf Änderungen im Tool.
+Mithilfe von [Azure Resource Graph](https://docs.microsoft.com/azure/governance/resource-graph/overview) stellt die Änderungsanalyse in Form von Verlaufsdaten dar, wie sich die Azure-Ressourcen, die Ihre Anwendung hosten, im Laufe der Zeit verändert haben. Die Änderungsanalyse kann beispielsweise Änderungen bei den IP-Konfigurationsregeln, den verwalteten Identitäten und den SSL-Einstellungen erkennen. Wenn also einer Web-App ein Tag hinzugefügt wird, gibt die Änderungsanalyse diese Änderung wieder. Diese Informationen sind so lange verfügbar, wie der `Microsoft.ChangeAnalysis`-Ressourcenanbieter im Azure-Abonnement aktiviert ist.
 
-![Screenshot der Schaltfläche zum sofortigen Überprüfen auf Änderungen im Diagnose- und Problembehandlungstool mit Integration der Änderungsanalyse für App Service-Web-Apps](./media/change-analysis/scan-changes.png)
+### <a name="changes-in-web-app-deployment-and-configuration"></a>Änderungen bei Bereitstellung und Konfiguration einer Web-App
+
+Die Änderungsanalyse erfasst alle vier Stunden den Bereitstellungs- und Konfigurationsstatus der Anwendung. Sie kann z. B. Änderungen in den Umgebungsvariablen der Anwendung erkennen. Das Tool berechnet die Unterschiede und zeigt die Änderungen an. Im Gegensatz zu Resource Manager-Änderungen sind die Informationen zu Änderungen an der Codebereitstellung möglicherweise nicht sofort im Tool verfügbar. Wählen Sie zum Anzeigen der jüngsten Änderungen in der Änderungsanalyse **Jetzt auf Änderungen prüfen** aus.
+
+![Screenshot der Schaltfläche „Jetzt auf Änderungen prüfen“](./media/change-analysis/scan-changes.png)
 
 ### <a name="dependency-changes"></a>Abhängigkeitsänderungen
-Abhängigkeiten einer Ressource können ebenfalls die Ursache für Probleme sein. Wenn eine Web-App beispielsweise Aufrufe an einen Redis Cache richtet, kann die Web-App-Leistung durch die Redis Cache-SKU beeinträchtigt werden. Wenn man sich den Änderungsanalysedienst für den DNS-Eintrag der Web-App ansieht, sind auch die Änderungsinformationen für Abhängigkeiten enthalten, um Änderungen bei allen Komponenten einer App anzugeben, die Probleme verursacht haben könnten.
 
+Änderungen an Ressourcenabhängigkeiten können ebenfalls zu Problemen in einer Web-App führen. Wenn eine Web-App beispielsweise Aufrufe an einen Redis Cache richtet, kann die Web-App-Leistung durch die Redis Cache-SKU beeinträchtigt werden. Zum Erkennen von Änderungen bei Abhängigkeiten überprüft die Änderungsanalyse dem DNS-Eintrag der Web-App. Auf diese Weise identifiziert sie Änderungen in allen App-Komponenten, die Probleme verursachen könnten.
 
-## <a name="change-analysis-service-for-app-services-web-app"></a>Änderungsanalysedienst für App Services-Web-Apps
+## <a name="change-analysis-for-the-web-apps-feature"></a>Änderungsanalyse für die Web-Apps-Funktion
 
-Die Azure Monitor-Anwendungsänderungsanalyse ist derzeit in die Oberfläche für Self-Service-**Diagnose und Problembehandlung** integriert, auf die Sie in Ihrer Azure App Service-Anwendung über den Abschnitt **Übersicht** zugreifen können:
+In Azure Monitor ist die Änderungsanalyse derzeit in die Self-Service-Umgebung **Diagnose und Problembehandlung** integriert. Der Zugriff auf diese Umgebung erfolgt von der Seite **Übersicht** Ihrer App Service-Anwendung.
 
-![Screenshot der Azure App Service-Übersichtsseite mit roter Umrandung der Schaltflächen „Übersicht“ und „Diagnose und Problembehandlung“](./media/change-analysis/change-analysis.png)
+![Screenshot der Schaltflächen „Übersicht“ und „Diagnose und Problembehandlung“](./media/change-analysis/change-analysis.png)
 
-### <a name="enable-change-analysis-in-diagnose-and-solve-problems-tool"></a>Aktivieren der Änderungsanalyse im Diagnose- und Problembehandlungstool
+### <a name="enable-change-analysis-in-the-diagnose-and-solve-problems-tool"></a>Aktivieren der Änderungsanalyse im Tool „Diagnose und Problembehandlung“
 
 1. Wählen Sie **Verfügbarkeit und Leistung** aus.
 
     ![Screenshot der Problembehandlungsoptionen von „Verfügbarkeit und Leistung“](./media/change-analysis/availability-and-performance.png)
 
-2. Klicken Sie auf die Kachel **Anwendungsabstürze**.
+1. Wählen Sie **Anwendungsänderungen** aus. Diese Funktion ist auch unter **Anwendungsabstürze** verfügbar.
 
-   ![Screenshot, auf dem die Kachel „Anwendungsabstürze“ hervorgehoben ist](./media/change-analysis/application-crashes-tile.png)
+   ![Screenshot der Schaltfläche „Anwendungsabstürze“](./media/change-analysis/application-changes.png)
 
-3. Wählen Sie zum Aktivieren der **Änderungsanalyse** die Option **Jetzt aktivieren** aus.
+1. Wählen Sie zum Aktivieren der Änderungsanalyse die Option **Jetzt aktivieren** aus.
 
-   ![Screenshot der Problembehandlungsoptionen von „Verfügbarkeit und Leistung“](./media/change-analysis/application-crashes.png)
+   ![Screenshot der Optionen von „Anwendungsabstürze“](./media/change-analysis/enable-changeanalysis.png)
 
-4. Um alle Funktionen der Änderungsanalyse zu nutzen, legen Sie **Änderungsanalyse**, **Nach Codeänderungen suchen** und **Immer aktiviert** auf **Ein** fest, und wählen Sie dann **Speichern** aus.
+1. Aktivieren Sie **Änderungsanalyse**, und wählen Sie **Speichern** aus.
 
-    ![Screenshot der Aktivierungsoptionen auf der Benutzeroberfläche der Azure App Service-Änderungsanalyse](./media/change-analysis/change-analysis-on.png)
+    ![Screenshot der Benutzeroberfläche zum Aktivieren der Änderungsanalyse](./media/change-analysis/change-analysis-on.png)
 
-    Wenn die **Änderungsanalyse** aktiviert ist, können Sie Änderungen auf Ressourcenebene erkennen. Wenn **Nach Codeänderungen suchen** aktiviert ist, werden auch Änderungen an Bereitstellungsdateien und der Websitekonfiguration angezeigt. Durch Aktivieren von **Immer aktiviert** wird die Änderungsüberprüfungsleistung optimiert, aber abrechnungstechnisch können dadurch zusätzliche Kosten anfallen.
 
-5.  Nachdem Sie alle Optionen aktiviert haben, können Sie durch Auswählen von **Diagnose und Problembehandlung** > **Verfügbarkeit und Leistung** > **Anwendungsabstürze** auf die Oberfläche der Änderungsanalyse zugreifen. Im Diagramm werden die Arten von Änderungen, die im Laufe der Zeit erfolgt sind, zusammen mit Details zu diesen Änderungen zusammengefasst:
+1. Wählen Sie **Diagnose und Problembehandlung** > **Verfügbarkeit und Leistung** > **Anwendungsabstürze** aus, um auf die Änderungsanalyse zuzugreifen. Im angezeigten Diagramm sind die Arten der Änderungen im Laufe der Zeit und Details zu diesen Änderungen zusammengefasst:
 
      ![Screenshot der Gegenüberstellung der Änderungen](./media/change-analysis/change-view.png)
 
 
-### <a name="enable-change-analysis-service-at-scale"></a>Bedarfsorientiertes Aktivieren des Änderungsanalysediensts
-Wenn Ihr Abonnement viele Web-Apps umfasst, ist ein Aktivieren des Diensts auf Ebene der einzelnen Web-Apps ineffizient. Nachfolgend sind einige alternative Anweisungen für die Integration aufgeführt.
+### <a name="enable-change-analysis-at-scale"></a>Aktivieren der Änderungsanalyse in größerem Umfang
 
-#### <a name="registering-change-analysis-resource-provider-for-your-subscription"></a>Registrieren des Änderungsanalyse-Ressourcenanbieters für Ihr Abonnement
+Wenn Ihr Abonnement zahlreiche Web-Apps enthält, wäre das Aktivieren des Diensts auf Web-App-Ebene nicht sehr effizient. Führen Sie in diesem Fall die folgenden alternativen Anweisungen aus.
 
-1. Registrieren des Änderungsanalyse-Featureflags (Vorschau)
+### <a name="register-the-change-analysis-resource-provider-for-your-subscription"></a>Registrieren des Änderungsanalyse-Ressourcenanbieters für Ihr Abonnement
 
-    Da sich dieses Feature in der Vorschauphase befindet, müssen Sie zuerst das entsprechende Featureflag registrieren, damit es für Ihr Abonnement sichtbar ist.
-    - Öffnen Sie [Azure Cloud Shell](https://azure.microsoft.com/features/cloud-shell/).
+1. Registrieren Sie das Änderungsanalyse-Featureflag (Vorschau). Da sich das Featureflag in der Vorschauphase befindet, müssen Sie es registrieren, um es für Ihr Abonnement sichtbar zu machen:
 
-    ![Screenshot der Azure Cloud Shell-Änderung](./media/change-analysis/cloud-shell.png)
+   1. Öffnen Sie [Azure Cloud Shell](https://azure.microsoft.com/features/cloud-shell/).
 
-    - Ändern Sie den Shelltyp in „PowerShell“:
+      ![Screenshot der Cloud Shell-Änderung](./media/change-analysis/cloud-shell.png)
 
-    ![Screenshot der Azure Cloud Shell-Änderung](./media/change-analysis/choose-powershell.png)
+   1. Ändern Sie den Shelltyp in **PowerShell**.
 
-    - Führen Sie den folgenden PowerShell-Befehl aus:
+      ![Screenshot der Cloud Shell-Änderung](./media/change-analysis/choose-powershell.png)
 
-    ``` PowerShell
+   1. Führen Sie den folgenden PowerShell-Befehl aus:
 
-    Set-AzContext -Subscription <your_subscription_id> #set script execution context to the subscription you are trying to onboard
-    Get-AzureRmProviderFeature -ProviderNamespace "Microsoft.ChangeAnalysis" -ListAvailable #Check for feature flag availability
-    Register-AzureRmProviderFeature -FeatureName PreviewAccess -ProviderNamespace Microsoft.ChangeAnalysis #Register feature flag
+        ``` PowerShell
+        Set-AzContext -Subscription <your_subscription_id> #set script execution context to the subscription you are trying to enable
+        Get-AzureRmProviderFeature -ProviderNamespace "Microsoft.ChangeAnalysis" -ListAvailable #Check for feature flag availability
+        Register-AzureRmProviderFeature -FeatureName PreviewAccess -ProviderNamespace Microsoft.ChangeAnalysis #Register feature flag
+        ```
 
-    ```
+1. Registrieren Sie den Änderungsanalyse-Ressourcenanbieter für das Abonnement.
 
-2. Registrieren des Änderungsanalyse-Ressourcenanbieters für das Abonnement
+   - Wechseln Sie zu **Abonnements**, und wählen Sie das Abonnement aus, für das Sie den Änderungsdienst aktivieren möchten. Wählen Sie dann Ressourcenanbieter aus:
 
-    - Navigieren Sie zu „Abonnements“, wählen Sie das Abonnement aus, in das Sie den Änderungsdienst integrieren möchten, und klicken Sie dann auf „Ressourcenanbieter“:
+        ![Screenshot zum Registrieren des Änderungsanalyse-Ressourcenanbieters](./media/change-analysis/register-rp.png)
 
-        ![Screenshot zum Registrieren des Änderungsanalyse-Ressourcenanbieters über das Blatt „Abonnements“](./media/change-analysis/register-rp.png)
+       - Wählen Sie **Microsoft.ChangeAnalysis** aus. Wählen Sie dann oben auf der Seite die Option **Registrieren** aus.
 
-    - Wählen Sie *Microsoft.ChangeAnalysis* aus, und klicken Sie oben auf der Seite auf *Registrieren*.
+       - Nachdem Sie den Ressourcenanbieter aktiviert haben, können Sie ein ausgeblendetes Tag für die Web-App festlegen, um Änderungen auf Bereitstellungsebene festzustellen. Zum Festlegen eines ausgeblendeten Tags befolgen Sie die Anweisungen unter **Die Informationen der Änderungsanalyse können nicht abgerufen werden**.
 
-    - Sobald der Ressourcenanbieter integriert ist, folgen Sie den Anweisungen im Abschnitt *Die Informationen der Änderungsanalyse können nicht abgerufen werden* weiter unten, um ein ausgeblendetes Tag für die Web-App festzulegen und so die Änderungserkennung auf Bereitstellungsebene für die Web-App zu aktivieren.
+   - Alternativ können Sie den Ressourcenanbieter mithilfe eines PowerShell-Skripts registrieren:
 
-3. Alternativ zu Schritt 2 oben können Sie den Ressourcenanbieter über ein PowerShell-Skript registrieren:
+        ```PowerShell
+        Get-AzureRmResourceProvider -ListAvailable | Select-Object ProviderNamespace, RegistrationState #Check if RP is ready for registration
 
-    ```PowerShell
-    Get-AzureRmResourceProvider -ListAvailable | Select-Object ProviderNamespace, RegistrationState #Check if RP is ready for registration
+        Register-AzureRmResourceProvider -ProviderNamespace "Microsoft.ChangeAnalysis" #Register the Change Analysis RP
+        ```
 
-    Register-AzureRmResourceProvider -ProviderNamespace "Microsoft.ChangeAnalysis" #Register the Change Analysis RP
-    ```
+        Zum Festlegen eines ausgeblendeten Tags für eine Web-App mithilfe von PowerShell führen Sie den folgenden Befehl aus:
 
-4. Zum Festlegen eines ausgeblendeten Tags für eine Web-App mithilfe von PowerShell führen Sie den folgenden Befehl aus:
+        ```powershell
+        $webapp=Get-AzWebApp -Name <name_of_your_webapp>
+        $tags = $webapp.Tags
+        $tags[“hidden-related:diagnostics/changeAnalysisScanEnabled”]=$true
+        Set-AzResource -ResourceId <your_webapp_resourceid> -Tag $tag
+        ```
 
-    ```powershell
-    $webapp=Get-AzWebApp -Name <name_of_your_webapp>
-    $tags = $webapp.Tags
-    $tags[“hidden-related:diagnostics/changeAnalysisScanEnabled”]=$true
-    Set-AzResource -ResourceId <your_webapp_resourceid> -Tag $tag
-    ```
-
-> [!NOTE]
-> Nachdem das ausgeblendete Tag hinzugefügt wurde, müssen Sie möglicherweise noch bis zu vier Stunden warten, bis die Änderungen angezeigt werden. Der Grund dafür ist das Häufigkeitsintervall von 4 Stunden, das der Änderungsanalysedienst verwendet, um Ihre Web-App zu überprüfen und gleichzeitig die Auswirkungen der Überprüfung auf die Leistung zu beschränken.
+     > [!NOTE]
+     > Nachdem Sie das ausgeblendete Tag hinzugefügt haben, müssen Sie möglicherweise noch bis zu vier Stunden warten, bevor Änderungen angezeigt werden. Die Ergebnisse werden mit einer Verzögerung angezeigt, da die Änderungsanalyse Ihre Web-App nur alle vier Stunden scannt. Durch den 4-Stunden-Zeitplan werden die Leistungseinbußen durch den Scan begrenzt.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- Verbessern Sie die Überwachung von Azure App Services [durch Aktivieren der Application Insights-Features](azure-web-apps.md) von Azure Monitor.
-- Erweitern Sie Ihre Kenntnisse über den [Azure Resource Graph](https://docs.microsoft.com/azure/governance/resource-graph/overview)-Dienst, der die Azure Monitor-Anwendungsänderungsanalyse unterstützt.
+- Effizienteres Überwachen von App Service durch [Aktivieren von Application Insights-Features](azure-web-apps.md) in Azure Monitor.
+- Erfahren Sie mehr über [Azure Resource Graph](https://docs.microsoft.com/azure/governance/resource-graph/overview), der die Änderungsanalyse unterstützt.

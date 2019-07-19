@@ -6,14 +6,14 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: backup
 ms.topic: conceptual
-ms.date: 02/17/2019
+ms.date: 06/13/2019
 ms.author: raynew
-ms.openlocfilehash: 2fe786d90612feff312983dbd25dc6d691be6e70
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 80739fac8317014c74c6a86cef9aa23696cfb42e
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58089776"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67442998"
 ---
 # <a name="back-up-an-azure-vm-from-the-vm-settings"></a>Sichern einer Azure-VM über die VM-Einstellungen
 
@@ -22,27 +22,27 @@ Dieser Artikel beschreibt, wie Sie Azure-VMs mit dem [Azure Backup](backup-overv
 - Einzelne Azure-VM: Die Anweisungen in diesem Artikel beschreiben, wie Sie eine Azure-VM direkt aus den VM-Einstellungen sichern können.
 - Mehrere Azure-VMs: Sie können einen Recovery Services-Tresor einrichten und die Sicherung für mehrere Azure-VMs konfigurieren. Folgen Sie für dieses Szenario den Anweisungen in [diesem Artikel](backup-azure-arm-vms-prepare.md).
 
- 
+
 
 ## <a name="before-you-start"></a>Vorbereitung
 
-1. [Erfahren Sie](backup-architecture.md#how-does-azure-backup-work), wie die Sicherung funktioniert, und [überprüfen](backup-support-matrix.md#azure-vm-backup-support) Sie die Supportanforderungen. 
+1. [Erfahren Sie](backup-architecture.md#how-does-azure-backup-work), wie die Sicherung funktioniert, und [überprüfen](backup-support-matrix.md#azure-vm-backup-support) Sie die Supportanforderungen.
 2. [Verschaffen Sie sich einen Überblick](backup-azure-vms-introduction.md) über die Sicherung von Azure-VMs.
 
 ### <a name="azure-vm-agent-installation"></a>Azure-VM-Agent-Installation
 
-Um Azure-VMs zu sichern, installiert Azure Backup eine Erweiterung auf dem VM-Agent, der auf dem Computer ausgeführt wird. Wenn Ihre VM aus einem Azure Marktplatz-Image erstellt wurde, wird der Agent ausgeführt. In einigen Fällen, z.B. wenn Sie eine benutzerdefinierte VM erstellen oder einen Computer von lokalen Standorten aus migrieren, müssen den Agent ggf. manuell installieren. 
+Um Azure-VMs zu sichern, installiert Azure Backup eine Erweiterung auf dem VM-Agent, der auf dem Computer ausgeführt wird. Wenn Ihre VM aus einem Azure Marktplatz-Image erstellt wurde, wird der Agent ausgeführt. In einigen Fällen, z.B. wenn Sie eine benutzerdefinierte VM erstellen oder einen Computer von lokalen Standorten aus migrieren, müssen den Agent ggf. manuell installieren.
 
-- Wenn Sie den VM-Agent manuell installieren müssen, folgen Sie den Anweisungen für [Windows](https://docs.microsoft.com/azure/virtual-machines/extensions/agent-windows)- oder [Linux](https://docs.microsoft.com/azure/virtual-machines/extensions/agent-linux)-VMs. 
+- Wenn Sie den VM-Agent manuell installieren müssen, folgen Sie den Anweisungen für [Windows](https://docs.microsoft.com/azure/virtual-machines/extensions/agent-windows)- oder [Linux](https://docs.microsoft.com/azure/virtual-machines/extensions/agent-linux)-VMs.
 - Nach der Installation des Agent installiert Azure Backup die Sicherungserweiterung auf den Agent, wenn Sie die Sicherung aktivieren. Die Erweiterung wird ohne Eingreifen des Benutzers aktualisiert und gepatcht.
 
 ## <a name="back-up-from-azure-vm-settings"></a>Sichern über Azure-VM-Einstellungen
 
 
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com/) an.
-2. Klicken Sie auf **Alle Dienste** und geben Sie im Filter **Virtuelle Computer** ein, und klicken Sie dann auf **Virtuelle Computer**. 
+2. Klicken Sie auf **Alle Dienste** und geben Sie im Filter **Virtuelle Computer** ein, und klicken Sie dann auf **Virtuelle Computer**.
 3. Wählen Sie aus der Liste der VMs die VM aus, die Sie sichern möchten.
-4. Klicken Sie auf der VM-Menü auf **Sichern**. 
+4. Klicken Sie auf der VM-Menü auf **Sichern**.
 5. Gehen Sie im **Recovery Services-Tresor** wie folgt vor:
    - Wenn Sie bereits über einen Tresor verfügen, klicken Sie auf **Vorhanden auswählen**, und wählen Sie einen Tresor aus.
    - Wenn Sie keinen Tresor haben, klicken Sie auf **Neu erstellen**. Geben Sie einen Namen für den Tresor an. Es wird in der gleichen Region und Ressourcengruppe erstellt wie die VM. Sie können diese Einstellungen nicht ändern, wenn Sie die Sicherung direkt aus den VM-Einstellungen heraus aktivieren.
@@ -57,7 +57,7 @@ Um Azure-VMs zu sichern, installiert Azure Backup eine Erweiterung auf dem VM-Ag
 
    ![Sicherungsrichtlinie auswählen](./media/backup-azure-vms-first-look-arm/set-backup-policy.png)
 
-7. Klicken Sie auf **Sicherung aktivieren**. Dadurch wird die Sicherungsrichtlinie mit der VM verknüpft. 
+7. Klicken Sie auf **Sicherung aktivieren**. Dadurch wird die Sicherungsrichtlinie mit der VM verknüpft.
 
     ![Schaltfläche „Sicherung aktivieren“](./media/backup-azure-vms-first-look-arm/vm-management-menu-enable-backup-button.png)
 
@@ -69,22 +69,21 @@ Um Azure-VMs zu sichern, installiert Azure Backup eine Erweiterung auf dem VM-Ag
 10. Nachdem Sie die Sicherung aktiviert haben, wird eine erste Sicherung ausgeführt. Sie können die erste Sicherung sofort starten oder warten, bis sie gemäß dem Sicherungszeitplan beginnt.
     - Bis zum Abschluss des ersten Sicherungsvorgangs wird **Status der letzten Sicherung** als **Warnung (erste Sicherung steht aus)** angezeigt.
     - Um zu sehen, wann die nächste geplante Sicherung ausgeführt wird, klicken Sie auf den Namen der Sicherungsrichtlinie.
-    
-   
+
 
 > [!NOTE]
-> Azure Backup erstellt zum Speichern der Wiederherstellungspunkte eine separate Ressourcengruppe (nicht die VM-Ressourcengruppe) mit dem Namensformat **AzureBackupRG_geography_number** (Beispiel: AzureBackupRG_northeurope_1). Diese Ressourcengruppe darf nicht gesperrt werden.
+> Der Azure Backup-Dienst erstellt zum Speichern der Momentaufnahme eine separate Ressourcengruppe (nicht die VM-Ressourcengruppe) mit dem Namensformat **AzureBackupRG_geography_number** (Beispiel: AzureBackupRG_northeurope_1). Die Daten in dieser Ressourcengruppe werden für die Dauer (in Tagen) aufbewahrt, die in der Sicherungsrichtlinie für virtuelle Azure-Computer unter „Momentaufnahme(n) zur sofortigen Wiederherstellung beibehalten für“ angegeben ist. Das Anwenden einer Sperre auf diese Ressourcengruppe kann zu Sicherungsfehlern führen.<br>
+Diese Ressourcengruppe sollte von allen Namens-/Tag-Einschränkungen ausgeschlossen werden, da eine Einschränkungsrichtlinie die Erstellung von Wiederherstellungspunktsammlungen in dieser Gruppe blockieren und erneut zu Fehlern führen würde.
 
 
-
-## <a name="run-a-backup-immediately"></a>Sofortige Ausführung einer Sicherung 
+## <a name="run-a-backup-immediately"></a>Sofortige Ausführung einer Sicherung
 
 1. Um eine Sicherung sofort auszuführen, klicken Sie im VM-Menü auf **Sicherung** > **Jetzt sichern**.
 
     ![Ausführen der Sicherung](./media/backup-azure-vms-first-look-arm/backup-now-update.png)
 
 2. Verwenden Sie unter **Jetzt sichern** im Kalender aus, bis wann der Wiederherstellungspunkt beibehalten wird > und **OK**.
-  
+
     ![Tage für Aufbewahrung von Sicherungen](./media/backup-azure-vms-first-look-arm/backup-now-blade-calendar.png)
 
 3. Sie werden über Portalbenachrichtigungen darüber informiert, dass der Sicherungsauftrag ausgelöst wurde. Um den Fortschritt der Sicherung zu überwachen, klicken Sie auf **Alle Aufträge anzeigen**.
@@ -100,4 +99,3 @@ Befolgen Sie die Anweisungen in diesem Artikel, um die Sicherung für Azure-VMs 
 
 - Wenn Sie Schwierigkeiten mit einem der Verfahren in diesem Artikel haben, lesen Sie den [Leitfaden zur Problembehandlung](backup-azure-vms-troubleshoot.md).
 - [Erfahren Sie mehr](backup-azure-manage-vms.md) über das Verwalten Ihrer Sicherungen.
-

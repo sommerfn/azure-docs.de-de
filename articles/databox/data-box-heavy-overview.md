@@ -5,28 +5,27 @@ services: databox
 documentationcenter: NA
 author: alkohli
 ms.service: databox
-ms.subservice: pod
+ms.subservice: heavy
 ms.topic: overview
-ms.date: 06/19/2019
+ms.date: 07/03/2019
 ms.author: alkohli
-ms.openlocfilehash: 94ba0040b1de7e1f03825f1cd2ef2a6536343d96
-ms.sourcegitcommit: a52d48238d00161be5d1ed5d04132db4de43e076
+ms.openlocfilehash: 0f4657cdd71a104ca111f62a6e9757b5a33b46e8
+ms.sourcegitcommit: ccb9a7b7da48473362266f20950af190ae88c09b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/20/2019
-ms.locfileid: "67271742"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67592302"
 ---
-# <a name="what-is-azure-data-box-heavy-preview"></a>Was ist Azure Data Box Heavy? (Vorschauversion)
+# <a name="what-is-azure-data-box-heavy"></a>Was ist Azure Data Box Heavy?
 
 Azure Data Box Heavy ermöglicht Ihnen, hunderte Terabyte an Daten schnell, kostengünstig und zuverlässig an Azure zu senden. Die Daten werden nach Azure übertragen, indem Ihnen ein Data Box Heavy-Gerät mit einer Speicherkapazität von 1 PB geliefert wird, das Sie mit Ihren Daten füllen und an Microsoft zurücksenden. Das Gerät verfügt über ein widerstandsfähiges Gehäuse zum Schützen und Absichern Ihrer Daten während des Transports.
 
-Data Box Heavy befindet sich zurzeit in der Vorschauphase. Registrieren Sie sich, um über das Azure-Portal ein Gerät anzufordern. Richten Sie das Gerät nach Empfang in Ihrem Rechenzentrum mithilfe der lokalen Webbenutzeroberfläche ein. Kopieren Sie die Daten von Ihren Servern auf das Gerät, und senden Sie es zurück an Azure. Im Azure-Rechenzentrum werden Ihre Daten auf Ihre Azure Storage-Konten hochgeladen. Sie können den gesamten Prozess End-to-End im Azure-Portal nachverfolgen.
+Richten Sie das Gerät nach Empfang in Ihrem Rechenzentrum mithilfe der lokalen Webbenutzeroberfläche ein. Kopieren Sie die Daten von Ihren Servern auf das Gerät, und senden Sie es zurück an Azure. Im Azure-Rechenzentrum werden Ihre Daten auf Ihre Azure Storage-Konten hochgeladen. Sie können den gesamten Prozess End-to-End im Azure-Portal nachverfolgen.
 
 
 > [!IMPORTANT]
-> - Data Box Heavy ist in der Vorschauphase. Lesen Sie die [Azure-Vertragsbedingungen für Vorschauversionen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/), bevor Sie diese Lösung bereitstellen.
-> - Registrieren Sie sich im [Vorschauportal](https://aka.ms/azuredatabox), um ein Gerät zu bestellen.
-> - In der Vorschauphase kann Data Box Heavy an Kunden in den USA und Europa versendet werden. Weitere Informationen finden Sie unter [Regionale Verfügbarkeit](#region-availability).
+> - Registrieren Sie sich im [Azure-Portal](https://portal.azure.com), um ein Gerät zu bestellen.
+
 
 ## <a name="use-cases"></a>Anwendungsfälle
 
@@ -115,25 +114,14 @@ Die aktuellsten Informationen zur regionalen Verfügbarkeit von Data Box Heavy f
 
 ## <a name="sign-up"></a>Registrieren
 
-Data Box Heavy ist in der Vorschauphase. Sie müssen sich für den Dienst registrieren. Führen Sie die folgenden Schritte aus, um sich für Data Box-Heavy zu registrieren:
+Führen Sie die folgenden Schritte aus, um sich für Data Box-Heavy zu registrieren:
 
-1. Melden Sie sich unter https://aka.ms/azuredatabox beim Azure-Portal an.
+1. Melden Sie sich unter https://portal.azure.com beim Azure-Portal an.
 2. Klicken Sie auf **+ Ressource erstellen**, um eine neue Ressource zu erstellen. Suchen Sie nach **Azure Data Box**. Wählen Sie den Dienst **Azure Data Box** aus.
-
-    <!--![The Data Box Heavy sign up 1]()-->
-
 3. Klicken Sie auf **Create**.
-
-    <!--![The Data Box Heavy sign up 2]()-->
-
-4. Wählen Sie das Abonnement aus, das Sie für die Vorschauversion von Data Box Heavy verwenden möchten. Wählen Sie die Region aus, in der Sie die Data Box Heavy-Ressource bereitstellen möchten. Klicken Sie bei der Option **Data Box Heavy** auf **Registrieren**.
-
-   <!--![The Data Box Heavy sign up 3]()-->
-
+4. Wählen Sie das Abonnement aus, das Sie für Data Box Heavy verwenden möchten. Wählen Sie die Region aus, in der Sie die Data Box Heavy-Ressource bereitstellen möchten. Klicken Sie bei der Option **Data Box Heavy** auf **Registrieren**.
 5. Beantworten Sie die Fragen nach dem Land/der Region, in dem/der sich die Daten befinden, Zeitrahmen, Azure-Zieldienst für die Datenübertragung, der Netzwerkbandbreite und Häufigkeit der Datenübertragung. Überprüfen Sie „Datenschutz und Nutzungsrichtlinien“, und aktivieren Sie das Kontrollkästchen „Microsoft darf Ihre E-Mail-Adresse für die Kontaktaufnahme verwenden“.
 
-    <!--![The Data Box Heavy sign up 4]()-->
-
-Nachdem Sie registriert und für die Vorschauversion aktiviert wurden, können Sie ein Data Box Heavy-Gerät bestellen.
+Nachdem Sie registriert wurden, können Sie ein Data Box Heavy-Gerät bestellen.
 
     

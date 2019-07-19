@@ -11,27 +11,27 @@ ms.service: azure-monitor
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 05/10/2019
+ms.date: 06/19/2019
 ms.author: magoedte
-ms.openlocfilehash: 376a7f3f83cc7fcf7490675d9c0aef1513862e8a
-ms.sourcegitcommit: bb85a238f7dbe1ef2b1acf1b6d368d2abdc89f10
+ms.openlocfilehash: 7fd9248fd38054b7f0e1fad2888d8b0d4cf2e60c
+ms.sourcegitcommit: a52d48238d00161be5d1ed5d04132db4de43e076
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/10/2019
-ms.locfileid: "65521731"
+ms.lasthandoff: 06/20/2019
+ms.locfileid: "67274222"
 ---
 # <a name="how-to-view-logs-and-events-in-real-time-preview"></a>Anzeigen von Protokollen und Ereignissen in Echtzeit (Vorschauversion)
-Azure Monitor für Container enthält ein Feature, das sich derzeit in der Vorschauversion befindet. Dieses Feature bietet eine Liveansicht Ihrer Azure Kubernetes Service-Containerprotokolle (stdout/stderr; AKS) und Ereignisse, ohne dass Sie kubectl-Befehle ausführen müssen. Wenn Sie eine Option auswählen, wird unter der Leistungsdatentabelle in der Ansicht für **Knoten**, **Controller** und **Container** ein neuer Bereich angezeigt. Dort werden von der Container-Engine generierte Liveprotokolle und -ereignisse angezeigt, die weitere Unterstützung bei der Behandlung von Problemen in Echtzeit bieten. 
+Azure Monitor für Container enthält ein Feature, das sich derzeit in der Vorschauversion befindet. Dieses Feature bietet eine Liveansicht Ihrer Azure Kubernetes Service-Containerprotokolle (stdout/stderr; AKS) und Ereignisse, ohne dass Sie kubectl-Befehle ausführen müssen. Wenn Sie eine Option auswählen, wird unter der Leistungsdatentabelle in der Ansicht für **Knoten**, **Controller** und **Container** ein neuer Bereich angezeigt. Dort werden von der Container-Engine generierte Liveprotokolle und -ereignisse angezeigt, die weitere Unterstützung bei der Behandlung von Problemen in Echtzeit bieten.
 
 >[!NOTE]
 >Damit diese Funktion verwendet werden kann, ist Zugriff vom Typ **Mitwirkender** auf die Clusterressource erforderlich.
 >
 
-Liveprotokolle unterstützen drei verschiedene Methoden, um den Zugriff auf die Protokolle zu steuern:
+Liveprotokolle unterstützen drei Methoden zum Steuern des Zugriffs auf die Protokolle:
 
-1. AKS ohne aktivierte Kubernetes RBAC-Autorisierung 
+1. AKS ohne aktivierte Kubernetes RBAC-Autorisierung
 2. Mit Kubernetes RBAC-Autorisierung aktivierter AKS
-3. Mit auf SAML basiertem SSO in Azure Active Directory (AD) aktivierter AKS 
+3. Mit auf SAML basiertem SSO in Azure Active Directory (AD) aktivierter AKS
 
 ## <a name="kubernetes-cluster-without-rbac-enabled"></a>Kubernetes-Cluster ohne aktiviertes RBAC
  
@@ -66,18 +66,24 @@ Wenn die Kubernetes RBAC-Autorisierung aktiviert ist, müssen Sie die Clusterrol
          apiGroup: rbac.authorization.k8s.io
     ```
 
-2. Wenn Sie dies zum ersten Mal konfigurieren, erstellen Sie die Clusterrollenbildung durch Ausführen des folgenden Befehls: `kubectl create -f LogReaderRBAC.yaml`. Führen Sie zum Aktualisieren Ihrer Konfiguration den folgenden Befehl aus, wenn Sie noch vor der Einführung von Liveereignisprotokollen die Unterstützung für die Vorschauversion von Liveprotokollen aktiviert haben: `kubectl apply -f LiveLogRBAC.yml`. 
+2. Wenn Sie sie zum ersten Mal konfigurieren, erstellen Sie die Clusterrollenbindung durch Ausführen des folgenden Befehls: `kubectl create -f LogReaderRBAC.yaml`. Führen Sie zum Aktualisieren Ihrer Konfiguration den folgenden Befehl aus, wenn Sie noch vor der Einführung von Liveereignisprotokollen die Unterstützung für die Vorschauversion von Liveprotokollen aktiviert haben: `kubectl apply -f LogReaderRBAC.yml`.
 
 ## <a name="configure-aks-with-azure-active-directory"></a>Konfigurieren von AKS mit Azure Active Directory
-Azure Kubernetes Service (AKS) kann für die Verwendung von Azure Active Directory (AD) für die Benutzerauthentifizierung konfiguriert werden. Informationen zur erstmaligen Konfiguration finden Sie unter [Integrieren von Azure Active Directory in Azure Kubernetes Service](../../aks/azure-ad-integration.md). Während der Schritte zum Erstellen der [Clientanwendung](../../aks/azure-ad-integration.md#create-client-application) und zum Angeben des **Umleitungs-URI** müssen Sie der Liste `https://ininprodeusuxbase.microsoft.com/*` einen weiteren URI hinzufügen.  
+
+Azure Kubernetes Service (AKS) kann für die Verwendung von Azure Active Directory (AD) für die Benutzerauthentifizierung konfiguriert werden. Informationen zur erstmaligen Konfiguration finden Sie unter [Integrieren von Azure Active Directory in Azure Kubernetes Service](../../aks/azure-ad-integration.md). Machen Sie beim Ausführen der Schritte zum Erstellen der [Clientanwendung](../../aks/azure-ad-integration.md#create-the-client-application) folgende Angaben:
+
+- **Umleitungs-URI (optional)** : Dies ist ein **Web**-Anwendungstyp, und der URL-Basiswert sollte `https://afd.hosting.portal.azure.net/monitoring/Content/iframe/infrainsights.app/web/base-libs/auth/auth.html` lauten.
+- Wählen Sie nach dem Registrieren der Anwendung auf der Seite **Übersicht** im linken Bereich **Authentifizierung** aus. Führen Sie auf der Seite **Authentifizierung** unter **Erweiterte Einstellungen** implizit **Zugriffstoken** und **ID-Token** auf, und speichern Sie dann Ihre Änderungen.
 
 >[!NOTE]
->Die Konfiguration der Authentifizierung mit Azure Active Directory für einmaliges Anmelden kann nur während der anfänglichen Bereitstellung eines neuen AKS-Clusters durchgeführt werden. Sie können einmaliges Anmelden nicht für einen bereits bereitgestellten AKS-Cluster konfigurieren. Sie müssen die Authentifizierung der Option **App-Registrierung (Vorgängerversion)** in Azure AD konfigurieren, um die Verwendung eines Platzhalterzeichens im URI zu unterstützen, und fügen Sie sie als **native** App der Liste hinzu.
-> 
+>Die Konfiguration der Authentifizierung mit Azure Active Directory für einmaliges Anmelden kann nur während der anfänglichen Bereitstellung eines neuen AKS-Clusters durchgeführt werden. Sie können einmaliges Anmelden nicht für einen bereits bereitgestellten AKS-Cluster konfigurieren.
+  
+>[!IMPORTANT]
+>Wenn Sie Azure AD mit dem aktualisierten URI erneut für die Benutzerauthentifizierung konfiguriert haben, löschen Sie den Cache Ihres Browsers, um sicherzustellen, dass das aktualisierte Authentifizierungstoken heruntergeladen und angewendet wird.   
 
 ## <a name="view-live-logs-and-events"></a>Anzeigen von Liveprotokollen und- ereignissen
 
-Sie können Echtzeitprotokollereignisse anzeigen, da diese von der Container-Engine der **Knoten-** , **Controller-** und **Containeransicht** generiert werden. Wählen Sie im Bereich „Eigenschaften“ die Option **Livedaten anzeigen (Vorschauversion)** aus. Nun wird unter der Leistungsdatentabelle ein Bereich angezeigt, in dem Sie Protokolle und Ereignisse in einem fortlaufenden Datenstrom anzeigen können. 
+Sie können Echtzeitprotokollereignisse anzeigen, da diese von der Container-Engine der **Knoten-** , **Controller-** und **Containeransicht** generiert werden. Wählen Sie im Bereich „Eigenschaften“ die Option **Livedaten anzeigen (Vorschauversion)** aus. Nun wird unter der Leistungsdatentabelle ein Bereich angezeigt, in dem Sie Protokolle und Ereignisse in einem fortlaufenden Datenstrom anzeigen können.
 
 ![Option zum Anzeigen von Liveprotokollen im Bereich „Knoteneigenschaften“](./media/container-insights-live-logs/node-properties-live-logs-01.png)  
 
@@ -97,9 +103,11 @@ Nach erfolgreicher Authentifizierung wird der Liveprotokollbereich im unteren Ab
     
   ![Abgerufene Daten des Liveprotokollbereichs](./media/container-insights-live-logs/live-logs-pane-01.png)  
 
-In der Suchleiste können Sie nach Schlüsselwort filtern, um den Text im Protokoll oder Ereignis hervorzuheben. In der Suchleiste ganz rechts wird dann angezeigt, wie viele Ergebnisse dem Filter entsprechen.   
+In der Suchleiste können Sie nach Schlüsselwort filtern, um den Text im Protokoll oder Ereignis hervorzuheben. In der Suchleiste ganz rechts wird dann angezeigt, wie viele Ergebnisse dem Filter entsprechen.
 
   ![Beispiel für den Filter des Liveprotokollbereichs](./media/container-insights-live-logs/live-logs-pane-filter-example-01.png)
+
+Beim Anzeigen von Ereignissen können Sie außerdem mit dem **Filter** rechts neben der Suchleiste die Ergebnisse einschränken. Je nachdem, welche Ressource Sie ausgewählt haben, stehen im Filterfeld Pods, Namespaces oder Cluster zur Auswahl.  
 
 Klicken Sie auf die Option **Scrollen**, um den automatischen Bildlauf zu unterbrechen und das Verhalten des Bereichs zu steuern sowie manuell durch die gelesenen neuen Daten zu scrollen. Klicken Sie einfach erneut auf die Option **Scrollen**, um den automatischen Bildlauf wieder zu aktivieren. Sie können den Abruf von Protokolldaten oder Ereignissen auch anhalten, indem Sie auf die Option **Anhalten** klicken. Wenn Sie bereit sind, den Vorgang fortzusetzen, klicken Sie einfach auf **Wiedergeben**.  
 

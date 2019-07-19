@@ -11,22 +11,22 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.openlocfilehash: 6bf61e2afd96e3923938ac4f815d34ae08f7c618
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 97866a1f1299c028cdc8f86245308ae4a8b5db88
+ms.sourcegitcommit: 837dfd2c84a810c75b009d5813ecb67237aaf6b8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64694226"
+ms.lasthandoff: 07/02/2019
+ms.locfileid: "67502684"
 ---
 # <a name="link-a-partner-id-to-your-azure-accounts"></a>Verknüpfen einer Partner-ID mit Ihren Azure-Konten
 
-Als Partner können Sie die Auswirkungen Ihrer Kundenbindungen nachverfolgen. Sie können Ihre Partner-ID mit den Konten verknüpfen, die zum Verwalten der Ressourcen eines Kunden verwendet werden.
+Microsoft-Partner stellen Dienste bereit, die Kunden beim Erreichen ihrer Geschäftsziele und der Ziele beim Einsatz von Microsoft-Produkten unterstützen. Wenn die Partner Azure-Dienste im Auftrag des Kunden verwalten, konfigurieren und unterstützen, benötigen sie als Benutzer Zugriff auf die Umgebung des Kunden. Mit dem Partnerzuordnungstyp „Partner Admin Link“ können Partner Ihre Partnernetzwerk-ID mit den für die Bereitstellung von Diensten verwendeten Anmeldeinformationen verknüpfen.
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="get-access-from-your-customer"></a>Erlangen des Zugriffs seitens Ihres Kunden
 
-Bevor Sie Ihre Partner-ID verknüpfen, muss Ihr Kunde Ihnen über eine der folgenden Optionen Zugriff auf ihre Azure-Ressourcen erteilen:
+Bevor Sie Ihre Partner-ID verknüpfen, muss Ihr Kunde Ihnen über eine der folgenden Optionen Zugriff auf seine Azure-Ressourcen erteilen:
 
 - **Gastbenutzer**: Ihr Kunde kann Sie als Gastbenutzer hinzufügen und Ihnen eine beliebige rollenbasierte Zugriffssteuerungsrolle (Role-Based Access Control, RBAC) zuweisen. Weitere Informationen finden Sie unter [Hinzufügen von Gastbenutzern aus einem anderen Verzeichnis](https://docs.microsoft.com/azure/active-directory/active-directory-b2b-what-is-azure-ad-b2b).
 
@@ -141,11 +141,11 @@ Die Verknüpfung wird auf Benutzerkontoebene zugeordnet. Nur Sie können die Ver
 
 **Welche MPN-ID muss ich verwenden, wenn mein Unternehmen über mehrere MPN-IDs verfügt?**
 
-Sie können jede gültige MPN-ID außer der MPN-ID der virtuellen Organisation (v-org) verwenden. Die meisten Partner verwenden die MPN-ID für die geografische Region, in der sich der Kunde befindet oder die Dienste bereitgestellt werden.
+Standortbezogene Partnerkonten und die zugehörigen MPN-IDs sollten zum Verknüpfen der Partner-ID verwendet werden.  Unter [Partnerkonten](https://docs.microsoft.com/partner-center/account-structure) finden Sie weitere Informationen hierzu.
 
 **Wo finde ich die beeinflusste Umsatzberichterstattung für die verknüpfte Partner-ID?**
 
-Sie finden die beeinflusste Umsatzberichterstattung unter [Dashboard „My Insights“](https://partner.microsoft.com/membership/reports/myinsights). Sie müssen „Partner Admin Link“ als Partnerzuordnungstyp auswählen.
+Berichte zur Cloudproduktleistung stehen für Partner im Partner Center unter [Dashboard „My Insights“](https://partner.microsoft.com/membership/reports/myinsights) zur Verfügung. Sie müssen „Partner Admin Link“ als Partnerzuordnungstyp auswählen.
 
 **Warum wird mein Kunde in den Berichten nicht angezeigt?**
 

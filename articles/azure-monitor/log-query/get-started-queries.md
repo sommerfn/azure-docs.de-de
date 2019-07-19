@@ -13,14 +13,14 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 05/09/2019
 ms.author: bwren
-ms.openlocfilehash: 105454205c0fe3a0020693a1289a65cecd2bf57b
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: b03109ee5cdb76247bf3be6fda97e0cf6e434f17
+ms.sourcegitcommit: 2d3b1d7653c6c585e9423cf41658de0c68d883fa
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65519014"
+ms.lasthandoff: 06/20/2019
+ms.locfileid: "67296084"
 ---
-# <a name="get-started-with-azure-monitor-log-queries"></a>Erste Schritte mit Azure Monitor-Protokollabfragen
+# <a name="get-started-with-log-queries-in-azure-monitor"></a>Erste Schritte mit Protokollabfragen in Azure Monitor
 
 
 > [!NOTE]
@@ -28,7 +28,7 @@ ms.locfileid: "65519014"
 
 [!INCLUDE [log-analytics-demo-environment](../../../includes/log-analytics-demo-environment.md)]
 
-In diesem Tutorial erfahren Sie, wie Sie Azure Monitor-Protokollabfragen schreiben. Es wird Folgendes vermittelt:
+In diesem Tutorial erfahren Sie, wie Sie Protokollabfragen in Azure Monitor schreiben. Es wird Folgendes vermittelt:
 
 - Grundlegendes zur Abfragestruktur
 - Sortieren von Abfrageergebnissen
@@ -38,6 +38,8 @@ In diesem Tutorial erfahren Sie, wie Sie Azure Monitor-Protokollabfragen schreib
 - Definieren und Verwenden von benutzerdefinierten Feldern
 - Aggregieren und Gruppieren von Ergebnissen
 
+Ein Tutorial zur Verwendung von Log Analytics im Azure-Portal finden Sie unter [Erste Schritte mit Azure Monitor Log Analytics](get-started-portal.md).<br>
+Weitere Informationen zu Protokollabfragen in Azure Monitor finden Sie unter [Übersicht über Protokollabfragen in Azure Monitor](log-query-overview.md).
 
 ## <a name="writing-a-new-query"></a>Schreiben einer neuen Abfrage
 Abfragen können entweder mit einem Tabellennamen oder dem *search*-Befehl beginnen. Sie sollten mit einem Tabellennamen beginnen, da er einen klaren Gültigkeitsbereich für die Abfrage definiert und die Abfrageleistung und -relevanz der Ergebnisse verbessert.
@@ -71,8 +73,8 @@ search in (SecurityEvent) "Cryptographic"
 
 Diese Abfrage sucht die *SecurityEvent*-Tabelle für Datensätze, die den Ausdruck „Cryptographic“ enthalten. Von diesen Datensätzen werden 10 Datensätze zurückgegeben und angezeigt. Wenn wir den Teil `in (SecurityEvent)` auslassen und nur `search "Cryptographic"` ausführen, geht die Suche *alle* Tabellen durch, was mehr Zeit in Anspruch nehmen würde und weniger effizient wäre.
 
-> [!NOTE]
-> Standardmäßig ist ein Zeitbereich _Letzte 24 Stunden_ festgelegt. Wenn Sie einen anderen Bereich verwenden möchten, verwenden Sie die Zeitauswahl (neben der Schaltfläche *Los*), oder fügen Sie Ihrer Abfrage einen expliziten Zeitbereichsfilter hinzu.
+> [!WARNING]
+> Suchabfragen sind in der Regel langsamer als tabellengestützte Abfragen, da sie mehr Daten verarbeiten müssen. 
 
 ## <a name="sort-and-top"></a>„sort“ und „top“
 Zwar können mit **take** einige Datensätze abgerufen werden, allerdings werden die Ergebnisse in keiner bestimmten Reihenfolge ausgewählt und angezeigt. Um eine sortierte Ansicht zu erhalten, können Sie diese nach der bevorzugten Spalte **sortieren**:

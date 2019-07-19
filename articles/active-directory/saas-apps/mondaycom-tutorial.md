@@ -13,15 +13,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 06/17/2019
+ms.date: 07/08/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4cdc605c059857c826056fece782bbb9a9c86a15
-ms.sourcegitcommit: a52d48238d00161be5d1ed5d04132db4de43e076
+ms.openlocfilehash: 93c5e473c62dc6b38f0b2c2906560d6099842d49
+ms.sourcegitcommit: dad277fbcfe0ed532b555298c9d6bc01fcaa94e2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/20/2019
-ms.locfileid: "67275808"
+ms.lasthandoff: 07/10/2019
+ms.locfileid: "67718500"
 ---
 # <a name="tutorial-integrate-mondaycom-with-azure-active-directory"></a>Tutorial: Integrieren von monday.com in Azure Active Directory
 
@@ -78,7 +78,7 @@ Gehen Sie wie folgt vor, um das einmalige Anmelden von Azure AD im Azure-Portal 
 
    ![Bearbeiten der SAML-Basiskonfiguration](common/edit-urls.png)
 
-4. Führen Sie im Bereich **Grundlegende SAML-Konfiguration** die folgenden Schritte aus, wenn Sie über eine Metadatendatei des Dienstanbieters verfügen und den **IDP-initiierten Modus** konfigurieren möchten:
+1. Führen Sie im Bereich **Grundlegende SAML-Konfiguration** die folgenden Schritte aus, wenn Sie über eine Metadatendatei des Dienstanbieters verfügen und den **IDP-initiierten Modus** konfigurieren möchten:
 
     1. Wählen Sie **Metadatendatei hochladen** aus.
 
@@ -89,7 +89,7 @@ Gehen Sie wie folgt vor, um das einmalige Anmelden von Azure AD im Azure-Portal 
        > [!Note]
        > Wenn die Werte **Bezeichner** und **Antwort-URL** nicht automatisch ausgefüllt werden, geben Sie sie manuell ein. Die Werte für **Bezeichner** und **Antwort-URL** sind identisch und haben folgendes Format: `https://<your-domain>.monday.com/saml/saml_callback`
 
-5. Klicken Sie auf **Zusätzliche URLs festlegen**, und führen Sie den folgenden Schritt aus, wenn Sie die Anwendung im **SP-initiierten Modus** konfigurieren möchten:
+1. Klicken Sie auf **Zusätzliche URLs festlegen**, und führen Sie den folgenden Schritt aus, wenn Sie die Anwendung im **SP-initiierten Modus** konfigurieren möchten:
 
     Geben Sie im Textfeld **Anmelde-URL** eine URL im folgenden Format ein: `https://<your-domain>.monday.com`
 
@@ -100,7 +100,7 @@ Gehen Sie wie folgt vor, um das einmalige Anmelden von Azure AD im Azure-Portal 
 
     ![Bereich „Benutzerattribute“](common/edit-attribute.png)
 
-6. Darüber hinaus wird von der monday.com-Anwendung erwartet, dass in der SAML-Antwort noch einige weitere Attribute zurückgegeben werden. Führen Sie im Dialogfeld **Benutzerattribute** im Abschnitt **Benutzeransprüche** die folgenden Schritte aus, um das SAML-Tokenattribut wie in der folgenden Tabelle gezeigt hinzuzufügen:
+1. Darüber hinaus wird von der monday.com-Anwendung erwartet, dass in der SAML-Antwort noch einige weitere Attribute zurückgegeben werden. Führen Sie im Dialogfeld **Benutzerattribute** im Abschnitt **Benutzeransprüche** die folgenden Schritte aus, um das SAML-Tokenattribut wie in der folgenden Tabelle gezeigt hinzuzufügen:
 
     | NAME | Quellattribut|
     | ---------------| --------------- |
@@ -109,10 +109,6 @@ Gehen Sie wie folgt vor, um das einmalige Anmelden von Azure AD im Azure-Portal 
     | Nachname | user.surname |
 
     a. Klicken Sie auf **Neuen Anspruch hinzufügen**, um das Dialogfeld **Benutzeransprüche verwalten** zu öffnen.
-
-    ![image](./media/mondaycom-tutorial/attribute01.png)
-
-    ![image](common/new-attribute-details.png)
 
     b. Geben Sie im Textfeld **Name** den für die Zeile angezeigten Attributnamen ein.
 
@@ -136,17 +132,25 @@ Gehen Sie wie folgt vor, um das einmalige Anmelden von Azure AD im Azure-Portal 
 
 ### <a name="configure-mondaycom"></a>Konfigurieren von monday.com
 
-1. Melden Sie sich in einem anderen Webbrowserfenster als Administrator bei monday.com an.
+1. Wenn Sie die Konfiguration in monday.com automatisieren möchten, müssen Sie die **Browsererweiterung „Meine Apps“ für die sichere Anmeldung** installieren, indem Sie auf **Erweiterung installieren** klicken.
 
-2. Navigieren Sie zu **Profile** (Profil) in der rechten oberen Ecke, und klicken Sie auf **Admin** (Administrator).
+    ![Erweiterung „Meine Apps“](common/install-myappssecure-extension.png)
 
-     ![monday.com-Konfiguration](./media/mondaycom-tutorial/configuration01.png)
+1. Klicken Sie nach dem Hinzufügen der Erweiterung zum Browser auf **monday.com einrichten**, um zur monday.com-Anwendung weitergeleitet zu werden. Geben Sie dort die Administratoranmeldeinformationen ein, um sich bei monday.com anzumelden. Die Browsererweiterung konfiguriert die Anwendung automatisch für Sie und automatisiert die Schritte 3 bis 6.
 
-3. Wählen Sie **Security** (Sicherheit) aus, und klicken Sie neben „SAML“ auf **Open** (Öffnen).
+    ![Einrichtungskonfiguration](common/setup-sso.png)
+
+1. Wenn Sie monday.com manuell einrichten möchten, öffnen Sie ein neues Webbrowserfenster, melden Sie sich als Administrator bei monday.com an, und führen Sie die folgenden Schritte aus:
+
+1. Navigieren Sie zu **Profile** (Profil) in der rechten oberen Ecke, und klicken Sie auf **Admin** (Administrator).
+
+    ![monday.com-Konfiguration](./media/mondaycom-tutorial/configuration01.png)
+
+1. Wählen Sie **Security** (Sicherheit) aus, und klicken Sie neben „SAML“ auf **Open** (Öffnen).
 
     ![monday.com-Konfiguration](./media/mondaycom-tutorial/configuration02.png)
 
-4. Geben Sie die nachfolgend gezeigten Details an.
+1. Geben Sie die nachfolgend gezeigten Details an.
 
     ![monday.com-Konfiguration](./media/mondaycom-tutorial/configuration03.png)
 

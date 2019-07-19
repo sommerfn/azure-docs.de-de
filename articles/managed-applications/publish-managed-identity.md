@@ -8,12 +8,12 @@ ms.reviewer: ''
 ms.author: jobreen
 author: jjbfour
 ms.date: 05/13/2019
-ms.openlocfilehash: 5ef653e825a5f1eb0f5df52f9c2544a5224b34cf
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 9fb5f7a4a62c2d323059f7c0b879482e93feef2f
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66003568"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67434863"
 ---
 # <a name="azure-managed-application-with-managed-identity"></a>Verwaltete Azure-Anwendung mit verwalteter Identität
 
@@ -322,8 +322,23 @@ Nachdem das Paket für die verwaltete Anwendung erstellt wurde, kann die verwalt
 Auf das Token der verwalteten Anwendung kann nun über die `listTokens`-API vom Mandanten des Herausgebers aus zugegriffen werden. Eine Beispielanforderung könnte folgendermaßen aussehen:
 
 ``` HTTP
-POST https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroup}/providers/Microsoft.Solutions/applications/{applicationName}?api-version=2018-09-01-preview HTTP/1.1
+POST https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroup}/providers/Microsoft.Solutions/applications/{applicationName}/listTokens?api-version=2018-09-01-preview HTTP/1.1
+
+{
+    "authorizationAudience": "https://management.azure.com/",
+    "userAssignedIdentities": [
+        "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroup}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{userAssignedIdentityName}"
+    ]
+}
 ```
+
+Anforderungstextparameter:
+
+Parameter | Erforderlich | BESCHREIBUNG
+---|---|---
+authorizationAudience | *Nein* | Der App-ID-URI der Zielressource. Dieser ist auch der `aud`-Anspruch (Zielgruppe) des ausgestellten Tokens. Der Standardwert ist https://management.azure.com/.
+userAssignedIdentities | *Nein* | Die Liste der vom Benutzer zugewiesenen verwalteten Identitäten, für die ein Token abgerufen werden kann. Falls nicht angegeben, gibt `listTokens` das Token für die vom System zugewiesene verwaltete Identität zurück.
+
 
 Eine Beispielantwort könnte folgendermaßen aussehen:
 
@@ -345,6 +360,18 @@ Content-Type: application/json
     ]
 }
 ```
+
+Die Antwort enthält in der `value`-Eigenschaft ein Array von Token:
+
+Parameter | BESCHREIBUNG
+---|---
+access_token | Das angeforderte Zugriffstoken.
+expires_in | Die Anzahl der Sekunden, die das Zugriffstoken gültig ist.
+expires_on | Der Zeitpunkt, zu dem das Zugriffstoken abläuft. Wird als die Anzahl der Sekunden in der Epoche dargestellt.
+not_before | Die Zeitspanne, in der das Zugriffstoken gilt. Wird als die Anzahl der Sekunden in der Epoche dargestellt.
+authorizationAudience | Die `aud` (Zielgruppe), für die das Zugriffstoken angefordert wurde. Ist identisch mit den in der `listTokens`-Anforderung bereitgestellten Daten.
+resourceId | Die Azure-Ressourcen-ID für das ausgestellte Token. Ist entweder die ID der verwalteten Anwendung oder die dem Benutzer zugewiesene Identitäts-ID.
+token_type | Der Typ des Tokens.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 03/13/2019
 ms.author: sogup
-ms.openlocfilehash: aa953440f03137f3359276bc9e06cb0c73f0ab4a
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: add2c72535b5be0edcbc00c077dfe20a6deaa3e0
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61219087"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67434184"
 ---
 # <a name="manage-azure-vm-backups"></a>Verwalten von Azure-VM-Sicherungen
 
@@ -103,25 +103,36 @@ Wählen Sie auf dem Tresordashboard die Kachel **Sicherungsaufträge** aus, um d
 
 Sie haben zwei Möglichkeiten, den Schutz einer virtuellen Maschine zu beenden:
 
-- Beenden aller zukünftigen Sicherungsaufträge und Löschen aller Wiederherstellungspunkte In diesem Fall kann der virtuelle Computer nicht wiederhergestellt werden.
-- Beenden aller zukünftigen Sicherungsaufträge und Beibehalten der Wiederherstellungspunkte: Sie können den virtuellen Computer bei Bedarf wiederherstellen, müssen jedoch für das Beibehalten der Wiederherstellungspunkte im Tresor bezahlen. Weitere Informationen finden Sie unter [Azure Backup – Preise](https://azure.microsoft.com/pricing/details/backup/).
+* **Schutz beenden und Sicherungsdaten beibehalten**. Mit dieser Option werden alle zukünftigen Sicherungsaufträge zum Schutz Ihres virtuellen Computers beendet, jedoch behält der Azure Backup-Dienst die gesicherten Wiederherstellungspunkte bei.  Die Aufbewahrung der Wiederherstellungspunkte im Tresor wird Ihnen in Rechnung gestellt (Einzelheiten finden Sie unter [Azure Backup – Preise](https://azure.microsoft.com/pricing/details/backup/)). Sie können den virtuellen Computer bei Bedarf wiederherstellen. Mit der Option *Sicherung fortsetzen* können Sie bei Bedarf den VM-Schutz fortsetzen.
+* **Schutz beenden und Sicherungsdaten löschen**. Mit dieser Option werden alle zukünftigen Sicherungsaufträge zum Schutz Ihres virtuellen Computers beendet und alle Wiederherstellungspunkte gelöscht. Sie können den virtuellen Computer nicht wiederherstellen und auch nicht die Option *Sicherung fortsetzen* verwenden.
 
 >[!NOTE]
 >Wenn Sie eine Datenquelle löschen, ohne die Sicherungen zu beenden, treten bei neuen Sicherungen Fehler auf. Alte Wiederherstellungspunkte laufen gemäß der Richtlinie ab. Ein letzter Wiederherstellungspunkt wird jedoch immer beibehalten, bis Sie die Sicherungen beenden und die Daten löschen.
 >
 
-So beenden Sie den Schutz für einen virtuellen Computer:
+### <a name="stop-protection-and-retain-backup-data"></a>Schutz beenden und Sicherungsdaten beibehalten
+
+So beenden Sie den Schutz eines virtuellen Computers und behalten die Sicherungsdaten bei
 
 1. Wählen Sie auf dem [Dashboard für die Tresorelemente](#view-vms-on-the-dashboard) die Option **Sicherung beenden** aus.
-2. Wählen Sie aus, ob die Sicherungsdaten beibehalten oder gelöscht werden sollen, und bestätigen Sie Ihre Auswahl. Geben Sie bei Bedarf einen Kommentar ein. Falls Sie den Namen des Elements nicht kennen, zeigen Sie mit dem Cursor auf das Ausrufezeichen, um den Namen anzuzeigen.
+2. Wählen Sie **Sicherungsdaten beibehalten** aus, und bestätigen Sie Ihre Auswahl bei Bedarf. Geben Sie bei Bedarf einen Kommentar ein. Falls Sie den Namen des Elements nicht kennen, zeigen Sie mit dem Cursor auf das Ausrufezeichen, um den Namen anzuzeigen.
 
-    ![Schutz beenden](./media/backup-azure-manage-vms/retain-or-delete-option.png)
+    ![Beibehalten von Sicherungsdaten](./media/backup-azure-manage-vms/retain-backup-data.png)
 
-     Sie erhalten einer Benachrichtigung, wenn die Sicherungsaufträge beendet wurden.
+Sie erhalten einer Benachrichtigung, wenn die Sicherungsaufträge beendet wurden.
+
+### <a name="stop-protection-and-delete-backup-data"></a>Schutz beenden und Sicherungsdaten löschen
+
+So beenden Sie den Schutz eines virtuellen Computers und löschen die Daten
+
+1. Wählen Sie auf dem [Dashboard für die Tresorelemente](#view-vms-on-the-dashboard) die Option **Sicherung beenden** aus.
+2. Wählen Sie **Sicherungsdaten löschen** aus, und bestätigen Sie Ihre Auswahl bei Bedarf. Geben Sie den Namen des Sicherungselements ein, und fügen Sie gegebenenfalls einen Kommentar hinzu.
+
+    ![Löschen von Sicherungsdaten](./media/backup-azure-manage-vms/delete-backup-data1.png)
 
 ## <a name="resume-protection-of-a-vm"></a>Fortsetzen des Schutzes einer VM
 
-Wenn Sie beim Beenden des virtuellen Computers die Sicherungsdaten beibehalten, können Sie den Schutz später fortsetzen. Wenn Sie die Sicherungsdaten löschen, können Sie den Schutz nicht fortsetzen.
+Wenn Sie beim Beenden des Schutzes des virtuellen Computers die Option [Schutz beenden und Sicherungsdaten beibehalten](#stop-protection-and-retain-backup-data) ausgewählt hatten, können Sie anschließend die Option **Sicherung fortsetzen** verwenden. Diese Option ist nicht verfügbar, wenn Sie [Schutz beenden und Sicherungsdaten löschen](#stop-protection-and-delete-backup-data) oder [Sicherungsdaten löschen](#delete-backup-data) ausgewählt haben.
 
 So setzen Sie den Schutz für einen virtuellen Computer fort:
 
@@ -134,23 +145,25 @@ So setzen Sie den Schutz für einen virtuellen Computer fort:
 
 ## <a name="delete-backup-data"></a>Löschen von Sicherungsdaten
 
-Sie können die Sicherungsdaten eines virtuellen Computers während des Auftrags **Sicherung beenden** oder nach Abschluss des Sicherungsauftrags löschen. Bevor Sie vor dem Löschen der Sicherungsdaten Folgendes:
+Es gibt zwei Möglichkeiten, die Sicherungsdaten eines virtuellen Computers zu löschen:
 
-- Möglicherweise ist es von Vorteil, mit dem Löschen der Wiederherstellungspunkte mehrere Tage oder Wochen zu warten.
-- Im Gegensatz zum Wiederherstellen von Wiederherstellungspunkten können Sie beim Löschen von Sicherungsdaten keine bestimmten Wiederherstellungspunkte zum Löschen auswählen. Wenn Sie sich Ihre Sicherungsdaten löschen, werden alle zugehörigen Wiederherstellungspunkte gelöscht.
+- Wählen Sie auf dem Dashboard für die Tresorelemente „Sicherung beenden“ aus, und befolgen Sie die für die Option [Schutz beenden und Sicherungsdaten löschen](#stop-protection-and-delete-backup-data) beschriebenen Anweisungen.
 
-Wenn Sie den Sicherungsauftrag des virtuellen Computers beenden oder deaktivieren, können Sie die Sicherungsdaten löschen:
+  ![Auswählen von „Sicherung beenden“](./media/backup-azure-manage-vms/stop-backup-buttom.png)
 
+- Wählen Sie auf dem Dashboard für die Tresorelemente „Sicherungsdaten löschen“ aus. Diese Option ist aktiviert, wenn Sie beim Beenden des Schutzes des virtuellen Computers die Option [Schutz beenden und Sicherungsdaten beibehalten](#stop-protection-and-retain-backup-data) ausgewählt hatten.
 
-1. Wählen Sie auf dem [Dashboard für die Tresorelemente](#view-vms-on-the-dashboard) die Option **Sicherungsdaten löschen** aus.
+  ![Auswählen von „Sicherung löschen“](./media/backup-azure-manage-vms/delete-backup-buttom.png)
 
-    ![Auswählen von „Sicherung löschen“](./media/backup-azure-manage-vms/delete-backup-buttom.png)
+  - Wählen Sie auf dem [Dashboard für die Tresorelemente](#view-vms-on-the-dashboard) die Option **Sicherungsdaten löschen** aus.
+  - Geben Sie den Namen des Sicherungselements ein, um zu bestätigen, dass Sie die Wiederherstellungspunkte löschen möchten.
 
-1. Geben Sie den Namen des Sicherungselements ein, um zu bestätigen, dass Sie die Wiederherstellungspunkte löschen möchten.
+    ![Löschen von Sicherungsdaten](./media/backup-azure-manage-vms/delete-backup-data1.png)
 
-    ![Bestätigen Sie, dass Sie die Wiederherstellungspunkte löschen möchten.](./media/backup-azure-manage-vms/item-verification-box.png)
+  - Wählen Sie **Löschen** aus, um die Sicherungsdaten des Elements zu löschen. Sie erhalten einer Benachrichtigung, dass die Sicherungsdaten gelöscht wurden.
 
-1. Wählen Sie **Löschen** aus, um die Sicherungsdaten des Elements zu löschen. Sie erhalten einer Benachrichtigung, dass die Sicherungsdaten gelöscht wurden.
+  > [!NOTE]
+  > Wenn Sie die Sicherungsdaten löschen, werden alle zugehörigen Wiederherstellungspunkte gelöscht. Sie können keine bestimmten Wiederherstellungspunkte zum Löschen auswählen.
 
 ## <a name="next-steps"></a>Nächste Schritte
 - Erfahren Sie mehr über das [Sichern einer Azure-VM über die VM-Einstellungen](backup-azure-vms-first-look-arm.md).

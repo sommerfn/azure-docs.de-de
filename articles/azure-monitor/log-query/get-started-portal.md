@@ -8,20 +8,20 @@ ms.service: log-analytics
 ms.topic: conceptual
 ms.date: 08/20/2018
 ms.author: bwren
-ms.openlocfilehash: af01ebdc72df096b45c4ca4e755b2ed3880bab65
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 17b5c0b459e70909d9f305beb8bf87b83f1cf65c
+ms.sourcegitcommit: 2d3b1d7653c6c585e9423cf41658de0c68d883fa
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66255258"
+ms.lasthandoff: 06/20/2019
+ms.locfileid: "67296516"
 ---
-# <a name="get-started-with-azure-monitor-log-analytics"></a>Erste Schritte mit Azure Monitor Log Analytics
+# <a name="get-started-with-log-analytics-in-azure-monitor"></a>Erste Schritte mit Log Analytics in Azure Monitor
 
 [!INCLUDE [log-analytics-demo-environment](../../../includes/log-analytics-demo-environment.md)]
 
-In diesem Tutorial erfahren Sie, wie Sie mithilfe von Azure Monitor Log Analytics im Azure-Portal Azure Monitor-Protokollabfragen schreiben können. Es wird Folgendes vermittelt:
+In diesem Tutorial erfahren Sie, wie Sie mithilfe von Log Analytics im Azure-Portal Azure Monitor-Protokollabfragen schreiben können. Es wird Folgendes vermittelt:
 
-- Schreiben von einfachen Abfragen
+- Verwenden von Log Analytics zum Schreiben einer einfachen Abfrage
 - Grundlegendes zum Schema Ihrer Daten
 - Filtern, Sortieren und Gruppieren von Ergebnissen
 - Anwenden eines Zeitbereichs
@@ -29,13 +29,22 @@ In diesem Tutorial erfahren Sie, wie Sie mithilfe von Azure Monitor Log Analytic
 - Speichern und Laden von Abfragen
 - Exportieren und Freigeben von Abfragen
 
+Ein Tutorial zum Schreiben von Protokollabfragen finden Sie unter [Erste Schritte mit Protokollabfragen in Azure Monitor](get-started-queries.md).<br>
+Weitere Informationen zu Protokollabfragen finden Sie unter [Übersicht über Protokollabfragen in Azure Monitor](log-query-overview.md).
 
 ## <a name="meet-log-analytics"></a>Einführung in Log Analytics
 Log Analytics ist ein Webtool, das zum Schreiben und Ausführen von Azure Monitor-Protokollabfragen verwendet wird. Sie können es durch Auswählen von **Protokolle** im Menü „Azure Monitor“ öffnen. Zu Beginn wird eine neue leere Abfrage angezeigt.
 
 ![Startseite](media/get-started-portal/homepage.png)
 
+## <a name="firewall-requirements"></a>Firewallanforderungen
+Um Log Analytics verwenden zu können, benötigt Ihr Browser Zugriff auf die folgenden Adressen. Wenn der Browser über eine Firewall auf das Azure-Portal zugreift, müssen Sie den Zugriff auf diese Adressen aktivieren.
 
+| Uri | IP | Ports |
+|:---|:---|:---|
+| portal.loganalytics.io | Dynamisch | 80, 443 |
+| api.loganalytics.io | Dynamisch | 80, 443 |
+| docs.loganalytics.io | Dynamisch | 80, 443 |
 
 ## <a name="basic-queries"></a>Grundlegende Abfragen
 Mithilfe von Abfragen können Suchbegriffe verwendet, Trends identifiziert, Muster analysiert und viele andere Informationen basierend auf Ihren Daten ermittelt werden. Beginnen Sie mit einer einfachen Abfrage:
@@ -44,9 +53,9 @@ Mithilfe von Abfragen können Suchbegriffe verwendet, Trends identifiziert, Must
 Event | search "error"
 ```
 
-Diese Abfrage durchsucht die _Event_-Tabelle nach Datensätzen, die die Benennung „error“ in einer Eigenschaft enthalten.
+Diese Abfrage durchsucht die Tabelle _Event_ nach Datensätzen, die in einer Eigenschaft den Begriff _error_ enthalten.
 
-Abfragen können entweder mit einem Tabellennamen oder einem **search**-Befehl beginnen. Das obige Beispiel beginnt mit dem Tabellennamen _Event_, der den Gültigkeitsbereich der Abfrage definiert. Der senkrechte Strich (|) trennt Befehle, d.h. die Ausgabe des ersten Befehls dient als Eingabe für den folgenden Befehl. Sie können eine beliebige Anzahl von Befehlen zu einer einzelnen Abfrage hinzufügen.
+Abfragen können entweder mit einem Tabellennamen oder einem [search](/kusto/query/searchoperator)-Befehl beginnen. Das obige Beispiel beginnt mit dem Tabellennamen _Event_, wodurch alle Datensätze aus der Tabelle „Event“ abgerufen werden. Der senkrechte Strich (|) trennt Befehle, d.h. die Ausgabe des ersten Befehls dient als Eingabe für den folgenden Befehl. Sie können eine beliebige Anzahl von Befehlen zu einer einzelnen Abfrage hinzufügen.
 
 Eine andere Möglichkeit, die gleiche Abfrage zu schreiben, wäre Folgende:
 
@@ -54,18 +63,18 @@ Eine andere Möglichkeit, die gleiche Abfrage zu schreiben, wäre Folgende:
 search in (Event) "error"
 ```
 
-In diesem Beispiel bezieht sich **search** auf die _Event_-Tabelle und in allen Datensätze in dieser Tabelle wird die Benennung „error“ gesucht.
+In diesem Beispiel bezieht sich **search** auf die Tabelle _Event_, und alle Datensätze in dieser Tabelle werden nach dem Begriff _error_ durchsucht.
 
 ## <a name="running-a-query"></a>Ausführen einer Abfrage
 Führen Sie eine Abfrage aus, indem Sie auf die Schaltfläche **Ausführen** klicken oder die **UMSCHALT+EINGABETASTE** drücken. Beachten Sie die folgenden Details, die den Code, der ausgeführt wird, und die zurückgegebenen Daten bestimmen:
 
-- Zeilenumbrüche: Ein einzelner Umbruch sorgt für mehr Übersichtlichkeit in Ihrer Abfrage. Mehrere Zeilenumbrüche teilen diese in separate Abfragen auf.
+- Zeilenumbrüche: Ein einzelner Umbruch sorgt für eine bessere Lesbarkeit Ihrer Abfrage. Mehrere Zeilenumbrüche teilen diese in separate Abfragen auf.
 - Cursor: Platzieren Sie den Cursor an einer beliebigen Stelle in der Abfrage, um sie auszuführen. Der Code ist die aktuelle Abfrage bis zum einer leeren Zeile.
 - Zeitbereich: Standardmäßig ist der Zeitbereich _Letzte 24 Stunden_ festgelegt. Wenn Sie einen anderen Bereich verwenden möchten, verwenden Sie die Zeitauswahl, oder fügen Sie Ihrer Abfrage einen expliziten Zeitbereichsfilter hinzu.
 
 
 ## <a name="understand-the-schema"></a>Grundlegendes zum Schema
-Das Schema ist eine Auflistung von Tabellen, die visuell unter einer logischen Kategorie gruppiert sind. Mehrere Kategorien stammen aus Überwachungslösungen. Die _LogManagement_-Kategorie enthält gemeinsame Daten wie Windows- und Syslog-Ereignisse, Leistungsdaten und Clienttakte.
+Das Schema ist eine Auflistung von Tabellen, die visuell unter einer logischen Kategorie gruppiert sind. Mehrere Kategorien stammen aus Überwachungslösungen. Die Kategorie _LogManagement_ enthält allgemeine Daten wie Windows- und Syslog-Ereignisse, Leistungsdaten und Agent-Takte.
 
 ![Schema](media/get-started-portal/schema.png)
 

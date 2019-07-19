@@ -11,12 +11,12 @@ ms.reviewer: klam, LADocs
 ms.topic: overview
 ms.custom: mvc
 ms.date: 6/29/2018
-ms.openlocfilehash: 2892dc3b8f25624e7925c9b4aa86110c167ad616
-ms.sourcegitcommit: 8c49df11910a8ed8259f377217a9ffcd892ae0ae
+ms.openlocfilehash: 90287ab45341f203905aaf32eb6325edd3687231
+ms.sourcegitcommit: 9a699d7408023d3736961745c753ca3cec708f23
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/29/2019
-ms.locfileid: "66299106"
+ms.lasthandoff: 07/16/2019
+ms.locfileid: "68273144"
 ---
 # <a name="what-is-azure-logic-apps"></a>Was ist Azure Logic Apps?
 
@@ -29,7 +29,7 @@ Hier sind beispielsweise einige Workloads angegeben, die Sie mit Logik-Apps auto
 * Verschieben von hochgeladenen Dateien von einem SFTP- oder FTP-Server in Azure Storage 
 * Überwachen von Tweets für ein bestimmtes Thema, Analysieren der Stimmung und Erstellen von Warnungen oder Aufgaben für zu prüfende Elemente
 
-Zum Erstellen von Lösungen für die Unternehmensintegration mit Azure Logic Apps können Sie aus einem ständig wachsenden Katalog mit [mehr als 200 Connectors](../connectors/apis-list.md) wählen. Diese umfassen Dienste wie Azure Service Bus, Functions und Storage sowie SQL, Office 365, Dynamics, Salesforce, BizTalk, SAP, Oracle DB, Dateifreigaben und mehr. [Connectors](#logic-app-concepts) stellen [Trigger](#logic-app-concepts), [Aktionen](#logic-app-concepts) oder beides zum Erstellen von Logik-Apps bereit, die auf sichere Weise auf Daten zugreifen und diese in Echtzeit verarbeiten.
+Zum Erstellen von Lösungen für die Unternehmensintegration mit Azure Logic Apps können Sie aus einem ständig wachsenden Katalog mit [Hunderten einsatzbereiter Connectors](../connectors/apis-list.md) wählen. Diese umfassen Dienste wie Azure Service Bus, Functions und Storage sowie SQL, Office 365, Dynamics, Salesforce, BizTalk, SAP, Oracle DB, Dateifreigaben und mehr. [Connectors](#logic-app-concepts) stellen [Trigger](#logic-app-concepts), [Aktionen](#logic-app-concepts) oder beides zum Erstellen von Logik-Apps bereit, die auf sichere Weise auf Daten zugreifen und diese in Echtzeit verarbeiten.
 
 > [!VIDEO https://channel9.msdn.com/Blogs/Azure/Introducing-Azure-Logic-Apps/player]
 

@@ -10,12 +10,12 @@ ms.reviewer: estfan, LADocs
 ms.assetid: d565873c-6b1b-4057-9250-cf81a96180ae
 ms.topic: article
 ms.date: 03/15/2018
-ms.openlocfilehash: 5dd9d8eac7d65815d7c98a28b0d5af55f19cec47
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 29d56e64f118fe36fb4905dca20d9fba2f210665
+ms.sourcegitcommit: 2d3b1d7653c6c585e9423cf41658de0c68d883fa
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65464428"
+ms.lasthandoff: 06/20/2019
+ms.locfileid: "67295924"
 ---
 # <a name="create-streaming-customer-insights-dashboard-with-azure-logic-apps-and-azure-functions"></a>Erstellen eines Streaming-Customer Insights-Dashboards mit Azure Logic Apps und Azure Functions
 
@@ -99,8 +99,8 @@ So zeigen Sie einen Verlauf vorheriger Ausführungen in Visual Studio oder im Az
 
 * Öffnen Sie Visual Studio Cloud-Explorer. Suchen Sie nach Ihrer Logik-App, und öffnen Sie das Kontextmenü der App. Wählen Sie **Ausführungsverlauf öffnen** aus.
 
-  > [!NOTE]
-  > Für Visual Studio 2019 kann der Cloud-Explorer den Logik-App-Designer im Azure-Portal öffnen, jedoch noch nicht den eingebetteten Logik-App-Designer oder den Ausführungsverlauf.
+  > [!TIP]
+  > Überprüfen Sie, ob Sie das letzte Update für Visual Studio installiert haben, wenn Sie diesen Befehl in Visual Studio 2019 nicht finden.
 
 * Suchen Sie im Azure-Portal nach Ihrer Logik-App. Klicken Sie im Menü der Logik-App auf **Übersicht**. 
 

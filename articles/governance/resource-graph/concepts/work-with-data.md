@@ -7,16 +7,18 @@ ms.date: 04/01/2019
 ms.topic: conceptual
 ms.service: resource-graph
 manager: carmonm
-ms.openlocfilehash: ff9513418857562408c162533c48f6495b1f83c4
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 9accdc19062cba7bb313afac3da056798c325a4c
+ms.sourcegitcommit: a52d48238d00161be5d1ed5d04132db4de43e076
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65137858"
+ms.lasthandoff: 06/20/2019
+ms.locfileid: "67274413"
 ---
 # <a name="working-with-large-azure-resource-data-sets"></a>Arbeiten mit großen Datasets von Azure-Ressourcen
 
 Azure Resource Graph ist für das Arbeiten mit Informationen zu Ressourcen in Ihrer Azure-Umgebung und das Abrufen von diesen konzipiert. Mit Resource Graph erhalten Sie diese Daten schnell, selbst beim Abfragen von Tausenden von Datensätzen. Resource Graph umfasst mehrere Optionen für das Arbeiten mit diesen großen Datasets.
+
+Anleitungen zum Arbeiten mit sehr häufigen Abfragen finden Sie im [Leitfaden für gedrosselte Anforderungen](./guidance-for-throttled-requests.md).
 
 ## <a name="data-set-result-size"></a>Ergebnisgröße von Datasets
 
@@ -86,4 +88,4 @@ Ein Beispiel finden Sie unter [Next page query](/rest/api/azureresourcegraph/res
 
 - Informationen zur verwendeten Sprache finden Sie unter [Einfache Abfragen](../samples/starter.md).
 - Informationen zur anspruchsvolleren Nutzung finden Sie unter [Erweiterte Abfragen](../samples/advanced.md).
-- Lernen Sie, [Ressourcen zu untersuchen](explore-resources.md)
+- Erfahren Sie, wie Sie [Ressourcen untersuchen](explore-resources.md).

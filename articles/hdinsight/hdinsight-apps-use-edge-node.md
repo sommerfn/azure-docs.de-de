@@ -8,12 +8,12 @@ ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
 ms.date: 06/13/2019
 ms.author: hrasheed
-ms.openlocfilehash: ee9b5b651f440bc7d179b1a06c7ddbd3f9137a0d
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.openlocfilehash: 41313c7d484df5568fbf729b683a0e9df5325abc
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/17/2019
-ms.locfileid: "67165897"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67433732"
 ---
 # <a name="use-empty-edge-nodes-on-apache-hadoop-clusters-in-hdinsight"></a>Verwenden leerer Edgeknoten in Apache Hadoop-Clustern in HDInsight
 
@@ -108,7 +108,7 @@ In diesem Abschnitt verwenden Sie eine Resource Manager-Vorlage, um HDInsight-Cl
    * **Kennwort für Clusteranmeldung**: Geben Sie das Kennwort des Hadoop-HTTP-Benutzers ein.
    * **SSH-Benutzername:** Geben Sie den Namen des SSH-Benutzers ein. Der Standardname ist **sshuser**.
    * **SSH-Kennwort:** Geben Sie das Kennwort des SSH-Benutzers ein.
-   * **Install Script Action** (Skriptaktion installieren): Behalten Sie für die Bearbeitung dieses Tutorials den Standardwert bei.
+   * **Install Script Action** (Skriptaktion installieren): Behalten Sie für die Bearbeitung dieses Artikels den Standardwert bei.
      
      Einige Eigenschaften wurden in der Vorlage hartcodiert: „Clustertyp“, „Anzahl der Workerknoten im Cluster“, „Edge node size“ (Edgeknotengröße) und „Edge node name“ (Edgeknotenname).
 4. Wählen Sie **Ich stimme den oben genannten Geschäftsbedingungen zu**, und klicken Sie anschließend auf **Kaufen**, um den Cluster mit dem Edgeknoten zu erstellen.

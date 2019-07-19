@@ -8,13 +8,13 @@ ms.author: estfan
 ms.reviewer: klam, LADocs
 ms.suite: integration
 ms.topic: reference
-ms.date: 05/13/2019
-ms.openlocfilehash: aa5d3a0555875571276fdf4046ad0e4dd1e69bbd
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.date: 06/19/2019
+ms.openlocfilehash: 490131d1743b366b5ac51a5a0fdac4b89ffe08f2
+ms.sourcegitcommit: a52d48238d00161be5d1ed5d04132db4de43e076
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65596942"
+ms.lasthandoff: 06/20/2019
+ms.locfileid: "67274180"
 ---
 # <a name="reference-for-trigger-and-action-types-in-workflow-definition-language-for-azure-logic-apps"></a>Referenz zu Trigger- und Aktionstypen in der Workflowdefinitionssprache für Azure Logic Apps.
 
@@ -50,7 +50,7 @@ Trigger besitzen auf oberster Ebene die folgenden Elemente (einige davon sind op
 
 *Erforderlich*
 
-| Wert | Type | BESCHREIBUNG | 
+| Wert | type | BESCHREIBUNG | 
 |-------|------|-------------| 
 | <*trigger-name*> | string | Name des Triggers | 
 | <*trigger-type*> | string | Triggertyp, z.B. „Http“ oder „ApiConnection“ | 
@@ -61,7 +61,7 @@ Trigger besitzen auf oberster Ebene die folgenden Elemente (einige davon sind op
 
 *Optional*
 
-| Wert | Type | BESCHREIBUNG | 
+| Wert | type | BESCHREIBUNG | 
 |-------|------|-------------| 
 | <*array-with-conditions*> | Array | Array mit mindestens einer [Bedingung](#trigger-conditions), die bestimmt, ob der Workflow ausgeführt wird. Derzeit nur für Trigger verfügbar. | 
 | <*runtime-config-options*> | JSON-Objekt | Sie können das Verhalten der Triggerlaufzeit ändern, indem Sie die Eigenschaften für `runtimeConfiguration` festlegen. Weitere Informationen finden Sie unter den [Einstellungen für die Laufzeitkonfiguration](#runtime-config-options). | 
@@ -130,7 +130,7 @@ Mit diesem Trigger wird ein Endpunkt überprüft bzw.*abgefragt*, indem [von Mic
 
 *Erforderlich*
 
-| Wert | Type | BESCHREIBUNG | 
+| Wert | type | BESCHREIBUNG | 
 |-------|------|-------------| 
 | <*APIConnection_trigger_name*> | string | Name des Triggers | 
 | <*connection-name*> | string | Name für die Verbindung mit der verwalteten API, die vom Workflow verwendet wird | 
@@ -142,7 +142,7 @@ Mit diesem Trigger wird ein Endpunkt überprüft bzw.*abgefragt*, indem [von Mic
 
 *Optional*
 
-| Wert | Type | BESCHREIBUNG | 
+| Wert | type | BESCHREIBUNG | 
 |-------|------|-------------| 
 | <*retry-behavior*> | JSON-Objekt | Passt das Wiederholungsverhalten für vorübergehende Fehler, die über den Statuscode 408, 429 und 5XX verfügen, und alle Verbindungsausnahmen an. Weitere Informationen finden Sie unter [Wiederholungsrichtlinien](../logic-apps/logic-apps-exception-handling.md#retry-policies). | 
 | <*query-parameters*> | JSON-Objekt | Alle Abfrageparameter, die in den API-Aufruf einbezogen werden sollen. Mit dem `"queries": { "api-version": "2018-01-01" }`-Objekt wird dem Aufruf beispielsweise `?api-version=2018-01-01` hinzugefügt. | 
@@ -154,7 +154,7 @@ Mit diesem Trigger wird ein Endpunkt überprüft bzw.*abgefragt*, indem [von Mic
 
 *Ausgaben*
  
-| Element | Type | BESCHREIBUNG |
+| Element | type | BESCHREIBUNG |
 |---------|------|-------------|
 | headers | JSON-Objekt | Header aus der Antwort |
 | body | JSON-Objekt | Text aus der Antwort |
@@ -224,7 +224,7 @@ Dieser Trigger sendet eine Abonnementanforderung an einen Endpunkt, indem eine [
 
 *Erforderlich*
 
-| Wert | Type | BESCHREIBUNG | 
+| Wert | type | BESCHREIBUNG | 
 |-------|------|-------------| 
 | <*connection-name*> | string | Name für die Verbindung mit der verwalteten API, die vom Workflow verwendet wird | 
 | <*body-content*> | JSON-Objekt | Nachrichteninhalt, der als Nutzlast an die verwaltete API gesendet wird | 
@@ -232,7 +232,7 @@ Dieser Trigger sendet eine Abonnementanforderung an einen Endpunkt, indem eine [
 
 *Optional*
 
-| Wert | Type | BESCHREIBUNG | 
+| Wert | type | BESCHREIBUNG | 
 |-------|------|-------------| 
 | <*retry-behavior*> | JSON-Objekt | Passt das Wiederholungsverhalten für vorübergehende Fehler, die über den Statuscode 408, 429 und 5XX verfügen, und alle Verbindungsausnahmen an. Weitere Informationen finden Sie unter [Wiederholungsrichtlinien](../logic-apps/logic-apps-exception-handling.md#retry-policies). | 
 | <*query-parameters*> | JSON-Objekt | Alle Abfrageparameter, die in den API-Aufruf einbezogen werden sollen. <p>Mit dem `"queries": { "api-version": "2018-01-01" }`-Objekt wird dem Aufruf beispielsweise `?api-version=2018-01-01` hinzugefügt. | 
@@ -303,7 +303,7 @@ Dieser Trigger überprüft den angegebenen Endpunkt basierend auf dem angegebene
 
 *Erforderlich*
 
-| Wert | Type | BESCHREIBUNG | 
+| Wert | type | BESCHREIBUNG | 
 |-------|------|-------------| 
 | <*method-type*> | string | HTTP-Methode zum Abrufen des angegebenen Endpunkts: „GET“, „PUT“, „POST“, „PATCH“, „DELETE“ | 
 | <*endpoint-URL*> | string | HTTP- oder HTTPS-URL für den abzurufenden Endpunkt <p>Maximal zulässige Zeichenfolgengröße: 2 KB | 
@@ -313,7 +313,7 @@ Dieser Trigger überprüft den angegebenen Endpunkt basierend auf dem angegebene
 
 *Optional*
 
-| Wert | Type | BESCHREIBUNG | 
+| Wert | type | BESCHREIBUNG | 
 |-------|------|-------------| 
 | <*header-content*> | JSON-Objekt | Header, die mit der Anforderung gesendet werden sollen <p>Verwenden Sie beispielsweise Folgendes, um die Sprache und den Typ für eine Anforderung festzulegen: <p>`"headers": { "Accept-Language": "en-us", "Content-Type": "application/json" }` |
 | <*body-content*> | string | Nachrichteninhalt, der als Nutzlast mit der Anforderung gesendet wird | 
@@ -327,7 +327,7 @@ Dieser Trigger überprüft den angegebenen Endpunkt basierend auf dem angegebene
 
 *Ausgaben*
 
-| Element | Type | BESCHREIBUNG |
+| Element | type | BESCHREIBUNG |
 |---------|------|-------------| 
 | headers | JSON-Objekt | Header aus der Antwort | 
 | body | JSON-Objekt | Text aus der Antwort | 
@@ -400,7 +400,7 @@ Einige Werte, z.B. <*method-type*>, sind sowohl für das Objekt `"subscribe"` al
 
 *Erforderlich*
 
-| Wert | Type | BESCHREIBUNG | 
+| Wert | type | BESCHREIBUNG | 
 |-------|------|-------------| 
 | <*method-type*> | string | HTTP-Methode für die Abonnementanforderung: „GET“, „PUT“, „POST“, „PATCH“, „DELETE“ | 
 | <*endpoint-subscribe-URL*> | string | Endpunkt-URL, an die die Abonnementanforderung gesendet werden soll | 
@@ -408,7 +408,7 @@ Einige Werte, z.B. <*method-type*>, sind sowohl für das Objekt `"subscribe"` al
 
 *Optional*
 
-| Wert | Type | BESCHREIBUNG | 
+| Wert | type | BESCHREIBUNG | 
 |-------|------|-------------| 
 | <*method-type*> | string | HTTP-Methode für die Kündigungsanforderung: „GET“, „PUT“, „POST“, „PATCH“, „DELETE“ | 
 | <*endpoint-unsubscribe-URL*> | string | Endpunkt-URL, an die die Kündigungsanforderung gesendet werden soll | 
@@ -422,7 +422,7 @@ Einige Werte, z.B. <*method-type*>, sind sowohl für das Objekt `"subscribe"` al
 
 *Ausgaben* 
 
-| Element | Type | BESCHREIBUNG |
+| Element | type | BESCHREIBUNG |
 |---------|------|-------------| 
 | headers | JSON-Objekt | Header aus der Antwort | 
 | body | JSON-Objekt | Text aus der Antwort | 
@@ -494,7 +494,7 @@ Dieser Trigger wird basierend auf dem angegebenen Wiederholungszeitplan ausgefü
 
 *Erforderlich*
 
-| Wert | Type | BESCHREIBUNG | 
+| Wert | type | BESCHREIBUNG | 
 |-------|------|-------------| 
 | <*time-unit*> | string | Die Zeiteinheit für die Häufigkeit der Triggerauslösung: „Second“, „Minute“, „Hour“, „Day“, „Week“, „Month“ | 
 | <*number-of-time-units*> | Integer | Wert, mit dem angegeben wird, wie oft der Trigger basierend auf der Häufigkeit ausgelöst wird (Anzahl von Zeiteinheiten der Wartezeit, bis der Trigger erneut ausgelöst wird) <p>Zulässige Mindest- und Maximalintervalle: <p>– Monat: 1–16 Monate </br>– Tag: 1–500 Tage </br>– Stunde: 1–12.000 Stunden </br>– Minute: 1–72.000 Minuten </br>- Sekunde: 1–9.999.999 Sekunden<p>Wenn das Intervall also beispielsweise auf „6“ und die Häufigkeit auf „Month“ festgelegt ist, erfolgt die Wiederholung alle sechs Monate. | 
@@ -502,7 +502,7 @@ Dieser Trigger wird basierend auf dem angegebenen Wiederholungszeitplan ausgefü
 
 *Optional*
 
-| Wert | Type | BESCHREIBUNG | 
+| Wert | type | BESCHREIBUNG | 
 |-------|------|-------------| 
 | <*start-date-time-with-format-YYYY-MM-DDThh:mm:ss*> | string | Das Startdatum und die -uhrzeit im folgenden Format: <p>JJJJ-MM-TTTHH:mm:ss (bei Angabe einer Zeitzone; beachten Sie dabei, dass „TT“ den Tag bezeichnet, während das dritte „T“ wie in den nachfolgenden Beispielen gezeigt nicht verändert werden darf) <p>Oder <p>JJJJ-MM-TTTHH:mm:ssZ (ohne Angabe einer Zeitzone) <p>Für „18. September 2017, 14:00 Uhr“ müssten Sie also beispielsweise „2017-09-18T14:00:00“ und eine Zeitzone (etwa „Pacific Standard Time“) angeben oder „2017-09-18T14:00:00Z“ ohne eine Zeitzone. <p>**Hinweis:** Diese Startzeit muss dem [ISO 8601-Format für Datums-/Uhrzeitangaben](https://en.wikipedia.org/wiki/ISO_8601#Combined_date_and_time_representations) entsprechen und im [UTC-Datums-/Zeitformat](https://en.wikipedia.org/wiki/Coordinated_Universal_Time) angegeben werden, jedoch ohne [UTC-Abweichung](https://en.wikipedia.org/wiki/UTC_offset). Wenn Sie keine Zeitzone angeben, müssen Sie den Buchstaben „Z“ ohne Leerzeichen anhängen. „Z“ bezieht sich auf die entsprechende [nautische Zeit](https://en.wikipedia.org/wiki/Nautical_time). <p>Bei einfachen Zeitpläne ist die Startzeit das erste Vorkommen. Bei komplexeren Zeitplänen wird der Trigger nicht vor der Startzeit ausgelöst. Weitere Informationen zu Startdatum und -uhrzeit finden Sie unter [Schedule tasks and workflows that run regularly with logic apps](../connectors/connectors-native-recurrence.md) (Planen von regelmäßig ausgeführten Aufgaben und Workflows mit Logik-Apps). | 
 | <*time-zone*> | string | Nur relevant, wenn Sie eine Startzeit angeben, da dieser Trigger keine [UTC-Abweichung](https://en.wikipedia.org/wiki/UTC_offset) akzeptiert. Geben Sie die anzuwendende Zeitzone an. | 
@@ -603,7 +603,7 @@ Um diesen Trigger aufrufen zu können, müssen Sie die `listCallbackUrl`-API ver
 
 *Erforderlich*
 
-| Wert | Type | BESCHREIBUNG | 
+| Wert | type | BESCHREIBUNG | 
 |-------|------|-------------| 
 | <*property-name*> | string | Name einer Eigenschaft im JSON-Schema, mit der die Nutzlast beschrieben wird | 
 | <*property-type*> | string | Typ der Eigenschaft | 
@@ -611,7 +611,7 @@ Um diesen Trigger aufrufen zu können, müssen Sie die `listCallbackUrl`-API ver
 
 *Optional*
 
-| Wert | Type | BESCHREIBUNG | 
+| Wert | type | BESCHREIBUNG | 
 |-------|------|-------------| 
 | <*method-type*> | string | Methode, die eingehende Anforderungen verwenden müssen, um Ihre Logik-App aufzurufen: „GET“, „PUT“, „POST“, „PATCH“, „DELETE“ |
 | <*relative-path-for-accepted-parameter*> | string | Relativer Pfad für den Parameter, der von der URL Ihres Endpunkts akzeptiert werden kann | 
@@ -776,7 +776,7 @@ Aktionen verfügen über diese allgemeinen Elemente, von denen einige aber optio
 
 *Erforderlich*
 
-| Wert | Type | BESCHREIBUNG | 
+| Wert | type | BESCHREIBUNG | 
 |-------|------|-------------|
 | <*action-name*> | string | Name für die Aktion | 
 | <*action-type*> | string | Aktionstyp, z.B. „Http“ oder „ApiConnection“| 
@@ -787,7 +787,7 @@ Aktionen verfügen über diese allgemeinen Elemente, von denen einige aber optio
 
 *Optional*
 
-| Wert | Type | BESCHREIBUNG | 
+| Wert | type | BESCHREIBUNG | 
 |-------|------|-------------|
 | <*retry-behavior*> | JSON-Objekt | Passt das Wiederholungsverhalten für vorübergehende Fehler, die über den Statuscode 408, 429 und 5XX verfügen, und alle Verbindungsausnahmen an. Weitere Informationen finden Sie unter „Wiederholungsrichtlinien“. | 
 | <*runtime-config-options*> | JSON-Objekt | Für einige Aktionen können Sie das Verhalten der Aktion zur Laufzeit ändern, indem Sie die `runtimeConfiguration`-Eigenschaften festlegen. Weitere Informationen finden Sie unter den [Einstellungen für die Laufzeitkonfiguration](#runtime-config-options). | 
@@ -892,7 +892,7 @@ Diese Aktion sendet eine HTTP-Anforderung an eine [von Microsoft verwaltete API]
 
 *Erforderlich*
 
-| Wert | Type | BESCHREIBUNG | 
+| Wert | type | BESCHREIBUNG | 
 |-------|------|-------------| 
 | <*action-name*> | string | Name der vom Connector bereitgestellten Aktion | 
 | <*api-name*> | string | Name der von Microsoft verwalteten API, die für die Verbindung verwendet wird | 
@@ -902,7 +902,7 @@ Diese Aktion sendet eine HTTP-Anforderung an eine [von Microsoft verwaltete API]
 
 *Optional*
 
-| Wert | Type | BESCHREIBUNG | 
+| Wert | type | BESCHREIBUNG | 
 |-------|------|-------------| 
 | <*other-action-specific-input-properties*> | JSON-Objekt | Alle anderen Eingabeeigenschaften, die für die spezifische Aktion gelten | 
 | <*retry-behavior*> | JSON-Objekt | Passt das Wiederholungsverhalten für vorübergehende Fehler, die über den Statuscode 408, 429 und 5XX verfügen, und alle Verbindungsausnahmen an. Weitere Informationen finden Sie unter [Wiederholungsrichtlinien](../logic-apps/logic-apps-exception-handling.md#retry-policies). | 
@@ -972,7 +972,7 @@ Einige Werte, z.B. <*method-type*>, sind sowohl für das Objekt `"subscribe"` al
 
 *Erforderlich*
 
-| Wert | Type | BESCHREIBUNG | 
+| Wert | type | BESCHREIBUNG | 
 |-------|------|-------------| 
 | <*action-name*> | string | Name der vom Connector bereitgestellten Aktion | 
 | <*method-type*> | string | HTTP-Methode zum Abonnieren oder Kündigen des Abonnements über einen Endpunkt: „GET“, „PUT“, „POST“, „PATCH“, „DELETE“ | 
@@ -981,7 +981,7 @@ Einige Werte, z.B. <*method-type*>, sind sowohl für das Objekt `"subscribe"` al
 
 *Optional*
 
-| Wert | Type | BESCHREIBUNG | 
+| Wert | type | BESCHREIBUNG | 
 |-------|------|-------------| 
 | <*api-unsubscribe-URL*> | string | URI, der zum Kündigen des API-Abonnements verwendet wird | 
 | <*header-content*> | JSON-Objekt | Alle Header, die in der Anforderung gesendet werden sollen <p>Verwenden Sie beispielsweise Folgendes, um Sprache und Typ für eine Anforderung festzulegen: <p>`"headers": { "Accept-Language": "en-us", "Content-Type": "application/json" }` |
@@ -1012,7 +1012,7 @@ Sie können die Ausgabe der Aktion dann in anderen Aktionen verwenden.
 
 *Erforderlich* 
 
-| Wert | Type | BESCHREIBUNG | 
+| Wert | type | BESCHREIBUNG | 
 |-------|------|-------------| 
 | <*inputs-to-compose*> | Beliebig | Eingaben für die Erstellung einer einzelnen Ausgabe | 
 |||| 
@@ -1073,9 +1073,9 @@ Diese Aktion führt einen JavaScript-Codeausschnitt aus und gibt die Ergebnisse 
 
 *Erforderlich*
 
-| Wert | Type | BESCHREIBUNG |
+| Wert | type | BESCHREIBUNG |
 |-------|------|-------------|
-| <*JavaScript-Codeausschnitt*> | Variabel | Der JavaScript-Code, der ausgeführt werden soll. Informationen zu Codeanforderungen und weitere Informationen finden Sie unter [Hinzufügen und Ausführen von Codeausschnitten mit Inlinecode](../logic-apps/logic-apps-add-run-inline-code.md). <p>Im `code`-Attribut kann Ihr Codeausschnitt das schreibgeschützte `workflowContext`-Objekt als Eingabe verwenden. Dieses Objekt weist untergeordnete Eigenschaften auf, die dem Code Zugriff auf die Ergebnisse des Triggers und früherer Aktionen im Workflow gewähren. Weitere Informationen zum `workflowContext`-Objekt finden Sie unter [Verweisen auf die Ergebnisse von Triggern und Aktionen in Ihrem Code](../logic-apps/logic-apps-add-run-inline-code.md#workflowcontext). |
+| <*JavaScript-Codeausschnitt*> | Varies | Der JavaScript-Code, der ausgeführt werden soll. Informationen zu Codeanforderungen und weitere Informationen finden Sie unter [Hinzufügen und Ausführen von Codeausschnitten mit Inlinecode](../logic-apps/logic-apps-add-run-inline-code.md). <p>Im `code`-Attribut kann Ihr Codeausschnitt das schreibgeschützte `workflowContext`-Objekt als Eingabe verwenden. Dieses Objekt weist untergeordnete Eigenschaften auf, die dem Code Zugriff auf die Ergebnisse des Triggers und früherer Aktionen im Workflow gewähren. Weitere Informationen zum `workflowContext`-Objekt finden Sie unter [Verweisen auf die Ergebnisse von Triggern und Aktionen in Ihrem Code](../logic-apps/logic-apps-add-run-inline-code.md#workflowcontext). |
 ||||
 
 *In einigen Fällen erforderlich*
@@ -1084,7 +1084,7 @@ Das `explicitDependencies`-Attribut gibt an, dass die Ergebnisse des Triggers, E
 
 Für das `includeTrigger`-Attribut können Sie `true`- oder `false`-Werte angeben.
 
-| Wert | Type | BESCHREIBUNG |
+| Wert | type | BESCHREIBUNG |
 |-------|------|-------------|
 | <*previous-actions*> | Zeichenfolgenarray | Ein Array mit den von Ihren angegebenen Aktionsnamen. Verwenden Sie die Aktionsnamen, die in Ihrer Workflowdefinition angezeigt werden, wobei Aktionsnamen Unterstriche (_) und keine Leerzeichen („ “) verwenden. |
 ||||
@@ -1150,7 +1150,7 @@ Mit dieser Aktion wird eine zuvor erstellte [Azure-Funktion](../azure-functions/
 
 *Erforderlich*
 
-| Wert | Type | BESCHREIBUNG | 
+| Wert | type | BESCHREIBUNG | 
 |-------|------|-------------|  
 | <*Azure-function-ID*> | string | Die Ressourcen-ID für die Azure-Funktion, die Sie aufrufen möchten. Das Format für diesen Wert lautet wie folgt:<p>"/subscriptions/<*Azure-subscription-ID*>/resourceGroups/<*Azure-resource-group*>/providers/Microsoft.Web/sites/<*Azure-function-app-name*>/functions/<*Azure-function-name*>" | 
 | <*method-type*> | string | HTTP-Methode zum Aufrufen der Funktion: „GET“, „PUT“, „POST“, „PATCH“, „DELETE“ <p>Wenn nichts angegeben wird, wird standardmäßig die Methode „POST“ verwendet. | 
@@ -1158,7 +1158,7 @@ Mit dieser Aktion wird eine zuvor erstellte [Azure-Funktion](../azure-functions/
 
 *Optional*
 
-| Wert | Type | BESCHREIBUNG | 
+| Wert | type | BESCHREIBUNG | 
 |-------|------|-------------|  
 | <*header-content*> | JSON-Objekt | Alle Header, die mit dem Aufruf gesendet werden sollen <p>Verwenden Sie beispielsweise Folgendes, um Sprache und Typ für eine Anforderung festzulegen: <p>`"headers": { "Accept-Language": "en-us", "Content-Type": "application/json" }` |
 | <*body-content*> | JSON-Objekt | Beliebiger Nachrichteninhalt, der in der Anforderung gesendet wird | 
@@ -1221,7 +1221,7 @@ Diese Aktion sendet eine Anforderung an den angegebenen Endpunkt und überprüft
 
 *Erforderlich*
 
-| Wert | Type | BESCHREIBUNG | 
+| Wert | type | BESCHREIBUNG | 
 |-------|------|-------------| 
 | <*method-type*> | string | Methode zum Senden der Anforderung: „GET“, „PUT“, „POST“, „PATCH“, „DELETE“ | 
 | <*HTTP-or-HTTPS-endpoint-URL*> | string | Der aufzurufende HTTP- oder HTTPS-Endpunkt. Maximal zulässige Zeichenfolgengröße: 2 KB | 
@@ -1229,7 +1229,7 @@ Diese Aktion sendet eine Anforderung an den angegebenen Endpunkt und überprüft
 
 *Optional*
 
-| Wert | Type | BESCHREIBUNG | 
+| Wert | type | BESCHREIBUNG | 
 |-------|------|-------------| 
 | <*header-content*> | JSON-Objekt | Beliebige Header, die mit der Anforderung gesendet werden sollen <p>Verwenden Sie beispielsweise Folgendes, um Sprache und Typ festzulegen: <p>`"headers": { "Accept-Language": "en-us", "Content-Type": "application/json" }` |
 | <*body-content*> | JSON-Objekt | Beliebiger Nachrichteninhalt, der in der Anforderung gesendet wird | 
@@ -1272,7 +1272,7 @@ Diese Aktion erstellt eine Zeichenfolge aus allen Elementen in einem Array und t
 
 *Erforderlich*
 
-| Wert | Type | BESCHREIBUNG | 
+| Wert | type | BESCHREIBUNG | 
 |-------|------|-------------| 
 | <*array*> | Array | Das Array oder der Ausdruck, mit dem die Quellelemente bereitgestellt werden. Setzen Sie diesen Ausdruck in doppelte Anführungszeichen, wenn Sie einen Ausdruck angeben. | 
 | <*delimiter*> | Zeichenfolge mit nur einem Zeichen | Das Zeichen, mit dem die Elemente in der Zeichenfolge getrennt werden | 
@@ -1316,7 +1316,7 @@ Mit dieser Aktion werden benutzerfreundliche Felder oder *Token* aus den Eigensc
 
 *Erforderlich*
 
-| Wert | Type | BESCHREIBUNG | 
+| Wert | type | BESCHREIBUNG | 
 |-------|------|-------------| 
 | <*JSON-source*> | JSON-Objekt | JSON-Inhalt, den Sie analysieren möchten | 
 | <*JSON-schema*> | JSON-Objekt | JSON-Schema, mit dem der zugrunde liegende JSON-Inhalt beschrieben wird, der von der Aktion zum Analysieren des JSON-Quellinhalts verwendet wird. <p>**Tipp**: Im Logik-App-Designer können Sie das Schema bereitstellen oder eine Beispielnutzlast angeben, damit die Aktion das Schema generieren kann. | 
@@ -1418,7 +1418,7 @@ Mit dieser Aktion wird basierend auf einer angegebenen Bedingung oder einem Filt
 
 *Erforderlich*
 
-| Wert | Type | BESCHREIBUNG | 
+| Wert | type | BESCHREIBUNG | 
 |-------|------|-------------| 
 | <*array*> | Array | Das Array oder der Ausdruck, mit dem die Quellelemente bereitgestellt werden. Setzen Sie diesen Ausdruck in doppelte Anführungszeichen, wenn Sie einen Ausdruck angeben. |
 | <*condition-or-filter*> | string | Bedingung, die zum Filtern von Elementen im Quellarray verwendet wird <p>**Hinweis**: Falls keine Werte die Bedingung erfüllen, erstellt die Aktion ein leeres Array. |
@@ -1459,14 +1459,14 @@ Mit dieser Aktion wird die Nutzlast für die Antwort auf eine HTTP-Anforderung e
 
 *Erforderlich*
 
-| Wert | Type | BESCHREIBUNG | 
+| Wert | type | BESCHREIBUNG | 
 |-------|------|-------------| 
 | <*response-status-code*> | Integer | Der HTTP-Statuscode, der an die eingehende Anforderung gesendet wird. Der Standardcode lautet „200 OK“, aber es kann ein beliebiger gültiger Statuscode sein, der mit 2xx, 4xx oder 5xx beginnt (aber nicht mit 3xxx). | 
 |||| 
 
 *Optional*
 
-| Wert | Type | BESCHREIBUNG | 
+| Wert | type | BESCHREIBUNG | 
 |-------|------|-------------| 
 | <*response-headers*> | JSON-Objekt | Einer oder mehrere Header, die in die Antwort eingefügt werden sollen | 
 | <*response-body*> | Verschiedene | Antworttext, bei dem es sich um eine Zeichenfolge, ein JSON-Objekt oder auch Binärinhalt aus einer vorherigen Aktion handelt | 
@@ -1534,7 +1534,7 @@ Diese Aktion erstellt ein Array mit JSON-Objekten, indem Elemente aus einem ande
 
 *Erforderlich* 
 
-| Wert | Type | BESCHREIBUNG | 
+| Wert | type | BESCHREIBUNG | 
 |-------|------|-------------| 
 | <*array*> | Array | Das Array oder der Ausdruck, mit dem die Quellelemente bereitgestellt werden. Stellen Sie sicher, dass Sie einen Ausdruck in doppelte Anführungszeichen setzen. <p>**Hinweis**: Wenn das Quellarray leer ist, wird mit der Aktion ein leeres Array erstellt. | 
 | <*key-name*> | string | Eigenschaftenname, der dem Ergebnis über <*expression*>  zugewiesen wird<p>Geben Sie einen Schlüsselnamen (<*key-name*>) für diese Eigenschaft und einen Ausdruck (<*expression*>) für den Eigenschaftswert an, um für alle Objekte im Ausgabearray eine neue Eigenschaft hinzuzufügen. <p>Lassen Sie <*key-name*> für diese Eigenschaft weg, um eine Eigenschaft aus allen Objekten im Array zu entfernen. | 
@@ -1632,7 +1632,7 @@ Mit dieser Aktion wird aus einer CSV- oder HTML-Tabelle ein Array erstellt. Für
 
 *Erforderlich* 
 
-| Wert | Type | BESCHREIBUNG | 
+| Wert | type | BESCHREIBUNG | 
 |-------|------|-------------| 
 | <CSV *oder* HTML>| string | Format für die Tabelle, die Sie erstellen möchten | 
 | <*array*> | Array | Array oder Ausdruck, mit dem die Quellelemente für die Tabelle bereitgestellt werden <p>**Hinweis**: Wenn das Quellarray leer ist, wird mit der Aktion eine leere Tabelle erstellt. | 
@@ -1642,7 +1642,7 @@ Mit dieser Aktion wird aus einer CSV- oder HTML-Tabelle ein Array erstellt. Für
 
 Verwenden Sie das Array `columns`, um Spaltenüberschriften und -werte anzugeben bzw. anzupassen. Wenn `header-value`-Paare über den gleichen Überschriftennamen verfügen, werden die Werte in derselben Spalte unter diesem Überschriftennamen angezeigt. Andernfalls wird mit jedem eindeutigen Header eine eindeutige Spalte definiert.
 
-| Wert | Type | BESCHREIBUNG | 
+| Wert | type | BESCHREIBUNG | 
 |-------|------|-------------| 
 | <*column-name*> | string | Headername für eine Spalte | 
 | <*column-value*> | Beliebig | Wert in dieser Spalte | 
@@ -1692,7 +1692,7 @@ Mit dieser Aktionsdefinition wird eine HTML-Tabelle aus der Variablen „myItemA
 
 Hier ist die HTML-Tabelle angegeben, die mit dieser Aktion erstellt wird: 
 
-<table><thead><tr><th>ID</th><th>Product_Name</th></tr></thead><tbody><tr><td>0</td><td>Äpfel</td></tr><tr><td>1</td><td>Oranges</td></tr></tbody></table>
+<table><thead><tr><th>id</th><th>Product_Name</th></tr></thead><tbody><tr><td>0</td><td>Äpfel</td></tr><tr><td>1</td><td>Oranges</td></tr></tbody></table>
 
 *Beispiel 3*
 
@@ -1745,7 +1745,7 @@ Mit dieser Aktion wird die Ausführung für eine Workflowinstanz beendet, alle a
 
 *Erforderlich*
 
-| Wert | Type | BESCHREIBUNG | 
+| Wert | type | BESCHREIBUNG | 
 |-------|------|-------------| 
 | <*status*> | string | Der zurückzugebende Status für die Ausführung: „Failed“, „Cancelled“, „Succeeded“ |
 |||| 
@@ -1754,7 +1754,7 @@ Mit dieser Aktion wird die Ausführung für eine Workflowinstanz beendet, alle a
 
 Die Eigenschaften für das Objekt „runStatus“ gelten nur, wenn die „runStatus“-Eigenschaft auf den Status „Failed“ festgelegt ist.
 
-| Wert | Type | BESCHREIBUNG | 
+| Wert | type | BESCHREIBUNG | 
 |-------|------|-------------| 
 | <*error-code-or-name*> | string | Code oder Name für den Fehler |
 | <*error-message*> | string | Nachricht oder Text, mit der bzw. dem der Fehler und alle Aktionen beschrieben werden, die vom Benutzer durchgeführt werden können | 
@@ -1815,7 +1815,7 @@ Mit dieser Aktion wird die Workflowausführung für den angegebenen Zeitraum ode
 
 *Erforderlich*
 
-| Wert | Type | BESCHREIBUNG | 
+| Wert | type | BESCHREIBUNG | 
 |-------|------|-------------| 
 | <*number-of-units*> | Integer | Für die Aktion **Delay** die Anzahl von Zeiteinheiten für die Wartedauer | 
 | <*interval*> | string | Das zu wartende Intervall für die Aktion **Delay**: „Second“, „Minute“, „Hour“, „Day“, „Week“, „Month“ | 
@@ -1888,7 +1888,7 @@ Die Logic Apps-Engine überprüft den Zugriff auf den Trigger, den Sie aufrufen 
 
 *Erforderlich*
 
-| Wert | Type | BESCHREIBUNG | 
+| Wert | type | BESCHREIBUNG | 
 |-------|------|-------------| 
 | <*nested-logic-app-name*> | string | Name für die Logik-App, die Sie aufrufen möchten | 
 | <*trigger-name*> | string | Name für den Trigger in der geschachtelten Logik-App, die Sie aufrufen möchten | 
@@ -1899,7 +1899,7 @@ Die Logic Apps-Engine überprüft den Zugriff auf den Trigger, den Sie aufrufen 
 
 *Optional*
 
-| Wert | Type | BESCHREIBUNG | 
+| Wert | type | BESCHREIBUNG | 
 |-------|------|-------------|  
 | <*header-content*> | JSON-Objekt | Alle Header, die mit dem Aufruf gesendet werden sollen | 
 | <*body-content*> | JSON-Objekt | Beliebiger Nachrichteninhalt, der mit dem Aufruf gesendet werden soll | 
@@ -1965,7 +1965,7 @@ Diese Schleifenaktion durchläuft ein Array und führt Aktionen für die einzeln
 
 *Erforderlich* 
 
-| Wert | Type | BESCHREIBUNG | 
+| Wert | type | BESCHREIBUNG | 
 |-------|------|-------------| 
 | <*action-1...n*> | string | Namen der Aktionen, die für jedes Arrayelement ausgeführt werden | 
 | <*action-definition-1...n*> | JSON-Objekt | Definitionen der ausgeführten Aktionen | 
@@ -1974,7 +1974,7 @@ Diese Schleifenaktion durchläuft ein Array und führt Aktionen für die einzeln
 
 *Optional*
 
-| Wert | Type | BESCHREIBUNG | 
+| Wert | type | BESCHREIBUNG | 
 |-------|------|-------------| 
 | <*count*> | Integer | Standardmäßig werden die Iterationen für „for each“-Schleifen gleichzeitig bzw. parallel ausgeführt, bis das [Standardlimit](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits) erreicht ist. Informationen dazu, wie Sie dieses Limit ändern, indem Sie einen neuen <*count*>-Wert festlegen, finden Sie unter [Ändern der Parallelität von „for each“-Schleifen](#change-for-each-concurrency). | 
 | <*operation-option*> | string | Wenn Sie eine „for each“-Schleife nicht parallel, sondern sequenziell durchführen möchten, legen Sie entweder <*operation-option*> auf `Sequential` oder <*count*> auf `1` fest (aber nicht beides). Weitere Informationen finden Sie unter [Sequenzielles Ausführen von „for each“-Schleifen](#sequential-for-each). | 
@@ -2038,7 +2038,7 @@ Mit dieser Aktion, bei der es sich um eine *bedingte Anweisung* handelt, wird ei
 }
 ```
 
-| Wert | Type | BESCHREIBUNG | 
+| Wert | type | BESCHREIBUNG | 
 |-------|------|-------------| 
 | <*condition*> | JSON-Objekt | Auszuwertende Bedingung, bei der es sich auch um einen Ausdruck handeln kann | 
 | <*action-1*> | JSON-Objekt | Aktion, die ausgeführt werden soll, wenn <*condition*> als „true“ ausgewertet wird | 
@@ -2128,7 +2128,7 @@ Mit dieser Aktion werden Aktionen logisch zu *Bereichen* (Scopes) gruppiert, die
 
 *Erforderlich*
 
-| Wert | Type | BESCHREIBUNG | 
+| Wert | type | BESCHREIBUNG | 
 |-------|------|-------------|  
 | <*inner-action-1...n*> | JSON-Objekt | Eine oder mehrere Aktionen, die innerhalb des Bereichs ausgeführt werden |
 | <*action-inputs*> | JSON-Objekt | Eingaben für jede Aktion |
@@ -2169,17 +2169,17 @@ Mit dieser Aktion, die auch als *switch-Anweisung* bezeichnet wird, werden ander
 
 *Erforderlich*
 
-| Wert | Type | BESCHREIBUNG | 
+| Wert | type | BESCHREIBUNG | 
 |-------|------|-------------| 
-| <*expression-object-or-token*> | Variabel | Ausdruck, JSON-Objekt oder Token für die Auswertung | 
+| <*expression-object-or-token*> | Varies | Ausdruck, JSON-Objekt oder Token für die Auswertung | 
 | <*action-name*> | string | Name der Aktion, die für den übereinstimmenden Fall ausgeführt werden soll | 
 | <*action-definition*> | JSON-Objekt | Definition für die Aktion, die für den übereinstimmenden Fall ausgeführt werden soll | 
-| <*matching-value*> | Variabel | Wert, der mit dem Auswertungsergebnis verglichen werden soll | 
+| <*matching-value*> | Varies | Wert, der mit dem Auswertungsergebnis verglichen werden soll | 
 |||| 
 
 *Optional*
 
-| Wert | Type | BESCHREIBUNG | 
+| Wert | type | BESCHREIBUNG | 
 |-------|------|-------------| 
 | <*default-action-name*> | string | Name der Standardaktion, die ausgeführt wird, wenn keine übereinstimmenden Fälle vorhanden sind | 
 | <*default-action-definition*> | JSON-Objekt | Definition für die Aktion, die ausgeführt wird, wenn kein übereinstimmender Fall vorhanden ist | 
@@ -2295,7 +2295,7 @@ Diese Schleifenaktion enthält Aktionen, die so lange ausgeführt werden, bis di
 }
 ```
 
-| Wert | Type | BESCHREIBUNG | 
+| Wert | type | BESCHREIBUNG | 
 |-------|------|-------------| 
 | <*action-name*> | string | Name für die Aktion, die Sie in der Schleife ausführen möchten | 
 | <*action-type*> | string | Aktionstyp, den Sie ausführen möchten | 
@@ -2389,7 +2389,7 @@ Sie können das Standardlaufzeitverhalten für Trigger und Aktionen mit diesen `
 
 Sie können das Standardverhalten für Trigger und Aktionen mit der `operationOptions`-Eigenschaft in der Trigger- oder Aktionsdefinition ändern.
 
-| Vorgangsoption | Type | BESCHREIBUNG | Trigger oder Aktion | 
+| Vorgangsoption | type | BESCHREIBUNG | Trigger oder Aktion | 
 |------------------|------|-------------|-------------------| 
 | `DisableAsyncPattern` | string | Dient zum synchronen Ausführen von HTTP-basierten Aktionen (anstatt asynchron). <p><p>Informationen zum Festlegen dieser Option finden Sie unter [Synchrones Ausführen von Aktionen](#asynchronous-patterns). | Aktionen: <p>[ApiConnection](#apiconnection-action), <br>[HTTP](#http-action), <br>[Antwort](#response-action) | 
 | `OptimizedForHighThroughput` | string | Dient zum Ändern des [Standardlimits](../logic-apps/logic-apps-limits-and-config.md#throughput-limits) für die Anzahl von Aktionsausführungen in einem Zeitraum von fünf Minuten in das [maximale Limit](../logic-apps/logic-apps-limits-and-config.md#throughput-limits). <p><p>Informationen zum Festlegen dieser Option finden Sie unter [Ausführen im Modus mit hohem Durchsatz](#run-high-throughput-mode). | Alle Aktionen | 
@@ -2624,7 +2624,7 @@ Anforderungen verfügen aber über ein Timeoutlimit. Für Aktionen mit langer Au
 
 ### <a name="run-in-high-throughput-mode"></a>Ausführen im Modus mit hohem Durchsatz
 
-Für eine einzelne Logik-App-Ausführung gilt für die Anzahl von Aktionen, die alle fünf Minuten ausgeführt werden, ein [Standardlimit](../logic-apps/logic-apps-limits-and-config.md#throughput-limits). Legen Sie die `operationOptions`-Eigenschaft auf `OptimizedForHighThroughput` fest, um dieses Limit auf den [Maximalwert](../logic-apps/logic-apps-limits-and-config.md#throughput-limits) zu erhöhen. Mit dieser Einstellung wird Ihre Logik-App in den Modus für „hohen Durchsatz“ versetzt. 
+Für eine einzelne Logik-App-Definition gilt für die Anzahl von Aktionen, die alle fünf Minuten ausgeführt werden, ein [Standardlimit](../logic-apps/logic-apps-limits-and-config.md#throughput-limits). Legen Sie die `operationOptions`-Eigenschaft auf `OptimizedForHighThroughput` fest, um dieses Limit auf den [Maximalwert](../logic-apps/logic-apps-limits-and-config.md#throughput-limits) zu erhöhen. Mit dieser Einstellung wird Ihre Logik-App in den Modus für „hohen Durchsatz“ versetzt. 
 
 > [!NOTE]
 > Dieser Modus für hohen Durchsatz befindet sich in der Vorschauphase. Sie können eine Workload bei Bedarf auch auf mehr als eine Logik-App verteilen.

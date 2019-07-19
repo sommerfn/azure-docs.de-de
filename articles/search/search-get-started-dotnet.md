@@ -9,13 +9,13 @@ services: search
 ms.service: search
 ms.devlang: dotnet
 ms.topic: quickstart
-ms.date: 06/20/2019
-ms.openlocfilehash: a5cbd2036f92c27709d92d0cf415cc9837645fb8
-ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
+ms.date: 07/09/2019
+ms.openlocfilehash: d3236f4782cc4fd9113329f03e36515a91bad528
+ms.sourcegitcommit: 66237bcd9b08359a6cce8d671f846b0c93ee6a82
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/01/2019
-ms.locfileid: "67485600"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67798771"
 ---
 # <a name="quickstart-create-an-azure-search-index-in-c-using-the-net-sdk"></a>Schnellstart: Erstellen eines Azure Search-Index in C# mit dem .NET SDK
 > [!div class="op_single_selector"]
@@ -39,7 +39,7 @@ In diesem Schnellstart werden die folgenden Dienste, Tools und Daten verwendet.
 
 + [Visual Studio](https://visualstudio.microsoft.com/downloads/) (beliebige Edition). Der Beispielcode und die Anleitung wurden in der kostenlosen Community-Edition getestet.
 
-+ Ein Beispielindex und Dokumente werden sowohl in diesem Artikel als auch in der [Visual Studio-Projektmappe](https://github.com/Azure-Samples/azure-search-dotnet-samples/quickstart) für diese Schnellstartanleitung bereitgestellt.
++ Ein Beispielindex und Dokumente werden sowohl in diesem Artikel als auch in der [Visual Studio-Projektmappe](https://github.com/Azure-Samples/azure-search-dotnet-samples/tree/master/quickstart) für diese Schnellstartanleitung bereitgestellt.
 
 + [Erstellen Sie einen Azure Search-Dienst](search-create-service-portal.md), oder suchen Sie in Ihrem aktuellen Abonnement [nach einem vorhandenen Dienst](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices). Für diesen Schnellstart können Sie einen kostenlosen Dienst verwenden.
 
@@ -550,13 +550,11 @@ Die Klasse [`DocumentsSearchResult`](https://docs.microsoft.com/dotnet/api/micro
 
 ## <a name="clean-up"></a>Bereinigen
 
-Wenn Sie einen Index nicht mehr benötigen und ihn löschen möchten, rufen Sie die `Indexes.Delete`-Methode in `SearchServiceClient` auf.
+Wenn Sie in Ihrem eigenen Abonnement arbeiten, sollten Sie sich am Ende eines Projekts überlegen, ob Sie die erstellten Ressourcen noch benötigen. Ressourcen, die weiterhin ausgeführt werden, können Sie Geld kosten. Sie können entweder einzelne Ressourcen oder aber die Ressourcengruppe löschen, um den gesamten Ressourcensatz zu entfernen.
 
-```csharp
-serviceClient.Indexes.Delete("hotels");
-```
+Ressourcen können im Portal über den Link **Alle Ressourcen** oder **Ressourcengruppen** im linken Navigationsbereich gesucht und verwaltet werden.
 
-Wenn Sie auch den Suchdienst nicht mehr benötigen, können Sie die Ressourcen aus dem Azure-Portal löschen.
+Denken Sie bei Verwendung eines kostenlosen Diensts an die Beschränkung auf maximal drei Indizes, Indexer und Datenquellen. Sie können einzelne Elemente über das Portal löschen, um unter dem Limit zu bleiben. 
 
 ## <a name="next-steps"></a>Nächste Schritte
 

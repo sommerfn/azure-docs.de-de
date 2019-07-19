@@ -4,21 +4,21 @@ description: Hier erfahren Sie, wie Sie Multimaster in Ihren Anwendungen in Azur
 author: markjbrown
 ms.service: cosmos-db
 ms.topic: sample
-ms.date: 07/02/2019
+ms.date: 07/03/2019
 ms.author: mjbrown
-ms.openlocfilehash: 73b4ada713e264aaa2504fe4d4f504e07ae45181
-ms.sourcegitcommit: 084630bb22ae4cf037794923a1ef602d84831c57
+ms.openlocfilehash: 646706eabf1b3a33c3143410f0e922a03e6a8ad6
+ms.sourcegitcommit: d2785f020e134c3680ca1c8500aa2c0211aa1e24
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/03/2019
-ms.locfileid: "67538079"
+ms.lasthandoff: 07/04/2019
+ms.locfileid: "67565904"
 ---
 # <a name="configure-multi-master-in-your-applications-that-use-azure-cosmos-db"></a>Konfigurieren von Multimaster in Ihren Anwendungen, die Azure Cosmos DB verwenden
 
 Sobald ein Konto mit mehreren aktivierten Schreibbereichen erstellt wurde, müssen Sie in ConnectionPolicy für DocumentClient zwei Änderungen vornehmen, um die Multimaster- und Multihomingfunktionen in Azure Cosmos DB zu aktivieren. Legen Sie in ConnectionPolicy das UseMultipleWriteLocations-Element auf TRUE fest, und übergeben Sie den Namen der Region, in der die Anwendung bereitgestellt wird, an SetCurrentLocation. Dadurch wird die PreferredLocations-Eigenschaft basierend auf der geografischen Nähe zum eingegebenen Standort aufgefüllt. Wenn dem Konto später eine neue Region hinzugefügt wird, muss die Anwendung nicht aktualisiert oder neu bereitgestellt werden. Sie erkennt automatisch die nähere Region und greift automatisch darauf zurück, wenn ein regionales Ereignis eintritt.
 
-> [!TIP]
-> Cosmos-Konten, die ursprünglich nicht für Multimaster konfiguriert waren, können ohne Ausfallzeiten migriert werden. Weitere Informationen finden unter [Konfigurieren mehrerer Schreibregionen](how-to-manage-database-account.md#configure-multiple-write-regions).
+> [!Note]
+> Cosmos-Konten, die ursprünglich mit einer einzelnen Schreibregion konfiguriert wurden, können für die Verwendung mehrerer Schreibregionen (also als Multimaster) ohne Ausfallzeiten konfiguriert werden. Weitere Informationen finden unter [Konfigurieren mehrerer Schreibregionen](how-to-manage-database-account.md#configure-multiple-write-regions).
 
 ## <a id="netv2"></a>.NET SDK v2
 

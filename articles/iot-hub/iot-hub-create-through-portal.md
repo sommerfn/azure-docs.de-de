@@ -7,12 +7,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 09/06/2018
 ms.author: robinsh
-ms.openlocfilehash: 21758d112cd7eaf45b8b279cf2a6f6060c44c9c1
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 6f070462dca6e835504a33014a7ed48e9949f874
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64571052"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67432635"
 ---
 # <a name="create-an-iot-hub-using-the-azure-portal"></a>Erstellen eines IoT Hubs über das Portal
 
@@ -40,7 +40,7 @@ Hier werden einige der Eigenschaften aufgeführt, die Sie für einen IoT-Hub fes
 
 **IP-Filter**: Hier können Sie einen IP-Adressbereich angeben, der vom IoT-Hub akzeptiert oder abgelehnt wird.
 
-**Eigenschaften**: Enthält die Liste der Eigenschaften, die Sie kopieren und an anderer Stelle verwenden können, z.B. die Ressourcen-ID, die Ressourcengruppe, den Standort usw.
+**Properties:** Enthält die Liste der Eigenschaften, die Sie kopieren und an anderer Stelle verwenden können, z.B. die Ressourcen-ID, die Ressourcengruppe, den Standort usw.
 
 ### <a name="shared-access-policies"></a>Freigegebene Zugriffsrichtlinien
 
@@ -50,13 +50,15 @@ Klicken Sie auf **Hinzufügen**, um das Blatt **Richtlinie für den gemeinsamen 
 
 ![Screenshot: Hinzufügen einer SAS-Richtlinie](./media/iot-hub-create-through-portal/iot-hub-add-shared-access-policy.png)
 
-* Die Richtlinien **Registrierung lesen** und **In Registrierung schreiben** berechtigen zum Lesen und Schreiben in der Identitätsregistrierung. Beim Auswählen der Schreiboption wird die Leseoption automatisch ausgewählt.
+* Die Richtlinien **Registrierung lesen** und **In Registrierung schreiben** berechtigen zum Lesen und Schreiben in der Identitätsregistrierung. Diese Berechtigungen werden von Back-End-Clouddiensten zum Verwalten von Geräteidentitäten verwendet. Beim Auswählen der Schreiboption wird die Leseoption automatisch ausgewählt.
 
-* Die Richtlinie **Dienstverbindung** erteilt die Berechtigung für den Zugriff auf Dienstendpunkte, z.B. **Empfangen von Gerät-an-Cloud-Nachrichten**. 
+* Die Richtlinie **Dienstverbindung** erteilt die Berechtigung für den Zugriff auf Dienstendpunkte. Diese Berechtigung wird von Back-End-Cloud-Diensten verwendet, um Nachrichten von Geräten zu senden und zu empfangen sowie Gerätezwillings- und Modulzwillingsdaten zu aktualisieren und zu lesen.
 
-* Die Richtlinie **Geräteverbindung** gewährt Berechtigungen zum Senden und Empfangen von Nachrichten mit den geräteseitigen IoT Hub-Endpunkten.
+* Die Richtlinie **Geräteverbindung** gewährt Berechtigungen zum Senden und Empfangen von Nachrichten mit den geräteseitigen IoT Hub-Endpunkten. Diese Berechtigung wird von Geräten verwendet, um Nachrichten von einem IoT-Hub zu senden und zu empfangen, Gerätezwillings- und Modulzwillingsdaten zu aktualisieren und zu lesen und Dateien hochzuladen.
 
 Klicken Sie auf **Erstellen** , um der vorhandenen Liste diese neu erstellte Richtlinie hinzuzufügen.
+
+Detaillierte Informationen zu dem durch bestimmte Berechtigungen gewährten Zugriff finden Sie unter [IoT Hub-Berechtigungen](./iot-hub-devguide-security.md#iot-hub-permissions).
 
 ## <a name="message-routing-for-an-iot-hub"></a>Nachrichtenrouting für einen IoT-Hub
 

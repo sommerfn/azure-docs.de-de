@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.custom: seodec18
-ms.openlocfilehash: 9a549221a9e1864e1b7565f35139cb4c2a6ca65e
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 5ab85a8fb56789dbf3ecd6cf1cbc63e338615915
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61248112"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67439125"
 ---
 # <a name="create-and-provision-an-iot-edge-device-with-a-virtual-tpm-on-a-linux-virtual-machine"></a>Erstellen und Bereitstellen eines IoT Edge-Geräts mit einem virtuellen TPM auf einem virtuellen Linux-Computer
 
@@ -106,6 +106,8 @@ Erstellen Sie auf dem virtuellen Computer ein C-SDK-Tool, mit dem Sie die **Regi
    make
    sudo ./tpm_device_provision
    ```
+   >[!TIP]
+   >Wenn Sie mit dem TPM-Simulator testen, müssen Sie den zusätzlichen Parameter `-Duse_tpm_simulator:BOOL=ON` einfügen, um ihn zu aktivieren. Der vollständige Befehl lautet `cmake -Duse_prov_client:BOOL=ON -Duse_tpm_simulator:BOOL=ON ..`.
 
 5. Kopieren Sie die Werte für die **Registrierungs-ID** und den **Endorsement Key**. Sie können diese Werte verwenden, um eine individuelle Registrierung für Ihr Gerät im DPS zu erstellen. 
 

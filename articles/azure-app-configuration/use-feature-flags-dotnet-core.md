@@ -14,12 +14,12 @@ ms.topic: tutorial
 ms.date: 04/19/2019
 ms.author: yegu
 ms.custom: mvc
-ms.openlocfilehash: 5e27c6a1ab5fc9dff779c6e5d04689683d5c8e6d
-ms.sourcegitcommit: a52d48238d00161be5d1ed5d04132db4de43e076
+ms.openlocfilehash: 99559c0c77c3e4b29badec1c0be2d741df1f0621
+ms.sourcegitcommit: 66237bcd9b08359a6cce8d671f846b0c93ee6a82
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/20/2019
-ms.locfileid: "67274151"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67798374"
 ---
 # <a name="tutorial-use-feature-flags-in-an-aspnet-core-app"></a>Tutorial: Verwenden von Featureflags in einer ASP.NET Core-App
 
@@ -86,30 +86,42 @@ public class Startup
 
 Featureflags sollten sich außerhalb der Anwendung befinden und separat verwaltet werden. Dadurch können Sie Flagzustände jederzeit ändern, und die Änderungen werden in der Anwendung sofort wirksam. Mit App Configuration können Sie alle Ihre Featureflags über eine dedizierte Portalbenutzeroberfläche an einem zentralen Ort organisieren und steuern. App Configuration übermittelt darüber hinaus die Flags über seine .NET Core-Clientbibliotheken direkt an Ihre Anwendung.
 
-Die Verbindung zwischen Ihrer ASP.NET Core-Anwendung und App Configuration lässt sich am einfachsten über den Konfigurationsanbieter `Microsoft.Extensions.Configuration.AzureAppConfiguration` herstellen. Fügen Sie zur Verwendung dieses NuGet-Pakets den folgenden Code zur Datei *Program.cs* hinzu:
+Die Verbindung zwischen Ihrer ASP.NET Core-Anwendung und App Configuration lässt sich am einfachsten über den Konfigurationsanbieter `Microsoft.Azure.AppConfiguration.AspNetCore` herstellen. Führen Sie die folgenden Schritte aus, um dieses NuGet-Paket zu verwenden.
 
-```csharp
-using Microsoft.Extensions.Configuration.AzureAppConfiguration;
+1. Öffnen Sie die Datei *Program.cs*, und fügen Sie folgenden Code hinzu.
 
-public static IWebHostBuilder CreateWebHostBuilder(string[] args) =>
-    WebHost.CreateDefaultBuilder(args)
-           .ConfigureAppConfiguration((hostingContext, config) => {
-               var settings = config.Build();
-               config.AddAzureAppConfiguration(options => {
-                   options.Connect(settings["ConnectionStrings:AppConfig"])
-                          .UseFeatureFlags();
-                });
-           })
-           .UseStartup<Startup>();
-```
+   ```csharp
+   using Microsoft.Extensions.Configuration.AzureAppConfiguration;
 
-Die Werte von Featureflags ändern sich üblicherweise im Laufe der Zeit. Der Feature-Manager aktualisiert die Werte von Featureflags standardmäßig alle 30 Sekunden. Der folgende Code zeigt, wie Sie das Abrufintervall im Aufruf `options.UseFeatureFlags()` in fünf Sekunden ändern:
+   public static IWebHostBuilder CreateWebHostBuilder(string[] args) =>
+       WebHost.CreateDefaultBuilder(args)
+              .ConfigureAppConfiguration((hostingContext, config) => {
+                  var settings = config.Build();
+                  config.AddAzureAppConfiguration(options => {
+                      options.Connect(settings["ConnectionStrings:AppConfig"])
+                             .UseFeatureFlags();
+                   });
+              })
+              .UseStartup<Startup>();
+   ```
+
+2. Öffnen Sie die Datei *Startup.cs*, und aktualisieren Sie die `Configure`-Methode, um Middleware hinzuzufügen, damit die Featureflagwerte in regelmäßigen Abständen aktualisiert werden können, während die ASP.NET Core-Web-App weiterhin Anforderungen empfängt.
+
+   ```csharp
+   public void Configure(IApplicationBuilder app, IHostingEnvironment env)
+   {
+       app.UseAzureAppConfiguration();
+       app.UseMvc();
+   }
+   ```
+
+Die Werte von Featureflags ändern sich üblicherweise im Laufe der Zeit. Standardmäßig werden die Featureflagwerte für einen Zeitraum von 30 Sekunden zwischengespeichert, daher würde ein Aktualisierungsvorgang, der ausgelöst wird, wenn die Middleware eine Anforderung empfängt, den Wert erst nach Ablauf des zwischengespeicherten Werts aktualisieren. Der folgende Code zeigt, wie Sie die Cacheablaufzeit oder das Abrufintervall im Aufruf `options.UseFeatureFlags()` in einen Wert von fünf Minuten ändern.
 
 ```csharp
 config.AddAzureAppConfiguration(options => {
     options.Connect(settings["ConnectionStrings:AppConfig"])
            .UseFeatureFlags(featureFlagOptions => {
-                featureFlagOptions.PollInterval = TimeSpan.FromSeconds(300);
+                featureFlagOptions.CacheExpirationTime = TimeSpan.FromMinutes(5);
            });
 });
 ```

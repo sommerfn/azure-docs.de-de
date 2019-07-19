@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: tutorial
 ms.date: 06/04/2019
 ms.author: v-chjenk
-ms.openlocfilehash: 275fec5fb696a7e1352bbddccd288863e984b796
-ms.sourcegitcommit: 82efacfaffbb051ab6dc73d9fe78c74f96f549c2
+ms.openlocfilehash: 9579db9836ef41706f2c6be09570fa7c1459e14f
+ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/20/2019
-ms.locfileid: "67304538"
+ms.lasthandoff: 07/07/2019
+ms.locfileid: "67620451"
 ---
 # <a name="tutorial-deploy-a-management-tool"></a>Tutorial: Bereitstellen eines Verwaltungstools
 
@@ -57,8 +57,8 @@ Gehen Sie wie folgt vor, um die Azure Ressource Manager-Vorlage bereitzustellen:
 ### <a name="guidance-for-template-parameters"></a>Anleitung für Vorlagenparameter
 Die Parameter zum Konfigurieren des Tools werden wie folgt eingegeben:
 
-- URL für RD-Broker:  <https://rdbroker.wvd.microsoft.com/>
-- Ressourcen-URL:  <https://mrs-prod.ame.gbl/mrs-RDInfra-prod>
+- Dies ist die RD-Broker-URL:  https:\//rdbroker.wvd.microsoft.com/
+- Dies ist die Ressourcen-URL:  https:\//mrs-prod.ame.gbl/mrs-RDInfra-prod
 - Verwenden Sie für die Anmeldung bei Azure Ihre AAD-Anmeldeinformationen mit deaktivierter MFA. Siehe dazu [Benötigte Komponenten zum Ausführen der Azure Resource Manager-Vorlage](#what-you-need-to-run-the-azure-resource-manager-template).
 - Verwenden Sie einen eindeutigen Namen für die Anwendung, die in Ihrer Azure Active Directory-Instanz für das Verwaltungstool registriert wird, z. B. Apr3UX.
 

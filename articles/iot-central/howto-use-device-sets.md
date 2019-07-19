@@ -8,18 +8,18 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: peterpfr
-ms.openlocfilehash: 68599a539b3d79b759142d2178aa753f895ea37f
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: e1e7b91e0808b9e23e653acd43b95f24a46c7d27
+ms.sourcegitcommit: 837dfd2c84a810c75b009d5813ecb67237aaf6b8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67052942"
+ms.lasthandoff: 07/02/2019
+ms.locfileid: "67503213"
 ---
 # <a name="use-device-sets-in-your-azure-iot-central-application"></a>Verwenden von Gerätegruppen in Ihrer Azure IoT Central-Anwendung
 
 In diesem Artikel wird beschrieben, wie Sie als Operator Gerätegruppen in Ihrer Azure IoT Central-Anwendung verwenden.
 
-Eine Gerätegruppe ist eine Liste der Geräte, die zusammen gruppiert werden, da sie alle einigen der angegebenen Kriterien entsprechen. Gerätegruppen helfen Ihnen bei der Verwaltung, Visualisierung und Analyse aller im Umfang enthaltenen Geräte, indem sie Geräte in kleinere, logische Gruppen zusammenfassen. Beispielsweise erstellen Sie eine Liste aller Klimageräte in Seattle, damit der Techniker in Seattle alle Geräte finden kann, für die er verantwortlich ist. In diesem Artikel erfahren Sie, wie Sie Gerätegruppen erstellen und konfigurieren.
+Eine Gerätegruppe ist eine Liste mit Geräten, die zusammengefasst werden, da sie angegebenen Kriterien entsprechen. Gerätegruppen helfen Ihnen bei der Verwaltung, Visualisierung und Analyse aller im Umfang enthaltenen Geräte, indem sie Geräte in kleinere, logische Gruppen zusammenfassen. Sie können beispielsweise eine Gerätegruppe mit einer Liste aller Klimageräte in Seattle erstellen, damit ein Techniker in Seattle alle Geräte finden kann, für die er verantwortlich ist. In diesem Artikel erfahren Sie, wie Sie Gerätegruppen erstellen und konfigurieren.
 
 ## <a name="create-a-device-set"></a>Erstellen einer Gerätegruppe
 
@@ -44,7 +44,7 @@ So erstellen Sie eine Gerätegruppe
 
 ## <a name="configure-the-dashboard-for-your-device-set"></a>Konfigurieren des Dashboards für Ihre Gerätegruppe
 
-Nachdem Sie Ihre Gerätegruppe erstellt haben, können Sie deren **Dashboard** konfigurieren. Das **Dashboard** ist die Homepage, auf der Sie Bilder und Links platzieren können. Sie können auch Raster hinzufügen, die die Geräte in der Gerätegruppe auflisten.
+Nachdem Sie Ihre Gerätegruppe erstellt haben, können Sie deren **Dashboard** konfigurieren. Das **Dashboard** ist die Startseite, auf der Sie Bilder und Links platzieren. Sie können auch Raster hinzufügen, die die Geräte in der Gerätegruppe auflisten.
 
 1. Wählen Sie links im Navigationsmenü die Option **Gerätegruppen** aus.
 
@@ -85,19 +85,20 @@ Nachdem Sie Ihre Gerätegruppe erstellt haben, können Sie deren **Dashboard** k
   
     1. Wählen Sie **Fertig**aus.
 
-### <a name="configuring-location-map-in-your-device-sets-dashboard"></a>Konfigurieren einer Standortkarte im Gerätegruppen-Dashboard
+Mehr über die Verwendung von Kacheln in Azure IoT Central erfahren Sie unter [Verwenden von Dashboardkacheln](howto-use-tiles.md).
 
-Sie können eine Standortkarte hinzufügen, um die Standorte Ihrer Gerätegruppen in einer Karte zu visualisieren.
+### <a name="configure-a-location-map-in-your-device-sets-dashboard"></a>Konfigurieren einer Standortkarte im Dashboard Ihrer Gerätegruppe
 
-Damit Sie Ihrem Gerätegruppen-Dashboard eine Standortkarte hinzufügen können, müssen Sie sicherstellen, dass die Standorteigenschaft in der Gerätevorlage konfiguriert ist. Weitere Informationen finden Sie unter [Erstellen einer von Azure Maps unterstützten Standorteigenschaft](howto-set-up-template.md).
+Sie können eine Karte hinzufügen, um den Standort der Geräte in Ihrer Gerätegruppe zu visualisieren.
 
-1. Wählen Sie im Dashboard für Gerätegruppen „Karte“ aus der Bibliothek aus.
-2. Geben Sie einen Titel ein, und wählen Sie die Standorteigenschaft aus, die Sie zuvor als Teil Ihrer Geräteeigenschaft konfiguriert haben.
-3. Nach dem Speichern wird in der Kartenkachel der Standort Ihrer Geräte in der Gerätegruppe angezeigt.
-4. Wenn ein Operator das Gerätegruppen-Dashboard anzeigt, sieht er jetzt alle von Ihnen konfigurierten Kacheln, einschließlich der Standortkarte, in der er die visualisierten Gerätestandorte auf einen Blick erfassen kann.
+Um eine Karte zum Dashboard Ihrer Gerätegruppe hinzuzufügen, muss in Ihrer Gerätevorlage eine Standortmessung oder Standorteigenschaft konfiguriert sein. Weitere Informationen finden Sie unter [Erstellen einer Standortmessung](howto-set-up-template.md) oder [Erstellen einer Standorteigenschaft](howto-set-up-template.md).
 
-> [!NOTE]
-> Sie können die Karte in die gewünschte Größe ändern. Durch Auswahl eines Pins auf der Karte werden Geräteinformationen, Name und Standort angezeigt. Sie können das Popupfenster auswählen, um zur Seite „Geräteeigenschaft“ zu wechseln.
+1. Wählen Sie im **Dashboard** der Gerätegruppe in der Bibliothek **Karte** aus.
+2. Fügen Sie einen Titel hinzu, und wählen Sie die Standortmessung oder -eigenschaft, die Sie zuvor konfiguriert haben.
+3. Klicken Sie auf **Speichern**. Die Kartenkachel zeigt dann die letzten bekannten Standorte der Geräte in Ihrer Gerätegruppe an.
+4. Wenn ein Techniker das Dashboard der Gerätegruppe betrachtet, sieht er alle von Ihnen konfigurierten Kacheln, einschließlich Standortkarte.
+
+Sie können die Größe der Kartenkachel auf dem Dashboard ändern. Bei Auswahl einer Stecknadel auf der Karte werden Geräteinformationen, Name und Standort angezeigt. Wählen Sie das Popupfenster aus, um zur Seite mit den Geräteeigenschaften zu wechseln.
 
 ## <a name="configure-the-list-for-your-device-set"></a>Konfigurieren der Liste für Ihre Gerätegruppe
 

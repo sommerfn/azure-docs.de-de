@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 09/15/2018
-ms.openlocfilehash: 95a1055df283765b24322f6f8efe3efcb9b19022
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 38d3c61acee9dca18ab1f863d878e02f7437a600
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64707975"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67433714"
 ---
 # <a name="set-up-apache-hbase-cluster-replication-in-azure-virtual-networks"></a>Einrichten der Apache HBase-Clusterreplikation in virtuellen Azure-Netzwerken
 
@@ -21,7 +21,7 @@ Hier erfahren Sie, wie Sie die [Apache HBase](https://hbase.apache.org/)-Replika
 
 Clusterreplikation verwendet eine Source-Push-Methodologie. Ein HBase-Cluster kann Quelle oder Ziel sein oder beide Rollen gleichzeitig erfüllen. Die Replikation ist asynchron. Das Ziel der Replikation ist die endgültige Konsistenz. Die Bearbeitung einer Spaltenfamilie in der Quelle bei aktivierter Replikation wird an alle Zielcluster weitergegeben. Wenn Daten von einem Cluster auf einen anderen repliziert werden, werden der Quellcluster und alle Cluster, die bereits Daten genutzt haben, nachverfolgt, um Replikationsschleifen zu verhindern.
 
-In diesem Tutorial richten Sie eine Quell-/Ziel-Replikation ein. Andere Clustertopologien finden Sie im [Apache HBase-Referenzhandbuch](https://hbase.apache.org/book.html#_cluster_replication).
+In diesem Artikel richten Sie eine Quell-/Zielreplikation ein. Andere Clustertopologien finden Sie im [Apache HBase-Referenzhandbuch](https://hbase.apache.org/book.html#_cluster_replication).
 
 Anwendungsfälle für die HBase-Replikation für ein einzelnes virtuelles Netzwerk sind:
 
@@ -39,7 +39,7 @@ Anwendungsfälle für die HBase-Replikation für zwei virtuelle Netzwerks sind:
 Sie können Cluster mit [Skriptaktionen](../hdinsight-hadoop-customize-cluster-linux.md)-Skripts aus [GitHub](https://github.com/Azure/hbase-utils/tree/master/replication) replizieren.
 
 ## <a name="prerequisites"></a>Voraussetzungen
-Für dieses Tutorial wird ein Azure-Abonnement benötigt. Siehe [How to get Azure Free trial for testing Hadoop in HDInsight](https://azure.microsoft.com/documentation/videos/get-azure-free-trial-for-testing-hadoop-in-hdinsight/) (So erhalten Sie eine kostenlose Azure-Testversion zum Testen von Hadoop in HDInsight).
+Für diesen Artikel benötigen Sie ein Azure-Abonnement. Siehe [How to get Azure Free trial for testing Hadoop in HDInsight](https://azure.microsoft.com/documentation/videos/get-azure-free-trial-for-testing-hadoop-in-hdinsight/) (So erhalten Sie eine kostenlose Azure-Testversion zum Testen von Hadoop in HDInsight).
 
 ## <a name="set-up-the-environments"></a>Einrichten der Umgebungen
 
@@ -85,7 +85,7 @@ Im Folgenden werden einige der hartcodierten Werte in der Vorlage aufgeführt:
 
 | Eigenschaft | Wert |
 |----------|-------|
-| Location | USA (Ost) |
+| Location | East US |
 | VNet-Name | &lt;ClusterNamePrevix>-vnet2 |
 | Adressraumpräfix | 10.2.0.0/16 |
 | Subnetzname | Subnetz 1 |
@@ -396,7 +396,7 @@ Der Abschnitt `print_usage()` des [Skripts](https://raw.githubusercontent.com/Az
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-In diesem Tutorial haben Sie erfahren, wie Sie die Apache HBase-Replikation innerhalb eines virtuellen Netzwerks oder zwischen zwei virtuellen Netzwerken einrichten. Weitere Informationen zu HDInsight und Apache HBase finden Sie in den folgenden Artikeln:
+In diesem Artikel haben Sie erfahren, wie Sie die Apache HBase-Replikation innerhalb eines virtuellen Netzwerks oder zwischen zwei virtuellen Netzwerken einrichten. Weitere Informationen zu HDInsight und Apache HBase finden Sie in den folgenden Artikeln:
 
 * [Get started with Apache HBase in HDInsight (Erste Schritte mit Apache HBase in HDInsight)](./apache-hbase-tutorial-get-started-linux.md)
 * [Überblick über Apache HBase in HDInsight: Eine NoSQL-Datenbank, die BigTable-ähnliche Funktionen für Hadoop bereitstellt](./apache-hbase-overview.md)

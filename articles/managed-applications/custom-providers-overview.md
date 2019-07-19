@@ -1,91 +1,130 @@
 ---
-title: Übersicht über die Vorschauversion zu benutzerdefinierten Azure-Anbietern
-description: Beschreibt die Konzepte zum Erstellen eines benutzerdefinierten Ressourcenprovider mit Azure Resource Manager
-author: MSEvanhi
+title: Übersicht über benutzerdefinierte Azure-Ressourcenanbieter
+description: Erfahren Sie, was benutzerdefinierte Azure-Ressourcenanbieter sind und wie Sie die Azure-API-Ebene entsprechend Ihren Workflows erweitern.
+author: jjbfour
 ms.service: managed-applications
 ms.topic: conceptual
-ms.date: 05/01/2019
-ms.author: evanhi
-ms.openlocfilehash: bbfb10f612690af0f4fd3683e0f58986a21048d8
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.date: 06/19/2019
+ms.author: jobreen
+ms.openlocfilehash: f418cd6c5470740ce123448ddbbe54cb6e89dabe
+ms.sourcegitcommit: f811238c0d732deb1f0892fe7a20a26c993bc4fc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65157918"
+ms.lasthandoff: 06/29/2019
+ms.locfileid: "67475961"
 ---
-# <a name="azure-custom-providers-preview-overview"></a>Vorschauversion zu benutzerdefinierten Azure-Anbietern – Übersicht
+# <a name="azure-custom-resource-providers-overview"></a>Übersicht über benutzerdefinierte Azure-Ressourcenanbieter
 
-Mit dem benutzerdefinierten Azure-Anbietern können Sie Azure erweitern, dass es mit Ihrem Dienst zusammenarbeitet. Sie erstellen Ihren eigenen Ressourcenanbieter, einschließlich benutzerdefinierter Ressourcentypen und Aktionen. Der benutzerdefinierte Anbieter ist in den Azure Resource Manager integriert. Sie können die Features des Resource Managers, wie Vorlagenbereitstellungen und rollenbasierte Zugriffskontrolle, nutzen, um Ihren Dienst bereitzustellen und zu schützen.
+Benutzerdefinierte Azure-Ressourcenanbieter sind eine Erweiterbarkeitsplattform für Azure. Sie ermöglichen Ihnen, benutzerdefinierte APIs zu definieren, mit denen Sie die standardmäßige Azure-Umgebung erweitern können. In diesem Artikel wird Folgendes beschrieben:
 
-Dieser Artikel gibt eine Übersicht über benutzerdefinierte Anbieter und deren Funktionen. Die folgende Abbildung zeigt den Workflow für Ressourcen und Aktionen, die in einem benutzerdefinierten Anbieter definiert sind.
+- Erstellen und Bereitstellen eines benutzerdefinierten Azure-Ressourcenanbieters
+- Nutzen eines benutzerdefinierten Azure-Ressourcenanbieters zum Erweitern vorhandener Workflows
+- Auffinden von Anleitungen und Codebeispielen für den Einstieg
 
 ![Übersicht zu benutzerdefinierten Anbietern](./media/custom-providers-overview/overview.png)
 
 > [!IMPORTANT]
 > Die benutzerdefinierten Anbieter sind derzeit als öffentliche Vorschauversion verfügbar.
-> Diese Vorschauversion wird ohne Vereinbarung zum Servicelevel bereitgestellt und ist nicht für Produktionsworkloads vorgesehen. Manche Features werden möglicherweise nicht unterstützt oder sind nur eingeschränkt verwendbar. Weitere Informationen finden Sie unter [Zusätzliche Nutzungsbestimmungen für Microsoft Azure-Vorschauen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+> Diese Vorschauversion wird ohne Vereinbarung zum Servicelevel bereitgestellt und ist nicht für Produktionsworkloads vorgesehen. Manche Features werden möglicherweise nicht unterstützt oder sind nur eingeschränkt verwendbar.
+> Weitere Informationen finden Sie unter [Zusätzliche Nutzungsbestimmungen für Microsoft Azure-Vorschauen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
-## <a name="define-your-custom-provider"></a>Definieren Ihres benutzerdefinierten Anbieters
+## <a name="what-can-custom-resource-providers-do"></a>Aufgaben benutzerdefinierter Ressourcenanbieter
 
-Sie beginnen damit, dass Sie den Azure Resource Manager über Ihren benutzerdefinierten Anbieter informieren. Sie stellen Azure eine benutzerdefinierte Anbieterressource zur Verfügung, die den Ressourcentyp **Microsoft.CustomProviders/ResourceProvider** verwendet. In dieser Ressource definieren Sie die Ressourcen und Aktionen für Ihren Dienst.
+Es folgen einige Beispiele der Aufgaben benutzerdefinierter Azure-Ressourcenanbieter:
 
-Wenn Ihr Dienst beispielsweise einen Ressourcentyp namens **users** benötigt, nehmen Sie diesen Ressourcentyp in Ihre benutzerdefinierte Anbieterdefinition auf. Für jeden Ressourcentyp geben Sie einen Endpunkt an, der die REST-Vorgänge (PUT, GET, DELETE) für diesen Ressourcentyp anbietet. Der Endpunkt kann in jeder Umgebung gehostet werden und enthält die Logik, wie Ihr Dienst mit Vorgängen für den Ressourcentyp umgeht.
+- Erweitern der Azure Resource Manager-REST-API mit internen und externen Diensten
+- Ermöglichen benutzerdefinierter Szenarien, die auf vorhandenen Azure-Workflows basieren
+- Anpassen der Steuerung und Wirkung von Azure Resource Manager-Vorlagen
 
-Sie können auch benutzerdefinierte Aktionen für Ihren Ressourcenanbieter definieren. Aktionen stellen POST-Vorgänge dar. Verwenden Sie Aktionen für Vorgänge wie Start, Stopp oder Neustart. Sie stellen einen Endpunkt zur Verfügung, der die Anforderung verarbeitet.
+## <a name="what-is-a-custom-resource-provider"></a>Was ist ein benutzerdefinierter Ressourcenanbieter?
 
-Das folgende Beispiel zeigt, wie Sie einen benutzerdefinierten Anbieter mit einer Aktion und einem Ressourcentyp definieren.
+Benutzerdefinierte Azure-Ressourcenanbieter werden durch Abschluss eines Vertrags zwischen Azure und einem Endpunkt erstellt. Dieser Vertrag definiert eine Liste neuer Ressourcen und Aktionen mittels einer neuen Ressource, **Microsoft.CustomProviders/ResourceProviders**. Der benutzerdefinierte Ressourcenanbieter stellt diese neuen APIs anschließend in Azure zur Verfügung. Benutzerdefinierte Azure-Ressourcenanbieter bestehen aus drei Teilen: benutzerdefinierter Ressourcenanbieter, **Endpunkte** und benutzerdefinierte Ressourcen.
 
-```json
+## <a name="how-to-build-custom-resource-providers"></a>Erstellen benutzerdefinierter Ressourcenanbieter
+
+Benutzerdefinierte Ressourcenanbieter bestehen aus einer Liste von Verträgen zwischen Azure und Endpunkten. Der Vertrag beschreibt, wie Azure mit einem Endpunkt interagieren soll. Der Ressourcenanbieter fungiert als Proxy und leitet Anforderungen und Antworten an und vom angegebenen **Endpunkt** weiter. Ein Ressourcenanbieter kann zwei Arten von Verträgen angeben: [**resourceTypes**](./custom-providers-resources-endpoint-how-to.md) und [**actions**](./custom-providers-action-endpoint-how-to.md). Diese werden über Endpunktdefinitionen aktiviert. Eine Endpunktdefinition besteht aus drei Feldern: **name**, **routingType** und **endpoint**.
+
+Beispielendpunkt:
+
+```JSON
 {
-  "apiVersion": "2018-09-01-preview",
-  "type": "Microsoft.CustomProviders/resourceProviders",
-  "name": "[parameters('funcName')]",
-  "location": "[parameters('location')]",
-  "properties": {
-    "actions": [
-      {
-        "name": "ping",
-        "routingType": "Proxy",
-        "endpoint": "[concat('https://', parameters('funcName'), '.azurewebsites.net/api/{requestPath}')]"
-      }
-    ],
-    "resourceTypes": [
-      {
-        "name": "users",
-        "routingType": "Proxy,Cache",
-        "endpoint": "[concat('https://', parameters('funcName'), '.azurewebsites.net/api/{requestPath}')]"
-      }
-    ]
-  }
-},
-```
-
-Die zulässigen Werte für **routingType** sind `Proxy` und `Cache`. „Proxy“ bedeutet, dass Anforderungen für den Ressourcentyp oder die Aktion vom Endpunkt verarbeitet werden. Die Cacheeinstellung wird nur für Ressourcentypen unterstützt, nicht für Aktionen. Um den Cache anzugeben, müssen Sie auch den Proxy angeben. Im Cache werden Antworten vom Endpunkt gespeichert, um die Lesevorgänge zu optimieren. Die Verwendung der Cacheeinstellung erleichtert die Implementierung einer API, die konsistent und mit anderen Resource Manager-Diensten kompatibel ist.
-
-## <a name="deploy-your-resource-types"></a>Bereitstellen Ihrer Ressourcentypen
-
-Nachdem Sie Ihren benutzerdefinierten Anbieter definiert haben, können Sie Ihre benutzerdefinierten Ressourcentypen bereitstellen. Das folgende Beispiel zeigt den JSON-Code, den Sie in Ihre Vorlage aufnehmen, um den Ressourcentyp für Ihren benutzerdefinierten Anbieter bereitzustellen. Dieser Ressourcentyp kann in derselben Vorlage mit anderen Azure-Ressourcen bereitgestellt werden.
-
-```json
-{
-    "apiVersion": "2018-09-01-preview",
-    "type": "Microsoft.CustomProviders/resourceProviders/users",
-    "name": "[concat(parameters('rpname'), '/santa')]",
-    "location": "[parameters('location')]",
-    "properties": {
-        "FullName": "Santa Claus",
-        "Location": "NorthPole"
-    }
+  "name": "{endpointDefinitionName}",
+  "routingType": "Proxy",
+  "endpoint": "https://{endpointURL}/"
 }
 ```
 
-## <a name="manage-access"></a>Verwalten des Zugriffs
+Eigenschaft | Erforderlich | BESCHREIBUNG
+---|---|---
+name | *Ja* | Der Name der Endpunktdefinition. Azure macht diesen Namen über seine API unter „/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CustomProviders/<br>resourceProviders/{resourceProviderName}/{endpointDefinitionName}“ verfügbar.
+routingType | *Nein* | Bestimmt den Typ des Vertrags mit **Endpunkt**. Falls nicht angegeben, wird standardmäßig „Proxy“ verwendet.
+endpoint | *Ja* | Der Endpunkt, an den die Anforderungen geleitet werden. Hiermit werden die Antwort sowie alle Nebenwirkungen der Anforderung verarbeitet.
 
-Verwenden Sie die [rollenbasierte Zugriffssteuerung](../role-based-access-control/overview.md) zum Verwalten des Zugriffs auf Ihren Ressourcenanbieter. Sie können Benutzern integrierte [Rollen](../role-based-access-control/built-in-roles.md) wie „Besitzer“, „Mitwirkender“ oder „Leser“ zuweisen. Oder Sie können [benutzerdefinierte Rollen](../role-based-access-control/custom-roles.md) definieren, die für die Vorgänge in Ihrem Ressourcenanbieter spezifisch sind.
+### <a name="building-custom-resources"></a>Erstellen benutzerdefinierter Ressourcen
+
+**resourceTypes** beschreibt neue benutzerdefinierte Ressourcen, die Azure hinzugefügt werden. Diese machen einfache RESTful CRUD-Methoden verfügbar. Erfahren Sie mehr über das [Erstellen benutzerdefinierter Ressourcen](./custom-providers-resources-endpoint-how-to.md).
+
+Beispiel eines benutzerdefinierten Ressourcenanbieters mit **resourceTypes**:
+
+```JSON
+{
+  "properties": {
+    "resourceTypes": [
+      {
+        "name": "myCustomResources",
+        "routingType": "Proxy",
+        "endpoint": "https://{endpointURL}/"
+      }
+    ]
+  },
+  "location": "eastus"
+}
+```
+
+APIs, die Azure für das obige Beispiel hinzugefügt wurden:
+
+HttpMethod | Beispiel-URI | BESCHREIBUNG
+---|---|---
+PUT | /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/<br>providers/Microsoft.CustomProviders/resourceProviders/{resourceProviderName}/<br>myCustomResources/{customResourceName}?api-version=2018-09-01-preview | Der Azure-REST-API-Aufruf zum Erstellen einer neuen Ressource.
+DELETE | /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/<br>providers/Microsoft.CustomProviders/resourceProviders/{resourceProviderName}/<br>myCustomResources/{customResourceName}?api-version=2018-09-01-preview | Der Azure-REST-API-Aufruf zum Löschen einer vorhandenen Ressource.
+GET | /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/<br>providers/Microsoft.CustomProviders/resourceProviders/{resourceProviderName}/<br>myCustomResources/{customResourceName}?api-version=2018-09-01-preview | Der Azure-REST-API-Aufruf zum Abrufen einer vorhandenen Ressource.
+GET | /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/<br>providers/Microsoft.CustomProviders/resourceProviders/{resourceProviderName}/<br>myCustomResources?api-version=2018-09-01-preview | Der Azure-REST-API-Aufruf zum Abrufen der Liste vorhandener Ressourcen.
+
+### <a name="building-custom-actions"></a>Erstellen benutzerdefinierter Aktionen
+
+**actions** beschreibt neue Aktionen, die Azure hinzugefügt werden. Diese können zusätzlich zum Ressourcenanbieter verfügbar gemacht oder unter **resourceType** geschachtelt werden. Erfahren Sie mehr über das [Erstellen benutzerdefinierter Aktionen](./custom-providers-action-endpoint-how-to.md).
+
+Beispiel eines benutzerdefinierten Ressourcenanbieters mit **actions**:
+
+```JSON
+{
+  "properties": {
+    "actions": [
+      {
+        "name": "myCustomAction",
+        "routingType": "Proxy",
+        "endpoint": "https://{endpointURL}/"
+      }
+    ]
+  },
+  "location": "eastus"
+}
+```
+
+APIs, die Azure für das obige Beispiel hinzugefügt wurden:
+
+HttpMethod | Beispiel-URI | BESCHREIBUNG
+---|---|---
+POST | /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/<br>providers/Microsoft.CustomProviders/resourceProviders/{resourceProviderName}/<br>myCustomAction?api-version=2018-09-01-preview | Der Azure-REST-API-Aufruf zum Aktivieren der Aktion.
+
+## <a name="looking-for-help"></a>Wenn Hilfe benötigt wird
+
+Wenn Sie Fragen zur Entwicklung benutzerdefinierter Azure-Ressourcenanbieter haben, stellen Sie sie auf [Stack Overflow](https://stackoverflow.com/questions/tagged/azure-custom-providers). Eine ähnliche Frage wurde möglicherweise bereits gestellt und beantwortet, weshalb Sie dies zunächst prüfen sollten, bevor Sie etwas posten. Fügen Sie das Tag ```azure-custom-providers``` hinzu, um schnell eine Antwort zu erhalten!
 
 ## <a name="next-steps"></a>Nächste Schritte
 
 In diesem Artikel haben Sie Grundlegendes über benutzerdefiniert Anbieter gelernt. Im nächsten Artikel erstellen Sie einen benutzerdefinierten Anbieter.
 
-> [!div class="nextstepaction"]
-> [Tutorial: Erstellen eines benutzerdefinierten Anbieters und Bereitstellen von benutzerdefinierten Ressourcen](create-custom-provider.md)
+- [Tutorial: Erstellen eines benutzerdefinierten Azure-Ressourcenanbieters und Bereitstellen benutzerdefinierter Ressourcen](./create-custom-provider.md)
+- [How To: Hinzufügen benutzerdefinierter Aktionen zur Azure-REST-API](./custom-providers-action-endpoint-how-to.md)
+- [How To: Hinzufügen benutzerdefinierter Ressourcen zur Azure-REST-API](./custom-providers-resources-endpoint-how-to.md)

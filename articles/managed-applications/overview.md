@@ -4,14 +4,14 @@ description: Hier werden die Begriffe für verwaltete Azure-Anwendungen beschrie
 author: tfitzmac
 ms.service: managed-applications
 ms.topic: overview
-ms.date: 05/31/2019
+ms.date: 07/12/2019
 ms.author: tomfitz
-ms.openlocfilehash: 5b6cb030c6eba5d80dfd046f1c3950609da1ed73
-ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
+ms.openlocfilehash: 97d6a229651f1c3fbcdbb79c7ae7d1c1f855882b
+ms.sourcegitcommit: b2db98f55785ff920140f117bfc01f1177c7f7e2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/04/2019
-ms.locfileid: "66479826"
+ms.lasthandoff: 07/16/2019
+ms.locfileid: "68234755"
 ---
 # <a name="azure-managed-applications-overview"></a>Übersicht über verwaltete Azure-Anwendungen
 
@@ -68,6 +68,8 @@ Der Verbraucher hat uneingeschränkten Zugriff auf die Ressourcengruppe und verw
 ### <a name="managed-resource-group"></a>Verwaltete Ressourcengruppe
 
 Diese Ressourcengruppe enthält alle Ressourcen, die von der verwalteten Anwendung benötigt werden. Hierzu zählen beispielsweise die virtuellen Computer, Speicherkonten und virtuellen Netzwerke für die Lösung. Der Verbraucher hat eingeschränkten Zugriff auf diese Ressourcengruppe, da er nicht die einzelnen Ressourcen für die verwaltete Anwendung verwaltet. Der Zugriff des Herausgebers auf diese Ressourcengruppe entspricht der Rolle, die in der Definition der verwalteten Anwendung angegeben ist. Der Herausgeber kann für diese Ressourcengruppe beispielsweise die Rolle „Besitzer“ oder „Mitwirkender" anfordern. Der Zugriff gilt entweder permanent oder ist auf einen bestimmten Zeitraum beschränkt.
+
+Beim Veröffentlichen der [verwalteten Anwendung im Marketplace](publish-marketplace-app.md) kann der Herausgeber den Verbrauchern die Möglichkeit gewähren, bestimmte Aktionen an Ressourcen in der verwalteten Ressourcengruppe vorzunehmen. Beispielsweise kann der Herausgeber angeben, dass Verbraucher virtuelle Computer neu starten können. Alle anderen Aktionen, die über Leseaktionen hinausgehen, werden weiterhin verweigert.
 
 Wenn der Verbraucher die verwaltete Anwendung löscht, wird auch die verwaltete Ressourcengruppe gelöscht.
 

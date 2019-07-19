@@ -12,16 +12,16 @@ ms.date: 04/08/2019
 ms.author: mimart
 ms.reviewer: arvinh,luleon
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0f6707c780931eac58e2a870c321385e63bd948a
-ms.sourcegitcommit: 978e1b8cac3da254f9d6309e0195c45b38c24eb5
+ms.openlocfilehash: 634c1d05847f3d4d7b7168d484cd16bf8e351b27
+ms.sourcegitcommit: 0ebc62257be0ab52f524235f8d8ef3353fdaf89e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/03/2019
-ms.locfileid: "67550465"
+ms.lasthandoff: 07/10/2019
+ms.locfileid: "67723923"
 ---
 # <a name="tutorial-configure-saml-based-single-sign-on-for-an-application-with-azure-active-directory"></a>Tutorial: Konfigurieren des SAML-basierten einmaligen Anmeldens für eine Anwendung mit Azure Active Directory
 
-In diesem Tutorial wird das [Azure-Portal](https://portal.azure.com) verwendet, um SAML-basiertes einmaliges Anmelden für eine Anwendung mit Azure Active Directory (Azure AD) zu konfigurieren. Verwenden Sie dieses Tutorial, wenn kein [anwendungsspezifisches Tutorial](../saas-apps/tutorial-list.md) verfügbar ist. 
+In diesem Tutorial wird das [Azure-Portal](https://portal.azure.com) verwendet, um SAML-basiertes einmaliges Anmelden für eine Anwendung mit Azure Active Directory (Azure AD) zu konfigurieren. Verwenden Sie dieses Tutorial, wenn kein [anwendungsspezifisches Tutorial](../saas-apps/tutorial-list.md) verfügbar ist.
 
 In diesem Tutorial verwenden Sie das Azure-Portal zu folgenden Zwecken:
 
@@ -37,12 +37,9 @@ In diesem Tutorial verwenden Sie das Azure-Portal zu folgenden Zwecken:
 ## <a name="before-you-begin"></a>Voraussetzungen
 
 1. Wenn die Anwendung Ihrem Azure AD-Mandanten nicht hinzugefügt wurde, finden Sie unter [Schnellstart: Hinzufügen einer Anwendung zum Azure AD-Mandanten](add-application-portal.md) weitere Informationen.
-
-2. Bitten Sie den Anwendungshersteller um die unter [Konfigurieren grundlegender SAML-Optionen](#configure-basic-saml-options) beschriebenen Informationen.
-
-3. Verwenden Sie zum Testen der Schritte in diesem Tutorial keine Produktionsumgebung. Wenn Sie keine solche Umgebung besitzen, können Sie eine [einmonatige Testversion anfordern](https://azure.microsoft.com/pricing/free-trial/).
-
-4. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) als Cloudanwendungsadministrator oder Anwendungsadministrator für Ihren Azure AD-Mandanten an.
+1. Bitten Sie den Anwendungshersteller um die unter [Konfigurieren grundlegender SAML-Optionen](#configure-basic-saml-options) beschriebenen Informationen.
+1. Verwenden Sie zum Testen der Schritte in diesem Tutorial keine Produktionsumgebung. Wenn Sie keine solche Umgebung besitzen, können Sie eine [einmonatige Testversion anfordern](https://azure.microsoft.com/pricing/free-trial/).
+1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) als Cloudanwendungsadministrator oder Anwendungsadministrator für Ihren Azure AD-Mandanten an.
 
 ## <a name="select-a-single-sign-on-mode"></a>Auswählen eines Modus für einmaliges Anmelden
 
@@ -50,21 +47,16 @@ Nach dem Hinzufügen einer Anwendung zum Azure AD-Mandanten können Sie einmalig
 
 So öffnen Sie die Einstellungen für einmaliges Anmelden:
 
-1. Wählen Sie im [Azure-Portal](https://portal.azure.com) im linken Navigationsbereich **Azure Active Directory** aus. 
+1. Wählen Sie im [Azure-Portal](https://portal.azure.com) im linken Navigationsbereich **Azure Active Directory** aus.
+1. Klicken Sie im eingeblendeten **Azure Active Directory**-Navigationsbereich unter **Verwalten** auf **Unternehmensanwendungen** . Eine zufällige Stichprobe von Anwendungen in Ihrem Azure AD-Mandanten wird angezeigt.
+1. Wählen Sie im Menü **Anwendungstyp** die Option **Alle Anwendungen** und dann **Übernehmen** aus.
+1. Geben Sie den Namen der Anwendung ein, für die Sie einmaliges Anmelden konfigurieren möchten. Sie können beispielsweise **GitHub-test** eingeben, um die im Schnellstart zum [Hinzufügen einer Anwendung](add-application-portal.md) hinzugefügte Anwendung zu konfigurieren.  
 
-2. Klicken Sie im eingeblendeten **Azure Active Directory**-Navigationsbereich unter **Verwalten** auf **Unternehmensanwendungen** . Eine zufällige Stichprobe von Anwendungen in Ihrem Azure AD-Mandanten wird angezeigt. 
+   ![Screenshot: Suchleiste der Anwendung](media/configure-single-sign-on-portal/azure-portal-application-search.png)
 
-3. Wählen Sie im Menü **Anwendungstyp** die Option **Alle Anwendungen** und dann **Übernehmen** aus.
-
-4. Geben Sie den Namen der Anwendung ein, für die Sie einmaliges Anmelden konfigurieren möchten. Sie können beispielsweise **GitHub-test** eingeben, um die im Schnellstart zum [Hinzufügen einer Anwendung](add-application-portal.md) hinzugefügte Anwendung zu konfigurieren.  
-
-     ![Screenshot mit der Suchleiste der Anwendung](media/configure-single-sign-on-portal/azure-portal-application-search.png)
-
-5. Wählen Sie die Anwendung, für die Sie einmaliges Anmelden konfigurieren möchten.
-
-6. Wählen Sie im Abschnitt **Verwalten** die Option **Einmaliges Anmelden** aus. 
-
-7. Wählen Sie **SAML** aus, um einmaliges Anmelden zu konfigurieren. Die Seite **Einmaliges Anmelden (SSO) mit SAML einrichten – Vorschau** wird angezeigt.
+1. Wählen Sie die Anwendung, für die Sie einmaliges Anmelden konfigurieren möchten.
+1. Wählen Sie im Abschnitt **Verwalten** die Option **Einmaliges Anmelden** aus.
+1. Wählen Sie **SAML** aus, um einmaliges Anmelden zu konfigurieren. Die Seite **Einmaliges Anmelden (SSO) mit SAML einrichten – Vorschau** wird angezeigt.
 
 ## <a name="configure-basic-saml-options"></a>Konfigurieren grundlegender SAML-Optionen
 
@@ -80,18 +72,16 @@ So konfigurieren Sie die Domäne und URLs:
     | Relayzustand | Optional | Optional | Mit dieser Option wird die Anwendung darüber informiert, wohin der Benutzer nach der Authentifizierung umgeleitet werden soll. In der Regel ist der Wert eine für die Anwendung gültige URL. Einige Anwendungen verwenden dieses Feld jedoch anders. Weitere Informationen erhalten Sie vom Anwendungshersteller.
     | Abmelde-URL | Optional | Optional | Wird verwendet, um die SAML-Abmeldeantworten an die Anwendung zurückzusenden.
 
+1. Um die grundlegenden SAML-Konfigurationsoptionen zu bearbeiten, klicken Sie rechts oben im Abschnitt **Grundlegende SAML-Konfiguration** auf das Symbol **Bearbeiten** (Stift).
 
-2. Um die grundlegenden SAML-Konfigurationsoptionen zu bearbeiten, klicken Sie rechts oben im Abschnitt **Grundlegende SAML-Konfiguration** auf das Symbol **Bearbeiten** (Stift).
+     ![Bearbeiten der SAML-Basiskonfigurationsoptionen](media/configure-single-sign-on-portal/basic-saml-configuration-edit-icon.png)
 
-     ![Konfigurieren von Zertifikaten](media/configure-single-sign-on-portal/basic-saml-configuration-edit-icon.png)
+1. Geben Sie in die entsprechenden Felder auf der Seite die Informationen ein, die der Anwendungsanbieter in Schritt 1 bereitgestellt hat.
+1. Klicken Sie am oberen Rand der Seite auf **Speichern**.
 
-3. Geben Sie in die entsprechenden Felder auf der Seite die Informationen ein, die der Anwendungsanbieter in Schritt 1 bereitgestellt hat.
+## <a name="configure-user-attributes-and-claims"></a>Konfigurieren von Benutzerattributen und Ansprüchen
 
-4. Klicken Sie am oberen Rand der Seite auf **Speichern**.
-
-## <a name="configure-user-attributes-and-claims"></a>Konfigurieren von Benutzerattributen und Ansprüchen 
-
-Sie können steuern, welche Informationen Azure AD bei der Anmeldung eines Benutzers im SAML-Token an die Anwendung sendet. Sie steuern diese Informationen, indem Sie Benutzerattribute konfigurieren. Sie können beispielsweise Azure AD so konfigurieren, dass es den Namen, die E-Mail-Adresse und die Mitarbeiter-ID des Benutzers an die Anwendung sendet, wenn sich ein Benutzer anmeldet. 
+Sie können steuern, welche Informationen Azure AD bei der Anmeldung eines Benutzers im SAML-Token an die Anwendung sendet. Sie steuern diese Informationen, indem Sie Benutzerattribute konfigurieren. Sie können beispielsweise Azure AD so konfigurieren, dass es den Namen, die E-Mail-Adresse und die Mitarbeiter-ID des Benutzers an die Anwendung sendet, wenn sich ein Benutzer anmeldet.
 
 Diese Attribute können erforderlich oder optional sein, damit einmaliges Anmelden ordnungsgemäß funktioniert. Weitere Informationen finden Sie im [anwendungsspezifischen Tutorial](../saas-apps/tutorial-list.md), oder wenden Sie sich an den Anwendungshersteller, um diese Informationen zu erhalten.
 
@@ -99,71 +89,64 @@ Diese Attribute können erforderlich oder optional sein, damit einmaliges Anmeld
 
    Der **Wert für Namensbezeichner** wird auf den Standardwert *benutzer.prinzipalname* festgelegt. Mit der Benutzer-ID wird jeder Benutzer in der Anwendung eindeutig identifiziert. Beispiel: Ist die E-Mail-Adresse sowohl der Benutzername als auch der eindeutige Bezeichner, legen Sie den Wert auf *user.mail* fest.
 
-2. Um den **Wert für Namensbezeichner** zu ändern, klicken Sie für das Feld **Wert für Namensbezeichner** auf das Symbol **Bearbeiten** (Stift). Nehmen Sie bei Bedarf die entsprechenden Änderungen am Format und an der Quelle des Bezeichners vor. Speichern Sie die Änderungen, wenn Sie fertig sind. Weitere Informationen zum Anpassen von Ansprüchen finden Sie im Artikel [Anpassen ausgestellter Ansprüche im SAML-Token für Unternehmensanwendungen](../develop/active-directory-saml-claims-customization.md).
+1. Um den **Wert für Namensbezeichner** zu ändern, klicken Sie für das Feld **Wert für Namensbezeichner** auf das Symbol **Bearbeiten** (Stift). Nehmen Sie bei Bedarf die entsprechenden Änderungen am Format und an der Quelle des Bezeichners vor. Speichern Sie die Änderungen, wenn Sie fertig sind. Weitere Informationen zum Anpassen von Ansprüchen finden Sie im Artikel [Anpassen ausgestellter Ansprüche im SAML-Token für Unternehmensanwendungen](../develop/active-directory-saml-claims-customization.md).
+1. Klicken Sie zum Hinzufügen eines Anspruchs oben auf der Seite auf **Neuen Anspruch hinzufügen**. Geben Sie den **Namen** ein, und wählen Sie die entsprechende Quelle. Wenn Sie die Quelle **Attribut** auswählen, müssen Sie das **Quellattribut** auswählen, das Sie verwenden möchten. Wenn Sie die Quelle **Übersetzung** auswählen, müssen Sie die gewünschte **Transformation** und **Parameter 1** auswählen.
+1. Wählen Sie **Speichern** aus. Der neue Anspruch wird in der Tabelle angezeigt.
 
-3. Klicken Sie zum Hinzufügen eines Anspruchs oben auf der Seite auf **Neuen Anspruch hinzufügen**. Geben Sie den **Namen** ein, und wählen Sie die entsprechende Quelle. Wenn Sie die Quelle **Attribut** auswählen, müssen Sie das **Quellattribut** auswählen, das Sie verwenden möchten. Wenn Sie die Quelle **Übersetzung** auswählen, müssen Sie die gewünschte **Transformation** und **Parameter 1** auswählen.
-
-4. Wählen Sie **Speichern** aus. Der neue Anspruch wird in der Tabelle angezeigt.
- 
 ## <a name="generate-a-saml-signing-certificate"></a>Generieren eines SAML-Signaturzertifikats
 
-Azure AD verwendet ein Zertifikat zum Signieren der SAML-Token, die an die Anwendung gesendet werden. 
+Azure AD verwendet ein Zertifikat zum Signieren der SAML-Token, die an die Anwendung gesendet werden.
 
 1. Um ein neues Zertifikat zu generieren, klicken Sie rechts oben im Abschnitt **SAML-Signaturzertifikat** auf das Symbol **Bearbeiten** (Stift).
-
-2. Wählen Sie im Abschnitt **SAML-Signaturzertifikat** die Option **Neues Zertifikat** aus.
-
-3. Legen Sie in der angezeigten neuen Zertifikatzeile das **Ablaufdatum** fest. Weitere Informationen zu verfügbaren Konfigurationsoptionen finden Sie im Artikel [Erweiterte Optionen für die Zertifikatsignatur](certificate-signing-options.md).
-
-4. Klicken Sie oben im Abschnitt **SAML-Signaturzertifikat** auf **Speichern**. 
+1. Wählen Sie im Abschnitt **SAML-Signaturzertifikat** die Option **Neues Zertifikat** aus.
+1. Legen Sie in der angezeigten neuen Zertifikatzeile das **Ablaufdatum** fest. Weitere Informationen zu verfügbaren Konfigurationsoptionen finden Sie im Artikel [Erweiterte Optionen für die Zertifikatsignatur](certificate-signing-options.md).
+1. Klicken Sie oben im Abschnitt **SAML-Signaturzertifikat** auf **Speichern**.
 
 ## <a name="assign-users-to-the-application"></a>Zuweisen von Benutzern zur Anwendung
 
 Es empfiehlt sich, einmaliges Anmelden für mehrere Benutzer oder Gruppen zu testen, bevor Sie die Anwendung in Ihrer Organisation einführen.
 
 > [!NOTE]
->
 > Diese Schritte führen Sie im Portal im Konfigurationsabschnitt **Benutzer und Gruppen** aus. Wenn Sie fertig sind, müssen Sie zurück zum Abschnitt **Einmaliges Anmelden** navigieren, um das Tutorial abzuschließen.
 
 So weisen Sie einen Benutzer oder eine Gruppe zur Anwendung zu:
 
 1. Öffnen Sie die Anwendung im Portal, sofern sie noch nicht geöffnet ist.
-2. Klicken Sie im linken Navigationsbereich für die Anwendung auf **Benutzer und Gruppen**.
-3. Klicken Sie auf **Benutzer hinzufügen**.
-4. Klicken Sie im Abschnitt **Zuweisung hinzufügen** auf **Benutzer und Gruppen**.
-5. Um einen bestimmten Benutzer zu suchen, geben Sie den Benutzernamen in das Feld **Mitglied auswählen oder externen Benutzer einladen** ein. Wählen Sie dann das Profilbild oder Logo des Benutzers aus, und klicken Sie auf **Auswählen**. 
-6. Wählen Sie im Abschnitt **Zuweisung hinzufügen** auf **Zuweisen**. Anschließend wird der ausgewählte Benutzer in der Liste **Benutzer und Gruppen** angezeigt.
+1. Klicken Sie im linken Navigationsbereich für die Anwendung auf **Benutzer und Gruppen**.
+1. Klicken Sie auf **Benutzer hinzufügen**.
+1. Klicken Sie im Abschnitt **Zuweisung hinzufügen** auf **Benutzer und Gruppen**.
+1. Um einen bestimmten Benutzer zu suchen, geben Sie den Benutzernamen in das Feld **Mitglied auswählen oder externen Benutzer einladen** ein. Wählen Sie dann das Profilbild oder Logo des Benutzers aus, und klicken Sie auf **Auswählen**.
+1. Wählen Sie im Abschnitt **Zuweisung hinzufügen** auf **Zuweisen**. Anschließend wird der ausgewählte Benutzer in der Liste **Benutzer und Gruppen** angezeigt.
 
 ## <a name="set-up-the-application-to-use-azure-ad"></a>Einrichten der Anwendung für die Verwendung von Azure AD
 
 Sie sind fast fertig.  Im letzten Schritt müssen Sie die Anwendung so einrichten, dass Azure AD als SAML-Identitätsanbieter verwendet wird. 
 
-1. Scrollen Sie nach unten zum Abschnitt **\<applicationName> einrichten**. In diesem Tutorial heißt dieser Abschnitt **GitHub-test einrichten**. 
-2. Kopieren Sie den Wert aus jeder Zeile dieses Abschnitts. Fügen Sie die einzelnen Werte in der entsprechenden Zeile im Abschnitt **Grundlegende SAML-Konfiguration** ein. Kopieren Sie beispielsweise den Wert **Anmelde-URL** aus dem Abschnitt **GitHub-test einrichten**, und fügen Sie ihn in das Feld **Anmelde-URL** im Abschnitt **Grundlegende SAML-Konfiguration** ein usw.
-3. Wenn Sie alle Werte in die entsprechenden Felder eingefügt haben, klicken Sie auf **Speichern**.
+1. Scrollen Sie nach unten zum Abschnitt **\<applicationName> einrichten**. In diesem Tutorial heißt dieser Abschnitt **GitHub-test einrichten**.
+1. Kopieren Sie den Wert aus jeder Zeile dieses Abschnitts. Fügen Sie die einzelnen Werte in der entsprechenden Zeile im Abschnitt **Grundlegende SAML-Konfiguration** ein. Kopieren Sie beispielsweise den Wert **Anmelde-URL** aus dem Abschnitt **GitHub-test einrichten**, und fügen Sie ihn in das Feld **Anmelde-URL** im Abschnitt **Grundlegende SAML-Konfiguration** ein usw.
+1. Wenn Sie alle Werte in die entsprechenden Felder eingefügt haben, klicken Sie auf **Speichern**.
 
 ## <a name="test-single-sign-on"></a>Testen des einmaligen Anmeldens
 
 Sie können Ihre Einstellungen jetzt testen.  
 
-1. Öffnen Sie die SSO-Einstellungen für Ihre Anwendung. 
-2. Scrollen Sie zum Abschnitt **Einmaliges Anmelden mit \<applicationName> überprüfen**. In diesem Tutorial heißt dieser Abschnitt **GitHub-test einrichten**.
-3. Klicken Sie auf **Test**. Die Testoptionen werden angezeigt.
-4. Klicken Sie auf **Als aktueller Benutzer anmelden**. Dadurch können Sie zunächst überprüfen, ob einmaliges Anmelden für Sie als Administrator funktioniert.
+1. Öffnen Sie die SSO-Einstellungen für Ihre Anwendung.
+1. Scrollen Sie zum Abschnitt **Einmaliges Anmelden mit \<applicationName> überprüfen**. In diesem Tutorial heißt dieser Abschnitt **GitHub-test einrichten**.
+1. Klicken Sie auf **Test**. Die Testoptionen werden angezeigt.
+1. Klicken Sie auf **Als aktueller Benutzer anmelden**. Dadurch können Sie zunächst überprüfen, ob einmaliges Anmelden für Sie als Administrator funktioniert.
 
 Wenn ein Fehler vorliegt, wird eine Fehlermeldung angezeigt. Führen Sie die folgenden Schritte aus:
 
 1. Kopieren Sie die Details, und fügen Sie sie ins Feld **Wie äußert sich der Fehler?** ein.
 
-    ![Leitfaden zur Problemlösung abrufen](media/configure-single-sign-on-portal/error-guidance.png)
+    ![Verwenden des Felds „Wie äußert sich der Fehler?“, um Hilfe zur Lösung zu erhalten](media/configure-single-sign-on-portal/error-guidance.png)
 
-2. Klicken Sie auf **Leitfaden zur Problemlösung abrufen**. Die Grundursache und Informationen zur Problemlösung werden angezeigt.  In diesem Beispiel wurde der Benutzer nicht der Anwendung zugewiesen.
-
-3. Lesen Sie den Leitfaden zur Problemlösung, und beheben Sie nach Möglichkeit das Problem.
-
-4. Führen Sie den Test erneut aus, bis der Vorgang erfolgreich abgeschlossen wird.
+1. Klicken Sie auf **Leitfaden zur Problemlösung abrufen**. Die Grundursache und Informationen zur Problemlösung werden angezeigt.  In diesem Beispiel wurde der Benutzer nicht der Anwendung zugewiesen.
+1. Lesen Sie den Leitfaden zur Problemlösung, und beheben Sie nach Möglichkeit das Problem.
+1. Führen Sie den Test erneut aus, bis der Vorgang erfolgreich abgeschlossen wird.
 
 ## <a name="next-steps"></a>Nächste Schritte
+
 In diesem Tutorial haben Sie die Einstellungen für einmaliges Anmelden für eine Anwendung konfiguriert. Nach Abschluss der Konfiguration haben Sie der Anwendung einen Benutzer zugewiesen und die Anwendung zur Verwendung des SAML-basierten einmaligen Anmeldens konfiguriert. Nach Ausführung dieser Aufgaben haben Sie überprüft, ob SAML-basiertes einmaliges Anmelden ordnungsgemäß funktioniert.
 
 Sie haben folgende Schritte ausgeführt:
@@ -180,5 +163,3 @@ Verwenden Sie die automatische Benutzerbereitstellung, wenn Sie die Anwendung f�
 
 > [!div class="nextstepaction"]
 > [Verwalten der Benutzerkontobereitstellung für Unternehmens-Apps im Azure-Portal](configure-automatic-user-provisioning-portal.md)
-
-

@@ -9,12 +9,12 @@ ms.subservice: text-analytics
 ms.topic: sample
 ms.date: 02/26/2019
 ms.author: aahi
-ms.openlocfilehash: d4269a99a8e535692e4897630a7edd9b27347d41
-ms.sourcegitcommit: 82efacfaffbb051ab6dc73d9fe78c74f96f549c2
+ms.openlocfilehash: e17b68dfd63952d0c8c81415b090b047c5808e2e
+ms.sourcegitcommit: 66237bcd9b08359a6cce8d671f846b0c93ee6a82
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/20/2019
-ms.locfileid: "67304032"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67797803"
 ---
 # <a name="example-how-to-detect-sentiment-with-text-analytics"></a>Beispiel: Ermitteln von Standpunkten mit der Textanalyse
 
@@ -103,7 +103,7 @@ Die Ausgabe wird umgehend zurückgegeben. Sie können die Ergebnisse an eine Anw
 
 Das folgende Beispiel zeigt die Antwort für die Dokumentsammlung in diesem Artikel:
 
-```
+```json
 {
     "documents": [
         {
@@ -130,6 +130,133 @@ Das folgende Beispiel zeigt die Antwort für die Dokumentsammlung in diesem Arti
     "errors": []
 }
 ```
+
+## <a name="sentiment-analysis-v3-public-preview"></a>Öffentliche Vorschau der Standpunktanalyse V3
+
+Die [nächste Version der Standpunktanalyse](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-0-preview/operations/56f30ceeeda5650db055a3c9) ist jetzt in der öffentlichen Vorschau verfügbar und bietet erhebliche Verbesserungen bei Genauigkeit und Detailgrad der Textkategorisierung und -bewertung der API. 
+
+> [!NOTE]
+> * Anforderungsformat und [Datenlimits](../overview.md#data-limits) der Standpunktanalyse V3 haben sich gegenüber der vorherigen Version nicht geändert.
+> * Zurzeit gilt Folgendes für die Standpunktanalyse V3: 
+>    * Unterstützt derzeit nur Englisch.  
+>    * Ist in folgenden Regionen verfügbar: `Central US`, `Central Canada` und `East Asia`. 
+
+|Feature |BESCHREIBUNG  |
+|---------|---------|
+|Höhere Genauigkeit     | Deutliche Verbesserung bei der Erkennung positiver, neutraler, negativer und gemischter Stimmungen in Textdokumenten gegenüber früheren Versionen.           |
+|Stimmungsbewertung auf Dokument- und Satzebene     | Erkennen der Stimmung eines Dokuments und der darin enthaltenen Sätze. Wenn das Dokument mehrere Sätze enthält, wird jedem einzelnen Satz eine Stimmungsbewertung zugeordnet.         |
+|Stimmungskategorie und -bewertung     | Die API gibt neben der Stimmungsbewertung jetzt auch Stimmungskategorien (`positive`, `negative`, `neutral` und `mixed`) für einen Text zurück.        |
+| Verbesserte Ausgabe | Die Stimmungsanalyse gibt jetzt Informationen für ein vollständiges Textdokument und für die darin enthaltenen einzelnen Sätze zurück. |
+
+### <a name="sentiment-labeling"></a>Bezeichnung von Stimmungen
+
+Die Standpunktanalyse V3 kann Bewertungen und Bezeichnungen (`positive`, `negative` und `neutral`) auf Satz- und Dokumentebene zurückgeben. Auf Dokumentebene kann auch die Stimmungsbezeichnung `mixed` (keine Bewertung) zurückgegeben werden. Die Stimmung eines Dokuments wird durch Zusammenfassen der Bewertungen der einzelnen Sätze bestimmt.
+
+| Stimmung von Sätzen                                                        | Zurückgegebene Dokumentbezeichnung |
+|---------------------------------------------------------------------------|----------------|
+| Mindestens ein positiver Satz, alle anderen Sätze sind neutrale. | `positive`     |
+| Mindestens ein negativer Satz, alle anderen Sätze sind neutrale.  | `negative`     |
+| Mindestens ein negativer und mindestens ein positiver Satz.         | `mixed`        |
+| Alle Sätze sind neutral.                                                 | `neutral`      |
+
+### <a name="sentiment-analysis-v3-example-request"></a>Beispielanforderung der Standpunktanalyse V3
+
+Der folgende JSON-Code ist ein Beispiel für eine Anforderung, die an die neue Version der Standpunktanalyse gesendet wurde. Beachten Sie, dass die Formatierung der Anforderung mit der vorherigen Version identisch ist:
+
+```json
+{
+  "documents": [
+    {
+      "language": "en",
+      "id": "1",
+      "text": "Hello world. This is some input text that I love."
+    },
+    {
+      "language": "en",
+      "id": "2",
+      "text": "It's incredibly sunny outside! I'm so happy."
+    }
+  ]
+}
+```
+
+### <a name="sentiment-analysis-v3-example-response"></a>Beispielantwort der Standpunktanalyse V3
+
+Während das Anforderungsformat das gleiche ist wie in der vorherigen Version, hat sich das Antwortformat geändert. Der folgende JSON-Code ist eine Beispielantwort der neuen API-Version:
+
+```json
+{
+    "documents": [
+        {
+            "id": "1",
+            "sentiment": "positive",
+            "documentScores": {
+                "positive": 0.98570585250854492,
+                "neutral": 0.0001625834556762,
+                "negative": 0.0141316400840878
+            },
+            "sentences": [
+                {
+                    "sentiment": "neutral",
+                    "sentenceScores": {
+                        "positive": 0.0785155147314072,
+                        "neutral": 0.89702343940734863,
+                        "negative": 0.0244610067456961
+                    },
+                    "offset": 0,
+                    "length": 12
+                },
+                {
+                    "sentiment": "positive",
+                    "sentenceScores": {
+                        "positive": 0.98570585250854492,
+                        "neutral": 0.0001625834556762,
+                        "negative": 0.0141316400840878
+                    },
+                    "offset": 13,
+                    "length": 36
+                }
+            ]
+        },
+        {
+            "id": "2",
+            "sentiment": "positive",
+            "documentScores": {
+                "positive": 0.89198976755142212,
+                "neutral": 0.103382371366024,
+                "negative": 0.0046278294175863
+            },
+            "sentences": [
+                {
+                    "sentiment": "positive",
+                    "sentenceScores": {
+                        "positive": 0.78401315212249756,
+                        "neutral": 0.2067587077617645,
+                        "negative": 0.0092281140387058
+                    },
+                    "offset": 0,
+                    "length": 30
+                },
+                {
+                    "sentiment": "positive",
+                    "sentenceScores": {
+                        "positive": 0.99996638298034668,
+                        "neutral": 0.0000060341349126,
+                        "negative": 0.0000275444017461
+                    },
+                    "offset": 31,
+                    "length": 13
+                }
+            ]
+        }
+    ],
+    "errors": []
+}
+```
+
+### <a name="example-c-code"></a>C#-Beispielcode
+
+Eine C#-Beispielanwendung, die diese Version der Standpunktanalyse aufruft, finden Sie auf [GitHub](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/tree/master/dotnet/Language/SentimentV3.cs).
 
 ## <a name="summary"></a>Zusammenfassung
 
