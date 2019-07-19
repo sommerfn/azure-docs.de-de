@@ -16,12 +16,12 @@ ms.author: ryanwi
 ms.reviewer: saeeda, hirsin, jmprieur, sureshja, jesakowi, lenalepa, kkrishna, negoe
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1ccac719c78ce2844a8dd37a80445e11baa4a488
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 22f3e4cde892a70ec331523524508a50008a4073
+ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65962882"
+ms.lasthandoff: 07/01/2019
+ms.locfileid: "67483004"
 ---
 # <a name="why-update-to-microsoft-identity-platform-v20"></a>Gründe für eine Aktualisierung auf die Microsoft Identity Platform (v2.0)
 
@@ -46,7 +46,7 @@ Für den Microsoft Identity Platform-Endpunkt können Sie die Microsoft Authenti
 
 Für Apps, für die der Azure AD v1.0-Endpunkt verwendet wird, müssen vorher die erforderlichen OAuth 2.0-Berechtigungen angegeben werden, z.B.:
 
-![Benutzeroberfläche für die Registrierung von Berechtigungen](./media/azure-ad-endpoint-comparison/app_reg_permissions.png)
+![Beispiel der Registrierungsbenutzeroberfläche für Berechtigungen](./media/azure-ad-endpoint-comparison/app_reg_permissions.png)
 
 Die Berechtigungen, die direkt in der Anwendungsregistrierung festgelegt werden, sind **statisch**. Statische Berechtigungen der Anwendung werden im Azure-Portal definiert und sorgen dafür, dass der Code klar und einfach ist, aber für Entwickler kann dies ggf. zu Problemen führen:
 

@@ -3,7 +3,7 @@ title: Binden mit sicherem LDAP (LDAPS) an eine über Azure AD Domain Services v
 description: Binden an eine über Azure AD Domain Services verwaltete Domäne mithilfe von sicherem LDAP (LDAPS)
 services: active-directory-ds
 documentationcenter: ''
-author: MikeStephens-MS
+author: iainfoulds
 manager: daveba
 editor: curtand
 ms.assetid: 6871374a-0300-4275-9a45-a39a52c65ae4
@@ -13,14 +13,14 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 05/20/2019
-ms.author: mstephen
-ms.openlocfilehash: 47c9553b4191fe6dbae8d92d75dfae83f191a063
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.date: 06/28/2019
+ms.author: iainfou
+ms.openlocfilehash: df0b3d27eec478280a33be831a2431eccdf05a74
+ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66234853"
+ms.lasthandoff: 07/01/2019
+ms.locfileid: "67483384"
 ---
 # <a name="bind-to-an-azure-ad-domain-services-managed-domain-using-secure-ldap-ldaps"></a>Binden an eine über Azure AD Domain Services verwaltete Domäne mithilfe von sicherem LDAP (LDAPS)
 
@@ -35,6 +35,11 @@ Sie können das Tool „LDP.exe“ verwenden, das im Paket „Remoteserver-Verwa
 
 Binden Sie im nächsten Schritt an die verwaltete Domäne. Klicken Sie auf **Verbindung**, und klicken Sie dann im Menü auf **Binden**. Geben Sie die Anmeldeinformationen eines Benutzerkontos an, das zur Gruppe „AAD DC-Administratoren“ gehört.
 
+> [!IMPORTANT]
+> Benutzer (und Dienstkonten) können keine einfachen LDAP-Bindungen vornehmen, wenn Sie die Synchronisierung von NTLM-Kennworthashes für Ihre Azure AD Domain Services-Instanz deaktiviert haben.  Weitere Informationen zum Deaktivieren der Synchronisierung von NTLM-Kennworthashes finden Sie unter [Schützen Ihrer verwalteten Azure AD Domain Services-Domäne](secure-your-domain.md).
+>
+>
+
 Wählen Sie **Ansicht** aus, und wählen Sie dann im Menü **Baum** aus. Lassen Sie das Basis-DN-Feld leer, und klicken Sie auf „OK“. Navigieren Sie zu dem Container, den Sie durchsuchen möchten, klicken Sie mit der rechten Maustaste auf den Container, und wählen Sie „Suchen“ aus.
 
 > [!TIP]
@@ -43,7 +48,7 @@ Wählen Sie **Ansicht** aus, und wählen Sie dann im Menü **Baum** aus. Lassen 
 >
 >
 
-Weitere Informationen: [LDAP-Abfragegrundlagen](https://technet.microsoft.com/library/aa996205.aspx)
+Weitere Informationen: [LDAP-Abfragegrundlagen](https://docs.microsoft.com/windows/desktop/ad/creating-a-query-filter)
 
 
 ## <a name="task-6-lock-down-secure-ldap-access-to-your-managed-domain-over-the-internet"></a>Aufgabe 6: Sperren des sicheren LDAP-Zugriffs auf Ihre verwaltete Domäne über das Internet
@@ -66,7 +71,7 @@ Die Beispiel-NSG in der folgenden Tabelle sperrt den sicheren LDAP-Zugriff über
 ## <a name="related-content"></a>Verwandte Inhalte
 * [Azure AD-Domänendienste – Leitfaden zu den ersten Schritten](create-instance.md)
 * [Verwalten einer Azure AD Domain Services-Domäne](manage-domain.md)
-* [LDAP-Abfragegrundlagen](https://technet.microsoft.com/library/aa996205.aspx)
+* [LDAP-Abfragegrundlagen](https://docs.microsoft.com/windows/desktop/ad/creating-a-query-filter)
 * [Verwalten von Gruppenrichtlinien für Azure AD Domain Services](manage-group-policy.md)
 * [Netzwerksicherheitsgruppen](../virtual-network/security-overview.md)
 * [Erstellen einer Netzwerksicherheitsgruppe](../virtual-network/tutorial-filter-network-traffic.md)

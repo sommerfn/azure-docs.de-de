@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 05/02/2019
 ms.author: wolfma
 ms.custom: seodec18
-ms.openlocfilehash: d8330ff663a7adc2f1cae3ed6bdf1cec2fa972c5
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: ae075dbc922932a4eaffd9126560c159d33459d0
+ms.sourcegitcommit: c63e5031aed4992d5adf45639addcef07c166224
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66808453"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67466965"
 ---
 # <a name="ship-an-application"></a>Ausliefern einer Anwendung
 
@@ -46,6 +46,9 @@ Die erforderlichen Speech SDK-Dateien können im gleichen Verzeichnis wie die An
 
 >[!NOTE]
 > Ab Release 1.3.0 ist die Datei `Microsoft.CognitiveServices.Speech.csharp.bindings.dll` (im Lieferumfang von früheren Releases enthalten) nicht mehr erforderlich. Die Funktion ist jetzt in das Core-SDK integriert.
+
+>[!NOTE]
+> Stellen Sie für das Windows Forms App-C#-Projekt (.NET Framework) sicher, dass die Bibliotheken in den Bereitstellungseinstellungen Ihres Projekts enthalten sind. Sie können dies unter `Properties -> Publish Section` überprüfen. Klicken Sie auf die `Application Files`-Schaltfläche, und suchen Sie die entsprechenden Bibliotheken in der nach unten gescrollten Liste. Stellen Sie sicher, dass der Wert auf `Included` festgelegt ist. Visual Studio wird die Datei enthalten, wenn das Projekt veröffentlicht/bereitgestellt wird.
 
 ## <a name="linux"></a>Linux
 

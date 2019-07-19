@@ -1,5 +1,5 @@
 ---
-title: Medienobjekte in Media Services – Azure| Microsoft-Dokumentation
+title: Medienobjekte in Azure Media Services | Microsoft-Dokumentation
 description: In diesem Artikel wird erläutert, was Medienobjekte sind und wie sie von Azure Media Services verwendet werden.
 services: media-services
 documentationcenter: ''
@@ -9,15 +9,15 @@ editor: ''
 ms.service: media-services
 ms.workload: ''
 ms.topic: article
-ms.date: 05/11/2019
+ms.date: 07/02/2019
 ms.author: juliako
 ms.custom: seodec18
-ms.openlocfilehash: 2afcf2066238414cd08e32901ffccf2a44718b6d
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: e88863fbbc29287baaf1c3c98dbdae04539e08e5
+ms.sourcegitcommit: 5bdd50e769a4d50ccb89e135cfd38b788ade594d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65551763"
+ms.lasthandoff: 07/03/2019
+ms.locfileid: "67542590"
 ---
 # <a name="assets"></a>Objekte
 
@@ -87,9 +87,22 @@ curl -X PUT \
 
 Ein vollständiges Beispiel finden Sie unter [Erstellen einer Auftragseingabe aus einer lokalen Datei](job-input-from-local-file-how-to.md). In Media Services v3 kann die Eingabe eines Auftrags auch über HTTPS-URLs erstellt werden (siehe [Erstellen einer Auftragseingabe aus einer HTTPS-URL](job-input-from-http-how-to.md)).
 
-## <a name="filtering-ordering-paging"></a>Filterung, Sortierung, Paging
+## <a name="map-v3-asset-properties-to-v2"></a>Zuordnung der Eigenschaften des Medienobjekts in v3 zu v2
 
-Informationen finden Sie unter [Filterung, Sortierung, Paginierung von Media Services-Entitäten](entities-overview.md).
+Die folgende Tabelle zeigt, wie die Eigenschaften des [Medienobjekts](https://docs.microsoft.com/rest/api/media/assets/createorupdate#asset) in v3 den Eigenschaften in v2 zugeordnet werden.
+
+|v3-Eigenschaften|v2-Eigenschaften|
+|---|---|
+|id – (eindeutig) der vollständige Azure Resource Manager-Pfad<br/>`"id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/contoso/providers/Microsoft.Media/mediaservices/contosomedia/assets/ClimbingMountLogan"`||
+|name – (eindeutig) siehe [Benennungskonventionen](media-services-apis-overview.md#naming-conventions) ||
+|alternateId|AlternateId|
+|assetId|Id – (eindeutiger) Wert beginnt mit dem `nb:cid:UUID:`-Präfix.|
+|created|Erstellt|
+|description|NAME|
+|lastModified|LastModified|
+|storageAccountName|StorageAccountName|
+|storageEncryptionFormat| Optionen – Optionen für die Erstellung|
+|type||
 
 ## <a name="storage-side-encryption"></a>Speicherseitige Verschlüsselung
 
@@ -104,6 +117,10 @@ Zum Schutz Ihrer im Ruhezustand befindlichen Ressourcen sollten die Ressourcen d
 <sup>1</sup> Media Services unterstützt zwar die Behandlung von Inhalten in Klartext/ohne jede Form der Verschlüsselung, doch wird davon abgeraten.
 
 <sup>2</sup> In Media Services v3 wird Speicherverschlüsselung (AES-256-Verschlüsselung) nur für die Abwärtskompatibilität unterstützt, wenn Ihre Ressourcen mit Media Services v2 erstellt wurden. Dies bedeutet, dass v3 mit vorhandenen speicherverschlüsselten Ressourcen funktioniert, jedoch nicht die Erstellung neuer zulässt.
+
+## <a name="filtering-ordering-paging"></a>Filterung, Sortierung, Paging
+
+Informationen finden Sie unter [Filterung, Sortierung, Paginierung von Media Services-Entitäten](entities-overview.md).
 
 ## <a name="next-steps"></a>Nächste Schritte
 

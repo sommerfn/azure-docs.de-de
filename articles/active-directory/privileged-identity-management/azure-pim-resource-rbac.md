@@ -16,12 +16,12 @@ ms.subservice: pim
 ms.date: 04/09/2019
 ms.author: rolyon
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 74607f6a746558238ead65036d708b515d370035
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 84bd491d992ed15df288d9226b58bfe832e0692a
+ms.sourcegitcommit: f811238c0d732deb1f0892fe7a20a26c993bc4fc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60441406"
+ms.lasthandoff: 06/29/2019
+ms.locfileid: "67476500"
 ---
 # <a name="view-activity-and-audit-history-for-azure-resource-roles-in-pim"></a>Anzeigen von Aktivitäten und Überwachungsverlauf für Azure-Ressourcenrollen in PIM
 
@@ -43,11 +43,11 @@ Um zu sehen, welche Aktionen ein bestimmter Benutzer für verschiedene Ressource
 
     Daraufhin wird eine nach Datum aufgeschlüsselte Grafik mit den Aktionen des Benutzers in Azure-Ressourcen dargestellt. Außerdem sind die letzten Rollenaktivierungen im selben Zeitraum zu sehen.
 
-    ![Benutzerdetails](media/azure-pim-resource-rbac/rbac-user-details.png)
+    ![Benutzerdetails mit Zusammenfassung zur Ressourcenaktivität und Rollenaktivierungen](media/azure-pim-resource-rbac/rbac-user-details.png)
 
 1. Klicken Sie auf eine bestimmte Rollenaktivierung, um Details und die entsprechende Azure-Ressourcenaktivität anzuzeigen, die ausgeführt wurde, während der Benutzer aktiv war.
 
-    ![Rollenaktivierung auswählen](media/azure-pim-resource-rbac/rbac-user-resource-activity.png)
+    ![Rollenaktivierung ausgewählt und Aktivitätsdetails nach Datum angezeigt](media/azure-pim-resource-rbac/rbac-user-resource-activity.png)
 
 ## <a name="export-role-assignments-with-children"></a>Exportieren von Rollenzuweisungen mit untergeordneten Elementen
 
@@ -63,11 +63,11 @@ Angenommen, Sie müssen Prüfern aus Konformitätsgründen eine vollständige Li
 
 1. Klicken Sie auf **Exportieren**, um den Bereich „Mitgliedschaft exportieren“ zu öffnen.
 
-    ![Bereich „Mitgliedschaft exportieren“](media/azure-pim-resource-rbac/export-membership.png)
+    ![Bereich „Mitgliedschaft exportieren“ zum Exportieren aller Mitglieder](media/azure-pim-resource-rbac/export-membership.png)
 
 1. Klicken Sie auf **Export all members** (Alle Mitglieder exportieren), um alle Rollenzuweisungen in eine CSV-Datei zu exportieren.
 
-    ![Exportieren in eine CSV-Datei](media/azure-pim-resource-rbac/export-csv.png)
+    ![Exportierte Rollenzuweisungen in CSV-Datei wie in Excel angezeigt](media/azure-pim-resource-rbac/export-csv.png)
 
 ## <a name="view-resource-audit-history"></a>Anzeigen des Ressourcenüberwachungsverlaufs
 
@@ -83,15 +83,15 @@ Die Ressourcenüberwachung bietet einen Überblick über alle Rollenaktivitäten
 
 1. Filtern Sie den Verlauf nach einem vordefinierten Datum oder nach einem benutzerdefinierten Bereich.
 
-    ![Filtern der Ressourcenüberwachung](media/azure-pim-resource-rbac/rbac-resource-audit.png)
+    ![Ressourcenüberwachungsliste mit Filtern](media/azure-pim-resource-rbac/rbac-resource-audit.png)
 
 1. Wählen Sie unter **Überwachungstyp** die Option **Aktivieren** (zugewiesen und aktiviert) aus.
 
-    ![Aktivitätsdetails](media/azure-pim-resource-rbac/rbac-audit-activity.png)
+    ![Nach Überwachungstyp „Aktivieren“ gefilterte Ressourcenüberwachungsliste](media/azure-pim-resource-rbac/rbac-audit-activity.png)
 
 1. Klicken Sie unter **Aktion** für einen Benutzer auf **(Aktivität)** , um Details zur Aktivität des Benutzers in Azure-Ressourcen anzuzeigen.
 
-    ![Details zur Benutzeraktivität](media/azure-pim-resource-rbac/rbac-audit-activity-details.png)
+    ![Benutzeraktivitätsdetails für eine bestimmte Aktion](media/azure-pim-resource-rbac/rbac-audit-activity-details.png)
 
 ## <a name="view-my-audit"></a>Anzeigen der eigenen Überwachung
 
@@ -107,7 +107,7 @@ In der eigenen Überwachung können Sie Ihre persönliche Rollenaktivität anzei
 
 1. Filtern Sie den Verlauf nach einem vordefinierten Datum oder nach einem benutzerdefinierten Bereich.
 
-    ![Persönliche Rollenaktivität](media/azure-pim-resource-rbac/my-audit-time.png)
+    ![Überwachungsliste für den aktuellen Benutzer](media/azure-pim-resource-rbac/my-audit-time.png)
 
 ## <a name="next-steps"></a>Nächste Schritte
 

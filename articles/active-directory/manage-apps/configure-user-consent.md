@@ -12,12 +12,12 @@ ms.date: 10/22/2018
 ms.author: mimart
 ms.reviewer: arvindh
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bd84b44c89c856036640757b7760d7c10bd36173
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 4951984d05e75b0271cf6592c77c54ad13678994
+ms.sourcegitcommit: f811238c0d732deb1f0892fe7a20a26c993bc4fc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65824845"
+ms.lasthandoff: 06/29/2019
+ms.locfileid: "67476552"
 ---
 # <a name="configure-the-way-end-users-consent-to-an-application-in-azure-active-directory"></a>Konfigurieren der Art der Benutzereinwilligung für eine Anwendung in Azure Active Directory
 Erfahren Sie, wie Sie die Art und Weise konfigurieren, in der Benutzer Anwendungsberechtigungen zustimmen. Sie können die Benutzerfreundlichkeit verbessern, indem Sie Administratoreinwilligung erteilen. Dieser Artikel erläutert die verschiedenen Möglichkeiten für die Konfiguration der Benutzereinwilligung. Diese Methoden gelten für alle Endbenutzer in Ihrem Azure AD-Mandanten. 
@@ -38,9 +38,10 @@ So erteilen Sie Administratoreinwilligung für eine Unternehmens-App:
 2. Klicken Sie oben im Navigationsmenü auf der linken Seite auf **Alle Dienste**. Die **Azure Active Directory-Erweiterung** wird geöffnet.
 3. Geben Sie im Filtersuchfeld **Azure Active Directory** ein, und wählen Sie das Element **Azure Active Directory** aus.
 4. Klicken Sie im Navigationsmenü auf **Unternehmensanwendungen**.
-5. Klicken Sie auf **Administratoreinwilligung erteilen**. Sie werden aufgefordert, sich anzumelden, um die Anwendung zu verwalten.
-6. Melden Sie sich mit einem Konto an, das über die Berechtigung verfügt, die Administratoreinwilligung für die Anwendung zu erteilen. 
-7. Stimmen Sie den Anwendungsberechtigungen zu.
+5. Wählen Sie die App für Zustimmung aus.
+6. Wählen Sie **Berechtigungen** aus, und klicken Sie dann auf **Administratoreinwilligung gewähren**. Sie werden aufgefordert, sich anzumelden, um die Anwendung zu verwalten.
+7. Melden Sie sich mit einem Konto an, das über die Berechtigung verfügt, die Administratoreinwilligung für die Anwendung zu erteilen. 
+8. Stimmen Sie den Anwendungsberechtigungen zu.
 
 Diese Option funktioniert nur, wenn für die Anwendung Folgendes gilt: 
 
@@ -54,8 +55,8 @@ So erteilen Sie die Administratoreinwilligung beim Registrieren einer App:
 1. Melden Sie sich als globaler Administrator beim [Azure-Portal](https://portal.azure.com) an.
 2. Navigieren Sie zum Blatt **App-Registrierungen**.
 3. Wählen Sie die Anwendung aus, für die eine Einwilligung erteilt werden soll.
-4. Wählen Sie **Erforderliche Berechtigungen** aus.
-5. Klicken Sie oben auf dem Blatt auf **Berechtigungen erteilen**.
+4. Wählen Sie **API-Berechtigungen anfordern** aus.
+5. Klicken Sie auf **Administratoreinwilligung gewähren**.
 
 
 ## <a name="grant-admin-consent-through-a-url-request"></a>Erteilen der Administratoreinwilligung über eine URL-Anforderung

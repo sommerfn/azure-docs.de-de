@@ -1,23 +1,21 @@
 ---
-title: Verwalten von Azure-Reservierungen | Microsoft-Dokumentation
+title: Verwalten von Azure-Reservierungen
 description: Erfahren Sie, wie Sie den Abonnementumfang ändern und den Zugriff auf Azure-Reservierungen verwalten können.
 ms.service: billing
-documentationcenter: ''
-author: yashesvi
+author: bandersmsft
 manager: yashesvi
-editor: ''
 ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 04/13/2019
+ms.date: 07/01/2019
 ms.author: banders
-ms.openlocfilehash: 9a5b200ffb9441b90875c7764786004ff5f1e8a1
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 89279387b3630ea654070eef671f131ec757d55f
+ms.sourcegitcommit: ac1cfe497341429cf62eb934e87f3b5f3c79948e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66127141"
+ms.lasthandoff: 07/01/2019
+ms.locfileid: "67491183"
 ---
 # <a name="manage-reservations-for-azure-resources"></a>Verwalten von Reservierungen für Azure-Ressourcen
 
@@ -54,7 +52,7 @@ So aktualisieren Sie den Bereich einer Reservierung:
 
 Wenn Sie den Bereich aus „Freigegeben“ in „Einzeln“ ändern, können Sie nur Abonnements auswählen, deren Besitzer Sie sind. Es können nur Abonnements ausgewählt werden, die sich im gleichen Abrechnungskontext wie die Reservierung befinden.
 
-Der Bereich gilt nur für das Angebot mit nutzungsbasierter Zahlung MS-AZR-0003P oder MS-AZR-0023P, für das Enterprise-Angebot MS-AZR-0017P oder MS-AZR-0148P oder für CSP-Abonnements.
+Der Bereich gilt nur für einzelne Abonnements mit nutzungsbasierter Zahlung (Angebote MS-AZR-0003P oder MS-AZR-0023P), für das Enterprise-Angebot MS-AZR-0017P oder MS-AZR-0148P oder für CSP-Abonnementtypen.
 
 ## <a name="add-or-change-users-who-can-manage-a-reservation"></a>Hinzufügen oder Ändern von Benutzern, die eine Reservierung verwalten können
 

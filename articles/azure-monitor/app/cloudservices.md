@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.workload: tbd
 ms.date: 09/05/2018
 ms.author: mbullwin
-ms.openlocfilehash: eb7cbb80be12498242363eb8141a468e08cba73a
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 64995ad0560efd06bfa0084c948527e8a01e1890
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66478332"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67443335"
 ---
 # <a name="application-insights-for-azure-cloud-services"></a>Application Insights für Azure Cloud Services
 [Application Insights][start] kann [Azure Cloud Services-Apps](https://azure.microsoft.com/services/cloud-services/) auf Verfügbarkeit, Leistung, Fehler und Verwendung überwachen. Dabei werden Daten aus den Application Insights-SDKs mit Daten der [Azure-Diagnose](https://docs.microsoft.com/azure/monitoring-and-diagnostics/azure-diagnostics) aus Cloud Services kombiniert. Mit dem Feedback zur Leistung und Effektivität der App in der Praxis können Sie in jedem Entwicklungslebenszyklus eine fundierte Entscheidung für die Richtung des Entwurfs treffen.
@@ -136,7 +136,38 @@ Konfigurieren Sie in Visual Studio das Application Insights SDK für jedes Cloud
 1. Legen Sie für die Datei *ApplicationInsights.config* fest, dass sie immer in das Ausgabeverzeichnis kopiert wird.  
     Sie werden über eine Meldung in der *CONFIG*-Datei aufgefordert, den Instrumentationsschlüssel hier zu platzieren. Für Cloud-Apps ist es jedoch besser, ihn aus der *CSCFG* festzulegen. Dadurch wird sichergestellt, dass die Rolle im Portal korrekt identifiziert wird.
 
-#### <a name="run-and-publish-the-app"></a>Ausführen und Veröffentlichen der App
+## <a name="set-up-status-monitor-to-collect-full-sql-queries-optional"></a>Einrichten des Statusmonitors zum Sammeln von vollständigen SQL-Abfragen (optional)
+
+Dieser Schritt ist nur erforderlich, wenn Sie vollständige SQL-Abfragen für .NET Framework erfassen möchten. 
+
+1. Fügen Sie in der `\*.csdef`-Datei die [Startaufgabe](https://docs.microsoft.com/azure/cloud-services/cloud-services-startup-tasks) für jede Rolle hinzu, die Folgendem ähnelt: 
+
+    ```xml
+    <Startup>
+      <Task commandLine="AppInsightsAgent\InstallAgent.bat" executionContext="elevated" taskType="simple">
+        <Environment>
+          <Variable name="ApplicationInsightsAgent.DownloadLink" value="http://go.microsoft.com/fwlink/?LinkID=522371" />
+          <Variable name="RoleEnvironment.IsEmulated">
+            <RoleInstanceValue xpath="/RoleEnvironment/Deployment/@emulated" />
+          </Variable>
+        </Environment>
+      </Task>
+    </Startup>
+    ```
+    
+2. Laden Sie [InstallAgent.bat](https://github.com/microsoft/ApplicationInsights-Home/blob/master/Samples/AzureEmailService/WorkerRoleA/AppInsightsAgent/InstallAgent.bat) und [InstallAgent.ps1](https://github.com/microsoft/ApplicationInsights-Home/blob/master/Samples/AzureEmailService/WorkerRoleA/AppInsightsAgent/InstallAgent.ps1) herunter, und fügen Sie sie dem `AppInsightsAgent`-Ordner für jedes Rollenprojekt hinzu. Stellen Sie sicher, dass Sie sie über Visual Studio-Dateieigenschaften oder Buildskripts in das Ausgabeverzeichnis kopieren.
+
+3. Fügen Sie für alle Workerrollen Umgebungsvariablen hinzu: 
+
+    ```xml
+      <Environment>
+        <Variable name="COR_ENABLE_PROFILING" value="1" />
+        <Variable name="COR_PROFILER" value="{324F817A-7420-4E6D-B3C1-143FBED6D855}" />
+        <Variable name="MicrosoftInstrumentationEngine_Host" value="{CA487940-57D2-10BF-11B2-A3AD5A13CBC0}" />
+      </Environment>
+    ```
+    
+## <a name="run-and-publish-the-app"></a>Ausführen und Veröffentlichen der App
 
 1. Führen Sie Ihre App aus, und melden Sie sich bei Azure an. 
 

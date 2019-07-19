@@ -2,19 +2,19 @@
 title: Dokumentformate und Namenskonventionen – Custom Translator
 titleSuffix: Azure Cognitive Services
 description: Hier erfahren Sie mehr über Dokumentformate und Namenskonventionen in Custom Translator. Mithilfe dieses Konzepts können Sie die Namen von Dokumenten besser verwalten und Namenskonflikte vermeiden.
-author: rajdeep-in
+author: swmachan
 manager: christw
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.date: 02/21/2019
-ms.author: v-pawal
+ms.author: swmachan
 ms.topic: conceptual
-ms.openlocfilehash: 29b74aeaaae0bcfd5f6ae4a3c38cc00176292899
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 2f7a83be510e608bb3f630a2fb1860502d8e4475
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66386910"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67443424"
 ---
 # <a name="document-formats-and-naming-convention-guidance"></a>Leitfaden für Dokumentformate und Namenskonventionen
 
@@ -37,7 +37,7 @@ Diese Tabelle zeigt alle unterstützten Dateiformate, die Sie zum Erstellen Ihre
 
 ## <a name="dictionary-formats"></a>Wörterbuchformate
 
-Custom Translator unterstützt alle Für Wörterbücher-Dateiformate, die für das Trainingsset unterstützt werden. Wenn Sie ein Wörterbuch im Excel-Format verwenden, achten Sie darauf, dass die erste Zeile der Tabellenkalkulation den Sprachcode enthält.
+Für Wörterbücher unterstützt der benutzerdefinierte Translator alle Dateiformate, die für Trainingssets unterstützt werden. Wenn Sie ein Wörterbuch im Excel-Format verwenden, sollte die erste Zeile der Tabellenkalkulation den Sprachcode enthalten.
 
 ## <a name="zip-file-formats"></a>ZIP-Dateiformate
 

@@ -3,19 +3,19 @@ title: Installieren von Speech-Containern
 titleSuffix: Azure Cognitive Services
 description: Installieren Sie Speech-Container, und führen Sie sie aus. Die Spracherkennung wandelt Audiodatenströme in Echtzeit in Text um, der von Ihren Anwendungen, Tools oder Geräten genutzt oder angezeigt werden kann. Die Sprachsynthese konvertiert Eingabetext in menschenähnliche synthetische Sprache.
 services: cognitive-services
-author: diberry
+author: IEvangelist
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 05/28/2019
-ms.author: diberry
-ms.openlocfilehash: 763e7bc9298eee1ab602968360bbc79a58243e5b
-ms.sourcegitcommit: 45e4466eac6cfd6a30da9facd8fe6afba64f6f50
+ms.date: 06/19/2019
+ms.author: dapine
+ms.openlocfilehash: 8f395788d4dd3c845155a52bd6b4666998838fcd
+ms.sourcegitcommit: ac1cfe497341429cf62eb934e87f3b5f3c79948e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/07/2019
-ms.locfileid: "66752444"
+ms.lasthandoff: 07/01/2019
+ms.locfileid: "67490230"
 ---
 # <a name="install-and-run-speech-service-containers"></a>Installieren und Ausführen von Containern für den Speech-Dienst
 
@@ -25,7 +25,7 @@ Die beiden Sprachcontainer sind **Spracherkennung** und **Sprachsynthese**.
 
 |Funktion|Features|Neueste Version|
 |-|-|--|
-|Spracherkennung| <li>Transkribiert kontinuierliche Echtzeitsprache oder Batchaudioaufzeichnungen in Text mit Zwischenergebnissen.|1.1.1|
+|Spracherkennung| <li>Transkribiert kontinuierliche Echtzeitsprache oder Batchaudioaufzeichnungen in Text mit Zwischenergebnissen.|1.1.3|
 |Sprachsynthese| <li>Konvertiert Text in natürlich klingende Sprache. mit Nur-Text-Eingabe und SSML (Speech Synthesis Markup Language, Markupsprache für Sprachsynthese). |1.1.0|
 
 Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) erstellen, bevor Sie beginnen.
@@ -71,14 +71,13 @@ In der folgenden Tabelle werden die Mindestanforderungen und empfohlenen Werte f
 
 * Jeder Kern muss eine Geschwindigkeit von mindestens 2,6 GHz aufweisen.
 
-
 Kern und Arbeitsspeicher entsprechen den Einstellungen `--cpus` und `--memory`, die im Rahmen des Befehls `docker run` verwendet werden.
 
 **Hinweis:** Die Mindestanforderungen und Empfehlungen basieren auf Docker-Grenzwerten, *nicht* auf den Ressourcen des Hostcomputers. Spracherkennungscontainer ordnen beispielsweise Teile des Arbeitsspeichers eines großen Sprachmodells zu, und es wird _empfohlen_, dass die gesamte Datei in den Arbeitsspeicher passt (was zusätzlich 4 bis 6 GB ausmacht). Außerdem dauert die erste Ausführung des Containers unter Umständen länger, da Modelle in den Arbeitsspeicher ausgelagert werden.
 
 ## <a name="get-the-container-image-with-docker-pull"></a>Abrufen des Containerimages mit `docker pull`
 
-Für Speech stehen folgende Containerimages zur Verfügung: 
+Für Speech stehen folgende Containerimages zur Verfügung:
 
 | Container | Repository |
 |-----------|------------|
@@ -89,7 +88,7 @@ Für Speech stehen folgende Containerimages zur Verfügung:
 
 ### <a name="language-locale-is-in-container-tag"></a>Das Sprachgebietsschema ist im Containertag enthalten.
 
-Das Tag `latest` pullt das Gebietsschema `en-us` und die Stimme `jessarus`. 
+Das Tag `latest` pullt das Gebietsschema `en-us` und die Stimme `jessarus`.
 
 #### <a name="speech-to-text-locales"></a>Gebietsschemas für die Spracherkennung
 
@@ -102,10 +101,10 @@ Mit Ausnahme von `latest` liegen alle Tags im folgenden Format vor, wobei `<cult
 Das folgende Tag ist ein Beispiel für das Format:
 
 ```
-1.0.0-amd64-en-us-preview
+1.1.3-amd64-en-us-preview
 ```
 
-Die folgende Tabelle enthält die unterstützten Gebietsschemas für die **Spracherkennung** in der Version 1.1.1 des Containers:
+Die folgende Tabelle enthält die unterstützten Gebietsschemas für die **Spracherkennung** in der Version 1.1.3 des Containers:
 
 |Sprachgebietsschema|`Tags`|
 |--|--|
@@ -119,7 +118,6 @@ Die folgende Tabelle enthält die unterstützten Gebietsschemas für die **Sprac
 |Portugiesisch|`pt-br`|
 |Spanisch|`es-es`<br>`es-mx`|
 
-
 #### <a name="text-to-speech-locales"></a>Gebietsschemas für die Sprachsynthese
 
 Mit Ausnahme von `latest` liegen alle Tags im folgenden Format vor, wobei `<culture>` das Gebietsschema und `<voice>` die Stimme des Containers angibt:
@@ -131,7 +129,7 @@ Mit Ausnahme von `latest` liegen alle Tags im folgenden Format vor, wobei `<cult
 Das folgende Tag ist ein Beispiel für das Format:
 
 ```
-1.0.0-amd64-en-us-jessarus-preview
+1.1.0-amd64-en-us-jessarus-preview
 ```
 
 Die folgende Tabelle enthält die unterstützten Gebietsschemas für die **Sprachsynthese** in der Version 1.1.0 des Containers:
@@ -171,8 +169,8 @@ docker pull containerpreview.azurecr.io/microsoft/cognitive-services-text-to-spe
 
 Wenn sich der Container auf dem [Hostcomputer](#the-host-computer) befindet, können Sie über den folgenden Prozess mit dem Container arbeiten.
 
-1. [Führen Sie den Container aus](#run-the-container-with-docker-run), und verwenden Sie dabei die erforderlichen, aber nicht verwendeten Abrechnungseinstellungen. Es sind noch weitere [Beispiele](speech-container-configuration.md#example-docker-run-commands) für den Befehl `docker run` verfügbar. 
-1. [Fragen Sie den Vorhersageendpunkt des Containers ab.](#query-the-containers-prediction-endpoint) 
+1. [Führen Sie den Container aus](#run-the-container-with-docker-run), und verwenden Sie dabei die erforderlichen, aber nicht verwendeten Abrechnungseinstellungen. Es sind noch weitere [Beispiele](speech-container-configuration.md#example-docker-run-commands) für den Befehl `docker run` verfügbar.
+1. [Fragen Sie den Vorhersageendpunkt des Containers ab.](#query-the-containers-prediction-endpoint)
 
 ## <a name="run-the-container-with-docker-run"></a>Ausführen des Containers mit `docker run`
 
@@ -194,7 +192,7 @@ docker run --rm -it -p 5000:5000 --memory 2g --cpus 1 \
 containerpreview.azurecr.io/microsoft/cognitive-services-text-to-speech \
 Eula=accept \
 Billing={BILLING_ENDPOINT_URI} \
-ApiKey={BILLING_KEY} 
+ApiKey={BILLING_KEY}
 ```
 
 ### <a name="speech-to-text"></a>Spracherkennung
@@ -204,7 +202,7 @@ docker run --rm -it -p 5000:5000 --memory 2g --cpus 2 \
 containerpreview.azurecr.io/microsoft/cognitive-services-speech-to-text \
 Eula=accept \
 Billing={BILLING_ENDPOINT_URI} \
-ApiKey={BILLING_KEY} 
+ApiKey={BILLING_KEY}
 ```
 
 Dieser Befehl:
@@ -212,7 +210,7 @@ Dieser Befehl:
 * Führt einen Speech-Container auf der Grundlage des Containerimages aus
 * Ordnet zwei CPU-Kerne und 2 GB Arbeitsspeicher zu
 * Verfügbarmachen des TCP-Ports 5000 und Zuweisen einer Pseudo-TTY-Verbindung für den Container
-* Entfernt den Container automatisch, nachdem er beendet wurde. Das Containerimage ist auf dem Hostcomputer weiterhin verfügbar. 
+* Entfernt den Container automatisch, nachdem er beendet wurde. Das Containerimage ist auf dem Hostcomputer weiterhin verfügbar.
 
 > [!IMPORTANT]
 > Die Optionen `Eula`, `Billing` und `ApiKey` müssen angegeben werden, um den Container auszuführen, andernfalls wird der Container nicht gestartet.  Weitere Informationen finden Sie unter [Abrechnung](#billing).
@@ -241,7 +239,9 @@ var config = SpeechConfig.FromSubscription("YourSubscriptionKey", "YourServiceRe
 in den folgenden Aufruf mit dem Containerendpunkt:
 
 ```C#
-var config = SpeechConfig.FromEndpoint("ws://localhost:5000/speech/recognition/dictation/cognitiveservices/v1", "YourSubscriptionKey");
+var config = SpeechConfig.FromEndpoint(
+    new Uri("ws://localhost:5000/speech/recognition/dictation/cognitiveservices/v1"),
+    "YourSubscriptionKey");
 ```
 
 #### <a name="for-python"></a>Python
@@ -249,22 +249,22 @@ var config = SpeechConfig.FromEndpoint("ws://localhost:5000/speech/recognition/d
 Ändern Sie den folgenden Azure-Cloudinitialisierungsaufruf
 
 ```python
-speech_config = speechsdk.SpeechConfig(subscription=speech_key, region=service_region)
+speech_config = speechsdk.SpeechConfig(
+    subscription=speech_key, region=service_region)
 ```
 
 in den folgenden Aufruf mit dem Containerendpunkt:
 
 ```python
-speech_config = speechsdk.SpeechConfig(subscription=speech_key, endpoint="ws://localhost:5000/speech/recognition/dictation/cognitiveservices/v1")
+speech_config = speechsdk.SpeechConfig(
+    subscription=speech_key, endpoint="ws://localhost:5000/speech/recognition/dictation/cognitiveservices/v1")
 ```
 
 ### <a name="text-to-speech"></a>Text-zu-Sprache
 
 Die vom Container bereitgestellten REST-Endpunkt-APIs finden Sie [hier](https://docs.microsoft.com/azure/cognitive-services/speech-service/rest-text-to-speech). Beispiele finden Sie [hier](https://azure.microsoft.com/resources/samples/cognitive-speech-tts/).
 
-
 [!INCLUDE [Validate container is running - Container's API documentation](../../../includes/cognitive-services-containers-api-documentation.md)]
-
 
 ## <a name="stop-the-container"></a>Beenden des Containers
 
@@ -272,11 +272,11 @@ Die vom Container bereitgestellten REST-Endpunkt-APIs finden Sie [hier](https://
 
 ## <a name="troubleshooting"></a>Problembehandlung
 
-Wenn Sie den Container ausführen, werden mithilfe von **stdout** und **stderr** Informationen ausgegeben, die hilfreich sind, um Probleme beim Starten oder Ausführen des Containers zu beheben. 
+Wenn Sie den Container ausführen, werden mithilfe von **stdout** und **stderr** Informationen ausgegeben, die hilfreich sind, um Probleme beim Starten oder Ausführen des Containers zu beheben.
 
 ## <a name="billing"></a>Abrechnung
 
-Der Speech-Container sendet Abrechnungsinformationen an Azure und verwendet dafür eine Ressource vom Typ _Speech_ in Ihrem Azure-Konto. 
+Der Speech-Container sendet Abrechnungsinformationen an Azure und verwendet dafür eine Ressource vom Typ _Speech_ in Ihrem Azure-Konto.
 
 [!INCLUDE [Container's Billing Settings](../../../includes/cognitive-services-containers-how-to-billing-info.md)]
 

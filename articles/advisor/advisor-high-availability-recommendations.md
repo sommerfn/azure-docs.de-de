@@ -8,12 +8,12 @@ ms.author: kasparks
 ms.service: advisor
 ms.topic: article
 ms.date: 01/29/2019
-ms.openlocfilehash: bdba3f135f852312af1692f77643095d865f1d06
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: d78d8a689b860162a742e85c155205f072a3667c
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66254666"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67446791"
 ---
 # <a name="improve-availability-of-your-application-with-azure-advisor"></a>Verbessern der Verfügbarkeit Ihrer Anwendung mit Azure Advisor
 
@@ -93,6 +93,9 @@ Azure Advisor erkennt Azure Cosmos DB-Konten mit alten Versionen des Java SDK
 ## <a name="upgrade-your-azure-cosmos-db-spark-connector-to-the-latest-version-from-maven"></a>Upgraden Ihres Azure Cosmos DB-Spark-Connectors auf die aktuelle Version über Maven
 
 Azure Advisor erkennt Azure Cosmos DB-Konten mit alten Versionen des Cosmos DB-Spark-Connectors und empfiehlt, über Maven ein Upgrade auf die aktuelle Version auszuführen, um die neuesten Korrekturen, Leistungsverbesserungen und Features zu erhalten. Weitere Informationen zum Cosmos DB-Spark-Connector finden Sie [hier](https://aka.ms/cosmosdb/spark-connector).
+
+## <a name="enable-virtual-machine-replication"></a>Aktivieren der Replikation der virtuellen Computer
+Virtuelle Computer, für die die Replikation in eine andere Region nicht aktiviert ist, sind gegenüber regionalen Ausfällen nicht resilient. Durch eine Replikation der VMs werden negative Auswirkungen auf das Geschäft während des Ausfalls einer Azure-Region reduziert. Advisor erkennt VMs, für die die Replikation nicht aktiviert ist, und empfiehlt die Aktivierung der Replikation, sodass Sie im Falle eines Ausfalls Ihre VMs schnell in einer entfernten Azure-Region aufrufen können. [Einrichten der Notfallwiederherstellung in einer sekundären Azure-Region für einen virtuellen Azure-Computer](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-quickstart)
 
 ## <a name="how-to-access-high-availability-recommendations-in-advisor"></a>Zugreifen auf Advisor-Empfehlungen zu Hochverfügbarkeit
 

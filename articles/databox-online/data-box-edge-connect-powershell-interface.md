@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: article
-ms.date: 04/25/2019
+ms.date: 06/25/2019
 ms.author: alkohli
-ms.openlocfilehash: 8cd89b21e80662ec50746e0c7721a5544cfbce30
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 6af95b7f8bde6e77ba356fec9dde123e26a9a4a8
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64717505"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67448613"
 ---
 # <a name="manage-an-azure-data-box-edge-device-via-windows-powershell"></a>Verwalten eines Azure Data Box Edge-Geräts mittels Windows PowerShell
 
@@ -52,8 +52,9 @@ Sie können auch IoT Edge-Zertifikate hochladen, um eine sichere Verbindung zwis
 Nachfolgend sehen Sie ein Beispiel für die Verwendung dieses Cmdlets zum Installieren von IoT Edge-Zertifikaten:
 
 ```
-Set-HcsCertificate -Scope IotEdge -RootCACertificateFilePath "\\hcfs\root-ca-cert.pem" -DeviceCertificateFilePath "\\hcfs\device-ca-cert.pem\" -DeviceKeyFilePath "\\hcfs\device-key-cert.pem" -Credential "username/password"
+Set-HcsCertificate -Scope IotEdge -RootCACertificateFilePath "\\hcfs\root-ca-cert.pem" -DeviceCertificateFilePath "\\hcfs\device-ca-cert.pem\" -DeviceKeyFilePath "\\hcfs\device-key-cert.pem" -Credential "username"
 ```
+Wenn Sie dieses Cmdlet ausführen, werden Sie aufgefordert, das Kennwort für die Netzwerkfreigabe anzugeben.
 
 Weitere Informationen zu Zertifikaten finden Sie unter [Zertifikate für Azure IoT Edge](https://docs.microsoft.com/azure/iot-edge/iot-edge-certs) oder [Installieren von Zertifikaten auf einem Gateway](https://docs.microsoft.com/azure/iot-edge/how-to-create-transparent-gateway#install-certificates-on-the-gateway).
 
@@ -75,13 +76,12 @@ Wenn die Computerolle auf Ihrem Gerät konfiguriert ist, können Sie die Compute
     Nachfolgend sehen Sie ein Beispiel für die Verwendung dieses Cmdlets:
 
     ```powershell
-    Get-AzureDataBoxEdgeComputeRoleLogs -Path "\\hcsfs\logs\myacct" -Credential "username/password" -RoleInstanceName "IotRole" -FullLogCollection
+    Get-AzureDataBoxEdgeComputeRoleLogs -Path "\\hcsfs\logs\myacct" -Credential "username" -FullLogCollection
     ```
 
     Es folgt eine Beschreibung der verwendeten Parameter des Cmdlets:
     - `Path`: Geben Sie einen Netzwerkpfad für die Freigabe an, in der Sie das Computeprotokollpaket erstellen möchten.
-    - `Credential`: Geben Sie den Benutzernamen und das Kennwort für die Netzwerkfreigabe an.
-    - `RoleInstanceName`: Geben Sie die Zeichenfolge `IotRole` für diesen Parameter ein.
+    - `Credential`: Geben Sie den Benutzernamen für die Netzwerkfreigabe an. Wenn Sie dieses Cmdlet ausführen, müssen Sie das Freigabekennwort angeben.
     - `FullLogCollection`: Dieser Parameter stellt sicher, dass das Protokollpaket alle Computeprotokolle enthält. Standardmäßig enthält das Protokollpaket nur eine Teilmenge der Protokolle.
 
 ## <a name="monitor-and-troubleshoot-compute-modules"></a>Überwachung und Problembehandlung von Computemodulen

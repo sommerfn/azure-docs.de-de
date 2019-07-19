@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 05/13/2019
-ms.openlocfilehash: adc5a601a04936a376d7c69b26c2429940ebdf6e
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: b79efa6ee1f4c052a0037a971fc36d8a9ae0ce58
+ms.sourcegitcommit: aa66898338a8f8c2eb7c952a8629e6d5c99d1468
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66306473"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67458721"
 ---
 # <a name="azure-active-directory-integration-for-azure-red-hat-openshift"></a>Azure Active Directory-Integration für Azure Red Hat OpenShift
 
@@ -43,7 +43,7 @@ Erstellen Sie einen neuen globalen Azure Active Directory-Administratorbenutzer,
 Die Mitgliedschaften in einer Azure AD-Sicherheitsgruppe werden mit der OpenShift-Gruppe „osa-customer-admins“ synchronisiert, um Clusteradministratorzugriff zu gewähren. Wenn dies nicht angegeben wird, wird kein Clusteradministratorzugriff gewährt.
 
 1. Öffnen Sie das Blatt [Azure Active Directory-Gruppen](https://portal.azure.com/#blade/Microsoft_AAD_IAM/GroupsManagementMenuBlade/AllGroups).
-2. Klicken Sie auf **Neue Gruppe**.
+2. Klicken Sie auf **+Neue Gruppe**.
 3. Geben Sie einen Gruppennamen und eine Beschreibung an.
 4. Legen Sie für **Gruppentyp** die Option **Sicherheit** fest.
 5. Legen Sie den **Mitgliedschaftstyp** auf **Zugewiesen** fest.
@@ -83,17 +83,34 @@ Generieren Sie ein Clientgeheimnis zur Authentifizierung Ihrer App bei Azure Act
 4. Legen Sie **Expires** (Läuft ab) auf die von Ihnen gewünschte Dauer fest (z. B. **In 2 Jahren**).
 5. Klicken Sie auf **Hinzufügen**. Daraufhin wird der Schlüsselwert im Abschnitt **Geheime Clientschlüssel** der Seite angezeigt.
 6. Notieren Sie sich den Schlüsselwert. Im Tutorial [Erstellen eines Azure Red Hat OpenShift-Clusters](tutorial-create-cluster.md) bezeichnen wir diesen Wert als `SECRET`.
- 
+
 ![Screenshot des Bereichs „Zertifikate und Geheimnisse“](./media/howto-create-tenant/create-key.png)
- 
+
 Weitere Informationen zu Azure-Anwendungsobjekten finden Sie unter [Anwendungs- und Dienstprinzipalobjekte in Azure Active Directory](https://docs.microsoft.com/azure/active-directory/develop/app-objects-and-service-principals).
 
 Details zur Erstellung einer neuen Azure AD-Anwendung finden Sie unter [Registrieren einer App mit dem Azure AD v1.0-Endpunkt](https://docs.microsoft.com/azure/active-directory/develop/quickstart-v1-add-azure-ad-app).
 
+## <a name="add-api-permissions"></a>Hinzufügen von API-Berechtigungen
+
+1. Klicken Sie im Bereich **Verwalten** auf **API-Berechtigungen**.
+2. Klicken Sie auf **Berechtigung hinzufügen**, und wählen Sie **Azure Active Directory Graph** und dann **Delegierte Berechtigungen** aus.
+3. Erweitern Sie **Benutzer** in der folgenden Liste, und stellen Sie sicher, dass **User.Read** aktiviert ist.
+4. Scrollen Sie nach oben, und wählen Sie **Anwendungsberechtigungen** aus.
+5. Erweitern Sie **Verzeichnis** in der folgenden Liste, und aktivieren Sie **Directory.ReadAll**.
+6. Klicken Sie auf **Berechtigungen hinzufügen**, um die Änderungen zu übernehmen.
+7. Der Bereich der API-Berechtigungen sollte nun sowohl *User.Read* als auch *Directory.ReadAll* anzeigen. Bitte beachten Sie die Warnung in der Spalte **Administratoreinwilligung erforderlich** neben *Directory.ReadAll*.
+8. Wenn Sie der *Azure-Abonnementadministrator* sind, klicken Sie unten auf **Administratorzustimmung für *Abonnementname* erteilen**. Wenn Sie nicht der *Azure-Abonnementadministrator* sind, fordern Sie die Zustimmung von Ihrem Administrator an.
+![Screenshot des Bereichs der API-Berechtigungen. Die Berechtigungen „User.Read“ und „Directory.ReadAll“ sind hinzugefügt, die Zustimmung des Administrators ist für „Directory.ReadAll“ erforderlich](./media/howto-aad-app-configuration/permissions-required.png)
+
+> [!IMPORTANT]
+> Die Synchronisierung der Clusteradministratorengruppe funktioniert nur, nachdem die Zustimmung erteilt ist. Daraufhin wird ein grüner Kreis mit einem Häkchen und die Meldung „Gewährt für *Abonnementname*“ in der Spalte *Administratoreinwilligung erforderlich* angezeigt.
+
+Weitere Informationen zum Verwalten von Administratoren und anderen Rollen finden Sie unter [Hinzufügen oder Ändern von Azure-Abonnementadministratoren](https://docs.microsoft.com/azure/billing/billing-add-change-azure-subscription-administrator).
+
 ## <a name="resources"></a>Ressourcen
 
-* [Anwendungs- und Dienstprinzipalobjekte in Azure Active Directory](https://docs.microsoft.com/azure/active-directory/develop/app-objects-and-service-principals)  
-* [Schnellstart: Registrieren einer App mit dem Azure AD v1.0-Endpunkt](https://docs.microsoft.com/azure/active-directory/develop/quickstart-v1-add-azure-ad-app)  
+* [Anwendungs- und Dienstprinzipalobjekte in Azure Active Directory](https://docs.microsoft.com/azure/active-directory/develop/app-objects-and-service-principals)
+* [Schnellstart: Registrieren einer App mit dem Azure AD v1.0-Endpunkt](https://docs.microsoft.com/azure/active-directory/develop/quickstart-v1-add-azure-ad-app)
 
 ## <a name="next-steps"></a>Nächste Schritte
 

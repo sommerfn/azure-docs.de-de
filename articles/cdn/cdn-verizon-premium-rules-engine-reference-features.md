@@ -7,12 +7,12 @@ ms.service: cdn
 ms.topic: article
 ms.date: 05/31/2019
 ms.author: magattus
-ms.openlocfilehash: dab0b11a350a10a209d67ddc69db5531a2cc292c
-ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
+ms.openlocfilehash: 7e75a6ffe28aa74ea2fad30bbe2728317712d86b
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/04/2019
-ms.locfileid: "66482004"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67443492"
 ---
 # <a name="azure-cdn-from-verizon-premium-rules-engine-features"></a>Features der Regel-Engine für Azure CDN Premium von Verizon
 
@@ -320,7 +320,7 @@ Wichtige Informationen:
 - Geben Sie mindestens einen Namen von Abfragezeichenfolgenparametern an, und trennen Sie mehrere Parameternamen durch ein einzelnes Leerzeichen.
 - Dieses Feature legt fest, ob Abfragezeichenfolgenparameter in den Cacheschlüssel einbezogen oder davon ausgeschlossen werden. In der nachfolgenden Tabelle werden zu jeder Option zusätzliche Informationen bereitgestellt.
 
-Type|BESCHREIBUNG
+type|BESCHREIBUNG
 --|--
  Include|  Gibt an, dass jeder angegebene Parameter in den Cacheschlüssel einbezogen werden soll. Ein eindeutiger Cacheschlüssel wird für jede Anforderung generiert, die einen eindeutigen Wert für einen in diesem Feature definierten Abfragezeichenfolgenparameter enthält.
  Include All  |Gibt an, dass ein eindeutiger Cacheschlüssel für jede Anforderung an ein Objekt erstellt wird, die eine eindeutige Abfragezeichenfolge enthält. Von dieser Art der Konfiguration wird in der Regel abgeraten, da sie zu einem geringen Prozentsatz an Cachetreffern führen könnte. Eine geringe Anzahl von Cachetreffern erhöht die Auslastung des Ursprungsservers, da er mehr Anforderungen verarbeiten muss. Diese Konfiguration dupliziert das Zwischenspeicherungsverhalten, das auf der Seite „Query-String Caching“ als „unique-cache“ bezeichnet wird.
@@ -338,7 +338,7 @@ Um das als „no-cache“ bezeichnete Verhalten für das Zwischenspeichern von A
 
 Das folgende Verwendungsbeispiel für dieses Feature umfasst eine Beispielanforderung und den Standardcacheschlüssel:
 
-- **Beispielanforderung:** http://wpc.0001.&lt;Domäne&gt;/800001/Origin/folder/asset.htm?sessionid=1234&language=DE&userid=01
+- **Beispielanforderung:** http://wpc.0001.&lt ;Domäne&gt; /800001/Origin/folder/asset.htm?sessionid=1234&language=DE&userid=01
 - **Standardcacheschlüssel:** /800001/Origin/folder/asset.htm
 
 ##### <a name="include"></a>Include
@@ -516,8 +516,8 @@ Das Format zum Angeben der Anforderungs- und Antwortheader ist folgendermaßen d
 
 Headertyp|Format|Beispiele
 -|-|-
-Anforderungsheader|%{[RequestHeader]()}[i]() | %{Accept-Encoding}i <br/> {Referrer}i <br/> %{Authorization}i
-Antwortheader|%{[ResponseHeader]()}[o]()| %{Age}o <br/> %{Content-Type}o <br/> %{Cookie}o
+Anforderungsheader|`%{[RequestHeader]()}[i]()` | %{Accept-Encoding}i <br/> {Referrer}i <br/> %{Authorization}i
+Antwortheader|`%{[ResponseHeader]()}[o]()`| %{Age}o <br/> %{Content-Type}o <br/> %{Cookie}o
 
 Wichtige Informationen:
 
@@ -1128,7 +1128,7 @@ Anhand dieses Features kann ein Kundenursprungsserver Client-IP-Adressen über e
 
 Der angegebene Headername darf keinem der folgenden Namen entsprechen:
 
-- Namen von Standardanforderungsheadern. Eine Liste der Standardheadernamen ist in [RFC 2616](http://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html) zu finden.
+- Namen von Standardanforderungsheadern. Eine Liste der Standardheadernamen ist in [RFC 2616](https://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html) zu finden.
 - Reservierte Headernamen:
     - forwarded-for
     - host
@@ -1168,7 +1168,7 @@ Deaktiviert|Der Fehler des Ursprungsservers wird an die anfordernde Person weite
 Wichtige Informationen:
 
 - Das Verhalten dieses Features hängt von der ausgewählten Zeiteinheit ab.
-    - **Time Unit:** Geben Sie einen Zeitraum an, und wählen Sie eine Zeiteinheit aus (z. B. Sekunden, Minuten oder Stunden), um die Übermittlung veralteter Inhalte zu ermöglichen. Dieser Setuptyp ermöglicht dem CDN, die Zeitdauer zu verlängern, während der Inhalte übermittelt werden können, bevor eine Überprüfung gemäß der folgenden Formel erforderlich ist: **TTL** + **Stale While Revalidate Time**
+    - **Zeiteinheit:** Geben Sie einen Zeitraum an, und wählen Sie eine Zeiteinheit aus (z.B. Sekunden, Minuten oder Stunden), um die Übermittlung veralteter Inhalte zu ermöglichen. Dieser Setuptyp ermöglicht dem CDN, die Zeitdauer zu verlängern, während der Inhalte übermittelt werden können, bevor eine Überprüfung gemäß der folgenden Formel erforderlich ist: **TTL** + **Stale While Revalidate Time**
     - **Off:** Wählen Sie „Off“ aus, um eine erneute Überprüfung anzufordern, bevor eine Anforderung von veralteten Inhalten verarbeitet werden darf.
         - Geben Sie keine Zeitspanne an, weil sie nicht anwendbar ist und ignoriert wird.
 
@@ -1315,7 +1315,7 @@ Zur Konfiguration dieses Features müssen die folgenden Optionen festgelegt werd
 Option|BESCHREIBUNG
 -|-
 Code|Wählen Sie den Antwortcode aus, der an die anfordernde Person zurückgegeben wird.
-Source & Pattern| Diese Einstellungen definieren ein Anforderungs-URI-Muster, das die Art der Anforderungen identifiziert, die umgeleitet werden können. Nur Anforderungen, deren URL beide der folgenden Kriterien erfüllt, werden umgeleitet: <br/> <br/> **Source (or content access point):** Wählen Sie einen relativen Pfad aus, der einen Ursprungsserver identifiziert. Dieser Pfad ist der Abschnitt _/XXXX/_ und Ihr Endpunktname. <br/><br/> **Source (pattern):** Ein Muster, das Anforderungen nach relativem Pfad identifiziert, muss definiert werden. Dieses Muster für reguläre Ausdrücke muss einen Pfad definieren, der direkt nach dem zuvor ausgewählten Inhaltszugriffspunkt gestartet wird (siehe oben). <br/> - Vergewissern Sie sich, dass die oben definierten URI-Kriterien der Anforderung („Source & Pattern“) nicht mit für diese Funktion definierten Übereinstimmungsbedingungen in Konflikt stehen. <br/> - Geben Sie ein Muster an. Andernfalls werden alle Zeichenfolgen abgeglichen.
+Source & Pattern| Diese Einstellungen definieren ein Anforderungs-URI-Muster, das die Art der Anforderungen identifiziert, die umgeleitet werden können. Nur Anforderungen, deren URL beide der folgenden Kriterien erfüllt, werden umgeleitet: <br/> <br/> **Quelle (oder Inhaltszugriffspunkt):** Wählen Sie einen relativen Pfad aus, der einen Ursprungsserver identifiziert. Dieser Pfad ist der Abschnitt _/XXXX/_ und Ihr Endpunktname. <br/><br/> **Quelle (Muster):** Ein Muster, das Anforderungen nach relativem Pfad identifiziert, muss definiert werden. Dieses Muster für reguläre Ausdrücke muss einen Pfad definieren, der direkt nach dem zuvor ausgewählten Inhaltszugriffspunkt gestartet wird (siehe oben). <br/> - Vergewissern Sie sich, dass die oben definierten URI-Kriterien der Anforderung („Source & Pattern“) nicht mit für diese Funktion definierten Übereinstimmungsbedingungen in Konflikt stehen. <br/> - Geben Sie ein Muster an. Andernfalls werden alle Zeichenfolgen abgeglichen.
 Ziel| Definieren Sie die URL, zu der die oben genannten Anforderungen umgeleitet werden. <br/><br/> Stellen Sie diese URL unter Verwendung folgender Elemente dynamisch zusammen: <br/> - Muster für regulären Ausdruck <br/>- [HTTP-Variablen](cdn-http-variables.md) <br/><br/> Setzen Sie die im Quellmuster erfassten Werte unter Verwendung von $_n_ in das Zielmuster ein. Dabei identifiziert _n_ einen Wert in der Reihenfolge, in der er erfasst wurde. Beispielsweise steht $1 für den ersten im Quellmuster erfassten Wert, während $2 den zweiten Wert darstellt. <br/>
 
 Es wird dringend empfohlen, eine absolute URL zu verwenden. Bei Verwendung einer relativen URL werden CDN-URLs möglicherweise an einen ungültigen Pfad umgeleitet.
@@ -1360,7 +1360,7 @@ Wichtige Informationen:
 
 Option|BESCHREIBUNG
 -|-
- Source & Pattern | Diese Einstellungen definieren ein Anforderungs-URI-Muster, das die Art der Anforderungen identifiziert, die umgeschrieben werden können. Nur Anforderungen, deren URL beide der folgenden Kriterien erfüllt, werden umgeschrieben: <br/><br/>  - **Source (or content access point):** Wählen Sie einen relativen Pfad aus, der einen Ursprungsserver identifiziert. Dieser Pfad ist der Abschnitt _/XXXX/_ und Ihr Endpunktname. <br/><br/> - **Source (pattern):** Ein Muster, das Anforderungen nach relativem Pfad identifiziert, muss definiert werden. Dieses Muster für reguläre Ausdrücke muss einen Pfad definieren, der direkt nach dem zuvor ausgewählten Inhaltszugriffspunkt gestartet wird (siehe oben). <br/> Vergewissern Sie sich, dass die oben definierten URI-Kriterien der Anforderung („Source & Pattern“) mit keinen für diese Funktion definierten Übereinstimmungsbedingungen in Konflikt stehen. Geben Sie ein Muster an. Andernfalls werden alle Zeichenfolgen abgeglichen.
+ Source & Pattern | Diese Einstellungen definieren ein Anforderungs-URI-Muster, das die Art der Anforderungen identifiziert, die umgeschrieben werden können. Nur Anforderungen, deren URL beide der folgenden Kriterien erfüllt, werden umgeschrieben: <br/><br/>  - **Quelle (oder Inhaltszugriffspunkt):** Wählen Sie einen relativen Pfad aus, der einen Ursprungsserver identifiziert. Dieser Pfad ist der Abschnitt _/XXXX/_ und Ihr Endpunktname. <br/><br/> - **Quelle (Muster):** Ein Muster, das Anforderungen nach relativem Pfad identifiziert, muss definiert werden. Dieses Muster für reguläre Ausdrücke muss einen Pfad definieren, der direkt nach dem zuvor ausgewählten Inhaltszugriffspunkt gestartet wird (siehe oben). <br/> Vergewissern Sie sich, dass die oben definierten URI-Kriterien der Anforderung („Source & Pattern“) mit keinen für diese Funktion definierten Übereinstimmungsbedingungen in Konflikt stehen. Geben Sie ein Muster an. Andernfalls werden alle Zeichenfolgen abgeglichen.
  Ziel  |Definieren Sie folgendermaßen die relative URL, in die die oben genannten Anforderungen umgeschrieben werden: <br/>    1. Wählen Sie einen Inhaltszugriffspunkt, der einen Ursprungsserver identifiziert. <br/>    2. Definieren Sie einen relativen Pfad anhand folgender Elemente: <br/>        - Muster für regulären Ausdruck <br/>        - [HTTP-Variablen](cdn-http-variables.md) <br/> <br/> Setzen Sie die im Quellmuster erfassten Werte unter Verwendung von $_n_ in das Zielmuster ein. Dabei identifiziert _n_ einen Wert in der Reihenfolge, in der er erfasst wurde. Beispielsweise steht $1 für den ersten im Quellmuster erfassten Wert, während $2 den zweiten Wert darstellt.
 
  Dieses Feature ermöglicht den POPs das Umschreiben der URL, ohne dass eine herkömmliche Umleitung ausgeführt werden muss. Die anfordernde Person erhält also den gleichen Antwortcode, den sie auch beim Anfordern der umgeschriebenen URL erhalten hätte.

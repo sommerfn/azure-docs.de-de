@@ -18,12 +18,12 @@ ms.author: ryanwi
 ms.reviewer: hirsin
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: cfc9c027806cb1a3f65e67eda771894a7250ee67
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: b7ffef5c3a7c8dd21654b6364013b1718bea1292
+ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66417653"
+ms.lasthandoff: 07/01/2019
+ms.locfileid: "67482988"
 ---
 # <a name="microsoft-identity-platform-protocols"></a>Microsoft Identity Platform-Protokolle
 
@@ -36,7 +36,7 @@ Der Microsoft Identity Platform-Endpunkt ist eine Identity-as-a-Service-Lösung 
 
 In fast allen OAuth 2.0- und OpenID Connect-Vorgängen sind vier Beteiligte am Austausch involviert:
 
-![OAuth 2.0-Rollen](./media/active-directory-v2-flows/protocols-roles.svg)
+![Diagramm mit OAuth 2.0-Rollen](./media/active-directory-v2-flows/protocols-roles.svg)
 
 * Der **Autorisierungsserver** ist der Microsoft Identity Platform-Endpunkt und verantwortlich für das Sicherstellen der Identität des Benutzers, das Erteilen und Widerrufen des Zugriffs auf Ressourcen und das Ausstellen von Token. Der Autorisierungsserver ist auch als Identitätsanbieter bekannt und verarbeitet auf sichere Weise alles im Zusammenhang mit den Informationen des Benutzers, dessen Zugriff und den Vertrauensstellungen zwischen den Beteiligten in einem Vorgang.
 * Beim **Ressourcenbesitzer** handelt es sich normalerweise um den Endbenutzer. Diese Person besitzt die Daten und hat die Möglichkeit, Dritten den Zugriff auf die Daten oder die Ressource zu gewähren.

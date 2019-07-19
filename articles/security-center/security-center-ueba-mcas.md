@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/21/2018
 ms.author: rkarlin
-ms.openlocfilehash: 7ffb9684045031c5bca7a79a15db7cb16fc99e9b
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: af7896ec4afaeefda7261542bf593a89a7bb9ae8
+ms.sourcegitcommit: 978e1b8cac3da254f9d6309e0195c45b38c24eb5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60332376"
+ms.lasthandoff: 07/03/2019
+ms.locfileid: "67551798"
 ---
 # <a name="ueba-for-azure-resources-and-users"></a>UEBA für Azure-Ressourcen und -Benutzer 
 
@@ -55,8 +55,8 @@ Security Center unterstützt unter anderem folgende Anomalieerkennungswarnungen 
 
 Diese Warnungen sind standardmäßig aktiviert, können aber deaktiviert werden:
 
-1. Klicken Sie auf dem Security Center-Blatt auf **Sicherheitsrichtlinie**. Klicken Sie für das Abonnement, das Sie ändern möchten, auf **Einstellungen bearbeiten**.
-2.  Klicken Sie auf **Bedrohungserkennung**.
+1. Wählen Sie im Blatt „Security Center“ **Preise und Einstellungen** und dann das zutreffende Abonnement aus.
+2. Klicken Sie auf **Bedrohungserkennung**.
 3. Deaktivieren Sie unter **Enable integrations** (Integrationen aktivieren) das Kontrollkästchen **Allow Microsoft Cloud App Security to access my data** (Microsoft Cloud App Security Zugriff auf meine Daten gewähren), und klicken Sie anschließend auf **Speichern**.
 
    ![Warnung der Bedrohungserkennung](./media/security-center-ueba-mcas/security-center-mcas-optout.png)

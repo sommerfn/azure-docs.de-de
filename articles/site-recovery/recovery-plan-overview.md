@@ -8,19 +8,18 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 05/30/2019
 ms.author: raynew
-ms.openlocfilehash: ea2399572177cc10006a5d9ee715190fff4a347b
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 0df9e4b41ff89dd295fe644900b78640a083e985
+ms.sourcegitcommit: 6cb4dd784dd5a6c72edaff56cf6bcdcd8c579ee7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66471448"
+ms.lasthandoff: 07/02/2019
+ms.locfileid: "67514570"
 ---
 # <a name="about-recovery-plans"></a>Informationen zu Wiederherstellungsplänen
 
 Dieser Artikel beschreibt Wiederherstellungspläne in [Azure Site Recovery](site-recovery-overview.md).
 
-Ein Wiederherstellungsplan fasst Computer in Wiederherstellungsgruppen zusammen. Sie können einen Plan anpassen, indem Sie ihn eine Reihenfolge, Anweisungen und Aufgaben hinzufügen. Nach dem Definieren eines Plans können Sie ein Failover für den Plan ausführen.
-
+Ein Wiederherstellungsplan fasst Computer in Wiederherstellungsgruppen zusammen. Sie können einen Plan anpassen, indem Sie ihn eine Reihenfolge, Anweisungen und Aufgaben hinzufügen. Nach dem Definieren eines Plans können Sie ein Failover für den Plan ausführen.  Auf Computer kann in mehreren Wiederherstellungsplänen verwiesen werden, wobei nachfolgende Pläne die Bereitstellung/Inbetriebnahme des Computers überspringen, wenn er zuvor über einen anderen Wiederherstellungsplan bereitgestellt wurde.
 
 
 ## <a name="why-use-a-recovery-plan"></a>Gründe für die Verwendung eines Wiederherstellungsplans

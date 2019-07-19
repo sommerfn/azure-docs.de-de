@@ -19,12 +19,12 @@ ms.author: ryanwi
 ms.reviewer: sureshja
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 05b3d749eb3e2bc767889831b4c1ff01833a3f39
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: a2ae83b655bfe607b1061168649ec74f02ab4064
+ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65544664"
+ms.lasthandoff: 07/01/2019
+ms.locfileid: "67483177"
 ---
 # <a name="how-to-use-the-azure-ad-graph-api"></a>Gewusst wie: Verwenden der Azure AD-Graph-API
 
@@ -65,7 +65,7 @@ Mit dem Azure AD Graph-Explorer für die Azure AD Graph-API können Sie Verzeich
 
 Im folgenden Screenshot wird die Ausgabe angezeigt, die Sie sehen würden, wenn Sie zum Azure AD Graph-Explorer navigieren, sich anmelden und `https://graph.windows.net/GraphDir1.OnMicrosoft.com/users?api-version=1.6` zur Anzeige aller Benutzer im Verzeichnis des angemeldeten Benutzers eingeben:
 
-![Azure AD Graph-API-Explorer](./media/active-directory-graph-api-quickstart/graph_explorer.png)
+![Beispielausgabe im Azure AD Graph-API-Explorer](./media/active-directory-graph-api-quickstart/graph_explorer.png)
 
 **Laden des Azure AD Graph-Testers:** Navigieren Sie zu [https://graphexplorer.azurewebsites.net/](https://graphexplorer.azurewebsites.net/), um das Tool zu laden. Klicken Sie auf **Anmelden**, um sich mit den Anmeldeinformationen Ihres Azure AD-Kontos anzumelden und den Azure AD Graph-Explorer für Ihren Mandanten auszuführen. Wenn Sie den Azure AD Graph-Explorer für Ihren eigenen Mandanten ausführen, müssen Sie oder Ihr Administrator während der Anmeldung zustimmen. Wenn Sie ein Office 365-Abonnement haben, verfügen Sie automatisch über einen Azure AD-Mandanten. Die Anmeldeinformationen, die Sie verwenden, um sich bei Office 365 anzumelden, sind tatsächlich Azure AD-Konten, und Sie können diese Anmeldeinformationen mit dem Azure AD Graph-Explorer verwenden.
 

@@ -4,42 +4,52 @@ description: Verwenden von Abhängigkeitsinjektionen für die Registrierung und 
 services: functions
 documentationcenter: na
 author: craigshoemaker
-manager: jeconnoc
+manager: gwallace
 keywords: Azure-Funktionen, Funktionen, serverlose Architektur
 ms.service: azure-functions
 ms.devlang: dotnet
 ms.topic: reference
-ms.date: 03/22/2019
-ms.author: jehollan, glenga, cshoe
-ms.openlocfilehash: 5aa3ebee251e51be19b2d260825226194b678159
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.date: 05/28/2019
+ms.author: jehollan, cshoe
+ms.openlocfilehash: 781bcdc158cb362b7c46e1ba9771b6a92ebc56a8
+ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/27/2019
-ms.locfileid: "66242221"
+ms.lasthandoff: 07/01/2019
+ms.locfileid: "67479618"
 ---
 # <a name="use-dependency-injection-in-net-azure-functions"></a>Verwenden der Abhängigkeitsinjektion in Azure Functions (.NET)
 
 Azure Functions unterstützt das Softwareentwurfsmuster „Abhängigkeitsinjektion“ (Dependency Injection, DI). Damit kann eine [Umkehrung der Steuerung (Inversion of Control, IoC)](https://docs.microsoft.com/dotnet/standard/modern-web-apps-azure-architecture/architectural-principles#dependency-inversion) zwischen Klassen und ihren Abhängigkeiten erreicht werden.
 
-Azure Functions basiert auf den Abhängigkeitsinjektionsfunktionen von ASP.NET Core.  Sie sollten mit den Diensten, der Lebensdauer und den Entwurfsmustern der [ASP.NET Core-Abhängigkeitsinjektion](https://docs.microsoft.com/aspnet/core/fundamentals/dependency-injection) vertraut sein, bevor Sie diese in Funktionen verwenden.
+Azure Functions basiert auf den Abhängigkeitsinjektionsfunktionen von ASP.NET Core. Wir empfehlen Ihnen, sich mit den Diensten, Lebensdauern und Entwurfsmustern der [ASP.NET Core-Abhängigkeitsinjektion](https://docs.microsoft.com/aspnet/core/fundamentals/dependency-injection) vertraut zu machen, bevor Sie DI-Features in einer Azure Functions-App nutzen.
+
+Die Unterstützung der Abhängigkeitsinjektion beginnt mit Azure Functions 2.x.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-Bevor Sie die Abhängigkeitsinjektion verwenden können, müssen Sie das NuGet-Paket [Microsoft.Azure.Functions.Extensions](https://www.nuget.org/packages/Microsoft.Azure.Functions.Extensions/) installieren. Sie können dieses Paket installieren, indem Sie den folgenden Befehl aus der Paketkonsole ausführen:
+Bevor Sie die Abhängigkeitsinjektion verwenden können, müssen Sie die folgenden NuGet-Pakete installieren:
 
-```powershell
-Install-Package Microsoft.Azure.Functions.Extensions
-```
-Sie müssen außerdem Version 1.0.28 des [Microsoft.NET.SDK.Functions-Pakets](https://www.nuget.org/packages/Microsoft.NET.Sdk.Functions/) oder eine höhere Version verwenden.
+- [Microsoft.Azure.Functions.Extensions](https://www.nuget.org/packages/Microsoft.Azure.Functions.Extensions/)
 
-## <a name="registering-services"></a>Registrieren von Diensten
+- [Microsoft.NET.Sdk.Functions-Paket](https://www.nuget.org/packages/Microsoft.NET.Sdk.Functions/), Version 1.0.28 oder höher
 
-Sie können eine Configure-Methode erstellen und einer `IFunctionsHostBuilder`-Instanz Komponenten hinzufügen, um Dienste zu registrieren.  Der Azure Functions-Host erstellt eine `IFunctionsHostBuilder`-Instanz und übergibt diese direkt in Ihre konfigurierte Methode.
+- Optional: [Microsoft.Extensions.Http](https://www.nuget.org/packages/Microsoft.Extensions.Http/) – nur für die Registrierung von HttpClient beim Starten erforderlich
 
-Zum Registrieren Ihrer Configure-Methode müssen Sie ein Assembly-Attribut hinzufügen, das den Typ Ihrer Configure-Methode mithilfe des `FunctionsStartup`-Attributs angibt.
+## <a name="register-services"></a>Registrieren von Diensten
+
+Sie können eine Methode zum Konfigurieren und Hinzufügen von Komponenten zu einer `IFunctionsHostBuilder`-Instanz erstellen.  Der Azure Functions-Host erstellt eine Instanz von `IFunctionsHostBuilder` und übergibt diese direkt an Ihre Methode.
+
+Fügen Sie zum Registrieren der Methode das `FunctionsStartup`-Assembly-Attribut hinzu, mit dem der Typname angegeben wird, der beim Starten verwendet wird. Auch Code verweist auf eine Vorabversion von [Microsoft.Azure.Cosmos](https://www.nuget.org/packages/Microsoft.Azure.Cosmos/) auf Nuget.
 
 ```csharp
+using System;
+using Microsoft.Azure.Functions.Extensions.DependencyInjection;
+using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Http;
+using Microsoft.Extensions.Logging;
+using Microsoft.Azure.Cosmos;
+
 [assembly: FunctionsStartup(typeof(MyNamespace.Startup))]
 
 namespace MyNamespace
@@ -58,39 +68,86 @@ namespace MyNamespace
 }
 ```
 
+## <a name="use-injected-dependencies"></a>Verwenden von eingefügten Abhängigkeiten
+
+Für ASP.NET Core wird die Konstruktorinjektion verwendet, um Ihre Abhängigkeiten für Ihre Funktion verfügbar zu machen. Im folgenden Beispiel wird veranschaulicht, wie die Abhängigkeiten `IMyService` und `HttpClient` in eine per HTTP ausgelöste Funktion eingefügt werden.
+
+```csharp
+using System;
+using System.IO;
+using System.Threading.Tasks;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.Azure.WebJobs;
+using Microsoft.Azure.WebJobs.Extensions.Http;
+using Microsoft.AspNetCore.Http;
+using Microsoft.Extensions.Logging;
+using Newtonsoft.Json;
+
+namespace MyNamespace
+{
+    public class HttpTrigger
+    {
+        private readonly IMyService _service;
+        private readonly HttpClient _client;
+
+        public HttpTrigger(IMyService service, IHttpClientFactory httpClientFactory)
+        {
+            _service = service;
+            _client = httpClientFactory.CreateClient();;
+        }
+
+        [FunctionName("GetPosts")]
+        public async Task<IActionResult> Get(
+            [HttpTrigger(AuthorizationLevel.Function, "get", Route = "posts")] HttpRequest req,
+            ILogger log)
+        {
+            log.LogInformation("C# HTTP trigger function processed a request.");
+            var res = await _client.GetAsync("https://microsoft.com");
+            await _service.AddResponse(res);
+
+            return new OkResult();
+        }
+    }
+}
+```
+
+Die Verwendung der Konstruktorinjektion bedeutet, dass Sie nicht die statischen Funktionen nutzen sollten, wenn Sie die Abhängigkeitsinjektion einsetzen möchten.
+
 ## <a name="service-lifetimes"></a>Dienstlebensdauer
 
-Azure Funktions-Apps bieten dieselbe Dienstlebensdauer wie die [ASP.NET-Abhängigkeitsinjektion](https://docs.microsoft.com/aspnet/core/fundamentals/dependency-injection#service-lifetimes), sind kurzlebig, bereichsbezogen und Singleton.
+Azure Functions-Apps verfügen über dieselbe Dienstlebensdauer wie die [ASP.NET-Abhängigkeitsinjektion](https://docs.microsoft.com/aspnet/core/fundamentals/dependency-injection#service-lifetimes): Sie sind kurzlebig, bereichsbezogen und „Singleton“.
 
-In einer Funktions-App entspricht eine bereichsbezogene Lebensdauer der Ausführungslebensdauer einer Funktion. Bereichsbezogene Dienste werden einmal pro Ausführung erstellt.  Höhere Anforderungen für diesen Dienst während der Ausführung verwenden diese Instanz erneut.  Die Lebensdauer eines Singletondiensts entspricht der Lebensdauer des Hosts und wird für Funktionsausführungen dieser Instanz wiederverwendet.
+In einer Funktions-App entspricht eine bereichsbezogene Lebensdauer der Ausführungslebensdauer einer Funktion. Bereichsbezogene Dienste werden einmal pro Ausführung erstellt. In späteren Anforderungen für diesen Dienst während der Ausführung wird die vorhandene Dienstinstanz wiederverwendet. Die Lebensdauer eines Singletondiensts entspricht der Lebensdauer des Hosts und wird für Funktionsausführungen dieser Instanz wiederverwendet.
 
-Dienste mit Singleton-Lebensdauer werden für Verbindungen und Clients, wie z. B. die Klassen `SqlConnection`, `CloudBlobClient` oder `HttpClient`, empfohlen.
+Dienste mit Singleton-Lebensdauer werden für Verbindungen und Clients empfohlen, z. B. Instanzen von `SqlConnection`, `CloudBlobClient` oder `HttpClient`.
 
-Ansicht oder Download eines [Beispiels für verschiedene Lebensdauern](https://aka.ms/functions/di-sample).
+Sie können auf GitHub ein [Beispiel für verschiedene Dienstlebensdauern](https://aka.ms/functions/di-sample) anzeigen bzw. herunterladen.
 
 ## <a name="logging-services"></a>Protokollierungsdienste
 
-Wenn Sie Ihren eigenen Protokollanbieter benötigen, empfiehlt sich das Registrieren der `ILoggerProvider`-Schnittstelle.  Für Application Insights fügt Functions Application Insights automatisch für Sie hinzu.  
+Wenn Sie Ihren eigenen Protokollanbieter benötigen, ist die empfohlene Vorgehensweise die Registrierung einer `ILoggerProvider`-Instanz. Application Insights wird von Azure Functions automatisch hinzugefügt.
 
 > [!WARNING]
-> Fügen Sie `AddApplicationInsightsTelemetry()` nicht zur Sammlung der Dienste hinzu, da sonst Dienste registriert werden, durch die Konflikte mit den von der Umgebung bereitgestellten Diensten auftreten können. 
- 
+> Fügen Sie `AddApplicationInsightsTelemetry()` nicht der Dienstsammlung hinzu, da sonst Dienste registriert werden, für die Konflikte mit den von der Umgebung bereitgestellten Diensten auftreten können.
+
 ## <a name="function-app-provided-services"></a>Dienste, die von Funktions-App bereitgestellt werden
 
-Der Funktionshost selbst registriert viele Dienste.  Die folgenden Dienste sind sicher für das Erstellen von Abhängigkeiten.  Andere Hostdienste werden nicht für das Registrieren oder Erstellen einer Abhängigkeit unterstützt.  [Erstellen Sie ein Issue und eine Diskussion auf GitHub](https://github.com/azure/azure-functions-host), wenn Sie eine Abhängigkeit von anderen Diensten erstellen möchten.
+Der Funktionshost registriert viele Dienste. Es ist sicher, die folgenden Dienste als Abhängigkeit in Ihrer Anwendung zu verwenden:
 
 |Service Type|Gültigkeitsdauer|BESCHREIBUNG|
 |--|--|--|
 |`Microsoft.Extensions.Configuration.IConfiguration`|Singleton|Laufzeitkonfiguration|
 |`Microsoft.Azure.WebJobs.Host.Executors.IHostIdProvider`|Singleton|Verantwortlich für die Bereitstellung der Hostinstanz-ID|
 
+[Erstellen Sie ein Issue, und schlagen Sie es auf GitHub vor](https://github.com/azure/azure-functions-host), wenn Sie eine Abhängigkeit von anderen Diensten erstellen möchten.
+
 ### <a name="overriding-host-services"></a>Überschreiben von Hostdiensten
 
-Das Überschreiben der vom Host bereitgestellten Dienste wird derzeit nicht unterstützt.  [Erstellen Sie ein Issue und eine Diskussion auf GitHub](https://github.com/azure/azure-functions-host), wenn Sie andere Dienste überschreiben möchten.
+Das Überschreiben der vom Host bereitgestellten Dienste wird derzeit nicht unterstützt.  [Erstellen Sie ein Issue, und schlagen Sie es auf GitHub vor](https://github.com/azure/azure-functions-host), falls andere Dienste vorhanden sind, die Sie überschreiben möchten.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
 Weitere Informationen finden Sie in den folgenden Ressourcen:
 
-* [Überwachen Ihrer Funktions-App](functions-monitoring.md)
-* [Bewährte Methoden für Funktionen](functions-best-practices.md)
+- [Überwachen Ihrer Funktions-App](functions-monitoring.md)
+- [Bewährte Methoden für Funktionen](functions-best-practices.md)

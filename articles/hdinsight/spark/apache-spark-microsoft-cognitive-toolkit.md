@@ -8,12 +8,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 11/28/2017
 ms.author: hrasheed
-ms.openlocfilehash: 3462255311eaa6e418f97de5da598eb985b2a935
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: aaa690b62b44f5f21db0861d99d45734cf210db0
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64695057"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67448682"
 ---
 # <a name="use-microsoft-cognitive-toolkit-deep-learning-model-with-azure-hdinsight-spark-cluster"></a>Verwenden des Microsoft Cognitive Toolkit-Modells für intensives Lernen mit einem Azure HDInsight Spark-Cluster
 
@@ -25,13 +25,13 @@ In diesem Artikel führen Sie die folgenden Schritte aus.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-* **Ein Azure-Abonnement**. Für dieses Tutorial wird ein Azure-Abonnement benötigt. Weitere Informationen finden Sie unter [Erstellen Sie noch heute Ihr kostenloses Azure-Konto](https://azure.microsoft.com/free).
+* **Ein Azure-Abonnement**. Für diesen Artikel benötigen Sie ein Azure-Abonnement. Weitere Informationen finden Sie unter [Erstellen Sie noch heute Ihr kostenloses Azure-Konto](https://azure.microsoft.com/free).
 
 * **Azure HDInsight Spark-Cluster**. Erstellen Sie für diesen Artikel einen Spark 2.0-Cluster. Eine Anleitung finden Sie unter [Erste Schritte: Erstellen eines Apache Spark-Clusters für Azure HDInsight und Ausführen von interaktiven Abfragen per Spark-SQL](apache-spark-jupyter-spark-sql.md).
 
 ## <a name="how-does-this-solution-flow"></a>Wir läuft diese Lösung ab?
 
-Diese Lösung ist auf diesen Artikel und ein Jupyter Notebook aufgeteilt, das Sie als Teil dieses Tutorials hochladen können. In diesem Artikel führen Sie die folgenden Schritte aus:
+Diese Lösung ist auf diesen Artikel und ein Jupyter Notebook aufgeteilt, das Sie als Teil dieses Artikels hochladen können. In diesem Artikel führen Sie die folgenden Schritte aus:
 
 * Ausführen einer Skriptaktion in einem HDInsight Spark-Cluster zum Installieren von Microsoft Cognitive Toolkit und Python-Paketen.
 * Hochladen des Jupyter Notebooks, das die Lösung im HDInsight Spark-Cluster ausführt.
@@ -83,7 +83,7 @@ Um das Microsoft Cognitive Toolkit mit dem Azure HDInsight Spark-Cluster zu verw
 
 4. Klicken Sie erneut auf **Hochladen**.
 
-5. Sobald das Notebook hochgeladen ist, klicken Sie auf den Namen des Notebooks, folgen Sie den Anweisungen im Notebook zum Laden des Datasets, und führen Sie das Tutorial aus.
+5. Sobald das Notebook hochgeladen ist, klicken Sie auf den Namen des Notebooks, folgen Sie den Anweisungen im Notebook zum Laden des Datasets, und gehen Sie dem Artikel gemäß vor.
 
 ## <a name="see-also"></a>Weitere Informationen
 * [Übersicht: Apache Spark in Azure HDInsight](apache-spark-overview.md)

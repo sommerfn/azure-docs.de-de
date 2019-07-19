@@ -21,6 +21,8 @@
           displayName: 'assign key, assign resource, add key, add resource, test, deploy, endpoint, query, publish'
     - name: Verwenden von .NET SDK
       items:
+        - name: Erstellen und Verwalten einer App
+          href: sdk-csharp-quickstart-authoring-app.md
         - name: Abfragen eines Vorhersageendpunkts
           href: sdk-csharp-quickstart-query-prediction-endpoint.md
     - name: Verwenden von REST-APIs

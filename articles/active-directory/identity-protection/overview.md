@@ -17,16 +17,16 @@ ms.date: 01/29/2019
 ms.author: joflore
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8a1154e6484ebc86743202239dcd94f0772c8011
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 660793cdba61b5438283ea54a9f7349bdfbc98e1
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67204521"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67440513"
 ---
 # <a name="what-is-azure-active-directory-identity-protection"></a>Was ist Azure Active Directory Identity Protection?
 
-Mit Azure Active Directory Identity Protection können Organisationen automatische Antworten auf erkannte verdächtige Aktionen im Zusammenhang mit Benutzeridentitäten konfigurieren.
+Mit Azure Active Directory [Identity](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-whatis#terminology) Protection können Organisationen automatische Antworten auf erkannte verdächtige Aktionen im Zusammenhang mit Benutzeridentitäten konfigurieren.
 
 ## <a name="get-started"></a>Erste Schritte
 
@@ -69,7 +69,7 @@ Azure Active Directory Identity Protection ist viel mehr als nur ein Tool für d
 
 Sie können für einen Lastenausgleich bei Managementaktivitäten zu Ihrer Implementierung von Identity Protection verschiedene Rollen zuweisen. Azure AD Identity Protection unterstützt drei Verzeichnisrollen:
 
-| Rolle | Möglich | Nicht möglich |
+| Role | Möglich | Nicht möglich |
 | :-- | --- | --- |
 | Globaler Administrator | Vollzugriff auf Identity Protection, Integrieren von Identity Protection| |
 | Sicherheitsadministrator | Vollzugriff auf Identity Protection | Integrieren von Identity Protection, Zurücksetzen von Kennwörtern für einen Benutzer |

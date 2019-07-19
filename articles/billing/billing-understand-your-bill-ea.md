@@ -1,25 +1,22 @@
 ---
-title: Grundlegendes zu Ihrer Azure Enterprise-Rechnung | Microsoft-Dokumentation
-description: Erfahren Sie, wie Sie Ihre Nutzung und Abrechnung für Azure Enterprise-Vereinbarungen lesen und verstehen.
-services: ''
-documentationcenter: ''
+title: Erläuterungen zur Rechnung für Kunden mit einem Azur Enterprise Agreement
+description: Erfahren Sie, wie Sie Ihre Nutzung und Abrechnung für Azure Enterprise Agreements lesen und verstehen.
 author: adpick
 manager: dougeby
-editor: ''
 tags: billing
 ms.service: billing
 ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 04/01/2019
+ms.date: 07/01/2019
 ms.author: banders
-ms.openlocfilehash: be20ad0583558949f65b9706f0a478669360bf3d
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 02ddaf4878367524291ce54a4e12fc9b4fee4cd2
+ms.sourcegitcommit: ac1cfe497341429cf62eb934e87f3b5f3c79948e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64571211"
+ms.lasthandoff: 07/01/2019
+ms.locfileid: "67490280"
 ---
 # <a name="understand-your-azure-enterprise-agreement-bill"></a>Grundlegendes zu Ihrer Azure Enterprise-Rechnung
 

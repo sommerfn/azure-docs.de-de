@@ -7,16 +7,16 @@ ms.author: mamccrea
 ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
-ms.date: 3/25/2019
-ms.custom: seodec18
-ms.openlocfilehash: 3fab76613bb992b29ceeef12cf5f410c5c3b208d
-ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
+ms.date: 05/31/2019
+ms.openlocfilehash: 17214bb4904cc540de0a7d6f753b7e70abfa564c
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65205530"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67443649"
 ---
 # <a name="understand-outputs-from-azure-stream-analytics"></a>Grundlegendes zu den Ausgaben von Azure Stream Analytics
+
 In diesem Artikel werden die Arten von Ausgaben beschrieben, die für einen Azure Stream Analytics-Auftrag verfügbar sind. Mit Ausgaben können Sie die Ergebnisse des Stream Analytics-Auftrags aufbewahren und speichern. Indem Sie die Ausgabedaten verwenden, können Sie weitere Geschäftsanalysen und Data Warehousing-Vorgänge für Ihre Daten durchführen.
 
 Verweisen Sie beim Entwerfen Ihrer Stream Analytics-Abfrage auf den Namen der Ausgabe, indem Sie die [INTO-Klausel](https://msdn.microsoft.com/azure/stream-analytics/reference/into-azure-stream-analytics) verwenden. Sie können eine einzelne Ausgabe pro Auftrag oder (bei Bedarf) auch mehrere Ausgaben pro Streamingauftrag verwenden, indem Sie in der Abfrage mehrere INTO-Klauseln angeben.
@@ -26,28 +26,18 @@ Zum Erstellen, Bearbeiten und Testen von Stream Analytics-Auftragsausgaben könn
 Einige Ausgabetypen unterstützen die [Partitionierung](#partitioning). Die [Größe der Ausgabebatches](#output-batch-size) variiert, um den Durchsatz zu optimieren.
 
 
-## <a name="azure-data-lake-store"></a>Azure Data Lake Store
-Stream Analytics unterstützt [Azure Data Lake-Speicher](https://azure.microsoft.com/services/data-lake-store/). Azure Data Lake Store ist ein unternehmensweites Hyperscale-Repository für Big Data-Analyseworkloads. Mit Data Lake Store können Sie Daten von beliebiger Größe, Art und Erfassungsgeschwindigkeit zur Durchführung operativer und explorativer Analysen speichern. Stream Analytics muss autorisiert werden, um auf Data Lake Store zugreifen zu können.
+## <a name="azure-data-lake-storage-gen-1"></a>Azure Data Lake Storage Gen 1
 
-Die Azure Data Lake Store-Ausgabe aus Stream Analytics ist zurzeit nicht in den Regionen Azure China (21Vianet) und Azure Deutschland (T-Systems International) verfügbar.
+Stream Analytics unterstützt [Azure Data Lake Storage Gen1](../data-lake-store/data-lake-store-overview.md). Azure Data Lake Storage ist ein unternehmensweites Hyperscale-Repository für Big Data-Analyseworkloads. Mit Data Lake Storage können Sie Daten unabhängig von Größe, Typ und Erfassungsgeschwindigkeit zur Durchführung operativer und explorativer Analysen speichern. Stream Analytics muss autorisiert werden, um auf Data Lake Storage zugreifen zu können.
 
-### <a name="authorize-an-azure-data-lake-store-account"></a>Autorisieren eines Azure Data Lake Store-Kontos
+Die Azure Data Lake Storage-Ausgabe aus Stream Analytics ist zurzeit nicht in den Regionen Azure China 21Vianet und Azure Deutschland (T-Systems International) verfügbar.
 
-1. Wenn Sie Data Lake Store im Azure-Portal als Ausgabe auswählen, werden Sie aufgefordert, eine Verbindung mit einer vorhandenen Data Lake Store-Instanz zu autorisieren.
-
-   ![Autorisieren einer Verbindung mit Data Lake Store](./media/stream-analytics-define-outputs/06-stream-analytics-define-outputs.png)
-
-2. Wenn Sie bereits Zugriff auf Data Lake Store haben, wählen Sie **Jetzt autorisieren** aus. Es wird eine Seite geöffnet, die **Umleitung an die Autorisierung** anzeigt. Nach erfolgter Autorisierung wird die Seite angezeigt, über die Sie die Data Lake Store-Ausgabe konfigurieren können.
-
-3. Nachdem Sie das Data Lake Store-Konto authentifiziert haben, können Sie die Eigenschaften für die Data Lake Store-Ausgabe konfigurieren.
-
-   ![Definieren von Data Lake Store als Stream Analytics-Ausgabe](./media/stream-analytics-define-outputs/07-stream-analytics-define-outputs.png)
-
-In der folgenden Tabelle sind Eigenschaftsnamen und deren Beschreibungen aufgeführt, um Ihre Data Lake Store-Ausgabe zu konfigurieren.   
+In der folgenden Tabelle sind Eigenschaftsnamen und deren Beschreibungen für die Konfiguration Ihrer Data Lake Storage Gen1-Ausgabe aufgeführt.   
 
 | Eigenschaftenname | BESCHREIBUNG |
 | --- | --- |
 | Ausgabealias | Ein Anzeigename, der in Abfragen verwendet wird, um die Abfrageausgabe an Data Lake Store weiterzuleiten. |
+| Abonnement | Das Abonnement, das Ihr Azure Data Lake Storage-Konto enthält. |
 | Kontoname | Der Name des Data Lake Store-Kontos, an das Sie die Ausgabe senden. Eine Dropdownliste der in Ihrem Abonnement verfügbaren Data Lake Store-Konten wird angezeigt. |
 | Präfixmuster des Pfads | Der Dateipfad, mit dem Ihre Dateien im angegebenen Data Lake Store-Konto geschrieben werden. Sie können eine oder mehrere Instanzen der Variablen {date} und {time} angeben:<br /><ul><li>Beispiel 1: folder1/logs / {date} / {time}</li><li>Beispiel 2: folder1/logs / {date}</li></ul><br />Der Zeitstempel der erstellten Ordnerstruktur folgt der UTC, nicht der lokalen Zeit.<br /><br />Wenn das Dateipfadmuster keinen nachgestellten Schrägstrich („/“) enthält, wird auch das letzte Muster im Dateipfad als Dateinamenpräfix behandelt. <br /><br />In diesen Fällen werden neue Dateien erstellt:<ul><li>Änderung im Ausgabeschema</li><li>Externer oder interner Neustart eines Auftrags</li></ul> |
 | Datumsformat | Optional. Wenn das date-Token im Pfadpräfix verwendet wird, können Sie das Datumsformat auswählen, unter dem die Dateien gespeichert werden. Beispiel: YYYY/MM/DD |
@@ -56,25 +46,11 @@ In der folgenden Tabelle sind Eigenschaftsnamen und deren Beschreibungen aufgef�
 | Codieren | Bei Verwendung des CSV- oder JSON-Formats muss eine Codierung angegeben werden. UTF-8 ist derzeit das einzige unterstützte Codierungsformat.|
 | Trennzeichen | Gilt nur für die CSV-Serialisierung. Stream Analytics unterstützt eine Reihe von üblichen Trennzeichen zum Serialisieren der CSV-Daten. Unterstützte Werte sind Komma, Semikolon, Leerzeichen, Tabstopp und senkrechter Strich.|
 | Format | Gilt nur für die JSON-Serialisierung. **Separate Zeile** gibt an, dass die Ausgabe so formatiert wird, dass jedes JSON-Objekt in einer neuen Zeile enthalten ist. **Array** gibt an, dass die Ausgabe als Array aus JSON-Objekten formatiert wird. Dieses Array wird nur geschlossen, wenn der Auftrag beendet wird oder Stream Analytics mit dem nächsten Zeitfenster fortfährt. Im Allgemeinen ist es besser, in separaten Zeilen geschriebenen JSON-Code zu verwenden, da er keine spezielle Behandlung erfordert, während noch in die Ausgabedatei geschrieben wird.|
-
-### <a name="renew-data-lake-store-authorization"></a>Erneuern der Data Lake Store-Autorisierung
-Sie müssen Ihr Data Lake Store-Konto erneut authentifizieren, wenn das Kennwort seit der Erstellung oder letzten Authentifizierung Ihres Auftrags geändert wurde. Wenn Sie sich nicht erneut authentifizieren, ergibt Ihr Auftrag keine Ausgabeergebnisse und zeigt einen Fehler mit dem Hinweis an, dass in den Vorgangsprotokollen eine erneute Autorisierung erfolgen muss. 
-
-Derzeit muss das Authentifizierungstoken alle 90 Tage manuell für sämtliche Aufträge mit der Data Lake Store-Ausgabe aktualisiert werden muss. Sie können diese Einschränkung durch [Authentifizierung mithilfe verwalteter Identitäten (Vorschau)](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-managed-identities-adls) überwinden.
-
-So erneuern Sie die Autorisierung
-
-1. Wählen Sie **Beenden** aus, um Ihren Auftrag zu beenden.
-1. Gehen Sie zu Ihrer Data Lake Store-Ausgabe, und wählen Sie den Link **Autorisierung erneuern** aus.
-
-   Für kurze Zeit zeigt eine Popupseite **Umleitung an die Autorisierung** an. Wenn die Autorisierung erfolgreich ist, zeigt die Seite **Autorisierung wurde erfolgreich erneuert** an und wird dann automatisch geschlossen. 
-   
-1. Wählen Sie unten auf der Seite **Speichern** aus. Sie können Ihren Auftrag dann über **Letzte Beendigungszeit** neu starten, um Datenverluste zu vermeiden.
-
-![Erneuern der Data Lake Store-Autorisierung in der Ausgabe](./media/stream-analytics-define-outputs/08-stream-analytics-define-outputs.png)
+| Authentifizierungsmodus | Sie können den Zugriff auf Ihr Data Lake Storage-Konto autorisieren, indem Sie eine [verwaltete Identität](stream-analytics-managed-identities-adls.md) oder ein Benutzertoken verwenden. Nachdem Sie Zugriff gewährt haben, können Sie ihn auch wiederrufen, indem Sie das Kennwort für das Benutzerkonto ändern, die Data Lake Storage-Ausgabe für diesen Auftrag löschen oder den Stream Analytics-Auftrag löschen. |
 
 ## <a name="sql-database"></a>SQL-Datenbank
-Sie können [Azure SQL-Datenbank](https://azure.microsoft.com/services/sql-database/) als Ausgabe für relationale Daten oder für Anwendungen verwenden, die auf Inhalten aufsetzen, die in einer relationalen Datenbank gehostet werden. Stream Analytics-Aufträge schreiben in eine vorhandene Tabelle in einer SQL-Datenbank. Das Tabellenschema muss genau den Feldern und deren Typen in der Ausgabe Ihres Auftrags entsprechen. Sie können auch [Azure SQL Data Warehouse](https://azure.microsoft.com/documentation/services/sql-data-warehouse/) als Ausgabe über die Ausgabeoption „SQL-Datenbank“ angeben. Weitere Informationen zu Möglichkeiten zur Verbesserung des Schreibdurchsatzes finden Sie im Artikel [Stream Analytics mit Azure SQL-Datenbank als Ausgabe](stream-analytics-sql-output-perf.md). 
+
+Sie können [Azure SQL-Datenbank](https://azure.microsoft.com/services/sql-database/) als Ausgabe für relationale Daten oder für Anwendungen verwenden, die auf Inhalten aufsetzen, die in einer relationalen Datenbank gehostet werden. Stream Analytics-Aufträge schreiben in eine vorhandene Tabelle in einer SQL-Datenbank. Das Tabellenschema muss genau den Feldern und deren Typen in der Ausgabe Ihres Auftrags entsprechen. Sie können auch [Azure SQL Data Warehouse](https://azure.microsoft.com/documentation/services/sql-data-warehouse/) als Ausgabe über die Ausgabeoption „SQL-Datenbank“ angeben. Weitere Informationen zu Möglichkeiten zur Verbesserung des Schreibdurchsatzes finden Sie im Artikel [Stream Analytics mit Azure SQL-Datenbank als Ausgabe](stream-analytics-sql-output-perf.md).
 
 Die folgende Tabelle enthält die Eigenschaftennamen und die entsprechenden Beschreibungen zum Erstellen einer SQL-Datenbank-Ausgabe.
 
@@ -87,14 +63,14 @@ Die folgende Tabelle enthält die Eigenschaftennamen und die entsprechenden Besc
 | Kennwort | Das Kennwort zum Herstellen einer Verbindung mit der Datenbank |
 | Table | Der Name der Tabelle, in die die Ausgabe geschrieben wird. Beim Tabellennamen wird die Groß- und Kleinschreibung beachtet. Das Schema dieser Tabelle sollte genau der Anzahl der Felder und deren Typen entsprechen, die Ihre Auftragsausgabe generiert. |
 |Erben des Partitionsschemas| Eine Option zum Erben des Partitionierungsschemas Ihres vorherigen Abfrageschrittes, um die vollständig parallele Topologie mit mehreren in die Tabelle Schreibenden zu aktivieren. Weitere Informationen finden Sie unter [Azure Stream Analytics-Ausgabe an Azure SQL-Datenbank](stream-analytics-sql-output-perf.md).|
-|Übereinstimmung mit der Batchanzahl| Der empfohlene Grenzwert für die Anzahl der Sätze, die mit jeder Transaktion zum Masseneinfügen gesendet werden.|
+|Max Batch Count| Der empfohlene obere Grenzwert für die Anzahl der Sätze, die mit jeder Transaktion zum Masseneinfügen gesendet werden.|
 
 > [!NOTE]
-> Zurzeit wird das Azure SQL-Datenbank-Angebot für eine Auftragsausgabe in Stream Analytics unterstützt. Ein virtueller Azure-Computer mit SQL Server und angefügter Datenbank wird nicht unterstützt. Dies soll in zukünftigen Versionen geändert werden.
->
+> Das Azure SQL-Datenbank-Angebot wird für eine Auftragsausgabe in Stream Analytics unterstützt, aber dies gilt nicht für einen virtuellen Azure-Computer, auf dem SQL Server mit einer angefügten Datenbank ausgeführt wird, oder in einer verwalteten Azure SQL-Datenbank-Instanz. Dies soll in zukünftigen Versionen geändert werden.
 
 ## <a name="blob-storage"></a>Blob Storage
-Azure Blob Storage bietet eine kostengünstige und skalierbare Lösung zum Speichern von großen Mengen unstrukturierter Daten in der Cloud. Eine Einführung in Blobspeicher und dessen Nutzung finden Sie unter [Verwenden von Blobs](../storage/blobs/storage-dotnet-how-to-use-blobs.md).
+
+Azure Blob Storage bietet eine kostengünstige und skalierbare Lösung zum Speichern von großen Mengen unstrukturierter Daten in der Cloud. Eine Einführung in Blobspeicher und seine Nutzung finden Sie unter [Hochladen, Herunterladen und Auflisten von Blobs mit dem Azure-Portal](../storage/blobs/storage-quickstart-blobs-portal.md).
 
 Die folgende Tabelle enthält die Eigenschaftennamen und die entsprechenden Beschreibungen zum Erstellen einer Blobausgabe.
 
@@ -124,6 +100,7 @@ Wenn Sie Blobspeicher als Ausgabe verwenden, wird in den folgenden Fällen eine 
 * Falls die Ausgabe über ein benutzerdefiniertes Feld partitioniert wird, für das die Kardinalität des Partitionsschlüssels den Wert 8,000 übersteigt und pro Partitionsschlüssel ein neues Blob erstellt wird.
 
 ## <a name="event-hubs"></a>Event Hubs
+
 Der Dienst [Azure Event Hubs](https://azure.microsoft.com/services/event-hubs/) ist ein hoch skalierbarer Veröffentlichen-Abonnieren-Ereignisingestor. Er kann mehrere Millionen Ereignisse pro Sekunde erfassen. Eine Verwendungsmöglichkeit eines Event Hubs als Ausgabe ergibt sich, wenn die Ausgabe eines Stream Analytics-Auftrags zur Eingabe eines anderen Streamingauftrags wird.
 
 Sie benötigen einige Parameter, um Datenströme von Event Hubs als Ausgabe zu konfigurieren.
@@ -131,7 +108,7 @@ Sie benötigen einige Parameter, um Datenströme von Event Hubs als Ausgabe zu k
 | Eigenschaftenname | BESCHREIBUNG |
 | --- | --- |
 | Ausgabealias | Ein Anzeigename, der in Abfragen verwendet wird, um die Abfrageausgabe an diesen Event Hub weiterzuleiten. |
-| Event Hub-Namespace |Ein Container für einen Satz von Nachrichtenentitäten. Sie haben bei der Erstellung eines neuen Event Hubs auch einen Event Hub-Namespace erstellt. |
+| Event Hub-Namespace | Ein Container für einen Satz von Nachrichtenentitäten. Sie haben bei der Erstellung eines neuen Event Hubs auch einen Event Hub-Namespace erstellt. |
 | Event Hub-Name | Der Name Ihrer Event Hub-Ausgabe. |
 | Event Hub-Richtlinienname | Die Richtlinie für den gemeinsamen Zugriff, die Sie auf der Registerkarte **Konfigurieren** des Event Hubs erstellen können. Jede SAS-Richtlinie umfasst einen Namen, die von Ihnen festgelegten Berechtigungen und Zugriffsschlüssel. |
 | Event Hub-Richtlinienschlüssel | Der Schlüssel für den gemeinsamen Zugriff, der für die Authentifizierung des Zugriffs auf den Event Hub-Namespace verwendet wird. |
@@ -143,23 +120,12 @@ Sie benötigen einige Parameter, um Datenströme von Event Hubs als Ausgabe zu k
 | Eigenschaftenspalten | Optional. Durch Komma getrennte Spalten, die anstelle der Nutzlast als Benutzereigenschaften der ausgehenden Nachricht angefügt werden müssen. Weitere Informationen zu diesem Feature finden Sie im Abschnitt [Benutzerdefinierte Metadateneigenschaften für die Ausgabe](#custom-metadata-properties-for-output). |
 
 ## <a name="power-bi"></a>Power BI
+
 Sie können [Power BI](https://powerbi.microsoft.com/) als Ausgabe für einen Stream Analytics-Auftrag verwenden, um eine umfassende Visualisierungsumgebung für die Analyseergebnisse bereitzustellen. Diese Funktionalität kann für Vorgangsdashboards, die Erstellung von Berichten und eine metrikgesteuerte Berichterstellung verwendet werden.
 
-Die Power BI-Ausgabe aus Stream Analytics ist zurzeit nicht in den Regionen Azure China (21Vianet) und Azure Deutschland (T-Systems International) verfügbar.
+Die Power BI-Ausgabe aus Stream Analytics ist zurzeit nicht in den Regionen Azure China 21Vianet und Azure Deutschland (T-Systems International) verfügbar.
 
-### <a name="authorize-a-power-bi-account"></a>Autorisieren eines Power BI-Kontos
-1. Wenn Power BI im Azure-Portal als Ausgabe ausgewählt ist, werden Sie aufgefordert, einen vorhandenen Power BI-Benutzer zu autorisieren oder ein neues Power BI-Konto zu erstellen.
-   
-   ![Autorisieren von Power BI-Benutzern für die Ausgabekonfiguration](./media/stream-analytics-define-outputs/01-stream-analytics-define-outputs.png)
-
-2. Erstellen Sie ein neues Konto, wenn Sie noch keines haben, und wählen Sie dann **Jetzt autorisieren** aus. Die folgende Seite wird angezeigt:
-   
-   ![Authentifizieren bei Power BI über ein Azure-Konto](./media/stream-analytics-define-outputs/02-stream-analytics-define-outputs.png)
-
-3. Geben Sie das Geschäfts-, Schul- oder Unikonto für die Autorisierung der Power BI-Ausgabe an. Wenn Sie noch nicht für Power BI angemeldet sind, wählen Sie **Jetzt anmelden** aus. Das für Power BI verwendete Geschäfts- Schul- oder Unikonto kann sich vom Azure-Abonnementkonto unterscheiden, mit dem Sie jetzt angemeldet sind.
-
-### <a name="configure-the-power-bi-output-properties"></a>Konfigurieren der Eigenschaften der Power BI-Ausgabe
-Nachdem Sie das Power BI-Konto authentifiziert haben, können Sie die Eigenschaften für die Power BI-Ausgabe konfigurieren. In der folgenden Tabelle sind Eigenschaftsnamen und deren Beschreibungen aufgeführt, um Ihre Power BI-Ausgabe zu konfigurieren.
+In der folgenden Tabelle sind Eigenschaftsnamen und deren Beschreibungen aufgeführt, um Ihre Power BI-Ausgabe zu konfigurieren.
 
 | Eigenschaftenname | BESCHREIBUNG |
 | --- | --- |
@@ -167,8 +133,9 @@ Nachdem Sie das Power BI-Konto authentifiziert haben, können Sie die Eigenscha
 | Gruppenarbeitsbereich |Um die gemeinsame Datennutzung mit anderen Power BI-Benutzern zu ermöglichen, können Sie Gruppen in Ihrem Power BI-Konto auswählen. Wählen Sie alternativ **Mein Arbeitsbereich**, wenn Sie nicht in eine Gruppe schreiben möchten. Zum Aktualisieren einer vorhandenen Gruppe muss die Power BI-Authentifizierung erneuert werden. |
 | Datasetname |Geben Sie einen Datasetnamen an, den die Power BI-Ausgabe verwenden soll. |
 | Tabellenname |Geben Sie einen Tabellennamen unter dem Dataset der Power BI-Ausgabe ein. Derzeit darf die Power BI-Ausgabe von Stream Analytics-Aufträgen nur eine Tabelle pro Dataset aufweisen. |
+| Autorisieren der Verbindung | Sie müssen die Autorisierung mit Power BI durchführen, um Ihre Ausgabeeinstellungen zu konfigurieren. Nachdem Sie für diese Ausgabe den Zugriff auf Ihr Power BI-Dashboard gewährt haben, können Sie ihn widerrufen, indem Sie das Kennwort des Benutzerkontos ändern, die Auftragsausgabe löschen oder den Stream Analytics-Auftrag löschen. | 
 
-Eine Schritt-für-Schritt-Anleitung zum Konfigurieren einer Power BI-Ausgabe und eines Power BI-Dashboards erhalten Sie im Artikel [Azure Stream Analytics und Power BI](stream-analytics-power-bi-dashboard.md).
+Eine Schritt-für-Schritt-Anleitung zum Konfigurieren einer Power BI-Ausgabe und eines Power BI-Dashboards erhalten Sie im Tutorial [Azure Stream Analytics und Power BI](stream-analytics-power-bi-dashboard.md).
 
 > [!NOTE]
 > Erstellen Sie das Dataset und die Tabelle nicht explizit im Power BI-Dashboard. Das Dataset und die Tabelle werden automatisch mit Daten aufgefüllt, wenn der Auftrag gestartet wird und damit beginnt, Ausgaben an Power BI weiterzuleiten. Wenn die Auftragsabfrage keine Ergebnisse generiert, werden das Dataset und die Tabelle nicht erstellt. Wenn Power BI bereits über ein Dataset und eine Tabelle mit demselben Namen verfügt, der in diesem Stream Analytics-Auftrag angegeben wurde, werden die vorhandenen Daten überschrieben.
@@ -187,9 +154,9 @@ Die folgende Tabelle enthält die Datentypkonvertierungen von [Stream Analytics-
 Quelle: Stream Analytics | Ziel: Power BI
 -----|-----
 bigint | Int64
-nvarchar(max) | Zeichenfolge
-datetime | Datetime
-Gleitkommawert | Double
+nvarchar(max) | string
+datetime | DateTime
+float | Double
 Datensatzarray | Zeichenfolgentyp, Konstantenwert „IRecord“ oder „IArray“
 
 ### <a name="update-the-schema"></a>Aktualisieren des Schemas
@@ -198,24 +165,15 @@ Stream Analytics leitet das Datenmodellschema vom ersten Ereignissatz in der Aus
 Vermeiden Sie die `SELECT *`-Abfrage, um zeilenübergreifende dynamische Schemaaktualisierungen zu verhindern. Neben einer möglichen Beeinträchtigung der Leistung ist möglicherweise auch der Zeitaufwand für die Ergebnisse ungewiss. Wählen Sie die genauen Felder aus, die auf dem Power BI-Dashboard angezeigt werden sollen. Außerdem müssen die Datenwerte mit dem ausgewählten Datentyp kompatibel sein.
 
 
-Vorher/Aktuell | Int64 | Zeichenfolge | DateTime | Double
+Vorher/Aktuell | Int64 | string | DateTime | Double
 -----------------|-------|--------|----------|-------
-Int64 | Int64 | Zeichenfolge | Zeichenfolge | Double
-Double | Double | Zeichenfolge | Zeichenfolge | Double
-Zeichenfolge | Zeichenfolge | Zeichenfolge | Zeichenfolge | Zeichenfolge 
-Datetime | Zeichenfolge | Zeichenfolge |  Datetime | Zeichenfolge
-
-
-### <a name="renew-power-bi-authorization"></a>Erneuern der Power BI-Autorisierung
-Wenn sich das Kennwort Ihres Power BI-Kontos ändert, nachdem der Stream Analytics-Auftrag erstellt oder zuletzt authentifiziert wurde, müssen Sie Stream Analytics erneut authentifizieren. Wenn Azure Multi-Factor Authentication auf Ihrem Azure Active Directory (Azure AD)-Mandanten konfiguriert ist, müssen Sie die Power BI-Autorisierung ebenfalls alle zwei Wochen erneuern. Dieses Problem zeigt sich daran, dass keine Auftragsausgabe erfolgt und in den Vorgangsprotokollen ein Benutzerauthentifizierungsfehler angezeigt wird:
-
-  ![Fehler beim Authentifizieren von Benutzern bei Power BI](./media/stream-analytics-define-outputs/03-stream-analytics-define-outputs.png)
-
-Um dieses Problem zu beheben, halten Sie den laufenden Auftrag an, und wechseln Sie zur Power BI-Ausgabe. Wählen Sie den Link **Autorisierung erneuern**, und starten Sie den Auftrag ab **Letzte Beendigungszeit** neu, um Datenverlust zu vermeiden.
-
-  ![Erneuern der Power BI-Autorisierung für die Ausgabe](./media/stream-analytics-define-outputs/04-stream-analytics-define-outputs.png)
+Int64 | Int64 | string | string | Double
+Double | Double | string | string | Double
+string | String | String | String | string 
+DateTime | string | string |  DateTime | string
 
 ## <a name="table-storage"></a>Table Storage
+
 [Azure-Tabellenspeicher](../storage/common/storage-introduction.md) bietet einen hoch verfügbaren, in hohem Maße skalierbaren Speicher, sodass eine Anwendung automatisch an die Bedürfnisse der Benutzer angepasst werden kann. Tabellenspeicher ist Microsofts NoSQL-Schlüssel-/Attributspeicher, der für strukturierte Daten genutzt werden kann, die weniger Einschränkungen hinsichtlich des Schemas aufweisen. Azure-Tabellenspeicher kann zum Speichern von Daten für dauerhafte Archivierung und effizienten Abruf verwendet werden.
 
 Die folgende Tabelle enthält die Eigenschaftennamen und die entsprechenden Beschreibungen zum Erstellen einer Tabellenausgabe.
@@ -231,7 +189,8 @@ Die folgende Tabelle enthält die Eigenschaftennamen und die entsprechenden Besc
 | Batchgröße |Dies ist die Anzahl von Datensätzen für einen Batchvorgang. Der Standardwert (100) ist für die meisten Aufträge ausreichend. Weitere Details zur Änderung dieser Einstellung finden Sie in der [TableBatchOperation-Spezifikation](https://docs.microsoft.com/java/api/com.microsoft.azure.storage.table._table_batch_operation). |
 
 ## <a name="service-bus-queues"></a>Service Bus-Warteschlangen
-[Service Bus-Warteschlangen](https://msdn.microsoft.com/library/azure/hh367516.aspx) bieten eine FIFO-Nachrichtenzustellung (First In, First Out) an einen Consumer oder an mehrere konkurrierende Consumer. In der Regel werden Nachrichten von den Empfängern in der zeitlichen Reihenfolge empfangen und verarbeitet, in der sie zur Warteschlange hinzugefügt wurden. Jede Nachricht wird von nur einem Nachrichtenconsumer empfangen und verarbeitet.
+
+[Service Bus-Warteschlangen](../service-bus-messaging/service-bus-queues-topics-subscriptions.md) bieten eine FIFO-Nachrichtenzustellung (First In, First Out) an einen Consumer oder an mehrere konkurrierende Consumer. In der Regel werden Nachrichten von den Empfängern in der zeitlichen Reihenfolge empfangen und verarbeitet, in der sie zur Warteschlange hinzugefügt wurden. Jede Nachricht wird von nur einem Nachrichtenconsumer empfangen und verarbeitet.
 
 Die folgende Tabelle enthält die Eigenschaftennamen und die entsprechenden Beschreibungen zum Erstellen einer Warteschlangenausgabe.
 
@@ -253,14 +212,14 @@ Die Anzahl der Partitionen [basiert auf der Service Bus-SKU und -Größe](../ser
 ## <a name="service-bus-topics"></a>Service Bus-Themen
 Service Bus-Warteschlangen bieten eine 1:1-Kommunikationsmethode vom Sender zum Empfänger. [Service Bus-Themen](https://msdn.microsoft.com/library/azure/hh367516.aspx) bieten eine 1:N-Kommunikationsmethode.
 
-Die folgende Tabelle enthält die Eigenschaftennamen und die entsprechenden Beschreibungen zum Erstellen einer Themenausgabe.
+Die folgende Tabelle enthält die Eigenschaftennamen und die entsprechenden Beschreibungen zum Erstellen einer Service Bus-Themenausgabe.
 
 | Eigenschaftenname | BESCHREIBUNG |
 | --- | --- |
 | Ausgabealias |Ein Anzeigename, der in Abfragen verwendet wird, um die Abfrageausgabe an dieses Service Bus-Thema weiterzuleiten. |
 | Service Bus-Namespace |Ein Container für einen Satz von Nachrichtenentitäten. Sie haben bei der Erstellung eines neuen Event Hubs auch einen Service Bus-Namespace erstellt. |
 | Themenname |Themen sind Messagingentitäten, vergleichbar mit Event Hubs und Warteschlangen. Sie wurden für die Erfassung von Ereignisstreams von Geräten und Diensten entwickelt. Wenn ein Thema erstellt wird, wird ihm auch ein bestimmter Name zugewiesen. Die an ein Thema gesendeten Nachrichten sind nur verfügbar, wenn ein Abonnement erstellt wurde. Stellen Sie daher sicher, dass es mindestens ein Abonnement unter dem Thema gibt. |
-| Name der Themenrichtlinie |Beim Erstellen eines Themas können Sie auf der Registerkarte **Konfigurieren** des Themas entsprechende Richtlinien für den gemeinsamen Zugriff erstellen. Jede SAS-Richtlinie umfasst einen Namen, die von Ihnen festgelegten Berechtigungen und Zugriffsschlüssel. |
+| Name der Themenrichtlinie |Beim Erstellen eines Service Bus-Themas können Sie auf der Registerkarte **Konfigurieren** des Themas entsprechende Richtlinien für den gemeinsamen Zugriff erstellen. Jede SAS-Richtlinie umfasst einen Namen, die von Ihnen festgelegten Berechtigungen und Zugriffsschlüssel. |
 | Schlüssel der Themenrichtlinie |Der Schlüssel für den gemeinsamen Zugriff, der für die Authentifizierung des Zugriffs auf den Service Bus-Namespace verwendet wird. |
 | Ereignisserialisierungsformat |Das Serialisierungsformat für Ausgabedaten. Es werden JSON, CSV und Avro unterstützt. |
 | Codieren |Bei Verwendung des CSV- oder JSON-Formats muss eine Codierung angegeben werden. UTF-8 ist derzeit das einzige unterstützte Codierungsformat. |
@@ -270,9 +229,9 @@ Die folgende Tabelle enthält die Eigenschaftennamen und die entsprechenden Besc
 Die Anzahl der Partitionen [basiert auf der Service Bus-SKU und -Größe](../service-bus-messaging/service-bus-partitioning.md). Der Partitionsschlüssel gibt einen eindeutigen ganzzahligen Wert für jede Partition an.
 
 ## <a name="azure-cosmos-db"></a>Azure Cosmos DB
-[Azure Cosmos DB](https://azure.microsoft.com/services/documentdb/) ist ein global verteilter Datenbankdienst, der eine grenzenlose elastische Skalierung rund um den Globus, umfangreiche Abfragen und automatische Indizierung über schemaunabhängige Datenmodelle bietet. Weitere Informationen zu den Azure Cosmos DB-Sammlungsoptionen für Stream Analytics finden Sie im Artikel [Azure Stream Analytics mit Azure Cosmos DB als Ausgabe](stream-analytics-documentdb-output.md).
+[Azure Cosmos DB](https://azure.microsoft.com/services/documentdb/) ist ein global verteilter Datenbankdienst, der eine grenzenlose elastische Skalierung rund um den Globus, umfangreiche Abfragen und automatische Indizierung über schemaunabhängige Datenmodelle bietet. Weitere Informationen zu den Azure Cosmos DB-Containeroptionen für Stream Analytics finden Sie im Artikel [Azure Stream Analytics mit Azure Cosmos DB als Ausgabe](stream-analytics-documentdb-output.md).
 
-Die Azure Cosmos DB-Ausgabe aus Stream Analytics ist zurzeit nicht in den Regionen Azure China (21Vianet) und Azure Deutschland (T-Systems International) verfügbar.
+Die Azure Cosmos DB-Ausgabe aus Stream Analytics ist zurzeit nicht in den Regionen Azure China 21Vianet und Azure Deutschland (T-Systems International) verfügbar.
 
 > [!Note]
 > Derzeit unterstützt Azure Stream Analytics nur die Verbindung mit Azure Cosmos DB über die SQL-API.
@@ -288,14 +247,13 @@ In der folgenden Tabelle werden die Eigenschaften zum Erstellen einer Azure Cosm
 | Konto-ID | Der Name oder Endpunkt-URI des Azure Cosmos DB-Kontos. |
 | Kontoschlüssel | Der Schlüssel für den gemeinsamen Zugriff für das Azure Cosmos DB-Konto. |
 | Datenbank | Der Name der Azure Cosmos DB-Datenbank. |
-| Muster des Sammlungsnamen | Der Sammlungsname oder das Muster für die zu verwendenden Sammlungen. <br />Sie können das Sammlungsnamenformat mit dem optionalen Token {partition} bilden, wobei Partitionen bei 0 beginnen. Zwei Beispiele:  <br /><ul><li> _MyCollection_: Eine Sammlung mit dem Namen „MyCollection“ muss vorhanden sein.</li>  <li> _MyCollection{partition}_: Basierend auf der Partitionierungsspalte.</li></ul> Die Sammlungen der Partitionierungsspalten müssen vorhanden sein: „MyCollection0,“ „MyCollection1,“ „MyCollection2,“ usw. |
-| Partitionsschlüssel | Optional. Dies ist nur erforderlich, wenn Sie ein {partition}-Token in Ihrem Namensmuster der Sammlung verwenden.<br /> Der Partitionierungsschlüssel ist der Name des Felds in Ausgabeereignissen, das zur Angabe des Schlüssels für die sammlungsübergreifende Partitionierung der Ausgabe verwendet wird.<br /> Für die Ausgabe einer einzelnen Sammlung können Sie eine beliebige Ausgabespalte verwenden. Ein Beispiel ist „PartitionId“. |
+| Containername | Der zu verwendende Containername, der in Cosmos DB vorhanden sein muss. Beispiel:  <br /><ul><li> _MyContainer_: Ein Container namens „MyContainer“ muss vorhanden sein.</li>|
 | Dokument-ID |Optional. Der Name des Felds in Ausgabeereignissen, das zur Angabe des Primärschlüssels verwendet wird, auf dem Einfüge- und Aktualisierungsvorgänge basieren.
 
 ## <a name="azure-functions"></a>Azure-Funktionen
 Azure Functions ist ein serverloser Computedienst, mit dem Sie Code bedarfsgesteuert ausführen können, ohne eine explizite Infrastruktur bereitstellen oder verwalten zu müssen. Mit diesem Dienst können Sie Codes implementieren, die durch in Azure- oder Partnerdiensten auftretende Ereignisse ausgelöst werden. Aufgrund der Möglichkeit, auf Trigger zu antworten, ist Azure Functions die ideale Ausgabe für Azure Stream Analytics. Mithilfe dieses Ausgabeadapters können Benutzer eine Verbindung zwischen Stream Analytics und Azure Functions herstellen und als Reaktion auf verschiedenste Ereignisse ein Skript oder einen Codeausschnitt ausführen.
 
-Die Azure Functions-Ausgabe aus Stream Analytics ist zurzeit nicht in den Regionen Azure China (21Vianet) und Azure Deutschland (T-Systems International) verfügbar.
+Die Azure Functions-Ausgabe aus Stream Analytics ist zurzeit nicht in den Regionen Azure China 21Vianet und Azure Deutschland (T-Systems International) verfügbar.
 
 Azure Stream Analytics ruft Azure Functions über HTTP-Trigger auf. Der Azure Functions-Ausgabeadapter wird mit folgenden konfigurierbaren Eigenschaften zur Verfügung gestellt:
 
@@ -337,17 +295,17 @@ In der folgenden Tabelle werden die Partitionsunterstützung und die Anzahl der 
 | Ausgabetyp | Unterstützung der Partitionierung | Partitionsschlüssel  | Anzahl der Ausgabeschreiber |
 | --- | --- | --- | --- |
 | Azure Data Lake Store | Ja | Verwenden Sie die {date}- und {time}-Tokens im Pfadpräfixmuster. Wählen Sie ein Datumsformat wie JJJJ/MM/TT, TT/MM/JJJJ oder MM-TT-JJJJ. „HH“ wird für das Uhrzeitformat verwendet. | Hierbei wird die Eingabepartitionierung für [vollständig parallelisierbare Abfragen](stream-analytics-scale-jobs.md) befolgt. |
-| Azure SQL-Datenbank | Ja | Basierend auf der PARTITION BY-Klausel in der Abfrage. | Hierbei wird die Eingabepartitionierung für [vollständig parallelisierbare Abfragen](stream-analytics-scale-jobs.md) befolgt. Weitere Informationen zum Erzielen einer höheren Durchsatzleistung beim Laden von Daten in Azure SQL-Datenbank finden Sie unter [Azure Stream Analytics-Ausgabe an Azure SQL-Datenbank](stream-analytics-sql-output-perf.md). |
+| Azure SQL-Datenbank | Ja, muss aktiviert sein. | Basierend auf der PARTITION BY-Klausel in der Abfrage. | Wenn die Option „Partitionierung erben“ aktiviert ist, folgt die Eingabepartitionierung für [vollständig parallelisierbare Abfragen](stream-analytics-scale-jobs.md). Weitere Informationen zum Erzielen einer höheren Durchsatzleistung beim Laden von Daten in Azure SQL-Datenbank finden Sie unter [Azure Stream Analytics-Ausgabe an Azure SQL-Datenbank](stream-analytics-sql-output-perf.md). |
 | Azure Blob Storage | Ja | Verwenden Sie die Token {date} und {time} aus Ihren Ereignisfeldern im Pfadmuster. Wählen Sie ein Datumsformat wie JJJJ/MM/TT, TT/MM/JJJJ oder MM-TT-JJJJ. „HH“ wird für das Uhrzeitformat verwendet. Die Blobausgabe kann durch ein einzelnes benutzerdefiniertes Ereignisattribut {fieldname} oder {datetime:\<Spezifizierer>} partitioniert werden. | Hierbei wird die Eingabepartitionierung für [vollständig parallelisierbare Abfragen](stream-analytics-scale-jobs.md) befolgt. |
 | Azure Event Hubs | Ja | Ja | Variiert je nach Partitionsausrichtung.<br /> Wenn der Partitionsschlüssel für die Event Hub-Ausgabe gleichmäßig mit dem (vorherigen) Upstream-Abfrageschritt ausgerichtet ist, entspricht die Anzahl der Writer der Anzahl der Partitionen in der Event Hub-Ausgabe. Jeder Writer verwendet die [EventHubSender-Klasse](/dotnet/api/microsoft.servicebus.messaging.eventhubsender?view=azure-dotnet), um Ereignisse an die jeweilige Partition zu senden. <br /> Wenn der Partitionsschlüssel für die Event Hub-Ausgabe nicht mit dem (vorherigen) Upstream-Abfrageschritt ausgerichtet ist, entspricht die Anzahl der Writer der Anzahl der Partitionen in diesem vorherigen Schritt. Jeder Writer verwendet die [SendBatchAsync-Klasse](/dotnet/api/microsoft.servicebus.messaging.eventhubclient.sendasync?view=azure-dotnet) in **EventHubClient**, um Ereignisse an alle Ausgabepartitionen zu senden. |
-| Power BI | Nein  | Keine | Nicht zutreffend |
+| Power BI | Nein | Keine | Nicht zutreffend |
 | Azure-Tabellenspeicher | Ja | Eine beliebige Ausgabespalte.  | Hierbei wird die Eingabepartitionierung für [vollständig parallelisierte Abfragen](stream-analytics-scale-jobs.md) befolgt. |
 | Azure Service Bus-Thema | Ja | Wird automatisch ausgewählt. Die Anzahl der Partitionen basiert auf der [Service Bus-SKU und -Größe](../service-bus-messaging/service-bus-partitioning.md). Der Partitionsschlüssel gibt einen eindeutigen ganzzahligen Wert für jede Partition an.| Entspricht der Anzahl von Partitionen im Ausgabethema.  |
 | Azure Service Bus-Warteschlange | Ja | Wird automatisch ausgewählt. Die Anzahl der Partitionen basiert auf der [Service Bus-SKU und -Größe](../service-bus-messaging/service-bus-partitioning.md). Der Partitionsschlüssel gibt einen eindeutigen ganzzahligen Wert für jede Partition an.| Entspricht der Anzahl von Partitionen in der Ausgabewarteschlange. |
-| Azure Cosmos DB | Ja | Verwenden Sie das {partition}-Token im Sammlungsnamensmuster. Der {partition}-Wert basiert auf der PARTITION BY-Klausel in der Abfrage. | Hierbei wird die Eingabepartitionierung für [vollständig parallelisierte Abfragen](stream-analytics-scale-jobs.md) befolgt. |
-| Azure-Funktionen | Nein  | Keine | Nicht zutreffend |
+| Azure Cosmos DB | Ja | Basierend auf der PARTITION BY-Klausel in der Abfrage. | Hierbei wird die Eingabepartitionierung für [vollständig parallelisierte Abfragen](stream-analytics-scale-jobs.md) befolgt. |
+| Azure-Funktionen | Nein | Keine | Nicht zutreffend |
 
-Wenn der Ausgabeadapter nicht partitioniert ist, führt das Fehlen von Daten in einer Eingabepartition zu einer Verzögerung, bis die Zeitspanne für die Eingangsverzögerung verstrichen ist. In solchen Fällen wird die Ausgabe in einen einzigen Writer zusammengeführt, was Engpässe in Ihrer Pipeline verursachen kann. Weitere Informationen zur Richtlinie bei Eingangsverzögerung finden Sie unter [Überlegungen zur Ereignisreihenfolge in Azure Stream Analytics](stream-analytics-out-of-order-and-late-events.md).
+Die Anzahl der Ausgabeschreiber können Sie auch mithilfe der `INTO <partition count>`-Klausel (siehe [INTO](https://docs.microsoft.com/stream-analytics-query/into-azure-stream-analytics#into-shard-count)) in Ihrer Abfrage steuern, die hilfreich sein kann, um die gewünschte Auftragstopologie zu erzielen. Wenn der Ausgabeadapter nicht partitioniert ist, führt das Fehlen von Daten in einer Eingabepartition zu einer Verzögerung, bis die Zeitspanne für die Eingangsverzögerung verstrichen ist. In solchen Fällen wird die Ausgabe in einen einzigen Writer zusammengeführt, was Engpässe in Ihrer Pipeline verursachen kann. Weitere Informationen zur Richtlinie bei Eingangsverzögerung finden Sie unter [Überlegungen zur Ereignisreihenfolge in Azure Stream Analytics](stream-analytics-out-of-order-and-late-events.md).
 
 ## <a name="output-batch-size"></a>Ausgabebatchgröße
 Für Azure Stream Analytics werden Batches mit variabler Größe verwendet, um Ereignisse zu verarbeiten und in Ausgaben zu schreiben. Normalerweise schreibt das Stream Analytics-Modul nicht nur jeweils eine Nachricht, sondern Batches, um die Effizienz zu steigern. Wenn die Rate der eingehenden und ausgehenden Ereignisse hoch ist, verwendet Stream Analytics größere Batches. Falls die Ausgangsrate niedrig ist, werden kleinere Batches genutzt, um die Latenz gering zu halten.
@@ -357,14 +315,14 @@ In der folgenden Tabelle sind einige Aspekte von Ausgabebatches beschrieben:
 | Ausgabetyp | Maximale Nachrichtengröße | Optimierung der Batchgröße |
 | :--- | :--- | :--- |
 | Azure Data Lake Store | Siehe [Grenzwerte für Data Lake Store](../azure-subscription-service-limits.md#data-lake-store-limits). | Verwenden Sie bis zu 4 MB pro Schreibvorgang. |
-| Azure SQL-Datenbank | Maximal 10.000 Zeilen pro Masseneinfügen-Vorgang.<br />Mindestens 100 Zeilen pro Masseneinfügen-Vorgang. <br />Siehe [Einschränkungen für Azure SQL-Datenbank](../sql-database/sql-database-resource-limits.md). |  Jeder Batch wird zunächst mit maximaler Batchgröße als Massenvorgang eingefügt. Sie können den Batch in zwei Hälften teilen (bis zur minimalen Batchgröße), basierend auf wiederholbaren Fehlern von SQL. |
+| Azure SQL-Datenbank | Konfigurierbar mithilfe der maximal zulässigen Batchanzahl. Standardmäßig höchstens 10.000 Zeilen und mindestens 100 Zeilen bei einem einzelnen Masseneinfügevorgang.<br />Siehe [Einschränkungen für Azure SQL-Datenbank](../sql-database/sql-database-resource-limits.md). |  Jeder Batch wird zunächst mit maximaler Batchanzahl als Massenvorgang eingefügt. Der Batch wird in der Mitte (bis zur minimalen Batchanzahl) basierend auf wiederholbaren Fehlern aus SQL unterteilt. |
 | Azure Blob Storage | Siehe [Azure Storage-Grenzwerte](../azure-subscription-service-limits.md#storage-limits). | Die maximale Größe von Blobblöcken beträgt 4 MB.<br />Die maximale Anzahl von Blobblöcken beträgt 50.000. |
-| Azure Event Hubs  | 256 KB pro Nachricht. <br />Siehe [Event Hubs-Grenzwerte](../event-hubs/event-hubs-quotas.md). |  Wenn die E/A-Partitionierung nicht aneinander ausgerichtet ist, wird jedes Ereignis einzeln in **EventData** verpackt und als Batch gesendet, dessen Größe bis zur maximalen Nachrichtengröße reichen kann (1 MB für Premium-SKU). <br /><br />  Falls die E/A-Partitionierung aneinander ausgerichtet ist, werden mehrere Ereignisse bis zur maximalen Nachrichtengröße in eine einzelne **EventData**-Instanz verpackt und gesendet.  |
+| Azure Event Hubs  | 256KB oder 1MB pro Nachricht. <br />Siehe [Event Hubs-Grenzwerte](../event-hubs/event-hubs-quotas.md). |  Wenn die E/A-Partitionierung nicht ausgerichtet ist, wird jedes Ereignis einzeln in `EventData` verpackt und als Batch gesendet, dessen Größe bis zur maximalen Nachrichtengröße reichen kann. Dies geschieht auch, wenn [benutzerdefinierte Metadateneigenschaften](#custom-metadata-properties-for-output) verwendet werden. <br /><br />  Wenn die E/A-Partitionierung ausgerichtet ist, werden mehrere Ereignisse bis zur maximalen Nachrichtengröße in eine einzelne `EventData`-Instanz verpackt und gesendet. |
 | Power BI | Siehe [Einschränkungen für Power BI-REST-API](https://msdn.microsoft.com/library/dn950053.aspx). |
 | Azure-Tabellenspeicher | Siehe [Azure Storage-Grenzwerte](../azure-subscription-service-limits.md#storage-limits). | Der Standardwert ist 100 Entitäten pro Einzeltransaktion. Sie können bei Bedarf einen niedrigeren Wert konfigurieren. |
-| Azure Service Bus-Warteschlange   | 256 KB pro Nachricht.<br /> Siehe [Service Bus-Grenzwerte](../service-bus-messaging/service-bus-quotas.md). | Verwenden Sie ein einzelnes Ereignis pro Nachricht. |
-| Azure Service Bus-Thema | 256 KB pro Nachricht.<br /> Siehe [Service Bus-Grenzwerte](../service-bus-messaging/service-bus-quotas.md). | Verwenden Sie ein einzelnes Ereignis pro Nachricht. |
-| Azure Cosmos DB   | Siehe [Einschränkungen für Azure Cosmos DB](../azure-subscription-service-limits.md#azure-cosmos-db-limits). | Die Batchgröße und Schreibfrequenz wird basierend auf den Azure Cosmos DB-Antworten dynamisch angepasst. <br /> Es gelten keine vordefinierten Stream Analytics-Einschränkungen. |
+| Azure Service Bus-Warteschlange   | 256KB pro Nachricht für den Standard-Tarif, 1MB für den Premium-Tarif.<br /> Siehe [Service Bus-Grenzwerte](../service-bus-messaging/service-bus-quotas.md). | Verwenden Sie ein einzelnes Ereignis pro Nachricht. |
+| Azure Service Bus-Thema | 256KB pro Nachricht für den Standard-Tarif, 1MB für den Premium-Tarif.<br /> Siehe [Service Bus-Grenzwerte](../service-bus-messaging/service-bus-quotas.md). | Verwenden Sie ein einzelnes Ereignis pro Nachricht. |
+| Azure Cosmos DB   | Siehe [Einschränkungen für Azure Cosmos DB](../azure-subscription-service-limits.md#azure-cosmos-db-limits). | Die Batchgröße und Schreibfrequenz werden basierend auf den Azure Cosmos DB-Antworten dynamisch angepasst. <br /> Es gelten keine vordefinierten Stream Analytics-Einschränkungen. |
 | Azure-Funktionen   | | Die Standardbatchgröße beträgt 262.144 Bytes (256 KB). <br /> Die Standardereignisanzahl pro Batch beträgt 100. <br /> Die Batchgröße ist konfigurierbar und kann in den [Ausgabeoptionen](#azure-functions) von Stream Analytics erhöht oder verringert werden.
 
 ## <a name="next-steps"></a>Nächste Schritte

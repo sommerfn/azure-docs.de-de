@@ -5,14 +5,14 @@ services: azure-resource-manager
 author: tfitzmac
 ms.service: azure-resource-manager
 ms.topic: conceptual
-ms.date: 06/06/2019
+ms.date: 07/01/2019
 ms.author: tomfitz
-ms.openlocfilehash: 99fd4215de4dd118558acc008fcfa6490ea0093d
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 22317372a7d954286ebcb0b59aea293c746b2a58
+ms.sourcegitcommit: 79496a96e8bd064e951004d474f05e26bada6fa0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66807369"
+ms.lasthandoff: 07/02/2019
+ms.locfileid: "67508176"
 ---
 # <a name="resource-property-or-variable-iteration-in-azure-resource-manager-templates"></a>Iteration von Ressourcen, Eigenschaften oder Variablen in Azure Resource Manager-Vorlagen
 
@@ -50,6 +50,8 @@ Wenn Sie angeben müssen, ob eine Ressource überhaupt bereitgestellt wird, find
 Um die Anzahl der Iterationen festzulegen, geben Sie einen Wert für die count-Eigenschaft an. Der Wert von „count“ darf 800 nicht überschreiten.
 
 Der Wert von „count“ darf nicht negativ sein. Wenn Sie eine Vorlage mit der REST-API-Version **2019-05-10** oder höher bereitstellen, können Sie „count“ auf „0“ (null) festlegen. Frühere Versionen der REST-API unterstützen den Wert „0“ (null) für „count“ nicht. Die Azure-Befehlszeilenschnittstelle oder PowerShell unterstützen den Wert „0“ (null) für „count“ derzeit nicht, aber die Unterstützung wird in einer zukünftigen Version hinzugefügt.
+
+Wenden Sie die [Bereitstellung im vollständigen Modus](deployment-modes.md) mit Kopieren mit Vorsicht an. Wenn Sie mit dem vollständigen Modus erneut in einer Ressourcengruppe bereitstellen, werden alle Ressourcen, die nicht in der Vorlage angegeben sind, nach dem Auflösen der Kopierschleife gelöscht.
 
 Die Einschränkungen für „count“ sind für Ressourcen, Variablen und Eigenschaften gleich.
 

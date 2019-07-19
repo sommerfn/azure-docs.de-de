@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/06/2018
 ms.author: barclayn
-ms.openlocfilehash: 11f3dcefd283ada00e915c2d6cb8abf654590ec1
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: b8d5d1b3c3f505b66e07f7aa226cfa001af94af8
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60588080"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67449338"
 ---
 # <a name="azure-ddos-protection-best-practices-and-reference-architectures"></a>Azure DDoS Protection: Bewährte Methoden und Referenzarchitekturen
 
@@ -224,6 +224,8 @@ Azure DDoS Protection Standard identifiziert und entschärft DDoS-Angriffe ohne 
 - Wenn Sie ein virales Ereignis planen, dass zu einem beträchtlichen Anstieg Ihres Netzwerkdatenverkehrs führen wird.
 
 - Wenn jemand einen DDoS-Angriff auf Ihre Ressourcen angedroht hat.
+
+- Wenn Sie eine IP-Adresse oder einen IP-Adressbereich aus Azure DDoS Protection Standard zulassen müssen. Ein häufiges Szenario ist, die IP zuzulassen, wenn der Datenverkehr von einer externen Cloud-WAF nach Azure geleitet wird. 
 
 Erstellen Sie für Fälle mit gravierenden geschäftlichen Auswirkungen ein Schweregrad-A-[Supportticket](https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest).
 

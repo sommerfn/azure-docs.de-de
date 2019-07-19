@@ -3,7 +3,7 @@ title: Arbeiten mit der verwalteten Clientbibliothek von Mobile App Service-Apps
 description: Erfahren Sie, wie Sie eine .NET-Clientbibliothek für Mobile App Service-Apps von Azure mit Windows- und Xamarin-Apps verwenden.
 services: app-service\mobile
 documentationcenter: ''
-author: conceptdev
+author: elamalani
 manager: crdun
 editor: ''
 ms.assetid: 0280785c-e027-4e0d-aaf2-6f155e5a6197
@@ -12,24 +12,29 @@ ms.workload: mobile
 ms.tgt_pltfrm: mobile-multiple
 ms.devlang: dotnet
 ms.topic: article
-ms.date: 09/24/2018
-ms.author: crdun
-ms.openlocfilehash: 8f014f1cb40e1a629d1989f00805fc91015a3ae9
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.date: 06/25/2019
+ms.author: emalani
+ms.openlocfilehash: af0a4af2bec29e68175d2e15203a02507f08bfeb
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "62119302"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67446354"
 ---
 # <a name="how-to-use-the-managed-client-for-azure-mobile-apps"></a>Verwenden des verwalteten Clients für Azure Mobile Apps
 [!INCLUDE [app-service-mobile-selector-client-library](../../includes/app-service-mobile-selector-client-library.md)]
 
+> [!NOTE]
+> Im Rahmen von Visual Studio App Center wird in neue und integrierte Dienste investiert, die für die Entwicklung mobiler Apps von zentraler Bedeutung sind. Entwickler können **Build**-, **Test**- und **Verteilungs**dienste nutzen, um eine Pipeline für Continuous Integration und Delivery einzurichten. Nach der Bereitstellung der App können Entwickler den Status und die Nutzung ihrer App mithilfe der **Analyse**- und **Diagnose**dienste überwachen und mit Benutzern über den **Push**dienst interagieren. Entwickler können auch den **Authentifizierung**sdienst nutzen, um ihre Benutzer zu authentifizieren, und den **Daten**dienst, um App-Daten dauerhaft in der Cloud zu speichern und zu synchronisieren. Besuchen Sie noch heute das [App Center](https://appcenter.ms/?utm_source=zumo&utm_campaign=app-service-mobile-dotnet-how-to-use-client-library).
+>
+
 ## <a name="overview"></a>Übersicht
-In dieser Anleitung wird die Ausführung gängiger Aufgaben mithilfe der verwalteten Clientbibliothek für Mobile App Service-Apps unter Azure in Windows- und Xamarin-Apps beschrieben. Wenn Sie keine Erfahrungen mit Mobile Apps haben, sollten Sie eventuell zunächst das [Schnellstarttutorial für Azure Mobile Apps][1] absolvieren. In diesem Handbuch konzentrieren wir uns auf das clientseitige verwaltete SDK. Weitere Informationen zu den serverseitigen SDKs für Mobile Apps finden Sie in der Dokumentation zum [.NET Server SDK][2] oder [Node.js Server SDK][3].
+In dieser Anleitung wird die Ausführung gängiger Aufgaben mithilfe der verwalteten Clientbibliothek für Mobile App Service-Apps unter Azure in Windows- und Xamarin-Apps beschrieben. Wenn Sie keine Erfahrungen mit Mobile Apps haben, sollten Sie eventuell zunächst das Tutorial [Erstellen einer Windows-App][1] absolvieren. In diesem Handbuch konzentrieren wir uns auf das clientseitige verwaltete SDK. Weitere Informationen zu den serverseitigen SDKs für Mobile Apps finden Sie in der Dokumentation zum [.NET Server SDK][2] or the
+[Node.js Server SDK][3].
 
 ## <a name="reference-documentation"></a>Referenzdokumentation
 Die Referenzdokumentation für das Client-SDK finden Sie hier: [.NET-Client-Referenz für Azure Mobile Apps][4].
-Sie finden auch mehrere Clientbeispiele im [GitHub-Repository „Azure-Samples“][5] (Azure-Beispiele).
+Sie finden auch mehrere Clientbeispiele im [GitHub-Repository „Azure Samples“][5](Azure Beispiele).
 
 ## <a name="supported-platforms"></a>Unterstützte Plattformen
 Die .NET-Plattform unterstützt die folgenden Plattformen:
@@ -43,7 +48,7 @@ Die .NET-Plattform unterstützt die folgenden Plattformen:
 Die Authentifizierung für den „Serverfluss“ verwendet eine Webansicht für die dargestellte Benutzeroberfläche.  Wenn das Gerät keine Benutzeroberfläche in Form einer Webansicht darstellen kann, sind andere Authentifizierungsmethoden erforderlich.  Dieses SDK eignet sich daher nicht für Geräte vom Typ „Überwachung“ oder für ähnlich eingeschränkte Geräte.
 
 ## <a name="setup"></a>Einrichtung und Voraussetzungen
-Es wird davon ausgegangen, dass Sie Ihr Mobile App-Back-End-Projekt bereits erstellt und veröffentlicht haben und dass es mindestens eine Tabelle enthält.  Der Code in diesem Thema verwendet eine Tabelle mit dem Namen `TodoItem` und den folgenden Spalten: `Id`, `Text` und `Complete`. Dies ist die gleiche Tabelle, die Sie beim Durcharbeiten des [Schnellstarttutorials für Azure Mobile Apps][1] erstellt haben.
+Es wird davon ausgegangen, dass Sie Ihr Mobile App-Back-End-Projekt bereits erstellt und veröffentlicht haben und dass es mindestens eine Tabelle enthält.  Der Code in diesem Thema verwendet eine Tabelle mit dem Namen `TodoItem` und den folgenden Spalten: `Id`, `Text` und `Complete`. Dies ist die gleiche Tabelle, die Sie beim Durcharbeiten des [Schnellstarttutorials für Azure Mobile Apps][1]erstellt haben.
 
 Der entsprechende typisierte clientseitige Typ in C# ist die folgende Klasse:
 
@@ -62,7 +67,8 @@ public class TodoItem
 
 Das [JsonPropertyAttribute][6] wird verwendet, um die *PropertyName*-Zuordnung zwischen dem Clientfeld und dem Tabellenfeld zu definieren.
 
-Informationen zum Erstellen von Tabellen in Ihrem Mobile Apps-Back-End finden Sie im Thema zum [.NET Server SDK][7] oder zum [Node.js Server SDK][8]. Wenn Sie Ihr Mobile App-Back-End im Azure-Portal mithilfe des Schnellstarts erstellt haben, können Sie auch die Einstellung **Einfache Tabellen** im [Azure-Portal]verwenden.
+Informationen zum Erstellen von Tabellen in Ihrem Mobile Apps-Back-End finden Sie im [Thema zum .NET Server SDK][7]
+or the [Node.js Server SDK topic][8]. Wenn Sie Ihr Mobile App-Back-End im Azure-Portal mithilfe des Schnellstarts erstellt haben, können Sie auch die Einstellung **Einfache Tabellen** im [Azure-Portal]verwenden.
 
 ### <a name="how-to-install-the-managed-client-sdk-package"></a>Gewusst wie: Installieren des SDK-Pakets für verwaltete Clients
 Verwenden Sie eine der folgenden Methoden, um das SDK-Paket für verwaltete Clients für Mobile Apps von [NuGet][9]zu installieren:
@@ -80,10 +86,11 @@ using Microsoft.WindowsAzure.MobileServices;
 > Beachten Sie, dass alle Unterstützungspakete, auf die in Ihrem Android-Projekt verwiesen wird, die gleiche Version aufweisen müssen. Das SDK hat eine `Xamarin.Android.Support.CustomTabs`-Abhängigkeit für die Android-Plattform. Wenn also Ihr Projekt neuere Unterstützungspakete verwendet, müssen Sie dieses Paket direkt mit der erforderlichen Version installieren, um Konflikte zu vermeiden.
 
 ### <a name="symbolsource"></a>Vorgehensweise: Arbeiten mit Debugsymbolen in Visual Studio
-Die Symbole für den Namespace „Microsoft.Azure.Mobile“ sind unter [SymbolSource][10] verfügbar.  Integrieren Sie SymbolSource gemäß den [SymbolSource-Anweisungen][11] in Visual Studio.
+Die Symbole für den Namespace „Microsoft.Azure.Mobile“ sind unter [SymbolSource][10].  Refer to the
+[SymbolSource instructions][11] zum Integrieren von SymbolSource in Visual Studio verfügbar.
 
 ## <a name="create-client"></a>Erstellen des Mobile Apps-Clients
-Der folgende Code erstellt das [MobileServiceClient][12]-Objekt, das für den Zugriff auf Ihr Mobile App-Back-End verwendet wird.
+Der folgende Code erstellt das [MobileServiceClient][12] -Objekt, das für den Zugriff auf Ihr Mobile App-Back-End verwendet wird.
 
 ```csharp
 var client = new MobileServiceClient("MOBILE_APP_URL");
@@ -522,7 +529,7 @@ Offlinetabellen verwenden eine lokalen SQLite-Speicher zum Speichern von Daten f
 
    * **Windows 8.1-Runtime:** Installieren Sie [SQLite für Windows 8.1][3].
    * **Windows Phone 8.1:** Installieren Sie [SQLite für Windows Phone 8.1][4].
-   * **Universelle Windows-Plattform:** Installieren Sie [SQLite für die universelle Windows-Plattform][5].
+   * **Universelle Windows-Plattform**: Installieren Sie [SQLite für die universelle Windows-Plattform][5].
 3. (Optional). Klicken Sie bei Windows-Geräten auf **Verweise** > **Verweis hinzufügen...** , erweitern Sie den Ordner **Windows**, und wählen Sie **Erweiterungen**. Aktivieren Sie anschließend das richtige **SDK SQLite für Windows** zusammen mit dem SDK **Visual C++ 2013 Runtime for Windows**.
     Die Namen der SQLite-SDKs unterscheiden sich bei den einzelnen Windows-Plattformen.
 

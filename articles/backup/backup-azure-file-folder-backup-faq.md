@@ -5,34 +5,30 @@ author: dcurwin
 manager: carmonm
 ms.service: backup
 ms.topic: conceptual
-ms.date: 05/28/2019
+ms.date: 07/02/2019
 ms.author: dacurwin
-ms.openlocfilehash: 56dc87b1cdf36d761c46133004a05f8fa225a091
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: d4d1044a30d4ebc551cf1305993aba2a201c4c94
+ms.sourcegitcommit: 6cb4dd784dd5a6c72edaff56cf6bcdcd8c579ee7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66808299"
+ms.lasthandoff: 07/02/2019
+ms.locfileid: "67514452"
 ---
-# <a name="common-questions-about-backing-up-files-and-folders"></a>Häufig gestellte Fragen zum Sichern von Dateien und Ordnern 
+# <a name="common-questions-about-backing-up-files-and-folders"></a>Häufig gestellte Fragen zum Sichern von Dateien und Ordnern
 
 Dieser Artikel enthält Antworten auf häufige Fragen zur Sicherung von Dateien und Ordnern mit dem Microsoft Azure Recovery Services (MARS)-Agent im [Azure Backup](backup-overview.md)-Dienst.
 
 ## <a name="general"></a>Allgemein
 
-### <a name="why-does-the-mars-agent-need-net-framework-452-or-higher"></a>Warum benötigt der MARS-Agent .NET Framework 4.5.2 oder höher?
-
-Eine neue Funktionalität der [Sofortigen Wiederherstellung](backup-azure-restore-windows-server.md#use-instant-restore-to-recover-data-to-the-same-machine) benötigt .NET Framework 4.5.2 oder höher.
-
 ## <a name="configure-backups"></a>Konfigurieren von Sicherungen
 
-### <a name="where-can-i-download-the-latest-version-of-the-mars-agent"></a>Wo kann ich die neueste Version des MARS-Agents herunterladen? 
-Der neueste MARS-Agent, der beim Sichern von Windows Server-Computern, System Center DPM und Microsoft Azure Backup-Server verwendet wird, steht zum [Herunterladen](https://aka.ms/azurebackup_agent) zur Verfügung. 
+### <a name="where-can-i-download-the-latest-version-of-the-mars-agent"></a>Wo kann ich die neueste Version des MARS-Agents herunterladen?
+Der neueste MARS-Agent, der beim Sichern von Windows Server-Computern, System Center DPM und Microsoft Azure Backup-Server verwendet wird, steht zum [Herunterladen](https://aka.ms/azurebackup_agent) zur Verfügung.
 
 ### <a name="how-long-are-vault-credentials-valid"></a>Wie lange gelten Tresoranmeldeinformationen?
 Tresoranmeldeinformationen laufen nach 48 Stunden ab. Wenn die Datei mit den Anmeldeinformationen abläuft, laden Sie die Datei erneut vom Azure-Portal herunter.
 
-### <a name="from-what-drives-can-i-back-up-files-and-folders"></a>Von welchen Laufwerken kann ich Dateien und Ordner sichern? 
+### <a name="from-what-drives-can-i-back-up-files-and-folders"></a>Von welchen Laufwerken kann ich Dateien und Ordner sichern?
 
 Die folgenden Typen von Laufwerken und Volumes können nicht gesichert werden:
 
@@ -45,24 +41,15 @@ Die folgenden Typen von Laufwerken und Volumes können nicht gesichert werden:
 
 ### <a name="what-file-and-folder-types-are-supported"></a>Welche Datei- und Ordnertypen werden unterstützt?
 
-Die folgenden Typen werden unterstützt:
-
-* Verschlüsselt
-* Komprimiert
-* Platzsparend
-* Komprimiert und geringe Dichte
-* Feste Links: Nicht unterstützt, wird übersprungen
-* Analysepunkt: Nicht unterstützt, wird übersprungen
-* Verschlüsselt und geringe Dichte: Nicht unterstützt, wird übersprungen
-* Komprimierter Datenstrom: Nicht unterstützt, wird übersprungen
-* Analysepunkte, einschließlich DFS-Links und Verknüpfungspunkte
-
+[Erfahren Sie mehr](backup-support-matrix-mars-agent.md#supported-file-types-for-backup) über die Typen von Dateien und Ordnern, die für die Sicherung unterstützt werden.
 
 ### <a name="can-i-use-the-mars-agent-to-back-up-files-and-folders-on-an-azure-vm"></a>Kann ich mit dem MARS-Agent Dateien und Ordner auf einer Azure-VM sichern?  
-Ja. Azure Backup ermöglicht die Sicherung auf VM-Ebene für Azure VMs mit der VM-Erweiterung für den Azure-VM-Agent. Wenn Sie Dateien und Ordner auf dem Gast-Windows-Betriebssystem auf der VM sichern möchten, können Sie zu diesem Zweck den MARS-Agent installieren. 
+Ja. Azure Backup ermöglicht die Sicherung auf VM-Ebene für Azure VMs mit der VM-Erweiterung für den Azure-VM-Agent. Wenn Sie Dateien und Ordner auf dem Gast-Windows-Betriebssystem auf der VM sichern möchten, können Sie zu diesem Zweck den MARS-Agent installieren.
 
-### <a name="can-i-use-the-mars-agent-to-back-up-files-and-folders-on-temporary-storage-for-the-azure-vm"></a>Kann ich mit dem MARS-Agent Dateien und Ordner auf einem temporären Speicher sichern? 
-Ja. Installieren Sie den MARS-Agent, und sichern Sie Dateien und Ordner auf dem Gast-Windows-Betriebssystem auf einem temporären Speicher. - Sicherungen können nicht erfolgreich durchgeführt werden, wenn Daten aus dem temporären Speicher entfernt werden.
+### <a name="can-i-use-the-mars-agent-to-back-up-files-and-folders-on-temporary-storage-for-the-azure-vm"></a>Kann ich mit dem MARS-Agent Dateien und Ordner auf einem temporären Speicher sichern?
+Ja. Installieren Sie den MARS-Agent, und sichern Sie Dateien und Ordner auf dem Gast-Windows-Betriebssystem auf einem temporären Speicher.
+
+- Sicherungen können nicht erfolgreich durchgeführt werden, wenn Daten aus dem temporären Speicher entfernt werden.
 - Wenn die temporären Speicherdaten gelöscht wurden, ist nur die Wiederherstellung in einem nicht volatilen Speicher möglich.
 
 ### <a name="how-do-i-register-a-server-to-another-region"></a>Wie registriere ich einen Server in einer anderen Region?
@@ -80,7 +67,7 @@ Wenn Sie einen Windows-Computer umbenennen, werden alle derzeit konfigurierten S
 
 - Sie müssen den neuen Namen des Computers beim Sicherungstresor registrieren.
 - Wenn Sie den neuen Namen beim Tresor registrieren, dann ist der erste Vorgang eine *vollständige* Sicherung.
-- Wenn Sie Daten wiederherstellen müssen, die mit dem alten Servernamen im Tresor gesichert wurden, verwenden Sie die Option zur Wiederherstellung an einem alternativen Speicherort im Assistenten für die Datenwiederherstellung. [Weitere Informationen](backup-azure-restore-windows-server.md#use-instant-restore-to-restore-data-to-an-alternate-machine) 
+- Wenn Sie Daten wiederherstellen müssen, die mit dem alten Servernamen im Tresor gesichert wurden, verwenden Sie die Option zur Wiederherstellung an einem alternativen Speicherort im Assistenten für die Datenwiederherstellung. [Weitere Informationen](backup-azure-restore-windows-server.md#use-instant-restore-to-restore-data-to-an-alternate-machine)
 
 ### <a name="what-is-the-maximum-file-path-length-for-backup"></a>Wie lang ist die maximale Dateipfadlänge für die Sicherung?
 Der MARS-Agent basiert auf NTFS und verwendet die durch die [Windows-API](/windows/desktop/FileIO/naming-a-file#fully-qualified-vs-relative-paths) begrenzte Dateipfadlänge. Wenn die Dateien, die Sie sichern möchten, länger als der zulässige Wert sind, sichern Sie den übergeordneten Ordner oder das Laufwerk.  
@@ -143,8 +130,8 @@ Die folgenden Attribute oder Kombinationen dieser Attribute werden für den Cach
 Der Cacheordner und die Metadaten-VHD verfügen nicht über die erforderlichen Attribute für den Azure Backup-Agent.
 
 ### <a name="is-there-a-way-to-adjust-the-amount-of-bandwidth-used-for-backup"></a>Gibt es eine Möglichkeit, die für die Sicherung genutzte Bandbreite anzupassen?
- 
-Ja, Sie können die Option **Eigenschaften ändern** im MARS-Agent verwenden, um die Bandbreite und den Zeitpunkt anzupassen. [Weitere Informationen](backup-configure-vault.md#enable-network-throttling)**.
+
+Ja, Sie können die Option **Eigenschaften ändern** im MARS-Agent verwenden, um die Bandbreite und den Zeitpunkt anzupassen. [Weitere Informationen](backup-configure-vault.md#enable-network-throttling)
 
 ## <a name="restore"></a>Restore
 

@@ -9,12 +9,12 @@ ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 12/06/2018
 ms.custom: seodec18
-ms.openlocfilehash: f372c2a85a9a03c7ead779bd4db64722891c9a4c
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 5b2c153646021aeb8ee0dbb787cfce41af19568d
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60201509"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67443672"
 ---
 # <a name="build-an-iot-solution-by-using-stream-analytics"></a>Erstellen einer IoT-Lösung mithilfe von Stream Analytics
 
@@ -138,7 +138,8 @@ Es sind verschiedene Ressourcen vorhanden, die mit wenigen Klicks zusammen in ei
 10. Nach kurzer Zeit wird eine Benachrichtigung mit dem Hinweis **Bereitstellung erfolgreich** angezeigt.
 
 ### <a name="review-the-azure-stream-analytics-tollapp-resources"></a>Überprüfen der Azure Stream Analytics-TollApp-Ressourcen
-1. Anmelden beim Azure-Portal
+
+1. Melden Sie sich auf dem Azure-Portal an.
 
 2. Suchen Sie nach der Ressourcengruppe, der Sie im vorherigen Abschnitt einen Namen gegeben haben.
 
@@ -171,7 +172,7 @@ Es sind verschiedene Ressourcen vorhanden, die mit wenigen Klicks zusammen in ei
    - Die Eingabe **Registration** (Registrierung) ist eine Azure-Blobspeicherverbindung und verweist auf die statische Datei „registration.json“, die je nach Bedarf für Suchvorgänge verwendet wird. Diese Referenzdateneingabe wird in späteren Varianten der Abfragesyntax verwendet.
 
 4. Untersuchen Sie die Ausgaben des TollApp-Beispielauftrags.
-   - Die **Cosmos DB**-Ausgabe ist eine Cosmos-Datenbanksammlung, die die Ausgabesenkenereignisse empfängt. Beachten Sie, dass diese Ausgabe in der INTO-Klausel der Streamingabfrage verwendet wird.
+   - Die **Cosmos DB**-Ausgabe ist ein Cosmos-Datenbankcontainer, der die Ausgabesenkenereignisse empfängt. Beachten Sie, dass diese Ausgabe in der INTO-Klausel der Streamingabfrage verwendet wird.
 
 ## <a name="start-the-tollapp-streaming-job"></a>Starten des TollApp-Streamingauftrags
 Führen Sie diese Schritte aus, um den Streamingauftrag zu starten:

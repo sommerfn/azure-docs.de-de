@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 06/04/2019
 ms.author: rogirdh
 ms.custom: ''
-ms.openlocfilehash: 8827feaf1d541edc7c0b54d8af951ddab79c5aaa
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 5a60e41d3195c0f7d88fd3ba14336d693d2f528e
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66808618"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67446677"
 ---
 # <a name="oracle-application-solutions-integrating-microsoft-azure-and-oracle-cloud-infrastructure-preview"></a>Oracle-Anwendungslösungen mit Integration von Microsoft Azure und Oracle Cloud Infrastructure (Vorschauversion)
 
@@ -74,5 +74,7 @@ Identität ist einer der Grundpfeiler der Partnerschaft zwischen Microsoft und O
 Diese Integration ermöglicht aktuell die Verwaltung an einem zentralen Ort (sprich: in Azure Active Directory). Azure AD synchronisiert sämtliche Änderungen im Verzeichnis mit dem entsprechenden Oracle-Verzeichnis und wird für einmaliges Anmelden bei cloudübergreifenden Oracle-Lösungen verwendet.
 
 ## <a name="next-steps"></a>Nächste Schritte
+
+Erste Schritte mit einem [cloudübergreifenden Netzwerk](configure-azure-oci-networking.md) zwischen Azure und OCI. 
 
 Weitere Informationen und Whitepaper zu OCI finden Sie in der [Dokumentation zu Oracle Cloud Infrastructure](https://docs.cloud.oracle.com/iaas/Content/home.htm).

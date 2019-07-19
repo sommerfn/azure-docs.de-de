@@ -2,18 +2,18 @@
 title: Konfigurieren der Replikation für ADE-fähige (Azure Disk Encryption) virtuelle Computer in Azure Site Recovery | Microsoft-Dokumentation
 description: In diesem Artikel erfahren Sie, wie Sie die Replikation ADE-fähiger (Azure Disk Encryption) virtueller Azure-Computer zwischen Azure-Regionen mithilfe von Site Recovery konfigurieren.
 services: site-recovery
-author: sujayt
+author: asgang
 manager: rochakm
 ms.service: site-recovery
 ms.topic: article
 ms.date: 04/08/2019
 ms.author: sutalasi
-ms.openlocfilehash: 4943b730bb46ee00200d84faf95a7ccb069d3aa8
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: b2e9bf7fbe7d5940b517d97dcc15d21c30835001
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60790996"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67449218"
 ---
 # <a name="replicate-azure-disk-encryption-enabled-virtual-machines-to-another-azure-region"></a>Replizieren von ADE-fähigen (Azure Disk Encryption) virtuellen Computern in einer anderen Azure-Region
 
@@ -22,23 +22,23 @@ In diesem Artikel erfahren Sie, wie Sie ADE-fähige (Azure Disk Encryption) virt
 >[!NOTE]
 >Azure Site Recovery unterstützt derzeit nur virtuelle Azure-Computer, auf denen das Windows-Betriebssystem ausgeführt wird und die [für die Verschlüsselung mit Azure Active Directory (Azure AD) aktiviert sind](https://aka.ms/ade-aad-app).
 
-## <a name="required-user-permissions"></a>Erforderliche Benutzerberechtigungen
+## <a id="required-user-permissions"></a> Erforderliche Benutzerberechtigungen
 Site Recovery erfordert, dass der Benutzer Berechtigungen besitzt, um den Schlüsseltresor in der Zielregion zu erstellen und Schlüssel in die Region zu kopieren.
 
 Zum Aktivieren der Replikation von Azure Disk Encryption-fähigen VMs aus dem Azure-Portal benötigt der Benutzer folgende Berechtigungen:
 
 - Schlüsseltresorberechtigungen
-    - Auflisten
+    - List
     - Erstellen
     - Get
 
 -   Berechtigungen für Schlüsseltresorgeheimnisse
-    - Auflisten
+    - List
     - Erstellen
     - Get
 
 - Berechtigungen für Schlüsseltresorschlüssel (nur erforderlich, wenn die virtuellen Computer den Schlüssel für die Schlüsselverschlüsselung verwenden, um Datenträger-Verschlüsselungsschlüssel zu verschlüsseln)
-    - Auflisten
+    - List
     - Get
     - Erstellen
     - Verschlüsseln
@@ -139,18 +139,25 @@ Sie können mit einem [Skript](#copy-disk-encryption-keys-to-the-dr-region-by-us
 
 ## <a id="trusted-root-certificates-error-code-151066"></a>Beheben von Problemen mit der Berechtigung für den Schlüsseltresor während der Azure-zu-Azure-VM-Replikation
 
-**Ursache 1:** Möglicherweise haben Sie in der Zielregion einen bereits erstellten Schlüsseltresor ohne die erforderlichen Berechtigungen ausgewählt, anstatt einen von Site Recovery erstellen zu lassen. Vergewissern Sie sich, dass der Schlüsseltresor über die beschriebenen erforderlichen Berechtigungen verfügt.
+Azure Site Recovery erfordert mindestens die Leseberechtigung für den Schlüsseltresor der Quellregion und die Schreibberechtigung für den Schlüsseltresor der Zielregion, um das Geheimnis zu lesen und in den Schlüsseltresor der Zielregion zu kopieren. 
+
+**Ursache 1:** Sie haben keine „GET“-Berechtigung für den **Schlüsseltresor der Quellregion**, um die Schlüssel zu lesen. </br>
+**Wie behebe ich das Problem?** Unabhängig davon, ob Sie ein Abonnementadministrator sind oder nicht, ist es wichtig, dass Sie über die GET-Berechtigung für den Schlüsseltresor verfügen.
+
+1. Wechseln Sie zum Schlüsseltresor der Quellregion, in diesem Beispiel „ContososourceKeyvault“, und wählen Sie **Zugriffsrichtlinien** aus. 
+2. Fügen Sie unter **Prinzipal auswählen** Ihren Benutzernamen hinzu, z.B.: „dradmin@contoso.com“.
+3. Wählen Sie unter **Schlüsselberechtigungen** „GET“ aus. 
+4. Wählen Sie unter **Berechtigungen für geheime Schlüssel** „GET“ aus. 
+5. Speichern der Zugriffsrichtlinie
+
+**Ursache 2:** Sie verfügen im **Schlüsseltresor der Zielregion** nicht über die erforderliche Berechtigung zum Schreiben der Schlüssel. </br>
 
 *Beispiel*: Sie versuchen, eine VM zu replizieren, die über den Schlüsseltresor *ContososourceKeyvault* in einer Quellregion verfügt.
 Sie besitzen alle Berechtigungen für den Schlüsseltresor in der Quellregion. Während des Schutzes wählen Sie jedoch den bereits erstellten Schlüsseltresor „ContosotargetKeyvault“, der über keine Berechtigungen verfügt. Ein Fehler tritt auf.
 
-**Wie behebe ich das Problem?** Wählen Sie **Home** > **Schlüsseltresore** > **ContososourceKeyvault** > **Zugriffsrichtlinien** aus, und fügen Sie die entsprechenden Berechtigungen hinzu.
+Berechtigung erforderlich im [Schlüsseltresor des Ziels](#required-user-permissions)
 
-**Ursache 2:** Möglicherweise haben Sie in der Zielregion einen bereits erstellten Schlüsseltresor ohne Berechtigungen zum Entschlüsseln und Verschlüsseln ausgewählt, anstatt einen von Site Recovery erstellen zu lassen. Stellen Sie sicher, dass Sie über Berechtigungen zum Entschlüsseln und Verschlüsseln verfügen, falls Sie den Schlüssel auch in der Quellregion verschlüsseln.</br>
-
-*Beispiel*: Sie versuchen, eine VM zu replizieren, die über den Schlüsseltresor *ContososourceKeyvault* in der Quellregion verfügt. Sie besitzen alle erforderlichen Berechtigungen für den Schlüsseltresor in der Quellregion. Während des Schutzes wählen Sie jedoch den bereits erstellten Schlüsseltresor „ContosotargetKeyvault“, der über keine Berechtigungen zum Entschlüsseln und Verschlüsseln verfügt. Ein Fehler tritt auf.</br>
-
-**Wie behebe ich das Problem?** Wählen Sie **Home** > **Schlüsseltresore** > **ContososourceKeyvault** > **Zugriffsrichtlinien** aus. Fügen Sie unter **Schlüsselberechtigungen** > **Kryptografische Vorgänge** Berechtigungen hinzu.
+**Wie behebe ich das Problem?** Wählen Sie **Home** > **Schlüsseltresore** > **ContosotargetKeyvault** > **Zugriffsrichtlinien** aus, und fügen Sie die entsprechenden Berechtigungen hinzu.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

@@ -11,18 +11,18 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb, rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ca062f4024bb5b0946812e00c8ccc1254b56d333
-ms.sourcegitcommit: 13cba995d4538e099f7e670ddbe1d8b3a64a36fb
+ms.openlocfilehash: 970fdaba1870097e253b51c70e523e399bc88dfc
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/22/2019
-ms.locfileid: "66003548"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67440772"
 ---
 # <a name="what-are-baseline-policies"></a>Was sind Basisrichtlinien?
 
 Basisrichtlinien sind vordefinierte Richtlinien, die dabei helfen, Organisationen vor vielen gängigen Angriffen zu schützen. Zu diesen gängigen Angriffen zählen Kennwortspray, Wiedergabe und Phishing. Basisrichtlinien sind in allen Editionen von Azure AD verfügbar. Microsoft stellt diese Basisschutzrichtlinien für alle Benutzer zur Verfügung, da auf Identitäten basierende Angriffe in den letzten Jahren zugenommen haben. Das Ziel dieser vier Richtlinien ist sicherzustellen, dass bei allen Organisationen eine Basissicherheitsebene ohne zusätzliche Kosten aktiviert ist.  
 
-Für die Verwaltung von Richtlinien für den bedingten Zugriff ist eine Azure AD Premium-Lizenz erforderlich.
+Für die Verwaltung von Richtlinien für den bedingten Zugriff ist eine Azure AD Premium-Lizenz erforderlich.
 
 ## <a name="baseline-policies"></a>Basisrichtlinien
 
@@ -30,29 +30,29 @@ Für die Verwaltung von Richtlinien für den bedingten Zugriff ist eine Azure A
 
 Es gibt vier Basisrichtlinien, mit denen Organisationen Folgendes aktivieren können:
 
-* [Erfordern der mehrstufigen Authentifizierung für Administratoren](howto-baseline-protect-administrators.md)
+* [Benötigt MFA für Admins (Vorschau)](howto-baseline-protect-administrators.md)
 * [Endbenutzerschutz (Vorschau)](howto-baseline-protect-end-users.md)
 * [Blockieren der Legacyauthentifizierung (Vorschau)](howto-baseline-protect-legacy-auth.md)
 * [Erfordern von MFA für die Dienstverwaltung (Vorschau)](howto-baseline-protect-azure.md)
 
 Alle vier genannten Basisrichtlinien betreffen bekannte Authentifizierungsabläufe wie POP, IMAP oder ältere Office-Desktopclients.
 
-### <a name="require-mfa-for-admins"></a>Anfordern von MFA für Administratoren
+### <a name="require-mfa-for-admins-preview"></a>Benötigt MFA für Admins (Vorschau)
 
 Aufgrund der Befugnisse und des Zugriffs, über die Administratorkonten verfügen, sollten sie mit Bedacht verwaltet werden. Eine gängige Methode zur Verbesserung des Schutzes von privilegierten Konten ist eine stärkere Form der Kontoüberprüfung bei der Anmeldung. In Azure Active Directory können Sie eine striktere Kontoüberprüfung erreichen, indem Sie fordern, dass Administratoren sich für Azure Multi-Factor Authentication registrieren und die mehrstufige Authentifizierung verwenden.
 
-Das [Erfordern der mehrstufigen Authentifizierung für Administratoren](howto-baseline-protect-administrators.md)  stellt eine Basisrichtlinie dar, bei der für die folgenden Verzeichnisrollen, die als die Azure AD-Rollen mit den höchsten Berechtigungen angesehen werden, mehrstufige Authentifizierung erforderlich ist:
+Das [Erfordern der mehrstufigen Authentifizierung für Administratoren (Vorschau)](howto-baseline-protect-administrators.md)  stellt eine Basisrichtlinie dar, bei der für die folgenden Verzeichnisrollen, die als die Azure AD-Rollen mit den höchsten Berechtigungen angesehen werden, mehrstufige Authentifizierung erforderlich ist:
 
 * Globaler Administrator
 * SharePoint-Administrator
 * Exchange-Administrator
-* Administrator für bedingten Zugriff
+* Administrator für den bedingten Zugriff
 * Sicherheitsadministrator
 * Helpdeskadministrator/Kennwortadministrator
 * Rechnungsadministrator
 * Benutzeradministrator
 
-Wenn Ihre Organisation diese Konten in Skripts oder Code verwendet, sollten Sie in Betracht ziehen, diese durch  [verwaltete Identitäten](../managed-identities-azure-resources/overview.md) zu ersetzen. Als vorläufige Problemumgehung können Sie bestimmte Benutzerkonten von der Basisrichtlinie ausschließen.
+Wenn Ihre Organisation diese Konten in Skripts oder Code verwendet, sollten Sie in Betracht ziehen, diese durch  [verwaltete Identitäten](../managed-identities-azure-resources/overview.md) zu ersetzen.
 
 ### <a name="end-user-protection-preview"></a>Endbenutzerschutz (Vorschau)
 
@@ -96,7 +96,7 @@ Weitere Informationen finden Sie unter
 
 * [Fünf Schritte zum Sichern Ihrer Identitätsinfrastruktur](../../security/azure-ad-secure-steps.md)
 * [Was ist der bedingte Zugriff in Azure Active Directory?](overview.md)
-* [Erfordern der mehrstufigen Authentifizierung für Administratoren](howto-baseline-protect-administrators.md)
+* [Benötigt MFA für Admins (Vorschau)](howto-baseline-protect-administrators.md)
 * [Endbenutzerschutz (Vorschau)](howto-baseline-protect-end-users.md)
 * [Blockieren der Legacyauthentifizierung (Vorschau)](howto-baseline-protect-legacy-auth.md)
 * [Erfordern von MFA für die Dienstverwaltung (Vorschau)](howto-baseline-protect-azure.md)

@@ -8,12 +8,12 @@ ms.devlang: dotnet
 ms.topic: reference
 ms.date: 03/09/2018
 ms.author: sngun
-ms.openlocfilehash: 3c420882b734883039ec95d609c155617359fa25
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 4f502984a09f81b5aaf0568c84b75832f8164151
+ms.sourcegitcommit: 5bdd50e769a4d50ccb89e135cfd38b788ade594d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65510720"
+ms.lasthandoff: 07/03/2019
+ms.locfileid: "67541044"
 ---
 # <a name="azure-cosmos-db-net-sdk-for-sql-api-download-and-release-notes"></a>Azure Cosmos DB .NET SDK für SQL-API: Download und Anmerkungen zum Release
 > [!div class="op_single_selector"]
@@ -48,9 +48,18 @@ ms.locfileid: "65510720"
 * Unterstützung von Streams. 
 * Aktualisierter CosmosResponseMessage-Statuscode für die Antwort vom Server. Eine Ausnahme wird nur ausgelöst, wenn keine Antwort zurückgegeben wird. 
 
+### <a name="a-name251251"></a><a name="2.5.1"/>2.5.1
+
+* Die System.Net.Http-Version des SDK entspricht jetzt der Definition aus dem NuGet-Paket.
+* Schreibanforderungen können auf eine andere Region zurückgesetzt werden, wenn die ursprüngliche ausfällt.
+* Sitzungswiederholungsrichtlinie für Schreibanforderungen wurde hinzugefügt.
+
+### <a name="a-name241241"></a><a name="2.4.1"/>2.4.1
+
+* Behebt Probleme bei der Ablaufverfolgung von Racebedingungen für Abfragen, die leere Seiten zur Folge hatten
+
 ### <a name="a-name240240"></a><a name="2.4.0"/>2.4.0
 
-* Die System.Net.Http-Version des SDK entspricht der Definition aus dem NuGet-Paket.
 * Höhere Dezimalgenauigkeit für LINQ-Abfragen
 * Neu hinzugefügte Klassen: CompositePath, CompositePathSortOrder, SpatialSpec, SpatialType, PartitionKeyDefinitionVersion
 * „TimeToLivePropertyPath“ zu „DocumentCollection“ hinzugefügt
@@ -222,7 +231,7 @@ ms.locfileid: "65510720"
 * Behebung eines Problems, bei dem die partitionsübergreifende Fortsetzung einer order-by-Abfrage nicht funktionierte, wenn ein Zeichenfolgenfeld sortiert wurde.
 
 ### <a name="a-name11201120"></a><a name="1.12.0"/>1.12.0
-* Unterstützung für Aggregationsabfragen (COUNT, MIN, MAX, SUM und AVG) wurde hinzugefügt. Siehe [Aggregationsunterstützung](how-to-sql-query.md#Aggregates).
+* Unterstützung für Aggregationsabfragen (COUNT, MIN, MAX, SUM und AVG) wurde hinzugefügt. Siehe [Aggregationsunterstützung](sql-query-aggregates.md).
 * Minimaler Durchsatz für partitionierte Sammlungen wurde von 10.100 RU/s auf 2.500 RU/s gesenkt.
 
 ### <a name="a-name11141114"></a><a name="1.11.4"/>1.11.4
@@ -375,62 +384,64 @@ Anforderungen an Azure Cosmos DB mithilfe eines deaktivierten SDK werden vom Die
 
 | Version | Herausgabedatum | Deaktivierungstermine |
 | --- | --- | --- |
+| [2.5.1](#2.5.1) |02. Juli 2019 |--- |
+| [2.4.1](#2.4.1) |20. Juni 2019 |--- |
 | [2.4.0](#2.4.0) |5\. Mai 2019 |--- |
 | [2.3.0](#2.3.0) |4\. April 2019 |--- |
-| [2.2.3](#2.2.3) |11\. Februar 2019 |--- |
+| [2.2.3](#2.2.3) |11. Februar 2019 |--- |
 | [2.2.2](#2.2.2) |6\. Februar 2019 |--- |
-| [2.2.1](#2.2.1) |24\. Dezember 2018 |--- |
-| [2.2.0](#2.2.0) |07\. Dezember 2018 |--- |
-| [2.1.3](#2.1.3) |15\. Oktober 2018 |--- |
+| [2.2.1](#2.2.1) |24. Dezember 2018 |--- |
+| [2.2.0](#2.2.0) |07. Dezember 2018 |--- |
+| [2.1.3](#2.1.3) |15. Oktober 2018 |--- |
 | [2.1.2](#2.1.2) |4\. Oktober 2018 |--- |
-| [2.1.1](#2.1.1) |27\. September 2018 |--- |
-| [2.1.0](#2.1.0) |21\. September 2018 |--- |
-| [2.0.0](#2.0.0) |07\. September 2018 |--- |
-| [1.22.0](#1.22.0) |19\. April 2018 |--- |
-| [1.21.1](#1.20.1) |09\. März 2018 |--- |
-| [1.20.2](#1.20.1) |21\. Februar 2018 |--- |
-| [1.20.1](#1.20.1) |05\. Februar 2018 |--- |
-| [1.19.1](#1.19.1) |16\. November 2017 |--- |
-| [1.19.0](#1.19.0) |10\. November 2017 |--- |
-| [1.18.1](#1.18.1) |07\. November 2017 |--- |
-| [1.18.0](#1.18.0) |17\. Oktober 2017 |--- |
-| [1.17.0](#1.17.0) |10\. August 2017 |--- |
-| [1.16.1](#1.16.1) |07\. August 2017 |--- |
-| [1.16.0](#1.16.0) |02\. August 2017 |--- |
-| [1.15.0](#1.15.0) |30\. Juni 2017 |--- |
-| [1.14.1](#1.14.1) |23\. Mai 2017 |--- |
-| [1.14.0](#1.14.0) |10\. Mai 2017 |--- |
-| [1.13.4](#1.13.4) |09\. Mai 2017 |--- |
-| [1.13.3](#1.13.3) |06\. Mai 2017 |--- |
-| [1.13.2](#1.13.2) |19\. April 2017 |--- |
-| [1.13.1](#1.13.1) |29\. März 2017 |--- |
-| [1.13.0](#1.13.0) |24\. März 2017 |--- |
-| [1.12.2](#1.12.2) |20\. März 2017 |--- |
-| [1.12.1](#1.12.1) |14\. März 2017 |--- |
-| [1.12.0](#1.12.0) |15\. Februar 2017 |--- |
+| [2.1.1](#2.1.1) |27. September 2018 |--- |
+| [2.1.0](#2.1.0) |21. September 2018 |--- |
+| [2.0.0](#2.0.0) |07. September 2018 |--- |
+| [1.22.0](#1.22.0) |19. April 2018 |--- |
+| [1.21.1](#1.20.1) |09. März 2018 |--- |
+| [1.20.2](#1.20.1) |21. Februar 2018 |--- |
+| [1.20.1](#1.20.1) |05. Februar 2018 |--- |
+| [1.19.1](#1.19.1) |16. November 2017 |--- |
+| [1.19.0](#1.19.0) |10. November 2017 |--- |
+| [1.18.1](#1.18.1) |07. November 2017 |--- |
+| [1.18.0](#1.18.0) |17. Oktober 2017 |--- |
+| [1.17.0](#1.17.0) |10. August 2017 |--- |
+| [1.16.1](#1.16.1) |07. August 2017 |--- |
+| [1.16.0](#1.16.0) |02. August 2017 |--- |
+| [1.15.0](#1.15.0) |30. Juni 2017 |--- |
+| [1.14.1](#1.14.1) |23. Mai 2017 |--- |
+| [1.14.0](#1.14.0) |10. Mai 2017 |--- |
+| [1.13.4](#1.13.4) |09. Mai 2017 |--- |
+| [1.13.3](#1.13.3) |06. Mai 2017 |--- |
+| [1.13.2](#1.13.2) |19. April 2017 |--- |
+| [1.13.1](#1.13.1) |29. März 2017 |--- |
+| [1.13.0](#1.13.0) |24. März 2017 |--- |
+| [1.12.2](#1.12.2) |20. März 2017 |--- |
+| [1.12.1](#1.12.1) |14. März 2017 |--- |
+| [1.12.0](#1.12.0) |15. Februar 2017 |--- |
 | [1.11.4](#1.11.4) |6\. Februar 2017 |--- |
-| [1.11.3](#1.11.3) |26\. Januar 2017 |--- |
-| [1.11.1](#1.11.1) |21\. Dezember 2016 |--- |
+| [1.11.3](#1.11.3) |26. Januar 2017 |--- |
+| [1.11.1](#1.11.1) |21. Dezember 2016 |--- |
 | [1.11.0](#1.11.0) |8\. Dezember 2016 |--- |
-| [1.10.0](#1.10.0) |27\. September 2016 |--- |
+| [1.10.0](#1.10.0) |27. September 2016 |--- |
 | [1.9.5](#1.9.5) |1\. September 2016 |--- |
-| [1.9.4](#1.9.4) |24\. August 2016 |--- |
-| [1.9.3](#1.9.3) |15\. August 2016 |--- |
-| [1.9.2](#1.9.2) |23\. Juli 2016 |--- |
-| [1.8.0](#1.8.0) |14\. Juni 2016 |--- |
+| [1.9.4](#1.9.4) |24. August 2016 |--- |
+| [1.9.3](#1.9.3) |15. August 2016 |--- |
+| [1.9.2](#1.9.2) |23. Juli 2016 |--- |
+| [1.8.0](#1.8.0) |14. Juni 2016 |--- |
 | [1.7.1](#1.7.1) |6\. Mai 2016 |--- |
-| [1.7.0](#1.7.0) |26\. April 2016 |--- |
+| [1.7.0](#1.7.0) |26. April 2016 |--- |
 | [1.6.3](#1.6.3) |8\. April 2016 |--- |
-| [1.6.2](#1.6.2) |29\. März 2016 |--- |
-| [1.5.3](#1.5.3) |19\. Februar 2016 |--- |
-| [1.5.2](#1.5.2) |14\. Dezember 2015 |--- |
-| [1.5.1](#1.5.1) |23\. November 2015 |--- |
+| [1.6.2](#1.6.2) |29. März 2016 |--- |
+| [1.5.3](#1.5.3) |19. Februar 2016 |--- |
+| [1.5.2](#1.5.2) |14. Dezember 2015 |--- |
+| [1.5.1](#1.5.1) |23. November 2015 |--- |
 | [1.5.0](#1.5.0) |5 Oktober 2015 |--- |
-| [1.4.1](#1.4.1) |25\. August 2015 |--- |
-| [1.4.0](#1.4.0) |13\. August 2015 |--- |
+| [1.4.1](#1.4.1) |25. August 2015 |--- |
+| [1.4.0](#1.4.0) |13. August 2015 |--- |
 | [1.3.0](#1.3.0) |5\. August 2015 |--- |
 | [1.2.0](#1.2.0) |6\. Juli 2015 |--- |
-| [1.1.0](#1.1.0) |30\. April 2015 |--- |
+| [1.1.0](#1.1.0) |30. April 2015 |--- |
 | [1.0.0](#1.0.0) |8\. April 2015 |--- |
 
 

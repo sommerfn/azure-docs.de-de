@@ -2,14 +2,14 @@
 author: tamram
 ms.service: storage
 ms.topic: include
-ms.date: 05/29/2019
+ms.date: 06/20/2019
 ms.author: tamram
-ms.openlocfilehash: 6bbd2a421122a05399d35be1b61e65f505253ed2
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 5ab03b682dd0ed1dc7b198e89c86e7a74c6275cd
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66420722"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67457351"
 ---
 | Resource | Ziel |
 |----------|---------------|
@@ -17,6 +17,7 @@ ms.locfileid: "66420722"
 | Maximale Größe einer Tabellenentität | 1 MiB |
 | Maximale Anzahl von Eigenschaften in einer Tabellenentität | 255, inklusive drei Systemeigenschaften: PartitionKey, RowKey und Timestamp |
 | Maximale Gesamtgröße der Eigenschaftswerte in einer Entität | 1 MiB |
+| Maximale Gesamtgröße einer individuellen Eigenschaft in einer Entität | Variiert je nach Eigenschaftstyp. Weitere Informationen finden Sie unter **Eigenschaftstypen** in [Grundlegendes zum Tabellendienst-Datenmodell](/rest/api/storageservices/understanding-the-table-service-data-model). |
 | Maximale Anzahl gespeicherter Zugriffsrichtlinien pro Tabelle | 5 |
 | Maximale Anforderungsrate pro Speicherkonto | 20.000 Transaktionen pro Sekunde, ausgehend von einer Entitätsgröße von 1KiB |
 | Zieldurchsatz für eine einzelne Tabellenpartition (Entitäten von 1KiB) | Bis zu 2.000 Entitäten pro Sekunde |

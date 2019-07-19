@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 06/07/2019
 ms.author: tamram
 ms.subservice: common
-ms.openlocfilehash: 00b94174debf915fac3ae5fb37f382c0dc46abfb
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 157a421ce2cb4442597bfb0f75ae042a10a8ee03
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66755002"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67443743"
 ---
 # <a name="azure-storage-account-overview"></a>Übersicht über Azure Storage-Konten
 
@@ -68,7 +68,7 @@ Gegenüber universellen V2- und Blobspeicherkonten bieten Blockblob-Speicherkont
 
 Blockblob-Speicherkonten unterstützen derzeit kein Tiering zu den Zugriffsebenen „Heiß“, „Kalt“ oder „Archiv“.
 
-### <a name="filestorage-preview-storage-accounts"></a>FileStorage-Speicherkonten (Vorschau)
+### <a name="filestorage-storage-accounts"></a>FileStorage-Speicherkonten
 
 Ein FileStorage-Speicherkonto ist ein spezielles Speicherkonto, das zum Speichern und Erstellen von Premium-Dateifreigaben verwendet wird. FileStorage-Speicherkonten bieten einzigartige leistungsorientierte Merkmale wie IOPS-Bursting. Weitere Informationen zu diesen Merkmalen finden Sie im Abschnitt [Leistungsstufen für Dateifreigaben](../files/storage-files-planning.md#file-share-performance-tiers) des Planungshandbuchs für Azure Files.
 
@@ -88,7 +88,7 @@ Allgemeine Speicherkonten können für jede der folgenden Leistungsstufen konfig
 
 Blockblob-Speicherkonten bieten die Leistungsebene „Premium“ für das Speichern von Block- und Anfügeblobs.
 
-FileStorage-Speicherkonten (Vorschau) bieten die Leistungsebene „Premium“ für Azure-Dateifreigaben.
+FileStorage-Speicherkonten bieten die Leistungsebene „Premium“ für Azure-Dateifreigaben.
 
 ## <a name="access-tiers-for-block-blob-data"></a>Zugriffsebenen für Blockblobdaten
 

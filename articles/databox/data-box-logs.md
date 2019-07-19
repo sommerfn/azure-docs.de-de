@@ -8,12 +8,12 @@ ms.subservice: pod
 ms.topic: article
 ms.date: 06/03/2019
 ms.author: alkohli
-ms.openlocfilehash: 108d17d3e0ca5f32648f9d4f6cf4b5f9a2984d0c
-ms.sourcegitcommit: 600d5b140dae979f029c43c033757652cddc2029
+ms.openlocfilehash: ba08cd7fdecda99c04d5bb1007b3e5f61cd1bd5c
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/04/2019
-ms.locfileid: "66495820"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67446763"
 ---
 # <a name="tracking-and-event-logging-for-your-azure-data-box-and-azure-data-box-heavy"></a>Nachverfolgung und Ereignisprotokollierung für Azure Data Box und Azure Data Box Heavy
 
@@ -29,7 +29,7 @@ Die folgende Tabelle zeigt eine Übersicht über die Schritte eines Data Box- od
 | Kopieren von Daten auf ein Gerät        | [Anzeigen von *error.xml*-Dateien](#view-error-log-during-data-copy) für das Kopieren von Daten                                                             |
 | Vorbereiten des Versands            | [Überprüfen der BOM-Dateien](#inspect-bom-during-prepare-to-ship) oder der Manifestdateien auf dem Gerät                                      |
 | Datenupload in Azure       | [Überprüfen von *Kopierprotokollen*](#review-copy-log-during-upload-to-azure) auf Fehler beim Datenupload im Azure-Rechenzentrum                         |
-| Löschen von Daten vom Gerät   | [Anzeigen der Kette von Protokollen zur Rückverfolgbarkeit](#get-chain-of-custody-logs-after-data-erasure) einschließlich von Überwachungsprotokollen und Auftragsverlauf                                                   |
+| Löschen von Daten vom Gerät   | [Anzeigen der Kette von Protokollen zur Rückverfolgbarkeit](#get-chain-of-custody-logs-after-data-erasure) einschließlich von Überwachungsprotokollen und Auftragsverlauf                |
 
 In diesem Artikel werden die verschiedenen verfügbaren Verfahren und Tools detailliert beschrieben, mit denen Data Box- oder Data Box Heavy-Aufträge nachverfolgt und überwacht werden können. Die Informationen in diesem Artikel gelten sowohl für Data Box als auch für Data Box Heavy. In den folgenden Abschnitten gelten alle Verweise auf Data Box auch für Data Box Heavy.
 
@@ -203,7 +203,7 @@ Für jeden verarbeiteten Auftrag erstellt der Data Box-Dienst ein *Kopierprotoko
 
 Während des Uploads in Azure wird eine CRC-Berechnung (Cyclic Redundancy Check) durchgeführt. Die CRC-Werte des Datenkopiervorgangs und werden mit denen nach dem Datenupload verglichen. Wenn die CRC-Werte nicht übereinstimmen, weist dies darauf hin, dass der Upload der entsprechenden Dateien fehlgeschlagen ist.
 
-Standardmäßig werden Protokolle in einen Container mit dem Namen „copylog“ geschrieben. Die Protokolle werden mit der folgenden Benennungskonvention gespeichert:
+Standardmäßig werden Protokolle in einen Container mit dem Namen  `copylog` geschrieben. Die Protokolle werden mit der folgenden Benennungskonvention gespeichert:
 
 `storage-account-name/databoxcopylog/ordername_device-serial-number_CopyLog_guid.xml`.
 
@@ -245,7 +245,41 @@ Hier finden Sie ein Beispiel für ein Kopierprotokoll, nachdem der Upload mit Fe
   <FilesErrored>2</FilesErrored>
 </CopyLog>
 ```
+Hier ist ein Beispiel für ein `copylog`, wobei die Container, die nicht den Azure-Namenskonventionen entsprachen, während des Datenuploads zu Azure umbenannt wurden.
 
+Die neuen eindeutigen Namen für Container haben das Format `DataBox-GUID`, und die Daten für den Container werden in dem neu umbenannten Container platziert. Das `copylog` gibt den alten und den neuen Namen für den Container an.
+
+```xml
+<ErroredEntity Path="New Folder">
+   <Category>ContainerRenamed</Category>
+   <ErrorCode>1</ErrorCode>
+   <ErrorMessage>The original container/share/blob has been renamed to: DataBox-3fcd02de-bee6-471e-ac62-33d60317c576 :from: New Folder :because either the name has invalid character(s) or length is not supported</ErrorMessage>
+  <Type>Container</Type>
+</ErroredEntity>
+```
+
+Hier ist ein Beispiel für ein `copylog`, wobei die Blobs oder Dateien, die nicht den Azure-Namenskonventionen entsprachen, während des Datenuploads zu Azure umbenannt wurden. Die neuen Blob- oder Dateinamen werden in den SHA256-Digest des relativen Pfads zum Container konvertiert und basierend auf dem Zieltyp in den Pfad hochgeladen. Als Ziel kommen Blockblobs, Seitenblobs oder Azure Files infrage.
+
+Das `copylog` gibt den alten und neuen Blob- oder Dateinamen und den Pfad in Azure an.
+
+```xml
+<ErroredEntity Path="TesDir028b4ba9-2426-4e50-9ed1-8e89bf30d285\Ã">
+  <Category>BlobRenamed</Category>
+  <ErrorCode>1</ErrorCode>
+  <ErrorMessage>The original container/share/blob has been renamed to: PageBlob/DataBox-0xcdc5c61692e5d63af53a3cb5473e5200915e17b294683968a286c0228054f10e :from: Ã :because either name has invalid character(s) or length is not supported</ErrorMessage>
+  <Type>File</Type>
+</ErroredEntity><ErroredEntity Path="TesDir9856b9ab-6acb-4bc3-8717-9a898bdb1f8c\Ã">
+  <Category>BlobRenamed</Category>
+  <ErrorCode>1</ErrorCode>
+  <ErrorMessage>The original container/share/blob has been renamed to: AzureFile/DataBox-0xcdc5c61692e5d63af53a3cb5473e5200915e17b294683968a286c0228054f10e :from: Ã :because either name has invalid character(s) or length is not supported</ErrorMessage>
+  <Type>File</Type>
+</ErroredEntity><ErroredEntity Path="TesDirf92f6ca4-3828-4338-840b-398b967d810b\Ã">
+  <Category>BlobRenamed</Category>
+  <ErrorCode>1</ErrorCode>
+  <ErrorMessage>The original container/share/blob has been renamed to: BlockBlob/DataBox-0xcdc5c61692e5d63af53a3cb5473e5200915e17b294683968a286c0228054f10e :from: Ã :because either name has invalid character(s) or length is not supported</ErrorMessage>
+  <Type>File</Type>
+</ErroredEntity>
+```
 
 ## <a name="get-chain-of-custody-logs-after-data-erasure"></a>Abrufen der Kette von Protokollen zur Rückverfolgbarkeit nach dem Löschen von Daten
 

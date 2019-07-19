@@ -15,12 +15,12 @@ ms.workload: identity
 ms.date: 02/27/2017
 ms.custom: ''
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 652175e99c800b8e4aa69c639f0bdb9aba838987
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 0e125adebfcd110f814b112544004220d2e54e08
+ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65544662"
+ms.lasthandoff: 07/01/2019
+ms.locfileid: "67483213"
 ---
 # <a name="error-handling-best-practices-for-azure-active-directory-authentication-library-adal-clients"></a>Bewährte Methoden bei der Fehlerbehandlung von ADAL-Clients (Azure Active Directory Authentication Library)
 
@@ -586,7 +586,7 @@ window.Logging = {
 
 Nutzen Sie den folgenden Kommentarabschnitt, um uns Feedback zu geben und uns dabei zu helfen, unsere Inhalte zu optimieren und zu gestalten.
 
-[![Anmeldungsschaltfläche][AAD-Sign-In]][AAD-Sign-In]
+[![Zeigt die „Mit Microsoft anmelden“-Schaltfläche][AAD-Sign-In]][AAD-Sign-In]
 <!--Reference style links -->
 
 [AAD-Auth-Libraries]: ./active-directory-authentication-libraries.md

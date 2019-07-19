@@ -10,12 +10,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 02/22/2019
 ms.author: makromer
-ms.openlocfilehash: c33219eacb1d3bada5630a7792f98ba33dba824e
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.openlocfilehash: 24b27c16573a35b1d8749d7ff381fbef970f4bd0
+ms.sourcegitcommit: f811238c0d732deb1f0892fe7a20a26c993bc4fc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/27/2019
-ms.locfileid: "66235859"
+ms.lasthandoff: 06/29/2019
+ms.locfileid: "67471653"
 ---
 # <a name="execute-data-flow-activity-in-azure-data-factory"></a>Aktivität „Datenfluss ausführen“ in Azure Data Factory
 Verwenden Sie die Aktivität „Datenfluss ausführen“, um Ihren ADF-Datenfluss in (der Sandbox) in Läufen zum Debuggen der Pipeline oder in von der Pipeline ausgelösten Läufen auszuführen.
@@ -72,7 +72,7 @@ Sie haben die Kontrolle über die Spark-Ausführungsumgebung für Ihre Datenflus
 
 ### <a name="staging-area"></a>Stagingbereich
 
-Wenn Sie Azure Data Warehouse als Senke verwenden, müssen Sie einen Stagingspeicherort für Ihre Polybase-Batchlast wählen.
+Wenn Sie Azure Data Warehouse als Senke verwenden, müssen Sie einen Stagingspeicherort für Ihre Polybase-Batchlast wählen. Die Stagingeinstellungen gelten nur für Azure Data Warehouse-Workloads.
 
 ## <a name="parameterized-datasets"></a>Parametrisierte Datasets
 
@@ -80,11 +80,17 @@ Wenn Sie parametrisierte Datasets verwenden, müssen Sie die Parameterwerte fest
 
 ![Parameter für „Datenfluss ausführen“](media/data-flow/params.png "Parameter")
 
-### <a name="debugging-parameterized-data-flows"></a>Debuggen parametrisierter Datenflüsse
+## <a name="parameterized-data-flows"></a>Parametrisierte Datenflüsse
 
-Sie können Datenflüsse mit parametrisierten Datasets im Lauf zum Debuggen der Pipeline nur unter Verwendung der Aktivität „Datenfluss ausführen“ debuggen. Derzeit funktionieren interaktive Debugsitzungen im ADF-Datenfluss mit parametrisierten Datasets nicht. Ausführungen der Pipeline und Debugläufe funktionieren mit Parametern.
+Wenn Ihr Datenfluss Parameter enthält, legen Sie die dynamischen Werte Ihrer Datenflussparameter hier im Abschnitt „Parameter“ der Aktivität „Datenfluss ausführen“ fest. Sie können entweder die ADF Pipeline Expression-Sprache (nur für Stringparametertypen) oder die Data Flow Expression-Sprache verwenden, um die Parameterwerte mit dynamischen Ausdrücken oder literalen statischen Werten festzulegen.
 
-Eine bewährte Methode ist es, Ihren Datenfluss mit einem statischen Dataset zu erstellen, damit Sie zur Entwurfszeit über die vollständige Verteilung der Metadatenspalten verfügen. Ersetzen Sie dann das statische Dataset durch ein dynamisches, parametrisiertes Dataset, wenn Sie Ihre Datenfluss-Pipeline operationalisieren.
+![Parameterbeispiel zu „Datenfluss ausführen“](media/data-flow/parameter-example.png "Parameterbeispiel")
+
+### <a name="debugging-data-flows-with-parameters"></a>Debuggen der Datenflüsse mit Parametern
+
+Derzeit können Sie Datenflüsse mit Parametern aus dem Lauf des Debuggens der Pipeline nur unter Verwendung der Aktivität „Datenfluss ausführen“ debuggen. Interaktive Debugsitzungen sind im ADF-Data Flow in Kürze verfügbar. Ausführungen der Pipeline und Debugläufe funktionieren jedoch mit Parametern.
+
+Eine bewährte Methode ist, Ihren Datenfluss mit einem statischen Inhalt zu erstellen, damit Sie zur Problembehandlung über die vollständige Verteilung der Metadatenspalten zur Entwurfszeit verfügen. Ersetzen Sie dann das statische Dataset durch ein dynamisches, parametrisiertes Dataset, wenn Sie Ihre Datenfluss-Pipeline operationalisieren.
 
 ## <a name="next-steps"></a>Nächste Schritte
 Weitere Informationen finden Sie unter anderen Ablaufsteuerungsaktivitäten, die von Data Factory unterstützt werden: 

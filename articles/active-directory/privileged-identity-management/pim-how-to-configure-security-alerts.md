@@ -14,18 +14,18 @@ ms.date: 04/09/2019
 ms.author: rolyon
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ce0d99fb283be8cbeba6f8a7954ff49161a2d511
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 6875ab8f184c67b02c91d1a8e312959f3ba9553b
+ms.sourcegitcommit: f811238c0d732deb1f0892fe7a20a26c993bc4fc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60288550"
+ms.lasthandoff: 06/29/2019
+ms.locfileid: "67476414"
 ---
 # <a name="configure-security-alerts-for-azure-ad-roles-in-pim"></a>Konfigurieren von Sicherheitswarnungen für Azure AD-Rollen in PIM
 
 Azure Active Directory (Azure AD) Privileged Identity Management (PIM) generiert bei verdächtigen oder nicht sicheren Aktivitäten in Ihrer Umgebung Warnungen. Wenn eine Warnung ausgelöst wird, wird sie im PIM-Dashboard angezeigt. Wählen Sie die Warnung aus, um einen Bericht mit allen Benutzern oder Rollen anzuzeigen, die die Warnung ausgelöst haben.
 
-![PIM-Sicherheitswarnungen – Screenshot](./media/pim-how-to-configure-security-alerts/pim-directory-alerts.png)
+![Azure AD-Rollen – Warnungsbereich mit Auflistung von Warnungen und Schweregrad](./media/pim-how-to-configure-security-alerts/pim-directory-alerts.png)
 
 ## <a name="security-alerts"></a>Sicherheitswarnungen
 
@@ -122,11 +122,11 @@ Sie können einige der Sicherheitswarnungen in PIM so anpassen, dass sie in der 
 
 1. Klicken Sie auf **Einstellungen** und dann auf **Warnung**.
 
-    ![Navigieren zu den Einstellungen für Sicherheitswarnungen](./media/pim-how-to-configure-security-alerts/settings-alerts.png)
+    ![Azure AD-Rollen – Einstellungen mit ausgewählten Warnungen](./media/pim-how-to-configure-security-alerts/settings-alerts.png)
 
 1. Klicken Sie auf den Name einer Warnung, um die Einstellung für die Warnung zu konfigurieren.
 
-    ![Einstellungen zu Sicherheitswarnungen](./media/pim-how-to-configure-security-alerts/security-alert-settings.png)
+    ![Sicherheitswarnungseinstellungen-Bereich für die ausgewählte Warnung](./media/pim-how-to-configure-security-alerts/security-alert-settings.png)
 
 ## <a name="next-steps"></a>Nächste Schritte
 
