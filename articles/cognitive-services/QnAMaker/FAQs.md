@@ -3,20 +3,20 @@ title: 'FAQ: QnA Maker'
 titleSuffix: Azure Cognitive Services
 description: Die kuratierte Liste der am häufigsten gestellten Fragen in Bezug auf den QnA Maker-Dienst ermöglichen einen schnelleren Einstieg in die Nutzung des Diensts und bessere Ergebnisse.
 services: cognitive-services
-author: tulasim88
+author: diberry
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: article
-ms.date: 04/11/2019
-ms.author: tulasim
+ms.date: 06/11/2019
+ms.author: diberry
 ms.custom: seodec18
-ms.openlocfilehash: 8104497a1808aa4e92d62f45e37525dba2f47742
-ms.sourcegitcommit: 5f348bf7d6cf8e074576c73055e17d7036982ddb
+ms.openlocfilehash: d96c5829dfaa57e66b4afec203c27110b8627ac1
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/16/2019
-ms.locfileid: "59607166"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67447559"
 ---
 # <a name="frequently-asked-questions-for-qna-maker"></a>Häufig gestellte Fragen zu QnA Maker
 
@@ -114,7 +114,7 @@ Der Name der Azure Search-Ressource ist der Name der QnA Maker-Ressource, an den
 
 ### <a name="do-i-need-to-use-bot-framework-in-order-to-use-qna-maker"></a>Muss ich Bot Framework nutzen, um QnA Maker verwenden zu können?
 
-Nein, Sie müssen Bot Framework nicht in Verbindung mit QnA Maker verwenden. QnA Maker wird jedoch als eine von mehreren Vorlagen in Azure Bot Service angeboten. Bot Service ermöglicht die schnelle, intelligente Botentwicklung über Microsoft Bot Framework und wird in einer serverlosen Umgebung ausgeführt.
+Nein. Sie müssen [Bot Framework](https://github.com/Microsoft/botbuilder-dotnet) nicht in Verbindung mit QnA Maker verwenden. QnA Maker wird aber als eine von mehreren Vorlagen in [Azure Bot Service](https://docs.microsoft.com/azure/bot-service/?view=azure-bot-service-4.0) angeboten. Bot Service ermöglicht die schnelle, intelligente Botentwicklung über Microsoft Bot Framework und wird in einer serverlosen Umgebung ausgeführt.
 
 ### <a name="how-can-i-create-a-bot-with-qna-maker"></a>Wie kann ich einen Bot mit QnA Maker erstellen?
 

@@ -12,12 +12,12 @@ ms.author: srbozovi
 ms.reviewer: sstein, bonova, carlrab
 manager: craigg
 ms.date: 11/09/2018
-ms.openlocfilehash: 6cbfdc9e595ebdf682356990ec975dbd0514035d
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 5f4a1962f90d54001f315827c1243e929344e3d7
+ms.sourcegitcommit: a52d48238d00161be5d1ed5d04132db4de43e076
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66297089"
+ms.lasthandoff: 06/20/2019
+ms.locfileid: "67274002"
 ---
 # <a name="connect-your-application-to-azure-sql-database-managed-instance"></a>Herstellen einer Verbindung zwischen einer Anwendung und einer verwalteten Azure SQL-Datenbank-Instanz
 
@@ -45,7 +45,7 @@ Es gibt zwei Optionen zum Herstellen einer Verbindung mit VNETs:
 Dabei ist die Option des Peerings vorzuziehen, da beim Peering das Microsoft-Backbonenetzwerk verwendet wird, sodass es im Hinblick auf die Konnektivität keinen erkennbaren Unterschied der Latenz zwischen virtuellen Computern im Peering-VNET und im selben VNET gibt. VNET-Peering ist auf die Netzwerke in der gleichen Region beschränkt.  
 
 > [!IMPORTANT]
-> Das VNET-Peering-Szenario für die verwaltete Instanz ist aufgrund der [Einschränkungen beim globalen Peering virtueller Netzwerke](../virtual-network/virtual-network-manage-peering.md#requirements-and-constraints) auf die Netzwerke in der gleichen Region beschränkt.
+> Das VNET-Peering-Szenario für die verwaltete Instanz ist aufgrund der [Einschränkungen beim globalen Peering virtueller Netzwerke](../virtual-network/virtual-network-manage-peering.md#requirements-and-constraints) auf die Netzwerke in der gleichen Region beschränkt. Ausführliche Informationen finden Sie im entsprechenden Abschnitt des Artikels [Azure Virtual Network – häufig gestellte Fragen](https://docs.microsoft.com/azure/virtual-network/virtual-networks-faq#what-are-the-constraints-related-to-global-vnet-peering-and-load-balancers). 
 
 ## <a name="connect-an-on-premises-application"></a>Herstellen einer Verbindung mit einer lokalen Anwendung
 

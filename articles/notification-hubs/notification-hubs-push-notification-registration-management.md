@@ -14,12 +14,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.author: jowargo
 ms.date: 04/08/2019
-ms.openlocfilehash: 5a70eec15003a1f75a80740f269f6df3523012a8
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: fffa6784702f239e0af0e9e88a4b9937d20b86ed
+ms.sourcegitcommit: ac1cfe497341429cf62eb934e87f3b5f3c79948e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64685393"
+ms.lasthandoff: 07/01/2019
+ms.locfileid: "67488628"
 ---
 # <a name="registration-management"></a>Registrierungsverwaltung
 
@@ -90,6 +90,9 @@ Eine Installation kann folgende Eigenschaften enthalten. Eine vollständige List
 > Standardmäßig laufen Registrierungen und Installationen nicht ab.
 
 Registrierungen und Installationen müssen ein gültiges PNS-Handle für jedes Gerät bzw. jeden Kanal enthalten. Da PNS-Handles nur in einer Client-App auf dem Gerät abgerufen werden können, besteht ein Muster darin, sich direkt auf dem Gerät mit der Client-App zu registrieren. Andererseits können tagbezogene Sicherheitsaspekte und Geschäftslogik die Verwaltung der Geräteregistrierung im App-Back-End erforderlich machen.
+
+> [!NOTE]
+> Der Baidu-Dienst wird von der Registrierungs-API, nicht aber von der Installations-API unterstützt. 
 
 ### <a name="templates"></a>Vorlagen
 

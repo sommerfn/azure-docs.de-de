@@ -408,7 +408,7 @@
         - name: Wichtige Änderungen
           href: reference-breaking-changes.md
 - name: v1.0
-  expanded: true
+  expanded: false
   items:
     - name: Übersicht
       href: v1-overview.md

@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/08/2019
 ms.author: willzhan
-ms.openlocfilehash: 5102720242edd3ffc0a377bbddf0f7f3ade68b63
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 9e90951f810c5101a46c29570af8ad71b42be637
+ms.sourcegitcommit: a12b2c2599134e32a910921861d4805e21320159
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64937220"
+ms.lasthandoff: 06/24/2019
+ms.locfileid: "67341029"
 ---
 # <a name="offline-widevine-streaming-for-android"></a>Widevine-Offlinestreaming für Android
 
@@ -38,6 +38,9 @@ Wir stellen drei Optionen für die Erstellung der Android-Player-Apps vor:
 > * Erstellen eines Players unter Verwendung von EME (Encrypted Media Extension; Erweiterung für verschlüsselte Medien) und MSE (Media Source Extension; Medienquellenerweiterung) im Chrome-Browser für Mobilgeräte (ab v62)
 
 Außerdem beantworten wir in diesem Artikel einige häufig gestellte Fragen im Zusammenhang mit dem Offlinestreaming von durch Widevine geschützten Inhalten.
+
+> [!NOTE]
+> Offline-DRM wird nur für eine einzelne Anforderung für eine Lizenz in Rechnung gestellt, wenn Sie den Inhalt herunterladen. Fehler werden nicht in Rechnung gestellt.
 
 ## <a name="prerequisites"></a>Voraussetzungen 
 

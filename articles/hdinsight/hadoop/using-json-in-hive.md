@@ -7,12 +7,12 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 06/03/2019
-ms.openlocfilehash: 904a6a2af4c92c374d5afe4148f50e853e5d1fb2
-ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
+ms.openlocfilehash: 5ec766cea2135f7c00df032ad0df4ada033d6293
+ms.sourcegitcommit: aa66898338a8f8c2eb7c952a8629e6d5c99d1468
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/04/2019
-ms.locfileid: "66479592"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67461988"
 ---
 # <a name="process-and-analyze-json-documents-by-using-apache-hive-in-azure-hdinsight"></a>Analysieren und Verarbeiten von JSON-Dokumenten mithilfe von Apache Hive in Azure HDInsight
 
@@ -57,7 +57,7 @@ Erfahren Sie mehr über das Verarbeiten und Analysieren von JSON-Dateien (JavaSc
 
 Die Datei finden Sie unter `wasb://processjson@hditutorialdata.blob.core.windows.net/`. Weitere Informationen zur Verwendung von Azure Blob Storage mit HDInsight finden Sie unter [Verwenden von HDFS-kompatiblem Azure Blob Storage mit Apache Hadoop in HDInsight](../hdinsight-hadoop-use-blob-storage.md). Sie können die Datei in den Standardcontainer des Clusters kopieren.
 
-In diesem Tutorial verwenden Sie die Apache Hive-Konsole. Anweisungen zum Öffnen der Hive-Konsole finden Sie unter [Verwenden der Apache Ambari Hive-Ansicht mit Apache Hadoop in HDInsight](apache-hadoop-use-hive-ambari-view.md).
+In diesem Artikel verwenden Sie die Apache Hive-Konsole. Anweisungen zum Öffnen der Hive-Konsole finden Sie unter [Verwenden der Apache Ambari Hive-Ansicht mit Apache Hadoop in HDInsight](apache-hadoop-use-hive-ambari-view.md).
 
 ## <a name="flatten-json-documents"></a>Vereinfachen von JSON-Dokumenten
 Die im nächsten Abschnitt aufgeführten Methoden erfordern, dass das JSON-Dokument aus einer einzelnen Zeile besteht. Sie müssen also das JSON-Dokument zu einer Zeichenfolge vereinfachen. Wenn Ihr JSON-Dokument bereits vereinfacht wurde, können Sie diesen Schritt überspringen und direkt mit dem nächsten Abschnitt fortfahren und die JSON-Daten analysieren. Führen Sie zum Vereinfachen des JSON-Dokuments folgendes Skript aus:
@@ -151,5 +151,5 @@ Es lässt sich zusammenfassend feststellen, dass der JSON-Operatortyp in der Str
 Verwandte Artikel finden Sie unter:
 
 * [Verwenden von Apache Hive und HiveQL mit Apache Hadoop in HDInsight zum Analysieren einer Apache Log4j-Beispieldatei](../hdinsight-use-hive.md)
-* [Analysieren von Flugverspätungsdaten mit Apache Hive in HDInsight](../hdinsight-analyze-flight-delay-data-linux.md)
+* [Tutorial: Extrahieren, Transformieren und Laden von Daten mithilfe von Interactive Query in Azure HDInsight](../interactive-query/interactive-query-tutorial-analyze-flight-data.md)
 * [Analysieren von Twitter-Daten mit Apache Hive in HDInsight](../hdinsight-analyze-twitter-data-linux.md)

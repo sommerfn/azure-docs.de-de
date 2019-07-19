@@ -10,12 +10,12 @@ ms.assetid: 04b05dea-c066-44a0-9751-0774eb84c689
 ms.service: sql-data-warehouse
 ms.topic: article
 ms.date: 04/03/2019
-ms.openlocfilehash: 999c75d07ef7e24d4d75587b6b42a4ab1b2192cf
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 3141f3a1d6a9f09261dee4113276af72168e35e8
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65596114"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67444706"
 ---
 # <a name="upgrade-your-data-warehouse-to-gen2"></a>Aktualisieren des Data Warehouse zu Gen2
 
@@ -43,7 +43,7 @@ In der folgenden Tabelle sehen Sie, wann der niedrigere Gen2-Computetarif in wel
 | China, Norden |\* |\* |
 | China, Norden 2 |Verfügbar |Nur Gen2 |
 | Asien, Osten |Verfügbar |1\. Juni 2019 |
-| USA (Ost) |Verfügbar |1\. Juni 2019 |
+| East US |Verfügbar |1\. Juni 2019 |
 | USA (Ost) 2 |Verfügbar |1\. Juni 2019 |
 | Frankreich, Mitte |\* |1\. Juni 2019 |
 | Deutschland, Mitte |\* |\* |
@@ -67,7 +67,7 @@ In der folgenden Tabelle sehen Sie, wann der niedrigere Gen2-Computetarif in wel
 
 ## <a name="automatic-upgrade-process"></a>Automatischer Upgradevorgang
 
-Wir planen automatische Upgrades für Ihre Gen 1-Instanzen nach dem oben angezeigten Verfügbarkeitsdiagramm. Um unerwartete Unterbrechungen der Verfügbarkeit des Data Warehouse zu vermeiden, werden die automatischen Upgrades während Ihres Wartungszeitplans geplant. Die Möglichkeit zum Erstellen einer neuen Gen1-Instanz wird in Regionen, in denen gerade ein automatisches Upgrade auf Gen2 durchgeführt wird, deaktiviert. Weitere Informationen zu Zeitplänen finden Sie unter [Anzeigen eines Wartungszeitplans](viewing-maintenance-schedule.md).
+Wir planen automatische Upgrades für Ihre Gen 1-Instanzen nach dem oben angezeigten Verfügbarkeitsdiagramm. Um unerwartete Unterbrechungen der Verfügbarkeit des Data Warehouse zu vermeiden, werden die automatischen Upgrades während Ihres Wartungszeitplans geplant. Die Möglichkeit zum Erstellen einer neuen Gen1-Instanz wird in Regionen, in denen gerade ein automatisches Upgrade auf Gen2 durchgeführt wird, deaktiviert. Gen1 wird eingestellt, sobald die automatischen Upgrades abgeschlossen sind. Weitere Informationen zu Zeitplänen finden Sie unter [Anzeigen eines Wartungszeitplans](viewing-maintenance-schedule.md).
 
 Der Upgradevorgang ist mit einem kurzen Abfall der Konnektivität (ca. 5 Minuten) verbunden, wenn wir Ihr Data Warehouse neu starten.  Sobald Ihr Data Warehouse neu gestartet ist, ist es vollständig zur Verwendung verfügbar. Zeitweise kann jedoch eine Beeinträchtigung der Leistung auftreten, während der Upgradevorgang weiterhin im Hintergrund die Datendateien aktualisiert. Die Gesamtzeit für die Leistungsminderung variiert abhängig von der Größe der Datendateien.
 

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.devlang: azurecli
 ms.date: 11/22/2018
 ms.author: delhan
-ms.openlocfilehash: ed3d89bc15f960947a48ac4364bd14f3fdf50cc2
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 7a547efb7af69c58f8e04615d24dd7c230f0c8b0
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60505562"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67444647"
 ---
 # <a name="enable-or-disable-a-firewall-rule-on-an-azure-vm-guest-os"></a>Aktivieren oder Deaktivieren einer Firewallregel unter einem Gastbetriebssystem in Azure VM
 
@@ -99,7 +99,7 @@ Wenn der virtuelle Computer online ist und ein anderer virtueller Computer im gl
 
 1.  Starten Sie auf dem virtuellen Computer, der zur Problembehandlung dient, den Registrierungs-Editor (regedit.exe), und wählen Sie **Datei** > **Mit Netzwerkregistrierung verbinden** aus.
 
-2.  Öffnen Sie die Verzweigung  *TARGET MACHINE*\SYSTEM, und geben Sie die folgenden Werte ein:
+2.  Öffnen Sie die Verzweigung *TARGET MACHINE*\SYSTEM, und geben Sie die folgenden Werte an:
 
     * Um eine Regel zu aktivieren, öffnen Sie den folgenden Registrierungswert:
     
@@ -123,26 +123,26 @@ Wenn der virtuelle Computer online ist und ein anderer virtueller Computer im gl
 
 Wenn Sie mit keiner Methode auf den virtuellen Computer zugreifen können, ist die „Benutzerdefinierte Skripterweiterung“ nicht einsetzbar, und Sie müssen im OFFLINEMODUS direkt über den Betriebssystemdatenträger arbeiten.
 
-Erstellen Sie eine Momentaufnahme des Betriebssystemdatenträgers des betroffenen virtuellen Computers als Sicherung, bevor Sie die unten angegebenen Schritte ausführen. Weitere Informationen finden Sie unter  [Erstellen einer Momentaufnahme eines Datenträgers](../windows/snapshot-copy-managed-disk.md).
+Erstellen Sie eine Momentaufnahme des Betriebssystemdatenträgers des betroffenen virtuellen Computers als Sicherung, bevor Sie die unten angegebenen Schritte ausführen. Weitere Informationen finden Sie unter [Erstellen einer Momentaufnahme eines Datenträgers](../windows/snapshot-copy-managed-disk.md).
 
 1.  [Fügen Sie den Systemdatenträger an einen virtuellen Wiederherstellungscomputer an.](troubleshoot-recovery-disks-portal-windows.md)
 
 2.  Stellen Sie eine Remotedesktopverbindung mit dem virtuellen Wiederherstellungscomputer her.
 
-3.  Stellen Sie sicher, dass der Datenträger in der Datenträgerverwaltungskonsole als  **Online** gekennzeichnet ist. Achten Sie auf den Laufwerkbuchstaben, der dem angefügten Betriebssystemdatenträger zugewiesen ist.
+3.  Stellen Sie sicher, dass der Datenträger in der Datenträgerverwaltungskonsole als **Online** gekennzeichnet ist. Achten Sie auf den Laufwerkbuchstaben, der dem angefügten Betriebssystemdatenträger zugewiesen ist.
 
-4.  Bevor Sie Änderungen vornehmen, erstellen Sie eine Kopie des Ordners „\Windows\system32\config“ für den Fall, dass ein Rollback der Änderungen erforderlich ist.
+4.  Bevor Sie Änderungen vornehmen, erstellen Sie eine Kopie des Ordners „\windows\system32\config“ für den Fall, dass ein Rollback der Änderungen erforderlich ist.
 
 5.  Starten Sie auf dem virtuellen Computer, der zur Problembehandlung dient, den Registrierungs-Editor (regedit.exe).
 
-6.  Wählen Sie den Schlüssel **HKEY_LOCAL_MACHINE** und dann im Menü die Optionen  **Datei** > **Struktur laden** aus.
+6.  Wählen Sie den Schlüssel **HKEY_LOCAL_MACHINE** und dann im Menü die Optionen **Datei** > **Struktur laden** aus.
 
     ![Regedit](./media/enable-or-disable-firewall-rule-guest-os/load-registry-hive.png)
 
 7.  Suchen und öffnen Sie die Datei „\windows\system32\config\SYSTEM“. 
 
     > [!Note]
-    > Sie werden aufgefordert, einen Namen einzugeben. Geben Sie **BROKENSYSTEM** ein, und erweitern Sie **HKEY_LOCAL_MACHINE**. Daraufhin wird ein zusätzlicher Schlüssel mit dem Namen **BROKENSYSTEM** angezeigt. Für diese Problembehandlung binden wir diese Problemstrukturen als **BROKENSYSTEM** ein.
+    > Sie werden aufgefordert, einen Namen einzugeben. Geben Sie **BROKENSYSTEM** ein, und erweitern Sie dann **HKEY_LOCAL_MACHINE**. Daraufhin wird ein zusätzlicher Schlüssel mit dem Namen **BROKENSYSTEM** angezeigt. Für diese Problembehandlung binden wir diese Problemstrukturen als **BROKENSYSTEM** ein.
 
 8.  Nehmen Sie die folgenden Änderungen an der Verzweigung BROKENSYSTEM vor:
 
@@ -164,7 +164,7 @@ Erstellen Sie eine Momentaufnahme des Betriebssystemdatenträgers des betroffene
         
         **v2.22|Action=Allow|Active=FALSE|Dir=In|Protocol=6|Profile=Domain|Profile=Private|Profile=Public|LPort=3389|App=%SystemRoot%\system32\svchost.exe|Svc=termservice|Name=\@FirewallAPI.dll,-28775|Desc=\@FirewallAPI.dll,-28756|EmbedCtxt=\@FirewallAPI.dll,-28752|**
 
-9.  Markieren Sie **BROKENSYSTEM**, und wählen Sie dann **Datei** > **Struktur entladen** im Menü aus.
+9.  Heben Sie **BROKENSYSTEM** hervor, und wählen Sie dann im Menü **Datei** > **Struktur entfernen** aus.
 
 10. [Trennen des Betriebssystemdatenträgers und erneutes Erstellen des virtuellen Computers](troubleshoot-recovery-disks-portal-windows.md).
 

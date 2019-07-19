@@ -11,13 +11,13 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, carlrab
 manager: craigg
-ms.date: 03/26/2019
-ms.openlocfilehash: ca53f4bfa80d6fdead24dc7d562c2240bb3fa86d
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.date: 06/18/2019
+ms.openlocfilehash: 826944fd3713f5cc3e99f20cb140055bfdb11a14
+ms.sourcegitcommit: a12b2c2599134e32a910921861d4805e21320159
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60387430"
+ms.lasthandoff: 06/24/2019
+ms.locfileid: "67341427"
 ---
 # <a name="creating-and-using-active-geo-replication"></a>Erstellen und Verwenden der aktiven Georeplikation
 
@@ -100,9 +100,6 @@ Wenn Sie echte Geschäftskontinuität erreichen möchten, ist das Bereitstellen 
 
   Jede sekundäre Datenbank kann einzeln in einem Pool für elastische Datenbanken enthalten sein oder sich in keinem Pool befinden. Die Auswahl des Pools für jede sekundäre Datenbank erfolgt einzeln und ist nicht von der Konfiguration einer anderen sekundären Datenbank abhängig (ob primär oder sekundär). Jeder Pool für elastische Datenbanken befindet sich innerhalb einer einzelnen Region, daher können mehrere sekundäre Datenbanken in derselben Topologie einen Pool für elastische Datenbanken nie gemeinsam verwenden.
 
-- **Konfigurierbare Computegröße der sekundären Datenbank**
-
-  Sowohl die primäre als auch die sekundäre Datenbank müssen die gleiche Dienstebene aufweisen. Darüber hinaus wird dringend empfohlen, eine sekundäre Datenbank mit der gleichen Computegröße (DTUs oder virtuelle Kerne) wie die primäre Datenbank zu erstellen. Bei einer sekundären Datenbank mit einer niedrigeren Computegröße besteht das Risiko, dass eine größere Replikationsverzögerung auftritt und die sekundäre Datenbank nicht verfügbar ist. Dies kann nach einem Failover erhebliche Datenverluste zur Folge haben. Daher kann die veröffentlichte RPO von 5 Sekunden nicht garantiert werden. Ein weiteres Risiko besteht darin, dass die Leistung der Anwendung nach einem Failover beeinträchtigt ist, da die neue primäre Datenbank über zu geringe Computekapazität verfügt, bis sie auf eine höhere Computegröße aktualisiert wird. Der Zeitpunkt des Upgrades hängt von der Größe der Datenbank ab. Darüber hinaus erfordert ein solches Upgrade derzeit, dass sowohl primäre als auch sekundäre Datenbanken online sind. Daher kann ein Update erst abgeschlossen werden, wenn der Ausfall behoben ist. Wenn Sie die sekundäre Datenbank mit einer niedrigeren Computegröße erstellen, können Sie anhand des Diagramms mit dem Protokoll-E/A-Prozentsatz im Azure-Portal gut abschätzen, welche Computegröße für die sekundäre Datenbank mindestens erforderlich ist, um die Replikationslast zu bewältigen. Wenn die Leistungsstufe der primären Datenbank beispielsweise P6 (1.000 DTU) ist und ihr Protokoll-E/A-Prozentsatz 50 % beträgt, muss die Leistungsstufe der sekundären Datenbank mindestens P4 (500 DTU) sein. Sie können die Protokoll-E/A-Daten auch mithilfe der Datenbanksicht [sys.resource_stats](/sql/relational-databases/system-catalog-views/sys-resource-stats-azure-sql-database) oder [sys.dm_db_resource_stats](/sql/relational-databases/system-dynamic-management-views/sys-dm-db-resource-stats-azure-sql-database) abrufen.  Weitere Informationen zu SQL-Datenbank-Computegrößen finden Sie im Artikel über die [SQL-Datenbank-Dienstebenen](sql-database-purchase-models.md).
 
 - **Benutzergesteuertes Failover und Failback**
 
@@ -112,7 +109,19 @@ Wenn Sie echte Geschäftskontinuität erreichen möchten, ist das Bereitstellen 
 
 Wir empfehlen die Verwendung von [IP-Firewallregeln auf Datenbankebene](sql-database-firewall-configure.md) für georeplizierte Datenbanken, damit diese Regeln mit der Datenbank repliziert werden können. So wird sichergestellt, dass alle sekundären Datenbanken die gleichen IP-Firewallregeln wie die primäre Datenbank besitzen. Mit diesem Ansatz müssen Kunden auf Servern, auf denen sowohl die primäre als auch die sekundäre Datenbank gehostet wird, keine Firewallregeln mehr manuell konfigurieren und verwalten. Analog dazu wird durch die Verwendung von [eigenständigen Datenbankbenutzern](sql-database-manage-logins.md) für den Datenzugriff sichergestellt, dass für primäre und sekundäre Datenbanken immer die gleichen Benutzeranmeldeinformationen gelten, damit bei einem Failover keine Unterbrechungen durch Benutzernamen- und Kennwortkonflikte auftreten. Durch Hinzufügen von [Azure Active Directory](../active-directory/fundamentals/active-directory-whatis.md) können Kunden den Benutzerzugriff sowohl für primäre als auch für sekundäre Datenbanken verwalten, sodass die Notwendigkeit der Verwaltung von Anmeldeinformationen in Datenbanken vollständig entfällt.
 
-## <a name="upgrading-or-downgrading-a-primary-database"></a>Upgrade oder Downgrade einer primären Datenbank
+## <a name="configuring-secondary-database"></a>Konfigurieren einer sekundären Datenbank
+
+Sowohl die primäre als auch die sekundäre Datenbank müssen die gleiche Dienstebene aufweisen. Darüber hinaus wird dringend empfohlen, eine sekundäre Datenbank mit der gleichen Computegröße (DTUs oder virtuelle Kerne) wie die primäre Datenbank zu erstellen. Wenn in der primären Datenbank schreibintensive Workloads verarbeitet werden, ist eine sekundäre Datenbank mit einer geringeren Computegröße möglicherweise nicht in der Lage, mitzuhalten. Dadurch entsteht eine Wiederholungsverzögerung in der sekundären Datenbank, was dazu führen kann, dass diese nicht verfügbar ist und dass nach einem Failover erhebliche Datenverluste auftreten. Daher kann die veröffentlichte RPO von 5 Sekunden nicht garantiert werden. Darüber hinaus können in der primären Datenbank Fehler auftreten oder andere Workloads verzögert werden. 
+
+Wenn die sekundäre Datenbank nicht angemessen konfiguriert ist, kann es außerdem passieren, dass die Anwendungsleistung nach einem Failover beeinträchtigt wird, da die neue primäre Datenbank nicht genügend Computekapazität aufweist. Daher ist ein Upgrade auf eine höhere Computekapazität erforderlich, was erst möglich ist, nachdem der Ausfall behoben wurde. 
+
+> [!NOTE]
+> Derzeit ist es nicht möglich, die primäre Datenbank zu aktualisieren, wenn die sekundäre Datenbank offline ist. 
+
+
+Wenn Sie die sekundäre Datenbank mit einer niedrigeren Computegröße erstellen, können Sie anhand des Diagramms mit dem Protokoll-E/A-Prozentsatz im Azure-Portal gut abschätzen, welche Computegröße für die sekundäre Datenbank mindestens erforderlich ist, um die Replikationslast zu bewältigen. Wenn die Leistungsstufe der primären Datenbank beispielsweise P6 (1.000 DTU) ist und ihr Protokoll-E/A-Prozentsatz 50 % beträgt, muss die Leistungsstufe der sekundären Datenbank mindestens P4 (500 DTU) sein. Sie können die Protokoll-E/A-Daten auch mithilfe der Datenbanksicht [sys.resource_stats](/sql/relational-databases/system-catalog-views/sys-resource-stats-azure-sql-database) oder [sys.dm_db_resource_stats](/sql/relational-databases/system-dynamic-management-views/sys-dm-db-resource-stats-azure-sql-database) abrufen.  Weitere Informationen zu SQL-Datenbank-Computegrößen finden Sie im Artikel über die [SQL-Datenbank-Dienstebenen](sql-database-purchase-models.md).
+
+## <a name="upgrading-or-downgrading-primary-database"></a>Upgrade oder Downgrade einer primären Datenbank
 
 Sie können für eine primäre Datenbank ein Upgrade oder Downgrade auf eine andere Computegröße (innerhalb der gleichen Dienstebene; nicht zwischen „Universell“ und „Unternehmenskritisch“) ausführen, ohne die Verbindung mit sekundären Datenbanken zu trennen. Bei einem Upgrade wird empfohlen, zuerst das Upgrade für die sekundäre Datenbank und anschließend das Upgrade für die primäre Datenbank auszuführen. Drehen Sie bei einem Downgrade die Reihenfolge um: Führen Sie zuerst das Downgrade für die primäre und anschließend das Downgrade für die sekundäre Datenbank aus. Wenn Sie ein Upgrade oder Downgrade der Datenbank auf eine andere Dienstebene durchführen, wird diese Empfehlung erzwungen.
 

@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 04/25/2019
 ms.author: sukumari
 ms.reviewer: azmetadata
-ms.openlocfilehash: 160d494eea4bd597725a4e7c21ad9b763502bee6
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 96c1223cf15f1022e9e0a27180bd9cdeebcf8505
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65792096"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67449792"
 ---
 # <a name="azure-instance-metadata-service"></a>Azure-Instanzmetadatendienst
 
@@ -41,7 +41,7 @@ Regions                                        | Verfügbarkeit?                
 -----------------------------------------------|-----------------------------------------------|-----------------
 [Allgemein verfügbar in globalen Azure-Regionen](https://azure.microsoft.com/regions/)     | Allgemein verfügbar | 2017-04-02, 2017-08-01, 2017-12-01, 2018-02-01, 2018-04-02, 2018-10-01
 [Azure Government](https://azure.microsoft.com/overview/clouds/government/)              | Allgemein verfügbar | 2017-04-02, 2017-08-01, 2017-12-01, 2018-02-01, 2018-04-02, 2018-10-01
-[Azure China](https://www.azure.cn/)                                                     | Allgemein verfügbar | 2017-04-02, 2017-08-01, 2017-12-01, 2018-02-01, 2018-04-02, 2018-10-01
+[Azure China](https://azure.microsoft.com/global-infrastructure/china)                                                     | Allgemein verfügbar | 2017-04-02, 2017-08-01, 2017-12-01, 2018-02-01, 2018-04-02, 2018-10-01
 [Azure Deutschland](https://azure.microsoft.com/overview/clouds/germany/)                    | Allgemein verfügbar | 2017-04-02, 2017-08-01, 2017-12-01, 2018-02-01, 2018-04-02, 2018-10-01
 [Öffentlich, USA, Westen-Mitte](https://azure.microsoft.com/regions/)                           | Allgemein verfügbar | 2017-04-02, 2017-08-01, 2017-12-01, 2018-02-01, 2018-04-02, 2018-10-01, 2019-02-01
 
@@ -205,7 +205,7 @@ curl -H Metadata:true "http://169.254.169.254/metadata/instance?api-version=2018
 ```json
 {
   "compute": {
-    "azEnvironment": "AZUREPUBLICCLOUD",
+    "azEnvironment": "AzurePublicCloud",
     "location": "westus",
     "name": "jubilee",
     "offer": "Windows-10",
@@ -283,7 +283,7 @@ Invoke-RestMethod -Headers @{"Metadata"="true"} -URI http://169.254.169.254/meta
 ```json
 {
   "compute": {
-    "azEnvironment": "AZUREPUBLICCLOUD",
+    "azEnvironment": "AzurePublicCloud",
     "location": "westus",
     "name": "SQLTest",
     "offer": "SQL2016SP1-WS2016",
@@ -342,7 +342,7 @@ Invoke-RestMethod -Headers @{"Metadata"="true"} -URI http://169.254.169.254/meta
 
 Daten | BESCHREIBUNG | Eingeführt in Version
 -----|-------------|-----------------------
-attested | Siehe [Bestätigte Daten](#attested-data) | 01\.10.2018
+attested | Siehe [Bestätigte Daten](#attested-data) | 01.10.2018
 identity | Verwaltete Identitäten für Azure-Ressourcen. Siehe [Abrufen eines Zugriffstokens](../../active-directory/managed-identities-azure-resources/how-to-use-vm-token.md) | 2018-02-01
 instance | Siehe [Instanz-API](#instance-api) | 2017-04-02
 scheduledevents | Siehe [Azure-Metadatendienst: Geplante Ereignisse (Vorschau) für Windows-VMs](scheduled-events.md) | 2017-08-01
@@ -355,7 +355,7 @@ scheduledevents | Siehe [Azure-Metadatendienst: Geplante Ereignisse (Vorschau) f
 
 Daten | BESCHREIBUNG | Eingeführt in Version
 -----|-------------|-----------------------
-azEnvironment | Azure-Umgebung, in der die VM ausgeführt wird | 01\.10.2018
+azEnvironment | Azure-Umgebung, in der die VM ausgeführt wird | 01.10.2018
 customData | Siehe [Benutzerdefinierte Daten](#custom-data) | 2019-02-01
 location | Azure-Region, in der die VM ausgeführt wird | 2017-04-02
 name | Name des virtuellen Computers | 2017-04-02
@@ -365,7 +365,7 @@ placementGroupId | [Platzierungsgruppe](../../virtual-machine-scale-sets/virtual
 Tarif | Der [Tarif](https://docs.microsoft.com/rest/api/compute/virtualmachines/createorupdate#plan) mit Name, Produkt und Herausgeber für einen virtuellen Computer, wenn es sich um ein Azure Marketplace-Image handelt | 2018-04-02
 platformUpdateDomain |  [Updatedomäne](manage-availability.md), in der die VM ausgeführt wird | 2017-04-02
 platformFaultDomain | [Fehlerdomäne](manage-availability.md), in der die VM ausgeführt wird | 2017-04-02
-Anbieter | Anbieter des virtuellen Computers | 01\.10.2018
+Anbieter | Anbieter des virtuellen Computers | 01.10.2018
 publicKeys | [Sammlung von öffentlichen Schlüsseln](https://docs.microsoft.com/rest/api/compute/virtualmachines/createorupdate#sshpublickey), dem virtuellen Computer und den entsprechenden Pfaden zugewiesen | 2018-04-02
 publisher | Herausgeber des VM-Images | 2017-04-02
 resourceGroupName | [Ressourcengruppe](../../azure-resource-manager/resource-group-overview.md) für den virtuellen Computer | 2017-08-01
@@ -537,8 +537,17 @@ curl -H Metadata:true "http://169.254.169.254/metadata/instance/compute/azEnviro
 
 **Antwort**
 ```bash
-AZUREPUBLICCLOUD
+AzurePublicCloud
 ```
+
+Die Regionen und die Werte der Azure-Umgebung sind unten aufgelistet.
+
+ Regions | Azure-Umgebung
+---------|-----------------
+[Allgemein verfügbar in globalen Azure-Regionen](https://azure.microsoft.com/regions/)     | AzurePublicCloud
+[Azure Government](https://azure.microsoft.com/overview/clouds/government/)              | AzureUSGovernmentCloud
+[Azure China](https://azure.microsoft.com/global-infrastructure/china)                   | AzureChinaCloud
+[Azure Deutschland](https://azure.microsoft.com/overview/clouds/germany/)                    | AzureGermanCloud
 
 ### <a name="getting-the-tags-for-the-vm"></a>Abrufen der Tags für die VM
 
@@ -619,11 +628,11 @@ Sobald Sie über die oben beschriebene Signatur verfügen, können Sie verifizie
 > [!NOTE]
 > Die Zertifikate für öffentliche Clouds und Sovereign Clouds unterscheiden sich voneinander.
 
- Regions | Zertifikat
+ Cloud | Zertifikat
 ---------|-----------------
 [Allgemein verfügbar in globalen Azure-Regionen](https://azure.microsoft.com/regions/)     | metadata.azure.com
 [Azure Government](https://azure.microsoft.com/overview/clouds/government/)              | metadata.azure.us
-[Azure China](https://www.azure.cn/)                                                           | metadata.azure.cn
+[Azure China](https://azure.microsoft.com/global-infrastructure/china/)                  | metadata.azure.cn
 [Azure Deutschland](https://azure.microsoft.com/overview/clouds/germany/)                    | metadata.microsoftazure.de
 
 ```bash
@@ -654,7 +663,7 @@ Für bestimmte Szenarien ist es beim Abfragen von Instance Metadata Service mit 
 route print
 ```
 
-> [!NOTE] 
+> [!NOTE]
 > Die folgende Beispielausgabe von einer Windows Server-VM mit aktiviertem Failovercluster enthält aus Gründen der Vereinfachung nur die IPv4-Routingtabelle.
 
 ```bat

@@ -8,14 +8,14 @@ manager: femila
 ms.service: media-services
 ms.subservice: video-indexer
 ms.topic: article
-ms.date: 06/05/2019
+ms.date: 06/30/2019
 ms.author: juliako
-ms.openlocfilehash: 6b5422e2eb67eb309c086c023df9f733940e5e44
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 937dc6eefbbfc37aaeee0801f410f9f99cb0c787
+ms.sourcegitcommit: ac1cfe497341429cf62eb934e87f3b5f3c79948e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66735072"
+ms.lasthandoff: 07/01/2019
+ms.locfileid: "67488686"
 ---
 # <a name="embed-video-indexer-widgets-into-your-applications"></a>Einbetten von Video Indexer-Widgets in Ihre Anwendungen
 
@@ -32,6 +32,8 @@ Ein Widget vom Typ **Kognitive Erkenntnisse** enthält alle visuellen Erkenntnis
 |NAME|Definition|BESCHREIBUNG|
 |---|---|---|
 |Widgets|Durch Komma getrennte Zeichenfolgen|Ermöglicht das Steuern der Erkenntnisse, die Sie rendern möchten. <br/>Beispiel: Mit `https://www.videoindexer.ai/embed/insights/<accountId>/<videoId>/?widgets=people,search` werden nur Benutzeroberflächenerkenntnisse für Personen und Marken gerendert.<br/>Verfügbare Optionen: People (Personen), Keywords (Stichwörter), Annotations (Anmerkungen), Brands (Marken), Sentiments (Stimmungen), Transcript (Transkript), Search (Suche)<br/>nicht unterstützt über URL bei „version=2“<br/><br/>**Hinweis:** Der URL-Parameter „widgets“ wird in Version 2 nicht unterstützt. |
+|locale|Ein kurzer Sprachcode|Steuert die Sprache, in der Erkenntnisse angezeigt werden. Der Standardwert ist `en`. Beispiel: `language=de`.|
+|Tabulatorzeichen|Die Registerkarte, die standardmäßig ausgewählt ist|Steuert die Registerkarte „Erkenntnisse“, die standardmäßig gerendert wird. `tab=timeline` rendert Erkenntnisse, während die Registerkarte „Zeitachse“ ausgewählt ist.|
 
 ### <a name="player-widget"></a>Player-Widget
 
@@ -39,12 +41,12 @@ Mit einem **Player**-Widget können Sie das Video mit einer adaptiven Bitrate st
 
 |NAME|Definition|BESCHREIBUNG|
 |---|---|---|
-|t|Sekunden ab Start|Aktiviert die Wiedergabe durch den Player ab dem angegebenen Zeitpunkt.<br/>Beispiel: t=60|
-|captions|Sprachcode|Ruft die Beschriftungen beim Laden des Widgets in der angegebenen Sprache ab, damit sie im Menü für die Beschriftungen verfügbar sind.<br/>Beispiel: captions=en-US|
-|showCaptions|Boolescher Wert|Dient zum Laden des Players mit bereits geladenen Beschriftungen.<br/>Beispiel: showCaptions=true|
-|type||Aktiviert ein Design für den Audioplayer (Videoteil wird entfernt).<br/>Beispiel: type=audio|
-|autoplay|Boolescher Wert|Gibt an, ob der Player beim Laden mit der Wiedergabe des Videos beginnen soll (Standardeinstellung: TRUE).<br/>Beispiel: autoplay=false|
-|language|Sprachcode|Dienst zum Steuern der Sprache des Players (Standardeinstellung: en-US)<br/>Beispiel: language=de-DE|
+|t|Sekunden ab Start|Aktiviert die Wiedergabe durch den Player ab dem angegebenen Zeitpunkt.<br/>Beispiel: `t=60`.|
+|captions|Ein Sprachcode|Ruft die Beschriftungen beim Laden des Widgets in der angegebenen Sprache ab, damit sie im Menü für die Beschriftungen verfügbar sind.<br/>Beispiel: `captions=en-US`.|
+|showCaptions|Boolescher Wert|Dient zum Laden des Players mit bereits geladenen Beschriftungen.<br/>Beispiel: `showCaptions=true`.|
+|type||Aktiviert ein Design für den Audioplayer (Videoteil wird entfernt).<br/>Beispiel: `type=audio`.|
+|autoplay|Boolescher Wert|Gibt an, ob der Player beim Laden mit der Wiedergabe des Videos beginnen soll (Standardeinstellung: TRUE).<br/>Beispiel: `autoplay=false`.|
+|language|Ein Sprachcode|Dienst zum Steuern der Sprache des Players (Standardeinstellung: en-US)<br/>Beispiel: `language=de-DE`.|
 
 ## <a name="embedding-public-content"></a>Einbetten von öffentlichen Inhalten
 

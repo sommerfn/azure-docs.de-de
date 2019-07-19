@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 10/13/2017
 ms.author: vidarmsft
-ms.openlocfilehash: 11ff7066019654ce2771bce242f3431d10da44ae
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 8c82170cf9cff1870739bb13db9ac0e348a46c07
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66150702"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67443066"
 ---
 # <a name="automated-disaster-recovery-solution-using-azure-site-recovery-for-file-shares-hosted-on-storsimple"></a>Automatische Lösung zur Notfallwiederherstellung mithilfe von Azure Site Recovery für auf StorSimple gehostete Dateifreigaben
 
@@ -171,16 +171,16 @@ Sie können einen Wiederherstellungsplan in ASR erstellen, um den Failoverprozes
 1. Klicken Sie im Automation-Konto auf **Variablen** &gt; **Variable hinzufügen**, und fügen Sie die folgenden Variablen hinzu. Sie können diese Ressourcen verschlüsseln. Diese Variablen sind spezifisch für den Wiederherstellungsplan. Wenn der Name des Wiederherstellungsplans (den Sie im nächsten Schritt erstellen) TestPlan lautet, müssen Ihre Variablen TestPlan-StorSimRegKey, TestPlan-AzureSubscriptionName usw. heißen.
 
    - **BaseUrl:** Die URL des Resource Managers für die Azure-Cloud. Rufen Sie sie mithilfe des Cmdlets **Get-AzEnvironment | Select-Object Name, ResourceManagerUrl** ab.
-   - *RecoveryPlanName* **-ResourceGroupName**: Die Resource Manager-Gruppe, die über die StorSimple-Ressource verfügt.
-   - *RecoveryPlanName* **-ManagerName**: Die StorSimple-Ressource, die über das StorSimple-Gerät verfügt.
-   - *RecoveryPlanName* **-DeviceName**: Das StorSimple-Gerät, für das ein Failover ausgeführt werden muss.
-   - *RecoveryPlanName* **-DeviceIpAddress**: Die IP-Adresse des Geräts (diese finden Sie auf der Registerkarte **Geräte** im Abschnitt „StorSimple-Geräte-Manager“ &gt; **Einstellungen** &gt; **Netzwerk** &gt; **Gruppe „DNS-Einstellungen“** ).
-   - *RecoveryPlanName* **-VolumeContainers**: Eine durch Trennzeichen getrennte Zeichenfolge von Volumecontainern, die sich auf dem Gerät befinden, und für die ein Failover ausgeführt werden muss, z.B. „volcon1“, „volcon2“, „volcon3“.
-   - *RecoveryPlanName* **-TargetDeviceName**: Die StorSimple Cloud Appliance, auf die das Failover für Container ausgeführt werden soll.
-   - *RecoveryPlanName* **-TargetDeviceIpAddress**: Die IP-Adresse des Zielgeräts (diese finden Sie im Abschnitt **Virtueller Computer** &gt; **Gruppe „Einstellungen“** &gt; **Registerkarte „Netzwerk“** ).
-   - *RecoveryPlanName* **-StorageAccountName**: Der Name des Speicherkontos, in dem das Skript (das auf der VM, für die ein Failover ausgeführt wurde, ausgeführt werden muss) gespeichert wird. Dies kann ein beliebiges Speicherkonto sein, das über genügend Speicherplatz verfügt, um das Skript zeitweise zu speichern.
-   - *RecoveryPlanName* **-StorageAccountKey**: Der Zugriffsschlüssel für das oben genannte Speicherkonto.
-   - *RecoveryPlanName* **-VMGUIDS**: Beim Schützen einer VM weist Azure Site Recovery allen VMs eine eindeutige ID zu, die die Details zur VM enthält, für die ein Failover ausgeführt wurde. Wählen Sie zum Abrufen von VMGUID die Registerkarte **Recovery Services** aus, und klicken Sie anschließend auf **Geschütztes Element** &gt; **Schutzgruppen** &gt; **Computer** &gt; **Eigenschaften**. Wenn Sie mehrere VMs haben, fügen Sie die GUIDs als durch Trennzeichen getrennte Zeichenfolge hinzu.
+   - _RecoveryPlanName_ **-ResourceGroupName**: Die Resource Manager-Gruppe, die über die StorSimple-Ressource verfügt.
+   - _RecoveryPlanName_ **-ManagerName**: Die StorSimple-Ressource, die über das StorSimple-Gerät verfügt.
+   - _RecoveryPlanName_ **-DeviceName**: Das StorSimple-Gerät, für das ein Failover ausgeführt werden muss.
+   - _RecoveryPlanName_ **-DeviceIpAddress**: Die IP-Adresse des Geräts (diese finden Sie auf der Registerkarte **Geräte** im Abschnitt „StorSimple-Geräte-Manager“ &gt; **Einstellungen** &gt; **Netzwerk** &gt; **Gruppe „DNS-Einstellungen“** ).
+   - _RecoveryPlanName_ **-VolumeContainers**: Eine durch Trennzeichen getrennte Zeichenfolge von Volumecontainern, die sich auf dem Gerät befinden, und für die ein Failover ausgeführt werden muss, z.B. „volcon1“, „volcon2“, „volcon3“.
+   - _RecoveryPlanName_ **-TargetDeviceName**: Die StorSimple Cloud Appliance, auf die das Failover für Container ausgeführt werden soll.
+   - _RecoveryPlanName_ **-TargetDeviceIpAddress**: Die IP-Adresse des Zielgeräts (diese finden Sie im Abschnitt **Virtueller Computer** &gt; **Gruppe „Einstellungen“** &gt; **Registerkarte „Netzwerk“** ).
+   - _RecoveryPlanName_ **-StorageAccountName**: Der Name des Speicherkontos, in dem das Skript (das auf der VM, für die ein Failover ausgeführt wurde, ausgeführt werden muss) gespeichert wird. Dies kann ein beliebiges Speicherkonto sein, das über genügend Speicherplatz verfügt, um das Skript zeitweise zu speichern.
+   - _RecoveryPlanName_ **-StorageAccountKey**: Der Zugriffsschlüssel für das oben genannte Speicherkonto.
+   - _RecoveryPlanName_ **-VMGUIDS**: Beim Schützen einer VM weist Azure Site Recovery allen VMs eine eindeutige ID zu, die die Details zur VM enthält, für die ein Failover ausgeführt wurde. Wählen Sie zum Abrufen von VMGUID die Registerkarte **Recovery Services** aus, und klicken Sie anschließend auf **Geschütztes Element** &gt; **Schutzgruppen** &gt; **Computer** &gt; **Eigenschaften**. Wenn Sie mehrere VMs haben, fügen Sie die GUIDs als durch Trennzeichen getrennte Zeichenfolge hinzu.
 
      Wenn der Name des Wiederherstellungsplans beispielsweise fileServerpredayRP lautet, sollten die Registerkarten **Variablen**, **Verbindungen** und **Zertifikate** wie folgt aussehen, nachdem Sie alle Ressourcen hinzugefügt haben.
 

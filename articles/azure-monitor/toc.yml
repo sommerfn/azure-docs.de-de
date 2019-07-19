@@ -179,7 +179,7 @@
                   displayname: 'ASP.NET, c#, csharp, .NET, NET, dotnet'
                   href: app/asp-net.md
                 - name: .NET-Konsole
-                  displayname: 'console, .NET, dotnet console, dotenet, c#, csharp, NET'
+                  displayname: 'console, .NET, dotnet console, dotnet, c#, csharp, NET'
                   href: app/console.md
                 - name: ILogger
                   displayname: 'ilogger, logging, log'
@@ -295,7 +295,7 @@
                 - name: Leistungstests
                   href: app/performance-testing.md
                 - name: Problembehandlung
-                  displayname: 'availability, troublshoot, troubleshoot availability'
+                  displayname: 'availability, troubleshoot, troubleshoot availability'
                   href: app/troubleshoot-availability.md
             - name: Verteilte Ablaufverfolgung
               items:
@@ -497,6 +497,8 @@
                   href: insights/container-insights-alerts.md
                 - name: Agentverwaltung
                   href: insights/container-insights-manage-agent.md
+                - name: Konfigurieren der Agent-Sammlungseinstellungen
+                  href: insights/container-insights-agent-config.md
                 - name: Aktualisieren zum Aktivieren von Metriken
                   href: insights/container-insights-update-metrics.md
                 - name: Problembehandlung
@@ -612,8 +614,6 @@
                   href: insights/vminsights-workbooks.md
                 - name: Analysieren von Daten mit Protokollabfragen
                   href: insights/vminsights-log-search.md
-                - name: Konfigurieren der Agent-Sammlungseinstellungen
-                  href: insights/container-insights-agent-config.md
                 - name: Deaktivieren der Überwachung
                   href: insights/vminsights-optout.md
             - name: Lösung „Kapazität und Leistung“

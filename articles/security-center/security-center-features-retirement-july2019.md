@@ -8,12 +8,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 4/16/2019
 ms.author: yoafr
-ms.openlocfilehash: 069345f9c2d0fff0b580365153d8be13bb4ba204
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 1d364da9506124a35c724209c68ff72db4243e80
+ms.sourcegitcommit: a12b2c2599134e32a910921861d4805e21320159
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65952138"
+ms.lasthandoff: 06/24/2019
+ms.locfileid: "67341574"
 ---
 # <a name="retirement-of-security-center-features-july-2019"></a>Auslaufen von Security Center-Funktionen (Juli 2019)
 
@@ -114,16 +114,18 @@ Wir empfehlen Ihnen, die in Security Center integrierte Karte mit Sicherheitswar
 
 ## Benutzerdefinierte Warnungsregeln (Vorschau)<a name="menu_customalerts"></a>
 
-Wir stellen [die Funktion für benutzerdefinierte Warnungsregeln](https://docs.microsoft.com/azure/security-center/security-center-custom-alert) am 30. Juni 2019 ein, da die zugrunde liegende Infrastruktur eingestellt wird. Bis dahin können Sie vorhandene benutzerdefinierte Warnungsregeln bearbeiten, jedoch keine neuen hinzufügen. Sie sollten [Azure Sentinel](https://azure.microsoft.com/services/azure-sentinel/) aktivieren, um vorhandene Warnungen automatisch zu migrieren und neue Warnungen zu erstellen. Alternativ können Sie Ihre Warnungen mit Azure Monitor-Protokollwarnungen erstellen.
+Wir stellen [die Funktion für benutzerdefinierte Warnungsregeln](https://docs.microsoft.com/azure/security-center/security-center-custom-alert) am 30. Juni 2019 ein, da die zugrunde liegende Infrastruktur eingestellt wird. Bis dahin können Sie vorhandene benutzerdefinierte Warnungsregeln bearbeiten, jedoch keine neuen hinzufügen. Benutzerdefinierte Warnungen, die nach dem Deaktivierungsdatum definiert wurden, sind nicht wirksam. Außerdem werden keine Sicherheitswarnungen generiert, die auf diesen Regeln basieren.
+Es wird empfohlen, [Azure Sentinel](https://azure.microsoft.com/services/azure-sentinel/) zu aktivieren und die benutzerdefinierten Warnungen dort neu zu erstellen. Alternativ können Sie Ihre Warnungen mit Azure Monitor-Protokollwarnungen erstellen.
 
-Wenn Sie Ihre vorhandenen Warnungen beibehalten möchten, migrieren Sie sie nach Azure Sentinel:
+So können Sie Ihre vorhandenen Warnungen beibehalten und mit Azure Sentinel erstellen:
 
-1. Öffnen Sie Azure Sentinel, und wählen Sie den Arbeitsbereich aus, in dem Ihre benutzerdefinierten Warnungen gespeichert sind.
-1. Wählen Sie **Analytics** im Menü aus, um Ihre Warnungen automatisch zu migrieren.
+1. [Öffnen Sie Azure Sentinel](https://portal.azure.com/#create/Microsoft.ASI/preview), und wählen Sie den Arbeitsbereich aus, in dem Ihre benutzerdefinierten Warnungen gespeichert sind.
+1. Wählen Sie im Menü **Analyse** aus.
+1. Befolgen Sie die Anweisungen im folgenden [Tutorial](https://docs.microsoft.com/azure/sentinel/tutorial-detect-threats), die erläutern, wie Sie benutzerdefinierte Warnungen in Azure Sentinel erstellen.
+
+Wenn Sie Azure Sentinel nicht verwenden möchten, können Sie Ihre Warnungen mit Azure Monitor-Protokollwarnungen erstellen. Anleitungen finden Sie unter  [Erstellen, Anzeigen und Verwalten von Protokollwarnungen mithilfe von Azure Monitor](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-log) und [Protokollwarnungen in Azure Monitor](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-unified-log).
 
 ![Benutzerdefinierte Warnungen][13]
-
-Wenn Sie nicht am Übergang zu Azure Sentinel interessiert sind, sollten Sie Ihre Warnungen mit Azure Monitor-Protokollwarnungen erstellen. Anleitungen finden Sie unter  [Erstellen, Anzeigen und Verwalten von Protokollwarnungen mithilfe von Azure Monitor](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-log) und [Protokollwarnungen in Azure Monitor](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-unified-log).
 
 Weitere Informationen zum Einstellen benutzerdefinierter Warnungen finden Sie unter [Benutzerdefinierte Warnungsregeln in Azure Security Center (Vorschauversion)](https://docs.microsoft.com/azure/security-center/security-center-custom-alert).
 

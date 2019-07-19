@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: vmware
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: e1fc7809ad94d589483b87c638d027a39098164e
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 85a8840ccf6f6fe6390b5eeaccd715d87169f157
+ms.sourcegitcommit: f811238c0d732deb1f0892fe7a20a26c993bc4fc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65209539"
+ms.lasthandoff: 06/29/2019
+ms.locfileid: "67476025"
 ---
 # <a name="quickstart---configure-a-private-cloud-environment"></a>Schnellstart: Konfigurieren einer Private Cloud-Umgebung
 
@@ -33,7 +33,7 @@ Melden Sie sich unter [https://portal.azure.com](https://portal.azure.com) beim 
 
 5. Geben Sie im CloudSimple-Portal einen Namen für Ihre private Cloud an.
 6. Wählen Sie den **Standort** Ihrer privaten Cloud aus.
-7. Wählen Sie den **Knotentyp** aus, den Sie in Azure erworben haben.  Sie können zwischen der [CS28- und CS36-Option](cloudsimple-node.md#vmware-solution-by-cloudsimple-nodes-sku) wählen. Die zweite Option umfasst die maximale Compute- und Arbeitsspeicherkapazität.
+7. Wählen Sie den **Knotentyp** aus, den Sie in Azure bereitgestellt haben.  Sie können zwischen der [CS28- und CS36-Option](cloudsimple-node.md#vmware-solution-by-cloudsimple-nodes-sku) wählen. Die zweite Option umfasst die maximale Compute- und Arbeitsspeicherkapazität.
 8. Geben Sie die **Anzahl von Knoten** an.  Für ein Erstellen einer privaten Cloud sind mindestens drei Knoten erforderlich.
 
     ![Erstellen einer privaten Cloud: grundlegende Informationen](media/create-private-cloud-basic-info.png)
@@ -187,7 +187,10 @@ Sie finden den vollständig qualifizierten Domänennamen (FQDN) und die IP-Adres
 
     ![Nach dem FQDN von NSX Manager suchen](media/private-cloud-nsx-manager-fqdn.png)
 
-Um das Kennwort zu ändern, folgen Sie den Anweisungen in [NSX Manager Installation](https://docs.vmware.com/en/VMware-NSX-T-Data-Center/2.2/com.vmware.nsxt.install.doc/GUID-A65FE3DD-C4F1-47EC-B952-DEDF1A3DD0CF.html).
+Um das Kennwort zu ändern, folgen Sie den Anweisungen in Thema zum [Verwalten von Benutzerkennwörtern](https://docs.vmware.com/en/VMware-NSX-T-Data-Center/2.4/administration/GUID-DB31B304-66A5-4516-9E55-2712D12B4F27.html).
+
+> [!WARNING]
+> Das NSX-Administratorkennwort läuft standardmäßig nach 90 Tagen ab.
 
 ## <a name="create-a-port-group"></a>Erstellen einer Portgruppe
 

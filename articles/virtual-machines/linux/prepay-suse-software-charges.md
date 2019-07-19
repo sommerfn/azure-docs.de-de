@@ -1,23 +1,21 @@
 ---
-title: Vorauszahlen für Softwarepläne – Azure-Reservierungen | Microsoft-Dokumentation
+title: Vorauszahlen für Softwarepläne – Azure-Reservierungen
 description: Erfahren Sie, wie Sie Softwarepläne im Voraus bezahlen und Geld gegenüber den Kosten beim nutzungsbasierten Modell sparen können.
-documentationcenter: ''
-author: yashesvi
+author: bandersmsft
 manager: yashesvi
-editor: ''
 ms.service: virtual-machines-linux
 ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 04/12/2019
+ms.date: 07/01/2019
 ms.author: banders
-ms.openlocfilehash: e15dcdbbcaed32d836bb751ef93ce17e90bd6905
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: c8e9d07bf01536d7865bd79f667a937037d96837
+ms.sourcegitcommit: ac1cfe497341429cf62eb934e87f3b5f3c79948e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60771242"
+ms.lasthandoff: 07/01/2019
+ms.locfileid: "67489881"
 ---
 # <a name="prepay-for-azure-software-plans"></a>Vorauszahlen für Azure-Softwarepläne
 
@@ -25,7 +23,7 @@ Wenn Sie für Ihre Nutzung von SUSE- und Red Hat-Software in Azure im Voraus bez
 
 Sie können SUSE- und Red Hat-Softwarepläne im Azure-Portal erwerben. Gehen Sie wie folgt vor, um einen Plan zu erwerben:
 
-- Sie müssen über die Besitzerrolle für mindestens ein Enterprise-Abonnement oder ein Abonnement mit nutzungsbasierter Bezahlung verfügen.
+- Sie müssen über die Besitzerrolle für mindestens ein Enterprise- oder Einzelabonnement mit nutzungsbasierter Bezahlung verfügen.
 - Bei Enterprise-Abonnements muss im [EA-Portal](https://ea.azure.com/) die Option **Reservierte Instanzen hinzufügen** aktiviert werden. Wenn diese Einstellung deaktiviert ist, müssen Sie ein EA-Administrator für das Abonnement sein.
 - Für das Cloud Solution Provider-Programm (CSP) können die Administratoren oder Vertriebsmitarbeiter die Softwarepläne erwerben.
 
@@ -35,12 +33,12 @@ Sie können SUSE- und Red Hat-Softwarepläne im Azure-Portal erwerben. Gehen Sie
 2. Klicken Sie auf **Hinzufügen**, und wählen Sie dann den Softwareplan aus, den Sie erwerben möchten.
 Füllen Sie die erforderlichen Felder aus. Alle SUSE Linux- oder Red Hat-VMs, die den Attributen des erworbenen Plans entsprechen, erhalten den Rabatt. Die tatsächliche Anzahl der Bereitstellungen, die den Rabatt erhalten, hängt vom ausgewählten Bereich und von der ausgewählten Menge ab.
 3. Wählen Sie ein Abonnement aus. Es wird zum Bezahlen des Plans verwendet.
-Die Zahlungsmethode für das Abonnement wird mit Vorauszahlungen für die Reservierung belastet. Der Abonnementtyp muss „Enterprise Agreement“ (Angebotsnummern: MS-AZR-0017P oder MS-AZR-0148P) oder „Nutzungsbasierte Zahlung“ (Angebotsnummern: MS-AZR-0003P oder MS-AZR-0023P) sein.
+Die Zahlungsmethode für das Abonnement wird mit Vorauszahlungen für die Reservierung belastet. Der Abonnementtyp muss „Enterprise Agreement“ (Angebotsnummern: MS-AZR-0017P oder MS-AZR-0148P) oder ein Einzelvertrag mit nutzungsbasierter Bezahlung (Angebotsnummern: MS-AZR-0003P oder MS-AZR-0023P) sein.
     - Bei einem Enterprise-Abonnement werden die Gebühren vom Verpflichtungsguthaben der Reservierung abgezogen oder als Überschreitung belastet.
-    - Bei einem Abonnement mit nutzungsbasierter Zahlung wird die Kreditkarte des Abonnements mit den Gebühren belastet, oder die Gebühren werden für Zahlung auf Rechnung in Rechnung gestellt.
+    - Bei einem Einzelabonnement mit nutzungsbasierter Bezahlung werden die Gebühren über die Kreditkarte des Abonnenten abgerechnet oder in Rechnung gestellt.
 4. Wählen Sie einen Bereich aus. Der Bereich kann ein Abonnement oder mehrere Abonnements (freigegebener Bereich) umfassen.
     - Einzelabonnement: Der Rabatt für den Plan wird auf die übereinstimmende Nutzung im Abonnement angewandt.
-    - Freigegeben: Der Rabatt für den Plan wird auf übereinstimmende Instanzen in jedem Abonnement in Ihrem Abrechnungskontext angewandt. Für Enterprise-Kunden entspricht der Abrechnungskontext der Registrierung und umfasst alle Abonnements in der Registrierung. Für Kunden mit nutzungsbasierter Zahlung umfasst der Abrechnungskontext alle Abonnements mit nutzungsbasierter Zahlung, die vom Kontoadministrator erstellt wurden.
+    - Freigegeben: Der Rabatt für den Plan wird auf übereinstimmende Instanzen in jedem Abonnement in Ihrem Abrechnungskontext angewandt. Für Enterprise-Kunden entspricht der Abrechnungskontext der Registrierung und umfasst alle Abonnements in der Registrierung. Bei Kunden mit einem Einzelplan und nutzungsbasierter Bezahlung entspricht der Abrechnungskontext allen Einzelplanabonnements mit nutzungsbasierter Bezahlung, die vom Kontoadministrator erstellt wurden.
 5. Wählen Sie ein Produkt aus, um die VM-Größe und den Imagetyp auszuwählen. Der Rabatt gilt nur für die ausgewählte VM-Größe.
 6. Wählen Sie als Laufzeit ein Jahr oder drei Jahre aus.
 7. Wählen Sie eine Menge aus, die Anzahl der im Voraus bezahlten VM-Instanzen, auf die der Abrechnungsrabatt angewandt werden kann.

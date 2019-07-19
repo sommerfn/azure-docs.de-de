@@ -1,19 +1,20 @@
 ---
-title: Einschränkungen in Azure Database for PostgreSQL – Einzelserver
-description: Dieser Artikel beschreibt die Einschränkungen in Azure Database for PostgreSQL – Einzelserver, z. B. die Anzahl der Verbindungs- und Speicher-Engine-Optionen.
+title: Beschränkungen in Azure Database for PostgreSQL – Einzelserver
+description: In diesem Artikel werden die Beschränkungen in Azure Database for PostgreSQL für Einzelserver beschrieben, z. B. die Anzahl der Verbindungen und Optionen für die Speicher-Engine.
 author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
-ms.date: 06/05/2019
-ms.openlocfilehash: 3e1597def26c09378d3917ad2d49163ef17732f8
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.date: 06/25/2019
+ms.custom: fasttrack-edit
+ms.openlocfilehash: e4752112acf136d9ffb19a0b7383bc3aff5de5e0
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66732860"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67448101"
 ---
-# <a name="limitations-in-azure-database-for-postgresql---single-server"></a>Einschränkungen in Azure Database for PostgreSQL – Einzelserver
+# <a name="limits-in-azure-database-for-postgresql---single-server"></a>Beschränkungen in Azure Database for PostgreSQL – Einzelserver
 In den folgenden Abschnitten werden die Kapazitäts- und funktionalen Beschränkungen im Datenbankdienst beschrieben. Informationen zu den Tarifen für Ressourcen (Compute, Arbeitsspeicher, Speicher) finden Sie im Artikel [Tarife](concepts-pricing-tiers.md).
 
 
@@ -34,7 +35,7 @@ Die folgende Tabelle enthält die maximale Anzahl von Verbindungen nach Tarif un
 |Arbeitsspeicheroptimiert| 4| 500|
 |Arbeitsspeicheroptimiert| 8| 960|
 |Arbeitsspeicheroptimiert| 16| 1\.900|
-|Arbeitsspeicheroptimiert| 32| 1\.900|
+|Arbeitsspeicheroptimiert| 32| 1987|
 
 Wenn Verbindungen den Grenzwert übersteigen, erhalten Sie möglicherweise den folgenden Fehler:
 > SCHWERWIEGEND: Es sind bereits zu viele Clients vorhanden.
@@ -48,6 +49,9 @@ Das Azure-System benötigt fünf Verbindungen, um den Azure Database for Postgre
 
 ### <a name="server-version-upgrades"></a>Upgrades von Serverversionen
 - Die automatisierte Migration zwischen Hauptversionen von Datenbank-Engines wird derzeit nicht unterstützt. Wenn Sie auf die nächste Hauptversion upgraden möchten, führen Sie eine [Sicherung und Wiederherstellung](./howto-migrate-using-dump-and-restore.md) auf einem Server aus, der mit der neuen Engine-Version erstellt wurde.
+
+> Beachten Sie, dass vor PostgreSQL-Version 10 ein _Hauptversionsupgrade_ von der [PostgreSQL-Versionsrichtlinie](https://www.postgresql.org/support/versioning/) als eine Erhöhung der ersten _oder_ zweiten Versionsnummer betrachtet wurde (z. B. wurde der Wechsel von 9.5 auf 9.6 als _Hauptversionsupgrade_ angesehen).
+> Ab Version 10 gilt nur noch eine Änderung der ersten Versionsnummer als Hauptversionsupgrade (z. B. ist der Wechsel von 10.0 auf 10.1 ein _Nebenversionsupgrade_ und der von 10 auf 11 ein _Hauptversionsupgrade_).
 
 ### <a name="vnet-service-endpoints"></a>VNET-Dienstendpunkte
 - VNET-Dienstendpunkte werden nur für Server vom Typ „Universell“ und „Arbeitsspeicheroptimiert“ unterstützt.
