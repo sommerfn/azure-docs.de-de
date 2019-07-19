@@ -209,7 +209,7 @@ Definiert Funktionen, die im Workflow ausgeführt werden können.
 
 | Feld | Description | Erforderlich | Max. Länge |
 |-------|-------------|:--------:|-----------:|
-| NAME | Der eindeutige Name der Funktion. Der entsprechende intelligente Vertrag muss den gleichen **Namen** für die jeweilige Funktion verwenden. | Ja | 50 |
+| Name | Der eindeutige Name der Funktion. Der entsprechende intelligente Vertrag muss den gleichen **Namen** für die jeweilige Funktion verwenden. | Ja | 50 |
 | DisplayName | Der Anzeigename der Funktion | Ja | 255 |
 | Description | Beschreibung der Funktion | Nein | 255 |
 | Parameter | Sammlung von [Bezeichnern](#identifiers), die den Parametern der Funktion entsprechen. | Ja | |
@@ -257,7 +257,7 @@ Eine Sammlung von eindeutigen Zuständen innerhalb eines Workflows. Jeder Zustan
 
 | Feld | Description | Erforderlich | Max. Länge |
 |-------|-------------|:--------:|-----------:|
-| NAME | Eindeutiger Name des Zustands. Der entsprechende intelligente Vertrag muss den gleichen **Namen** für den jeweiligen Zustand verwenden. | Ja | 50 |
+| Name | Eindeutiger Name des Zustands. Der entsprechende intelligente Vertrag muss den gleichen **Namen** für den jeweiligen Zustand verwenden. | Ja | 50 |
 | DisplayName | Der Anzeigename des Zustands | Ja | 255 |
 | Description | Beschreibung des Zustands | Nein | 255 |
 | PercentComplete | Ein ganzzahliger Wert in der Blockchain Workbench-Benutzeroberfläche, der den Fortschritt der Ablaufsteuerung innerhalb der Geschäftslogik anzeigt. | Ja | |
@@ -371,7 +371,7 @@ Anwendungsrollen definieren eine Reihe von Rollen, die Benutzern zugewiesen werd
 
 | Feld | Description | Erforderlich | Max. Länge |
 |-------|-------------|:--------:|-----------:|
-| NAME | Der eindeutige Name der Anwendungsrolle. Der entsprechende intelligente Vertrag muss den gleichen **Namen** für die jeweilige Rolle verwenden. Basistypnamen sind reserviert. Einer Anwendungsrolle kann nicht der Name eines [Typs](#type) gegeben werden.| Ja | 50 |
+| Name | Der eindeutige Name der Anwendungsrolle. Der entsprechende intelligente Vertrag muss den gleichen **Namen** für die jeweilige Rolle verwenden. Basistypnamen sind reserviert. Einer Anwendungsrolle kann nicht der Name eines [Typs](#type) gegeben werden.| Ja | 50 |
 | Description | Die Beschreibung der Anwendungsrolle | Nein | 255 |
 
 ### <a name="application-roles-example"></a>Beispiel zu Anwendungsrollen (ApplicationRoles)
@@ -394,7 +394,7 @@ Bezeichner stellen eine Sammlung von Informationen zur Beschreibung von Workflow
 
 | Feld | Description | Erforderlich | Max. Länge |
 |-------|-------------|:--------:|-----------:|
-| NAME | Der eindeutige Name der Eigenschaft bzw. des Parameters. Der entsprechende intelligente Vertrag muss den gleichen **Namen** für die jeweilige Eigenschaft bzw. den jeweiligen Parameter verwenden. | Ja | 50 |
+| Name | Der eindeutige Name der Eigenschaft bzw. des Parameters. Der entsprechende intelligente Vertrag muss den gleichen **Namen** für die jeweilige Eigenschaft bzw. den jeweiligen Parameter verwenden. | Ja | 50 |
 | DisplayName | Der Anzeigename der Eigenschaft bzw. des Parameters | Ja | 255 |
 | Description | Die Beschreibung der Eigenschaft bzw. des Parameters | Nein | 255 |
 
