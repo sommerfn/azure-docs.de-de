@@ -3,7 +3,7 @@ title: Integration von Azure ExpressRoute und Oracle Cloud Infrastructure | Micr
 description: Integration von Azure ExpressRoute und Oracle Cloud Infrastructure (OCI) FastConnect unterstützt cloudübergreifende Oracle-Anwendungslösungen
 documentationcenter: virtual-machines
 author: romitgirdhar
-manager: jeconnoc
+manager: gwallace
 editor: ''
 tags: azure-resource-manager
 ms.assetid: ''
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 06/24/2019
 ms.author: rogirdh
-ms.openlocfilehash: ce1f86f7594692c797aaca5008b211b96ba81fbe
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: 671d7c8eb9f10e346b49056e1cc117c9882bb6e8
+ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67454381"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67707577"
 ---
 # <a name="set-up-a-direct-interconnection-between-azure-and-oracle-cloud-infrastructure"></a>Einrichten einer direkten Verbindung zwischen Azure und Oracle Cloud Infrastructure  
 
@@ -66,7 +66,7 @@ Die folgende Abbildung enthält eine allgemeine Übersicht über die Verbindung:
     * Fügen Sie den ExpressRoute-Dienstschlüssel in das Feld für den **Anbieterdienstschlüssel** ein.
     * Verwenden Sie den ersten privaten /30-IP-Adressraum, den Sie in einem vorherigen Schritt erstellt haben, für die **Primary BGP IP Address** (Primäre BGP-IP-Adresse) und den zweiten privaten /30-IP-Adressraum für die **Secondary BGP IP Address** (Sekundäre BGP-IP-Adresse).
         * Weisen Sie die erste verwendbare Adresse aus den beiden Adressräumen der Oracle-BGP-IP-Adresse (primär und sekundär) und die zweite Adresse der Kunden-BGP-IP-Adresse zu (aus der Perspektive von FastConnect). Die erste verwendbare IP-Adresse entspricht der zweiten IP-Adresse im /30-Adressraum (die erste IP-Adresse wird von Microsoft reserviert).
-    * Klicken Sie auf **Create** (Erstellen).
+    * Klicken Sie auf **Create**.
 1. Schließen Sie die Verknüpfung von FastConnect mit Virtual Cloud Network im Oracle-Mandanten ab. Verwenden Sie dazu ein DRG (Dynamic Routing Gateway) und eine Routingtabelle.
 1. Navigieren Sie zu Azure, und stellen sicher, dass der **Anbieterstatus** für die ExpressRoute-Verbindung in **Bereitgestellt** geändert und dass der Peeringtyp **Azure, privat** bereitgestellt wurde. Dies ist eine Voraussetzung für die nächsten Schritte.
 
