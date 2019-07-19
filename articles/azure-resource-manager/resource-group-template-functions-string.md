@@ -61,7 +61,7 @@ Rückkehr zur base64-Darstellung der Eingabezeichenfolge.
 
 | Parameter | Erforderlich | Typ | BESCHREIBUNG |
 |:--- |:--- |:--- |:--- |
-| inputString |Ja |Zeichenfolge |Der Wert, der als base64-Darstellung zurückgegeben wird. |
+| inputString |Ja |string |Der Wert, der als base64-Darstellung zurückgegeben wird. |
 
 ### <a name="return-value"></a>Rückgabewert
 
