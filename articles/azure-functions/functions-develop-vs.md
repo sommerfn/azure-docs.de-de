@@ -10,16 +10,16 @@ ms.custom: vs-azure
 ms.topic: conceptual
 ms.date: 10/08/2018
 ms.author: glenga
-ms.openlocfilehash: 4366f09ccc9a3b2335e0aa84b7fb7398825cb87e
-ms.sourcegitcommit: 4c2b9bc9cc704652cc77f33a870c4ec2d0579451
+ms.openlocfilehash: 8ed3b42c61456f110925e34473dbb326dafc1b80
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/17/2019
-ms.locfileid: "65864530"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67447712"
 ---
 # <a name="develop-azure-functions-using-visual-studio"></a>Entwickeln von Azure Functions mithilfe von Visual Studio  
 
-Azure Functions-Tools für Visual Studio 2019 ist eine Erweiterung für Visual Studio, mit der Sie C#-Funktionen entwickeln, testen und in Azure bereitstellen können. Wenn Sie zum ersten Mal mit Azure Functions arbeiten, finden Sie unter [Einführung in Azure Functions](functions-overview.md) weitere Informationen.
+Azure Functions-Tools ist eine Erweiterung für Visual Studio, mit der Sie C#-Funktionen entwickeln, testen und in Azure bereitstellen können. Wenn Sie zum ersten Mal mit Azure Functions arbeiten, finden Sie unter [Einführung in Azure Functions](functions-overview.md) weitere Informationen.
 
 Azure Functions-Tools bieten folgende Vorteile: 
 
@@ -42,13 +42,11 @@ Azure Functions-Tools sind in der „Azure-Entwicklung“-Workload von [Visual S
 
 Stellen Sie sicher, dass Ihre Visual Studio-Version auf dem neuesten Stand ist und Sie die [neueste Version](#check-your-tools-version) der Azure Functions-Tools verwenden.
 
-### <a name="other-requirements"></a>Sonstige Anforderungen
+### <a name="azure-resources"></a>Azure-Ressourcen
 
-Zum Erstellen und Bereitstellen von Funktionen benötigen Sie ebenso:
+[!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-* Ein aktives Azure-Abonnement. Wenn Sie noch kein Azure-Abonnement haben, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) erstellen.
-
-* Azure Storage-Konto Informationen zum Erstellen eines Speicherkontos finden Sie unter [Erstellen Sie ein Speicherkonto](../storage/common/storage-quickstart-create-account.md).
+Andere Ressourcen, die Sie benötigen, z. B. ein Azure Storage-Konto, werden während des Veröffentlichungsprozesses in Ihrem Abonnement erstellt.
 
 ### <a name="check-your-tools-version"></a>Überprüfen Ihrer Tools-Version
 
@@ -80,16 +78,24 @@ Die Projektvorlage erstellt ein C#-Projekt, installiert das NuGet-Paket `Microso
 
 * **host.json**: Ermöglicht das Konfigurieren des Functions-Hosts. Diese Einstellungen gelten für die lokale Ausführung und die Ausführung in Azure. Weitere Informationen finden Sie in der [host.json-Referenz](functions-host-json.md).
 
-* **local.settings.json**: Behält Einstellungen beim lokalen Ausführen von Funktionen bei. Diese Einstellungen werden nicht von Azure benutzt, sondern von den [Azure Functions Core-Tools](functions-run-local.md). Verwenden Sie diese Datei zum Angeben von App-Einstellungen für Umgebungsvariablen, die für Ihre Funktionen erforderlich sind. Fügen Sie dem Array **Values** für jede Verbindung, die für die Funktionsbindungen in Ihrem Projekt erforderlich sind, ein neues Element hinzu. Weitere Informationen finden Sie unter [Datei für lokale Einstellungen](functions-run-local.md#local-settings-file) im Artikel zu Azure Functions Core Tools.
+* **local.settings.json**: Behält Einstellungen beim lokalen Ausführen von Funktionen bei. Diese Einstellungen werden bei der Ausführung in Azure nicht verwendet. Weitere Informationen finden Sie unter [Datei für lokale Einstellungen](#local-settings-file).
 
     >[!IMPORTANT]
     >Da die Datei „local.settings.json“ Geheimnisse enthalten kann, müssen Sie sie aus der Quellcodeverwaltung Ihres Projekts ausschließen. Die Einstellung **In Ausgabeverzeichnis kopieren** für diese Datei sollte immer **Kopieren, wenn neuer** lauten. 
 
 Weitere Informationen finden Sie unter [Funktionsklassenbibliotheks-Projekt](functions-dotnet-class-library.md#functions-class-library-project).
 
+[!INCLUDE [functions-local-settings-file](../../includes/functions-local-settings-file.md)]
+
+Einstellungen in der Datei „local.settings.json“ werden nicht automatisch hochgeladen, wenn Sie das Projekt veröffentlichen. Um sicherzustellen, dass diese Einstellungen auch in Ihrer Funktions-App in Azure vorhanden sind, müssen Sie sie nach dem Veröffentlichen Ihres Projekts hochladen. Weitere Informationen finden Sie unter [Einstellungen für Funktions-Apps](#function-app-settings).
+
+Werte in **ConnectionStrings** werden niemals veröffentlicht.
+
+Die Werte für Funktions-App-Einstellungen können auch im Code als Umgebungsvariablen gelesen werden. Weitere Informationen finden Sie unter [Umgebungsvariablen](functions-dotnet-class-library.md#environment-variables).
+
 ## <a name="configure-the-project-for-local-development"></a>Konfigurieren des Projekts für die lokale Entwicklung
 
-Die Functions-Laufzeit verwendet intern ein Azure-Speicherkonto. Sie müssen für alle Triggertypen außer HTTP und Webhooks den Schlüssel **Values.AzureWebJobsStorage** auf eine gültige Verbindungszeichenfolge des Azure-Speicherkontos festlegen. Ihre Funktions-App kann auch den [Azure-Speicheremulator](../storage/common/storage-use-emulator.md) für die Verbindungseinstellung **AzureWebJobsStorage** verwenden, die für das Projekt erforderlich ist. Um den Emulator zu verwenden, legen Sie den Wert von **AzureWebJobsStorage** auf `UseDevelopmentStorage=true` fest. Sie müssen diese Einstellung vor der Bereitstellung in eine tatsächliche Speicherverbindung ändern.
+Die Functions-Laufzeit verwendet intern ein Azure-Speicherkonto. Sie müssen für alle Triggertypen außer HTTP und Webhooks den Schlüssel **Values.AzureWebJobsStorage** auf eine gültige Verbindungszeichenfolge des Azure-Speicherkontos festlegen. Ihre Funktions-App kann auch den [Azure-Speicheremulator](../storage/common/storage-use-emulator.md) für die Verbindungseinstellung **AzureWebJobsStorage** verwenden, die für das Projekt erforderlich ist. Um den Emulator zu verwenden, legen Sie den Wert von **AzureWebJobsStorage** auf `UseDevelopmentStorage=true` fest. Ändern Sie diese Einstellung vor der Bereitstellung in eine tatsächliche Speicherverbindung.
 
 So legen Sie die Speicherkonto-Verbindungszeichenfolge fest:
 
@@ -133,8 +139,9 @@ In vorab kompilierten Funktionen werden die von der Funktion verwendeten Bindung
         }
     }
     ```
+
     Ein bindungsspezifisches Attribut wird auf jeden Bindungsparameter angewendet, der der Einstiegspunktmethode bereitgestellt wird. Das Attribut verwendet die Bindungsinformationen als Parameter. Im vorherigen Beispiel wurde auf den ersten Parameter ein **QueueTrigger**-Attribut angewendet, das die durch eine Warteschlange ausgelöste Funktion angab. Die Namen der Warteschlange und der Einstellung für die Verbindungszeichenfolge werden als Parameter an das Attribut **QueueTrigger** übergeben. Weitere Informationen finden Sie unter [Azure Queue Storage-Bindungen für Azure Functions](functions-bindings-storage-queue.md#trigger---c-example).
-    
+
 Sie können das obige Verfahren nutzen, um Ihrem Funktions-App-Projekt weitere Funktionen hinzuzufügen. Jede Funktion im Projekt kann über einen anderen Trigger verfügen, aber einer Funktion muss genau ein Trigger zugeordnet sein. Weitere Informationen finden Sie unter [Konzepte für Azure Functions-Trigger und -Bindungen](functions-triggers-bindings.md).
 
 ## <a name="add-bindings"></a>Hinzufügen von Bindungen
@@ -182,6 +189,13 @@ For an example of how to test a queue triggered function, see the [queue trigger
 Weitere Informationen über die Verwendung der Azure Functions Core-Tools finden Sie unter [Lokales Codieren und Testen von Azure-Funktionen](functions-run-local.md).
 
 ## <a name="publish-to-azure"></a>Veröffentlichen in Azure
+
+Bei der Veröffentlichung über Visual Studio wird eine von zwei Bereitstellungsmethoden verwendet:
+
+* [Web Deploy](functions-deployment-technologies.md#web-deploy-msdeploy): Dient zum Verpacken und Bereitstellen von Windows-Apps auf einem beliebigen IIS-Server.
+* [ZIP-Bereitstellung mit Aktivierung von „Run-From-Package“](functions-deployment-technologies.md#zip-deploy): Wird für Azure Functions-Bereitstellungen empfohlen.
+
+Verwenden Sie die folgenden Schritte, um Ihr Projekt in einer Funktions-App in Azure zu veröffentlichen.
 
 [!INCLUDE [Publish the project to Azure](../../includes/functions-vstools-publish.md)]
 

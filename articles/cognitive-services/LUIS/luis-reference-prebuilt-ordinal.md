@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: article
-ms.date: 05/07/2019
+ms.date: 06/25/2019
 ms.author: diberry
-ms.openlocfilehash: 752a26b21854ec9030fc1945024ae461445815a9
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 16529c8334ae9f2eed5715abb22dcbcdbebec7c4
+ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65146716"
+ms.lasthandoff: 07/01/2019
+ms.locfileid: "67485108"
 ---
 # <a name="ordinal-prebuilt-entity-for-a-luis-app"></a>Vordefinierte Ordinal-Entität für eine LUIS-App
 Eine Ordnungszahl ist eine numerische Darstellung eines Objekts in einer Menge: `first`, `second`, `third`. Da diese Entität bereits trainiert wurde, müssen Sie den Anwendungsabsichten keine Beispieläußerungen mit Ordnungszahlen hinzufügen. Die Ordinalentität wird in [vielen Kulturen](luis-reference-prebuilt-entities.md) unterstützt. 
@@ -130,4 +130,4 @@ Beim folgenden JSON-Code wurde der `verbose`-Parameter auf `true` festgelegt:
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Erfahren Sie mehr zu den [Prozentsatz](luis-reference-prebuilt-percentage.md)-, [Telefonnummer](luis-reference-prebuilt-phonenumber.md)- und [Temperaturentitäten](luis-reference-prebuilt-temperature.md). 
+Erfahren Sie mehr über die Entitäten [OrdinalV2](luis-reference-prebuilt-ordinal-v2.md), [phone number](luis-reference-prebuilt-phonenumber.md) und [temperature](luis-reference-prebuilt-temperature.md). 

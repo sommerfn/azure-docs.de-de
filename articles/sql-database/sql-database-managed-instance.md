@@ -1,6 +1,6 @@
 ---
 title: Azure SQL-Datenbank – Advanced Data Security | Microsoft-Dokumentation
-description: In diesem Thema wird die Advanced Data Security einer Azure SQL-Datenbank und deren Verwendung beschrieben sowie erläutert, wie sie sich von einer Einzeldatenbank oder einer in einem Pool zusammengefassten in Azure SQL-Datenbank unterscheidet.
+description: In diesem Thema wird Advanced Data Security einer Azure SQL-Datenbank und die Verwendung beschrieben sowie erläutert, wie sie sich von einer Einzel- oder Pooldatenbank in Azure SQL-Datenbank unterscheidet.
 services: sql-database
 ms.service: sql-database
 ms.subservice: managed-instance
@@ -11,13 +11,13 @@ author: bonova
 ms.author: bonova
 ms.reviewer: sstein, carlrab, vanto
 manager: craigg
-ms.date: 04/16/2019
-ms.openlocfilehash: 46c6972e20df69da236c151516d7d889f9db6084
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.date: 06/26/2019
+ms.openlocfilehash: b03f546b992bd9de6092dc0da8ef72aa69aa1da2
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "60002747"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67447791"
 ---
 # <a name="use-sql-database-advanced-data-security-with-virtual-networks-and-near-100-compatibility"></a>Verwenden der Advanced Data Security einer Azure SQL-Datenbank mit virtuellen Netzwerken und nahezu 100iger % Kompatibilität
 
@@ -34,7 +34,7 @@ Das Bereitstellungsmodell für die verwaltete Instanz ist für Kunden konzipiert
 
 Das Bereitstellungsmodell für die verwaltete Instanz strebt durch einen gestaffelten Releaseplan eine nahezu 100%ige Oberflächenkompatibilität mit dem neuesten lokalen SQL Server-Release an.
 
-Anhaltspunkte für die Entscheidung zwischen den verschiedenen Bereitstellungsoptionen für die Azure SQL-Datenbank zwischen Einzeldatenbank, einer im Pool zusammengefassten Datenbank, einer verwalteten Instanz und SQL Server auf einem virtuellen Computer finden Sie unter [Auswählen der richtigen Version von SQL Server in Azure](sql-database-paas-vs-sql-server-iaas.md).
+Anhaltspunkte für die Entscheidung zwischen den verschiedenen Bereitstellungsoptionen für die Azure SQL-Datenbank zwischen Einzeldatenbank, Pooldatenbank, einer verwalteten Instanz und SQL Server auf einem virtuellen Computer finden Sie unter [Auswählen der richtigen Version von SQL Server in Azure](sql-database-paas-vs-sql-server-iaas.md).
 
 ## <a name="key-features-and-capabilities"></a>Wichtige Features und Funktionen
 
@@ -64,32 +64,35 @@ Die wichtigsten Features der verwalteten Instanz sind in der folgenden Tabelle a
 | Anzahl der Datendateien (ROWS) pro Datenbank | Mehrere |
 | Anzahl der Protokolldateien (LOG) pro Datenbank | 1 |
 | VNET – Azure Resource Manager-Bereitstellung | Ja |
-| VNET – Klassisches Bereitstellungsmodell | Nein  |
+| VNET – Klassisches Bereitstellungsmodell | Nein |
 | Portal-Unterstützung | Ja|
 | Integrierter Integrationsdienst (SSIS) | Nein – SSIS ist Teil von [Azure Data Factory PaaS](https://docs.microsoft.com/azure/data-factory/tutorial-deploy-ssis-packages-azure) |
 | Integrierter Analysedienst (SSAS) | Nein – SSAS ist ein separater [PaaS](https://docs.microsoft.com/azure/analysis-services/analysis-services-overview) |
 | Integrierter Berichterstellungsdienst (SSRS) | Nein – Power BI oder SSRS IaaS verwenden |
 |||
 
-## <a name="vcore-based-purchasing-model"></a>Auf virtuellen Kernen basierendes Erwerbsmodell
+## <a name="vcore-based-purchasing-model"></a>vCore-basiertes Kaufmodell
 
-Das [V-Kern-basierte Kaufmodell](sql-database-service-tiers-vcore.md) für verwaltete Instanzen bietet Ihnen mehr Flexibilität, Kontrolle und Transparenz sowie eine unkomplizierte Möglichkeit, Ihre lokalen Workloadanforderungen in der Cloud zu realisieren. Mit diesem Modell können Sie Computeressourcen, Arbeitsspeicher und Speicher entsprechend Ihren Workloadanforderungen ändern. Das V-Kern-Modell ermöglicht mit dem [Azure-Hybridvorteil für SQL Server](https://azure.microsoft.com/pricing/hybrid-benefit/) zudem Einsparungen von bis zu 30 Prozent.
+Das [vCore-basierte Kaufmodell](sql-database-service-tiers-vcore.md) für verwaltete Instanzen bietet Ihnen mehr Flexibilität, Kontrolle und Transparenz sowie eine unkomplizierte Möglichkeit, Ihre lokalen Workloadanforderungen in der Cloud zu realisieren. Mit diesem Modell können Sie Computeressourcen, Arbeitsspeicher und Speicher entsprechend Ihren Workloadanforderungen ändern. Das V-Kern-Modell ermöglicht mit dem [Azure-Hybridvorteil für SQL Server](https://azure.microsoft.com/pricing/hybrid-benefit/) zudem Einsparungen von bis zu 30 Prozent.
 
 Beim V-Kern-Modell können Sie verschiedene Hardwaregenerationen auswählen.
 
 - **Gen4**: Logische CPUs basierend auf Intel-Prozessoren vom Typ E5-2673 v3 (Haswell) mit 2,4 GHz, angefügte SSD, physische Kerne, 7 GB RAM pro Kern und Computegrößen zwischen 8 und 24 virtuellen Kernen.
-- **Gen5**: Logische CPUs basierend auf Intel-Prozessoren vom Typ E5-2673 v4 (Broadwell) mit 2,3 GHz,schnelle NVMe SSD, logischer Kern mit Hyperthreading und Computegrößen zwischen 8 und 80 Kernen.
+- **Gen5**: Logische CPUs basierend auf Intel-Prozessoren vom Typ E5-2673 v4 (Broadwell) mit 2,3 GHz,schnelle NVMe SSD, logischer Kern mit Hyperthreading und Computegrößen zwischen 4 und 80 Kernen.
 
 Weitere Informationen zu den Unterschieden zwischen Hardwaregenerationen finden Sie unter [Ressourceneinschränkungen für verwaltete Instanzen](sql-database-managed-instance-resource-limits.md#hardware-generation-characteristics).
 
+> [!IMPORTANT]
+> Neue Gen4-Datenbanken werden in der Region „Australien, Osten“ nicht mehr unterstützt.
+
 ## <a name="managed-instance-service-tiers"></a>Dienstebenen für eine verwaltete Instanz
 
-Eine verwaltete Instanz ist in zwei Ebenen verfügbar:
+Eine verwaltete Instanz ist in zwei Dienstebenen verfügbar:
 
 - **Universell**: Entwickelt für Anwendungen mit typischen Leistungs- und E/A-Latenzanforderungen.
 - **Unternehmenskritisch**: Entwickelt für Anwendungen mit niedrigen E/A-Latenzanforderungen und minimalen Auswirkungen auf zugrunde liegende Wartungsvorgänge für die Workload.
 
-Beide Tarife garantieren eine Verfügbarkeit von 99,99% und ermöglichen es Ihnen, die Speichergröße und Computekapazität unabhängig voneinander auszuwählen. Weitere Informationen zur Hochverfügbarkeitsarchitektur von Azure SQL-Datenbank finden Sie unter [Hochverfügbarkeit und Azure SQL-Datenbank](sql-database-high-availability.md).
+Beide Dienstebenen garantieren eine Verfügbarkeit von 99,99 Prozent und ermöglichen es Ihnen, die Speichergröße und Computekapazität unabhängig voneinander auszuwählen. Weitere Informationen zur Hochverfügbarkeitsarchitektur von Azure SQL-Datenbank finden Sie unter [Hochverfügbarkeit und Azure SQL-Datenbank](sql-database-high-availability.md).
 
 ### <a name="general-purpose-service-tier"></a>Universelle Dienstebene
 
@@ -101,9 +104,9 @@ Folgende wichtige Merkmale kennzeichnen die universelle Dienstebene:
 
 Weitere Informationen finden Sie unter [Speicherebene im Tarif „Universell“](https://medium.com/azure-sqldb-managed-instance/file-layout-in-general-purpose-azure-sql-managed-instance-cf21fff9c76c) und [Bewährte Methoden und Aspekte der Speicherleistung für verwaltete Instanz (Universell)](https://blogs.msdn.microsoft.com/sqlcat/2018/07/20/storage-performance-best-practices-and-considerations-for-azure-sql-db-managed-instance-general-purpose/).
 
-Weitere Informationen zu den Unterschieden zwischen Diensttarifen finden Sie unter [Ressourceneinschränkungen für verwaltete Instanzen](sql-database-managed-instance-resource-limits.md#service-tier-characteristics).
+Weitere Informationen zu den Unterschieden zwischen Dienstebenen finden Sie unter [Ressourceneinschränkungen für verwaltete Instanzen](sql-database-managed-instance-resource-limits.md#service-tier-characteristics).
 
-### <a name="business-critical-service-tier"></a>Diensttarif „Unternehmenskritisch“
+### <a name="business-critical-service-tier"></a>Dienstebene „Unternehmenskritisch“
 
 Die unternehmenskritische Dienstebene wurde für Anwendungen mit hohen E/A-Anforderungen konzipiert. Sie bietet höchste Resilienz gegenüber Ausfällen durch mehrere isolierte Replikate.
 
@@ -115,7 +118,7 @@ Folgende wichtige Merkmale kennzeichnen die Dienstebene „Unternehmenskritisch�
 - Integriertes zusätzliches [Datenbankreplikat mit Schreibschutz](sql-database-read-scale-out.md), das für Berichte und andere schreibgeschützte Workloads verwendet werden kann
 - [In-Memory-OLTP](sql-database-in-memory.md), das für Workloads mit hohen Leistungsanforderungen verwendet werden kann  
 
-Weitere Informationen zu den Unterschieden zwischen Diensttarifen finden Sie unter [Ressourceneinschränkungen für verwaltete Instanzen](sql-database-managed-instance-resource-limits.md#service-tier-characteristics).
+Weitere Informationen zu den Unterschieden zwischen Dienstebenen finden Sie unter [Ressourceneinschränkungen für verwaltete Instanzen](sql-database-managed-instance-resource-limits.md#service-tier-characteristics).
 
 ## <a name="advanced-security-and-compliance"></a>Erweiterte Sicherheit und Konformität
 
@@ -172,7 +175,7 @@ Die Authentifizierung einer verwalteten Instanz bezieht sich darauf, wie Benutze
 
   Diese Authentifizierungsmethode verwendet von Azure Active Directory verwaltete Identitäten und wird für verwaltete und integrierte Domänen unterstützt. Verwenden Sie immer die Active Directory-Authentifizierung (integrierte Sicherheit), [sofern dies möglich ist](https://docs.microsoft.com/sql/relational-databases/security/choose-an-authentication-mode).
 
-### <a name="authorization"></a>Autorisierung
+### <a name="authorization"></a>Authorization
 
 Autorisierung bezieht sich darauf, welche Aufgaben ein Benutzer innerhalb einer Azure SQL-Datenbank ausführen kann. Dies wird durch datenbankbezogene Rollenmitgliedschaften und Objektebenenberechtigungen Ihres Benutzerkontos gesteuert. Eine verwaltete Instanz enthält die gleichen Autorisierungsfunktionen wie SQL Server 2017.
 
@@ -192,7 +195,7 @@ Beim Migrationsansatz werden SQL-Sicherungen in Azure Blob Storage genutzt. In A
 
 ### <a name="data-migration-service"></a>Data Migration Service
 
-Azure Database Migration Service ist ein vollständig verwalteter Dienst, der die nahtlose Migration von mehreren Datenbankquellen zu Azure-Datenplattformen mit minimaler Downtime ermöglicht. Dieser Dienst optimiert die Aufgaben, die erforderlich sind, um bestehende Drittanbieter- und SQL Server-Datenbanken nach Azure SQL-Datenbank (Einzeldatenbank, Pools für elastische Datenbanken und Instanzdatenbanken in einer verwalteten Instanz) und SQL Server auf einer Azure-VM zu verschieben. Siehe [Migrieren von SQL Server zu einer verwalteten Azure SQL-Datenbank-Instanz](https://aka.ms/migratetoMIusingDMS).
+Azure Database Migration Service ist ein vollständig verwalteter Dienst, der die nahtlose Migration von mehreren Datenbankquellen zu Azure-Datenplattformen mit minimaler Downtime ermöglicht. Dieser Dienst optimiert die Aufgaben, die erforderlich sind, um bestehende Drittanbieter- und SQL Server-Datenbanken nach Azure SQL-Datenbank (Einzeldatenbanken, Pooldatenbanken in Pools für elastische Datenbanken und Instanzdatenbanken in einer verwalteten Instanz) und SQL Server auf einer Azure-VM zu verschieben. Siehe [Migrieren von SQL Server zu einer verwalteten Azure SQL-Datenbank-Instanz](https://aka.ms/migratetoMIusingDMS).
 
 ## <a name="sql-features-supported"></a>Unterstützte SQL-Features
 

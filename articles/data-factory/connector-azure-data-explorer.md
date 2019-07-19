@@ -11,14 +11,14 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 04/16/2019
+ms.date: 06/24/2019
 ms.author: orspodek
-ms.openlocfilehash: f501257903f3b7c621512f06d1c8c7109e22db1e
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 438adcd70c1be308c2b5779de0442486b303cfdd
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60394505"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67449644"
 ---
 # <a name="copy-data-to-or-from-azure-data-explorer-using-azure-data-factory"></a>Kopieren von Daten in oder aus Azure Data Explorer mithilfe von Azure Data Factory
 
@@ -140,6 +140,7 @@ Legen Sie zum Kopieren von Daten aus Azure Data Explorer die **type**-Eigenschaf
 | type | Die **type**-Eigenschaft der Quelle der Kopieraktivität muss auf Folgendes festgelegt werden: **AzureDataExplorerSource** | Ja |
 | query | Eine in einem [KQL-Format](/azure/kusto/query/) angegebene schreibgeschützte Anforderung. Verwenden Sie die benutzerdefinierte KQL-Abfrage als Verweis. | Ja |
 | queryTimeout | Die Wartezeit vor dem Timeout der Abfrageanforderung. Der Standardwert ist 10 Minuten (00:10:00), der zulässige maximale Wert 1 Stunde (01:00:00). | Nein |
+| noTruncation | Gibt an, ob das zurückgegebene Resultset abgeschnitten werden soll. Standardmäßig wird das Ergebnis nach 500.000 Datensätzen oder 64 MB abgeschnitten. Das Abschneiden wird dringend empfohlen, um für die Aktivität das richtige Verhalten zu erzielen. |Nein |
 
 >[!NOTE]
 >Die Azure Data Explorer-Quelle hat in der Standardeinstellung ein Größenlimit von 500.000 Datensätzen oder 64 MB. Um alle Datensätze ohne Abschneiden abzurufen, können Sie `set notruncation;` am Anfang Ihrer Abfrage angeben. Weitere Details finden Sie unter [Abfragelimits](https://docs.microsoft.com/azure/kusto/concepts/querylimits).

@@ -1,5 +1,5 @@
 ---
-title: Verwalten von Logik-Apps mit Visual Studio – Azure Logic Apps
+title: 'Verwalten von Logik-Apps mit Visual Studio: Azure Logic Apps'
 description: Verwalten von Logik-Apps und anderen Azure-Ressourcen mit dem Cloud-Explorer von Visual Studio
 services: logic-apps
 ms.service: logic-apps
@@ -10,12 +10,12 @@ ms.reviewer: klam, LADocs
 ms.topic: article
 ms.custom: mvc
 ms.date: 05/07/2019
-ms.openlocfilehash: 6a36770ff623e35c56a972a482e24ebb24849051
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 694ff490d7623b2dff26a61ccae8106a276b84af
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65467427"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67447902"
 ---
 # <a name="manage-logic-apps-with-visual-studio"></a>Verwalten von Logik-Apps mit Visual Studio
 
@@ -36,7 +36,8 @@ Sie können Logik-Apps zwar im [Azure-Portal](https://portal.azure.com) erstelle
   In dieser Schnellstartanleitung wird die kostenlose Version Visual Studio Community 2017 verwendet.
 
     > [!IMPORTANT]
-    > Stellen Sie beim Installieren von Visual Studio 2019 oder 2017 sicher, dass Sie die Workload **Azure-Entwicklung** auswählen. Für Visual Studio 2019 kann Cloud-Explorer den Logik-App-Designer im Azure-Portal öffnen, aber noch nicht den eingebetteten Logik-App-Designer. Weitere Informationen finden Sie unter [Verwalten der Ihren Azure-Konten zugeordneten Ressourcen im Visual Studio Cloud-Explorer](https://docs.microsoft.com/visualstudio/azure/vs-azure-tools-resources-managing-with-cloud-explorer?view).
+    > Stellen Sie beim Installieren von Visual Studio 2019 oder 2017 sicher, dass Sie die Workload **Azure-Entwicklung** auswählen.
+    > Weitere Informationen finden Sie unter [Verwalten der Ihren Azure-Konten zugeordneten Ressourcen im Visual Studio Cloud-Explorer](https://docs.microsoft.com/visualstudio/azure/vs-azure-tools-resources-managing-with-cloud-explorer?view).
 
     Um Cloud-Explorer für Visual Studio 2015 zu installieren, [laden Sie Cloud-Explorer aus dem Visual Studio Marketplace herunter](https://marketplace.visualstudio.com/items?itemName=MicrosoftCloudExplorer.CloudExplorerforVisualStudio2015). 
     Weitere Informationen finden Sie unter [Verwalten der Ihren Azure-Konten zugeordneten Ressourcen im Visual Studio Cloud-Explorer (2015)](https://docs.microsoft.com/visualstudio/azure/vs-azure-tools-resources-managing-with-cloud-explorer?view=vs-2015).
@@ -90,6 +91,9 @@ In Visual Studio können Sie Logik-Apps öffnen, die zuvor entweder direkt über
 
 1. Wählen Sie im Kontextmenü der Logik-App **Mit Logik-App-Editor öffnen** aus.
 
+   > [!TIP]
+   > Wenn Sie diesen Befehl in Visual Studio 2019 nicht finden, sollten Sie überprüfen, ob Sie das letzte Update für Visual Studio installiert haben.
+
    Dieses Beispiel zeigt die Logik-Apps nach Ressourcentyp an, sodass Ihre Logik-Apps im Abschnitt **Logik-Apps** angezeigt werden.
 
    ![Bereitgestellte Logik-Apps vom Azure-Portal aus öffnen](./media/manage-logic-apps-with-visual-studio/open-logic-app-in-editor.png)
@@ -105,10 +109,10 @@ Sie können Logik-Apps aus dem [Azure-Portal](https://portal.azure.com) herunter
 
 1. Öffnen Sie in Visual Studio den Cloud-Explorer, suchen Sie die Logik-App, die Sie aus Azure herunterladen möchten, und wählen Sie sie aus.
 
-   > [!NOTE]
-   > Für Visual Studio 2019 kann Cloud-Explorer den Logik-App-Designer im Azure-Portal öffnen, kann aber noch nicht den eingebetteten Logik-App-Designer zum Herunterladen Ihrer Logik-App öffnen.
-
 2. Wählen Sie im Kontextmenü der Logik-App **Mit Logik-App-Editor öffnen** aus.
+
+   > [!TIP]
+   > Wenn Sie diesen Befehl in Visual Studio 2019 nicht finden, sollten Sie überprüfen, ob Sie das letzte Update für Visual Studio installiert haben.
 
    Der Logik-App-Designer wird geöffnet und zeigt die Logik-App an. 
    Um die zugrunde liegende Definition und Struktur der Logik-App zu überprüfen, wählen Sie am unteren Rand des Designers **Codeansicht** aus. 

@@ -8,12 +8,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 08/13/2018
 ms.author: asrastog
-ms.openlocfilehash: e80fb136220330ddc53d513b22ebcfa19a35117b
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: e2aafa195fa463a405e2132cd41fada8d6903961
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66252801"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67450083"
 ---
 # <a name="create-and-read-iot-hub-messages"></a>Erstellen und Lesen von IoT Hub-Nachrichten
 
@@ -55,7 +55,7 @@ In der folgenden Tabelle werden die Systemeigenschaften in IoT Hub-Nachrichten a
 | sequence-number |Eine Nummer (für jede Gerätewarteschlange eindeutig), die jeder C2D-Nachricht von IoT Hub zugewiesen wird | „Nein“ bei C2D-Nachrichten; andernfalls „Ja“. |
 | zu |Ein Ziel, das in [C2D](iot-hub-devguide-c2d-guidance.md) -Nachrichten angegeben wird. | „Nein“ bei C2D-Nachrichten; andernfalls „Ja“. |
 | absolute-expiry-time |Datum und Uhrzeit des Nachrichtenablaufs. | Ja |
-| iothub-enqueuedtime |Datum und Uhrzeit des Empfangs der [C2D](iot-hub-devguide-c2d-guidance.md)-Nachricht durch IoT Hub. | „Nein“ bei C2D-Nachrichten; andernfalls „Ja“. |
+| iothub-enqueuedtime |Datum und Uhrzeit des Empfangs der [D2C](iot-hub-devguide-d2c-guidance.md)-Nachricht durch IoT Hub. | „Nein“ bei D2C-Nachrichten; andernfalls „Ja“. |
 | correlation-id |Eine Zeichenfolgeneigenschaft in einer Antwortnachricht, die normalerweise die Nachrichten-ID der Anforderung im Anforderung-Antwort-Muster enthält. | Ja |
 | user-id |Eine ID zum Festlegen des Ursprungs von Nachrichten. Wenn IoT Hub Nachrichten generiert, wird diese Eigenschaft auf `{iot hub name}`festgelegt. | Nein |
 | iothub-ack |Ein Feedbacknachrichtengenerator. Diese Eigenschaft wird in C2D-Nachrichten verwendet, um IoT Hub anzuweisen, als Ergebnis der Nachrichtenverarbeitung durch das Gerät Feedbacknachrichten zu generieren. Mögliche Werte: **Kein** (Standardeinstellung): Es wird keine Feedbacknachricht generiert. **Positiv**: Es wird eine Feedbacknachricht empfangen, wenn die Nachricht abgeschlossen wurde. **Negativ**: Es wird eine Feedbacknachricht empfangen, wenn die Nachricht ohne vollständige Verarbeitung durch das Gerät abgelaufen ist (oder die maximale Anzahl von Zustellversuchen erreicht wurde). **Voll**: Feedback wird sowohl bei erfolgreicher als auch nicht erfolgreicher Nachrichtenverarbeitung generiert. <!-- robinsh For more information, see [Message feedback][lnk-feedback].--> | Ja |

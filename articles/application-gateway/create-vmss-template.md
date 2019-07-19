@@ -1,34 +1,26 @@
 ---
-title: Erstellen einer Azure Application Gateway-Instanz – Vorlagen | Microsoft-Dokumentation
-description: Diese Seite enthält Anweisungen zum Erstellen eines Azure-Anwendungsgateways mit einer Azure Resource Manager-Vorlage.
-documentationcenter: na
+title: Erstellen eines Azure Application Gateways – Vorlagen
+description: Dieser Artikel enthält Anweisungen zum Erstellen eines Azure-Anwendungsgateways mit einer Azure Resource Manager-Vorlage.
 services: application-gateway
 author: vhorne
-manager: jpconnock
-editor: tysonn
 ms.service: application-gateway
-ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: infrastructure-services
-ms.date: 07/31/2017
+ms.topic: conceptual
+ms.date: 6/26/2019
 ms.author: victorh
-ms.openlocfilehash: 7ff6db5acb150207f975931155386a308c48888b
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: a762e8c9ed1981173f3729837456ac2cfea081b8
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66134102"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67449531"
 ---
-# <a name="create-an-application-gateway-by-using-the-azure-resource-manager-template"></a>Erstellen eines Anwendungsgateways mit der Azure-Ressourcen-Manager-Vorlage
+# <a name="create-an-application-gateway-using-the-azure-resource-manager-template"></a>Erstellen eines Anwendungsgateways mit der Azure Resource Manager-Vorlage
 
-Azure Application Gateway verwendet einen Load Balancer auf der Schicht 7 (Anwendungsschicht). Es ermöglicht Failover sowie schnelles Routing von HTTP-Anforderungen zwischen verschiedenen Servern in der Cloud und der lokalen Umgebung. Application Gateway bietet zahlreiche ADC-Features (Application Delivery Controller) wie HTTP-Lastenausgleich, cookiebasierte Sitzungsaffinität, SSL-Auslagerung (Secure Sockets Layer), benutzerdefinierte Integritätstests und Unterstützung mehrerer Standorte. Eine Liste mit allen unterstützten Features finden Sie unter [Übersicht über Application Gateway](overview.md).
+Azure Application Gateway verwendet einen Load Balancer auf der Schicht 7 (Anwendungsschicht). Es ermöglicht Failover sowie schnelles Routing von HTTP-Anforderungen zwischen verschiedenen Servern in der Cloud und der lokalen Umgebung. Application Gateway bietet zahlreiche ADC-Features (Application Delivery Controller) wie HTTP-Lastenausgleich, cookiebasierte Sitzungsaffinität, SSL-Auslagerung (Secure Sockets Layer), benutzerdefinierte Integritätstests und Unterstützung mehrerer Standorte. Eine Liste mit allen unterstützten Features finden Sie unter [Übersicht über Application Gateway](application-gateway-introduction.md).
 
-In diesem Artikel erfahren Sie, wie Sie eine vorhandene [Azure Resource Manager-Vorlage](../azure-resource-manager/resource-group-authoring-templates.md) von GitHub herunterladen und ändern und wie Sie die Vorlage über GitHub, PowerShell und die Azure-Befehlszeilenschnittstelle bereitstellen.
+In diesem Artikel erfahren Sie, wie Sie eine vorhandene [Azure Resource Manager-Vorlage](../azure-resource-manager/resource-group-authoring-templates.md) von GitHub herunterladen und ändern und die Vorlage über GitHub, Azure PowerShell und die Azure-Befehlszeilenschnittstelle bereitstellen.
 
-Wenn Sie die Vorlage ohne Änderungen direkt aus GitHub bereitstellen, fahren Sie mit „Bereitstellen einer Vorlage aus GitHub“ fort.
-
-[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+Fahren Sie mit „Bereitstellen einer Vorlage aus GitHub“ fort, wenn Sie die Vorlage ohne Änderungen direkt aus GitHub bereitstellen.
 
 ## <a name="scenario"></a>Szenario
 
@@ -42,7 +34,7 @@ In diesem Szenario führen Sie Folgendes durch:
 > [!NOTE]
 > Diese Einstellungen sind die Parameter für diese Vorlage. Zum Anpassen der Vorlage können Sie Regeln, den Listener, SSL und andere Optionen in der Datei „azuredeploy.json“ ändern.
 
-![Szenario](./media/create-vmss-template/scenario.png)
+![Szenario](./media/application-gateway-create-gateway-arm-template/scenario.png)
 
 ## <a name="download-and-understand-the-azure-resource-manager-template"></a>Herunterladen und Verstehen der Azure-Ressourcen-Manager-Vorlage
 
@@ -51,9 +43,9 @@ Sie können die vorhandene Azure-Ressourcen-Manager-Vorlage herunterladen, um ei
 1. Navigieren Sie zu [Erstellen eines Anwendungsgateways mit aktiver Web Application Firewall](https://github.com/Azure/azure-quickstart-templates/tree/master/101-application-gateway-waf).
 1. Klicken Sie auf **azuredeploy.json**, und klicken Sie dann auf **RAW**.
 1. Speichern Sie die Datei in einem lokalen Ordner auf Ihrem Computer.
-1. Fahren Sie mit Schritt 7 fort, wenn Sie mit Azure-Ressourcen-Manager-Vorlagen bereits vertraut sind.
-1. Öffnen Sie die Datei, die Sie gespeichert haben, und betrachten Sie den Inhalt unter **parameters** in Zeile
-1. Die Parameter der Azure-Ressourcen-Manager-Vorlage stellen Platzhalter für Werte dar, die während der Bereitstellung ausgefüllt werden können.
+1. Fahren Sie mit Schritt 7 fort, falls Sie mit Azure Resource Manager-Vorlagen bereits vertraut sind.
+2. Öffnen Sie die Datei, die Sie gespeichert haben, und betrachten Sie den Inhalt unter **parameters** in Zeile
+3. Die Parameter der Azure-Ressourcen-Manager-Vorlage stellen Platzhalter für Werte dar, die während der Bereitstellung ausgefüllt werden können.
 
    | Parameter | BESCHREIBUNG |
    | --- | --- |
@@ -70,7 +62,7 @@ Sie können die vorhandene Azure-Ressourcen-Manager-Vorlage herunterladen, um ei
 
    * **type**. Typ der Ressource, die von der Vorlage erstellt wird. In diesem Fall lautet der Typ `Microsoft.Network/applicationGateways` (ein Anwendungsgateway).
    * **name**. Name der Ressource. Beachten Sie die Verwendung von `[parameters('applicationGatewayName')]`. Das bedeutet, dass der Name während der Bereitstellung durch Sie oder eine Parameterdatei eingegeben wird.
-   * **properties**. Liste der Eigenschaften für die Ressource. Diese Vorlage verwendet während der Erstellung des Anwendungsgateways das virtuelle Netzwerk und die öffentliche IP-Adresse. Informationen zur JSON-Syntax und zu den Eigenschaften eines Anwendungsgateways in einer Vorlage finden Sie unter [Microsoft.Network/applicationGateways](/azure/templates/microsoft.network/applicationgateways).
+   * **properties**. Liste der Eigenschaften für die Ressource. Diese Vorlage verwendet während der Erstellung des Anwendungsgateways das virtuelle Netzwerk und die öffentliche IP-Adresse.
 
 1. Navigieren Sie zurück zu [https://github.com/Azure/azure-quickstart-templates/blob/master/101-application-gateway-waf/](https://github.com/Azure/azure-quickstart-templates/blob/master/101-application-gateway-waf).
 1. Klicken Sie auf **azuredeploy-parameters.json** und anschließend auf **RAW**.
@@ -116,21 +108,23 @@ Sie können die vorhandene Azure-Ressourcen-Manager-Vorlage herunterladen, um ei
      }
      ```
 
-1. Speichern Sie die Datei . Sie können die JSON-Vorlage und die Parametervorlage mithilfe von online verfügbaren JSON-Validierungstools wie [JSlint.com](https://www.jslint.com/)testen.
+1. Speichern Sie die Datei . Sie können die JSON-Vorlage und die Parametervorlage mit online verfügbaren JSON-Validierungstools, z. B. [JSlint.com](https://www.jslint.com/), testen.
 
-## <a name="deploy-the-azure-resource-manager-template-by-using-powershell"></a>Bereitstellen der Azure-Ressourcen-Manager-Vorlage mit PowerShell
+## <a name="deploy-the-azure-resource-manager-template-using-azure-powershell"></a>Bereitstellen der Azure Resource Manager-Vorlage mithilfe von Azure PowerShell
 
-Wenn Sie Azure PowerShell zuvor noch nicht verwendet haben, besuchen Sie: [Installieren und Konfigurieren von Azure PowerShell](/powershell/azure/overview), und befolgen Sie die Anweisungen, um sich bei Azure anzumelden und Ihr Abonnement auszuwählen.
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-1. Anmeldung bei PowerShell
+Wenn Sie Azure PowerShell zuvor noch nicht verwendet haben: [Installieren und Konfigurieren von Azure PowerShell](/powershell/azure/overview), und befolgen Sie die Anweisungen, um sich bei Azure anzumelden und Ihr Abonnement auszuwählen.
 
-    ```powershell
-    Login-AzAccount
+1. Herstellen einer Verbindung mit Azure
+
+    ```azurepowershell
+    Connect-AzAccount
     ```
 
 1. Überprüfen Sie die Abonnements für das Konto.
 
-    ```powershell
+    ```azurepowershell
     Get-AzSubscription
     ```
 
@@ -138,24 +132,24 @@ Wenn Sie Azure PowerShell zuvor noch nicht verwendet haben, besuchen Sie: [Insta
 
 1. Wählen Sie aus, welches Azure-Abonnement Sie verwenden möchten.
 
-    ```powershell
+    ```azurepowershell
     Select-AzSubscription -Subscriptionid "GUID of subscription"
     ```
 
-1. Erstellen Sie bei Bedarf eine Ressourcengruppe mit dem Cmdlet **New-AzureResourceGroup** . Im folgenden Beispiel erstellen Sie eine Ressourcengruppe mit dem Namen AppgatewayRG in der Region „USA, Osten“.
+1. Erstellen Sie bei Bedarf eine Ressourcengruppe mit dem Cmdlet **New-AzureResourceGroup**. Im folgenden Beispiel erstellen Sie eine Ressourcengruppe mit dem Namen AppgatewayRG in der Region „USA, Osten“.
 
-    ```powershell
+    ```azurepowershell
     New-AzResourceGroup -Name AppgatewayRG -Location "West US"
     ```
 
 1. Führen Sie das Cmdlet **New-AzResourceGroupDeployment** aus, um das neue virtuelle Netzwerk mit der zuvor heruntergeladenen und geänderten Vorlage und den Parameterdateien bereitzustellen.
     
-    ```powershell
+    ```azurepowershell
     New-AzResourceGroupDeployment -Name TestAppgatewayDeployment -ResourceGroupName AppgatewayRG `
     -TemplateFile C:\ARM\azuredeploy.json -TemplateParameterFile C:\ARM\azuredeploy-parameters.json
     ```
 
-## <a name="deploy-the-azure-resource-manager-template-by-using-the-azure-cli"></a>Bereitstellen der Azure-Ressourcen-Manager-Vorlage mit der Azure-Befehlszeilenschnittstelle
+## <a name="deploy-the-azure-resource-manager-template-using-the-azure-cli"></a>Bereitstellen der Azure Resource Manager-Vorlage mit der Azure-Befehlszeilenschnittstelle
 
 Führen Sie die folgenden Schritte aus, um die heruntergeladene Azure Resource Manager-Vorlage mithilfe der Azure-Befehlszeilenschnittstelle bereitzustellen:
 
@@ -177,7 +171,7 @@ Führen Sie die folgenden Schritte aus, um die heruntergeladene Azure Resource M
     az group deployment create --resource-group appgatewayRG --name TestAppgatewayDeployment --template-file azuredeploy.json --parameters @azuredeploy-parameters.json
     ```
 
-## <a name="deploy-the-azure-resource-manager-template-by-using-click-to-deploy"></a>Bereitstellen der Azure-Ressourcen-Manager-Vorlage per Click-to-Deploy
+## <a name="deploy-the-azure-resource-manager-template-using-click-to-deploy"></a>Bereitstellen der Azure Resource Manager-Vorlage per Click-to-Deploy
 
 Click-to-Deploy ist eine weitere Option zum Verwenden von Azure-Ressourcen-Manager-Vorlagen. Diese Art der Bereitstellung bietet eine einfache Möglichkeit, Vorlagen im Azure-Portal zu verwenden.
 
@@ -185,21 +179,22 @@ Click-to-Deploy ist eine weitere Option zum Verwenden von Azure-Ressourcen-Manag
 
 1. Klicken Sie auf Schaltfläche zum **Bereitstellen in Azure**.
 
-    ![Bereitstellen in Azure](./media/create-vmss-template/deploytoazure.png)
+    ![Bereitstellen in Azure](./media/application-gateway-create-gateway-arm-template/deploytoazure.png)
     
 1. Füllen Sie im Portal die Parameter für die Bereitstellungsvorlage aus, und klicken Sie auf **OK**.
 
-    ![Parameter](./media/create-vmss-template/ibiza1.png)
+    ![Parameter](./media/application-gateway-create-gateway-arm-template/ibiza1.png)
     
 1. Wählen Sie **Ich stimme den oben genannten Geschäftsbedingungen zu** aus, und klicken Sie auf **Kaufen**.
 
-1. Klicken Sie auf dem Blatt „Benutzerdefinierte Bereitstellung“ auf **Erstellen**.
+1. Klicken Sie auf der Seite „Benutzerdefinierte Bereitstellung“ auf **Erstellen**.
 
 ## <a name="providing-certificate-data-to-resource-manager-templates"></a>Bereitstellen von Zertifikatdaten für Resource Manager-Vorlagen
 
 Wenn Sie SSL mit einer Vorlage verwenden, muss das Zertifikat nicht hochgeladen, sondern in einer base64-Zeichenfolge bereitgestellt werden. Führen Sie zum Konvertieren einer PFX- oder CER-Datei in eine base64-Zeichenfolge einen der folgenden Befehle aus. Mit den folgenden Befehlen wird das Zertifikat in eine base64-Zeichenfolge konvertiert, die der Vorlage bereitgestellt werden kann. Die erwartete Ausgabe ist eine Zeichenfolge, die in einer Variablen gespeichert und in die Vorlage eingefügt werden kann.
 
 ### <a name="macos"></a>macOS
+
 ```bash
 cert=$( base64 <certificate path and name>.pfx )
 echo $cert
@@ -214,9 +209,9 @@ echo $cert
 
 Führen Sie einen der folgenden Schritte aus, um alle Ressourcen zu löschen, die in diesem Artikel erstellt wurden:
 
-### <a name="powershell"></a>PowerShell
+### <a name="azure-powershell"></a>Azure PowerShell
 
-```powershell
+```azurepowershell
 Remove-AzResourceGroup -Name appgatewayRG
 ```
 
@@ -228,12 +223,11 @@ az group delete --name appgatewayRG
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Wenn Sie die SSL-Auslagerung konfigurieren möchten, besuchen Sie: [Konfigurieren eines Application Gateways für die SSL-Auslagerung](tutorial-ssl-cli.md).
+Wenn Sie die SSL-Auslagerung konfigurieren möchten: [Konfigurieren eines Application Gateways für die SSL-Auslagerung](application-gateway-ssl.md).
 
-Wenn Sie ein Anwendungsgateway für die Verwendung mit einem internen Lastenausgleich konfigurieren möchten, besuchen Sie: [Erstellen eines Application Gateways mit einem internen Lastenausgleich (ILB)](redirect-internal-site-cli.md).
+Wenn Sie ein Anwendungsgateway für die Verwendung mit einem internen Lastenausgleich konfigurieren möchten: [Erstellen eines Application Gateways mit einem internen Lastenausgleich (ILB)](application-gateway-ilb.md).
 
-Weitere grundsätzliche Informationen zu Lastenausgleichsoptionen finden Sie unter:
+Weitere Informationen zu Lastenausgleichsoptionen im Allgemeinen finden Sie unter:
 
 * [Azure-Lastenausgleich](https://azure.microsoft.com/documentation/services/load-balancer/)
 * [Azure Traffic Manager](https://azure.microsoft.com/documentation/services/traffic-manager/)
-

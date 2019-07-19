@@ -6,13 +6,13 @@ author: keithcharlie
 ms.service: marketplace
 ms.topic: article
 ms.date: 07/09/2018
-ms.author: keithcharlie
-ms.openlocfilehash: 4501a343b406f07b4775f3ad0e84d71825412a4b
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.author: kevidal
+ms.openlocfilehash: 92c3452e07dee126666e6ee1fe0c46b1f8f6dfa4
+ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66752725"
+ms.lasthandoff: 07/15/2019
+ms.locfileid: "67876535"
 ---
 # <a name="saas-applications-offer-publishing-guide"></a>SaaS-Anwendungen: Leitfaden für die Veröffentlichung von Angeboten
 
@@ -104,7 +104,7 @@ Die Verwendung der durch Azure AD ermöglichten Ein-Klick-Authentifizierung bei 
 
 ## <a name="certifying-your-azure-ad-integration-for-marketplace"></a>Zertifizieren Ihrer Azure AD-Integration für Marketplace  
 
-Die Zertifizierung der Azure AD-Integration ist auf mehrere Arten möglich – je nachdem, ob es sich um eine Anwendung mit nur einem Mandanten oder um eine mehrinstanzenfähige Anwendung handelt und ob Sie bereits die einmalige Verbundanmeldung von Azure AD unterstützen.  
+Führen Sie die Zertifizierung der Azure AD-Integration auf verschiedene Arten durch – je nachdem, ob es sich um eine Anwendung mit nur einem Mandanten oder um eine mehrinstanzenfähige Anwendung handelt und ob Sie bereits die einmalige Verbundanmeldung von Azure AD unterstützen.  
 
 **Vorgehensweise für mehrinstanzenfähige Anwendungen:**  
 

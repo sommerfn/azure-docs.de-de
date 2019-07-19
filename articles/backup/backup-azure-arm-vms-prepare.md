@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 04/03/2019
 ms.author: raynew
-ms.openlocfilehash: bac61342f39821b6181a6a0e61bf0b11fb311007
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.openlocfilehash: 0835c3af52a16e7549698e35b3fded0f64c71dc4
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/27/2019
-ms.locfileid: "66239351"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67447706"
 ---
 # <a name="back-up-azure-vms-in-a-recovery-services-vault"></a>Sichern virtueller Azure-Computer in einem Recovery Services-Tresor
 
@@ -70,6 +70,11 @@ Darüber hinaus gibt es einige Schritte, die Sie in bestimmten Fällen mögliche
  Nach Abschluss des Erstellungsvorgangs wird der Tresor in der Liste der Recovery Services-Tresore angezeigt. Sollte der Tresor nicht angezeigt werden, wählen Sie **Aktualisieren**.
 
 ![Liste der Sicherungstresore](./media/backup-azure-arm-vms-prepare/rs-list-of-vaults.png)
+
+> [!NOTE]
+> Der Azure Backup-Dienst erstellt zum Speichern der Momentaufnahme eine separate Ressourcengruppe (nicht die VM-Ressourcengruppe) mit dem Namensformat **AzureBackupRG_geography_number** (Beispiel: AzureBackupRG_northeurope_1). Die Daten in dieser Ressourcengruppe werden so lange aufbewahrt, wie dies in der Sicherungsrichtlinie für virtuelle Azure-Computer unter *Momentaufnahme(n) zur sofortigen Wiederherstellung beibehalten für* angegeben ist (in Tagen).  Das Anwenden einer Sperre auf diese Ressourcengruppe kann zu Sicherungsfehlern führen.<br>
+Diese Ressourcengruppe sollte von allen Namens-/Tageinschränkungen ausgeschlossen werden, da eine Einschränkungsrichtlinie die Erstellung von Wiederherstellungspunktsammlungen in dieser Gruppe blockieren und erneut zu Sicherungsfehlern führen würde.
+
 
 ### <a name="modify-storage-replication"></a>Ändern der Speicherreplikation
 

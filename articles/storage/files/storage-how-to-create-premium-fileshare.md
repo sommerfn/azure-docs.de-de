@@ -8,15 +8,15 @@ ms.topic: conceptual
 ms.date: 05/05/2019
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 265a1cf0a8a5e1e099a4ec7a9f0d674e0c474dd4
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 63caf9a08acb04bab3712891701d32c21c22e9fc
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65190096"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67449886"
 ---
 # <a name="how-to-create-an-premium-azure-file-share"></a>So erstellen Sie eine Azure-Premium-Dateifreigabe
-Premium-Dateifreigaben (Vorschauversion) werden auf SSD-Speichermedien (Solid-State Disk-Speichermedien) angeboten und eignen sich für E/A-intensive Workloads, einschließlich Hosten von Datenbanken sowie High Performance Computing (HPC). Premium-Dateifreigaben werden in einem speziell dafür vorgesehenen Speicherkontotyp gehostet, der als FileStorage-Konto bezeichnet wird. Premium-Dateifreigaben sind für hochleistungsfähige Anwendungen auf Unternehmensniveau konzipiert, die eine konsistent niedrige Latenz, hohe IOPS-Leistung und hohe Durchsatzraten bieten.
+Premium-Dateifreigaben werden auf SSD-Speichermedien (Solid-State Disk) angeboten und eignen sich für E/A-intensive Workloads, z. B. Hosten von Datenbanken und High Performance Computing (HPC). Premium-Dateifreigaben werden in einem speziell dafür vorgesehenen Speicherkontotyp gehostet, der als FileStorage-Konto bezeichnet wird. Premium-Dateifreigaben sind für hochleistungsfähige Anwendungen auf Unternehmensniveau konzipiert, die eine konsistent niedrige Latenz, hohe IOPS-Leistung und hohe Durchsatzraten bieten.
 
 In diesem Artikel wird gezeigt, wie Sie diesen neuen Kontotyp über das [Azure-Portal](https://portal.azure.com/), Azure PowerShell und die Azure-Befehlszeilenschnittstelle (Azure CLI) erstellen.
 
@@ -30,7 +30,7 @@ Um auf Azure-Ressourcen, einschließlich Azure-Premium-Dateifreigaben zugreifen 
 
 Melden Sie sich beim [Azure-Portal](https://portal.azure.com/) an.
 
-### <a name="create-a-filestorage-preview-storage-account"></a>Erstellen eines FileStorage (Vorschau)-Speicherkontos
+### <a name="create-a-filestorage-storage-account"></a>Erstellen eines FileStorage-Speicherkontos
 
 Jetzt können Sie Ihr Speicherkonto erstellen.
 
@@ -47,10 +47,10 @@ Jedes Speicherkonto muss zu einer Azure-Ressourcengruppe gehören. Eine Ressourc
 1. Geben Sie als Nächstes einen Namen für Ihr Speicherkonto ein. Der gewählte Name muss innerhalb von Azure eindeutig sein. Der Name muss ebenfalls zwischen 3 und 24 Zeichen lang sein und darf nur Zahlen und Kleinbuchstaben enthalten.
 1. Wählen Sie einen Standort für Ihr Speicherkonto aus, oder verwenden Sie den Standardstandort.
 1. Wählen Sie für **Leistung** den Wert **Premium** aus.
-1. Wählen Sie **Kontoart** und dann **FileStorage (Vorschau)** aus.
+1. Wählen Sie **Kontoart** und dann **FileStorage** aus.
 1. Behalten Sie für **Replikation** den Standardwert **Lokal redundanter Speicher (LRS)** bei.
 
-    ![So erstellen ein Speicherkonto für eine Premium-Dateifreigabe](media/storage-how-to-create-premium-fileshare/premium-files-storage-account.png)
+    ![So erstellen ein Speicherkonto für eine Premium-Dateifreigabe](media/storage-how-to-create-premium-fileshare/create-filestorage-account.png)
 
 1. Wählen Sie **Überprüfen + erstellen**, um die Speicherkontoeinstellungen zu überprüfen und das Konto zu erstellen.
 1. Klicken Sie auf **Erstellen**.
@@ -59,7 +59,7 @@ Sobald Ihre Speicherkontoressource erstellt wurde, navigieren Sie dorthin.
 
 ### <a name="create-a-premium-file-share"></a>Erstellen einer Premium-Dateifreigabe
 
-1. Scrollen Sie im linken Menü für das Speicherkonto zum Abschnitt **Dateidienst**, und wählen Sie **Files (Vorschau)** aus.
+1. Scrollen Sie im linken Menü für das Speicherkonto zum Abschnitt **Dateidienst**, und wählen Sie **Files**.
 1. Wählen Sie **+Dateifreigabe** aus, um eine Premium-Dateifreigabe zu erstellen.
 1. Geben Sie einen Namen und das gewünschte Kontingent für Ihre Dateifreigabe ein, und wählen Sie **Erstellen** aus.
 
@@ -82,14 +82,14 @@ Aktualisieren Sie anschließend Ihr PowerShell-Modul, melden Sie sich bei Ihrem 
 
 ### <a name="upgrade-your-powershell-module"></a>Aktualisieren Ihres PowerShell-Moduls
 
-Um aus PowerShell mit einer Premium-Dateifreigabe interagieren zu können, müssen Sie das neueste „Az.Storage“-Modul installieren.
+Um aus PowerShell mit einer Premium-Dateifreigabe interagieren zu können, müssen Sie Version 1.4.0 des Az.Storage-Moduls bzw. das neueste Az.Storage-Modul installieren.
 
 Öffnen Sie zunächst eine PowerShell-Sitzung mit erhöhten Berechtigungen.
 
 Installieren Sie das Modul „Az.Storage“:
 
 ```powershell
-Install-Module Az.Storage -Repository PSGallery -AllowPrerelease -AllowClobber -Force
+Install-Module Az.Storage -Repository PSGallery -AllowClobber -Force
 ```
 
 ### <a name="sign-in-to-your-azure-subscription"></a>Melden Sie sich bei Ihrem Azure-Abonnement an.
@@ -112,9 +112,9 @@ $location = "westus2"
 New-AzResourceGroup -Name $resourceGroup -Location $location
 ```
 
-### <a name="create-a-filestorage-preview-storage-account"></a>Erstellen eines FileStorage (Vorschau)-Speicherkontos
+### <a name="create-a-filestorage-storage-account"></a>Erstellen eines FileStorage-Speicherkontos
 
-Wenn Sie ein FileStorage (Vorschau)-Speicherkonto mithilfe von PowerShell erstellen möchten, verwenden Sie den Befehl [New-AzStorageAccount](/powershell/module/az.storage/New-azStorageAccount):
+Wenn Sie ein FileStorage-Speicherkonto mit PowerShell erstellen möchten, verwenden Sie den Befehl [New-AzStorageAccount](/powershell/module/az.storage/New-azStorageAccount):
 
 ```powershell
 $storageAcct = New-AzStorageAccount -ResourceGroupName $resourceGroup -Name "fileshowto" -SkuName "Premium_LRS" -Location "westus2" -Kind "FileStorage"
@@ -145,15 +145,11 @@ Remove-AzResourceGroup -Name $resourceGroup
 
 Melden Sie sich zum Starten von Azure Cloud Shell beim [Azure-Portal](https://portal.azure.com) an.
 
-Wenn Sie sich bei Ihrer lokalen Installation der Befehlszeilenschnittstelle anmelden möchten, führen Sie den folgenden Befehl aus:
+Wenn Sie sich bei Ihrer lokalen Installation der CLI anmelden möchten, sollten Sie zuerst sicherstellen, dass Sie über die aktuelle Version verfügen, und anschließend den Anmeldebefehl ausführen:
 
 ```cli
 az login
 ```
-
-### <a name="add-the-preview-storage-cli-extension"></a>Hinzufügen der Vorschau-CLI-Erweiterung für Speicher
-
-Weil Premium-Dateifreigaben eine Previewfunktion (Vorschaufeature) sind, müssen Sie die Vorschauerweiterung zu der Shell hinzufügen. Geben Sie dazu über Cloud Shell oder eine lokale Shell den folgenden Befehl ein: `az extension add --name storage-preview`
 
 ### <a name="create-a-resource-group"></a>Erstellen einer Ressourcengruppe
 

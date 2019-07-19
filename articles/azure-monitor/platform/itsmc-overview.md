@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 05/24/2018
 ms.author: v-jysur
-ms.openlocfilehash: abbd26779cefaf52c6f2247a5d27db25f280c930
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: f2574cc64e157ff0f8a6cb875a832db88cf13dd6
+ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60395804"
+ms.lasthandoff: 07/01/2019
+ms.locfileid: "67479812"
 ---
 # <a name="connect-azure-to-itsm-tools-using-it-service-management-connector"></a>Verbinden von Azure mit ITSM-Tools mithilfe des ITSM-Connectors
 
@@ -62,7 +62,9 @@ Bevor Sie eine Verbindung herstellen können, müssen Sie die ITSM-Connector-Lö
 
 3. Wählen Sie im Abschnitt **OMS-Arbeitsbereich** den Azure Log Analytics-Arbeitsbereich aus, in dem Sie die Lösung installieren möchten.
    >[!NOTE]
-   >Im Rahmen der laufenden Umstellung von der Microsoft Operations Management Suite (OMS) auf Azure Monitor werden OMS-Arbeitsbereiche nun als Log Analytics-Arbeitsbereiche bezeichnet.
+   > * Im Rahmen der laufenden Umstellung von der Microsoft Operations Management Suite (OMS) auf Azure Monitor werden OMS-Arbeitsbereiche nun als Log Analytics-Arbeitsbereiche bezeichnet.
+   > * Der ITSM-Connector kann nur in Log Analytics-Arbeitsbereichen in den folgenden Regionen installiert werden: „USA, Osten“, „Europa, Westen“, „Asien, Südosten“, „Australien, Südosten“, „USA, Westen-Mitte“, „Japan, Osten“, „Vereinigtes Königreich, Süden“, „Indien, Mitte“, „Kanada, Mitte“.
+
 4. Wählen Sie im Abschnitt **OMS-Arbeitsbereichseinstellungen** die Ressourcengruppe aus, in der Sie die Ressource für die Lösung erstellen möchten.
 
    ![Arbeitsbereich des ITSM-Connectors](media/itsmc-overview/itsmc-solution-workspace.png)
@@ -214,7 +216,7 @@ ServiceDeskWorkItemType_s="ChangeRequest"
 - `Source`
 - Zugewiesen zu
 - Titel
-- Type
+- type
 - Category (Kategorie)
 - Zustand
 - Eskalation
@@ -266,7 +268,7 @@ ServiceDeskWorkItemType_s="ChangeRequest"
 | ClosedBy_s | Geschlossen von |
 | AssignedTo_s | Zugewiesen zu  |
 | Title_s|  Kurzbeschreibung |
-| Type_s|  Type |
+| Type_s|  type |
 | Category_s|  Category (Kategorie) |
 | CRState_s|  Zustand|
 | Urgency_s|  Dringlichkeit |

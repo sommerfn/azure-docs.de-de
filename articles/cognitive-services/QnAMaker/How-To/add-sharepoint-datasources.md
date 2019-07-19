@@ -3,19 +3,19 @@ title: SharePoint-Dateien – QnA Maker
 titleSuffix: Azure Cognitive Services
 description: Fügen Sie Ihrer Wissensdatenbank geschützte SharePoint-Datenquellen hinzu, um sie mit Fragen und Antworten zu erweitern, die mit Active Directory geschützt werden können.
 services: cognitive-services
-author: tulasim88
+author: diberry
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: article
-ms.date: 04/05/2019
-ms.author: tulasim
-ms.openlocfilehash: e479cf1729b7dcd2ed2f2470f2a935bdf94af80b
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.date: 06/24/2019
+ms.author: diberry
+ms.openlocfilehash: 3e5aa1cc78efeb6e8158155b5e0676c8a63cf6e6
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65954958"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67447546"
 ---
 # <a name="add-a-secured-sharepoint-data-source-to-your-knowledge-base"></a>Hinzufügen einer geschützten SharePoint-Datenquelle zu Ihrer Wissensdatenbank
 
@@ -35,6 +35,20 @@ Sie können Ihrer Wissensdatenbank alle von QnA Maker unterstützten [Dateitype
     ![Rufen Sie die SharePoint-Datei-URL ab, indem Sie die Auslassungspunkte für die Datei auswählen und die URL kopieren.](../media/add-sharepoint-datasources/get-sharepoint-file-url.png)
 
 1. Navigieren Sie im QnA Maker-Portal zur Seite **Einstellungen**, und [fügen Sie die URL der Wissensdatenbank hinzu](edit-knowledge-base.md#add-datasource). 
+
+### <a name="images-with-sharepoint-files"></a>Bilder mit SharePoint-Dateien
+
+Wenn Dateien Bilder enthalten, werden diese nicht extrahiert. Sie können das Bild über das QnA Maker-Portal hinzufügen, nachdem Frage-und-Antwort-Paare aus der Datei extrahiert wurden.
+
+Fügen Sie das Bild mit der folgenden Markdown-Syntax hinzu: 
+
+```markdown
+![Explanation or description of image](URL of public image)
+```
+
+Der Text in den eckigen Klammern (`[]`) ist eine Erläuterung des Bilds. Die URL in Klammern (`()`) ist der direkte Link zum Bild. 
+
+Wenn Sie das Frage-und-Antwort-Paar im interaktiven Testbereich testen, wird im QnA Maker-Portal nicht der Markdown-Text angezeigt, sondern das Bild. Hierbei wird überprüft, ob das Bild öffentlich zugänglich ist und aus Ihrer Clientanwendung abgerufen werden kann.
 
 ## <a name="permissions"></a>Berechtigungen
 

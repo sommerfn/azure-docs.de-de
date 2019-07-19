@@ -5,13 +5,13 @@ author: jan-eng
 ms.author: janeng
 ms.service: mysql
 ms.topic: conceptual
-ms.date: 02/01/2019
-ms.openlocfilehash: 8e3d12db8d2500a2675e451580bee7072d22d41c
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.date: 06/27/2019
+ms.openlocfilehash: aab3aaafd410c4f85eba7a246d0922128908bf93
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/27/2019
-ms.locfileid: "66225424"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67445427"
 ---
 # <a name="azure-database-for-mysql-pricing-tiers"></a>Azure Database for MySQL – Tarife
 
@@ -51,15 +51,34 @@ Der von Ihnen bereitgestellte Speicher definiert die Speicherkapazität, die fü
 | Speicherinkrementgröße | 1 GB | 1 GB | 1 GB |
 | IOPS | Variable |3 IOPS/GB<br/>Min. 100 IOPS<br/>Max. 6.000 IOPS | 3 IOPS/GB<br/>Min. 100 IOPS<br/>Max. 6.000 IOPS |
 
-Während und nach der Erstellung des Servers können Sie zusätzliche Speicherkapazität hinzufügen und dem System erlauben, den Speicher anhand des Speicherbedarfs Ihrer Workload automatisch zu vergrößern. Der Tarif „Basic“ umfasst keine IOPS-Garantie. Für die Tarife „Allgemein“ und „Arbeitsspeicheroptimiert“ wird der IOPS-Wert gegenüber der bereitgestellten Speichergröße in einem Verhältnis von 3:1 skaliert.
+Während und nach der Erstellung des Servers können Sie zusätzliche Speicherkapazität hinzufügen und dem System erlauben, den Speicher auf der Grundlage des Speicherbedarfs Ihrer Workload automatisch zu vergrößern. Der Tarif „Basic“ umfasst keine IOPS-Garantie. Für die Tarife „Allgemein“ und „Arbeitsspeicheroptimiert“ wird der IOPS-Wert gegenüber der bereitgestellten Speichergröße in einem Verhältnis von 3:1 skaliert.
 
 Sie können Ihren E/A-Verbrauch im Azure-Portal oder mit Azure CLI-Befehlen überwachen. Die wichtigen zu überwachenden Metriken sind das [Speicherlimit, der Speicherprozentsatz, der genutzte Speicher und der E/A-Prozentsatz](concepts-monitoring.md).
 
+### <a name="large-storage-preview"></a>Großer Speicher (Vorschauversion)
+
+Wir erhöhen die Speicherlimits für die Tarife „Universell“ und „Arbeitsspeicheroptimiert“. Für neu erstellte Server, für die die Vorschauversion verwendet wird, können 16 TB an Speicher bereitgestellt werden. Der IOPS-Wert kann im Verhältnis 3:1 auf bis zu 20.000 IOPS skaliert werden. Wie beim derzeit allgemein verfügbaren Speicher auch, können Sie nach der Erstellung des Servers zusätzliche Speicherkapazität hinzufügen und dem System erlauben, den Speicher auf Grundlage des Speicherbedarfs Ihrer Workload automatisch zu vergrößern.
+
+|              | **Allgemeiner Zweck** | **Arbeitsspeicheroptimiert** |
+|:-------------|:--------------------|:---------------------|
+| Speichertyp | Azure Storage Premium | Azure Storage Premium |
+| Speichergröße | 32 GB bis 16 TB| 32 GB bis 16 TB |
+| Speicherinkrementgröße | 1 GB | 1 GB |
+| IOPS | 3 IOPS/GB<br/>Min. 100 IOPS<br/>Max. 20.000 IOPS| 3 IOPS/GB<br/>Min. 100 IOPS<br/>Max. 20.000 IOPS |
+
+> [!IMPORTANT]
+> Großer Speicher befindet sich in den folgenden Regionen derzeit in der öffentlichen Vorschauphase: „USA, Osten“, „USA, Osten 2“, „USA, Mitte“, „USA, Westen“, „Europa, Norden“, „Europa, Westen“, „Vereinigtes Königreich, Süden“, „Vereinigtes Königreich, Westen“, „Asien, Südosten“, „Asien, Osten“, „Japan, Osten“, „Japan, Westen“, „Südkorea, Mitte“, „Südkorea, Süden“, „Australien, Osten“, „Australien, Südosten“.
+>
+> Für großen Speicher (Vorschauversion) wird Folgendes derzeit nicht unterstützt:
+>
+> * Geografisch redundante Sicherungen
+> * Regionsübergreifende Replikation
+
 ### <a name="reaching-the-storage-limit"></a>Erreichen der Speicherbegrenzung
 
-Server mit weniger als 100 GB bereitgestelltem Speicher werden als schreibgeschützt gekennzeichnet, wenn der freie Speicher weniger als 512 MB oder 5 % der bereitgestellten Speichergröße beträgt. Server mit mehr als 100 GB bereitgestelltem Speicher werden als schreibgeschützt gekennzeichnet, wenn der freie Speicher weniger als 5 GB beträgt.
+Server mit weniger als 100 GB bereitgestelltem Speicher werden als schreibgeschützt gekennzeichnet, wenn der freie Speicher weniger als 512 MB oder fünf Prozent der bereitgestellten Speichergröße beträgt. Server mit mehr als 100 GB bereitgestelltem Speicher werden als schreibgeschützt gekennzeichnet, wenn der freie Speicher weniger als 5 GB beträgt.
 
-Wenn Sie beispielsweise 110 GB Speicher bereitgestellt haben und die tatsächliche Auslastung 105 GB überschreitet, wird der Server als schreibgeschützt gekennzeichnet. Wenn Sie andererseits 5 GB Speicher bereitgestellt haben, wird der Server als schreibgeschützt gekennzeichnet, wenn der freie Speicher unter 512 MB sinkt.
+Wenn Sie also beispielsweise 110 GB Speicher bereitgestellt haben und die tatsächliche Auslastung 105 GB überschreitet, wird der Server als schreibgeschützt gekennzeichnet. Wenn Sie andererseits 5 GB Speicher bereitgestellt haben, wird der Server als schreibgeschützt gekennzeichnet, wenn der freie Speicher unter 512 MB sinkt.
 
 Während der Dienst versucht, den Server als schreibgeschützt zu kennzeichnen, werden alle neuen Schreibtransaktionsanforderungen blockiert, und bestehende aktive Transaktionen werden weiterhin ausgeführt. Wenn der Server als schreibgeschützt festgelegt ist, führen alle nachfolgenden Schreibvorgänge und die Transaktionscommits zu einem Fehler. Leseabfragen werden weiterhin ununterbrochen fortgesetzt. Nachdem Sie den bereitgestellten Speicher erhöht haben, ist der Server für die erneute Annahme von Schreibtransaktionen bereit.
 
@@ -67,9 +86,9 @@ Sie sollten die automatische Speichervergrößerung aktivieren oder eine Benachr
 
 ### <a name="storage-auto-grow"></a>Automatische Speichervergrößerung
 
-Wenn die automatische Speichervergrößerung aktiviert ist, wird der Speicher automatisch ohne Beeinträchtigung der Workload vergrößert. Bei Servern mit weniger als 100 GB bereitgestelltem Speicher wird die bereitgestellte Speichergröße um 5 GB erhöht, sobald der freie Speicher unter 1 GB oder 10 % des bereitgestellten Speichers sinkt. Bei Servern mit mehr als 100 GB bereitgestelltem Speicher wird die bereitgestellte Speichergröße um 5 % erhöht, sobald der freie Speicherplatz unter 5 % der bereitgestellten Speichergröße sinkt. Dabei gelten die maximalen, oben beschriebenen Speichergrenzwerte.
+Wenn die automatische Speichervergrößerung aktiviert ist, wird der Speicher automatisch ohne Beeinträchtigung der Workload vergrößert. Bei Servern mit weniger als 100 GB bereitgestelltem Speicher wird die bereitgestellte Speichergröße um 5 GB erhöht, sobald der freie Speicher unter 1 GB oder zehn Prozent des bereitgestellten Speichers sinkt. Bei Servern mit mehr als 100 GB bereitgestelltem Speicher wird die bereitgestellte Speichergröße um fünf Prozent erhöht, sobald der freie Speicherplatz unter fünf Prozent der bereitgestellten Speichergröße sinkt. Dabei gelten die maximalen, oben beschriebenen Speichergrenzwerte.
 
-Wenn Sie beispielsweise 1000 GB Speicher bereitgestellt haben und die tatsächliche Auslastung 950 GB überschreitet, wird die Speichergröße des Servers auf 1050 GB erhöht. Andererseits wird bei 10 GB bereitgestelltem Speicher die Speichergröße um 15 GB erhöht, wenn weniger als 1 GB Speicher frei ist.
+Wenn Sie also beispielsweise 1.000 GB Speicher bereitgestellt haben und die tatsächliche Auslastung 950 GB überschreitet, wird die Speichergröße des Servers auf 1.050 GB erhöht. Bei 10 GB bereitgestelltem Speicher wird die Speichergröße alternativ auf 15 GB erhöht, wenn weniger als 1 GB Speicher frei ist.
 
 ## <a name="backup"></a>Backup
 

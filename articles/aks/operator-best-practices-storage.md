@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: conceptual
 ms.date: 5/6/2019
 ms.author: iainfou
-ms.openlocfilehash: e7f45a3a0e62b2b559002b71bd8816e050f062ab
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 9231b3629c10043e72efad4231111e56fd54c626
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65072648"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67447166"
 ---
 # <a name="best-practices-for-storage-and-backups-in-azure-kubernetes-service-aks"></a>Best Practices für Speicherung und Sicherungen in Azure Kubernetes Service (AKS)
 
@@ -38,7 +38,6 @@ In der folgenden Tabelle sind die verfügbarer Speichertypen und ihre Fähigkeit
 |----------|---------------|-----------------|----------------|-----------------|--------------------|
 | Freigegebene Konfiguration       | Azure Files   | Ja | Ja | Ja | Ja |
 | Strukturierte App-Daten        | Azure Disks   | Ja | Nein  | Nein  | Ja |
-| App-Daten, schreibgeschützte Freigaben | [Dysk (Vorschau)][dysk] | Ja | Ja | Nein  | Nein |
 | Unstrukturierte Daten, Dateisystemvorgänge | [BlobFuse (Vorschau)][blobfuse] | Ja | Ja | Ja | Nein |
 
 Die beiden primären Speichertypen, die für Volumes in AKS zur Verfügung stehen, werden durch Azure-Datenträger oder Azure Files gesichert. Um die Sicherheit zu verbessern, verwenden beide Speichertypen standardmäßig Azure-Speicherdienstverschlüsselung (Storage Service Encryption, SSE) zur Verschlüsselung von ruhenden Daten. Festplatten können derzeit nicht mit der Azure Disk Encryption auf AKS-Knotenebene verschlüsselt werden.
@@ -83,7 +82,7 @@ Mit einem Anspruch auf persistente Volumes (PVC) können Sie bei Bedarf dynamisc
 
 Informationen zu den Konzepten zum dynamischen Erstellen und Verwenden von Volumes finden Sie unter [Ansprüche auf persistente Volumes][aks-concepts-storage-pvcs].
 
-Um diese Volumes in Aktion zu sehen, schauen Sie sich an, wie Sie ein persistentes Volume mit [Azure-Datenträgern][dynamic-disks] oder [Azure Files][dynamic-files] dynamisch erstellen und verwenden.
+Um diese Volumes in Aktion zu sehen, können Sie sich anschauen, wie Sie ein persistentes Volume mit [Azure-Datenträgern][dynamic-disks] or [Azure Files][dynamic-files] dynamisch erstellen und verwenden.
 
 Legen Sie als Teil Ihrer Speicherklassendefinitionen die entsprechende *reclaimPolicy* fest. Diese reclaimPolicy steuert das Verhalten der zugrunde liegenden Azure-Speicherressource, wenn die Pods gelöscht werden und das persistente Volume vielleicht nicht mehr benötigt wird. Die zugrunde liegende Speicherressource kann gelöscht oder für die Verwendung mit einem zukünftigen Pod beibehalten werden. „reclaimPolicy“ kann auf *Beibehalten* oder *Löschen* festgelegt werden. Sie sollten die Anforderungen Ihrer Anwendung kennen und regelmäßige Prüfungen für den beibehaltenen Speicher implementieren, um die Menge an nicht verwendetem Speicher zu minimieren, der genutzt und abgerechnet wird.
 
@@ -93,9 +92,9 @@ Weitere Informationen zu Speicherklassenoptionen finden Sie unter [Richtlinien z
 
 **Best Practices-Anleitung**: Sichern Sie Ihre Daten mithilfe eines entsprechenden Tools für Ihren Speichertyp, z.B. Velero oder Azure Site Recovery. Überprüfen Sie die Integrität und die Sicherheit dieser Sicherungen.
 
-Wenn Ihre Anwendungen Daten speichern und verbrauchen, die auf Festplatten oder in Dateien gespeichert sind, müssen Sie regelmäßig Sicherungen oder Momentaufnahmen dieser Daten erstellen. Azure-Datenträger können integrierte Momentaufnahmetechnologien verwenden. Möglicherweise benötigen Sie einen Hook für Ihre Anwendungen, damit Schreibzugriffe auf die Festplatte geleert werden, bevor Sie den Momentaufnahmevorgang ausführen. [Velero][velero] kann persistente Volumes zusammen mit zusätzlichen Clusterressourcen und -konfigurationen sichern. Wenn Sie [den Zustand nicht aus Ihren Anwendungen entfernen können][remove-state], sichern Sie die Daten von persistenten Volumes, und testen Sie die Wiederherstellungsvorgänge regelmäßig, um die Datenintegrität und die erforderlichen Prozesse zu überprüfen.
+Wenn Ihre Anwendungen Daten speichern und verbrauchen, die auf Festplatten oder in Dateien gespeichert sind, müssen Sie regelmäßig Sicherungen oder Momentaufnahmen dieser Daten erstellen. Azure-Datenträger können integrierte Momentaufnahmetechnologien verwenden. Möglicherweise benötigen Sie einen Hook für Ihre Anwendungen, damit Schreibzugriffe auf die Festplatte geleert werden, bevor Sie den Momentaufnahmevorgang ausführen. [Velero][velero] can back up persistent volumes along with additional cluster resources and configurations. If you can't [remove state from your applications][remove-state], sollten Sie die Daten von persistenten Volumes sichern und die Wiederherstellungsvorgänge regelmäßig testen, um die Datenintegrität und die erforderlichen Prozesse zu überprüfen.
 
-Sie sollten die Grenzen der verschiedenen Ansätze für Datensicherungen kennen und wissen, ob Sie Ihre Daten vor dem erstellen der Momentaufnahme stilllegen müssen. Datensicherungen ermöglichen es Ihnen nicht unbedingt, Ihre Anwendungsumgebung der Clusterbereitstellung wiederherzustellen. Weitere Informationen zu diesen Szenarien finden Sie unter [Best Practices für das Business Continuity & Disaster Recovery in AKS][best-practices-multi-region].
+Sie sollten die Grenzen der verschiedenen Ansätze für Datensicherungen kennen und wissen, ob Sie Ihre Daten vor dem erstellen der Momentaufnahme stilllegen müssen. Datensicherungen ermöglichen es Ihnen nicht unbedingt, Ihre Anwendungsumgebung der Clusterbereitstellung wiederherzustellen. Weitere Informationen zu diesen Szenarien finden Sie unter [Best Practices für Geschäftskontinuität und Notfallwiederherstellung in Azure Kubernetes Service (AKS)][best-practices-multi-region].
 
 ## <a name="next-steps"></a>Nächste Schritte
 
@@ -103,7 +102,6 @@ Dieser Artikel konzentriert sich auf bewährte Speichermethoden in AKS. Weitere 
 
 <!-- LINKS - External -->
 [velero]: https://github.com/heptio/velero
-[dysk]: https://github.com/Azure/kubernetes-volume-drivers/tree/master/flexvolume/dysk
 [blobfuse]: https://github.com/Azure/azure-storage-fuse
 
 <!-- LINKS - Internal -->

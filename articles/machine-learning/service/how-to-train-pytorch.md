@@ -6,17 +6,17 @@ services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
-ms.author: minxia
-author: mx-iao
+ms.author: maxluk
+author: maxluk
 ms.reviewer: peterlu
 ms.date: 06/18/2019
 ms.custom: seodec18
-ms.openlocfilehash: 8def58eb003fcc817c21151416744cf391b5f38f
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: d9c953eeecedf14a8f3fae43c5d4713252d58b4c
+ms.sourcegitcommit: 64798b4f722623ea2bb53b374fb95e8d2b679318
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67443928"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67840080"
 ---
 # <a name="train-and-register-pytorch-models-at-scale-with-azure-machine-learning-service"></a>Trainieren und Registrieren von PyTorch-Modellen in großem Umfang mit Azure Machine Learning Service
 
@@ -28,16 +28,16 @@ Egal, ob Sie ein PyTorch-Modell von Grund auf entwickeln oder ein bestehendes Mo
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-Führen Sie diesen Code in einer der folgenden Umgebungen aus:
+Führen Sie diesen Code in einer dieser Umgebungen aus:
 
- - Azure Machine Learning Notebook VM – keine Downloads oder Installationen erforderlich
+ - Azure Machine Learning Notebook VM: keine Downloads oder Installationen erforderlich
 
     - Vervollständigen Sie den Schnellstart des [Cloud-basierten Notebooks](quickstart-run-cloud-notebook.md), um einen dedizierten Notebookserver zu erstellen, der mit dem SDK und dem Beispielrepository vorinstalliert ist.
     - Suchen Sie im Beispielordner auf dem Notebookserver ein fertiges und erweitertes Notebook. Dazu navigieren Sie zum folgenden Verzeichnis: **how-to-use-azureml > training-with-deep-learning > train-hyperparameter-tune-deploy-with-pytorch**. 
  
  - Ihr eigener Jupyter Notebook-Server
 
-    - [Installieren des Azure Machine Learning SDK für Python](setup-create-workspace.md#sdk)
+    - [Installieren Sie das Azure Machine Learning SDK für Python](setup-create-workspace.md#sdk).
     - [Erstellen einer Konfigurationsdatei für den Arbeitsbereich](setup-create-workspace.md#write-a-configuration-file)
     - [Herunterladen der Beispielskriptdateien](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/training-with-deep-learning/train-hyperparameter-tune-deploy-with-pytorch) `pytorch_train.py`
      
@@ -45,7 +45,7 @@ Führen Sie diesen Code in einer der folgenden Umgebungen aus:
 
 ## <a name="set-up-the-experiment"></a>Einrichten des Experiments
 
-In diesem Abschnitt wird das Trainingsexperiment eingerichtet, indem die erforderlichen Python-Pakete geladen, ein Arbeitsbereich initialisiert, ein Experiment erstellt und die Trainingsdaten und Trainingsskripts hochgeladen werden.
+In diesem Abschnitt wird das Trainingsexperiment eingerichtet, indem die erforderlichen Python-Pakete geladen, ein Arbeitsbereich initialisiert, ein Experiment erstellt und die Trainingsdaten und -skripts hochgeladen werden.
 
 ### <a name="import-packages"></a>Importieren von Paketen
 
@@ -158,7 +158,7 @@ Die Ausführung durchläuft die folgenden Phasen:
 
 - **Vorbereitung**: Gemäß dem PyTorch-Estimator wird ein Docker-Image erstellt. Das Image wird in die Containerregistrierung des Arbeitsbereichs hochgeladen und für spätere Ausführungen zwischengespeichert. Darüber hinaus werden Protokolle in den Ausführungsverlauf gestreamt, mit deren Hilfe der Status überwacht werden kann.
 
-- **Skalierung**: Der Cluster versucht horizontal zu skalieren, wenn der Batch KI-Cluster mehr Knoten zur Ausführung benötigt, als derzeit verfügbar sind.
+- **Skalierung**: Der Cluster versucht ein zentrales Hochskalieren, wenn der Batch KI-Cluster mehr Knoten zur Ausführung benötigt, als derzeit verfügbar sind.
 
 - **Running**: Alle Skripts im Skriptordner werden auf das Computeziel hochgeladen, Datenspeicher werden bereitgestellt oder kopiert, und das „entry_script“ wird ausgeführt. Ausgaben aus „stdout“ und dem Ordner „./logs“ werden in den Ausführungsverlauf gestreamt und können zur Überwachung der Ausführung verwendet werden.
 

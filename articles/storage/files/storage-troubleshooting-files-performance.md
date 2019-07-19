@@ -1,6 +1,6 @@
 ---
 title: Azure Files-Leistung – Handbuch zur Problembehandlung
-description: Bekannte Leistungsprobleme mit Azure Premium-Dateifreigaben (Vorschauversion) und entsprechende Problemumgehungen.
+description: Bekannte Leistungsprobleme mit Azure-Dateifreigaben und entsprechende Problemumgehungen.
 services: storage
 author: gunjanj
 ms.service: storage
@@ -8,22 +8,22 @@ ms.topic: article
 ms.date: 04/25/2019
 ms.author: gunjanj
 ms.subservice: files
-ms.openlocfilehash: 5ae0bb736a7cc0bbc38df5905abc5d8a71f60eb9
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 8c35501f3afbeed519fb5304229f25be1cbd5f9b
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65190052"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67445668"
 ---
 # <a name="troubleshoot-azure-files-performance-issues"></a>Troubleshooting bei Azure Files-Leistungsproblemen
 
-In diesem Artikel sind einige allgemeine Probleme aufgeführt, die es im Zusammenhang mit Premium-Azure-Dateifreigaben (Vorschauversion) geben kann. Er enthält mögliche Ursachen und Problemumgehungen, wenn diese Probleme auftreten.
+In diesem Artikel sind einige allgemeine Probleme aufgeführt, die im Zusammenhang mit Azure-Dateifreigaben auftreten können. Er enthält mögliche Ursachen und Problemumgehungen, wenn diese Probleme auftreten.
 
 ## <a name="high-latency-low-throughput-and-general-performance-issues"></a>Hohe Latenz, niedriger Durchsatz und allgemeine Leistungsprobleme
 
 ### <a name="cause-1-share-experiencing-throttling"></a>Ursache 1: Freigabe, in der Drosselung auftritt
 
-Das standardmäßige Kontingent für eine Freigabe ist 100 GiB, wodurch 100 IOPS-Grundwerte bereitgestellt werden (mit der Möglichkeit, für eine Stunde auf bis zu 300 zu erweitern). Weitere Informationen zu einer Bereitstellung und deren Beziehung zu IOPS finden Sie im Planungshandbuch im Abschnitt [Bereitgestellte Freigaben](storage-files-planning.md#provisioned-shares).
+Das standardmäßige Premium-Kontingent für eine Freigabe ist 100 GiB, wodurch 100 IOPS-Grundwerte bereitgestellt werden (mit der Möglichkeit, für eine Stunde auf bis zu 300 zu erweitern). Weitere Informationen zu einer Bereitstellung und deren Beziehung zu IOPS finden Sie im Planungshandbuch im Abschnitt [Bereitgestellte Freigaben](storage-files-planning.md#provisioned-shares).
 
 Um zu prüfen, ob Ihre Dateifreigabe gedrosselt wird, können Sie Azure-Metriken im Portal nutzen.
 
@@ -39,7 +39,7 @@ Um zu prüfen, ob Ihre Dateifreigabe gedrosselt wird, können Sie Azure-Metriken
 
 1. Wählen Sie **Transaktionen** als Metrik aus.
 
-1. Fügen Sie einen Filter für **Antworttyp** hinzu, und überprüfen Sie, ob es Antworten gibt, die den Antwortcode **SuccessWithThrottling** enthalten.
+1. Fügen Sie einen Filter für **Antworttyp** hinzu, und überprüfen Sie, ob es Antworten gibt, die den Antwortcode **SuccessWithThrottling** (für SMB) oder **ClientThrottlingError** (für REST) enthalten.
 
 ![Metriken-Optionen für Premium-Dateifreigaben](media/storage-troubleshooting-premium-fileshares/metrics.png)
 
@@ -72,11 +72,11 @@ Wenn die Anwendung, die vom Kunden verwendet wird, eine Singlethread-Anwendung i
 
 ### <a name="cause"></a>Ursache
 
-Der virtuelle Client-Computer kann sich in einer anderen Region befinden als die Premium-Dateifreigabe.
+Der virtuelle Clientcomputer kann sich in einer anderen Region als die Dateifreigabe befinden.
 
 ### <a name="solution"></a>Lösung
 
-- Führen Sie die Anwendung auf einem virtuellen Computer aus, der sich in derselben Region befindet wie die Premium-Dateifreigabe.
+- Führen Sie die Anwendung auf einem virtuellen Computer aus, der sich in derselben Region wie die Dateifreigabe befindet.
 
 ## <a name="client-unable-to-achieve-maximum-throughput-supported-by-the-network"></a>Client kann den maximalen Durchsatz des Netzwerks nicht erreichen
 
@@ -121,6 +121,10 @@ Eine E/A-Tiefe von größer als eins wird unter CentOS/RHEL nicht unterstützt.
 
 - Führen Sie ein Upgrade auf CentOS 8/RHEL 8 durch.
 - Wechseln Sie zu Ubuntu.
+
+## <a name="slow-file-copying-to-and-from-azure-files-in-linux"></a>Langsames Kopieren von Dateien in und aus Azure Files unter Linux
+
+Falls bei Ihnen das Kopieren von Dateien für Azure Files langsam ist, sollten Sie im Linux-Leitfaden für die Problembehandlung den Abschnitt [Langsames Kopieren von Dateien in und aus Azure Files unter Linux](storage-troubleshoot-linux-file-connection-problems.md#slow-file-copying-to-and-from-azure-files-in-linux) lesen.
 
 ## <a name="jitterysaw-tooth-pattern-for-iops"></a>Unregelmäßiges/Sägezahn-Muster für IOPS
 

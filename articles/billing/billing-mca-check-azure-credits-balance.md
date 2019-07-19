@@ -1,47 +1,42 @@
 ---
-title: Nachverfolgen des Azure-Gutschriftensaldos für die Microsoft-Kundenvereinbarung | Microsoft-Dokumentation
-description: Erfahren Sie, wie Sie den Azure-Gutschriftensaldo für die Microsoft-Kundenvereinbarung überprüfen können.
-services: ''
-documentationcenter: ''
-author: amberbhargava
+title: Nachverfolgen des Azure-Gutschriftensaldos für eine Microsoft-Kundenvereinbarung
+description: Es wird beschrieben, wie Sie den Azure-Gutschriftensaldo für eine Microsoft-Kundenvereinbarung überprüfen.
+author: bandersmsft
 manager: amberb
-editor: banders
 tags: billing
 ms.service: billing
 ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 02/28/2019
-ms.author: amberb
-ms.openlocfilehash: 1e8c3e6863b9cd8f2f5ced18a57918c32c865e75
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.date: 07/01/2019
+ms.author: banders
+ms.openlocfilehash: 352737b3ea61a51a39e066d4211c8f4ceae74184
+ms.sourcegitcommit: ac1cfe497341429cf62eb934e87f3b5f3c79948e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60372267"
+ms.lasthandoff: 07/01/2019
+ms.locfileid: "67490960"
 ---
-# <a name="track-azure-credit-balance-for-microsoft-customer-agreement"></a>Nachverfolgen des Azure-Gutschriftensaldos für die Microsoft-Kundenvereinbarung
+# <a name="track-microsoft-customer-agreement-azure-credit-balance"></a>Nachverfolgen des Azure-Gutschriftensaldos der Microsoft-Kundenvereinbarung
 
-Sie können den Azure-Gutschriftensaldo für die Microsoft-Kundenvereinbarung im Azure-Portal überprüfen. Sie verwenden Guthaben, um für Produkte zu bezahlen, die durch die Guthaben abgedeckt sind.
+Sie können den Azure-Gutschriftensaldo für die Microsoft-Kundenvereinbarung im Azure-Portal überprüfen. Sie verwenden Gutschriften, um Gebühren zu begleichen, die durch die Gutschriften abgedeckt sind.
 
-Die Verwendung anderer Produkte, die durch diese Guthaben nicht abgedeckt sind, wird Ihnen in Rechnung gestellt. Ebenso wird Ihnen die Nutzung berechnet, wenn diese Ihr Guthabensaldo überschreitet. Weitere Informationen finden Sie unter [Von Azure-Gutschriften nicht abgedeckte Produkte](#products-that-arent-covered-by-azure-credits).
+Die Verwendung anderer Produkte, die durch diese Guthaben nicht abgedeckt sind, wird Ihnen in Rechnung gestellt. Ebenso wird Ihnen die Nutzung berechnet, wenn diese Ihr Guthabensaldo überschreitet. Weitere Informationen finden Sie unter [Von Azure-Gutschriften nicht abgedeckte Produkte(#products-that-arent-covered-by-azure-credits).
 
-Dieser Artikel bezieht sich auf ein Abrechnungskonto für eine Microsoft-Kundenvereinbarung. [Überprüfen Sie, ob Sie Zugriff auf eine Microsoft-Kundenvereinbarung haben](#check-access-to-a-microsoft-customer-agreement).
+Dieser Artikel bezieht sich auf ein Abrechnungskonto für eine Microsoft-Kundenvereinbarung. [Überprüfen Sie, ob Sie Zugriff auf eine Microsoft-Kundenvereinbarung haben.](#check-access-to-a-microsoft-customer-agreement)
 
-## <a name="check-credit-balance-in-the-azure-portal"></a>Überprüfen des Guthabensaldos im Azure-Portal
+## <a name="check-your-credit-balance"></a>Überprüfen Ihres Gutschriftensaldos
 
 1. Melden Sie sich beim [Azure-Portal]( https://portal.azure.com) an.
 
 2. Suchen Sie nach **Kostenverwaltung + Abrechnung**.
 
-   ![Screenshot: Suche nach „Kostenverwaltung + Abrechnung“ im Azure-Portal](./media/billing-mca-check-azure-credits-balance/billing-search-cost-management-billing.png)
+    ![Screenshot: Suche nach „Kostenverwaltung + Abrechnung“ im Azure-Portal](./media/billing-mca-check-azure-credits-balance/billing-search-cost-management-billing.png)
 
-3. Navigieren Sie zum Abrechnungsprofil. Abhängig von Ihren Zugriffsberechtigungen müssen Sie möglicherweise ein Abrechnungskonto auswählen. Wählen Sie im Abrechnungskonto die Option **Abrechnungsprofile** und dann ein Abrechnungsprofil aus.
+3.  Wählen Sie links die Option **Azure-Gutschriften**. Abhängig von Ihren Zugriffsberechtigungen müssen Sie unter Umständen zuerst ein Abrechnungskonto oder -profil und dann **Azure-Gutschriften** wählen.
 
-4. Klicken Sie auf **Azure credits** (Azure-Gutschriften).
-
-5. Auf dieser Seite werden die folgenden Informationen angezeigt:
+4. Auf dieser Seite werden die folgenden Informationen angezeigt:
 
    ![Screenshot: Guthabensaldo und Transaktionen eines Abrechnungsprofils](./media/billing-mca-check-azure-credits-balance/billing-mca-credits-overview.png)
 
@@ -57,16 +52,18 @@ Dieser Artikel bezieht sich auf ein Abrechnungskonto für eine Microsoft-Kundenv
 
    ![Screenshot: Guthabenliste für ein Abrechnungsprofil](./media/billing-mca-check-azure-credits-balance/billing-mca-credits-list.png)
 
-   | Begriff                 | Definition                           |
-   |----------------------|--------------------------------------------------------|
-   | `Source`               | Die Erwerbsquelle des Guthabens |
-   | Startdatum           | Das Datum, an dem Sie die Gutschrift erhalten haben |
-   | Ablaufdatum      | Das Datum, an dem das Guthaben verfällt |
-   | Balance              | Der Saldo seit Ihrer letzten Rechnung |
-   | Ursprünglicher Betrag      | Der ursprüngliche Guthabenbetrag |
-   | Status               | Der aktuelle Status des Guthabens. Die möglichen Status sind „Aktiv“, „Used“ (Verwendet), „Expired“ (Abgelaufen) und „Läuft ab“. |
+   | Begriff | Definition |
+   |---|---|
+   | Geschätzter Saldo | Azure-Gutschriftbetrag nach Abzug von nicht fakturierten gutschriftfähigen Gebühren von Ihrem aktuellen Saldo|
+   | Aktueller Saldo | Azure-Gutschriftbetrag vor Berücksichtigung von nicht fakturierten gutschriftfähigen Gebühren. Der Betrag wird berechnet, indem Sie neue Azure-Gutschriften, die Sie erhalten haben, dem Gutschriftensaldo zum Zeitpunkt Ihrer letzten Rechnung hinzufügen.|
+   | `Source` | Die Erwerbsquelle des Guthabens |
+   | Startdatum | Das Datum, an dem Sie die Gutschrift erhalten haben |
+   | Ablaufdatum | Das Datum, an dem das Guthaben verfällt |
+   | Balance | Der Saldo seit Ihrer letzten Rechnung |
+   | Ursprünglicher Betrag | Der ursprüngliche Guthabenbetrag |
+   | Status | Der aktuelle Status des Guthabens. Die möglichen Status sind „Aktiv“, „Used“ (Verwendet), „Expired“ (Abgelaufen) und „Läuft ab“. |
 
-## <a name="how-credits-are-used-in-microsoft-customer-agreement"></a>Verwendung von Guthaben bei der Microsoft-Kundenvereinbarung
+## <a name="how-credits-are-used"></a>Verwenden von Gutschriften
 
 In einem Abrechnungskonto für eine Microsoft-Kundenvereinbarung verwenden Sie Abrechnungsprofile, um Ihre Rechnungen und Zahlungsmethoden zu verwalten. Für jedes Abrechnungsprofil wird eine monatliche Rechnung erstellt. Die Zahlungsmethoden verwenden Sie zum Bezahlen der Rechnung.
 
@@ -78,7 +75,7 @@ Azure-Gutschriften sind eine der Zahlungsmethoden. Sie erhalten von Microsoft Gu
 
 - Canonical
 - Citrix XenApp Essentials
-- Citrix XenDesktop 
+- Citrix XenDesktop
 - Registrierter Benutzer
 - OpenLogic
 - Registrierter Benutzer von Remote Access Rights XenApp Essentials
@@ -93,7 +90,7 @@ Azure-Gutschriften sind eine der Zahlungsmethoden. Sie erhalten von Microsoft Gu
 ## <a name="check-access-to-a-microsoft-customer-agreement"></a>Überprüfen des Zugriffs auf eine Microsoft-Kundenvereinbarung
 [!INCLUDE [billing-check-mca](../../includes/billing-check-mca.md)]
 
-## <a name="need-help-contact-support"></a>Sie brauchen Hilfe? Support kontaktieren
+## <a name="need-help-contact-support"></a>Sie brauchen Hilfe? Wenden Sie sich an den Support.
 
 [Wenden Sie sich an den Support](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade), falls Sie weitere Hilfe benötigen, um das Problem schnell beheben zu lassen.
 

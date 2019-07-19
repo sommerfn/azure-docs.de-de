@@ -9,15 +9,15 @@ ms.devlang: ''
 ms.topic: conceptual
 author: oslake
 ms.author: moslake
-ms.reviewer: genemi,ayolubek, jrasnick
+ms.reviewer: genemi, ayolubek, jrasnick
 manager: craigg
-ms.date: 03/12/2019
-ms.openlocfilehash: 9704acee2ca8bad7437ae22ff5041e2253916dce
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.date: 06/26/2019
+ms.openlocfilehash: bb38f73308fb1eb67be310120cb589cb9412e737
+ms.sourcegitcommit: aa66898338a8f8c2eb7c952a8629e6d5c99d1468
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66160804"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67461823"
 ---
 # <a name="dns-alias-for-azure-sql-database"></a>DNS-Alias für Azure SQL-Datenbank
 
@@ -30,6 +30,7 @@ Zu den allgemeinen Verwendungsmöglichkeiten für einen DNS-Alias zählen Folgen
 - Erstellen Sie einen einprägsamen Namen für einen Azure SQL-Server.
 - Bei der Erstentwicklung kann Ihr Alias auf einen SQL-Datenbank-Testserver verweisen. Wenn die Anwendung online geschaltet wird, können Sie den Alias auf den Produktionsserver verweisen. Für den Übergang zwischen Test und Produktion sind keine Änderungen an den Konfigurationen mehrerer Clients erforderlich, die mit dem Datenbankserver verbunden sind.
 - Nehmen Sie an, dass die einzige Datenbank in Ihrer Anwendung zu einem anderen SQL-Datenbank-Server migriert wurde. In diesem Fall können Sie den Alias ändern, ohne die Konfigurationen mehrerer Clients ändern zu müssen.
+- Bei einem regionalen Ausfall verwenden Sie eine geografische Wiederherstellung, um Ihre Datenbank auf einem anderen Server und in einer anderen Region wiederherzustellen. Sie können Ihren vorhandenen Alias so ändern, dass er auf den neuen Server verweist, damit die vorhandene Clientanwendung eine neue Verbindung damit herstellen kann. 
 
 ## <a name="domain-name-system-dns-of-the-internet"></a>Internet-DNS (Domain Name System)
 
@@ -49,7 +50,7 @@ Wenn das neue System später in der Produktion online geschaltet wird, können S
 
 ### <a name="cross-region-support"></a>Regionsübergreifende Unterstützung
 
-Bei einer Notfallwiederherstellung wird Ihr SQL-Datenbank-Server möglicherweise in eine andere geografische Region verschoben. Bei einem System, bei dem ein DNS-Alias verwendet wurde, kann die Erfordernis zum Suchen und Aktualisieren aller Verbindungszeichenfolgen für sämtliche Clients vermieden werden. Stattdessen können Sie einen Alias dahingehend aktualisieren, dass er auf den neuen SQL-Datenbank-Server verweist, der nun Ihre Datenbank hostet.
+Bei einer Notfallwiederherstellung wird Ihr SQL-Datenbank-Server möglicherweise in eine andere geografische Region verschoben. Für ein System, bei dem ein DNS-Alias verwendet wurde, kann die Anforderung zum Suchen und Aktualisieren aller Verbindungszeichenfolgen für sämtliche Clients vermieden werden. Stattdessen können Sie einen Alias dahingehend aktualisieren, dass er auf den neuen SQL-Datenbank-Server verweist, der nun Ihre Datenbank hostet.
 
 ## <a name="properties-of-a-dns-alias"></a>Eigenschaften eines DNS-Alias
 
@@ -67,13 +68,6 @@ Die folgenden Eigenschaften gelten für sämtliche DNS-Aliase Ihres SQL-Datenban
 REST-APIs und PowerShell-Cmdlets werden Ihnen für die programmgesteuerte Verwaltung Ihrer DNS-Aliase zur Verfügung gestellt.
 
 ### <a name="rest-apis-for-managing-your-dns-aliases"></a>REST-APIs für die Verwaltung Ihrer DNS-Aliase
-
-<!-- TODO
-??2 "soon" in the following live sentence, is not the best situation.
-TODO update this subsection very soon after REST API docu goes live.
-Dev = Magda Bojarska
-Comment as of:  2018-01-26
--->
 
 Die Dokumentation für die REST-APIs finden Sie an folgendem Webspeicherort:
 
@@ -111,7 +105,7 @@ Für einen DNS-Alias gelten gegenwärtig die folgenden Einschränkungen:
 - *Verzögerung von bis zu 2 Minuten:* Es dauert bis zu zwei Minuten, bis ein DNS-Alias aktualisiert oder entfernt wird.
   - Abgesehen von einer kurzen Verzögerung stellt der Alias den Verweis von Clientverbindungen mit dem Legacyserver umgehend ein.
 - *DNS-Suche:* Zurzeit besteht die einzige autoritative Möglichkeit darin, anhand einer [DNS-Suche ](https://docs.microsoft.com/windows-server/administration/windows-commands/nslookup) zu überprüfen, auf welchen Server ein bestimmter DNS-Alias verweist.
-- *[Tabellenüberwachung wird nicht unterstützt](sql-database-auditing-and-dynamic-data-masking-downlevel-clients.md):* Sie können keinen DNS-Alias für einen Azure SQL-Datenbank-Server verwenden, für den die *Tabellenüberwachung* für eine Datenbank aktiviert ist.
+- _Tabellenüberwachung wird nicht unterstützt:_ Sie können keinen DNS-Alias für einen Azure SQL-Datenbank-Server verwenden, für den die *Tabellenüberwachung* für eine Datenbank aktiviert ist.
   - Die Tabellenüberwachung wurde eingestellt.
   - Es wird empfohlen, auf [Blobüberwachung](sql-database-auditing.md) umzusteigen.
 

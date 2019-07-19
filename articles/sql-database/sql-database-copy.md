@@ -8,20 +8,20 @@ ms.custom: ''
 ms.devlang: ''
 ms.topic: conceptual
 author: stevestein
-ms.author: sahsan
+ms.author: sstein
 ms.reviewer: carlrab
 manager: craigg
 ms.date: 06/03/2019
-ms.openlocfilehash: ba787ccd51bf5ea9ec8e06e341a0f698afb5a7e2
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: dc82ace4c5bf1204075bfa5e34d0b1489a3acb98
+ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66688076"
+ms.lasthandoff: 07/15/2019
+ms.locfileid: "67876273"
 ---
 # <a name="copy-a-transactionally-consistent-copy-of-an-azure-sql-database"></a>Kopieren einer transaktionskonsistenten Kopie einer Azure SQL-Datenbank-Instanz
 
-Azure SQL-Datenbank bietet mehrere Methoden, eine hinsichtlich Transaktionen konsistente Kopie einer vorhandenen Azure SQL-Datenbank auf demselben Server oder auf einem anderen Server zu erstellen. Sie können eine SQL-Datenbank über das Azure-Portal, über PowerShell oder über T-SQL kopieren. 
+Azure SQL-Datenbank verfügt über mehrere Methoden für die Erstellung einer transaktionskonsistenten Kopie einer vorhandenen Azure SQL-Datenbank ([Einzeldatenbank](sql-database-single-database.md)) auf demselben Server oder auf einem anderen Server. Sie können eine SQL-Datenbank über das Azure-Portal, über PowerShell oder über T-SQL kopieren. 
 
 ## <a name="overview"></a>Übersicht
 
@@ -94,7 +94,7 @@ Mit diesem Befehl wird Database1 auf server1 in eine neue Datenbank mit dem Name
 
 ### <a name="copy-a-sql-database-to-a-different-subscription"></a>Kopieren einer SQL-Datenbank in ein anderes Abonnement
 
-Sie können mit den im vorherigen Abschnitt beschriebenen Schritten Ihre Datenbank in eine SQL-Datenbank-Serverinstanz in einem anderen Abonnement kopieren. Verwenden Sie unbedingt eine Anmeldung, bei der Name und Kennwort mit denen des Datenbankbesitzers der Quelldatenbank identisch sind, und die ein Mitglied der DBManager-Rolle oder die Prinzipalanmeldung auf Serverebene ist. 
+Sie können Ihre Datenbank mit den im vorherigen Abschnitt beschriebenen Schritten in eine SQL-Datenbank-Serverinstanz in einem anderen Abonnement kopieren. Verwenden Sie unbedingt eine Anmeldung, bei der Name und Kennwort mit denen des Datenbankbesitzers der Quelldatenbank identisch sind, und die ein Mitglied der DBManager-Rolle oder die Prinzipalanmeldung auf Serverebene ist. 
 
 > [!NOTE]
 > Das [Azure-Portal](https://portal.azure.com) unterstützt das Kopieren in ein anderes Abonnement nicht, da das Portal die ARM-API aufruft, und es verwendet die Abonnementzertifikate, um auf beide an der Georeplikation beteiligten Server zuzugreifen.  

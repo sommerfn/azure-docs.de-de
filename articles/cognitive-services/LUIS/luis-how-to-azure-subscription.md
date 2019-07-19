@@ -9,29 +9,28 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: article
-ms.date: 03/01/2019
+ms.date: 06/18/2019
 ms.author: diberry
-ms.openlocfilehash: 7315c80ad74eae07e41577fb2ac13742002e729e
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 7f82bf5a40df0554d4f98b2d835fcbd69279be43
+ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60198576"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67204160"
 ---
 # <a name="using-subscription-keys-with-your-luis-app"></a>Verwenden von Abonnementschlüsseln mit Ihrer LUIS-App
 
-Für Ihre ersten 1000 kostenlosen Endpunktabfragen müssen Sie keine Abonnementschlüssel erstellen. Sobald diese Endpunktabfragen aufgebraucht sind, erstellen Sie eine Azure-Ressource im [Azure-Portal](https://portal.azure.com) und weisen diese dann einer LUIS-App im [LUIS-Portal](https://www.luis.ai) zu.
-
-Wenn Sie einen Fehler vom Typ _Kontingent aufgebraucht_ in Form eines HTTP 403- oder 429-Fehlers erhalten, müssen Sie einen Schlüssel erstellen und Ihrer App zuweisen. 
+Wenn Sie Language Understanding (LUIS) zum ersten Mal verwenden, müssen Sie keine Abonnementschlüssel erstellen. Sie erhalten zu Beginn 1.000 Endpunktabfragen. 
 
 Verwenden Sie den Free-Tarif (F0) ausschließlich für Tests und Prototypen. Verwenden Sie für Produktionssysteme einen [bezahlten](https://aka.ms/luis-price-tier) Tarif. Verwenden Sie den [Erstellungsschlüssel](luis-concept-keys.md#authoring-key) nicht für Endpunktabfragen in der Produktion.
+
 
 <a name="create-luis-service"></a>
 <a name="create-language-understanding-endpoint-key-in-the-azure-portal"/>
 
 ## <a name="create-prediction-endpoint-runtime-resource-in-the-azure-portal"></a>Erstellen der Vorhersageendpunkt-Runtimeressource im Azure-Portal
 
-Erfahren Sie mehr im Schnellstart [Erstellen einer App](get-started-portal-build-app.md).
+Sie erstellen die [Vorhersageendpunktressource](get-started-portal-deploy-app.md#create-the-endpoint-resource) im Azure-Portal. Diese Ressource darf nur für Endpunktvorhersageabfragen verwendet werden. Verwenden Sie diese Ressource nicht für das Erstellen von Änderungen an der App.
 
 <a name="programmatic-key" ></a>
 <a name="authoring-key" ></a>
@@ -49,7 +48,7 @@ Erfahren Sie mehr im Schnellstart [Erstellen einer App](get-started-portal-build
 
 ## <a name="assign-resource-key-to-luis-app-in-luis-portal"></a>Zuweisen des Ressourcenschlüssels an die LUIS-App im LUIS-Portal
 
-Erfahren Sie mehr im Schnellstart [Bereitstellung](get-started-portal-deploy-app.md).
+Jedes Mal, wenn Sie eine neue Ressource für LUIS erstellen, müssen Sie [der LUIS-App die Ressource zuweisen](get-started-portal-deploy-app.md#assign-the-resource-key-to-the-luis-app-in-the-luis-portal). Nachdem Sie die Ressource zugewiesen haben, müssen Sie diesen Schritt nur dann erneut ausführen, wenn Sie eine neue Ressource erstellen. Sie können beispielsweise eine neue Ressource erstellen, um die Regionen Ihrer App zu erweitern oder eine größere Anzahl von Vorhersageabfragen zu unterstützen.
 
 <!-- content moved to luis-reference-regions.md, need replacement links-->
 <a name="regions-and-keys"></a>
@@ -133,7 +132,7 @@ Für die Automatisierung, z.B. mit einer CI/CD-Pipeline, empfiehlt es sich, die 
 
     Diese POST-API erfordert folgende Einstellungen:
 
-    |Type|Einstellung|Wert|
+    |type|Einstellung|Wert|
     |--|--|--|
     |Header|`Authorization`|Der Wert von `Authorization` ist `Bearer {token}`. Beachten Sie, dass dem Tokenwert das Wort `Bearer` und ein Leerzeichen vorangestellt werden müssen.|
     |Header|`Ocp-Apim-Subscription-Key`|Ihr [Erstellungsschlüssel](luis-how-to-account-settings.md).|
@@ -155,10 +154,30 @@ Für die Automatisierung, z.B. mit einer CI/CD-Pipeline, empfiehlt es sich, die 
     ![Überprüfen Ihres LUIS-Tarifs](./media/luis-usage-tiers/updated.png)
 1. Denken Sie daran, [diesen Endpunktschlüssel](#assign-endpoint-key) auf der Seite **Publish** (Veröffentlichen) zuzuweisen und für alle Endpunktabfragen zu verwenden. 
 
-## <a name="how-to-fix-out-of-quota-errors-when-the-key-exceeds-pricing-tier-usage"></a>Beheben von Fehlern vom Typ „Kontingent aufgebraucht“, wenn der Schlüssel die Nutzung im Tarif überschreitet
-Jeder Tarif ermöglicht Endpunktanforderungen für Ihr LUIS-Konto mit einer bestimmten Rate. Wenn die Anforderungsrate höher als die zulässige Rate für Ihr gemessenes Konto pro Minute oder pro Monat ist, lösen Anforderungen den HTTP-Fehler „429: zu viele Anfragen“ aus.
+## <a name="fix-http-status-code-403-and-429"></a>Beheben von Fehlern mit HTTP-Statuscode 403 und 429
 
-Jeder Tarif ermöglicht kumulative Anforderungen pro Monat. Wenn die Gesamtzahl der Anforderungen die zulässige Rate übersteigt, lösen Anforderungen den HTTP-Fehler „403: verboten“ aus.  
+Sie erhalten Fehler mit dem Statuscode 403 und 429, wenn Sie für Ihren Tarif die Transaktionen pro Sekunde oder Monat überschreiten.
+
+### <a name="when-you-receive-an-http-403-error-status-code"></a>Vorgehensweise bei Erhalt eines Fehlers mit dem Statuscode HTTP 403
+
+Wenn Sie die gesamten kostenlosen 1.000 Endpunktabfragen aufgebraucht haben oder das Kontingent der monatlichen Transaktionen Ihres Tarifs überschreiten, erhalten Sie einen Fehler mit dem Statuscode HTTP 403. 
+
+Zum Beheben dieses Fehlers müssen Sie entweder [einen höheren Tarif wählen](luis-how-to-azure-subscription.md#change-pricing-tier) oder [eine neue Ressource erstellen](get-started-portal-deploy-app.md#create-the-endpoint-resource) und [Ihrer App zuweisen](get-started-portal-deploy-app.md#assign-the-resource-key-to-the-luis-app-in-the-luis-portal).
+
+Lösungen für diesen Fehler:
+
+* Wählen Sie im [Azure-Portal](https://portal.azure.com) für Ihre Language Understanding-Ressource unter **Ressourcenverwaltung > Tarif** einen höheren TPS-Tarif. Sie müssen im Language Understanding-Portal nichts unternehmen, wenn Ihre Ressource bereits Ihrer Language Understanding-App zugewiesen ist.
+*  Falls Ihre Nutzung den höchsten Tarif übersteigt, sollten Sie weitere Language Understanding-Ressourcen mit vorgeschaltetem Lastenausgleich hinzufügen. Hierbei kann der [Language Understanding-Container](luis-container-howto.md) mit Kubernetes oder Docker Compose hilfreich sein.
+
+### <a name="when-you-receive-an-http-429-error-status-code"></a>Vorgehensweise bei Erhalt eines Fehlers mit dem Statuscode HTTP 429
+
+Dieser Statuscode wird zurückgegeben, wenn Ihre Transaktionen pro Sekunde Ihren Tarif überschreiten.  
+
+Beispiele für Lösungen sind:
+
+* Sie können [Ihren Tarif erhöhen](#change-pricing-tier), falls Sie noch nicht den höchsten Tarif verwenden.
+* Falls Ihre Nutzung den höchsten Tarif übersteigt, sollten Sie weitere Language Understanding-Ressourcen mit vorgeschaltetem Lastenausgleich hinzufügen. Hierbei kann der [Language Understanding-Container](luis-container-howto.md) mit Kubernetes oder Docker Compose hilfreich sein.
+* Sie können Ihre Anforderungen der Clientanwendung mit einer [Wiederholungsrichtlinie](https://docs.microsoft.com/azure/architecture/best-practices/transient-faults#general-guidelines) versehen, die Sie selbst implementieren, wenn Sie diesen Statuscode erhalten. 
 
 ## <a name="viewing-summary-usage"></a>Anzeigen der Nutzungszusammenfassung
 Sie können in Azure LUIS-Nutzungsinformationen anzeigen. Auf der Seite **Übersicht** werden aktuelle zusammenfassende Informationen angezeigt, einschließlich Aufrufen und Fehlern. Wenn Sie eine LUIS-Endpunktanforderung ausführen, kann es bis zu fünf Minuten dauern, bis die Nutzung auf der Seite **Übersicht** angezeigt wird.

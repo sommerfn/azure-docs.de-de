@@ -9,12 +9,12 @@ ms.topic: article
 ms.date: 04/10/2019
 ms.author: lahugh
 ms.custom: seodec18
-ms.openlocfilehash: 2583e7e218e765e0d7745978582e19a5a4fe17ce
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: ea048c6adbb4e00ae8543810f1dc571376038c62
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60550200"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67436253"
 ---
 # <a name="create-an-azure-batch-pool-in-a-virtual-network"></a>Erstellen eines Azure Batch-Pools in einem virtuellen Netzwerk
 
@@ -56,7 +56,7 @@ Ihr Unternehmen erfordert möglicherweise zu Überprüfungs- und Protokollierung
 
 Um sicherzustellen, dass die Computeknoten Ihres Azure Batch-Pools in einem VNET funktionieren, in dem die Tunnelerzwingung aktiviert ist, müssen Sie folgende [benutzerdefinierte Routen](../virtual-network/virtual-networks-udr-overview.md) für dieses Subnetz hinzufügen:
 
-* Der Batch-Dienst muss für die zeitliche Planung von Tasks mit den Computeknoten des Pools kommunizieren. Um diese Kommunikation zu ermöglichen, fügen Sie eine benutzerdefinierte für jede IP-Adresse hinzu, die vom Batch-Dienst in der Region Ihres Batch-Kontos verwendet werden. Wenden Sie sich an den Azure-Support, um die Liste der IP-Adressen des Batch-Diensts zu erhalten.
+* Der Batch-Dienst muss für die zeitliche Planung von Tasks mit den Computeknoten des Pools kommunizieren. Um diese Kommunikation zu ermöglichen, fügen Sie eine benutzerdefinierte für jede IP-Adresse hinzu, die vom Batch-Dienst in der Region Ihres Batch-Kontos verwendet werden. Informationen dazu, wie Sie die Liste mit IP-Adressen des Batch-Diensts abrufen, finden Sie unter [Diensttags in lokalen Firewalls](../virtual-network/security-overview.md#service-tags-in-on-premises).
 
 * Stellen Sie sicher, dass ausgehender Datenverkehr an Azure Storage (also URLs im Format `<account>.table.core.windows.net`, `<account>.queue.core.windows.net` und `<account>.blob.core.windows.net`) nicht über Ihr lokales Netzwerkgerät blockiert wird.
 

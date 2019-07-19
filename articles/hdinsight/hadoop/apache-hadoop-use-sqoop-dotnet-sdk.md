@@ -9,12 +9,12 @@ ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
 ms.date: 05/16/2018
 ms.author: hrasheed
-ms.openlocfilehash: ac0890be0abccb316bffc4d9bdd6868a80173e18
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 1bdf1318f93697cd7b479d404f44b7617ad875dc
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64710121"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67450148"
 ---
 # <a name="run-apache-sqoop-jobs-by-using-net-sdk-for-apache-hadoop-in-hdinsight"></a>Ausführen von Apache Sqoop-Aufträgen mit .NET SDK für Apache Hadoop in HDInsight
 [!INCLUDE [sqoop-selector](../../../includes/hdinsight-selector-use-sqoop.md)]
@@ -25,12 +25,12 @@ Erfahren Sie, wie das Azure HDInsight .NET-SDK zum Ausführen von Apache Sqoop-A
 > Sie können die in diesem Artikel beschriebenen Verfahren zwar entweder mit einem Windows- oder Linux-basierten HDInsight-Cluster verwenden, doch sie funktionieren nur von einem Windows-Client aus. Um andere Methoden auszuwählen, verwenden Sie die Registerkartenauswahl am Anfang dieses Artikels.
 
 ## <a name="prerequisites"></a>Voraussetzungen
-Bevor Sie mit diesem Tutorial beginnen können, benötigen Sie Folgendes:
+Bevor Sie mit diesem Artikel beginnen können, benötigen Sie Folgendes:
 
 * Einen Apache Hadoop-Cluster in HDInsight. Weitere Informationen finden Sie unter [Erstellen von Cluster und SQL-Datenbank](hdinsight-use-sqoop.md#create-cluster-and-sql-database).
 
 ## <a name="use-sqoop-on-hdinsight-clusters-with-the-net-sdk"></a>Verwenden von Sqoop auf HDInsight-Clustern mit dem .NET-SDK
-Das HDInsight .NET-SDK enthält .NET-Clientbibliotheken, die das Arbeiten mit HDInsight-Clustern in .NET vereinfachen. In diesem Abschnitt erstellen Sie eine C#-Konsolenanwendung zum Exportieren der „hivesampletable“ in die Azure SQL-Datenbanktabelle, die Sie zuvor in diesem Tutorial erstellt haben.
+Das HDInsight .NET-SDK enthält .NET-Clientbibliotheken, die das Arbeiten mit HDInsight-Clustern in .NET vereinfachen. In diesem Abschnitt erstellen Sie eine C#-Konsolenanwendung zum Exportieren der „hivesampletable“ in die Azure SQL-Datenbanktabelle, die Sie zuvor in diesem Artikel erstellt haben.
 
 ## <a name="submit-a-sqoop-job"></a>Übermitteln eines Sqoop-Auftrags
 

@@ -4,14 +4,14 @@ description: Verwenden Sie Azure Resource Manager, um Ressourcen in eine neue Re
 author: tfitzmac
 ms.service: azure-resource-manager
 ms.topic: conceptual
-ms.date: 06/13/2019
+ms.date: 06/24/2019
 ms.author: tomfitz
-ms.openlocfilehash: bb7715a7eaa2cb499ed80b78130571f315ef0c95
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 6cb2f49113a67a8dc6cea70ae58bd440f420a1d2
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67083540"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67442788"
 ---
 # <a name="move-resources-to-new-resource-group-or-subscription"></a>Verschieben von Ressourcen in eine neue Ressourcengruppe oder ein neues Abonnement
 
@@ -49,6 +49,7 @@ Die folgende Liste enthält eine allgemeine Zusammenfassung von Azure-Diensten, 
 * API Management
 * App Service-Apps (Web-Apps) – siehe [App Service-Einschränkungen](#app-service-limitations)
 * App Service-Zertifikate – siehe [Einschränkungen von App Service Certificate](#app-service-certificate-limitations)
+* App Service-Domäne
 * Automation – Runbooks müssen in der gleichen Ressourcengruppe wie das Automation-Konto vorhanden sein.
 * Azure Active Directory B2C
 * Azure Cache for Redis – wenn die Azure Cache for Redis-Instanz mit einem virtuellen Netzwerk konfiguriert ist, kann die Instanz nicht in ein anderes Abonnement verschoben werden. Siehe [Einschränkungen von virtuellen Netzwerken](#virtual-networks-limitations).
@@ -79,7 +80,6 @@ Die folgende Liste enthält eine allgemeine Zusammenfassung von Azure-Diensten, 
 * DNS
 * Event Grid
 * Event Hubs
-* Front Door
 * HDInsight-Cluster – siehe [HDInsight-Einschränkungen](#hdinsight-limitations)
 * Iot Central
 * IoT Hubs
@@ -89,14 +89,14 @@ Die folgende Liste enthält eine allgemeine Zusammenfassung von Azure-Diensten, 
 * Machine Learning – Machine Learning Studio-Webdienste können in eine Ressourcengruppe im gleichen Abonnement verschoben werden, aber nicht in ein anderes Abonnement. Andere Machine Learning-Ressourcen können über Abonnements hinweg verschoben werden.
 * Verwaltete Datenträger – Verwaltete Datenträger in Verfügbarkeitszonen können nicht in ein anderes Abonnement verschoben werden.
 * Media Services
-* Überwachen: Stellen Sie sicher, dass das Verschieben in neue Abonnements nicht die [Abonnementkontingente](../azure-subscription-service-limits.md#monitor-limits) überschreitet.
+* Überwachen: Stellen Sie sicher, dass das Verschieben in neue Abonnements nicht die [Abonnementkontingente](../azure-subscription-service-limits.md#azure-monitor-limits) überschreitet.
 * Notification Hubs
 * Operational Insights
 * Operations Management
 * Dashboards im Portal
 * Power BI – sowohl Power BI Embedded als auch Power BI-Arbeitsbereichssammlung
 * Öffentliche IP-Adresse: Die öffentliche IP-Adresse der SKU „Basic“ kann verschoben werden. Öffentliche IP-Adresse der SKU „Standard“ kann nicht verschoben werden.
-* Recovery Services-Tresor – registrieren Sie sich für eine [Vorschauversion](#recovery-services-limitations).
+* Recovery Services-Tresor – siehe [Einschränkungen](#recovery-services-limitations).
 * SAP HANA in Azure
 * Scheduler
 * Azure Search: Es ist nicht möglich, mehrere Search-Ressourcen in verschiedenen Regionen gleichzeitig zu verschieben. Verschieben Sie diese stattdessen in mehreren Vorgängen.
@@ -104,7 +104,7 @@ Die folgende Liste enthält eine allgemeine Zusammenfassung von Azure-Diensten, 
 * Service Fabric
 * Service Fabric Mesh
 * SignalR Service
-* Storage – Speicherkonten in verschiedenen Regionen können nicht im selben Vorgang verschoben werden. Stattdessen müssen Sie für jede Region einen separaten Vorgang durchführen.
+* Storage
 * Speicher (klassisch) – siehe [Einschränkungen bei der klassischen Bereitstellung](#classic-deployment-limitations)
 * Speichersynchronisierungsdienst
 * Stream Analytics – Stream Analytics-Aufträge können nicht verschoben werden, wenn sie ausgeführt werden.
@@ -138,6 +138,7 @@ Die folgende Liste enthält eine allgemeine Zusammenfassung von Azure-Diensten, 
 * Dev Spaces
 * Dynamics LCS
 * ExpressRoute
+* Front Door
 * Lab-Dienst – Classroom-Labs können nicht in eine neue Ressourcengruppe oder ein neues Abonnement verschoben werden.rschoben werden. DevTest-Labs können in eine neue Ressourcengruppe im gleichen Abonnement verschoben werden, das abonnementübergreifende Verschieben ist jedoch nicht möglich.
 * Verwaltete Anwendungen
 * Verwaltete Identität – vom Benutzer zugewiesen

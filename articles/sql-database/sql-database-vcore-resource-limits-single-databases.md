@@ -12,12 +12,12 @@ ms.author: sstein
 ms.reviewer: ''
 manager: craigg
 ms.date: 04/22/2019
-ms.openlocfilehash: ca29bfdb381c5cab0625a320679331c82f63c887
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: c89aa3b4ecf0c07cfbb579cdc18fac6e822bc047
+ms.sourcegitcommit: 084630bb22ae4cf037794923a1ef602d84831c57
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67118069"
+ms.lasthandoff: 07/03/2019
+ms.locfileid: "67536225"
 ---
 # <a name="resource-limits-for-single-databases-using-the-vcore-based-purchasing-model"></a>Ressourcenlimits für Einzeldatenbanken, die das auf virtuellen Kernen (V-Kernen) basierende (vCore-basierte) Kaufmodell verwenden
 
@@ -34,6 +34,9 @@ Sie können mit dem [Azure-Portal](sql-database-single-databases-manage.md#manag
 > Anleitungen und Überlegungen zur Skalierung finden Sie unter [Skalieren eines Singletons](sql-database-single-database-scale.md).
 
 ## <a name="general-purpose-service-tier-storage-sizes-and-compute-sizes"></a>Universelle Dienstebene: Speicher- und Computegrößen
+
+> [!IMPORTANT]
+> Neue Gen4-Datenbanken werden in der Region „Australien, Osten“ nicht mehr unterstützt.
 
 ### <a name="general-purpose-service-tier-generation-4-compute-platform-part-1"></a>Universelle Dienstebene: Computeplattform der 4. Generation (Teil 1)
 
@@ -157,6 +160,9 @@ Die [serverlose Computeebene](sql-database-serverless.md) ist in der Vorschauver
 
 ## <a name="business-critical-service-tier-for-provisioned-compute-tier"></a>Dienstebene „Unternehmenskritisch“ für die bereitgestellte Computeebene
 
+> [!IMPORTANT]
+> Neue Gen4-Datenbanken werden in der Region „Australien, Osten“ nicht mehr unterstützt.
+
 ### <a name="business-critical-service-tier-generation-4-compute-platform-part-1"></a>Dienstebene „Unternehmenskritisch“: Computeplattform der 4. Generation (Teil 1)
 
 |Computegröße|BC_Gen4_1|BC_Gen4_2|BC_Gen4_3|BC_Gen4_4|BC_Gen4_5|BC_Gen4_6|
@@ -268,7 +274,7 @@ Die [serverlose Computeebene](sql-database-serverless.md) ist in der Vorschauver
 |Maximale Protokollgröße (TB)|1 |1 |1 |1 |1 |1 |1 |1 |
 |tempdb-Größe (GB)|64|128|256|384|384|384|384|384|
 |Speichertyp|Lokale SSD|Lokale SSD|Lokale SSD|Lokale SSD|Lokale SSD|Lokale SSD|Lokale SSD|Lokale SSD|
-|Ziel-IOPS (64 KB)|Noch festzulegen|Noch festzulegen|Noch festzulegen|Noch festzulegen|Noch festzulegen|Noch festzulegen|Noch festzulegen|Noch festzulegen|
+|Ziel-IOPS (64 KB)| [Hinweis 1](#note-1) |[Hinweis 1](#note-1)|[Hinweis 1](#note-1) |[Hinweis 1](#note-1) |[Hinweis 1](#note-1) |[Hinweis 1](#note-1) |[Hinweis 1](#note-1) | [Hinweis 1](#note-1) |
 |E/A-Wartezeit (ungefähr)|Noch festzulegen|Noch festzulegen|Noch festzulegen|Noch festzulegen|Noch festzulegen|Noch festzulegen|Noch festzulegen|Noch festzulegen|
 |Max. gleichzeitige Worker (Anforderungen)|200|400|800|1600|2400|3200|4000|8\.000|
 |Maximal zulässige Sitzungen|30000|30000|30000|30000|30000|30000|30000|30000|
@@ -278,7 +284,11 @@ Die [serverlose Computeebene](sql-database-serverless.md) ist in der Vorschauver
 |Enthaltener Sicherungsspeicher |7|7|7|7|7|7|7|7|
 |||
 
-## <a name="next-steps"></a>Nächste Schritte
+### <a name="note-1"></a>Hinweis 1
+
+Hyperscale ist eine mehrstufige Architektur mit Caching auf mehreren Ebenen. Der tatsächliche IOPS-Wert hängt von der Workload ab.
+
+### <a name="next-steps"></a>Nächste Schritte
 
 - Informationen zu DTU-Ressourcenlimits bei Singletons finden Sie unter [Ressourcenlimits bei Singletons, die das DTU-basierte Kaufmodell verwenden](sql-database-dtu-resource-limits-single-databases.md).
 - Informationen zu V-Kern-Ressourcenlimits bei Pools für elastische Datenbanken finden Sie unter [Ressourcenlimits bei Pools für elastische Datenbanken, die das vCore-basierte Kaufmodell verwenden](sql-database-vcore-resource-limits-elastic-pools.md).

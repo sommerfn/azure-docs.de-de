@@ -2,18 +2,18 @@
 title: Verwalten von Sicherungen mit der rollenbasierten Zugriffssteuerung in Azure
 description: Verwenden Sie die rollenbasierte Zugriffssteuerung zum Verwalten des Zugriffs auf Vorgänge der Sicherungsverwaltung im Recovery Services-Tresor.
 services: backup
-author: trinadhk
+author: utraghuv
 manager: vijayts
 ms.service: backup
 ms.topic: conceptual
-ms.date: 04/17/2019
-ms.author: trinadhk
-ms.openlocfilehash: ed3797183e13a00d2c5381fa6449c111c3bc9ab9
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.date: 06/24/2019
+ms.author: utraghuv
+ms.openlocfilehash: 3b4585422a36992241fb4839238b1f6aa46c659f
+ms.sourcegitcommit: d2785f020e134c3680ca1c8500aa2c0211aa1e24
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60253729"
+ms.lasthandoff: 07/04/2019
+ms.locfileid: "67565642"
 ---
 # <a name="use-role-based-access-control-to-manage-azure-backup-recovery-points"></a>Verwenden der rollenbasierten Zugriffssteuerung zum Verwalten von Azure Backup-Wiederherstellungspunkten
 Die rollenbasierte Access Control in Azure (RBAC) ermöglicht eine präzise Zugriffsverwaltung für Azure. Mithilfe von RBAC können Sie Aufgaben in Ihrem Team verteilen und Benutzern nur den Zugriff gewähren, den sie zur Ausführung ihrer Aufgaben benötigen.
@@ -23,7 +23,7 @@ Die rollenbasierte Access Control in Azure (RBAC) ermöglicht eine präzise Zugr
 
 Azure Backup bietet drei integrierte Rollen, um Vorgänge der Sicherungsverwaltung zu steuern. Erfahren Sie mehr über [integrierte Rollen von Azure RBAC](../role-based-access-control/built-in-roles.md).
 
-* [Mitwirkender für Sicherungen](../role-based-access-control/built-in-roles.md#backup-contributor): Diese Rolle verfügt über alle Berechtigungen zum Erstellen und Verwalten von Sicherungen. Mit dieser Rolle können aber keine Recovery Services-Tresore erstellt, und es kann anderen Personen kein Zugriff gewährt werden. Stellen Sie sich diese Rolle als Administrator der Sicherungsverwaltung vor, der alle Vorgänge der Sicherungsverwaltung ausführen kann.
+* [Mitwirkender für Sicherungen](../role-based-access-control/built-in-roles.md#backup-contributor): Diese Rolle verfügt über alle Berechtigungen zum Erstellen und Verwalten von Sicherungen. Mit dieser Rolle können aber keine Recovery Services-Tresore gelöscht werden, und anderen Personen kann kein Zugriff gewährt werden. Stellen Sie sich diese Rolle als Administrator der Sicherungsverwaltung vor, der alle Vorgänge der Sicherungsverwaltung ausführen kann.
 * [Sicherungsoperator](../role-based-access-control/built-in-roles.md#backup-operator): Diese Rolle verfügt über Berechtigungen für alles, was ein Mitwirkender ausführen kann, außer Entfernen von Sicherungen und Verwalten von Sicherungsrichtlinien. Diese Rolle ist gleichbedeutend mit einem Mitwirkenden, es können damit jedoch keine destruktiven Vorgänge ausgeführt werden, z.B. Beenden einer Sicherung mit Löschung von Daten oder Entfernen die Registrierung von lokalen Ressourcen.
 * [Sicherungsleser](../role-based-access-control/built-in-roles.md#backup-reader): Diese Rolle verfügt über Berechtigungen zum Anzeigen aller Vorgänge für die Sicherungsverwaltung. Stellen Sie sich diese Rolle für eine Überwachungsperson vor.
 
@@ -36,7 +36,7 @@ In der folgenden Tabelle sind die Aktionen der Sicherungsverwaltung und die ents
 
 | Verwaltungsvorgang | Minimal erforderliche RBAC-Rolle | Bereich erforderlich |
 | --- | --- | --- |
-| Erstellen eines Recovery Services-Tresors | Mitwirkender | Ressourcengruppe mit dem Tresor |
+| Erstellen eines Recovery Services-Tresors | Mitwirkender für Sicherungen | Ressourcengruppe mit dem Tresor |
 | Aktivieren der Sicherung von virtuellen Azure-Computern | Sicherungsoperator | Ressourcengruppe mit dem Tresor |
 | | Mitwirkender von virtuellen Computern | VM-Ressource |
 | Bedarfsgesteuerte Sicherung eines virtuellen Computers | Sicherungsoperator | Wiederherstellungstresorressource |

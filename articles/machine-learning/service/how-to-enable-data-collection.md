@@ -11,19 +11,19 @@ ms.author: marthalc
 author: marthalc
 ms.date: 12/03/2018
 ms.custom: seodec18
-ms.openlocfilehash: df2f0731aff6c90ef83b26041a9d383ce14974c6
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: f596fb3a066017f0236de5b79586891dd21efb11
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65024242"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67443979"
 ---
 # <a name="collect-data-for-models-in-production"></a>Sammeln von Daten für Modelle in der Produktion
 
 In diesem Artikel erfahren Sie, wie Eingabemodelldaten aus den Azure Machine Learning Services gesammelt werden, die Sie im Azure Kubernetes-Cluster (AKS) in einem Azure-Blobspeicher bereitgestellt haben. 
 
 Nach der Aktivierung ermöglichen Ihnen diese Daten Folgendes:
-* Überwachen von Datenverschiebungen bei der Aufnahme von Produktionsdaten in das Modell
+* [Überwachen von Datenverschiebungen](how-to-monitor-data-drift.md) bei der Aufnahme von Produktionsdaten in das Modell
 
 * Entscheidungsfindung in Bezug auf das erneute Trainieren und Optimieren des Modells
 

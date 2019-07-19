@@ -8,12 +8,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/14/2018
 ms.author: hrasheed
-ms.openlocfilehash: 0acac29ee49bc94c195d0e13e55fff3a735ad36b
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 5fbee86f09246684a0e553114e367907ddabfa16
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65859809"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67445498"
 ---
 # <a name="install-custom-apache-hadoop-applications-on-azure-hdinsight"></a>Installieren von benutzerdefinierten Apache Hadoop-Anwendungen in Azure HDInsight
 
@@ -107,7 +107,7 @@ HDInsight-Anwendungen können auf unterschiedliche Weise gelöscht werden.
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
 2. Klicken Sie im linken Menü auf **HDInsight-Cluster** .  Sollte diese Option nicht angezeigt werden, klicken Sie auf **Durchsuchen** und anschließend auf **HDInsight-Cluster**.
 3. Klicken Sie auf den Cluster, in dem Sie die Anwendung installiert haben.
-4. Klicken Sie auf dem Blatt **Einstellungen** unter der Kategorie **Allgemein** auf **Anwendungen**. Eine Liste mit installierten Anwendungen wird angezeigt. Im Rahmen dieses Tutorials wird **Hue** auf dem Blatt **Installierte Apps** angezeigt.
+4. Klicken Sie auf dem Blatt **Einstellungen** unter der Kategorie **Allgemein** auf **Anwendungen**. Eine Liste mit installierten Anwendungen wird angezeigt. Im Rahmen dieses Artikels wird **Hue** auf dem Blatt **Installierte Apps** angezeigt.
 5. Klicken Sie mit der rechten Maustaste auf die zu entfernende Anwendung, und klicken Sie anschließend auf **Löschen**.
 6. Klicken Sie auf **Ja**, um zu bestätigen.
 

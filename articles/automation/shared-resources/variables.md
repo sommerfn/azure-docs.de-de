@@ -4,17 +4,17 @@ description: Variablenobjekte sind Werte, die allen Runbooks und DSC-Konfigurati
 services: automation
 ms.service: automation
 ms.subservice: shared-capabilities
-author: georgewallace
-ms.author: gwallace
+author: bobbytreed
+ms.author: robreed
 ms.date: 05/14/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 0ac34f1d1e7fc2a967c7608f31f3b943f9380d01
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 39282e816be875e598d7e0599eeb358a79941be7
+ms.sourcegitcommit: f811238c0d732deb1f0892fe7a20a26c993bc4fc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65786195"
+ms.lasthandoff: 06/29/2019
+ms.locfileid: "67478064"
 ---
 # <a name="variable-assets-in-azure-automation"></a>Variable Objekte in Azure Automation
 
@@ -28,7 +28,7 @@ Variablenobjekte sind Werte, die allen Runbooks und DSC-Konfigurationen in Ihrem
 
 Da Automation-Variablen persistent gespeichert werden, bleiben sie auch dann verfügbar, wenn die Ausführung eines Runbooks oder einer DSC-Konfiguration misslingt. Durch dieses Verhalten kann ein Wert von einem Runbook festgelegt und anschließend bei der nächsten Ausführung von einem anderen oder gleichen Runbook bzw. von einer anderen oder der gleichen DSC-Konfiguration verwendet werden.
 
-Beim Erstellen einer Variablen können Sie festlegen, dass diese verschlüsselt gespeichert wird. Verschlüsselte Variablen werden sicher in Azure Automation gespeichert. Ihr Wert kann vom Cmdlet [Get-AzureRmAutomationVariable](/powershell/module/AzureRM.Automation/Get-AzureRmAutomationVariable), das zum Funktionsumfang des Azure PowerShell-Moduls gehört, nicht abgerufen werden. Ein verschlüsselter Wert kann ausschließlich über die Aktivität **Get-AutomationVariable** in einem Runbook oder einer DSC-Konfiguration abgerufen werden.
+Beim Erstellen einer Variablen können Sie festlegen, dass diese verschlüsselt gespeichert wird. Verschlüsselte Variablen werden sicher in Azure Automation gespeichert. Ihr Wert kann vom Cmdlet [Get-AzureRmAutomationVariable](/powershell/module/AzureRM.Automation/Get-AzureRmAutomationVariable), das zum Funktionsumfang des Azure PowerShell-Moduls gehört, nicht abgerufen werden. Ein verschlüsselter Wert kann ausschließlich über die Aktivität **Get-AutomationVariable** in einem Runbook oder einer DSC-Konfiguration abgerufen werden. Wenn Sie eine verschlüsselte Variable in „nicht verschlüsselt“ ändern möchten, müssen Sie sie löschen und unverschlüsselt neu erstellen.
 
 >[!NOTE]
 >Zu den sicheren Objekten in Azure Automation gehören Anmeldeinformationen, Zertifikate, Verbindungen und verschlüsselte Variablen. Diese Objekte werden mithilfe eines eindeutigen Schlüssels verschlüsselt und in Azure Automation gespeichert, der für jedes Automation-Konto generiert wird. Dieser Schlüssel wird in einem systemseitig verwalteten Schlüsseltresor (Key Vault) gespeichert. Vor dem Speichern eines sicheren Objekts wird der Schlüssel aus Key Vault geladen und dann zum Verschlüsseln des Objekts verwendet. Dieser Prozess wird von Azure Automation verwaltet.

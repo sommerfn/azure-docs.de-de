@@ -1,5 +1,5 @@
 ---
-title: REST-API-Anspruchsaustauschvorgänge in Azure Active Directory B2C | Microsoft-Dokumentation
+title: 'REST-API-Anspruchsaustauschvorgänge: Azure Active Directory B2C'
 description: Es wird beschrieben, wie Sie REST-API-Anspruchsaustauschvorgänge in Active Directory B2C benutzerdefinierten Richtlinien hinzufügen.
 services: active-directory-b2c
 author: mmacy
@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 05/20/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: bc0cea765816bfac066b05aca65f668fbce0c8ef
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 0bdef508e12a3b11143149b330da73838b53f860
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66508763"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67439012"
 ---
 # <a name="add-rest-api-claims-exchanges-to-custom-policies-in-azure-active-directory-b2c"></a>Hinzufügen von REST-API-Anspruchsaustauschvorgängen zu benutzerdefinierten Richtlinien in Azure Active Directory B2C
 
@@ -28,7 +28,7 @@ Die Interaktion umfasst einen Anspruchsaustausch von Informationen zwischen den 
 - Kann als Orchestrierungsschritt entworfen werden.
 - Kann eine externe Aktion auslösen. Beispielsweise kann ein Ereignis in einer externen Datenbank protokolliert werden.
 - Kann verwendet werden, um einen Wert abzurufen und diesen anschließend in der Benutzerdatenbank zu speichern.
-- Kann zum Ändern des Ausführungsablaufs verwendet werden. 
+- Kann zum Ändern des Ausführungsablaufs verwendet werden.
 
 Das Szenario, das in diesem Artikel dargestellt ist, umfasst die folgenden Aktionen:
 
@@ -45,9 +45,16 @@ Das Szenario, das in diesem Artikel dargestellt ist, umfasst die folgenden Aktio
 
 In diesem Abschnitt bereiten Sie die Azure-Funktion so vor, dass ein Wert für `email` empfangen und anschließend der Wert für `city` zurückgegeben wird, der von Azure AD B2C als Anspruch verwendet werden kann.
 
-Ändern Sie die von Ihnen erstellte Datei „run.csx“ für die Azure-Funktion so, dass der folgende Code verwendet wird: 
+Ändern Sie die von Ihnen erstellte Datei „run.csx“ für die Azure-Funktion so, dass der folgende Code verwendet wird:
 
-```
+```csharp
+#r "Newtonsoft.Json"
+
+using System.Net;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Primitives;
+using Newtonsoft.Json;
+
 public static async Task<IActionResult> Run(HttpRequest req, ILogger log)
 {
   log.LogInformation("C# HTTP trigger function processed a request.");
@@ -77,9 +84,9 @@ public class ResponseContent
 
 ## <a name="configure-the-claims-exchange"></a>Konfigurieren des Anspruchsaustauschvorgangs
 
-Ein technisches Profil enthält die Konfiguration für den Anspruchsaustauschvorgang. 
+Ein technisches Profil enthält die Konfiguration für den Anspruchsaustauschvorgang.
 
-Öffnen Sie die Datei *TrustFrameworkExtensions.xml*, und fügen Sie im **ClaimsProvider**-Element die folgenden XML-Elemente hinzu.
+Öffnen Sie die Datei *TrustFrameworkExtensions.xml*, und fügen Sie im **ClaimsProvider**-Element das folgende **ClaimsProvider**-XML-Element hinzu.
 
 ```XML
 <ClaimsProvider>
@@ -134,7 +141,7 @@ Fügen Sie der User Journey für die Profilbearbeitung einen Schritt hinzu. Gehe
 ```XML
 <OrchestrationStep Order="6" Type="ClaimsExchange">
   <ClaimsExchanges>
-    <ClaimsExchange Id="GetLoyaltyData" TechnicalProfileReferenceId="AzureFunctions-LookUpLoyaltyWebHook" />
+    <ClaimsExchange Id="GetLoyaltyData" TechnicalProfileReferenceId="AzureFunctions-WebHook" />
   </ClaimsExchanges>
 </OrchestrationStep>
 ```
@@ -188,7 +195,7 @@ Der endgültige XML-Code für die User Journey sollte wie in diesem Beispiel aus
     <!-- Add a step 6 to the user journey before the JWT token is created-->
     <OrchestrationStep Order="6" Type="ClaimsExchange">
       <ClaimsExchanges>
-        <ClaimsExchange Id="GetLoyaltyData" TechnicalProfileReferenceId="AzureFunctions-LookUpLoyaltyWebHook" />
+        <ClaimsExchange Id="GetLoyaltyData" TechnicalProfileReferenceId="AzureFunctions-WebHook" />
       </ClaimsExchanges>
     </OrchestrationStep>
     <OrchestrationStep Order="7" Type="SendClaims" CpimIssuerTechnicalProfileReferenceId="JwtIssuer" />
@@ -204,13 +211,15 @@ Bearbeiten Sie die Datei *ProfileEdit.xml*, und fügen Sie dem **OutputClaims**-
 Nachdem Sie den neuen Anspruch hinzugefügt haben, sieht das technische Profil wie in diesem Beispiel aus:
 
 ```XML
-<DisplayName>PolicyProfile</DisplayName>
-    <Protocol Name="OpenIdConnect" />
-    <OutputClaims>
-      <OutputClaim ClaimTypeReferenceId="objectId" PartnerClaimType="sub"/>
-      <OutputClaim ClaimTypeReferenceId="city" />
-    </OutputClaims>
-    <SubjectNamingInfo ClaimType="sub" />
+<TechnicalProfile Id="PolicyProfile">
+  <DisplayName>PolicyProfile</DisplayName>
+  <Protocol Name="OpenIdConnect" />
+  <OutputClaims>
+    <OutputClaim ClaimTypeReferenceId="objectId" PartnerClaimType="sub"/>
+    <OutputClaim ClaimTypeReferenceId="tenantId" AlwaysUseDefaultValue="true" DefaultValue="{Policy:TenantObjectId}" />
+    <OutputClaim ClaimTypeReferenceId="city" />
+  </OutputClaims>
+  <SubjectNamingInfo ClaimType="sub" />
 </TechnicalProfile>
 ```
 

@@ -12,12 +12,12 @@ ms.author: sstein
 ms.reviewer: sashan,moslake,josack
 manager: craigg
 ms.date: 04/18/2019
-ms.openlocfilehash: 06e61d30f0d4e598c48f190572b8b4343f351043
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 4e4c0a6cd25587b33c06526b57e6acdbebb69c8b
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65762784"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67445629"
 ---
 # <a name="sql-database-resource-limits-for-azure-sql-database-server"></a>SQL-Datenbank-Ressourcenlimits für Azure SQL-Datenbank-Server
 
@@ -44,6 +44,9 @@ Dieser Artikel bietet eine Übersicht über die SQL-Datenbank-Ressourcenlimits f
 > Wenn sich die Anzahl von Datenbanken dem Grenzwert pro SQL-Datenbank-Server nähert, kann Folgendes geschehen:
 > - Höhere Latenz bei der Ausführung von Abfragen, die die Masterdatenbank betreffen.  Dies bezieht sich auch auf die Ansichten der Ressourcennutzungsstatistiken (z. B. sys.resource_stats) ein.
 > - Höhere Latenz bei Verwaltungsvorgängen und dem Rendern von Portalblickpunkten. Dazu gehört auch das Aufzählen von Datenbanken auf dem Server.
+
+### <a name="storage-size"></a>Speichergröße
+- Informationen zu den Grenzwerten bei der Speichergröße pro Tarif für Ressourcen von Einzeldatenbanken finden Sie unter [DTU-basierte Ressourceneinschränkungen](sql-database-dtu-resource-limits-single-databases.md) und [V-Kern-basierte Ressourceneinschränkungen](sql-database-vcore-resource-limits-single-databases.md).
 
 ## <a name="what-happens-when-database-resource-limits-are-reached"></a>Was geschieht, wenn die Datenbankressourcen erreicht werden?
 

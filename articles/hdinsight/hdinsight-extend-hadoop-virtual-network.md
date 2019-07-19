@@ -6,13 +6,13 @@ ms.author: hrasheed
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 03/29/2019
-ms.openlocfilehash: f97c07c522dfb22818aca84d41d30c023f564d84
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.date: 06/17/2019
+ms.openlocfilehash: 61a208f3e84125acc2a3cb22d3abccf16587e581
+ms.sourcegitcommit: 5bdd50e769a4d50ccb89e135cfd38b788ade594d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64721319"
+ms.lasthandoff: 07/03/2019
+ms.locfileid: "67543676"
 ---
 # <a name="extend-azure-hdinsight-using-an-azure-virtual-network"></a>Erweitern von Azure HDInsight per Azure Virtual Network
 
@@ -67,9 +67,7 @@ Führen Sie die Schritte in diesem Abschnitt aus, um zu erfahren, wie Sie einen 
 
     Nach dem Verknüpfen kann die Installation von HDInsight im Resource Manager-Netzwerk mit Ressourcen im klassischen Netzwerk interagieren.
 
-2. Verwenden Sie die Tunnelerzwingung? Die Tunnelerzwingung ist eine Subnetzeinstellung, bei der für ausgehenden Internetdatenverkehr der Umweg über ein Gerät zur Untersuchung und Protokollierung erzwungen wird. HDInsight weist keine Unterstützung der Tunnelerzwingung auf. Entfernen Sie entweder die Tunnelerzwingung, bevor Sie HDInsight in einem vorhandenen Subnetz bereitstellen, oder erstellen Sie ein neues Subnetz ohne Tunnelerzwingung für HDInsight.
-
-3. Verwenden Sie Netzwerksicherheitsgruppen, benutzerdefinierte Routen oder virtuelle Network Appliances, um Datenverkehr einzuschränken, der in das bzw. aus dem virtuellen Netzwerk fließt?
+2. Verwenden Sie Netzwerksicherheitsgruppen, benutzerdefinierte Routen oder virtuelle Network Appliances, um Datenverkehr einzuschränken, der in das bzw. aus dem virtuellen Netzwerk fließt?
 
     Als verwalteter Dienst ist für HDInsight der uneingeschränkte Zugriff auf mehrere IP-Adressen im Azure-Rechenzentrum erforderlich. Aktualisieren Sie alle vorhandenen Netzwerksicherheitsgruppen oder benutzerdefinierten Routen, um die Kommunikation mit diesen IP-Adressen zuzulassen.
     
@@ -108,7 +106,7 @@ Führen Sie die Schritte in diesem Abschnitt aus, um zu erfahren, wie Sie einen 
 
         Weitere Informationen finden Sie im Dokument [Problembehandlung bei Routen](../virtual-network/diagnose-network-routing-problem.md).
 
-4. Erstellen Sie einen HDInsight-Cluster, und wählen Sie während der Konfiguration die virtuelle Azure-Netzwerk-Instanz aus. Den Vorgang zur Clustererstellung können Sie anhand der Schritte in den folgenden Dokumenten nachvollziehen:
+3. Erstellen Sie einen HDInsight-Cluster, und wählen Sie während der Konfiguration die virtuelle Azure-Netzwerk-Instanz aus. Den Vorgang zur Clustererstellung können Sie anhand der Schritte in den folgenden Dokumenten nachvollziehen:
 
     * [Erstellen von Linux-basierten Clustern in HDInsight mithilfe des Azure-Portals](hdinsight-hadoop-create-linux-clusters-portal.md)
     * [Erstellen von Linux-basierten Clustern in HDInsight mit Azure PowerShell](hdinsight-hadoop-create-linux-clusters-azure-powershell.md)
@@ -211,101 +209,98 @@ Verwenden Sie die folgenden Schritte, um über das virtuelle Netzwerk eine Verbi
 
 ## <a id="networktraffic"></a>Steuern des Netzwerkdatenverkehrs
 
+### <a name="techniques-for-controlling-inbound-and-outbound-traffic-to-hdinsight-clusters"></a>Verfahren zum Steuern von ein- und ausgehendem Datenverkehr für HDInsight-Cluster
+
 Sie können den Netzwerkdatenverkehr in einem Azure Virtual Network mit den folgenden Methoden steuern:
 
 * Mit **Netzwerksicherheitsgruppen** (NSGs) können Sie ein- und ausgehenden Datenverkehr für das Netzwerk filtern. Weitere Informationen finden Sie im Dokument [Filtern des Netzwerkdatenverkehrs mit Netzwerksicherheitsgruppen](../virtual-network/security-overview.md).
 
-    > [!WARNING]  
-    > HDInsight unterstützt keine Einschränkung des ausgehenden Datenverkehrs. Der gesamte ausgehende Datenverkehr sollte zugelassen werden.
+* **Virtuelle Netzwerkgeräte** (Network Virtual Appliances, NVAs) können nur mit ausgehendem Datenverkehr verwendet werden. Mit virtuellen Netzwerkgeräten wird die Funktionalität von Geräten, z. B. Firewalls und Routern, repliziert.  Weitere Informationen finden Sie im Dokument [Network Appliances](https://azure.microsoft.com/solutions/network-appliances).
 
-* **Benutzerdefinierte Routen** (UDR) definieren, wie Datenverkehr zwischen Ressourcen im Netzwerk fließt. Weitere Informationen finden Sie im Dokument [Benutzerdefinierte Routen und IP-Weiterleitung](../virtual-network/virtual-networks-udr-overview.md).
+Als verwalteter Dienst benötigt HDInsight uneingeschränkten Zugriff auf die HDInsight-Integritäts- und -Verwaltungsdienste für eingehenden und ausgehenden Datenverkehr aus dem VNET. Beim Verwenden von NSGs und müssen Sie sicherstellen, dass diese Dienste weiterhin mit dem HDInsight-Cluster kommunizieren können.
 
-* **Virtuelle Netzwerkgeräte** replizieren die Funktionalität von Geräten, z.B. Firewalls und Routern. Weitere Informationen finden Sie im Dokument [Network Appliances](https://azure.microsoft.com/solutions/network-appliances).
+![Diagramm der HDInsight-Entitäten, erstellt in einem benutzerdefinierten virtuellen Azure-Netzwerk](./media/hdinsight-virtual-network-architecture/vnet-diagram.png)
 
-Als verwalteter Dienst benötigt HDInsight uneingeschränkten Zugriff auf die HDInsight-Integritäts- und -Verwaltungsdienste für eingehenden und ausgehenden Datenverkehr aus dem VNET. Beim Verwenden von NSGs und UDRs müssen Sie sicherstellen, dass diese Dienste weiterhin mit dem HDInsight-Cluster kommunizieren können.
+### <a name="hdinsight-with-network-security-groups"></a>HDInsight mit Netzwerksicherheitsgruppen
 
-### <a id="hdinsight-ip"></a>HDInsight mit Netzwerksicherheitsgruppen und benutzerdefinierten Routen
-
-Wenn Sie planen, **Netzwerksicherheitsgruppen** oder **benutzerdefinierte Routen** zum Steuern des Netzwerkdatenverkehrs zu verwenden, sollten Sie vor dem Installieren von HDInsight die folgenden Aktionen durchführen:
+Wenn Sie planen, **Netzwerksicherheitsgruppen** zum Steuern des Netzwerkdatenverkehrs zu verwenden, sollten Sie vor dem Installieren von HDInsight die folgenden Aktionen durchführen:
 
 1. Identifizieren Sie die Azure-Region, die Sie für HDInsight verwenden möchten.
 
 2. Identifizieren Sie die IP-Adressen, die für HDInsight erforderlich sind. Weitere Informationen finden Sie im Abschnitt [Für HDInsight erforderliche IP-Adressen](#hdinsight-ip).
 
-3. Erstellen oder ändern Sie die Netzwerksicherheitsgruppen oder benutzerdefinierten Routen für das Subnetz, in dem Sie HDInsight installieren möchten.
+3. Erstellen oder ändern Sie die Netzwerksicherheitsgruppen für das Subnetz, in dem Sie HDInsight installieren möchten.
 
-    * __Netzwerksicherheitsgruppen__: Lassen Sie __eingehenden__ Datenverkehr über Port __443__ für die IP-Adressen zu. Dadurch wird sichergestellt, dass HDInsight-Verwaltungsdienste den Cluster außerhalb des VNET erreichen können.
-    * __Benutzerdefinierte Routen:__ Wenn Sie benutzerdefinierte Routen verwenden möchten, erstellen Sie eine Route zu jeder IP-Adresse, und legen Sie __Typ des nächsten Hops__ auf __Internet__ fest. Sie sollten auch jeglichen anderen ausgehenden Datenverkehr vom VNET ohne Einschränkung zulassen. Beispielsweise können Sie sämtlichen weiteren Datenverkehr zu Überwachungszwecken an Ihre Azure Firewall-Instanz oder Ihre (in Azure gehostete) virtuelle Netzwerkappliance weiterleiten, der ausgehende Datenverkehr sollte jedoch nicht blockiert werden.
+    * __Netzwerksicherheitsgruppen__: Lassen Sie __eingehenden__ Datenverkehr über Port __443__ für die IP-Adressen zu. Dadurch wird sichergestellt, dass HDInsight-Verwaltungsdienste den Cluster außerhalb des virtuellen Netzwerks erreichen können.
 
-Weitere Informationen zu Netzwerksicherheitsgruppen oder benutzerdefinierten Routen finden Sie in der folgenden Dokumentation:
+Weitere Informationen zu Netzwerksicherheitsgruppen finden Sie in der [Übersicht über Netzwerksicherheitsgruppen](../virtual-network/security-overview.md).
 
-* [Netzwerksicherheitsgruppe](../virtual-network/security-overview.md)
+### <a name="controlling-outbound-traffic-from-hdinsight-clusters"></a>Steuern des ausgehenden Datenverkehrs der HDInsight-Cluster
 
-* [Benutzerdefinierte Routen](../virtual-network/virtual-networks-udr-overview.md)
+Weitere Informationen zum Steuern des ausgehenden Datenverkehrs von HDInsight-Clustern finden Sie unter [Konfigurieren von Einschränkungen des ausgehenden Netzwerkdatenverkehrs für Azure HDInsight-Cluster (Vorschau)](hdinsight-restrict-outbound-traffic.md).
 
 #### <a name="forced-tunneling-to-on-premise"></a>Tunnelerzwingung für lokale Netzwerke
 
-Die Tunnelerzwingung ist eine benutzerdefinierte Routingkonfiguration, bei der für den gesamten Datenverkehr eines Subnetzes die Weiterleitung in ein bestimmtes Netzwerk bzw. an einen bestimmten Standort erzwungen wird, z.B. Ihr lokales Netzwerk. HDInsight bietet __keine__ Unterstützung für die Tunnelerzwingung für die lokalen Netzwerke. Wenn Sie Azure Firewall oder eine in Azure gehostete virtuelle Netzwerkappliance verwenden, können Sie benutzerdefinierte Routen verwenden, um den Datenverkehr zu Überwachungszwecken an die Firewall bzw. Appliance weiterzuleiten und den gesamten ausgehenden Datenverkehr zuzulassen.
+Die Tunnelerzwingung ist eine benutzerdefinierte Routingkonfiguration, bei der für den gesamten Datenverkehr eines Subnetzes die Weiterleitung in ein bestimmtes Netzwerk bzw. an einen bestimmten Standort erzwungen wird, z.B. Ihr lokales Netzwerk. HDInsight bietet __keine__ Unterstützung für die Tunnelerzwingung bei Datenverkehr zu lokalen Netzwerken. 
 
 ## <a id="hdinsight-ip"></a>Erforderliche IP-Adressen
 
-> [!IMPORTANT]  
-> Die Azure-Integritäts- und Verwaltungsdienste müssen mit HDInsight kommunizieren können. Wenn Sie Netzwerksicherheitsgruppen oder benutzerdefinierte Routen verwenden, erlauben Sie Datenverkehr von den IP-Adressen für diese Dienste, HDInsight zu erreichen.
->
+Wenn Sie Netzwerksicherheitsgruppen oder benutzerdefinierte Routen zum Steuern von Datenverkehr verwenden, müssen Sie Datenverkehr von den IP-Adressen für Azure-Integritäts- und -Verwaltungsdienste zulassen, damit sie mit Ihrem HDInsight-Cluster kommunizieren können. Einige der IP-Adressen sind regionsspezifisch, und einige davon gelten für alle Azure-Regionen. Unter Umständen müssen Sie auch Datenverkehr über den Azure DNS-Dienst zulassen, wenn Sie kein benutzerdefiniertes DNS verwenden. Sie müssen auch Datenverkehr zwischen VMs innerhalb des Subnetzes zulassen. Ermitteln Sie anhand der folgenden Schritte die IP-Adressen, die zugelassen werden müssen:
+
+> [!Note]  
 > Wenn Sie zum Steuern des Datenverkehrs keine Netzwerksicherheitsgruppen oder benutzerdefinierte Routen verwenden, können Sie diesen Abschnitt ignorieren.
 
-Wenn Sie Netzwerksicherheitsgruppen verwenden, müssen Sie Datenverkehr von den Integritäts- und Verwaltungsdiensten von Azure zu HDInsight-Clustern an Port 443 zulassen. Sie müssen auch Datenverkehr zwischen VMs innerhalb des Subnetzes zulassen. Ermitteln Sie anhand der folgenden Schritte die IP-Adressen, die zugelassen werden müssen:
+1. Wenn Sie den von Azure bereitgestellten DNS-Dienst verwenden, müssen Sie den Zugriff von __168.63.129.16__ an Port 53 zulassen. Weitere Informationen finden Sie im Dokument [Namensauflösung für virtuelle Computer und Rolleninstanzen](../virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances.md). Überspringen Sie diesen Schritt, wenn Sie das benutzerdefinierte DNS verwenden.
 
-1. Datenverkehr von den folgenden IP-Adressen muss immer zugelassen werden:
+2. Lassen Sie Datenverkehr von den folgenden IP-Adressen für Azure-Integritäts- und -Verwaltungsdienste zu, die für alle Azure-Regionen gelten:
 
-    | Quell-IP-Adresse | Zielport | Direction |
+    | Quell-IP-Adresse | Ziel  | Direction |
     | ---- | ----- | ----- |
-    | 168.61.49.99 | 443 | Eingehend |
-    | 23.99.5.239 | 443 | Eingehend |
-    | 168.61.48.131 | 443 | Eingehend |
-    | 138.91.141.162 | 443 | Eingehend |
+    | 168.61.49.99 | \*:443 | Eingehend |
+    | 23.99.5.239 | \*:443 | Eingehend |
+    | 168.61.48.131 | \*:443 | Eingehend |
+    | 138.91.141.162 | \*:443 | Eingehend |
 
-2. Wenn sich Ihr HDInsight-Cluster in einer der folgenden Regionen befindet, müssen Sie Datenverkehr von den für die Region aufgeführten IP-Adressen zulassen:
+3. Lassen Sie Datenverkehr von den IP-Adressen zu, die für Azure-Integritäts- und -Verwaltungsdienste in der jeweiligen Region angegeben sind, in der sich Ihre Ressourcen befinden:
 
     > [!IMPORTANT]  
     > Wenn die verwendete Azure-Region nicht aufgeführt ist, verwenden Sie nur die vier IP-Adressen aus Schritt 1.
 
-    | Country | Region | Zulässige Quell-IP-Adressen | Zulässiger Zielport | Direction |
+    | Country | Region | Zulässige Quell-IP-Adressen | Zulässiges Ziel | Direction |
     | ---- | ---- | ---- | ---- | ----- |
-    | Asien | Asien, Osten | 23.102.235.122</br>52.175.38.134 | 443 | Eingehend |
-    | &nbsp; | Asien, Südosten | 13.76.245.160</br>13.76.136.249 | 443 | Eingehend |
-    | Australien | Australien (Osten) | 104.210.84.115</br>13.75.152.195 | 443 | Eingehend |
-    | &nbsp; | Australien, Südosten | 13.77.2.56</br>13.77.2.94 | 443 | Eingehend |
-    | Brasilien | Brasilien Süd | 191.235.84.104</br>191.235.87.113 | 443 | Eingehend |
-    | Kanada | Kanada, Osten | 52.229.127.96</br>52.229.123.172 | 443 | Eingehend |
-    | &nbsp; | Kanada, Mitte | 52.228.37.66</br>52.228.45.222 | 443 | Eingehend |
-    | China | China, Norden | 42.159.96.170</br>139.217.2.219</br></br>42.159.198.178</br>42.159.234.157 | 443 | Eingehend |
-    | &nbsp; | China, Osten | 42.159.198.178</br>42.159.234.157</br></br>42.159.96.170</br>139.217.2.219 | 443 | Eingehend |
-    | &nbsp; | China, Norden 2 | 40.73.37.141</br>40.73.38.172 | 443 | Eingehend |
-    | &nbsp; | China, Osten 2 | 139.217.227.106</br>139.217.228.187 | 443 | Eingehend |
-    | Europa | Nordeuropa | 52.164.210.96</br>13.74.153.132 | 443 | Eingehend |
-    | &nbsp; | Europa, Westen| 52.166.243.90</br>52.174.36.244 | 443 | Eingehend |
-    | Frankreich | Frankreich, Mitte| 20.188.39.64</br>40.89.157.135 | 443 | Eingehend |
-    | Deutschland | Deutschland, Mitte | 51.4.146.68</br>51.4.146.80 | 443 | Eingehend |
-    | &nbsp; | Deutschland, Nordosten | 51.5.150.132</br>51.5.144.101 | 443 | Eingehend |
-    | Indien | Indien, Mitte | 52.172.153.209</br>52.172.152.49 | 443 | Eingehend |
-    | &nbsp; | Indien (Süden) | 104.211.223.67<br/>104.211.216.210 | 443 | Eingehend |
-    | Japan | Japan, Osten | 13.78.125.90</br>13.78.89.60 | 443 | Eingehend |
-    | &nbsp; | Japan, Westen | 40.74.125.69</br>138.91.29.150 | 443 | Eingehend |
-    | Korea | Korea, Mitte | 52.231.39.142</br>52.231.36.209 | 433 | Eingehend |
-    | &nbsp; | Korea, Süden | 52.231.203.16</br>52.231.205.214 | 443 | Eingehend
-    | Vereinigtes Königreich | UK, Westen | 51.141.13.110</br>51.141.7.20 | 443 | Eingehend |
-    | &nbsp; | UK, Süden | 51.140.47.39</br>51.140.52.16 | 443 | Eingehend |
-    | USA | USA (Mitte) | 13.67.223.215</br>40.86.83.253 | 443 | Eingehend |
-    | &nbsp; | USA (Ost) | 13.82.225.233</br>40.71.175.99 | 443 | Eingehend |
-    | &nbsp; | USA Nord Mitte | 157.56.8.38</br>157.55.213.99 | 443 | Eingehend |
-    | &nbsp; | USA, Westen-Mitte | 52.161.23.15</br>52.161.10.167 | 443 | Eingehend |
-    | &nbsp; | USA (Westen) | 13.64.254.98</br>23.101.196.19 | 443 | Eingehend |
-    | &nbsp; | USA, Westen 2 | 52.175.211.210</br>52.175.222.222 | 443 | Eingehend |
+    | Asien | Asien, Osten | 23.102.235.122</br>52.175.38.134 | \*:443 | Eingehend |
+    | &nbsp; | Asien, Südosten | 13.76.245.160</br>13.76.136.249 | \*:443 | Eingehend |
+    | Australien | Australien, Mitte | 20.36.36.33</br>20.36.36.196 | \*:443 | Eingehend |
+    | &nbsp; | Australien (Osten) | 104.210.84.115</br>13.75.152.195 | \*:443 | Eingehend |
+    | &nbsp; | Australien, Südosten | 13.77.2.56</br>13.77.2.94 | \*:443 | Eingehend |
+    | Brasilien | Brasilien Süd | 191.235.84.104</br>191.235.87.113 | \*:443 | Eingehend |
+    | Kanada | Kanada, Osten | 52.229.127.96</br>52.229.123.172 | \*:443 | Eingehend |
+    | &nbsp; | Kanada, Mitte | 52.228.37.66</br>52.228.45.222 |\*: 443 | Eingehend |
+    | China | China, Norden | 42.159.96.170</br>139.217.2.219</br></br>42.159.198.178</br>42.159.234.157 | \*:443 | Eingehend |
+    | &nbsp; | China, Osten | 42.159.198.178</br>42.159.234.157</br></br>42.159.96.170</br>139.217.2.219 | \*:443 | Eingehend |
+    | &nbsp; | China, Norden 2 | 40.73.37.141</br>40.73.38.172 | \*:443 | Eingehend |
+    | &nbsp; | China, Osten 2 | 139.217.227.106</br>139.217.228.187 | \*:443 | Eingehend |
+    | Europa | Nordeuropa | 52.164.210.96</br>13.74.153.132 | \*:443 | Eingehend |
+    | &nbsp; | Europa, Westen| 52.166.243.90</br>52.174.36.244 | \*:443 | Eingehend |
+    | Frankreich | Frankreich, Mitte| 20.188.39.64</br>40.89.157.135 | \*:443 | Eingehend |
+    | Deutschland | Deutschland, Mitte | 51.4.146.68</br>51.4.146.80 | \*:443 | Eingehend |
+    | &nbsp; | Deutschland, Nordosten | 51.5.150.132</br>51.5.144.101 | \*:443 | Eingehend |
+    | Indien | Indien, Mitte | 52.172.153.209</br>52.172.152.49 | \*:443 | Eingehend |
+    | &nbsp; | Indien (Süden) | 104.211.223.67<br/>104.211.216.210 | \*:443 | Eingehend |
+    | Japan | Japan, Osten | 13.78.125.90</br>13.78.89.60 | \*:443 | Eingehend |
+    | &nbsp; | Japan, Westen | 40.74.125.69</br>138.91.29.150 | \*:443 | Eingehend |
+    | Korea | Korea, Mitte | 52.231.39.142</br>52.231.36.209 | \*:443 | Eingehend |
+    | &nbsp; | Korea, Süden | 52.231.203.16</br>52.231.205.214 | \*:443 | Eingehend
+    | Vereinigtes Königreich | UK, Westen | 51.141.13.110</br>51.141.7.20 | \*:443 | Eingehend |
+    | &nbsp; | UK, Süden | 51.140.47.39</br>51.140.52.16 | \*:443 | Eingehend |
+    | USA | USA (Mitte) | 13.89.171.122</br>13.89.171.124 | \*:443 | Eingehend |
+    | &nbsp; | East US | 13.82.225.233</br>40.71.175.99 | \*:443 | Eingehend |
+    | &nbsp; | USA Nord Mitte | 157.56.8.38</br>157.55.213.99 | \*:443 | Eingehend |
+    | &nbsp; | USA, Westen-Mitte | 52.161.23.15</br>52.161.10.167 | \*:443 | Eingehend |
+    | &nbsp; | USA (Westen) | 13.64.254.98</br>23.101.196.19 | \*:443 | Eingehend |
+    | &nbsp; | USA, Westen 2 | 52.175.211.210</br>52.175.222.222 | \*:443 | Eingehend |
 
     Informationen zu den IP-Adressen, die für Azure Government verwendet werden, finden Sie im Dokument [Azure Government Intelligence + Analytics](https://docs.microsoft.com/azure/azure-government/documentation-government-services-intelligenceandanalytics) (Azure Government – Daten und Analyse)
-
-3. Sie müssen auch den Zugriff von __168.63.129.16__ zulassen. Diese Adresse ist der rekursive Resolver von Azure. Weitere Informationen finden Sie im Dokument [Namensauflösung für virtuelle Computer und Rolleninstanzen](../virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances.md).
 
 Weitere Informationen finden Sie im Abschnitt [Steuern des Netzwerkdatenverkehrs](#networktraffic).
 
@@ -329,28 +324,29 @@ Mit der folgenden Resource Manager-Vorlage wird ein virtuelles Netzwerk erstellt
 
 * [Deploy a secured Azure Virtual Network and an HDInsight Hadoop cluster](https://azure.microsoft.com/resources/templates/101-hdinsight-secure-vnet/) (Bereitstellen eines geschützten Azure Virtual Network und eines HDInsight Hadoop-Clusters)
 
-> [!IMPORTANT]  
-> Ändern Sie die IP-Adressen, die in diesem Beispiel verwendet werden, damit sie der von Ihnen verwendeten Azure-Region entsprechen. Sie finden diese Informationen im Abschnitt [HDInsight mit Netzwerksicherheitsgruppen und benutzerdefinierten Routen](#hdinsight-ip).
-
 ### <a name="azure-powershell"></a>Azure PowerShell
 
 Verwenden Sie das folgende PowerShell-Skript, um ein virtuelles Netzwerk zu erstellen, bei dem eingehender Datenverkehr eingeschränkt und Datenverkehr von den IP-Adressen für die Region „Europa, Norden“ zugelassen wird.
 
 > [!IMPORTANT]  
-> Ändern Sie die IP-Adressen, die in diesem Beispiel verwendet werden, damit sie der von Ihnen verwendeten Azure-Region entsprechen. Sie finden diese Informationen im Abschnitt [HDInsight mit Netzwerksicherheitsgruppen und benutzerdefinierten Routen](#hdinsight-ip).
+> Ändern Sie die IP-Adressen, die in diesem Beispiel für `hdirule1` und `hdirule2` verwendet werden, damit sie der von Ihnen genutzten Azure-Region entsprechen. Sie finden diese Informationen im Abschnitt [HDInsight mit Netzwerksicherheitsgruppen und benutzerdefinierten Routen](#hdinsight-ip).
 
 ```powershell
 $vnetName = "Replace with your virtual network name"
 $resourceGroupName = "Replace with the resource group the virtual network is in"
 $subnetName = "Replace with the name of the subnet that you plan to use for HDInsight"
+
 # Get the Virtual Network object
 $vnet = Get-AzVirtualNetwork `
     -Name $vnetName `
     -ResourceGroupName $resourceGroupName
+
 # Get the region the Virtual network is in.
 $location = $vnet.Location
+
 # Get the subnet object
 $subnet = $vnet.Subnets | Where-Object Name -eq $subnetName
+
 # Create a Network Security Group.
 # And add exemptions for the HDInsight health and management services.
 $nsg = New-AzNetworkSecurityGroup `
@@ -423,8 +419,10 @@ $nsg = New-AzNetworkSecurityGroup `
         -Access Allow `
         -Priority 305 `
         -Direction Inbound `
+
 # Set the changes to the security group
 Set-AzNetworkSecurityGroup -NetworkSecurityGroup $nsg
+
 # Apply the NSG to the subnet
 Set-AzVirtualNetworkSubnetConfig `
     -VirtualNetwork $vnet `
@@ -434,14 +432,12 @@ Set-AzVirtualNetworkSubnetConfig `
 $vnet | Set-AzVirtualNetwork
 ```
 
-> [!IMPORTANT]  
-> In diesem Beispiel wird veranschaulicht, wie Sie Regeln hinzufügen, um eingehenden Datenverkehr für die erforderlichen IP-Adressen zuzulassen. Es enthält keine Regel zum Einschränken des Zugriffs in eingehender Richtung von anderen Quellen.
->
-> Im folgenden Beispiel wird veranschaulicht, wie der SSH-Zugriff über das Internet aktiviert wird:
->
-> ```powershell
-> Add-AzNetworkSecurityRuleConfig -Name "SSH" -Description "SSH" -Protocol "*" -SourcePortRange "*" -DestinationPortRange "22" -SourceAddressPrefix "*" -DestinationAddressPrefix "VirtualNetwork" -Access Allow -Priority 306 -Direction Inbound
-> ```
+In diesem Beispiel wird veranschaulicht, wie Sie Regeln hinzufügen, um eingehenden Datenverkehr für die erforderlichen IP-Adressen zuzulassen. Es enthält keine Regel zum Einschränken des Zugriffs in eingehender Richtung von anderen Quellen. Mit dem folgenden Code wird veranschaulicht, wie der SSH-Zugriff über das Internet aktiviert wird:
+
+```powershell
+Get-AzNetworkSecurityGroup -Name hdisecure -ResourceGroupName RESOURCEGROUP |
+Add-AzNetworkSecurityRuleConfig -Name "SSH" -Description "SSH" -Protocol "*" -SourcePortRange "*" -DestinationPortRange "22" -SourceAddressPrefix "*" -DestinationAddressPrefix "VirtualNetwork" -Access Allow -Priority 306 -Direction Inbound
+```
 
 ### <a name="azure-cli"></a>Azure-Befehlszeilenschnittstelle
 
@@ -458,7 +454,7 @@ Verwenden Sie die folgenden Schritte, um ein virtuelles Netzwerk zu erstellen, m
 2. Gehen Sie wie folgt vor, um der neuen Netzwerksicherheitsgruppe Regeln hinzuzufügen, die eingehende Kommunikation auf Port 443 aus dem Azure HDInsight-Integritäts- und Verwaltungsdienst ermöglichen. Ersetzen Sie `RESOURCEGROUP` durch den Namen der Ressourcengruppe, die das virtuelle Azure-Netzwerk enthält.
 
     > [!IMPORTANT]  
-    > Ändern Sie die IP-Adressen, die in diesem Beispiel verwendet werden, damit sie der von Ihnen verwendeten Azure-Region entsprechen. Sie finden diese Informationen im Abschnitt [HDInsight mit Netzwerksicherheitsgruppen und benutzerdefinierten Routen](#hdinsight-ip).
+    > Ändern Sie die IP-Adressen, die in diesem Beispiel für `hdirule1` und `hdirule2` verwendet werden, damit sie der von Ihnen genutzten Azure-Region entsprechen. Sie finden diese Informationen im Abschnitt [HDInsight mit Netzwerksicherheitsgruppen und benutzerdefinierten Routen](#hdinsight-ip).
 
     ```azurecli
     az network nsg rule create -g RESOURCEGROUP --nsg-name hdisecure -n hdirule1 --protocol "*" --source-port-range "*" --destination-port-range "443" --source-address-prefix "52.164.210.96" --destination-address-prefix "VirtualNetwork" --access "Allow" --priority 300 --direction "Inbound"
@@ -472,14 +468,12 @@ Verwenden Sie die folgenden Schritte, um ein virtuelles Netzwerk zu erstellen, m
 3. Verwenden Sie den folgenden Befehl, um den eindeutigen Bezeichner für diese Netzwerksicherheitsgruppe abzurufen:
 
     ```azurecli
-    az network nsg show -g RESOURCEGROUP -n hdisecure --query 'id'
+    az network nsg show -g RESOURCEGROUP -n hdisecure --query "id"
     ```
 
     Dieser Befehl gibt einen Wert zurück, der in etwa wie folgt aussieht:
 
         "/subscriptions/SUBSCRIPTIONID/resourceGroups/RESOURCEGROUP/providers/Microsoft.Network/networkSecurityGroups/hdisecure"
-
-    Schließen Sie die `id` in doppelte Anführungszeichen ein, wenn Sie nicht die erwarteten Ergebnisse erhalten.
 
 4. Verwenden Sie den folgenden Befehl, um die Netzwerksicherheitsgruppe auf ein Subnetz anzuwenden. Ersetzen Sie die Werte `GUID` und `RESOURCEGROUP` durch die Rückgabewerte aus dem vorherigen Schritt. Ersetzen Sie `VNETNAME` und `SUBNETNAME` durch den Namen des zu erstellenden virtuellen Netzwerks bzw. durch den Namen des Subnetzes.
 
@@ -489,14 +483,14 @@ Verwenden Sie die folgenden Schritte, um ein virtuelles Netzwerk zu erstellen, m
 
     Nachdem die Ausführung dieses Befehls abgeschlossen ist, können Sie HDInsight im virtuellen Netzwerk installieren.
 
-> [!IMPORTANT]  
-> Mit diesen Schritten wird nur der Zugriff auf den HDInsight-Integritäts- und -Verwaltungsdienst in der Azure-Cloud ermöglicht. Jeder andere Zugriff auf den HDInsight-Cluster von außerhalb des virtuellen Netzwerks wird blockiert. Wenn Sie den Zugriff von außerhalb des virtuellen Netzwerks ermöglichen möchten, müssen Sie zusätzliche Netzwerksicherheitsgruppen-Regeln hinzufügen.
->
-> Im folgenden Beispiel wird veranschaulicht, wie der SSH-Zugriff über das Internet aktiviert wird:
->
-> ```azurecli
-> az network nsg rule create -g RESOURCEGROUP --nsg-name hdisecure -n hdirule5 --protocol "*" --source-port-range "*" --destination-port-range "22" --source-address-prefix "*" --destination-address-prefix "VirtualNetwork" --access "Allow" --priority 306 --direction "Inbound"
-> ```
+
+Mit diesen Schritten wird nur der Zugriff auf den HDInsight-Integritäts- und -Verwaltungsdienst in der Azure-Cloud ermöglicht. Jeder andere Zugriff auf den HDInsight-Cluster von außerhalb des virtuellen Netzwerks wird blockiert. Wenn Sie den Zugriff von außerhalb des virtuellen Netzwerks ermöglichen möchten, müssen Sie zusätzliche Netzwerksicherheitsgruppen-Regeln hinzufügen.
+
+Mit dem folgenden Code wird veranschaulicht, wie der SSH-Zugriff über das Internet aktiviert wird:
+
+```azurecli
+az network nsg rule create -g RESOURCEGROUP --nsg-name hdisecure -n ssh --protocol "*" --source-port-range "*" --destination-port-range "22" --source-address-prefix "*" --destination-address-prefix "VirtualNetwork" --access "Allow" --priority 306 --direction "Inbound"
+```
 
 ## <a id="example-dns"></a> Beispiel: DNS-Konfiguration
 
@@ -659,7 +653,7 @@ Nach Ausführung dieser Schritte können Sie mit den Ressourcen im virtuellen Ne
 ## <a name="next-steps"></a>Nächste Schritte
 
 * Ein umfassendes Beispiel für die Konfiguration von HDInsight zum Herstellen einer Verbindung mit einem lokalen Netzwerk finden Sie unter [Connect HDInsight to an on-premises network](./connect-on-premises-network.md) (Verbinden von HDInsight mit einem lokalen Netzwerk).
-* Informationen zum Konfigurieren von Apache Hbase-Clustern in virtuellen Azure-Netzwerken finden Sie unter [Erstellen von Apache HBase-Clustern in HDInsight in Azure Virtual Network](hbase/apache-hbase-provision-vnet.md).
+* Informationen zum Konfigurieren von Apache HBase-Clustern in virtuellen Azure-Netzwerken finden Sie unter [Erstellen von Apache HBase-Clustern in HDInsight in Azure Virtual Network](hbase/apache-hbase-provision-vnet.md).
 * Informationen zum Konfigurieren der Apache HBase-Georeplikation finden Sie unter [Einrichten der Apache HBase-Clusterreplikation in virtuellen Azure-Netzwerken](hbase/apache-hbase-replication.md).
 * Weitere Informationen zu virtuellen Azure-Netzwerken finden Sie in der [Übersicht zu virtuellen Azure-Netzwerken](../virtual-network/virtual-networks-overview.md).
 

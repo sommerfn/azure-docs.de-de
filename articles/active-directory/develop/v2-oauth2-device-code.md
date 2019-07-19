@@ -12,17 +12,17 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 04/20/2019
+ms.date: 06/12/2019
 ms.author: ryanwi
 ms.reviewer: hirsin
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 86e875108e0349c0ab08a7217074e2afe23bcacc
-ms.sourcegitcommit: f6c85922b9e70bb83879e52c2aec6307c99a0cac
+ms.openlocfilehash: e92e4d0e296e83b413cfd2a67041a5749c16699e
+ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/11/2019
-ms.locfileid: "65544921"
+ms.lasthandoff: 07/01/2019
+ms.locfileid: "67482228"
 ---
 # <a name="microsoft-identity-platform-and-the-oauth-20-device-code-flow"></a>Microsoft Identity Platform und der OAuth 2.0-Gerätecodeflow
 
@@ -31,9 +31,11 @@ ms.locfileid: "65544921"
 Microsoft Identity Platform unterstützt die [Gerätecodegewährung](https://tools.ietf.org/html/draft-ietf-oauth-device-flow-12), die es Benutzern ermöglicht, sich bei eingabeeingeschränkten Geräten wie einem Smart-TV, IoT-Geräten oder einem Drucker anzumelden.  Um diesen Flow zu ermöglichen, veranlasst das Gerät den Benutzer zum Besuch einer Webseite im Browser auf einem anderen Gerät, um sich anzumelden.  Sobald sich der Benutzer anmeldet, kann das Gerät nach Bedarf Zugriffstoken und Aktualisierungstoken abrufen.  
 
 > [!IMPORTANT]
-> Derzeit wird am Microsoft Identity Platform-Endpunkt nur der Geräteflow für Azure AD-Mandanten, jedoch nicht für persönliche Konten unterstützt.  Dies bedeutet, dass Sie einen Endpunkt als Mandanten einrichten oder den Endpunkt `organizations` verwenden müssen.  
+> Derzeit wird am Microsoft Identity Platform-Endpunkt nur der Geräteflow für Azure AD-Mandanten, jedoch nicht für persönliche Konten unterstützt.  Dies bedeutet, dass Sie einen Endpunkt als Mandanten einrichten oder den Endpunkt `organizations` verwenden müssen.  Diese Unterstützung wird in Kürze aktiviert. 
 >
 > Persönliche Konten, die zu einem Azure AD-Mandanten eingeladen werden, können die Geräteflowgewährung verwenden, aber nur im Kontext des Mandanten.
+>
+> Ein zusätzlicher Hinweis: Das Antwortfeld `verification_uri_complete` ist derzeit nicht vorhanden bzw. wird nicht unterstützt.  
 
 > [!NOTE]
 > Der Microsoft Identity Platform-Endpunkt unterstützt nicht alle Szenarien und Features von Azure Active Directory. Informieren Sie sich über die [Einschränkungen von Microsoft Identity Platform](active-directory-v2-limitations.md), um zu bestimmen, ob Sie den Microsoft Identity Platform-Endpunkt verwenden sollten.
@@ -50,7 +52,7 @@ Der Client muss zuerst den Authentifizierungsserver auf einen Geräte- und Benut
 
 > [!TIP]
 > Führen Sie diese Anforderung in Postman aus.
-> [![Ausführen in Postman](./media/v2-oauth2-auth-code-flow/runInPostman.png)](https://app.getpostman.com/run-collection/f77994d794bab767596d)
+> [![Diese Anforderung in Postman ausführen](./media/v2-oauth2-auth-code-flow/runInPostman.png)](https://app.getpostman.com/run-collection/f77994d794bab767596d)
 
 ```
 // Line breaks are for legibility only.
@@ -66,7 +68,7 @@ scope=user.read%20openid%20profile
 | Parameter | Bedingung | BESCHREIBUNG |
 | --- | --- | --- |
 | `tenant` | Erforderlich |Der Verzeichnismandant, von dem Sie die Berechtigung anfordern möchten. Kann als GUID oder als Anzeigename bereitgestellt werden.  |
-| `client_id` | Erforderlich | Die **Anwendungs-ID (Client-ID)**, die Ihrer App im [Azure-Portal auf der Seite „App-Registrierungen“](https://go.microsoft.com/fwlink/?linkid=2083908) zugewiesen wurde. |
+| `client_id` | Erforderlich | Die **Anwendungs-ID (Client-ID)** , die Ihrer App im [Azure-Portal auf der Seite „App-Registrierungen“](https://go.microsoft.com/fwlink/?linkid=2083908) zugewiesen wurde. |
 | `scope` | Empfohlen | Eine durch Leerzeichen getrennte Liste mit [Bereichen](v2-permissions-and-consent.md) , denen der Benutzer zustimmen soll.  |
 
 ### <a name="device-authorization-response"></a>Geräteautorisierungsantwort
@@ -75,13 +77,12 @@ Eine erfolgreicher Antwort besteht aus einem JSON-Objekt, das die erforderlichen
 
 | Parameter | Format | BESCHREIBUNG |
 | ---              | --- | --- |
-|`device_code`     | Zeichenfolge | Eine lange Zeichenfolge, die zum Verifizieren der Sitzung zwischen dem Client und dem Autorisierungsserver verwendet wird. Der Client fordert über diesen Parameter das Zugriffstoken vom Autorisierungsserver an. |
-|`user_code`       | Zeichenfolge | Eine kurze, für den Benutzer angezeigte Zeichenfolge, mit der die Sitzung auf einem sekundären Gerät identifiziert wird.|
+|`device_code`     | string | Eine lange Zeichenfolge, die zum Verifizieren der Sitzung zwischen dem Client und dem Autorisierungsserver verwendet wird. Der Client fordert über diesen Parameter das Zugriffstoken vom Autorisierungsserver an. |
+|`user_code`       | string | Eine kurze, für den Benutzer angezeigte Zeichenfolge, mit der die Sitzung auf einem sekundären Gerät identifiziert wird.|
 |`verification_uri`| URI | Der URI, den der Benutzer mit dem `user_code` besuchen sollte, um sich anzumelden. |
-|`verification_uri_complete`| URI | Ein URI, der `user_code` und `verification_uri` kombiniert und für Nicht-Text-Übertragungen an den Benutzer verwendet wird (z. B. über Bluetooth an ein Gerät oder über einen QR-Code).  |
 |`expires_in`      | int | Die Anzahl der Sekunden, bevor `device_code` und `user_code` ablaufen. |
 |`interval`        | int | Die Anzahl der Sekunden, die der Client zwischen Abrufanforderungen warten soll. |
-| `message`        | Zeichenfolge | Eine lesbare Zeichenfolge mit Anweisungen für den Benutzer. Diese kann lokalisiert werden, indem ein **Abfrageparameter** in die Anforderung des Formulars `?mkt=xx-XX` aufgenommen und der entsprechende Sprachkulturcode eingetragen wird. |
+| `message`        | string | Eine lesbare Zeichenfolge mit Anweisungen für den Benutzer. Diese kann lokalisiert werden, indem ein **Abfrageparameter** in die Anforderung des Formulars `?mkt=xx-XX` aufgenommen und der entsprechende Sprachkulturcode eingetragen wird. |
 
 ## <a name="authenticating-the-user"></a>Authentifizieren des Benutzers
 
@@ -132,7 +133,7 @@ Eine erfolgreiche Tokenantwort sieht wie folgt aus:
 
 | Parameter | Format | BESCHREIBUNG |
 | --------- | ------ | ----------- |
-| `token_type` | Zeichenfolge| Immer „Bearer. |
+| `token_type` | string| Immer „Bearer. |
 | `scope` | Durch Leerzeichen getrennte Zeichenfolgen | Wenn ein Zugriffstoken zurückgegeben wurde, werden hierdurch die Bereiche aufgeführt, für die das Zugriffstoken gültig ist. |
 | `expires_in`| int | Anzahl der Sekunden, bevor das enthaltene Zugriffstoken gültig ist. |
 | `access_token`| Nicht transparente Zeichenfolge | Ausgestellt für die [Bereiche](v2-permissions-and-consent.md), die angefordert wurden.  |

@@ -11,18 +11,18 @@ ms.subservice: language-understanding
 ms.topic: article
 ms.date: 04/01/2019
 ms.author: diberry
-ms.openlocfilehash: badf351f8336e501b3ee1c035fcb389a570750c0
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: dd8ed146c507d8d39ba99c6573321ee80bc891c9
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65072854"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67442574"
 ---
 # <a name="add-an-entity-to-example-utterances"></a>Hinzufügen einer Entität zu Beispieläußerungen 
 
 Beispieläußerungen sind Textbeispiele für Benutzerfragen oder -befehle. Fügen Sie [Beispieläußerungen](luis-concept-utterance.md) zu einer [Absicht](luis-concept-intent.md) hinzu, um Language Understanding-Apps zu trainieren.
 
-Im Allgemeinen fügen Sie einer Absicht zunächst eine Beispieläußerung hinzu und erstellen dann Entitäten und bezeichnen Äußerungen auf der Seite der Absicht. Wenn Sie zuerst Entitäten erstellen möchten, finden Sie weitere Informationen unter [Hinzufügen von Entitäten](luis-how-to-add-entities.md).
+Im Allgemeinen fügen Sie einer Absicht zunächst eine Beispieläußerung hinzu und erstellen dann Entitäten und bezeichnen Äußerungen auf der Seite **Absichten**. Wenn Sie zuerst Entitäten erstellen möchten, finden Sie weitere Informationen unter [Hinzufügen von Entitäten](luis-how-to-add-entities.md).
 
 ## <a name="marking-entities-in-example-utterances"></a>Markieren von Entitäten in Beispieläußerungen
 
@@ -32,7 +32,7 @@ Bestimmte Entitätstypen, z.B. vordefinierte Entitäten und RegEx-Entitäten, k�
 
 ## <a name="add-a-simple-entity"></a>Hinzufügen einer einfachen Entität
 
-Mit dem folgenden Verfahren erstellen und markieren Sie eine benutzerdefinierte Entität innerhalb der folgenden Äußerung auf der Seite der Absicht:
+Mit dem folgenden Verfahren erstellen und markieren Sie eine benutzerdefinierte Entität innerhalb der folgenden Äußerung auf der Seite **Absichten**:
 
 ```text
 Are there any SQL server jobs?
@@ -65,9 +65,9 @@ Für die Abteilungsliste eines Unternehmens können Sie normalisierte Werte verw
 
     Sie können weitere Listenelemente oder Synonyme hinzufügen, indem Sie Bezeichnungen für andere Äußerungen vergeben oder indem Sie die Entität im linken Bereich unter **Entitäten** bearbeiten. Durch die [Bearbeitung](luis-how-to-add-entities.md#add-list-entities) von Entitäten können Sie zusätzliche Elemente mit entsprechenden Synonymen eingeben oder eine Liste importieren. 
 
-## <a name="add-composite-entity"></a>Zusammengesetzte Entität hinzufügen
+## <a name="add-a-composite-entity"></a>Hinzufügen einer zusammengesetzten Entität
 
-Zusammengesetzte Entitäten werden aus vorhandenen **Entitäten** in einer übergeordneten Entität erstellt. 
+Zusammengesetzte Entitäten werden aus vorhandenen **Entitäten** erstellt, um eine übergeordnete Entität zu erhalten. 
 
 Bei der Äußerung `Does John Smith work in Seattle?` kann eine zusammengesetzte Äußerung Entitätsinformationen zum Mitarbeiternamen `John Smith` und dem Ort `Seattle` in einer zusammengesetzten Entität zurückgeben. Die untergeordneten Entitäten müssen bereits in der App vorhanden sein und in der Beispieläußerung markiert sein, bevor die zusammengesetzte Entität erstellt wird.
 
@@ -131,15 +131,15 @@ Sie können Aktionen für Beispieläußerungen als ausgewählte Gruppe oder als 
 
 ### <a name="remove-entity-labels-from-utterances"></a>Entfernen von Entitätsbeschriftungen aus Äußerungen
 
-Sie können durch maschinelles Lernen erworbene Entitätsbeschriftungen aus einer Äußerung auf der Seite der Absicht entfernen. Wenn die Entität nicht durch maschinelles Lernen erworben wurde, kann sie nicht aus der Äußerung entfernt werden. Wenn Sie eine nicht durch maschinelles Lernen erworbene Entität aus der Äußerung entfernen möchten, müssen Sie die Entität aus der gesamten App löschen. 
+Sie können durch maschinelles Lernen erworbene Entitätsbeschriftungen aus einer Äußerung auf der Seite „Absichten“ entfernen. Wenn die Entität nicht durch maschinelles Lernen erworben wurde, kann sie nicht aus der Äußerung entfernt werden. Wenn Sie eine nicht durch maschinelles Lernen erworbene Entität aus der Äußerung entfernen möchten, müssen Sie die Entität aus der gesamten App löschen. 
 
 Um eine durch maschinelles Lernen erworbene Entität aus einer Äußerung zu entfernen, wählen Sie die Entität in der Äußerung aus. Wählen Sie anschließend im angezeigten Dropdownfeld der Entität die Option **Beschriftung entfernen** aus.
 
-### <a name="add-prebuilt-entity-label"></a>Hinzufügen von vordefinierten Entitätsbeschriftungen
+### <a name="add-a-prebuilt-entity-label"></a>Hinzufügen einer Beschriftung für eine vordefinierte Entität
 
 Wenn Sie Ihrer LUIS-App die vordefinierten Entitäten hinzufügen, müssen Sie die Äußerungen nicht mit diesen Entitäten markieren. Weitere Informationen zu vordefinierten Entitäten und wie Sie sie hinzufügen finden Sie unter [Hinzufügen von Entitäten](luis-how-to-add-entities.md#add-a-prebuilt-entity-to-your-app).
 
-### <a name="add-regular-expression-entity-label"></a>Hinzufügen einer Entitätsbeschriftung vom Typ „Regulärer Ausdruck“
+### <a name="add-a-regular-expression-entity-label"></a>Hinzufügen einer Beschriftung für eine Entität vom Typ „Regulärer Ausdruck“
 
 Wenn Sie Ihrer LUIS-App die Entitäten vom Typ „Regulärer Ausdruck“ hinzufügen, müssen Sie die Äußerungen nicht mit diesen Entitäten markieren. Weitere Informationen zu Entitäten vom Typ „Regulärer Ausdruck“ und wie Sie sie hinzufügen finden Sie unter [Hinzufügen von Entitäten](luis-how-to-add-entities.md#add-regular-expression-entities-for-highly-structured-concepts).
 
@@ -149,7 +149,7 @@ Wenn Sie Ihrer LUIS-App die Entitäten vom Typ „Regulärer Ausdruck“ hinzuf�
 Weitere Informationen finden Sie unter [Hinzufügen eines Musters aus einer vorhandenen Äußerung auf der Seite der Absicht oder der Entität](luis-how-to-model-intent-pattern.md#add-pattern-from-existing-utterance-on-intent-or-entity-page).
 
 
-### <a name="add-patternany-entity"></a>Hinzufügen einer pattern.any-Entität
+### <a name="add-a-patternany-entity"></a>Hinzufügen einer pattern.any-Entität
 
 Wenn Sie die „Pattern.any“-Entitäten zu Ihrer LUIS-App hinzufügen, können Sie die Äußerungen nicht mit diesen Entitäten beschriften. Sie sind nur in Mustern gültig. Weitere Informationen zu „Pattern.any“-Entitäten und wie Sie sie hinzufügen finden Sie unter [Hinzufügen von Entitäten](luis-how-to-add-entities.md#add-patternany-entities-to-capture-free-form-entities).
 
@@ -159,4 +159,4 @@ Nachdem Sie Äußerungen hinzugefügt, bearbeitet oder entfernt haben, [trainier
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Nach dem Beschriften von Äußerungen in Ihren Absichten können Sie jetzt eine [zusammengesetzte Entität](luis-how-to-add-entities.md) erstellen.
+Nach dem Beschriften von Äußerungen in Ihren **Absichten** können Sie jetzt eine [zusammengesetzte Entität](luis-how-to-add-entities.md) erstellen.

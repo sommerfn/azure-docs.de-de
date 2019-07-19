@@ -3,31 +3,31 @@ title: Containerunterstützung
 titleSuffix: Azure Cognitive Services
 description: Erfahren Sie, wie Docker-Container Cognitive Services näher an Ihre Daten bringen können.
 services: cognitive-services
-author: diberry
+author: IEvangelist
 manager: nitinme
 ms.custom: seodec18
 ms.service: cognitive-services
 ms.topic: article
-ms.date: 05/28/2019
-ms.author: diberry
-ms.openlocfilehash: 3d09ee542b98e1c365aceaf86b051d706c7882d4
-ms.sourcegitcommit: 009334a842d08b1c83ee183b5830092e067f4374
+ms.date: 7/5/2019
+ms.author: dapine
+ms.openlocfilehash: d9f226213215f66b53eb1ef248fd47f7b6dfee5a
+ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/29/2019
-ms.locfileid: "66304281"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67705374"
 ---
 # <a name="container-support-in-azure-cognitive-services"></a>Containerunterstützung in Azure Cognitive Services
 
 Dank der Containerunterstützung in Azure Cognitive Services können Entwickler die gleichen umfangreichen APIs verwenden wie in Azure und dabei flexibel entscheiden, wo die mit [Docker-Containern](https://www.docker.com/what-container) verbundenen Dienste bereitgestellt und gehostet werden. Die Containerunterstützung ist derzeit als Vorschauversion für einige Dienste von Azure Cognitive Services verfügbar, einschließlich:
 
-* [Anomalieerkennung](Anomaly-Detector/overview.md)
-* [Maschinelles Sehen](Computer-vision/Home.md)
-* [Gesichtserkennung](Face/Overview.md)
-* [Formularerkennung](https://go.microsoft.com/fwlink/?linkid=2083826&clcid=0x409)
-* [Language Understanding](LUIS/luis-container-howto.md) (LUIS)
-* [Spracherkennungsdienst-API](https://go.microsoft.com/fwlink/?linkid=2083926&clcid=0x409)
-* [Textanalyse](text-analytics/overview.md)
+* [Anomalieerkennung][ad-containers]
+* [Maschinelles Sehen][cv-containers]
+* [Gesichtserkennung][fa-containers]
+* [Formularerkennung][fr-containers]
+* [Language Understanding (LUIS)][lu-containers]
+* [Spracherkennungsdienst-API][sp-containers]
+* [Textanalyse][ta-containers]
 
 <!--
 * [Personalizer](https://go.microsoft.com/fwlink/?linkid=2083923&clcid=0x409)
@@ -48,23 +48,22 @@ Cognitive Services-Ressourcen sind in [Microsoft Azure](https://azure.microsoft.
 - **Portable Architektur:** Ermöglicht die Erstellung einer portablen Anwendungsarchitektur, die in Azure, lokal und am Edge eingesetzt werden kann. Container können direkt für [Azure Kubernetes Service](../aks/index.yml), [Azure Container Instances](../container-instances/index.yml) oder einen [Kubernetes](https://kubernetes.io/)-Cluster mit Bereitstellung in [Azure Stack](/azure-stack/operator) bereitgestellt werden. Weitere Informationen finden Sie unter [Bereitstellen von Kubernetes in Azure Stack](/azure-stack/user/azure-stack-solution-template-kubernetes-deploy).
 - **Hoher Durchsatz/niedrige Latenz:** Bietet Kunden die Möglichkeit, für hohe Durchsatzraten und niedrige Latenzanforderungen zu skalieren, indem Cognitive Services physisch in der Nähe ihrer Anwendungslogik und -daten ausgeführt wird. Container erzwingen keine Obergrenzen für die Transaktionen pro Sekunde (TPS) und können für die zentrale und horizontale Skalierung konfiguriert werden, um bei Bedarf die erforderlichen Hardwareressourcen bereitzustellen. 
 
-
 ## <a name="containers-in-azure-cognitive-services"></a>Container in Azure Cognitive Services
 
 Azure Cognitive Services-Container bieten den folgenden Satz von Docker-Containern, von denen jeder eine Teilmenge der Funktionalität von Diensten in Azure Cognitive Services enthält:
 
 | Dienst | Unterstützter Tarif | Container | BESCHREIBUNG |
 |---------|----------|----------|-------------|
-|[Anomalieerkennung](https://go.microsoft.com/fwlink/?linkid=2083925&clcid=0x409) |F0, S0|**Anomalieerkennung** |Die Anomalieerkennungs-API bietet Ihnen die Möglichkeit, Anomalien in Zeitreihendaten durch maschinelles Lernen zu überwachen und zu erkennen.<br>[Zugriff anfordern](https://aka.ms/adcontainer)|
-|[Maschinelles Sehen](Computer-vision/computer-vision-how-to-install-containers.md) |F0, S1|**Texterkennung** |Extrahiert gedruckten Text in Bildern von verschiedensten Objekten mit unterschiedlichen Oberflächen und Hintergründen, wie z.B. Belege, Poster, und Visitenkarten.<br/><br/>**Wichtig:** Der Texterkennungscontainer funktioniert derzeit nur für Englisch.<br>[Zugriff anfordern](Computer-vision/computer-vision-how-to-install-containers.md#request-access-to-the-private-container-registry)|
-|[Gesichtserkennung](Face/face-how-to-install-containers.md) |F0, S0|**Gesichtserkennung** |Erkennt menschliche Gesichter in Bildern und identifiziert zugehörige Attribute wie Gesichtsmerkmale (z.B. Nasen und Augen), Geschlecht, Alter und andere vom Computer vorhergesagte Gesichtsmerkmale. Zusätzlich zur Erkennung kann die Gesichtserkennung über eine Zuverlässigkeitsbewertung überprüfen, ob zwei Gesichter in einem oder verschiedenen Bildern identisch sind, oder Gesichter mit einer Datenbank vergleichen, um festzustellen, ob ein ähnliches oder identisches Gesicht bereits vorhanden ist. Sie kann auch ähnliche Gesichter in Gruppen mit gemeinsamen Gesichtsmerkmalen organisieren.<br>[Zugriff anfordern](Face/face-how-to-install-containers.md#request-access-to-the-private-container-registry) |
-|[Formularerkennung](https://go.microsoft.com/fwlink/?linkid=2083826&clcid=0x409) |F0, S0|**Formularerkennung** |Die Formularerkennung wendet Technologien des maschinellen Lernens an, um Schlüssel-Wert-Paare und Tabellen in Formularen zu identifizieren und aus diesen zu extrahieren.<br>[Zugriff anfordern](https://aka.ms/FormRecognizerContainerRequestAccess)|
-|[LUIS](LUIS/luis-container-howto.md) |F0, S0|**LUIS** ([Image](https://go.microsoft.com/fwlink/?linkid=2043204&clcid=0x409))|Lädt Ihr trainiertes oder veröffentlichtes Language Understanding-Modell (auch als LUIS-App bezeichnet) in einen Docker-Container und ermöglicht den Zugriff auf die Abfragevorhersagen von den API-Endpunkten des Containers. Sie können Abfrageprotokolle vom Container erfassen und wieder in das [LUIS-Portal](https://www.luis.ai) hochladen, um die Vorhersagegenauigkeit der App zu verbessern.|
-|[Spracherkennungsdienst-API](https://go.microsoft.com/fwlink/?linkid=2083926&clcid=0x409) |F0, S0|**Spracherkennung** |Wandelt fortlaufende Sprache in Echtzeit in Text um.<br>[Zugriff anfordern](https://aka.ms/speechcontainerspreview/)|
-|[Spracherkennungsdienst-API](https://go.microsoft.com/fwlink/?linkid=2083926&clcid=0x409) |F0, S0|**Sprachsynthese** |Konvertiert Text in natürlich klingende Sprache.<br>[Zugriff anfordern](https://aka.ms/speechcontainerspreview/)|
-|[Textanalyse](text-analytics/how-tos/text-analytics-how-to-install-containers.md) |F0, S|**Schlüsselbegriffserkennung** ([Bild](https://go.microsoft.com/fwlink/?linkid=2018757&clcid=0x409)) |Extrahiert die Schlüsselbegriffe, um die wichtigsten Punkte zu ermitteln. Wenn der eingegebene Text beispielsweise „Das Essen war köstlich, und es gab hervorragendes Personal“ lautet, gibt die API die Kernpunkte „Essen“ und „hervorragendes Personal“ zurück. |
-|[Textanalyse](text-analytics/how-tos/text-analytics-how-to-install-containers.md)|F0, S|**Sprachenerkennung** ([Bild](https://go.microsoft.com/fwlink/?linkid=2018759&clcid=0x409)) |Erkennt die Sprache von Eingabetexten für bis zu 120 Sprachen und meldet einen einzigen Sprachcode für jedes Dokument, das auf Anforderung gesendet wird. Der Sprachcode ist mit einem Wert kombiniert, der die Stärke der Bewertung angibt. |
-|[Textanalyse](text-analytics/how-tos/text-analytics-how-to-install-containers.md)|F0, S|**Standpunktanalyse** ([Bild](https://go.microsoft.com/fwlink/?linkid=2018654&clcid=0x409)) |Analysiert unformatierten Text auf Hinweise auf positive oder negative Stimmungen. Die API gibt für jedes Dokument eine Bewertung des Standpunkts zwischen 0 und 1 zurück. Hierbei entspricht 1 einer positiven Bewertung. Die Analysemodelle sind mithilfe großer Textmengen und Microsoft-Technologien für natürliche Sprache vortrainiert. Für [ausgewählte Sprachen](./text-analytics/language-support.md) kann die API jeden bereitgestellten unformatierten Text analysieren und bewerten und der aufrufenden Anwendung direkt Ergebnisse zurückgeben. |
+|[Anomalieerkennung][ad-containers] |F0, S0|**Anomalieerkennung** |Die Anomalieerkennungs-API bietet Ihnen die Möglichkeit, Anomalien in Zeitreihendaten durch maschinelles Lernen zu überwachen und zu erkennen.<br>[Zugriff anfordern](https://aka.ms/adcontainer)|
+|[Maschinelles Sehen][cv-containers] |F0, S1|**Texterkennung** |Extrahiert gedruckten Text in Bildern von verschiedensten Objekten mit unterschiedlichen Oberflächen und Hintergründen, wie z.B. Belege, Poster, und Visitenkarten.<br/><br/>**Wichtig:** Der Texterkennungscontainer funktioniert derzeit nur für Englisch.<br>[Zugriff anfordern](Computer-vision/computer-vision-how-to-install-containers.md#request-access-to-the-private-container-registry)|
+|[Gesichtserkennung][fa-containers] |F0, S0|**Gesichtserkennung** |Erkennt menschliche Gesichter in Bildern und identifiziert zugehörige Attribute wie Gesichtsmerkmale (z.B. Nasen und Augen), Geschlecht, Alter und andere vom Computer vorhergesagte Gesichtsmerkmale. Zusätzlich zur Erkennung kann die Gesichtserkennung über eine Zuverlässigkeitsbewertung überprüfen, ob zwei Gesichter in einem oder verschiedenen Bildern identisch sind, oder Gesichter mit einer Datenbank vergleichen, um festzustellen, ob ein ähnliches oder identisches Gesicht bereits vorhanden ist. Sie kann auch ähnliche Gesichter in Gruppen mit gemeinsamen Gesichtsmerkmalen organisieren.<br>[Zugriff anfordern](Face/face-how-to-install-containers.md#request-access-to-the-private-container-registry) |
+|[Formularerkennung][fr-containers] |F0, S0|**Formularerkennung** |Die Formularerkennung wendet Technologien des maschinellen Lernens an, um Schlüssel-Wert-Paare und Tabellen in Formularen zu identifizieren und aus diesen zu extrahieren.<br>[Zugriff anfordern](https://aka.ms/FormRecognizerContainerRequestAccess)|
+|[LUIS][lu-containers] |F0, S0|**LUIS** ([Image](https://go.microsoft.com/fwlink/?linkid=2043204&clcid=0x409))|Lädt Ihr trainiertes oder veröffentlichtes Language Understanding-Modell (auch als LUIS-App bezeichnet) in einen Docker-Container und ermöglicht den Zugriff auf die Abfragevorhersagen von den API-Endpunkten des Containers. Sie können Abfrageprotokolle vom Container erfassen und wieder in das [LUIS-Portal](https://www.luis.ai) hochladen, um die Vorhersagegenauigkeit der App zu verbessern.|
+|[Spracherkennungsdienst-API][sp-containers] |F0, S0|**Spracherkennung** |Wandelt fortlaufende Sprache in Echtzeit in Text um.<br>[Zugriff anfordern](https://aka.ms/speechcontainerspreview/)|
+|[Spracherkennungsdienst-API][sp-containers] |F0, S0|**Sprachsynthese** |Konvertiert Text in natürlich klingende Sprache.<br>[Zugriff anfordern](https://aka.ms/speechcontainerspreview/)|
+|[Textanalyse][ta-containers] |F0, S|**Schlüsselbegriffserkennung** ([Bild](https://go.microsoft.com/fwlink/?linkid=2018757&clcid=0x409)) |Extrahiert die Schlüsselbegriffe, um die wichtigsten Punkte zu ermitteln. Wenn der eingegebene Text beispielsweise „Das Essen war köstlich, und es gab hervorragendes Personal“ lautet, gibt die API die Kernpunkte „Essen“ und „hervorragendes Personal“ zurück. |
+|[Textanalyse][ta-containers]|F0, S|**Sprachenerkennung** ([Bild](https://go.microsoft.com/fwlink/?linkid=2018759&clcid=0x409)) |Erkennt die Sprache von Eingabetexten für bis zu 120 Sprachen und meldet einen einzigen Sprachcode für jedes Dokument, das auf Anforderung gesendet wird. Der Sprachcode ist mit einem Wert kombiniert, der die Stärke der Bewertung angibt. |
+|[Textanalyse][ta-containers]|F0, S|**Standpunktanalyse** ([Bild](https://go.microsoft.com/fwlink/?linkid=2018654&clcid=0x409)) |Analysiert unformatierten Text auf Hinweise auf positive oder negative Stimmungen. Die API gibt für jedes Dokument eine Bewertung des Standpunkts zwischen 0 und 1 zurück. Hierbei entspricht 1 einer positiven Bewertung. Die Analysemodelle sind mithilfe großer Textmengen und Microsoft-Technologien für natürliche Sprache vortrainiert. Für [ausgewählte Sprachen](./text-analytics/language-support.md) kann die API jeden bereitgestellten unformatierten Text analysieren und bewerten und der aufrufenden Anwendung direkt Ergebnisse zurückgeben. |
 
 <!--
 |[Personalizer](https://go.microsoft.com/fwlink/?linkid=2083923&clcid=0x409) |F0, S0|**Personalizer** ([image](https://go.microsoft.com/fwlink/?linkid=2083928&clcid=0x409))|Azure Personalizer is a cloud-based API service that allows you to choose the best experience to show to your users, learning from their real-time behavior.|
@@ -82,12 +81,14 @@ Darüber hinaus werden einige Container für Ressourcenschlüssel im [**All-In-O
 Azure Cognitive Services-Container sind über Ihr Azure-Abonnement öffentlich zugänglich, und Docker-Containerimages können entweder aus der Microsoft Container Registry oder dem Docker-Hub abgerufen werden. Verwenden Sie den Befehl [docker pull](https://docs.docker.com/engine/reference/commandline/pull/), um ein Containerimage aus dem entsprechenden Repository herunterzuladen.
 
 > [!IMPORTANT]
-> Derzeit müssen Sie einen Anmeldeprozess abschließen, um auf die folgenden Container zuzugreifen, in denen Sie einen Fragebogen mit Fragen zu Ihnen, Ihrem Unternehmen und dem Anwendungsfall, für den Sie die Container implementieren möchten, ausfüllen und einreichen. Sobald Sie Zugriff und Zugangsdaten erhalten haben, können Sie die Containerimages für die Container „Gesichtserkennung“ und „Texterkennung“ aus einer privaten Containerregistrierung abrufen, die von Azure Container Registry gehostet wird.
+> Derzeit müssen Sie einen Anmeldeprozess abschließen, um auf die folgenden Container zuzugreifen, in denen Sie einen Fragebogen mit Fragen zu Ihnen, Ihrem Unternehmen und dem Anwendungsfall, für den Sie die Container implementieren möchten, ausfüllen und einreichen. Sobald Sie Zugriff und Zugangsdaten erhalten haben, können Sie die Containerimages aus einer privaten Containerregistrierung abrufen, die von Azure Container Registry gehostet wird.
 > * [Anomalieerkennung](Anomaly-Detector/anomaly-detector-container-howto.md#request-access-to-the-container-registry)
 > * [Gesichtserkennung](Face/face-how-to-install-containers.md)
 > * [Formularerkennung](form-recognizer/form-recognizer-container-howto.md#request-access-to-the-container-registry)
 > * [Texterkennung](Computer-vision/computer-vision-how-to-install-containers.md)
 > * [Spracherkennung und Sprachsynthese](Speech-Service/speech-container-howto.md#request-access-to-the-container-registry)
+
+[!INCLUDE [Container repositories and images](containers/includes/cognitive-services-container-images.md)]
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -107,15 +108,26 @@ Einzelne Container können auch ihre eigenen Anforderungen haben, wie z.B. Anfor
 
 ## <a name="next-steps"></a>Nächste Schritte
 
+Erfahren Sie mehr zu [Containeranleitungen](containers/container-reuse-recipe.md), die Sie mit Cognitive Services verwenden können.
+
 Installieren und erkunden Sie die Funktionalität der Container in Azure Cognitive Services:
 
-* [Container für die Anomalieerkennung](Anomaly-Detector/anomaly-detector-container-howto.md)
-* [Container für maschinelles Sehen](Computer-vision/computer-vision-how-to-install-containers.md)
-* [Container für die Gesichtserkennung](Face/face-how-to-install-containers.md)
-* [Container für die Formularerkennung](https://go.microsoft.com/fwlink/?linkid=2083826&clcid=0x409)
-* [Container für Language Understanding (LUIS)](LUIS/luis-container-howto.md)
-* [Container für die Speech Services-API](https://go.microsoft.com/fwlink/?linkid=2083926&clcid=0x409)
-* [Container für die Textanalyse](text-analytics/how-tos/text-analytics-how-to-install-containers.md)
+* [Container für die Anomalieerkennung][ad-containers]
+* [Container für maschinelles Sehen][cv-containers]
+* [Container für die Gesichtserkennung][fa-containers]
+* [Container für die Formularerkennung][fr-containers]
+* [Container für Language Understanding (LUIS)][lu-containers]
+* [Container für die Speech Services-API][sp-containers]
+* [Container für die Textanalyse][ta-containers]
 
 <!--* [Personalizer containers](https://go.microsoft.com/fwlink/?linkid=2083928&clcid=0x409)
 -->
+
+
+[ad-containers]: anomaly-Detector/anomaly-detector-container-howto.md
+[cv-containers]: computer-vision/computer-vision-how-to-install-containers.md
+[fa-containers]: face/face-how-to-install-containers.md
+[fr-containers]: form-recognizer/form-recognizer-container-howto.md
+[lu-containers]: luis/luis-container-howto.md
+[sp-containers]: speech-service/speech-container-howto.md
+[ta-containers]: text-analytics/how-tos/text-analytics-how-to-install-containers.md

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 03/25/2019
 ms.author: genli
-ms.openlocfilehash: 116748d7887ebf2ad821e3159c7c1bdcc2428121
-ms.sourcegitcommit: 1289f956f897786090166982a8b66f708c9deea1
+ms.openlocfilehash: e60188496e060eeea14fc7b7f1cc9a662551b286
+ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/17/2019
-ms.locfileid: "64684753"
+ms.lasthandoff: 07/01/2019
+ms.locfileid: "67485170"
 ---
 # <a name="bitlocker-boot-errors-on-an-azure-vm"></a>BitLocker-Startfehler auf einer Azure-VM
 
@@ -48,7 +48,7 @@ Um dieses Problem zu beheben, beenden Sie die VM, heben ihre Zuordnung auf und s
 Wenn das Problem mit dieser Methode nicht behoben wird, gehen Sie folgendermaßen vor, um die BEK-Datei manuell wiederherzustellen:
 
 1. Erstellen Sie eine Momentaufnahme des Systemdatenträgers des betroffenen virtuellen Computers als Sicherung. Weitere Informationen finden Sie unter [Erstellen einer Momentaufnahme eines Datenträgers](../windows/snapshot-copy-managed-disk.md).
-2. [Fügen Sie den Systemdatenträger an eine Wiederherstellungs-VM an](troubleshoot-recovery-disks-portal-windows.md), die durch BitLocker verschlüsselt ist. Dies ist erforderlich, um den Befehl [manage-bde](https://docs.microsoft.com/windows-server/administration/windows-commands/manage-bde) auszuführen, der nur auf mit BitLocker verschlüsselten VMs verfügbar ist.
+2. [Fügen Sie den Systemdatenträger an einen virtuellen Wiederherstellungscomputer an.](troubleshoot-recovery-disks-portal-windows.md) Zum Ausführen des Befehls [manage-bde](https://docs.microsoft.com/windows-server/administration/windows-commands/manage-bde) in Schritt 7 muss das Feature **BitLocker Drive Encryption** auf der Wiederherstellungs-VM aktiviert werden.
 
     Wenn Sie einen verwalteten Datenträger anfügen, wird möglicherweise eine Fehlermeldung darüber angezeigt, dass Verschlüsselungseinstellungen enthalten sind und er daher nicht als Datenträger für Daten verwendet werden kann. Führen Sie in diesem Fall das folgende Skript aus, um das Anfügen des Datenträgers erneut zu versuchen:
 
@@ -106,7 +106,7 @@ Wenn das Problem mit dieser Methode nicht behoben wird, gehen Sie folgendermaße
 
     Wenn **Inhaltstyp** den Wert **Wrapped BEK** (Umschlossene BEK-Datei) aufweist, wechseln Sie zu den [Schlüsselverschlüsselungsschlüssel-Szenarien (KEK)](#key-encryption-key-scenario).
 
-    Nun, da Ihnen der Name der BEK-Datei für das Laufwerk bekannt ist, müssen Sie die Datei „secret-file-name.BEK“ erstellen, um das Laufwerk zu entsperren. 
+    Nun, da Ihnen der Name der BEK-Datei für das Laufwerk bekannt ist, müssen Sie die Datei „secret-file-name.BEK“ erstellen, um das Laufwerk zu entsperren.
 
 6.  Laden Sie die BEK-Datei auf den Wiederherstellungsdatenträger herunter. Im folgenden Beispiel wird die BEK-Datei im Ordner „C:\BEK“ gespeichert. Stellen Sie sicher, dass der Pfad `C:\BEK\` vorhanden ist, bevor Sie die Skripts ausführen.
 
@@ -120,7 +120,7 @@ Wenn das Problem mit dieser Methode nicht behoben wird, gehen Sie folgendermaße
     [System.IO.File]::WriteAllBytes($path,$bekFileBytes)
     ```
 
-7.  Um den angefügten Datenträger mithilfe der BEK-Datei zu entsperren, führen Sie den folgenden Befehl aus:
+7.  Führen Sie den folgenden Befehl aus, um den angefügten Datenträger mithilfe der BEK-Datei zu entsperren.
 
     ```powershell
     manage-bde -unlock F: -RecoveryKey "C:\BEK\EF7B2F5A-50C6-4637-9F13-7F599C12F85C.BEK

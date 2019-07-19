@@ -2,29 +2,23 @@
 title: Verwalten von Geräten über das Azure-Portal | Microsoft-Dokumentation
 description: Hier erfahren Sie, wie Sie Geräte über das Azure-Portal verwalten.
 services: active-directory
-documentationcenter: ''
-author: MicrosoftGuyJFlo
-manager: daveba
-editor: ''
-ms.assetid: 54e1b01b-03ee-4c46-bcf0-e01affc0419d
 ms.service: active-directory
 ms.subservice: devices
-ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 06/04/2019
 ms.author: joflore
+author: MicrosoftGuyJFlo
+manager: daveba
 ms.reviewer: jairoc
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 48f162e5e6eb29e4a658000826ccf25389086342
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 6f33b52255b1401e3595687612610a4688ad026d
+ms.sourcegitcommit: aa66898338a8f8c2eb7c952a8629e6d5c99d1468
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66730433"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67461455"
 ---
-# <a name="manage-device-identity-using-the-azure-portal"></a>Verwalten der Geräteidentität mithilfe des Azure-Portals
+# <a name="manage-device-identities-using-the-azure-portal"></a>Verwalten der Geräteidentität mithilfe des Azure-Portals
 
 Mit der Geräteidentitätsverwaltung in Azure Active Directory (Azure AD) können Sie sicherstellen, dass Benutzer auf Ihre Ressourcen über Geräte zugreifen, die Ihren Standards für Sicherheit und Konformität entsprechen.
 
@@ -63,21 +57,21 @@ Auf der Seite mit den Geräteeinstellungen können Sie Folgendes konfigurieren:
 
 ![Verwalten eines Intune-Geräts](./media/device-management-azure-portal/21.png)
 
-- **Benutzer dürfen Geräte in Azure AD einbinden**: Diese Einstellung ermöglicht Ihnen die Auswahl der Benutzer, die Ihre Geräte als [In Azure AD eingebundene Geräte](overview.md#azure-ad-joined-devices)registrieren können. Die Standardeinstellung ist **Alle**.
+- **Benutzer dürfen Geräte in Azure AD einbinden**: Diese Einstellung ermöglicht Ihnen die Auswahl der Benutzer, die ihre Geräte als in Azure AD eingebundene Geräte registrieren können. Die Standardeinstellung ist **Alle**.
 
->[!NOTE]
+> [!NOTE]
 > **Benutzer dürfen Geräte in Azure AD einbinden**: Diese Einstellung gilt nur für die Azure AD-Einbindung unter Windows 10.
 
 - **Weitere lokale Administratoren für in Azure AD eingebundene Geräte**: Sie können die Benutzer auswählen, denen lokale Administratorrechte auf einem Gerät erteilt werden. Hier hinzugefügte Benutzer werden der Rolle *Geräteadministratoren* in Azure AD hinzugefügt. Globale Administratoren in Azure AD und Gerätebesitzer erhalten standardmäßig lokale Administratorrechte. Diese Option ist eine Premium Edition-Funktion, die über Produkte wie Azure AD Premium oder die Enterprise Mobility Suite (EMS) zur Verfügung steht.
-- **Benutzer dürfen ihre Geräte für Azure AD registrieren**: Sie müssen diese Einstellung konfigurieren, um die [Registrierung](overview.md#azure-ad-registered-devices) von Windows 10-, persönlichen, iOS-, Android- und macOs-Geräten in Azure AD zuzulassen. Bei Auswahl von **Keine** dürfen Geräte nicht bei Azure AD registriert werden. Für die Registrierung bei Microsoft Intune oder der mobilen Geräteverwaltung für Office 365 ist eine Registrierung erforderlich. Wenn Sie einen dieser Dienste konfiguriert haben, wird **ALLE** ausgewählt, und die Option **KEINE** ist nicht verfügbar.
-- **Multi-factor Auth zum Hinzufügen von Geräten erforderlich**: Sie können auswählen, ob Benutzer einen sekundären Authentifizierungsfaktor bereitstellen müssen, um ihr Gerät in [Azure AD](overview.md#azure-ad-joined-devices) einzubinden. Der Standardwert lautet **Nein**. Es wird empfohlen, beim Registrieren eines Geräts die mehrstufige Authentifizierung zu verwenden. Bevor Sie die mehrstufige Authentifizierung für diesen Dienst aktivieren, müssen Sie sicherstellen, dass sie für die Benutzer konfiguriert ist, die ihre Geräte registrieren. Weitere Informationen zu verschiedenen Azure-Diensten mit mehrstufiger Authentifizierung finden Sie in den [ersten Schritten mit der mehrstufigen Azure-Authentifizierung](../authentication/concept-mfa-whichversion.md). 
+- **Benutzer dürfen ihre Geräte für Azure AD registrieren**: Sie müssen diese Einstellung konfigurieren, um die Registrierung von Windows 10-, persönlichen, iOS-, Android- und macOS-Geräten in Azure AD zuzulassen. Bei Auswahl von **Keine** dürfen Geräte nicht bei Azure AD registriert werden. Für die Registrierung bei Microsoft Intune oder der mobilen Geräteverwaltung für Office 365 ist eine Registrierung erforderlich. Wenn Sie einen dieser Dienste konfiguriert haben, wird **ALLE** ausgewählt, und die Option **KEINE** ist nicht verfügbar.
+- **Multi-Factor Auth zum Hinzufügen von Geräten erforderlich**: Sie können auswählen, ob Benutzer einen zusätzlichen Authentifizierungsfaktor bereitstellen müssen, um ihr Gerät in Azure AD einzubinden. Der Standardwert lautet **Nein**. Es wird empfohlen, beim Registrieren eines Geräts die mehrstufige Authentifizierung zu verwenden. Bevor Sie die mehrstufige Authentifizierung für diesen Dienst aktivieren, müssen Sie sicherstellen, dass sie für die Benutzer konfiguriert ist, die ihre Geräte registrieren. Weitere Informationen zu verschiedenen Azure-Diensten mit mehrstufiger Authentifizierung finden Sie in den [ersten Schritten mit der mehrstufigen Azure-Authentifizierung](../authentication/concept-mfa-whichversion.md). 
 
->[!NOTE]
+> [!NOTE]
 > **Mehrstufige Authentifizierung zum Hinzufügen von Geräten erforderlich**: Diese Einstellung gilt nicht für in Azure AD Hybrid eingebundene Geräte.
 
 - **Maximale Anzahl von Geräten pro Benutzer**: Mit dieser Einstellung können Sie die maximale Anzahl von Geräten festlegen, die ein Benutzer in Azure AD haben kann. Wenn ein Benutzer diese Anzahl erreicht, kann er keine weiteren Geräte hinzufügen, bis mindestens eines der vorhandenen Geräte entfernt wird. Das Gerätekontingent wird für alle Geräte gezählt, die heute mit Azure AD verknüpft oder in Azure AD registriert sind. Der Standardwert ist **20**.
 
->[!NOTE]
+> [!NOTE]
 > **Maximale Anzahl von Geräten**: Diese Einstellung gilt nicht für in Azure AD Hybrid eingebundene Geräte.
 
 - **Benutzer können Einstellungen und App-Daten geräteübergreifend synchronisieren**: Diese Einstellung ist standardmäßig auf **KEINE** festgelegt. Wenn Sie bestimmte Benutzer oder Gruppen oder „ALLE“ auswählen, können die Einstellungen und App-Daten der Benutzer auf ihren Windows 10-Geräten synchronisiert werden. Erfahren Sie mehr über die Funktionsweise der Synchronisierung in Windows 10.

@@ -3,28 +3,36 @@ title: 'Bewährte Methoden: QnA Maker'
 titlesuffix: Azure Cognitive Services
 description: Nutzen Sie diese bewährten Methoden, um Ihre Knowledge Base zu verbessern und bessere Ergebnisse für die Endbenutzer Ihrer Anwendung bzw. Ihres Chatbots zu liefern.
 services: cognitive-services
-author: tulasim88
+author: diberry
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: article
-ms.date: 05/10/2019
-ms.author: tulasim
+ms.date: 06/25/2019
+ms.author: diberry
 ms.custom: seodec18
-ms.openlocfilehash: b8507bdbf66dc003b6f54317eb526c0e468b9f2b
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: dd4f85822a5e6615e7ea6e31b4231c04c9d4e88c
+ms.sourcegitcommit: 5bdd50e769a4d50ccb89e135cfd38b788ade594d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67064373"
+ms.lasthandoff: 07/03/2019
+ms.locfileid: "67542854"
 ---
 # <a name="best-practices-of-a-qna-maker-knowledge-base"></a>Best Practices für eine QnA Maker-Wissensdatenbank
-Die Anleitungen zum [Entwicklungszyklus einer Wissensdatenbank](../Concepts/development-lifecycle-knowledge-base.md) helfen Ihnen bei sämtlichen Schritten der Verwaltung Ihrer Wissensdatenbank. Nutzen Sie diese bewährten Methoden, um Ihre Knowledge Base zu verbessern und bessere Ergebnisse für die Endbenutzer Ihrer Anwendung bzw. Ihres Chatbots zu liefern.
+
+Die Anleitungen zum [Entwicklungszyklus einer Wissensdatenbank](../Concepts/development-lifecycle-knowledge-base.md) helfen Ihnen bei sämtlichen Schritten der Verwaltung Ihrer Wissensdatenbank. Nutzen Sie diese bewährten Methoden, um Ihre Wissensdatenbank zu optimieren und bessere Ergebnisse für die Endbenutzer Ihrer Clientanwendung bzw. Ihres Chatbots zu liefern.
 
 ## <a name="extraction"></a>Extraktion
+
 Der QnA Maker-Dienst optimiert kontinuierlich die Algorithmen zum Extrahieren von Fragen und Antworten (QnA) aus Inhalten und erweitert die Liste der unterstützten Datei- und HTML-Formate. Befolgen Sie die [Richtlinien](../Concepts/data-sources-supported.md) für die Datenextraktion basierend auf Ihrem Dokumenttyp. 
 
 Ganz allgemein sollten die Seiten mit häufig gestellten Fragen eigenständig bereitgestellt und nicht mit anderen Informationen kombiniert werden. Produkthandbücher sollten klare Überschriften und vorzugsweise eine Indexseite aufweisen. 
+
+### <a name="configuring-multi-turn"></a>Konfigurieren von mehreren Durchläufen
+
+Erstellen Sie Ihre Wissensdatenbank mit aktivierter Mehrfachdurchlauf-Extrahierung. Wenn Ihre Wissensdatenbank eine Fragenhierarchie unterstützt bzw. unterstützen sollte, kann diese Hierarchie aus dem Dokument extrahiert oder nach der Extraktion des Dokuments erstellt werden. 
+
+<!--is this a global setting that can only be configured at kb creation time? -->
 
 ## <a name="creating-good-questions-and-answers"></a>Formulieren guter Fragen und Antworten
 
@@ -34,9 +42,14 @@ Die besten Fragen sind einfach. Überlegen Sie sich das Schlüsselwort oder den 
 
 Fügen Sie so viele alternative Fragen hinzu, wie Sie benötigen, aber halten Sie die Änderungen einfach. Das Hinzufügen weiterer Wörter oder Ausdrücke, die nicht dem Hauptzweck der Frage entsprechen, hilft QnA Maker nicht, eine Übereinstimmung zu finden. 
 
+
+### <a name="add-relevant-alternative-questions"></a>Hinzufügen von relevanten alternativen Fragen
+
+Ihr Benutzer kann entweder Fragen im Unterhaltungsstil eingeben (`How do I add a toner cartridge to my printer?`) oder eine Stichwortsuche (z. B. `toner cartridge`) verwenden. Die Wissensdatenbank sollte über beide Arten von Fragen verfügen, damit jeweils die beste Antwort zurückgegeben werden kann. Wenn Sie nicht sicher sind, welche Stichwörter ein Kunde eingibt, sollten Sie Application Insights-Daten nutzen, um Abfragen zu analysieren.
+
 ### <a name="good-answers"></a>Gute Antworten
 
-Die besten Antworten sind einfache Antworten, aber nicht so einfach wie Ja und Nein. Wenn Ihre Antwort auf andere Quellen verweisen oder eine umfassende Erfahrung mit Medien und Links bieten soll, verwenden Sie [Tags](../how-to/metadata-generateanswer-usage.md), um zu unterscheiden, welche Art von Antwort Sie erwarten, und senden Sie dann dieses Tag mit der Abfrage, um die richtige Antwortversion zu erhalten.
+Die besten Antworten sind einfache Antworten, solange diese nicht zu einfach gehalten sind. Verwenden Sie keine Antworten wie `yes` und `no`. Wenn Ihre Antwort auf andere Quellen verweisen oder mit Medien und Links umfassend gestaltet sein soll, sollten Sie [Metadatentags](./knowledge-base.md#key-knowledge-base-concepts) verwenden, um zwischen Antworten zu unterscheiden. [Übermitteln Sie die Abfrage](../how-to/metadata-generateanswer-usage.md#generateanswer-request-configuration) dann mit Metadatentags in der `strictFilters`-Eigenschaft, um die richtige Antwortversion zu erhalten.
 
 ## <a name="chit-chat"></a>Geplauder
 Fügen Sie Ihrem Bot Geplauder hinzu, um ihn mit geringem Aufwand gesprächiger und ansprechender zu gestalten. Sie können beim Erstellen Ihrer Wissensdatenbank ganz einfach Geplauderdatasets von vordefinierten Persönlichkeiten hinzufügen und diese jederzeit ändern. Weitere Informationen zum [Hinzufügen von Geplauder zur Wissensdatenbank](../How-To/chit-chat-knowledge-base.md). 
@@ -65,12 +78,26 @@ Wir empfehlen, die folgenden Geplauder-QnAs zu präzisieren:
 * Wer hat Sie erstellt?
 * Hallo
    
+### <a name="adding-custom-chit-chat-with-a-metadata-tag"></a>Hinzufügen von benutzerdefiniertem Geplauder mit einem Metadatentag
+
+Stellen Sie beim Hinzufügen Ihrer eigenen Frage-und-Antwort-Paare für Geplauder sicher, dass Sie auch Metadaten hinzufügen, damit diese Antworten zurückgegeben werden. Das Paar aus Metadatenname und -wert lautet `editorial:chitchat`.
+
+## <a name="searching-for-answers"></a>Suchen nach Antworten
+
+Für die GenerateAnswer-API werden sowohl Fragen als auch die Antwort verwendet, um nach den besten Antworten auf die Abfrage eines Benutzers zu suchen.
+
+### <a name="searching-questions-only-when-answer-is-not-relevant"></a>Suchen nach Fragen nur dann, wenn eine Antwort nicht relevant ist
+
+Verwenden Sie [`RankerType=QuestionOnly`](#choosing-ranker-type), wenn Sie nicht nach Antworten suchen möchten. 
+
+Ein Beispiel hierfür ist, wenn die Wissensdatenbank aus einem Katalog mit Akronymen als Fragen und deren vollständigen Form als Antwort besteht. Der Wert der Antwort ist beim Suchen nach der passenden Antwort nicht hilfreich.
 
 ## <a name="rankingscoring"></a>Rangfolge/Bewertung
 Nutzen Sie unbedingt auch die von QnA Maker unterstützten Rangfolgefeatures. Damit erhöhen Sie die Wahrscheinlichkeit, dass eine bestimmten Benutzerfrage angemessen beantwortet wird.
 
 ### <a name="choosing-a-threshold"></a>Auswählen eines Schwellenwerts
-Die standardmäßige Zuverlässigkeitsbewertung, die als Schwellenwert verwendet wird, ist 50. Sie können sie jedoch für Ihre Wissensdatenbank gemäß Ihren Bedürfnissen ändern. Da jede Wissensdatenbank anders ist, sollten Sie den Schwellenwert testen und einen Wert auswählen, der für Ihre Wissensdatenbank am besten geeignet ist. Erfahren Sie mehr über die [Zuverlässigkeitsbewertung](../Concepts/confidence-score.md). 
+
+Die standardmäßige [Zuverlässigkeitsbewertung](confidence-score.md), die als Schwellenwert verwendet wird, ist 50. Sie können den [Schwellenwert aber für Ihre Wissensdatenbank gemäß Ihren Bedürfnissen ändern](confidence-score.md#set-threshold). Da jede Wissensdatenbank anders ist, sollten Sie den Schwellenwert testen und einen Wert auswählen, der für Ihre Wissensdatenbank am besten geeignet ist. 
 
 ### <a name="choosing-ranker-type"></a>Auswählen des Typs der Rangfolgefunktion
 Standardmäßig durchsucht QnA Maker Fragen und Antworten. Wenn Sie nur Fragen durchsuchen möchten, um eine Antwort zu generieren, verwenden Sie `RankerType=QuestionOnly` im POST-Text der GenerateAnswer-Anforderung.
@@ -87,14 +114,14 @@ Standardmäßig durchsucht QnA Maker Fragen und Antworten. Wenn Sie nur Fragen d
 
 ### <a name="use-metadata-tags-to-filter-questions-and-answers"></a>Verwenden von Metadatentags zum Filtern von Fragen und Antworten
 
-[Metadaten](../How-To/edit-knowledge-base.md) bieten eine zusätzliche Möglichkeit, die Ergebnisse einer Benutzerfrage basierend auf Metadatentags einzugrenzen. Die Antwort aus der Knowledge Base kann basierend auf Metadatentags variieren, selbst wenn die Frage identisch ist. So gibt es beispielsweise auf die Frage *„Wo ist der Parkplatz?“* eine andere Antwort, wenn ein anderer Standort für eine Filiale der Restaurantkette verwendet wird. Die Metadaten sind für *Standort: Seattle* anders als für *Standort: Redmond*.
+Mit [Metadaten](../How-To/edit-knowledge-base.md) kann einer Clientanwendung mitgeteilt werden, dass nicht alle Antworten verwendet werden sollen, sondern stattdessen die Ergebnisse einer Benutzerabfrage basierend auf Metadatentags eingegrenzt werden sollen. Die Antwort aus der Knowledge Base kann basierend auf Metadatentags variieren, selbst wenn die Frage identisch ist. So gibt es beispielsweise auf die Frage *„Wo ist der Parkplatz?“* eine andere Antwort, wenn ein anderer Standort für eine Filiale der Restaurantkette verwendet wird. Die Metadaten sind für *Standort: Seattle* anders als für *Standort: Redmond*.
 
 ### <a name="use-synonyms"></a>Verwenden von Synonymen
-Auch wenn für die englische Sprache Synonyme teilweise unterstützt werden, verwenden Sie [Wortvarianten](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/alterations/replace) (ohne Berücksichtigung der Groß- und Kleinschreibung), um Synonyme für Schlüsselwörter hinzuzufügen, die unterschiedliche Formen aufweisen. Synonyme sollten auf QnA Maker-Dienstebene hinzugefügt und für alle Knowledge Bases im Dienst gemeinsam verwendet werden.
+Für die englische Sprache werden Synonyme zwar teilweise unterstützt, aber Sie sollten Wortvarianten über die [Alterations-API](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/alterations/replace) verwenden (ohne Berücksichtigung der Groß- und Kleinschreibung), um Synonyme für Schlüsselwörter hinzuzufügen, die unterschiedliche Formen aufweisen. Synonyme werden auf QnA Maker-Dienstebene hinzugefügt und für alle Wissensdatenbanken des Diensts gemeinsam verwendet.
 
 |Ursprüngliches Wort|Synonyme|
 |--|--|
-|kaufen|erwerben<br>Internetbanking<br>E-Banking|
+|kaufen|erwerben<br>Electronic Banking<br>E-Banking|
 
 ### <a name="use-distinct-words-to-differentiate-questions"></a>Verwenden unterschiedlicher Wörter für die Unterscheidung von Fragen
 Die QnA Maker-Algorithmen für Rangfolgen, die eine Benutzerfrage einer Frage in der Wissensdatenbank zuordnen, funktionieren am besten, wenn jede Frage eine andere Anforderung behandelt. Die Wiederholung derselben Wortgruppe in unterschiedlichen Fragen reduziert die Wahrscheinlichkeit, dass die richtige Antwort für eine bestimmte Benutzerfrage mit diesen Wörtern ausgewählt wird. 
@@ -110,6 +137,8 @@ Da diese beiden QnAs sehr ähnliche Wörter verwenden, könnte diese Ähnlichkei
 
 ## <a name="collaborate"></a>Zusammenarbeiten
 QnA Maker ermöglicht Benutzern das [Zusammenarbeiten](../How-to/collaborate-knowledge-base.md) an einer Knowledge Base. Benutzer benötigen Zugriff auf die Azure QnA Maker-Ressourcengruppe, um auf Wissensdatenbanken zugreifen zu können. Einige Organisationen lagern die Bearbeitung und Verwaltung ihrer Knowledge Base aus, möchten aber eventuell trotzdem weiterhin den Zugriff auf ihre Azure-Ressourcen schützen. Dieses Modell aus bearbeitenden und genehmigenden Personen erfolgt durch das Einrichten von zwei identischen [QnA Maker-Diensten](../How-to/set-up-qnamaker-service-azure.md) in unterschiedlichen Abonnements, von denen einer für den Bearbeitungs- und Testzyklus ausgewählt wird. Nach Abschluss der Tests werden die Inhalte der Wissensdatenbank mit einem [Import-/Export](../Tutorials/migrate-knowledge-base.md)vorgang an den QnA Maker-Dienst der genehmigenden Person übertragen, die die Wissensdatenbank schließlich veröffentlicht und den Endpunkt aktualisiert.
+
+
 
 ## <a name="active-learning"></a>Aktives Lernen
 

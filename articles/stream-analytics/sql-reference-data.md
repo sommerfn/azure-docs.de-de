@@ -1,5 +1,5 @@
 ---
-title: Verwenden von Verweisdaten aus einer SQL-Datenbank für einen Azure Stream Analytics-Auftrag (Vorschauversion)
+title: Verwenden von Verweisdaten aus einer SQL-Datenbank für einen Azure Stream Analytics-Auftrag
 description: In diesem Artikel wird beschrieben, wie Sie eine SQL-Datenbank-Instanz als Verweisdateneingabe für einen Azure Stream Analytics-Auftrag im Azure-Portal und in Visual Studio verwenden.
 services: stream-analytics
 author: mamccrea
@@ -8,14 +8,14 @@ ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 01/29/2019
-ms.openlocfilehash: f0e62c27885e2f6d5097194e1b9d869e167c4a4c
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: ae1954b99e268e8bc44c4ba29bbc79d7734fda6e
+ms.sourcegitcommit: aa66898338a8f8c2eb7c952a8629e6d5c99d1468
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66304967"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67461733"
 ---
-# <a name="use-reference-data-from-a-sql-database-for-an-azure-stream-analytics-job-preview"></a>Verwenden von Verweisdaten aus einer SQL-Datenbank für einen Azure Stream Analytics-Auftrag (Vorschauversion)
+# <a name="use-reference-data-from-a-sql-database-for-an-azure-stream-analytics-job"></a>Verwenden von Verweisdaten aus einer SQL-Datenbank für einen Azure Stream Analytics-Auftrag
 
 Azure Stream Analytics unterstützt Azure SQL-Datenbank als Eingangsquelle für Verweisdaten. Sie können SQL-Datenbank mit den Stream Analytics-Tools als Verweisdaten für Ihren Stream Analytics-Auftrag im Azure-Portal und in Visual Studio verwenden. In diesem Artikel wird veranschaulicht, wie Sie beide Methoden anwenden.
 

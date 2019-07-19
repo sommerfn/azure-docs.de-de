@@ -14,18 +14,18 @@ ms.devlang: python
 ms.topic: article
 ms.date: 04/15/2019
 ms.author: aschhab
-ms.openlocfilehash: 47cd0621a601e3f1ef53572bc7bb8bc1c7ea76ab
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: cd75ba9d407399703a382596019d5f370808b20a
+ms.sourcegitcommit: 5bdd50e769a4d50ccb89e135cfd38b788ade594d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65992000"
+ms.lasthandoff: 07/03/2019
+ms.locfileid: "67543667"
 ---
 # <a name="how-to-use-service-bus-topics-and-subscriptions-with-python"></a>Verwenden von Service Bus-Themen und -Abonnements mit Python
 
 [!INCLUDE [service-bus-selector-topics](../../includes/service-bus-selector-topics.md)]
 
-In diesem Artikel erfahren Sie, wie Sie Service Bus-Themen und -Abonnements verwenden. Die Beispiele sind in Python geschrieben und verwenden das [Azure Python SDK-Paket][Azure Python package]. Folgende Szenarien werden behandelt:
+In diesem Artikel erfahren Sie, wie Sie Service Bus-Themen und -Abonnements verwenden. Die Beispiele sind in Python geschrieben, und das [Azure Python SDK-Paket][Azure Python package] wird verwendet. Folgende Szenarien werden behandelt:
 
 - Erstellen von Themen und Abonnements 
 - Erstellen von Abonnementfiltern 
@@ -79,9 +79,9 @@ bus_service.create_topic('mytopic', topic_options)
 Abonnements von Themen werden ebenfalls mit dem **ServiceBusService**-Objekt erstellt. Abonnements werden benannt und können einen optionalen Filter aufweisen, der die Nachrichten einschränkt, die an die virtuelle Warteschlange des Abonnements übermittelt werden.
 
 > [!NOTE]
-> Abonnements sind dauerhaft und existieren solange, bis sie oder das Thema, für das sie abonniert sind, gelöscht werden.
+> Standardmäßig sind Abonnements persistent und so lange vorhanden, bis sie selbst oder das Thema, für das sie abonniert wurden, gelöscht werden.
 > 
-> 
+> Sie können angeben, dass Abonnements automatisch gelöscht werden sollen, indem Sie die [auto_delete_on_idle-Eigenschaft](https://docs.microsoft.com/python/api/azure-mgmt-servicebus/azure.mgmt.servicebus.models.sbsubscription?view=azure-python) festlegen.
 
 ### <a name="create-a-subscription-with-the-default-matchall-filter"></a>Erstellen eines Abonnements mit dem Standardfilter (MatchAll)
 
@@ -178,7 +178,7 @@ Falls die Anwendung nach der Verarbeitung der Nachricht, aber vor dem Aufruf der
 
 ## <a name="delete-topics-and-subscriptions"></a>Löschen von Themen und Abonnements
 
-Themen und Abonnements sind persistent und müssen über das [Azure-Portal][Azure portal] oder programmgesteuert explizit gelöscht werden. Im folgenden Beispiel wird das Thema `mytopic` gelöscht:
+Themen und Abonnements sind persistent, sofern nicht die [auto_delete_on_idle-Eigenschaft](https://docs.microsoft.com/python/api/azure-mgmt-servicebus/azure.mgmt.servicebus.models.sbsubscription?view=azure-python) festgelegt ist. Sie können entweder über das [Azure-Portal][Azure portal] oder programmgesteuert gelöscht werden. Im folgenden Beispiel wird das Thema `mytopic` gelöscht:
 
 ```python
 bus_service.delete_topic('mytopic')
@@ -197,7 +197,7 @@ bus_service.delete_subscription('mytopic', 'HighMessages')
 
 Nachdem Sie nun mit den Grundlagen der Servicebus-Themen vertraut sind, finden Sie unter den folgenden Links weitere Informationen.
 
-* Siehe [Warteschlangen, Themen und Abonnements][Queues, topics, and subscriptions].
+* Siehe [Service Bus-Warteschlangen, -Themen und -Abonnements][Queues, topics, and subscriptions].
 * Referenz für [SqlFilter.SqlExpression][SqlFilter.SqlExpression].
 
 [Azure portal]: https://portal.azure.com

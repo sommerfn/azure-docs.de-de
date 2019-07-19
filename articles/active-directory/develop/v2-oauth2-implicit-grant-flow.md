@@ -18,12 +18,12 @@ ms.author: ryanwi
 ms.reviewer: hirsin
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6f73756373a145375aa2b3d0bcb1c8fa0ede5cdb
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 2e6ac72a91ae14b6f9c513c84da6f1f06508caef
+ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65823485"
+ms.lasthandoff: 07/01/2019
+ms.locfileid: "67482211"
 ---
 # <a name="microsoft-identity-platform-and-implicit-grant-flow"></a>Microsoft Identity Platform und der implizit gewährte Datenfluss
 
@@ -48,7 +48,7 @@ Wenn Sie jedoch in Ihrer Single-Page-App keine Bibliothek verwenden und Protokol
 
 Das folgende Diagramm zeigt, wie der gesamte implizite Anmeldevorgang aussieht, und in den folgenden Abschnitten wird jeder Schritt im Detail beschrieben.
 
-![OpenID Connect-Verantwortlichkeitsbereiche](./media/v2-oauth2-implicit-grant-flow/convergence-scenarios-implicit.svg)
+![Diagramm: Impliziter Anmeldevorgang](./media/v2-oauth2-implicit-grant-flow/convergence-scenarios-implicit.svg)
 
 ## <a name="send-the-sign-in-request"></a>Senden der Anmeldeanforderung
 
@@ -243,4 +243,4 @@ https://login.microsoftonline.com/{tenant}/oauth2/v2.0/logout?post_logout_redire
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* Wechseln Sie zu den [MSAL JS-Beispielen](sample-v2-code.md#single-page-applications-spa), um in die Programmierung einzusteigen.
+* Wechseln Sie zu den [MSAL JS-Beispielen](sample-v2-code.md), um in die Programmierung einzusteigen.

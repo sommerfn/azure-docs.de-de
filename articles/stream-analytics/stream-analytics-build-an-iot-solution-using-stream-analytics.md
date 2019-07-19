@@ -9,12 +9,12 @@ ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 12/06/2018
 ms.custom: seodec18
-ms.openlocfilehash: 5b2c153646021aeb8ee0dbb787cfce41af19568d
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: 4b250a5e14ab37553d93453d05f8ff388bf1ba84
+ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67443672"
+ms.lasthandoff: 07/07/2019
+ms.locfileid: "67620520"
 ---
 # <a name="build-an-iot-solution-by-using-stream-analytics"></a>Erstellen einer IoT-Lösung mithilfe von Stream Analytics
 
@@ -164,7 +164,7 @@ Es sind verschiedene Ressourcen vorhanden, die mit wenigen Klicks zusammen in ei
 
    Das Ziel der Abfrage lässt sich auch anhand des folgenden Beispiels darstellen: Angenommen, Sie müssen die Fahrzeuge zählen, die ein Mauthäuschen passieren. Da das Mauthäuschen an einer Straße über einen kontinuierlichen Strom von ankommenden Fahrzeugen verfügt, sind diese Ereignisse mit einem analogen Datenstrom vergleichbar, der niemals endet. Zum Quantifizieren des Datenstroms müssen Sie einen „Zeitraum“ für die Messung definieren. Wir verfeinern die Frage also weiter: „Wie viele Fahrzeuge passieren ein Mauthäuschen jeweils innerhalb von drei Minuten?“ Dies wird für gewöhnlich als „Rollierende Anzahl“ bezeichnet.
 
-   Es ist erkennbar, dass in Azure Stream Analytics eine Abfragesprache verwendet wird, die wie SQL aufgebaut ist und über einige Erweiterungen verfügt, damit die zeitbezogenen Aspekte der Abfrage angegeben werden können.  Weitere Informationen finden Sie in den Artikeln zu [Zeitmanagement](https://msdn.microsoft.com/library/azure/mt582045.aspx)- und [Windowing](https://msdn.microsoft.com/library/azure/dn835019.aspx)-Konstrukten, die in der Abfrage verwendet werden.
+   Es ist erkennbar, dass in Azure Stream Analytics eine Abfragesprache verwendet wird, die wie SQL aufgebaut ist und über einige Erweiterungen verfügt, damit die zeitbezogenen Aspekte der Abfrage angegeben werden können.  Weitere Informationen finden Sie in den Artikeln zu [Zeitmanagement](https://docs.microsoft.com/stream-analytics-query/time-management-azure-stream-analytics)- und [Windowing](https://docs.microsoft.com/stream-analytics-query/windowing-azure-stream-analytics)-Konstrukten, die in der Abfrage verwendet werden.
 
 3. Untersuchen Sie die Eingaben des TollApp-Beispielauftrags. Nur die EntryStream-Eingabe wird in der aktuellen Abfrage verwendet.
    - Die **EntryStream**-Eingabe ist eine Event Hub-Verbindung, bei der Daten, die jeweils für das Ankommen eines Fahrzeugs am Mauthäuschen einer Straße stehen, in eine Warteschlange eingereiht werden. Eine Web-App, die Teil des Beispiels ist, erstellt die Ereignisse, und diese Daten werden im Event Hub in die Warteschlange eingereiht. Beachten Sie, dass diese Eingabe über die FROM-Klausel der Streamingabfrage abgefragt wird.

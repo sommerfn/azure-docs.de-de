@@ -9,13 +9,14 @@ ms.service: azure-functions
 ms.devlang: powershell
 ms.topic: conceptual
 ms.date: 04/22/2019
-ms.author: tyleonha, glenga
-ms.openlocfilehash: 46b1e5c99dd86fed6f87ac3b8f0ff6555187899b
-ms.sourcegitcommit: 3ced637c8f1f24256dd6ac8e180fff62a444b03c
+ms.author: tyleonha
+ms.reviewer: glenga
+ms.openlocfilehash: a75bdaf0e26193a5b2792b52923c085eff89b83f
+ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/17/2019
-ms.locfileid: "65833516"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67706398"
 ---
 # <a name="azure-functions-powershell-developer-guide"></a>PowerShell-Entwicklerhandbuch für Azure Functions
 
@@ -58,7 +59,7 @@ PSFunctionApp
 
 Im Stammverzeichnis des Projekts befindet sich eine freigegebene Datei [`host.json`](functions-host-json.md), die zum Konfigurieren der Funktions-App verwendet werden kann. Jede Funktion verfügt über einen Ordner mit einer eigenen Codedatei (PS1-Datei) und Bindungskonfigurationsdatei (`function.json`). Der Name des übergeordneten Verzeichnisses der Datei „function.json“ ist immer der Name Ihrer Funktion.
 
-Bestimmte Bindungen erfordern das Vorhandensein einer Datei mit dem Namen `extensions.csproj`. Die in [Version 2.x](functions-versions.md) der Functions-Runtime erforderlichen Bindungserweiterungen sind in der Datei `extensions.csproj` definiert, die eigentlichen Bibliotheksdateien befinden sich im Ordner `bin`. Wenn Sie lokal entwickeln, müssen Sie [Bindungserweiterungen registrieren](functions-bindings-register.md#local-development-with-azure-functions-core-tools-and-extension-bundles). Wenn Sie Funktionen im Azure-Portal entwickeln, wird diese Registrierung für Sie ausgeführt.
+Bestimmte Bindungen erfordern das Vorhandensein einer Datei mit dem Namen `extensions.csproj`. Die in [Version 2.x](functions-versions.md) der Functions-Runtime erforderlichen Bindungserweiterungen sind in der Datei `extensions.csproj` definiert, die eigentlichen Bibliotheksdateien befinden sich im Ordner `bin`. Wenn Sie lokal entwickeln, müssen Sie [Bindungserweiterungen registrieren](functions-bindings-register.md#extension-bundles). Wenn Sie Funktionen im Azure-Portal entwickeln, wird diese Registrierung für Sie ausgeführt.
 
 PowerShell-Funktions-Apps enthalten möglicherweise optional eine Datei `profile.ps1`, die ausgeführt wird, wenn eine Funktions-App gestartet wird (auch als *[Kaltstart](#cold-start)* bezeichnet). Weitere Informationen finden Sie unter [PowerShell-Profil](#powershell-profile).
 
@@ -81,7 +82,7 @@ Der `TriggerMetadata`-Parameter wird verwendet, um zusätzliche Informationen zu
 $TriggerMetadata.sys
 ```
 
-| Eigenschaft   | Description                                     | Type     |
+| Eigenschaft   | Description                                     | type     |
 |------------|-------------------------------------------------|----------|
 | UtcNow     | Zeitpunkt der Auslösung der Funktion in UTC        | DateTime |
 | MethodName | Der Name der Funktion, die ausgelöst wurde     | Zeichenfolge   |
@@ -133,7 +134,7 @@ Das Verhalten von `Push-OutputBinding` hängt vom Wert für `-Name` ab:
 
 Im Folgenden sind gültige Parameter für den Aufruf von `Push-OutputBinding` angegeben:
 
-| NAME | Type | Position | BESCHREIBUNG |
+| NAME | type | Position | BESCHREIBUNG |
 | ---- | ---- |  -------- | ----------- |
 | **`-Name`** | Zeichenfolge | 1 | Der Name der Ausgabebindung, die Sie festlegen möchten |
 | **`-Value`** | Object | 2 | Der Wert der festzulegenden Ausgabebindung, der vom ByValue-Wert der Pipeline akzeptiert wird. |
@@ -253,7 +254,7 @@ Zusätzlich zu diesen Cmdlets wird alles, was in die Pipeline geschrieben wird, 
 
 ### <a name="configure-the-function-app-log-level"></a>Konfigurieren der Protokollebene für Funktions-Apps
 
-Sie können in Functions den Schwellenwert definieren und damit steuern, was Functions in die Protokolle schreibt. Verwenden Sie die `logging.logLevel.default`-Eigenschaft in der [Datei `host.json`][host.json-Referenz], um den Schwellenwert für alle Ablaufverfolgungen festzulegen, die an der Konsole geschrieben werden. Diese Einstellung gilt für alle Funktionen in Ihrer Funktionen-App.
+Sie können in Azure Functions den Schwellenwert definieren und damit steuern, was Functions in die Protokolle schreibt. Verwenden Sie die `logging.logLevel.default`-Eigenschaft in der [Datei `host.json`][host.json-Referenz], um den Schwellenwert für alle Ablaufverfolgungen festzulegen, die an der Konsole geschrieben werden. Diese Einstellung gilt für alle Funktionen in Ihrer Funktionen-App.
 
 Im folgenden Beispiel wird der Schwellenwert zum Aktivieren der ausführlichen Protokollierung für alle Funktionen festgelegt. Für die `MyFunction`-Funktion wird hingegen der Schwellenwert für die Debugprotokollierung festgelegt:
 
@@ -302,7 +303,7 @@ HTTP- und Webhooktrigger und HTTP-Ausgabebindungen verwenden Request- und Respon
 
 Das Anforderungsobjekt, das an das Skript übergeben wird, ist vom Typ `HttpRequestContext`, der über die folgenden Eigenschaften verfügt:
 
-| Eigenschaft  | Description                                                    | Type                      |
+| Eigenschaft  | Description                                                    | type                      |
 |-----------|----------------------------------------------------------------|---------------------------|
 | **`Body`**    | Ein Objekt, das den Hauptteil der Anforderung enthält. `Body` wird basierend auf den Daten in den am besten geeigneten Typ serialisiert. Bei JSON-Daten wird z. B. eine Hashtabelle übergeben. Wenn es sich bei den Daten um eine Zeichenfolge handelt, erfolgt die Übergabe auch als Zeichenfolge. | object |
 | **`Headers`** | Ein Wörterbuch mit den Headern der Anforderung.                | Dictionary<string,string><sup>*</sup> |
@@ -317,7 +318,7 @@ Das Anforderungsobjekt, das an das Skript übergeben wird, ist vom Typ `HttpRequ
 
 Das Antwortobjekt, das Sie zurücksenden sollten, weist den Typ `HttpResponseContext` auf, der über die folgenden Eigenschaften verfügt:
 
-| Eigenschaft      | Description                                                 | Type                      |
+| Eigenschaft      | Description                                                 | type                      |
 |---------------|-------------------------------------------------------------|---------------------------|
 | **`Body`**  | Ein Objekt, das den Hauptteil der Antwort enthält.           | object                    |
 | **`ContentType`** | Einstellungsmöglichkeit für den Inhaltstyp der Antwort | Zeichenfolge                    |
@@ -598,7 +599,7 @@ Bei der Entwicklung von Azure Functions im [serverlosen Hostingmodell](functions
 
 ### <a name="bundle-modules-instead-of-using-install-module"></a>Modulbündel statt `Install-Module`
 
-Ihr Skript wird bei jedem Aufruf ausgeführt. Vermeiden Sie die Verwendung von `Install-Module` in Ihrem Skript. Verwenden Sie stattdessen `Save-Module` vor der Veröffentlichung, damit Ihre Funktion keine Zeit für das Herunterladen des Moduls aufbringen muss. Falls Kaltstarts Auswirkungen auf Ihre Funktionen haben, sollten Sie erwägen, Ihre Funktions-App in einem [App Service-Plan](functions-scale.md#app-service-plan) mit *Always On* oder einem [Premium-Plan](functions-scale.md#premium-plan-public-preview) bereitzustellen.
+Ihr Skript wird bei jedem Aufruf ausgeführt. Vermeiden Sie die Verwendung von `Install-Module` in Ihrem Skript. Verwenden Sie stattdessen `Save-Module` vor der Veröffentlichung, damit Ihre Funktion keine Zeit für das Herunterladen des Moduls aufbringen muss. Falls Kaltstarts Auswirkungen auf Ihre Funktionen haben, sollten Sie erwägen, Ihre Funktions-App in einem [App Service-Plan](functions-scale.md#app-service-plan) mit *Always On* oder einem [Premium-Plan](functions-scale.md#premium-plan) bereitzustellen.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

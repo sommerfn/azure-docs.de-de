@@ -4,7 +4,7 @@ description: Es wird beschrieben, wie Sie ein bereits vorhandenes Azure-VM-Image
 services: virtual-machines-linux
 documentationcenter: ''
 author: danis
-manager: jeconnoc
+manager: gwallace
 editor: ''
 tags: azure-resource-manager
 ms.service: virtual-machines-linux
@@ -14,12 +14,12 @@ ms.devlang: azurecli
 ms.topic: article
 ms.date: 06/24/2019
 ms.author: danis
-ms.openlocfilehash: a64fb40c905fbe98dc594ab3626666723d1628d0
-ms.sourcegitcommit: a7ea412ca4411fc28431cbe7d2cc399900267585
+ms.openlocfilehash: 1f9f6042b52c722280a8227754960ffb270e94b8
+ms.sourcegitcommit: 2e4b99023ecaf2ea3d6d3604da068d04682a8c2d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/25/2019
-ms.locfileid: "67357264"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67668248"
 ---
 # <a name="prepare-an-existing-linux-azure-vm-image-for-use-with-cloud-init"></a>Vorbereiten eines vorhandenen Linux Azure-VM-Images für die Verwendung mit cloud-init
 In diesem Artikel wird veranschaulicht, wie Sie einen vorhandenen virtuellen Azure-Computer so vorbereiten, dass er wieder bereitgestellt und für die Verwendung von cloud-init genutzt werden kann. Das sich ergebende Image kann verwendet werden, um einen neuen virtuellen Computer oder VM-Skalierungsgruppen bereitzustellen, die dann per cloud-init während der Bereitstellung jeweils weiter angepasst werden können.  Diese cloud-init-Skripts werden beim erstmaligen Starten ausgeführt, nachdem die Ressourcen von Azure bereitgestellt wurden. Weitere Informationen zur nativen Funktionsweise von „cloud-init“ in Azure und zu den unterstützten Linux-Distributionen finden Sie in der [Übersicht zu „cloud-init“](using-cloud-init.md).

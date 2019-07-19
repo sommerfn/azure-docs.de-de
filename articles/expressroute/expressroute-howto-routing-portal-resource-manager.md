@@ -5,15 +5,15 @@ services: expressroute
 author: mialdrid
 ms.service: expressroute
 ms.topic: conceptual
-ms.date: 05/20/2019
+ms.date: 06/28/2019
 ms.author: mialdrid
 ms.custom: seodec18
-ms.openlocfilehash: f6061710fb15d4183bd42a82c4bd269a69fc9be2
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 40ecdb3f83dba741d1430a912a3f17500a36da6e
+ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65964444"
+ms.lasthandoff: 07/01/2019
+ms.locfileid: "67484328"
 ---
 # <a name="create-and-modify-peering-for-an-expressroute-circuit"></a>Erstellen und Ändern des Peerings für eine ExpressRoute-Verbindung
 
@@ -55,9 +55,17 @@ Dieser Abschnitt unterstützt Sie beim Erstellen, Abrufen, Aktualisieren und Lö
 
 ### <a name="to-create-microsoft-peering"></a>So erstellen Sie Microsoft-Peering
 
-1. Konfigurieren Sie die ExpressRoute-Verbindung. Stellen Sie vor dem Fortfahren sicher, dass die Verbindung vom Konnektivitätsanbieter vollständig bereitgestellt wird. Wenn Ihr Konnektivitätsanbieter verwaltete Layer 3-Dienste im Angebot hat, können Sie bei ihm die Aktivierung des Microsoft-Peerings anfordern. In diesem Fall müssen Sie die Anweisungen in den nächsten Abschnitten nicht befolgen. Falls Ihr Konnektivitätsanbieter das Routing für Sie nicht verwaltet, müssen Sie nach dem Einrichten der Leitung die folgenden Anweisungen befolgen.
+1. Konfigurieren Sie die ExpressRoute-Verbindung. Überprüfen Sie vor dem Fortfahren den **Anbieterstatus**, um sicherzustellen, dass die Verbindung vom Konnektivitätsanbieter vollständig bereitgestellt wird.
 
-   ![Auflisten des Microsoft-Peerings](./media/expressroute-howto-routing-portal-resource-manager/listprovisioned.png)
+   Wenn Ihr Konnektivitätsanbieter verwaltete Layer 3-Dienste im Angebot hat, können Sie bei ihm die Aktivierung des Microsoft-Peerings anfordern. In diesem Fall müssen Sie die Anweisungen in den nächsten Abschnitten nicht befolgen. Falls Ihr Konnektivitätsanbieter das Routing für Sie nicht verwaltet, müssen Sie nach dem Einrichten der Leitung diese Schritte ausführen.
+
+   **Verbindung – Anbieterstatus: Nicht bereitgestellt**
+
+    [![](./media/expressroute-howto-routing-portal-resource-manager/not-provisioned-m.png "Anbieterstatus: Nicht bereitgestellt")](./media/expressroute-howto-routing-portal-resource-manager/not-provisioned-m-lightbox.png#lightbox)
+
+   **Verbindung – Anbieterstatus: Bereitgestellt**
+
+   [![](./media/expressroute-howto-routing-portal-resource-manager/provisioned-m.png "Anbieterstatus = Bereitgestellt")](./media/expressroute-howto-routing-portal-resource-manager/provisioned-m-lightbox.png#lightbox)
 2. Konfigurieren Sie das Microsoft-Peering für die Verbindung. Stellen Sie vorab sicher, dass die folgenden Informationen vorliegen:
 
    * Ein /30-Subnetz für die primäre Verknüpfung. Dies muss ein gültiges öffentliches IPv4-Präfix sein, das sich in Ihrem Besitz befindet und über eine RIR/IRR-Registrierung verfügt. Über dieses Subnetz weisen Sie die erste verwendbare IP-Adresse für Ihren Router zu, da die zweite verwendbare IP-Adresse von Microsoft für den eigenen Router genutzt wird.
@@ -70,42 +78,35 @@ Dieser Abschnitt unterstützt Sie beim Erstellen, Abrufen, Aktualisieren und Lö
    * **Optional** – Einen MD5-Hash, wenn Sie sich für dessen Einsatz entscheiden.
 3. Sie können das Peering auswählen, das Sie konfigurieren möchten, wie im folgenden Beispiel zu sehen. Wählen Sie die Zeile für das Microsoft-Peering aus.
 
-   ![Auswählen der Zeile für das Microsoft-Peering](./media/expressroute-howto-routing-portal-resource-manager/rmicrosoft1.png)
-4. Konfigurieren Sie das Microsoft-Peering. Die folgende Abbildung enthält ein Konfigurationsbeispiel:
+   [![Auswählen der Zeile für das Microsoft-Peering](./media/expressroute-howto-routing-portal-resource-manager/select-peering-m.png "Auswählen der Zeile für das Microsoft-Peering")](./media/expressroute-howto-routing-portal-resource-manager/select-peering-m-lightbox.png#lightbox)
+4. Konfigurieren Sie das Microsoft-Peering. **Speichern** Sie die Konfiguration, nachdem Sie alle Parameter angegeben haben. Die folgende Abbildung enthält eine Beispielkonfiguration:
 
-   ![Konfigurieren des Microsoft-Peerings](./media/expressroute-howto-routing-portal-resource-manager/rmicrosoft2.png)
-5. Speichern Sie die Konfiguration, nachdem Sie alle Parameter angegeben haben.
+   ![Konfigurieren des Microsoft-Peerings](./media/expressroute-howto-routing-portal-resource-manager/configuration-m.png)
 
-   Wenn Ihre Verbindung wie in der Abbildung gezeigt in den Zustand „Validation needed“ (Überprüfung erforderlich) versetzt wird, müssen Sie ein Supportticket erstellen, um gegenüber unserem Supportteam nachzuweisen, dass Sie der Besitzer der Präfixe sind.
+   Wenn Ihre Verbindung wie oben dargestellt in den Zustand „Überprüfung erforderlich“ versetzt wird, müssen Sie ein Supportticket öffnen, um gegenüber unserem Supportteam nachzuweisen, dass sich die Präfixe in Ihrem Besitz befinden. Sie können ein Supportticket direkt über das Portal erstellen, wie im folgenden Beispiel zu sehen:
 
-   ![Speichern der Konfiguration des Microsoft-Peerings](./media/expressroute-howto-routing-portal-resource-manager/rmicrosoft5.png)
+   ![Überprüfung erforderlich – Supportticket](./media/expressroute-howto-routing-portal-resource-manager/ticket-portal-m.png)
 
-   Sie können ein Supportticket direkt über das Portal erstellen, wie im folgenden Beispiel zu sehen:
+5. Nachdem die Konfiguration akzeptiert wurde, sieht die Anzeige in etwa wie in der folgenden Abbildung aus:
 
-   ![](./media/expressroute-howto-routing-portal-resource-manager/rmicrosoft6.png)
-
-
-1. Nachdem die Konfiguration akzeptiert wurde, sieht die Anzeige in etwa wie in der folgenden Abbildung aus:
-
-   ![](./media/expressroute-howto-routing-portal-resource-manager/rmicrosoft7.png)
+   ![Peeringstatus: Konfiguriert](./media/expressroute-howto-routing-portal-resource-manager/configured-m.png "Peeringstatus: Konfiguriert")]
 
 ### <a name="getmsft"></a>So zeigen Sie die Details zum Microsoft-Peering an:
 
-Sie können die Eigenschaften des Microsoft-Peerings anzeigen, indem Sie das Peering auswählen.
+Sie können die Eigenschaften des Microsoft-Peerings anzeigen, indem Sie die Zeile für das Peering auswählen.
 
-![](./media/expressroute-howto-routing-portal-resource-manager/rmicrosoft3.png)
-
+[![Anzeigen der Eigenschaften des Microsoft-Peerings](./media/expressroute-howto-routing-portal-resource-manager/view-peering-m.png "Anzeigen von Eigenschaften")](./media/expressroute-howto-routing-portal-resource-manager/view-peering-m-lightbox.png#lightbox)
 ### <a name="updatemsft"></a>So aktualisieren Sie die Konfiguration des Microsoft-Peerings:
 
-Sie können die Zeile für das Peering auswählen und die Peeringeigenschaften ändern.
+Sie können die Zeile für das Peering auswählen, das Sie ändern möchten, und anschließend die Peeringeigenschaften ändern und die Änderungen speichern.
 
-![](./media/expressroute-howto-routing-portal-resource-manager/rmicrosoft7.png)
+![Auswählen der Zeile für das Peering](./media/expressroute-howto-routing-portal-resource-manager/update-peering-m.png)
 
 ### <a name="deletemsft"></a>So löschen Sie das Microsoft-Peering:
 
-Die Peeringkonfiguration kann durch Auswählen des Löschsymbols entfernt werden, wie in der folgenden Abbildung gezeigt:
+Die Peeringkonfiguration kann durch Klicken auf das Löschsymbol entfernt werden, wie in der folgenden Abbildung gezeigt:
 
-![](./media/expressroute-howto-routing-portal-resource-manager/rmicrosoft4.png)
+![Löschen des Peerings](./media/expressroute-howto-routing-portal-resource-manager/delete-peering-m.png)
 
 ## <a name="private"></a>Privates Azure-Peering:
 
@@ -113,9 +114,18 @@ Dieser Abschnitt unterstützt Sie beim Erstellen, Abrufen, Aktualisieren und Lö
 
 ### <a name="to-create-azure-private-peering"></a>So erstellen Sie ein privates Azure-Peering
 
-1. Konfigurieren Sie die ExpressRoute-Verbindung. Stellen Sie vor dem Fortfahren sicher, dass die Verbindung vom Konnektivitätsanbieter vollständig bereitgestellt wird. Wenn Ihr Konnektivitätsanbieter verwaltete Layer 3-Dienste im Angebot hat, können Sie bei ihm die Aktivierung des privaten Azure-Peerings anfordern. In diesem Fall müssen Sie die Anweisungen in den nächsten Abschnitten nicht befolgen. Falls Ihr Konnektivitätsanbieter das Routing für Sie nicht verwaltet, müssen Sie nach dem Einrichten der Leitung die folgenden Anweisungen befolgen.
+1. Konfigurieren Sie die ExpressRoute-Verbindung. Stellen Sie vor dem Fortfahren sicher, dass die Verbindung vom Konnektivitätsanbieter vollständig bereitgestellt wird. 
 
-   ![list](./media/expressroute-howto-routing-portal-resource-manager/listprovisioned.png)
+   Wenn Ihr Konnektivitätsanbieter verwaltete Layer 3-Dienste im Angebot hat, können Sie bei ihm die Aktivierung des privaten Azure-Peerings anfordern. In diesem Fall müssen Sie die Anweisungen in den nächsten Abschnitten nicht befolgen. Falls Ihr Konnektivitätsanbieter das Routing für Sie nicht verwaltet, müssen Sie nach dem Einrichten der Leitung die folgenden Anweisungen befolgen.
+
+   **Verbindung – Anbieterstatus: Nicht bereitgestellt**
+
+   [![](./media/expressroute-howto-routing-portal-resource-manager/not-provisioned-p.png "Anbieterstatus = Nicht bereitgestellt")](./media/expressroute-howto-routing-portal-resource-manager/not-provisioned-p-lightbox.png#lightbox)
+
+   **Verbindung – Anbieterstatus: Bereitgestellt**
+
+   [![](./media/expressroute-howto-routing-portal-resource-manager/provisioned-p.png "Anbieterstatus – Bereitgestellt")](./media/expressroute-howto-routing-portal-resource-manager/provisioned-p-lightbox.png#lightbox)
+
 2. Konfigurieren Sie das private Azure-Peering für die Verbindung. Stellen Sie sicher, dass Sie über die folgenden Elemente verfügen, bevor Sie mit den nächsten Schritten fortfahren:
 
    * Ein /30-Subnetz für die primäre Verknüpfung. Dieses Subnetz darf nicht Teil eines Adressraums sein, der für virtuelle Netzwerke reserviert ist. Über dieses Subnetz weisen Sie die erste verwendbare IP-Adresse für Ihren Router zu, da die zweite verwendbare IP-Adresse von Microsoft für den eigenen Router genutzt wird.
@@ -125,25 +135,25 @@ Dieser Abschnitt unterstützt Sie beim Erstellen, Abrufen, Aktualisieren und Lö
    * **Optional** – Einen MD5-Hash, wenn Sie sich für dessen Einsatz entscheiden.
 3. Wählen Sie die Zeile für das private Azure-Peering aus, wie im folgenden Beispiel gezeigt:
 
-   ![Privat](./media/expressroute-howto-routing-portal-resource-manager/rprivate1.png)
-4. Konfigurieren Sie das private Azure-Peering. Die folgende Abbildung enthält ein Konfigurationsbeispiel:
+   [![Auswählen der Zeile für privates Peering](./media/expressroute-howto-routing-portal-resource-manager/select-peering-p.png "Auswählen der Zeile für privates Peering")](./media/expressroute-howto-routing-portal-resource-manager/select-peering-p-lightbox.png#lightbox)
+4. Konfigurieren Sie das private Azure-Peering. **Speichern** Sie die Konfiguration, nachdem Sie alle Parameter angegeben haben.
 
-   ![Konfigurieren des privaten Peerings](./media/expressroute-howto-routing-portal-resource-manager/rprivate2.png)
-5. Speichern Sie die Konfiguration, nachdem Sie alle Parameter angegeben haben. Nachdem die Konfiguration akzeptiert wurde, sieht die Anzeige in etwa wie im folgenden Beispiel aus:
+   ![Konfigurieren des privaten Peerings](./media/expressroute-howto-routing-portal-resource-manager/configuration-p.png)
+5. Nachdem die Konfiguration akzeptiert wurde, sieht die Anzeige in etwa wie im folgenden Beispiel aus:
 
-   ![Speichern des privaten Peerings](./media/expressroute-howto-routing-portal-resource-manager/rprivate3.png)
+   ![Speichern des privaten Peerings](./media/expressroute-howto-routing-portal-resource-manager/save-p.png)
 
 ### <a name="getprivate"></a>So zeigen Sie Details zum privaten Azure-Peering an:
 
 Sie können die Eigenschaften des privaten Azure-Peerings anzeigen, indem Sie das Peering auswählen.
 
-![Anzeigen des privaten Peerings](./media/expressroute-howto-routing-portal-resource-manager/rprivate3.png)
+[![Anzeigen der Eigenschaften des privaten Peerings](./media/expressroute-howto-routing-portal-resource-manager/view-p.png "Anzeigen der Eigenschaften des privaten Peerings")](./media/expressroute-howto-routing-portal-resource-manager/view-p-lightbox.png#lightbox)
 
 ### <a name="updateprivate"></a>So aktualisieren Sie die Konfiguration für privates Azure-Peering:
 
-Sie können die Zeile für das Peering auswählen und die Peeringeigenschaften ändern.
+Sie können die Zeile für das Peering auswählen und die Peeringeigenschaften ändern. Speichern Sie Ihre Änderungen nach dem Aktualisieren.
 
-![Aktualisieren des privaten Peerings](./media/expressroute-howto-routing-portal-resource-manager/rprivate2.png)
+![Aktualisieren des privaten Peerings](./media/expressroute-howto-routing-portal-resource-manager/update-peering-p.png)
 
 ### <a name="deleteprivate"></a>So löschen Sie ein privates Azure-Peering:
 
@@ -154,7 +164,7 @@ Die Peeringkonfiguration kann durch Auswählen des Löschsymbols entfernt werden
 > 
 > 
 
-![Löschen des privaten Peerings](./media/expressroute-howto-routing-portal-resource-manager/rprivate4.png)
+![Löschen des privaten Peerings](./media/expressroute-howto-routing-portal-resource-manager/delete-p.png)
 
 ## <a name="public"></a>Öffentliches Azure-Peering:
 
@@ -164,45 +174,17 @@ Dieser Abschnitt unterstützt Sie beim Erstellen, Abrufen, Aktualisieren und Lö
 > Öffentliches Azure-Peering gilt für neue Leitungen als veraltet. Weitere Informationen finden Sie unter [ExpressRoute-Peering](expressroute-circuit-peerings.md).
 >
 
-### <a name="to-create-azure-public-peering"></a>So erstellen Sie ein öffentliches Azure-Peering
-
-1. Konfigurieren Sie die ExpressRoute-Verbindung. Stellen Sie vor dem Fortfahren sicher, dass die Verbindung vom Konnektivitätsanbieter vollständig bereitgestellt wird. Wenn Ihr Konnektivitätsanbieter verwaltete Layer 3-Dienste im Angebot hat, können Sie bei ihm die Aktivierung des öffentlichen Azure-Peerings anfordern. In diesem Fall müssen Sie die Anweisungen in den nächsten Abschnitten nicht befolgen. Falls Ihr Konnektivitätsanbieter das Routing jedoch nicht für Sie verwaltet, setzen Sie Ihre Konfiguration nach dem Erstellen der Verbindung mit den nachfolgenden Schritten fort.
-
-   ![Auflisten des öffentlichen Peerings](./media/expressroute-howto-routing-portal-resource-manager/listprovisioned.png)
-2. Konfigurieren Sie das öffentliche Azure-Peering für die Verbindung. Stellen Sie sicher, dass Sie über die folgenden Elemente verfügen, bevor Sie mit den nächsten Schritten fortfahren:
-
-   * Ein /30-Subnetz für die primäre Verknüpfung. Dies muss ein gültiges öffentliches IPv4-Präfix sein. Über dieses Subnetz weisen Sie die erste verwendbare IP-Adresse für Ihren Router zu, da die zweite verwendbare IP-Adresse von Microsoft für den eigenen Router genutzt wird. 
-   * Ein /30-Subnetz für die sekundäre Verknüpfung. Dies muss ein gültiges öffentliches IPv4-Präfix sein. Über dieses Subnetz weisen Sie die erste verwendbare IP-Adresse für Ihren Router zu, da die zweite verwendbare IP-Adresse von Microsoft für den eigenen Router genutzt wird.
-   * Eine gültige VLAN-ID zum Einrichten dieses Peerings. Stellen Sie sicher, dass kein anderes Peering der Verbindung die gleiche VLAN-ID verwendet. Sie müssen sowohl für primäre als auch für sekundäre Verknüpfungen die gleiche VLAN-ID verwenden.
-   * AS-Nummer für Peering. Sie können sowohl AS-Nummern mit 2 Byte als auch mit 4 Byte verwenden.
-   * **Optional** – Einen MD5-Hash, wenn Sie sich für dessen Einsatz entscheiden.
-3. Wählen Sie die Zeile für das öffentliche Azure-Peering aus, wie in der folgenden Abbildung gezeigt:
-
-   ![Auswählen der Zeile für das öffentliche Peering](./media/expressroute-howto-routing-portal-resource-manager/rpublic1.png)
-4. Konfigurieren Sie das öffentliche Peering. Die folgende Abbildung enthält ein Konfigurationsbeispiel:
-
-   ![Konfigurieren des öffentlichen Peerings](./media/expressroute-howto-routing-portal-resource-manager/rpublic2.png)
-5. Speichern Sie die Konfiguration, nachdem Sie alle Parameter angegeben haben. Nachdem die Konfiguration akzeptiert wurde, sieht die Anzeige in etwa wie im folgenden Beispiel aus:
-
-   ![Speichern der Konfiguration für das öffentliche Peering](./media/expressroute-howto-routing-portal-resource-manager/rpublic3.png)
-
 ### <a name="getpublic"></a>So zeigen Sie Details zum öffentlichen Azure-Peering an:
 
-Sie können die Eigenschaften des öffentlichen Azure-Peerings anzeigen, indem Sie das Peering auswählen.
-
-![Anzeigen der Eigenschaften des öffentlichen Peerings](./media/expressroute-howto-routing-portal-resource-manager/rpublic3.png)
+Zeigen Sie die Eigenschaften des öffentlichen Azure-Peerings an, indem Sie das Peering auswählen.
 
 ### <a name="updatepublic"></a>Aktualisieren der Konfiguration für öffentliches Azure-Peering:
 
-Sie können die Zeile für das Peering auswählen und die Peeringeigenschaften ändern.
-
-![Auswählen der Zeile für das öffentliche Peering](./media/expressroute-howto-routing-portal-resource-manager/rpublic2.png)
+Wählen Sie die Zeile für das Peering aus, und ändern Sie dann die Peeringeigenschaften.
 
 ### <a name="deletepublic"></a>So löschen Sie ein öffentliches Azure-Peering:
 
-Die Peeringkonfiguration kann durch Auswählen des Löschsymbols entfernt werden, wie im folgenden Beispiel zu sehen:
-
-![Löschen des öffentlichen Peerings](./media/expressroute-howto-routing-portal-resource-manager/rpublic4.png)
+Entfernen Sie Ihre Peeringkonfiguration, indem Sie das Löschsymbol auswählen.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

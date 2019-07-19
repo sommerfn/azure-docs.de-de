@@ -8,12 +8,12 @@ ms.service: log-analytics
 ms.topic: conceptual
 ms.date: 08/20/2018
 ms.author: bwren
-ms.openlocfilehash: 17b5c0b459e70909d9f305beb8bf87b83f1cf65c
-ms.sourcegitcommit: 2d3b1d7653c6c585e9423cf41658de0c68d883fa
+ms.openlocfilehash: 2e2d13e6923535a8993a6477cbbfb921f6092d66
+ms.sourcegitcommit: d2785f020e134c3680ca1c8500aa2c0211aa1e24
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/20/2019
-ms.locfileid: "67296516"
+ms.lasthandoff: 07/04/2019
+ms.locfileid: "67565590"
 ---
 # <a name="get-started-with-log-analytics-in-azure-monitor"></a>Erste Schritte mit Log Analytics in Azure Monitor
 
@@ -55,7 +55,7 @@ Event | search "error"
 
 Diese Abfrage durchsucht die Tabelle _Event_ nach Datensätzen, die in einer Eigenschaft den Begriff _error_ enthalten.
 
-Abfragen können entweder mit einem Tabellennamen oder einem [search](/kusto/query/searchoperator)-Befehl beginnen. Das obige Beispiel beginnt mit dem Tabellennamen _Event_, wodurch alle Datensätze aus der Tabelle „Event“ abgerufen werden. Der senkrechte Strich (|) trennt Befehle, d.h. die Ausgabe des ersten Befehls dient als Eingabe für den folgenden Befehl. Sie können eine beliebige Anzahl von Befehlen zu einer einzelnen Abfrage hinzufügen.
+Abfragen können entweder mit einem Tabellennamen oder einem [search](/azure/kusto/query/searchoperator)-Befehl beginnen. Das obige Beispiel beginnt mit dem Tabellennamen _Event_, wodurch alle Datensätze aus der Tabelle „Event“ abgerufen werden. Der senkrechte Strich (|) trennt Befehle, d.h. die Ausgabe des ersten Befehls dient als Eingabe für den folgenden Befehl. Sie können eine beliebige Anzahl von Befehlen zu einer einzelnen Abfrage hinzufügen.
 
 Eine andere Möglichkeit, die gleiche Abfrage zu schreiben, wäre Folgende:
 

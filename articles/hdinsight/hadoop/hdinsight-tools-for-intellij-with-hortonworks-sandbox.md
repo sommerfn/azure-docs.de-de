@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/16/2018
 ms.author: hrasheed
-ms.openlocfilehash: 6ae271fc464e2a5735ef95a428b3070066058ddc
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 5234835f5fbfd5617e6b0440ff38fa900051470a
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64696144"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67450120"
 ---
 # <a name="use-hdinsight-tools-for-intellij-with-hortonworks-sandbox"></a>Verwenden von HDInsight-Tools für IntelliJ mit Hortonworks Sandbox
 
@@ -24,7 +24,7 @@ Erfahren Sie, wie Sie die HDInsight-Tools für IntelliJ verwenden, um Apache Sca
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-Bevor Sie mit diesem Tutorial beginnen können, benötigen Sie Folgendes:
+Bevor Sie mit diesem Artikel beginnen können, benötigen Sie Folgendes:
 
 - Ausführung von Hortonworks Data Platform 2.4 (HDP) in Hortonworks Sandbox auf Ihrem lokalen Computer. Informationen zur Einrichtung von HDP finden Sie unter [Erste Schritte im Apache Hadoop-Ökosystem mit einer Hadoop-Sandbox auf einem virtuellen Computer](apache-hadoop-emulator-get-started.md). 
     > [!NOTE]
@@ -142,7 +142,7 @@ So übermitteln Sie ein Projekt an einen Emulator:
 2. Führen Sie die folgenden Schritte aus:
 
     1. Wählen Sie in der Dropdownliste **Spark cluster (Linux only)** (Spark-Cluster [nur Linux]) Ihre lokale Hortonworks Sandbox-Instanz aus.
-    2. Wählen Sie im Feld **Main class name** (Name der Hauptklasse) den Namen der Hauptklasse aus, oder geben Sie ihn ein. Für dieses Tutorial lautet der Name **GroupByTest**.
+    2. Wählen Sie im Feld **Main class name** (Name der Hauptklasse) den Namen der Hauptklasse aus, oder geben Sie ihn ein. Für diesen Artikel wird der Name **GroupByTest** verwendet.
 
 3. Klicken Sie auf **Submit** (Senden). Die Protokolle der Auftragsübermittlungen werden im Fenster des Spark-Übermittlungstools angezeigt.
 

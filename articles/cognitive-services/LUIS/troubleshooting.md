@@ -9,14 +9,14 @@ services: cognitive-services
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: article
-ms.date: 05/15/2019
+ms.date: 06/18/2019
 ms.author: diberry
-ms.openlocfilehash: f922f9c64f182377365192543305b48659c518da
-ms.sourcegitcommit: c05618a257787af6f9a2751c549c9a3634832c90
+ms.openlocfilehash: 7e1e61d96b066c395668ce1dd9cdba4cb4ecb2be
+ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/30/2019
-ms.locfileid: "66417981"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67204098"
 ---
 # <a name="language-understanding-frequently-asked-questions-faq"></a>Language Understanding: häufig gestellte Fragen (FAQ)
 
@@ -189,11 +189,11 @@ Informationen zu den Unterschieden zwischen dem [Erstellungsschlüssel](luis-how
 
 ### <a name="i-got-an-error-about-being-out-of-quota-how-do-i-fix-it"></a>Ich habe eine Fehlermeldung erhalten, dass nicht genügend Kontingent vorhanden ist. Wie behebe ich das Problem? 
 
-Unter [Beheben von Fehlern vom Typ „Kontingent aufgebraucht“, wenn der Schlüssel die Nutzung im Tarif überschreitet](luis-how-to-azure-subscription.md##how-to-fix-out-of-quota-errors-when-the-key-exceeds-pricing-tier-usage) finden Sie weitere Informationen.
+Weitere Informationen finden Sie unter [Beheben von Fehlern mit HTTP-Statuscode 403 und 429](luis-how-to-azure-subscription.md#fix-http-status-code-403-and-429).
 
 ### <a name="i-need-to-handle-more-endpoint-queries-how-do-i-do-that"></a>Ich muss mehr Endpunktabfragen verarbeiten. Wie geht das? 
 
-Unter [Beheben von Fehlern vom Typ „Kontingent aufgebraucht“, wenn der Schlüssel die Nutzung im Tarif überschreitet](luis-how-to-azure-subscription.md##how-to-fix-out-of-quota-errors-when-the-key-exceeds-pricing-tier-usage) finden Sie weitere Informationen.
+Weitere Informationen finden Sie unter [Beheben von Fehlern mit HTTP-Statuscode 403 und 429](luis-how-to-azure-subscription.md#fix-http-status-code-403-and-429).
 
 
 

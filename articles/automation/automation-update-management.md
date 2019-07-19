@@ -4,17 +4,17 @@ description: In diesem Artikel soll vermittelt werden, wie Sie die Lösung für 
 services: automation
 ms.service: automation
 ms.subservice: update-management
-author: georgewallace
-ms.author: gwallace
+author: bobbytreed
+ms.author: robreed
 ms.date: 05/22/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 871d3f6c81a5ecaa1863857258ea4327db3bf10d
-ms.sourcegitcommit: f9448a4d87226362a02b14d88290ad6b1aea9d82
+ms.openlocfilehash: 3bfec413430de588be6c4423702d41779a8426d0
+ms.sourcegitcommit: f811238c0d732deb1f0892fe7a20a26c993bc4fc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/07/2019
-ms.locfileid: "66808289"
+ms.lasthandoff: 06/29/2019
+ms.locfileid: "67477974"
 ---
 # <a name="update-management-solution-in-azure"></a>Lösung für die Updateverwaltung in Azure
 
@@ -39,13 +39,13 @@ Das folgende Diagramm enthält eine konzeptionelle Darstellung des Verhaltens un
 
 Die Updateverwaltung kann für das systeminterne Integrieren von Computern in mehrere Abonnements im selben Mandanten verwendet werden.
 
-Nachdem ein CVE-Release veröffentlicht wurde, dauert es 2 bis 3 Stunden, bis der Patch für Linux-Computer für die Bewertung angezeigt wird.  Bei Windows-Computern dauert es 12 bis 15 Stunden, bis der Patch nach der Veröffentlichung für die Bewertung angezeigt wird.
+Nachdem ein Paket veröffentlicht wurde, dauert es 2 bis 3 Stunden, bis der Patch für Linux-Computer für die Bewertung angezeigt wird. Bei Windows-Computern dauert es 12 bis 15 Stunden, bis der Patch nach der Veröffentlichung für die Bewertung angezeigt wird.
 
 Nachdem ein Computer einen Scanvorgang abgeschlossen hat, um die Konformität für das Update zu überprüfen, leitet der Agent die Informationen gesammelt an Azure Monitor-Protokolle weiter. Auf einem Windows-Computer wird der Konformitätsscan standardmäßig alle 12 Stunden ausgeführt.
 
 Darüber hinaus wird der Update-Konformitätsscan innerhalb von 15 Minuten nach dem MMA-Neustart sowie vor und nach der Updateinstallation initiiert.
 
-Für einen Linux-Computer wird der Konformitätsscan standardmäßig alle drei Stunden ausgeführt. Wenn der MMA-Agent neu gestartet wird, wird ein Konformitätsscan innerhalb von 15 Minuten eingeleitet.
+Für einen Linux-Computer wird der Konformitätsscan standardmäßig jede Stunde durchgeführt. Wenn der MMA-Agent neu gestartet wird, wird ein Konformitätsscan innerhalb von 15 Minuten eingeleitet.
 
 Die Lösung meldet basierend auf der für die Synchronisierung konfigurierten Quelle, wie aktuell der Computer ist. Wenn der Windows-Computer für das Senden von Meldungen an WSUS konfiguriert ist, können sich die Ergebnisse von den angezeigten Microsoft Update-Ergebnissen unterscheiden. Dies hängt davon ab, wann WSUS zuletzt mit Microsoft Update synchronisiert wurde. Dasselbe gilt für Linux-Computer, die für Meldungen an ein lokales Repository konfiguriert sind (anstatt an ein öffentliches Repository).
 
@@ -223,7 +223,7 @@ Virtuelle Computer, die auf der Grundlage der über Azure Marketplace erhältlic
 
 Wählen Sie zum Erstellen einer neuen Updatebereitstellung **Updatebereitstellung planen** aus. Die Seite **Neue Updatebereitstellung** wird geöffnet. Geben Sie Werte für die Eigenschaften ein, die in der folgenden Tabelle beschrieben werden, und klicken Sie auf **Erstellen**:
 
-| Eigenschaft | BESCHREIBUNG |
+| Eigenschaft | Description |
 | --- | --- |
 | NAME |Eindeutiger Name zum Identifizieren der Updatebereitstellung |
 |Betriebssystem| Linux oder Windows|
@@ -578,7 +578,7 @@ Die Updateverwaltung bietet die Möglichkeit, eine dynamische Gruppe von virtuel
 
 Diese Gruppen werden durch eine Abfrage definiert. Wenn eine Updatebereitstellung beginnt, werden die Mitglieder dieser Gruppe ausgewertet. Dynamische Gruppen funktionieren nicht mit klassischen VMs. Wenn Sie Ihre Abfrage definieren, können die folgenden Elemente zusammen verwendet werden, um die dynamische Gruppe aufzufüllen
 
-* Abonnement
+* Subscription
 * Ressourcengruppen
 * Standorte
 * `Tags`

@@ -9,16 +9,16 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: article
-ms.date: 05/22/2019
+ms.date: 06/24/2019
 ms.author: diberry
-ms.openlocfilehash: b7b4e25c78ef08bdf9a7c2f3faf96725fc5f5fc8
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 4c08c95a05d4f22e2338a7264409aec0f64a4755
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66123884"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67442518"
 ---
-# <a name="preview-migrate-to-api-version-3x--for-luis-apps"></a>Vorschau: Migrieren zu API-Version 3.x für LUIS-Apps
+# <a name="preview-migrate-to-api-version-3x-for-luis-apps"></a>Vorschau: Migrieren zu API-Version 3.x für LUIS-Apps
 
 Die Endpunkt-APIs für Abfragevorhersagen wurden angepasst. In dieser Anleitung erfahren Sie, wie Sie zur Endpunkt-API-Version 3 migrieren. 
 
@@ -44,6 +44,27 @@ Die folgenden LUIS-Features werden in der API V3 **nicht unterstützt**:
 
 Für V3 ist eine [Referenzdokumentation](https://aka.ms/luis-api-v3) verfügbar.
 
+## <a name="endpoint-url-changes-by-slot-name"></a>Endpunkt-URL-Änderungen nach Slotname
+
+Das Format des HTTP-Endpunktaufrufs für V3 hat sich geändert.
+
+|METHODE|URL|
+|--|--|
+|GET|https://<b>{REGION}</b>.api.cognitive.microsoft.com/luis/<b>v3.0-preview</b>/apps/<b>{APP-ID}</b>/slots/<b>{SLOTNAME}</b>/predict?query=<b>{ABFRAGE}</b>|
+|POST|https://<b>{REGION}</b>.api.cognitive.microsoft.com/luis/<b>v3.0-preview</b>/apps/<b>{APP-ID}</b>/slots/<b>{SLOTNAME}</b>/predict|
+|||
+
+## <a name="endpoint-url-changes-by-version-id"></a>Änderungen der Endpunkt-URL nach Versions-ID
+
+Falls Sie nach Version abfragen möchten, müssen Sie zuerst die [Veröffentlichung per API](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5890b47c39e2bb052c5b9c3b) mit `"directVersionPublish":true` durchführen. Fragen Sie den Endpunkt ab, und verweisen Sie dabei nicht auf die Versions-ID, sondern auf den Slotnamen.
+
+
+|METHODE|URL|
+|--|--|
+|GET|https://<b>{REGION}</b>.api.cognitive.microsoft.com/luis/<b>v3.0-preview</b>/apps/<b>{APP-ID}</b>/versions/<b>{VERSIONS-ID}</b>/predict?query=<b>{ABFRAGE}</b>|
+|POST|https://<b>{REGION}</b>.api.cognitive.microsoft.com/luis/<b>v3.0-preview</b>/apps/<b>{APP-ID}</b>/versions/<b>{VERSIONS-ID}</b>/predict|
+|||
+
 ## <a name="prebuilt-entities-with-new-json"></a>Vordefinierte Entitäten mit neuem JSON-Code
 
 In V3 wurden die Antwortobjekte u. a. so angepasst, dass diese nun [vordefinierte Entitäten](luis-reference-prebuilt-entities.md) enthalten. 
@@ -54,11 +75,14 @@ In V3 wurden die Antwortobjekte u. a. so angepasst, dass diese nun [vordefinier
 
 In der API V3 stehen andere Abfragezeichenfolgen-Parameter zur Verfügung.
 
-|Parametername|Type|Version|Zweck|
-|--|--|--|--|
-|`query`|Zeichenfolge|Nur V3|**In V2** enthält der `q`-Parameter die vorherzusagende Äußerung. <br><br>**In V3** wird der `query`-Parameter verwendet, um anzugeben, dass dieses Feature verwendet werden soll.|
-|`show-all-intents`|boolean|Nur V3|Alle Absichten mit der entsprechenden Bewertung werden innerhalb des **prediction.intents**-Objekts zurückgegeben. Absichten werden als Objekte in einem übergeordneten `intents`-Objekt zurückgegeben. `prediction.intents.give` ermöglicht den programmgesteuerten Zugriff, ohne die Absicht im Array suchen zu müssen. In V2 werden diese Absichten in einem Array zurückgegeben. |
-|`verbose`|boolean|V2 und V3|Wenn **in V2** TRUE festgelegt wird, werden alle vorhergesagten Absichten zurückgegeben. Wenn Sie alle vorhergesagten Absichten abrufen müssen, verwenden Sie den V3-Parameter von `show-all-intents`.<br><br>**In V3** stellt dieser Parameter nur Details zu Entitätsmetadaten einer Entitätsvorhersage bereit.  |
+|Parametername|type|Version|Standard|Zweck|
+|--|--|--|--|--|
+|`log`|boolean|V2 und V3|false|Speichern Sie die Abfrage in der Protokolldatei.| 
+|`query`|Zeichenfolge|Nur V3|Kein Standardwert: in GET-Anforderung erforderlich|**In V2** enthält der `q`-Parameter die vorherzusagende Äußerung. <br><br>**In V3** wird der `query`-Parameter verwendet, um anzugeben, dass dieses Feature verwendet werden soll.|
+|`show-all-intents`|boolean|Nur V3|false|Alle Absichten mit der entsprechenden Bewertung werden innerhalb des **prediction.intents**-Objekts zurückgegeben. Absichten werden als Objekte in einem übergeordneten `intents`-Objekt zurückgegeben. `prediction.intents.give` ermöglicht den programmgesteuerten Zugriff, ohne die Absicht im Array suchen zu müssen. In V2 werden diese Absichten in einem Array zurückgegeben. |
+|`verbose`|boolean|V2 und V3|false|Wenn **in V2** TRUE festgelegt wird, werden alle vorhergesagten Absichten zurückgegeben. Wenn Sie alle vorhergesagten Absichten abrufen müssen, verwenden Sie den V3-Parameter von `show-all-intents`.<br><br>**In V3** stellt dieser Parameter nur Details zu Entitätsmetadaten einer Entitätsvorhersage bereit.  |
+
+
 
 <!--
 |`multiple-segments`|boolean|V3 only|Break utterance into segments and predict each segment for intents and entities.|
@@ -71,12 +95,23 @@ In der API V3 stehen andere Abfragezeichenfolgen-Parameter zur Verfügung.
 {
     "query":"your utterance here",
     "options":{
-        "timezoneOffset": "-8:00"
+        "datetimeReference": "2019-05-05T12:00:00",
+        "overridePredictions": true
     },
     "externalEntities":[],
     "dynamicLists":[]
 }
 ```
+
+|Eigenschaft|type|Version|Standard|Zweck|
+|--|--|--|--|--|
+|`dynamicLists`|array|Nur V3|Nicht erforderlich.|Mit [dynamischen Listen](#dynamic-lists-passed-in-at-prediction-time) können Sie eine trainierte und veröffentlichte Listenentität erweitern, die bereits Teil der LUIS-App ist.|
+|`externalEntities`|array|Nur V3|Nicht erforderlich.|Mit [externen Entitäten](#external-entities-passed-in-at-prediction-time) kann Ihre LUIS-App zur Laufzeit Entitäten identifizieren und bezeichnen. Dieses Verhalten kann als Feature für andere vorhandene Entitäten verwendet werden. |
+|`options.datetimeReference`|Zeichenfolge|Nur V3|Kein Standardwert|Wird zum Ermitteln des [datetimeV2-Offsets](luis-concept-data-alteration.md#change-time-zone-of-prebuilt-datetimev2-entity) verwendet.|
+|`options.overridePredictions`|boolean|Nur V3|false|Gibt an, ob die [externe Entität (mit dem gleichen Namen wie die vorhandene Entität)](#override-existing-model-predictions) des Benutzers oder die vorhandene Entität im Modell für die Vorhersage genutzt wird. |
+|`query`|Zeichenfolge|Nur V3|Erforderlich.|**In V2** enthält der `q`-Parameter die vorherzusagende Äußerung. <br><br>**In V3** wird der `query`-Parameter verwendet, um anzugeben, dass dieses Feature verwendet werden soll.|
+
+
 
 ## <a name="response-changes"></a>Änderungen an Antworten
 
@@ -275,6 +310,67 @@ In dieser Äußerung wird mit `him` auf `Hazem` verwiesen. Der Chatbot kann im P
 
 Die Vorhersageantwort enthält die externe Entität (und alle anderen vorhergesagten Entitäten), da diese in der Anforderung definiert ist.  
 
+### <a name="override-existing-model-predictions"></a>Außerkraftsetzen von vorhandenen Modellvorhersagen
+
+Mit der `overridePredictions`-Optionseigenschaft wird Folgendes angegeben: Wenn der Benutzer eine externe Entität sendet, die sich mit einer vorhergesagten Entität mit dem gleichen Namen überschneidet, wird von LUIS die übergebene Entität oder die im Modell vorhandene Entität ausgewählt. 
+
+Sehen Sie sich dies beispielsweise für die Abfrage `today I'm free` an. LUIS erkennt `today` als datetimeV2-Element mit der folgenden Antwort:
+
+```JSON
+"datetimeV2": [
+    {
+        "type": "date",
+        "values": [
+            {
+                "timex": "2019-06-21",
+                "value": "2019-06-21"
+            }
+        ]
+    }
+]
+```
+
+Wenn der Benutzer die externe Entität sendet:
+
+```JSON
+{
+    "entityName": "datetimeV2",
+    "startIndex": 0,
+    "entityLength": 5,
+    "resolution": {
+        "date": "2019-06-21"
+    }
+}
+```
+
+Wenn `overridePredictions` auf `false` festgelegt ist, gibt LUIS eine Antwort zurück, die dem Fall entspricht, in dem die externe Entität nicht gesendet wurde. 
+
+```JSON
+"datetimeV2": [
+    {
+        "type": "date",
+        "values": [
+            {
+                "timex": "2019-06-21",
+                "value": "2019-06-21"
+            }
+        ]
+    }
+]
+```
+
+Wenn `overridePredictions` auf `true` festgelegt ist, gibt LUIS eine Antwort mit folgendem Inhalt zurück:
+
+```JSON
+"datetimeV2": [
+    {
+        "date": "2019-06-21"
+    }
+]
+```
+
+
+
 #### <a name="resolution"></a>Lösung
 
 Die _optionale_ `resolution`-Eigenschaft wird in der Vorhersageantwort zurückgegeben. Dadurch können Sie Metadaten für die externe Entität übergeben und diese Daten dann wieder aus der Antwort abrufen. 
@@ -287,6 +383,7 @@ Die `resolution`-Eigenschaft kann eine Zahl, eine Zeichenfolge, ein Objekt oder 
 * {"text": "value"}
 * 12345 
 * ["a", "b", "c"]
+
 
 
 ## <a name="dynamic-lists-passed-in-at-prediction-time"></a>Dynamische Listen, die zum Zeitpunkt der Vorhersage übergeben werden

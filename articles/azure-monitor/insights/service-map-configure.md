@@ -11,14 +11,14 @@ ms.service: azure-monitor
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 04/30/2019
+ms.date: 06/28/2019
 ms.author: magoedte
-ms.openlocfilehash: a50f080ee4d72ad098ca87f5b3a62b42f8cd5907
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 8f2b74c4c091aed0a1b5889b0a07d44d450d1922
+ms.sourcegitcommit: f811238c0d732deb1f0892fe7a20a26c993bc4fc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65142734"
+ms.lasthandoff: 06/29/2019
+ms.locfileid: "67477080"
 ---
 # <a name="configure-service-map-in-azure"></a>Konfigurieren von Service Map in Azure
 
@@ -29,7 +29,7 @@ In diesem Artikel werden das Konfigurieren von Service Map und das Onboarding vo
 ## <a name="supported-azure-regions"></a>Unterstützte Azure-Regionen
 
 Service Map ist derzeit in den folgenden Azure-Regionen verfügbar:
-- USA (Ost)
+- East US
 - USA, Westen-Mitte
 - Kanada, Mitte
 - UK, Süden
@@ -100,22 +100,18 @@ Im folgenden Abschnitt sind die unterstützten Betriebssysteme für den Dependen
 | 16.04 | 4.4.\*<br>4.8.\*<br>4.10.\*<br>4.11.\*<br>4.13.\* |
 | 14.04 | 3.13.\*<br>4.4.\* |
 
-### <a name="suse-linux-11-enterprise-server"></a>SUSE Linux 11 Enterprise Server
+#### <a name="suse-linux-12-enterprise-server"></a>SUSE Linux 12 Enterprise Server
 
 | Betriebssystemversion | Kernelversion
 |:--|:--|
-| 11 SP4 | 3.0.* |
-
-### <a name="suse-linux-12-enterprise-server"></a>SUSE Linux 12 Enterprise Server
-
-| Betriebssystemversion | Kernelversion
-|:--|:--|
-| 12 SP2 | 4.4.* |
-| 12 SP3 | 4.4.* |
+|12 SP2 | 4.4.* |
+|12 SP3 | 4.4.* |
+|12 SP4 | 4.4.* |
+|12 SP4 | Optimierter Azure-Kernel |
 
 ## <a name="dependency-agent-downloads"></a>Dependency-Agent – Downloads
 
-| Datei | Betriebssystem | Version | SHA-256 |
+| Datei | OS | Version | SHA-256 |
 |:--|:--|:--|:--|
 | [InstallDependencyAgent-Windows.exe](https://aka.ms/dependencyagentwindows) | Windows | 9.8.1 | 622C99924385CBF539988D759BCFDC9146BB157E7D577C997CDD2674E27E08DD |
 | [InstallDependencyAgent-Linux64.bin](https://aka.ms/dependencyagentlinux) | Linux | 9.8.1 | 3037934A5D3FB7911D5840A9744AE9F980F87F620A7F7B407F05E276FE7AE4A8 |

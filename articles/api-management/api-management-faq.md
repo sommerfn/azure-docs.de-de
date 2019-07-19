@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/19/2017
 ms.author: apimpm
-ms.openlocfilehash: edc3c2ddcddaa8a51ae634a7abcd3a61aab530e9
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: f7e93dc12b9932fed90c7f9fa3145e56a3488b32
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66357249"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67448025"
 ---
 # <a name="azure-api-management-faqs"></a>Häufig gestellte Fragen zu Azure API Management
 Hier erhalten Sie Antworten auf häufig gestellte Fragen sowie Informationen zu Mustern und bewährten Methoden für Azure API Management.
@@ -65,7 +65,7 @@ Sie haben verschiedene Optionen, die Verbindung zwischen dem API Management-Gate
 
 * Verwenden Sie die HTTP-Standardauthentifizierung. Weitere Informationen finden Sie unter [Import and publish your first API](import-and-publish.md) (Importieren und Veröffentlichen Ihrer ersten API).
 * Verwenden Sie die gegenseitige SSL-Authentifizierung wie unter [Sichern von Back-End-Diensten über eine Clientzertifikatauthentifizierung in Azure API Management](api-management-howto-mutual-certificates.md) beschrieben.
-* Verwenden Sie IP-Whitelists für Ihren Back-End-Dienst. Die IP-Adresse des Gateways bleibt in allen Tarifen von API Management (mit wenigen [Ausnahmen](#is-the-api-management-gateway-ip-address-constant-can-i-use-it-in-firewall-rules)) konstant. Sie können Ihre Positivliste so konfigurieren, dass diese IP-Adresse zugelassen wird. Sie können die IP-Adresse Ihrer API Management-Instanz im Azure-Portal auf dem Dashboard abrufen.
+* Verwenden Sie IP-Whitelists für Ihren Back-End-Dienst. In allen Tarifen von API Management mit Ausnahme von „Verbrauch“ bleibt die IP-Adresse des Gateways konstant, aber es gelten einige [Einschränkungen](#is-the-api-management-gateway-ip-address-constant-can-i-use-it-in-firewall-rules). Sie können Ihre Positivliste so konfigurieren, dass diese IP-Adresse zugelassen wird. Sie können die IP-Adresse Ihrer API Management-Instanz im Azure-Portal auf dem Dashboard abrufen.
 * Verbinden Sie Ihre API Management-Instanz mit einer Azure Virtual Network-Instanz.
 
 ### <a name="how-do-i-copy-my-api-management-service-instance-to-a-new-instance"></a>Wie kopiere ich meine API Management-Dienstinstanz in eine neue Instanz?

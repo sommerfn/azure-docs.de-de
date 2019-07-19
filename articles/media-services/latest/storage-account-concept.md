@@ -9,14 +9,14 @@ editor: ''
 ms.service: media-services
 ms.workload: ''
 ms.topic: article
-ms.date: 05/11/2019
+ms.date: 06/25/2019
 ms.author: juliako
-ms.openlocfilehash: 9cbb995eb3310a2263185d6fd6dba20efce37f38
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: fc5bf052a7677d76c7128404a420f8c886cf3fe1
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65550146"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67439107"
 ---
 # <a name="cloud-upload-and-storage"></a>Clouduploads und Cloudspeicherung
 
@@ -24,12 +24,12 @@ Um mit dem Verwalten, Verschlüsseln, Codieren, Analysieren und Streamen von Med
 
 Das Media Services-Konto und alle zugeordneten Speicherkonten müssen im gleichen Azure-Abonnement enthalten sein. Zur Vermeidung zusätzlicher Wartezeiten und Kosten für ausgehenden Datenverkehr wird dringend empfohlen, Speicherkonten zu verwenden, die sich am selben Ort wie das Media Services-Konto befinden.
 
-Sie müssen über ein **primäres** Speicherkonto verfügen. Darüber hinaus können Sie beliebig viele **sekundäre** Speicherkonten an Ihr Media Services-Konto anfügen. Media Services unterstützt Konten des Typs **Allgemein v2** (GPv2) oder **Allgemein v1** (GPv1). 
+Sie müssen über ein **primäres** Speicherkonto verfügen. Darüber hinaus können Sie beliebig viele **sekundäre** Speicherkonten an Ihr Media Services-Konto anfügen. Media Services unterstützt Konten des Typs **Allgemein v2** (GPv2) oder **Allgemein v1** (GPv1). <br/>Reine Blobkonten sind als **primäre** Konten nicht zulässig. 
 
->[!NOTE]
-> Reine Blobkonten sind als **primäre** Konten nicht zulässig. 
+Wir empfehlen Ihnen, GPv2 zu verwenden, damit Sie in den Genuss der aktuellen Features und der Leistung kommen. Weitere Informationen zu Speicherkonten finden Sie in der [Übersicht über Azure Storage-Konten](../../storage/common/storage-account-overview.md).
 
-Wir empfehlen die Verwendung von GPv2, damit Sie zwischen „heißen“ und „kalten“ Speicherebenen wählen können. Weitere Informationen zu Speicherkonten finden Sie in der [Übersicht über Azure Storage-Konten](../../storage/common/storage-account-overview.md). 
+> [!NOTE]
+> Nur die heiße Zugriffsebene wird für die Verwendung mit Azure Media Services unterstützt. Die anderen Zugriffsebenen können aber verwendet werden, um Speicherkosten für Inhalt zu reduzieren, der nicht aktiv genutzt wird.
 
 Es gibt verschiedene SKUs, die Sie für Ihr Speicherkonto auswählen können. Weitere Informationen finden Sie unter [Storage accounts](https://docs.microsoft.com/cli/azure/storage/account?view=azure-cli-latest) (Speicherkonten). Falls Sie mit Speicherkonten experimentieren möchten, verwenden Sie `--sku Standard_LRS`. Wenn Sie eine SKU für die Produktion auswählen, sollten Sie jedoch die Verwendung von `--sku Standard_RAGRS` erwägen, da diese Option geografische Replikation zum Gewährleisten der Geschäftskontinuität bietet. 
 
