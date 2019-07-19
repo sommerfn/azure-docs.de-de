@@ -3,15 +3,15 @@ title: Herunterfahren einer Microsoft Azure FXT Edge Filer-Einheit
 description: Enthält eine Beschreibung der Verfahren zum Hochfahren und sicheren Herunterfahren eines Azure FXT Edge Filer-Knotens.
 author: ekpgh
 ms.service: fxt-edge-filer
-ms.topic: how-to
+ms.topic: conceptual
 ms.date: 07/01/2019
 ms.author: v-erkell
-ms.openlocfilehash: 8d779547040da9855409d3408827af2e4acd17a7
-ms.sourcegitcommit: 5bdd50e769a4d50ccb89e135cfd38b788ade594d
+ms.openlocfilehash: 6921e7a52e43a63055b59242c02cc6ca3b8c5313
+ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/03/2019
-ms.locfileid: "67542865"
+ms.lasthandoff: 07/07/2019
+ms.locfileid: "67620102"
 ---
 # <a name="how-to-safely-power-off-azure-fxt-edge-filer-hardware"></a>Sicheres Ausschalten von Azure FXT Edge Filer-Hardware
 

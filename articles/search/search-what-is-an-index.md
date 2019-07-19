@@ -9,12 +9,12 @@ ms.service: search
 ms.topic: conceptual
 ms.date: 05/02/2019
 ms.custom: seodec2018
-ms.openlocfilehash: 462a99ffab8038f34b1ffd038ce5c8e8ec9a8565
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 0a6a5b0e3957141b9ea17a378a7cbeff33a0124e
+ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65024431"
+ms.lasthandoff: 07/01/2019
+ms.locfileid: "67485197"
 ---
 # <a name="create-a-basic-index-in-azure-search"></a>Erstellen eines grundlegenden Index in Azure Search
 
@@ -36,7 +36,7 @@ Der richtige Indexentwurf wird in der Regel über mehrere Iterationen erreicht. 
   
    Beim Klicken auf **Erstellen** werden alle physischen Strukturen, die Ihren Index unterstützen, in Ihrem Suchdienst erstellt.
 
-3. Laden Sie das Indexschema mit [Index-REST-API abrufen](https://docs.microsoft.com/rest/api/searchservice/get-index) und einem Webtesttool wie [Postman](search-fiddler.md) herunter. Sie haben nun eine JSON-Darstellung des Indexes, den Sie im Portal erstellt haben. 
+3. Laden Sie das Indexschema mit [Index-REST-API abrufen](https://docs.microsoft.com/rest/api/searchservice/get-index) und einem Webtesttool wie [Postman](search-get-started-postman.md) herunter. Sie haben nun eine JSON-Darstellung des Indexes, den Sie im Portal erstellt haben. 
 
    Sie wechseln an diesem Punkt zu einem codebasierten Ansatz. Das Portal eignet sich nun ideal für die Iteration, da Sie keinen Index bearbeiten können, der bereits erstellt wurde. Sie können aber Postman und REST für die verbleibenden Aufgaben verwenden.
 
@@ -48,7 +48,7 @@ Der richtige Indexentwurf wird in der Regel über mehrere Iterationen erreicht. 
 
 Da physische Strukturen im Dienst erstellt werden, ist das [Löschen und Neuerstellen von Indizes](search-howto-reindex.md) erforderlich, wenn Sie wesentliche Änderungen an einer vorhandenen Felddefinition vornehmen. Dies bedeutet, dass Sie während der Entwicklung häufige Neuerstellungen einplanen sollten. Sie sollten erwägen, mit einer Teilmenge Ihrer Daten zu arbeiten, damit Neuerstellungen schneller gehen. 
 
-Code eignet sich eher als ein Portalansatz für den iterativen Entwurf. Wenn Sie sich für die Indexdefinition auf das Portal verlassen, müssen Sie bei jeder Neuerstellung die Indexdefinition ausfüllen. Als Alternative sind Tools wie [Postman und die REST-API](search-fiddler.md) hilfreich zum Proof of Concept-Testen, wenn Entwicklungsprojekte sich noch in frühen Phasen befinden. Sie können inkrementelle Änderungen an einer Indexdefinition im Anforderungstext vornehmen und dann die Anforderung an Ihren Dienst senden, um einen Index mit einem aktualisierten Schema neu zu erstellen.
+Code eignet sich eher als ein Portalansatz für den iterativen Entwurf. Wenn Sie sich für die Indexdefinition auf das Portal verlassen, müssen Sie bei jeder Neuerstellung die Indexdefinition ausfüllen. Als Alternative sind Tools wie [Postman und die REST-API](search-get-started-postman.md) hilfreich zum Proof of Concept-Testen, wenn Entwicklungsprojekte sich noch in frühen Phasen befinden. Sie können inkrementelle Änderungen an einer Indexdefinition im Anforderungstext vornehmen und dann die Anforderung an Ihren Dienst senden, um einen Index mit einem aktualisierten Schema neu zu erstellen.
 
 ## <a name="components-of-an-index"></a>Komponenten eines Index
 
@@ -146,7 +146,7 @@ Die [*Feldsammlung*](#fields-collection) ist typischerweise der größte Teil ei
 Wenn Sie Ihr Schema definieren, müssen Sie den Namen, den Typ und die Attribute jedes Felds in Ihrem Index festlegen. Der Feldtyp klassifiziert die Daten, die in dem Feld gespeichert sind. Attribute werden für einzelne Felder festlegen, um anzugeben, wie das Feld verwendet wird. Die folgende Tabelle listet die Typen und Attribute auf, die Sie angeben können.
 
 ### <a name="data-types"></a>Datentypen
-| Type | BESCHREIBUNG |
+| type | BESCHREIBUNG |
 | --- | --- |
 | *Edm.String* |Text, der optional für die Volltextsuche (Worttrennung, Wortstammerkennung usw.) mit einem Token versehen werden kann. |
 | *Collection(Edm.String)* |Eine Liste von Zeichenfolgen, die für die Volltextsuche mit einem Token versehen werden können. Für die Anzahl der Elemente in einer Sammlung gibt es keine Obergrenze, allerdings gilt die Obergrenze für die Größe der Nutzlast von 16 MB auch für Sammlungen. |
@@ -160,16 +160,22 @@ Wenn Sie Ihr Schema definieren, müssen Sie den Namen, den Typ und die Attribute
 Ausführlichere Informationen zu den von Azure Search unterstützten Datentypen finden Sie [hier](https://docs.microsoft.com/rest/api/searchservice/Supported-data-types).
 
 ### <a name="index-attributes"></a>Indexattribute
+
+Genau ein Feld Ihres Index muss als **key**-Feld festgelegt sein, mit dem jedes Dokument eindeutig identifiziert werden kann.
+
+Mit anderen Attributen wird bestimmt, wie ein Feld in einer Anwendung verwendet wird. So wird beispielsweise jedem Feld, das in eine Volltextsuche einbezogen werden soll, das Attribut **searchable** zugewiesen. 
+
+Die APIs, die Sie zum Erstellen eines Index verwenden, verfügen über unterschiedliches Standardverhalten. Für die [REST-APIs](https://docs.microsoft.com/rest/api/searchservice/Create-Index) sind die meisten Attribute standardmäßig aktiviert (z. B. sind **searchable** und **retrievable** für Zeichenfolgenfelder auf „true“ festgelegt). Sie müssen sie häufig nur festlegen, wenn Sie sie deaktivieren möchten. Für das .NET SDK gilt das Gegenteil. Für jede Eigenschaft, die Sie nicht explizit festlegen, wird das entsprechende Suchverhalten standardmäßig deaktiviert, sofern Sie es nicht ausdrücklich aktivieren.
+
 | Attribut | BESCHREIBUNG |
 | --- | --- |
-| *Schlüssel* |Eine Zeichenfolge, die die eindeutige ID der einzelnen Dokumente darstellt und für die Dokumentsuche verwendet wird. Jeder Index muss über einen Schlüssel verfügen. Als Schlüssel kann immer nur ein einzelnes Feld fungieren, und sein Typ muss auf „Edm.String“ festgelegt sein. |
-| *Abrufbar* |Gibt an, ob ein Feld in einem Suchergebnis zurückgegeben werden kann. |
-| *Filterbar* |Ermöglicht die Verwendung des Felds in Filterabfragen. |
-| *Sortierbar* |Ermöglicht einer Abfrage das Sortieren von Suchergebnissen mithilfe dieses Felds. |
-| *Facettierbar* |Ermöglicht die Verwendung eines Felds in einer [Facettennavigationsstruktur](search-faceted-navigation.md) für benutzerdefiniertes Filtern. Repetitive Werte, mit denen sich mehrere Dokumente zu einer Gruppe zusammenfassen lassen (etwa mehrere Dokumente der gleichen Marken- oder Dienstleistungskategorie), sind in der Regel am besten für die Verwendung als Facetten geeignet. |
-| *Durchsuchbar* |Markiert das Feld als in die Volltextsuche einbeziehbar. |
+| `key` |Eine Zeichenfolge, die die eindeutige ID der einzelnen Dokumente darstellt und für die Dokumentsuche verwendet wird. Jeder Index muss über einen Schlüssel verfügen. Als Schlüssel kann immer nur ein einzelnes Feld fungieren, und sein Typ muss auf „Edm.String“ festgelegt sein. |
+| `retrievable` |Gibt an, ob ein Feld in einem Suchergebnis zurückgegeben werden kann. |
+| `filterable` |Ermöglicht die Verwendung des Felds in Filterabfragen. |
+| `Sortable` |Ermöglicht einer Abfrage das Sortieren von Suchergebnissen mithilfe dieses Felds. |
+| `facetable` |Ermöglicht die Verwendung eines Felds in einer [Facettennavigationsstruktur](search-faceted-navigation.md) für benutzerdefiniertes Filtern. Repetitive Werte, mit denen sich mehrere Dokumente zu einer Gruppe zusammenfassen lassen (etwa mehrere Dokumente der gleichen Marken- oder Dienstleistungskategorie), sind in der Regel am besten für die Verwendung als Facetten geeignet. |
+| `searchable` |Markiert das Feld als in die Volltextsuche einbeziehbar. |
 
-Ausführlichere Informationen zu den Indexattributen von Azure Search finden Sie [hier](https://docs.microsoft.com/rest/api/searchservice/Create-Index).
 
 ## <a name="storage-implications"></a>Hinweise zum Speicher
 

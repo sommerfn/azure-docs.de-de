@@ -13,17 +13,17 @@ ms.topic: conceptual
 ms.date: 12/18/2018
 ms.reviewer: yossiy
 ms.author: mbullwin
-ms.openlocfilehash: cfa00504cd2a05985fde2af3357418eac8baceeb
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 46944603fdf45a2a7a14641086959bf61b3f773e
+ms.sourcegitcommit: c63e5031aed4992d5adf45639addcef07c166224
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61299056"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67465887"
 ---
 # <a name="smart-detection---failure-anomalies"></a>Smart Detection – ungewöhnliche fehlgeschlagene Anforderungen
 [Application Insights](../../azure-monitor/app/app-insights-overview.md) benachrichtigt Sie automatisch und nahezu in Echtzeit, wenn es bei Ihrer Web-App zu einer ungewöhnlichen Zunahme der fehlgeschlagenen Anforderungen kommt. Die Lösung erkennt eine ungewöhnliche Zunahme der Rate fehlerhafter HTTP-Anforderungen oder Abhängigkeitsaufrufen. Bei fehlgeschlagenen Anforderungen handelt es sich in der Regel um Anforderungen mit Antwortcodes von 400 oder höher. Um Sie bei der Selektierung und Diagnose des Problems zu unterstützen, wird in der Benachrichtigung eine Analyse der Merkmale der Fehler und der verknüpften Telemetriedaten angegeben. Außerdem werden Links zum Application Insights-Portal zur weiteren Diagnose bereitgestellt. Diese Funktion muss nicht eingerichtet oder konfiguriert werden, da sie Machine Learning-Algorithmen verwendet, um die normale Fehlerrate zu bestimmen.
 
-Dieses Feature funktioniert mit Java- und ASP.NET-Web-Apps, die in der Cloud oder auf Ihren eigenen Servern gehostet werden. Es funktioniert auch mit allen Apps, die Daten zur Anforderungs- oder Abhängigkeitstelemetrie generieren, z.B. mit einer Workerrolle, mit der [TrackRequest()](../../azure-monitor/app/api-custom-events-metrics.md#trackrequest) oder [TrackDependency()](../../azure-monitor/app/api-custom-events-metrics.md#trackdependency) aufgerufen wird.
+Dieses Feature funktioniert mit jeder in der Cloud oder auf Ihren eigenen Servern gehosteten Web-App, die Daten zur Anforderungs- oder Abhängigkeitstelemetrie generiert, z.B. mit einer Workerrolle, mit der [TrackRequest()](../../azure-monitor/app/api-custom-events-metrics.md#trackrequest) oder [TrackDependency()](../../azure-monitor/app/api-custom-events-metrics.md#trackdependency) aufgerufen wird.
 
 Nachdem Sie [Application Insights für Ihr Projekt](../../azure-monitor/app/app-insights-overview.md)eingerichtet haben und Ihre App eine bestimmte Mindestmenge von Telemetriedaten generiert hat, benötigt Smart Detection 24 Stunden, um das normale Verhalten Ihrer App zu ermitteln, bevor die Erkennung aktiviert wird und Warnungen senden kann.
 
@@ -43,6 +43,26 @@ Sie enthält folgende Angaben:
 * Ein charakteristisches Muster für die Fehler. In diesem Beispiel gibt es einen bestimmten Antwortcode, einen Anforderungsnamen (Vorgang) und eine App-Version. So wissen Sie sofort, wo im Code Sie suchen müssen. Weitere Möglichkeiten sind beispielsweise ein bestimmter Browser oder Clientbetriebssystem.
 * Die Ausnahme, Protokollablaufverfolgungen und Abhängigkeitsfehler (Datenbanken oder andere externe Komponenten), die den charakterisierten Fehlern zugeordnet zu sein scheinen.
 * Direkte Links zu relevanten Suchvorgängen in den Telemetriedaten in Application Insights.
+
+## <a name="failure-anomalies-v2"></a>Fehleranomalien v2
+Eine neue Version der Warnungsregel „Fehleranomalien“ ist jetzt verfügbar. Diese neue Version wird auf der neuen Azure-Warnungsplattform ausgeführt und bringt gegenüber der bestehenden Version eine Vielzahl von Verbesserungen mit sich.
+
+### <a name="whats-new-in-this-version"></a>Was ist neu in dieser Version?
+- Schnellere Erkennung von Problemen
+- Ein umfangreicherer Satz von Aktionen: Die Warnungsregel wird mit einer zugehörigen [Aktionsgruppe](https://docs.microsoft.com/azure/azure-monitor/platform/action-groups) namens „Intelligente Erkennung in Application Insights“ erstellt, die E-Mail- und Webhookaktionen enthält, und kann erweitert werden, um zusätzliche Aktionen auszulösen, wenn die Warnung ausgelöst wird.
+- Fokussiertere Benachrichtigungen: Von dieser Warnungsregel gesendete E-Mail-Benachrichtigungen werden jetzt standardmäßig an Benutzer gesendet, denen die Rollen Überwachungsleser oder Überwachungsmitwirkender des Abonnements zugewiesen sind. Weitere Informationen hierzu finden Sie [hier](https://docs.microsoft.com/azure/azure-monitor/app/proactive-email-notification).
+- Einfachere Konfiguration über ARM-Vorlagen: Ein Beispiel finden Sie [hier](https://docs.microsoft.com/azure/azure-monitor/app/proactive-arm-config).
+- Unterstützung des allgemeinen Warnungsschemas: Von dieser Warnungsregel gesendete Benachrichtigungen folgen dem [allgemeinen Warnungsschema](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-common-schema).
+- Vereinheitlichte E-Mail-Vorlage: Das Erscheinungsbild von dieser Warnungsregel gesendeter E-Mail-Benachrichtigungen ist mit dem anderer Typen von Warnungen konsistent. Mit dieser Änderung ist die Option, Warnungen zu Fehleranomalien mit detaillierten Diagnoseinformationen zu erhalten, nicht mehr verfügbar.
+
+### <a name="how-do-i-get-the-new-version"></a>Wie erhalte ich die neue Version?
+- Neu erstellte Application Insights-Ressourcen werden jetzt mit der neuen Version der Warnungsregel „Fehleranomalien“ bereitgestellt.
+- Bestehende Application Insights-Ressourcen mit der klassischen Version der Warnungsregel „Fehleranomalien“ erhalten die neue Version, sobald ihr Hostingabonnement im Rahmen des [klassischen Prozesses der Deaktivierung von Warnungen](https://docs.microsoft.com/azure/azure-monitor/platform/monitoring-classic-retirement) auf die neue Warnungsplattform migriert wird.
+
+> [!NOTE]
+> Die neue Version der Warnungsregel „Fehleranomalien“ bleibt kostenlos. Darüber hinaus sind auch E-Mail- und Webhookaktionen, die durch die zugehörige Aktionsgruppe „Intelligente Erkennung in Application Insights“ ausgelöst werden, kostenlos.
+> 
+> 
 
 ## <a name="benefits-of-smart-detection"></a>Vorteile von Smart Detection
 Normale [Metrikwarnungen](../../azure-monitor/app/alerts.md) informieren Sie, dass möglicherweise ein Problem vorliegt. Mit Smart Detection wird dagegen die Diagnose für Sie gestartet und ein großer Teil der Analyse durchgeführt, die Sie ansonsten selbst durchzuführen hätten. Sie erhalten die Ergebnisse fein säuberlich verpackt und können so schnell zur Ursache des Problems vordringen.

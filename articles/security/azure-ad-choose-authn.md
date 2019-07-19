@@ -4,17 +4,17 @@ description: Dieser Leitfaden dient CEOs, CIOs, CISOs, Chief Identity Architects
 services: active-directory
 keywords: ''
 author: martincoetzer
-ms.author: martincoetzer
+ms.author: martinco
 ms.date: 04/12/2018
 ms.topic: article
 ms.service: active-directory
 ms.workload: identity
-ms.openlocfilehash: 26fca12060363f4ad05baaeceb6fb800a0d76216
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: c0faeb211860391c93563200f509d60876a504b9
+ms.sourcegitcommit: 1572b615c8f863be4986c23ea2ff7642b02bc605
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67449266"
+ms.lasthandoff: 07/10/2019
+ms.locfileid: "67786697"
 ---
 # <a name="choose-the-right-authentication-method-for-your-azure-active-directory-hybrid-identity-solution"></a>Wählen der richtigen Authentifizierungsmethode für Ihre Azure Active Directory-Hybrididentitätslösung 
 
@@ -94,7 +94,7 @@ Informationen zu Entscheidungsfragen:
 
 * **Erweiterte Szenarien**: Wenn Organisationen sich dafür entscheiden, können sie Erkenntnisse aus Identitäten gewinnen, indem Azure AD Identity Protection-Berichte mit Azure AD Premium P2 verwendet werden. Ein Beispiel hierfür ist der Bericht zu kompromittierten Anmeldeinformationen. Windows Hello for Business verfügt über [spezifische Anforderungen, wenn Sie die Kennworthashsynchronisierung verwenden](https://docs.microsoft.com/windows/access-protection/hello-for-business/hello-identity-verification). [Azure AD Domain Services](https://docs.microsoft.com/azure/active-directory-domain-services/active-directory-ds-getting-started-password-sync) erfordern Kennworthashsynchronisierung, um Endbenutzern ihre Unternehmensanmeldeinformationen in der verwalteten Domäne bereitzustellen.
 
-    Organisationen, die eine mehrstufige Authentifizierung mit Kennworthashsynchronisierung benötigen, müssen die Multi-Factor Authentication von Azure AD oder [benutzerdefinierte Steuerelemente für den bedingten Zugriff](https://docs.microsoft.com/azure/active-directory/conditional-access/controls#custom-controls) verwenden. Es ist für diese Organisationen nicht möglich, Verfahren zur mehrstufigen Authentifizierung basierend auf einem Verbund zu nutzen, die von Drittanbietern oder lokal angeboten werden.
+    Organisationen, die eine mehrstufige Authentifizierung mit Kennworthashsynchronisierung benötigen, müssen die Multi-Factor Authentication von Azure AD oder [benutzerdefinierte Steuerelemente für den bedingten Zugriff](https://docs.microsoft.com/azure/active-directory/conditional-access/controls#custom-controls-preview) verwenden. Es ist für diese Organisationen nicht möglich, Verfahren zur mehrstufigen Authentifizierung basierend auf einem Verbund zu nutzen, die von Drittanbietern oder lokal angeboten werden.
 
 > [!NOTE]
 > Für den bedingten Azure AD-Zugriff werden Lizenzen vom Typ [Azure AD Premium P1](https://azure.microsoft.com/pricing/details/active-directory/) benötigt.
@@ -118,7 +118,7 @@ Informationen zu den Bereitstellungsschritten finden Sie unter [Implementieren d
 
 * **Erweiterte Szenarien**: Bei der Passthrough-Authentifizierung wird die lokale Kontorichtlinie zum Zeitpunkt der Anmeldung erzwungen. Beispielsweise wird der Zugriff verweigert, wenn ein Konto eines lokalen Benutzers den Status „Deaktiviert“, „Gesperrt“ oder [Kennwort abgelaufen](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-pta-faq#what-happens-if-my-users-password-has-expired-and-they-try-to-sign-in-by-using-pass-through-authentication) hat oder wenn der Zugriffsversuch außerhalb der für den Benutzer zulässigen Anmeldestunden liegt. 
 
-    Organisationen, die eine mehrstufige Authentifizierung mit Passthrough-Authentifizierung benötigen, müssen die Multi-Factor Authentication (MFA) von Azure oder [benutzerdefinierte Steuerelemente für den bedingten Zugriff](https://docs.microsoft.com/azure/active-directory/conditional-access/controls#custom-controls) verwenden. Es ist für diese Organisationen nicht möglich, ein Verfahren zur mehrstufigen Authentifizierung basierend auf einem Verbund zu nutzen, das von Drittanbietern oder lokal angeboten wird. Für die erweiterten Features muss die Kennworthashsynchronisierung unabhängig davon bereitgestellt werden, ob Sie die Passthrough-Authentifizierung wählen. Ein Beispiel hierfür ist der Bericht zu kompromittierten Anmeldeinformationen von Identity Protection.
+    Organisationen, die eine mehrstufige Authentifizierung mit Passthrough-Authentifizierung benötigen, müssen die Multi-Factor Authentication (MFA) von Azure oder [benutzerdefinierte Steuerelemente für den bedingten Zugriff](https://docs.microsoft.com/azure/active-directory/conditional-access/controls#custom-controls-preview) verwenden. Es ist für diese Organisationen nicht möglich, ein Verfahren zur mehrstufigen Authentifizierung basierend auf einem Verbund zu nutzen, das von Drittanbietern oder lokal angeboten wird. Für die erweiterten Features muss die Kennworthashsynchronisierung unabhängig davon bereitgestellt werden, ob Sie die Passthrough-Authentifizierung wählen. Ein Beispiel hierfür ist der Bericht zu kompromittierten Anmeldeinformationen von Identity Protection.
 
 * **Geschäftskontinuität**: Wir empfehlen Ihnen, zwei zusätzliche Agents für die Passthrough-Authentifizierung bereitzustellen. Diese Bereitstellung gilt zusätzlich zum ersten Agent auf dem Azure AD Connect-Server. Mit dieser zusätzlichen Bereitstellung wird für Authentifizierungsanforderungen die Hochverfügbarkeit sichergestellt. Wenn Sie drei Agents bereitgestellt haben, kann ein Agent immer noch ausfallen, wenn ein anderer Agent wegen Wartungsarbeiten ausfällt. 
 

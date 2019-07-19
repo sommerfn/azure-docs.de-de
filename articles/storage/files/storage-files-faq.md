@@ -8,12 +8,12 @@ ms.date: 01/02/2019
 ms.author: rogarana
 ms.subservice: files
 ms.topic: conceptual
-ms.openlocfilehash: cdffbfd11a0f1c7d99818fa00f550965774b9b31
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: c32d9954b3c90a5f7e9c5475acdb141f7154cf76
+ms.sourcegitcommit: 5bdd50e769a4d50ccb89e135cfd38b788ade594d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65190062"
+ms.lasthandoff: 07/03/2019
+ms.locfileid: "67540359"
 ---
 # <a name="frequently-asked-questions-faq-about-azure-files"></a>Häufig gestellte Fragen (FAQ) zu Azure Files
 [Azure Files](storage-files-introduction.md) bietet vollständig verwaltete Dateifreigaben in der Cloud, auf die über das branchenübliche [Protokoll Server Message Block (SMB) zugegriffen werden kann](https://msdn.microsoft.com/library/windows/desktop/aa365233.aspx). Sie können Azure-Dateifreigaben gleichzeitig unter Cloud- und lokalen Bereitstellungen von Windows, Linux und macOS einbinden. Azure-Dateifreigaben können auch auf Windows Server-Computern zwischengespeichert werden, indem die Azure-Dateisynchronisierung verwendet wird, um den schnellen Zugriff in der Nähe der Datennutzung zu ermöglichen.
@@ -73,10 +73,10 @@ In diesem Artikel werden häufig gestellte Fragen zu Azure Files-Features und -F
 
 * <a id="tier-options"></a>
   **Welche Speicherebenen werden in Azure Files unterstützt?**  
-    Derzeit unterstützt Azure Files nur die Speicherebene „Standard“. Für die Unterstützung von Storage Premium und „kaltem“ Speicher können noch keine Starttermine genannt werden. 
+    Azure Files unterstützt zwei Speichertarife: Premium und Standard. Standard-Dateifreigaben werden in universellen Speicherkonten (GPv1 oder GPv2) und Premium-Dateifreigaben in FileStorage-Speicherkonten erstellt. Erfahren Sie mehr darüber, wie Sie [Standard-Dateifreigaben](storage-how-to-create-file-share.md) und [Premium-Dateifreigaben](storage-how-to-create-premium-fileshare.md) erstellen. 
     
     > [!NOTE]
-    > Es ist nicht möglich, Azure-Dateifreigaben basierend auf reinen Blobspeicherkonten oder Storage Premium-Konten zu erstellen.
+    > Es ist nicht möglich, Azure-Dateifreigaben basierend auf Blobspeicherkonten oder universellen *Premium*-Speicherkonten (GPv1 oder GPv2) zu erstellen. Standard-Azure-Dateifreigaben können nur in universellen *Standard*-Konten und Premium-Azure-Dateifreigaben nur in FileStorage-Speicherkonten erstellt werden. Universelle *Premium*-Speicherkonten (GPv1 und GPv2) sind nur für Premium-Seitenblobs bestimmt. 
 
 * <a id="give-us-feedback"></a>
   **Ich wünsche mir, dass Azure Files ein bestimmtes Feature hinzugefügt wird. Können Sie es hinzufügen?**  
@@ -356,8 +356,8 @@ In diesem Artikel werden häufig gestellte Fragen zu Azure Files-Features und -F
     Informationen zu Skalierbarkeits- und Leistungszielen für Azure Files finden Sie unter [Skalierbarkeits- und Leistungsziele für Azure Files](storage-files-scale-targets.md).
 
 * <a id="need-larger-share"></a>
-**Ich benötige eine größere Dateifreigabe, die für Azure Files derzeit noch nicht angeboten wird. Kann ich die Größe meiner Azure-Dateifreigabe erhöhen?**  
-    Nein. Die maximale Größe einer Azure-Dateifreigabe beträgt 5 TiB. Zurzeit ist dies eine feste Grenze, die wir nicht überschreiten können. Wir arbeiten an einer Lösung, um die Freigabegröße auf 100 TiB zu erhöhen, können hierfür derzeit aber keinen Zeitplan nennen.
+**Welche Größen sind für Azure-Dateifreigaben verfügbar?**  
+    Azure-Dateifreigaben (Premium und Standard) können bis zu 100TiB zentral hochskaliert werden. Premium-Dateifreigaben in Größen bis zu 100TiB stehen als GA-Angebot zur Verfügung. Standard-Dateifreigaben in Größen bis zu 5TiB sind als GA-Angebot verfügbar, Größen bis zu 100TiB in der Vorschau. Im Abschnitt [Onboarding für größere Dateifreigaben (Standard-Tarif)](storage-files-planning.md#onboard-to-larger-file-shares-standard-tier) des Planungshandbuchs finden Sie Onboardinganweisungen zur Vorschau für größere Dateifreigaben im Standard-Tarif.
 
 * <a id="open-handles-quota"></a>
 **Wie viele Clients können gleichzeitig auf dieselbe Datei zugreifen?**    
