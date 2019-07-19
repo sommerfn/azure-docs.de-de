@@ -187,7 +187,7 @@ Die Ausgabe aus dem vorherigen Beispiel mit den Standardwerten lautet:
 
 | NAME | type | Wert |
 | ---- | ---- | ----- |
-| stringOutput | string | die Standardeinstellung |
+| stringOutput | string | default |
 | intOutput | Int | 1 |
 | objectOutput | Object | {"first": "default"} |
 | arrayOutput | Array | [1] |
