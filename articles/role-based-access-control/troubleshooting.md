@@ -11,16 +11,16 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 05/13/2019
+ms.date: 06/12/2019
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.custom: seohack1
-ms.openlocfilehash: 5dda2eafe86d037faab6284c2af0d8026c194d11
-ms.sourcegitcommit: d73c46af1465c7fd879b5a97ddc45c38ec3f5c0d
+ms.openlocfilehash: 59ece9c37a563efba6329a30c06c1b596b1a5d57
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/20/2019
-ms.locfileid: "65921146"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67058154"
 ---
 # <a name="troubleshoot-rbac-for-azure-resources"></a>Problembehandlung von RBAC für Azure-Ressourcen
 
@@ -52,7 +52,62 @@ In diesem Artikel werden häufig gestellte Fragen über die rollenbasierten Zugr
 ## <a name="access-denied-or-permission-errors"></a>Zugriff verweigert oder Berechtigungsfehler
 
 - Wenn beim Erstellen einer Ressource der Berechtigungsfehler „The client with object id does not have authorization to perform action over scope (code: AuthorizationFailed)“ (Der Client mit der Objekt-ID hat keine Berechtigung zum Ausführen der Aktion über Bereich (Code: AuthorizationFailed)) auftritt, vergewissern Sie sich, dass Sie mit einem Benutzer angemeldet sind, dem eine Rolle zugewiesen ist, die im ausgewählten Bereich über Schreibberechtigungen für die Ressource verfügt. Zum Verwalten virtueller Computer in einer Ressourcengruppe sollte Ihnen zum Beispiel die Rolle [Mitwirkender für virtuelle Computer](built-in-roles.md#virtual-machine-contributor) für die Ressourcengruppe (oder den übergeordneten Bereich) zugewiesen sein. Eine Liste mit den Berechtigungen für die integrierten Rollen finden Sie unter [Integrierte Rollen für die rollenbasierte Zugriffssteuerung in Azure](built-in-roles.md).
-- Wenn beim Erstellen oder Aktualisieren eines Supporttickets der Berechtigungsfehler „You don't have permission to create a support request“ (Sie sind zum Erstellen einer Supportanfrage nicht berechtigt) auftritt, vergewissern Sie sich, dass Sie mit einem Benutzer angemeldet sind, dem eine Rolle zugewiesen ist, die über die Berechtigung `Microsoft.Support/supportTickets/write` verfügt, wie z.B. [Mitwirkender für Supportanfragen](built-in-roles.md#support-request-contributor).
+- Wenn beim Erstellen oder Aktualisieren eines Supporttickets der Berechtigungsfehler „You don't have permission to create a support request“ (Sie sind zum Erstellen einer Supportanfrage nicht berechtigt) auftritt, vergewissern Sie sich, dass Sie mit einem Benutzer angemeldet sind, dem eine Rolle zugewiesen ist, die über die Berechtigung `Microsoft.Support/supportTickets/write` verfügt, wie z. B. [Mitwirkender für Supportanfragen](built-in-roles.md#support-request-contributor).
+
+## <a name="role-assignments-without-a-security-principal"></a>Rollenzuweisungen ohne einen Sicherheitsprinzipal
+
+Wenn Sie Ihre Rollenzuweisungen mithilfe von Azure PowerShell auflisten, werden möglicherweise Zuweisungen mit einem leeren `DisplayName` und einem auf „Unbekannt“ festgelegten `ObjectType` angezeigt. Beispiel: [Get-AzRoleAssignment](/powershell/module/az.resources/get-azroleassignment) gibt eine Rollenzuweisung zurück, die dem folgenden ähnelt:
+
+```azurepowershell
+RoleAssignmentId   : /subscriptions/11111111-1111-1111-1111-111111111111/providers/Microsoft.Authorization/roleAssignments/22222222-2222-2222-2222-222222222222
+Scope              : /subscriptions/11111111-1111-1111-1111-111111111111
+DisplayName        :
+SignInName         :
+RoleDefinitionName : Storage Blob Data Contributor
+RoleDefinitionId   : ba92f5b4-2d11-453d-a403-e96b0029c9fe
+ObjectId           : 33333333-3333-3333-3333-333333333333
+ObjectType         : Unknown
+CanDelegate        : False
+```
+
+Und wenn Sie Ihre Rollenzuweisungen mit der Azure-Befehlszeilenschnittstelle auflisten, werden möglicherweise Zuweisungen mit einem leeren `principalName` angezeigt. Beispiel: [az role assignment list](/cli/azure/role/assignment#az-role-assignment-list) gibt eine Rollenzuweisung zurück, die dem folgenden ähnelt:
+
+```azurecli
+{
+    "canDelegate": null,
+    "id": "/subscriptions/11111111-1111-1111-1111-111111111111/providers/Microsoft.Authorization/roleAssignments/22222222-2222-2222-2222-222222222222",
+    "name": "22222222-2222-2222-2222-222222222222",
+    "principalId": "33333333-3333-3333-3333-333333333333",
+    "principalName": "",
+    "roleDefinitionId": "/subscriptions/11111111-1111-1111-1111-111111111111/providers/Microsoft.Authorization/roleDefinitions/ba92f5b4-2d11-453d-a403-e96b0029c9fe",
+    "roleDefinitionName": "Storage Blob Data Contributor",
+    "scope": "/subscriptions/11111111-1111-1111-1111-111111111111",
+    "type": "Microsoft.Authorization/roleAssignments"
+}
+```
+
+Diese Rollenzuweisungen treten auf, wenn Sie einem Sicherheitsprinzipal (Benutzer, Gruppe, Dienstprinzipal oder verwaltete Identität) eine Rolle zuweisen, und den Sicherheitsprinzipal später löschen. Diese Rollenzuweisungen werden im Azure-Portal nicht angezeigt, und es stellt kein Problem dar, diese zu belassen. Wenn Sie möchten, können Sie diese Rollenzuweisungen jedoch entfernen.
+
+Um diese Rollenzuweisungen zu entfernen, verwenden Sie den Befehl [Remove-AzRoleAssignment](/powershell/module/az.resources/remove-azroleassignment) bzw. [az role assignment delete](/cli/azure/role/assignment#az-role-assignment-delete).
+
+Wenn Sie in PowerShell versuchen, die Rollenzuweisungen unter Verwendung der Objekt-ID und des Rollendefinitionsnamens zu entfernen, und mehr als eine Rollenzuweisung Ihren Parametern entspricht, wird die folgende Fehlermeldung angezeigt: „The provided information does not map to a role assignment“ (Die angegebenen Informationen stimmen mit keiner Rollenzuweisung überein). Nachfolgend sehen Sie ein Beispiel für die Fehlermeldung:
+
+```Example
+PS C:\> Remove-AzRoleAssignment -ObjectId 33333333-3333-3333-3333-333333333333 -RoleDefinitionName "Storage Blob Data Contributor"
+
+Remove-AzRoleAssignment : The provided information does not map to a role assignment.
+At line:1 char:1
++ Remove-AzRoleAssignment -ObjectId 33333333-3333-3333-3333-333333333333 ...
++ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
++ CategoryInfo          : CloseError: (:) [Remove-AzRoleAssignment], KeyNotFoundException
++ FullyQualifiedErrorId : Microsoft.Azure.Commands.Resources.RemoveAzureRoleAssignmentCommand
+```
+
+Wenn Sie diese Fehlermeldung erhalten, stellen Sie sicher, dass Sie auch die Parameter `-Scope` oder `-ResourceGroupName` angegeben haben.
+
+```Example
+PS C:\> Remove-AzRoleAssignment -ObjectId 33333333-3333-3333-3333-333333333333 -RoleDefinitionName "Storage Blob Data Contributor" - Scope /subscriptions/11111111-1111-1111-1111-111111111111
+```
 
 ## <a name="rbac-changes-are-not-being-detected"></a>Keine Erkennung von RBAC-Änderungen
 

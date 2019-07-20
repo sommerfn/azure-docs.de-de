@@ -553,10 +553,6 @@
           href: ../blobs/data-lake-storage-data-scenarios.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
     - name: Schnellstarts
       items:
-        - name: Erstellen eines Speicherkontos
-          href: ../blobs/data-lake-storage-quickstart-create-account.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-        - name: Verwalten von Daten mit Storage-Explorer
-          href: ../blobs/data-lake-storage-explorer.md
         - name: Analysieren von Daten mit Databricks
           href: ../blobs/data-lake-storage-quickstart-create-databricks-account.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
     - name: Lernprogramme
@@ -601,6 +597,16 @@
           href: storage-blob-event-overview.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
     - name: Anleitung
       items:
+        - name: Erstellen und Verwalten von Speicherkonten
+          items:
+            - name: Erstellen eines allgemeinen Speicherkontos
+              href: ../blobs/data-lake-storage-quickstart-create-account.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+            - name: Verwalten eines Speicherkontos
+              href: ../common/storage-account-manage.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+            - name: Verwalten von Daten mit Storage-Explorer
+              href: ../blobs/data-lake-storage-explorer.md
+            - name: Aktualisieren eines Speicherkontos
+              href: ../common/storage-account-upgrade.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
         - name: Erfassen von Daten
           items:
             - name: AzCopy

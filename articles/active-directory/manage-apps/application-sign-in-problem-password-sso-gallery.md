@@ -1,6 +1,6 @@
 ---
-title: Probleme beim Anmelden bei einer Azure AD-Kataloganwendung, die für einmaliges Anmelden per Kennwort konfiguriert ist | Microsoft-Dokumentation
-description: Beheben von Problemen mit einer Azure AD-Kataloganwendung, die für einmaliges Anmelden per Kennwort konfiguriert ist
+title: Probleme beim Anmelden bei einer Azure AD-Katalog-App, die für Kennwort-SSO konfiguriert ist | Microsoft-Dokumentation
+description: Beheben von Problemen mit einer Azure AD-Kataloganwendung, die für einmaliges Anmelden per Kennwort konfiguriert ist.
 documentationcenter: ''
 author: msmimart
 manager: CelesteDG
@@ -15,187 +15,182 @@ ms.date: 07/11/2017
 ms.author: mimart
 ms.reviewer: asteen
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0559213706c499878e0f14a0beeee22dcdbaf59a
-ms.sourcegitcommit: be9fcaace62709cea55beb49a5bebf4f9701f7c6
+ms.openlocfilehash: 742df882fb64e09ff63ef2eceb5514ca070dc227
+ms.sourcegitcommit: 156b313eec59ad1b5a820fabb4d0f16b602737fc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/17/2019
-ms.locfileid: "65825146"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67190327"
 ---
-# <a name="problems-signing-in-to-an-azure-ad-gallery-application-configured-for-password-single-sign-on"></a>Probleme beim Anmelden bei einer Azure AD-Kataloganwendung, die für einmaliges Anmelden per Kennwort konfiguriert ist
+# <a name="sign-in-problems-with-an-azure-ad-gallery-app-configured-for-sso"></a>Probleme beim Anmelden bei einer Azure AD-Katalog-App, die für SSO konfiguriert ist
 
-Der Zugriffsbereich ist ein webbasiertes Portal, in dem Benutzer, die in Azure Active Directory (Azure AD) über ein Geschäfts-, Schul- oder Unikonto verfügen, cloudbasierte Anwendungen anzeigen und starten können, für die der Azure AD-Administrator ihnen Zugriff gewährt hat. Ein Benutzer, der über Azure AD-Editionen verfügt, kann über den Zugriffsbereich auch die Funktionen für die Self-Service-basierte Gruppen- und App-Verwaltung nutzen. Der Zugriffsbereich ist unabhängig vom Azure-Portal und setzt nicht voraus, dass Benutzer über ein Azure-Abonnement verfügen.
+Der Zugriffsbereich ist ein webbasiertes Portal. Er ermöglicht Benutzern, die über Geschäfts-, Schul- oder Unikonten für Azure Active Directory (Azure AD) verfügen, auf cloudbasierte Apps zuzugreifen, für die sie Berechtigungen besitzen. Benutzer, die über Azure AD-Editionen verfügt, kann über den Zugriffsbereich auch die Funktionen für die Self-Service-basierte Gruppen- und App-Verwaltung nutzen.
 
-Für die Verwendung des einmaligen Anmeldens per Kennwort im Anwendungsbereich muss die Erweiterung für den Zugriffsbereich im Browser des Benutzers installiert sein. Diese Erweiterung wird automatisch heruntergeladen, wenn ein Benutzer eine Anwendung auswählt, die für kennwortbasiertes SSO konfiguriert ist.
+Der Zugriffsbereich ist vom Azure-Portal getrennt. Benutzer benötigen kein Azure-Abonnement, um den Zugriffsbereich zu verwenden.
 
-## <a name="meeting-browser-requirements-for-the-access-panel"></a>Erfüllen der Browseranforderungen für den Zugriffsbereich
+Für die Verwendung des einmaligen Anmeldens (SSO) per Kennwort im Anwendungsbereich muss die Erweiterung für den Zugriffsbereich im Browser installiert sein. Die Erweiterung wird automatisch heruntergeladen, wenn Sie eine App auswählen, die für kennwortbasiertes SSO konfiguriert ist.
 
-Der Zugriffsbereich erfordert einen Browser, der JavaScript unterstützt und in dem CSS aktiviert ist. Für die Verwendung des einmaligen Anmeldens per Kennwort im Anwendungsbereich muss die Erweiterung für den Zugriffsbereich im Browser des Benutzers installiert sein. Diese Erweiterung wird automatisch heruntergeladen, wenn ein Benutzer eine Anwendung auswählt, die für kennwortbasiertes SSO konfiguriert ist.
+## <a name="browser-requirements-for-access-panel"></a>Browseranforderungen für den Zugriffsbereich
 
-Für kennwortbasiertes SSO eignen sich folgende Browser des Endbenutzers:
+Der Zugriffsbereich erfordert einen Browser, der JavaScript unterstützt und in dem CSS aktiviert ist.
 
--   Internet Explorer 8, 9, 10, 11 – unter Windows 7 oder höher
+Die folgenden Browser unterstützt kennwortbasiertes SSO:
 
--   Chrome – unter Windows 7 oder höher und MacOS x oder höher
+- Internet Explorer 8, 9, 10 und 11 unter Windows 7 oder höher
 
--   Firefox 26.0 oder höher – unter Windows XP SP2 oder höher und Mac OS X 10.6 oder höher
+- Chrome unter Windows 7 oder höher oder unter Mac OS X oder höher
+
+- Firefox 26.0 oder höher unter Windows XP SP2 oder höher und Mac OS X 10.6 oder höher
 
 >[!NOTE]
 >Die Erweiterung für das kennwortbasierte einmalige Anmelden steht für Microsoft Edge unter Windows 10 zur Verfügung, sobald Browsererweiterungen von Microsoft Edge unterstützt werden.
->
->
 
-## <a name="how-to-install-the-access-panel-browser-extension"></a>Installieren der Browsererweiterung für den Zugriffsbereich
+## <a name="install-the-access-panel-browser-extension"></a>Installieren der Browsererweiterung für den Zugriffsbereich
 
-Führen Sie zum Installieren der Browsererweiterung für den Zugriffsbereich die folgenden Schritte aus:
+Folgen Sie diesen Schritten:
 
-1.  Öffnen Sie in einem der unterstützten Browser den [Zugriffsbereich](https://myapps.microsoft.com), und melden Sie sich in Azure AD als **Benutzer** an.
+1. Öffnen Sie den [Zugriffsbereich](https://myapps.microsoft.com) in einem unterstützten Browser, und melden Sie sich als Benutzer in Azure AD an.
 
-2.  Klicken Sie im Zugriffsbereich auf eine **für kennwortbasiertes SSO konfigurierte Anwendung**.
+2. Wählen Sie im Zugriffsbereich eine Kennwort-SSO-fähige App aus.
 
-3.  Wählen Sie in der Aufforderung zum Installieren der Software **Jetzt installieren** aus.
+3. Klicken Sie auf **Jetzt installieren**, wenn Sie dazu aufgefordert werden.
 
-4.  Sie werden basierend auf Ihrem Browser zum Downloadlink weitergeleitet. **Fügen** Sie die Erweiterung Ihrem Browser hinzu.
+4. Sie werden basierend auf Ihrem Browser zum Downloadlink weitergeleitet. Wählen Sie **Hinzufügen** aus, um die Browsererweiterung zu installieren.
 
-5.  Wenn Sie im Browser zur Auswahl aufgefordert werden, wählen Sie die Option zum **Aktivieren** oder **Zulassen** der Erweiterung aus.
+5. Wählen Sie **Aktivieren** oder **Zulassen** aus, wenn eine entsprechende Aufforderung angezeigt wird.
 
-6.  Führen Sie nach der Installation einen **Neustart** Ihrer Browsersitzung durch.
+6. Starten Sie nach der Installation den Browser neu.
 
-7.  Melden Sie sich beim Zugriffsbereich an, und überprüfen Sie, ob Sie die für kennwortbasiertes SSO konfigurierten Anwendungen **starten** können.
+7.  Melden Sie sich beim Zugriffsbereich an, und vergewissern Sie sich, ob Sie Ihre Kennwort-SSO-fähigen Apps starten können.
 
-Sie können die Erweiterung für Chrome und Firefox auch direkt über die folgenden Links herunterladen:
+Sie können die Erweiterungen für Chrome und Firefox auch direkt über diese Links herunterladen:
 
 -   [Zugriffsbereichserweiterung für Chrome](https://chrome.google.com/webstore/detail/access-panel-extension/ggjhpefgjjfobnfoldnjipclpcfbgbhl)
 
 -   [Zugriffsbereichserweiterung für Firefox](https://addons.mozilla.org/firefox/addon/access-panel-extension/)
 
-## <a name="setting-up-a-group-policy-for-internet-explorer"></a>Einrichten einer Gruppenrichtlinie für Internet Explorer
+## <a name="set-up-a-group-policy-for-internet-explorer"></a>Einrichten einer Gruppenrichtlinie für Internet Explorer
 
 Sie können eine Gruppenrichtlinie einrichten, um die Zugriffsbereichserweiterung für Internet Explorer per Remotezugriff auf den Computern Ihrer Benutzer zu installieren.
 
-Die folgenden Voraussetzungen müssen erfüllt sein:
+Dies sind die Voraussetzungen:
 
--   Sie haben [Active Directory-Domänendienste](https://msdn.microsoft.com/library/aa362244%28v=vs.85%29.aspx)eingerichtet und die Computer Ihrer Benutzer Ihrer Domäne hinzugefügt.
+-   [Active Directory Domain Services](https://msdn.microsoft.com/library/aa362244%28v=vs.85%29.aspx) muss eingerichtet sein, und die Computer Ihrer Benutzer müssen Ihrer Domäne hinzugefügt werden.
 
--   Zum Bearbeiten des Gruppenrichtlinienobjekts benötigen Sie die Berechtigung „Einstellungen bearbeiten“. Standardmäßig verfügen Mitglieder der folgenden Sicherheitsgruppen über diese Berechtigung: Domänenadministratoren, Organisationsadministratoren und Ersteller/Besitzer von Gruppenrichtlinien. [Weitere Informationen](https://technet.microsoft.com/library/cc781991%28v=ws.10%29.aspx)
+-   Sie verfügen über die Berechtigung „Einstellungen bearbeiten“ zum Bearbeiten des Gruppenrichtlinienobjekts. Standardmäßig verfügen Mitglieder der folgenden Sicherheitsgruppen über diese Berechtigung: Domänenadministratoren, Organisationsadministratoren und Ersteller/Besitzer von Gruppenrichtlinien. [Weitere Informationen](https://technet.microsoft.com/library/cc781991%28v=ws.10%29.aspx)
 
-Das Tutorial [Bereitstellen der Zugriffsbereichserweiterung für Internet Explorer mit der Gruppenrichtlinie](https://docs.microsoft.com/azure/active-directory/active-directory-saas-ie-group-policy) bietet Ihnen Schritt-für-Schritt-Anweisungen zum Konfigurieren der Gruppenrichtlinie und Bereitstellen der Gruppenrichtlinie für Benutzer.
+Informationen zum Konfigurieren der Gruppenrichtlinie und Bereitstellen der Gruppenrichtlinie für Benutzer finden Sie unter [Bereitstellen der Zugriffsbereichserweiterung für Internet Explorer mit der Gruppenrichtlinie](https://docs.microsoft.com/azure/active-directory/active-directory-saas-ie-group-policy).
 
-## <a name="troubleshoot-the-access-panel-in-internet-explorer"></a>Problembehandlung für den Zugriffsbereich in Internet Explorer
+## <a name="troubleshoot-access-panel-in-internet-explorer"></a>Problembehandlung für den Zugriffsbereich in Internet Explorer
 
-Befolgen Sie die Anleitung [Problembehandlung in der Zugriffsbereichserweiterung für Internet Explorer](https://docs.microsoft.com/azure/active-directory/active-directory-saas-ie-troubleshooting), um Zugriff auf ein Diagnosetool und Schritt-für-Schritt-Anweisungen zum Konfigurieren der Erweiterung für Internet Explorer zu erhalten.
+Informationen über den Zugriff auf ein Diagnosetool und Anweisungen zum Konfigurieren der Erweiterung finden Sie unter [Problembehandlung in der Zugriffsbereichserweiterung für Internet Explorer](https://docs.microsoft.com/azure/active-directory/active-directory-saas-ie-troubleshooting).
 
-## <a name="how-to-configure-password-single-sign-on-for-an-azure-ad-gallery-application"></a>Konfigurieren des einmaligen Anmeldens per Kennwort für eine Azure AD-Kataloganwendung
+## <a name="configure-password-sso-for-an-azure-ad-gallery-app"></a>Konfigurieren des einmaligen Anmeldens per Kennwort für eine Azure AD-Katalog-App
 
-Um eine Anwendung aus dem Azure AD-Katalog zu konfigurieren, müssen folgende Schritte ausgeführt werden:
+Um eine App aus dem Azure AD-Katalog zu konfigurieren, müssen folgende Schritte ausgeführt werden:
 
--   Hinzufügen einer Anwendung aus dem Azure AD-Katalog
+-   Hinzufügen der App aus dem Azure AD-Anwendungskatalog
+-   [Konfigurieren der App für das einmalige Anmelden per Kennwort](#configure-the-app-for-password-sso)
+-   [Zuweisen von Benutzern zur App](#assign-users-to-the-app)
 
--   [Konfigurieren der Anwendung für das einmalige Anmelden per Kennwort](#configure-the-application-for-password-single-sign-on)
+### <a name="add-the-app-from-the-azure-ad-gallery"></a>Hinzufügen der App aus dem Azure AD-Anwendungskatalog
 
--   [Zuweisen von Benutzern zur Anwendung](#assign-users-to-the-application)
+Folgen Sie diesen Schritten:
 
-### <a name="add-an-application-from-the-azure-ad-gallery"></a>Hinzufügen einer Anwendung aus dem Azure AD-Katalog
+1. Öffnen Sie das [Azure-Portal](https://portal.azure.com), und melden Sie sich als globaler Administrator oder Co-Administrator an.
 
-Um eine Anwendung aus dem Azure AD-Katalog hinzuzufügen, führen Sie folgende Schritte aus:
+2. Klicken Sie oben im Navigationsbereich auf der linken Seite auf **Alle Dienste** um die Azure AD-Erweiterung zu öffnen.
 
-1.  Öffnen Sie das [Azure-Portal](https://portal.azure.com), und melden Sie sich als **Globaler Administrator** oder **Co-Administrator** an.
+3. Geben Sie im Filtersuchfeld **Azure Active Directory** ein, und klicken Sie auf **Azure Active Directory**.
 
-2.  Öffnen Sie die **Azure Active Directory-Erweiterung**, indem Sie oben im Hauptnavigationsmenü auf der linken Seite auf **Alle Dienste** klicken.
+4. Klicken Sie im Azure AD-Navigationsbereich auf **Unternehmensanwendungen**.
 
-3.  Geben Sie im Filtersuchfeld **Azure Active Directory** ein, und wählen Sie das Element **Azure Active Directory** aus.
+5. Klicken Sie in der oberen rechten Ecke des Bereichs **Unternehmensanwendungen** auf **Hinzufügen**.
 
-4.  Klicken Sie im linken Azure Active Directory-Navigationsmenü auf **Unternehmensanwendungen**.
+6. Geben Sie im Abschnitt **Aus Katalog hinzufügen** im Feld **Namen eingeben** den Namen der App ein.
 
-5.  Klicken Sie oben rechts im Bereich **Unternehmensanwendungen** auf die Schaltfläche **Hinzufügen**.
+7. Wählen Sie die App aus, die Sie für SSO konfigurieren möchten.
 
-6.  Geben Sie im Abschnitt **Aus Katalog hinzufügen** im Textfeld **Namen eingeben** den Namen der Anwendung ein.
+8. *Optional*: Bevor Sie die App hinzufügen, können Sie ihren Namen im Feld **Name** ändern.
 
-7.  Wählen Sie die Anwendung aus, die Sie für das einmalige Anmelden konfigurieren möchten.
+9. Klicken Sie auf **Hinzufügen**, um die App hinzuzufügen.
 
-8.  Bevor Sie die Anwendung hinzufügen, können Sie im Textfeld **Name** den Namen der Anwendung ändern.
+   Nach einer kurzen Verzögerung wird der Konfigurationsbereich der App angezeigt.
 
-9.  Klicken Sie auf die Schaltfläche **Hinzufügen**, um die Anwendung hinzuzufügen.
+### <a name="configure-the-app-for-password-sso"></a>Konfigurieren der App für das Kennwort-SSO
 
-Nach kurzer Zeit wird der Konfigurationsbereich der Anwendung angezeigt.
+Folgen Sie diesen Schritten:
 
-### <a name="configure-the-application-for-password-single-sign-on"></a>Konfigurieren der Anwendung für das einmalige Anmelden per Kennwort
+1. Öffnen Sie das [Azure-Portal](https://portal.azure.com/), und melden Sie sich als globaler Administrator oder Co-Administrator an.
 
-Um das einmalige Anmelden für eine Anwendung zu konfigurieren, führen Sie folgende Schritte aus:
+2. Klicken Sie oben im Navigationsbereich auf der linken Seite auf **Alle Dienste** um die Azure AD-Erweiterung zu öffnen.
 
-1. Öffnen Sie das [**Azure-Portal**](https://portal.azure.com/), und melden Sie sich als **Globaler Administrator** oder **Co-Administrator** an.
+3. Geben Sie im Filtersuchfeld **Azure Active Directory** ein, und klicken Sie auf **Azure Active Directory**.
 
-2. Öffnen Sie die **Azure Active Directory-Erweiterung**, indem Sie oben im Hauptnavigationsmenü auf der linken Seite auf **Alle Dienste** klicken.
+4. Klicken Sie im Azure AD-Navigationsbereich auf **Unternehmensanwendungen**.
 
-3. Geben Sie im Filtersuchfeld **Azure Active Directory** ein, und wählen Sie das Element **Azure Active Directory** aus.
+5. Klicken Sie auf **Alle Anwendungen**, um eine Liste mit Ihren Apps anzuzeigen.
 
-4. Klicken Sie im linken Azure Active Directory-Navigationsmenü auf **Unternehmensanwendungen**.
+   > [!NOTE]
+   > Wenn eine App nicht wie erwartet angezeigt wird, verwenden Sie das **Filter**-Steuerelement über der Liste **Alle Anwendungen**. Legen Sie für die Option **Anzeigen** „Alle Anwendungen“ fest.
 
-5. Klicken Sie auf **Alle Anwendungen**, um eine Liste aller Anwendungen anzuzeigen.
+6. Wählen Sie die App aus, die Sie für SSO konfigurieren möchten.
 
-   * Wenn die gewünschte Anwendung nicht angezeigt wird, verwenden Sie das Steuerelement **Filter** oberhalb der Liste **Alle Anwendungen**, und legen Sie die Option **Anzeigen** auf **Alle Anwendungen** fest.
-
-6. Wählen Sie die Anwendung aus, für die Sie das einmalige Anmelden konfigurieren möchten.
-
-7. Nachdem die Anwendung geladen wurde, klicken Sie im linken Navigationsmenü der Anwendung auf **Einmaliges Anmelden**.
+7. Warten Sie, bis die App geladen ist, und klicken Sie anschließend im Bereich auf der linken Seite der App auf **Einmaliges Anmelden**.
 
 8. Wählen Sie den Modus **Kennwortbasiertes Anmelden** aus.
 
-9. Weisen Sie der Anwendung Benutzer zu.
+9. Weisen Sie der App Benutzer zu.
 
-10. Darüber hinaus können Sie Anmeldeinformationen für einen Benutzer angeben, indem Sie die Zeile des Benutzers auswählen, auf **Anmeldeinformationen aktualisieren** klicken und den Benutzernamen und das Kennwort für den Benutzer eingeben. Andernfalls werden Benutzer beim Start der Anwendung aufgefordert, die Anmeldeinformationen selbst einzugeben.
+10. Sie können auch Anmeldeinformationen für Benutzer bereitstellen. (Andernfalls werden die Benutzer beim Starten der App aufgefordert, ihre Anmeldeinformationen einzugeben.) Wählen Sie zu diesem Zweck die Zeilen der Benutzer aus. Wählen Sie dann **Anmeldeinformationen aktualisieren** aus, und geben Sie die Benutzernamen und Kennwörter der Benutzer ein.
 
-### <a name="assign-users-to-the-application"></a>Zuweisen von Benutzern zur Anwendung
+### <a name="assign-users-to-the-app"></a>Zuweisen von Benutzern zur App
 
-Um einer Anwendung Benutzer direkt zuzuweisen, führen Sie folgende Schritte aus:
+Um einer App Benutzer direkt zuzuweisen, gehen Sie folgendermaßen vor:
 
-1. Öffnen Sie das [**Azure-Portal**](https://portal.azure.com/), und melden Sie sich als **Globaler Administrator** an.
+1. Öffnen Sie das [Azure-Portal](https://portal.azure.com/), und melden Sie sich als globaler Administrator an.
 
-2. Öffnen Sie die **Azure Active Directory-Erweiterung**, indem Sie oben im Hauptnavigationsmenü auf der linken Seite auf **Alle Dienste** klicken.
+2. Wählen Sie im Navigationsbereich auf der linken Seite **Alle Dienste** aus, um die Azure AD-Erweiterung zu öffnen.
 
-3. Geben Sie im Filtersuchfeld **Azure Active Directory** ein, und wählen Sie das Element **Azure Active Directory** aus.
+3. Geben Sie im Filtersuchfeld **Azure Active Directory** ein, und klicken Sie auf **Azure Active Directory**.
 
-4. Klicken Sie im linken Azure Active Directory-Navigationsmenü auf **Unternehmensanwendungen**.
+4. Klicken Sie im Azure AD-Navigationsbereich auf **Unternehmensanwendungen**.
 
-5. Klicken Sie auf **Alle Anwendungen**, um eine Liste aller Anwendungen anzuzeigen.
+5. Klicken Sie auf **Alle Anwendungen**, um eine Liste mit Ihren Anwendungen anzuzeigen.
 
-   * Wenn die gewünschte Anwendung nicht angezeigt wird, verwenden Sie das Steuerelement **Filter** oberhalb der Liste **Alle Anwendungen**, und legen Sie die Option **Anzeigen** auf **Alle Anwendungen** fest.
+   > [!NOTE]
+   > Wenn eine App nicht wie erwartet angezeigt wird, verwenden Sie das **Filter**-Steuerelement über der Liste **Alle Anwendungen**. Legen Sie für die Option **Anzeigen** „Alle Anwendungen“ fest.
 
-6. Wählen Sie aus der Liste die Anwendung aus, der Sie einen Benutzer zuweisen möchten.
+6. Wählen Sie in der Liste die App aus, der Sie einen Benutzer zuweisen möchten.
 
-7. Nachdem die Anwendung geladen wurde, klicken Sie im linken Navigationsmenü der Anwendung auf **Benutzer und Gruppen**.
+7. Nachdem die Anwendung geladen wurde, wählen Sie im linken Navigationsbereich der App **Benutzer und Gruppen** aus.
 
-8. Klicken Sie oberhalb der Liste **Benutzer und Gruppen** auf die Schaltfläche **Hinzufügen**, um den Bereich **Zuweisung hinzufügen** zu öffnen.
+8. Wählen Sie oberhalb der Liste **Benutzer und Gruppen** die Option **Hinzufügen** aus, um den Bereich **Zuweisung hinzufügen** zu öffnen.
 
-9. Klicken Sie im Bereich **Zuweisung hinzufügen** auf das Auswahlfeld **Benutzer und Gruppen**.
+9. Wählen Sie dann im Bereich **Zuweisung hinzufügen** die Option **Benutzer und Gruppen** aus.
 
-10. Geben Sie im Suchfeld **Nach Name oder E-Mail-Adresse suchen** den **vollständigen Namen** oder die **E-Mail-Adresse** des gewünschten Benutzers ein.
+10. Geben Sie im Feld **Nach Name oder E-Mail-Adresse suchen** den vollständigen Namen oder die E-Mail-Adresse des Benutzers ein, der zugewiesen werden soll.
 
-11. Zeigen Sie auf den **Benutzer** in der Liste, um ein **Kontrollkästchen** anzuzeigen. Klicken Sie auf das Kontrollkästchen neben dem Profilbild oder Logo des Benutzers, um den Benutzer zur Liste **Ausgewählt** hinzuzufügen.
+11. Bewegen Sie den Cursor über die Benutzer in der Liste. Aktivieren Sie das Kontrollkästchen neben dem Bild oder Logo des Benutzerprofils, um diesen Benutzer der Liste **Ausgewählt** hinzuzufügen.
 
-12. **Optional**: Wenn Sie **mehrere Benutzer hinzufügen** möchten, geben Sie im Suchfeld **Nach Name oder E-Mail-Adresse suchen** einen weiteren **vollständigen Namen** oder eine weitere **E-Mail-Adresse** ein, und klicken Sie auf das Kontrollkästchen, um diesen Benutzer zur Liste **Ausgewählt** hinzuzufügen.
+12. *Optional*: Zum Hinzuzufügen eines weiteren Benutzers geben Sie dessen Namen oder E-Mail-Adresse in das Feld **Nach Name oder E-Mail-Adresse suchen** ein, und aktivieren Sie dann das Kontrollkästchen, um diesen Benutzer zur Liste **Ausgewählt** hinzuzufügen.
 
-13. Wenn Sie alle gewünschten Benutzer ausgewählt haben, klicken Sie auf die Schaltfläche **Auswählen**, um sie zur Liste der Benutzer und Gruppen hinzuzufügen, die der Anwendung zugewiesen werden sollen.
+13. Wenn Sie alle gewünschten Benutzer ausgewählt haben, klicken Sie auf **Auswählen**, um sie der Liste der Benutzer und Gruppen hinzuzufügen, die der App zugewiesen sind.
 
-14. **Optional**: Klicken Sie im Bereich **Zuweisung hinzufügen** auf das Auswahlfeld **Rolle auswählen**, um eine Rolle auszuwählen, die den ausgewählten Benutzern zugewiesen werden soll.
+14. *Optional*: Klicken Sie im Bereich **Zuweisung hinzufügen** auf das Feld auf **Rolle auswählen**, um eine Rolle auszuwählen, die den ausgewählten Benutzern zugewiesen werden soll.
 
-15. Klicken Sie auf die Schaltfläche **Zuweisen**, um die Anwendung den ausgewählten Benutzern zuzuweisen.
+15. Wählen Sie **Zuweisen** aus, um die App den ausgewählten Benutzern zuzuweisen.
 
-Nach kurzer Zeit können die ausgewählten Benutzer diese Anwendungen im Zugriffsbereich starten.
+    Nach einer kurzen Verzögerung können die Benutzer über den Zugriffsbereich auf diese Apps zugreifen.
 
-## <a name="if-these-troubleshoot-steps-dont-resolve-the-issue"></a>Wenn das Problem mit diesen Problembehandlungsschritten nicht behoben wird 
-Öffnen Sie ein Supportticket mit den folgenden Informationen, sofern verfügbar:
+## <a name="request-support"></a>Anfordern von Support 
+Wenn Sie beim Einrichten von SSO und Zuweisen von Benutzern eine Fehlermeldung erhalten, öffnen Sie ein Supportticket. Fügen Sie so viele der folgenden Informationen wie möglich hinzu:
 
 -   Fehlerkorrelations-ID
-
 -   UPN (E-Mail-Adresse des Benutzers)
-
 -   Mandanten-ID
-
 -   Browsertyp
-
--   Zeitzone und Uhrzeit/Zeitraum des Auftretens des Fehlers
-
+-   Zeitzone und Zeitpunkt/Zeitraum des Fehlers
 -   Fiddler-Ablaufverfolgungen
 
 ## <a name="next-steps"></a>Nächste Schritte
