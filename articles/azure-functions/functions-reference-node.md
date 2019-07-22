@@ -110,7 +110,7 @@ In JavaScript werden [Bindungen](functions-triggers-bindings.md) in der Datei �
 
 ### <a name="inputs"></a>Eingaben
 Eingaben werden in Azure Functions in zwei Kategorien unterteilt: die Triggereingabe und die zusätzliche Eingabe. Trigger und andere Eingabebindungen (Bindungen des Typs `direction === "in"`) können von einer Funktion auf drei Arten gelesen werden:
- - ** _[Empfohlen]_ Als an die Funktion übergebene Parameter.** Sie werden in der Reihenfolge, in der sie in *function.json* definiert sind, an die Funktion übergeben. Die in *function.json* definierte `name`-Eigenschaft muss nicht mit dem Namen des Parameters übereinstimmen, obwohl dies empfehlenswert ist.
+ - **_[Empfohlen]_ Als an die Funktion übergebene Parameter.** Sie werden in der Reihenfolge, in der sie in *function.json* definiert sind, an die Funktion übergeben. Die in *function.json* definierte `name`-Eigenschaft muss nicht mit dem Namen des Parameters übereinstimmen, obwohl dies empfehlenswert ist.
  
    ```javascript
    module.exports = async function(context, myTrigger, myInput, myOtherInput) { ... };
@@ -141,7 +141,7 @@ Ausgaben (Bindungen des Typs `direction === "out"`) können von einer Funktion a
 
 Sie können Ausgabebindungen mit einer der folgenden Methoden Daten zuweisen. Achten Sie darauf, dass Sie nicht beide Methoden verwenden.
 
-- ** _[Empfohlen für mehrere Ausgaben]_ Zurückgeben eines Objekts.** Bei Verwendung einer asynchronen Funktion (mit Rückgabe einer Zusage) kann ein Objekt mit zugewiesenen Ausgabedaten zurückgegeben werden. Im folgenden Beispiel werden die Ausgabebindungen in *function.json* mit „httpResponse“ und „queueOutput“ benannt.
+- **_[Empfohlen für mehrere Ausgaben]_ Zurückgeben eines Objekts.** Bei Verwendung einer asynchronen Funktion (mit Rückgabe einer Zusage) kann ein Objekt mit zugewiesenen Ausgabedaten zurückgegeben werden. Im folgenden Beispiel werden die Ausgabebindungen in *function.json* mit „httpResponse“ und „queueOutput“ benannt.
 
   ```javascript
   module.exports = async function(context) {
@@ -156,7 +156,7 @@ Sie können Ausgabebindungen mit einer der folgenden Methoden Daten zuweisen. Ac
   ```
 
   Bei Verwendung einer synchronen Funktion kann dieses Objekt mithilfe von [`context.done`](#contextdone-method) zurückgegeben werden (siehe Beispiel).
-- ** _[Empfohlen für eine einzelne Ausgabe]_ Direktes Zurückgeben eines Werts und Verwenden des Bindungsnamens „$return“.** Dies ist nur bei asynchronen Funktionen (mit Rückgabe einer Zusage) möglich. Siehe dazu das Beispiel unter [Exportieren einer Async-Funktion](#exporting-an-async-function). 
+- **_[Empfohlen für eine einzelne Ausgabe]_ Direktes Zurückgeben eines Werts und Verwenden des Bindungsnamens „$return“.** Dies ist nur bei asynchronen Funktionen (mit Rückgabe einer Zusage) möglich. Siehe dazu das Beispiel unter [Exportieren einer Async-Funktion](#exporting-an-async-function). 
 - **Zuweisen von Werten zu `context.bindings`.** Sie können „context.bindings“ direkt Werte zuweisen.
 
   ```javascript
@@ -275,10 +275,10 @@ Ermöglicht das Schreiben in die Streamingfunktionsprotokolle auf Standard-Ablau
 
 | Methode                 | BESCHREIBUNG                                |
 | ---------------------- | ------------------------------------------ |
-| **Fehler(_Meldung_)**   | Schreibt in Protokollierung auf Fehlerebene oder niedriger.   |
-| **warn(_Meldung_)**    | Schreibt in Protokollierung auf Warnungsebene oder niedriger. |
-| **info(_Meldung_)**    | Schreibt in Protokollierung auf Informationsebene oder niedriger.    |
-| **verbose(_Meldung_)** | Schreibt in Protokollierung auf ausführlicher Ebene.           |
+| **error(_message_)**   | Schreibt in Protokollierung auf Fehlerebene oder niedriger.   |
+| **warn(_message_)**    | Schreibt in Protokollierung auf Warnungsebene oder niedriger. |
+| **info(_message_)**    | Schreibt in Protokollierung auf Informationsebene oder niedriger.    |
+| **verbose(_message_)** | Schreibt in Protokollierung auf ausführlicher Ebene.           |
 
 Das folgende Beispiel schreibt auf Warnungs-Ablaufverfolgungsebene ein Protokoll:
 
@@ -397,9 +397,9 @@ Beim Arbeiten mit HTTP-Triggern bestehen verschiedene Möglichkeiten, auf die HT
     ```javascript
     context.bindings.response = { status: 201, body: "Insert succeeded." };
     ```
-+ ** _[Nur Antwort]_ Durch Aufrufen von `context.res.send(body?: any)`.** Eine HTTP-Antwort wird mit der Eingabe `body` als Antworttext erstellt. `context.done()` wird implizit aufgerufen.
++ **_[Nur Antwort]_ Durch Aufrufen von `context.res.send(body?: any)`.** Eine HTTP-Antwort wird mit der Eingabe `body` als Antworttext erstellt. `context.done()` wird implizit aufgerufen.
 
-+ ** _[Nur Antwort]_ Durch Aufrufen von `context.done()`.** Mit einer besonderen Art von HTTP-Bindung wird die Antwort zurückgegeben, die an die `context.done()`-Methode übergeben wird. Die folgende HTTP-Ausgabebindung definiert einen `$return`-Ausgabeparameter:
++ **_[Nur Antwort]_ Durch Aufrufen von `context.done()`.** Mit einer besonderen Art von HTTP-Bindung wird die Antwort zurückgegeben, die an die `context.done()`-Methode übergeben wird. Die folgende HTTP-Ausgabebindung definiert einen `$return`-Ausgabeparameter:
 
     ```json
     {
