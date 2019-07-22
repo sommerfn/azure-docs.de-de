@@ -508,8 +508,8 @@ Mit der `Connection`-Metrik werden Details zu Verbindungsversuchen des Clients a
 
 | Feld | BESCHREIBUNG | Verwendung |
 | ----- | ----------- | ----- |
-| NAME | `Connection` | Erforderlich |
-| id | Der Wert des Verbindungsbezeichners, der im *X-ConnectionId*-Header für diese Verbindungsanforderung verwendet wurde. | Erforderlich |
+| Name | `Connection` | Erforderlich |
+| Id | Der Wert des Verbindungsbezeichners, der im *X-ConnectionId*-Header für diese Verbindungsanforderung verwendet wurde. | Erforderlich |
 | Start | Der Zeitpunkt, zu dem der Client die Verbindungsanforderung gesendet hat. | Erforderlich |
 | End | Der Zeitpunkt, zu dem der Client die Benachrichtigung erhalten hat, dass die Verbindung erfolgreich hergestellt wurde oder bei einem Fehler abgelehnt bzw. verweigert wurde oder fehlgeschlagen ist. | Erforderlich |
 | Error | Eine Beschreibung des Fehlers, der aufgetreten ist (falls zutreffend). Wenn die Verbindung erfolgreich hergestellt wurde, sollten Clients dieses Feld weglassen. Dieses Feld darf maximal 50 Zeichen lang sein. | Erforderlich für Fehlerfälle, andernfalls weggelassen |
