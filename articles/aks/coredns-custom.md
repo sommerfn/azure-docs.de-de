@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 03/15/2019
 ms.author: jenoller
-ms.openlocfilehash: e42e017730ebee6b9b0f06f700a33e499d7eba51
-ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
+ms.openlocfilehash: 247665f58dd064565f0e9aebc9859e97ce0ab0c0
+ms.sourcegitcommit: 64798b4f722623ea2bb53b374fb95e8d2b679318
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/07/2019
-ms.locfileid: "67615708"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67836977"
 ---
 # <a name="customize-coredns-with-azure-kubernetes-service"></a>Anpassen von CoreDNS mit Azure Kubernetes Service
 
@@ -31,11 +31,11 @@ Es wird vorausgesetzt, dass Sie über ein AKS-Cluster verfügen. Wenn Sie noch e
 
 ## <a name="what-is-supportedunsupported"></a>Was wird unterstützt/nicht unterstützt?
 
-Alle integrierten CoreDNS-Plug-Ins werden unterstützt. Es werden keine Add-On-/Drittparteien-Plug-Ins unterstützt.
+Alle integrierten CoreDNS-Plug-Ins werden unterstützt. Es werden keine Add-On-/Drittparteien-Plug-Ins unterstützt. 
 
 ## <a name="rewrite-dns"></a>Erneutes Schreiben des DNS
 
-Ein Szenario, das Sie durchführen müssen, sind dynamische DNS-Namensneuschreibungen. Ersetzen Sie im folgenden Beispiel `<domain to be written>` durch Ihren eigenen vollqualifizierten Domänennamen. Erstellen Sie eine Datei namens `corednsms.json`, und fügen Sie die folgende Beispielkonfiguration ein:
+Ein Szenario, das Sie durchführen müssen, sind dynamische DNS-Namensneuschreibungen. Ersetzen Sie im folgenden Beispiel `<domain to be written>` durch Ihren eigenen vollqualifizierten Domänennamen. Erstellen Sie eine Datei namens `corednsms.yaml`, und fügen Sie die folgende Beispielkonfiguration ein:
 
 ```yaml
 apiVersion: v1
@@ -56,7 +56,7 @@ data:
 Erstellen Sie die ConfigMap mit dem Befehl [kubectl apply configmap][kubectl-apply], und geben Sie den Namen Ihres YAML-Manifests an:
 
 ```console
-kubectl apply -f corednsms.json
+kubectl apply -f corednsms.yaml
 ```
 
 Um zu prüfen, ob die Anpassungen angewendet wurden, verwenden Sie [kubectl get configmaps][kubectl-get], und geben Sie Ihre ConfigMap *coredns-custom* an:
@@ -76,7 +76,7 @@ kubectl delete pod --namespace kube-system -l k8s-app=kube-dns
 
 ## <a name="custom-proxy-server"></a>Benutzerdefinierter Proxyserver
 
-Wenn Sie einen Proxyserver für den Netzwerkdatenverkehr angeben müssen, können Sie eine ConfigMap für das Anpassen von DNS erstellen. Im folgenden Beispiel aktualisieren Sie den Namen und die Adresse für den `proxy` mit den Werten Ihrer eigenen Umgebung. Erstellen Sie eine Datei namens `corednsms.json`, und fügen Sie die folgende Beispielkonfiguration ein:
+Wenn Sie einen Proxyserver für den Netzwerkdatenverkehr angeben müssen, können Sie eine ConfigMap für das Anpassen von DNS erstellen. Im folgenden Beispiel aktualisieren Sie den Namen und die Adresse für den `proxy` mit den Werten Ihrer eigenen Umgebung. Erstellen Sie eine Datei namens `corednsms.yaml`, und fügen Sie die folgende Beispielkonfiguration ein:
 
 ```yaml
 apiVersion: v1
@@ -94,7 +94,7 @@ data:
 Erstellen Sie wie im vorherigen Beispiel die ConfigMap mit dem Befehl [kubectl apply configmap][kubectl-apply] command and specify the name of your YAML manifest. Then, force CoreDNS to reload the ConfigMap using the [kubectl delete pod][kubectl delete], damit der Kubernetes Scheduler sie erneut erstellt:
 
 ```console
-kubectl apply -f corednsms.json
+kubectl apply -f corednsms.yaml
 kubectl delete pod --namespace kube-system --label k8s-app=kube-dns
 ```
 
@@ -102,7 +102,7 @@ kubectl delete pod --namespace kube-system --label k8s-app=kube-dns
 
 Unter Umständen sollten Sie benutzerdefinierte Domänen konfigurieren, die nur intern aufgelöst werden können. Sie sollten z. B. die benutzerdefinierte Domäne *puglife.local* auflösen, die keine gültige Domäne der obersten Ebene ist. Ohne eine ConfigMap für benutzerdefinierte Domänen kann der AKS-Cluster die Adresse nicht auflösen.
 
-Aktualisieren Sie im folgenden Beispiel die benutzerdefinierte Domäne und IP-Adresse, um Datenverkehr mit den Werten für Ihre eigene Umgebung dorthin zu leiten. Erstellen Sie eine Datei namens `corednsms.json`, und fügen Sie die folgende Beispielkonfiguration ein:
+Aktualisieren Sie im folgenden Beispiel die benutzerdefinierte Domäne und IP-Adresse, um Datenverkehr mit den Werten für Ihre eigene Umgebung dorthin zu leiten. Erstellen Sie eine Datei namens `corednsms.yaml`, und fügen Sie die folgende Beispielkonfiguration ein:
 
 ```yaml
 apiVersion: v1
@@ -122,13 +122,13 @@ data:
 Erstellen Sie wie im vorherigen Beispiel die ConfigMap mit dem Befehl [kubectl apply configmap][kubectl-apply] command and specify the name of your YAML manifest. Then, force CoreDNS to reload the ConfigMap using the [kubectl delete pod][kubectl delete], damit der Kubernetes Scheduler sie erneut erstellt:
 
 ```console
-kubectl apply -f corednsms.json
+kubectl apply -f corednsms.yaml
 kubectl delete pod --namespace kube-system --label k8s-app=kube-dns
 ```
 
 ## <a name="stub-domains"></a>Stubdomänen
 
-CoreDNS kann auch für das Konfigurieren von Stub-Domänen verwendet werden. Aktualisieren Sie im folgenden Beispiel die benutzerdefinierten Domänen und IP-Adressen mit den Werten Ihrer eigenen Umgebung. Erstellen Sie eine Datei namens `corednsms.json`, und fügen Sie die folgende Beispielkonfiguration ein:
+CoreDNS kann auch für das Konfigurieren von Stub-Domänen verwendet werden. Aktualisieren Sie im folgenden Beispiel die benutzerdefinierten Domänen und IP-Adressen mit den Werten Ihrer eigenen Umgebung. Erstellen Sie eine Datei namens `corednsms.yaml`, und fügen Sie die folgende Beispielkonfiguration ein:
 
 ```yaml
 apiVersion: v1
@@ -154,7 +154,7 @@ data:
 Erstellen Sie wie im vorherigen Beispiel die ConfigMap mit dem Befehl [kubectl apply configmap][kubectl-apply] command and specify the name of your YAML manifest. Then, force CoreDNS to reload the ConfigMap using the [kubectl delete pod][kubectl delete], damit der Kubernetes Scheduler sie erneut erstellt:
 
 ```console
-kubectl apply -f corednsms.json
+kubectl apply -f corednsms.yaml
 kubectl delete pod --namespace kube-system --label k8s-app=kube-dns
 ```
 

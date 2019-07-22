@@ -96,7 +96,7 @@ Führen Sie die folgenden Schritte aus, um das kennwortbasierte SSO für eine Ap
 
 9. Geben Sie die **Anmelde-URL** ein. Dabei handelt es sich um die Seite, auf der die Benutzer ihren Benutzernamen und ihr Kennwort für die Anmeldung eingeben. *Stellen Sie sicher, dass die Anmeldefelder auf der Seite für die URL, die Sie bereitstellen, angezeigt werden*.
 
-10. Wählen Sie ** *&lt;appname&gt;* -Einstellungen für einmaliges Anmelden über ein Kennwort konfigurieren** aus.
+10. Wählen Sie ***&lt;appname&gt;* -Einstellungen für einmaliges Anmelden über ein Kennwort konfigurieren** aus.
 
 11. Wählen Sie **Anmeldefelder manuell erkennen** aus.
 
