@@ -7,12 +7,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 03/04/2019
 ms.author: raynew
-ms.openlocfilehash: 4df65819256e6a81a07927d463d130fbfdf9317a
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 85e7b40778305395bb0f4a9403b4aeafc4607654
+ms.sourcegitcommit: d2785f020e134c3680ca1c8500aa2c0211aa1e24
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66255011"
+ms.lasthandoff: 07/04/2019
+ms.locfileid: "67565703"
 ---
 # <a name="back-up-and-restore-azure-vms-with-powershell"></a>Sichern und Wiederherstellen von virtuellen Azure-Computern mit PowerShell
 
@@ -447,7 +447,7 @@ $restorejob
 >
 >
 
-Geben Sie den zusätzlichen Parameter **TargetResourceGroupName** an, um die RG festzulegen, in der die verwalteten Datenträger gespeichert werden. 
+Geben Sie den zusätzlichen Parameter **TargetResourceGroupName** an, um die RG festzulegen, in der die verwalteten Datenträger gespeichert werden.
 
 > [!NOTE]
 > Es wird dringend empfohlen, den Parameter **TargetResourceGroupName** für die Wiederherstellung verwalteter Datenträger zu verwenden, da dies zu erheblichen Leistungssteigerungen führt. Außerdem ist dieser Parameter ab Azure Powershell Az-Module 1.0 im Falle einer Wiederherstellung mit verwalteten Datenträgern obligatorisch.
@@ -483,6 +483,15 @@ $details = Get-AzRecoveryServicesBackupJobDetails -Job $restorejob
 ```
 
 Nachdem Sie die Datenträger wiederhergestellt haben, fahren Sie mit dem nächsten Abschnitt fort, um den virtuellen Computer zu erstellen.
+
+## <a name="replace-disks-in-azure-vm"></a>Ersetzen der Datenträger in Azure-VM
+
+Um die Datenträger und Konfigurationsinformationen zu ersetzen, führen Sie die folgenden Schritte aus:
+
+- Schritt 1: [Wiederherstellen der Datenträger](backup-azure-vms-automation.md#restore-the-disks)
+- Schritt 2: [Trennen des Datenträgers mit PowerShell](https://docs.microsoft.com/azure/virtual-machines/windows/detach-disk#detach-a-data-disk-using-powershell)
+- Schritt 3: [Anfügen eines Datenträgers an eine Windows-VM mit PowerShell](https://docs.microsoft.com/azure/virtual-machines/windows/attach-disk-ps)
+
 
 ## <a name="create-a-vm-from-restored-disks"></a>Erstellen eines virtuellen Computers aus wiederhergestellten Datenträgern
 
@@ -718,6 +727,7 @@ Im folgenden Abschnitt werden die erforderlichen Schritte zum Erstellen eines vi
       ```powershell  
       Set-AzVMDiskEncryptionExtension -ResourceGroupName $RG -VMName $vm -DiskEncryptionKeyVaultUrl $dekUrl -DiskEncryptionKeyVaultId $keyVaultId -KeyEncryptionKeyUrl $kekUrl -KeyEncryptionKeyVaultId $keyVaultId -SkipVmBackup -VolumeType "All"
       ```
+
 
 ## <a name="restore-files-from-an-azure-vm-backup"></a>Wiederherstellen von Dateien aus einer Sicherung von virtuellen Azure-Computern
 

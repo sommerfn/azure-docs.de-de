@@ -1,19 +1,19 @@
 ---
-title: Vorauszahlen für SQL Data Warehouse-Gebühren mit reservierter Azure-Kapazität | Microsoft-Dokumentation
+title: Vorauszahlen für SQL Data Warehouse-Gebühren mit reservierter Azure-Kapazität
 description: Erfahren Sie, wie Sie für SQL Data Warehouse-Gebühren mit reservierter Kapazität vorauszahlen und so Geld sparen können.
 services: billing
 author: yashesvi
 manager: yashar
 ms.service: billing
 ms.topic: conceptual
-ms.date: 04/13/2019
+ms.date: 07/03/2019
 ms.author: banders
-ms.openlocfilehash: 3d56ee99f8056139a234477b6eed93d9fcbe2bbb
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: cea2c8e6d476c3ea2799337ab2da1f9406731814
+ms.sourcegitcommit: d2785f020e134c3680ca1c8500aa2c0211aa1e24
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60371188"
+ms.lasthandoff: 07/04/2019
+ms.locfileid: "67565358"
 ---
 # <a name="prepay-for-sql-data-warehouse-charges-with-reserved-capacity"></a>Vorauszahlen für SQL Data Warehouse-Gebühren mit reservierter Kapazität
 
@@ -43,14 +43,15 @@ Angenommen, für Ihre Gesamtnutzung von SQL Data Warehouse benötigen Sie DW3000
 
 ## <a name="buy-sql-data-warehouse-reserved-capacity"></a>Erwerben reservierter Kapazität für SQL Data Warehouse
 
-1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com/)an.
+1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com/) an.
 2. Klicken Sie auf **Alle Dienste** > **Reservierungen**.
 3. Wählen Sie ein Abonnement aus. Wählen Sie in der Abonnementliste das Abonnement aus, das für den Kauf der reservierten Kapazität verwendet wird. Die Zahlungsmethode für das Abonnement wird mit Vorauszahlungen für die reservierte Kapazität belastet. Der Abonnementtyp muss „Enterprise Agreement“ (Angebotsnummern: MS-AZR-0017P oder MS-AZR-0148P) oder „Nutzungsbasierte Zahlung“ (Angebotsnummern: MS-AZR-0003P oder MS-AZR-0023P) sein.
   - Bei einem Enterprise-Abonnement werden die Gebühren vom Verpflichtungsguthaben der Reservierung abgezogen oder als Überschreitung belastet.
   - Bei einem Abonnement mit nutzungsbasierter Zahlung wird die Kreditkarte mit den Gebühren belastet, oder die Gebühren werden für die Zahlung auf Rechnung in Rechnung gestellt.
 4. Wählen Sie einen Bereich aus. Wählen Sie in der Bereichsliste einen Abonnementbereich aus.
-  - Mit der Option **Einzeln** gilt der Reservierungsrabatt für die im ausgewählten Abonnement bereitgestellte SQL Data Warehouse-Instanz.
-  - Mit der Option **Gemeinsam** gilt der Reservierungsrabatt für Instanzen in allen Abonnements, die im Abrechnungskontext ausgeführt werden.
+  - **Single resource group scope** (Bereich einer einzelnen Ressourcengruppe): Wendet den Reservierungsrabatt nur auf die entsprechenden Ressourcen in der ausgewählten Ressourcengruppe an.
+  - **Single subscription scope** (Bereich eines einzelnen Abonnements): Wendet den Reservierungsrabatt auf die entsprechenden Ressourcen im ausgewählten Abonnement an.
+  - **Shared scope** (Gemeinsam genutzter Bereich): Wendet den Reservierungsrabatt auf die entsprechenden Ressourcen in berechtigten Abonnements innerhalb des Abrechnungskontexts an. Für Kunden mit einem Enterprise Agreement ist der Abrechnungskontext die Registrierung. Für Kunden mit individuellen Abonnements mit nutzungsbasierten Tarifen handelt es sich beim Abrechnungsbereich um alle berechtigten Abonnements, die vom Kontoadministrator erstellt wurden.
     - Für Enterprise-Kunden ist der Abrechnungskontext die EA-Registrierung.
     - Für Kunden mit nutzungsbasierter Zahlung stellt der freigegebene Bereich alle Abonnements mit nutzungsbasierter Zahlung dar, die vom Kontoadministrator erstellt wurden.
 5. Wählen Sie eine Azure-Region aus, die durch die reservierte Kapazität abgedeckt ist.

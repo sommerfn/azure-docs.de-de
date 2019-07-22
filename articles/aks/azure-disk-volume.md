@@ -2,17 +2,17 @@
 title: Erstellen eines statischen Volumes für Pods in Azure Kubernetes Service (AKS)
 description: Erfahren Sie, wie Sie manuell ein Volume mit Azure-Datenträgern für die Verwendung mit Pods in Azure Kubernetes Service (AKS) erstellen.
 services: container-service
-author: iainfoulds
+author: mlearned
 ms.service: container-service
 ms.topic: article
 ms.date: 03/01/2019
-ms.author: iainfou
-ms.openlocfilehash: b166f70186b063782fb2c2245e351d6dfca6f978
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.author: mlearned
+ms.openlocfilehash: 9017c8cf721fbb9c493dc18da769b9d6e83ddf05
+ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65072158"
+ms.lasthandoff: 07/07/2019
+ms.locfileid: "67616132"
 ---
 # <a name="manually-create-and-use-a-volume-with-azure-disks-in-azure-kubernetes-service-aks"></a>Manuelles Erstellen und Verwenden eines Volumes mit Azure-Datenträgern in Azure Kubernetes Service (AKS)
 
@@ -25,9 +25,9 @@ Weitere Informationen zu Kubernetes-Volumes finden Sie unter [Speicheroptionen f
 
 ## <a name="before-you-begin"></a>Voraussetzungen
 
-Es wird vorausgesetzt, dass Sie über ein AKS-Cluster verfügen. Wenn Sie noch einen AKS-Cluster benötigen, erhalten Sie weitere Informationen im AKS-Schnellstart. Verwenden Sie dafür entweder die [Azure CLI][aks-quickstart-cli] oder das [Azure-Portal][aks-quickstart-portal].
+Es wird vorausgesetzt, dass Sie über ein AKS-Cluster verfügen. Wenn Sie noch einen AKS-Cluster benötigen, erhalten Sie weitere Informationen in der AKS-Schnellstartanleitung. Verwenden Sie dafür die [Azure CLI][aks-quickstart-cli] or [using the Azure portal][aks-quickstart-portal].
 
-Außerdem muss mindestens die Version 2.0.59 der Azure CLI installiert und konfiguriert sein. Führen Sie  `az --version` aus, um die Version zu ermitteln. Wenn Sie eine Installation oder ein Upgrade ausführen müssen, finden Sie weitere Informationen unter [Installieren der Azure CLI][install-azure-cli].
+Außerdem muss mindestens die Version 2.0.59 der Azure CLI installiert und konfiguriert sein. Führen Sie  `az --version` aus, um die Version zu ermitteln. Wenn Sie eine Installation oder ein Upgrade ausführen müssen, finden Sie weitere Informationen unter  [Installieren der Azure CLI][install-azure-cli].
 
 ## <a name="create-an-azure-disk"></a>Erstellen eines Azure-Datenträgers
 
@@ -52,7 +52,7 @@ az disk create \
 ```
 
 > [!NOTE]
-> Azure-Datenträger werden nach SKU für eine bestimmte Größe berechnet. Diese SKUs reichen von 32 GiB für S4- oder P4-Datenträger bis 32 TiB für S80- oder P80-Datenträger (in der Vorschau). Der Durchsatz und die IOPS-Leistung eines verwalteten Premium-Datenträgers hängen sowohl von der SKU als auch von der Instanzgröße der Knoten im AKS-Cluster ab. Weitere Informationen finden Sie unter [Verwaltete Datenträger – Preise][managed-disk-pricing-performance].
+> Azure-Datenträger werden nach SKU für eine bestimmte Größe berechnet. Diese SKUs reichen von 32 GiB für S4- oder P4-Datenträger bis 32 TiB für S80- oder P80-Datenträger (in der Vorschau). Der Durchsatz und die IOPS-Leistung eines verwalteten Premium-Datenträgers hängen sowohl von der SKU als auch von der Instanzgröße der Knoten im AKS-Cluster ab. Weitere Informationen finden Sie unter [Verwaltete Datenträger – Preise und Leistung][managed-disk-pricing-performance].
 
 Die ID der Datenträgerressource wird angezeigt, sobald der Befehl erfolgreich abgeschlossen wurde, wie in der folgenden Beispielausgabe gezeigt. Diese Datenträger-ID wird verwendet, um den Datenträger im nächsten Schritt bereitzustellen.
 

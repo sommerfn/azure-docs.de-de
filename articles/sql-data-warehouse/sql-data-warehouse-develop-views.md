@@ -10,12 +10,12 @@ ms.subservice: development
 ms.date: 04/17/2018
 ms.author: xiaoyul
 ms.reviewer: igorstan
-ms.openlocfilehash: d4321f8aef6e754d8a1c5b16ac82b4fa62c40949
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: e8d516cfd764f947bd2fe7fc25f6394c313c0d9a
+ms.sourcegitcommit: ccb9a7b7da48473362266f20950af190ae88c09b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65873609"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67595497"
 ---
 # <a name="views-in-azure-sql-data-warehouse"></a>Sichten in Azure SQL Data Warehouse
 Tipps für die Verwendung von T-SQL-Sichten in Azure SQL Data Warehouse zum Entwickeln von Lösungen. 
@@ -23,12 +23,18 @@ Tipps für die Verwendung von T-SQL-Sichten in Azure SQL Data Warehouse zum Entw
 ## <a name="why-use-views"></a>Gründe für die Verwendung von Sichten
 Sichten können auf verschiedene Weisen zur Verbesserung der Qualität Ihrer Lösung verwendet werden.  Dieser Artikel enthält einige Beispiele dafür, wie Sie Ihre Lösung mit Sichten bereichern können, sowie Informationen zu den Einschränkungen, die zu berücksichtigen sind.
 
+
+> [!IMPORTANT]
+> Sehen Sie sich die Syntax für die neue materialisierte Sicht unter [CREATE MATERIALIZED VIEW AS SELECT](/sql/t-sql/statements/create-materialized-view-as-select-transact-sql?view=azure-sqldw-latest) an.  Weitere Informationen finden Sie in den [Versionshinweisen](/azure/sql-data-warehouse/release-notes-10-0-10106-0).
+>
+
+
 > [!NOTE]
 > Die Syntax für CREATE VIEW wird in diesem Artikel nicht erörtert. Weitere Informationen finden Sie in der Dokumentation zu [CREATE VIEW](/sql/t-sql/statements/create-view-transact-sql).
 > 
-> 
 
 ## <a name="architectural-abstraction"></a>Architekturabstraktion
+
 Ein häufig verwendetes Anwendungsmuster ist das erneute Erstellen von Tabellen mit CREATE TABLE AS SELECT (CTAS) gefolgt von einem Muster zur Objektumbenennung beim Laden von Daten.
 
 Im folgenden Beispiel werden einer Datumsdimension neue Datumsdatensätze hinzugefügt. Beachten Sie, wie eine neue Tabelle (DimDate_New) zuerst erstellt und dann umbenannt wird, um die ursprüngliche Version der Tabelle zu ersetzen.

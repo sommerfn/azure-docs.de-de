@@ -1,5 +1,5 @@
 ---
-title: Bedingter Zugriff für B2B Collaboration-Benutzer – Azure Active Directory | Microsoft-Dokumentation
+title: Bedingter Zugriff für Benutzer von B2B-Zusammenarbeit – Azure Active Directory | Microsoft-Dokumentation
 description: Azure Active Directory B2B-Zusammenarbeit unterstützt die Multi-Factor Authentication (MFA) für den selektiven Zugriff auf Ihre Unternehmensanwendungen.
 services: active-directory
 ms.service: active-directory
@@ -11,14 +11,14 @@ author: msmimart
 manager: celestedg
 ms.reviewer: elisolMS
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1f3bfe067b7a927f800f88958ee2ffca09711c10
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: c012ebfb00b57079e43b74b4f6570744db980860
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65812808"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67113155"
 ---
-# <a name="conditional-access-for-b2b-collaboration-users"></a>Bedingter Zugriff für Benutzer der B2B-Zusammenarbeit
+# <a name="conditional-access-for-b2b-collaboration-users"></a>Bedingter Zugriff für Benutzer von B2B-Zusammenarbeit
 
 ## <a name="multi-factor-authentication-for-b2b-users"></a>Multi-Factor Authentication für B2B-Benutzer
 Azure AD B2B-Zusammenarbeit bietet Organisationen die Möglichkeit, Multi-Factor Authentication-Richtlinien (MFA) für B2B-Benutzer zu erzwingen. Diese Richtlinien können auf Mandantenebene, App-Ebene oder der Ebene einzelner Benutzer auf die gleiche Weise erzwungen werden, wie sie für Vollzeitmitarbeiter und Mitglieder der Organisation aktiviert werden können. MFA-Richtlinien werden in der Ressourcenorganisation erzwungen.
@@ -57,7 +57,7 @@ Zurzeit kann ein Administrator eine erneute Authentifizierung von B2B-Zusammenar
    ```
    Get-MsolUser | where { $_.StrongAuthenticationMethods} | select UserPrincipalName, @{n="Methods";e={($_.StrongAuthenticationMethods).MethodType}}
    ```
-   Beispiel: 
+   Beispiel:
 
    ```
    Get-MsolUser | where { $_.StrongAuthenticationMethods} | select UserPrincipalName, @{n="Methods";e={($_.StrongAuthenticationMethods).MethodType}}

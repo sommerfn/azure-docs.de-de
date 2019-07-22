@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 05/07/2019
+ms.date: 07/02/2019
 ms.author: barclayn
-ms.openlocfilehash: d0974b98975b8f7d09760be964024f92e9690a4e
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 60f3bedb86304bf7d407710b07d9732afb6e8b05
+ms.sourcegitcommit: d2785f020e134c3680ca1c8500aa2c0211aa1e24
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65596389"
+ms.lasthandoff: 07/04/2019
+ms.locfileid: "67566081"
 ---
 # <a name="azure-data-encryption-at-rest"></a>Azure-Datenverschlüsselung ruhender Daten
 
@@ -212,7 +212,7 @@ Software-as-a-Service-Kunden haben die Verschlüsselung ruhender Daten üblicher
 
 ### <a name="encryption-at-rest-for-paas-customers"></a>Verschlüsselung ruhender Daten for PaaS-Kunden
 
-Die Daten von PaaS-Kunden befinden sich üblicherweise in einer Umgebung zur Anwendungsausführung und in jedem Azure-Ressourcenanbieter, der zum Speichern von Kundendaten verwendet wird. Um sich die für Sie verfügbaren Optionen für die Verschlüsselung ruhender Daten anzusehen, überprüfen Sie die nachstehende Tabelle auf die von Ihnen verwendeten Speicher- und Anwendungsplattformen. Wenn dies unterstützt wird, werden Links zu Anweisungen zum Aktivieren der Verschlüsselung ruhender Daten für jeden Ressourcenanbieter angegeben.
+Die Daten von PaaS-Kunden (Platform-as-a-Service) befinden sich in der Regel in einem Speicherdienst wie Blob Storage, können aber auch zwischengespeichert oder in der Anwendungsausführungsumgebung gespeichert werden, beispielsweise auf einem virtuellen Computer. Um sich die für Sie verfügbaren Optionen für die Verschlüsselung ruhender Daten anzusehen, überprüfen Sie die nachstehende Tabelle auf die von Ihnen verwendeten Speicher- und Anwendungsplattformen.
 
 ### <a name="encryption-at-rest-for-iaas-customers"></a>Verschlüsselung ruhender Daten für IaaS-Kunden
 
@@ -220,11 +220,11 @@ IaaS-Kunden können mehrere Dienste und Anwendungen verwenden. IaaS-Dienste kön
 
 #### <a name="encrypted-storage"></a>Verschlüsselter Speicher
 
-Genauso wie PaaS können auch IaaS-Lösungen andere Azure-Dienste nutzen, um ruhende verschlüsselte Daten zu speichern. In diesen drei Fällen können Sie die Unterstützung der Verschlüsselung ruhender Daten wie von jeden genutzten Azure-Dienst bereitgestellt ermöglichen. In der unten stehenden Tabelle sind die Hauptspeicher, -dienste und -anwendungsplattformen sowie das unterstützte Modell zur Verschlüsselung ruhender Daten aufgelistet. Wenn dies unterstützt wird, werden Links zu Anweisungen zum Aktivieren der Verschlüsselung ruhender Daten angegeben.
+Genauso wie PaaS können auch IaaS-Lösungen andere Azure-Dienste nutzen, um ruhende verschlüsselte Daten zu speichern. In diesen drei Fällen können Sie die Unterstützung der Verschlüsselung ruhender Daten wie von jeden genutzten Azure-Dienst bereitgestellt ermöglichen. In der unten stehenden Tabelle sind die Hauptspeicher, -dienste und -anwendungsplattformen sowie das unterstützte Modell zur Verschlüsselung ruhender Daten aufgelistet. 
 
 #### <a name="encrypted-compute"></a>Verschlüsselte Berechnung
 
-Eine vollständige Lösung zur Verschlüsselung ruhender Daten erfordert, dass die Daten niemals in unverschlüsselter Form gespeichert werden. Während die Daten auf einem Server, verwendet werden der die Daten in den Speicher lädt, können sie lokal auf verschiedene Weisen gespeichert werden: mit der Windows-Auslagerungsdatei, einem Absturzabbild und durch Protokolle, die die Anwendung möglicherweise durchführt. Um sicherzustellen, dass diese Daten im Ruhezustand verschlüsselt sind, können IaaS-Anwendungen Azure Disk Encryption für eine Azure-IaaS-VM (Windows oder Linux) und einen virtuellen Datenträger verwenden.
+Alle verwalteten Datenträger, Momentaufnahmen und Images werden mithilfe von Speicherdienstverschlüsselung mit einem vom Dienst verwalteten Schlüssel verschlüsselt. Eine vollständigere Lösung zur Verschlüsselung ruhender Daten stellt sicher, dass die Daten niemals in unverschlüsselter Form gespeichert werden. Während der Verarbeitung der Daten auf einem virtuellen Computer können die Daten in der Windows- oder Linux-Auslagerungsdatei, in einem Speicherabbild oder in einem Anwendungsprotokoll persistent gespeichert werden. Um sicherzustellen, dass diese Daten im Ruhezustand verschlüsselt sind, können IaaS-Anwendungen Azure Disk Encryption für eine Azure-IaaS-VM (Windows oder Linux) und einen virtuellen Datenträger verwenden.
 
 #### <a name="custom-encryption-at-rest"></a>Kundenspezifische Verschlüsselung ruhender Daten
 
@@ -240,7 +240,7 @@ Jeder Kunde, der Funktionen von Azure-IaaS verwendet, kann die Verschlüsselung 
 
 #### <a name="azure-storage"></a>Azure-Speicher
 
-Alle Azure Storage-Dienste (Blob Storage, Queue Storage, Table Storage und Azure Files) unterstützen die serverseitige Verschlüsselung im Ruhezustand. Manche Dienste unterstützen auch von Kunden verwaltete Schlüssel und clientseitige Verschlüsselung.  
+Alle Azure Storage-Dienste (Blob Storage, Queue Storage, Table Storage und Azure Files) unterstützen die serverseitige Verschlüsselung im Ruhezustand. Einige Dienste unterstützen außerdem vom Kunden verwaltete Schlüssel und clientseitige Verschlüsselung. 
 
 - Serverseitig: Alle Azure Storage-Dienste ermöglichen standardmäßig die serverseitige Verschlüsselung mithilfe von dienstverwalteten Schlüsseln – transparent für die Anwendung. Weitere Informationen finden Sie unter [Azure Storage Service Encryption für ruhende Daten](https://docs.microsoft.com/azure/storage/storage-service-encryption). Azure Blob Storage und Azure Files unterstützen auch von Kunden verwaltete RSA-Schlüssel mit 2048 Bit in Azure Key Vault. Weitere Informationen finden Sie unter [Azure Storage Service Encryption mit von Kunden verwalteten Schlüsseln in Azure Key Vault](https://docs.microsoft.com/azure/storage/common/storage-service-encryption-customer-managed-keys).
 - Clientseitig: Azure-Blobs, -Tabellen und -Warteschlangen unterstützen die clientseitige Verschlüsselung. Beim Verwenden der clientseitigen Verschlüsselung verschlüsseln Kunden die Daten und laden die Daten als verschlüsselte Blobs hoch. Der Kunde ist für die Schlüsselverwaltung verantwortlich. Weitere Informationen finden Sie unter [Clientseitige Verschlüsselung und Azure Key Vault für Microsoft Azure Storage](https://docs.microsoft.com/azure/storage/storage-client-side-encryption).
@@ -255,12 +255,12 @@ Die clientseitige Verschlüsselung von Daten von Azure SQL-Datenbank wird durch 
 
 |                                  |                    | **Verschlüsselungsmodell und Schlüsselverwaltung** |                    |
 |----------------------------------|--------------------|-----------------------------------------|--------------------|
-|                                  | **Serverseitig mit vom Dienst verwaltetem Schlüssel**     | **Serverseitig mit vom Kunden verwaltetem Key Vault**             | **Clientseitig mit Clientverwaltung**      |
+|                                  | **Serverseitig mit vom Dienst verwaltetem Schlüssel**     | **Serverseitig mit vom Kunden verwaltetem Schlüssel**             | **Clientseitig mit Clientverwaltung**      |
 | **KI und Machine Learning**      |                    |                    |                    |
 | Azure Search                     | Ja                | -                  | -                  |
 | Azure Machine Learning-Dienst   | Ja                | -                  | -                  |
 | Azure Machine Learning Studio    | Ja                | RSA 2048 Bit, Vorschauversion | -               |
-| Power BI                         | Ja                | -                  | -                  |
+| Power BI                         | Ja                | RSA 2048 Bit, Vorschauversion | -                  |
 | **Analyse**                    |                    |                    |                    |
 | Azure Stream Analytics           | Ja                | -                  | -                  |
 | Event Hubs                       | Ja                | -                  | -                  |
@@ -269,12 +269,19 @@ Die clientseitige Verschlüsselung von Daten von Azure SQL-Datenbank wird durch 
 | HDInsight                        | Ja                | Vorschau für Apache Kafka, alle RSA-Längen | -                  |
 | Azure Data Factory               | Ja                | -                  | -                  |
 | Azure Data Lake Store            | Ja                | Ja, RSA 2048 Bit  | -                  |
+| **Container**                   |                    |                    |                    |
+| Azure Kubernetes Service         | Ja                | -                  | -                  |
+| Containerregistrierung               | Ja                | -                  | -                  |
 | **Compute**                      |                    |                    |                    |
-| Virtual Machines                 | -                  | Ja, RSA 2048 Bit  | -                  |
-| VM-Skalierungsgruppe        | -                  | Ja, RSA 2048 Bit  | -                  |
+| Virtual Machines                 | Ja                | Ja, RSA 2048 Bit  | -                  |
+| VM-Skalierungsgruppe        | Ja                | Ja, RSA 2048 Bit  | -                  |
+| SAP HANA                         | Ja                | Ja, RSA 2048 Bit  | -                  |
 | **Datenbanken**                    |                    |                    |                    |
 | SQL Server auf virtuellen Computern   | Ja                | Ja, RSA 2048 Bit  | Ja                |
 | Azure SQL-Datenbank               | Ja                | Ja, RSA 2048 Bit  | Ja                |
+| Azure SQL-Datenbank for MariaDB   | Ja                | -                  | -                  |
+| Azure SQL-Datenbank for MySQL     | Ja                | -                  | -                  |
+| Azure SQL-Datenbank for PostgreSQL | Ja                | -                  | -                  |
 | Azure SQL Data Warehouse         | Ja                | Ja, RSA 2048 Bit  | Ja                |
 | SQL Server Stretch Database      | Ja                | Ja, RSA 2048 Bit  | Ja                |
 | Table Storage                    | Ja                | -                  | Ja                |
@@ -302,8 +309,9 @@ Die clientseitige Verschlüsselung von Daten von Azure SQL-Datenbank wird durch 
 | File Storage                     | Ja                | Ja, RSA 2048 Bit  | -                  |
 | Queue Storage                    | Ja                | -                  | Ja                |
 | Avere vFXT                       | Ja                | -                  | -                  |
+| Azure NetApp Files               | Ja                | -                  | -                  |
 | Archivspeicher                  | Ja                | Ja, RSA 2048 Bit  | -                  |
-| StorSimple                       | Ja                | -                  | Ja                |
+| StorSimple                       | Ja                | Ja, RSA 2048 Bit  | Ja                |
 | Azure Backup                     | Ja                | -                  | Ja                |
 | Data Box                         | Ja                | -                  | Ja                |
 

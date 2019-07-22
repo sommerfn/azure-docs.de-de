@@ -107,10 +107,10 @@ Wählen Sie in der Liste mit den Aktionen die gewünschte Aktion aus.
    | Eigenschaft | Erforderlich | Value | BESCHREIBUNG |
    |----------|----------|-------|-------------|
    | Search Query | Ja | <*Suchausdruck*> | Geben Sie einen Ausdruck für die Abfrage der Triggerergebnisse ein. Sie können aus den Feldern der Liste mit dynamischen Inhalten wählen oder mit dem Ausdrucks-Generator einen Ausdruck erstellen. |
-   | Market | Ja | <*Gebietsschema*> | Das Gebietsschema für die Suche. Die Standardeinstellung ist „en-US“, aber Sie können einen anderen Wert auswählen. |
-   | Safe Search | Ja | <*Suchebene*> | Die Filterebene zum Ausschließen nicht jugendfreier Inhalte. Die Standardeinstellung ist „Mittel“, aber Sie können eine andere Ebene auswählen. |
-   | Count | Nein | <*Ergebnisanzahl*> | Hiermit wird die angegebene Anzahl von Ergebnissen zurückgegeben. Der Standardwert ist 20, aber Sie können einen anderen Wert angeben. Die tatsächliche Anzahl zurückgegebener Ergebnisse ist möglicherweise kleiner als die angegebene Anzahl. |
-   | Offset | Nein | <*Versatzwert*> | Die Anzahl von Ergebnissen, die übersprungen werden sollen, bevor Ergebnisse zurückgegeben werden |
+   | Market | Ja | <*locale*> | Das Gebietsschema für die Suche. Die Standardeinstellung ist „en-US“, aber Sie können einen anderen Wert auswählen. |
+   | Safe Search | Ja | <*search-level*> | Die Filterebene zum Ausschließen nicht jugendfreier Inhalte. Die Standardeinstellung ist „Mittel“, aber Sie können eine andere Ebene auswählen. |
+   | Count | Nein | <*results-count*> | Hiermit wird die angegebene Anzahl von Ergebnissen zurückgegeben. Der Standardwert ist 20, aber Sie können einen anderen Wert angeben. Die tatsächliche Anzahl zurückgegebener Ergebnisse ist möglicherweise kleiner als die angegebene Anzahl. |
+   | Offset | Nein | <*skip-value*> | Die Anzahl von Ergebnissen, die übersprungen werden sollen, bevor Ergebnisse zurückgegeben werden |
    |||||
 
    Nehmen Sie beispielsweise an, dass Sie Ergebnisse benötigen, deren Kategoriename die Zeichenfolge „Tech“ enthält.

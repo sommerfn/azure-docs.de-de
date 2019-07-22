@@ -2,17 +2,17 @@
 title: Konzepte – Speicher in Azure Kubernetes Service (AKS)
 description: Informationen zu Speicher in Azure Kubernetes Service (AKS) einschließlich Volumes, persistente Volumes, Speicherklassen und Ansprüche
 services: container-service
-author: iainfoulds
+author: mlearned
 ms.service: container-service
 ms.topic: conceptual
 ms.date: 03/01/2019
-ms.author: iainfou
-ms.openlocfilehash: cce38eb12d803c0640d9ee774dbc6c98ab5db219
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.author: mlearned
+ms.openlocfilehash: eb9141d363bdb09b5773f80dfc5a1c4b9b92728f
+ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60466816"
+ms.lasthandoff: 07/07/2019
+ms.locfileid: "67615810"
 ---
 # <a name="storage-options-for-applications-in-azure-kubernetes-service-aks"></a>Speicheroptionen für Anwendungen in Azure Kubernetes Service (AKS)
 
@@ -125,9 +125,9 @@ Entsprechenden bewährte Methoden finden Sie unter [Bewährte Methoden für die 
 
 Informationen zum Erstellen von dynamischen und statischen Volumes, die Azure Disk oder Azure Files verwenden, finden Sie in den folgenden „Gewusst-wie“-Artikeln:
 
-- [Erstellen eines statischen Volumes mit Azure Disk][aks-static-disks]
+- [Erstellen eines statischen Volumes mit Azure Disks][aks-static-disks]
 - [Erstellen eines statischen Volumes mit Azure Files][aks-static-files]
-- [Erstellen eines dynamischen Volumes mit Azure Disk][aks-dynamic-disks]
+- [Erstellen eines dynamischen Volumes mit Azure Disks][aks-dynamic-disks]
 - [Erstellen eines dynamischen Volumes mit Azure Files][aks-dynamic-files]
 
 Weitere Informationen zu den wesentlichen Konzepten von Kubernetes und AKS finden Sie in den folgenden Artikeln:

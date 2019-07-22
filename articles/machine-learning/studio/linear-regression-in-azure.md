@@ -10,12 +10,12 @@ author: xiaoharper
 ms.author: amlstudiodocs
 ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro
 ms.date: 03/20/2017
-ms.openlocfilehash: f6b2f4ef9a4f3f1615081a422a16ea9f2e156571
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 7db66f6f4efa5e48f2af9380115de8bcfb75cb86
+ms.sourcegitcommit: 1572b615c8f863be4986c23ea2ff7642b02bc605
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60861113"
+ms.lasthandoff: 07/10/2019
+ms.locfileid: "67786683"
 ---
 # <a name="migrate-analytics-from-excel-to-azure-machine-learning-studio"></a>Migrieren von Analysen aus Excel zu Azure Machine Learning Studio
 
@@ -111,7 +111,7 @@ Kopieren Sie bei geöffnetem Arbeitsblatt Ihre vordefinierten Parameter in den b
 ### <a name="optimization-and-further-experiments"></a>Optimieren und weitere Untersuchungen
 Nun, da wir mit dem Excel-Modell unseren Benchmark erreicht hatten, versuchten wir uns daran, unser Modell der linearen Regression in Machine Learning zu optimieren. Wir verwendeten das Modul [Filter-Based Feature Selection][filter-based-feature-selection], um unsere Auswahl der anfänglichen Datenelemente zu verbessern, und konnten dadurch eine Leistungsverbesserung von 4,6 % (mittlerer absoluter Fehler) erreichen. Für zukünftige Projekte werden wir diese Funktion verwenden, die uns möglicherweise wochenlanges Iterieren von Datenattributen zum Herausfinden des richtigen Funktionssatzes für die Modellierung erspart. 
 
-Als Nächstes planen wir die Einbeziehung zusätzlicher Algorithmen wie [Bayes][bayesian-linear-regression] oder [Boosted Decision Trees][boosted-decision-tree-regression] in unser Experiment, um deren Leistung vergleichen zu können. 
+Als Nächstes planen wir die Einbeziehung zusätzlicher Algorithmen wie [Bayes][bayesian-linear-regression] or [Boosted Decision Trees][boosted-decision-tree-regression] in unser Experiment, um deren Leistung vergleichen zu können. 
 
 Ein gutes DataSet für eigene Versuche mit Regressions-Modellen ist das Beispiel-DataSet "Energy Efficiency Regression" mit einer Vielzahl numerischer Attribute. Dieses Dataset wird als Teil der Beispieldatasets in Studio bereitgestellt. Zur Vorhersage der Kühl- bzw. Wärmelast lässt sich eine Vielzahl von Lernmodulen verwenden. Das nachstehende Diagramm zeigt einen Leistungsvergleich verschiedener Regressions-Lernmodelle im Vergleich zum Energieeffizienz-DataSet für die Zielvariable Kühllast. 
 
@@ -133,7 +133,7 @@ Die Möglichkeit, die Vorhersageanalysen für Prognosen aus Studio auch in Excel
 Im Folgenden finden Sie einige Ressourcen für Ihre Arbeit mit Regression: 
 
 * Regression in Excel. Sie haben noch nie versucht, eine Regression in Excel durchzuführen? Dieses Tutorial vereinfacht sie: [https://www.excel-easy.com/examples/regression.html](https://www.excel-easy.com/examples/regression.html)
-* Regression im Vergleich zu Vorhersagen. Tyler Chessman hat einen Blog-Artikel mit einer leicht verständlichen Beschreibung von linearer Regression für Anfänger verfasst, in dem er den Gebrauch von Zeitreihen zu Prognosezwecken erläutert. [http://sqlmag.com/sql-server-analysis-services/understanding-time-series-forecasting-concepts](http://sqlmag.com/sql-server-analysis-services/understanding-time-series-forecasting-concepts) 
+* Regression im Vergleich zu Vorhersagen. Tyler Chessman hat einen Blog-Artikel mit einer leicht verständlichen Beschreibung von linearer Regression für Anfänger verfasst, in dem er den Gebrauch von Zeitreihen zu Prognosezwecken erläutert. [https://www.itprotoday.com/sql-server/understanding-time-series-forecasting-concepts](https://www.itprotoday.com/sql-server/understanding-time-series-forecasting-concepts) 
 * Ordinary Least Squares Linear Regression: Unzulänglichkeiten, Probleme und Fallstricke. Einführung und Erläuterung der Regression: [https://www.clockbackward.com/2009/06/18/ordinary-least-squares-linear-regression-flaws-problems-and-pitfalls/ ](https://www.clockbackward.com/2009/06/18/ordinary-least-squares-linear-regression-flaws-problems-and-pitfalls/)
 
 <!-- Module References -->

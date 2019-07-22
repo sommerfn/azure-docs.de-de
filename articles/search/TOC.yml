@@ -334,8 +334,6 @@
           href: cognitive-search-skill-keyphrases.md
         - name: Spracherkennung
           href: cognitive-search-skill-language-detection.md
-        - name: Erkennung benannter Entitäten
-          href: cognitive-search-skill-named-entity-recognition.md
         - name: Entitätserkennung
           href: cognitive-search-skill-entity-recognition.md
         - name: Textzusammenführung
@@ -344,6 +342,8 @@
           href: cognitive-search-skill-textsplit.md
         - name: Stimmung
           href: cognitive-search-skill-sentiment.md
+        - name: Textübersetzung (Vorschauversion)
+          href: cognitive-search-skill-text-translation.md
         - name: Bildanalyse
           href: cognitive-search-skill-image-analysis.md
         - name: OCR
@@ -352,12 +352,15 @@
           href: cognitive-search-skill-shaper.md
         - name: Bedingt
           href: cognitive-search-skill-conditional.md
-        - name: Veraltete Fähigkeiten
-          href: cognitive-search-skill-deprecated.md
     - name: Benutzerdefinierte Qualifikationen
       items:
         - name: Benutzerdefinierte Web-API
           href: cognitive-search-custom-skill-web-api.md
+    - name: Veraltete Fähigkeiten
+      href: cognitive-search-skill-deprecated.md
+      items:
+        - name: Erkennung benannter Entitäten
+          href: cognitive-search-skill-named-entity-recognition.md
 - name: Ressourcen
   items:
     - name: Azure-Communitysupport

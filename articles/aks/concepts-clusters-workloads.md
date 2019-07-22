@@ -2,17 +2,17 @@
 title: Konzepte – Grundlagen zu Kubernetes für Azure Kubernetes Service (AKS)
 description: Lernen Sie die grundlegenden Cluster- und Workloadkomponenten von Kubernetes kennen, und erfahren Sie, wie diese mit den Features in Azure Kubernetes Service (AKS) in Zusammenhang stehen.
 services: container-service
-author: iainfoulds
+author: mlearned
 ms.service: container-service
 ms.topic: conceptual
 ms.date: 06/03/2019
-ms.author: iainfou
-ms.openlocfilehash: ab818c0bded71b4566173f4a6a720fce9bc539c3
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.author: mlearned
+ms.openlocfilehash: 5f387310e737982b824d0ac9662822d9a74f39e9
+ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66514524"
+ms.lasthandoff: 07/07/2019
+ms.locfileid: "67616021"
 ---
 # <a name="kubernetes-core-concepts-for-azure-kubernetes-service-aks"></a>Grundlegende Kubernetes-Konzepte für Azure Kubernetes Service (AKS)
 
@@ -56,7 +56,7 @@ Dieser verwaltete Clustermaster bedeutet, dass Sie Komponenten wie einen hoch ve
 
 Wenn Sie den Clustermaster auf eine bestimmte Weise konfigurieren müssen oder direkten Zugriff benötigen, können Sie mit [aks-engine][aks-engine] selbst einen Kubernetes-Cluster bereitstellen.
 
-Entsprechenden bewährte Methoden finden Sie unter [Best Practices für Clustersicherheit und Upgrades in Azure Kubernetes Service (AKS)][operator-best-practices-cluster-security].
+Entsprechende bewährte Methoden finden Sie unter [Best Practices für Clustersicherheit und Upgrades in Azure Kubernetes Service (AKS)][operator-best-practices-cluster-security].
 
 ## <a name="nodes-and-node-pools"></a>Knoten und Knotenpools
 
@@ -95,7 +95,7 @@ Beispiel:
     
 Das zugrunde liegende Betriebssystem des Knotens erfordert auch eine gewisse Menge an CPU- und Speicherressourcen für die eigenen Kernfunktionen.
 
-Entsprechenden bewährte Methoden finden Sie unter [Best Practices für grundlegende Schedulerfunktionen in Azure Kubernetes Service (AKS)][operator-best-practices-scheduler].
+Entsprechende bewährte Methoden finden Sie unter [Best Practices für grundlegende Schedulerfunktionen in Azure Kubernetes Service (AKS)][operator-best-practices-scheduler].
 
 ### <a name="node-pools"></a>Knotenpools
 
@@ -103,7 +103,7 @@ Knoten mit der gleichen Konfiguration werden in *Knotenpools* gruppiert. Ein Kub
 
 Wenn Sie einen AKS-Cluster skalieren oder ein Upgrade des Clusters durchführen, wird die Aktion im Standardknotenpool ausgeführt. Sie können auch auswählen, einen bestimmten Knotenpool zu skalieren oder ein Upgrade für diesen auszuführen. Bei Upgradevorgängen wird die Ausführung von Containern in anderen Knoten im Knotenpool geplant, bis das Upgrade für alle Knoten erfolgreich durchgeführt wurde.
 
-Weitere Informationen zur Verwendung mehrerer Knotenpools in AKS finden Sie unter [Create and manage multiple node pools for a cluster in AKS (Erstellen und Verwalten mehrerer Knotenpools für einen Cluster in AKS)][use-multiple-node-pools].
+Weitere Informationen zur Verwendung mehrerer Knotenpools in AKS finden Sie unter [Erstellen und Verwalten mehrerer Knotenpools für einen Cluster in AKS][use-multiple-node-pools].
 
 ### <a name="node-selectors"></a>Knotenselektoren
 
@@ -132,7 +132,7 @@ Kubernetes verwendet *Pods*, um eine Instanz Ihrer Anwendung auszuführen. Ein P
 
 Wenn Sie einen Pod erstellen, können Sie *Ressourcenlimits* definieren, um eine bestimmte Menge an CPU- oder Arbeitsspeicherressourcen anzufordern. Der Kubernetes Scheduler versucht, die Ausführung der Pods auf einem Knoten mit den verfügbaren Ressourcen zu planen, um die Anforderung zu erfüllen. Sie können auch maximale Ressourcenlimits angeben, um zu verhindern, dass ein bestimmter Pod zu viele Computeressourcen des zugrunde liegenden Knotens verbraucht. Eine bewährte Methode ist es, Ressourcenlimits für alle Pods einzurichten, um den Kubernetes Scheduler darüber zu informieren, welche Ressourcen benötigt werden und zulässig sind.
 
-Weitere Informationen finden Sie unter [Kubernetes Pods][kubernetes-pods] (Kubernetes-Pods) und [Kubernetes Pod Lifecycle][kubernetes-pod-lifecycle] (Lebenszyklus von Kubernetes-Pods).
+Weitere Informationen finden Sie unter [Kubernetes-Pods][kubernetes-pods] and [Kubernetes pod lifecycle][kubernetes-pod-lifecycle].
 
 Ein Pod ist eine logische Ressource, aber die Container sind die Ressourcen, in denen die Anwendungsworkloads ausgeführt werden. Pods sind in der Regel kurzlebige Ressourcen, die gelöscht werden können. Einzeln geplante Pods bieten nicht alle Hochverfügbarkeits- und Redundanzfeatures von Kubernetes. Stattdessen werden Pods üblicherweise von Kubernetes-*Controllern* bereitgestellt und verwaltet, beispielsweise dem Bereitstellungscontroller.
 
@@ -179,7 +179,7 @@ spec:
 
 Indem Sie Dienste wie Lastenausgleichsmodule im YAML-Manifest angeben, können Sie auch komplexere Anwendungen erstellen.
 
-Weitere Informationen finden Sie unter [Kubernetes Deployments][kubernetes-deployments] (Kubernetes-Bereitstellungen).
+Weitere Informationen finden Sie unter [Kubernetes-Bereitstellungen][kubernetes-deployments].
 
 ### <a name="package-management-with-helm"></a>Paketverwaltung mit Helm
 
@@ -235,7 +235,7 @@ Wenn Sie einen AKS-Cluster erstellen, stehen Ihnen folgende Namespaces zur Verf�
 - *kube-system*: In diesem Namespace befinden sich grundlegende Ressourcen, beispielsweise Netzwerkfeatures wie DNS und Proxy oder das Kubernetes-Dashboard. In diesem Namespace stellen Sie in der Regel keine eigenen Anwendungen bereit.
 - *kube-public*: Dieser Namespace wird in der Regel nicht genutzt. Er kann jedoch für Ressourcen verwendet werden, die über den gesamten Cluster hinweg sichtbar sein sollen, und er kann von allen Benutzern angezeigt werden.
 
-Weitere Informationen finden Sie unter [Kubernetes Namespaces][kubernetes-namespaces].
+Weitere Informationen finden Sie unter [Kubernetes-Namespaces][kubernetes-namespaces].
 
 ## <a name="next-steps"></a>Nächste Schritte
 

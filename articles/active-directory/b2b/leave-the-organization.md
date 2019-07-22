@@ -5,28 +5,31 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: B2B
 ms.topic: conceptual
-ms.date: 03/13/2019
+ms.date: 06/13/2019
 ms.author: mimart
 author: msmimart
 manager: celestedg
 ms.reviewer: mal
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4f5164130c5850b37d1e1323d172f9f9c46b4b30
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: 26d9eb883cc014c1bea092a12e22b6d144a37994
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65768298"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67112966"
 ---
 # <a name="leave-an-organization-as-a-guest-user"></a>Verlassen einer Organisation als Gastbenutzer
 
 Ein Azure Active Directory B2B-Gastbenutzer (Azure AD) kann eine Organisation jederzeit verlassen, wenn er die Apps dieser Organisation nicht mehr benötigt oder keine Verbindung mehr aufrechterhalten muss. Ein Benutzer kann eine Organisation selbst verlassen, ohne sich an einen Administrator wenden zu müssen.
 
+> [!NOTE]
+> Ein Gastbenutzer kann eine Organisation nicht verlassen, wenn sein Konto im Basismandanten oder im Ressourcenmandanten deaktiviert ist. Wenn das Konto des Gastbenutzers deaktiviert ist, muss er sich an den Mandantenadministrator wenden. Dieser kann entweder das Gastkonto löschen oder das Gastkonto aktivieren, damit der Benutzer die Organisation verlassen kann.
+
 ## <a name="leave-an-organization"></a>Verlassen einer Organisation
 
 Um eine Organisation zu verlassen, führen Sie de folgenden Schritte aus.
 
-1. Navigieren Sie zu Ihrer Zugriffsbereich-Profilseite, indem Sie eine der folgenden Aktionen ausführen:
+1. Wechseln Sie zu Ihrer Seite „Zugriffspanel – Profil“, indem Sie einen der folgenden Schritte ausführen:
    
    - Klicken Sie im [Azur-Portal](https://portal.azure.com) oben rechts auf Ihren Namen, und wählen Sie **Konto anzeigen** aus.
    - Öffnen Sie Ihren [Zugriffsbereich](https://myapps.microsoft.com), klicken Sie oben rechts auf Ihren Namen, und wählen Sie neben **Organisationen** das Einstellungssymbol (Zahnrad) aus.

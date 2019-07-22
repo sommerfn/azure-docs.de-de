@@ -274,7 +274,7 @@
           items:
             - name: Übersicht über Azure-Cluster
               href: service-fabric-azure-clusters-overview.md
-            - name: Knotentypen und VM Scale Sets
+            - name: Knotentypen und VM-Skalierungsgruppen
               href: service-fabric-cluster-nodetypes.md
             - name: Aktualisieren von Clustern in Azure
               href: service-fabric-cluster-upgrade.md
@@ -547,8 +547,8 @@
           href: service-fabric-cloud-services-migration-worker-role-stateless-service.md
         - name: Empfohlene Vorgehensweisen
           href: /azure/architecture/service-fabric/migrate-from-cloud-services
-        - name: Umgestalten einer migrierten App
-          href: /azure/architecture/service-fabric/refactor-migrated-app
+        - name: Modernisieren Ihrer Anwendung
+          href: /azure/architecture/service-fabric/modernize-app-azure-service-fabric
     - name: Verwalten des Anwendungslebenszyklus
       items:
         - name: Packen einer Anwendung

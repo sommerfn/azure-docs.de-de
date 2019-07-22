@@ -2,17 +2,17 @@
 title: Dynamisches Erstellen eines Datenträgervolumes für mehrere Pods in Azure Kubernetes Service (AKS)
 description: Erfahren Sie, wie Sie dynamisch ein persistentes Volume mit Azure-Datenträgern für die Verwendung mit mehreren gleichzeitigen Pods in Azure Kubernetes Service (AKS) erstellen.
 services: container-service
-author: iainfoulds
+author: mlearned
 ms.service: container-service
 ms.topic: article
 ms.date: 03/01/2019
-ms.author: iainfou
-ms.openlocfilehash: 334e56db97213206d9ab7ed5ef4d1d96ab9325d6
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.author: mlearned
+ms.openlocfilehash: 0641d613da86aeffa0c4abb0f82ce93c38283156
+ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65956471"
+ms.lasthandoff: 07/07/2019
+ms.locfileid: "67616075"
 ---
 # <a name="dynamically-create-and-use-a-persistent-volume-with-azure-disks-in-azure-kubernetes-service-aks"></a>Dynamisches Erstellen und Verwenden eines persistenten Volumes mit Azure-Datenträgern in Azure Kubernetes Service (AKS)
 
@@ -25,9 +25,9 @@ Weitere Informationen zu Kubernetes-Volumes finden Sie unter [Speicheroptionen f
 
 ## <a name="before-you-begin"></a>Voraussetzungen
 
-Es wird vorausgesetzt, dass Sie über ein AKS-Cluster verfügen. Wenn Sie noch einen AKS-Cluster benötigen, erhalten Sie weitere Informationen im AKS-Schnellstart. Verwenden Sie dafür entweder die [Azure CLI][aks-quickstart-cli] oder das [Azure-Portal][aks-quickstart-portal].
+Es wird vorausgesetzt, dass Sie über ein AKS-Cluster verfügen. Wenn Sie noch einen AKS-Cluster benötigen, erhalten Sie weitere Informationen in der AKS-Schnellstartanleitung. Verwenden Sie dafür die [Azure CLI][aks-quickstart-cli] or [using the Azure portal][aks-quickstart-portal].
 
-Außerdem muss mindestens die Version 2.0.59 der Azure CLI installiert und konfiguriert sein. Führen Sie  `az --version` aus, um die Version zu ermitteln. Wenn Sie eine Installation oder ein Upgrade ausführen müssen, finden Sie weitere Informationen unter [Installieren der Azure CLI][install-azure-cli].
+Außerdem muss mindestens die Version 2.0.59 der Azure CLI installiert und konfiguriert sein. Führen Sie  `az --version` aus, um die Version zu ermitteln. Wenn Sie eine Installation oder ein Upgrade ausführen müssen, finden Sie weitere Informationen unter  [Installieren der Azure CLI][install-azure-cli].
 
 ## <a name="built-in-storage-classes"></a>Integrierte Speicherklassen
 
@@ -53,7 +53,7 @@ managed-premium     kubernetes.io/azure-disk   1h
 ```
 
 > [!NOTE]
-> Ansprüche für persistente Volumes werden in GiB angegeben, verwaltete Azure-Datenträger werden jedoch nach SKU für eine bestimmte Größe abgerechnet. Diese SKUs reichen von 32 GiB für S4- oder P4-Datenträger bis 32 TiB für S80- oder P80-Datenträger (in der Vorschau). Der Durchsatz und die IOPS-Leistung eines verwalteten Premium-Datenträgers hängen sowohl von der SKU als auch von der Instanzgröße der Knoten im AKS-Cluster ab. Weitere Informationen finden Sie unter [Verwaltete Datenträger – Preise][managed-disk-pricing-performance].
+> Ansprüche für persistente Volumes werden in GiB angegeben, verwaltete Azure-Datenträger werden jedoch nach SKU für eine bestimmte Größe abgerechnet. Diese SKUs reichen von 32 GiB für S4- oder P4-Datenträger bis 32 TiB für S80- oder P80-Datenträger (in der Vorschau). Der Durchsatz und die IOPS-Leistung eines verwalteten Premium-Datenträgers hängen sowohl von der SKU als auch von der Instanzgröße der Knoten im AKS-Cluster ab. Weitere Informationen finden Sie unter [Verwaltete Datenträger – Preise und Leistung][managed-disk-pricing-performance].
 
 ## <a name="create-a-persistent-volume-claim"></a>Erstellen eines Anspruchs auf ein persistentes Volume
 
@@ -171,7 +171,7 @@ $ az disk list --query '[].id | [?contains(@,`pvc-faf0f176-8b8d-11e8-923b-deb28c
 /subscriptions/<guid>/resourceGroups/MC_MYRESOURCEGROUP_MYAKSCLUSTER_EASTUS/providers/MicrosoftCompute/disks/kubernetes-dynamic-pvc-faf0f176-8b8d-11e8-923b-deb28c58d242
 ```
 
-Verwenden Sie die Datenträger-ID, um mit [az snapshot create][az-snapshot-create] einen Momentaufnahmendatenträger zu erstellen. Im folgenden Beispiel wird in der gleichen Ressourcengruppe wie der AKS-Cluster (*MC_myResourceGroup_myAKSCluster_eastus*) eine Momentaufnahme mit dem Namen *pvcSnapshot* erstellt. Es können möglicherweise Berechtigungsprobleme auftreten, wenn Sie Momentaufnahmen erstellen und Datenträger in Ressourcengruppen wiederherstellen, auf die der AKS-Cluster keinen Zugriff hat.
+Verwenden Sie die Datenträger-ID, um mit [az snapshot create][az-snapshot-create] einen Momentaufnahmedatenträger zu erstellen. Im folgenden Beispiel wird in der gleichen Ressourcengruppe wie der AKS-Cluster (*MC_myResourceGroup_myAKSCluster_eastus*) eine Momentaufnahme mit dem Namen *pvcSnapshot* erstellt. Es können möglicherweise Berechtigungsprobleme auftreten, wenn Sie Momentaufnahmen erstellen und Datenträger in Ressourcengruppen wiederherstellen, auf die der AKS-Cluster keinen Zugriff hat.
 
 ```azurecli-interactive
 $ az snapshot create \

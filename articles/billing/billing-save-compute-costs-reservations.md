@@ -5,14 +5,14 @@ author: yashesvi
 manager: yashar
 ms.service: billing
 ms.topic: conceptual
-ms.date: 07/01/2019
+ms.date: 07/03/2019
 ms.author: banders
-ms.openlocfilehash: 7ffb575d7f962232604a4ad6930b804d2619b488
-ms.sourcegitcommit: ac1cfe497341429cf62eb934e87f3b5f3c79948e
+ms.openlocfilehash: cd0a70aa0fb5096c5b0157ae078c961da03109bc
+ms.sourcegitcommit: d2785f020e134c3680ca1c8500aa2c0211aa1e24
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/01/2019
-ms.locfileid: "67490598"
+ms.lasthandoff: 07/04/2019
+ms.locfileid: "67565323"
 ---
 # <a name="what-are-azure-reservations"></a>Was sind Azure-Reservierungen?
 
@@ -42,17 +42,53 @@ EA-Kunden können Käufe für EA-Administratoren beschränken, indem sie die Opt
 
 Ein Reservierungsrabatt gilt nur für Ressourcen, die mit Abonnements verbunden sind, die über Enterprise, CSP und individuelle Pläne mit nutzungsbasierten Tarifen erworben wurden.
 
-## <a name="reservation-scope"></a>Reservierungsumfang
+## <a name="scope-reservations"></a>Bereichsreservierungen
 
-Ein Reservierungsumfang bestimmt die Ressourcen, für die der Reservierungsrabatt gilt. Ein Reservierungsumfang kann folgende Werte aufweisen:
+Sie können den Bereich für eine Reservierung auf ein Abonnement oder eine Ressourcengruppe festlegen. Wenn Sie den Bereich für eine Reservierung festlegen, wird ausgewählt, wo die Reservierungseinsparungen gelten. Wenn Sie den Bereich der Reservierung auf eine Ressourcengruppe festlegen, gelten die Reservierungsrabatte nur für die Ressourcengruppe und nicht für das gesamte Abonnement.
 
-**Bereich „Freigegeben“** : Der Reservierungsrabatt wird auf die entsprechenden Ressourcen in berechtigten Abonnements innerhalb des Abrechnungskontexts angewendet.
+### <a name="reservation-scoping-options"></a>Optionen für Reservierungsbereiche
 
-- Für Kunden mit einem Enterprise Agreement ist der Abrechnungskontext die Registrierung. Für Kunden mit individuellen Plänen mit nutzungsbasierten Tarifen handelt es sich beim Abrechnungsbereich um alle berechtigten Abonnements, die vom Kontoadministrator erstellt wurden.
+Beim Festlegen von Ressourcengruppenbereichen stehen Ihnen je nach Bedarf drei Optionen zur Verfügung, mit denen Sie den Bereich einer Reservierung definieren können:
 
-**Einzelabonnement**: Der Reservierungsrabatt wird auf die entsprechenden Ressourcen im ausgewählten Abonnement angewendet.
+- **Single resource group scope** (Bereich einer einzelnen Ressourcengruppe): Wendet den Reservierungsrabatt nur auf die entsprechenden Ressourcen in der ausgewählten Ressourcengruppe an.
+- **Single subscription scope** (Bereich eines einzelnen Abonnements): Wendet den Reservierungsrabatt auf die entsprechenden Ressourcen im ausgewählten Abonnement an.
+- **Shared scope** (Gemeinsam genutzter Bereich): Wendet den Reservierungsrabatt auf die entsprechenden Ressourcen in berechtigten Abonnements innerhalb des Abrechnungskontexts an. Für Kunden mit einem Enterprise Agreement ist der Abrechnungskontext die Registrierung. Für Kunden mit individuellen Abonnements mit nutzungsbasierten Tarifen handelt es sich beim Abrechnungsbereich um alle berechtigten Abonnements, die vom Kontoadministrator erstellt wurden.
 
-Sie können den [Umfang nach dem Kauf einer Reservierung aktualisieren](billing-manage-reserved-vm-instance.md#change-the-reservation-scope).
+Während Reservierungsrabatte auf Ihre Nutzung angewendet werden, verarbeitet Azure die Reservierung in der folgenden Reihenfolge:
+
+1. Reservierungen mit einem Bereich für eine Ressourcengruppe
+2. Reservierungen mit einem einzelnen Bereich
+3. Reservierungen mit einem gemeinsam genutzten Bereich
+
+Eine einzelne Ressourcengruppe kann abhängig davon, wie Sie Ihre Reservierungen festlegen, Reservierungsrabatte von mehreren Reservierungen erhalten.
+
+### <a name="scope-a-reservation-to-a-resource-group"></a>Festlegen einer Reservierung auf eine Ressourcengruppe
+
+Sie können den Bereich der Reservierung auf eine Ressourcengruppe festlegen, wenn Sie die Reservierung erwerben, oder Sie legen den Bereich nach dem Kauf fest. Sie müssen Besitzer eines Abonnements sein, um den Bereich der Reservierung auf eine Ressourcengruppe festzulegen.
+
+Um den Bereich festzulegen, navigieren Sie zur Seite [Einkaufsreservierung](https://ms.portal.azure.com/#blade/Microsoft\_Azure\_Reservations/CreateBlade/referrer/Browse\_AddCommand) im Azure-Portal. Wählen Sie dann den zu erwerbenden Reservierungstyp aus. Ändern Sie im Auswahlformular **Produkt auswählen, das Sie erwerben möchten** den Wert des **Bereichs** in **Einzelne Ressourcengruppe**, und wählen Sie eine Ressourcengruppe aus.
+
+![Beispiel für die Kaufauswahl einer VM-Reservierung](./media/billing-save-compute-costs-reservations/select-product-to-purchase.png)
+
+Kaufempfehlungen für die Ressourcengruppe in der Reservierung des virtuellen Computers werden angezeigt. Empfehlungen werden berechnet, indem die Nutzung während der letzten 30 Tagen analysiert wird. Eine Kaufempfehlung erfolgt, wenn die Kosten für das Ausführen von Ressourcen mit reservierten Instanzen günstiger sind als die Kosten für die Ausführung von Ressourcen mit nutzungsbasierter Bezahlung. Weitere Informationen zu Reservierungskaufempfehlungen finden Sie im Blogbeitrag [Get Reserved Instance purchase recommendations based on usage pattern](https://azure.microsoft.com/blog/get-usage-based-reserved-instance-recommendations) (Erhalten von Kaufempfehlungen für die reservierte Instanz basierend auf dem Nutzungsverhalten).
+
+Sie können den Bereich nach dem Erwerb einer Reservierung immer aktualisieren. Navigieren Sie zu diesem Zweck zu der Reservierung, klicken Sie auf **Konfiguration**, und legen Sie den Bereich für die Reservierung erneut fest. Das Neuzuweisen eines Bereichs für eine Reservierung ist keine kommerzielle Transaktion. Die Reservierungsbedingungen ändern sich nicht. Weitere Informationen zum Aktualisieren des Bereichs finden Sie unter [Aktualisieren des Bereichs nach dem Erwerb einer Reservierung](billing-manage-reserved-vm-instance.md#change-the-reservation-scope).
+
+![Beispiel für eine Änderung des Reservierungsbereichs](./media/billing-save-compute-costs-reservations/rescope-reservation-resource-group.png)
+
+### <a name="monitor-and-optimize-reservation-usage"></a>Überwachen und Optimieren der Reservierungsnutzung
+
+Sie können Ihre Reservierungsnutzung auf verschiedene Weise überwachen: über das Azure-Portal, über APIs oder über Nutzungsdaten. Um alle Reservierungen anzuzeigen, auf die Sie zugreifen können, navigieren Sie im Azure-Portal zu **Reservierungen**. Das Reservierungsraster zeigt den zuletzt aufgezeichneten Nutzungsprozentsatz für die Reservierung an. Klicken Sie auf die Reservierung, um die langfristige Nutzung der Reservierung anzuzeigen.
+
+Wenn Sie Enterprise Agreement-Kunde sind, können Sie die Reservierungsnutzung auch mithilfe von [APIs](billing-reservation-apis.md#see-reservation-usage) und aus Ihren [Nutzungsdaten](billing-understand-reserved-instance-usage-ea.md#common-cost-and-usage-tasks) abrufen.
+
+Wenn Sie feststellen, dass die Nutzung der Reservierung mit dem Bereich „Ressourcengruppe“ gering ist, können Sie den Reservierungsbereich auf ein einzelnes Abonnement aktualisieren oder über den Abrechnungskontext gemeinsam verwenden. Sie können die Reservierung auch aufteilen und die sich daraus ergebenden Reservierungen auf verschiedene Ressourcengruppen anwenden.
+
+### <a name="other-considerations"></a>Weitere Überlegungen
+
+Wenn Sie nicht über passende Ressourcen in einer Ressourcengruppe verfügen, wird die Reservierung nicht ausgenutzt. Die Reservierung gilt nicht automatisch für eine andere Ressourcengruppe oder ein anderes Abonnement, wenn eine geringe Auslastung vorliegt.
+
+Ein Reservierungsbereich wird nicht automatisch aktualisiert, wenn Sie die Ressourcengruppe aus einem Abonnement in ein anderes verschieben. Sie müssen den Bereich der Reservierung neu festlegen. Andernfalls wird die Reservierung nicht ausgenutzt.
 
 ## <a name="discounted-subscription-and-offer-types"></a>Abonnements und Angebotstypen mit Rabatt
 

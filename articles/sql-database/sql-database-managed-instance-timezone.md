@@ -10,13 +10,13 @@ author: MladjoA
 ms.author: mlandzic
 ms.reviewer: ''
 manager: craigg
-ms.date: 05/22/2019
-ms.openlocfilehash: 8499d99ab82fa89062d74c7dc5db5d7dd11e770c
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.date: 07/05/2019
+ms.openlocfilehash: 05ec49c98c5bcfe40346550f5570c03a8fb3f881
+ms.sourcegitcommit: cf438e4b4e351b64fd0320bf17cc02489e61406a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66016388"
+ms.lasthandoff: 07/08/2019
+ms.locfileid: "67657991"
 ---
 # <a name="time-zones-in-azure-sql-database-managed-instance"></a>Zeitzonen in einer verwalteten Azure SQL-Datenbank-Instanz
 
@@ -30,7 +30,9 @@ Verwenden Sie [AT TIME ZONE](https://docs.microsoft.com/sql/t-sql/queries/at-tim
 
 ## <a name="supported-time-zones"></a>Unterstützte Zeitzonen
 
-Vom zugrunde liegenden Betriebssystem der verwalteten Instanz werden verschiedene unterstützte Zeitzonen geerbt. Es wird regelmäßig eine Aktualisierung durchgeführt, um neue Zeitzonendefinitionen einzubinden und Änderungen an vorhandenen Definitionen widerzuspiegeln. 
+Vom zugrunde liegenden Betriebssystem der verwalteten Instanz werden verschiedene unterstützte Zeitzonen geerbt. Es wird regelmäßig eine Aktualisierung durchgeführt, um neue Zeitzonendefinitionen einzubinden und Änderungen an vorhandenen Definitionen widerzuspiegeln.
+
+Die [Richtlinie zur Sommerzeit/Zeitzonenänderung](https://aka.ms/time) garantiert historische Genauigkeit ab dem Jahr 2010.
 
 Eine Liste mit Namen der unterstützten Zeitzonen wird über die Systemansicht [sys.time_zone_info](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-time-zone-info-transact-sql) verfügbar gemacht.
 
@@ -43,7 +45,7 @@ Eine Zeitzone einer verwalteten Instanz kann nur während der Instanzerstellung 
 
 ### <a name="set-the-time-zone-through-the-azure-portal"></a>Festlegen der Zeitzone über das Azure-Portal
 
-Wählen Sie beim Eingeben der Parameter für eine neue Instanz in der Liste mit den unterstützten Zeitzonen eine Zeitzone aus. 
+Wählen Sie beim Eingeben der Parameter für eine neue Instanz in der Liste mit den unterstützten Zeitzonen eine Zeitzone aus.
   
 ![Festlegen einer Zeitzone während der Instanzerstellung](media/sql-database-managed-instance-timezone/01-setting_timezone-during-instance-creation.png)
 
@@ -82,7 +84,10 @@ Sie können für eine verwaltete Instanz eine Sicherungsdatei wiederherstellen o
 
 ### <a name="point-in-time-restore"></a>Point-in-Time-Wiederherstellung
 
-Wenn Sie eine Point-in-Time-Wiederherstellung durchführen, wird der Wiederherstellungszeitpunkt als UTC-Zeit interpretiert. Mit dieser Einstellung wird jedwede Mehrdeutigkeit aufgrund von Sommerzeit und den damit verbundenen Umstellungen vermieden.
+<del>Wenn Sie eine Point-in-Time-Wiederherstellung durchführen, wird der Wiederherstellungszeitpunkt als UTC-Zeit interpretiert. Mit dieser Einstellung werden Mehrdeutigkeiten aufgrund von Sommerzeit und den damit verbundenen Umstellungen vermieden.<del>
+
+ >[!WARNING]
+  > Das aktuelle Verhalten entspricht nicht der obigen Aussage, und die Zeit für die Wiederherstellung wird gemäß der Zeitzone der von der Quelle verwalteten Instanz interpretiert, aus der automatische Datenbanksicherungen entnommen werden. Wir arbeiten daran, dieses Verhalten zu korrigieren, um einen bestimmten Point-in-Time als UTC-Zeit zu interpretieren. Weitere Details dazu finden Sie unter [Bekannte Probleme](sql-database-managed-instance-timezone.md#known-issues).
 
 ### <a name="auto-failover-groups"></a>Autofailover-Gruppen
 
@@ -95,6 +100,21 @@ Die Verwendung der gleichen Zeitzone für eine primäre und sekundäre Instanz e
 
 - Die Zeitzone der vorhandenen verwalteten Instanz kann nicht geändert werden.
 - Für externe Prozesse, die über die SQL Server-Agentaufträge gestartet werden, wird die Zeitzone der Instanz nicht beachtet.
+
+## <a name="known-issues"></a>Bekannte Probleme
+
+Wenn der Point-in-Time-Wiederherstellungsvorgang (Point-in-Time Restore, PITR) durchgeführt wird, wird die Zeit für die Wiederherstellung gemäß der Zeitzone interpretiert, die für die verwaltete Instanz festgelegt ist, aus der automatische Datenbanksicherungen entnommen werden, auch wenn die Portalseite für PITR vermuten lässt, dass die Zeit als UTC interpretiert wird.
+
+Beispiel:
+
+Angenommen, für die Instanz, aus der automatische Sicherungen übernommen werden, ist die Zeitzone Eastern Normalzeit (UTC-5) festgelegt.
+Die Portalseite für Point-in-Time-Wiederherstellung lässt vermuten, dass die Zeit, die Sie für die Wiederherstellung auswählen, UTC-Zeit ist:
+
+![PITR mit der lokalen Uhrzeit im Portal](media/sql-database-managed-instance-timezone/02-pitr-with-nonutc-timezone.png)
+
+Die Zeit für die Wiederherstellung wird jedoch tatsächlich als Eastern Normalzeit interpretiert, und in diesem speziellen Beispiel wird der Zustand der Datenbank um 9 Uhr Eastern Normalzeit und nicht nach UTC-Zeit wiederhergestellt.
+
+Wenn Sie die Point-in-Time-Wiederherstellung zu einem bestimmten Zeitpunkt in UTC-Zeit durchführen möchten, berechnen Sie zunächst die äquivalente Zeit in der Zeitzone der Quellinstanz, und verwenden Sie diese Zeit im Portal oder in PowerShell bzw. einem CLI-Skript.
 
 ## <a name="list-of-supported-time-zones"></a>Liste mit den unterstützten Zeitzonen
 

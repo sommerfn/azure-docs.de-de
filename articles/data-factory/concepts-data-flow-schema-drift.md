@@ -3,16 +3,15 @@ title: Zuordnungsdatenfluss in Azure Data Factory – Schemaabweichung
 description: Erstellen robuster Datenflüsse in Azure Data Factory mit Schemaabweichung
 author: kromerm
 ms.author: makromer
-ms.reviewer: douglasl
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 10/04/2018
-ms.openlocfilehash: aadab68185347dc0a12e0802f675efe13ecea545
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 6fd610afc0a21a97a8544b9e4b173f207f5fb50f
+ms.sourcegitcommit: dad277fbcfe0ed532b555298c9d6bc01fcaa94e2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61262113"
+ms.lasthandoff: 07/10/2019
+ms.locfileid: "67722888"
 ---
 # <a name="mapping-data-flow-schema-drift"></a>Zuordnungsdatenfluss – Schemaabweichung
 
@@ -34,7 +33,7 @@ Zum Schutz gegen Schemaabweichung müssen in einem Datenfluss-Tool Funktionen en
 
 * Wenn Sie diese Option ausgewählt haben, werden alle Eingangsfelder bei jeder Datenflussausführung aus der Quelle gelesen und über den gesamten Fluss der Senke übergeben.
 
-* Stellen Sie sicher, dass Sie „Auto-Map (Automatische Zuordnung)“ verwenden, um alle neuen Felder in der Senkentransformation zuzuordnen, sodass alle neuen Felder abgerufen werden und in Ihr Ziel gelangen:
+* Stellen Sie sicher, dass Sie „Auto-Map“ (Automatische Zuordnung) verwenden, um alle neuen Felder in der Senkentransformation zuzuordnen, sodass alle neuen Felder abgerufen werden und in Ihr Ziel gelangen.
 
 <img src="media/data-flow/automap.png" width="400">
 

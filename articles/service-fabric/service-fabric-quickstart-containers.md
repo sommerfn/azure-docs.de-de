@@ -12,15 +12,15 @@ ms.devlang: dotNet
 ms.topic: quickstart
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 01/31/2019
+ms.date: 07/10/2019
 ms.author: aljo
 ms.custom: mvc
-ms.openlocfilehash: 4795952faa91d62b76f267795660db5ab4075e79
-ms.sourcegitcommit: 4cdd4b65ddbd3261967cdcd6bc4adf46b4b49b01
+ms.openlocfilehash: ebc3d988afd9257bbdf045814877ab70012836aa
+ms.sourcegitcommit: 920ad23613a9504212aac2bfbd24a7c3de15d549
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/06/2019
-ms.locfileid: "66734500"
+ms.lasthandoff: 07/15/2019
+ms.locfileid: "68225111"
 ---
 # <a name="quickstart-deploy-windows-containers-to-service-fabric"></a>Schnellstart: Bereitstellen von Windows-Containern in Service Fabric
 
@@ -44,7 +44,7 @@ In dieser Schnellstartanleitung wird Folgendes vermittelt:
 
 * Ein Azure-Abonnement. (Sie können ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) erstellen.)
 * Ein Entwicklungscomputer, auf dem Folgendes ausgeführt wird:
-  * Visual Studio 2015 oder Windows 2019.
+  * Visual Studio 2019 oder Windows 2019.
   * [Service Fabric-SDK und -Tools](service-fabric-get-started.md)
 
 ## <a name="package-a-docker-image-container-with-visual-studio"></a>Packen eines Docker-Imagecontainers mit Visual Studio
@@ -53,7 +53,7 @@ Das Service Fabric-SDK und die Tools stellen eine Dienstvorlage bereit, um Sie b
 
 Starten Sie Visual Studio als Administrator.  Wählen Sie **Datei** > **Neu** > **Projekt**.
 
-Wählen Sie **Service Fabric-Anwendung**, benennen Sie sie „MyFirstContainer“, und klicken Sie auf **OK**.
+Wählen Sie **Service Fabric-Anwendung** aus, nennen Sie die Anwendung „MyFirstContainer“, und klicken Sie auf **Erstellen**.
 
 Wählen Sie unter **Gehostete Container und Anwendungen** die Vorlage **Container**.
 

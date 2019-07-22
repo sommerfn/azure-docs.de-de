@@ -9,12 +9,12 @@ ms.date: 06/27/2017
 ms.author: rogarana
 ms.reviewer: yuemlu
 ms.subservice: common
-ms.openlocfilehash: 5cfb96bd3115c8f3116a28926e93df89dff54351
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 6b6e442ff3333a7fd085f8e452ae056e7daaba8c
+ms.sourcegitcommit: d2785f020e134c3680ca1c8500aa2c0211aa1e24
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65153761"
+ms.lasthandoff: 07/04/2019
+ms.locfileid: "67565518"
 ---
 # <a name="migrating-to-azure-premium-storage-unmanaged-disks"></a>Migrieren zu Azure Storage Premium (Nicht verwaltete Datenträger)
 
@@ -61,7 +61,7 @@ Es gibt fünf Datenträgertypen, die Sie mit Ihrem virtuellen Computer verwenden
 | IOPS pro Datenträger       | 500   | 2\.300  | 5\.000           | 7\.500           | 7\.500           | 
 | Durchsatz pro Datenträger | 100 MB pro Sekunde | 150 MB pro Sekunde | 200 MB pro Sekunde | 250 MB pro Sekunde | 250 MB pro Sekunde |
 
-Legen Sie je nach Workload fest, ob zusätzliche Datenträger für Ihren virtuellen Computer erforderlich sind. Sie können mehrere Datenträger für permanente Daten auf Ihrem virtuellen Computer anfügen. Bei Bedarf können Sie Daten über die Datenträger verteilen, um die Kapazität und die Leistung des Volumens zu erhöhen. ([Hier](../../virtual-machines/windows/premium-storage-performance.md#disk-striping) erfahren Sie, was Datenträgerstriping ist.) Wenn Sie Daten über Storage Premium-Datenträger mithilfe von [Speicherplätzen][4] verteilen, sollten Sie sie für jeden verwendeten Datenträger eine Spalte konfigurieren. Andernfalls kann die Gesamtleistung des Stripesetvolumes aufgrund ungleicher Verteilung des Datenverkehrs auf die Datenträger niedriger sein als erwartet. Für Linux-VMs können Sie dazu das Hilfsprogramm *mdadm* verwenden. Weitere Informationen finden Sie im Artikel [Konfigurieren von Software-RAID unter Linux](../../virtual-machines/linux/configure-raid.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) .
+Legen Sie je nach Workload fest, ob zusätzliche Datenträger für Ihren virtuellen Computer erforderlich sind. Sie können mehrere Datenträger für permanente Daten auf Ihrem virtuellen Computer anfügen. Bei Bedarf können Sie Daten über die Datenträger verteilen, um die Kapazität und die Leistung des Volumens zu erhöhen. ([Hier](../../virtual-machines/windows/premium-storage-performance.md#disk-striping) erfahren Sie, was Datenträgerstriping ist.) Wenn Sie Daten über Premium-Speicher-Datenträger mithilfe von [Speicherplätzen][4]verteilen, sollten Sie sie für jeden verwendeten Datenträger eine Spalte konfigurieren. Andernfalls kann die Gesamtleistung des Stripesetvolumes aufgrund ungleicher Verteilung des Datenverkehrs auf die Datenträger niedriger sein als erwartet. Für Linux-VMs können Sie dazu das Hilfsprogramm *mdadm* verwenden. Weitere Informationen finden Sie im Artikel [Konfigurieren von Software-RAID unter Linux](../../virtual-machines/linux/configure-raid.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) .
 
 #### <a name="storage-account-scalability-targets"></a>Skalierbarkeitsziele für das Speicherkonto
 Storage Premium-Konten haben zusätzlich zu den unter [Ziele für Skalierbarkeit und Leistung des Azure-Speichers](storage-scalability-targets.md) aufgeführten Zielen folgende Skalierbarkeitsziele. Wenn die Anforderungen Ihrer Anwendung die Skalierbarkeitsziele eines einzelnen Speicherkontos überschreiten, erstellen Sie die Anwendung so, dass mehrere Speicherkonten verwendet werden, und partitionieren Sie Ihre Daten in diesen Speicherkonten.
@@ -176,23 +176,23 @@ Mit AzCopy können Sie die VHD auf einfache Weise über das Internet hochladen. 
 
     ```azcopy
     AzCopy /Source:https://sourceaccount.blob.core.windows.net/mycontainer1 /SourceKey:key1 /Dest:https://destaccount.blob.core.windows.net/mycontainer2 /DestKey:key2 /Pattern:abc.vhd
-    ```
+        ```
 
-    Es folgt die Beschreibung der im AzCopy-Befehl verwendeten Parameter:
+    Here are descriptions of the parameters used in the AzCopy command:
 
-   * **/Source: *&lt;Quelle&gt;:* ** Speicherort der Ordner- oder Speichercontainer-URL, die die VHD enthält.
-   * **/SourceKey: *&lt;source-account-key&gt;:* ** Speicherkontoschlüssel des Quellspeicherkontos.
-   * **/Dest: *&lt;Ziel&gt;:* ** Speichercontainer-URL, in die die VHD kopiert werden soll.
-   * **/DestKey: *&lt;dest-account-key&gt;:* ** Speicherkontoschlüssel des Zielspeicherkontos.
-   * **/Pattern: *&lt;file-name&gt;:* ** Geben Sie den Dateinamen der zu kopierenden VHD-Datei an.
+   * **/Source: _&lt;source&gt;:_** Location of the folder or storage container URL that contains the VHD.
+   * **/SourceKey: _&lt;source-account-key&gt;:_** Storage account key of the source storage account.
+   * **/Dest: _&lt;destination&gt;:_** Storage container URL to copy the VHD to.
+   * **/DestKey: _&lt;dest-account-key&gt;:_** Storage account key of the destination storage account.
+   * **/Pattern: _&lt;file-name&gt;:_** Specify the file name of the VHD to copy.
 
-Details zur Verwendung des Tools AzCopy finden Sie unter [Übertragen von Daten mit dem Befehlszeilenprogramm AzCopy](storage-use-azcopy.md).
+For details on using AzCopy tool, see [Transfer data with the AzCopy Command-Line Utility](storage-use-azcopy.md).
 
-##### <a name="option-2-copy-a-vhd-with-powershell-synchronized-copy"></a>Option 2: Kopieren einer VHD mit PowerShell (synchronisierte Kopie)
+##### Option 2: Copy a VHD with PowerShell (Synchronized copy)
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
-Sie können die VHD-Datei auch mithilfe des PowerShell-Cmdlets „Start-AzStorageBlobCopy“ kopieren. Verwenden Sie zum Kopieren der VHD den folgenden Befehl in Azure PowerShell: Ersetzen Sie die Werte in <> mit den entsprechenden Werten aus Ihrem Quell- und Zielspeicherkonto. Um diesen Befehl zu verwenden, müssen Sie im Zielspeicherkonto über einen Container namens "vhds" verfügen. Wenn der Container nicht vorhanden ist, erstellen Sie einen vor dem Ausführen des Befehls.
+You can also copy the VHD file using the PowerShell cmdlet Start-AzStorageBlobCopy. Use the following command on Azure PowerShell to copy VHD. Replace the values in <> with corresponding values from your source and destination storage account. To use this command, you must have a container called vhds in your destination storage account. If the container doesn't exist, create one before running the command.
 
 ```powershell
 $sourceBlobUri = <source-vhd-uri>
@@ -256,7 +256,7 @@ Nachdem Sie Ihre VHD in das lokale Verzeichnis verschoben haben, können Sie die
 Add-AzureVhd [-Destination] <Uri> [-LocalFilePath] <FileInfo>
 ```
 
-Ein Beispiel für \<Uri> ist ***„https://storagesample.blob.core.windows.net/mycontainer/blob1.vhd“***. Ein Beispiel für \<FileInfo> ist ***„C:\Pfad\zu\upload.vhd“***.
+Ein Beispiel für \<Uri> ist **_„https://storagesample.blob.core.windows.net/mycontainer/blob1.vhd“_** . Ein Beispiel für \<FileInfo> ist **_„C:\Pfad\zu\upload.vhd“_** .
 
 ##### <a name="option-2-using-azcopy-to-upload-the-vhd-file"></a>Option 2: Verwenden von AzCopy zum Hochladen der VHD-Datei
 Mit AzCopy können Sie die VHD auf einfache Weise über das Internet hochladen. Je nach Größe der virtuellen Festplatten kann dies einige Zeit in Anspruch nehmen. Denken Sie daran, die Eingangs-/Ausgangsgrenzen des Speicherkontos bei Verwendung dieser Option zu überprüfen. Ausführliche Informationen finden Sie unter [Skalierbarkeits- und Leistungsziele für Azure Storage](storage-scalability-targets.md) .
@@ -273,57 +273,57 @@ Mit AzCopy können Sie die VHD auf einfache Weise über das Internet hochladen. 
 
     ```azcopy
     AzCopy /Source:https://sourceaccount.blob.core.windows.net/mycontainer1 /SourceKey:key1 /Dest:https://destaccount.blob.core.windows.net/mycontainer2 /DestKey:key2 /BlobType:page /Pattern:abc.vhd
-    ```
+        ```
 
-    Es folgt die Beschreibung der im AzCopy-Befehl verwendeten Parameter:
+    Here are descriptions of the parameters used in the AzCopy command:
 
-   * **/Source: *&lt;Quelle&gt;:* ** Speicherort der Ordner- oder Speichercontainer-URL, die die VHD enthält.
-   * **/SourceKey: *&lt;source-account-key&gt;:* ** Speicherkontoschlüssel des Quellspeicherkontos.
-   * **/Dest: *&lt;Ziel&gt;:* ** Speichercontainer-URL, in die die VHD kopiert werden soll.
-   * **/DestKey: *&lt;dest-account-key&gt;:* ** Speicherkontoschlüssel des Zielspeicherkontos.
-   * **/BlobType: page:** Gibt an, dass das Ziel ein Seitenblob ist.
-   * **/Pattern: *&lt;file-name&gt;:* ** Geben Sie den Dateinamen der zu kopierenden VHD-Datei an.
+   * **/Source: _&lt;source&gt;:_** Location of the folder or storage container URL that contains the VHD.
+   * **/SourceKey: _&lt;source-account-key&gt;:_** Storage account key of the source storage account.
+   * **/Dest: _&lt;destination&gt;:_** Storage container URL to copy the VHD to.
+   * **/DestKey: _&lt;dest-account-key&gt;:_** Storage account key of the destination storage account.
+   * **/BlobType: page:** Specifies that the destination is a page blob.
+   * **/Pattern: _&lt;file-name&gt;:_** Specify the file name of the VHD to copy.
 
-Details zur Verwendung des Tools AzCopy finden Sie unter [Übertragen von Daten mit dem Befehlszeilenprogramm AzCopy](storage-use-azcopy.md).
+For details on using AzCopy tool, see [Transfer data with the AzCopy Command-Line Utility](storage-use-azcopy.md).
 
-##### <a name="other-options-for-uploading-a-vhd"></a>Weitere Optionen zum Hochladen einer virtuellen Festplatte
-Sie können virtuelle Festplatten zudem mit den folgenden Tools in ein Speicherkonto hochladen:
+##### Other options for uploading a VHD
+You can also upload a VHD to your storage account using one of the following means:
 
-* [Azure Storage Copy Blob-API](https://msdn.microsoft.com/library/azure/dd894037.aspx)
-* [Azure Storage-Explorer: Hochladen von Blobs](https://azurestorageexplorer.codeplex.com/)
-* [Speicher-Import/Export Service REST-API-Referenz](https://msdn.microsoft.com/library/dn529096.aspx)
-
-> [!NOTE]
-> Wir empfehlen das Verwenden des Import/Export-Diensts, wenn die geschätzte Hochladedauer sieben Tage überschreitet. Sie können mithilfe von [DataTransferSpeedCalculator](https://github.com/Azure-Samples/storage-dotnet-import-export-job-management/blob/master/DataTransferSpeedCalculator.html) die Dauer anhand der Datengröße und Übertragungseinheit schätzen.
->
-> Der Import/Export-Dienst kann zum Kopieren in oder aus dem Standardspeicherkonto verwendet werden. Sie benötigen ein Tool wie AzCopy zum Kopieren zwischen Standardspeicherkonto und Premium-Speicherkonto.
->
->
-
-## <a name="create-azure-virtual-machine-using-premium-storage"></a>Erstellen von Azure-VMs mit Storage Premium
-Nachdem die virtuelle Festplatte in das gewünschte Speicherkonto hochgeladen oder kopiert wurde, führen Sie die Anweisungen in diesem Abschnitt aus, um die virtuelle Festplatte je nach Szenario als Betriebssystemimage oder Betriebssystem-Datenträger zu registrieren und anschließend eine VM-Instanz daraus zu erstellen. Das VHD-Datenlaufwerk kann dem virtuellen Computer hinzugefügt werden, nachdem es erstellt wurde.
-Ein Beispielskript für die Migration wird am Ende dieses Abschnitts bereitgestellt. Dieses einfache Skript eignet sich nicht für alle Szenarien. Sie müssen womöglich das Skript dem speziellen Szenario entsprechend aktualisieren. Um festzustellen, ob das Skript für Ihr Szenario passt, lesen Sie weiter unten [Ein Beispielskript für die Migration](#a-sample-migration-script).
-
-### <a name="checklist"></a>Checkliste
-1. Warten Sie, bis das Kopieren aller VHD-Datenträger abgeschlossen ist.
-2. Stellen Sie sicher, dass Storage Premium in der Region verfügbar ist, in die migriert werden soll.
-3. Bestimmen Sie die neue VM-Serie, die Sie verwenden möchten. Sie muss Storage Premium-fähig sein und ihre Größe von der Verfügbarkeit in der Region und Ihren Anforderungen abhängig sein.
-4. Bestimmen Sie die genaue VM-Größe, die Sie verwenden möchten. Die VM-Größe muss groß genug sein, um die Anzahl der vorhandenen Datenträger zu unterstützen. Beispiel: Wenn Sie über vier Datenträger verfügen, muss der virtuelle Computer mindestens zwei Kerne haben. Berücksichtigen Sie auch die Anforderungen hinsichtlich Verarbeitungsleistung, Arbeitsspeicher und Netzwerkbandbreite.
-5. Erstellen Sie ein Storage Premium-Konto in der Zielregion. Dies ist das Konto, das Sie für den neuen virtuellen Computer verwenden werden.
-6. Halten Sie die Details zum aktuellen virtuellen Computer bereit, einschließlich der Liste der Datenträger und die zugehörigen VHD-Blobs.
-
-Bereiten Sie Ihre Anwendung für Ausfallzeiten vor. Für eine einwandfreie Migration müssen Sie die gesamte Verarbeitung im aktuellen System beenden. Erst dann können Sie den konsistenten Zustand erreichen, den Sie auf die neue Plattform migrieren können. Die Dauer der Ausfallzeit hängt von der Datenmenge der zu migrierenden Datenträger ab.
+* [Azure Storage Copy Blob API](https://msdn.microsoft.com/library/azure/dd894037.aspx)
+* [Azure Storage Explorer Uploading Blobs](https://azurestorageexplorer.codeplex.com/)
+* [Storage Import/Export Service REST API Reference](https://msdn.microsoft.com/library/dn529096.aspx)
 
 > [!NOTE]
-> Wenn Sie eine Azure Resource Manager-VM anhand eines speziellen VHD-Datenträger erstellen, lesen Sie die Informationen zu [dieser Vorlage](https://github.com/Azure/azure-quickstart-templates/tree/master/201-vm-specialized-vhd) für die Bereitstellung einer Resource Manager-VM mithilfe eines vorhandenen Datenträgers.
+> We recommend using Import/Export Service if estimated uploading time is longer than 7 days. You can use [DataTransferSpeedCalculator](https://github.com/Azure-Samples/storage-dotnet-import-export-job-management/blob/master/DataTransferSpeedCalculator.html) to estimate the time from data size and transfer unit.
+>
+> Import/Export can be used to copy to a standard storage account. You will need to copy from standard storage to premium storage account using a tool like AzCopy.
 >
 >
 
-### <a name="register-your-vhd"></a>Registrieren der virtuellen Festplatte
-Zum Erstellen eines virtuellen Computers anhand einer Betriebssystem-VHD oder zum Hinzufügen eines Datenträgers zu einem neuen virtuellen Computer müssen Sie diese zunächst registrieren. Führen Sie je nach VHD-Szenario die nachstehenden Schritte aus.
+## <a name="create-azure-virtual-machine-using-premium-storage"></a>Create Azure VMs using Premium Storage
+After the VHD is uploaded or copied to the desired storage account, follow the instructions in this section to register the VHD as an OS image, or OS disk depending on your scenario and then create a VM instance from it. The data disk VHD can be attached to the VM once it is created.
+A sample migration script is provided at the end of this section. This simple script does not match all scenarios. You may need to update the script to match with your specific scenario. To see if this script applies to your scenario, see below [A Sample Migration Script](#a-sample-migration-script).
 
-#### <a name="generalized-operating-system-vhd-to-create-multiple-azure-vm-instances"></a>Generalisierte Betriebssystem-VHD zum Erstellen mehrerer Azure-VM-Instanzen
-Nachdem das generalisierte Betriebssystemimage in das VHD-Speicherkonto hochgeladen wurde, registrieren Sie es als **Azure-VM-Image**, sodass Sie damit VM-Instanzen erstellen können. Verwenden Sie die folgenden PowerShell-Cmdlets, um die virtuelle Festplatte als Azure-VM-Betriebssystemimage zu registrieren. Geben Sie die vollständige Container-URL an, an die die virtuelle Festplatte kopiert wurde.
+### Checklist
+1. Wait until all the VHD disks copying is complete.
+2. Make sure Premium Storage is available in the region you are migrating to.
+3. Decide the new VM series you will be using. It should be a Premium Storage capable, and the size should be depending on the availability in the region and based on your needs.
+4. Decide the exact VM size you will use. VM size needs to be large enough to support the number of data disks you have. E.g. if you have 4 data disks, the VM must have 2 or more cores. Also, consider processing power, memory and network bandwidth needs.
+5. Create a Premium Storage account in the target region. This is the account you will use for the new VM.
+6. Have the current VM details handy, including the list of disks and corresponding VHD blobs.
+
+Prepare your application for downtime. To do a clean migration, you have to stop all the processing in the current system. Only then you can get it to consistent state which you can migrate to the new platform. Downtime duration will depend on the amount of data in the disks to migrate.
+
+> [!NOTE]
+> If you are creating an Azure Resource Manager VM from a specialized VHD Disk, please refer to [this template](https://github.com/Azure/azure-quickstart-templates/tree/master/201-vm-specialized-vhd) for deploying Resource Manager VM using existing disk.
+>
+>
+
+### Register your VHD
+To create a VM from OS VHD or to attach a data disk to a new VM, you must first register them. Follow steps below depending on your VHD's scenario.
+
+#### Generalized Operating System VHD to create multiple Azure VM instances
+After generalized OS image VHD is uploaded to the storage account, register it as an **Azure VM Image** so that you can create one or more VM instances from it. Use the following PowerShell cmdlets to register your VHD as an Azure VM OS image. Provide the complete container URL where VHD was copied to.
 
 ```powershell
 Add-AzureVMImage -ImageName "OSImageName" -MediaLocation "https://storageaccount.blob.core.windows.net/vhdcontainer/osimage.vhd" -OS Windows

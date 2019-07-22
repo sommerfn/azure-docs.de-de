@@ -2,17 +2,17 @@
 title: Steuern von Clusterressourcen per RBAC und Azure AD in Azure Kubernetes Service
 description: Es wird beschrieben, wie Sie die Azure Active Directory-Gruppenmitgliedschaft verwenden, um den Zugriff auf Clusterressourcen per rollenbasierter Zugriffssteuerung (RBAC) in Azure Kubernetes Service (AKS) zu beschränken.
 services: container-service
-author: iainfoulds
+author: mlearned
 ms.service: container-service
 ms.topic: article
 ms.date: 04/16/2019
-ms.author: iainfou
-ms.openlocfilehash: e974c47d1dfb04f66b622c64a7143d00de87c4cb
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.author: mlearned
+ms.openlocfilehash: fba54fd23fefbe0029b9a809b23568490f05b23e
+ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60467543"
+ms.lasthandoff: 07/07/2019
+ms.locfileid: "67616163"
 ---
 # <a name="control-access-to-cluster-resources-using-role-based-access-control-and-azure-active-directory-identities-in-azure-kubernetes-service"></a>Steuern des Zugriffs auf Clusterressourcen per rollenbasierter Zugriffssteuerung und mit Azure Active Directory-Identitäten in Azure Kubernetes Service
 
@@ -22,9 +22,9 @@ In diesem Artikel wird veranschaulicht, wie Sie die Azure AD-Gruppenmitgliedscha
 
 ## <a name="before-you-begin"></a>Voraussetzungen
 
-In diesem Artikel wird davon ausgegangen, dass Sie über einen vorhandenen AKS-Cluster mit aktivierter Azure AD-Integration verfügen. Falls Sie einen AKS-Cluster benötigen, helfen Ihnen die Informationen unter [Integrate Azure Active Directory with Azure Kubernetes Service using the Azure CLI][azure-ad-aks-cli] (Integrieren von Azure Active Directory in Azure Kubernetes Service per Azure CLI) weiter.
+In diesem Artikel wird davon ausgegangen, dass Sie über einen vorhandenen AKS-Cluster mit aktivierter Azure AD-Integration verfügen. Falls Sie einen AKS-Cluster benötigen, lesen Sie die Informationen unter [Integrieren von Azure Active Directory in AKS][azure-ad-aks-cli].
 
-Azure CLI-Version 2.0.61 oder höher muss installiert und konfiguriert sein. Führen Sie `az --version` aus, um die Version zu finden. Wenn Sie eine Installation oder ein Upgrade ausführen müssen, finden Sie unter [Installieren von Azure CLI 2.0][install-azure-cli] Informationen dazu.
+Azure CLI-Version 2.0.61 oder höher muss installiert und konfiguriert sein. Führen Sie `az --version` aus, um die Version zu finden. Informationen zum Durchführen einer Installation oder eines Upgrades finden Sei bei Bedarf unter [Installieren der Azure CLI][install-azure-cli].
 
 ## <a name="create-demo-groups-in-azure-ad"></a>Erstellen von Demogruppen in Azure AD
 
@@ -46,7 +46,7 @@ AKS_ID=$(az aks show \
     --query id -o tsv)
 ```
 
-Erstellen Sie die erste Beispielgruppe in Azure AD für die Anwendungsentwickler, indem Sie den Befehl [az ad group create][az-ad-group-create] verwenden. Im folgenden Beispiel wird eine Gruppe mit dem Namen *appdev* erstellt:
+Erstellen Sie die erste Beispielgruppe in Azure AD für die Anwendungsentwickler, indem Sie den Befehl [az ad group create][az-ad-group-create]verwenden. Im folgenden Beispiel wird eine Gruppe mit dem Namen *appdev* erstellt:
 
 ```azurecli-interactive
 APPDEV_ID=$(az ad group create --display-name appdev --mail-nickname appdev --query objectId -o tsv)
@@ -131,7 +131,7 @@ Erstellen Sie im AKS-Cluster einen Namespace, indem Sie den Befehl [kubectl crea
 kubectl create namespace dev
 ```
 
-In Kubernetes werden mit *Rollen* die zu gewährenden Berechtigungen definiert, und mit *RoleBindings* (Rollenbindungen) werden sie auf die gewünschten Benutzer bzw. Gruppen angewendet. Diese Zuweisungen können auf einen bestimmten Namespace oder im gesamten Cluster angewendet werden. Weitere Informationen finden Sie unter [Verwenden der RBAC-Autorisierung][rbac-authorization].
+In Kubernetes werden mit *Rollen* die zu gewährenden Berechtigungen definiert, und mit *RoleBindings* (Rollenbindungen) werden sie auf die gewünschten Benutzer bzw. Gruppen angewendet. Diese Zuweisungen können auf einen bestimmten Namespace oder im gesamten Cluster angewendet werden. Weitere Informationen finden Sie unter [Verwenden von RBAC-Autorisierung][rbac-authorization].
 
 Erstellen Sie zuerst eine Rolle für den Namespace *dev*. Mit dieser Rolle wird Vollzugriff auf den Namespace gewährt. In Produktionsumgebungen können Sie für unterschiedliche Benutzer oder Gruppen präzisere Berechtigungen angeben.
 
@@ -392,9 +392,9 @@ az ad group delete --group opssre
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Weitere Informationen zum Schützen von Kubernetes-Clustern finden Sie unter [Zugriffs- und Identitätsoptionen für Azure Kubernetes Service (AKS)][rbac-authorization].
+Weitere Informationen zum Schutz von Kubernetes-Clustern finden Sie unter [Zugriffs- und Identitätsoptionen für AKS][rbac-authorization].
 
-Bewährte Methoden zur Identität und Ressourcensteuerung finden Sie unter [Best Practices für die Authentifizierung und Autorisierung in Azure Kubernetes Service (AKS)][operator-best-practices-identity].
+Best Practices zur Identitäts- und Ressourcenkontrolle finden Sie unter [Best Practices für Authentifizierung und Autorisierung in AKS][operator-best-practices-identity].
 
 <!-- LINKS - external -->
 [kubectl-create]: https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#create

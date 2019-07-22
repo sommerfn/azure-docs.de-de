@@ -78,7 +78,7 @@ Content-Length: 0
 
 Für den Tokenzugriff sind die folgenden Headerinformationen erforderlich.
 
-| NAME | Format | BESCHREIBUNG |
+| Name | Format | BESCHREIBUNG |
 |----|----|----|
 | Ocp-Apim-Subscription-Key | ASCII | Your subscription key (Ihr Abonnementschlüssel) |
 
@@ -548,7 +548,7 @@ Mit dem *End*-Zeitwert für die `Microphone`-Metrik wird der Zeitpunkt aufgezeic
 
 | Feld | BESCHREIBUNG | Verwendung |
 | ----- | ----------- | ----- |
-| NAME | Mikrofon | Erforderlich |
+| Name | Mikrofon | Erforderlich |
 | Start | Der Zeitpunkt, zu dem der Client mit der Verwendung der Audioeingabe vom Mikrofon oder anderer Audiodatenströme begonnen hat oder einen Trigger von der Schlüsselworterkennung erhalten hat. | Erforderlich |
 | End | Der Zeitpunkt, zu dem der Client die Verwendung des Mikrofons bzw. des Audiodatenstroms beendet hat. | Erforderlich |
 | Error | Eine Beschreibung des Fehlers, der aufgetreten ist (falls zutreffend). Wenn die Mikrofonvorgänge erfolgreich waren, sollten Clients dieses Feld weglassen. Dieses Feld darf maximal 50 Zeichen lang sein. | Erforderlich für Fehlerfälle, andernfalls weggelassen |
@@ -568,7 +568,7 @@ Verwenden Sie die folgenden Beispiele als Richtlinien für die Aufzeichnung von 
 
 | Feld | BESCHREIBUNG | Verwendung |
 | ----- | ----------- | ----- |
-| NAME | ListeningTrigger | Optional |
+| Name | ListeningTrigger | Optional |
 | Start | Der Zeitpunkt, zu dem der Lauschtrigger für den Client gestartet wurde. | Erforderlich |
 | End | Der Zeitpunkt, zu dem der Lauschtrigger für den Client beendet wurde. | Erforderlich |
 | Error | Eine Beschreibung des Fehlers, der aufgetreten ist (falls zutreffend). Wenn dieser Triggervorgang erfolgreich war, sollten Clients dieses Feld weglassen. Dieses Feld darf maximal 50 Zeichen lang sein. | Erforderlich für Fehlerfälle, andernfalls weggelassen |

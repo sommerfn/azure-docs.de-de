@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 03/15/2017
 ms.author: tdsp
 ms.custom: seodec18, previous-author=fboylu, previous-ms.author=fboylu
-ms.openlocfilehash: e2f0f1e7ac8f510c4ff5be7933c55278fef74694
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 37acd88dbfe8ed1790f1bfa68d5e9762a861ddc7
+ms.sourcegitcommit: c0419208061b2b5579f6e16f78d9d45513bb7bbc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60715523"
+ms.lasthandoff: 07/08/2019
+ms.locfileid: "67626405"
 ---
 # <a name="technical-guide-to-the-cortana-intelligence-solution-template-for-predictive-maintenance-in-aerospace"></a>Technische Anleitung für die Cortana Intelligence-Lösungsvorlage für Predictive Maintenance in der Luft- und Raumfahrt
 
@@ -88,7 +88,7 @@ Azure Event Hub ist sehr allgemein angelegt. Daten können im CSV-Format oder im
 
 In diesem Dokument wird nicht beschrieben, wie Sie Daten erfassen. Es ist jedoch einfach, Ereignisse oder Daten über die Event Hub-APIs an Azure Event Hub zu senden.
 
-### <a name="azure-stream-analytics"></a>Azure Stream Analytics
+### <a name="azure-stream-analytics-1"></a>Azure Stream Analytics
 Führen Sie mit dem Azure Stream Analytics-Dienst Analysen nahezu in Echtzeit durch. Die Datenströme werden gelesen, und Daten können an eine beliebige Anzahl von Quellen ausgegeben werden.
 
 Bei der Lösungsvorlage für vorbeugende Wartung in der Luft- und Raumfahrt besteht die Azure Stream Analytics-Abfrage aus vier Unterabfragen, die jeweils Ereignisse aus dem Azure Event Hub-Dienst nutzen und Ausgabedaten für vier verschiedene Speicherorte erzeugen. Diese Ausgabedaten bestehen aus drei Power BI-Datasets und einem Azure Storage-Speicherort.
@@ -103,7 +103,7 @@ Sie finden die Azure Stream Analytics-Abfrage, indem Sie folgende Schritte ausf�
   * ***ABFRAGE*** zum Anzeigen der Abfrage selbst
   * ***AUSGABEN*** zum Anzeigen der verschiedenen Ausgaben
 
-Informationen zum Aufbau von Azure Stream Analytics-Abfragen finden Sie auf MSDN unter [Stream Analytics-Abfragereferenz](https://msdn.microsoft.com/library/azure/dn834998.aspx) .
+Informationen zum Aufbau von Azure Stream Analytics-Abfragen finden Sie auf MSDN unter [Stream Analytics-Abfragereferenz](https://docs.microsoft.com/stream-analytics-query/stream-analytics-query-language-reference) .
 
 In dieser Lösung geben die Abfragen drei Datasets mit nahezu in Echtzeit gewonnenen Analyseinformationen über den eingehenden Datenstrom an ein Power BI-Dashboard aus, das als Teil der Lösungsvorlage zur Verfügung gestellt wird. Da diesen Abfragen ein implizites Wissen über das Format der eingehenden Daten zugrunde liegt, müssen sie entsprechend Ihrem eigenen Datenformat geändert werden.
 

@@ -11,12 +11,12 @@ author: msmimart
 manager: celestedg
 ms.reviewer: mal
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2447aac825874779a543d25b0a70c339dcbf1473
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: 6d3fa8e71df3d1184956e1802d1b6b72411b6449
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65768459"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67113030"
 ---
 # <a name="grant-b2b-users-in-azure-ad-access-to-your-on-premises-applications"></a>Gewähren des Zugriffs auf lokale Anwendungen für B2B-Benutzer in Azure AD
 
@@ -61,7 +61,7 @@ Das folgende Diagramm bietet einen allgemeinen Überblick darüber, wie der Azur
 
 ### <a name="lifecycle-management-policies"></a>Richtlinien für die Lebenszyklusverwaltung
 
-Sie können die lokalen B2B-Benutzerobjekte mithilfe von Richtlinien für die Lebenszyklusverwaltung verwalten. Beispiel: 
+Sie können die lokalen B2B-Benutzerobjekte mithilfe von Richtlinien für die Lebenszyklusverwaltung verwalten. Beispiel:
 
 - Sie können Richtlinien für die mehrstufige Authentifizierung (Multi-Factor Authentication, MFA) für den Gastbenutzer einrichten, damit während der Anwendungsproxy-Authentifizierung MFA verwendet wird. Weitere Informationen finden Sie unter [Bedingter Zugriff für Benutzer der B2B-Zusammenarbeit](conditional-access.md).
 - Alle Sponsorships, Zugriffsüberprüfungen, Kontoüberprüfungen usw., die für die B2B-Cloudbenutzer ausgeführt werden, gelten für die lokalen Benutzer. Wenn der Cloudbenutzer beispielsweise durch Ihre Richtlinien für die Lebenszyklusverwaltung gelöscht wird, wird der lokale Benutzer ebenfalls durch die MIM-Synchronisierung oder Azure AD Connect-Synchronisierung gelöscht. Weitere Informationen finden Sie unter [Verwalten des Gastzugriffs mit Azure AD-Zugriffsüberprüfungen](../governance/manage-guest-access-with-access-reviews.md).

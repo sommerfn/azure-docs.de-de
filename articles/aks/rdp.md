@@ -2,17 +2,17 @@
 title: Zugreifen per RDP auf Windows Server-Knoten in Azure Kubernetes Service-Clustern (AKS)
 description: Erfahren Sie, wie Sie eine RDP-Verbindung mit Windows Server-Knoten in Azure Kubernetes Service-Clustern (AKS) zur Problembehandlung und für Wartungsaufgaben erstellen.
 services: container-service
-author: tylermsft
+author: mlearned
 ms.service: container-service
 ms.topic: article
 ms.date: 06/04/2019
-ms.author: twhitney
-ms.openlocfilehash: 11f6869d4d5a2ee0ef2e986ee8268c7a001ea015
-ms.sourcegitcommit: 6932af4f4222786476fdf62e1e0bf09295d723a1
+ms.author: mlearned
+ms.openlocfilehash: 0238278b81255d735f8a950ca307d0e05100cfec
+ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/05/2019
-ms.locfileid: "66688637"
+ms.lasthandoff: 07/07/2019
+ms.locfileid: "67614565"
 ---
 # <a name="connect-with-rdp-to-azure-kubernetes-service-aks-cluster-windows-server-nodes-for-maintenance-or-troubleshooting"></a>Herstellen einer RDP-Verbindung mit Windows Server-Knoten in Azure Kubernetes Service-Clustern (AKS) zur Wartung oder Problembehandlung
 
@@ -24,9 +24,9 @@ In diesem Artikel wird gezeigt, wie Sie eine RDP-Verbindung mit einem AKS-Knoten
 
 ## <a name="before-you-begin"></a>Voraussetzungen
 
-Es wird vorausgesetzt, dass Sie über einen AKS-Cluster mit einem Windows Server-Knoten verfügen. Wenn Sie einen AKS-Cluster benötigen, lesen Sie den Artikel [Vorschau – Erstellen eines Windows Server-Containers in einem AKS-Cluster (Azure Kubernetes Service) mit Azure CLI][aks-windows-cli]. Sie benötigen Windows-Administratorbenutzernamen und -kennwort für den Windows Server-Knoten, bei dem Sie ein Problem behandeln möchten. Sie benötigen auch einen RDP-Client wie z.B. [Microsoft-Remotedesktop][rdp-mac].
+Es wird vorausgesetzt, dass Sie über einen AKS-Cluster mit einem Windows Server-Knoten verfügen. Wenn Sie einen AKS-Cluster benötigen, lesen Sie den Artikel [Vorschau – Erstellen eines Windows Server-Containers in einem AKS-Cluster (Azure Kubernetes Service) mit der Azure CLI][aks-windows-cli]. You need the Windows administrator username and password for the Windows Server node you want to troubleshoot. You also need an RDP client such as [Microsoft Remote Desktop][rdp-mac].
 
-Außerdem muss mindestens die Version 2.0.61 der Azure CLI installiert und konfiguriert sein. Führen Sie  `az --version` aus, um die Version zu ermitteln. Wenn Sie eine Installation oder ein Upgrade ausführen müssen, finden Sie weitere Informationen unter [Installieren der Azure CLI][install-azure-cli].
+Außerdem muss mindestens die Version 2.0.61 der Azure CLI installiert und konfiguriert sein. Führen Sie  `az --version` aus, um die Version zu ermitteln. Wenn Sie eine Installation oder ein Upgrade ausführen müssen, finden Sie weitere Informationen unter  [Installieren der Azure CLI][install-azure-cli].
 
 ## <a name="deploy-a-virtual-machine-to-the-same-subnet-as-your-cluster"></a>Bereitstellen eines virtuellen Computers in dem gleichen Subnetz, in dem sich Ihr Cluster befindet
 
@@ -78,7 +78,7 @@ Mit dem Befehl [az aks get-credentials][az-aks-get-credentials] können Sie `kub
 az aks get-credentials --resource-group myResourceGroup --name myAKSCluster
 ```
 
-Listen Sie mithilfe des [kubectl get][kubectl-get]-Befehls die interne IP-Adresse der Windows Server-Knoten auf:
+Listen Sie mithilfe des Befehls [kubectl get][kubectl-get] die interne IP-Adresse der Windows Server-Knoten auf:
 
 ```console
 kubectl get nodes -o wide
@@ -113,7 +113,7 @@ Sie können nun alle Befehle zur Problembehandlung im *CMD*-Fenster ausführen. 
 
 ## <a name="remove-rdp-access"></a>Entfernen des RDP-Zugriffs
 
-Abschließend beenden Sie die RDP-Verbindung mit dem Windows Server-Knoten und dann die RDP-Sitzung mit dem virtuellen Computer. Nachdem Sie beide RDP-Sitzungen beendet haben, löschen Sie den virtuellen Computer mit dem [az vm delete][az-vm-delete]-Befehl:
+Abschließend beenden Sie die RDP-Verbindung mit dem Windows Server-Knoten und dann die RDP-Sitzung mit dem virtuellen Computer. Nachdem Sie beide RDP-Sitzungen beendet haben, löschen Sie den virtuellen Computer mit dem Befehl [az vm delete][az-vm-delete]:
 
 ```azurecli-interactive
 az vm delete --resource-group myResourceGroup --name myVM
@@ -121,7 +121,7 @@ az vm delete --resource-group myResourceGroup --name myVM
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Wenn Sie zusätzliche Problembehandlungsdaten benötigen, können Sie [die Kubernetes-Masterknotenprotokolle anzeigen][view-master-logs] oder [Azure Monitor][azure-monitor-containers].
+Wenn Sie zusätzliche Problembehandlungsdaten benötigen, können Sie [die Kubernetes-Masterknotenprotokolle anzeigen][view-master-logs] or [Azure Monitor][azure-monitor-containers].
 
 <!-- EXTERNAL LINKS -->
 [kubectl]: https://kubernetes.io/docs/user-guide/kubectl/
