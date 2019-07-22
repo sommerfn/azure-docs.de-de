@@ -56,8 +56,6 @@
           href: best-practices-distributive-collaborative-development-environment.md
         - name: Integration mit Azure DevOps
           href: devtest-lab-dev-ops.md
-        - name: Verwenden von Anspruchsfunktionen
-          href: devtest-lab-use-claim-capabilities.md
         - name: Szenarien
           items:
             - name: Gängige Szenarien für die Verwendung von DevTest Labs
@@ -68,6 +66,8 @@
               href: devtest-lab-test-env.md
             - name: Verwenden von Labs zu Schulungszwecken
               href: devtest-lab-training-lab.md
+            - name: Szenarien für die Verwendung von abrufbaren VMs
+              href: devtest-lab-use-claim-capabilities.md
 - name: Anleitungen
   items:
     - name: Classroom-Labs
@@ -158,11 +158,11 @@
           items:
             - name: Erstellen eines virtuellen Computers – Azure-Portal
               href: devtest-lab-add-vm.md
-            - name: Erstellen eines virtuellen Computers mithilfe von Azure PowerShell
+            - name: 'Erstellen eines virtuellen Computers: Azure PowerShell'
               href: devtest-lab-vm-powershell.md
-            - name: Erstellen und Verwalten virtueller Computer mithilfe der Azure-Befehlszeilenschnittstelle
+            - name: 'Erstellen eines virtuellen Computers: Azure CLI'
               href: devtest-lab-vmcli.md
-            - name: Erstellen eines virtuellen Computers mit einer Resource Manager-Vorlage
+            - name: 'Erstellen eines virtuellen Computers: Resource Manager-Vorlage'
               href: devtest-lab-use-resource-manager-template.md
             - name: Starten oder Beenden eines virtuellen Computers mithilfe von PowerShell oder der CLI
               href: use-command-line-start-stop-virtual-machines.md
@@ -172,6 +172,8 @@
               href: devtest-lab-resize-vm.md
             - name: Erneutes Bereitstellen eines virtuellen Computers
               href: devtest-lab-redeploy-vm.md
+            - name: Konfigurieren des automatischen Herunterfahrens eines virtuellen Computers
+              href: devtest-lab-auto-shutdown-vm.md
             - name: Erstellen und Verwalten von abrufbaren VMs
               href: devtest-lab-add-claimable-vm.md
             - name: Konfigurieren von Geheimnissen
@@ -210,9 +212,9 @@
               items:
                 - name: Erstellen eines benutzerdefinierten Images von einem virtuellen Computer
                   href: devtest-lab-create-custom-image-from-vm-using-portal.md
-                - name: Erstellen eines benutzerdefinierten Images aus einer VHD mithilfe des Azure-Portals
+                - name: 'Erstellen eines benutzerdefinierten Images aus einer VHD: Azure-Portal'
                   href: devtest-lab-create-template.md
-                - name: Erstellen eines benutzerdefinierten Images aus einer VHD mithilfe von PowerShell
+                - name: 'Erstellen eines benutzerdefinierten Images aus einer VHD: PowerShell'
                   href: devtest-lab-create-custom-image-from-vhd-using-powershell.md
                 - name: Hochladen der VHD-Datei mit AzCopy
                   href: devtest-lab-upload-vhd-using-azcopy.md

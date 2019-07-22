@@ -217,8 +217,8 @@
         - name: Automatisches Trainieren eines Vorhersagemodells
           displayName: time series
           href: how-to-auto-train-forecast.md
-        - name: Anzeigen von Genauigkeitsmetriken
-          href: how-to-understand-accuracy-metrics.md
+        - name: Grundlegendes zu Diagrammen und Metriken
+          href: how-to-understand-automated-ml.md
     - name: Bereitstellen und Verarbeiten von Modellen
       items:
         - name: 'Bereitstellung: wo und wie'
