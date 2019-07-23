@@ -1,5 +1,5 @@
 ---
-title: 'VMware-Lösung von CloudSimple: Dienst'
+title: VMware-Lösung von CloudSimple-Dienst
 description: Bietet eine Übersicht über den CloudSimple-Dienst und die zugehörigen Konzepte.
 author: sharaths-cs
 ms.author: b-shsury
@@ -8,20 +8,20 @@ ms.topic: article
 ms.service: vmware
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: f7b4be0ff3997e27dd5b5321dd44b5006ae52102
-ms.sourcegitcommit: 8e76be591034b618f5c11f4e66668f48c090ddfd
+ms.openlocfilehash: 6a4c0bc6070d372a279b74f81ac1f84f565559c3
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/29/2019
-ms.locfileid: "66357996"
+ms.lasthandoff: 06/17/2019
+ms.locfileid: "67165246"
 ---
 # <a name="cloudsimple-service-overview"></a>Übersicht über den CloudSimple-Dienst
 
-Der CloudSimple-Dienst ermöglicht es Ihnen, die Azure-VMware-Lösung von CloudSimple zu nutzen.  Nach Erstellung des Diensts können Sie Knoten erwerben, Knoten reservieren und private Clouds erstellen.  Sie erstellen den CloudSimple-Dienst in jeder Azure-Region, in der der CloudSimple-Dienst verfügbar ist.  Der Dienst definiert das Umkreisnetzwerk der Azure-VMware-Lösung von CloudSimple.  Dieses Umkreisnetzwerk unterstützt unter anderem Dienste wie VPN, ExpressRoute und Internetkonnektivität mit Ihren privaten Clouds.
+Mit dem CloudSimple-Dienst können Sie die Azure-VMware-Lösung von CloudSimple verwenden. Nachdem Sie den Dienst erstellt haben, können Sie Knoten bereitstellen, Knoten reservieren und private Clouds erstellen. Sie erstellen den CloudSimple-Dienst in jeder Azure-Region, in der der CloudSimple-Dienst verfügbar ist. Der Dienst definiert das Umkreisnetzwerk der Azure-VMware-Lösung von CloudSimple. Dieses Umkreisnetzwerk unterstützt unter anderem Dienste wie VPN, ExpressRoute und Internetkonnektivität mit Ihren privaten Clouds.
 
 ## <a name="gateway-subnet"></a>Gatewaysubnetz
 
-Ein Gatewaysubnetz ist für jeden CloudSimple-Dienst erforderlich und für die Region spezifisch, in der es erstellt wird. Das Gatewaysubnetz wird beim Erstellen des Umkreisnetzwerks verwendet und erfordert einen CIDR-Block vom Typ „/28“.  Der Adressraum des Gatewaysubnetzes muss eindeutig sein. Er darf sich nicht mit einem Netzwerk überschneiden, das mit der CloudSimple-Umgebung kommuniziert. Zu den Netzwerken, die mit CloudSimple kommunizieren, gehören unter anderem lokale Netzwerke und das virtuelle Azure-Netzwerk.  Ein Gatewaysubnetz kann nach der Erstellung nicht mehr gelöscht werden.  Das Gatewaysubnetz wird entfernt, wenn der Dienst gelöscht wird.
+Ein Gatewaysubnetz ist für jeden CloudSimple-Dienst erforderlich und für die Region spezifisch, in der es erstellt wird. Das Gatewaysubnetz wird verwendet, wenn Sie das Umkreisnetzwerk erstellen, und benötigt einen /28-CIDR-Block. Der Adressraum des Gatewaysubnetzes muss eindeutig sein. Er darf sich nicht mit einem Netzwerk überschneiden, das mit der CloudSimple-Umgebung kommuniziert. Zu den Netzwerken, die mit CloudSimple kommunizieren, gehören unter anderem lokale Netzwerke und virtuelle Azure-Netzwerke. Ein Gatewaysubnetz kann nach seiner Erstellung nicht gelöscht werden. Das Gatewaysubnetz wird entfernt, wenn der Dienst gelöscht wird.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

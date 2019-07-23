@@ -10,19 +10,19 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 04/03/2019
 ms.author: amishu
-ms.openlocfilehash: e8f470647c218188705cfa65cba7077e62d1b2ac
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.openlocfilehash: 4573ff14c5326a47cf7b15ae2660614661d45d80
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65148023"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67073066"
 ---
 # <a name="enable-logging-in-the-speech-sdk"></a>Aktivieren der Protokollierung im Speech SDK
 
 Die Protokollierung in eine Datei ist ein optionales Feature für das Speech SDK. Während der Entwicklung bietet die Protokollierung zusätzliche Informationen und Diagnosen aus den Hauptkomponenten des Speech SDK. Dies kann aktiviert werden, indem die Eigenschaft `Speech_LogFilename` für ein Sprachkonfigurationsobjekt auf den Speicherort und den Namen der Protokolldatei festgelegt wird. Die Protokollierung wird global aktiviert, sobald eine Erkennung aus dieser Konfiguration erstellt wird, und sie kann danach nicht mehr deaktiviert werden. Sie können den Namen einer Protokolldatei während einer aktiven Protokollierungssitzung nicht ändern.
 
 > [!NOTE]
-> Die Protokollierung ist in allen unterstützten Speech SDK-Programmiersprachen verfügbar, mit Ausnahme von JavaScript.
+> Die Protokollierung ist seit Version 1.4.0 des Speech SDK in allen unterstützten Programmiersprachen verfügbar, mit Ausnahme von JavaScript.
 
 ## <a name="sample"></a>Beispiel
 

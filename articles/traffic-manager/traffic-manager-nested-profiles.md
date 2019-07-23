@@ -4,7 +4,7 @@ titlesuffix: Azure Traffic Manager
 description: Dieser Artikel erläutert das Feature der geschachtelten Profile von Azure Traffic Manager.
 services: traffic-manager
 documentationcenter: ''
-author: kumudd
+author: asudbring
 manager: twooley
 ms.service: traffic-manager
 ms.devlang: na
@@ -12,13 +12,13 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/22/2018
-ms.author: kumud
-ms.openlocfilehash: 6fb6b3e4476efec87b15d175d354afab777e6830
-ms.sourcegitcommit: a512360b601ce3d6f0e842a146d37890381893fc
+ms.author: allensu
+ms.openlocfilehash: 3c5459d0474ecd45501e634c4777fa178386183c
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/11/2019
-ms.locfileid: "54228825"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67071154"
 ---
 # <a name="nested-traffic-manager-profiles"></a>Geschachtelte Traffic Manager-Profile
 
@@ -30,7 +30,7 @@ Die folgenden Beispiele zeigen, wie geschachtelte Traffic Manager-Profile in ver
 
 ## <a name="example-1-combining-performance-and-weighted-traffic-routing"></a>Beispiel 1: Kombinieren des leistungsorientierten Datenverkehrsroutings mit dem gewichteten Datenverkehrsrouting
 
-Angenommen, Sie haben eine Anwendung in den folgenden Azure-Regionen bereitgestellt:  „USA, Westen“, „Europa, Westen“ und „Asien, Osten“. Sie verwenden die leistungsorientierte Traffic Manager-Methode für das Datenverkehrsrouting, um den Datenverkehr an die Region zu verteilen, die dem Benutzer am nächsten ist.
+Angenommen, Sie haben eine Anwendung in den folgenden Azure-Regionen bereitgestellt: „USA, Westen“, „Europa, Westen“ und „Asien, Osten“. Sie verwenden die leistungsorientierte Traffic Manager-Methode für das Datenverkehrsrouting, um den Datenverkehr an die Region zu verteilen, die dem Benutzer am nächsten ist.
 
 ![Einzelnes Traffic Manager-Profil][4]
 

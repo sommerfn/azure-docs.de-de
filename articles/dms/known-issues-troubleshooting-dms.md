@@ -10,13 +10,13 @@ ms.service: dms
 ms.workload: data-services
 ms.custom: mvc
 ms.topic: article
-ms.date: 05/22/2019
-ms.openlocfilehash: 5a7c6c4553f46e8a7308995e05d6c06c0eb10f27
-ms.sourcegitcommit: 13cba995d4538e099f7e670ddbe1d8b3a64a36fb
+ms.date: 06/18/2019
+ms.openlocfilehash: 1d639a8b1d5c7a5dd2b7bac7c5e020be7c8b1c50
+ms.sourcegitcommit: 156b313eec59ad1b5a820fabb4d0f16b602737fc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/22/2019
-ms.locfileid: "66002212"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67190960"
 ---
 # <a name="troubleshoot-common-azure-database-migration-service-issues-and-errors"></a>Troubleshooting von häufigen Problemen und Fehlern bei Azure Database Migration Service
 
@@ -60,6 +60,16 @@ Sie erhalten folgenden Fehler, wenn Sie die Azure Database Migration Service-Ins
 | ------------- | ------------- |
 | Dieser Fehler wird angezeigt, wenn die Azure Database Migration Service-Instanz, die Sie anhalten möchten, Aktivitäten enthält, die noch ausgeführt werden oder in Migrationsprojekten vorhanden sind. <br><br><br><br><br><br> | Stellen Sie sicher, dass auf der Azure Database Migration Service-Instanz, die Sie beenden möchten, keine Aktivitäten ausgeführt werden. Sie können auch die Aktivitäten oder Projekte löschen, bevor Sie versuchen, den Azure Database Migration Service zu beenden. Die folgenden Schritte zeigen, wie Sie Projekte entfernen können, um die Migration Service-Instanz zu bereinigen, indem Sie alle laufenden Aufgaben löschen:<br>1. Install-Module -Name AzureRM.DataMigration <br>2. Login-AzureRmAccount <br>3. Select-AzureRmSubscription -SubscriptionName "<subName>" <br> 4. Remove-AzureRmDataMigrationProject -Name <projectName> -ResourceGroupName <rgName> -ServiceName <serviceName> -DeleteRunningTask |
 
+## <a name="error-when-attempting-to-start-azure-database-migration-service"></a>Fehler beim Versuch, den Azure Database Migration Service zu starten
+
+Sie erhalten folgenden Fehler, wenn Sie die Azure Database Migration Service-Instanz starten:
+
+* **Fehler**: Dienst kann nicht gestartet werden. Fehler: {'errorDetail':'Fehler beim Starten des Diensts. Wenden Sie sich an den Microsoft-Support'}
+
+| Ursache         | Lösung |
+| ------------- | ------------- |
+| Dieser Fehler wird angezeigt, wenn bei der vorherigen Instanz ein interner Fehler aufgetreten ist. Dieser Fehler tritt selten auf und ist dem Entwicklerteam bekannt. <br> | Löschen Sie die Instanz des Diensts, die nicht gestartet werden kann, und stellen Sie eine neue Instanz bereit, um diese zu ersetzen. |
+
 ## <a name="error-restoring-database-while-migrating-sql-to-azure-sql-db-managed-instance"></a>Fehler beim Wiederherstellen der Datenbank während der Migration von SQL zu einer verwalteten Azure SQL-DB-Instanz
 
 Wenn Sie eine Onlinemigration von SQL Server zu einer von der Azure SQL-Datenbank verwalteten Instanz durchführen, schlägt die Umstellung mit folgendem Fehler fehl:
@@ -86,7 +96,7 @@ Wenn Sie im Projektassistenten des Azure Database Migration Service versuchen, e
 
 | Ursache         | Lösung    |
 | ------------- | ------------- |
-| Bei Verwendung von [ExpressRoute](https://azure.microsoft.com/services/expressroute/) [müssen](https://docs.microsoft.com/azure/dms/tutorial-sql-server-azure-sql-online) für den Azure Database Migration Service drei Dienstendpunkte in dem dem Dienst zugeordneten Subnetz des virtuellen Netzwerks bereitgestellt werden:<br> - Service Bus-Endpunkt<br> - Speicherendpunkt<br> - Zieldatenbankendpunkt (z.B. SQL-Endpunkt, Cosmos DB-Endpunkt)<br><br><br><br><br> | [Aktivieren](https://docs.microsoft.com/azure/dms/tutorial-sql-server-azure-sql-online) Sie die erforderlichen Dienstendpunkte für die ExpressRoute-Verbindung zwischen Quelle und Azure Database Migration Service. <br><br><br><br><br><br><br><br> |
+| Bei Verwendung von [ExpressRoute](https://azure.microsoft.com/services/expressroute/) [müssen](https://docs.microsoft.com/azure/dms/tutorial-sql-server-azure-sql-online) für den Azure Database Migration Service drei Dienstendpunkte in dem dem Dienst zugeordneten Subnetz des virtuellen Netzwerks bereitgestellt werden:<br> \- Service Bus-Endpunkt<br> \- Speicherendpunkt<br> \- Zieldatenbankendpunkt (z.B. SQL-Endpunkt, Cosmos DB-Endpunkt)<br><br><br><br><br> | [Aktivieren](https://docs.microsoft.com/azure/dms/tutorial-sql-server-azure-sql-online) Sie die erforderlichen Dienstendpunkte für die ExpressRoute-Verbindung zwischen Quelle und Azure Database Migration Service. <br><br><br><br><br><br><br><br> |
 
 ## <a name="timeout-error-when-migrating-a-mysql-database-to-azure-mysql"></a>Zeitlimitfehler bei der Migration einer MySQL-Datenbank zu Azure MySQL
 

@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.reviewer: sgilley
 ms.date: 04/19/2019
 ms.custom: seodec18
-ms.openlocfilehash: 98f7dc2e295c0c994db9a0189814b0ef2a19b758
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.openlocfilehash: 689d7dcd57c513479c7bc08a45094670242ef6a5
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66153613"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67075031"
 ---
 # <a name="train-models-with-azure-machine-learning-using-estimator"></a>Trainieren von Azure Machine Learning-Modellen mit einem Estimator
 
@@ -66,7 +66,7 @@ Parameter | BESCHREIBUNG
 
 Im Konstruktor kann zusätzlich der Parameter `pip_packages` für alle erforderlichen pip-Pakete angegeben werden.
 
-Nun haben Sie Ihr `Estimator`-Objekt erstellt und können den auszuführenden Trainingsauftrag auf dem Remotecomputeziel über einen Aufruf der `submit`-Funktion auf Ihrem [Experiment](concept-azure-machine-learning-architecture.md#experiment)-Objekt `experiment` ausführen. 
+Nun haben Sie Ihr `Estimator`-Objekt erstellt und können den auszuführenden Trainingsauftrag auf dem Remotecomputeziel über einen Aufruf der `submit`-Funktion auf Ihrem [Experiment](concept-azure-machine-learning-architecture.md#experiments)-Objekt `experiment` ausführen. 
 
 ```Python
 run = experiment.submit(sk_est)
@@ -125,13 +125,13 @@ print(run.get_portal_url())
 Wenn Sie eine Trainingsausführung starten, bei der das Quellverzeichnis ein lokales Git-Repository ist, werden Informationen über das Repository im Ausführungsverlauf gespeichert. Zum Beispiel wird die aktuelle Commit-ID für das Repository als Teil des Verlaufs protokolliert.
 
 ## <a name="examples"></a>Beispiele
-Ein Notebook, das die grundlegenden Einstellungen des Estimator-Musters zeigt, finden Sie unter:
+Ein Notebook, das die grundlegenden Einstellungen eines Estimator-Musters zeigt, finden Sie unter:
 * [how-to-use-azureml/training-with-deep-learning/how-to-use-estimator](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/training-with-deep-learning/how-to-use-estimator/how-to-use-estimator.ipynb)
 
-Ein Notebook zum Trainieren eines scikit-learn-Modells finden Sie unter:
+Ein Notebook zum Trainieren eines scikit-learn-Modells mit einem Estimator finden Sie unter:
 * [tutorials/img-classification-part1-training.ipynb](https://github.com/Azure/MachineLearningNotebooks/blob/master/tutorials/img-classification-part1-training.ipynb)
 
-Notebooks zu Trainingsmodellen, die bestimmte für „deep-learning-framework“ spezifische Estimatoren verwenden, finden Sie unter:
+Notebooks zum Trainieren von Modellen mit bestimmten für „deep-learning-framework“ spezifischen Estimatoren finden Sie unter:
 * [how-to-use-azureml/training-with-deep-learning](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/training-with-deep-learning)
 
 [!INCLUDE [aml-clone-in-azure-notebook](../../../includes/aml-clone-for-examples.md)]

@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: vmware
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: dc07b4eea553e6cb3d9b522826e860ddbfbc1513
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: e3ab53466cae5bd39d85f8d846c8e59ad94f1f2d
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64576818"
+ms.lasthandoff: 06/17/2019
+ms.locfileid: "67165741"
 ---
 # <a name="cloudsimple-private-cloud-overview"></a>Übersicht über private CloudSimple-Clouds
 
@@ -63,7 +63,7 @@ Benutzer nutzen den Stapel über systemeigene VMware-Tools, wozu folgende Tools 
 
 Sie können dedizierte Knoten in Azure-Standorten bereitstellen. Anschließend können Sie diese mit Azure und CloudSimple verwalten. Eine private Cloud besteht aus mindestens einem vSphere-Cluster, und jeder Cluster enthält 3 bis 16 Knoten.
 
-Sie können eine private Cloud mit gekauften Knoten erstellen:
+Sie können eine private Cloud mit bereitgestellten Knoten erstellen:
 
 * Knoten mit nutzungsbasierter Bezahlung
 * Reservierte, dedizierte Knoten

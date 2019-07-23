@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 05/02/2019
 ms.author: erhopf
-ms.openlocfilehash: 682f3df362a7fbb0e95a07aa8a8f3a068367eef2
-ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
+ms.openlocfilehash: 132e355abbdbe147a843c51efd018cc759c06836
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/02/2019
-ms.locfileid: "65025680"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67064040"
 ---
 # <a name="inspect-custom-speech-data"></a>Überprüfen von Custom Speech-Daten
 
@@ -36,7 +36,7 @@ Gehen Sie wie folgt vor, um einen Test zu erstellen:
 2. Klicken Sie auf **Test hinzufügen**.
 3. Wählen Sie **Inspect quality (Audio-only data)** (Qualität überprüfen (nur Audiodaten)) aus. Geben Sie einen Namen und eine Beschreibung für den Test ein, und wählen Sie Ihr Audiodataset aus.
 4. Wählen Sie bis zu zwei Modelle aus, die Sie testen möchten.
-5. Klicken Sie auf **Erstellen**.
+5. Klicken Sie auf **Create**.
 
 Nach erfolgreicher Testerstellung können Sie die Modelle nebeneinander vergleichen.
 
@@ -46,7 +46,7 @@ Wenn der Teststatus *Erfolgreich* lautet, klicken Sie auf den Namen des Testelem
 
 Zur einfacheren Untersuchung der Gegenüberstellung können Sie verschiedene Fehlertypen wie Einfügungen, Löschungen und Ersetzungen aktivieren oder deaktivieren. Indem Sie sich die Audiodaten anhören und mit den Erkennungsergebnissen in den einzelnen Spalten vergleichen (die die menschenmarkierte Transkription sowie die Ergebnisse zweier Spracherkennungsmodelle enthalten), können Sie entscheiden, welches Modell Ihre Anforderungen erfüllt und wo Verbesserungen erforderlich sind.
 
-Die Überprüfung der Qualität ist sinnvoll, um sich zu vergewissern, dass die Qualität eines Spracherkennungsendpunkts für eine Anwendung ausreicht.  Informationen zu einer objektiven Genauigkeitsmessung, für die transkribiertes Audio benötigt wird, finden Sie unter „Testing: Evaluate Accuracy“ (Testen: Bewerten der Genauigkeit).
+Die Überprüfung der Qualität ist sinnvoll, um sich zu vergewissern, dass die Qualität eines Spracherkennungsendpunkts für eine Anwendung ausreicht.  Für eine objektive Genauigkeitsmessung, für die transkribiertes Audio benötigt wird, befolgen Sie die Anweisungen unter [Bewerten der Genauigkeit](how-to-custom-speech-evaluate-data.md).
 
 ## <a name="next-steps"></a>Nächste Schritte
 

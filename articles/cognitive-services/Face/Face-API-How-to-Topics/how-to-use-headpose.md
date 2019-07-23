@@ -1,28 +1,32 @@
 ---
-title: Verwenden von HeadPose zum Anpassen des Gesichtsrechtecks
+title: Verwenden des HeadPose-Attributs
 titleSuffix: Azure Cognitive Services
-description: Erfahren Sie, wie Sie mit dem HeadPose-Attribut das Gesichtsrechteck automatisch drehen können.
+description: Erfahren Sie, wie Sie mit dem HeadPose-Attribut das Gesichtsrechteck automatisch drehen oder Kopfbewegungen in einem Videofeed erkennen können.
 author: PatrickFarley
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: face-api
-ms.topic: conceptual
-ms.date: 04/26/2019
+ms.topic: sample
+ms.date: 05/29/2019
 ms.author: pafarley
-ms.openlocfilehash: ddc5bc522c0d3ac258581f2a48a5c3b755302f01
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 168b4fce873206e39a32a83da3dc5509b431d6a1
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/26/2019
-ms.locfileid: "64576493"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67058581"
 ---
-# <a name="use-the-headpose-attribute-to-adjust-the-face-rectangle"></a>Verwenden des HeadPose-Attributs zum Anpassen des Gesichtsrechtecks
+# <a name="use-the-headpose-attribute"></a>Verwenden des HeadPose-Attributs
 
-In diesem Leitfaden verwenden Sie ein erkanntes Gesichtsattribut, HeadPose, um das Rechteck eines Gesichtsobjekts zu drehen. Der Beispielcode in diesem Leitfaden aus der Beispielanwendung [Cognitive Services Face WPF](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/tree/master/app-samples/Cognitive-Services-Face-WPF) verwendet das .NET SDK.
+In dieser Anleitung erfahren Sie, wie Sie das HeadPose-Attribut eines erkannten Gesichts verwenden können, um einige wichtige Szenarien umzusetzen.
 
-Das Gesichtsrechteck, das bei jedem erkannten Gesicht zurückgegeben wird, markiert die Position und Größe des Gesichts im Bild. Standardmäßig ist das Rechteck immer mit dem Bild ausgerichtet (seine Seiten sind perfekt vertikal und horizontal). Dies kann für das Umrahmen von abgewinkelten bzw. geneigten Gesichtern ineffizient sein. In Situationen, in denen Sie programmgesteuert Gesichter in einem Bild zuschneiden möchten, ist es von Vorteil, das zuzuschneidende Rechteck drehen zu können.
+## <a name="rotate-the-face-rectangle"></a>Drehen des Gesichtsrechtecks
 
-## <a name="explore-the-sample-code"></a>Untersuchen des Beispielcodes
+Das Gesichtsrechteck, das bei jedem erkannten Gesicht zurückgegeben wird, markiert die Position und Größe des Gesichts im Bild. Standardmäßig ist das Rechteck immer mit dem Bild ausgerichtet (seine Seiten sind vertikal und horizontal). Dies kann für das Umrahmen von abgewinkelten bzw. geneigten Gesichtern ineffizient sein. In Situationen, in denen Sie programmgesteuert Gesichter in einem Bild zuschneiden möchten, ist es besser, das Rechteck für den Zuschnitt drehen zu können.
+
+Die Beispiel-App [Cognitive Services Face WPF](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/tree/master/app-samples/Cognitive-Services-Face-WPF) verwendet das HeadPose-Attribut, um die Rechtecke der erkannten Gesichter zu drehen.
+
+### <a name="explore-the-sample-code"></a>Untersuchen des Beispielcodes
 
 Sie können das Gesichtsrechteck programmgesteuert drehen, indem Sie das HeadPose-Attribut verwenden. Wenn Sie dieses Attribut bei der Gesichtserkennung angeben (siehe [Informationen zur Gesichtserkennung](HowtoDetectFacesinImage.md)), können Sie es später abfragen. Die folgende Methode aus der App [Cognitive Services Face WPF](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/tree/master/app-samples/Cognitive-Services-Face-WPF) nimmt eine Liste von **DetectedFace**-Objekten und gibt eine Liste von **[Face](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/blob/master/app-samples/Cognitive-Services-Face-WPF/Sample-WPF/Controls/Face.cs)** -Objekten zurück. **Face** ist hier eine benutzerdefinierte Klasse, die Gesichtsdaten speichert, einschließlich der aktualisierten Rechteckkoordinaten. Neue Werte werden für **top** (oben), **left** (links), **width** (Breite) und **height** (Höhe) berechnet, und ein neues Feld **FaceAngle** gibt die Drehung an.
 
@@ -102,7 +106,7 @@ public static IEnumerable<Face> CalculateFaceRectangleForRendering(IList<Detecte
 }
 ```
 
-## <a name="display-the-updated-rectangle"></a>Anzeigen des aktualisierten Rechtecks
+### <a name="display-the-updated-rectangle"></a>Anzeigen des aktualisierten Rechtecks
 
 Von hier aus können Sie die zurückgegebenen **Face**-Objekte in Ihrer Anzeige verwenden. Die folgenden Zeilen aus [FaceDetectionPage.xaml](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/blob/master/app-samples/Cognitive-Services-Face-WPF/Sample-WPF/Controls/FaceDetectionPage.xaml) zeigen, wie das neue Rechteck aus diesen Daten gerendert wird:
 
@@ -116,6 +120,17 @@ Von hier aus können Sie die zurückgegebenen **Face**-Objekte in Ihrer Anzeige 
 </DataTemplate>
 ```
 
+## <a name="detect-head-gestures"></a>Erkennen von Kopfbewegungen
+
+Sie können Kopfbewegungen wie Nicken oder Kopfschütteln erkennen, indem Sie HeadPose-Änderungen in Echtzeit nachverfolgen. Sie können diese Funktion als eine benutzerdefinierte Liveerkennung verwenden.
+
+Bei einer Liveerkennung wird ermittelt, ob ein Subjekt eine reale Person oder lediglich eine Bild- oder Videodarstellung ist. Die Erkennung von Kopfbewegungen stellt eine Möglichkeit dar, um sicherzustellen, dass es sich um eine lebendige Person und nicht um eine Bilddarstellung handelt.
+
+> [!CAUTION]
+> Damit Sie Kopfbewegungen in Echtzeit erkennen können, müssen Sie die Gesichtserkennungs-API in einer sehr hohen Frequenz (mehrmals pro Sekunde) aufrufen. Dies ist mit einem Abonnement im Free-Tarif (f0) nicht möglich. Wenn Sie über ein Abonnement in einem kostenpflichtigen Tarif verfügen, sollten Sie unbedingt vorab die Kosten für schnelle API-Aufrufe berechnen, die für die Erkennung von Kopfbewegungen erforderlich sind.
+
+Das [HeadPose-Beispiel der Gesichtserkennungs-API](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/tree/master/app-samples/FaceAPIHeadPoseSample) auf GitHub ist ein funktionsfähiges Beispiel für die Erkennung von Kopfbewegungen.
+
 ## <a name="next-steps"></a>Nächste Schritte
 
-Ein funktionierendes Beispiel für gedrehte Gesichtsrechtecke finden Sie in der App [Cognitive Services Face WPF](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/tree/master/app-samples/Cognitive-Services-Face-WPF) auf GitHub. Oder schauen Sie sich die App [Face API HeadPose Sample](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/tree/master/app-samples) (HeadPose-Beispiel für die Gesichtserkennungs-API) an, die das HeadPose-Attribut in Echtzeit verfolgt, um verschiedene Kopfbewegungen (Nicken, Schütteln) zu erkennen.
+Ein funktionierendes Beispiel für gedrehte Gesichtsrechtecke finden Sie in der App [Cognitive Services Face WPF](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/tree/master/app-samples/Cognitive-Services-Face-WPF) auf GitHub. Sie können sich auch die App [Face API HeadPose Sample](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/tree/master/app-samples) (HeadPose-Beispiel für die Gesichtserkennungs-API) ansehen, die das HeadPose-Attribut in Echtzeit verfolgt, um Kopfbewegungen zu erkennen.

@@ -7,17 +7,17 @@ ms.author: mamccrea
 ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
-ms.date: 12/07/2018
+ms.date: 06/11/2019
 ms.custom: seodec18
-ms.openlocfilehash: b06fec8ab726f48e1937bae4cfbdbd9842788d0a
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 7c945f39218f9099d5c304739ca9b567ab9b3325
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61480648"
+ms.lasthandoff: 06/17/2019
+ms.locfileid: "67164690"
 ---
-# <a name="performing-sentiment-analysis-by-using-azure-stream-analytics-and-azure-machine-learning"></a>Durchführen von Standpunktanalysen mit Azure Stream Analytics und Azure Machine Learning
-Dieser Artikel beschreibt, wie Sie schnell einen einfachen Azure Stream Analytics-Auftrag mit Azure Machine Learning-Integration einrichten. Sie nutzen ein Stimmungsanalysemodell für Machine Learning aus dem Cortana Intelligence-Katalog, um Streamingtextdaten zu analysieren und den Stimmungswert in Echtzeit zu ermitteln. Über die Cortana Intelligence Suite können Sie diese Aufgabe ausführen, ohne sich um die Komplexität der Erstellung eines Analysemodells für die Stimmung kümmern zu müssen.
+# <a name="performing-sentiment-analysis-by-using-azure-stream-analytics-and-azure-machine-learning-studio-preview"></a>Durchführen von Standpunktanalysen mit Azure Stream Analytics und Azure Machine Learning Studio (Vorschau)
+Dieser Artikel beschreibt, wie Sie schnell einen einfachen Azure Stream Analytics-Auftrag mit Azure Machine Learning Studio-Integration einrichten. Sie nutzen ein Stimmungsanalysemodell für Machine Learning aus dem Cortana Intelligence-Katalog, um Streamingtextdaten zu analysieren und den Stimmungswert in Echtzeit zu ermitteln. Über die Cortana Intelligence Suite können Sie diese Aufgabe ausführen, ohne sich um die Komplexität der Erstellung eines Analysemodells für die Stimmung kümmern zu müssen.
 
 Sie können das in diesem Artikel Gelernte u.a. in folgenden Szenarien anwenden:
 
@@ -45,7 +45,7 @@ Stellen Sie zunächst sicher, dass Sie über Folgendes verfügen:
 Im Allgemeinen führen Sie mit den Aufgaben in diesem Artikel folgende Aktionen aus:
 
 1. Erstellen eines Azure Storage-Kontos und eines Blob Storage-Containers und Hochladen einer CSV-Eingabedatei in den Container
-3. Hinzufügen eines Stimmungsanalysemodells aus dem Cortana Intelligence-Katalog zu Ihrem Azure Machine Learning-Arbeitsbereich und bereitstellen dieses Modell als Webdienst im Machine Learning-Arbeitsbereich
+3. Hinzufügen eines Stimmungsanalysemodells aus dem Cortana Intelligence-Katalog zu Ihrem Azure Machine Learning Studio-Arbeitsbereich und Bereitstellen dieses Modell als Webdienst im Machine Learning-Arbeitsbereich
 5. Erstellen eines Stream Analytics-Auftrag, der diesen Webdienst als Funktion aufruft, um die Stimmung für die Texteingabe zu ermitteln
 6. Starten des Stream Analytics-Auftrags und Überprüfen der Ausgabe
 

@@ -11,14 +11,14 @@ ms.service: azure-monitor
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 05/18/2019
+ms.date: 06/12/2019
 ms.author: magoedte
-ms.openlocfilehash: 531e51fbddb99ebba11284d5291b4cca26559bc1
-ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
+ms.openlocfilehash: a370dcb349b61f3dda544d9c5a2030b6789e34c4
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/20/2019
-ms.locfileid: "65906777"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67075434"
 ---
 # <a name="understand-aks-cluster-performance-with-azure-monitor-for-containers"></a>Verstehen der Leistung von AKS-Clustern mit Azure Monitor für Container 
 Mit Azure Monitor für Container können Sie die Leistungsdiagramme und den Integritätsstatus verwenden, um die Workload Ihrer Azure Kubernetes Service-Cluster (AKS) aus zwei Perspektiven zu überwachen, direkt aus einem AKS-Cluster oder aus allen AKS-Clustern in einem Abonnement von Azure Monitor. Die Anzeige von Azure Container Instances (ACI) ist auch möglich, wenn Sie einen bestimmten AKS-Cluster überwachen.
@@ -102,12 +102,12 @@ Die Standardseite, die beim Klicken auf **Insights** geöffnet wird, ist **Clust
 
 Das Leistungsdiagramm zeigt vier Leistungsmetriken an:
 
-- **Knoten-CPU-Auslastung&nbsp;%**: Eine aggregierte Ansicht der CPU-Auslastung für den gesamten Cluster. Sie können die Ergebnisse für den Zeitbereich filtern, indem Sie **Mittelw.**, **Min.**, **Max.**, **50.**, **90.** und **95.** im Perzentilselektor oberhalb des Diagramms auswählen, entweder einzeln oder kombiniert. 
-- **Knotenspeicherauslastung&nbsp;%**: Eine aggregierte Ansicht der Speicherauslastung für den gesamten Cluster. Sie können die Ergebnisse für den Zeitbereich filtern, indem Sie **Mittelw.**, **Min.**, **Max.**, **50.**, **90.** und **95.** im Perzentilselektor oberhalb des Diagramms auswählen, entweder einzeln oder kombiniert. 
+- **Knoten-CPU-Auslastung&nbsp;%** : Eine aggregierte Ansicht der CPU-Auslastung für den gesamten Cluster. Sie können die Ergebnisse für den Zeitbereich filtern, indem Sie **Mittelw.** , **Min.** , **Max.** , **50.** , **90.** und **95.** im Perzentilselektor oberhalb des Diagramms auswählen, entweder einzeln oder kombiniert. 
+- **Knotenspeicherauslastung&nbsp;%** : Eine aggregierte Ansicht der Speicherauslastung für den gesamten Cluster. Sie können die Ergebnisse für den Zeitbereich filtern, indem Sie **Mittelw.** , **Min.** , **Max.** , **50.** , **90.** und **95.** im Perzentilselektor oberhalb des Diagramms auswählen, entweder einzeln oder kombiniert. 
 - **Knotenanzahl**: Die Anzahl von Knoten und der Status von Kubernetes. Die Status der dargestellten Clusterknoten sind *Alle*, *Bereit* und *Nicht bereit*. Der Status kann im Selektor oberhalb des Diagramms einzeln oder kombiniert gefiltert werden. 
 - **Podanzahl der Aktivität**: Die Podanzahl und der Status von Kubernetes. Die Status der dargestellten Pods sind *Alle*, *Ausstehend*, *Wird ausgeführt* und *Unbekannt*. Der Status kann im Selektor oberhalb des Diagramms einzeln oder kombiniert gefiltert werden. 
 
-Mit den Pfeiltasten nach links/rechts können Sie durch jeden Datenpunkt im Diagramm blättern und mit den Pfeiltasten nach oben/unten durch die Perzentilzeilen.
+Mit den Pfeiltasten nach links/rechts können Sie durch jeden Datenpunkt im Diagramm blättern und mit den Pfeiltasten nach oben/unten durch die Perzentilzeilen. Wenn Sie auf das Stecknadelsymbol in der oberen rechten Ecke eines der Diagramme klicken, wird das ausgewählte Diagramm an das Azure-Dashboard angeheftet, das Sie zuletzt angezeigt haben. Über dem Dashboard können Sie die Größe des Diagramms ändern und es neu positionieren. Die Auswahl des Diagramms über das Dashboard leitet Sie zum Azure Monitor für Container weiter und lädt den richtigen Bereich und die richtige Ansicht.
 
 Azure Monitor für Container unterstützt auch den Azure Monitor-[Metrik-Explorer](../platform/metrics-getting-started.md), in dem Sie eigene Boxplotdiagramme erstellen, Trends korrelieren und untersuchen und an Dashboards anheften können. Im Metrik-Explorer können Sie die Kriterien, die Sie für die Visualisierung Ihrer Metriken festgelegt haben, als Grundlage einer [metrikbasierten Warnungsregel](../platform/alerts-metric.md) verwenden.  
 
@@ -136,7 +136,7 @@ Sie können die [Teilung](../platform/metrics-charts.md#apply-splitting-to-a-cha
 
 ## <a name="analyze-nodes-controllers-and-container-health"></a>Analysieren von Knoten, Controllern und der Containerintegrität
 
-Wenn Sie zur Registerkarte **Knoten**, **Controller** und **Container** wechseln, wird der Eigenschaftenbereich automatisch rechts auf der Seite angezeigt. Dort werden die Eigenschaften des ausgewählten Elements einschließlich der Bezeichnungen angezeigt, die Sie definieren, um die Kubernetes-Objekte zu organisieren. Wenn ein Linux-Knoten ausgewählt ist, werden im Abschnitt **Local Disk Capacity** (Kapazität der lokalen Festplatte) auch der verfügbare Speicherplatz auf der Festplatte und der prozentual für jede Festplatte auf dem Knoten genutzte Speicherplatz angezeigt. Klicken Sie auf den **>>**-Link im Bereich, um ihn anzuzeigen\auszublenden. 
+Wenn Sie zur Registerkarte **Knoten**, **Controller** und **Container** wechseln, wird der Eigenschaftenbereich automatisch rechts auf der Seite angezeigt. Dort werden die Eigenschaften des ausgewählten Elements einschließlich der Bezeichnungen angezeigt, die Sie definieren, um die Kubernetes-Objekte zu organisieren. Wenn ein Linux-Knoten ausgewählt ist, werden im Abschnitt **Local Disk Capacity** (Kapazität der lokalen Festplatte) auch der verfügbare Speicherplatz auf der Festplatte und der prozentual für jede Festplatte auf dem Knoten genutzte Speicherplatz angezeigt. Klicken Sie auf den **>>** -Link im Bereich, um ihn anzuzeigen\auszublenden. 
 
 ![Beispiel für den Eigenschaftenbereich von Kubernetes-Perspektiven](./media/container-insights-analyze/perspectives-preview-pane-01.png)
 
@@ -167,7 +167,7 @@ Im oberen Bereich der Seite können Sie Controller oder Container auswählen und
 
 ![Leistungsansicht zu den Containerknoten](./media/container-insights-analyze/containers-node-metric-dropdown.png)
 
-Standardmäßig beziehen sich Leistungsdaten auf die letzten sechs Stunden, jedoch können Sie den Zeitraum mithilfe der Option **TimeRange** oben links ändern. Außerdem haben Sie die Möglichkeit, die Ergebnisse im Zeitbereich durch Auswahl von **Mittelw.**, **Min.**, **Max.**, **50.**, **90.** und **95.** im Perzentilselektor zu filtern. 
+Standardmäßig beziehen sich Leistungsdaten auf die letzten sechs Stunden, jedoch können Sie den Zeitraum mithilfe der Option **TimeRange** oben links ändern. Außerdem haben Sie die Möglichkeit, die Ergebnisse im Zeitbereich durch Auswahl von **Mittelw.** , **Min.** , **Max.** , **50.** , **90.** und **95.** im Perzentilselektor zu filtern. 
 
 ![Perzentilauswahl für die Datenfilterung](./media/container-insights-analyze/containers-metric-percentile-filter.png)
 
@@ -175,7 +175,7 @@ Wenn Sie den Mauszeiger über das Balkendiagramm unter der Spalte **Trend** bewe
 
 ![Beispiel für ein Trendbalkendiagramm mit Mauszeigerbewegung](./media/container-insights-analyze/containers-metric-trend-bar-01.png)    
 
-Beachten Sie im nächsten Beispiel, dass für den ersten Knoten in der Liste, *aks-nodepool1-*, der Wert von **Container** 9 ist, was einen Rollup der Gesamtzahl der bereitgestellten Container darstellt.
+Beachten Sie im nächsten Beispiel, dass für den ersten Knoten in der Liste, *aks-nodepool1-* , der Wert von **Container** 9 ist, was einen Rollup der Gesamtzahl der bereitgestellten Container darstellt.
 
 ![Beispiel für ein Rollup der Container pro Knoten](./media/container-insights-analyze/containers-nodes-containerstotal.png)
 
@@ -270,6 +270,20 @@ Die Symbole im Statusfeld zeigen die Onlinestatus der Pods an, wie in der folgen
 | ![Symbol für zuletzt gemeldeten Ausführungsstatus](./media/container-insights-analyze/containers-grey-icon.png) | Zuletzt als ausgeführt gemeldet, hat aber seit mehr als 30 Minuten nicht geantwortet|  
 | ![Statussymbol für „Beendet“](./media/container-insights-analyze/containers-terminated-icon.png) | Erfolgreich beendet oder Fehler beim Beenden|  
 | ![Symbol für den Status „Fehler“](./media/container-insights-analyze/containers-failed-icon.png) | Status „Fehler“ |  
+
+## <a name="disk-capacity-workbook"></a>Arbeitsmappe für Datenträgerkapazität
+Arbeitsmappen kombinieren Text,  [Protokollabfragen](../log-query/query-language.md), [Metriken](../platform/data-platform-metrics.md) und Parameter zu umfassenden interaktiven Berichten. Arbeitsmappen können von anderen Teammitgliedern bearbeitet werden, die Zugriff auf dieselben Azure-Ressourcen haben.
+
+Azure Monitor für Container enthält eine Arbeitsmappe für den Einstieg mit dem Namen **Datenträgerkapazität**.  Diese Arbeitsmappe zeigt interaktive Diagramme zur Datenträgerauslastung für jeden Datenträger, der dem Knoten in einem Container bereitgestellt wird, anhand der folgenden Gesichtspunkte:
+
+- Datenträgerauslastung in Prozent für alle Datenträger
+- Freier Speicherplatz für alle Datenträger
+- Eine Tabelle, die für den Datenträger jedes Knotens den verwendeten Speicherplatz in Prozent, den Trend des verwendeten Speicherplatzes in Prozent, den freien Speicherplatz (GiB) und den Trend des freien Speicherplatzes (GiB) angibt. Bei Auswahl einer Zeile in der Tabelle wird der Prozentsatz des verwendeten Speicherplatzes und der freie Speicherplatz (GiB) darunter angezeigt. 
+
+Sie greifen auf diese Arbeitsmappe zu, indem Sie in der Dropdownliste **Arbeitsmappen anzeigen** die Option **Datenträgerkapazität** auswählen.  
+
+![Dropdownliste „Arbeitsmappen anzeigen“](./media/container-insights-analyze/view-workbooks-dropdown-list.png)
+
 
 ## <a name="next-steps"></a>Nächste Schritte
 - Informationen zum Erstellen von Warnungen für hohe CPU- und Arbeitsspeicherauslastung zur Unterstützung Ihrer DevOps oder Betriebsprozesse und -verfahren finden Sie unter [Erstellen von Leistungswarnungen mit Azure Monitor für Container](container-insights-alerts.md). 

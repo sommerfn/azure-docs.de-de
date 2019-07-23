@@ -3,7 +3,7 @@ title: Traffic Manager-Endpunkttypen | Microsoft Docs
 description: In diesem Artikel werden die unterschiedlichen Arten von Endpunkten beschrieben, die mit Azure Traffic Manager verwendet werden können.
 services: traffic-manager
 documentationcenter: ''
-author: kumudd
+author: asudbring
 manager: twooley
 ms.service: traffic-manager
 ms.devlang: na
@@ -11,18 +11,20 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/29/2017
-ms.author: kumud
-ms.openlocfilehash: dc76f56b6c05f22a380ff33715fe22e8c72e4891
-ms.sourcegitcommit: 8fc5f676285020379304e3869f01de0653e39466
+ms.author: allensu
+ms.openlocfilehash: 469b6543b380cb6b3b10c3def8484bed944f8556
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/09/2019
-ms.locfileid: "65508432"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67071200"
 ---
 # <a name="traffic-manager-endpoints"></a>Traffic Manager-Endpunkte
+
 Mit Microsoft Azure Traffic Manager können Sie steuern, wie Datenverkehr im Netzwerk auf Anwendungsbereitstellungen in verschiedenen Rechenzentren verteilt wird. Sie konfigurieren jede Anwendungsbereitstellung in Traffic Manager als „Endpunkt“. Wenn Traffic Manager eine DNS-Anforderung empfängt, wählt er einen verfügbaren Endpunkt, der in der DNS-Antwort zurückgegeben wird. Traffic Manager trifft die Auswahl nach dem aktuellen Endpunktstatus und der Methode für das Datenverkehrsrouting. Weitere Informationen finden Sie unter [Funktionsweise von Traffic Manager](traffic-manager-how-it-works.md).
 
 Es gibt drei Arten von Endpunkten, die von Traffic Manager unterstützt werden:
+
 * **Azure-Endpunkte** werden für Dienste verwendet, die unter Azure gehostet werden.
 * **Externe Endpunkte** werden für IPv4/IPv6-Adressen, FQDNs oder für außerhalb von Azure gehostete Dienste verwendet, die entweder lokal oder bei einem anderen Hostinganbieter vorliegen können.
 * **Geschachtelte Endpunkte** werden zum Kombinieren von Traffic Manager-Profilen verwendet, um flexiblere Schemas für das Routing von Datenverkehr zu erstellen. So können die Anforderungen von größeren und komplexeren Bereitstellungen erfüllt werden.
@@ -42,14 +44,14 @@ Azure-Endpunkte werden für Azure-basierte Dienste in Traffic Manager verwendet.
 
 PublicIPAddress-Ressourcen sind Azure Resource Manager-Ressourcen. Diese sind in dem klassischen Bereitstellungsmodell nicht vorhanden. Daher werden sie nur in Azure Resource Manager-Oberflächen von Traffic Manager unterstützt. Die anderen Endpunkttypen werden über Resource Manager und das klassische Bereitstellungsmodell unterstützt.
 
-Bei der Verwendung von Azure-Endpunkten erkennt Traffic Manager, wenn eine „klassische“ IaaS-VM, ein Clouddienst oder eine Web-App beendet und gestartet wird. Dieser Status wird im Endpunktstatus wiedergegeben. Weitere Informationen finden Sie unter [Traffic Manager-Endpunktüberwachung](traffic-manager-monitoring.md#endpoint-and-profile-status). Wenn der zugrunde liegende Dienst beendet wird, führt Traffic Manager keine Endpunkt-Systemdiagnosen oder direkten Datenverkehr zum Endpunkt durch. Für die beendete Instanz treten keine Traffic Manager-Abrechnungsereignisse auf. Wenn der Dienst neu gestartet wird, wird die Abrechnung fortgesetzt und der Endpunkt ist berechtigt, Datenverkehr zu empfangen. Diese Erkennung gilt nicht für PublicIpAddress-Endpunkte.
+Bei der Verwendung von Azure-Endpunkten erkennt Traffic Manager, wenn eine Web-App beendet und gestartet wird. Dieser Status wird im Endpunktstatus wiedergegeben. Weitere Informationen finden Sie unter [Traffic Manager-Endpunktüberwachung](traffic-manager-monitoring.md#endpoint-and-profile-status). Wenn der zugrunde liegende Dienst beendet wird, führt Traffic Manager keine Endpunkt-Systemdiagnosen oder direkten Datenverkehr zum Endpunkt durch. Für die beendete Instanz treten keine Traffic Manager-Abrechnungsereignisse auf. Wenn der Dienst neu gestartet wird, wird die Abrechnung fortgesetzt und der Endpunkt ist berechtigt, Datenverkehr zu empfangen. Diese Erkennung gilt nicht für PublicIpAddress-Endpunkte.
 
 ## <a name="external-endpoints"></a>Externe Endpunkte
 
 Externe Endpunkte werden entweder für IPv4/IPv6-Adressen, FQDNs oder für Dienste außerhalb von Azure verwendet. Die Verwendung von IPv4/IPv6-Adressendpunkten ermöglicht es Traffic Manager, den Zustand von Endpunkten zu überprüfen, ohne dass für sie ein DNS-Name erforderlich ist. Dadurch kann Traffic Manager auf Abfragen mit A/AAAA-Einträgen reagieren, wenn dieser Endpunkt in einer Antwort zurückgegeben wird. Dienste außerhalb von Azure können einen Dienst beinhalten, der lokal oder bei einem anderen Anbieter gehostet wird. Externe Endpunkte können einzeln oder in Kombination mit Azure-Endpunkten im gleichen Traffic Manager-Profil verwendet werden, mit Ausnahme von Endpunkten, die als IPv4- oder IPv6-Adressen angegeben sind und nur externe Endpunkte sein können. Die Kombination von Azure-Endpunkten mit externen Endpunkten ermöglicht unterschiedliche Szenarios:
 
 * Bereitstellen einer erhöhten Redundanz für eine vorhandene lokale Anwendung in einem Aktiv/Aktiv- oder Aktiv/Passiv-Failovermodell mit Azure. 
-* Weiterleiten von Datenverkehr an Endpunkte, denen kein DNS-Name zugeordnet ist. Verringern Sie außerdem die allgemeine DNS-Nachschlagelatenzzeit, indem Sie die Notwendigkeit entfernen, eine zweite DNS-Abfrage auszuführen, um eine IP-Adresse eines DNS-Namens zurückzugeben. 
+* Weiterleiten von Datenverkehr an Endpunkte, denen kein DNS-Name zugeordnet ist. Verringern Sie außerdem die allgemeine DNS-Nachschlagelatenzzeit, indem Sie die Notwendigkeit entfernen, eine zweite DNS-Abfrage auszuführen, um eine IP-Adresse eines DNS-Namens zurückzugeben.
 * Verringern der Anwendungslatenz für Benutzer auf der ganzen Welt, Erweitern einer vorhandenen lokalen Anwendung auf zusätzliche geografische Standorte in Azure. Weitere Informationen finden Sie unter [Traffic Manager Leistungsdatenverkehrrouting](traffic-manager-routing-methods.md#performance).
 * Stellen Sie mit Azure zusätzliche Kapazität für eine vorhandene lokale Anwendung bereit, entweder fortlaufend oder als „Burst-to-Cloud“ für Spitzenlasten.
 

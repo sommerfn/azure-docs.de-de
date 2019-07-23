@@ -10,12 +10,12 @@ ms.topic: article
 ms.date: 02/01/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 76e12dc6bf9bcb50dc58e7730f3a08dd6a9d4440
-ms.sourcegitcommit: adb6c981eba06f3b258b697251d7f87489a5da33
+ms.openlocfilehash: ceae908b37c825721a42c49db4503382eb35c71c
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/04/2019
-ms.locfileid: "66512193"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67055097"
 ---
 # <a name="tutorial-add-identity-providers-to-your-applications-in-azure-active-directory-b2c"></a>Tutorial: Hinzufügen von Identitätsanbietern zu Ihren Anwendungen in Azure Active Directory B2C
 
@@ -46,7 +46,7 @@ Um die Anmeldung für Benutzer von Azure AD zu aktivieren, müssen Sie eine Anwe
 
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
 2. Stellen Sie sicher, dass Sie das Verzeichnis verwenden, das Ihren Azure AD-Mandanten enthält, indem Sie im oberen Menü auf den **Verzeichnis- und Abonnementfilter** klicken und das Verzeichnis auswählen, das Ihren Azure AD-Mandanten enthält.
-3. Klicken Sie links oben im Azure-Portal auf **Alle Dienste**, suchen Sie nach **App-Registrierungen**, und wählen Sie dann diese Option aus.
+3. Wählen Sie oben links im Azure-Portal **Alle Dienste** aus, suchen Sie nach **App-Registrierungen (Legacy)** , und wählen Sie dann diese Option aus.
 4. Wählen Sie **Registrierung einer neuen Anwendung** aus.
 5. Geben Sie einen Namen für Ihre Anwendung ein. Beispiel: `Azure AD B2C App`.
 6. Wählen Sie als **Anwendungstyp** die Option `Web app / API` aus.
@@ -106,7 +106,7 @@ Nach der Erstellung der Anwendung für den betreffenden Identitätsanbieter füg
     Beispiel: `https://login.microsoftonline.com/contoso.onmicrosoft.com/.well-known/openid-configuration`.
 
 8. Geben Sie für die **Client-ID** die Anwendungs-ID und für **Clientgeheimnis** den Schlüsselwert ein, die Sie beide zuvor notiert haben.
-9. Geben Sie optional einen Wert für **Domänenhinweis** ein. Beispiel: `ContosoAD`. 
+9. Geben Sie optional einen Wert für **Domänenhinweis** ein. Beispiel: `ContosoAD`. Domänenhinweise(https://docs.microsoft.com/azure/active-directory/manage-apps/configure-authentication-for-federated-users-portal) sind in der Authentifizierungsanforderung einer Anwendung enthaltene Anweisungen. Sie können verwendet werden, um die beschleunigte Anmeldung des Benutzers auf der Anmeldeseite seines Verbundidentitätsanbieters zu ermöglichen. Sie können auch von einer Anwendung für mehrere Mandanten verwendet werden, um den Benutzer beschleunigt direkt zur organisationsspezifischen Azure AD-Anmeldeseite für ihren Mandanten zu leiten.
 10. Klicken Sie auf **OK**.
 11. Wählen Sie **Ansprüche dieses Identitätsanbieters zuordnen** aus, und legen Sie die folgenden Ansprüche fest:
     

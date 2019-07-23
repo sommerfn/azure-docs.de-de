@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: vmware
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 5e6548a5a04e32b374a8a9c29d2ca5f89fd65c78
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 62511118edb4f8b5061f90138bac2aa2b5d3cfe3
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65157948"
+ms.lasthandoff: 06/17/2019
+ms.locfileid: "67165154"
 ---
 # <a name="private-cloud-vmware-components"></a>VMware-Komponenten in der privaten Cloud
 
@@ -37,7 +37,7 @@ Ein VMware-Stapel in einer privaten Cloud wird mit den folgenden Softwareversion
 
 ## <a name="esxi"></a>ESXi
 
-VMware ESXi wird auf erworbenen CloudSimple-Knoten installiert, wenn Sie eine private Cloud erstellen.  ESXi bietet den Hypervisor für die Bereitstellung von Workload-VMs.  Die Knoten bieten eine hyperkonvergente Infrastruktur (Compute und Speicher) in Ihrer privaten Cloud.  Die Knoten sind ein Teil des vSphere-Clusters in der privaten Cloud.  Jeder Knoten verfügt über vier physische Netzwerkschnittstellen, die mit dem zugrunde liegenden Netzwerk verbunden sind.  Mit zwei physischen Netzwerkschnittstellen wird ein **vSphere Distributed Switch (VDS)** in vCenter erstellt, und mit zwei Netzwerkschnittstellen wird ein **über NSX verwalteter virtueller verteilter Switch (N-VDS)** erstellt.  Die Netzwerkschnittstellen werden im Aktiv/Aktiv-Modus für Hochverfügbarkeit konfiguriert.
+VMware ESXi wird auf bereitgestellten CloudSimple-Knoten installiert, wenn Sie eine private Cloud erstellen.  ESXi bietet den Hypervisor für die Bereitstellung von Workload-VMs.  Die Knoten bieten eine hyperkonvergente Infrastruktur (Compute und Speicher) in Ihrer privaten Cloud.  Die Knoten sind ein Teil des vSphere-Clusters in der privaten Cloud.  Jeder Knoten verfügt über vier physische Netzwerkschnittstellen, die mit dem zugrunde liegenden Netzwerk verbunden sind.  Mit zwei physischen Netzwerkschnittstellen wird ein **vSphere Distributed Switch (VDS)** in vCenter erstellt, und mit zwei Netzwerkschnittstellen wird ein **über NSX verwalteter virtueller verteilter Switch (N-VDS)** erstellt.  Die Netzwerkschnittstellen werden im Aktiv/Aktiv-Modus für Hochverfügbarkeit konfiguriert.
 
 Weitere Informationen zu VMware ESXi
 

@@ -1,5 +1,5 @@
 ---
-title: Kaufen von Knoten für VMware-Lösung von CloudSimple – Azure
+title: Bereitstellen von Knoten für die VMware-Lösung von CloudSimple – Azure
 description: Erfahren Sie, wie Sie mit CloudSimple-Bereitstellung Knoten zu Ihrer VMWare-Lösung hinzufügen können.
 author: dikamath
 ms.author: dikamath
@@ -8,18 +8,18 @@ ms.topic: article
 ms.service: vmware
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 9f5108207c4f8debc65b9d1fe625ae7033ca4e70
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 33de07663c91f12d4e10c4661b841cd2dbe5a162
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64576836"
+ms.lasthandoff: 06/17/2019
+ms.locfileid: "67165255"
 ---
-# <a name="purchase-nodes-for-vmware-solution-by-cloudsimple---azure"></a>Kaufen von Knoten für VMware-Lösung von CloudSimple – Azure
+# <a name="provision-nodes-for-vmware-solution-by-cloudsimple---azure"></a>Bereitstellen von Knoten für die VMware-Lösung von CloudSimple – Azure
 
 Stellen Sie Knoten im Azure-Portal bereit. Danach können Sie Kapazität mit nutzungsbasierter Bezahlung für die Umgebung Ihrer privaten CloudSimple-Cloud einrichten.
 
-## <a name="add-a-purchased-node-to-your-cloudsimple-private-cloud"></a>Hinzufügen eines gekauften Knotens zu Ihrer privaten CloudSimple-Cloud
+## <a name="add-a-provisioned-node-to-your-cloudsimple-private-cloud"></a>Hinzufügen eines bereitgestellten Knotens zu Ihrer privaten CloudSimple-Cloud
 
 1. Wählen Sie **Alle Dienste** aus.
 2. Suchen Sie nach **CloudSimple-Knoten**.
@@ -31,7 +31,7 @@ Stellen Sie Knoten im Azure-Portal bereit. Danach können Sie Kapazität mit nut
 
     ![Hinzufügen von CloudSimple-Knoten](media/create-cloudsimple-node-add.png)
 
-5. Wählen Sie das Abonnement aus, für das Sie CloudSimple-Knoten kaufen möchten.
+5. Wählen Sie das Abonnement aus, in dem Sie CloudSimple-Knoten bereitstellen möchten.
 6. Wählen Sie die Ressourcengruppe für die Knoten aus. Um eine neue Ressourcengruppe hinzuzufügen, klicken Sie auf **Neue erstellen**.
 7. Geben Sie das Präfix ein, um die Knoten zu kennzeichnen.
 8. Wählen Sie den Standort für die Knotenressourcen aus.

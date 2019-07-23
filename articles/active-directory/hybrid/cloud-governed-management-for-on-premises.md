@@ -13,12 +13,12 @@ ms.date: 06/05/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 33b4b70e36e05e85b8ba6c8b5c7849dbfa694cdd
-ms.sourcegitcommit: 1aefdf876c95bf6c07b12eb8c5fab98e92948000
+ms.openlocfilehash: 510a5562740260eb2946ded074a5c37804c55375
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/06/2019
-ms.locfileid: "66730900"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67109516"
 ---
 # <a name="how-azure-ad-delivers-cloud-governed-management-for-on-premises-workloads"></a>So stellt Azure AD die über die Cloud gesteuerte Verwaltung für lokale Workloads bereit
 
@@ -55,7 +55,7 @@ Die Auswahl der richtigen Azure AD-Funktionen für die cloudgesteuerte Verwaltun
 
 ## <a name="cloud-governed-management-for-ad-integrated-applications"></a>Cloudgesteuerte Verwaltung für AD-integrierte Anwendungen
 
-Azure AD verbessert die Verwaltung der in Active Directory integrierten Anwendungen eines Unternehmens vor Ort durch sicheren Remotezugriff und bedingten Zugriff auf diese Anwendungen. Darüber hinaus bietet Azure AD auch Verwaltung des Kontolebenszyklus und die Verwaltung von Anmeldeinformationen für die vorhandenen AD-Konten des Benutzers, einschließlich:
+Azure AD verbessert die Verwaltung der in Active Directory integrierten Anwendungen eines Unternehmens vor Ort durch sicheren Remotezugriff und bedingten Zugriff auf diese Anwendungen. Darüber hinaus bietet Azure AD auch Verwaltung des Kontolebenszyklus und die Verwaltung von Anmeldeinformationen für die vorhandenen AD-Konten des Benutzers, einschließlich:
 
 * **Sicherer Remotezugriff und bedingter Zugriff für lokale Anwendungen**
 
@@ -69,7 +69,7 @@ Nach dem einmaligen Anmelden in Azure AD können Benutzer über eine externe URL
 
 Identity Governance hilft Organisationen, ein Gleichgewicht herzustellen zwischen der *Produktivität* – wie schnell eine Person auf die benötigten Ressourcen zugreifen kann (beispielsweise, wenn sie der Organisation beitritt) – und der *Sicherheit* – wie sich der Zugriff im Laufe der Zeit ändern sollte (beispielsweise aufgrund von Änderungen des Beschäftigungsstatus einer Person). Identity Lifecycle Management ist die Grundlage für Identity Governance, und eine effektive Governance in großem Maßstab erfordert eine Modernisierung der Identity Lifecycle Management-Infrastruktur für Anwendungen.
 
-Bei vielen Organisationen ist der Identitätslebenszyklus für Mitarbeiter mit der Darstellung des Benutzers in einem Personalverwaltungssystem (Human Capital Management, HCM) verknüpft. Für Organisationen, die Workday als ihr Personalverwaltungssystemen verwenden, kann Azure AD sicherstellen, dass Benutzerkonten in AD [für Mitarbeiter in Workday automatisch bereitgestellt bzw. deren Bereitstellung aufgehoben wird](https://docs.microsoft.com/azure/active-directory/saas-apps/workday-inbound-tutorial). Dies führt zu einer verbesserten Benutzerproduktivität durch die Automatisierung von Birthright-Konten und verwaltet Risiken, indem sichergestellt wird, dass der Anwendungszugriff automatisch aktualisiert wird, wenn ein Benutzer die Rolle wechselt oder die Organisation verlässt. Der Workday-basierte Benutzerbereitstellungsplan (<https://aka.ms/WorkdayDeploymentPlan>) ist eine schrittweise Anleitung, die Organisationen in einem fünfstufigen Prozess durch die Implementierung von Workday in eine Active Directory-Benutzerbereitstellungslösung anhand bewährter Methoden führt.
+Bei vielen Organisationen ist der Identitätslebenszyklus für Mitarbeiter mit der Darstellung des Benutzers in einem Personalverwaltungssystem (Human Capital Management, HCM) verknüpft. Für Organisationen, die Workday als ihr Personalverwaltungssystemen verwenden, kann Azure AD sicherstellen, dass Benutzerkonten in AD [für Mitarbeiter in Workday automatisch bereitgestellt bzw. deren Bereitstellung aufgehoben wird](https://docs.microsoft.com/azure/active-directory/saas-apps/workday-inbound-tutorial). Dies führt zu einer verbesserten Benutzerproduktivität durch die Automatisierung von Birthright-Konten und verwaltet Risiken, indem sichergestellt wird, dass der Anwendungszugriff automatisch aktualisiert wird, wenn ein Benutzer die Rolle wechselt oder die Organisation verlässt. Der Workday-basierte [Benutzerbereitstellungsplan](https://aka.ms/WorkdayDeploymentPlan) ist eine schrittweise Anleitung, die Organisationen in einem fünfstufigen Prozess durch die Implementierung von Workday in eine Active Directory-Benutzerbereitstellungslösung anhand bewährter Methoden führt.
 
 Azure AD Premium umfasst außerdem Microsoft Identity Manager, eine Lösung, mit der Datensätze aus anderen lokalen Personalverwaltungssystemen, einschließlich SAP, Oracle eBusiness und Oracle PeopleSoft, importiert werden können.
 
@@ -77,7 +77,7 @@ Die geschäftliche Zusammenarbeit zwischen Unternehmen (B2B) erfordert zunehmend
 
 Azure AD kann nach Bedarf [automatisch Konten für Gastbenutzer in AD erstellen](https://docs.microsoft.com/azure/active-directory/b2b/hybrid-cloud-to-on-premises), und so Gästen des Unternehmens den Zugriff auf lokale, AD-integrierte Anwendungen gewähren, ohne dass ein weiteres Kennwort erforderlich wäre. Organisationen können [Richtlinien für die mehrstufige Authentifizierung (Multi-Factor Authentication, MFA) für Gastbenutzer](https://docs.microsoft.com/azure/active-directory/b2b/conditional-access) einrichten, damit während der Anwendungsproxyauthentifizierung MFA-Prüfungen durchgeführt werden. Außerdem gelten alle [Zugriffsüberprüfungen](https://docs.microsoft.com/azure/active-directory/governance/manage-guest-access-with-access-reviews), die für Cloud-B2B-Benutzer durchgeführt werden, auch für lokale Benutzer. Wenn der Cloudbenutzer beispielsweise durch Richtlinien für die Lebenszyklusverwaltung gelöscht wird, wird der lokale Benutzer ebenfalls gelöscht.
 
-**Verwaltung von Anmeldeinformationen für Active Directory-Konten** Die Self-Service-Kennwortzurücksetzung von Azure AD erlaubt Benutzern, die ihre Kennwörter vergessen haben, eine erneute Authentifizierung sowie das Zurücksetzen ihrer Kennwörter, wobei die geänderten Kennwörter [in das lokale Active Directory geschrieben werden](https://docs.microsoft.com/azure/active-directory/authentication/concept-sspr-writeback). Der Prozess zum Zurücksetzen des Kennworts kann auch die lokalen Active Directory-Kennwortrichtlinien verwenden: Wenn ein Benutzer sein Kennwort zurücksetzt, wird es überprüft, um sicherzustellen, dass es die lokalen Active Directory-Richtlinien erfüllt, bevor es für dieses Verzeichnis übernommen wird. Der Bereitstellungsplan für die Self-Service-Kennwortzurücksetzung unter <https://aka.ms/deploymentplans/sspr> legt bewährte Methoden für die Einführung der Self-Service-Kennwortzurücksetzung für Benutzer über Web- und Windows-integrierte Erfahrungen dar.
+**Verwaltung von Anmeldeinformationen für Active Directory-Konten** Die Self-Service-Kennwortzurücksetzung von Azure AD erlaubt Benutzern, die ihre Kennwörter vergessen haben, eine erneute Authentifizierung sowie das Zurücksetzen ihrer Kennwörter, wobei die geänderten Kennwörter [in das lokale Active Directory geschrieben werden](https://docs.microsoft.com/azure/active-directory/authentication/concept-sspr-writeback). Der Prozess zum Zurücksetzen des Kennworts kann auch die lokalen Active Directory-Kennwortrichtlinien verwenden: Wenn ein Benutzer sein Kennwort zurücksetzt, wird es überprüft, um sicherzustellen, dass es die lokalen Active Directory-Richtlinien erfüllt, bevor es für dieses Verzeichnis übernommen wird. Der [Bereitstellungsplan](https://aka.ms/deploymentplans/sspr) für die Self-Service-Kennwortzurücksetzung legt bewährte Methoden für die Einführung der Self-Service-Kennwortzurücksetzung für Benutzer über Web- und Windows-integrierte Erfahrungen dar.
 
 ![Azure AD-SSPR-Architektur](media/cloud-governed-management-for-on-premises/image3.png)
 
@@ -87,13 +87,13 @@ Wenn eine Organisation bereit ist, eine AD-integrierte Anwendung in die Cloud zu
 
 ![Azure AD Domain Services](media/cloud-governed-management-for-on-premises/image4.png)
 
-## <a name="cloud-governed-management-for-on-premises-federation-based-applicationsunderline"></a>[Cloudgesteuerte Verwaltung für lokale, verbundbasierte Anwendungen]{.underline}
+## <a name="cloud-governed-management-for-on-premises-federation-based-applications"></a>Cloudgesteuerte Verwaltung für lokale, verbundbasierte Anwendungen
 
-Für eine Organisationen, die bereits einen lokalen Identitätsanbieter verwendet, ermöglicht das Verschieben von Anwendungen in Azure AD einen sichereren Zugriff und eine einfachere Verwaltungserfahrung für die Verbundverwaltung. Azure AD ermöglicht das Konfigurieren präziser Zugriffssteuerungen pro Anwendung, einschließlich Azure Multi-Factor Authentication, indem der bedingte Zugriff in Azure AD verwendet wird. Azure AD unterstützt weitere Funktionen, einschließlich anwendungsspezifischer Tokensignaturzertifikate und konfigurierbarer Zertifikatablaufdaten. Diese Funktionen, Tools und Anleitungen ermöglichen es Unternehmen, ihre lokalen Identitätsanbieter auszumustern. Die eigene IT von Microsoft IT hat beispielsweise 17.987 Anwendungen aus den internen Active Directory-Verbunddiensten (AD FS) von Microsoft in Azure AD verschoben.
+Für eine Organisationen, die bereits einen lokalen Identitätsanbieter verwendet, ermöglicht das Verschieben von Anwendungen in Azure AD einen sichereren Zugriff und eine einfachere Verwaltungserfahrung für die Verbundverwaltung. Azure AD ermöglicht das Konfigurieren präziser Zugriffssteuerungen pro Anwendung, einschließlich Azure Multi-Factor Authentication, indem der bedingte Zugriff in Azure AD verwendet wird. Azure AD unterstützt weitere Funktionen, einschließlich anwendungsspezifischer Tokensignaturzertifikate und konfigurierbarer Zertifikatablaufdaten. Diese Funktionen, Tools und Anleitungen ermöglichen es Unternehmen, ihre lokalen Identitätsanbieter auszumustern. Die eigene IT von Microsoft IT hat beispielsweise 17.987 Anwendungen aus den internen Active Directory-Verbunddiensten (AD FS) von Microsoft in Azure AD verschoben.
 
 ![Azure AD-Entwicklung](media/cloud-governed-management-for-on-premises/image5.png)
 
-Informationen, wie Sie mit der Migration von Verbundanwendungen zu Azure AD als Identitätsanbieter beginnen können, erhalten Sie unter „  “, das Links enthält zu:
+Informationen, wie Sie mit der Migration von Verbundanwendungen zu Azure AD als Identitätsanbieter beginnen können, erhalten Sie unter „https://aka.ms/migrateapps“. Dort finden Sie Links zu folgenden Ressourcen:
 
 * Das Whitepaper [Migrieren Ihrer Anwendungen zu Azure Active Directory](https://aka.ms/migrateapps/whitepaper), in dem die Vorteile der Migration vorgestellt und beschrieben wird, wie sich die Migration in vier klar dargestellten Phasen planen lässt: Ermittlung, Klassifizierung, Migration und laufende Verwaltung. Sie werden durch den Prozess geführt und erfahren, wie Sie das Projekt in einfach umzusetzende Teilschritte aufteilen. Im gesamten Dokument finden Sie Links zu wichtigen Ressourcen, die Ihnen im Verlauf des Prozesses helfen.
 
@@ -111,7 +111,7 @@ Organisationen können den Zugriffslebenszyklusprozess mit Technologien wie [dyn
 
 ## <a name="future-directions"></a>Künftige Ausrichtung
 
-Bei Hybridumgebungen verfolgt Microsoft die Strategie, Bereitstellungen zu ermöglichen, bei denen die Cloud die Steuerungsebene für Identitäten ist **,** und lokale Verzeichnisse und andere Identitätssysteme, z. B. Active Directory und andere lokal Anwendungen, das Ziel für die Bereitstellung von Benutzern mit Zugriff sind. Diese Strategie wird fortgesetzt, um die Rechte, Identitäten und den Zugriff in und auf diese Anwendungen und Workloads zu gewährleisten, die auf diesen basieren. In diesem Endzustand können Organisationen die Produktivität der Endbenutzer vollständig aus der Cloud heraus steuern.
+Bei Hybridumgebungen verfolgt Microsoft die Strategie, Bereitstellungen zu ermöglichen, bei denen die **Cloud die Steuerungsebene für Identitäten ist**, und lokale Verzeichnisse und andere Identitätssysteme, z. B. Active Directory und andere lokale Anwendungen, das Ziel für die Bereitstellung von Benutzern mit Zugriff sind. Diese Strategie wird fortgesetzt, um die Rechte, Identitäten und den Zugriff in und auf diese Anwendungen und Workloads zu gewährleisten, die auf diesen basieren. In diesem Endzustand können Organisationen die Produktivität der Endbenutzer vollständig aus der Cloud heraus steuern.
 
 ![Azure AD-Architektur](media/cloud-governed-management-for-on-premises/image6.png)
 

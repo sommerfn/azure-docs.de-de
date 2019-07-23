@@ -8,12 +8,12 @@ ms.service: azure-functions
 ms.topic: conceptual
 ms.date: 4/11/2019
 ms.author: alkarche
-ms.openlocfilehash: f13e498859986d5ee697cbd67907fd344147ed0c
-ms.sourcegitcommit: 600d5b140dae979f029c43c033757652cddc2029
+ms.openlocfilehash: a0bb34f8a43199a5d3a18064bce92ef4bec543af
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/04/2019
-ms.locfileid: "66492834"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67050646"
 ---
 # <a name="azure-functions-networking-options"></a>Netzwerkoptionen von Azure Functions
 
@@ -25,13 +25,13 @@ Sie können Funktions-Apps auf verschiedene Arten hosten:
 
 * Es gibt eine Gruppe von Tarifoptionen, die in einer mehrinstanzenfähigen Infrastruktur ausgeführt werden und über unterschiedliche Ebenen von Konnektivitäts- und Skalierungsoptionen für virtuelle Netzwerke verfügen:
     * Der [Verbrauchstarif](functions-scale.md#consumption-plan), der als Reaktion auf Last dynamisch skaliert wird und nur über Optionen für eine minimale Netzwerkisolation verfügt.
-    * Der [Premium-Tarif](functions-scale.md#premium-plan-public-preview), bei dem ebenfalls dynamisch skaliert wird, der aber eine umfassendere Netzwerkisolation ermöglicht.
+    * Der [Premium-Tarif](functions-scale.md#premium-plan), bei dem ebenfalls dynamisch skaliert wird, der aber eine umfassendere Netzwerkisolation ermöglicht.
     * Der [Azure App Service-Plan](functions-scale.md#app-service-plan), bei dem eine feste Skalierung verwendet wird und der eine ähnliche Netzwerkisolation wie der Premium-Tarif aufweist.
 * Sie können Funktionen in einer [App Service-Umgebung](../app-service/environment/intro.md) ausführen. Mit dieser Methode werden die Funktionen in Ihrem virtuellen Netzwerk bereitgestellt und eine umfassende Netzwerksteuerung und -isolation ermöglicht.
 
 ## <a name="matrix-of-networking-features"></a>Matrix der Netzwerkfunktionen
 
-|                |[Verbrauchstarif](functions-scale.md#consumption-plan)|[Premium-Plan (Vorschauversion)](functions-scale.md#premium-plan-public-preview)|[App Service-Plan](functions-scale.md#app-service-plan)|[App Service-Umgebung](../app-service/environment/intro.md)|
+|                |[Verbrauchstarif](functions-scale.md#consumption-plan)|[Premium-Plan (Vorschauversion)](functions-scale.md#premium-plan)|[App Service-Plan](functions-scale.md#app-service-plan)|[App Service-Umgebung](../app-service/environment/intro.md)|
 |----------------|-----------|----------------|---------|-----------------------|  
 |[IP-Einschränkungen für eingehenden Datenverkehr](#inbound-ip-restrictions)|✅ Ja|✅ Ja|✅ Ja|✅ Ja|
 |[IP-Einschränkungen für ausgehenden Datenverkehr](#private-site-access)|❌ Nein| ❌ Nein|❌ Nein|✅ Ja|
@@ -92,7 +92,7 @@ Weitere Informationen finden Sie in der [App Service-Dokumentation zu Hybrid Con
 ## <a name="private-site-access"></a>Privater Websitezugriff
 
 Privater Websitezugriff bezieht sich darauf, den Zugriff auf Ihre App nur über ein privates Netzwerk zuzulassen, z. B. über ein virtuelles Azure-Netzwerk. 
-* Zugriff auf private Sites ist im Premium- und App Service-Plan verfügbar, wenn **Dienstendpunkte** konfiguriert sind. Weitere Informationen finden Sie unter [ virtueller Netzwerke](../virtual-network/virtual-network-service-endpoints-overview.md)
+* Zugriff auf private Sites ist im Premium- und App Service-Plan verfügbar, wenn **Dienstendpunkte** konfiguriert sind. Weitere Informationen finden Sie unter [VNET-Dienstendpunkte](../virtual-network/virtual-network-service-endpoints-overview.md).
     * Bedenken Sie, dass Ihre Funktion auch mit Dienstendpunkten immer noch vollständigen ausgehenden Zugriff auf das Internet besitzt, selbst wenn VNET-Integration konfiguriert ist.
 * Der private Websitezugriff ist nur verfügbar, wenn eine App Service-Umgebung mit einem internen Lastenausgleich (ILB) konfiguriert ist. Weitere Informationen finden Sie unter [Erstellen und Verwenden eines internen Lastenausgleichs mit einer App Service-Umgebung](../app-service/environment/create-ilb-ase.md).
 

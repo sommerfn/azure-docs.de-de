@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 05/14/2019
 ms.author: normesta
 ms.subservice: common
-ms.openlocfilehash: a160591ef0a47eed097ce8db373878f32965de9b
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.openlocfilehash: 1a67846889b43d582a7a7d477a33f0e2168fd760
+ms.sourcegitcommit: 72f1d1210980d2f75e490f879521bc73d76a17e1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/27/2019
-ms.locfileid: "66245461"
+ms.lasthandoff: 06/14/2019
+ms.locfileid: "67147866"
 ---
 # <a name="configure-optimize-and-troubleshoot-azcopy"></a>Konfigurieren, Optimieren und Problembehandlung in AzCopy
 
@@ -32,7 +32,7 @@ Um die Proxyeinstellungen für AzCopy zu konfigurieren, legen Sie die Umgebungsv
 
 | Betriebssystem | Get-Help  |
 |--------|-----------|
-| **Windows** | `set https_proxy=<proxy IP>:<proxy port>` |
+| **Windows** | Verwenden Sie in einer Eingabeaufforderung: `set https_proxy=<proxy IP>:<proxy port>`<br> Verwenden Sie in PowerShell: `$env:https_proxy="<proxy IP>:<proxy port>"`|
 | **Linux** | `export https_proxy=<proxy IP>:<proxy port>` |
 | **MacOS** | `export https_proxy=<proxy IP>:<proxy port>` |
 
@@ -52,7 +52,7 @@ Verwenden Sie `azcopy env`, um den aktuellen Wert dieser Variablen zu überprüf
 
 ## <a name="change-the-location-of-the-log-files"></a>Ändern des Speicherorts der Protokolldateien
 
-Standardmäßig befinden sich die Protokolldateien im Ordner `%USERPROFILE\\.azcopy` unter Windows bzw. im Ordner `$HOME\\.azcopy` unter Mac und Linux. Sie können diesen Speicherort bei Bedarf mit diesen Befehlen ändern.
+Standardmäßig befinden sich die Protokolldateien im Verzeichnis `%USERPROFILE\\.azcopy` unter Windows bzw. im Verzeichnis `$HOME\\.azcopy` unter Mac und Linux. Sie können diesen Speicherort bei Bedarf mit diesen Befehlen ändern.
 
 | Betriebssystem | Get-Help  |
 |--------|-----------|
@@ -74,7 +74,7 @@ AzCopy erstellt Protokoll- und Plandateien für jeden Auftrag. Sie können die P
 
 Die Protokolle enthalten den Status des Fehlers (`UPLOADFAILED`, `COPYFAILED` und `DOWNLOADFAILED`), den vollständigen Pfad und die Ursache des Fehlers.
 
-Standardmäßig befinden sich die Protokoll- und Plandateien im Ordner `%USERPROFILE\\.azcopy` unter Windows oder in `$HOME\\.azcopy` unter Mac und Linux.
+Standardmäßig befinden sich die Protokoll- und Plandateien im Verzeichnis `%USERPROFILE\\.azcopy` unter Windows bzw. im Verzeichnis `$HOME\\.azcopy` unter Mac und Linux.
 
 > [!IMPORTANT]
 > Geben Sie beim Senden einer Anforderung an den Microsoft-Support (oder bei der Problembehandlung unter Einbeziehung eines Drittanbieters) die bearbeitete Version des Befehls an, den Sie ausführen möchten. So wird sichergestellt, dass die SAS nicht versehentlich offengelegt wird. Die editierte Version steht am Anfang der Protokolldatei.

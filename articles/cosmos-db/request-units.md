@@ -4,14 +4,14 @@ description: Hier erfahren Sie, wie Sie die erforderlichen Anforderungseinheiten
 author: rimman
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 05/20/2019
+ms.date: 06/14/2019
 ms.author: rimman
-ms.openlocfilehash: 9615aebd345c957c8e401581ff94735f39ba73c6
-ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
+ms.openlocfilehash: 12f91676ac50511bf3d2d33f7fed2029e152dc98
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/20/2019
-ms.locfileid: "65953542"
+ms.lasthandoff: 06/17/2019
+ms.locfileid: "67165006"
 ---
 # <a name="request-units-in-azure-cosmos-db"></a>Anforderungseinheiten in Azure Cosmos DB
 
@@ -75,3 +75,4 @@ Während Sie die Anzahl der RUs pro Sekunde für die Bereitstellung schätzen, b
 * Erfahren Sie mehr über das [Optimieren der Kosten für bereitgestellten Durchsatz in Azure Cosmos DB](optimize-cost-throughput.md).
 * Erfahren Sie mehr über das [Optimieren der Lese- und Schreibkosten in Azure Cosmos DB](optimize-cost-reads-writes.md).
 * Erfahren Sie mehr über das [Optimieren der Abfragekosten in Azure Cosmos DB](optimize-cost-queries.md).
+* Erfahren Sie mehr über das [Verwenden von Metriken zum Überwachen des Durchsatzes](use-metrics.md).

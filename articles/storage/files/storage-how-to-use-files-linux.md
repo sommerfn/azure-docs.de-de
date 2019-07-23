@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 03/29/2018
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 73ed98bf950f7c9f52e2b8eeb431fe4b36bfe324
-ms.sourcegitcommit: ef06b169f96297396fc24d97ac4223cabcf9ac33
+ms.openlocfilehash: e9363f88db4fa44879eb8f6a6a04e23563c5ba44
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/31/2019
-ms.locfileid: "66427923"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67125730"
 ---
 # <a name="use-azure-files-with-linux"></a>Verwenden von Azure Files mit Linux
 
@@ -34,22 +34,22 @@ ms.locfileid: "66427923"
 
     Die Unterstützung der SMB 3.0-Verschlüsselung wurde in der Linux-Kernelversion 4.11 eingeführt und nachträglich für ältere Kernelversionen gängiger Linux-Distributionen portiert. Zum Zeitpunkt der Veröffentlichung dieses Dokuments unterstützen die folgenden Distributionen aus dem Azure-Katalog die Einbindungsoption, die in den Tabellenüberschriften angegeben ist. 
 
-* **Empfohlene Mindestversionen mit entsprechenden Einbindungsmöglichkeiten (SMB 2.1-Version im Vergleich zur SMB 3.0-Version)**    
+### <a name="minimum-recommended-versions-with-corresponding-mount-capabilities-smb-version-21-vs-smb-version-30"></a>Empfohlene Mindestversionen mit entsprechenden Einbindungsmöglichkeiten (SMB-Versionen 2.1 und 3.0 im Vergleich)
 
-    |   | SMB 2.1 <br>(Einbindungen auf VMs innerhalb derselben Azure-Region) | SMB 3.0 <br>(Einbindungen aus einer lokalen Region und regionsübergreifend) |
-    | --- | :---: | :---: |
-    | Ubuntu Server | 14.04+ | 16.04 und höher |
-    | RHEL | 7 und höher | 7.5 und höher |
-    | CentOS | 7 und höher |  7.5 und höher |
-    | Debian | 8 und höher |   |
-    | openSUSE | 13.2 und höher | 42.3 und höher |
-    | SUSE Linux Enterprise Server | 12 | 12 SP3 und höher |
+|   | SMB 2.1 <br>(Einbindungen auf VMs innerhalb derselben Azure-Region) | SMB 3.0 <br>(Einbindungen aus einer lokalen Region und regionsübergreifend) |
+| --- | :---: | :---: |
+| Ubuntu Server | 14.04+ | 16.04 und höher |
+| RHEL | 7 und höher | 7.5 und höher |
+| CentOS | 7 und höher |  7.5 und höher |
+| Debian | 8 und höher |   |
+| openSUSE | 13.2 und höher | 42.3+ |
+| SUSE Linux Enterprise Server | 12 | 12 SP3 und höher |
 
-    Sollte Ihre Linux-Distribution hier nicht aufgeführt sein, können Sie die Linux-Kernelversion mit dem folgenden Befehl ermitteln:
+Sollte Ihre Linux-Distribution hier nicht aufgeführt sein, können Sie die Linux-Kernelversion mit dem folgenden Befehl ermitteln:
 
-   ```bash
-   uname -r
-   ```
+```bash
+uname -r
+```
 
 * <a id="install-cifs-utils"></a>**Das Paket „cifs-utils“ ist installiert.**  
     Das Paket „cifs-utils“ kann mithilfe des Paket-Managers für die Linux-Distribution Ihrer Wahl installiert werden. 
@@ -75,7 +75,10 @@ ms.locfileid: "66427923"
 
     Verwenden Sie bei anderen Distributionen den entsprechenden Paket-Manager, oder [kompilieren Sie den Quellcode](https://wiki.samba.org/index.php/LinuxCIFS_utils#Download).
 
-* **Festlegen der Verzeichnis-/Dateiberechtigungen der eingebundenen Freigabe:** In den folgenden Beispielen wird die Berechtigung `0777` verwendet, um allen Benutzern die Berechtigungen „Lesen“, „Schreiben“ und „Ausführen“ zu erteilen. Sie können dies nach Wunsch durch andere [chmod-Berechtigungen](https://en.wikipedia.org/wiki/Chmod) ersetzen.
+* **Festlegen der Verzeichnis-/Dateiberechtigungen der eingebundenen Freigabe:** In den folgenden Beispielen wird die Berechtigung `0777` verwendet, um allen Benutzern die Berechtigungen „Lesen“, „Schreiben“ und „Ausführen“ zu erteilen. Sie können sie bei Bedarf durch andere [chmod-Berechtigungen](https://en.wikipedia.org/wiki/Chmod) ersetzen. Dadurch wird aber möglicherweise der Zugriff eingeschränkt. Wenn Sie andere Berechtigungen verwenden, sollten Sie auch die Verwendung von uid und gid in Betracht ziehen, um den Zugriff für lokale Benutzer und Gruppen Ihrer Wahl beizubehalten.
+
+> [!NOTE]
+> Wenn Sie nicht explizit Verzeichnis- und Dateiberechtigungen mit „dir_mode“ und „file_mode“ zuweisen, wird standardmäßig „0755“ verwendet.
 
 * **Stellen Sie sicher, Port 445 geöffnet ist**: SMB kommuniziert über den TCP-Port 445. Vergewissern Sie sich, dass der TCP-Port 445 des Clientcomputers nicht durch die Firewall blockiert wird.
 
@@ -89,7 +92,7 @@ ms.locfileid: "66427923"
     mkdir -p <storage_account_name>/<file_share_name>
     ```
 
-1. **Verwenden Sie den Einbindungsbefehl, um die Azure-Dateifreigabe einzubinden**: Denken Sie daran, die Platzhalter **<storage_account_name>** , **<share_name>** , **<smb_version>** , **<storage_account_key>** und **<mount_point>** durch die entsprechenden Informationen für Ihre Umgebung zu ersetzen. Wenn Ihre Linux-Distribution SMB 3.0 mit Verschlüsselung unterstützt (siehe [Grundlegendes zu SMB-Clientanforderungen](#smb-client-reqs)), sollten Sie für **<smb_version>** den Wert **3.0** verwenden. Bei Linux-Distributionen ohne Unterstützung von SMB 3.0 mit Verschlüsselung muss für **<smb_version>** der Wert **2.1** verwendet werden. Eine Azure-Dateifreigabe kann nur außerhalb einer Azure-Region mit SMB 3.0 eingebunden werden (gilt auch in der lokalen Umgebung sowie in einer anderen Azure-Region). 
+1. **Verwenden Sie den Einbindungsbefehl, um die Azure-Dateifreigabe einzubinden**: Denken Sie daran, die Platzhalter **<storage_account_name>** , **<share_name>** , **<smb_version>** , **<storage_account_key>** und **<mount_point>** durch die entsprechenden Informationen für Ihre Umgebung zu ersetzen. Wenn Ihre Linux-Distribution SMB 3.0 mit Verschlüsselung unterstützt (siehe [Grundlegendes zu SMB-Clientanforderungen](#smb-client-reqs)), sollten Sie für **<smb_version>** den Wert **3.0** verwenden. Bei Linux-Distributionen ohne Unterstützung von SMB 3.0 mit Verschlüsselung muss für **<smb_version>** der Wert **2.1** verwendet werden. Eine Azure-Dateifreigabe kann nur außerhalb einer Azure-Region mit SMB 3.0 eingebunden werden (gilt auch in der lokalen Umgebung sowie in einer anderen Azure-Region). Wenn Sie möchten, können Sie die Verzeichnis- und Dateiberechtigungen der eingebundenen Freigabe ändern, dies könnte aber den Zugriff einschränken.
 
     ```bash
     sudo mount -t cifs //<storage_account_name>.file.core.windows.net/<share_name> <mount_point> -o vers=<smb_version>,username=<storage_account_name>,password=<storage_account_key>,dir_mode=0777,file_mode=0777,serverino

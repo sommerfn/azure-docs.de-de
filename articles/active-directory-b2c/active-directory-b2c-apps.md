@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 01/11/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: e4a9931fa6e2edf8989036eb8dbfbef3638cbbe0
-ms.sourcegitcommit: adb6c981eba06f3b258b697251d7f87489a5da33
+ms.openlocfilehash: 9ae2894f9f442bca1e6029b7e7d8e07824abf7fb
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/04/2019
-ms.locfileid: "66507520"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67051727"
 ---
 # <a name="applications-types-that-can-be-used-in-active-directory-b2c"></a>In Azure Active Directory B2C verwendbare Anwendungstypen
 
@@ -98,7 +98,7 @@ Eine Web-API kann Token von vielen Clienttypen empfangen, einschließlich Webanw
 6. Das `access_token` und das `refresh_token` werden an den Webserver zurückgegeben.
 7. Die Web-API wird mit dem `access_token` in einem Autorisierungsheader aufgerufen.
 8. Die Web-API überprüft das Token.
-9. Sichere Daten werden an den Webserver zurückgegeben.
+9. Sichere Daten werden an die Webanwendung zurückgegeben.
 
 Weitere Informationen zu Autorisierungscodes, Aktualisierungstoken und den Schritten zum Abrufen von Token finden Sie im [OAuth 2.0-Protokoll](active-directory-b2c-reference-oauth-code.md).
 

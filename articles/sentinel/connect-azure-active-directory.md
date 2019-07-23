@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 04/07/2019
+ms.date: 06/17/2019
 ms.author: rkarlin
-ms.openlocfilehash: 357435b8a4ac396c1548c89206f269730e871f6b
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: ce4a57b8c266fe474fc2e6dd8f811fc7440e7ac6
+ms.sourcegitcommit: 156b313eec59ad1b5a820fabb4d0f16b602737fc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65204493"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67190439"
 ---
 # <a name="connect-data-from-azure-active-directory"></a>Verknüpfen von Daten aus Azure Active Directory
 
@@ -34,6 +34,8 @@ Mit Azure Sentinel können Sie Daten aus [Azure Active Directory](../active-dire
 - Wenn Sie Anmeldedaten aus Active Directory exportieren möchten, müssen Sie über eine Azure AD P1- oder P2-Lizenz verfügen.
 
 - Benutzer mit globalen Administrator- oder Sicherheitsadministratorberechtigungen für den Mandanten, von dem aus Sie die Protokolle streamen möchten.
+
+- Um den Verbindungsstatus sehen zu können, müssen Sie die Berechtigung zum Zugreifen auf Azure AD-Diagnoseprotokolle haben. 
 
 
 ## <a name="connect-to-azure-ad"></a>Stellen Sie eine Verbindung mit Azure AD her.

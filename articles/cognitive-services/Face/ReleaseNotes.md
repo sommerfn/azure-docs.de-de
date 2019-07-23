@@ -8,18 +8,22 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: face-api
 ms.topic: conceptual
-ms.date: 04/28/2019
+ms.date: 06/06/2019
 ms.author: yluiu
-ms.openlocfilehash: 63f705061db7c89a80578e741d02ab8f8b1041c2
-ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.openlocfilehash: a7667f94d3f4dea2901c4b4b0e2b2c893b9f535e
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64917099"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67074096"
 ---
 # <a name="face-api-release-notes"></a>Anmerkungen zu dieser Version der Gesichtserkennungs-API
 
 Dieser Artikel bezieht sich auf Version 1.0 des Gesichtserkennungs-API-Diensts.
+
+### <a name="release-changes-in-june-2019"></a>Änderungen im Release von Juni 2019
+
+* Ein neues Modell zur Gesichtserkennung mit verbesserter Genauigkeit bei kleinen, seitlich dargestellten, überdeckten oder unscharfen Gesichtern wurde hinzugefügt. Verwenden Sie es über [Face – Detect](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236), [FaceList – Add Face](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395250), [LargeFaceList – Add Face](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/5a158c10d2de3616c086f2d3), [PersonGroup Person – Add Face](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f3039523b) und [LargePersonGroup Person – Add Face](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/599adf2a3a7b9412a4d53f42), indem Sie den neuen Namen des Gesichtserkennungsmodells `detection_02` im Parameter `detectionModel` angeben. Weitere Informationen finden Sie unter [Angeben eines Erkennungsmodells](Face-API-How-to-Topics/specify-detection-model.md).
 
 ### <a name="release-changes-in-april-2019"></a>Änderungen im Release von April 2019
 

@@ -3,20 +3,20 @@ title: 'Zuverlässigkeitsbewertung: QnA Maker'
 titleSuffix: Azure Cognitive Services
 description: Die Zuverlässigkeitsbewertung zeigt die Zuverlässigkeit dafür an, dass die Antwort die richtige Übereinstimmung für die jeweilige Benutzerabfrage ist.
 services: cognitive-services
-author: tulasim88
+author: diberry
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: article
-ms.date: 04/05/2019
-ms.author: tulasim
+ms.date: 06/17/2019
+ms.author: diberry
 ms.custom: seodec18
-ms.openlocfilehash: 4fb5d1e20c4c857dedcec2dc4695f82fccd9269d
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: c14c607e4c563bbeeaff02b2c2478cc4b4d96ee5
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65792743"
+ms.lasthandoff: 06/17/2019
+ms.locfileid: "67165139"
 ---
 # <a name="confidence-score-of-a-qna-maker-knowledge-base"></a>Zuverlässigkeitsbewertung für eine QnA Maker-Wissensdatenbank
 Wenn eine Benutzerabfrage mit einer Wissensdatenbank abgeglichen wird, gibt QnA Maker relevante Antworten zusammen mit einer Zuverlässigkeitsbewertung zurück. Diese Bewertung zeigt die Zuverlässigkeit dafür an, dass die Antwort die richtige Übereinstimmung für die jeweilige Benutzerabfrage ist. 
@@ -46,7 +46,7 @@ Die folgende Tabelle zeigt typische Zuverlässigkeit, die mit einer bestimmten B
 |0|Keine Übereinstimmung, weshalb die Antwort nicht zurückgegeben wird.|„Wie viel kostet der Dienst?“|
 
 ## <a name="choose-a-score-threshold"></a>Auswählen eines Bewertungsschwellenwerts
-Die obigen Tabelle zeigt die Bewertungen, die in den meisten Wissensdatenbanken erwartet werden. Da aber jede Wissensdatenbank anders ist, verschiedene Typen von Wörtern enthält, und mit unterschiedlichen Absichten und Zielen angelegt wird, empfehlen wir Ihnen, den Schwellenwert zu testen und den auszuwählen, der für Sie am besten funktioniert. Standardmäßig ist der Schwellenwert auf 0 festgelegt, sodass alle möglichen Antworten zurückgegeben werden. Der empfohlene Schwellenwert, der mit den meisten Wissensdatenbanken funktionieren sollte, ist **50**.
+Die obigen Tabelle zeigt die Bewertungen, die in den meisten Wissensdatenbanken erwartet werden. Da aber jede Wissensdatenbank anders ist, verschiedene Typen von Wörtern enthält und mit unterschiedlichen Absichten und Zielen angelegt wird, empfehlen wir Ihnen, die Schwellenwerte zu testen und den auszuwählen, der für Sie am besten funktioniert. Standardmäßig ist der Schwellenwert auf 0 festgelegt, sodass alle möglichen Antworten zurückgegeben werden. Der empfohlene Schwellenwert, der mit den meisten Wissensdatenbanken funktionieren sollte, ist **50**.
 
 Bei der Auswahl Ihres Schwellenwerts sollten Sie die Ausgewogenheit zwischen Genauigkeit und Abdeckung berücksichtigen und Ihren Schwellenwert auf Grundlage Ihrer Anforderungen optimieren.
 
@@ -56,6 +56,12 @@ Bei der Auswahl Ihres Schwellenwerts sollten Sie die Ausgewogenheit zwischen Gen
 
 > [!NOTE]
 > Neuere Versionen von QnA Maker beinhalten Verbesserungen der Bewertungslogik und wirken sich möglicherweise auf Ihren Schwellenwert aus. Achten Sie bei jeder Aktualisierung des Diensts darauf, den Schwellenwert ggf. zu testen und anzupassen. Sie können die Version Ihres QnA-Diensts [hier](https://www.qnamaker.ai/UserSettings) überprüfen, und [hier](../How-To/troubleshooting-runtime.md) erfahren Sie, wie Sie die neuesten Updates erhalten.
+
+## <a name="set-threshold"></a>Festlegen des Schwellenwerts 
+
+Sie legen den Schwellenwert als eine Eigenschaft im [JSON-Code der GenerateAnswer-API](../how-to/metadata-generateanswer-usage.md#generateanswer-request-configuration) fest. Das bedeutet, dass Sie ihn für jeden Aufruf von GenerateAnswer festlegen müssen. 
+
+Im Bot Framework legen Sie die Bewertung als Teil des options-Objekts mit [C#](../how-to/metadata-generateanswer-usage.md?#use-qna-maker-with-a-bot-in-c) oder [Node.js](../how-to/metadata-generateanswer-usage.md?#use-qna-maker-with-a-bot-in-nodejs) fest.
 
 ## <a name="improve-confidence-scores"></a>Verbessern von Zuverlässigkeitsbewertungen
 Um die Zuverlässigkeitsbewertung einer bestimmten Antwort auf eine Benutzerabfrage zu verbessern, können Sie der Wissensdatenbank die Benutzerabfrage als alternative Frage für diese Antwort hinzufügen. Sie können auch [Wortvarianten](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/alterations/replace) verwenden, bei denen die Groß- und Kleinschreibung nicht berücksichtigt wird, um Ihrer Wissensdatenbank Synonyme für Schlüsselwörter hinzuzufügen.

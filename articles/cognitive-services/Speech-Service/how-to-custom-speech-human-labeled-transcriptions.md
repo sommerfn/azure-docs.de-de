@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 05/02/2019
 ms.author: erhopf
-ms.openlocfilehash: 7f0b467284872f3d936984741c6d092705008a5a
-ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
+ms.openlocfilehash: ba6d137a7eb5fc2c56bfc39aa8f831d76411fb46
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/02/2019
-ms.locfileid: "65025696"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67060859"
 ---
 # <a name="how-to-create-human-labeled-transcriptions"></a>Erstellen von menschenmarkierten Transkriptionen
 
@@ -29,7 +29,7 @@ Menschenmarkierte Transkriptionen für Audioaufnahmen in Englisch müssen als Nu
 
 Hier sind einige Beispiele:
 
-| Nicht zu verwendende Zeichen | Ersetzung | Hinweise |
+| Nicht zu verwendende Zeichen | Ersetzung | Notizen |
 |---------------------|--------------|-------|
 | “Hello world” | "Hello world" | Die öffnenden und schließenden Anführungszeichen wurden durch entsprechende ASCII-Zeichen ersetzt. |
 | John’s day | John's day | Das Apostroph wurde durch das entsprechende ASCII-Zeichen ersetzt. |
@@ -78,7 +78,7 @@ Es folgen einige Beispiele für die Normalisierung, die automatisch für die Tra
 | Pi is about 3.14 | pi is about three point one four |
 It costs $3.14| it costs three fourteen |
 
-## <a name="mandarin-chinese-zh-cn"></a>Chinesisch (Mandarin) (zh-cn)
+## <a name="mandarin-chinese-zh-cn"></a>Chinesisch (Mandarin) (zh-CN)
 
 Menschenmarkierte Transkriptionen für Audioaufnahmen in Chinesisch (Mandarin) müssen UTF-8-codiert sein und eine Bytereihenfolge-Marke aufweisen. Vermeiden Sie die Verwendung von Interpunktionszeichen halber Breite. Diese Zeichen können unbeabsichtigt eingefügt werden, wenn die Daten in einem Textverarbeitungsprogramm vorbereitet oder aus Webseiten erfasst werden. Wenn solche Zeichen vorhanden sind, stellen Sie sicher, dass sie durch die entsprechenden Zeichen normaler Breite ersetzt werden.
 

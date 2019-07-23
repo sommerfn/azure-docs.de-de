@@ -17,12 +17,12 @@ ms.date: 06/27/2018
 ms.author: joflore
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 697bb8a60861acb120e92d8fd1dda3892a957b57
-ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
+ms.openlocfilehash: 24c3af12d35d07796db9255f0ac76dd1389bd013
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58518904"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67108842"
 ---
 # <a name="azure-active-directory-identity-protection-playbook"></a>Azure Active Directory Identity Protection-Playbook
 
@@ -51,7 +51,7 @@ Für die folgenden Schritte müssen folgende Voraussetzungen erfüllt sein:
 - Sie benötigen den [Tor-Browser](https://www.torproject.org/projects/torbrowser.html.en), um anonyme IP-Adressen zu simulieren. Möglicherweise müssen Sie einen virtuellen Computer verwenden, wenn Ihre Organisation die Verwendung des Tor-Browsers einschränkt.
 - Sie benötigen ein Testkonto, das noch nicht für die mehrstufige Authentifizierung registriert ist.
 
-**Führen Sie die folgende Schritte aus, um eine Anmeldung über eine anonyme IP-Adresse zu simulieren,**:
+**Führen Sie die folgende Schritte aus, um eine Anmeldung über eine anonyme IP-Adresse zu simulieren,** :
 
 1. Navigieren Sie im [Tor-Browser](https://www.torproject.org/projects/torbrowser.html.en) zu [https://myapps.microsoft.com](https://myapps.microsoft.com).   
 2. Geben Sie die Anmeldeinformationen des Kontos ein, das im Bericht **Anmeldungen von anonymen IP-Adressen** enthalten sein soll.
@@ -165,7 +165,7 @@ Weitere Informationen finden Sie unter [Gewusst wie: Konfigurieren von Richtlini
 
 7. Klicken Sie auf **Speichern**.
 
-8. Sie können den auf dem Anmelderisiko basierenden bedingten Zugriff jetzt testen, in dem Sie sich mithilfe einer potenziell risikobehafteten Sitzung anmelden (z.B. durch Verwendung des Tor-Browsers). 
+8. Sie können den auf dem Anmelderisiko basierenden bedingten Zugriff jetzt testen, indem Sie sich mithilfe einer potenziell risikobehafteten Sitzung anmelden (z. B. durch Verwendung des Tor-Browsers). 
 
  
 

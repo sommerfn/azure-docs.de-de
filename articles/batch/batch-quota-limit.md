@@ -12,15 +12,15 @@ ms.workload: big-compute
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/13/2019
+ms.date: 05/28/2019
 ms.author: lahugh
 ms.custom: seodec18
-ms.openlocfilehash: 820eddff7da3bb52ca94ea0cb7e2361d89892a4a
-ms.sourcegitcommit: 1fbc75b822d7fe8d766329f443506b830e101a5e
+ms.openlocfilehash: de32ae16ea4d3c52b8017f35ae5af6009ab59205
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/14/2019
-ms.locfileid: "65595306"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67080895"
 ---
 # <a name="batch-service-quotas-and-limits"></a>Batch-Dienst – Kontingente und Limits
 
@@ -32,18 +32,21 @@ Sie können mehrere Batch-Workloads in einem Batch-Konto ausführen oder Ihre Wo
 
 Wenn Sie Produktionsworkloads in Batch ausführen möchten, müssen Sie möglicherweise ein oder mehrere Kontingente über den Standardwert erhöhen. Wenn Sie ein Kontingent erhöhen möchten, können Sie kostenlos eine [Anfrage an den Onlinekundensupport](#increase-a-quota) richten.
 
-> [!NOTE]
-> Bei einem Kontingent handelt es sich um ein Kreditlimit und keine Kapazitätsgarantie. Wenn Sie einen umfangreichen Kapazitätsbedarf haben, wenden Sie sich an den Azure-Support.
-
 ## <a name="resource-quotas"></a>Ressourcenkontingente
-[!INCLUDE [azure-batch-limits](../../includes/azure-batch-limits.md)]
 
+Bei einem Kontingent handelt es sich um ein Kreditlimit und keine Kapazitätsgarantie. Wenn Sie einen umfangreichen Kapazitätsbedarf haben, wenden Sie sich an den Azure-Support.
+
+Beachten Sie, dass Kontingente keine garantierten Werte darstellen. Kontingente können basierend auf Änderungen vom Batch-Dienst oder aufgrund einer Benutzeranforderung für eine Änderung des Kontingentwerts variieren.
+
+[!INCLUDE [azure-batch-limits](../../includes/azure-batch-limits.md)]
 
 ### <a name="cores-quotas-in-user-subscription-mode"></a>Kontingente für Kerne im Modus „Benutzerabonnement“
 
 Wenn Sie ein Batch-Konto erstellen, bei dem der Poolzuordnungsmodus auf **Benutzerabonnement** festgelegt ist, werden Kontingente unterschiedlich angewendet. In diesem Modus werden Batch-VMs und andere Ressourcen direkt in Ihrem Abonnement erstellt, wenn ein Pool erstellt wird. Die Kontingente für Kerne von Azure Batch gilt nicht für Konten, die in diesem Modus erstellt werden. Stattdessen werden die Kontingente in Ihrem Abonnement für regionale Computekerne und andere Ressourcen angewendet. Weitere Informationen zu diesen Kontingenten finden Sie unter [Einschränkungen für Azure-Abonnements und -Dienste, Kontingente und Einschränkungen](../azure-subscription-service-limits.md).
 
 ## <a name="pool-size-limits"></a>Poolgrößenbeschränkungen
+
+Die Poolgrößenbeschränkungen werden vom Batch-Dienst festgelegt. Im Gegensatz zu [Ressourcenkontingenten](#resource-quotas) können diese Werte nicht geändert werden. Nur bei Pools mit Kommunikation zwischen den einzelnen Knoten und benutzerdefinierten Images weichen die Einschränkungen vom Standardkontingent ab.
 
 | **Ressource** | **Maximales Limit** |
 | --- | --- |
@@ -57,6 +60,8 @@ Wenn Sie ein Batch-Konto erstellen, bei dem der Poolzuordnungsmodus auf **Benutz
 <sup>1</sup> Für Pools, bei denen die Kommunikation zwischen den Knoten nicht aktiviert ist
 
 ## <a name="other-limits"></a>Andere Limits
+
+Zusätzliche Beschränkungen, die vom Batch-Dienst festgelegt werden. Im Gegensatz zu [Ressourcenkontingenten](#resource-quotas) können diese Werte nicht geändert werden.
 
 | **Ressource** | **Maximales Limit** |
 | --- | --- |

@@ -1,8 +1,8 @@
 ---
 title: Schnellstart – Blockieren des Zugriffs mit Azure Active Directory Identity Protection, wenn ein Sitzungsrisiko beim bedingten Azure Active Directory-Zugriff erkannt wird | Microsoft-Dokumentation
-description: In dieser Schnellstartanleitung erfahren Sie, wie Sie eine Azure Active Directory (Azure AD) Identity Protection-Richtlinie für bedingten Zugriff bei einem Anmelderisiko basierend auf Sitzungsrisiken konfigurieren können, um Anmeldungen zu blockieren.
+description: In diesem Schnellstart erfahren Sie, wie Sie eine Azure Active Directory (Azure AD) Identity Protection-Richtlinie für bedingten Zugriff bei einem Anmelderisiko basierend auf Sitzungsrisiken konfigurieren können, um Anmeldungen zu blockieren.
 services: active-directory
-keywords: Identitätsschutz, bedingter Zugriff auf Apps, bedingter Zugriff mit Azure AD, sicherer Zugriff auf Unternehmensressourcen, Richtlinien für bedingten Zugriff
+keywords: Identity Protection, bedingter Zugriff auf Apps, bedingter Zugriff mit Azure AD, sicherer Zugriff auf Unternehmensressourcen, Richtlinien für bedingten Zugriff
 documentationcenter: ''
 author: MicrosoftGuyJFlo
 manager: daveba
@@ -17,18 +17,18 @@ ms.date: 09/13/2018
 ms.author: joflore
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4f5127342f97a90103ef56efbd7465832440ec0f
-ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
+ms.openlocfilehash: c04d1a01c0ffd69e70dfa3b88b4f3c7f4b3576d4
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58521805"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67108801"
 ---
 # <a name="quickstart-block-access-when-a-session-risk-is-detected-with-azure-active-directory-identity-protection"></a>Schnellstart: Blockieren des Zugriffs mit Azure Active Directory Identity Protection, wenn ein Sitzungsrisiko erkannt wird  
 
 Zum Schutz Ihrer Umgebung sollten Sie verhindern, dass sich verdächtige Benutzer anmelden können. Azure Active Directory (Azure AD) Identity Protection analysiert alle Anmeldungen und berechnet die Wahrscheinlichkeit dafür, dass ein Anmeldeversuch nicht vom rechtmäßigen Besitzer eines Benutzerkontos durchgeführt wurde. Die Wahrscheinlichkeit (gering, mittel, hoch) wird in Form eines berechneten Wertes mit der Bezeichnung „Risikostufen für die Anmeldung“ angegeben. Durch Festlegen der Bedingung zum Anmelderisiko können Sie eine Richtlinie für bedingten Zugriff bei Anmelderisiko konfigurieren, um auf bestimmte Risikostufen für die Anmeldung zu reagieren. 
 
-In dieser Schnellstartanleitung erfahren Sie, wie Sie eine Richtlinie für bedingten Zugriff bei Anmelderisiko konfigurieren, mit der eine Anmeldung blockiert wird, wenn eine mittlere oder höhere Risikostufe für die Anmeldung erkannt wird. 
+In diesem Schnellstart erfahren Sie, wie Sie eine Richtlinie für bedingten Zugriff bei Anmelderisiko konfigurieren, mit der eine Anmeldung blockiert wird, wenn eine mittlere oder höhere Risikostufe für die Anmeldung erkannt wird. 
 
 ![Richtlinie erstellen](./media/quickstart-sign-in-risk-policy/1004.png)
 
@@ -61,7 +61,7 @@ Mit diesem Schritt soll sichergestellt werden, dass Sie mit dem Tor Browser übe
 2. Melden Sie sich ab. 
 
 
-## <a name="create-your-conditional-access-policy"></a>Erstellen der Richtlinie für bedingten Zugriff 
+## <a name="create-your-conditional-access-policy"></a>Erstellen Ihrer Richtlinie für bedingten Zugriff 
 
 Für das Szenario in dieser Schnellstartanleitung wird eine Anmeldung über einen Tor Browser verwendet, um ein erkanntes Risikoereignis vom Typ **Anmeldungen von anonymen IP-Adressen** zu generieren. Dieses Risikoereignis weist eine mittlere Risikostufe auf. Reagieren Sie auf dieses Risikoereignis, indem Sie die Bedingung für das Anmelderisiko auf „Mittel“ festlegen. 
 
@@ -119,7 +119,7 @@ Melden Sie sich zum Testen der Richtlinie mit dem Tor Browser bei Ihrem [Azure-P
 
 ## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
 
-Löschen Sie den Testbenutzer, wenn er nicht mehr benötigt wird, und löschen Sie auch den Tor Browser und die Richtlinie für bedingten Zugriff bei Anmelderisiko:
+Löschen Sie den Testbenutzer, wenn er nicht mehr benötigt wird, und löschen Sie auch den Tor-Browser und die Richtlinie für bedingten Zugriff bei Anmelderisiko:
 
 - Wenn Sie nicht wissen, wie ein Azure AD-Benutzer gelöscht wird, lesen Sie [Löschen oder Hinzufügen von Benutzern](../fundamentals/add-users-azure-active-directory.md#delete-a-user).
 

@@ -16,12 +16,12 @@ ms.author: jmprieur
 ms.reviwer: brandwe
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 44b6c203583a082228c2ba1f4c5f6fdb04d059be
-ms.sourcegitcommit: e9a46b4d22113655181a3e219d16397367e8492d
+ms.openlocfilehash: 7fc8c21db0f42bbb6804c00e27e82f840d7038c2
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/21/2019
-ms.locfileid: "65962390"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67111170"
 ---
 # <a name="mobile-app-that-calls-web-apis---call-a-web-api"></a>Mobile App, die Web-APIs aufruft – Aufrufen einer Web-API
 
@@ -131,7 +131,7 @@ HttpResponseMessage response = await _httpClient.GetAsync(apiUri);
 Wenn Sie die gleiche API mehrmals oder mehrere APIs aufrufen müssen, berücksichtigen Sie beim Erstellen Ihrer App Folgendes:
 
 - **Inkrementelle Zustimmung**: Microsoft Identity Platform ermöglicht Apps, Benutzereinwilligungen bei Bedarf einzuholen, wenn Berechtigungen erforderlich sind, statt alle direkt am Anfang einzuholen. Jedes Mal, wenn Ihre App für den Aufruf einer API bereit ist, sollte sie nur die Bereiche anfordern, die verwendet werden müssen.
-- **Bedingter Zugriff**: In bestimmten Szenarien erhalten Sie möglicherweise weitere Anforderungen für bedingten Zugriff, wenn Sie mehrere API-Anforderungen ausgeben. Dies kann vorkommen, wenn für die erste Anforderung keine Richtlinien für bedingten Zugriff gelten und Ihre App versucht, automatisch auf eine neue API zuzugreifen, die bedingten Zugriff erfordert. Stellen Sie für den Umgang mit diesem Szenario sicher, dass Sie Fehler bei automatischen Anforderungen erkennen, und bereiten Sie sich auf eine interaktive Anforderung vor.  Weitere Informationen finden Sie unter [Anleitung für Entwickler zum bedingten Zugriff mit Azure Active Directory](conditional-access-dev-guide.md).
+- **Bedingter Zugriff:** In bestimmten Szenarien erhalten Sie möglicherweise weitere Anforderungen für bedingten Zugriff, wenn Sie mehrere API-Anforderungen ausgeben. Dieser Fall kann auftreten, wenn für die erste Anforderung keine Richtlinien für den bedingten Zugriff angewendet wurden und Ihre App versucht, automatisch auf eine neue API zuzugreifen, die bedingten Zugriff erfordert. Stellen Sie für den Umgang mit diesem Szenario sicher, dass Sie Fehler bei automatischen Anforderungen erkennen, und bereiten Sie sich auf eine interaktive Anforderung vor.  Weitere Informationen finden Sie unter [Anleitung für bedingten Zugriff](conditional-access-dev-guide.md).
 
 ## <a name="next-steps"></a>Nächste Schritte
 

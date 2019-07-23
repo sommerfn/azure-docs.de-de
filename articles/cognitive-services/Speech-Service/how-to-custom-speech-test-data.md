@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 05/02/2019
 ms.author: erhopf
-ms.openlocfilehash: de2f1009c574d9768330d4e6a38a219ba1f81daa
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.openlocfilehash: c3e77a8ec46ae18cb9daa855d842969cc2ba4bb9
+ms.sourcegitcommit: e5dcf12763af358f24e73b9f89ff4088ac63c6cb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/27/2019
-ms.locfileid: "66237951"
+ms.lasthandoff: 06/14/2019
+ms.locfileid: "67137253"
 ---
 # <a name="prepare-data-for-custom-speech"></a>Vorbereiten von Daten für Custom Speech
 
@@ -55,7 +55,7 @@ Anhand der folgenden Tabelle können Sie sicherstellen, dass Ihre Audiodateien f
 | Eigenschaft | Wert |
 |----------|-------|
 | Dateiformat | RIFF (WAV) |
-| Samplingrate | 8.000 Hz oder 16.000 Hz |
+| Samplingrate | 8\.000 Hz oder 16.000 Hz |
 | Kanäle | 1 (Mono) |
 | Maximale Länge pro Audioaufnahme | 2 Stunden |
 | Beispielformat | PCM, 16 Bit |
@@ -76,7 +76,7 @@ Um die Genauigkeit der Microsoft-Spracherkennung bei der Verarbeitung Ihrer Audi
 | Eigenschaft | Wert |
 |----------|-------|
 | Dateiformat | RIFF (WAV) |
-| Samplingrate | 8.000 Hz oder 16.000 Hz |
+| Samplingrate | 8\.000 Hz oder 16.000 Hz |
 | Kanäle | 1 (Mono) |
 | Maximale Länge pro Audioaufnahme | 60 s |
 | Beispielformat | PCM, 16 Bit |
@@ -138,11 +138,11 @@ Wenn die Benutzer auf selten vorkommende Begriffe ohne Standardaussprache treffe
 
 Hier sehen Sie Beispiele für eine gesprochene Äußerung und die jeweilige benutzerdefinierte Aussprache:
 
-| Gesprochene Form | Erkannte/angezeigte Form |
+| Erkannte/angezeigte Form | Gesprochene Form |
 |--------------|--------------------------|
-| drei c p o | 3CPO |  
-| c n t k | CNTK |
-| i doppel e | IEEE |
+| 3CPO | drei c p o |  
+| CNTK | c n t k |
+| IEEE | i doppel e |
 
 Die gesprochene Form ist die jeweilige Lautfolge. Sie kann aus Buchstaben, Wörtern, Silben oder einer Kombination aus allen drei bestehen.
 

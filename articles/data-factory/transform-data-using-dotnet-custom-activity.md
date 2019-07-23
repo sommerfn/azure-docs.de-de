@@ -11,16 +11,16 @@ ms.date: 11/26/2018
 author: nabhishek
 ms.author: abnarain
 manager: craigg
-ms.openlocfilehash: ea409d6705d0146e9cb32ba11e6b785cf527739c
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 8076ae81b111aa6b524b7e286ed15ca0661d748b
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "66165966"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67062110"
 ---
 # <a name="use-custom-activities-in-an-azure-data-factory-pipeline"></a>Verwenden von benutzerdefinierten Aktivitäten in einer Azure Data Factory-Pipeline
 
-> [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
+> [!div class="op_single_selector" title1="Wählen Sie die von Ihnen verwendete Version des Data Factory-Diensts aus:"]
 > * [Version 1](v1/data-factory-use-custom-activities.md)
 > * [Aktuelle Version](transform-data-using-dotnet-custom-activity.md)
 
@@ -103,15 +103,15 @@ Die folgende Tabelle beschreibt die Namen und Eigenschaften, die für diese Akti
 | Eigenschaft              | BESCHREIBUNG                              | Erforderlich |
 | :-------------------- | :--------------------------------------- | :------- |
 | name                  | Name der Aktivität in der Pipeline     | Ja      |
-| description           | Ein Text, der beschreibt, was mit der Aktivität ausgeführt wird.  | Nein        |
+| description           | Ein Text, der beschreibt, was mit der Aktivität ausgeführt wird.  | Nein       |
 | type                  | Für die benutzerdefinierte Aktivität ist der Aktivitätstyp **Custom**. | Ja      |
 | linkedServiceName     | Mit Azure Batch verknüpfter Dienst. Weitere Informationen zu diesem verknüpften Dienst finden Sie im Artikel [Von Azure Data Factory unterstützten Compute-Umgebungen](compute-linked-services.md).  | Ja      |
 | command               | Befehl der benutzerdefinierten Anwendung, der ausgeführt werden soll. Wenn die Anwendung bereits auf dem Knoten des Azure Batch-Pools verfügbar ist, können „resourceLinkedService“ und „folderPath“ übersprungen werden. Sie können beispielsweise den Befehl `cmd /c dir` angeben, was vom Knoten des Azure Batch-Pools nativ unterstützt wird. | Ja      |
 | resourceLinkedService | Mit dem Speicherkonto verknüpfter Azure Storage-Dienst, in dem die benutzerdefinierte Anwendung gespeichert wird. | Nein&#42;       |
 | folderPath            | Pfad zum Ordner der benutzerdefinierten Anwendung und allen ihren abhängigen Elementen<br/><br/>Wenn Sie Abhängigkeiten in Unterordnern gespeichert haben (also in einer hierarchischen Ordnerstruktur unter *folderPath*), wird die Ordnerstruktur zurzeit abgeflacht, wenn die Dateien nach Azure Batch kopiert werden. Das heißt, alle Dateien werden in einen einzigen Ordner ohne Unterordner kopiert. Um dieses Verhalten zu umgehen, sollten Sie die Dateien komprimieren, die komprimierte Datei kopieren und dann mit benutzerdefiniertem Code am gewünschten Speicherort entpacken. | Nein&#42;       |
-| referenceObjects      | Array vorhandener verknüpfter Dienste und Datasets. Die referenzierten verknüpften Dienste und Datasets werden im JSON-Format an die benutzerdefinierte Anwendung übergeben, sodass Ihr benutzerdefinierter Code auf Data Factory-Ressourcen verweisen kann. | Nein        |
-| extendedProperties    | Benutzerdefinierte Eigenschaften, die im JSON-Format an die benutzerdefinierte Anwendung übergeben werden können, sodass Ihr benutzerdefinierter Code auf zusätzliche Eigenschaften verweisen kann. | Nein        |
-| retentionTimeInDays | Die Vermerkdauer für die Dateien, die für die benutzerdefinierte Aktivität übermittelt werden. Der Standardwert ist 30 Tage. | Nein  |
+| referenceObjects      | Array vorhandener verknüpfter Dienste und Datasets. Die referenzierten verknüpften Dienste und Datasets werden im JSON-Format an die benutzerdefinierte Anwendung übergeben, sodass Ihr benutzerdefinierter Code auf Data Factory-Ressourcen verweisen kann. | Nein       |
+| extendedProperties    | Benutzerdefinierte Eigenschaften, die im JSON-Format an die benutzerdefinierte Anwendung übergeben werden können, sodass Ihr benutzerdefinierter Code auf zusätzliche Eigenschaften verweisen kann. | Nein       |
+| retentionTimeInDays | Die Vermerkdauer für die Dateien, die für die benutzerdefinierte Aktivität übermittelt werden. Der Standardwert ist 30 Tage. | Nein |
 
 &#42; Die Eigenschaften `resourceLinkedService` und `folderPath` müssen entweder beide angegeben oder beide weggelassen werden.
 
@@ -301,7 +301,7 @@ Activity Error section:
 Wenn Sie den Inhalt von „stdout.txt“ in nachgelagerten Aktivitäten nutzen möchten, können Sie den Pfad zur Datei „stdout.txt“ im Ausdruck „\@activity('MyCustomActivity').output.outputs[0]“ abrufen.
 
 > [!IMPORTANT]
-> - Die Dateien „activity.json“, „linkedServices.json“ und „datasets.json“ werden im Ordner „runtime“ der Batch-Aufgabe gespeichert. In diesem Beispiel werden die Dateien „activity.json“, „linkedServices.json“ und „datasets.json“ im Pfad „https://adfv2storage.blob.core.windows.net/adfjobs/\<GUID>/runtime/“ gespeichert. Bei Bedarf müssen diese separat bereinigt werden.
+> - Die Dateien „activity.json“, „linkedServices.json“ und „datasets.json“ werden im Ordner „runtime“ der Batch-Aufgabe gespeichert. In diesem Beispiel werden die Dateien „activity.json“, „linkedServices.json“ und „datasets.json“ im Pfad `"https://adfv2storage.blob.core.windows.net/adfjobs/\<GUID>/runtime/"` gespeichert. Bei Bedarf müssen diese separat bereinigt werden.
 > - Für verknüpfte Dienste, die die selbstgehostete Integration Runtime verwenden, werden vertrauliche Informationen wie Schlüssel oder Kennwörter von der selbstgehosteten Integration Runtime verschlüsselt, um sicherzustellen, dass die Anmeldeinformationen in der vom Kunden definierten privaten Netzwerkumgebung verbleiben. Einige sensible Felder können fehlen, wenn auf sie von Ihrem eigenen Anwendungscode auf diese Weise verwiesen wird. Verwenden Sie bei Bedarf „SecureString“ in „extendedProperties“ anstelle des Verweises auf den verknüpften Dienst.
 
 ## <a name="pass-outputs-to-another-activity"></a>Übergeben von Ausgaben an eine andere Aktivität
@@ -310,7 +310,7 @@ Sie können benutzerdefinierte Werte aus Ihrem Code in einer benutzerdefinierten
 
 ## <a name="retrieve-securestring-outputs"></a>Abrufen von SecureString-Ausgaben
 
-Vertrauliche Eigenschaftswerte, die als Typ *SecureString* definiert sind (wie in einigen der Beispiele in diesem Artikel gezeigt), werden auf der Registerkarte „Überwachung“ in der Benutzeroberfläche von Data Factory ausgeblendet.  Bei der tatsächlichen Ausführung der Pipeline wird jedoch eine *SecureString*-Eigenschaft als JSON innerhalb der `activity.json`-Datei als Nur-Text serialisiert. Beispiel: 
+Vertrauliche Eigenschaftswerte, die als Typ *SecureString* definiert sind (wie in einigen der Beispiele in diesem Artikel gezeigt), werden auf der Registerkarte „Überwachung“ in der Benutzeroberfläche von Data Factory ausgeblendet.  Bei der tatsächlichen Ausführung der Pipeline wird jedoch eine *SecureString*-Eigenschaft als JSON innerhalb der `activity.json`-Datei als Nur-Text serialisiert. Beispiel:
 
 ```json
 "extendedProperties": {

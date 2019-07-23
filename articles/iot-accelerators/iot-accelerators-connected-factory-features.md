@@ -6,14 +6,14 @@ manager: timlt
 ms.service: iot-accelerators
 services: iot-accelerators
 ms.topic: conceptual
-ms.date: 03/08/2019
+ms.date: 06/10/2019
 ms.author: dobett
-ms.openlocfilehash: 25812e10b4c2b90aa4f40c38610c30a26ab11d9d
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 2a11640959a8c7fdd0d238aba92698eb47934969
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58183219"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67080449"
 ---
 # <a name="what-is-connected-factory-iot-solution-accelerator"></a>Was ist der IoT Solution Accelerator für Connected Factory?
 
@@ -65,7 +65,4 @@ Connected Factory beinhaltet die folgenden Features:
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-In den folgenden Artikeln erfahren Sie mehr über die vorkonfigurierte Connected Factory-Lösung:
-
-* [Vorkonfigurierte Connected Factory-Lösung – Exemplarische Vorgehensweise](iot-accelerators-connected-factory-sample-walkthrough.md)
-* [Bereitstellen eines Edge-Gateways für die vorkonfigurierte Connected Factory-Lösung unter Windows oder Linux]( iot-accelerators-connected-factory-gateway-deployment.md)
+Weitere Informationen zum Solution Accelerator für Connected Factory finden Sie im Schnellstart [Testen einer cloudbasierten Lösung zum Verwalten von industriellen IoT-Geräten](quickstart-connected-factory-deploy.md).

@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 04/01/2019
+ms.date: 06/12/2019
 ms.author: diberry
-ms.openlocfilehash: 7fd9ae3ab1f50dc91118ba11bc357a0f6dc0e771
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.openlocfilehash: 628a96c4e912341226d67a7ed8f241194e7b7825
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65141045"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67080037"
 ---
 # <a name="entity-types-and-their-purposes-in-luis"></a>Entitätstypen und ihr Zweck in LUIS
 
@@ -47,7 +47,7 @@ Entitäten sind Daten, die Sie aus der Äußerung pullen möchten. Dabei kann es
 |Äußerung|Entität|Daten|
 |--|--|--|
 |Kaufe 3 Tickets nach New York|Vordefinierte Anzahl<br>Location.Destination|3<br>New York|
-|Kaufe ein Ticket von New York nach London am 5. März|Location.Origin<br>Location.Destination<br>Vordefinierte datetimeV2|New York<br>London<br>5. März 2018|
+|Kaufe ein Ticket von New York nach London am 5. März|Location.Origin<br>Location.Destination<br>Vordefinierte datetimeV2|New York<br>London<br>5\. März 2018|
 
 ## <a name="entities-are-optional-but-highly-recommended"></a>Entitäten sind optional, jedoch dringend empfohlen.
 
@@ -109,6 +109,30 @@ Pattern.any-Entitäten müssen in [Pattern](luis-how-to-model-intent-pattern.md)
 
 Für gemischte Entitäten wird eine Kombination aus Methoden für die Entitätserkennung verwendet.
 
+## <a name="machine-learned-entities-use-context"></a>Durch maschinelles Lernen erworbene Entitäten nutzen Kontext
+
+Durch maschinelles Lernen erworbene Entitäten lernen über den Kontext der Äußerung. Aus diesem Grund ist die Variation der Platzierung in Beispieläußerungen wichtig. 
+
+## <a name="non-machine-learned-entities-dont-use-context"></a>Entitäten, die nicht durch maschinelles Lernen erworben wurden, nutzen den Kontext nicht
+
+Die folgenden, nicht durch maschinelles Lernen erworbenen Entitäten berücksichtigen beim Vergleichen von Entitäten den Kontext einer Äußerung nicht: 
+
+* [Vordefinierte Entitäten](#prebuilt-entity)
+* [RegEx-Entitäten](#regular-expression-entity)
+* [List-Entitäten](#list-entity) 
+
+Diese Entitäten erfordern keine Bezeichnungen oder ein Trainieren des Modells. Nach dem Hinzufügen oder Konfigurieren der Entität, werden die Entitäten extrahiert. Der Nachteil hierbei sind möglicherweise zu viele Übereinstimmungen, die bei einer Berücksichtigung des Kontexts nicht zurückgegeben worden wären. 
+
+Dies tritt bei List-Entitäten in neuen Modellen häufig auf. Sie erstellen und testen Ihr Modell mit einer List-Entität, aber wenn Sie Ihr Modell veröffentlichen und Abfragen vom Endpunkt erhalten, stellen Sie fest, dass das Modell aufgrund des fehlenden Kontexts zu viele Übereinstimmungen findet. 
+
+Wenn Sie Wörter oder Ausdrücke finden und den Kontext berücksichtigen möchten, haben Sie zwei Möglichkeiten. Die erste ist eine einfache Entität zusammen mit einer Begriffsliste. Die Begriffsliste wird nicht für den Abgleich verwendet, sondern hilft stattdessen beim Hervorheben relativ ähnlicher Wörter (Liste austauschbarer Begriffe). Wenn Sie eine genaue Übereinstimmung anstelle von Varianten einer Begriffsliste benötigen, verwenden Sie eine List-Entität mit einer Rolle, die unten beschrieben wird.
+
+### <a name="context-with-non-machine-learned-entities"></a>Kontext bei Entitäten, die nicht durch maschinelles Lernen erworben wurden
+
+Wenn Sie bei Entitäten, die nicht durch maschinelles Lernen erworben wurden, den Kontext berücksichtigen möchten, sollten Sie [Rollen](luis-concept-roles.md) verwenden.
+
+Wenn Sie über eine Entität, die nicht durch maschinelles Lernen erworben wurde, verfügen (z. B. [vordefinierte Entitäten](#prebuilt-entity), [RegEx](#regular-expression-entity)-Entitäten oder [List](#list-entity)-Entitäten), die zu mehr Übereinstimmung als gewünscht führen, sollten Sie eine Entität mit zwei Rollen erstellen. Eine Rolle erfasst, was Sie suchen, und die zweite Rolle erfasst, was Sie nicht suchen. Beide Versionen müssen in Beispieläußerungen bezeichnet werden.  
+
 ## <a name="composite-entity"></a>Entität vom Typ „Composite“
 
 Eine zusammengesetzte Entität besteht aus anderen Entitäten, z. B. vom Typ Vordefiniert, Einfach, Regulärer Ausdruck oder Liste. Die einzelnen Entitäten bilden zusammen die gesamte Entität. 
@@ -133,8 +157,9 @@ Listenentitäten stellen einen festen, abgeschlossenen Satz verwandter Wörter z
 Diese Entität ist gut geeignet, wenn für die Textdaten Folgendes gilt:
 
 * Es handelt sich um einen bekannten Satz.
+* Sie werden nicht oft geändert. Wenn Sie die Liste häufig ändern oder möchten, dass die Liste selbstständig erweitert wird, stellt eine einfache Entität, die um eine Begriffsliste erweitert wurde, eine bessere Wahl dar. 
 * Für den Satz werden die maximalen LUIS-[Grenzen](luis-boundaries.md) dieses Entitätstyps nicht überschritten.
-* Der Text in der Äußerung ist eine exakte Übereinstimmung mit einem Synonym oder dem kanonischen Namen. LUIS verwendet die Liste über genaue Textübereinstimmungen hinaus nicht. Wortstammerkennung, Pluralformen und andere Varianten lassen sich mit einer Listenentität nicht auflösen. Um Varianten zu behandeln, sollten Sie die Verwendung eines [Musters](luis-concept-patterns.md#syntax-to-mark-optional-text-in-a-template-utterance) mit der optionalen Textsyntax in Erwägung ziehen.
+* Der Text in der Äußerung ist eine exakte Übereinstimmung mit einem Synonym oder dem kanonischen Namen. LUIS verwendet die Liste über genaue Textübereinstimmungen hinaus nicht. Fuzzyübereinstimmungen, Nicht-Berücksichtigung der Groß- und Kleinschreibung, Wortstammerkennung, Pluralformen und andere Varianten lassen sich mit einer List-Entität nicht auflösen. Um Varianten zu behandeln, sollten Sie die Verwendung eines [Musters](luis-concept-patterns.md#syntax-to-mark-optional-text-in-a-template-utterance) mit der optionalen Textsyntax in Erwägung ziehen.
 
 ![Entität vom Typ „List“](./media/luis-concept-entities/list-entity.png)
 
@@ -158,10 +183,11 @@ In der folgenden Tabelle enthält jede Zeile zwei Versionen der Äußerung. In d
 
 |Äußerung|
 |--|
-|`Wurde das Buch „The Man Who Mistook His Wife for a Hat and Other Clinical Tales“ in diesem Jahr von einem Autor bzw. einer Autorin aus den USA geschrieben?<br>Wurde das Buch **The Man Who Mistook His Wife for a Hat and Other Clinical Tales** in diesem Jahr von einem Autor bzw. einer Autorin aus den USA geschrieben?|
-|`Was Half Asleep in Frog Pajamas written by an American this year?`<br>`Was **Half Asleep in Frog Pajamas** written by an American this year?`|
-|`Was The Particular Sadness of Lemon Cake: A Novel written by an American this year?`<br>`Was **The Particular Sadness of Lemon Cake: A Novel** written by an American this year?`|
-|`Was There's A Wocket In My Pocket! written by an American this year?`<br>`Was **There's A Wocket In My Pocket!** written by an American this year?`|
+|Wurde das Buch The Man Who Mistook His Wife for a Hat and Other Clinical Tales in diesem Jahr von einem Autor bzw. einer Autorin aus den USA geschrieben?<br><br>Wurde das Buch **The Man Who Mistook His Wife for a Hat and Other Clinical Tales** in diesem Jahr von einem Autor bzw. einer Autorin aus den USA geschrieben?|
+|Wurde Half Asleep in Frog Pajamas in diesem Jahr von einem Autor bzw. einer Autorin aus den USA geschrieben?<br><br>Wurde **Half Asleep in Frog Pajamas** in diesem Jahr von einem Autor bzw. einer Autorin aus den USA geschrieben?|
+|Wurde The Particular Sadness of Lemon Cake: A Novel in diesem Jahr von einem Autor bzw. einer Autorin aus den USA geschrieben?<br><br>Wurde **The Particular Sadness of Lemon Cake: A Novel** in diesem Jahr von einem Autor bzw. einer Autorin aus den USA geschrieben?|
+|Wurde There's A Wocket In My Pocket! in diesem Jahr von einem Autor bzw. einer Autorin aus den USA geschrieben?<br><br>Wurde **There's A Wocket In My Pocket!** in diesem Jahr von einem Autor bzw. einer Autorin aus den USA geschrieben?|
+||
 
 ## <a name="prebuilt-entity"></a>Vordefinierte Entität
 
@@ -225,6 +251,18 @@ Diese Entität ist gut geeignet, wenn Folgendes gilt:
 
 [Tutorial](luis-quickstart-intents-regex-entity.md)<br>
 [JSON-Beispielantwort für Entität](luis-concept-data-extraction.md#regular-expression-entity-data)<br>
+
+Reguläre Ausdrücke finden möglicherweise mehr, als Sie erwarten. Ein Beispiel hierfür ist eine numerische Wortsuche, wie z. B. `one` und `two`. Ein Beispiel ist der folgende reguläre Ausdruck, der die Zahl `one` zusammen mit anderen Zahlen findet:
+
+```javascript
+(plus )?(zero|one|two|three|four|five|six|seven|eight|nine)(\s+(zero|one|two|three|four|five|six|seven|eight|nine))*
+``` 
+
+Dieser RegEx-Ausdruck findet auch alle Wörter, die auf diese Zahlen enden, wie z. B. `phone`. Um Probleme wie dieses zu beheben, stellen Sie sicher, dass bei Übereinstimmungen für reguläre Ausdrücke die Wortgrenzen berücksichtigt werden. Der reguläre Ausdruck mit Berücksichtigung von Wortgrenzen für dieses Beispiel wird im folgenden regulären Ausdruck verwendet:
+
+```javascript
+\b(plus )?(zero|one|two|three|four|five|six|seven|eight|nine)(\s+(zero|one|two|three|four|five|six|seven|eight|nine))*\b
+```
 
 ## <a name="simple-entity"></a>Entität vom Typ „Simple“ 
 

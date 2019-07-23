@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 6/1/2019
 ms.author: absha
-ms.openlocfilehash: 55c7670821ee6c6f5b924bf18b5f7ad01d4b6d51
-ms.sourcegitcommit: 087ee51483b7180f9e897431e83f37b08ec890ae
+ms.openlocfilehash: c5cc39c2f2a7f2a79b8d6bc2bd95506ee5532a84
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/31/2019
-ms.locfileid: "66431303"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67073977"
 ---
 # <a name="application-gateway-configuration-overview"></a>Application Gateway – Konfigurationsübersicht
 
@@ -71,7 +71,10 @@ Verwenden Sie für dieses Szenario Netzwerksicherheitsgruppen im Application Gat
 
 Für die v1 SKU werden benutzerdefinierte Routen (User-Defined Routes, UDRs) im Application Gateway-Subnetz unterstützt, solange sie die End-to-End-Anforderung/Antwort-Kommunikation nicht ändern. Beispielsweise können Sie eine benutzerdefinierte Route im Application Gateway-Subnetz einrichten, um auf eine Firewallappliance für die Paketüberprüfung zu verweisen. Sie müssen jedoch sicherstellen, dass das Paket nach der Überprüfung das vorgesehene Ziel erreichen kann. Ein Unterlassen kann zu einem falschen Integritätstest oder Datenverkehrsrouting-Verhalten führen. Dies schließt gelernte Routen oder standardmäßige 0.0.0.0/0-Routen ein, die durch Azure ExpressRoute oder VPN-Gateways im virtuellen Netzwerk verteilt werden.
 
-UDRs im Application Gateway-Subnetz werden vom v2 SKU nicht unterstützt. Weitere Informationen finden Sie unter [Azure Application Gateway v2-SKU](application-gateway-autoscaling-zone-redundant.md#differences-with-v1-sku).
+UDRs im Application Gateway-Subnetz werden mit der v2-SKU nicht unterstützt. Weitere Informationen finden Sie unter [Azure Application Gateway v2-SKU](application-gateway-autoscaling-zone-redundant.md#differences-with-v1-sku).
+
+> [!NOTE]
+> UDRs werden mit der v2-SKU nicht unterstützt.  Wenn Sie benutzerdefinierte Routen (UDRs) benötigen, sollten Sie weiterhin die v1-SKU bereitstellen.
 
 > [!NOTE]
 > Das Verwenden benutzerdefinierter Routen im Application Gateway-Subnetz führt dazu, dass der Integritätsstatus in der [Ansicht der Back-End-Integrität](https://docs.microsoft.com/azure/application-gateway/application-gateway-diagnostics#back-end-health) als „Unbekannt“ angezeigt wird. Außerdem treten dabei bei der Generierung von Application Gateway-Protokollen und Metriken Fehler auf. Sie sollten keine benutzerdefinierten Routen im Application Gateway-Subnetz verwenden, damit Sie die Back-End-Integrität, Protokolle und Metriken anzeigen können.
@@ -84,7 +87,7 @@ Eine öffentliche IP-Adresse ist nicht für einen internen Endpunkt erforderlich
 
 Es wird nur 1 öffentliche oder 1 private IP-Adresse unterstützt. Sie wählen die Front-End-IP beim Erstellen des Application Gateways aus.
 
-- Für eine öffentliche IP-Adresse können Sie eine neue öffentliche IP-Adresse erstellen oder eine vorhandene öffentliche IP-Adresse am gleichen Speicherort wie das Application Gateway verwenden. Wenn Sie eine neue öffentliche IP-Adresse erstellen, kann der von Ihnen gewählte Typ der IP-Adresse (statisch oder dynamisch) später nicht mehr geändert werden. Weitere Informationen finden Sie unter [Statische und dynamische öffentliche IP-Adresse im Vergleich](https://docs.microsoft.com/azure/application-gateway/application-gateway-components#static-vs-dynamic-public-ip-address).
+- Für eine öffentliche IP-Adresse können Sie eine neue öffentliche IP-Adresse erstellen oder eine vorhandene öffentliche IP-Adresse am gleichen Speicherort wie das Application Gateway verwenden. Wenn Sie eine neue öffentliche IP-Adresse erstellen, kann der von Ihnen gewählte Typ der IP-Adresse (statisch oder dynamisch) später nicht mehr geändert werden. Weitere Informationen finden Sie unter [Statische und dynamische öffentliche IP-Adresse im Vergleich](https://docs.microsoft.com/azure/application-gateway/application-gateway-components#static-versus-dynamic-public-ip-address).
 
 - Für eine private IP-Adresse können Sie eine private IP-Adresse aus dem Subnetz angeben, in dem das Application Gateway erstellt wird. Wenn Sie keine angeben, wird automatisch eine beliebige IP-Adresse aus dem Subnetz ausgewählt. Weitere Informationen finden Sie unter [Erstellen eines Application Gateways mit einem internen Lastenausgleich (ILB)](https://docs.microsoft.com/azure/application-gateway/application-gateway-ilb-arm).
 
@@ -124,7 +127,7 @@ Wählen Sie HTTP oder HTTPS aus:
 
 - Wenn Sie sich für HTTP entscheiden, ist der Datenverkehr zwischen dem Client und dem Application Gateway unverschlüsselt.
 
-- Wählen Sie HTTPS aus, wenn Sie [SSL-Beendigung](https://docs.microsoft.com/azure/application-gateway/overview#secure-sockets-layer-ssl-terminationl) oder [End-to-End-SSL-Verschlüsselung](https://docs.microsoft.com/azure/application-gateway/ssl-overview) wünschen. Der Datenverkehr zwischen dem Client und dem Application Gateway ist verschlüsselt. Außerdem wird die SSL-Verbindung am Application Gateway getrennt. Wenn Sie die End-to-End-SSL-Verschlüsselung wünschen, müssen Sie HTTPS auswählen und die Einstellung des **Back-End-HTTP** konfigurieren. Dadurch wird sichergestellt, dass der Datenverkehr auf dem Weg vom Application Gateway zum Back-End erneut verschlüsselt wird.
+- Wählen Sie HTTPS aus, wenn Sie [SSL-Beendigung](https://docs.microsoft.com/azure/application-gateway/overview#secure-sockets-layer-ssltls-termination) oder [End-to-End-SSL-Verschlüsselung](https://docs.microsoft.com/azure/application-gateway/ssl-overview) wünschen. Der Datenverkehr zwischen dem Client und dem Application Gateway ist verschlüsselt. Außerdem wird die SSL-Verbindung am Application Gateway getrennt. Wenn Sie die End-to-End-SSL-Verschlüsselung wünschen, müssen Sie HTTPS auswählen und die Einstellung des **Back-End-HTTP** konfigurieren. Dadurch wird sichergestellt, dass der Datenverkehr auf dem Weg vom Application Gateway zum Back-End erneut verschlüsselt wird.
 
 Zum Konfigurieren von SSL-Beendigung und End-to-End-SSL-Verschlüsselung müssen Sie dem Listener ein Zertifikat hinzufügen, damit das Application Gateway einen symmetrischen Schlüssel ableiten kann. Dies wird durch die SSL-Protokollspezifikation vorgegeben. Der symmetrische Schlüssel wird zum Verschlüsseln und Entschlüsseln des an das Gateway gesendeten Datenverkehrs verwendet. Das Gatewayzertifikat muss im PFX-Format (Personal Information Exchange, privater Informationsaustausch) vorliegen. Mit diesem Format können Sie den privaten Schlüssel exportieren, den das Gateway zum Verschlüsseln und Entschlüsseln von Datenverkehr verwendet.
 
@@ -172,7 +175,7 @@ Wenn Sie ein Application Gateway mithilfe des Azure-Portals erstellen, erstellen
 
 ### <a name="rule-type"></a>Regeltyp
 
-Wenn Sie eine Regel erstellen, wählen Sie zwischen [*grundlegend* und *pfadbasiert*](https://docs.microsoft.com/azure/application-gateway/application-gateway-components#request-routing-rule) aus.
+Wenn Sie eine Regel erstellen, wählen Sie zwischen [*grundlegend* und *pfadbasiert*](https://docs.microsoft.com/azure/application-gateway/application-gateway-components#request-routing-rules) aus.
 
 - Wählen Sie „grundlegend“ aus, wenn Sie alle an den zugeordneten Listener gerichteten Anforderungen (z.B. *blog<i></i>.contoso.com/\*)* an einen einzelnen Back-End-Pool weiterleiten möchten.
 - Wählen Sie „pfadbasiert“ aus, wenn Sie Anforderungen von bestimmten URL-Pfaden an bestimmte Back-End-Pools weiterleiten möchten. Das Pfadmuster wird nur auf den Pfad der URL angewendet, nicht auf ihre Abfrageparameter.
@@ -245,7 +248,7 @@ Weitere Informationen zur Umleitung finden Sie unter:
 Diese Einstellung fügt HTTP-Anforderungs- und -Antwortheader hinzu, entfernt oder aktualisiert sie, während die Anforderungs-/Antwortpakete zwischen dem Client und den Back-End-Pools verschoben werden. Sie können diese Funktion nur mithilfe von PowerShell konfigurieren. Unterstützung durch Azure-Portal und CLI sind noch nicht verfügbar. Weitere Informationen finden Sie unter
 
  - [Erneutes Generieren von HTTP-Headern in Application Gateway (Public Preview)](https://docs.microsoft.com/azure/application-gateway/rewrite-http-headers)
- - [Angeben Ihrer Regelkonfiguration für das erneute Generieren eines HTTP-Headers](https://docs.microsoft.com/azure/application-gateway/add-http-header-rewrite-rule-powershell#specify-your-http-header-rewrite-rule-configuration)
+ - [Angeben Ihrer Regelkonfiguration für das erneute Generieren eines HTTP-Headers](https://docs.microsoft.com/azure/application-gateway/add-http-header-rewrite-rule-powershell#specify-the-http-header-rewrite-rule-configuration)
 
 ## <a name="http-settings"></a>HTTP-Einstellungen
 

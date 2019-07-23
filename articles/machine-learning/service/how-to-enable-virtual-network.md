@@ -10,12 +10,12 @@ ms.reviewer: jmartens
 ms.author: aashishb
 author: aashishb
 ms.date: 01/08/2019
-ms.openlocfilehash: 48c59ddc1e203030bd967911d536930cb94761d3
-ms.sourcegitcommit: 8e76be591034b618f5c11f4e66668f48c090ddfd
+ms.openlocfilehash: f1cb7c9aa0844c82acd333c4f9dd87a4dda013e7
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/29/2019
-ms.locfileid: "66356177"
+ms.lasthandoff: 06/17/2019
+ms.locfileid: "67165343"
 ---
 # <a name="securely-run-experiments-and-inference-inside-an-azure-virtual-network"></a>Sicheres Ausführen von Experimenten und Ziehen von Rückschlüssen innerhalb eines virtuellen Azure-Netzwerks
 
@@ -35,9 +35,13 @@ Dieses Dokument setzt voraus, dass Sie mit Azure Virtual Networks und IP-Netzwer
 ## <a name="storage-account-for-your-workspace"></a>Speicherkonto für Ihren Arbeitsbereich
 
 > [!IMPORTANT]
-> Sie können das an den Azure Machine Learning Service-Arbeitsbereich angefügte Speicherkonto nur während Experimenten hinter dem virtuellen Netzwerk anordnen. Rückschlüsse benötigen uneingeschränkten Zugriff auf das Speicherkonto. Sollten Sie nicht sicher sein, ob Sie diese Einstellungen geändert haben, sehen Sie sich den Abschnitt __Ändern der Standard-Netzwerkzugriffsregel__ in [Konfigurieren von Azure Storage-Firewalls und virtuellen Netzwerken](https://docs.microsoft.com/azure/storage/common/storage-network-security) an. Gehen Sie wie folgt vor, um bei Rückschlüssen oder Modellbewertung den Zugriff von allen Netzwerken zuzulassen.
+> Das __Standardspeicherkonto__ für Ihren Azure Machine Learning Service kann __nur während Experimenten__ in einem virtuellen Netzwerk platziert werden.
+>
+> Bei __nicht standardmäßigen Speicherkonten für Experimente__ oder Verwendung eines Speicherkontos für __Rückschlüsse__ benötigen Sie __uneingeschränkten Zugriff auf das Speicherkonto__.
+> 
+> Sollten Sie nicht sicher sein, ob Sie diese Einstellungen geändert haben, sehen Sie sich den Abschnitt __Ändern der Standard-Netzwerkzugriffsregel__ in [Konfigurieren von Azure Storage-Firewalls und virtuellen Netzwerken](https://docs.microsoft.com/azure/storage/common/storage-network-security) an. Gehen Sie wie folgt vor, um bei Rückschlüssen oder Modellbewertung den Zugriff von allen Netzwerken zuzulassen.
 
-Um die Azure Machine Learning-Experimentierfunktionen mit Azure Storage hinter einem virtuellen Netzwerk zu verwenden, führen Sie die folgenden Schritte aus:
+Führen Sie die folgenden Schritte aus, um das Azure Storage-Standardkonto für den Arbeitsbereich in einem virtuellen Netzwerk zu platzieren:
 
 1. Erstellen Sie eine Experimentiercomputeinstanz, z. B. Machine Learning Compute hinter einem virtuellen Netzwerk, oder fügen Sie eine Experimentiercomputeinstanz an den Arbeitsbereich an, z. B. einen HDInsight-Cluster oder einen virtuellen Computer. Weitere Informationen finden Sie in den Abschnitten [Verwenden von Machine Learning Compute](#use-machine-learning-compute) und [Verwenden eines virtuellen Computers oder eines HDInsight-Clusters](#use-a-virtual-machine-or-hdinsight-cluster) in diesem Dokument.
 2. Wechseln Sie zu dem Speicher, der an den Arbeitsbereich angefügt wurde. ![Abbildung des Azure-Portals mit Azure Storage-Speicher, der an den Azure Machine Learning Service-Arbeitsbereich angefügt ist](./media/how-to-enable-virtual-network/workspace-storage.png)

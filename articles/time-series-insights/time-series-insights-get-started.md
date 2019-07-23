@@ -6,17 +6,17 @@ services: time-series-insights
 author: ashannon7
 ms.author: dpalled
 manager: cshankar
-ms.reviewer: v-mamcge, jasonh, kfile, anshan
+ms.reviewer: v-mamcge, jasonh, kfile
 ms.workload: big-data
 ms.topic: conceptual
 ms.date: 05/01/2019
 ms.custom: seodec18
-ms.openlocfilehash: 1018b449047e40a67ea843e8506fb43f6e1093a6
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.openlocfilehash: bcab20c654657483fd37322de7ec0827fb171c01
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/27/2019
-ms.locfileid: "66239050"
+ms.lasthandoff: 06/17/2019
+ms.locfileid: "67165708"
 ---
 # <a name="create-a-new-time-series-insights-environment-in-the-azure-portal"></a>Erstellen einer neuen Time Series Insights-Umgebung über das Azure-Portal
 
@@ -51,7 +51,7 @@ Führen Sie zum Erstellen einer Umgebung die folgenden Schritte aus:
    Tarif | S1 | Wählen Sie den erforderlichen Durchsatz aus. Wählen Sie für die niedrigsten Kosten und die Anfangskapazität „S1“ aus.
    Capacity | 1 | Die Kapazität ist der Multiplikator, der auf die Eingangsrate, Speicherkapazität und Kosten der ausgewählten SKU angewendet wird.  Die Kapazität einer Umgebung kann nach der Erstellung geändert werden. Wählen Sie für die niedrigsten Kosten die Kapazität „1“ aus. 
   
-1. Aktivieren Sie **An Dashboard anheften** für den zukünftigen optimierten und problemlosen Zugriff auf Ihre Time Series-Umgebung.
+1. Aktivieren Sie **An das Dashboard anheften**, um zukünftig ganz einfach auf Ihre Time Series-Umgebung zugreifen zu können.
 
    ![Erstellen der Time Series Insights-Anheftung an das Dashboard](media/time-series-insights-get-started/3-pin-create.png)
 

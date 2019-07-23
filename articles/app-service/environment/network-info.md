@@ -11,15 +11,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/14/2019
+ms.date: 05/31/2019
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: 73175b326c25d5d9a78155d0d9d888b655da1bfd
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 3f80f3c6be747cf84aa9d8b2c386c0568a7511ad
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58124132"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67069380"
 ---
 # <a name="networking-considerations-for-an-app-service-environment"></a>Überlegungen zum Netzwerkbetrieb in einer App Service-Umgebung #
 
@@ -30,79 +30,82 @@ ms.locfileid: "58124132"
 - **Externe ASE**: Macht die gehosteten Apps der ASE für eine über das Internet erreichbare IP-Adresse verfügbar. Weitere Informationen finden Sie unter [Erstellen einer externen ASE][MakeExternalASE].
 - **ILB ASE**: Macht die gehosteten Apps der ASE für eine IP-Adresse in Ihrem VNet verfügbar. Der interne Endpunkt ist ein ILB (Internal Load Balancer, interner Lastenausgleich), daher der Name ILB-ASE. Weitere Informationen finden Sie unter [Erstellen und Verwenden einer ILB-ASE][MakeILBASE].
 
-Es gibt zwei Versionen der App Service-Umgebung: ASEv1 und ASEv2. Informationen zur ASEv1 finden Sie unter [Einführung in die App Service-Umgebung v1][ASEv1Intro]. ASEv1 kann in einem klassischen oder Resource Manager-VNet bereitgestellt werden. ASEv2 kann nur in einem Ressourcen-Manager-VNet bereitgestellt werden.
-
-Alle Aufrufe, die von einer ASE ins Internet gehen, verlassen das VNet über eine der ASE zugewiesene VIP-Adresse. Die öffentliche IP dieser VIP ist die Quell-IP für alle Aufrufe, die von der ASE ins Internet gehen. Wenn die Apps in Ihrer ASE Ressourcen in Ihrem VNet oder über ein VPN aufrufen, ist die Quell-IP eine der IPs in dem von Ihrer ASE verwendeten Subnetz. Da sich die ASE im VNet befindet, hat sie ohne zusätzliche Konfiguration auch Zugriff auf Ressourcen im VNet. Wenn das VNet mit Ihrem lokalen Netzwerk verbunden ist, verfügen die Apps in der ASE ohne zusätzliche Konfiguration über Zugriff auf die dort enthaltenen Ressourcen.
+Alle App Service-Umgebungen – extern und ILB – besitzen eine virtuelle IP (VIP), die für eingehenden Verwaltungsdatenverkehr sowie bei Internetaufrufen aus der ASE als Absenderadresse verwendet wird. Die Aufrufe, die von einer ASE aus ins Internet erfolgen, verlassen das VNET über die der ASE zugewiesene VIP. Die öffentliche IP dieser VIP ist die Quell-IP für alle Aufrufe, die von der ASE ins Internet gehen. Wenn die Apps in Ihrer ASE Ressourcen in Ihrem VNet oder über ein VPN aufrufen, ist die Quell-IP eine der IPs in dem von Ihrer ASE verwendeten Subnetz. Da sich die ASE im VNet befindet, hat sie ohne zusätzliche Konfiguration auch Zugriff auf Ressourcen im VNet. Wenn das VNet mit Ihrem lokalen Netzwerk verbunden ist, verfügen die Apps in der ASE ohne zusätzliche Konfiguration über Zugriff auf die dort enthaltenen Ressourcen.
 
 ![Externe ASE][1] 
 
 Wenn Sie über eine externe ASE verfügen, ist die öffentliche VIP auch der Endpunkt, auf den die ASE-Apps aufgelöst werden für:
 
-* HTTP/S. 
-* FTP/S. 
-* Webbereitstellung.
-* Remotedebuggen.
+* HTTP/S 
+* FTP/S
+* Webbereitstellung
+* Remotedebuggen
 
 ![ILB ASE][2]
 
-Wenn Sie über eine ILB-ASE verfügen, ist die Adresse der ILB der Endpunkt für HTTP/S, FTP/S, Webbereitstellung und Remotedebuggen.
-
-Die normalen App-Zugriffsports sind:
-
-| Zweck | From | To |
-|----------|---------|-------------|
-|  HTTP/HTTPS  | Vom Benutzer konfigurierbar |  80, 443 |
-|  FTP/FTPS    | Vom Benutzer konfigurierbar |  21, 990, 10001-10020 |
-|  Remotedebuggen in Visual Studio  |  Vom Benutzer konfigurierbar |  4020, 4022, 4024 |
-|  Web Deploy-Dienst | Vom Benutzer konfigurierbar | 8172 |
-
-Dies gilt für externe ASEs und ILB-ASEs. Wenn Sie eine externe ASE nutzen, erreichen Sie diese Ports über die öffentliche VIP. Wenn Sie eine ILB-ASE nutzen, erreichen Sie diese Ports über die ILB. Wenn Sie Port 443 sperren, hat dies Auswirkungen auf einige im Portal verfügbare Features. Weitere Informationen finden Sie unter [Portalabhängigkeiten](#portaldep).
+Wenn Sie über eine ILB-ASE verfügen, ist die Adresse der ILB der Endpunkt für HTTP/S, FTP/S, Webbereitstellung und Remotedebugging.
 
 ## <a name="ase-subnet-size"></a>ASE-Subnetzgröße ##
 
-Die Größe des Subnetzes, das zum Hosten einer ASE verwendet wird, kann nach der ASE-Bereitstellung nicht mehr geändert werden.  Die ASE verwendet eine Adresse für jede Infrastrukturrolle sowie für jede Instanz eines isolierten App Service-Plans.  Zusätzlich werden 5 Adressen für den Azure-Netzwerkbetrieb für jedes erstellte Subnetz verwendet.  Eine ASE ohne App Service-Pläne verwendet 12 Adressen, bevor Sie eine App erstellen.  Wenn es sich um eine ILB-ASE handelt, werden vor dem Erstellen einer App in dieser ASE 13 Adressen verwendet. Wenn Sie Ihre ASE horizontal hochskalieren, werden Infrastrukturrollen jedes Vielfache von 15 und 20 Ihrer App Service-Planinstanzen hinzugefügt.
+Die Größe des Subnetzes, das zum Hosten einer ASE verwendet wird, kann nach der ASE-Bereitstellung nicht mehr geändert werden.  Die ASE verwendet eine Adresse für jede Infrastrukturrolle sowie für jede Instanz eines isolierten App Service-Plans.  Zusätzlich werden im Azure-Netzwerk fünf Adressen für jedes erstellte Subnetz verwendet.  Eine ASE ohne App Service-Pläne verwendet 12 Adressen, bevor Sie eine App erstellen.  Wenn es sich um eine ILB-ASE handelt, werden vor dem Erstellen einer App in dieser ASE 13 Adressen verwendet. Wenn Sie Ihre ASE horizontal hochskalieren, werden Infrastrukturrollen jedes Vielfache von 15 und 20 Ihrer App Service-Planinstanzen hinzugefügt.
 
    > [!NOTE]
    > Im Subnetz kann sich ausschließlich die ASE befinden. Achten Sie darauf, einen Adressbereich auszuwählen, der auf künftiges Wachstum ausgelegt ist. Diese Einstellung kann später nicht geändert werden. Es wird eine Größe von `/24` mit 256 Adressen empfohlen.
 
-Wenn Sie zentral hoch- oder herunterskalieren, werden neue Rollen der entsprechenden Größe hinzugefügt und Ihre Workloads werden dann von der aktuellen Größe auf die Zielgröße migriert. Erst nach der Migration Ihrer Apps werden die ursprünglichen virtuellen Computer entfernt. Das bedeutet, wenn Sie über eine ASE mit 100 ASP-Instanzen verfügen, gäbe es einen Zeitraum, in dem Sie die doppelte Anzahl von virtuellen Computern benötigen.  Aus diesem Grund empfehlen wir die Verwendung von „/24“, um eventuelle Änderungen zu berücksichtigen.  
+Wenn Sie zentral hoch- oder herunterskalieren, werden neue Rollen der entsprechenden Größe hinzugefügt und Ihre Workloads werden dann von der aktuellen Größe auf die Zielgröße migriert. Die ursprünglichen VMs werden erst nach der Migration der Workloads entfernt. Wenn Sie beispielsweise über eine ASE mit 100 ASP-Instanzen verfügen, gibt es einen bestimmten Zeitraum, in dem Sie die doppelte Anzahl von VMs benötigen.  Aus diesem Grund empfehlen wir die Verwendung von „/24“, um eventuelle Änderungen zu berücksichtigen.  
 
 ## <a name="ase-dependencies"></a>ASE-Abhängigkeiten ##
 
 ### <a name="ase-inbound-dependencies"></a>Eingehende ASE-Abhängigkeiten ###
 
-Die eingehenden ASE-Zugriffsabhängigkeiten sind:
+Damit die App Service-Umgebung funktioniert, müssen die folgenden Ports geöffnet sein:
 
 | Zweck | From | To |
 |-----|------|----|
 | Verwaltung | App Service-Verwaltungsadressen | ASE-Subnetz: 454, 455 |
 |  Interne ASE-Kommunikation | ASE-Subnetz: Alle Ports | ASE-Subnetz: Alle Ports
-|  Azure Load Balancer eingehend zulassen | Azure Load Balancer | ASE-Subnetz: Alle Ports
-|  Von der App zugewiesene IP-Adressen | Von der App zugewiesene Adressen | ASE-Subnetz: Alle Ports
+|  Azure Load Balancer eingehend zulassen | Azure Load Balancer | ASE-Subnetz: 16001
 
-Zusätzlich zur Systemüberwachung ermöglicht der eingehende Verwaltungsdatenverkehr die Steuerung und Kontrolle der ASE. Die Quelladressen für diesen Datenverkehr sind im Dokument [App Service-Umgebung Management-Adressen][ASEManagement] aufgeführt. Die Netzwerksicherheitskonfiguration muss den Zugriff über alle IP-Adressen auf den Ports 454 und 455 zulassen. Wenn Sie den Zugriff von diesen Adressen blockieren, wird Ihr ASE fehlerhaft und dann entsprechend ausgesetzt.
+Zwei weitere Ports können bei einem Portscan als offen angezeigt werden: 7654 und 1221. Diese antworten mit einer IP-Adresse und keinen weiteren Informationen. Sie können bei Bedarf blockiert werden. 
 
-Viele Ports im ASE-Subnetz werden für die Kommunikation zwischen internen Komponenten verwendet, und sie können sich ändern.  Deshalb muss auf alle Ports im ASE-Subnetz aus dem ASE-Subnetz zugegriffen werden können. 
+Zusätzlich zur Systemüberwachung ermöglicht der eingehende Verwaltungsdatenverkehr die Steuerung und Kontrolle der ASE. Die Quelladressen für diesen Datenverkehr sind im Dokument [App Service-Umgebung Management-Adressen][ASEManagement] aufgeführt. Die Netzwerksicherheitskonfiguration muss den Zugriff über die IP-Adressen der Verwaltung für die App Service-Umgebung an den Ports 454 und 455 zulassen. Wenn Sie den Zugriff von diesen Adressen blockieren, wird Ihr ASE fehlerhaft und dann entsprechend ausgesetzt. Der TCP-Datenverkehr, der über die Ports 454 und 455 eintrifft, muss wieder vom gleichen VIP ausgehen, sonst haben Sie ein asymmetrisches Routingproblem. 
 
-Für die Kommunikation zwischen dem Azure Load Balancer und dem ASE-Subnetz müssen mindestens die Ports 454, 455 und 16001 geöffnet sein. Port 16001 wird für Keep-Alive-Datenverkehr zwischen dem Load Balancer und der ASE verwendet. Wenn Sie eine ILB-ASE verwenden, können Sie den Datenverkehr auf die Ports 454, 455 und 16001 beschränken.  Wenn Sie eine externe ASE verwenden, müssen Sie die normalen App-Zugriffsports berücksichtigen.  Wenn Sie von der App zugewiesene Adressen verwenden, müssen Sie sie für alle Ports öffnen.  Wenn eine Adresse einer bestimmten App zugewiesen ist, verwendet der Load Balancer zum Senden von HTTP- und HTTPS-Datenverkehr an die ASE Ports, die nicht im Voraus bekannt sind.
+Viele Ports im ASE-Subnetz werden für die Kommunikation zwischen internen Komponenten verwendet, und sie können sich ändern. Deshalb muss auf alle Ports im ASE-Subnetz aus dem ASE-Subnetz zugegriffen werden können. 
 
-Wenn Sie von der App zugewiesene IP-Adressen verwenden, müssen Sie Datenverkehr von den IP-Adressen, die Ihren Apps zugewiesen sind, an das ASE-Subnetz zulassen.
+Für die Kommunikation zwischen dem Azure Load Balancer und dem ASE-Subnetz müssen mindestens die Ports 454, 455 und 16001 geöffnet sein. Port 16001 wird für Keep-Alive-Datenverkehr zwischen dem Load Balancer und der ASE verwendet. Wenn Sie eine ILB-ASE verwenden, können Sie den Datenverkehr auf die Ports 454, 455 und 16001 beschränken.  Wenn Sie eine externe ASE verwenden, müssen Sie die normalen App-Zugriffsports berücksichtigen.  
 
-Der TCP-Datenverkehr, der über die Ports 454 und 455 eintrifft, muss wieder vom gleichen VIP ausgehen, sonst haben Sie ein asymmetrisches Routingproblem. 
+Darüber hinaus müssen Sie sich noch um die Anwendungsports kümmern:
+
+| Zweck | Ports |
+|----------|-------------|
+|  HTTP/HTTPS  | 80, 443 |
+|  FTP/FTPS    | 21, 990, 10001-10020 |
+|  Remotedebuggen in Visual Studio  |  4020, 4022, 4024 |
+|  Web Deploy-Dienst | 8172 |
+
+Wenn Sie die Anwendungsports blockieren, könnte zwar Ihre ASE noch funktionieren, aber Ihre App möglicherweise nicht mehr.  Wenn Sie von der App zugewiesene IP-Adressen mit einer externen App Service-Umgebung verwenden, müssen Sie den gesamten Datenverkehr von den IP-Adressen zulassen, die Ihren Apps im Subnetz der App Service-Umgebung zugeordnet wurden. Dies gilt für die Ports, die im Portal der App Service-Umgebung auf der Seite mit den IP-Adressen angezeigt werden.
 
 ### <a name="ase-outbound-dependencies"></a>Ausgehende ASE-Abhängigkeiten ###
 
 Eine ASE hängt beim ausgehenden Zugriff von mehreren externen Systemen ab. Viele dieser Systemabhängigkeiten werden über DNS-Namen festgelegt und lassen sich keiner festen IP-Adressengruppe zuordnen. Somit erfordert die ASE den ausgehenden Zugriff aus dem ASE-Subnetz auf alle externen IP-Adressen über eine Vielzahl von Ports. 
 
-Die vollständige Liste der ausgehenden Abhängigkeiten ist in dem Dokument aufgeführt, das das [Sperren des ausgehenden Datenverkehrs der App Service-Umgebung](./firewall-integration.md) beschreibt. Wenn die ASE nicht mehr auf ihre Abhängigkeiten zugreifen kann, ist sie nicht mehr funktionsfähig. Nach einer gewissen Zeit wird die ASE angehalten. 
+Die ASE kommuniziert über folgende Ports mit Adressen, auf die über das Internet zugegriffen werden kann:
+
+| Verwendung | Ports |
+|-----|------|
+| DNS | 53 |
+| NTP | 123 |
+| CRL, Windows-Updates, Linux-Abhängigkeiten, Azure-Dienste | 80/443 |
+| Azure SQL | 1433 | 
+| Überwachung | 12000 |
+
+Die ausgehenden Abhängigkeiten werden im Dokument zum [Sperren des ausgehenden Datenverkehrs der App Service-Umgebung](./firewall-integration.md) aufgeführt. Wenn die ASE nicht mehr auf ihre Abhängigkeiten zugreifen kann, ist sie nicht mehr funktionsfähig. Nach einer gewissen Zeit wird die ASE angehalten. 
 
 ### <a name="customer-dns"></a>Kunden-DNS ###
 
-Wenn das VNet mit einem kundendefinierten DNS-Server konfiguriert ist, wird es von den Workloads des Mandanten verwendet. Zu Verwaltungszwecken muss die ASE auch weiterhin mit dem Azure-DNS kommunizieren können. 
+Wenn das VNet mit einem kundendefinierten DNS-Server konfiguriert ist, wird es von den Workloads des Mandanten verwendet. Die ASE verwendet Azure DNS zu Verwaltungszwecken. Wenn das VNET mit einem vom Kunden ausgewählten DNS-Server konfiguriert ist, muss dieser DNS-Server aus dem Subnetz erreichbar sein, in dem sich die ASE befindet.
 
-Wenn das VNet mit einem Kunden-DNS auf der anderen Seite eines VPN konfiguriert ist, muss der DNS-Server aus dem Subnetz erreichbar sein, das die ASE enthält.
-
-Sie können die Auflösung Ihrer Web-App mit dem Konsolenbefehl *nameresolver* testen. Wechseln Sie zum Debugfenster in Ihrer SCM-Website für Ihre App oder zur App im Portal, und wählen Sie die Konsole aus. Über die Shell-Eingabeaufforderung können Sie den Befehl *nameresolver* zusammen mit der Adresse ausgeben, die Sie suchen möchten. Das Ergebnis, das Sie erhalten, ist identisch mit dem, das Ihre App bei gleicher Suche erhalten würde. Wenn Sie nslookup verwenden, werden Sie stattdessen eine Suche mit Azure DNS durchführen.
+Sie können die DNS-Auflösung Ihrer Web-App mit dem Konsolenbefehl *nameresolver* testen. Wechseln Sie zum Debugfenster in Ihrer SCM-Website für Ihre App oder zur App im Portal, und wählen Sie die Konsole aus. Über die Shell-Eingabeaufforderung können Sie den Befehl *nameresolver* zusammen mit dem DNS-Namen ausgeben, den Sie suchen möchten. Das Ergebnis, das Sie erhalten, ist identisch mit dem, das Ihre App bei gleicher Suche erhalten würde. Wenn Sie nslookup verwenden, wird stattdessen eine Suche mit Azure DNS durchgeführt.
 
 Wenn Sie die DNS-Einstellung des VNet ändern, in dem sich Ihre ASE befindet, müssen Sie Ihre ASE neu starten. Um einen Neustart Ihrer ASE zu vermeiden, wird dringend empfohlen, dass Sie Ihre DNS-Einstellungen für Ihr VNet konfigurieren, bevor Sie die ASE erstellen.  
 
@@ -120,19 +123,9 @@ Neben den funktionalen Abhängigkeiten der ASE gibt es einige weitere zu beachte
 -   Prozess-Explorer
 -   Konsole
 
-Bei Verwendung einer ILB-ASE ist der SCM-Standort von außerhalb des VNet nicht aus dem Internet zugänglich. Wenn Ihre App auf einer ILB-ASE gehostet wird, funktionieren einige Funktionen vom Portal aus nicht.  
+Bei Verwendung einer ILB-ASE ist der SCM-Standort von außerhalb des VNETs nicht zugänglich. Einige Features funktionieren nicht über das App-Portal, weil sie Zugriff auf den SCM-Standort einer App benötigen. Anstatt das Portal zu verwenden, können Sie eine direkte Verbindung mit dem SCM-Standort herstellen. 
 
-Viele dieser vom SCM-Standort abhängigen Funktionen sind auch direkt in der Kudu-Konsole verfügbar. Sie können sich direkt mit der Konsole verbinden, anstatt das Portal zu verwenden. Wenn Ihre App in einer ILB-ASE gehostet wird, melden Sie sich mit Ihren Veröffentlichungsanmeldeinformationen an. Die URL für den Zugriff auf den SCM-Standort einer in einer ILB-ASE gehosteten App besitzt das folgende Format: 
-
-```
-<appname>.scm.<domain name the ILB ASE was created with> 
-```
-
-Wenn Ihre ILB-ASE den Domänennamen *contoso.net* aufweist und der App-Name *testapp* lautet, wird die App unter *testapp.contoso.net* erreicht. Der entsprechende SCM-Standort ist unter *testapp.scm.contoso.net* zu erreichen.
-
-## <a name="functions-and-web-jobs"></a>Funktionen und Webaufträge ##
-
-Funktionen und Webaufträge hängen von der SCM-Website ab. Ihre Verwendung im Portal wird jedoch unterstützt, selbst wenn sich Ihre Apps in einer ILB-ASE befinden, solange Ihr Browser die SCM-Website erreichen kann.  Wenn Sie ein selbstsigniertes Zertifikat mit Ihrer ILB-ASE verwenden, müssen Sie Ihren Browser anweisen, diesem Zertifikat zu vertrauen.  Für Internet Explorer und Microsoft Edge bedeutet dies, dass sich das Zertifikat im Vertrauensspeicher des Computers befinden muss.  Wenn Sie Chrome verwenden, müssen Sie das Zertifikat vorab im Browser akzeptieren, indem Sie direkt zur SCM-Website browsen.  Die ideale Lösung stellt die Verwendung eines kommerziellen Zertifikats dar, das in der Vertrauenskette Ihres Browsers enthalten ist.  
+Wenn Ihre ILB-ASE den Domänennamen *contoso.appserviceenvironnment.net* aufweist und der App-Name *testapp* lautet, wird die App unter *testapp.contoso.appserviceenvironment.net* erreicht. Der entsprechende SCM-Standort ist unter *testapp.scm.contoso.appserviceenvironment.net* zu erreichen.
 
 ## <a name="ase-ip-addresses"></a>ASE-IP-Adressen ##
 
@@ -140,10 +133,10 @@ Eine ASE muss einige IP-Adressen berücksichtigen. Sie lauten wie folgt:
 
 - **Öffentliche IP-Adresse für eingehenden Datenverkehr**: Für den App-Datenverkehr in einer externen ASE und für den Verwaltungsdatenverkehr sowohl in einer externen ASE als auch in einer ILB-ASE.
 - **Öffentliche IP-Adresse für ausgehenden Datenverkehr**: Als „Absender“ für von der ASE ausgehende und das VNet verlassende Verbindungen, die nicht durch ein VPN weitergeleitet werden.
-- **ILB IP-Adresse**: Wenn Sie eine ILB-ASE verwenden.
+- **ILB IP-Adresse**: Die ILB-IP-Adresse ist nur in einer ILB-ASE vorhanden.
 - **Von der App zugewiesene IP-basierte SSL-Adressen**: Kann nur in einer externen ASE verwendet werden, wenn gleichzeitig auch IP-basiertes SSL konfiguriert ist.
 
-Alle diese IP-Adressen sind von der ASE-Benutzeroberfläche aus auf einfache Weise in der ASEv2 im Azure-Portal sichtbar. Wenn Sie eine ILB-ASE verwenden, wird die IP der ILB angezeigt.
+All diese IP-Adressen sind über die ASE-Benutzeroberfläche im Azure-Portal sichtbar. Wenn Sie eine ILB-ASE verwenden, wird die IP der ILB angezeigt.
 
    > [!NOTE]
    > Diese IP-Adressen werden nicht geändert, solange Ihr ASE aktiv bleibt.  Wenn Ihre ASE ausgesetzt und wiederhergestellt wird, ändern sich die von Ihrer ASE verwendeten Adressen. Die normale Ursache für die Aussetzung einer ASE ist, wenn Sie den eingehenden Verwaltungszugriff oder den Zugriff auf eine ASE-Abhängigkeit blockieren. 
@@ -164,13 +157,34 @@ In einer ASE haben Sie keinen Zugriff auf die VMs, die zum Hosten der eigentlich
 
 NSGs können über das Azure-Portal und über PowerShell konfiguriert werden. Die folgenden Informationen beziehen sich auf das Azure-Portal. NSGs können Sie unter **Netzwerk** im Portal als Ressource der obersten Ebene erstellen.
 
-Wenn die Anforderungen in Bezug auf ein- und ausgehenden Datenverkehr berücksichtigt werden, sollten die Netzwerksicherheitsgruppen denen in diesem Beispiel ähneln. Der VNET-Adressbereich lautet _192.168.250.0/23_, und das Subnetz, in dem sich die ASE befindet, lautet _192.168.251.128/25_.
+Damit eine ASE funktioniert, müssen die erforderlichen Einträge in einer Netzwerksicherheitsgruppe zum Zulassen von Datenverkehr festgelegt werden:
 
-Die ersten beiden Anforderungen an den eingehenden Datenverkehr, ohne die die ASE nicht funktionsfähig ist, sind in diesem Beispiel in der Liste an oberster Stelle genannt. Sie ermöglichen die Verwaltung der ASE und die Kommunikation der ASE mit sich selbst. Die anderen Einträge sind alle vom Mandanten konfigurierbar und können den Netzwerkzugriff auf die in der ASE gehosteten Anwendungen steuern. 
+**Eingehend**
+* aus dem IP-Diensttag AppServiceManagement an den Ports 454 und 455
+* aus dem Lastenausgleich an Port 16001
+* von ASE-Subnetz zu ASE-Subnetz an allen Ports
+
+**Ausgehend**
+* an alle IPs an Port 123
+* an alle IPs an den Ports 80 und 443
+* an das IP-Diensttag AzureSQL an Port 1433
+* an alle IPs an Port 12000
+* an das ASE-Subnetz an allen Ports
+
+Der DNS-Port muss nicht hinzugefügt werden, da sich die NSG-Regeln nicht auf Datenverkehr zu DNS auswirken. Diese Ports umfassen nicht die Ports, die Ihre Apps zur erfolgreichen Verwendung benötigen. Die normalen App-Zugriffsports sind:
+
+| Zweck | Ports |
+|----------|-------------|
+|  HTTP/HTTPS  | 80, 443 |
+|  FTP/FTPS    | 21, 990, 10001-10020 |
+|  Remotedebuggen in Visual Studio  |  4020, 4022, 4024 |
+|  Web Deploy-Dienst | 8172 |
+
+Wenn die Anforderungen in Bezug auf ein- und ausgehenden Datenverkehr berücksichtigt werden, sollten die Netzwerksicherheitsgruppen denen in diesem Beispiel ähneln. 
 
 ![Eingangssicherheitsregeln][4]
 
-Eine Standardregel ermöglicht den IPs im VNet die Kommunikation mit dem ASE-Subnetz. Eine weitere Standardregel ermöglicht dem Lastenausgleich (auch als öffentliche VIP-Adresse bezeichnet) die Kommunikation mit der ASE. Sie können die Standardregeln anzeigen lassen, indem Sie neben dem Symbol **Hinzufügen** auf **Standardregeln** klicken. Wenn Sie nach den angezeigten NSG-Regeln noch eine Ablehnungsregel für alles andere hinzufügen, unterbinden Sie den Datenverkehr zwischen der VIP und der ASE. Wenn Sie Datenverkehr aus dem VNet verhindern möchten, fügen Sie eine eigene Regel zum Zulassen von eingehendem Datenverkehr hinzu. Verwenden Sie eine auf AzureLoadBalancer festgelegte Quelle mit dem Ziel **Beliebig** und einem Portbereich von **\***. Da die NSG-Regel auf das ASE-Subnetz angewendet wird, müssen Sie kein spezifisches Ziel angeben.
+Eine Standardregel ermöglicht den IPs im VNet die Kommunikation mit dem ASE-Subnetz. Eine weitere Standardregel ermöglicht dem Lastenausgleich (auch als öffentliche VIP-Adresse bezeichnet) die Kommunikation mit der ASE. Sie können die Standardregeln anzeigen lassen, indem Sie neben dem Symbol **Hinzufügen** auf **Standardregeln** klicken. Wenn Sie vor den Standardregeln eine Ablehnungsregel für alles andere hinzufügen, unterbinden Sie den Datenverkehr zwischen der VIP und der ASE. Wenn Sie Datenverkehr aus dem VNet verhindern möchten, fügen Sie eine eigene Regel zum Zulassen von eingehendem Datenverkehr hinzu. Verwenden Sie eine auf AzureLoadBalancer festgelegte Quelle mit dem Ziel **Beliebig** und einem Portbereich von **\*** . Da die NSG-Regel auf das ASE-Subnetz angewendet wird, müssen Sie kein spezifisches Ziel angeben.
 
 Wenn Sie der App eine IP-Adresse zugewiesen haben, müssen Sie die Ports geöffnet halten. Sie können die Ports anzeigen lassen, indem Sie **App Service-Umgebung** > **IP-Adressen** auswählen.  
 
@@ -207,9 +221,9 @@ Führen Sie diese Schritte aus, um die gleichen Routen manuell zu erstellen:
 
 Dienstendpunkte ermöglichen Ihnen das Beschränken des Zugriffs auf mehrinstanzenfähige Dienste auf eine Gruppe von virtuellen Azure-Netzwerken und Subnetzen. Weitere Informationen zu Dienstendpunkten finden Sie in der Dokumentation zu [VNET-Dienstendpunkten][serviceendpoints]. 
 
-Wenn Sie die Dienstendpunkte auf einer Ressource aktivieren, werden Routen erstellt, die eine höhere Priorität als alle anderen Routen haben. Bei Verwendung von Dienstendpunkten mit einer ASE mit Tunnelerzwingung wird für den Azure SQL- und Azure Storage-Verwaltungsdatenverkehr kein Tunneling erzwungen. 
+Wenn Sie die Dienstendpunkte auf einer Ressource aktivieren, werden Routen erstellt, die eine höhere Priorität als alle anderen Routen haben. Wenn Sie in einer ASE mit erzwungenem Tunneling Dienstendpunkte für einen Azure-Dienst verwenden, wird für den Datenverkehr zu diesem Dienst kein Tunneling erzwungen. 
 
-Wenn Dienstendpunkte in einem Subnetz mit einer Azure SQL-Instanz aktiviert werden, müssen für alle Azure SQL-Instanzen, mit denen aus diesem Subnetz Verbindungen hergestellt werden, Dienstendpunkte aktiviert sein. Falls Sie aus demselben Subnetz auf mehrere Azure SQL-Instanzen zugreifen möchten, ist es nicht möglich, dass Sie Dienstendpunkte nur auf einer Azure SQL-Instanz aktivieren, aber nicht auf einer anderen Instanz. Azure Storage weist ein anderes Verhalten als Azure SQL auf. Wenn Sie Dienstendpunkte mit Azure Storage aktivieren, sperren Sie den Zugriff auf diese Ressource aus Ihrem Subnetz. Der Zugriff auf andere Azure Storage-Konten ist aber auch dann möglich,wenn dafür keine Dienstendpunkte aktiviert wurden.  
+Wenn Dienstendpunkte in einem Subnetz mit einer Azure SQL-Instanz aktiviert werden, müssen für alle Azure SQL-Instanzen, mit denen aus diesem Subnetz Verbindungen hergestellt werden, Dienstendpunkte aktiviert sein. Falls Sie aus demselben Subnetz auf mehrere Azure SQL-Instanzen zugreifen möchten, ist es nicht möglich, dass Sie Dienstendpunkte nur auf einer Azure SQL-Instanz aktivieren, aber nicht auf einer anderen Instanz. In Bezug auf Dienstendpunkte verhält sich kein anderer Azure-Dienst so wie Azure SQL. Wenn Sie Dienstendpunkte mit Azure Storage aktivieren, sperren Sie den Zugriff auf diese Ressource aus Ihrem Subnetz. Der Zugriff auf andere Azure Storage-Konten ist aber auch dann möglich,wenn dafür keine Dienstendpunkte aktiviert wurden.  
 
 ![Dienstendpunkte][8]
 

@@ -4,15 +4,15 @@ description: In diesem Artikel werden Konzepte wie gespeicherte Prozeduren, Trig
 author: markjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 05/21/2019
+ms.date: 06/14/2019
 ms.author: mjbrown
 ms.reviewer: sngun
-ms.openlocfilehash: 40d120fe5fcc79721923d3493e74b5195ecc129c
-ms.sourcegitcommit: e9a46b4d22113655181a3e219d16397367e8492d
+ms.openlocfilehash: 529c536d9ea3b898745f03c80b63702b2af485da
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/21/2019
-ms.locfileid: "65965704"
+ms.lasthandoff: 06/17/2019
+ms.locfileid: "67165574"
 ---
 # <a name="stored-procedures-triggers-and-user-defined-functions"></a>Gespeicherte Prozeduren, Trigger und benutzerdefinierte Funktionen
 
@@ -75,7 +75,7 @@ Für JavaScript-Funktionen gilt auch die [bereitgestellte Durchsatzkapazität](r
 
 ## <a name="triggers"></a>Trigger
 
-In diesem Abschnitt werden die zwei Triggertypen beschrieben:
+Azure Cosmos DB unterstützt zwei Arten von Triggern:
 
 ### <a name="pre-triggers"></a>Vorangestellte Trigger
 
@@ -84,6 +84,9 @@ Azure Cosmos DB stellt Trigger bereit, die durch Ausführen eines Vorgangs für 
 ### <a name="post-triggers"></a>Nachgestellte Trigger
 
 Ähnlich wie vorangestellte Trigger sind nachgestellte Trigger ebenfalls einem Vorgang für ein Azure Cosmos DB-Element zugeordnet, und sie erfordern keine Eingabeparameter. Sie werden ausgeführt, *nachdem* der Vorgang abgeschlossen wurde, und haben Zugriff auf die Antwortnachricht, die an den Client gesendet wird. Beispiele finden Sie unter [Schreiben von Triggern](how-to-write-stored-procedures-triggers-udfs.md#triggers).
+
+> [!NOTE]
+> Registrierte Trigger werden bei Auftreten der entsprechenden Vorgänge (Erstellen/Löschen/Ersetzen/Aktualisieren) nicht automatisch ausgeführt. Sie müssen beim Ausführen dieser Vorgänge explizit aufgerufen werden. Weitere Informationen finden Sie im Artikel [Ausführen von Triggern](how-to-use-stored-procedures-triggers-udfs.md#pre-triggers).
 
 ## <a id="udfs"></a>Benutzerdefinierte Funktionen
 

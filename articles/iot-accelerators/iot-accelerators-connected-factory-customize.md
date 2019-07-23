@@ -9,12 +9,12 @@ ms.devlang: csharp
 ms.topic: conceptual
 ms.date: 12/14/2017
 ms.author: dobett
-ms.openlocfilehash: 7d4e95d066e191e1d5b6d083ede65843dbe73f31
-ms.sourcegitcommit: 15e9613e9e32288e174241efdb365fa0b12ec2ac
+ms.openlocfilehash: 6062f8b3992732e0e0f9bbdae9549e69c393f4ff
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/28/2019
-ms.locfileid: "57010071"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67080487"
 ---
 # <a name="customize-how-the-connected-factory-solution-displays-data-from-your-opc-ua-servers"></a>Anpassen der Anzeige von Daten von Ihren OPC UA-Servern durch die Lösung für eine verbundene Factory
 
@@ -39,7 +39,7 @@ Dieser Artikel beschreibt Folgendes:
 
 ## <a name="data-sources"></a>Datenquellen
 
-Die Lösung für eine verbundene Factory zeigt Daten von OPC UA-Servern an, die mit der Lösung verbunden sind. Die Standardinstallation umfasst mehrere OPC UA-Server, auf denen eine Werkssimulation ausgeführt wird. Sie können eigene OPC UA-Server hinzufügen, die Sie [über ein Gateway][lnk-connect-cf] mit der Lösung verbinden können.
+Die Lösung für eine verbundene Factory zeigt Daten von OPC UA-Servern an, die mit der Lösung verbunden sind. Die Standardinstallation umfasst mehrere OPC UA-Server, auf denen eine Werkssimulation ausgeführt wird. Sie können eigene OPC UA-Server hinzufügen, die Sie [über ein Gateway] [lnk-connect-cf] mit der Lösung verbinden.
 
 Sie können im Dashboard die Datenelemente durchsuchen, die ein verbundener OPC UA-Server an Ihre Lösung senden kann:
 
@@ -79,8 +79,6 @@ Das Repository **azure-iot-connected-factory** enthält das PowerShell-Skript **
 
 In den folgenden Artikeln erfahren Sie mehr über den Solution Accelerator für eine verbundene Factory:
 
-* [Exemplarische Vorgehensweise für den Solution Accelerator für verbundene Factorys][lnk-rm-walkthrough]
-* [Bereitstellen eines Gateways für die verbundene Factory][lnk-connect-cf]
 * [Berechtigungen für die Website „azureiotsolutions.com“][lnk-permissions]
 * [Verbundene Factory: Häufig gestellte Fragen](iot-accelerators-faq-cf.md)
 * [Häufig gestellte Fragen][lnk-faq]
@@ -93,7 +91,5 @@ In den folgenden Artikeln erfahren Sie mehr über den Solution Accelerator für 
 [img-published]: ./media/iot-accelerators-connected-factory-customize/published.png
 
 
-[lnk-rm-walkthrough]:iot-accelerators-connected-factory-sample-walkthrough.md
-[lnk-connect-cf]:iot-accelerators-connected-factory-gateway-deployment.md
 [lnk-permissions]: iot-accelerators-permissions.md
 [lnk-faq]: iot-accelerators-faq.md

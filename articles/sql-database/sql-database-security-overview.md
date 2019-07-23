@@ -12,12 +12,12 @@ ms.author: aliceku
 ms.reviewer: vanto, carlrab, emlisa
 manager: craigg
 ms.date: 05/14/2019
-ms.openlocfilehash: af14d5eb521d531f86433712a0d6c325ae7a1cd6
-ms.sourcegitcommit: 25a60179840b30706429c397991157f27de9e886
+ms.openlocfilehash: 6b9a5ca350377777beebda24e52bc678c976ad19
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/28/2019
-ms.locfileid: "66258628"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67070199"
 ---
 # <a name="an-overview-of-azure-sql-database-security-capabilities"></a>Eine Übersicht über die Sicherheitsfunktionen von Azure SQL-Datenbank
 
@@ -100,9 +100,9 @@ SQL-Datenbank schützt Kundendaten durch das Verschlüsseln von Daten bei der Ü
 
 SQL Server erzwingt die Verschlüsselung (SSL/TLS) jederzeit für alle Verbindungen. Dadurch wird sichergestellt, dass alle Daten „im Übergang“ zwischen Client und Server verschlüsselt werden, und zwar unabhängig von der Einstellung von **Encrypt** oder **TrustServerCertificate** in der Verbindungszeichenfolge.
 
-Als bewährte Methode empfehlen wir, dass Sie in der Verbindungszeichenfolge Ihrer Anwendung eine verschlüsselte Verbindung angeben und dem Serverzertifikat _**nicht**_ vertrauen. Dies erzwingt, dass Ihre Anwendung das Serverzertifikat überprüft und verhindert somit, dass Ihre Anwendung für Angriffe vom Typ „Man-in-the-Middle“ anfällig ist.
+Als bewährte Methode empfehlen wir, dass Sie in der Verbindungszeichenfolge Ihrer Anwendung eine verschlüsselte Verbindung angeben und dem Serverzertifikat _**nicht**_ vertrauen. Dies erzwingt, dass Ihre Anwendung das Serverzertifikat überprüft, und verhindert somit, dass Ihre Anwendung für Angriffe vom Typ „Man-in-the-Middle“ anfällig ist.
 
-Wenn Sie beispielsweise den ADO.NET-Treiber verwenden, geschieht dies über **Encrypt=True** und **TrustServerCertificate=False**. Wenn Sie Ihre Verbindungszeichenfolge aus dem Azure-Portal abrufen, werden die richtigen Einstellungen verwendet.
+Bei Verwendung des ADO.NET-Treibers erfolgt dies z. B. über **Encrypt=True** und **TrustServerCertificate=False**. Wenn Sie Ihre Verbindungszeichenfolge über das Azure-Portal abrufen, verfügt sie bereits über die richtigen Einstellungen.
 
 > [!IMPORTANT]
 > Beachten Sie, dass einige Nicht-Microsoft-Treiber TLS möglicherweise nicht standardmäßig verwenden oder sich auf eine ältere Version von TLS (niedriger als 1.2) verlassen, um zu funktionieren. In diesem Fall erlaubt SQL Server Ihnen weiterhin, eine Verbindung mit Ihrer Datenbank herzustellen. Wir empfehlen Ihnen jedoch, die Sicherheitsrisiken auszuwerten, die damit verbunden sind, wenn Sie solchen Treibern und Anwendungen eine Verbindung mit der SQL-Datenbank ermöglichen, insbesondere wenn Sie vertrauliche Daten speichern. 

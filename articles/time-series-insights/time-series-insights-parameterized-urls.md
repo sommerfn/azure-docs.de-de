@@ -6,23 +6,23 @@ services: time-series-insights
 author: ashannon7
 ms.author: dpalled
 manager: cshankar
-ms.reviewer: v-mamcge, jasonh, kfile, anshan
+ms.reviewer: v-mamcge, jasonh, kfile
 ms.topic: conceptual
 ms.workload: big-data
 ms.date: 04/30/2019
 ms.custom: seodec18
-ms.openlocfilehash: dfc04397b1d7e9f3256810cbe469067ae52c99bd
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.openlocfilehash: df60429a8b3d6fbdc504a7605d1502b4e084d386
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/27/2019
-ms.locfileid: "66238972"
+ms.lasthandoff: 06/17/2019
+ms.locfileid: "67165303"
 ---
 # <a name="share-a-custom-view-using-a-parameterized-url"></a>Teilen einer benutzerdefinierten Ansicht mit einer parametrisierten URL
 
 Sie können eine parametrisierte URL der benutzerdefinierten Ansicht programmgesteuert erstellen, um im Time Series Insights-Explorer eine benutzerdefinierte Ansicht zu teilen.
 
-Der Time Series Insights-Explorer unterstützt URL-Abfrageparameter, um Ansichten auf der Benutzeroberfläche direkt über die URL anzugeben. Indem Sie nur die URL verwenden, können Sie beispielsweise eine Zielumgebung, ein Suchprädikat und eine gewünschte Zeitspanne angeben. Wenn ein Benutzer auf die benutzerdefinierte URL klickt, stellt die Oberfläche einen direkten Link zu diesem Objekt im Time Series Insights-Portal bereit. Es gelten die Richtlinien für den Datenzugriff.
+Der Time Series Insights-Explorer unterstützt URL-Abfrageparameter, um Ansichten auf der Benutzeroberfläche direkt über die URL anzugeben. Indem Sie nur die URL verwenden, können Sie beispielsweise eine Zielumgebung, ein Suchprädikat und eine gewünschte Zeitspanne angeben. Wenn ein Benutzer die benutzerdefinierte URL auswählt, wird auf der Oberfläche ein direkter Link zu diesem Objekt im Time Series Insights-Portal bereitgestellt. Es gelten die Richtlinien für den Datenzugriff.
 
 > [!TIP]
 > * Zeigen Sie die kostenlose [Time Series Insights-Demo](https://insights.timeseries.azure.com/samples) an.

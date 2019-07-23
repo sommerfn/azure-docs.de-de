@@ -7,25 +7,25 @@ ms.service: marketplace
 ms.topic: conceptual
 ms.date: 02/05/2019
 ms.author: pabutler
-ms.openlocfilehash: 57efbfe12df8072d619cf71f4b08da2e2e5be3ce
-ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
+ms.openlocfilehash: 1a45af2cb5eed8daa4b50bb6f0b504f9653c827a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64942959"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67068952"
 ---
 # <a name="handling-review-feedback"></a>Verarbeiten von Prüfungsfeedback
 
 In diesem Artikel wird erläutert, wie Sie auf die Azure DevOps-Umgebung zugreifen können, die vom Microsoft Azure Marketplace-Prüfungsteam verwendet wird.  Wenn während des Schritts **Prüfung durch Microsoft** kritische Probleme in Ihrem Azure-Anwendungsangebot gefunden werden, können Sie sich bei diesem System anmelden, um detaillierte Informationen zu diesen Problemen einzusehen (Prüfungsfeedback).  Nachdem Sie alle diese Probleme behoben haben, müssen Sie Ihr Angebot erneut übermitteln, damit es in Azure Marketplace weiter veröffentlicht wird.  Das folgende Diagramm veranschaulicht, wie sich dieser Feedbackvorgang auf den Veröffentlichungsvorgang auswirkt.
 
-![Veröffentlichungsschritte mit VSTS-Feedback](./media/pub-flow-vsts-access.png)
+![Veröffentlichungsschritte mit Azure DevOps-Feedback](./media/pub-flow-vsts-access.png)
 
 In der Regel werden bei der Prüfung festgestellte Probleme als Pull-Requests (PR) bezeichnet.  Jeder Pull Request ist mit einem Onlineelement von [Azure DevOps](https://azure.microsoft.com/services/devops/) (zuvor Visual Studio Team Services [VSTS] genannt) verknüpft, das Details zu dem Problem enthält.  Die folgende Abbildung zeigt ein Beispiel für einen PR-Verweis einer Prüfung.  Für komplexe Szenarien erhalten Sie E-Mails vom Prüfungs- und Supportteam. 
 
 ![Registerkarte „Status“ mit Prüfungsfeedback](./media/status-tab-ms-review.png)
 
 
-## <a name="vsts-access"></a>VSTS-Zugriff
+## <a name="azure-devops-access"></a>Azure DevOps-Zugriff
 
 Zum Anzeigen der Pull Request-Elemente, auf die im Prüfungsfeedback verwiesen wird, müssen Herausgeber über eine entsprechende Autorisierung verfügen.  Andernfalls wird neuen Herausgebern eine Antwortseite des Typs `401 - Not Authorized` angezeigt, wenn versucht wird, Pull Requests einzusehen.  Um den Zugriff auf dieses Azure DevOps-Repository anzufordern, führen Sie die folgenden Schritte aus:
 
@@ -40,7 +40,7 @@ Zum Anzeigen der Pull Request-Elemente, auf die im Prüfungsfeedback verwiesen w
     ![Supportticketkategorie](./media/support-incident1.png)
 
 4. Geben Sie auf der Seite **Schritt 1 von 2** Ihre Kontaktinformationen ein, und wählen Sie **Weiter** aus.
-5. Geben Sie auf der Seite **Schritt 2 von 2** einen Vorfalltitel (z. B. `Request VSTS access`) sowie die Informationen an, die Sie im ersten Schritt (oben) gesammelt haben.  Lesen und akzeptieren Sie die Vereinbarung, und wählen Sie dann **Senden** aus.
+5. Geben Sie auf der Seite **Schritt 2 von 2** einen Vorfalltitel (z. B. `Request Azure DevOps access`) sowie die Informationen an, die Sie im ersten Schritt (oben) gesammelt haben.  Lesen und akzeptieren Sie die Vereinbarung, und wählen Sie dann **Senden** aus.
 
 Wenn die Erstellung des Vorfalls erfolgreich war, wird eine Bestätigungsseite angezeigt.  Speichern Sie die Bestätigungsinformationen auf dieser Seite zur künftigen Bezugnahme.  Das Microsoft-Supportteam sollte innerhalb weniger Werktage auf Ihre Zugriffsanforderung antworten.
 

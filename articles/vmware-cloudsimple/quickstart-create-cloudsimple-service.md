@@ -1,6 +1,6 @@
 ---
 title: Azure-VMware-Lösung von CloudSimple – Schnellstart – Erstellen des Diensts
-description: Erfahren Sie, wie der CloudSimple-Dienst erstellt wird und wie Knoten gekauft und reserviert werden.
+description: Erfahren Sie, wie der CloudSimple-Dienst erstellt wird und wie Knoten bereitgestellt und reserviert werden.
 author: sharaths-cs
 ms.author: dikamath
 ms.date: 04/10/2019
@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: vmware
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 9b3b95db24f4b0f9a0cf8f5102dfeea5dc51e29f
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 5732ea726bdecc10d0757224870ee5d8be83a2b2
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64576888"
+ms.lasthandoff: 06/17/2019
+ms.locfileid: "67164219"
 ---
 # <a name="quickstart---create-service"></a>Schnellstart: Erstellen des Diensts
 
@@ -21,7 +21,7 @@ Erstellen Sie zunächst die Azure-VMware-Lösung von CloudSimple im Azure-Portal
 
 ## <a name="vmware-solution-by-cloudsimple---service-overview"></a>VMware-Lösung von CloudSimple: Übersicht über den Dienst
 
-Der CloudSimple-Dienst ermöglicht es Ihnen, die Azure-VMware-Lösung von CloudSimple zu nutzen.  Nach Erstellen des Diensts können Sie Knoten kaufen, Knoten reservieren und Sie private Clouds erstellen.  Sie fügen den CloudSimple-Dienst in jeder Azure-Region hinzu, in der der CloudSimple-Dienst verfügbar ist.  Der Dienst definiert das Umkreisnetzwerk von Azure-VMware-Lösung von CloudSimple.  Dieses Umkreisnetzwerk wird für Dienste verwendet, zu denen VPN, ExpressRoute und Internetkonnektivität mit Ihren privaten Clouds gehören.
+Der CloudSimple-Dienst ermöglicht es Ihnen, die Azure-VMware-Lösung von CloudSimple zu nutzen.  Nach Erstellung des Diensts können Sie Knoten bereitstellen, Knoten reservieren und private Clouds erstellen.  Sie fügen den CloudSimple-Dienst in jeder Azure-Region hinzu, in der der CloudSimple-Dienst verfügbar ist.  Der Dienst definiert das Umkreisnetzwerk von Azure-VMware-Lösung von CloudSimple.  Dieses Umkreisnetzwerk wird für Dienste verwendet, zu denen VPN, ExpressRoute und Internetkonnektivität mit Ihren privaten Clouds gehören.
 
 Um den CloudSimple-Dienst hinzuzufügen, müssen Sie ein Gatewaysubnetz erstellen. Das Gatewaysubnetz wird verwendet, wenn das Edge-Netzwerk erstellt wird, und das Gatewaysubnetz erfordert einen /28-CIDR-Block. Der Gatewaysubnetz-Adressraum muss eindeutig sein. Er darf nicht mit einem Ihrer lokalen Netzwerkadressräume oder mit einem Adressraum des virtuellen Azure-Netzwerk überlappen.
 
@@ -47,9 +47,6 @@ Gehen Sie folgendermaßen vor, um den Ressourcenanbieter für den CloudSimple-Di
 
 ## <a name="create-the-service"></a>Erstellen des Diensts
 
->[!NOTE]
-> Der CloudSimple-Dienst muss für Ihr Abonnement aktiviert sein. Ist er nicht für Ihr Abonnement aktiviert, erhalten Sie einen Fehler, wenn Sie versuchen, den Dienst zu erstellen.  Führen Sie die Schritte aus dem Artikel [Enable the CloudSimple service](https://docs.azure.cloudsimple.com/enable-cloudsimple-service) (Aktivieren des CloudSimple-Diensts) aus, um den Dienst zu aktivieren.
-
 1. Wählen Sie **Alle Dienste** aus.
 2. Suchen Sie nach **CloudSimple Service**.
 
@@ -71,7 +68,7 @@ Gehen Sie folgendermaßen vor, um den Ressourcenanbieter für den CloudSimple-Di
 
 Der Dienst wird erstellt und zur Liste der Dienste hinzugefügt.
 
-## <a name="purchase-nodes"></a>Kaufen von Knoten
+## <a name="provision-nodes"></a>Bereitstellen von Knoten
 
 Um für die Umgebung einer privaten CloudSimple-Cloud Kapazität mit nutzungsbasierter Bezahlung einzurichten, müssen Sie zuerst Knoten im Azure-Portal bereitstellen.
 
@@ -85,7 +82,7 @@ Um für die Umgebung einer privaten CloudSimple-Cloud Kapazität mit nutzungsbas
 
     ![Hinzufügen von CloudSimple-Knoten](media/create-cloudsimple-node-add.png)
 
-5. Wählen Sie das Abonnement aus, für das Sie CloudSimple-Knoten kaufen möchten.
+5. Wählen Sie das Abonnement aus, in dem Sie CloudSimple-Knoten bereitstellen möchten.
 6. Wählen Sie die Ressourcengruppe für die Knoten aus. Um eine neue Ressourcengruppe hinzuzufügen, klicken Sie auf **Neue erstellen**.
 7. Geben Sie das Präfix ein, um die Knoten zu kennzeichnen.
 8. Wählen Sie den Standort für die Knotenressourcen aus.

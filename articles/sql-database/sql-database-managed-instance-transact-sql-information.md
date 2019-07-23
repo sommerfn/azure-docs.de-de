@@ -12,12 +12,12 @@ ms.reviewer: sstein, carlrab, bonova
 manager: craigg
 ms.date: 03/13/2019
 ms.custom: seoapril2019
-ms.openlocfilehash: 5c8a15aa5198983a56a0238c1bb56f9345d07acc
-ms.sourcegitcommit: 25a60179840b30706429c397991157f27de9e886
+ms.openlocfilehash: 2ca2e4e98f56f7df5e81217bcda00179f05ff69e
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/28/2019
-ms.locfileid: "66258593"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67070357"
 ---
 # <a name="azure-sql-database-managed-instance-t-sql-differences-from-sql-server"></a>T-SQL-Unterschiede zwischen einer verwalteten Azure SQL-Datenbank-Instanz und SQL Server
 
@@ -276,6 +276,7 @@ Weitere Informationen finden Sie unter [ALTER DATABASE](https://docs.microsoft.c
 
 ### <a name="sql-server-agent"></a>SQL Server-Agent
 
+- Das Aktivieren und Deaktivieren von SQL Server-Agent wird derzeit in verwalteten Instanzen nicht unterstützt. Der SQL-Agent wird kontinuierlich ausgeführt.
 - SQL Server-Agent-Einstellungen sind schreibgeschützt. Die Prozedur `sp_set_agent_properties` wird in einer verwalteten Instanz nicht unterstützt. 
 - Aufträge
   - T-SQL-Auftragsschritte werden unterstützt.
@@ -462,7 +463,7 @@ Der instanzübergreifende Service Broker wird nicht unterstützt:
 - In dem Subnetz, das für Ihre verwaltete Instanz reserviert ist, können Sie keine weiteren Ressourcen platzieren (beispielsweise virtuelle Computer). Platzieren Sie diese Ressourcen in anderen Subnetzen.
 - Das Subnetz muss eine ausreichende Anzahl verfügbarer [IP-Adressen](sql-database-managed-instance-connectivity-architecture.md#network-requirements) aufweisen. Der Mindestwert ist 16, wir empfehlen jedoch, mindestens 32 IP-Adressen im Subnetz vorzusehen.
 - [Dem Subnetz der verwalteten Instanz können keine Dienstendpunkte zugeordnet werden](sql-database-managed-instance-connectivity-architecture.md#network-requirements). Wenn Sie das virtuelle Netzwerk erstellen, überprüfen Sie, ob die Option „Dienstendpunkte“ auf „Deaktiviert“ festgelegt ist.
-- Anzahl und Typ der Instanzen, die Sie im Subnetz platzieren können, unterliegen einigen [Einschränkungen und Grenzwerten](sql-database-managed-instance-resource-limits.md#strategies-for-deploying-mixed-general-purpose-and-business-critical-instances)
+- Für die Anzahl von virtuellen Kernen und die Typen der Instanzen, die Sie in einer Region platzieren können, gibt es einige [Einschränkungen und Grenzwerte](sql-database-managed-instance-resource-limits.md#regional-resource-limitations).
 - Es gibt eine Reihe von [Sicherheitsregeln, die auf das Subnetz angewendet werden müssen](sql-database-managed-instance-connectivity-architecture.md#network-requirements).
 
 ### <a name="vnet"></a>VNET

@@ -3,8 +3,8 @@ title: Ältere SKUs für virtuelle Azure-VPN-Netzwerkgateways | Microsoft-Dokume
 description: So arbeiten Sie mit den alten SKUs „Basic“, „Standard“ und „HighPerformance“ für virtuelle Netzwerkgateways.
 services: vpn-gateway
 documentationcenter: na
-author: WenJason
-manager: digimobile
+author: cherylmc
+manager: jpconnock
 editor: ''
 tags: azure-resource-manager,azure-service-management
 ms.assetid: ''
@@ -13,15 +13,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-origin.date: 03/20/2018
-ms.date: 03/04/2019
-ms.author: v-jay
-ms.openlocfilehash: 5a9e3f63a484069bf8cd39f8a545d7c37f05c63c
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.date: 06/10/2019
+ms.author: cherylmc
+ms.openlocfilehash: 00f1677e2691f9be5bb4584b07ca00340a52b1e1
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "66159272"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67056438"
 ---
 # <a name="working-with-virtual-network-gateway-skus-legacy-skus"></a>Arbeiten mit SKUs für virtuelle Netzwerkgateways (Legacy-SKUs)
 
@@ -30,6 +29,8 @@ Dieser Artikel enthält Informationen über die Legacy-SKUs (alte SKUs) für vir
 ## <a name="gwsku"></a>Gateway-SKUs
 
 [!INCLUDE [Legacy gateway SKUs](../../includes/vpn-gateway-gwsku-legacy-include.md)]
+
+Sie können die Preise für ältere Gateways im Abschnitt **Gateways für virtuelle Netzwerke** anzeigen, der sich auf der Seite [ExpressRoute – Preise ](https://azure.microsoft.com/pricing/details/expressroute) befindet.
 
 ## <a name="agg"></a>Voraussichtlicher aggregierter Durchsatz nach SKU
 
@@ -68,5 +69,3 @@ Sie können die Größe eines Gateways auch im Azure-Portal ändern.
 Weitere Informationen zu den neuen Gateway-SKUs finden Sie unter [Gateway-SKUs](vpn-gateway-about-vpngateways.md#gwsku).
 
 Weitere Informationen zu Konfigurationseinstellungen finden Sie unter [Informationen zu VPN Gateway-Einstellungen](vpn-gateway-about-vpn-gateway-settings.md).
-
-<!--Update_Description: wording update-->

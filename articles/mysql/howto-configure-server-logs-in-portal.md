@@ -1,21 +1,21 @@
 ---
-title: Konfigurieren von Serverprotokollen für Azure Database for MySQL und Zugreifen auf diese im Azure-Portal
-description: In diesem Artikel wird beschrieben, wie Sie aus dem Azure-Portal die Serverprotokolle in Azure Database for MySQL konfigurieren und auf diese zugreifen.
+title: Konfigurieren von Protokollen für langsame Abfragen für Azure Database for MySQL und Zugreifen auf diese Protokolle im Azure-Portal
+description: In diesem Artikel wird beschrieben, wie Sie die Protokolle für langsame Abfragen in Azure Database for MySQL im Azure-Portal konfigurieren und aus dem Portal auf die Protokolle zugreifen.
 author: rachel-msft
 ms.author: raagyema
 ms.service: mysql
 ms.topic: conceptual
-ms.date: 02/28/2018
-ms.openlocfilehash: e0701d2e10b366a6bf849512484fb216c42823bc
-ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
+ms.date: 05/29/2019
+ms.openlocfilehash: b16ac525d41eb2423828a647fdb75fd3f4a80a31
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/17/2018
-ms.locfileid: "53544956"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67052720"
 ---
-# <a name="configure-and-access-server-logs-in-the-azure-portal"></a>Konfigurieren der und Zugreifen auf die Serverprotokolle im Azure-Portal
+# <a name="configure-and-access-slow-query-logs-in-the-azure-portal"></a>Konfigurieren der und Zugreifen auf die Protokolle für langsame Abfragen im Azure-Portal
 
-Sie können die [Azure Database for MySQL-Serverprotokolle](concepts-server-logs.md) im Azure-Portal konfigurieren und auflisten sowie aus dem Portal herunterladen.
+Sie können die [Protokolle für langsame Abfragen für Azure Database for MySQL](concepts-server-logs.md) im Azure-Portal konfigurieren und auflisten sowie aus dem Portal herunterladen.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 Zum Ausführen der Schritte in dieser Anleitung benötigen Sie Folgendes:
@@ -42,7 +42,7 @@ Konfigurieren Sie den Zugriff auf das MySQL-Protokoll für langsame Abfragen.
 6. Kehren Sie zur Liste der Protokolle zurück, indem Sie auf der Seite **Serverparameter** auf die **Schaltfläche „Schließen“** (X-Symbol) klicken.
 
 ## <a name="view-list-and-download-logs"></a>Anzeigen der Liste und Herunterladen von Protokollen
-Sobald die Protokollierung beginnt, können Sie eine Liste der verfügbaren Protokolle anzeigen und einzelne Protokolldateien im Bereich „Serverprotokolle“ herunterladen. 
+Sobald die Protokollierung beginnt, können Sie eine Liste der verfügbaren Protokolle für langsame Abfragen anzeigen und einzelne Protokolldateien im Bereich „Serverprotokolle“ herunterladen.
 
 1. Öffnen Sie das Azure-Portal.
 
@@ -61,9 +61,7 @@ Sobald die Protokollierung beginnt, können Sie eine Liste der verfügbaren Prot
 
    ![Klicken Sie auf das Symbol „Download“.](./media/howto-configure-server-logs-in-portal/5-download.png)
 
-
 ## <a name="next-steps"></a>Nächste Schritte
-- Lesen Sie [Zugriff auf Serverprotokolle in der CLI](howto-configure-server-logs-in-cli.md), um weitere Informationen zum programmgesteuerten Herunterladen von Protokollen zu erhalten.
-- Erhalten Sie weitere Informationen zu [Serverprotokollen](concepts-server-logs.md) in Azure Database for MySQL. 
+- Lesen Sie [Konfigurieren der und Zugreifen auf die Protokolle für langsame Abfragen mithilfe der Azure CLI](howto-configure-server-logs-in-cli.md), um zu erfahren, wie Protokolle für langsame Abfragen programmgesteuert heruntergeladen werden können.
+- Erfahren Sie mehr über [Protokolle für langsame Abfragen in Azure Database for MySQL](concepts-server-logs.md).
 - Weitere Informationen zu den Parameterdefinitionen und der MySQL-Protokollierung finden Sie in der MySQL-Dokumentation unter [Protokolle](https://dev.mysql.com/doc/refman/5.7/en/slow-query-log.html).
-

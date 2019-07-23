@@ -1,18 +1,17 @@
 ---
 title: Azure Data Factory Mapping Data Flow – Registerkarte „Optimieren“
-description: Optimieren von Azure Data Factory Mapping Data Flows mithilfe der Registerkarte „Optimieren“ für Partitionseinstellungen
+description: Optimieren von Azure Data Factory Mapping Data Flows mithilfe der Registerkarte „Optimieren“ mit Partitionseinstellungen
 author: kromerm
 ms.author: makromer
-ms.reviewer: douglasl
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 01/31/2019
-ms.openlocfilehash: 3802a8475d8a39a2f275dbc7fcf21ce69892a117
-ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
+ms.openlocfilehash: 40023931b2a0b3788a583a5b5240e7916b187e34
+ms.sourcegitcommit: 156b313eec59ad1b5a820fabb4d0f16b602737fc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/23/2019
-ms.locfileid: "56728776"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67190639"
 ---
 # <a name="mapping-data-flow-transformation-optimize-tab"></a>Registerkarte „Optimieren“ für Mapping Data Flow-Transformationen
 
@@ -46,8 +45,13 @@ Bei dieser Option werden dynamische Spark-Bereiche basierend auf den von Ihnen a
 
 ### <a name="fixed-range"></a>Fester Bereich
 
-Sie müssen einen Ausdruck erstellen, der einen festen Bereich für Werte in Ihren partitionierten Datenspalten bereitstellt. Sie müssen einen fundierten Überblick über Ihre Daten haben, bevor Sie diese Option verwenden, um Partitionsungleichmäßigkeiten zu vermeiden. Der für den Ausdruck eingegebene Wert wird als Teil einer Partitionsfunktion verwendet. Sie können die Anzahl der physischen Partitionen festlegen.
+Sie müssen einen Ausdruck erstellen, der einen festen Bereich für Werte in Ihren partitionierten Datenspalten bereitstellt. Sie müssen einen fundierten Überblick über Ihre Daten haben, bevor Sie diese Option verwenden, um Partitionsungleichmäßigkeiten zu vermeiden. Die von Ihnen für den Ausdruck eingegebenen Werte werden als Teil einer Partitionsfunktion verwendet. Sie können die Anzahl der physischen Partitionen festlegen.
 
 ### <a name="key"></a>Schlüssel
 
 Wenn Sie eine genaue Kenntnis der Kardinalität Ihrer Daten haben, kann die Schlüsselpartitionierung eine gute Partitionsstrategie darstellen. Die Schlüsselpartitionierung erstellt Partitionen für jeden eindeutigen Wert in der Spalte. Sie können die Anzahl der Partitionen nicht festlegen, weil die Anzahl auf den eindeutigen Werten in den Daten basiert.
+
+## <a name="next-steps"></a>Nächste Schritte
+
+[Anleitung zur Leistung und Optimierung der Mapping Data Flow-Funktion](concepts-data-flow-performance.md)
+[Überwachen von Datenflüssen](concepts-data-flow-monitoring.md)

@@ -10,14 +10,14 @@ ms.devlang: ''
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 05/24/2019
+ms.date: 06/13/2019
 ms.author: ypitsch,kumud
-ms.openlocfilehash: 99650577b17874e61d1cede979d7ef2f4bfd491b
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.openlocfilehash: ecce41878f7579862bba083f8cecf5db3cbde3e6
+ms.sourcegitcommit: 22c97298aa0e8bd848ff949f2886c8ad538c1473
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/27/2019
-ms.locfileid: "66245483"
+ms.lasthandoff: 06/14/2019
+ms.locfileid: "67144136"
 ---
 # <a name="microsoft-global-network"></a>Globales Microsoft-Netzwerk
 
@@ -33,8 +33,10 @@ Das [globale Microsoft-Netzwerk](https://azure.microsoft.com/global-infrastructu
  
 Die Entscheidung für die [bestmögliche Umgebung](https://www.sdxcentral.com/articles/news/azure-tops-aws-gcp-in-cloud-performance-says-thousandeyes/2018/11/) ist mit der Microsoft-Cloud einfach. Ab dem Moment, in dem der Datenverkehr der Kunden über unsere strategisch platzierten Edgeknoten in unserem globalen Netzwerk eintrifft, werden Ihre Daten mit nahezu Lichtgeschwindigkeit über optimierte Routen weitergeleitet. Dadurch wird eine optimale Latenz für bestmögliche Leistungen sichergestellt. Diese Edgeknoten sind über Tausende von Verbindungen an mehr als 145 Standorten mit mehr als 3500 individuellen Internetpartnern (Peers) verbunden und bilden die Grundlage unserer Verbindungsstrategie. 
  
-Ganz gleich, ob Sie eine Verbindung von London nach Tokio oder von Washington DC nach Los Angeles herstellen, die Netzwerkleistung wird durch Faktoren wie Latenz, Jitter, Paketverlust und Durchsatz bestimmt und beeinflusst.  Bei Microsoft verwenden wir direkte Verbindungen anstelle von Transitverbindungen. Dies sorgt für einen symmetrischen Antwortdatenverkehr sowie für möglichst kurze und einfache Hops, Peering-Partner und Wege. Dieser Premium-Ansatz, der oft als [Cold-Potato-Routing](https://en.wikipedia.org/wiki/Hot-potato_and_cold-potato_routing) bezeichnet wird, stellt sicher, dass der Netzwerkdatenverkehr der Kunden so lange wie möglich im Microsoft-Netzwerk verbleibt, bevor er übergeben wird.  
- 
+Ganz gleich, ob Sie eine Verbindung von London nach Tokio oder von Washington DC nach Los Angeles herstellen, die Netzwerkleistung wird durch Faktoren wie Latenz, Jitter, Paketverlust und Durchsatz bestimmt und beeinflusst.  Bei Microsoft verwenden wir direkte Verbindungen anstelle von Transitverbindungen. Dies sorgt für einen symmetrischen Antwortdatenverkehr sowie für möglichst kurze und einfache Hops, Peering-Partner und Wege. 
+
+Wenn beispielsweise ein Benutzer in London versucht, auf einen Dienst in Tokio zuzugreifen, trifft Internetdatenverkehr an einem unserer Edges in London ein, läuft über das Microsoft-WAN durch Frankreich, über unsere Pfade in der Vermittlungsregion Arabien zwischen Europa und Indien und trifft dann in Japan ein, wo der Dienst gehostet wird. Der Antwortdatenverkehr ist symmetrisch. Dies wird manchmal als [Cold-Potato-Routing](https://en.wikipedia.org/wiki/Hot-potato_and_cold-potato_routing) bezeichnet, d. h., der Datenverkehr bleibt so lange wie möglich im Microsoft-Netzwerk, bevor wir ihn übergeben.  
+  
 Bezieht sich das auf den gesamten Datenverkehr bei der Verwendung von Microsoft-Diensten? Ja, jeder Datenverkehr zwischen Rechenzentren, innerhalb von Microsoft Azure oder zwischen Microsoft-Diensten wie Virtual Machines, Office 365, XBox, SQL DBs, Storage und zwischen virtuellen Netzwerken wird innerhalb unseres globalen Netzwerks und niemals über das öffentliche Internet geleitet, um die optimale Leistung und Integrität sicherzustellen.  
  
 Gewaltige Investitionen in Glasfaserkapazitäten und die Vielfalt hinsichtlich unter-, überirdischer und unterseeischer Wege sind entscheidend für uns, um einen konsistenten und hohen Servicelevel aufrechtzuerhalten und gleichzeitig das extreme Wachstum unserer Cloud- und Onlinedienste zu fördern. Die neuesten Erweiterungen unseres globalen Netzwerks sind unser [MAREA](https://www.submarinecablemap.com/#/submarine-cable/marea)-Überseekabel, das branchenweit erste unter dem Meeresboden gelegene Open Line System (OLS) zwischen Bilbao, Spanien und Virginia Beach, Virginia, USA sowie das [AEC](https://www.submarinecablemap.com/#/submarine-cable/aeconnect-1) zwischen New York, USA und Dublin, Irland und [New Cross Pacific (NCP)](https://www.submarinecablemap.com/#/submarine-cable/new-cross-pacific-ncp-cable-system) zwischen Tokio, Japan und Portland, Oregon, USA. 

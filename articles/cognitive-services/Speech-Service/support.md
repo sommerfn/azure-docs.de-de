@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 07/26/2018
 ms.author: wolfma
-ms.openlocfilehash: fc03db268ab05c6718fb323bc30574a36d0ca092
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.openlocfilehash: 4099bc7bfce6de620504e03be3afc5392281d8d8
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65138153"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67072371"
 ---
 # <a name="support-and-help-options"></a>Support- und Hilfeoptionen
 
@@ -83,7 +83,7 @@ Wenn Sie über die Suche keine Lösung für Ihr Problem finden können, übermit
 Beispiele werden häufig als Open Source-Dateien bereitgestellt. Erstellen Sie bei Fragen und Problemen ein *Problem* im entsprechenden GitHub-Repository. Sie können einen Pull Request übermitteln. Die folgende Liste enthält Links zu den Beispielrepositorys:
 
 * [Speech SDK](https://github.com/Azure-Samples/cognitive-services-speech-sdk/issues)
-* [Geräte-SDK](https://github.com/Azure-Samples/Cognitive-Services-Speech-Devices-SDK/issues)
+* [Speech-Geräte-SDK](https://github.com/Azure-Samples/Cognitive-Services-Speech-Devices-SDK/issues)
 
 Sie können einen Fehlerbericht oder eine Featureanforderung erstellen oder eine allgemeine Frage stellen, aber auch bewährte Methoden teilen. Befolgen Sie für das Melden von Fehlern die bereitgestellte Vorlage:
 

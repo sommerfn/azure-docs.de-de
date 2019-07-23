@@ -12,12 +12,12 @@ ms.author: mathoma
 ms.reviewer: carlrab
 manager: craigg
 ms.date: 02/08/2019
-ms.openlocfilehash: c8d5df0f83a7ae37b9f06a5e255e9809288b6d67
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: bcbdd5fd8395cb0a47038595127e9b20118bdf1b
+ms.sourcegitcommit: 72f1d1210980d2f75e490f879521bc73d76a17e1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64917031"
+ms.lasthandoff: 06/14/2019
+ms.locfileid: "67147704"
 ---
 # <a name="transactional-replication-with-single-pooled-and-instance-databases-in-azure-sql-database"></a>Transaktionsreplikation mit Einzeldatenbanken, Pooldatenbanken und Instanzdatenbanken in Azure SQL-Datenbank
 
@@ -66,11 +66,10 @@ Es gibt verschiedene [Replikationstypen](https://docs.microsoft.com/sql/relation
 
 | Replikation | Einzel- und Pooldatenbanken | Instanzdatenbanken|
 | :----| :------------- | :--------------- |
-| [**Transaktion**](https://docs.microsoft.com/sql/relational-databases/replication/transactional/transactional-replication) | Ja (nur als Abonnent) | Ja | 
+| [**Transaktionsreplikation**](https://docs.microsoft.com/sql/relational-databases/replication/transactional/transactional-replication) | Ja (nur als Abonnent) | Ja | 
 | [**Momentaufnahme**](https://docs.microsoft.com/sql/relational-databases/replication/snapshot-replication) | Ja (nur als Abonnent) | Ja|
 | [**Mergereplikation**](https://docs.microsoft.com/sql/relational-databases/replication/merge/merge-replication) | Nein | Nein|
 | [**Peer-to-Peer**](https://docs.microsoft.com/sql/relational-databases/replication/transactional/peer-to-peer-transactional-replication) | Nein | Nein|
-| **Unidirektional** | Ja | Ja|
 | [**Bidirektional**](https://docs.microsoft.com/sql/relational-databases/replication/transactional/bidirectional-transactional-replication) | Nein | Ja|
 | [**Aktualisierbare Abonnements**](https://docs.microsoft.com/sql/relational-databases/replication/transactional/updatable-subscriptions-for-transactional-replication) | Nein | Nein|
 | &nbsp; | &nbsp; | &nbsp; |

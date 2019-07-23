@@ -15,12 +15,12 @@ ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9e65f7ca0a01e0ceee6448ea49e1d6d6da696cf6
-ms.sourcegitcommit: c05618a257787af6f9a2751c549c9a3634832c90
+ms.openlocfilehash: 21136046bad8cb58432de367f0de06d1d0457eec
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/30/2019
-ms.locfileid: "66417080"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67083783"
 ---
 # <a name="administrator-roles-by-admin-task-in-azure-active-directory"></a>Administratorrollen nach Administratoraufgabe in Azure Active Directory
 
@@ -56,6 +56,9 @@ Erstellen, Lesen, Aktualisieren und Löschen von Benutzerattributen | Globaler A
 Erstellen, Lesen, Aktualisieren und Löschen von Benutzern | Globaler Administrator (siehe [Dokumentation](https://docs.microsoft.com/azure/active-directory-b2c/active-directory-b2c-faqs))
 Lesen aller Konfigurationen | Globaler Administrator | 
 Lesen von B2C-Überwachungsprotokollen | Globaler Administrator (siehe [Dokumentation](https://docs.microsoft.com/azure/active-directory-b2c/active-directory-b2c-faqs)) | 
+
+> [!NOTE]
+> Globale Azure AD B2C-Administratoren haben nicht die gleichen Berechtigungen wie globale Azure AD-Administratoren. Wenn Sie über globale Azure AD B2C-Administratorrechte verfügen, stellen Sie sicher, dass Sie sich in einem Azure AD B2C-Verzeichnis und nicht in einem Azure AD-Verzeichnis befinden.
 
 ## <a name="company-branding"></a>Unternehmensbranding
 
@@ -267,23 +270,23 @@ Aufgabe | Am wenigsten privilegierte Rolle | Zusätzliche Rollen
 Konfigurieren von Authentifizierungsmethoden | Globaler Administrator | 
 Lesen aller Konfigurationen | Globaler Administrator | 
 
-## <a name="security---conditional-access"></a>Sicherheit – Bedingter Zugriff
+## <a name="security---conditional-access"></a>Sicherheit: bedingter Zugriff
 
 Aufgabe | Am wenigsten privilegierte Rolle | Zusätzliche Rollen
 ---- | --------------------- | ----------------
-Konfigurieren von durch MFA bestätigten IP-Adressen | Administrator für bedingten Zugriff | 
-Erstellen von benutzerdefinierten Steuerelementen | Administrator für bedingten Zugriff | Sicherheitsadministrator
-Erstellen von benannten Standorten | Administrator für bedingten Zugriff | Sicherheitsadministrator
-Erstellen von Richtlinien | Administrator für bedingten Zugriff | Sicherheitsadministrator
-Erstellen von Nutzungsbedingungen | Administrator für bedingten Zugriff | Sicherheitsadministrator
-Erstellen von VPN-Konnektivitätszertifikaten | Administrator für bedingten Zugriff | Sicherheitsadministrator
-Löschen einer klassischen Richtlinie | Administrator für bedingten Zugriff | Sicherheitsadministrator
-Löschen von Nutzungsbedingungen | Administrator für bedingten Zugriff | Sicherheitsadministrator
-Löschen eines VPN-Konnektivitätszertifikats | Administrator für bedingten Zugriff | Sicherheitsadministrator
-Deaktivieren einer klassischen Richtlinie | Administrator für bedingten Zugriff | Sicherheitsadministrator
-Verwalten von benutzerdefinierten Steuerelementen | Administrator für bedingten Zugriff | Sicherheitsadministrator
-Verwalten von benannten Standorten | Administrator für bedingten Zugriff | Sicherheitsadministrator
-Verwalten von Nutzungsbedingungen | Administrator für bedingten Zugriff | Sicherheitsadministrator
+Konfigurieren von durch MFA bestätigten IP-Adressen | Administrator für den bedingten Zugriff | 
+Erstellen von benutzerdefinierten Steuerelementen | Administrator für den bedingten Zugriff | Sicherheitsadministrator
+Erstellen von benannten Standorten | Administrator für den bedingten Zugriff | Sicherheitsadministrator
+Erstellen von Richtlinien | Administrator für den bedingten Zugriff | Sicherheitsadministrator
+Erstellen von Nutzungsbedingungen | Administrator für den bedingten Zugriff | Sicherheitsadministrator
+Erstellen von VPN-Konnektivitätszertifikaten | Administrator für den bedingten Zugriff | Sicherheitsadministrator
+Löschen einer klassischen Richtlinie | Administrator für den bedingten Zugriff | Sicherheitsadministrator
+Löschen von Nutzungsbedingungen | Administrator für den bedingten Zugriff | Sicherheitsadministrator
+Löschen eines VPN-Konnektivitätszertifikats | Administrator für den bedingten Zugriff | Sicherheitsadministrator
+Deaktivieren einer klassischen Richtlinie | Administrator für den bedingten Zugriff | Sicherheitsadministrator
+Verwalten von benutzerdefinierten Steuerelementen | Administrator für den bedingten Zugriff | Sicherheitsadministrator
+Verwalten von benannten Standorten | Administrator für den bedingten Zugriff | Sicherheitsadministrator
+Verwalten von Nutzungsbedingungen | Administrator für den bedingten Zugriff | Sicherheitsadministrator
 Lesen aller Konfigurationen | Sicherheitsleseberechtigter | Sicherheitsadministrator
 Lesen von benannten Standorten | Sicherheitsleseberechtigter | Administrator für bedingten Zugriff, Sicherheitsadministrator
 

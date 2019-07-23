@@ -11,15 +11,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/12/2019
+ms.date: 06/11/2019
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: 6ae7037ad4cd532b6661a56e6e37a88df3eb54a2
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 6dae2d40650b9fdb8df2d3bdb74b2df78639dc11
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58121705"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67058050"
 ---
 # <a name="locking-down-an-app-service-environment"></a>Sperren einer App Service-Umgebung
 
@@ -30,6 +30,21 @@ Eine App Service-Umgebung weist zahlreiche Abhängigkeiten für den eingehenden 
 Die Abhängigkeiten der App Service-Umgebung für den ausgehenden Datenverkehr werden fast ausschließlich mit FQDNs definiert, hinter denen sich keine statischen Adressen befinden. Das Fehlen statischer Adressen bedeutet, dass Netzwerksicherheitsgruppen (NSGs) nicht verwendet werden können, um den ausgehenden Datenverkehr einer App Service-Umgebung zu sperren. Die Adressen ändern sich häufig, sodass keine Regeln auf Grundlage der aktuellen Auflösung aufgestellt und keine NSGs damit erstellt werden können. 
 
 Die Lösung zum Sichern ausgehender Adressen besteht in der Verwendung eines Firewallgeräts, das den ausgehenden Datenverkehr basierend auf Domänennamen kontrolliert. Azure Firewall kann ausgehenden HTTP- und HTTPS-Datenverkehr basierend auf den FQDN des Ziels beschränken.  
+
+## <a name="system-architecture"></a>Systemarchitektur
+
+Das Bereitstellen einer App Service-Umgebung (App Service Environment, ASE) mit ausgehendem Datenverkehr über ein Firewallgerät erfordert das Ändern von Routen im ASE-Subnetz. Routen funktionieren auf einer IP-Ebene. Wenn Sie die Routen nicht sorgfältig definieren, können Sie den TCP-Antwortdatenverkehr an die Quelle von einer anderen Adresse erzwingen. Dies wird als asymmetrisches Routing bezeichnet und unterbricht TCP.
+
+Es müssen Routen definiert sein, damit der eingehende Datenverkehr an die ASE die Antwort auf die gleiche Weise zurücksenden kann, wie der Datenverkehr eintraf. Dies gilt sowohl für eingehende Verwaltungsanforderungen als auch für eingehende Anwendungsanforderungen.
+
+Beim Datenverkehr an und von einer ASE müssen die folgenden Konventionen eingehalten werden:
+
+* Der Datenverkehr an Azure SQL, Storage und Event Hub wird bei Verwendung eines Firewallgeräts nicht unterstützt. Dieser Datenverkehr muss direkt an diese Dienste gesendet werden. Um dies zu ermöglichen, müssen Dienstendpunkte für diese drei Dienste konfiguriert werden. 
+* Es müssen Routingtabellenregeln definiert werden, die eingehenden Verwaltungsdatenverkehr an seinen Ursprungsort zurücksenden.
+* Es müssen Routingtabellenregeln definiert werden, die eingehenden Verwaltungsdatenverkehr an seinen Ursprungsort zurücksenden. 
+* Jeglicher sonstiger Datenverkehr von der ASE kann mit einer Routingtabellenregel an Ihr Firewallgerät gesendet werden.
+
+![ASE mit Azure Firewall: Verbindungsfluss][5]
 
 ## <a name="configuring-azure-firewall-with-your-ase"></a>Konfigurieren von Azure Firewall mit Ihrer App Service-Umgebung 
 
@@ -68,8 +83,6 @@ Mithilfe der oben genannten Schritte kann Ihre App Service-Umgebung problemlos a
 Wenn Ihre Anwendungen Abhängigkeiten aufweisen, müssen diese Ihrer Azure Firewall-Instanz hinzugefügt werden. Erstellen Sie Anwendungsregeln, um HTTP/HTTPS-Datenverkehr und Netzwerkregeln zuzulassen. 
 
 Wenn Sie den Adressbereich kennen, aus dem der von Ihrer Anwendung angeforderte Datenverkehr kommt, können Sie ihn der Routingtabelle hinzufügen, die dem Subnetz Ihrer App Service-Umgebung zugeordnet ist. Wenn der Adressbereich groß oder nicht angegeben ist, können Sie ein Netzwerkgerät wie Application Gateway verwenden, um eine Adresse Ihrer Routingtabelle hinzufügen zu können. Weitere Informationen zum Konfigurieren einer Application Gateway-Instanz mit dem internen Lastenausgleichsmodul der App Service-Umgebung finden Sie unter [Integrieren eines internen Lastenausgleichs einer App Service-Umgebung in eine Application Gateway-Instanz](https://docs.microsoft.com/azure/app-service/environment/integrate-with-application-gateway).
-
-![ASE mit Azure Firewall: Verbindungsfluss][5]
 
 Diese Verwendung von Application Gateway ist nur ein Beispiel dafür, wie Sie Ihr System konfigurieren können. Bei der obigen Konfiguration müssten Sie der Routingtabelle für das ASE-Subnetz eine Route hinzufügen, damit der an die Application Gateway-Instanz gesendete Antwortdatenverkehr direkt an diese weitergeleitet wird. 
 

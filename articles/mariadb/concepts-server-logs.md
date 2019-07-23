@@ -5,21 +5,21 @@ author: rachel-msft
 ms.author: raagyema
 ms.service: mariadb
 ms.topic: conceptual
-ms.date: 04/29/2019
-ms.openlocfilehash: 8a78a9b8f0772a83e45ac2b926878e61e6ee2e61
-ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.date: 06/12/2019
+ms.openlocfilehash: 7a517be49a249b0b73c901137381bd05946aa4cc
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64926335"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67065698"
 ---
-# <a name="server-logs-in-azure-database-for-mariadb"></a>Serverprotokolle in Azure Database for MariaDB
+# <a name="slow-query-logs-in-azure-database-for-mariadb"></a>Protokolle für langsame Abfragen in Azure Database for MariaDB
 In Azure Database for MariaDB ist das Protokoll für langsame Abfragen für Benutzer verfügbar. Der Zugriff auf das Transaktionsprotokoll wird jedoch nicht unterstützt. Das Protokoll für langsame Abfragen kann verwendet werden, um Leistungsengpässe für die Problembehandlung zu erkennen.
 
 Weitere Informationen zum Protokoll für langsame Abfragen finden Sie in der MariaDB-Dokumentation zum [Protokoll für langsame Abfragen](https://mariadb.com/kb/en/library/slow-query-log-overview/).
 
-## <a name="access-server-logs"></a>Zugreifen auf Serverprotokolle
-Sie können die Serverprotokolle von Azure Database for MariaDB mit dem Azure-Portal und der Azure CLI auflisten und herunterladen.
+## <a name="access-slow-query-logs"></a>Zugreifen auf Protokolle für langsame Abfragen
+Sie können Protokolle für langsame Abfragen von Azure Database for MariaDB über das Azure-Portal und die Azure CLI auflisten und herunterladen.
 
 Wählen Sie im Azure-Portal Ihren Azure Database for MariaDB-Server aus. Wählen Sie unter der Überschrift **Überwachung** die Seite **Serverprotokolle** aus.
 
@@ -30,7 +30,7 @@ Protokolle sind für bis zu sieben Tage nach ihrer Erstellung verfügbar. Wenn d
 
 Die Protokolle werden alle 24 Stunden oder bei Erreichen einer Größe von 7 GB rotiert, je nachdem, welches Ereignis früher eintritt.
 
-## <a name="configure-logging"></a>Konfigurieren der Protokollierung
+## <a name="configure-slow-query-logging"></a>Konfigurieren der Protokollierung für langsame Abfragen
 Das Protokoll für langsame Abfragen ist standardmäßig deaktiviert. Legen Sie „slow_query_log“ auf „ON“ fest, um dieses Feature zu aktivieren.
 
 Weitere Parameter, die Sie anpassen können:

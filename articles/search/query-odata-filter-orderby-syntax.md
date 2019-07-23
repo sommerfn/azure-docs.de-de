@@ -1,7 +1,7 @@
 ---
-title: 'OData-Ausdruckssyntax für Filter und Sortierklauseln: Azure Search'
-description: OData-Syntax für Filter- und Sortierausdrücke für Azure Search-Abfragen.
-ms.date: 05/02/2019
+title: OData-Sprachübersicht – Azure Search
+description: OData-Sprachübersicht für das Filtern, Auswählen und Sortieren für Azure Search-Abfragen.
+ms.date: 06/13/2019
 services: search
 ms.service: search
 ms.topic: conceptual
@@ -19,309 +19,217 @@ translation.priority.mt:
 - ru-ru
 - zh-cn
 - zh-tw
-ms.openlocfilehash: b1f77a9e0a3308098e5f6c699f2fc79e5c437f17
-ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
+ms.openlocfilehash: 166c23088fe0388199ca51efde05153bb5697e38
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/02/2019
-ms.locfileid: "65024260"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67063698"
 ---
-# <a name="odata-expression-syntax-for-filters-and-order-by-clauses-in-azure-search"></a>OData-Ausdruckssyntax für Filter und Sortierklauseln in Azure Search
+# <a name="odata-language-overview-for-filter-orderby-and-select-in-azure-search"></a>OData-Sprachübersicht für `$filter`, `$orderby` und `$select` in Azure Search
 
-Azure Search unterstützt eine Teilmenge der OData-Ausdruckssyntax für **$filter**- und **$orderby**-Ausdrücke. Filterausdrücke werden während der Analyse der Abfrage ausgewertet. Sie beschränken die Suche auf bestimmte Felder oder fügen Übereinstimmungskriterien hinzu, die während Indexscans verwendet werden. Sortierausdrücke werden als Nachverarbeitungsschritt auf ein Resultset angewendet. Sowohl Filter als auch Sortierausdrücke sind in einer Abfrageanforderung enthalten und entsprechen unabhängig von der in einem **search**-Parameter verwendeten [einfachen](query-simple-syntax.md) oder [vollständigen](query-lucene-syntax.md) Abfragesyntax der OData-Syntax. Dieser Artikel enthält die Referenzdokumentation für die in Filtern und Sortierausdrücken verwendeten OData-Ausdrücke.
+Azure Search unterstützt eine Teilmenge der OData-Ausdruckssyntax für **$filter**-, **$orderby**- und **$select**-Ausdrücke. Filterausdrücke werden während der Analyse der Abfrage ausgewertet. Sie beschränken die Suche auf bestimmte Felder oder fügen Übereinstimmungskriterien hinzu, die während Indexscans verwendet werden. Sortierausdrücke werden als Nachverarbeitungsschritt auf ein Resultset angewandt, um die zurückgegebenen Dokumente zu sortieren. Auswahlausdrücke bestimmen, welche Felder des Dokuments in das Resultset eingefügt werden. Die Syntax dieser Ausdrücke unterscheidet sich von der [einfachen](query-simple-syntax.md) oder [vollständigen](query-lucene-syntax.md) Abfragesyntax, die für die **Suchparameter** verwendet wird, auch wenn es bei der Syntax Überschneidungen beim Verweisen auf Felder gibt.
 
-## <a name="filter-syntax"></a>Filtersyntax
+Dieser Artikel enthält eine Übersicht über die OData-Ausdruckssprache, die in den Filter-, Sortier- und Auswahlausdrücken verwendet wird. Die Sprache wird „von unten nach oben“, d. h. beginnend mit den grundlegenden Elementen beschrieben. Die Syntax der obersten Ebene für jeden Parameter wird in einem separaten Artikel beschrieben:
 
-Ein **$filter**-Ausdruck kann eigenständig als vollständig ausgedrückte Abfrage ausgeführt werden oder eine Abfrage mit zusätzlichen Parametern verfeinern. Die folgenden Beispiele veranschaulichen einige gängige Szenarien. Im ersten Beispiel ist der Filter der eigentliche Inhalt der Abfrage.
+- [$filter-Syntax](search-query-odata-filter.md)
+- [$orderby-Syntax](search-query-odata-orderby.md)
+- [$select-Syntax](search-query-odata-select.md)
 
+OData-Ausdrücke reichen von einfach bis sehr komplexen Ausdrücken, sie enthalten aber alle gemeinsame Elemente. Die grundlegendsten Teile eines OData-Ausdrucks in Azure Search sind:
 
-```POST
-POST /indexes/hotels/docs/search?api-version=2019-05-06
-    {
-      "filter": "(baseRate ge 60 and baseRate lt 300) or hotelName eq 'Fancy Stay'"
-    }
-```
+- **Feldpfade** für Verweise auf bestimmte Felder des Index
+- **Konstanten** als Literalwerte eines bestimmten Datentyps
 
-Ein weiterer häufiger Anwendungsfall ist die Kombination von Filtern mit Faceting. Dabei reduziert der Filter die Oberfläche der Abfrage auf Grundlage einer benutzergesteuerten Facettennavigationsauswahl:
+> [!NOTE]
+> Die Terminologie in Azure Search unterscheidet sich vom [OData-Standard](https://www.odata.org/documentation/) in verschiedener Hinsicht. Was in Azure Search als **Feld** bezeichnet wird, ist in OData eine **Eigenschaft**. Dasselbe gilt auch für **Feldpfad** bzw. **Eigenschaftspfad**. Ein **Index** mit **Dokumenten** in Azure Search wird in OData allgemeiner als eine **Entitätenmenge** mit **Entitäten** bezeichnet. In dieser Referenz wird die Azure Search-Terminologie verwendet.
 
-```POST
-POST /indexes/hotels/docs/search?api-version=2019-05-06
-    {
-      "search": "test",
-      "facets": [ "tags", "baseRate,values:80|150|220" ],
-      "filter": "rating eq 3 and category eq 'Motel'"
-    }
-```
+## <a name="field-paths"></a>Feldpfade
 
-### <a name="filter-operators"></a>Filteroperatoren  
+Die folgende EBNF ([Erweiterte Backus-Naur-Form](https://en.wikipedia.org/wiki/Extended_Backus–Naur_form)) definiert die Grammatik der Feldpfade.
 
-- Logische Operatoren (AND, OR, NOT).  
-
-- Vergleichsausdrücke (`eq, ne, gt, lt, ge, le`). Bei Zeichenfolgenvergleichen wird die Groß-/Kleinschreibung beachtet.  
-
-- Konstanten der unterstützten [Entity Data Model](https://docs.microsoft.com/dotnet/framework/data/adonet/entity-data-model)-Typen (EDM) (eine Liste der unterstützten Typen finden Sie unter [Supported data types &#40;Azure Search&#41;](https://docs.microsoft.com/rest/api/searchservice/supported-data-types) (Unterstützte Datentypen für Azure Search)). Konstanten von Sammlungstypen werden nicht unterstützt.  
-
-- Verweise auf Feldnamen. In Filterausdrücken können nur Felder vom Typ `filterable` verwendet werden.  
-
-- `any` ohne Parameter. Damit wird überprüft, ob ein Feld vom Typ `Collection(Edm.String)` Elemente enthält.  
-
-- `any` und `all` mit begrenzter Unterstützung für Lambdaausdrücke. 
-    
-  -   `any/all` werden für Felder vom Typ `Collection(Edm.String)` unterstützt. 
-    
-  -   `any` kann nur mit einfachen Gleichheitsausdrücken oder mit einer `search.in`-Funktion verwendet werden. Einfache Ausdrücke bestehen aus einem Vergleich zwischen einem einzelnen Feld und einem Literalwert, z. B. `Title eq 'Magna Carta'`.
-    
-  -   `all` kann nur mit einfachen Ungleichheitsausdrücken oder mit einer `not search.in`-Funktion verwendet werden.   
-
-- Geofunktionen `geo.distance` und `geo.intersects`. Die Funktion `geo.distance` gibt die Entfernung zwischen zwei Punkten in Kilometern zurück, wobei es sich bei einem Punkt um ein Feld und bei dem anderen Punkt um eine Konstante handelt, die als Teil des Filters übergeben wird. Die Funktion `geo.intersects` gibt TRUE zurück, wenn ein bestimmter Punkt innerhalb eines angegebenen Polygons liegt. Der Punkt ist hierbei ein Feld, und das Polygon wird als Konstante als Teil des Filters übergeben.  
-
-  Das Polygon ist eine zweidimensionale Fläche und wird als eine Reihe von Punkten gespeichert, die einen Begrenzungsring definieren (siehe unten stehendes Beispiel). Das Polygon muss geschlossen sein, d. h. der erste und der letzte Punkt müssen identisch sein. [Punkte in einem Polygon müssen entgegen dem Uhrzeigersinn angegeben werden](https://docs.microsoft.com/rest/api/searchservice/supported-data-types#Anchor_1).
-
-  `geo.distance` gibt in Azure Search die Entfernung in Kilometern zurück. Bei anderen Diensten, die OData-Geovorgänge unterstützen, werden dagegen meist Entfernungen in Metern zurückgegeben.  
-
-  > [!NOTE]  
-  >  Wenn Sie „geo.distance“ in einem Filter verwenden, müssen Sie die von der Funktion zurückgegebene Entfernung mithilfe von `lt`, `le`, `gt` oder `ge` mit einer Konstante vergleichen. Die Operatoren `eq` und `ne` werden beim Vergleichen von Entfernungen nicht unterstützt. Eine korrekte Syntax für „geo.distance“ sieht beispielsweise wie folgt aus: `$filter=geo.distance(location, geography'POINT(-122.131577 47.678581)') le 5`.  
-
-- Die Funktion `search.in` testet, ob ein bestimmtes Zeichenfolgenfeld einem der Werte in einer angegebenen Liste entspricht. Sie kann auch in Any- oder All-Ausdrücken verwendet werden, um einen einzelnen Wert eines Zeichenfolgensammlungsfelds mit einer Liste von Werten zu vergleichen. Die Gleichheit zwischen dem Feld und den einzelnen Werten in der Liste wird wie beim `eq`-Operator unter Berücksichtigung der Groß-/Kleinschreibung ermittelt. Ein Ausdruck wie `search.in(myfield, 'a, b, c')` entspricht daher `myfield eq 'a' or myfield eq 'b' or myfield eq 'c'`, allerdings bietet `search.in` eine deutlich bessere Leistung. 
-
-   Der erste Parameter für die Funktion `search.in` ist der Verweis auf ein Zeichenfolgenfeld (oder eine Bereichsvariable für ein Zeichenfolgensammlungsfeld, sofern `search.in` innerhalb eines `any`- oder `all`- Ausdrucks verwendet wird). 
-  
-   Der zweite Parameter ist eine Zeichenfolge, die die Liste der Werte enthält (getrennt durch Leerzeichen oder Kommas). 
-  
-   Der dritte Parameter ist eine Zeichenfolge, bei der jedes Zeichen oder jede Teilmenge der Zeichenfolge als Trennzeichen behandelt wird, wenn die Liste der Werte im zweiten Parameter analysiert wird. Wenn Sie andere Trennzeichen als Leerzeichen und Kommas verwenden müssen, weil Ihre Werte diese Zeichen enthalten, können Sie einen optionalen dritten Parameter für `search.in` angeben. 
-
-  > [!NOTE]   
-  > In manchen Szenarien muss ein Feld mit einer großen Anzahl von Konstantenwerten verglichen werden. Beispielsweise kann es bei der Implementierung von Sicherheitseinschränkungen mit Filtern erforderlich sein, das Dokument-ID-Feld mit einer Liste von IDs zu vergleichen, auf die dem anfordernden Benutzer Lesezugriff gewährt wird. In solchen Szenarien empfehlen wir ausdrücklich, die Funktion `search.in` anstelle einer komplizierten Disjunktion von Gleichheitsausdrücken zu nutzen. Verwenden Sie beispielsweise `search.in(Id, '123, 456, ...')` anstelle von `Id eq 123 or Id eq 456 or ....`. 
-  >
-  > Bei der Verwendung von `search.in` ist eine Antwortzeit von unter einer Sekunde zu erwarten, wenn der zweite Parameter eine Liste von Hunderten oder Tausenden von Werten enthält. Für die Anzahl von Elementen, die Sie an `search.in` übergeben können, gibt es keinen expliziten Grenzwert. Sie müssen jedoch nach wie vor die maximale Anforderungsgröße einhalten. Die Wartezeit nimmt jedoch mit zunehmender Anzahl von Werten zu.
-
-- Die Funktion `search.ismatch` wertet die Suchabfrage als Teil eines Filterausdrucks aus. Die mit der Suchabfrage übereinstimmenden Dokumente werden im Resultset zurückgegeben. Die folgenden Überladungen dieser Funktion sind verfügbar:
-  - `search.ismatch(search)`
-  - `search.ismatch(search, searchFields)`
-  - `search.ismatch(search, searchFields, queryType, searchMode)`
-
-  Hierbei gilt: 
-  
-  - `search`: Die Suchabfrage (in der [einfachen](query-simple-syntax.md) oder [vollständigen](query-lucene-syntax.md) Abfragesyntax). 
-  - `queryType`: „simple“ oder „full“. Der Standardwert ist „simple“. Gibt an, welche Abfragesprache im `search`-Parameter verwendet wurde.
-  - `searchFields`: Durch Trennzeichen getrennte Liste von durchsuchbaren Feldern, in denen gesucht werden soll. Standardmäßig werden alle durchsuchbaren Felder im Index durchsucht.    
-  - `searchMode`: „any“ oder „all“. Der Standardwert ist „any“. Gibt an, ob für beliebige oder alle der Suchbegriffe Übereinstimmungen gefunden werden müssen, damit das Dokument in den Ergebnissen zurückgegeben wird.
-
-  Alle der oben aufgeführten Parameter sind gleichwertig mit den entsprechenden [Suchanforderungsparametern](https://docs.microsoft.com/rest/api/searchservice/search-documents).
-
-- Die Funktion `search.ismatchscoring` gibt ebenso wie die Funktion `search.ismatch` TRUE für Dokumente zurück, die mit der als Parameter übergebenen Suchabfrage übereinstimmen. Der Unterschied zwischen den beiden Funktionen besteht darin, dass die Relevanzbewertung der Dokumente, die mit der Abfrage `search.ismatchscoring` übereinstimmen, in die Gesamtbewertung des Dokuments einfließt, während sich die Dokumentbewertung im Fall von `search.ismatch` nicht ändert. Die folgenden Überladungen dieser Funktion sind verfügbar (mit den gleichen Parametern wie bei `search.ismatch`):
-  - `search.ismatchscoring(search)`
-  - `search.ismatchscoring(search, searchFields)`
-  - `search.ismatchscoring(search, searchFields, queryType, searchMode)`
-
-  Die Funktionen `search.ismatch` und `search.ismatchscoring` sind vollständig orthogonal zueinander und zur restlichen Filteralgebra. Dies bedeutet, dass beide Funktionen im selben Filterausdruck verwendet werden können. 
-
-### <a name="geospatial-queries-and-polygons-spanning-the-180th-meridian"></a>Räumliche Abfragen und Polygone, die den 180. Längengrad umfassen  
- Bei vielen Bibliotheken für räumliche Abfragen ist die Erstellung einer Abfrage, die den 180. Längengrad (nahe der Datumsgrenze) beinhaltet, entweder nicht oder nur mit einer Behelfslösung möglich (z. B. durch Aufteilung des Polygons in zwei Teile auf jeweils einer Seite des Längengrads).  
-
- In Azure Search funktionieren räumliche Abfragen mit dem 180. Längengrad wie erwartet, wenn die Form der Abfrage rechteckig ist und die Koordinaten von Längen- und Breitengrad an einem Rasterlayout ausgerichtet sind (z. B. `geo.intersects(location, geography'POLYGON((179 65,179 66,-179 66,-179 65,179 65))'`). Erwägen Sie andernfalls für nicht rechteckige oder nicht ausgerichtete Formen die Aufteilung des Polygons.  
-
-<a name="bkmk_limits"></a>
-
-## <a name="filter-size-limitations"></a>Einschränkungen der Filtergröße 
-
- Für die Größe und Komplexität der Filterausdrücke, die Sie an Azure Search senden können, gelten Grenzwerte. Die Grenzwerte basieren ungefähr auf der Anzahl von Klauseln in Ihrem Filterausdruck. Gut merken lässt sich, dass Sie bei Hunderten von Klauseln Gefahr laufen, an den Grenzwert zu erreichen. Wir empfehlen Ihnen, Ihre Anwendung so zu entwerfen, dass sie keine Filter unbegrenzter Größe erzeugt.  
-
-
-## <a name="filter-examples"></a>Beispiele für Filter  
-
- Suche nach allen Hotels mit einem Basistarif unter 200$ mit einer Bewertung von mindestens 4:  
+<!-- Upload this EBNF using https://bottlecaps.de/rr/ui to create a downloadable railroad diagram. -->
 
 ```
-$filter=baseRate lt 200.0 and rating ge 4
+field_path ::= identifier('/'identifier)*
+
+identifier ::= [a-zA-Z_][a-zA-Z_0-9]*
 ```
 
- Suche nach allen Hotels außer „Roach Motel“, die seit 2010 renoviert wurden:  
+Ein interaktives Syntaxdiagramm ist ebenfalls verfügbar:
+
+> [!div class="nextstepaction"]
+> [OData-Syntaxdiagramm für Azure Search](https://azuresearch.github.io/odata-syntax-diagram/#field_path)
+
+> [!NOTE]
+> Die vollständige EBNF finden Sie in der [Referenz zur OData-Ausdruckssyntax für Azure Search](search-query-odata-syntax-reference.md).
+
+Ein Feldpfad besteht aus einem oder mehreren **Bezeichnern**, die durch Schrägstriche voneinander getrennt sind. Jeder Bezeichner ist eine Folge von Zeichen, die mit einem ASCII-Buchstaben oder einem Unterstrich beginnen muss und nur ASCII-Buchstaben, Ziffern oder Unterstriche enthalten darf. Es können Groß- und Kleinbuchstaben verwendet werden.
+
+Ein Bezeichner kann entweder auf den Namen eines Felds oder auf eine **Bereichsvariable** im Kontext eines [Sammlungsausdruck](search-query-odata-collection-operators.md) (`any` oder `all`) in einem Filter verweisen. Eine Bereichsvariable ist wie eine Schleifenvariable, die das aktuelle Element der Sammlung darstellt. Für komplexe Sammlungen stellt die Variable ein Objekt dar. Deshalb können Sie Feldpfade verwenden, um auf untergeordnete Felder in der Variable zu verweisen. Dies ist vergleichbar mit der Punktnotation in vielen Programmiersprachen.
+
+Die folgende Tabelle enthält Beispiele für Feldpfade:
+
+| Feldpfad | BESCHREIBUNG |
+| --- | --- |
+| `HotelName` | Verweist auf ein Feld der obersten Ebene des Indexes |
+| `Address/City` | Verweist auf das untergeordnete Feld `City` eines komplexen Felds im Index; `Address` ist in diesem Beispiel vom Typ `Edm.ComplexType` |
+| `Rooms/Type` | Verweist auf das untergeordnete Feld `Type` eines komplexen Sammlungsfelds im Index; `Rooms` ist in diesem Beispiel vom Typ `Collection(Edm.ComplexType)` |
+| `Stores/Address/Country` | Verweist auf das untergeordnete Feld `Country` des untergeordneten Felds `Address` eines komplexen Sammlungsfelds im Index; `Stores` ist in diesem Beispiel vom Typ `Collection(Edm.ComplexType)` und `Address` vom Typ `Edm.ComplexType` |
+| `room/Type` | Verweist auf das untergeordnete Feld `Type` der Bereichsvariable `room`, z. B. im Filterausdruck `Rooms/any(room: room/Type eq 'deluxe')` |
+| `store/Address/Country` | Verweist auf das untergeordnete Feld `Country` des untergeordneten Felds `Address` der Bereichsvariable `store`, z. B. im Filterausdruck `Stores/any(store: store/Address/Country eq 'Canada')` |
+
+Die Bedeutung eines Feldpfads variiert je nach Kontext. In Filtern verweist ein Feldpfad auf den Wert einer *Einzelinstanz* eines Felds im aktuellen Dokument. In anderen Kontexten, wie z. B. **$orderby**, **$select** oder bei der [feldbezogenen Suche in der vollständigen Lucene-Syntax](query-lucene-syntax.md#bkmk_fields), verweist ein Feldpfad auf das Feld selbst. Dieser Unterschied hat Konsequenzen für die Verwendung von Feldpfaden in Filtern.
+
+Betrachten Sie den Feldpfad `Address/City`. In einem Filter verweist dieser auf eine einzelne Stadt im aktuellen Dokument, z. B. „San Francisco“. Im Gegensatz dazu verweist `Rooms/Type` auf das untergeordnete Feld `Type` für viele Zimmer (z. B. „standard“ für das erste Zimmer, „deluxe“ für das zweite Zimmer usw.). Da `Rooms/Type` nicht auf eine *Einzelinstanz* des untergeordneten Felds `Type` verweist, ist eine direkte Verwendung in einem Filter nicht möglich. Um stattdessen nach dem Zimmertyp zu filtern, verwenden Sie einen [Lambdaausdruck](search-query-odata-collection-operators.md) mit einer Bereichsvariable, wie im Folgenden gezeigt:
+
+    Rooms/any(room: room/Type eq 'deluxe')
+
+In diesem Beispiel ist die Bereichsvariable `room` im Feldpfad `room/Type` enthalten. Auf diese Weise verweist `room/Type` auf den Typ des aktuellen Zimmers im aktuellen Dokument. Dies ist eine einzelne Instanz des untergeordneten Felds `Type` und kann damit direkt im Filter verwendet werden.
+
+### <a name="using-field-paths"></a>Verwenden von Feldpfaden
+
+Feldpfade werden in zahlreichen Parametern der [Azure Search-API](https://docs.microsoft.com/rest/api/searchservice/) verwendet. Die folgende Tabelle enthält alle Stellen, an denen sie verwendet werden können, sowie einige Einschränkungen für ihre Nutzung:
+
+| API | Parametername | Einschränkungen |
+| --- | --- | --- |
+| [Erstellen](https://docs.microsoft.com/rest/api/searchservice/create-index) oder [Aktualisieren](https://docs.microsoft.com/rest/api/searchservice/update-index) des Index | `suggesters/sourceFields` | Keine |
+| [Erstellen](https://docs.microsoft.com/rest/api/searchservice/create-index) oder [Aktualisieren](https://docs.microsoft.com/rest/api/searchservice/update-index) des Index | `scoringProfiles/text/weights` | Kann nur auf **durchsuchbare** Felder verweisen |
+| [Erstellen](https://docs.microsoft.com/rest/api/searchservice/create-index) oder [Aktualisieren](https://docs.microsoft.com/rest/api/searchservice/update-index) des Index | `scoringProfiles/functions/fieldName` | Kann nur auf **filterbare** Felder verweisen |
+| [Suchen,](https://docs.microsoft.com/rest/api/searchservice/search-documents) | `search`, wenn `queryType` den Wert `full` hat | Kann nur auf **durchsuchbare** Felder verweisen |
+| [Suchen,](https://docs.microsoft.com/rest/api/searchservice/search-documents) | `facet` | Kann nur auf **facettierbare** Felder verweisen |
+| [Suchen,](https://docs.microsoft.com/rest/api/searchservice/search-documents) | `highlight` | Kann nur auf **durchsuchbare** Felder verweisen |
+| [Suchen,](https://docs.microsoft.com/rest/api/searchservice/search-documents) | `searchFields` | Kann nur auf **durchsuchbare** Felder verweisen |
+| [Vorschlagen](https://docs.microsoft.com/rest/api/searchservice/suggestions) und [AutoVervollständigen](https://docs.microsoft.com/rest/api/searchservice/autocomplete) | `searchFields` | Kann nur auf Felder verweisen, die Teil einer [Vorschlagsfunktion](index-add-suggesters.md) sind |
+| [Suchen](https://docs.microsoft.com/rest/api/searchservice/search-documents), [Vorschlagen](https://docs.microsoft.com/rest/api/searchservice/suggestions) und [AutoVervollständigen](https://docs.microsoft.com/rest/api/searchservice/autocomplete) | `$filter` | Kann nur auf **filterbare** Felder verweisen |
+| [Suchen](https://docs.microsoft.com/rest/api/searchservice/search-documents) und [Vorschlagen](https://docs.microsoft.com/rest/api/searchservice/suggestions) | `$orderby` | Kann nur auf **sortierbare** Felder verweisen |
+| [Suchen](https://docs.microsoft.com/rest/api/searchservice/search-documents), [Vorschlagen](https://docs.microsoft.com/rest/api/searchservice/suggestions) und [Nachschlagen](https://docs.microsoft.com/rest/api/searchservice/lookup-document) | `$select` | Kann nur auf **abrufbare** Felder verweisen |
+
+## <a name="constants"></a>Konstanten
+
+Konstanten in OData sind Literalwerte eines bestimmten [Entity Data Model](https://docs.microsoft.com/dotnet/framework/data/adonet/entity-data-model)-Typs (EDM). Eine Liste der in Azure Search unterstützten Typen finden Sie unter [Unterstützte Datentypen](https://docs.microsoft.com/rest/api/searchservice/supported-data-types). Konstanten von Sammlungstypen werden nicht unterstützt.
+
+Die folgende Tabelle zeigt Beispiele für Konstanten für jeden der von Azure Search unterstützten Datentypen:
+
+| Datentyp | Beispielkonstanten |
+| --- | --- |
+| `Edm.Boolean` | `true`, `false` |
+| `Edm.DateTimeOffset` | `2019-05-06T12:30:05.451Z` |
+| `Edm.Double` | `3.14159`, `-1.2e7`, `NaN`, `INF`, `-INF` |
+| `Edm.GeographyPoint` | `geography'POINT(-122.131577 47.678581)'` |
+| `Edm.GeographyPolygon` | `geography'POLYGON((-122.031577 47.578581, -122.031577 47.678581, -122.131577 47.678581, -122.031577 47.578581))'` |
+| `Edm.Int32` | `123`, `-456` |
+| `Edm.Int64` | `283032927235` |
+| `Edm.String` | `'hello'` |
+
+Die folgende EBNF ([erweiterte Backus-Naur-Form](https://en.wikipedia.org/wiki/Extended_Backus–Naur_form)) definiert die Grammatik für die meisten Konstanten in der obigen Tabelle. Die Grammatik für geografische Datentypen finden Sie unter [Geografische OData-Funktionen in Azure Search](search-query-odata-geo-spatial-functions.md).
+
+<!-- Upload this EBNF using https://bottlecaps.de/rr/ui to create a downloadable railroad diagram. -->
 
 ```
-$filter=hotelName ne 'Roach Motel' and lastRenovationDate ge 2010-01-01T00:00:00Z
+constant ::=
+    string_literal
+    | date_time_offset_literal
+    | integer_literal
+    | float_literal
+    | boolean_literal
+    | 'null'
+
+string_literal ::= "'"([^'] | "''")*"'"
+
+date_time_offset_literal ::= date_part'T'time_part time_zone
+
+date_part ::= year'-'month'-'day
+
+time_part ::= hour':'minute(':'second('.'fractional_seconds)?)?
+
+zero_to_fifty_nine ::= [0-5]digit
+
+digit ::= [0-9]
+
+year ::= digit digit digit digit
+
+month ::= '0'[1-9] | '1'[0-2]
+
+day ::= '0'[1-9] | [1-2]digit | '3'[0-1]
+
+hour ::= [0-1]digit | '2'[0-3]
+
+minute ::= zero_to_fifty_nine
+
+second ::= zero_to_fifty_nine
+
+fractional_seconds ::= integer_literal
+
+time_zone ::= 'Z' | sign hour':'minute
+
+sign ::= '+' | '-'
+
+/* In practice integer literals are limited in length to the precision of
+the corresponding EDM data type. */
+integer_literal ::= digit+
+
+float_literal ::=
+    sign? whole_part fractional_part? exponent?
+    | 'NaN'
+    | '-INF'
+    | 'INF'
+
+whole_part ::= integer_literal
+
+fractional_part ::= '.'integer_literal
+
+exponent ::= 'e' sign? integer_literal
+
+boolean_literal ::= 'true' | 'false'
 ```
 
- Suche nach allen Hotels mit einem Basistarif unter 200$, die seit 2010 renoviert wurden und einen datetime-Literalwert mit Zeitzoneninformationen für Pacific Normalzeit aufweisen:  
+Ein interaktives Syntaxdiagramm ist ebenfalls verfügbar:
+
+> [!div class="nextstepaction"]
+> [OData-Syntaxdiagramm für Azure Search](https://azuresearch.github.io/odata-syntax-diagram/#constant)
+
+> [!NOTE]
+> Die vollständige EBNF finden Sie in der [Referenz zur OData-Ausdruckssyntax für Azure Search](search-query-odata-syntax-reference.md).
+
+## <a name="building-expressions-from-field-paths-and-constants"></a>Erstellen von Ausdrücken aus Feldpfaden und Konstanten
+
+Feldpfade und Konstanten sind der grundlegendste Teil jedes OData-Ausdrucks, sie sind aber selbst bereits vollständige Ausdrücke. Tatsächlich ist der **$select**-Parameter in Azure Search eine durch Trennzeichen getrennte Liste der Feldpfade, und **$orderby** ist nicht viel komplizierter als **$select**. Wenn Ihr Index ein Feld vom Typ `Edm.Boolean` enthält, können Sie sogar einen Filter schreiben, der lediglich der Pfad dieses Felds ist. Die Konstanten `true` und `false` sind ebenfalls gültige Filter.
+
+Allerdings benötigen Sie in den meisten Fällen komplexere Ausdrücke, die auf mehr als ein Feld und eine Konstante verweisen. Diese Ausdrücke werden je nach Parameter auf verschiedene Arten erstellt.
+
+Die folgende EBNF ([erweiterte Backus-Naur-Form](https://en.wikipedia.org/wiki/Extended_Backus–Naur_form)) definiert die Grammatik der Parameter **$filter**, **$orderby** und **$select**. Diese basieren auf einfacheren Ausdrücken, die auf die Feldpfade und Konstanten verweisen:
+
+<!-- Upload this EBNF using https://bottlecaps.de/rr/ui to create a downloadable railroad diagram. -->
 
 ```
-$filter=baseRate lt 200 and lastRenovationDate ge 2010-01-01T00:00:00-08:00
+filter_expression ::= boolean_expression
+
+order_by_expression ::= order_by_clause(',' order_by_clause)*
+
+select_expression ::= '*' | field_path(',' field_path)*
 ```
 
- Suche nach allen Hotels, bei denen die Parkgebühren im Preis enthalten sind und Rauchen nicht erlaubt ist:  
+Ein interaktives Syntaxdiagramm ist ebenfalls verfügbar:
 
-```
-$filter=parkingIncluded and not smokingAllowed
-```
+> [!div class="nextstepaction"]
+> [OData-Syntaxdiagramm für Azure Search](https://azuresearch.github.io/odata-syntax-diagram/#filter_expression)
 
- \- ODER -  
+> [!NOTE]
+> Die vollständige EBNF finden Sie in der [Referenz zur OData-Ausdruckssyntax für Azure Search](search-query-odata-syntax-reference.md).
 
-```
-$filter=parkingIncluded eq true and smokingAllowed eq false
-```
+Die Parameter **$orderby** und **$select** sind durch Trennzeichen getrennte Listen mit einfachen Ausdrücken. Der **$filter**-Parameter ist ein boolescher Ausdruck, der sich aus einfacheren untergeordneten Ausdrücken zusammensetzt. Diese untergeordneten Ausdrücke werden mithilfe logischer Operatoren wie z. B. [`and`, `or` und `not`](search-query-odata-logical-operators.md), Vergleichsoperatoren wie [`eq`, `lt`, `gt` usw.](search-query-odata-comparison-operators.md) und Sammlungsoperatoren wie [`any` und `all`](search-query-odata-collection-operators.md) kombiniert.
 
- Suche nach allen Hotels, die der Kategorie „Luxury“ angehören oder bei denen die Parkgebühren im Preis enthalten sind, mit einer Bewertung von 5:  
+In den folgenden Artikeln werden die Parameter **$filter**, **$orderby** und **$select** ausführlicher besprochen:
 
-```
-$filter=(category eq 'Luxury' or parkingIncluded eq true) and rating eq 5
-```
-
- Suche nach allen Hotels mit dem Tag „wifi“ (wobei für jedes Hotel Tags in einem Feld „Collection(EDM.String)“ gespeichert sind):  
-
-```
-$filter=tags/any(t: t eq 'wifi')
-```
-
- Suche nach allen Hotels ohne das Tag „motel“:  
-
-```
-$filter=tags/all(t: t ne 'motel')
-```
-
- Suche nach allen Hotels mit beliebigen Tags:  
-
-```
-$filter=tags/any()
-```
-
-Suchen Sie alle Hotels, die keine Tags aufweisen:  
-
-```
-$filter=not tags/any()
-```
-
-
- Suche nach allen Hotels in einem Umkreis von 10 Kilometern von einem angegebenen Referenzpunkt (wobei „location“ ein Feld vom Typ „Edm.geographypoint“ ist):  
-
-```
-$filter=geo.distance(location, geography'POINT(-122.131577 47.678581)') le 10
-```
-
- Suche nach allen Hotels in einem bestimmten Anzeigebereich, der als Polygon definiert ist (wobei „location“ ein Feld vom Typ „Edm.geographypoint“ ist). Beachten Sie, dass das Polygon geschlossen ist (der erste und der letzte Punkt müssen identisch sein), und [die Punkte müssen entgegen dem Uhrzeigersinn aufgelistet sein](https://docs.microsoft.com/rest/api/searchservice/supported-data-types#Anchor_1).
-
-```
-$filter=geo.intersects(location, geography'POLYGON((-122.031577 47.578581, -122.031577 47.678581, -122.131577 47.678581, -122.031577 47.578581))')
-```
-
- Suche nach allen Hotels, bei denen das Feld „description“ keinen Wert enthält oder explizit auf NULL festgelegt ist:  
-
-```
-$filter=description eq null
-```
-
-Suche nach allen Hotels, deren Namen „Roach motel“ oder „Budget hotel“ entspricht. Ausdrücke enthalten Leerzeichen, die Standardtrennzeichen sind. Sie können ein alternatives Trennzeichen in einfachen Anführungszeichen als dritten Zeichenfolgenparameter angeben:  
-
-```
-$filter=search.in(name, 'Roach motel,Budget hotel', ',')
-```
-
-Suche nach allen Hotels, deren Namen „Roach motel“ oder „Budget hotel“ entspricht (getrennt durch „|“):  
-
-```
-$filter=search.in(name, 'Roach motel|Budget hotel', '|')
-```
-
-Suche nach allen Hotels mit dem Tag „wifi“ oder „pool“:  
-
-```
-$filter=tags/any(t: search.in(t, 'wifi, pool'))
-```
-
-Suchen Sie eine Übereinstimmung mit Ausdrücken innerhalb einer Sammlung, z.B. „beheizte Handtuchhalter“ oder „Haartrockner inklusive“ in Tags. 
-
-```
-$filter=tags/any(t: search.in(t, 'heated towel racks,hairdryer included', ','))
-```
-
-Suche nach allen Hotels ohne das Tag „motel“ oder „cabin“:  
-
-```
-$filter=tags/all(t: not search.in(t, 'motel, cabin'))
-```
-
-Suche nach Dokumenten mit dem Wort „waterfront“. Diese Filterabfrage ist identisch mit einer [Suchanforderung](https://docs.microsoft.com/rest/api/searchservice/search-documents) mit `search=waterfront`.
-
-```
-$filter=search.ismatchscoring('waterfront')
-```
-
-Suche nach Dokumenten mit dem Wort „hostel“ und einer Bewertung größer oder gleich 4 oder Dokumenten mit dem Wort „motel“ und einer Bewertung von 5. Beachten Sie, dass diese Anforderung nicht ohne die Funktion `search.ismatchscoring` ausgedrückt werden kann.
-
-```
-$filter=search.ismatchscoring('hostel') and rating ge 4 or search.ismatchscoring('motel') and rating eq 5
-```
-
-Suche nach Dokumenten ohne das Wort „luxury“:
-
-```
-$filter=not search.ismatch('luxury') 
-```
-
-Suche nach Dokumenten mit dem Ausdruck „ocean view“ oder einer Bewertung von 5. Die Abfrage `search.ismatchscoring` wird nur für die Felder `hotelName` und `description` ausgeführt.
-Beachten Sie, dass Dokumente, die nur der zweiten Klausel der Disjunktion entsprechen, ebenfalls zurückgegeben werden (Hotels mit einer Bewertung von 5). Um deutlich zu machen, dass diese Dokumente mit keinem der bewerteten Teile des Ausdrucks übereinstimmen, werden sie mit einem Ergebnis von Null zurückgegeben.
-
-```
-$filter=search.ismatchscoring('"ocean view"', 'description,hotelName') or rating eq 5
-```
-
-Suche nach Dokumenten, die die Begriffe „hotel“ und „airport“ in einem Abstand von fünf Wörtern voneinander in der Beschreibung des Hotels sowie ein Rauchverbot enthalten. Diese Abfrage verwendet die [vollständige Lucene-Abfragesprache](query-lucene-syntax.md).
-
-```
-$filter=search.ismatch('"hotel airport"~5', 'description', 'full', 'any') and not smokingAllowed 
-```
-
-## <a name="order-by-syntax"></a>Sortiersyntax
-
-Der **$orderby**-Parameter akzeptiert eine durch Trennzeichen getrennte Liste von bis zu 32 Ausdrücken im Format `sort-criteria [asc|desc]`. Bei den Sortierkriterien kann es sich entweder um den Namen eines Felds vom Typ `sortable` oder um einen Aufruf der Funktion `geo.distance` oder `search.score` handeln. Sie können `asc` oder `desc` verwenden, um die Sortierreihenfolge explizit anzugeben. Die Standardreihenfolge ist aufsteigend.
-
-Wenn für mehrere Dokumente die gleichen Sortierkriterien gelten und die Funktion `search.score` nicht verwendet wird (z. B. wenn Sie nach einem numerischen Feld `rating` sortieren und drei Dokumente eine Bewertung von 4 aufweisen), werden Verknüpfungen auf Grundlage des Dokumentergebnisses in absteigender Reihenfolge getrennt. Wenn Dokumentergebnisse identisch sind (z. B. wenn in der Anforderung eine Nicht-Volltextsuchabfrage angegeben ist), ist die relative Sortierung der verknüpften Dokumente unbestimmt.
- 
-Sie können mehrere Sortierkriterien angeben. Die Reihenfolge der Ausdrücke bestimmt die endgültige Sortierreihenfolge. Die Syntax zum Sortieren in absteigender Reihenfolge nach Suchergebnis und anschließend nach Bewertung lautet beispielsweise wie folgt: `$orderby=search.score() desc,rating desc`.
-
-Die Syntax für `geo.distance` in **$orderby** entspricht der Syntax in **$filter**. Bei der Verwendung von `geo.distance` in **$orderby** muss das Feld, für das der Ausdruck gilt, vom Typ `Edm.GeographyPoint` und zudem `sortable` sein.  
-
-Die Syntax für `search.score` in **$orderby** ist `search.score()`. Die Funktion `search.score` akzeptiert keine Parameter.  
- 
-
-## <a name="order-by-examples"></a>Beispiele für das Sortieren
-
-Sortieren von Hotels in aufsteigender Reihenfolge nach Basistarif:
-
-```
-$orderby=baseRate asc
-```
-
-Sortieren von Hotels in absteigender Reihenfolge nach Bewertung und anschließend in aufsteigender Reihenfolge nach Basistarif (bedenken Sie, dass die Standardreihenfolge aufsteigend ist):
-
-```
-$orderby=rating desc,baseRate
-```
-
-Sortieren von Hotels in absteigender Reihenfolge nach Bewertung und anschließend in aufsteigender Reihenfolge nach der Entfernung von den angegebenen Koordinaten:
-
-```
-$orderby=rating desc,geo.distance(location, geography'POINT(-122.131577 47.678581)') asc
-```
-
-Sortieren von Hotels in absteigender Reihenfolge nach Suchergebnis und Bewertung und anschließend in aufsteigender Reihenfolge nach der Entfernung von den angegebenen Koordinaten, sodass von zwei Hotels mit identischen Bewertungen das nächstgelegene zuerst aufgeführt wird:
-
-```
-$orderby=search.score() desc,rating desc,geo.distance(location, geography'POINT(-122.131577 47.678581)') asc
-```
-<a name="bkmk_unsupported"></a>
-
-## <a name="unsupported-odata-syntax"></a>Nicht unterstützte OData-Syntax
-
--   Arithmetische Ausdrücke  
-
--   Funktionen (mit Ausnahme der Geofunktionen für Entfernung und Überschneidungen)  
-
--   `any/all` mit beliebigen Lambdaausdrücken  
+- [OData-Syntax von „$filter“ in Azure Search](search-query-odata-filter.md)
+- [OData-Syntax von „$orderby“ in Azure Search](search-query-odata-orderby.md)
+- [OData-Syntax von „$select“ in Azure Search](search-query-odata-select.md)
 
 ## <a name="see-also"></a>Weitere Informationen  
 
-+ [Facettennavigation in Azure Search](search-faceted-navigation.md) 
-+ [Filter in Azure Search](search-filters.md) 
-+ [Search Documents &#40;Azure Search Service REST API&#41;](https://docs.microsoft.com/rest/api/searchservice/Search-Documents) (Suchen nach Dokumenten: REST-API für den Azure Search-Dienst) 
-+ [Lucene-Abfragesyntax](query-lucene-syntax.md)
-+ [Simple query syntax in Azure Search](query-simple-syntax.md) (Einfache Abfragesyntax in Azure Search)   
+- [Facettennavigation in Azure Search](search-faceted-navigation.md)
+- [Filter in Azure Search](search-filters.md)
+- [Search Documents &#40;Azure Search Service REST API&#41;](https://docs.microsoft.com/rest/api/searchservice/Search-Documents) (Suchen nach Dokumenten: REST-API für den Azure Search-Dienst)
+- [Lucene-Abfragesyntax](query-lucene-syntax.md)
+- [Simple query syntax in Azure Search](query-simple-syntax.md) (Einfache Abfragesyntax in Azure Search)

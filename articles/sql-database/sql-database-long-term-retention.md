@@ -11,13 +11,13 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, carlrab
 manager: craigg
-ms.date: 04/23/2019
-ms.openlocfilehash: 0f764ebbad53185f46c7166011e05493ed261d6a
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.date: 05/18/2019
+ms.openlocfilehash: 6549892bfd04065bf83ab50fa5f5b439c35c4238
+ms.sourcegitcommit: 156b313eec59ad1b5a820fabb4d0f16b602737fc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64696655"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67190548"
 ---
 # <a name="store-azure-sql-database-backups-for-up-to-10-years"></a>Speichern von Sicherungen von Azure SQL-Datenbank bis zu 10 Jahre lang
 
@@ -59,8 +59,8 @@ W=12 (12 Wochen bzw. 84 Tage), M=12 (12 Monate bzw. 365 Tage), Y=10 (10 Jahre bz
 
 Wenn Sie die vorstehende Richtlinie ändern und „W=0“ (keine wöchentlichen Sicherungen) festlegen, ändert sich der Rhythmus der Sicherungskopien, wie in der Tabelle oben durch die hervorgehobenen Daten gezeigt. Der zum Aufbewahren dieser Sicherungen benötigte Speicherplatz verringert sich entsprechend. 
 
-> [!NOTE]
-> Die Zeitplanung für die einzelnen LTR-Sicherungen wird durch Azure SQL-Datenbank gesteuert. Sie können eine LTR-Sicherung nicht manuell erstellen oder die Zeitplanung für die Sicherungserstellung steuern.
+> [!IMPORTANT]
+> Die Zeitplanung für die einzelnen LTR-Sicherungen wird durch Azure SQL-Datenbank gesteuert. Sie können eine LTR-Sicherung nicht manuell erstellen oder die Zeitplanung für die Sicherungserstellung steuern. Nach dem Konfigurieren einer LTR-Richtlinie kann es bis zu 7 Tage dauern, bis die erste LTR-Sicherung in der Liste der verfügbaren Sicherungen angezeigt wird.  
 > 
 
 ## <a name="geo-replication-and-long-term-backup-retention"></a>Georeplikation und langfristige Sicherungsaufbewahrung

@@ -1,30 +1,30 @@
 ---
-title: Konfigurieren von benutzerdefinierten WAF-Regeln mit Azure PowerShell
-description: Es wird beschrieben, wie Sie benutzerdefinierte WAF-Regeln mit Azure PowerShell konfigurieren.
+title: Konfigurieren von Web Application Firewall v2 mit benutzerdefinierten Regeln mithilfe von Azure PowerShell
+description: Erfahren Sie, wie Sie mithilfe von Azure PowerShell benutzerdefinierte Regeln für WAF v2 konfigurieren.
 services: application-gateway
 author: vhorne
 ms.service: application-gateway
 ms.topic: article
-ms.date: 6/5/2019
+ms.date: 6/18/2019
 ms.author: victorh
-ms.openlocfilehash: 0700341d5410710e2187e775e772da922dfaf86a
-ms.sourcegitcommit: 6932af4f4222786476fdf62e1e0bf09295d723a1
+ms.openlocfilehash: f4d2fd7342e0efe95a1bc69e0dba77692053cf14
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/05/2019
-ms.locfileid: "66688929"
+ms.lasthandoff: 06/17/2019
+ms.locfileid: "67164751"
 ---
-# <a name="configure-web-application-firewall-with-a-custom-rule-using-azure-powershell"></a>Konfigurieren einer Web Application Firewall mit einer benutzerdefinierten Regel mit Azure PowerShell
+# <a name="configure-web-application-firewall-v2--with-a-custom-rule-using-azure-powershell"></a>Konfigurieren von Web Application Firewall v2 mit einer benutzerdefinierten Regel mithilfe von Azure PowerShell
 
 <!--- If you make any changes to the PowerShell in this article, also make the change in the corresponding Sample file: azure-docs-powershell-samples/application-gateway/waf-rules/waf-custom-rules.ps1 --->
 
-Benutzerdefinierte Regeln ermöglichen die Erstellung eigener Regeln, die für jede Anforderung ausgewertet werden, für die die Web Application Firewall (WAF) durchlaufen wird. Diese Regeln haben eine höhere Priorität als die restlichen Regeln in den verwalteten Regelsätzen. Die benutzerdefinierten Regeln verfügen über eine Aktion (Zulassen oder Blockieren), eine Übereinstimmungsbedingung und einen Operator zum Zulassen der vollständigen Anpassung.
+Benutzerdefinierte Regeln ermöglichen die Erstellung eigener Regeln, die für jede Anforderung ausgewertet werden, für die Web Application Firewall v2 (WAF) durchlaufen wird. Diese Regeln haben eine höhere Priorität als die restlichen Regeln in den verwalteten Regelsätzen. Die benutzerdefinierten Regeln verfügen über eine Aktion (Zulassen oder Blockieren), eine Übereinstimmungsbedingung und einen Operator zum Zulassen der vollständigen Anpassung.
 
-In diesem Artikel wird eine Application Gateway-WAF erstellt, für die eine benutzerdefinierte Regel verwendet wird. Die benutzerdefinierte Regel blockiert Datenverkehr, wenn der Anforderungsheader den Benutzer-Agent *evilbot* enthält.
+In diesem Artikel wird eine Application Gateway-WAF v2 erstellt, für die eine benutzerdefinierte Regel verwendet wird. Die benutzerdefinierte Regel blockiert Datenverkehr, wenn der Anforderungsheader den Benutzer-Agent *evilbot* enthält.
 
 Weitere Beispiele für benutzerdefinierte Regeln finden Sie unter [Create and use Web Application Firewall custom rules](create-custom-waf-rules.md) (Erstellen und Verwenden benutzerdefinierter Web Application Firewall-Regeln).
 
-<!--- If you want run the Azure PowerShell in this article in one continuous script that you can copy, paste, and run, [see link to Samples]. --->
+Wenn Sie den Azure PowerShell-Code in diesem Artikel in einem fortlaufenden Skript benötigen, das Sie kopieren, einfügen und ausführen können, lesen Sie unter [PowerShell-Beispiele für Azure Application Gateway](powershell-samples.md) nach.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 

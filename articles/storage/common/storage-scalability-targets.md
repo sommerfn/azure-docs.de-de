@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 03/23/2019
 ms.author: rogarana
 ms.subservice: common
-ms.openlocfilehash: e3e0e9ae4a1939aad9ab2ae42a1b51b1b00e2462
-ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
+ms.openlocfilehash: 932d250d6685a1b905e4a03a0118d8c8f1f26418
+ms.sourcegitcommit: 6e6813f8e5fa1f6f4661a640a49dc4c864f8a6cb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/12/2019
-ms.locfileid: "59521715"
+ms.lasthandoff: 06/17/2019
+ms.locfileid: "67151243"
 ---
 # <a name="azure-storage-scalability-and-performance-targets-for-storage-accounts"></a>Skalierbarkeits- und Leistungsziele für Speicherkonten in Azure Storage
 
@@ -43,9 +43,15 @@ Wenn Ihre Anwendung die Grenze dessen erreicht, was eine Partition an Workload b
 
 Weitere Informationen zu den Skalierbarkeits- und Leistungszielen für Azure Files und die Azure-Dateisynchronisierung finden Sie unter [Skalierbarkeits- und Leistungsziele für Azure Files](../files/storage-files-scale-targets.md).
 
+> [!IMPORTANT]
+> Die Einschränkungen für Speicherkonten gelten für alle Freigaben. Zentrales Hochskalieren bis zum Maximalwert für Speicherkonten ist nur möglich, wenn es nur eine Freigabe pro Speicherkonto gibt.
+>
+> Standarddateifreigaben über 5 TiB sind als Vorschauversion verfügbar und weisen bestimmte Einschränkungen auf.
+> Eine Liste der Einschränkungen sowie Informationen zum Onboarding für die Vorschauversion dieser größeren Dateifreigaben finden Sie im Abschnitt [Standarddateifreigaben](../files/storage-files-planning.md#standard-file-shares) des Planungshandbuchs für Azure Files.
+
 [!INCLUDE [storage-files-scale-targets](../../../includes/storage-files-scale-targets.md)]
 
-### <a name="premium-files-scale-targets"></a>Skalierbarkeitsziele für Premiumdateien
+### <a name="premium-files-scale-targets"></a>Skalierbarkeitsziele für Premium-Dateien
 
 Es gibt drei Kategorien von Einschränkungen, die für Premium-Dateien zu berücksichtigen sind: Speicherkonten, Freigaben und Dateien.
 
@@ -53,27 +59,7 @@ Beispiel:  Eine einzelne Freigabe kann einen IOPS von 100.000 erreichen, und ein
 
 #### <a name="premium-file-share-limits"></a>Freigabelimits für Premiumdateien
 
-> [!IMPORTANT]
-> Die Einschränkungen für Speicherkonten gelten für alle Freigaben. Zentrales Hochskalieren bis zum Maximalwert für Speicherkonten ist nur möglich, wenn es nur eine Freigabe pro Speicherkonto gibt.
-
-|Bereich  |Ziel  |
-|---------|---------|
-|Bereitgestellte minimale Größe                        |100 GB      |
-|Bereitgestellte maximale Größe                        |ca. 100 TiB      |
-|Mindestgröße vergrößern/verkleinern    |1 GiB      |
-|IOPS-Grundwert    |1 IOPS pro GiB bis zu 100.000|
-|IOPS-Bursting    |3 x IOPS pro GiB bis zu 100.000|
-|Ausgangsrate         |60 MiB/s + 0,06 * bereitgestelltes GiB        |
-|Eingangsrate| 40 MiB/s + 0,04 * bereitgestelltes GiB |
-|Maximale Anzahl von Momentaufnahmen        |200       |
-
-#### <a name="premium-file-limits"></a>Grenzwerte für Premiumdateien
-
-|Bereich  |Ziel  |
-|---------|---------|
-|Größe                  |1 TiB         |
-|Max. IOPS pro Datei     |5.000         |
-|Gleichzeitige Handles    |2.000         |
+[!INCLUDE [storage-files-premium-scale-targets](../../../includes/storage-files-premium-scale-targets.md)]
 
 ### <a name="azure-file-sync-scale-targets"></a>Skalierbarkeitsziele für die Azure-Dateisynchronisierung
 

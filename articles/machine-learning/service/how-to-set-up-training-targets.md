@@ -9,18 +9,18 @@ ms.reviewer: sgilley
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
-ms.date: 01/07/2019
+ms.date: 06/12/2019
 ms.custom: seodec18
-ms.openlocfilehash: 054aaf6f607bba216f979665a0b0672ec253ba7f
-ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
+ms.openlocfilehash: 0b35ef5ca3aaa7ad4169f99e2830ebea76d2759e
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/04/2019
-ms.locfileid: "66475985"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67074944"
 ---
 # <a name="set-up-compute-targets-for-model-training"></a>Einrichten von Computezielen für das Modelltraining 
 
-Mit Azure Machine Learning Service können Sie Ihr Modell für eine Vielzahl von Ressourcen oder Umgebungen trainieren, die zusammen als [__Computeziele__](concept-azure-machine-learning-architecture.md#compute-target) bezeichnet werden. Ein Computeziel kann ein lokaler Computer oder eine Cloudressource sein, wie beispielsweise Azure Machine Learning Compute, Azure HDInsight oder ein virtueller Remotecomputer.  Sie können auch Computeziele für die Modellimplementierung erstellen, wie in [Bereitstellen von Modellen mit dem Azure Machine Learning-Dienst](how-to-deploy-and-where.md) beschrieben.
+Mit Azure Machine Learning Service können Sie Ihr Modell für eine Vielzahl von Ressourcen oder Umgebungen trainieren, die zusammen als [__Computeziele__](concept-azure-machine-learning-architecture.md#compute-targets) bezeichnet werden. Ein Computeziel kann ein lokaler Computer oder eine Cloudressource sein, wie beispielsweise Azure Machine Learning Compute, Azure HDInsight oder ein virtueller Remotecomputer.  Sie können auch Computeziele für die Modellimplementierung erstellen, wie in [Bereitstellen von Modellen mit dem Azure Machine Learning-Dienst](how-to-deploy-and-where.md) beschrieben.
 
 Sie können Computeziele mit dem Azure Machine Learning SDK, im Azure-Portal, über die Azure-Befehlszeilenschnittstelle (Azure CLI) oder die Azure Machine Learning- VS Code-Erweiterung erstellen und verwalten. Wenn Sie Computeziele haben, die über einen anderen Dienst (z. B. einen HDInsight-Cluster) erstellt wurden, können Sie diese an Ihren Azure Machine Learning Service-Arbeitsbereich anfügen, um sie verwenden zu können.
  
@@ -37,18 +37,8 @@ In diesem Artikel erfahren Sie, wie Sie verschiedene Computeziele für das Model
 
 Azure Machine Learning Service bietet unterschiedliche Unterstützung für die verschiedenen Computeziele. Ein typischer Modellentwicklungslebenszyklus beginnt mit der Entwicklung/Experimenten mit einer kleinen Menge von Daten. In dieser Phase empfehlen wir die Verwendung einer lokalen Umgebung. Verwenden Sie beispielsweise Ihren lokalen Computer oder eine cloudbasierte VM. Wenn Sie Ihr Training zur Verwendung größerer Datasets zentral hochskalieren oder sich für ein verteiltes Training entscheiden, empfehlen wir, mit Azure Machine Learning Compute einen Cluster mit einem einzelnen oder mehreren Knoten zu erstellen, der bei jeder Übermittlung einer Ausführung automatisch skaliert wird. Sie können auch Ihre eigene Computeressource anfügen. Die Unterstützung für verschiedene Szenarien variiert jedoch wie unten beschrieben:
 
+[!INCLUDE [aml-compute-target-train](../../../includes/aml-compute-target-train.md)]
 
-|Training &nbsp;Ziele| GPU-Unterstützung |Automatisiertes maschinelles Lernen | ML-Pipelines | Grafische Benutzeroberfläche
-|----|:----:|:----:|:----:|:----:|
-|[Lokaler Computer](#local)| Vielleicht | Ja | &nbsp; | &nbsp; |
-|[Azure Machine Learning Compute](#amlcompute)| Ja | Ja & <br/>Hyperparameteroptimierung&nbsp; | Ja | Ja |
-|[Remote-VM](#vm) |Ja | Ja & <br/>Hyperparameteroptimierung | Ja | &nbsp; |
-|[Azure&nbsp;Databricks](how-to-create-your-first-pipeline.md#databricks)| &nbsp; | Ja | Ja | &nbsp; |
-|[Azure Data Lake Analytics](how-to-create-your-first-pipeline.md#adla)| &nbsp; | &nbsp; | Ja | &nbsp; |
-|[Azure HDInsight](#hdinsight)| &nbsp; | &nbsp; | Ja | &nbsp; |
-|[Azure Batch](#azbatch)| &nbsp; | &nbsp; | Ja | &nbsp; |
-
-**Alle Computeziele können für mehrere Trainingsaufträge wiederverwendet werden**. Beispielsweise können Sie einen virtuellen Remotecomputer, den Sie an Ihren Arbeitsbereich anfügen, für mehrere Aufträge wiederverwenden.
 
 > [!NOTE]
 > Azure Machine Learning Compute kann als dauerhafte Ressource oder dynamisch beim Anfordern einer Ausführung erstellt werden. Bei der ausführungsbasierten Erstellung wird das Computeziel nach Abschluss des Trainingsauftrags entfernt, sodass Sie auf diese Weise erstellte Computeziele nicht wiederverwenden können.
@@ -85,7 +75,7 @@ Der folgende Code ist ein Beispiel für die Trainingsausführungen für eine vom
 
 [!code-python[](~/aml-sdk-samples/ignore/doc-qa/how-to-set-up-training-targets/runconfig.py?name=run_user_managed)]
   
-## <a name="set-up-compute-targets-with-python"></a>Einrichten von Computezielen mit Python
+## <a name="set-up-in-python"></a>Einrichtung in Python
 
 Konfigurieren Sie die Computeziele anhand der folgenden Abschnitte:
 
@@ -281,7 +271,7 @@ except ComputeTargetException:
 print("Using Batch compute:{}".format(batch_compute.cluster_resource_id))
 ```
 
-## <a name="set-up-compute-in-the-azure-portal"></a>Einrichten von Computezielen im Azure-Portal
+## <a name="set-up-in-azure-portal"></a>Einrichtung im Azure-Portal
 
 Sie können im Azure-Portal auf Computeziele zugreifen, die Ihrem Arbeitsbereich zugeordnet sind.  Das Portal bietet Ihnen folgende Möglichkeiten:
 
@@ -367,7 +357,7 @@ Führen Sie die zuvor beschriebenen Schritte aus, um die Liste der Computeziele 
 1. Wählen Sie __Anfügen__ aus. 
 1. Sie können den Status des Anfügevorgangs anzeigen, indem Sie das Computeziel in der Liste auswählen.
 
-## <a name="set-up-compute-with-the-cli"></a>Einrichten von Computeressourcen mit der CLI
+## <a name="set-up-with-cli"></a>Einrichtung mit der CLI
 
 Sie können auf die mit Ihrem Arbeitsbereich verknüpften Computeziele mit der [CLI-Erweiterung](reference-azure-machine-learning-cli.md) für Azure Machine Learning Service zugreifen.  Mit der CLI haben Sie folgende Möglichkeiten:
 
@@ -377,7 +367,7 @@ Sie können auf die mit Ihrem Arbeitsbereich verknüpften Computeziele mit der [
 
 Weitere Informationen finden Sie unter [Ressourcenverwaltung](reference-azure-machine-learning-cli.md#resource-management).
 
-## <a name="set-up-compute-with-vs-code"></a>Einrichten von Computeressourcen mit VS Code
+## <a name="set-up-with-vs-code"></a>Einrichtung mit VS Code
 
 Sie können auf die mit Ihrem Arbeitsbereich verknüpften Computeziele mit der [VS Code-Erweiterung](how-to-vscode-tools.md#create-and-manage-compute-targets) für Azure Machine Learning Service zugreifen, sie erstellen und verwalten.
 
@@ -394,7 +384,7 @@ Nachdem Sie eine Laufzeitkonfiguration erstellt haben, verwenden Sie sie zum Aus
 >
 > Wenn Sie verhindern möchten, dass Dateien von der Momentaufnahme erfasst werden, müssen Sie eine [GITIGNORE](https://git-scm.com/docs/gitignore)- oder `.amlignore`-Datei im Verzeichnis erstellen und diesem die Dateien hinzufügen. Für die `.amlignore`-Datei werden die gleiche Syntax und die gleichen Muster wie für die [GITIGNORE](https://git-scm.com/docs/gitignore)-Datei verwendet. Wenn beide Dateien vorhanden sind, hat die `.amlignore`-Datei Vorrang.
 > 
-> Weitere Informationen finden Sie unter [Momentaufnahmen](concept-azure-machine-learning-architecture.md#snapshot).
+> Weitere Informationen finden Sie unter [Momentaufnahmen](concept-azure-machine-learning-architecture.md#snapshots).
 
 ### <a name="create-an-experiment"></a>Erstellen eines Experiments
 

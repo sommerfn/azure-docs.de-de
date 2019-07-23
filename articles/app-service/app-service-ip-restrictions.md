@@ -12,15 +12,15 @@ ms.workload: web
 ms.tgt_pltfrm: na
 ms.devlang: multiple
 ms.topic: article
-ms.date: 04/22/2018
+ms.date: 06/06/2019
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: de898a7ebb9611f469f42bb23774b3b0a0c2410d
-ms.sourcegitcommit: f6c85922b9e70bb83879e52c2aec6307c99a0cac
+ms.openlocfilehash: 2b0892fb107827cd9060a36855e9b8bf4416463c
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/11/2019
-ms.locfileid: "65541683"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67069435"
 ---
 # <a name="azure-app-service-access-restrictions"></a>Azure App Service – Zugriffseinschränkungen #
 
@@ -48,19 +48,27 @@ Auf der Benutzeroberfläche für Zugriffseinschränkungen können Sie die Liste 
 
 In der Liste werden alle aktuellen Einschränkungen für Ihre App angezeigt. Wenn eine VNET-Einschränkung für die App festgelegt ist, wird in der Tabelle angezeigt, ob Dienstendpunkte für Microsoft.Web aktiviert sind. Wenn keine definierten Einschränkungen für die App vorhanden sind, kann von überall aus auf die App zugegriffen werden.  
 
-Klicken Sie auf **[+] Hinzufügen**, um eine neue Zugriffseinschränkungsregel hinzuzufügen. Wenn Sie eine Regel hinzufügen, wird sie sofort wirksam. Regeln werden in der Reihenfolge ihrer Priorität erzwungen, wobei mit der niedrigsten Zahl begonnen wird. Implizit gilt die Regel „Alle ablehnen“, die wirksam ist, sobald Sie die erste Regel hinzugefügt haben.
+## <a name="adding-ip-address-rules"></a>Hinzufügen von Regeln für IP-Adressen
 
-![Hinzufügen einer IP-Zugriffseinschränkungsregel](media/app-service-ip-restrictions/access-restrictions-ip-add.png)
+Klicken Sie auf **[+] Hinzufügen**, um eine neue Zugriffseinschränkungsregel hinzuzufügen. Wenn Sie eine Regel hinzufügen, wird sie sofort wirksam. Regeln werden in der Reihenfolge ihrer Priorität erzwungen, wobei mit der niedrigsten Zahl begonnen wird. Implizit gilt die Regel „Alle ablehnen“, die wirksam ist, sobald Sie die erste Regel hinzugefügt haben.
 
 Beim Erstellen einer Regel müssen Sie „Zulassen/Ablehnen“ und außerdem den Typ der Regel auswählen. Sie müssen auch den Prioritätswert festlegen und angeben, worauf der Zugriff beschränkt wird.  Optional können Sie einen Namen und eine Beschreibung für die Regel hinzufügen.  
 
+![Hinzufügen einer IP-Zugriffseinschränkungsregel](media/app-service-ip-restrictions/access-restrictions-ip-add.png)
+
 Um eine auf IP-Adressen basierende Regel hinzuzufügen, wählen Sie einen der Typen IPv4 oder IPv6 aus. Die Notation von IP-Adressen muss für IPv4- und IPv6-Adressen in CIDR-Notation angegeben werden. Zum Angeben einer genauen Adresse können Sie beispielsweise 1.2.3.4/32 verwenden, wobei die ersten vier Oktette für Ihre IP-Adresse stehen und mit /32 die Maske angegeben wird. Die IPv4-CIDR-Notation für alle Adressen ist 0.0.0.0/0. Weitere Informationen zur CIDR-Notation finden Sie unter [Classless Inter-Domain Routing](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing). 
+
+## <a name="service-endpoints"></a>Dienstendpunkte
+
+Dienstendpunkte ermöglichen das Einschränken des Zugriffs auf ausgewählte Subnetze von virtuellen Azure-Netzwerken. Erstellen Sie zum Einschränken des Zugriffs auf ein bestimmtes Subnetz eine Einschränkungsregel vom Typ „Virtual Network“. Sie können das Abonnement, das VNET und das Subnetz auswählen, für die Sie den Zugriff zulassen oder verweigern möchten. Wenn noch keine Dienstendpunkte mit Microsoft.Web für das ausgewählte Subnetz aktiviert sind, werden sie automatisch aktiviert, es sei denn, Sie aktivieren das Kontrollkästchen, über das dies unterbunden wird. Der Fall, in dem dies für die App, jedoch nicht für das Subnetz aktiviert werden soll, hängt größtenteils davon ab, ob Sie über die Berechtigungen verfügen, Dienstendpunkte für das Subnetz zu aktivieren. Wenn eine andere Person Dienstendpunkte für das Subnetz für Sie aktivieren muss, können Sie das Kontrollkästchen aktivieren, sodass die App für Dienstendpunkte konfiguriert wird, mit der Erwartung, dass diese später für das Subnetz aktiviert werden. 
 
 ![Hinzufügen einer VNET-Zugriffseinschränkungsregel](media/app-service-ip-restrictions/access-restrictions-vnet-add.png)
 
-Um den Zugriff auf ausgewählte Subnetze einzuschränken, wählen Sie den Typ des virtuellen Netzwerks aus. Darunter können Sie das Abonnement, das VNET und das Subnetz auswählen, auf die Sie den Zugriff zulassen oder verweigern möchten. Wenn noch keine Dienstendpunkte mit Microsoft.Web für das ausgewählte Subnetz aktiviert sind, werden sie automatisch aktiviert, es sei denn, Sie aktivieren das Kontrollkästchen, über das dies unterbunden wird. Der Fall, in dem dies für die App, jedoch nicht für das Subnetz aktiviert werden soll, hängt größtenteils davon ab, ob Sie über die Berechtigungen verfügen, Dienstendpunkte für das Subnetz zu aktivieren. Wenn eine andere Person Dienstendpunkte für das Subnetz für Sie aktivieren muss, können Sie das Kontrollkästchen aktivieren, sodass die App für Dienstendpunkte konfiguriert wird, mit der Erwartung, dass diese später für das Subnetz aktiviert werden. 
-
 Der Zugriff auf Apps, die in einer App Service-Umgebung ausgeführt werden, kann nicht mit Dienstendpunkten eingeschränkt werden. Wenn Ihre App in einer App Service-Umgebung enthalten ist, können Sie den Zugriff darauf mit IP-Zugriffsregeln steuern. 
+
+Bei Dienstendpunkten können Sie Ihre App mit Anwendungsgateways oder anderen WAF-Geräten konfigurieren. Sie können auch Anwendungen mit mehreren Ebenen und sicheren Back-Ends konfigurieren. Weitere Informationen zu diesen Möglichkeiten finden Sie unter [App Service-Netzwerkfunktionen](networking-features.md).
+
+## <a name="managing-access-restriction-rules"></a>Verwalten von Zugriffseinschränkungsregeln
 
 Sie können auf eine beliebige Zeile klicken, um eine vorhandene Zugriffseinschränkungsregel zu bearbeiten. Änderungen sind sofort wirksam. Dies gilt auch für Änderungen der Prioritätsreihenfolge.
 
@@ -74,7 +82,15 @@ Klicken Sie zum Löschen einer Regel für die entsprechende Regel auf **...** un
 
 ![Löschen einer Zugriffseinschränkungsregel](media/app-service-ip-restrictions/access-restrictions-delete.png)
 
-### <a name="scm-site"></a>SCM-Website 
+## <a name="blocking-a-single-ip-address"></a>Blockieren einer einzelnen IP-Adresse ##
+
+Wenn Sie die erste Einschränkungsregel für IP-Adressen hinzufügen, fügt der Dienst eine explizite Regel **Alle ablehnen** mit der Priorität 2147483647 hinzu. In der Praxis wird die explizite Regel **Alle ablehnen** als letzte Regel ausgeführt und blockiert den Zugriff auf alle IP-Adressen, die nicht mit einer **Zulassen**-Regel explizit zugelassen sind.
+
+In einem Szenario, in dem Benutzer eine einzelne IP-Adresse oder einen IP-Adressblock explizit blockieren, aber den Zugriff für alles andere zulassen möchten, muss eine explizite Regel **Alle zulassen** hinzugefügt werden.
+
+![Blockieren einer einzelnen IP-Adresse](media/app-service-ip-restrictions/block-single-address.png)
+
+## <a name="scm-site"></a>SCM-Website 
 
 Neben der Möglichkeit, den Zugriff auf Ihre App zu steuern, können Sie auch den Zugriff auf die von der App verwendete SCM-Website einschränken. Die SCM-Website ist der Web Deploy-Endpunkt und zudem die Kudu-Konsole. Sie können die Zugriffseinschränkungen für die SCM-Website getrennt von der App zuweisen oder die gleichen Einschränkungen für die App und die SCM-Website verwenden. Wenn Sie das Kontrollkästchen aktivieren, damit die gleichen Einschränkungen wie für die App gelten, wird alles ausgeblendet. Wenn Sie das Kontrollkästchen deaktivieren, werden alle vorherigen Einstellungen für die SCM-Website angewandt. 
 

@@ -12,15 +12,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/26/2018
+ms.date: 06/06/2019
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: 40ff05e9fbc00747145c653878010ad9da0c37ec
-ms.sourcegitcommit: e68df5b9c04b11c8f24d616f4e687fe4e773253c
+ms.openlocfilehash: 4b125649dee51680625ac5a92b31bdc9f6830529
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/20/2018
-ms.locfileid: "53653389"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67069628"
 ---
 # <a name="azure-app-service-hybrid-connections"></a>Azure App Service-Hybridverbindungen #
 
@@ -41,7 +41,6 @@ Wenn Ihre App eine DNS-Anforderung stellt, die mit einem konfigurierten Hybridve
 > [!NOTE]
 > Sie sollten folglich versuchen, stets einen DNS-Namen für Ihre Hybridverbindung zu verwenden. Einige Clientsoftware führen keine DNS-Suche durch, wenn der Endpunkt stattdessen eine IP-Adresse verwendet.
 >
-
 
 ### <a name="app-service-hybrid-connection-benefits"></a>Vorteile der App Service-Hybridverbindungen ###
 
@@ -140,7 +139,7 @@ So fügen Sie Ihrem HCM eine oder mehrere Hybridverbindungen hinzu:
 2. Wählen Sie **Andere Hybridverbindung konfigurieren** aus.
 ![Screenshot der Konfiguration neuer Hybridverbindungen][8]
 
-1. Melden Sie sich mit Ihrem Azure-Konto an.
+1. Melden Sie sich mit Ihrem Azure-Konto an, um die für Ihre Abonnements verfügbaren Hybrid Connections abzurufen. Der HCM verwendet Ihr Azure-Konto darüber hinaus nicht. 
 1. Wählen Sie ein Abonnement aus.
 1. Wählen Sie die Hybridverbindungen aus, die der HCM weiterleiten soll.
 ![Screenshot von Hybridverbindungen][9]
@@ -226,7 +225,9 @@ Der Status „Verbunden“ bedeutet, dass mindestens ein HCM mit dieser Hybridve
 
 Der Hauptgrund, warum Clients keine Verbindung mit dem jeweiligen Endpunkt herstellen können, ist, dass der Endpunkt mit einer IP-Adresse anstelle eines DNS-Namens angegeben wurde. Wenn Ihre App den gewünschten Endpunkt nicht erreichen kann und Sie eine IP-Adresse verwendet haben, gehen Sie zur Verwendung eines DNS-Namens über, der auf dem Host, auf dem der HCM ausgeführt wird, gültig ist. Überprüfen Sie außerdem, ob der DNS-Name auf dem Host, auf dem der HCM ausgeführt wird, ordnungsgemäß aufgelöst wird. Vergewissern Sie sich, dass zwischen dem Host, auf dem der HCM ausgeführt wird, und dem Hybridverbindungs-Endpunkt Konnektivität besteht.  
 
-In App Service kann das Tool tcpping über die Konsole „Erweiterte Tools“ (Kudu) aufgerufen werden. Mit diesem Tool können Sie feststellen, ob Sie Zugriff auf einen TCP-Endpunkt haben, jedoch nicht, ob Sie Zugriff auf einen Hybridverbindungsendpunkt haben. Wenn Sie das Tool an der Konsole für einen Hybridverbindungs-Endpunkt verwenden, bestätigen Sie nur, dass eine Host-Port-Kombination verwendet wird.  
+In App Service kann das Befehlszeilentool **tcpping** über die Konsole „Erweiterte Tools“ (Kudu) aufgerufen werden. Mit diesem Tool können Sie feststellen, ob Sie Zugriff auf einen TCP-Endpunkt haben, jedoch nicht, ob Sie Zugriff auf einen Hybridverbindungsendpunkt haben. Wenn Sie das Tool an der Konsole für einen Hybridverbindungs-Endpunkt verwenden, bestätigen Sie nur, dass eine Host-Port-Kombination verwendet wird.  
+
+Wenn Sie über einen Befehlszeilenclient für Ihren Endpunkt verfügen, können Sie die Konnektivität an der App-Konsole testen. Sie können beispielsweise den Zugriff auf Webserver-Endpunkte mithilfe von cURL testen.
 
 ## <a name="biztalk-hybrid-connections"></a>BizTalk-Hybridverbindungen ##
 

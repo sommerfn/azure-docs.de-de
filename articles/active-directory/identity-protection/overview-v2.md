@@ -17,12 +17,12 @@ ms.date: 10/03/2018
 ms.author: joflore
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 37c63e32f1ee9c404e8b84a6eb17bc6eec30a761
-ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
+ms.openlocfilehash: 2b4f8caf03aad339cea3c3fcc732fc1af6086ea7
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/20/2019
-ms.locfileid: "65956937"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67108882"
 ---
 # <a name="what-is-azure-active-directory-identity-protection-refreshed"></a>Was ist Azure Active Directory Identity Protection (aktualisiert)?
 
@@ -56,7 +56,7 @@ Um auf diese Bedrohungen reagieren zu können, haben Sie mit Azure AD Identity P
 
  
 
-Azure AD Identity Protection ist eine Funktion von Azure Active Directory Premium P2, mit der Sie Richtlinien für die automatische Reaktion für den Fall konfigurieren können, dass die Identität eines Benutzers kompromittiert wurde oder eine andere Person als der Kontobesitzer versucht, sich mit dessen Identität anzumelden. Mit diesen Richtlinien in Verbindung mit anderen in Azure AD bereitgestellten Steuerungen für den bedingten Zugriff können automatisch entweder der Zugriff blockiert oder Entschärfungsaktionen initiiert werden. Hierzu gehören die Kennwortzurücksetzung und die Durchsetzung der mehrstufigen Authentifizierung. Darüber hinaus umfasst Identity Protection Überwachungs- und Berichtsfunktionen, die tiefere Einblicke in Risiken und potenzielle Gefährdungen in Ihrer Organisation gewähren. 
+Azure AD Identity Protection ist eine Funktion von Azure Active Directory Premium P2, mit der Sie Richtlinien für die automatische Reaktion für den Fall konfigurieren können, dass die Identität eines Benutzers kompromittiert wurde oder eine andere Person als der Kontobesitzer versucht, sich mit dessen Identität anzumelden. Mit diesen Richtlinien in Verbindung mit anderen in Azure AD bereitgestellten Steuerungen für den bedingten Zugriff können automatisch entweder der Zugriff blockiert oder Entschärfungsaktionen initiiert werden. Hierzu gehören die Kennwortzurücksetzung und die Durchsetzung der mehrstufigen Authentifizierung. Darüber hinaus umfasst Identity Protection Überwachungs- und Berichtsfunktionen, die tiefere Einblicke in Risiken und potenzielle Gefährdungen in Ihrer Organisation gewähren. 
 
 >[!VIDEO https://www.microsoft.com/en-us/videoplayer/embed/RWsS6Q]
 

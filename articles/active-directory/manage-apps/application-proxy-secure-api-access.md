@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 05/23/2019
 ms.author: celested
 ms.reviewer: japere
-ms.openlocfilehash: 47f6678f8d18d734176d964f18a6febecea957ab
-ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
+ms.openlocfilehash: c2b99525e3d0a61c02dc502fcd0927ea65993e5b
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/04/2019
-ms.locfileid: "66481996"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67108619"
 ---
 # <a name="secure-access-to-on-premises-apis-with-azure-ad-application-proxy"></a>Sicherer Zugriff auf lokale APIs mit dem Azure AD-Anwendungsproxy
 
@@ -36,7 +36,7 @@ Die folgende Abbildung zeigt, wie Sie mit dem Azure AD-Anwendungsproxy APIs sich
 
 Der Azure AD-Anwendungsproxy bildet das Rückgrat der Lösung und fungiert dabei als öffentlicher Endpunkt für den API-Zugriff. Er stellt Authentifizierung und Autorisierung bereit. Sie können auf Ihre APIs über eine Vielzahl von Plattformen zugreifen, indem Sie die [ADAL](/azure/active-directory/develop/active-directory-authentication-libraries)-Bibliotheken verwenden. 
 
-Da die Authentifizierung und Autorisierung des Azure AD-Anwendungsproxys auf Azure AD aufbauen, können Sie den bedingten Zugriff von Azure AD verwenden, um sicherzustellen, dass nur vertrauenswürdige Geräte auf die über den Anwendungsproxy veröffentlichten APIs zugreifen können. Verwenden Sie Azure AD Join oder Azure AD Hybrid Joined für Desktopcomputer und Intune Managed für Geräte. Sie können auch die Vorteile von Azure Active Directory Premium-Funktionen wie Azure Multi-Factor Authentication und die durch Machine Learning unterstützte Sicherheit von [Azure Identity Protection](/azure/active-directory/active-directory-identityprotection) nutzen.
+Da Authentifizierung und Autorisierung des Azure AD-Anwendungsproxys auf Azure AD aufbauen, können Sie den bedingten Zugriff von Azure AD verwenden, um sicherzustellen, dass nur vertrauenswürdige Geräte auf die über den Anwendungsproxy veröffentlichten APIs zugreifen können. Verwenden Sie Azure AD Join oder Azure AD Hybrid Joined für Desktopcomputer und Intune Managed für Geräte. Sie können auch die Vorteile von Azure Active Directory Premium-Funktionen wie Azure Multi-Factor Authentication und die durch Machine Learning unterstützte Sicherheit von [Azure Identity Protection](/azure/active-directory/active-directory-identityprotection) nutzen.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
