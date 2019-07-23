@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: article
-ms.date: 06/18/2019
+ms.date: 07/10/2019
 ms.author: diberry
-ms.openlocfilehash: 7f82bf5a40df0554d4f98b2d835fcbd69279be43
-ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
+ms.openlocfilehash: dedc498ebc910b448b1684136c288b2045780e00
+ms.sourcegitcommit: 66237bcd9b08359a6cce8d671f846b0c93ee6a82
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67204160"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67797949"
 ---
 # <a name="using-subscription-keys-with-your-luis-app"></a>Verwenden von Abonnementschlüsseln mit Ihrer LUIS-App
 
@@ -32,6 +32,8 @@ Verwenden Sie den Free-Tarif (F0) ausschließlich für Tests und Prototypen. Ver
 
 Sie erstellen die [Vorhersageendpunktressource](get-started-portal-deploy-app.md#create-the-endpoint-resource) im Azure-Portal. Diese Ressource darf nur für Endpunktvorhersageabfragen verwendet werden. Verwenden Sie diese Ressource nicht für das Erstellen von Änderungen an der App.
 
+Sie können eine Language Understanding-Ressource oder eine Cognitive Services-Ressource erstellen. Wenn Sie eine Language Understanding-Ressource erstellen, empfiehlt es sich, den Ressourcentyp auf den Ressourcennamen zurückzusetzen. 
+
 <a name="programmatic-key" ></a>
 <a name="authoring-key" ></a>
 <a name="endpoint-key" ></a>
@@ -45,6 +47,15 @@ Sie erstellen die [Vorhersageendpunktressource](get-started-portal-deploy-app.md
 <a name="assign-endpoint-key"></a>
 <a name="assign-resource"></a>
 
+### <a name="using-resource-from-luis-portal"></a>Verwenden der Ressource aus dem Luis-Portal
+
+Wenn Sie die Ressource aus dem Luis-Portal verwenden, müssen Sie Ihren Schlüssel und ihren Speicherort nicht kennen. Stattdessen müssen Sie den Ressourcenmandanten, das Abonnement und den Ressourcennamen kennen.
+
+Nachdem Sie Ihre Ressource Ihrer Luis-App im Luis-Portal [zugewiesen](#assign-resource-key-to-luis-app-in-luis-portal) haben, werden der Schlüssel und der Speicherort als Teil der Abfragevorhersageendpunkt-URL auf der Seite **Schlüssel und Endpunkteinstellungen** des Abschnitts „Verwalten“ bereitgestellt.
+ 
+### <a name="using-resource-from-rest-api-or-sdk"></a>Verwenden der Ressource aus der Rest-API oder dem SDK
+
+Wenn Sie die Ressource aus den Rest-APIs oder dem SDK verwenden, müssen Sie Ihren Schlüssel und ihren Speicherort kennen. Diese Informationen werden als Teil der Abfragevorhersageendpunkt-URL auf der Seite **Schlüssel und Endpunkteinstellungen** des Abschnitts „Verwalten“ sowie im Azure-Portal auf den Seiten zur Übersicht und den Schlüsseln der Ressource bereitgestellt.
 
 ## <a name="assign-resource-key-to-luis-app-in-luis-portal"></a>Zuweisen des Ressourcenschlüssels an die LUIS-App im LUIS-Portal
 

@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.author: jobreen
 author: jjbfour
 ms.date: 06/20/2019
-ms.openlocfilehash: b94d59b55a62797e142768dc84ec499d714bd067
-ms.sourcegitcommit: f811238c0d732deb1f0892fe7a20a26c993bc4fc
+ms.openlocfilehash: a3cd1fe69a0d99f9faf3a451f76a3a420d713711
+ms.sourcegitcommit: 66237bcd9b08359a6cce8d671f846b0c93ee6a82
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/29/2019
-ms.locfileid: "67479139"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67795220"
 ---
 # <a name="adding-custom-resources-to-azure-rest-api"></a>Hinzufügen benutzerdefinierter Ressourcen zur Azure-REST-API
 
@@ -185,7 +185,8 @@ customResourceName | *Ja* | Der Name der benutzerdefinierten Ressource.
 ## <a name="next-steps"></a>Nächste Schritte
 
 - [Übersicht über benutzerdefinierte Azure-Ressourcenanbieter](./custom-providers-overview.md)
-- [Tutorial: Erstellen eines benutzerdefinierten Azure-Ressourcenanbieters und Bereitstellen benutzerdefinierter Ressourcen](./create-custom-provider.md)
+- [Schnellstart: Erstellen eines benutzerdefinierten Azure-Ressourcenanbieters und Bereitstellen benutzerdefinierter Ressourcen](./create-custom-provider.md)
+- [Tutorial: Erstellen von benutzerdefinierten Aktionen und Ressourcen in Azure](./tutorial-custom-providers-101.md)
 - [How To: Hinzufügen benutzerdefinierter Aktionen zur Azure-REST-API](./custom-providers-action-endpoint-how-to.md)
 - [Referenz: Referenz zu benutzerdefinierten Ressourcenproxys](./custom-providers-proxy-resource-endpoint-reference.md)
 - [Referenz: Referenz zum benutzerdefinierten Ressourcencache](./custom-providers-proxy-cache-resource-endpoint-reference.md)

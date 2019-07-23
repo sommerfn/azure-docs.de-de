@@ -10,16 +10,16 @@ ms.service: cognitive-services
 ms.topic: conceptual
 ms.date: 06/26/2019
 ms.author: dapine
-ms.openlocfilehash: 45a03a0912681b4fc33ef8df88fa00fd5458f720
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: 288894705e1108d6dd511b60cd2bc3bcee4c6d41
+ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67445818"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67704351"
 ---
-# <a name="deploy-and-run-container-on-azure-container-instance-aci"></a>Bereitstellen und Ausführen eines Containers unter Azure Container Instances (ACI)
+# <a name="deploy-and-run-container-on-azure-container-instance"></a>Bereitstellen und Ausführen eines Containers unter Azure Container Instances
 
-Führen Sie die folgenden Schritte aus, um Azure Cognitive Services-Anwendungen problemlos in der Cloud zu skalieren, indem Sie [Azure Container Instances](https://docs.microsoft.com/azure/container-instances/) (ACI) verwenden. So können Sie sich auf die Erstellung von Anwendungen konzentrieren und müssen sich nicht um die Verwaltung der Infrastruktur kümmern.
+Führen Sie die folgenden Schritte aus, um Azure Cognitive Services-Anwendungen problemlos in der Cloud zu skalieren, indem Sie [Azure Container Instances](https://docs.microsoft.com/azure/container-instances/) verwenden. So können Sie sich auf die Erstellung von Anwendungen konzentrieren und müssen sich nicht um die Verwaltung der Infrastruktur kümmern.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -35,7 +35,7 @@ Diese Lösung funktioniert für alle Cognitive Services-Container. Die Cognitive
 
 Sie müssen alle Variablen in spitzen Klammern (`<>`) durch Ihre eigenen Werte ersetzen. Hierbei müssen auch die spitzen Klammern ersetzt werden.
 
-[!INCLUDE [Create a Text Analytics Containers on Azure Container Instances (ACI)](./includes/create-aci-resource.md)]
+[!INCLUDE [Create a Text Analytics Containers on Azure Container Instances](includes/create-container-instances-resource.md)]
 
 ## <a name="use-the-container-instance"></a>Verwenden der Containerinstanz
 

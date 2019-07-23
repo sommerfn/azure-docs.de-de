@@ -5,14 +5,14 @@ author: dcurwin
 manager: carmonm
 ms.service: backup
 ms.topic: conceptual
-ms.date: 07/02/2019
+ms.date: 07/09/2019
 ms.author: dacurwin
-ms.openlocfilehash: d4d1044a30d4ebc551cf1305993aba2a201c4c94
-ms.sourcegitcommit: 6cb4dd784dd5a6c72edaff56cf6bcdcd8c579ee7
+ms.openlocfilehash: dd800c0eeb18fe45b44a72aeb58b500623b2b366
+ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2019
-ms.locfileid: "67514452"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67705092"
 ---
 # <a name="common-questions-about-backing-up-files-and-folders"></a>Häufig gestellte Fragen zum Sichern von Dateien und Ordnern
 
@@ -88,9 +88,19 @@ Diese Warnung tritt auf, wenn die auf dem lokalen Server gespeicherten Sicherung
 Die Größe des Cacheordners bestimmt die Menge der Daten, die Sie sichern.
 - Die Cacheordnervolumes sollten freien Speicherplatz haben, der mindestens 5-10 % der Gesamtgröße der Sicherungsdaten ausmacht.
 - Wenn weniger als 5-10 % Speicherplatz zur Verfügung stehen, vergrößern Sie das Volume, oder verschieben Sie den Cacheordner auf ein Volume mit ausreichend freiem Speicherplatz.
-- Wenn Sie den Windows-Systemstatus sichern, benötigen Sie zusätzlich 30-35 GB freien Speicherplatz auf dem Volume, das den Cacheordner enthält.
-### <a name="how-do-i-change-the-cache-location-for-the-mars-agent"></a>Wie ändere ich den Cachespeicherort für den MARS-Agent?
+- Wenn Sie den Windows-Systemstatus sichern, benötigen Sie zusätzlich 30 bis 35 GB freien Speicherplatz auf dem Volume, das den Cacheordner enthält.
 
+### <a name="how-to-check-if-scratch-folder-is-valid-and-accessible"></a>Wie überprüfe ich, ob der Ordner „scratch“ gültig ist und darauf zugegriffen werden kann?
+
+1. Standardmäßig befindet sich der Ordner „scratch“ unter `\Program Files\Microsoft Azure Recovery Services Agent\Scratch`.
+2. Stellen Sie sicher, dass der Pfad des Speicherorts für den Ordner „scatch“ mit den Werten der folgenden Registrierungsschlüsseleinträge übereinstimmt:
+
+  | Registrierungspfad | Registrierungsschlüssel | Wert |
+  | --- | --- | --- |
+  | `HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows Azure Backup\Config` |ScratchLocation |*Neuer Speicherort des Cacheordners* |
+  | `HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows Azure Backup\Config\CloudBackupProvider` |ScratchLocation |*Neuer Speicherort des Cacheordners* |
+
+### <a name="how-do-i-change-the-cache-location-for-the-mars-agent"></a>Wie ändere ich den Cachespeicherort für den MARS-Agent?
 
 1. Führen Sie diesen Befehl in der Eingabeaufforderung mit erhöhten Rechten aus, um die Sicherungs-Engine anzuhalten:
 

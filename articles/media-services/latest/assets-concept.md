@@ -12,12 +12,12 @@ ms.topic: article
 ms.date: 07/02/2019
 ms.author: juliako
 ms.custom: seodec18
-ms.openlocfilehash: e88863fbbc29287baaf1c3c98dbdae04539e08e5
-ms.sourcegitcommit: 5bdd50e769a4d50ccb89e135cfd38b788ade594d
+ms.openlocfilehash: d0a81d5d7ce8e7569b77007b6ad9c322cf626f16
+ms.sourcegitcommit: 2e4b99023ecaf2ea3d6d3604da068d04682a8c2d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/03/2019
-ms.locfileid: "67542590"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67670700"
 ---
 # <a name="assets"></a>Objekte
 
@@ -93,7 +93,7 @@ Die folgende Tabelle zeigt, wie die Eigenschaften des [Medienobjekts](https://do
 
 |v3-Eigenschaften|v2-Eigenschaften|
 |---|---|
-|id – (eindeutig) der vollständige Azure Resource Manager-Pfad<br/>`"id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/contoso/providers/Microsoft.Media/mediaservices/contosomedia/assets/ClimbingMountLogan"`||
+|id – (eindeutig) der vollständige Azure Resource Manager-Pfad, siehe Beispiele unter [Medienobjekt](https://docs.microsoft.com/rest/api/media/assets/createorupdate)||
 |name – (eindeutig) siehe [Benennungskonventionen](media-services-apis-overview.md#naming-conventions) ||
 |alternateId|AlternateId|
 |assetId|Id – (eindeutiger) Wert beginnt mit dem `nb:cid:UUID:`-Präfix.|
@@ -101,7 +101,7 @@ Die folgende Tabelle zeigt, wie die Eigenschaften des [Medienobjekts](https://do
 |description|NAME|
 |lastModified|LastModified|
 |storageAccountName|StorageAccountName|
-|storageEncryptionFormat| Optionen – Optionen für die Erstellung|
+|storageEncryptionFormat| Optionen (Optionen für die Erstellung)|
 |type||
 
 ## <a name="storage-side-encryption"></a>Speicherseitige Verschlüsselung
