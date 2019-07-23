@@ -11,13 +11,13 @@ author: oslake
 ms.author: moslake
 ms.reviewer: sstein, carlrab
 manager: craigg
-ms.date: 06/12/2019
-ms.openlocfilehash: afa575c9015cbb21386d23101b74456822dfa33c
-ms.sourcegitcommit: a52d48238d00161be5d1ed5d04132db4de43e076
+ms.date: 07/05/2019
+ms.openlocfilehash: 5a1a5ea39c9c0ed8973e1ecfa46977d2d06f83e7
+ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/20/2019
-ms.locfileid: "67275466"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67603606"
 ---
 # <a name="azure-sql-database-serverless-preview"></a>Azure SQL-Datenbank – serverlos (Vorschauversion)
 
@@ -166,7 +166,7 @@ Beim Erstellen einer neuen Datenbank bzw. Verschieben einer vorhandenen Datenban
    |Parameter|Auswahlmöglichkeiten für Werte|Standardwert|
    |---|---|---|---|
    |Mindestanzahl virtueller Kerne|Beliebiger Wert aus {0,5, 1, 2, 4}, darf Maximalwert für V-Kerne nicht überschreiten|0,5 V-Kerne|
-   |Verzögerung für das automatische Anhalten|Minimum: 360 Minuten (sechs Stunden)<br>Maximum: 10.080 Minuten (sieben Tage)<br>Inkremente: 60 Minuten<br>Automatisches Anhalten deaktivieren: -1|360 Minuten|
+   |Verzögerung für das automatische Anhalten|Minimum: 60 Minuten (1 Stunde)<br>Maximum: 10.080 Minuten (sieben Tage)<br>Inkremente: 60 Minuten<br>Automatisches Anhalten deaktivieren: -1|60 Minuten|
 
 > [!NOTE]
 > Das Verschieben einer vorhandenen Datenbank in eine serverlose Computeebene oder das Ändern der Computegröße mithilfe von T-SQL wird derzeit nicht unterstützt. Diese Vorgänge können jedoch über das Azure-Portal oder PowerShell ausgeführt werden.

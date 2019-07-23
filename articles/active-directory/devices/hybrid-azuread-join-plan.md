@@ -147,8 +147,8 @@ Die folgende Tabelle enthält Details zur Unterstützung dieser lokalen AD UPNs 
 ## <a name="next-steps"></a>Nächste Schritte
 
 > [!div class="nextstepaction"]
-> [Konfigurieren von Azure Active Directory-Hybrideinbindung für eine verwaltete Umgebung](hybrid-azuread-join-federated-domains.md)
-> [Konfigurieren von Azure Active Directory-Hybrideinbindung für eine Verbundumgebung](hybrid-azuread-join-managed-domains.md)
+> [Konfigurieren von Azure Active Directory-Hybrideinbindung für eine Verbundumgebung](hybrid-azuread-join-federated-domains.md)
+> [Konfigurieren von Azure Active Directory-Hybrideinbindung für eine verwaltete Umgebung](hybrid-azuread-join-managed-domains.md)
 
 <!--Image references-->
 [1]: ./media/hybrid-azuread-join-plan/12.png

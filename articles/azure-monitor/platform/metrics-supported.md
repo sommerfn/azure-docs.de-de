@@ -8,12 +8,12 @@ ms.topic: reference
 ms.date: 05/20/2019
 ms.author: ancav
 ms.subservice: metrics
-ms.openlocfilehash: 490b96698268fb8717bc1169c2cceb932aad913c
-ms.sourcegitcommit: a52d48238d00161be5d1ed5d04132db4de43e076
+ms.openlocfilehash: 70f6e26d423781ba53865304a3fe8440fb120a7a
+ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/20/2019
-ms.locfileid: "67273789"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67705173"
 ---
 # <a name="supported-metrics-with-azure-monitor"></a>Unterstützte Metriken von Azure Monitor
 
@@ -908,15 +908,19 @@ Azure Monitor bietet verschiedene Methoden für die Interaktion mit Metriken, z.
 
 |Metrik|Metrikanzeigename|Unit|Aggregationstyp|BESCHREIBUNG|Dimensionen|
 |---|---|---|---|---|---|
-|ClusterDataCapacityFactor|Cacheauslastung|Percent|Durchschnitt|Auslastungsgrad im Clusterbereich|Keine Dimensionen|
-|QueryDuration|Abfragedauer|Millisekunden|Durchschnitt|Abfragedauer in Sekunden|QueryStatus|
-|IngestionsLoadFactor|Datenerfassungsauslastung|Percent|Durchschnitt|Verhältnis der verwendeten Datenerfassungsslots im Cluster|Keine Dimensionen|
-|IsEngineAnsweringQuery|Keep-Alive|Count|Durchschnitt|Die Integritätsprüfung zeigt an, dass der Cluster auf Abfragen reagiert.|Keine Dimensionen|
-|IngestCommandOriginalSizeInMb|Datenerfassungsvolumen (in MB)|Count|Gesamt|Gesamtvolumen der im Cluster erfassten Daten (in MB)|Keine Dimensionen|
-|IngestedEventAgeSeconds|Erfassungswartezeit (in Sekunden)|Sekunden|Durchschnitt|Erfassungszeit von der Quelle (z. B. Nachricht in EventHub) zum Cluster in Sekunden|Keine Dimensionen|
-|EventRecievedFromEventHub|Verarbeitete Ereignisse (für Event Hubs)|Count|Gesamt|Anzahl der vom Cluster verarbeiteten Ereignisse beim Erfassen aus Event Hub|Keine Dimensionen|
-|IngestionResult|Ergebnis der Datenerfassung|Count|Count|Anzahl der Erfassungsvorgänge|IngestionResultDetails|
-|EngineCPU|CPU|Percent|Durchschnitt|CPU-Auslastungsgrad|Keine Dimensionen|
+|CacheUtilization|Cacheauslastung|Percent|Durchschnitt|Auslastungsgrad im Clusterbereich|Keine|
+|QueryDuration|Abfragedauer|Millisekunden|Durchschnitt|Abfragedauer in Sekunden|Abfragestatus|
+|IngestionUtilization|Datenerfassungsauslastung|Percent|Durchschnitt|Verhältnis der verwendeten Datenerfassungsslots im Cluster|Keine|
+|KeepAlive|Keep-Alive|Count|Durchschnitt|Die Integritätsprüfung zeigt an, dass der Cluster auf Abfragen reagiert.|Keine|
+|IngestionVolumeInMB|Datenerfassungsvolumen (in MB)|Count|Gesamt|Gesamtvolumen der im Cluster erfassten Daten (in MB)|Datenbank|
+|IngestionLatencyInSeconds|Erfassungswartezeit (in Sekunden)|Sekunden|Durchschnitt|Erfassungszeit von der Quelle (z. B. Nachricht in EventHub) zum Cluster in Sekunden|Keine|
+|EventProcessedForEventHubs|Verarbeitete Ereignisse (für Event Hubs)|Count|Gesamt|Anzahl der vom Cluster verarbeiteten Ereignisse beim Erfassen aus Event Hub|Keine|
+|IngestionResult|Ergebnis der Datenerfassung|Count|Count|Anzahl der Erfassungsvorgänge|Status|
+|CPU|CPU|Percent|Durchschnitt|CPU-Auslastungsgrad|Keine|
+| ContinuousExportNumOfRecordsExported | Anzahl der beim fortlaufenden Export exportierten Datensätze | Count | Gesamt | Anzahl der Datensätze, die für jedes Speicherartefakt exportiert werden, das während des Exportvorgangs geschrieben wird  | Keine |
+| ExportUtilization | Exportauslastung | Percent | Maximum | Exportauslastung | Keine |
+| ContinuousExportPendingCount | ContinuousExportPendingCount | Count | Maximum | Die Anzahl ausstehender fortlaufender Exportaufträge, die zur Ausführung bereit sind. | Keine |
+| ContinuousExportMaxLatenessMinutes | Maximale Wartezeit in Minuten für fortlaufenden Export | Count | Maximum | Die maximale Zeit in Minuten aller fortlaufenden Exporte, die ausstehen und für die Ausführung bereit sind | Keine |
 
 ## <a name="microsoftlocationbasedservicesaccounts"></a>Microsoft.LocationBasedServices/accounts
 

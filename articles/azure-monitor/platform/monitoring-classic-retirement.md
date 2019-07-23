@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 2/7/2019
 ms.author: vinagara
 ms.subservice: alerts
-ms.openlocfilehash: fb7821b07e68459cb3d76812a12e85387b9f0f52
-ms.sourcegitcommit: 2d3b1d7653c6c585e9423cf41658de0c68d883fa
+ms.openlocfilehash: 28dba8af059e24040abb254dd4ecd8e336d8221d
+ms.sourcegitcommit: ccb9a7b7da48473362266f20950af190ae88c09b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/20/2019
-ms.locfileid: "67295100"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67594296"
 ---
 # <a name="unified-alerting--monitoring-in-azure-monitor-replaces-classic-alerting--monitoring"></a>Einheitliche Benachrichtigung und Überwachung in Azure Monitor tritt an die Stelle von klassischer Benachrichtigung und Überwachung
 
@@ -40,7 +40,7 @@ Die neue einheitliche Überwachung und Benachrichtigung für Application Insight
 - **Application Insights-Plattformmetriken**: Beliebte vorkonfigurierte Metriken aus dem Application Insights-Produkt. Weitere Informationen finden Sie in diesem Artikel zur Verwendung von [Plattformmetriken für Application Insights im neuen Azure Monitor](../../azure-monitor/app/pre-aggregated-metrics-log-metrics.md#pre-aggregated-metrics).
 - **Application Insights-Verfügbarkeits- und Web-Test**: Bietet die Möglichkeit, die Reaktionsfähigkeit und Verfügbarkeit Ihrer Web-App oder Ihres Servers zu beurteilen. Weitere Informationen finden Sie in diesem Artikel zum Verwenden von [Availability Tests and Alerts for Application Insights on new Azure Monitor](../../azure-monitor/app/monitor-web-app-availability.md) (Verfügbarkeitstests und Benachrichtigungen für Application Insights im neuen Azure Monitor).
 - **Application Insights benutzerdefinierte Metriken**: Sie können eigene Metriken für Überwachung und Benachrichtigung definieren und ausgeben. Weitere Informationen finden Sie in diesem Artikel über [Custom Metric for Application Insights on new Azure Monitor](../../azure-monitor/app/pre-aggregated-metrics-log-metrics.md#custom-metrics-dimensions-and-pre-aggregation) (Benutzerdefinierte Metriken für Application Insights im neuen Azure Monitor).
-- **Application Insights Fehleranomalien (Teil der intelligenten Erkennung)** : Benachrichtigt Sie automatisch und nahezu in Echtzeit, wenn es bei Ihrer Web-App zu einer ungewöhnlichen Zunahme von Fehlern bei HTTP-Anforderungen oder Abhängigkeitsaufrufen kommt. Application Insights Fehleranomalien (Teil der intelligenten Erkennung) wird als Bestandteil des neuen Azure Monitors in Kürze verfügbar sein, und wir aktualisieren dieses Dokument mit Links zum nächsten Entwicklungsschritt, sobald er in den kommenden Monaten vertrieben wird.
+- **Application Insights Fehleranomalien (Teil der intelligenten Erkennung)** : Benachrichtigt Sie automatisch und nahezu in Echtzeit, wenn es bei Ihrer Web-App zu einer ungewöhnlichen Zunahme von Fehlern bei HTTP-Anforderungen oder Abhängigkeitsaufrufen kommt. Weitere Informationen finden Sie in diesem Artikel zur Verwendung von [Intelligente Erkennung – Fehlerabweichungen](https://docs.microsoft.com/azure/azure-monitor/app/proactive-failure-diagnostics).
 
 ## <a name="unified-metrics-and-alerts-for-other-azure-resources"></a>Einheitliche Metriken und Benachrichtigungen für andere Azure-Ressourcen
 

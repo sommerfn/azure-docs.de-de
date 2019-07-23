@@ -7,14 +7,14 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive,hdiseo17may2017,mvc,seodec18
 ms.topic: quickstart
-ms.date: 06/12/2019
+ms.date: 07/02/2019
 ms.author: hrasheed
-ms.openlocfilehash: e178326c4a165a9bebbef6b0162cc79c1f9a0727
-ms.sourcegitcommit: aa66898338a8f8c2eb7c952a8629e6d5c99d1468
+ms.openlocfilehash: f92cb247afb25562a96373c28534549a2f16d8c9
+ms.sourcegitcommit: 47ce9ac1eb1561810b8e4242c45127f7b4a4aa1a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67459515"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67805586"
 ---
 # <a name="quickstart-create-apache-hadoop-cluster-in-azure-hdinsight-using-azure-portal"></a>Schnellstart: Erstellen eines Apache Hadoop-Clusters in Azure HDInsight im Azure-Portal
 
@@ -41,12 +41,12 @@ In diesem Abschnitt erstellen Sie im Azure-Portal einen Hadoop-Cluster in HDInsi
     |Eigenschaft  |BESCHREIBUNG  |
     |---------|---------|
     |Clustername   | Geben Sie einen Namen für den Hadoop-Cluster ein. Da für alle Cluster in HDInsight gemeinsam derselbe DNS-Namespace genutzt wird, muss dieser Name eindeutig sein. Der Name kann aus bis zu 59 Zeichen mit Buchstaben, Zahlen und Bindestrichen bestehen. Das erste und das letzte Zeichen des Namens dürfen keine Bindestriche sein. |
-    |Abonnement    |  Wählen Sie Ihr Azure-Abonnement. |
+    |Subscription    |  Wählen Sie Ihr Azure-Abonnement. |
     |Clustertyp     | Überspringen Sie diese Angabe jetzt. Sie geben diese Informationen im nächsten Schritt dieses Verfahrens an.|
     |Anmeldebenutzernamen und Kennwort für den Cluster    | Der Standardanmeldename lautet **admin**. Das Kennwort muss mindestens zehn Zeichen lang sein und mindestens eine Ziffer, einen Groß- und einen Kleinbuchstaben sowie ein nicht alphanumerisches Zeichen enthalten (mit Ausnahme folgender Zeichen: ' " ` \)). Stellen Sie sicher, dass Sie **keine** häufig verwendeten Kennwörter wie „Pass@word1“ angeben.|
     |SSH-Benutzername (Secure Shell) | Der Standardbenutzername lautet **sshuser**.  Sie können einen anderen SSH-Benutzernamen angeben. |
     |Verwenden Sie ein Clusteranmeldekennwort für SSH| Aktivieren Sie dieses Kontrollkästchen, um das gleiche Kennwort für den SSH-Benutzer zu verwenden, das Sie für den Clusteranmeldebenutzer angegeben haben.|
-    |Ressourcengruppe     | Erstellen Sie eine Ressourcengruppe, oder wählen Sie eine vorhandene Ressourcengruppe aus.  Bei einer Ressourcengruppe handelt es sich um einen Container mit Azure-Komponenten.  In diesem Fall enthält die Ressourcengruppe den HDInsight-Cluster und das abhängige Azure Storage-Konto. |
+    |Resource group     | Erstellen Sie eine Ressourcengruppe, oder wählen Sie eine vorhandene Ressourcengruppe aus.  Bei einer Ressourcengruppe handelt es sich um einen Container mit Azure-Komponenten.  In diesem Fall enthält die Ressourcengruppe den HDInsight-Cluster und das abhängige Azure Storage-Konto. |
     |Location    | Wählen Sie den Azure-Speicherort aus, wo Sie Ihren Cluster erstellen möchten.  Je näher der Standort, desto besser die Leistung. |
 
     ![Erste Schritte: Angeben grundlegender Werte für HDInsight-Linux- Cluster](./media/apache-hadoop-linux-create-cluster-get-started-portal/quick-create-basics.png "Angeben grundlegender Werte zum Erstellen eines HDInsight-Clusters")
@@ -68,7 +68,7 @@ In diesem Abschnitt erstellen Sie im Azure-Portal einen Hadoop-Cluster in HDInsi
     |---------|---------|
     |Primärer Speichertyp    | Wählen Sie für diesen Artikel Azure-Speicher aus, um Azure Storage Blob als Standardspeicherkonto zu verwenden. Sie können auch Azure Data Lake Storage als Standardspeicher verwenden. |
     |Auswahlmethode     |  Wählen Sie für diesen Artikel **Meine Abonnements** aus, um ein Speicherkonto aus Ihrem Azure-Abonnement zu verwenden. Um ein Speicherkonto aus einem anderen Abonnement zu verwenden, wählen Sie **Zugriffsschlüssel** aus, und geben Sie den Zugriffsschlüssel für das entsprechende Konto an. |
-    |Speicherkonto auswählen   | Wählen Sie **Speicherkonto auswählen** aus, um ein vorhandenes Speicherkonto auszuwählen, oder wählen Sie **Neu erstellen** aus.|
+    |Speicherkonto auswählen   | Wählen Sie **Speicherkonto auswählen** aus, um ein vorhandenes Speicherkonto auszuwählen, oder wählen Sie **Neu erstellen** aus. Wenn Sie ein neues Konto erstellen, muss der Name zwischen 3 und 24 Zeichen lang sein und darf nur Zahlen und Kleinbuchstaben enthalten.|
 
     Übernehmen Sie alle anderen Standardwerte, und wählen Sie **Weiter** aus, um zur Zusammenfassungsseite zu gelangen.
 

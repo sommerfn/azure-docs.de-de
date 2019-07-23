@@ -7,12 +7,12 @@ ms.service: marketplace
 ms.topic: reference
 ms.date: 05/23/2019
 ms.author: evansma
-ms.openlocfilehash: ecee1669c29d7b298741f9e5521de03da6dd7e3b
-ms.sourcegitcommit: 08138eab740c12bf68c787062b101a4333292075
+ms.openlocfilehash: 476aaacbe6f1bf6d1920df0f12599976bfcc27b7
+ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/22/2019
-ms.locfileid: "67331633"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67701134"
 ---
 # <a name="saas-fulfillment-apis-version-2"></a>SaaS-Fulfillment-APIs, Version 2 
 
@@ -87,7 +87,7 @@ Die folgende Tabelle enthält die Definitionen für allgemeine Parameter und Ent
 | `offerId`                | Ein eindeutiger Zeichenfolgenbezeichner für jedes Angebot, z. B. „Angebot1“  |
 | `planId`                 | Ein eindeutiger Zeichenfolgenbezeichner für jeden Plan bzw. jede SKU, z. B. „Silber“ |
 | `operationId`            | Der GUID-Bezeichner für einen bestimmten Vorgang  |
-|  `action`                | Die Aktion, die für eine Ressource ausgeführt wird, entweder `subscribe`, `unsubscribe`, `suspend`, `reinstate` oder `changePlan`, `changeQuantity`, `transfer`  |
+|  `action`                | Die Aktion, die für eine Ressource ausgeführt wird: `unsubscribe`, `suspend`, `reinstate`, oder `changePlan`, `changeQuantity`, `transfer`.  |
 |   |   |
 
 Eindeutige Bezeichner (Globally Unique Identifier, [GUID](https://en.wikipedia.org/wiki/Universally_unique_identifier)) sind 128-Bit-Zahlen (32 hexadezimale Ziffern), die in der Regel automatisch generiert werden. 
@@ -199,10 +199,16 @@ Antwortnutzlast:<br>
           "purchaser": { // Tenant that purchased the SaaS subscription. These could be different for reseller scenario
               "tenantId": "<guid>"
           },
+            "term": {
+                "startDate": "2019-05-31",
+                "endDate": "2019-06-29",
+                "termUnit": "P1M"
+          },
           "allowedCustomerOperations": [
               "Read" // Possible Values: Read, Update, Delete.
           ], // Indicates operations allowed on the SaaS subscription. For CSP-initiated purchases, this will always be Read.
           "sessionMode": "None", // Possible Values: None, DryRun (Dry Run indicates all transactions run as Test-Mode in the commerce stack)
+          "isFreeTrial": "true", // true – the customer subscription is currently in free trial, false – the customer subscription is not currently in free trial.
           "saasSubscriptionStatus": "Subscribed" // Indicates the status of the operation: [NotStarted, PendingFulfillmentStart, Subscribed, Suspended, Unsubscribed]
       }
   ],
@@ -271,7 +277,13 @@ Response Body:
           },
         "allowedCustomerOperations": ["Read"], // Indicates operations allowed on the SaaS subscription. For CSP-initiated purchases, this will always be Read.
         "sessionMode": "None", // Dry Run indicates all transactions run as Test-Mode in the commerce stack
+        "isFreeTrial": "true", // true – customer subscription is currently in free trial, false – customer subscription is not currently in free trial.
         "status": "Subscribed", // Indicates the status of the operation.
+          "term": { //This gives the free trial term start and end date
+            "startDate": "2019-05-31",
+            "endDate": "2019-06-29",
+            "termUnit": "P1M"
+        },
 }
 ```
 
@@ -794,7 +806,6 @@ Der Herausgeber muss in diesen SaaS-Dienst einen Webhook implementieren, um proa
 }
 ```
 Eine der folgenden Aktionen kann verwendet werden: 
-- `subscribe` (wenn die Ressource aktiviert wurde)
 - `unsubscribe` (wenn die Ressource gelöscht wurde)
 - `changePlan` (wenn der Vorgang zum Ändern des Plans abgeschlossen wurde)
 - `changeQuantity` (wenn der Vorgang zum Ändern der Menge abgeschlossen wurde)

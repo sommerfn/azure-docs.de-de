@@ -15,12 +15,12 @@ ms.date: 05/07/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 204e230f7ff0897d2ba97213ebc836aff9d0324b
-ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
+ms.openlocfilehash: 476703b52813e6b3081dcfb3ab5a2fb4f3a7bfc5
+ms.sourcegitcommit: 1572b615c8f863be4986c23ea2ff7642b02bc605
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67204644"
+ms.lasthandoff: 07/10/2019
+ms.locfileid: "67785632"
 ---
 # <a name="scenario-desktop-app-that-calls-web-apis"></a>Szenario: Desktop-App, die Web-APIs aufruft
 
@@ -45,7 +45,11 @@ Sofern nicht bereits geschehen, erstellen Sie nun Ihre erste Anwendung, indem Si
 
 Sie schreiben eine Desktopanwendung und möchten Benutzer bei Ihrer Anwendung anmelden, und Web-APIs wie Microsoft Graph, andere Microsoft-APIs oder Ihre eigene Web-API aufrufen. Sie haben hierfür mehrere Möglichkeiten:
 
-- Wenn Ihre Desktopanwendung grafische Steuerelemente unterstützt, z. B. im Falle einer Windows.Form-Anwendung oder einer WPF-Anwendung, können Sie den interaktiven Tokenabruf verwenden.
+- Sie können den interaktiven Tokenabruf verwenden:
+
+  - Wenn Ihre Desktopanwendung grafische Steuerelemente unterstützt, z.B. im Fall einer Windows.Form-Anwendung oder einer WPF-Anwendung.
+  - Wenn es sich um eine .NET Core-Anwendung handelt, und Sie zustimmen, dass die Authentifizierungsinteraktion mit Azure AD im Systembrowser erfolgt.
+
 - Bei Anwendungen, die von Windows gehostet werden, kann ein Token mithilfe der integrierten Windows-Authentifizierung automatisch abgerufen werden, wenn die Anwendungen auf Computern ausgeführt werden, die zu einer Windows-Domäne gehören oder in AAD eingebunden sind.
 - Darüber hinaus können Sie, obwohl dies nicht empfohlen wird, Benutzername und Kennwort für öffentliche Clientanwendungen verwenden. In einigen Szenarios (z. B. DevOps) ist ihre Verwendung zwar weiterhin erforderlich, bedenken Sie aber, dass dies Einschränkungen für Ihre Anwendung bedeutet. Ein Benutzer, der beispielsweise die mehrstufige Authentifizierung (bedingter Zugriff) durchführen muss, könnte sich dann nicht anmelden. Auch einmaliges Anmelden wäre für Ihre Anwendung dann nicht möglich.
 
@@ -53,7 +57,7 @@ Sie schreiben eine Desktopanwendung und möchten Benutzer bei Ihrer Anwendung an
 
   ![Desktopanwendung](media/scenarios/desktop-app.svg)
 
-- Wenn Sie ein portables Befehlszeilentool schreiben (wahrscheinlich eine .NET Core-Anwendung unter Linux oder Mac), können Sie weder die interaktive Authentifizierung (da .NET Core keinen [Webbrowser](https://aka.ms/msal-net-uses-web-browser) bietet) noch die integrierte Windows-Authentifizierung nutzen. In diesem Fall ist die beste Option die Verwendung eines Gerätecodeflows. Dieser Flow wird auch für Anwendungen ohne Browser verwendet, z. B. für IoT-Anwendungen.
+- Wenn Sie ein portables Befehlszeilentool schreiben (möglicherweise eine.NET Core-Anwendung, die unter Linux oder Mac ausgeführt wird) und akzeptieren, dass die Authentifizierung an den Systembrowser delegiert wird, können Sie interaktive Authentifizierung verwenden. (.NET Core stellt noch keinen [Webbrowser](https://aka.ms/msal-net-uses-web-browser) zur Verfügung, daher erfolgt die Authentifizierung im Systembrowser.) Ansonsten ist die beste Option in diesem Fall die Verwendung des Gerätecodeflows. Dieser Flow wird auch für Anwendungen ohne Browser verwendet, z. B. für IoT-Anwendungen.
 
   ![Anwendungen ohne Browser](media/scenarios/device-code-flow-app.svg)
 
