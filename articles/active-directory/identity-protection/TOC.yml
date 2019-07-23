@@ -52,8 +52,6 @@
           href: howto-provide-risk-event-feedback.md
         - name: Konfigurieren von Richtlinien zu Risiken
           href: howto-configure-risk-policies.md
-        - name: Verbessern der Erkennungsgenauigkeit
-          href: howto-improve-detection-accuracy.md
         - name: Häufig gestellte Fragen und bekannte Probleme
           href: known-issues.md
 - name: Verweis
