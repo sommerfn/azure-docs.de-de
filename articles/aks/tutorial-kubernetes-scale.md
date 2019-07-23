@@ -70,7 +70,7 @@ azure-vote-front-3309479140-qphz8   1/1       Running   0          3m
 
 ## <a name="autoscale-pods"></a>Automatisches Skalieren von Pods
 
-Kubernetes unterstützt die [automatische horizontale Skalierung][kubernetes-hpa] von Pods, um die Anzahl von Pods in einer Bereitstellung je nach CPU-Nutzung und anderen Metriken anzupassen. Der Metrics Server wird verwendet, um die Ressourcenverwendung für Kubernetes bereitzustellen, und in AKS-Clustern ab der Version 1.10 wird er automatisch bereitgestellt. Verwenden Sie zum Anzeigen der Version Ihres AKS-Clusters den Befehl [az aks show][az-aks-show], wie im folgenden Beispiel zu sehen:
+Kubernetes unterstützt die [automatische horizontale Skalierung][kubernetes-hpa] von Pods, um die Anzahl von Pods in einer Bereitstellung je nach CPU-Nutzung und anderen Metriken anzupassen. Der Metrics Server wird verwendet, um die Ressourcenverwendung für Kubernetes bereitzustellen, und in AKS-Clustern ab der Version 1.10 wird er automatisch bereitgestellt. to adjust the number of pods in a deployment depending on CPU utilization or other select metrics. The [Metrics Server][metrics-server] Verwenden Sie zum Anzeigen der Version Ihres AKS-Clusters den Befehl [az aks show][az-aks-show], wie im folgenden Beispiel zu sehen:
 
 ```azurecli
 az aks show --resource-group myResourceGroup --name myAKSCluster --query kubernetesVersion

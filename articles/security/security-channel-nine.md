@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/21/2017
 ms.author: terrylan
-ms.openlocfilehash: 148b26cc694abaa09bf5016f3c2f2fe3a1c12a70
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.openlocfilehash: a5dfecd1dd004486a119122192eecac3e03fba80
+ms.sourcegitcommit: 1289f956f897786090166982a8b66f708c9deea1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56109808"
+ms.lasthandoff: 06/17/2019
+ms.locfileid: "64701130"
 ---
 # <a name="azure-security-videos-on-channel-9"></a>Azure-Sicherheitsvideos auf Channel 9
 [Channel 9](https://channel9.msdn.com/) ist eine Community, in der die Personen hinter unseren Produkten zu Wort kommen und Verbindung mit Kunden aufnehmen können.
@@ -40,7 +40,7 @@ Mit Azure Security Center erhalten Sie eine zentrale Ansicht des Sicherheitsstat
 
 Mit Azure Security Center erhalten Sie eine zentrale Ansicht des Sicherheitsstatus all Ihrer Azure-Ressourcen. Sie können auf einen Blick überprüfen, ob die erforderlichen Sicherheitskontrollen implementiert und ordnungsgemäß konfiguriert sind. Scott spricht mit Sara Fender, die alles genau erläutert.
 
-[Live Demo: Protecting against, Detecting and Responding to Threats](https://channel9.msdn.com/events/Virtual-Security-Summit/Virtual-Security-Summit-2016/Live-Demo-Protecting-against-Detecting-and-Responding-to-Threats)
+[Live Demo: Protecting against, Detecting and Responding to Threats](https://channel9.msdn.com/events/Virtual-Security-Summit/Virtual-Security-Summit-2016/Live-Demo-Protecting-against-Detecting-and-Responding-to-Threats) (Livedemo: Schützen vor, Erkennen von und Reagieren auf Bedrohungen)
 
 Nehmen Sie an dieser Sitzung teil, und erleben Sie die Microsoft-Sicherheitsplattform in Aktion. Julia White, General Manager for Cloud & Enterprise, stellt die Sicherheitsfeatures von Windows 10, Azure und Office 365 vor, die zur Sicherheit Ihrer Organisation beitragen können.
 
@@ -56,7 +56,7 @@ Bereiche, die in diesem Video behandelt werden:
 
 [How to set security in DevTest Labs](https://channel9.msdn.com/Blogs/Azure/How-to-set-security-in-your-DevTest-Lab)
 
-Als Besitzer des Labs können Sie den Zugriff auf das Lab über die beiden Labrollen „Besitzer“ und „DevTest Labs-Benutzer“ sichern.  Eine Person mit der Rolle „Besitzer“ hat vollständigen Zugriff auf das Lab, wohingegen eine Person mit der Rolle „DevTest Labs-Benutzer“ nur über beschränkten Zugriff verfügt. In diesem Video wird gezeigt, wie Sie eine Person mit diesen Rollen einem Lab hinzufügen können.
+Als Besitzer des Labs können Sie den Zugriff auf das Lab über die beiden Lab-Rollen „Besitzer“ und „DevTest Labs-Benutzer“ schützen. Eine Person mit der Rolle „Besitzer“ hat vollständigen Zugriff auf das Lab, wohingegen eine Person mit der Rolle „DevTest Labs-Benutzer“ nur über beschränkten Zugriff verfügt. In diesem Video wird gezeigt, wie Sie eine Person mit diesen Rollen einem Lab hinzufügen können.
 
 [Managing Secrets for Azure Apps](https://channel9.msdn.com/events/Build/2016/P456)
 
@@ -66,7 +66,7 @@ Jede größere App, die Sie in Azure bereitstellen, weist geschäftskritische ge
 
 Narayan Annamalai, Senior Program Manager, erklärt Scott die Verwendung von Netzwerksicherheitsgruppen in einem virtuellen Azure-Netzwerk. Sie können den Steuerzugriff auf Objekte in Azure nach Subnetz und Netzwerk erstellen. Sie erfahren, wie Sie mithilfe von PowerShell den Zugriff steuern und Gruppen in Azure erstellen können.
 
-[Azure AD Privileged Identity Management: Security Wizard, Alerts, Reviews](https://channel9.msdn.com/Series/Azure-Active-Directory-Videos-Demos/Azure-AD-Privileged-Identity-Management-Security-Wizard-Alerts-Reviews)
+[Azure AD Privileged Identity Management: Security Wizard, Alerts, Reviews](https://channel9.msdn.com/Series/Azure-Active-Directory-Videos-Demos/Azure-AD-Privileged-Identity-Management-Security-Wizard-Alerts-Reviews) (Azure AD Privileged Identity Management: Sicherheits-Assistenten, Warnungen, Überprüfungen)
 
 Azure Active Directory (AD) Privileged Identity Management ist eine Premium-Funktion, mit der Sie privilegierte Identitäten und den damit verbundenen Zugriff auf Ressourcen überwachen können. Außerdem wird bei Bedarf der Verwaltungszugriff erzwungen (bedarfsgesteuert und „just in time“). Sie erhalten Informationen zu folgenden Themen:
 

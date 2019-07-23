@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 03/13/2019
 ms.author: jingwang
-ms.openlocfilehash: a7d440509e2b823400cde83c1ac2ec054c37eb74
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 71f78685ee5fa340ec22c63e3e7f057bef122474
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57896210"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67048518"
 ---
 # <a name="store-credential-in-azure-key-vault"></a>Speichern von Anmeldeinformationen in Azure Key Vault
 
@@ -32,7 +32,7 @@ Diese Funktion basiert auf der verwalteten Data Factory-Identität. Informatione
 
 Führen Sie die folgenden Schritte aus, um auf in Azure Key Vault gespeicherte Anmeldeinformationen zu verweisen:
 
-1. **Rufen Sie die verwaltete Data Factory-Identität ab**, indem Sie den Wert von „DIENSTIDENTITÄTSANWENDUNGS-ID“ kopieren, der zusammen mit der Factory generiert wurde. Bei Verwendung der ADF-Erstellungsbenutzeroberfläche wird die Anwendungs-ID der verwalteten Identität im Erstellungsfenster des verknüpften Azure Key Vault-Diensts angezeigt. Sie können sie auch vom Azure-Portal aus abrufen, siehe [Abrufen der verwalteten Data Factory-Identität](data-factory-service-identity.md#retrieve-managed-identity).
+1. **Rufen Sie die verwaltete Data Factory-Identität ab**, indem Sie den Wert von „Anwendungs-ID der verwalteten Identität“ kopieren, der zusammen mit der Factory generiert wurde. Bei Verwendung der ADF-Erstellungsbenutzeroberfläche wird die Anwendungs-ID der verwalteten Identität im Erstellungsfenster des verknüpften Azure Key Vault-Diensts angezeigt. Sie können sie auch vom Azure-Portal aus abrufen, siehe [Abrufen der verwalteten Data Factory-Identität](data-factory-service-identity.md#retrieve-managed-identity).
 2. **Gewähren Sie der verwalteten Identität Zugriff auf Ihren Azure Key Vault**. Suchen Sie in Ihrem Schlüsseltresor unter „Zugriffsrichtlinien“ -> „Neue hinzufügen“ nach dieser Anwendungs-ID der verwalteten Identität, um ihr in der Dropdownliste „Berechtigungen für Geheimnis“ die **Abrufberechtigung** zu erteilen. Dies ermöglicht der angegebenen Data Factory den Zugriff auf das Geheimnis im Schlüsseltresor.
 3. **Erstellen Sie einen verknüpften Dienst, der auf Ihren Azure Key Vault-Tresor verweist.** Siehe [Mit Azure Key Vault verknüpfter Dienst](#azure-key-vault-linked-service).
 4. **Erstellen Sie einen mit einem Datenspeicher verknüpften Dienst, in dem Sie auf das entsprechende Geheimnis verweisen, das im Schlüsseltresor gespeichert ist.** Informationen finden Sie unter [Verweisen auf ein im Schlüsseltresor gespeichertes Geheimnis](#reference-secret-stored-in-key-vault).
@@ -48,7 +48,7 @@ Folgende Eigenschaften werden für den mit Azure Key Vault verknüpften Dienst u
 
 **Verwendung der Erstellungsbenutzeroberfläche:**
 
-Klicken Sie auf **Verbindungen** -> **Verknüpfte Dienste** -> **+Neu**, und suchen Sie nach „Azure Key Vault“:
+Klicken Sie auf **Verbindungen** -> **Verknüpfte Dienste** ->  **+Neu**, und suchen Sie nach „Azure Key Vault“:
 
 ![Nach AKV suchen](media/store-credentials-in-key-vault/search-akv.png)
 
@@ -78,7 +78,7 @@ Die folgenden Eigenschaften werden unterstützt, wenn Sie ein Feld in einem verk
 |:--- |:--- |:--- |
 | type | Die type-Eigenschaft des Felds muss auf folgenden Wert festgelegt werden: **AzureKeyVaultSecret**. | Ja |
 | secretName | Der Name des Geheimnisses im Azure-Schlüsseltresor. | Ja |
-| secretVersion | Die Version des Geheimnisses im Azure-Schlüsseltresor.<br/>Falls nicht angegeben, wird immer die neueste Version des Geheimnisses verwendet.<br/>Falls angegeben, wird die angegebene Version verwendet.| Nein  |
+| secretVersion | Die Version des Geheimnisses im Azure-Schlüsseltresor.<br/>Falls nicht angegeben, wird immer die neueste Version des Geheimnisses verwendet.<br/>Falls angegeben, wird die angegebene Version verwendet.| Nein |
 | store | Verweist auf einen mit Azure Key Vault verknüpften Dienst, in dem Sie die Anmeldeinformationen speichern. | Ja |
 
 **Verwendung der Erstellungsbenutzeroberfläche:**

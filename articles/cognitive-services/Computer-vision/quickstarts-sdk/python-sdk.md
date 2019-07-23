@@ -38,7 +38,7 @@ Weitere Dokumentationen:
 ## <a name="prerequisites"></a>Voraussetzungen
 
 * [Python 3.6+][python]
-* Kostenloser [Schlüssel für maschinelles Sehen][computervision_resource] und zugeordneter Endpunkt. Diese Werte werden beim Erstellen der Instanz des Clientobjekts „ComputerVisionClient“ benötigt. Die Werte können mit einer der folgenden Methoden ermittelt werden.
+* Kostenloser [Schlüssel für maschinelles Sehen][computervision_resource] und zugeordneter Endpunkt. Diese Werte werden beim Erstellen der Instanz des Clientobjekts „ComputerVisionClient“ benötigt. and associated endpoint. You need these values when you create the instance of the [ComputerVisionClient][ref_computervisionclient] Die Werte können mit einer der folgenden Methoden ermittelt werden.
 
 ### <a name="if-you-dont-have-an-azure-subscription"></a>Vorgehensweise ohne Azure-Abonnement
 
@@ -84,7 +84,7 @@ source cogsrv-vision-env/bin/activate
 
 ### <a name="install-the-sdk"></a>Installieren des SDKs
 
-Installieren Sie das [Azure Cognitive Services SDK für maschinelles Sehen für Python][pypi_computervision] mit „pip“:
+Installieren Sie das [Azure Cognitive Services SDK für maschinelles Sehen für Python][pypi_computervision] mit „pip“: with [pip][pip]
 
 ```Bash
 pip install azure-cognitiveservices-vision-computervision
@@ -154,7 +154,7 @@ Für die folgenden Aufgaben wird ein Clientobjekt vom Typ [ComputerVisionClient]
 
 ### <a name="analyze-an-image"></a>Analysieren von Bildern
 
-Mit [`analyze_image`][ref_computervisionclient_analyze_image] können verschiedene Aspekte eines Bilds analysiert werden. Verwenden Sie die Eigenschaft „visual_features“, um festzulegen, welche Analysen für das Bild ausgeführt werden sollen. Gängige Werte sind `VisualFeatureTypes.tags` und `VisualFeatureTypes.description`.
+Mit [`analyze_image`][ref_computervisionclient_analyze_image] können verschiedene Aspekte eines Bilds analysiert werden. Verwenden Sie die Eigenschaft „visual_features“, um festzulegen, welche Analysen für das Bild ausgeführt werden sollen. . Use the [`visual_features`][ref_computervision_model_visualfeatures] Gängige Werte sind `VisualFeatureTypes.tags` und `VisualFeatureTypes.description`.
 
 ```Python
 url = "https://upload.wikimedia.org/wikipedia/commons/thumb/1/12/Broadway_and_Times_Square_by_night.jpg/450px-Broadway_and_Times_Square_by_night.jpg"
@@ -286,7 +286,7 @@ image.save('thumbnail.jpg')
 
 ### <a name="general"></a>Allgemein
 
-Wenn Sie bei Verwendung des Python SDK mit dem Clientobjekt [ComputerVisionClient][ref_computervisionclient] interagieren, wird für die Rückgabe von Fehlern die Klasse „ComputerVisionErrorException“ verwendet. Die von dem Dienst zurückgegebenen Fehler entsprechen den HTTP-Statuscodes, die für REST-API-Anforderungen zurückgegeben werden.
+Wenn Sie bei Verwendung des Python SDK mit dem Clientobjekt [ComputerVisionClient][ref_computervisionclient] interagieren, wird für die Rückgabe von Fehlern die Klasse „ComputerVisionErrorException“ verwendet. client object using the Python SDK, the [`ComputerVisionErrorException`][ref_computervision_computervisionerrorexception] Die von dem Dienst zurückgegebenen Fehler entsprechen den HTTP-Statuscodes, die für REST-API-Anforderungen zurückgegeben werden.
 
 Wenn Sie also beispielsweise versuchen, ein Bild mit einem ungültigen Schlüssel zu analysieren, wird ein Fehler vom Typ `401` zurückgegeben. Im folgenden Codeausschnitt wird der [Fehler][ref_httpfailure] ordnungsgemäß behandelt, indem die Ausnahme abgefangen wird und zusätzliche Fehlerinformationen angezeigt werden.
 
@@ -312,7 +312,7 @@ except HTTPFailure as e:
 
 ### <a name="handle-transient-errors-with-retries"></a>Behandeln von vorübergehenden Fehlern mit Wiederholungen
 
-Bei der Verwendung des [ComputerVisionClient][ref_computervisionclient]-Clients kann es zu vorübergehenden Fehlern kommen. Diese können auf durch den Dienst erzwungene Ratenlimits oder auf andere vorübergehende Probleme (etwa auf Netzwerkausfälle) zurückzuführen sein. Informationen zur Behandlung solcher Fehler finden Sie im Leitfaden für Cloudentwurfsmuster unter [Wiederholungsmuster][azure_pattern_retry] sowie unter dem dazugehörigen [Trennschalter-Muster][azure_pattern_circuit_breaker].
+Bei der Verwendung des [ComputerVisionClient][ref_computervisionclient]-Clients kann es zu vorübergehenden Fehlern kommen. Diese können auf durch den Dienst erzwungene Ratenlimits oder auf andere vorübergehende Probleme (etwa auf Netzwerkausfälle) zurückzuführen sein. client, you might encounter transient failures caused by [rate limits][computervision_request_units] Informationen zur Behandlung solcher Fehler finden Sie im Leitfaden für Cloudentwurfsmuster unter [Wiederholungsmuster][azure_pattern_retry] sowie unter dem dazugehörigen [Trennschalter-Muster][azure_pattern_circuit_breaker].
 
 ## <a name="next-steps"></a>Nächste Schritte
 

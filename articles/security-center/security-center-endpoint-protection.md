@@ -14,10 +14,10 @@ ms.workload: na
 ms.date: 05/23/2019
 ms.author: v-mohabe
 ms.openlocfilehash: b17e5f16b988bfa562b00bc6f5b9dfd34be4ca43
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/27/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66245573"
 ---
 # <a name="endpoint-protection-assessment-and-recommendations-in-azure-security-center"></a>Endpoint Protection: Bewertung und Empfehlungen in Azure Security Center
@@ -29,7 +29,7 @@ Endpoint Protection-Bewertung und Empfehlungen in Azure Security Center ermittel
 
 ## <a name="windows-defender"></a>Windows Defender
 
-* Die Empfehlung **„Endpoint Protection-Lösungen auf Ihrem virtuellen Computer installieren“** wird generiert, wenn [Get-MpComputerStatus](https://docs.microsoft.com/powershell/module/defender/get-mpcomputerstatus?view=win10-ps) ausgeführt wird, und das Ergebnis **AMServiceEnabled: False** lautet.
+* Die Empfehlung **„Endpoint Protection-Lösungen auf Ihrem virtuellen Computer installieren“** wird generiert, wenn [Get-MpComputerStatus](https://docs.microsoft.com/powershell/module/defender/get-mpcomputerstatus?view=win10-ps) ausgeführt wird und das Ergebnis **AMServiceEnabled: False** zurückgibt.
 
 * Die Empfehlung **„Endpoint Protection-Integritätsprobleme auf Ihren Computern beheben“** wird generiert, wenn [Get-MpComputerStatus](https://docs.microsoft.com/powershell/module/defender/get-mpcomputerstatus?view=win10-ps) ausgeführt wird und mindestens eine der folgenden Situationen eintritt:
 

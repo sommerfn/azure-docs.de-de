@@ -23,7 +23,7 @@ Sie können einen AKS-Cluster im Azure-Portal, mit der Azure-Befehlszeilenschnit
 
 Weitere Informationen zu Kubernetes-Grundlagen finden Sie unter [Grundlegende Kubernetes-Konzepte für AKS][concepts-clusters-workloads].
 
-Absolvieren Sie zum Einstieg die AKS-Schnellstartanleitung [im Azure-Portal][aks-portal] oder über die Azure-Befehlszeilenschnittstelle.
+Absolvieren Sie zum Einstieg die AKS-Schnellstartanleitung [im Azure-Portal][aks-portal] oder über die Azure-Befehlszeilenschnittstelle. or [with the Azure CLI][aks-cli]
 
 ## <a name="access-security-and-monitoring"></a>Zugriff, Sicherheit und Überwachung
 
@@ -57,7 +57,7 @@ Weitere Informationen finden Sie unter [Skalieren eines Azure Kubernetes Service
 
 Azure Kubernetes Service bietet mehrere Kubernetes-Versionen. Wenn in AKS neue Versionen verfügbar werden, können Sie mithilfe des Azure-Portals oder der Azure CLI ein Clusterupgrade ausführen. Während des Upgradevorgangs werden die Knoten sorgfältig isoliert und ausgeglichen, um ausgeführte Anwendungen möglichst wenig zu beeinträchtigen.
 
-Weitere Informationen zu Lebenszyklusversionen finden Sie unter [Unterstützte Kubernetes-Versionen in Azure Kubernetes Service (AKS)][aks-supported versions]. Informationen zu Aktualisierungsschritten finden Sie unter „Durchführen eines Upgrades für einen Azure Kubernetes Service-Cluster (AKS)“.
+Weitere Informationen zu Lebenszyklusversionen finden Sie unter [Unterstützte Kubernetes-Versionen in Azure Kubernetes Service (AKS)][aks-supported versions]. Informationen zu Aktualisierungsschritten finden Sie unter „Durchführen eines Upgrades für einen Azure Kubernetes Service-Cluster (AKS)“. . For steps on how to upgrade, see [Upgrade an Azure Kubernetes Service (AKS) cluster][aks-upgrade]
 
 ### <a name="gpu-enabled-nodes"></a>GPU-fähige Knoten
 
@@ -71,7 +71,7 @@ Um Workloads von Anwendungen zu unterstützen, können Sie die Speichervolumes f
 
 Weitere Informationen finden Sie unter [Speicheroptionen für Anwendungen in AKS][concepts-storage].
 
-Erste Schritte mit dynamischen persistenten Volumes unter Verwendung von [Azure-Datenträgern][azure-disk] oder Azure Files.
+Erste Schritte mit dynamischen persistenten Volumes unter Verwendung von [Azure-Datenträgern][azure-disk] oder Azure Files. or [Azure Files][azure-files]
 
 ## <a name="virtual-networks-and-ingress"></a>Virtuelle Netzwerke und Eingang
 

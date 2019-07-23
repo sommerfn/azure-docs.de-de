@@ -22,7 +22,7 @@ Azure Load Balancer ist in zwei SKUs verfügbar: *Basic* und *Standard*. Standar
 
 In diesem Artikel erfahren Sie, wie Sie eine Azure Load Balancer-Instanz mit der SKU *Standard* mit Azure Kubernetes Service (AKS) erstellen und verwenden.
 
-Für diesen Artikel werden Grundkenntnisse im Zusammenhang mit Kubernetes und Azure Load Balancer vorausgesetzt. Weitere Informationen finden Sie unter [Grundlegende Kubernetes-Konzepte für Azure Kubernetes Service (AKS)][kubernetes-concepts] sowie unter „Was versteht man unter Azure Load Balancer?“.
+Für diesen Artikel werden Grundkenntnisse im Zusammenhang mit Kubernetes und Azure Load Balancer vorausgesetzt. Weitere Informationen finden Sie unter [Grundlegende Kubernetes-Konzepte für Azure Kubernetes Service (AKS)][kubernetes-concepts] sowie unter „Was versteht man unter Azure Load Balancer?“. and [What is Azure Load Balancer?][azure-lb]
 
 Diese Funktion steht derzeit als Vorschau zur Verfügung.
 
@@ -46,7 +46,7 @@ Sie müssen einen AKS-Cluster erstellen, der die SKU für den Lastenausgleich au
 
 ### <a name="install-aks-preview-cli-extension"></a>Installieren der CLI-Erweiterung „aks-preview“
 
-Um die Azure Load Balancer-SKU „Standard“ verwenden zu können, benötigen Sie mindestens die Version 0.4.1 der CLI-Erweiterung *aks-preview*. Installieren Sie die Erweiterung *aks-preview* der Azure-Befehlszeilenschnittstelle mithilfe des Befehls [az extension add][az-extension-add], und verwenden Sie anschließend den Befehl „az extension update“, um nach verfügbaren Updates zu suchen:
+Um die Azure Load Balancer-SKU „Standard“ verwenden zu können, benötigen Sie mindestens die Version 0.4.1 der CLI-Erweiterung *aks-preview*. Installieren Sie die Erweiterung *aks-preview* der Azure-Befehlszeilenschnittstelle mithilfe des Befehls [az extension add][az-extension-add], und verwenden Sie anschließend den Befehl „az extension update“, um nach verfügbaren Updates zu suchen: command, then check for any available updates using the [az extension update][az-extension-update]
 
 ```azurecli-interactive
 # Install the aks-preview extension

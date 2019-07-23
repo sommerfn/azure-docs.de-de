@@ -7,11 +7,11 @@ ms.service: container-service
 ms.topic: conceptual
 ms.date: 12/10/2018
 ms.author: iainfou
-ms.openlocfilehash: b26af87de8a09f987d69f0441a817638e626b4af
-ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
+ms.openlocfilehash: 2bdc18ba4dc77178d5fcc5d2ba6d89aa109d923c
+ms.sourcegitcommit: 1289f956f897786090166982a8b66f708c9deea1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/06/2019
+ms.lasthandoff: 06/17/2019
 ms.locfileid: "65192230"
 ---
 # <a name="best-practices-for-network-connectivity-and-security-in-azure-kubernetes-service-aks"></a>Best Practices für Netzwerkkonnektivität und Sicherheit in Azure Kubernetes Service (AKS)
@@ -47,7 +47,7 @@ Wenn Sie Azure CNI-Netzwerke verwenden, befindet sich die virtuelle Netzwerkress
 
 Weitere Informationen zur AKS-Dienstprinzipaldelegation finden Sie unter [Delegieren des Zugriffs auf andere Azure-Ressourcen][sp-delegation].
 
-Da jeder Knoten und Pod seine eigene IP-Adresse erhält, planen Sie die Adressbereiche für die AKS-Subnetze. Das Subnetz muss groß genug sein, um IP-Adressen für jeden Knoten, jeden Pod und jede bereitgestellte Netzwerkressource zu bieten. Jeder AKS-Cluster muss in einem eigenen Subnetz platziert werden. Um die Konnektivität zu lokalen oder Peernetzwerken in Azure zu ermöglichen, sollten Sie keine IP-Adressbereiche verwenden, die sich mit bestehenden Netzwerkressourcen überschneiden. Es gibt Standardbegrenzungen für die Anzahl der Pods, die jeder Knoten in einem kubernet- bzw. Azure CNI-Netzwerk ausführen kann. Um Skalierungsereignisse oder Clusterupgrades behandeln zu können, benötigen Sie außerdem zusätzliche IP-Adressen, die für die Verwendung im zugewiesenen Subnetz zur Verfügung stehen.
+Da jeder Knoten und Pod seine eigene IP-Adresse erhält, planen Sie die Adressbereiche für die AKS-Subnetze. Das Subnetz muss groß genug sein, um IP-Adressen für jeden Knoten, jeden Pod und jede bereitgestellte Netzwerkressource zu bieten. Jeder AKS-Cluster muss in einem eigenen Subnetz platziert werden. Um die Konnektivität zu lokalen oder Peernetzwerken in Azure zu ermöglichen, sollten Sie keine IP-Adressbereiche verwenden, die sich mit bestehenden Netzwerkressourcen überschneiden. Es gibt Standardbegrenzungen für die Anzahl der Pods, die jeder Knoten in einem kubernet- bzw. Azure CNI-Netzwerk ausführen kann. Um Skalierungsereignisse oder Clusterupgrades behandeln zu können, benötigen Sie außerdem zusätzliche IP-Adressen, die für die Verwendung im zugewiesenen Subnetz zur Verfügung stehen. Dieser zusätzliche Adressraum ist besonders wichtig, wenn Sie Windows Server-Container (zurzeit als Vorschauversion in AKS) verwenden, da diese Knotenpools ein Upgrade erfordern, damit die neuesten Sicherheitspatches angewandt werden. Weitere Informationen zu Windows Server-Knoten finden Sie unter [Durchführen eines Upgrades für einen Knotenpool in AKS][nodepool-upgrade].
 
 Informationen zum Berechnen der erforderlichen IP-Adresse finden Sie unter [Konfigurieren von Azure CNI-Netzwerken in AKS][advanced-networking].
 
@@ -101,6 +101,8 @@ spec:
 
 Ein Eingangscontroller ist ein Daemon, der auf einem AKS-Knoten ausgeführt wird und diesen auf eingehende Anforderungen überwacht. Datenverkehr wird dann entsprechend den in der Eingangsressource definierten Regeln verteilt. Der am häufigsten verwendete Eingangscontroller basiert auf [NGINX]. AKS beschränkt Sie nicht auf einen bestimmten Controller, Sie können daher auch andere Controller wie [Contour][contour], [HAProxy][haproxy] oder [Traefik][traefik] verwenden.
 
+Eingangscontroller müssen auf einem Linux-Knoten geplant werden. Windows Server-Knoten (derzeit in der Vorschau in AKS) dürfen nicht auf dem Eingangscontroller ausgeführt werden. Verwenden Sie einen Knotenselektor in Ihrem YAML-Manifest oder der Bereitstellung des Helm-Charts, um anzugeben, dass die Ressource auf einem Linux-basierten Knoten ausgeführt werden soll. Weitere Informationen finden Sie unter [Verwenden von Knotenselektoren, um zu steuern, wo Pods in AKS geplant werden][concepts-node-selectors].
+
 Es gibt viele Szenarien für Eingangsdatenverkehr, einschließlich der folgenden Anleitungen:
 
 * [Erstellen eines einfachen Eingangscontrollers mit Verbindung mit einem externen Netzwerk][aks-ingress-basic]
@@ -126,7 +128,7 @@ Load Balancer oder Eingangsressourcen werden in Ihrem AKS-Cluster weiterhin ausg
 
 Netzwerkrichtlinien sind ein Kubernetes-Feature, mit dem Sie den Datenverkehrsfluss zwischen Pods steuern können. Anhand von Einstellungen wie zugewiesene Bezeichnungen, Namespace oder Port für den Datenverkehr können Sie Datenverkehr zulassen oder verweigern. Die Verwendung von Netzwerkrichtlinien ist eine cloudnative Möglichkeit, den Datenverkehrsfluss zu steuern. Wenn Pods in einem AKS-Cluster dynamisch erstellt werden, können automatisch die erforderlichen Netzwerkrichtlinien angewendet werden. Verwenden Sie zum Steuern der Kommunikation zwischen den Pods keine Azure-Netzwerksicherheitsgruppen, sondern Netzwerkrichtlinien.
 
-Um Netzwerkrichtlinien verwenden zu können, muss das Feature beim Erstellen eines AKS-Clusters aktiviert werden. Ohne einen vorhandenen AKS-Cluster können Sie keine Netzwerkrichtlinie aktivieren. Planen Sie im Voraus, und stellen Sie sicher, dass Sie in den Clustern Netzwerkrichtlinien aktivieren und diese bei Bedarf verwenden können.
+Um Netzwerkrichtlinien verwenden zu können, muss das Feature beim Erstellen eines AKS-Clusters aktiviert werden. Ohne einen vorhandenen AKS-Cluster können Sie keine Netzwerkrichtlinie aktivieren. Planen Sie im Voraus, und stellen Sie sicher, dass Sie in den Clustern Netzwerkrichtlinien aktivieren und diese bei Bedarf verwenden können. Netzwerkrichtlinien sollten nur für Linux-basierte Knoten und Pods in AKS verwendet werden.
 
 Eine Netzwerkrichtlinie wird mit einem YAML-Manifest als Kubernetes-Ressource erstellt. Die Richtlinien werden auf definierte Pods angewendet. Regeln für den ein- und ausgehenden Datenverkehr definieren dann, wie der Datenverkehr fließen kann. Im folgenden Beispiel wird eine Netzwerkrichtlinie auf Pods mit der zugewiesenen Bezeichnung *app: backend* angewendet. Die Eingangsregel erlaubt dann nur Datenverkehr von Pods mit der Bezeichnung *app: frontend*:
 
@@ -186,3 +188,5 @@ Dieser Artikel konzentriert sich auf Netzwerkkonnektivität und Sicherheit. Weit
 [use-network-policies]: use-network-policies.md
 [advanced-networking]: configure-azure-cni.md
 [aks-configure-kubenet-networking]: configure-kubenet.md
+[concepts-node-selectors]: concepts-clusters-workloads.md#node-selectors
+[nodepool-upgrade]: use-multiple-node-pools.md#upgrade-a-node-pool
