@@ -14,12 +14,12 @@ ms.workload: iaas-sql-server
 ms.date: 05/13/2019
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: e2a807bbd6baeb2f14a6d36f5d98a28d48725449
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 59a85e855c9fab9f2a3437c83c867b8076f55049
+ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67082039"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67607223"
 ---
 # <a name="manage-sql-server-vms-in-azure-using-the-azure-portal"></a>Verwalten von SQL Server-VMs in Azure über das Azure-Portal
 
@@ -33,7 +33,7 @@ Die Ressource **Virtuelle SQL-Computer** ist jetzt ein unabhängiger Verwaltungs
 ## <a name="remarks"></a>Anmerkungen
 
 - Die Ressource **Virtuelle SQL-Computer** ist die empfohlene Methode zum Anzeigen und Verwalten Ihre SQL Server-VMs. Derzeit unterstützt die Ressource **Virtuelle SQL-Computer** jedoch noch nicht die Verwaltung von SQL Server-VMs, deren [Support abgelaufen](virtual-machines-windows-sql-server-2008-eos-extend-support.md) ist. Um die Einstellungen für Ihre SQL Server-VMs mit abgelaufenem Support zu verwalten, verwenden Sie stattdessen die veraltete [Registerkarte „SQL Server-Konfiguration“](#access-sql-server-configuration-tab). 
-- Die Ressource **Virtuelle SQL-Computer** ist nur für SQL Server-VMs verfügbar, die [mit dem SQL-VM-Ressourcenanbieter registriert](virtual-machines-windows-sql-ahb.md#register-sql-server-vm-with-the-sql-vm-resource-provider) wurden. 
+- Die Ressource **Virtuelle SQL-Computer** ist nur für SQL Server-VMs verfügbar, die [mit dem SQL-VM-Ressourcenanbieter registriert](virtual-machines-windows-sql-register-with-resource-provider.md) wurden. 
 
 
 ## <a name="access-sql-virtual-machine-resource"></a>Zugreifen auf die Ressource „Virtuelle SQL-Computer“
@@ -60,7 +60,7 @@ Durch Auswählen der SQL Server-VM wird die Ressource **Virtuelle SQL-Computer**
   > Die Ressource **Virtuelle SQL-Computer** ist für SQL Server-Einstellungen vorgesehen. Wählen Sie den Namen des virtuellen Computers im Feld **Virtueller Computer** aus, um zu den Einstellungen dieser spezifischen VM zu navigieren, die jedoch nicht nur für SQL Server gelten. 
 
 ## <a name="access-sql-server-configuration-tab"></a>Zugreifen auf die Registerkarte „SQL Server-Konfiguration“
-Die Registerkarte „SQL Server-Konfiguration“ ist veraltet. Sie stellt im Moment jedoch die einzige Möglichkeit dar, um virtuelle SQL Server-Computer mit [Ende des Supports (EOS)](virtual-machines-windows-sql-server-2008-eos-extend-support.md) sowie SQL Server-VMs zu verwalten, die nicht mit dem [SQL-VM-Ressourcenanbieter](virtual-machines-windows-sql-ahb.md#register-sql-server-vm-with-the-sql-vm-resource-provider) registriert wurden.
+Die Registerkarte „SQL Server-Konfiguration“ ist veraltet. Sie stellt im Moment jedoch die einzige Möglichkeit dar, um virtuelle SQL Server-Computer mit [Ende des Supports (EOS)](virtual-machines-windows-sql-server-2008-eos-extend-support.md) sowie SQL Server-VMs zu verwalten, die nicht mit dem [SQL-VM-Ressourcenanbieter](virtual-machines-windows-sql-register-with-resource-provider.md) registriert wurden.
 
 Für den Zugriff auf die veraltete Registerkarte „SQL Server-Konfiguration“ müssen Sie zur Ressource **Virtuelle Computer** navigieren. Führen Sie hierzu folgende Schritte aus:
 

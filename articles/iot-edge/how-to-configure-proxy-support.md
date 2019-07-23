@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.custom: seodec18
-ms.openlocfilehash: 34a94a1b9c38070f5c9de22d9a9e4f24183a876c
-ms.sourcegitcommit: 6e6813f8e5fa1f6f4661a640a49dc4c864f8a6cb
+ms.openlocfilehash: 1bf66fdb18398aaf233980ee7f2fd45fe1cc543b
+ms.sourcegitcommit: a6873b710ca07eb956d45596d4ec2c1d5dc57353
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/17/2019
-ms.locfileid: "67151002"
+ms.lasthandoff: 07/16/2019
+ms.locfileid: "68260508"
 ---
 # <a name="configure-an-iot-edge-device-to-communicate-through-a-proxy-server"></a>Konfigurieren eines IoT Edge-Geräts für die Kommunikation über einen Proxyserver
 
@@ -82,8 +82,9 @@ Die folgenden Schritte zeigen ein Beispiel für eine Windows-Installation mithil
 
    ```powershell
    . {Invoke-WebRequest -proxy <proxy URL> -useb aka.ms/iotedge-win} | Invoke-Expression; Initialize-IoTEdge
+   ```
 
-If you have complicated credentials for the proxy server that can't be included in the URL, use the `-ProxyCredential` parameter within `-InvokeWebRequestParameters`. For example,
+Wenn Sie komplexe Anmeldeinformationen für den Proxyserver verwenden, die nicht in die URL eingeschlossen werden können, verwenden Sie den Parameter `-ProxyCredential` innerhalb von `-InvokeWebRequestParameters`. Beispiel:
 
 ```powershell
 $proxyCredential = (Get-Credential).GetNetworkCredential()

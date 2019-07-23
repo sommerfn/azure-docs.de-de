@@ -12,12 +12,12 @@ ms.assetid: 521180dc-2cc9-43f1-ae87-2701de7ca6b8
 ms.devlang: na
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.openlocfilehash: b637f547de06d9347a1c74ad7da560be97f16881
-ms.sourcegitcommit: 22c97298aa0e8bd848ff949f2886c8ad538c1473
+ms.openlocfilehash: 12b9793cabb261368c437bd2ae2dbb39cf078bef
+ms.sourcegitcommit: cf438e4b4e351b64fd0320bf17cc02489e61406a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/14/2019
-ms.locfileid: "67144668"
+ms.lasthandoff: 07/08/2019
+ms.locfileid: "67653283"
 ---
 # <a name="design-secure-applications-on-azure"></a>Entwerfen von sicheren Anwendungen in Azure
 In diesem Artikel werden Sicherheitsaktivitäten und -kontrollen vorgestellt, die Sie berücksichtigen sollten, wenn Sie Anwendungen für die Cloud entwerfen. Es werden Trainingsressourcen zusammen mit Sicherheitsfragen und -konzepten behandelt, die Sie in der Anforderungen- und in der Entwurfsphase von Microsoft [Security Development Lifecycle (SDL)](https://msdn.microsoft.com/library/windows/desktop/84aed186-1d75-4366-8e61-8d258746bopq.aspx) berücksichtigen müssen. Das Ziel ist, Ihnen das Festlegen von Aktivitäten und Azure-Diensten zu ermöglichen, mit denen Sie eine sicherere Anwendung entwickeln können.
@@ -39,7 +39,7 @@ Verwenden Sie die folgenden Ressourcen während der Trainingsphase, um sich mit 
 
   - In [SDKs und Tools](https://docs.microsoft.com/azure/index#pivot=sdkstools) sind die Tools beschrieben, die in Azure verfügbar sind.
 
-  - In [Azure DevOps Services](https://docs.microsoft.com/azure/devops/?view=vsts#pivot=index&panel=indexA) werden Tools zur Entwicklungszusammenarbeit bereitgestellt. Zu den Tools gehören leistungsstarke Pipelines, kostenlose Git-Repositorys, konfigurierbare Kanban-Boards und umfangreiche automatisierte und cloudbasierte Auslastungstests.
+  - In [Azure DevOps Services](https://docs.microsoft.com/azure/devops/) werden Tools zur Entwicklungszusammenarbeit bereitgestellt. Zu den Tools gehören leistungsstarke Pipelines, kostenlose Git-Repositorys, konfigurierbare Kanban-Boards und umfangreiche automatisierte und cloudbasierte Auslastungstests.
     Das [DevOps Resource Center](https://docs.microsoft.com/azure/devops/learn/) kombiniert unsere Ressourcen zum Erlernen von DevOps-Praktiken, Git-Versionskontrolle, Agile-Methoden, wie wir bei Microsoft mit DevOps arbeiten und wie Sie Ihren eigenen DevOps-Fortschritt bewerten können.
 
   - In [Top 5 der Sicherheitselemente, die vor dem Übergang in die Produktion zu beachten sind](https://docs.microsoft.com/learn/modules/top-5-security-items-to-consider/index?WT.mc_id=Learn-Blog-tajanca) erfahren Sie, wie Sie Ihre Webanwendungen in Azure schützen und Ihre Apps vor den häufigsten und gefährlichsten Angriffen auf Webanwendungen schützen können.
@@ -157,7 +157,7 @@ Das Modellieren des Anwendungsentwurfs und das Aufzählen von [STRIDE](https://d
 | Nichtanerkennung            | Unleugbarkeit       | Aktivieren Sie die [Überwachung und Diagnose](https://docs.microsoft.com/azure/architecture/best-practices/monitoring) von Azure.|
 | Veröffentlichung von Informationen | Vertraulichkeit       | Verschlüsseln Sie sensible [ruhende](https://docs.microsoft.com/azure/security/azure-security-encryption-atrest) Daten und Daten [während einer Übertragung](https://docs.microsoft.com/azure/security/azure-security-data-encryption-best-practices#protect-data-in-transit). |
 | Denial of Service      | Verfügbarkeit          | Überwachen Sie Leistungsmetriken auf potenzielle Denial of Service-Angriffe. Implementieren Sie Verbindungsfilter. [Azure DDoS-Schutz](https://docs.microsoft.com/azure/virtual-network/ddos-protection-overview#next-steps) in Kombination mit bewährten Anwendungsentwurfsmethoden stellt den bestmöglichen Schutz vor DDoS-Angriffen dar.|
-| Rechteerweiterungen | Autorisierung         | Verwenden Sie Azure Active Directory <span class="underline"> </span> [Privileged Identity Management](https://docs.microsoft.com/azure/active-directory/privileged-identity-management/pim-configure).|
+| Rechteerweiterungen | Authorization         | Verwenden Sie Azure Active Directory <span class="underline"> </span> [Privileged Identity Management](https://docs.microsoft.com/azure/active-directory/privileged-identity-management/pim-configure).|
 
 ### <a name="reduce-your-attack-surface"></a>Verringern der Angriffsfläche
 

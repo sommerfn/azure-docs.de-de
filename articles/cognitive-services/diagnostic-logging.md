@@ -9,12 +9,12 @@ ms.service: cognitive-services
 ms.topic: article
 ms.date: 06/14/2019
 ms.author: erhopf
-ms.openlocfilehash: e1a6a44d7ff9d5786388fc47245ef5c79cb9be82
-ms.sourcegitcommit: 1289f956f897786090166982a8b66f708c9deea1
+ms.openlocfilehash: 3be912f053bf206999546678e1e407548af181bf
+ms.sourcegitcommit: cf438e4b4e351b64fd0320bf17cc02489e61406a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/17/2019
-ms.locfileid: "67155719"
+ms.lasthandoff: 07/08/2019
+ms.locfileid: "67657678"
 ---
 # <a name="enable-diagnostic-logging-for-azure-cognitive-services"></a>Aktivieren der Diagnoseprotokollierung für Azure Cognitive Services
 
@@ -28,14 +28,14 @@ Sie benötigen zum Aktivieren der Diagnoseprotokollierung einen Speicherort für
 * [Log Analytics](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitor-stream-diagnostic-logs-log-analytics) ist ein flexibles Tool für die Protokollsuche und -analyse, mit dem Sie die unformatierten Protokolle von einer Azure-Ressource analysieren können.
 
 > [!NOTE]
-> Es stehen noch weitere Konfigurationsoptionen zur Verfügung. Weitere Informationen finden Sie unter [Erfassen und Nutzen von Protokolldaten aus Ihren Azure-Ressourcen](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs).
+> Es stehen noch weitere Konfigurationsoptionen zur Verfügung. Weitere Informationen finden Sie unter [Erfassen und Nutzen von Protokolldaten aus Ihren Azure-Ressourcen](https://docs.microsoft.com/azure/azure-monitor/platform/diagnostic-logs-overview).
 
 ## <a name="enable-diagnostic-log-collection"></a>Aktivieren der Diagnoseprotokollierung  
 
 Beginnen Sie mit dem Aktivieren der Diagnoseprotokollierung im Azure-Portal.
 
 > [!NOTE]
-> Um dieses Feature mithilfe von PowerShell oder der Azure-Befehlszeilenschnittstelle zu aktivieren, gehen Sie anhand der Anweisungen unter [Erfassen und Nutzen von Protokolldaten aus Ihren Azure-Ressourcen](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs#how-to-enable-collection-of-diagnostic-logs) vor.
+> Um dieses Feature mithilfe von PowerShell oder der Azure-Befehlszeilenschnittstelle zu aktivieren, gehen Sie anhand der Anweisungen unter [Erfassen und Nutzen von Protokolldaten aus Ihren Azure-Ressourcen](https://docs.microsoft.com/azure/azure-monitor/platform/diagnostic-logs-overview#diagnostic-settings) vor.
 
 1. Navigieren Sie zum Azure-Portal. Suchen Sie anschließend eine Cognitive Services-Ressource, und wählen Sie sie aus. Sie können z. B. Ihr Abonnement für die Bing-Websuche verwenden.   
 2. Suchen Sie danach im Navigationsmenü auf der linken Seite nach **Überwachung**, und wählen Sie **Diagnoseeinstellungen** aus. Dieser Bildschirm enthält alle zuvor erstellten Diagnoseeinstellungen für diese Ressource.
