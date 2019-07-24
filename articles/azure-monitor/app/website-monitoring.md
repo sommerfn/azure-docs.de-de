@@ -5,17 +5,17 @@ services: application-insights
 keywords: ''
 author: mrbullwinkle
 ms.author: mbullwin
-ms.date: 10/29/2018
+ms.date: 07/15/2019
 ms.service: application-insights
 ms.custom: mvc
 ms.topic: quickstart
 manager: carmonm
-ms.openlocfilehash: ece51892522721f7be3cdcadbb3b79705c9f83e4
-ms.sourcegitcommit: 3d4121badd265e99d1177a7c78edfa55ed7a9626
+ms.openlocfilehash: 9845329d30da40243751c00f7c0fa62fdcfe5a0d
+ms.sourcegitcommit: 6b41522dae07961f141b0a6a5d46fd1a0c43e6b2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/30/2019
-ms.locfileid: "66384094"
+ms.lasthandoff: 07/15/2019
+ms.locfileid: "67990089"
 ---
 # <a name="start-monitoring-your-website"></a>Starten der Überwachung Ihrer Website
 
@@ -41,14 +41,16 @@ Application Insights kann Telemetriedaten aus jeder mit dem Internet verbundenen
 
 1. Klicken Sie auf **Ressource erstellen** > **Verwaltungstools** > **Application Insights**.
 
+   > [!NOTE]
+   >Wenn Sie zum ersten Mal eine Application Insights-Ressource erstellen, können Sie mehr dazu im Artikel [Erstellen einer Application Insights-Ressource](https://docs.microsoft.com/azure/azure-monitor/app/create-new-resource) erfahren.
+
    Ein Dialogfeld für die Konfiguration wird geöffnet. Füllen Sie die Eingabefelder anhand der Informationen in der folgenden Tabelle aus:
 
     | Einstellungen        | Wert           | BESCHREIBUNG  |
    | ------------- |:-------------|:-----|
    | **Name**      | Global eindeutiger Wert | Der Name, der die zu überwachende App identifiziert. |
-   | **Anwendungstyp** | Allgemeine Anwendung | Der Typ der zu überwachenden App. |
    | **Ressourcengruppe**     | myResourceGroup      | Der Name der neuen Ressourcengruppe, die Application Insights-Daten hosten soll. |
-   | **Location** | USA (Ost) | Wählen Sie einen Standort in Ihrer Nähe oder in der Nähe des Standorts, in dem Ihre App gehostet wird. |
+   | **Location** | East US | Wählen Sie einen Standort in Ihrer Nähe oder in der Nähe des Standorts, in dem Ihre App gehostet wird. |
 
 2. Klicken Sie auf **Create**.
 

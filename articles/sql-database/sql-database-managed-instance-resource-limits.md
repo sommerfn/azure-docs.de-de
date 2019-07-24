@@ -12,12 +12,12 @@ ms.author: bonova
 ms.reviewer: carlrab, jovanpop, sachinp, sstein
 manager: craigg
 ms.date: 06/26/2019
-ms.openlocfilehash: a0846a7d03cc2f63af6747c8b8514b563c1d4a5d
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: f4e19b916553912e36f2c3beee3f6a518b244e4d
+ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67447804"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67707006"
 ---
 # <a name="overview-azure-sql-database-managed-instance-resource-limits"></a>Übersicht über Ressourceneinschränkungen für verwaltete Azure SQL-Datenbank-Instanzen
 
@@ -37,11 +37,11 @@ Eine verwaltete Azure SQL-Datenbank-Instanz kann auf zwei Hardwaregenerationen b
 |   | **Gen4** | **Gen5** |
 | --- | --- | --- |
 | Hardware | Intel E5-2673 v3-Prozessoren (Haswell) mit 2,4 GHz, angefügte SSD, virtueller Kern = 1 physischer Kern | Intel E5-2673 v4-Prozessoren (Broadwell) mit 2,3 GHz, schnelle NVMe-SSD, virtueller Kern = 1 LP (Hyperthread) |
-| V-Kerne | 8, 16, 24 virtuelle Kerne | 4, 8, 16, 24, 32, 40, 64, 80 virtuelle Kerne |
-| Arbeitsspeicher (Verhältnis Arbeitsspeicher/Kerne) | 7 GB pro V-Kern | 5,1 GB pro virtuellem Kern |
+| Anzahl der virtuellen Kerne | 8, 16, 24 virtuelle Kerne | 4, 8, 16, 24, 32, 40, 64, 80 virtuelle Kerne |
+| Max. Arbeitsspeicher (Verhältnis Arbeitsspeicher/Kerne) | 7 GB pro V-Kern<br/>Fügen Sie weitere virtuelle Kerne hinzu, um mehr Arbeitsspeicher zu erhalten. | 5,1 GB pro virtuellem Kern<br/>Fügen Sie weitere virtuelle Kerne hinzu, um mehr Arbeitsspeicher zu erhalten. |
 | Max. In-Memory-OLTP-Arbeitsspeicher | Grenzwert für Instanzen: 3GB pro virtuellem Kern<br/>Grenzwerte für Datenbanken:<br/> – 8 Kerne: 8 GB pro Datenbank<br/> – 16 Kerne: 20 GB pro Datenbank<br/> – 24 Kerne: 36 GB pro Datenbank | Grenzwert für Instanzen: 2,5 GB pro virtuellem Kern<br/>Grenzwerte für Datenbanken:<br/> – 8 Kerne: 13 GB pro Datenbank<br/> – 16 Kerne: 32 GB pro Datenbank |
-| Max. Instanzspeichergröße (allgemeiner Zweck) |  8 TB | 8 TB |
-| Max. Instanzspeichergröße (unternehmenskritisch) | 1 TB | 1 TB, 2 TB oder 4 TB, je nach Anzahl der Kerne |
+| Max. Größe des reservierten Instanzspeichers (universell) |  8 TB | 8 TB |
+| Max. Größe des reservierten Instanzspeichers (unternehmenskritisch) | 1 TB | 1 TB, 2 TB oder 4 TB, je nach Anzahl der Kerne |
 
 > [!IMPORTANT]
 > Neue Gen4-Datenbanken werden in der Region „Australien, Osten“ nicht mehr unterstützt.
@@ -53,16 +53,16 @@ Die verwaltete Instanz besitzt zwei Dienstebenen: „Universell“ und „Untern
 | **Feature** | **Allgemeiner Zweck** | **Unternehmenskritisch** |
 | --- | --- | --- |
 | Anzahl der virtuellen Kerne\* | Gen4: 8, 16, 24<br/>Gen5: 4, 8, 16, 24, 32, 40, 64, 80 | Gen4: 8, 16, 24, 32 <br/> Gen5: 4, 8, 16, 24, 32, 40, 64, 80 |
-| Arbeitsspeicher | Gen4: 56GB – 168GB (7GB/V-Kern)<br/>Gen5: 40,8GB – 408GB (5,1GB/V-Kern) | Gen4: 56GB – 168GB (7GB/V-Kern)<br/>Gen5: 40,8GB – 408GB (5,1GB/V-Kern) |
-| Max. Instanzspeichergröße | – 2 TB für 4 virtuelle Kerne (nur Gen5)<br/>– 8 TB für andere Größen | Gen4: 1 TB <br/> Gen5: <br/>– 1 TB für 4, 8, 16 virtuelle Kerne<br/>- 2 TB für 24 virtuelle Kerne<br/>- 4 TB für 32, 40, 64, 80 virtuelle Kerne |
-| Max. Speicherkapazität pro Datenbank | Bestimmt durch die maximale Speichergröße pro Instanz | Bestimmt durch die maximale Speichergröße pro Instanz |
+| Max. Arbeitsspeicherbelegung | Gen4: 56GB – 168GB (7GB/V-Kern)<br/>Gen5: 40,8GB – 408GB (5,1GB/V-Kern)<br/>Fügen Sie weitere virtuelle Kerne hinzu, um mehr Arbeitsspeicher zu erhalten. | Gen4: 56GB – 168GB (7GB/V-Kern)<br/>Gen5: 40,8GB – 408GB (5,1GB/V-Kern)<br/>Fügen Sie weitere virtuelle Kerne hinzu, um mehr Arbeitsspeicher zu erhalten. |
+| Max. Größe des reservierten Instanzspeichers | – 2 TB für 4 virtuelle Kerne (nur Gen5)<br/>– 8 TB für andere Größen | Gen4: 1 TB <br/> Gen5: <br/>– 1 TB für 4, 8, 16 virtuelle Kerne<br/>- 2 TB für 24 virtuelle Kerne<br/>- 4 TB für 32, 40, 64, 80 virtuelle Kerne |
+| Max. Datenbankgröße | Bestimmt durch die maximale Speichergröße pro Instanz | Bestimmt durch die maximale Speichergröße pro Instanz |
 | Max. Anzahl von Datenbanken pro Instanz | 100 | 100 |
-| Max. Datenbankdateien pro Instanz | Bis zu 280 | 32.767 Dateien pro Datenbank |
-| Daten-/Protokoll-IOPS (ungefähr) | 500 bis 7.500 pro Datei<br/>\*[Abhängig von der Dateigröße](https://docs.microsoft.com/azure/virtual-machines/windows/premium-storage-performance#premium-storage-disk-sizes)| 11K – 110K (1.375/V-Kern) |
-| Protokolldurchsatz | 3 MB/Sek. pro virtuellem Kern<br/>Max. 22 MB/Sek. pro Instanz | 4 MB/Sek. pro virtuellem Kern<br/>Max. 48 MB/Sek. pro Instanz|
-| Datendurchsatz (ungefähr) | 100 bis 250 MB/Sek. pro Datei<br/>\*[Abhängig von der Dateigröße](https://docs.microsoft.com/azure/virtual-machines/windows/premium-storage-performance#premium-storage-disk-sizes) | – |
-| E/A-Wartezeit (ungefähr) | 5 – 10 ms | 1 – 2 ms |
-| Max. TempDB-Größe | 192 bis 1.920 GB (24 GB pro virtuellem Kern) | Keine Einschränkungen – beschränkt durch die maximale Instanzspeichergröße |
+| Max. Anzahl von Datenbankdateien pro Instanz | Bis zu 280 | 32.767 Dateien pro Datenbank |
+| Daten-/Protokoll-IOPS (ungefähr) | 500 bis 7.500 pro Datei<br/>\*[Erhöhen Sie die Dateigröße, um den IOPS-Wert zu erhöhen](https://docs.microsoft.com/azure/virtual-machines/windows/premium-storage-performance#premium-storage-disk-sizes)| 11K – 110K (1.375/V-Kern)<br/>Fügen Sie weitere virtuelle Kerne hinzu, um die E/A-Leistung zu verbessern. |
+| Grenzwert für den Schreibdurchsatz für Protokolle | 3 MB/Sek. pro virtuellem Kern<br/>Max. 22 MB/Sek. pro Instanz | 4 MB/Sek. pro virtuellem Kern<br/>Max. 48 MB/Sek. pro Instanz|
+| Datendurchsatz (ungefähr) | 100 bis 250 MB/Sek. pro Datei<br/>\*[Erhöhen Sie die Dateigröße, um die E/A-Leistung zu verbessern.](https://docs.microsoft.com/azure/virtual-machines/windows/premium-storage-performance#premium-storage-disk-sizes) | – |
+| E/A-Speicherlatenz (ungefähr) | 5 – 10 ms | 1 – 2 ms |
+| Max. TempDB-Größe | 192 bis 1.920 GB (24 GB pro virtuellem Kern)<br/>Fügen Sie weitere virtuelle Kerne hinzu, um mehr TempDB-Speicherplatz zu erhalten. | Durch die maximale Instanzspeichergröße eingeschränkt. Die Größe der TempDB-Protokolldatei ist derzeit auf 24 GB pro virtuellem Kern beschränkt. |
 | Max. Sitzungen | 30000 | 30000 |
 
 > [!NOTE]

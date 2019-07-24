@@ -5,17 +5,17 @@ services: application-insights
 keywords: ''
 author: mrbullwinkle
 ms.author: mbullwin
-ms.date: 04/01/2019
+ms.date: 07/12/2019
 ms.service: application-insights
 ms.custom: mvc
 ms.topic: quickstart
 manager: carmonm
-ms.openlocfilehash: c6979ce5cade09d4daa4e6eddd79fb69175ec902
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: d92a96f928c859fba056f1d98c07ee4852aad0f1
+ms.sourcegitcommit: 6b41522dae07961f141b0a6a5d46fd1a0c43e6b2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58849392"
+ms.lasthandoff: 07/15/2019
+ms.locfileid: "68002752"
 ---
 # <a name="start-monitoring-your-nodejs-web-application"></a>Starten der Überwachung Ihrer Node.js-Webanwendung
 
@@ -45,17 +45,16 @@ Application Insights kann Telemetriedaten von jeder mit dem Internet verbundenen
 
    ![Hinzufügen einer Application Insights-Ressource](./media/nodejs-quick-start/1createresourseappinsights.png)
 
-   ![Hinzufügen einer Application Insights-Ressource](./media/nodejs-quick-start/2createnodejs.png)
+   > [!NOTE]
+   >Wenn Sie zum ersten Mal eine Application Insights-Ressource erstellen, können Sie mehr dazu im Dokument [Erstellen einer Application Insights-Ressource](https://docs.microsoft.com/azure/azure-monitor/app/create-new-resource) erfahren.
 
-
-   Ein Dialogfeld für die Konfiguration wird geöffnet. Füllen Sie die Eingabefelder anhand der Informationen in der folgenden Tabelle aus:
+   Eine Seite für die Konfiguration wird geöffnet. Füllen Sie die Eingabefelder anhand der Informationen in der folgenden Tabelle aus. 
 
     | Einstellungen        | Wert           | BESCHREIBUNG  |
    | ------------- |:-------------|:-----|
    | **Name**      | Global eindeutiger Wert | Der Name, der die zu überwachende App identifiziert. |
    | **Anwendungstyp** | Node.js-Anwendung | Der Typ der zu überwachenden App. |
-   | **Ressourcengruppe**     | myResourceGroup      | Der Name der neuen Ressourcengruppe, die Application Insights-Daten hosten soll. |
-   | **Location** | USA (Ost) | Wählen Sie einen Standort in Ihrer Nähe oder in der Nähe des Standorts, in dem Ihre App gehostet wird. |
+   | **Location** | East US | Wählen Sie einen Standort in Ihrer Nähe oder in der Nähe des Standorts, in dem Ihre App gehostet wird. |
 
 2. Klicken Sie auf **Create**.
 

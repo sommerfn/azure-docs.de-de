@@ -11,14 +11,14 @@ ms.workload: mobile
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 11/22/2017
+ms.date: 07/12/2019
 ms.author: apimpm
-ms.openlocfilehash: b1602af59cd46b4bbcefa6f1df3cd84c0d342b71
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: a2d71330dcdac7054b20e0a6222b542fd8815705
+ms.sourcegitcommit: fa45c2bcd1b32bc8dd54a5dc8bc206d2fe23d5fb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52959698"
+ms.lasthandoff: 07/12/2019
+ms.locfileid: "67849560"
 ---
 # <a name="import-an-openapi-specification"></a>Importieren einer OpenAPI-Spezifikation
 
@@ -60,6 +60,9 @@ Absolvieren Sie die folgende Schnellstartanleitung: [Erstellen einer neuen Azure
     |**Produkte**|*Unbegrenzt*| Veröffentlichen Sie die API, indem Sie sie einem Produkt zuordnen. Geben Sie optional den Produktnamen ein, um diese neue API einem Produkt hinzuzufügen. Dieser Schritt kann mehrfach wiederholt werden, um die API mehreren Produkten hinzuzufügen.<br/>Bei Produkten handelt es sich um API-Zuordnungen. Sie können eine Reihe von APIs einfügen und sie Entwicklern über das Entwicklerportal zur Verfügung stellen. Entwickler müssen ein Produkt zunächst abonnieren, um Zugriff auf die API zu erhalten. Wenn sie ein Produkt abonnieren, erhalten sie einen Abonnementschlüssel, der für jede API in diesem Produkt gilt. Wenn Sie die APIM-Instanz erstellt haben, sind Sie bereits Administrator und haben dadurch standardmäßig alle Produkte abonniert.<br/> Standardmäßig enthält jede API Management-Instanz zwei Beispielprodukte: **Starter** und **Unbegrenzt**. |
 
 4. Klicken Sie auf **Erstellen**.
+
+> [!NOTE]
+> Die Einschränkungen beim API-Import sind [in einem anderen Artikel](api-management-api-import-restrictions.md) dokumentiert.
 
 ## <a name="test-the-new-apim-api-in-the-azure-portal"></a>Testen der neuen APIM-API im Azure-Portal
 

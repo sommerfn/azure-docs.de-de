@@ -10,18 +10,18 @@ ms.topic: overview
 ms.date: 02/20/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 5cceac260979b4322d41843038eab0998c8e8ba4
-ms.sourcegitcommit: adb6c981eba06f3b258b697251d7f87489a5da33
+ms.openlocfilehash: ca9d8a8373bd73d527862864d436319eb45b5f48
+ms.sourcegitcommit: 920ad23613a9504212aac2bfbd24a7c3de15d549
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/04/2019
-ms.locfileid: "66509749"
+ms.lasthandoff: 07/15/2019
+ms.locfileid: "68227172"
 ---
 # <a name="what-is-azure-active-directory-b2c"></a>Was ist Azure Active Directory B2C?
 
 Azure Active Directory (Azure AD) B2C ist ein Dienst für die Business-to-Consumer-Identitätsverwaltung. Dieser Dienst ermöglicht die Anpassung und Steuerung der sicheren Benutzerinteraktion mit Ihren Webanwendungen, Desktopanwendungen, mobilen Anwendungen oder Single-Page-Webanwendungen. Mit Azure AD B2C können Benutzer Registrierungs- und Anmeldevorgänge ausführen, Kennwörter zurücksetzen und Profile bearbeiten. Azure AD B2C implementiert eine Form von OpenID Connect- und OAuth 2.0-Protokollen. Der zentrale Aspekt bei der Implementierung dieser Protokolle sind die Sicherheitstoken und deren Ansprüche, die einen sicheren Zugriff auf Ressourcen ermöglichen.
 
-Eine *User Journey* ist eine Anforderung, die eine Richtlinie angibt, um zu steuern, wie der Benutzer und Ihre Anwendung mit Azure AD B2C interagieren. User Journeys können in Azure AD B2C auf zwei Arten definiert werden: 
+Eine *User Journey* ist eine Anforderung, die eine Richtlinie angibt, um zu steuern, wie der Benutzer und Ihre Anwendung mit Azure AD B2C interagieren. User Journeys können in Azure AD B2C auf zwei Arten definiert werden:
 
 Als Anwendungsentwickler können Sie unabhängig von Ihren Identitätskenntnissen allgemeine Identitätsbenutzerabläufe über das Azure-Portal definieren. Wenn Sie Identitätsexperte, Systemintegrator, Berater oder Mitglied eines internen Identitätsteams sind, sich mit OpenID Connect-Abläufen auskennen und mit Identitätsanbietern sowie mit der anspruchsbasierten Authentifizierung vertraut sind, können Sie XML-basierte benutzerdefinierte Richtlinien verwenden.
 
@@ -29,7 +29,7 @@ Bevor Sie eine User Journey definieren, müssen Sie einen Azure AD B2C-Mandant
 
 ## <a name="protocols-and-tokens"></a>Protokolle und Token
 
-Azure AD B2C unterstützt für User Journeys das [OpenID Connect- und das OAuth 2.0-Protokolle](active-directory-b2c-reference-protocols.md). In der Azure AD B2C-Implementierung von OpenID Connect startet Ihre Anwendung die User Journey, indem sie Authentifizierungsanforderungen an Azure AD B2C ausgibt. 
+Azure AD B2C unterstützt für User Journeys das [OpenID Connect- und das OAuth 2.0-Protokolle](active-directory-b2c-reference-protocols.md). In der Azure AD B2C-Implementierung von OpenID Connect startet Ihre Anwendung die User Journey, indem sie Authentifizierungsanforderungen an Azure AD B2C ausgibt.
 
 Das Ergebnis einer an Azure AD B2C gerichteten Anforderung ist ein Sicherheitstoken (beispielsweise ein [ID-Token oder Zugriffstoken](active-directory-b2c-reference-tokens.md)). Dieses Sicherheitstoken definiert die Identität des Benutzers. Token werden von Azure AD B2C-Endpunkten (beispielsweise `/token` oder `/authorize`) empfangen. Über diese Token können Sie auf Ansprüche zugreifen, die wiederum verwendet werden können, um eine Identität zu überprüfen den Zugriff auf sichere Ressourcen zuzulassen.
 
@@ -62,17 +62,17 @@ Mit User Journeys können Sie zur Steuerung des Verhaltens folgende Einstellunge
 - Erscheinungsbild von Seiten
 - Informationen, die an die Anwendung zurückgegeben werden
 
-Benutzerdefinierte Richtlinien sind Konfigurationsdateien, die das Verhalten des [Identity Experience Framework](trustframeworkpolicy.md) in Ihrem Azure AD B2C-Mandanten definieren. Das Identity Experience Framework ist die zugrunde liegende Plattform, die die Vertrauensstellung zwischen mehreren Seiten herstellt und die Schritte in einer User Journey abwickelt. 
+Benutzerdefinierte Richtlinien sind Konfigurationsdateien, die das Verhalten des [Identity Experience Framework](trustframeworkpolicy.md) in Ihrem Azure AD B2C-Mandanten definieren. Das Identity Experience Framework ist die zugrunde liegende Plattform, die die Vertrauensstellung zwischen mehreren Seiten herstellt und die Schritte in einer User Journey abwickelt.
 
-Benutzerdefinierte Richtlinien können zur Durchführung zahlreicher Aufgaben geändert werden. Bei benutzerdefinierten Richtlinien handelt es sich um einzelne oder mehrere Dateien im XML-Format, die in einer hierarchischen Kette aufeinander verweisen. Für benutzerdefinierte Richtlinien steht ein [Starter Pack](https://github.com/Azure-Samples/active-directory-b2c-custom-policy-starterpack/archive/master.zip) zur Verfügung, um gängige Identitätsaufgaben zu ermöglichen. 
+Benutzerdefinierte Richtlinien können zur Durchführung zahlreicher Aufgaben geändert werden. Bei benutzerdefinierten Richtlinien handelt es sich um einzelne oder mehrere Dateien im XML-Format, die in einer hierarchischen Kette aufeinander verweisen. Für benutzerdefinierte Richtlinien steht ein [Starter Pack](https://github.com/Azure-Samples/active-directory-b2c-custom-policy-starterpack/archive/master.zip) zur Verfügung, um gängige Identitätsaufgaben zu ermöglichen.
 
 Benutzerdefinierte Richtlinien oder Benutzerabläufe verschiedener Art werden in Ihrem Azure AD B2C-Mandanten nach Bedarf verwendet und können anwendungsübergreifend wiederverwendet werden. Durch diese Flexibilität können Sie Benutzeroberflächen im Zusammenhang mit der Benutzeridentität mit minimalen oder ganz ohne Änderungen am Code definieren und ändern. Richtlinien werden durch Hinzufügen eines speziellen Abfrageparameters in HTTP-Authentifizierungsanforderungen verwendet. Informationen zum Erstellen Ihrer eigenen benutzerdefinierten Richtlinie finden Sie unter [Erste Schritte für benutzerdefinierte Richtlinien in Azure Active Directory B2C](active-directory-b2c-get-started-custom.md).
 
-## <a name="identity-providers"></a>Identitätsanbieter 
+## <a name="identity-providers"></a>Identitätsanbieter
 
-Sie können Benutzern in Ihren Anwendungen die Anmeldung mit verschiedenen Identitätsanbietern ermöglichen. Ein *Identitätsanbieter* erstellt und verwaltet die Identitätsinformationen und stellt gleichzeitig Authentifizierungsdienste für Anwendungen bereit. Von Azure AD B2C unterstützte Identitätsanbieter können über das Azure-Portal hinzugefügt werden. 
+Sie können Benutzern in Ihren Anwendungen die Anmeldung mit verschiedenen Identitätsanbietern ermöglichen. Ein *Identitätsanbieter* erstellt und verwaltet die Identitätsinformationen und stellt gleichzeitig Authentifizierungsdienste für Anwendungen bereit. Von Azure AD B2C unterstützte Identitätsanbieter können über das Azure-Portal hinzugefügt werden.
 
-In der Regel wird in einer Anwendung nur ein einzelner Identitätsanbieter verwendet. Sie haben aber die Möglichkeit, weitere hinzuzufügen. Um einen Identitätsanbieter in Ihrem Azure AD B2C-Mandanten zu konfigurieren, müssen Sie zunächst auf der Entwicklerwebsite des Identitätsanbieters eine Anwendung erstellen und dann den Anwendungs- oder Clientbezeichner und das Kennwort oder Clientgeheimnis der Identitätsanbieteranwendung erfassen, die Sie erstellen. Mit diesem Bezeichner und Kennwort wird die Anwendung dann konfiguriert. 
+In der Regel wird in einer Anwendung nur ein einzelner Identitätsanbieter verwendet. Sie haben aber die Möglichkeit, weitere hinzuzufügen. Um einen Identitätsanbieter in Ihrem Azure AD B2C-Mandanten zu konfigurieren, müssen Sie zunächst auf der Entwicklerwebsite des Identitätsanbieters eine Anwendung erstellen und dann den Anwendungs- oder Clientbezeichner und das Kennwort oder Clientgeheimnis der Identitätsanbieteranwendung erfassen, die Sie erstellen. Mit diesem Bezeichner und Kennwort wird die Anwendung dann konfiguriert.
 
 In den folgenden Artikeln erfahren Sie, wie Sie einige der gängigen Identitätsanbieter zu Benutzerabläufen hinzufügen:
 
@@ -90,7 +90,7 @@ Weitere Informationen finden Sie unter [Tutorial: Hinzufügen von Identitätsanb
 
 ## <a name="page-customization"></a>Seitenanpassung
 
-Die meisten der HTML- und CSS-Inhalte, die Kunden im Rahmen einer User Journey angezeigt werden, sind steuerbar. Mithilfe der Seitenanpassung können Sie das Erscheinungsbild von benutzerdefinierten Richtlinien oder Benutzerabläufen anpassen. Darüber hinaus dient dieses Anpassungsfeature zur Steuerung der Konsistenz von Marken und visuellen Elementen zwischen Ihrer Anwendung und Azure AD B2C. 
+Die meisten der HTML- und CSS-Inhalte, die Kunden im Rahmen einer User Journey angezeigt werden, sind steuerbar. Mithilfe der Seitenanpassung können Sie das Erscheinungsbild von benutzerdefinierten Richtlinien oder Benutzerabläufen anpassen. Darüber hinaus dient dieses Anpassungsfeature zur Steuerung der Konsistenz von Marken und visuellen Elementen zwischen Ihrer Anwendung und Azure AD B2C.
 
 Azure AD B2C führt den Code im Browser des Benutzers aus und verwendet einen modernen Ansatz namens CORS (Cross-Origin Resource Sharing, Ressourcenfreigabe zwischen verschiedenen Ursprüngen). Zuerst legen Sie eine URL in einer Richtlinie mit benutzerdefiniertem HTML-Inhalt fest. Azure AD B2C führt die Benutzeroberflächenelemente mit dem HTML-Inhalt, der über Ihre URL geladen wird, zusammen und zeigt anschließend die Seite für den Benutzer an.
 
@@ -121,7 +121,7 @@ Wenn Sie Single-Page-Webanwendung mit Node.js entwickeln, richten Sie Ihre Anwen
 
 ### <a name="javascript"></a>JavaScript
 
-Sie können Ihren Anwendungen in Azure AD B2C Ihren eigenen clientseitigen JavaScript-Code hinzufügen. Wenn Sie JavaScript in Ihrer Anwendung einrichten möchten, definieren Sie einen [Seitenvertrag](page-contract.md), und aktivieren Sie [JavaScript](javascript-samples.md) in Ihren Benutzerabläufen oder benutzerdefinierten Richtlinien.
+Sie können Ihren Anwendungen in Azure AD B2C Ihren eigenen clientseitigen JavaScript-Code hinzufügen. Wenn Sie JavaScript in Ihrer Anwendung einrichten möchten, definieren Sie ein [Seitenlayout](page-layout.md), und aktivieren Sie [JavaScript](javascript-samples.md) in Ihren Benutzerabläufen oder benutzerdefinierten Richtlinien.
 
 ### <a name="user-accounts"></a>Benutzerkonten
 

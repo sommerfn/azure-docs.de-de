@@ -10,12 +10,12 @@ ms.topic: quickstart
 ms.date: 10/24/2018
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: dff1716e8886d1ef72f4d2ad4fbca4bcab86a348
-ms.sourcegitcommit: adb6c981eba06f3b258b697251d7f87489a5da33
+ms.openlocfilehash: 47df2cbdf0b083cf672353471d1ef51e03507475
+ms.sourcegitcommit: 64798b4f722623ea2bb53b374fb95e8d2b679318
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/04/2019
-ms.locfileid: "66509789"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67835334"
 ---
 # <a name="quickstart-set-up-sign-in-for-a-single-page-app-using-azure-active-directory-b2c"></a>Schnellstart: Einrichten der Anmeldung für eine einseitige App mit Azure Active Directory B2C
 
@@ -36,7 +36,7 @@ Azure Active Directory (Azure AD) B2C ermöglicht die Cloudidentitätsverwaltung
 
 ## <a name="run-the-application"></a>Ausführen der Anwendung
 
-1. Starten Sie den Server, indem Sie die folgenden Befehle über die Node.js-Eingabeaufforderung ausführen: 
+1. Starten Sie den Server, indem Sie die folgenden Befehle über die Node.js-Eingabeaufforderung ausführen:
 
     ```
     cd active-directory-b2c-javascript-msal-singlepageapp
@@ -56,23 +56,23 @@ Azure Active Directory (Azure AD) B2C ermöglicht die Cloudidentitätsverwaltung
 
 1. Klicken Sie auf **Anmelden**, um den Workflow zu starten.
 
-    ![Beispielanwendung im Browser](media/active-directory-b2c-quickstarts-spa/sample-app-spa.png)
+    ![Beispiel-App für Singe-Page-Anwendung, die im Browser angezeigt wird](media/active-directory-b2c-quickstarts-spa/sample-app-spa.png)
 
-    In der Beispielanwendung werden mehrere Registrierungsoptionen unterstützt, z.B. die Nutzung eines sozialen Netzwerks als Identitätsanbieter oder die Erstellung eines lokalen Kontos per E-Mail-Adresse. Verwenden Sie für diese Schnellstartanleitung ein Konto bei einem sozialen Netzwerk als Identitätsanbieter (etwa Facebook, Google, Microsoft oder Twitter). 
+    In der Beispielanwendung werden mehrere Registrierungsoptionen unterstützt, z.B. die Nutzung eines sozialen Netzwerks als Identitätsanbieter oder die Erstellung eines lokalen Kontos per E-Mail-Adresse. Verwenden Sie für diese Schnellstartanleitung ein Konto bei einem sozialen Netzwerk als Identitätsanbieter (etwa Facebook, Google, Microsoft oder Twitter).
 
 2. Azure AD B2C zeigt für die Beispiel-Web-App eine benutzerdefinierte Anmeldeseite für die fiktive Marke „Wingtip Toys“ an. Um sich mit einem Social Media-Konto als Identitätsanbieter zu registrieren, klicken Sie auf die Schaltfläche des Identitätsanbieters, den Sie verwenden möchten.
 
-    ![Anbieter für Registrierung oder Anmeldung](media/active-directory-b2c-quickstarts-spa/sign-in-or-sign-up-spa.png)
+    ![Anmelde-oder Registrierungsseite mit Schaltflächen für die Auswahl von Identitätsanbietern](media/active-directory-b2c-quickstarts-spa/sign-in-or-sign-up-spa.png)
 
-    Sie authentifizieren sich mit den Anmeldeinformationen Ihres Social Media-Kontos und autorisieren die Anwendung dazu, Informationen aus Ihrem Social Media-Konto zu lesen. Wenn Sie der Anwendung Zugriff auf diese gewähren, kann die Anwendung Profilinformationen aus dem Social Media-Konto abrufen, z.B. Ihren Namen und Ihre Stadt. 
+    Sie authentifizieren sich mit den Anmeldeinformationen Ihres Social Media-Kontos und autorisieren die Anwendung dazu, Informationen aus Ihrem Social Media-Konto zu lesen. Wenn Sie der Anwendung Zugriff auf diese gewähren, kann die Anwendung Profilinformationen aus dem Social Media-Konto abrufen, z.B. Ihren Namen und Ihre Stadt.
 
 3. Schließen Sie den Anmeldevorgang für den Identitätsanbieter ab.
 
 ## <a name="access-a-protected-api-resource"></a>Zugreifen auf eine geschützte API-Ressource
 
-Klicken Sie auf **Call Web API** (Web-API aufrufen), um Ihren Anzeigenamen des Web-API-Aufrufs als JSON-Objekt zurückzugeben. 
+Klicken Sie auf **Call Web API** (Web-API aufrufen), um Ihren Anzeigenamen des Web-API-Aufrufs als JSON-Objekt zurückzugeben.
 
-![Web-API-Antwort](media/active-directory-b2c-quickstarts-spa/call-api-spa.png)
+![Beispielanwendung im Browser mit der Antwort der Web-API](media/active-directory-b2c-quickstarts-spa/call-api-spa.png)
 
 Die Single-Page-Beispielanwendung enthält ein Zugriffstoken in der Anforderung, die an die geschützte Web-API-Ressource gesendet wird.
 

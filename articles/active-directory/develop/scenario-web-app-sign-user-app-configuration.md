@@ -15,12 +15,12 @@ ms.date: 05/07/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 82e6cbcd01c87ddffb7eac8d0ea0faef85f41a13
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: b7484b627d3bc3f26fa01d4c38ee96047c70d007
+ms.sourcegitcommit: 1572b615c8f863be4986c23ea2ff7642b02bc605
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66254005"
+ms.lasthandoff: 07/10/2019
+ms.locfileid: "67785480"
 ---
 # <a name="web-app-that-signs-in-users---code-configuration"></a>Web-App, die Benutzer anmeldet – Codekonfiguration
 
@@ -36,6 +36,8 @@ Die folgenden Bibliotheken werden zum Schützen einer Web-App (und einer Web-API
 | ![.NET](media/sample-v2-code/logo_net.png) | [Identitätsmodellerweiterungen für .NET](https://github.com/AzureAD/azure-activedirectory-identitymodel-extensions-for-dotnet/wiki) | Die Microsoft Identity-Erweiterung für .NET schlägt bei der direkten Verwendung durch ASP.NET und ASP.NET Core eine Reihe von DLLs vor, die sowohl unter .NET Framework und .NET Core ausgeführt werden. Über eine ASP.NET-/ASP.NET Core-Webanwendung können Sie mithilfe der **TokenValidationParameters**-Klasse die Tokenüberprüfung steuern (insbesondere in ISV-Szenarios). |
 
 ## <a name="aspnet-core-configuration"></a>ASP.NET Core-Konfiguration
+
+Die Codeausschnitte in diesem und dem nächsten Artikel stammen aus dem Artikel [ASP.NET Core Web app incremental tutorial, chapter 1 (Inkrementelles Tutorial zu ASP.NET Core-Web-Apps, Kapitel 1)](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/tree/master/1-WebApp-OIDC/1-1-MyOrg). In diesem Artikel finden Sie auch alle Details zur Implementierung.
 
 ### <a name="application-configuration-files"></a>Anwendungskonfigurationsdatei
 

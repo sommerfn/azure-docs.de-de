@@ -13,16 +13,16 @@ ms.devlang: na
 ms.topic: quickstart
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 04/10/2019
+ms.date: 07/16/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a42cfe1374f3defdf6ed8acc828e6c7e446588bc
-ms.sourcegitcommit: ccb9a7b7da48473362266f20950af190ae88c09b
+ms.openlocfilehash: c5955be5670759329e42ec24999d73df977c665e
+ms.sourcegitcommit: 9a699d7408023d3736961745c753ca3cec708f23
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67595143"
+ms.lasthandoff: 07/16/2019
+ms.locfileid: "68276845"
 ---
 # <a name="quickstart-acquire-a-token-and-call-microsoft-graph-api-from-a-console-app-using-apps-identity"></a>Schnellstart: Abrufen eines Tokens und Aufrufen der Microsoft Graph-API über eine Konsolen-App anhand der Identität der App
 
@@ -215,7 +215,7 @@ result = await app.AcquireTokenForClient(scopes)
 > |---------|---------|
 > | `scopes` | Enthält die angeforderten Bereiche. Für vertrauliche Clients sollte ein Format wie `{Application ID URI}/.default` verwendet werden. Hiermit wird angegeben, dass die angeforderten Bereiche diejenigen sind, die im App-Objekt, das im Azure-Portal festgelegt ist, statisch definiert sind (für Microsoft Graph wird für `{Application ID URI}` auf `https://graph.microsoft.com` verwiesen). Für benutzerdefinierte Web-APIs wird `{Application ID URI}` in der Anwendungsregistrierung (Vorschauversion) im Azure-Portal unter dem Abschnitt **Eine API verfügbar machen** definiert. |
 
-Weitere Informationen finden Sie in der [Referenzdokumentation für `AcquireTokenForClient`](https://docs.microsoft.com/dotnet/api/microsoft.identity.client.confidentialclientapplication.acquiretokenforclientasync?view=azure-dotnet#Microsoft_Identity_Client_ConfidentialClientApplication_AcquireTokenForClientAsync_System_Collections_Generic_IEnumerable_System_String__).
+Weitere Informationen finden Sie in der [Referenzdokumentation für `AcquireTokenForClient`](https://docs.microsoft.com/dotnet/api/microsoft.identity.client.confidentialclientapplication.acquiretokenforclient?view=azure-dotnet#Microsoft_Identity_Client_ConfidentialClientApplication_AcquireTokenForClientAsync_System_Collections_Generic_IEnumerable_System_String__).
 
 [!INCLUDE [Help and support](../../../includes/active-directory-develop-help-support-include.md)]
 

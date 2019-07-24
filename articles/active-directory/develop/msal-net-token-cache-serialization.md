@@ -12,17 +12,17 @@ ms.devlang: na
 ms.topic: overview
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 04/25/2019
+ms.date: 07/16/2019
 ms.author: jmprieur
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e4a4c4ca1925a501b10cb86a2cf60646af1e5b57
-ms.sourcegitcommit: f6c85922b9e70bb83879e52c2aec6307c99a0cac
+ms.openlocfilehash: 14c7495653f369d7a51cab6fedb136268b7b3378
+ms.sourcegitcommit: 9a699d7408023d3736961745c753ca3cec708f23
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/11/2019
-ms.locfileid: "65544248"
+ms.lasthandoff: 07/16/2019
+ms.locfileid: "68277930"
 ---
 # <a name="token-cache-serialization-in-msalnet"></a>Serialisierung des Tokencaches in MSAL.NET
 Nachdem ein [Token abgerufen wurde](msal-acquire-cache-tokens.md), wird es von der Microsoft-Authentifizierungsbibliothek (MSAL) zwischengespeichert.  Der Anwendungscode sollte zunächst versuchen, ein Token aus dem Cache abzurufen, bevor andere Methoden angewendet werden.  Dieser Artikel beschreibt die standardmäßige und benutzerdefinierte Serialisierung des Tokencaches in MSAL.NET.
@@ -49,11 +49,11 @@ Die folgenden Klassen und Schnittstellen sind an der Serialisierung des Tokencac
   ![Klassendiagramm](media/msal-net-token-cache-serialization/class-diagram.png)
 
 > [!IMPORTANT]
-> MSAL.NET erstellt automatisch Tokencaches und stellt den `IToken`-Cache für Sie bereit, wenn Sie die `GetUserTokenCache`-Methode und die `GetAppTokenCache`-Methode einer Anwendung aufrufen. Sie müssen die Schnittstelle nicht selbst implementieren. Beim Implementieren einer benutzerdefinierten Serialisierung des Tokencaches müssen Sie folgende Aufgaben ausführen:
-> - Reagieren Sie auf die „Ereignisse“ `BeforeAccess` und `AfterAccess`. Der `BeforeAccess`-Delegat ist für die Deserialisierung des Caches zuständig, während der `AfterAccess`-Delegat den Cache serialisiert.
+> MSAL.NET erstellt automatisch Tokencaches und stellt den `IToken`-Cache für Sie bereit, wenn Sie die `UserTokenCache`-Methode und die `AppTokenCache`-Eigenschaften einer Anwendung aufrufen. Sie müssen die Schnittstelle nicht selbst implementieren. Beim Implementieren einer benutzerdefinierten Serialisierung des Tokencaches müssen Sie folgende Aufgaben ausführen:
+> - Sie müssen auf `BeforeAccess`- und `AfterAccess`-„Ereignisse“ (oder deren asynchrone Varianten) reagieren. Der `BeforeAccess`-Delegat ist für die Deserialisierung des Caches zuständig, während der `AfterAccess`-Delegat den Cache serialisiert.
 > - Einige dieser Ereignisse speichern oder laden Blobs, die über das Ereignisargument an den gewünschten Speicher übergeben werden.
 
-Die Strategien sind unterschiedlich, je nachdem, ob Sie eine Tokencacheserialisierung für eine [öffentliche Clientanwendung](msal-client-applications.md) (Desktop) oder für eine [vertrauliche Clientanwendung](msal-client-applications.md) (Web-App/Web-API, Daemon-App) schreiben.
+Die Strategien variieren, je nachdem, ob Sie eine Tokencacheserialisierung für eine [öffentliche Clientanwendung](msal-client-applications.md) (Desktop) oder eine [vertrauliche Clientanwendung](msal-client-applications.md) (Web-App/Web-API, Daemon-App) schreiben.
 
 ### <a name="token-cache-for-a-public-client"></a>Tokencache für einen öffentlichen Client 
 
@@ -164,7 +164,7 @@ namespace CommonCacheMsalV3
  static class FilesBasedTokenCacheHelper
  {
   /// <summary>
-  /// Get the user token cache
+  /// Enables the serialization of the token cache
   /// </summary>
   /// <param name="adalV3CacheFileName">File name where the cache is serialized with the
   /// ADAL V3 token cache format. Can
@@ -175,20 +175,14 @@ namespace CommonCacheMsalV3
   /// ADAL V4 and MSAL V2 and above, and also across ADAL/MSAL on the same platform.
   ///  Should not be <c>null</c></param>
   /// <returns></returns>
-  public static void EnableSerialization(ITokenCache cache, string unifiedCacheFileName, string adalV3CacheFileName)
+  public static void EnableSerialization(ITokenCache tokenCache, string unifiedCacheFileName, string adalV3CacheFileName)
   {
-   usertokenCache = cache;
    UnifiedCacheFileName = unifiedCacheFileName;
    AdalV3CacheFileName = adalV3CacheFileName;
 
-   usertokenCache.SetBeforeAccess(BeforeAccessNotification);
-   usertokenCache.SetAfterAccess(AfterAccessNotification);
+   tokenCache.SetBeforeAccess(BeforeAccessNotification);
+   tokenCache.SetAfterAccess(AfterAccessNotification);
   }
-
-  /// <summary>
-  /// Token cache
-  /// </summary>
-  static ITokenCache usertokenCache;
 
   /// <summary>
   /// File path where the token cache is serialized with the unified cache format

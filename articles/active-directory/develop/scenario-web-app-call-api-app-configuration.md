@@ -15,12 +15,12 @@ ms.date: 05/07/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bd7f393f889facf147cf25625d5c3b20f886ddf5
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 6c78a951258e3c279f96f44ceac469e4c38cf22c
+ms.sourcegitcommit: 1572b615c8f863be4986c23ea2ff7642b02bc605
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65784941"
+ms.lasthandoff: 07/10/2019
+ms.locfileid: "67785570"
 ---
 # <a name="web-app-that-calls-web-apis---code-configuration"></a>Web-App zum Aufruf von Web-APIs – Codekonfiguration
 
@@ -44,7 +44,7 @@ Folgende Bibliotheken unterstützen den Autorisierungscodeflow für Web-Apps:
 
 In ASP.NET Core werden die Vorgänge in der Datei `Startup.cs` durchgeführt. Abonnieren Sie das OIDC-Ereignis `OnAuthorizationCodeReceived`, und rufen Sie über dieses Ereignis die MSAL. NET-Methode `AcquireTokenFromAuthorizationCode` auf. Dadurch werden folgende Token im Tokencache gespeichert: das Zugriffstoken für die angeforderten Bereiche sowie ein Aktualisierungstoken, das zum Aktualisieren des Zugriffstokens kurz vor Ablauf oder zum Abrufen eines Tokens im Namen desselben Benutzers, aber für eine andere Ressource verwendet wird.
 
-Die Kommentare im folgenden Code helfen Ihnen, einige komplizierte Aspekte beim Kombinieren von MSAL.NET und ASP.NET Core zu verstehen.
+Die Kommentare im folgenden Code helfen Ihnen beim Verständnis einiger komplizierter Aspekte beim Kombinieren von MSAL.NET und ASP.NET Core. Weitere Informationen finden Sie im Artikel [ASP.NET Core Web app incremental tutorial, chapter 2 (Inkrementelles Tutorial zu ASP.NET Core-Web-Apps, Kapitel 2)](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/tree/master/2-WebApp-graph-user/2-1-Call-MSGraph).
 
 ```CSharp
   services.Configure<OpenIdConnectOptions>(AzureADDefaults.OpenIdScheme, options =>
@@ -151,9 +151,7 @@ private void ConfigureAuth(IAppBuilder app)
   Scope = Globals.BasicSignInScopes, // a basic set of permissions for user sign in & profile access
   TokenValidationParameters = new TokenValidationParameters
   {
-  // We'll inject our own issuer validation logic below.
-  ValidateIssuer = false,
-  NameClaimType = "name",
+   NameClaimType = "name",
   },
   Notifications = new OpenIdConnectAuthenticationNotifications()
   {

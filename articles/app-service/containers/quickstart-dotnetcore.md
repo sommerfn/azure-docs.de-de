@@ -16,12 +16,12 @@ ms.topic: quickstart
 ms.date: 03/27/2019
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: da4d246e098751f650eb6315de3794ad957884d6
-ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
+ms.openlocfilehash: 21400355b2457d1a37bf2c139dfdfd29a104a074
+ms.sourcegitcommit: 470041c681719df2d4ee9b81c9be6104befffcea
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/13/2019
-ms.locfileid: "59543892"
+ms.lasthandoff: 07/12/2019
+ms.locfileid: "67853799"
 ---
 # <a name="create-an-aspnet-core-app-in-app-service-on-linux"></a>Erstellen einer ASP.NET Core-App in App Service unter Linux
 
@@ -95,10 +95,10 @@ git commit -m "first commit"
 
 [!INCLUDE [Create web app](../../../includes/app-service-web-create-web-app-dotnetcore-linux-no-h.md)]
 
-Wechseln Sie zu Ihrer neu erstellten App. Ersetzen Sie _&lt;app name>_ durch Ihren App-Namen.
+Wechseln Sie zu Ihrer neu erstellten App. Ersetzen Sie _&lt;app-name>_ durch Ihren App-Namen.
 
 ```bash
-http://<app name>.azurewebsites.net
+http://<app-name>.azurewebsites.net
 ```
 
 Ihre neue App sollte nun wie folgt aussehen:
