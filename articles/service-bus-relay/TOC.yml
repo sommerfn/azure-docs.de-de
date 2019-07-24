@@ -48,8 +48,6 @@
       items:
         - name: Erstellen eines Namespace
           href: relay-create-namespace-portal.md
-        - name: 'Verwenden von WCF Relay, um WCF-Dienste für externe Clients verfügbar zu machen'
-          href: relay-wcf-dotnet-get-started.md
         - name: Verfügbare APIs
           href: relay-api-overview.md
           items:

@@ -4,7 +4,7 @@ description: Verwenden der Neustartfunktion des virtuellen Computers der Azure-I
 services: virtual-machines-windows,virtual-network,storage
 documentationcenter: saponazure
 author: goraco
-manager: jeconnoc
+manager: gwallace
 editor: ''
 tags: azure-resource-manager
 keywords: ''
@@ -17,12 +17,12 @@ ms.workload: infrastructure-services
 ms.date: 05/05/2017
 ms.author: rclaus
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: cda0b1c0774ed33bf550e0edf329cc22a2807be3
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: d99f704d05dea88f7fa29afea99cbbdb00d09c24
+ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60825670"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67709884"
 ---
 # <a name="utilize-azure-infrastructure-vm-restart-to-achieve-higher-availability-of-an-sap-system"></a>Verwenden der Neustartfunktion des virtuellen Computers der Azure-Infrastruktur für eine „höhere Verfügbarkeit“ eines SAP-Systems
 
@@ -239,13 +239,13 @@ Für wichtige SAP-Komponenten haben Sie bisher Folgendes erreicht:
 
 * Hochverfügbarkeit für SAP-Anwendungsserver
 
-    SAP-Anwendungsserverinstanzen sind redundante Komponenten. Jede Serverinstanz der SAP-Anwendung wird auf einem eigenen virtuellen Computer bereitgestellt, der in einer anderen Azure-Fehler- und -Upgradedomäne ausgeführt wird. Weitere Informationen finden Sie in den Abschnitten [Fehlerdomänen][planning-guide-3.2.1] und [Upgradedomänen][planning-guide-3.2.2]. 
+    SAP-Anwendungsserverinstanzen sind redundante Komponenten. Jede Serverinstanz der SAP-Anwendung wird auf einem eigenen virtuellen Computer bereitgestellt, der in einer anderen Azure-Fehler- und -Upgradedomäne ausgeführt wird. Weitere Informationen finden Sie in den Abschnitten [Fehlerdomänen][planning-guide-3.2.1] und „Upgradedomänen“.and [Upgrade domains][planning-guide-3.2.2] 
 
     Mithilfe von Azure-Verfügbarkeitsgruppen können Sie diese Konfiguration gewährleisten. Weitere Informationen finden Sie im Abschnitt [Azure-Verfügbarkeitsgruppen][planning-guide-3.2.3]. 
 
     Infolge von potenziellen geplanten oder ungeplanten Ausfällen einer Fehler- oder Upgradedomäne fällt eine begrenzte Anzahl von virtuellen Computern mit ihren SAP-Anwendungsserverinstanzen aus.
 
-    Jede SAP-Anwendungsserverinstanz befindet sich in einem eigenen Azure-Speicherkonto. Die potenzielle Nichtverfügbarkeit eines Azure-Speicherkontos führt dazu, dass nur ein virtueller Computer mit seiner SAP-Anwendungsserverinstanz nicht verfügbar ist. Zu berücksichtigen ist jedoch, dass in einem Azure-Abonnement nur eine begrenzte Anzahl von Azure-Speicherkonten verfügbar ist. Um nach dem Neustart des virtuellen Computers den automatischen Start der ASCS-/SCS-Instanz zu gewährleisten, legen Sie den im Abschnitt [Verwenden von Autostart für SAP-Instanzen][planning-guide-11.5] beschriebenen Parameter für automatischen Start im Startprofil der ASCS-/SCS-Instanz fest.
+    Jede SAP-Anwendungsserverinstanz befindet sich in einem eigenen Azure-Speicherkonto. Die potenzielle Nichtverfügbarkeit eines Azure-Speicherkontos führt dazu, dass nur ein virtueller Computer mit seiner SAP-Anwendungsserverinstanz nicht verfügbar ist. Zu berücksichtigen ist jedoch, dass in einem Azure-Abonnement nur eine begrenzte Anzahl von Azure-Speicherkonten verfügbar ist. Um nach dem Neustart des virtuellen Computers den automatischen Start der ASCS-/SCS-Instanz sicherzustellen, legen Sie den im Abschnitt [Verwenden von Autostart für SAP-Instanzen][planning-guide-11.5] beschriebenen Parameter für automatischen Start im Startprofil der ASCS-/SCS-Instanz fest.
   
     Weitere Informationen finden Sie unter [Hochverfügbarkeit für SAP-Anwendungsserver][planning-guide-11.4.1].
 
@@ -255,7 +255,7 @@ Für wichtige SAP-Komponenten haben Sie bisher Folgendes erreicht:
 
     Verwenden Sie in diesem Szenario die Neustartfunktion für virtuelle Azure-Computer, um den virtuellen Computer mit der installierten SAP ASCS-/SCS-Instanz zu schützen. Bei geplanten oder ungeplanten Ausfallzeiten von Azure-Servern werden die virtuellen Computer auf einem anderen verfügbaren Server neu gestartet. Wie bereits erwähnt, schützt die Neustartfunktion für virtuelle Azure-Computer in erster Linie virtuelle Computer und *nicht* Anwendungen, in diesem Fall die ASCS-/SCS-Instanz. Durch den Neustart des virtuellen Computers erreichen Sie indirekt eine „höhere Verfügbarkeit“ der SAP-ASCS-/SCS-Instanz. 
 
-    Um nach dem Neustart des virtuellen Computers den automatischen Start der ASCS-/SCS-Instanz zu gewährleisten, legen Sie den im Abschnitt [Verwenden von Autostart für SAP-Instanzen][planning-guide-11.5] beschriebenen Parameter für automatischen Start im Startprofil der ASCS-/SCS-Instanz fest. Diese Einstellung bedeutet, dass die ASCS-/SCS-Instanz als einzelne Fehlerquelle (Single Point of Failure, SPOF), die auf einem einzelnen virtuellen Computer ausgeführt wird, die Verfügbarkeit des gesamten SAP-Szenarios bestimmt.
+    Um nach dem Neustart des virtuellen Computers den automatischen Start der ASCS-/SCS-Instanz sicherzustellen, legen Sie den im Abschnitt [Verwenden von Autostart für SAP-Instanzen][planning-guide-11.5] beschriebenen Parameter für automatischen Start im Startprofil der ASCS-/SCS-Instanz fest. Diese Einstellung bedeutet, dass die ASCS-/SCS-Instanz als einzelne Fehlerquelle (Single Point of Failure, SPOF), die auf einem einzelnen virtuellen Computer ausgeführt wird, die Verfügbarkeit des gesamten SAP-Szenarios bestimmt.
 
 * *Höhere Verfügbarkeit* des DBMS-Servers
 
@@ -284,4 +284,4 @@ Bei Annahme eines typischen Azure-Szenarios mit einer Anwendungsserverinstanz in
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Informationen zur Hochverfügbarkeit einer vollständigen SAP NetWeaver-Anwendung finden Sie unter [SAP Application High Availability on Azure IaaS (Hochverfügbarkeit von SAP-Anwendungen für Azure IaaS)][sap-high-availability-architecture-scenarios-sap-app-ha].
+Informationen zur Hochverfügbarkeit einer vollständigen SAP NetWeaver-Anwendung finden Sie unter [SAP Application High Availability on Azure IaaS][sap-high-availability-architecture-scenarios-sap-app-ha] (Hochverfügbarkeit von SAP-Anwendungen für Azure IaaS).

@@ -13,6 +13,10 @@
   items:
     - name: Starten des plastischen Readers (Node.js)
       href: tutorial.md
+- name: Vorgehensweise
+  items:
+    - name: Authentifizierung über Azure Active Directory
+      href: azure-active-directory-authentication.md
 - name: Verweis
   items:
     - name: SDK-Verweis

@@ -4,7 +4,7 @@ description: Hochverfügbarkeit von SAP HANA auf Azure-VMs unter SUSE Linux Ente
 services: virtual-machines-linux
 documentationcenter: ''
 author: MSSedusch
-manager: jeconnoc
+manager: gwallace
 editor: ''
 ms.service: virtual-machines-linux
 ms.devlang: NA
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 03/15/2019
 ms.author: sedusch
-ms.openlocfilehash: 3d59fc48f1f6f6931ca18e09a420fdbccc7d53dc
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 78d14add09a89b7ec4d4844a12ffa0434d714b3a
+ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64922284"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67709096"
 ---
 # <a name="high-availability-of-sap-hana-on-azure-vms-on-suse-linux-enterprise-server"></a>Hochverfügbarkeit von SAP HANA auf Azure-VMs unter SUSE Linux Enterprise Server
 
@@ -71,10 +71,10 @@ Lesen Sie zuerst die folgenden SAP-Hinweise und -Dokumente:
 * SAP-Hinweis [401162] enthält Informationen zum Vermeiden der Meldung „Adresse bereits verwendet“ beim Einrichten der HANA-Systemreplikation.
 * Das [WIKI der SAP-Community](https://wiki.scn.sap.com/wiki/display/HOME/SAPonLinuxNotes) enthält alle erforderlichen SAP-Hinweise für Linux.
 * [Zertifizierte SAP HANA-IaaS-Plattformen](https://www.sap.com/dmc/exp/2014-09-02-hana-hardware/enEN/iaas.html#categories=Microsoft%20Azure)
-* [SAP NetWeaver auf virtuellen Azure-Computern unter Linux – Planungs- und Implementierungshandbuch][planning-guide]
-* [Bereitstellung von Azure Virtual Machines für SAP unter Linux][deployment-guide] (dieser Artikel)
-* [SAP NetWeaver auf virtuellen Azure-Computern unter Linux – DBMS-Bereitstellungshandbuch][dbms-guide]
-* [SUSE Linux Enterprise Server für SAP-Anwendungen 12 SP3 – Best Practices][sles-for-sap-bp]
+* Leitfaden [Azure Virtual Machines – Planung und Implementierung für SAP unter Linux][planning-guide]
+* [Azure Virtual Machines – Bereitstellung für SAP unter Linux][deployment-guide] (dieser Artikel)
+* Leitfaden [Azure Virtual Machines – DBMS-Bereitstellung für SAP unter Linux][dbms-guide]
+* [Leitfäden für bewährte Methoden zu SUSE Linux Enterprise Server für SAP-Anwendungen 12 SP3][sles-for-sap-bp]
   * Einrichten einer leistungsoptimierten Infrastruktur für die SAP HANA-Systemreplikation (SLES for SAP Applications 12 SP1). Das Handbuch enthält alle erforderlichen Informationen zum Einrichten der SAP HANA-Systemreplikation für die lokale Entwicklung. Verwenden Sie dieses Handbuch als Grundlage.
   * Einrichten einer kostenoptimierten Infrastruktur für die SAP HANA-Systemreplikation (SLES for SAP Applications 12 SP1)
 
@@ -101,8 +101,8 @@ Der Azure Marketplace enthält ein Image für den SUSE Linux Enterprise Server f
 Sie können eine der Schnellstartvorlagen auf GitHub verwenden, um alle erforderlichen Ressourcen bereitzustellen. Die Vorlage stellt die virtuellen Computer, den Lastenausgleich, die Verfügbarkeitsgruppe usw. bereit.
 Führen Sie diese Schritte aus, um die Vorlage bereitzustellen:
 
-1. Öffnen Sie die [Datenbankvorlage][template-multisid-db] oder die [konvergierte Vorlage][template-converged] im Azure-Portal. 
-    Die Datenbankvorlage erstellt nur die Lastenausgleichsregeln für eine Datenbank. Die konvergierte Vorlage erstellt auch die Lastenausgleichsregeln für eine ASCS/SCS- und ERS-Instanz (nur Linux). Wenn Sie ein SAP NetWeaver-basiertes System installieren und die ASCS/SCS-Instanz auf dem gleichen Computer installieren möchten, verwenden Sie die [konvergierte Vorlage][template-converged].
+1. Öffnen Sie die [Datenbankvorlage][template-multisid-db] or the [converged template][template-converged] on the Azure portal. 
+    The database template creates the load-balancing rules for a database only. The converged template also creates the load-balancing rules for an ASCS/SCS and ERS (Linux only) instance. If you plan to install an SAP NetWeaver-based system and you want to install the ASCS/SCS instance on the same machines, use the [converged template][template-converged].
 
 1. Legen Sie die folgenden Parameter fest:
     - **SAP-System-ID**: Geben Sie die SAP-System-ID des SAP-Systems ein, das Sie installieren möchten. Die ID wird als Präfix für die Ressourcen verwendet, die bereitgestellt werden.
@@ -347,7 +347,7 @@ Installieren Sie die SAP HANA-Systemreplikation gemäß Kapitel 4 des [SAP HANA 
 
 1. **[A]** Führen Sie ein Upgrade für den SAP-Host-Agent durch.
 
-   Laden Sie das aktuelle SAP-Host-Agent-Archiv vom [SAP Software Center][sap-swcenter] herunter, und führen Sie den folgenden Befehl zum Aktualisieren des Agent aus. Ersetzen Sie den Pfad zum Archiv, um auf die Datei zu verweisen, die Sie heruntergeladen haben:
+   Laden Sie das aktuelle SAP-Host-Agent-Archiv vom [SAP Software Center][sap-swcenter] herunter, und führen Sie den folgenden Befehl zum Aktualisieren des Agents aus. Ersetzen Sie den Pfad zum Archiv, um auf die Datei zu verweisen, die Sie heruntergeladen haben:
 
    <pre><code>sudo /usr/sap/hostctrl/exe/saphostexec -upgrade -archive &lt;path to SAP Host Agent SAR&gt;
    </code></pre>
@@ -1084,7 +1084,7 @@ HINWEIS:  Die folgenden Tests sind darauf ausgelegt, nacheinander ausgeführt zu
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* [SAP NetWeaver auf virtuellen Azure-Computern – Planungs- und Implementierungshandbuch][planning-guide]
-* [Bereitstellung von Azure Virtual Machines für SAP][deployment-guide]
-* [SAP NetWeaver auf virtuellen Azure-Computern – DBMS-Bereitstellungshandbuch][dbms-guide]
+* [Azure Virtual Machines – Planung und Implementierung für SAP][planning-guide]
+* [Azure Virtual Machines – Bereitstellung für SAP][deployment-guide]
+* [Azure Virtual Machines – DBMS-Bereitstellung für SAP][dbms-guide]
 * Informationen zur Erzielung von Hochverfügbarkeit und zur Planung der Notfallwiederherstellung für SAP HANA in Azure (große Instanzen) finden Sie unter [Hochverfügbarkeit und Notfallwiederherstellung für SAP HANA in Azure (große Instanzen)](hana-overview-high-availability-disaster-recovery.md).

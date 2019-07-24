@@ -5,6 +5,7 @@
     - name: Über Azure Digital Twins
       href: about-digital-twins.md
 - name: Schnellstarts
+  expanded: true
   items:
     - name: Ermitteln von verfügbaren Räumen
       href: quickstart-view-occupancy-dotnet.md

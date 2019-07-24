@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 04/29/2019
 ms.author: jingwang
-ms.openlocfilehash: c528f37c8970380678a318ec2d63babd37f89501
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 2cac2b350da5ca8738e40f9a288ecf4059e81060
+ms.sourcegitcommit: 80aaf27e3ad2cc4a6599a3b6af0196c6239e6918
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65228038"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67673901"
 ---
 # <a name="copy-data-from-hdfs-using-azure-data-factory"></a>Kopieren von Daten aus HDFS mithilfe von Azure Data Factory
 > [!div class="op_single_selector" title1="Wählen Sie die von Ihren verwendete Version des Data Factory-Diensts aus:"]
@@ -311,7 +311,7 @@ Dieser Abschnitt beschreibt das resultierende Verhalten für den Ordnerpfad und 
 
 [DistCp](https://hadoop.apache.org/docs/current3/hadoop-distcp/DistCp.html) ist ein natives Hadoop-Befehlszeilentool, um verteilte Kopiervorgänge in einem Hadoop-Cluster auszuführen. Wenn ein DistCp-Befehl ausgeführt wird, werden zuerst alle zu kopierende Dateien aufgeführt und mehrere Zuordnungsaufträge im Hadoop-Cluster erstellt. Zudem wird für jede Zuordnung eine Binärkopie von der Quelle in der Senke erstellt.
 
-Statt die selbstgehostete Integrationslaufzeit auszuführen, können bei der Kopieraktivität mithilfe von DistCp Dateien im jeweiligen Zustand im Azure-Blob (einschließlich der [bereitgestellten Kopie](copy-activity-performance.md)) oder Azure Data Lake Store kopiert werden, sodass Ihr Cluster optimal zum Einsatz kommt. Die Kopieraktivität bietet einen besseren Kopierdurchsatz, insbesondere dann, wenn Sie über einen äußerst umfangreichen Cluster verfügen. Basierend auf Ihrer Konfiguration in Azure Data Factory erstellt die Kopieraktivität automatisch einen DistCp-Befehl, sendet diesen an Ihren Hadoop-Cluster und überwacht den Kopierstatus.
+Statt die selbstgehostete Integration Runtime auszuführen, können bei der Kopieraktivität mithilfe von DistCp Dateien im jeweiligen Zustand im Azure-Blob (einschließlich der [bereitgestellten Kopie](copy-activity-performance.md)) oder Azure Data Lake Store kopiert werden, sodass Ihr Cluster optimal zum Einsatz kommt. Die Kopieraktivität bietet einen besseren Kopierdurchsatz, insbesondere dann, wenn Sie über einen äußerst umfangreichen Cluster verfügen. Basierend auf Ihrer Konfiguration in Azure Data Factory erstellt die Kopieraktivität automatisch einen DistCp-Befehl, sendet diesen an Ihren Hadoop-Cluster und überwacht den Kopierstatus.
 
 ### <a name="prerequisites"></a>Voraussetzungen
 

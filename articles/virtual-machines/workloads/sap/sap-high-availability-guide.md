@@ -4,7 +4,7 @@ description: Handbuch zum Thema „Hohe Verfügbarkeit“ für SAP NetWeaver auf
 services: virtual-machines-windows,virtual-network,storage
 documentationcenter: saponazure
 author: goraco
-manager: jeconnoc
+manager: gwallace
 editor: ''
 tags: azure-resource-manager
 keywords: ''
@@ -17,12 +17,12 @@ ms.workload: infrastructure-services
 ms.date: 05/05/2017
 ms.author: rclaus
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: eb7919c6f4ff1b3cf2480333273a98f2cca9a223
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: cb468a735a9e1f5cca899090df0125013b9b8d4c
+ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65204936"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67709315"
 ---
 # <a name="azure-virtual-machines-high-availability-for-sap-netweaver"></a>Hochverfügbarkeit von Azure Virtual Machines für SAP NetWeaver
 
@@ -159,7 +159,7 @@ Azure Virtual Machines eignet sich als Lösung für Organisationen, die Compute-
 
 In diesem Artikel werden die Schritte beschrieben, mit denen Sie hoch verfügbare SAP-Systeme in Azure mit dem Azure Resource Manager-Bereitstellungsmodell bereitstellen. Dabei werden die folgenden Hauptaufgaben behandelt:
 
-* Die richtigen SAP-Installationshandbücher und -hinweise finden Sie im Abschnitt [Ressourcen][sap-ha-guide-2]. Dieser Artikel ergänzt die SAP-Dokumentation und -Hinweise zur Installation. Diese stellen die primären Ressourcen für das Installieren und Bereitstellen von SAP-Software auf bestimmten Plattformen dar.
+* Die entsprechenden SAP-Installationshandbücher und -hinweise finden Sie im Abschnitt [Ressourcen][sap-ha-guide-2]. Dieser Artikel ergänzt die SAP-Dokumentation und -Hinweise zur Installation. Diese stellen die primären Ressourcen für das Installieren und Bereitstellen von SAP-Software auf bestimmten Plattformen dar.
 * Informieren Sie sich über die Unterschiede zwischen dem Azure Resource Manager-Bereitstellungsmodell und dem klassischen Azure-Bereitstellungsmodell.
 * Informieren Sie sich über die Quorummodi für das Windows Server-Failoverclustering, damit Sie das für Ihre Azure-Bereitstellung geeignete Modell auswählen können.
 * Informieren Sie sich über freigegebenen Speicher für das Windows Server-Failoverclustering in Azure-Diensten.
@@ -177,9 +177,9 @@ In diesem Artikel verwenden wir Azure Resource Manager-Vorlagen für [SAP NetWea
 ## <a name="42b8f600-7ba3-4606-b8a5-53c4f026da08"></a> Ressourcen
 In diesen Artikeln werden SAP-Bereitstellungen in Azure behandelt:
 
-* [Azure Virtual Machines planning and implementation for SAP NetWeaver][planning-guide] (Azure Virtual Machines – Planung und Implementierung für SAP NetWeaver)
-* [Azure Virtual Machines deployment for SAP NetWeaver][deployment-guide] (Azure Virtual Machines – Bereitstellung für SAP NetWeaver)
-* [Azure Virtual Machines DBMS deployment for SAP NetWeaver][dbms-guide] (Azure Virtual Machines – DBMS-Bereitstellung für SAP NetWeaver)
+* [Azure Virtual Machines – Planung und Implementierung für SAP NetWeaver][planning-guide]
+* [Azure Virtual Machines – Bereitstellung für SAP NetWeaver][deployment-guide]
+* [Azure Virtual Machines – DBMS-Bereitstellung für SAP NetWeaver][dbms-guide]
 * [Hochverfügbarkeit von Azure Virtual Machines für SAP NetWeaver (dieses Handbuch)][sap-ha-guide]
 
 > [!NOTE]
@@ -514,7 +514,7 @@ Die folgenden Abschnitte enthalten weitere Details zu den Vorlagen und Parameter
 
 Mit der ASCS/SCS-Vorlage werden zwei virtuelle Computer bereitgestellt, die Sie verwenden können, um einen Windows-Failovercluster zum Hosten von mehreren ASCS/SCS-Instanzen zu erstellen.
 
-Geben Sie in der [ASCS/SCS-Multi-SID-Vorlage][sap-templates-3-tier-multisid-xscs-marketplace-image] oder der [ASCS/SCS-Multi-SID-Vorlage mit Managed Disks][sap-templates-3-tier-multisid-xscs-marketplace-image-md] Werte für die folgenden Parameter ein, um die ASCS/SCS-Multi-SID-Vorlage einzurichten:
+Geben Sie in der [ASCS/SCS-Multi-SID-Vorlage][sap-templates-3-tier-multisid-xscs-marketplace-image] oder der ASCS/SCS-Multi-SID-Vorlage mit Managed Disks Werte für die folgenden Parameter ein, um die Vorlage einzurichten:or [ASCS/SCS multi-SID template using Managed Disks][sap-templates-3-tier-multisid-xscs-marketplace-image-md]
 
   - **Ressourcenpräfix**.  Legen Sie das Ressourcenpräfix fest, um alle Ressourcen, die während der Bereitstellung erstellt werden, mit einem Präfix zu versehen. Da die Ressourcen nicht nur zu einem einzigen SAP-System gehören, ist das Präfix der Ressource nicht die SID eines einzigen SAP-Systems.  Das Präfix muss zwischen **drei und sechs Zeichen** lang sein.
   - **Stapeltyp**. Wählen Sie den Stapeltyp des SAP-Systems aus. Abhängig vom Stapeltyp hat der Azure Load Balancer eine (nur ABAP oder Java) oder zwei (ABAP+Java) private IP-Adressen pro SAP-System.
@@ -549,7 +549,7 @@ Der Lastenausgleich wird so konfiguriert, dass die folgenden Testports verwendet
 
 Mit der Datenbankvorlage werden ein oder zwei virtuelle Computer bereitgestellt, die Sie zum Installieren des relationalen Datenbankverwaltungssystems (RDBMS) für ein SAP-System verwenden können. Wenn Sie z.B. eine ASCS/SCS-Vorlage für fünf SAP-Systeme bereitstellen, müssen Sie diese Vorlage fünfmal bereitstellen.
 
-Geben Sie in der [Datenbank-Multi-SID-Vorlage][sap-templates-3-tier-multisid-db-marketplace-image] oder der [Datenbank-Multi-SID-Vorlage mit Managed Disks][sap-templates-3-tier-multisid-db-marketplace-image-md] Werte für die folgenden Parameter ein, um die Datenbank-Multi-SID-Vorlage einzurichten:
+Geben Sie in der [Datenbank-Multi-SID-Vorlage][sap-templates-3-tier-multisid-db-marketplace-image] oder der Datenbank-Multi-SID-Vorlage mit Managed Disks Werte für die folgenden Parameter ein, um die Vorlage einzurichten:or [database multi-SID template using Managed Disks][sap-templates-3-tier-multisid-db-marketplace-image-md]
 
 - **SAP-System-ID**. Geben Sie die SAP-System-ID des SAP-Systems ein, das Sie installieren möchten. Die ID wird als Präfix für die Ressourcen verwendet, die bereitgestellt werden.
 - **Betriebssystemtyp**. Wählen Sie das Betriebssystem des virtuellen Computers aus.
@@ -566,7 +566,7 @@ Geben Sie in der [Datenbank-Multi-SID-Vorlage][sap-templates-3-tier-multisid-db-
 
 Die Anwendungsservervorlage stellt zwei oder mehr virtuelle Computer bereit, die als SAP-Anwendungsserverinstanzen für ein SAP-System verwendet werden können. Wenn Sie z.B. eine ASCS/SCS-Vorlage für fünf SAP-Systeme bereitstellen, müssen Sie diese Vorlage fünfmal bereitstellen.
 
-Geben Sie in der [Anwendungsserver-Multi-SID-Vorlage][sap-templates-3-tier-multisid-apps-marketplace-image] oder der [Anwendungsserver-Multi-SID-Vorlage mit Managed Disks][sap-templates-3-tier-multisid-apps-marketplace-image-md] Werte für die folgenden Parameter ein, um die Anwendungsserver-Multi-SID-Vorlage einzurichten:
+Geben Sie in der [Anwendungsserver-Multi-SID-Vorlage][sap-templates-3-tier-multisid-apps-marketplace-image] oder der Anwendungsserver-Multi-SID-Vorlage mit Managed Disks Werte für die folgenden Parameter ein, um die Vorlage einzurichten:or [application servers multi-SID template using Managed Disks][sap-templates-3-tier-multisid-apps-marketplace-image-md]
 
   -  **SAP-System-ID**. Geben Sie die SAP-System-ID des SAP-Systems ein, das Sie installieren möchten. Die ID wird als Präfix für die Ressourcen verwendet, die bereitgestellt werden.
   -  **Betriebssystemtyp**. Wählen Sie das Betriebssystem des virtuellen Computers aus.
@@ -590,7 +590,7 @@ Führen Sie die folgenden Schritte aus, um die erforderlichen DNS-IP-Adressen fe
 
 1. Stellen Sie im Azure-Portal auf dem Blatt **DNS-Server** sicher, dass die Option **DNS-Server** für Ihr virtuelles Netzwerk auf **Custom DNS** (Benutzerdefiniertes DNS) festgelegt ist.
 2. Wählen Sie die Einstellungen basierend auf dem Typ des Netzwerks aus. Weitere Informationen finden Sie in den folgenden Ressourcen:
-   * [Konnektivität des Unternehmensnetzwerks (standortübergreifend)][planning-guide-2.2]: Fügen Sie die IP-Adressen der lokalen DNS-Server hinzu.  
+   * [(Standortübergreifende) Verbindung mit dem Unternehmensnetzwerk][planning-guide-2.2]: Fügen Sie die IP-Adressen der lokalen DNS-Server hinzu.  
    Sie können lokale DNS-Server auf die virtuellen Computer erweitern, die in Azure ausgeführt werden. In diesem Szenario können Sie die IP-Adressen der virtuellen Azure-Computer hinzufügen, auf denen den DNS-Dienst ausgeführt wird.
    * Für in Azure isolierte VM-Bereitstellungen: Stellen Sie eine zusätzliche VM in der gleichen Virtual Network-Instanz bereit, die auch als DNS-Server fungiert. Fügen Sie die IP-Adressen der virtuellen Azure-Computer hinzu, die Sie zum Ausführen des DNS-Diensts eingerichtet haben.
 
@@ -622,7 +622,7 @@ Für lokale Bereitstellungen benötigen Sie diese reservierten Hostnamen und IP-
 
 Bei der Erstellung des Clusters erstellen Sie die virtuellen Hostnamen **pr1-ascs-vir** und **pr1-dbms-vir** und die zugehörigen IP-Adressen, die den Cluster selbst verwalten. Informationen zur Vorgehensweise finden Sie unter [Collect cluster nodes in a cluster configuration][sap-ha-guide-8.12.1] (Erfassen von Clusterknoten in einer Clusterkonfiguration).
 
-Sie können die anderen beiden virtuellen Hostnamen **pr1-ascs-sap** und **pr1-dbms-sap** und die zugeordneten IP-Adressen manuell auf dem DNS-Server erstellen. Die SAP ASCS/SCS-Clusterinstanz und die DBMS-Clusterinstanz verwenden diese Ressourcen. Informationen zur Vorgehensweise finden Sie unter [Create a virtual host name for a clustered SAP ASCS/SCS instance][sap-ha-guide-9.1.1] (Erstellen eines virtuellen Hostnamens für die SAP ASCS/SCS-Clusterinstanz).
+Sie können die anderen beiden virtuellen Hostnamen **pr1-ascs-sap** und **pr1-dbms-sap** und die zugeordneten IP-Adressen manuell auf dem DNS-Server erstellen. Die SAP ASCS/SCS-Clusterinstanz und die DBMS-Clusterinstanz verwenden diese Ressourcen. Informationen zur Vorgehensweise finden Sie unter [Erstellen eines virtuellen Hostnamens für die SAP ASCS/SCS-Clusterinstanz][sap-ha-guide-9.1.1].
 
 ### <a name="84c019fe-8c58-4dac-9e54-173efd4b2c30"></a> Festlegen der statischen IP-Adressen für die beiden virtuellen SAP-Computer
 Nach der Bereitstellung der virtuellen Computer für Ihren Cluster müssen Sie statische IP-Adressen für alle virtuellen Computer festlegen. Sie führen diesen Schritt in der Azure Virtual Network-Konfiguration und nicht im Gastbetriebssystem aus.
@@ -1158,7 +1158,7 @@ Das Installieren von SAP mit einer ASCS/SCS-Instanz mit hoher Verfügbarkeit umf
    * **Java-System**: **SCS**-Instanznummer **01**
    * **ABAP + Java-System**: **ASCS**-Instanznummer **00** und **SCS**-Instanznummer **01**
 
-   Um andere Instanznummern als 00 für eine ABAP ASCS-Instanz und 01 für eine Java SCS-Instanz zu verwenden, müssen Sie zunächst die Standardregeln für den Lastenausgleich durch den internen Azure Load Balancer ändern. Dieser Vorgang wird in [Ändern der Standardregeln für den ASCS/SCS-Lastenausgleich durch den internen Azure Load Balancer][sap-ha-guide-8.9] beschrieben.
+   Um andere Instanznummern als 00 für eine ABAP ASCS-Instanz und 01 für eine Java SCS-Instanz zu verwenden, müssen Sie zunächst die Standardregeln für den Lastenausgleich durch den internen Azure-Lastenausgleich ändern. Dieser Vorgang wird in [Ändern der Standardregeln für den ASCS/SCS-Lastenausgleich durch den internen Azure-Lastenausgleich][sap-ha-guide-8.9] beschrieben.
 
 Die nächsten Aufgaben sind in der SAP-Dokumentation für die Standardinstallation nicht beschrieben.
 

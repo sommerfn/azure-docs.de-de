@@ -4,7 +4,7 @@ description: Es wird beschrieben, wie Sie SAP-Software auf virtuellen Linux-Comp
 services: virtual-machines-linux,virtual-machines-windows
 documentationcenter: ''
 author: MSSedusch
-manager: jeconnoc
+manager: gwallace
 editor: ''
 tags: azure-resource-manager
 keywords: ''
@@ -16,12 +16,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 09/26/2018
 ms.author: sedusch
-ms.openlocfilehash: 82ab400c89cb57f3cf72cfb9196ea7c6402808fe
-ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
+ms.openlocfilehash: 23f2d9add5838fc0c9ac5764921a2f3cc6ae7ab7
+ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67203910"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67709894"
 ---
 # <a name="azure-virtual-machines-deployment-for-sap-netweaver"></a>Azure Virtual Machines – Bereitstellung für SAP NetWeaver
 
@@ -314,7 +314,7 @@ ms.locfileid: "67203910"
 
 Azure Virtual Machines eignet sich als Lösung für Organisationen, die Compute- und Speicherressourcen in kürzester Zeit und ohne langwierige Beschaffungszyklen benötigen. Sie können Azure Virtual Machines verwenden, um klassische Anwendungen, z.B. SAP NetWeaver-basierte Anwendungen, in Azure bereitzustellen. Erhöhen Sie die Zuverlässigkeit und Verfügbarkeit einer Anwendung ohne zusätzliche lokale Ressourcen. Azure Virtual Machines unterstützt die standortübergreifende Konnektivität, sodass Sie Azure Virtual Machines in die lokalen Domänen, privaten Clouds und die SAP-Systemumgebung Ihrer Organisation integrieren können.
 
-Dieser Artikel beschreibt die Schritte zum Bereitstellen von SAP-Anwendungen auf virtuellen Computern (VMs) in Azure sowie alternative Bereitstellungsoptionen und Problembehandlungsoptionen. Dieser Artikel baut auf den Informationen im [SAP NetWeaver auf virtuellen Azure-Computern – Planungs- und Implementierungshandbuch][planning-guide] auf. Außerdem ist der Artikel eine Ergänzung der SAP-Dokumentation zur Installation und der SAP-Hinweise, also der Hauptressourcen für die Installation und Bereitstellung von SAP-Software.
+Dieser Artikel beschreibt die Schritte zum Bereitstellen von SAP-Anwendungen auf virtuellen Computern (VMs) in Azure sowie alternative Bereitstellungsoptionen und Problembehandlungsoptionen. Dieser Artikel baut auf den Informationen unter [Azure Virtual Machines – Planung und Implementierung für SAP NetWeaver][planning-guide] auf. Außerdem ist der Artikel eine Ergänzung der SAP-Dokumentation zur Installation und der SAP-Hinweise, also der Hauptressourcen für die Installation und Bereitstellung von SAP-Software.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -346,7 +346,7 @@ Sie müssen die Topologie und Architektur der SAP-Bereitstellung in Azure defini
 * VM-Größen und die Anzahl von zusätzlichen Datenträgern für die Bereitstellung auf den VMs
 * Konfiguration des SAP Correction and Transport System (CTS)
 
-Erstellen und konfigurieren Sie Azure-Speicherkonten (sofern erforderlich) oder virtuelle Azure-Netzwerke, bevor Sie mit dem Prozess zur Bereitstellung von SAP-Software beginnen. Informationen dazu, wie Sie diese Ressourcen erstellen und konfigurieren, finden Sie im [SAP NetWeaver auf virtuellen Azure-Computern – Planungs- und Implementierungshandbuch][planning-guide].
+Erstellen und konfigurieren Sie Azure-Speicherkonten (sofern erforderlich) oder virtuelle Azure-Netzwerke, bevor Sie mit dem Prozess zur Bereitstellung von SAP-Software beginnen. Informationen dazu, wie Sie diese Ressourcen erstellen und konfigurieren, finden Sie unter [Azure Virtual Machines – Planung und Implementierung für SAP NetWeaver][planning-guide].
 
 ### <a name="sap-sizing"></a>SAP-Größenanpassung
 
@@ -393,9 +393,9 @@ Beim Einrichten der Bereitstellung Ihrer SAP-Software benötigen Sie die folgend
 
 In diesen Microsoft-Artikeln werden SAP-Bereitstellungen in Azure behandelt:
 
-* [Azure Virtual Machines planning and implementation for SAP NetWeaver][planning-guide] (Azure Virtual Machines – Planung und Implementierung für SAP NetWeaver)
+* [Azure Virtual Machines – Planung und Implementierung für SAP NetWeaver][planning-guide]
 * [Azure Virtual Machines – Bereitstellung für SAP NetWeaver (dieser Artikel)][deployment-guide]
-* [Azure Virtual Machines DBMS deployment for SAP NetWeaver][dbms-guide] (Azure Virtual Machines – DBMS-Bereitstellung für SAP NetWeaver)
+* [Azure Virtual Machines – DBMS-Bereitstellung für SAP NetWeaver][dbms-guide]
 
 ## <a name="b3253ee3-d63b-4d74-a49b-185e76c4088e"></a>Bereitstellungsszenarien für SAP-Software auf Azure-VMs
 
@@ -403,7 +403,7 @@ Sie haben mehrere Optionen, um VMs und die dazugehörigen Datenträger in Azure 
 
 ### <a name="db477013-9060-4602-9ad4-b0316f8bb281"></a>Szenario 1: Bereitstellen eines virtuellen Computers aus dem Azure Marketplace für SAP
 
-Sie können ein Image verwenden, das von Microsoft oder einem Drittanbieter im Azure Marketplace angeboten wird, um Ihre VM bereitzustellen. Auf dem Marketplace sind einige OS-Standardimages von Windows Server und verschiedenen Linux-Distributionen verfügbar. Sie können auch ein Image bereitstellen, das DBMS-SKUs (Database Management System) enthält, z.B. Microsoft SQL Server. Weitere Informationen zur Verwendung von Images mit DBMS-SKUs finden Sie im [SAP NetWeaver auf virtuellen Azure-Computern – DBMS-Bereitstellungshandbuch][dbms-guide].
+Sie können ein Image verwenden, das von Microsoft oder einem Drittanbieter im Azure Marketplace angeboten wird, um Ihre VM bereitzustellen. Auf dem Marketplace sind einige OS-Standardimages von Windows Server und verschiedenen Linux-Distributionen verfügbar. Sie können auch ein Image bereitstellen, das DBMS-SKUs (Database Management System) enthält, z.B. Microsoft SQL Server. Weitere Informationen zur Verwendung von Images mit DBMS-SKUs finden Sie unter [Azure Virtual Machines – DBMS-Bereitstellung für SAP NetWeaver][dbms-guide].
 
 Im folgenden Flussdiagramm ist die SAP-spezifische Schrittfolge zum Bereitstellen einer VM über den Azure Marketplace dargestellt:
 
@@ -427,21 +427,21 @@ Im Assistenten werden Sie durch die Schritte zum Festlegen der erforderlichen Pa
    * **Benutzername und Kennwort** oder **öffentlicher SSH-Schlüssel**: Geben Sie Benutzernamen und Kennwort des Benutzers ein, der während der Bereitstellung erstellt wird. Für einen virtuellen Linux-Computer können Sie den öffentlichen SSH-Schlüssel (Secure Shell) eingeben, den Sie zum Anmelden am Computer verwenden.
    * **Abonnement**: Wählen Sie das Abonnement aus, das Sie verwenden möchten, um den neuen virtuellen Computer bereitzustellen.
    * **Ressourcengruppe**: Name der Ressourcengruppe für die VM. Sie können entweder den Namen einer neuen oder einer bereits vorhanden Ressourcengruppe eingeben.
-   * **Standort**: Gibt an, wo der neue virtuelle Computer bereitgestellt wird. Wenn Sie den virtuellen Computer mit dem lokalen Netzwerk verbinden möchten, sollten Sie darauf achten, den Speicherort des virtuellen Netzwerks auszuwählen, das Azure mit dem lokalen Netzwerk verbindet. Weitere Informationen finden Sie im Abschnitt [Microsoft Azure-Netzwerk][planning-guide-microsoft-azure-networking] im [SAP NetWeaver auf virtuellen Azure-Computern – Planungs- und Implementierungshandbuch][planning-guide].
+   * **Standort**: Gibt an, wo der neue virtuelle Computer bereitgestellt wird. Wenn Sie den virtuellen Computer mit dem lokalen Netzwerk verbinden möchten, sollten Sie darauf achten, den Speicherort des virtuellen Netzwerks auszuwählen, das Azure mit dem lokalen Netzwerk verbindet. Weitere Informationen finden Sie unter [Microsoft Azure-Netzwerk][planning-guide-microsoft-azure-networking] in „Azure Virtual Machines – Planung und Implementierung für SAP NetWeaver“.in [Azure Virtual Machines planning and implementation for SAP NetWeaver][planning-guide]
 1. **Größe**:
 
-     Eine Liste mit den unterstützten VM-Typen finden Sie im SAP-Hinweis [1928533]. Achten Sie darauf, dass Sie den richtigen VM-Typ wählen, wenn Sie Azure Storage Premium nutzen möchten. Nicht alle Typen von virtuellen Computern unterstützten Storage Premium. Weitere Informationen finden Sie unter [Speicher: Microsoft Azure Storage und Datenträger][planning-guide-storage-microsoft-azure-storage-and-data-disks] und [Azure Storage Premium][planning-guide-azure-premium-storage] im [SAP NetWeaver auf virtuellen Azure-Computern – Planungs- und Implementierungshandbuch][planning-guide].
+     Eine Liste mit den unterstützten VM-Typen finden Sie im SAP-Hinweis [1928533]. Achten Sie darauf, dass Sie den richtigen VM-Typ wählen, wenn Sie Azure Storage Premium nutzen möchten. Nicht alle Typen von virtuellen Computern unterstützten Storage Premium. Weitere Informationen finden Sie unter [Speicher: Microsoft Azure Storage und Datenträger][planning-guide-storage-microsoft-azure-storage-and-data-disks] und „Azure Storage Premium“ in [Azure Virtual Machines – Planung und Implementierung für SAP NetWeaver][planning-guide].and [Azure Premium Storage][planning-guide-azure-premium-storage]
 
 1. **Einstellungen**:
    * **Speicher**
      * **Datenträgertyp**: Wählen Sie den Datenträgertyp des Betriebssystem-Datenträgers aus. Wenn Sie Storage Premium für Ihre Datenträger für Daten verwenden möchten, empfiehlt es sich, auch für den Betriebssystem-Datenträger Storage Premium zu nutzen.
-     * **Verwaltete Datenträger verwenden**: Wenn Sie verwaltete Datenträger verwenden möchten, klicken Sie auf „Ja“. Weitere Informationen zu verwalteten Datenträgern finden Sie im Kapitel [Verwaltete Datenträger][planning-guide-managed-disks] des Planungshandbuchs.
+     * **Verwaltete Datenträger verwenden**: Wenn Sie verwaltete Datenträger verwenden möchten, klicken Sie auf „Ja“. Weitere Informationen zu Managed Disks finden Sie im Kapitel [Managed Disks][planning-guide-managed-disks] der Planhinweisliste.
      * **Speicherkonto**: Wählen Sie ein vorhandenes Speicherkonto aus, oder erstellen Sie ein neues. Nicht alle Speichertypen funktionieren in Bezug auf die Ausführung von SAP-Anwendungen. Weitere Informationen zu Speichertypen finden Sie unter [Speicherstruktur eines virtuellen Computers für RDBMS-Bereitstellungen](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/dbms_guide_general#65fa79d6-a85f-47ee-890b-22e794f51a64).
    * **Netzwerk**
      * **Virtuelles Netzwerk** und **Subnetz**: Wählen Sie das virtuelle Netzwerk aus, das mit dem lokalen Netzwerk verbunden ist, um den virtuellen Computer in das Intranet zu integrieren.
      * **Öffentliche IP-Adresse:** Wählen Sie die öffentliche IP-Adresse aus, die Sie verwenden möchten, oder geben Sie Parameter ein, um eine neue öffentliche IP-Adresse zu erstellen. Mithilfe der öffentlichen IP-Adresse können Sie über das Internet auf den virtuellen Computer zugreifen. Achten Sie auch darauf, eine Netzwerksicherheitsgruppe zu erstellen, um den Zugriff auf den virtuellen Computer zu schützen.
      * **Netzwerksicherheitsgruppe**: Weitere Informationen finden Sie unter [Steuern des Netzwerkdatenverkehrs mit Netzwerksicherheitsgruppen][virtual-networks-nsg].
-   * **Erweiterungen**: Sie können Erweiterungen für virtuelle Computer installieren, indem Sie sie zur Bereitstellung hinzufügen. In diesem Schritt müssen Sie keine Erweiterungen hinzufügen. Die für die SAP-Unterstützung benötigten Erweiterungen werden später installiert. Informationen finden Sie im Kapitel [Konfigurieren der Azure-Erweiterung zur verbesserten Überwachung für SAP][deployment-guide-4.5] in diesem Handbuch.
+   * **Erweiterungen**: Sie können Erweiterungen für virtuelle Computer installieren, indem Sie sie zur Bereitstellung hinzufügen. In diesem Schritt müssen Sie keine Erweiterungen hinzufügen. Die für die SAP-Unterstützung benötigten Erweiterungen werden später installiert. Weitere Informationen finden Sie im Kapitel [Konfigurieren der Azure-Erweiterung zur verbesserten Überwachung für SAP][deployment-guide-4.5] in diesem Handbuch.
    * **Hochverfügbarkeit**: Wählen Sie eine vorhandene Verfügbarkeitsgruppe aus, oder geben Sie die Parameter zum Erstellen einer neuen ein. Weitere Informationen finden Sie unter [Azure-Verfügbarkeitsgruppen][planning-guide-3.2.3].
    * **Überwachung**
      * **Startdiagnose**: Sie können für die Startdiagnose die Option **Deaktivieren** auswählen.
@@ -455,18 +455,18 @@ Ihr virtueller Computer wird in der ausgewählten Ressourcengruppe bereitgestell
 
 #### <a name="create-a-virtual-machine-by-using-a-template"></a>Erstellen eines virtuellen Computers mit einer Vorlage
 
-Sie können einen virtuellen Computer auch mit einer im GitHub-Repository [azure-quickstart-templates][azure-quickstart-templates-github] veröffentlichten SAP-Vorlage erstellen. Außerdem können Sie einen virtuellen Computer erstellen, indem Sie das [Azure-Portal][virtual-machines-windows-tutorial], [PowerShell][virtual-machines-ps-create-preconfigure-windows-resource-manager-vms] oder die [Azure-Befehlszeilenschnittstelle][virtual-machines-linux-tutorial] verwenden.
+Sie können einen virtuellen Computer auch mit einer im [GitHub-Repository azure-quickstart-templates][azure-quickstart-templates-github] veröffentlichten SAP-Vorlage erstellen. Außerdem können Sie einen virtuellen Computer erstellen, indem Sie das Azure-Portal, [PowerShell][virtual-machines-ps-create-preconfigure-windows-resource-manager-vms] oder die [Azure-Befehlszeilenschnittstelle][virtual-machines-linux-tutorial] verwenden.. You also can manually create a virtual machine by using the [Azure portal][virtual-machines-windows-tutorial]
 
 * [**Vorlage für die Konfiguration mit zwei Ebenen (nur ein virtueller Computer)** (sap-2-tier-marketplace-image)][sap-templates-2-tier-marketplace-image]
 
   Verwenden Sie diese Vorlage, um ein System mit zwei Ebenen mit nur einem virtuellen Computer zu erstellen.
-* [**Vorlage für die Konfiguration mit zwei Ebenen (nur ein virtueller Computer) – verwaltete Datenträger** (sap-2-tier-marketplace-image-md)][sap-templates-2-tier-marketplace-image-md]
+* [**Vorlage für die Konfiguration mit zwei Ebenen (nur ein virtueller Computer) – Managed Disks** (sap-2-tier-marketplace-image-md)][sap-templates-2-tier-marketplace-image-md]
 
   Verwenden Sie diese Vorlage, um ein System mit zwei Ebenen mit nur einem virtuellen Computer und verwalteten Datenträgern zu erstellen.
 * [**Vorlage für die Konfiguration mit drei Ebenen (mehrere virtuelle Computer)** (sap-3-tier-marketplace-image)][sap-templates-3-tier-marketplace-image]
 
   Verwenden Sie diese Vorlage, um ein System mit drei Ebenen mit mehreren virtuellen Computern zu erstellen.
-* [**Vorlage für die Konfiguration mit drei Ebenen (mehrere virtuelle Computer) – verwaltete Datenträger** (sap-3-tier-marketplace-image-md)][sap-templates-3-tier-marketplace-image-md]
+* [**Vorlage für die Konfiguration mit drei Ebenen (mehrere virtuelle Computer) – Managed Disks** (sap-3-tier-marketplace-image-md)][sap-templates-3-tier-marketplace-image-md]
 
   Verwenden Sie diese Vorlage, um ein System mit drei Ebenen mit mehreren virtuellen Computern und verwalteten Datenträgern zu erstellen.
 
@@ -491,9 +491,9 @@ Geben Sie im Azure-Portal die folgenden Parameter für die Vorlage ein:
    * **Speichertyp** (nur Vorlage für zwei Ebenen): Der zu verwendende Speicherkontotyp.
 
      Für größere Systeme empfehlen wir dringend die Verwendung von Azure Storage Premium. Weitere Informationen zu Speichertypen finden Sie unter den folgenden Ressourcen:
-      * [Verwendung von Azure Storage Premium (SSD) für SAP-DBMS-Instanz][2367194]
+      * [Verwenden von Azure Storage SSD Premium für SAP-DBMS-Instanzen][2367194]
       * [Speicherstruktur einer VM für RDBMS-Bereitstellungen](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/dbms_guide_general#65fa79d6-a85f-47ee-890b-22e794f51a64)
-      * [Storage Premium: Hochleistungsspeicher für Azure Virtual Machine-Workloads][storage-premium-storage-preview-portal]
+      * [Storage Premium: Hochleistungsspeicher für Azure Virtual Machines-Workloads][storage-premium-storage-preview-portal]
       * [Einführung in Microsoft Azure Storage][storage-introduction]
    * **Administratorbenutzername** und **Administratorkennwort**: Ein Benutzername und Kennwort.
      Für die Anmeldung am virtuellen Computer wird ein neuer Benutzer erstellt.
@@ -513,11 +513,11 @@ Je nach Konfiguration Ihres lokalen Netzwerks müssen Sie unter Umständen den P
 
 #### <a name="join-a-domain-windows-only"></a>Beitreten zu einer Domäne (nur Windows)
 
-Wenn für Ihre Azure-Bereitstellung eine Verbindung mit einer lokalen Active Directory- oder DNS-Instanz per Azure-Site-to-Site-VPN- oder ExpressRoute-Verbindung besteht (im [SAP NetWeaver auf virtuellen Azure-Computern – Planungs- und Implementierungshandbuch][planning-guide] als *standortübergreifend* bezeichnet), wird erwartet, dass die VM einer lokalen Domäne beitritt wird. Weitere Informationen zu den wichtigen Aspekten dieser Aufgabe finden Sie unter [Einbinden virtueller Computer in die lokale Domäne (nur Windows)][deployment-guide-4.3].
+Wenn für Ihre Azure-Bereitstellung eine Verbindung mit einer lokalen Active Directory- oder DNS-Instanz per Azure-Site-to-Site-VPN- oder ExpressRoute-Verbindung besteht (in [Azure Virtual Machines – Planung und Implementierung für SAP NetWeaver][planning-guide] als *standortübergreifend* bezeichnet), wird erwartet, dass die VM in eine lokale Domäne eingebunden wird. Weitere Informationen zu wichtigen Überlegungen bei dieser Aufgabe finden Sie unter „Einbinden virtueller Computer in eine lokale Domäne (nur Windows)“.), it is expected that the VM is joining an on-premises domain. For more information about considerations for this task, see [Join a VM to an on-premises domain (Windows only)][deployment-guide-4.3]
 
 #### <a name="ec323ac3-1de9-4c3a-b770-4ff701def65b"></a>Konfigurieren der Überwachung
 
-Um sicherzustellen, dass SAP Ihre Umgebung unterstützt, können Sie die Azure-Erweiterung zur Überwachung für SAP einrichten, wie unter [Konfigurieren der Azure-Erweiterung zur verbesserten Überwachung für SAP][deployment-guide-4.5] beschrieben. Überprüfen Sie die Voraussetzungen für die SAP-Überwachung und die erforderlichen Mindestversionen des SAP-Kernels und des SAP Host Agent in den Ressourcen, die unter [SAP-Ressourcen][deployment-guide-2.2] aufgeführt sind.
+Um sicherzustellen, dass SAP Ihre Umgebung unterstützt, können Sie die Azure-Erweiterung zur Überwachung für SAP einrichten, wie unter [Konfigurieren der Azure-Erweiterung zur verbesserten Überwachung für SAP][deployment-guide-4.5] beschrieben. Überprüfen Sie die Voraussetzungen für die SAP-Überwachung und die erforderlichen Mindestversionen des SAP-Kernels und des SAP Host Agent in den Ressourcen, die unter „SAP-Ressourcen“ aufgeführt sind.. Check the prerequisites for SAP monitoring, and required minimum versions of SAP Kernel and SAP Host Agent, in the resources listed in [SAP resources][deployment-guide-2.2]
 
 #### <a name="monitoring-check"></a>Überprüfen der Überwachung
 
@@ -541,12 +541,12 @@ Bei der Erstellung eines privaten Images für Linux müssen andere Schritte ausg
 >
 > ![Linux][Logo_Linux] Linux
 >
-> Um ein Linux-Image vorzubereiten, das Sie zum Bereitstellen mehrerer virtueller Computer verwenden können, müssen einige Linux-Einstellungen auf dem lokalen virtuellen Computer abstrahiert bzw. generalisiert werden. Hierfür können Sie `waagent -deprovision` verwenden. Weitere Informationen finden Sie unter [Erfassen eines virtuellen Linux-Computers, der in Azure ausgeführt wird][virtual-machines-linux-capture-image] und im [Benutzerhandbuch für Azure Linux-Agent][virtual-machines-linux-agent-user-guide-command-line-options].
+> Um ein Linux-Image vorzubereiten, das Sie zum Bereitstellen mehrerer virtueller Computer verwenden können, müssen einige Linux-Einstellungen auf dem lokalen virtuellen Computer abstrahiert bzw. generalisiert werden. Hierfür können Sie `waagent -deprovision` verwenden. Weitere Informationen finden Sie unter [Erfassen eines virtuellen Linux-Computers, der in Azure ausgeführt wird][virtual-machines-linux-capture-image] und im Benutzerhandbuch für Azure Linux-Agent.and the [Azure Linux agent user guide][virtual-machines-linux-agent-user-guide-command-line-options]
 >
 >
 
 ---
-Sie können ein benutzerdefiniertes Image vorbereiten und erstellen und dann zum Erstellen mehrerer neuer VMs verwenden. Dies wird im [SAP NetWeaver auf virtuellen Azure-Computern – Planungs- und Implementierungshandbuch][planning-guide] beschrieben. Richten Sie den Datenbankinhalt ein, indem Sie entweder den SAP Software Provisioning Manager verwenden, um ein neues SAP-System zu installieren (eine Datenbanksicherung wird von einem Datenträger wiederhergestellt, der an den virtuellen Computer angeschlossen ist), oder indem Sie eine Datenbanksicherung direkt aus Azure Storage wiederherstellen, falls Ihr DBMS dies unterstützt. Weitere Informationen finden Sie im [SAP NetWeaver auf virtuellen Azure-Computern – DBMS-Bereitstellungshandbuch][dbms-guide]. Wenn Sie bereits ein SAP-System auf dem lokalen virtuellen Computer installiert haben (insbesondere bei Systemen mit zwei Ebenen), können Sie die SAP-Systemeinstellungen nach der Bereitstellung des virtuellen Azure-Computers über das vom SAP Software Provisioning Manager unterstützte Verfahren zum Umbenennen von Systemen anpassen (SAP-Hinweis [1619720]). Andernfalls können Sie die SAP-Software nach dem Bereitstellen der Azure-VM installieren.
+Sie können ein benutzerdefiniertes Image vorbereiten und erstellen und dann zum Erstellen mehrerer neuer VMs verwenden. Dies wird im [SAP NetWeaver auf virtuellen Azure-Computern – Planungs- und Implementierungshandbuch][planning-guide] beschrieben. Richten Sie den Datenbankinhalt ein, indem Sie den SAP Software Provisioning Manager verwenden, um ein neues SAP-System zu installieren (eine Datenbanksicherung wird von einem Datenträger wiederhergestellt, der an den virtuellen Computer angeschlossen ist), oder indem Sie eine Datenbanksicherung direkt aus Azure Storage wiederherstellen, falls Ihr DBMS dies unterstützt. Weitere Informationen finden Sie unter „Azure Virtual Machines – DBMS-Bereitstellung für SAP NetWeaver“.. Set up your database content either by using SAP Software Provisioning Manager to install a new SAP system (restores a database backup from a disk that's attached to the virtual machine) or by directly restoring a database backup from Azure storage, if your DBMS supports it. For more information, see [Azure Virtual Machines DBMS deployment for SAP NetWeaver][dbms-guide] Wenn Sie bereits ein SAP-System auf dem lokalen virtuellen Computer installiert haben (insbesondere bei Systemen mit zwei Ebenen), können Sie die SAP-Systemeinstellungen nach der Bereitstellung des virtuellen Azure-Computers über das vom SAP Software Provisioning Manager unterstützte Verfahren zum Umbenennen von Systemen anpassen (SAP-Hinweis [1619720]). Andernfalls können Sie die SAP-Software nach dem Bereitstellen der Azure-VM installieren.
 
 Im folgenden Flussdiagramm ist die SAP-spezifische Schrittfolge zum Bereitstellen einer VM über ein benutzerdefiniertes Image dargestellt:
 
@@ -567,20 +567,20 @@ Im Assistenten werden Sie durch die Schritte zum Festlegen der erforderlichen Pa
    * **Benutzername und Kennwort** oder **öffentlicher SSH-Schlüssel**: Geben Sie Benutzernamen und Kennwort des Benutzers ein, der während der Bereitstellung erstellt wird. Für einen virtuellen Linux-Computer können Sie den öffentlichen SSH-Schlüssel (Secure Shell) eingeben, den Sie zum Anmelden am Computer verwenden.
    * **Abonnement**: Wählen Sie das Abonnement aus, das Sie verwenden möchten, um den neuen virtuellen Computer bereitzustellen.
    * **Ressourcengruppe**: Name der Ressourcengruppe für die VM. Sie können entweder den Namen einer neuen oder einer bereits vorhanden Ressourcengruppe eingeben.
-   * **Standort**: Gibt an, wo der neue virtuelle Computer bereitgestellt wird. Wenn Sie den virtuellen Computer mit dem lokalen Netzwerk verbinden möchten, sollten Sie darauf achten, den Speicherort des virtuellen Netzwerks auszuwählen, das Azure mit dem lokalen Netzwerk verbindet. Weitere Informationen finden Sie im Abschnitt [Microsoft Azure-Netzwerk][planning-guide-microsoft-azure-networking] im [SAP NetWeaver auf virtuellen Azure-Computern – Planungs- und Implementierungshandbuch][planning-guide].
+   * **Standort**: Gibt an, wo der neue virtuelle Computer bereitgestellt wird. Wenn Sie den virtuellen Computer mit dem lokalen Netzwerk verbinden möchten, sollten Sie darauf achten, den Speicherort des virtuellen Netzwerks auszuwählen, das Azure mit dem lokalen Netzwerk verbindet. Weitere Informationen finden Sie unter [Microsoft Azure-Netzwerk][planning-guide-microsoft-azure-networking] in „Azure Virtual Machines – Planung und Implementierung für SAP NetWeaver“.in [Azure Virtual Machines planning and implementation for SAP NetWeaver][planning-guide]
 1. **Größe**:
 
-     Eine Liste mit den unterstützten VM-Typen finden Sie im SAP-Hinweis [1928533]. Achten Sie darauf, dass Sie den richtigen VM-Typ wählen, wenn Sie Azure Storage Premium nutzen möchten. Nicht alle Typen von virtuellen Computern unterstützten Storage Premium. Weitere Informationen finden Sie unter [Speicher: Microsoft Azure Storage und Datenträger][planning-guide-storage-microsoft-azure-storage-and-data-disks] und [Azure Storage Premium][planning-guide-azure-premium-storage] im [SAP NetWeaver auf virtuellen Azure-Computern – Planungs- und Implementierungshandbuch][planning-guide].
+     Eine Liste mit den unterstützten VM-Typen finden Sie im SAP-Hinweis [1928533]. Achten Sie darauf, dass Sie den richtigen VM-Typ wählen, wenn Sie Azure Storage Premium nutzen möchten. Nicht alle Typen von virtuellen Computern unterstützten Storage Premium. Weitere Informationen finden Sie unter [Speicher: Microsoft Azure Storage und Datenträger][planning-guide-storage-microsoft-azure-storage-and-data-disks] und „Azure Storage Premium“ in [Azure Virtual Machines – Planung und Implementierung für SAP NetWeaver][planning-guide].and [Azure Premium Storage][planning-guide-azure-premium-storage]
 
 1. **Einstellungen**:
    * **Speicher**
      * **Datenträgertyp**: Wählen Sie den Datenträgertyp des Betriebssystem-Datenträgers aus. Wenn Sie Storage Premium für Ihre Datenträger für Daten verwenden möchten, empfiehlt es sich, auch für den Betriebssystem-Datenträger Storage Premium zu nutzen.
-     * **Verwaltete Datenträger verwenden**: Wenn Sie verwaltete Datenträger verwenden möchten, klicken Sie auf „Ja“. Weitere Informationen zu verwalteten Datenträgern finden Sie im Kapitel [Verwaltete Datenträger][planning-guide-managed-disks] des Planungshandbuchs.
+     * **Verwaltete Datenträger verwenden**: Wenn Sie verwaltete Datenträger verwenden möchten, klicken Sie auf „Ja“. Weitere Informationen zu Managed Disks finden Sie im Kapitel [Managed Disks][planning-guide-managed-disks] der Planhinweisliste.
    * **Netzwerk**
      * **Virtuelles Netzwerk** und **Subnetz**: Wählen Sie das virtuelle Netzwerk aus, das mit dem lokalen Netzwerk verbunden ist, um den virtuellen Computer in das Intranet zu integrieren.
      * **Öffentliche IP-Adresse:** Wählen Sie die öffentliche IP-Adresse aus, die Sie verwenden möchten, oder geben Sie Parameter ein, um eine neue öffentliche IP-Adresse zu erstellen. Mithilfe der öffentlichen IP-Adresse können Sie über das Internet auf den virtuellen Computer zugreifen. Achten Sie auch darauf, eine Netzwerksicherheitsgruppe zu erstellen, um den Zugriff auf den virtuellen Computer zu schützen.
      * **Netzwerksicherheitsgruppe**: Weitere Informationen finden Sie unter [Steuern des Netzwerkdatenverkehrs mit Netzwerksicherheitsgruppen][virtual-networks-nsg].
-   * **Erweiterungen**: Sie können Erweiterungen für virtuelle Computer installieren, indem Sie sie zur Bereitstellung hinzufügen. In diesem Schritt müssen Sie keine Erweiterung hinzufügen. Die für die SAP-Unterstützung benötigten Erweiterungen werden später installiert. Informationen finden Sie im Kapitel [Konfigurieren der Azure-Erweiterung zur verbesserten Überwachung für SAP][deployment-guide-4.5] in diesem Handbuch.
+   * **Erweiterungen**: Sie können Erweiterungen für virtuelle Computer installieren, indem Sie sie zur Bereitstellung hinzufügen. In diesem Schritt müssen Sie keine Erweiterung hinzufügen. Die für die SAP-Unterstützung benötigten Erweiterungen werden später installiert. Weitere Informationen finden Sie im Kapitel [Konfigurieren der Azure-Erweiterung zur verbesserten Überwachung für SAP][deployment-guide-4.5] in diesem Handbuch.
    * **Hochverfügbarkeit**: Wählen Sie eine vorhandene Verfügbarkeitsgruppe aus, oder geben Sie die Parameter zum Erstellen einer neuen ein. Weitere Informationen finden Sie unter [Azure-Verfügbarkeitsgruppen][planning-guide-3.2.3].
    * **Überwachung**
      * **Startdiagnose**: Sie können für die Startdiagnose die Option **Deaktivieren** auswählen.
@@ -594,18 +594,18 @@ Ihr virtueller Computer wird in der ausgewählten Ressourcengruppe bereitgestell
 
 #### <a name="create-a-virtual-machine-by-using-a-template"></a>Erstellen eines virtuellen Computers mit einer Vorlage
 
-Verwenden Sie zum Erstellen einer Bereitstellung über ein privates Betriebssystemimage im Azure-Portal eine der unten angegebenen SAP-Vorlagen. Diese Vorlagen werden im GitHub-Repository [azure-quickstart-templates][azure-quickstart-templates-github] veröffentlicht. Sie können auch manuell einen virtuellen Computer erstellen, indem Sie [PowerShell][virtual-machines-upload-image-windows-resource-manager] verwenden.
+Verwenden Sie zum Erstellen einer Bereitstellung über ein privates Betriebssystemimage im Azure-Portal eine der unten angegebenen SAP-Vorlagen. Diese Vorlagen werden im [GitHub-Repository azure-quickstart-templates][azure-quickstart-templates-github] veröffentlicht. Sie können auch manuell einen virtuellen Computer erstellen, indem Sie PowerShell verwenden.. You also can manually create a virtual machine, by using [PowerShell][virtual-machines-upload-image-windows-resource-manager]
 
 * [**Vorlage für die Konfiguration mit zwei Ebenen (nur ein virtueller Computer)** (sap-2-tier-user-image)][sap-templates-2-tier-user-image]
 
   Verwenden Sie diese Vorlage, um ein System mit zwei Ebenen mit nur einem virtuellen Computer zu erstellen.
-* [**Vorlage für die Konfiguration mit zwei Ebenen (nur ein virtueller Computer) – Image auf verwaltetem Datenträger** (sap-2-tier-user-image-md)][sap-templates-2-tier-user-image-md]
+* [**Vorlage für die Konfiguration mit zwei Ebenen (nur ein virtueller Computer) – Managed Disks-Image** (sap-2-tier-user-image-md)][sap-templates-2-tier-user-image-md]
 
   Verwenden Sie diese Vorlage, um ein System mit zwei Ebenen mit nur einem virtuellen Computer und einem Image auf einem verwalteten Datenträger zu erstellen.
 * [**Vorlage für die Konfiguration mit drei Ebenen (mehrere virtuelle Computer)** (sap-3-tier-user-image)][sap-templates-3-tier-user-image]
 
   Verwenden Sie diese Vorlage, um ein System mit drei Ebenen mit mehreren virtuellen Computern oder einem eigenen Betriebssystemimage zu erstellen.
-* [**Vorlage für die Konfiguration mit drei Ebenen (mehrere virtuelle Computer) – Image auf verwaltetem Datenträger** (sap-3-tier-user-image-md)][sap-templates-3-tier-user-image-md]
+* [**Vorlage für die Konfiguration mit drei Ebenen (mehrere virtuelle Computer) – Managed Disks-Image** (sap-3-tier-user-image-md)][sap-templates-3-tier-user-image-md]
 
   Verwenden Sie diese Vorlage, um ein System mit drei Ebenen mit mehreren virtuellen Computern oder einem eigenen Betriebssystemimage und einem Image auf einem verwalteten Datenträger zu erstellen.
 
@@ -627,7 +627,7 @@ Geben Sie im Azure-Portal die folgenden Parameter für die Vorlage ein:
    * **Speichertyp** (nur Vorlage für zwei Ebenen): Der zu verwendende Speicherkontotyp.
 
      Für größere Systeme empfehlen wir dringend die Verwendung von Azure Storage Premium. Weitere Informationen zu Speichertypen finden Sie in den folgenden Ressourcen:
-      * [Verwendung von Azure Storage Premium (SSD) für SAP-DBMS-Instanz][2367194]
+      * [Verwenden von Azure Storage SSD Premium für SAP-DBMS-Instanzen][2367194]
       * [Speicherstruktur einer VM für RDBMS-Bereitstellungen](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/dbms_guide_general#65fa79d6-a85f-47ee-890b-22e794f51a64)
       * [Storage Premium: Hochleistungsspeicher für Azure Virtual Machine-Workloads][storage-premium-storage-preview-portal]
       * [Einführung in Microsoft Azure Storage][storage-introduction]
@@ -651,7 +651,7 @@ Zum Verwenden der im vorherigen Abschnitt beschriebenen Vorlagen muss der Linux-
 
 #### <a name="join-a-domain-windows-only"></a>Beitreten zu einer Domäne (nur Windows)
 
-Wenn für Ihre Azure-Bereitstellung eine Verbindung mit einer lokalen Active Directory- oder DNS-Instanz per Azure-Site-to-Site-VPN- oder Azure ExpressRoute-Verbindung besteht (im [SAP NetWeaver auf virtuellen Azure-Computern – Planungs- und Implementierungshandbuch][planning-guide] als *standortübergreifend* bezeichnet), wird erwartet, dass die VM einer lokalen Domäne beitritt. Weitere Informationen zu den wichtigen Aspekten dieses Schritts finden Sie unter [Einbinden virtueller Computer in die lokale Domäne (nur Windows)][deployment-guide-4.3].
+Wenn für Ihre Azure-Bereitstellung eine Verbindung mit einer lokalen Active Directory- oder DNS-Instanz per Azure-Site-to-Site-VPN- oder Azure ExpressRoute-Verbindung besteht (in [Azure Virtual Machines – Planung und Implementierung für SAP NetWeaver][planning-guide] als *standortübergreifend* bezeichnet), wird erwartet, dass die VM in eine lokale Domäne eingebunden wird. Weitere Informationen zu wichtigen Überlegungen bei dieser Aufgabe finden Sie unter „Einbinden virtueller Computer in eine lokale Domäne (nur Windows)“.), it is expected that the VM is joining an on-premises domain. For more information about considerations for this step, see [Join a VM to an on-premises domain (Windows only)][deployment-guide-4.3]
 
 #### <a name="configure-proxy-settings"></a>Konfigurieren von Proxyeinstellungen
 
@@ -659,7 +659,7 @@ Je nach Konfiguration Ihres lokalen Netzwerks müssen Sie unter Umständen den P
 
 #### <a name="configure-monitoring"></a>Konfigurieren der Überwachung
 
-Um sicherzustellen, dass SAP Ihre Umgebung unterstützt, können Sie die Azure-Erweiterung zur Überwachung für SAP einrichten, wie unter [Konfigurieren der Azure-Erweiterung zur verbesserten Überwachung für SAP][deployment-guide-4.5] beschrieben. Überprüfen Sie die Voraussetzungen für die SAP-Überwachung und die erforderlichen Mindestversionen des SAP-Kernels und des SAP Host Agent in den Ressourcen, die unter [SAP-Ressourcen][deployment-guide-2.2] aufgeführt sind.
+Um sicherzustellen, dass SAP Ihre Umgebung unterstützt, können Sie die Azure-Erweiterung zur Überwachung für SAP einrichten, wie unter [Konfigurieren der Azure-Erweiterung zur verbesserten Überwachung für SAP][deployment-guide-4.5] beschrieben. Überprüfen Sie die Voraussetzungen für die SAP-Überwachung und die erforderlichen Mindestversionen des SAP-Kernels und des SAP Host Agent in den Ressourcen, die unter „SAP-Ressourcen“ aufgeführt sind.. Check the prerequisites for SAP monitoring, and required minimum versions of SAP Kernel and SAP Host Agent, in the resources listed in [SAP resources][deployment-guide-2.2]
 
 #### <a name="monitoring-check"></a>Überprüfen der Überwachung
 
@@ -691,7 +691,7 @@ Im folgenden Flussdiagramm ist die Folge der Schritte zum Verschieben einer loka
 
 ![Flussdiagramm der VM-Bereitstellung für SAP-Systeme mithilfe eines VM-Datenträgers][deployment-guide-figure-400]
 
-Wenn der Datenträger bereits hochgeladen und in Azure definiert wurde (siehe [SAP NetWeaver auf virtuellen Azure-Computern – Planungs- und Implementierungshandbuch][planning-guide]), können Sie die Aufgaben in den nächsten Abschnitten durchführen.
+Wenn der Datenträger bereits hochgeladen und in Azure definiert wurde (siehe [Azure Virtual Machines – Planung und Implementierung für SAP NetWeaver][planning-guide]), können Sie die Aufgaben in den nächsten Abschnitten durchführen.
 
 #### <a name="create-a-virtual-machine"></a>Erstellen eines virtuellen Computers
 
@@ -700,7 +700,7 @@ Verwenden Sie zum Erstellen einer Bereitstellung über einen privaten Betriebssy
 * [**Vorlage für die Konfiguration mit zwei Ebenen (nur ein virtueller Computer)** (sap-2-tier-user-disk)][sap-templates-2-tier-os-disk]
 
   Verwenden Sie diese Vorlage, um ein System mit zwei Ebenen mit nur einem virtuellen Computer zu erstellen.
-* [**Vorlage für die Konfiguration mit zwei Ebenen (nur ein virtueller Computer) – Verwalteter Datenträger** (sap-2-tier-user-disk-md)][sap-templates-2-tier-os-disk-md]
+* [**Vorlage für die Konfiguration mit zwei Ebenen (nur ein virtueller Computer) – Managed Disks** (sap-2-tier-user-disk-md)][sap-templates-2-tier-os-disk-md]
 
   Verwenden Sie diese Vorlage, um ein System mit zwei Ebenen mit nur einem virtuellen Computer und einem verwalteten Datenträger zu erstellen.
 
@@ -719,9 +719,9 @@ Geben Sie im Azure-Portal die folgenden Parameter für die Vorlage ein:
    * **Speichertyp** (nur Vorlage für zwei Ebenen): Der zu verwendende Speicherkontotyp.
 
      Für größere Systeme empfehlen wir dringend die Verwendung von Azure Storage Premium. Weitere Informationen zu Speichertypen finden Sie in den folgenden Ressourcen:
-      * [Verwendung von Azure Storage Premium (SSD) für SAP-DBMS-Instanz][2367194]
+      * [Verwenden von Azure Storage SSD Premium für SAP-DBMS-Instanzen][2367194]
       * [Speicherstruktur einer VM für RDBMS-Bereitstellungen](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/dbms_guide_general#65fa79d6-a85f-47ee-890b-22e794f51a64)
-      * [Storage Premium: Hochleistungsspeicher für Azure Virtual Machine-Workloads][storage-premium-storage-preview-portal]
+      * [Storage Premium: Hochleistungsspeicher für Azure Virtual Machines-Workloads][storage-premium-storage-preview-portal]
       * [Einführung in Microsoft Azure Storage][storage-introduction]
    * **VHD-URI des Betriebssystemdatenträgers** (nur Vorlage für nicht verwaltete Datenträger): Der URI des Datenträgers mit dem privaten Betriebssystem, z.B. „https://&lt;Kontoname>.blob.core.windows.net/vhds/osdisk.vhd“.
    * **ID des verwalteten Betriebssystemdatenträgers** (nur Vorlage für verwaltete Datenträger): Die ID des verwalteten Datenträgers mit dem Betriebssystem, z.B. „/subscriptions/92d102f7-81a5-4df7-9877-54987ba97dd9/resourceGroups/group/providers/Microsoft.Compute/disks/WIN“.
@@ -741,7 +741,7 @@ Falls Sie die im vorherigen Abschnitt beschriebenen Vorlagen nicht verwenden, k�
 
 #### <a name="join-a-domain-windows-only"></a>Beitreten zu einer Domäne (nur Windows)
 
-Wenn für Ihre Azure-Bereitstellung eine Verbindung mit einer lokalen Active Directory- oder DNS-Instanz per Azure-Site-to-Site-VPN- oder ExpressRoute-Verbindung besteht (im [SAP NetWeaver auf virtuellen Azure-Computern – Planungs- und Implementierungshandbuch][planning-guide] als *standortübergreifend* bezeichnet), wird erwartet, dass die VM einer lokalen Domäne beitritt wird. Weitere Informationen zu den wichtigen Aspekten dieser Aufgabe finden Sie unter [Einbinden virtueller Computer in die lokale Domäne (nur Windows)][deployment-guide-4.3].
+Wenn für Ihre Azure-Bereitstellung eine Verbindung mit einer lokalen Active Directory- oder DNS-Instanz per Azure-Site-to-Site-VPN- oder ExpressRoute-Verbindung besteht (in [Azure Virtual Machines – Planung und Implementierung für SAP NetWeaver][planning-guide] als *standortübergreifend* bezeichnet), wird erwartet, dass die VM in eine lokale Domäne eingebunden wird. Weitere Informationen zu wichtigen Überlegungen bei dieser Aufgabe finden Sie unter „Einbinden virtueller Computer in eine lokale Domäne (nur Windows)“.), it is expected that the VM is joining an on-premises domain. For more information about considerations for this task, see [Join a VM to an on-premises domain (Windows only)][deployment-guide-4.3]
 
 #### <a name="configure-proxy-settings"></a>Konfigurieren von Proxyeinstellungen
 
@@ -749,7 +749,7 @@ Je nach Konfiguration Ihres lokalen Netzwerks müssen Sie unter Umständen den P
 
 #### <a name="configure-monitoring"></a>Konfigurieren der Überwachung
 
-Um sicherzustellen, dass SAP Ihre Umgebung unterstützt, können Sie die Azure-Erweiterung zur Überwachung für SAP einrichten, wie unter [Konfigurieren der Azure-Erweiterung zur verbesserten Überwachung für SAP][deployment-guide-4.5] beschrieben. Überprüfen Sie die Voraussetzungen für die SAP-Überwachung und die erforderlichen Mindestversionen des SAP-Kernels und des SAP Host Agent in den Ressourcen, die unter [SAP-Ressourcen][deployment-guide-2.2] aufgeführt sind.
+Um sicherzustellen, dass SAP Ihre Umgebung unterstützt, können Sie die Azure-Erweiterung zur Überwachung für SAP einrichten, wie unter [Konfigurieren der Azure-Erweiterung zur verbesserten Überwachung für SAP][deployment-guide-4.5] beschrieben. Überprüfen Sie die Voraussetzungen für die SAP-Überwachung und die erforderlichen Mindestversionen des SAP-Kernels und des SAP Host Agent in den Ressourcen, die unter „SAP-Ressourcen“ aufgeführt sind.. Check the prerequisites for SAP monitoring, and required minimum versions of SAP Kernel and SAP Host Agent, in the resources listed in [SAP resources][deployment-guide-2.2]
 
 #### <a name="monitoring-check"></a>Überprüfen der Überwachung
 
@@ -846,7 +846,7 @@ Dieser Schritt ist nicht erforderlich, wenn Sie eine VM über den Azure Marketpl
    1.  Öffnen Sie ein Windows-Explorer-Fenster auf dem virtuellen Computer, und wählen Sie das Zielverzeichnis für die MSI-Datei des VM-Agent aus.
    1.  Ziehen Sie die MSI-Datei für die Installation des Azure-VM-Agent vom lokalen Computer/Server in das Zielverzeichnis des VM-Agent auf dem virtuellen Computer.
    1.  Doppelklicken Sie auf dem virtuellen Computer auf die MSI-Datei.
-1. Beachten Sie bei virtuellen Computern, die in eine lokale Domäne eingebunden sind, dass die Internetproxyeinstellungen auch für das lokale Windows-Systemkonto (S-1-5-18) des virtuellen Computers gelten. Dies ist unter [Konfigurieren von Proxys][deployment-guide-configure-proxy] beschrieben. Der VM-Agent wird in diesem Kontext ausgeführt und muss eine Verbindung mit Azure herstellen können.
+1. Beachten Sie bei virtuellen Computern, die in eine lokale Domäne eingebunden sind, dass die Internetproxyeinstellungen auch für das lokale Windows-Systemkonto (S-1-5-18) des virtuellen Computers gelten. Dies wird unter [Konfigurieren von Proxys][deployment-guide-configure-proxy] beschrieben. Der VM-Agent wird in diesem Kontext ausgeführt und muss eine Verbindung mit Azure herstellen können.
 
 Für die Aktualisierung des Azure-VM-Agent ist keine Benutzerinteraktion erforderlich. Der VM-Agent wird automatisch aktualisiert, und es ist kein Neustart der VM erforderlich.
 
@@ -928,9 +928,9 @@ Weitere Informationen zu benutzerdefinierten Routen finden Sie unter [Benutzerde
 
 ### <a name="d98edcd3-f2a1-49f7-b26a-07448ceb60ca"></a>Konfigurieren der Azure-Erweiterung zur verbesserten Überwachung für SAP
 
-Wenn Sie die VM wie unter [Bereitstellungsszenarien für virtuelle Computer für SAP in Microsoft Azure][deployment-guide-3] beschrieben vorbereitet haben, ist der Azure-VM-Agent auf dem virtuellen Computer installiert. Der nächste Schritt ist das Bereitstellen der Azure-Erweiterung zur verbesserten Überwachung für SAP, die im Repository für Azure-Erweiterungen in den globalen Azure-Datencentern verfügbar ist. Weitere Informationen finden Sie im [SAP NetWeaver auf virtuellen Azure-Computern – Planungs- und Implementierungshandbuch][planning-guide-9.1].
+Wenn Sie die VM wie unter [Bereitstellungsszenarien für virtuelle Computer für SAP in Microsoft Azure][deployment-guide-3] beschrieben vorbereitet haben, ist der Azure-VM-Agent auf dem virtuellen Computer installiert. Der nächste Schritt ist das Bereitstellen der Azure-Erweiterung zur verbesserten Überwachung für SAP, die im Repository für Azure-Erweiterungen in den globalen Azure-Rechenzentren verfügbar ist. Weitere Informationen finden Sie unter „Azure Virtual Machines – Planung und Implementierung für SAP NetWeaver“., the Azure VM Agent is installed on the virtual machine. The next step is to deploy the Azure Enhanced Monitoring Extension for SAP, which is available in the Azure Extension Repository in the global Azure datacenters. For more information, see [Azure Virtual Machines planning and implementation for SAP NetWeaver][planning-guide-9.1]
 
-Zum Installieren und Konfigurieren der Azure-Erweiterung zur verbesserten Überwachung für SAP können Sie PowerShell oder die Azure-CLI verwenden. Informationen zur Installation der Erweiterung auf einer Windows- oder Linux-VM mit einem Windows-Computer finden Sie unter [Azure PowerShell][deployment-guide-4.5.1]. Informationen zur Installation der Erweiterung einer Linux-VM über einen Linux-Desktop finden Sie unter [Azure-CLI][deployment-guide-4.5.2].
+Zum Installieren und Konfigurieren der Azure-Erweiterung zur verbesserten Überwachung für SAP können Sie PowerShell oder die Azure-CLI verwenden. Informationen zur Installation der Erweiterung auf einer Windows- oder Linux-VM mit einem Windows-Computer finden Sie unter [Azure PowerShell][deployment-guide-4.5.1]. Informationen zur Installation der Erweiterung einer Linux-VM über einen Linux-Desktop finden Sie unter „Azure-Befehlszeilenschnittstelle“. To install the extension on a Linux VM by using a Linux desktop, see [Azure CLI][deployment-guide-4.5.2].
 
 #### <a name="987cf279-d713-4b4c-8143-6b11589bb9d4"></a>Azure PowerShell für virtuelle Linux- und Windows-Computer
 
@@ -969,7 +969,7 @@ Die Skriptausgabe enthält die folgenden Informationen:
 
 Gehen Sie wie folgt vor, um die Azure-Erweiterung zur verbesserten Überwachung für SAP mit der Azure-Befehlszeilenschnittstelle zu installieren:
 
-   1. Installieren Sie die klassische Azure-Befehlszeilenschnittstelle (Azure-CLI), wie unter [Installieren der klassischen Azure CLI][azure-cli] beschrieben.
+   1. Installieren Sie die klassische Azure-Befehlszeilenschnittstelle (Azure CLI), wie unter [Installieren der klassischen Azure CLI][azure-cli] beschrieben.
    1. Melden Sie sich mit Ihrem Azure-Konto an:
 
       ```
@@ -990,7 +990,7 @@ Gehen Sie wie folgt vor, um die Azure-Erweiterung zur verbesserten Überwachung 
 
 1. So führen Sie eine Installation mit der Azure CLI 2.0 aus
 
-   1. Installieren Sie die Azure CLI 2.0 wie [in diesem Artikel][azure-cli-2] beschrieben.
+   1. Installieren Sie die Azure CLI 2.0 wie unter [Installieren der Azure CLI 2.0][azure-cli-2] beschrieben.
    1. Melden Sie sich mit Ihrem Azure-Konto an:
 
       ```
@@ -1027,7 +1027,7 @@ Gehen Sie wie folgt vor, um die Azure-Erweiterung zur verbesserten Überwachung 
 
 Nachdem Sie den virtuellen Azure-Computer bereitgestellt und die entsprechende Azure-Überwachungsinfrastruktur eingerichtet haben, sollten Sie überprüfen, ob alle Komponenten der Azure-Erweiterung für die verbesserte Überwachung wie erwartet funktionieren.
 
-Führen Sie die Bereitschaftsprüfung für die Azure-Erweiterung zur verbesserten Überwachung für SAP wie unter [Bereitschaftsprüfung für die Azure-Erweiterung zur verbesserten Überwachung für SAP][deployment-guide-5.1] beschrieben durch. Wenn alle Ergebnisse der Bereitschaftsprüfung positiv ausfallen und alle relevanten Leistungsindikatoren in Ordnung sind, war die Einrichtung der Azure-Überwachung erfolgreich. Sie können mit der Installation des SAP Host Agent fortfahren, wie in den SAP-Hinweisen unter [SAP-Ressourcen][deployment-guide-2.2] beschrieben. Wenn für die Bereitschaftsprüfung das Fehlen von Leistungsindikatoren angezeigt werden, führen Sie den Integritätstest für die Azure-Überwachungsinfrastruktur durch. Dies ist unter [Integritätsprüfung der Konfiguration für die Azure-Überwachungsinfrastruktur][deployment-guide-5.2] beschrieben. Weitere Optionen der Problembehandlung finden Sie unter [Problembehandlung für die Azure-Überwachungsinfrastruktur für SAP][deployment-guide-5.3].
+Führen Sie die Bereitschaftsprüfung für die Azure-Erweiterung zur verbesserten Überwachung für SAP wie unter [Bereitschaftsprüfung für die Azure-Erweiterung zur verbesserten Überwachung für SAP][deployment-guide-5.1] beschrieben durch. Wenn alle Ergebnisse der Bereitschaftsprüfung positiv ausfallen und alle relevanten Leistungsindikatoren in Ordnung sind, war die Einrichtung der Azure-Überwachung erfolgreich. Sie können mit der Installation des SAP Host Agent fortfahren, wie in den SAP-Hinweisen unter „SAP-Ressourcen“ beschrieben.. If all readiness check results are positive and all relevant performance counters appear OK, Azure monitoring has been set up successfully. You can proceed with the installation of SAP Host Agent as described in the SAP Notes in [SAP resources][deployment-guide-2.2] Wenn für die Bereitschaftsprüfung das Fehlen von Leistungsindikatoren angezeigt werden, führen Sie den Integritätstest für die Azure-Überwachungsinfrastruktur durch. Dies ist unter [Integritätsprüfung der Konfiguration für die Azure-Überwachungsinfrastruktur][deployment-guide-5.2] beschrieben. Weitere Optionen zum Troubleshooting finden Sie unter [Problembehandlung für die Azure-Überwachung für SAP][deployment-guide-5.3].
 
 ### <a name="bb61ce92-8c5c-461f-8c53-39f5e5ed91f2"></a>Bereitschaftsprüfung für die Azure-Erweiterung zur verbesserten Überwachung für SAP
 
@@ -1126,11 +1126,11 @@ Führen Sie diese zusätzliche Überprüfungen durch, wenn die vorherige Überpr
 
 Wenn bereits ein SAP NetWeaver ABAP-Anwendungsserver installiert ist, öffnen Sie die Transaktion ST06, und überprüfen Sie, ob die verbesserte Überwachung aktiviert ist.
 
-Falls eine dieser Überprüfungen einen Fehler ergibt und Sie ausführliche Informationen zur Bereitstellung der Erweiterung benötigen, hilft Ihnen der Artikel [Problembehandlung für die Azure-Überwachungsinfrastruktur für SAP][deployment-guide-5.3] weiter.
+Falls eine dieser Überprüfungen einen Fehler verursacht und Sie ausführliche Informationen zur Bereitstellung der Erweiterung benötigen, lesen Sie unter [Problembehandlung für die Azure-Überwachungsinfrastruktur für SAP][deployment-guide-5.3] nach.
 
 ### <a name="e2d592ff-b4ea-4a53-a91a-e5521edb6cd1"></a>Integritätsprüfung der Konfiguration für die Azure-Überwachungsinfrastruktur
 
-Wenn einige Überwachungsdaten gemäß der Beschreibung des Tests unter [Bereitschaftsprüfung für die Azure-Erweiterung zur verbesserten Überwachung für SAP][deployment-guide-5.1] nicht richtig bereitgestellt werden, können Sie das `Test-AzVMAEMExtension`-Cmdlet ausführen. Mit diesem Cmdlet können Sie überprüfen, ob die Azure-Überwachungsinfrastruktur und die Überwachungserweiterung für SAP richtig konfiguriert sind.
+Wenn einige Überwachungsdaten gemäß der Beschreibung des Tests unter [Bereitschaftsprüfung für die Azure-Erweiterung zur verbesserten Überwachung für SAP][deployment-guide-5.1] nicht richtig bereitgestellt werden, können Sie das Cmdlet `Test-AzVMAEMExtension` ausführen. Mit diesem Cmdlet können Sie überprüfen, ob die Azure-Überwachungsinfrastruktur und die Überwachungserweiterung für SAP richtig konfiguriert sind.
 
 1. Achten Sie darauf, dass die neueste Version des Azure PowerShell-Cmdlets gemäß [Bereitstellen von Azure PowerShell-Cmdlets][deployment-guide-4.1] installiert ist.
 1. Führen Sie das folgende PowerShell-Cmdlet aus. Führen Sie zum Anzeigen der Liste mit den verfügbaren Umgebungen das `Get-AzEnvironment`-Cmdlet aus. Wählen Sie die Umgebung **AzureCloud** aus, um globales Azure zu verwenden. Wählen Sie für Azure in China die Option **AzureChinaCloud**.
@@ -1149,7 +1149,7 @@ Wenn einige Überwachungsdaten gemäß der Beschreibung des Tests unter [Bereits
 
    ![Ausgabe eines erfolgreichen Tests der Azure-Überwachungsinfrastruktur für SAP][deployment-guide-figure-1300]
 
-Stellen Sie sicher, dass das Ergebnis für jede Integritätsprüfung **OK** lautet. Gehen Sie wie folgt vor, wenn für einige Prüfungen nicht **OK** angezeigt wird: Führen Sie das update-Cmdlet wie unter [Konfigurieren der Azure-Erweiterung zur verbesserten Überwachung für SAP][deployment-guide-4.5] beschrieben aus. Warten Sie 15 Minuten, und wiederholen Sie dann die Tests, die unter [Bereitschaftsprüfung für die Azure-Erweiterung zur verbesserten Überwachung für SAP][deployment-guide-5.1] und [Integritätsprüfung der Konfiguration für die Azure-Überwachungsinfrastruktur][deployment-guide-5.2] beschrieben sind. Falls die Tests weiterhin für einige oder alle Indikatoren Probleme melden, hilft Ihnen der Abschnitt [Problembehandlung für die Azure-Überwachungsinfrastruktur für SAP][deployment-guide-5.3] weiter.
+Stellen Sie sicher, dass das Ergebnis für jede Integritätsprüfung **OK** lautet. Gehen Sie wie folgt vor, wenn für einige Prüfungen nicht **OK** angezeigt wird: Führen Sie das update-Cmdlet wie unter [Konfigurieren der Azure-Erweiterung zur verbesserten Überwachung für SAP][deployment-guide-4.5] beschrieben aus. Warten Sie 15 Minuten, und wiederholen Sie dann die Tests, die unter „Bereitschaftsprüfung für die Azure-Erweiterung zur verbesserten Überwachung für SAP“ und [Integritätsprüfung der Konfiguration für die Azure-Überwachungsinfrastruktur][deployment-guide-5.2] beschrieben sind.. Wait 15 minutes, and repeat the checks described in [Readiness check for Azure Enhanced Monitoring for SAP][deployment-guide-5.1] Falls die Tests weiterhin für einige oder alle Indikatoren Probleme melden, lesen Sie unter [Problembehandlung für die Azure-Überwachungsinfrastruktur für SAP][deployment-guide-5.3] nach.
 
 > [!Note]
 > Möglicherweise treten einige Warnungen auf, wenn Sie verwaltete Azure-Standarddatenträger verwenden. Die Tests geben nicht „OK“ zurück, stattdessen werden Warnungen angezeigt. Dies ist normal und im Fall dieses Datenträgertyps beabsichtigt. Weitere Informationen finden Sie unter [Problembehandlung für die Azure-Überwachungsinfrastruktur für SAP][deployment-guide-5.3].
@@ -1243,4 +1243,4 @@ Leistungsmetriken werden in Azure über einen Daemon erfasst, der Daten aus mehr
 
 Eine vollständige und aktuelle Liste mit bekannten Problemen finden Sie im SAP-Hinweis [1999351], der zusätzliche Informationen zur Problembehandlung für die Azure-Erweiterung zur verbesserten Überwachung für SAP enthält.
 
-Führen Sie das Konfigurationsskript `Set-AzVMAEMExtension` wie unter [Konfigurieren der Azure-Erweiterung zur verbesserten Überwachung für SAP][deployment-guide-4.5] beschrieben aus, falls die Problembehandlung mithilfe von SAP-Hinweis [1999351] nicht zur Lösung des Problems führt. Unter Umständen ist eine Wartezeit von einer Stunde erforderlich, da Speicheranalyse- und Diagnoseindikatoren ggf. nicht sofort nach der Aktivierung erstellt werden. Falls das Problem weiterhin besteht, öffnen Sie eine SAP-Kundendienstmeldung für die Komponente BC-OP-NT-AZR für virtuelle Windows-Computer oder BC-OP-LNX-AZR für virtuelle Linux-Computer.
+Führen Sie das Konfigurationsskript `Set-AzVMAEMExtension` wie unter [Konfigurieren der Azure-Erweiterung zur verbesserten Überwachung für SAP][deployment-guide-4.5] beschrieben erneut aus, falls die Problembehandlung mithilfe von SAP-Hinweis [1999351] nicht zur Lösung des Problems führt. Unter Umständen ist eine Wartezeit von einer Stunde erforderlich, da Speicheranalyse- und Diagnoseindikatoren ggf. nicht sofort nach der Aktivierung erstellt werden. Falls das Problem weiterhin besteht, öffnen Sie eine SAP-Kundendienstmeldung für die Komponente BC-OP-NT-AZR für virtuelle Windows-Computer oder BC-OP-LNX-AZR für virtuelle Linux-Computer.

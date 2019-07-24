@@ -4,7 +4,7 @@ description: Hochverfügbarkeit für NFS auf Azure-VMs unter SUSE Linux Enterpri
 services: virtual-machines-windows,virtual-network,storage
 documentationcenter: saponazure
 author: mssedusch
-manager: jeconnoc
+manager: gwallace
 editor: ''
 tags: azure-resource-manager
 keywords: ''
@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 03/15/2019
 ms.author: sedusch
-ms.openlocfilehash: ed92be0c1968d8f8a931d59d2dadefbbb12f2100
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 93644b9a3487906a27db70bfe82cceccdc7ab45c
+ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64925743"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67707225"
 ---
 # <a name="high-availability-for-nfs-on-azure-vms-on-suse-linux-enterprise-server"></a>Hochverfügbarkeit für NFS auf Azure-VMs unter SUSE Linux Enterprise Server
 
@@ -52,7 +52,7 @@ ms.locfileid: "64925743"
 [sap-hana-ha]:sap-hana-high-availability.md
 
 In diesem Artikel werden das Bereitstellen und Konfigurieren der virtuellen Computer, das Installieren des Clusterframeworks und das Installieren eines hochverfügbaren NFS-Servers, auf dem die freigegebenen Daten eines hochverfügbaren SAP-Systems gespeichert werden können, beschrieben.
-In dieser Anleitung wird beschrieben, wie ein hochverfügbarer NFS-Server eingerichtet wird, der von zwei SAP-Systemen verwendet wird: NW1 und NW2. Bezüglich der Namen der Ressourcen (z.B. virtuelle Computer, virtuelle Netzwerke) im Beispiel wird davon ausgegangen, dass Sie die [SAP-Dateiservervorlage][template-file-server] mit dem Ressourcenpräfix **prod** verwendet haben.
+In dieser Anleitung wird beschrieben, wie ein hochverfügbarer NFS-Server eingerichtet wird, der von zwei SAP-Systemen verwendet wird: NW1 und NW2. Bezüglich der Namen der Ressourcen (z. B. virtuelle Computer, virtuelle Netzwerke) im Beispiel wird davon ausgegangen, dass Sie die [SAP-Dateiservervorlage][template-file-server] mit dem Ressourcenpräfix **prod** verwendet haben.
 
 Lesen Sie zuerst die folgenden SAP Notes und Dokumente:
 
@@ -71,13 +71,13 @@ Lesen Sie zuerst die folgenden SAP Notes und Dokumente:
 * SAP-Hinweis [1984787] enthält allgemeine Informationen zu SUSE Linux Enterprise Server 12.
 * SAP-Hinweis [1999351] enthält Informationen zur Problembehandlung für die Azure-Erweiterung zur verbesserten Überwachung für SAP.
 * Das [WIKI der SAP-Community](https://wiki.scn.sap.com/wiki/display/HOME/SAPonLinuxNotes) enthält alle erforderlichen SAP-Hinweise für Linux.
-* [SAP NetWeaver auf virtuellen Azure-Computern – Planungs- und Implementierungshandbuch][planning-guide]
-* [Bereitstellung von Azure Virtual Machines für SAP unter Linux (dieser Artikel)][deployment-guide]
-* [SAP NetWeaver auf virtuellen Azure-Computern – DBMS-Bereitstellungshandbuch][dbms-guide]
+* [Azure Virtual Machines – Planung und Implementierung für SAP unter Linux][planning-guide]
+* [Azure Virtual Machines – Bereitstellung für SAP unter Linux (dieser Artikel)][deployment-guide]
+* [Azure Virtual Machines – DBMS-Bereitstellung für SAP unter Linux][dbms-guide]
 * [Leitfäden für bewährte Methoden zu SUSE Linux Enterprise High Availability Extension 12 SP3][sles-hae-guides]
   * Hochverfügbarer NFS-Speicher mit DRBD und Pacemaker
 * [Leitfäden für bewährte Methoden zu SUSE Linux Enterprise Server für SAP-Anwendungen 12 SP3][sles-for-sap-bp]
-* [SUSE-Erweiterung für hohe Verfügbarkeit 12 SP3 – Versionshinweise][suse-ha-12sp3-relnotes]
+* [SUSE High Availability Extension 12 SP3 Release Notes][suse-ha-12sp3-relnotes] (Versionshinweise zur SUSE-Hochverfügbarkeitserweiterung 12 SP3)
 
 ## <a name="overview"></a>Übersicht
 
@@ -539,8 +539,8 @@ Die folgenden Elemente sind mit einem der folgenden Präfixe versehen: **[A]** �
 ## <a name="next-steps"></a>Nächste Schritte
 
 * [Installieren der SAP ASCS-Instanz und der SAP-Datenbank](high-availability-guide-suse.md)
-* [SAP NetWeaver auf virtuellen Azure-Computern – Planungs- und Implementierungshandbuch][planning-guide]
-* [Bereitstellung von Azure Virtual Machines für SAP][deployment-guide]
-* [SAP NetWeaver auf virtuellen Azure-Computern – DBMS-Bereitstellungshandbuch][dbms-guide]
+* [Azure Virtual Machines – Planung und Implementierung für SAP][planning-guide]
+* [Azure Virtual Machines – Bereitstellung für SAP][deployment-guide]
+* [Azure Virtual Machines – DBMS-Bereitstellung für SAP][dbms-guide]
 * Informationen zur Erzielung von Hochverfügbarkeit und zur Planung der Notfallwiederherstellung für SAP HANA in Azure (große Instanzen) finden Sie unter [Hochverfügbarkeit und Notfallwiederherstellung für SAP HANA in Azure (große Instanzen)](hana-overview-high-availability-disaster-recovery.md).
 * Informationen zur Erzielung von Hochverfügbarkeit und zur Planung der Notfallwiederherstellung für SAP HANA auf Azure-VMs finden Sie unter [Hochverfügbarkeit für SAP HANA auf Azure Virtual Machines (VMs)][sap-hana-ha].

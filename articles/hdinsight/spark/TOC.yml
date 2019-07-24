@@ -356,7 +356,7 @@
     - name: Unternehmenssicherheit
       items:
         - name: Übersicht
-          href: ../domain-joined/apache-domain-joined-introduction.md
+          href: ../domain-joined/hdinsight-security-overview.md
         - name: Planen der Unternehmenssicherheit
           href: ../domain-joined/apache-domain-joined-architecture.md
         - name: Konfigurieren der Unternehmenssicherheit in HDInsight

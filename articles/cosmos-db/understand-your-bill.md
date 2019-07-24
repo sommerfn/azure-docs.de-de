@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 05/21/2019
 ms.author: rimman
 ms.reviewer: sngun
-ms.openlocfilehash: a097539e51aa2a2130dead236d553d60f2ebb89d
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: d30cd92456218284326263d7bd3c9c7820fa435c
+ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65965662"
+ms.lasthandoff: 07/07/2019
+ms.locfileid: "67621293"
 ---
 # <a name="understand-your-azure-cosmos-db-bill"></a>Grundlegendes zu Ihrer Azure Cosmos DB-Rechnung
 
@@ -21,6 +21,8 @@ Als vollständig verwalteter cloudnativer Datenbankdienst vereinfacht Azure Cosm
 Azure Cosmos DB wird auf Stundenbasis und auf Grundlage des bereitgestellten Durchsatzes und des genutzten Speichers berechnet. Die Einheit für die Berechnung des bereitgestellten Durchsatzes ist 100 RUs/Sek., die – öffentliche Standardpreise vorausgesetzt – mit 0,008 US-Dollar pro Stunde abgerechnet wird (siehe [Preise](https://azure.microsoft.com/pricing/details/cosmos-db/)). Der genutzte Speicher wird mit 0,25 US-Dollar pro 1 GB Speicher/Monat in Rechnung gestellt (siehe [Preise](https://azure.microsoft.com/pricing/details/cosmos-db/)). 
 
 Dieser Artikel enthält einige Beispiele, damit die einzelnen Positionen auf der monatlichen Rechnung besser verständlich sind. Die in den Beispielen genannten Zahlen können von Ihren Zahlen abweichen, wenn Sie für Ihre Azure Cosmos-Container eine andere Menge als bereitgestellten Umsatz ausgewählt haben, die Container sich über mehrere Regionen erstrecken oder ein anderer Ausführungszeitraum abgerechnet wird (z. B. mehr als ein Monat).
+
+>!Hinweis: Die Abrechnung erfolgt für einen beliebigen Teil einer Stunde, nicht die Dauer von 60 Minuten.
 
 ## <a name="billing-examples"></a>Abrechnungsbeispiele
 
@@ -236,7 +238,7 @@ Ihre Gesamtrechnung (ohne reservierte Kapazität) sähe wie folgt aus (30 Tage o
 
 |**Region**| **Stundenpreis pro 100 RUs/Sek.**|**Einheiten (RUs/Sek.)**|**Rechnungsbetrag (pro Stunde)**| **Rechnungsbetrag (pro Monat)**|
 |----|----|----|----|----|
-|USA (Ost)|0,008 US-Dollar |50.000|4 US-Dollar|2\.880 US-Dollar |
+|East US|0,008 US-Dollar |50.000|4 US-Dollar|2\.880 US-Dollar |
 |Japan, Osten|0,009 US-Dollar |50.000| 4,50 US-Dollar |3\.240 US-Dollar |
 |Gesamt|||8,50 US-Dollar|6\.120 US-Dollar |
 
@@ -250,7 +252,7 @@ Was Sie tatsächlich erworben haben, ist ein Guthaben von 8 US-Dollar pro Stunde
 
 |**Region**| **Stundenpreis pro 100 RUs/Sek.**|**Einheiten (RUs/Sek.)**| **Rechnungsbetrag (pro Stunde)**| **Rechnungsbetrag (pro Monat)**|
 |----|----|----|----|----|
-|USA (Ost)|0,008 US-Dollar |50.000|4 US-Dollar|2\.880 US-Dollar |
+|East US|0,008 US-Dollar |50.000|4 US-Dollar|2\.880 US-Dollar |
 |Japan, Osten|0,009 US-Dollar |50.000| 4,50 US-Dollar |3\.240 US-Dollar |
 |||Nutzungsbasierte Bezahlung|8,50 US-Dollar|6\.120 US-Dollar|
 |Erworbene reservierte Kapazität|0,0064 US-Dollar (20 % Rabatt) |Kapazität im Wert von 100 RUs/Sek. bzw. 8 US-Dollar vorab erworben |\- 8 US-Dollar|\- 5.760 US-Dollar |
