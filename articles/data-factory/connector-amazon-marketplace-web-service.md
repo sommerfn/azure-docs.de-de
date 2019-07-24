@@ -46,7 +46,7 @@ Folgende Eigenschaften werden für den mit Amazon Marketplace Web Service verkn�
 |:--- |:--- |:--- |
 | type | Die type-Eigenschaft muss auf Folgendes festgelegt werden: **AmazonMWS** | Ja |
 | endpoint | Der Endpunkt des Amazon MWS-Servers (mws.amazonservices.com).  | Ja |
-| marketplaceID | Die Amazon Marketplace-ID, aus der Daten abgerufen werden sollen. Um Daten von mehreren Marketplace-IDs abzurufen, trennen Sie diese durch ein Komma (`,`). (d.h. A2EUQ1WTGCTBG2)  | Ja |
+| marketplaceID | Die Amazon Marketplace ID, aus der Daten abgerufen werden sollen. Um Daten von mehreren Marketplace-IDs abzurufen, trennen Sie diese durch ein Komma (`,`). (d.h. A2EUQ1WTGCTBG2)  | Ja |
 | sellerID | Die Amazon-Verkäufer-ID.  | Ja |
 | mwsAuthToken | Das Amazon MWS-Authentifizierungstoken. Markieren Sie dieses Feld als SecureString, um es sicher in Data Factory zu speichern, oder [verweisen Sie auf ein in Azure Key Vault gespeichertes Geheimnis](store-credentials-in-key-vault.md). | Ja |
 | accessKeyId | Die Zugriffsschlüssel-ID, mit der auf Daten zugegriffen wird.  | Ja |
