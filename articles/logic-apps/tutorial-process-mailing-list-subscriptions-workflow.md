@@ -10,12 +10,12 @@ ms.reviewer: klam, LADocs
 ms.topic: tutorial
 ms.custom: mvc
 ms.date: 01/12/2018
-ms.openlocfilehash: b48ecce1c87c0a29996e437d621c3ce396a84856
-ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
+ms.openlocfilehash: 2b28c38d2444f227d26df1f9ca2d70876ff41064
+ms.sourcegitcommit: a6873b710ca07eb956d45596d4ec2c1d5dc57353
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50232663"
+ms.lasthandoff: 07/16/2019
+ms.locfileid: "68260597"
 ---
 # <a name="manage-mailing-list-requests-with-azure-logic-apps"></a>Verwalten von Adressenlistenanforderungen mit Azure Logic Apps
 
@@ -79,7 +79,7 @@ Jede Logik-App beginnt mit einem Trigger, der ausgelöst wird, wenn ein bestimmt
 
 1. Geben Sie in das Suchfeld des Designers den Text „Wenn E-Mail empfangen wird“ ein. Wählen Sie den folgenden Trigger für Ihren E-Mail-Anbieter aus: **<*Ihr E-Mail-Anbieter*> - Wenn eine neue E-Mail empfangen wird**
    
-   ![Auswählen des Triggers „Wenn eine neue E-Mail empfangen wird“ für den E-Mail-Anbieter](./media/tutorial-process-mailing-list-subscriptions-workflow/add-trigger-new-email.png)
+   ![Wählen Sie den folgenden Trigger für den E-Mail-Anbieter aus: „When a new email arrives“ (Wenn eine neue E-Mail eingeht)](./media/tutorial-process-mailing-list-subscriptions-workflow/add-trigger-new-email.png)
 
    * Wählen Sie für Geschäfts-, Schul- oder Unikonten für Azure die Option „Office 365 Outlook“.
    * Wählen Sie für persönliche Microsoft-Konten die Option „Outlook.com“.
@@ -126,9 +126,9 @@ Nachdem Sie nun über einen Trigger verfügen, fügen Sie als Nächstes eine [Ak
 
    | Einstellung | Wert | BESCHREIBUNG | 
    | ------- | ----- | ----------- | 
-   | **An** | <*E-Mail-Adresse der genehmigenden Person*> | Die E-Mail-Adresse der genehmigenden Person. Zu Testzwecken können Sie hier Ihre eigene Adresse angeben. | 
+   | **To** | <*E-Mail-Adresse der genehmigenden Person*> | Die E-Mail-Adresse der genehmigenden Person. Zu Testzwecken können Sie hier Ihre eigene Adresse angeben. | 
    | **Benutzeroptionen** | Genehmigen, Ablehnen | Die Antwortoptionen, zwischen denen die genehmigende Person wählen kann. Standardmäßig kann die genehmigende Person zwischen „Genehmigen“ und „Ablehnen“ wählen. | 
-   | **Betreff** | Approve member request for test-members-ML | Ein aussagekräftiger E-Mail-Betreff. | 
+   | **Subject** | Approve member request for test-members-ML | Ein aussagekräftiger E-Mail-Betreff. | 
    |  |  |  | 
 
    Ignorieren Sie vorerst die Liste mit den dynamischen Inhalten oder die Inlineparameterliste, die beim Klicken auf bestimmte Bearbeitungsfelder angezeigt wird. 
@@ -147,7 +147,7 @@ Fügen Sie als Nächstes eine Bedingung hinzu, die überprüft, welche Antwort d
 
 2. Versehen Sie die Bedingung mit einem aussagekräftigeren Namen.
 
-   1. Klicken Sie auf der Titelleiste der Bedingung auf die **Schaltfläche mit den Auslassungspunkten** (**...**) und anschließend auf **Umbenennen**.
+   1. Klicken Sie auf der Titelleiste der Bedingung auf die **Schaltfläche mit den Auslassungspunkten** ( **...** ) und anschließend auf **Umbenennen**.
 
       Beispiel für die schmale Browseransicht:
 
@@ -183,7 +183,7 @@ Geben Sie als Nächstes die Aktion an, die Ihre Logik-App ausführen soll, wenn 
 Fügen Sie nun eine Aktion hinzu, die das genehmigte Mitglied Ihrer Adressenliste hinzufügt.
 
 1. Klicken in der Bedingungsverzweigung **Bei TRUE** auf **Aktion hinzufügen**.
-Suchen Sie nach „mailchimp“, und wählen Sie die folgende Aktion aus: **MailChimp - Mitglied zu Liste hinzufügen**
+Suchen Sie nach „mailchimp“, und wählen Sie diese Aktion aus: **MailChimp - Mitglied zu Liste hinzufügen**
 
    ![Auswählen von „MailChimp - Mitglied zu Liste hinzufügen“](./media/tutorial-process-mailing-list-subscriptions-workflow/add-action-mailchimp-add-member.png)
 
@@ -206,7 +206,7 @@ Fügen Sie als Nächstes eine Bedingung hinzu, um zu prüfen, ob das neue Mitgli
 
 ## <a name="check-for-success-or-failure"></a>Überprüfen, ob der Vorgang erfolgreich war
 
-1. Klicken Sie in der Verzweigung **Bei TRUE** unter der Aktion **Mitglied zu Liste hinzufügen** auf **Mehr...** > **Bedingung hinzufügen**.
+1. Klicken Sie in der Verzweigung **Bei TRUE** unter der Aktion **Mitglied zu Liste hinzufügen** auf **Mehr...**  > **Bedingung hinzufügen**.
 
 2. Nennen Sie die Bedingung wie folgt: ```If add member succeeded```
 
@@ -247,8 +247,8 @@ Richten Sie als Nächstes die E-Mails ein, die gesendet werden sollen, wenn das 
 
    | Einstellung | Wert | BESCHREIBUNG | 
    | ------- | ----- | ----------- | 
-   | **An** | <*Ihre E-Mail-Adresse*> | Die E-Mail-Adresse, an die die Erfolgs-E-Mail gesendet werden soll. Zu Testzwecken können Sie hier Ihre eigene E-Mail-Adresse angeben. | 
-   | **Betreff** | <*Betreff der Erfolgs-E-Mail*> | Der Betreff der Erfolgs-E-Mail. Geben Sie für dieses Tutorial unter **Mitglied zu Liste hinzufügen** den folgenden Text ein, und wählen Sie in der Parameterliste oder in der Liste mit den dynamischen Inhalten das angegebene Feld aus: <p>Mitglied erfolgreich zu „test-members-ML“ hinzugefügt: **E-Mail-Adresse** | 
+   | **To** | <*Ihre E-Mail-Adresse*> | Die E-Mail-Adresse, an die die Erfolgs-E-Mail gesendet werden soll. Zu Testzwecken können Sie hier Ihre eigene E-Mail-Adresse angeben. | 
+   | **Subject** | <*Betreff der Erfolgs-E-Mail*> | Der Betreff der Erfolgs-E-Mail. Geben Sie für dieses Tutorial unter **Mitglied zu Liste hinzufügen** den folgenden Text ein, und wählen Sie in der Parameterliste oder in der Liste mit den dynamischen Inhalten das angegebene Feld aus: <p>Mitglied erfolgreich zu „test-members-ML“ hinzugefügt: **E-Mail-Adresse** | 
    | **Text** | <*Text für Erfolgs-E-Mail*> | Der Inhalt der Erfolgs-E-Mail. Geben Sie für dieses Tutorial unter **Mitglied zu Liste hinzufügen** den folgenden Text ein, und wählen Sie in der Parameterliste oder in der Liste mit den dynamischen Inhalten die angegebenen Felder aus:  <p>Ein neues Mitglied wurde in „test-members-ML“ aufgenommen: **E-Mail-Adresse**</br>Abonnementstatus des Mitglieds: **Status** | 
    | | | | 
 
@@ -272,8 +272,8 @@ Richten Sie als Nächstes die E-Mails ein, die gesendet werden sollen, wenn das 
 
    | Einstellung | Wert | BESCHREIBUNG | 
    | ------- | ----- | ----------- | 
-   | **An** | <*Ihre E-Mail-Adresse*> | Die E-Mail-Adresse, an die die Fehler-E-Mail gesendet werden soll. Zu Testzwecken können Sie hier Ihre eigene E-Mail-Adresse angeben. | 
-   | **Betreff** | <*Betreff für Fehler-E-Mail*> | Der Betreff der Fehler-E-Mail. Geben Sie für dieses Tutorial unter **Mitglied zu Liste hinzufügen** den folgenden Text ein, und wählen Sie in der Parameterliste oder in der Liste mit den dynamischen Inhalten das angegebene Feld aus: <p>Fehler: Mitglied wurde „test-members-ML“ nicht hinzugefügt: **E-Mail-Adresse** | 
+   | **To** | <*Ihre E-Mail-Adresse*> | Die E-Mail-Adresse, an die die Fehler-E-Mail gesendet werden soll. Zu Testzwecken können Sie hier Ihre eigene E-Mail-Adresse angeben. | 
+   | **Subject** | <*Betreff für Fehler-E-Mail*> | Der Betreff der Fehler-E-Mail. Geben Sie für dieses Tutorial unter **Mitglied zu Liste hinzufügen** den folgenden Text ein, und wählen Sie in der Parameterliste oder in der Liste mit den dynamischen Inhalten das angegebene Feld aus: <p>Fehler: Mitglied wurde „test-members-ML“ nicht hinzugefügt: **E-Mail-Adresse** | 
    | **Text** | <*Text für Fehler-E-Mail*> | Der Inhalt der Fehler-E-Mail. Geben Sie für dieses Tutorial den folgenden Text ein: <p>Das Mitglied ist möglicherweise bereits vorhanden. Überprüfen Sie Ihr MailChimp-Konto. | 
    | | | | 
 

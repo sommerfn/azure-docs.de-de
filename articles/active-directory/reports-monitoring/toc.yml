@@ -27,6 +27,8 @@
       href: tutorial-azure-monitor-stream-logs-to-event-hub.md
 - name: Konzepte
   items:
+    - name: Planen einer Bereitstellung für Berichterstellung und Überwachung
+      href: plan-monitoring-and-reporting.md
     - name: Überwachungsprotokolle
       href: concept-audit-logs.md
     - name: Anmeldeprotokolle

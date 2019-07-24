@@ -2,17 +2,17 @@
 title: Best Practices für Operator – Identität in Azure Kubernetes Service (AKS)
 description: Lernen Sie die Best Practices für Clusteroperator zum Verwalten der Authentifizierung und Autorisierung für Cluster in Azure Kubernetes Service (AKS) kennen.
 services: container-service
-author: iainfoulds
+author: mlearned
 ms.service: container-service
 ms.topic: conceptual
 ms.date: 04/24/2019
-ms.author: iainfou
-ms.openlocfilehash: f98e38556458b8d8a675d1e3f985aacfca022082
-ms.sourcegitcommit: 1289f956f897786090166982a8b66f708c9deea1
+ms.author: mlearned
+ms.openlocfilehash: 82bf59dddeecab0addf00a935f55be8d1d7952d3
+ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/17/2019
-ms.locfileid: "65074162"
+ms.lasthandoff: 07/07/2019
+ms.locfileid: "67614776"
 ---
 # <a name="best-practices-for-authentication-and-authorization-in-azure-kubernetes-service-aks"></a>Best Practices für die Authentifizierung und Autorisierung in Azure Kubernetes Service (AKS)
 
@@ -42,13 +42,13 @@ Mit Clustern mit Azure AD-Integration in AKS erstellen Sie *Rollen* oder *Cluste
 1. Die rollenbasierte Zugriffssteuerung (RBAC) in Kubernetes und Clusterrichtlinien werden angewendet.
 1. Ob die Anforderung des Entwicklers erfolgreich ist, hängt von der vorherigen Überprüfung der Azure AD-Gruppenmitgliedschaft sowie Kubernetes-RBAC und Richtlinien ab.
 
-Wie Sie einen AKS-Cluster erstellen, der Azure AD verwendet, erfahren Sie unter [Integrieren von Azure Active Directory in Azure Kubernetes Service][aks-aad].
+Wie Sie einen AKS-Cluster erstellen, der Azure AD verwendet, erfahren Sie unter [Integrieren von Azure Active Directory in Azure Kubernetes Service][aks-aad].
 
 ## <a name="use-role-based-access-controls-rbac"></a>Verwenden der rollenbasierten Zugriffssteuerung (Role-Based Access Control, RBAC)
 
 **Best Practice-Anleitung**: Verwenden Sie Kubernetes-RBAC zum Definieren der Berechtigungen von Benutzern oder Gruppen für Ressourcen im Cluster. Erstellen von Rollen und Bindungen, die die Mindestberechtigungen zuweisen. Führen Sie die Integration in Azure AD durch, sodass jede Änderung von Benutzerstatus oder Gruppenmitgliedschaft automatisch aktualisiert wird, und der Zugriff auf Clusterressourcen aktuell ist.
 
-In Kubernetes können Sie eine präzise Kontrolle des Zugriffs auf Ressourcen im Cluster bereitstellen. Berechtigungen können auf Clusterebene oder für bestimmte Namespaces definiert werden. Sie können definieren, welche Ressourcen mit welchen Berechtigungen verwaltet werden können. Diese Rollen werden dann für Benutzer oder Gruppen mit einer Bindung angewendet. Weitere Informationen zu *Rollen*, *ClusterRoles* und *Bindungen* finden Sie unter [Zugriffs- und Identitätsoptionen für Azure Kubernetes Service (AKS)][aks-concepts-identity].
+In Kubernetes können Sie eine präzise Kontrolle des Zugriffs auf Ressourcen im Cluster bereitstellen. Berechtigungen können auf Clusterebene oder für bestimmte Namespaces definiert werden. Sie können definieren, welche Ressourcen mit welchen Berechtigungen verwaltet werden können. Diese Rollen werden dann für Benutzer oder Gruppen mit einer Bindung angewendet. Weitere Informationen zu *Rollen*, *Clusterrollen* und *Bindungen* finden Sie unter [Zugriffs- und Identitätsoptionen für Azure Kubernetes Service (AKS)][aks-concepts-identity].
 
 Sie können beispielsweise eine Rolle erstellen, die vollen Zugriff auf Ressourcen im Namespace mit dem Namen *finance-app* gewährt, wie im folgenden Beispiel-YAML-Manifest gezeigt:
 
@@ -84,7 +84,7 @@ roleRef:
 
 Wenn *developer1\@contoso.com* für den AKS-Cluster authentifiziert wird, verfügt er über vollständige Berechtigungen für Ressourcen im *finance-app*-Namespace. So trennen Sie logisch den Zugriff auf Ressourcen und steuern ihn. Kubernetes-RBAC sollte in Verbindung mit Azure AD-Integration verwendet werden, wie im vorherigen Abschnitt erläutert.
 
-Informationen zur Verwendung von Azure AD-Gruppen zum Steuern des Zugriffs auf Kubernetes-Ressourcen mithilfe der rollenbasierten Zugriffssteuerung finden Sie unter [Steuern des Zugriffs auf Clusterressourcen per rollenbasierter Zugriffssteuerung und mit Azure Active Directory-Identitäten in Azure Kubernetes Service][azure-ad-rbac].
+Informationen zur Verwendung von Azure AD-Gruppen zum Steuern des Zugriffs auf Kubernetes-Ressourcen mithilfe der rollenbasierten Zugriffssteuerung finden Sie unter [Steuern des Zugriffs auf Clusterressourcen per rollenbasierter Zugriffssteuerung und mit Azure Active Directory-Identitäten in Azure Kubernetes Service][azure-ad-rbac].
 
 ## <a name="use-pod-identities"></a>Verwenden von Podidentitäten
 
@@ -111,7 +111,7 @@ Im folgenden Beispiel erstellt ein Entwickler einen Pod, der eine verwaltete Ide
 > [!NOTE]
 > Verwaltete Podidentitäten sind ein Open-Source-Projekt, das vom technischen Support von Azure nicht unterstützt wird.
 
-Wie Sie Podidentitäten verwenden, erfahren Sie unter [Azure Active Directory identities for Kubernetes applications (Azure Active Directory-Identitäten für Kubernetes-Anwendungen)][aad-pod-identity].
+Wie Sie Podidentitäten verwenden, erfahren Sie unter [Azure Active Directory identities for Kubernetes applications][aad-pod-identity] (Azure Active Directory-Identitäten für Kubernetes-Anwendungen).
 
 ## <a name="next-steps"></a>Nächste Schritte
 
@@ -122,9 +122,9 @@ Dieser Best Practices-Artikel konzentriert sich auf Authentifizierung und Autori
 
 Weitere Informationen zu Clustervorgängen in AKS finden Sie in den folgenden Best Practices:
 
-* [Mehrinstanzenfähigkeit und Clusterisolation][aks-best-practices-scheduler]
-* [Grundlegende Funktionen des Kubernetes-Schedulers][aks-best-practices-scheduler]
-* [Erweiterte Funktionen des Kubernetes-Schedulers][aks-best-practices-advanced-scheduler]
+* [Best Practices für Clusterisolierung in Azure Kubernetes Service (AKS)][aks-best-practices-scheduler]
+* [Best Practices für grundlegende Schedulerfunktionen in Azure Kubernetes Service (AKS)][aks-best-practices-scheduler]
+* [Best Practices für erweiterte Schedulerfunktionen in Azure Kubernetes Service (AKS)][aks-best-practices-advanced-scheduler]
 
 <!-- EXTERNAL LINKS -->
 [aad-pod-identity]: https://github.com/Azure/aad-pod-identity

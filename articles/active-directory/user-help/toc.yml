@@ -74,6 +74,8 @@
           href: security-info-setup-text-msg.md
         - name: Einrichten von Telefonanrufen
           href: security-info-setup-phone-number.md
+        - name: Einrichten eines Sicherheitsschlüssels
+          href: security-info-setup-security-key.md
         - name: Einrichten einer E-Mail-Adresse
           href: security-info-setup-email.md
         - name: Einrichten von Sicherheitsfragen

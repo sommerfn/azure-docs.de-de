@@ -2,28 +2,31 @@
 title: include file
 description: include file
 services: virtual-machines
-author: jonbeck7
+author: cynthn
 ms.service: virtual-machines
 ms.topic: include
-ms.date: 05/02/2019
-ms.author: azcspmt;jonbeck;cynthn
+ms.date: 07/01/2019
+ms.author: cynthn
 ms.custom: include file
-ms.openlocfilehash: 24c2bfa4aae94642d3ed66f2cfa6e31ba1e6b19a
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: 30d71ed54e490be8c3a4b36cedbc0eda634323a1
+ms.sourcegitcommit: c0419208061b2b5579f6e16f78d9d45513bb7bbc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67457350"
+ms.lasthandoff: 07/08/2019
+ms.locfileid: "67626475"
 ---
-Kurzlebige Betriebssystem-Datenträger werden auf dem lokalen Speicher des virtuellen Computers (VM) erstellt und nicht auf dem externen Azure Storage gespeichert. Kurzlebige Betriebssystem-Datenträger eignen sich gut für zustandslose Workloads, bei denen Anwendungen einzelne VM-Ausfälle tolerieren, aber mehr Wert auf die Zeit legen, die für umfangreiche Bereitstellung oder die Zeit für das Reimaging der einzelnen VM-Instanzen benötigt wird. Sie eignen sich auch für Anwendungen, die mit dem klassischen Bereitstellungsmodell bereitgestellt werden, um zum Resource Manager-Bereitstellungsmodell zu wechseln. Mit einem kurzlebigen Betriebssystem-Datenträger sind eine geringere Latenzzeit für das Lesen/Schreiben auf dem Betriebssystem-Datenträger und ein schnelleres VM-Reimaging festzustellen. Darüber hinaus ist der kurzlebige Betriebssystem-Datenträger kostenlos, es fallen keine Speicherkosten für den Betriebssystem-Datenträger an. 
+Kurzlebige Betriebssystem-Datenträger werden auf dem lokalen Speicher des virtuellen Computers (VM) erstellt und nicht auf dem externen Azure Storage gespeichert. Kurzlebige Betriebssystem-Datenträger eignen sich gut für zustandslose Workloads, bei denen Anwendungen einzelne VM-Ausfälle tolerieren, sind aber stärker durch den Zeitpunkt der VM-Bereitstellung oder das Reimaging der einzelnen VM-Instanzen betroffen. Mit einem kurzlebigen Betriebssystem-Datenträger erzielen Sie eine geringere Latenzzeit für das Lesen/Schreiben auf dem Betriebssystem-Datenträger und schnelleres VM-Reimaging. 
  
 Die wichtigsten Features von kurzlebigen Datenträgern sind: 
-- Sie können sowohl mit Marketplace-Images als auch mit benutzerdefinierten Images verwendet werden.
-- Sie können VM-Images bis zur Größe des VM-Cache bereitstellen.
-- Möglichkeit, ihre VMs schnell zurückzusetzen oder in den ursprünglichen Startzustand zu versetzen.  
-- Geringere Runtimelatenz ähnlich wie bei einem temporären Datenträger. 
-- Keine Kosten für den Betriebssystem-Datenträger. 
+- Ideal für zustandslose Anwendungen geeignet.
+- Sie können sowohl mit Marketplace- als auch benutzerdefinierten Images verwendet werden.
+- Möglichkeit, VMs und Skalierungsgruppeninstanzen schnell zurückzusetzen oder in den ursprünglichen Startzustand zu versetzen.  
+- Geringere Latenz ähnlich wie bei einem temporären Datenträger. 
+- Kurzlebige Betriebssystem-Datenträger sind kostenlos, es fallen keine Speicherkosten für den Betriebssystem-Datenträger an.
+- Sie sind in allen Azure-Regionen verfügbar. 
+- Kurzlebige Betriebssystem-Datenträger werden von [Shared Image Gallery](/azure/virtual-machines/linux/shared-image-galleries) unterstützt. 
  
+
  
 Die Hauptunterschiede zwischen permanenten und kurzlebigen Betriebssystem-Datenträgern:
 
@@ -39,7 +42,57 @@ Die Hauptunterschiede zwischen permanenten und kurzlebigen Betriebssystem-Datent
 | Änderung der Betriebssystem-Datenträgergröße              | Wird während der VM-Erstellung und nach dem Aufheben der VM-Zuordnung unterstützt.                                | Wird nur während der VM-Erstellung unterstützt.                                                  |
 | Ändern der Größe auf eine neue VM-Größe   | Daten des Betriebssystem-Datenträgers werden beibehalten.                                                                    | Daten auf dem Betriebssystem-Datenträger werden gelöscht, Betriebssystem wird erneut bereitgestellt                                      |
 
-## <a name="scale-set-deployment"></a>Bereitstellung der Skalierungsgruppe  
+## <a name="size-requirements"></a>Größenanforderungen
+
+Sie können VM- und Instanzimages bis zur Größe des VM-Caches bereitstellen. Windows Server-Standardimages aus dem Marketplace sind beispielsweise etwa 127 GiB groß, was bedeutet, dass Sie eine VM-Größe mit einem Cache von mehr als 127 GiB benötigen. In diesem Fall hat [Standard_DS2_v2](/azure/virtual-machines/windows/sizes-general#dsv2-series) eine Cachegröße von 86 GiB und ist damit nicht groß genug. Standard_DS2_v2 eine Cachegröße von 172 GiB und ist damit groß genug. In diesem Fall ist Standard_DS3_v2 die kleinste Größe in der DSv2-Serie, die Sie mit diesem Image verwenden können. Einfache Linux-Images im Marketplace und Windows Server-Images, die mit `[smallsize]` gekennzeichnet sind, liegen in der Regel bei etwa 30 GiB und können die meisten der verfügbaren VM-Größen verwenden.
+
+Kurzlebige Datenträger erfordern außerdem, dass die VM-Größe Storage Premium unterstützt. Die Größen weisen in der Regel (aber nicht immer) ein `s` im Namen auf, z.B. DSv2- und EsV3. Ausführliche Informationen dazu, welche Größen Storage Premium unterstützen, finden Sie unter den [Größen für virtuelle Azure-Computer](../articles/virtual-machines/linux/sizes.md).
+
+## <a name="powershell"></a>PowerShell
+
+Wenn Sie einen kurzlebigen Datenträger für eine PowerShell-VM-Bereitstellung verwenden möchten, verwenden Sie [Set-AzVMOSDisk](/powershell/module/az.compute/set-azvmosdisk) in Ihrer VM-Konfiguration. Legen Sie `-DiffDiskSetting` auf `Local` und `-Caching` auf `ReadOnly` fest.     
+
+```powershell
+Set-AzVMOSDisk -DiffDiskSetting Local -Caching ReadOnly
+```
+
+Für Bereitstellungen von Skalierungsgruppen verwenden Sie das Cmdlet [Set-AzVmssStorageProfile](/powershell/module/az.compute/set-azvmssstorageprofile) in Ihrer Konfiguration. Legen Sie `-DiffDiskSetting` auf `Local` und `-Caching` auf `ReadOnly` fest.
+
+
+```powershell
+Set-AzVmssStorageProfile -DiffDiskSetting Local -OsDiskCaching ReadOnly
+```
+
+## <a name="cli"></a>Befehlszeilenschnittstelle (CLI)
+
+Wenn Sie einen kurzlebigen Datenträger für eine CLI-VM-Bereitstellung verwenden möchten, legen Sie den Parameter `--ephemeral-os-disk` in [az vm create](/cli/azure/vm#az-vm-create) auf `true` und den Parameter `--os-disk-caching` auf `ReadOnly` fest.
+
+```azurecli-interactive
+az vm create \
+  --resource-group myResourceGroup \
+  --name myVM \
+  --image UbuntuLTS \
+  --ephemeral-os-disk true \
+  --os-disk-caching ReadOnly \
+  --admin-username azureuser \
+  --generate-ssh-keys
+```
+
+Für Skalierungsgruppen verwenden Sie denselben Parameter `--ephemeral-os-disk true` für [az-vmss-create](/cli/azure/vmss#az-vmss-create) und legen den Parameter `--os-disk-caching` auf `ReadOnly` fest.
+
+## <a name="portal"></a>Portal   
+
+Im Azure-Portal können Sie die Verwendung kurzlebiger Datenträger beim Bereitstellen einer VM auswählen. Dazu öffnen Sie auf der Registerkarte **Datenträger** den Abschnitt **Erweitert**. Wählen Sie für **Kurzlebigen Betriebssystemdatenträger verwenden** die Option **Ja** aus.
+
+![Screenshot des Optionsfelds für die Verwendung eines kurzlebigen Betriebssystem-Datenträgers](./media/virtual-machines-common-ephemeral/ephemeral-portal.png)
+
+Wenn die Option für die Verwendung eines kurzlebigen Datenträgers abgeblendet ist, haben Sie möglicherweise eine VM-Größe gewählt, deren Cachegröße nicht größer als das Betriebssystemimage ist oder die Storage Premium nicht unterstützt. Kehren Sie zur Seite **Grundeinstellungen** zurück, und wählen Sie eine andere VM-Größe aus.
+
+Sie können Skalierungsgruppen mit kurzlebigen Betriebssystem-Datenträgern auch über das Portal erstellen. Achten Sie lediglich darauf, dass Sie eine VM-Größe mit ausreichender Cachegröße und dann für **Kurzlebigen Betriebssystemdatenträger verwenden** die Option **Ja** auswählen.
+
+![Screenshot des Optionsfelds für die Verwendung eines kurzlebigen Betriebssystem-Datenträgers für die Skalierungsgruppe](./media/virtual-machines-common-ephemeral/scale-set.png)
+
+## <a name="scale-set-template-deployment"></a>Vorlagenbereitstellung einer Skalierungsgruppe  
 Der Prozess zum Erstellen einer Skalierungsgruppe, die einen kurzlebigen Betriebssystem-Datenträger verwendet, besteht darin, die Eigenschaft `diffDiskSettings` zum Ressourcentyp `Microsoft.Compute/virtualMachineScaleSets/virtualMachineProfile` in der Vorlage hinzuzufügen. Außerdem muss die Cachingrichtlinie für den kurzlebigen Betriebssystem-Datenträger auf `ReadOnly` gesetzt werden. 
 
 
@@ -83,7 +136,7 @@ Der Prozess zum Erstellen einer Skalierungsgruppe, die einen kurzlebigen Betrieb
 }  
 ```
 
-## <a name="vm-deployment"></a>VM-Bereitstellung 
+## <a name="vm-template-deployment"></a>Vorlagenbereitstellung einer VM 
 Sie können eine VM mit einem kurzlebigen Betriebssystem-Datenträger mithilfe einer Vorlage bereitstellen. Der Prozess zum Erstellen einer VM, die kurzlebige Betriebssystem-Datenträger verwendet, besteht darin, die Eigenschaft `diffDiskSettings` zum Ressourcentyp „Microsoft.Compute/virtualMachines“ in der Vorlage hinzuzufügen. Außerdem muss die Cachingrichtlinie für den kurzlebigen Betriebssystem-Datenträger auf `ReadOnly` gesetzt werden. 
 
 ```json
@@ -133,7 +186,7 @@ id}/resourceGroups/{rgName}/providers/Microsoft.Compute/VirtualMachines/{vmName}
 
 **F: Wie groß sind lokale Betriebssystem-Datenträger?**
 
-A: Für die Vorschauversion unterstützen wir Plattformen und/oder Images bis zur Größe des VM-Cache, wobei alle Lese-/Schreibvorgänge auf dem Betriebssystem-Datenträger lokal auf dem gleichen Knoten wie die VM erfolgen. 
+A: Wir unterstützen Plattform- und benutzerdefinierte Images bis zur Größe des VM-Cache, wobei alle Lese-/Schreibvorgänge auf dem Betriebssystem-Datenträger lokal auf dem gleichen Knoten wie die VM erfolgen. 
 
 **F: Kann die Größe des kurzlebigen Betriebssystem-Datenträgers geändert werden?**
 

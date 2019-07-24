@@ -4,15 +4,15 @@ description: Beheben von Problemen bei der Konfiguration eines Mandanten und ein
 services: virtual-desktop
 author: ChJenk
 ms.service: virtual-desktop
-ms.topic: troubleshoot
-ms.date: 04/08/2019
+ms.topic: troubleshooting
+ms.date: 07/10/2019
 ms.author: v-chjenk
-ms.openlocfilehash: 38d59fb20776470cb683f2a2146838bb217addf7
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 96a9d8fc7495ea473b0a3250b34251afc5f30c13
+ms.sourcegitcommit: 1572b615c8f863be4986c23ea2ff7642b02bc605
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64928771"
+ms.lasthandoff: 07/10/2019
+ms.locfileid: "67786705"
 ---
 # <a name="tenant-and-host-pool-creation"></a>Mandanten- und Hostpoolerstellung
 
@@ -284,6 +284,18 @@ Wenn das Betriebssystem Microsoft Windows 10 ist, fahren Sie mit den folgenden A
     ```
 
 16. Wenn die Ausführung der Cmdlets abgeschlossen ist, starten Sie die VM mit dem fehlerhaften parallelen Stapel neu.
+
+## <a name="remote-licensing-model-is-not-configured"></a>Remotelizenzierungsmodell ist nicht konfiguriert
+
+Wenn Sie sich bei Windows 10 Enterprise (mehrere Sitzungen) mit einem Administratorkonto anmelden, erhalten Sie möglicherweise folgende Benachrichtigung: „Der Remotedesktop-Lizenzierungsmodus ist nicht konfiguriert. Die Remotedesktopdienste können in X Tagen nicht mehr ausgeführt werden. Geben Sie mit dem Server-Manager auf dem Verbindungsbrokerserver einen Remotedesktop-Lizenzierungsmodus an.“ Wenn diese Meldung angezeigt wird, müssen Sie den Lizenzierungsmodus manuell auf **Pro Benutzer** festlegen.
+
+So konfigurieren Sie den Lizenzierungsmodus manuell:  
+
+1. Wechseln Sie im Menü **Start** zum Suchfeld. Dann suchen und öffnen Sie **gpedit.msc**, um auf den Editor für lokale Gruppenrichtlinien zuzugreifen. 
+2. Navigieren Sie zu  **Computerkonfiguration** > **Administrative Vorlagen** > **Windows-Komponenten** > **Remotedesktopdienste** > **Remotedesktop-Sitzungshost** > **Lizenzierung**. 
+3. Wählen Sie **Remotedesktop-Lizenzierungsmodus festlegen** aus, und ändern Sie ihn in **Pro Benutzer**.
+
+Derzeit untersuchen wir die Probleme mit dem Timeout für Benachrichtigung und Karenzzeit. Diese sollen in einem kommenden Update behandelt werden. 
 
 ## <a name="next-steps"></a>Nächste Schritte
 

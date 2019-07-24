@@ -7,12 +7,12 @@ ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 06/03/2019
-ms.openlocfilehash: cafceb0c7ee6b165ee03727e1dff76db00d2863b
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: f38f1c313be17457c28c5b30fa743f7a0eae2cc0
+ms.sourcegitcommit: 0ebc62257be0ab52f524235f8d8ef3353fdaf89e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67077337"
+ms.lasthandoff: 07/10/2019
+ms.locfileid: "67621981"
 ---
 # <a name="ingest-data-from-event-hub-into-azure-data-explorer"></a>Erfassen von Daten aus Event Hub in Azure Data Explorer
 
@@ -187,7 +187,7 @@ Anhand der von der App generierten Daten können Sie den Datenfluss vom Event Hu
     ![Nachrichten-Resultset](media/ingest-data-event-hub/message-result-set.png)
 
     > [!NOTE]
-    > Azure Data Explorer verfügt über eine Aggregationsrichtlinie (Batching) für die Datenerfassung, die für die Optimierung des Erfassungsprozesses konzipiert ist. Da die Richtlinie auf fünf Minuten konfiguriert wird, kann es zu Latenz kommen.
+    > Azure Data Explorer verfügt über eine Aggregationsrichtlinie (Batching) für die Datenerfassung, die für die Optimierung des Erfassungsprozesses konzipiert ist. Da die Richtlinie standardmäßig mit fünf Minuten konfiguriert ist, kann es zu Wartezeiten kommen. Aggregationsoptionen finden Sie unter [IngestionBatching policy](/azure/kusto/concepts/batchingpolicy) (IngestionBatching-Richtlinie). Unter [Streaming ingestion policy](/azure/kusto/concepts/streamingingestionpolicy) (Streamingerfassungsrichtlinie) finden Sie Informationen zur Erfassung ohne Aggregation.
 
 ## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
 

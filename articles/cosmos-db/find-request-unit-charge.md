@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: sample
 ms.date: 06/14/2019
 ms.author: thweiss
-ms.openlocfilehash: 07ca6278da6dd1f50f017f389c2c1389a42196f4
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.openlocfilehash: 3d088da4c771c828db9788817e424c4d89586dd6
+ms.sourcegitcommit: 6b41522dae07961f141b0a6a5d46fd1a0c43e6b2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/17/2019
-ms.locfileid: "67163837"
+ms.lasthandoff: 07/15/2019
+ms.locfileid: "67986154"
 ---
 # <a name="find-the-request-unit-charge-in-azure-cosmos-db"></a>Ermitteln der Gebühr für eine Anforderungseinheit in Azure Cosmos DB
 
@@ -39,7 +39,8 @@ Aktuell können Sie die Anforderungsgebühr im Azure-Portal nur für eine SQL-Ab
 
 ![Screenshot: Anforderungsgebühr für eine SQL-Abfrage im Azure-Portal](./media/find-request-unit-charge/portal-sql-query.png)
 
-### <a name="use-the-net-sdk-v2"></a>Verwenden des .NET SDK v2
+### <a name="use-the-net-sdk"></a>Verwenden des .NET SDK
+### <a name="net-v2-sdk"></a>.NET V2 SDK
 
 Objekte, die vom [.NET SDK v2](https://www.nuget.org/packages/Microsoft.Azure.DocumentDB/) zurückgegeben werden, machen eine Eigenschaft `RequestCharge` verfügbar:
 
@@ -73,6 +74,12 @@ while (query.HasMoreResults)
     requestCharge = queryResponse.RequestCharge;
 }
 ```
+
+### <a name="net-v3-sdk"></a>.NET V3 SDK
+
+Objekte, die vom [.NET SDK v3](https://www.nuget.org/packages/Microsoft.Azure.Cosmos/) zurückgegeben werden, machen eine `RequestCharge`-Eigenschaft verfügbar:
+
+[!code-csharp[](~/samples-cosmosdb-dotnet-v3/Microsoft.Azure.Cosmos/tests/Microsoft.Azure.Cosmos.Tests/SampleCodeForDocs/CustomDocsSampleCode.cs?name=GetRequestCharge)]
 
 Weitere Informationen finden Sie unter [Quickstart: Erstellen einer .NET-Web-App mithilfe eines SQL-API-Konto in Azure Cosmos DB](create-sql-api-dotnet.md).
 

@@ -1,7 +1,7 @@
 ---
 layout: LandingPage
 title: Benutzerhilfe für Authentifizierung, Apps und Geräteverwaltung – Azure Active Directory | Microsoft-Dokumentation
-description: Die Benutzerhilfe richtet sich an Benutzer, die Unterstützung beim Einrichten und Verwenden der Sicherheitsinformation, der zweistufigen Überprüfung, der Self-Service-Kennwortzurücksetzung, der Geräteverwaltung, der Microsoft Authenticator-App und dem Portal „Meine Apps“ benötigen.
+description: Die Benutzerhilfe richtet sich an Benutzer, die Unterstützung beim Einrichten und Verwenden der Sicherheitsinformation, bei der zweistufigen Überprüfung, der Self-Service-Kennwortzurücksetzung, der Geräteverwaltung, der Microsoft Authenticator-App und dem Portal „Meine Apps“ benötigen.
 services: active-directory
 author: eross-msft
 manager: daveba
@@ -11,12 +11,12 @@ ms.topic: landing-page
 ms.date: 07/30/2018
 ms.author: lizross
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6e73e089f0753f49233c75a5e55513ebaf7bf9c9
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 5a6908a26e1d513261094be28620c3c9a2d86b48
+ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60861802"
+ms.lasthandoff: 07/22/2019
+ms.locfileid: "68383112"
 ---
 # <a name="user-help-for-authentication-apps-and-device-management"></a>Benutzerhilfe für Authentifizierung, Apps und Geräteverwaltung
 
@@ -77,6 +77,7 @@ Dieser Inhalt soll Sie bei Folgendem unterstützen: Einrichten und Verwenden der
                         <a href="/azure/active-directory/user-help/security-info-setup-auth-app">Einrichten einer Authentifikator-App</a><br/>
                         <a href="/azure/active-directory/user-help/security-info-setup-text-msg">Einrichten von SMS</a><br/>
                         <a href="/azure/active-directory/user-help/security-info-setup-phone-number">Einrichten von Telefonanrufen</a><br/>
+                        <a href="/azure/active-directory/user-help/security-info-setup-security-key">Einrichten eines Sicherheitsschlüssels</a><br/>
                         <a href="/azure/active-directory/user-help/user-help-sign-in">Anmeldung</a>
                         </p>
                     </div>

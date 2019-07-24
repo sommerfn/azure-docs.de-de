@@ -8,14 +8,14 @@ ms.service: managed-applications
 ms.devlang: na
 ms.topic: tutorial
 ms.tgt_pltfrm: na
-ms.date: 06/04/2019
+ms.date: 07/17/2019
 ms.author: tomfitz
-ms.openlocfilehash: 40132f67b135b0dc081180c34361047e59776b81
-ms.sourcegitcommit: 6932af4f4222786476fdf62e1e0bf09295d723a1
+ms.openlocfilehash: 0e2e161c22ee87d11156c4818bd689c316799e87
+ms.sourcegitcommit: 770b060438122f090ab90d81e3ff2f023455213b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/05/2019
-ms.locfileid: "66688563"
+ms.lasthandoff: 07/17/2019
+ms.locfileid: "68305615"
 ---
 # <a name="azure-managed-applications-in-the-marketplace"></a>Verwaltete Azure-Anwendungen im Marketplace
 
@@ -27,7 +27,7 @@ In diesem Artikel erfahren Sie, wie Sie eine Anwendung im Marketplace veröffent
 
 Für diesen Artikel wird vorausgesetzt, dass Sie bereits über die ZIP-Datei für die Definition Ihrer verwalteten Anwendung verfügen. Weitere Informationen finden Sie unter [Erstellen einer Dienstkataloganwendung](publish-service-catalog-app.md).
 
-Darüber hinaus müssen einige geschäftliche Voraussetzungen erfüllt sein. Sie lauten wie folgt:
+Einige geschäftliche Voraussetzungen müssen erfüllt sein. Sie lauten wie folgt:
 
 * Ihr Unternehmen oder dessen Niederlassung muss sich in einem Land/einer Region befinden, in dem Verkäufe über den Marketplace unterstützt werden.
 * Ihr Produkt muss auf eine Weise lizenziert werden, die mit den vom Marketplace unterstützten Abrechnungsmodellen kompatibel ist.
@@ -37,14 +37,7 @@ Darüber hinaus müssen einige geschäftliche Voraussetzungen erfüllt sein. Sie
 * Stimmen Sie den Bedingungen der Azure Marketplace-Teilnahmerichtlinien und der Herausgebervereinbarung zu.
 * Stimmen Sie der Einhaltung der Nutzungsbedingungen, der Datenschutzerklärung von Microsoft und der Microsoft Azure Certified-Programmvereinbarung zu.
 
-## <a name="become-a-publisher"></a>Ihr Weg zum Herausgeber
-
-Der Weg zum Herausgeber im Azure Marketplace umfasst folgende Schritte:
-
-1. Erstellen einer Microsoft-ID: Erstellen Sie Ihr Microsoft-Konto mit einer E-Mail-Adresse, die zur Domäne Ihres Unternehmens, aber nicht zu einer Einzelperson gehört. Diese E-Mail-Adresse wird sowohl für das Microsoft Developer Center als auch für das Cloud-Partnerportal verwendet. Weitere Informationen finden Sie im [Azure Marketplace-Herausgeberleitfaden](https://aka.ms/sellerguide).
-1. Übermitteln des [Nominierungsformulars für den Azure Marketplace](https://aka.ms/ampnomination): Wählen Sie unter **Solution that you intend to publish?** (Welche Lösung möchten Sie veröffentlichen?) die Option **Managed Application** (Verwaltete Anwendung) aus. Das übermittelte Formular mit Ihrer Anfrage wird vom Marketplace-Onboardingteam geprüft. Der Genehmigungsprozess kann bis zu drei Tage dauern. Nach der Genehmigung Ihrer Nominierung erhalten Sie einen Angebotscode, durch den die Registrierungsgebühr für das Developer Center entfällt. Wenn Sie das Nominierungsformular für den Marketplace **nicht** ausfüllen, fällt eine Registrierungsgebühr in Höhe von 99 USD an.
-1. Registrieren beim [Developer Center](https://dev.windows.com/registration?accountprogram=azure): Microsoft überprüft, ob es sich bei Ihrer Organisation um eine gültige juristische Person mit einer gültigen Steuernummer für das Land/die Region handelt, in dem/der sie registriert ist. Die Genehmigung kann fünf bis zehn Tage dauern. Verwenden Sie den Angebotscode, den Sie im Rahmen des Nominierungsprozesses per E-Mail erhalten haben, um sich die Registrierungsgebühr zu sparen. Weitere Informationen finden Sie im [Azure Marketplace-Herausgeberleitfaden](https://aka.ms/sellerguide).
-1. Anmelden beim [Cloud Partnerportal](https://cloudpartner.azure.com): Verknüpfen Sie im Herausgeberprofil Ihr Developer Center-Konto mit dem Marketplace-Herausgeberprofil. Weitere Informationen finden Sie im [Azure Marketplace-Herausgeberleitfaden](https://aka.ms/sellerguide).
+Darüber hinaus benötigen Sie ein Marketplace-Konto. Informationen zum Erstellen eines Kontos finden Sie unter [Erstellen eines Kontos im kommerziellen Marketplace in Partner Center](..//marketplace/partner-center-portal/create-account.md).
 
 ## <a name="create-a-new-azure-application-offer"></a>Erstellen eines neuen Angebots für eine Azure-Anwendung
 
@@ -105,6 +98,10 @@ Eine SKU wird im Marketplace unterhalb des übergeordneten Angebots angezeigt. S
    * **Paketdatei (.zip):** Dieses Paket enthält zwei erforderliche Dateien, komprimiert in einer ZIP-Datei. Bei einer Datei handelt es sich um eine Resource Manager-Vorlage, die definiert, welche Ressourcen für die verwaltete Anwendung bereitgestellt werden. Mit der anderen Datei wird die [Benutzeroberfläche](create-uidefinition-overview.md) für Kunden für die Bereitstellung der verwalteten Anwendung über das Portal definiert. Auf der Benutzeroberfläche geben Sie Elemente an, die Kunden die Angabe von Parameterwerten ermöglichen.
    * **Mandanten-ID**: Die Mandanten-ID für den Kontozugriff
    * **JIT-Zugriff aktivieren**: Wählen Sie **Ja** aus, um die [Just-In-Time-Zugriffssteuerung](request-just-in-time-access.md) für das Konto zu aktivieren. Bei aktivierter Option fordern Sie Zugriff auf das Kundenkonto für einen bestimmten Zeitraum an. Wählen Sie **Nein** aus, um festzulegen, dass Ihnen von den Kunden Ihrer verwalteten Anwendung dauerhaft Zugriff gewährt wird.
+   * **Customize allowed customer actions?** (Zulässige Kundenaktionen anpassen?): Geben Sie durch die Auswahl von **Ja** an, welche Aktionen Verbraucher für die verwalteten Ressourcen ausführen können.
+   * **Allowed customer actions** (Zulässige Kundenaktionen): Wenn Sie für die vorherige Einstellung **Ja** auswählen, können Sie mithilfe von [Ablehnungszuweisungen für Azure-Ressourcen](../role-based-access-control/deny-assignments.md) angeben, welche Aktionen für Verbraucher erlaubt sind.
+
+     Die verfügbaren Aktionen finden Sie unter [Vorgänge für Azure Resource Manager-Ressourcenanbieter](../role-based-access-control/resource-provider-operations.md). Beispiel: Wenn Sie Kunden das Neustarten virtueller Computer erlauben möchten, fügen Sie den zulässigen Aktionen `Microsoft.Compute/virtualMachines/restart/action` hinzu. Die Aktion `*/read` ist automatisch zulässig, sodass Sie diese Einstellung nicht aufnehmen müssen.
    * **PrincipalId:** Bei dieser Eigenschaft handelt es sich um den Azure AD-Bezeichner (Azure Active Directory) eines Benutzers, einer Benutzergruppe oder einer Anwendung, dem bzw. der Zugriff auf die Ressourcen im Kundenabonnement gewährt wird. Die Berechtigungen werden in der Rollendefinition beschrieben.
    * **Rollendefinition:** Bei dieser Eigenschaft handelt es sich um eine Liste aller integrierten Rollen der rollenbasierten Zugriffssteuerung (Role-Based Access Control, RBAC), die von Azure AD bereitgestellt werden. Sie können die Rolle auswählen, die am besten für die Verwaltung der Ressourcen im Auftrag des Kunden geeignet ist.
    * **Richtlinieneinstellungen:** Wenden Sie eine [Azure-Richtlinie](../governance/policy/overview.md) auf Ihre verwaltete Anwendung an, um Complianceanforderungen für die bereitgestellten Lösungen anzugeben. Wählen Sie aus den verfügbaren Optionen die anzuwendenden Richtlinien aus. Geben Sie als **Richtlinienparameter** eine JSON-Zeichenfolge mit den Parameterwerten an. Informationen zu Richtliniendefinitionen und zum Format der Parameterwerte finden Sie unter [Azure Policy-Beispiele](../governance/policy/samples/index.md).

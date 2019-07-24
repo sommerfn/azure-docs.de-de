@@ -9,12 +9,12 @@ ms.date: 07/09/2019
 ms.topic: article
 ms.service: active-directory
 ms.workload: identity
-ms.openlocfilehash: 00f66b6010bead3de131095a47ba1e419d2511c0
-ms.sourcegitcommit: dad277fbcfe0ed532b555298c9d6bc01fcaa94e2
+ms.openlocfilehash: c1f1fc4a09cba469edfea060afea47053cb87ac4
+ms.sourcegitcommit: af58483a9c574a10edc546f2737939a93af87b73
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/10/2019
-ms.locfileid: "67723334"
+ms.lasthandoff: 07/17/2019
+ms.locfileid: "68302144"
 ---
 # <a name="a-world-without-passwords-with-azure-active-directory"></a>Eine Welt ohne Kennwörter – mit Azure Active Directory
 
@@ -49,28 +49,6 @@ Windows Hello for Business eignet sich ideal für Information-Worker, die über 
 ### <a name="windows-hello-for-business-deployment-considerations"></a>Windows Hello for Business: Überlegungen zur Bereitstellung
 
 Windows Hello for Business ist ein verteiltes System, das mehrere Komponenten für die Registrierung, Bereitstellung und Authentifizierung von Geräten verwendet. Aus diesem Grund muss eine Bereitstellung über mehrere Teams innerhalb der Organisation sorgfältig geplant werden. Das [Planungshandbuch](https://docs.microsoft.com/windows/security/identity-protection/hello-for-business/hello-planning-guide) für Windows Hello for Business kann verwendet werden, um die Auswahl der Art der Bereitstellung von Windows Hello for Business und die zu berücksichtigenden Optionen zu erleichtern.
-
-Für Hybrid- und lokale Bereitstellungen müssen folgende Voraussetzungen gegeben sein:
-
-* Ein gut funktionierendes Netzwerk
-
-* Zugriff auf das Internet
-
-* Multi-Factor Authentication-Server zur Unterstützung der MFA während der Bereitstellung von Windows Hello für Business
-
-* Korrekte Namensauflösung, sowohl für interne als auch externe Namen
-
-* Active Directory und eine angemessene Anzahl von Domänencontrollern pro Standort zur Unterstützung der Authentifizierung
-
-* Active Directory-Zertifikatdienste 2012 oder höher
-
-* Mindestens eine Arbeitsstation, auf der Windows 10 (Version 1903) ausgeführt wird
-
-Da alle Arten von Windows Hello for Business-Bereitstellungen von Unternehmen ausgestellte Zertifikate für Domänencontroller als Vertrauensgrundlage verwenden, sollten abgelaufene Zertifikate automatisch verlängert werden. [Konfigurieren Sie hierzu die automatische Registrierung für Server- und Benutzerzertifikate](https://docs.microsoft.com/windows-server/networking/core-network-guide/cncg/server-certs/configure-server-certificate-autoenrollment). Bei lokalen Implementierungen ist der Identitätsanbieter der lokale Server, auf dem die AD FS-Rolle (Active Directory-Verbunddienste) von Windows Server ausgeführt wird. Für Verbundsysteme ist normalerweise ein Serverarray mit Lastenausgleich erforderlich, das als Farm bezeichnet wird. Diese Farm wird in einer Topologie mit einem internen Netzwerk und einem Umkreisnetzwerk konfiguriert, um die Hochverfügbarkeit für Authentifizierungsanforderungen sicherzustellen.
-
-Wenn Sie eine Gruppenrichtlinie einrichten, die verlangt, dass am Arbeitsplatz Windows Hello for Business verwendet wird, ist es ratsam, die Benutzer in Ihrer Organisation darauf vorzubereiten, indem Sie die Verwendung von Windows Hello erklären. Wenn jemand beispielsweise ein neues Gerät einrichtet, wird er aufgefordert, zwischen **This device belongs to my organization** (Dieses Gerät gehört meiner Organisation) oder **This is my own personal device** (Dies ist mein eigenes Gerät) auszuwählen. Bei Unternehmensgeräten muss die erste Option ausgewählt werden. Den Benutzern muss auch mitgeteilt werden, welche Verbindungsoption sie auswählen sollen: **Join to Azure AD** (Azure AD beitreten) oder **Set up a local account (domain join later)** (Lokales Konto einrichten (Domänenbeitritt zu einem späteren Zeitpunkt)).
-
-Benutzer, die sich üblicherweise mit einer biometrischen Geste authentifizieren, können sich häufig irgendwann nicht mehr an ihre PIN erinnern. Um Anrufe beim Helpdesk zu vermeiden, wird empfohlen, dass Sie für diesen Fall den Benutzern ermöglichen, ihre [Kennwörter](https://docs.microsoft.com/azure/active-directory/authentication/howto-sspr-deployment) und [PINs](https://docs.microsoft.com/windows/security/identity-protection/hello-for-business/hello-features#pin-reset) zurückzusetzen.
 
 Für die Bereitstellung von Windows Hello for Business stehen zahlreiche Optionen zur Verfügung. Dank der verschiedenen Optionen kann nahezu jede Organisation Windows Hello for Business bereitstellen. Folgende Arten von Bereitstellungen werden unterstützt:
 

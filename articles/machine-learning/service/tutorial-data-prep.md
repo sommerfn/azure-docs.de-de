@@ -6,17 +6,17 @@ services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: tutorial
-author: sihhu
-ms.author: MayMSFT
+author: MayMSFT
+ms.author: sihhu
 ms.reviewer: trbye
-ms.date: 03/29/2019
+ms.date: 07/16/2019
 ms.custom: seodec18
-ms.openlocfilehash: 8b7bf5a0ece3927c7dbafdec9716b7c6f8dfbc0e
-ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
+ms.openlocfilehash: 55bece47ad2a9965e5137ad720631d9b5f5add48
+ms.sourcegitcommit: a8b638322d494739f7463db4f0ea465496c689c6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/04/2019
-ms.locfileid: "66474710"
+ms.lasthandoff: 07/17/2019
+ms.locfileid: "68297882"
 ---
 # <a name="tutorial-prepare-data-for-regression-modeling"></a>Tutorial: Vorbereiten von Daten für die Regressionsmodellierung
 
@@ -112,6 +112,9 @@ yellow_df_raw = dprep.auto_read_file(path=yellow_path)
 display(green_df_raw.head(5))
 display(yellow_df_raw.head(5))
 ```
+
+> [!Note]
+> Bei der URL in diesem Beispiel handelt es sich nicht um eine vollständige URL. Stattdessen verweist sie auf den Demoordner im Blob. Die vollständige URL für einige der Daten lautet https://dprepdata.blob.core.windows.net/demo/green-small/green_tripdata_2013-08.csv.
 
 Ein `Dataflow`-Objekt ähnelt einem Datenrahmen und stellt eine Reihe von träge ausgewerteten, unveränderlichen Vorgängen für Daten dar. Vorgänge können durch Aufrufen der verschiedenen verfügbaren Transformations- und Filtermethoden hinzugefügt werden. Wenn einem `Dataflow` ein Vorgang hinzugefügt wird, entsteht immer ein neues `Dataflow`-Objekt.
 
@@ -320,7 +323,7 @@ combined_df.keep_columns(columns=[
   <thead>
     <tr style="text-align: right;">
       <th></th>
-      <th>Type</th>
+      <th>type</th>
       <th>Min</th>
       <th>max</th>
       <th>Count</th>
@@ -472,7 +475,7 @@ latlong_filtered_df.keep_columns(columns=[
   <thead>
     <tr style="text-align: right;">
       <th></th>
-      <th>Type</th>
+      <th>type</th>
       <th>Min</th>
       <th>max</th>
       <th>Count</th>
@@ -606,7 +609,7 @@ latlong_filtered_df.keep_columns(columns='store_forward').get_profile()
   <thead>
     <tr style="text-align: right;">
       <th></th>
-      <th>Type</th>
+      <th>type</th>
       <th>Min</th>
       <th>max</th>
       <th>Count</th>

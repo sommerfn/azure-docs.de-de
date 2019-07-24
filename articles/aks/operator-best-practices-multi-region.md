@@ -6,13 +6,13 @@ author: lastcoolnameleft
 ms.service: container-service
 ms.topic: conceptual
 ms.date: 11/28/2018
-ms.author: lastcoolnameleft
-ms.openlocfilehash: 4afc1231e6c9fa49c04c7bf6dfe26ee5eb87cc31
-ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
+ms.author: thfalgou
+ms.openlocfilehash: 4d4535af1814ab1250bbd56c989b4849013adff6
+ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/04/2019
-ms.locfileid: "66475168"
+ms.lasthandoff: 07/07/2019
+ms.locfileid: "67614842"
 ---
 # <a name="best-practices-for-business-continuity-and-disaster-recovery-in-azure-kubernetes-service-aks"></a>Best Practices für Geschäftskontinuität und Notfallwiederherstellung in Azure Kubernetes Service (AKS)
 
@@ -128,8 +128,8 @@ Kubernetes bietet zurzeit keine native Implementierung für die anwendungsbasier
 
 In diesem Artikel werden Überlegungen zur Geschäftskontinuität und Notfallwiederherstellung für AKS-Cluster erläutert. Weitere Informationen zu Clustervorgängen in AKS finden Sie in diesen Artikeln über Best Practices:
 
-* [Mehrinstanzenfähigkeit und Clusterisolation][aks-best-practices-cluster-isolation]
-* [Grundlegende Funktionen des Kubernetes-Schedulers][aks-best-practices-scheduler]
+* [Best Practices für Clusterisolierung in Azure Kubernetes Service (AKS)][aks-best-practices-cluster-isolation]
+* [Best Practices für grundlegende Schedulerfunktionen in Azure Kubernetes Service (AKS)][aks-best-practices-scheduler]
 
 <!-- INTERNAL LINKS -->
 [aks-best-practices-scheduler]: operator-best-practices-scheduler.md

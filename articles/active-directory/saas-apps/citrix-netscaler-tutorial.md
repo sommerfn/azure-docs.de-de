@@ -1,6 +1,6 @@
 ---
-title: 'Tutorial: Azure Active Directory-Integration mit Citrix Netscaler | Microsoft-Dokumentation'
-description: Erfahren Sie, wie Sie das einmalige Anmelden zwischen Azure Active Directory und Citrix Netscaler konfigurieren.
+title: 'Tutorial: Azure Active Directory-Integration mit Citrix NetScaler | Microsoft-Dokumentation'
+description: Hier erfahren Sie, wie Sie einmaliges Anmelden zwischen Azure Active Directory und Citrix NetScaler konfigurieren.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -15,20 +15,20 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/14/2019
 ms.author: jeedes
-ms.openlocfilehash: cc32f464044149e263db60fc2de237b473da5ab2
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 64dd67680626857db7f39fa7fd721b28a02d1561
+ms.sourcegitcommit: 9a699d7408023d3736961745c753ca3cec708f23
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67105496"
+ms.lasthandoff: 07/16/2019
+ms.locfileid: "68276899"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-citrix-netscaler"></a>Tutorial: Azure Active Directory-Integration mit Citrix Netscaler
+# <a name="tutorial-azure-active-directory-integration-with-citrix-netscaler"></a>Tutorial: Azure Active Directory-Integration mit Citrix NetScaler
 
-In diesem Tutorial erfahren Sie, wie Sie Citrix Netscaler in Azure Active Directory (Azure AD) integrieren.
-Die Integration von Citrix Netscaler in Azure AD bietet die folgenden Vorteile:
+In diesem Tutorial erfahren Sie, wie Sie Citrix NetScaler in Azure Active Directory (Azure AD) integrieren.
+Die Integration von Citrix NetScaler in Azure AD bietet die folgenden Vorteile:
 
-* Sie können in Azure AD steuern, wer Zugriff auf Citrix Netscaler hat.
-* Sie können es Benutzern ermöglichen, dass sie mit ihren Azure AD-Konten automatisch bei Citrix Netscaler angemeldet werden (einmaliges Anmelden).
+* Sie können in Azure AD steuern, wer Zugriff auf Citrix NetScaler hat.
+* Sie können es Ihren Benutzern ermöglichen, sich mit ihren Azure AD-Konten automatisch bei Citrix NetScaler anzumelden (einmaliges Anmelden; Single Sign-On, SSO).
 * Sie können Ihre Konten über das Azure-Portal an einem zentralen Ort verwalten.
 
 Weitere Informationen zur Integration von SaaS-Apps in Azure AD finden Sie unter [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
@@ -36,24 +36,24 @@ Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](htt
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-Um die Azure AD-Integration mit Citrix Netscaler konfigurieren zu können, benötigen Sie Folgendes:
+Zum Konfigurieren der Azure AD-Integration mit Citrix NetScaler benötigen Sie Folgendes:
 
 * Ein Azure AD-Abonnement Wenn Sie keine Azure AD-Umgebung besitzen, können Sie [hier](https://azure.microsoft.com/pricing/free-trial/) eine einmonatige Testversion anfordern.
-* Citrix Netscaler-Abonnement, für das einmaliges Anmelden aktiviert ist
+* Citrix NetScaler-Abonnement, für das einmaliges Anmelden aktiviert ist
 
 ## <a name="scenario-description"></a>Beschreibung des Szenarios
 
 In diesem Tutorial konfigurieren und testen Sie das einmalige Anmelden von Azure AD in einer Testumgebung.
 
-* Citrix Netscaler unterstützt **SP**-initiiertes einmaliges Anmelden.
+* Citrix NetScaler unterstützt **SP-initiiertes** einmaliges Anmelden.
 
-* Citrix Netscaler unterstützt die **Just-In-Time**-Benutzerbereitstellung.
+* Citrix NetScaler unterstützt die **Just-In-Time**-Benutzerbereitstellung.
 
-## <a name="adding-citrix-netscaler-from-the-gallery"></a>Hinzufügen von Citrix Netscaler aus dem Katalog
+## <a name="adding-citrix-netscaler-from-the-gallery"></a>Hinzufügen von Citrix NetScaler aus dem Katalog
 
-Zum Konfigurieren der Integration von Citrix Netscaler in Azure AD müssen Sie Citrix Netscaler aus dem Katalog zur Liste der verwalteten SaaS-Apps hinzufügen.
+Zum Konfigurieren der Integration von Citrix NetScaler in Azure AD müssen Sie Citrix NetScaler aus dem Katalog zur Liste der verwalteten SaaS-Apps hinzufügen.
 
-**Um Citrix Netscaler aus dem Katalog hinzuzufügen, führen Sie die folgenden Schritte aus:**
+**Führen Sie die folgenden Schritte aus, um Citrix NetScaler aus dem Katalog hinzuzufügen:**
 
 1. Klicken Sie im linken Navigationsbereich des **[Azure-Portals](https://portal.azure.com)** auf das Symbol für **Azure Active Directory**.
 
@@ -67,31 +67,31 @@ Zum Konfigurieren der Integration von Citrix Netscaler in Azure AD müssen Sie C
 
     ![Schaltfläche „Neue Anwendung“](common/add-new-app.png)
 
-4. Geben Sie im Suchfeld **Citrix Netscaler** ein, wählen Sie im Ergebnisbereich **Citrix Netscaler** aus, und klicken Sie dann auf die Schaltfläche **Hinzufügen**, um die Anwendung hinzuzufügen.
+4. Geben Sie im Suchfeld **Citrix NetScaler** ein, wählen Sie im Ergebnisbereich **Citrix NetScaler** aus, und klicken Sie dann auf die Schaltfläche **Hinzufügen**, um die Anwendung hinzuzufügen.
 
-     ![Citrix Netscaler in der Ergebnisliste](common/search-new-app.png)
+     ![Citrix NetScaler in der Ergebnisliste](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfigurieren und Testen des einmaligen Anmeldens in Azure AD
 
-In diesem Abschnitt konfigurieren und testen Sie das einmalige Anmelden von Azure AD bei Citrix Netscaler mithilfe eines Testbenutzers namens **Britta Simon**.
-Damit einmaliges Anmelden funktioniert, muss eine Linkbeziehung zwischen einem Azure AD-Benutzer und dem entsprechenden Benutzer in Citrix Netscaler eingerichtet werden.
+In diesem Abschnitt konfigurieren und testen Sie das einmalige Anmelden von Azure AD mit Citrix NetScaler mithilfe eines Testbenutzers namens **Britta Simon**.
+Damit einmaliges Anmelden funktioniert, muss eine Linkbeziehung zwischen einem Azure AD-Benutzer und dem entsprechenden Benutzer in Citrix NetScaler eingerichtet werden.
 
-Zum Konfigurieren und Testen des einmaligen Anmeldens in Azure AD bei Citrix Netscaler müssen Sie die folgenden Bausteine ausführen:
+Zum Konfigurieren und Testen des einmaligen Anmeldens von Azure AD mit Citrix NetScaler müssen Sie die folgenden Schritte ausführen:
 
 1. **[Konfigurieren des einmaligen Anmeldens von Azure AD](#configure-azure-ad-single-sign-on)** , um Ihren Benutzern das Verwenden dieses Features zu ermöglichen.
-2. **[Konfigurieren des einmaligen Anmeldens für Citrix Netscaler](#configure-citrix-netscaler-single-sign-on)** , um die Einstellungen für einmaliges Anmelden auf der Anwendungsseite zu konfigurieren.
+2. **[Konfigurieren des einmaligen Anmeldens für Citrix NetScaler](#configure-citrix-netscaler-single-sign-on)** , um die Einstellungen für einmaliges Anmelden auf der Anwendungsseite zu konfigurieren
 3. **[Erstellen eines Azure AD-Testbenutzers](#create-an-azure-ad-test-user)** , um das einmalige Anmelden mit Azure AD mit dem Testbenutzer Britta Simon zu testen.
 4. **[Zuweisen des Azure AD-Testbenutzers](#assign-the-azure-ad-test-user)** , um Britta Simon für das einmalige Anmelden von Azure AD zu aktivieren.
-5. **[Erstellen eines Citrix Netscaler-Testbenutzers](#create-citrix-netscaler-test-user)** , um eine Entsprechung von Britta Simon in Citrix Netscaler zu erhalten, die mit ihrer Darstellung in Azure AD verknüpft ist.
+5. **[Erstellen eines Citrix NetScaler-Testbenutzers](#create-citrix-netscaler-test-user)** , um eine Entsprechung von Britta Simon in Citrix NetScaler zu erhalten, die mit ihrer Darstellung in Azure AD verknüpft ist
 6. **[Testen der einmaligen Anmeldung](#test-single-sign-on)** , um zu überprüfen, ob die Konfiguration funktioniert.
 
 ### <a name="configure-azure-ad-single-sign-on"></a>Konfigurieren des einmaligen Anmeldens in Azure AD
 
 In diesem Abschnitt aktivieren Sie das einmalige Anmelden von Azure AD im Azure-Portal.
 
-Führen Sie zum Konfigurieren des einmaligen Anmeldens von Azure AD in Citrix Netscaler die folgenden Schritte aus:
+Führen Sie zum Konfigurieren des einmaligen Anmeldens von Azure AD mit Citrix NetScaler die folgenden Schritte aus:
 
-1. Wählen Sie im [Azure-Portal](https://portal.azure.com/) auf der Anwendungsintegrationsseite für **Citrix Netscaler** die Option **Einmaliges Anmelden**.
+1. Wählen Sie im [Azure-Portal](https://portal.azure.com/) auf der Anwendungsintegrationsseite für **Citrix NetScaler** die Option **Einmaliges Anmelden** aus.
 
     ![Konfigurieren des Links für einmaliges Anmelden](common/select-sso.png)
 
@@ -105,7 +105,7 @@ Führen Sie zum Konfigurieren des einmaligen Anmeldens von Azure AD in Citrix Ne
 
 4. Führen Sie im Abschnitt **Grundlegende SAML-Konfiguration** die folgenden Schritte aus:
 
-    ![SSO-Informationen zur Domäne und zu den URLs für Citrix Netscaler](common/sp-identifier-reply.png)
+    ![SSO-Informationen zur Domäne und zu den URLs für Citrix NetScaler](common/sp-identifier-reply.png)
 
     a. Geben Sie im Textfeld **Anmelde-URL** eine URL im folgenden Format ein: `https://<<Your FQDN>>/CitrixAuthService/AuthService.asmx`.
     
@@ -114,7 +114,7 @@ Führen Sie zum Konfigurieren des einmaligen Anmeldens von Azure AD in Citrix Ne
     c. Geben Sie im Textfeld **Antwort-URL (Assertionsverbraucherdienst-URL)** eine URL in folgendem Format ein: `https://<<Your FQDN>>/CitrixAuthService/AuthService.asmx`.
     
     > [!NOTE]
-    > Hierbei handelt es sich um Beispielwerte. Ersetzen Sie diese Werte durch die tatsächliche Anmelde-URL und den tatsächlichen Bezeichner. Wenden Sie sich an das [Clientsupportteam von Citrix Netscaler](https://www.citrix.com/contact/technical-support.html), um diese Werte zu erhalten. Sie können sich auch die Muster im Abschnitt **Grundlegende SAML-Konfiguration** im Azure-Portal ansehen.
+    > Hierbei handelt es sich um Beispielwerte. Ersetzen Sie diese Werte durch die tatsächliche Anmelde-URL und den tatsächlichen Bezeichner. Wenden Sie sich an das [Supportteam für den Citrix NetScaler-Client](https://www.citrix.com/contact/technical-support.html), um diese Werte zu erhalten. Sie können sich auch die Muster im Abschnitt **Grundlegende SAML-Konfiguration** im Azure-Portal ansehen.
 
     > [!NOTE]
     > Damit einmaliges Anmelden auch funktioniert, muss von öffentlichen Sites auf diese URLs zugegriffen werden können. Sie müssen die Firewall oder andere Sicherheitseinstellungen auf der Seite von Netscaler so aktivieren, dass Azure AD das Token in der konfigurierten ACS-URL bereitstellen kann.
@@ -123,7 +123,7 @@ Führen Sie zum Konfigurieren des einmaligen Anmeldens von Azure AD in Citrix Ne
 
     ![Downloadlink für das Zertifikat](common/metadataxml.png)
 
-6. Kopieren Sie im Abschnitt **Citrix Netscaler einrichten** die entsprechenden URLs gemäß Ihren Anforderungen.
+6. Kopieren Sie im Abschnitt **Citrix NetScaler einrichten** die entsprechenden URLs gemäß Ihren Anforderungen.
 
     ![Kopieren der Konfiguration-URLs](common/copy-configuration-urls.png)
 
@@ -133,9 +133,9 @@ Führen Sie zum Konfigurieren des einmaligen Anmeldens von Azure AD in Citrix Ne
 
     c. Abmelde-URL
 
-### <a name="configure-citrix-netscaler-single-sign-on"></a>Konfigurieren des einmaligen Anmeldens für Citrix Netscaler
+### <a name="configure-citrix-netscaler-single-sign-on"></a>Konfigurieren des einmaligen Anmeldens für Citrix NetScaler
 
-1. Melden Sie sich in einem anderen Webbrowserfenster als Administrator bei Ihrem Citrix Netscaler-Mandanten an.
+1. Melden Sie sich in einem anderen Webbrowserfenster als Administrator bei Ihrem Citrix NetScaler-Mandanten an.
 
 2. Stellen Sie sicher, dass die **NetScaler-Firmwareversion = NS12.1: Build 48.13.nc** lautet.
 
@@ -344,15 +344,15 @@ Das Ziel dieses Abschnitts ist das Erstellen eines Testbenutzers namens Britta S
 
 ### <a name="assign-the-azure-ad-test-user"></a>Zuweisen des Azure AD-Testbenutzers
 
-In diesem Abschnitt ermöglichen Sie Britta Simon die Verwendung des einmaligen Anmeldens von Azure, indem Sie ihr Zugriff auf Citrix Netscaler gewähren.
+In diesem Abschnitt ermöglichen Sie Britta Simon die Verwendung des einmaligen Anmeldens von Azure, indem Sie ihr Zugriff auf Citrix NetScaler gewähren.
 
-1. Wählen Sie im Azure-Portal nacheinander die Optionen **Unternehmensanwendungen**, **Alle Anwendungen** und **Citrix Netscaler**.
+1. Wählen Sie im Azure-Portal **Unternehmensanwendungen** > **Alle Anwendungen** > **Citrix NetScaler** aus.
 
     ![Blatt „Unternehmensanwendungen“](common/enterprise-applications.png)
 
-2. Wählen Sie in der Liste der Anwendungen **Citrix Netscaler** aus.
+2. Wählen Sie in der Liste der Anwendungen **Citrix NetScaler** aus.
 
-    ![Citrix Netscaler-Link in der Anwendungsliste](common/all-applications.png)
+    ![Citrix NetScaler-Link in der Anwendungsliste](common/all-applications.png)
 
 3. Wählen Sie im Menü auf der linken Seite **Benutzer und Gruppen** aus.
 
@@ -368,18 +368,18 @@ In diesem Abschnitt ermöglichen Sie Britta Simon die Verwendung des einmaligen 
 
 7. Klicken Sie im Dialogfeld **Zuweisung hinzufügen** auf die Schaltfläche **Zuweisen**.
 
-### <a name="create-citrix-netscaler-test-user"></a>Erstellen eines Citrix Netscaler-Testbenutzers
+### <a name="create-citrix-netscaler-test-user"></a>Erstellen eines Citrix NetScaler-Testbenutzers
 
-In diesem Abschnitt wird ein Benutzer mit dem Namen „Britta Simon“ in Citrix Netscaler erstellt. Citrix Netscaler unterstützt die Just-In-Time-Benutzerbereitstellung, die standardmäßig aktiviert ist. Für Sie steht in diesem Abschnitt kein Aktionselement zur Verfügung. Ist ein Benutzer noch nicht in Citrix Netscaler vorhanden, wird nach der Authentifizierung ein neuer Benutzer erstellt.
+In diesem Abschnitt wird ein Benutzer mit dem Namen Britta Simon in Citrix NetScaler erstellt. Citrix NetScaler unterstützt die Just-In-Time-Benutzerbereitstellung (standardmäßig aktiviert). Für Sie steht in diesem Abschnitt kein Aktionselement zur Verfügung. Ist ein Benutzer noch nicht in Citrix NetScaler vorhanden, wird nach der Authentifizierung ein neuer Benutzer erstellt.
 
 >[!NOTE]
->Wenn Sie einen Benutzer manuell erstellen müssen, setzen Sie sich mit dem [Supportteam für den Citrix Netscaler-Client](https://www.citrix.com/contact/technical-support.html) in Verbindung.
+>Wenn Sie einen Benutzer manuell erstellen müssen, setzen Sie sich mit dem [Supportteam für den Citrix NetScaler-Client](https://www.citrix.com/contact/technical-support.html) in Verbindung.
 
 ### <a name="test-single-sign-on"></a>Testen des einmaligen Anmeldens 
 
 In diesem Abschnitt testen Sie die Azure AD-Konfiguration für einmaliges Anmelden über den Zugriffsbereich.
 
-Wenn Sie im Zugriffsbereich auf die Kachel „Citrix Netscaler“ klicken, sollten Sie automatisch bei der Citrix Netscaler-Instanz angemeldet werden, für die Sie einmaliges Anmelden eingerichtet haben. Weitere Informationen zum Zugriffsbereich finden Sie unter [Einführung in den Zugriffsbereich](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+Wenn Sie im Zugriffsbereich auf die Kachel „Citrix NetScaler“ klicken, sollten Sie automatisch bei der Citrix NetScaler-Instanz angemeldet werden, für die Sie einmaliges Anmelden eingerichtet haben. Weitere Informationen zum Zugriffsbereich finden Sie unter [Einführung in den Zugriffsbereich](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
 ## <a name="additional-resources"></a>Weitere Ressourcen
 

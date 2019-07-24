@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-image-search
 ms.topic: tutorial
-ms.date: 03/04/2019
+ms.date: 07/12/2019
 ms.author: aahi
-ms.openlocfilehash: 10bcbb4c1957735b0ddad6c97325c32be19ddcdb
-ms.sourcegitcommit: 3d4121badd265e99d1177a7c78edfa55ed7a9626
+ms.openlocfilehash: 7b530b3d415761956cbdb45fdc92bfed55a1bae5
+ms.sourcegitcommit: 10251d2a134c37c00f0ec10e0da4a3dffa436fb3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/30/2019
-ms.locfileid: "66383396"
+ms.lasthandoff: 07/13/2019
+ms.locfileid: "67868258"
 ---
 # <a name="tutorial-create-a-single-page-app-using-the-bing-image-search-api"></a>Tutorial: Erstellen einer einseitigen Web-App mit der Bing-Bildersuche-API
 
@@ -369,7 +369,7 @@ Die Parameter `index` und `count` werden verwendet, um Ergebnisse zu nummerieren
     }, // relatedSearches renderer omitted
 ```
 
-Die Eigenschaften `height` und `width` der Miniaturansicht werden sowohl im `<img>`-Tag als auch in den Feldern `h` und `w` in der URL der Miniaturansicht verwendet. So kann Bing [ein Miniaturbild](resize-and-crop-thumbnails.md) genau dieser Größe zurückgeben.
+Die Eigenschaften `height` und `width` der Miniaturansicht werden sowohl im `<img>`-Tag als auch in den Feldern `h` und `w` in der URL der Miniaturansicht verwendet. So kann Bing [ein Miniaturbild](../bing-web-search/resize-and-crop-thumbnails.md) genau dieser Größe zurückgeben.
 
 ## <a name="persisting-client-id"></a>Persistentes Speichern der Client-ID
 
@@ -386,7 +386,7 @@ Durch Browsersicherheitsrichtlinien (CORS) kann der `X-MSEdge-ClientID`-Header m
 > [!NOTE]
 > In einer Webanwendung für eine Produktionsumgebung sollten Sie die Anforderung in jedem Fall serverseitig ausführen. Andernfalls müsste der Schlüssel der Bing-Suche-API auf der Webseite hinterlegt werden, wo er im Quelltext für alle Personen zugänglich ist. Dies müssen Sie vermeiden, da ansonsten unbefugte Dritte Anforderungen unter Verwendung Ihres API-Abonnementschlüssels Anforderungen senden können, die Ihnen in Rechnung gestellt werden.
 
-In der Entwicklungsphase können Sie die Bing-Websuche-API-Anforderung über einen CORS-Proxy senden. In der Antwort eines solchen Proxys befindet sich ein `Access-Control-Expose-Headers`-Header. Dieser enthält eine Whitelist mit Antwortheadern, die JavaScript zur Verfügung gestellt werden.
+In der Entwicklungsphase können Sie die Bing-Websuche-API-Anforderung über einen CORS-Proxy senden. In der Antwort eines solchen Proxys befindet sich ein `Access-Control-Expose-Headers`-Header, der Antwortheader zulässt und für JavaScript zur Verfügung stellt.
 
 Die Installation eines CORS-Proxys, mit dem die Tutorial-App auf den Client-ID-Header zugreifen kann, ist schnell und unkompliziert. [Installieren Sie Node.js](https://nodejs.org/en/download/), falls Sie dies noch nicht getan haben. Geben Sie anschließend folgenden Befehl in ein Befehlsfenster ein:
 

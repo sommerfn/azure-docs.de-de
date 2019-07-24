@@ -8,12 +8,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/23/2019
 ms.author: hrasheed
-ms.openlocfilehash: c910ed9f1160d30e1d4bda2e85b029eb2ad85b02
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: bd2284211c2fdc5a346c6ffb113f89fe311a358c
+ms.sourcegitcommit: 1572b615c8f863be4986c23ea2ff7642b02bc605
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66237149"
+ms.lasthandoff: 07/10/2019
+ms.locfileid: "67786500"
 ---
 # <a name="capacity-planning-for-hdinsight-clusters"></a>Kapazitätsplanung für HDInsight-Cluster
 
@@ -82,7 +82,7 @@ Die Skalierung eines Clusters wird durch die Menge seiner VM-Knoten bestimmt. F�
 
 Je nach Clustertyp kann durch zusätzliche Workerknoten die Rechenkapazität (z.B. durch weitere Kerne) heraufgesetzt werden, damit jedoch auch der Gesamtbedarf an Arbeitsspeicher zur Unterstützung der In-Memory-Speicherung verarbeiteter Daten für den gesamten Cluster steigen. Wie bei der Wahl von VM-Größe und -Typ gilt für die richtige Clusterskalierung, dass sie in der Regel mit simulierten Workloads oder Testabfragen empirisch ermittelt wird.
 
-Sie können Ihren Cluster für Spitzenlastanforderungen horizontal hochskalieren und wieder herunterskalieren, wenn diese zusätzlichen Knoten nicht mehr benötigt werden. Weitere Informationen finden Sie unter [Skalieren von HDInsight-Clustern](hdinsight-scaling-best-practices.md).
+Sie können Ihren Cluster für Spitzenlastanforderungen horizontal hochskalieren und wieder herunterskalieren, wenn diese zusätzlichen Knoten nicht mehr benötigt werden. Das [Autoskalierungsfeature](hdinsight-autoscale-clusters.md) ermöglicht die automatische Skalierung Ihres Clusters auf der Grundlage vorab festgelegter Metriken und Zeitangaben. Weitere Informationen zur manuellen Clusterskalierung finden Sie unter [Skalieren von HDInsight-Clustern](hdinsight-scaling-best-practices.md).
 
 ### <a name="cluster-lifecycle"></a>Clusterlebenszyklus
 

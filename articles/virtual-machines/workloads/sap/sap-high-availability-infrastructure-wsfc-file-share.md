@@ -4,7 +4,7 @@ description: Vorbereiten der Azure-Infrastruktur für SAP-Hochverfügbarkeit mit
 services: virtual-machines-windows,virtual-network,storage
 documentationcenter: saponazure
 author: goraco
-manager: jeconnoc
+manager: gwallace
 editor: ''
 tags: azure-resource-manager
 keywords: ''
@@ -17,12 +17,12 @@ ms.workload: infrastructure-services
 ms.date: 05/05/2017
 ms.author: rclaus
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: e1c6b1d55a4fbc673980908a981a9a96c869bee9
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: b3577128e66112bda5a5e3e08097d14604043cbd
+ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65409614"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67708991"
 ---
 # <a name="prepare-azure-infrastructure-for-sap-high-availability-by-using-a-windows-failover-cluster-and-file-share-for-sap-ascsscs-instances"></a>Vorbereiten der Azure-Infrastruktur für SAP-Hochverfügbarkeit mit einem Windows-Failovercluster und einer Dateifreigabe für SAP ASCS-/SCS-Instanzen
 
@@ -214,7 +214,7 @@ Diese Artikel beschreibt die vorbereitenden Schritte für die Azure-Infrastruktu
 
 Bevor Sie die Installation starten, lesen Sie den folgenden Artikel:
 
-* [Architekturleitfaden: Gruppieren von SAP ASCS/SCS-Instanzen in einem Windows-Failovercluster mithilfe einer Dateifreigabe][sap-high-availability-guide-wsfc-file-share]
+* [Architekturleitfaden: Gruppieren einer SAP ASCS/SCS-Instanz in einem Windows-Failovercluster per Dateifreigabe in Azure][sap-high-availability-guide-wsfc-file-share]
 
 
 ## <a name="host-names-and-ip-addresses"></a>Hostnamen und IP-Adressen
@@ -251,30 +251,30 @@ Bevor Sie die Installation starten, lesen Sie den folgenden Artikel:
 
 Um die Azure-Infrastruktur vorzubereiten, führen Sie die folgenden Schritte aus:
 
-* [Vorbereiten der Infrastruktur für Architekturvorlage 1, 2 und 3][sap-high-availability-infrastructure-wsfc-shared-disk].
+* [Vorbereiten der Infrastruktur für Architekturvorlage 1, 2 und 3][sap-high-availability-infrastructure-wsfc-shared-disk]
 
-* [Erstellen eines virtuellen Azure-Netzwerks][sap-high-availability-infrastructure-wsfc-shared-disk-azure-network].
+* [Erstellen eines virtuellen Azure-Netzwerks][sap-high-availability-infrastructure-wsfc-shared-disk-azure-network]
 
-* [Festlegen der erforderlichen DNS-IP-Adressen][sap-high-availability-infrastructure-wsfc-shared-disk-dns-ip].
+* [Festlegen der erforderlichen DNS-IP-Adressen][sap-high-availability-infrastructure-wsfc-shared-disk-dns-ip]
 
-* [Festlegen der statischen IP-Adressen für die virtuellen SAP-Computer][sap-ascs-high-availability-multi-sid-wsfc-set-static-ip].
+* [Festlegen der statischen IP-Adressen für die virtuellen SAP-Computer][sap-ascs-high-availability-multi-sid-wsfc-set-static-ip]
 
-* [Festlegen der statischen IP-Adresse für den internen Azure Load Balancer][sap-high-availability-infrastructure-wsfc-shared-disk-set-static-ip-ilb].
+* [Festlegen der statischen IP-Adresse für den internen Azure Load Balancer][sap-high-availability-infrastructure-wsfc-shared-disk-set-static-ip-ilb]
 
-* [Festlegen von Standardregeln für den ASCS-/SCS-Lastenausgleich für den internen Azure Load Balancer][sap-high-availability-infrastructure-wsfc-shared-disk-default-ascs-ilb-rules].
+* [Festlegen von Standardregeln für den ASCS-/SCS-Lastenausgleich für den internen Azure Load Balancer][sap-high-availability-infrastructure-wsfc-shared-disk-default-ascs-ilb-rules]
 
-* [Ändern der Standardregeln für den ASCS-/SCS-Lastenausgleich für den internen Azure Load Balancer][sap-high-availability-infrastructure-wsfc-shared-disk-change-ascs-ilb-rules].
+* [Ändern der Standardregeln für den ASCS/SCS-Lastenausgleich für den internen Azure Load Balancer][sap-high-availability-infrastructure-wsfc-shared-disk-change-ascs-ilb-rules]
 
-* [Hinzufügen virtueller Windows-Computer zur Domäne][sap-high-availability-infrastructure-wsfc-shared-disk-add-win-domain].
+* [Hinzufügen virtueller Windows-Computer zur Domäne][sap-high-availability-infrastructure-wsfc-shared-disk-add-win-domain]
 
-* [Hinzufügen von Registrierungseinträgen auf beiden Clusterknoten für eine SAP ASCS-/SCS-Instanz][sap-high-availability-infrastructure-wsfc-shared-disk-add-win-domain].
+* [Hinzufügen von Registrierungseinträgen auf beiden Clusterknoten für eine SAP ASCS-/SCS-Instanz][sap-high-availability-infrastructure-wsfc-shared-disk-add-win-domain]
 
 * Da Sie Windows Server 2016 verwenden, wird empfohlen, einen [Azure-Cloudzeugen][deploy-cloud-witness] zu konfigurieren.
 
 
 ## <a name="deploy-the-scale-out-file-server-cluster-manually"></a>Manuelles Bereitstellen des Dateiserverclusters mit horizontaler Hochskalierung 
 
-Können Sie den Microsoft-Dateiservercluster mit horizontaler Hochskalierung manuell wie im Blog bereitstellen [Storage Spaces Direct in Azure][ms-blog-s2d-in-azure] beschrieben bereitstellen, indem Sie den folgenden Code ausführen:  
+Sie können den Microsoft-Dateiservercluster mit horizontaler Hochskalierung manuell bereitstellen, wie es im Blog zum Thema [Direkte Speicherplätze in Azure][ms-blog-s2d-in-azure] beschrieben ist, indem Sie den folgenden Code ausführen:  
 
 
 ```powershell
@@ -345,7 +345,7 @@ Wählen Sie im Feld **Speicherkontotyp** die Option **Storage Premium** aus. All
 
 ## <a name="adjust-cluster-timeout-settings"></a>Anpassen von Timeouteinstellungen für Cluster
 
-Nachdem Sie die Installation des Windows-Clusters für den Dateiserver mit horizontaler Skalierung abgeschlossen haben, passen Sie die Timeoutschwellenwerte für die Failovererkennung an die Bedingungen in Azure an. Die zu ändernden Parameter sind unter [Tuning Failover Cluster Network Thresholds][tuning-failover-cluster-network-thresholds] (Optimieren der Netzwerkschwellenwerte für Failovercluster) dokumentiert. Vorausgesetzt, dass sich Ihre gruppierten virtuellen Computer im selben Subnetz befinden, ändern Sie die folgenden Parameter auf diese Werte:
+Nachdem Sie die Installation des Windows-Clusters für den Dateiserver mit horizontaler Skalierung abgeschlossen haben, passen Sie die Timeoutschwellenwerte für die Failovererkennung an die Bedingungen in Azure an. Die zu ändernden Parameter sind unter [Optimieren der Netzwerkschwellenwerte für Failovercluster][tuning-failover-cluster-network-thresholds] dokumentiert. Vorausgesetzt, dass sich Ihre gruppierten virtuellen Computer im selben Subnetz befinden, ändern Sie die folgenden Parameter auf diese Werte:
 
 - SameSubNetDelay = 2000
 - SameSubNetThreshold = 15

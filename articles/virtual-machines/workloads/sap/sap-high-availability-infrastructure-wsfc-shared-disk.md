@@ -4,7 +4,7 @@ description: Es wird beschrieben, wie Sie die Azure-Infrastruktur für SAP HA mi
 services: virtual-machines-windows,virtual-network,storage
 documentationcenter: saponazure
 author: goraco
-manager: jeconnoc
+manager: gwallace
 editor: ''
 tags: azure-resource-manager
 keywords: ''
@@ -17,12 +17,12 @@ ms.workload: infrastructure-services
 ms.date: 05/05/2017
 ms.author: rclaus
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: ae3d1b36b89bb1bce1ff384bfa12a1bf643614fd
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: b4e107da9d8e5019ba51769d283f3faa34839380
+ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65408773"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67709251"
 ---
 # <a name="prepare-the-azure-infrastructure-for-sap-ha-by-using-a-windows-failover-cluster-and-shared-disk-for-sap-ascsscs"></a>Vorbereiten der Azure-Infrastruktur für SAP HA mit einem Windows-Failovercluster und einem freigegebenen Datenträger für SAP ASCS/SCS
 
@@ -169,7 +169,7 @@ In diesem Artikel werden die Schritte zum Vorbereiten der Azure-Infrastruktur au
 
 Lesen Sie sich diesen Artikel durch, bevor Sie mit der Installation beginnen:
 
-* [Architekturleitfaden: Gruppieren einer SAP ASCS/SCS-Instanz in einem Windows-Failovercluster mithilfe freigegebener Clusterdatenträger][sap-high-availability-guide-wsfc-shared-disk]
+* [Architekturleitfaden: Gruppieren einer SAP ASCS/SCS-Instanz in einem Windows-Failovercluster mithilfe freigegebener Clusterdatenträger in Azure][sap-high-availability-guide-wsfc-shared-disk]
 
 ## <a name="prepare-the-infrastructure-for-architectural-template-1"></a>Vorbereiten der Infrastruktur für Architekturvorlage 1
 Azure Resource Manager-Vorlagen für SAP vereinfachen die Bereitstellung der erforderlichen Ressourcen.
@@ -279,7 +279,7 @@ Azure Resource Manager-Vorlagen für dieses Bereitstellungsszenario sind hier ve
 
 ## <a name="prepare-the-infrastructure-for-architectural-template-3"></a>Vorbereiten der Infrastruktur für Architekturvorlage 3
 
-Sie können die Infrastruktur vorbereiten und SAP für Multi-SID konfigurieren. Beispielsweise können Sie eine weitere SAP ASCS/SCS-Instanz einer *vorhandenen* Clusterkonfiguration hinzufügen. Weitere Informationen finden Sie unter [Konfigurieren einer zusätzlichen SAP ASCS/SCS-Instanz für eine vorhandene Clusterkonfiguration zum Erstellen einer Multi-SID-SAP-Konfiguration in Azure Resource Manager][sap-ha-multi-sid-guide].
+Sie können die Infrastruktur vorbereiten und SAP für Multi-SID konfigurieren. Beispielsweise können Sie eine weitere SAP ASCS/SCS-Instanz einer *vorhandenen* Clusterkonfiguration hinzufügen. Weitere Informationen finden Sie unter [Konfigurieren einer zusätzlichen SAP ASCS/SCS-Instanz für eine vorhandene Clusterkonfiguration zum Erstellen einer SAP-Multi-SID-Konfiguration in Azure Resource Manager][sap-ha-multi-sid-guide].
 
 Wenn Sie einen neuen Multi-SID-Cluster erstellen möchten, können Sie die Multi-SID-[Schnellstartvorlagen auf GitHub](https://github.com/Azure/azure-quickstart-templates) verwenden.
 
@@ -295,7 +295,7 @@ Die folgenden Abschnitte enthalten weitere Details zu den Vorlagen und Parameter
 
 Mit der ASCS/SCS-Vorlage werden zwei virtuelle Computer bereitgestellt, die Sie verwenden können, um einen Windows-Failovercluster zum Hosten von mehreren ASCS/SCS-Instanzen zu erstellen.
 
-Geben Sie in der [ASCS/SCS-Multi-SID-Vorlage][sap-templates-3-tier-multisid-xscs-marketplace-image] oder der [ASCS/SCS-Multi-SID-Vorlage mit Managed Disks][sap-templates-3-tier-multisid-xscs-marketplace-image-md] Werte für die folgenden Parameter ein, um die ASCS/SCS-Multi-SID-Vorlage einzurichten:
+Geben Sie in der [ASCS/SCS-Multi-SID-Vorlage][sap-templates-3-tier-multisid-xscs-marketplace-image] or [ASCS/SCS multi-SID template by using Managed Disks][sap-templates-3-tier-multisid-xscs-marketplace-image-md] Werte für die folgenden Parameter ein, um die Vorlage einzurichten:
 
 - **Ressourcenpräfix**:  Legen Sie das Ressourcenpräfix fest, um alle Ressourcen, die während der Bereitstellung erstellt werden, mit einem Präfix zu versehen. Da die Ressourcen nicht nur zu einem einzigen SAP-System gehören, ist das Präfix der Ressource nicht die SID eines einzigen SAP-Systems.  Das Präfix muss zwischen drei und sechs Zeichen lang sein.
 - **Stapeltyp:** Wählen Sie den Stapeltyp des SAP-Systems aus. Abhängig vom Stapeltyp hat der Azure Load Balancer eine (nur ABAP oder Java) oder zwei (ABAP+Java) private IP-Adressen pro SAP-System.
@@ -333,7 +333,7 @@ Der Lastenausgleich wird so konfiguriert, dass die folgenden Testports verwendet
 
 Mit der Datenbankvorlage werden ein oder zwei virtuelle Computer bereitgestellt, die Sie zum Installieren des relationalen Datenbankverwaltungssystems (RDBMS) für ein SAP-System verwenden können. Wenn Sie z.B. eine ASCS/SCS-Vorlage für fünf SAP-Systeme bereitstellen, müssen Sie diese Vorlage fünfmal bereitstellen.
 
-Geben Sie in der [Datenbank-Multi-SID-Vorlage][sap-templates-3-tier-multisid-db-marketplace-image] oder der [Datenbank-Multi-SID-Vorlage mit Managed Disks][sap-templates-3-tier-multisid-db-marketplace-image-md] Werte für die folgenden Parameter ein, um die Datenbank-Multi-SID-Vorlage einzurichten:
+Geben Sie in der [Datenbank-Multi-SID-Vorlage][sap-templates-3-tier-multisid-db-marketplace-image] or [database multi-SID template by using Managed Disks][sap-templates-3-tier-multisid-db-marketplace-image-md] Werte für die folgenden Parameter ein, um die Vorlage einzurichten:
 
 - **SAP-System-ID**: Geben Sie die SAP-System-ID des SAP-Systems ein, das Sie installieren möchten. Die ID wird als Präfix für die Ressourcen verwendet, die bereitgestellt werden.
 - **Betriebssystemtyp**: Wählen Sie das Betriebssystem des virtuellen Computers aus.
@@ -350,7 +350,7 @@ Geben Sie in der [Datenbank-Multi-SID-Vorlage][sap-templates-3-tier-multisid-db-
 
 Die Anwendungsservervorlage stellt zwei oder mehr virtuelle Computer bereit, die als SAP-Anwendungsserverinstanzen für ein SAP-System verwendet werden können. Wenn Sie z.B. eine ASCS/SCS-Vorlage für fünf SAP-Systeme bereitstellen, müssen Sie diese Vorlage fünfmal bereitstellen.
 
-Geben Sie in der [Anwendungsserver-Multi-SID-Vorlage][sap-templates-3-tier-multisid-apps-marketplace-image] oder der [Anwendungsserver-Multi-SID-Vorlage mit Managed Disks][sap-templates-3-tier-multisid-apps-marketplace-image-md] Werte für die folgenden Parameter ein, um die Anwendungsserver-Multi-SID-Vorlage einzurichten:
+Geben Sie in der [Anwendungsserver-Multi-SID-Vorlage][sap-templates-3-tier-multisid-apps-marketplace-image] or [application servers multi-SID template  by using Managed Disks][sap-templates-3-tier-multisid-apps-marketplace-image-md] Werte für die folgenden Parameter ein, um die Vorlage einzurichten:
 
   -  **SAP-System-ID**: Geben Sie die SAP-System-ID des SAP-Systems ein, das Sie installieren möchten. Die ID wird als Präfix für die Ressourcen verwendet, die bereitgestellt werden.
   -  **Betriebssystemtyp**: Wählen Sie das Betriebssystem des virtuellen Computers aus.
@@ -374,7 +374,7 @@ Führen Sie die folgenden Schritte aus, um die erforderlichen DNS-IP-Adressen fe
 
 1. Stellen Sie im Azure-Portal im Bereich **DNS-Server** sicher, dass die Option **DNS-Server** für Ihr virtuelles Netzwerk auf **Custom DNS** (Benutzerdefiniertes DNS) festgelegt ist.
 2. Wählen Sie die Einstellungen basierend auf dem Typ des Netzwerks aus. Weitere Informationen finden Sie in den folgenden Ressourcen:
-   * [Konnektivität des Unternehmensnetzwerks (standortübergreifend)][planning-guide-2.2]: Fügen Sie die IP-Adressen der lokalen DNS-Server hinzu.  
+   * [(Standortübergreifende) Verbindung mit dem Unternehmensnetzwerk][planning-guide-2.2]: Fügen Sie die IP-Adressen der lokalen DNS-Server hinzu.  
    Sie können lokale DNS-Server auf die virtuellen Computer erweitern, die in Azure ausgeführt werden. In diesem Szenario können Sie die IP-Adressen der virtuellen Azure-Computer hinzufügen, auf denen den DNS-Dienst ausgeführt wird.
    * Für in Azure isolierte VM-Bereitstellungen: Stellen Sie eine zusätzliche VM in der gleichen Virtual Network-Instanz bereit, die auch als DNS-Server fungiert. Fügen Sie die IP-Adressen der virtuellen Azure-Computer hinzu, die Sie zum Ausführen des DNS-Diensts eingerichtet haben.
 
@@ -404,9 +404,9 @@ Für lokale Bereitstellungen benötigen Sie diese reservierten Hostnamen und IP-
 | SAP ASCS/SCS-Instanz – virtueller Hostname |pr1-ascs-sap |10.0.0.43 |
 | SAP-DBMS – zweiter virtueller Host im Cluster (Clusterverwaltung) |pr1-dbms-vir |10.0.0.32 |
 
-Bei der Erstellung des Clusters erstellen Sie die virtuellen Hostnamen „pr1-ascs-vir“ und „pr1-dbms-vir“ und die zugehörigen IP-Adressen, mit denen der Cluster selbst verwaltet wird. Informationen zur Vorgehensweise finden Sie unter [Collect cluster nodes in a cluster configuration][sap-high-availability-infrastructure-wsfc-shared-disk-collect-cluster-config] (Erfassen von Clusterknoten in einer Clusterkonfiguration).
+Bei der Erstellung des Clusters erstellen Sie die virtuellen Hostnamen „pr1-ascs-vir“ und „pr1-dbms-vir“ und die zugehörigen IP-Adressen, mit denen der Cluster selbst verwaltet wird. Informationen zur Vorgehensweise finden Sie unter [Erfassen der Clusterknoten in einer Clusterkonfiguration][sap-high-availability-infrastructure-wsfc-shared-disk-collect-cluster-config].
 
-Sie können die anderen beiden virtuellen Hostnamen „pr1-ascs-sap“ und „pr1-dbms-sap“ und die zugeordneten IP-Adressen manuell auf dem DNS-Server erstellen. Die SAP ASCS/SCS-Clusterinstanz und die DBMS-Clusterinstanz verwenden diese Ressourcen. Informationen zur Vorgehensweise finden Sie unter [Create a virtual host name for a clustered SAP ASCS/SCS instance][sap-ha-guide-9.1.1] (Erstellen eines virtuellen Hostnamens für die SAP ASCS/SCS-Clusterinstanz).
+Sie können die anderen beiden virtuellen Hostnamen „pr1-ascs-sap“ und „pr1-dbms-sap“ und die zugeordneten IP-Adressen manuell auf dem DNS-Server erstellen. Die SAP ASCS/SCS-Clusterinstanz und die DBMS-Clusterinstanz verwenden diese Ressourcen. Informationen zur Vorgehensweise finden Sie unter [Erstellen eines virtuellen Hostnamens für die SAP ASCS/SCS-Clusterinstanz][sap-ha-guide-9.1.1].
 
 ## <a name="84c019fe-8c58-4dac-9e54-173efd4b2c30"></a> Festlegen der statischen IP-Adressen für die beiden virtuellen SAP-Computer
 Nach der Bereitstellung der virtuellen Computer für Ihren Cluster müssen Sie statische IP-Adressen für alle virtuellen Computer festlegen. Sie führen diesen Schritt in der Azure Virtual Network-Konfiguration und nicht im Gastbetriebssystem aus.
@@ -652,7 +652,7 @@ Das Einrichten eines Windows Server-Failoverclusters für eine SAP ASCS/SCS-Inst
 
    _**Abbildung 18:** Kontrollkästchen *nicht* aktivieren_
 
-   Sie können Warnungen zu Quorum und Datenträgern ignorieren. Sie konfigurieren das Quorum und die Freigabe der Datenträger später, wie unter [Installieren von SIOS DataKeeper Cluster Edition für einen SAP ASCS/SCS-Clusterfreigabe-Datenträger][sap-high-availability-infrastructure-wsfc-shared-disk-install-sios] beschrieben.
+   Sie können Warnungen zu Quorum und Datenträgern ignorieren. Sie konfigurieren das Quorum und die Freigabe der Datenträger später, wie unter [Installieren von SIOS DataKeeper Cluster Edition für den SAP ASCS/SCS-Clusterfreigabe-Datenträger][sap-high-availability-infrastructure-wsfc-shared-disk-install-sios] beschrieben.
 
    ![Abbildung 19: Ignorieren der Warnungen zum Datenträgerquorum][sap-ha-guide-figure-3018]
 
@@ -737,7 +737,7 @@ Das Konfigurieren eines Cluster-Dateifreigabenzeugen umfasst die folgenden Aufga
 
    _**Abbildung 28:** Bestätigung der Neukonfiguration des Clusters_
 
-Nachdem Sie die Installation des Windows-Failoverclusters erfolgreich abgeschlossen haben, müssen Sie einige Schwellenwerte ändern, um die Failovererkennung an die Bedingungen in Azure anzupassen. Die zu ändernden Parameter sind unter [Tuning Failover Cluster Network Thresholds][tuning-failover-cluster-network-thresholds] (Optimieren der Netzwerkschwellenwerte für Failovercluster) dokumentiert. Wenn sich Ihre beiden virtuellen Computer, aus denen die Windows-Clusterkonfiguration für ASCS/SCS besteht, in demselben Subnetz befinden, müssen Sie die folgenden Parameter in diese Werte ändern:
+Nachdem Sie die Installation des Windows-Failoverclusters erfolgreich abgeschlossen haben, müssen Sie einige Schwellenwerte ändern, um die Failovererkennung an die Bedingungen in Azure anzupassen. Die zu ändernden Parameter sind unter [Optimieren der Netzwerkschwellenwerte für Failovercluster][tuning-failover-cluster-network-thresholds] dokumentiert. Wenn sich Ihre beiden virtuellen Computer, aus denen die Windows-Clusterkonfiguration für ASCS/SCS besteht, in demselben Subnetz befinden, müssen Sie die folgenden Parameter in diese Werte ändern:
 
 - SameSubNetDelay = 2000
 - SameSubNetThreshold = 15
@@ -891,4 +891,4 @@ Beginnen Sie nach der Installation von SIOS DataKeeper auf beiden Knoten mit der
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* [SAP NetWeaver HA-Installation auf dem Windows-Failovercluster und dem freigegebenen Datenträger für die SAP (A)SCS-Instanz unter Azure][sap-high-availability-installation-wsfc-shared-disk]
+* [SAP NetWeaver-HA-Installation auf einem Windows-Failovercluster und freigegebenen Datenträger für eine SAP ASCS/SCS-Instanz in Azure][sap-high-availability-installation-wsfc-shared-disk]

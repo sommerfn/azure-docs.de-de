@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 02/12/2019
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: 192a6f4841e9dc3a478da5e4b53594362955ca71
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.openlocfilehash: 7c1f3fc7861f5e1b895423d502218b9b07302c1c
+ms.sourcegitcommit: cf438e4b4e351b64fd0320bf17cc02489e61406a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67177909"
+ms.lasthandoff: 07/08/2019
+ms.locfileid: "67659814"
 ---
 ### <a name="is-bgp-supported-on-all-azure-vpn-gateway-skus"></a>Wird BGP von allen Azure-VPN-Gateway-SKUs unterstützt?
 Nein, BGP wird von Azure-VPN-Gateways vom Typ **VpnGw1**, **VpnGw2**, **VpnGw3**, **Standard** und **HighPerformance** unterstützt. Die SKU **Basic** wird NICHT unterstützt.
@@ -85,7 +85,7 @@ Ja. Aber mindestens eines der virtuellen Netzwerkgateways muss über eine Aktiv/
 Ja. 
 
 ### <a name="what-address-does-azure-vpn-gateway-use-for-bgp-peer-ip"></a>Welche Adresse verwendet das Azure-VPN-Gateway als BGP-Peer-IP-Adresse?
-Das Azure-VPN-Gateway ordnet eine einzelne IP-Adresse aus dem für das virtuelle Netzwerk definierten GatewaySubnet-Bereich zu. Dabei handelt es sich standardmäßig um die vorletzte Adresse des Bereichs. Wenn also beispielsweise der GatewaySubnet-Bereich 10.12.255.0/27 von 10.12.255.0 bis 10.12.255.31 reicht, wird 10.12.255.30 als BGP-Peer-IP-Adresse für das Azure-VPN Gateway verwendet. Diese Information können Sie der Liste mit den Azure-VPN-Gateway-Informationen entnehmen.
+Das Azure-VPN-Gateway ordnet eine einzelne IP-Adresse aus dem GatewaySubnet-Bereich für Aktiv/Standby-VPN-Gateways oder zwei IP-Adressen für Aktiv/Aktiv-VPN-Gateways zu. Die tatsächlich zugeordneten BGP-IP-Adressen können mithilfe des PowerShell-Cmdlets „Get-AzVirtualNetworkGateway“ (Eigenschaft „bgpPeeringAddress“) oder über das Azure-Portal (unter der Eigenschaft „BGP-ASN konfigurieren“ auf der Gatewaykonfigurationsseite) ermittelt werden.
 
 ### <a name="what-are-the-requirements-for-the-bgp-peer-ip-addresses-on-my-vpn-device"></a>Welche Anforderungen müssen die BGP-Peer-IP-Adressen auf meinem VPN-Gerät erfüllen?
 Ihre lokale BGP-Peeradresse darf **NICHT** der öffentlichen IP-Adresse Ihres VPN-Geräts entsprechen. Verwenden Sie als BGP-Peer-IP-Adresse eine andere IP-Adresse für das VPN-Gerät. Dabei kann es sich um eine der Loopbackschnittstelle auf dem Gerät zugewiesene Adresse handeln. Beachten Sie jedoch, dass keine APIPA-Adresse (169.254.x.x) verwendet werden kann. Geben Sie diese Adresse im entsprechenden lokalen Netzwerkgateway an, das den Standort darstellt.

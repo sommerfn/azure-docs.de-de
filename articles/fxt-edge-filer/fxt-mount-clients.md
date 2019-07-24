@@ -6,12 +6,12 @@ ms.service: fxt-edge-filer
 ms.topic: tutorial
 ms.date: 06/20/2019
 ms.author: v-erkell
-ms.openlocfilehash: b48d8d74843947c3e40dc80234560b0147be6eea
-ms.sourcegitcommit: 5bdd50e769a4d50ccb89e135cfd38b788ade594d
+ms.openlocfilehash: 5471bf4041275d5988414def99dd2130f51fbb80
+ms.sourcegitcommit: 441e59b8657a1eb1538c848b9b78c2e9e1b6cfd5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/03/2019
-ms.locfileid: "67542964"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67828033"
 ---
 # <a name="tutorial-mount-the-cluster"></a>Tutorial: Einbinden des Clusters
 
@@ -43,7 +43,7 @@ Informationen zum Lastenausgleich mit Roundrobin-DNS für den Cluster finden Sie
 
 Eine einfachere Methode für kleine Installationen ist die Verwendung eines Skripts, das IP-Adressen im gesamten Bereich zuweist, wenn der Client eingebunden wird. 
 
-Für große oder komplizierte Systeme sind ggf. andere Lastenausgleichsmethoden erforderlich. Wenden Sie sich an Ihren Ansprechpartner bei Microsoft, oder stellen Sie eine Supportanfrage, um Unterstützung zu erhalten. (Azure Load Balancer wird aktuell *nicht* für Azure FXT Edge Filer unterstützt.)
+Für große oder komplizierte Systeme sind ggf. andere Lastenausgleichsmethoden erforderlich. Wenden Sie sich an Ihren Ansprechpartner bei Microsoft, oder stellen Sie eine [Supportanfrage](fxt-support-ticket.md), um Unterstützung zu erhalten. (Azure Load Balancer wird aktuell *nicht* für Azure FXT Edge Filer unterstützt.)
 
 ## <a name="create-the-mount-command"></a>Erstellen des mount-Befehls 
 
@@ -54,7 +54,7 @@ Das Format ist ``mount <FXT cluster path> <local path> {options}``.
 Der mount-Befehl umfasst drei Elemente: 
 
 * Clusterpfad: Eine Kombination aus IP-Adresse und Namespaceverbindungspfad, wie weiter unten beschrieben.
-* Lokaler Pfad: Der Pfad auf dem Client. 
+* Lokaler Pfad – Der Pfad auf dem Client 
 * Optionen für den mount-Befehl: Diese sind unter [Verwenden empfohlener Optionen für den mount-Befehl](#use-recommended-mount-command-options) aufgeführt.
 
 ### <a name="create-the-cluster-path"></a>Erstellen des Clusterpfads

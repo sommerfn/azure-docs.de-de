@@ -4,7 +4,7 @@ description: Bereitstellen einer Anwendung in Cloud Foundry in Azure
 services: virtual-machines-linux
 documentationcenter: ''
 author: seanmck
-manager: jeconnoc
+manager: gwallace
 editor: ''
 tags: ''
 keywords: ''
@@ -16,12 +16,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 06/14/2017
 ms.author: seanmck
-ms.openlocfilehash: 5a43ce3f09ce9695fa5add58b52271a46e2a271a
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: fe510865e687b6a44538627e4ef9025b41416841
+ms.sourcegitcommit: 2e4b99023ecaf2ea3d6d3604da068d04682a8c2d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60388484"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67668345"
 ---
 # <a name="deploy-your-first-app-to-cloud-foundry-on-microsoft-azure"></a>Bereitstellen Ihrer ersten App in Cloud Foundry in Microsoft Azure
 
@@ -31,7 +31,7 @@ ms.locfileid: "60388484"
 
 Es gibt mehrere Optionen zum Erstellen einer Cloud Foundry-Umgebung in Azure:
 
-- Nutzen Sie das [Pivotal Cloud Foundry-Angebot][pcf-azuremarketplace] in Azure Marketplace, um eine Standardumgebung zu erstellen, die PCF Operations Manager und Azure Service Broker umfasst. Sie finden die [vollständigen Anweisungen][pcf-azuremarketplace-pivotaldocs] für die Bereitstellung des Marketplace-Angebots in der Pivotal-Dokumentation.
+- Nutzen Sie das [Pivotal Cloud Foundry-Angebot][pcf-azuremarketplace] in the Azure Marketplace to create a standard environment that includes PCF Ops Manager and the Azure Service Broker. You can find [complete instructions][pcf-azuremarketplace-pivotaldocs] für die Bereitstellung des Marketplace-Angebots in der Pivotal-Dokumentation.
 - Erstellen Sie eine benutzerdefinierte Umgebung, indem Sie [Pivotal Cloud Foundry manuell bereitstellen][pcf-custom].
 - [Stellen Sie die Cloud Foundry-Open-Source-Pakete direkt bereit][oss-cf-bosh], indem Sie einen [BOSH](https://bosh.io)-Director einrichten. Dies ist ein virtueller Computer, der die Bereitstellung der Cloud Foundry-Umgebung koordiniert.
 
@@ -40,7 +40,7 @@ Es gibt mehrere Optionen zum Erstellen einer Cloud Foundry-Umgebung in Azure:
 
 ## <a name="connect-to-the-cloud-controller"></a>Herstellen einer Verbindung mit dem Cloud Controller
 
-Der Cloud Controller ist der primäre Einstiegspunkt in eine Cloud Foundry-Umgebung für die Bereitstellung und Verwaltung von Anwendungen. Die Core Cloud Controller-API (CCAPI) ist eine REST-API, auf die über verschiedene Tools zugegriffen werden kann. In diesem Fall interagieren wir mit der API über die [Cloud Foundry CLI][cf-cli]. Sie können die CLI unter Linux, macOS oder Windows installieren. Wenn Sie sie nicht installieren möchten, steht sie auch in der [Azure Cloud Shell][cloudshell-docs] vorinstalliert zur Verfügung.
+Der Cloud Controller ist der primäre Einstiegspunkt in eine Cloud Foundry-Umgebung für die Bereitstellung und Verwaltung von Anwendungen. Die Core Cloud Controller-API (CCAPI) ist eine REST-API, auf die über verschiedene Tools zugegriffen werden kann. In diesem Fall interagieren wir mit der API über die [Cloud Foundry CLI][cf-cli]. You can install the CLI on Linux, MacOS, or Windows, but if you'd prefer not to install it at all, it is available pre-installed in the [Azure Cloud Shell][cloudshell-docs].
 
 Um sich anzumelden, stellen Sie `api` der SYSTEMDOMAINURL voran, die Sie bei der Marketplace-Bereitstellung erhalten haben. Da bei der Standardbereitstellung ein selbst signiertes Zertifikat verwendet wird, müssen Sie auch den Schalter `skip-ssl-validation` einschließen.
 

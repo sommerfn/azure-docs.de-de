@@ -32,8 +32,14 @@
       href: ../hdinsight-hadoop-create-linux-clusters-with-secure-transfer-storage.md
     - name: Netzwerkzugriff
       items:
-        - name: HDInsight in Azure VNET
-          href: ../hdinsight-extend-hadoop-virtual-network.md
+        - name: Architektur des virtuellen HDInsight-Netzwerks
+          href: ../hdinsight-virtual-network-architecture.md
+        - name: Planen von VNETs für HDInsight
+          href: ../hdinsight-plan-virtual-network-deployment.md
+        - name: Erstellen von VNETs für HDInsight
+          href: ../hdinsight-create-virtual-network.md
+        - name: Erforderliche IP-Adressen für NSGs und UDRs
+          href: ../hdinsight-management-ip-addresses.md
         - name: Verbinden von HDInsight mit dem lokalen Netzwerk
           href: ../connect-on-premises-network.md
         - name: Erstellen eines Apache HBase-Clusters in einen virtuellen Azure-Netzwerk

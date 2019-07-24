@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/31/2018
 ms.author: genli
-ms.openlocfilehash: 4e11b1bc16f874f892288f9677a71023f483de7c
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 8e10151cd117a3400893f94559b2c9892de9f3c7
+ms.sourcegitcommit: 2e4b99023ecaf2ea3d6d3604da068d04682a8c2d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60458079"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67666215"
 ---
 # <a name="integrate-azure-vpn-gateway-radius-authentication-with-nps-server-for-multi-factor-authentication"></a>Integrieren der RADIUS-Authentifizierung für das Azure-VPN-Gateway in den NPS-Server für Multi-Factor Authentication 
 
@@ -52,7 +52,7 @@ Zum Aktivieren von MFA müssen die Benutzer in Azure Active Directory (Azure AD)
 ### <a name="step-2-configure-the-nps-for-azure-mfa"></a>Schritt 2: Konfigurieren des NPS für Azure MFA
 
 1. [Installieren Sie auf dem NPS-Server die NPS-Erweiterung für Azure MFA](../active-directory/authentication/howto-mfa-nps-extension.md#install-the-nps-extension).
-2. Öffnen Sie die NPS-Konsole, klicken Sie mit der rechten Maustaste auf **RADIUS-Clients**, und wählen Sie dann **Neu** aus. Erstellen Sie den RADIUS-Client, indem Sie die folgenden Einstellungen angeben:
+2. Öffnen Sie die NPS-Konsole, klicken Sie mit der rechten Maustaste auf **RADIUS-Clients**, und wählen Sie dann **Neu** aus. Erstellen Sie den RADIUS-Client unter Angabe der folgenden Einstellungen:
 
     - **Anzeigename:** Geben Sie einen beliebigen Namen ein.
     - **Adresse (IP oder DNS):** Geben Sie das Gatewaysubnetz ein, das Sie in Schritt 1 erstellt haben.

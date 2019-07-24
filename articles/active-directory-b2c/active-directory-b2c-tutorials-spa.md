@@ -10,12 +10,12 @@ ms.custom: mvc
 ms.topic: tutorial
 ms.service: active-directory
 ms.subservice: B2C
-ms.openlocfilehash: 6824cc84c24b41fd82afd39ead3029a212173948
-ms.sourcegitcommit: c0419208061b2b5579f6e16f78d9d45513bb7bbc
+ms.openlocfilehash: 496cf801a44638af61306b43791abce9466e2cb2
+ms.sourcegitcommit: 64798b4f722623ea2bb53b374fb95e8d2b679318
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/08/2019
-ms.locfileid: "67624791"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67835684"
 ---
 # <a name="tutorial-enable-authentication-in-a-single-page-application-using-azure-active-directory-b2c"></a>Tutorial: Aktivieren der Authentifizierung in einer Single-Page-Webanwendung mit Azure Active Directory B2C
 
@@ -121,7 +121,7 @@ Das Beispiel unterstützt Registrierung, Anmeldung, Profilbearbeitung und Kennwo
 
     Verwenden Sie eine gültige E-Mail-Adresse, und bestätigen Sie sie mithilfe des Prüfcodes. Legen Sie ein Kennwort fest. Geben Sie Werte für die angeforderten Attribute ein.
 
-    ![Registrierungsworkflow](media/active-directory-b2c-tutorials-desktop-app/sign-up-workflow.png)
+    ![Registrierungsseite im Benutzerflow für Anmeldung/Registrierung](./media/active-directory-b2c-tutorials-desktop-app/sign-up-workflow.PNG)
 
 1. Klicken Sie auf **Erstellen**, um im Azure AD B2C-Verzeichnis ein lokales Konto zu erstellen.
 

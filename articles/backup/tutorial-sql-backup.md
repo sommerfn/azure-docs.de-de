@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: tutorial
 ms.date: 06/18/2019
 ms.author: dacurwin
-ms.openlocfilehash: 5fbbd2cf999ab8ba3183879bd9b417353aa5edd0
-ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
+ms.openlocfilehash: b5e2ccef3b2a91f903706745d74a4bf16e1003d4
+ms.sourcegitcommit: 770b060438122f090ab90d81e3ff2f023455213b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67203482"
+ms.lasthandoff: 07/17/2019
+ms.locfileid: "68305224"
 ---
 # <a name="back-up-sql-server-databases-in-azure-vms"></a>Sichern von SQL Server-Datenbanken auf virtuellen Azure-Computern
 
@@ -143,19 +143,19 @@ Konfigurieren Sie die Sicherung wie folgt:
 
     ![Aktivieren des automatischen Schutzes für die AlwaysOn-Verfügbarkeitsgruppe](./media/backup-azure-sql-database/enable-auto-protection.png)
 
-5. Wählen Sie unter  **Sicherungsrichtlinie auswählen** eine Richtlinie aus, und klicken Sie dann auf  **OK**.
+5. Wählen Sie in **Sicherungsrichtlinie auswählen** eine Richtlinie aus, und klicken Sie dann auf **OK**.
 
-   - Auswahl der Standardrichtlinie: HourlyLogBackup.
+   - Auswahl der Standardrichtlinie: HourlyLogBackup.
    - Auswählen einer vorhandenen, zuvor für SQL erstellten Sicherungsrichtlinie
    - Definieren einer neuen Richtlinie basierend auf Ihrer RPO und Ihrer Beibehaltungsdauer
 
      ![Auswählen der Sicherungsrichtlinie](./media/backup-azure-sql-database/select-backup-policy.png)
 
-6. Wählen Sie im Menü  **Sicherung** die Option  **Sicherung aktivieren**.
+6. Wählen Sie im Menü **Sicherung** die Option **Sicherung aktivieren** aus.
 
     ![Aktivieren der ausgewählten Sicherungsrichtlinie](./media/backup-azure-sql-database/enable-backup-button.png)
 
-7. Sie können den Konfigurationsprozess im Portalbereich  **Benachrichtigungen**  nachverfolgen.
+7. Den Konfigurationsprozess können Sie im Portalbereich **Benachrichtigungen** nachverfolgen.
 
     ![Benachrichtigungsbereich](./media/backup-azure-sql-database/notifications-area.png)
 
@@ -245,5 +245,5 @@ Im nächsten Tutorial stellen Sie einen virtuellen Azure-Computer von einem Date
 
 > [!div class="nextstepaction"]
 > [Wiederherstellen von SQL Server-Datenbanken auf virtuellen Azure-Computern](./restore-sql-database-azure-vm.md)
- 
+ 
 

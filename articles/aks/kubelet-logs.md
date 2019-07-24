@@ -2,27 +2,27 @@
 title: Anzeigen von Kubelet-Protokollen in Azure Kubernetes Service (AKS)
 description: Informationen zur Problembehandlung in den Kubelet-Protokollen aus AKS-Knoten (Azure Kubernetes Service)
 services: container-service
-author: iainfoulds
+author: mlearned
 ms.service: container-service
 ms.topic: article
 ms.date: 03/05/2019
-ms.author: iainfou
-ms.openlocfilehash: b381145fef7e6fb399fac3387ab01fdc9a51b154
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.author: mlearned
+ms.openlocfilehash: 65b16b3ddc209ef5d2f6287a04cfe402c3b205c6
+ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60465018"
+ms.lasthandoff: 07/07/2019
+ms.locfileid: "67615179"
 ---
 # <a name="get-kubelet-logs-from-azure-kubernetes-service-aks-cluster-nodes"></a>Abrufen von Kubelet-Protokollen aus Azure Kubernetes Service-Clusterknoten (AKS)
 
-Im Rahmen der Ausführung eines AKS-Clusters müssen Sie vielleicht Protokolle überprüfen, um ein Problem zu lösen. Im Azure-Portal können Protokolle für die [AKS-Hauptkomponenten][aks-master-logs] oder [Container in einem AKS-Cluster][azure-container-logs] angezeigt werden. Es kann vorkommen, dass Sie *kubelet*-Protokolle zur Problembehandlung aus einem AKS-Knoten abrufen müssen.
+Im Rahmen der Ausführung eines AKS-Clusters müssen Sie vielleicht Protokolle überprüfen, um ein Problem zu lösen. Im Azure-Portal können Protokolle für die [AKS-Masterkomponenten][aks-master-logs] oder für Container in einem AKS-Cluster angezeigt werden. or [containers in an AKS cluster][azure-container-logs] Es kann vorkommen, dass Sie *kubelet*-Protokolle zur Problembehandlung aus einem AKS-Knoten abrufen müssen.
 
 In diesem Artikel erfahren Sie, wie Sie `journalctl` zum Anzeigen der *kubelet*-Protokolle auf einem AKS-Knoten verwenden können.
 
 ## <a name="before-you-begin"></a>Voraussetzungen
 
-Es wird vorausgesetzt, dass Sie über ein AKS-Cluster verfügen. Wenn Sie noch einen AKS-Cluster benötigen, erhalten Sie weitere Informationen im AKS-Schnellstart. Verwenden Sie dafür entweder die [Azure CLI][aks-quickstart-cli] oder das [Azure-Portal][aks-quickstart-portal].
+Es wird vorausgesetzt, dass Sie über ein AKS-Cluster verfügen. Sollten Sie noch einen AKS-Cluster benötigen, lesen Sie die AKS-Schnellstartanleitung [für die Azure-Befehlszeilenschnittstelle][aks-quickstart-cli] oder für das Azure-Portal. or [using the Azure portal][aks-quickstart-portal]
 
 ## <a name="create-an-ssh-connection"></a>Erstellen einer SSH-Verbindung
 
@@ -64,7 +64,7 @@ I0508 12:28:58.344656    8672 kubelet_node_status.go:497] Using Node Hostname fr
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Wenn Sie weitere Informationen zur Problembehandlung vom Kubernetes-Master benötigen, lesen Sie [Anzeigen von Kubernetes-Masterknotenprotokollen in AKS][aks-master-logs].
+Wenn Sie zur Problembehandlung weitere Informationen des Kubernetes-Masters benötigen, lesen Sie [Anzeigen von Kubernetes-Masterknotenprotokollen in AKS][aks-master-logs].
 
 <!-- LINKS - internal -->
 [aks-ssh]: ssh.md

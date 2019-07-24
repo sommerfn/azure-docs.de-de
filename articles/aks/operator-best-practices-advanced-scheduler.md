@@ -2,17 +2,17 @@
 title: Best Practices für Operator – Erweiterte Schedulerfunktionen in Azure Kubernetes Service (AKS)
 description: Lernen Sie die Best Practices des Clusteroperators für die Verwendung erweiterter Schedulerfunktionen kennen, wie z.B. Taints und Toleranzen, Knotenselektoren und Affinität oder Pod-interne Affinität und Antiaffinität in Azure Kubernetes Service (AKS) kennen.
 services: container-service
-author: iainfoulds
+author: mlearned
 ms.service: container-service
 ms.topic: conceptual
 ms.date: 11/26/2018
-ms.author: iainfou
-ms.openlocfilehash: 5affcd5ee1e51ac754d8a9bb81560a6cc3626860
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.author: mlearned
+ms.openlocfilehash: 4caa4219d2bf7558dbdf71e92e4993722c6e8f6a
+ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67055619"
+ms.lasthandoff: 07/07/2019
+ms.locfileid: "67614877"
 ---
 # <a name="best-practices-for-advanced-scheduler-features-in-azure-kubernetes-service-aks"></a>Best Practices für erweiterte Schedulerfunktionen in Azure Kubernetes Service (AKS)
 
@@ -75,7 +75,7 @@ Wenn Sie Taints anwenden, arbeiten Sie mit Ihren Anwendungsentwicklern und -besi
 
 Weitere Informationen zu Taints und Toleranzen finden Sie unter [Anwenden von Taints und Toleranzen][k8s-taints-tolerations].
 
-Weitere Informationen zur Verwendung mehrerer Knotenpools in AKS finden Sie unter [Create and manage multiple node pools for a cluster in AKS (Erstellen und Verwalten mehrerer Knotenpools für einen Cluster in AKS)][use-multiple-node-pools].
+Weitere Informationen zur Verwendung mehrerer Knotenpools in AKS finden Sie unter [Erstellen und Verwalten mehrerer Knotenpools für einen Cluster in AKS][use-multiple-node-pools].
 
 ### <a name="behavior-of-taints-and-tolerations-in-aks"></a>Verhalten von Taints und Toleranzen in AKS
 
@@ -179,14 +179,14 @@ Ein gutes Beispiel ist eine Webanwendung, die auch eine Azure Cache for Redis-In
 | webapp-1   | webapp-2   | webapp-3   |
 | cache-1    | cache-2    | cache-3    |
 
-Dieses Beispiel ist eine komplexere Bereitstellung als die Verwendung von Knotenselektoren oder Knotenaffinität. Mit der Bereitstellung können Sie kontrollieren, wie Kubernetes Pods auf Knoten plant und Ressourcen logisch isolieren kann. Ein vollständiges Beispiel dieser Webanwendung mit Azure Cache for Redis-Beispiel finden Sie unter [Zusammenstellen von Pods auf demselben Knoten][k8s-pod-affinity].
+Dieses Beispiel ist eine komplexere Bereitstellung als die Verwendung von Knotenselektoren oder Knotenaffinität. Mit der Bereitstellung können Sie kontrollieren, wie Kubernetes Pods auf Knoten plant und Ressourcen logisch isolieren kann. Ein vollständiges Beispiel dieser Webanwendung mit Azure Cache for Redis-Beispiel finden Sie unter [Zusammenstellen von Pods auf demselben Knoten][k8s-pod-affinity].
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Dieser Artikel konzentriert sich auf erweiterte Funktionen des Kubernetes-Schedulers. Weitere Informationen zu Clustervorgängen in AKS finden Sie die folgenden Best Practices:
+Dieser Artikel konzentriert sich auf erweiterte Funktionen des Kubernetes-Schedulers. Weitere Informationen zu Clustervorgängen in AKS finden Sie in den folgenden Best Practices:
 
-* [Mehrinstanzenfähigkeit und Clusterisolation][aks-best-practices-scheduler]
-* [Grundlegende Funktionen des Kubernetes-Schedulers][aks-best-practices-scheduler]
+* [Best Practices für Clusterisolierung in Azure Kubernetes Service (AKS)][aks-best-practices-scheduler]
+* [Best Practices für grundlegende Schedulerfunktionen in Azure Kubernetes Service (AKS)][aks-best-practices-scheduler]
 * [Authentifizierung und Autorisierung][aks-best-practices-identity]
 
 <!-- EXTERNAL LINKS -->

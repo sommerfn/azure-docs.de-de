@@ -4,19 +4,150 @@ description: Eine Liste von Azure-Ressourcentypen, die in eine neue Ressourcengr
 author: tfitzmac
 ms.service: azure-resource-manager
 ms.topic: reference
-ms.date: 6/6/2019
+ms.date: 7/9/2019
 ms.author: tomfitz
-ms.openlocfilehash: 9ab8fbd8fa0453ca6c89f3e7ad91bea95b0b9096
-ms.sourcegitcommit: 08138eab740c12bf68c787062b101a4333292075
+ms.openlocfilehash: 093c20407cb6210125106189f36566f539de0dcc
+ms.sourcegitcommit: dad277fbcfe0ed532b555298c9d6bc01fcaa94e2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/22/2019
-ms.locfileid: "67331985"
+ms.lasthandoff: 07/10/2019
+ms.locfileid: "67721117"
 ---
 # <a name="move-operation-support-for-resources"></a>Unterstützung des Verschiebevorgangs für Ressourcen
-In diesem Artikel wird aufgeführt, für welche Azure-Ressourcentypen der Verschiebevorgang unterstützt wird. Auch wenn ein Ressourcentyp den Verschiebevorgang unterstützt, kann dies bestimmten Bedingungen unterliegen, die das Verschieben der Ressource verhindern. Ausführliche Informationen über Bedingungen, die sich auf Verschiebevorgänge auswirken, finden Sie unter [Verschieben von Ressourcen in eine neue Ressourcengruppe oder ein neues Abonnement](resource-group-move-resources.md).
+In diesem Artikel wird aufgeführt, für welche Azure-Ressourcentypen der Verschiebevorgang unterstützt wird. Außerdem finden Sie hier Informationen zu speziellen Bedingungen, die beim Verschieben einer Ressource berücksichtigt werden müssen.
 
-Um die Daten als Datei mit durch Trennzeichen getrennten Werten abzurufen, laden Sie [move-support-resources.csv](https://github.com/tfitzmac/resource-capabilities/blob/master/move-support-resources.csv) herunter.
+Navigieren Sie direkt zu einem Ressourcenanbieter-Namespace:
+> [!div class="op_single_selector"]
+> - [Microsoft.AAD](#microsoftaad)
+> - [microsoft.aadiam](#microsoftaadiam)
+> - [Microsoft.AlertsManagement](#microsoftalertsmanagement)
+> - [Microsoft.AnalysisServices](#microsoftanalysisservices)
+> - [Microsoft.ApiManagement](#microsoftapimanagement)
+> - [Microsoft.AppConfiguration](#microsoftappconfiguration)
+> - [Microsoft.AppService](#microsoftappservice)
+> - [Microsoft.Authorization](#microsoftauthorization)
+> - [Microsoft.Automation](#microsoftautomation)
+> - [Microsoft.AzureActiveDirectory](#microsoftazureactivedirectory)
+> - [Microsoft.AzureStack](#microsoftazurestack)
+> - [Microsoft.Backup](#microsoftbackup)
+> - [Microsoft.Batch](#microsoftbatch)
+> - [Microsoft.BatchAI](#microsoftbatchai)
+> - [Microsoft.BingMaps](#microsoftbingmaps)
+> - [Microsoft.BizTalkServices](#microsoftbiztalkservices)
+> - [Microsoft.Blockchain](#microsoftblockchain)
+> - [Microsoft.Blueprint](#microsoftblueprint)
+> - [Microsoft.BotService](#microsoftbotservice)
+> - [Microsoft.Cache](#microsoftcache)
+> - [Microsoft.Cdn](#microsoftcdn)
+> - [Microsoft.CertificateRegistration](#microsoftcertificateregistration)
+> - [Microsoft.ClassicCompute](#microsoftclassiccompute)
+> - [Microsoft.ClassicNetwork](#microsoftclassicnetwork)
+> - [Microsoft.ClassicStorage](#microsoftclassicstorage)
+> - [Microsoft.CognitiveServices](#microsoftcognitiveservices)
+> - [Microsoft.Compute](#microsoftcompute)
+> - [Microsoft.Container](#microsoftcontainer)
+> - [Microsoft.ContainerInstance](#microsoftcontainerinstance)
+> - [Microsoft.ContainerRegistry](#microsoftcontainerregistry)
+> - [Microsoft.ContainerService](#microsoftcontainerservice)
+> - [Microsoft.ContentModerator](#microsoftcontentmoderator)
+> - [Microsoft.CortanaAnalytics](#microsoftcortanaanalytics)
+> - [Microsoft.CostManagement](#microsoftcostmanagement)
+> - [Microsoft.CustomerInsights](#microsoftcustomerinsights)
+> - [Microsoft.DataBox](#microsoftdatabox)
+> - [Microsoft.DataBoxEdge](#microsoftdataboxedge)
+> - [Microsoft.Databricks](#microsoftdatabricks)
+> - [Microsoft.DataCatalog](#microsoftdatacatalog)
+> - [Microsoft.DataConnect](#microsoftdataconnect)
+> - [Microsoft.DataExchange](#microsoftdataexchange)
+> - [Microsoft.DataFactory](#microsoftdatafactory)
+> - [Microsoft.DataLake](#microsoftdatalake)
+> - [Microsoft.DataLakeAnalytics](#microsoftdatalakeanalytics)
+> - [Microsoft.DataLakeStore](#microsoftdatalakestore)
+> - [Microsoft.DataMigration](#microsoftdatamigration)
+> - [Microsoft.DBforMariaDB](#microsoftdbformariadb)
+> - [Microsoft.DBforMySQL](#microsoftdbformysql)
+> - [Microsoft.DBforPostgreSQL](#microsoftdbforpostgresql)
+> - [Microsoft.DeploymentManager](#microsoftdeploymentmanager)
+> - [Microsoft.Devices](#microsoftdevices)
+> - [Microsoft.DevSpaces](#microsoftdevspaces)
+> - [Microsoft.DevTestLab](#microsoftdevtestlab)
+> - [microsoft.dns](#microsoftdns)
+> - [Microsoft.DocumentDB](#microsoftdocumentdb)
+> - [Microsoft.DomainRegistration](#microsoftdomainregistration)
+> - [Microsoft.EnterpriseKnowledgeGraph](#microsoftenterpriseknowledgegraph)
+> - [Microsoft.EventGrid](#microsofteventgrid)
+> - [Microsoft.EventHub](#microsofteventhub)
+> - [Microsoft.Genomics](#microsoftgenomics)
+> - [Microsoft.HanaOnAzure](#microsofthanaonazure)
+> - [Microsoft.HDInsight](#microsofthdinsight)
+> - [Microsoft.HealthcareApis](#microsofthealthcareapis)
+> - [Microsoft.HybridCompute](#microsofthybridcompute)
+> - [Microsoft.HybridData](#microsofthybriddata)
+> - [Microsoft.ImportExport](#microsoftimportexport)
+> - [microsoft.insights](#microsoftinsights)
+> - [Microsoft.IoTCentral](#microsoftiotcentral)
+> - [Microsoft.IoTSpaces](#microsoftiotspaces)
+> - [Microsoft.KeyVault](#microsoftkeyvault)
+> - [Microsoft.Kusto](#microsoftkusto)
+> - [Microsoft.LabServices](#microsoftlabservices)
+> - [Microsoft.LocationBasedServices](#microsoftlocationbasedservices)
+> - [Microsoft.LocationServices](#microsoftlocationservices)
+> - [Microsoft.Logic](#microsoftlogic)
+> - [Microsoft.MachineLearning](#microsoftmachinelearning)
+> - [Microsoft.MachineLearningCompute](#microsoftmachinelearningcompute)
+> - [Microsoft.MachineLearningExperimentation](#microsoftmachinelearningexperimentation)
+> - [Microsoft.MachineLearningModelManagement](#microsoftmachinelearningmodelmanagement)
+> - [Microsoft.MachineLearningOperationalization](#microsoftmachinelearningoperationalization)
+> - [Microsoft.MachineLearningServices](#microsoftmachinelearningservices)
+> - [Microsoft.ManagedIdentity](#microsoftmanagedidentity)
+> - [Microsoft.Maps](#microsoftmaps)
+> - [Microsoft.MarketplaceApps](#microsoftmarketplaceapps)
+> - [Microsoft.Media](#microsoftmedia)
+> - [Microsoft.Migrate](#microsoftmigrate)
+> - [Microsoft.NetApp](#microsoftnetapp)
+> - [Microsoft.Network](#microsoftnetwork)
+> - [Microsoft.NotificationHubs](#microsoftnotificationhubs)
+> - [Microsoft.OperationalInsights](#microsoftoperationalinsights)
+> - [Microsoft.OperationsManagement](#microsoftoperationsmanagement)
+> - [Microsoft.Peering](#microsoftpeering)
+> - [Microsoft.Portal](#microsoftportal)
+> - [Microsoft.PortalSdk](#microsoftportalsdk)
+> - [Microsoft.PowerBI](#microsoftpowerbi)
+> - [Microsoft.PowerBIDedicated](#microsoftpowerbidedicated)
+> - [Microsoft.ProjectOxford](#microsoftprojectoxford)
+> - [Microsoft.RecoveryServices](#microsoftrecoveryservices)
+> - [Microsoft.Relay](#microsoftrelay)
+> - [Microsoft.SaaS](#microsoftsaas)
+> - [Microsoft.Scheduler](#microsoftscheduler)
+> - [Microsoft.Search](#microsoftsearch)
+> - [Microsoft.Security](#microsoftsecurity)
+> - [Microsoft.ServerManagement](#microsoftservermanagement)
+> - [Microsoft.ServiceBus](#microsoftservicebus)
+> - [Microsoft.ServiceFabric](#microsoftservicefabric)
+> - [Microsoft.ServiceFabricMesh](#microsoftservicefabricmesh)
+> - [Microsoft.SignalRService](#microsoftsignalrservice)
+> - [Microsoft.SiteRecovery](#microsoftsiterecovery)
+> - [Microsoft.Solutions](#microsoftsolutions)
+> - [Microsoft.Sql](#microsoftsql)
+> - [Microsoft.SqlVirtualMachine](#microsoftsqlvirtualmachine)
+> - [Microsoft.SqlVM](#microsoftsqlvm)
+> - [Microsoft.Storage](#microsoftstorage)
+> - [Microsoft.StorageCache](#microsoftstoragecache)
+> - [Microsoft.StorageSync](#microsoftstoragesync)
+> - [Microsoft.StorageSyncDev](#microsoftstoragesyncdev)
+> - [Microsoft.StorageSyncInt](#microsoftstoragesyncint)
+> - [Microsoft.StorSimple](#microsoftstorsimple)
+> - [Microsoft.StreamAnalytics](#microsoftstreamanalytics)
+> - [Microsoft.StreamAnalyticsExplorer](#microsoftstreamanalyticsexplorer)
+> - [Microsoft.TerraformOSS](#microsoftterraformoss)
+> - [Microsoft.TimeSeriesInsights](#microsofttimeseriesinsights)
+> - [Microsoft.Token](#microsofttoken)
+> - [Microsoft.VirtualMachineImages](#microsoftvirtualmachineimages)
+> - [microsoft.visualstudio](#microsoftvisualstudio)
+> - [Microsoft.VMwareCloudSimple](#microsoftvmwarecloudsimple)
+> - [Microsoft.Web](#microsoftweb)
+> - [Microsoft.WindowsIoT](#microsoftwindowsiot)
+> - [Microsoft.WindowsVirtualDesktop](#microsoftwindowsvirtualdesktop)
 
 ## <a name="microsoftaad"></a>Microsoft.AAD
 | Ressourcentyp | Ressourcengruppe | Abonnement |
@@ -55,6 +186,9 @@ Um die Daten als Datei mit durch Trennzeichen getrennten Werten abzurufen, laden
 | appidentities | Nein | Nein |
 | gateways | Nein | Nein |
 
+> [!IMPORTANT]
+> Weitere Informationen finden Sie unter [Move guidance for App Service resources](./move-limitations/app-service-move-limitations.md) (Anleitung zum Verschieben von App Service-Ressourcen).
+
 ## <a name="microsoftauthorization"></a>Microsoft.Authorization
 | Ressourcentyp | Ressourcengruppe | Abonnement |
 | ------------- | ----------- | ---------- |
@@ -66,6 +200,9 @@ Um die Daten als Datei mit durch Trennzeichen getrennten Werten abzurufen, laden
 | automationaccounts | Ja | Ja |
 | automationaccounts/configurations | Ja | Ja |
 | automationaccounts/runbooks | Ja | Ja |
+
+> [!IMPORTANT]
+> Runbooks müssen sich in der gleichen Ressourcengruppe befinden wie das Automation-Konto.
 
 ## <a name="microsoftazureactivedirectory"></a>Microsoft.AzureActiveDirectory
 | Ressourcentyp | Ressourcengruppe | Abonnement |
@@ -125,6 +262,9 @@ Um die Daten als Datei mit durch Trennzeichen getrennten Werten abzurufen, laden
 | ------------- | ----------- | ---------- |
 | redis | Ja | Ja |
 
+> [!IMPORTANT]
+> Wenn die Azure Cache for Redis-Instanz mit einem virtuellen Netzwerk konfiguriert ist, kann die Instanz nicht in ein anderes Abonnement verschoben werden. Weitere Informationen finden Sie unter [Move guidance for virtual networks](./move-limitations/virtual-network-move-limitations.md) (Anleitung zum Verschieben virtueller Netzwerke).
+
 ## <a name="microsoftcdn"></a>Microsoft.Cdn
 | Ressourcentyp | Ressourcengruppe | Abonnement |
 | ------------- | ----------- | ---------- |
@@ -136,11 +276,17 @@ Um die Daten als Datei mit durch Trennzeichen getrennten Werten abzurufen, laden
 | ------------- | ----------- | ---------- |
 | certificateorders | Ja | Ja |
 
+> [!IMPORTANT]
+> Weitere Informationen finden Sie unter [Move guidance for App Service resources](./move-limitations/app-service-move-limitations.md) (Anleitung zum Verschieben von App Service-Ressourcen).
+
 ## <a name="microsoftclassiccompute"></a>Microsoft.ClassicCompute
 | Ressourcentyp | Ressourcengruppe | Abonnement |
 | ------------- | ----------- | ---------- |
 | domainnames | Ja | Nein |
 | virtualmachines | Ja | Nein |
+
+> [!IMPORTANT]
+> Weitere Informationen finden Sie unter [Move guidance for Classic deployment model resources](./move-limitations/classic-model-move-limitations.md) (Anleitung zum Verschieben von Ressourcen des klassischen Bereitstellungsmodells). Klassische Bereitstellungsressourcen können mithilfe eines szenariospezifischen Vorgangs zwischen Abonnements verschoben werden.
 
 ## <a name="microsoftclassicnetwork"></a>Microsoft.ClassicNetwork
 | Ressourcentyp | Ressourcengruppe | Abonnement |
@@ -149,10 +295,16 @@ Um die Daten als Datei mit durch Trennzeichen getrennten Werten abzurufen, laden
 | reservedips | Nein | Nein |
 | virtualnetworks | Nein | Nein |
 
+> [!IMPORTANT]
+> Weitere Informationen finden Sie unter [Move guidance for Classic deployment model resources](./move-limitations/classic-model-move-limitations.md) (Anleitung zum Verschieben von Ressourcen des klassischen Bereitstellungsmodells). Klassische Bereitstellungsressourcen können mithilfe eines szenariospezifischen Vorgangs zwischen Abonnements verschoben werden.
+
 ## <a name="microsoftclassicstorage"></a>Microsoft.ClassicStorage
 | Ressourcentyp | Ressourcengruppe | Abonnement |
 | ------------- | ----------- | ---------- |
 | storageaccounts | Ja | Nein |
+
+> [!IMPORTANT]
+> Weitere Informationen finden Sie unter [Move guidance for Classic deployment model resources](./move-limitations/classic-model-move-limitations.md) (Anleitung zum Verschieben von Ressourcen des klassischen Bereitstellungsmodells). Klassische Bereitstellungsressourcen können mithilfe eines szenariospezifischen Vorgangs zwischen Abonnements verschoben werden.
 
 ## <a name="microsoftcognitiveservices"></a>Microsoft.CognitiveServices
 | Ressourcentyp | Ressourcengruppe | Abonnement |
@@ -178,6 +330,9 @@ Um die Daten als Datei mit durch Trennzeichen getrennten Werten abzurufen, laden
 | virtualmachines | Ja | Ja |
 | virtualmachines/extensions | Ja | Ja |
 | virtualmachinescalesets | Ja | Ja |
+
+> [!IMPORTANT]
+> Weitere Informationen finden Sie unter [Move guidance for virtual machines](./move-limitations/virtual-machines-move-limitations.md) (Anleitung zum Verschieben virtueller Computer).
 
 ## <a name="microsoftcontainer"></a>Microsoft.Container
 | Ressourcentyp | Ressourcengruppe | Abonnement |
@@ -390,6 +545,11 @@ Um die Daten als Datei mit durch Trennzeichen getrennten Werten abzurufen, laden
 | ------------- | ----------- | ---------- |
 | clusters | Ja | Ja |
 
+> [!IMPORTANT]
+> Sie können HDInsight-Cluster in ein neues Abonnement oder eine neue Ressourcengruppe verschieben. Dagegen können die mit dem HDInsight-Cluster verknüpften Netzwerkressourcen (z.B. virtuelles Netzwerk, NIC oder Load Balancer) nicht zwischen Abonnements verschoben werden. Darüber hinaus kann eine NIC, die an einen virtuellen Computer für den Cluster angefügt ist, nicht in eine neue Ressourcengruppe verschoben werden.
+>
+> Beim Verschieben eines HDInsight-Clusters in ein neues Abonnement sollten Sie zunächst andere Ressourcen (z.B. das Speicherkonto) verschieben. Verschieben Sie erst anschließend den HDInsight-Cluster.
+
 ## <a name="microsofthealthcareapis"></a>Microsoft.HealthcareApis
 | Ressourcentyp | Ressourcengruppe | Abonnement |
 | ------------- | ----------- | ---------- |
@@ -427,6 +587,9 @@ Um die Daten als Datei mit durch Trennzeichen getrennten Werten abzurufen, laden
 | webtests | Ja | Ja |
 | workbooks | Ja | Ja |
 
+> [!IMPORTANT]
+> Berücksichtigen Sie beim Verschieben in ein neues Abonnement die [Abonnementkontingente](../azure-subscription-service-limits.md#azure-monitor-limits).
+
 ## <a name="microsoftiotcentral"></a>Microsoft.IoTCentral
 | Ressourcentyp | Ressourcengruppe | Abonnement |
 | ------------- | ----------- | ---------- |
@@ -444,6 +607,9 @@ Um die Daten als Datei mit durch Trennzeichen getrennten Werten abzurufen, laden
 | hsmpools | Nein | Nein |
 | vaults | Ja | Ja |
 
+> [!IMPORTANT]
+> Für die Datenträgerverschlüsselung verwendete Schlüsseltresore können nicht in einer Ressourcengruppe im gleichen Abonnement oder zwischen Abonnements verschoben werden.
+
 ## <a name="microsoftkusto"></a>Microsoft.Kusto
 | Ressourcentyp | Ressourcengruppe | Abonnement |
 | ------------- | ----------- | ---------- |
@@ -452,7 +618,7 @@ Um die Daten als Datei mit durch Trennzeichen getrennten Werten abzurufen, laden
 ## <a name="microsoftlabservices"></a>Microsoft.LabServices
 | Ressourcentyp | Ressourcengruppe | Abonnement |
 | ------------- | ----------- | ---------- |
-| labaccounts | Ja | Ja |
+| labaccounts | Nein | Nein |
 
 ## <a name="microsoftlocationbasedservices"></a>Microsoft.LocationBasedServices
 | Ressourcentyp | Ressourcengruppe | Abonnement |
@@ -566,7 +732,7 @@ Um die Daten als Datei mit durch Trennzeichen getrennten Werten abzurufen, laden
 | expressrouteports | Nein | Nein |
 | frontdoors | Nein | Nein |
 | frontdoorwebapplicationfirewallpolicies | Nein | Nein |
-| loadbalancers | Ja | Ja |
+| loadbalancers | Ja: Basic-SKU<br>Nein: Standard-SKU | Ja: Basic-SKU<br>Nein: Standard-SKU |
 | localnetworkgateways | Ja | Ja |
 | natgateways | Ja | Ja |
 | networkintentpolicies | Ja | Ja |
@@ -582,7 +748,7 @@ Um die Daten als Datei mit durch Trennzeichen getrennten Werten abzurufen, laden
 | privatednszones/virtualnetworklinks | Ja | Ja |
 | privateendpoints | Nein | Nein |
 | privatelinkservices | Nein | Nein |
-| publicipaddresses | Ja | Ja |
+| publicipaddresses | Ja: Basic-SKU<br>Nein: Standard-SKU | Ja: Basic-SKU<br>Nein: Standard-SKU |
 | publicipprefixes | Ja | Ja |
 | routefilters | Nein | Nein |
 | routetables | Ja | Ja |
@@ -598,6 +764,9 @@ Um die Daten als Datei mit durch Trennzeichen getrennten Werten abzurufen, laden
 | vpnsites | Nein | Nein |
 | webapplicationfirewallpolicies | Ja | Ja |
 
+> [!IMPORTANT]
+> Weitere Informationen finden Sie unter [Move guidance for virtual networks](./move-limitations/virtual-network-move-limitations.md) (Anleitung zum Verschieben virtueller Netzwerke).
+
 ## <a name="microsoftnotificationhubs"></a>Microsoft.NotificationHubs
 | Ressourcentyp | Ressourcengruppe | Abonnement |
 | ------------- | ----------- | ---------- |
@@ -608,6 +777,9 @@ Um die Daten als Datei mit durch Trennzeichen getrennten Werten abzurufen, laden
 | Ressourcentyp | Ressourcengruppe | Abonnement |
 | ------------- | ----------- | ---------- |
 | workspaces | Ja | Ja |
+
+> [!IMPORTANT]
+> Berücksichtigen Sie beim Verschieben in ein neues Abonnement die [Abonnementkontingente](../azure-subscription-service-limits.md#azure-monitor-limits).
 
 ## <a name="microsoftoperationsmanagement"></a>Microsoft.OperationsManagement
 | Ressourcentyp | Ressourcengruppe | Abonnement |
@@ -651,6 +823,9 @@ Um die Daten als Datei mit durch Trennzeichen getrennten Werten abzurufen, laden
 | ------------- | ----------- | ---------- |
 | vaults | Ja | Ja |
 
+> [!IMPORTANT]
+> Weitere Informationen finden Sie unter [Verschieben eines Recovery Services-Tresors zwischen Azure-Abonnements und Ressourcengruppen](../backup/backup-azure-move-recovery-services-vault.md?toc=/azure/azure-resource-manager/toc.json).
+
 ## <a name="microsoftrelay"></a>Microsoft.Relay
 | Ressourcentyp | Ressourcengruppe | Abonnement |
 | ------------- | ----------- | ---------- |
@@ -671,6 +846,9 @@ Um die Daten als Datei mit durch Trennzeichen getrennten Werten abzurufen, laden
 | Ressourcentyp | Ressourcengruppe | Abonnement |
 | ------------- | ----------- | ---------- |
 | searchservices | Ja | Ja |
+
+> [!IMPORTANT]
+> Es ist nicht möglich, mehrere Search-Ressourcen in verschiedenen Regionen gleichzeitig zu verschieben. Verschieben Sie diese stattdessen in mehreren Vorgängen.
 
 ## <a name="microsoftsecurity"></a>Microsoft.Security
 | Ressourcentyp | Ressourcengruppe | Abonnement |
@@ -720,6 +898,9 @@ Um die Daten als Datei mit durch Trennzeichen getrennten Werten abzurufen, laden
 | ------------- | ----------- | ---------- |
 | siterecoveryvault | Nein | Nein |
 
+> [!IMPORTANT]
+> Weitere Informationen finden Sie unter [Verschieben eines Recovery Services-Tresors zwischen Azure-Abonnements und Ressourcengruppen](../backup/backup-azure-move-recovery-services-vault.md?toc=/azure/azure-resource-manager/toc.json).
+
 ## <a name="microsoftsolutions"></a>Microsoft.Solutions
 | Ressourcentyp | Ressourcengruppe | Abonnement |
 | ------------- | ----------- | ---------- |
@@ -739,6 +920,9 @@ Um die Daten als Datei mit durch Trennzeichen getrennten Werten abzurufen, laden
 | servers/databases | Ja | Ja |
 | servers/elasticpools | Ja | Ja |
 | virtualclusters | Ja | Ja |
+
+> [!IMPORTANT]
+> Datenbank und Server müssen sich in der gleichen Ressourcengruppe befinden. Wenn Sie eine SQL Server-Instanz verschieben, werden auch alle ihre Datenbanken verschoben. Dieses Verhalten gilt für Azure SQL-Datenbank und Azure SQL Data Warehouse-Datenbanken.
 
 ## <a name="microsoftsqlvirtualmachine"></a>Microsoft.SqlVirtualMachine
 | Ressourcentyp | Ressourcengruppe | Abonnement |
@@ -786,6 +970,9 @@ Um die Daten als Datei mit durch Trennzeichen getrennten Werten abzurufen, laden
 | ------------- | ----------- | ---------- |
 | streamingjobs | Ja | Ja |
 
+> [!IMPORTANT]
+> Stream Analytics-Aufträge können nicht verschoben werden, während sie ausgeführt werden.
+
 ## <a name="microsoftstreamanalyticsexplorer"></a>Microsoft.StreamAnalyticsExplorer
 | Ressourcentyp | Ressourcengruppe | Abonnement |
 | ------------- | ----------- | ---------- |
@@ -825,6 +1012,9 @@ Um die Daten als Datei mit durch Trennzeichen getrennten Werten abzurufen, laden
 | account/extension | Ja | Ja |
 | account/project | Ja | Ja |
 
+> [!IMPORTANT]
+> Informationen zum Ändern des Abonnements für Azure DevOps finden Sie unter [Change or remove the Azure subscription that your organization uses for billing](/azure/devops/organizations/billing/change-azure-subscription?toc=/azure/azure-resource-manager/toc.json) (Ändern oder Entfernen des Azure-Abonnements, das von Ihrer Organisation für die Abrechnung verwendet wird).
+
 ## <a name="microsoftvmwarecloudsimple"></a>Microsoft.VMwareCloudSimple
 | Ressourcentyp | Ressourcengruppe | Abonnement |
 | ------------- | ----------- | ---------- |
@@ -845,6 +1035,9 @@ Um die Daten als Datei mit durch Trennzeichen getrennten Werten abzurufen, laden
 | sites/premieraddons | Ja | Ja |
 | sites/slots | Ja | Ja |
 
+> [!IMPORTANT]
+> Weitere Informationen finden Sie unter [Move guidance for App Service resources](./move-limitations/app-service-move-limitations.md) (Anleitung zum Verschieben von App Service-Ressourcen).
+
 ## <a name="microsoftwindowsiot"></a>Microsoft.WindowsIoT
 | Ressourcentyp | Ressourcengruppe | Abonnement |
 | ------------- | ----------- | ---------- |
@@ -863,3 +1056,5 @@ Derzeit wird der Verschiebevorgang nicht für Drittanbieterdienste unterstützt.
 
 ## <a name="next-steps"></a>Nächste Schritte
 Befehle zum Verschieben von Ressourcen finden Sie unter [Verschieben von Ressourcen in eine neue Ressourcengruppe oder ein neues Abonnement](resource-group-move-resources.md).
+
+Um die Daten als Datei mit durch Trennzeichen getrennten Werten abzurufen, laden Sie [move-support-resources.csv](https://github.com/tfitzmac/resource-capabilities/blob/master/move-support-resources.csv) herunter.

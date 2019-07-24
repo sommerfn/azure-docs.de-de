@@ -2,34 +2,34 @@
 title: Aktualisieren und Neustarten von Linux-Knoten mit kured in Azure Kubernetes Service (AKS)
 description: Erfahren Sie, wie Linux-Knoten mit kured in Azure Kubernetes Service (AKS) aktualisiert und automatisch neu gestartet werden
 services: container-service
-author: iainfoulds
+author: mlearned
 ms.service: container-service
 ms.topic: article
 ms.date: 02/28/2019
-ms.author: iainfou
-ms.openlocfilehash: aee793dcfc5040b4a5f0f29fdae3247a5647e257
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.author: mlearned
+ms.openlocfilehash: 580d1316c2bfc6514a148ed6fba78a8e77bd880e
+ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67055638"
+ms.lasthandoff: 07/07/2019
+ms.locfileid: "67614901"
 ---
 # <a name="apply-security-and-kernel-updates-to-linux-nodes-in-azure-kubernetes-service-aks"></a>Anwenden von Sicherheits- und Kernelupdates auf Linux-Knoten in Azure Kubernetes Service (AKS)
 
 Sicherheitsupdates werden automatisch auf Linux-Knoten in AKS angewendet, um Ihre Cluster zu schützen. Diese Updates enthalten Sicherheitsfixes für das Betriebssystem oder Kernelupdates. Einige dieser Updates erfordern den Neustart eines Knotens, um den Vorgang abzuschließen. AKS startet diese Linux-Knoten nicht automatisch neu, um das Update abzuschließen.
 
-Der Prozess, Windows Server-Knoten (derzeit in der Vorschau in AKS) aktuell zu halten, ist ein wenig anders. Windows Server-Knoten werden nicht täglich aktualisiert. Stattdessen führen Sie ein AKS-Upgrade aus, das neue Knoten mit dem neuesten Basisimage und den neuesten Patches für Windows Server bereitstellt. Weitere Informationen zu AKS-Clustern, die Windows Server-Knoten verwenden, finden Sie unter [Upgrade a node pool in AKS (Durchführen eines Upgrades für einen Knotenpool in AKS)][nodepool-upgrade].
+Der Prozess, Windows Server-Knoten (derzeit in der Vorschau in AKS) aktuell zu halten, ist ein wenig anders. Windows Server-Knoten werden nicht täglich aktualisiert. Stattdessen führen Sie ein AKS-Upgrade aus, das neue Knoten mit dem neuesten Basisimage und den neuesten Patches für Windows Server bereitstellt. Weitere Informationen zu AKS-Clustern, die Windows Server-Knoten verwenden, finden Sie unter [Durchführen eines Upgrades für einen Knotenpool][nodepool-upgrade].
 
-In diesem Artikel erfahren Sie, wie Sie mit dem Open-Source-Daemon [kured (KUbernetes REboot Daemon)][kured] nach Linux-Knoten suchen können, die einen Neustart erfordern, und dann automatisch die Neuplanung der ausgeführten Pods und den Knotenneustart verarbeiten.
+In diesem Artikel erfahren Sie, wie Sie mit dem Open-Source-Daemon [kured (KUbernetes REboot Daemon)][kured] nach Linux-Knoten suchen, die einen Neustart erfordern, und dann automatisch die Neuplanung der ausgeführten Pods und den Knotenneustart verarbeiten.
 
 > [!NOTE]
 > `Kured` ist ein Open Source-Projekt von Weaveworks. Die Unterstützung dieses Projekts in AKS wird bestmöglich umgesetzt. Zusätzliche Unterstützung erhalten Sie im Slack-Channel namens #weave-community.
 
 ## <a name="before-you-begin"></a>Voraussetzungen
 
-Es wird vorausgesetzt, dass Sie über ein AKS-Cluster verfügen. Wenn Sie noch einen AKS-Cluster benötigen, erhalten Sie weitere Informationen im AKS-Schnellstart. Verwenden Sie dafür entweder die [Azure CLI][aks-quickstart-cli] oder das [Azure-Portal][aks-quickstart-portal].
+Es wird vorausgesetzt, dass Sie über ein AKS-Cluster verfügen. Sollten Sie noch einen AKS-Cluster benötigen, lesen Sie die AKS-Schnellstartanleitung [für die Azure-Befehlszeilenschnittstelle][aks-quickstart-cli] oder für das Azure-Portal. or [using the Azure portal][aks-quickstart-portal]
 
-Außerdem muss mindestens die Version 2.0.59 der Azure CLI installiert und konfiguriert sein. Führen Sie  `az --version` aus, um die Version zu ermitteln. Wenn Sie eine Installation oder ein Upgrade ausführen müssen, finden Sie weitere Informationen unter [Installieren der Azure CLI][install-azure-cli].
+Außerdem muss mindestens die Version 2.0.59 der Azure CLI installiert und konfiguriert sein. Führen Sie  `az --version` aus, um die Version zu ermitteln. Wenn Sie eine Installation oder ein Upgrade ausführen müssen, finden Sie weitere Informationen unter  [Installieren der Azure CLI][install-azure-cli].
 
 ## <a name="understand-the-aks-node-update-experience"></a>Grundlegendes zum AKS-Knotenupdate
 
@@ -50,7 +50,7 @@ In AKS gibt es einen weiterer Prozess, mit dem Sie ein *Upgrade* eines Clusters 
 * Pods werden auf dem neuen Knoten geplant.
 * Der alte Knoten wird gelöscht.
 
-Sie können während eines Upgrades nicht die gleiche Kubernetes-Version behalten. Sie müssen eine neuere Version von Kubernetes angeben. Um ein Upgrade auf die neueste Version von Kubernetes durchzuführen, können Sie [Ihren AKS-Cluster aktualisieren][aks-upgrade].
+Sie können während eines Upgrades nicht die gleiche Kubernetes-Version behalten. Sie müssen eine neuere Version von Kubernetes angeben. Um ein Upgrade auf die neueste Version von Kubernetes durchzuführen, können Sie [Ihren AKS-Cluster upgraden][aks-upgrade].
 
 ## <a name="deploy-kured-in-an-aks-cluster"></a>Bereitstellen von kured in einem AKS-Cluster
 
@@ -64,7 +64,7 @@ Sie können auch zusätzliche Parameter für `kured` konfigurieren, z.B. die Int
 
 ## <a name="update-cluster-nodes"></a>Aktualisieren von Clusterknoten
 
-In der Standardeinstellung suchen Linux-Knoten in AKS jeden Abend nach Updates. Wenn Sie nicht warten möchten, können Sie ein Update manuell ausführen, um zu überprüfen, ob `kured` ordnungsgemäß ausgeführt wird. Führen Sie zunächst die Schritte für eine [SSH-Verbindung mit einem Ihrer AKS-Knoten][aks-ssh] aus. Wenn eine SSH-Verbindung mit dem Linux-Knoten besteht, suchen Sie nach Updates, und wenden Sie diese wie folgt an:
+In der Standardeinstellung suchen Linux-Knoten in AKS jeden Abend nach Updates. Wenn Sie nicht warten möchten, können Sie ein Update manuell ausführen, um zu überprüfen, ob `kured` ordnungsgemäß ausgeführt wird. Führen Sie zunächst die Schritte zum Herstellen einer [SSH-Verbindung mit einem Ihrer AKS-Knoten][aks-ssh] aus. Wenn eine SSH-Verbindung mit dem Linux-Knoten besteht, suchen Sie nach Updates, und wenden Sie diese wie folgt an:
 
 ```console
 sudo apt-get update && sudo apt-get upgrade -y
@@ -93,9 +93,9 @@ aks-nodepool1-28993262-1   Ready     agent     1h        v1.11.7   10.240.0.5   
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-In diesem Artikel wurde beschrieben, wie Sie mit `kured` Linux-Knoten bei einem Sicherheitsupdate automatisch neu starten können. Um ein Upgrade auf die neueste Version von Kubernetes durchzuführen, können Sie [Ihren AKS-Cluster aktualisieren][aks-upgrade].
+In diesem Artikel wurde beschrieben, wie Sie mit `kured` Linux-Knoten bei einem Sicherheitsupdate automatisch neu starten können. Um ein Upgrade auf die neueste Version von Kubernetes durchzuführen, können Sie [Ihren AKS-Cluster upgraden][aks-upgrade].
 
-Weitere Informationen zu AKS-Clustern, die Windows Server-Knoten verwenden, finden Sie unter [Upgrade a node pool in AKS (Durchführen eines Upgrades für einen Knotenpool in AKS)][nodepool-upgrade].
+Weitere Informationen zu AKS-Clustern, die Windows Server-Knoten verwenden, finden Sie unter [Durchführen eines Upgrades für einen Knotenpool][nodepool-upgrade].
 
 <!-- LINKS - external -->
 [kured]: https://github.com/weaveworks/kured

@@ -4,7 +4,7 @@ description: SAP NetWeaver-Hochverfügbarkeitsinstallation in einem Windows-Fail
 services: virtual-machines-windows,virtual-network,storage
 documentationcenter: saponazure
 author: goraco
-manager: jeconnoc
+manager: gwallace
 editor: ''
 tags: azure-resource-manager
 keywords: ''
@@ -17,12 +17,12 @@ ms.workload: infrastructure-services
 ms.date: 05/05/2017
 ms.author: rclaus
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 95cde28bc4789346aabd58b5f7b543e1bbc989c1
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 0efb1ec30430a69563c61de667ad2568f2679a1b
+ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66357698"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67708978"
 ---
 # <a name="install-sap-netweaver-high-availability-on-a-windows-failover-cluster-and-file-share-for-sap-ascsscs-instances-on-azure"></a>Installieren von SAP NetWeaver-Hochverfügbarkeit in einem Windows-Failovercluster und auf einer Windows-Dateifreigabe für SAP ASCS-/SCS-Instanzen in Azure
 
@@ -204,9 +204,9 @@ Dieser Artikel beschreibt, wie ein hoch verfügbares SAP-System unter Azure mith
 
 Bevor Sie die Installation starten, lesen Sie die folgenden Artikel:
 
-* [Architekturleitfaden: Gruppieren einer SAP ASCS/SCS-Instanz in einem Windows-Failovercluster per Dateifreigabe][sap-high-availability-guide-wsfc-file-share]
+* [Architekturleitfaden: Gruppieren einer SAP ASCS/SCS-Instanz in einem Windows-Failovercluster per Dateifreigabe in Azure][sap-high-availability-guide-wsfc-file-share]
 
-* [Vorbereiten der Azure-Infrastruktur für SAP-HA mithilfe des Windows-Failoverclusters und Dateifreigabe für die SAP (A)SCS-Instanz][sap-high-availability-infrastructure-wsfc-file-share]
+* [Vorbereiten der Azure-Infrastruktur für SAP-Hochverfügbarkeit mit einem Windows-Failovercluster und einer Dateifreigabe für SAP ASCS-/SCS-Instanzen][sap-high-availability-infrastructure-wsfc-file-share]
 
 * [Hochverfügbarkeit von SAP NetWeaver auf virtuellen Azure-Computern][high-availability-guide]
 
@@ -335,7 +335,7 @@ Schließen Sie die Installation Ihres SAP-Systems ab, indem Sie Folgendes instal
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* [Install an ASCS/SCS instance on a failover cluster with no shared disks - Official SAP guidelines for high-availability file share][sap-official-ha-file-share-document] (Installieren einer ASCS/SCS-Instanz in einem Failovercluster ohne freigegebene Datenträger: offizielle SAP-Richtlinien für eine Dateifreigabe mit Hochverfügbarkeit)
+* [Installieren einer ASCS/SCS-Instanz in einem Failovercluster ohne freigegebene Datenträger – Offizielle SAP-Richtlinien für eine Dateifreigabe mit Hochverfügbarkeit][sap-official-ha-file-share-document]
 
 * [Direkte Speicherplätze in Windows Server 2016][s2d-in-win-2016]
 

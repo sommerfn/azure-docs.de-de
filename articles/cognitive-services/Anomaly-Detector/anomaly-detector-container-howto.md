@@ -1,20 +1,21 @@
 ---
-title: Installieren und Ausführen von Containern – Anomalieerkennung
+title: Installieren und Ausführen von Containern für die Verwendung der Anomalieerkennungs-API
 titleSuffix: Azure Cognitive Services
 description: Verwenden Sie den erweiterten Algorithmus der Anomalieerkennungs-API, um Anomalien in Zeitreihendaten zu identifizieren.
 services: cognitive-services
 author: IEvangelist
+manager: nitinme
 ms.service: cognitive-services
-ms.subservice: anomaly-detection
+ms.subservice: anomaly-detector
 ms.topic: conceptual
 ms.date: 06/19/2019
 ms.author: dapine
-ms.openlocfilehash: 704ea3ecbc309c2328e120d5b6776e659944d254
-ms.sourcegitcommit: a52d48238d00161be5d1ed5d04132db4de43e076
+ms.openlocfilehash: f84f1bab048630d6dd45085b3d082004d10bb6a8
+ms.sourcegitcommit: dad277fbcfe0ed532b555298c9d6bc01fcaa94e2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/20/2019
-ms.locfileid: "67275029"
+ms.lasthandoff: 07/10/2019
+ms.locfileid: "67721707"
 ---
 # <a name="install-and-run-anomaly-detector-containers"></a>Installieren und Ausführen von Containern für die Anomalieerkennung
 

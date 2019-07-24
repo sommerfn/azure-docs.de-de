@@ -1,5 +1,5 @@
 ---
-title: Verwenden der systemseitig zugewiesenen verwalteten Identität eines virtuellen Windows-Computers für den Zugriff auf Azure Storage
+title: Zugreifen auf Azure Storage mithilfe einer vom Windows-VM-System zugewiesenen verwalteten Identität | Microsoft-Dokumentation
 description: In diesem Tutorial erfahren Sie, wie Sie eine systemseitig zugewiesene verwaltete Identität eines virtuellen Windows-Computers verwenden, um auf Azure Storage zuzugreifen.
 services: active-directory
 documentationcenter: ''
@@ -15,12 +15,12 @@ ms.workload: identity
 ms.date: 04/12/2018
 ms.author: markvi
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1bb1370b2d828aaddae61c32a663bd032b18e7b1
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: e7d7200dd89d51817a5d146ff4d33e2501ed2826
+ms.sourcegitcommit: 9a699d7408023d3736961745c753ca3cec708f23
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58801892"
+ms.lasthandoff: 07/16/2019
+ms.locfileid: "68278009"
 ---
 # <a name="tutorial-use-a-windows-vm-system-assigned-managed-identity-to-access-azure-storage"></a>Tutorial: Verwenden der systemseitig zugewiesenen verwalteten Identität eines virtuellen Windows-Computers für den Zugriff auf Azure Storage
 
@@ -74,7 +74,7 @@ Da Dateien Blob Storage erfordern, müssen wir einen Blobcontainer erstellen, in
 Sie können die systemseitig zugewiesene verwaltete Identität des virtuellen Computers verwenden, um die Daten in Azure Storage Blob abzurufen.
 
 1. Navigieren Sie zurück zum neu erstellten Speicherkonto.
-2. Klicken Sie im linken Bereich auf den Link **Zugriffssteuerung (IAM)**.
+2. Klicken Sie im linken Bereich auf den Link **Zugriffssteuerung (IAM)** .
 3. Klicken Sie oben auf der Seite auf **+ Rollenzuweisung hinzufügen**, um dem virtuellen Computer eine neue Rollenzuweisung hinzuzufügen.
 4. Wählen Sie unter **Rolle** in der Dropdownliste **Storage-Blobdatenleser** aus.
 5. Wählen Sie in der nächsten Dropdownliste unter **Zugriff zuweisen zu** die Option **Virtueller Computer** aus.

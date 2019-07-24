@@ -10,12 +10,12 @@ ms.subservice: personalizer
 ms.topic: overview
 ms.date: 05/07/2019
 ms.author: edjez
-ms.openlocfilehash: e5781af44732782936e1e1a87bf70bd4a9d4804d
-ms.sourcegitcommit: dad277fbcfe0ed532b555298c9d6bc01fcaa94e2
+ms.openlocfilehash: 286a19207236392367b924bea7e26e90fd0db8d5
+ms.sourcegitcommit: a6873b710ca07eb956d45596d4ec2c1d5dc57353
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/10/2019
-ms.locfileid: "67722300"
+ms.lasthandoff: 07/16/2019
+ms.locfileid: "68253460"
 ---
 # <a name="what-is-personalizer"></a>Was ist die Personalisierung?
 
@@ -29,14 +29,14 @@ Die Azure-Personalisierung ist ein cloudbasierter API-Dienst, mit dem Sie die be
 
 ## <a name="how-does-personalizer-work"></a>Wie funktioniert die Personalisierung?
 
-Die Personalisierung verwendet Machine Learning-Modelle, um zu ermitteln, welche Aktion in einem Kontext die höchste Rangfolge hat. Ihre Clientanwendung bietet eine Liste der möglichen Aktionen mit zugehörigen Informationen; außerdem Informationen über den Kontext, wozu Informationen über den Benutzer, das Gerät usw. zählen können. Die Personalisierung bestimmt die auszuführende Aktion. Sobald die Clientanwendung die ausgewählte Aktion verwendet, sendet sie in Form einer Belohnungsbewertung Feedback an die Personalisierung. Nach Abschluss der Feedbackschleife aktualisiert die Personalisierung automatisch ihr eigenes, für zukünftige Rangfolgen verwendetes Modell.
+Die Personalisierung verwendet Machine Learning-Modelle, um zu ermitteln, welche Aktion in einem Kontext die höchste Rangfolge hat. Ihre Clientanwendung bietet eine Liste der möglichen Aktionen mit zugehörigen Informationen; außerdem Informationen über den Kontext, wozu Informationen über den Benutzer, das Gerät usw. zählen können. Die Personalisierung bestimmt die auszuführende Aktion. Sobald die Clientanwendung die ausgewählte Aktion verwendet, sendet sie in Form einer Belohnungsbewertung Feedback an die Personalisierung. Nach Eingang des Feedbacks aktualisiert die Personalisierung automatisch ihr eigenes, für zukünftige Rangfolgen verwendetes Modell.
 
 ## <a name="how-do-i-use-the-personalizer"></a>Wie verwende ich die Personalisierung?
 
 ![Verwendung der Personalisierung zur Auswahl des Videos, das einem Benutzer gezeigt wird](media/what-is-personalizer/personalizer-example-highlevel.png)
 
 1. Wählen Sie eine zu personalisierende Benutzeroberfläche in Ihrer App aus.
-1. Erstellen und Konfigurieren des Personalisierungsdiensts im Azure-Portal
+1. Erstellen und konfigurieren sie den Personalisierungsdienst im Azure-Portal. Jede Instanz ist eine Personalisierungsschleife.
 1. Verwenden Sie das SDK zum Aufrufen der Personalisierung mit Informationen (_Features_) zu Ihren Benutzern und dem Inhalt (_Aktionen_). Sie müssen vor der Verwendung der Personalisierung keine bereinigten, bezeichneten Daten bereitstellen. 
 1. Zeigen Sie dem Benutzer in der Clientanwendung die von der Personalisierung ausgewählte Aktion an.
 1. Verwenden Sie das SDK, um Feedback an die Personalisierung zu senden, die angibt, ob der Benutzer die von der Personalisierung vorgeschlagene Aktion ausgewählt hat. Dies ist eine _Belohnungsbewertung_, in der Regel zwischen -1 und 1.

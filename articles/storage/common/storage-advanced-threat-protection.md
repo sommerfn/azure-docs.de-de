@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 04/03/2019
 ms.author: tamram
 ms.reviewer: cbrooks
-ms.openlocfilehash: ed263fec271801ac9c46bbc3125c71ca15b9a330
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 8cea4b3fb78f3430fdd92e40552d687501af4be8
+ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65153971"
+ms.lasthandoff: 07/07/2019
+ms.locfileid: "67621976"
 ---
 # <a name="advanced-threat-protection-for-azure-storage"></a>Advanced Threat Protection für Azure Storage
 
@@ -111,7 +111,7 @@ Warnungen werden bei ungewöhnlichen und potenziell schädlichen Zugriffsversuch
 
 ### <a name="anomalous-access-pattern-alerts"></a>Warnungen zu ungewöhnlichen Zugriffsmustern
 
-* **Zugriff von einem ungewöhnlichen Ort**: Diese Warnung wird ausgelöst, wenn sich am Zugriffsmuster eines Speicherkontos etwas ändert. Ein Beispiel hierfür ist der Fall, in dem eine Person von einem ungewöhnlichen geografischen Ort aus auf ein Speicherkonto zugreift.
+* **Zugriff von einem ungewöhnlichen Ort**: Diese Warnung wird ausgelöst, wenn eine Person von einem ungewöhnlichen geografischen Ort aus auf ein Speicherkonto zugegriffen hat.
 Mögliche Ursachen:
    * Ein Angreifer hat auf Ihr Speicherkonto zugegriffen.
    * Ein berechtigter Benutzer hat von einem neuen Ort aus auf Ihr Speicherkonto zugegriffen.
@@ -120,10 +120,16 @@ Mögliche Ursachen:
    * Ein Angreifer hat mit einer neuen Anwendung auf Ihr Speicherkonto zugegriffen.
    * Ein berechtigter Benutzer hat für den Zugriff auf Ihr Speicherkonto eine neue Anwendung oder einen neuen Browser verwendet.
 
-* **Anonymer Zugriff**: Diese Warnung gibt an, dass sich am Zugriffsmuster eines Speicherkontos etwas geändert hat. Auf dieses Konto wurde beispielsweise auf ungewöhnliche Weise (d. h. ohne Authentifizierung) zugegriffen, was im Vergleich zum letzten Zugriffsmuster für dieses Konto ein unerwartetes Verhalten ist.
+* **Anonymer Zugriff**: Diese Warnung gibt an, dass auf dieses Konto auf ungewöhnliche Weise (ohne Authentifizierung) zugegriffen wurde, was im Vergleich zum letzten Zugriffsmuster für dieses Konto ein unerwartetes Verhalten darstellt.
 Mögliche Ursachen:
    * Ein Angreifer hat den öffentlichen Lesezugriff auf einen Container ausgenutzt.
    * Ein berechtigter Benutzer oder eine berechtigte Anwendung hat den öffentlichen Lesezugriff auf einen Container genutzt.
+
+* **Tor Anomaly** (Tor-Anomalie): Diese Warnung gibt an, dass auf dieses Konto erfolgreich über eine IP-Adresse zugegriffen wurde, bei der es sich um einen bekannten aktiven Exitknoten von Tor (bekannter Anonymisierungsproxy) handelt. Der Schweregrad dieser Warnung hängt vom verwendeten Authentifizierungstyp (sofern zutreffend) sowie davon ab, ob es sich hierbei um den ersten Zugriff dieser Art handelt.
+Mögliche Ursachen:
+   * Ein Angreifer hat über Tor auf Ihr Speicherkonto zugegriffen.
+   * Ein berechtigter Benutzer hat über Tor auf Ihr Speicherkonto zugegriffen.
+
 
 ### <a name="anomalous-extractupload-alerts"></a>Warnungen zu ungewöhnlichen Extrahierungs- oder Hochladevorgängen
 

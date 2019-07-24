@@ -21,6 +21,8 @@
       href: compare-video-indexer-with-media-services-presets.md
     - name: Verwalten mehrerer Mandanten
       href: manage-multiple-tenants.md
+    - name: Modell zur Sprachenerkennung
+      href: language-identification-model.md
     - name: Anpassen von Inhaltsmodellen
       items:
         - name: Übersicht

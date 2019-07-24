@@ -15,12 +15,12 @@ ms.workload: iaas-sql-server
 ms.date: 01/04/2019
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: fb09d91bb3204a1ab3dc4f9df71eabd2ee7d2bd1
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 406bd11765e4b580849e8719939c3e11c19d99a8
+ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60591317"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67604563"
 ---
 # <a name="use-azure-quickstart-templates-to-configure-always-on-availability-group-for-sql-server-on-an-azure-vm"></a>Verwenden von Azure-Schnellstartvorlagen zum Konfigurieren von Always On-Verfügbarkeitsgruppen für SQL Server auf einer Azure VM
 In diesem Artikel erfahren Sie, wie Sie die Bereitstellung einer Always On-Verfügbarkeitsgruppenkonfiguration für virtuelle SQL Server-Computer in Azure mithilfe von Azure-Schnellstartvorlagen teilweise automatisieren. Im Rahmen dieses Prozesses werden zwei Azure-Schnellstartvorlagen verwendet: 
@@ -38,7 +38,7 @@ Andere Aufgaben der Verfügbarkeitsgruppenkonfiguration müssen manuell ausgefü
 Wenn Sie die Einrichtung einer Always On-Verfügbarkeitsgruppe mithilfe von Schnellstartvorlagen automatisieren möchten, muss bereits Folgendes vorhanden sein: 
 - Ein [Azure-Abonnement](https://azure.microsoft.com/free/).
 - Eine Ressourcengruppe mit einem Domänencontroller. 
-- Mindestens ein in eine Domäne eingebundener [virtueller Computer in Azure mit der Enterprise Edition von SQL Server 2016 (oder höher)](https://docs.microsoft.com/azure/virtual-machines/windows/sql/virtual-machines-windows-portal-sql-server-provision), der sich in der gleichen Verfügbarkeitsgruppe oder -zone befindet, die [beim SQL-VM-Ressourcenanbieter registriert](virtual-machines-windows-sql-ahb.md#register-sql-server-vm-with-sql-resource-provider) wurde.  
+- Mindestens ein in eine Domäne eingebundener [virtueller Computer in Azure mit der Enterprise Edition von SQL Server 2016 (oder höher)](https://docs.microsoft.com/azure/virtual-machines/windows/sql/virtual-machines-windows-portal-sql-server-provision), der sich in der gleichen Verfügbarkeitsgruppe oder -zone befindet, die [beim SQL-VM-Ressourcenanbieter registriert](virtual-machines-windows-sql-register-with-resource-provider.md) wurde.  
 - Zwei verfügbare (von keiner Entität verwendete ) IP-Adressen, eine für den internen Load Balancer und eine für den Verfügbarkeitsgruppenlistener im gleichen Subnetz wie die Verfügbarkeitsgruppe. Wenn ein vorhandener Load Balancer verwendet wird, wird nur eine verfügbare IP-Adresse benötigt.  
 
 ## <a name="permissions"></a>Berechtigungen

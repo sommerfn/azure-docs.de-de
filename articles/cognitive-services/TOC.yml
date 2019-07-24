@@ -5,6 +5,8 @@
   items:
     - name: Was ist Cognitive Services?
       href: Welcome.md
+    - name: Cognitive Services und maschinelles Lernen
+      href: cognitive-services-and-machine-learning.md
     - name: Sprachunterstützung
       href: language-support.md
 - name: Containerunterstützung
