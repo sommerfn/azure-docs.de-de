@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/21/2018
 ms.author: spelluru
-ms.openlocfilehash: 2433f4b3563cc8b301d1815cccf5ab24406e8662
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: c6ea5e72f70620004b4b00be0c779893a3b2ad90
+ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66111476"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67706189"
 ---
 # <a name="azure-relay-faqs"></a>Azure Relay – häufig gestellte Fragen
 
@@ -42,7 +42,7 @@ Der früher „Relay“ genannte Service Bus-Dienst heißt jetzt [WCF-Relay](rel
 In diesem Abschnitt werden einige häufig gestellte Fragen zur Relay-Preisstruktur beantwortet. Allgemeine Informationen zu Azure-Preisen finden Sie unter [Häufig gestellte Fragen zum Azure-Support](https://azure.microsoft.com/support/faq/). Vollständige Informationen zu Relay-Preisen finden Sie unter [Service Bus-Preise][Pricing overview].
 
 ### <a name="how-do-you-charge-for-hybrid-connections-and-wcf-relay"></a>Wie werden Hybridverbindungen und WCF-Relay abgerechnet?
-Alle Informationen zu den Preisen für Relay finden Sie in der Tabelle [Hybridverbindungen und WCF-Relays][Pricing overview] auf der Seite mit den Preisdetails zu Service Bus. Neben den auf dieser Seite aufgeführten Preisen werden Ihnen die entsprechenden, aus dem Rechenzentrum ausgehenden Datenübertragungen berechnet, mit denen Ihre Anwendung bereitgestellt wird.
+Alle Informationen zu den Preisen für Relay finden Sie in der Tabelle [Hybrid Connections und WCF Relays][Pricing overview] auf der Seite mit den Preisdetails zu Service Bus. Neben den auf dieser Seite aufgeführten Preisen werden Ihnen die entsprechenden, aus dem Rechenzentrum ausgehenden Datenübertragungen berechnet, mit denen Ihre Anwendung bereitgestellt wird.
 
 ### <a name="how-am-i-billed-for-hybrid-connections"></a>Wie werden Hybridverbindungen abgerechnet?
 Im Folgenden finden Sie drei Beispielszenarien für die Abrechnung für Hybrid Connections:
@@ -84,7 +84,7 @@ Relays, die anhand der WCF-Bindung **netTCPRelay** geöffnet werden, behandeln N
 | --- | --- | --- | --- |
 | Gleichzeitige Listener für ein Relay |Entität |Nachfolgende Anforderungen für zusätzliche Verbindungen werden abgelehnt, und vom aufrufenden Code wird eine Ausnahme empfangen. |25 |
 | Gleichzeitige Relayverbindungen für alle Relayendpunkte eines Dienstnamespace |Namespace |- |5\.000 |
-| Relayendpunkte pro Dienstnamespace |Namespace |- |10\.000 |
+| Relayendpunkte pro Dienstnamespace |Namespace |- |10.000 |
 | Nachrichtengröße für [NetOnewayRelayBinding](/dotnet/api/microsoft.servicebus.netonewayrelaybinding)- und [NetEventRelayBinding](/dotnet/api/microsoft.servicebus.neteventrelaybinding)-Relays |Namespace |Eingehende Nachrichten, die diese Kontingente überschreiten, werden abgelehnt, und vom aufrufenden Code wird eine Ausnahme empfangen. |64 KB |
 | Nachrichtengröße für [HttpRelayTransportBindingElement](/dotnet/api/microsoft.servicebus.httprelaytransportbindingelement)- und [NetTcpRelayBinding](/dotnet/api/microsoft.servicebus.nettcprelaybinding)-Relays |Namespace |Keine Begrenzung der Nachrichtengröße. |Unbegrenzt |
 
@@ -106,7 +106,7 @@ Um einen Namespace aus einem Azure-Abonnement in ein anderes zu verschieben, kö
 
 #### <a name="azure-portal"></a>Azure-Portal
 
-Informationen zum Migrieren von Azure Relay-Namespaces aus einem Abonnement in ein anderes finden Sie unter [Verschieben von Ressourcen in eine neue Ressourcengruppe oder ein neues Abonnement](../azure-resource-manager/resource-group-move-resources.md#use-portal). 
+Informationen zum Migrieren von Azure Relay-Namespaces aus einem Abonnement in ein anderes finden Sie unter [Verschieben von Ressourcen in eine neue Ressourcengruppe oder ein neues Abonnement](../azure-resource-manager/resource-group-move-resources.md#use-the-portal). 
 
 #### <a name="powershell"></a>PowerShell
 

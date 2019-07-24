@@ -4,15 +4,15 @@ description: Es wird beschrieben, wie Sie das Skript für die automatische Skali
 services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
-ms.topic: how-to
+ms.topic: conceptual
 ms.date: 03/21/2019
 ms.author: helohr
-ms.openlocfilehash: e9f500e3ab965b9dbfc5e395a6572497c85f6f8f
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 3b98db361a8ec888eb8bf9e1bf3658a7e38111c6
+ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66755133"
+ms.lasthandoff: 07/07/2019
+ms.locfileid: "67620415"
 ---
 # <a name="automatically-scale-session-hosts"></a>Automatisches Skalieren von Sitzungshosts
 
@@ -75,7 +75,7 @@ Als Nächstes müssen Sie die sicher gespeicherten Anmeldeinformationen erstelle
     Beispiel: **Set-Variable -Name KeyPath -Scope Global -Value "c:\\scaling-HostPool1"**
 5. Führen Sie das Cmdlet **New-StoredCredential -KeyPath \$KeyPath** aus. Geben Sie bei entsprechender Aufforderung Ihre Windows Virtual Desktop-Anmeldeinformationen mit Berechtigungen zum Abfragen des Hostpools ein (der Hostpool ist in der Datei **config.xml** angegeben).
     - Wenn Sie verschiedene Dienstprinzipale oder Standardkonten verwenden, müssen Sie das Cmdlet **New-StoredCredential -KeyPath \$KeyPath** einmal für jedes Konto ausführen, um lokal gespeicherte Anmeldeinformationen zu erstellen.
-6. Führen Sie **Get-StoredCredentials -List** aus, um sich zu vergewissern, dass die Erstellung der Anmeldeinformationen erfolgreich war.
+6. Führen Sie **Get-StoredCredential -List** aus, um sich zu vergewissern, dass die Erstellung der Anmeldeinformationen erfolgreich war.
 
 ### <a name="configure-the-configxml-file"></a>Konfigurieren der Datei „config.xml“
 

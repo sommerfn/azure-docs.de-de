@@ -5,19 +5,19 @@ services: expressroute
 author: jaredr80
 ms.service: expressroute
 ms.topic: include
-ms.date: 02/25/2019
+ms.date: 07/09/2019
 ms.author: jaredro
 ms.custom: include file
-ms.openlocfilehash: ab74c331bdc8b72612aa848688e1de080314337a
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 2e6eb449f4e7a8dcd6c4547162a575d21f303f83
+ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67133123"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67712606"
 ---
 ### <a name="what-is-expressroute-direct"></a>Was ist ExpressRoute Direct?
 
-ExpressRoute Direct bietet Kunden die Möglichkeit, sich direkt mit dem globalen Netzwerk von Microsoft zu verbinden, und zwar an strategisch über die ganze Welt verteilten Peeringstandorten. ExpressRoute Direct bietet duale Konnektivität mit 100 GBit/s, die eine Aktiv/Aktiv-Konnektivität nach Maß unterstützt. 
+ExpressRoute Direct bietet Kunden die Möglichkeit, sich direkt mit dem globalen Netzwerk von Microsoft zu verbinden, und zwar an strategisch über die ganze Welt verteilten Peeringstandorten. ExpressRoute Direct bietet duale Konnektivität mit 100 oder 10 GBit/s, die eine Aktiv/Aktiv-Konnektivität nach Bedarf unterstützt. 
 
 ### <a name="how-do-customers-connect-to-expressroute-direct"></a>Wie stellen Kunden eine Verbindung mit ExpressRoute Direct her? 
 
@@ -28,22 +28,28 @@ Kunden müssen mit ihren lokalen Carriern und Co-Location-Anbietern zusammenarbe
 Die verfügbaren Ports sind dynamisch und werden in PowerShell verfügbar sein, um die Kapazität anzuzeigen. Die folgenden Standorte sind geplant. Sie können sich *je nach Verfügbarkeit ändern*:
 
 * Amsterdam
+* Amsterdam2
+* Auckland 
 * Chicago
-* Washington DC
-* Dallas 
+* Dallas
+* Dublin
 * Hongkong (SAR)
 * London
 * Los Angeles
+* Melbourne
 * New York City
-* Paris
 * Perth
-* Toronto
 * San Antonio
 * Seattle
 * Seoul
 * Silicon Valley
-* Singapur 
+* Singapur2 
 * Sydney
+* Taipeh
+* Tokio
+* Toronto
+* Washington DC
+* Washington DC2
 
 ### <a name="what-is-the-sla-for-expressroute-direct"></a>Welche SLA gilt für ExpressRoute Direct?
 
@@ -51,7 +57,7 @@ ExpressRoute Direct verwendet die gleiche [Unternehmensstufe wie ExpressRoute](h
 
 ### <a name="what-scenarios-should-customers-consider-with-expressroute-direct"></a>Welche Szenarien sollten Kunden mit ExpressRoute Direct in Betracht ziehen?  
 
-ExpressRoute Direct bietet Kunden direkte 100-Gbit/s-Portpaare in den globalen Microsoft-Backbone. Zu den Szenarien, die Kunden den größten Nutzen bieten, gehören: massive Datenerfassung, physische Isolierung für regulierte Märkte und dedizierte Kapazität für Burstszenarien wie Rendering. 
+ExpressRoute Direct bietet Kunden direkte Portpaare mit 100 oder 10 GBit/s in den globalen Microsoft-Backbone. Zu den Szenarien, die Kunden den größten Nutzen bieten, gehören: massive Datenerfassung, physische Isolierung für regulierte Märkte und dedizierte Kapazität für Burstszenarien wie Rendering. 
 
 ### <a name="what-is-the-billing-model-for-expressroute-direct"></a>Welches Abrechnungsmodell gilt für ExpressRoute Direct? 
 

@@ -11,17 +11,17 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: tbd
-ms.date: 6/6/2019
+ms.date: 7/8/2019
 ms.author: raiye
-ms.openlocfilehash: bdb3d0af93a69c1d15bd34a4badef5915ec0f01f
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 88c3cd0e07e207a8b5ae1c07d39c8829a531c743
+ms.sourcegitcommit: dad277fbcfe0ed532b555298c9d6bc01fcaa94e2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66743032"
+ms.lasthandoff: 07/10/2019
+ms.locfileid: "67721126"
 ---
 # <a name="azure-guest-os-releases-and-sdk-compatibility-matrix"></a>Azure-Gastbetriebssystemversionen und SDK-Kompatibilitätsmatrix
-Bietet Ihnen aktuelle Informationen zu den neuesten Azure-Gastbetriebssystemreleases für Cloud Services. Anhand dieser Informationen können Sie Ihren Upgradepfad planen, bevor ein Gastbetriebssystem abgekündigt wird. Wenn Sie die Rollen so konfigurieren, dass die *automatischen* Gast-BS-Updates, wie unter [Updateeinstellungen für Azure-Gast-BS][Azure Guest OS Update Settings] beschrieben, verwendet werden, müssen Sie diese Seite nicht unbedingt lesen.
+Bietet Ihnen aktuelle Informationen zu den neuesten Azure-Gastbetriebssystemreleases für Cloud Services. Anhand dieser Informationen können Sie Ihren Upgradepfad planen, bevor ein Gastbetriebssystem abgekündigt wird. Wenn Sie die Rollen so konfigurieren, dass die *automatischen* Gast-BS-Updates, wie unter [Updateeinstellungen für Azure-Gast-BS][Azure Guest OS Update Settings]beschrieben, verwendet werden, müssen Sie diese Seite nicht unbedingt lesen.
 
 > [!IMPORTANT]
 > Diese Seite bezieht sich auf die Cloud Services-Web- und Workerrollen, die zusätzlich zu einem Gastbetriebssystem ausgeführt werden. Sie **gilt nicht** für IaaS Virtual Machines.
@@ -42,6 +42,9 @@ Bietet Ihnen aktuelle Informationen zu den neuesten Azure-Gastbetriebssystemrele
 Sie wissen nicht genau, wie Sie Ihr Gastbetriebssystem aktualisieren sollen? Entsprechende Informationen finden Sie [hier][cloud updates].
 
 ## <a name="news-updates"></a>Neuigkeiten
+
+###### <a name="july-8-2019"></a>**8. Juli 2019**
+Das Gastbetriebssystem für Juni wurde veröffentlicht.
 
 ###### <a name="june-6-2019"></a>**6. Juni 2019**
 Das Gastbetriebssystem für Mai wurde veröffentlicht.
@@ -78,14 +81,14 @@ Das Gastbetriebssystem für September wurde veröffentlicht.
 ## <a name="family-6-releases"></a>Releases von Familie 6
 **Windows Server 2019**
 
-Installierte .NET Framework-Versionen: 3.5, 4.7.2
+Installierte .NET Framework-Versionen: 3.5, 4.7.2, 4.8
 
 > [!NOTE]
-> Das Windows Azure SDK 3.0 für .NET kann [hier][Windows Azure SDK] heruntergeladen werden.
+> Das Windows Azure SDK 3.0 für .NET kann [hier][Windows Azure SDK] heruntergeladen werden.
 >
 >Installationsschritte:
 >1. Deinstallieren Sie ältere Versionen der MicrosoftAzureAuthoringTools „*.msi“
->2. Installieren Sie das [Azure SDK für .NET – 3.0][Windows Azure SDK]
+>2. Installieren Sie das [Azure SDK für .NET – 3.0][Windows Azure SDK].
 >3. Starten Sie Ihren Computer neu
 >4. Erstellen Sie ein neues Clouddienstprojekt, und fügen Sie eine einzelne Workerrolle hinzu
 >5. Ändern Sie die Betriebssystemfamilie in 6, und erstellen Sie ein Paket
@@ -95,8 +98,9 @@ Installierte .NET Framework-Versionen: 3.5, 4.7.2
 
 | Konfigurationszeichenfolge | Herausgabedatum | Deaktivierungsdatum |
 | --- | --- | --- |
+| WA-GUEST-OS-6.8_201906-01 |8\. Juli 2019 |Post 6.10 |
 | WA-GUEST-OS-6.7_201905-01 |6\. Juni 2019 |Post 6.9 |
-| WA-GUEST-OS-6.6_201904-01 |7\. Mai 2019 |Post 6.8 |
+|~~WA-GUEST-OS-6.6_201904-01~~ |7\. Mai 2019 |8\. Juli 2019 |
 |~~WA-GUEST-OS-6.5_201903-01~~ |26. März 2019 |6\. Juni 2019 |
 |~~WA-GUEST-OS-6.4_201902-01~~ |12. März 2019 |7\. Mai 2019 |
 |~~WA-GUEST-OS-6.3_201901-01~~ |5\. Februar 2019 |26. März 2019 |
@@ -106,7 +110,7 @@ Installierte .NET Framework-Versionen: 3.5, 4.7.2
 ## <a name="family-5-releases"></a>Releases von Familie 5
 **Windows Server 2016**
 
-Installierte .NET Framework-Versionen: 3.5, 4.6.2
+Installierte .NET Framework-Versionen: 3.5, 4.6.2, 4.7.2, 4.8
 
 > [!NOTE]
 > Das RDP-Kennwort für Betriebssystemfamilie 5 muss mindestens zehn Zeichen umfassen.
@@ -115,8 +119,9 @@ Installierte .NET Framework-Versionen: 3.5, 4.6.2
 
 | Konfigurationszeichenfolge | Herausgabedatum | Deaktivierungsdatum |
 | --- | --- | --- |
+| WA-GUEST-OS-5.32_201906-01 |8\. Juli 2019 |Post 5.34 |
 | WA-GUEST-OS-5.31_201905-01 |6\. Juni 2019 |Post 5.33 |
-| WA-GUEST-OS-5.30_201904-01 |7\. Mai 2019 |Post 5.32 |
+|~~WA-GUEST-OS-5.30_201904-01~~ |7\. Mai 2019 |8\. Juli 2019 |
 |~~WA-GUEST-OS-5.29_201903-01~~ |26. März 2019 |6\. Juni 2019 |
 |~~WA-GUEST-OS-5.28_201902-01~~ |12. März 2019 |7\. Mai 2019 |
 |~~WA-GUEST-OS-5.27_201901-01~~ |5\. Februar 2019 |26. März 2019 |
@@ -128,12 +133,13 @@ Installierte .NET Framework-Versionen: 3.5, 4.6.2
 ## <a name="family-4-releases"></a>Releases von Familie 4
 **Windows Server 2012 R2**
 
-Installierte .NET Framework-Versionen: 3.5, 4.5.1
+Installierte .NET Framework-Versionen: 3.5, 4.5.1, 4.5.2
 
 | Konfigurationszeichenfolge | Herausgabedatum | Deaktivierungsdatum |
 | --- | --- | --- |
+| WA-GUEST-OS-4.67_201906-01 |8\. Juli 2019 |Post 4.69 |
 | WA-GUEST-OS-4.66_201905-01 |6\. Juni 2019 |Post 4.68 |
-| WA-GUEST-OS-4.65_201904-01 |7\. Mai 2019 |Post 4.67 |
+|~~WA-GUEST-OS-4.65_201904-01~~ |7\. Mai 2019 |8\. Juli 2019 |
 |~~WA-GUEST-OS-4.64_201903-01~~ |26. März 2019 |6\. Juni 2019 |
 |~~WA-GUEST-OS-4.63_201902-01~~ |12. März 2019 |7\. Mai 2019 |
 |~~WA-GUEST-OS-4.62_201901-01~~ |5\. Februar 2019 |26. März 2019 |
@@ -149,8 +155,9 @@ Installierte .NET Framework-Versionen: 3.5, 4.5
 
 | Konfigurationszeichenfolge | Herausgabedatum | Deaktivierungsdatum |
 | --- | --- | --- |
+| WA-GUEST-OS-3.74_201906-01 |8\. Juli 2019 |Post 3.76 |
 | WA-GUEST-OS-3.73_201905-01 |6\. Juni 2019 |Post 3.75 |
-| WA-GUEST-OS-3.72_201904-01 |7\. Mai 2019 |Post 3.74 |
+|~~WA-GUEST-OS-3.72_201904-01~~ |7\. Mai 2019 |8\. Juli 2019 |
 |~~WA-GUEST-OS-3.71_201903-01~~ |26. März 2019 |6\. Juni 2019 |
 |~~WA-GUEST-OS-3.70_201902-01~~ |12. März 2019 |7\. Mai 2019 |
 |~~WA-GUEST-OS-3.69_201901-01~~ |5\. Februar 2019 |26. März 2019 |
@@ -162,12 +169,13 @@ Installierte .NET Framework-Versionen: 3.5, 4.5
 ## <a name="family-2-releases"></a>Releases von Familie 2
 **Windows Server 2008 R2 SP1**
 
-Installierte .NET Framework-Versionen: 3.5 (einschließlich 2.0 und 3.0)
+Installierte .NET Framework-Versionen: 3.5 (einschließlich 2.0 und 3.0), 4.5
 
 | Konfigurationszeichenfolge | Herausgabedatum | Deaktivierungsdatum |
 | --- | --- | --- |
+| WA-GUEST-OS-2.87_201906-01 |8\. Juli 2019 |Post 2.89 |
 | WA-GUEST-OS-2.86_201905-01 |6\. Juni 2019 |Post 2.88 |
-| WA-GUEST-OS-2.85_201904-01 |7\. Mai 2019 |Post 2.87 |
+|~~WA-GUEST-OS-2.85_201904-01~~ |7\. Mai 2019 |8\. Juli 2019 |
 |~~WA-GUEST-OS-2.84_201903-01~~ |26. März 2019 |6\. Juni 2019 |
 |~~WA-GUEST-OS-2.83_201902-01~~ |12. März 2019 |7\. Mai 2019 |
 |~~WA-GUEST-OS-2.82_201901-01~~ |5\. Februar 2019 |26. März 2019 |
@@ -180,7 +188,7 @@ Installierte .NET Framework-Versionen: 3.5 (einschließlich 2.0 und 3.0)
 Die Liste der Patches, die in den einzelnen monatlichen Gastbetriebssystemreleases enthalten sind, steht [hier][patches] zur Verfügung.
 
 ## <a name="sdk-support"></a>SDK-Unterstützung
-Obwohl die [Deaktivierungsrichtlinie für das Azure SDK][retire policy sdk] angibt, dass nur Versionen ab 2.2 unterstützt werden, können bei bestimmten Gastbetriebssystem-Familien frühere Versionen verwendet werden. Sie sollten immer das neueste unterstützte SDK verwenden.
+Obwohl die [Deaktivierungsrichtlinie für das Azure SDK][retire policy sdk] angibt, dass nur Versionen ab 2.2 unterstützt werden, können bei bestimmten Gastbetriebssystem-Familien frühere Versionen verwendet werden. Sie sollten immer das neueste unterstützte SDK verwenden.
 
 | Gastbetriebssystemfamilie | Kompatible SDK-Versionen |
 | --- | --- |
@@ -196,7 +204,7 @@ Es gibt drei wichtige Daten für Gastbetriebssystemreleases: **Freigabedatum**, 
 
 Das Fenster zwischen dem **Deaktivierungsdatum** und dem **Ablaufdatum** bietet Ihnen einen Puffer, um problemlos von einem Gast-BS zu einem neueren zu wechseln. Wenn Sie die Option *automatisch* für Ihr Gastbetriebssystem festgelegt haben, verwenden Sie immer die neueste Version. In diesem Fall müssen Sie sich keine Gedanken über das Ablaufdatum machen.
 
-Wenn das **Ablaufdatum** überschritten ist, wird jeder Clouddienst, der dieses Gastbetriebssystem weiterhin verwendet, angehalten oder gelöscht bzw. es wird ein Upgrade erzwungen. Erfahren Sie [hier][retirepolicy] mehr über die Deaktivierungsrichtlinie.
+Wenn das **Ablaufdatum** überschritten ist, wird jeder Clouddienst, der dieses Gastbetriebssystem weiterhin verwendet, angehalten oder gelöscht bzw. es wird ein Upgrade erzwungen. [Hier][retirepolicy] erfahren Sie mehr über die Deaktivierungsrichtlinie.
 
 ## <a name="guest-os-family-version-explanation"></a>Erläuterung zu den Versionen der Gastbetriebssystemfamilie
 Die Gastbetriebssystemfamilien basieren auf veröffentlichten Versionen von Microsoft Windows Server. Das Gastbetriebssystem ist das zugrunde liegende Betriebssystem, auf dem Azure Cloud Services ausgeführt wird. Jedes Gastbetriebssystem verfügt über eine Familien-, eine Versions- und eine Releasenummer.
@@ -204,7 +212,7 @@ Die Gastbetriebssystemfamilien basieren auf veröffentlichten Versionen von Micr
 * **Guest OS family**  
   entspricht einem Windows Server-Betriebssystemrelease, auf dem ein Gastbetriebssystem basiert. Die *Familie 3* basiert beispielsweise auf Windows Server 2012.
 * **Gastbetriebssystem-Version**  
-  Gilt für das Image einer Gastbetriebssystemfamilie sowie relevante [Microsoft Security Response Center-Patches (MSRC)][msrc], die zum Zeitpunkt der Herstellung der neuen Gastbetriebssystemversion verfügbar sind. Möglicherweise sind nicht alle Patches enthalten.
+  Gilt für das Image einer Gastbetriebssystemfamilie sowie für relevante [Microsoft Security Response Center-Patches (MSRC)][msrc], die zum Zeitpunkt der Produktion der neuen Gastbetriebssystemversion verfügbar sind. Möglicherweise sind nicht alle Patches enthalten.
 
     Die Zahlen beginnen bei 0 und werden jedes Mal, wenn ein neuer Satz von Updates hinzugefügt wird, um 1 erhöht. Nachfolgende Nullen werden nur angezeigt, wenn sie von Bedeutung sind. Version 2.10 ist beispielsweise eine andere, viel höhere Version als Version 2.1.
 * **Gastbetriebssystemrelease**  
@@ -227,7 +235,7 @@ Wenn eine neue Version des Gastbetriebssystems veröffentlicht wird, kann die vo
 
 Viele wertvolle Informationen zu Neustarts und Verweise auf weitere technische Informationen zu Gast- und Hostbetriebssystemupdates finden Sie im MSDN-Blogbeitrag [Role Instance Restarts Due to OS Upgrades][restarts] (Neustarts von Rolleninstanzen aufgrund von Betriebssystemupgrades).
 
-Wenn Sie Ihr Gastbetriebssystem manuell aktualisieren, finden Sie in der [Deaktivierungsrichtlinie für Gastbetriebssysteme][retirepolicy] weitere Informationen.
+Wenn Sie Ihr Gastbetriebssystem manuell aktualisieren, finden Sie weitere Informationen in der [Deaktivierungsrichtlinie für Gastbetriebssysteme][retirepolicy].
 
 ## <a name="guest-os-supportability-and-retirement-policy"></a>Unterstützungs- und Deaktivierungsrichtlinie für Gastbetriebssysteme
 Die Unterstützungs- und Deaktivierungsrichtlinie für Gastbetriebssysteme wird [hier][retirepolicy] erläutert.

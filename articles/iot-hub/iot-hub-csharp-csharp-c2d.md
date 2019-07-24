@@ -9,12 +9,12 @@ ms.devlang: csharp
 ms.topic: conceptual
 ms.date: 04/03/2019
 ms.author: robinsh
-ms.openlocfilehash: 0d83bdc3fd3f644013a2d2b80128839658524db9
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 629342e44af16b6d23f9ed85f8c5306c807b8bfc
+ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65864443"
+ms.lasthandoff: 07/07/2019
+ms.locfileid: "67621904"
 ---
 # <a name="send-messages-from-the-cloud-to-your-device-with-iot-hub-net"></a>Senden von Nachrichten aus der Cloud an das Gerät mit IoT Hub (.NET)
 
@@ -22,29 +22,29 @@ ms.locfileid: "65864443"
 
 ## <a name="introduction"></a>Einführung
 
-Azure IoT Hub ist ein vollständig verwalteter Dienst, der eine zuverlässige und sichere bidirektionale Kommunikation zwischen Millionen von Geräten und einem Lösungs-Back-End ermöglicht. Unter [Senden von Telemetriedaten von einem Gerät an eine IoT Hub-Instanz ...](quickstart-send-telemetry-dotnet.md) erfahren Sie, wie Sie eine IoT Hub-Instanz erstellen, eine Geräteidentität darin bereitstellen und eine Geräte-App, die D2C-Nachrichten (Device-to-Cloud, Gerät-zu-Cloud) sendet, programmieren.
+Azure IoT Hub ist ein vollständig verwalteter Dienst, der eine zuverlässige und sichere bidirektionale Kommunikation zwischen Millionen von Geräten und einem Lösungs-Back-End ermöglicht. In der Schnellstartanleitung [Schnellstart: Senden von Telemetriedaten von einem Gerät an eine IoT Hub-Instanz und Lesen der Telemetriedaten aus der IoT Hub-Instanz mit einer Back-End-Anwendung (C#)](quickstart-send-telemetry-dotnet.md) erfahren Sie, wie Sie einen IoT-Hub erstellen, eine Geräteidentität darin bereitstellen und eine Geräte-App programmieren, die D2C-Nachrichten (Device-to-Cloud, Gerät-zu-Cloud) sendet.
 
 [!INCLUDE [iot-hub-basic](../../includes/iot-hub-basic-whole.md)]
 
-Dieses Tutorial baut auf dem Schnellstart [Senden von Telemetriedaten von einem Gerät an eine IoT Hub-Instanz ...](quickstart-send-telemetry-dotnet.md) auf. Es zeigt, wie Sie die folgenden Schritte ausführen:
+Dieses Tutorial baut auf [Schnellstart: Senden von Telemetriedaten von einem Gerät an eine IoT Hub-Instanz und Lesen der Telemetriedaten aus der IoT Hub-Instanz mit einer Back-End-Anwendung (C#)](quickstart-send-telemetry-dotnet.md) auf. Es zeigt, wie Sie die folgenden Schritte ausführen:
 
 * Senden von C2D-Nachrichten aus Ihrem Lösungs-Back-End an ein einzelnes Gerät über IoT Hub.
 
 * Empfangen von C2D-Nachrichten auf einem Gerät.
 
-* Anfordern einer Übermittlungsbestätigung (*Feedback*) von Ihrem Lösungs-Back-End für Nachrichten, die von IoT Hub an ein einzelnes Gerät gesendet wurden.
+* Anfordern einer Übermittlungsbestätigung (*Feedback*) von Ihrem Lösungs-Back-End für Nachrichten, die von IoT Hub an ein einzelnes Gerät gesendet wurden.
 
 Weitere Informationen zu C2D-Nachrichten finden Sie unter [D2C- und C2D-Messaging IoT Hub](iot-hub-devguide-messaging.md).
 
 Am Ende dieses Tutorials führen Sie zwei .NET-Konsolen-Apps aus.
 
-* **SimulatedDevice** ist eine modifizierte Version der in [Senden von Telemetriedaten von einem Gerät an eine IoT Hub-Instanz ...](quickstart-send-telemetry-dotnet.md) erstellten App. Sie stellt eine Verbindung mit Ihrer IoT Hub-Instanz her und empfängt C2D-Nachrichten.
+* **SimulatedDevice** ist eine modifizierte Version der App, die in [Schnellstart: Senden von Telemetriedaten von einem Gerät an eine IoT Hub-Instanz und Lesen der Telemetriedaten aus der IoT Hub-Instanz mit einer Back-End-Anwendung (C#)](quickstart-send-telemetry-dotnet.md) erstellt wurde. Sie stellt eine Verbindung mit Ihrem IoT-Hub her und empfängt C2D-Nachrichten.
 
-* **SendCloudToDevice**, die über IoT Hub eine C2D-Nachricht an die Geräte-App sendet und dann die zugehörige Übermittlungsbestätigung empfängt.
+* **SendCloudToDevice** sendet über IoT Hub eine C2D-Nachricht an die Geräte-App und empfängt die zugehörige Übermittlungsbestätigung.
 
 > [!NOTE]
 > IoT Hub bietet durch [Azure IoT-Geräte-SDKs](iot-hub-devguide-sdks.md) Unterstützung für zahlreiche Geräteplattformen und Sprachen (u.a. C, Java und JavaScript). Im [IoT Hub-Entwicklerhandbuch](iot-hub-devguide.md) finden Sie Schritt-für-Schritt-Anweisungen zum Verbinden eines Geräts mit dem Code in diesem Tutorial sowie allgemeine Informationen zum Verbinden mit Azure IoT Hub.
-> 
+>
 
 Für dieses Tutorial benötigen Sie Folgendes:
 
@@ -54,7 +54,7 @@ Für dieses Tutorial benötigen Sie Folgendes:
 
 ## <a name="receive-messages-in-the-device-app"></a>Empfangen von Nachrichten in der Geräte-App
 
-In diesem Abschnitt ändern Sie die Geräte-App, die Sie in [Senden von Telemetriedaten von einem Gerät an eine IoT Hub-Instanz ...](quickstart-send-telemetry-dotnet.md) erstellt haben, um C2D-Nachrichten von IoT Hub zu empfangen.
+In diesem Abschnitt ändern Sie die Geräte-App, die Sie in [Schnellstart: Senden von Telemetriedaten von einem Gerät an eine IoT Hub-Instanz und Lesen der Telemetriedaten aus der IoT Hub-Instanz mit einer Back-End-Anwendung (C#)](quickstart-send-telemetry-dotnet.md) erstellt haben, um C2D-Nachrichten vom IoT-Hub zu empfangen.
 
 1. Fügen Sie in Visual Studio im **SimulatedDevice**-Projekt der **Program**-Klasse die folgende Methode hinzu.
 
@@ -138,7 +138,7 @@ Jetzt schreiben Sie eine .NET-Konsolen-App, die C2D-Nachrichten an die Geräte-A
    static string connectionString = "{iot hub connection string}";
    ```
 
-6. Fügen Sie der **Program**-Klasse die folgende Methode hinzu. Legen Sie den Gerätenamen auf die Zeichenfolge fest, die Sie beim Definieren des Geräts in [Senden von Telemetriedaten von einem Gerät an einen IoT-Hub ...](quickstart-send-telemetry-dotnet.md) verwendet haben.
+6. Fügen Sie der **Program**-Klasse die folgende Methode hinzu. Legen Sie den Gerätenamen auf die Zeichenfolge fest, die Sie beim Definieren des Geräts in [Schnellstart: Senden von Telemetriedaten von einem Gerät an eine IoT Hub-Instanz und Lesen der Telemetriedaten aus der IoT Hub-Instanz mit einer Back-End-Anwendung (C#)](quickstart-send-telemetry-dotnet.md) verwendet haben.
 
    ``` csharp
    private async static Task SendCloudToDeviceMessageAsync()
@@ -149,7 +149,7 @@ Jetzt schreiben Sie eine .NET-Konsolen-App, die C2D-Nachrichten an die Geräte-A
    }
    ```
 
-   Diese Methode sendet eine neue C2D-Nachricht an das Gerät mit der ID `myFirstDevice`. Ändern Sie diesen Parameter nur, falls Sie den in [Senden von Telemetriedaten von einem Gerät an eine IoT Hub-Instanz ...](quickstart-send-telemetry-dotnet.md) verwendeten Parameter geändert haben.
+   Diese Methode sendet eine neue C2D-Nachricht an das Gerät mit der ID `myFirstDevice`. Ändern Sie diesen Parameter nur, falls Sie den in [Schnellstart: Senden von Telemetriedaten von einem Gerät an eine IoT Hub-Instanz und Lesen der Telemetriedaten aus der IoT Hub-Instanz mit einer Back-End-Anwendung (C#)](quickstart-send-telemetry-dotnet.md) verwendeten Parameter geändert haben.
 
 7. Fügen Sie abschließend der **Main** -Methode die folgenden Zeilen hinzu.
 
@@ -171,7 +171,7 @@ Jetzt schreiben Sie eine .NET-Konsolen-App, die C2D-Nachrichten an die Geräte-A
 
 ## <a name="receive-delivery-feedback"></a>Empfangen von Übermittlungsfeedback
 
-Es ist möglich, für jede C2D-Nachricht Übermittlungsbestätigungen (oder Ablaufbestätigungen) von IoT Hub anzufordern. Mit dieser Option kann die Wiederholungs- oder Kompensierungslogik problemlos vom Lösungs-Back-End informiert werden. Weitere Informationen zu C2D-Feedback finden Sie unter [D2C- und C2D-Messaging mit IoT Hub](iot-hub-devguide-messaging.md).
+Es ist möglich, für jede C2D-Nachricht Übermittlungsbestätigungen (oder Ablaufbestätigungen) von IoT Hub anzufordern. Mit dieser Option kann die Wiederholungs- oder Kompensierungslogik problemlos vom Lösungs-Back-End informiert werden. Weitere Informationen zu C2D-Feedback finden Sie unter [D2C- und C2D-Messaging mit IoT Hub](iot-hub-devguide-messaging.md).
 
 In diesem Abschnitt ändern Sie die **SendCloudToDevice**-App so, dass sie Feedback von IoT Hub anfordert und empfängt.
 
@@ -217,7 +217,7 @@ In diesem Abschnitt ändern Sie die **SendCloudToDevice**-App so, dass sie Feedb
    ![Nachrichtenempfangs-App](./media/iot-hub-csharp-csharp-c2d/sendc2d2.png)
 
 > [!NOTE]
-> Der Einfachheit halber wird in diesem Lernprogramm keine Wiederholungsrichtlinie implementiert. Im Produktionscode sollten Sie Wiederholungsrichtlinien implementieren (z.B. exponentielles Backoff), wie es im Artikel [Behandeln vorübergehender Fehler](/azure/architecture/best-practices/transient-faults) vorgeschlagen wird.
+> Der Einfachheit halber wird in diesem Tutorial keine Wiederholungsrichtlinie implementiert. Im Produktionscode sollten Sie Wiederholungsrichtlinien implementieren (z.B. exponentielles Backoff), wie es im Artikel [Behandeln vorübergehender Fehler](/azure/architecture/best-practices/transient-faults) vorgeschlagen wird.
 >
 
 ## <a name="next-steps"></a>Nächste Schritte

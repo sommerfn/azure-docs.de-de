@@ -8,15 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 03/13/2019
+ms.date: 07/05/2019
 ms.author: erhopf
-ms.custom: seodec18
-ms.openlocfilehash: 84d212129c5225fd0efebfca5640cfc3d32e8a40
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 428dba9e8ff5ec072d5172fee357fd5319d04ad8
+ms.sourcegitcommit: cf438e4b4e351b64fd0320bf17cc02489e61406a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67072411"
+ms.lasthandoff: 07/08/2019
+ms.locfileid: "67657729"
 ---
 # <a name="what-is-speech-translation"></a>Was ist Sprachübersetzung?
 
@@ -56,10 +55,7 @@ Beispielcode für das Speech SDK finden Sie auf GitHub. In den Beispielen werden
 
 ## <a name="migration-guides"></a>Migrationsleitfäden
 
-> [!WARNING]
-> Die Sprachübersetzung wird am 15. Oktober 2019 eingestellt.
-
-Wenn Ihre Anwendungen, Tools oder Produkte die Sprachübersetzung verwenden, finden Sie in den nachfolgend aufgelisteten Leitfäden Informationen zur Migration zu den Sprachdiensten.
+Wenn Ihre Anwendungen, Tools oder Produkte die [Sprachübersetzungs-API](https://docs.microsoft.com/azure/cognitive-services/translator-speech/overview) verwenden, finden Sie in den nachfolgend aufgelisteten Leitfäden Informationen zur Migration zu den Sprachdiensten.
 
 * [Migrieren von der Sprachübersetzungs-API zum Spracherkennungsdienst](how-to-migrate-from-translator-speech-api.md)
 

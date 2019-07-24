@@ -10,14 +10,14 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 06/26/2018
+ms.date: 07/09/2018
 ms.author: jingwang
-ms.openlocfilehash: e54a69b6c2b48e50c089f8b6b7458cf91133dd85
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: e68ec9f72907dcaa79614d08861960c7982347c7
+ms.sourcegitcommit: 80aaf27e3ad2cc4a6599a3b6af0196c6239e6918
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67443301"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67673884"
 ---
 # <a name="copy-data-from-sap-table-using-azure-data-factory"></a>Kopieren von Daten aus einer SAP-Tabelle mithilfe von Azure Data Factory
 
@@ -36,7 +36,7 @@ Dieser SAP-Tabellenconnector unterstützt insbesondere Folgendes:
     - **SAP S/4HANA**
     - **Andere Produkte in SAP Business Suite**, Version 7.01 oder höher 
 
-- Kopieren von Daten aus **transparenten SAP-Tabellen** und **Ansichten**
+- Kopieren von Daten aus **transparenten SAP-Tabellen**, **SAP-Pooltabellen**, **SAP-Clustertabellen** und **SAP-Sichten**.
 - Kopieren von Daten mit **Standardauthentifizierung** oder **SNC** (Secure Network Communications), falls SNC konfiguriert ist
 - Herstellen einer Verbindung zum **Anwendungsserver** oder **Nachrichtenserver**
 

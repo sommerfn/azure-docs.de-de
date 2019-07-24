@@ -7,12 +7,12 @@ ms.author: v-qiwe
 ms.service: marketplace
 ms.topic: conceptual
 ms.date: 05/30/2019
-ms.openlocfilehash: 904058c2c98c8ded2ea9c91e8aa7ec595aa49b05
-ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
+ms.openlocfilehash: eb824eb67e84ec4bdb93bc355ac6a6afa844ceb9
+ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/04/2019
-ms.locfileid: "66482000"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67701155"
 ---
 # <a name="offer-creation-checklist"></a>Prüfliste für die Angebotserstellung
 
@@ -38,12 +38,12 @@ Elemente, deren Angabe oder Festlegung erforderlich ist, sind unten aufgeführt.
 
 ## <a name="new-offer-modal"></a>Modales Fenster „Neues Angebot“ 
 
-Die ersten Informationen, zu deren Eingabe Sie aufgefordert werden, sind ein Name und eine ID für Ihr Angebot. 
+Die ersten Informationen, zu deren Eingabe Sie aufgefordert werden, sind eine ID und ein Alias für Ihr Angebot. 
 
 | **Feldname**    | **Hinweise**   |  
 | :---------------- | :-----------| 
 | Angebots-ID  | Erforderlich. Kann nach der Erstellung nicht geändert werden. Maximal 50 Zeichen und darf nur klein geschriebene alphanumerische Zeichen, Bindestriche und Unterstriche enthalten. |
-| Angebotsname  | Erforderlich. |
+| Angebotsalias  | Erforderlich. |
 
 ## <a name="offer-setup-page"></a>Seite „Angebotseinrichtung“
 
@@ -68,7 +68,7 @@ Auf der Eigenschaftenseite definieren Sie die Kategorien und Branchen, die zum G
 | :---------------- | :-----------|  
 | Kategorie und Unterkategorie | Erforderlich 1, maximal 3. Standardwert: Keine Auswahl. |
 | Branchen und Unterbranchen | Optional. Maximal 2 L1-Branchen und maximal 2 Unterbranchen für jede L1-Branche, Standardwert: Keine Auswahl. |
-| App-Version  | Optional. Standardwert: Keine. |
+| App-Version  | Optional. Standardwert: None (Keine): |
 | Standardvertrag verwenden  | Optional. Standardwert: Nicht ausgewählt.  | |
 | Nutzungsbedingungen  | Erforderlich, wenn der Standardvertrag nicht ausgewählt ist.  |
 

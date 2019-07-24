@@ -8,12 +8,12 @@ manager: edprice
 editor: edprice
 tags: ''
 keywords: ''
-ms.openlocfilehash: c6fcb345b49ce6354a24408ebe163fb928990252
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: d527b08f3610531bef8e98a11998942411651d27
+ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64925693"
+ms.lasthandoff: 07/07/2019
+ms.locfileid: "67621345"
 ---
 # <a name="set-up-an-application-developers-controlled-distribution-adcd-in-ibm-zdt-v1"></a>Festlegen einer Application Developers Controlled Distribution (ADCD) in IBM zD&T v1
 
@@ -21,7 +21,7 @@ Sie können eine IBM Z Development and Test Environment (zD&T) auf virtuellen Az
 
 In diesem Artikel wird das Einrichten einer ADCD-Instanz in einer zD&T-Umgebung in Azure veranschaulicht. ADCDs erstellen vollständige Implementierungen von Z Series-Betriebssystemen für Entwicklungs- und Testumgebungen, die in zD&T ausgeführt werden.
 
-Wie zD&T sind ADCDs nur für IBM-Kunden und -Partner verfügbar und ausschließlich für Entwicklungs- und Testzwecke bestimmt. Sie dürfen nicht für Produktionsumgebungen verwendet werden. Zahlreiche Installationspakete von IBM stehen zum Herunterladen mithilfe von [Passport Advantage](https://www.ibm.com/support/knowledgecenter/en/SSTQBD_12.0.0/com.ibm.zsys.rdt.guide.adcd.doc/topics/installation_ps.html) oder [IBM PartnerWorld](https://www-356.ibm.com/partnerworld/wps/servlet/ContentHandler/isv_com_sys_zos_adcd) zur Verfügung.
+Wie zD&T sind ADCDs nur für IBM-Kunden und -Partner verfügbar und ausschließlich für Entwicklungs- und Testzwecke bestimmt. Sie dürfen nicht für Produktionsumgebungen verwendet werden. Zahlreiche Installationspakete von IBM stehen zum Herunterladen mithilfe von [Passport Advantage](https://www.ibm.com/support/knowledgecenter/en/SSTQBD_12.0.0/com.ibm.zsys.rdt.guide.adcd.doc/topics/installation_ps.html) oder [IBM PartnerWorld](https://www.ibm.com/partnerworld/public) zur Verfügung.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -39,7 +39,7 @@ Wie zD&T sind ADCDs nur für IBM-Kunden und -Partner verfügbar und ausschließl
 
 ## <a name="download-the-installation-packages-from-passport-advantage"></a>Herunterladen der Installationspakete von Passport Advantage
 
-Zugriff auf die ADCD-Medien ist erforderlich. Die folgenden Schritte setzen voraus, dass Sie ein IBM-Kunde sind und Passport Advantage nutzen können. IBM-Partner können [IBM PartnerWorld](https://www-356.ibm.com/partnerworld/wps/servlet/ContentHandler/isv_com_sys_zos_adcd) nutzen.
+Zugriff auf die ADCD-Medien ist erforderlich. Die folgenden Schritte setzen voraus, dass Sie ein IBM-Kunde sind und Passport Advantage nutzen können. IBM-Partner können [IBM PartnerWorld](https://www.ibm.com/partnerworld/public) nutzen.
 
 > [!NOTE]
 > In diesem Artikel wird vorausgesetzt, dass zum Zugriff auf das Azure-Portal und Herunterladen der IBM-Medien ein Windows-PC verwendet wird. Wenn Sie einen Mac- oder Ubuntu-Desktop verwenden, können die Befehle und der Vorgang zum Abrufen der IBM-Medien sich leicht unterscheiden.

@@ -4,7 +4,7 @@ description: Hier erfahren Sie, wie Sie MPI für HPC in Azure einrichten.
 services: virtual-machines
 documentationcenter: ''
 author: vermagit
-manager: jeconnoc
+manager: gwallace
 editor: ''
 tags: azure-resource-manager
 ms.service: virtual-machines
@@ -12,12 +12,12 @@ ms.workload: infrastructure-services
 ms.topic: article
 ms.date: 05/15/2019
 ms.author: amverma
-ms.openlocfilehash: 5356a033dbc3d989dd27019f03b1fe36035ff9a4
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: 541e42a72ea604c4d71dc546b14dea2f0857bcc1
+ms.sourcegitcommit: 66237bcd9b08359a6cce8d671f846b0c93ee6a82
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67441649"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67797510"
 ---
 # <a name="set-up-message-passing-interface-for-hpc"></a>Einrichten von Message Passing Interface für HPC
 
@@ -126,7 +126,7 @@ Die feste Prozesszuordnung (Process Pinning) funktioniert standardmäßig für 1
 
 ## <a name="osu-mpi-benchmarks"></a>OSU-MPI-Benchmarks
 
-Laden Sie die OSU-MPI-Benchmarks herunter ([http://mvapich.cse.ohio-state.edu/benchmarks/](http://mvapich.cse.ohio-state.edu/benchmarks/)), und entpacken Sie sie.
+[Laden Sie die OSU-MPI-Benchmarks herunter](http://mvapich.cse.ohio-state.edu/benchmarks/), und entpacken Sie sie.
 
 ```bash
 wget http://mvapich.cse.ohio-state.edu/download/mvapich/osu-micro-benchmarks-5.5.tar.gz
@@ -146,7 +146,7 @@ MPI-Benchmarks befinden sich im Ordner `mpi/`.
 
 ## <a name="discover-partition-keys"></a>Ermitteln von Partitionsschlüsseln
 
-Ermitteln Sie Partitionsschlüssel für die Kommunikation mit anderen virtuellen Computern.
+Ermitteln Sie Partitionsschlüssel für die Kommunikation mit anderen virtuellen Computern in demselben Mandanten (Verfügbarkeitsgruppe oder VM-Skalierungsgruppe).
 
 ```bash
 /sys/class/infiniband/mlx5_0/ports/1/pkeys/0
@@ -164,13 +164,15 @@ cat /sys/class/infiniband/mlx5_0/ports/1/pkeys/1
 
 Verwenden Sie die Partition, bei der es sich nicht um den Standardpartitionsschlüssel (0x7fff) handelt. Für UCX muss das MSB des Partitionsschlüssels gelöscht werden. Legen Sie also beispielsweise „UCX_IB_PKEY“ für „0x800b“ auf „0x000b“ fest.
 
+Beachten Sie außerdem, dass die Partitionsschlüssel unverändert bleiben, solange der Mandant (Verfügbarkeitsgruppe oder VM-Skalierungsgruppe) vorhanden ist. Dies gilt auch, wenn Knoten hinzugefügt oder gelöscht werden. Neue Mandanten erhalten unterschiedliche Partitionsschlüssel.
+
 
 ## <a name="set-up-user-limits-for-mpi"></a>Einrichten von Benutzergrenzwerten für MPI
 
 Richten Sie Benutzergrenzwerte für MPI ein.
 
 ```bash
-cat << EOF >> /etc/security/limits.conf
+cat << EOF | sudo tee -a /etc/security/limits.conf
 *               hard    memlock         unlimited
 *               soft    memlock         unlimited
 *               hard    nofile          65535

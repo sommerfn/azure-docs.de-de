@@ -1,5 +1,5 @@
 ---
-title: Konfigurieren von Einstellungen
+title: 'Konfigurieren von Einstellungen: Personalisierung'
 titleSuffix: Azure Cognitive Services
 description: Die Dienstkonfiguration umfasst die Art, wie der Dienst Belohnungen behandelt, wie oft der Dienst Untersuchungen durchführt, wie oft das Modell neu trainiert wird und wie viele Daten gespeichert werden.
 services: cognitive-services
@@ -7,15 +7,15 @@ author: edjez
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: personalizer
-ms.topic: overview
+ms.topic: conceptual
 ms.date: 05/07/2019
 ms.author: edjez
-ms.openlocfilehash: 976830232453eee0993e64ac445c2e6a2f7e20ef
-ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
+ms.openlocfilehash: 6f5028f093a9fd8c17928c2167039599d4db897c
+ms.sourcegitcommit: dad277fbcfe0ed532b555298c9d6bc01fcaa94e2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/04/2019
-ms.locfileid: "66478583"
+ms.lasthandoff: 07/10/2019
+ms.locfileid: "67722340"
 ---
 # <a name="personalizer-settings"></a>Einstellungen der Personalisierung
 
@@ -35,7 +35,7 @@ Erstellen Sie eine Personalisierungsressource für jede Feedbackschleife.
 1. Suchen Sie Ihre Personalisierungsressource. 
 1. Wählen Sie im Abschnitt **Ressourcenverwaltung** die Option **Einstellungen** aus.
 
-    Kopieren Sie auf der Seite **Schlüssel** einen Ressourcenschlüssel, bevor Sie das Azure-Portal verlassen. Sie benötigen ihn für die Verwendung des [SDK für die Personalisierung](https://go.microsoft.com/fwlink/?linkid=2092353).
+    Kopieren Sie auf der Seite **Schlüssel** einen Ressourcenschlüssel, bevor Sie das Azure-Portal verlassen. Sie benötigen ihn für die Verwendung des [SDK für die Personalisierung](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.personalizer).
 
 ### <a name="configure-reward-settings-for-the-feedback-loop-based-on-use-case"></a>Konfigurieren der Belohnungseinstellungen für die Feedbackschleife auf der Grundlage von Anwendungsfällen
 

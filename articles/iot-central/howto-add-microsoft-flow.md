@@ -8,12 +8,12 @@ ms.date: 04/25/2019
 ms.topic: conceptual
 ms.service: iot-central
 manager: hegate
-ms.openlocfilehash: c50271e28db104522c0e8811508fa882dc316eab
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: e8bc8b8d4e3585ea4c0505f2e36abc6d1da7f8eb
+ms.sourcegitcommit: 66237bcd9b08359a6cce8d671f846b0c93ee6a82
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66235807"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67797706"
 ---
 # <a name="build-workflows-with-the-iot-central-connector-in-microsoft-flow"></a>Erstellen von Workflows mit dem IoT Central-Connector in Microsoft Flow
 
@@ -31,7 +31,8 @@ Machen Sie sich mit [diesen Microsoft Flow-Vorlagen](https://aka.ms/iotcentralfl
 ## <a name="prerequisites"></a>Voraussetzungen
 
 - Eine Anwendung mit nutzungsbasierter Bezahlung
-- Ein persönliches oder Geschäfts-, Schul- oder Unikonto für die Anmeldung bei Microsoft Flow ([weitere Informationen zu Microsoft Flow-Tarifen](https://aka.ms/microsoftflowplans))
+- Ein persönliches oder Geschäfts, Schul- oder Unikonto für die Verwendung von Microsoft Flow ([weitere Informationen zu Microsoft Flow-Tarifen](https://aka.ms/microsoftflowplans))
+- Ein Geschäfts-, Schul- oder Unikonto für die Verwendung des Azure IoT Central-Connectors
 
 ## <a name="trigger-a-workflow"></a>Auslösen eines Workflows
 
@@ -45,7 +46,12 @@ In diesem Abschnitt erfahren Sie, wie Sie eine mobile Benachrichtigung in der mo
 
     ![Verfügbare Microsoft Flow-Vorlagen](media/howto-add-microsoft-flow/flowtemplates1.png)
 
-1. Sie werden aufgefordert, sich bei den Connectors in der von Ihnen gewählten Vorlage anzumelden. Sobald die Connectors angemeldet sind, gelangen Sie zum Designer, mit dem Sie Ihren Workflow erstellen können. Der Workflow verfügt über einen IoT Central-Auslöser, in den Ihre Anwendung und Regel bereits eingetragen sind.
+1. Sie werden aufgefordert, sich bei den Connectors in der von Ihnen gewählten Vorlage anzumelden. 
+
+    > [!NOTE]
+    > Zum Verwenden des Azure IoT Central-Connectors müssen Sie sich mit einem Azure Active Directory-Konto (Geschäfts-, Schul- oder Unikonto) anmelden. Ein persönliches Konto wie abc@outlook.com oder abc@live.com wird vom Azure IoT Central-Connector nicht unterstützt.
+
+    Sobald Sie sich bei den Connectors angemeldet haben, gelangen Sie zum Designer, mit dem Sie Ihren Workflow erstellen können. Der Workflow verfügt über einen IoT Central-Auslöser, in den Ihre Anwendung und Regel bereits eingetragen sind.
 
 1. Sie können den Workflow anpassen, indem Sie die an die Aktion übergebenen Informationen bearbeiten und neue Aktionen hinzufügen. In diesem Beispiel ist die Aktion **Notifications - Send me a mobile notification** (Benachrichtigungen – Eine Benachrichtigung auf mein Mobilgerät senden). Sie können *Dynamischen Inhalt* aus Ihrer IoT Central-Regel einschließen, um Ihrer Benachrichtigung wichtige Informationen wie den Namen des Geräts und den Zeitstempel zu übergeben.
 

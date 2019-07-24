@@ -6,14 +6,14 @@ manager: philmea
 ms.service: digital-twins
 services: digital-twins
 ms.topic: conceptual
-ms.date: 1/7/2019
+ms.date: 07/09/2019
 ms.author: v-adgera
-ms.openlocfilehash: 57abb005f70661d23ea90eaf801b8e5407340bb7
-ms.sourcegitcommit: aa66898338a8f8c2eb7c952a8629e6d5c99d1468
+ms.openlocfilehash: eca355a51b516311d060df09905c1df769037ec5
+ms.sourcegitcommit: dad277fbcfe0ed532b555298c9d6bc01fcaa94e2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67462032"
+ms.lasthandoff: 07/10/2019
+ms.locfileid: "67722840"
 ---
 # <a name="how-to-query-azure-digital-twins-apis-for-common-tasks"></a>Gewusst wie: Abfragen von Azure Digital Twins-APIs für allgemeine Aufgaben
 
@@ -238,4 +238,4 @@ Dieser Abschnitt zeigt einige API-Beispielabfragen für die Verwaltung von Benut
 
 Informationen dazu, wie ein Authentifizieren über Ihre Verwaltungs-API erfolgt, finden Sie unter [Verbinden mit und Authentifizieren über APIs](./security-authenticating-apis.md).
 
-Wie Sie alle API-Endpunkte anzeigen, erfahren Sie in der [Referenzdokumentation: Azure Digital Twins-Swagger](./how-to-use-swagger.md).
+Weitere Informationen zu API-Endpunkten finden Sie unter [Verwenden von Digital Twins Swagger](./how-to-use-swagger.md).

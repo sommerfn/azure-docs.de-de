@@ -16,12 +16,12 @@ ms.author: mimart
 ms.reviewer: japere
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: cb36d6a03da07681db468184a489a79f7f0deab7
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 6cdc46ea3a45d04e6e837d0b7ad52ed8bf565cd2
+ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65825491"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67702420"
 ---
 # <a name="how-to-enable-native-client-applications-to-interact-with-proxy-applications"></a>Aktivieren von nativen Clientanwendungen für die Interaktion mit Proxyanwendungen
 
@@ -29,7 +29,7 @@ Sie können mit dem Azure Active Directory-Anwendungsproxy (Azure AD) Web-Apps 
 
 Um native Clientanwendungen zu unterstützen, akzeptiert der Anwendungsproxy von Azure AD ausgestellte Token, die im Header gesendet werden. Der Anwendungsproxydienst führt die Authentifizierung für die Benutzer durch. Diese Lösung verwendet keine Anwendungstoken für die Authentifizierung.
 
-![Beziehung zwischen Endbenutzern, Azure Active Directory und veröffentlichten Anwendung](./media/application-proxy-configure-native-client-application/richclientflow.png)
+![Beziehung zwischen Endbenutzern, Azure AD und veröffentlichten Anwendungen](./media/application-proxy-configure-native-client-application/richclientflow.png)
 
 Verwenden Sie zum Veröffentlichen nativer Anwendungen die Azure AD-Authentifizierungsbibliothek, die die Authentifizierung übernimmt und viele Clientumgebungen unterstützt. Der Anwendungsproxy gehört zum Szenario für eine [native Anwendung zu Web-API](../develop/native-app.md).
 
@@ -44,18 +44,21 @@ Veröffentlichen Sie Ihre Proxyanwendung wie jede andere Anwendung, und weisen S
 Jetzt müssen Sie Ihre Anwendung wie folgt in Azure AD registrieren:
 
 1. Melden Sie sich beim [Azure Active Directory-Portal](https://aad.portal.azure.com/) an. Das **Dashboard** für **Azure Active Directory Admin Center** wird angezeigt.
-2. Wählen Sie auf der Seitenleiste **Azure Active Directory** aus. Die Übersichtsseite **Azure Active Directory** wird angezeigt.
-3. Wählen Sie auf der Seitenleiste der Azure AD-Übersicht die Option **App-Registrierungen** aus. Die Liste aller App-Registrierungen wird angezeigt.
-4. Wählen Sie **Neue Registrierung** aus. Die Seite **Anwendung registrieren** wird angezeigt.
+1. Wählen Sie auf der Seitenleiste **Azure Active Directory** aus. Die Übersichtsseite **Azure Active Directory** wird angezeigt.
+1. Wählen Sie auf der Seitenleiste der Azure AD-Übersicht die Option **App-Registrierungen** aus. Die Liste aller App-Registrierungen wird angezeigt.
+1. Wählen Sie **Neue Registrierung** aus. Die Seite **Anwendung registrieren** wird angezeigt.
 
-   ![Erstellen einer neuen App-Registrierung](./media/application-proxy-configure-native-client-application/create.png)
-5. Geben Sie unter der Überschrift **Name** einen benutzerseitigen Anzeigenamen für Ihre Anwendung an.
-6. Wählen Sie unter der Überschrift **Unterstützte Kontotypen** eine Zugriffsebene anhand der folgenden Richtlinien aus:
+   ![Erstellen einer neuen App-Registrierung im Azure-Portal](./media/application-proxy-configure-native-client-application/create.png)
+
+1. Geben Sie unter der Überschrift **Name** einen benutzerseitigen Anzeigenamen für Ihre Anwendung an.
+1. Wählen Sie unter der Überschrift **Unterstützte Kontotypen** eine Zugriffsebene anhand der folgenden Richtlinien aus:
+
    - Um nur Konten einzuschließen, die in Ihrer Organisation intern sind, wählen Sie **Nur Konten in diesem Organisationsverzeichnis** aus.
    - Um nur Kunden aus dem Geschäfts- oder Bildungsbereich einzuschließen, wählen Sie **Konten in einem beliebigen Organisationsverzeichnis** aus.
    - Um die breiteste Gruppe von Microsoft-Identitäten einzuschließen, wählen Sie **Konten in allen Organisationsverzeichnissen und persönliche Microsoft-Konten** aus.
-7. Wählen Sie unter der Überschrift **Umleitungs-URI** die Option **Public client (mobile & desktop)** (Öffentlicher Client (mobil und Desktop)) aus, und geben Sie dann den Umleitungs-URI für Ihre Anwendung ein.
-8. Wählen Sie die **Microsoft-Plattformrichtlinien** aus, und lesen Sie sie. Wählen Sie dann **Registrieren** aus. Eine Übersichtsseite für die neue Anwendungsregistrierung wird erstellt und angezeigt.
+
+1. Wählen Sie unter der Überschrift **Umleitungs-URI** die Option **Public client (mobile & desktop)** (Öffentlicher Client (mobil und Desktop)) aus, und geben Sie dann den Umleitungs-URI für Ihre Anwendung ein.
+1. Wählen Sie die **Microsoft-Plattformrichtlinien** aus, und lesen Sie sie. Wählen Sie dann **Registrieren** aus. Eine Übersichtsseite für die neue Anwendungsregistrierung wird erstellt und angezeigt.
 
 Ausführlichere Informationen zum Erstellen einer neuen Anwendungsregistrierung finden Sie unter [Integrieren von Anwendungen in Azure Active Directory](../develop/quickstart-v1-integrate-apps-with-azure-ad.md).
 
@@ -64,11 +67,11 @@ Ausführlichere Informationen zum Erstellen einer neuen Anwendungsregistrierung 
 Nachdem Sie Ihre native Anwendung registriert haben, können Sie ihr Zugriff auf andere Anwendungen in Ihrem Verzeichnis gewähren, in diesem Fall auf die Proxyanwendung. So machen Sie die native Anwendung für die Proxyanwendung verfügbar
 
 1. Wählen Sie auf der Seitenleiste der Seite für die neue Anwendungsregistrierung **API-Berechtigungen** aus. Die Seite **API-Berechtigungen** für die neue Anwendungsregistrierung wird angezeigt.
-2. Wählen Sie **Berechtigung hinzufügen** aus. Die Seite **API-Berechtigungen anfordern** wird angezeigt.
-3. Wählen Sie unter der Einstellung **Hiermit wählen Sie eine API aus** die Option **Von meiner Organisation verwendete APIs** aus. Eine Liste mit den Anwendungen in Ihrem Verzeichnis, die APIs verfügbar machen, wird angezeigt.
-4. Geben Sie die Proxyanwendung, die Sie in [Schritt 1: Veröffentlichen Ihrer Proxyanwendung](#step-1-publish-your-proxy-application) veröffentlicht haben, im Suchfeld ein, oder scrollen Sie zu ihr, und wählen Sie dann die Proxyanwendung aus.
-5. Wählen Sie unter der Überschrift **Welche Art von Berechtigungen sind für Ihre Anwendung erforderlich?** den Berechtigungstyp aus. Wenn Ihre native Anwendung als der angemeldete Benutzer auf die Proxy-Anwendung-API zugreifen muss, wählen Sie **Delegierte Berechtigungen** aus. Wenn Ihre native Anwendung als Hintergrunddienst oder Daemon ohne angemeldeten Benutzer ausgeführt wird, wählen Sie **Anwendungsberechtigungen** aus.
-6. Wählen Sie unter der Überschrift **Berechtigungen auswählen** die gewünschte Berechtigung und dann **Berechtigungen hinzufügen** aus. Auf der Seite **API-Berechtigungen** für Ihre native Anwendung werden jetzt die hinzugefügte Proxyanwendung und die Berechtigungs-API angezeigt.
+1. Wählen Sie **Berechtigung hinzufügen** aus. Die Seite **API-Berechtigungen anfordern** wird angezeigt.
+1. Wählen Sie unter der Einstellung **Hiermit wählen Sie eine API aus** die Option **Von meiner Organisation verwendete APIs** aus. Eine Liste mit den Anwendungen in Ihrem Verzeichnis, die APIs verfügbar machen, wird angezeigt.
+1. Geben Sie die Proxyanwendung, die Sie in [Schritt 1: Veröffentlichen Ihrer Proxyanwendung](#step-1-publish-your-proxy-application) veröffentlicht haben, im Suchfeld ein, oder scrollen Sie zu ihr, und wählen Sie dann die Proxyanwendung aus.
+1. Wählen Sie unter der Überschrift **Welche Art von Berechtigungen sind für Ihre Anwendung erforderlich?** den Berechtigungstyp aus. Wenn Ihre native Anwendung als der angemeldete Benutzer auf die Proxy-Anwendung-API zugreifen muss, wählen Sie **Delegierte Berechtigungen** aus. Wenn Ihre native Anwendung als Hintergrunddienst oder Daemon ohne angemeldeten Benutzer ausgeführt wird, wählen Sie **Anwendungsberechtigungen** aus.
+1. Wählen Sie unter der Überschrift **Berechtigungen auswählen** die gewünschte Berechtigung und dann **Berechtigungen hinzufügen** aus. Auf der Seite **API-Berechtigungen** für Ihre native Anwendung werden jetzt die hinzugefügte Proxyanwendung und die Berechtigungs-API angezeigt.
 
 ## <a name="step-4-edit-the-active-directory-authentication-library"></a>Schritt 4: Bearbeiten der Active Directory-Authentifizierungsbibliothek
 

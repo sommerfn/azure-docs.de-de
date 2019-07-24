@@ -12,12 +12,12 @@ author: wenjiefu
 ms.author: wenjiefu
 ms.reviewer: sawinark
 manager: craigg
-ms.openlocfilehash: 68a5d5278e1181695695647cff187d4b95624b40
-ms.sourcegitcommit: 084630bb22ae4cf037794923a1ef602d84831c57
+ms.openlocfilehash: 05723a90725992e6b955524a2d35c82d3378ee3d
+ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/03/2019
-ms.locfileid: "67537647"
+ms.lasthandoff: 07/07/2019
+ms.locfileid: "67621852"
 ---
 # <a name="troubleshoot-package-execution-in-the-ssis-integration-runtime"></a>Fehlerbehebung bei der Paketausführung in der SSIS-Integrationslaufzeit
 
@@ -57,11 +57,33 @@ Die mögliche Ursache ist, dass der im Paket verwendete ADO.NET-Anbieter nicht i
 
 Ein bekanntes Problem in älteren Versionen von SQL Server Management Studio (SSMS) kann diesen Fehler verursachen. Wenn das Paket eine benutzerdefinierte Komponente enthält (z. B. SSIS Azure Feature Pack oder Partnerkomponenten), die nicht auf dem Computer installiert ist, auf dem SSMS zur Durchführung der Bereitstellung verwendet wird, entfernt SSMS die Komponente und verursacht den Fehler. Aktualisieren Sie [SSMS](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms) auf die neueste Version, die das Problem beheben kann.
 
+### <a name="error-messagessis-executor-exit-code--1073741819"></a>Fehlermeldung: „SSIS Executor exit code: -1073741819.“ (SSIS-Executor-Exitcode: -1073741819.)
+
+* Mögliche Ursache und empfohlene Maßnahme:
+  * Dieser Fehler wird möglicherweise durch die Beschränkung der Excel-Quellen und -Ziele verursacht, wenn mehrere Excel-Quellen oder -Ziele gleichzeitig in mehreren Threads ausgeführt werden. Sie können diese Beschränkung umgehen, indem Sie festlegen, dass die Excel-Komponenten nacheinander ausgeführt werden, oder sie in unterschiedliche Pakete aufteilen und „Task "Paket ausführen"“ anwenden, wobei die Eigenschaft „ExecuteOutOfProcess“ auf „True“ festgelegt ist.
+
 ### <a name="error-message-there-is-not-enough-space-on-the-disk"></a>Fehlermeldung: "Es ist nicht genügend Speicherplatz auf dem Datenträger vorhanden"
 
 Dieser Fehler bedeutet, dass die lokale Festplatte im Laufzeitknoten der SSIS-Integration verbraucht ist. Überprüfen Sie, ob Ihr Paket oder Ihr benutzerdefiniertes Setup viel Festplattenspeicher belegt:
 * Wenn die Festplatte von Ihrem Paket belegt wird, wird sie nach Abschluss der Paketausführung freigegeben.
 * Wenn die Festplatte von Ihrem benutzerdefinierten Setup belegt wird, müssen Sie die SSIS-Integrationslaufzeit stoppen, Ihr Skript ändern und die Integrationslaufzeit erneut starten. Der gesamte Azure-Blob-Container, den Sie für die benutzerdefinierte Einrichtung angegeben haben, wird in den SSIS-Integration-Laufzeitknoten kopiert, also überprüfen Sie, ob sich unter diesem Container unnötiger Inhalt befindet.
+
+### <a name="error-message-failed-to-retrieve-resource-from-master-microsoftsqlserverintegrationservicesscalescaleoutcontractcommonmasterresponsefailedexception-code300004-descriptionload-file--failed"></a>Fehlermeldung: „Fehler beim Abrufen der Ressource aus dem Master. Microsoft.SqlServer.IntegrationServices.Scale.ScaleoutContract.Common.MasterResponseFailedException: Code: 300004. Beschreibung: Das Laden der Datei "***" ist fehlgeschlagen.“
+
+* Mögliche Ursache und empfohlene Maßnahme:
+  * Wenn die SSIS-Aktivität ein Paket aus dem Dateisystem (Paketdatei oder Projektdatei) ausführt und dieser Fehler auftritt, kann mit den Anmeldeinformationen für den Paketzugriff, die Sie in der SSIS-Aktivität angegeben haben, nicht auf die Projekt-, Paket- oder Konfigurationsdatei zugegriffen werden.
+    * Wenn Sie eine Azure-Datei verwenden:
+      * Der Dateipfad muss mit \\\\\<Name des Speicherkontos\>.file.core.windows.net\\\<Pfad zur Dateifreigabe\> beginnen.
+      * Die Domäne muss „Azure“ lauten.
+      * Der Benutzername muss der \<Name des Speicherkontos\> sein.
+      * Das Kennwort muss der \<Speicherzugriffsschlüssel\> sein.
+    * Wenn Sie eine lokale Datei verwenden, überprüfen Sie, ob VNet sowie die Anmeldeinformationen und Berechtigungen für den Paketzugriff ordnungsgemäß konfiguriert sind, damit die Azure-SSIS Integration Runtime auf die lokale Dateifreigabe zugreifen kann.
+
+### <a name="error-message-the-file-name--specified-in-the-connection-was-not-valid"></a>Fehlermeldung: „Der in der Verbindung angegebene Dateiname "..." war ungültig.“
+
+* Mögliche Ursache und empfohlene Maßnahme:
+  * Es wurde ein ungültiger Dateiname angegeben.
+  * Stellen Sie sicher, dass Sie im Verbindungs-Manager anstelle der Kurzform einen vollqualifizierten Domänennamen (FQDN) verwenden.
 
 ### <a name="error-message-cannot-open-file-"></a>Fehlermeldung: "Datei kann nicht geöffnet werden"...""
 

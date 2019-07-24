@@ -2,18 +2,18 @@
 title: Häufig gestellte Fragen zu Azure Kubernetes Service (AKS)
 description: Finden Sie Antworten auf einige der häufig gestellten Fragen zu Azure Kubernetes Service (AKS).
 services: container-service
-author: iainfoulds
+author: mlearned
 manager: jeconnoc
 ms.service: container-service
 ms.topic: article
-ms.date: 07/03/2019
-ms.author: iainfou
-ms.openlocfilehash: d4fa365e1ed055fa8ddeb8fd475e152af84a3b71
-ms.sourcegitcommit: d3b1f89edceb9bff1870f562bc2c2fd52636fc21
+ms.date: 07/08/2019
+ms.author: mlearned
+ms.openlocfilehash: 495f182ed450d0fac69b31ea2996bacc60863fea
+ms.sourcegitcommit: 2e4b99023ecaf2ea3d6d3604da068d04682a8c2d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/04/2019
-ms.locfileid: "67560450"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67672776"
 ---
 # <a name="frequently-asked-questions-about-azure-kubernetes-service-aks"></a>Häufig gestellte Fragen zu Azure Kubernetes Service (AKS)
 
@@ -62,30 +62,28 @@ Für Windows Server-Knoten (derzeit in der Vorschauversion in AKS) werden die ne
 Jede AKS-Bereitstellung umfasst zwei Ressourcengruppen:
 
 1. Die erste Ressourcengruppe wird von Ihnen erstellt. Diese Gruppe enthält nur die Kubernetes-Dienstressource. Der AKS-Ressourcenanbieter erstellt während der Bereitstellung automatisch die zweite Ressourcengruppe. *MC_myResourceGroup_myAKSCluster_eastus* ist ein Beispiel für die zweite Ressourcengruppe. Informationen dazu, wie Sie den Namen dieser zweiten Ressourcengruppe angeben, finden Sie im nächsten Abschnitt.
-1. Die zweite Ressourcengruppe, z. B. *MC_myResourceGroup_myAKSCluster_eastus*, enthält alle Infrastrukturressourcen für den Cluster. Diese Ressourcen umfassen die virtuellen Computer des Kubernetes-Knotens, virtuelle Netzwerke und Speicher. Zweck dieser Ressourcengruppe ist die Vereinfachung der Ressourcenbereinigung.
+1. Die zweite Ressourcengruppe, als *Knotenressourcengruppe* bezeichnet, enthält alle Infrastrukturressourcen für den Cluster. Diese Ressourcen umfassen die virtuellen Computer des Kubernetes-Knotens, virtuelle Netzwerke und Speicher. Standardmäßig lautet der Name der Knotenressourcengruppe z. B. *MC_myResourceGroup_myAKSCluster_eastus*. AKS löscht automatisch die Knotenressource, wenn der Cluster gelöscht wird. Sie sollte daher nur für Ressourcen verwendet werden, die den gleichen Lebenszyklus wie der Cluster haben.
 
-Wenn Sie Ressourcen erstellen, die mit Ihrem AKS-Cluster verwendet werden sollen (z. B. Speicherkonten oder reservierte öffentliche IP-Adressen), platzieren Sie diese in der automatisch generierten Ressourcengruppe.
+## <a name="can-i-provide-my-own-name-for-the-aks-node-resource-group"></a>Kann ich einen eigenen Namen für die AKS-Knotenressourcengruppe angeben?
 
-## <a name="can-i-provide-my-own-name-for-the-aks-infrastructure-resource-group"></a>Kann ich meinen eigenen Namen für die AKS-Infrastrukturressourcengruppe angeben?
-
-Ja. Standardmäßig erstellt der AKS-Ressourcenanbieter während der Bereitstellung automatisch eine sekundäre Ressourcengruppe, z. B. *MC_myResourceGroup_myAKSCluster_eastus*. Sie können Ihren eigenen Namen für diese verwaltete (*MC_* -)Clusterressourcengruppe angeben, um die Unternehmensrichtlinie zu erfüllen.
+Ja. In AKS lautet der Standardname der Ressourcengruppe *MC_clustername_resourcegroupname_location*, Sie können jedoch auch einen eigenen Namen angeben.
 
 Installieren Sie die [aks-preview][aks-preview-cli]-Erweiterungsversion *0.3.2* oder höher für die Azure CLI, um Ihren eigenen Ressourcengruppennamen anzugeben. Verwenden Sie bei der Erstellung eines AKS-Clusters mit dem Befehl [az aks create][az-aks-create] den Parameter *--node-resource-group*, und geben Sie einen Namen für die Ressourcengruppe an. Wenn Sie [eine Azure Resource Manager-Vorlage verwenden][aks-rm-template], um einen AKS-Cluster bereitzustellen, können Sie die *nodeResourceGroup*-Eigenschaft verwenden, um den Namen der Ressourcengruppe zu definieren.
 
 * Die sekundäre Ressourcengruppe wird automatisch vom Azure-Ressourcenanbieter in Ihrem eigenen Abonnement erstellt.
 * Sie können nur einen benutzerdefinierten Namen für die Ressourcengruppe angeben, wenn Sie den Cluster erstellen.
 
-Beachten Sie beim Verwenden der *MC_* -Ressourcengruppe, dass Folgendes nicht möglich ist:
+Beachten Sie beim Verwenden der Knotenressourcengruppe, dass Folgendes nicht möglich ist:
 
-* Angeben einer vorhandenen Ressourcengruppe für die *MC_* -Gruppe
-* Angeben eines anderen Abonnements für die *MC_* -Ressourcengruppe
-* Ändern des Namens der *MC_* -Ressourcengruppe, nachdem der Cluster erstellt wurde
-* Angeben von Namen für die verwalteten Ressourcen innerhalb der *MC_* -Ressourcengruppe
-* Ändern oder Löschen von Tags von verwalteten Ressourcen innerhalb der *MC_* -Ressourcengruppe (Weitere Informationen finden Sie im nächsten Abschnitt.)
+* Angeben einer vorhandenen Ressourcengruppe als Knotenressourcengruppe
+* Angeben eines anderen Abonnements für die Knotenressourcengruppe
+* Ändern des Namens der Knotenressourcengruppe, nachdem der Cluster erstellt wurde
+* Angeben von Namen für die verwalteten Ressourcen innerhalb der Knotenressourcengruppe
+* Ändern oder Löschen von Tags verwalteter Ressourcen innerhalb der Knotenressourcengruppe (Weitere Informationen finden Sie im nächsten Abschnitt.)
 
-## <a name="can-i-modify-tags-and-other-properties-of-the-aks-resources-in-the-mc-resource-group"></a>Kann ich Tags und andere Eigenschaften der AKS-Ressourcen in der „MC_“-Ressourcengruppe ändern?
+## <a name="can-i-modify-tags-and-other-properties-of-the-aks-resources-in-the-node-resource-group"></a>Kann ich Tags und andere Eigenschaften der AKS-Ressourcen in der Knotenressourcengruppe ändern?
 
-Wenn Sie die in Azure erstellten Tags und anderen Ressourceneigenschaften in der *MC_* -Ressourcengruppe ändern oder löschen, kann dies zu unerwarteten Ergebnissen wie Skalierungs- und Aktualisierungsfehlern führen. In AKS können Sie benutzerdefinierte Tags erstellen und ändern. Sie können benutzerdefinierte Tags erstellen oder ändern, um beispielsweise eine Geschäftseinheit oder eine Kostenstelle zuzuweisen. Durch Ändern der Ressourcen unter der *MC_* -Gruppe im AKS-Cluster wird das Servicelevelziel (SLO) unterbrochen. Weitere Informationen finden Sie unter [Bietet AKS eine Vereinbarung zum Servicelevel?](#does-aks-offer-a-service-level-agreement)
+Wenn Sie die in Azure erstellten Tags und andere Ressourceneigenschaften in der Knotenressourcengruppe ändern oder löschen, kann dies zu unerwarteten Ergebnissen wie Skalierungs- und Aktualisierungsfehlern führen. In AKS können Sie benutzerdefinierte Tags erstellen und ändern. Sie können benutzerdefinierte Tags erstellen oder ändern, um beispielsweise eine Geschäftseinheit oder eine Kostenstelle zuzuweisen. Durch Ändern der Ressourcen unter der Knotenressourcengruppe im AKS-Cluster wird das Servicelevelziel (SLO) unterbrochen. Weitere Informationen finden Sie unter [Bietet AKS eine Vereinbarung zum Servicelevel?](#does-aks-offer-a-service-level-agreement)
 
 ## <a name="what-kubernetes-admission-controllers-does-aks-support-can-admission-controllers-be-added-or-removed"></a>Welche Kubernetes-Zugangssteuerungen werden von AKS unterstützt? Können Zulassungscontroller hinzugefügt oder entfernt werden?
 

@@ -13,13 +13,13 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 7/02/2019
-ms.author: monhaber
-ms.openlocfilehash: 5487b4f49f5dbf7b968cd45d40555c69b54c329a
-ms.sourcegitcommit: 1e347ed89854dca2a6180106228bfafadc07c6e5
+ms.author: v-mohabe
+ms.openlocfilehash: f23865fc0a1943a5157e4ff8eb8de10a71ef0883
+ms.sourcegitcommit: a8b638322d494739f7463db4f0ea465496c689c6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67571284"
+ms.lasthandoff: 07/17/2019
+ms.locfileid: "68295789"
 ---
 # <a name="threat-detection-for-vms--servers-in-azure-security-center"></a>Bedrohungserkennung für virtuelle Computer und Server in Azure Security Center
 
@@ -51,7 +51,7 @@ Sie kann jedoch mithilfe einer Arbeitsspeicheranalyse erkannt werden. Durch die 
 
 > [!div class="mx-tableFixed"]
 
-|Warnung|Beschreibung|
+|Warnung|BESCHREIBUNG|
 |---|---|
 |**Code injection discovered** (Codeinjektion erkannt)|Codeinjektion ist das Einfügen von ausführbaren Modulen in aktive Prozesse oder Threads. Diese Technik wird von Schadsoftware genutzt, um auf Daten zuzugreifen und sich selbst zu verbergen, um nicht entdeckt und entfernt zu werden. <br/>Die Warnung weist darauf hin, dass ein injiziertes Modul im Absturzabbild vorhanden ist. Zur Unterscheidung zwischen schädlichen und nicht schädlichen injizierten Modulen überprüft Azure Security Center, ob das injizierte Modul einem verdächtigen Verhaltensprofil entspricht.|
 |**Suspicious code segment discovered** (Verdächtiges Codesegment erkannt)|Deutet darauf hin, dass ein Codesegment mit nicht standardmäßigen Methoden zugeordnet wurde – etwa durch reflektierende Injektion oder Prozessaushöhlung. Diese Warnung gibt zusätzliche Merkmale des Codesegments an, die verarbeitet wurden, um Kontext im Hinblick auf die Funktionen und das Verhalten des gemeldeten Codesegments bereitzustellen.|
@@ -72,7 +72,7 @@ Sie sucht nach Hinweisen auf Missbrauch, Codeinjektion oder die Ausführung sch�
 
 > [!div class="mx-tableFixed"]
 
-|Warnung|Beschreibung|
+|Warnung|BESCHREIBUNG|
 |---|---|
 |**Fileless attack technique detected** (Dateilose Angriffstechnik erkannt)|Der Arbeitsspeicher des folgenden Prozesses enthält ein Toolkit für einen dateilosen Angriff: Meterpreter. Toolkits für dateilose Angriffe sind in der Regel nicht im Dateisystem vorhanden und somit für herkömmliche Virenschutzlösungen nur schwer zu erkennen.|
 
@@ -97,7 +97,7 @@ Im Anschluss folgen einige Beispiele für Analysen, um die Abdeckung verschieden
 
 > [!div class="mx-tableFixed"]
 
-|Warnung|Beschreibung|
+|Warnung|BESCHREIBUNG|
 |---|---|
 |**Process seen accessing the SSH authorized keys file in an unusual way** (Ein Prozess hat auf ungewöhnliche Weise auf eine Datei mit autorisierten SSH-Schlüsseln zugegriffen.)|Auf eine Datei mit autorisierten SSH-Schlüsseln wurde mit einer Methode zugegriffen, die so ähnlich auch in bekannten Schadsoftwareszenarien zum Einsatz kommt. Dieser Zugriff deutet möglicherweise darauf hin, dass ein Angreifer versucht, sich dauerhaft Zugang zu einem Computer zu verschaffen.|
 |**Detected Persistence Attempt** (Persistenzversuch erkannt)|Bei der Hostdatenanalyse wurde festgestellt, dass ein Startskript für den Einzelbenutzermodus installiert wurde. <br/>Da legitime Prozesse nur selten in diesem Modus ausgeführt werden müssen, kann dies darauf hindeuten, dass ein Angreifer jeder Ausführungsebene einen schädlichen Prozess hinzugefügt hat, um Persistenz zu erreichen.|

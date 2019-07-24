@@ -1,7 +1,7 @@
 ---
 title: 'Python Schnellstart: Erstellen, Laden und Abfragen von Indizes mit Hilfe von Azure Search REST APIs - Azure Search'
 description: Erklärt, wie Sie einen Index erstellen, Daten laden und Abfragen mit Python, Jupyter Notebooks und der Azure Search REST API ausführen.
-ms.date: 06/20/2019
+ms.date: 07/09/2019
 author: heidisteen
 manager: cgronlun
 ms.author: heidist
@@ -10,12 +10,12 @@ ms.service: search
 ms.devlang: rest-api
 ms.topic: conceptual
 ms.custom: seodec2018
-ms.openlocfilehash: 613879abd4c5c09450b690b793500a99428cff29
-ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
+ms.openlocfilehash: 39ff269c582a2d981d8fb30e09a550813a262eca
+ms.sourcegitcommit: 66237bcd9b08359a6cce8d671f846b0c93ee6a82
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/01/2019
-ms.locfileid: "67485470"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67798736"
 ---
 # <a name="quickstart-create-an-azure-search-index-in-python-using-jupyter-notebooks"></a>Schnellstart: Erstellen eines Azure Search-Index mithilfe von Python-Jupyter Notebooks
 > [!div class="op_single_selector"]
@@ -295,26 +295,13 @@ In diesem Schritt wird beschrieben, wie Sie einen Index mit der [REST-API zum Du
    searchstring = '&search=pool&$orderby=Address/City&$select=HotelId, HotelName, Address/City, Address/StateProvince, Tags'
    ```
 
-## <a name="clean-up"></a>Bereinigen 
+## <a name="clean-up"></a>Bereinigen
 
-Es ist ratsam, den Index zu löschen, wenn Sie ihn nicht mehr benötigen. Für einen kostenlosen Dienst gilt eine Beschränkung auf drei Indizes. Sie sollten alle Indizes löschen, die Sie nicht aktiv verwenden, um Platz für andere Tutorials zu schaffen.
+Wenn Sie in Ihrem eigenen Abonnement arbeiten, sollten Sie sich am Ende eines Projekts überlegen, ob Sie die erstellten Ressourcen noch benötigen. Ressourcen, die weiterhin ausgeführt werden, können Sie Geld kosten. Sie können Ressourcen entweder einzeln löschen oder aber die Ressourcengruppe löschen, um den gesamten Ressourcensatz zu löschen.
 
-Der einfachste Weg, Objekte zu löschen, ist über das Portal, aber da es sich um einen Python-Schnellstart handelt, liefert die folgende Syntax das gleiche Ergebnis:
+Ressourcen können im Portal über den Link **Alle Ressourcen** oder **Ressourcengruppen** im linken Navigationsbereich gesucht und verwaltet werden.
 
-   ```python
-  url = endpoint + "indexes/hotels-quickstart" + api_version
-  response  = requests.delete(url, headers=headers)
-   ```
-
-Sie können das Löschen von Indizes verifizieren, indem Sie eine Liste der vorhandenen Indizes anfordern. Wenn der Hotel-Schnellstart weg ist, dann wissen Sie, dass Ihre Anfrage erfolgreich war.
-
-```python
-url = endpoint + "indexes" + api_version + "&$select=name"
-
-response  = requests.get(url, headers=headers)
-index_list = response.json()
-pprint(index_list)
-```
+Denken Sie bei Verwendung eines kostenlosen Diensts an die Beschränkung auf maximal drei Indizes, Indexer und Datenquellen. Sie können einzelne Elemente über das Portal löschen, um unterhalb des Limits zu bleiben. 
 
 ## <a name="next-steps"></a>Nächste Schritte
 

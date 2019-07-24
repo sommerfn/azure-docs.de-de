@@ -4,7 +4,7 @@ description: Einrichten von Pacemaker unter SUSE Linux Enterprise Server in Azur
 services: virtual-machines-windows,virtual-network,storage
 documentationcenter: saponazure
 author: mssedusch
-manager: jeconnoc
+manager: gwallace
 editor: ''
 tags: azure-resource-manager
 keywords: ''
@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 08/16/2018
 ms.author: sedusch
-ms.openlocfilehash: 9a23f13947c4c7a77460ff389861e1dcc1de3c7f
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 46044c061cca24714d1a951e28cf01ca29f14a7e
+ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65992123"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67707208"
 ---
 # <a name="setting-up-pacemaker-on-suse-linux-enterprise-server-in-azure"></a>Einrichten von Pacemaker unter SUSE Linux Enterprise Server in Azure
 
@@ -448,7 +448,7 @@ Die folgenden Elemente sind mit einem der folgenden Präfixe versehen: **[A]** �
    <pre><code>sudo vi /etc/corosync/corosync.conf
    </code></pre>
 
-   Fügen Sie den folgenden fett formatierten Inhalt in die Datei ein, falls die Werte dort nicht vorhanden sind oder sich von den angegebenen Werten unterscheiden. Stellen Sie sicher, dass Sie das Token in 30000 ändern, um die Wartung mit Speicherbeibehaltung zu ermöglichen. Weitere Informationen finden Sie in [diesem Artikel für Linux][virtual-machines-linux-maintenance] bzw. [diesem Artikel für Windows][virtual-machines-windows-maintenance]. Entfernen Sie außerdem unbedingt den Parameter „mcastaddr“.
+   Fügen Sie den folgenden fett formatierten Inhalt in die Datei ein, falls die Werte dort nicht vorhanden sind oder sich von den angegebenen Werten unterscheiden. Stellen Sie sicher, dass Sie das Token in 30000 ändern, um die Wartung mit Speicherbeibehaltung zu ermöglichen. Weitere Informationen finden Sie in [diesem Artikel für Linux][virtual-machines-linux-maintenance] bzw. Windows.or [Windows][virtual-machines-windows-maintenance] Entfernen Sie außerdem unbedingt den Parameter „mcastaddr“.
 
    <pre><code>[...]
      <b>token:          30000
@@ -608,9 +608,9 @@ sudo crm configure property maintenance-mode=false
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* [SAP NetWeaver auf virtuellen Azure-Computern – Planungs- und Implementierungshandbuch][planning-guide]
-* [Bereitstellung von Azure Virtual Machines für SAP][deployment-guide]
-* [SAP NetWeaver auf virtuellen Azure-Computern – DBMS-Bereitstellungshandbuch][dbms-guide]
+* [Azure Virtual Machines – Planung und Implementierung für SAP][planning-guide]
+* [Azure Virtual Machines – Bereitstellung für SAP][deployment-guide]
+* [Azure Virtual Machines – DBMS-Bereitstellung für SAP][dbms-guide]
 * [Hochverfügbarkeit für NFS auf Azure-VMs unter SUSE Linux Enterprise Server][sles-nfs-guide]
 * [Hochverfügbarkeit für SAP NetWeaver auf Azure-VMs unter SUSE Linux Enterprise Server für SAP-Anwendungen][sles-guide]
 * Informationen zur Erzielung von Hochverfügbarkeit und zur Planung der Notfallwiederherstellung für SAP HANA auf Azure-VMs finden Sie unter [Hochverfügbarkeit für SAP HANA auf Azure Virtual Machines (VMs)][sap-hana-ha].

@@ -9,12 +9,12 @@ ms.date: 05/21/2019
 ms.author: mhopkins
 ms.reviewer: yzheng
 ms.subservice: common
-ms.openlocfilehash: 50eb62b20be66337c819372fa3d97eae4d7214b8
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: 43a673621aa3c114f99479a6da97153dae44990d
+ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67435741"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67696093"
 ---
 # <a name="manage-the-azure-blob-storage-lifecycle"></a>Verwalten des Azure Blob Storage-Lebenszyklus
 
@@ -31,7 +31,7 @@ Stellen Sie sich ein Szenario vor, bei dem in den frühen Phasen des Lebenszyklu
 
 ## <a name="storage-account-support"></a>Speicherkontounterstützung
 
-Die Richtlinien zur Lebenszyklusverwaltung sind sowohl für GPv2-Konten (General Purpose v2) als auch für Blob Storage-Konten verfügbar. Für ein vorhandenes GPv1-Konto (Universell V1) kann in einem einfachen Prozess im Azure-Portal ein Upgrade auf ein GPv2-Konto erfolgen. Weitere Informationen zu Speicherkonten finden Sie unter [Azure-Speicherkonto – Übersicht](../common/storage-account-overview.md).  
+Die Richtlinien zur Lebenszyklusverwaltung sind für GPv2-Konten (General Purpose v2), Blob Storage-Konten und Premium-Blockblob-Speicherkonten verfügbar. Für ein vorhandenes GPv1-Konto (Universell V1) kann in einem einfachen Prozess im Azure-Portal ein Upgrade auf ein GPv2-Konto erfolgen. Weitere Informationen zu Speicherkonten finden Sie unter [Azure-Speicherkonto – Übersicht](../common/storage-account-overview.md).  
 
 ## <a name="pricing"></a>Preise
 
@@ -39,7 +39,7 @@ Die Funktion zur Lebenszyklusverwaltung ist kostenlos. Kunden werden die gewöhn
 
 ## <a name="regional-availability"></a>Regionale Verfügbarkeit
 
-Die Funktion zur Lebenszyklusverwaltung ist in allen globalen Azure-Regionen verfügbar.
+Die Funktion zur Lebenszyklusverwaltung ist in allen globalen Azure- und Azure Government-Regionen verfügbar.
 
 ## <a name="add-or-remove-a-policy"></a>Hinzufügen oder Entfernen einer Richtlinie
 

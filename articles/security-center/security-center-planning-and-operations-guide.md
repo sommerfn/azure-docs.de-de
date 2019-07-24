@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/11/2019
 ms.author: v-mohabe
-ms.openlocfilehash: 04cfe489e9eea53bf58dd64e0eac3e5a95033bcc
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: ca96ba4c6b0de8ad39866a0783e7091fb4755164
+ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65966846"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67706239"
 ---
 # <a name="azure-security-center-planning-and-operations-guide"></a>Planungs- und Betriebshandbuch für Azure Security Center
 Dieses Handbuch ist für IT-Experten, IT-Architekten, Informationssicherheitsanalysten und Cloudadministratoren konzipiert, deren Organisation Azure Security Center verwenden möchte.
@@ -87,21 +87,21 @@ Für die Personae im obigen Diagramm wären die folgenden RBAC-Einstellungen erf
 
 **Jeff (Workloadbesitzer)**
 
-* Ressourcengruppenbesitzer/-mitarbeiter
+* Ressourcengruppenbesitzer/-mitwirkender
 
 **David (IT-Sicherheit)**
 
-* Abonnementbesitzer/-mitarbeiter oder Sicherheitsadministrator
+* Abonnementbesitzer/-mitwirkender oder Sicherheitsadministrator
 
 **Judy (Security Operations)**
 
 * Abonnementleser oder Sicherheitsleseberechtigter zum Anzeigen von Warnungen
-* Abonnementbesitzer/-mitarbeiter oder Sicherheitsadministrator zum Verwerfen von Warnungen
+* Abonnementbesitzer/-mitwirkender oder Sicherheitsadministrator zum Verwerfen von Warnungen
 
 **Sam (Security Analyst)**
 
 * Abonnementleser zum Anzeigen von Warnungen
-* Abonnementbesitzer/-mitarbeiter zum Verwerfen von Warnungen
+* Abonnementbesitzer/-mitwirkender zum Verwerfen von Warnungen
 * Möglicherweise ist ein Zugriff auf den Arbeitsbereich erforderlich.
 
 Einige weitere wichtige Informationen, die es zu berücksichtigen gilt:

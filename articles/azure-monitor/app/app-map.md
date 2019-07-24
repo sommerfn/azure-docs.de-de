@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 03/15/2019
 ms.reviewer: sdash
 ms.author: mbullwin
-ms.openlocfilehash: 70d1f54aed5e83801b1d1e249d7a412dd6d9a49a
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: d69825b947af69a86525a996ed8709472846d9fe
+ms.sourcegitcommit: 66237bcd9b08359a6cce8d671f846b0c93ee6a82
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65964036"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67795679"
 ---
 # <a name="application-map-triage-distributed-applications"></a>Anwendungsübersicht: Selektieren verteilter Anwendungen
 
@@ -119,7 +119,7 @@ namespace CustomInitializer.Telemetry
 }
 ```
 
-**Laden Sie den Initialisierer in die aktive TelemetryConfiguration.**
+**ASP.NET-Apps: Laden Sie den Initialisierer in die aktive TelemetryConfiguration.**
 
 In „ApplicationInsights.config“:
 
@@ -132,9 +132,6 @@ In „ApplicationInsights.config“:
       </TelemetryInitializers>
     </ApplicationInsights>
 ```
-
-> [!NOTE]
-> Das Hinzufügen eines Initialisieres mit `ApplicationInsights.config` ist für ASP.NET Core-Anwendungen nicht gültig.
 
 Alternativ können Sie für ASP.NET-Web-Apps den Initialisierer im Code instanziieren (beispielsweise in „Global.aspx.cs“):
 
@@ -149,15 +146,20 @@ Alternativ können Sie für ASP.NET-Web-Apps den Initialisierer im Code instanzi
     }
 ```
 
+> [!NOTE]
+> Das Hinzufügen eines Initialisieres mit `ApplicationInsights.config` oder `TelemetryConfiguration.Active` ist für ASP.NET Core-Anwendungen nicht zulässig. 
+
+**ASP.NET Core-Apps: Laden Sie den Initialisierer in die aktive TelemetryConfiguration.**
+
 Zum Hinzufügen eines neuen `TelemetryInitializer` für [ASP.NET Core](asp-net-core.md#adding-telemetryinitializers)-Anwendungen wird dieser wie unten gezeigt dem Abhängigkeitsinjektionscontainer hinzugefügt. Dies erfolgt in der `ConfigureServices`-Methode Ihrer `Startup.cs`-Klasse.
 
 ```csharp
  using Microsoft.ApplicationInsights.Extensibility;
  using CustomInitializer.Telemetry;
  public void ConfigureServices(IServiceCollection services)
-    {
-        services.AddSingleton<ITelemetryInitializer, MyCustomTelemetryInitializer>();
-    }
+{
+    services.AddSingleton<ITelemetryInitializer, MyTelemetryInitializer>();
+}
 ```
 
 ### <a name="nodejs"></a>Node.js

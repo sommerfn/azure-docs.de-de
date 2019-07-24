@@ -13,13 +13,13 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 7/02/2019
-ms.author: monhaber
-ms.openlocfilehash: 8c1733877834f82d9ee2524cf8bf54f532e7d9c4
-ms.sourcegitcommit: 1e347ed89854dca2a6180106228bfafadc07c6e5
+ms.author: v-mohabe
+ms.openlocfilehash: f795822d76def4a6695a4746fba7e8566041cb2b
+ms.sourcegitcommit: a8b638322d494739f7463db4f0ea465496c689c6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67571328"
+ms.lasthandoff: 07/17/2019
+ms.locfileid: "68295549"
 ---
 # <a name="threat-detection-for-azure-service-layer-in-azure-security-center"></a>Bedrohungserkennung für die Azure-Dienstebene in Azure Security Center
 
@@ -37,7 +37,7 @@ Die Netzwerkebenenanalysen von Security Center basieren auf exemplarischen [IPFI
 
 > [!div class="mx-tableFixed"]
 
-|Warnung|Beschreibung|
+|Warnung|BESCHREIBUNG|
 |---|---|
 |**Verdächtige ausgehende RDP-Netzwerkaktivität**|Bei der Stichprobenanalyse des Netzwerkdatenverkehrs wurde eine ungewöhnliche ausgehende RDP-Kommunikation (Remote Desktop Protocol) erkannt, die von einer Ressource in Ihrer Bereitstellung stammt. Diese Aktivität gilt als anormal für diese Umgebung und kann darauf hindeuten, dass Ihre Ressource kompromittiert wurde und nun für einen Brute-Force-Angriff auf den externen RDP-Endpunkt verwendet wird. Diese Art von Aktivität kann dazu führen, dass Ihre IP-Adresse von externen Entitäten als schädlich gekennzeichnet wird.|
 |**Verdächtige ausgehende RDP-Netzwerkaktivität für mehrere Ziele**|Bei der Stichprobenanalyse des Netzwerkdatenverkehrs wurde eine ungewöhnliche ausgehende RDP-Kommunikation (Remote Desktop Protocol) mit mehreren Zielen erkannt, die von einer Ressource in Ihrer Bereitstellung stammt. Diese Aktivität gilt als anormal für diese Umgebung und kann darauf hindeuten, dass Ihre Ressource kompromittiert wurde und nun für einen Brute-Force-Angriff auf externe RDP-Endpunkte verwendet wird. Diese Art von Aktivität kann dazu führen, dass Ihre IP-Adresse von externen Entitäten als schädlich gekennzeichnet wird.|
@@ -58,7 +58,7 @@ Security Center nutzt Azure Resource Manager-Ereignisse (also gewissermaßen d
 
 > [!div class="mx-tableFixed"]
 
-|Warnung|Beschreibung|
+|Warnung|BESCHREIBUNG|
 |---|---|
 |**MicroBurst toolkit run** (MicroBurst-Toolkitausführung)|In Ihrer Umgebung wurde die Ausführung eines bekannten Reconnaissance-Toolkits für Cloudumgebungen erkannt. Das Tool „MicroBurst“ (siehe https://github.com/NetSPI/MicroBurst) kann von einem Angreifer (oder Penetrationtester) verwendet werden, um Ihre Abonnementressourcen zu erfassen, unsichere Konfigurationen ausfindig zu machen und vertrauliche Informationen offenzulegen.|
 |**Azurite toolkit run** (Azurite-Toolkitausführung)|In Ihrer Umgebung wurde die Ausführung eines bekannten Reconnaissance-Toolkits für Cloudumgebungen erkannt. Das Tool „Azurite“ (siehe https://github.com/mwrlabs/Azurite) kann von einem Angreifer (oder Penetrationtester) verwendet werden, um Ihre Abonnementressourcen zu erfassen und unsichere Konfigurationen ausfindig zu machen.|

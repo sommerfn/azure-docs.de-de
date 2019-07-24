@@ -5,19 +5,19 @@ services: expressroute
 author: jaredr80
 ms.service: expressroute
 ms.topic: conceptual
-ms.date: 02/25/2019
+ms.date: 07/06/2019
 ms.author: jaredro
 ms.custom: seodec18
-ms.openlocfilehash: fb9dc5116ba23d57c7f2fe543e734759e8bbcc7b
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: d7add3d509427d72e23d61d1777db7941c7550a4
+ms.sourcegitcommit: cf438e4b4e351b64fd0320bf17cc02489e61406a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60367631"
+ms.lasthandoff: 07/08/2019
+ms.locfileid: "67657264"
 ---
 # <a name="about-expressroute-direct"></a>Informationen zu ExpressRoute Direct
 
-ExpressRoute Direct bietet Ihnen die Möglichkeit, sich direkt mit dem globalen Netzwerk von Microsoft zu verbinden, und zwar an strategisch über die ganze Welt verteilten Peeringstandorten. ExpressRoute Direct bietet duale Konnektivität mit 100 GBit/s, die eine Aktiv/Aktiv-Konnektivität nach Maß unterstützt.
+ExpressRoute Direct bietet Ihnen die Möglichkeit, sich direkt mit dem globalen Netzwerk von Microsoft zu verbinden, und zwar an strategisch über die ganze Welt verteilten Peeringstandorten. ExpressRoute Direct bietet duale Konnektivität mit 100 oder 10GBit/s, die eine Aktiv/Aktiv-Konnektivität nach Maß unterstützt.
 
 ExpressRoute Direct bietet u.a. folgende Leistungsmerkmale:
 
@@ -38,9 +38,9 @@ Bevor Sie ExpressRoute Direct nutzen können, müssen Sie zunächst Ihr Abonneme
 
 | **ExpressRoute mit Dienstanbieter** | **ExpressRoute Direct** | 
 | --- | --- |
-| Verwendung von Dienstanbietern, um schnelles Onboarding und schnelle Konnektivität mit der vorhandenen Infrastruktur zu ermöglichen | Erfordert eine Infrastruktur mit 100 GBit/s und die vollständige Verwaltung aller Ebenen
+| Verwendung von Dienstanbietern, um schnelles Onboarding und schnelle Konnektivität mit der vorhandenen Infrastruktur zu ermöglichen | Erfordert eine Infrastruktur mit 100GBit/s bzw. 10GBit/s und die vollständige Verwaltung aller Ebenen
 | Integration mit Hunderten von Dienstanbietern, einschließlich Ethernet und MPLS | Direkte/Dedizierte Kapazität für regulierte Branchen und Erfassung sehr umfangreicher Datenmengen |
-| Leitungs-SKUs zwischen 50 MBit/s und 10 GBit/s | Kunden können eine Kombination der folgenden Verbindungs-SKUs auswählen: 5 Gbit/s, 10 Gbit/s, 40 Gbit/s, 100 Gbit/s – beschränkt auf maximal 200 Gbit/s
+| Leitungs-SKUs zwischen 50 MBit/s und 10 GBit/s | Kunden können eine Kombination der folgenden Leitungs-SKUs auf 100-GBit/s-ExpressRoute Direct auswählen: <ul><li>5 GBit/s</li><li>10 GBit/s</li><li>40 GBit/s</li><li>100GBit/s</li></ul> Kunden können eine Kombination der folgenden Leitungs-SKUs auf 10-GBit/s-ExpressRoute Direct auswählen:<ul><li>1 GBit/s</li><li>2 GBit/s</li><li>5 GBit/s</li><li>10 GBit/s</li></ul>
 | Für Einzelmandanten optimiert | Für Einzelmandanten/Cloud-Dienstanbieter /mehrere Unternehmensbereiche optimiert
 
 ## <a name="expressroute-direct-circuits"></a>ExpressRoute Direct-Leitungen
@@ -53,7 +53,12 @@ Die Funktionalität ist in den meisten Szenarien vergleichbar mit der von Leitun
 
 ## <a name="circuit-skus"></a>Leitungs-SKUs
 
-ExpressRoute Direct unterstützt Szenarien zur Erfassung umfangreicher Datenmengen in Azure Storage und anderen Big Data-Diensten. ExpressRoute-Leitungen für ExpressRoute Direct unterstützen nun auch die Leitungs-SKUs **40 GBit/s** und **100 GBit/s**. Die physischen Portpaare sind nur **100 GBit/s** und können mehrere virtuelle Verbindungen mit Bandbreiten von 5 GBit/s, 10 GBit/s, 40 GBit/s, 100 Gbps aufweisen (bis zu 200 GBit/s in beliebiger Kombination). 
+ExpressRoute Direct unterstützt Szenarien zur Erfassung umfangreicher Datenmengen in Azure Storage und anderen Big Data-Diensten. ExpressRoute-Leitungen auf 100-GBit/s-ExpressRoute Direct unterstützen nun auch die Leitungs-SKUs **40GBit/s** und **100GBit/s**. Die physischen Portpaare unterstützen nur **100 oder 10Gbit/s** und können über mehrere virtuelle Leitungen verfügen. Leitungsgrößen:
+
+| **100-GBit/s-ExpressRoute Direct** | **10-GBit/s-ExpressRoute Direct** | 
+| --- | --- |
+| **Abonnierte Bandbreite**: 200GBit/s | **Abonnierte Bandbreite**: 20GBit/s |
+| <ul><li>5 GBit/s</li><li>10 GBit/s</li><li>40 GBit/s</li><li>100GBit/s</li></ul> | <ul><li>1 GBit/s</li><li>2 GBit/s</li><li>5 GBit/s</li><li>10 GBit/s</li></ul>
 
 ## <a name="vlan-tagging"></a>VLAN-Kennzeichnung
 

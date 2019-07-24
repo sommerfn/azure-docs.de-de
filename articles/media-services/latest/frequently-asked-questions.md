@@ -9,20 +9,20 @@ editor: ''
 ms.service: media-services
 ms.workload: ''
 ms.topic: article
-ms.date: 04/24/2019
+ms.date: 06/21/2019
 ms.author: juliako
-ms.openlocfilehash: 98e8c0ccd150776341e644f7565696e8fbd63e99
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: b060e2c8a7353dd8145ced8c6e89d9b666a4212c
+ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65556266"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67703897"
 ---
-# <a name="azure-media-services-v3-frequently-asked-questions"></a>Häufig gestellte Fragen zu Azure Media Services v3
+# <a name="media-services-v3-frequently-asked-questions"></a>Häufig gestellte Fragen zu Media Services v3
 
 Dieser Artikel enthält Antworten auf häufig gestellte Fragen zu Azure Media Services (AMS) v3.
 
-## <a name="v3-apis"></a>v3-APIs
+## <a name="general"></a>Allgemein
 
 ### <a name="what-azure-roles-can-perform-actions-on-azure-media-services-resources"></a>Welche Azure-Rollen können Aktionen mit den Ressourcen von Azure Media Services durchführen? 
 
@@ -45,6 +45,10 @@ Bei Verwendung der Paginierung sollten Sie immer den Link „Weiter“ verwenden
 ### <a name="what-features-are-not-yet-available-in-azure-media-services-v3"></a>Welche Features sind noch nicht in Azure Media Services v3 verfügbar?
 
 Details finden Sie unter [Featurelücken in Bezug auf v2-APIs](migrate-from-v2-to-v3.md#feature-gaps-with-respect-to-v2-apis).
+
+### <a name="what-is-the-process-of-moving-a-media-services-account-between-subscriptions"></a>Wie wird ein Media Services-Konto zwischen Abonnements verschoben?  
+
+Informationen dazu finden Sie unter [Verschieben eines Media Services-Kontos zwischen Abonnements](media-services-account-concept.md).
 
 ## <a name="live-streaming"></a>Livestreaming 
 

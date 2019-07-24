@@ -13,13 +13,13 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 7/02/2019
-ms.author: monhaber
-ms.openlocfilehash: 805c770f1a7e9bb4e0619b27ac937a2451421dc6
-ms.sourcegitcommit: 1e347ed89854dca2a6180106228bfafadc07c6e5
+ms.author: v-mohabe
+ms.openlocfilehash: 64a636cc4452de1ef4a2d0e94629e7d8e3a5878d
+ms.sourcegitcommit: a8b638322d494739f7463db4f0ea465496c689c6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67571332"
+ms.lasthandoff: 07/17/2019
+ms.locfileid: "68295738"
 ---
 # <a name="security-center-integration-with-azure-security-products-in-asc"></a>Security Center-Integration mit Azure-Sicherheitsprodukten in ASC
 
@@ -46,7 +46,7 @@ Die folgenden Arten von Angriffen können mit DDoS Protection Standard abgewehrt
 
 > [!div class="mx-tableFixed"]
 
-|Warnung|Beschreibung|
+|Warnung|BESCHREIBUNG|
 |---|---|
 |**Volumetric attack detected** (Volumetrischen Angriff erkannt)|Ziel dieses Angriffs ist die Überflutung der Netzwerkebene mit einer beträchtlichen Menge scheinbar legitimen Datenverkehrs. Dazu zählen UDP-Überflutungen, Verstärkungsüberflutungen und andere Überflutungen mit gefälschten Paketen. DDoS Protection Standard wehrt diese bis zu mehreren Gigabytes großen Angriffe ab, indem sie mithilfe des weltweiten Netzwerks von Azure automatisch absorbiert und bereinigt werden.|
 |**Protocol attack detected** (Protokollangriff erkannt)|Diese Angriffe machen den Zugriff auf ein Ziel unmöglich, indem sie eine Schwachstelle in den Schichten 3 und 4 des Protokollstapels ausnutzen. Dazu gehören SYN-Flutangriffe, Reflektionsangriffe und andere Protokollangriffe. DDoS Protection Standard wehrt diese Angriffe ab und unterscheidet dabei zwischen schädlichem und berechtigtem Datenverkehr. Nach Interaktion mit dem Client wird der schädliche Datenverkehr gesperrt.|

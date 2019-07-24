@@ -5,21 +5,21 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
-ms.date: 02/01/2019
+ms.date: 07/09/2019
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: librown
 ms.custom: seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bb10378d890c2b7156b6764321e177a22ffc538a
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 3125de0d1fd784b30c000bb287b457397c0fbebb
+ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66472758"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67703021"
 ---
-# <a name="password-less-phone-sign-in-with-the-microsoft-authenticator-app-public-preview"></a>Telefonanmeldung ohne Kennwort mit der Microsoft Authenticator-App (Public Preview)
+# <a name="passwordless-phone-sign-in-with-the-microsoft-authenticator-app-public-preview"></a>Anmeldung per Smartphone ohne Kennwort mit der Microsoft Authenticator-App (Public Preview)
 
 Mit der Microsoft Authenticator-App können sich Benutzer bei jedem beliebigen Azure AD-Konto anmelden, ohne ein Kennwort zu verwenden. Ähnlich wie die Technologie von [Windows Hello for Business](/windows/security/identity-protection/hello-for-business/hello-identity-verification) nutzt Microsoft Authenticator die schlüsselbasierte Authentifizierung, um die Verwendung von Benutzeranmeldeinformationen zu ermöglichen, die an ein Gerät gebunden sind und auf biometrischen Daten oder einer PIN beruhen.
 
@@ -39,24 +39,7 @@ Bei der Public Preview-Version muss ein Administrator zunächst mithilfe von Pow
 
 ### <a name="steps-to-enable"></a>Schritte zum Aktivieren
 
-1. Stellen Sie sicher, dass bei Ihnen die neueste Public Preview-Version des Azure Active Directory V2 PowerShell-Moduls installiert ist. Dazu empfiehlt es sich unter Umständen, das Modul zu deinstallieren und anschließend erneut zu installieren. Führen Sie hierzu die folgenden Befehle aus:
-
-    ```powershell
-    Uninstall-Module -Name AzureADPreview
-    Install-Module -Name AzureADPreview
-    ```
-
-2. Führen Sie die Authentifizierung für den Azure AD-Mandanten durch, um das Azure AD V2 PowerShell-Modul zu verwenden. Beim verwendeten Konto muss es sich um einen Sicherheitsadministrator oder globalen Administrator handeln.
-
-    ```powershell
-    Connect-AzureAD
-    ```
-
-3. Erstellen Sie die Richtlinie für die Authenticator-Anmeldung:
-
-    ```powershell
-    New-AzureADPolicy -Type AuthenticatorAppSignInPolicy -Definition '{"AuthenticatorAppSignInPolicy":{"Enabled":true}}' -isOrganizationDefault $true -DisplayName AuthenticatorAppSignIn
-    ```
+Führen Sie die Schritte im Artikel [Aktivieren neuer kennwortloser Authentifizierungsmethoden](howto-authentication-passwordless-enable.md#enable-new-passwordless-authentication-methods) aus, um kennwortlose Authentifizierungsmethoden in Ihrem Verzeichnis zu aktivieren.
 
 ## <a name="how-do-my-end-users-enable-phone-sign-in"></a>Wie aktivieren Endbenutzer die Anmeldung per Smartphone?
 
@@ -87,6 +70,8 @@ Endbenutzer, für die MFA über den lokalen Azure MFA-Server einer Organisation 
 Eine der Voraussetzungen für die Erstellung dieser neuen, sicheren Anmeldeinformationen ist die Registrierung des zugehörigen Geräts im Azure AD-Mandanten für einen einzelnen Benutzer. Aufgrund der Einschränkungen, die für die Registrierung von Geräten gelten, kann ein Gerät nur in einem einzigen Mandanten registriert werden. Dies bedeutet, dass nur ein Geschäfts-, Schul- oder Unikonto in der Microsoft Authenticator-App für die Anmeldung per Smartphone aktiviert werden kann.
 
 ## <a name="next-steps"></a>Nächste Schritte
+
+[Was bedeutet „kennwortlos“?](concept-authentication-passwordless.md)
 
 [Informationen zur Geräteregistrierung](../devices/overview.md#getting-devices-in-azure-ad)
 

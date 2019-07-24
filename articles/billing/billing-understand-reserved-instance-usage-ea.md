@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/01/2019
 ms.author: banders
-ms.openlocfilehash: 37d43dbdd8de66a10a94827e313679dc6ffd220d
-ms.sourcegitcommit: ac1cfe497341429cf62eb934e87f3b5f3c79948e
+ms.openlocfilehash: b0c7c38ebabfdd142394152f735d40320a98dced
+ms.sourcegitcommit: 66237bcd9b08359a6cce8d671f846b0c93ee6a82
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/01/2019
-ms.locfileid: "67490378"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67798157"
 ---
 # <a name="get-enterprise-agreement-reservation-costs-and-usage"></a>Abrufen von Reservierungskosten und Nutzung laut Enterprise Agreement
 
@@ -139,17 +139,17 @@ Rufen Sie die amortisierten Kostendaten ab, und filtern Sie die Daten nach einer
 2. Abrufen der Reservierungskosten. Addieren Sie die _Cost_-Werte (Kosten), um den finanziellen Gegenwert dessen zu erhalten, was Sie für die reservierte Instanz bezahlt haben. Dieser enthält die verwendeten und nicht verwendeten Kosten der Reservierung.
 3. Subtrahieren Sie die Reservierungskosten von den geschätzten Kosten der nutzungsbasierten Bezahlung, um die geschätzten Einsparungen zu erhalten.
 
-## <a name="reservation-purchases-and-amortization-in-azure-cost-analysis"></a>Reservierungseinkäufe und Amortisierung in der Azure-Kostenanalyse
+## <a name="reservation-purchases-and-amortization-in-cost-analysis"></a>Reservierungseinkäufe und Amortisierung in der Kostenanalyse
 
-Kosten der reservierten Instanz sind im [Vorschaumodus der Azure-Kostenanalyse](https://preview.portal.azure.com/?feature.canmodifystamps=true&amp;microsoft_azure_costmanagement=stage2&amp;Microsoft_Azure_CostManagement_arm_canary=true&amp;Microsoft_Azure_CostManagement_apiversion=2019-04-01-preview&amp;Microsoft_Azure_CostManagement_amortizedCost=true#blade/Microsoft_Azure_CostManagement/Menu/costanalysis) verfügbar. Standardmäßig zeigt die Kostendatenansicht Ist-Kosten an. Sie können aber zu amortisierten Kosten wechseln. Hier sehen Sie ein Beispiel.
+Reservierungskosten sind in der [Kostenanalyse](https://aka.ms/costanalysis) verfügbar. In der Standardeinstellung werden in der Kostenanalyse **tatsächliche Kosten** angezeigt, die auch in Ihrer Abrechnung ausgewiesen werden. Um Reservierungseinkäufe aufgeschlüsselt und nach den Ressourcen anzuzeigen, welche den Nutzen in Anspruch genommen haben, wechseln Sie zu **Amortisierte Kosten**:
 
 ![Ein Beispiel, das zeigt, wo Sie in der Kostenanalyse amortisierte Kosten auswählen können](./media/billing-understand-reserved-instance-usage-ea/portal-cost-analysis-amortized-view.png)
 
-Wenden Sie Filter an, um Ihre Gebühren nach Reservierungs- oder Gebührentyp anzuzeigen. Gruppieren Sie nach dem Reservierungsnamen, um die nach Reservierungen aufgeschlüsselten Kosten anzuzeigen.
+Gruppieren Sie nach Gebührentyp, um eine Aufschlüsselung von Verbrauch, Einkäufen und Erstattungen aufzurufen; Sie können auch nach Reservierung gruppieren, um eine Aufschlüsselung von Reservierungskosten und Kosten für die bedarfsgesteuerte Bereitstellung zu erhalten. Beachten Sie, dass bei der Anzeige von tatsächlichen Kosten die einzigen aufgeführten Reservierungskosten Einkäufe sind; bei der Anzeige von amortisierten Kosten werden jedoch die Kosten den einzelnen Ressourcen zugeordnet, die den Nutzen in Anspruch genommen haben. Zudem wird bei der Anzeige von amortisierten Kosten der neue Gebührentyp **UnusedReservation** aufgeführt.
 
 ## <a name="need-help-contact-us"></a>Sie brauchen Hilfe? Wenden Sie sich an uns.
 
-Wenn Sie Fragen haben oder Hilfe benötigen, [erstellen Sie eine Supportanfrage](https://go.microsoft.com/fwlink/?linkid=2083458).
+Wenn Sie weitere Fragen haben oder Hilfe benötigen, [erstellen Sie eine Supportanfrage](https://go.microsoft.com/fwlink/?linkid=2083458).
 
 ## <a name="next-steps"></a>Nächste Schritte
 

@@ -4,7 +4,7 @@ description: Hochverfügbarkeit von SAP ASCS/SCS-Instanzen mit Multi-SID-Konfigu
 services: virtual-machines-windows,virtual-network,storage
 documentationcenter: saponazure
 author: goraco
-manager: jeconnoc
+manager: gwallace
 editor: ''
 tags: azure-resource-manager
 keywords: ''
@@ -17,12 +17,12 @@ ms.workload: infrastructure-services
 ms.date: 02/03/2019
 ms.author: rclaus
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: a840deb2349d952b1ef4faeab4ee860e6b0b99df
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 32905f6d505f83ead805550205df0daf6be501e5
+ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60651719"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67710109"
 ---
 [1928533]:https://launchpad.support.sap.com/#/notes/1928533
 [1999351]:https://launchpad.support.sap.com/#/notes/1999351
@@ -463,8 +463,8 @@ Installieren Sie DBMS und SAP-Anwendungsserver nach der oben beschriebenen Vorge
 
 * [Installieren einer ASCS/SCS-Instanz in einem Failovercluster ohne freigegebene Datenträger][sap-official-ha-file-share-document]: offizielle SAP-Richtlinien für eine Dateifreigabe mit Hochverfügbarkeit
 
-* [Direkte Speicherplätze in Windows Server 2016][s2d-in-win-2016]
+* [Direkte Speicherplätze in Windows Server 2016][s2d-in-win-2016]
 
 * [Übersicht über Dateiserver mit horizontaler Skalierung für Anwendungsdaten][sofs-overview]
 
-* [Neuerungen beim Speicher in Windows Server 2016][new-in-win-2016-storage]
+* [Neuerungen beim Speicher in Windows Server 2016][new-in-win-2016-storage]

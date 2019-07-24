@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: peterpr
-ms.openlocfilehash: 7fb0fba519a7833ac318c713dc9eb3c6ac7f8b5b
-ms.sourcegitcommit: 79496a96e8bd064e951004d474f05e26bada6fa0
+ms.openlocfilehash: d27fd9460685c08a2b13936415935f5aaf893797
+ms.sourcegitcommit: dda9fc615db84e6849963b20e1dce74c9fe51821
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2019
-ms.locfileid: "67509554"
+ms.lasthandoff: 07/08/2019
+ms.locfileid: "67622411"
 ---
 # <a name="set-up-a-device-template"></a>Einrichten einer Gerätevorlage
 
@@ -150,7 +150,7 @@ assetloc: {
 
 ## <a name="settings"></a>Einstellungen
 
-Ein Gerät wird durch Einstellungen gesteuert. Diese ermöglichen den Bedienern die Angabe von Eingaben für das Gerät. Sie können Ihrer Gerätevorlage mehrere Einstellungen hinzufügen, die auf der Registerkarte **Einstellungen** als Kacheln angezeigt und von Operatoren verwendet werden können. Sie können verschiedene Arten von Einstellungen hinzufügen: Drehzahl, Text, Datum, Ein-/Ausschalten, Auswahlliste und Abschnittsbezeichnung.
+Ein Gerät wird durch Einstellungen gesteuert. Diese ermöglichen den Bedienern die Angabe von Eingaben für das Gerät. Sie können Ihrer Gerätevorlage mehrere Einstellungen hinzufügen, die auf der Registerkarte **Einstellungen** als Kacheln angezeigt und von Operatoren verwendet werden können. Sie können verschiedene Arten von Einstellungen hinzufügen: Drehzahl, Text, Datum, Ein-/Ausschalten und Abschnittsbezeichnung.
 
 Einstellungen können einen von drei Zuständen aufweisen. Das Gerät meldet diese Zustände.
 

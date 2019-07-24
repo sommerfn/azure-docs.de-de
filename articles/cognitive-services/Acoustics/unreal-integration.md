@@ -7,15 +7,15 @@ author: kegodin
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: acoustics
-ms.topic: how-to
+ms.topic: conceptual
 ms.date: 03/20/2019
 ms.author: kegodin
-ms.openlocfilehash: c6baa9f8330338c1e5fdc9ee0b5a8cc8b344e871
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 6207808efb9bee327afd2de21ffa59535acf4e55
+ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61436019"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67704794"
 ---
 # <a name="project-acoustics-unreal-and-wwise-integration"></a>Integration von Projekt Akustik in Unreal und Wwise
 Diese exemplarische Vorgehensweise beschreibt die Schritte zur Integration des Projekt Akustik-Plug-In-Pakets in Ihr vorhandenes Unreal- und Wwise-Spieleprojekt. 
@@ -26,7 +26,7 @@ Softwareanforderungen:
 * [Wwise-Plug-In für Unreal](https://www.audiokinetic.com/library/?source=UE4&id=index.html)
   * Wenn Sie das Wwise SDK direkt integriert haben, anstatt die Wwise-Plug-Ins für Unreal zu verwenden, lesen Sie die Dokumentation zum Projekt Akustik-Unreal-Plug-In, und passen Sie Wwise-API-Aufrufe an.
 
-Wenn Sie Projekt Akustik mit einer anderen Audioengine als Wwise verwenden möchten, setzen Sie sich mit uns in den [Projekt Akustik-Foren](https://social.msdn.microsoft.com/Forums/en-US/home?forum=projectacoustics) in Verbindung. Sie können das Projekt Akustik-Unreal-Plug-In verwenden, um Akustikdaten abzufragen und dann API-Aufrufe an Ihre Engine zu senden.
+Wenn Sie Projekt Akustik mit einer anderen Audio-Engine als Wwise verwenden möchten, stellen Sie eine Erweiterungsanforderung im [Projekt Akustik-Diskussionsforum](https://github.com/microsoft/ProjectAcoustics/issues). Sie können das Projekt Akustik-Unreal-Plug-In verwenden, um Akustikdaten abzufragen und dann API-Aufrufe an Ihre Engine zu senden.
 
 ## <a name="download-project-acoustics"></a>Herunterladen von Projekt Akustik
 Wenn dies noch nicht geschehen ist, laden Sie das [Projekt Akustik-Plug-In-Paket für Unreal & Wwise](https://www.microsoft.com/download/details.aspx?id=58090) herunter. 

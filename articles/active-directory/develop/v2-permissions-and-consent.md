@@ -18,12 +18,12 @@ ms.author: ryanwi
 ms.reviewer: hirsin, jesakowi, jmprieur
 ms.custom: fasttrack-edit
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 73b832002d1c15505e8ae845ac2585548c8e080f
-ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
+ms.openlocfilehash: 032cc0edaa140d82124a7369232cb82bf6c00c10
+ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/01/2019
-ms.locfileid: "67482144"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67702708"
 ---
 # <a name="permissions-and-consent-in-the-microsoft-identity-platform-endpoint"></a>Berechtigungen und Zustimmung im Microsoft Identity Platform-Endpunkt
 
@@ -167,7 +167,8 @@ Die Administratoreinwilligung akzeptiert keinen Bereichsparameter. Alle angeford
 #### <a name="to-configure-the-list-of-statically-requested-permissions-for-an-application"></a>So konfigurieren Sie die Liste statisch angeforderter Berechtigungen für eine Anwendung
 
 1. Wechseln Sie im [Azure-Portal – App-Registrierungen](https://go.microsoft.com/fwlink/?linkid=2083908) zu Ihrer Anwendung oder [erstellen Sie eine App](quickstart-register-app.md), sofern noch nicht geschehen.
-2. Suchen Sie den Abschnitt **Microsoft Graph-Berechtigungen**, und fügen Sie die Berechtigungen hinzu, die von Ihrer App benötigt werden.
+2. Suchen Sie den Abschnitt **API-Berechtigungen**, und klicken Sie in den API-Berechtigungen auf „Berechtigung hinzufügen“.
+3. Wählen Sie in der Liste der verfügbaren APIs **Microsoft Graph** aus, und fügen Sie dann die Berechtigungen hinzu, die für die App erforderlich sind.
 3. **Speichern** Sie die App-Registrierung.
 
 ### <a name="recommended-sign-the-user-into-your-app"></a>Empfohlen: Anmelden des Benutzers bei Ihrer App

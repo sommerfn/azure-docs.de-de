@@ -4,7 +4,7 @@ description: Hier finden Sie Informationen zur Unterstützung der Vorschauversio
 services: virtual-machines
 documentationcenter: ''
 author: vermagit
-manager: jeconnoc
+manager: gwallace
 editor: ''
 tags: azure-resource-manager
 ms.service: virtual-machines
@@ -12,12 +12,12 @@ ms.workload: infrastructure-services
 ms.topic: article
 ms.date: 05/07/2019
 ms.author: amverma
-ms.openlocfilehash: f96a1179c103dd9dfb4d358572f9a9adbe24b977
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 6cdb539846104f70dabf684925685fb062fea8af
+ms.sourcegitcommit: 66237bcd9b08359a6cce8d671f846b0c93ee6a82
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66809770"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67797548"
 ---
 # <a name="hc-series-virtual-machine-overview"></a>Übersicht über virtuelle Computer der HC-Serie
 
@@ -31,7 +31,7 @@ Die obige Topologie hat auch Auswirkungen auf die Hypervisorkonfiguration der HC
 
 Dem virtuellen Computer ist nicht bekannt, dass ihm die physischen Kerne 0–1 und 24–25 nicht zugewiesen wurden. Die einzelnen vNUMA-Instanzen werden daher so verfügbar gemacht, als stünden nativ nur 22 Kerne zur Verfügung.
 
-Bei Intel Xeon-CPUs vom Typ Platinum, Gold und Silver wird auch ein 2D-On-Die-Meshnetzwerk für die interne und externe Kommunikation mit dem CPU-Socket eingeführt. Aus Leistungs- und Konsistenzgründen wird dringend empfohlen, Prozesse fest zuzuordnen (Process Pinning). Eine feste Prozesszuordnung funktioniert bei virtuellen Computern der HC-Serie, da der zugrunde liegende Chip unverändert für den virtuellen Gastcomputer verfügbar gemacht wird. Weitere Informationen zur Intel Xeon-SP-Architektur finden Sie unter https://bit.ly/2RCYkiE.
+Bei Intel Xeon-CPUs vom Typ Platinum, Gold und Silver wird auch ein 2D-On-Die-Meshnetzwerk für die interne und externe Kommunikation mit dem CPU-Socket eingeführt. Aus Leistungs- und Konsistenzgründen wird dringend empfohlen, Prozesse fest zuzuordnen (Process Pinning). Eine feste Prozesszuordnung funktioniert bei virtuellen Computern der HC-Serie, da der zugrunde liegende Chip unverändert für den virtuellen Gastcomputer verfügbar gemacht wird. Weitere Informationen finden Sie in diesem Artikel zur [Intel Xeon-SP-Architektur](https://bit.ly/2RCYkiE) (in englischer Sprache).
 
 Das folgende Diagramm zeigt die Trennung zwischen den Kernen, die für den Azure-Hypervisor reserviert sind, und den Kernen für den virtuellen Computer der HC-Serie:
 

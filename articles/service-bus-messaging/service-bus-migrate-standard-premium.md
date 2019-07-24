@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/18/2019
 ms.author: aschhab
-ms.openlocfilehash: 65c207b4d03e7d156c8c871a3642601fd0489ead
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 57ab281e8d07537c22bd3cf60306dfb1c7e81541
+ms.sourcegitcommit: d2785f020e134c3680ca1c8500aa2c0211aa1e24
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65991418"
+ms.lasthandoff: 07/04/2019
+ms.locfileid: "67566076"
 ---
 # <a name="migrate-existing-azure-service-bus-standard-namespaces-to-the-premium-tier"></a>Migrieren von vorhandenen Azure Service Bus-Standardnamespaces zum Premium-Tarif
 Bisher bot der Azure Service Bus Namespaces nur im Standard-Tarif an. Namespaces sind mehrinstanzenfähige Setups, die für niedrige Durchsätze und Entwicklerumgebungen optimiert wurden. Der Premium-Tarif bietet dedizierte Ressourcen pro Namespace für vorhersagbare Latenz und höheren Durchsatz zu einem festen Preis. Der Premium-Tarif ist für hohen Durchsatz und Produktionsumgebungen optimiert, die zusätzliche Enterprisefeatures erfordern.
@@ -117,6 +117,28 @@ Die Migration über das Azure-Portal hat den gleichen logischen Ablauf wie die M
 1. Überprüfen Sie die Änderungen auf der Seite „Zusammenfassung“. Wählen Sie **Migration abschließen** aus, um den Namespace zu wechseln und die Migration abzuschließen.
     ![Wechseln des Namespace: Menü zum Wechseln][]: Die Bestätigungsseite wird angezeigt, wenn die Migration abgeschlossen ist.
     ![Wechseln des Namespace: Erfolg][]
+
+## <a name="caveats"></a>Einschränkungen
+
+Einige der im Standard-Tarif von Azure Service Bus zur Verfügung stehenden Features werden im Premium-Tarif nicht unterstützt. Dies ist beabsichtigt, da der Premium-Tarif dedizierte Ressourcen für planbaren Durchsatz und planbare Wartezeit bietet.
+
+Im Anschluss folgt eine Liste mit Features, die im Premium-Tarif nicht unterstützt werden, und entsprechenden Abhilfemaßnahmen: 
+
+### <a name="express-entities"></a>Expressentitäten
+
+   Expressentitäten, die keine Nachrichtendaten im Speicher committen, werden im Premium-Tarif nicht unterstützt. Dedizierte Ressourcen sorgen für eine erhebliche Durchsatzverbesserung und stellen gleichzeitig eine dauerhafte Speicherung der Daten sicher, wie dies von einem Messagingsystem für Unternehmen erwartet wird.
+   
+   Bei der Migration werden alle Expressentitäten aus Ihrem Standard-Namespace als Nicht-Expressentitäten im Premium-Namespace erstellt.
+   
+   Bei Verwendung von ARM-Vorlagen (Azure Resource Manager) muss das Flag „enableExpress“ aus der Bereitstellungskonfiguration entfernt werden, damit Ihre automatisierten Workflows fehlerfrei ausgeführt werden.
+
+### <a name="partitioned-entities"></a>Partitionierte Entitäten
+
+   Partitionierte Entitäten wurden im Standard-Tarif unterstützt, um die Verfügbarkeit in einer Umgebung mit mehreren Mandanten zu verbessern. Dank der Bereitstellung dedizierter, pro Namespace verfügbarer Ressourcen ist dies im Premium-Tarif nicht mehr nötig.
+   
+   Bei der Migration werden alle partitionierten Entitäten aus Ihrem Standard-Namespace als nicht partitionierte Entitäten im Premium-Namespace erstellt.
+   
+   Falls „enablePartitioning“ in Ihrer ARM-Vorlage für eine bestimmte Warteschlange oder ein bestimmtes Thema auf „true“ festgelegt ist, wird sie bzw. es vom Broker ignoriert.
 
 ## <a name="faqs"></a>Häufig gestellte Fragen
 

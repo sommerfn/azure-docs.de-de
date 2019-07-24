@@ -15,12 +15,12 @@ ms.date: 04/04/2019
 ms.author: mimart
 ms.reviewer: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ecadb499d140ccfc993820080cae0b749977fc61
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 416e72f7e9e8622f044f7bb6430fbb36010b164e
+ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65824741"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67701967"
 ---
 # <a name="manage-certificates-for-federated-single-sign-on-in-azure-active-directory"></a>Verwalten von Zertifikaten für die einmalige Verbundanmeldung in Azure Active Directory
 
@@ -43,10 +43,10 @@ Sie können auch ein aktives oder inaktives Zertifikat herunterladen, indem Sie 
 Standardmäßig konfiguriert Azure ein Zertifikat so, dass es nach drei Jahren abläuft, wenn es automatisch während der SAML-SSO-Konfiguration erstellt wird. Weil Sie das Datum eines Zertifikats nach dem Speichern des Zertifikats nicht ändern können, müssen Sie die folgenden Schritte ausführen:
 
 1. Erstellen Sie ein neues Zertifikat mit dem gewünschten Datum.
-2. Speichern Sie das neue Zertifikat.
-3. Laden Sie das neue Zertifikat im richtigen Format herunter.
-4. Laden Sie das neue Zertifikat in die Anwendung hoch.
-5. Legen Sie das neue Zertifikat im Azure Active Directory-Portal als aktiv fest.
+1. Speichern Sie das neue Zertifikat.
+1. Laden Sie das neue Zertifikat im richtigen Format herunter.
+1. Laden Sie das neue Zertifikat in die Anwendung hoch.
+1. Legen Sie das neue Zertifikat im Azure Active Directory-Portal als aktiv fest.
 
 Die zwei folgenden Abschnitte unterstützen Sie beim Ausführen dieser Schritte.
 
@@ -55,56 +55,40 @@ Die zwei folgenden Abschnitte unterstützen Sie beim Ausführen dieser Schritte.
 Zuerst müssen Sie ein neues Zertifikat mit einem anderen Ablaufdatum erstellen und speichern:
 
 1. Melden Sie sich beim [Azure Active Directory-Portal](https://aad.portal.azure.com/) an. Die Seite **Azure Active Directory Admin Center** wird angezeigt.
-
-2. Wählen Sie im linken Bereich **Unternehmensanwendungen** aus. Eine Liste der Unternehmensanwendungen in Ihrem Konto wird angezeigt.
-
-3. Wählen Sie die entsprechende Anwendung aus. Eine Übersichtsseite für die Anwendung wird angezeigt.
-
-4. Wählen Sie im linken Bereich der Anwendungsübersichtsseite **Einmaliges Anmelden** aus.
-
-5. Wenn die Seite **SSO-Methode auswählen** angezeigt wird, wählen Sie **SAML** aus.
-
-6. Navigieren Sie auf der Seite **Einmaliges Anmelden (SSO) mit SAML einrichten – Vorschau** zur Überschrift **SAML-Signaturzertifikat**, und wählen Sie das Symbol **Bearbeiten** (Bleistift) aus. Die Seite **SAML-Signaturzertifikat** wird geöffnet. Auf dieser Seite werden der Status (**Aktiv** oder **Inaktiv**), das Ablaufdatum und der Fingerabdruck (eine Hashzeichenfolge) für jedes Zertifikat angezeigt.
-
-7. Wählen Sie **Neues Zertifikat** aus. Unterhalb der Zertifikatliste wird eine neue Zeile angezeigt, in der das Ablaufdatum standardmäßig auf genau drei Jahre nach dem aktuellen Datum festgelegt ist. (Da Ihre Änderungen noch nicht gespeichert wurden, können Sie das Ablaufdatum noch ändern.)
-
-8. Zeigen Sie in der neuen Zertifikatzeile mit dem Mauszeiger auf die Spalte „Ablaufdatum“, und wählen Sie das Symbol **Datum auswählen** (einen Kalender) aus. Daraufhin wird ein Kalendersteuerelement mit den Tagen eines Monats des aktuellen Ablaufdatums in der neuen Zeile angezeigt.
-
-9. Verwenden Sie das Kalendersteuerelement, um ein neues Datum festzulegen. Sie können ein beliebiges Datum zwischen dem aktuellen Datum und drei Jahre nach dem aktuellen Datum festlegen.
-
-10. Wählen Sie **Speichern** aus. Das neue Zertifikat wird jetzt mit dem Status **Inaktiv**, dem von Ihnen ausgewählten Ablaufdatum und einem Fingerabdruck angezeigt.
-
-11. Wählen Sie das **X** aus, um zur Seite **Einmaliges Anmelden (SSO) mit SAML einrichten – Vorschau** zurückzukehren.
+1. Wählen Sie im linken Bereich **Unternehmensanwendungen** aus. Eine Liste der Unternehmensanwendungen in Ihrem Konto wird angezeigt.
+1. Wählen Sie die entsprechende Anwendung aus. Eine Übersichtsseite für die Anwendung wird angezeigt.
+1. Wählen Sie im linken Bereich der Anwendungsübersichtsseite **Einmaliges Anmelden** aus.
+1. Wenn die Seite **SSO-Methode auswählen** angezeigt wird, wählen Sie **SAML** aus.
+1. Navigieren Sie auf der Seite **Einmaliges Anmelden (SSO) mit SAML einrichten – Vorschau** zur Überschrift **SAML-Signaturzertifikat**, und wählen Sie das Symbol **Bearbeiten** (Bleistift) aus. Die Seite **SAML-Signaturzertifikat** wird geöffnet. Auf dieser Seite werden der Status (**Aktiv** oder **Inaktiv**), das Ablaufdatum und der Fingerabdruck (eine Hashzeichenfolge) für jedes Zertifikat angezeigt.
+1. Wählen Sie **Neues Zertifikat** aus. Unterhalb der Zertifikatliste wird eine neue Zeile angezeigt, in der das Ablaufdatum standardmäßig auf genau drei Jahre nach dem aktuellen Datum festgelegt ist. (Da Ihre Änderungen noch nicht gespeichert wurden, können Sie das Ablaufdatum noch ändern.)
+1. Zeigen Sie in der neuen Zertifikatzeile mit dem Mauszeiger auf die Spalte „Ablaufdatum“, und wählen Sie das Symbol **Datum auswählen** (einen Kalender) aus. Daraufhin wird ein Kalendersteuerelement mit den Tagen eines Monats des aktuellen Ablaufdatums in der neuen Zeile angezeigt.
+1. Verwenden Sie das Kalendersteuerelement, um ein neues Datum festzulegen. Sie können ein beliebiges Datum zwischen dem aktuellen Datum und drei Jahre nach dem aktuellen Datum festlegen.
+1. Wählen Sie **Speichern** aus. Das neue Zertifikat wird jetzt mit dem Status **Inaktiv**, dem von Ihnen ausgewählten Ablaufdatum und einem Fingerabdruck angezeigt.
+1. Wählen Sie das **X** aus, um zur Seite **Einmaliges Anmelden (SSO) mit SAML einrichten – Vorschau** zurückzukehren.
 
 ### <a name="upload-and-activate-a-certificate"></a>Hochladen und Aktivieren eines Zertifikats
 
 Als Nächstes müssen Sie das neue Zertifikat im richtigen Format herunterladen, in die Anwendung hochladen und in Azure Active Directory als aktiv festlegen:
 
 1. Zeigen Sie die zusätzlichen Konfigurationsanweisungen für die SAML-basierte Anmeldung für die Anwendung an, indem Sie entweder:
+
    - den Link **Konfigurationshandbuch** auswählen, um die Anweisungen in einem separaten Browserfenster oder auf einer separaten Browserregisterkarte anzuzeigen, oder
    - zur Überschrift **Einrichten** wechseln und **Schrittanleitung anzeigen** auswählen, um die Anweisungen auf einer Randleiste anzuzeigen.
 
-2. Beachten Sie in den Anweisungen das für den Zertifikatupload erforderliche Codierungsformat.
-
-3. Befolgen Sie die weiter oben im Abschnitt [Automatisch generiertes Zertifikat für Katalog- und Nicht-Kataloganwendungen](#auto-generated-certificate-for-gallery-and-non-gallery-applications) aufgeführten Anweisungen. In diesem Schritt wird das Zertifikat in dem für den Upload durch die Anwendung erforderlichen Codierungsformat heruntergeladen.
-
-4. Wenn Sie einen Rollover auf das neue Zertifikat ausführen möchten, wechseln Sie zurück zur Seite **SAML-Signaturzertifikat**, und wählen Sie in der neu gespeicherten Zertifikatzeile die Auslassungspunkte ( **...** ) aus, und wählen Sie dann **Zertifikat als aktiv festlegen** aus. Der Status des neuen Zertifikats ändert sich in **Aktiv**, und der Status des zuvor aktiven Zertifikats ändert sich in **Inaktiv**.
-
-5. Fahren Sie mit den zuvor angezeigten Konfigurationsanweisungen für die SAML-basierte Anmeldung für die Anwendung fort, um das SAML-Signaturzertifikat im richtigen Codierungsformat hochzuladen.
+1. Beachten Sie in den Anweisungen das für den Zertifikatupload erforderliche Codierungsformat.
+1. Befolgen Sie die weiter oben im Abschnitt [Automatisch generiertes Zertifikat für Katalog- und Nicht-Kataloganwendungen](#auto-generated-certificate-for-gallery-and-non-gallery-applications) aufgeführten Anweisungen. In diesem Schritt wird das Zertifikat in dem für den Upload durch die Anwendung erforderlichen Codierungsformat heruntergeladen.
+1. Wenn Sie einen Rollover auf das neue Zertifikat ausführen möchten, wechseln Sie zurück zur Seite **SAML-Signaturzertifikat**, und wählen Sie in der neu gespeicherten Zertifikatzeile die Auslassungspunkte ( **...** ) aus, und wählen Sie dann **Zertifikat als aktiv festlegen** aus. Der Status des neuen Zertifikats ändert sich in **Aktiv**, und der Status des zuvor aktiven Zertifikats ändert sich in **Inaktiv**.
+1. Fahren Sie mit den zuvor angezeigten Konfigurationsanweisungen für die SAML-basierte Anmeldung für die Anwendung fort, um das SAML-Signaturzertifikat im richtigen Codierungsformat hochzuladen.
 
 ## <a name="add-email-notification-addresses-for-certificate-expiration"></a>Hinzufügen von E-Mail-Adressen für Benachrichtigungen für den Zertifikatablauf
 
 Azure AD sendet 60, 30 und 7 Tage vor Ablauf des SAML-Zertifikats eine Benachrichtigung per E-Mail. Sie können mehrere E-Mail-Adressen für den Empfang von Benachrichtigungen hinzufügen. Gehen Sie wie folgt vor, um die E-Mail-Adressen anzugeben, an die Benachrichtigungen gesendet werden sollen:
 
 1. Navigieren Sie auf der Seite **SAML-Signaturzertifikat** zur Überschrift **E-Mail-Adressen für Benachrichtigungen**. Für diese Überschrift wird standardmäßig nur die E-Mail-Adresse des Administrators verwendet, der die Anwendung hinzugefügt hat.
-
-2. Geben Sie unter der letzten E-Mail-Adresse die E-Mail-Adresse ein, an die eine Benachrichtigung über den Ablauf des Zertifikats gesendet werden soll, und drücken Sie dann die EINGABETASTE.
-
-3. Wiederholen Sie den vorherigen Schritt für jede E-Mail-Adresse, die Sie hinzufügen möchten.
-
-4. Wählen Sie für jede zu löschende E-Mail-Adresse das Symbol **Löschen** (den Papierkorb) neben der jeweiligen E-Mail-Adresse aus.
-
-5. Wählen Sie **Speichern** aus.
+1. Geben Sie unter der letzten E-Mail-Adresse die E-Mail-Adresse ein, an die eine Benachrichtigung über den Ablauf des Zertifikats gesendet werden soll, und drücken Sie dann die EINGABETASTE.
+1. Wiederholen Sie den vorherigen Schritt für jede E-Mail-Adresse, die Sie hinzufügen möchten.
+1. Wählen Sie für jede zu löschende E-Mail-Adresse das Symbol **Löschen** (den Papierkorb) neben der jeweiligen E-Mail-Adresse aus.
+1. Wählen Sie **Speichern** aus.
 
 Sie erhalten die Benachrichtigungs-E-Mail von aadnotification@microsoft.com. Um zu verhindern, dass die E-Mail in Ihrem Spamordner landet, müssen Sie die E-Mail-Adresse zu Ihren Kontakten hinzufügen.
 
@@ -113,21 +97,18 @@ Sie erhalten die Benachrichtigungs-E-Mail von aadnotification@microsoft.com. Um 
 Wenn ein Zertifikat in Kürze abläuft, können Sie es mithilfe eines Verfahrens erneuern, das zu keinen wesentlichen Ausfallzeiten für Ihre Benutzer führt. Gehen Sie wie folgt vor, um ein ablaufendes Zertifikat zu erneuern:
 
 1. Befolgen Sie die weiter oben im Abschnitt [Erstellen eines neuen Zertifikats](#create-a-new-certificate) aufgeführten Anweisungen, und verwenden Sie dabei ein Datum, das sich mit dem des vorhandenen Zertifikats überschneidet. Das Datum beschränkt die durch den Ablauf des Zertifikats verursachten Ausfallzeiten.
-
-2. Wenn die Anwendung einen automatischen Rollover für das Zertifikat ausführen kann, legen Sie das neue Zertifikat durch Ausführen der folgenden Schritte als aktiv fest:
+1. Wenn die Anwendung einen automatischen Rollover für das Zertifikat ausführen kann, legen Sie das neue Zertifikat durch Ausführen der folgenden Schritte als aktiv fest:
    1. Wechseln Sie zurück zur Seite **SAML-Signaturzertifikat**.
-   2. Wählen Sie in der neu gespeicherten Zertifikatzeile die Auslassungspunkte ( **...** ) aus, und wählen Sie dann **Zertifikat als aktiv festlegen** aus.
-   3. Überspringen Sie die nächsten zwei Schritte.
+   1. Wählen Sie in der neu gespeicherten Zertifikatzeile die Auslassungspunkte ( **...** ) aus, und wählen Sie dann **Zertifikat als aktiv festlegen** aus.
+   1. Überspringen Sie die nächsten zwei Schritte.
 
-3. Wenn die App jeweils nur ein Zertifikat verarbeiten kann, wählen Sie ein Intervall für Ausfallzeiten aus, um den nächsten Schritt ausführen zu können. (Andernfalls, wenn die Anwendung das neue Zertifikat nicht automatisch übernimmt, aber mehrere Signaturzertifikate gleichzeitig verarbeiten kann, können Sie den nächsten Schritt jederzeit auszuführen.)
-
-4. Führen Sie vor Ablauf des alten Zertifikats die weiter oben im Abschnitt [Hochladen und Aktivieren eines Zertifikats](#upload-and-activate-a-certificate) beschriebenen Schritte aus.
-
-5. Melden Sie sich bei der Anwendung an, um sicherzustellen, dass das Zertifikat ordnungsgemäß funktioniert.
+1. Wenn die App jeweils nur ein Zertifikat verarbeiten kann, wählen Sie ein Intervall für Ausfallzeiten aus, um den nächsten Schritt ausführen zu können. (Andernfalls, wenn die Anwendung das neue Zertifikat nicht automatisch übernimmt, aber mehrere Signaturzertifikate gleichzeitig verarbeiten kann, können Sie den nächsten Schritt jederzeit auszuführen.)
+1. Führen Sie vor Ablauf des alten Zertifikats die weiter oben im Abschnitt [Hochladen und Aktivieren eines Zertifikats](#upload-and-activate-a-certificate) beschriebenen Schritte aus.
+1. Melden Sie sich bei der Anwendung an, um sicherzustellen, dass das Zertifikat ordnungsgemäß funktioniert.
 
 ## <a name="related-articles"></a>Verwandte Artikel
 
-* [Tutorials zur Integration von SaaS-Anwendungen in Azure Active Directory](../saas-apps/tutorial-list.md)
-* [Anwendungsverwaltung mit Azure Active Directory](what-is-application-management.md)
-* [Einmaliges Anmelden bei Anwendungen in Azure Active Directory](what-is-single-sign-on.md)
-* [Debuggen des SAML-basierten einmaligen Anmeldens bei Anwendungen in Azure Active Directory](../develop/howto-v1-debug-saml-sso-issues.md)
+- [Tutorials zur Integration von SaaS-Anwendungen in Azure Active Directory](../saas-apps/tutorial-list.md)
+- [Anwendungsverwaltung mit Azure Active Directory](what-is-application-management.md)
+- [Einmaliges Anmelden bei Anwendungen in Azure Active Directory](what-is-single-sign-on.md)
+- [Debuggen des SAML-basierten einmaligen Anmeldens bei Anwendungen in Azure Active Directory](../develop/howto-v1-debug-saml-sso-issues.md)

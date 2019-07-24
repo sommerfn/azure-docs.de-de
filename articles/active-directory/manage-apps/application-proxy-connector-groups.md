@@ -14,47 +14,50 @@ ms.date: 11/08/2018
 ms.author: mimart
 ms.reviewer: japere
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d896a45931512b925491e05ff6e5eef8a856d83d
-ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
+ms.openlocfilehash: 574ce6def407f302439f6c53356fe69259240b2e
+ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/01/2019
-ms.locfileid: "67481325"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67702477"
 ---
 # <a name="publish-applications-on-separate-networks-and-locations-using-connector-groups"></a>Veröffentlichen von Anwendungen in getrennten Netzwerken und an getrennten Standorten mithilfe von Connectorgruppen
 
-Kunden verwenden den Azure AD-Anwendungsproxy für immer mehr Szenarien und Anwendungen. Daher haben wir den Anwendungsproxy durch Aktivieren weiterer Topologien noch flexibler gestaltet. Sie können Anwendungsproxy-Connectorgruppen erstellen, um bestimmte Connectors bestimmten Anwendungen zuzuweisen. Diese Funktion bietet Ihnen mehr Kontrolle sowie Möglichkeiten zur Optimierung der Anwendungsproxybereitstellung. 
+Kunden verwenden den Azure AD-Anwendungsproxy für immer mehr Szenarien und Anwendungen. Daher haben wir den Anwendungsproxy durch Aktivieren weiterer Topologien noch flexibler gestaltet. Sie können Anwendungsproxy-Connectorgruppen erstellen, um bestimmte Connectors bestimmten Anwendungen zuzuweisen. Diese Funktion bietet Ihnen mehr Kontrolle sowie Möglichkeiten zur Optimierung der Anwendungsproxybereitstellung.
 
-Jeder Anwendungsproxyconnector wird einer Connectorgruppe zugewiesen. Alle Connectors, die zur gleichen Connectorgruppe gehören, fungieren als separate Einheit für Hochverfügbarkeit und Lastenausgleich. Alle Connectors gehören zu einer Connectorgruppe. Wenn Sie keine Gruppen erstellen, befinden sich alle Ihre Connectors in einer Standardgruppe. Ihr Administrator kann im Azure-Portal neue Gruppen erstellen und ihnen Connectors zuweisen. 
+Jeder Anwendungsproxyconnector wird einer Connectorgruppe zugewiesen. Alle Connectors, die zur gleichen Connectorgruppe gehören, fungieren als separate Einheit für Hochverfügbarkeit und Lastenausgleich. Alle Connectors gehören zu einer Connectorgruppe. Wenn Sie keine Gruppen erstellen, befinden sich alle Ihre Connectors in einer Standardgruppe. Ihr Administrator kann im Azure-Portal neue Gruppen erstellen und ihnen Connectors zuweisen.
 
 Alle Anwendungen werden einer Connectorgruppe zugewiesen. Wenn Sie keine Gruppen erstellen, befinden sich alle Ihre Anwendungen in einer Standardgruppe. Wenn Sie jedoch Ihre Connectors gruppieren, können Sie festlegen, dass jede Anwendung mit einer bestimmten Connectorgruppe arbeitet. In diesem Fall bedienen nur die Connectors in dieser Gruppe die Anforderungen der Anwendung. Diese Funktion ist nützlich, wenn Ihre Anwendungen an verschiedenen Standorten gehostet werden. Sie können Connectorgruppen standortabhängig erstellen, sodass Anwendungen immer von Connectors bedient werden, die physisch nahe bei ihnen liegen.
 
->[!TIP] 
->Wenn Sie über eine umfangreiche Anwendungsproxy-Bereitstellung verfügen, weisen Sie der Standardconnectorgruppe keine Anwendungen zu. Auf diese Weise erhalten neue Connectors keinen Livedatenverkehr, bis Sie sie einer aktiven Connectorgruppe zuordnen. Mit dieser Konfiguration können Sie Connectors auch in einen Ruhezustand versetzen, indem Sie sie wieder in die Standardgruppe verschieben, damit Sie die Wartung ohne Auswirkungen auf Ihre Benutzer ausführen können.
+> [!TIP]
+> Wenn Sie über eine umfangreiche Anwendungsproxy-Bereitstellung verfügen, weisen Sie der Standardconnectorgruppe keine Anwendungen zu. Auf diese Weise erhalten neue Connectors keinen Livedatenverkehr, bis Sie sie einer aktiven Connectorgruppe zuordnen. Mit dieser Konfiguration können Sie Connectors auch in einen Ruhezustand versetzen, indem Sie sie wieder in die Standardgruppe verschieben, damit Sie die Wartung ohne Auswirkungen auf Ihre Benutzer ausführen können.
 
 ## <a name="prerequisites"></a>Voraussetzungen
+
 Um Connectors zu gruppieren, müssen Sie sicherstellen, dass [mehrere Connectors installiert sind](application-proxy-add-on-premises-application.md). Wenn Sie einen neuen Connector installieren, wird diese automatisch der Connectorgruppe **Standard** hinzugefügt.
 
 ## <a name="create-connector-groups"></a>Erstellen von Connectorgruppen
-Erstellen Sie mit diesen Schritten beliebig viele Connectorgruppen. 
+
+Erstellen Sie mit diesen Schritten beliebig viele Connectorgruppen.
 
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
 1. Wählen Sie **Azure Active Directory** > **Unternehmensanwendungen** > **Anwendungsproxy** aus.
-2. Wählen Sie **Neue Connectorgruppe**. Das Blatt „Neue Connectorgruppe“ wird geöffnet.
+1. Wählen Sie **Neue Connectorgruppe**. Das Blatt „Neue Connectorgruppe“ wird geöffnet.
 
    ![Zeigt den Auswahlbildschirm für eine neue Connectorgruppe](./media/application-proxy-connector-groups/new-group.png)
 
-3. Bennen Sie Ihre neue Connectorgruppe, und verwenden Sie das Dropdownmenü, um auszuwählen, welche Connectoren dieser Gruppe angehören sollen.
-4. Wählen Sie **Speichern** aus.
+1. Bennen Sie Ihre neue Connectorgruppe, und verwenden Sie das Dropdownmenü, um auszuwählen, welche Connectoren dieser Gruppe angehören sollen.
+1. Wählen Sie **Speichern** aus.
 
 ## <a name="assign-applications-to-your-connector-groups"></a>Zuweisen von Anwendungen zu Ihren Connectorgruppen
-Verwenden Sie diese Schritte für jede Anwendung, die Sie mit dem Anwendungsproxy veröffentlicht haben. Sie können eine Anwendung einer Connectorgruppe zuweisen, wenn Sie sie zuerst veröffentlichen, oder Sie können mit diesen Schritten jederzeit die Zuweisung ändern.   
+
+Verwenden Sie diese Schritte für jede Anwendung, die Sie mit dem Anwendungsproxy veröffentlicht haben. Sie können eine Anwendung einer Connectorgruppe zuweisen, wenn Sie sie zuerst veröffentlichen, oder Sie können mit diesen Schritten jederzeit die Zuweisung ändern.
 
 1. Klicken Sie im Verwaltungsdashboard Ihres Verzeichnisses auf **Unternehmensanwendungen** > **Alle Anwendungen** > Anwendung, die Sie einer Connectorgruppe zuweisen möchten > **Anwendungsproxy**.
-2. Wählen Sie im Dropdownmenü **Connectorgruppe** die Gruppe aus, die die Anwendung verwenden soll.
-3. Klicken Sie auf **Speichern** , um die Änderungen zu übernehmen.
+1. Wählen Sie im Dropdownmenü **Connectorgruppe** die Gruppe aus, die die Anwendung verwenden soll.
+1. Klicken Sie auf **Speichern** , um die Änderungen zu übernehmen.
 
-## <a name="use-cases-for-connector-groups"></a>Anwendungsfälle für Connectorgruppen 
+## <a name="use-cases-for-connector-groups"></a>Anwendungsfälle für Connectorgruppen
 
 Connectorgruppen sind unter anderem in folgenden Szenarien nützlich:
 
@@ -64,11 +67,11 @@ Viele Organisationen verfügen über mehrere miteinander verbundene Rechenzentre
 
 ### <a name="applications-installed-on-isolated-networks"></a>In isolierten Netzwerken installierte Anwendungen
 
-Anwendungen können in Netzwerken gehostet werden, die nicht Teil des Hauptnetzwerks des Unternehmens sind. Connectorgruppen können verwendet werden, um dedizierte Connectors für isolierte Netzwerke zu installieren und außerdem die Anwendungen vom Netzwerk zu isolieren. Dies ist üblicherweise der Fall, wenn ein Drittanbieter eine bestimmte Anwendung für Ihre Organisation verwaltet. 
+Anwendungen können in Netzwerken gehostet werden, die nicht Teil des Hauptnetzwerks des Unternehmens sind. Connectorgruppen können verwendet werden, um dedizierte Connectors für isolierte Netzwerke zu installieren und außerdem die Anwendungen vom Netzwerk zu isolieren. Dies ist üblicherweise der Fall, wenn ein Drittanbieter eine bestimmte Anwendung für Ihre Organisation verwaltet.
 
 Mithilfe von Connectorgruppen können Sie dedizierte Connectors für diese Netzwerke installieren, die nur bestimmte Anwendungen veröffentlichen. So lässt sich die Anwendungsverwaltung einfacher und sicherer an Drittanbieter auslagern.
 
-### <a name="applications-installed-on-iaas"></a>In IaaS installierte Anwendungen 
+### <a name="applications-installed-on-iaas"></a>In IaaS installierte Anwendungen
 
 Für IaaS-Anwendungen mit Cloudzugriff bieten Connectorgruppen einen gemeinsamen Dienst zum Absichern des Zugriffs auf alle Apps. Connectorgruppen erzeugen keine zusätzliche Abhängigkeit vom Unternehmensnetzwerk und beeinträchtigen nicht das App-Erlebnis. Connectors können in allen Cloudrechenzentren installiert werden und bedienen nur Anwendungen, die sich in diesem Netzwerk befinden. Es können mehrere Connectors installiert werden, um Hochverfügbarkeit zu gewährleisten.
 
@@ -95,7 +98,7 @@ Bei Standorten für die Notfallwiederherstellung gibt es zwei verschiedene Heran
 
 ### <a name="serve-multiple-companies-from-a-single-tenant"></a>Bereitstellen von Diensten für mehrere Unternehmen über einen einzigen Mandanten
 
-Es gibt viele verschiedene Möglichkeiten, ein Modell zu implementieren, in dem ein einzelner Dienstanbieter Dienste im Zusammenhang mit Azure AD für mehrere Unternehmen bereitstellt und verwaltet. Connectorgruppen helfen den Administratoren dabei, die Connectors und Anwendungen auf verschiedene Gruppen aufzuteilen. Eine Möglichkeit – die sich für kleinere Unternehmen eignet – besteht darin, einen einzelnen Azure AD-Mandanten einzurichten, während die verschiedenen Unternehmen über einen eigenen Domänennamen und eigene Netzwerke verfügen. Dies gilt auch für M&A-Szenarien (Mergers & Acquisitions) sowie Situationen, in denen eine einzelne IT-Abteilung aus regulatorischen oder geschäftlichen Gründen Dienste für mehrere Unternehmen bereitstellt. 
+Es gibt viele verschiedene Möglichkeiten, ein Modell zu implementieren, in dem ein einzelner Dienstanbieter Dienste im Zusammenhang mit Azure AD für mehrere Unternehmen bereitstellt und verwaltet. Connectorgruppen helfen den Administratoren dabei, die Connectors und Anwendungen auf verschiedene Gruppen aufzuteilen. Eine Möglichkeit – die sich für kleinere Unternehmen eignet – besteht darin, einen einzelnen Azure AD-Mandanten einzurichten, während die verschiedenen Unternehmen über einen eigenen Domänennamen und eigene Netzwerke verfügen. Dies gilt auch für M&A-Szenarien (Mergers & Acquisitions) sowie Situationen, in denen eine einzelne IT-Abteilung aus regulatorischen oder geschäftlichen Gründen Dienste für mehrere Unternehmen bereitstellt.
 
 ## <a name="sample-configurations"></a>Beispielkonfigurationen
 
@@ -113,7 +116,7 @@ Diese Konfiguration ist für kleine Bereitstellungen und Tests ausreichend. Sie 
 
 Diese Konfiguration ist eine Weiterentwicklung der Standardkonfiguration und umfasst eine spezifische App, die in einem isolierten Netzwerk – z.B. einem virtuellen IaaS-Netzwerk – ausgeführt wird:
 
-![Beispiel für Azure AD ohne Connectorgruppen](./media/application-proxy-connector-groups/application-proxy-sample-config-2.png)
+![Beispiel für Azure AD – keine Connectorgruppen und ein isoliertes Netzwerk](./media/application-proxy-connector-groups/application-proxy-sample-config-2.png)
 
 ### <a name="recommended-configuration--several-specific-groups-and-a-default-group-for-idle"></a>Empfohlene Konfiguration – mehrere spezifische Gruppen und eine Standardgruppe für den Ruhezustand
 

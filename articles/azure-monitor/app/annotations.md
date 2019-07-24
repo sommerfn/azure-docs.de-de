@@ -10,102 +10,103 @@ ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
-ms.date: 05/31/2019
+ms.date: 07/01/2019
 ms.author: mbullwin
-ms.openlocfilehash: 6567d7f2ebaab5bd7b5bc8fb7b5a62970f169161
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: e3ec202ba6126b150fb78c76591682f163018661
+ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66476174"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67604539"
 ---
 # <a name="annotations-on-metric-charts-in-application-insights"></a>Anmerkungen zu Metrik-Diagrammen in Application Insights
 
-Die Anmerkungen in den Diagrammen des [Metrik-Explorers](../../azure-monitor/app/metrics-explorer.md) geben an, wo Sie einen neuen Build oder ein anderes wichtiges Ereignis bereitgestellt haben. Dank dieser Anmerkungen sehen Sie auf einen Blick, ob Ihre Änderungen Auswirkungen auf die Leistung Ihrer Anwendung hatten. Sie können automatisch vom [Buildsystem von Azure DevOps Services](https://docs.microsoft.com/azure/devops/pipelines/tasks/) erstellt werden. Es können auch Anmerkungen erstellt werden, die alle gewünschten Ereignisse markieren, indem diese aus PowerShell erstellt werden.
+Anmerkungen in Diagrammen des [Metrik-Explorers](../../azure-monitor/app/metrics-explorer.md) zeigen, wo Sie einen neuen Build bereitgestellt haben, oder andere wichtige Ereignisse. Dank der Anmerkungen sehen Sie auf einen Blick, ob Ihre Änderungen Auswirkungen auf die Leistung Ihrer Anwendung hatten. Sie können automatisch durch das Buildsystem von [Azure Pipelines](https://docs.microsoft.com/azure/devops/pipelines/tasks/) erstellt werden. Es können auch Anmerkungen erstellt werden, die alle gewünschten Ereignisse markieren, indem diese aus PowerShell erstellt werden.
 
 > [!NOTE]
-> In diesem Artikel wird die veraltete **Umgebung für klassische Metriken** verwendet. Anmerkungen sind derzeit nur in der klassischen Umgebung und in **[Arbeitsmappen](../../azure-monitor/app/usage-workbooks.md)** verfügbar. Weitere Informationen zur aktuellen Metrikumgebung finden Sie in [diesem Artikel](../../azure-monitor/platform/metrics-charts.md).
+> In diesem Artikel wird die veraltete **Umgebung für klassische Metriken** verwendet. Anmerkungen sind derzeit nur in der klassischen Umgebung und in **[Arbeitsmappen](../../azure-monitor/app/usage-workbooks.md)** verfügbar. Weitere Informationen zur aktuellen Metrikoberfläche finden Sie unter [Erweiterte Funktionen von Azure Metrik-Explorer](../../azure-monitor/platform/metrics-charts.md).
 
 ![Beispiel für Anmerkungen](./media/annotations/0-example.png)
 
-## <a name="release-annotations-with-azure-devops-services-build"></a>Versionsanmerkungen mit Azure DevOps-Services-Build
+## <a name="release-annotations-with-azure-pipelines-build"></a>Releaseanmerkungen mit Azure Pipelines-Build
 
-Versionsanmerkungen sind ein Feature des cloudbasierten Azure Pipelines-Diensts von Azure DevOps Services.
+Releaseanmerkungen sind ein Feature des cloudbasierten Azure Pipelines-Diensts von Azure DevOps.
 
 ### <a name="install-the-annotations-extension-one-time"></a>Installieren der Erweiterung für Anmerkungen (einmalig)
-Um Versionsanmerkungen erstellen zu können, müssen Sie eine der zahlreichen Azure DevOps Services-Erweiterungen installieren, die im Visual Studio Marketplace zur Verfügung stehen.
+Um Releaseanmerkungen erstellen zu können, müssen Sie eine der zahlreichen Azure DevOps-Erweiterungen installieren, die im Visual Studio Marketplace zur Verfügung stehen.
 
-1. Melden Sie sich bei Ihrem [Azure DevOps Services](https://azure.microsoft.com/services/devops/)-Projekt an.
-2. Laden Sie im Visual Studio Marketplace die [Erweiterung Release Annotations](https://marketplace.visualstudio.com/items/ms-appinsights.appinsightsreleaseannotations) herunter, und fügen Sie sie Ihrer Azure DevOps Services-Organisation hinzu.
-
-![Wählen Sie eine Azure DevOps-Organisation aus, und führen Sie dann die Installation aus.](./media/annotations/1-install.png)
-
-Sie müssen dies nur einmal für Ihre Azure DevOps Services-Organisation durchführen. Versionsanmerkungen können nun für jedes Projekt in Ihrer Organisation konfiguriert werden.
+1. Melden Sie sich bei Ihrem [Azure DevOps](https://azure.microsoft.com/services/devops/)-Projekt an.
+   
+1. Wählen Sie im Visual Studio Marketplace auf der Seite [Release Annotations for Azure Application Insights](https://marketplace.visualstudio.com/items/ms-appinsights.appinsightsreleaseannotations) (Releaseanmerkungen für Azure Application Insights) Ihre Azure DevOps-Organisation und anschließend **Install** (Installieren) aus, um die Erweiterung Ihrer Azure DevOps-Organisation hinzuzufügen.
+   
+   ![Wählen Sie eine Azure DevOps-Organisation und anschließend „Install“ (Installieren) aus.](./media/annotations/1-install.png)
+   
+Die Erweiterung muss nur einmal für Ihre Azure DevOps-Organisation installiert werden. Nun können Sie Releaseanmerkungen für ein beliebiges Projekt in Ihrer Organisation konfigurieren.
 
 ### <a name="configure-release-annotations"></a>Konfigurieren von Versionsanmerkungen
 
-Es wird ein separater API-Schlüssel für jede Azure DevOps Services-Releasevorlage benötigt.
+Erstellen Sie für Ihre Azure Pipelines-Versionsvorlagen jeweils einen separaten API-Schlüssel.
 
-1. Melden Sie sich beim [Microsoft Azure-Portal](https://portal.azure.com) an, und öffnen Sie die Application Insights-Ressource, die Ihre Anwendung überwacht. (Oder [erstellen Sie jetzt eine Ressource](../../azure-monitor/app/app-insights-overview.md), sofern noch nicht geschehen.)
-2. Öffnen Sie die Registerkarte **API-Zugriff**, und kopieren Sie die **Application Insights-ID**.
+1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an, und öffnen Sie die Application Insights-Ressource, die Ihre Anwendung überwacht. Sollten Sie über keine solche Ressource verfügen, [erstellen Sie eine neue Application Insights-Ressource](../../azure-monitor/app/app-insights-overview.md).
    
-    ![Öffnen Sie unter „portal.azure.com“ die Application Insights-Ressource, und wählen Sie „Einstellungen“. Öffnen Sie „API-Zugriff“. Kopieren der Anwendungs-ID](./media/annotations/2-app-id.png)
-
-4. Öffnen (oder erstellen) Sie in einem separaten Browserfenster die Releasevorlage, mit der Ihre Bereitstellungen über Azure DevOps Services verwaltet werden.
+1. Öffnen Sie die Registerkarte **API-Zugriff**, und kopieren Sie die **Application Insights-ID**.
    
-    Fügen Sie eine Aufgabe hinzu, und wählen Sie im Menü die Aufgabe für Application Insights-Versionsanmerkungen aus.
+   ![Kopieren Sie die Anwendungs-ID unter „API-Zugriff“.](./media/annotations/2-app-id.png)
 
-   ![Klicken Sie auf das Pluszeichen, um eine Aufgabe hinzuzufügen, und wählen Sie dann die Aufgabe für Application Insights-Versionsanmerkungen aus. Fügen Sie die Application Insights-ID ein.](./media/annotations/3-add-task.png)
-
-    Fügen Sie die **Anwendungs-ID** ein, die Sie auf der Registerkarte „API-Zugriff“ kopiert haben.
+1. Öffnen oder erstellen Sie in einem separaten Browserfenster die Versionsvorlage, mit der Ihre Azure Pipelines-Bereitstellungen verwaltet werden.
    
-    ![Application Insights-ID einfügen](./media/annotations/4-paste-app-id.png)
-
-5. Wechseln Sie zurück ins Azure-Fenster, erstellen Sie einen neuen API-Schlüssel, und erstellen Sie eine Kopie davon.
+1. Wählen Sie **Aufgabe hinzufügen** und anschließend im Menü die Aufgabe **Application Insights Release Annotation** (Application Insights-Releaseanmerkung) aus.
    
-    ![Klicken Sie im Azure-Fenster auf der Registerkarte „API-Zugriff“ auf „API-Schlüssel erstellen“.](./media/annotations/5-create-api-key.png)
-
-    ![Geben Sie auf der Registerkarte „API-Schlüssel erstellen“ einen Kommentar an, aktivieren Sie das Kontrollkästchen „Anmerkungen schreiben“, und klicken Sie dann auf „Schlüssel generieren“. Kopieren Sie den neuen Schlüssel.](./media/annotations/6-create-api-key.png)
-
-6. Öffnen Sie die Registerkarte „Konfiguration“ der Versionsvorlage.
+   ![Wählen Sie „Aufgabe hinzufügen“ und anschließend „Application Insights Release Annotation“ (Application Insights-Releaseanmerkung) aus.](./media/annotations/3-add-task.png)
    
-    Erstellen Sie eine Variablendefinition für `ApiKey`.
+1. Fügen Sie unter **Anwendungs-ID** die Application Insights-ID ein, die Sie auf der Registerkarte **API-Zugriff** kopiert haben.
    
-    Fügen Sie Ihren API-Schlüssel in die ApiKey-Variablendefinition ein.
+   ![Application Insights-ID einfügen](./media/annotations/4-paste-app-id.png)
    
-    ![Wählen Sie im Azure DevOps Services-Fenster die Registerkarte „Variablen“ aus, und klicken Sie auf „Hinzufügen“. Legen Sie den Namen auf „ApiKey“ fest, und fügen Sie unter „Wert“ den von Ihnen generierten Schlüssel ein. Klicken Sie dann auf das Schlosssymbol.](./media/annotations/7-paste-api-key.png)
-1. **Speichern** Sie abschließend die Releasepipeline.
+1. Wählen Sie im Application Insights-Fenster **API-Zugriff** die Option **API-Schlüssel erstellen** aus. 
+   
+   ![Wählen Sie auf der Registerkarte „API-Zugriff“ die Option „API-Schlüssel erstellen“ aus.](./media/annotations/5-create-api-key.png)
+   
+1. Geben Sie im Fenster **API-Schlüssel erstellen** eine Beschreibung ein, wählen Sie **Anmerkungen schreiben** aus, und wählen Sie anschließend **Schlüssel generieren** aus. Kopieren Sie den neuen Schlüssel.
+   
+   ![Geben Sie im Fenster „API-Schlüssel erstellen“ eine Beschreibung ein, wählen Sie „Anmerkungen schreiben“ aus, und wählen Sie anschließend „Schlüssel generieren“ aus.](./media/annotations/6-create-api-key.png)
+   
+1. Wählen Sie im Fenster für die Versionsvorlage auf der Registerkarte **Variablen** die Option **Hinzufügen** aus, um eine Variablendefinition für den neuen API-Schlüssel zu erstellen.
 
+1. Geben Sie unter **Name** den Namen `ApiKey` ein, und fügen Sie unter **Wert** den API-Schlüssel ein, den Sie auf der Registerkarte **API-Zugriff** kopiert haben.
+   
+   ![Wählen Sie auf der Azure DevOps-Registerkarte „Variablen“ die Option „Hinzufügen“ aus, nennen Sie die Variable „ApiKey“, und fügen Sie unter „Wert“ den API-Schlüssel ein.](./media/annotations/7-paste-api-key.png)
+   
+1. Wählen Sie im Hauptfenster der Versionsvorlage die Option **Speichern** aus, um die Vorlage zu speichern.
 
 ## <a name="view-annotations"></a>Anmerkungen anzeigen
-Wenn Sie nun diese Versionsvorlage zum Bereitstellen einer neuen Version verwenden, wird jedes Mal eine Anmerkung an Application Insights gesendet. Die Anmerkungen werden in Diagrammen im Metrik-Explorer angezeigt.
+Wenn Sie nun diese Versionsvorlage zum Bereitstellen einer neuen Version verwenden, wird jedes Mal eine Anmerkung an Application Insights gesendet. Die Anmerkungen werden in Diagrammen des **Metrik-Explorers** angezeigt.
 
-Klicken Sie auf einen Anmerkungsmarker (hellgrauen Pfeil), um Details zur Version einschließlich Anfordernder, Quellcodeverwaltungsbranch, Releasepipeline, Umgebung usw. anzuzeigen.
+Wählen Sie einen Anmerkungsmarker (hellgrauer Pfeil) aus, um Details zum Release wie Anforderer, Quellcodeverwaltungsbranch, Releasepipeline und Umgebung anzuzeigen.
 
-![Klicken Sie auf einen Versionsanmerkungsmarker.](./media/annotations/8-release.png)
+![Wählen Sie einen Releaseanmerkungsmarker aus.](./media/annotations/8-release.png)
 
 ## <a name="create-custom-annotations-from-powershell"></a>Erstellen von benutzerdefinierten Anmerkungen in PowerShell
-Sie können Anmerkungen auch von jedem beliebigen Prozess erstellen (ohne Azure DevOps Services zu verwenden). 
+Mit dem PowerShell-Skript [CreateReleaseAnnotation](https://github.com/Microsoft/ApplicationInsights-Home/blob/master/API/CreateReleaseAnnotation.ps1) von GitHub können Sie Anmerkungen auf der Grundlage eines beliebigen Prozesses erstellen, ohne Azure DevOps zu verwenden. 
 
+1. Erstellen Sie eine lokale Kopie von [CreateReleaseAnnotation.ps1](https://github.com/Microsoft/ApplicationInsights-Home/blob/master/API/CreateReleaseAnnotation.ps1).
+   
+1. Gehen Sie wie oben beschrieben vor, um Ihre Application Insights-ID abzurufen und einen API-Schlüssel über die Application Insights-Registerkarte **API-Zugriff** zu erstellen.
+   
+1. Rufen Sie das PowerShell-Skript mithilfe des folgenden Codes auf, und ersetzen Sie dabei die in spitzen Klammern angegebenen Platzhalter durch Ihre eigenen Werte. Die Releaseeigenschaften (`-releaseProperties`) sind optional. 
+   
+   ```powershell
+   
+        .\CreateReleaseAnnotation.ps1 `
+         -applicationId "<applicationId>" `
+         -apiKey "<apiKey>" `
+         -releaseName "<releaseName>" `
+         -releaseProperties @{
+             "ReleaseDescription"="<a description>";
+             "TriggerBy"="<Your name>" }
+   ```
 
-1. Erstellen Sie eine lokale Kopie des [PowerShell-Skript aus GitHub](https://github.com/Microsoft/ApplicationInsights-Home/blob/master/API/CreateReleaseAnnotation.ps1).
-
-2. Rufen Sie auf der Registerkarte „API-Zugriff“ die Anwendungs-ID ab, und erstellen Sie einen API-Schlüssel.
-
-3. Nennen Sie das Skript folgendermaßen:
-
-```PS
-
-     .\CreateReleaseAnnotation.ps1 `
-      -applicationId "<applicationId>" `
-      -apiKey "<apiKey>" `
-      -releaseName "<myReleaseName>" `
-      -releaseProperties @{
-          "ReleaseDescription"="a description";
-          "TriggerBy"="My Name" }
-```
-
-Änderungen am Skript können einfach vorgenommen werden, um beispielsweise frühere Anmerkungen zu erstellen.
+Sie können das Skript auch anpassen, um beispielsweise Anmerkungen für die Vergangenheit zu erstellen.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

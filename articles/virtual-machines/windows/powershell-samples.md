@@ -4,7 +4,7 @@ description: Virtueller Azure-Computer – PowerShell-Beispiele
 services: virtual-machines-windows
 documentationcenter: virtual-machines
 author: cynthn
-manager: jeconnoc
+manager: gwallace
 editor: tysonn
 tags: azure-service-management
 ms.assetid: ''
@@ -16,12 +16,12 @@ ms.workload: infrastructure
 ms.date: 03/01/2019
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 576fe268bec12c16c7c2e2076dfa066c908693d5
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 9aea63b8366bf974fd89c32105bea707ad72c8a5
+ms.sourcegitcommit: dad277fbcfe0ed532b555298c9d6bc01fcaa94e2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60583688"
+ms.lasthandoff: 07/10/2019
+ms.locfileid: "67719988"
 ---
 # <a name="azure-virtual-machine-powershell-samples"></a>Virtueller Azure-Computer – PowerShell-Beispiele
 
@@ -50,4 +50,5 @@ Die folgende Tabelle enthält Links zu exemplarischen PowerShell-Skripts für di
 | [Verschlüsseln eines virtuellen Computers und der Datenträger](./../scripts/virtual-machines-windows-powershell-sample-encrypt-vm.md?toc=%2fpowershell%2fazure%2ftoc.json) | Erstellt einen Azure-Schlüsseltresor, einen Verschlüsselungsschlüssel und einen Dienstprinzipal und verschlüsselt dann einen virtuellen Computer. |
 |**Überwachen virtueller Computer**||
 | [Überwachen eines virtuellen Computers mit Azure Monitor](./../scripts/virtual-machines-windows-powershell-sample-create-vm-oms.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) | Erstellt einen virtuellen Computer, installiert den Azure Log Analytics-Agent und registriert den virtuellen Computer in einem Log Analytics-Arbeitsbereich.  |
+| [Sammeln von Informationen zu allen virtuellen Computern in einem Abonnement mit PowerShell](../scripts/virtual-machines-powershell-sample-collect-vm-details.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) | Erstellt eine CSV-Datei, die den VM-Namen, den Namen der Ressourcengruppe, die Region, das virtuelle Netzwerk, das Subnetz, die private IP-Adresse, den Betriebssystemtyp und die öffentliche IP-Adresse der VMs im bereitgestellten Abonnement enthält.
 | | |

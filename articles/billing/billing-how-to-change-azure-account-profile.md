@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 04/29/2019
 ms.author: banders
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: f61396d8fb0f02fe77f5ee35560f45a0c4698a10
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 87de721f596eb4148939c00bc4b4db270a87c24e
+ms.sourcegitcommit: 0ebc62257be0ab52f524235f8d8ef3353fdaf89e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65850763"
+ms.lasthandoff: 07/10/2019
+ms.locfileid: "67724105"
 ---
 # <a name="change-the-profile-information-for-your-azure-account"></a>Ändern der Profilinformationen für Ihr Azure-Konto
 
@@ -87,10 +87,16 @@ So deaktivieren Sie den Erhalt von Marketing-E-Mails
 1. Wechseln Sie zum [Anforderungsformular](https://account.microsoft.com/profile/permissions-link-request), um über Ihre Profil-E-Mail-Adresse eine Anforderung zu senden. Sie erhalten per E-Mail einen Link zum Aktualisieren Ihrer Einstellungen.
 2. Wählen Sie den Link aus, um die Seite **Manage communication permissions** (Kommunikationsberechtigungen verwalten) zu öffnen. Auf dieser Seite werden die Arten von Marketingkommunikation angezeigt, die für die E-Mail-Adresse ausgewählt wurden. Deaktivieren Sie alle Themen, die Sie nicht mehr erhalten möchten, und wählen Sie dann **Speichern** aus.
 
-
 ![Beispiel für die Seite zum Verwalten von Kommunikationsberechtigungen](./media/billing-how-to-change-azure-account-profile/manage-communication-permissions.png)
 
 Wenn Sie Marketinginformationen deaktivieren, erhalten Sie weiterhin auf Ihr Konto bezogene Dienstbenachrichtigungen.
+
+## <a name="change-the-subscription-name"></a>Ändern des Abonnementnamens
+
+1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an, und wählen Sie auf der linken Seite **Abonnement** und dann das Abonnement aus, das Sie umbenennen möchten.
+1. Wählen Sie **Übersicht** und dann auf der Befehlsleiste **Umbenennen** aus.
+    ![Beispiel für das Umbenennen eines Azure-Abonnements](./media/billing-how-to-change-azure-account-profile/rename-sub.png)
+1. Wählen Sie, nachdem Sie den Namen geändert haben, **Speichern** aus.
 
 ## <a name="need-help-contact-us"></a>Sie brauchen Hilfe? Wenden Sie sich an uns.
 

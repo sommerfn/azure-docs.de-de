@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jsimmons
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3bd117b79c2d103225e8f1f29b63eb6ae341031d
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 3b4879093ed80a554219b053cc5a2bc895126725
+ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64917659"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67702892"
 ---
 # <a name="azure-ad-password-protection-on-premises---frequently-asked-questions"></a>Lokaler Azure AD-Kennwortschutz – häufig gestellte Fragen
 
@@ -26,7 +26,7 @@ ms.locfileid: "64917659"
 
 Die aktuelle Anleitung von Microsoft zu diesem Thema finden Sie unter folgendem Link:
 
-[Microsoft-Kennwortleitfaden](https://www.microsoft.com/en-us/research/publication/password-guidance)
+[Microsoft-Kennwortleitfaden](https://www.microsoft.com/research/publication/password-guidance)
 
 **F: Wird der lokale Azure AD-Kennwortschutz in nicht öffentlichen Clouds unterstützt?**
 
@@ -43,6 +43,10 @@ Bei einer Kennwortänderung wählt ein Benutzer ein neues Kennwort aus, nachdem 
 Bei einer Kennwortfestlegung (manchmal als Kennwortzurücksetzung bezeichnet) ersetzt ein Administrator das Kennwort für ein Konto durch ein neues Kennwort, z. B. durch Verwendung des Active Directory-Verwaltungstools „Benutzer und Computer“. Für diesen Vorgang sind hohe Berechtigungen (normalerweise Domänenadministrator) erforderlich. Außerdem kennt die Person, die den Vorgang durchführt, in der Regel das alte Kennwort nicht. Dies erfolgt häufig in Helpdesk-Szenarien, z. B. bei der Unterstützung eines Benutzers, der sein Kennwort vergessen hat. Ein anderes Beispiel ist die erstmalige Erstellung eines neuen Benutzerkontos mit einem Kennwort.
 
 Die Richtlinie zur Kennwortüberprüfung ist identisch, unabhängig davon, ob eine Kennwortänderung oder eine Kennwortfestlegung durchgeführt wird. Mit dem DC-Agent-Dienst für den Azure AD-Kennwortschutz werden verschiedene Ereignisse protokolliert, um Sie darüber zu informieren, ob ein Vorgang zum Ändern oder zum Festlegen eines Kennworts durchgeführt wurde.  Siehe dazu [Überwachung und Protokollierung beim Azure AD-Kennwortschutz](https://docs.microsoft.com/azure/active-directory/authentication/howto-password-ban-bad-on-premises-monitor).
+
+**F: Warum werden doppelte Kennwortablehnungsereignisse protokolliert bei dem Versuch, mithilfe des Snap-Ins zur Verwaltung von Active Directory-Benutzern und -Computern ein schwaches Kennwort festzulegen?**
+
+Das Snap-In zur Verwaltung von Active Directory-Benutzern und -Computern versucht zunächst, das neue Kennwort mit dem Kerberos-Protokoll festzulegen. Bei einem Fehler versucht das Snap-In erneut, das Kennwort mit einem älteren Protokoll (SAM RPC) festzulegen (die verwendeten spezifischen Protokolle sind nicht wichtig). Wenn das neue Kennwort vom Azure AD-Kennwortschutz als schwach eingestuft wird, führt dies dazu, dass zwei Sätze von Kennwortablehnungsereignissen protokolliert werden.
 
 **F: Wird die Parallelinstallation des Azure AD-Kennwortschutzes mit anderen kennwortfilterbasierten Produkten unterstützt?**
 

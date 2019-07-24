@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb, rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b8e9ea8956d87e2ec47cc65495e81d8a0f0ad8cb
-ms.sourcegitcommit: d3b1f89edceb9bff1870f562bc2c2fd52636fc21
+ms.openlocfilehash: d21b54c3bea98a9a1499dc75890f75f28f2f9dc0
+ms.sourcegitcommit: cf438e4b4e351b64fd0320bf17cc02489e61406a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/04/2019
-ms.locfileid: "67560919"
+ms.lasthandoff: 07/08/2019
+ms.locfileid: "67655711"
 ---
 # <a name="baseline-policy-block-legacy-authentication-preview"></a>Basisrichtlinie: Blockieren der Legacyauthentifizierung (Vorschau)
 
@@ -25,11 +25,11 @@ Um Ihren Benutzern den einfachen Zugriff auf Ihre Cloud-Apps zu ermöglichen, un
 * älteren Office-Clients, die keine moderne Authentifizierung verwenden (z.B. Office 2010-Client)
 * jedem Client, der veraltete E-Mail-Protokolle wie IMAP/SMTP/POP3 verwendet
 
-Heute stammt ein Großteil aller gefährdenden Anmeldeversuche von Legacyauthentifizierungen. Die Legacyauthentifizierung unterstützt keine mehrstufige Authentifizierung (Multi-Factor Authentication, MFA). Auch wenn Sie eine MFA-Richtlinie für Ihr Verzeichnis aktiviert haben, kann ein böswilliger Benutzer sich mithilfe eines älteren Protokolls authentifizieren und MFA umgehen.
+Heute stammt der Großteil aller gefährdenden Anmeldeversuche von Legacyauthentifizierungen. Die Legacyauthentifizierung unterstützt keine mehrstufige Authentifizierung (Multi-Factor Authentication, MFA). Auch wenn Sie eine MFA-Richtlinie für Ihr Verzeichnis aktiviert haben, kann ein böswilliger Benutzer sich mithilfe eines älteren Protokolls authentifizieren und MFA umgehen.
 
-Die beste Möglichkeit zum Schutz Ihres Kontos vor böswilligen Authentifizierungsanforderungen durch ältere Protokolle ist, alle diese Versuche zu blockieren. Um Ihnen das Blockieren aller Anmeldeanforderungen von älteren Protokollen zu erleichtern, haben wir genau dafür eine Basisrichtlinie erstellt.
+Die beste Möglichkeit zum Schutz Ihres Kontos vor böswilligen Authentifizierungsanforderungen durch ältere Protokolle ist, alle diese Versuche zu blockieren. Um Ihnen das Schützen Ihrer Umgebung zu erleichtern, haben wir diese Basisrichtlinie zum Blockieren von Legacyauthentifizierungen erstellt.
 
-**Blockieren der Legacyauthentifizierung** ist die [Basisrichtlinie](concept-baseline-protection.md), die alle Authentifizierungsanforderungen älterer Protokolle blockiert. Die erfolgreiche Anmeldung aller Benutzer setzt moderne Authentifizierung voraus. In Verbindung mit den anderen Basisrichtlinien werden alle Anfragen von älteren Protokollen blockiert, und alle Benutzer müssen bei Anforderung MFA verwenden. Diese Richtlinie blockiert nicht Exchange ActiveSync.
+**Blockieren der Legacyauthentifizierung** ist eine [Basisrichtlinie](concept-baseline-protection.md), die alle Authentifizierungsanforderungen älterer Protokolle blockiert. Die erfolgreiche Anmeldung aller Benutzer setzt moderne Authentifizierung voraus. In Verbindung mit den anderen Basisrichtlinien werden alle Anfragen von älteren Protokollen blockiert, und alle Benutzer müssen bei Anforderung MFA verwenden. Diese Richtlinie blockiert nicht Exchange ActiveSync.
 
 ## <a name="identify-legacy-authentication-use"></a>Identifizieren der Verwendung der Legacyauthentifizierung
 
@@ -78,7 +78,7 @@ SharePoint Online ermöglicht standardmäßig die moderne Authentifizierung. Fü
 
 Um Legacyauthentifizierungsanforderungen von Skype for Business zu verhindern, ist es notwendig, die moderne Authentifizierung für Skype for Business Online zu aktivieren. Für Verzeichnisse, die nach dem 1. August 2017 erstellt wurden, ist die moderne Authentifizierung für Skype for Business standardmäßig aktiviert.
 
-Zum Aktivieren der modernen Authentifizierung in Skype for Business sollten Sie auf Microsoft Teams umstellen, das die moderne Authentifizierung standardmäßig unterstützt. Wenn Sie die Umstellung zu diesem Zeitpunkt nicht durchführen können, müssen Sie die moderne Authentifizierung für Skype for Business Online aktivieren, sodass Skype for Business-Clients beginnen, die moderne Authentifizierung zu verwenden. Befolgen Sie diese Schritte im Artikel [Unterstützung von Skype for Business-Topologien mit moderner Authentifizierung](https://docs.microsoft.com/skypeforbusiness/plan-your-deployment/modern-authentication/topologies-supported) zum Aktivieren der modernen Authentifizierung für Skype for Business.
+Sie sollten auf Microsoft Teams umstellen, das die moderne Authentifizierung standardmäßig unterstützt. Wenn Sie die Migration zu diesem Zeitpunkt nicht durchführen können, müssen Sie die moderne Authentifizierung für Skype for Business Online aktivieren, sodass Skype for Business-Clients beginnen, die moderne Authentifizierung zu verwenden. Befolgen Sie die Schritte im Artikel [Unterstützung von Skype for Business-Topologien mit moderner Authentifizierung](https://docs.microsoft.com/skypeforbusiness/plan-your-deployment/modern-authentication/topologies-supported) zum Aktivieren der modernen Authentifizierung für Skype for Business.
 
 Zusätzlich zum Aktivieren der modernen Authentifizierung für Skype for Business Online sollte die moderne Authentifizierung für Exchange Online aktiviert werden, wenn die moderne Authentifizierung für Skype for Business aktiviert wird. Dieser Prozess synchronisiert den Zustand der modernen Authentifizierung in Exchange Online und Skype for Business Online und verhindert mehrere Anmeldeaufforderungen für Skype for Business-Clients.
 
@@ -92,7 +92,8 @@ Um den nativen iOS-Mail-Client zu verwenden, müssen Sie die iOS-Version 11.0 od
 
 Wenn Sie ein Hybridkunde sind, der Exchange Server und Skype for Business lokal verwendet, müssen beide Dienste aktualisiert werden, um die moderne Authentifizierung zu aktivieren. Wenn Sie die moderne Authentifizierung in einer Hybridumgebung verwenden, authentifizieren Sie Benutzer weiterhin lokal. Der Verlauf der Autorisierung Ihres Zugriffs auf Ressourcen (Dateien oder E-Mails) ändert sich.
 
-Bevor Sie mit der lokalen Aktivierung der modernen Authentifizierung beginnen können, stellen Sie sicher, dass Sie die Anforderungen erfüllen, und jetzt bereit sind, die moderne Authentifizierung lokal zu aktivieren.
+Stellen Sie sicher, dass Sie die Voraussetzungen erfüllt haben, bevor Sie die moderne Authentifizierung lokal aktivieren.
+Jetzt können Sie die moderne Authentifizierung lokal aktivieren.
 
 Schritte zum Aktivieren der modernen Authentifizierung finden Sie in den folgenden Artikeln:
 
@@ -105,7 +106,7 @@ Die **Basisrichtlinie: Blockieren der Legacyauthentifizierung (Vorschau)** ist v
 
 Gehen Sie wie folgt vor, um diese Richtlinie zu aktivieren und Ihre Organisation zu schützen:
 
-1. Melden Sie sich am  **Azure-Portal**  als globaler Administrator, Sicherheitsadministrator oder Conditional Access-Administrator an.
+1. Melden Sie sich beim **Azure-Portal** als globaler Administrator, Sicherheitsadministrator oder Conditional Access-Administrator an.
 1. Navigieren Sie zu **Azure Active Directory** > **Bedingter Zugriff**.
 1. Wählen Sie in der Liste der Richtlinien den Eintrag **Basisrichtlinie: Blockieren der Legacyauthentifizierung (Vorschau)** aus.
 1. Legen Sie **Richtlinie aktivieren** auf **Richtlinie sofort verwenden** fest.
@@ -115,6 +116,6 @@ Gehen Sie wie folgt vor, um diese Richtlinie zu aktivieren und Ihre Organisation
 
 Weitere Informationen finden Sie unter
 
-* [Conditional Access Richtlinien für den Basisschutz](concept-baseline-protection.md)
+* [Conditional Access grundlegende Schutzrichtlinien](concept-baseline-protection.md)
 * [Fünf Schritte zum Sichern Ihrer Identitätsinfrastruktur](../../security/azure-ad-secure-steps.md)
-* [Was ist Conditional Access im Azure Active Directory?](overview.md)
+* [Was ist Conditional Access in Azure Active Directory?](overview.md)

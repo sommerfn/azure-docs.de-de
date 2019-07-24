@@ -9,35 +9,36 @@ ms.devlang: python
 ms.topic: conceptual
 ms.date: 02/22/2019
 ms.author: kgremban
-ms.openlocfilehash: 7ac668bdbc3698be3ed2aa50a428cef84e68369a
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 00f639ec57f3d29dff1993bbc664477b8648ce9a
+ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61441410"
+ms.lasthandoff: 07/07/2019
+ms.locfileid: "67612559"
 ---
 # <a name="send-cloud-to-device-messages-with-iot-hub-python"></a>Senden von C2D-Nachrichten mit IoT Hub (Python)
 
 [!INCLUDE [iot-hub-selector-c2d](../../includes/iot-hub-selector-c2d.md)]
 
 ## <a name="introduction"></a>Einführung
-Azure IoT Hub ist ein vollständig verwalteter Dienst, der eine zuverlässige und sichere bidirektionale Kommunikation zwischen Millionen von Geräten und einem Lösungs-Back-End ermöglicht. Im Schnellstart [Erste Schritte mit IoT Hub](quickstart-send-telemetry-python.md) erfahren Sie, wie ein IoT-Hub erstellt, eine Geräteidentität im Hub bereitgestellt und eine simulierte Geräte-App programmiert wird, die D2C-Nachrichten (Device to Cloud, Gerät zu Cloud) sendet.
+
+Azure IoT Hub ist ein vollständig verwalteter Dienst, der eine zuverlässige und sichere bidirektionale Kommunikation zwischen Millionen von Geräten und einem Lösungs-Back-End ermöglicht. In [Schnellstart: Senden von Telemetriedaten von einem Gerät an eine IoT Hub-Instanz und Lesen der Telemetriedaten aus der IoT Hub-Instanz mit einer Back-End-Anwendung (Python)](quickstart-send-telemetry-python.md) erfahren Sie, wie Sie einen IoT-Hub erstellen, eine Geräteidentität darin bereitstellen und eine simulierte Geräte-App programmieren, die D2C-Nachrichten (Device-to-Cloud, Gerät-zu-Cloud) sendet.
 
 [!INCLUDE [iot-hub-basic](../../includes/iot-hub-basic-whole.md)]
 
-Dieses Tutorial baut auf [Erste Schritte mit IoT Hub](quickstart-send-telemetry-python.md)auf. Es beschreibt Folgendes:
+Dieses Tutorial baut auf [Schnellstart: Senden von Telemetriedaten von einem Gerät an eine IoT Hub-Instanz und Lesen der Telemetriedaten aus der IoT Hub-Instanz mit einer Back-End-Anwendung (Python)](quickstart-send-telemetry-python.md) auf. Es beschreibt Folgendes:
 
 * Senden von C2D-Nachrichten aus Ihrem Lösungs-Back-End an ein einzelnes Gerät über IoT Hub.
 
 * Empfangen von C2D-Nachrichten auf einem Gerät.
 
-* Anfordern einer Übermittlungsbestätigung (*Feedback*) von Ihrem Lösungs-Back-End für Nachrichten, die von IoT Hub an ein einzelnes Gerät gesendet wurden.
+* Anfordern einer Übermittlungsbestätigung (*Feedback*) von Ihrem Lösungs-Back-End für Nachrichten, die von IoT Hub an ein einzelnes Gerät gesendet wurden.
 
 Weitere Informationen zu Cloud-zu-Gerät-Nachrichten finden Sie im [Entwicklungsleitfaden für IoT Hub](iot-hub-devguide-messaging.md).
 
 Am Ende dieses Tutorials führen Sie zwei Python-Konsolen-Apps aus:
 
-* **SimulatedDevice.py**, eine abgewandelte Version der in [Erste Schritte mit IoT Hub](quickstart-send-telemetry-python.md) erstellten App, die eine Verbindung mit IoT Hub herstellt und C2D-Nachrichten (Cloud-zu-Gerät) empfängt.
+* **SimulatedDevice.py** ist eine modifizierte Version der in [Schnellstart: Senden von Telemetriedaten von einem Gerät an eine IoT Hub-Instanz und Lesen der Telemetriedaten aus der IoT Hub-Instanz mit einer Back-End-Anwendung (Python)](quickstart-send-telemetry-python.md) erstellten App. Sie stellt eine Verbindung mit Ihrer IoT Hub-Instanz her und empfängt C2D-Nachrichten.
 
 * **SendCloudToDeviceMessage.py**, die über IoT Hub eine C2D-Nachricht an die simulierte Geräte-App sendet und dann die zugehörige Übermittlungsbestätigung empfängt.
 
@@ -78,7 +79,7 @@ In diesem Abschnitt erstellen Sie eine Python-Konsolen-App zum Simulieren des Ge
     RECEIVE_CALLBACKS = 0
     ```
 
-3. Fügen Sie der Datei **SimulatedDevice.py** dann folgenden Code hinzu. Ersetzen Sie den Platzhalterwert "{deviceConnectionString}" durch die Verbindungszeichenfolge für das Gerät, das Sie im Schnellstart [Erste Schritte mit IoT Hub](quickstart-send-telemetry-python.md) erstellt haben:
+3. Fügen Sie der Datei **SimulatedDevice.py** dann folgenden Code hinzu. Ersetzen Sie den Platzhalterwert „{deviceConnectionString}“ durch die Verbindungszeichenfolge für das Gerät, das Sie in [Schnellstart: Senden von Telemetriedaten von einem Gerät an eine IoT Hub-Instanz und Lesen der Telemetriedaten aus der IoT Hub-Instanz mit einer Back-End-Anwendung (Python)](quickstart-send-telemetry-python.md) erstellt haben:
 
     ```python
     # choose AMQP or AMQP_WS as transport protocol
@@ -170,7 +171,7 @@ In diesem Abschnitt erstellen Sie eine Python-Konsolen-App zum Simulieren des Ge
 
 ## <a name="send-a-cloud-to-device-message"></a>Senden einer C2D-Nachricht
 
-In diesem Abschnitt erstellen Sie eine Python-Konsolen-App, die C2D-Nachrichten an die simulierte Geräte-App sendet. Sie benötigen die Geräte-ID des Geräts, das Sie im Schnellstart [Erste Schritte mit IoT Hub](quickstart-send-telemetry-python.md) hinzugefügt haben. Sie benötigen auch die IoT Hub-Verbindungszeichenfolge für den Hub, die Sie im [Azure-Portal](https://portal.azure.com) finden.
+In diesem Abschnitt erstellen Sie eine Python-Konsolen-App, die C2D-Nachrichten an die simulierte Geräte-App sendet. Sie benötigen die Geräte-ID des Geräts, das Sie in [Schnellstart: Senden von Telemetriedaten von einem Gerät an eine IoT Hub-Instanz und Lesen der Telemetriedaten aus der IoT Hub-Instanz mit einer Back-End-Anwendung (Python)](quickstart-send-telemetry-python.md) erstellt haben. Sie benötigen auch die IoT Hub-Verbindungszeichenfolge für den Hub, die Sie im [Azure-Portal](https://portal.azure.com) finden.
 
 1. Erstellen Sie in einem Text-Editor eine Datei namens **SendCloudToDeviceMessage.py**.
 
@@ -189,7 +190,7 @@ In diesem Abschnitt erstellen Sie eine Python-Konsolen-App, die C2D-Nachrichten 
     MSG_TXT = "{\"service client sent a message\": %.2f}"
     ```
 
-3. Fügen Sie der Datei **SendCloudToDeviceMessage.py** dann folgenden Code hinzu. Ersetzen Sie den Platzhalterwert "{IoTHubConnectionString}" durch die IoT Hub-Verbindungszeichenfolge für den Hub, den Sie im Schnellstart [Erste Schritte mit IoT Hub](quickstart-send-telemetry-python.md) erstellt haben. Ersetzen Sie den Platzhalter "{deviceId}" durch die Geräte-ID des Geräts, das Sie im Schnellstart [Erste Schritte mit IoT Hub](quickstart-send-telemetry-python.md) hinzugefügt haben:
+3. Fügen Sie der Datei **SendCloudToDeviceMessage.py** dann folgenden Code hinzu. Ersetzen Sie den Platzhalterwert „{IoTHubConnectionString}“ durch die IoT Hub-Verbindungszeichenfolge für den Hub, den Sie in [Schnellstart: Senden von Telemetriedaten von einem Gerät an eine IoT Hub-Instanz und Lesen der Telemetriedaten aus der IoT Hub-Instanz mit einer Back-End-Anwendung (Python)](quickstart-send-telemetry-python.md) erstellt haben. Ersetzen Sie den Platzhalter „{deviceId}“ durch die Geräte-ID des Geräts, das Sie in [Schnellstart: Senden von Telemetriedaten von einem Gerät an eine IoT Hub-Instanz und Lesen der Telemetriedaten aus der IoT Hub-Instanz mit einer Back-End-Anwendung (Python)](quickstart-send-telemetry-python.md) erstellt haben:
 
     ```python
     CONNECTION_STRING = "{IoTHubConnectionString}"
@@ -268,7 +269,7 @@ Sie können nun die Anwendungen ausführen.
 
 1. Öffnen Sie eine Eingabeaufforderung, und installieren Sie das **Azure IoT Hub Device SDK für Python**.
 
-    ```
+    ```shell
     pip install azure-iothub-device-client
     ```
 
@@ -282,7 +283,7 @@ Sie können nun die Anwendungen ausführen.
 
 3. Öffnen Sie eine neue Eingabeaufforderung, und installieren Sie das **Azure IoT Hub Service SDK für Python**.
 
-    ```
+    ```shell
     pip install azure-iothub-service-client
     ```
 

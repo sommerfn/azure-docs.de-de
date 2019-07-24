@@ -4,7 +4,7 @@ description: Microsoft Azure-Erweiterung für die Installation von NVIDIA-GPU-Tr
 services: virtual-machines-windows
 documentationcenter: ''
 author: vermagit
-manager: jeconnoc
+manager: gwallace
 editor: ''
 ms.assetid: ''
 ms.service: virtual-machines-windows
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 01/09/2019
 ms.author: roiyz
-ms.openlocfilehash: 5adc86b161770f2502b6ef9cf5ec2189ec3d4f99
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 004d6125de6762303db91f3a5ef9ffa16e6e501f
+ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60388674"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67705953"
 ---
 # <a name="nvidia-gpu-driver-extension-for-windows"></a>NVIDIA-GPU-Treibererweiterung für Windows
 
@@ -27,6 +27,7 @@ ms.locfileid: "60388674"
 
 Diese Erweiterung installiert NVIDIA-GPU-Treiber auf Windows-VMs der N-Serie. Je nach VM-Familie installiert die Erweiterung CUDA- oder GRID-Treiber. Bei der Installation von NVIDIA Treibern mit dieser Erweiterung akzeptieren Sie die Bedingungen des [NVIDIA-Endbenutzer-Lizenzvertrags](https://go.microsoft.com/fwlink/?linkid=874330) und stimmen diesen zu. Während der Installation wird der virtuelle Computer möglicherweise neu gestartet, um die Treibereinrichtung abzuschließen.
 
+Anweisungen zur manuellen Installation der Treiber und der aktuellen unterstützten Versionen sind [hier](https://docs.microsoft.com/azure/virtual-machines/windows/n-series-driver-setup) verfügbar.
 Es ist auch eine Erweiterung zum Installieren von NVIDIA-GPU-Treibern auf [Linux-VMs der N-Serie](hpccompute-gpu-linux.md) verfügbar.
 
 ## <a name="prerequisites"></a>Voraussetzungen
@@ -37,7 +38,7 @@ Diese Erweiterung unterstützt die folgenden Betriebssysteme:
 
 | Distribution | Version |
 |---|---|
-| Windows 10 (bis zu Version 1803)| Core |
+| Windows 10 | Core |
 | Windows Server 2016 | Core |
 | Windows Server 2012 R2 | Core |
 
@@ -69,7 +70,7 @@ Der folgende JSON-Code zeigt das Schema für die Erweiterung.
 }
 ```
 
-### <a name="properties"></a>Eigenschaften
+### <a name="properties"></a>Properties
 
 | NAME | Wert/Beispiel | Datentyp |
 | ---- | ---- | ---- |

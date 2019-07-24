@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 36429feed99c421984ed55d4e506954aa30f0040
-ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
+ms.openlocfilehash: 4332c921af770cb47e9a9a779d0bd148153fcd31
+ms.sourcegitcommit: 2e4b99023ecaf2ea3d6d3604da068d04682a8c2d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/01/2019
-ms.locfileid: "67482124"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67666147"
 ---
 # <a name="how-to-plan-your-azure-ad-join-implementation"></a>Gewusst wie: Planen der Implementierung Ihrer Azure AD-Einbindung
 
@@ -70,7 +70,7 @@ Bei Verbundumgebungen sollte ein Identitätsanbieter verwendet werden, der sowoh
 - **WS-Fed:** Dieses Protokoll ist erforderlich, um ein Gerät in Azure AD einzubinden.
 - **WS-Trust:** Dieses Protokoll ist für die Anmeldung bei einem in Azure AD eingebundenen Gerät erforderlich. 
 
-Wenn Ihr Identitätsanbieter diese Protokolle nicht unterstützt, funktioniert Azure AD Join nicht systemintern. Ab Windows 10 1809 können sich Ihre Benutzer bei einem in Azure AD eingebundenen Gerät mit einem SAML-basierten Identitätsanbieter über die [Webanmeldung unter Windows 10](https://docs.microsoft.com/windows/whats-new/whats-new-windows-10-version-1809#web-sign-in-to-windows-10) anmelden. Derzeit ist die Webanmeldung nur in der Vorschauversion verfügbar.
+Wenn Ihr Identitätsanbieter diese Protokolle nicht unterstützt, funktioniert Azure AD Join nicht systemintern. Ab Windows 10 1809 können sich Ihre Benutzer bei einem in Azure AD eingebundenen Gerät mit einem SAML-basierten Identitätsanbieter über die [Webanmeldung unter Windows 10](https://docs.microsoft.com/windows/whats-new/whats-new-windows-10-version-1809#web-sign-in-to-windows-10) anmelden. Die Webanmeldung ist zurzeit ein Vorschaufeature und wird nicht für Produktionsbereitstellungen empfohlen.
 
 ### <a name="smartcards-and-certificate-based-authentication"></a>Smartcards und zertifikatbasierte Authentifizierung
 

@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/26/2018
 ms.author: malop;kumud
-ms.openlocfilehash: a81232266749c14ce421ccf774e0cbd843b8b4eb
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: 99a55d0cd06e6f1a92a70b20447d300dbc05eee1
+ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67436610"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67709535"
 ---
 # <a name="security-groups"></a>Sicherheitsgruppen
 <a name="network-security-groups"></a>
@@ -82,6 +82,11 @@ Die folgenden Diensttags können in [Netzwerksicherheitsgruppen-Regeln](https://
 * **AzureBackup*** (nur Resource Manager): Dieses Tag gibt die Adresspräfixe des AzureBackup-Diensts an. Wenn Sie *AzureBackup* als Wert angeben, wird der Datenverkehr für AzureBackup zugelassen oder verweigert. Dieses Tag weist eine Abhängigkeit von den Tags **Storage** und **AzureActiveDirectory** auf. Dieses Tag wird für ausgehende Sicherheitsregeln empfohlen. 
 * **AzureActiveDirectoryDomainServices*** (nur Resource Manager): Dieses Tag gibt die Adresspräfixe des Verwaltungsdatenverkehrs für dedizierte Azure Active Directory Domain Services-Bereitstellungen an. Wenn Sie *AzureActiveDirectoryDomainServices* als Wert angeben, wird der Datenverkehr für AzureActiveDirectoryDomainServices zugelassen oder verweigert. Dieses Tag wird für ein-/ausgehende Sicherheitsregeln empfohlen.  
 * **SqlManagement*** (nur Resource Manager): Dieses Tag gibt die Adresspräfixe des Verwaltungsdatenverkehrs für dedizierte SQL-Bereitstellungen an. Wenn Sie *SqlManagement* als Wert angeben, wird der Datenverkehr für SqlManagement zugelassen oder verweigert. Dieses Tag wird für ein-/ausgehende Sicherheitsregeln empfohlen. 
+* **CognitiveServicesManagement** (nur Resource Manager): Dieses Tag gibt die Adresspräfixe des Datenverkehrs für Cognitive Services an. Wenn Sie *CognitiveServicesManagement* als Wert angeben, wird der Datenverkehr für CognitiveServicesManagement zugelassen oder verweigert. Dieses Tag wird für ausgehende Sicherheitsregeln empfohlen.  
+* **Dynamics365ForMarketingEmail** (nur Resource Manager): Dieses Tag gibt die Adresspräfixe des Marketing-E-Mail-Diensts von Dynamics 365 an. Wenn Sie *Dynamics365ForMarketingEmail* als Wert angeben, wird der Datenverkehr für Dynamics365ForMarketingEmail zugelassen oder verweigert. Falls Sie den Zugriff auf Dynamics365ForMarketingEmail nur in einer bestimmten [Region](https://azure.microsoft.com/regions) zulassen möchten, können Sie die Region im folgenden Format angeben: Dynamics365ForMarketingEmail.[Name der Region].
+* **AzurePlatformDNS** (nur Resource Manager): Dieses Tag gibt DNS, einen grundlegenden Infrastrukturdienst, an. Wenn Sie *AzurePlatformDNS* als Wert angeben, können Sie die standardmäßigen [Aspekte der Azure-Plattform](https://docs.microsoft.com/azure/virtual-network/security-overview#azure-platform-considerations) für DNS deaktivieren. Verwenden Sie dieses Tag mit Vorsicht. Es wird empfohlen, vor Verwendung dieses Tags Tests durchzuführen. 
+* **AzurePlatformIMDS** (nur Resource Manager): Dieses Tag gibt IMDS, einen grundlegenden Infrastrukturdienst, an. Wenn Sie *AzurePlatformIMDS* als Wert angeben, können Sie die standardmäßigen [Aspekte der Azure-Plattform](https://docs.microsoft.com/azure/virtual-network/security-overview#azure-platform-considerations) für IMDS deaktivieren. Verwenden Sie dieses Tag mit Vorsicht. Es wird empfohlen, vor Verwendung dieses Tags Tests durchzuführen. 
+* **AzurePlatformLKM** (nur Resource Manager): Dieses Tag gibt Windows-Lizenzierung oder den Schlüsselverwaltungsdienst an. Wenn Sie *AzurePlatformLKM* als Wert angeben, können Sie die standardmäßigen [Aspekte der Azure-Plattform](https://docs.microsoft.com/azure/virtual-network/security-overview#azure-platform-considerations) für die Lizenzierung deaktivieren. Verwenden Sie dieses Tag mit Vorsicht. Es wird empfohlen, vor Verwendung dieses Tags Tests durchzuführen. 
 
 > [!NOTE]
 > Mit Diensttags von Azure-Diensten werden die Adresspräfixe der spezifischen verwendeten Cloud angegeben. 

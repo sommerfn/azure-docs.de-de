@@ -10,12 +10,12 @@ ms.workload: identity
 ms.date: 01/24/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: d2440b638a9c8eb27505b747d26917de8032e6cd
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 9d3ce15ac9899fe09d907296976db15ed0babb35
+ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66510127"
+ms.lasthandoff: 07/07/2019
+ms.locfileid: "67612485"
 ---
 # <a name="link-an-azure-subscription-to-an-azure-active-directory-b2c-tenant"></a>Verknüpfen eines Azure-Abonnements mit einem Azure Active Directory B2C-Mandanten
 
@@ -81,6 +81,14 @@ Diese Ressource ermöglicht Folgendes:
 - Verschieben Ihrer Azure AD B2C-Mandantenressource in ein anderes Azure-Abonnement oder in eine andere Ressourcengruppe
 
 ![Einstellungen für die B2C-Ressource](./media/active-directory-b2c-how-to-enable-billing/b2cresourcesettings.png)
+
+## <a name="change-the-azure-ad-b2c-tenant-billing-subscription"></a>Ändern des Abonnements zur Abrechnung des Azure AD B2C-Mandanten
+
+Azure AD B2C-Mandanten können in ein anderes Abonnement verschoben werden, wenn Quell- und Zielabonnement innerhalb desselben Azure Active Directory-Mandanten liegen.
+
+Informationen zum Verschieben von Azure-Ressourcen wie Ihr Azure AD B2C-Mandant in ein anderes Abonnement finden Sie unter [Verschieben von Ressourcen in eine neue Ressourcengruppe oder ein neues Abonnement](../azure-resource-manager/resource-group-move-resources.md).
+
+Bevor Sie die Verschiebung einleiten, lesen Sie unbedingt den gesamten Artikel, um die Einschränkungen und Anforderungen für eine solche Verschiebung vollständig zu verstehen. Zusätzlich zu den Anweisungen zum Verschieben von Ressourcen enthält er wichtige Informationen wie eine vor der Verschiebung anzuwendende Checkliste und wie der Verschiebevorgang überprüft wird.
 
 ## <a name="known-issues"></a>Bekannte Probleme
 

@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
-ms.date: 07/11/2018
+ms.date: 07/10/2019
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 28201e09a4025c0c8820abc6836a5923e48eb885
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: f531174c889948308e27109ab4fd80a481ec6bdc
+ms.sourcegitcommit: 66237bcd9b08359a6cce8d671f846b0c93ee6a82
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66742288"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67798188"
 ---
 # <a name="configuring-the-custom-banned-password-list"></a>Konfigurieren der Liste benutzerdefinierter gesperrter Kennwörter
 
@@ -29,7 +29,7 @@ Zum Konfigurieren der benutzerdefinierten Liste gesperrter Kennwörter ist eine 
 1. Melden Sie sich im [Azure-Portal](https://portal.azure.com) an, und navigieren Sie zu **Azure Active Directory**, **Authentifizierungsmethoden** und dann zu **Kennwortschutz**.
 1. Legen Sie die Option **Benutzerdefinierte Liste erzwingen** auf **Ja** fest.
 1. Fügen Sie der **benutzerdefinierten Liste gesperrter Kennwörter** Zeichenfolgen hinzu. Geben Sie eine Zeichenfolge pro Zeile ein.
-   * Die benutzerdefinierte Liste gesperrter Kennwörter kann bis zu 1000 Wörter umfassen.
+   * Die benutzerdefinierte Liste gesperrter Kennwörter kann bis zu 1.000 Ausdrücke umfassen.
    * Bei der benutzerdefinierten Liste gesperrter Kennwörter wird die Groß- und Kleinschreibung nicht beachtet.
    * Die benutzerdefinierte Liste gesperrter Kennwörter berücksichtigt die Ersetzung häufiger Zeichen.
       * Beispiel: „o“ und „0“ oder „a“ und „\@“
@@ -39,6 +39,9 @@ Zum Konfigurieren der benutzerdefinierten Liste gesperrter Kennwörter ist eine 
 > [!NOTE]
 > Es kann mehrere Stunden dauern, bis Updates der benutzerdefinierten Liste gesperrter Kennwörter angewendet werden.
 
+> [!NOTE]
+> Die benutzerdefinierte Liste gesperrter Kennwörter ist auf maximal 1.000 Ausdrücke beschränkt. Sie dient nicht zum Blockieren von äußerst umfangreichen Kennwortlisten. Um die Vorteile der benutzerdefinierten Liste gesperrter Kennwörter umfassend nutzen zu können, empfiehlt Microsoft, sich zunächst mit dem Konzept und der Verwendung der Liste (siehe [Benutzerdefinierte Liste gesperrter Kennwörter](concept-password-ban-bad.md#custom-banned-password-list)) und dem Kennwortauswertungsalgorithmus (siehe [Auswerten von Kennwörtern](concept-password-ban-bad.md#how-are-passwords-evaluated)) vertraut zu machen.
+
 ![Ändern der benutzerdefinierten Liste gesperrter Kennwörter unter „Authentifizierungsmethoden“ im Azure-Portal](./media/howto-password-ban-bad/authentication-methods-password-protection.png)
 
 ## <a name="how-it-works"></a>So funktioniert's
@@ -47,9 +50,10 @@ Jedes Mal, wenn ein Benutzer oder Administrator ein Azure AD-Kennwort zurückset
 
 ## <a name="what-do-users-see"></a>Anzeige für Benutzer
 
-Wenn ein Benutzer versucht, ein Kennwort auf einen Wert zurückzusetzen, der gesperrt würde, wird die folgende Fehlermeldung angezeigt:
+Wenn ein Benutzer versucht, ein Kennwort auf einen Wert zurückzusetzen, der gesperrt würde, wird eine der folgenden Fehlermeldungen angezeigt:
 
-Ihr Kennwort ist aufgrund eines enthaltenen Worts, Ausdrucks oder Musters leider leicht zu erraten. Wiederholen Sie den Vorgang mit einem anderen Kennwort.
+* Ihr Kennwort ist aufgrund eines enthaltenen Worts, Ausdrucks oder Musters leider leicht zu erraten. Wiederholen Sie den Vorgang mit einem anderen Kennwort.
+* Unfortunately, you can't use that password because it contains words or characters that have been blocked by your administrator. (Sie können dieses Kennwort nicht verwenden, da es Wörter oder Zeichen enthält, die vom Administrator gesperrt wurden). Wiederholen Sie den Vorgang mit einem anderen Kennwort.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

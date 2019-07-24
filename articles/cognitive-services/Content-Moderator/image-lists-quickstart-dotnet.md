@@ -1,5 +1,5 @@
 ---
-title: 'Schnellstart: Überprüfen von Bildern anhand benutzerdefinierter Listen in C# – Content Moderator'
+title: Überprüfen von Bildern anhand benutzerdefinierter Listen in C# – Content Moderator
 titlesuffix: Azure Cognitive Services
 description: Hier erfahren Sie, wie Sie Bilder mit benutzerdefinierten Bildlisten im Content Moderator SDK für C# moderieren.
 services: cognitive-services
@@ -7,17 +7,17 @@ author: sanjeev3
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: content-moderator
-ms.topic: quickstart
-ms.date: 10/10/2018
+ms.topic: conceptual
+ms.date: 07/03/2019
 ms.author: sajagtap
-ms.openlocfilehash: ded5b097e7c8feab56e2d82cb44f92e3127519e2
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: 49f87b7cf3d7f46a66c0992edf25968b1dbae073
+ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55881790"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67603409"
 ---
-# <a name="quickstart-moderate-with-custom-image-lists-in-c"></a>Schnellstart: Moderieren mit benutzerdefinierten Bildlisten in C#
+# <a name="moderate-with-custom-image-lists-in-c"></a>Moderieren mit benutzerdefinierten Bildlisten in C#
 
 Dieser Artikel enthält Informationen und Codebeispiele, die Ihnen den Einstieg in die Verwendung des [Content Moderator SDK für .NET](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.ContentModerator/) erleichtern, um Folgendes durchzuführen:
 - Erstellen einer benutzerdefinierten Bildliste
@@ -32,7 +32,7 @@ Dieser Artikel enthält Informationen und Codebeispiele, die Ihnen den Einstieg 
 > [!NOTE]
 > Die Obergrenze liegt bei **fünf Bildlisten**, wobei jede Liste **max. 10.000 Bilder** enthalten kann.
 
-Die Konsolenanwendung für diesen Schnellstart simuliert einige der Aufgaben, die Sie mit der Bildlisten-API ausführen können.
+Die Konsolenanwendung für den vorliegenden Leitfaden simuliert einige der Aufgaben, die Sie mit der Bildlisten-API ausführen können.
 
 Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) erstellen, bevor Sie beginnen. 
 
@@ -303,7 +303,7 @@ private static ImageList CreateCustomList(ContentModeratorClient client)
 
 ## <a name="create-a-method-to-add-a-collection-of-images-to-the-list"></a>Erstellen einer Methode zum Hinzufügen einer Sammlung von Bildern zur Liste
 
-Fügen Sie der **Program**-Klasse die folgende Methode hinzu. In diesem Schnellstart wird nicht veranschaulicht, wie Tags auf Bilder in der Liste angewendet werden. 
+Fügen Sie der **Program**-Klasse die folgende Methode hinzu. In diesem Leitfaden wird nicht veranschaulicht, wie Tags auf Bilder in der Liste angewendet werden. 
 
 ```csharp
 /// <summary>

@@ -16,19 +16,18 @@ ms.author: mimart
 ms.reviewer: harshja
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9e9b043b27f624a3d9f38fb2299f9e49f0ffedda
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 619baea889464d22be9ba58b7050f5c9579c571d
+ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65783424"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67702222"
 ---
 # <a name="access-your-on-premises-applications-through-microsoft-teams"></a>Zugreifen auf lokale Anwendungen über Microsoft Teams
 
 Der Azure Active Directory-Anwendungsproxy ermöglicht ortsunabhängiges einmaliges Anmelden bei lokalen Anwendungen. Microsoft Teams optimiert die Zusammenarbeit an einem zentralen Ort. Durch die Integration beider Lösungen können Benutzer in jeder Situation produktiv mit ihren Teamkollegen zusammenarbeiten. 
 
 Benutzer können ihren Teams-Kanälen [mithilfe von Registerkarten](https://support.office.com/article/Video-Using-Tabs-7350a03e-017a-4a00-a6ae-1c9fe8c497b3?ui=en-US&rs=en-US&ad=US) Cloud-Apps hinzufügen. Aber was, wenn die von allen verwendete SharePoint-Websites oder das von allen verwendete Planungstool lokal gehostet wird? Dieses Problem wird durch den Anwendungsproxy gelöst. Benutzer können Ihren Kanälen Apps hinzufügen, die über den Anwendungsproxy veröffentlicht wurden. Dabei können sie die gleichen externen URLs verwenden wie beim Remotezugriff auf ihre Apps. Und da die Authentifizierung des Anwendungsproxys über Azure Active Directory erfolgt, können die Benutzer das einmalige Anmelden verwenden.
-
 
 ## <a name="install-the-application-proxy-connector-and-publish-your-app"></a>Installieren des Anwendungsproxyconnectors und Veröffentlichen der App
 
@@ -42,19 +41,19 @@ Nachdem Sie die App über den Anwendungsproxy veröffentlicht haben, teilen Sie 
 
 1. Navigieren Sie zu dem Teams-Kanal, unter dem Sie die App hinzufügen möchten, und wählen Sie **+** aus, um eine Registerkarte hinzuzufügen.
 
-   ![Auswählen des Symbols zum Hinzufügen einer Registerkarte](./media/application-proxy-integrate-with-teams/add-tab.png)
+   ![Auswählen des Pluszeichens (+) zum Hinzufügen einer Registerkarte in Teams](./media/application-proxy-integrate-with-teams/add-tab.png)
 
-2. Wählen Sie für die Registerkarte die Option **Website** aus.
+1. Wählen Sie für die Registerkarte die Option **Website** aus.
 
-   ![Hinzufügen einer Website](./media/application-proxy-integrate-with-teams/website.png)
+   ![Auswählen einer Website auf dem Bildschirm „Registerkarte hinzufügen“](./media/application-proxy-integrate-with-teams/website.png)
 
-3. Benennen Sie die Registerkarte, und legen Sie die URL auf die externe Anwendungsproxy-URL fest. 
+1. Benennen Sie die Registerkarte, und legen Sie die URL auf die externe Anwendungsproxy-URL fest.
 
-   ![Konfigurieren von Name und URL der Registerkarte](./media/application-proxy-integrate-with-teams/tab-name-url.png)
+   ![Benennen der Registerkarte und Hinzufügen der externen URL](./media/application-proxy-integrate-with-teams/tab-name-url.png)
 
-Nachdem ein Mitglied eines Teams die Registerkarte hinzugefügt hat, wird sie für alle Benutzer des Kanals angezeigt. Alle Benutzer mit Zugriff auf die App können beim Zugreifen auf die App einmaliges Anmelden mit den Anmeldeinformationen nutzen, die sie auch für Microsoft Teams verwenden. Benutzern, die keinen Zugriff auf die App haben, wird die Registerkarte zwar in Teams angezeigt, sie können aber nur darauf zugreifen, wenn Sie ihnen Berechtigungen für die lokale App sowie für die über das Azure-Portal veröffentlichte Version der App erteilen. 
+Nachdem ein Mitglied eines Teams die Registerkarte hinzugefügt hat, wird sie für alle Benutzer des Kanals angezeigt. Alle Benutzer mit Zugriff auf die App können beim Zugreifen auf die App einmaliges Anmelden mit den Anmeldeinformationen nutzen, die sie auch für Microsoft Teams verwenden. Benutzern, die keinen Zugriff auf die App haben, wird die Registerkarte zwar in Teams angezeigt, sie können aber nur darauf zugreifen, wenn Sie ihnen Berechtigungen für die lokale App sowie für die über das Azure-Portal veröffentlichte Version der App erteilen.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
 - Informieren Sie sich über das [Veröffentlichen lokaler SharePoint-Websites](application-proxy-integrate-with-sharepoint-server.md) mit dem Anwendungsproxy.
-- Konfigurieren Sie Ihre Apps für die Verwendung von [benutzerdefinierten Domänen](application-proxy-configure-custom-domain.md) für die externe URL. 
+- Konfigurieren Sie Ihre Apps für die Verwendung von [benutzerdefinierten Domänen](application-proxy-configure-custom-domain.md) für die externe URL.

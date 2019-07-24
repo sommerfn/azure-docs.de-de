@@ -5,17 +5,17 @@ services: sql-data-warehouse
 ms.service: sql-data-warehouse
 ms.topic: conceptual
 ms.subservice: ''
-ms.date: 05/13/2019
+ms.date: 07/03/2019
 author: anumjs
 ms.author: anjangsh
 ms.reviewer: jrasnick
 manager: craigg
-ms.openlocfilehash: 9e5f10c2b4c2108626db79ad9821a8b07e57a2e3
-ms.sourcegitcommit: c05618a257787af6f9a2751c549c9a3634832c90
+ms.openlocfilehash: ee01ebad9e03aaa34911db49ce344d51b6a756d8
+ms.sourcegitcommit: 66237bcd9b08359a6cce8d671f846b0c93ee6a82
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/30/2019
-ms.locfileid: "66417702"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67798704"
 ---
 # <a name="azure-sql-data-warehouse-release-notes"></a>Azure SQL Data Warehouse – Versionshinweise
 
@@ -25,9 +25,20 @@ In diesem Artikel sind die neuen Funktionen und Verbesserungen in den neuesten V
 
 Da in allen Regionen neue Features eingeführt werden, überprüfen Sie die in Ihrer Instanz bereitgestellte Version sowie die aktuellen Versionshinweise für Azure SQL Data Warehouse, um zu ermitteln, ob ein Feature verfügbar ist. Stellen Sie über SQL Server Management Studio (SSMS) eine Verbindung mit Ihrer Azure SQL Data Warehouse-Instanz her, um deren Version zu überprüfen. Führen Sie `SELECT @@VERSION AS 'SQL Data Warehouse';` aus, um zur aktuellen Version von Azure SQL Data Warehouse zurückzukehren.
 
-Beispielausgabe: ![SQL Data Warehouse-Version](./media/release-notes/sql_data_warehouse_version.png)
+Beispielausgabe:
+
+![SQL Data Warehouse-Version](./media/release-notes/sql_data_warehouse_version.png)
 
 Verwenden Sie das identifizierte Datum, um zu bestätigen, welches Release auf Ihre Azure SQL Data Warehouse-Instanz angewendet wurde.
+
+## <a name="july-2019"></a>Juli 2019
+
+| Verbesserungen beim Dienst | Details |
+| --- | --- |
+|**Materialisierte Sicht (Vorschau)**|In einer materialisierten Sicht werden die von der Sichtdefinitionsabfrage zurückgegebenen Daten beibehalten, und die Sicht wird automatisch aktualisiert, wenn Daten in den zugrunde liegenden Tabellen geändert werden. Sie verbessert die Leistung komplexer Abfragen (in der Regel Abfragen mit Joins und Aggregationen) und bietet einfache Wartungsvorgänge. Weitere Informationen finden Sie unter </br> - [ERSTELLEN VON MATERIALISIERTEN SICHTEN ALS SELECT &#40;TRANSACT-SQL&#41;](/sql/t-sql/statements/create-materialized-view-as-select-transact-sql?view=azure-sqldw-latest)</br> - [ÄNDERN VON MATERIALISIERTEN SICHTEN &#40;TRANSACT-SQL&#41;](/sql/t-sql/statements/alter-materialized-view-transact-sql?view=azure-sqldw-latest) </br> - [T-SQL-Anweisungen, die in Azure SQL Data Warehouse unterstützt werden](/azure/sql-data-warehouse/sql-data-warehouse-reference-tsql-statements)|
+|**Additional T-SQL support** (Weitere T-SQL-Unterstützung)|Die T-SQL-Sprachoberfläche für SQL Data Warehouse wurde erweitert und bietet nun Unterstützung für: </br> - [AT TIME ZONE](/sql/t-sql/queries/at-time-zone-transact-sql?view=azure-sqldw-latest)</br> - [STRING_AGG](/sql/t-sql/functions/string-agg-transact-sql?view=azure-sqldw-latest)|
+|**Zwischenspeichern von Resultsets (Preview)**|Es wurden DBCC-Befehle zum Verwalten des zuvor angekündigten Resultsetcache hinzugefügt. Weitere Informationen finden Sie unter </br> - [DBCC DROPRESULTSETCACHE &#40;Transact-SQL&#41;](/sql/t-sql/database-console-commands/dbcc-dropresultsetcache-transact-sql?view=azure-sqldw-latest)  </br> - [DBCC SHOWRESULTCACHESPACEUSED &#40;Transact-SQL&#41;](/sql/t-sql/database-console-commands/dbcc-showresultcachespaceused-transact-sql?view=azure-sqldw-latest) </br></br> Siehe auch die neue Spalte „result_set_cache“ in [dm_pdw_exec_requests](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-exec-requests-transact-sql?view=azure-sqldw-latest), in der angezeigt wird, ob der Resultsetcache von einer ausgeführten Abfrage verwendet wurde.|
+|**Sortierter gruppierter Columnstore-Index (Vorschau)**|[sys.index_columns](/sql/relational-databases/system-catalog-views/sys-index-columns-transact-sql?view=azure-sqldw-latest) wurde die neue Spalte „column_store_order_ordinal“ hinzugefügt, um die Reihenfolge der Spalten in einem sortierten gruppierten Columnstore-Index anzugeben.|
 
 ## <a name="may-2019"></a>Mai 2019
 

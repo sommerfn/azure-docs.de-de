@@ -12,12 +12,12 @@ ms.author: sashan
 ms.reviewer: mathoma, carlrab
 manager: craigg
 ms.date: 06/27/2019
-ms.openlocfilehash: 1eeb37ce74b3e2f57588197d6bb88f59944c61cf
-ms.sourcegitcommit: aa66898338a8f8c2eb7c952a8629e6d5c99d1468
+ms.openlocfilehash: f42d811a89f00fda19222ae088041330e4cf6264
+ms.sourcegitcommit: cf438e4b4e351b64fd0320bf17cc02489e61406a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67460666"
+ms.lasthandoff: 07/08/2019
+ms.locfileid: "67658043"
 ---
 # <a name="automated-backups"></a>Automatisierte Sicherungen
 
@@ -109,7 +109,7 @@ Wenn Ihre Datenbank mit TDE verschlüsselt ist, werden die Sicherungen im Ruhezu
 
 ## <a name="how-does-microsoft-ensure-backup-integrity"></a>Wie stellt Microsoft die Sicherungsintegrität sicher?
 
-Fortlaufend testet das Entwicklungsteam von Azure SQL-Datenbank automatisch die Wiederherstellung von automatischen Sicherungen von Datenbanken über den Dienst. Bei der Wiederherstellung werden die Datenbanken außerdem mithilfe von DBCC CHECKDB Integritätsprüfungen unterzogen. Mögliche Probleme, die bei der Integritätsprüfung gefunden werden, führen zu einer Warnung des Entwicklungsteams. Weitere Informationen zur Integrität der Daten in Azure SQL-Datenbank finden Sie unter [Datenintegrität in Azure SQL-Datenbank](https://azure.microsoft.com/blog/data-integrity-in-azure-sql-database/).
+Fortlaufend testet das Entwicklungsteam von Azure SQL-Datenbank automatisch die Wiederherstellung automatischer Sicherungen von Datenbanken auf logischen Servern und in Pools für elastische Datenbanken. Bei der Point-in-Time-Wiederherstellung werden die Datenbanken außerdem mithilfe von DBCC CHECKDB Integritätsprüfungen unterzogen. Nach Abschluss der Migration führt die verwaltete Instanz automatisch die erste Sicherung der Datenbanken, die mit dem nativen Befehl `RESTORE` oder dem Data Migration Service wiederhergestellt wurden, mit `CHECKSUM` aus. Mögliche Probleme, die bei der Integritätsprüfung gefunden werden, führen zu einer Warnung des Entwicklungsteams. Weitere Informationen zur Integrität der Daten in Azure SQL-Datenbank finden Sie unter [Datenintegrität in Azure SQL-Datenbank](https://azure.microsoft.com/blog/data-integrity-in-azure-sql-database/).
 
 ## <a name="how-do-automated-backups-impact-compliance"></a>Wie wirken sich automatisierte Sicherungen auf die Konformität aus?
 

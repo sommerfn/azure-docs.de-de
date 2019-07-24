@@ -1,43 +1,44 @@
 ---
-title: Verknüpfen von Symantec ICDX-Daten mit der Vorschauversion von Azure Sentinel | Microsoft-Dokumentation
-description: Erfahren Sie, wie Sie Symantec ICDX-Daten mit Azure Sentinel verknüpfen.
+title: Verknüpfen von Symantec ICDx-Daten mit der Vorschauversion von Azure Sentinel | Microsoft-Dokumentation
+description: Erfahren Sie, wie Sie Symantec ICDx-Daten mit Azure Sentinel verknüpfen.
 services: sentinel
 documentationcenter: na
 author: rkarlin
 manager: rkarlin
 editor: ''
 ms.assetid: d068223f-395e-46d6-bb94-7ca1afd3503c
-ms.service: sentinel
+ms.service: azure-sentinel
+ms.subservice: azure-sentinel
 ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 05/23/2019
+ms.date: 07/04/2019
 ms.author: rkarlin
-ms.openlocfilehash: 3b21371d6321b208b19ca8b2524308736c3ceca9
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 74169b4bd2654fb0ff7ec4cdb2f2b02c0f4cc6e8
+ms.sourcegitcommit: 80aaf27e3ad2cc4a6599a3b6af0196c6239e6918
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66244342"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67673753"
 ---
-# <a name="connect-your-symantec-icdx-appliance"></a>Herstellen einer Verbindung zu Ihrer Symantec ICDX-Anwendung 
+# <a name="connect-your-symantec-icdx-appliance"></a>Herstellen einer Verbindung mit Ihrer Symantec ICDx-Appliance 
 
 > [!IMPORTANT]
 > Azure Sentinel ist derzeit als öffentliche Vorschauversion (Public Preview) verfügbar.
 > Diese Vorschauversion wird ohne Vereinbarung zum Servicelevel bereitgestellt und ist nicht für Produktionsworkloads vorgesehen. Manche Features werden möglicherweise nicht unterstützt oder sind nur eingeschränkt verwendbar. Weitere Informationen finden Sie unter [Zusätzliche Nutzungsbestimmungen für Microsoft Azure-Vorschauen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
-Mit dem Connector für Symantec ICDX können Sie alle Protokolle Ihrer Symantec-Sicherheitslösungen einfach mit Azure Sentinel verbinden, um Dashboards anzuzeigen, benutzerdefinierte Warnungen zu erstellen und Untersuchungen zu verbessern. Dadurch erhalten Sie einen besseren Einblick in das Netzwerk Ihrer Organisation und bessere Möglichkeiten für Sicherheitsvorgänge. Die Integration von Symantec ICDX und Azure Sentinel stützt sich auf REST-API.
+Mit dem Connector für Symantec ICDx können Sie alle Protokolle Ihrer Symantec-Sicherheitslösungen einfach mit Azure Sentinel verbinden, um Dashboards anzuzeigen, benutzerdefinierte Warnungen zu erstellen und Untersuchungen zu verbessern. Dadurch erhalten Sie einen besseren Einblick in das Netzwerk Ihrer Organisation und bessere Möglichkeiten für Sicherheitsvorgänge. Die Integration von Symantec ICDx und Azure Sentinel stützt sich auf die REST-API.
 
 
 > [!NOTE]
 > Daten werden am geografischen Standort des Arbeitsbereichs gespeichert, in dem Sie Azure Sentinel ausführen.
 
-## <a name="configure-and-connect-symantec-icdx"></a>Konfigurieren von und Herstellen einer Verbindung mit Symantec ICDX 
+## <a name="configure-and-connect-symantec-icdx"></a>Konfigurieren von und Herstellen einer Verbindung mit Symantec ICDx 
 
-Symantec ICDX kann sich in Azure Sentinel integrieren und Protokolle direkt an Azure Sentinel exportieren.
+Symantec ICDx kann mit Azure Sentinel integriert werden und Protokolle dann direkt an Azure Sentinel exportieren.
 
-1. Öffnen Sie die ICDX-Verwaltungskonsole zum Hinzufügen von Weiterleitungen von Microsoft Azure Sentinel (Log Analytics).
+1. Öffnen Sie die ICDx-Verwaltungskonsole zum Hinzufügen von Weiterleitungen von Microsoft Azure Sentinel (Log Analytics).
 2. Klicken Sie in der ICDX-Navigationsleiste auf **Configuration** (Konfiguration). 
 3. Klicken Sie am oberen Rand des Bildschirms **Configuration** (Konfiguration) auf **Forwarders** (Weiterleitungen).
 4. Klicken Sie unter **Forwarders** (Weiterleitungen) neben Microsoft Azure Sentinel (Log Analytics) auf **Add** (Hinzufügen). 
@@ -66,7 +67,7 @@ Symantec ICDX kann sich in Azure Sentinel integrieren und Protokolle direkt an A
     - **Custom Log Name** (Name des benutzerdefinierten Protokolls): Geben Sie den Namen des benutzerdefinierten Protokolls im Log Analytics-Arbeitsbereich des Microsoft Azure-Portals ein, zu dem Sie Ereignisse weiterleiten möchten. Der Standardwert ist SymantecICDx. Dies ist ein Pflichtfeld.
 8. Klicken Sie auf *Save* (Speichern), um die Weiterleitungskonfiguration abzuschließen. 
 9. Um die Weiterleitung zu starten, klicken Sie unter **Options** (Optionen) auf **More** (Weitere) und dann **Start** (Starten).
-10. Um in Log Analytics das relevante Schema für die Symantec ICDX-Ereignisse zu verwenden, suchen Sie nach **SymantecICDX_CL**.
+10. Um in Log Analytics das relevante Schema für die Symantec ICDx-Ereignisse zu verwenden, suchen Sie nach **SymantecICDx_CL**.
 
 
 ## <a name="validate-connectivity"></a>Überprüfen der Konnektivität
@@ -76,7 +77,7 @@ Es kann bis zu 20 Minuten dauern, bis Ihre Protokolle in Log Analytics angezeig
 
 
 ## <a name="next-steps"></a>Nächste Schritte
-In diesem Artikel haben Sie gelernt, wie Sie Symantec ICDX mit Azure Sentinel verbinden. Weitere Informationen zu Azure Sentinel finden Sie in den folgenden Artikeln:
+In diesem Artikel haben Sie gelernt, wie Sie Symantec ICDx mit Azure Sentinel verbinden. Weitere Informationen zu Azure Sentinel finden Sie in den folgenden Artikeln:
 - Erfahren Sie, wie Sie [Einblick in Ihre Daten und potenzielle Bedrohungen erhalten](quickstart-get-visibility.md).
 - Beginnen Sie mit der [Erkennung von Bedrohungen mithilfe von Azure Sentinel](tutorial-detect-threats.md).
 

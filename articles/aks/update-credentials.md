@@ -2,17 +2,17 @@
 title: Zurücksetzen der Anmeldeinformationen eines Azure Kubernetes Service-Clusters (AKS)
 description: Erfahren Sie, wie Sie die Dienstprinzipal-Anmeldeinformationen für einen Cluster in Azure Kubernetes Service (AKS) aktualisieren oder zurücksetzen.
 services: container-service
-author: iainfoulds
+author: mlearned
 ms.service: container-service
 ms.topic: article
 ms.date: 05/31/2019
-ms.author: iainfou
-ms.openlocfilehash: 189bcf2ddc7d301c8100f74e51374abd217a144f
-ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
+ms.author: mlearned
+ms.openlocfilehash: 5aac941133296d2040d5dd670155b80f5807e1e9
+ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/04/2019
-ms.locfileid: "66475486"
+ms.lasthandoff: 07/07/2019
+ms.locfileid: "67614127"
 ---
 # <a name="update-or-rotate-the-credentials-for-a-service-principal-in-azure-kubernetes-service-aks"></a>Aktualisieren oder Rotieren der Anmeldeinformationen für einen Dienstprinzipal in Azure Kubernetes Service (AKS)
 
@@ -20,7 +20,7 @@ Standardmäßig werden AKS-Cluster mit einem Dienstprinzipal mit einer Ablaufzei
 
 ## <a name="before-you-begin"></a>Voraussetzungen
 
-Azure CLI-Version 2.0.65 oder höher muss installiert und konfiguriert sein. Führen Sie  `az --version` aus, um die Version zu ermitteln. Wenn Sie eine Installation oder ein Upgrade ausführen müssen, finden Sie weitere Informationen unter [Installieren der Azure CLI][install-azure-cli].
+Azure CLI-Version 2.0.65 oder höher muss installiert und konfiguriert sein. Führen Sie  `az --version` aus, um die Version zu ermitteln. Wenn Sie eine Installation oder ein Upgrade ausführen müssen, finden Sie weitere Informationen unter  [Installieren der Azure CLI][install-azure-cli].
 
 ## <a name="choose-to-update-or-create-a-service-principal"></a>Entscheidung zur Aktualisierung oder Erstellung eines Dienstprinzipals
 
@@ -42,7 +42,7 @@ SP_ID=$(az aks show --resource-group myResourceGroup --name myAKSCluster \
 
 ### <a name="update-the-service-principal-credentials"></a>Aktualisieren der Anmeldeinformationen für den Dienstprinzipal
 
-Anhand einer Variablen, die die Dienstprinzipal-ID enthält, können Sie die Anmeldeinformationen jetzt über den Befehl [az ad sp credential reset][az-ad-sp-credential-reset] zurücksetzen. Im folgenden Beispiel wird über die Azure-Plattform ein neues sicheres Geheimnis für den Dienstprinzipal erstellt. Dieses neue sichere Geheimnis wird ebenfalls als Variable gespeichert.
+Mit einer Variablen, die die Dienstprinzipal-ID enthält, können Sie nun die Anmeldeinformationen über den Befehl [az ad sp credential reset][az-ad-sp-credential-reset] zurücksetzen. Im folgenden Beispiel wird über die Azure-Plattform ein neues sicheres Geheimnis für den Dienstprinzipal erstellt. Dieses neue sichere Geheimnis wird ebenfalls als Variable gespeichert.
 
 ```azurecli-interactive
 SP_SECRET=$(az ad sp credential reset --name $SP_ID --query password -o tsv)
@@ -54,7 +54,7 @@ Fahren Sie jetzt mit dem Abschnitt [Aktualisieren des AKS-Clusters mit den neuen
 
 Wenn Sie im vorherigen Abschnitt die vorhandenen Anmeldeinformationen für den vorhandenen Dienstprinzipal aktualisiert haben, überspringen Sie diesen Schritt. Fahren Sie mit dem Abschnitt [Aktualisieren des AKS-Clusters mit den neuen Anmeldeinformationen](#update-aks-cluster-with-new-credentials) fort.
 
-Um einen Dienstprinzipal zu erstellen und anschließend den AKS-Cluster zur Verwendung dieser neuen Anmeldeinformationen zu aktualisieren, verwenden Sie den Befehl [az ad sp create-for-rbac][az-ad-sp-create]. Im folgenden Beispiel verhindert der `--skip-assignment`-Parameter, dass zusätzliche Standardzuweisungen durchgeführt werden:
+Um einen Dienstprinzipal zu erstellen und anschließend den AKS-Cluster für die Verwendung dieser neuen Anmeldeinformationen zu aktualisieren, verwenden Sie den Befehl [az ad sp create-for-rbac][az-ad-sp-create]. Im folgenden Beispiel verhindert der `--skip-assignment`-Parameter, dass zusätzliche Standardzuweisungen durchgeführt werden:
 
 ```azurecli-interactive
 az ad sp create-for-rbac --skip-assignment
@@ -80,7 +80,7 @@ SP_SECRET=a5ce83c9-9186-426d-9183-614597c7f2f7
 
 ## <a name="update-aks-cluster-with-new-credentials"></a>Aktualisieren des AKS-Clusters mit den neuen Anmeldeinformationen
 
-Unabhängig davon, ob Sie die Anmeldeinformationen für den vorhandenen Dienstprinzipal aktualisieren oder einen Dienstprinzipal erstellen, aktualisieren Sie nun den AKS-Cluster mit Ihren neuen Anmeldeinformationen. Hierzu verwenden Sie den Befehl[az aks update-credentials][az-aks-update-credentials]. Es werden die Variablen für *--service-principal* und *--client-secret* verwendet:
+Aktualisieren Sie nun unabhängig davon, ob Sie die Anmeldeinformationen für den vorhandenen Dienstprinzipal aktualisieren oder einen Dienstprinzipal erstellen, den AKS-Cluster mit Ihren neuen Anmeldeinformationen. Verwenden Sie dazu den Befehl[az aks update-credentials][az-aks-update-credentials]. Es werden die Variablen für *--service-principal* und *--client-secret* verwendet:
 
 ```azurecli-interactive
 az aks update-credentials \

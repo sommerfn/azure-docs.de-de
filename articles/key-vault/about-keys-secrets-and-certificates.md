@@ -9,12 +9,12 @@ ms.service: key-vault
 ms.topic: conceptual
 ms.date: 01/07/2019
 ms.author: mbaldwin
-ms.openlocfilehash: b50f98c4abaeda3ac1805b73aa18fe6c29596426
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 52a0bc1b07ebf1aed55551e37ecc122ff393c0f7
+ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64708686"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67703917"
 ---
 # <a name="about-keys-secrets-and-certificates"></a>Informationen zu Schlüsseln, Geheimnissen und Zertifikaten
 
@@ -198,7 +198,7 @@ Sie können zusätzliche anwendungsspezifische Metadaten in Form von Tags angebe
 
 Die Zugriffssteuerung für Schlüssel, die von Key Vault verwaltet werden, ist auf der Ebene eines Schlüsseltresors möglich, der als Schlüsselcontainer fungiert. Die Zugriffssteuerungsrichtlinie für Schlüssel unterscheidet sich von der Zugriffssteuerungsrichtlinie für Geheimnisse im selben Key Vault. Benutzer können einen oder mehrere Tresore zum Speichern von Schlüsseln erstellen und müssen für eine dem Szenario entsprechende Segmentierung und Verwaltung von Schlüsseln sorgen. Die Zugriffssteuerung für Schlüssel ist unabhängig von der Zugriffssteuerung für Geheimnisse.  
 
-Die folgenden Berechtigungen können auf Benutzer-/Dienstprinzipalbasis im Schlüsselzugriffssteuerungs-Eintrag für einen Tresor erteilt werden. Diese Berechtigungen spiegeln präzise die für ein Schlüsselobjekt zulässigen Vorgänge wider:  
+Die folgenden Berechtigungen können auf Benutzer-/Dienstprinzipalbasis im Schlüsselzugriffssteuerungs-Eintrag für einen Tresor erteilt werden. Diese Berechtigungen spiegeln die für ein Schlüsselobjekt zulässigen Vorgänge wider.  Das Gewähren des Zugriffs auf einen Dienstprinzipal im Schlüsseltresor ist ein einmaliger Vorgang und bleibt für alle Azure-Abonnements gleich. Sie können damit beliebig viele Zertifikate bereitstellen. 
 
 - Berechtigungen für Schlüsselverwaltungsvorgänge
   - *get*: Lesen des öffentlichen Teils eines Schlüssels sowie seiner Attribute
@@ -476,5 +476,4 @@ Weitere Informationen finden Sie in der [REST-API-Referenz für Key Vault](/rest
 ## <a name="see-also"></a>Siehe auch
 
 - [Authentifizierung, Anforderungen und Antworten](authentication-requests-and-responses.md)
-- [Key Vault-Versionen](key-vault-versions.md)
 - [Entwicklerhandbuch für Key Vault](/azure/key-vault/key-vault-developers-guide)

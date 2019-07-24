@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 04/25/2019
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: d720f60bff1aa4510ac26ac092c42eb98871c851
-ms.sourcegitcommit: 5bdd50e769a4d50ccb89e135cfd38b788ade594d
+ms.openlocfilehash: 94e2d50280f8fd23f1bc17b278da2f4fbc9c9da2
+ms.sourcegitcommit: dad277fbcfe0ed532b555298c9d6bc01fcaa94e2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/03/2019
-ms.locfileid: "67540338"
+ms.lasthandoff: 07/10/2019
+ms.locfileid: "67718075"
 ---
 # <a name="planning-for-an-azure-files-deployment"></a>Planung für eine Azure Files-Bereitstellung
 
@@ -210,10 +210,20 @@ Standard-Dateifreigaben sind für alle Region bis zu 5 TiB verfügbar. In einige
 |Europa, Westen     |LRS|Nein         |
 |USA, Westen 2     |LRS, ZRS|Nein         |
 
+Damit wir neue Regionen und Funktionen priorisieren können, füllen Sie bitte das Formular dieser [Umfrage](https://aka.ms/azurefilesatscalesurvey) aus.
 
 ### <a name="steps-to-onboard"></a>Schritte des Onboardings
 
-Führen Sie die folgenden PowerShell-Befehle aus, um Ihr Abonnement für die größere Dateifreigabevorschauversion anzumelden:
+Sie müssen Azure PowerShell verwenden, um Ihr Abonnement für die größere Dateifreigabevorschauversion zu registrieren. Sie können [Azure Cloud Shell](https://shell.azure.com/) verwenden oder das [Azure PowerShell-Modul lokal installieren](https://docs.microsoft.com/en-us/powershell/azure/install-Az-ps?view=azps-2.4.0), um die folgenden PowerShell-Befehle auszuführen:
+
+Vergewissern Sie sich zunächst, dass das Abonnement, das Sie für die Vorschau registrieren möchten, ausgewählt ist:
+
+```powershell
+$context = Get-AzSubscription -SubscriptionId ...
+Set-AzContext $context
+```
+
+Registrieren Sie es dann für der Vorschauversion mithilfe der folgenden Befehle:
 
 ```powershell
 Register-AzProviderFeature -FeatureName AllowLargeFileShares -ProviderNamespace Microsoft.Storage
@@ -227,7 +237,7 @@ Mit dem folgenden Befehl können Sie Ihren Registrierungsstatus überprüfen:
 Get-AzProviderFeature -FeatureName AllowLargeFileShares -ProviderNamespace Microsoft.Storage
 ```
 
-Es kann bis zu 15 Minuten dauern, bis Ihr Status auf „registriert“ aktualisiert wurde. Sie können die Funktion trotzdem schon vorher benutzen.
+Es kann bis zu 15 Minuten dauern, bis Ihr Status auf **Registriert** aktualisiert ist. Sobald Ihr Status **Registriert** lautet, können Sie das Feature verwenden.
 
 ### <a name="use-larger-file-shares"></a>Verwenden von größeren Dateifreigaben
 

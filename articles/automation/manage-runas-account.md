@@ -9,12 +9,12 @@ ms.author: robreed
 ms.date: 05/24/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 6fceee819762e10809a94f72d944e7625cb7e67c
-ms.sourcegitcommit: f811238c0d732deb1f0892fe7a20a26c993bc4fc
+ms.openlocfilehash: 49b8554f6064f036d4305cf7a5c1450c2f18c48d
+ms.sourcegitcommit: 66237bcd9b08359a6cce8d671f846b0c93ee6a82
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/29/2019
-ms.locfileid: "67478563"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67798478"
 ---
 # <a name="manage-azure-automation-run-as-accounts"></a>Verwalten von ausführenden Azure Automation-Konten
 
@@ -104,7 +104,7 @@ Dieses PowerShell-Skript unterstützt folgende Konfigurationen:
 
 1. Speichern Sie das folgende Skript auf dem Computer. In diesem Beispiel speichern Sie es mit dem Dateinamen *New-RunAsAccount.ps1*.
 
-   Das Skript verwendet mehrere Azure Resource Manager-Cmdlets zum Erstellen von Ressourcen. In der folgenden Tabelle sind die Cmdlets und die erforderlichen Berechtigungen aufgeführt.
+   Das Skript verwendet mehrere Azure Resource Manager-Cmdlets zum Erstellen von Ressourcen. In der obigen Tabelle der [Berechtigungen](#permissions) sind die Cmdlets und die erforderlichen Berechtigungen aufgeführt.
 
     ```powershell
     #Requires -RunAsAdministrator
@@ -370,13 +370,35 @@ Führen Sie folgende Schritte aus, um das Zertifikat zu erneuern:
 
 ## <a name="limiting-run-as-account-permissions"></a>Einschränken der Berechtigungen für ausführendes Konto
 
-Um die Ausrichtung der Automatisierung für Ressourcen in Azure Automation zu steuern, werden dem ausführenden Konto standardmäßig Berechtigungen als Mitwirkender im Abonnement gewährt. Wenn Sie die Möglichkeiten des ausführenden Dienstprinzipals einschränken müssen, können Sie das Konto aus der Rolle „Mitwirkender“ des Abonnements entfernen und es als „Mitwirkender“ zu den Ressourcengruppen hinzufügen, die Sie angeben möchten.
+Zum Steuern der Automatisierungsziele für Ressourcen in Azure können Sie das Skript [Update-AutomationRunAsAccountRoleAssignments.ps1](https://aka.ms/AA5hug8) im PowerShell-Katalog ausführen, um Ihren vorhandenen Dienstprinzipal des ausführenden Kontos so zu ändern, dass eine benutzerdefinierte Rollendefinition erstellt und verwendet wird. Diese Rolle verfügt über Berechtigungen für alle Ressourcen außer [Key Vault](https://docs.microsoft.com/azure/key-vault/). 
 
-Wählen Sie im Azure-Portal **Abonnements**, und wählen Sie das Abonnement Ihres Automation-Kontos. Wählen Sie **Zugriffssteuerung (IAM)** und anschließend die Registerkarte **Rollenzuweisungen** aus. Suchen Sie nach dem Dienstprinzipal für Ihr Automation-Konto (der etwa wie folgt aussieht: \<AutomationKontoname_eindeutiger Bezeichner\>). Wählen Sie das Konto aus, und klicken Sie auf **Entfernen**, um es aus dem Abonnement zu entfernen.
+> [!IMPORTANT]
+> Nach dem Ausführen des Skripts `Update-AutomationRunAsAccountRoleAssignments.ps1` funktionieren Runbooks, die über ausführende Konten auf KeyVault zugreifen, nicht mehr. Überprüfen Sie Runbooks in Ihrem Konto auf Aufrufe von Azure KeyVault.
+>
+> Um den Zugriff auf KeyVault aus Azure Automation-Runbooks zu aktivieren, müssen Sie [das ausführende Konto den Berechtigungen für den KeyVault hinzufügen](#add-permissions-to-key-vault).
 
-![Abonnementmitwirkende](media/manage-runas-account/automation-account-remove-subscription.png)
+Wenn Sie einschränken müssen, welche weiteren Vorgänge der ausführende Dienstprinzipal ausführen kann, können Sie dem `NotActions` der benutzerdefinierten Rollendefinition weitere Ressourcentypen hinzufügen. Im folgenden Beispiel wird der Zugriff auf `Microsoft.Compute` eingeschränkt. Wenn Sie dies den **NotActions** der Rollendefinition hinzufügen, kann diese Rolle auf keine Compute-Ressource zugreifen. Weitere Informationen zu Rollendefinitionen finden Sie unter [Grundlegendes zu Rollendefinitionen für Azure-Ressourcen](../role-based-access-control/role-definitions.md).
 
-Um den Dienstprinzipal zu einer Ressourcengruppe hinzuzufügen, wählen Sie die Ressourcengruppe im Azure-Portal und wählen dann **Zugriffssteuerung (IAM)** . Wählen Sie **Rollenzuweisung hinzufügen** aus, um die Seite **Rollenzuweisung hinzufügen** zu öffnen. Wählen Sie als **Rolle** die Option **Mitwirkender**. Geben Sie in das Textfeld **Auswählen** den Namen des Dienstprinzipals für Ihr ausführendes Konto ein, und wählen Sie es aus der Liste aus. Klicken Sie zum Speichern der Änderungen auf **Speichern**. Wiederholen Sie diese Schritte für die Ressourcengruppen, auf die der ausführende Azure Automation-Dienstprinzipal Zugriff haben soll.
+```powershell
+$roleDefinition = Get-AzureRmRoleDefinition -Name 'Automation RunAs Contributor'
+$roleDefinition.NotActions.Add("Microsoft.Compute/*")
+$roleDefinition | Set-AzureRMRoleDefinition
+```
+
+Um zu bestimmen, ob der als ausführendes Konto verwendete Dienstprinzipal sich in der Definition **Mitwirkender** oder einer benutzerdefinierten Rollendefinition befindet, wechseln Sie zu Ihrem Automation-Konto, und wählen Sie unter **Kontoeinstellungen** die Option **Ausführende Konten** > **Ausführendes Azure-Konto** aus. Unter **Rolle** ist die verwendete Rollendefinition aufgeführt. 
+
+[![](media/manage-runas-account/verify-role.png "Überprüfen der Rolle „Ausführendes Konto“")](media/manage-runas-account/verify-role-expanded.png#lightbox)
+
+Um die Rollendefinition zu bestimmen, die von den ausführenden Automation-Konten für mehrere Abonnements oder Automation-Konten verwendet werden, können Sie das Skript [Check-AutomationRunAsAccountRoleAssignments.ps1](https://aka.ms/AA5hug5) im PowerShell-Katalog verwenden.
+
+### <a name="add-permissions-to-key-vault"></a>Hinzufügen von Berechtigungen zu Key Vault
+
+Wenn Sie Azure Automation das Verwalten von Key Vault ermöglichen möchten und Ihr Dienstprinzipal für das ausführende Konto eine benutzerdefinierte Rollendefinition verwendet, müssen Sie weitere Schritte ausführen, um dieses Verhalten zuzulassen:
+
+* Gewähren von Berechtigungen für Key Vault
+* Festlegen der Zugriffsrichtlinie
+
+Sie können das Skript [Extend-AutomationRunAsAccountRoleAssignmentToKeyVault.ps1](https://aka.ms/AA5hugb) im PowerShell-Katalog verwenden, um die Berechtigungen des ausführenden Kontos KeyVault zuzuweisen; weitere Einzelheiten zum Festlegen von Berechtigungen für Key Vault finden Sie unter [Gewähren des Zugriffs auf einen Schlüsseltresor für mehrere Anwendungen](../key-vault/key-vault-group-permissions-for-apps.md).
 
 ## <a name="misconfiguration"></a>Fehlkonfiguration
 

@@ -4,7 +4,7 @@ description: Stellen Sie den Chef-Client auf einem virtuellen Computer mithilfe 
 services: virtual-machines-linux
 documentationcenter: ''
 author: roiyz-msft
-manager: jeconnoc
+manager: gwallace
 editor: ''
 tags: azure-resource-manager
 ms.service: virtual-machines-linux
@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/21/2018
 ms.author: roiyz
-ms.openlocfilehash: 6bd3ea4e664523fe8014be40c51d573ed5158ecf
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: e72536cc6f9ec3b94016d16de8502e70bc7107aa
+ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60800265"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67706084"
 ---
 # <a name="chef-vm-extension-for-linux-and-windows"></a>Chef-VM-Erweiterung für Linux und Windows
 
@@ -69,7 +69,7 @@ Der folgende JSON-Code zeigt das Schema für die Chef-VM-Erweiterung. Die Erweit
 ### <a name="core-property-values"></a>Kerneigenschaftswerte
 
 | NAME | Wert/Beispiel | Datentyp
-| ---- | ---- | ---- 
+| ---- | ---- | ----
 | apiVersion | `2017-12-01` | string (date) |
 | publisher | `Chef.Bootstrap.WindowsAzure` | string |
 | type | `LinuxChefClient` (Linux), `ChefClient` (Windows) | string |
@@ -105,7 +105,7 @@ Der folgende JSON-Code zeigt das Schema für die Chef-VM-Erweiterung. Die Erweit
 
 Azure-VM-Erweiterungen können mithilfe von Azure Resource Manager-Vorlagen bereitgestellt werden. Vorlagen können verwendet werden, um einen oder mehrere virtuelle Computer bereitzustellen, den Chef-Client zu installieren, eine Verbindung mit dem Chef-Server herzustellen und die anfängliche Konfiguration auf dem Server gemäß der Definition in der [Run-list](https://docs.chef.io/run_lists.html) auszuführen.
 
-Eine Resource Manager-Beispielvorlage mit der Chef--VM-Erweiterung finden Sie im [Azure-Schnellstartkatalog](https://github.com/Azure/azure-quickstart-templates/tree/master/chef-json-parameters-linux-vm).
+Eine Resource Manager-Beispielvorlage mit der Chef-VM-Erweiterung finden Sie im [Azure-Schnellstartkatalog](https://github.com/Azure/azure-quickstart-templates/tree/master/chef-json-parameters-linux-vm).
 
 Die JSON-Konfiguration für eine VM-Erweiterung kann innerhalb der VM-Ressource geschachtelt oder im Stamm bzw. auf der obersten Ebene einer Resource Manager-JSON-Vorlage platziert werden. Die Platzierung der JSON-Konfiguration wirkt sich auf den Wert von Name und Typ der Ressource aus. Weitere Informationen finden Sie unter [Set name and type for child resources](../../azure-resource-manager/resource-manager-template-child-resource.md) (Festlegen von Name und Typ für untergeordnete Ressourcen).
 
