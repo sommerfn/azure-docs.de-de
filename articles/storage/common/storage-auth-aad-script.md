@@ -5,16 +5,16 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: article
-ms.date: 04/19/2019
+ms.date: 07/03/2019
 ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: common
-ms.openlocfilehash: 3fe142439dc80af660d286e5913fee13d4de8e86
-ms.sourcegitcommit: c0419208061b2b5579f6e16f78d9d45513bb7bbc
+ms.openlocfilehash: 80ab896e1393d6c68b22a61d1b96acd507aa6994
+ms.sourcegitcommit: a6873b710ca07eb956d45596d4ec2c1d5dc57353
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/08/2019
-ms.locfileid: "67625657"
+ms.lasthandoff: 07/16/2019
+ms.locfileid: "68249905"
 ---
 # <a name="run-azure-cli-or-powershell-commands-with-azure-ad-credentials-to-access-blob-or-queue-data"></a>Ausführen von Azure CLI- oder PowerShell-Befehlen mit Azure AD-Anmeldeinformationen für den Zugriff auf Blob- oder Warteschlangendaten
 
@@ -44,8 +44,8 @@ Im folgenden Beispiel sehen Sie, wie in einem neuen Speicherkonto mithilfe Ihrer
     ```azurecli
     az login
     ```
-    
-1. Geben Sie das gewünschte Abonnement an. Erstellen Sie mit [az group create](https://docs.microsoft.com/cli/azure/group?view=azure-cli-latest#az-group-create) eine Ressourcengruppe. Erstellen Sie mithilfe des Befehls [az storage account create](https://docs.microsoft.com/cli/azure/storage/account?view=azure-cli-latest#az-storage-account-create) ein Speicherkonto in dieser Ressourcengruppe: 
+
+1. Geben Sie das gewünschte Abonnement an. Erstellen Sie mit [az group create](https://docs.microsoft.com/cli/azure/group?view=azure-cli-latest#az-group-create) eine Ressourcengruppe. Erstellen Sie mithilfe des Befehls [az storage account create](https://docs.microsoft.com/cli/azure/storage/account?view=azure-cli-latest#az-storage-account-create) ein Speicherkonto in dieser Ressourcengruppe:
 
     ```azurecli
     az account set --subscription <subscription-id>
@@ -61,12 +61,12 @@ Im folgenden Beispiel sehen Sie, wie in einem neuen Speicherkonto mithilfe Ihrer
         --sku Standard_LRS \
         --encryption-services blob
     ```
-    
+
 1. Weisen Sie sich vor der Erstellung des Containers selbst die Rolle [Mitwirkender an Storage-Blobdaten](../../role-based-access-control/built-in-roles.md#storage-blob-data-contributor) zu. Obwohl Sie der Kontobesitzer sind, benötigen Sie explizite Berechtigungen, um Datenvorgänge in Ihrem Speicherkonto ausführen zu können. Weitere Informationen zum Zuweisen von RBAC-Rollen finden Sie unter [Gewähren von Zugriff auf Azure-Blob- und -Warteschlangendaten mit RBAC über das Azure-Portal](storage-auth-aad-rbac.md).
 
     > [!IMPORTANT]
     > Die RBAC-Rollenzuweisungen können einige Minuten dauern.
-    
+
 1. Rufen Sie mithilfe des `--auth-mode`-Parameters, für den `login` festgelegt wurde, den Befehl [az storage container create](https://docs.microsoft.com/cli/azure/storage/container?view=azure-cli-latest#az-storage-container-create) auf, um den Container mithilfe Ihrer Azure AD-Anmeldeinformationen zu erstellen:
 
     ```azurecli
@@ -91,7 +91,7 @@ Im folgenden Beispiel sehen Sie, wie in einem neuen Speicherkonto mithilfe Ihrer
     ```powershell
     Connect-AzAccount
     ```
-    
+
 1. Erstellen Sie eine Azure-Ressourcengruppe, indem Sie [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) aufrufen. 
 
     ```powershell
