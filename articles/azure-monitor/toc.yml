@@ -7,7 +7,6 @@
     - name: Terminologieänderungen
       href: terminology.md
 - name: Schnellstarts
-  expanded: true
   items:
     - name: ANWENDUNGEN
       items:
@@ -96,9 +95,9 @@
           href: platform/personal-data-mgmt.md
         - name: 'Anwendungsdatensammlung, -vermerkdauer und -speicherung'
           href: app/data-retention-privacy.md
-    - name: Reagieren auf Incidents
+    - name: Alerts
       items:
-        - name: Alerts
+        - name: Übersicht
           href: platform/alerts-overview.md
         - name: Klassische Warnungen
           href: platform/alerts-classic.overview.md
@@ -114,8 +113,6 @@
           href: platform/alerts-action-rules.md
         - name: Intelligente Gruppen
           href: platform/alerts-smartgroups-overview.md
-        - name: Autoscale
-          href: platform/autoscale-overview.md
         - name: Ändern der Analyse
           href: app/change-analysis.md
     - name: Visualisieren von Daten
@@ -954,6 +951,8 @@
       items:
         - name: Autoscale
           items:
+            - name: Übersicht
+              href: platform/autoscale-overview.md
             - name: Exemplarische Vorgehensweise
               href: platform/autoscale-get-started.md
             - name: Einstellungen
