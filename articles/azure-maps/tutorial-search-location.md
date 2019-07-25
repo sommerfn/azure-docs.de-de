@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: 21c7e996cfe2f07d9a5b056d8cbc22f238bb48fd
-ms.sourcegitcommit: 8e76be591034b618f5c11f4e66668f48c090ddfd
+ms.openlocfilehash: e787366694b55d3dcd61eec2c5a5b42dd187ec55
+ms.sourcegitcommit: 920ad23613a9504212aac2bfbd24a7c3de15d549
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/29/2019
-ms.locfileid: "66357614"
+ms.lasthandoff: 07/15/2019
+ms.locfileid: "68226852"
 ---
 # <a name="search-nearby-points-of-interest-using-azure-maps"></a>Suchen nach Points of Interest in der Nähe mit Azure Maps
 
@@ -239,9 +239,9 @@ Die erstellte Karte verwendet bisher nur die Längen-/Breitengraddaten für die 
     map.events.add('mouseover', resultLayer, showPopup);
     ```
 
-    Die API `sup` stellt ein Informationsfenster bereit, das an der erforderlichen Position auf der Karte verankert ist. 
+    Die API `*atlas.Popup` stellt ein Informationsfenster bereit, das an der erforderlichen Position auf der Karte verankert ist. 
 
-2. Fügen Sie im Tag *script* nach der Funktion `GetMap` den folgenden Code hinzu, um im Popupfeld die Informationen des mousover-Ergebnisses anzuzeigen.
+2. Fügen Sie in der `GetMap`-Funktion den folgenden Code hinzu, um im Popupfeld die Informationen des mousover-Ergebnisses anzuzeigen.
 
     ```JavaScript
     function showPopup(e) {

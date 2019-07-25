@@ -10,12 +10,12 @@ ms.date: 03/24/2019
 ms.topic: tutorial
 ms.service: iot-edge
 ms.custom: mvc, seodec18
-ms.openlocfilehash: 6ec429bc7c1598e947b798c30e7992e3d357d00c
-ms.sourcegitcommit: 009334a842d08b1c83ee183b5830092e067f4374
+ms.openlocfilehash: d75e4c3e2b6f28dfbde670406854ac87790dd090
+ms.sourcegitcommit: fa45c2bcd1b32bc8dd54a5dc8bc206d2fe23d5fb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/29/2019
-ms.locfileid: "66303816"
+ms.lasthandoff: 07/12/2019
+ms.locfileid: "67850115"
 ---
 # <a name="tutorial-develop-and-deploy-a-python-iot-edge-module-for-linux-devices"></a>Tutorial: Entwickeln und Bereitstellen eines Python-IoT Edge-Moduls für Linux-Geräte
 
@@ -69,25 +69,15 @@ Die folgenden Schritte dienen zum Erstellen eines IoT Edge-Python-Moduls unter V
 
 ### <a name="create-a-new-project"></a>Erstellen eines neuen Projekts
 
-Verwenden Sie das Python-Paket **cookiecutter**, um eine Python-Lösungsvorlage zu erstellen, auf der Sie aufbauen können. 
+Verwenden Sie VS Code, um eine Python-Lösungsvorlage zu erstellen, auf der Sie aufbauen können. 
 
 1. Wählen Sie in Visual Studio Code **Ansicht** > **Terminal** aus, um das in Visual Studio Code integrierte Terminal zu öffnen.
 
-2. Geben Sie im Terminal den folgenden Befehl ein, um **cookiecutter** zu installieren (oder zu aktualisieren). „cookiecutter“ wird zum Erstellen der IoT Edge-Lösungsvorlage verwendet.
+1. Klicken Sie auf **Ansicht** > **Befehlspalette**, um die VS Code-Befehlspalette zu öffnen. 
 
-    ```cmd/sh
-    pip install --upgrade --user cookiecutter
-    ```
-   >[!Note]
-   >Vergewissern Sie sich, dass sich das Verzeichnis, in dem Cookiecutter installiert wird, im PATH-Element Ihrer Umgebung befindet, damit das Programm über eine Eingabeaufforderung aufgerufen werden kann. Das Verzeichnis ist Teil der Ausgabe des Installationsskripts, beispielsweise `C:\Users\{user}\AppData\Roaming\Python\Python{version}\Scripts`.
-   >
-   >Starten Sie Visual Studio Code neu, um die Änderungen für PATH zu übernehmen. 
+1. Geben Sie in der Befehlspalette den Befehl **Azure: Sign in** ein, und führen Sie ihn aus, und befolgen Sie die Anweisungen zum Anmelden bei Ihrem Azure-Konto. Falls Sie bereits angemeldet sind, können Sie diesen Schritt überspringen.
 
-3. Klicken Sie auf **Ansicht** > **Befehlspalette**, um die VS Code-Befehlspalette zu öffnen. 
-
-4. Geben Sie in der Befehlspalette den Befehl **Azure: Sign in** ein, und führen Sie ihn aus, und befolgen Sie die Anweisungen zum Anmelden bei Ihrem Azure-Konto. Falls Sie bereits angemeldet sind, können Sie diesen Schritt überspringen.
-
-5. Geben Sie in der Befehlspalette den Befehl **Azure IoT Edge: New IoT Edge Solution** (Azure IoT Edge: Neue IoT Edge-Projektmappe) ein, und führen Sie ihn aus. Folgen Sie den Anweisungen, und geben Sie die folgenden Informationen an, um Ihre Projektmappe zu erstellen:
+1. Geben Sie in der Befehlspalette den Befehl **Azure IoT Edge: New IoT Edge Solution** (Azure IoT Edge: Neue IoT Edge-Projektmappe) ein, und führen Sie ihn aus. Folgen Sie den Anweisungen, und geben Sie die folgenden Informationen an, um Ihre Projektmappe zu erstellen:
 
    | Feld | Wert |
    | ----- | ----- |

@@ -8,15 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: computer-vision
 ms.topic: quickstart
-ms.date: 03/11/2019
+ms.date: 07/15/2019
 ms.author: pafarley
 ms.custom: seodec18
-ms.openlocfilehash: 844d2ca9c2aa0e6a79eb7abebbec986f0fd5c5bc
-ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
+ms.openlocfilehash: a28dd94f32eac3cba3443761671b3c846e52798c
+ms.sourcegitcommit: 9a699d7408023d3736961745c753ca3cec708f23
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67604261"
+ms.lasthandoff: 07/16/2019
+ms.locfileid: "68277623"
 ---
 # <a name="quickstart-extract-printed-text-ocr-using-the-computer-vision-rest-api-and-php"></a>Schnellstart: Extrahieren von gedrucktem Text (OCR) mithilfe der Maschinelles Sehen-REST-API und PHP
 
@@ -219,7 +219,7 @@ Eine erfolgreiche Antwort wird im JSON-Format zurückgegeben. Die Beispielwebsit
 
 ## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
 
-Wenn Sie die Datei nicht mehr benötigen, löschen Sie sie, und deinstallieren Sie dann das PHP5-Paket `HTTP_Request2`. Führen Sie die folgenden Schritte durch, um das Paket zu deinstallieren:
+Wenn Sie das Projekt nicht mehr verwenden, löschen Sie die Datei, und deinstallieren Sie das PHP5-Paket `HTTP_Request2`. Führen Sie die folgenden Schritte durch, um das Paket zu deinstallieren:
 
 1. Öffnen Sie ein Eingabeaufforderungsfenster als Administrator.
 2. Führen Sie den folgenden Befehl aus:
