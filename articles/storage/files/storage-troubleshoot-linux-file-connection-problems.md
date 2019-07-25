@@ -9,12 +9,12 @@ ms.topic: article
 ms.date: 10/16/2018
 ms.author: jeffpatt
 ms.subservice: files
-ms.openlocfilehash: 97f737c8d1228bd03baf59f2ebe830f715241299
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: 232b4ca2ee4f3137069ed155cc82a5c5e3251420
+ms.sourcegitcommit: 47ce9ac1eb1561810b8e4242c45127f7b4a4aa1a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67449839"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67807279"
 ---
 # <a name="troubleshoot-azure-files-problems-in-linux"></a>Behandeln von Azure Files-Problemen unter Linux
 
@@ -94,19 +94,30 @@ Für eine einzelne Datei gilt ein Kontingent von 2.000 geöffneten Handles. Wenn
 
 Reduzieren Sie die Anzahl der gleichzeitig geöffneten Handles, indem Sie einige Handles schließen und es anschließend erneut versuchen.
 
+Verwenden Sie das PowerShell-Cmdlet [Get-AzStorageFileHandle](https://docs.microsoft.com/powershell/module/az.storage/get-azstoragefilehandle), um geöffnete Handles für eine Dateifreigabe, ein Verzeichnis oder eine Datei anzuzeigen.  
+
+Verwenden Sie das PowerShell-Cmdlet [Close-AzStorageFileHandle](https://docs.microsoft.com/powershell/module/az.storage/close-azstoragefilehandle), um geöffnete Handles für eine Dateifreigabe, ein Verzeichnis oder eine Datei zu schließen.
+
+> [!Note]  
+> Die Cmdlets Get-AzStorageFileHandle und Close-AzStorageFileHandle sind im Az PowerShell-Modul, Version 2.4 oder höher, enthalten. Informationen zum Installieren des neuesten Az PowerShell-Moduls finden Sie unter [Installieren des Azure PowerShell-Moduls](https://docs.microsoft.com/powershell/azure/install-az-ps).
+
 <a id="slowfilecopying"></a>
 ## <a name="slow-file-copying-to-and-from-azure-files-in-linux"></a>Langsames Kopieren von Dateien in und aus Azure Files unter Linux
 
 - Wenn Sie keine bestimmte Anforderung für die Mindest-E/A-Größe haben, empfehlen wir Ihnen für eine optimale Leistung die Verwendung von 1 MiB als E/A-Größe.
-- Wenn Sie die endgültige Größe einer Datei kennen, die Sie durch die Verwendung von Schreibvorgängen erweitern, und für Ihre Software keine Kompatibilitätsprobleme auftreten, wenn ein ungeschriebenes Fragment für die Datei Nullen enthält, legen Sie die Dateigröße im Voraus fest, anstatt aus jedem Schreibvorgang einen Erweiterungsschreibvorgang zu machen.
 - Verwenden Sie die richtige Kopiermethode:
     - Verwenden Sie [AzCopy](../common/storage-use-azcopy.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json) für Übertragungen zwischen zwei Dateifreigaben.
-    - Durch die Verwendung von „cp“ mit „parallel“ lässt sich die Kopiergeschwindigkeit u. U. verbessern. Die Anzahl der Threads richtet sich nach Ihrem Anwendungsfall und der Workload. In diesem Beispiel werden sechs `find * -type f | parallel --will-cite -j 6 cp {} /mntpremium/ &` verwendet.
+    - Durch die Verwendung von „cp“ oder „dd“ mit „parallel“ lässt sich die Kopiergeschwindigkeit ggf. verbessern. Die Anzahl der Threads richtet sich nach Ihrem Anwendungsfall und der Workload. Die folgenden Beispiele verwenden sechs Befehle: 
+    - cp-Beispiel (cp verwendet die Standardblockgröße des Dateisystems als Segmentgröße): `find * -type f | parallel --will-cite -j 6 cp {} /mntpremium/ &`.
+    - dd-Beispiel (mit diesem Befehl wird die Blockgröße explizit auf 1 MiB festgelegt): `find * -type f | parallel --will-cite-j 6 dd if={} of=/mnt/share/{} bs=1M`
     - Open-Source-Tools von Drittanbietern, beispielsweise:
         - [GNU Parallel](https://www.gnu.org/software/parallel/)
         - [Fpart](https://github.com/martymac/fpart) – Sortiert Dateien und packt sie in Partitionen.
         - [Fpsync](https://github.com/martymac/fpart/blob/master/tools/fpsync) – Verwendet Fpart und ein Kopiertool, um mehrere Instanzen zu erzeugen und Daten von „src_dir“ zu „dst_url“ zu migrieren.
         - [Multi](https://github.com/pkolano/mutil) – Multithreaded „cp“ und „md5sum“ basierend auf GNU Core Utilities
+- Wenn Sie die Dateigröße im Voraus festlegen, anstatt jeden Schreibvorgang als erweiternden Schreibvorgang zu erstellen, können Sie die Kopiergeschwindigkeit in Szenarien verbessern, in denen die Dateigröße bekannt ist. Wenn erweiternde Schreibvorgänge vermieden werden müssen, können Sie eine Zieldateigröße mit dem Befehl `truncate - size <size><file>` festlegen. Danach kopiert der Befehl `dd if=<source> of=<target> bs=1M conv=notrunc` eine Quelldatei, ohne dass die Größe der Zieldatei wiederholt aktualisiert werden muss. Sie können z.B. die Zieldateigröße für jede Datei festlegen, die Sie kopieren möchten (angenommen, eine Freigabe wird unter „/mnt/share“ eingebunden):
+    - `$ for i in `` find * -type f``; do truncate --size ``stat -c%s $i`` /mnt/share/$i; done`
+    - Anschließend können Sie Dateien kopieren, ohne Schreibvorgänge parallel zu erweitern: `$find * -type f | parallel -j6 dd if={} of =/mnt/share/{} bs=1M conv=notrunc`
 
 <a id="error115"></a>
 ## <a name="mount-error115-operation-now-in-progress-when-you-mount-azure-files-by-using-smb-30"></a>„Bereitstellungsfehler (115): Vorgang wird ausgeführt“, beim Bereitstellen von Azure Files mit SMB 3.0
@@ -140,6 +151,23 @@ Navigieren Sie zu dem Speicherkonto, in dem sich die Azure-Dateifreigabe befinde
 ### <a name="solution-for-cause-2"></a>Lösung für Ursache 2
 
 Stellen Sie sicher, dass virtuelle Netzwerk- und Firewallregeln für das Speicherkonto ordnungsgemäß konfiguriert sind. Um zu testen, ob virtuelle Netzwerk- oder Firewallregeln das Problem verursachen, ändern Sie vorübergehend die Einstellung für das Speicherkonto in **Zugriff aus allen Netzwerken zulassen**. Weitere Informationen finden Sie unter [Konfigurieren von Azure Storage-Firewalls und virtuellen Netzwerken](https://docs.microsoft.com/azure/storage/common/storage-network-security).
+
+<a id="open-handles"></a>
+## <a name="unable-to-delete-a-file-or-directory-in-an-azure-file-share"></a>Eine Datei oder ein Verzeichnis in einer Azure-Dateifreigabe kann nicht gelöscht werden
+
+### <a name="cause"></a>Ursache
+Dieses Problem tritt in der Regel auf, wenn für die Datei oder das Verzeichnis ein geöffnetes Handle vorhanden ist. 
+
+### <a name="solution"></a>Lösung
+
+Wenn die SMB-Clients alle geöffneten Handles geschlossen haben und das Problem weiterhin auftritt, führen Sie Folgendes aus:
+
+- Verwenden Sie das PowerShell-Cmdlet [Get-AzStorageFileHandle](https://docs.microsoft.com/powershell/module/az.storage/get-azstoragefilehandle), um geöffnete Handles anzuzeigen.
+
+- Verwenden Sie das PowerShell-Cmdlet [Close-AzStorageFileHandle](https://docs.microsoft.com/powershell/module/az.storage/close-azstoragefilehandle), um geöffnete Handles zu schließen. 
+
+> [!Note]  
+> Die Cmdlets Get-AzStorageFileHandle und Close-AzStorageFileHandle sind im Az PowerShell-Modul, Version 2.4 oder höher, enthalten. Informationen zum Installieren des neuesten Az PowerShell-Moduls finden Sie unter [Installieren des Azure PowerShell-Moduls](https://docs.microsoft.com/powershell/azure/install-az-ps).
 
 <a id="slowperformance"></a>
 ## <a name="slow-performance-on-an-azure-file-share-mounted-on-a-linux-vm"></a>Langsame Leistung in einer Azure-Dateifreigabe, die in einer Linux-VM bereit gestellt ist
@@ -191,40 +219,6 @@ Verwenden Sie das Speicherbenutzerkonto, um die Dateien zu kopieren:
 - `Passwd [storage account name]`
 - `Su [storage account name]`
 - `Cp -p filename.txt /share`
-
-## <a name="cannot-connect-to-or-mount-an-azure-file-share"></a>Verbindungsherstellung mit oder Einbindung von Azure-Dateifreigabe nicht möglich
-
-### <a name="cause"></a>Ursache
-
-Häufige Ursachen für dieses Problem:
-
-- Sie verwenden einen Client mit nicht kompatibler Linux-Distribution. Verwenden Sie möglichst die folgenden Linux-Distributionen, um eine Verbindung mit einer Azure-Dateifreigabe herzustellen:
-
-    |   | SMB 2.1 <br>(Einbindungen auf virtuellen Computern innerhalb der gleichen Azure-Region) | SMB 3.0 <br>(Einbindungen aus einer lokalen Region und regionsübergreifend) |
-    | --- | :---: | :---: |
-    | Ubuntu Server | 14.04+ | 16.04 und höher |
-    | RHEL | 7 und höher | 7.5 und höher |
-    | CentOS | 7 und höher |  7.5 und höher |
-    | Debian | 8 und höher |   |
-    | openSUSE | 13.2 und höher | 42.3+ |
-    | SUSE Linux Enterprise Server | 12 | 12 SP3 und höher |
-
-- Auf dem Client sind keine CIFS-Hilfsprogramme (cifs-utils) installiert.
-- Die mindestens erforderliche SMB-/CIFS-Version 2.1 ist auf dem Client nicht installiert.
-- Der Client unterstützt die SMB 3.0-Verschlüsselung nicht. Die SMB 3.0-Verschlüsselung ist ab Ubuntu 16.4 und ab SUSE 12.3 verfügbar. Bei anderen Distributionen wird mindestens die Kernel-Version 4.11 vorausgesetzt.
-- Sie versuchen, über den TCP-Port 445 eine Verbindung mit einem Speicherkonto herstellen. Dies wird nicht unterstützt.
-- Sie versuchen, auf einem virtuellen Computer eine Verbindung mit der Azure-Dateifreigabe herzustellen, und der virtuelle Computer befindet sich nicht in der gleichen Region wie das Speicherkonto.
-- Ist für das Speicherkonto die Einstellung [Sichere Übertragung erforderlich]( https://docs.microsoft.com/azure/storage/common/storage-require-secure-transfer) aktiviert, lässt Azure Files nur Verbindungen über SMB 3.0 mit Verschlüsselung zu.
-
-### <a name="solution"></a>Lösung
-
-Verwenden Sie das [Problembehandlungstool für Azure Files-Bereitstellungsfehlern unter Linux](https://gallery.technet.microsoft.com/Troubleshooting-tool-for-02184089), um das Problem zu beheben. Dieses Tool ermöglicht Folgendes:
-
-* Überprüfen der Clientausführungsumgebung
-* Erkennen der nicht kompatiblen Clientkonfiguration, die zu einem Zugriffsfehler für Azure Files führen würde
-* Bereitstellen einer Anleitung zur Selbsthilfe
-* Erfassen der Diagnoseablaufverfolgungen
-
 
 ## <a name="ls-cannot-access-ltpathgt-inputoutput-error"></a>ls: cannot access '&lt;Pfad&gt;': Input/output error
 

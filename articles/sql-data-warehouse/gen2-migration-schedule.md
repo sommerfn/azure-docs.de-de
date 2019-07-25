@@ -3,19 +3,19 @@ title: Migrieren eines vorhandenen Azure SQL Data Warehouse zu Gen2 | Microsoft-
 description: Anweisungen zum Migrieren eines vorhandenen Data Warehouse zu Gen2 und der Migrationsplan nach Region.
 services: sql-data-warehouse
 author: mlee3gsd
-ms.author: anumjs
+ms.author: anjangsh
 ms.reviewer: jrasnick
 manager: craigg
 ms.assetid: 04b05dea-c066-44a0-9751-0774eb84c689
 ms.service: sql-data-warehouse
 ms.topic: article
 ms.date: 04/03/2019
-ms.openlocfilehash: 3141f3a1d6a9f09261dee4113276af72168e35e8
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: cef3036b01709847016d9523a5770febb8ff1134
+ms.sourcegitcommit: 64798b4f722623ea2bb53b374fb95e8d2b679318
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67444706"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67839654"
 ---
 # <a name="upgrade-your-data-warehouse-to-gen2"></a>Aktualisieren des Data Warehouse zu Gen2
 
@@ -39,13 +39,13 @@ In der folgenden Tabelle sehen Sie, wann der niedrigere Gen2-Computetarif in wel
 | Kanada, Osten |\* |\* |
 | USA (Mitte) |Verfügbar |1\. Juni 2019 |
 | China, Osten |\* |\* |
-| China, Osten 2 |\* |Nur Gen2 |
+| China, Osten 2 |Verfügbar |Nur Gen2 |
 | China, Norden |\* |\* |
 | China, Norden 2 |Verfügbar |Nur Gen2 |
 | Asien, Osten |Verfügbar |1\. Juni 2019 |
 | East US |Verfügbar |1\. Juni 2019 |
 | USA (Ost) 2 |Verfügbar |1\. Juni 2019 |
-| Frankreich, Mitte |\* |1\. Juni 2019 |
+| Frankreich, Mitte |Verfügbar |1\. Juni 2019 |
 | Deutschland, Mitte |\* |\* |
 | Deutschland, Westen-Mitte |1\. September 2019|2\. Januar 2020 |
 | Indien, Mitte |Verfügbar |1\. Juni 2019 |
@@ -56,10 +56,12 @@ In der folgenden Tabelle sehen Sie, wann der niedrigere Gen2-Computetarif in wel
 | Korea, Süden |Verfügbar |1\. Mai 2019 |
 | USA Nord Mitte |Verfügbar |1\. Mai 2019 |
 | Nordeuropa |Verfügbar |1\. Juni 2019 |
+| Südafrika, Norden |12. Juli 2019 |Nur Gen2 |
 | USA Süd Mitte |Verfügbar |1\. Juni 2019 |
 | Südostasien |Verfügbar |1\. Juni 2019 |
-| UK, Süden |Verfügbar, 2019 |1\. Juni 2019 |
-| UK, Westen |\*|\* |
+| Vereinigte Arabische Emirate, Norden |20. Juli 2019 |Nur Gen2 |
+| UK, Süden |Verfügbar |1\. Juni 2019 |
+| UK, Westen |Verfügbar |Nur Gen2 |
 | USA, Westen-Mitte |2\. September 2019 |2\. Januar 2020|
 | Europa, Westen |Verfügbar |1\. Juni 2019 |
 | USA (Westen) |Verfügbar |1\. Juni 2019 |

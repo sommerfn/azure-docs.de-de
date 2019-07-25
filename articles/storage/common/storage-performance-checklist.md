@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 06/07/2019
 ms.author: tamram
 ms.subservice: common
-ms.openlocfilehash: c5bbd19969349965ea20fa4cfc09e10119a9a86c
-ms.sourcegitcommit: 2d3b1d7653c6c585e9423cf41658de0c68d883fa
+ms.openlocfilehash: ee216bd4d6994179e347465c30039f2f8e293c85
+ms.sourcegitcommit: b2db98f55785ff920140f117bfc01f1177c7f7e2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/20/2019
-ms.locfileid: "67295747"
+ms.lasthandoff: 07/16/2019
+ms.locfileid: "68233023"
 ---
 # <a name="microsoft-azure-storage-performance-and-scalability-checklist"></a>Checkliste zu Leistung und Skalierbarkeit von Microsoft Azure Storage
 
@@ -186,7 +186,7 @@ In einigen Fällen können Sie festlegen, dass die Anwendung davon ausgehen kann
 
 Konfigurations-, Such- und andere Daten, die immer von der Anwendung verwendet werden, sind hervorragend für die Zwischenspeicherung geeignet.  
 
-Ein Beispiel für das Abrufen der Blobeigenschaften mithilfe von .NET, um das letzte Änderungsdatum zu ermitteln, finden Sie unter [Festlegen und Abrufen von Eigenschaften und Metadaten](../blobs/storage-properties-metadata.md). Informationen zu bedingten Downloads finden Sie unter [Angeben von bedingten Headern für Vorgänge des Blob-Diensts](https://msdn.microsoft.com/library/azure/dd179371.aspx).  
+Weitere Informationen zu bedingten Downloads finden Sie unter [Angeben von bedingten Headern für Vorgänge des Blob-Diensts](/rest/api/storageservices/specifying-conditional-headers-for-blob-service-operations).  
 
 #### <a name="subheading8"></a>Hochladen von Daten in Batches
 
@@ -293,8 +293,6 @@ Für große Datenmengen (mehr als 1 TB) bietet der Azure-Speicher einen Import-/
 ### <a name="subheading20"></a>Verwenden von Metadaten
 
 Der Blob-Dienst unterstützt Headeranforderungen, die Metadaten zum Blob enthalten können. Wenn Ihre Anwendung beispielsweise die EXIF-Daten eines Fotos benötigt, kann sie das Foto herunterladen und diese extrahieren. Die Anwendung kann, um Bandbreite zu sparen und die Leistung zu verbessern, die EXIF-Daten in den Blob-Metadaten speichern, wenn die Anwendung das Foto hochgeladen hat. Sie können dann mit einer HEAD-Anforderung die EXIF-Daten in den Metadaten abrufen und so erhebliche Bandbreiten- und Verarbeitungszeit sparen, die jedes Mal zum Extrahieren der EXIF-Daten beim Lesen des Blob benötigt wird. Dies kann in Fällen nützlich sein, wenn Sie nur die Metadaten benötigen und nicht den vollständigen Inhalt eines Blobs.  Pro Blob können nur 8 KB Metadaten gespeichert werden (der Dienst akzeptiert keine Anforderung, mit der mehr als das gespeichert werden soll); wenn die Daten also diese Größe überschreiten, können Sie diese Vorgehensweise nicht anwenden.  
-
-Ein Beispiel für das Abrufen der Blob-Metadaten mithilfe von .NET finden Sie unter [Festlegen und Abrufen von Eigenschaften und Metadaten](../blobs/storage-properties-metadata.md).  
 
 ### <a name="rapid-uploading"></a>Schnelles Hochladen
 
