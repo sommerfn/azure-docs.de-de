@@ -6,12 +6,12 @@ ms.service: data-share
 ms.topic: tutorial
 ms.date: 07/10/2019
 ms.author: joanpo
-ms.openlocfilehash: 2dc4994d88fc03c23a6d5722d6018c926e7d6b8c
-ms.sourcegitcommit: 1572b615c8f863be4986c23ea2ff7642b02bc605
+ms.openlocfilehash: fc63c1a0b3b496de8e5ecea58f79f1db9d872e80
+ms.sourcegitcommit: 64798b4f722623ea2bb53b374fb95e8d2b679318
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/10/2019
-ms.locfileid: "67788362"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67838439"
 ---
 # <a name="tutorial-accept-and-receive-data-using-azure-data-share-preview"></a>Tutorial: Akzeptieren und Empfangen von Daten per Azure Data Share (Vorschauversion)
 
@@ -31,6 +31,8 @@ Stellen Sie sicher, dass alle Voraussetzungen erfüllt sind, bevor Sie die Einla
 * Azure-Abonnement: Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/) erstellen, bevor Sie beginnen.
 * Ein Azure Storage-Konto: Falls Sie noch nicht über ein Konto verfügen, können Sie [hier ein Azure Storage-Konto erstellen](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account). 
 * Eine Data Share-Einladung: Eine Einladung von Microsoft Azure mit dem Betreff „Azure Data Share-Einladung von **<yourdataprovider@domain.com>** “.
+* Berechtigung zum Hinzufügen einer Rollenzuweisung zum Speicherkonto (in der Berechtigung *Microsoft.Authorization/role assignments/write* enthalten). Diese Berechtigung ist in der Rolle „Besitzer“ vorhanden. 
+* Ressourcenanbieterregistrierung für Microsoft.DataShare Informationen zur Vorgehensweise finden Sie in der Dokumentation zu [Azure-Ressourcenanbietern](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-supported-services). 
 
 > [!IMPORTANT]
 > Zum Annehmen und Empfangen einer Azure Data Share-Einladung müssen Sie zuerst den Microsoft.DataShare-Ressourcenanbieter registrieren, und Sie müssen ein Besitzer des Speicherkontos sein, für das Sie die Daten akzeptieren. Befolgen Sie die Anleitung unter [Troubleshoot common issues in Azure Data Share Preview](data-share-troubleshoot.md) (Behandeln von allgemeinen Problemen in Azure Data Share (Vorschauversion)), um den Ressourcenanbieter der Datenfreigabe zu registrieren und sich selbst als Besitzer des Speicherkontos hinzuzufügen. 

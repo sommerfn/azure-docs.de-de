@@ -41,6 +41,9 @@
     - name: Abrufen von Ressourcenänderungen
       displayName: 'resource, change, history, snapshot, details'
       href: ./how-to/get-resource-changes.md
+- name: Problembehandlung
+  displayName: 'errors, violation'
+  href: ./troubleshoot/general.md
 - name: Verweis
   items:
     - name: Azure-Befehlszeilenschnittstelle

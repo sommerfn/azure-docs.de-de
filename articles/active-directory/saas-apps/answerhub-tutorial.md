@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 01/17/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e51c37f983162b82747760b05e2ec5e4e6553c0b
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: ccf3894daf71be0defe4271a08ec5e8d963e0d34
+ms.sourcegitcommit: 920ad23613a9504212aac2bfbd24a7c3de15d549
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67106943"
+ms.lasthandoff: 07/15/2019
+ms.locfileid: "68227498"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-answerhub"></a>Tutorial: Azure Active Directory-Integration mit AnswerHub
 
@@ -193,7 +193,7 @@ In diesem Abschnitt erstellen Sie im Azure-Portal eine Testbenutzerin mit dem Na
 
 ### <a name="assign-the-azure-ad-test-user"></a>Zuweisen des Azure AD-Testbenutzers
 
-In diesem Abschnitt richten Sie Britta Simon für die Verwendung des einmaligen Anmeldens von Azure AD ein, indem Sie ihr Zugriff auf AnswerHub gewähren.
+In diesem Abschnitt richten Sie die Benutzerin Britta Simon für die Verwendung des einmaligen Anmeldens von Azure AD ein, indem Sie ihr Zugriff auf AnswerHub gewähren.
 
 **Weisen Sie den Azure AD-Testbenutzer wie folgt zu:**
 

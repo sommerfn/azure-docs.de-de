@@ -3,22 +3,22 @@ title: 'Tutorial: Bereitstellen eines Machine Learning-Modells mithilfe der graf
 titleSuffix: Azure Machine Learning service
 description: Hier erfahren Sie, wie Sie mithilfe der grafischen Benutzeroberfläche von Azure Machine Learning Service eine Vorhersageanalyselösung (Predictive Analytics-Lösung) erstellen. Sie erhalten Informationen zum Trainieren, Bewerten und Bereitstellen eines Machine Learning-Modells mithilfe von Drag & Drop-Modulen. Dieses Tutorial ist der zweite Teil einer zweiteiligen Reihe über das Prognostizieren von Automobilpreisen mithilfe der linearen Regression.
 author: peterclu
-ms.author: peterclu
+ms.author: peterlu
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: tutorial
-ms.date: 04/06/2019
-ms.openlocfilehash: 8512ca2fe01c772d7e4c21a5cb09303b9804899c
-ms.sourcegitcommit: 3d4121badd265e99d1177a7c78edfa55ed7a9626
+ms.date: 07/11/2019
+ms.openlocfilehash: dd28fb51a4fc3fbf3dfc893f2f5f159ccafdb4b3
+ms.sourcegitcommit: 64798b4f722623ea2bb53b374fb95e8d2b679318
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/30/2019
-ms.locfileid: "66389219"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67839308"
 ---
 # <a name="tutorial-deploy-a-machine-learning-model-with-the-visual-interface"></a>Tutorial: Bereitstellen eines Machine Learning-Modells mithilfe der grafischen Benutzeroberfläche
 
-In diesem Tutorial befassen Sie sich eingehend mit dem Entwickeln einer Vorhersagelösung mithilfe der grafischen Benutzeroberfläche von Azure Machine Learning Service. Dieses Tutorial ist der **zweite Teil einer zweiteiligen Reihe**. Im [ersten Teil des Tutorials](ui-tutorial-automobile-price-train-score.md) haben Sie ein Modell zum Prognostizieren von Automobilpreisen trainiert, bewertet und ausgewertet. In diesem Teil des Tutorials führen Sie die folgenden Schritte aus:
+Um anderen Personen die Möglichkeit zu bieten, das in [Teil 1 des Tutorials](ui-tutorial-automobile-price-train-score.md) entwickelte Vorhersagemodell zu verwenden, können Sie es als Azure-Webdienst bereitstellen. Bis jetzt haben Sie mit dem Trainieren des Modells experimentiert. Jetzt ist es an der Zeit, neue Vorhersagen basierend auf Benutzereingaben zu generieren. In diesem Teil des Tutorials führen Sie die folgenden Schritte aus:
 
 > [!div class="checklist"]
 > * Vorbereiten eines Modells für die Bereitstellung
@@ -29,56 +29,40 @@ In diesem Tutorial befassen Sie sich eingehend mit dem Entwickeln einer Vorhersa
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-Schließen Sie den [ersten Teil des Tutorials](ui-tutorial-automobile-price-train-score.md) ab.
+Führen Sie [Teil 1 des Tutorials](ui-tutorial-automobile-price-train-score.md) aus, um zu erfahren, wie Sie ein Machine Learning-Modell auf der grafischen Benutzeroberfläche trainieren und bewerten.
 
 ## <a name="prepare-for-deployment"></a>Vorbereiten der Bereitstellung
 
-Um anderen Personen die Möglichkeit zu bieten, das in diesem Tutorial entwickelte Vorhersagemodell zu verwenden, können Sie es als Azure-Webdienst bereitstellen.
+Bevor Sie Ihr Experiment als Webdienst bereitstellen, müssen Sie zuerst Ihr *Trainingsexperiment* in ein *Vorhersageexperiment* konvertieren.
 
-Bis jetzt haben Sie mit dem Trainieren des Modells experimentiert. Jetzt ist es an der Zeit, neue Vorhersagen basierend auf Benutzereingaben zu generieren.
+1. Wählen Sie unten im Experimentbereich die Option zum **Erstellen eines Vorhersageexperiments***.
 
-Die Bereitstellungsvorbereitung umfasst zwei Schritte:  
+    ![Animierte GIF der Darstellung der automatischen Konvertierung eines Trainingsexperiments in ein Vorhersageexperiment](./media/ui-tutorial-automobile-price-deploy/deploy-web-service.gif)
 
-1. Konvertieren des von Ihnen erstellten *Trainingsexperiments* in ein *Vorhersageexperiment*
-1. Bereitstellung des Vorhersageexperiments als Webdienst
+    Wenn Sie **Vorhersageexperiment erstellen** auswählen, geschehen mehrere Dinge:
+    
+    * Das trainierte Modell wird als Modul **Trainiertes Modell** in der Modulpalette gespeichert. Sie finden das Modell unter **Trained Models** (Trainierte Modelle).
+    * Module, die zum Training verwendet wurden, werden entfernt. Das gilt insbesondere für:
+      * Train Model (Modell trainieren)
+      * Split Data (Daten aufteilen)
+      * Bewerten eines Modells
+    * Das gespeicherte trainierte Modell wird wieder dem Experiment hinzugefügt.
+    * Die Module **Web service input** und **Web service output** werden hinzugefügt. Diese Module identifizieren, wo die Daten des Benutzers in das Modell eingehen und wo die Daten zurückgegeben werden.
 
-Sie können zunächst eine Kopie des Experiments erstellen, indem Sie unten im Experimentbereich die Option **Save As** (Speichern unter) auswählen.
+    Das **Trainingsexperiment** ist weiterhin auf den neuen Registerkarten gespeichert, die oben im Experimentbereich befinden.
 
-### <a name="convert-the-training-experiment-to-a-predictive-experiment"></a>Konvertieren des Trainingsexperiments in ein Vorhersageexperiment
+1. **Ausführen** aus.
 
-Um dieses Modell auf die Bereitstellung vorzubereiten, müssen Sie dieses Trainingsexperiment in ein Vorhersageexperiment konvertieren. Dieser Vorgang umfasst in der Regel drei Schritte:
-
-1. Speichern des trainierten Modells und Ersetzen der Trainingsmodule
-1. Optimieren des Experiments, um Module zu entfernen, die nur zu Trainingszwecken benötigt wurden
-1. Festlegen, wo der Webdienst Eingabedaten akzeptiert und wo er die Ausgabe generiert
-
-Sie können diese Schritte manuell ausführen. Sie können aber auch unten im Experimentbereich die Option **Set Up Web Service** (Webdienst einrichten) auswählen, damit die Schritte automatisch ausgeführt werden.
-
-![Animierte GIF der Darstellung der automatischen Konvertierung eines Trainingsexperiments in ein Vorhersageexperiment](./media/ui-tutorial-automobile-price-deploy/deploy-web-service.gif)
-
-Wenn Sie **Set Up Web Service** (Webdienst einrichten) auswählen, werden mehrere Vorgänge ausgeführt:
-
-* Das trainierte Modell wird in ein einzelnes **Trained Model**-Modul konvertiert. Es wird in der Modulpalette gespeichert, die sich links neben dem Experimentbereich befindet. Sie finden das Modell unter **Trained Models** (Trainierte Modelle).
-* Module, die zum Training verwendet wurden, werden entfernt. Das gilt insbesondere für:
-  * Train Model (Modell trainieren)
-  * Split Data (Daten aufteilen)
-  * Evaluate Model (Modell auswerten)
-* Das gespeicherte trainierte Modell wird dem Experiment wieder hinzugefügt
-* Die Module **Web service input** und **Web service output** werden hinzugefügt. Diese Module identifizieren, wo die Daten des Benutzers in das Modell eingehen und wo die Daten zurückgegeben werden.
-
-Das Experiment wird in zwei Teilen auf den neuen Registerkarten gespeichert, die sich am oberen Rand des Experimentbereichs befinden. Das ursprüngliche Trainingsexperiment befindet sich unter der Registerkarte **Training Experiment**. Das neu erstellte Vorhersageexperiment befindet sich unter **Predictive Experiment**. Sie möchten das Vorhersageexperiment als Webdienst bereitstellen.
+1. Wählen Sie die Ausgabe des Moduls **Modell bewerten** aus, und wählen Sie dann **Ergebnisse anzeigen** aus, um sicherzustellen, dass das Modell noch funktioniert. Daraufhin werden die ursprünglichen Daten zusammen mit dem prognostizierten Preis („Scored Labels“) angezeigt.
 
 Ihr Experiment sollte jetzt wie folgt aussehen:  
 
 ![Screenshot der erwarteten Konfiguration des Experiments nach dem Vorbereiten der Bereitstellung](./media/ui-tutorial-automobile-price-deploy/predictive-graph.png)
 
-Führen Sie das Experiment ein letztes Mal aus, indem Sie **Run** (Ausführen) auswählen. Wählen Sie im Popupdialogfeld das Computeziel aus, in dem das Experiment ausgeführt werden soll. Um zu überprüfen, ob das Modell noch funktioniert, wählen Sie die Ausgabe des Moduls „Score Model“ aus, und wählen Sie dann **View Results** (Ergebnisse anzeigen) aus. Daraufhin werden die ursprünglichen Daten zusammen mit dem prognostizierten Preis („Scored Labels“) angezeigt.
-
 ## <a name="deploy-the-web-service"></a>Bereitstellen des Webdiensts
 
-Gehen Sie wie folgt vor, um einen aus Ihrem Experiment abgeleiteten neuen Webdienst bereitzustellen:
-
 1. Wählen Sie unten im Experimentbereich die Option **Deploy Web Service** (Webdienst bereitstellen) aus.
+
 1. Wählen Sie das **Computeziel** für die Ausführung Ihres Webdiensts aus.
 
     Derzeit unterstützt die grafische Benutzeroberfläche nur die Bereitstellung in Azure Kubernetes Service-Computezielen (AKS). Sie können im Machine Learning Service-Arbeitsbereich eines der verfügbaren AKS-Computeziele auswählen oder eine neue AKS-Umgebung konfigurieren, indem Sie im daraufhin angezeigten Dialogfeld die entsprechenden Schritte ausführen.
@@ -91,9 +75,7 @@ Gehen Sie wie folgt vor, um einen aus Ihrem Experiment abgeleiteten neuen Webdie
 
 ## <a name="test-the-web-service"></a>Testen des Webdiensts
 
-Die Benutzereingabedaten gehen über das Modul **Web Service Input** in Ihr bereitgestelltes Modell ein. Die Eingabe wird dann im Modul **Score Model** bewertet. Gemäß der Einrichtung des Vorhersageexperiments erwartet das Modell Daten in dem Format, das dem Format des ursprünglichen Automobilpreis-Datasets entspricht. Die Ergebnisse werden abschließend über das Modul **Web Service Output** an den Benutzer zurückgegeben.
-
-Sie können einen Webdienst auf der grafischen Benutzeroberfläche auf der Registerkarte „Web Services“ (Webdienste) testen.
+Sie können Ihre Webdienste der grafischen Benutzeroberfläche testen und verwalten, indem Sie zur Registerkarte **Webdienste** navigieren.
 
 1. Wechseln Sie zum Abschnitt „Web Services“ (Webdienste). Es wird der von Ihnen bereitgestellte Webdienst mit dem Namen **Tutorial – Predict Automobile Price[Predictive Exp]** (Tutorial – Automobilpreisvorhersage[Vorhersageexperiment]) angezeigt.
 
@@ -107,19 +89,13 @@ Sie können einen Webdienst auf der grafischen Benutzeroberfläche auf der Regis
 
     ![Screenshot der Testseite für den Webdienst](./media/ui-tutorial-automobile-price-deploy/web-service-test.png)
 
-1. Geben Sie Testdaten ein, oder verwenden Sie die automatisch ausgefüllten Beispieldaten, und wählen Sie unten die Option **Test** (Testen) aus. Die Testanforderung wird an den Webdienst gesendet, und die Ergebnisse werden auf der Seite angezeigt. Für die Eingabedaten wird zwar ein Preiswert generiert, dieser wird jedoch nicht zum Generieren des Vorhersagewerts verwendet.
+1. Geben Sie Testdaten ein, oder verwenden Sie die automatisch ausgefüllten Beispieldaten, und wählen Sie die Option **Test** aus.
 
-## <a name="manage-the-web-service"></a>Verwalten des Webdiensts
-
-Nachdem Sie Ihren Webdienst bereitgestellt haben, können Sie ihn auf der grafischen Benutzeroberfläche auf der Registerkarte **Web Services** (Webdienste) verwalten.
-
-Sie können einen Webdienst löschen, indem Sie auf der Seite der Webdienstdetails die Option **Delete** (Löschen) auswählen.
-
-   ![Screenshot, in dem die Position der Schaltfläche zum Löschen des Webdiensts unten im Fenster hervorgehoben ist](./media/ui-tutorial-automobile-price-deploy/web-service-delete.png)
+    Die Testanforderung wird an den Webdienst gesendet, und die Ergebnisse werden auf der Seite angezeigt. Für die Eingabedaten wird zwar ein Preiswert generiert, dieser wird jedoch nicht zum Generieren des Vorhersagewerts verwendet.
 
 ## <a name="consume-the-web-service"></a>Nutzen des Webdiensts
 
-In den vorherigen Schritten dieses Tutorials haben Sie ein Automobilpreisvorhersagemodell als Azure-Webdienst bereitgestellt. Jetzt können Benutzer Daten an den Dienst senden und Ergebnisse über die REST-API erhalten.
+Benutzer können jetzt API-Anforderungen an Ihren Azure-Webdienst senden und Ergebnisse empfangen, um den Preis ihrer neuen Autos vorherzusagen.
 
 **Anforderung/Antwort** – Der Benutzer sendet eine oder mehrere Zeilen von Automobildaten mithilfe eines Hypertext Transfer-Protokolls (HTTP) an den Dienst. Der Dienst antwortet mit einem oder mehreren Ergebnissätzen.
 
@@ -131,9 +107,9 @@ Navigieren Sie zur Registerkarte **API Doc** (API-Dok), um weitere API-Details a
 
   ![Screenshot der zusätzlichen API-Details, die Benutzern auf der Registerkarte „API Doc“ angezeigt werden](./media/ui-tutorial-automobile-price-deploy/web-service-api.png)
 
-## <a name="manage-models-and-deployments-in-azure-machine-learning-service-workspace"></a>Verwalten von Modellen und Bereitstellungen im Azure Machine Learning Service-Arbeitsbereich
+## <a name="manage-models-and-deployments"></a>Verwalten von Modellen und Bereitstellungen
 
-Die von Ihnen auf der grafischen Benutzeroberfläche erstellten Modelle und Webdienstbereitstellungen können im Azure Machine Learning Service-Arbeitsbereich verwaltet werden.
+Die von Ihnen auf der grafischen Benutzeroberfläche erstellten Modelle und Webdienstbereitstellungen können auch im Azure Machine Learning Service-Arbeitsbereich verwaltet werden.
 
 1. Öffnen Sie Ihren Arbeitsbereich im [Azure-Portal](https://portal.azure.com/).  
 
