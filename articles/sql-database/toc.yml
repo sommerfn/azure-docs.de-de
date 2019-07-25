@@ -19,7 +19,7 @@
       href: sql-database-managed-instance-quickstart-guide.md
     - name: Erstellen
       items:
-        - name: 'Einzeldatenbank: Portal'
+        - name: Einzeldatenbank
           href: sql-database-single-database-get-started.md
         - name: 'Einzeldatenbank: Vorlage'
           displayName: 'Azure Resource Manager template, ARM'
@@ -87,14 +87,22 @@
           href: sql-database-design-first-database.md
         - name: Entwerfen einer Datenbank mithilfe von .NET
           href: sql-database-design-first-database-csharp.md
-    - name: Singleton-Datenbank
+    - name: Einzeldatenbank
       items:
         - name: Migrieren zu einer Einzel- oder Pooldatenbank mithilfe von DMS
           href: ../dms/tutorial-sql-server-to-azure-sql.md?toc=/azure/sql-database/toc.json
+        - name: Hinzufügen zu einer Failovergruppe
+          href: sql-database-single-database-failover-group-tutorial.md
         - name: Implementieren einer geografisch verteilten Datenbank
           href: sql-database-implement-geo-distributed-database.md
+        - name: Konfigurieren der aktiven Georeplikation
+          href: sql-database-active-geo-replication-portal.md
         - name: Einrichten der Azure SQL-Datensynchronisierung
           href: sql-database-get-started-sql-data-sync.md
+    - name: Pool für elastische Datenbanken
+      items:
+        - name: Hinzufügen zu einer Failovergruppe
+          href: sql-database-elastic-pool-failover-group-tutorial.md
     - name: Verwaltete Instanz
       items:
         - name: Onlinemigration mithilfe von DMS
@@ -245,8 +253,6 @@
               href: sql-database-active-geo-replication.md
             - name: Autofailover-Gruppen
               href: sql-database-auto-failover-group.md
-            - name: 'Konfigurieren der aktiven Georeplikation: Portal'
-              href: sql-database-active-geo-replication-portal.md
             - name: Konfigurieren der Sicherheit für Replikate
               href: sql-database-geo-replication-security-config.md
         - name: Optionen für die Datenbankwiederherstellung
@@ -516,6 +522,8 @@
           href: sql-database-managed-instance-connect-app.md
     - name: Laden und Verschieben von Daten
       items:
+        - name: Verschieben von Ressourcen in eine neue Region
+          href: sql-database-move-resources-across-regions.md
         - name: Kopieren einer Datenbank innerhalb von Azure
           href: sql-database-copy.md
         - name: Importieren einer Datenbank aus einer BACPAC-Datei

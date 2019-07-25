@@ -6,6 +6,12 @@
       href: home.md
 - name: Schnellstarts
   items:
+    - name: Verwenden des Webportals
+      items:
+        - name: Erstellen einer Klassifizierung
+          href: getting-started-build-a-classifier.md
+        - name: Erstellen einer Objekterkennung
+          href: get-started-build-detector.md
     - name: Verwenden des .NET SDK
       items:
         - name: Bildklassifizierung
@@ -42,8 +48,6 @@
       href: logo-detector-mobile.md
 - name: Anleitungen
   items:
-    - name: Erstellen einer Klassifizierung
-      href: getting-started-build-a-classifier.md
     - name: Testen des Modells
       href: test-your-model.md
     - name: Verbessern der Klassifizierung

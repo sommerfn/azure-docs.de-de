@@ -7,18 +7,19 @@ author: nitinme
 manager: nitinme
 ms.service: cognitive-services
 ms.author: nitinme
-ms.date: 06/20/2019
+ms.date: 07/22/2019
 ms.topic: hub-page
-ms.openlocfilehash: 1e78c31c19bdbc8ea223c504a53f1df73caa5d44
-ms.sourcegitcommit: 2d3b1d7653c6c585e9423cf41658de0c68d883fa
+ms.openlocfilehash: ad403b58a0f6aad37e9d8d547d269b9f45566559
+ms.sourcegitcommit: a874064e903f845d755abffdb5eac4868b390de7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/20/2019
-ms.locfileid: "67295385"
+ms.lasthandoff: 07/24/2019
+ms.locfileid: "68442821"
 ---
 <div id="main" class="v2">
 <h1>Dokumentation zu Azure Cognitive Services</h1>
         <p style="font-size: 1.12rem;margin-bottom: 1rem;">Hier erfahren Sie, wie Sie intelligente Algorithmen für natürliche Kommunikationsmethoden in Ihre Apps, Websites und Bots integrieren, damit diese sehen, hören, sprechen sowie Benutzeranforderungen interpretieren können. Tutorials, Schnellstartanleitungen, API-Referenzen und Beispiele veranschaulichen die Vorgehensweise.</p>
+        <p> Jeder Dienst hat eigene Anforderungen an die <a href="/azure/cognitive-services/language-support">Sprachunterstützung</a> und <a href="/azure/cognitive-services/cognitive-services-and-machine-learning#service-requirements-for-the-data-model">Datenmodelle</a>, die von einem vollständig trainierten Modell bis hin zu einem vollständig anpassbaren Modell reichen. 
 
 
 <h2>Cognitive Services-APIs</h2>
@@ -123,6 +124,25 @@ ms.locfileid: "67295385"
                             <div class="cardText">
                                 <h3>Was ist Cognitive Services?</h3>
                                 <p>Lernen Sie Azure Cognitive Services kennen, und wie Sie die verschiedenen APIs verwenden, um intelligente Apps zu erstellen.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </a>
+        </li>
+        <li>
+            <a href="/azure/cognitive-services/cognitive-services-and-machine-learning/">
+                <div class="cardSize">
+                    <div class="cardPadding">
+                        <div class="card">
+                            <div class="cardImageOuter">
+                                <div class="cardImage">
+                                    <img src="media/index/i_get-started.svg" alt="" />
+                                </div>
+                            </div>
+                            <div class="cardText">
+                                <h3>Cognitive Services und maschinelles Lernen</h3>
+                                <p>Erfahren Sie, wo Azure Cognitive Services mit anderen Azure-Angeboten für maschinelles Lernen kompatibel ist.</p>
                             </div>
                         </div>
                     </div>
