@@ -1,39 +1,39 @@
 ---
-title: Continuous Delivery von Funktionscodeaktualisierungen mit Azure DevOps
-description: Erfahren Sie, wie Sie eine Azure DevOps-Pipeline mit Azure Functions als Ziel einrichten.
+title: Continuous Delivery von Funktionscodeaktualisierungen mit Azure DevOps – Azure Functions
+description: Erfahren Sie, wie Sie eine Azure DevOps-Pipeline mit Azure Functions als Ziel einrichten.
 author: ahmedelnably
 manager: jeconnoc
 ms.service: azure-functions
 ms.topic: conceptual
 ms.date: 04/18/2019
 ms.author: aelnably
-ms.custom: ''
-ms.openlocfilehash: 9806a982982971b1b3ac9c28454e17813b2ad2a5
-ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
+ms.openlocfilehash: 0fdad0caa2deef0d7d55b30a85632f72f4ff0ecc
+ms.sourcegitcommit: ccb9a7b7da48473362266f20950af190ae88c09b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/01/2019
-ms.locfileid: "67479870"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67594463"
 ---
-# <a name="continuous-delivery-using-azure-devops"></a>Continuous Delivery mit Azure DevOps
+# <a name="continuous-delivery-by-using-azure-devops"></a>Continuous Delivery mit Azure DevOps
 
-Sie können Ihre Funktion mit [Azure Pipelines](/azure/devops/pipelines/) automatisch in einer Azure-Funktions-App bereitstellen.
-Zum Definieren Ihrer Pipeline stehen Ihnen zwei Methoden zur Auswahl:
+Sie können Ihre Funktion mit [Azure Pipelines](/azure/devops/pipelines/) automatisch in einer Azure Functions-App bereitstellen.
 
-- YAML-Datei: Diese Datei beschreibt die Pipeline. Sie kann einen Abschnitt mit Buildschritten und einen Releaseabschnitt enthalten. Die YAML-Datei sollte sich im gleichen Repository befinden wie die App.
+Sie haben zwei Möglichkeiten zum Definieren Ihrer Pipeline:
 
-- Vorlagen: Vorlagen sind vorgefertigte Aufgaben, die Ihre App erstellen oder bereitstellen.
+- **YAML-Datei**: In einer YAML-Datei wird die Pipeline beschrieben. Die Datei kann einen Abschnitt mit den Buildschritten und einen Releaseabschnitt enthalten. Die YAML-Datei muss sich im gleichen Repository wie die App befinden.
+- **Vorlage**: Vorlagen sind vorgefertigte Tasks, die Ihre App erstellen oder bereitstellen.
 
 ## <a name="yaml-based-pipeline"></a>YAML-basierte Pipeline
 
+Zum Erstellen einer YAML-basierten Pipeline erstellen Sie die App zunächst und stellen sie dann bereit.
+
 ### <a name="build-your-app"></a>Erstellen der App
 
-Wie Sie Ihre App in Azure Pipelines erstellen, hängt von der Programmiersprache Ihrer App ab.
-Jede Sprache verfügt über bestimmte Buildschritte zum Erstellen eines Bereitstellungsartefakts, mit dem Ihre Funktions-App in Azure bereitgestellt werden kann.
+Wie Sie Ihre App in Azure Pipelines erstellen, hängt von der Programmiersprache Ihrer App ab. Jede Sprache verfügt über bestimmte Buildschritte, mit denen ein Bereitstellungsartefakt erstellt wird. Ein Bereitstellungsartefakt wird zum Bereitstellen Ihrer Funktions-App in Azure verwendet.
 
 #### <a name="net"></a>.NET
 
-Sie können die YAML-Datei zum Erstellen Ihrer .NET-Anwendung mithilfe des folgenden Beispiels erstellen:
+Sie können die YAML-Datei zum Erstellen einer .NET-App mithilfe des folgenden Beispiels erstellen:
 
 ```yaml
 pool:
@@ -64,7 +64,7 @@ steps:
 
 #### <a name="javascript"></a>JavaScript
 
-Sie können die YAML-Datei zum Erstellen Ihrer JavaScript-Anwendung mithilfe des folgenden Beispiels erstellen:
+Sie können das folgende Beispiel zum Erstellen einer YAML-Datei verwenden, um eine JavaScript-App zu erstellen:
 
 ```yaml
 pool:
@@ -92,7 +92,7 @@ steps:
 
 #### <a name="python"></a>Python
 
-Sie können die YAML-Datei zum Erstellen Ihrer Python-Anwendung mithilfe des folgenden Beispiels erstellen (Python wird nur für Azure Functions unter Linux unterstützt):
+Sie können das folgende Beispiel zum Erstellen einer YAML-Datei verwenden, um eine Python-App zu erstellen. Python wird nur für Linux Azure Functions unterstützt.
 
 ```yaml
 pool:
@@ -125,7 +125,7 @@ steps:
 ```
 #### <a name="powershell"></a>PowerShell
 
-Sie können das folgende Beispiel verwenden, um Ihre YAML-Datei zum Packen Ihrer PowerShell-App zu erstellen. PowerShell wird nur für Windows Azure Functions unterstützt:
+Sie können das folgende Beispiel zum Erstellen einer YAML-Datei verwenden, um eine PowerShell-App zu verpacken. PowerShell wird nur für Windows Azure Functions unterstützt.
 
 ```yaml
 pool:
@@ -145,11 +145,11 @@ steps:
 
 ### <a name="deploy-your-app"></a>Bereitstellen Ihrer App
 
-Je nach Hostbetriebssystem müssen Sie eines der beiden folgenden YAML-Beispiele in Ihre YAML-Datei einfügen.
+Sie müssen abhängig vom Hostbetriebssystem eines der folgenden YAML-Beispiele in der YAML-Datei angeben.
 
 #### <a name="windows-function-app"></a>Windows-Funktions-App
 
-Der folgende Codeausschnitt kann verwendet werden, um eine Windows-Funktions-App bereitzustellen.
+Der folgende Codeausschnitt kann verwendet werden, um eine Windows-Funktions-App bereitzustellen:
 
 ```yaml
 steps:
@@ -166,7 +166,7 @@ steps:
 
 #### <a name="linux-function-app"></a>Linux-Funktions-App
 
-Der folgende Codeausschnitt kann verwendet werden, um eine Linux-Funktions-App bereitzustellen.
+Der folgende Codeausschnitt kann verwendet werden, um eine Linux-Funktions-App bereitzustellen:
 
 ```yaml
 steps:
@@ -184,61 +184,59 @@ steps:
 
 ## <a name="template-based-pipeline"></a>Vorlagenbasierte Pipeline
 
-Vorlagen in Azure DevOps sind vordefinierte Gruppen von Aufgaben, die eine App erstellen oder bereitstellen.
+Vorlagen in Azure DevOps sind vordefinierte Gruppen von Tasks, die eine App erstellen oder bereitstellen.
 
 ### <a name="build-your-app"></a>Erstellen der App
 
-Wie Sie Ihre App in Azure Pipelines erstellen, hängt von der Programmiersprache Ihrer App ab. Jede Sprache verfügt über bestimmte Buildschritte zum Erstellen eines Bereitstellungsartefakts, mit dem Ihre Funktions-App in Azure aktualisiert werden kann.
-Wenn Sie die integrierten Buildvorlagen verwenden möchten, wählen Sie beim Erstellen einer neuen Buildpipeline die Option **Klassischen Editor verwenden** aus, um eine Pipeline mithilfe der Designervorlagen zu erstellen.
+Wie Sie Ihre App in Azure Pipelines erstellen, hängt von der Programmiersprache Ihrer App ab. Jede Sprache verfügt über bestimmte Buildschritte, mit denen ein Bereitstellungsartefakt erstellt wird. Ein Bereitstellungsartefakt wird zum Aktualisieren Ihrer Funktions-App in Azure verwendet.
 
-![Klassischer Azure Pipelines-Editor](media/functions-how-to-azure-devops/classic-editor.png)
+Wenn Sie die integrierten Buildvorlagen verwenden möchten, wählen Sie beim Erstellen einer neuen Buildpipeline die Option **Klassischen Editor verwenden** aus, um eine Pipeline mithilfe der Designer-Vorlagen zu erstellen.
 
-Nachdem Sie die Quelle des Codes konfiguriert haben, suchen Sie nach Azure Functions-Buildvorlagen, und wählen Sie die Vorlage für die Sprache Ihrer App aus.
+![Auswählen des klassisches Azure Pipelines-Editors](media/functions-how-to-azure-devops/classic-editor.png)
 
-![Azure Functions-Buildvorlagen](media/functions-how-to-azure-devops/build-templates.png)
+Nachdem Sie die Quelle Ihres Codes konfiguriert haben, suchen Sie nach Azure Functions-Buildvorlagen. Wählen Sie die Vorlage aus, die der Sprache Ihrer App entspricht.
 
-In einigen Fällen weisen die Buildartefakte eine bestimmte Ordnerstruktur auf, und Sie müssen möglicherweise die Option **Stammordnernamen für Archivpfade voranstellen** aktivieren.
+![Auswählen einer Azure Functions-Buildvorlage](media/functions-how-to-azure-devops/build-templates.png)
 
-![Stammordner voranstellen](media/functions-how-to-azure-devops/prepend-root-folder.png)
+In manchen Fällen weisen Buildartefakte eine bestimmte Ordnerstruktur auf. Möglicherweise müssen Sie das Kontrollkästchen **Archivpfaden den Stammordnernamen voranstellen** aktivieren.
+
+![Die Option zum Voranstellen des Namens des Stammordners](media/functions-how-to-azure-devops/prepend-root-folder.png)
 
 #### <a name="javascript-apps"></a>JavaScript-Apps
 
-Wenn Ihre JavaScript-App von nativen Windows-Modulen abhängig ist, müssen Sie Folgendes aktualisieren:
+Wenn Ihre JavaScript-App eine Abhängigkeit von nativen Windows-Modulen aufweist, müssen Sie die Agent-Poolversion auf **Hosted VS2017** aktualisieren.
 
-- Die Agentpool-Version in **Hosted VS2017**
-
-  ![Ändern des Build-Agent-Betriebssystems](media/functions-how-to-azure-devops/change-agent.png)
+![Aktualisieren der Agent-Poolversion](media/functions-how-to-azure-devops/change-agent.png)
 
 ### <a name="deploy-your-app"></a>Bereitstellen Ihrer App
 
-Wenn Sie eine neue Releasepipeline erstellen, suchen Sie nach der Azure Functions-Releasevorlage.
+Wenn Sie eine neue Releasepipeline erstellen, suchen Sie nach der Azure Functions-Releasevorlage.
 
-![](media/functions-how-to-azure-devops/release-template.png)
+![Suchen nach der Azure Functions-Releasevorlage](media/functions-how-to-azure-devops/release-template.png)
 
 Das Bereitstellen in einem Bereitstellungsslot wird in der Releasevorlage nicht unterstützt.
 
-## <a name="creating-an-azure-pipeline-using-the-azure-cli"></a>Erstellen einer Azure-Pipeline mithilfe der Azure-Befehlszeilenschnittstelle
+## <a name="create-a-build-pipeline-by-using-the-azure-cli"></a>Erstellen einer Buildpipeline mithilfe der Azure CLI
 
-Der [Befehl](/cli/azure/functionapp/devops-pipeline#az-functionapp-devops-pipeline-create) `az functionapp devops-pipeline create` erstellt eine Azure-Pipeline zum Erstellen und Veröffentlichen von Codeänderungen in Ihrem Repository. Der Befehl generiert eine neue YAML-Datei, die die Build- und Releasepipeline definiert und an Ihr Repository committet. Das Bereitstellen in einem Bereitstellungsslot wird vom Azure CLI-Befehl nicht unterstützt.
-Die Voraussetzungen für diesen Befehl hängen vom Speicherort des Codes ab:
+Verwenden Sie den [Befehl](/cli/azure/functionapp/devops-pipeline#az-functionapp-devops-pipeline-create) `az functionapp devops-pipeline create` , um eine Buildpipeline in Azure zu erstellen. Die Buildpipeline wird erstellt, um alle Codeänderungen zu erstellen und freizugeben, die in Ihrem Repository vorgenommen werden. Der Befehl generiert eine neue YAML-Datei, die die Build- und Releasepipeline definiert und dann an Ihr Repository committet. Die Voraussetzungen für diesen Befehl hängen vom Speicherort des Codes ab.
 
 - Code in GitHub:
 
-    - Sie besitzen die Berechtigung **Schreiben** für Ihr Abonnement.
+    - Sie müssen die Berechtigung **Schreiben** für Ihr Abonnement besitzen.
 
-    - Sie sind der Projektadministrator in Azure DevOps.
+    - Sie müssen der Projektadministrator in Azure DevOps sein.
 
-    - Sie besitzen die Berechtigung zum Erstellen eines persönlichen GitHub-Zugriffstokens mit ausreichenden Berechtigungen. Siehe [GitHub PAT Permission Requirements](https://aka.ms/azure-devops-source-repos) (Anforderungen für persönliche GitHub-Zugriffstoken).
+    - Sie müssen die Berechtigung zum Erstellen eines persönlichen GitHub-Zugriffstokens (PAT) mit ausreichenden Berechtigungen besitzen. Weitere Informationen finden Sie unter [GitHub-PAT-Berechtigungsanforderungen.](https://aka.ms/azure-devops-source-repos)
 
-    - Sie besitzen die Berechtigung zum Committen des Masterbranches in Ihrem GitHub-Repository, um die automatisch generierte YAML-Datei zu committen.
+    - Sie müssen die Berechtigung zum Committen des Masterbranches in Ihrem GitHub-Repository besitzen, um die automatisch generierte YAML-Datei zu committen.
 
 - Code in Azure Repos:
 
-    - Sie besitzen die Berechtigung **Schreiben** für Ihr Abonnement.
+    - Sie müssen die Berechtigung **Schreiben** für Ihr Abonnement besitzen.
 
-    - Sie sind der Projektadministrator in Azure DevOps.
+    - Sie müssen der Projektadministrator in Azure DevOps sein.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-+ [Übersicht zu Azure Functions](functions-overview.md)
-+ [Übersicht über Azure DevOps](/azure/devops/pipelines/)
+- Lesen Sie die [Übersicht zu Azure Functions](functions-overview.md).
+- Im Artikel [Übersicht über Azure DevOps](/azure/devops/pipelines/) finden Sie weitere Informationen zu diesem Thema.

@@ -6,47 +6,36 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: overview
-ms.date: 07/09/2019
+ms.date: 07/17/2019
 ms.author: alkohli
-ms.openlocfilehash: bc6b9662a5d67f6ed315c33444bcb061115fe6d4
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.openlocfilehash: 69580f956b603423ef302353953a45ad5d00391e
+ms.sourcegitcommit: 770b060438122f090ab90d81e3ff2f023455213b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67701476"
+ms.lasthandoff: 07/17/2019
+ms.locfileid: "68305421"
 ---
 # <a name="what-is-azure-data-box-edge"></a>Was ist Azure Data Box Edge? 
 
-Azure Data Box Edge ist eine Speicherlösung, mit der Sie Daten verarbeiten und über ein Netzwerk an Azure senden können. Dieser Artikel bietet Ihnen einen Überblick über die Lösung Data Box Edge, ihre Vorteile, ihre wichtigsten Funktionen und die Szenarien, in denen Sie dieses Gerät bereitstellen können. 
+Azure Data Box Edge ist ein KI-fähiges Edge-Computing-Gerät mit Netzwerkfunktionen zur Datenübertragung. Dieser Artikel bietet Ihnen einen Überblick über die Lösung Data Box Edge, ihre Vorteile, ihre wichtigsten Funktionen und die Szenarien, in denen Sie dieses Gerät bereitstellen können. 
 
-Data Box Edge verwendet ein von Microsoft geliefertes physisches Gerät, um die sichere Datenübertragung zu beschleunigen. Das physische Gerät befindet sich an Ihrem Standort, und Sie beschreiben es mit den Protokollen NFS und SMB mit Daten. 
-
-Data Box Edge bietet sämtliche Gatewayfunktionen von Data Box Gateway. Die Data Box ist zusätzlich mit KI-fähigen Edge-Computingfunktionen ausgestattet, die bei der Analyse, Verarbeitung oder Filterung von Daten auf dem Weg in ein Azure-Blockblob, -Seitenblob oder Azure Files helfen.  
+Data Box Edge ist eine Hardware-as-a-Service-Lösung. Microsoft liefert Ihnen ein von der Cloud verwaltetes Gerät mit einem integrierten FPGA (Field Programmable Gate Array), das beschleunigte KI-Rückschlüsse ermöglicht und alle Funktionen eines Speichergateways bietet. 
 
 ## <a name="use-cases"></a>Anwendungsfälle
 
-Azure Data Box Edge ist ein KI-fähiges Edge-Computing-Gerät mit Netzwerkfunktionen zur Datenübertragung. Es folgen die verschiedenen Szenarien, in denen Data Box Edge für die Datenübertragung verwendet werden kann.
+Dies sind die verschiedenen Szenarien, in denen Data Box Edge für schnelle Machine Learning-Rückschlüsse (ML) und zum Rückschließen von Daten am Edge sowie für die Vorverarbeitung von Daten vor dem Senden an Azure verwendet werden kann.
 
-- **Vorverarbeiten von Daten**: Analysieren Sie Daten von lokalen oder IoT-Geräten, um schnell zum Ergebnis zu gelangen und gleichzeitig in der Nähe dessen zu bleiben, wo Daten generiert werden. Data Box Edge überträgt das gesamte Dataset in die Cloud, um eine erweiterte Verarbeitung oder detailliertere Analysen durchzuführen.  Die Vorverarbeitung ermöglicht Folgendes: 
+- **Rückschluss mit Azure Machine Learning**: Mit Data Box Edge können Sie ML-Modelle ausführen, um so schnell Ergebnisse zu erzielen, auf die Sie reagieren können, bevor die Daten in die Cloud übertragen werden. Das gesamte Dataset kann optional übertragen werden, um Ihre ML-Modelle weiter zu trainieren und zu verbessern. Weitere Informationen zur Verwendung der Azure ML-Modelle mit Hardwarebeschleunigung auf dem Data Box Edge-Gerät finden Sie unter [Bereitstellen von Azure ML-Modellen mit Hardwarebeschleunigung auf Data Box Edge](https://docs.microsoft.com/azure/machine-learning/service/how-to-deploy-fpga-web-service#deploy-to-a-local-edge-server).
+
+- **Vorverarbeiten von Daten**: Transformieren Sie Daten vor dem Senden an Azure, um einen aussagekräftigeren Datensatz zu erstellen. Die Vorverarbeitung ermöglicht Folgendes: 
 
     - Aggregieren von Daten.
-    - Ändern von Daten, um z.B. personenbezogene Informationen zu entfernen.
-    - Erstellen einer Teilmenge der Daten, die für eine detailliertere Analyse in die Cloud übertragen werden.
+    - Ändern von Daten, um beispielsweise persönliche Daten zu entfernen.
+    - Teilmengen von Daten zur Optimierung von Speicher und Bandbreite oder für die weitere Analyse.
     - Analysieren von und Reagieren auf IoT-Ereignisse. 
-
-- **Rückschluss dank Azure Machine Learning**: Mit Data Box Edge können Sie ML-Modelle (Machine Learning) ausführen, um so schnell Ergebnisse zu erzielen, auf die Sie reagieren können, bevor die Daten in die Cloud übertragen werden. Das gesamte Dataset kann übertragen werden, um Ihre ML-Modelle weiter zu trainieren und zu verbessern. Weitere Informationen zur Verwendung der Azure ML-Modelle mit Hardwarebeschleunigung auf dem Data Box Edge-Gerät finden Sie unter [Bereitstellen von Azure ML-Modellen mit Hardwarebeschleunigung auf Data Box Edge](https://docs.microsoft.com/azure/machine-learning/service/how-to-deploy-fpga-web-service#deploy-to-a-local-edge-server).
 
 - **Übertragen von Daten über das Netzwerk an Azure**: Verwenden Sie Data Box Edge, um Daten einfach und schnell in Azure zu übertragen. Dadurch werden weitere Berechnungen und Analysen oder eine Archivierung ermöglicht. 
 
-## <a name="benefits"></a>Vorteile
-
-Data Box Edge hat die folgenden Vorteile:
-
-- **Einfache Datenübertragung**: Macht das Verschieben von Daten in und aus Azure Storage so einfach wie das Arbeiten mit einer lokalen Netzwerkfreigabe.  
-- **Hohe Leistung**: Ermöglicht schnelle Datenübertragungen in und aus Azure. 
-- **Schneller Zugriff**: Speichert die zuletzt verwendeten Dateien für einen schnellen Zugriff auf lokale Dateien im Cache zwischen.  
-- **Eingeschränkte Bandbreitenauslastung**: Daten können in Azure geschrieben werden, auch wenn das Netzwerk gedrosselt ist, um die Nutzung während der Hauptgeschäftszeiten einzuschränken.  
-- **Transformieren von Daten**: Ermöglicht das Analysieren, Verarbeiten oder Filtern von Daten beim Verschieben in Azure.
 
 ## <a name="key-capabilities"></a>Wichtige Funktionen
 
@@ -54,15 +43,16 @@ Data Box Edge bietet die folgenden Funktionen:
 
 |Funktion |BESCHREIBUNG  |
 |---------|---------|
-|Hohe Leistung     | Vollständig automatisierte und stark optimierte Datenübertragung und Bandbreite.|
-|Unterstützte Protokolle     | Für die Datenerfassung werden die Standardprotokolle SMB und NFS unterstützt. <br> Weitere Informationen zu unterstützten Versionen finden Sie unter [Systemanforderungen für Data Box Edge](data-box-edge-system-requirements.md).|
+|Beschleunigte KI-Rückschlüsse| Ermöglicht durch das integrierte FPGA.|
 |Computing       |Ermöglicht das Analysieren, Verarbeiten und Filtern von Daten.|
-|Datenzugriff     | Direkter Datenzugriff aus Azure Storage-Blobs und Azure Files über Cloud-APIs zur zusätzlichen Datenverarbeitung in der Cloud.|
-|Schneller Zugriff     | Lokaler Cache auf dem Gerät für schnellen Zugriff auf zuletzt verwendete Dateien.|
+|Hohe Leistung | Hochleistungscompute und -datenübertragungen.|
+|Datenzugriff     | Direkter Datenzugriff aus Azure Storage-Blobs und Azure Files über Cloud-APIs zur zusätzlichen Datenverarbeitung in der Cloud. Lokaler Cache auf dem Gerät wird für schnellen Zugriff auf zuletzt verwendete Dateien verwendet.|
+|Von der Cloud verwaltet     |Das Gerät und der Dienst werden über das Azure-Portal verwaltet.  |
 |Hochladen von Daten im Offlinemodus     | Der Modus „Getrennt“ unterstützt Szenarien für das Hochladen von Daten im Offlinemodus.|
+|Unterstützte Protokolle     | Für die Datenerfassung werden die Standardprotokolle SMB und NFS unterstützt. <br> Weitere Informationen zu unterstützten Versionen finden Sie unter [Systemanforderungen für Data Box Edge](data-box-edge-system-requirements.md).|
 |Datenaktualisierung     | Möglichkeit, lokale Dateien mit den neuesten Informationen aus der Cloud zu aktualisieren.|
-|Verschlüsselung    | BitLocker-Unterstützung zur lokalen Verschlüsselung von Daten und zur sicheren Datenübertragung in die Cloud über *HTTPS*.       |
-|Resilienz     | Integrierte Netzwerkresilienz.        |
+|Verschlüsselung    | BitLocker-Unterstützung zur lokalen Verschlüsselung von Daten und zur sicheren Datenübertragung in die Cloud über *HTTPS*.|
+|Bandbreiteneinschränkung| Drosselung, um die Bandbreitennutzung während der Spitzenzeiten einzuschränken.|
 
 
 ## <a name="components"></a>Komponenten
