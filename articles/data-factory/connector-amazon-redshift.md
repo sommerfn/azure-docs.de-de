@@ -57,7 +57,7 @@ Folgende Eigenschaften werden für den mit Amazon Redshift verknüpften Dienst u
 | server |IP-Adresse oder Hostname des Amazon Redshift-Servers. |Ja |
 | port |Die Nummer des TCP-Ports, den der Amazon Redshift-Server verwendet, um auf Clientverbindungen zu lauschen. |Nein, Standard = 5439 |
 | database |Der Name der Amazon Redshift-Datenbank. |Ja |
-| userName |Der Name des Benutzers, der Zugriff auf die Datenbank hat. |Ja |
+| username |Der Name des Benutzers, der Zugriff auf die Datenbank hat. |Ja |
 | password |Kennwort für das Benutzerkonto. Markieren Sie dieses Feld als SecureString, um es sicher in Data Factory zu speichern, oder [verweisen Sie auf ein in Azure Key Vault gespeichertes Geheimnis](store-credentials-in-key-vault.md). |Ja |
 | connectVia | Die [Integrationslaufzeit](concepts-integration-runtime.md), die zum Herstellen einer Verbindung mit dem Datenspeicher verwendet werden muss. Sie können die Azure-Integrationslaufzeit oder selbstgehostete Integrationslaufzeit verwenden (sofern sich Ihr Datenspeicher in einem privaten Netzwerk befindet). Wenn keine Option angegeben ist, wird die standardmäßige Azure Integration Runtime verwendet. |Nein |
 
@@ -210,10 +210,10 @@ Beim Kopieren von Daten aus Amazon Redshift werden die folgenden Zuordnungen von
 | Amazon Redshift-Datentyp | Data Factory-Zwischendatentyp |
 |:--- |:--- |
 | BIGINT |Int64 |
-| Boolean |String |
+| BOOLEAN |String |
 | CHAR |String |
 | DATE |DateTime |
-| Decimal |Decimal |
+| DECIMAL |Decimal |
 | DOUBLE PRECISION |Double |
 | INTEGER |Int32 |
 | REAL |Single |
