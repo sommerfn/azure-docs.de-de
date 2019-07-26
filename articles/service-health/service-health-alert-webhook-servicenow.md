@@ -1,23 +1,24 @@
 ---
-title: Konfigurieren von Azure Service Health-Warnungen mit ServiceNow | Microsoft-Dokumentation
+title: Senden von Azure Service-Integritätswarnungen mit ServiceNow mit Webhooks
 description: Erhalten Sie personalisierte Benachrichtigungen zu Service Health-Ereignissen an Ihre ServiceNow-Instanz.
 author: stephbaron
 ms.author: stbaron
 ms.topic: article
 ms.service: service-health
-ms.date: 11/14/2017
-ms.openlocfilehash: f17215a5695128bf2ea507efa0c12fdbba9467d2
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.date: 06/10/2019
+ms.openlocfilehash: e32a32e4961043e0cd967247c8c13420ca8a1969
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55858857"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67067116"
 ---
-# <a name="configure-service-health-alerts-with-servicenow"></a>Konfigurieren von Service Health-Warnungen mit ServiceNow
+# <a name="send-azure-service-health-alerts-with-servicenow-using-webhooks"></a>Senden von Azure Service-Integritätswarnungen mit ServiceNow mit Webhooks
 
 In diesem Artikel erfahren Sie, wie Sie Azure Service Health-Warnungen mit Webhook in ServiceNow integrieren. Nachdem Sie die Webhookintegration in Ihrer ServiceNow-Instanz eingerichtet haben, erhalten Sie bei Azure-Dienstprobleme, die Sie betreffen, Warnungen über die vorhandene Benachrichtigungsinfrastruktur. Jedes Mal, wenn eine Azure Service Health-Warnung ausgelöst wird, wird ein Webhook über die skriptgesteuerte REST-API von ServiceNow aufgerufen.
 
 ## <a name="creating-a-scripted-rest-api-in-servicenow"></a>Erstellen einer skriptgesteuerte REST-API in ServiceNow
+
 1.  Stellen Sie sicher, dass Sie Ihr [ServiceNow](https://www.servicenow.com/)-Konto registriert wurde und dass Sie angemeldet sind.
 
 1.  Navigieren Sie zum Abschnitt **System Web Services** (Systemwebdienste) in ServiceNow, und wählen Sie im Abschnitt **Scripted REST APIs** (skriptgesteuerte REST-APIs) aus.

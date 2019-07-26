@@ -1,6 +1,6 @@
 ---
-title: Includedatei
-description: Includedatei
+title: include file
+description: include file
 services: logic-apps
 author: ecfan
 ms.service: logic-apps
@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 05/15/2018
 ms.author: estfan
 ms.custom: include file
-ms.openlocfilehash: 4ffda692da0ab7b63f7376c36dfab0bec914e334
-ms.sourcegitcommit: 5a7f13ac706264a45538f6baeb8cf8f30c662f8f
+ms.openlocfilehash: da03c5247b8ebe0a3305b08a05d661264497663f
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37138064"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67178344"
 ---
 * Wenn Sie Azure SQL-Datenbank verwenden, führen Sie die Schritte unter [Herstellen einer Verbindung mit Azure SQL-Datenbank](#connect-azure-sql-db) aus. 
 
@@ -51,7 +51,7 @@ ms.locfileid: "37138064"
    | SQL Server Name | <*my-sql-server*> | Name des SQL-Servers |
    | SQL Database Name | <*my-sql-database*>  | Name der SQL-Datenbank | 
    | Username | <*my-sql-username*> | Benutzername für den Zugriff auf die Datenbank |
-   | Password | <*my-sql-password*> | Kennwort für den Zugriff auf die Datenbank | 
+   | Kennwort | <*my-sql-password*> | Kennwort für den Zugriff auf die Datenbank | 
    |||| 
 
 2. Wenn Sie fertig sind, wählen Sie **Erstellen** aus.
@@ -103,8 +103,8 @@ Bevor Sie Ihr Gateway auswählen können, sollten Sie sicherstellen, dass Sie be
    | SQL Server Name | <*my-sql-server*> | Name des SQL-Servers |
    | SQL Database Name | <*my-sql-database*>  | Name der SQL-Datenbank |
    | Username | <*my-sql-username*> | Benutzername für den Zugriff auf die Datenbank |
-   | Password | <*my-sql-password*> | Kennwort für den Zugriff auf die Datenbank | 
-   | Authentication Type | Windows oder Standard | Optional: vom SQL-Server verwendeter Authentifizierungstyp | 
+   | Kennwort | <*my-sql-password*> | Kennwort für den Zugriff auf die Datenbank | 
+   | Authentication Type | Windows oder Standard | Optional: Der von Ihrer SQL-Server-Instanz verwendete Authentifizierungstyp | 
    | Gateways | <*my-data-gateway*> | Name Ihres lokalen Datengateways | 
    |||| 
 

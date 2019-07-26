@@ -11,19 +11,19 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3928a47abf07ab7e6dad0e0a5883162363805df8
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.openlocfilehash: 3a2c036265049bf4b87435e96f779482da404caa
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/27/2019
-ms.locfileid: "66235572"
+ms.lasthandoff: 06/17/2019
+ms.locfileid: "67164820"
 ---
 # <a name="how-to-require-two-step-verification-for-a-user"></a>Vorgehensweise zum Erzwingen einer zweistufigen Überprüfung für einen Benutzer
 
 Es gibt zwei Ansätze, um die zweistufige Überprüfung zu erzwingen, wobei beide die Verwendung eines globalen Administratorkontos erfordern. Die erste Option besteht darin, jeden einzelnen Benutzer für Azure Multi-Factor Authentication (MFA) zu aktivieren. Wenn Benutzer einzeln aktiviert werden, führen sie die zweistufige Überprüfung bei jeder Anmeldung durch (bis auf einige Ausnahmen, beispielsweise wenn sie sich von vertrauenswürdigen IP-Adressen aus anmelden oder wenn die Funktion _Gespeicherte Geräte_ aktiviert ist). Die zweite Möglichkeit besteht darin, eine Richtlinie für bedingten Zugriff einzurichten, die unter bestimmten Umständen eine zweistufige Überprüfung erfordert.
 
 > [!TIP]
-> Wählen Sie eine der folgenden Methoden, um die zweistufige Überprüfung zu erzwingen. Wählen Sie jedoch nicht beide Methoden aus. Durch die Aktivierung eines Benutzers für Azure Multi-Factor Authentication werden alle Richtlinien für bedingten Zugriff außer Kraft gesetzt.
+> Der empfohlene Ansatz ist das Aktivieren von Azure Multi-Factor Authentication mit Richtlinien für bedingten Zugriff. Das Ändern von Benutzerstatus wird nicht mehr empfohlen, es sei denn, Ihre Lizenzen enthalten keinen bedingten Zugriff, da Benutzer in dem Fall bei jeder Anmeldung MFA durchführen müssen.
 
 ## <a name="choose-how-to-enable"></a>Auswählen der Art und Weise der Aktivierung
 
@@ -125,7 +125,7 @@ PowerShell ist eine gute Wahl für die Massenaktivierung von Benutzern. Das folg
 Verwenden Sie zum Deaktivieren der MFA das folgende Skript:
 
    ```PowerShell
-   Get-MsolUser -UserPrincipalName user@domain.com | Set-MsolUser -StrongAuthenticationRequirements @()
+   Get-MsolUser -UserPrincipalName user@domain.com | Set-MsolUser -StrongAuthenticationMethods @()
    ```
 
 Es kann auch wie folgt verkürzt werden:

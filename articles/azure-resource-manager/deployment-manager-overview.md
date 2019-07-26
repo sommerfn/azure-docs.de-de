@@ -7,18 +7,18 @@ ms.topic: conceptual
 ms.date: 05/31/2019
 ms.author: tomfitz
 ms.custom: seodec18
-ms.openlocfilehash: 52b132b45bd90d7d21bb072e9a94d8588d5cf301
-ms.sourcegitcommit: 087ee51483b7180f9e897431e83f37b08ec890ae
+ms.openlocfilehash: 6a25444f0207ec5eceb029c5d31d222a31813e22
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/31/2019
-ms.locfileid: "66431173"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67066818"
 ---
 # <a name="enable-safe-deployment-practices-with-azure-deployment-manager-public-preview"></a>Sichere Bereitstellungsmethoden mit dem Azure-Bereitstellungs-Manager (öffentliche Vorschau)
 
 Um Ihren Dienst in vielen Regionen bereitzustellen und sicherzustellen, dass er in jeder Region wie erwartet ausgeführt wird, koordinieren Sie mit dem Bereitstellungs-Manager von Azure einen gestaffelten Rollout des Diensts. Gehen Sie wie bei jeder anderen Azure-Bereitstellung vor. Definieren Sie die Ressourcen für Ihren Dienst in [Resource Manager-Vorlagen](resource-group-authoring-templates.md). Wenn Sie die Vorlagen erstellt haben, beschreiben Sie mit dem Bereitstellungs-Manager die Topologie Ihres Diensts und den konkreten Rollout.
 
-Der Bereitstellungs-Manager ist eine Funktion von Resource Manager. Er erweitert die verfügbaren Funktionen beim Bereitstellen. Verwenden Sie den Bereitstellungs-Manager für komplexe Dienste, die Sie in mehreren Regionen bereitstellen möchten. Mit der phasenweisen Einführung des Diensts können Sie mögliche Probleme finden, bevor er in allen Regionen bereitgestellt ist. Wenn Sie auf die zusätzlichen Vorsichtsmaßnahmen eines gestaffelten Rollouts verzichten möchten, verwenden Sie die standardmäßigen [Bereitstellungsoptionen](resource-group-template-deploy-portal.md) für Resource Manager. Der Bereitstellungs-Manager lässt sich nahtlos in alle vorhandenen Tools von Drittanbietern integrieren, die Resource Manager-Bereitstellungen unterstützen, z.B. CI- und CD-Angebote (Continuous Integration und Continuous Delivery). 
+Der Bereitstellungs-Manager ist eine Funktion von Resource Manager. Er erweitert die verfügbaren Funktionen beim Bereitstellen. Verwenden Sie den Bereitstellungs-Manager für komplexe Dienste, die Sie in mehreren Regionen bereitstellen möchten. Mit der phasenweisen Einführung des Diensts können Sie mögliche Probleme finden, bevor er in allen Regionen bereitgestellt ist. Wenn Sie auf die zusätzlichen Vorsichtsmaßnahmen eines gestaffelten Rollouts verzichten möchten, verwenden Sie die standardmäßigen [Bereitstellungsoptionen](resource-group-template-deploy-portal.md) für Resource Manager. Der Bereitstellungs-Manager lässt sich nahtlos in alle vorhandenen Tools von Drittanbietern integrieren, die Resource Manager-Bereitstellungen unterstützen, z.B. CI- und CD-Angebote (Continuous Integration und Continuous Delivery).
 
 Der Azure-Bereitstellungs-Manager befindet sich in der Vorschau. Helfen Sie uns dabei, das Feature zu verbessern, indem Sie uns [Feedback senden](https://aka.ms/admfeedback).
 
@@ -31,7 +31,12 @@ Um den Bereitstellungs-Manager zu verwenden, müssen Sie vier Dateien erstellen:
 
 Die Topologievorlage wird vor der Rolloutvorlage bereitgestellt.
 
-Die REST-API-Referenz für den Azure-Bereitstellungs-Manager finden Sie [hier](https://docs.microsoft.com/rest/api/deploymentmanager/).
+Zusätzliche Ressourcen:
+
+- Die [REST-API-Referenz für den Azure-Bereitstellungs-Manager](https://docs.microsoft.com/rest/api/deploymentmanager/).
+- [Tutorial: Verwenden des Azure-Bereitstellungs-Managers mit Resource Manager-Vorlagen (private Vorschau)](./deployment-manager-tutorial.md) beschrieben vor.
+- [Tutorial: Verwenden der Integritätsprüfung im Azure-Bereitstellungs-Manager (Public Preview)](./deployment-manager-tutorial-health-check.md).
+- [Ein Beispiel zum Azure-Bereitstellungs-Manager](https://github.com/Azure-Samples/adm-quickstart).
 
 ## <a name="identity-and-access"></a>Identität und Zugriff
 
@@ -191,7 +196,7 @@ In der Rolloutvorlage erstellen Sie eine Artefaktquelle für die Binärdateien, 
 
 ### <a name="steps"></a>Schritte
 
-Sie können einen Schritt definieren, der entweder vor oder nach der Bereitstellung ausgeführt werden soll. Derzeit stehen nur die Schritte `wait` und „healthCheck“ zur Verfügung. 
+Sie können einen Schritt definieren, der entweder vor oder nach der Bereitstellung ausgeführt werden soll. Derzeit stehen nur die Schritte `wait` und „healthCheck“ zur Verfügung.
 
 Der Warteschritt hält die Bereitstellung zwischendurch an. So können Sie überprüfen, ob Ihr Dienst wie erwartet ausgeführt wird, bevor Sie die nächste Diensteinheit bereitstellen. Das folgende Beispiel zeigt das allgemeine Format eines Warteschritts.
 
@@ -262,13 +267,13 @@ Weitere Informationen finden Sie in der [rollouts-Vorlagenreferenz](/azure/templ
 
 ## <a name="parameter-file"></a>Parameterdatei
 
-Erstellen Sie zwei Parameterdateien. Eine Parameterdatei wird bei der Bereitstellung der Diensttopologie und die andere bei der Rolloutbereitstellung verwendet. Bei einigen Werte müssen Sie darauf achten, dass sie in beiden Parameterdateien identisch sind.  
+Erstellen Sie zwei Parameterdateien. Eine Parameterdatei wird bei der Bereitstellung der Diensttopologie und die andere bei der Rolloutbereitstellung verwendet. Bei einigen Werte müssen Sie darauf achten, dass sie in beiden Parameterdateien identisch sind.
 
 ## <a name="containerroot-variable"></a>containerRoot-Variable
 
 Bei versionierten Bereitstellungen ändert sich der Pfad zu Ihren Artefakten mit jeder neuen Version. Wenn Sie eine Bereitstellung zum ersten Mal ausführen, lautet der Pfad beispielsweise `https://<base-uri-blob-container>/binaries/1.0.0.0`. Beim zweiten Mal möglicherweise `https://<base-uri-blob-container>/binaries/1.0.0.1`. Der Bereitstellungs-Manager vereinfacht das Abrufen des korrekten Stammpfads für die aktuelle Bereitstellung mithilfe der Variablen `$containerRoot`. Dieser Wert ändert sich mit jeder Version und ist vor der Bereitstellung nicht bekannt.
 
-Verwenden Sie die Variable `$containerRoot` in der Parameterdatei für die Vorlage zum Bereitstellen der Azure-Ressourcen. Bei der Bereitstellung wird diese Variable durch die Istwerte aus dem Rollout ersetzt. 
+Verwenden Sie die Variable `$containerRoot` in der Parameterdatei für die Vorlage zum Bereitstellen der Azure-Ressourcen. Bei der Bereitstellung wird diese Variable durch die Istwerte aus dem Rollout ersetzt.
 
 Beim Rollout erstellen Sie beispielsweise eine Artefaktquelle für die binären Artefakte.
 

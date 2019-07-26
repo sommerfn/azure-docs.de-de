@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 07/01/2018
 ms.author: jehollan
 ms.custom: mvc, devcenter
-ms.openlocfilehash: 123a24eb13de584d8e3b70d0d8b1173f583867c1
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 9dcc959e51aa42fd6ef3173dba2aec8d9970deb1
+ms.sourcegitcommit: 1289f956f897786090166982a8b66f708c9deea1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61341414"
+ms.lasthandoff: 06/17/2019
+ms.locfileid: "67154571"
 ---
 # <a name="create-your-first-function-with-java-and-eclipse"></a>Erstellen der ersten Funktion mit Java und Eclipse 
 
@@ -43,15 +43,15 @@ Es wird dringend empfohlen, auch [Version 2 der Azure Functions Core Tools](func
 
 ## <a name="create-a-functions-project"></a>Erstellen eines Functions-Projekts
 
-1. Wählen Sie in Eclipse das Menü **File** (Datei) und dann **Project** (Projekt) aus. 
-1. Öffnen Sie im Fenster **New Project** (Neues Projekt) den Ordner **Java Project** (Java-Projekt), und wählen Sie **Maven Project** (Maven-Projekt) und dann **Next** (Weiter) aus.
+1. Wählen Sie in Eclipse das Menü **File** (Datei) und dann **New -&gt; Maven Project** (Neu -> Maven-Projekt) aus. 
 1. Übernehmen Sie die Standardeinstellungen im Dialogfeld **New Maven Project** (Neues Maven-Projekt), und wählen Sie **Next** (Weiter) aus.
 1. Wählen Sie **Add Archetype** (Archetyp hinzufügen) aus, und fügen Sie die Einträge für [azure-functions-archetype](https://mvnrepository.com/artifact/com.microsoft.azure/azure-functions-archetype) hinzu.
     - Archetypgruppen-ID: com.microsoft.azure
     - Archetypartefakt-ID: azure-functions-archetype
-    - Version: Verwenden Sie die neuste Version aus dem [zentralen Repository.](https://mvnrepository.com/artifact/com.microsoft.azure/azure-functions-archetype)
+    - Version: Verwenden Sie die neueste Version **1.22** aus [dem zentralen Repository](https://mvnrepository.com/artifact/com.microsoft.azure/azure-functions-archetype)
     ![Erstellung eines Maven-Projekts in Eclipse](media/functions-create-first-java-eclipse/functions-create-eclipse.png)  
-1. Klicken Sie auf **OK**, und geben Sie die Details zum aktuellen Projekt an. Klicken Sie anschließend auf **Finish** (Fertig stellen).
+1. Klicken Sie auf **OK** und dann auf **Next** (Weiter), um Werte wie die folgende Momentaufnahme einzugeben (bitte verwenden Sie einen anderen appName als **fabrikam-function-20170920120101928**) und schließlich **Finish** (Fertig stellen).
+    ![Erstellung eines Maven-Projekts in Eclipse 2](media/functions-create-first-java-eclipse/functions-create-eclipse2.png)  
 
 Maven erstellt die Projektdateien in einem neuen Ordner mit dem Namen _artifactId_. Bei dem generierten Code im Projekt handelt es sich um eine einfache [durch HTTP ausgelöste](/azure/azure-functions/functions-bindings-http-webhook) Funktion, die den Körper der über HTTP ausgelösten Anforderung wiederholt.
 
@@ -68,7 +68,7 @@ Beenden Sie die Laufzeit im Konsolenfenster, wenn Sie Ihre Funktion getestet hab
 
 ### <a name="debug-the-function-in-eclipse"></a>Debuggen der Funktion in Eclipse
 
-Ändern Sie in Ihrer im vorherigen Schritt eingerichteten **Run As**-Konfiguration (Ausführen als) `azure-functions:run` zu `mvn azure-functions:run -DenableDebug`, und führen Sie die aktualisierte Konfiguration aus, um die Funktions-App im Debugmodus zu starten.
+Ändern Sie in Ihrer im vorherigen Schritt eingerichteten **Run As**-Konfiguration (Ausführen als) `azure-functions:run` zu `azure-functions:run -DenableDebug`, und führen Sie die aktualisierte Konfiguration aus, um die Funktions-App im Debugmodus zu starten.
 
 Wählen Sie das Menü **Run** (Ausführen) aus, und öffnen Sie **Debug Configurations** (Konfigurationen debuggen). Wählen Sie **Remote Java Application** (Remote-Java-Anwendung) aus, und erstellen Sie eine neue. Benennen Sie Ihre Konfiguration, und geben Sie die Einstellungen ein. Der Port sollte mit dem Debugport konsistent sein, der vom Funktionshost geöffnet wird (standardmäßig `5005`). Klicken Sie nach dem Setup auf `Debug`, um das Debuggen zu starten.
 

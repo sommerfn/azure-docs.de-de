@@ -9,12 +9,12 @@ ms.topic: article
 ms.date: 12/06/2018
 ms.author: normesta
 ms.reviewer: sachins
-ms.openlocfilehash: 8b39866b990812913924118c564a5e93f898b1cb
-ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
+ms.openlocfilehash: 7cfe19614b2107161dcce9c80690333212162045
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64939467"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67061310"
 ---
 # <a name="best-practices-for-using-azure-data-lake-storage-gen2"></a>Bewährte Methoden zur Verwendung von Azure Data Lake Storage Gen2
 
@@ -40,7 +40,7 @@ Azure Active Directory-Dienstprinzipale werden normalerweise von Diensten wie Az
 
 ### <a name="enable-the-data-lake-storage-gen2-firewall-with-azure-service-access"></a>Aktivieren der Data Lake Storage Gen2-Firewall beim Zugriff auf Azure-Dienste
 
-Data Lake Storage Gen2 unterstützt die Option zum Aktivieren einer Firewall und Beschränken des Zugriffs auf ausschließlich Azure-Dienste, was zum Begrenzen der Angriffsfläche für externe Angriffe empfohlen wird. Die Firewall kann im Azure-Portal für das Speicherkonto über die Option **Firewall** > **Firewall aktivieren (EIN)** > **Zugriff auf Azure-Dienste erlauben** aktiviert werden.
+Data Lake Storage Gen2 unterstützt die Option zum Aktivieren einer Firewall und Beschränken des Zugriffs auf ausschließlich Azure-Dienste, was zum Begrenzen der Angriffsfläche für externe Angriffe empfohlen wird. Die Firewall kann im Azure-Portal für das Speicherkonto über die Option **Firewall** > **Firewall aktivieren (EIN)**  > **Zugriff auf Azure-Dienste erlauben** aktiviert werden.
 
 Das Hinzufügen von Azure Databricks-Clustern zu einem virtuellen Netzwerk, dem der Zugriff über die Azure Storage-Firewall erlaubt werden kann, erfordert die Nutzung einer Previewfunktion von Azure Databricks. Um dieses Feature zu aktivieren, richten Sie eine Anfrage an den Support.
 

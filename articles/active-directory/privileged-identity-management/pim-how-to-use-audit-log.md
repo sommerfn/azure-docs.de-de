@@ -10,59 +10,65 @@ ms.service: active-directory
 ms.topic: conceptual
 ms.workload: identity
 ms.subservice: pim
-ms.date: 02/14/2017
+ms.date: 06/10/2019
 ms.author: rolyon
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c080173af8ddd31b077bb820ea19d82eb2b29300
-ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
+ms.openlocfilehash: 8061cff8d39db66cb22a5650c7688657aa8b3554
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2019
-ms.locfileid: "58576139"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67053938"
 ---
 # <a name="view-audit-history-for-azure-ad-roles-in-pim"></a>Anzeigen des Überwachungsverlaufs für Azure AD-Rollen in PIM
-Im Überwachungsverlauf von Azure Active Directory (Azure AD) Privileged Identity Management (PIM) können Sie alle Benutzerzuweisungen und -aktivierungen für alle privilegierten Rollen in einem bestimmten Zeitraum anzeigen. Wenn Sie den vollständigen Überwachungsverlauf zur Aktivität in Ihrem Mandanten anzeigen möchten – Administratoren, Endbenutzer und Synchronisierungsaktivität eingeschlossen –, können Sie hierzu die [Azure Active Directory-Zugriffs- und Nutzungsberichte](../reports-monitoring/overview-reports.md)
 
-## <a name="navigate-to-audit-history"></a>Navigieren zum Überwachungsverlauf
-Wählen Sie auf dem Dashboard im [Azure-Portal](https://portal.azure.com) die App **Azure AD Privileged Identity Management** aus. Dort können Sie auf den Überwachungsverlauf zugreifen, indem Sie im PIM-Dashboard auf **Privilegierte Rollen verwalten** > **Überwachungsverlauf** klicken.
+Im Überwachungsverlauf von Azure Active Directory (Azure AD) Privileged Identity Management (PIM) können Sie alle Benutzerzuweisungen und -aktivierungen für alle privilegierten Rollen in den letzten 30 Tagen anzeigen. Wenn Sie den vollständigen Überwachungsverlauf zur Aktivität in Ihrem Verzeichnis anzeigen möchten – Administratoren, Endbenutzer und Synchronisierungsaktivität eingeschlossen –, können Sie hierzu die [Azure Active Directory-Sicherheits- und Aktivitätsberichte](../reports-monitoring/overview-reports.md).
 
-![Überprüfen des Verlaufs](media/azure-ad-pim-approval-workflow/image021.png)
+## <a name="view-audit-history"></a>Anzeigen des Überwachungsverlaufs
 
-> [!NOTE]
-> Sie können die Daten nach der „Aktion“ sortieren und nach „Aktivierung genehmigt“ suchen.
+Führen Sie die folgenden Schritte aus, um den Überwachungsverlauf für Azure AD-Rollen anzuzeigen.
 
+1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com/) mit einem Benutzer an, der ein Mitglied der Rolle [Administrator für privilegierte Rollen](../users-groups-roles/directory-assign-admin-roles.md#privileged-role-administrator) ist.
 
-## <a name="audit-history-graph"></a>Diagramm des Überwachungsverlaufs
-Sie können mithilfe des Überwachungsverlaufs die Gesamtanzahl von Aktivierungen, die maximale Anzahl von Aktivierungen pro Tag und die durchschnittliche Anzahl von Aktivierungen pro Tag in einem Liniendiagramm anzeigen.  Sie können auch die Daten nach Rolle filtern, wenn der Überwachungsverlauf mehrere Rollen enthält.
+1. Öffnen Sie **Azure AD Privileged Identity Management**.
 
-Sortieren Sie den Verlauf mithilfe der Schaltflächen **Zeit**, **Aktion** und **Rolle**.
+1. Klicken Sie auf **Azure AD-Rollen**.
 
-## <a name="audit-history-list"></a>Überwachungsverlaufsliste
-Die Überwachungsverlaufsliste enthält die folgenden Spalten:
+1. Klicken Sie auf **Verlauf der Verzeichnisrollenüberwachung**.
 
-* **Anforderer** : Gibt den Benutzer an, der die Rollenaktivierung oder -änderung angefordert hat.  Wenn der Wert „Azure System“ lautet, suchen Sie im Azure-Überwachungsverlauf nach weiteren Informationen.
-* **Benutzer** : Gibt den Benutzer an, der eine Rolle aktiviert oder einer Rolle zugewiesen ist.
-* **Rolle** : Gibt die Rolle an, die dem Benutzer zugewiesen ist oder die durch den Benutzer aktiviert wurde.
-* **Aktion** : Gibt die vom Anforderer ausgeführten Aktionen an. Mögliche Aktionen: Zuweisung, Aufhebung einer Zuweisung, Aktivierung oder Deaktivierung.
-* **Zeit** : Dies ist der Zeitpunkt, zu dem die Aktion erfolgt ist.
-* **Erläuterung** : Wenn während der Aktivierung Text in das Feld für die Begründung eingegeben wurde, wird er hier angezeigt.
-* **Ablauf** : Ist nur für die Aktivierung von Rollen relevant.
+    Abhängig von Ihrem Überwachungsverlauf wird ein Säulendiagramm zusammen mit der Gesamtzahl der Aktivierungen, der maximalen Aktivierungen pro Tag und der durchschnittlichen Aktivierungen pro Tag angezeigt.
+
+    ![Verlauf der Verzeichnisrollenüberwachung](media/pim-how-to-use-audit-log/directory-roles-audit-history.png)
+
+    Am unteren Rand der Seite wird eine Tabelle mit Informationen zu jeder Aktion im verfügbaren Überwachungsverlauf angezeigt. Die Spalten haben die folgende Bedeutung:
+
+    | Column | BESCHREIBUNG |
+    | --- | --- |
+    | Zeit | Der Zeitpunkt, zu dem die Aktion erfolgt ist. |
+    | Anforderer | Der Benutzer, der die Rollenaktivierung oder -änderung angefordert hat. Wenn der Wert **Azure System**lautet, suchen Sie im Azure-Überwachungsverlauf nach weiteren Informationen. |
+    | Aktion | Die vom Anforderer ausgeführten Aktionen. Aktionen können „Assign“, „Unassign“, „Activate“, „Deactivate“ oder „AddedOutsidePIM“ umfassen. |
+    | Member | Der Benutzer, der eine Rolle aktiviert oder einer Rolle zugewiesen ist. |
+    | Rolle | Die Rolle, die dem Benutzer zugewiesen ist oder die durch den Benutzer aktiviert wurde. |
+    | Erläuterung | Text, der während der Aktivierung in das Feld „Grund“ eingegeben wurde. |
+    | Ablauf | Zeitpunkt, an dem die aktivierte Rolle abläuft. Gilt nur für berechtigte Rollenzuweisungen. |
+
+1. Um den Überwachungsverlauf zu sortieren, klicken Sie auf **Zeit**, **Aktion** und **Rolle**.
 
 ## <a name="filter-audit-history"></a>Filtern des Überwachungsverlaufs
-Sie können die im Überwachungsverlauf angezeigten Informationen filtern, indem Sie auf die Schaltfläche **Filter** klicken.  Das Blatt **Diagrammparameter aktualisieren** wird angezeigt.
 
-Klicken Sie nach dem Einrichten der Filter auf **Aktualisieren**, um die Daten im Verlauf zu filtern.  Wenn die Daten nicht sofort angezeigt werden, aktualisieren Sie die Seite.
+1. Klicken Sie am oberen Rand der Seite mit dem Überwachungsverlauf auf die Schaltfläche **Filter**.
 
-### <a name="change-the-date-range"></a>Ändern des Datumsbereichs
-Verwenden Sie die Schaltflächen **Heute**, **Letzte Woche**, **Letzter Monat** oder **Benutzerdefiniert**, um den Zeitbereich des Überwachungsverlaufs zu ändern.
+    Der Bereich **Diagrammparameter aktualisieren** wird angezeigt.
 
-Wenn Sie auf **Benutzerdefiniert** klicken, werden die Datumsfelder **Von** und **Bis** angezeigt, um den Datumsbereich für den Verlauf anzugeben.  Sie können die Datumsangaben im Format MM/TT/JJJJ eingeben oder auf das Symbol **Kalender** klicken und das Datum im Kalender auswählen.
+1. Wählen Sie in **Zeitbereich** einen Zeitraum aus.
 
-### <a name="change-the-roles-included-in-the-history"></a>Ändern der im Verlauf enthaltenen Rollen
-Aktivieren oder deaktivieren Sie das Kontrollkästchen **Rolle** neben jeder Rolle, die im Verlauf enthalten bzw. nicht enthalten sein soll.
+1. Aktivieren Sie unter **Rollen** die Kontrollkästchen der Rollen, die Sie anzeigen möchten.
 
-<!--Every topic should have next steps and links to the next logical set of content to keep the customer engaged-->
+    ![Bereich „Diagrammparameter aktualisieren“](media/pim-how-to-use-audit-log/update-chart-parameters.png)
+
+1. Klicken Sie auf **Fertig**, um den gefilterten Überwachungsverlauf anzuzeigen.
+
 ## <a name="next-steps"></a>Nächste Schritte
 
 - [Anzeigen des Aktivitäts- und Überwachungsverlaufs für Azure-Ressourcenrollen in PIM](azure-pim-resource-rbac.md)

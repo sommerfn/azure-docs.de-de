@@ -1,22 +1,22 @@
 ---
-title: Automatisieren von Betriebssystem- und Frameworkpatches mit Azure Container Registry Tasks (ACR Tasks)
-description: 'Einführung in ACR Tasks: eine Suite mit Features in Azure Container Registry für sichere, automatisierte Build- und Patchvorgänge für Containerimages in der Cloud.'
+title: Automatisieren des Erstellens und Patchens von Containerimages mit Azure Container Registry Tasks (ACR Tasks)
+description: 'Einführung in ACR Tasks: eine Suite mit Features in Azure Container Registry für sichere, automatisierte Build- und Patchvorgänge für Containerimages und Verwaltung in der Cloud.'
 services: container-registry
 author: dlepow
 ms.service: container-registry
 ms.topic: article
-ms.date: 05/20/2019
+ms.date: 06/12/2019
 ms.author: danlep
-ms.openlocfilehash: cc182743c3879ab2748f92022437bc23c26c371c
-ms.sourcegitcommit: 59fd8dc19fab17e846db5b9e262a25e1530e96f3
+ms.openlocfilehash: 5089650996693b81e548bba8d89c0de29a8afd93
+ms.sourcegitcommit: 72f1d1210980d2f75e490f879521bc73d76a17e1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/21/2019
-ms.locfileid: "65977201"
+ms.lasthandoff: 06/14/2019
+ms.locfileid: "67147984"
 ---
-# <a name="automate-os-and-framework-patching-with-acr-tasks"></a>Automatisieren von Betriebssystem- und Frameworkpatches mit ACR Tasks
+# <a name="automate-container-image-builds-and-maintenance-with-acr-tasks"></a>Automatisieren von Containerimage-Builds und Wartung mit ACR Tasks
 
-Container bieten neue Virtualisierungsmöglichkeiten und trennen Anwendungs- und Entwicklerabhängigkeiten von Infrastruktur- und Betriebsanforderungen. Ein Aspekt, der allerdings weiterhin behandelt werden muss, ist das Patchen dieser Anwendungsvirtualisierung.
+Container bieten neue Virtualisierungsmöglichkeiten und trennen Anwendungs- und Entwicklerabhängigkeiten von Infrastruktur- und Betriebsanforderungen. Ein Aspekt, der allerdings weiterhin behandelt werden muss, ist das das Verwalten und Patchen dieser Anwendungsvirtualisierung im Laufe des Containerlebenszyklus.
 
 ## <a name="what-is-acr-tasks"></a>Was ist ACR Tasks?
 
@@ -46,8 +46,7 @@ Die folgende Tabelle zeigt einige Beispiele von unterstützten Kontextspeicheror
 | Lokales Dateisystem | Dateien in einem Verzeichnis auf dem lokalen Dateisystem. | `/home/user/projects/myapp` |
 | GitHub-Masterbranch | Dateien im Masterbranch (oder einem anderen Standardbranch) eines GitHub-Repositorys.  | `https://github.com/gituser/myapp-repo.git` |
 | GitHub-Branch | Bestimmter Branch eines GitHub-Repositorys.| `https://github.com/gituser/myapp-repo.git#mybranch` |
-| GitHub-Pull Request | Pull Request in einem GitHub-Repository. | `https://github.com/gituser/myapp-repo.git#pull/23/head` |
-| GitHub-Unterordner | Dateien in einem Unterordner in einem GitHub-Repository. Das Beispiel zeigt die Kombination der Spezifikation aus Pull Request und Unterordner. | `https://github.com/gituser/myapp-repo.git#pull/24/head:myfolder` |
+| GitHub-Unterordner | Dateien in einem Unterordner in einem GitHub-Repository. Das Beispiel zeigt die Kombination der Branch- und Unterordnerspezifikation. | `https://github.com/gituser/myapp-repo.git#mybranch:myfolder` |
 | Remotetarball | Dateien in einem komprimierten Archiv auf einem Remotewebserver. | `http://remoteserver/myapp.tar.gz` |
 
 ACR Tasks ist als Grundtyp für den Containerlebenszyklus konzipiert. Sie können ACR Tasks also beispielsweise in Ihre CI/CD-Lösung integrieren. Wenn Sie [az login][az-login] mit einem [Dienstprinzipal][az-login-service-principal] ausführen, kann Ihre CI/CD-Lösung mithilfe von Befehlen vom Typ [az acr build][az-acr-build] Imagebuildvorgänge initiieren.
@@ -65,7 +64,7 @@ Informationen zum Auslösen von Buildvorgängen nach dem Committen von Quellcode
 
 ## <a name="automate-os-and-framework-patching"></a>Automatisierung von Betriebssystem- und Frameworkpatching
 
-Durch die Möglichkeit zur Erkennung von Basisimageaktualisierungen bietet ACR Tasks einen echten Mehrwert für Ihren Containererstellungsworkflow. Wenn das aktualisierte Basisimage in Ihre Registrierung gepusht wird, kann ACR Tasks automatisch alle darauf basierenden Anwendungsimages erstellen.
+Durch die Möglichkeit zur Erkennung von Basisimageaktualisierungen bietet ACR Tasks einen echten Mehrwert für Ihren Containererstellungsworkflow. Wenn das aktualisierte Basisimage in Ihre Registrierung gepusht oder ein Basisimage in einem öffentlichen Repository. wie Docker Hub, aktualisiert wird, kann ACR Tasks automatisch alle darauf basierenden Anwendungsimages erstellen.
 
 Containerimages lassen sich grob in *Basisimages* und *Anwendungsimages* unterteilen. Basisimages enthalten neben anderen Anpassungen in der Regel das Betriebssystem und die Anwendungsframeworks, auf denen Ihre Anwendung basiert. Diese Basisimages basieren üblicherweise auf öffentlichen Upstreamimages, beispielsweise [Alpine Linux][base-alpine], [Windows][base-windows], [.NET][base-dotnet] oder [Node.js][base-node]. Ein Basisimage kann mehreren Anwendungsimages zugrunde liegen.
 
@@ -76,7 +75,7 @@ Da Basisimageabhängigkeiten bei der Erstellung eines Containerimages von ACR Ta
 Informationen zu Betriebssystem- und Frameworkpatches finden Sie im dritten ACR Tasks-Tutorial: [Automatisieren von Buildvorgängen für Images nach der Aktualisierung des Basisimages mit Azure Container Registry Tasks](container-registry-tutorial-base-image-update.md).
 
 > [!NOTE]
-> Aktualisierungen von Basisimages lösen Builds nur dann aus, wenn sich das Basis- und das Anwendungsimage in der gleichen Azure-Containerregistrierung befinden oder das Basisimage in einem öffentlichen Docker Hub-Repository gespeichert ist.
+> Derzeit lösen Aktualisierungen von Basisimages Builds nur dann aus, wenn sich das Basis- und das Anwendungsimage in der gleichen Azure-Containerregistrierung befinden oder das Basisimage in einem öffentlichen Docker Hub- oder Microsoft Container Registry-Repository gespeichert ist.
 
 ## <a name="multi-step-tasks"></a>Mehrstufige Aufgaben
 

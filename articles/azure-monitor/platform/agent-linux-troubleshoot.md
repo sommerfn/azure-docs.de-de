@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 11/13/2018
 ms.author: magoedte
-ms.openlocfilehash: b79f8a44f0fc38dd7e5f9ae7e3ac1fe6e9f6b7b8
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 83f9cc050694344cdc5f4f5a2070bc875fcba3d9
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58884175"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67071654"
 ---
 # <a name="how-to-troubleshoot-issues-with-the-log-analytics-agent-for-linux"></a>Behandeln von Problemen mit dem Log Analytics-Agent für Linux 
 
@@ -187,6 +187,33 @@ Heben Sie unter dem Ausgabe-Plug-In die Auskommentierung des folgenden Abschnitt
 
 ## <a name="issue-you-see-a-500-and-404-error-in-the-log-file-right-after-onboarding"></a>Problem: In der Protokolldatei sind direkt nach der Integration die Fehler 500 und 404 enthalten.
 Dies ist ein bekanntes Problem, das beim ersten Hochladen von Linux-Daten in einen Log Analytics-Arbeitsbereich auftritt. Gesendete Daten und die Ausführung des Diensts sind davon nicht betroffen.
+
+
+## <a name="issue-you-see-omiagent-using-100-cpu"></a>Problem: OMI-Agent verwendet 100 % der CPU
+
+### <a name="probable-causes"></a>Mögliche Ursachen
+Eine Regression im nss-pem-Paket [v1.0.3-5.el7](https://centos.pkgs.org/7/centos-x86_64/nss-pem-1.0.3-5.el7.x86_64.rpm.html) verursachte ein schwerwiegendes Leistungsproblem, dass in Redhat/Centos 7.x-Distributionen sehr häufig vorkommt. Weitere Informationen zu diesem Problem finden Sie in dieser Dokumentation: Fehler [1667121 Leistungsregression in libcurl](https://bugzilla.redhat.com/show_bug.cgi?id=1667121).
+
+Leistungsbezogene Fehler kommen nicht immer vor und sind nur sehr schwer zu reproduzieren. Wenn ein solches Problem mit OMI-Agent auftritt, verwenden Sie das Skript „omiHighCPUDiagnostics.sh“, das bei Überschreitung eines bestimmten Schwellenwerts die Stapelüberwachung des OMI-Agents erfasst.
+
+1. Skript herunterladen <br/>
+`wget https://raw.githubusercontent.com/microsoft/OMS-Agent-for-Linux/master/tools/LogCollector/source/omiHighCPUDiagnostics.sh`
+
+2. Für 24 Stunden Diagnose mit einem CPU-Schwellenwert von 30 % ausführen <br/>
+`bash omiHighCPUDiagnostics.sh --runtime-in-min 1440 --cpu-threshold 30`
+
+3. Der Rückruf wird in die Ablaufverfolgungsdatei „omiagent_“ ausgegeben. Wenn Sie viele Curl- und NSS-Funktionsaufrufe feststellen, führen Sie die Lösungsschritte unten aus.
+
+### <a name="resolution-step-by-step"></a>Lösung (Schritt für Schritt)
+
+1. Aktualisieren Sie das nss-pem-Paket auf [v1.0.3-5.el7_6.1](https://centos.pkgs.org/7/centos-updates-x86_64/nss-pem-1.0.3-5.el7_6.1.x86_64.rpm.html). <br/>
+`sudo yum upgrade nss-pem`
+
+2. Wenn nss-perm nicht für das Upgrade verfügbar ist (tritt größtenteils unter Centos auf), stufen Sie Curl auf 7.29.0-46 herab. Wenn Sie versehentlich „yum-update“ ausführen, wird Curl auf 7.29.0-51 aktualisiert, und das Problem wird erneut auftreten. <br/>
+`sudo yum downgrade curl libcurl`
+
+3. OMI neu starten: <br/>
+`sudo scxadmin -restart`
 
 ## <a name="issue-you-are-not-seeing-any-data-in-the-azure-portal"></a>Problem: Im Azure-Portal werden keine Daten angezeigt.
 

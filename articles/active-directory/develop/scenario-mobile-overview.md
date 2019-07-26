@@ -16,12 +16,12 @@ ms.author: jmprieur
 ms.reviwer: brandwe
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: df5b53ccdcd33e2542834769baff5b759ff7b170
-ms.sourcegitcommit: e9a46b4d22113655181a3e219d16397367e8492d
+ms.openlocfilehash: 0f007ad1d5bf99136328ec5706f7ccbb5f6593c8
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/21/2019
-ms.locfileid: "65962364"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67111225"
 ---
 # <a name="scenario-mobile-application-that-calls-web-apis"></a>Szenario: Mobile App, die Web-APIs aufruft
 
@@ -51,7 +51,7 @@ Eine personalisierte und übersichtliche Benutzeroberfläche ist für mobile App
 Aspekte für mobile Apps:
 
 - **Benutzerfreundlichkeit ist der Schlüssel:** Zeigen Sie Benutzern, noch bevor diese zur Anmeldung aufgefordert werden, welche Vorteile Ihre App bietet, und fordern Sie nur die tatsächlich erforderlichen Berechtigungen an.
-- **Unterstützen aller Benutzerkonfigurationen:** Für viele Geschäftsbenutzer mobiler Apps gelten Richtlinien für bedingten Zugriff sowie Gerätekonformitätsrichtlinien. Stellen Sie sicher, dass diese wichtigen Szenarios unterstützt werden.
+- **Unterstützen aller Benutzerkonfigurationen:** Viele Geschäftsbenutzer mobiler Apps haben nur bedingten Zugriff und müssen Gerätekonformitätsrichtlinien beachten. Stellen Sie sicher, dass diese wichtigen Szenarios unterstützt werden.
 - **Implementieren von einmaligem Anmelden (SSO):** Mit MSAL und Microsoft Identity Platform ist es einfach, einmaliges Anmelden (SSO) über den Gerätebrowser oder Microsoft Authenticator (und das Intune-Unternehmensportal unter Android) zu aktivieren.
 
 ## <a name="specifics"></a>Besonderheiten
@@ -60,7 +60,7 @@ Berücksichtigen Sie die folgenden Aspekte, wenn Sie eine mobile App auf Microso
 
 - Abhängig von der Plattform sind möglicherweise bei der ersten Anmeldung Benutzerinteraktionen erforderlich. Beispielsweise müssen Apps unter iOS eine Benutzeraktion anzeigen, wenn einmaliges Anmelden (Single Sign-On, SSO) zum ersten Mal über Microsoft Authenticator (und das Intune-Unternehmensportal unter Android) verwendet wird.
 - Unter iOS und Android verwendet MSAL möglicherweise einen (im Vordergrund Ihrer App angezeigten) externen Browser zum Anmelden von Benutzern. Sie können die Konfiguration anpassen, sodass stattdessen In-App-Webansichten verwendet werden.
-- Verwenden Sie niemals einen geheimen Schlüssel in einer mobilen Anwendung, weil alle Benutzer darauf zugreifen könnten.
+- Verwenden Sie niemals einen geheimen Schlüssel in einer mobilen Anwendung. Er ist für alle Benutzer zugänglich.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

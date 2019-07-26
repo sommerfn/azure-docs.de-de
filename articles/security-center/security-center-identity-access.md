@@ -13,13 +13,13 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/30/2018
-ms.author: monhaber
-ms.openlocfilehash: 16548ae75567fa3ba6f8c9135d61945bd28d2db8
-ms.sourcegitcommit: ef06b169f96297396fc24d97ac4223cabcf9ac33
+ms.author: v-mohabe
+ms.openlocfilehash: 73480c6e24ab13b7764c5b72280c19971eb3d039
+ms.sourcegitcommit: a8b638322d494739f7463db4f0ea465496c689c6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/31/2019
-ms.locfileid: "66428423"
+ms.lasthandoff: 07/17/2019
+ms.locfileid: "68296492"
 ---
 # <a name="monitor-identity-and-access-in-azure-security-center-preview"></a>Überwachen der Identität und des Zugriffs im Azure Security Center (Vorschauversion)
 In diesem Artikel erfahren Sie, wie Sie mithilfe von Azure Security Center die Identität und Zugriffsaktivitäten von Benutzern überwachen.
@@ -110,17 +110,17 @@ Der folgenden Tabelle können Sie entnehmen, welche Identitäts- und Zugriffsemp
 
 |Ressourcentyp|Sicherheitsbewertung|Empfehlung|BESCHREIBUNG|
 |----|----|----|----|
-|Abonnement|50|MFA sollte für Konten mit Besitzerberechtigungen in Ihrem Abonnement aktiviert sein.|Aktivieren Sie für alle Abonnementkonten mit Administratorrechten die mehrstufige Authentifizierung (Multi-Factor Authentication, MFA), um eine Sicherheitsverletzung von Konten oder Ressourcen zu verhindern.|
-|Abonnement|40|MFA sollte für Ihre Abonnementkonten mit Schreibberechtigungen aktiviert sein.|Aktivieren Sie für alle Abonnementkonten mit Schreibberechtigungen die mehrstufige Authentifizierung (Multi-Factor Authentication, MFA), um eine Sicherheitsverletzung von Konten oder Ressourcen zu verhindern.|
-|Abonnement|30|Externe Konten mit Besitzerberechtigungen sollten aus Ihrem Abonnement entfernt werden.|Entfernen Sie externe Konten mit Besitzerberechtigungen aus Ihrem Abonnement, um nicht überwachten Zugriff zu verhindern.|
-|Abonnement|30|MFA sollte für Ihre Abonnementkonten mit Leseberechtigungen aktiviert sein.|Aktivieren Sie für alle Abonnementkonten mit Leseberechtigungen die mehrstufige Authentifizierung (Multi-Factor Authentication, MFA), um eine Sicherheitsverletzung von Konten oder Ressourcen zu verhindern.|
-|Abonnement|25|Externe Konten mit Schreibberechtigungen sollten aus Ihrem Abonnement entfernt werden.|Entfernen Sie externe Konten mit Schreibberechtigungen aus Ihrem Abonnement, um nicht überwachten Zugriff zu verhindern. |
-|Abonnement|20|Veraltete Konten mit Besitzerberechtigungen sollten aus Ihrem Abonnement entfernt werden.|Entfernen Sie veraltete Konten mit Besitzerberechtigungen aus Ihrem Abonnement.|
-|Abonnement|5|Veraltete Konten sollten aus Ihrem Abonnement entfernt werden.|Entfernen Sie veraltete Konten aus Ihren Abonnements, um nur den Zugriff auf aktuelle Benutzer zuzulassen. |
-|Abonnement|5|Ihrem Abonnement sollte mehr als ein Besitzer zugewiesen sein.|Legen Sie mehrere Abonnementbesitzer fest, um Redundanz beim Administratorzugriff zu gewährleisten.|
-|Abonnement|5|Maximal 3 Besitzer sollten für Ihr Abonnement festgelegt sein.|Legen Sie höchstens drei Abonnementbesitzer fest, um die Möglichkeit einer Sicherheitsverletzung durch einen kompromittierten Besitzer zu verringern.|
+|Subscription|50|MFA sollte für Konten mit Besitzerberechtigungen in Ihrem Abonnement aktiviert sein.|Aktivieren Sie für alle Abonnementkonten mit Administratorrechten die mehrstufige Authentifizierung (Multi-Factor Authentication, MFA), um eine Sicherheitsverletzung von Konten oder Ressourcen zu verhindern.|
+|Subscription|40|MFA sollte für Ihre Abonnementkonten mit Schreibberechtigungen aktiviert sein.|Aktivieren Sie für alle Abonnementkonten mit Schreibberechtigungen die mehrstufige Authentifizierung (Multi-Factor Authentication, MFA), um eine Sicherheitsverletzung von Konten oder Ressourcen zu verhindern.|
+|Subscription|30|Externe Konten mit Besitzerberechtigungen sollten aus Ihrem Abonnement entfernt werden.|Entfernen Sie externe Konten mit Besitzerberechtigungen aus Ihrem Abonnement, um nicht überwachten Zugriff zu verhindern.|
+|Subscription|30|MFA sollte für Ihre Abonnementkonten mit Leseberechtigungen aktiviert sein.|Aktivieren Sie für alle Abonnementkonten mit Leseberechtigungen die mehrstufige Authentifizierung (Multi-Factor Authentication, MFA), um eine Sicherheitsverletzung von Konten oder Ressourcen zu verhindern.|
+|Subscription|25|Externe Konten mit Schreibberechtigungen sollten aus Ihrem Abonnement entfernt werden.|Entfernen Sie externe Konten mit Schreibberechtigungen aus Ihrem Abonnement, um nicht überwachten Zugriff zu verhindern. |
+|Subscription|20|Veraltete Konten mit Besitzerberechtigungen sollten aus Ihrem Abonnement entfernt werden.|Entfernen Sie veraltete Konten mit Besitzerberechtigungen aus Ihrem Abonnement.|
+|Subscription|5|Veraltete Konten sollten aus Ihrem Abonnement entfernt werden.|Entfernen Sie veraltete Konten aus Ihren Abonnements, um nur den Zugriff auf aktuelle Benutzer zuzulassen. |
+|Subscription|5|Ihrem Abonnement sollte mehr als ein Besitzer zugewiesen sein.|Legen Sie mehrere Abonnementbesitzer fest, um Redundanz beim Administratorzugriff zu gewährleisten.|
+|Subscription|5|Maximal 3 Besitzer sollten für Ihr Abonnement festgelegt sein.|Legen Sie höchstens drei Abonnementbesitzer fest, um die Möglichkeit einer Sicherheitsverletzung durch einen kompromittierten Besitzer zu verringern.|
 |Schlüsseltresor|5|Diagnoseprotokolle in Key Vault sollten aktiviert sein.|Aktivieren Sie Protokolle, und bewahren Sie sie bis zu ein Jahr lang auf. Auf diese Weise können Sie vergangene Aktivitäten nachvollziehen, wenn Sie Sicherheitsincidents untersuchen oder Ihr Netzwerk gefährdet ist. |
-|Abonnement|15|Externe Konten mit Leseberechtigungen sollten aus Ihrem Abonnement entfernt werden.|Entfernen Sie externe Konten mit Leseberechtigungen aus Ihrem Abonnement, um nicht überwachten Zugriff zu verhindern.| 
+|Subscription|15|Externe Konten mit Leseberechtigungen sollten aus Ihrem Abonnement entfernt werden.|Entfernen Sie externe Konten mit Leseberechtigungen aus Ihrem Abonnement, um nicht überwachten Zugriff zu verhindern.| 
 
 > [!NOTE]
 > Wenn Sie eine Richtlinie für bedingten Zugriff erstellt haben, die MFA erfordert, für die jedoch Ausschlüsse festgelegt sind, wird die Richtlinie beim Assessment der MFA-Empfehlung für Security Center als nicht kompatibel eingestuft, da sie zulässt, dass sich einige Benutzer in Azure ohne MFA anmelden.

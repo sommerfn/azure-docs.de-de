@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 03/27/2019
 ms.author: mbullwin
-ms.openlocfilehash: 5194b9e6f40dbcd5e48b33c12db4b3cd94f75de3
-ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
+ms.openlocfilehash: dd4690e27be38c3fef3053562ebee773698a70d7
+ms.sourcegitcommit: 1289f956f897786090166982a8b66f708c9deea1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/04/2019
-ms.locfileid: "66478406"
+ms.lasthandoff: 06/17/2019
+ms.locfileid: "67154781"
 ---
 # <a name="application-insights-api-for-custom-events-and-metrics"></a>Application Insights-API für benutzerdefinierte Ereignisse und Metriken
 
@@ -249,7 +249,7 @@ namespace User.Namespace.Example01
 ## <a name="trackmetric"></a>TrackMetric
 
 > [!NOTE]
-> Microsoft.ApplicationInsights.TelemetryClient.TrackMetric gilt im .NET SDK als veraltet. Metriken sollten immer für einen bestimmten Zeitraum vorab aggregiert werden, bevor sie gesendet werden. Verwenden Sie eine der GetMetric(..)-Überladungen, um ein Metrikobjekt für den Zugriff auf Funktionen für die SDK-Vorabaggregation zu erhalten. Wenn Sie Ihre eigene Logik für die Vorabaggregation implementieren, können Sie die Track(ITelemetry metricTelemetry)-Methode zum Senden der sich ergebenden Aggregate verwenden. Falls für Ihre Anwendung das Senden eines separaten Telemetrieelements immer erforderlich ist (ohne zeitabhängige Aggregation), verfügen Sie wahrscheinlich über einen Anwendungsfall für eine Ereignistelemetrie. Weitere Informationen finden Sie unter „TelemetryClient.TrackEvent (Microsoft.Applicationlnsights.DataContracts.EventTelemetry)“.
+> 2Microsoft.ApplicationInsights.TelemetryClient.TrackMetric“ ist nicht die bevorzugte Methode für das Senden von Metriken. Metriken sollten immer für einen bestimmten Zeitraum vorab aggregiert werden, bevor sie gesendet werden. Verwenden Sie eine der GetMetric(..)-Überladungen, um ein Metrikobjekt für den Zugriff auf Funktionen für die SDK-Vorabaggregation zu erhalten. Wenn Sie Ihre eigene Logik für die Vorabaggregation implementieren, können Sie die TrackMetric()-Methode zum Senden der sich ergebenden Aggregate verwenden. Falls für Ihre Anwendung das Senden eines separaten Telemetrieelements immer erforderlich ist (ohne zeitabhängige Aggregation), verfügen Sie wahrscheinlich über einen Anwendungsfall für eine Ereignistelemetrie. Weitere Informationen finden Sie unter „TelemetryClient.TrackEvent (Microsoft.Applicationlnsights.DataContracts.EventTelemetry)“.
 
 In Application Insights können Metriken dargestellt werden, die keinen bestimmten Ereignissen zugeordnet sind. Beispielsweise könnten Sie die Länge einer Warteschlange in regelmäßigen Abständen überwachen. Bei vorhandenen Metriken sind die einzelnen Messwerte von geringerem Interesse als die Abwandlungen und Trends, daher sind statistische Diagramme sehr nützlich.
 

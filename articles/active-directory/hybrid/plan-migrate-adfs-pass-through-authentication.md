@@ -1,5 +1,5 @@
 ---
-title: 'Azure AD Connect: Migrieren vom Verbund zur Passthrough-Authentifizierung für Azure Active Directory | Microsoft-Dokumentation'
+title: 'Azure AD Connect: Migrieren vom Verbund zu PTA für Azure AD'
 description: Dieser Artikel enthält Informationen zum Umstellen Ihrer Hybrididentitätsumgebung vom Verbund auf die Passthrough-Authentifizierung.
 services: active-directory
 author: billmath
@@ -8,16 +8,16 @@ ms.reviewer: martincoetzer
 ms.service: active-directory
 ms.workload: identity
 ms.topic: article
-ms.date: 12/13/2018
+ms.date: 05/31/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bf0bb51470272099ed2824d0450082f93fe65f14
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 27f5a7d8bb6dc347414d84d8cf536f1c2d7a9910
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58076461"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67109355"
 ---
 # <a name="migrate-from-federation-to-pass-through-authentication-for-azure-active-directory"></a>Migrieren vom Verbund zur Passthrough-Authentifizierung für Azure Active Directory
 
@@ -75,7 +75,7 @@ Führen Sie die Schritte in den folgenden Abschnitten aus, um sich darüber zu i
 2. Wählen Sie auf der Seite **Weitere Aufgaben** die Option **Aktuelle Konfiguration anzeigen** und anschließend **Weiter**.<br />
  
    ![Screenshot: Option „Aktuelle Konfiguration anzeigen“ auf der Seite „Weitere Aufgaben“](media/plan-migrate-adfs-pass-through-authentication/migrating-adfs-to-pta_image2.png)<br />
-3. Scrollen Sie auf der Seite **Lösung prüfen** zu **Active Directory-Verbunddienste (AD FS)**.<br />
+3. Scrollen Sie auf der Seite **Lösung prüfen** zu **Active Directory-Verbunddienste (AD FS)** .<br />
 
    * Wenn die AD FS-Konfiguration in diesem Abschnitt angezeigt wird, können Sie mit Sicherheit davon ausgehen, dass AD FS ursprünglich mit Azure AD Connect konfiguriert wurde. Sie können Ihre Domänen von Verbundidentität auf die verwaltete Identität umstellen, indem Sie die Azure AD Connect-Option **Benutzeranmeldung ändern** verwenden. Weitere Informationen zum Prozess finden Sie im Abschnitt **Option 1: Konfigurieren der Passthrough-Authentifizierung mit Azure AD Connect**.
    * Wenn AD FS in den aktuellen Einstellungen nicht aufgeführt ist, müssen Sie Ihre Domänen per PowerShell manuell von der Verbundidentität auf die verwaltete Identität umstellen. Weitere Informationen zu diesem Prozess finden Sie im Abschnitt **Option 2: Wechseln vom Verbund zur Passthrough-Authentifizierung mit Azure AD Connect und PowerShell**.

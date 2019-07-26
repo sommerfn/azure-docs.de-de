@@ -1,6 +1,6 @@
 ---
-title: Hochverfügbarkeit – Azure SQL-Datenbankdienst | Microsoft Docs
-description: Erfahren Sie mehr über die Hochverfügbarkeitsfunktionen des Azure SQL-Datenbankdiensts.
+title: Hochverfügbarkeit – Azure SQL-Datenbank-Dienst | Microsoft-Dokumentation
+description: Erfahren Sie mehr über die Hochverfügbarkeitsfunktionen des Azure SQL-Datenbank-Diensts.
 services: sql-database
 ms.service: sql-database
 ms.subservice: high-availability
@@ -11,13 +11,13 @@ author: jovanpop-msft
 ms.author: sashan
 ms.reviewer: carlrab, sashan
 manager: craigg
-ms.date: 04/17/2019
-ms.openlocfilehash: ec9f5aa8163ea9bb838b1a95ab8ad49233a72643
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.date: 06/10/2019
+ms.openlocfilehash: a88842802759a5c3ae7af7334bbe125344c978ea
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59698228"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67066915"
 ---
 # <a name="high-availability-and-azure-sql-database"></a>Hochverfügbarkeit und Azure SQL-Datenbank
 
@@ -32,7 +32,7 @@ In Azure SQL-Datenbank werden zwei Hochverfügbarkeits-Architekturmodelle verwen
 
 Azure SQL-Datenbank wird auf der aktuellen stabilen Version der SQL Server-Datenbank-Engine und des Windows-Betriebssystems ausgeführt. Die meisten Benutzer bemerken nicht, dass laufend Upgrades ausgeführt werden.
 
-## <a name="basic-standard-and-general-purpose-service-tier-availability"></a>Verfügbarkeit der Diensttarife „Basic“, „Standard“ und „Universell“
+## <a name="basic-standard-and-general-purpose-service-tier-availability"></a>Verfügbarkeit der Dienstebenen „Basic“, „Standard“ und „Universell“
 
 Diese Dienstebenen nutzen die Standardverfügbarkeitsarchitektur. In der folgenden Abbildung werden vier Knoten mit getrennter Compute- und Speicherebene veranschaulicht.
 
@@ -45,7 +45,7 @@ Das Standardverfügbarkeitsmodell umfasst zwei Ebenen:
 
 Bei jedem Upgrade der Datenbank-Engine oder des Betriebssystems sowie beim Erkennen eines Fehlers wird der zustandslose SQL Server-Prozess in Azure Service Fabric zu einem anderen zustandslosen Computeknoten mit ausreichender freier Kapazität verschoben. Daten in Azure Blob Storage sind vom Verschiebevorgang nicht betroffen, und die Daten- und Protokolldateien werden an den neu initialisierten SQL Server-Prozess angefügt. Dieser Prozess garantiert eine Verfügbarkeit von 99,99 %; bei einer starken Workload ist möglicherweise eine gewisse Leistungseinbuße während des Übergangs festzustellen, da die neue SQL Server-Instanz mit einem kalten Cache gestartet wird.
 
-## <a name="premium-and-business-critical-service-tier-availability"></a>Verfügbarkeit der Diensttarife „Premium“ und „Unternehmenskritisch“
+## <a name="premium-and-business-critical-service-tier-availability"></a>Verfügbarkeit der Dienstebenen „Premium“ und „Unternehmenskritisch“
 
 Die Dienstebenen „Premium“ und „Unternehmenskritisch“ nutzen das Premium-Verfügbarkeitsmodell, das eine Integration von Computeressourcen (SQL Server-Datenbank-Engine-Prozess) und Speicher (lokal angefügte SSD) auf einem einzigen Knoten bietet. Hochverfügbarkeit wird durch Replizieren von Compute- und Speicherressourcen auf weiteren Knoten erreicht, wodurch ein Cluster mit drei bis vier Knoten erstellt wird. 
 
@@ -62,7 +62,7 @@ In der Standardeinstellung wird der Cluster von Knoten für das Premium-Verfügb
 Da die zonenredundanten Datenbanken über Replikate in verschiedenen Rechenzentren mit einiger Entfernung dazwischen verfügen, kann sich durch die erhöhte Netzwerklatenz die Commitzeit erhöhen und dadurch die Leistung einiger OLTP-Workloads beeinträchtigt werden. Sie können jederzeit zur Einzelzonenkonfiguration zurückkehren, indem Sie die zonenredundante Einstellung deaktivieren. Dieser Prozess ist ein Onlinevorgang und ähnelt dem regulären Dienstebenen-Upgrade. Am Ende des Prozesses wird die Datenbank oder der Pool aus einem zonenredundanten Ring zum Ring einer einzelnen Zone migriert (oder umgekehrt).
 
 > [!IMPORTANT]
-> Zonenredundante Datenbanken und Pools für elastische Datenbanken werden derzeit nur auf den Dienstebenen „Premium“ und „Unternehmenskritisch“ unterstützt. Standardmäßig werden Sicherungen und Überwachungsdatensätze im RA-GRS-Speicher gespeichert und sind daher möglicherweise bei einem Ausfall der gesamten Zone nicht automatisch verfügbar. 
+> Zonenredundante Datenbanken und Pools für elastische Datenbanken werden derzeit nur auf den Dienstebenen „Premium“ und „Unternehmenskritisch“ in ausgewählten Regionen unterstützt. Bei Verwendung des Tarifs „Unternehmenskritisch“ ist die zonenredundante Konfiguration nur verfügbar, wenn die Gen5-Computehardware ausgewählt ist. Aktuelle Informationen über die Regionen, die zonenredundante Datenbanken unterstützen, finden Sie unter [Unterstützung der Dienste nach Region](../availability-zones/az-overview.md#services-support-by-region).  
 
 Die zonenredundante Version der Hochverfügbarkeitsarchitektur wird im folgenden Diagramm veranschaulicht:
 

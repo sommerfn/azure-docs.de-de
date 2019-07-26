@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/12/2019
 ms.author: kumud
-ms.openlocfilehash: f4facdf8fc530c35ba02620f451a00a8da36d982
-ms.sourcegitcommit: 600d5b140dae979f029c43c033757652cddc2029
+ms.openlocfilehash: fcc26d0d42576e8d39407f2af5bafe6de24db19f
+ms.sourcegitcommit: 1289f956f897786090166982a8b66f708c9deea1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/04/2019
-ms.locfileid: "66497108"
+ms.lasthandoff: 06/17/2019
+ms.locfileid: "67154505"
 ---
 # <a name="azure-virtual-network-frequently-asked-questions-faq"></a>Azure Virtual Network – häufig gestellte Fragen
 
@@ -382,13 +382,17 @@ Dienstendpunkte fügen eine Systemroute hinzu, die Vorrang vor BGP-Routen hat un
 Um den Azure-Dienst zu erreichen, müssen NSGs ausgehende Verbindungen zulassen. Wenn Ihre NSGs für sämtlichen ausgehenden Internet-Datenverkehr geöffnet sind, sollte der Datenverkehr für den Dienstendpunkt funktionieren. Sie können den ausgehenden Datenverkehr über Diensttags auch auf Dienst-IP-Adressen beschränken.  
  
 ### <a name="what-permissions-do-i-need-to-set-up-service-endpoints"></a>Welche Berechtigungen benötige ich, um Dienstendpunkte einzurichten?
-Dienstendpunkte können in einem virtuellen Netzwerken unabhängig durch einen Benutzer konfiguriert werden, der Schreibzugriff auf das virtuelle Netzwerk hat. Zum Schützen der Ressourcen von Azure-Diensten in einem VNET muss der Benutzer die Berechtigung **Microsoft.Network/JoinServicetoaSubnet** für die hinzuzufügenden Subnetze haben. Diese Berechtigung ist standardmäßig in den integrierten Dienstadministratorrollen enthalten und kann durch Erstellen von benutzerdefinierten Rollen geändert werden. Erfahren Sie mehr über integrierte Rollen und das Zuweisen bestimmter Berechtigungen zu [benutzerdefinierten Rollen](https://docs.microsoft.com/azure/role-based-access-control/custom-roles?toc=%2fazure%2fvirtual-network%2ftoc.json).
+Dienstendpunkte können in einem virtuellen Netzwerken unabhängig durch einen Benutzer konfiguriert werden, der Schreibzugriff auf das virtuelle Netzwerk hat. Um Azure-Dienstressourcen in einem VNET zu sichern, muss der Benutzer für die hinzuzufügenden Subnetze über die Berechtigung für **„Microsoft.Network/virtualNetworks/subnets/joinViaServiceEndpoint/action“** verfügen. Diese Berechtigung ist standardmäßig in den integrierten Dienstadministratorrollen enthalten und kann durch Erstellen von benutzerdefinierten Rollen geändert werden. Erfahren Sie mehr über integrierte Rollen und das Zuweisen bestimmter Berechtigungen zu [benutzerdefinierten Rollen](https://docs.microsoft.com/azure/role-based-access-control/custom-roles?toc=%2fazure%2fvirtual-network%2ftoc.json).
  
 
 ### <a name="can-i-filter-virtual-network-traffic-to-azure-services-allowing-only-specific-azure-service-resources-over-vnet-service-endpoints"></a>Kann ich über VNET-Dienstendpunkte Datenverkehr aus virtuellen Netzwerken an Azure-Dienste filtern, sodass nur bestimmte Azure-Dienstressourcen zugelassen werden? 
 
 Richtlinien für Dienstendpunkte in virtuellen Azure-Netzwerken (VNETs) ermöglichen es Ihnen, virtuellen Netzwerkdatenverkehr an Azure-Dienste zu filtern, sodass nur bestimmte Azure-Dienstressourcen über Dienstendpunkte zugelassen werden. Endpunktrichtlinien bieten eine differenzierte Zugriffssteuerung für virtuellen Netzwerkdatenverkehr an Azure-Dienste. Weitere Informationen zu den Richtlinien für Dienstendpunkte finden Sie [hier](virtual-network-service-endpoint-policies-overview.md).
- 
+
+### <a name="does-azure-active-directory-azure-ad-support-vnet-service-endpoints"></a>Unterstützt Azure Active Directory (Azure AD) VNet-Dienstendpunkte?
+
+Azure Active Directory (Azure AD) unterstützt nativ keine Dienstendpunkte. Eine vollständige Liste der Azure-Dienste, die VNet-Dienstendpunkte unterstützen, finden Sie [hier](https://docs.microsoft.com/azure/virtual-network/virtual-network-service-endpoints-overview). Beachten Sie, dass das „Microsoft.AzureActiveDirectory“-Tag, das in den dienstunterstützenden Dienstendpunkten aufgeführt ist, nur für die Unterstützung von Dienstendpunkten für ADLS Gen 1 verwendet wird. Bitte beachten Sie für ADLS Gen1, dass die Integration virtueller Netzwerke für Azure Data Lake Storage Gen1 die Sicherheit von VNET-Dienstendpunkten zwischen Ihrem virtuellen Netzwerk und Azure Active Directory (Azure AD) nutzt, um zusätzliche Sicherheitsansprüche im Zugriffstoken zu generieren. Diese Ansprüche werden dann genutzt, um Ihr virtuelles Netzwerk mit Ihrem Data Lake Storage Gen1-Konto zu authentifizieren und den Zugriff zu ermöglichen. Erfahren Sie mehr über [Azure Data Lake Store Gen 1 VNet-Integration](../data-lake-store/data-lake-store-network-security.md?toc=%2fazure%2fvirtual-network%2ftoc.json
+
 ### <a name="are-there-any-limits-on-how-many-vnet-service-endpoints-i-can-set-up-from-my-vnet"></a>Gibt es eine Grenze für die Anzahl der VNET-Dienstendpunkte, die ich in meinem VNET einrichten kann?
 Für die Gesamtzahl von VNET-Dienstendpunkten in einem virtuellen Netzwerk gilt keine Beschränkung. Für die Ressource eines Azure-Diensts (z.B. ein Azure Storage-Konto) können Dienste Beschränkungen in Bezug auf die Anzahl von Subnetzen erzwingen, die zum Schützen der Ressource verwendet werden. Die folgende Tabelle zeigt einige Beispielgrenzwerte: 
 

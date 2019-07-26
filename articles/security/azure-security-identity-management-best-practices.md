@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/03/2019
 ms.author: barclayn
-ms.openlocfilehash: 2a669f5b46db4d5de7d1d6863b94e6c117667aee
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.openlocfilehash: 2b57ec7727e8f5b648bcb97e5fae26c63724411c
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65153243"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67127205"
 ---
 # <a name="azure-identity-management-and-access-control-security-best-practices"></a>Azure-Identitätsverwaltung und Sicherheit der Zugriffssteuerung – Bewährte Methoden
 In diesem Artikel werden bewährte Methoden für die Azure-Identitätsverwaltung und die Sicherheit der Zugriffssteuerung beschrieben. Diese empfohlenen Vorgehensweisen sind aus unseren Erfahrungen mit [Azure AD](../active-directory/fundamentals/active-directory-whatis.md) und den Erfahrungen von Kunden wie Ihnen abgeleitet.
@@ -143,7 +143,7 @@ Es gibt mehrere Optionen, um eine zweistufige Überprüfung zu erzwingen. Die be
 Im Folgenden werden Optionen und Vorteile der zweistufigen Überprüfung beschrieben:
 
 **Option 1**: [Aktivieren Sie Azure Multi-Factor Authentication durch Ändern des Benutzerstatus](../active-directory/authentication/howto-mfa-userstates.md).   
-**Vorteil**: Dies ist die herkömmliche Methode, die zweistufige Überprüfung zu anzufordern. Sie funktioniert sowohl mit der [mehrstufigen Azure-Authentifizierung in der Cloud als auch mit Azure Multi-Factor Authentication Server](../active-directory/authentication/concept-mfa-whichversion.md). Diese Methode erfordert, dass Benutzer jedes Mal, wenn sie sich anmelden, die zweistufige Überprüfung durchführen, und überschreibt Richtlinien für bedingten Zugriff.
+**Vorteil**: Dies ist die herkömmliche Methode, die zweistufige Überprüfung zu anzufordern. Sie funktioniert sowohl mit der [mehrstufigen Azure-Authentifizierung in der Cloud als auch mit Azure Multi-Factor Authentication Server](../active-directory/authentication/concept-mfa-whichversion.md). Bei dieser Methode müssen sich Benutzer jedes Mal, wenn sie sich anmelden, die zweistufige Überprüfung durchführen. Die Richtlinien für bedingten Zugriff werden außer Kraft gesetzt.
 
 Um zu bestimmen, wann Multi-Factor Authentication aktiviert werden muss, lesen Sie den Artikel [Welche Version von Azure MFA ist für meine Organisation die richtige?](../active-directory/authentication/concept-mfa-whichversion.md).
 
@@ -162,7 +162,7 @@ Dies ist die flexibelste Möglichkeit, die zweistufige Überprüfung für Ihre B
 Diese Methode nutzt die Risikobewertung von Azure AD Identity Protection, um die Notwendigkeit der zweistufigen Überprüfung auf Basis des Benutzers und Anmelderisikos für alle Cloudanwendungen zu bestimmen. Diese Methode erfordert die Azure Active Directory P2-Lizenzierung. Weitere Informationen zu dieser Methode finden Sie unter [Azure Active Directory Identity Protection](../active-directory/identity-protection/overview.md).
 
 > [!Note]
-> Option 1, Aktivierung von Multi-Factor Authentication durch Ändern des Benutzerstatus, überschreibt die bedingten Zugriffsrichtlinien. Da die Optionen 2 und 3 Richtlinien für bedingten Zugriff verwenden, können Sie Option 1 nicht mit ihnen zusammen verwenden.
+> Option 1, Aktivierung von Multi-Factor Authentication durch Ändern des Benutzerstatus, überschreibt die Richtlinien für bedingten Zugriff. Da die Optionen 2 und 3 Richtlinien für bedingten Zugriff verwenden, können Sie Option 1 nicht mit ihnen zusammen verwenden.
 
 Organisationen, die keine zusätzliche Schicht zur Identitätssicherung hinzufügen, etwa die zweistufige Überprüfung, sind anfälliger für Angriffe mit dem Ziel des Diebstahls von Anmeldeinformationen. Ein Angriff mit gestohlenen Anmeldeinformationen kann zum Kompromittieren der Daten führen.
 

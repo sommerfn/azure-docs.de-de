@@ -1,6 +1,6 @@
 ---
-title: Anzeigen von Ablehnungszuweisungen für Azure-Ressourcen mit dem Azure-Portal | Microsoft-Dokumentation
-description: Erfahren Sie, wie Sie mithilfe des Azure-Portals die Benutzer, Gruppen, Dienstprinzipale und verwalteten Identitäten anzeigen können, denen der Zugriff auf bestimmte Aktionen von Azure-Ressourcen untersagt wurde.
+title: Auflisten von Ablehnungszuweisungen für Azure-Ressourcen mit dem Azure-Portal | Microsoft-Dokumentation
+description: Erfahren Sie, wie Sie mithilfe des Azure-Portals die Benutzer, Gruppen, Dienstprinzipale und verwalteten Identitäten auflisten können, denen der Zugriff auf bestimmte Aktionen von Azure-Ressourcen in bestimmten Bereichen untersagt wurde.
 services: active-directory
 documentationcenter: ''
 author: rolyon
@@ -11,22 +11,22 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 03/13/2019
+ms.date: 06/10/2019
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: 2dcbcbec9054b31312043ef6642f59fa64728b30
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 21ffb1a2539a2e724a91dd3b2818270a5e573ef8
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58005801"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67127484"
 ---
-# <a name="view-deny-assignments-for-azure-resources-using-the-azure-portal"></a>Anzeigen von Ablehnungszuweisungen für Azure-Ressourcen mit dem Azure-Portal
+# <a name="list-deny-assignments-for-azure-resources-using-the-azure-portal"></a>Auflisten von Ablehnungszuweisungen für Azure-Ressourcen mit dem Azure-Portal
 
-[Ablehnungszuweisungen](deny-assignments.md) blockieren Aktionen von Azure-Ressourcen für bestimmte Benutzer, selbst wenn diesen durch eine Rollenzuweisung Zugriff erteilt wurde. In diesem Artikel wird beschrieben, wie Sie mit dem Azure-Portal Ablehnungszuweisungen anzeigen.
+[Ablehnungszuweisungen](deny-assignments.md) blockieren Aktionen von Azure-Ressourcen für bestimmte Benutzer, selbst wenn diesen durch eine Rollenzuweisung Zugriff erteilt wurde. In diesem Artikel wird beschrieben, wie Sie mit dem Azure-Portal Ablehnungszuweisungen auflisten.
 
 > [!NOTE]
-> Zu diesem Zeitpunkt können Sie nur dann Ihre eigenen Ablehnungszuweisungen hinzufügen, wenn Sie Azure Blueprints verwenden. Weitere Informationen finden Sie unter [Schützen neuer Ressourcen mit Azure Blueprints-Ressourcensperren](../governance/blueprints/tutorials/protect-new-resources.md).
+> Sie können Ihre eigenen Ablehnungszuweisungen nicht direkt erstellen. Weitere Informationen dazu, wie Ablehnungszuweisungen erstellt werden, finden Sie unter [Ablehnungszuweisungen](deny-assignments.md).
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -34,15 +34,15 @@ Um Informationen zu einer Ablehnungszuweisung abzurufen, müssen Sie über Folge
 
 - `Microsoft.Authorization/denyAssignments/read`-Berechtigung, die in den meisten [integrierten Rollen für Azure-Ressourcen](built-in-roles.md) enthalten ist.
 
-## <a name="view-deny-assignments"></a>Anzeigen von Ablehnungszuweisungen
+## <a name="list-deny-assignments"></a>Auflisten von Ablehnungszuweisungen
 
-Führen Sie die folgenden Schritte aus, um Ablehnungszuweisungen für ein Abonnement oder eine Verwaltungsgruppe anzuzeigen.
+Führen Sie die folgenden Schritte aus, um Ablehnungszuweisungen für ein Abonnement oder eine Verwaltungsgruppe aufzulisten.
 
 1. Klicken Sie im Azure-Portal auf **Alle Dienste** und dann auf **Verwaltungsgruppen** oder **Abonnements**.
 
-1. Klicken Sie auf die Verwaltungsgruppe oder das Abonnement, die bzw. das Sie anzeigen möchten.
+1. Klicken Sie auf die Verwaltungsgruppe oder das Abonnement, die bzw. das Sie auflisten möchten.
 
-1. Klicken Sie auf **Zugriffssteuerung (IAM)**.
+1. Klicken Sie auf **Zugriffssteuerung (IAM)** .
 
 1. Klicken Sie auf die Registerkarte **Ablehnungszuweisungen** (oder klicken Sie auf der Kachel „Ablehnungszuweisungen anzeigen“ auf **Anzeigen**).
 
@@ -67,9 +67,9 @@ Führen Sie die folgenden Schritte aus, um Ablehnungszuweisungen für ein Abonne
 
 1. Aktivieren Sie das Kontrollkästchen für eines der aktivierten Elemente, und klicken Sie auf **OK**, um die ausgewählten Spalten anzuzeigen.
 
-## <a name="view-details-about-a-deny-assignment"></a>Anzeigen von Details zu einer Ablehnungszuweisung
+## <a name="list-details-about-a-deny-assignment"></a>Auflisten von Details zu einer Ablehnungszuweisung
 
-Führen Sie die folgenden Schritte aus, um zusätzliche Details zu einer Ablehnungszuweisung anzuzeigen.
+Führen Sie die folgenden Schritte aus, um zusätzliche Details zu einer Ablehnungszuweisung aufzulisten.
 
 1. Öffnen Sie den Bereich **Ablehnungszuweisungen**, wie im vorherigen Abschnitt beschrieben.
 
@@ -110,4 +110,4 @@ Führen Sie die folgenden Schritte aus, um zusätzliche Details zu einer Ablehnu
 ## <a name="next-steps"></a>Nächste Schritte
 
 * [Verstehen von Ablehnungszuweisungen für Azure-Ressourcen](deny-assignments.md)
-* [Auflisten von Ablehnungszuweisungen für Azure-Ressourcen mithilfe der REST-API](deny-assignments-rest.md)
+* [Auflisten von Ablehnungszuweisungen für Azure-Ressourcen mit Azure PowerShell](deny-assignments-powershell.md)

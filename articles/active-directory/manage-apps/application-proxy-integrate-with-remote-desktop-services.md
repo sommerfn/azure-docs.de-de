@@ -16,12 +16,12 @@ ms.author: mimart
 ms.custom: it-pro
 ms.reviewer: harshja
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 621ca9a7a55f86a92f0c809b6e220245f47dfd39
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.openlocfilehash: d6ca64e2de5734c567173fc735776074f4c87fbc
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/27/2019
-ms.locfileid: "66233724"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67108460"
 ---
 # <a name="publish-remote-desktop-with-azure-ad-application-proxy"></a>Veröffentlichen des Remotedesktops per Azure AD-Anwendungsproxy
 
@@ -57,6 +57,8 @@ Bei einer RDS-Bereitstellung werden die Rollen „RD-Web“ und „RD-Gateway“
 - Bei der Veröffentlichung von RD-Web empfiehlt es sich, den gleichen internen und externen FQDN zu verwenden. Wenn sich die internen und externen FQDNs unterscheiden, deaktivieren Sie die Anforderungsgheaderübersetzung, um zu vermeiden, dass der Client ungültige Links empfängt. 
 
 - Aktivieren Sie im Internet Explorer das RDS-ActiveX-Add-On.
+
+- Für den Azure AD-Vorauthentifizierungsfluss können Benutzer nur Verbindungen mit Ressourcen herstellen, die im Bereich **RemoteApp und Desktops** für sie veröffentlicht wurden. Benutzer können nicht mit dem Bereich **Verbindung mit einem Remote-PC herstellen** eine Verbindung mit einem Desktop herstellen.
 
 ## <a name="deploy-the-joint-rds-and-application-proxy-scenario"></a>Bereitstellen des gemeinsamen RDS- und Anwendungsproxy-Szenarios
 

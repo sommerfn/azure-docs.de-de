@@ -1,6 +1,6 @@
 ---
-title: Includedatei
-description: Includedatei
+title: include file
+description: include file
 services: virtual-machines
 author: roygara
 ms.service: virtual-machines
@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 01/22/2019
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: d2daafa6bf5f9a28ad2b61a97e7a8bd2246ae18d
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.openlocfilehash: 4abf50e11070f2060309ae9b9cd045c874a2c52e
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66147795"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67133303"
 ---
 # <a name="what-disk-types-are-available-in-azure"></a>Welche Datenträgertypen stehen in Azure zur Verfügung?
 
@@ -28,12 +28,12 @@ Die folgende Tabelle enthält eine Gegenüberstellung von SSD Ultra- (Vorschau),
 |Datenträgertyp   |SSD   |SSD   |SSD   |Festplattenlaufwerk   |
 |Szenario   |E/A-intensive Workloads wie SAP HANA, führende Datenbanken (z.B. SQL, Oracle) und andere Workloads mit vielen Transaktionen.   |Produktionsworkloads und leistungsabhängige Workloads   |Webserver, wenig genutzte Unternehmensanwendungen und Dev/Test   |Sicherung, nicht kritisch, sporadischer Zugriff   |
 |Datenträgergröße   |65.536 Gibibyte (GiB) (Vorschau)   |32767 GiB    |32767 GiB   |32767 GiB   |
-|Max. Durchsatz   |2.000 MiB/s (Vorschau)   |900 MiB/s   |750 MiB/s   |500 MiB/s   |
-|Max. IOPS   |160.000 (Vorschau)   |20.000   |6.000   |2.000   |
+|Max. Durchsatz   |2\.000 MiB/s (Vorschau)   |900 MiB/s   |750 MiB/s   |500 MiB/s   |
+|Max. IOPS   |160.000 (Vorschau)   |20.000   |6\.000   |2\.000   |
 
 ## <a name="ultra-ssd-preview"></a>SSD Ultra (Vorschau)
 
-Azure SSD Ultra (Vorschau) bietet hohen Durchsatz, hohe IOPS und konsistenten Datenträgerspeicher mit niedrigen Wartezeiten für Azure-IaaS-VMs. Zu den weiteren Vorteilen von SSD Ultra gehört die Möglichkeit, die Datenträgerleistung dynamisch in Abstimmung mit Ihren Workloads ändern zu können, ohne Ihre virtuellen Computer neu starten zu müssen. SSD Ultra eignet sich für datenintensive Workloads wie SAP HANA, führende Datenbanken und Workloads mit vielen Transaktionen. SSD Ultra kann nur als Datenträger für Daten verwendet werden. Als Betriebssystemdatenträger empfehlen wir, SSD Premium-Datenträger zu verwenden.
+Azure SSD Ultra (Preview) bietet hohen Durchsatz, hohe IOPS und konsistenten Datenträgerspeicher mit niedrigen Wartezeiten für Azure IaaS-VMs. Zu den weiteren Vorteilen von SSD Ultra gehört die Möglichkeit, die Datenträgerleistung dynamisch in Abstimmung mit Ihren Workloads ändern zu können, ohne Ihre virtuellen Computer neu starten zu müssen. SSD Ultra eignet sich für datenintensive Workloads wie SAP HANA, führende Datenbanken und Workloads mit vielen Transaktionen. SSD Ultra kann nur als Datenträger für Daten verwendet werden. Als Betriebssystemdatenträger empfehlen wir, SSD Premium-Datenträger zu verwenden.
 
 ### <a name="performance"></a>Leistung
 
@@ -50,15 +50,15 @@ Einige Hauptfunktionen von SSD Ultra-Datenträgern sind:
 
 |Datenträgergröße (GiB)  |IOPS-Obergrenzen  |Durchsatzlimit (MB/s)  |
 |---------|---------|---------|
-|4     |1.200         |300         |
-|8     |2.400         |600         |
-|16     |4.800         |1.200         |
-|32     |9.600         |2.000         |
-|64     |19.200         |2.000         |
-|128     |38.400         |2.000         |
-|256     |76.800         |2.000         |
-|512     |80.000         |2.000         |
-|1.024–65.536 (Größen in diesem Bereich erhöhen sich in Schritten von 1 TiB)     |160.000         |2.000         |
+|4     |1\.200         |300         |
+|8     |2\.400         |600         |
+|16     |4\.800         |1\.200         |
+|32     |9\.600         |2\.000         |
+|64     |19.200         |2\.000         |
+|128     |38.400         |2\.000         |
+|256     |76.800         |2\.000         |
+|512     |80.000         |2\.000         |
+|1\.024–65.536 (Größen in diesem Bereich erhöhen sich in Schritten von 1 TiB)     |160.000         |2\.000         |
 
 ### <a name="transactions"></a>Transaktionen
 
@@ -73,7 +73,8 @@ In der Vorschauversion gilt für SSD Ultra-Datenträger Folgendes:
 - Werden nur auf ES/DS v3 VMs unterstützt.
 - Sind nur als Datenträger für Daten verfügbar und unterstützen nur für physische Sektorgröße von 4K.  
 - Können nur als leere Datenträger erstellt werden.  
-- Können aktuell nur mit Azure Resource Manager-Vorlagen, der CLI und dem Python SDK bereitgestellt werden.
+- Können aktuell nur mit Azure Resource Manager-Vorlagen, der CLI, PowerShell und dem Python SDK bereitgestellt werden.
+- Kann (noch) nicht mit dem Azure-Portal bereitgestellt werden.
 - Unterstützen noch keine Datenträger-Momentaufnahmen, VM-Images, Verfügbarkeitsgruppen, VM-Skalierungsgruppen und Azure Disk Encryption.
 - Unterstützen (noch) keine Integration in Azure Backup oder Azure Site Recovery.
 - Wie bei den  [meisten Vorschauversionen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) sollte dieses Feature bis zum Erreichen der allgemeinen Verfügbarkeit nicht für Produktionsworkloads verwendet werden.

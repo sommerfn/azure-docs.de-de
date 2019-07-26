@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 04/04/2019
 ms.author: baselden
 ms.reviewer: ''
-ms.openlocfilehash: 04a2e9968e8716818637a34adea86de88e1f848c
-ms.sourcegitcommit: 3d4121badd265e99d1177a7c78edfa55ed7a9626
+ms.openlocfilehash: 24429c5596494082b526b9648a1405bc397b9d2f
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/30/2019
-ms.locfileid: "66388306"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67108483"
 ---
 # <a name="plan-an-azure-ad-application-proxy-deployment"></a>Planen der Bereitstellung eines Azure AD-Anwendungsproxys
 
@@ -82,7 +82,7 @@ Die folgenden grundlegenden Anforderungen müssen erfüllt sein, um den Azure AD
 
    * Für die **Connectorinstallation** werden lokale Administratorrechte für den Windows-Server benötigt, auf dem die Installation durchgeführt wird. Darüber hinaus ist für die Authentifizierung und Registrierung der Connectorinstanz bei Ihrem Azure AD-Mandanten mindestens die Rolle *Anwendungsadministrator* erforderlich. 
 
-   * Für die **Anwendungsveröffentlichung und -verwaltung** wird die Rolle *Anwendungsadministrator* benötigt. Anwendungsadministratoren können alle Anwendungen im Verzeichnis verwalten, z. B. für Registrierungen, SSO-Einstellungen, Zuweisungen und Lizenzierung für Benutzer und Gruppen, Anwendungsproxyeinstellungen und die Einwilligung. Mit dieser Rolle kann der bedingte Zugriff nicht verwaltet werden. Die Rolle *Cloudanwendungsadministrator* verfügt über alle Berechtigungen des Anwendungsadministrators, mit Ausnahme der Verwaltung von Anwendungsproxyeinstellungen.
+   * Für die **Anwendungsveröffentlichung und -verwaltung** wird die Rolle *Anwendungsadministrator* benötigt. Anwendungsadministratoren können alle Anwendungen im Verzeichnis verwalten, z. B. für Registrierungen, SSO-Einstellungen, Zuweisungen und Lizenzierung für Benutzer und Gruppen, Anwendungsproxyeinstellungen und die Einwilligung. Durch diese Rolle kann der bedingte Zugriff nicht verwaltet werden. Die Rolle *Cloudanwendungsadministrator* verfügt über alle Berechtigungen des Anwendungsadministrators, mit Ausnahme der Verwaltung von Anwendungsproxyeinstellungen.
 
 * **Lizenzierung**: Der Anwendungsproxy ist über das Azure AD Basic-Abonnement verfügbar. Eine vollständige Liste mit Lizenzierungsoptionen und -funktionen finden Sie auf der [Seite mit den Azure Active Directory-Preisen](https://azure.microsoft.com/pricing/details/active-directory/).  
 
@@ -262,7 +262,7 @@ Für die Anwendungssicherheit sind erweiterte Sicherheitsfunktionen erforderlich
 
 Die folgenden Funktionen können verwendet werden, um den Azure AD-Anwendungsproxy zu unterstützen:
 
-* Benutzer- und standortbasierter bedingter Zugriff: Schützen Sie vertrauliche Daten, indem Sie den Benutzerzugriff per Geolocation oder über eine IP-Adresse mit [Richtlinien für den standortbasierten bedingten Zugriff](https://docs.microsoft.com/azure/active-directory/active-directory-conditional-access-locations) einschränken.
+* Benutzer- und standortbasierter bedingter Zugriff: Schützen Sie vertrauliche Daten, indem Sie den Benutzerzugriff per geografischem Standort oder über eine IP-Adresse mit [Richtlinien für den standortbasierten bedingten Zugriff](https://docs.microsoft.com/azure/active-directory/active-directory-conditional-access-locations) einschränken.
 
 * Gerätebasierter bedingter Zugriff: Stellen Sie per [gerätebasiertem bedingtem Zugriff](https://docs.microsoft.com/azure/active-directory/active-directory-conditional-access-policy-connected-applications) sicher, dass nur registrierte, genehmigte und konforme Geräte auf Unternehmensdaten zugreifen können.
 

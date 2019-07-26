@@ -8,12 +8,12 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.topic: conceptual
 ms.date: 05/09/2019
-ms.openlocfilehash: 98bd222212d616a5d2c608779c607bb431d184b9
-ms.sourcegitcommit: cf438e4b4e351b64fd0320bf17cc02489e61406a
+ms.openlocfilehash: 8da50757182609402ecb035b6f3e92959758ef46
+ms.sourcegitcommit: a874064e903f845d755abffdb5eac4868b390de7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/08/2019
-ms.locfileid: "67657327"
+ms.lasthandoff: 07/24/2019
+ms.locfileid: "68442290"
 ---
 # <a name="create-and-configure-enterprise-security-package-clusters-in-azure-hdinsight"></a>Erstellen und Konfigurieren von Clustern mit dem Enterprise-Sicherheitspaket in Azure HDInsight
 
@@ -380,4 +380,4 @@ Wenn Sie sich mit diesem Konto anmelden können, ist der Cluster mit dem Enterpr
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* [Einführung in die Apache Hadoop-Sicherheit mit dem Enterprise-Sicherheitspaket](apache-domain-joined-introduction.md)
+* [Einführung in die Apache Hadoop-Sicherheit mit dem Enterprise-Sicherheitspaket](hdinsight-security-overview.md)

@@ -8,18 +8,18 @@ ms.topic: article
 ms.date: 04/23/2019
 ms.author: normesta
 ms.subservice: common
-ms.openlocfilehash: c0bc74ac0fe45f2502064340a0c3ce5b82694b06
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.openlocfilehash: 414573a90e5a7b7de845b65e6e88715a26024f10
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/27/2019
-ms.locfileid: "66245275"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67125787"
 ---
 # <a name="copy-data-from-amazon-s3-buckets-by-using-azcopy"></a>Kopieren von Daten aus Amazon S3-Buckets mit AzCopy
 
-AzCopy ist ein Befehlszeilenhilfsprogramm, das Sie verwenden können, um Blobs oder Dateien in oder aus einem Speicherkonto zu kopieren. Dieser Artikel enthält Informationen zum Kopieren von Objekten, Ordnern und Buckets aus Amazon Web Services (AWS) S3 in Azure Blob Storage mit AzCopy.
+AzCopy ist ein Befehlszeilenhilfsprogramm, das Sie verwenden können, um Blobs oder Dateien in oder aus einem Speicherkonto zu kopieren. Dieser Artikel enthält Informationen zum Kopieren von Objekten, Verzeichnissen und Buckets aus Amazon Web Services (AWS) S3 in Azure Blob Storage mit AzCopy.
 
-## <a name="choose-how-youll-provide-authorization-credentials"></a>Auswählen der Angabe von Anmeldeinformationen für die Autorisierung
+## <a name="choose-how-youll-provide-authorization-credentials"></a>Auswählen, wie Sie die Autorisierungsanmeldeinformationen bereitstellen
 
 * Nutzen Sie für die Azure Storage-Autorisierung Azure Active Directory (AD) oder ein SAS-Token (Shared Access Signature).
 
@@ -46,9 +46,12 @@ Halten Sie Ihren AWS-Zugriffsschlüssel und geheimen Zugriffsschlüssel bereit, 
 | **Linux** | `export AWS_ACCESS_KEY_ID=<access-key>`<br>`export AWS_SECRET_ACCESS_KEY=<secret-access-key>` |
 | **MacOS** | `export AWS_ACCESS_KEY_ID=<access-key>`<br>`export AWS_SECRET_ACCESS_KEY=<secret-access-key>`|
 
-## <a name="copy-objects-folders-and-buckets"></a>Kopieren von Objekten, Ordnern und Buckets
+## <a name="copy-objects-directories-and-buckets"></a>Kopieren von Objekten, Verzeichnisse und Buckets
 
 Da für AzCopy die [Put Block From URL](https://docs.microsoft.com/rest/api/storageservices/put-block-from-url)-API verwendet wird, werden Daten direkt zwischen AWS S3 und Speicherservern kopiert. Für diese Kopiervorgänge wird nicht die Netzwerkbandbreite Ihres Computers genutzt.
+
+> [!IMPORTANT]
+> Diese Funktion steht derzeit als Vorschau zur Verfügung. Wenn Sie sich entscheiden, nach einem Kopiervorgang Daten aus Ihren S3-Bucket zu entfernen, vergewissern Sie sich vor dem Entfernen der Daten, dass die Daten ordnungsgemäß in Ihr Speicherkonto kopiert wurden.
 
 ### <a name="copy-an-object"></a>Kopieren eines Objekts
 
@@ -64,12 +67,12 @@ Da für AzCopy die [Put Block From URL](https://docs.microsoft.com/rest/api/stor
 >
 > Weitere Informationen zum virtuellen Hosten von Buckets finden Sie unter [Virtual Hosting of Buckets]](https://docs.aws.amazon.com/AmazonS3/latest/dev/VirtualHosting.html) (Virtuelles Hosten von Buckets).
 
-### <a name="copy-a-folder"></a>Kopieren eines Ordners
+### <a name="copy-a-directory"></a>Kopieren eines Verzeichnisses
 
 |    |     |
 |--------|-----------|
-| **Syntax** | `azcopy cp "https://s3.amazonaws.com/<bucket-name>/<folder-name>" "https://<storage-account-name>.blob.core.windows.net/<container-name>/<folder-name>" --recursive=true` |
-| **Beispiel** | `azcopy cp "https://s3.amazonaws.com/mybucket/myfolder" "https://mystorageaccount.blob.core.windows.net/mycontainer/myfolder" --recursive=true` |
+| **Syntax** | `azcopy cp "https://s3.amazonaws.com/<bucket-name>/<directory-name>" "https://<storage-account-name>.blob.core.windows.net/<container-name>/<directory-name>" --recursive=true` |
+| **Beispiel** | `azcopy cp "https://s3.amazonaws.com/mybucket/mydirectory" "https://mystorageaccount.blob.core.windows.net/mycontainer/mydirectory" --recursive=true` |
 
 ### <a name="copy-a-bucket"></a>Kopieren eines Buckets
 
@@ -132,9 +135,9 @@ AzCopy führt die folgenden Schritte aus:
 
 Weitere Beispiele finden Sie in den folgenden Artikeln:
 
-- [Übertragen von Daten mit AzCopy v10](storage-use-azcopy-v10.md)
+- [Erste Schritte mit AzCopy](storage-use-azcopy-v10.md)
 
-- [Transfer data with AzCopy and blob storage](storage-use-azcopy-blobs.md) (Übertragen von Daten mit AzCopy und Blob Storage)
+- [Übertragen von Daten mit AzCopy und Blob Storage](storage-use-azcopy-blobs.md)
 
 - [Transfer data with AzCopy and file storage](storage-use-azcopy-files.md) (Übertragen von Daten mit AzCopy und Dateispeicher)
 

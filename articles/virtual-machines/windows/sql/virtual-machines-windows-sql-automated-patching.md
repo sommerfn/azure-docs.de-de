@@ -16,12 +16,12 @@ ms.workload: iaas-sql-server
 ms.date: 03/07/2018
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: 4893076da47528cb6765efc32f46e76819a915b1
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: 4f0d681c93ab7ac7fef941892a95282a2fd59b89
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65793817"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67075725"
 ---
 # <a name="automated-patching-for-sql-server-in-azure-virtual-machines-resource-manager"></a>Automatisiertes Patchen für SQL Server auf virtuellen Azure-Computern (Resource Manager)
 > [!div class="op_single_selector"]
@@ -81,20 +81,20 @@ Mit dem Azure-Portal können Sie das automatisierte Patchen während der Bereits
 ### <a name="new-vms"></a>Neue virtuelle Computer
 Verwenden Sie das Azure-Portal zum Konfigurieren des automatisierten Patchens, wenn Sie einen neuen virtuellen Computer mit SQL Server im Resource Manager-Bereitstellungsmodell erstellen.
 
-Wählen Sie auf dem Blatt **SQL Server-Einstellungen** die Option **Automatisiertes Patchen** aus. Auf dem folgenden Screenshot des Azure-Portals sehen Sie das Blatt **Automatisiertes SQL-Patchen** .
+Wählen Sie auf der Registerkarte **SQL Server-Einstellungen** die Option **Konfiguration ändern** unter **Automatisiertes Patchen** aus. Auf dem folgenden Screenshot des Azure-Portals sehen Sie das Blatt **Automatisiertes SQL-Patchen** .
 
 ![Automatisiertes Patchen für SQL im Azure-Portal](./media/virtual-machines-windows-sql-automated-patching/azure-sql-arm-patching.png)
 
 Wenn Sie weiteren Kontext benötigen, lesen Sie das vollständige Thema zum [Bereitstellen eines virtuellen Computers mit SQL Server in Azure](virtual-machines-windows-portal-sql-server-provision.md).
 
 ### <a name="existing-vms"></a>Vorhandene virtuelle Computer
-Wählen Sie für vorhandene virtuelle Computer mit SQL Server Ihren virtuellen Computer mit SQL Server aus. Wählen Sie dann auf dem Blatt **Einstellungen** den Abschnitt **SQL Server-Konfiguration** aus.
+
+[!INCLUDE [windows-virtual-machines-sql-use-new-management-blade](../../../../includes/windows-virtual-machines-sql-new-resource.md)]
+
+Für vorhandene virtuelle SQL Server-Computer öffnen Sie die Ressource [Virtueller SQL-Computer](virtual-machines-windows-sql-manage-portal.md#access-sql-virtual-machine-resource) und wählen dann **Patchen** unter **Einstellungen** aus. 
 
 ![Automatisiertes Patchen für SQL für vorhandene virtuelle Computer](./media/virtual-machines-windows-sql-automated-patching/azure-sql-rm-patching-existing-vms.png)
 
-Klicken Sie auf dem Blatt **SQL Server-Konfiguration** im Abschnitt für das automatisierte Patchen auf die Schaltfläche **Bearbeiten**.
-
-![Konfigurieren des automatisierten Patchens für SQL für vorhandene virtuelle Computer](./media/virtual-machines-windows-sql-automated-patching/azure-sql-rm-patching-configuration.png)
 
 Klicken Sie abschließend unten auf dem Blatt **SQL Server-Konfiguration** auf die Schaltfläche **OK**, um die Änderungen zu speichern.
 
@@ -108,8 +108,7 @@ Im folgenden Beispiel wird PowerShell zum Konfigurieren des automatisierten Patc
     $vmname = "vmname"
     $resourcegroupname = "resourcegroupname"
     $aps = New-AzVMSqlServerAutoPatchingConfig -Enable -DayOfWeek "Thursday" -MaintenanceWindowStartingHour 11 -MaintenanceWindowDuration 120  -PatchCategory "Important"
-
-    Set-AzVMSqlServerExtension -AutoPatchingSettings $aps -VMName $vmname -ResourceGroupName $resourcegroupname
+s Set-AzVMSqlServerExtension -AutoPatchingSettings $aps -VMName $vmname -ResourceGroupName $resourcegroupname
 
 > [!IMPORTANT]
 > Wenn die Erweiterung noch nicht installiert ist, wird der SQL Server-Dienst durch die Installation der Erweiterung neu gestartet.

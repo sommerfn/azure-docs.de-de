@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/21/2017
 ms.author: TomSh
-ms.openlocfilehash: ab5b50433b85416ff471546171998e992293b0ea
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: bb0726fdddf6d20a9c8c5f20d6cec0cae68322ce
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57901507"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67119259"
 ---
 # <a name="azure-operational-security"></a>Azure Operational Security
 ## <a name="introduction"></a>Einführung
@@ -224,10 +224,10 @@ Die Überwachung der Netzwerksicherheit ist ein entscheidender Faktor zur Erkenn
 
 Network Watcher verfügt derzeit über die folgenden Funktionen:
 
--   **<a href="https://docs.microsoft.com/azure/network-watcher/network-watcher-monitoring-overview">Überwachungsprotokolle</a>**: Im Rahmen der Konfiguration von Netzwerken durchgeführte Vorgänge werden protokolliert. Diese Protokolle können im Azure-Portal angezeigt oder mithilfe von Microsoft-Tools wie Power BI oder Drittanbietertools abgerufen werden. Die Überwachungsprotokolle sind über das Verwaltungsportal, PowerShell, die Befehlszeilenschnittstelle und die Rest-API verfügbar. Weitere Informationen zu Überwachungsprotokollen finden Sie unter „Überwachen von Vorgängen mit Resource Manager“. Überwachungsprotokolle stehen für Vorgänge zur Verfügung, die für alle Netzwerkressourcen durchgeführt werden.
+-   **<a href="https://docs.microsoft.com/azure/network-watcher/network-watcher-monitoring-overview">Überwachungsprotokolle</a>** : Im Rahmen der Konfiguration von Netzwerken durchgeführte Vorgänge werden protokolliert. Diese Protokolle können im Azure-Portal angezeigt oder mithilfe von Microsoft-Tools wie Power BI oder Drittanbietertools abgerufen werden. Die Überwachungsprotokolle sind über das Verwaltungsportal, PowerShell, die Befehlszeilenschnittstelle und die Rest-API verfügbar. Weitere Informationen zu Überwachungsprotokollen finden Sie unter „Überwachen von Vorgängen mit Resource Manager“. Überwachungsprotokolle stehen für Vorgänge zur Verfügung, die für alle Netzwerkressourcen durchgeführt werden.
 
 
--   **<a href="https://docs.microsoft.com/azure/network-watcher/network-watcher-ip-flow-verify-overview">IP-Datenflussüberprüfung</a>**: Überprüft basierend auf 5-Tupel-Paketparametern (Ziel-IP, Quell-IP, Zielport, Quellport und Protokoll) anhand der Datenflussinformationen, ob ein Paket zugelassen oder verweigert wird. Wenn das Paket durch eine Netzwerksicherheitsgruppe verweigert wird, werden die Namen der Regel und der Netzwerksicherheitsgruppe, die das Paket verweigert haben, zurückgegeben.
+-   **<a href="https://docs.microsoft.com/azure/network-watcher/network-watcher-ip-flow-verify-overview">IP-Datenflussüberprüfung</a>** : Überprüft basierend auf 5-Tupel-Paketparametern (Ziel-IP, Quell-IP, Zielport, Quellport und Protokoll) anhand der Datenflussinformationen, ob ein Paket zugelassen oder verweigert wird. Wenn das Paket durch eine Netzwerksicherheitsgruppe verweigert wird, werden die Namen der Regel und der Netzwerksicherheitsgruppe, die das Paket verweigert haben, zurückgegeben.
 
 -   **<a href="https://docs.microsoft.com/azure/network-watcher/network-watcher-next-hop-overview">Nächster Hop:</a>** ermittelt den nächsten Hop für Pakete, die im Azure-Netzwerkfabric weitergeleitet werden, sodass Sie eine Diagnose auf falsch konfigurierte benutzerdefinierte Routen durchführen können.
 
@@ -309,7 +309,7 @@ Kunden, die ihre [Überwachungsereignisse](https://docs.microsoft.com/azure/acti
 
 ## <a name="summary"></a>Zusammenfassung
 
-In diesem Artikel wird das Schützen Ihrer Privatsphäre und Ihrer Daten zusammengefasst, während Software und Dienste bereitgestellt werden, die Sie beim Verwalten der IT-Infrastruktur Ihres Unternehmens unterstützen. Wenn sie ihre Daten anderen anvertrauen, setzt dieses Vertrauen strikte Sicherheit voraus. Dies ist Microsoft bekannt. Microsoft hält strenge Compliance- und Sicherheitsrichtlinien ein – angefangen bei der Codierung bis hin zum Betreiben von Diensten.  Das Sichern und Schützen von Daten besitzt bei Microsoft höchste Priorität.
+In diesem Artikel wird das Schützen Ihrer Privatsphäre und Ihrer Daten zusammengefasst, während Software und Dienste bereitgestellt werden, die Sie beim Verwalten der IT-Infrastruktur Ihres Unternehmens unterstützen. Wenn sie ihre Daten anderen anvertrauen, setzt dieses Vertrauen strikte Sicherheit voraus. Dies ist Microsoft bekannt. Microsoft hält strenge Compliance- und Sicherheitsrichtlinien ein – angefangen bei der Codierung bis hin zum Betreiben von Diensten. Das Sichern und Schützen von Daten besitzt bei Microsoft höchste Priorität.
 
 In diesem Artikel wird Folgendes erläutert:
 

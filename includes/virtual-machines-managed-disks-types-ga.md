@@ -1,6 +1,6 @@
 ---
-title: Includedatei
-description: Includedatei
+title: include file
+description: include file
 services: virtual-machines
 author: roygara
 ms.service: virtual-machines
@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 05/14/2019
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: c7b73cad200666db9e926d8e808eaa4a8dccffb2
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.openlocfilehash: 2bc5602011ed64b11b1b8c96b7e69a8d5ee9bf32
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/27/2019
-ms.locfileid: "66248801"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67133679"
 ---
 ## <a name="premium-ssd"></a>SSD Premium
 
@@ -45,7 +45,7 @@ Für SSD Standard gilt jeder E/A-Vorgang kleiner oder gleich 256 KiB Durchsatz a
 
 ## <a name="standard-hdd"></a>HDD Standard
 
-Azure HDD Standard bietet zuverlässige, kostengünstige Datenträgerunterstützung für virtuelle Computer mit Workloads, bei denen Wartezeiten eine untergeordnete Rolle spielen. Bei Verwendung von Standardspeicher werden die Daten auf Festplattenlaufwerken (Hard Disk Drives, HDDs) gespeichert. Latenz, IOPS und Durchsatz von HDD Standard-Datenträgern können im Vergleich mit SSD-basierten Datenträgern stärker variieren. Wenn Sie mit virtuellen Computern arbeiten, können Sie und HDD Standard-Datenträger für Dev/Test-Szenarien sowie weniger kritische Workloads verwenden. HDD Standard-Datenträger sind in allen Azure-Regionen verfügbar und können mit allen Azure-VMs verwendet werden.
+Azure HDD Standard bietet zuverlässige, kostengünstige Datenträgerunterstützung für virtuelle Computer mit Workloads, bei denen Wartezeiten eine untergeordnete Rolle spielen. Bei Verwendung von Standardspeicher werden die Daten auf Festplattenlaufwerken (Hard Disk Drives, HDDs) gespeichert. Latenz, IOPS und Durchsatz von HDD Standard-Datenträgern können im Vergleich mit SSD-basierten Datenträgern stärker variieren. HDD Standard-Datenträger sind so konzipiert, dass sie eine Schreiblatenz von unter 10 ms und eine Leselatenzen von unter 20 ms für die meisten E/A-Vorgänge ermöglichen, wobei die tatsächliche Leistung jedoch je nach E/A-Größe und Workloadmuster variieren kann. Wenn Sie mit virtuellen Computern arbeiten, können Sie und HDD Standard-Datenträger für Dev/Test-Szenarien sowie weniger kritische Workloads verwenden. HDD Standard-Datenträger sind in allen Azure-Regionen verfügbar und können mit allen Azure-VMs verwendet werden.
 
 ### <a name="disk-size"></a>Datenträgergröße
 [!INCLUDE [disk-storage-standard-hdd-sizes](disk-storage-standard-hdd-sizes.md)]

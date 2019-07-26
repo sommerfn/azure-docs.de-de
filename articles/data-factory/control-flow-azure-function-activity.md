@@ -11,12 +11,12 @@ ms.date: 01/09/2019
 author: sharonlo101
 ms.author: shlo
 manager: craigg
-ms.openlocfilehash: 82786b8f01ce409179f4ddd37127679f9357cd0e
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: dfdfb9e38f16d0077175587933b0800b87cc1931
+ms.sourcegitcommit: 22c97298aa0e8bd848ff949f2886c8ad538c1473
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64727053"
+ms.lasthandoff: 06/14/2019
+ms.locfileid: "67144129"
 ---
 # <a name="azure-function-activity-in-azure-data-factory"></a>Aktivität „Azure Function“ in Azure Data Factory
 
@@ -64,6 +64,10 @@ Azure Functions erreicht nach 230 Sekunden den Timeout, unabhängig von der Eins
 
 Weitere Informationen zu Durable Functions finden Sie in [diesem Artikel](../azure-functions/durable/durable-functions-overview.md). Sie können eine Azure-Funktionsaktivität einrichten, um Durable Function aufzurufen, das eine Antwort mit einer anderen URI zurückgibt, wie z. B. [dieses Beispiel](../azure-functions/durable/durable-functions-http-api.md#http-api-url-discovery). Da `statusQueryGetUri` den HTTP-Status 202 zurückgibt, während die Funktion ausgeführt wird, können Sie den Status der Funktion mithilfe einer Webaktivität abfragen. Richten Sie einfach eine Webaktivität ein, bei der das Feld `url` auf `@activity('<AzureFunctionActivityName>').output.statusQueryGetUri` festgelegt ist. Wenn Durable Function abgeschlossen ist, entspricht die Ausgabe der Funktion der Ausgabe der Webaktivität.
 
+
+## <a name="sample"></a>Beispiel
+
+[Hier](https://github.com/Azure/Azure-DataFactory/tree/master/SamplesV2/UntarAzureFilesWithAzureFunction) finden Sie ein Beispiel einer Data Factory, in dem mithilfe einer Azure-Funktion der Inhalt einer tar-Datei extrahiert wird.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

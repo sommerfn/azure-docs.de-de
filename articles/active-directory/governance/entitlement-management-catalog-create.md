@@ -12,16 +12,16 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.subservice: compliance
-ms.date: 04/19/2019
+ms.date: 05/29/2019
 ms.author: rolyon
 ms.reviewer: hanki
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e6d9220cd2162b4c8cb77c1e7abd0372052f5454
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: a5988f4723f1ef73cf0767ef8ac1b9adf3c1435d
+ms.sourcegitcommit: 156b313eec59ad1b5a820fabb4d0f16b602737fc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64540679"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67190239"
 ---
 # <a name="create-and-manage-a-catalog-in-azure-ad-entitlement-management-preview"></a>Erstellen und Verwalten eines Katalogs in der Azure AD-Berechtigungsverwaltung (Vorschauversion)
 
@@ -60,11 +60,11 @@ Ein Katalog ist ein Container für Ressourcen und Zugriffspakete. Sie erstellen 
 
 ## <a name="add-resources-to-a-catalog"></a>Hinzufügen von Ressourcen zu einem Katalog
 
-Um Ressourcen in ein Zugriffspaket einschließen zu können, müssen die Ressourcen in einem Katalog vorhanden sein. Bei den Typen von Ressourcen, die Sie hinzufügen können, handelt es sich um Gruppen, Anwendungen und SharePoint Online-Websites.
+Um Ressourcen in ein Zugriffspaket einschließen zu können, müssen die Ressourcen in einem Katalog vorhanden sein. Bei den Typen von Ressourcen, die Sie hinzufügen können, handelt es sich um Gruppen, Anwendungen und SharePoint Online-Websites. Die Gruppen können in der Cloud erstellte Office 365-Gruppen oder in der Cloud erstellte Azure AD-Sicherheitsgruppen sein. Die Anwendungen können Azure AD-Unternehmensanwendungen sein, einschließlich SaaS-Anwendungen und Ihrer eigenen Anwendungen, die mit Azure AD verbunden sind. Die Websites können SharePoint Online-Websites oder SharePoint Online-Websitesammlungen sein.
 
-**Erforderliche Rolle:** Benutzeradministrator oder Katalogbesitzer
+**Erforderliche Rolle:** Siehe [Erforderliche Rollen, um einem Katalog Ressourcen hinzuzufügen](entitlement-management-delegate.md#required-roles-to-add-resources-to-a-catalog).
 
-1. Klicken Sie im Azure-Portal auf **Azure Active Directory**, und klicken Sie dann auf **Identity Governance**.
+1. Klicken Sie im Azure-Portal auf **Azure Active Directory** und dann auf **Identity Governance**.
 
 1. Klicken Sie im linken Menü auf **Kataloge**, und öffnen Sie dann den Katalog, dem Sie Ressourcen hinzufügen möchten.
 
@@ -74,9 +74,7 @@ Um Ressourcen in ein Zugriffspaket einschließen zu können, müssen die Ressour
 
 1. Klicken Sie auf einen Ressourcentyp: **Gruppen**, **Anwendungen** oder **SharePoint-Websites**.
 
-    Wenn Sie ein Katalogersteller sind, können Sie Ihrem Katalog Office 365-Gruppen oder Azure AD-Sicherheitsgruppen hinzufügen, deren Besitzer Sie sind. Wenn Sie Benutzern eine Gruppe zuweisen möchten, die sich nicht in Ihrem Besitz befindet, müssen Sie einen Benutzeradministrator bitten, Ihrem Katalog diese Gruppe hinzuzufügen.
-
-    Wenn Sie ein Katalogersteller sind, können Sie Ihrem Katalog Azure AD-Unternehmensanwendungen hinzufügen, deren Besitzer Sie sind. Dies schließt SaaS-Anwendungen und Ihre eigenen Anwendungen im Verbund mit Azure AD ein. Wenn Sie Benutzern eine Anwendung zuweisen möchten, die sich nicht in Ihrem Besitz befindet, müssen Sie einen Benutzeradministrator bitten, Ihrem Katalog diese Anwendung hinzuzufügen. Sobald die Anwendung im Katalog enthalten ist, können Sie eine der Rollen der Anwendung in einem Zugriffspaket auswählen.
+    Wenn Sie eine Ressource, die Sie hinzufügen möchten, nicht sehen, oder wenn Sie eine Ressource nicht hinzufügen können, stellen Sie sicher, dass Sie die erforderliche Azure AD-Verzeichnisrolle und -Berechtigungsverwaltungsrolle haben. Möglicherweise müssen Sie jemanden mit den erforderlichen Rollen beauftragen, die Ressource Ihrem Katalog hinzuzufügen. Weitere Informationen finden Sie unter [Erforderliche Rollen, um einem Katalog Ressourcen hinzuzufügen](entitlement-management-delegate.md#required-roles-to-add-resources-to-a-catalog).
 
 1. Wählen Sie eine oder mehrere Ressourcen des Typs aus, die Sie dem Katalog hinzufügen möchten.
 
@@ -88,9 +86,9 @@ Um Ressourcen in ein Zugriffspaket einschließen zu können, müssen die Ressour
 
 Sie können Ressourcen aus einem Katalog entfernen. Eine Ressource kann nur aus einem Katalog entfernt werden, wenn sie nicht in einem der Zugriffspakete des Katalogs verwendet wird.
 
-**Erforderliche Rolle:** Benutzeradministrator oder Katalogbesitzer
+**Erforderliche Rolle:** Siehe [Erforderliche Rollen, um einem Katalog Ressourcen hinzuzufügen](entitlement-management-delegate.md#required-roles-to-add-resources-to-a-catalog).
 
-1. Klicken Sie im Azure-Portal auf **Azure Active Directory**, und klicken Sie dann auf **Identity Governance**.
+1. Klicken Sie im Azure-Portal auf **Azure Active Directory** und dann auf **Identity Governance**.
 
 1. Klicken Sie im linken Menü auf **Kataloge**, und öffnen Sie dann den Katalog, aus dem Sie Ressourcen entfernen möchten.
 
@@ -99,22 +97,6 @@ Sie können Ressourcen aus einem Katalog entfernen. Eine Ressource kann nur aus 
 1. Wählen Sie die Ressourcen aus, die Sie entfernen möchten.
 
 1. Klicken Sie auf **Entfernen**. Oder klicken Sie auf die Auslassungspunkte ( **...** ), und klicken Sie dann auf **Ressource entfernen**.
-
-## <a name="add-catalog-owners-or-access-package-managers"></a>Hinzufügen von Katalogbesitzern oder Zugriffspaketmanagern
-
-Wenn Sie die Verwaltung des Katalogs oder der Zugriffspakete im Katalog delegieren möchten, fügen Sie Katalogbesitzer oder Zugriffspaketmanager hinzu. Der Benutzer, der einen Katalog erstellt, ist der erste Katalogbesitzer.
-
-**Erforderliche Rolle:** Benutzeradministrator oder Katalogbesitzer
-
-1. Klicken Sie im Azure-Portal auf **Azure Active Directory**, und klicken Sie dann auf **Identity Governance**.
-
-1. Klicken Sie im linken Menü auf **Kataloge**, und öffnen Sie dann den Katalog, dem Sie Administratoren hinzufügen möchten.
-
-1. Klicken Sie im linken Menü auf **Rollen und Administratoren**.
-
-1. Klicken Sie auf **Besitzer hinzufügen** oder **Zugriffspaketmanager hinzufügen**, um die Mitglieder für diese Rollen auszuwählen.
-
-1. Klicken Sie auf **Auswählen**, um diese Mitglieder hinzuzufügen.
 
 ## <a name="edit-a-catalog"></a>Bearbeiten eines Katalogs
 
@@ -148,4 +130,5 @@ Sie können einen Katalog nur löschen, wenn er keine Zugriffspakete enthält.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
+- [Hinzufügen eines Katalogerstellers](entitlement-management-delegate.md#add-a-catalog-creator)
 - [Erstellen und Verwalten eines Zugriffspakets](entitlement-management-access-package-create.md)

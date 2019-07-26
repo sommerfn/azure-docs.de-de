@@ -15,12 +15,12 @@ ms.workload: iaas-sql-server
 ms.date: 05/03/2018
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: 540acd1735eb539ecaac468e74511ba5f751278f
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: d03d4bd86367aa29bbf93062f7cc03f57f4cad83
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "66165670"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67075925"
 ---
 # <a name="automated-backup-v2-for-azure-virtual-machines-resource-manager"></a>Automatisierte Sicherung v2 für virtuelle Azure-Computer (Resource Manager)
 
@@ -67,7 +67,7 @@ In der folgenden Tabelle werden die Optionen beschrieben, die für die automatis
 | **Automatisierte Sicherung** | Aktivieren/Deaktivieren (deaktiviert) | Aktiviert oder deaktiviert die automatisierte Sicherung für einen virtuellen Azure-Computer mit SQL Server 2016/2017 Developer, Standard oder Enterprise. |
 | **Aufbewahrungszeitraum** | 1 bis 30 Tage (30 Tage) | Die Anzahl von Tagen, für die Sicherungen aufbewahrt werden. |
 | **Speicherkonto** | Azure-Speicherkonto | Ein Azure-Speicherkonto, mit dem Dateien der automatisierten Sicherung im Blob-Speicher gespeichert werden. An diesem Speicherort wird ein Container zum Speichern aller Sicherungsdateien erstellt. Die Namenskonvention für die Sicherungsdatei enthält das Datum, die Uhrzeit sowie die Datenbank-GUID. |
-| **Verschlüsselung** |Aktivieren/Deaktivieren (deaktiviert) | Aktiviert oder deaktiviert die Verschlüsselung. Wenn die Verschlüsselung aktiviert ist, befinden sich die Zertifikate zum Wiederherstellen der Sicherung im angegebenen Speicherkonto. Dabei wird derselbe **automaticbackup**-Container mit der gleichen Namenskonvention verwendet. Wenn das Kennwort geändert wird, wird ein neues Zertifikat mit diesem Kennwort generiert, das alte Zertifikat bleibt jedoch zum Wiederherstellen vorheriger Sicherungen erhalten. |
+| **Verschlüsselung** |Aktivieren/Deaktivieren (deaktiviert) | Aktiviert oder deaktiviert die Verschlüsselung. Wenn die Verschlüsselung aktiviert ist, befinden sich die Zertifikate zum Wiederherstellen der Sicherung im angegebenen Speicherkonto. Dabei wird derselbe **Automatische Sicherung**-Container mit der gleichen Namenskonvention verwendet. Wenn das Kennwort geändert wird, wird ein neues Zertifikat mit diesem Kennwort generiert, das alte Zertifikat bleibt jedoch zum Wiederherstellen vorheriger Sicherungen erhalten. |
 | **Kennwort** |Kennworttext | Ein Kennwort für Verschlüsselungsschlüssel. Dieses Kennwort ist nur erforderlich, wenn die Verschlüsselung aktiviert ist. Um eine verschlüsselte Sicherung wiederherzustellen, benötigen Sie das richtige Kennwort und das zugehörige Zertifikat, das beim Erstellen der Sicherung verwendet wurde. |
 
 ### <a name="advanced-settings"></a>Erweiterte Einstellungen
@@ -127,7 +127,7 @@ Mit dem Azure-Portal können Sie die automatisierte Sicherung v2 während der Be
 
 Verwenden Sie das Azure-Portal zum Konfigurieren der automatisierten Sicherung v2, wenn Sie einen neuen virtuellen Computer mit SQL Server 2016 oder 2017 im Resource Manager-Bereitstellungsmodell erstellen.
 
-Wählen Sie im Bereich **SQL Server-Einstellungen** die Option **Automatisierte Sicherung** aus. Auf dem folgenden Screenshot des Azure-Portals sehen Sie die Einstellungen für **Automatisierte SQL-Sicherung**.
+Wählen Sie auf der Registerkarte **SQL Server-Einstellungen** unter **Automatisierte Sicherung** die Option **Aktivieren** aus. Auf dem folgenden Screenshot des Azure-Portals sehen Sie die Einstellungen für **Automatisierte SQL-Sicherung**.
 
 ![Konfigurieren der automatisierten SQL-Sicherung im Azure-Portal](./media/virtual-machines-windows-sql-automated-backup-v2/automated-backup-blade.png)
 
@@ -136,15 +136,14 @@ Wählen Sie im Bereich **SQL Server-Einstellungen** die Option **Automatisierte 
 
 ## <a name="configure-existing-vms"></a>Konfigurieren vorhandener VMs
 
-Wählen Sie für vorhandene virtuelle Computer mit SQL Server Ihren virtuellen Computer mit SQL Server aus. Wählen Sie dann in den **Einstellungen** der VM den Abschnitt **SQL Server-Konfiguration** aus.
+[!INCLUDE [windows-virtual-machines-sql-use-new-management-blade](../../../../includes/windows-virtual-machines-sql-new-resource.md)]
+
+Für vorhandene virtuelle SQL Server-Computer navigieren Sie zur Ressource [Virtuelle SQL-Computer](virtual-machines-windows-sql-manage-portal.md#access-sql-virtual-machine-resource) und wählen dann **Sicherungen** aus, um ihre automatisierten Sicherungen zu konfigurieren.
 
 ![Automatisierte SQL-Sicherung für vorhandene virtuelle Computer](./media/virtual-machines-windows-sql-automated-backup-v2/sql-server-configuration.png)
 
-Klicken Sie in den Einstellungen der **SQL Server-Konfiguration** im Abschnitt für die automatisierte Sicherung auf die Schaltfläche **Bearbeiten**.
 
-![Konfigurieren der automatisierten SQL-Sicherung für vorhandene virtuelle Computer](./media/virtual-machines-windows-sql-automated-backup-v2/sql-server-configuration-edit.png)
-
-Klicken Sie abschließend bei den Einstellungen der **SQL Server-Konfiguration** unten auf die Schaltfläche **OK**, um die Änderungen zu speichern.
+Klicken Sie abschließend auf die Schaltfläche **Übernehmen** am unteren Rand der Einstellungenseite **Sicherungen**, um Ihre Änderungen zu speichern.
 
 Falls Sie die automatisierte Sicherung zum ersten Mal aktivieren, konfiguriert Azure den SQL Server-IaaS-Agent im Hintergrund. Im Azure-Portal wird währenddessen u.U. nicht angezeigt, dass die automatisierte Sicherung konfiguriert wird. Warten Sie einige Minuten, bis der Agent installiert und konfiguriert wurde. Danach werden die neuen Einstellungen im Azure-Portal angezeigt.
 
@@ -169,7 +168,7 @@ $resourcegroupname = "resourcegroupname"
 
 Wenn die SQL Server-IaaS-Agent-Erweiterung installiert ist, wird „SqlIaaSAgent“ oder „SQLIaaSExtension“ aufgeführt. Außerdem muss für die Erweiterung unter **ProvisioningState** der Zustand „Succeeded“ angezeigt werden. 
 
-Falls die Erweiterung nicht installiert oder nicht erfolgreich bereitgestellt wurde, können Sie sie mithilfe des folgenden Befehls installieren. Neben dem Namen des virtuellen Computers und der Ressourcengruppe müssen Sie auch die Region (**$region**) angeben, in der sich Ihr virtueller Computer befindet.
+Falls die Erweiterung nicht installiert oder nicht erfolgreich bereitgestellt wurde, können Sie sie mithilfe des folgenden Befehls installieren. Neben dem Namen des virtuellen Computers und der Ressourcengruppe müssen Sie auch die Region ( **$region**) angeben, in der sich Ihr virtueller Computer befindet.
 
 ```powershell
 $region = “EASTUS2”

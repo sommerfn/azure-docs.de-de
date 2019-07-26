@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b8897de5ee86d20e52b948f21afaef4acf196539
-ms.sourcegitcommit: cfbc8db6a3e3744062a533803e664ccee19f6d63
+ms.openlocfilehash: e15cf9b2e10a581c72a5035b52be47c3e2c9dfda
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/21/2019
-ms.locfileid: "65988573"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67112340"
 ---
 # <a name="configure-authentication-session-management-with-conditional-access"></a>Konfigurieren der Verwaltung von Authentifizierungssitzungen mit bedingtem Zugriff
 
@@ -53,7 +53,7 @@ Durch die Azure AD-Standardeinstellung für die Persistenz von Browsersitzungen 
 Der bedingte Zugriff ist eine Azure AD Premium-Funktion und erfordert eine Premium-Lizenz. Weitere Informationen zum bedingten Zugriff finden Sie unter [Was ist bedingter Zugriff in Azure Active Directory?](overview.md#license-requirements)
 
 > [!WARNING]
-> Wenn Sie die derzeit in der Public Preview verfügbare Funktion für die [konfigurierbare Tokengültigkeitsdauer](../develop/active-directory-configurable-token-lifetimes.md) verwenden, sollten Sie beachten, dass die Erstellung von zwei verschiedenen Richtlinien für dieselbe Benutzer- oder App-Kombination nicht unterstützt wird: eine mit dieser Funktion und eine andere mit der konfigurierbaren Tokengültigkeitsdauer. Microsoft beabsichtigt, die Funktion für die konfigurierbare Tokengültigkeitsdauer am 15. Oktober einzustellen und durch die Funktion für die Verwaltung von Authentifizierungssitzungen mit bedingtem Zugriff zu ersetzen.  
+> Wenn Sie die derzeit in der Public Preview verfügbare Funktion für die [konfigurierbare Tokengültigkeitsdauer](../develop/active-directory-configurable-token-lifetimes.md) verwenden, sollten Sie beachten, dass die Erstellung von zwei verschiedenen Richtlinien für dieselbe Benutzer- oder App-Kombination nicht unterstützt wird: eine mit dieser Funktion und eine andere mit der konfigurierbaren Tokengültigkeitsdauer. Microsoft beabsichtigt, die Funktion für die konfigurierbare Tokengültigkeitsdauer am 1. November einzustellen und durch die Funktion für die Verwaltung von Authentifizierungssitzungen mit bedingtem Zugriff zu ersetzen.  
 
 ### <a name="policy-1-sign-in-frequency-control"></a>Richtlinie 1: Steuerung der Anmeldehäufigkeit
 

@@ -1,19 +1,19 @@
 ---
-title: Konfigurieren von Azure Service Health-Warnungen in PagerDuty | Microsoft-Dokumentation
+title: Senden von Azure Service Health-Warnungen mit PagerDuty mit Webhooks
 description: Erhalten Sie personalisierte Benachrichtigungen zu Service Health-Ereignissen an Ihre PagerDuty-Instanz.
 author: stephbaron
 ms.author: stbaron
 ms.topic: article
 ms.service: service-health
-ms.date: 11/14/2017
-ms.openlocfilehash: b78c155fb2f3a13c27f4ff71c4dd37df2dbd2f36
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.date: 06/10/2019
+ms.openlocfilehash: ab3bcffb6453b284c3c8bb0d0373c7155fe8ef23
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55883048"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67067155"
 ---
-# <a name="configure-service-health-alerts-with-pagerduty"></a>Konfigurieren von Service Health-Warnungen mit PagerDuty
+# <a name="send-azure-service-health-alerts-with-pagerduty-using-webhooks"></a>Senden von Azure Service Health-Warnungen mit PagerDuty mit Webhooks
 
 In diesem Artikel erfahren Sie, wie Sie Azure Service Health-Benachrichtigungen über PagerDuty unter Verwendung eines Webhook einrichten. Mithilfe des benutzerdefinierten Microsoft Azure-Integrationstyps von [PagerDuty](https://www.pagerduty.com/) können Sie mühelos Service Health-Warnungen zu neuen oder vorhandenen PagerDuty-Diensten hinzufügen.
 

@@ -7,16 +7,16 @@ ms.author: jeanb
 ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
-ms.date: 12/07/2018
-ms.custom: seodec18
-ms.openlocfilehash: 487c142400dc2bfa6f44e17963535051af017196
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.date: 06/11/2019
+ms.openlocfilehash: c415bdecdaf55f3068dcd804ab34de402fe7a31f
+ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58116180"
+ms.lasthandoff: 07/07/2019
+ms.locfileid: "67612287"
 ---
-# <a name="tutorial-stream-analytics-and-power-bi-a-real-time-analytics-dashboard-for-streaming-data"></a>Tutorial: Stream Analytics und Power BI: Ein Dashboard zur Echtzeitanalyse von Streamingdaten
+# <a name="stream-analytics-and-power-bi-a-real-time-analytics-dashboard-for-streaming-data"></a>Stream Analytics und Power BI: Ein Dashboard zur Echtzeitanalyse von Streamingdaten
+
 Azure Stream Analytics ermöglicht Ihnen die Nutzung von [Microsoft Power BI](https://powerbi.com/), einem der führenden Business Intelligence-Tools. In diesem Artikel erfahren Sie, wie Sie Business Intelligence-Tools erstellen können, indem Sie Power BI als Ausgabe für Ihre Azure Stream Analytics-Aufträge verwenden. Darüber hinaus erfahren Sie, wie Sie ein Echtzeitdashboard erstellen und verwenden.
 
 Dieser Artikel ist eine Fortsetzung des Stream Analytics-Tutorials [Erste Schritte mit Azure Stream Analytics: Betrugserkennung in Echtzeit](stream-analytics-real-time-fraud-detection.md). Er baut auf dem in diesem Tutorial erstellten Workflow auf, und es wird eine Power BI-Ausgabe hinzugefügt, damit Sie betrügerische Telefonanrufe visualisieren können, die von einem Stream Analytics-Auftrag erkannt werden. 
@@ -38,41 +38,31 @@ Im Tutorial zur Betrugsermittlung in Echtzeit wird die Ausgabe an Azure Blob Sto
 
 1. Öffnen Sie im Azure-Portal den Stream Analytics-Auftrag, den Sie zuvor erstellt haben. Wenn Sie den vorgeschlagenen Namen verwendet haben, hat der Auftrag den Namen `sa_frauddetection_job_demo`.
 
-2. Aktivieren Sie das Kontrollkästchen **Ausgaben** in der Mitte des Auftragsdashboards, und wählen Sie anschließend **+ Hinzufügen**.
+2. Wählen Sie im linken Menü unter **Auftragstopologie** **Ausgaben** aus. Wählen Sie dann **+ Hinzufügen** aus und anschließend **Power BI** aus dem Dropdownmenü.
 
-3. Geben Sie unter **Ausgabealias** den Text `CallStream-PowerBI` ein. Sie können auch einen anderen Namen verwenden. Wenn Sie dies tun, sollten Sie sich den Namen notieren, da Sie ihn später noch benötigen. 
+3. Wählen Sie **+ Hinzufügen** > **Power BI** aus. Geben Sie dann folgende Informationen in das Formular ein, und wählen Sie **Autorisieren** aus:
 
-4. Wählen Sie unter **Senke** die Option **Power BI**.
+   |**Einstellung**  |**Empfohlener Wert**  |
+   |---------|---------|
+   |Ausgabealias  |  CallStream-PowerBI  |
+   |Datasetname  |   -dataset  |
+   |Tabellenname |  fraudulent-calls  |
 
-   ![Erstellen einer Ausgabe für Power BI](./media/stream-analytics-power-bi-dashboard/create-power-bi-ouptut.png)
+   ![Konfigurieren der Azure Stream Analytics-Ausgabe](media/stream-analytics-power-bi-dashboard/configure-stream-analytics-output.png)
 
-5. Klicken Sie auf **Autorisieren**.
+   > [!WARNING]
+   > Wenn Power BI über ein Dataset und eine Tabelle mit den gleichen Namen wie das Dataset und die Tabelle im Stream Analytics-Auftrag verfügt, werden die vorhandenen Elemente überschrieben.
+   > Es wird empfohlen, dieses Dataset und diese Tabelle nicht explizit in Ihrem Power BI-Konto zu erstellen. Diese werden automatisch erstellt, wenn Sie Ihren Stream Analytics-Auftrag starten und der Auftrag damit beginnt, Power BI mit Ausgaben zu füttern. Wenn die Auftragsabfrage keine Ergebnisse generiert, werden das Dataset und die Tabelle nicht erstellt.
+   >
 
-    Es wird ein Fenster geöffnet, in dem Sie Ihre Azure-Anmeldeinformationen für ein Geschäfts-, Schul- oder Unikonto angeben können. 
-
-    ![Eingeben der Anmeldeinformationen für den Zugriff auf Power BI](./media/stream-analytics-power-bi-dashboard/power-bi-authorization-credentials.png)
-
-6. Geben Sie Ihre Anmeldeinformationen ein. Bedenken Sie beim Eingeben Ihrer Anmeldeinformationen, dass Sie auch dem Stream Analytics-Auftrag die Berechtigung zum Zugreifen auf Ihren Power BI-Bereich gewähren.
-
-7. Geben Sie die folgenden Informationen ein, wenn Sie zurück auf das Blatt **Neue Ausgabe** gelangen:
-
-   * **Gruppenarbeitsbereich**: Wählen Sie einen Arbeitsbereich in Ihrem Power BI-Mandanten aus, in dem Sie das Dataset erstellen möchten.
-   * **Datasetname**:  Geben Sie `sa-dataset` ein. Sie können auch einen anderen Namen verwenden. Wenn Sie dies tun, sollten Sie sich den Namen zur späteren Verwendung notieren.
-   * **Tabellenname**: Geben Sie `fraudulent-calls` ein. Derzeit darf die Power BI-Ausgabe von Stream Analytics-Aufträgen nur eine Tabelle pro Dataset aufweisen.
-
-     ![Power BI-Arbeitsbereich mit Dataset und Tabelle](./media/stream-analytics-power-bi-dashboard/create-pbi-ouptut-with-dataset-table.png)
-
-     > [!WARNING]
-     > Wenn Power BI über ein Dataset und eine Tabelle mit den gleichen Namen wie das Dataset und die Tabelle im Stream Analytics-Auftrag verfügt, werden die vorhandenen Elemente überschrieben.
-     > Es wird empfohlen, dieses Dataset und diese Tabelle nicht explizit in Ihrem Power BI-Konto zu erstellen. Diese werden automatisch erstellt, wenn Sie Ihren Stream Analytics-Auftrag starten und der Auftrag damit beginnt, Power BI mit Ausgaben zu füttern. Wenn die Auftragsabfrage keine Ergebnisse generiert, werden das Dataset und die Tabelle nicht erstellt.
-     >
+4. Nachdem Sie **Autorisieren** ausgewählt haben, werden Sie in einem Popupfenster aufgefordert, Anmeldeinformationen für die Authentifizierung Ihres Power BI-Kontos anzugeben. Nachdem die Autorisierung erfolgreich abgeschlossen wurde, können Sie die Einstellungen speichern, indem Sie **Speichern** wählen.
 
 8. Klicken Sie auf **Create**.
 
 Das Dataset wird mit den folgenden Einstellungen erstellt:
 
 * **defaultRetentionPolicy: BasicFIFO**: Für die Daten gilt FIFO, mit maximal 200.000 Zeilen.
-* **DefaultMode: PushStreaming**: Das Dataset unterstützt sowohl Streamingkacheln als auch herkömmliche berichtsbasierte Visualisierungen (auch als „Push“ bezeichnet).
+* **defaultMode: pushStreaming**: Das Dataset unterstützt sowohl Streamingkacheln als auch herkömmliche berichtsbasierte Visualisierungen (auch „Push“ genannt).
 
 Derzeit ist es nicht möglich, Datasets mit anderen Kennzeichen zu erstellen.
 
@@ -90,54 +80,52 @@ Weitere Informationen zu Power BI-Datasets finden Sie in der [Power BI-REST-API]
     >[!NOTE]
     >Wenn Sie der Eingabe im Tutorial zur Betrugserkennung nicht den Namen `CallStream` gegeben haben, müssen Sie für `CallStream` in den **FROM**- und **JOIN**-Klauseln der Abfrage Ihren Namen einfügen.
 
-        ```SQL
-        /* Our criteria for fraud:
-        Calls made from the same caller to two phone switches in different locations (for example, Australia and Europe) within five seconds */
+   ```SQL
+   /* Our criteria for fraud:
+   Calls made from the same caller to two phone switches in different locations (for example, Australia and Europe) within five seconds */
 
-        SELECT System.Timestamp AS WindowEnd, COUNT(*) AS FraudulentCalls
-        INTO "CallStream-PowerBI"
-        FROM "CallStream" CS1 TIMESTAMP BY CallRecTime
-        JOIN "CallStream" CS2 TIMESTAMP BY CallRecTime
+   SELECT System.Timestamp AS WindowEnd, COUNT(*) AS FraudulentCalls
+   INTO "CallStream-PowerBI"
+   FROM "CallStream" CS1 TIMESTAMP BY CallRecTime
+   JOIN "CallStream" CS2 TIMESTAMP BY CallRecTime
 
-        /* Where the caller is the same, as indicated by IMSI (International Mobile Subscriber Identity) */
-        ON CS1.CallingIMSI = CS2.CallingIMSI
+   /* Where the caller is the same, as indicated by IMSI (International Mobile Subscriber Identity) */
+   ON CS1.CallingIMSI = CS2.CallingIMSI
 
-        /* ...and date between CS1 and CS2 is between one and five seconds */
-        AND DATEDIFF(ss, CS1, CS2) BETWEEN 1 AND 5
+   /* ...and date between CS1 and CS2 is between one and five seconds */
+   AND DATEDIFF(ss, CS1, CS2) BETWEEN 1 AND 5
 
-        /* Where the switch location is different */
-        WHERE CS1.SwitchNum != CS2.SwitchNum
-        GROUP BY TumblingWindow(Duration(second, 1))
-        ```
+   /* Where the switch location is different */
+   WHERE CS1.SwitchNum != CS2.SwitchNum
+   GROUP BY TumblingWindow(Duration(second, 1))
+   ```
 
 4. Klicken Sie auf **Speichern**.
 
 
 ## <a name="test-the-query"></a>Testen der Abfrage
+
 Dieser Abschnitt ist optional, wird aber empfohlen. 
 
 1. Wenn die TelcoStreaming-App derzeit nicht ausgeführt wird, können Sie sie mit den folgenden Schritten starten:
 
-    * Öffnen Sie ein Befehlsfenster.
+    * Öffnen Sie die Eingabeaufforderung.
     * Navigieren Sie zu dem Ordner, in dem die Datei „telcogenerator.exe“ und die geänderte Datei „telcodatagen.exe.config“ enthalten sind.
     * Führen Sie den folgenden Befehl aus:
 
        `telcodatagen.exe 1000 .2 2`
 
-2. Klicken Sie auf dem Blatt **Abfrage** auf die Punkte neben der `CallStream`-Eingabe, und wählen Sie anschließend **Beispieldaten aus Eingabe**.
+2. Klicken Sie im Bereich **Abfrage** Ihres Stream Analytics-Auftrags auf die Punkte neben der `CallStream`-Eingabe, und wählen Sie anschließend **Beispieldaten aus Eingabe**.
 
 3. Geben Sie an, dass Sie Daten für einen Zeitraum von drei Minuten benötigen, und klicken Sie auf **OK**. Warten Sie auf die Benachrichtigung, dass die Beispieldaten erfasst wurden.
 
-4. Klicken Sie auf **Test**, und vergewissern Sie sich, dass Sie Ergebnisse erhalten.
-
+4. Klicken Sie auf **Test**, und überprüfen Sie die Ergebnisse.
 
 ## <a name="run-the-job"></a>Ausführen des Auftrags
 
 1. Stellen Sie sicher, dass die TelcoStreaming-App ausgeführt wird.
 
-2. Schließen Sie das Blatt **Abfrage**.
-
-3. Klicken Sie auf dem Auftragsblatt auf **Start**.
+2. Navigieren Sie zur Seite **Übersicht** Ihres Stream Analytics-Auftrags, und wählen Sie **Starten** aus.
 
     ![Starten des Stream Analytics-Auftrags](./media/stream-analytics-power-bi-dashboard/stream-analytics-sa-job-start-output.png)
 
@@ -214,7 +202,7 @@ Mithilfe der folgenden Gleichung können Sie den Wert berechnen, um den Wert fü
 
 ![Gleichung zum Berechnen des Werts für Ihr Fenster in Sekunden](./media/stream-analytics-power-bi-dashboard/compute-window-seconds-equation.png)  
 
-Beispiel: 
+Beispiel:
 
 * Sie haben 1.000 Geräte, die in Intervallen von einer Sekunde Daten senden.
 * Sie verwenden das Power BI Pro-SKU, das 1.000.000 Zeilen pro Stunde unterstützt.
@@ -254,5 +242,5 @@ Um Hilfe zu erhalten, nutzen Sie unser [Azure Stream Analytics-Forum](https://so
 * [Einführung in Azure Stream Analytics](stream-analytics-introduction.md)
 * [Erste Schritte mit Azure Stream Analytics](stream-analytics-real-time-fraud-detection.md)
 * [Skalieren von Azure Stream Analytics-Aufträgen](stream-analytics-scale-jobs.md)
-* [Stream Analytics Query Language Reference](https://msdn.microsoft.com/library/azure/dn834998.aspx) (Referenz zur Stream Analytics-Abfragesprache)
+* [Stream Analytics Query Language Reference](https://docs.microsoft.com/stream-analytics-query/stream-analytics-query-language-reference) (Referenz zur Stream Analytics-Abfragesprache)
 * [Azure Stream Analytics Management REST API reference](https://msdn.microsoft.com/library/azure/dn835031.aspx) (Referenz zur Azure Stream Analytics-Verwaltungs-REST-API)

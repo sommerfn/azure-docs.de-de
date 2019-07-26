@@ -9,13 +9,13 @@ ms.topic: conceptual
 ms.author: aashishb
 author: aashishb
 ms.reviewer: larryfr
-ms.date: 03/10/2019
-ms.openlocfilehash: 9762b8cadde86a2e64f8fa74a4e794bdf1109ec4
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.date: 07/10/2019
+ms.openlocfilehash: 8682baa961ca3270e76614702b51ac50f197e847
+ms.sourcegitcommit: 66237bcd9b08359a6cce8d671f846b0c93ee6a82
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66151191"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67795488"
 ---
 # <a name="enterprise-security-for-azure-machine-learning-service"></a>Unternehmenssicherheit für Azure Machine Learning Service
 
@@ -51,7 +51,7 @@ print(primary)
 > Wenn Sie einen Schlüssel erneut generieren müssen, verwenden Sie [`service.regen_key`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice(class)?view=azure-ml-py).
 
 
-## <a name="authorization"></a>Autorisierung
+## <a name="authorization"></a>Authorization
 
 Sie können mehrere Arbeitsbereiche erstellen, und jeder Arbeitsbereich kann von mehreren Benutzern gemeinsam genutzt werden. Den Zugriff auf einen freigegebenen Arbeitsbereich steuern Sie, indem Sie Benutzern die folgenden Rollen zuweisen:
 * Owner (Besitzer)
@@ -75,7 +75,7 @@ Die folgende Tabelle enthält einige der wichtigsten Azure Machine Learning Serv
 | Modelle/Images anzeigen | ✓ | ✓ | ✓ |
 | Webdienst aufrufen | ✓ | ✓ | ✓ |
 
-Wenn die integrierten Rollen für Ihre Zwecke nicht ausreichend sind, können Sie auch benutzerdefinierte Rollen erstellen. Beachten Sie, dass wir nur benutzerdefinierte Rollen für Vorgänge im Arbeitsbereich und Machine Learning Compute unterstützen. Die benutzerdefinierten Rollen verfügen möglicherweise über Lese-, Schreib- oder Löschberechtigungen für den Arbeitsbereich und die Computeressource in diesem Arbeitsbereich. Sie können die Rolle auf einer bestimmten Arbeitsbereichsebene, einer bestimmten Ressourcengruppenebene oder einer bestimmten Abonnementebene verfügbar machen. Weitere Informationen finden Sie unter [Verwalten von Benutzern und Rollen in einem Azure Machine Learning-Arbeitsbereich](how-to-assign-roles.md).
+Wenn die integrierten Rollen für Ihre Zwecke nicht ausreichend sind, können Sie auch benutzerdefinierte Rollen erstellen. Wir unterstützen nur benutzerdefinierte Rollen für Vorgänge im Arbeitsbereich und Machine Learning Compute. Die benutzerdefinierten Rollen verfügen möglicherweise über Lese-, Schreib- oder Löschberechtigungen für den Arbeitsbereich und die Computeressource in diesem Arbeitsbereich. Sie können die Rolle auf einer bestimmten Arbeitsbereichsebene, einer bestimmten Ressourcengruppenebene oder einer bestimmten Abonnementebene verfügbar machen. Weitere Informationen finden Sie unter [Verwalten von Benutzern und Rollen in einem Azure Machine Learning-Arbeitsbereich](how-to-assign-roles.md).
 
 ### <a name="securing-compute-and-data"></a>Sichern von Compute und Daten
 Besitzer und Mitwirkende können alle Computeziele und Datenspeicher verwenden, die dem Arbeitsbereich angefügt sind.  
@@ -94,7 +94,7 @@ Weitere allgemeine Informationen zu verwalteten Identitäten finden Sie unter [W
 
 Administratoren sollten den Zugriff der verwalteten Identität auf die oben genannten Ressourcen nicht widerrufen. Der Zugriff kann mit dem Vorgang „Schlüssel neu synchronisieren“ wiederhergestellt werden.
 
-Azure Machine Learning Service erstellt eine weitere Anwendung (deren Name mit „aml-“ beginnt) mit Zugriff auf Mitwirkendenebene in Ihrem Abonnement für jede Region des Arbeitsbereichs. Beispiel: Wenn Sie im selben Abonnement über einen Arbeitsbereich in „USA, Osten“ und einen anderen Arbeitsbereich in „Europa, Norden“ verfügen, sehen Sie 2 solcher Anwendungen. Dies ist erforderlich, damit Azure Machine Learning Service Computeressourcen verwalten kann.
+Azure Machine Learning Service erstellt eine weitere Anwendung (deren Name mit `aml-` beginnt) mit Zugriff auf Mitwirkendenebene in Ihrem Abonnement für jede Region des Arbeitsbereichs. Beispiel: Wenn Sie im selben Abonnement über einen Arbeitsbereich in „USA, Osten“ und einen anderen Arbeitsbereich in „Europa, Norden“ verfügen, sehen Sie zwei solcher Anwendungen. Dies ist erforderlich, damit Azure Machine Learning Service Computeressourcen verwalten kann.
 
 
 ## <a name="network-security"></a>Netzwerksicherheit
@@ -112,6 +112,8 @@ Azure Machine Learning Service speichert Momentaufnahmen, Ausgaben und Protokoll
 Weitere Informationen dazu, wie Sie Ihre eigenen Schlüssel für die in Azure Blob Storage gespeicherten Daten verwenden können, finden Sie unter [Speicherdienstverschlüsselung mit vom Kunden verwalteten Schlüsseln in Azure Key Vault](https://docs.microsoft.com/azure/storage/common/storage-service-encryption-customer-managed-keys).
 
 Trainingsdaten werden in der Regel auch in Azure Blob Storage gespeichert, damit sie für das Trainingscompute zugänglich sind. Dieser Speicher wird nicht von Azure Machine Learning verwaltet, jedoch dem Compute als Remotedateisystem bereitgestellt.
+
+Informationen zum Regenerieren der Zugriffsschlüssel für die in Ihrem Arbeitsbereich verwendeten Azure-Speicherkonten finden Sie im Artikel [Zugriffsschlüssel für Speicherkonten neu generieren](how-to-change-storage-access-key.md).
 
 #### <a name="cosmos-db"></a>Cosmos DB
 Azure Machine Learning Service speichert Metriken und Metadaten in Cosmos DB, die in einem Microsoft-Abonnement aktiv sind, das von Azure Machine Learning Service verwaltet wird. Alle in Cosmos DB gespeicherten Daten werden im Ruhezustand mithilfe von Microsoft verwalteter Schlüssel verschlüsselt.

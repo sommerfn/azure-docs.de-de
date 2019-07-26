@@ -2,18 +2,18 @@
 title: 'Migrieren von virtuellen Netzwerken vom klassischen Modell zu Resource Manager – ExpressRoute: Azure: PowerShell | Microsoft-Dokumentation'
 description: Auf dieser Seite wird beschrieben, wie über ExpressRoute zugeordnete virtuelle Netzwerke zu Resource Manager migriert werden, nachdem die Verbindung verschoben wurde.
 services: expressroute
-author: ganesr
+author: cherylmc
 ms.service: expressroute
 ms.topic: conceptual
-ms.date: 01/17/2019
-ms.author: ganesr;cherylmc
+ms.date: 06/13/2019
+ms.author: cherylmc
 ms.custom: seodec18
-ms.openlocfilehash: 2e33454ac0ee97385386043706f4b8b73090f57a
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 9f15431015e847d882e51b8d88c5b8a8c121d0ae
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58112550"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67115412"
 ---
 # <a name="migrate-expressroute-associated-virtual-networks-from-classic-to-resource-manager"></a>Migrieren von über ExpressRoute zugeordneten virtuellen Netzwerken vom klassischen Modell zu Resource Manager
 
@@ -23,7 +23,7 @@ In diesem Artikel wird erläutert, wie über ExpressRoute zugeordnete virtuelle 
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-* Stellen Sie sicher, dass Sie die neueste Version der Azure PowerShell-Module besitzen. Weitere Informationen finden Sie unter [Installieren und Konfigurieren von Azure PowerShell](/powershell/azure/overview).
+* Stellen Sie sicher, dass Sie die neuesten Versionen der Azure PowerShell-Module besitzen. Weitere Informationen finden Sie unter [Installieren und Konfigurieren von Azure PowerShell](/powershell/azure/overview). Informationen zur Installation des PowerShell-Dienstverwaltungsmoduls (das für das klassische Bereitstellungsmodell benötigt wird) finden Sie unter [Installieren des Azure PowerShell-Dienstverwaltungsmoduls](/powershell/azure/servicemanagement/install-azure-ps).
 * Stellen Sie sicher, dass Sie vor Beginn der Konfiguration die Seiten [Voraussetzungen](expressroute-prerequisites.md), [Routinganforderungen](expressroute-routing.md) und [Workflows](expressroute-workflows.md) gelesen haben.
 * Lesen Sie die unter [Verschieben von ExpressRoute-Verbindungen vom klassischen zum Resource Manager-Bereitstellungsmodell](expressroute-move.md) bereitgestellten Informationen. Stellen Sie sicher, dass Sie die Grenzwerte und Einschränkungen verstehen.
 * Vergewissern Sie sich, dass die Verbindung im klassischen Bereitstellungsmodell voll funktionsfähig ist.

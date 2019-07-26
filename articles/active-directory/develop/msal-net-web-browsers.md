@@ -17,12 +17,12 @@ ms.author: jmprieur
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4f7f91e6ab1fb12132068b839e66fafd3ab1bc73
-ms.sourcegitcommit: f6c85922b9e70bb83879e52c2aec6307c99a0cac
+ms.openlocfilehash: 061b8a9f16396841c3f0d650ccc2f2c4a907aab3
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/11/2019
-ms.locfileid: "65543957"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67111308"
 ---
 # <a name="using-web-browsers-in-msalnet"></a>Verwenden von Webbrowsern in MSAL.NET
 Webbrowser sind eine Voraussetzung für die interaktive Authentifizierung. Der [Systemwebbrowser](#system-web-browser-on-xamarinios-and-xamarinandroid) unter Xamarin.iOS und [Xamarin.Android](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet/wiki/system-browser) wird standardmäßig von MSAL.NET unterstützt. Je nach Ihren Anforderungen (UX, Einmaliges Anmelden, Sicherheit) [können Sie jedoch auch den eingebetteten Webbrowser](#enable-embedded-webviews) in [Xamarin.iOS](#choosing-between-embedded-web-browser-or-system-browser-on-xamarinios)-Apps und [Xamarin.Android](#choosing-between-embedded-web-browser-or-system-browser-on-xamarinandroid)-Apps aktivieren. Sie können den gewünschten Webbrowser auch [dynamisch auswählen](#detecting-the-presence-of-custom-tabs-on-xamarinandroid), und zwar danach, ob Chrome oder ein Browser, der benutzerdefinierte Chrome-Registerkarten in Android unterstützt, vorhanden ist.
@@ -33,7 +33,7 @@ Es ist wichtig zu wissen, dass der Inhalt des Dialogfelds beim interaktiven Toke
 
 - Das Kennwort (sofern angegeben) wird grundsätzlich weder von der Anwendung noch von der Authentifizierungsbibliothek gespeichert.
 - Umleitungen zu anderen Identitätsanbietern werden unterstützt (z. B. Anmeldung mit einem Geschäfts-, Schul- oder Unikonto oder einem persönlichen Konto über MSAL bzw. Anmeldung mit einem Social Media-Konto über Azure AD B2C).
-- Der STS kann den bedingten Zugriff steuern, indem während der Authentifizierungsphase z. B. die mehrstufige Authentifizierung vom Benutzer angefordert wird (Eingabe einer Windows Hello-PIN, Anruf per Telefon oder Verwendung einer Authentifizierungs-App auf dem Smartphone). Falls die erforderliche mehrstufige Authentifizierung noch nicht eingerichtet ist, kann sie vom Benutzer nach Bedarf im selben Dialogfeld eingerichtet werden.  Der Benutzer gibt seine Mobiltelefonnummer ein und wird durch die Schritte zur Installation einer Authentifizierungs-App und zum Scannen eines QR-Codes geführt, um sein Konto hinzuzufügen. Die servergesteuerte Interaktion ist ausgesprochen benutzerfreundlich!
+- Der STS kann den bedingten Zugriff steuern, indem während der Authentifizierungsphase z.B. die mehrstufige Authentifizierung vom Benutzer angefordert wird (Eingabe einer Windows Hello-PIN, Anruf per Telefon oder Verwendung einer Authentifizierungs-App auf dem Smartphone). Falls die erforderliche mehrstufige Authentifizierung noch nicht eingerichtet ist, kann sie vom Benutzer nach Bedarf im selben Dialogfeld eingerichtet werden.  Der Benutzer gibt seine Mobiltelefonnummer ein und wird durch die Schritte zur Installation einer Authentifizierungs-App und zum Scannen eines QR-Codes geführt, um sein Konto hinzuzufügen. Die servergesteuerte Interaktion ist ausgesprochen benutzerfreundlich!
 - Bei Ablauf des Kennworts kann der Benutzer sein Kennwort im selben Dialogfeld ändern (zusätzliche Felder für die Eingabe des alten und neuen Kennworts werden angezeigt).
 - Ermöglicht das Branding des Mandanten oder der Anwendung (Images) durch den Azure AD-Mandantenadministrator/-Anwendungsbesitzer.
 - Der Benutzer kann seine Einwilligung geben, dass die Anwendung unmittelbar nach der Authentifizierung im Namen des Benutzers Zugriff auf Ressourcen/Geltungsbereiche erhält.

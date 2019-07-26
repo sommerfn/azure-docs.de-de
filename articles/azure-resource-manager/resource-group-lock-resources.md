@@ -6,12 +6,12 @@ ms.service: azure-resource-manager
 ms.topic: conceptual
 ms.date: 05/14/2019
 ms.author: tomfitz
-ms.openlocfilehash: a6c7983d22eed4a4232fbb2db490c1743684a04c
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: 31d77b4ea6e7594cd3ed4dba264f9ea6db4ca290
+ms.sourcegitcommit: 1289f956f897786090166982a8b66f708c9deea1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65813389"
+ms.lasthandoff: 06/17/2019
+ms.locfileid: "67155215"
 ---
 # <a name="lock-resources-to-prevent-unexpected-changes"></a>Sperren von Ressourcen, um unerwartete Änderungen zu verhindern 
 
@@ -152,7 +152,7 @@ Geben Sie zum Sperren einer Ressourcengruppe ihren Namen an.
 New-AzResourceLock -LockName LockGroup -LockLevel CanNotDelete -ResourceGroupName exampleresourcegroup
 ```
 
-Rufen Sie Informationen zu einer Sperre mithilfe von [Get-AzureRmResourceLock](/powershell/module/az.resources/get-azresourcelock) ab. Rufen Sie alle Sperren im Abonnement mit dem folgenden Befehl ab:
+Rufen Sie Informationen zu einer Sperre mithilfe von [Get-AzResourceLock](/powershell/module/az.resources/get-azresourcelock) ab. Rufen Sie alle Sperren im Abonnement mit dem folgenden Befehl ab:
 
 ```azurepowershell-interactive
 Get-AzResourceLock

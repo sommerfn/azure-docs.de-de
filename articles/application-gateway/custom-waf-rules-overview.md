@@ -1,26 +1,22 @@
 ---
-title: Benutzerdefinierte Regeln für die Azure Web Application Firewall (WAF)
-description: Dieser Artikel enthält eine Übersicht über benutzerdefinierte WAF-Regeln (Web Application Firewall) in Azure Application Gateway.
+title: Benutzerdefinierte Regeln für die Azure Web Application Firewall (WAF) v2
+description: Dieser Artikel enthält eine Übersicht über benutzerdefinierte WAF v2-Regeln (Web Application Firewall) in Azure Application Gateway.
 services: application-gateway
 ms.topic: article
 author: vhorne
 ms.service: application-gateway
-ms.date: 6/5/2019
+ms.date: 6/18/2019
 ms.author: victorh
-ms.openlocfilehash: 62259749e04d66d78206a0bba77ce88f2c08c82f
-ms.sourcegitcommit: 6932af4f4222786476fdf62e1e0bf09295d723a1
+ms.openlocfilehash: f6ea831771a8ffecfdd4c7c0d6374c16894e25ed
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/05/2019
-ms.locfileid: "66688923"
+ms.lasthandoff: 06/17/2019
+ms.locfileid: "67164657"
 ---
-# <a name="custom-rules-for-web-application-firewall"></a>Benutzerdefinierte Regeln für die Web Application Firewall
+# <a name="custom-rules-for-web-application-firewall-v2"></a>Benutzerdefinierte Regeln für die Web Application Firewall v2
 
-> [!IMPORTANT]
-> Benutzerdefinierte WAF-Regeln in Azure Application Gateway befinden sich derzeit in der Public Preview-Phase. **Benutzerdefinierte Regeln stehen nur für die SKU „WAF_v2“ zur Verfügung.**
-> Diese öffentliche Vorschauversion wird ohne Vereinbarung zum Servicelevel bereitgestellt und sollte nicht für Produktionsworkloads verwendet werden. Unter Umständen werden bestimmte Features nicht unterstützt, verfügen über eingeschränkte Funktionen und sind nicht an allen Azure-Standorten verfügbar. Weitere Informationen finden Sie unter [Zusätzliche Nutzungsbestimmungen für Microsoft Azure-Vorschauen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
-
-Die Web Application Firewall (WAF) in Azure Application Gateway enthält einen vorkonfigurierten, von der Plattform verwalteten Regelsatz, der Schutz vor verschiedensten Angriffsarten bietet. Hierzu zählen unter anderem websiteübergreifende Skripts und die Einschleusung von SQL-Befehlen. WAF-Administratoren können die Regeln des Kernregelsatzes (Core Rule Set, CRS) bei Bedarf durch selbst geschriebene Regeln erweitern. Die Regeln können angeforderten Datenverkehr auf der Grundlage von Abgleichskriterien blockieren oder zulassen.
+Die Web Application Firewall (WAF) v2 in Azure Application Gateway enthält einen vorkonfigurierten, von der Plattform verwalteten Regelsatz, der Schutz vor verschiedensten Angriffsarten bietet. Hierzu zählen unter anderem websiteübergreifende Skripts und die Einschleusung von SQL-Befehlen. WAF-Administratoren können die Regeln des Kernregelsatzes (Core Rule Set, CRS) bei Bedarf durch selbst geschriebene Regeln erweitern. Die Regeln können angeforderten Datenverkehr auf der Grundlage von Abgleichskriterien blockieren oder zulassen.
 
 Benutzerdefinierte Regeln ermöglichen die Erstellung eigener Regeln, die für jede Anforderung ausgewertet werden, die die WAF durchläuft. Diese Regeln haben eine höhere Priorität als die restlichen Regeln in den verwalteten Regelsätzen. Die benutzerdefinierten Regeln enthalten einen Regelnamen, eine Regelpriorität und ein Array von Abgleichsbedingungen. Sind diese Bedingungen erfüllt, erfolgt eine Aktion (Zulassen oder Blockieren).
 
@@ -147,7 +143,7 @@ Negiert die aktuelle Bedingung.
 
 Eine Zeichenfolgenliste mit Namen von Transformationen, die vor dem Abgleich ausgeführt werden sollen. Mögliche Transformationen:
 
-- Lowercase
+- Kleinbuchstaben
 - Trim
 - UrlDecode
 - UrlEncode 

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 5/24/2019
 ms.author: hrushib
-ms.openlocfilehash: e81cc1b3d80afd39a74c3046b1f8020e0a524ae4
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.openlocfilehash: 7078a1a5edc310c799690f0f7236dd0947e3290b
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/27/2019
-ms.locfileid: "66237375"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67059184"
 ---
 # <a name="periodic-backup-and-restore-in-azure-service-fabric"></a>Regelmäßiges Sichern und Wiederherstellen in Azure Service Fabric 
 > [!div class="op_single_selector"]
@@ -55,7 +55,7 @@ Service Fabric stellt einen Satz von APIs für die folgende Funktionalität im Z
 - Verwalten der Aufbewahrung von Sicherungen (demnächst)
 
 ## <a name="prerequisites"></a>Voraussetzungen
-* Service Fabric-Cluster mit Fabric-Version 6.2 und höher. Der Cluster muss unter Windows Server eingerichtet werden. Schritte zum Erstellen eines Service Fabric-Clusters mit der Azure-Ressourcevorlage finden Sie in diesem [Artikel](service-fabric-cluster-creation-via-arm.md).
+* Service Fabric-Cluster mit Fabric-Version 6.4 oder höher. Schritte zum Erstellen eines Service Fabric-Clusters mit der Azure-Ressourcevorlage finden Sie in diesem [Artikel](service-fabric-cluster-creation-via-arm.md).
 * X.509-Zertifikat für die Verschlüsselung der Geheimnisse, die für die Verbindung mit dem Speicher zum Speichern von Sicherungen benötigt werden. Informationen zum Abrufen oder Erstellen eines X.509-Zertifikats finden Sie in diesem [Artikel](service-fabric-cluster-creation-via-arm.md).
 * Service Fabric-Anwendung für statusbehaftete zuverlässige Dienste, die mit dem Service Fabric SDK, Version 3.0 oder höher, erstellt wurde. Für Anwendungen für .NET Core 2.0 muss die Anwendung mit dem Service Fabric SDK, Version 3.1 oder höher, erstellt werden.
 * Erstellen Sie ein Azure Storage-Konto zum Speichern von Anwendungssicherungen.

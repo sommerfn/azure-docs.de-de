@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 04/07/2019
+ms.date: 06/17/2019
 ms.author: rkarlin
-ms.openlocfilehash: 6429568b33ece3ed4f26614e55e8c3069dd65d71
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 4e6ed18a49a77f8061c975bdf3ecb085ebf71317
+ms.sourcegitcommit: 156b313eec59ad1b5a820fabb4d0f16b602737fc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65204402"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67190767"
 ---
 # <a name="connect-your-domain-name-server"></a>Verbinden eines Domänennamenservers
 
@@ -36,21 +36,33 @@ Das Aktivieren der DNS-Protokollverbindung ermöglicht Ihnen Folgendes:
 - Anzeigen der Anforderungslast auf DNS-Servern
 - Anzeigen von Fehlern der dynamischen DNS-Registrierung
 
-## <a name="how-it-works"></a>So funktioniert's
+## <a name="connected-sources"></a>Verbundene Quellen
 
-Die DNS-Verbindung wird umgesetzt, indem ein Agent auf dem DNS-Computer installiert wird. Der Agent ruft Ereignisse vom DNS-Computer ab und übergibt sie an Log Analytics (Protokollanalyse).
+In der folgenden Tabelle sind die verbundenen Quellen beschrieben, die von der Lösung unterstützt werden:
+
+| **Verbundene Quelle** | **Unterstützung** | **Beschreibung** |
+| --- | --- | --- |
+| [Windows-Agents](../azure-monitor/platform/agent-windows.md) | Ja | Die Lösung erfasst DNS-Informationen von Windows-Agents. |
+| [Linux-Agents](../azure-monitor/learn/quick-collect-linux-computer.md) | Nein | Die Lösung erfasst keine DNS-Informationen von direkten Linux-Agents. |
+| [System Center Operations Manager-Verwaltungsgruppe](../azure-monitor/platform/om-agents.md) | Ja | Die Lösung erfasst DNS-Informationen von Agents in einer verbundenen Operations Manager-Verwaltungsgruppe. Es ist keine direkte Verbindung zwischen dem Operations Manager-Agent und Azure Monitor erforderlich. Daten werden von der Verwaltungsgruppe an den Log Analytics-Arbeitsbereich weitergeleitet. |
+| [Azure-Speicherkonto](../azure-monitor/platform/collect-azure-metrics-logs.md) | Nein | Azure-Speicher wird von der Lösung nicht verwendet. |
+
+### <a name="data-collection-details"></a>Details zur Datensammlung
+
+Die Lösung sammelt Daten zum DNS-Inventar und zu DNS-Ereignissen von den DNS-Servern, auf denen ein Log Analytics-Agent installiert ist. Inventardaten, z.B. die Anzahl der DNS-Server, Zonen und Ressourceneinträge, werden gesammelt, indem die DNS-PowerShell-Cmdlets ausgeführt werden. Die Daten werden einmal alle zwei Tage aktualisiert. Die Ereignisdaten werden nahezu in Echtzeit aus den [Analyse- und Überwachungsprotokollen](https://technet.microsoft.com/library/dn800669.aspx#enhanc) erfasst, die durch die verbesserte DNS-Protokollierung und -Diagnose in Windows Server 2012 R2 bereitgestellt werden.
+
 
 ## <a name="connect-your-dns-appliance"></a>Verbinden Ihrer DNS-Appliance
 
 1. Wählen Sie im Azure Sentinel-Portal die Option **Data connectors** (Datenconnectors) aus, und klicken Sie auf die **DNS**-Kachel.
 1. Wenn sich Ihre DNS-Computer in Azure befinden:
-    1. Klicken Sie auf **Download & install agent for Windows virtual machines** (Agent für virtuelle Windows-Computer herunterladen und installieren).
+    1. Klicken Sie auf **Install agent on Azure Windows virtual machine** (Agent auf virtuellem Windows-Computer in Azure installieren).
     1. Wählen Sie in der Liste **Virtual Machines** den DNS-Computer aus, für den Sie an Azure Sentinel streamen möchten. Stellen Sie sicher, dass dies ein virtueller Windows-Computer ist.
     1. Klicken Sie in dem Fenster, das für diesen virtuellen Computer wird geöffnet, auf **Verbinden**.  
     1. Klicken Sie auf **Enable** (Aktivieren) im Fenster **DNS-Connector**. 
 
 2. Wenn Ihr DNS-Computer kein virtueller Azure-Computer ist:
-    1. Klicken Sie auf **Download & install agent for Windows non-Azure machines** (Agent für virtuelle Windows-Nicht-Azure-Computer herunterladen und installieren).
+    1. Klicken Sie auf **Install agent on non-Azure machines** (Agent auf Nicht-Azure-Computern installieren).
     1. Wählen Sie im Fenster **Direkt-Agent** entweder **Windows-Agent herunterladen (64 Bit)** oder **Windows-Agent herunterladen (32 Bit)** aus.
     1. Installieren Sie den Agent auf Ihrem DNS-Computer. Kopieren Sie **Arbeitsbereich-ID**, **Primärschlüssel** und **Sekundärschlüssel**, und verwenden Sie diese Werte, wenn Sie während der Installation zur Eingabe aufgefordert werden.
 

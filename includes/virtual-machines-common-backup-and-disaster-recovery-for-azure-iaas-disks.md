@@ -1,6 +1,6 @@
 ---
-title: Includedatei
-description: Includedatei
+title: include file
+description: include file
 services: storage
 author: roygara
 ms.service: storage
@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 06/05/2018
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 570330f47d2c610032c9c6646231c2320b2257be
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: d242b2815d59676432beb878bbc955a9f39de0f1
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64732663"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67178088"
 ---
 # <a name="backup-and-disaster-recovery-for-azure-iaas-disks"></a>Sicherung und Notfallwiederherstellung für Azure IaaS-Datenträger
 
@@ -121,7 +121,7 @@ Hochverfügbarkeit kann am besten durch die Verwendung von Managed Disks in eine
 
 Ihre Auswahl in Bezug auf Hochverfügbarkeit, Sicherung und Notfallwiederherstellung auf Anwendungs- oder Infrastrukturebene kann wie unten gezeigt dargestellt werden:
 
-| Ebene |   Hochverfügbarkeit   | Sicherung oder Notfallwiederherstellung |
+| Level |   Hochverfügbarkeit   | Sicherung oder Notfallwiederherstellung |
 | --- | --- | --- |
 | Anwendung | SQL Server AlwaysOn | Azure Backup |
 | Infrastruktur    | Verfügbarkeitsgruppe  | Georedundanter Speicher mit konsistenten Momentaufnahmen |
@@ -148,7 +148,7 @@ Verwenden Sie die folgenden Schritte, um das Erstellen von Sicherungen Ihrer VMs
 
     b. Klicken Sie im Menü **Recovery Services-Tresore** auf **Hinzufügen**, und führen Sie die Schritte zum Erstellen eines neuen Tresors in derselben Region wie die VM aus. Wenn sich Ihre VM beispielsweise in der Region „USA, Westen“ befindet, wählen Sie für den Tresor „USA, Westen“ aus.
 
-1.  Überprüfen Sie die Speicherreplikation für den neu erstellten Tresor. Greifen Sie unter **Recovery Services-Tresore** auf den Tresor zu, und wechseln Sie zu **Einstellungen** > **Sicherungskonfiguration**. Stellen Sie sicher, dass die Option für **georedundanten Speicher** standardmäßig aktiviert ist. Mit dieser Option wird gewährleistet, dass Ihr Tresor automatisch in einem sekundären Rechenzentrum repliziert wird. Der Tresor in „USA, Westen“ wird beispielsweise automatisch in „USA, Osten“ repliziert.
+1.  Überprüfen Sie die Speicherreplikation für den neu erstellten Tresor. Greifen Sie unter **Recovery Services-Tresore** auf den Tresor zu, und wechseln Sie zu **Eigenschaften** > **Sicherungskonfiguration** > **Update**. Stellen Sie sicher, dass die Option für **georedundanten Speicher** standardmäßig aktiviert ist. Mit dieser Option wird gewährleistet, dass Ihr Tresor automatisch in einem sekundären Rechenzentrum repliziert wird. Der Tresor in „USA, Westen“ wird beispielsweise automatisch in „USA, Osten“ repliziert.
 
 1.  Konfigurieren Sie die Sicherungsrichtlinie, und wählen Sie die VM über dieselbe Benutzeroberfläche aus.
 

@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 06/03/2018
 ms.author: v-adgera
 ms.custom: seodec18
-ms.openlocfilehash: 9765af13a22a0ae9db8a45c396e7d5a32b71b79c
-ms.sourcegitcommit: 1aefdf876c95bf6c07b12eb8c5fab98e92948000
+ms.openlocfilehash: 5dc2587a0c127106d5afb41e20eca43919065f1b
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/06/2019
-ms.locfileid: "66730320"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67118788"
 ---
 # <a name="how-to-configure-monitoring-in-azure-digital-twins"></a>Gewusst wie: Konfigurieren der Überwachung in Azure Digital Twins
 
@@ -68,11 +68,11 @@ Die Diagnoseprotokollierung umfasst z.B. folgende Angaben:
 Führen Sie folgende Schritte aus, um Diagnoseprotokolle für eine Instanz zu aktivieren:
 
 1. Öffnen Sie die Ressource im Azure-Portal.
-1. Klicken Sie auf **Diagnoseeinstellungen**.
+1. Wählen Sie **Diagnoseeinstellungen** aus:
 
     [![Diagnoseeinstellungen 1](media/how-to-configure-monitoring/diagnostic-settings-one.png)](media/how-to-configure-monitoring/diagnostic-settings-one.png#lightbox)
 
-1. Klicken Sie auf **Diagnose aktivieren**, um Daten zu sammeln (sofern noch nicht aktiviert).
+1. Wählen Sie **Diagnose aktivieren** aus, um Daten zu sammeln (sofern noch nicht aktiviert).
 1. Füllen Sie die angeforderten Felder aus, und wählen Sie aus, wie und wo Daten gespeichert werden:
 
     [![Diagnoseeinstellungen 2](media/how-to-configure-monitoring/diagnostic-settings-two.png)](media/how-to-configure-monitoring/diagnostic-settings-two.png#lightbox)
@@ -101,7 +101,7 @@ Eine vollständige Protokollabfrage wird über [Azure Monitor-Protokolle](../azu
 
     [![Log Analytics](media/how-to-configure-monitoring/log-analytics.png)](media/how-to-configure-monitoring/log-analytics.png#lightbox)
 
-1. Wenn Sie noch keine **Log Analytics-Arbeitsbereich**-Instanz besitzen, können Sie einen Arbeitsbereich erstellen, indem Sie auf die Schaltfläche **Hinzufügen** klicken:
+1. Wenn Sie noch keine **Log Analytics-Arbeitsbereich**-Instanz besitzen, können Sie einen Arbeitsbereich erstellen, indem Sie die Schaltfläche **Hinzufügen** auswählen:
 
     [![Erstellen von OMS](media/how-to-configure-monitoring/log-analytics-oms.png)](media/how-to-configure-monitoring/log-analytics-oms.png#lightbox)
 
@@ -114,7 +114,7 @@ Weitere Informationen zu leistungsstarken Abfragevorgängen finden Sie unter [Er
 > [!NOTE]
 > Wenn Sie zum ersten Mal Ereignisse an den **Log Analytics-Arbeitsbereich** senden, tritt unter Umständen eine Verzögerung von 5 Minuten auf.
 
-Azure Monitor-Protokolle bieten außerdem leistungsstarke Benachrichtigungsdienste für Fehler und Warnungen, die durch Klicken auf **Diagnose und Problembehandlung** angezeigt werden können:
+Azure Monitor-Protokolle bieten außerdem leistungsstarke Benachrichtigungsdienste für Fehler und Warnungen, die durch Auswahl von **Diagnose und Problembehandlung** angezeigt werden können:
 
    [![Benachrichtigungen für Warnungen und Fehler](media/how-to-configure-monitoring/log-analytics-notifications.png)](media/how-to-configure-monitoring/log-analytics-notifications.png#lightbox)
 

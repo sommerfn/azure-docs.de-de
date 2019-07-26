@@ -12,12 +12,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 98588e0c25439fd4988fe39e06e7042cfa9113cb
-ms.sourcegitcommit: 009334a842d08b1c83ee183b5830092e067f4374
+ms.openlocfilehash: bd62cda209a8ac95a41fa271ce3a96001a3b4811
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/29/2019
-ms.locfileid: "66305680"
+ms.lasthandoff: 06/17/2019
+ms.locfileid: "67164775"
 ---
 # <a name="what-is-the-location-condition-in-azure-active-directory-conditional-access"></a>Was sind Standortbedingungen beim bedingten Zugriff in Azure Active Directory? 
 
@@ -56,12 +56,15 @@ Ein benannter Standort besteht aus den folgenden Komponenten:
 - **Länder/Regionen:** Mithilfe dieser Option können Sie Länder oder Regionen auswählen, um einen benannten Ort zu definieren.
 - **Unbekannte Bereiche einschließen** – Einige IP-Adressen sind keinem bestimmten Land oder einer bestimmten Region zugeordnet. Mithilfe dieser Option können Sie auswählen, ob der benannte Standort diese IP-Adressen umfassen soll. Verwenden Sie diese Einstellung, wenn die Richtlinie für den benannten Standort auch für unbekannte Standorte gelten soll.
 
-Die Anzahl von benannten Orten, die Sie konfigurieren können, wird durch die Größe des zugehörigen Objekts in Azure AD eingeschränkt. Organisationen können bis zu 90 benannte Standorte jeweils mit bis zu 1200 IP-Adressbereichen konfigurieren.
+Die Anzahl von benannten Orten, die Sie konfigurieren können, wird durch die Größe des zugehörigen Objekts in Azure AD eingeschränkt. Sie können Standorte basierend auf den folgenden Einschränkungen konfigurieren:
+
+- Einen benannten Standort mit bis zu 1200 IP-Bereichen.
+- Maximal 90 benannte Standorte, denen jeweils ein IP-Bereich zugewiesen ist.
 
 Die Richtlinie für bedingten Zugriff gilt für IPv4- und IPv6-Datenverkehr. Derzeit können für benannte Standorte keine IPv6-Adressbereiche konfiguriert werden. Diese Einschränkung führt zu den folgenden Situationen:
 
-- Die Richtlinie für bedingten Zugriff kann nicht auf bestimmte IPv6-Adressbereiche angewendet werden.
-- Es dürfen keine bestimmten IPv6-Adressbereiche aus der Richtlinie für bedingten Zugriff ausgeschlossen werden.
+- Die Richtlinie für bedingten Zugriff kann nicht auf bestimmte IPv6-Adressbereiche angewendet werden
+- Es dürfen keine bestimmten IPv6-Adressbereiche aus der Richtlinie für bedingten Zugriff ausgeschlossen werden
 
 Wenn eine Richtlinie für die Anwendung auf „Alle Standorte“ konfiguriert ist, gilt sie für IPv4- und IPv6-Datenverkehr. Für angegebene Länder und Regionen konfigurierte benannte Standorte unterstützen nur IPv4-Adressen. IPv6-Datenverkehr wird nur berücksichtigt, wenn die Option „Unbekannte Bereiche einschließen“ ausgewählt ist.
 
@@ -146,4 +149,4 @@ API und PowerShell werden für benannte Standorte oder Richtlinien für bedingte
 ## <a name="next-steps"></a>Nächste Schritte
 
 - Wenn Sie wissen möchten, wie Sie eine Richtlinie für den bedingten Zugriff konfigurieren, finden Sie Informationen unter [Schnellstart: Anfordern der mehrstufigen Authentifizierung (Multi-Factor Authentication, MFA) für bestimmte Apps über den bedingten Zugriff von Azure Active Directory](app-based-mfa.md).
-- Wenn Sie bereit sind, Richtlinien für den bedingten Zugriff für Ihre Umgebung zu konfigurieren, lesen Sie unter [Best Practices für den bedingten Zugriff in Azure Active Directory](best-practices.md) nach.
+- Wenn Sie bereit sind, Richtlinien für den bedingten Zugriff für Ihre Umgebung zu konfigurieren, helfen Ihnen die Informationen unter [Best Practices für den bedingten Zugriff in Azure Active Directory](best-practices.md) weiter.

@@ -1,24 +1,46 @@
 ---
 title: Problembehandlung bei der Systemstatussicherung mit Azure Backup
 description: Beheben Sie Probleme der Systemstatussicherung.
-services: backup
 author: srinathvasireddy
 manager: sivan
 keywords: Ausführen der Sicherung; Sicherung des Systemstatus
 ms.service: backup
 ms.topic: conceptual
-ms.date: 05/09/2019
-ms.author: srinathvasireddy
-ms.openlocfilehash: 53b9f8fb58a6e70a4bd2cd02adb9ce824466d7de
-ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
+ms.date: 07/22/2019
+ms.author: srinathv
+ms.openlocfilehash: 8996270acb1525697f29b4251bf4e11d2db62fdf
+ms.sourcegitcommit: c72ddb56b5657b2adeb3c4608c3d4c56e3421f2c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/04/2019
-ms.locfileid: "66482020"
+ms.lasthandoff: 07/24/2019
+ms.locfileid: "68465357"
 ---
 # <a name="troubleshoot-system-state-backup"></a>Problembehandlung bei der Systemstatussicherung
 
 In diesem Artikel werden Lösungen für Probleme beschrieben, die beim Verwenden der Systemstatussicherung auftreten können.
+
+## <a name="basic-troubleshooting"></a>Grundlegendes zur Problembehandlung
+Wir empfehlen, dass Sie die nachstehende Prüfung durchführen, bevor Sie mit der Problembehandlung der Systemstatussicherung beginnen:
+
+- [Sicherstellen, dass der Microsoft Azure Recovery Services-Agent (MARS) auf dem neuesten Stand ist](https://go.microsoft.com/fwlink/?linkid=229525&clcid=0x409)
+- [Sicherstellen, dass zwischen dem MARS-Agent und Azure Netzwerkkonnektivität besteht](https://aka.ms/AB-A4dp50)
+- Vergewissern Sie sich, dass Microsoft Azure Recovery Services ausgeführt wird (auf der Dienstkonsole). Führen Sie einen Neustart durch, und wiederholen Sie den Vorgang, falls dies erforderlich ist.
+- [Sicherstellen, dass am Speicherort des Ablageordners 5 - 10% freier Volumespeicherplatz vorhanden ist](https://aka.ms/AB-AA4dwtt)
+- [Überprüfen, ob ein anderer Prozess oder Antivirensoftware in Azure Backup eingreift](https://aka.ms/AB-AA4dwtk)
+- [Geplante Sicherung nicht erfolgreich, manuelle Sicherung erfolgreich](https://aka.ms/ScheduledBackupFailManualWorks)
+- Sicherstellen, dass Ihr Betriebssystem über die neuesten Updates verfügt
+- [Sicherstellen, dass nicht unterstützte Laufwerke und Dateien mit nicht unterstützten Attributen aus der Sicherung ausgeschlossen werden](backup-support-matrix-mars-agent.md#supported-drives-or-volumes-for-backup)
+- Vergewissern Sie sich, dass die **Systemuhr** des geschützten Systems auf die richtige Zeitzone festgelegt ist. <br>
+- [Stellen Sie sicher, dass auf dem Server mindestens .NET Framework Version 4.5.2 oder höher installiert ist.](https://www.microsoft.com/download/details.aspx?id=30653)<br>
+- Wenn Sie **Ihren Server erneut in einem Tresor registrieren** möchten: <br>
+  - Stellen Sie sicher, dass der Agent auf dem Server deinstalliert und aus dem Portal gelöscht wurde. <br>
+  - Verwenden Sie dieselbe Passphrase, die ursprünglich zum Registrieren des Servers verwendet wurde. <br>
+- Sorgen Sie bei einer Offlinesicherung dafür, dass Azure PowerShell, Version 3.7.0, sowohl auf dem Quell- als auch auf dem Zielcomputer installiert ist, bevor Sie mit dem Offlinesicherungsvorgang beginnen.
+- [Aspekte, wenn der Backup-Agent auf einem virtuellen Azure-Computer ausgeführt wird](https://aka.ms/AB-AA4dwtr)
+
+### <a name="limitation"></a>Einschränkung
+- Eine Systemstatuswiederherstellung auf anderer Hardware wird von Microsoft nicht empfohlen.
+- Die Systemstatussicherung unterstützt derzeit lokale Windows-Server. Für virtuelle Azure-Computer steht diese Funktion nicht zur Verfügung.
 
 ## <a name="pre-requisite"></a>Voraussetzung
 
@@ -95,7 +117,7 @@ Gehen Sie wie folgt vor, um den Status von Windows Server-Sicherung zu überprü
 
   * Stellen Sie sicher, dass Windows Server-Sicherung ordnungsgemäß funktioniert, indem Sie an einer Eingabeaufforderung mit erhöhten Rechten den folgenden Befehl ausführen:
 
-      ` wbadmin start systemstatebackup -backuptarget:X: -quiet `
+      `wbadmin start systemstatebackup -backuptarget:X: -quiet`
 
       > [!NOTE]
       >Ersetzen Sie X durch den Laufwerkbuchstaben des Volumes, auf dem das Systemstatussicherungsabbild gespeichert werden soll.

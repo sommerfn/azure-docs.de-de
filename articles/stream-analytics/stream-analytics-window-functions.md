@@ -4,22 +4,22 @@ description: In diesem Artikel werden die vier Windowing-Funktionen (Rollierend,
 services: stream-analytics
 author: jseb225
 ms.author: jeanb
-manager: kfile
 ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
-ms.date: 05/07/2018
-ms.openlocfilehash: 04c19e7e51777db4c59bfab3d5a8a7598560556a
-ms.sourcegitcommit: a512360b601ce3d6f0e842a146d37890381893fc
+ms.date: 06/11/2019
+ms.openlocfilehash: 56b6f11d226f25e3094a90d8646fa13860ee306e
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/11/2019
-ms.locfileid: "54231647"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67066761"
 ---
 # <a name="introduction-to-stream-analytics-windowing-functions"></a>Einführung in die Stream Analytics-Windowing-Funktionen
+
 Bei Szenarien mit „Time Streaming“ ist das Durchführen von Vorgängen für die Daten in temporalen Fenstern ein häufiges Muster. Stream Analytics verfügt über native Unterstützung für Windowing-Funktionen, sodass Entwickler komplexe Streaming-Verarbeitungsaufträge mit sehr geringem Aufwand erstellen können.
 
-Vier Arten temporaler Fenster stehen zur Auswahl: Fenster vom Typ [**Rollierend**](https://msdn.microsoft.com/azure/stream-analytics/reference/tumbling-window-azure-stream-analytics), [**Springend**](https://msdn.microsoft.com/azure/stream-analytics/reference/hopping-window-azure-stream-analytics), [**Gleitend**](https://msdn.microsoft.com/azure/stream-analytics/reference/sliding-window-azure-stream-analytics) und [**Sitzung**](https://msdn.microsoft.com/azure/stream-analytics/reference/session-window-azure-stream-analytics).  Sie verwenden die Fensterfunktionen in der [**GROUP BY**](https://msdn.microsoft.com/azure/stream-analytics/reference/group-by-azure-stream-analytics)-Klausel der Abfragesyntax in Ihren Stream Analytics-Aufträgen.
+Vier Arten temporaler Fenster stehen zur Auswahl: Fenster vom Typ [**Rollierend**](https://msdn.microsoft.com/azure/stream-analytics/reference/tumbling-window-azure-stream-analytics), [**Springend**](https://msdn.microsoft.com/azure/stream-analytics/reference/hopping-window-azure-stream-analytics), [**Gleitend**](https://msdn.microsoft.com/azure/stream-analytics/reference/sliding-window-azure-stream-analytics) und [**Sitzung**](https://msdn.microsoft.com/azure/stream-analytics/reference/session-window-azure-stream-analytics).  Sie verwenden die Fensterfunktionen in der [**GROUP BY**](https://msdn.microsoft.com/azure/stream-analytics/reference/group-by-azure-stream-analytics)-Klausel der Abfragesyntax in Ihren Stream Analytics-Aufträgen. Sie können Ereignisse auch über mehrere Fenster hinweg aggregieren, indem Sie die [**Windows()** -Funktion](https://docs.microsoft.com/stream-analytics-query/windows-azure-stream-analytics) verwenden.
 
 Für alle [Windowing](https://msdn.microsoft.com/azure/stream-analytics/reference/windowing-azure-stream-analytics)-Vorgänge werden am **Ende** des Fensters Ergebnisse ausgegeben. Die Ausgabe des Fensters ist ein einzelnes Ereignis, das auf der verwendeten Aggregatfunktion basiert. Das Ausgabeereignis verfügt über den Zeitstempel vom Ende des Fensters, und alle Fensterfunktionen werden mit einer festen Länge definiert. 
 

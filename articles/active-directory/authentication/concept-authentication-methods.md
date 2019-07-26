@@ -1,22 +1,22 @@
 ---
 title: Authentifizierungsmethoden – -Azure Active Directory
-description: Übersicht über die verfügbaren Authentifizierungsmethoden in Azure AD für die Multi-Factor Authentication und die Self-Service-Kennwortzurücksetzung
+description: Verfügbare Authentifizierungsmethoden in Azure AD für die Multi-Factor Authentication und die Self-Service-Kennwortzurücksetzung
 services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
-ms.date: 02/20/2019
+ms.date: 06/17/2019
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahenry, michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f0bcaf356108984baf473cdef8c18c5561343cd9
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.openlocfilehash: 1322c919906dc2d0dd23de538fa2c1992fbe5da0
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66119364"
+ms.lasthandoff: 06/17/2019
+ms.locfileid: "67164823"
 ---
 # <a name="what-are-authentication-methods"></a>Authentifizierungsmethoden
 
@@ -180,7 +180,9 @@ Sobald alle Fehler behoben sind, kann der Administrator jeden Schlüssel aktivie
 
 Benutzer verfügen möglicherweise über eine Kombination aus bis zu fünf OATH-Hardwaretoken oder Authenticator-Anwendungen wie die Microsoft Authenticator-App, die für die jederzeitige Verwendung konfiguriert sind.
 
-## <a name="mobile-phone"></a>Mobiltelefon
+## <a name="phone-options"></a>Telefonoptionen
+
+### <a name="mobile-phone"></a>Mobiltelefon
 
 Mobiltelefonbenutzern stehen zwei Optionen zur Verfügung.
 
@@ -193,18 +195,18 @@ Für ein ordnungsgemäßes Funktionieren müssen Telefonnummern im Format *+Land
 >
 > Für die Kennwortzurücksetzung werden Nebenstellen nicht unterstützt. Selbst bei der Angabe im Format +1 4255551234X12345 werden Nebenstellen vor dem Anruf entfernt.
 
-### <a name="text-message"></a>Textnachricht
+#### <a name="text-message"></a>Textnachricht
 
 Eine SMS mit einem Prüfcode wird an die Mobiltelefonnummer gesendet. Geben Sie den dort angezeigten Prüfcode ein, um den Vorgang fortzusetzen.
 
-### <a name="phone-call"></a>Telefonanruf
+#### <a name="phone-call"></a>Telefonanruf
 
 Sie erhalten einen automatisierten Anruf unter der von Ihnen angegebenen Telefonnummer. Nehmen Sie den Anruf an, und drücken Sie die #-TASTE auf der Telefontastatur, um sich zu authentifizieren.
 
 > [!IMPORTANT]
 > Ab März 2019 werden die Telefonanrufoptionen für MFA- und der SSPR-Benutzer in kostenlosen bzw. Testversion von Azure AD-Mandanten nicht mehr verfügbar sein. SMS-Nachrichten sind von dieser Änderung nicht betroffen. Für Benutzer in kostenpflichtigen Azure AD-Mandanten ist die Telefonanrufoption weiterhin verfügbar. Diese Änderung wirkt sich nur auf kostenlose bzw. Testversionen von Azure AD-Mandanten aus.
 
-## <a name="office-phone"></a>Bürotelefon
+### <a name="office-phone"></a>Bürotelefon
 
 Sie erhalten einen automatisierten Anruf unter der von Ihnen angegebenen Telefonnummer. Nehmen Sie den Anruf an, und drücken Sie die #-TASTE auf der Telefontastatur, um sich zu authentifizieren.
 
@@ -219,6 +221,25 @@ Das Attribut „Bürotelefon“ wird von Ihrem Administrator verwaltet.
 > Zwischen Landesvorwahl und Telefonnummer muss sich ein Leerzeichen befinden.
 >
 > Für die Kennwortzurücksetzung werden Nebenstellen nicht unterstützt. Selbst bei der Angabe im Format +1 4255551234X12345 werden Nebenstellen vor dem Anruf entfernt.
+
+### <a name="troubleshooting-phone-options"></a>Problembehandlung bei Telefonoptionen
+
+Häufige Probleme im Zusammenhang mit Authentifizierungsmethoden, die eine Telefonnummer verwenden:
+
+* Gesperrte Anrufer-ID auf einem einzelnen Gerät
+   * Beheben von Geräteproblemen
+* Falsche Telefonnummer, falscher Ländercode, private Telefonnummer und geschäftliche Telefonnummer
+   * Behandeln Sie das Problem in Bezug auf das Benutzerobjekt und konfigurierte Authentifizierungsmethoden. Stellen Sie sicher, dass die richtigen Telefonnummern registriert sind.
+* Falsche PIN eingegeben
+   * Vergewissern Sie sich, dass der Benutzer die richtige PIN verwendet hat, die im Azure MFA-Server registriert ist.
+* Anruf an Voicemail weitergeleitet
+   * Stellen Sie sicher, dass der Benutzer das Telefon eingeschaltet hat und dieser Dienst in seiner Region verfügbar ist, oder verwenden Sie die alternative Methode.
+* Benutzer ist gesperrt
+   * Veranlassen Sie, dass der Administrator den Benutzer im Azure-Portal freigibt.
+* SMS ist auf dem Gerät nicht abonniert
+   * Lassen Sie den Benutzer die Methoden ändern oder SMS auf dem Gerät aktivieren.
+* Fehlerhafter Telekommunikationsanbieter (keine Telefoneingabe erkannt, fehlende DTMF-Töne, gesperrte Anrufer-ID auf mehreren Geräten oder SMS auf mehreren Geräten gesperrt)
+   * Microsoft verwendet mehrere Telekommunikationsanbieter, um Telefonanrufe und SMS-Nachrichten für die Authentifizierung weiterzuleiten. Wenn Sie eines der oben genannten Probleme sehen, lassen Sie den Benutzer versuchen, die Methode innerhalb von 5 Minuten mindestens 5 Mal zu verwenden, und halten Sie die Informationen dieses Benutzers verfügbar, wenn Sie sich an den Microsoft-Support wenden.
 
 ## <a name="app-passwords"></a>App-Kennwörter
 

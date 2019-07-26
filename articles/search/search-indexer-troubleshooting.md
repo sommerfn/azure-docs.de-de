@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 05/02/2019
 ms.author: magottei
 ms.custom: seodec2018
-ms.openlocfilehash: 256a38320c9b3ca826ee9c12ac0a437957f988e2
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 4ed18b5f83bdb052f2db6847a320c26a8e49f83e
+ms.sourcegitcommit: 72f1d1210980d2f75e490f879521bc73d76a17e1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65539291"
+ms.lasthandoff: 06/14/2019
+ms.locfileid: "67147546"
 ---
 # <a name="troubleshooting-common-indexer-issues-in-azure-search"></a>Behandeln von häufigen Problemen mit Indexern in Azure Search
 
@@ -35,14 +35,11 @@ Azure Storage stellt eine konfigurierbare Firewall bereit. Die Firewall ist stan
 
 Sie erhalten keine spezifische Fehlermeldung, wenn die Firewall aktiviert ist. Firewallfehler sehen in der Regel so aus: `The remote server returned an error: (403) Forbidden`.
 
-Sie können im [Portal](https://docs.microsoft.com/azure/storage/common/storage-network-security#azure-portal) überprüfen, ob die Firewall aktiviert ist. Wenn die Firewall aktiviert ist, haben Sie zwei Möglichkeiten, das Problem zu umgehen:
+Sie können im [Portal](https://docs.microsoft.com/azure/storage/common/storage-network-security#azure-portal) überprüfen, ob die Firewall aktiviert ist. Die einzige unterstützte Problemumgehung ist, die Firewall zu deaktivieren, indem Sie festlegen, dass [Alle Netzwerke](https://docs.microsoft.com/azure/storage/common/storage-network-security#azure-portal) zugreifen dürfen.
 
-1. Deaktivieren Sie die Firewall, indem Sie festlegen, dass [Alle Netzwerke](https://docs.microsoft.com/azure/storage/common/storage-network-security#azure-portal) zugreifen dürfen.
-1. [Fügen Sie eine Ausnahme](https://docs.microsoft.com/azure/storage/common/storage-network-security#managing-ip-network-rules) für die IP-Adresse Ihres Suchdiensts hinzu. Um diese IP-Adresse zu finden, verwenden Sie den folgenden Befehl:
+Wenn Ihrem Indexer kein Skillset angehängt ist, _können_ Sie versuchen, [eine Ausnahme](https://docs.microsoft.com/azure/storage/common/storage-network-security#managing-ip-network-rules) für die IP-Adressen Ihres Suchdiensts hinzuzufügen. Allerdings wird dieses Szenario nicht unterstützt und es ist nicht garantiert, dass es funktioniert.
 
-`nslookup <service name>.search.windows.net`
-
-Ausnahmen können nicht in der [kognitiven Suche](cognitive-search-concept-intro.md) verwendet werden. Da kann das Problem nur umgangen werden, indem die Firewall deaktiviert wird.
+Sie können die IP-Adresse Ihres Suchdiensts herausfinden, indem Sie seinen vollqualifizierten Domänennamen pingen (`<your-search-service-name>.search.windows.net`).
 
 ### <a name="cosmos-db"></a>Cosmos DB
 

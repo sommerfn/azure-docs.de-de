@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 05/19/2019
 ms.author: bwren
 ms.subservice: logs
-ms.openlocfilehash: 31ce00e21952a28850f91e6288c94898c676b3e8
-ms.sourcegitcommit: f9448a4d87226362a02b14d88290ad6b1aea9d82
+ms.openlocfilehash: 6fc00bf0dfb83f349da91989a579f31be2027ff0
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/07/2019
-ms.locfileid: "66808164"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67071682"
 ---
 # <a name="overview-of-azure-activity-log"></a>Übersicht über das Azure-Aktivitätsprotokoll
 
@@ -33,7 +33,7 @@ Es gibt jeweils ein Aktivitätsprotokoll für jedes Azure-Abonnement. Es enthäl
 > Das Azure-Aktivitätsprotokoll ist in erster Linie für Aktivitäten bestimmt, die in Azure Resource Manager stattfinden. Es verfolgt keine Ressourcen nach, die das klassische Modell/RDFE-Modell verwenden. Einige klassische Ressourcentypen weisen einen Proxyressourcenanbieter in Azure Resource Manager auf (z.B. Microsoft.ClassicCompute). Wenn Sie mithilfe dieser Proxyressourcenanbieter über Azure Resource Manager mit einem klassischen Ressourcentyp interagieren, werden die Vorgänge im Aktivitätsprotokoll aufgeführt. Wenn Sie mit einem klassischen Ressourcentyp außerhalb der Azure Resource Manager-Proxys interagieren, werden Ihre Aktionen nur in das Vorgangsprotokoll aufgenommen. Das Vorgangsprotokoll kann in einem separaten Abschnitt des Portals durchsucht werden.
 
 ## <a name="activity-log-retention"></a>Speicherung von Aktivitätsprotokollen
-Aktivitätsprotokollereignisse werden 90 Tage lang gespeichert. Zum Speichern dieser Daten über einen längeren Zeitraum müssen Sie sie [in Azure Monitor erfassen](activity-log-collect.md) oder [in Speicher oder Event Hubs exportieren](activity-log-export.md).
+Nach dem Erstellen werden Aktivitätsprotokolleinträge vom System nicht mehr geändert oder gelöscht. Sie können sie auch nicht in der Benutzeroberfläche oder programmgesteuert ändern. Aktivitätsprotokollereignisse werden 90 Tage lang gespeichert. Zum Speichern dieser Daten über einen längeren Zeitraum müssen Sie sie [in Azure Monitor erfassen](activity-log-collect.md) oder [in Speicher oder Event Hubs exportieren](activity-log-export.md).
 
 ## <a name="view-the-activity-log"></a>Anzeigen des Aktivitätsprotokolls
 Zeigen Sie das Aktivitätsprotokoll für alle Ressourcen über das Menü **Monitor** im Azure-Portal an. Das Aktivitätsprotokoll für eine bestimmte Ressource können Sie über die Option **Aktivitätsprotokoll** im Menü dieser Ressource anzeigen. Sie können Datensätze von Aktivitätsprotokollen auch mit PowerShell, der CLI oder der REST-API abrufen.  Weitere Informationen finden Sie unter [Anzeigen und Abrufen von Azure-Aktivitätsprotokollereignissen](activity-log-view.md).

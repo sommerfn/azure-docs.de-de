@@ -10,16 +10,16 @@ ms.topic: conceptual
 ms.date: 04/16/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: a66fa70f6f5615257554e98e40e605d6a7e981fe
-ms.sourcegitcommit: adb6c981eba06f3b258b697251d7f87489a5da33
+ms.openlocfilehash: 1d415686e4d8a10043df59aa6bf58a5ed4be0149
+ms.sourcegitcommit: 1289f956f897786090166982a8b66f708c9deea1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/04/2019
-ms.locfileid: "66508976"
+ms.lasthandoff: 06/17/2019
+ms.locfileid: "67154029"
 ---
 # <a name="single-page-sign-in-using-the-oauth-20-implicit-flow-in-azure-active-directory-b2c"></a>Single-Page-Anmeldung mithilfe des impliziten OAuth 2.0-Flusses in Azure Active Directory B2C
 
-Viele moderne Anwendungen verfügen über ein Single-Page-App-Front-End, das in erster Linie in JavaScript geschrieben ist. Häufig wird die App mithilfe eines Frameworks wie AngularJS, Ember.js oder Durandal geschrieben. Bei einseitigen Apps und anderen JavaScript-Apps, die hauptsächlich in einem Browser ausgeführt werden, gibt es in Bezug auf die Authentifizierung einige zusätzliche Herausforderungen:
+Viele moderne Anwendungen verfügen über ein Single-Page-App-Front-End, das in erster Linie in JavaScript geschrieben ist. Häufig wird zum Schreiben der App ein Framework wie Angular, React oder Vue.js verwendet. Bei einseitigen Apps und anderen JavaScript-Apps, die hauptsächlich in einem Browser ausgeführt werden, gibt es in Bezug auf die Authentifizierung einige zusätzliche Herausforderungen:
 
 - Die Sicherheitsmerkmale dieser Apps unterscheiden sich von herkömmlichen serverbasierten Webanwendungen.
 - Zahlreiche Autorisierungsserver und Identitätsanbieter unterstützen keine CORS-Anforderungen (CORS = Cross-Origin Resource Sharing).

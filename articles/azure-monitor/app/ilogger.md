@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 02/19/2019
 ms.reviewer: mbullwin
 ms.author: cithomas
-ms.openlocfilehash: fd5a16334fff0319d7993fb2403a48d1777f6bce
-ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
+ms.openlocfilehash: 0691c35661a6d185a6aa5ed3383ad600653359d3
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/20/2019
-ms.locfileid: "65955338"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67058596"
 ---
 # <a name="applicationinsightsloggerprovider-for-net-core-ilogger-logs"></a>ApplicationInsightsLoggerProvider für .NET Core-ILogger-Protokolle
 
@@ -106,6 +106,9 @@ public class ValuesController : ControllerBase
 ```
 
 ### <a name="capture-ilogger-logs-from-startupcs-and-programcs-in-aspnet-core-apps"></a>Erfassen von ILogger-Protokollen aus „Startup.cs“ und „Program.cs“ in ASP.NET Core-Anwendungen
+
+> [!NOTE]
+> In ASP.NET Core 3.0 und höher ist es nicht mehr möglich, `ILogger` in „Startup.cs“ und „Program.cs“ einzufügen. Weitere Informationen finden Sie unter https://github.com/aspnet/Announcements/issues/353.
 
 Der neue ApplicationInsightsLoggerProvider kann Protokolle zu einem frühen Zeitpunkt in der Startpipeline der Anwendung erfassen. ApplicationInsightsLoggerProvider wird in Application Insights (ab Version 2.7.0-beta3) zwar automatisch aktiviert, ein Instrumentierungsschlüssel wird jedoch erst später in der Pipeline eingerichtet. Daher werden nur Protokolle aus der **Controller**-Klasse/anderen Klassen erfasst. Um alle Protokolle, beginnend mit **Program.cs** und **Startup.cs** selbst, zu erfassen, müssen Sie einen Instrumentierungsschlüssel für ApplicationInsightsLoggerProvider explizit aktivieren. Außerdem ist *TelemetryConfiguration* nicht komplett eingerichtet, wenn Protokolle aus **Program.cs** oder **Startup.cs** selbst erfasst werden. Deshalb weisen diese Protokolle eine minimale Konfiguration auf, die InMemoryChannel verwendet, es erfolgt keine Stichprobenentnahme, und es gibt keine standardmäßigen Telemetrieinitialisierer oder -prozessoren.
 
@@ -201,10 +204,10 @@ public class Startup
 
 ## <a name="migrate-from-the-old-applicationinsightsloggerprovider"></a>Migrieren vom alten ApplicationInsightsLoggerProvider
 
-Frühere Versionen des Microsoft.ApplicationInsights.AspNet SDK als 2.7.0-beta2 unterstützten einen Protokollierungsanbieter, der nun veraltet ist. Dieser Anbieter wurde durch die **AddApplicationInsights()**-Erweiterungsmethode von ILoggerFactory aktiviert. Es wird empfohlen, dass Sie zum neuen Anbieter migrieren. Dazu müssen zwei Schritte ausgeführt werden:
+Frühere Versionen des Microsoft.ApplicationInsights.AspNet SDK als 2.7.0-beta2 unterstützten einen Protokollierungsanbieter, der nun veraltet ist. Dieser Anbieter wurde durch die **AddApplicationInsights()** -Erweiterungsmethode von ILoggerFactory aktiviert. Es wird empfohlen, dass Sie zum neuen Anbieter migrieren. Dazu müssen zwei Schritte ausgeführt werden:
 
-1. Entfernen Sie den Aufruf von *ILoggerFactory.AddApplicationInsights()* aus der **Startup.Configure()**-Methode, um eine doppelte Protokollierung zu vermeiden.
-2. Wenden Sie Filterregeln im Code neu an, da sie vom neuen Anbieter nicht berücksichtigt werden. Überladungen von *ILoggerFactory.AddApplicationInsights()* erforderten mindestens LogLevel- oder Filterfunktionen. Beim neuen Anbieter ist das Filtern Teil des Protokollierungsframeworks selbst. Es wird nicht vom Application Insights-Anbieter ausgeführt. Daher sollten alle durch *ILoggerFactory.AddApplicationInsights()*-Überladungen bereitgestellte Filter entfernt werden. Befolgen Sie beim Angeben von Filterregeln die Anweisungen in [Steuern des Protokolliergrads](#control-logging-level). Wenn Sie *appsettings.json* zum Filtern der Protokollierung verwenden, funktioniert dies auch beim neuen Anbieter, da beide den gleichen Anbieteralias *ApplicationInsights* verwenden.
+1. Entfernen Sie den Aufruf von *ILoggerFactory.AddApplicationInsights()* aus der **Startup.Configure()** -Methode, um eine doppelte Protokollierung zu vermeiden.
+2. Wenden Sie Filterregeln im Code neu an, da sie vom neuen Anbieter nicht berücksichtigt werden. Überladungen von *ILoggerFactory.AddApplicationInsights()* erforderten mindestens LogLevel- oder Filterfunktionen. Beim neuen Anbieter ist das Filtern Teil des Protokollierungsframeworks selbst. Es wird nicht vom Application Insights-Anbieter ausgeführt. Daher sollten alle durch *ILoggerFactory.AddApplicationInsights()* -Überladungen bereitgestellte Filter entfernt werden. Befolgen Sie beim Angeben von Filterregeln die Anweisungen in [Steuern des Protokolliergrads](#control-logging-level). Wenn Sie *appsettings.json* zum Filtern der Protokollierung verwenden, funktioniert dies auch beim neuen Anbieter, da beide den gleichen Anbieteralias *ApplicationInsights* verwenden.
 
 Sie können weiterhin den alten-Anbieter verwenden. (Er wird erst bei einer Umstellung der Hauptversion auf 3.*xx* entfernt.) Wir empfehlen jedoch aus folgenden Gründen, dass Sie zum neuen Anbieter migrieren:
 
@@ -284,7 +287,7 @@ Installieren Sie dieses zusätzliche Paket:
 <PackageReference Include="Microsoft.ApplicationInsights.WindowsServer.TelemetryChannel" Version="2.9.1" />
 ```
 
-Im folgenden Abschnitt wird gezeigt, wie die standardmäßige TelemetryConfiguration mit der **services.Configure<TelemetryConfiguration>()**-Methode außer Kraft gesetzt wird. In diesem Beispiel werden `ServerTelemetryChannel` und die Stichprobenentnahme eingerichtet. Der TelemetryConfiguration wird ein benutzerdefinierter ITelemetryInitializer hinzugefügt.
+Im folgenden Abschnitt wird gezeigt, wie die standardmäßige TelemetryConfiguration mit der **services.Configure<TelemetryConfiguration>()** -Methode außer Kraft gesetzt wird. In diesem Beispiel werden `ServerTelemetryChannel` und die Stichprobenentnahme eingerichtet. Der TelemetryConfiguration wird ein benutzerdefinierter ITelemetryInitializer hinzugefügt.
 
 ```csharp
     // Create the DI container.
@@ -442,7 +445,7 @@ public class MyController : ApiController
 
 ### <a name="what-application-insights-telemetry-type-is-produced-from-ilogger-logs-or-where-can-i-see-ilogger-logs-in-application-insights"></a>Welcher Typ von Application Insights-Telemetriedaten wird anhand von ILogger-Protokollen erstellt? Wo kann ich ILogger-Protokolle in Application Insights einsehen?
 
-ApplicationInsightsLoggerProvider erfasst ILogger-Protokolle und erstellt daraus TraceTelemetry. Wenn ein Ausnahmeobjekt an die **Log()**-Methode in ILogger übergeben wird, wird anstelle einer TraceTelemetry eine *ExceptionTelemetry* erstellt. Diese Telemetrieelemente sind an denselben Orten wie jede andere TraceTelemetry oder ExceptionTelemetry für Application Insights zu finden, einschließlich Portal, Analysen oder lokalem Visual Studio-Debugger.
+ApplicationInsightsLoggerProvider erfasst ILogger-Protokolle und erstellt daraus TraceTelemetry. Wenn ein Ausnahmeobjekt an die **Log()** -Methode in ILogger übergeben wird, wird anstelle einer TraceTelemetry eine *ExceptionTelemetry* erstellt. Diese Telemetrieelemente sind an denselben Orten wie jede andere TraceTelemetry oder ExceptionTelemetry für Application Insights zu finden, einschließlich Portal, Analysen oder lokalem Visual Studio-Debugger.
 
 Wenn Sie immer TraceTelemetry senden möchten, verwenden Sie diesen Codeausschnitt: ```builder.AddApplicationInsights((opt) => opt.TrackExceptionsAsExceptionTelemetry = false);```
 
@@ -450,7 +453,7 @@ Wenn Sie immer TraceTelemetry senden möchten, verwenden Sie diesen Codeausschni
 
 Die Application Insights-Erweiterung in Azure-Web-Apps verwendet den alten Anbieter. Sie können die Filterregeln in der Datei *appsettings.json* für die Anwendung ändern. Wenn Sie den neuen Anbieter nutzen möchten, verwenden Sie die Instrumentierung zur Buildzeit, indem Sie eine NuGet-Abhängigkeit für das SDK anwenden. Dieser Artikel wird aktualisiert, wenn die Erweiterung auf die Verwendung des neuen Anbieters umgestellt wird.
 
-### <a name="im-using-the-standalone-package-microsoftextensionsloggingapplicationinsights-and-enabling-application-insights-provider-by-calling-builderaddapplicationinsightsikey-is-there-an-option-to-get-an-instrumentation-key-from-configuration"></a>Ich verwende das eigenständige Paket Microsoft.Extensions.Logging.ApplicationInsights und aktiviere den Application Insights-Anbieter durch Aufruf von **builder.AddApplicationInsights("ikey")**. Gibt es eine Möglichkeit, einen Instrumentierungsschlüssel aus der Konfiguration abzurufen?
+### <a name="im-using-the-standalone-package-microsoftextensionsloggingapplicationinsights-and-enabling-application-insights-provider-by-calling-builderaddapplicationinsightsikey-is-there-an-option-to-get-an-instrumentation-key-from-configuration"></a>Ich verwende das eigenständige Paket Microsoft.Extensions.Logging.ApplicationInsights und aktiviere den Application Insights-Anbieter durch Aufruf von **builder.AddApplicationInsights("ikey")** . Gibt es eine Möglichkeit, einen Instrumentierungsschlüssel aus der Konfiguration abzurufen?
 
 
 Ändern Sie die Dateien „program.cs“ und „appsettings.json“ wie folgt:

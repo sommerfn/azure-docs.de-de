@@ -3,8 +3,8 @@ title: Typische Szenarien für die Azure AD-Berechtigungsverwaltung (Vorschauver
 description: Erfahren Sie, welche allgemeinen Schritte Sie in typischen Szenarien für die Azure Active Directory-Berechtigungsverwaltung (Vorschauversion) ausführen müssen.
 services: active-directory
 documentationCenter: ''
-author: rolyon
-manager: mtillman
+author: msaburnley
+manager: daveba
 editor: markwahl-msft
 ms.service: active-directory
 ms.workload: identity
@@ -13,15 +13,15 @@ ms.devlang: na
 ms.topic: conceptual
 ms.subservice: compliance
 ms.date: 04/23/2019
-ms.author: rolyon
+ms.author: ajburnle
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 96442a9d49581da6841fa7acb8329354ec727f60
-ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.openlocfilehash: f8e7709abcc97baac9bf657b9fff2110cb2e72c1
+ms.sourcegitcommit: bafb70af41ad1326adf3b7f8db50493e20a64926
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64918476"
+ms.lasthandoff: 07/25/2019
+ms.locfileid: "68489030"
 ---
 # <a name="common-scenarios-in-azure-ad-entitlement-management-preview"></a>Typische Szenarien für die Azure AD-Berechtigungsverwaltung (Vorschauversion)
 
@@ -50,7 +50,7 @@ Es gibt mehrere Möglichkeiten, wie Sie die Berechtigungsverwaltung für Ihre Or
 > | **2.** [Hinzufügen von Ressourcenrollen zu einem Zugriffspaket](entitlement-management-access-package-edit.md#add-resource-roles)<ul><li>Gruppen</li><li>ANWENDUNGEN</li><li>SharePoint-Websites</li></ul> | ![Hinzufügen von Ressourcenrollen](./media/entitlement-management-scenarios/resource-roles.png) |
 > | **3.** [Hinzufügen einer Richtlinie](entitlement-management-access-package-edit.md#policy-for-users-in-your-directory)<ul><li>Für Benutzer in Ihrem Verzeichnis</li><li>Genehmigung anfordern</li><li>Ablaufeinstellungen</li></ul> | ![Richtlinie hinzufügen](./media/entitlement-management-scenarios/policy.png) |
 
-### <a name="i-want-to-allow-users-from-my-business-partners-including-users-not-yet-in-my-directory-to-request-access-to-groups-applications-or-sharepoint-sites"></a>Ich möchte, dass die Benutzer meiner Geschäftspartner einschließlich der Benutzer, die sich noch nicht in meinem Verzeichnis befinden, den Zugriff auf Gruppen, Anwendungen oder SharePoint-Websites anfordern können
+### <a name="i-want-to-allow-users-from-my-business-partners-directory-including-users-not-yet-in-my-directory-to-request-access-to-groups-applications-or-sharepoint-sites"></a>Ich möchte, dass die Benutzer aus dem Verzeichnis meiner Geschäftspartner einschließlich der Benutzer, die sich noch nicht in meinem Verzeichnis befinden, den Zugriff auf Gruppen, Anwendungen oder SharePoint-Websites anfordern können.
 
 > [!div class="mx-tableFixed"]
 > | Schritte | Beispiel |
@@ -124,4 +124,4 @@ Es gibt mehrere Möglichkeiten, wie Sie die Berechtigungsverwaltung für Ihre Or
 ## <a name="next-steps"></a>Nächste Schritte
 
 - [Tutorial: Erstellen Ihres ersten Zugriffspakets](entitlement-management-access-package-first.md)
-- [Bearbeiten und Verwalten eines vorhandenen Zugriffspakets](entitlement-management-access-package-edit.md)
+- [Delegieren von Aufgaben](entitlement-management-delegate.md)

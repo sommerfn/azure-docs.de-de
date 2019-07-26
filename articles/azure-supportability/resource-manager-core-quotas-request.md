@@ -1,61 +1,27 @@
 ---
 title: Anforderungen zur Erhöhung von Azure Resource Manager-vCPU-Kontingenten | Microsoft-Dokumentation
 description: Anforderungen zur Erhöhung von Azure Resource Manager-vCPU-Kontingenten
-author: ganganarayanan
-ms.author: gangan
-ms.date: 6/13/2018
+author: sowmyavenkat86
+ms.author: svenkat
+ms.date: 06/07/2019
 ms.topic: article
 ms.service: azure
 ms.assetid: ce37c848-ddd9-46ab-978e-6a1445728a3b
-ms.openlocfilehash: 204deaf3a67984c0dd5eca5352686719e7767885
-ms.sourcegitcommit: d89b679d20ad45d224fd7d010496c52345f10c96
+ms.openlocfilehash: 9a997af984b92ea59cc02d99fbd66d8967ca31bd
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57792292"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67076807"
 ---
-# <a name="resource-manager-vcpu-quota-increase-requests"></a>Anforderungen zur Erhöhung von Resource Manager-vCPU-Kontingenten
+# <a name="quota-increase-requests"></a>Anfordern einer Kontingenterhöhung
 
-Resource Manager-vCPU-Kontingente werden auf Regionsebene und auf der Ebene der SKU-Familie erzwungen.
-Weitere Informationen zur Erzwingung von Kontingenten finden Sie auf der Seite [Einschränkungen für Azure-Abonnements und Dienste, Kontingente und Einschränkungen](https://aka.ms/quotalimits).
-Auf der Seite [Virtuelle Windows-Computer – Preise](https://aka.ms/pricingcompute) können Sie die Kosten und die Leistung vergleichen und sich ausführlicher über SKU-Familien informieren.
+Resource Manager-vCPU-Kontingente für virtuelle Computer und VM-Skalierungsgruppen werden in jeder Region für jedes Abonnement auf zwei Ebenen erzwungen. 
 
-Wenn Sie eine Erhöhung anfordern möchten, führen Sie die Anweisungen unten aus, um über das Blatt „Usage + quota“ (Nutzung + Kontingente) im Azure-Portal eine Supportanfrage zu erstellen. 
+Die erste Ebene ist der Grenzwert „Regionale vCPUs gesamt“ (für alle VM-Serien). Die zweite Ebene ist der Grenzwert „vCPUs pro VM-Serie“ (etwa die vCPUs der D-Serie). Bei jeder Bereitstellung eines neuen virtuellen Computers darf die Summe aus neuer und bereits vorhandener vCPU-Nutzung für diese VM-Serie das für diese spezielle VM-Serie genehmigte vCPU-Kontingent nicht überschreiten. Ferner darf die Gesamtzahl der neuen und vorhandenen vCPUs, die insgesamt für alle VM-Serien bereitgestellt werden, das für das Abonnement genehmigte Kontingent „Regionale vCPUs gesamt“ nicht überschreiten. Wird eines dieser Kontingente überschritten, wird die VM-Bereitstellung nicht zugelassen.
+Über das Azure-Portal können Sie eine Erhöhung des vCPU-Kontingentlimits für die VM-Serie anfordern. Bei einer Erhöhung des Kontingents für die VM-Serie erhöht sich automatisch auch der Grenzwert „Regionale vCPUs gesamt“ um den gleichen Wert. 
 
-## <a name="request-quota-increase-at-subscription-level"></a>Anfordern einer Erhöhung des Kontingents auf Abonnementebene
+Wenn ein neues Abonnement erstellt wird, entspricht der Standardwert für „Regionale vCPUs gesamt“ möglicherweise nicht der Summe der vCPU-Standardkontingente für alle einzelnen VM-Serien. Dadurch kann es passieren, dass ein Abonnement zwar über ein ausreichendes Kontingent für die einzelnen bereitzustellenden VM-Serien verfügt, das Kontingent „Regionale vCPUs gesamt“ jedoch nicht für alle Bereitstellungen ausreicht. In diesem Fall müssen Sie explizit eine Erhöhung des Grenzwerts „Regionale vCPUs gesamt“ anfordern. Der Grenzwert „Regionale vCPUs gesamt“ darf die Summe des genehmigten Kontingents für alle VM-Serien der Region nicht überschreiten.
 
-1. Klicken Sie unter https://portal.azure.com auf **Abonnements**.
-
-   ![Abonnements](./media/resource-manager-core-quotas-request/subscriptions.png)
-
-2. Wählen Sie das Abonnement aus, für das ein höheres Kontingent benötigt wird.
-
-   ![Wählen Sie das Abonnement aus.](./media/resource-manager-core-quotas-request/select-subscription.png)
-
-3. Wählen Sie **Nutzung + Kontingente** aus.
-
-   ![Auswählen von „Nutzung + Kontingente“](./media/resource-manager-core-quotas-request/select-usage-quotas.png)
-
-4. Klicken Sie in der Ecke oben rechts auf **Erhöhung anfordern**.
-
-   ![Anfordern einer Erhöhung](./media/resource-manager-core-quotas-request/request-increase.png)
-
-5. Schritt 1: Wählen Sie **Kerne** als Kontingenttyp aus. 
-
-   ![Ausfüllen des Formulars](./media/resource-manager-core-quotas-request/forms.png)
-   
-6. Schritt 2: Wählen Sie als Bereitstellungsmodell „Resource Manager“ und anschließend einen Speicherort aus.
-
-    ![Blatt für das Kontingentproblem](./media/resource-manager-core-quotas-request/Problem-step.png)
-
-3. Wählen Sie die SKU-Familien aus, für die eine Erhöhung erforderlich ist.
-
-    ![Ausgewählte SKU-Serie](./media/resource-manager-core-quotas-request/SKU-selected.png)
-
-4. Geben Sie die gewünschten Grenzwerte für das Abonnement ein.
-
-    ![Neue SKU-Kontingentanforderung](./media/resource-manager-core-quotas-request/SKU-new-quota.png)
-
-- Wenn Sie eine Zeile entfernen möchten, deaktivieren Sie die SKU über die Dropdownliste für die SKU-Familie, oder klicken Sie auf das X-Symbol.
-Nachdem Sie die gewünschten Kontingente für die einzelnen SKU-Familien eingegeben haben, klicken Sie auf der Problemschrittseite auf „Weiter“, um die Erstellung der Supportanfrage fortzusetzen.
+Weitere Informationen zu Kontingenten finden Sie auf den Seiten [vCPU-Kontingente für virtuelle Computer](https://docs.microsoft.com/azure/virtual-machines/windows/quotas) und [Einschränkungen für Azure-Abonnements und Dienste, Kontingente und Einschränkungen](https://aka.ms/quotalimits). 
 

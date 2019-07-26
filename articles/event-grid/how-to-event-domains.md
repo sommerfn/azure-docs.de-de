@@ -7,12 +7,12 @@ ms.service: event-grid
 ms.author: babanisa
 ms.topic: conceptual
 ms.date: 01/17/2019
-ms.openlocfilehash: 73c837897f4a104fabb4143d4b49fa3fbc258bb4
-ms.sourcegitcommit: 009334a842d08b1c83ee183b5830092e067f4374
+ms.openlocfilehash: 0042b0bd8c6ed9e9d253c44151dcf0588c742b48
+ms.sourcegitcommit: e5dcf12763af358f24e73b9f89ff4088ac63c6cb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/29/2019
-ms.locfileid: "66305033"
+ms.lasthandoff: 06/14/2019
+ms.locfileid: "67137844"
 ---
 # <a name="manage-topics-and-publish-events-using-event-domains"></a>Verwalten von Themen und Veröffentlichen von Ereignissen mithilfe von Ereignisdomänen
 
@@ -194,7 +194,7 @@ Verwenden Sie anschließend Ihre bevorzugte Methode zum Erstellen eines HTTP-POS
 
 ## <a name="search-lists-of-topics-or-subscriptions"></a>Durchsuchen von Liste mit Themen oder Abonnements
 
-Um das Durchsuchen und Verwalten von großen Mengen von Themen oder Abonnements zu ermöglichen, unterstützen die APIs von Event Grid Listen und Paginierung.
+Um das Durchsuchen und Verwalten von großen Mengen von Themen oder Abonnements zu ermöglichen, unterstützen die APIs von Event Grid Auflisten und Paginierung.
 
 ### <a name="using-cli"></a>Verwenden von CLI
 

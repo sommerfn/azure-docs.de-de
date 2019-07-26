@@ -5,11 +5,11 @@ ms.topic: include
 ms.date: 11/21/2018
 ms.author: mazha
 ms.openlocfilehash: 7f80c8f1773cfeb8ddfb222d068a5c6571c2e5c7
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66126308"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67178437"
 ---
 ## <a name="prerequisites"></a>Voraussetzungen
 Bevor Sie CDN-Verwaltungscode schreiben können, müssen Sie einige Vorbereitungsschritte ausführen, damit der Code mit Azure Resource Manager interagieren kann. Dies umfasst die folgenden Vorbereitungsmaßnahmen:
@@ -32,7 +32,7 @@ Bevor Sie CDN-Verwaltungscode schreiben können, müssen Sie einige Vorbereitung
     ![Benennen der Ressourcengruppe](./media/cdn-app-dev-prep/cdn-subscription-id-include.png)
 
 ### <a name="creating-the-azure-ad-application-and-applying-permissions"></a>Erstellen der Azure AD-Anwendung und Anwenden von Berechtigungen
-Es gibt zwei Methoden für die App-Authentifizierung mit Azure Active Directory:  per einzelnem Benutzer oder per Dienstprinzipal. Ein Dienstprinzipal ähnelt einem Dienstkonto in Windows.  Anstatt einem bestimmten Benutzer Berechtigungen für die Interaktion mit den CDN-Profilen zu gewähren, erteilen Sie die Berechtigungen dem Dienstprinzipal.  Dienstprinzipale werden im Allgemeinen für automatisierte, nicht interaktive Prozesse verwendet.  Auch wenn in diesem Tutorial eine interaktive Konsolen-App erstellt wird, verwenden wir hier einen Dienstprinzipal.
+Es gibt zwei Methoden der App-Authentifizierung mit Azure Active Directory: Als einzelner Benutzer oder Dienstprinzipal. Ein Dienstprinzipal ähnelt einem Dienstkonto in Windows.  Anstatt einem bestimmten Benutzer Berechtigungen für die Interaktion mit den CDN-Profilen zu gewähren, erteilen Sie die Berechtigungen dem Dienstprinzipal.  Dienstprinzipale werden im Allgemeinen für automatisierte, nicht interaktive Prozesse verwendet.  Auch wenn in diesem Tutorial eine interaktive Konsolen-App erstellt wird, verwenden wir hier einen Dienstprinzipal.
 
 Die Erstellung eines Dienstprinzipals umfasst mehrere Schritte, einschließlich der Erstellung einer Azure Active Directory-Anwendung.  [Absolvieren Sie dieses Tutorial](../articles/active-directory/develop/howto-create-service-principal-portal.md), um die Erstellung durchzuführen.
 

@@ -17,12 +17,12 @@ ms.date: 05/08/2019
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0986610007f5c470589eb94d6761b8d31dd79e72
-ms.sourcegitcommit: e6d53649bfb37d01335b6bcfb9de88ac50af23bd
+ms.openlocfilehash: 760eb5a37a09687cd98ca7abbdcb0bc42667f830
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/09/2019
-ms.locfileid: "65463496"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67107620"
 ---
 # <a name="sign-in-activity-report-error-codes"></a>Fehlercodes des Berichts mit den Anmeldeaktivitäten 
 
@@ -180,7 +180,9 @@ Sie können auch programmgesteuert mithilfe der [Berichterstellungs-API](concept
 |500021|Mandant wird durch den Unternehmensproxy eingeschränkt. Ressourcenzugriff wird verweigert.|
 |500121| Fehler bei der Authentifizierung während starker Authentifizierungsanforderung.|
 |500133| Die Assertion befindet sich nicht im gültigen Zeitbereich. Überprüfen Sie, ob das Zugriffstoken abgelaufen ist, bevor Sie es für die Benutzerassertion verwenden oder ein neues Token anfordern.|
-|530021|Application does not meet the conditional access approved app requirements. (Die Anwendung erfüllt nicht die Anforderungen für den bedingten Zugriff.)|
+|530021|Die Anwendung erfüllt nicht die Anforderungen für den bedingten Zugriff.|
+|7000218|The request body must contain the following parameter: 'client_assertion' or 'client_secret'. (Der Anforderungstext muss den folgenden Parameter enthalten: 'client_assertion' oder 'client_secret'.)|
+
 
 ## <a name="next-steps"></a>Nächste Schritte
 

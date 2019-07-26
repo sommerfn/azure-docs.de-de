@@ -15,12 +15,12 @@ ms.workload: iaas-sql-server
 ms.date: 12/12/2017
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: a33525e44b2e294b7ce85c7081864dbef0856588
-ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
+ms.openlocfilehash: 70e478ac70b7ab53f1357394f3a3cb0d92f41f00
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58650852"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67075789"
 ---
 # <a name="connect-to-a-sql-server-virtual-machine-on-azure"></a>Herstellen einer Verbindung mit einem virtuellen SQL Server-Computer in Azure
 
@@ -94,13 +94,15 @@ Server=mysqlvm;Integrated Security=true
 
 ## <a id="change"></a> Ändern der SQL-Konnektivitätseinstellungen
 
+[!INCLUDE [windows-virtual-machines-sql-use-new-management-blade](../../../../includes/windows-virtual-machines-sql-new-resource.md)]
+
 Die Konnektivitätseinstellungen für den virtuellen SQL Server-Computer können im Azure-Portal geändert werden.
 
-1. Wählen Sie im Azure-Portal die Option **Virtual Machines** aus.
+1. Wählen Sie im Azure-Portal die Option für **SQL-VMs** aus.
 
 2. Wählen Sie den virtuellen SQL Server-Computer aus.
 
-3. Klicken Sie unter **Einstellungen** auf **SQL Server-Konfiguration**.
+3. Wählen Sie unter **Einstellungen** die Option **Sicherheit** aus.
 
 4. Legen Sie **SQL-Konnektivitätsebene** auf die gewünschte Einstellung fest. In diesem Bereich können Sie optional den SQL Server-Port oder die Einstellungen für die SQL-Authentifizierung ändern.
 

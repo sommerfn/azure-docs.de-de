@@ -11,16 +11,19 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2ddf0885ce7615e06b78eccbd6424e63cc6103c2
-ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
+ms.openlocfilehash: 43154e428c3208f5d990688554407777d09f2f1b
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/13/2019
-ms.locfileid: "59547004"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67056031"
 ---
 # <a name="configure-azure-multi-factor-authentication-server-for-high-availability"></a>Konfigurieren von Azure Multi-Factor Authentication-Server für Hochverfügbarkeit
 
 Um hohe Verfügbarkeit bei Ihrer für Azure MFA Server-Bereitstellung zu erreichen, müssen Sie mehrere MFA-Server bereitstellen. Dieser Abschnitt enthält Informationen zu einem Entwurf mit Lastenausgleich, mit dem Sie Ihre Hochverfügbarkeitsziele für die Azure MFS Server-Bereitstellung erreichen können.
+
+> [!IMPORTANT]
+> Ab dem 1. Juli 2019 bietet Microsoft keine MFA-Server mehr für neue Bereitstellungen an. Neue Kunden, die eine Multi-Factor Authentication für ihre Benutzer einrichten möchten, können stattdessen die cloudbasierte Multi-Factor Authentication von Azure verwenden. Bestehende Kunden, die ihren MFA-Server vor dem 1. Juli aktiviert haben, können weiterhin die neusten Versionen und zukünftige Updates herunterladen sowie Anmeldedaten zur Aktivierung generieren.
 
 ## <a name="mfa-server-overview"></a>Übersicht über MFA Server
 

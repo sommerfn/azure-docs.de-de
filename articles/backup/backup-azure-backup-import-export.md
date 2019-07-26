@@ -1,19 +1,18 @@
 ---
 title: Azure Backup – Offlinesicherung oder anfängliches Seeding mithilfe des Azure Import/Export-Diensts
 description: Erfahren Sie, wie Sie mit Azure Backup mithilfe des Azure Import/Export-Diensts Daten aus dem Netzwerk senden können. Dieser Artikel erläutert das Offlineseeding der ersten Sicherungsdaten mit dem Azure Import/Export-Dienst.
-services: backup
 author: saurabhsensharma
 manager: shivamg
 ms.service: backup
 ms.topic: conceptual
 ms.date: 05/17/2018
 ms.author: saurse
-ms.openlocfilehash: b6f0ce1939b2a78ca191d2feb0140506d130b9b0
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: e852e1595be5b564bd1a6326d41115496284506f
+ms.sourcegitcommit: c72ddb56b5657b2adeb3c4608c3d4c56e3421f2c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60648349"
+ms.lasthandoff: 07/24/2019
+ms.locfileid: "68466785"
 ---
 # <a name="offline-backup-workflow-in-azure-backup"></a>Workflow zur Offlinesicherung in Azure Backup
 Azure Backup verfügt über mehrere integrierte effizienzsteigernde Funktionen, die die Netzwerk- und Speicherkosten bei den ersten vollständigen Datensicherungen in Azure reduzieren. Bei den ersten vollständigen Sicherungen werden meist große Datenmengen übertragen, sodass eine höhere Netzwerkbandbreite als bei den nachfolgenden Sicherungen erforderlich ist, bei denen nur die Deltamengen bzw. Inkremente übertragen werden. Durch den Prozess des Offlineseedings kann Azure Backup Datenträger verwenden, um die Daten der Offlinesicherung in Azure hochzuladen.
@@ -76,7 +75,7 @@ In diesem Abschnitt wird erläutert, wie Sie den Workflow zur Offlinesicherung d
    Die Beschreibung der Eingaben lautet wie folgt:
 
     * **Stagingspeicherort**: Der temporäre Speicherort, an den die erste Sicherungskopie geschrieben wird. Beim Stagingspeicherort kann es sich um eine Netzwerkfreigabe oder einen lokalen Computer handeln. Wenn der Kopiercomputer und der Quellcomputer nicht identisch sind, wird empfohlen, den vollständigen Netzwerkpfad des Stagingspeicherorts anzugeben.
-    * **Azure Resource Manager-Speicherkonto**: Der Name des Resource Manager-Speicherkontos in einem beliebigen Azure-Abonnement.
+    * **Azure Resource Manager-Speicherkonto**: Der Name des Resource Manager-Speicherkontos (Universell v1 oder Universell v2) in allen Azure-Abonnements.
     * **Azure Storage-Container**: Der Name des Zielspeicherblobs im Azure-Speicherkonto, in das die Sicherungsdaten vor dem Kopieren in den Recovery Services-Tresor importiert werden.
     * **Azure-Abonnement-ID**: Die ID für das Azure-Abonnement, in dem das Azure-Speicherkonto erstellt wird.
     * **Name des Azure Importauftrags**: Der eindeutige Name, anhand dessen der Azure Import-Dienst und Azure Backup Datenübertragungen nachverfolgen, die auf Datenträgern an Azure gesendet werden. 

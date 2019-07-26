@@ -16,12 +16,12 @@ ms.date: 05/07/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d8d377db827a6548c380128624c21f4ae7896aff
-ms.sourcegitcommit: 0ae3139c7e2f9d27e8200ae02e6eed6f52aca476
+ms.openlocfilehash: fd2da6baecdce3ab85a45347f27f573bf814445d
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65080160"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67055751"
 ---
 # <a name="daemon-app-that-calls-web-apis---code-configuration"></a>Daemon-App, die Web-APIs aufruft – Codekonfiguration
 
@@ -41,7 +41,9 @@ Folgende Microsoft-Bibliotheken unterstützen Daemon-Apps:
 
 Da Ihre Daemonanwendungen keine delegierten Berechtigungen sondern Anwendungsberechtigungen verwenden, darf ihr *unterstützter Kontotyp* nicht *Konten in allen Organisationsverzeichnissen und persönliche Microsoft-Konten (z. B. Skype, Xbox, Outlook.com)* lauten. Es gibt keinen Mandantenadministrator, der der Daemonanwendung für persönliche Microsoft-Konten Einwilligung erteilen könnte. Sie müssen *accounts in my organization* (Konten in meiner Organisation) oder *accounts in any organization* (Konten in allen Organisationen) auswählen.
 
-Deshalb sollte die in der Anwendungskonfiguration angegebene Autorität über einen Mandanten verfügen (eine Mandanten-ID oder ein Domänennamen, die zu Ihrer Organisation gehören). Wenn Sie ein unabhängiger Softwarehersteller sind und ein Tool mit mehreren Mandanten bereitstellen möchten, können Sie `organizations` verwenden. Beachten Sie jedoch, dass Sie Ihren Kunden erklären müssen, wie diese die Administratoreinwilligung gewähren. Weitere Informationen finden Sie im Abschnitt zum [Anfordern der Einwilligung für einen gesamten Mandanten](v2-permissions-and-consent.md#requesting-consent-for-an-entire-tenant).
+Deshalb sollte die in der Anwendungskonfiguration angegebene Autorität über einen Mandanten verfügen (eine Mandanten-ID oder ein Domänennamen, die zu Ihrer Organisation gehören).
+
+Wenn Sie ein unabhängiger Softwarehersteller sind und ein Tool mit mehreren Mandanten bereitstellen möchten, können Sie `organizations` verwenden. Beachten Sie jedoch, dass Sie Ihren Kunden erklären müssen, wie diese die Administratoreinwilligung gewähren. Weitere Informationen finden Sie im Abschnitt zum [Anfordern der Einwilligung für einen gesamten Mandanten](v2-permissions-and-consent.md#requesting-consent-for-an-entire-tenant). Außerdem gibt es derzeit in MSAL eine Einschränkung, dass `organizations` nur zulässig ist, wenn die Clientanmeldeinformationen ein Anwendungsgeheimnis (kein Zertifikat) sind. Weitere Informationen finden Sie unter [MSAL.NET Fehler #891](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet/issues/891)
 
 ## <a name="application-configuration-and-instantiation"></a>Konfiguration und Instanziierung von Anwendungen
 

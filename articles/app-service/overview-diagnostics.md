@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 11/10/2017
 ms.author: jennile
 ms.custom: seodec18
-ms.openlocfilehash: 3e304df51133d53adad50e672249bde6c9960712
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: f2f798be85e9c3aeb8d4b54cba89d8be059427e0
+ms.sourcegitcommit: 72f1d1210980d2f75e490f879521bc73d76a17e1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65539739"
+ms.lasthandoff: 06/14/2019
+ms.locfileid: "67147327"
 ---
 # <a name="azure-app-service-diagnostics-overview"></a>Übersicht über die Azure App Service-Diagnose
 
@@ -103,12 +103,12 @@ Wie die proaktive CPU-Überwachung bietet die proaktive automatische Reparatur e
 
 ![Proaktive automatische Reparatur](./media/app-service-diagnostics/proactive-auto-healing-10.png)
 
-## <a name="change-analysis"></a>Ändern der Analyse
+## <a name="change-analysis-only-for-windows-app"></a>Ändern der Analyse (nur für Windows-App)
 
-In einer schnelllebigen Entwicklungsumgebung kann es mitunter schwierig sein, alle Änderungen an Ihrer App nachzuverfolgen, geschweige denn eine Änderung zu erkennen, die zu einem fehlerhaften Verhalten geführt hat. Mit der Änderungsanalyse können Sie die an Ihrer App vorgenommenen Änderungen eingrenzen und so die Problembehebung vereinfachen. Die Änderungsanalyse ist in den Diagnosebericht eingebettet, z. B. **Anwendungsabstürze**, sodass Sie sie gleichzeitig mit anderen Metriken verwenden können.
+In einer schnelllebigen Entwicklungsumgebung kann es mitunter schwierig sein, alle Änderungen an Ihrer App nachzuverfolgen, geschweige denn eine Änderung zu erkennen, die zu fehlerhaftem Verhalten geführt hat. Mit der Änderungsanalyse können Sie die an Ihrer App vorgenommenen Änderungen eingrenzen und so die Problembehebung vereinfachen. Die Änderungsanalyse ist in **Anwendungsänderungen** zu finden und auch in den Diagnosebericht eingebettet, z.B. **Anwendungsabstürze**, sodass Sie sie gleichzeitig mit anderen Metriken verwenden können.
+
+Die Änderungsanalyse muss vor der Verwendung aktiviert werden. Weitere Informationen zur Änderungsanalyse finden Sie unter [Announcing the new change analysis experience in App Service Diagnostics](https://azure.github.io/AppService/2019/05/07/Announcing-the-new-change-analysis-experience-in-App-Service-Diagnostics-Analysis.html) (Bekanntgabe der neuen Funktion zur Änderungsanalyse in der App Service-Diagnose).
 
 ![Standardseite der Änderungsanalyse](./media/app-service-diagnostics/change-analysis-default-page-11.png)
 
 ![Vergleichsansicht](./media/app-service-diagnostics/diff-view-12.png)
-
-Die Änderungsanalyse muss vor der Verwendung aktiviert werden. Weitere Informationen zur Änderungsanalyse finden Sie unter [Announcing the new change analysis experience in App Service Diagnostics](https://azure.github.io/AppService/2019/05/07/Announcing-the-new-change-analysis-experience-in-App-Service-Diagnostics-Analysis.html) (Bekanntgabe der neuen Funktion zur Änderungsanalyse in der App Service-Diagnose).

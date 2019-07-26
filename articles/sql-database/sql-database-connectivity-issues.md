@@ -12,13 +12,13 @@ author: dalechen
 ms.author: ninarn
 ms.reviewer: carlrab
 manager: craigg
-ms.date: 11/14/2018
-ms.openlocfilehash: 56b4e948f4e1aab20de95a16f45ab790c7e591bb
-ms.sourcegitcommit: db3fe303b251c92e94072b160e546cec15361c2c
+ms.date: 06/14/2019
+ms.openlocfilehash: adbe8dfd41725c11516f820656b0476ed1aa8881
+ms.sourcegitcommit: 22c97298aa0e8bd848ff949f2886c8ad538c1473
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/22/2019
-ms.locfileid: "66019822"
+ms.lasthandoff: 06/14/2019
+ms.locfileid: "67144037"
 ---
 # <a name="working-with-sql-database-connection-issues-and-transient-errors"></a>Arbeiten mit Verbindungsproblemen und vorübergehenden Fehlern bei SQL-Datenbank
 
@@ -93,7 +93,7 @@ Eine Möglichkeit, um Ihre Wiederholungslogik zu testen, besteht darin, Ihren Cl
 - **SqlException.Number** = 11001
 - Meldung: „Es ist kein solcher Host bekannt.“
 
-Beim ersten Wiederholungsversuch kann Ihr Programm den Namen korrigieren und erneut versuchen, eine Verbindung herzustellen.
+Im Rahmen des ersten Wiederholungsversuchs können Sie Ihren Clientcomputer wieder mit dem Netzwerk verbinden und dann versuchen, eine Verbindung herzustellen.
 
 Um diesen Test in der Praxis umzusetzen, trennen Sie Ihren Computer vom Netzwerk, bevor Sie das Programm starten. Als Folge erkennt Ihr Programm einen Laufzeitparameter, der folgende Auswirkungen hat:
 

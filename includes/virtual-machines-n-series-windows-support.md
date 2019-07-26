@@ -1,6 +1,6 @@
 ---
-title: Includedatei
-description: Includedatei
+title: include file
+description: include file
 services: virtual-machines-windows
 author: cynthn
 ms.service: virtual-machines-windows
@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 02/11/2019
 ms.author: cynthn
 ms.custom: include file
-ms.openlocfilehash: 0dda467c3906c217c18e1340f7dc2a464dcbccae
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.openlocfilehash: 12f053d7255c21441d78dab8c7937bcf45ec48c2
+ms.sourcegitcommit: 6e6813f8e5fa1f6f4661a640a49dc4c864f8a6cb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66154851"
+ms.lasthandoff: 06/17/2019
+ms.locfileid: "67151816"
 ---
 ## <a name="supported-operating-systems-and-drivers"></a>Unterstützte Betriebssysteme und Treiber
 
@@ -36,5 +36,5 @@ Microsoft vertreibt Installationsprogramme für NVIDIA GRID-Treiber für virtuel
 
 | Betriebssystem | Treiber |
 | -------- |------------- |
-| Windows Server 2016<br/><br/>Windows 10 (bis zu Version 1803) | [GRID 8.0 (425.31)](https://go.microsoft.com/fwlink/?linkid=874181) (EXE-Datei) |
+| Windows Server 2019<br/><br/>Windows Server 2016<br/><br/>Windows 10 (bis zu Version 1809). Ungepatcht/Patchebene 0 von 1809 wird nicht unterstützt.) | [GRID 8.0 (425.31)](https://go.microsoft.com/fwlink/?linkid=874181) (EXE-Datei) |
 | Windows Server 2012 R2 | [GRID 8.0 (425.31)](https://go.microsoft.com/fwlink/?linkid=874184) (EXE-Datei)  |
