@@ -7,7 +7,7 @@ metadata:
   description: 'Hier erfahren Sie, wie Sie mit der Bing-Websuche-API Web nach Webseiten, Bildern, Videos, Nachrichten und mehr suchen.'
   services: cognitive-services
   author: nitinme
-  manager: cgronlun
+  manager: nitinme
   ms.service: cognitive-services
   ms.subservice: bing-web-search
   ms.tgt_pltfrm: na

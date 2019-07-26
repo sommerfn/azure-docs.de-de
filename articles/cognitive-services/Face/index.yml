@@ -6,7 +6,7 @@ metadata:
   description: 'Hier erfahren Sie, wie Sie mithilfe der Gesichtserkennungs-API Gesichter in Bildern erkennen und identifizieren und Informationen zu Gesichtern zurückgeben. In Tutorials wird gezeigt, wie Sie Apps erstellen, die die API nutzen.'
   services: cognitive-services
   author: PatrickFarley
-  manager: cgronlun
+  manager: nitinme
   ms.service: cognitive-services
   ms.subservice: face-api
   ms.tgt_pltfrm: na

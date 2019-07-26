@@ -1,19 +1,18 @@
 ---
 title: Verwalten von Azure Recovery Services-Tresoren und -Servern
 description: Verwalten von Aufträgen und Warnungen in einem Azure Recovery Services-Tresor.
-services: backup
 author: rayne-wiselman
 manager: carmonm
 ms.service: backup
 ms.topic: conceptual
 ms.date: 07/08/2019
 ms.author: raynew
-ms.openlocfilehash: b447290a6910d144703bb796290908d0fc21b924
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.openlocfilehash: 5876ce4a511617d8465cdf008ea0ce14b3ad15d4
+ms.sourcegitcommit: c72ddb56b5657b2adeb3c4608c3d4c56e3421f2c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67705137"
+ms.lasthandoff: 07/24/2019
+ms.locfileid: "68466355"
 ---
 # <a name="monitor-and-manage-recovery-services-vaults"></a>Überwachen und Verwalten von Recovery Services-Tresoren
 
@@ -146,7 +145,7 @@ Konfigurieren Sie Benachrichtigungen, um E-Mails zu generieren, wenn eine Warnme
 
    ![Warnungen filtern](./media/backup-azure-manage-windows-server/configure-notification.png)
 
-E-Mail-Benachrichtigungen sind standardmäßig aktiviert. Klicken Sie auf **Aus**, um die E-Mail-Benachrichtigungen zu beenden.
+E-Mail-Benachrichtigungen sind standardmäßig **aktiviert**. Klicken Sie auf **Aus**, um die E-Mail-Benachrichtigungen zu beenden.
 
 Wählen Sie im Steuerelement **Benachrichtigen** die Option **Pro Warnung** aus, wenn keine Gruppierung erfolgen soll, oder wenn Sie nur über wenige Elemente verfügen, die Warnungen generieren können. Jede Warnung führt zu einer Benachrichtigung (Standardeinstellung), und es wird sofort eine Lösungs-E-Mail gesendet.
 

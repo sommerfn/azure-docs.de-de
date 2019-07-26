@@ -6,7 +6,7 @@ metadata:
   description: 'Es wird beschrieben, wie Sie das maschinelle Sehen zum Verarbeiten von Bildern und Zurückgeben von Informationen verwenden. In Tutorials wird gezeigt, wie Sie Apps erstellen, die die API nutzen.'
   services: cognitive-services
   author: nitinme
-  manager: cgronlun
+  manager: nitinme
   ms.service: cognitive-services
   ms.subservice: computer-vision
   ms.tgt_pltfrm: na

@@ -6,7 +6,7 @@ metadata:
   description: 'Erfahren Sie, wie Sie mit der Formularerkennung auf intelligente Weise Schlüssel-Wert-Daten aus Ihren Formularen extrahieren.'
   services: cognitive-services
   author: PatrickFarley
-  manager: cgronlun
+  manager: nitinme
   ms.service: cognitive-services
   ms.subservice: forms-recognizer
   ms.tgt_pltfrm: na

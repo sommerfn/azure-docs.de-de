@@ -6,7 +6,7 @@ metadata:
   description: "Mithilfe der API für die Anomalieerkennung können Sie Daten im Zeitverlauf überwachen und Anomalien mithilfe des Machine\_Learning-Diensts ermitteln. Sie erhalten unabhängig von Umfang, Branche oder Szenario Einblicke in Ihre Daten."
   services: cognitive-services
   author: aahill
-  manager: cgronlun
+  manager: nitinme
   layout: LandingPage
   ms.service: cognitive-services
   ms.tgt_pltfrm: na

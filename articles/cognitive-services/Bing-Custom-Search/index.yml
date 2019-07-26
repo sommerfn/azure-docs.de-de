@@ -6,7 +6,7 @@ metadata:
   description: 'Hier erfahren Sie, wie Sie mit dem Portal und der API für die benutzerdefinierte Bing-Suche eine benutzerdefinierte Suchumgebung erstellen.'
   services: cognitive-services
   author: v-deken
-  manager: cgronlun
+  manager: nitinme
   layout: LandingPage
   ms.service: cognitive-services
   ms.tgt_pltfrm: na

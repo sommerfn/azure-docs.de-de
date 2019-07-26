@@ -7,7 +7,7 @@ metadata:
   description: 'Entwickler erhalten mit Speech-Diensten die Möglichkeit, ihre Anwendungen auf einfache Weise um leistungsfähige Sprachfunktionen zu erweitern. Hierzu zählen beispielsweise Steuerung per Sprachbefehl, Dialoge, Unterhaltungen in natürlicher Sprache, Sprachtranskription und -diktat sowie Sprachübersetzung.'
   services: cognitive-services
   author: nitinme
-  manager: cgronlun
+  manager: nitinme
   layout: LandingPage
   ms.service: cognitive-services
   ms.subservice: speech-service

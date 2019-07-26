@@ -6,7 +6,7 @@ metadata:
   description: 'Hier erfahren Sie, wie Sie Content Moderator zum Überprüfen von Text-, Bild- und Videoinhalten auf potenziell anstößiges, riskantes oder anderweitig unerwünschtes Material verwenden.'
   services: cognitive-services
   author: nitinme
-  manager: cgronlun
+  manager: nitinme
   ms.service: cognitive-services
   ms.subservice: content-moderator
   ms.tgt_pltfrm: na

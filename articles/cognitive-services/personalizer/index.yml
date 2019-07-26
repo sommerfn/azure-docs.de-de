@@ -6,7 +6,7 @@ metadata:
   title: 'Personalisierung: Tutorials, Schnellstarts, API-Referenz'
   description: 'Erfahren Sie, wie Ihre Anwendung mithilfe der Azure-Personalisierung die beste Benutzeroberfläche für Ihre Benutzer auswählen und dabei in Echtzeit von deren Verhalten lernen kann.'
   author: nitinme
-  manager: cgronlun
+  manager: nitinme
   ms.service: cognitive-services
   ms.tgt_pltfrm: na
   ms.devlang: na
