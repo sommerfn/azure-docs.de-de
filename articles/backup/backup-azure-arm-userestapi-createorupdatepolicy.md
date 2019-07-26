@@ -1,7 +1,6 @@
 ---
 title: 'Azure Backup: Erstellen von Sicherungsrichtlinien mithilfe der REST-API'
 description: Verwalten von Sicherungsrichtlinien (Zeitplan und Aufbewahrung) mithilfe der REST-API
-services: backup
 author: pvrk
 manager: shivamg
 keywords: REST API; Azure VM backup; Azure VM restore;
@@ -10,12 +9,12 @@ ms.topic: conceptual
 ms.date: 08/21/2018
 ms.author: pullabhk
 ms.assetid: 5ffc4115-0ae5-4b85-a18c-8a942f6d4870
-ms.openlocfilehash: 657a777da0e984a145c1c617a6194bf4ef56306e
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: f0729a49c3dc72a28431d711e6783abda96d2ce3
+ms.sourcegitcommit: c72ddb56b5657b2adeb3c4608c3d4c56e3421f2c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60648804"
+ms.lasthandoff: 07/24/2019
+ms.locfileid: "68466812"
 ---
 # <a name="create-azure-recovery-services-backup-policies-using-rest-api"></a>Erstellen von Azure Recovery Services-Sicherungsrichtlinien mit der REST-API
 
@@ -158,7 +157,7 @@ Die Erstellung bzw. Aktualisierung von Sicherungsrichtlinien ist ein [asynchrone
 
 Er gibt zwei Antworten zurück: „202 (Akzeptiert)“, wenn ein anderer Vorgang erstellt wird, und dann „200 (OK)“, wenn dieser Vorgang abgeschlossen ist.
 
-|NAME  |Type  |BESCHREIBUNG  |
+|NAME  |type  |BESCHREIBUNG  |
 |---------|---------|---------|
 |200 – OK     |    [ProtectionPolicyResource](https://docs.microsoft.com/rest/api/backup/protectionpolicies/createorupdate#protectionpolicyresource)     |  OK       |
 |202 – Akzeptiert     |         |     Zulässig    |

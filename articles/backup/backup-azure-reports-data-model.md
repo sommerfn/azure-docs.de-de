@@ -1,19 +1,18 @@
 ---
 title: Datenmodell für Azure Backup
 description: In diesem Artikel werden die Details des Power BI-Datenmodells für Azure Backup-Berichte vorgestellt.
-services: backup
 author: adigan
 manager: shivamg
 ms.service: backup
 ms.topic: conceptual
 ms.date: 06/26/2017
 ms.author: adigan
-ms.openlocfilehash: c6160570644da108ba713e8229b38f9587495c92
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 66245a25af000d999ded87c58e3ba225b373b101
+ms.sourcegitcommit: c72ddb56b5657b2adeb3c4608c3d4c56e3421f2c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60337577"
+ms.lasthandoff: 07/24/2019
+ms.locfileid: "68465593"
 ---
 # <a name="data-model-for-azure-backup-reports"></a>Datenmodell für Azure Backup-Berichte
 In diesem Artikel wird das Power BI-Datenmodell beschrieben, das zum Erstellen von Azure Backup-Berichten verwendet wird. Mit diesem Datenmodell können Sie vorhandene Berichte basierend auf entsprechenden Feldern filtern und, was noch wichtiger ist, eigene Berichte mithilfe der Tabellen und Felder im Modell erstellen. 
@@ -83,7 +82,7 @@ Diese Tabelle enthält grundlegende Felder und Aggregationen für verschiedene a
 | --- | --- | --- |
 | #JobsCreatedInPeriod |Ganze Zahl |Anzahl der Aufträge, die im gewählten Zeitraum erstellt wurden |
 | %FailuresForJobsCreatedInPeriod |Prozentsatz |Prozentsatz der gesamten Auftragsfehler im ausgewählten Zeitraum |
-| 80thPercentileDataTransferredInMBForBackupJobsCreatedInPeriod |Dezimalzahl |80\. Quantilwert der übertragenen Daten (in MB) für **Sicherungsaufträge**, die im ausgewählten Zeitraum erstellt wurden |
+| 80thPercentileDataTransferredInMBForBackupJobsCreatedInPeriod |Dezimalzahl |80. Quantilwert der übertragenen Daten (in MB) für **Sicherungsaufträge**, die im ausgewählten Zeitraum erstellt wurden |
 | AsOnDateTime |Date/Time |Uhrzeit der letzten Aktualisierung der ausgewählten Zeile |
 | AvgBackupDurationInMinsForJobsCreatedInPeriod |Dezimalzahl |Durchschnittliche Zeit in Minuten für **abgeschlossene Sicherungsaufträge**, die im ausgewählten Zeitraum erstellt wurden |
 | AvgRestoreDurationInMinsForJobsCreatedInPeriod |Dezimalzahl |Durchschnittliche Zeit in Minuten für **abgeschlossene Wiederherstellungsaufträge**, die im ausgewählten Zeitraum erstellt wurden |

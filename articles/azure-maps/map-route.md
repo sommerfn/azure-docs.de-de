@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: codepen
-ms.openlocfilehash: 31403a11e8989cee6a1c166879a0b2f594892704
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 9e9469e012f2e6b54d9bb84858a9dfc970873b4c
+ms.sourcegitcommit: 75a56915dce1c538dc7a921beb4a5305e79d3c7a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66357631"
+ms.lasthandoff: 07/24/2019
+ms.locfileid: "68476806"
 ---
 # <a name="show-directions-from-a-to-b"></a>Anzeigen einer Wegbeschreibung von A nach B
 
@@ -39,7 +39,7 @@ Eine Linie ist ein [Feature](https://docs.microsoft.com/javascript/api/azure-map
 
 Eine [Symbolebene](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.layer.symbollayer?view=azure-iot-typescript-latest) verwendet Text oder Symbole zum Rendern punktbasierter Daten, die in [DataSource](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.source.datasource?view=azure-iot-typescript-latest) als Symbole auf der Karte umschlossen sind. Mit dem fünften Codeblock wird eine Symbolebene erstellt und der Karte hinzugefügt.
 
-Mit dem sechsten Codeblock wird der Azure Maps-Routingdienst abgefragt, der Teil des [Dienstmoduls](https://atlas.microsoft.com/sdk/javascript/mapcontrol/2/atlas-service.min.js) ist. Die [calculateRouteDirections](https://docs.microsoft.com/javascript/api/azure-maps-rest/atlas.service.routeurl?view=azure-iot-typescript-latest#methods)-Methode von RouteURL wird genutzt, um eine Route zwischen den Start- und Endpunkten zu erhalten. Anschließend wird mit der `geojson.getFeatures()`-Methode eine GeoJSON-Merkmalsauswahl extrahiert und der Datenquelle hinzugefügt. Anschließend wird die Antwort als Route in der Karte gerendert. Weitere Informationen zum Hinzufügen einer Linie zur Karte finden Sie unter [Hinzufügen einer Linie zur Karte](./map-add-shape.md#addALine).
+Mit dem sechsten Codeblock wird der Azure Maps-Routingdienst abgefragt, der Teil des [Dienstmoduls](how-to-use-services-module.md) ist. Die [calculateRouteDirections](https://docs.microsoft.com/javascript/api/azure-maps-rest/atlas.service.routeurl?view=azure-iot-typescript-latest#methods)-Methode von RouteURL wird genutzt, um eine Route zwischen den Start- und Endpunkten zu erhalten. Anschließend wird mit der `geojson.getFeatures()`-Methode eine GeoJSON-Merkmalsauswahl extrahiert und der Datenquelle hinzugefügt. Anschließend wird die Antwort als Route in der Karte gerendert. Weitere Informationen zum Hinzufügen einer Linie zur Karte finden Sie unter [Hinzufügen einer Linie zur Karte](./map-add-shape.md#addALine).
 
 Mit dem letzten Codeblock werden die Grenzen der Karte mithilfe der [setCamera](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest#setcamera-cameraoptions---cameraboundsoptions---animationoptions-)-Eigenschaft der Karte festgelegt.
 

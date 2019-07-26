@@ -2,34 +2,27 @@
 title: Konfigurieren der Richtlinie zum Benutzerrisiko in Azure Active Directory Identity Protection | Microsoft-Dokumentation
 description: Es wird beschrieben, wie Sie die Azure AD Identity Protection-Richtlinie zum Benutzerrisiko konfigurieren.
 services: active-directory
-keywords: Azure Active Directory Identity Protection, Cloud App Discovery, Verwalten von Anwendungen, Sicherheit, Risiko, Risikostufe, Sicherheitsrisiko, Sicherheitsrichtlinie
-documentationcenter: ''
-author: MicrosoftGuyJFlo
-manager: daveba
-ms.assetid: e7434eeb-4e98-4b6b-a895-b5598a6cccf1
 ms.service: active-directory
 ms.subservice: identity-protection
-ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 03/14/2019
 ms.author: joflore
+author: MicrosoftGuyJFlo
+manager: daveba
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 942f7e43a549b5aa1a21284949ffc12ef3c8d75f
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: fc7ea05497d69a7ca833cc783e7a2bc6bf1a8b07
+ms.sourcegitcommit: e9c866e9dad4588f3a361ca6e2888aeef208fc35
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67108928"
+ms.lasthandoff: 07/19/2019
+ms.locfileid: "68335437"
 ---
 # <a name="how-to-configure-the-user-risk-policy"></a>Anleitung: Konfigurieren der Richtlinie zum Benutzerrisiko
 
 Anhand des Benutzerrisikos erkennt Azure AD die Wahrscheinlichkeit, mit der ein Benutzerkonto kompromittiert wurde. Als Administrator können Sie für das Benutzerrisiko eine Richtlinie für bedingten Zugriff konfigurieren, um automatisch auf eine bestimmte Benutzerrisikostufe zu reagieren.
  
 In diesem Artikel erhalten Sie die erforderlichen Informationen, die Sie zum Konfigurieren einer Richtlinie für das Benutzerrisiko benötigen.
-
 
 ## <a name="what-is-a-user-risk-policy"></a>Was ist eine Richtlinie zum Benutzerrisiko?
 
@@ -41,14 +34,11 @@ Alle Risikoereignisse, die für einen Benutzer erkannt und nicht gelöst wurden,
 
 Die Richtlinie zum Benutzerrisiko ist eine automatisierte Antwort, die Sie für eine bestimmte Benutzerrisikostufe konfigurieren können. Mit einer Richtlinie zum Benutzerrisiko können Sie den Zugriff auf Ihre Ressourcen blockieren oder eine Kennwortänderung erzwingen, um für ein Benutzerkonto den bereinigten Zustand wiederherzustellen.
 
-
 ## <a name="how-do-i-access-the-user-risk-policy"></a>Wie greife ich auf die Richtlinie zum Benutzerrisiko zu?
    
 Die Richtlinie zum Anmelderisiko befindet sich auf der [Azure AD Identity Protection-Seite](https://portal.azure.com/#blade/Microsoft_AAD_ProtectionCenter/IdentitySecurityDashboardMenuBlade/SignInPolicy) im Abschnitt **Konfigurieren**.
    
 ![Richtlinie zum Benutzerrisiko](./media/howto-user-risk-policy/1014.png)
-
-
 
 ## <a name="policy-settings"></a>Richtlinieneinstellungen
 
@@ -80,7 +70,6 @@ Sie können eine Sicherheitsrichtlinie für das Benutzerrisiko festlegen, um Ben
 
 ![Blockieren](./media/howto-user-risk-policy/16.png)
 
-
 Das Sperren einer Anmeldung bewirkt Folgendes:
 
 * Verhindert die Generierung neuer Benutzerrisikoereignisse für den betroffenen Benutzer
@@ -110,9 +99,6 @@ Eine Übersicht über die zugehörige Benutzeroberfläche finden Sie unter:
 - Klicken Sie auf dem Blatt **Azure AD Identity Protection** im Abschnitt **Konfigurieren** auf **Richtlinie zum Benutzerrisiko**.
 
     ![Richtlinie zum Benutzerrisiko](./media/howto-user-risk-policy/1009.png "Richtlinie zum Benutzerrisiko")
-
-
-
 
 ## <a name="next-steps"></a>Nächste Schritte
 

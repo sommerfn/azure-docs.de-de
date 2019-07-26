@@ -12,12 +12,12 @@ manager: cgronlun
 ms.reviewer: jmartens
 ms.date: 05/02/2019
 ms.custom: seodec18
-ms.openlocfilehash: 6206ad1a7356221bf94134e5d293c27d778cc187
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 6753be5613b10b64936cddaafbb9859aad837b02
+ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66752868"
+ms.lasthandoff: 07/19/2019
+ms.locfileid: "68358638"
 ---
 # <a name="write-and-configure-data--with-the-azure-machine-learning-data-prep-sdk"></a>Schreiben und Konfigurieren von Daten mit dem Azure Machine Learning Data Prep SDK
 
@@ -76,7 +76,7 @@ Beispielausgabe:
 Der folgende Code verwendet die [`write_to_csv()`](https://docs.microsoft.com/python/api/azureml-dataprep/azureml.dataprep.dataflow#write-to-csv-directory-path--datadestination--separator--str--------na--str----na---error--str----error------azureml-dataprep-api-dataflow-dataflow)-Funktion zum Schreiben von Daten in eine durch Trennzeichen getrennte Datei.
 
 ```python
-# Create a new data flow using `write_to_csv` 
+# Create a new data flow using `write_to_csv`
 write_t = t.write_to_csv(directory_path=dprep.LocalFileOutput('./test_out/'))
 
 # Run the data flow to begin the write operation.
@@ -101,7 +101,7 @@ In der vorhergehenden Ausgabe treten mehrere Fehler in den numerischen Spalten a
 Fügen Sie Parameter als Teil Ihres Schreibaufrufs hinzu, und geben Sie eine Zeichenfolge an, die zur Darstellung von Nullwerten verwendet werden soll.
 
 ```python
-write_t = t.write_to_csv(directory_path=dprep.LocalFileOutput('./test_out/'), 
+write_t = t.write_to_csv(directory_path=dprep.LocalFileOutput('./test_out/'),
                          error='BadData',
                          na='NA')
 write_t.run_local()
@@ -125,7 +125,7 @@ Der vorhergehende Code gibt folgende Ausgabe zurück:
 
 ```python
 write_parquet_t = t.write_to_parquet(directory_path=dprep.LocalFileOutput('./test_parquet_out/'),
-error='MiscreantData')
+                                     error='MiscreantData')
 ```
 
 Führen Sie den Datenfluss aus, um den Schreibvorgang zu starten.

@@ -1,19 +1,18 @@
 ---
 title: Häufig gestellte Fragen zur Sicherung von SQL Server-Datenbanken auf Azure-VMs mit Azure Backup
 description: Enthält Antworten auf häufig gestellte Fragen zur Sicherung von SQL Server-Datenbanken auf Azure-VMs mit Azure Backup.
-services: backup
 author: sachdevaswati
 manager: vijayts
 ms.service: backup
 ms.topic: conceptual
 ms.date: 04/23/2019
 ms.author: vijayts
-ms.openlocfilehash: b5e6b1b07f986228eef66e2e92fb9ac3caef32fa
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.openlocfilehash: 082817899adc6ab9b4d57f7e0d4bc4e7c2f0a2ab
+ms.sourcegitcommit: c72ddb56b5657b2adeb3c4608c3d4c56e3421f2c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67704824"
+ms.lasthandoff: 07/24/2019
+ms.locfileid: "68464818"
 ---
 # <a name="faq-about-sql-server-databases-that-are-running-on-an-azure-vm-backup"></a>Häufig gestellte Fragen zu SQL Server-Datenbanken, die auf einer Azure VM-Sicherungsinstanz ausgeführt werden
 

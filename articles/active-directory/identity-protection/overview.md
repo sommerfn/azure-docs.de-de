@@ -2,27 +2,21 @@
 title: Azure Active Directory Identity Protection | Microsoft Docs
 description: Erfahren Sie, wie Sie mit Azure AD Identity Protection für Angreifer die Möglichkeit einschränken können, eine kompromittierte Identität oder ein Gerät auszunutzen, und wie Sie eine Identität oder ein Gerät schützen, das zuvor vermutlich oder mit Sicherheit kompromittiert war.
 services: active-directory
-keywords: Azure Active Directory Identity Protection, Cloud App Discovery, Verwalten von Anwendungen, Sicherheit, Risiko, Risikostufe, Sicherheitsrisiko, Sicherheitsrichtlinie
-documentationcenter: ''
-author: MicrosoftGuyJFlo
-manager: daveba
-ms.assetid: e7434eeb-4e98-4b6b-a895-b5598a6cccf1
 ms.service: active-directory
 ms.subservice: identity-protection
-ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
+ms.topic: overview
 ms.date: 01/29/2019
 ms.author: joflore
+author: MicrosoftGuyJFlo
+manager: daveba
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 660793cdba61b5438283ea54a9f7349bdfbc98e1
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: 99a542d3208d5871d88c966fffc65cf16e0fbeee
+ms.sourcegitcommit: e9c866e9dad4588f3a361ca6e2888aeef208fc35
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67440513"
+ms.lasthandoff: 07/19/2019
+ms.locfileid: "68335396"
 ---
 # <a name="what-is-azure-active-directory-identity-protection"></a>Was ist Azure Active Directory Identity Protection?
 
@@ -37,7 +31,6 @@ Die allermeisten Sicherheitsverletzungen kommen vor, wenn Angreifer Zugriff auf 
 Daher müssen Sie:
 
 - Alle Identitäten unabhängig von deren Berechtigungsstufe schützen
-
 - Proaktiv verhindern, dass gefährdete Identitäten missbraucht werden
 
 Die Ermittlung von kompromittierten Identitäten ist keine einfache Aufgabe. Azure Active Directory verwendet adaptive Machine Learning-Algorithmen und -Heuristiken zum Erkennen von Anomalien und verdächtigen Vorfällen, die auf potenziell gefährdete Identitäten hinweisen. Mit diesen Daten generiert Identity Protection Berichte und Warnungen, damit Sie die erkannten Probleme auswerten und entsprechende Aktionen zur Lösung oder Korrektur durchführen können.

@@ -2,6 +2,8 @@
 title: Änderungen an einem MVC-Projekt, die vorgenommen werden, wenn Sie eine Verbindung mit Azure AD herstellen
 description: Beschreibt, was mit dem MVC-Projekt geschieht, wenn Sie mithilfe von verbundenen Visual Studio-Diensten eine Verbindung mit Azure AD herstellen
 services: active-directory
+ms.service: active-directory
+ms.subservice: develop
 author: ghogen
 manager: douge
 ms.assetid: 8b24adde-547e-4ffe-824a-2029ba210216
@@ -13,12 +15,12 @@ ms.date: 03/12/2018
 ms.author: ghogen
 ms.custom: aaddev, vs-azure
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1e40a1fd72adf353d5c4d856544482cb7bd68f43
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: d8a2b73276dd6acc99e91df768ebf613b9e70477
+ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65413986"
+ms.lasthandoff: 07/18/2019
+ms.locfileid: "68320745"
 ---
 # <a name="what-happened-to-my-mvc-project-visual-studio-azure-active-directory-connected-service"></a>Was ist mit dem MVC-Projekt passiert (verbundene Visual Studio-Dienste für Azure Active Directory)?
 
@@ -34,7 +36,7 @@ Informationen zur Verwendung des verbundenen Diensts finden Sie unter [Erste Sch
 
 Betrifft die Projektdatei (\*.NET-Verweise) und `packages.config` (NuGet-Verweise).
 
-| Type | Verweis |
+| type | Verweis |
 | --- | --- |
 | .NET; NuGet | Microsoft.IdentityModel.Protocol.Extensions |
 | .NET; NuGet | Microsoft.Owin |
@@ -49,7 +51,7 @@ Betrifft die Projektdatei (\*.NET-Verweise) und `packages.config` (NuGet-Verweis
 
 Zusätzliche Verweise bei Auswahl der Option **Verzeichnisdaten lesen**:
 
-| Type | Verweis |
+| type | Verweis |
 | --- | --- |
 | .NET; NuGet | EntityFramework |
 | .NET        | EntityFramework.SqlServer (nur Visual Studio 2015) |
@@ -63,7 +65,7 @@ Zusätzliche Verweise bei Auswahl der Option **Verzeichnisdaten lesen**:
 
 Die folgenden Verweise werden entfernt (nur ASP.NET 4-Projekte, wie in Visual Studio 2015):
 
-| Type | Verweis |
+| type | Verweis |
 | --- | --- |
 | .NET; NuGet | Microsoft.AspNet.Identity.Core |
 | .NET; NuGet | Microsoft.AspNet.Identity.EntityFramework |

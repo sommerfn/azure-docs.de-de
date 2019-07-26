@@ -1,19 +1,18 @@
 ---
 title: Vorbereiten des DPM-Servers zum Sichern von Workloads in Azure
 description: Eine Einführung zur Sicherung von DPM-Daten in einem Azure Recovery Services-Tresor.
-services: backup
 author: kasinh
 manager: vvithal
 ms.service: backup
 ms.topic: conceptual
 ms.date: 01/30/2019
 ms.author: kasinh
-ms.openlocfilehash: 82e4278a130bb67a1af61ead981259d7bb4e1aa7
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 09c324fa1c24c56ede431fab8e175b166a52b438
+ms.sourcegitcommit: c72ddb56b5657b2adeb3c4608c3d4c56e3421f2c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66427441"
+ms.lasthandoff: 07/24/2019
+ms.locfileid: "68466559"
 ---
 # <a name="prepare-to-back-up-workloads-to-azure-with-system-center-dpm"></a>Vorbereiten der Sicherung von Workloads in Azure mit System Center DPM
 

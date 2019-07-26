@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/11/2019
 ms.author: apimpm
-ms.openlocfilehash: 28720098206c7afdefacbd47de283b2ef8d5a606
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: b55502bbc24868b6d8b0352f581bbf4adc81e53a
+ms.sourcegitcommit: a874064e903f845d755abffdb5eac4868b390de7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66243236"
+ms.lasthandoff: 07/24/2019
+ms.locfileid: "68442252"
 ---
 # <a name="api-management-transformation-policies"></a>Azure API Management-Transformationsrichtlinien
 Dieses Thema enthält eine Referenz für die folgenden API Management-Richtlinien. Weitere Informationen zum Hinzufügen und Konfigurieren von Richtlinien finden Sie unter [Richtlinien in API Management](https://go.microsoft.com/fwlink/?LinkID=398186).
@@ -87,7 +87,7 @@ Dieses Thema enthält eine Referenz für die folgenden API Management-Richtlinie
 
 -   **Richtlinienabschnitte:** inbound, outbound, on-error
 
--   **Richtlinienbereiche**: global, Produkt, API, Vorgang
+-   **Richtlinienbereiche:** alle Bereiche
 
 ##  <a name="ConvertXMLtoJSON"></a> XML in JSON konvertieren
  Die Richtlinie `xml-to-json` konvertiert einen Anforderungs- oder Antworttext von XML in JSON. Diese Richtlinie kann verwendet werden, um APIs basierend auf reinen XML-Back-End-Webdiensten zu aktualisieren.
@@ -131,7 +131,7 @@ Dieses Thema enthält eine Referenz für die folgenden API Management-Richtlinie
 
 -   **Richtlinienabschnitte:** inbound, outbound, on-error
 
--   **Richtlinienbereiche**: global, Produkt, API, Vorgang
+-   **Richtlinienbereiche:** alle Bereiche
 
 ##  <a name="Findandreplacestringinbody"></a> Zeichenfolge in Text ersetzen
  Die Richtlinie `find-and-replace` sucht nach einer Teilzeichenfolge in der Antwort oder Anforderung und ersetzt diese durch eine andere Teilzeichenfolge.
@@ -166,7 +166,7 @@ Dieses Thema enthält eine Referenz für die folgenden API Management-Richtlinie
 
 -   **Richtlinienabschnitte:** inbound, outbound, backend, on-error
 
--   **Richtlinienbereiche**: global, Produkt, API, Vorgang
+-   **Richtlinienbereiche:** alle Bereiche
 
 ##  <a name="MaskURLSContent"></a> URLs in Inhalt maskieren
  Die Richtlinie `redirect-content-urls` ändert (maskiert) Links im Antworttext, sodass diese über das Gateway auf den äquivalenten Link zeigen. Verwenden Sie sie im Abschnitt „outbound“, um Links im Antworttext so zu ändern, dass sie auf das Gateway zeigen. Verwenden Sie sie im Abschnitt „inbound“ für den entgegengesetzten Effekt.
@@ -197,7 +197,7 @@ Dieses Thema enthält eine Referenz für die folgenden API Management-Richtlinie
 
 -   **Richtlinienabschnitte**: inbound, outbound
 
--   **Richtlinienbereiche**: global, Produkt, API, Vorgang
+-   **Richtlinienbereiche:** alle Bereiche
 
 ##  <a name="SetBackendService"></a> Back-End-Dienst festlegen
  Verwenden Sie die Richtlinie `set-backend-service`, um eine eingehende Anforderung an einen anderen Back-End umzuleiten, als in den API-Einstellungen für diesen Vorgang angegeben ist. Diese Richtlinie ändert die Basis-URL des Back-End-Diensts der eingehenden Anforderung in die in der Richtlinie angegebene.
@@ -282,16 +282,16 @@ In diesem Beispiel leitet die Richtlinie die Anforderung an das Service Fabric-B
 
 -   **Richtlinienabschnitte:** inbound, backend
 
--   **Richtlinienbereiche**: global, Produkt, API, Vorgang
+-   **Richtlinienbereiche:** alle Bereiche
 
 ##  <a name="SetBody"></a> Text festlegen
  Verwenden Sie die Richtlinie `set-body`, um den Nachrichtentext für eingehende und ausgehende Anforderungen festzulegen. Um auf den Nachrichtentext zuzugreifen, können Sie die Eigenschaft `context.Request.Body` oder `context.Response.Body` verwenden, je nachdem, ob sich die Richtlinie im Abschnitt „inbound“ oder „outbound“ befindet.
 
 > [!IMPORTANT]
 >  Beachten Sie, dass beim Zugriff auf den Nachrichtentext mit `context.Request.Body` oder `context.Response.Body` der ursprüngliche Nachrichtentext standardmäßig verloren geht und festgelegt werden muss, indem der Text wieder im Ausdruck zurückgegeben wird. Um den Nachrichtentext zu erhalten, legen Sie den Parameter `preserveContent` auf `true` fest, wenn Sie auf die Nachricht zugreifen. Wenn `preserveContent` auf `true` festgelegt ist und ein anderer Text vom Ausdruck zurückgegeben wird, wird der zurückgegebene Text verwendet.
-> 
+>
 >  Beachten Sie Folgendes, wenn Sie die Richtlinie `set-body` verwenden.
-> 
+>
 > - Wenn Sie die Richtlinie `set-body` verwenden, um einen neuen oder aktualisierten Text zurückzugeben, müssen Sie `preserveContent` nicht auf `true` festlegen, da Sie den Inhalt des neuen Texts explizit angeben.
 >   -   Das Beibehalten des Inhalts einer Antwort in der eingehenden Pipeline ergibt keinen Sinn, da noch keine Antwort vorliegt.
 >   -   Das Beibehalten des Inhalts einer Anforderung in der ausgehenden Pipeline ergibt keinen Sinn, da die Anforderung zu diesem Zeitpunkt bereits an den Back-End gesendet wurde.
@@ -401,7 +401,7 @@ Die Richtlinie `set-body` kann so konfiguriert werden, dass Sie den Hauptteil ei
 |----------|-----------------|--------------|
 |set-body|Stammelement Enthält den Text oder einen Ausdruck, der einen Text zurückgibt.|Ja|
 
-### <a name="properties"></a>Eigenschaften
+### <a name="properties"></a>Properties
 
 |NAME|BESCHREIBUNG|Erforderlich|Standard|
 |----------|-----------------|--------------|-------------|
@@ -452,7 +452,7 @@ OriginalUrl.
 
 -   **Richtlinienabschnitte:** inbound, outbound, backend
 
--   **Richtlinienbereiche**: global, Produkt, API, Vorgang
+-   **Richtlinienbereiche:** alle Bereiche
 
 ##  <a name="SetHTTPheader"></a> HTTP-Header setzen
  Die Richtlinie `set-header` weist einem vorhandenen Antwort- und/oder Anforderungsheader einen Wert zu oder fügt einen neuen Antwort- und/oder Anforderungsheader hinzu.
@@ -509,7 +509,7 @@ OriginalUrl.
 |set-header|Stammelement|Ja|
 |value|Der Wert für den zu setzenden Header. Fügen Sie bei mehreren Headern mit dem gleichen Namen weitere `value`-Elemente hinzu.|Ja|
 
-### <a name="properties"></a>Eigenschaften
+### <a name="properties"></a>Properties
 
 |NAME|BESCHREIBUNG|Erforderlich|Standard|
 |----------|-----------------|--------------|-------------|
@@ -521,7 +521,7 @@ OriginalUrl.
 
 -   **Richtlinienabschnitte:** inbound, outbound, backend, on-error
 
--   **Richtlinienbereiche**: global, Produkt, API, Vorgang
+-   **Richtlinienbereiche:** alle Bereiche
 
 ##  <a name="SetQueryStringParameter"></a> Abfrageparameter setzen
  Die Richtlinie `set-query-parameter` fügt Abfrageparameter von Anforderungen hinzu, löscht diese oder ersetzt deren Werte. Mit dieser Richtlinie können Sie erwartete Abfrageparameter an den Back-End-Dienst übergeben, die optional sind oder in der Anforderung nie vorkommen.
@@ -569,7 +569,7 @@ OriginalUrl.
 |set-query-parameter|Stammelement|Ja|
 |value|Gibt den Wert des festzulegenden Abfrageparameters an. Fügen Sie bei mehreren Abfrageparametern mit dem gleichen Namen weitere `value`-Elemente hinzu.|Ja|
 
-### <a name="properties"></a>Eigenschaften
+### <a name="properties"></a>Properties
 
 |NAME|BESCHREIBUNG|Erforderlich|Standard|
 |----------|-----------------|--------------|-------------|
@@ -581,7 +581,7 @@ OriginalUrl.
 
 -   **Richtlinienabschnitte:** inbound, backend
 
--   **Richtlinienbereiche**: global, Produkt, API, Vorgang
+-   **Richtlinienbereiche:** alle Bereiche
 
 ##  <a name="RewriteURL"></a> URL umschreiben
  Die Richtlinie `rewrite-uri` konvertiert eine Anforderungs-URL von der öffentlichen Form in die vom Webdienst erwartete Form, wie im folgenden Beispiel gezeigt.
@@ -659,7 +659,7 @@ OriginalUrl.
 
 -   **Richtlinienabschnitte**: inbound
 
--   **Richtlinienbereiche**: global, Produkt, API, Vorgang
+-   **Richtlinienbereiche:** alle Bereiche
 
 ##  <a name="XSLTransform"></a> XML mithilfe von XSLT transformieren
  Die Richtlinie `Transform XML using an XSLT` wendet eine XSL-Transformation auf XML im Anforderungs- oder Antworttext an.
@@ -723,7 +723,7 @@ OriginalUrl.
 
 -   **Richtlinienabschnitte**: inbound, outbound
 
--   **Richtlinienbereiche:** global, Produkt, API, Vorgang
+-   **Richtlinienbereiche:** alle Bereiche
 
 ## <a name="next-steps"></a>Nächste Schritte
 

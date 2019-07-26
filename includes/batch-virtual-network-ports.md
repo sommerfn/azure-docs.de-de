@@ -4,7 +4,7 @@ description: include file
 services: batch
 documentationcenter: ''
 author: laurenhughes
-manager: jeconnoc
+manager: gwallace
 editor: ''
 ms.assetid: ''
 ms.service: batch
@@ -15,12 +15,12 @@ ms.workload: ''
 ms.date: 07/16/2019
 ms.author: lahugh
 ms.custom: include file
-ms.openlocfilehash: 48f5d9b4c1ef68b8295d531a5e5b447fed3a7945
-ms.sourcegitcommit: a6873b710ca07eb956d45596d4ec2c1d5dc57353
+ms.openlocfilehash: c8b25858556538835d6a84bf0d6699f9906f1438
+ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68286201"
+ms.lasthandoff: 07/18/2019
+ms.locfileid: "68322661"
 ---
 ### <a name="general-requirements"></a>Allgemeine Anforderungen
 
@@ -64,16 +64,16 @@ Sie müssen keine NSGs auf der Subnetzebene angeben, da Batch eigene NSGs konfig
 
 **Eingangssicherheitsregeln**
 
-| Quell-IP-Adressen | Quelldiensttag | Quellports | Ziel | Zielports | Protocol | Aktion |
+| Quell-IP-Adressen | Quelldiensttag | Quellports | Destination | Zielports | Protocol | Aktion |
 | --- | --- | --- | --- | --- | --- | --- |
-| – | `BatchNodeManagement` [Diensttag](../articles/virtual-network/security-overview.md#service-tags) | * | Beliebig | 29876–29877 | TCP | ZULASSEN |
-| Benutzerquellen-IPs für den Remotezugriff auf Computeknoten und/oder Computeknoten-Subnetz für Multi-Instanz-Aufgaben unter Linux, falls erforderlich. | – | * | Beliebig | 3389 (Windows), 22 (Linux) | TCP | ZULASSEN |
+| – | `BatchNodeManagement` [Diensttag](../articles/virtual-network/security-overview.md#service-tags) | * | Any | 29876–29877 | TCP | ZULASSEN |
+| Benutzerquellen-IPs für den Remotezugriff auf Computeknoten und/oder Computeknoten-Subnetz für Multi-Instanz-Aufgaben unter Linux, falls erforderlich. | – | * | Any | 3389 (Windows), 22 (Linux) | TCP | ZULASSEN |
 
 **Ausgangssicherheitsregeln**
 
-| `Source` | Quellports | Ziel | Zieldiensttag | Zielports | Protocol | Aktion |
+| `Source` | Quellports | Destination | Zieldiensttag | Zielports | Protocol | Aktion |
 | --- | --- | --- | --- | --- | --- | --- |
-| Beliebig | * | [Diensttag](../articles/virtual-network/security-overview.md#service-tags) | `Storage` (in der gleichen Region wie Ihr Batchkonto und VNET) | 443 | TCP | ZULASSEN |
+| Any | * | [Diensttag](../articles/virtual-network/security-overview.md#service-tags) | `Storage` (in der gleichen Region wie Ihr Batchkonto und VNET) | 443 | TCP | ZULASSEN |
 
 ### <a name="pools-in-the-cloud-services-configuration"></a>Pools in der Cloud Services-Konfiguration
 
@@ -97,13 +97,13 @@ Konfigurieren Sie eingehenden Datenverkehr am Port 3389 für Windows, wenn Sie R
 
 **Eingangssicherheitsregeln**
 
-| Quell-IP-Adressen | Quellports | Ziel | Zielports | Protocol | Aktion |
+| Quell-IP-Adressen | Quellports | Destination | Zielports | Protocol | Aktion |
 | --- | --- | --- | --- | --- | --- |
-Beliebig <br /><br />Dafür ist zwar im Grunde die Zulassung aller IP-Adressen erforderlich, der Batch-Dienst wendet jedoch auf der Ebene jedes Knotens eine ACL-Regel an, die alle nicht vom Batch-Dienst stammenden IP-Adressen herausfiltert. | * | Beliebig | 10100, 20100, 30100 | TCP | ZULASSEN |
-| Optional, um RDP-Zugriff auf Computeknoten zu ermöglichen. | * | Beliebig | 3389 | TCP | ZULASSEN |
+Any <br /><br />Dafür ist zwar im Grunde die Zulassung aller IP-Adressen erforderlich, der Batch-Dienst wendet jedoch auf der Ebene jedes Knotens eine ACL-Regel an, die alle nicht vom Batch-Dienst stammenden IP-Adressen herausfiltert. | * | Any | 10100, 20100, 30100 | TCP | ZULASSEN |
+| Optional, um RDP-Zugriff auf Computeknoten zu ermöglichen. | * | Any | 3389 | TCP | ZULASSEN |
 
 **Ausgangssicherheitsregeln**
 
-| `Source` | Quellports | Ziel | Zielports | Protocol | Aktion |
+| `Source` | Quellports | Destination | Zielports | Protocol | Aktion |
 | --- | --- | --- | --- | --- | --- |
-| Beliebig | * | Beliebig | 443  | Beliebig | ZULASSEN |
+| Any | * | Any | 443  | Any | ZULASSEN |

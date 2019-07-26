@@ -2,7 +2,7 @@
 title: Systemsichten – Azure SQL Data Warehouse | Microsoft-Dokumentation
 description: Links zur Dokumentation für die in Azure SQL Data Warehouse unterstützten Systemsichten
 services: sql-data-warehouse
-author: XiaoyuL-Preview
+author: XiaoyuMSFT
 manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
@@ -10,12 +10,12 @@ ms.subservice: query
 ms.date: 06/13/2018
 ms.author: xiaoyul
 ms.reviewer: igorstan
-ms.openlocfilehash: 8f813bc07cc7c88ce36de28d1e233b210535143c
-ms.sourcegitcommit: ccb9a7b7da48473362266f20950af190ae88c09b
+ms.openlocfilehash: 3db694a74c87ff0b45e4e9ad7aa52945acda2c5e
+ms.sourcegitcommit: 75a56915dce1c538dc7a921beb4a5305e79d3c7a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67595436"
+ms.lasthandoff: 07/24/2019
+ms.locfileid: "68479398"
 ---
 # <a name="system-views-supported-in-azure-sql-data-warehouse"></a>In Azure SQL Data Warehouse unterstützte Systemsichten
 Links zur Dokumentation für die in Azure SQL Data Warehouse unterstützten T-SQL-Anweisungen.

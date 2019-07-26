@@ -13,14 +13,15 @@ ms.author: lizross
 ms.reviewer: kasimpso
 ms.custom: user-help, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 551bbe4e994e15688c59fd395ab762e14927dfda
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 6681720fc7c0fe04c99bf7957be14865c663dd67
+ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60482851"
+ms.lasthandoff: 07/22/2019
+ms.locfileid: "68383154"
 ---
 # <a name="perform-an-access-review-from-the-my-apps-portal"></a>Durchführen einer Zugriffsüberprüfung im Portal „Meine Apps“
+
 Sie können Ihr Geschäfts-, Schul- oder Unikonto mit dem webbasierten Portal **Meine Apps** verwenden, um viele der cloudbasierten Apps Ihrer Organisation anzuzeigen und zu starten, bestimmte Profil- und Kontoinformationen zu aktualisieren, Informationen zu Ihren **Gruppen** anzuzeigen und **Zugriffsüberprüfungen** für Ihre Apps und Gruppen durchzuführen. Sollten Sie keinen Zugriff auf das Portal **Meine Apps** haben, wenden Sie sich an Ihren Helpdesk.
 
 [!INCLUDE [preview-notice](../../../includes/active-directory-end-user-my-apps-portal.md)]
@@ -29,6 +30,7 @@ Sie können Ihr Geschäfts-, Schul- oder Unikonto mit dem webbasierten Portal **
 >Dieser Inhalt richtet sich an Benutzer. Administratoren können sich in der [Dokumentation zur Anwendungsverwaltung](https://docs.microsoft.com/azure/active-directory/manage-apps) über die Einrichtung und Verwaltung cloudbasierter Apps informieren.
 
 ## <a name="manage-access-reviews"></a>Verwalten von Zugriffsüberprüfungen
+
 Wenn Ihr Administrator Ihnen die Berechtigung zum Durchführen eigener Zugriffsüberprüfungen erteilt hat, können Sie Ihre Gruppen oder Apps verwalten. Dazu wählen Sie im Portal „Meine Apps“ auf der Seite **Apps** die Kachel **Zugriffsüberprüfungen** aus.
 
 >[!Note]
@@ -36,9 +38,9 @@ Wenn Ihr Administrator Ihnen die Berechtigung zum Durchführen eigener Zugriffs�
 
 ### <a name="to-perform-your-access-reviews"></a>So führen Sie Zugriffsüberprüfungen durch
 
-1.  Melden Sie sich bei Ihrem Geschäfts-, Schul- oder Unikonto an.
+1. Melden Sie sich bei Ihrem Geschäfts-, Schul- oder Unikonto an.
 
-2.  Öffnen Sie Ihren Webbrowser, und navigieren Sie zu https://myapps.microsoft.com, oder verwenden Sie den von Ihrer Organisation bereitgestellten Link. So können Sie beispielsweise zu einer benutzerdefinierten Seite Ihrer Organisation wie https://myapps.microsoft.com/contoso.com geleitet werden.
+2. Öffnen Sie Ihren Webbrowser, und navigieren Sie zu https://myapps.microsoft.com, oder verwenden Sie den von Ihrer Organisation bereitgestellten Link. So können Sie beispielsweise zu einer benutzerdefinierten Seite Ihrer Organisation wie https://myapps.microsoft.com/contoso.com geleitet werden.
 
     Die Seite **Apps** wird mit allen im Besitz Ihrer Organisation befindlichen Cloud-Apps angezeigt, die Ihnen zur Verfügung stehen.
 
@@ -68,7 +70,7 @@ Wenn Ihr Administrator Ihnen die Berechtigung zum Durchführen eigener Zugriffs�
     Ihre Zugriffsüberprüfung ist abgeschlossen, und Sie kehren zum Portal **Meine Apps** zurück.
 
     >[!Note]
-    >Sie können Ihren Zugriff bis zum Ende des Zeitraums für die Zugriffsüberprüfung jederzeit ändern. Wenn Sie den Zugriff auf eine App oder Gruppe entfernen, wird er nicht sofort entfernt. Das Entfernen erfolgt, wenn der Zeitraum für die Zugriffsüberprüfung endet oder wenn ein Administrator die Überprüfung beendet. 
+    >Sie können Ihren Zugriff bis zum Ende des Zeitraums für die Zugriffsüberprüfung jederzeit ändern. Wenn Sie den Zugriff auf eine App oder Gruppe entfernen, wird er nicht sofort entfernt. Das Entfernen erfolgt, wenn der Zeitraum für die Zugriffsüberprüfung endet oder wenn ein Administrator die Überprüfung beendet.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

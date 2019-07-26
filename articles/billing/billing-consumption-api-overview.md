@@ -3,7 +3,7 @@ title: 'Azure-Nutzungs-API: Übersicht | Microsoft-Dokumentation'
 description: Erfahren Sie, wie Azure-Nutzungs-APIs Ihnen einen programmgesteuerten Zugriff auf Kosten- und Nutzungsdaten zu Ihren Azure-Ressourcen ermöglichen.
 services: billing
 documentationcenter: ''
-author: Erikre
+author: bandersmsft
 manager: dougeby
 editor: ''
 tags: billing
@@ -14,13 +14,13 @@ ms.topic: reference
 ms.tgt_pltfrm: na
 ms.workload: billing
 ms.date: 6/07/2018
-ms.author: erikre
-ms.openlocfilehash: 16e0bdfa0fc70d5239cb4127e61891a013bf54a3
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.author: banders
+ms.openlocfilehash: 2a2922daef5e75af41252119f9a467fae976bcda
+ms.sourcegitcommit: a874064e903f845d755abffdb5eac4868b390de7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60615894"
+ms.lasthandoff: 07/24/2019
+ms.locfileid: "68443271"
 ---
 # <a name="azure-consumption-api-overview"></a>Azure-Nutzungs-API: Übersicht 
 

@@ -1,19 +1,18 @@
 ---
 title: Informationen zur Sicherung von Azure-VMs
 description: Erfahren Sie mehr über die Sicherung von Azure-VMs und einige bewährte Methoden.
-services: backup
 author: rayne-wiselman
 manager: carmonm
 ms.service: backup
 ms.topic: conceptual
 ms.date: 03/04/2019
 ms.author: raynew
-ms.openlocfilehash: 93be913182db56941c346ef0cad47f70c0d614c9
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: bf6aa07319b8029744a5c8898a4104d330fbb1d1
+ms.sourcegitcommit: c72ddb56b5657b2adeb3c4608c3d4c56e3421f2c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64706838"
+ms.lasthandoff: 07/24/2019
+ms.locfileid: "68465216"
 ---
 # <a name="about-azure-vm-backup"></a>Informationen zur Sicherung von Azure-VMs
 

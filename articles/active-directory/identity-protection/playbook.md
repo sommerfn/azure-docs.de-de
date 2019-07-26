@@ -2,27 +2,21 @@
 title: Azure Active Directory Identity Protection-Playbook| Microsoft Docs
 description: Erfahren Sie, wie Sie mit Azure AD Identity Protection für Angreifer die Möglichkeit einschränken können, eine kompromittierte Identität oder ein Gerät auszunutzen, und wie Sie eine Identität oder ein Gerät schützen, das zuvor vermutlich oder mit Sicherheit kompromittiert war.
 services: active-directory
-keywords: Azure Active Directory Identity Protection, Cloud Discovery, Verwalten von Anwendungen, Sicherheit, Risiko, Risikostufe, Sicherheitsrisiko, Sicherheitsrichtlinie
-documentationcenter: ''
-author: MicrosoftGuyJFlo
-manager: daveba
-ms.assetid: 60836abf-f0e9-459d-b344-8e06b8341d25
 ms.service: active-directory
 ms.subservice: identity-protection
-ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 06/27/2018
 ms.author: joflore
+author: MicrosoftGuyJFlo
+manager: daveba
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 24c3af12d35d07796db9255f0ac76dd1389bd013
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 273a6aca2050676650b955ec078b47b2ffcfe319
+ms.sourcegitcommit: e9c866e9dad4588f3a361ca6e2888aeef208fc35
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67108842"
+ms.lasthandoff: 07/19/2019
+ms.locfileid: "68333927"
 ---
 # <a name="azure-active-directory-identity-protection-playbook"></a>Azure Active Directory Identity Protection-Playbook
 
@@ -30,7 +24,6 @@ Dieses Playbook hilft Ihnen:
 
 * Daten in der Identity Protection Umgebung durch das Simulieren von Risikoereignissen und Sicherheitsrisiken aufzufüllen
 * Richtlinien für den risikobasierten bedingten Zugriff einzurichten und die Auswirkungen dieser Richtlinien zu testen
-
 
 ## <a name="simulating-risk-events"></a>Simulieren von Risikoereignissen
 
@@ -67,7 +60,6 @@ Um unbekannte Standorte zu simulieren, müssen Sie sich von einem Ort und mit ei
 Das unten stehende Verfahren verwendet folgende neu erstellte Elemente:
 
 - Eine VPN-Verbindung zum Simulieren eines neuen Standorts
-
 - Einen virtuellen Computer zum Simulieren eines neuen Geräts
 
 Für das folgende Verfahren müssen Sie ein Benutzerkonto verwenden, das folgende Voraussetzungen erfüllt:
@@ -75,12 +67,10 @@ Für das folgende Verfahren müssen Sie ein Benutzerkonto verwenden, das folgend
 - Anmeldeverlauf von mindestens 30 Tagen
 - Aktivierte mehrstufige Authentifizierung
 
-
 **Gehen Sie folgendermaßen vor, um eine Anmeldung von einem unbekannten Ort zu simulieren**:
 
 1. Wenn Sie sich mit dem Testkonto anmelden, verursachen Sie einen Fehler bei der mehrstufigen Authentifizierung.
 2. Navigieren Sie in Ihrem neuen VPN zu [https://myapps.microsoft.com](https://myapps.microsoft.com), und geben Sie die Anmeldeinformationen Ihres Testkontos ein.
-   
 
 Die Anmeldung wird innerhalb von fünf bis zehn Minuten auf dem Identity Protection Dashboard angezeigt.
 
@@ -89,7 +79,6 @@ Die Anmeldung wird innerhalb von fünf bis zehn Minuten auf dem Identity Protect
 Weitere Informationen zu diesem Risikoereignis finden Sie unter [Unmöglicher Ortswechsel zu atypischen Orten](../reports-monitoring/concept-risk-events.md#impossible-travel-to-atypical-locations). 
 
 Das Simulieren des unmöglichen Ortswechsels ist schwierig, da der Algorithmus einen Machine Learning-Ansatz nutzt, um falsch positive Ergebnisse auszusieben, z. B. der unmögliche Ortswechsel vertrauter Geräte oder Anmeldungen über VPNs, die von anderen Benutzern im Verzeichnis verwendet werden. Außerdem sind für den Algorithmus ein Anmeldeverlauf von 14 Tagen und zehn Anmeldungen des Benutzers erforderlich, bevor mit dem Generieren von Risikoereignissen begonnen wird. Aufgrund der komplexen Machine Learning-Modelle und der oben genannten Regeln besteht die Möglichkeit, dass die nachfolgenden Schritte nicht zu einem Risikoereignis führen. Sie können diese Schritte für mehrere Azure AD-Konten replizieren, um dieses Risikoereignis zu veröffentlichen.
-
 
 **Führen Sie die folgenden Schritte aus, um einen unmöglichen Ortswechsel zu einen atypischen Ort zu simulieren**:
 
@@ -108,18 +97,15 @@ Sicherheitsrisiken sind Schwachstellen in einer Azure AD-Umgebung, die von einem
 * Azure AD [Cloud Discovery](https://docs.microsoft.com/cloud-app-security/)
 * Azure AD [Privileged Identity Management](../privileged-identity-management/pim-configure.md) 
 
-
 ## <a name="testing-security-policies"></a>Testen von Sicherheitsrichtlinien
 
 Dieser Abschnitt erläutert die Schritte, die Sie zum Testen der Sicherheitsrichtlinie für Benutzerrisiko und Anmelderisiko ausführen müssen.
-
 
 ### <a name="user-risk-security-policy"></a>Benutzerrisiko-Sicherheitsrichtlinie
 
 Weitere Informationen finden Sie unter [Gewusst wie: Konfigurieren von Richtlinien zum Benutzerrisiko](howto-user-risk-policy.md).
 
 ![Benutzerrisiko](./media/playbook/02.png "Playbook")
-
 
 **Um eine Benutzerrisiko-Sicherheitsrichtlinie zu testen, führen Sie die folgenden Schritte aus**:
 
@@ -136,8 +122,6 @@ Weitere Informationen finden Sie unter [Gewusst wie: Konfigurieren von Richtlini
 7. Warten Sie einige Minuten, und vergewissern Sie sich dann, dass die Stufe des Benutzers „Mittel“ lautet. Ist dies nicht der Fall, simulieren Sie weitere Risikoereignisse für den Benutzer.
 8. Legen Sie **Richtlinie erzwingen** auf **Ein** fest.
 9. Sie können den auf dem Benutzerrisiko basierenden bedingten Zugriff jetzt testen, indem Sie sich mit einem Benutzer anmelden, für den eine erhöhte Risikostufe gilt.
-    
-    
 
 ### <a name="sign-in-risk-security-policy"></a>Anmelderisiko-Sicherheitsrichtlinie
 
@@ -145,34 +129,20 @@ Weitere Informationen finden Sie unter [Gewusst wie: Konfigurieren von Richtlini
 
 ![Anmelderisiko](./media/playbook/01.png "Playbook")
 
-
 **Führen Sie die folgenden Schritte aus, um eine Anmelderisiko-Sicherheitsrichtlinie zu testen:**
 
 1. Melden Sie sich unter [https://portal.azure.com](https://portal.azure.com) mit den Anmeldeinformationen für „Globaler Administrator“ für Ihren Mandanten an.
-
 2. Navigieren Sie zu **Azure AD Identity Protection**.
-
 3. Klicken Sie auf der Hauptseite von **Azure AD Identity Protection** auf **Richtlinie zum Anmelderisiko**. 
-
 4. Wählen Sie im Abschnitt **Zuweisungen** die gewünschten Benutzer (und Gruppen) und die gewünschte Anmelderisikostufe.
 
     ![Anmelderisiko](./media/playbook/04.png "Playbook")
 
-
 5. Wählen Sie im Abschnitt **Steuerelemente** die gewünschte Zugriffssteuerung aus (z.B. **Mehrstufige Authentifizierung erforderlich**). 
-
 6. Legen Sie **Richtlinie erzwingen** auf **Ein** fest.
-
 7. Klicken Sie auf **Speichern**.
-
 8. Sie können den auf dem Anmelderisiko basierenden bedingten Zugriff jetzt testen, indem Sie sich mithilfe einer potenziell risikobehafteten Sitzung anmelden (z. B. durch Verwendung des Tor-Browsers). 
-
- 
-
-
-
 
 ## <a name="see-also"></a>Weitere Informationen
 
 - [Azure Active Directory Identity Protection](../active-directory-identityprotection.md)
-

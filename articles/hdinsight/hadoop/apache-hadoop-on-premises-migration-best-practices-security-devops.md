@@ -8,12 +8,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 10/25/2018
 ms.author: hrasheed
-ms.openlocfilehash: 1d13b52d253562a24946e6df2fc069f41b485fef
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 0e7db970bee44d40831c05e8911b72841d027211
+ms.sourcegitcommit: a874064e903f845d755abffdb5eac4868b390de7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64707893"
+ms.lasthandoff: 07/24/2019
+ms.locfileid: "68442090"
 ---
 # <a name="migrate-on-premises-apache-hadoop-clusters-to-azure-hdinsight---security-and-devops-best-practices"></a>Migrieren lokaler Apache Hadoop-Cluster zu Azure HDInsight – bewährte Methoden für Sicherheit und DevOps
 
@@ -52,7 +52,7 @@ Verwenden Sie die folgenden Schritte, um den in die Domäne eingebundenen HDInsi
 
 Weitere Informationen finden Sie in den folgenden Artikeln:
 
-- [Einführung in die Apache Hadoop-Sicherheit mit in die Domäne eingebundenen HDInsight-Clustern](../domain-joined/apache-domain-joined-introduction.md)
+- [Einführung in die Apache Hadoop-Sicherheit mit in die Domäne eingebundenen HDInsight-Clustern](../domain-joined/hdinsight-security-overview.md)
 
 - [Planen von in die Azure-Domäne eingebundenen Apache Hadoop-Clustern in HDInsight](../domain-joined/apache-domain-joined-architecture.md)
 - [Konfigurieren eines in die Domäne eingebundenen HDInsight-Clusters mit Azure Active Directory Domain Services](../domain-joined/apache-domain-joined-configure-using-azure-adds.md)

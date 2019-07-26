@@ -2,7 +2,7 @@
 title: Ressourcen für die Entwicklung eines Data Warehouse in Azure | Microsoft-Dokumentation
 description: Entwicklungskonzepte, Entwurfsentscheidungen, Empfehlungen und Programmiertechniken für SQL Data Warehouse.
 services: sql-data-warehouse
-author: XiaoyuL-Preview
+author: XiaoyuMSFT
 manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
@@ -10,12 +10,12 @@ ms.subservice: development
 ms.date: 08/29/2018
 ms.author: xiaoyul
 ms.reviewer: igorstan
-ms.openlocfilehash: 613bcb05dab993989a2ae00b71fef95794953ab8
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: a78d78618a4cd9bf8d2aaebbd0c0da13697549bc
+ms.sourcegitcommit: 75a56915dce1c538dc7a921beb4a5305e79d3c7a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65850729"
+ms.lasthandoff: 07/24/2019
+ms.locfileid: "68479469"
 ---
 # <a name="design-decisions-and-coding-techniques-for-sql-data-warehouse"></a>Entwurfsentscheidungen und Programmiertechniken für SQL Data Warehouse
 Lesen Sie diese Entwicklungsartikel, um ein besseres Verständnis der wesentlichen Entwurfsentscheidungen, der Empfehlungen und der Programmiertechniken für SQL Data Warehouse zu erlangen.
@@ -23,7 +23,7 @@ Lesen Sie diese Entwicklungsartikel, um ein besseres Verständnis der wesentlich
 ## <a name="key-design-decisions"></a>Wesentliche Entwurfsentscheidungen
 In den folgenden Artikeln werden Konzepte und Entwurfsentscheidungen für die Entwicklung eines verteilten Data Warehouse mit SQL Data Warehouse vorgestellt:
 
-* [Verbindungen][connections]
+* [connections][connections]
 * [Parallelität][concurrency]
 * [Transaktionen][transactions]
 * [Benutzerdefinierte Schemas][user-defined schemas]
@@ -36,11 +36,11 @@ In den folgenden Artikeln werden Konzepte und Entwurfsentscheidungen für die En
 ## <a name="development-recommendations-and-coding-techniques"></a>Entwicklungsempfehlungen und Programmiertechniken
 In diesen Artikeln werden bestimmte Programmiertechniken, Tipps und Empfehlungen für die Entwicklung eines SQL Data Warehouse behandelt:
 
-* [Gespeicherten Prozeduren][stored procedures]
+* [Gespeicherte Prozeduren][stored procedures]
 * [Bezeichnungen][labels]
 * [Ansichten][views]
 * [Temporäre Tabellen][temporary tables]
-* [Dynamischer SQL-Code][dynamic SQL]
+* [Dynamisches SQL][dynamic SQL]
 * [Schleifen][looping]
 * [Gruppierungsoptionen][group by options]
 * [Variablenzuweisung][variable assignment]

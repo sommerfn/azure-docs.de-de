@@ -4,12 +4,12 @@ ms.author: dapine
 ms.date: 06/25/2019
 ms.service: cognitive-services
 ms.topic: include
-ms.openlocfilehash: 664cea26f910fa5b3354e2879a33de50eb13a7f3
-ms.sourcegitcommit: a6873b710ca07eb956d45596d4ec2c1d5dc57353
+ms.openlocfilehash: 84cd8ed79281b005407b5a857398b5669635c072
+ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68286249"
+ms.lasthandoff: 07/18/2019
+ms.locfileid: "68320490"
 ---
 Wenn Sie einen HTTP-Proxy für ausgehende Anforderungen konfigurieren müssen, verwenden Sie diese zwei Argumente:
 
@@ -18,7 +18,7 @@ Wenn Sie einen HTTP-Proxy für ausgehende Anforderungen konfigurieren müssen, v
 |HTTP_PROXY|Zeichenfolge|Der zu verwendende Proxy, z. B. `http://proxy:8888`.<br>`<proxy-url>`|
 |HTTP_PROXY_CREDS|Zeichenfolge|Beliebige Anmeldeinformationen, die zur Authentifizierung bei dem Proxy erforderlich sind, z. B. Benutzername:Kennwort.|
 |`<proxy-user>`|Zeichenfolge|Der Benutzer für den Proxy.|
-|`proxy-password`|Zeichenfolge|Das Kennwort, das dem `<proxy-user>` für den Proxy zugeordnet ist.|
+|`<proxy-password>`|Zeichenfolge|Das Kennwort, das dem `<proxy-user>` für den Proxy zugeordnet ist.|
 ||||
 
 
@@ -28,7 +28,7 @@ docker run --rm -it -p 5000:5000 \
 --mount type=bind,src=/home/azureuser/output,target=/output \
 <registry-location>/<image-name> \
 Eula=accept \
-Billing=<billing-endpoint> \
+Billing=<endpoint> \
 ApiKey=<api-key> \
 HTTP_PROXY=<proxy-url> \
 HTTP_PROXY_CREDS=<proxy-user>:<proxy-password> \

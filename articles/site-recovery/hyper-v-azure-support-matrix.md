@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 05/30/2019
 ms.author: raynew
-ms.openlocfilehash: bce9f3b3a574d27e2fb47fb9b2da9470c43fd2eb
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 78a531c769612af0597e732f0dc539286dd7cdac
+ms.sourcegitcommit: bafb70af41ad1326adf3b7f8db50493e20a64926
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66399428"
+ms.lasthandoff: 07/25/2019
+ms.locfileid: "68489875"
 ---
 # <a name="support-matrix-for-disaster-recovery-of-on-premises-hyper-v-vms-to-azure"></a>Unterstützungsmatrix für die Notfallwiederherstellung von lokalen Hyper-V-VMs in Azure
 
@@ -115,7 +115,7 @@ Datenträger: 4K für logischen und physischen Sektor | Nicht unterstützt: Gen 
 Datenträger: 4K für logischen, 512 Byte für physischen Sektor | Ja |  Ja
 Logische Volumeverwaltung (Logical Volume Management, LVM). LVM wird nur für Datenträger unterstützt. Azure stellt nur einen einzelnen Betriebssystemdatenträger bereit. | Ja | Ja
 Volume mit Stripesetdatenträger > 1 TB | Ja | Ja
-Speicherplätze | Ja | Ja
+Speicherplätze | Nein | Nein
 Datenträger laufendem Systembetrieb hinzufügen/entfernen | Nein | Nein
 Ausschließen von Datenträgern | Ja | Ja
 Multipfad (MPIO) | Ja | Ja

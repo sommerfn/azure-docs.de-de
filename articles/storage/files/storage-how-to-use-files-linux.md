@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 03/29/2018
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: e9363f88db4fa44879eb8f6a6a04e23563c5ba44
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 06df5d403ba10489ea9a36a79a94f4b94782e4ef
+ms.sourcegitcommit: a0b37e18b8823025e64427c26fae9fb7a3fe355a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67125730"
+ms.lasthandoff: 07/25/2019
+ms.locfileid: "68501328"
 ---
 # <a name="use-azure-files-with-linux"></a>Verwenden von Azure Files mit Linux
 
@@ -132,7 +132,7 @@ uname -r
 1. **Fügen Sie mit dem folgenden Befehl die folgende Zeile an `/etc/fstab` an**: Denken Sie daran, die Platzhalter **<storage_account_name>** , **<share_name>** , **<smb_version>** und **<mount_point>** durch die entsprechenden Informationen für Ihre Umgebung zu ersetzen. Wenn Ihre Linux-Distribution SMB 3.0 mit Verschlüsselung unterstützt (siehe [Grundlegendes zu SMB-Clientanforderungen](#smb-client-reqs)), sollten Sie für **<smb_version>** den Wert **3.0** verwenden. Bei Linux-Distributionen ohne Unterstützung von SMB 3.0 mit Verschlüsselung muss für **<smb_version>** der Wert **2.1** verwendet werden. Eine Azure-Dateifreigabe kann nur außerhalb einer Azure-Region mit SMB 3.0 eingebunden werden (gilt auch in der lokalen Umgebung sowie in einer anderen Azure-Region).
 
     ```bash
-    sudo bash -c 'echo "//<STORAGE ACCOUNT NAME>.file.core.windows.net/<FILE SHARE NAME> /mount/<STORAGE ACCOUNT NAME>/<FILE SHARE NAME> cifs nofail,vers=3.0,credentials=/etc/smbcredentials/<STORAGE ACCOUNT NAME>.cred,dir_mode=0777,file_mode=0777,serverino" >> /etc/fstab'
+    sudo bash -c 'echo "//<STORAGE ACCOUNT NAME>.file.core.windows.net/<FILE SHARE NAME> /mount/<STORAGE ACCOUNT NAME>/<FILE SHARE NAME> cifs _netdev,nofail,vers=3.0,credentials=/etc/smbcredentials/<STORAGE ACCOUNT NAME>.cred,dir_mode=0777,file_mode=0777,serverino" >> /etc/fstab'
 
     sudo mount /mount/<STORAGE ACCOUNT NAME>/<FILE SHARE NAME>
     ```

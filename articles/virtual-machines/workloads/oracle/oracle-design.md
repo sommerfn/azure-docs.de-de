@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 08/02/2018
 ms.author: rogirdh
-ms.openlocfilehash: 8058246ea5f4ac87c24fab8c5ec64032eb8a1f0b
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.openlocfilehash: ebe6f27818df8407504e4254f16d952aa298b6cc
+ms.sourcegitcommit: e72073911f7635cdae6b75066b0a88ce00b9053b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67710645"
+ms.lasthandoff: 07/19/2019
+ms.locfileid: "68348318"
 ---
 # <a name="design-and-implement-an-oracle-database-in-azure"></a>Entwerfen und Implementieren einer Oracle-Datenbank in Azure
 
@@ -52,7 +52,7 @@ Die folgende Tabelle enthält einige der Unterschiede zwischen einer lokalen Imp
 > | **Resilienz** |MTBF (Mean Time Between Failure, mittlere Betriebsdauer zwischen Ausfällen) |MTTR (Mean Time To Recover, mittlere Reparaturzeit)|
 > | **Geplante Wartung** |Patchen/Upgrades|[Verfügbarkeitsgruppen](https://docs.microsoft.com/azure/virtual-machines/windows/infrastructure-availability-sets-guidelines) (Patchen/Upgrades werden von Azure verwaltet) |
 > | **Ressource** |Dediziert  |Für andere Clients freigegeben|
-> | **Regionen** |Rechenzentren |[Regionspaare](https://docs.microsoft.com/azure/virtual-machines/windows/regions-and-availability)|
+> | **Regionen** |Rechenzentren |[Regionspaare](https://docs.microsoft.com/azure/virtual-machines/windows/regions#region-pairs)|
 > | **Speicher** |SAN-/Physische Datenträger |[Von Azure verwalteter Speicher](https://azure.microsoft.com/pricing/details/managed-disks/?v=17.23h)|
 > | **Skalieren** |Vertikale Skalierung |Horizontale Skalierung|
 

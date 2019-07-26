@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/21/2019
 ms.author: apimpm
-ms.openlocfilehash: 73dd46d1ca0a20748d7a3a7838c499f0c659253d
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 72cffea3e5d42210bffbdbeef94c475cc8bdebf4
+ms.sourcegitcommit: f5075cffb60128360a9e2e0a538a29652b409af9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66241674"
+ms.lasthandoff: 07/18/2019
+ms.locfileid: "68312102"
 ---
 # <a name="protect-an-api-by-using-oauth-20-with-azure-active-directory-and-api-management"></a>Schützen einer API über OAuth 2.0 mit Azure Active Directory und API Management
 
@@ -122,9 +122,6 @@ In diesem Beispiel ist die Entwicklerkonsole die Client-App. In den folgenden Sc
 5. Wählen Sie unter **Autorisierungszuweisungstypen** die Option **Autorisierungscode**.
 
 6. Geben Sie die **URL für Autorisierungsendpunkt** und die **URL für Tokenendpunkt** ein. Rufen Sie diese Werte von der Seite **Endpunkte** in Ihrem Azure AD-Mandanten ab. Navigieren Sie erneut zur Seite **App-Registrierung**, und klicken Sie auf **Endpunkte**.
-
-    >[!NOTE]
-    > Verwenden Sie hier die **v1**-Endpunkte.
 
 7. Kopieren Sie den **OAuth 2.0-Autorisierungsendpunkt**, und fügen Sie ihn in das Textfeld **URL für Autorisierungsendpunkt** ein.
 

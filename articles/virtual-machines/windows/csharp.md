@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/17/2017
 ms.author: cynthn
-ms.openlocfilehash: 2bc7eef9c4633b6064f2be251bc436c103f4e4a0
-ms.sourcegitcommit: dad277fbcfe0ed532b555298c9d6bc01fcaa94e2
+ms.openlocfilehash: b88bade886bf8cf22387e8733b8710414c944988
+ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/10/2019
-ms.locfileid: "67718704"
+ms.lasthandoff: 07/19/2019
+ms.locfileid: "68361137"
 ---
 # <a name="create-and-manage-windows-vms-in-azure-using-c"></a>Erstellen und Verwalten von virtuellen Windows-Computern in Azure mithilfe von C# #
 
@@ -87,7 +87,7 @@ Bevor Sie mit diesem Schritt beginnen, stellen Sie sicher, dass Sie Zugriff auf 
 
 1. Öffnen Sie die Datei „Program.cs“ für das von Ihnen erstellte Projekt. Fügen Sie dann am Anfang der Datei den vorhandenen Anweisungen die folgenden using-Anweisungen hinzu:
 
-    ```
+    ```csharp
     using Microsoft.Azure.Management.Compute.Fluent;
     using Microsoft.Azure.Management.Compute.Fluent.Models;
     using Microsoft.Azure.Management.Fluent;
@@ -97,7 +97,7 @@ Bevor Sie mit diesem Schritt beginnen, stellen Sie sicher, dass Sie Zugriff auf 
 
 2. Fügen Sie der „Main“-Methode den folgenden Code hinzu, um den Verwaltungsclient zu erstellen:
 
-    ```
+    ```csharp
     var credentials = SdkContext.AzureCredentialsFactory
         .FromFile(Environment.GetEnvironmentVariable("AZURE_AUTH_LOCATION"));
 
@@ -116,7 +116,7 @@ Alle Ressourcen müssen in einer [Ressourcengruppe](../../azure-resource-manager
 
 Zum Angeben von Werten für die Anwendung und Erstellen der Ressourcengruppe fügen Sie der „Main“-Methode diesen Code hinzu:
 
-```
+```csharp
 var groupName = "myResourceGroup";
 var vmName = "myVM";
 var location = Region.USWest;
@@ -133,7 +133,7 @@ var resourceGroup = azure.ResourceGroups.Define(groupName)
 
 Fügen Sie der „Main“-Methode den folgenden Code hinzu, um die Verfügbarkeitsgruppe zu erstellen:
 
-```
+```csharp
 Console.WriteLine("Creating availability set...");
 var availabilitySet = azure.AvailabilitySets.Define("myAVSet")
     .WithRegion(location)
@@ -148,7 +148,7 @@ Eine öffentliche [IP-Adresse](../../virtual-network/virtual-network-ip-addresse
 
 Fügen Sie der „Main“-Methode diesen Code hinzu, um die öffentliche IP-Adresse des virtuellen Computers zu erstellen:
    
-```
+```csharp
 Console.WriteLine("Creating public IP address...");
 var publicIPAddress = azure.PublicIPAddresses.Define("myPublicIP")
     .WithRegion(location)
@@ -163,7 +163,7 @@ Ein virtueller Computer muss in einem Subnetz eines [virtuellen Netzwerks](../..
 
 Fügen Sie der „Main“-Methode diesen Code hinzu, um ein Subnetz und ein virtuelles Netzwerk zu erstellen:
 
-```
+```csharp
 Console.WriteLine("Creating virtual network...");
 var network = azure.Networks.Define("myVNet")
     .WithRegion(location)
@@ -179,7 +179,7 @@ Ein virtueller Computer benötigt eine Netzwerkschnittstelle, um in dem virtuell
 
 Fügen Sie der „Main“-Methode diesen Code hinzu, um eine Netzwerkschnittstelle zu erstellen:
 
-```
+```csharp
 Console.WriteLine("Creating network interface...");
 var networkInterface = azure.NetworkInterfaces.Define("myNIC")
     .WithRegion(location)
@@ -197,7 +197,7 @@ Nachdem Sie nun alle benötigten Ressourcen erstellt haben, können Sie einen vi
 
 Fügen Sie der „Main“-Methode diesen Code hinzu, um den virtuellen Computer zu erstellen:
 
-```
+```csharp
 Console.WriteLine("Creating virtual machine...");
 azure.VirtualMachines.Define(vmName)
     .WithRegion(location)
@@ -219,7 +219,7 @@ azure.VirtualMachines.Define(vmName)
 
 Wenn Sie einen vorhandenen Datenträger anstelle eines Marketplace-Images verwenden möchten, verwenden Sie diesen Code:
 
-```
+```csharp
 var managedDisk = azure.Disks.Define("myosdisk")
     .WithRegion(location)
     .WithExistingResourceGroup(groupName)
@@ -244,7 +244,7 @@ Während der Lebensdauer eines virtuellen Computers können Sie Verwaltungsaufga
 
 Wenn Sie mit dem virtuellen Computer Aufgaben ausführen müssen, benötigen Sie eine Instanz davon:
 
-```
+```csharp
 var vm = azure.VirtualMachines.GetByResourceGroup(groupName, vmName);
 ```
 
@@ -252,7 +252,7 @@ var vm = azure.VirtualMachines.GetByResourceGroup(groupName, vmName);
 
 Fügen Sie der „Main“-Methode diesen Code hinzu, um Informationen zum virtuellen Computer abzurufen:
 
-```
+```csharp
 Console.WriteLine("Getting information about the virtual machine...");
 Console.WriteLine("hardwareProfile");
 Console.WriteLine("   vmSize: " + vm.Size);
@@ -324,7 +324,7 @@ Sie können einen virtuellen Computer beenden und sämtliche Einstellungen beibe
 
 Zum Beenden des virtuellen Computers ohne Aufheben seiner Zuordnung fügen Sie der „Main“-Methode diesen Code hinzu:
 
-```
+```csharp
 Console.WriteLine("Stopping vm...");
 vm.PowerOff();
 Console.WriteLine("Press enter to continue...");
@@ -333,7 +333,7 @@ Console.ReadLine();
 
 Wenn Sie die Zuordnung des virtuellen Computers aufheben möchten, ändern Sie den Aufruf zum Herunterfahren in folgenden Code:
 
-```
+```csharp
 vm.Deallocate();
 ```
 
@@ -341,7 +341,7 @@ vm.Deallocate();
 
 Fügen Sie der „Main“-Methode diesen Code hinzu, um den virtuellen Computer zu starten:
 
-```
+```csharp
 Console.WriteLine("Starting vm...");
 vm.Start();
 Console.WriteLine("Press enter to continue...");
@@ -354,7 +354,7 @@ Viele Aspekte der Bereitstellung müssen berücksichtigt werden, wenn Sie die Gr
 
 Fügen Sie der „Main“-Methode diesen Code hinzu, um die Größe des virtuellen Computers zu ändern:
 
-```
+```csharp
 Console.WriteLine("Resizing vm...");
 vm.Update()
     .WithSize(VirtualMachineSizeTypes.StandardDS2) 
@@ -367,7 +367,7 @@ Console.ReadLine();
 
 Um dem virtuellen Computer einen Datenträger hinzuzufügen, fügen Sie der „Main“-Methode diesen Code hinzu. In diesem Beispiel wird ein Datenträger der Größe 2 GB hinzugefügt, mit der LUN „0“ und dem Cachetyp „ReadWrite“:
 
-```
+```csharp
 Console.WriteLine("Adding data disk to vm...");
 vm.Update()
     .WithNewDataDisk(2, 0, CachingTypes.ReadWrite) 
@@ -382,7 +382,7 @@ Da in Azure die genutzten Ressourcen in Rechnung gestellt werden, empfiehlt es s
 
 Fügen Sie der „Main“-Methode diesen Code hinzu, um die Ressourcengruppe zu löschen:
 
-```
+```csharp
 azure.ResourceGroups.DeleteByName(groupName);
 ```
 
@@ -397,4 +397,3 @@ Die vollständige Ausführung dieser Konsolenanwendung sollte etwa fünf Minuten
 ## <a name="next-steps"></a>Nächste Schritte
 * Nutzen Sie die Vorteile der Erstellung eines virtuellen Computers per Vorlage, indem Sie sich die Informationen unter [Bereitstellen eines virtuellen Azure-Computers mit C# und einer Resource Manager-Vorlage](csharp-template.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)durchlesen.
 * Erfahren Sie mehr zur Verwendung der [Azure-Bibliotheken für .NET](https://docs.microsoft.com/dotnet/azure/?view=azure-dotnet).
-

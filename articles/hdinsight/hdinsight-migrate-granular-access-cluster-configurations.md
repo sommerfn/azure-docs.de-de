@@ -7,12 +7,12 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 06/03/2019
-ms.openlocfilehash: 357be801914017aceb7e827a3b49960cf7c3e386
-ms.sourcegitcommit: d2785f020e134c3680ca1c8500aa2c0211aa1e24
+ms.openlocfilehash: ebb1723a9a2b2d069a1766d4f78151f2b684c5b9
+ms.sourcegitcommit: c72ddb56b5657b2adeb3c4608c3d4c56e3421f2c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/04/2019
-ms.locfileid: "67565403"
+ms.lasthandoff: 07/24/2019
+ms.locfileid: "68464667"
 ---
 # <a name="migrate-to-granular-role-based-access-for-cluster-configurations"></a>Migrieren zu präzisem rollenbasiertem Zugriff für Clusterkonfigurationen
 
@@ -159,7 +159,7 @@ Ein Benutzer mit der Rolle [Mitwirkender](https://docs.microsoft.com/azure/role-
 
 ### <a name="using-the-azure-cli"></a>Verwenden der Azure-Befehlszeilenschnittstelle
 
-Die einfachste Möglichkeit zum Hinzufügen dieser Rollenzuweisung bietet der Befehl `az role assignemnt create` an der Azure-Befehlszeilenschnittstelle.
+Die einfachste Möglichkeit zum Hinzufügen dieser Rollenzuweisung bietet der Befehl `az role assignment create` an der Azure-Befehlszeilenschnittstelle.
 
 > [!NOTE]
 > Dieser Befehl muss von einem Benutzer mit der Rolle „Mitwirkender“ oder „Besitzer“ ausgeführt werden, da diese Berechtigungen nur von diesen erteilt werden können. `--assignee` ist die E-Mail-Adresse des Benutzers, dem Sie die HDInsight-Clusteroperatorrolle zuweisen möchten.

@@ -2,29 +2,24 @@
 title: Azure Active Directory Identity Protection – Glossar | Microsoft Docs
 description: Azure Active Directory Identity Protection – Glossar
 services: active-directory
-keywords: Azure Active Directory Identity Protection, Cloud App Discovery, Verwalten von Anwendungen, Sicherheit, Risiko, Risikostufe, Sicherheitsrisiko, Sicherheitsrichtlinie, Glossar
-documentationcenter: ''
-author: MicrosoftGuyJFlo
-manager: daveba
-ms.assetid: 833119a5-33d6-4482-adda-fa35218c72c3
 ms.service: active-directory
 ms.subservice: identity-protection
-ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
+ms.topic: reference
 ms.date: 01/15/2018
 ms.author: joflore
+author: MicrosoftGuyJFlo
+manager: daveba
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c371254f344b321969dcc9b3c36212b7536aa95a
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 6751fe74bfd9b8a07aec2263582d9f1a4bc0b2ac
+ms.sourcegitcommit: e9c866e9dad4588f3a361ca6e2888aeef208fc35
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67109002"
+ms.lasthandoff: 07/19/2019
+ms.locfileid: "68333986"
 ---
 # <a name="azure-active-directory-identity-protection-glossary"></a>Azure Active Directory Identity Protection – Glossar
+
 ### <a name="at-risk-user"></a>Gefährdet (Benutzer)
 Ein Benutzer, der über ein oder mehrere aktive Risikoereignisse verfügt. 
 
@@ -165,4 +160,3 @@ Eine Konfiguration oder ein Zustand in Azure Active Directory, durch die bzw. de
 
 ## <a name="see-also"></a>Weitere Informationen
 * [Azure Active Directory Identity Protection](../active-directory-identityprotection.md)
-

@@ -3,7 +3,7 @@ title: Budgetszenario zur Abrechnungs- und Kostenverwaltung in Azure| Microsoft-
 description: Erfahren Sie, wie Sie mit der Azure-Automatisierung virtuelle Computer basierend auf bestimmten Budgetschwellenwerten herunterfahren.
 services: billing
 documentationcenter: ''
-author: Erikre
+author: bandersmsft
 manager: dougeby
 editor: ''
 tags: billing
@@ -14,13 +14,13 @@ ms.topic: reference
 ms.tgt_pltfrm: na
 ms.workload: billing
 ms.date: 03/13/2019
-ms.author: erikre
-ms.openlocfilehash: 4bf76ac0bdd59764815f18a40a3e243d7cf9d920
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.author: banders
+ms.openlocfilehash: 37f129526cb184a2eeee9e36028e8f00b5bbc247
+ms.sourcegitcommit: a874064e903f845d755abffdb5eac4868b390de7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60617385"
+ms.lasthandoff: 07/24/2019
+ms.locfileid: "68443475"
 ---
 # <a name="manage-costs-with-azure-budgets"></a>Verwalten von Kosten mit Azure-Budgets
 
@@ -277,8 +277,8 @@ Bei der Erstellung der Aktionsgruppe verweisen Sie auf die Logik-App, die Sie zu
 4.  Fügen Sie folgende Elemente hinzu, und überprüfen Sie sie:
     - Aktionsgruppenname
     - Kurzname
-    - Abonnement
-    - Ressourcengruppe
+    - Subscription
+    - Resource group
 
     ![Azure – Logik-App – Hinzufügen einer Aktionsgruppe](./media/billing-cost-management-budget-scenario/billing-cost-management-budget-scenario-26.png)
 

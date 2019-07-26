@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 02/20/2018
 ms.author: vinigam
-ms.openlocfilehash: a1a69e02a2630ab2b0466856ca87e8f88fc4d9d8
-ms.sourcegitcommit: 770b060438122f090ab90d81e3ff2f023455213b
+ms.openlocfilehash: c350ca3cd8cbfb5e550fccd0bae0df53168de178
+ms.sourcegitcommit: f5075cffb60128360a9e2e0a538a29652b409af9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/17/2019
-ms.locfileid: "68304813"
+ms.lasthandoff: 07/18/2019
+ms.locfileid: "68312077"
 ---
 # <a name="network-performance-monitor-solution-in-azure"></a>Netzwerkleistungsmonitor-Lösung in Azure
 
@@ -50,7 +50,9 @@ NPM kann die Konnektivität zwischen Netzwerken und Anwendungen in jedem Teil de
 * Südostasien
 * Australien, Südosten
 * Vereinigtes Königreich, Süden
+* Indien, Mitte
 * US-Regierung Virginia
+
 
 Die Liste der unterstützten Regionen für ExpressRoute-Monitor ist in der [Dokumentation](https://docs.microsoft.com/azure/expressroute/how-to-npm?utm_swu=8117) verfügbar.
 

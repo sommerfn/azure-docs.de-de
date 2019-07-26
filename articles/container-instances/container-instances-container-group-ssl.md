@@ -3,18 +3,18 @@ title: Aktivieren von SSL in Azure Container Instances
 description: Erstellen eines SSL- oder TLS-Endpunkts für eine Containergruppe, die in Azure Container Instances ausgeführt wird
 services: container-instances
 author: dlepow
-manager: jeconnoc
+manager: gwallace
 ms.service: container-instances
 ms.topic: article
 ms.date: 04/03/2019
 ms.author: danlep
 ms.custom: ''
-ms.openlocfilehash: 12de4ef31084d8ac8586c79ffe3d0a8e891727bf
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: f11fb209f8d2ace51081fd81f453faf9505af27c
+ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65411397"
+ms.lasthandoff: 07/18/2019
+ms.locfileid: "68326066"
 ---
 # <a name="enable-an-ssl-endpoint-in-a-container-group"></a>Aktivieren eines SSL-Endpunkts in einer Containergruppe
 

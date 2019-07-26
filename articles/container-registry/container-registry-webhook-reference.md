@@ -3,16 +3,17 @@ title: Referenz zu Azure Container Registry-Webhookschemas
 description: Referenz zur JSON-Nutzlast von Webhookanforderungen für Azure Container Registry.
 services: container-registry
 author: dlepow
+manager: gwallace
 ms.service: container-registry
 ms.topic: article
 ms.date: 03/05/2019
 ms.author: danlep
-ms.openlocfilehash: 4c0845b9cf5194ecbd0ab813997e17e070840f44
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: fcdee2be92f2a3052e2ebbfaab3a2f9cb96e0125
+ms.sourcegitcommit: f5075cffb60128360a9e2e0a538a29652b409af9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61331340"
+ms.lasthandoff: 07/18/2019
+ms.locfileid: "68311600"
 ---
 # <a name="azure-container-registry-webhook-reference"></a>Referenz zu Azure Container Registry-Webhooks
 
@@ -40,33 +41,33 @@ Auslösung per Webhook, wenn ein Containerimage per Pushvorgang in ein Repositor
 
 ### <a name="push-event-payload"></a>Nutzlast des Push-Ereignisses
 
-|Element|Type|BESCHREIBUNG|
+|Element|type|BESCHREIBUNG|
 |-------------|----------|-----------|
-|`id`|string|Die ID des Webhookereignisses.|
+|`id`|Zeichenfolge|Die ID des Webhookereignisses.|
 |`timestamp`|DateTime|Der Zeitpunkt, zu dem das Webhookereignis ausgelöst wurde.|
-|`action`|string|Die Aktion, die das Webhookereignis ausgelöst hat.|
+|`action`|Zeichenfolge|Die Aktion, die das Webhookereignis ausgelöst hat.|
 |[Ziel](#target)|Komplexer Typ|Das Ziel des Ereignisses, von dem das Webhookereignis ausgelöst wurde.|
 |[Anforderung](#request)|Komplexer Typ|Die Anforderung, die das Webhookereignis generiert hat.|
 
 ### <a name="target"></a>Ziel
 
-|Element|Type|BESCHREIBUNG|
+|Element|type|BESCHREIBUNG|
 |------------------|----------|-----------|
-|`mediaType`|string|Der MIME-Typ des Objekts, auf das verwiesen wird.|
+|`mediaType`|Zeichenfolge|Der MIME-Typ des Objekts, auf das verwiesen wird.|
 |`size`|Int32|Die Byte-Anzahl des Inhalts. Entspricht dem Feld „Length“ (Länge).|
-|`digest`|string|Zusammenfassung des Inhalts gemäß Definition in der HTTP-API-Spezifikation der Registrierung (V2).|
+|`digest`|Zeichenfolge|Zusammenfassung des Inhalts gemäß Definition in der HTTP-API-Spezifikation der Registrierung (V2).|
 |`length`|Int32|Die Byte-Anzahl des Inhalts. Entspricht dem Feld „Size“ (Größe).|
-|`repository`|string|Der Name des Repositorys.|
-|`tag`|string|Der Tagname des Images.|
+|`repository`|Zeichenfolge|Der Name des Repositorys.|
+|`tag`|Zeichenfolge|Der Tagname des Images.|
 
 ### <a name="request"></a>Anforderung
 
-|Element|Type|BESCHREIBUNG|
+|Element|type|BESCHREIBUNG|
 |------------------|----------|-----------|
-|`id`|string|Die ID der Anforderung, die das Ereignis initiiert hat.|
-|`host`|string|Der extern zugängliche Hostname der Registrierungsinstanz, der im HTTP-Hostheader von eingehenden Anforderungen angegeben ist.|
-|`method`|string|Die Anforderungsmethode, die das Ereignis generiert hat.|
-|`useragent`|string|Der Benutzer-Agent-Header der Anforderung.|
+|`id`|Zeichenfolge|Die ID der Anforderung, die das Ereignis initiiert hat.|
+|`host`|Zeichenfolge|Der extern zugängliche Hostname der Registrierungsinstanz, der im HTTP-Hostheader von eingehenden Anforderungen angegeben ist.|
+|`method`|Zeichenfolge|Die Anforderungsmethode, die das Ereignis generiert hat.|
+|`useragent`|Zeichenfolge|Der Benutzer-Agent-Header der Anforderung.|
 
 ### <a name="payload-example-image-push-event"></a>Nutzlastbeispiel: Image-Pushereignis
 
@@ -104,24 +105,24 @@ Auslösung per Webhook, wenn ein Helm-Diagramm per Pushvorgang in ein Repository
 
 ### <a name="chart-push-event-payload"></a>Nutzlast: Diagramm-Push-Ereignis
 
-|Element|Type|BESCHREIBUNG|
+|Element|type|BESCHREIBUNG|
 |-------------|----------|-----------|
-|`id`|string|Die ID des Webhookereignisses.|
+|`id`|Zeichenfolge|Die ID des Webhookereignisses.|
 |`timestamp`|DateTime|Der Zeitpunkt, zu dem das Webhookereignis ausgelöst wurde.|
-|`action`|string|Die Aktion, die das Webhookereignis ausgelöst hat.|
+|`action`|Zeichenfolge|Die Aktion, die das Webhookereignis ausgelöst hat.|
 |[Ziel](#helm_target)|Komplexer Typ|Das Ziel des Ereignisses, von dem das Webhookereignis ausgelöst wurde.|
 
 ### <a name="helm_target"></a>Ziel
 
-|Element|Type|BESCHREIBUNG|
+|Element|type|BESCHREIBUNG|
 |------------------|----------|-----------|
-|`mediaType`|string|Der MIME-Typ des Objekts, auf das verwiesen wird.|
+|`mediaType`|Zeichenfolge|Der MIME-Typ des Objekts, auf das verwiesen wird.|
 |`size`|Int32|Die Byte-Anzahl des Inhalts.|
-|`digest`|string|Zusammenfassung des Inhalts gemäß Definition in der HTTP-API-Spezifikation der Registrierung (V2).|
-|`repository`|string|Der Name des Repositorys.|
-|`tag`|string|Tagname des Diagramms.|
-|`name`|string|Diagrammname.|
-|`version`|string|Diagrammversion.|
+|`digest`|Zeichenfolge|Zusammenfassung des Inhalts gemäß Definition in der HTTP-API-Spezifikation der Registrierung (V2).|
+|`repository`|Zeichenfolge|Der Name des Repositorys.|
+|`tag`|Zeichenfolge|Tagname des Diagramms.|
+|`name`|Zeichenfolge|Diagrammname.|
+|`version`|Zeichenfolge|Diagrammversion.|
 
 ### <a name="payload-example-chart-push-event"></a>Nutzlastbeispiel: Diagramm-Pushereignis
 
@@ -154,30 +155,30 @@ Wird per Webhook ausgelöst, wenn ein Image-Repository oder Manifest gelöscht w
 
 ### <a name="delete-event-payload"></a>Ereignisnutzlast löschen
 
-|Element|Type|BESCHREIBUNG|
+|Element|type|BESCHREIBUNG|
 |-------------|----------|-----------|
-|`id`|string|Die ID des Webhookereignisses.|
+|`id`|Zeichenfolge|Die ID des Webhookereignisses.|
 |`timestamp`|DateTime|Der Zeitpunkt, zu dem das Webhookereignis ausgelöst wurde.|
-|`action`|string|Die Aktion, die das Webhookereignis ausgelöst hat.|
+|`action`|Zeichenfolge|Die Aktion, die das Webhookereignis ausgelöst hat.|
 |[Ziel](#delete_target)|Komplexer Typ|Das Ziel des Ereignisses, von dem das Webhookereignis ausgelöst wurde.|
 |[Anforderung](#delete_request)|Komplexer Typ|Die Anforderung, die das Webhookereignis generiert hat.|
 
 ### <a name="delete_target"></a> Ziel
 
-|Element|Type|BESCHREIBUNG|
+|Element|type|BESCHREIBUNG|
 |------------------|----------|-----------|
-|`mediaType`|string|Der MIME-Typ des Objekts, auf das verwiesen wird.|
-|`digest`|string|Zusammenfassung des Inhalts gemäß Definition in der HTTP-API-Spezifikation der Registrierung (V2).|
-|`repository`|string|Der Name des Repositorys.|
+|`mediaType`|Zeichenfolge|Der MIME-Typ des Objekts, auf das verwiesen wird.|
+|`digest`|Zeichenfolge|Zusammenfassung des Inhalts gemäß Definition in der HTTP-API-Spezifikation der Registrierung (V2).|
+|`repository`|Zeichenfolge|Der Name des Repositorys.|
 
 ### <a name="delete_request"></a> Anforderung
 
-|Element|Type|BESCHREIBUNG|
+|Element|type|BESCHREIBUNG|
 |------------------|----------|-----------|
-|`id`|string|Die ID der Anforderung, die das Ereignis initiiert hat.|
-|`host`|string|Der extern zugängliche Hostname der Registrierungsinstanz, der im HTTP-Hostheader von eingehenden Anforderungen angegeben ist.|
-|`method`|string|Die Anforderungsmethode, die das Ereignis generiert hat.|
-|`useragent`|string|Der Benutzer-Agent-Header der Anforderung.|
+|`id`|Zeichenfolge|Die ID der Anforderung, die das Ereignis initiiert hat.|
+|`host`|Zeichenfolge|Der extern zugängliche Hostname der Registrierungsinstanz, der im HTTP-Hostheader von eingehenden Anforderungen angegeben ist.|
+|`method`|Zeichenfolge|Die Anforderungsmethode, die das Ereignis generiert hat.|
+|`useragent`|Zeichenfolge|Der Benutzer-Agent-Header der Anforderung.|
 
 ### <a name="payload-example-image-delete-event"></a>Nutzlastbeispiel: Image-Löschereignis
 
@@ -216,24 +217,24 @@ Auslösung per Webhook, wenn ein Helm-Diagramm oder ein Repository gelöscht wir
 
 ### <a name="chart-delete-event-payload"></a>Nutzlast: Diagramm-Löschereignis
 
-|Element|Type|BESCHREIBUNG|
+|Element|type|BESCHREIBUNG|
 |-------------|----------|-----------|
-|`id`|string|Die ID des Webhookereignisses.|
+|`id`|Zeichenfolge|Die ID des Webhookereignisses.|
 |`timestamp`|DateTime|Der Zeitpunkt, zu dem das Webhookereignis ausgelöst wurde.|
-|`action`|string|Die Aktion, die das Webhookereignis ausgelöst hat.|
+|`action`|Zeichenfolge|Die Aktion, die das Webhookereignis ausgelöst hat.|
 |[Ziel](#chart_delete_target)|Komplexer Typ|Das Ziel des Ereignisses, von dem das Webhookereignis ausgelöst wurde.|
 
 ### <a name="chart_delete_target"></a> Ziel
 
-|Element|Type|BESCHREIBUNG|
+|Element|type|BESCHREIBUNG|
 |------------------|----------|-----------|
-|`mediaType`|string|Der MIME-Typ des Objekts, auf das verwiesen wird.|
+|`mediaType`|Zeichenfolge|Der MIME-Typ des Objekts, auf das verwiesen wird.|
 |`size`|Int32|Die Byte-Anzahl des Inhalts.|
-|`digest`|string|Zusammenfassung des Inhalts gemäß Definition in der HTTP-API-Spezifikation der Registrierung (V2).|
-|`repository`|string|Der Name des Repositorys.|
-|`tag`|string|Tagname des Diagramms.|
-|`name`|string|Diagrammname.|
-|`version`|string|Diagrammversion.|
+|`digest`|Zeichenfolge|Zusammenfassung des Inhalts gemäß Definition in der HTTP-API-Spezifikation der Registrierung (V2).|
+|`repository`|Zeichenfolge|Der Name des Repositorys.|
+|`tag`|Zeichenfolge|Tagname des Diagramms.|
+|`name`|Zeichenfolge|Diagrammname.|
+|`version`|Zeichenfolge|Diagrammversion.|
 
 ### <a name="payload-example-chart-delete-event"></a>Nutzlastbeispiel: Diagramm-Löschereignis
 

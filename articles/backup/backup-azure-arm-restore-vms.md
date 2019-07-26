@@ -1,7 +1,6 @@
 ---
 title: 'Azure Backup: Wiederherstellen virtueller Computer über das Azure-Portal'
 description: Wiederherstellen eines virtuellen Azure-Computers mithilfe eines Wiederherstellungspunkts über das Azure-Portal
-services: backup
 author: geethalakshmig
 manager: vijayts
 keywords: Sicherung wiederherstellen; Wiederherstellungsschritte; Wiederherstellungspunkt;
@@ -9,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 05/08/2019
 ms.author: geg
-ms.openlocfilehash: 62e10f382882e70d488f9814cb00c2b86b8b9691
-ms.sourcegitcommit: aa66898338a8f8c2eb7c952a8629e6d5c99d1468
+ms.openlocfilehash: 951e42c4eb7a9d897140a7422364cdbfe83e57cc
+ms.sourcegitcommit: c72ddb56b5657b2adeb3c4608c3d4c56e3421f2c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67460234"
+ms.lasthandoff: 07/24/2019
+ms.locfileid: "68466886"
 ---
 # <a name="restore-azure-vms"></a>Wiederherstellen virtueller Azure-Computer
 

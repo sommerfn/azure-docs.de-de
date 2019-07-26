@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/06/2018
 ms.author: spelluru
-ms.openlocfilehash: 4ed45e1ed18ad630831772997b1fc150882731bd
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 4e988724f842ff12cd599eba95c31006fe208fad
+ms.sourcegitcommit: 198c3a585dd2d6f6809a1a25b9a732c0ad4a704f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "62123398"
+ms.lasthandoff: 07/23/2019
+ms.locfileid: "68422890"
 ---
 # <a name="azure-wcf-relay-rest-tutorial"></a>Tutorial zu Azure WCF Relay mit REST
 Dieses Tutorial beschreibt, wie Sie eine einfache Azure Relay-Hostanwendung erstellen, die eine REST-basierte Schnittstelle verfügbar macht. REST ermöglicht einem Webclient, z. B. einem Webbrowser, den Zugriff auf die Service Bus-API über HTTP-Anforderungen.
@@ -259,7 +259,7 @@ Wie bei den vorherigen Schritten gibt es nur wenige Unterschiede zwischen der Im
     ```
    
     Dieser Schritt konfiguriert einen Dienst, der die zuvor definierte standardmäßige **webHttpRelayBinding**-Bindung verwendet. Darüber hinaus verwendet er den standardmäßigen **sbTokenProvider**-Anbieter, der im nächsten Schritt definiert wird.
-4. Erstellen Sie nach dem `<services>`-Element ein `<behaviors>`-Element mit dem folgenden Inhalt, das „SAS_KEY“ durch den *Shared Access Signature*-Schlüssel (SAS) ersetzt, den Sie zuvor aus dem [Azure-Portal][Azure portal] abgerufen haben.
+4. Erstellen Sie nach dem `<services>`-Element ein `<behaviors>`-Element mit dem folgenden Inhalt, das „SAS_KEY“ durch den *Shared Access Signature*-Schlüssel (SAS) ersetzt, den Sie zuvor 1 aus dem [Azure-Portal][Azure portal] abgerufen haben.
    
     ```xml
     <behaviors>
@@ -578,6 +578,6 @@ Führen Sie nach dem Erstellen der Projektmappe Folgendes aus, um die Anwendung 
 Nachdem Sie jetzt eine Anwendung erstellt haben, die den Azure Relay-Dienst verwendet, finden Sie in den folgenden Artikeln weitere Informationen:
 
 * [Übersicht über Azure Relay](relay-what-is-it.md)
-* [Verwenden des WCF-Relaydiensts mit .NET](relay-wcf-dotnet-get-started.md)
+* [Verwenden des WCF-Relaydiensts mit .NET](service-bus-relay-tutorial.md)
 
 [Azure portal]: https://portal.azure.com

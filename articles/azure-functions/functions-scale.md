@@ -13,12 +13,12 @@ ms.topic: reference
 ms.date: 03/27/2019
 ms.author: glenga
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 3253cc7e379ae63880d533f14bc76e7af5a4425a
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 94ef85836ef524b34cd1c51e4eda83695bc70507
+ms.sourcegitcommit: a874064e903f845d755abffdb5eac4868b390de7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67050554"
+ms.lasthandoff: 07/24/2019
+ms.locfileid: "68443951"
 ---
 # <a name="azure-functions-scale-and-hosting"></a>Skalierung und Hosting von Azure Functions
 
@@ -48,10 +48,10 @@ Die Featureunterstützung fällt in die beiden folgenden Kategorien:
 
 Die folgende Tabelle zeigt die aktuelle Unterstützung für die drei Hostingpläne bei Ausführung unter Windows und Linux:
 
-| | Verbrauchsplan | Premium-Plan | Dedizierter Plan |
+| | Verbrauchsplan | Premium-Tarif | Dedizierter Plan |
 |-|:----------------:|:------------:|:----------------:|
 | Windows | Allgemein verfügbar | preview | Allgemein verfügbar |
-| Linux | preview | – | Allgemein verfügbar |
+| Linux | preview | preview | Allgemein verfügbar |
 
 ## <a name="consumption-plan"></a>Verbrauchsplan
 
@@ -87,9 +87,6 @@ Ziehen Sie den Premium-Plan für Azure Functions in folgenden Situationen in Bet
 * Sie benötigen weitere CPU- oder Arbeitsspeicheroptionen zusätzlich zu den vom Verbrauchsplan bereitgestellten.
 * Ihr Code muss länger ausgeführt werden, als im Verbrauchsplan als [maximal zulässige Ausführungsdauer](#timeout) angegeben ist.
 * Sie benötigen Features, die nur bei einem Premium-Plan zur Verfügung stehen, z.B. VNET/VPN-Konnektivität.
-
-> [!NOTE]
-> Der Premium-Plan in der Vorschauversion unterstützt derzeit nur Azure Functions unter Windows.
 
 Wenn Sie JavaScript-Funktionen im Rahmen eines Premium-Plans ausführen, sollten Sie eine Instanz auswählen, die weniger vCPUs hat. Weitere Informationen finden Sie unter [Auswählen von Premium-Plänen mit Einzelkern](functions-reference-node.md#considerations-for-javascript-functions).  
 

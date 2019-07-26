@@ -9,12 +9,12 @@ ms.service: logic-apps
 ms.suite: integration
 ms.topic: article
 ms.date: 03/29/2019
-ms.openlocfilehash: 65fe89bf775a649d5654ce739d8d18e05d3048ca
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: b157db5032bd62ab443209f201b4ceded6e44cb5
+ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65416119"
+ms.lasthandoff: 07/22/2019
+ms.locfileid: "68385571"
 ---
 # <a name="authenticate-and-access-resources-with-managed-identities-in-azure-logic-apps"></a>Authentifizieren und Zugreifen auf Ressourcen mit verwalteten Identitäten in Azure Logic Apps
 
@@ -68,7 +68,7 @@ Aktivieren Sie die Einstellung **Vom System zugewiesen** in den Identitätseinst
 
 ### <a name="azure-resource-manager-template"></a>Azure Resource Manager-Vorlage
 
-Sie können [Azure Resource Manager-Vorlagen](../logic-apps/logic-apps-create-deploy-azure-resource-manager-templates.md) verwenden, wenn Sie das Erstellen und Bereitstellen von Azure-Ressourcen, z.B. Logik-Apps, automatisieren möchten. Um für Ihre Logik-App mit einer Vorlage eine vom System zugewiesene verwaltete Identität zu erstellen, fügen Sie das `"identity"`-Element und die `"type"`-Eigenschaft der Workflowdefinition Ihrer Logik-App in Ihrer Bereitstellungsvorlage hinzu: 
+Sie können [Azure Resource Manager-Vorlagen](../logic-apps/logic-apps-azure-resource-manager-templates-overview.md) verwenden, wenn Sie das Erstellen und Bereitstellen von Azure-Ressourcen, z.B. Logik-Apps, automatisieren möchten. Um für Ihre Logik-App mit einer Vorlage eine vom System zugewiesene verwaltete Identität zu erstellen, fügen Sie das `"identity"`-Element und die `"type"`-Eigenschaft der Workflowdefinition Ihrer Logik-App in Ihrer Bereitstellungsvorlage hinzu: 
 
 ```json
 "identity": {

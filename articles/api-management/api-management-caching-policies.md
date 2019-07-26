@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/27/2018
 ms.author: apimpm
-ms.openlocfilehash: 08b6f803d6994015432bf68c7b3edae14af8f976
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 2b74c0d8dc0daa7bb86c2884f5e574fdc579ba44
+ms.sourcegitcommit: a874064e903f845d755abffdb5eac4868b390de7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61095442"
+ms.lasthandoff: 07/24/2019
+ms.locfileid: "68442377"
 ---
 # <a name="api-management-caching-policies"></a>Cacherichtlinien für API Management
 Dieses Thema enthält eine Referenz für die folgenden API Management-Richtlinien. Weitere Informationen zum Hinzufügen und Konfigurieren von Richtlinien finden Sie unter [Richtlinien in API Management](https://go.microsoft.com/fwlink/?LinkID=398186).
@@ -122,7 +122,7 @@ Weitere Informationen finden Sie unter [Richtlinienausdrücke](api-management-po
 Diese Richtlinie kann in den folgenden [Abschnitten](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) und [Bereichen](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes) von Richtlinien verwendet werden.
 
 - **Richtlinienabschnitte**: inbound
-- **Richtlinienbereiche:** API, operation, product
+- **Richtlinienbereiche:** alle Bereiche
 
 ## <a name="StoreToCache"></a> In Cache ablegen
 Die `cache-store`-Richtlinie speichert Antworten gemäß den angegebenen Cacheeinstellungen zwischen. Diese Richtlinie kann in Fällen angewendet werden, in denen sich der Inhalt von Antworten über längere Zeit nicht ändert. Das Zwischenspeichern von Antworten senkt die Bandbreitennutzung und die Prozessoranforderungen auf dem Back-End-Webserver und verringert die Latenz für API-Consumer.
@@ -194,7 +194,7 @@ Weitere Informationen finden Sie unter [Richtlinienausdrücke](api-management-po
 Diese Richtlinie kann in den folgenden [Abschnitten](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) und [Bereichen](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes) von Richtlinien verwendet werden.
 
 - **Richtlinienabschnitte:** outbound
-- **Richtlinienbereiche:** API, operation, product
+- **Richtlinienbereiche:** alle Bereiche
 
 ## <a name="GetFromCacheByKey"></a> Wert aus Cache abrufen
 Verwenden Sie die `cache-lookup-value`-Richtlinie zum Durchführen einer Cachesuche nach Schlüssel und zum Zurückgeben eines zwischengespeicherten Werts. Der Schlüssel kann einen beliebigen Zeichenfolgenwert aufweisen und wird in der Regel über einen Richtlinienausdruck angegeben.
@@ -240,7 +240,7 @@ Weitere Informationen und Beispiele zu dieser Richtlinie finden Sie unter [Benut
 Diese Richtlinie kann in den folgenden [Abschnitten](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) und [Bereichen](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes) von Richtlinien verwendet werden.
 
 - **Richtlinienabschnitte:** inbound, outbound, backend, on-error
-- **Richtlinienbereiche:** global, API, operation, product
+- **Richtlinienbereiche:** alle Bereiche
 
 ## <a name="StoreToCacheByKey"></a> Wert in Cache ablegen
 `cache-store-value` führt die Cachespeicherung nach Schlüssel durch. Der Schlüssel kann einen beliebigen Zeichenfolgenwert aufweisen und wird in der Regel über einen Richtlinienausdruck angegeben.
@@ -282,7 +282,7 @@ Weitere Informationen und Beispiele zu dieser Richtlinie finden Sie unter [Benut
 Diese Richtlinie kann in den folgenden [Abschnitten](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) und [Bereichen](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes) von Richtlinien verwendet werden.
 
 - **Richtlinienabschnitte:** inbound, outbound, backend, on-error
-- **Richtlinienbereiche:** global, API, operation, product
+- **Richtlinienbereiche:** alle Bereiche
 
 ### <a name="RemoveCacheByKey"></a> Wert aus Cache entfernen
 `cache-remove-value` löscht ein zwischengespeichertes Element, das über seinen Schlüssel identifiziert wird. Der Schlüssel kann einen beliebigen Zeichenfolgenwert aufweisen und wird in der Regel über einen Richtlinienausdruck angegeben.
@@ -320,7 +320,7 @@ Diese Richtlinie kann in den folgenden [Abschnitten](https://azure.microsoft.com
 Diese Richtlinie kann in den folgenden [Abschnitten](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) und [Bereichen](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes) von Richtlinien verwendet werden.
 
 - **Richtlinienabschnitte:** inbound, outbound, backend, on-error
-- **Richtlinienbereiche:** global, API, operation, product
+- **Richtlinienbereiche:** alle Bereiche
 
 ## <a name="next-steps"></a>Nächste Schritte
 

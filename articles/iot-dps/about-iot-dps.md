@@ -8,12 +8,12 @@ ms.topic: overview
 ms.service: iot-dps
 services: iot-dps
 manager: briz
-ms.openlocfilehash: 89e0b6b5bedf36c89bf3a54f4baf42f7019625c0
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 8331161cde9e7717834dabd2228848de40f7be23
+ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59051466"
+ms.lasthandoff: 07/19/2019
+ms.locfileid: "68360294"
 ---
 # <a name="provisioning-devices-with-azure-iot-hub-device-provisioning-service"></a>Bereitstellung von Geräten mit dem Azure IoT Hub Device Provisioning-Dienst
 Microsoft Azure bietet einen umfangreichen Satz von integrierten öffentlichen Clouddiensten für alle Ihre IoT-Lösunganforderungen. Der IoT Hub Device Provisioning-Dienst ist ein Hilfsdienst für IoT Hub, der die JIT-Bereitstellung im richtigen IoT-Hub ohne manuelles Eingreifen ermöglicht, sodass Kunden Millionen von Geräten sicher und skalierbar bereitstellen können.
@@ -96,7 +96,7 @@ Der Device Provisioning-Dienst ist wie alle Azure IoT-Dienste plattformübergrei
 
 Der Device Provisioning-Dienst unterstützt für Dienstvorgänge nur HTTPS-Verbindungen.
 
-## <a name="regions"></a>Regionen
+## <a name="regions"></a>Regions
 Der Device Provisioning-Dienst ist in vielen Regionen verfügbar. Eine für alle Dienste laufend aktualisierte Liste der vorhandenen und neu angekündigten Regionen finden Sie unter [Azure-Regionen](https://azure.microsoft.com/regions/). Die Verfügbarkeit des Device Provisioning-Diensts können Sie auf der Seite [Azure-Status](https://azure.microsoft.com/status/) überprüfen.
 
 > [!NOTE]
@@ -108,8 +108,9 @@ Für den Device Provisioning-Dienst gilt eine Vereinbarung zum Servicelevel (SLA
 ## <a name="quotas"></a>Kontingente
 Für jedes Azure-Abonnement gelten standardmäßig bestimmte Kontingentgrenzen, die den Umfang Ihrer IoT-Lösung beeinträchtigen könnten. Die aktuelle Grenze auf Abonnementbasis sind 10 Device Provisioning-Dienste pro Abonnement.
 
-Weitere Informationen zu Kontingentgrenzen finden Sie hier:
+[!INCLUDE [azure-iotdps-limits](../../includes/iot-dps-limits.md)]
 
+Weitere Informationen zu Kontingentgrenzen finden Sie hier:
 * [Einschränkungen für Azure-Abonnementdienste](../azure-subscription-service-limits.md)
 
 ## <a name="related-azure-components"></a>Verwandte Azure-Komponenten

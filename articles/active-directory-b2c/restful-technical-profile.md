@@ -10,12 +10,12 @@ ms.topic: reference
 ms.date: 09/10/2018
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 21a2ea861df96a057db0ec13eacd0906ed51fff1
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: f535bc7d67198b3fe06326260bc1910b6afd36f2
+ms.sourcegitcommit: e72073911f7635cdae6b75066b0a88ce00b9053b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66512745"
+ms.lasthandoff: 07/19/2019
+ms.locfileid: "68346769"
 ---
 # <a name="define-a-restful-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>Definieren eines technischen RESTful-Profils in einer benutzerdefinierten Richtlinie in Azure Active Directory B2C
 
@@ -183,7 +183,7 @@ Das folgende Beispiel zeigt eine REST-API, die eine JSON-formatierte Fehlermeldu
 
 Das folgende Beispiel zeigt eine C#-Klasse, die eine Fehlermeldung zurückgibt:
 
-```C#
+```csharp
 public class ResponseContent
 {
   public string version { get; set; }

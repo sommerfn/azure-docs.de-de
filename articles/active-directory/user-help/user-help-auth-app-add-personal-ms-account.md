@@ -12,14 +12,15 @@ ms.date: 01/24/2019
 ms.author: lizross
 ms.reviewer: olhaun
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bcb49048fa9200b8970f37a4f187ca995d208cc2
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 502407bbf1cdb47fc8105ed0220babcd9f292faa
+ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60474091"
+ms.lasthandoff: 07/22/2019
+ms.locfileid: "68382696"
 ---
 # <a name="add-your-personal-microsoft-accounts"></a>Hinzufügen Ihrer persönlichen Microsoft-Konten
+
 Fügen Sie Ihre persönlichen Microsoft-Konten (z.B. für Outlook.com oder Xbox LIVE) zur Microsoft Authenticator-App hinzu – sowohl für die standardmäßige zweistufige Überprüfung als auch für die Anmeldung per Telefon ohne Kennwort.
 
 - **Standardmäßige zweistufige Überprüfung** Geben Sie Ihren Benutzernamen und Ihr Kennwort auf dem Gerät ein, bei dem Sie sich anmelden möchten. Wählen Sie anschließend aus, ob über die Microsoft Authenticator-App eine Benachrichtigung gesendet werden soll, oder ob Sie den zugehörigen Prüfcode aus dem Bildschirm **Konten** der Microsoft Authenticator-App kopieren möchten.
@@ -30,6 +31,7 @@ Fügen Sie Ihre persönlichen Microsoft-Konten (z.B. für Outlook.com oder Xbox 
 >Bevor Sie Ihr Konto hinzufügen können, müssen Sie die Microsoft Authenticator-App herunterladen und installieren. Falls dies noch nicht geschehen ist, führen Sie die im Artikel [Herunterladen und Installieren der App](user-help-auth-app-download-install.md) aufgeführten Schritte aus.
 
 ## <a name="add-your-personal-microsoft-account"></a>Hinzufügen Ihres persönlichen Microsoft-Kontos
+
 Sie können Ihr persönliches Microsoft-Konto hinzufügen, indem Sie zunächst die zweistufige Überprüfung aktivieren und dann das Konto zur App hinzufügen.
 
 >[!Note]

@@ -4,15 +4,15 @@ description: In diesem Artikel wird die Erstellung und Verwendung von Datenbanke
 author: rimman
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 05/20/2019
+ms.date: 07/23/2019
 ms.author: rimman
 ms.reviewer: sngun
-ms.openlocfilehash: 574dd9fd6189b6d0f1e5d455146d6d083ad7ff77
-ms.sourcegitcommit: 3d4121badd265e99d1177a7c78edfa55ed7a9626
+ms.openlocfilehash: 277564208a5e4a209aecf8f976aca6b35ab17781
+ms.sourcegitcommit: c72ddb56b5657b2adeb3c4608c3d4c56e3421f2c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/30/2019
-ms.locfileid: "66389465"
+ms.lasthandoff: 07/24/2019
+ms.locfileid: "68467752"
 ---
 # <a name="work-with-databases-containers-and-items-in-azure-cosmos-db"></a>Arbeiten mit Datenbanken, Containern und Elementen in Azure Cosmos DB
 
@@ -74,7 +74,7 @@ Ein Azure Cosmos-Container wird wie in der folgenden Tabelle gezeigt in API-spez
 
 | Azure Cosmos-Entität | SQL-API | Cassandra-API | Azure Cosmos DB-API für MongoDB | Gremlin-API | Tabelle-API |
 | --- | --- | --- | --- | --- | --- |
-|Azure Cosmos-Container | Sammlung | Table | Sammlung | Graph | Table |
+|Azure Cosmos-Container | Collection | Table | Collection | Graph | Table |
 
 ### <a name="properties-of-an-azure-cosmos-container"></a>Eigenschaften eines Azure Cosmos-Containers
 

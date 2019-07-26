@@ -8,12 +8,12 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.topic: conceptual
 ms.date: 05/30/2019
-ms.openlocfilehash: 8bb077242c0a989e100c81d4dfefeb53f4bc90c4
-ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
+ms.openlocfilehash: 63e23275a68ddde9385bb252dcb872d02c5cea08
+ms.sourcegitcommit: 9dc7517db9c5817a3acd52d789547f2e3efff848
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/07/2019
-ms.locfileid: "67620689"
+ms.lasthandoff: 07/23/2019
+ms.locfileid: "68405975"
 ---
 # <a name="configure-outbound-network-traffic-for-azure-hdinsight-clusters-using-firewall-preview"></a>Konfigurieren des ausgehenden Netzwerkdatenverkehrs für Azure HDInsight-Cluster mithilfe von Firewall (Vorschau)
 
@@ -23,7 +23,7 @@ In diesem Artikel werden die Schritte beschrieben, mit denen Sie aus Ihrem HDIns
 
 Azure HDInsight-Cluster werden normalerweise in Ihrem eigenen virtuellen Netzwerk bereitgestellt. Der Cluster verfügt über Abhängigkeiten von Diensten außerhalb dieses virtuellen Netzwerks, die erfordern, dass der Netzwerkzugriff ordnungsgemäß funktioniert.
 
-Mehrere Abhängigkeiten erfordern eingehenden Datenverkehr. Der eingehende Verwaltungsdatenverkehr kann über eine Firewallgerät nicht gesendet werden. Die Quelladressen für diesen Datenverkehr sind bekannt und werden [hier](hdinsight-extend-hadoop-virtual-network.md#hdinsight-ip) veröffentlicht. Sie können auch Netzwerksicherheitsgruppen-Regeln (NSG) mit diesen Informationen erstellen, um bei den Clustern eingehenden Datenverkehr zu sichern.
+Mehrere Abhängigkeiten erfordern eingehenden Datenverkehr. Der eingehende Verwaltungsdatenverkehr kann über eine Firewallgerät nicht gesendet werden. Die Quelladressen für diesen Datenverkehr sind bekannt und werden [hier](hdinsight-management-ip-addresses.md) veröffentlicht. Sie können auch Netzwerksicherheitsgruppen-Regeln (NSG) mit diesen Informationen erstellen, um bei den Clustern eingehenden Datenverkehr zu sichern.
 
 Die Abhängigkeiten des ausgehenden HDInsight-Datenverkehrs werden fast ausschließlich mit FQDNs definiert, hinter denen sich keine statischen IP-Adressen befinden. Das Fehlen statischer Adressen bedeutet, dass Netzwerksicherheitsgruppen (NSGs) nicht verwendet werden können, um den ausgehenden Datenverkehr eines Clusters zu sperren. Die Adressen ändern sich häufig, sodass keine Regeln auf Grundlage der aktuellen Auflösung aufgestellt und keine NSGs damit eingerichtet werden können.
 
@@ -81,7 +81,7 @@ Erstellen Sie die Netzwerkregeln, um Ihren HDInsight-Cluster ordnungsgemäß zu 
    | **Name** | **Protokoll** | **Quelladresse** | **Zieladresse** | **Zielport** | **Hinweise** |
    | --- | --- | --- | --- | --- | --- |
    | Regel 1 | UDP | * | * | `123` | Zeitdienst |
-   | Regel 2 | Beliebig | * | DC_IP_Address_1, DC_IP_Address_2 | `*` | Wenn Sie das Enterprise-Sicherheitspaket (Enterprise Security Package, ESP) verwenden, fügen Sie im Abschnitt „IP-Adressen“ eine Netzwerkregel hinzu, die die Kommunikation mit AAD-DS für ESP-Cluster ermöglicht. Die IP-Adressen der Domänencontroller finden Sie im Abschnitt „AAD-DS“ im Portal. | 
+   | Regel 2 | Any | * | DC_IP_Address_1, DC_IP_Address_2 | `*` | Wenn Sie das Enterprise-Sicherheitspaket (Enterprise Security Package, ESP) verwenden, fügen Sie im Abschnitt „IP-Adressen“ eine Netzwerkregel hinzu, die die Kommunikation mit AAD-DS für ESP-Cluster ermöglicht. Die IP-Adressen der Domänencontroller finden Sie im Abschnitt „AAD-DS“ im Portal. | 
    | Regel 3 | TCP | * | IP-Adresse Ihres Data Lake Storage-Kontos | `*` | Wenn Sie Azure Data Lake Storage verwenden, können Sie im Abschnitt „IP-Adressen“ eine Netzwerkregel zur Behandlung eines SNI-Problems mit ADLS Gen1 und Gen2 hinzufügen. Diese Option leitet den Datenverkehr zur Firewall, was zu höheren Kosten für große Datenmengen führen könnte, aber der Datenverkehr wird in Firewallprotokollen protokolliert und überwacht. Bestimmen Sie die IP-Adresse für Ihr Data Lake Storage-Konto. Sie können mit einem PowerShell-Befehl wie `[System.Net.DNS]::GetHostAddresses("STORAGEACCOUNTNAME.blob.core.windows.net")` den FQDN in eine IP-Adresse auflösen.|
    | Regel 4 | TCP | * | * | `12000` | (Optional) Wenn Sie Log Analytics verwenden, erstellen Sie im Abschnitt „IP-Adressen“ eine Netzwerkregel, um die Kommunikation mit Ihrem Log Analytics-Arbeitsbereich zu ermöglichen. |
 
@@ -99,7 +99,7 @@ Erstellen Sie die Netzwerkregeln, um Ihren HDInsight-Cluster ordnungsgemäß zu 
 
 Erstellen Sie eine Routingtabelle mit den folgenden Einträgen:
 
-1. Sechs Adressen aus [dieser Liste der für die HDInsight-Verwaltung erforderlichen IP-Adressen](../hdinsight/hdinsight-extend-hadoop-virtual-network.md#hdinsight-ip) mit dem nächstem Hop **Internet**:
+1. Sechs Adressen aus [dieser Liste der für die HDInsight-Verwaltung erforderlichen IP-Adressen](../hdinsight/hdinsight-management-ip-addresses.md) mit dem nächstem Hop **Internet**:
     1. Vier IP-Adressen für alle Cluster in allen Regionen
     1. Zwei für die Region, in der der Cluster erstellt wird, spezifische IP-Adressen
 1. Eine Route für ein virtuelles Gerät für IP-Adresse 0.0.0.0/0, wobei der nächste Hop Ihre private Azure Firewall-IP-Adresse ist.
@@ -179,7 +179,7 @@ Mit den vorherigen Anweisungen können Sie Azure Firewall zum Einschränken des 
 | **Endpunkt** | **Details** |
 |---|---|
 | \*:123 | NTP-Uhrzeitüberprüfung. Datenverkehr wird an mehreren Endpunkten am Port 123 überprüft. |
-| [Hier](hdinsight-extend-hadoop-virtual-network.md#hdinsight-ip) veröffentlichte IP-Adressen | Diese gehören zum HDInsight-Dienst. |
+| [Hier](hdinsight-management-ip-addresses.md) veröffentlichte IP-Adressen | Diese gehören zum HDInsight-Dienst. |
 | AAD-DS – private IP-Adressen für ESP-Cluster |
 | \*:16800 für KMS-Aktivierung von Windows |
 | \*12000 für Log Analytics |

@@ -3,7 +3,7 @@ title: 'Azure Batch: Ereignis zum Abschluss eines Tasks | Microsoft-Dokumentatio
 description: Referenz zum Batch-Ereignis zum Abschluss eines Tasks.
 services: batch
 author: laurenhughes
-manager: jeconnoc
+manager: gwallace
 ms.assetid: ''
 ms.service: batch
 ms.devlang: multiple
@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ''
 ms.workload: big-compute
 ms.date: 04/20/2017
 ms.author: lahugh
-ms.openlocfilehash: b5fd1a8020c8e95323bc2333c0583dafe58e8456
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 60e5e6cc6fdd839c8bbe44d8e1d2e794e7afb34d
+ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60549970"
+ms.lasthandoff: 07/18/2019
+ms.locfileid: "68323055"
 ---
 # <a name="task-complete-event"></a>Ereignis zum Abschluss eines Tasks
 
@@ -52,11 +52,11 @@ ms.locfileid: "60549970"
 }
 ```
 
-|Elementname|Type|Notizen|
+|Elementname|type|Notizen|
 |------------------|----------|-----------|
-|jobId|string|Die ID des Auftrags, der den Task enthält.|
-|id|string|Die ID des Tasks.|
-|taskType|string|Der Typ des Tasks. Entweder „JobManager“, was bedeutet, dass dies ein Auftrags-Manager-Task ist, oder „User“, was bedeutet, dass dies nicht der Fall ist. Dieses Ereignis wird nicht für Auftragsvorbereitungstasks, Auftragsfreigabetasks oder Starttasks ausgegeben.|
+|jobId|Zeichenfolge|Die ID des Auftrags, der den Task enthält.|
+|id|Zeichenfolge|Die ID des Tasks.|
+|taskType|Zeichenfolge|Der Typ des Tasks. Entweder „JobManager“, was bedeutet, dass dies ein Auftrags-Manager-Task ist, oder „User“, was bedeutet, dass dies nicht der Fall ist. Dieses Ereignis wird nicht für Auftragsvorbereitungstasks, Auftragsfreigabetasks oder Starttasks ausgegeben.|
 |systemTaskVersion|Int32|Dies ist der interne Wiederholungszähler für einen Task. Der Batch-Dienst kann intern einen Task wiederholen, um vorübergehende Probleme zu berücksichtigen. Bei diesen Problemen kann es sich um interne Planungsfehler oder Versuche handeln, Computeknoten mit einem fehlerhaften Status wiederherzustellen.|
 |[nodeInfo](#nodeInfo)|Komplexer Typ|Enthält Informationen zu den Computeknoten, auf dem der Task ausgeführt wurde.|
 |[multiInstanceSettings](#multiInstanceSettings)|Komplexer Typ|Gibt an, dass der Task ein Task mit mehreren Instanzen ist, für den mehrere Computeknoten erforderlich sind.  Details finden Sie unter [multiInstanceSettings](https://docs.microsoft.com/rest/api/batchservice/get-information-about-a-task).|
@@ -65,26 +65,26 @@ ms.locfileid: "60549970"
 
 ###  <a name="nodeInfo"></a> nodeInfo
 
-|Elementname|Type|Notizen|
+|Elementname|type|Notizen|
 |------------------|----------|-----------|
-|poolId|string|Die ID des Pools, auf den der Task angewendet wurde.|
-|nodeId|string|Die ID des Knotens, auf dem der Task ausgeführt wurde.|
+|poolId|Zeichenfolge|Die ID des Pools, auf den der Task angewendet wurde.|
+|nodeId|Zeichenfolge|Die ID des Knotens, auf dem der Task ausgeführt wurde.|
 
 ###  <a name="multiInstanceSettings"></a> multiInstanceSettings
 
-|Elementname|Type|Notizen|
+|Elementname|type|Notizen|
 |------------------|----------|-----------|
 |numberOfInstances|Int32|Die Anzahl der Computeknoten, die vom Task benötigt werden.|
 
 ###  <a name="constraints"></a> Einschränkungen
 
-|Elementname|Type|Notizen|
+|Elementname|type|Notizen|
 |------------------|----------|-----------|
 |maxTaskRetryCount|Int32|Gibt an, wie oft der Task maximal wiederholt werden kann. Der Batch-Dienst wiederholt einen Task, wenn sein Exitcode ungleich null ist.<br /><br /> Beachten Sie, dass dieser Wert die Anzahl der Wiederholungen ausdrücklich steuert. Der Batch-Dienst wiederholt den Task einmal und kann ihn anschließend bis zu diesem Grenzwert wiederholen. Wenn beispielsweise die maximale Anzahl von Wiederholungsversuchen 3 ist, versucht der Batch-Dienst einen Task bis zu viermal (ein erster Versuch und drei Wiederholungsversuche).<br /><br /> Wenn die maximale Anzahl von Wiederholungsversuchen 0 ist, wiederholt der Batch-Dienst Tasks nicht.<br /><br /> Wenn die maximale Anzahl von Wiederholungsversuchen -1 ist, wiederholt der Batch-Dienst Tasks unbegrenzt.<br /><br /> Der Standardwert ist 0 (keine Wiederholungsversuche).|
 
 ###  <a name="executionInfo"></a> executionInfo
 
-|Elementname|Type|Notizen|
+|Elementname|type|Notizen|
 |------------------|----------|-----------|
 |startTime|DateTime|Der Zeitpunkt, an dem die Ausführung des Tasks gestartet wurde. „Running“ entspricht dem Status **Wird ausgeführt**. Wenn also der Task Ressourcendateien oder Anwendungspakete angibt, reflektiert die Startzeit den Zeitpunkt, an dem der Task mit dem Herunterladen oder Bereitstellen dieser Elemente begonnen hat.  Wenn der Task neu gestartet oder wiederholt wurde, ist dies der letzte Zeitpunkt, an dem die Ausführung des Tasks gestartet wurde.|
 |endTime|DateTime|Der Zeitpunkt, an dem die Ausführung des Tasks beendet wurde.|

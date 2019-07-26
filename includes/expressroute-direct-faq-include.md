@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 07/09/2019
 ms.author: jaredro
 ms.custom: include file
-ms.openlocfilehash: 2e6eb449f4e7a8dcd6c4547162a575d21f303f83
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.openlocfilehash: 43d1942b1413569d77c6c17fee9fff14dc83c924
+ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67712606"
+ms.lasthandoff: 07/19/2019
+ms.locfileid: "68362520"
 ---
 ### <a name="what-is-expressroute-direct"></a>Was ist ExpressRoute Direct?
 
@@ -35,7 +35,6 @@ Die verfügbaren Ports sind dynamisch und werden in PowerShell verfügbar sein, 
 * Dublin
 * Hongkong (SAR)
 * London
-* Los Angeles
 * Melbourne
 * New York City
 * Perth

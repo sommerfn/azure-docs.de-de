@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/07/2019
 ms.author: spelluru
-ms.openlocfilehash: f761af3a5a3f08e4da89d8869aea5d666ecd69d0
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 9180c29b807ef26c6426aab75fe74870fef9669a
+ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60868249"
+ms.lasthandoff: 07/18/2019
+ms.locfileid: "68318166"
 ---
 # <a name="track-costs-associated-with-a-lab-in-azure-devtest-labs"></a>Verfolgen von Kosten eines Labs in Azure DevTest Labs
 Dieser Artikel enthält Informationen dazu, wie Sie die Kosten Ihres Labs nachverfolgen. Sie erfahren darin, wie Sie den geschätzten Kostentrend des Labs für den aktuellen Kalendermonat anzeigen. Außerdem erfahren Sie, wie Sie pro Ressource im Lab die Kosten für den bisherigen Kalendermonat anzeigen.
@@ -95,7 +95,7 @@ Mit der Funktion für den monatlichen Kostentrend in Labs können Sie sehen, wie
 
 Mit dieser Funktion können Sie leicht die Ressourcen identifizieren, die die höchsten Kosten verursachen, um Maßnahmen zur Reduzierung der Ausgaben für das Lab zu ergreifen. Beispielsweise sind die Kosten für eine VM von der Größe der VM abhängig. Je größer die VM, desto höher die Kosten. Sie können auf einfache Weise die Größe einer VM und deren Besitzer herausfinden, um mit diesem zu besprechen, warum diese VM-Größe erforderlich ist und ob die Möglichkeit besteht, die Größe zu verringern.
 
-Die [Richtlinie zum automatischen Herunterfahren](devtest-lab-get-started-with-lab-policies.md#set-auto-shutdown) hilft Ihnen dabei, die Kosten zu senken, indem Lab-VMs zu einer bestimmten Tageszeit heruntergefahren werden. Der Benutzer eines Labs kann diese Richtlinie jedoch deaktivieren, wodurch sich die Kosten für die Ausführung der VM erhöhen. Sie können eine VM in der Tabelle auswählen, um zu sehen, ob dafür die Richtlinie zum automatischen Herunterfahren deaktiviert wurde. Wenn dies der Fall ist, können Sie mit dem Besitzer der VM besprechen, warum die Richtlinie für die VM deaktiviert wurde.
+Die [Richtlinie zum automatischen Herunterfahren](devtest-lab-set-lab-policy.md?#set-auto-shutdown-policy) hilft Ihnen dabei, die Kosten zu senken, indem Lab-VMs zu einer bestimmten Tageszeit heruntergefahren werden. Der Benutzer eines Labs kann diese Richtlinie jedoch deaktivieren, wodurch sich die Kosten für die Ausführung der VM erhöhen. Sie können eine VM in der Tabelle auswählen, um zu sehen, ob dafür die Richtlinie zum automatischen Herunterfahren deaktiviert wurde. Wenn dies der Fall ist, können Sie mit dem Besitzer der VM besprechen, warum die Richtlinie für die VM deaktiviert wurde.
  
 ## <a name="next-steps"></a>Nächste Schritte
 Diese Schritte könnten Sie als Nächstes ausführen:

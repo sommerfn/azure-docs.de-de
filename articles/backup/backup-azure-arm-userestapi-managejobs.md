@@ -1,7 +1,6 @@
 ---
 title: 'Azure Backup: Verwalten von Sicherungsaufträgen mit der REST-API'
 description: Verwalten von Sicherungs- und Wiederherstellungsaufträgen von Azure Backup mit der REST-API
-services: backup
 author: pvrk
 manager: shivamg
 keywords: REST-API; Azure-VM-Sicherung; Azure-VM-Wiederherstellung;
@@ -10,12 +9,12 @@ ms.topic: conceptual
 ms.date: 08/03/2018
 ms.author: pullabhk
 ms.assetid: b234533e-ac51-4482-9452-d97444f98b38
-ms.openlocfilehash: eb8b7dc77d180eb56c2585e93e60a36742f6c84c
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: d497fc714e0ad5f61873d4c1f95ab35837532646
+ms.sourcegitcommit: c72ddb56b5657b2adeb3c4608c3d4c56e3421f2c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60646621"
+ms.lasthandoff: 07/24/2019
+ms.locfileid: "68466777"
 ---
 # <a name="track-backup-and-restore-jobs-using-rest-api"></a>Nachverfolgen von Sicherungs- und Wiederherstellungsaufträgen mit der REST-API
 
@@ -51,7 +50,7 @@ GET https://management.azure.com/Subscriptions/{subscriptionId}/resourceGroups/{
 
 ### <a name="response"></a>response
 
-|NAME  |Type  |BESCHREIBUNG  |
+|NAME  |type  |BESCHREIBUNG  |
 |---------|---------|---------|
 |200 – OK     | [JobResource](https://docs.microsoft.com/rest/api/backup/jobdetails/get#jobresource)        | OK        |
 

@@ -3,8 +3,8 @@ title: Anzeigen von Berichten und Protokollen in der Azure AD-Berechtigungsverwa
 description: Erfahren Sie, wie Sie den Bericht zu Benutzerzuweisungen und Überwachungsprotokolle in der Azure Active Directory-Berechtigungsverwaltung (Vorschauversion) anzeigen.
 services: active-directory
 documentationCenter: ''
-author: rolyon
-manager: mtillman
+author: msaburnley
+manager: daveba
 editor: jocastel-MSFT
 ms.service: active-directory
 ms.workload: identity
@@ -13,15 +13,15 @@ ms.devlang: na
 ms.topic: conceptual
 ms.subservice: compliance
 ms.date: 04/19/2019
-ms.author: rolyon
+ms.author: ajburnle
 ms.reviewer: jocastel
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 60a61a581574c77a57939ea23fdadc7b060b82af
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: d33b4751b421f5af1536af9a88d15e060ab59bdb
+ms.sourcegitcommit: bafb70af41ad1326adf3b7f8db50493e20a64926
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64540669"
+ms.lasthandoff: 07/25/2019
+ms.locfileid: "68489059"
 ---
 # <a name="view-reports-and-logs-in-azure-ad-entitlement-management-preview"></a>Anzeigen von Berichten und Protokollen in der Azure AD-Berechtigungsverwaltung (Vorschauversion)
 

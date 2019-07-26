@@ -1,7 +1,6 @@
 ---
 title: 'Azure Backup: Erstellen von Recovery Services-Tresoren mit der REST-API'
 description: Verwalten von Sicherungs- und Wiederherstellungsvorgängen der Azure-VM-Sicherung mit der REST-API
-services: backup
 author: pvrk
 manager: shivamg
 keywords: REST-API; Azure-VM-Sicherung; Azure-VM-Wiederherstellung;
@@ -10,12 +9,12 @@ ms.topic: conceptual
 ms.date: 08/21/2018
 ms.author: pullabhk
 ms.assetid: e54750b4-4518-4262-8f23-ca2f0c7c0439
-ms.openlocfilehash: 4f18b10ee3f4148badc8e53a9660c9f5c998aef7
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 0373098dd344df79be79871227f20c8a995958fa
+ms.sourcegitcommit: c72ddb56b5657b2adeb3c4608c3d4c56e3421f2c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60646706"
+ms.lasthandoff: 07/24/2019
+ms.locfileid: "68466935"
 ---
 # <a name="create-azure-recovery-services-vault-using-rest-api"></a>Erstellen eines Azure Recovery Services-Tresors mit der REST-API
 
@@ -46,8 +45,8 @@ Die folgenden allgemeinen Definitionen werden verwendet, um einen Anforderungste
 
 |NAME  |Erforderlich  |Typ  |BESCHREIBUNG  |
 |---------|---------|---------|---------|
-|eTag     |         |   string      |  Optionales ETag       |
-|location     |  true       |string         |   Speicherort von Ressourcen      |
+|eTag     |         |   Zeichenfolge      |  Optionales ETag       |
+|location     |  true       |Zeichenfolge         |   Speicherort von Ressourcen      |
 |properties     |         | [VaultProperties](https://docs.microsoft.com/rest/api/recoveryservices/vaults/createorupdate#vaultproperties)        |  Eigenschaften des Tresors       |
 |sku     |         |  [sku](https://docs.microsoft.com/rest/api/recoveryservices/vaults/createorupdate#sku)       |    Gibt den eindeutigen Systembezeichner für jede Azure-Ressource an.     |
 |tags     |         | Object        |     Ressourcentags    |
@@ -72,7 +71,7 @@ Der folgende Beispieltext wird verwendet, um in „West US“ (USA, Westen) eine
 
 Es gibt zwei erfolgreiche Antworten für den Vorgang, um einen Recovery Services-Tresor zu erstellen oder zu aktualisieren:
 
-|NAME  |Type  |BESCHREIBUNG  |
+|NAME  |type  |BESCHREIBUNG  |
 |---------|---------|---------|
 |200 – OK     |   [Tresor](https://docs.microsoft.com/rest/api/recoveryservices/vaults/createorupdate#vault)      | OK        |
 |201 – Erstellt     | [Tresor](https://docs.microsoft.com/rest/api/recoveryservices/vaults/createorupdate#vault)        |   Erstellt      |

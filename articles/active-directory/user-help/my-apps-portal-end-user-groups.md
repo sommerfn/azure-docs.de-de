@@ -13,14 +13,15 @@ ms.author: lizross
 ms.reviewer: kasimpso
 ms.custom: user-help, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 578ca5fa1de338a92280e2dc7cc252fb616e2111
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: a11b43d040dec838de350c23614ae42b6756ec6e
+ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64706681"
+ms.lasthandoff: 07/22/2019
+ms.locfileid: "68383165"
 ---
 # <a name="update-your-groups-info-from-the-my-apps-portal"></a>Aktualisieren Ihrer Gruppeninformationen im Portal „Meine Apps“
+
 Sie können Ihr Geschäfts-, Schul- oder Unikonto mit dem webbasierten Portal **Meine Apps** verwenden, um viele der cloudbasierten Apps Ihrer Organisation anzuzeigen und zu starten, bestimmte Profil- und Kontoinformationen zu aktualisieren, Informationen zu Ihren **Gruppen** anzuzeigen und **Zugriffsüberprüfungen** für Ihre Apps und Gruppen durchzuführen. Sollten Sie keinen Zugriff auf das Portal **Meine Apps** haben, wenden Sie sich an Ihren Helpdesk.
 
 [!INCLUDE [preview-notice](../../../includes/active-directory-end-user-my-apps-portal.md)]
@@ -29,6 +30,7 @@ Sie können Ihr Geschäfts-, Schul- oder Unikonto mit dem webbasierten Portal **
 >Dieser Inhalt richtet sich an Benutzer. Administratoren können sich in der [Dokumentation zur Anwendungsverwaltung](https://docs.microsoft.com/azure/active-directory/manage-apps) über die Einrichtung und Verwaltung cloudbasierter Apps informieren.
 
 ## <a name="view-your-groups-information"></a>Anzeigen von Informationen zu Ihren Gruppen
+
 Wenn Ihr Administrator Ihnen die Berechtigung zum Anzeigen der Kachel **Gruppen** erteilt hat, haben Sie folgende Möglichkeiten:
 
 - **Als Gruppenmitglied.** Details anzeigen oder Gruppen verlassen.
@@ -37,9 +39,9 @@ Wenn Ihr Administrator Ihnen die Berechtigung zum Anzeigen der Kachel **Gruppen*
 
 ### <a name="to-view-your-groups-information"></a>So zeigen Sie Informationen zu Ihren Gruppen an
 
-1.  Melden Sie sich bei Ihrem Geschäfts-, Schul- oder Unikonto an.
+1. Melden Sie sich bei Ihrem Geschäfts-, Schul- oder Unikonto an.
 
-2.  Öffnen Sie Ihren Webbrowser, und navigieren Sie zu https://myapps.microsoft.com, oder verwenden Sie den von Ihrer Organisation bereitgestellten Link. So können Sie beispielsweise zu einer benutzerdefinierten Seite Ihrer Organisation wie https://myapps.microsoft.com/contoso.com geleitet werden.
+2. Öffnen Sie Ihren Webbrowser, und navigieren Sie zu https://myapps.microsoft.com, oder verwenden Sie den von Ihrer Organisation bereitgestellten Link. So können Sie beispielsweise zu einer benutzerdefinierten Seite Ihrer Organisation wie https://myapps.microsoft.com/contoso.com geleitet werden.
 
     Die Seite **Apps** wird mit allen im Besitz Ihrer Organisation befindlichen Cloud-Apps angezeigt, die Ihnen zur Verfügung stehen.
 
@@ -68,6 +70,7 @@ Wenn Ihr Administrator Ihnen die Berechtigung zum Anzeigen der Kachel **Gruppen*
     - **Beitreten zu einer Gruppe**. Im Bereich **Meine Gruppenmitgliedschaften** können Sie einer bestehenden Gruppe beitreten, deren Mitglied Sie noch nicht sind. Die einzelnen Schritte finden Sie unter [Beitreten zu einer vorhandenen Gruppe](#join-an-existing-group).
 
 ## <a name="create-a-new-group"></a>Erstellen einer neuen Gruppe
+
 1. Wählen Sie auf der Seite **Gruppen** im Bereich **Gruppen in meinem Besitz** den Befehl **Gruppe erstellen** aus.
 
     Das Dialogfeld **Gruppe erstellen** wird angezeigt.
@@ -77,7 +80,7 @@ Wenn Ihr Administrator Ihnen die Berechtigung zum Anzeigen der Kachel **Gruppen*
 2. Geben Sie die erforderlichen Informationen ein:
 
     - **Gruppentyp:**
-        
+
         - **Sicherheit.** Dieser Gruppentyp dient zur Verwaltung von Mitgliedern und des Computerzugriffs auf freigegebene Ressourcen für eine Gruppe von Benutzern. Beispielsweise können Sie eine Sicherheitsgruppe für eine bestimmte Sicherheitsrichtlinie erstellen. Auf diese Weise können Sie allen Mitgliedern gleichzeitig eine Gruppe von Berechtigungen gewähren, statt jedem einzelnen Mitglied separat Berechtigungen hinzuzufügen.
 
         - **Office 365.** Dieser Gruppentyp bietet Möglichkeiten zur Zusammenarbeit, indem Mitgliedern Zugriff auf freigegebene Postfächer, Kalender, Dateien, SharePoint-Websites und vieles mehr gewährt wird. Über diese Option können Sie auch Personen außerhalb Ihrer Organisation Zugriff auf die Gruppe gewähren.
@@ -93,9 +96,11 @@ Wenn Ihr Administrator Ihnen die Berechtigung zum Anzeigen der Kachel **Gruppen*
     Die neue Gruppe wird mit Ihnen als Besitzer erstellt und in der Liste **Gruppen in meinem Besitz** angezeigt. Da Sie der Besitzer sind, wird auch diese Gruppe in der Liste **Meine Gruppenmitgliedschaften** angezeigt.
 
 ## <a name="edit-an-existing-group"></a>Bearbeiten einer vorhandenen Gruppe
+
 Nachdem Sie eine Gruppe erstellt haben, können Sie ihre Details bearbeiten, d.h. vorhandene Informationen aktualisieren.
 
 ### <a name="to-edit-your-details"></a>So bearbeiten Sie die Gruppendetails
+
 1. Wählen Sie auf der Seite **Gruppen** die Gruppe aus, die Sie bearbeiten möchten, und wählen Sie dann auf der Seite *&lt;Gruppenname&gt;* die Option **Details bearbeiten** aus.
 
     Das Feld **Details bearbeiten** wird angezeigt, in dem Sie die Informationen aktualisieren können, die Sie beim ersten Erstellen der Gruppe hinzugefügt haben.
@@ -103,9 +108,11 @@ Nachdem Sie eine Gruppe erstellt haben, können Sie ihre Details bearbeiten, d.h
 2. Nehmen Sie die gewünschten Änderungen vor, und klicken Sie dann auf **Aktualisieren**.
 
 ## <a name="add-or-remove-a-member"></a>Hinzufügen oder Entfernen eines Mitglieds
+
 Bei Ihren eigenen Gruppen können Sie Mitglieder hinzufügen und entfernen.
 
 ### <a name="to-add-or-remove-a-member"></a>So können Sie ein Mitglied hinzufügen oder entfernen
+
 1. Wählen Sie die Gruppe aus, der Sie Mitglieder hinzufügen möchten, und klicken Sie anschließend auf der Seite *&lt;Gruppenname&gt;* auf **+** .
 
     ![Hinzufügen eines Gruppenmitglieds mit hervorgehobenem Pluszeichen](media/my-apps-portal/my-apps-portal-add-member-link.png)
@@ -121,9 +128,11 @@ Bei Ihren eigenen Gruppen können Sie Mitglieder hinzufügen und entfernen.
     ![Entfernen eines Mitglieds mit hervorgehobenem Link zum Entfernen](media/my-apps-portal/my-apps-portal-remove-member-link.png)
 
 ## <a name="renew-an-office-365-group"></a>Verlängern einer Office 365-Gruppe
+
 Wenn Ihre Organisation dies zulässt, können Sie eine Office 365-Gruppe erneuern und damit deren Ablaufdatum verlängern.
 
 ### <a name="to-renew-a-group"></a>So verlängern Sie eine Gruppe
+
 1. Wählen Sie die Office 365-Gruppe aus, die Sie verlängern möchten, und wählen Sie dann **Gruppe verlängern** aus.
 
     ![Verlängern einer Office 365-Gruppe und deren Ablaufdatum](media/my-apps-portal/my-apps-portal-renew-group-link.png)
@@ -133,18 +142,21 @@ Wenn Ihre Organisation dies zulässt, können Sie eine Office 365-Gruppe erneuer
     Nachdem Sie die Seite aktualisiert haben, werden unter **Zuletzt erneuert** und **Gruppenablauf** die aktualisierten Datumsangaben angezeigt.
 
 ## <a name="delete-a-group"></a>Löschen einer Gruppe
+
 Sie können Ihre eigenen Gruppen jederzeit löschen. Wenn Sie eine Gruppe versehentlich gelöscht haben, müssen Sie jedoch neu erstellen und Mitglieder wieder hinzufügen.
 
 ### <a name="to-delete-the-group"></a>So löschen Sie die Gruppe
+
 1. Wählen Sie die Gruppe aus, die Sie dauerhaft löschen möchten, und klicken Sie dann auf der Seite *&lt;Gruppenname&gt;* auf **Gruppe löschen**.
 
     ![Seite „<Gruppenname>“ mit hervorgehobenem Link zum Löschen der Gruppe](media/my-apps-portal/my-apps-portal-delete-group-link.png)
 
 2. Klicken Sie in der Bestätigungsmeldung auf **Ja**.
 
-    Die Gruppe wird endgültig gelöscht. 
-    
+    Die Gruppe wird endgültig gelöscht.
+
 ## <a name="join-an-existing-group"></a>Beitreten zu einer vorhandenen Gruppe
+
 Auf der Seite **Gruppen** können Sie einer bereits vorhandenen Gruppe beitreten.
 
 ### <a name="to-join-or-leave-a-group"></a>So können Sie einer Gruppe beitreten oder sie verlassen

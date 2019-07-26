@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
 manager: philmea
-ms.openlocfilehash: 2f6e1e1a27e32e567cf0eaa8ff7a99046ed81bbe
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: b1a849732539dbc9e066bee7cc20141f56ffe10c
+ms.sourcegitcommit: e72073911f7635cdae6b75066b0a88ce00b9053b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60746111"
+ms.lasthandoff: 07/19/2019
+ms.locfileid: "68348360"
 ---
 # <a name="symmetric-key-attestation"></a>Nachweis des symmetrischen Schlüssels
 
@@ -75,7 +75,7 @@ Dieses Beispiel wird im Artikel [How to provision legacy devices using symmetric
 
 Nachdem eine Registrierungs-ID für das Gerät definiert wurde, wird der symmetrische Schlüssel für die Registrierungsgruppe zum Berechnen eines [HMAC-SHA256](https://wikipedia.org/wiki/HMAC)-Hashes der Registrierungs-ID verwendet, um einen abgeleiteten Geräteschlüssel zu erstellen. Der Hashvorgang für die Registrierungs-ID kann mit dem folgenden C#-Code ausgeführt werden:
 
-```C#
+```csharp
 using System; 
 using System.Security.Cryptography; 
 using System.Text;  
@@ -92,7 +92,7 @@ public static class Utils
 } 
 ```
 
-```C#
+```csharp
 String deviceKey = Utils.ComputeDerivedSymmetricKey(Convert.FromBase64String(masterKey), registrationId);
 ```
 

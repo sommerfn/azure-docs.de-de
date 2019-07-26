@@ -2,27 +2,21 @@
 title: Schließen von aktiven Risikoereignissen in Azure Active Directory Identity Protection | Microsoft-Dokumentation
 description: Lernen Sie die Optionen zum Schließen von aktiven Risikoereignissen kennen.
 services: active-directory
-keywords: Azure Active Directory Identity Protection, Cloud App Discovery, Verwalten von Anwendungen, Sicherheit, Risiko, Risikostufe, Sicherheitsrisiko, Sicherheitsrichtlinie
-documentationcenter: ''
-author: MicrosoftGuyJFlo
-manager: daveba
-ms.assetid: e7434eeb-4e98-4b6b-a895-b5598a6cccf1
 ms.service: active-directory
 ms.subservice: identity-protection
-ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 09/24/2018
 ms.author: joflore
+author: MicrosoftGuyJFlo
+manager: daveba
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 55c56674b04c4359fba741d10176fc91e3a991eb
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: f5e24c12b72852ee7009533c8dc24d231fe636f2
+ms.sourcegitcommit: e9c866e9dad4588f3a361ca6e2888aeef208fc35
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67109028"
+ms.lasthandoff: 07/19/2019
+ms.locfileid: "68334001"
 ---
 # <a name="how-to-close-active-risk-events"></a>Anleitung: Schließen von aktiven Risikoereignissen
 
@@ -37,14 +31,9 @@ Der Status eines Risikoereignisses lautet entweder **Aktiv** oder **Geschlossen*
 Zum Schließen von aktiven Risikoereignissen haben Sie folgende Optionen:
 
 - Kennwortzurücksetzung über eine Richtlinie zum Benutzerrisiko anfordern
-
 - Manuelles Zurücksetzen des Kennworts
- 
 - Alle Risikoereignisse schließen 
-
 - Einzelne Risikoereignisse manuell schließen
-
-
 
 ## <a name="require-password-reset-with-a-user-risk-policy"></a>Kennwortzurücksetzung über eine Richtlinie zum Benutzerrisiko anfordern
 
@@ -60,24 +49,19 @@ Allerdings ist eine Richtlinie zum Benutzerrisiko nicht immer anwendbar. Dies gi
 - Benutzer mit aktiven Risikoereignissen, die gelöscht wurden
 - Eine Untersuchung, die ergibt, dass ein gemeldetes Risikoereignis vom berechtigten Benutzer durchgeführt wurde
 
-
 ## <a name="manual-password-reset"></a>Manuelles Zurücksetzen des Kennworts
 
 Wenn keine Kennwortzurücksetzung durch eine Richtlinie zum Benutzerrisiko angefordert werden kann, können Sie alle Risikoereignisse für einen Benutzer durch eine manuelle Kennwortzurücksetzung schließen.
 
 ![Kennwort zurücksetzen](./media/howto-close-active-risk-events/04.png)
 
-
 Das zugehörige Dialogfeld bietet zwei verschiedene Methoden zum Zurücksetzen eines Kennworts:
 
 ![Kennwort zurücksetzen](./media/howto-close-active-risk-events/05.png)
 
-
 **Temporäres Kennwort generieren**: Durch das Generieren eines temporären Kennworts können Sie eine Identität umgehend in einen sicheren Status zurückversetzen. Diese Methode erfordert eine Interaktion mit den betroffenen Benutzern, da diese das temporäre Kennwort kennen müssen. Sie können das neue temporäre Kennwort beispielsweise an eine andere E-Mail-Adresse des Benutzers oder an den Manager des Benutzers senden. Da das Kennwort temporär ist, wird der Benutzer bei der nächsten Anmeldung aufgefordert, das Kennwort zu ändern.
 
-
 **Benutzer zum Zurücksetzen des Kennworts auffordern**: Wenn der Benutzer zum Zurücksetzen von Kennwörtern aufgefordert wird, ist eine Self-Service-Wiederherstellung ohne Kontakt mit dem Helpdesk oder einem Administrator möglich. Wie eine Richtlinie zum Benutzerrisiko kann diese Methode nur auf Benutzer angewendet werden, die für MFA registriert sind. Für Benutzer, die noch nicht für MFA registriert sind, ist diese Option nicht verfügbar.
-
 
 ## <a name="dismiss-all-risk-events"></a>Alle Risikoereignisse schließen
 
@@ -86,7 +70,6 @@ Wenn eine Kennwortzurücksetzung keine Option für Sie ist, können Sie auch all
 ![Kennwort zurücksetzen](./media/howto-close-active-risk-events/03.png)
 
 Wenn Sie auf **Dismiss all events**(Alle Ereignisse schließen) klicken, werden alle Ereignisse geschlossen, und der betroffene Benutzer ist nicht mehr gefährdet. Da diese Methode jedoch keine Auswirkungen auf das vorhandene Kennwort hat, bringt sie die zugehörige Identität nicht wieder in einen sicheren Zustand. Der bevorzugte Anwendungsfall für diese Methode ist ein gelöschter Benutzers mit aktiven Risikoereignissen. 
-
 
 ## <a name="close-individual-risk-events-manually"></a>Einzelne Risikoereignisse manuell schließen
 
@@ -97,13 +80,9 @@ Beim manuellen Schließen von Risikoereignissen können Sie die folgenden Aktion
 ![Aktionen](./media/howto-close-active-risk-events/06.png)
 
 - **Lösen:** Wenn Sie nach dem Untersuchen eines Risikoereignisses außerhalb von Identity Protection eine geeignete Korrekturaktion durchgeführt haben und der Meinung sind, dass das Risikoereignis als geschlossen angesehen werden kann, können Sie das Ereignis als „Gelöst“ kennzeichnen. Für Ereignisse mit dem Status „Aufgelöst“ wird der Status auf „Geschlossen“ festgelegt, und das Risikoereignis fließt nicht mehr in das Benutzerrisiko ein.
-
 - **Als falsch positives Ergebnis kennzeichnen:** In einigen Fällen kann die Untersuchung eines Risikoereignisses ergeben, dass es fälschlicherweise als risikobehaftet gekennzeichnet wurde. Sie können zur Reduzierung der Anzahl solcher Vorfälle beitragen, indem Sie das Risikoereignis als falsch positives Ergebnis kennzeichnen. Auf diese Weise können die Machine Learning-Algorithmen die Klassifizierung ähnlicher Ereignisse in Zukunft verbessern. Der Status der falsch positiven Ereignisse wird auf „Geschlossen“ festgelegt, und sie fließen nicht mehr in die Berechnung des Benutzerrisikos ein.
-
 - **Ignorieren:** Falls Sie keine Korrekturaktion durchgeführt haben und das Risikoereignis trotzdem aus der Liste „Aktiv“ entfernen möchten, können Sie ein Risikoereignis mit „Ignorieren“ kennzeichnen. Der Ereignisstatus wird dann in „Geschlossen“ geändert. Ignorierte Ereignisse gehen nicht in das Benutzerrisiko ein. Diese Option sollte nur unter ungewöhnlichen Umständen verwendet werden.
-
 - **Reaktivieren:** Risikoereignisse, die manuell geschlossen wurden (durch Auswahl von „Lösen“, „Falsch positiv“ oder „Ignorieren“) können reaktiviert werden. Hierfür wird der Ereignisstatus zurück auf „Aktiv“ gesetzt. Reaktivierte Risikoereignisse fließen in die Berechnung des Benutzerrisikos ein. Risikoereignisse, die per Korrekturmaßnahme (z. B. das sichere Zurücksetzen des Kennworts) geschlossen werden, können nicht reaktiviert werden.
-  
 
 ## <a name="next-steps"></a>Nächste Schritte
 

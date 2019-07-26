@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/08/2019
 ms.author: b-juche
-ms.openlocfilehash: 5b54d8f21f4cb1cdd7bb06871df6ac22d19d1ab6
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.openlocfilehash: 087ecee053069a02e4d4dd6f636d05ea15269e2e
+ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67705198"
+ms.lasthandoff: 07/22/2019
+ms.locfileid: "68383489"
 ---
 # <a name="guidelines-for-azure-netapp-files-network-planning"></a>Richtlinien für die Azure NetApp Files-Netzwerkplanung
 
@@ -56,7 +56,7 @@ In der folgenden Tabelle werden die von Azure NetApp Files unterstützten Netzwe
 |    Verbindung mit Volume in einem mittels Peering verknüpften VNET (in derselben Region)    |    Ja    |         |
 |    Verbindung mit Volume in einem mittels Peering verknüpften VNET (regionsübergreifend oder globales Peering)    |    Nein    |    Keine    |
 |    Verbindung mit einem Volume über ExpressRoute-Gateway    |    Ja    |         |
-|    Verbindung zwischen lokalem Standort mit einem Volume in einem Spoke-VNET über ExpressRoute-Gateway und VNET-Peering mit Gatewaytransit    |    Nein    |    Erstellen eines delegierten Subnetzes im Hub-VNET (Azure-VNET mit Gateway)    |
+|    Verbindung zwischen lokalem Standort mit einem Volume in einem Spoke-VNET über ExpressRoute-Gateway und VNET-Peering mit Gatewaytransit    |    Ja    |        |
 |    Verbindung zwischen lokalem Standort mit einem Volume in einem Spoke-VNET über VPN-Gateway    |    Ja    |         |
 |    Verbindung zwischen lokalem Standort mit einem Volume in einem Spoke-VNET über VPN-Gateway und VNET-Peering mit Gatewaytransit    |    Ja    |         |
 

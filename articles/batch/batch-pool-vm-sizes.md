@@ -4,7 +4,7 @@ description: Wählen aus den verfügbaren VM-Größen für Computeknoten in Azur
 services: batch
 documentationcenter: ''
 author: laurenhughes
-manager: jeconnoc
+manager: gwallace
 editor: ''
 ms.assetid: ''
 ms.service: batch
@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 07/01/2019
 ms.author: lahugh
 ms.custom: seodec18
-ms.openlocfilehash: 1848891a0a37235c9769b3cee18262239e19df5a
-ms.sourcegitcommit: 837dfd2c84a810c75b009d5813ecb67237aaf6b8
+ms.openlocfilehash: fd88f8e9b32b3fe5a0d7ab0caf233098ea19fde0
+ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2019
-ms.locfileid: "67502668"
+ms.lasthandoff: 07/18/2019
+ms.locfileid: "68323101"
 ---
 # <a name="choose-a-vm-size-for-compute-nodes-in-an-azure-batch-pool"></a>Auswählen einer VM-Größe für Computeknoten in einem Azure Batch-Pool
 
@@ -41,26 +41,26 @@ Für alle nicht aufgeführten Vorschauversionen von VM-Größen oder VM-Größen
 
 | VM-Serie  | Unterstützte Größen | Poolzuordnungsmodus des Batch-Kontos<sup>1</sup> |
 |------------|---------|-----------------|
-| Serie „Basic A“ | Alle Größen *außer* Basic_A0 (A0) | Beliebig |
-| A-Serie | Alle Größen *außer* Standard_A0 | Beliebig |
-| Av2-Serie | Alle Größen | Beliebig |
+| Serie „Basic A“ | Alle Größen *außer* Basic_A0 (A0) | Any |
+| A-Serie | Alle Größen *außer* Standard_A0 | Any |
+| Av2-Serie | Alle Größen | Any |
 | B-Serie | Keine | Nicht verfügbar |
 | DC-Serie | Keine | Nicht verfügbar |
-| Dv2/DSv2-Serie | Alle Größen | Beliebig |
-| Dv3/DSv3-Serie | Alle Größen | Beliebig |
+| Dv2/DSv2-Serie | Alle Größen | Any |
+| Dv3/DSv3-Serie | Alle Größen | Any |
 | [Arbeitsspeicheroptimierte Größen](../virtual-machines/linux/sizes-memory.md) | Keine | Nicht verfügbar |
-| Fsv2-Serie | Alle Größen | Beliebig |
-| H-Reihe | Alle Größen | Beliebig |
-| HB-Serie<sup>2</sup> | Alle Größen | Beliebig |
-| HC-Serie<sup>2</sup> | Alle Größen | Beliebig |
-| Ls-Serie | Alle Größen | Beliebig |
+| Fsv2-Serie | Alle Größen | Any |
+| H-Reihe | Alle Größen | Any |
+| HB-Serie<sup>2</sup> | Alle Größen | Any |
+| HC-Serie<sup>2</sup> | Alle Größen | Any |
+| Ls-Serie | Alle Größen | Any |
 | Lsv2-Reihe | Keine | Nicht verfügbar |
-| M-Serie | Standard_M64ms (nur mit niedriger Priorität), Standard_M128s (nur mit niedriger Priorität) | Beliebig |  
-| NCv2-Serie<sup>2</sup> | Alle Größen | Beliebig |
-| NCv3-Serie<sup>2</sup> | Alle Größen | Beliebig |
-| ND-Serie<sup>2</sup> | Alle Größen | Beliebig |
+| M-Serie | Standard_M64ms (nur mit niedriger Priorität), Standard_M128s (nur mit niedriger Priorität) | Any |  
+| NCv2-Serie<sup>2</sup> | Alle Größen | Any |
+| NCv3-Serie<sup>2</sup> | Alle Größen | Any |
+| ND-Serie<sup>2</sup> | Alle Größen | Any |
 | NDv2-Serie | Alle Größen | Modus „Benutzerabonnement“ |
-| NV-Serie | Alle Größen | Beliebig |
+| NV-Serie | Alle Größen | Any |
 | NVv3-Serie | Keine | Nicht verfügbar |
 | SAP HANA | Keine | Nicht verfügbar |
 

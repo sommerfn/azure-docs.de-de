@@ -14,12 +14,12 @@ ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9817d63990b390cfbb0002423c1ff8f19fcd27f7
-ms.sourcegitcommit: 72f1d1210980d2f75e490f879521bc73d76a17e1
+ms.openlocfilehash: 2e22baabda901a34f624cf27c25037ff3ba94e90
+ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/14/2019
-ms.locfileid: "67147261"
+ms.lasthandoff: 07/22/2019
+ms.locfileid: "68381846"
 ---
 # <a name="azure-active-directory-version-2-cmdlets-for-group-management"></a>Azure Active Directory-Cmdlets Version 2 für die Gruppenverwaltung
 
@@ -172,7 +172,8 @@ Anschließend ändern wir die Eigenschaft „Description“ in den neuen Wert �
 
 Wenn wir nun erneut nach der Gruppe suchen, sehen wir, dass die Eigenschaft „Description“ mit dem neuen Wert aktualisiert wurde:
 
-```powershell    PS C:\Windows\system32> Get-AzureADGroup -Filter "DisplayName eq 'Intune Administrators'"
+```powershell
+    PS C:\Windows\system32> Get-AzureADGroup -Filter "DisplayName eq 'Intune Administrators'"
 
     DeletionTimeStamp            :
     ObjectId                     : 31f1ff6c-d48c-4f8a-b2e1-abca7fd399df
@@ -190,9 +191,9 @@ Wenn wir nun erneut nach der Gruppe suchen, sehen wir, dass die Eigenschaft „D
     SecurityEnabled              : True
 ```
 
-## Delete groups
+## <a name="delete-groups"></a>Löschen von Gruppen
 
-To delete groups from your directory, use the Remove-AzureADGroup cmdlet as follows:
+Zum Löschen von Gruppen aus Ihrem Verzeichnis verwenden Sie das Cmdlet „Remove-AzureADGroup“ wie folgt:
 
 ```powershell
     PS C:\Windows\system32> Remove-AzureADGroup -ObjectId b11ca53e-07cc-455d-9a89-1fe3ab24566b

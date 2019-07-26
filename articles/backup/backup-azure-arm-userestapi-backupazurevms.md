@@ -1,7 +1,6 @@
 ---
 title: 'Azure Backup: Sichern virtueller Azure-Computer mithilfe der REST-API'
 description: Verwalten von Sicherungsvorgängen der Azure-VM-Sicherung mit der REST-API
-services: backup
 author: pvrk
 manager: shivamg
 keywords: REST-API; Azure-VM-Sicherung; Azure-VM-Wiederherstellung;
@@ -10,12 +9,12 @@ ms.topic: conceptual
 ms.date: 08/03/2018
 ms.author: pullabhk
 ms.assetid: b80b3a41-87bf-49ca-8ef2-68e43c04c1a3
-ms.openlocfilehash: 295c4fed9ab674f0c9e812c02f6b82ee53ef1b91
-ms.sourcegitcommit: a52d48238d00161be5d1ed5d04132db4de43e076
+ms.openlocfilehash: e78c7ca9e5b39beb160aeef96dbbf6bce07613e4
+ms.sourcegitcommit: c72ddb56b5657b2adeb3c4608c3d4c56e3421f2c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/20/2019
-ms.locfileid: "67274851"
+ms.lasthandoff: 07/24/2019
+ms.locfileid: "68466838"
 ---
 # <a name="back-up-an-azure-vm-using-azure-backup-via-rest-api"></a>Sichern eines virtuellen Azure-Computers mithilfe von Azure Backup über die REST-API
 

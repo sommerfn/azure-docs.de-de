@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 05/02/2019
 ms.author: luisca
 ms.custom: seodec2018
-ms.openlocfilehash: 8bea47467d141869b1a668668bc57451a882a54b
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: 589f8c8f11138b4fb5c3c3096229e28c633efb0d
+ms.sourcegitcommit: 198c3a585dd2d6f6809a1a25b9a732c0ad4a704f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67448455"
+ms.lasthandoff: 07/23/2019
+ms.locfileid: "68423009"
 ---
 #  <a name="how-to-process-and-extract-information-from-images-in-cognitive-search-scenarios"></a>Verarbeiten und Extrahieren von Text aus Bildern in kognitiven Suchszenarien
 
@@ -102,8 +102,6 @@ Die [Bildanalysequalifikation](cognitive-search-skill-image-analysis.md) extrahi
 ### <a name="ocr-skill"></a>OCR-Qualifikation
 
 Die [OCR-Qualifikation](cognitive-search-skill-ocr.md) extrahiert Text aus Bilddateien – etwa aus JPG-, PNG- und Bitmap-Dateien. Sie kann sowohl Text als auch Layoutinformationen extrahieren. Die Layoutinformationen bieten umgebende Rechtecke für die jeweils erkannten Zeichenfolgen.
-
-Mit der OCR-Qualifikation können Sie den Algorithmus für die Texterkennung in Ihren Bildern auswählen. Aktuell werden zwei Algorithmen unterstützt: einer für gedruckten Text und einer für handschriftlichen Text.
 
 ## <a name="embedded-image-scenario"></a>Szenario mit eingebettetem Bild
 
