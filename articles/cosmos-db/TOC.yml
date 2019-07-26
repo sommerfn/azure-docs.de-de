@@ -272,6 +272,8 @@
         - name: Rollenbasierte Zugriffssteuerung
           displayName: rbac
           href: role-based-access-control.md
+        - href: cosmos-db-advanced-threat-protection.md
+          name: Erweiterter Schutz vor Bedrohungen
         - name: Sicherheitsattribute
           href: cosmos-db-security-attributes.md
     - name: Unternehmensfähigkeit

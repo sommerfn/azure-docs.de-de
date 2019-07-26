@@ -8,21 +8,21 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: ink-recognizer
 ms.topic: overview
-ms.date: 05/02/2019
+ms.date: 07/24/2019
 ms.author: erhopf
-ms.openlocfilehash: 95121523c510e72894086740ad340bdfd33f3c32
-ms.sourcegitcommit: dad277fbcfe0ed532b555298c9d6bc01fcaa94e2
+ms.openlocfilehash: c90d656539a2ed64b416dc9b8e7e11e205b98ee6
+ms.sourcegitcommit: 75a56915dce1c538dc7a921beb4a5305e79d3c7a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/10/2019
-ms.locfileid: "67721402"
+ms.lasthandoff: 07/24/2019
+ms.locfileid: "68478371"
 ---
 # <a name="what-is-the-ink-recognizer-api"></a>Was ist die Freihanderkennungs-API?
 
 
 Der Cognitive Service Freihanderkennung bietet eine cloudbasierte-REST-API zum Analysieren und Erkennen von Freihandschriftinhalten. Im Gegensatz zu Diensten, die optische Zeichenerkennung (OCR) verwenden, erfordert die API Freihandschriftdaten als Eingabe. Freihandschriftdaten sind zeitlich geordnete Gruppen von 2D-Punkten (X,Y-Koordinaten), die die Bewegung von Eingabetools wie digitalen Stiften oder Fingern darstellen. Anschließend erkennt sie Formen und handschriftlichen Inhalt aus der Eingabe und gibt eine JSON-Antwort zurück, die alle erkannten Entitäten enthält.
 
-![Ein Flussdiagramm, das das Senden einer Freihandschrifteingabe an die API beschreibt](media/ink-recognizer-pen-graph.png)
+![Ein Flussdiagramm, das das Senden einer Freihandschrifteingabe an die API beschreibt](media/ink-recognizer-pen-graph.svg)
 
 ## <a name="features"></a>Features
 

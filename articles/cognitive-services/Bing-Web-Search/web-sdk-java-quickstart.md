@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-web-search
 ms.topic: quickstart
-ms.date: 03/12/2019
+ms.date: 07/25/2019
 ms.author: aahi
-ms.openlocfilehash: 7209df902f03a7055e142dcbbb7743b6832958b6
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 0d2c1ca439dbbbd79ddabd2ea7a4eb5298d1071a
+ms.sourcegitcommit: a0b37e18b8823025e64427c26fae9fb7a3fe355a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57863779"
+ms.lasthandoff: 07/25/2019
+ms.locfileid: "68500970"
 ---
 # <a name="quickstart-use-the-bing-web-search-sdk-for-java"></a>Schnellstart: Verwenden des Bing-Websuche-SDK für Java
 
@@ -127,7 +127,7 @@ import com.microsoft.azure.cognitiveservices.search.websearch.models.VideoObject
 import com.microsoft.azure.cognitiveservices.search.websearch.models.WebPage;
 ```
 
-Wenn Sie das Projekt mit Maven erstellt haben, sollte das Paket bereits deklariert sein. Falls nicht, deklarieren Sie das Paket. Beispiel: 
+Wenn Sie das Projekt mit Maven erstellt haben, sollte das Paket bereits deklariert sein. Falls nicht, deklarieren Sie das Paket. Beispiel:
 
 ```java
 package com.bingwebsearch.app
@@ -300,4 +300,4 @@ Denken Sie daran, nach Abschluss dieses Projekts Ihren Abonnementschlüssel aus 
 
 ## <a name="see-also"></a>Weitere Informationen
 
-* [Referenz zum Azure Java SDK](https://docs.microsoft.com/java/api/overview/azure/cognitiveservices/client/websearch)
+* [Referenz zum Azure Java SDK](https://docs.microsoft.com/java/api/overview/azure/cognitiveservices/client/bingwebsearchapi?view=azure-java-stable)

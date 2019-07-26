@@ -8,12 +8,12 @@ ms.author: tarcher
 manager: jeconnoc
 ms.topic: tutorial
 ms.date: 11/15/2018
-ms.openlocfilehash: 90f89f9ffb1d55e7621c87f168375251c78d9730
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: 019c4a8f77f2664c68dcc6499fb2f27cc0d1447c
+ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57533492"
+ms.lasthandoff: 07/18/2019
+ms.locfileid: "68326923"
 ---
 # <a name="tutorial-deploy-from-github-to-azure-app-service-with-jenkins-continuous-integration-and-deployment"></a>Tutorial: Bereitstellen über GitHub in Azure App Service mit Continuous Integration und Continuous Deployment von Jenkins
 
@@ -122,7 +122,7 @@ Erstellen Sie als Nächstes den Azure-Dienstprinzipal, den Jenkins für die Auth
 
 ## <a name="create-service-principal"></a>Erstellen eines Dienstprinzipals
 
-In einem späteren Abschnitt erstellen Sie einen Jenkins-Pipelineauftrag, der Ihre App auf der Grundlage von GitHub erstellt und in Azure App Service bereitstellt. Damit Jenkins auf Azure zugreifen kann, ohne Ihre Anmeldeinformationen eingeben zu müssen, erstellen Sie in Azure Active Directory einen [Dienstprinzipal](https://docs.microsoft.com/azure/active-directory/develop/app-objects-and-service-principals) für Jenkins. Ein Dienstprinzipal ist eine separate Identität, die Jenkins für die Authentifizierung des Zugriffs auf Azure-Ressourcen verwenden kann. Führen Sie zum Erstellen dieses Dienstprinzipals den Azure CLI-Befehl [**`az ad sp create-for-rbac`**](https://docs.microsoft.com/cli/azure/create-an-azure-service-principal-azure-cli?view=azure-cli-latest) aus – entweder über Ihre lokale Befehlszeile oder über Azure Cloud Shell. Beispiel: 
+In einem späteren Abschnitt erstellen Sie einen Jenkins-Pipelineauftrag, der Ihre App auf der Grundlage von GitHub erstellt und in Azure App Service bereitstellt. Damit Jenkins auf Azure zugreifen kann, ohne Ihre Anmeldeinformationen eingeben zu müssen, erstellen Sie in Azure Active Directory einen [Dienstprinzipal](https://docs.microsoft.com/azure/active-directory/develop/app-objects-and-service-principals) für Jenkins. Ein Dienstprinzipal ist eine separate Identität, die Jenkins für die Authentifizierung des Zugriffs auf Azure-Ressourcen verwenden kann. Führen Sie zum Erstellen dieses Dienstprinzipals den Azure CLI-Befehl [ **`az ad sp create-for-rbac`** ](https://docs.microsoft.com/cli/azure/create-an-azure-service-principal-azure-cli?view=azure-cli-latest) aus – entweder über Ihre lokale Befehlszeile oder über Azure Cloud Shell. Beispiel: 
 
 ```azurecli-interactive
 az ad sp create-for-rbac --name "yourAzureServicePrincipalName" --password yourSecurePassword
@@ -169,7 +169,6 @@ Der Befehl **`create-for-rbac`** generiert die folgende Ausgabe:
    | **Geheimer Clientschlüssel** | <*yourSecurePassword*> | Der `password`-Wert (Geheimnis), den Sie für Ihren Azure-Dienstprinzipal angegeben haben. | 
    | **Tenant ID** | <*yourAzureActiveDirectoryTenant-ID*> | Der `tenant`-GUID-Wert für Ihren Azure Active Directory-Mandanten. | 
    | **ID** | <*yourAzureServicePrincipalName*> | Der `displayName`-Wert für Ihren Azure-Dienstprinzipal. | 
-   |||| 
 
 1. Wählen Sie **Verify Service Principal** (Dienstprinzipal überprüfen) aus, um zu überprüfen, ob Ihr Dienstprinzipal funktioniert. Wählen Sie **OK** aus, wenn Sie fertig sind.
 

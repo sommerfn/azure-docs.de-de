@@ -1,6 +1,6 @@
 ---
 title: Vorschlagen von Suchbegriffen mit der Bing-Vorschlagssuche-API
-titlesuffix: Azure Cognitive Services
+titleSuffix: Azure Cognitive Services
 description: Hier erfahren Sie, wie4 Sie die Bing-Vorschlagssuche-API verwenden.
 services: cognitive-services
 author: aahill
@@ -10,12 +10,12 @@ ms.subservice: bing-autosuggest
 ms.topic: overview
 ms.date: 02/20/2019
 ms.author: aahi
-ms.openlocfilehash: 7cd81a937a3fe24e16e3f77e38686378aa28e10a
-ms.sourcegitcommit: 3d4121badd265e99d1177a7c78edfa55ed7a9626
+ms.openlocfilehash: 1fc2311610dd45025ddb71cdf005a6e87381ee95
+ms.sourcegitcommit: 9dc7517db9c5817a3acd52d789547f2e3efff848
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/30/2019
-ms.locfileid: "66382676"
+ms.lasthandoff: 07/23/2019
+ms.locfileid: "68405398"
 ---
 # <a name="suggesting-query-terms"></a>Vorschlagen von Abfrageausdrücken
 

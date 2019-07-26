@@ -1,19 +1,18 @@
 ---
 title: Sichern von Azure Files-Dateifreigaben mit dem Azure Backup-Dienst
 description: In diesem Tutorial erfahren Sie, wie Sie Azure-Dateifreigaben sichern.
-services: backup
 author: dcurwin
 ms.author: dacurwin
 ms.date: 06/10/2019
 ms.topic: tutorial
 ms.service: backup
 manager: carmonm
-ms.openlocfilehash: 474d5454e30c35d3f3ccf4ea994093ef47bd6ceb
-ms.sourcegitcommit: a52d48238d00161be5d1ed5d04132db4de43e076
+ms.openlocfilehash: a06504438340f62d5b338165cb8b159459ae35dc
+ms.sourcegitcommit: c72ddb56b5657b2adeb3c4608c3d4c56e3421f2c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/20/2019
-ms.locfileid: "67276168"
+ms.lasthandoff: 07/24/2019
+ms.locfileid: "68467078"
 ---
 # <a name="back-up-azure-file-shares"></a>Sichern von Azure-Dateifreigaben
 In diesem Artikel erfahren Sie, wie Sie mithilfe des Azure-Portals [Azure Dateifreigaben](../storage/files/storage-files-introduction.md) sichern und wiederherstellen.

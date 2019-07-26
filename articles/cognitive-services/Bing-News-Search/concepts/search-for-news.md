@@ -1,6 +1,6 @@
 ---
 title: Suchen nach Nachrichten mit der Bing-News-Suche-API
-titlesuffix: Azure Cognitive Services
+titleSuffix: Azure Cognitive Services
 description: Hier erfahren Sie, wie Sie Suchabfragen für allgemeine Nachrichten, beliebte Themen und Schlagzeilen senden.
 services: cognitive-services
 author: swhite-msft
@@ -10,12 +10,12 @@ ms.subservice: bing-news-search
 ms.topic: overview
 ms.date: 06/19/2019
 ms.author: scottwhi
-ms.openlocfilehash: da1dd68b8e155e121f26f5599207691877fbf0ca
-ms.sourcegitcommit: a52d48238d00161be5d1ed5d04132db4de43e076
+ms.openlocfilehash: b70cf50bb33ca7962116586a347c508b15abcd0c
+ms.sourcegitcommit: 198c3a585dd2d6f6809a1a25b9a732c0ad4a704f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/20/2019
-ms.locfileid: "67274153"
+ms.lasthandoff: 07/23/2019
+ms.locfileid: "68423876"
 ---
 # <a name="search-for-news-with-the-bing-news-search-api"></a>Suchen nach Nachrichten mit der Bing-News-Suche-API
 

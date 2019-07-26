@@ -1,19 +1,18 @@
 ---
 title: Sichern von SQL Server-Datenbanken in Azure | Microsoft-Dokumentation
 description: In diesem Tutorial erfahren Sie, wie Sie SQL Server in Azure sichern.
-services: backup
 author: dcurwin
 manager: ''
 ms.service: backup
 ms.topic: tutorial
 ms.date: 06/18/2019
 ms.author: dacurwin
-ms.openlocfilehash: b5e2ccef3b2a91f903706745d74a4bf16e1003d4
-ms.sourcegitcommit: 770b060438122f090ab90d81e3ff2f023455213b
+ms.openlocfilehash: 31549ddbc0fbe237b9cca1b2b7a4893bc98abaf9
+ms.sourcegitcommit: c72ddb56b5657b2adeb3c4608c3d4c56e3421f2c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/17/2019
-ms.locfileid: "68305224"
+ms.lasthandoff: 07/24/2019
+ms.locfileid: "68467097"
 ---
 # <a name="back-up-sql-server-databases-in-azure-vms"></a>Sichern von SQL Server-Datenbanken auf virtuellen Azure-Computern
 

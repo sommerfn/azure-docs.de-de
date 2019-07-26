@@ -1,20 +1,20 @@
 ---
-title: Suchkategorien der API für die Bing-Suche nach ortsansässigen Unternehmen | Microsoft-Dokumentation
+title: Suchkategorien der API für die Bing-Suche nach ortsansässigen Unternehmen
 titleSuffix: Azure Cognitive Services
 description: In diesem Artikel erfahren Sie, wie Suchkategorien für den Endpunkt der API für die Bing-Suche nach ortsansässigen Unternehmen angegeben werden.
 services: cognitive-services
 author: aahill
 manager: nitinme
 ms.service: cognitive-services
-ms.topic: article
+ms.topic: quickstart
 ms.date: 11/01/2018
 ms.author: rosh
-ms.openlocfilehash: 7e5515aeee319464a65088653ad5e2bfe5b0b1f8
-ms.sourcegitcommit: ccb9a7b7da48473362266f20950af190ae88c09b
+ms.openlocfilehash: e7088ac11556d8810c744ab4b56d2639865fb2f5
+ms.sourcegitcommit: 198c3a585dd2d6f6809a1a25b9a732c0ad4a704f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67592811"
+ms.lasthandoff: 07/23/2019
+ms.locfileid: "68423419"
 ---
 # <a name="search-categories-for-the-bing-local-business-search-api"></a>Suchkategorien der API für die Bing-Suche nach ortsansässigen Unternehmen
 
