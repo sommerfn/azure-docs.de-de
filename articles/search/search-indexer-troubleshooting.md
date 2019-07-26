@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 05/02/2019
 ms.author: magottei
 ms.custom: seodec2018
-ms.openlocfilehash: 4ed18b5f83bdb052f2db6847a320c26a8e49f83e
-ms.sourcegitcommit: 72f1d1210980d2f75e490f879521bc73d76a17e1
+ms.openlocfilehash: 1cb3260fa11354de963318a023fec912d082eae4
+ms.sourcegitcommit: cf438e4b4e351b64fd0320bf17cc02489e61406a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/14/2019
-ms.locfileid: "67147546"
+ms.lasthandoff: 07/08/2019
+ms.locfileid: "67653400"
 ---
 # <a name="troubleshooting-common-indexer-issues-in-azure-search"></a>Behandeln von häufigen Problemen mit Indexern in Azure Search
 
@@ -45,7 +45,7 @@ Sie können die IP-Adresse Ihres Suchdiensts herausfinden, indem Sie seinen voll
 
 #### <a name="indexing-isnt-enabled"></a>Nicht aktivierte Indizierung
 
-Azure Search steht in impliziter Abhängigkeit zur Indizierung von Cosmos DB. Wenn Sie die automatische Indizierung in Cosmos DB deaktivieren, gibt Azure Search einen erfolgreichen Status zurück, kann jedoch keine Containerinhalte indizieren. Anweisungen zum Überprüfen der Einstellungen und zum Aktivieren der Indizierung finden Sie unter [Verwalten der Indizierung in Azure Cosmos DB](https://docs.microsoft.com/azure/cosmos-db/how-to-manage-indexing-policy#manage-indexing-using-azure-portal).
+Azure Search steht in impliziter Abhängigkeit zur Indizierung von Cosmos DB. Wenn Sie die automatische Indizierung in Cosmos DB deaktivieren, gibt Azure Search einen erfolgreichen Status zurück, kann jedoch keine Containerinhalte indizieren. Anweisungen zum Überprüfen der Einstellungen und zum Aktivieren der Indizierung finden Sie unter [Verwalten der Indizierung in Azure Cosmos DB](https://docs.microsoft.com/azure/cosmos-db/how-to-manage-indexing-policy#use-the-azure-portal).
 
 ## <a name="document-processing-errors"></a>Fehler bei der Dokumentverarbeitung
 

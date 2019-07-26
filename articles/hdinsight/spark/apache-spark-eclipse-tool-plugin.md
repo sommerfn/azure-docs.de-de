@@ -8,12 +8,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 11/30/2017
 ms.author: hrasheed
-ms.openlocfilehash: cd5839520a5b85f31cbe677ad6691a3d6bacd0b0
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 6e8f8e7d8324f23a81cd6ae3284bd6d7cff24117
+ms.sourcegitcommit: bafb70af41ad1326adf3b7f8db50493e20a64926
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67066387"
+ms.lasthandoff: 07/25/2019
+ms.locfileid: "68489841"
 ---
 # <a name="use-azure-toolkit-for-eclipse-to-create-apache-spark-applications-for-an-hdinsight-cluster"></a>Erstellen von Apache Spark-Anwendungen für HDInsight-Cluster mit dem Azure-Toolkit für Eclipse
 
@@ -67,7 +67,7 @@ Der Benutzer kann sich entweder [beim Azure-Abonnement anmelden](#sign-in-to-you
    ![Erweitern eines Clusternamens zum Anzeigen der Ressourcen](./media/apache-spark-eclipse-tool-plugin/view-explorer-4.png)
 
 ## <a name="link-a-cluster"></a>Verknüpfen eines Clusters
-Sie können einen normalen Cluster mithilfe des verwalteten Ambari-Benutzernamens verknüpfen. In ähnlicher Weise können Sie einen in eine Domäne eingebundenen HDInsight-Cluster unter Verwendung von Domäne und Benutzername verknüpfen, wie etwa user1@contoso.com.
+Sie können einen normalen Cluster mithilfe des verwalteten Ambari-Benutzernamens verknüpfen. In ähnlicher Weise können Sie einen in eine Domäne eingebundenen HDInsight-Cluster unter Verwendung von Domäne und Benutzername verknüpfen, wie etwa `user1@contoso.com`.
 
 1. Wählen Sie im **Azure-Explorer** den Befehl **Cluster verknüpfen** aus.
 

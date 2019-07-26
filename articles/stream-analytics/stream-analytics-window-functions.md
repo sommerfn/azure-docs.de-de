@@ -8,20 +8,20 @@ ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 06/11/2019
-ms.openlocfilehash: 56b6f11d226f25e3094a90d8646fa13860ee306e
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 530ff8d09d6c580a31ae26929fafcec5bb5b471b
+ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67066761"
+ms.lasthandoff: 07/07/2019
+ms.locfileid: "67621589"
 ---
 # <a name="introduction-to-stream-analytics-windowing-functions"></a>Einführung in die Stream Analytics-Windowing-Funktionen
 
 Bei Szenarien mit „Time Streaming“ ist das Durchführen von Vorgängen für die Daten in temporalen Fenstern ein häufiges Muster. Stream Analytics verfügt über native Unterstützung für Windowing-Funktionen, sodass Entwickler komplexe Streaming-Verarbeitungsaufträge mit sehr geringem Aufwand erstellen können.
 
-Vier Arten temporaler Fenster stehen zur Auswahl: Fenster vom Typ [**Rollierend**](https://msdn.microsoft.com/azure/stream-analytics/reference/tumbling-window-azure-stream-analytics), [**Springend**](https://msdn.microsoft.com/azure/stream-analytics/reference/hopping-window-azure-stream-analytics), [**Gleitend**](https://msdn.microsoft.com/azure/stream-analytics/reference/sliding-window-azure-stream-analytics) und [**Sitzung**](https://msdn.microsoft.com/azure/stream-analytics/reference/session-window-azure-stream-analytics).  Sie verwenden die Fensterfunktionen in der [**GROUP BY**](https://msdn.microsoft.com/azure/stream-analytics/reference/group-by-azure-stream-analytics)-Klausel der Abfragesyntax in Ihren Stream Analytics-Aufträgen. Sie können Ereignisse auch über mehrere Fenster hinweg aggregieren, indem Sie die [**Windows()** -Funktion](https://docs.microsoft.com/stream-analytics-query/windows-azure-stream-analytics) verwenden.
+Vier Arten temporaler Fenster stehen zur Auswahl: Fenster vom Typ [**Rollierend**](https://docs.microsoft.com/stream-analytics-query/tumbling-window-azure-stream-analytics), [**Springend**](https://docs.microsoft.com/stream-analytics-query/hopping-window-azure-stream-analytics), [**Gleitend**](https://docs.microsoft.com/stream-analytics-query/sliding-window-azure-stream-analytics) und [**Sitzung**](https://docs.microsoft.com/stream-analytics-query/session-window-azure-stream-analytics).  Sie verwenden die Fensterfunktionen in der [**GROUP BY**](https://docs.microsoft.com/stream-analytics-query/group-by-azure-stream-analytics)-Klausel der Abfragesyntax in Ihren Stream Analytics-Aufträgen. Sie können Ereignisse auch über mehrere Fenster hinweg aggregieren, indem Sie die [**Windows()** -Funktion](https://docs.microsoft.com/stream-analytics-query/windows-azure-stream-analytics) verwenden.
 
-Für alle [Windowing](https://msdn.microsoft.com/azure/stream-analytics/reference/windowing-azure-stream-analytics)-Vorgänge werden am **Ende** des Fensters Ergebnisse ausgegeben. Die Ausgabe des Fensters ist ein einzelnes Ereignis, das auf der verwendeten Aggregatfunktion basiert. Das Ausgabeereignis verfügt über den Zeitstempel vom Ende des Fensters, und alle Fensterfunktionen werden mit einer festen Länge definiert. 
+Für alle [Windowing](https://docs.microsoft.com/stream-analytics-query/windowing-azure-stream-analytics)-Vorgänge werden am **Ende** des Fensters Ergebnisse ausgegeben. Die Ausgabe des Fensters ist ein einzelnes Ereignis, das auf der verwendeten Aggregatfunktion basiert. Das Ausgabeereignis verfügt über den Zeitstempel vom Ende des Fensters, und alle Fensterfunktionen werden mit einer festen Länge definiert. 
 
 ![Stream Analytics-Fensterfunktionen – Konzepte](media/stream-analytics-window-functions/stream-analytics-window-functions-conceptual.png)
 
@@ -56,6 +56,6 @@ Wenn ein Partitionsschlüssel angegeben wird, werden die Ereignisse nach dem Sch
 * [Einführung in Azure Stream Analytics](stream-analytics-introduction.md)
 * [Erste Schritte mit Azure Stream Analytics](stream-analytics-real-time-fraud-detection.md)
 * [Skalieren von Azure Stream Analytics-Aufträgen](stream-analytics-scale-jobs.md)
-* [Stream Analytics Query Language Reference (in englischer Sprache)](https://msdn.microsoft.com/library/azure/dn834998.aspx)
+* [Stream Analytics Query Language Reference (in englischer Sprache)](https://docs.microsoft.com/stream-analytics-query/stream-analytics-query-language-reference)
 * [Referenz zur Azure Stream Analytics-Verwaltungs-REST-API](https://msdn.microsoft.com/library/azure/dn835031.aspx)
 

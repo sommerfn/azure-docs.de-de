@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3a2c036265049bf4b87435e96f779482da404caa
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.openlocfilehash: 54146927bf344eed63e24a3df073aa13f7fa0676
+ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/17/2019
-ms.locfileid: "67164820"
+ms.lasthandoff: 07/18/2019
+ms.locfileid: "68319909"
 ---
 # <a name="how-to-require-two-step-verification-for-a-user"></a>Vorgehensweise zum Erzwingen einer zweistufigen Überprüfung für einen Benutzer
 
@@ -27,7 +27,7 @@ Es gibt zwei Ansätze, um die zweistufige Überprüfung zu erzwingen, wobei beid
 
 ## <a name="choose-how-to-enable"></a>Auswählen der Art und Weise der Aktivierung
 
-**Aktiviert durch Ändern des Benutzerstatus**: Dies ist die herkömmliche Methode, die zweistufige Überprüfung zu erfordern, und wird in diesem Artikel erläutert. Dies funktioniert sowohl für Azure MFA in der Cloud als auch für Azure MFA Server. Bei dieser Methode müssen sich Benutzer **jedes Mal**, wenn sie sich anmelden, die zweistufige Überprüfung durchführen. Die Richtlinien für bedingten Zugriff werden außer Kraft gesetzt. Diese Methode wird für Personen mit Office 365- oder Microsoft 365 Business-Lizenzen verwendet, da sie keine Funktionen für bedingten Zugriff enthalten.
+**Aktiviert durch Ändern des Benutzerstatus**: Dies ist die herkömmliche Methode, die zweistufige Überprüfung zu erfordern, und wird in diesem Artikel erläutert. Dies funktioniert sowohl für Azure MFA in der Cloud als auch für Azure MFA Server. Bei dieser Methode müssen sich Benutzer **jedes Mal**, wenn sie sich anmelden, die zweistufige Überprüfung durchführen. Die Richtlinien für bedingten Zugriff werden außer Kraft gesetzt.
 
 Aktiviert durch Richtlinie für bedingten Zugriff: Dies ist die flexibelste Möglichkeit, die zweistufige Überprüfung für Ihre Benutzer zu aktivieren. Die Aktivierung durch Richtlinie für bedingten Zugriff funktioniert jedoch nur bei Azure MFA in der Cloud und ist eine Premium-Funktion von Azure AD. Weitere Informationen zu dieser Methode finden Sie unter [Erste Schritte mit Azure Multi-Factor Authentication in der Cloud](howto-mfa-getstarted.md).
 

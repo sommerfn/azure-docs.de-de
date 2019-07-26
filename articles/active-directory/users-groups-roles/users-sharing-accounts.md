@@ -15,12 +15,12 @@ ms.author: curtand
 ms.reviewer: jeffsta
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 902696e35a2447b67dab74b73794b80ad5e26511
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 5638710c4c01d361d108cfef69869fad1a7dad1a
+ms.sourcegitcommit: 770b060438122f090ab90d81e3ff2f023455213b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67083732"
+ms.lasthandoff: 07/17/2019
+ms.locfileid: "68304372"
 ---
 # <a name="sharing-accounts-with-azure-ad"></a>Freigeben von Konten in Azure AD
 ## <a name="overview"></a>Übersicht
@@ -67,7 +67,6 @@ Folgende Schritte sind erforderlich, um Azure AD zum Freigeben eines Kontos zu v
 * Hinzufügen einer Anwendung aus dem [App-Katalog](https://azure.microsoft.com/marketplace/active-directory/) oder einer [benutzerdefinierten Anwendung](https://cloudblogs.microsoft.com/enterprisemobility/2015/06/17/bring-your-own-app-with-azure-ad-self-service-saml-configuration-now-in-preview/).
 * Konfigurieren der Anwendung für einmaliges Anmelden per Kennwort (SSO)
 * Verwenden einer [gruppenbasierten Zuweisung](groups-saasapps.md) mit der Option „Gemeinsam genutzte Anmeldeinformationen“
-* Optional: In einigen Anwendungen wie Facebook, Twitter oder LinkedIn lässt sich die Option zur automatisierten Kennwortaktualisierung aktivieren: [Azure AD automated password roll-over for Facebook, Twitter and LinkedIn now in preview!](https://cloudblogs.microsoft.com/enterprisemobility/2015/02/20/azure-ad-automated-password-roll-over-for-facebook-twitter-and-linkedin-now-in-preview/)
 
 Mit Multi-Factor Authentication (MFA) lassen sich gemeinsam genutzte Konten sicherer gestalten. Lernen Sie, wie Sie [Anwendungen mit Azure AD sichern](../authentication/concept-mfa-whichversion.md) und mit der [Self-Service-Gruppenverwaltung](groups-self-service-management.md) von Azure AD die Verwaltungsrechte für den Zugriff auf Anwendungen delegieren.
 
