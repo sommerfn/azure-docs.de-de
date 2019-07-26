@@ -1,19 +1,18 @@
 ---
 title: DPM-/Azure Backup Server-Schutz einer SharePoint-Farm in Azure
 description: Dieser Artikel enthält eine Übersicht über den DPM-/Azure Backup Server-Schutz einer SharePoint-Farm in Azure.
-services: backup
 author: kasinh
 manager: vvithal
 ms.service: backup
 ms.topic: conceptual
 ms.date: 07/09/2019
 ms.author: kasinh
-ms.openlocfilehash: dd38ed8119e2879c4a1e4c6a52ad283043f067bf
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.openlocfilehash: 91b3105bc2aafba10f4bf105bee851743dcf5282
+ms.sourcegitcommit: c72ddb56b5657b2adeb3c4608c3d4c56e3421f2c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67705236"
+ms.lasthandoff: 07/24/2019
+ms.locfileid: "68466664"
 ---
 # <a name="back-up-a-sharepoint-farm-to-azure"></a>Sichern einer SharePoint-Farm in Azure
 Die Vorgehensweise zum Sichern einer SharePoint-Farm mithilfe von System Center Data Protection Manager (DPM) in Microsoft Azure ähnelt der Vorgehensweise zum Sichern anderer Datenquellen. Azure Backup ermöglicht die Verwendung eines flexiblen Sicherungszeitplans, mit dem Sie tägliche, wöchentliche, monatliche oder jährliche Sicherungspunkte erstellen und Aufbewahrungsrichtlinienoptionen für unterschiedliche Sicherungspunkte konfigurieren können. Mit DPM können Sie lokale Festplattenkopien speichern, um die Wiederherstellung zu beschleunigen. Außerdem können Sie Kopien zur kostengünstigen, langfristigen Aufbewahrung in Azure speichern.

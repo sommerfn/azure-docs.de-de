@@ -8,12 +8,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 10/25/2018
 ms.author: hrasheed
-ms.openlocfilehash: a03a778b2a057235b31d02e90e5ce87e9559b38a
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: f886cb71d4dbc191dae317e8ea72d8c896f37c03
+ms.sourcegitcommit: a874064e903f845d755abffdb5eac4868b390de7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67058560"
+ms.lasthandoff: 07/24/2019
+ms.locfileid: "68442074"
 ---
 # <a name="migrate-on-premises-apache-hadoop-clusters-to-azure-hdinsight---motivation-and-benefits"></a>Migrieren lokaler Apache Hadoop-Cluster zu Azure HDInsight – Motivation und Vorteile
 
@@ -43,7 +43,7 @@ Azure HDInsight ist eine Clouddistribution von Hadoop-Komponenten. Azure HDInsig
 
 - **Globale Verfügbarkeit**: HDInsight ist in mehr [Regionen](https://azure.microsoft.com/regions/services/) verfügbar als jede andere Big Data-Analyselösung. Zudem steht Azure HDInsight für Azure Government, China und Deutschland zur Verfügung, was die Erfüllung geschäftlicher Anforderungen in zentralen unabhängigen Bereichen ermöglicht.
 
-- **Sicher und konform**: Mit HDInsight können Sie die Datenressourcen Ihres Unternehmens durch die Verwendung von  [Azure Virtual Network](../hdinsight-extend-hadoop-virtual-network.md),  [Verschlüsselung](../hdinsight-hadoop-create-linux-clusters-with-secure-transfer-storage.md) und Integration von  [Azure Active Directory](../domain-joined/apache-domain-joined-introduction.md) schützen. Darüber hinaus erfüllt HDInsight die gängigsten branchen- und behördenspezifischen  [Compliancestandards](https://azure.microsoft.com/overview/trusted-cloud).
+- **Sicher und konform**: Mit HDInsight können Sie die Datenressourcen Ihres Unternehmens durch die Verwendung von  [Azure Virtual Network](../hdinsight-plan-virtual-network-deployment.md),  [Verschlüsselung](../hdinsight-hadoop-create-linux-clusters-with-secure-transfer-storage.md) und Integration von  [Azure Active Directory](../domain-joined/hdinsight-security-overview.md) schützen. Darüber hinaus erfüllt HDInsight die gängigsten branchen- und behördenspezifischen  [Compliancestandards](https://azure.microsoft.com/overview/trusted-cloud).
 
 - **Vereinfachte Versionsverwaltung**: Azure HDInsight verwaltet die Versionen von Komponenten des Hadoop-Ökosystems und hält sie auf dem neuesten Stand. Bei lokalen Bereitstellungen stellen Softwareupdates in der Regel ein komplexes Verfahren dar.
 

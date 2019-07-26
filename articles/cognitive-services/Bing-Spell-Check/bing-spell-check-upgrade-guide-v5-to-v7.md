@@ -1,6 +1,6 @@
 ---
 title: Durchführen eines Upgrades für die Bing-Rechtschreibprüfungs-API von v5 auf v7
-titlesuffix: Azure Cognitive Services
+titleSuffix: Azure Cognitive Services
 description: In diesem Artikel werden die Teile Ihrer Anwendung angegeben, die Sie zur Verwendung von Version 7 aktualisieren müssen.
 services: cognitive-services
 author: swhite-msft
@@ -10,12 +10,12 @@ ms.subservice: bing-spell-check
 ms.topic: conceptual
 ms.date: 02/20/2019
 ms.author: scottwhi
-ms.openlocfilehash: b19681fd1ad70985bccd375931f5d5801f153aa8
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 545772a28a67310b12eb55cd1fb14e8d12a95a58
+ms.sourcegitcommit: a0b37e18b8823025e64427c26fae9fb7a3fe355a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60895803"
+ms.lasthandoff: 07/25/2019
+ms.locfileid: "68500816"
 ---
 # <a name="spell-check-api-upgrade-guide"></a>Upgradehandbuch für die Rechtschreibprüfungs-API
 

@@ -12,12 +12,12 @@ ms.author: moslake
 ms.reviewer: ninarn, carlrab
 manager: craigg
 ms.date: 02/28/2019
-ms.openlocfilehash: c1db16475224cc3c91a5353ead0aabd091098e14
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 775e1abe1f3d6412171b8ff5427fd905e37480b5
+ms.sourcegitcommit: bafb70af41ad1326adf3b7f8db50493e20a64926
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66240362"
+ms.lasthandoff: 07/25/2019
+ms.locfileid: "68489689"
 ---
 # <a name="elastic-pools-help-you-manage-and-scale-multiple-azure-sql-databases"></a>Pools für elastische Datenbanken als Hilfe beim Verwalten und Skalieren mehrerer Azure SQL-Datenbank-Instanzen
 
@@ -217,7 +217,7 @@ Weitere Informationen finden Sie unter [Erstellen von SQL-Datenbankwarnungen im 
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- Informationen zum Skalieren von Pools für elastische Datenbanken finden Sie unter [Skalieren von Pools für elastische Datenbanken](sql-database-elastic-pool.md) und [Skalieren eines Pools für elastische Datenbanken – Beispielcode](scripts/sql-database-monitor-and-scale-pool-powershell.md).
+- Informationen zum Skalieren von Pools für elastische Datenbanken finden Sie unter [Skalieren von Pools für elastische Datenbanken](sql-database-elastic-pool-scale.md) und [Skalieren eines Pools für elastische Datenbanken – Beispielcode](scripts/sql-database-monitor-and-scale-pool-powershell.md).
 - Ein Video finden Sie unter [Microsoft Virtual Academy video course on Azure SQL Database elastic capabilities](https://mva.microsoft.com/training-courses/elastic-database-capabilities-with-azure-sql-db-16554) (Microsoft Virtual Academy-Videokurs zu Funktionen elastischer Datenbanken in Azure SQL-Datenbank).
 - Weitere Informationen zu Entwurfsmustern für SaaS-Anwendungen, für die Pools für elastische Datenbanken verwendet werden, finden Sie unter [Entwurfsmuster für SaaS-Anwendungen mit mehreren Mandanten und Azure SQL-Datenbank](sql-database-design-patterns-multi-tenancy-saas-applications.md).
 - Ein SaaS-Tutorial, in dem Pools für elastische Datenbanken verwendet werden, finden Sie in der [Einführung in die SaaS-Anwendung Wingtip](sql-database-wtp-overview.md).

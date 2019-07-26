@@ -1,19 +1,18 @@
 ---
 title: Supportmatrix für die Sicherung mit Azure Backup von Computern, auf denen der Microsoft Azure Recovery Services (MARS)-Agents ausgeführt wird
 description: Dieser Artikel enthält eine Übersicht über die Azure Backup-Unterstützung beim Sichern von Computern, auf denen der MARS-Agent (Microsoft Azure Recovery Services) ausgeführt wird.
-services: backup
 author: rayne-wiselman
 ms.service: backup
 ms.date: 02/17/2019
 ms.topic: conceptual
 ms.author: raynew
 manager: carmonm
-ms.openlocfilehash: 9799914cdabf1f64fccfd6bfd891f9498b860e39
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: d9f3c9b94a093df539a6ca4660383837becf1709
+ms.sourcegitcommit: c72ddb56b5657b2adeb3c4608c3d4c56e3421f2c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64923004"
+ms.lasthandoff: 07/24/2019
+ms.locfileid: "68464841"
 ---
 # <a name="support-matrix-for-backup-with-the-microsoft-azure-recovery-services-mars-agent"></a>Supportmatrix für die Sicherung mit dem Microsoft Azure Recovery Services (MARS)-Agent
 
@@ -45,7 +44,7 @@ Wenn Sie Daten mit dem MARS-Agent sichern, wird eine Momentaufnahme der Daten er
 
 **Cache** | **Details**
 --- | ---
-Größe |  Der freie Speicherplatz im Cacheordner muss mindestens 5 bis 10 Prozent der Gesamtgröße Ihrer Sicherungsdaten betragen.
+Size |  Der freie Speicherplatz im Cacheordner muss mindestens 5 bis 10 Prozent der Gesamtgröße Ihrer Sicherungsdaten betragen.
 Location | Der Cacheordner muss lokal auf dem Computer gespeichert werden, der gesichert wird, und er muss online sein. Der Cacheordner darf sich nicht in einer Netzwerkfreigabe, auf Wechselmedien oder in einem Offline-Volume befinden.
 Ordner | Der Cacheordner muss verschlüsselt sein und sich auf einem deduplizierten Volume oder in einem Ordner befinden, der komprimiert ist, eine geringe Dichte aufweist oder einen Analysepunkt hat.
 Andere Speicherorte | Sie können den Cachespeicherort ändern, indem Sie die Sicherungs-Engine beenden (`net stop bengine`) und den Cacheordner in ein neues Laufwerk kopieren. (Stellen Sie sicher, dass genügend Platz vorhanden ist.) Dann aktualisieren Sie zwei Registrierungseinträge unter **HKLM\SOFTWARE\Microsoft\Windows Azure Backup** (**Config/ScratchLocation** und **Config/CloudBackupProvider/ScratchLocation**) auf den neuen Speicherort und starten die Engine neu.
@@ -94,10 +93,10 @@ Bei Azure Backup ist die Größe einer Datei- oder Ordnerdatenquelle, die gesich
 
 **Betriebssystem** | **Größenlimit**
 --- | ---
-Windows Server 2012 oder höher |  54\.400 GB
+Windows Server 2012 oder höher |  54.400 GB
 Windows Server 2008 R2 SP1 |    1\.700 GB
 Windows Server 2008 SP2 | 1\.700 GB
-Windows 8 oder höher  | 54\.400 GB
+Windows 8 oder höher  | 54.400 GB
 Windows 7   | 1\.700 GB
 
 
