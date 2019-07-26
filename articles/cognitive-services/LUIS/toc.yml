@@ -321,6 +321,18 @@
     - name: Vordefinierter Domänenverweis
       href: luis-reference-prebuilt-domains.md
       displayName: 'Calendar, Communication,Email,HomeAutomation,Note,Places, RestaurantReservation,ToDo,Utilities,Weather,Web'
+    - name: Benutzerdefinierter Entitätsverweis
+      items:
+        - name: Entität vom Typ „Composite“
+          href: reference-entity-composite.md
+        - name: Entität vom Typ „List“
+          href: reference-entity-list.md
+        - name: Entität „Pattern.any“
+          href: reference-entity-pattern-any.md
+        - name: Entität vom Typ „RegEx“
+          href: reference-entity-regular-expression.md
+        - name: Entität vom Typ „Simple“
+          href: reference-entity-simple.md
     - name: Azure-Befehlszeilenschnittstelle
       href: 'https://go.microsoft.com/fwlink/?linkid=2092156'
     - name: Azure RM PowerShell

@@ -1,5 +1,10 @@
 - name: Dokumentation zur sicheren Entwicklung
   href: index.yml
+- name: Beispiel-Apps
+  expanded: true
+  items:
+    - name: Web-App in einem Linux-Container
+      href: secure-web-app.md
 - name: Konzepte
   expanded: true
   items:
