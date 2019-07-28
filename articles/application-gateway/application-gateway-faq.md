@@ -33,7 +33,7 @@ Application Gateway unterstützt automatische Skalierung, SSL-Abladung und End-t
 
 ### <a name="how-do-application-gateway-and-azure-load-balancer-differ"></a>Was ist der Unterschied zwischen Application Gateway und Azure Load Balancer?
 
-Application Gateway ist ein Layer-7-Lastenausgleich und somit nur für Webdatenverkehr (HTTP/HTTPS/WebSocket und HTTP/2) geeignet. Er unterstützt Funktionen wie SSL-Beendigung, cookiebasierte Sitzungsaffinität und Roundrobin für den Lastenausgleich von Datenverkehr. Load Balancer nimmt einen Lastausgleich des Datenverkehrs auf Schicht 4 (TCP/UDP) vor.
+Application Gateway ist ein Layer-7-Lastenausgleich und somit nur für Webdatenverkehr (HTTP/HTTPS/WebSocket und HTTP/2) geeignet. Er unterstützt Funktionen wie SSL-Terminierung, cookiebasierte Sitzungsaffinität und Roundrobin für den Lastenausgleich von Datenverkehr. Load Balancer nimmt einen Lastausgleich des Datenverkehrs auf Schicht 4 (TCP/UDP) vor.
 
 ### <a name="what-protocols-does-application-gateway-support"></a>Welche Protokolle werden von Application Gateway unterstützt?
 

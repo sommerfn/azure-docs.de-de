@@ -244,7 +244,7 @@ Microsoft [Azure Application Gateway](https://docs.microsoft.com/azure/applicati
 
 ![Application Gateway](./media/azure-security/azure-security-fig2.png)
 
-Sie können damit die Produktivität von Webfarmen steigern, indem sie die CPU-intensive SSL-Beendigung an das Application Gateway auslagern (auch als „SSL-Auslagerung“ oder „SSL-Bridging“ bekannt). Darüber hinaus werden noch weitere Routingfunktionen der Ebene 7 bereitgestellt. Hierzu zählen etwa die Roundrobin-Verteilung des eingehenden Datenverkehrs, cookiebasierte Sitzungsaffinität, Routing auf URL-Pfadbasis und die Möglichkeit zum Hosten mehrerer Websites hinter einer einzelnen Application Gateway-Instanz. Azure Application Gateway verwendet einen Load Balancer auf der Schicht 7 (Anwendungsschicht).
+Sie können damit die Produktivität von Webfarmen steigern, indem sie die CPU-intensive SSL-Terminierung an das Application Gateway auslagern (auch als „SSL-Auslagerung“ oder „SSL-Bridging“ bekannt). Darüber hinaus werden noch weitere Routingfunktionen der Ebene 7 bereitgestellt. Hierzu zählen etwa die Roundrobin-Verteilung des eingehenden Datenverkehrs, cookiebasierte Sitzungsaffinität, Routing auf URL-Pfadbasis und die Möglichkeit zum Hosten mehrerer Websites hinter einer einzelnen Application Gateway-Instanz. Azure Application Gateway verwendet einen Load Balancer auf der Schicht 7 (Anwendungsschicht).
 
 Das Application Gateway ermöglicht ein Failover sowie schnelles Routing von HTTP-Anforderungen zwischen verschiedenen Servern in der Cloud und der lokalen Umgebung.
 

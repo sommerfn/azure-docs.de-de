@@ -191,4 +191,4 @@ az group delete --name myResourceGroupAG
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* [Erstellen eines Anwendungsgateways mit SSL-Beendigung](./tutorial-ssl-cli.md)
+* [Erstellen eines Anwendungsgateways mit SSL-Terminierung](./tutorial-ssl-cli.md)

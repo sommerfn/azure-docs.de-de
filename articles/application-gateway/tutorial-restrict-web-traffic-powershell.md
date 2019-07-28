@@ -323,4 +323,4 @@ In diesem Tutorial haben Sie Folgendes gelernt:
 > * Erstellen eines Speicherkontos und Konfigurieren der Diagnose
 
 > [!div class="nextstepaction"]
-> [Erstellen eines Anwendungsgateways mit SSL-Beendigung](./tutorial-ssl-powershell.md)
+> [Erstellen eines Anwendungsgateways mit SSL-Terminierung](./tutorial-ssl-powershell.md)

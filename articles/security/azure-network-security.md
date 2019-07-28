@@ -372,7 +372,7 @@ Mit Azure-Appliances für die Netzwerksicherheit werden die VNet-Sicherheit und 
 
  ![Application Gateway](./media/azure-network-security/azure-network-security-fig-11.png)
 
-Mithilfe von Application Gateway können Sie die Leistung und Verfügbarkeit von Webfarmen optimieren, indem Sie die CPU-intensive SSL-Beendigung auf das Anwendungsgateway verlagern (SSL-Abladung). Außerdem werden beispielsweise die folgenden Routingfunktionen für Schicht 7 bereitgestellt:
+Mithilfe von Application Gateway können Sie die Leistung und Verfügbarkeit von Webfarmen optimieren, indem Sie die CPU-intensive SSL-Terminierung auf das Anwendungsgateway verlagern (SSL-Abladung). Außerdem werden beispielsweise die folgenden Routingfunktionen für Schicht 7 bereitgestellt:
 
 -   Roundrobin-Verteilung des eingehenden Datenverkehrs
 

@@ -124,7 +124,7 @@ In der folgenden Tabelle werden die Features der einzelnen SKUs gegenübergestel
 | Hosten mehrerer Websites                             | &#x2713; | &#x2713; |
 | Umleitung des Datenverkehrs                               | &#x2713; | &#x2713; |
 | Web Application Firewall (WAF)                    | &#x2713; | &#x2713; |
-| SSL-Beendigung (Secure Sockets Layer)            | &#x2713; | &#x2713; |
+| SSL-Terminierung (Secure Sockets Layer)            | &#x2713; | &#x2713; |
 | End-to-End-SSL-Verschlüsselung                         | &#x2713; | &#x2713; |
 | Sitzungsaffinität                                  | &#x2713; | &#x2713; |
 | Benutzerdefinierte Fehlerseiten                                | &#x2713; | &#x2713; |
