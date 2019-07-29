@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 05/02/2019
+ms.date: 07/05/2019
 ms.author: erhopf
-ms.openlocfilehash: e12cef052db6aabad94b47283eda11f60f3b2b13
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 49195efa54c8e6eca9186a9e2fc33da84ff34413
+ms.sourcegitcommit: c0419208061b2b5579f6e16f78d9d45513bb7bbc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67063917"
+ms.lasthandoff: 07/08/2019
+ms.locfileid: "67625384"
 ---
 # <a name="train-a-model-for-custom-speech"></a>Trainieren eines Modells für Custom Speech
 
@@ -25,12 +25,11 @@ Das Training einer Spracherkennung ist notwendig, um die Erkennungsgenauigkeit s
 
 Wenn Sie mit Ihrem Modell auf Erkennungsprobleme stoßen, kann die Verwendung von menschenmarkierten Transkripten und zugehörigen Daten für zusätzliches Training zur Verbesserung der Genauigkeit beitragen. Bestimmen Sie anhand von dieser Tabelle, welches Dataset zum Beheben Ihrer Probleme verwendet werden soll:
 
-| Anwendungsfall | Datentyp | Datenmenge |
-|----------|-----------|---------------|
-| Eigennamen werden falsch erkannt. | Zugehöriger Text (Sätze/Äußerungen) | 10 bis 500 MB |
-| Wörter werden aufgrund eines Akzents falsch erkannt. | Zugehöriger Text (Aussprache) | Falsch erkannte Wörter angeben |
-| Häufige Wörter werden gelöscht oder falsch erkannt. | Audio + menschenmarkierte Transkripte | 10 bis 1.000 Transkriptionsstunden |
-
+| Anwendungsfall | Datentyp |
+|----------|-----------|
+| Verbessern der Erkennungsgenauigkeit für branchenspezifisches Vokabular und entsprechende Grammatik (beispielsweise aus der Medizin- oder IT-Branche) | Zugehöriger Text (Sätze/Äußerungen) |
+| Definieren der phonetischen und angezeigten Form eines Worts oder Begriffs mit nicht standardmäßiger Aussprache (beispielsweise Produktnamen oder Akronyme) | Zugehöriger Text (Aussprache) |
+| Verbessern der Erkennungsgenauigkeit für Sprechweisen, Akzente oder bestimmte Hintergrundgeräusche | Audio + menschenmarkierte Transkripte |
 > [!IMPORTANT]
 > Wenn Sie kein Dataset hochgeladen haben, beachten Sie [Vorbereiten und Testen Ihrer Daten](how-to-custom-speech-test-data.md). Dieses Dokument enthält Anweisungen zum Hochladen von Daten und Richtlinien zum Erstellen von Datasets mit hoher Qualität.
 
