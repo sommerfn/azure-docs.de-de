@@ -54,7 +54,7 @@ Während der Migration wird für die Ressourcen die Transformation vom klassisch
 <a name="vault">Wenn</a> Sie einen virtuellen Computer vom klassischen in den Resource Manager-Modus verschieben, werden Sicherungen, die vor der Migration aufgezeichnet wurden, nicht auf die neu migrierte Resourcen Manager-VM migriert. Wenn Sie die Sicherungen der klassischen VMs Jedoch aufbewahren möchten, gehen Sie vor der Migration folgendermaßen vor. 
 
 1. Wechseln Sie im Recovery Services-Tresor zur Registerkarte **Geschützte Elemente**, und wählen Sie den virtuellen Computer aus. 
-2. Klicken Sie auf „Schutz beenden“. Aktivieren Sie die Option *Zugeordnete Sicherungsdaten löschen***nicht**.
+2. Klicken Sie auf „Schutz beenden“. Aktivieren Sie die Option *Zugeordnete Sicherungsdaten löschen* **nicht**.
 
 > [!NOTE]
 > Ihnen werden Kosten für die Sicherungsinstanz berechnet, bis Sie die Daten beibehalten. Sicherungskopien werden gemäß der Beibehaltungsdauer gelöscht. Die letzte Sicherungskopie wird jedoch immer beibehalten, bis Sie Sicherungsdaten explizit löschen. Es wird empfohlen, die Beibehaltungsdauer des virtuellen Computers zu überprüfen und „Sicherungsdaten löschen“ für das geschützte Element im Tresor auszulösen, sobald die Beibehaltungsdauer überschritten wurde. 
