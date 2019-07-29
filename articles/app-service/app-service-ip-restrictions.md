@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 06/06/2019
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: 2b0892fb107827cd9060a36855e9b8bf4416463c
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: d3c547fbc09aeb034df5b7ed579639e1ff4bc0b4
+ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67069435"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67705804"
 ---
 # <a name="azure-app-service-access-restrictions"></a>Azure App Service – Zugriffseinschränkungen #
 
@@ -98,7 +98,7 @@ Neben der Möglichkeit, den Zugriff auf Ihre App zu steuern, können Sie auch de
 
 ## <a name="programmatic-manipulation-of-access-restriction-rules"></a>Programmgesteuerte Bearbeitung von Zugriffseinschränkungsregeln ##
 
-Derzeit können Sie weder die CLI noch PowerShell für die neue Funktion „Zugriffseinschränkungen“ verwenden, aber Sie können die Werte manuell per PUT-Vorgang in der App-Konfiguration in Resource Manager festlegen. Sie können beispielsweise „resources.azure.com“ verwenden und den ipSecurityRestrictions-Block bearbeiten, um den erforderlichen JSON-Code hinzuzufügen.
+Derzeit kann weder die Befehlszeilenschnittstelle noch PowerShell für die neue Funktion „Zugriffseinschränkungen“ verwendet werden. Sie können die Werte jedoch manuell per PUT-Vorgang der [Azure-REST-API](https://docs.microsoft.com/rest/api/azure/) in der App-Konfiguration in Resource Manager festlegen. Sie können beispielsweise „resources.azure.com“ verwenden und den ipSecurityRestrictions-Block bearbeiten, um den erforderlichen JSON-Code hinzuzufügen.
 
 Der Speicherort dieser Informationen im Resource Manager ist:
 
@@ -106,15 +106,19 @@ management.azure.com/subscriptions/**Abonnement-ID**/resourceGroups/**Ressourcen
 
 Die JSON-Syntax für das obige Beispiel lautet:
 
-    "ipSecurityRestrictions": [
-      {
-        "ipAddress": "131.107.159.0/24",
-        "action": "Allow",
-        "tag": "Default",
-        "priority": 100,
-        "name": "allowed access"
+    {
+      "properties": {
+        "ipSecurityRestrictions": [
+          {
+            "ipAddress": "122.133.144.0/24",
+            "action": "Allow",
+            "tag": "Default",
+            "priority": 100,
+            "name": "IP example rule"
+          }
+        ]
       }
-    ],
+    }
 
 ## <a name="function-app-ip-restrictions"></a>IP-Einschränkungen der Funktionen-App
 

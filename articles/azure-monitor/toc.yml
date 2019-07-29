@@ -308,7 +308,13 @@
               displayname: 'live, quickpulse, quick pulse, live metrics'
               href: app/live-stream.md
             - name: metrics
-              href: app/metrics-explorer.md
+              items:
+                - name: Protokollbasierte und vorab aggregierte Metriken
+                  href: app/pre-aggregated-metrics-log-metrics.md
+                - name: Protokollbasierte Metrikdefinitionen
+                  href: platform/app-insights-metrics.md
+                - name: Klassischer Metrik-Explorer
+                  href: app/metrics-explorer.md
             - name: 'Suchen,'
               href: app/diagnostic-search.md
             - name: Profiler
@@ -425,8 +431,6 @@
                   href: app/asp-net-dependencies.md
                 - name: ApplicationInsights.config
                   href: app/configuration-with-applicationinsights-config.md
-                - name: Protokollbasierte und vorab aggregierte Metriken
-                  href: app/pre-aggregated-metrics-log-metrics.md
                 - name: Transaktionsdiagnose
                   href: app/transaction-diagnostics.md
                 - name: Korrelieren von benutzerdefinierten Datenquellen
@@ -659,15 +663,13 @@
                 - name: Erfassen in Protokollen
                   href: platform/diagnostic-logs-stream-log-store.md
                 - name: Sammeln in Azure Storage
-                  href: platform/collect-azure-metrics-logs.md
+                  href: platform/azure-storage-iis-table.md
                 - name: Archivieren im Speicher
                   href: platform/archive-diagnostic-logs.md
                 - name: Streamen von Daten an Event Hubs
                   href: platform/diagnostic-logs-stream-event-hubs.md
                 - name: Aktivieren mit Resource Manager-Vorlagen
                   href: platform/diagnostic-logs-stream-template.md
-                - name: Dienstprotokolle und -metriken
-                  href: platform/azure-storage-iis-table.md
             - name: Streamen von Daten an Event Hubs
               href: platform/stream-monitoring-data-event-hubs.md
             - name: Key Vault-Analysen
@@ -736,8 +738,8 @@
               href: platform/metrics-getting-started.md
             - name: Erweiterte Funktionen von Metrik-Explorer
               href: platform/metrics-charts.md
-            - name: Protokollbasierte Metriken
-              href: platform/app-insights-metrics.md
+            - name: Beispiele für Metrikdiagramme
+              href: platform/metric-chart-samples.md
             - name: Problembehandlung für Metrikdiagramme
               href: platform/metrics-troubleshoot.md
         - name: Protokolle

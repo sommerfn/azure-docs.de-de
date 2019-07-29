@@ -10,16 +10,16 @@ ms.devlang: ''
 ms.topic: conceptual
 ms.date: 05/15/2019
 ms.author: sstein
-ms.openlocfilehash: 04c19c9a8603fee46914eb94b50c4f97e34e9c42
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: be39aa63cf923e74dc7ed13ef78ba554ffd3b8a4
+ms.sourcegitcommit: cf438e4b4e351b64fd0320bf17cc02489e61406a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67070212"
+ms.lasthandoff: 07/08/2019
+ms.locfileid: "67658020"
 ---
 # <a name="sql-database-release-notes"></a>Versionshinweise zu SQL-Datenbank
 
-In diesem Artikel erhalten Sie weitere Informationen zu den neuen Features und Verbesserungen in Azure SQL-Datenbank und in der zugehörigen Dokumentation. Die Verbesserungen an SQL-Datenbank finden Sie außerdem unter [Azure-Updates](https://azure.microsoft.com/updates/?product=sql-database). Informationen zu Verbesserungen bei anderen Azure-Diensten finden Sie unter [Dienstupdates](https://azure.microsoft.com/updates).
+In diesem Artikel werden die SQL-Datenbank-Features aufgeführt, die sich derzeit in der Public Preview-Phase befinden. Informationen zu Updates und Verbesserungen für SQL-Datenbank finden Sie unter [Azure-Updates](https://azure.microsoft.com/updates/?product=sql-database). Informationen zu Updates und Verbesserungen für andere Azure-Dienste finden Sie unter [Dienstupdates](https://azure.microsoft.com/updates).
 
 ## <a name="features-in-public-preview"></a>Features in der öffentlichen Vorschau
 
@@ -44,131 +44,12 @@ In diesem Artikel erhalten Sie weitere Informationen zu den neuen Features und V
 | Transparent Data Encryption (TDE) mit Bring Your Own Key-Szenarien (BYOK) bei verwalteten Instanzen |Weitere Informationen finden Sie unter [Azure SQL Transparent Data Encryption mithilfe von Schlüsseln, die vom Kunden in Azure Key Vault verwaltet werden: Bring Your Own Key-Unterstützung](transparent-data-encryption-byok-azure-sql.md).|
 | &nbsp; |
 
-## <a name="june-2019"></a>Juni 2019
+## <a name="updates"></a>Aktualisierungen
 
-### <a name="service-improvements"></a>Verbesserungen beim Dienst
+Eine Liste mit Updates und Verbesserungen für SQL-Datenbank finden Sie unter [Azure-Updates](https://azure.microsoft.com/updates/?product=sql-database).
 
-| Verbesserungen beim Dienst | Details |
-| --- | --- |
-| Verwaltete Instanz mit 4 virtuellen Kernen auf Hardware der Gen5-Generation| Weitere Informationen finden Sie unter https://aka.ms/four-cores-sql-mi-update. |
-| Verwaltete Instanz: Unterstützung für Abonnements mit monatlicher Azure-Gutschrift für Visual Studio-Abonnenten | Weitere Informationen finden Sie unter https://aka.ms/sql-mi-visual-studio-subscribers. |
-|Größere regionale Grenzwerte für verwaltete Instanz| Weitere Informationen finden Sie unter [Regionale Ressourcenbeschränkungen](sql-database-managed-instance-resource-limits.md#regional-resource-limitations).
-| &nbsp; |
+Informationen zu Updates und Verbesserungen für alle Azure-Dienste finden Sie unter [Dienstupdates](https://azure.microsoft.com/updates).
 
+## <a name="contribute-to-content"></a>Mitwirkung am Inhalt
 
-## <a name="may-2019"></a>Mai 2019
-
-### <a name="service-improvements"></a>Verbesserungen beim Dienst
-
-| Verbesserungen beim Dienst | Details |
-| --- | --- |
-|Die Dienstebene „Hyperscale“ ist jetzt allgemein verfügbar.| Weitere Informationen finden Sie unter [Dienstebene „Hyperscale“ für bis zu 100TB](sql-database-service-tier-hyperscale.md) und [Skalieren Sie Ihre Azure-Datenbankworkloads durch Hyperscale mit Höchstleistung](https://azure.microsoft.com/blog/get-high-performance-scaling-for-your-azure-database-workloads-with-hyperscale/).|
-|Die serverlose Computeebene befindet sich jetzt in der öffentlichen Vorschauphase. | Weitere Informationen finden Sie unter [SQL-Datenbank – serverlos (Vorschau)](sql-database-serverless.md).|
-|Zeitzonenunterstützung für verwaltete Instanzen, die für allgemeine Verfügbarkeit freigegeben wurden |Weitere Informationen finden Sie unter [Zeitzone in einer verwalteten Azure SQL-Datenbank-Instanz (Vorschauversion)](sql-database-managed-instance-timezone.md).|
-|Instanzensortierung bei verwalteten Instanzen, die für allgemeine Verfügbarkeit freigegeben wurden |Weitere Informationen finden Sie unter [Verwenden von PowerShell mit einer Azure Resource Manager-Vorlage zum Erstellen einer verwalteten Instanz in Azure SQL-Datenbank](./scripts/sql-managed-instance-create-powershell-azure-resource-manager-template.md).|
-| Die Transaktionsprotokollraten und die Ziel-IOPS für Datenbanken wurden mithilfe des vCore-basierten Kaufmodells erhöht.| Weitere Informationen finden Sie unter [Limits des vCore-basierten Kaufmodells für eine Einzeldatenbank in Azure SQL-Datenbank](https://docs.microsoft.com/azure/sql-database/sql-database-vcore-resource-limits-single-databases) und [Ressourcenlimits für Einzeldatenbanken, die das DTU-basierte Kaufmodell verwenden](https://docs.microsoft.com/azure/sql-database/sql-database-dtu-resource-limits-single-databases).
-| &nbsp; |
-
-### <a name="documentation-improvements"></a>Verbesserungen bei der Dokumentation
-
-| Verbesserungen bei der Dokumentation | Details |
-| --- | --- |
-| Die Dokumentation für die Dienstebene „Hyperscale“ wurde aktualisiert, damit sie dem Stand der allgemeinen Verfügbarkeit entspricht.| Weitere Informationen finden Sie unter [Dienstebene „Hyperscale“ (Vorschau) für bis zu 100TB](sql-database-service-tier-hyperscale.md).|
-|Im Rahmen der öffentlichen Vorschauphase der serverlosen Computeebene wurde die entsprechende Dokumentation veröffentlicht.| Weitere Informationen finden Sie unter [SQL-Datenbank – serverlos (Vorschau)](sql-database-serverless.md).|
-| &nbsp; |
-
-## <a name="april-2019"></a>April 2019
-
-### <a name="service-improvements"></a>Verbesserungen beim Dienst
-
-| Verbesserungen beim Dienst | Details |
-| --- | --- |
-| Öffentliche Endpunkte für eine verwaltete Azure SQL-Datenbank-Instanz befinden sich jetzt in der öffentlichen Vorschauphase.| Weitere Informationen finden Sie unter [Sicheres Verwenden einer verwalteten Azure SQL-Datenbank-Instanz mit öffentlichen Endpunkten](sql-database-managed-instance-public-endpoint-securely.md).|
-| Die Zeitzonenunterstützung für eine verwaltete Azure SQL-Datenbank-Instanz befindet sich jetzt in der öffentlichen Vorschauphase.| Weitere Informationen finden Sie unter [Zeitzone in einer verwalteten Azure SQL-Datenbank-Instanz (Vorschauversion)](sql-database-managed-instance-timezone.md).|
-| Der Schutz von Azure SQL-Datenbank mithilfe von verwalteten Identitäten befindet sich jetzt in der zweiten öffentlichen Vorschauphase.| Weitere Informationen finden Sie unter [Securing Azure SQL Databases with managed identities just got easier (Noch einfacherer Schutz von Azure SQL-Datenbanken mithilfe von verwalteten Identitäten)](https://azure.microsoft.com/blog/securing-azure-sql-databases-with-managed-identities-just-got-easier/).|
-| &nbsp; |
-
-### <a name="documentation-improvements"></a>Verbesserungen bei der Dokumentation
-
-| Verbesserungen bei der Dokumentation | Details |
-| --- | --- |
-| Öffentliche Endpunkte für eine verwaltete Azure SQL-Datenbank-Instanz befinden sich jetzt in der öffentlichen Vorschauphase.| Weitere Informationen finden Sie unter [Sicheres Verwenden einer verwalteten Azure SQL-Datenbank-Instanz mit öffentlichen Endpunkten](sql-database-managed-instance-public-endpoint-securely.md).|
-| Die Zeitzonenunterstützung für eine verwaltete Azure SQL-Datenbank-Instanz befindet sich jetzt in der öffentlichen Vorschauphase.| Weitere Informationen finden Sie unter [Zeitzone in einer verwalteten Azure SQL-Datenbank-Instanz (Vorschauversion)](sql-database-managed-instance-timezone.md). |
-| Ressourcengovernance in Azure SQL-Datenbank | Weitere Informationen finden Sie unter [Resource governance in Azure SQL Database (Ressourcengovernance in Azure SQL-Datenbank)](https://azure.microsoft.com/blog/resource-governance-in-azure-sql-database/). || &nbsp; |
-
-## <a name="march-2019"></a>März 2019
-
-### <a name="service-improvements"></a>Verbesserungen beim Dienst
-
-| Verbesserungen beim Dienst | Details |
-| --- | --- |
-| Unterstützung für die horizontale Leseskalierung in Azure SQL-Datenbank ist nun allgemein verfügbar. | Weitere Informationen finden Sie unter [Verwenden von schreibgeschützten Replikaten für den Lastenausgleich schreibgeschützter Abfrageworkloads](sql-database-read-scale-out.md).|
-| &nbsp; |
-
-### <a name="documentation-improvements"></a>Verbesserungen bei der Dokumentation
-
-| Verbesserungen bei der Dokumentation | Details |
-| --- | --- |
-| Hinzugefügt: Protokollbeschränkungen für Singletons|Weitere Informationen finden Sie unter [Limits des auf virtuellen Kernen basierenden Kaufmodells für eine Einzeldatenbank in Azure SQL-Datenbank](sql-database-vcore-resource-limits-single-databases.md).|
-| Hinzugefügt: Protokollbeschränkungen für Pools für elastische Datenbanken und Pooldatenbanken|Weitere Informationen finden Sie unter [Ressourcenlimits für Pools für elastische Datenbanken, die das V-Kern-basierte Kaufmodell verwenden](sql-database-vcore-resource-limits-elastic-pools.md).|
-| Hinzugefügt: Transaktionsprotokollratengovernance| Neuer Inhalt für die [Transaktionsprotokollratengovernance](sql-database-resource-limits-database-server.md#transaction-log-rate-governance)|
-| Aktualisiert: PowerShell-Beispiele für Singletons und Pools für elastische Datenbanken für die Verwendung des az.sql-Moduls | Weitere Informationen finden Sie in den [PowerShell-Beispielen für Singletons und Pools für elastische Datenbanken](sql-database-powershell-samples.md#single-database-and-elastic-pools).|
-| &nbsp; |
-
-## <a name="february-2019"></a>Februar 2019
-
-### <a name="service-improvements"></a>Verbesserungen beim Dienst
-
-| Verbesserungen beim Dienst | Details |
-| --- | --- |
-|Allgemein verfügbar: Erstellen eines fortsetzbaren Onlineindizes| Weitere Informationen finden Sie unter [CREATE INDEX (Transact-SQL)](https://docs.microsoft.com/sql/t-sql/statements/create-index-transact-sql).|
-|Verbessert: Unterstützung für verwaltete Instanzen für Routingtabellen| Weitere Informationen finden Sie unter [Netzwerkanforderungen](sql-database-managed-instance-connectivity-architecture.md#network-requirements).|
-|Hinzugefügt: Unterstützung für das Umbenennen von Datenbank in verwalteten Instanzen | Weitere Informationen finden Sie in der Syntax zu [ALTER DATABASE](https://docs.microsoft.com/sql/t-sql/statements/alter-database-transact-sql?view=azuresqldb-mi-current) und [sp_rename](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/sp-rename-transact-sql).|
-|SQL-Datenbank als Quelle von Verweisdaten für Stream Analytics | Weitere Informationen finden Sie unter [Azure Stream Analytics](https://azure.microsoft.com/services/stream-analytics/) und [Azure Stream Analytics now supports Azure SQL Database as reference data input (Azure Stream Analytics unterstützt nun Azure SQL-Datenbank als Eingabequelle von Verweisdaten)](https://azure.microsoft.com/blog/azure-stream-analytics-now-supports-azure-sql-database-as-reference-data-input/).|
-|Hinzugefügt: Unterstützung für verwaltete Instanzen im Datenmigrations-Assistenten |Weitere Informationen finden Sie unter [What's new in DMA (Neuerungen im Datenmigrations-Assistenten)](https://docs.microsoft.com/sql/dma/dma-whatsnew).|
-|Hinzugefügt: Unterstützung für Zielbereitschaftsüberprüfung für verwaltete Instanzen in SQL Server Migration Assistant | Weitere Informationen finden Sie unter [SQL Server Migration Assistant](https://docs.microsoft.com/sql/ssma/sql-server-migration-assistant).
-|Hinzugefügt: Unterstützung der Migration von Amazon RDS zu verwalteten Instanzen im Datenmigrationsdienst | Weitere Informationen finden Sie unter [Tutorial: Migrieren von RDS SQL Server zu Azure SQL-Datenbank oder zu einer verwalteten Azure SQL-Datenbank-Instanz mithilfe von DMS (online)](../dms/tutorial-rds-sql-server-azure-sql-and-managed-instance-online.md).|
-| &nbsp; |
-
-### <a name="documentation-improvements"></a>Verbesserungen bei der Dokumentation
-
-| Verbesserungen bei der Dokumentation | Details |
-| --- | --- |
-|Hinzugefügt: Erläuterungen zu den Bereitstellungsoptionen für verwaltete Instanzen|Viele Artikel wurden aktualisiert, um die Anwendbarkeit der Bereitstellungsoptionen auf Singletons, Pools für elastische Datenbanken und verwaltete Instanzen näher zu erläutern. |
-|Aktualisiert: tempdb-Größen für das DTU-basierte Kaufmodell | Weitere Informationen finden Sie unter [Tempdb-Datenbank in SQL-Datenbank](https://docs.microsoft.com/sql/relational-databases/databases/tempdb-database#tempdb-database-in-sql-database).|
-|Aktualisiert: Unterstützung für das Importieren und Exportieren mit BACPAC-Datei für verwaltete Instanzen| Weitere Informationen finden Sie unter [Importieren einer BACPAC-Datei](sql-database-import.md) und [Exportieren einer Azure SQL-Datenbank in eine BACPAC-Datei](sql-database-export.md). |
-| &nbsp; |
-
-## <a name="january-2019"></a>Januar 2019
-
-### <a name="service-improvements"></a>Verbesserungen beim Dienst
-
-| Verbesserungen beim Dienst | Details |
-| --- | --- |
-| Zusätzliche Optionen für die Granularität von Computeressourcen | Die Computeoptionen für die Dienstebenen „Universell“ und „Unternehmenskritisch“ für [Singletons](sql-database-vcore-resource-limits-single-databases.md) und [Pools für elastische Datenbanken](sql-database-vcore-resource-limits-elastic-pools.md) präziser konfiguriert werden.|
-| Anzeige von Überwachungsdatensätzen für verwaltete Instanzen im Azure-Portal | Die Anzeige von [Überwachungsdatensätzen für verwaltete Instanzen](sql-database-managed-instance-auditing.md) im Azure-Portal wird nun unterstützt.|
-| Das Feature „Advanced Thread Detection“ wurde in „Advanced Data Security“ umbenannt. | Das Feature „Advanced Thread Detection“ wurde für Singletons, Pools für elastische Datenbanken und verwaltete Instanzen in [Advanced Data Security](sql-advanced-threat-protection.md) umbenannt. |
-| &nbsp; |
-
-### <a name="documentation-improvements"></a>Verbesserungen bei der Dokumentation
-
-| Verbesserungen bei der Dokumentation | Details |
-| --- | --- |
-| Verwaltete Instanzen und Transaktionsreplikation | Ein Artikel über die Verwendung der [Transaktionsreplikation mit verwalteten Azure SQL-Datenbank-Instanzen](replication-with-sql-database-managed-instance.md) wurde hinzugefügt. |
-| Hinzugefügt: Tutorial zu Azure AD mit verwalteten Instanzen | In diesem Tutorial zu [Azure AD mit verwalteten Instanzen](sql-database-managed-instance-aad-security-tutorial.md) wird veranschaulicht, wie Sie die Sicherheit von verwalteten Instanzen mithilfe von Azure AD-Anmeldungen konfigurieren und testen können. |
-| Aktualisiert: Auftragsautomatisierung mit Transact-SQL-Skripts | Die Erläuterungen zur Verwendung der [Auftragsautomatisierung mithilfe von Transact-SQL-Skripts](sql-database-job-automation-overview.md) für Singletons, Pools für elastische Datenbanken und verwaltete Instanzen wurden aktualisiert und verbessert. |
-| Aktualisiert: Sicherheit für verwaltete Instanzen | Die Erläuterungen zum [Sicherheitsmodell für verwaltete Instanzen](sql-database-security-overview.md) wurden aktualisiert und verbessert, und es wurden Vergleiche mit den Sicherheitsmodellen für Singletons und Pools für elastische Datenbanken hinzugefügt. |
-| Aktualisiert: sämtliche Schnellstartanleitungen und Tutorials | Alle Schnellstarts und Tutorials in der [Dokumentation](https://docs.microsoft.com/azure/sql-database) wurden aktualisiert, damit sie den Änderungen im Azure-Portal entsprechen. |
-| Hinzugefügt: Schnellstartanleitungen | Schnellstartanleitungen für [Singletons](sql-database-quickstart-guide.md) und [verwaltete Instanzen](sql-database-managed-instance-quickstart-guide.md) wurden hinzugefügt. |
-| Hinzugefügt: SQL-Datenbank-Glossar | In diesem [Glossar](sql-database-glossary-terms.md) finden Sie eine Liste der festgelegten Begriffe für SQL-Datenbank und Links zu den Seiten, auf denen die Begriffe im entsprechenden Kontext erläutert werden. |
-| &nbsp; |
-
-## <a name="contribute-to-content-improvement"></a>Mitwirken an der Verbesserung des Inhalts
-
-Bei der Dokumentation zu Azure SQL-Datenbank handelt es sich um eine Open Source-Dokumentation. Dadurch entstehen mehrere Vorteile:
-
-- Durch die öffentliche Planung in Open Source-Repositorys erhalten wir Feedback zu benötigten Dokumentationen.
-- Durch die öffentliche Prüfung in Open Source-Repositorys können wir mit dem ersten Release den bestmöglichen Inhalt veröffentlichen.
-- Durch öffentliche Updates in Open Source-Repositorys können wir Inhalt kontinuierlich verbessern.
-
-Weitere Informationen zum Mitwirken an der Dokumentation zu Azure SQL-Datenbank finden Sie unter [Leitfaden für Mitwirkende an der Microsoft-Dokumentation: Übersicht](https://docs.microsoft.com/contribute/). Die Benutzeroberfläche auf [docs.microsoft.com](https://docs.microsoft.com/) bezieht [GitHub-Workflows](https://github.com/) direkt ein, um den Prozess noch einfacher zu gestalten. Beginnen Sie mit dem [Bearbeiten des angezeigten Dokuments](https://docs.microsoft.com/contribute/#quick-edits-to-existing-documents). Alternativ können Sie [neue Artikel prüfen](https://docs.microsoft.com/contribute/#review-open-prs) oder [nützliche Tickets erstellen](https://docs.microsoft.com/contribute/#create-quality-issues).
+Informationen zur Mitwirkung an der Dokumentation für Azure SQL-Datenbank finden Sie unter [Leitfaden für Mitwirkende an der Microsoft-Dokumentation: Übersicht](https://docs.microsoft.com/contribute/).
