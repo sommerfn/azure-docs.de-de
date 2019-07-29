@@ -82,7 +82,7 @@ Sie besitzen nun eine DNS-Testzone mit einem A-Testeintrag und können die Namen
    nslookup www.contoso.xyz <name server name>
    ```
 
-   Beispiel: 
+   Beispiel:
 
    ```
    nslookup www.contoso.xyz ns1-08.azure-dns.com.
