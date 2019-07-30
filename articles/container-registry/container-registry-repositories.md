@@ -7,13 +7,13 @@ manager: jeconnoc
 ms.service: container-registry
 ms.topic: article
 ms.date: 01/05/2018
-ms.author: cristyg
-ms.openlocfilehash: 685c978ff206e75d770918f2528a826ad522b706
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.author: jeconnoc
+ms.openlocfilehash: 772e3a4fa4921cda8cbdbdabc15b0aee20ce7ed4
+ms.sourcegitcommit: fa45c2bcd1b32bc8dd54a5dc8bc206d2fe23d5fb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64710188"
+ms.lasthandoff: 07/12/2019
+ms.locfileid: "67849856"
 ---
 # <a name="view-container-registry-repositories-in-the-azure-portal"></a>Anzeigen von Azure Container Registry-Repositorys im Azure-Portal
 
@@ -39,7 +39,7 @@ docker push myregistry.azurecr.io/samples/nginx
 
 So zeigen Sie ein Repository an
 
-1. Melden Sie sich beim [Azure-Portal][portal] an.
+1. Melden Sie sich beim [Azure-Portal][portal]
 1. Wählen Sie die **Azure Container Registry** aus, an die Sie das Nginx-Image per Push übertragen haben.
 1. Wählen Sie **Repositorys** aus, um eine Liste der Repositorys anzuzeigen, die die Images in der Registrierung enthalten.
 1. Wählen Sie ein Repository aus, um die Imagetags in diesem Repository anzuzeigen.

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 09/04/2018
 ms.author: atsenthi
-ms.openlocfilehash: ad7cf3a1dfcef8795ceb378a59a1cf0b2010293e
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 012d75ff6ad4acdc6612a197f274e2dfdb98370a
+ms.sourcegitcommit: a6873b710ca07eb956d45596d4ec2c1d5dc57353
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65595502"
+ms.lasthandoff: 07/16/2019
+ms.locfileid: "68249265"
 ---
 # <a name="unit-testing-stateful-services-in-service-fabric"></a>Ausführen von Unittests für zustandsbehaftete Dienste in Service Fabric
 
@@ -51,8 +51,8 @@ Darüber hinaus wird so ermöglicht, dass bei den Tests die Rollen jeder dieser 
 Der Zustands-Manager sollte als Remoteressource behandelt und daher simuliert werden. Bei der Simulation des Zustands-Managers muss zugrunde liegender In-Memory-Speicher vorhanden sein, damit nachverfolgt werden kann, welche Daten im Zustands-Manager gespeichert werden, und damit diese Daten gelesen und überprüft werden können. Eine einfache Möglichkeit hierfür besteht darin, Pseudoinstanzen der einzelnen Typen von zuverlässigen Sammlungen zu erstellen. Verwenden Sie in diesen Simulationen einen Datentyp, der eng an die Vorgänge angelehnt ist, die für die jeweilige Sammlung durchgeführt werden. Im Folgenden sind einige empfohlene Datentypen für die einzelnen zuverlässigen Sammlungen aufgeführt.
 
 - IReliableDictionary<TKey, TValue> -> System.Collections.Concurrent.ConcurrentDictionary<TKey, TValue>
-- IReliableQueue<T> -> System.Collections.Generic.Queue<T>
-- IReliableConcurrentQueue<T> -> System.Collections.Concurrent.ConcurrentQueue<T>
+- IReliableQueue\<T> -> System.Collections.Generic.Queue\<T>
+- IReliableConcurrentQueue\<T> -> System.Collections.Concurrent.ConcurrentQueue\<T>
 
 #### <a name="many-state-manager-instances-single-storage"></a>Mehrere Zustands-Manager-Instanzen, ein Speicher
 Wie zuvor erwähnt sollten der Zustands-Manager und die zuverlässigen Sammlungen als Remoteressourcen behandelt werden. Daher sollten und werden diese Ressourcen in den Komponententests simuliert. Wenn jedoch mehrere Instanzen eines zustandsbehafteten Diensts ausgeführt werden, gestaltet es sich schwierig, jeden simulierten Zustands-Manager für die unterschiedlichen zustandsbehafteten Dienstinstanzen zu synchronisieren. Wenn der zustandsbehaftete Dienst im Cluster ausgeführt wird, wird in Service Fabric sichergestellt, dass der Zustands-Manager der einzelnen sekundären Replikate mit dem des primären Replikats konsistent ist. Daher sollten sich die Tests gleich verhalten, sodass sie Rollenänderungen simulieren können.

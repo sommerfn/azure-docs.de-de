@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: bd39b0aae5b76f37e2153f8e4c4502be994fa5b5
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: a652e157ec0e7e33c8dce7be2f4af2c240edac9e
+ms.sourcegitcommit: 64798b4f722623ea2bb53b374fb95e8d2b679318
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61462002"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67839908"
 ---
 # <a name="move-data-from-postgresql-using-azure-data-factory"></a>Verschieben von Daten aus PostgreSQL mithilfe von Azure Data Factory
 > [!div class="op_single_selector" title1="Wählen Sie die von Ihren verwendete Version des Data Factory-Diensts aus:"]
@@ -50,7 +50,6 @@ Sie können eine Pipeline mit einer Kopieraktivität erstellen, die Daten mithil
 
 - Am einfachsten erstellen Sie eine Pipeline mit dem **Kopier-Assistenten**. Eine Schritt-für-Schritt-Anleitung finden Sie im [Tutorial: Erstellen einer Pipeline mit dem Kopier-Assistenten](data-factory-copy-data-wizard-tutorial.md) finden Sie eine kurze exemplarische Vorgehensweise zum Erstellen einer Pipeline mithilfe des Assistenten zum Kopieren von Daten.
 - Sie können auch die folgenden Tools zum Erstellen einer Pipeline verwenden:
-  - Azure-Portal
   - Visual Studio
   - Azure PowerShell
   - Azure Resource Manager-Vorlage
@@ -111,7 +110,7 @@ Wenn eine Quelle vom Typ **RelationalSource** (wozu PostgreSQL gehört) verwende
  `"query": "select * from \"MySchema\".\"MyTable\""`
 
 ## <a name="json-example-copy-data-from-postgresql-to-azure-blob"></a>JSON-Beispiel: Kopieren von Daten aus PostgreSQL in ein Azure-Blob
-Dieses Beispiel stellt JSON-Beispieldefinitionen bereit, die Sie zum Erstellen einer Pipeline mit dem [Azure-Portal](data-factory-copy-activity-tutorial-using-azure-portal.md), mit [Visual Studio](data-factory-copy-activity-tutorial-using-visual-studio.md) oder mit [Azure PowerShell](data-factory-copy-activity-tutorial-using-powershell.md) verwenden können. Darin wird veranschaulicht, wie Sie Daten aus einer PostgreSQL-Datenbank in Azure Blob Storage kopieren. Daten können jedoch auch mithilfe der Kopieraktivität in Azure Data Factory in eine beliebige der [hier](data-factory-data-movement-activities.md#supported-data-stores-and-formats) aufgeführten Senken kopiert werden.
+Dieses Beispiel zeigt JSON-Beispieldefinitionen, die Sie zum Erstellen einer Pipeline mit [Visual Studio](data-factory-copy-activity-tutorial-using-visual-studio.md) oder [Azure PowerShell](data-factory-copy-activity-tutorial-using-powershell.md) verwenden können. Darin wird veranschaulicht, wie Sie Daten aus einer PostgreSQL-Datenbank in Azure Blob Storage kopieren. Daten können jedoch auch mithilfe der Kopieraktivität in Azure Data Factory in eine beliebige der [hier](data-factory-data-movement-activities.md#supported-data-stores-and-formats) aufgeführten Senken kopiert werden.
 
 > [!IMPORTANT]
 > Dieses Beispiel enthält JSON-Codeausschnitte. Eine schrittweise Anleitung zum Erstellen der Data Factory ist nicht enthalten. Einen Artikel mit schrittweisen Anleitungen finden Sie unter [Verschieben von Daten zwischen lokalen Standorten und Cloud](data-factory-move-data-between-onprem-and-cloud.md) .

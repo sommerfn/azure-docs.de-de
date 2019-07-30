@@ -10,22 +10,22 @@ ms.topic: conceptual
 ms.date: 06/18/2018
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 869097ac3b91e55d5dbf948680450f31efafd359
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 8c0f3d8f3f49001e1326688ccc794e19d1148e5d
+ms.sourcegitcommit: fa45c2bcd1b32bc8dd54a5dc8bc206d2fe23d5fb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66511113"
+ms.lasthandoff: 07/12/2019
+ms.locfileid: "67846886"
 ---
 # <a name="set-up-direct-sign-in-using-azure-active-directory-b2c"></a>Einrichten einer direkten Anmeldung mit Azure Active Directory B2C
 
-Beim Einrichten der Anmeldung für Ihre Anwendung mithilfe von Azure Active Directory (AD) B2C können Sie den Anmeldenamen auffüllen oder sich direkt bei einem bestimmten sozialen Netzwerk als Identitätsanbieter anmelden, wie z.B. bei einem Facebook-, LinkedIn- oder Microsoft-Konto. 
+Beim Einrichten der Anmeldung für Ihre Anwendung mithilfe von Azure Active Directory (AD) B2C können Sie den Anmeldenamen auffüllen oder sich direkt bei einem bestimmten sozialen Netzwerk als Identitätsanbieter anmelden, wie z.B. bei einem Facebook-, LinkedIn- oder Microsoft-Konto.
 
 ## <a name="prepopulate-the-sign-in-name"></a>Auffüllen des Anmeldenamens
 
 Während einer User Journey zur Anmeldung kann eine Anwendung der vertrauenden Seite auf einen bestimmten Benutzer oder Domänennamen ausgerichtet werden. Bei der Ausrichtung auf einen Benutzer kann eine Anwendung in der Autorisierungsanforderung den Abfrageparameter `login_hint` mit dem Anmeldenamen des Benutzers angeben. Azure AD B2C füllt den Anmeldenamen automatisch auf, während der Benutzer nur das Kennwort angeben muss.
 
-![Verwenden eines Anmeldehinweises](./media/direct-signin/login-hint.png) 
+![Seite für Anmeldung/Registrierung mit hervorgehobenem Abfrageparameter „login_hint“ in der URL](./media/direct-signin/login-hint.png)
 
 Der Benutzer kann den Wert im Textfeld für die Anmeldung ändern.
 
@@ -49,9 +49,9 @@ Wenn Sie eine benutzerdefinierte Richtlinie verwenden, überschreiben Sie das te
 
 Wenn Sie die User Journey für die Anmeldung bei Ihrer Anwendung so konfiguriert haben, dass Konten für soziale Netzwerke inbegriffen sind, wie z.B. Facebook, LinkedIn oder Google, können Sie den Parameter `domain_hint` angeben. Dieser Abfrageparameter enthält einen Hinweis für Azure AD B2C zu dem sozialen Netzwerk als Identitätsanbieter, das für die Anmeldung verwendet werden sollte. Wenn in der Anwendung beispielsweise `domain_hint=facebook.com` angegeben ist,erfolgt die Anmeldung direkt auf der Anmeldeseite von Facebook.
 
-![Verwenden eines Domänenhinweises](./media/direct-signin/domain-hint.png) 
+![Seite für Anmeldung/Registrierung mit hervorgehobenem Abfrageparameter „domain_hint“ in der URL](./media/direct-signin/domain-hint.png)
 
-Wenn Sie eine benutzerdefinierte Richtlinie verwenden, können Sie den Domänennamen mit dem XML-Element `<Domain>domain name</Domain>` von `<ClaimsProvider>` konfigurieren. 
+Wenn Sie eine benutzerdefinierte Richtlinie verwenden, können Sie den Domänennamen mit dem XML-Element `<Domain>domain name</Domain>` von `<ClaimsProvider>` konfigurieren.
 
 ```xml
 <ClaimsProvider>

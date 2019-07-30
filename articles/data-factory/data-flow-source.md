@@ -6,12 +6,12 @@ ms.author: makromer
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 02/12/2019
-ms.openlocfilehash: 4f77eafd3309d7c1d679c126b1a5eb1ff0e9a28d
-ms.sourcegitcommit: ac1cfe497341429cf62eb934e87f3b5f3c79948e
+ms.openlocfilehash: 048fe0ef88e8a79e21af7bb6e39a1d7ece3ee4ae
+ms.sourcegitcommit: 9a699d7408023d3736961745c753ca3cec708f23
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/01/2019
-ms.locfileid: "67490091"
+ms.lasthandoff: 07/16/2019
+ms.locfileid: "68277457"
 ---
 # <a name="source-transformation-for-mapping-data-flow"></a>Quelltransformation für Mapping Data Flow 
 
@@ -82,7 +82,7 @@ Wählen Sie die Einstellungen zum Verwalten von Dateien in Ihrer Quelle aus.
 
 ![Einstellungen für eine neue Quelle](media/data-flow/source2.png "Einstellungen für neue Quelle")
 
-* **Platzhalterpfad:** Wählen Sie in Ihrem Quellordner eine Reihe von Dateien aus, die einem Muster entsprechen. Diese Einstellung überschreibt alle Dateien in Ihrer Datasetdefinition.
+* **Platzhalterpfad:** Wählen Sie in Ihrem Quellcontainer eine Reihe von Dateien aus, die einem Muster entsprechen. Diese Einstellung überschreibt alle Dateien in Ihrer Datasetdefinition.
 
 Beispiele für Platzhalter:
 

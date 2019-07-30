@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/23/2018
 ms.author: genli
-ms.openlocfilehash: 85296b4549d7c9499b8d0b815ddf1cd2e85e2b1b
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 925461ba6c74fe0bcf286692c1a19bb4e7c02dfa
+ms.sourcegitcommit: a6873b710ca07eb956d45596d4ec2c1d5dc57353
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60337424"
+ms.lasthandoff: 07/16/2019
+ms.locfileid: "68254422"
 ---
 # <a name="configuration-and-management-issues-for-azure-cloud-services-frequently-asked-questions-faqs"></a>Probleme mit der Konfiguration und Verwaltung von Microsoft Azure Cloud Services: Häufig gestellte Fragen (FAQs)
 
@@ -282,7 +282,7 @@ Weitere Informationen finden Sie unter [Dienstspezifische Grenzwerte](../azure-s
 ### <a name="why-does-the-drive-on-my-cloud-service-vm-show-very-little-free-disk-space"></a>Warum wird auf dem Laufwerk meiner Clouddienst-VM nur sehr wenig freier Speicherplatz angezeigt?
 Hierbei handelt es sich um erwartetes Verhalten, das kein Problem bei Ihrer Anwendung verursachen sollte. Für das Laufwerk %approot% auf virtuellen Azure PaaS-Computern ist das Journaling aktiviert, was praktisch doppelt so viel Speicherplatz verbraucht, wie Dateien normalerweise belegen. Es gibt jedoch einige Punkte zu beachten, durch die dieses Verhalten nicht zu einem Problem wird.
 
-Die Größe des Laufwerks %aproot% beträgt 1,5 GB oder wird als <Größe von CSPKG + max. Journalgröße + Rand mit freiem Speicherplatz> berechnet, je nachdem welcher Wert größer ist. Die Größe Ihres virtuellen Computers hat keinen Einfluss auf diese Berechnung. (Die Größe des virtuellen Computers betrifft nur die Größe des temporären Laufwerks „C:“) 
+Die Größe des Laufwerks %aproot% beträgt 1,5 GB oder wird als \<Größe von CSPKG + max. Journalgröße + Rand mit freiem Speicherplatz> berechnet, je nachdem welcher Wert größer ist. Die Größe Ihres virtuellen Computers hat keinen Einfluss auf diese Berechnung. (Die Größe des virtuellen Computers betrifft nur die Größe des temporären Laufwerks „C:“) 
 
 Schreibvorgänge in das Laufwerk %aproot% werden nicht unterstützt. Wenn Sie einen Schreibvorgang in den virtuellen Azure-Computer vornehmen, müssen Sie diesen in einer temporären LocalStorage-Ressource (oder einer anderen Option, z.B. Blob-Speicher, Azure Storage usw.) ausführen. Der freie Speicherplatz im Ordner %approot% ist also nicht von Bedeutung. Wenn Sie sich unsicher sind, ob Ihre Anwendung in das Laufwerk %aproot% schreibt, können Sie Ihren Dienst immer ein paar Tage lang ausführen lassen und anschließend die „Vorher/Nachher“-Größe vergleichen. 
 

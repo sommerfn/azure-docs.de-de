@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 05/15/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 4ff7f92d1d13966be5d17f37210bef961f64faf2
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 51fae63b6db99f28a5b3bed056dadc0c2513ff0f
+ms.sourcegitcommit: 64798b4f722623ea2bb53b374fb95e8d2b679318
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61462390"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67839935"
 ---
 # <a name="copy-data-to-or-from-oracle-on-premises-by-using-azure-data-factory"></a>Kopieren von Daten in eine bzw. aus einer lokalen Oracle-Instanz mit Azure Data Factory
 
@@ -83,7 +83,7 @@ Sie können eine Pipeline erstellen, die eine Kopieraktivität aufweist. Die Pip
 
 Am einfachsten erstellen Sie eine Pipeline mit dem Kopier-Assistenten. Eine Schritt-für-Schritt-Anleitung finden Sie im [Tutorial: Erstellen einer Pipeline mit dem Kopier-Assistenten](data-factory-copy-data-wizard-tutorial.md) finden Sie eine kurze exemplarische Vorgehensweise zum Erstellen einer Pipeline mithilfe des Assistenten zum Kopieren von Daten.
 
-Sie können auch eines der folgenden Tools zum Erstellen einer Pipeline verwenden: das **Azure-Portal**, **Visual Studio**, **Azure PowerShell**, **Azure Resource Manager-Vorlagen** sowie die **.NET-API** und die **REST-API**. Im [Tutorial zur Kopieraktivität](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) finden Sie eine schrittweise Anleitung, wie Sie eine Pipeline mit einer Kopieraktivität erstellen können.
+Sie können auch eines der folgenden Tools zum Erstellen einer Pipeline verwenden: **Visual Studio**, **Azure PowerShell**, eine **Azure Resource Manager-Vorlage**, die **.NET-API** oder die **REST-API**. Im [Tutorial zur Kopieraktivität](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) finden Sie eine schrittweise Anleitung, wie Sie eine Pipeline mit einer Kopieraktivität erstellen können.
 
 Führen Sie unabhängig davon, ob Sie Tools oder APIs verwenden, die folgenden Schritte aus, um eine Pipeline zu erstellen, die Daten aus einem Quelldatenspeicher in einen Senkendatenspeicher verschiebt:
 
@@ -187,7 +187,7 @@ Wenn bei der Kopieraktivität eine Quelle vom Typ **OracleSource** verwendet wir
 
 ## <a name="json-examples-for-copying-data-to-and-from-the-oracle-database"></a>JSON-Beispiele zum Kopieren von Daten in die bzw. aus der Oracle-Datenbank
 
-Die folgenden Beispiele zeigen JSON-Beispieldefinitionen, die Sie zum Erstellen einer Pipeline mit dem [Azure-Portal](data-factory-copy-activity-tutorial-using-azure-portal.md), mit [Visual Studio](data-factory-copy-activity-tutorial-using-visual-studio.md) oder [Azure PowerShell](data-factory-copy-activity-tutorial-using-powershell.md) verwenden können. Die Beispiele zeigen, wie Daten aus einer oder in eine Oracle-Datenbank und in oder aus Azure Blob Storage kopiert werden. Daten können jedoch mithilfe der Kopieraktivität in Azure Data Factory in jede der unter [Unterstützte Datenspeicher und Formate](data-factory-data-movement-activities.md#supported-data-stores-and-formats) aufgeführten Senken kopiert werden.
+Die folgenden Beispiele zeigen JSON-Beispieldefinitionen, die Sie zum Erstellen einer Pipeline mit [Visual Studio](data-factory-copy-activity-tutorial-using-visual-studio.md) oder [Azure PowerShell](data-factory-copy-activity-tutorial-using-powershell.md) verwenden können. Die Beispiele zeigen, wie Daten aus einer oder in eine Oracle-Datenbank und in oder aus Azure Blob Storage kopiert werden. Daten können jedoch mithilfe der Kopieraktivität in Azure Data Factory in jede der unter [Unterstützte Datenspeicher und Formate](data-factory-data-movement-activities.md#supported-data-stores-and-formats) aufgeführten Senken kopiert werden.
 
 **Beispiel: Kopieren von Daten aus Oracle in Azure Blob Storage**
 

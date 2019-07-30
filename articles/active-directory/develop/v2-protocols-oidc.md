@@ -18,12 +18,12 @@ ms.author: ryanwi
 ms.reviewer: hirsin
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 23a8eaaf095be1d59944791bd793047886dda40c
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: be7d4164bd1a412c69c3b5adfe20cf83d699d2b4
+ms.sourcegitcommit: 770b060438122f090ab90d81e3ff2f023455213b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65544816"
+ms.lasthandoff: 07/17/2019
+ms.locfileid: "68304804"
 ---
 # <a name="microsoft-identity-platform-and-openid-connect-protocol"></a>Microsoft Identity Platform und das OpenID Connect-Protokoll
 
@@ -57,7 +57,7 @@ Der `{tenant}` kann einen von vier möglichen Werten annehmen:
 | `common` |Benutzer mit einem persönlichen Microsoft-Konto und einem Geschäfts-, Schul- oder Unikonto aus Azure AD können sich bei der Anwendung anmelden. |
 | `organizations` |Nur Benutzer mit Geschäfts-, Schul- oder Unikonten aus Azure AD können sich bei der Anwendung anmelden. |
 | `consumers` |Nur Benutzer mit einem persönlich Microsoft-Konto können sich bei der Anwendung anmelden. |
-| `8eaef023-2b34-4da1-9baa-8bc8c9d6a490` oder `contoso.onmicrosoft.com` | Nur Benutzer mit einem Geschäfts-, Schul- oder Unikonto eines bestimmten Azure AD-Mandanten können sich bei der Anwendung anmelden. Dabei kann entweder der Anzeigename der Domäne des Azure AD-Mandanten oder der GUID-Bezeichner des Mandanten verwendet werden. Sie können auch den Consumermandanten `9188040d-6c67-4c5b-b112-36a304b66dad` anstelle des Mandanten `consumers` verwenden.  |
+| `8eaef023-2b34-4da1-9baa-8bc8c9d6a490` oder `contoso.onmicrosoft.com` | Nur Benutzer eines bestimmten Azure AD-Mandanten können sich bei der Anwendung anmelden. (Dabei macht es keinen Unterschied, ob es sich um Mitglieder im Verzeichnis mit einem Geschäfts-, Schul- oder Unikonto oder um Gäste im Verzeichnis mit einem persönlichen Microsoft-Konto handelt.) Dabei kann entweder der Anzeigename der Domäne des Azure AD-Mandanten oder der GUID-Bezeichner des Mandanten verwendet werden. Sie können auch den Consumermandanten `9188040d-6c67-4c5b-b112-36a304b66dad` anstelle des Mandanten `consumers` verwenden.  |
 
 Bei den Metadaten handelt es sich um ein einfaches JavaScript Object Notation-Dokument (JSON). Die folgenden Codeausschnitte zeigen Beispiele. Die vollständigen Inhalte der Codeausschnitte werden in der [OpenID Connect-Spezifikation](https://openid.net/specs/openid-connect-discovery-1_0.html#rfc.section.4.2) beschrieben.
 

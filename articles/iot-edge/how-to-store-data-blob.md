@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.custom: seodec18
-ms.openlocfilehash: dabaa06e224c6498c0080c4546c04f40e3919bb6
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: c90a0351c8c71f4fcafa58a422cc3566a0b29b03
+ms.sourcegitcommit: fa45c2bcd1b32bc8dd54a5dc8bc206d2fe23d5fb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67448532"
+ms.lasthandoff: 07/12/2019
+ms.locfileid: "67850099"
 ---
 # <a name="store-data-at-the-edge-with-azure-blob-storage-on-iot-edge-preview"></a>Speichern von Daten am Edge mit Azure Blob Storage in IoT Edge (Vorschau)
 
@@ -62,13 +62,14 @@ Ein Azure IoT Edge-Gerät:
 
 - Azure Blob Storage im IoT Edge-Modul unterstützt die folgenden Gerätekonfigurationen:
 
-  | Betriebssystem | Architecture |
-  | ---------------- | ----- | ----- |
-  | Ubuntu Server 16.04 | AMD64 |
-  | Ubuntu Server 18.04 | AMD64 |
-  | Windows 10 IoT Enterprise | AMD64 |
-  | Windows Server 2019 | AMD64 |
-  | Raspbian-stretch | ARM32 |
+  | Betriebssystem | AMD64 | ARM32v7 | ARM64 |
+  | ---------------- | ----- | ----- | ---- |
+  | Raspbian-stretch | Nein | Ja | Nein |  
+  | Ubuntu Server 16.04 | Ja | Nein | Ja (zur [Installation](how-to-install-iot-edge-linux-arm.md#install-a-specific-version) mit [Azure IOT Edge 1.0.8-RC1 und höher](https://github.com/Azure/azure-iotedge/releases) verfügbar) |
+  | Ubuntu Server 18.04 | Ja | Nein | Ja (zur [Installation](how-to-install-iot-edge-linux-arm.md#install-a-specific-version) mit [Azure IOT Edge 1.0.8-RC1 und höher](https://github.com/Azure/azure-iotedge/releases) verfügbar) |
+  | Windows 10 IoT Enterprise, Build 17763 | Ja | Nein | Nein |
+  | Windows Server 2019, Build 17763 | Ja | Nein | Nein |
+  
 
 Cloudressourcen:
 

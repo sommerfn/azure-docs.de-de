@@ -10,18 +10,18 @@ ms.topic: conceptual
 ms.date: 02/19/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: d9420398c012b8da18e3b035cb845db6ce8c942d
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 2253e9f6331662f0ead0251f9affd7996e02aa31
+ms.sourcegitcommit: fa45c2bcd1b32bc8dd54a5dc8bc206d2fe23d5fb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66511067"
+ms.lasthandoff: 07/12/2019
+ms.locfileid: "67846875"
 ---
 # <a name="pass-an-access-token-through-a-custom-policy-to-your-application-in-azure-active-directory-b2c"></a>Übergeben eines Zugriffstokens über eine benutzerdefinierte Richtlinie an Ihre Anwendung in Azure Active Directory B2C
 
 [!INCLUDE [active-directory-b2c-public-preview](../../includes/active-directory-b2c-public-preview.md)]
 
-Eine [benutzerdefinierte Richtlinie](active-directory-b2c-get-started-custom.md) in Azure Active Directory B2C (Azure AD) ermöglicht es Benutzern Ihrer Anwendung, sich mit einem Identitätsanbieter zu registrieren oder anzumelden. Bei diesem Vorgang empfängt Azure AD B2C zunächst ein [Zugriffstoken](active-directory-b2c-reference-tokens.md) vom Identitätsanbieter. Azure AD B2C verwendet dieses Token, um Informationen zum Benutzer abzurufen. Sie fügen einen Anspruchstyp und einen Ausgabeanspruch zu Ihrer benutzerdefinierten Richtlinie hinzu, um das Token an die Anwendungen zu übergeben, die Sie in Azure AD B2C registriert haben. 
+Eine [benutzerdefinierte Richtlinie](active-directory-b2c-get-started-custom.md) in Azure Active Directory B2C (Azure AD) ermöglicht es Benutzern Ihrer Anwendung, sich mit einem Identitätsanbieter zu registrieren oder anzumelden. Bei diesem Vorgang empfängt Azure AD B2C zunächst ein [Zugriffstoken](active-directory-b2c-reference-tokens.md) vom Identitätsanbieter. Azure AD B2C verwendet dieses Token, um Informationen zum Benutzer abzurufen. Sie fügen einen Anspruchstyp und einen Ausgabeanspruch zu Ihrer benutzerdefinierten Richtlinie hinzu, um das Token an die Anwendungen zu übergeben, die Sie in Azure AD B2C registriert haben.
 
 Azure AD B2C unterstützt die Übergabe des Zugriffstokens von [OAuth 2.0](active-directory-b2c-reference-oauth-code.md)- und [OpenID Connect](active-directory-b2c-reference-oidc.md)-Identitätsanbietern. Für alle weiteren Identitätsanbieter wird ein leerer Anspruch zurückgegeben.
 
@@ -29,7 +29,7 @@ Azure AD B2C unterstützt die Übergabe des Zugriffstokens von [OAuth 2.0](activ
 
 - Ihre benutzerdefinierte Richtlinie ist mit einem OAuth 2.0- oder OpenID Connect-Identitätsanbieter konfiguriert.
 
-## <a name="add-the-claim-elements"></a>Hinzufügen der Anspruchselemente 
+## <a name="add-the-claim-elements"></a>Hinzufügen der Anspruchselemente
 
 1. Öffnen Sie Ihre Datei *TrustframeworkExtensions.xml*, und fügen Sie das folgende **ClaimType**-Element mit dem Bezeichner `identityProviderAccessToken` zum **ClaimsSchema**-Element hinzu:
 
@@ -102,13 +102,8 @@ Wenn Sie Ihre Anwendungen in Azure AD B2C testen, kann es nützlich sein, das Az
 
     Sie sollten eine Ausgabe ähnlich wie im folgenden Beispiel sehen:
 
-    ![Decodiertes Token](./media/idp-pass-through-custom/idp-pass-through-custom-token.png)
+    ![Decodiertes Token in „jwt.ms“ mit hervorgehobenem Block „idp_access_token“](./media/idp-pass-through-custom/idp-pass-through-custom-token.PNG)
 
 ## <a name="next-steps"></a>Nächste Schritte
 
 Erfahren Sie mehr über Token in der [Referenz zu Azure Active Directory-Token](active-directory-b2c-reference-tokens.md).
-
-
-
-
-

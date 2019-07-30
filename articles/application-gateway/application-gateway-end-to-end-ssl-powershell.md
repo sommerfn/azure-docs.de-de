@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 4/8/2019
 ms.author: victorh
-ms.openlocfilehash: d9851f6b3e32d0c7ab0d7774458ba5bc4d9ba823
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: d7b909bf88fde2277aa2a285bbf36916191db1f3
+ms.sourcegitcommit: 6b41522dae07961f141b0a6a5d46fd1a0c43e6b2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66729679"
+ms.lasthandoff: 07/15/2019
+ms.locfileid: "67973390"
 ---
 # <a name="configure-end-to-end-ssl-by-using-application-gateway-with-powershell"></a>Konfigurieren von End-to-End-SSL mit Application Gateway mithilfe von PowerShell
 
@@ -227,8 +227,14 @@ Vor dem Erstellen des Anwendungsgateways werden die Konfigurationselemente festg
 
 Erstellen Sie das Anwendungsgateway mithilfe der oben aufgeführten Schritte. Die Erstellung des Gateways ist ein Prozess, dessen Ausführung eine lange Zeit in Anspruch nimmt.
 
+Verwenden Sie für die V1-SKU den folgenden Befehl:
 ```powershell
-$appgw = New-AzApplicationGateway -Name appgateway -SSLCertificates $cert -ResourceGroupName "appgw-rg" -Location "West US" -BackendAddressPools $pool -BackendHttpSettingsCollection $poolSetting -FrontendIpConfigurations $fipconfig -GatewayIpConfigurations $gipconfig -FrontendPorts $fp -HttpListeners $listener -RequestRoutingRules $rule -Sku $sku -SSLPolicy $SSLPolicy -AuthenticationCertificates $authcert -Verbose
+$appgw = New-AzApplicationGateway -Name appgateway -SSLCertificates $cert -ResourceGroupName "appgw-rg" -Location "West US" -BackendAddressPools $pool -BackendHttpSettingsCollection $poolSetting01 -FrontendIpConfigurations $fipconfig -GatewayIpConfigurations $gipconfig -FrontendPorts $fp -HttpListeners $listener -RequestRoutingRules $rule -Sku $sku -SSLPolicy $SSLPolicy -AuthenticationCertificates $authcert -Verbose
+```
+
+Verwenden Sie für die V2-SKU den folgenden Befehl:
+```powershell
+$appgw = New-AzApplicationGateway -Name appgateway -SSLCertificates $cert -ResourceGroupName "appgw-rg" -Location "West US" -BackendAddressPools $pool -BackendHttpSettingsCollection $poolSetting01 -FrontendIpConfigurations $fipconfig -GatewayIpConfigurations $gipconfig -FrontendPorts $fp -HttpListeners $listener -RequestRoutingRules $rule -Sku $sku -SSLPolicy $SSLPolicy -TrustedRootCertificate $trustedRootCert01 -Verbose
 ```
 
 ## <a name="apply-a-new-certificate-if-the-back-end-certificate-is-expired"></a>Anwenden eines neuen Zertifikats, wenn das Back-End-Zertifikat abgelaufen ist

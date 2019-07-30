@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 07/05/2019
 ms.author: erhopf
 ms.custom: seodec18
-ms.openlocfilehash: aaae84fcb7df2abfe7e78adb64c22fb19fe45f4e
-ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
+ms.openlocfilehash: 203526b23a9571f0cccf3ebed432978772282418
+ms.sourcegitcommit: 920ad23613a9504212aac2bfbd24a7c3de15d549
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67606728"
+ms.lasthandoff: 07/15/2019
+ms.locfileid: "68226422"
 ---
 # <a name="try-speech-services-for-free"></a>Kostenloses Testen von Speech Services
 
@@ -89,7 +89,7 @@ So fügen Sie Ihrem (kostenlosen oder kostenpflichtigen) Azure-Konto eine Speech
 
    * Einen Namen für die neue Ressource. Über den Namen können Sie mehrere Abonnements für denselben Dienst unterscheiden.
    * Wählen Sie das Azure-Abonnement aus, dem die neue Ressource zugeordnet ist, um zu bestimmen, wie die Gebühren berechnet werden.
-   * Wählen Sie die Region aus, in der die Ressource verwendet wird. Derzeit sind die Speech Services in den Regionen „Asien, Osten“, „Europa, Norden“ und „USA, Westen“ verfügbar.
+   * Wählen Sie die [Region](regions.md) aus, in der die Ressource verwendet wird.
    * Wählen Sie einen kostenlosen oder einen kostenpflichtigen Tarif aus. Klicken Sie auf **Alle Preisinformationen anzeigen**, um vollständige Informationen zu Preisen und Verwendungskontingenten für die einzelnen Tarife zu erhalten.
    * Erstellen Sie eine neue Ressourcengruppe für dieses Abonnement für den Sprachdienst, oder weisen Sie das Abonnement einer vorhandenen Ressourcengruppe zu. Anhand von Ressourcengruppen können Sie Ihre verschiedenen Azure-Abonnements organisieren.
    * Aktivieren Sie das Kontrollkästchen **An Dashboard anheften**, um zukünftig einfach auf Ihr Abonnement zugreifen zu können.

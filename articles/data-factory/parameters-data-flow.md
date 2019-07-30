@@ -6,12 +6,12 @@ ms.author: makromer
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 06/10/2019
-ms.openlocfilehash: 0a7140f70db78c8511f3c4da00b2f9c11c368163
-ms.sourcegitcommit: f811238c0d732deb1f0892fe7a20a26c993bc4fc
+ms.openlocfilehash: 998f8080509e7ba18ea1a759dff2ed8b8742c910
+ms.sourcegitcommit: a6873b710ca07eb956d45596d4ec2c1d5dc57353
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/29/2019
-ms.locfileid: "67477692"
+ms.lasthandoff: 07/16/2019
+ms.locfileid: "68253098"
 ---
 # <a name="mapping-data-flow-parameters"></a>Abbilden von Datenflussparametern
 
@@ -32,7 +32,7 @@ Nutzen Sie diese Funktion, um Ihre Datenflüsse universell, flexibel und wiederv
 
 Um Parameter zu Ihrem Datenfluss hinzuzufügen, klicken Sie auf den leeren Bereich der Datenfluss-Leinwand, um die allgemeinen Eigenschaften anzuzeigen. Im Einstellungsbereich sehen Sie eine Registerkarte mit dem Namen "Parameter". Klicken Sie auf die Schaltfläche "Neu", um einen neuen Parameter zu generieren. Für jeden Parameter müssen Sie einen Namen vergeben, einen Typ auswählen und optional einen Standardwert festlegen.
 
-Datenflussparameter erstellen] (media/data-flow/create-params.png "Datenflussparameter erstellen")
+![Datenflussparameter erstellen](media/data-flow/create-params.png "Datenflussparameter erstellen")
 
 Parameter können in jedem beliebigen Datenflussausdruck verwendet werden. Parameter beginnen mit $ und sind unveränderlich. Die Liste der verfügbaren Parameter finden Sie im Expression Builder unter der Registerkarte 'Parameter'.
 
@@ -50,7 +50,7 @@ Nachdem Sie Ihren Datenfluss mit Parametern angelegt haben, können Sie ihn aus 
 
 ![Festlegen eines Datenflussparameters](media/data-flow/parameter-assign.png "Festlegen eines Datenflussparameters ")
 
-Wenn Ihr Parameterdatentyp string ist, können Sie beim Anklicken des Textfelds zum Festlegen von Parameterwerten entweder eine Pipeline oder einen Datenflussausdruck eingeben. Wenn Sie den Pipelineausdruck wählen, wird Ihnen das Fenster Pipelineausdruck angezeigt. Stellen Sie sicher, dass Pipeline-Funktionen in die Zeichenketten-Interpolationssyntax aufgenommen werden, z.B. mit'@{ <expression>}':
+Wenn Ihr Parameterdatentyp string ist, können Sie beim Anklicken des Textfelds zum Festlegen von Parameterwerten entweder eine Pipeline oder einen Datenflussausdruck eingeben. Wenn Sie den Pipelineausdruck wählen, wird Ihnen das Fenster Pipelineausdruck angezeigt. Stellen Sie sicher, dass Pipelinefunktionen in die Zeichenfolgen-Interpolationssyntax mit `'@{<expression>}'` aufgenommen werden, z. B.:
 
 ```'@{pipeline().RunId}'```
 

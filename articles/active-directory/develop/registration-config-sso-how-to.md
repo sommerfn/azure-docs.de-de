@@ -1,5 +1,5 @@
 ---
-title: Konfigurieren des einmaliges Anmeldens | Microsoft-Dokumentation
+title: Konfigurieren des einmaliges Anmeldens für Anwendungen | Microsoft-Dokumentation
 description: Konfigurieren des einmaliges Anmeldens für eine mit Azure AD entwickelte und registrierte benutzerdefinierte Anwendung
 services: active-directory
 documentationcenter: ''
@@ -12,15 +12,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 09/11/2018
+ms.date: 07/15/2019
 ms.author: ryanwi
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d151d4d7f32c479f2cfb4d71a8ed667f42e03b49
-ms.sourcegitcommit: c63e5031aed4992d5adf45639addcef07c166224
+ms.openlocfilehash: 3e60b1ba210b5b11c4aca0da71d4d24ac5b06a60
+ms.sourcegitcommit: 9a699d7408023d3736961745c753ca3cec708f23
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67465673"
+ms.lasthandoff: 07/16/2019
+ms.locfileid: "68276744"
 ---
 # <a name="how-to-configure-single-sign-on-for-an-application"></a>Konfigurieren des einmaliges Anmeldens für eine Anwendung
 

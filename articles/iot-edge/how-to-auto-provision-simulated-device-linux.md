@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.custom: seodec18
-ms.openlocfilehash: 5ab85a8fb56789dbf3ecd6cf1cbc63e338615915
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: 1a13c130c45c746a42c0acf1ec2646f3c8f9bc51
+ms.sourcegitcommit: 920ad23613a9504212aac2bfbd24a7c3de15d549
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67439125"
+ms.lasthandoff: 07/15/2019
+ms.locfileid: "68227528"
 ---
 # <a name="create-and-provision-an-iot-edge-device-with-a-virtual-tpm-on-a-linux-virtual-machine"></a>Erstellen und Bereitstellen eines IoT Edge-Geräts mit einem virtuellen TPM auf einem virtuellen Linux-Computer
 
@@ -123,8 +123,7 @@ Rufen Sie die Bereitstellungsinformationen von Ihrem virtuellen Computer ab, und
 
 Wenn Sie eine Registrierung im DPS erstellen, haben Sie die Möglichkeit zum Angeben von **Anfänglicher Status von Gerätezwilling**. Im Gerätezwilling können Sie Tags zum Gruppieren von Geräten nach jeder beliebigen Metrik, z.B. Region, Umgebung, Speicherort oder Geräte, festlegen, die Sie in Ihrer Projektmappe benötigen. Diese Tags werden zum Erstellen von [automatischen Bereitstellungen](how-to-deploy-monitor.md) verwendet. 
 
-
-1. Im [Azure-Portal](https://portal.azure.com) navigieren Sie zu Ihrer Instanz des IoT Hub Device Provisioning Service. 
+1. Navigieren Sie im [Azure-Portal](https://portal.azure.com) zu Ihrer Instanz des IoT Hub Device Provisioning Service. 
 
 2. Klicken Sie in **Einstellungen** auf **Registrierungen verwalten**. 
 

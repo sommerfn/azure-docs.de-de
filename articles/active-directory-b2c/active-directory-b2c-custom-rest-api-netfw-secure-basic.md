@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 09/25/2017
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 08aebf698a7a00729a0e37b57cb15938853e4185
-ms.sourcegitcommit: 837dfd2c84a810c75b009d5813ecb67237aaf6b8
+ms.openlocfilehash: 8c1251056ad816af664f95abcd18d50ceca4619d
+ms.sourcegitcommit: 64798b4f722623ea2bb53b374fb95e8d2b679318
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2019
-ms.locfileid: "67501622"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67835281"
 ---
 # <a name="secure-your-restful-services-by-using-http-basic-authentication"></a>Schützen Ihrer RESTful-Dienste unter Verwendung der HTTP-Standardauthentifizierung
 
@@ -76,12 +76,12 @@ Fügen Sie die `ClientAuthMiddleware.cs`-Klasse unter dem Ordner *App_Start* hin
 
 2. Geben Sie im Feld **Name** die Zeichenfolge **ClientAuthMiddleware.cs** ein.
 
-   ![Erstellen Sie eine neue C#-Klasse.](media/aadb2c-ief-rest-api-netfw-secure-basic/rest-api-netfw-secure-basic-OWIN-startup-auth2.png)
+   ![Erstellen einer neuen C#-Klasse im Dialogfeld „Neues Element hinzufügen“ in Visual Studio](media/aadb2c-ief-rest-api-netfw-secure-basic/rest-api-netfw-secure-basic-OWIN-startup-auth2.png)
 
 3. Öffnen Sie die Datei *App_Start\ClientAuthMiddleware.cs*, und ersetzen Sie den Inhalt der Datei durch folgenden Code:
 
     ```csharp
-    
+
     using Microsoft.Owin;
     using System;
     using System.Collections.Generic;
@@ -91,7 +91,7 @@ Fügen Sie die `ClientAuthMiddleware.cs`-Klasse unter dem Ordner *App_Start* hin
     using System.Text;
     using System.Threading.Tasks;
     using System.Web;
-    
+
     namespace Contoso.AADB2C.API
     {
         /// <summary>
@@ -101,12 +101,12 @@ Fügen Sie die `ClientAuthMiddleware.cs`-Klasse unter dem Ordner *App_Start* hin
         {
             private static readonly string ClientID = ConfigurationManager.AppSettings["WebApp:ClientId"];
             private static readonly string ClientSecret = ConfigurationManager.AppSettings["WebApp:ClientSecret"];
-    
+
             /// <summary>
             /// Gets or sets the next owin middleware
             /// </summary>
             private Func<IDictionary<string, object>, Task> Next { get; set; }
-    
+
             /// <summary>
             /// Initializes a new instance of the <see cref="ClientAuthMiddleware"/> class.
             /// </summary>
@@ -115,7 +115,7 @@ Fügen Sie die `ClientAuthMiddleware.cs`-Klasse unter dem Ordner *App_Start* hin
             {
                 this.Next = next;
             }
-    
+
             /// <summary>
             /// Invoke client authentication middleware during each request.
             /// </summary>
@@ -125,7 +125,7 @@ Fügen Sie die `ClientAuthMiddleware.cs`-Klasse unter dem Ordner *App_Start* hin
             {
                 // Get wrapper class for the environment
                 var context = new OwinContext(environment);
-    
+
                 // Check whether the authorization header is available. This contains the credentials.
                 var authzValue = context.Request.Headers.Get("Authorization");
                 if (string.IsNullOrEmpty(authzValue) || !authzValue.StartsWith("Basic ", StringComparison.OrdinalIgnoreCase))
@@ -133,21 +133,21 @@ Fügen Sie die `ClientAuthMiddleware.cs`-Klasse unter dem Ordner *App_Start* hin
                     // Process next middleware
                     return Next(environment);
                 }
-    
+
                 // Get credentials
                 var creds = authzValue.Substring("Basic ".Length).Trim();
                 string clientId;
                 string clientSecret;
-    
+
                 if (RetrieveCreds(creds, out clientId, out clientSecret))
                 {
                     // Set transaction authenticated as client
                     context.Request.User = new GenericPrincipal(new GenericIdentity(clientId, "client"), new string[] { "client" });
                 }
-    
+
                 return Next(environment);
             }
-    
+
             /// <summary>
             /// Retrieve credentials from header
             /// </summary>
@@ -159,7 +159,7 @@ Fügen Sie die `ClientAuthMiddleware.cs`-Klasse unter dem Ordner *App_Start* hin
             {
                 string pair;
                 clientId = clientSecret = string.Empty;
-    
+
                 try
                 {
                     pair = Encoding.UTF8.GetString(Convert.FromBase64String(credentials));
@@ -172,16 +172,16 @@ Fügen Sie die `ClientAuthMiddleware.cs`-Klasse unter dem Ordner *App_Start* hin
                 {
                     return false;
                 }
-    
+
                 var ix = pair.IndexOf(':');
                 if (ix == -1)
                 {
                     return false;
                 }
-    
+
                 clientId = pair.Substring(0, ix);
                 clientSecret = pair.Substring(ix + 1);
-    
+
                 // Return whether credentials are valid
                 return (string.Compare(clientId, ClientAuthMiddleware.ClientID) == 0 &&
                     string.Compare(clientSecret, ClientAuthMiddleware.ClientSecret) == 0);
@@ -195,14 +195,14 @@ Fügen Sie die `ClientAuthMiddleware.cs`-Klasse unter dem Ordner *App_Start* hin
 Fügen Sie der API eine OWIN-Startklasse mit dem Namen `Startup.cs` hinzu. Gehen Sie dazu wie folgt vor:
 1. Klicken Sie mit der rechten Maustaste auf das Projekt, wählen Sie **Hinzufügen** > **Neues Element** aus, und suchen Sie dann nach **OWIN**.
 
-   ![Hinzufügen einer OWIN-Startklasse](media/aadb2c-ief-rest-api-netfw-secure-basic/rest-api-netfw-secure-basic-OWIN-startup.png)
+   ![Erstellen einer OWIN-Startup-Klasse im Dialogfeld „Neues Element hinzufügen“ in Visual Studio](media/aadb2c-ief-rest-api-netfw-secure-basic/rest-api-netfw-secure-basic-OWIN-startup.png)
 
 2. Öffnen Sie die Datei *Startup.cs*, und ersetzen Sie den Inhalt der Datei durch folgenden Code:
 
     ```csharp
     using Microsoft.Owin;
     using Owin;
-    
+
     [assembly: OwinStartup(typeof(Contoso.AADB2C.API.Startup))]
     namespace Contoso.AADB2C.API
     {
@@ -241,7 +241,7 @@ Nachdem Ihr RESTful-Dienst mithilfe der Client-ID (Benutzername) und eines Gehei
 
 4. Wählen Sie unter **Optionen** den Eintrag **Manuell** aus.
 
-5. Geben Sie für **Name** die Zeichenfolge **B2cRestClientId** ein.  
+5. Geben Sie für **Name** die Zeichenfolge **B2cRestClientId** ein.
     Das Präfix *B2C_1A_* wird möglicherweise automatisch hinzugefügt.
 
 6. Geben Sie im Feld **Geheimnis** die zuvor definierte App-ID ein.
@@ -262,7 +262,7 @@ Nachdem Ihr RESTful-Dienst mithilfe der Client-ID (Benutzername) und eines Gehei
 
 4. Wählen Sie unter **Optionen** den Eintrag **Manuell** aus.
 
-5. Geben Sie für **Name** die Zeichenfolge **B2cRestClientSecret** ein.  
+5. Geben Sie für **Name** die Zeichenfolge **B2cRestClientSecret** ein.
     Das Präfix *B2C_1A_* wird möglicherweise automatisch hinzugefügt.
 
 6. Geben Sie im Feld **Geheimnis** das zuvor definierte App-Geheimnis ein.
@@ -297,8 +297,8 @@ Nachdem Ihr RESTful-Dienst mithilfe der Client-ID (Benutzername) und eines Gehei
     ```
 
     Nachdem Sie den Ausschnitt hinzugefügt haben, sollte Ihr technisches Profil wie der folgende XML-Code aussehen:
-    
-    ![Standardauthentifizierungs-XML-Elemente hinzufügen](media/aadb2c-ief-rest-api-netfw-secure-basic/rest-api-netfw-secure-basic-add-1.png)
+
+    ![Hinzufügen von Standardauthentifizierungs-XML-Elementen zu TechnicalProfile](media/aadb2c-ief-rest-api-netfw-secure-basic/rest-api-netfw-secure-basic-add-1.png)
 
 ## <a name="step-5-upload-the-policy-to-your-tenant"></a>Schritt 5: Hochladen der Richtlinie in Ihren Mandanten
 
@@ -323,12 +323,12 @@ Nachdem Ihr RESTful-Dienst mithilfe der Client-ID (Benutzername) und eines Gehei
 
 2. Öffnen Sie **B2C_1A_signup_signin**. Dies ist die benutzerdefinierte Richtlinie der vertrauenden Seite (Relying Party, RP), die Sie hochgeladen haben. Wählen Sie anschließend **Jetzt ausführen** aus.
 
-3. Testen Sie den Prozess, indem Sie **Test** in das Feld **Vorname** eingeben.  
+3. Testen Sie den Prozess, indem Sie **Test** in das Feld **Vorname** eingeben.
     Azure AD B2C zeigt am oberen Rand des Fensters eine Fehlermeldung an.
 
-    ![Testen Ihrer Identitäts-API](media/aadb2c-ief-rest-api-netfw-secure-basic/rest-api-netfw-test.png)
+    ![Testen der Eingabevalidierung für den Vornamen in Ihrer Identitäts-API](media/aadb2c-ief-rest-api-netfw-secure-basic/rest-api-netfw-test.png)
 
-4. Geben Sie in das Feld **Vorname** einen Namen (nicht „Test“) ein.  
+4. Geben Sie in das Feld **Vorname** einen Namen (nicht „Test“) ein.
     Azure AD B2C meldet den Benutzer an und sendet dann eine Treuenummer an Ihre Anwendung. Die Treuenummer ist in diesem Beispiel enthalten:
 
     ```

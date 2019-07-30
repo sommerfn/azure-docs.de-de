@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/05/2018
 ms.author: kumud
-ms.openlocfilehash: f1353165954021cd949d6e46357d10514ee26b3c
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 1c00f23570c3f8d80e39f3fe3901f866e40dc2ea
+ms.sourcegitcommit: 770b060438122f090ab90d81e3ff2f023455213b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65560940"
+ms.lasthandoff: 07/17/2019
+ms.locfileid: "68305685"
 ---
 # <a name="create-change-or-delete-a-network-security-group"></a>Erstellen, Ändern oder Löschen einer Netzwerksicherheitsgruppe
 
@@ -124,7 +124,7 @@ Die Anzahl der Sicherheitsregeln, die Sie pro Netzwerksicherheitsgruppe pro Azur
     |Quellportbereiche     | Geben Sie einen einzelnen Port wie z.B. 80 an, einen Bereich von Ports wie z.B. „1024-65535“ oder eine durch Trennzeichen getrennte Liste von einzelnen Ports und/oder Portbereichen wie z.B. „80, 1024-65535“. Geben Sie ein Sternchen ein, um Datenverkehr an einem beliebigen Port zuzulassen. | Die Ports und Bereiche legen fest, an welchen Ports die Regel Datenverkehr zulässt oder verweigert. Es gibt Grenzen für die Anzahl der Ports, die Sie angeben können. Ausführliche Informationen finden Sie im Artikel zu den [Einschränkungen für Azure-Abonnements](../azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#azure-resource-manager-virtual-networking-limits).  |
     |Ziel     | Wählen Sie als Sicherheitsregeln für ausgehenden Datenverkehr die Optionen **Beliebig**, **Anwendungssicherheitsgruppe**, **IP-Adressen** oder **Virtuelles Netzwerk** aus. Bei der Erstellung einer Sicherheitsregel für eingehenden Datenverkehr gelten die gleichen Optionen, die für **Quelle** genannt wurden.        | Wenn Sie **Anwendungssicherheitsgruppe** wählen, müssen Sie mindestens eine vorhandene Anwendungssicherheitsgruppe auswählen, die sich in derselben Region wie die Netzwerkschnittstelle befindet. Informieren Sie sich über das [Erstellen einer Anwendungssicherheitsgruppe](#create-an-application-security-group). Bei Auswahl von **Anwendungssicherheitsgruppe** sollten Sie mindestens eine vorhandene Anwendungssicherheitsgruppe auswählen, die sich in derselben Region wie die Netzwerkschnittstelle befindet. Geben Sie bei Auswahl von **IP-Adressen** Daten unter **Ziel-IP-Adressen/CIDR-Bereiche** an. Ähnlich wie bei **Quelle** und **Quell-IP-Adressen/CIDR-Bereiche** können Sie eine einzelne oder mehrere Adressen bzw. Bereiche angeben, und die Anzahl, die Sie angeben können, ist begrenzt. Die Auswahl von **Virtuelles Netzwerk** – eines Diensttags – bedeutet, dass Datenverkehr an allen IP-Adressen innerhalb des Adressraums des virtuellen Netzwerks zulässig ist. Wenn die von Ihnen angegebene IP-Adresse einem virtuellen Azure-Computer zugewiesen ist, sollten Sie sicherstellen, dass Sie die private IP-Adresse und nicht die öffentliche IP-Adresse angeben, die dem virtuellen Computer zugewiesen ist. Sicherheitsregeln werden verarbeitet, nachdem Azure die öffentliche IP-Adresse in eine private IP-Adresse für Eingangssicherheitsregeln übersetzt und bevor Azure eine private IP-Adresse in eine öffentliche IP-Adresse für Ausgangsregeln übersetzt hat. Weitere Informationen zu öffentlichen und privaten IP-Adressen in Azure finden Sie unter [IP-Adresstypen und Zuordnungsmethoden in Azure](virtual-network-ip-addresses-overview-arm.md).        |
     |Zielportbereiche     | Geben Sie einen einzelnen Wert oder eine durch Trennzeichen getrennte Liste von Werten an. | Ähnlich wie bei **Quellportbereiche** können Sie einen einzelnen Port und Bereich oder mehrere angeben, und die Anzahl, die Sie angeben können, ist begrenzt. |
-    |Protocol     | Wählen Sie **Beliebig**, **TCP** oder **UDP**.        |         |
+    |Protocol     | Wählen Sie **Alle**, **TCP**, **UDP** oder **ICMP** aus.        |         |
     |Aktion     | Wählen Sie **Zulassen** oder **Verweigern**.        |         |
     |Priorität     | Geben Sie einen Wert von 100-4096 ein, der für alle Sicherheitsregeln innerhalb der Netzwerksicherheitsgruppe eindeutig ist. |Regeln werden in der Reihenfolge ihrer Priorität verarbeitet. Je niedriger die Zahl, desto höher die Priorität. Sie sollten beim Erstellen von Regeln eine Lücke zwischen Prioritätsnummern lassen, z.B. 100, 200, 300. Lücken erleichtern das zukünftige Hinzufügen von Regeln, die Sie vielleicht zum Herauf- oder Herabsetzen im Vergleich zu vorhandenen Regeln aufstellen müssen.         |
     |NAME     | Ein eindeutiger Name für die Regel in der Netzwerksicherheitsgruppe.        |  Der Name kann bis zu 80 Zeichen umfassen. Er muss mit einem Buchstaben oder einer Zahl beginnen, mit einem Buchstaben, einer Zahl oder einem Unterstrich enden und darf nur Buchstaben, Zahlen, Unterstriche, Punkte oder Bindestriche umfassen.       |
@@ -195,8 +195,8 @@ Eine Anwendungssicherheitsgruppe muss keine Netzwerkschnittstellen enthalten, ka
     | Einstellung        | Wert                                                   |
     | ---            | ---                                                     |
     | NAME           | Der Name muss innerhalb einer Ressourcengruppe eindeutig sein.        |
-    | Abonnement   | Wählen Sie Ihr Abonnement aus.                               |
-    | Ressourcengruppe | Wählen Sie eine vorhandene Ressourcengruppe aus, oder erstellen Sie eine neue. |
+    | Subscription   | Wählen Sie Ihr Abonnement aus.                               |
+    | Resource group | Wählen Sie eine vorhandene Ressourcengruppe aus, oder erstellen Sie eine neue. |
     | Location       | Standort auswählen                                       |
 
 **Befehle**

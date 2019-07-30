@@ -4,14 +4,14 @@ description: Hier werden die Funktionen beschrieben, die in einer Azure Resource
 author: tfitzmac
 ms.service: azure-resource-manager
 ms.topic: reference
-ms.date: 05/21/2019
+ms.date: 07/11/2019
 ms.author: tomfitz
-ms.openlocfilehash: dcad4b988f37d46a0b843fbf905e18011bc4e313
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 0b65c7a9b6d4f025c574c2dddace6fa45b77398c
+ms.sourcegitcommit: 64798b4f722623ea2bb53b374fb95e8d2b679318
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65990755"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67835787"
 ---
 # <a name="resource-functions-for-azure-resource-manager-templates"></a>Ressourcenfunktionen für Azure Resource Manager-Vorlagen
 
@@ -50,9 +50,13 @@ Die Verwendungsmöglichkeiten von list* werden in der folgenden Tabelle gezeigt.
 | Ressourcentyp | Funktionsname |
 | ------------- | ------------- |
 | Microsoft.AnalysisServices/servers | [listGatewayStatus](/rest/api/analysisservices/servers/listgatewaystatus) |
+| Microsoft.AppConfiguration/configurationStores | ListKeys |
 | Microsoft.Automation/automationAccounts | [listKeys](/rest/api/automation/keys/listbyautomationaccount) |
 | Microsoft.Batch/batchAccounts | [listkeys](/rest/api/batchmanagement/batchaccount/getkeys) |
 | Microsoft.BatchAI/workspaces/experiments/jobs | [listoutputfiles](/rest/api/batchai/jobs/listoutputfiles) |
+| Microsoft.Blockchain/blockchainMembers | [listApiKeys](/rest/api/blockchain/2019-06-01-preview/blockchainmembers/listapikeys) |
+| Microsoft.Blockchain/blockchainMembers/transactionNodes | [listApiKeys](/rest/api/blockchain/2019-06-01-preview/transactionnodes/listapikeys) |
+| Microsoft.BotService/botServices/channels | listChannelWithKeys |
 | Microsoft.Cache/redis | [listKeys](/rest/api/redis/redis/listkeys) |
 | Microsoft.CognitiveServices/accounts | [listKeys](/rest/api/cognitiveservices/accountmanagement/accounts/listkeys) |
 | Microsoft.ContainerRegistry/registries | [listBuildSourceUploadUrl](/rest/api/containerregistry/registries%20(tasks)/getbuildsourceuploadurl) |
@@ -60,8 +64,12 @@ Die Verwendungsmöglichkeiten von list* werden in der folgenden Tabelle gezeigt.
 | Microsoft.ContainerRegistry/registries | [listPolicies](/rest/api/containerregistry/registries/listpolicies) |
 | Microsoft.ContainerRegistry/registries | [listUsages](/rest/api/containerregistry/registries/listusages) |
 | Microsoft.ContainerRegistry/registries/webhooks | [listEvents](/rest/api/containerregistry/webhooks/listevents) |
+| Microsoft.ContainerRegistry/registries/runs | [listLogSasUrl](/rest/api/containerregistry/runs/getlogsasurl) |
+| Microsoft.ContainerRegistry/registries/tasks | [listDetails](/rest/api/containerregistry/tasks/getdetails) |
 | Microsoft.ContainerService/managedClusters | [listClusterAdminCredential](/rest/api/aks/managedclusters/listclusteradmincredentials) |
 | Microsoft.ContainerService/managedClusters | [listClusterUserCredential](/rest/api/aks/managedclusters/listclusterusercredentials) |
+| Microsoft.ContainerService/managedClusters/accessProfiles | [listCredential](/rest/api/aks/managedclusters/getaccessprofile) |
+| Microsoft.DataBox/jobs | listCredentials |
 | Microsoft.DataFactory/datafactories/gateways | listauthkeys |
 | Microsoft.DataFactory/factories/integrationruntimes | [listauthkeys](/rest/api/datafactory/integrationruntimes/listauthkeys) |
 | Microsoft.DataLakeAnalytics/accounts/storageAccounts/Containers | [listSasTokens](/rest/api/datalakeanalytics/storageaccounts/listsastokens) |
@@ -76,11 +84,14 @@ Die Verwendungsmöglichkeiten von list* werden in der folgenden Tabelle gezeigt.
 | Microsoft.DocumentDB/databaseAccounts | [listKeys](/rest/api/cosmos-db-resource-provider/databaseaccounts/listkeys) |
 | Microsoft.DomainRegistration | [listDomainRecommendations](/rest/api/appservice/domains/listrecommendations) |
 | Microsoft.DomainRegistration/topLevelDomains | [listAgreements](/rest/api/appservice/topleveldomains/listagreements) |
+| Microsoft.EventGrid/domains | [listKeys](/rest/api/eventgrid/domains/listsharedaccesskeys) |
 | Microsoft.EventGrid/topics | [listKeys](/rest/api/eventgrid/topics/listsharedaccesskeys) |
 | Microsoft.EventHub/namespaces/authorizationRules | [listkeys](/rest/api/eventhub/namespaces/listkeys) |
 | Microsoft.EventHub/namespaces/disasterRecoveryConfigs/authorizationRules | [listkeys](/rest/api/eventhub/disasterrecoveryconfigs/listkeys) |
 | Microsoft.EventHub/namespaces/eventhubs/authorizationRules | [listkeys](/rest/api/eventhub/eventhubs/listkeys) |
 | Microsoft.ImportExport/jobs | [listBitLockerKeys](/rest/api/storageimportexport/bitlockerkeys/list) |
+| Microsoft.LabServices/users | [ListEnvironments](/rest/api/labservices/globalusers/listenvironments) |
+| Microsoft.LabServices/users | [ListLabs](/rest/api/labservices/globalusers/listlabs) |
 | Microsoft.Logic/integrationAccounts/agreements | [listContentCallbackUrl](/rest/api/logic/agreements/listcontentcallbackurl) |
 | Microsoft.Logic/integrationAccounts/assemblies | [listContentCallbackUrl](/rest/api/logic/integrationaccountassemblies/listcontentcallbackurl) |
 | Microsoft.Logic/integrationAccounts | [listCallbackUrl](/rest/api/logic/integrationaccounts/getcallbackurl) |
@@ -90,6 +101,8 @@ Die Verwendungsmöglichkeiten von list* werden in der folgenden Tabelle gezeigt.
 | Microsoft.Logic/integrationAccounts/schemas | [listContentCallbackUrl](/rest/api/logic/schemas/listcontentcallbackurl) |
 | Microsoft.Logic/workflows | [listCallbackUrl](/rest/api/logic/workflows/listcallbackurl) |
 | Microsoft.Logic/workflows | [listSwagger](/rest/api/logic/workflows/listswagger) |
+| Microsoft.Logic/workflows/triggers | [listCallbackUrl](/rest/api/logic/workflowtriggers/listcallbackurl) |
+| Microsoft.Logic/workflows/versions/triggers | [listCallbackUrl](/rest/api/logic/workflowversions/listcallbackurl) |
 | Microsoft.MachineLearning/webServices | [listkeys](/rest/api/machinelearning/webservices/listkeys) |
 | Microsoft.MachineLearning/Workspaces | listworkspacekeys |
 | Microsoft.MachineLearningServices/workspaces/computes | listKeys |
@@ -99,10 +112,12 @@ Die Verwendungsmöglichkeiten von list* werden in der folgenden Tabelle gezeigt.
 | Microsoft.Media/mediaservices/assets | [listStreamingLocators](/rest/api/media/assets/liststreaminglocators) |
 | Microsoft.Media/mediaservices/streamingLocators | [listContentKeys](/rest/api/media/streaminglocators/listcontentkeys) |
 | Microsoft.Media/mediaservices/streamingLocators | [listPaths](/rest/api/media/streaminglocators/listpaths) |
+| Microsoft.Network/applicationSecurityGroups | listIpConfigurations |
 | Microsoft.NotificationHubs/Namespaces/authorizationRules | [listkeys](/rest/api/notificationhubs/namespaces/listkeys) |
 | Microsoft.NotificationHubs/Namespaces/NotificationHubs/authorizationRules | [listkeys](/rest/api/notificationhubs/notificationhubs/listkeys) |
 | Microsoft.OperationalInsights/workspaces | [listKeys](/rest/api/loganalytics/workspaces%202015-03-20/listkeys) |
 | Microsoft.Relay/namespaces/authorizationRules | [listkeys](/rest/api/relay/namespaces/listkeys) |
+| Microsoft.Relay/namespaces/disasterRecoveryConfigs/authorizationRules | listkeys |
 | Microsoft.Relay/namespaces/HybridConnections/authorizationRules | [listkeys](/rest/api/relay/hybridconnections/listkeys) |
 | Microsoft.Relay/namespaces/WcfRelays/authorizationRules | [listkeys](/rest/api/relay/wcfrelays/listkeys) |
 | Microsoft.Search/searchServices | [listAdminKeys](/rest/api/searchmanagement/adminkeys/get) |
@@ -123,6 +138,8 @@ Die Verwendungsmöglichkeiten von list* werden in der folgenden Tabelle gezeigt.
 | microsoft.web/connections | listconsentlinks |
 | Microsoft.Web/customApis | listWsdlInterfaces |
 | microsoft.web/locations | listwsdlinterfaces |
+| microsoft.web/apimanagementaccounts/apis/connections | listconnectionkeys |
+| microsoft.web/apimanagementaccounts/apis/connections | listsecrets |
 | microsoft.web/sites/functions | [listsecrets](/rest/api/appservice/webapps/listfunctionsecrets) |
 | microsoft.web/sites/hybridconnectionnamespaces/relays | [listkeys](/rest/api/appservice/webapps/listhybridconnectionkeys) |
 | microsoft.web/sites | [listsyncfunctiontriggerstatus](/rest/api/appservice/webapps/listsyncfunctiontriggers) |
@@ -712,7 +729,7 @@ Die folgende [Beispielvorlage](https://github.com/Azure/azure-docs-json-samples/
 
 Die Ausgabe aus dem vorherigen Beispiel mit den Standardwerten lautet:
 
-| NAME | Type | Wert |
+| NAME | type | Wert |
 | ---- | ---- | ----- |
 | sameRGOutput | string | /subscriptions/{current-sub-id}/resourceGroups/examplegroup/providers/Microsoft.Storage/storageAccounts/examplestorage |
 | differentRGOutput | string | /subscriptions/{current-sub-id}/resourceGroups/otherResourceGroup/providers/Microsoft.Storage/storageAccounts/examplestorage |

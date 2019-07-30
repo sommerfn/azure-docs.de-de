@@ -16,12 +16,12 @@ ms.author: mimart
 ms.reviewer: jeedes
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1baf4af41fd5dcb6723b6ee2827ae91b43b072d9
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: a084ceb841ea35bc62d9851f2b6c4821f4acb6fd
+ms.sourcegitcommit: 47ce9ac1eb1561810b8e4242c45127f7b4a4aa1a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65780964"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67807721"
 ---
 # <a name="advanced-certificate-signing-options-in-the-saml-token-for-gallery-apps-in-azure-active-directory"></a>Erweiterte Optionen für die Zertifikatsignatur im SAML-Token für Katalog-Apps in Azure Active Directory
 
@@ -57,27 +57,21 @@ Wählen Sie die gewünschte Anwendung aus, um ihre SAML-Zertifikatsignaturoption
 1. Wählen Sie im linken Bereich **Unternehmensanwendungen** aus. Eine Liste der Unternehmensanwendungen in Ihrem Konto wird angezeigt.
 1. Wählen Sie eine Anwendung aus. Eine Übersichtsseite für die Anwendung wird angezeigt.
 
-   ![Übersichtsseite der Anwendung](./media/certificate-signing-options/application-overview-page.png)
+   ![Beispiel: Übersichtsseite der Anwendung](./media/certificate-signing-options/application-overview-page.png)
 
 Ändern Sie als Nächstes die Zertifikatsignaturoptionen im SAML-Token für diese Anwendung:
 
 1. Wählen Sie im linken Bereich der Anwendungsübersichtsseite **Einmaliges Anmelden** aus.
+1. Gehen Sie auf der angezeigten Seite **Einmaliges Anmelden (SSO) mit SAML einrichten – Vorschau** zu Schritt 5.
+1. Wird die Seite **SSO-Methode auswählen** nicht angezeigt, wählen Sie **Modi für einmaliges Anmelden ändern**, um diese Seite aufzurufen.
+1. Wählen Sie auf der Seite **SSO-Methode auswählen** die Methode **SAML** aus, sofern verfügbar. (Ist **SAML** nicht verfügbar, wird SAML von der Anwendung nicht unterstützt, und Sie können den Rest dieses Verfahrens und Artikels ignorieren.)
+1. Navigieren Sie auf der Seite **Einmaliges Anmelden (SSO) mit SAML einrichten – Vorschau** zur Überschrift **SAML-Signaturzertifikat**, und wählen Sie das Symbol **Bearbeiten** (Bleistift) aus. Die Seite **SAML-Signaturzertifikat** wird angezeigt.
 
-2. Gehen Sie auf der angezeigten Seite **Einmaliges Anmelden (SSO) mit SAML einrichten – Vorschau** zu Schritt 5.
+   ![Beispiel: Seite „SAML-Signaturzertifikat“](./media/certificate-signing-options/saml-signing-page.png)
 
-3. Wird die Seite **SSO-Methode auswählen** nicht angezeigt, wählen Sie **Modi für einmaliges Anmelden ändern**, um diese Seite aufzurufen.
-
-4. Wählen Sie auf der Seite **SSO-Methode auswählen** die Methode **SAML** aus, sofern verfügbar. (Ist **SAML** nicht verfügbar, wird SAML von der Anwendung nicht unterstützt, und Sie können den Rest dieses Verfahrens und Artikels ignorieren.)
-
-5. Navigieren Sie auf der Seite **Einmaliges Anmelden (SSO) mit SAML einrichten – Vorschau** zur Überschrift **SAML-Signaturzertifikat**, und wählen Sie das Symbol **Bearbeiten** (Bleistift) aus. Die Seite **SAML-Signaturzertifikat** wird angezeigt.
-
-   ![Seite „SAML-Signatur“](./media/certificate-signing-options/saml-signing-page.png)
-
-6. Wählen Sie in der Dropdownliste **Signaturoption** die Option **SAML-Anwort signieren**, **SAML-Assertion signieren** oder **SAML-Antwort und-Assertion signieren** aus. Beschreibungen dieser Optionen finden Sie weiter oben in diesem Artikel unter [Optionen für die Zertifikatsignatur](#certificate-signing-options).
-
-7. Wählen Sie in der Dropdownliste **Signaturalgorithmus** die Option **SHA-1** oder **SHA-256** aus. Beschreibungen dieser Optionen finden Sie weiter oben in diesem Artikel im Abschnitt [Zertifikatsignaturalgorithmen](#certificate-signing-algorithms).
-
-8. Wenn Sie mit Ihrer Auswahl zufrieden sind, wählen Sie **Speichern** aus, um die neuen SAML-Signaturzertifikateinstellungen zu übernehmen. Wählen Sie andernfalls **X** aus, um die Änderungen zu verwerfen.
+1. Wählen Sie in der Dropdownliste **Signaturoption** die Option **SAML-Anwort signieren**, **SAML-Assertion signieren** oder **SAML-Antwort und-Assertion signieren** aus. Beschreibungen dieser Optionen finden Sie weiter oben in diesem Artikel unter [Optionen für die Zertifikatsignatur](#certificate-signing-options).
+1. Wählen Sie in der Dropdownliste **Signaturalgorithmus** die Option **SHA-1** oder **SHA-256** aus. Beschreibungen dieser Optionen finden Sie weiter oben in diesem Artikel im Abschnitt [Zertifikatsignaturalgorithmen](#certificate-signing-algorithms).
+1. Wenn Sie mit Ihrer Auswahl zufrieden sind, wählen Sie **Speichern** aus, um die neuen SAML-Signaturzertifikateinstellungen zu übernehmen. Wählen Sie andernfalls **X** aus, um die Änderungen zu verwerfen.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

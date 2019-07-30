@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 05/22/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: baca05a9c007849d813b2f4de17378e6d18da4a5
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.openlocfilehash: 22d6999b2a69aceb4421cea070d784f693bdf9c4
+ms.sourcegitcommit: 64798b4f722623ea2bb53b374fb95e8d2b679318
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67701733"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67839292"
 ---
 # <a name="move-data-from-an-http-source-by-using-azure-data-factory"></a>Verschieben von Daten aus einer HTTP-Quelle mithilfe von Azure Data Factory
 
@@ -45,7 +45,7 @@ Sie können eine Pipeline mit einer Kopieraktivität erstellen, die Daten mithil
 
 - Am einfachsten erstellen Sie eine Pipeline mit dem Assistenten zum Kopieren von Daten. Eine kurze exemplarische Vorgehensweise zum Erstellen einer Pipeline mithilfe des Assistenten zum Kopieren von Daten finden Sie im [Tutorial: Erstellen einer Pipeline mit dem Kopier-Assistenten](data-factory-copy-data-wizard-tutorial.md).
 
-- Sie können auch die folgenden Tools zum Erstellen einer Pipeline verwenden: das **Azure-Portal**, **Visual Studio**, **Azure PowerShell**, **Azure Resource Manager-Vorlagen** sowie die **.NET-API** und die **REST-API**. Im [Tutorial zur Kopieraktivität](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) finden Sie eine schrittweise Anleitung, wie Sie eine Pipeline mit einer Kopieraktivität erstellen können. JSON-Beispiele zum Kopieren von Daten aus einer HTTP-Quelle in Azure Blob Storage finden Sie unter [JSON-Beispiele](#json-examples).
+- Sie können auch die folgenden Tools zum Erstellen einer Pipeline verwenden: **Visual Studio**, **Azure PowerShell**, **Azure Resource Manager-Vorlagen** sowie die **.NET-API** und die **REST-API**. Im [Tutorial zur Kopieraktivität](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) finden Sie eine schrittweise Anleitung, wie Sie eine Pipeline mit einer Kopieraktivität erstellen können. JSON-Beispiele zum Kopieren von Daten aus einer HTTP-Quelle in Azure Blob Storage finden Sie unter [JSON-Beispiele](#json-examples).
 
 ## <a name="linked-service-properties"></a>Eigenschaften des verknüpften Diensts
 
@@ -231,7 +231,7 @@ Weitere Informationen finden Sie unter [Datei- und Komprimierungsformate in Azur
 
 ## <a name="json-examples"></a>JSON-Beispiele
 
-Die folgenden Beispiele zeigen JSON-Beispieldefinitionen, die Sie zum Erstellen einer Pipeline mit dem [Azure-Portal](data-factory-copy-activity-tutorial-using-azure-portal.md), mit [Visual Studio](data-factory-copy-activity-tutorial-using-visual-studio.md) oder [Azure PowerShell](data-factory-copy-activity-tutorial-using-powershell.md) verwenden können. Die Beispiele veranschaulichen, wie Sie Daten aus einer HTTP-Quelle in Azure Blob Storage kopieren. Daten können jedoch *direkt* aus einer beliebigen Quelle in eine der Senken kopiert werden, die durch die Verwendung der Kopieraktivität in Azure Data Factory [unterstützt](data-factory-data-movement-activities.md#supported-data-stores-and-formats) werden.
+Die folgenden Beispiele zeigen JSON-Beispieldefinitionen, die Sie zum Erstellen einer Pipeline mit [Visual Studio](data-factory-copy-activity-tutorial-using-visual-studio.md) oder [Azure PowerShell](data-factory-copy-activity-tutorial-using-powershell.md) verwenden können. Die Beispiele veranschaulichen, wie Sie Daten aus einer HTTP-Quelle in Azure Blob Storage kopieren. Daten können jedoch *direkt* aus einer beliebigen Quelle in eine der Senken kopiert werden, die durch die Verwendung der Kopieraktivität in Azure Data Factory [unterstützt](data-factory-data-movement-activities.md#supported-data-stores-and-formats) werden.
 
 **Beispiel: Kopieren von Daten aus einer HTTP-Quelle in Azure Blob Storage**
 

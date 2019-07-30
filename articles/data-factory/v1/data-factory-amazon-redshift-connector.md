@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 01/22/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: dc72ec9bf2e7e7c5c77685368167357a0108f2d3
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 3a1497211cc42c702537cbbdfea32ff71a400c7c
+ms.sourcegitcommit: 64798b4f722623ea2bb53b374fb95e8d2b679318
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60335425"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67836686"
 ---
 # <a name="move-data-from-amazon-redshift-using-azure-data-factory"></a>Verschieben von Daten mithilfe von Azure Data Factory
 > [!div class="op_single_selector" title1="Wählen Sie die von Ihren verwendete Version des Data Factory-Diensts aus:"]
@@ -44,7 +44,7 @@ Sie können eine Pipeline mit einer Kopieraktivität erstellen, die Daten mithil
 
 Am einfachsten erstellen Sie eine Pipeline mit dem Kopier-Assistenten von Azure Data Factory. Eine kurze exemplarische Vorgehensweise zum Erstellen einer Pipeline mithilfe des Kopier-Assistenten finden Sie im [Tutorial: Erstellen einer Pipeline mit dem Kopier-Assistenten](data-factory-copy-data-wizard-tutorial.md).
 
-Sie können auch das Azure-Portal, Visual Studio, Azure PowerShell oder andere Tools verwenden, um eine Pipeline zu erstellen. Azure Resource Manager-Vorlagen, die .NET API oder die REST-API können ebenfalls zur Erstellung der Pipeline verwendet werden. Eine ausführliche Anleitung zum Erstellen einer Pipeline mit einer Kopieraktivität finden Sie im [Tutorial zur Kopieraktivität](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md).
+Sie können auch Visual Studio, Azure PowerShell oder andere Tools verwenden, um eine Pipeline zu erstellen. Azure Resource Manager-Vorlagen, die .NET API oder die REST-API können ebenfalls zur Erstellung der Pipeline verwendet werden. Eine ausführliche Anleitung zum Erstellen einer Pipeline mit einer Kopieraktivität finden Sie im [Tutorial zur Kopieraktivität](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md).
 
 Unabhängig davon, ob Sie Tools oder APIs verwenden, führen Sie die folgenden Schritte aus, um eine Pipeline zu erstellen, die Daten aus einem Quelldatenspeicher in einen Senkendatenspeicher verschiebt:
 

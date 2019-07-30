@@ -10,12 +10,12 @@ ms.date: 11/20/2018
 ms.author: mhopkins
 ms.reviewer: seguler
 ms.subservice: blobs
-ms.openlocfilehash: 87651aa1fd44a831e94a00b5871faaae51f2f6a7
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 2d44dabe68900aa45b076f44cc38ed85d6938afa
+ms.sourcegitcommit: a6873b710ca07eb956d45596d4ec2c1d5dc57353
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65148293"
+ms.lasthandoff: 07/16/2019
+ms.locfileid: "68249946"
 ---
 # <a name="how-to-use-blob-storage-from-ios"></a>Verwenden des Blobspeichers mit iOS
 
@@ -80,7 +80,7 @@ Sie können die Frameworkdatei dann folgendermaßen in Ihre Anwendung importiere
 #import <AZSClient/AZSClient.h>
 ```
 
-Wenn Sie Swift verwenden, müssen Sie einen Bridging-Header erstellen und <AZSClient/AZSClient.h> hierhin importieren:
+Wenn Sie Swift verwenden, müssen Sie einen Bridging-Header erstellen und \<AZSClient/AZSClient.h> hierhin importieren:
 
 1. Erstellen Sie eine Headerdatei `Bridging-Header.h`, und fügen Sie die oben genannte Import-Anweisung hinzu.
 2. Wechseln Sie zur Registerkarte *Buildeinstellungen*, und suchen Sie nach *Objective-C Bridging Header*.

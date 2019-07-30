@@ -10,16 +10,16 @@ ms.reviewer: klam, LADocs
 ms.topic: article
 ms.assetid: e06311bc-29eb-49df-9273-1f05bbb2395c
 ms.date: 01/31/2018
-ms.openlocfilehash: 89e0294db3178cedd3b14aada0b505787b17c75e
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 6d9a2929d7b8b1687b602093d0e9de35508dbd8c
+ms.sourcegitcommit: 9a699d7408023d3736961745c753ca3cec708f23
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60303688"
+ms.lasthandoff: 07/16/2019
+ms.locfileid: "68273083"
 ---
 # <a name="common-scenarios-examples-tutorials-and-walkthroughs-for-azure-logic-apps"></a>Gängige Szenarien, Beispiele, Tutorials und exemplarische Vorgehensweisen für Azure Logic Apps
 
-[Azure Logic Apps](../logic-apps/logic-apps-overview.md) unterstützt Sie bei der Orchestrierung und Integration verschiedener Dienste durch die Bereitstellung von [mehr als 100 einsatzbereiten Connectors](../connectors/apis-list.md), die von lokalem SQL Server über SAP bis hin zu Microsoft Cognitive Services reichen. Der Logic Apps-Dienst arbeitet „serverlos“. Daher müssen Sie sich über Skalierung oder Instanzen keine Gedanken machen. Sie brauchen lediglich den Workflow mit einem Trigger und Aktionen definieren, die im Workflow ausgeführt werden. Die zugrundeliegende Plattform kümmert sich um Skalierung, Verfügbarkeit und Leistung. Logic Apps ist besonders nützlich für Anwendungsfälle und Szenarien, in denen Sie mehrere Aktionen auf verschiedenen Systemen koordinieren müssen.
+[Azure Logic Apps](../logic-apps/logic-apps-overview.md) unterstützt Sie bei der Orchestrierung und Integration verschiedener Dienste durch die Bereitstellung von [Hunderten einsatzbereiten Connectors](../connectors/apis-list.md), die von lokalem SQL Server über SAP bis hin zu Microsoft Cognitive Services reichen. Der Logic Apps-Dienst arbeitet „serverlos“. Daher müssen Sie sich über Skalierung oder Instanzen keine Gedanken machen. Sie brauchen lediglich den Workflow mit einem Trigger und Aktionen definieren, die im Workflow ausgeführt werden. Die zugrundeliegende Plattform kümmert sich um Skalierung, Verfügbarkeit und Leistung. Logic Apps ist besonders nützlich für Anwendungsfälle und Szenarien, in denen Sie mehrere Aktionen auf verschiedenen Systemen koordinieren müssen.
 
 Um mehr über die vielen Muster und Funktionen zu erfahren, die von [Azure Logic Apps](../logic-apps/logic-apps-overview.md) unterstützt werden, finden Sie hier einige gängige Beispiele und Szenarien.
 

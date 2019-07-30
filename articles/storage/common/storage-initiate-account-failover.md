@@ -9,12 +9,12 @@ ms.date: 02/11/2019
 ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: common
-ms.openlocfilehash: 94a385b7e41dd4a7664dc40418456b304ebef509
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 51e0379607c49019590a99c9fb7304f28be2afe5
+ms.sourcegitcommit: 770b060438122f090ab90d81e3ff2f023455213b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65150019"
+ms.lasthandoff: 07/17/2019
+ms.locfileid: "68305733"
 ---
 # <a name="initiate-a-storage-account-failover-preview"></a>Initiieren eines Speicherkontofailovers (Vorschau)
 
@@ -67,7 +67,7 @@ Zur Verwendung von PowerShell zum Initiieren eines Kontofailovers müssen Sie zu
 1. Deinstallieren Sie alle älteren Installationen von Azure PowerShell:
 
     - Entfernen Sie alle früheren Installationen von Azure PowerShell mit der Einstellung **Apps & Features** (unter **Einstellungen**) aus Windows.
-    - Entfernen Sie alle **Azure***-Module aus `%Program Files%\WindowsPowerShell\Modules`.
+    - Entfernen Sie alle **Azure**-Module aus `%Program Files%\WindowsPowerShell\Modules`.
     
 1. Vergewissern Sie sich, dass die aktuelle Version von PowerShellGet installiert ist. Öffnen Sie ein Windows PowerShell-Fenster, und führen Sie den folgenden Befehl aus, um die neueste Version zu installieren:
  

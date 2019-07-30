@@ -16,12 +16,12 @@ ms.workload: infrastructure
 ms.date: 03/27/2018
 ms.author: danlep
 ms.custom: ''
-ms.openlocfilehash: 15dd81b6d222c811fe26ec693927355ebdeb47ee
-ms.sourcegitcommit: dad277fbcfe0ed532b555298c9d6bc01fcaa94e2
+ms.openlocfilehash: af2295643869ba8022fe15cf1e1cef3f2f20a428
+ms.sourcegitcommit: fa45c2bcd1b32bc8dd54a5dc8bc206d2fe23d5fb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/10/2019
-ms.locfileid: "67719035"
+ms.lasthandoff: 07/12/2019
+ms.locfileid: "67849845"
 ---
 # <a name="create-a-windows-virtual-machine-in-an-availability-zone-with-the-azure-portal"></a>Erstellen eines virtuellen Windows-Computers in einer Verfügbarkeitszone mit dem Azure-Portal
 
@@ -75,4 +75,4 @@ Sie können die Zoneneinstellungen für diese Ressourcen im Portal überprüfen.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-In diesem Artikel haben Sie gelernt, wie Sie einen virtuellen Computer in einer Verfügbarkeitszone erstellen. Weitere Informationen zu Regionen und Verfügbarkeit für virtuelle Azure-Computer finden Sie [hier](regions-and-availability.md).
+In diesem Artikel haben Sie gelernt, wie Sie einen virtuellen Computer in einer Verfügbarkeitszone erstellen. Erfahren Sie mehr über die [Verfügbarkeit](availability.md) virtueller Azure-Computer.

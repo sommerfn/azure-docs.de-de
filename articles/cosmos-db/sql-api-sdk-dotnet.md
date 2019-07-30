@@ -8,16 +8,17 @@ ms.devlang: dotnet
 ms.topic: reference
 ms.date: 03/09/2018
 ms.author: sngun
-ms.openlocfilehash: 4f502984a09f81b5aaf0568c84b75832f8164151
-ms.sourcegitcommit: 5bdd50e769a4d50ccb89e135cfd38b788ade594d
+ms.openlocfilehash: d68e957ece5c634ed1ce069218df717a4fe0952f
+ms.sourcegitcommit: a6873b710ca07eb956d45596d4ec2c1d5dc57353
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/03/2019
-ms.locfileid: "67541044"
+ms.lasthandoff: 07/16/2019
+ms.locfileid: "68261264"
 ---
 # <a name="azure-cosmos-db-net-sdk-for-sql-api-download-and-release-notes"></a>Azure Cosmos DB .NET SDK für SQL-API: Download und Anmerkungen zum Release
 > [!div class="op_single_selector"]
 > * [.NET](sql-api-sdk-dotnet.md)
+> * [.NET](sql-api-sdk-dotnet-standard.md)
 > * [.NET-Änderungsfeed](sql-api-sdk-dotnet-changefeed.md)
 > * [.NET Core](sql-api-sdk-dotnet-core.md)
 > * [Node.js](sql-api-sdk-node.md)
@@ -34,19 +35,15 @@ ms.locfileid: "67541044"
 |---|---|
 |**SDK-Download**|[NuGet](https://www.nuget.org/packages/Microsoft.Azure.DocumentDB/)|
 |**API-Dokumentation**|[.NET API-Referenzdokumentation](/dotnet/api/overview/azure/cosmosdb?view=azure-dotnet)|
-|**Beispiele**|[.NET-Codebeispiele](sql-api-dotnet-samples.md)|
+|**Beispiele**|[.NET-Codebeispiele](https://github.com/Azure/azure-cosmos-dotnet-v2/tree/master/samples)|
 |**Erste Schritte**|[Erste Schritte mit dem Azure Cosmos DB .NET SDK](sql-api-get-started.md)|
 |**Web-App-Tutorial**|[Entwicklung von Webanwendungen mit Azure Cosmos DB](sql-api-dotnet-application.md)|
 |**Aktuelles unterstütztes Framework**|[Microsoft .NET Framework 4.5](https://www.microsoft.com/download/details.aspx?id=30653)|
 
 ## <a name="release-notes"></a>Versionshinweise
 
-### <a name="a-name3001-preview3001-preview"></a><a name="3.0.0.1-preview"/>3.0.0.1-preview
-* Preview 1 von [Version 3.0.0](https://www.nuget.org/packages/Microsoft.Azure.Cosmos/) des .NET SDK als Public Preview.
-* Ziel: .NET Standard, unterstützt .NET Framework 4.6.1 und höher sowie .NET Core 2.0 und höher
-* Neues Objektmodell, bei dem CosmosClient und Methoden der obersten Ebene auf die entsprechenden Cosmos-Datenbanken, -Container und -Elementklassen aufgeteilt werden. 
-* Unterstützung von Streams. 
-* Aktualisierter CosmosResponseMessage-Statuscode für die Antwort vom Server. Eine Ausnahme wird nur ausgelöst, wenn keine Antwort zurückgegeben wird. 
+> [!NOTE]
+> Wenn Sie .NET Framework verwenden, sehen Sie sich die neueste Version 3.x des [.NET SDK](sql-api-sdk-dotnet-standard.md) an, das .NET Standard als Ziel verwendet. 
 
 ### <a name="a-name251251"></a><a name="2.5.1"/>2.5.1
 
@@ -346,7 +343,7 @@ ms.locfileid: "67541044"
 ### <a name="a-name130130"></a><a name="1.3.0"/>1.3.0
 * Unterstützung für das Ändern der Indizierungsrichtlinie hinzugefügt.
   * Neue „ReplaceDocumentCollectionAsync“-Methode in „DocumentClient“
-  * Neue „IndexTransformationProgress“-Eigenschaft in „ResourceResponse“<T> zum Nachverfolgen des prozentualen Fortschritts von Indexrichtlinienänderungen
+  * Neue IndexTransformationProgress-Eigenschaft in ResourceResponse\<T> zum Nachverfolgen des prozentualen Fortschritts von Indexrichtlinienänderungen
   * „DocumentCollection.IndexingPolicy“ jetzt änderbar.
 * Unterstützung für die räumliche Indizierung und Abfrage hinzugefügt.
   * Neuer „Microsoft.Azure.Documents.Spatial“-Namespace für die Serialisierung/Deserialisierung räumlicher Typen wie Punkt und Polygon.

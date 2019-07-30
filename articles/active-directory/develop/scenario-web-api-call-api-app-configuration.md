@@ -11,16 +11,16 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 05/07/2019
+ms.date: 07/16/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f62cf65e275d8a9b909bf60103ccbd84e91e4574
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 3a5f6189ee000550c4a46d778f571a0272da491d
+ms.sourcegitcommit: 9a699d7408023d3736961745c753ca3cec708f23
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65785056"
+ms.lasthandoff: 07/16/2019
+ms.locfileid: "68276674"
 ---
 # <a name="web-api-that-calls-web-apis---code-configuration"></a>Web-API, die Web-APIs aufruft – Codekonfiguration
 
@@ -94,15 +94,18 @@ app = ConfidentialClientApplicationBuilder.Create(config.ClientId)
 #endif
 ```
 
+Schließlich können vertrauliche Clientanwendungen anstelle eines geheimen Clientschlüssels oder eines Zertifikats ihre Identität auch mithilfe von Clientassertionen nachweisen.
+Dieses erweiterte Szenario wird unter [Clientassertionen](msal-net-client-assertions.md) ausführlich erläutert.
+
 ### <a name="how-to-call-on-behalf-of"></a>Aufrufen von „Im Auftrag von“
 
 Der Aufruf „Im Auftrag von (on behalf of, OBO)“ erfolgt durch das Aufrufen der [AcquireTokenOnBehalf](https://docs.microsoft.com/dotnet/api/microsoft.identity.client.acquiretokenonbehalfofparameterbuilder)-Methode auf der `IConfidentialClientApplication`-Schnittstelle.
 
-`ClientAssertion` basiert auf dem Bearertoken, das von der Web-API der eigenen Clients empfangen wurde. Es gibt [zwei Konstruktoren](https://docs.microsoft.com/dotnet/api/microsoft.identity.client.clientcredential.-ctor?view=azure-dotnet): Ein Konstruktor verwendet ein JWT-Bearertoken und der andere verwendet jegliche Art von Benutzerassertion (eine andere Art von Sicherheitstoken, dessen Typ dann in einem zusätzlichen Parameter namens `assertionType` angegeben wird).
+`UserAssertion` basiert auf dem Bearertoken, das von der Web-API der eigenen Clients empfangen wurde. Es gibt [zwei Konstruktoren](https://docs.microsoft.com/dotnet/api/microsoft.identity.client.clientcredential.-ctor?view=azure-dotnet): Ein Konstruktor verwendet ein JWT-Bearertoken und der andere verwendet jegliche Art von Benutzerassertion (eine andere Art von Sicherheitstoken, dessen Typ dann in einem zusätzlichen Parameter namens `assertionType` angegeben wird).
 
 ![image](https://user-images.githubusercontent.com/13203188/37082180-afc4b708-21e3-11e8-8af8-a6dcbd2dfba8.png)
 
-In der Praxis wird der OBO-Fluss häufig zum Abrufen eines Token für eine Downstream-API verwendet und im MSAL.NET-Benutzertokencache gespeichert, sodass andere Teile der Web-API später die [Außerkraftsetzung](https://docs.microsoft.com/dotnet/api/microsoft.identity.client.clientapplicationbase.acquiretokensilent?view=azure-dotnet) von ``AcquireTokenOnSilent`` aufrufen kann, um die Downstream-APIs aufzurufen. Dies hat zur Folge, dass die Token aktualisiert werden, wenn dies erforderlich ist.
+In der Praxis wird der OBO-Fluss häufig zum Abrufen eines Token für eine Downstream-API verwendet und im MSAL.NET-Benutzertokencache gespeichert, sodass andere Teile der Web-API später die [Außerkraftsetzung](https://docs.microsoft.com/dotnet/api/microsoft.identity.client.clientapplicationbase.acquiretokensilent?view=azure-dotnet) von ``AcquireTokenOnSilent`` aufrufen kann, um die Downstream-APIs aufzurufen. Dieser Aufruf hat zur Folge, dass die Token aktualisiert werden, wenn dies erforderlich ist.
 
 ```CSharp
 private void AddAccountToCacheFromJwt(IEnumerable<string> scopes, JwtSecurityToken jwtToken, ClaimsPrincipal principal, HttpContext httpContext)

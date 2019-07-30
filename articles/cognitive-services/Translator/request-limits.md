@@ -10,12 +10,12 @@ ms.subservice: translator-text
 ms.topic: conceptual
 ms.date: 06/04/2019
 ms.author: swmachan
-ms.openlocfilehash: a7621cc80a38d9a07872a94d8e5221dc04023b86
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: f9620cc5f135dd7b10da5528e5dec0f5baa70350
+ms.sourcegitcommit: 920ad23613a9504212aac2bfbd24a7c3de15d549
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67435032"
+ms.lasthandoff: 07/15/2019
+ms.locfileid: "68226249"
 ---
 # <a name="request-limits-for-translator-text"></a>Anforderungslimits für die Textübersetzungs-API
 
@@ -54,7 +54,7 @@ Wenn Sie diese Grenzwerte erreichen oder überschreiten oder einen zu großen Te
 
 Die Grenzwerte für [Abonnements mit mehreren Diensten](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference#authentication) sind dieselben wie für den S1-Tarif.
 
-Diese Grenzwerte sind auf die Standardübersetzungsmodelle von Microsoft beschränkt. Für benutzerdefinierte Übersetzungsmodelle, die den benutzerdefinierten Translator verwenden, gilt ein Grenzwert von 1.800 Zeichen pro Sekunde.
+Diese Grenzwerte sind auf die Standardübersetzungsmodelle von Microsoft beschränkt. Für benutzerdefinierte Übersetzungsmodelle, die den benutzerdefinierten Translator verwenden, gilt ein Grenzwert von 1.800 Zeichen pro Sekunde.
 
 ## <a name="latency"></a>Latency
 

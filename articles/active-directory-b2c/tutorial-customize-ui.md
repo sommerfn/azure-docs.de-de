@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 02/01/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 4c0fdbee2c5108dd3203217cb721576703b3faca
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: da7ec020b6f3f4a3b1890695a78fb6bdb363d233
+ms.sourcegitcommit: fa45c2bcd1b32bc8dd54a5dc8bc206d2fe23d5fb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66512081"
+ms.lasthandoff: 07/12/2019
+ms.locfileid: "67849378"
 ---
 # <a name="tutorial-customize-the-interface-of-user-experiences-in-azure-active-directory-b2c"></a>Tutorial: Anpassen der Benutzeroberfläche in Azure Active Directory B2C
 
@@ -44,11 +44,11 @@ Zwar können Sie Ihre Dateien auf viele Arten speichern, doch für dieses Tutori
 
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
 2. Stellen Sie sicher, dass Sie das Verzeichnis verwenden, das Ihr Azure-Abonnement enthält. Wählen Sie im Hauptmenü den **Verzeichnis- und Abonnementfilter** aus, und wählen Sie das Verzeichnis aus, das Ihr Abonnement enthält. Dabei handelt es sich um ein anderes Verzeichnis als das, in dem Ihr Azure B2C-Mandant enthalten ist.
-3. Wählen Sie links oben im Azure-Portal „Alle Dienste“ aus, und suchen Sie dann nach **Speicherkonten**, und wählen Sie dies aus. 
+3. Wählen Sie links oben im Azure-Portal „Alle Dienste“ aus, und suchen Sie dann nach **Speicherkonten**, und wählen Sie dies aus.
 4. Wählen Sie **Hinzufügen**.
 5. Wählen Sie unter **Ressourcengruppe** die Option **Neu erstellen** aus, geben Sie einen Namen für die neue Ressourcengruppe ein, und klicken Sie dann auf **OK**.
 6. Geben Sie einen Namen für das Speicherkonto ein. Der ausgewählte Name muss in Azure eindeutig sein und zwischen 3 und 24 Zeichen aufweisen, und er darf nur Zahlen und Kleinbuchstaben enthalten.
-7. Wählen Sie den Standort Ihres Speicherkontos aus, oder akzeptieren Sie den Standardstandort. 
+7. Wählen Sie den Standort Ihres Speicherkontos aus, oder akzeptieren Sie den Standardstandort.
 8. Akzeptieren Sie alle anderen Standardwerte, wählen Sie **Überprüfen + erstellen** aus, und klicken Sie dann auf **Weiter**.
 9. Wählen Sie nach dem Erstellen des neuen Speicherkontos **Zu Ressource wechseln** aus.
 
@@ -68,7 +68,7 @@ Zwar können Sie Ihre Dateien auf viele Arten speichern, doch für dieses Tutori
 5. Geben Sie für **Verfügbar gemachte Header** ein Sternchen (*) ein.
 6. Für **Max. Alter** geben Sie 200 ein.
 
-    ![Aktivieren von CORS](./media/tutorial-customize-ui/enable-cors.png)
+    ![CORS-Konfigurationsseite in Azure Blob Storage im Azure-Portal](./media/tutorial-customize-ui/enable-cors.png)
 
 5. Klicken Sie auf **Speichern**.
 
@@ -85,14 +85,14 @@ Um die Benutzeroberfläche der Registrierungserfahrung anzupassen, beginnen Sie 
         <title>My B2C Application</title>
         <link rel="stylesheet" href="https://your-storage-account.blob.core.windows.net/your-container/style.css">
       </head>
-      <body>  
+      <body>
         <h1>My B2C Application</h1>
         <div id="api"></div>
       </body>
     </html>
     ```
 
-    Die Seite kann entworfen werden, wie Sie möchten, aber das **api** div-Element ist für jede HTML-Anpassungsdatei, die Sie erstellen, erforderlich. 
+    Die Seite kann entworfen werden, wie Sie möchten, aber das **api** div-Element ist für jede HTML-Anpassungsdatei, die Sie erstellen, erforderlich.
 
 3. Speichern Sie die Datei als *custom-ui.html*.
 4. Erstellen Sie den folgenden einfachen CSS-Code, der alle Elemente auf der Registrierungs- oder Anmeldeseite, einschließlich der Elemente, die Azure AD B2C einfügt, zentriert.
@@ -103,7 +103,7 @@ Um die Benutzeroberfläche der Registrierungserfahrung anzupassen, beginnen Sie 
       text-align: center;
     }
     .intro h2 {
-      text-align: center; 
+      text-align: center;
     }
     .entry {
       width: 300px ;
@@ -111,7 +111,7 @@ Um die Benutzeroberfläche der Registrierungserfahrung anzupassen, beginnen Sie 
       margin-right: auto ;
     }
     .divider h2 {
-      text-align: center; 
+      text-align: center;
     }
     .create {
       width: 300px ;
@@ -130,7 +130,7 @@ In diesem Tutorial speichern Sie die Dateien, die Sie im Speicherkonto erstellt 
 2. Wählen Sie das von Ihnen erstellte Speicherkonto aus, wählen Sie **Blobs** aus, und wählen Sie dann den Container aus, den Sie erstellt haben.
 3. Wählen Sie **Hochladen** aus, navigieren Sie zur Datei *custom-ui.html*, wählen Sie sie aus, und klicken Sie dann auf **Hochladen**.
 
-    ![Hochladen von Anpassungsdateien](./media/tutorial-customize-ui/upload-blob.png)
+    ![Seite „BLOB hochladen“ im Portal mit hervorgehobener Schaltfläche „Hochladen“ und Dateien](./media/tutorial-customize-ui/upload-blob.png)
 
 4. Kopieren Sie die URL für die Datei, die Sie hochgeladen haben, um sie später in diesem Tutorial zu verwenden.
 5. Wiederholen Sie Schritt 3 und 4 für die Datei *style.css*.
@@ -149,11 +149,11 @@ In diesem Tutorial speichern Sie die Dateien, die Sie im Speicherkonto erstellt 
 2. Klicken Sie im oberen Bereich der Seite auf **Benutzerflow ausführen**.
 3. Klicken Sie auf die Schaltfläche **Benutzerflow ausführen**.
 
-    ![Ausführen des Benutzerflows für Registrierung oder Anmeldung](./media/tutorial-customize-ui/run-user-flow.png)
+    ![Seite „Benutzerflow ausführen“ des Benutzerflows für die Registrierung oder Anmeldung](./media/tutorial-customize-ui/run-user-flow.png)
 
     Es sollte eine Seite ähnlich dem folgenden Beispiel mit den zentrierten Elementen angezeigt werden, basierend auf der CSS-Datei, die Sie erstellt haben:
 
-    ![Ergebnisse des Benutzerflows](./media/tutorial-customize-ui/run-now.png) 
+    ![Webbrowser mit Seite für die Registrierung/Anmeldung mit benutzerdefinierten Benutzeroberflächenelementen](./media/tutorial-customize-ui/run-now.png)
 
 ## <a name="next-steps"></a>Nächste Schritte
 

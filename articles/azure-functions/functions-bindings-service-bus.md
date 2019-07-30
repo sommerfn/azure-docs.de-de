@@ -12,12 +12,12 @@ ms.devlang: multiple
 ms.topic: reference
 ms.date: 04/01/2017
 ms.author: cshoe
-ms.openlocfilehash: 46e6858376fa70b4b57b6106f8292b842f206d01
-ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
+ms.openlocfilehash: 12a80f77720a6e93a6631947f13247b667c34897
+ms.sourcegitcommit: a6873b710ca07eb956d45596d4ec2c1d5dc57353
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/01/2019
-ms.locfileid: "67480235"
+ms.lasthandoff: 07/16/2019
+ms.locfileid: "68254730"
 ---
 # <a name="azure-service-bus-bindings-for-azure-functions"></a>Azure Service Bus-Bindungen für Azure Functions
 
@@ -295,7 +295,7 @@ In C#- und C#-Skripts können Sie die folgenden Parametertypen für die Wartesch
 * `string`: Wenn es sich bei der Nachricht um Text handelt.
 * `byte[]`: Nützlich für Binärdaten.
 * Ein benutzerdefinierter Typ: Wenn die Nachricht JSON enthält, versucht Azure Functions, die JSON-Daten zu deserialisieren.
-* `BrokeredMessage`: Gibt die deserialisierte Nachricht mit der [BrokeredMessage.GetBody<T>()](https://docs.microsoft.com/dotnet/api/microsoft.servicebus.messaging.brokeredmessage.getbody?view=azure-dotnet#Microsoft_ServiceBus_Messaging_BrokeredMessage_GetBody__1)-Methode zurück.
+* `BrokeredMessage`: Gibt die deserialisierte Nachricht mit der [BrokeredMessage.GetBody\<T>()](https://docs.microsoft.com/dotnet/api/microsoft.servicebus.messaging.brokeredmessage.getbody?view=azure-dotnet#Microsoft_ServiceBus_Messaging_BrokeredMessage_GetBody__1)-Methode zurück.
 
 Diese Parameter gelten für Azure Functions Version 1.x. Verwenden Sie für 2.x [`Message`](https://docs.microsoft.com/dotnet/api/microsoft.azure.servicebus.message) anstelle von `BrokeredMessage`.
 

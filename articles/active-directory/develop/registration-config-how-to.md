@@ -1,5 +1,5 @@
 ---
-title: Auswählen von Berechtigungen für eine bestimmte API | Microsoft-Dokumentation
+title: Konfigurieren von Endpunkten | Microsoft-Dokumentation
 description: Hier wird beschrieben, wie Sie die Authentifizierungsendpunkte für eine benutzerdefinierte Anwendung ermitteln, die Sie entwickeln oder bei Azure AD registrieren.
 services: active-directory
 documentationcenter: ''
@@ -12,15 +12,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 09/11/2018
+ms.date: 07/15/2019
 ms.author: ryanwi
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: dcfeec7e90f1c582a11889619811330bcf488bbf
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: b48e19df2ea1bbf7d09ee9a2108d0f34f01a4929
+ms.sourcegitcommit: 9a699d7408023d3736961745c753ca3cec708f23
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65545919"
+ms.lasthandoff: 07/16/2019
+ms.locfileid: "68277843"
 ---
 # <a name="how-to-configure-endpoints"></a>Konfigurieren von Endpunkten
 

@@ -4,7 +4,7 @@ description: Hier erfahren Sie, wie Sie eine Azure Files-Freigabe von Computekno
 services: batch
 documentationcenter: ''
 author: laurenhughes
-manager: jeconnoc
+manager: gwallace
 editor: ''
 ms.assetid: ''
 ms.service: batch
@@ -15,12 +15,12 @@ ms.workload: big-compute
 ms.date: 05/24/2018
 ms.author: lahugh
 ms.custom: ''
-ms.openlocfilehash: 914bc11736b08dab6b334307dc188b5d153c7331
-ms.sourcegitcommit: a12b2c2599134e32a910921861d4805e21320159
+ms.openlocfilehash: 8c9d041648408b05b7cd160d5aea9dfb33ac061d
+ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/24/2019
-ms.locfileid: "67341322"
+ms.lasthandoff: 07/18/2019
+ms.locfileid: "68322382"
 ---
 # <a name="use-an-azure-file-share-with-a-batch-pool"></a>Verwenden einer Azure-Dateifreigabe mit einem Batch-Pool
 
@@ -52,7 +52,7 @@ In Batch müssen Sie die Freigabe jedes Mal einbinden, wenn ein Task auf einem W
 Fügen Sie z.B. in die Befehlszeile für jeden Task einen `net use`-Befehl zum Einbinden der Dateifreigabe ein. Zum Einbinden der Dateifreigabe sind folgende Anmeldeinformationen erforderlich:
 
 * **Benutzername**: AZURE\\\<storageaccountname\>. Beispiel: AZURE\\*mystorageaccountname*
-* **Kennwort**: <StorageAccountKeyWhichEnds in==>. Beispiel: *XXXXXXXXXXXXXXXXXXXXX==*
+* **Kennwort**: \<StorageAccountKeyWhichEnds in==>, z. B. *XXXXXXXXXXXXXXXXXXXXX==*
 
 Der folgende Befehl bindet die Dateifreigabe *myfileshare* als Laufwerk *S:* in das Speicherkonto *mystorageaccountname* ein:
 
@@ -129,7 +129,7 @@ apt-get update && apt-get install cifs-utils && sudo mkdir -p /mnt/MyAzureFileSh
 Führen Sie dann den Befehl `mount` aus, um die Dateifreigabe einzubinden, und geben Sie die folgenden Anmeldeinformationen an:
 
 * **Benutzername**: \<storageaccountname\>. Beispiel: *mystorageaccountname*
-* **Kennwort**: <StorageAccountKeyWhichEnds in==>. Beispiel: *XXXXXXXXXXXXXXXXXXXXX==*
+* **Kennwort**: \<StorageAccountKeyWhichEnds in==>, z. B. *XXXXXXXXXXXXXXXXXXXXX==*
 
 Der folgende Befehl bindet die Dateifreigabe *myfileshare* unter */mnt/MyAzureFileShare* in das Speicherkonto *mystorageaccountname* ein: 
 

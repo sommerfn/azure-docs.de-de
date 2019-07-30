@@ -6,12 +6,12 @@ ms.author: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 5/2/2019
-ms.openlocfilehash: c1b2875e6899d2301a4c4b564882214dc7bc4981
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 8e3ae84242a1a9b76fbb18a8d8164c97a62a97d9
+ms.sourcegitcommit: 6b41522dae07961f141b0a6a5d46fd1a0c43e6b2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65205458"
+ms.lasthandoff: 07/15/2019
+ms.locfileid: "68003915"
 ---
 # <a name="compatibility-level-for-azure-stream-analytics-jobs"></a>Kompatibilitätsgrad für Azure Stream Analytics-Aufträge
 
@@ -84,6 +84,12 @@ Das Upsertverhalten ist durch *Einfügen oder Ersetzen*  definiert.
 **Vorherige Ebenen:** [DateTimeOffset](https://docs.microsoft.com/sql/t-sql/data-types/datetimeoffset-transact-sql?view=sql-server-2017)-Typen wurden an UTC angepasst.
 
 **Ebene 1.2:** DateTimeOffset wird nicht mehr angepasst.
+
+### <a name="long-when-writing-to-sql-output"></a>Long beim Schreiben in SQL-Ausgabe
+
+**Vorherige Ebenen:** Werte wurden je nach Zieltyp abgeschnitten.
+
+**Ebene 1.2:** Werte, die nicht in den Zieltyp passen, werden gemäß der Richtlinie für Ausgabefehler behandelt.
 
 ### <a name="strict-validation-of-prefix-of-functions"></a>Strikte Überprüfung des Präfixes von Funktionen
 

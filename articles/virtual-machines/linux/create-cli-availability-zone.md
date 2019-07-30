@@ -16,12 +16,12 @@ ms.workload: infrastructure
 ms.date: 04/05/2018
 ms.author: danlep
 ms.custom: ''
-ms.openlocfilehash: 87263d11828ff5122122ef36850fade87949bcac
-ms.sourcegitcommit: 2e4b99023ecaf2ea3d6d3604da068d04682a8c2d
+ms.openlocfilehash: 6bdbc566215fb7e68109b523fb2af9bca16c328c
+ms.sourcegitcommit: fa45c2bcd1b32bc8dd54a5dc8bc206d2fe23d5fb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67671611"
+ms.lasthandoff: 07/12/2019
+ms.locfileid: "67849699"
 ---
 # <a name="create-a-linux-virtual-machine-in-an-availability-zone-with-the-azure-cli"></a>Erstellen eines virtuellen Linux-Computers in einer Verfügbarkeitszone mit der Azure CLI
 
@@ -198,7 +198,7 @@ Die Ausgabe zeigt, dass sich die IP-Adresse in derselben Verfügbarkeitszone wie
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-In diesem Artikel haben Sie gelernt, wie Sie einen virtuellen Computer in einer Verfügbarkeitszone erstellen. Weitere Informationen zu Regionen und Verfügbarkeit für virtuelle Azure-Computer finden Sie [hier](regions-and-availability.md).
+In diesem Artikel haben Sie gelernt, wie Sie einen virtuellen Computer in einer Verfügbarkeitszone erstellen. Erfahren Sie mehr über die [Verfügbarkeit](availability.md) virtueller Azure-Computer.
 
 
 

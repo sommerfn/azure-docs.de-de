@@ -7,12 +7,12 @@ ms.date: 05/23/2019
 ms.author: maquaran
 ms.topic: troubleshooting
 ms.reviewer: sngun
-ms.openlocfilehash: 09ea70ac302806b4cb0e97fde92dda4208e3d659
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 9c728a735e56e461e49dd3f594186c9c0192a3f0
+ms.sourcegitcommit: a6873b710ca07eb956d45596d4ec2c1d5dc57353
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66734512"
+ms.lasthandoff: 07/16/2019
+ms.locfileid: "68250010"
 ---
 # <a name="diagnose-and-troubleshoot-issues-when-using-azure-cosmos-db-trigger-in-azure-functions"></a>Diagnostizieren und Behandeln von Problemen bei Verwendung des Azure Cosmos DB-Triggers in Azure Functions
 
@@ -89,7 +89,7 @@ Sie können ein solches Szenario auch überprüfen, wenn Ihnen bekannt ist, wie 
 
 Eine einfache Möglichkeit, diese Situation zu umgehen, besteht darin, ein `LeaseCollectionPrefix/leaseCollectionPrefix` mit einem neuen/anderen Wert auf die Funktion anzuwenden oder alternativ eine Überprüfung mit einem neuen Leases-Container durchzuführen.
 
-### <a name="binding-can-only-be-done-with-ireadonlylistdocument-or-jarray"></a>Bindung kann nur mit IReadOnlyList<Document> oder JArray erfolgen
+### <a name="binding-can-only-be-done-with-ireadonlylistdocument-or-jarray"></a>Bindung kann nur mit IReadOnlyList\<Dokument> oder JArray erfolgen
 
 Dieser Fehler tritt auf, wenn Ihr Azure Functions-Projekt (oder ein beliebiges Projekt, auf das verwiesen wird) einen manuelle NuGet-Verweis auf das Azure Cosmos DB-SDK mit einer anderen Version als die durch die [Azure Functions Cosmos DB-Erweiterung](./troubleshoot-changefeed-functions.md#dependencies) bereitgestellte Version enthält.
 

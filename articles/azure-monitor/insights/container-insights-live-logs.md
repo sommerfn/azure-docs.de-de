@@ -11,14 +11,14 @@ ms.service: azure-monitor
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 06/19/2019
+ms.date: 07/12/2019
 ms.author: magoedte
-ms.openlocfilehash: 7fd9248fd38054b7f0e1fad2888d8b0d4cf2e60c
-ms.sourcegitcommit: a52d48238d00161be5d1ed5d04132db4de43e076
+ms.openlocfilehash: 968ee4c8bb5d7e09ef3c345c46f6c7b839e0e25a
+ms.sourcegitcommit: 6b41522dae07961f141b0a6a5d46fd1a0c43e6b2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/20/2019
-ms.locfileid: "67274222"
+ms.lasthandoff: 07/15/2019
+ms.locfileid: "67990035"
 ---
 # <a name="how-to-view-logs-and-events-in-real-time-preview"></a>Anzeigen von Protokollen und Ereignissen in Echtzeit (Vorschauversion)
 Azure Monitor für Container enthält ein Feature, das sich derzeit in der Vorschauversion befindet. Dieses Feature bietet eine Liveansicht Ihrer Azure Kubernetes Service-Containerprotokolle (stdout/stderr; AKS) und Ereignisse, ohne dass Sie kubectl-Befehle ausführen müssen. Wenn Sie eine Option auswählen, wird unter der Leistungsdatentabelle in der Ansicht für **Knoten**, **Controller** und **Container** ein neuer Bereich angezeigt. Dort werden von der Container-Engine generierte Liveprotokolle und -ereignisse angezeigt, die weitere Unterstützung bei der Behandlung von Problemen in Echtzeit bieten.
@@ -66,7 +66,7 @@ Wenn die Kubernetes RBAC-Autorisierung aktiviert ist, müssen Sie die Clusterrol
          apiGroup: rbac.authorization.k8s.io
     ```
 
-2. Wenn Sie sie zum ersten Mal konfigurieren, erstellen Sie die Clusterrollenbindung durch Ausführen des folgenden Befehls: `kubectl create -f LogReaderRBAC.yaml`. Führen Sie zum Aktualisieren Ihrer Konfiguration den folgenden Befehl aus, wenn Sie noch vor der Einführung von Liveereignisprotokollen die Unterstützung für die Vorschauversion von Liveprotokollen aktiviert haben: `kubectl apply -f LogReaderRBAC.yml`.
+2. Wenn Sie sie zum ersten Mal konfigurieren, wenden Sie die Clusterrollenbindung an, indem Sie den folgenden Befehl ausführen: `kubectl create -f LogReaderRBAC.yaml`. Führen Sie zum Aktualisieren Ihrer Konfiguration den folgenden Befehl aus, wenn Sie noch vor der Einführung von Liveereignisprotokollen die Unterstützung für die Vorschauversion von Liveprotokollen aktiviert haben: `kubectl apply -f LogReaderRBAC.yaml`.
 
 ## <a name="configure-aks-with-azure-active-directory"></a>Konfigurieren von AKS mit Azure Active Directory
 
@@ -116,5 +116,7 @@ Klicken Sie auf die Option **Scrollen**, um den automatischen Bildlauf zu unterb
 Sie können zu Azure Monitor-Protokollen wechseln, um historische Containerprotokolle anzuzeigen. Wählen Sie hierfür **Containerprotokolle anzeigen** in der Dropdownliste **In Analytics anzeigen** aus.
 
 ## <a name="next-steps"></a>Nächste Schritte
+
 - Weitere Informationen zur Verwendung von Azure Monitor und zum Überwachen anderer Aspekte Ihres AKS-Clusters finden Sie unter [Anzeigen der Azure Kubernetes Service-Integrität](container-insights-analyze.md).
+
 - Sehen Sie sich die [Beispiele zu Protokollabfragen](container-insights-log-search.md#search-logs-to-analyze-data) an, die auch vordefinierte Abfragen enthalten. Mit diesen Materialien können Sie Auswertungen von bzw. Anpassungen für Warnungen, Visualisierungen und Analysen von Clustern vornehmen.

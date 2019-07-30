@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: ravenn
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 11b71b4656181da328cf630cefa4d25cb4f4efda
-ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
+ms.openlocfilehash: 35cb6cba02a1bdcf9f19c7f02b7e2ca4d01e0d3f
+ms.sourcegitcommit: 6b41522dae07961f141b0a6a5d46fd1a0c43e6b2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/01/2019
-ms.locfileid: "67482110"
+ms.lasthandoff: 07/15/2019
+ms.locfileid: "67983665"
 ---
 # <a name="how-to-manage-the-local-administrators-group-on-azure-ad-joined-devices"></a>Verwalten der lokalen Administratorgruppe auf in Azure AD eingebundenen Geräten
 
@@ -75,7 +75,7 @@ Azure AD fügt den Benutzer, der die Azure AD-Einbindung durchführt, der Admini
 
 Sie können nicht nur den Prozess zur Azure AD-Einbindung nutzen, sondern auch die Berechtigungen eines regulären Benutzers manuell erhöhen, sodass er lokaler Administrator auf einem bestimmten Gerät wird. Um diesen Schritt ausführen zu können, müssen Sie bereits Mitglied der lokalen Administratorgruppe sein. 
 
-Ab dem Release **Windows 10 1709** können Sie diese Aufgabe über **Einstellungen -> Konten -> Other users (Andere Benutzer)** ausführen. Wählen Sie **Add a work or school user** (Geschäfts-, Schul- oder Unibenutzer hinzufügen) aus, und geben Sie den Benutzerprinzipalnamen (UPN) des Benutzers unter **Benutzerkonto** ein. Wählen Sie unter *Kontotyp* die Option **Administrator** aus.  
+Ab dem Release **Windows 10 1709** können Sie diese Aufgabe über **Einstellungen > Konten > Andere Benutzer** ausführen. Wählen Sie **Add a work or school user** (Geschäfts-, Schul- oder Unibenutzer hinzufügen) aus, und geben Sie den Benutzerprinzipalnamen (UPN) des Benutzers unter **Benutzerkonto** ein. Wählen Sie unter *Kontotyp* die Option **Administrator** aus.  
  
 Darüber hinaus können Sie Benutzer auch über die Eingabeaufforderung hinzufügen:
 

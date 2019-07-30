@@ -5,15 +5,15 @@ author: rimman
 ms.author: rimman
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 05/20/2019
+ms.date: 07/23/2019
 ms.reviewer: sngun
 ms.custom: seodec18
-ms.openlocfilehash: 51a554586c67842ead40cd4a1bfaaa51bbdd8a18
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 40caea40637c57aedb6315ff6fc032898ff07af7
+ms.sourcegitcommit: c72ddb56b5657b2adeb3c4608c3d4c56e3421f2c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65954400"
+ms.lasthandoff: 07/24/2019
+ms.locfileid: "68467943"
 ---
 # <a name="change-feed-in-azure-cosmos-db---overview"></a>Änderungsfeed in Azure Cosmos DB – Übersicht
 
@@ -94,7 +94,7 @@ Im Folgenden sind einige Szenarien aufgeführt, die Sie mit einem Änderungsfeed
 Sie können den Änderungsfeed mit den folgenden Optionen verwenden:
 
 * [Verwenden des Änderungsfeeds in Azure Functions](change-feed-functions.md)
-* [Verwenden des Änderungsfeeds mit der Change Feed Processor-Bibliothek](change-feed-processor.md) 
+* [Verwenden des Änderungsfeeds mit dem Änderungsfeedprozessor](change-feed-processor.md) 
 
 Der Änderungsfeed ist für jeden logischen Partitionsschlüssel innerhalb des Containers verfügbar. Er kann für eine parallele Verarbeitung über mehrere Consumer verteilt werden, wie in der folgenden Abbildung gezeigt.
 
@@ -108,7 +108,7 @@ Der Änderungsfeed ist für jeden logischen Partitionsschlüssel innerhalb des C
 
 * Der Änderungsfeed enthält Einfüge- und Aktualisierungsvorgänge, die für Elemente im Container durchgeführt wurden. Sie können Löschvorgänge durch ein Kennzeichen für „vorläufiges Löschen“ erfassen, das den gelöschten Text in den Elementen (z.B. in Dokumenten) ersetzt. Alternativ können Sie über die [TTL-Funktion](time-to-live.md) einen begrenzten Ablaufzeitraum für die Elemente festlegen, z.B. 24 Stunden, und den Wert dieser Eigenschaft verwenden, um Löschvorgänge zu erfassen. Mit dieser Lösung müssen Sie die Änderungen in einem kürzeren Zeitraum als dem TTL-Ablaufzeitraum verarbeiten. 
 
-* Jede Änderung an einem Element wird im Änderungsfeed genau einmal angezeigt, und die Clients müssen ihre Prüfpunktausführungs-Logik verwalten. Wenn Sie die Komplexität der Verwaltung von Prüfpunkten umgehen möchten, bietet die Änderungsfeed-Prozessorbibliothek automatische Prüfpunktausführung und „Mindestens einmal“-Semantik. Siehe [Verwenden des Änderungsfeeds mit der Change Feed Processor-Bibliothek](change-feed-processor.md).
+* Jede Änderung an einem Element wird im Änderungsfeed genau einmal angezeigt, und die Clients müssen ihre Prüfpunktausführungs-Logik verwalten. Wenn Sie die Komplexität der Verwaltung von Prüfpunkten umgehen möchten, bietet der Änderungsfeedprozessor automatische Prüfpunktausführung und „Mindestens einmal“-Semantik. Weitere Informationen finden Sie unter [Verwenden des Änderungsfeeds mit dem Änderungsfeedprozessor](change-feed-processor.md).
 
 * Nur die letzte Änderung für ein bestimmtes Element ist im Änderungsprotokoll enthalten. Zwischenzeitliche Änderungen sind möglicherweise nicht verfügbar.
 
@@ -126,4 +126,4 @@ In den folgenden Artikeln erfahren Sie mehr über Änderungsfeeds:
 
 * [Möglichkeiten zum Lesen von Änderungsfeeds](read-change-feed.md)
 * [Verwenden des Änderungsfeeds in Azure Functions](change-feed-functions.md)
-* [Verwenden der Änderungsfeed-Verarbeitungsbibliothek](change-feed-processor.md)
+* [Verwenden des Änderungsfeedprozessors](change-feed-processor.md)

@@ -5,14 +5,14 @@ services: dns
 author: vhorne
 ms.service: dns
 ms.topic: article
-ms.date: 1/18/2019
+ms.date: 7/13/2019
 ms.author: victorh
-ms.openlocfilehash: 5c098c6c22b079d586c0bd808df9af4a737c17a8
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 051aabed758f80208549cf64bf5d74b1fecfbe75
+ms.sourcegitcommit: 470041c681719df2d4ee9b81c9be6104befffcea
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "62096235"
+ms.lasthandoff: 07/12/2019
+ms.locfileid: "67854156"
 ---
 # <a name="use-azure-dns-to-provide-custom-domain-settings-for-an-azure-service"></a>Bereitstellen von benutzerdefinierten Domäneneinstellungen für einen Azure-Dienst mit Azure DNS
 
@@ -41,7 +41,7 @@ Navigieren Sie zu Ihrer DNS-Zone, und klicken Sie auf **+ Datensatzgruppe**. Fü
 |Eigenschaft  |Wert  |BESCHREIBUNG  |
 |---------|---------|---------|
 |NAME     | myfunctionapp        | Dieser Wert bildet zusammen mit der Domänennamenbezeichnung den FQDN für den Namen der benutzerdefinierten Domäne.        |
-|Type     | CNAME        | Verwenden Sie einen CNAME-Datensatz als Alias.        |
+|type     | CNAME        | Verwenden Sie einen CNAME-Datensatz als Alias.        |
 |TTL     | 1        | 1 steht für 1 Stunde.        |
 |TTL-Einheit     | Stunden        | Stunden werden als Maßeinheit für die Zeit verwendet.         |
 |Alias     | adatumfunction.azurewebsites.net        | Der DNS-Name, für den Sie den Alias erstellen, ist in diesem Beispiel der standardmäßig für die Funktionen-App bereitgestellte DNS-Name „adatumfunction.azurewebsites.net“.        |
@@ -66,7 +66,7 @@ Navigieren Sie zu Ihrer DNS-Zone, und klicken Sie auf **+ Datensatzgruppe**. Fü
 |Eigenschaft  |Wert  |BESCHREIBUNG  |
 |---------|---------|---------|
 |NAME     | mywebserver        | Dieser Wert bildet zusammen mit der Domänennamenbezeichnung den FQDN für den Namen der benutzerdefinierten Domäne.        |
-|Type     | Eine Datei        | Verwenden Sie einen A-Datensatz, da die Ressource eine IP-Adresse ist.        |
+|type     | Eine Datei        | Verwenden Sie einen A-Datensatz, da die Ressource eine IP-Adresse ist.        |
 |TTL     | 1        | 1 steht für 1 Stunde.        |
 |TTL-Einheit     | Stunden        | Stunden werden als Maßeinheit für die Zeit verwendet.         |
 |IP-Adresse     | `<your ip address>`       | Öffentliche IP-Adresse|
@@ -93,7 +93,7 @@ Navigieren Sie zu Ihrer DNS-Zone, und klicken Sie auf **+ Datensatzgruppe**. Fü
 |Eigenschaft  |Wert  |BESCHREIBUNG  |
 |---------|---------|---------|
 |NAME     | mywebserver        | Dieser Wert bildet zusammen mit der Domänennamenbezeichnung den FQDN für den Namen der benutzerdefinierten Domäne.        |
-|Type     | CNAME        | Verwenden Sie einen CNAME-Datensatz als Alias. Wenn für die Ressource eine IP-Adresse verwendet wurde, würde ein A-Eintrag verwendet werden.        |
+|type     | CNAME        | Verwenden Sie einen CNAME-Datensatz als Alias. Wenn für die Ressource eine IP-Adresse verwendet wurde, würde ein A-Eintrag verwendet werden.        |
 |TTL     | 1        | 1 steht für 1 Stunde.        |
 |TTL-Einheit     | Stunden        | Stunden werden als Maßeinheit für die Zeit verwendet.         |
 |Alias     | webserver.azurewebsites.net        | Der DNS-Name, für den Sie den Alias erstellen, ist in diesem Beispiel der standardmäßig für die Web-App bereitgestellte DNS-Name „webserver.azurewebsites.net“.        |
@@ -111,6 +111,8 @@ Nachdem der Vorgang durchgeführt wurde, führen Sie **nslookup** aus, um sicher
 
 Weitere Informationen, wie Sie eine benutzerdefinierte Domäne zu App Service zuordnen, finden Sie unter [Zuordnen eines vorhandenen benutzerdefinierten DNS-Namens zu Azure-Web-Apps](../app-service/app-service-web-tutorial-custom-domain.md?toc=%dns%2ftoc.json).
 
+Weitere Informationen zum Migrieren eines aktiven DNS-Namens finden Sie unter [Migrieren eines aktiven DNS-Namens zu Azure App Service](../app-service/manage-custom-dns-migrate-domain.md).
+
 Wenn Sie eine benutzerdefinierte Domäne erwerben möchten, lesen Sie die Informationen zu App Service-Domänen unter [Erwerben eines Namens für eine benutzerdefinierte Domäne für Azure-Web-Apps](../app-service/manage-custom-dns-buy-domain.md).
 
 ## <a name="blob-storage"></a>Blob Storage
@@ -127,7 +129,7 @@ Navigieren Sie zu Ihrer DNS-Zone, und klicken Sie auf **+ Datensatzgruppe**. Fü
 |Eigenschaft  |Wert  |BESCHREIBUNG  |
 |---------|---------|---------|
 |NAME     | asverify.mystorageaccount        | Dieser Wert bildet zusammen mit der Domänennamenbezeichnung den FQDN für den Namen der benutzerdefinierten Domäne.        |
-|Type     | CNAME        | Verwenden Sie einen CNAME-Datensatz als Alias.        |
+|type     | CNAME        | Verwenden Sie einen CNAME-Datensatz als Alias.        |
 |TTL     | 1        | 1 steht für 1 Stunde.        |
 |TTL-Einheit     | Stunden        | Stunden werden als Maßeinheit für die Zeit verwendet.         |
 |Alias     | asverify.adatumfunctiona9ed.blob.core.windows.net        | Der DNS-Name, für den Sie den Alias erstellen, ist in diesem Beispiel der standardmäßig für das Speicherkonto bereitgestellte DNS-Name „asverify.adatumfunctiona9ed.blob.core.windows.net“.        |
@@ -155,7 +157,7 @@ Navigieren Sie zu Ihrer DNS-Zone, und klicken Sie auf **+ Datensatzgruppe**. Fü
 |Eigenschaft  |Wert  |BESCHREIBUNG  |
 |---------|---------|---------|
 |NAME     | cdnverify.mycdnendpoint        | Dieser Wert bildet zusammen mit der Domänennamenbezeichnung den FQDN für den Namen der benutzerdefinierten Domäne.        |
-|Type     | CNAME        | Verwenden Sie einen CNAME-Datensatz als Alias.        |
+|type     | CNAME        | Verwenden Sie einen CNAME-Datensatz als Alias.        |
 |TTL     | 1        | 1 steht für 1 Stunde.        |
 |TTL-Einheit     | Stunden        | Stunden werden als Maßeinheit für die Zeit verwendet.         |
 |Alias     | cdnverify.adatumcdnendpoint.azureedge.net        | Der DNS-Name, für den Sie den Alias erstellen, ist in diesem Beispiel der standardmäßig für das Speicherkonto bereitgestellte DNS-Name „cdnverify.adatumcdnendpoint.azureedge.net“.        |

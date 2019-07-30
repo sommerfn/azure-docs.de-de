@@ -10,12 +10,12 @@ ms.subservice: translator-text
 ms.topic: reference
 ms.date: 02/01/2019
 ms.author: swmachan
-ms.openlocfilehash: e63670504dedf426829778e154b2d5c2b69d98a0
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: 2b08ddb4241a9af7aee31bb51d75dd82ff8255d2
+ms.sourcegitcommit: 64798b4f722623ea2bb53b374fb95e8d2b679318
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67435063"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67839635"
 ---
 # <a name="translator-text-api-30-translate"></a>Textübersetzungs-API 3.0: Translate
 
@@ -42,7 +42,7 @@ Die folgenden Anforderungsparameter werden in der Abfragezeichenfolge übergeben
   </tr>
   <tr>
     <td>from</td>
-    <td><em>Optionaler Parameter</em>.<br/>Gibt die Sprache des Eingabetexts an. Finden Sie heraus, aus welchen Sprachen Sie übersetzen können, indem Sie die <a href="./v3-0-languages.md">unterstützten Sprachen</a> mithilfe des<code>translation</code>-Bereichs. Wenn kein <code>from</code>-Parameter angegeben wird, wird die automatische Sprachenerkennung zum Bestimmen der Quellsprache verwendet.</td>
+    <td><em>Optionaler Parameter</em>.<br/>Gibt die Sprache des Eingabetexts an. Finden Sie heraus, aus welchen Sprachen Sie übersetzen können, indem Sie die <a href="./v3-0-languages.md">unterstützten Sprachen</a> mithilfe des<code>translation</code>-Bereichs. Wenn kein <code>from</code>-Parameter angegeben wird, wird die automatische Sprachenerkennung zum Bestimmen der Quellsprache verwendet. <br/><br/>Sie müssen den Parameter <code>from</code> anstelle der automatischen Erkennung verwenden, wenn Sie die Funktion für ein <a href="https://docs.microsoft.com/azure/cognitive-services/translator/dynamic-dictionary">dynamisches Wörterbuch</a> verwenden.</td>
   </tr>
   <tr>
     <td>zu</td>

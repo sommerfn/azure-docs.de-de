@@ -10,12 +10,12 @@ ms.subservice: translator-text
 ms.topic: reference
 ms.date: 03/29/2018
 ms.author: swmachan
-ms.openlocfilehash: 9b8f3894062c34e743a39f28b5f079a67a285c84
-ms.sourcegitcommit: a7ea412ca4411fc28431cbe7d2cc399900267585
+ms.openlocfilehash: 8956aff86777e2a2570c6a555a9bd0882f328a77
+ms.sourcegitcommit: 10251d2a134c37c00f0ec10e0da4a3dffa436fb3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/25/2019
-ms.locfileid: "67357682"
+ms.lasthandoff: 07/13/2019
+ms.locfileid: "67868415"
 ---
 # <a name="translator-text-api-v30"></a>Textübersetzungs-API Version 3.0
 
@@ -31,10 +31,10 @@ Version 3 der Textübersetzungs-API umfasst eine moderne JSON-basierte Web-API. 
 
 ## <a name="base-urls"></a>Basis-URLs
 
-Der Microsoft Translator wird aus mehreren Rechenzentren unterstützt. Momentan befinden sie sich in 6 [Azure-Geografien](https://azure.microsoft.com/global-infrastructure/regions):
+Der Microsoft Translator wird aus mehreren Rechenzentren unterstützt. Momentan befinden sie sich in 10 [Azure-Geografien](https://azure.microsoft.com/global-infrastructure/regions):
 
-* **Amerika**: USA, Westen 2 und USA, Westen-Mitte 
-* **Asien-Pazifik:** Asien, Südosten und Südkorea, Süden
+* **Amerika**: „USA, Osten“, „USA, Süden-Mitte“, „USA, Westen-Mitte“ und „USA, Westen 2“ 
+* **Asien-Pazifik:** „Südkorea, Süden“, „Japan, Osten“, „Asien, Südosten“ und „Australien, Osten“
 * **Europa:** Europa, Norden und Europa, Westen
 
 Anforderungen an die Textübersetzungs-API von Microsoft werden in den meisten Fällen von dem Rechenzentrum bearbeitet, das dem Ursprungsort der Anforderung am nächsten liegt. Bei einem Rechenzentrumsausfall kann die Anforderung außerhalb der Azure-Geografie weitergeleitet werden.

@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 03/25/2019
 ms.author: ramamill
-ms.openlocfilehash: 929a4e4366c9e94ed4e1915406914991624f6baa
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: c692b1c5b77b95e5487a847b46473906135c3d86
+ms.sourcegitcommit: a6873b710ca07eb956d45596d4ec2c1d5dc57353
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60565553"
+ms.lasthandoff: 07/16/2019
+ms.locfileid: "68261147"
 ---
 # <a name="about-the-mobility-service-for-vmware-vms-and-physical-servers"></a>Informationen zum Mobilitätsdienst auf virtuellen VMware-Computern und physischen Servern
 
@@ -115,7 +115,7 @@ Bei der Installation des Mobilitäts-Agents werden die folgenden Schritte ausgef
 #### <a name="installation-settings"></a>Installationseinstellungen
 **Einstellung** | **Details**
 --- | ---
-Verwendung | UnifiedAgent.exe /Role <MS/MT> /InstallLocation <Install Location> /Platform “VmWare” /Silent
+Verwendung | UnifiedAgent.exe /Role \<MS/MT> /InstallLocation \<Installationsort> /Platform „VmWare“ /Silent
 Setupprotokolle | Unter „%ProgramData%\ASRSetupLogs\ASRUnifiedAgentInstaller.log“.
 /Role | Obligatorischer Installationsparameter. Gibt an, ob der Mobilitätsdienst (Mobility Service, MS) oder das Masterziel (Master Target, MT) installiert werden soll.
 /InstallLocation| Dieser Parameter ist optional. Gibt den Installationspfad des Mobilitätsdiensts an (beliebiger Ordner).
@@ -154,7 +154,7 @@ Agent-Konfigurationsprotokolle | Unter „%ProgramData%\ASRSetupLogs\ASRUnifiedA
 #### <a name="installation-settings"></a>Installationseinstellungen
 **Einstellung** | **Details**
 --- | ---
-Verwendung | ./install -d <Install Location> -r <MS/MT> -v VmWare -q
+Verwendung | ./install -d \<Installationsort> -r \<MS/MT> -v VmWare -q
 -r | Obligatorischer Installationsparameter. Gibt an, ob der Mobilitätsdienst (Mobility Service, MS) oder das Masterziel (Master Target, MT) installiert werden soll.
 -d angeben, | Dieser Parameter ist optional. Gibt den Installationspfad des Mobilitätsdiensts an: /usr/local/ASR.
 -v | Obligatorisch. Gibt die Plattform an, auf der Mobility Service installiert wird. **VMware** für VMware-VMs/physische VMware-Server; **Azure** für Azure-VMs.

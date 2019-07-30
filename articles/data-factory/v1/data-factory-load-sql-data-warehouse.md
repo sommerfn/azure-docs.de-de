@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: e275411f9fd9dfb672bb0815e83e37bcd5d1dda9
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 50a653648f3ae4b40e0bfe2c6f168cfb890bcc59
+ms.sourcegitcommit: 64798b4f722623ea2bb53b374fb95e8d2b679318
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60825283"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67839108"
 ---
 # <a name="load-1-tb-into-azure-sql-data-warehouse-under-15-minutes-with-data-factory"></a>Laden von 1 TB in Azure SQL Data Warehouse in weniger als 15 Minuten mit Data Factory
 > [!NOTE]
@@ -41,7 +41,7 @@ Dieser Artikel enthält Schrittweise Anleitungen zum Verschieben von Daten in Az
 > [!NOTE]
 >  Im Artikel [Verschieben von Daten in und aus Azure SQL Data Warehouse mithilfe von Azure Data Factory](data-factory-azure-sql-data-warehouse-connector.md) finden Sie allgemeine Informationen zu den Möglichkeiten von Data Factory beim Verschieben von Daten aus/in Azure SQL Data Warehouse.
 >
-> Sie können auch mithilfe des Azure-Portals, Visual Studio, PowerShell usw. Pipelines, erstellen. Eine Schritt-für-Schritt-Anleitung finden Sie im [Tutorial: Kopieren von Daten aus Blob Storage in SQL-Datenbank mithilfe von Data Factory](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) finden Sie eine kurze exemplarische Vorgehensweise mit detaillierten Anleitungen zur Verwendung der Kopieraktivität in Azure Data Factory.  
+> Sie können Pipelines auch mithilfe von Visual Studio, PowerShell usw. erstellen. Eine Schritt-für-Schritt-Anleitung finden Sie im [Tutorial: Kopieren von Daten aus Blob Storage in SQL-Datenbank mithilfe von Data Factory](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) finden Sie eine kurze exemplarische Vorgehensweise mit detaillierten Anleitungen zur Verwendung der Kopieraktivität in Azure Data Factory.  
 >
 >
 

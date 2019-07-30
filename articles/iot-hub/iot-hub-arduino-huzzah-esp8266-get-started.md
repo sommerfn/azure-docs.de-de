@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.tgt_pltfrm: arduino
 ms.date: 04/11/2018
 ms.author: wesmc
-ms.openlocfilehash: 00d0e3a749c4af8faacfed5f725ce16e0492c399
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 8e97a979c37af8ade51b4ff6ca4b2c5b4eec126e
+ms.sourcegitcommit: b2db98f55785ff920140f117bfc01f1177c7f7e2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65409079"
+ms.lasthandoff: 07/16/2019
+ms.locfileid: "68232723"
 ---
 # <a name="connect-adafruit-feather-huzzah-esp8266-to-azure-iot-hub-in-the-cloud"></a>Verbinden von Adafruit Feather HUZZAH ESP8266 mit dem Azure IoT Hub in der Cloud
 
@@ -49,6 +49,9 @@ Sie benötigen für die Entwicklungsumgebung außerdem Folgendes:
 
 * Ein aktives Azure-Abonnement. Wenn Sie kein Azure-Konto besitzen, können Sie in nur wenigen Minuten ein [kostenloses Azure-Testkonto](https://azure.microsoft.com/free/) erstellen.
 * Ein Mac oder PC, auf dem Windows oder Ubuntu ausgeführt wird.
+* [GIT](https://git-scm.com/download)
+* [Arduino](https://www.arduino.cc/en/main/software#download)
+* [Adafruit Huzzah ESP8266-Treiber für USB](https://learn.adafruit.com/adafruit-feather-huzzah-esp8266/using-arduino-ide)
 * Ein WLAN, mit dem Feather HUZZAH ESP8266 eine Verbindung herstellen kann.
 * Eine Internetverbindung zum Herunterladen des Konfigurationstools.
 * [Visual Studio Code-Erweiterung für Arduino](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.vscode-arduino)
@@ -65,10 +68,6 @@ Die folgenden Elemente sind optional, falls Sie über keinen Sensor verfügen. S
 ## <a name="create-an-iot-hub"></a>Erstellen eines IoT Hubs
 
 [!INCLUDE [iot-hub-include-create-hub](../../includes/iot-hub-include-create-hub.md)]
-
-### <a name="retrieve-connection-string-for-iot-hub"></a>Abrufen der Verbindungszeichenfolge für den IoT-Hub
-
-[!INCLUDE [iot-hub-include-find-connection-string](../../includes/iot-hub-include-find-connection-string.md)]
 
 ## <a name="register-a-new-device-in-the-iot-hub"></a>Registrieren eines neuen Geräts beim IoT-Hub
 

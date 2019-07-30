@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 02/12/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: fe253feca6a22ee0177082e178f897c5b634bb3a
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: d35c4f410c29bba7848dde53d206cdd2ccd980ca
+ms.sourcegitcommit: 64798b4f722623ea2bb53b374fb95e8d2b679318
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61257197"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67836154"
 ---
 # <a name="move-data-from-an-sftp-server-using-azure-data-factory"></a>Verschieben von Daten von einem SFTP-Server mithilfe von Azure Data Factory
 > [!div class="op_single_selector" title1="Wählen Sie die von Ihren verwendete Version des Data Factory-Diensts aus:"]
@@ -44,7 +44,7 @@ Sie können eine Pipeline mit einer Kopieraktivität erstellen, die Daten mithil
 
 - Am einfachsten erstellen Sie eine Pipeline mit dem **Kopier-Assistenten**. Eine Schritt-für-Schritt-Anleitung finden Sie im [Tutorial: Erstellen einer Pipeline mit dem Kopier-Assistenten](data-factory-copy-data-wizard-tutorial.md) finden Sie eine kurze exemplarische Vorgehensweise zum Erstellen einer Pipeline mithilfe des Assistenten zum Kopieren von Daten.
 
-- Sie können auch die folgenden Tools zum Erstellen einer Pipeline verwenden: **Azure-Portal**, **Visual Studio**, **Azure PowerShell**, **Azure Resource Manager-Vorlagen**, **.NET-API** und **REST-API**. Im [Tutorial zur Kopieraktivität](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) finden Sie detaillierte Anweisungen, wie Sie eine Pipeline mit einer Kopieraktivität erstellen können. JSON-Beispiele zum Kopieren von Daten vom SFTP-Server in Azure Blob Storage finden Sie unter [JSON-Beispiel: Kopieren von Daten von einem SFTP-Server in ein Azure-Blob](#json-example-copy-data-from-sftp-server-to-azure-blob) in diesem Artikel.
+- Sie können auch die folgenden Tools zum Erstellen einer Pipeline verwenden: **Visual Studio**, **Azure PowerShell**, **Azure Resource Manager-Vorlage**, **.NET-API** und **REST-API**. Im [Tutorial zur Kopieraktivität](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) finden Sie detaillierte Anweisungen, wie Sie eine Pipeline mit einer Kopieraktivität erstellen können. JSON-Beispiele zum Kopieren von Daten vom SFTP-Server in Azure Blob Storage finden Sie unter [JSON-Beispiel: Kopieren von Daten von einem SFTP-Server in ein Azure-Blob](#json-example-copy-data-from-sftp-server-to-azure-blob) in diesem Artikel.
 
 ## <a name="linked-service-properties"></a>Eigenschaften des verknüpften Diensts
 Die folgende Tabelle enthält eine Beschreibung der JSON-Elemente, die für den verknüpften FTP-Dienst spezifisch sind.
@@ -225,7 +225,7 @@ Eigenschaften im Abschnitt „typeProperties“ der Aktivität können dagegen j
 Einzelheiten finden Sie im Artikel [Datei- und Komprimierungsformate in Azure Data Factory](data-factory-supported-file-and-compression-formats.md).
 
 ## <a name="json-example-copy-data-from-sftp-server-to-azure-blob"></a>JSON-Beispiel: Kopieren von Daten von einem SFTP-Server in ein Azure-Blob
-Das folgende Beispiel stellt JSON-Beispieldefinitionen bereit, die Sie zum Erstellen einer Pipeline mit dem [Azure-Portal](data-factory-copy-activity-tutorial-using-azure-portal.md), mit [Visual Studio](data-factory-copy-activity-tutorial-using-visual-studio.md) oder mit [Azure PowerShell](data-factory-copy-activity-tutorial-using-powershell.md) verwenden können. Darin wird veranschaulicht, wie Sie Daten aus einer SFTP-Quelle nach Azure Blob Storage kopieren. Daten können jedoch mithilfe der Kopieraktivität in Azure Data Factory **direkt** aus beliebigen Quellen in die [hier](data-factory-data-movement-activities.md#supported-data-stores-and-formats) aufgeführten Senken kopiert werden.
+Das folgende Beispiel zeigt JSON-Beispieldefinitionen, die Sie zum Erstellen einer Pipeline mit [Visual Studio](data-factory-copy-activity-tutorial-using-visual-studio.md) oder [Azure PowerShell](data-factory-copy-activity-tutorial-using-powershell.md) verwenden können. Darin wird veranschaulicht, wie Sie Daten aus einer SFTP-Quelle nach Azure Blob Storage kopieren. Daten können jedoch mithilfe der Kopieraktivität in Azure Data Factory **direkt** aus beliebigen Quellen in die [hier](data-factory-data-movement-activities.md#supported-data-stores-and-formats) aufgeführten Senken kopiert werden.
 
 > [!IMPORTANT]
 > Dieses Beispiel enthält JSON-Codeausschnitte. Eine schrittweise Anleitung zum Erstellen der Data Factory ist nicht enthalten. Einen Artikel mit schrittweisen Anleitungen finden Sie unter [Verschieben von Daten zwischen lokalen Standorten und Cloud](data-factory-move-data-between-onprem-and-cloud.md) .

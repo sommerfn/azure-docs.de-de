@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: pod
 ms.topic: article
-ms.date: 05/22/2019
+ms.date: 07/11/2019
 ms.author: alkohli
-ms.openlocfilehash: 3bce5dd1dd34c53276c5486cc255c4cd93bb6080
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: e232ad131b1c0930afcf5e7e78b386aba2c9490b
+ms.sourcegitcommit: 64798b4f722623ea2bb53b374fb95e8d2b679318
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66242162"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67839745"
 ---
 # <a name="azure-data-box-system-requirements"></a>Systemanforderungen für Azure Data Box
 
@@ -52,6 +52,13 @@ Die Softwareanforderungen umfassen Informationen zu den unterstützten Betriebss
 ## <a name="networking-requirements"></a>Netzwerkanforderungen
 
 Ihr Datencenter verfügt über ein Hochgeschwindigkeitsnetzwerk. Mindestens eine 10-GbE-Verbindung wird dringend empfohlen. Falls keine 10-GbE-Verbindung verfügbar ist, kann zum Kopieren der Daten eine 1-GbE-Datenverbindung verwendet werden, die Geschwindigkeit der Kopiervorgänge wird dadurch jedoch beeinträchtigt.
+
+### <a name="port-requirements"></a>Portanforderungen
+
+In der folgenden Tabelle sind die Ports aufgeführt, die in der Firewall für SMB- oder NFS-Datenverkehr geöffnet werden müssen. In dieser Tabelle bezieht sich *ein* oder *eingehend* auf die Richtung, aus der eingehende Clientanforderungen auf das Gerät zugreifen. Entsprechend bezieht sich *aus* oder *ausgehend* auf die Richtung, in der das Data Box-Gerät Daten über die Bereitstellung hinaus an externe Ziele sendet: z. B. ausgehende Verbindungen mit dem Internet.
+
+[!INCLUDE [data-box-port-requirements](../../includes/data-box-port-requirements.md)]
+
 
 ## <a name="next-steps"></a>Nächste Schritte
 

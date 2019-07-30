@@ -15,12 +15,12 @@ ms.date: 11/08/2018
 ms.author: mimart
 ms.reviewer: asteen
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: cf665362e2d20f26c17e8a4ae9da29fc30cb47ce
-ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
+ms.openlocfilehash: 71c342ede77349b3f6c22093e5877ad5f5ce6549
+ms.sourcegitcommit: 47ce9ac1eb1561810b8e4242c45127f7b4a4aa1a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/01/2019
-ms.locfileid: "67481291"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67807687"
 ---
 # <a name="how-to-deploy-the-access-panel-extension-for-internet-explorer-using-group-policy"></a>Gewusst wie: Bereitstellen der Zugriffsbereichserweiterung für Internet Explorer mit der Gruppenrichtlinie
 
@@ -43,9 +43,11 @@ Zunächst müssen Sie das Installationspaket an einem Speicherort im Netzwerk ab
 1. Wechseln Sie im Fenster **Server-Manager** zu **Dateien und Speicherdienste**.
 
     ![Dateien und Speicherdienste öffnen](./media/deploy-access-panel-browser-extension/files-services.png)
+
 1. Klicken Sie auf die Registerkarte **Freigaben** . Klicken Sie dann auf **Aufgaben** > **Neue Freigabe**.
 
-    ![Dateien und Speicherdienste öffnen](./media/deploy-access-panel-browser-extension/shares.png)
+    ![Screenshot der Option „Neue Freigabe“ auf dem Bildschirm „Aufgaben“](./media/deploy-access-panel-browser-extension/shares.png)
+
 1. Schließen Sie den **Assistenten für neue Freigaben** , und legen Sie Berechtigungen fest, um sicherzustellen, dass von den Computern Ihrer Benutzer aus darauf zugegriffen werden kann. [Weitere Informationen zu Freigaben](https://technet.microsoft.com/library/cc753175.aspx)
 1. Laden Sie das folgende Microsoft Windows Installer-Paket (MSI-Datei) herunter: [Access Panel Extension.msi](https://account.activedirectory.windowsazure.com/Applications/Installers/x64/Access%20Panel%20Extension.msi)
 1. Kopieren Sie das Installationspaket an den gewünschten Speicherort auf der Freigabe.
@@ -80,13 +82,14 @@ Zunächst müssen Sie das Installationspaket an einem Speicherort im Netzwerk ab
 
    * `Computer Configuration/Policies/Software Settings/`
    * `User Configuration/Policies/Software Settings/`
+
 1. Klicken Sie mit der rechten Maustaste auf **Softwareinstallation**, und wählen Sie dann **Neu** > **Paket** aus.
 1. Wechseln Sie zum freigegebenen Ordner, der das Installerpaket aus [Schritt 1: Erstellen des Verteilungspunkts](#step-1-create-the-distribution-point) enthält, wählen Sie die MSI-Datei aus, und klicken Sie auf **Öffnen**.
 
    > [!IMPORTANT]
    > Wenn sich die Freigabe auf demselben Server befindet, vergewissern Sie sich, dass Sie nicht über den lokalen Dateipfad, sondern über den Netzwerkdateipfad auf die MSI-Datei zugreifen.
 
-    ![Wählen Sie das Installationspaket im freigegebenen Ordner.](./media/deploy-access-panel-browser-extension/select-package.png)
+    ![Auswählen des Installationspakets im freigegebenen Ordner](./media/deploy-access-panel-browser-extension/select-package.png)
 
 1. Wählen Sie in der Eingabeaufforderung **Software bereitstellen** als Bereitstellungsmethode die Option **Zugewiesen** aus. Klicken Sie dann auf **OK**.
 
@@ -100,6 +103,7 @@ Zusätzlich zur Ausführung des Installationsprogramms muss jede Erweiterung fü
 
    * `Computer Configuration/Policies/Administrative Templates/Windows Components/Internet Explorer/Security Features/Add-on Management`
    * `User Configuration/Policies/Administrative Templates/Windows Components/Internet Explorer/Security Features/Add-on Management`
+
 1. Klicken Sie mit der rechten Maustaste auf **Add-On-Liste**, und wählen Sie **Bearbeiten** aus.
 
     ![Klicken Sie mit der rechten Maustaste auf „Add-On-Liste“, und wählen Sie „Bearbeiten“ aus.](./media/deploy-access-panel-browser-extension/edit-add-on-list.png)
@@ -111,8 +115,8 @@ Zusätzlich zur Ausführung des Installationsprogramms muss jede Erweiterung fü
 1. Führen Sie im Fenster **Inhalt anzeigen** die folgenden Schritte aus:
 
    1. Kopieren Sie für die erste Spalte (Feld **Wertname**) die folgende Klassen-ID: `{030E9A3F-7B18-4122-9A60-B87235E4F59E}`.
-   2. Geben Sie für die zweite Spalte (Feld **Wert**) den folgenden Wert ein: `1`.
-   3. Klicken Sie auf **OK**, um das Fenster **Inhalt anzeigen** zu schließen.
+   1. Geben Sie für die zweite Spalte (Feld **Wert**) den folgenden Wert ein: `1`.
+   1. Klicken Sie auf **OK**, um das Fenster **Inhalt anzeigen** zu schließen.
 
       ![Füllen Sie die Werte wie im vorherigen Schritt angegeben aus.](./media/deploy-access-panel-browser-extension/show-contents.png)
 
@@ -160,7 +164,7 @@ Gehen Sie folgendermaßen vor, um zu überprüfen, ob die Erweiterungsbereitstel
 1. Öffnen Sie nach dem Neustart **Internet Explorer**. Klicken Sie in der rechten oberen Ecke des Fensters auf **Extras** (das Zahnradsymbol), und wählen Sie dann **Add-Ons verwalten** aus.
 1. Überprüfen Sie im Fenster **Add-Ons verwalten**, ob die **Zugriffsbereichserweiterung** installiert und ihr **Status** auf **Aktiviert** festgelegt wurde.
 
-   ![Stellen Sie sicher, dass die Zugriffsbereichserweiterung installiert und aktiviert wurde.](./media/deploy-access-panel-browser-extension/verify-install.png)
+   ![Überprüfen von Installation und Aktivierung der Zugriffsbereichserweiterung](./media/deploy-access-panel-browser-extension/verify-install.png)
 
 ## <a name="learn-more"></a>Weitere Informationen
 

@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/30/2019
 ms.author: shants
-ms.openlocfilehash: fccc99f78d038a5f96b9dfe01b575dedcdcb4cdc
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: b388c600e5eb9331fe22d1a8e9aac8f47edb3ef2
+ms.sourcegitcommit: fa45c2bcd1b32bc8dd54a5dc8bc206d2fe23d5fb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65405608"
+ms.lasthandoff: 07/12/2019
+ms.locfileid: "67849597"
 ---
 # <a name="handling-planned-maintenance-notifications-for-windows-virtual-machines"></a>Behandeln von Benachrichtigungen zu geplanten Wartungen für virtuelle Windows-Computer
 
@@ -170,7 +170,7 @@ Restart-AzureVM -InitiateMaintenance -ServiceName <service name> -Name <VM name>
 
 **A:** In einer Verfügbarkeitsgruppe oder VM-Skalierungsgruppe bereitgestellte virtuelle Computer werden wie Updatedomänen (UD) behandelt. Bei der Wartung berücksichtigt Azure die UD-Einschränkung und startet virtuelle Computer nicht von einer anderen UD (innerhalb derselben Verfügbarkeitsgruppe) aus neu.  Azure wartet auch mindestens 30 Minuten vor dem Wechsel zur nächsten Gruppe von virtuellen Computern. 
 
-Weitere Informationen zu Hochverfügbarkeit finden Sie unter [Regionen und Verfügbarkeit für virtuelle Computer in Azure](regions-and-availability.MD).
+Weitere Informationen zu Hochverfügbarkeit finden Sie unter [Verfügbarkeit für virtuelle Computer in Azure](availability.MD).
 
 **F: Wie werde ich über eine geplante Wartung benachrichtigt?**
 

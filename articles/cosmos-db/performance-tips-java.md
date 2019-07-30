@@ -7,12 +7,12 @@ ms.devlang: java
 ms.topic: conceptual
 ms.date: 05/23/2019
 ms.author: sngun
-ms.openlocfilehash: 2ce8c0b369cd59ac61279fe3c7acd2cdecfc007c
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 7d6427db7090b3419fbe67535baeb4a5df6a5d65
+ms.sourcegitcommit: a6873b710ca07eb956d45596d4ec2c1d5dc57353
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66225601"
+ms.lasthandoff: 07/16/2019
+ms.locfileid: "68261309"
 ---
 # <a name="performance-tips-for-azure-cosmos-db-and-java"></a>Leistungstipps für Azure Cosmos DB und Java
 
@@ -138,7 +138,7 @@ Im Anschluss finden Sie einige Optionen zur Optimierung der Datenbankleistung:
 
     Die Komplexität einer Abfrage wirkt sich darauf aus, wie viele Anforderungseinheiten für einen Vorgang verbraucht werden. Die Anzahl von Prädikaten, die Art der Prädikate, die Anzahl von UDFs und die Größe des Quelldatasets beeinflussen die Kosten von Abfragevorgängen.
 
-    Untersuchen Sie zum Ermitteln des Indizierungsaufwands für einen beliebigen Vorgang (Erstellen, Aktualisieren oder Löschen) den Header [x-ms-request-charge](https://docs.microsoft.com/rest/api/cosmos-db/common-cosmosdb-rest-response-headers) (oder die entsprechende RequestCharge-Eigenschaft in [ResourceResponse<T>](https://docs.microsoft.com/java/api/com.microsoft.azure.documentdb.resourceresponse) oder [FeedResponse<T>](https://docs.microsoft.com/java/api/com.microsoft.azure.documentdb.feedresponse)). So ermitteln Sie die Anzahl von Anforderungseinheiten, die von diesen Vorgängen genutzt werden.
+    Untersuchen Sie zum Ermitteln des Indizierungsaufwands für einen beliebigen Vorgang (Erstellen, Aktualisieren oder Löschen) den Header [x-ms-request-charge](https://docs.microsoft.com/rest/api/cosmos-db/common-cosmosdb-rest-response-headers) (oder die entsprechende RequestCharge-Eigenschaft in [ResourceResponse\<T>](https://docs.microsoft.com/java/api/com.microsoft.azure.documentdb.resourceresponse) oder [FeedResponse\<T>](https://docs.microsoft.com/java/api/com.microsoft.azure.documentdb.feedresponse)). Damit ermitteln Sie die Anzahl von Anforderungseinheiten, die von diesen Vorgängen genutzt werden.
 
     ```Java
     ResourceResponse<Document> response = client.createDocument(collectionLink, documentDefinition, null, false);

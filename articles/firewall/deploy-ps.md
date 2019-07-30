@@ -39,7 +39,7 @@ In diesem Artikel werden folgende Vorgehensweisen behandelt:
 > * Einrichten einer Netzwerkumgebung zu Testzwecken
 > * Bereitstellen einer Firewall
 > * Erstellen einer Standardroute
-> * Konfigurieren einer Anwendungsregel zum Zulassen des Zugriffs auf [www.google.com]\(www.google.com)
+> * Konfigurieren einer Anwendungsregel zum Zulassen des Zugriffs auf www.google.com
 > * Konfigurieren einer Netzwerkregel, um den Zugriff auf externe DNS-Server zuzulassen
 > * Testen der Firewall
 
@@ -169,7 +169,7 @@ Set-AzVirtualNetworkSubnetConfig `
 
 ## <a name="configure-an-application-rule"></a>Konfigurieren einer Anwendungsregel
 
-Die Anwendungsregel lässt ausgehenden Zugriff auf „www.google.com“ zu.
+Die Anwendungsregel lässt ausgehenden Zugriff auf www.google.com zu.
 
 ```azurepowershell
 $AppRule1 = New-AzFirewallApplicationRule -Name Allow-Google -SourceAddress 10.0.2.0/24 `
@@ -242,7 +242,7 @@ Testen Sie nun die Firewall, um sicherzustellen, dass sie wie erwartet funktioni
    Invoke-WebRequest -Uri https://www.microsoft.com
    ```
 
-   Die Anforderungen an „www.google.com“ sollten erfolgreich sein, die an „www.microsoft.com“ sollten zu einem Fehler führen. Dies zeigt, dass Ihre Firewall-Regeln wie erwartet funktionieren.
+   Die Anforderungen an www.google.com sollten erfolgreich sein, die an www.microsoft.com sollten zu einem Fehler führen. Dies zeigt, dass Ihre Firewall-Regeln wie erwartet funktionieren.
 
 Damit haben Sie sich vergewissert, dass die Firewallregeln funktionieren:
 

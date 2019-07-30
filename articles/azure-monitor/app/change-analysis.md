@@ -10,12 +10,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 05/07/2019
 ms.author: cawa
-ms.openlocfilehash: 45df8f9e57223ea60a11c6af2187d362184cae2b
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: 3efa26a1eaea8f522d9717efb0de0ec8e1682e0e
+ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67443378"
+ms.lasthandoff: 07/15/2019
+ms.locfileid: "67875157"
 ---
 # <a name="use-application-change-analysis-preview-in-azure-monitor"></a>Verwenden der Anwendungsänderungsanalyse (Vorschau) in Azure Monitor
 
@@ -136,5 +136,6 @@ Wenn Ihr Abonnement zahlreiche Web-Apps enthält, wäre das Aktivieren des Diens
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- Effizienteres Überwachen von App Service durch [Aktivieren von Application Insights-Features](azure-web-apps.md) in Azure Monitor.
+- Aktivieren von Application Insights für [Azure App Services-Apps](azure-web-apps.md)
+- Aktivieren von Application Insights für [in IIS gehostete virtuelle Azure-Computer und Azure-VM-Skalierungsgruppen](azure-vm-vmss-apps.md)
 - Erfahren Sie mehr über [Azure Resource Graph](https://docs.microsoft.com/azure/governance/resource-graph/overview), der die Änderungsanalyse unterstützt.

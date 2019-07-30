@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 04/08/2019
 ms.author: tamram
 ms.subservice: tables
-ms.openlocfilehash: 63a81e390c113d10378973f928ffb58d71e8628e
-ms.sourcegitcommit: 2d3b1d7653c6c585e9423cf41658de0c68d883fa
+ms.openlocfilehash: 40f760ab054154a02bea9eb341bda33bb879d824
+ms.sourcegitcommit: a6873b710ca07eb956d45596d4ec2c1d5dc57353
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/20/2019
-ms.locfileid: "67295113"
+ms.lasthandoff: 07/16/2019
+ms.locfileid: "68249575"
 ---
 # <a name="table-design-patterns"></a>Entwurfsmuster für die Tabelle
 Dieser Abschnitt beschreibt einige Muster, die zur Verwendung mit Tabellenspeicherdienstlösungen geeignet sind. Darüber hinaus wird gezeigt, wie Sie einige der in anderen Artikeln zum Tabellenspeicherentwurf angesprochenen Probleme und Kompromisse praktisch behandeln können. Das folgende Diagramm fasst die Beziehungen zwischen den verschiedenen Mustern zusammen:  
@@ -588,7 +588,7 @@ using Microsoft.Azure.Cosmos.Table;
 using Microsoft.Azure.Cosmos.Table.Queryable;
 ```
 
-Bei „employeeTable“ handelt es sich um ein „CloudTable“-Objekt, das eine „CreateQuery<ITableEntity>()“-Methode implementiert, die eine „TableQuery<ITableEntity>“ zurückgibt. Objekte dieses Typs implementieren eine „iQueryable“-Schnittstelle und ermöglichen die Verwendung von LINQ-Abfrageausdrücken und der Punktnotationssyntax.
+Bei employeeTable handelt es sich um ein CloudTable-Objekt, das eine CreateQuery\<ITableEntity>()-Methode implementiert, die eine TableQuery\<ITableEntity> zurückgibt. Objekte dieses Typs implementieren eine „iQueryable“-Schnittstelle und ermöglichen die Verwendung von LINQ-Abfrageausdrücken und der Punktnotationssyntax.
 
 Das Abrufen von mehreren Entitäten erfolgt durch das Angeben einer Abfrage mit einer **where**-Klausel. Um einen Tabellenscan zu vermeiden, sollten Sie immer den **PartitionKey**-Wert in die where-Klausel einschließen (und möglichst auch den **RowKey**-Wert, um Tabellen- und Partitionsscans zu vermeiden). Der Tabellenspeicherdienst unterstützt eine begrenzte Anzahl von Vergleichsoperatoren (größer als, größer als oder gleich, kleiner als, kleiner als oder gleich, gleich und ungleich) zur Verwendung in der WHERE-Klausel. 
 

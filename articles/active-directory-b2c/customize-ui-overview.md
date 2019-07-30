@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 02/07/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 6c9109cf4d6d67d3d8001a9de1d54e24622a9286
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 13ae1b74acbcab8d623c24d6a7b8d7e1355b80e8
+ms.sourcegitcommit: 920ad23613a9504212aac2bfbd24a7c3de15d549
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66511173"
+ms.lasthandoff: 07/15/2019
+ms.locfileid: "68227157"
 ---
 # <a name="about-user-interface-customization-in-azure-active-directory-b2c"></a>Informationen zur Anpassung der Benutzeroberfläche (UI) in Azure Active Directory B2C
 
@@ -29,7 +29,7 @@ Je nach Ihren Anforderungen hinsichtlich dieser Erfahrungen passen Sie die Benut
 - Wenn Kunden versuchen, ihr Profil zu bearbeiten, bevor sie sich anmelden, werden sie zu einer Seite umgeleitet, die Sie mithilfe derselben Schritte anpassen, die zum Anpassen der Anmeldeseite von Azure AD verwendet werden.
 - Wenn Sie [benutzerdefinierte Richtlinien](active-directory-b2c-overview-custom.md) verwenden, um in Ihrer Anwendung Registrierung bzw. Anmeldung, Kennwortzurücksetzung oder Profilbearbeitung bereitzustellen, verwenden Sie die [Richtliniendateien zum Anpassen der Benutzeroberfläche](active-directory-b2c-ui-customization-custom.md).
 - Wenn Sie dynamische Inhalte auf Grundlage der Entscheidung eines Kunden bereitstellen müssen, verwenden Sie [benutzerdefinierte Richtlinien, die Seiteninhalte ändern können](active-directory-b2c-ui-customization-custom-dynamic.md), in Abhängigkeit von einem Parameter, der in einer Abfragezeichenfolge gesendet wird. So ändert sich beispielsweise das Hintergrundbild auf der Azure AD B2C-Registrierungs- oder Anmeldeseite auf Grundlage eines Parameters, den Sie aus Ihrer Web- oder Mobilanwendung übergeben.
-- Sie können den clientseitigen JavaScript-Code in Ihren Azure AD B2C-[Benutzerflows](user-flow-javascript-overview.md) oder [benutzerdefinierten Richtlinien](page-contract.md) aktivieren.
+- Sie können den clientseitigen JavaScript-Code in Ihren Azure AD B2C-[Benutzerflows](user-flow-javascript-overview.md) oder [benutzerdefinierten Richtlinien](page-layout.md) aktivieren.
 
 Azure AD B2C führt den Code im Browser Ihres Kunden aus und verwendet einen modernen Ansatz namens [Cross-Origin Resource Sharing](https://www.w3.org/TR/cors/) (CORS, Ressourcenfreigabe zwischen verschiedenen Ursprüngen). Zur Laufzeit wird Inhalt über eine URL geladen, die Sie in einem Benutzerflow oder einer Richtlinie angeben. Sie geben verschiedene URLs für unterschiedliche Seiten an. Nachdem Inhalt über Ihr URL geladen wurde, wird er mit einem von Azure AD B2C eingefügten HTML-Fragment zusammengeführt und dann Ihrem Kunden angezeigt.
 
@@ -37,7 +37,7 @@ Wenn Sie zum Anpassen der Benutzeroberfläche Ihre eigenen HTML- und CSS-Dateien
 
 - Azure AD B2C führt HTML-Inhalt in Ihre Seiten zusammen. Versuchen Sie nicht, den Standardinhalt zu kopieren oder zu ändern, den Azure AD B2C bereitstellt. Es wird empfohlen, eigene HTML-Inhalte von Grund auf neu zu erstellen und den Standardinhalt als Referenz zu verwenden.
 - JavaScript kann nun in den benutzerdefinierten Inhalt einbezogen werden.
-- Unterstützte Browserversionen sind: 
+- Unterstützte Browserversionen sind:
     - Internet Explorer 11, 10 und Microsoft Edge
     - Eingeschränkte Unterstützung für Internet Explorer 9 und 8
     - Google Chrome 42.0 und höher
@@ -50,11 +50,11 @@ Für V2-Benutzerflows können Sie eine vordefinierte Vorlage auswählen, die Ihr
 
 Wählen Sie im linken Menü unter **Anpassen** die Option **Seitenlayouts** aus. Wählen Sie dann **Vorlage (Vorschau)** aus.
 
-![Auswählen einer Seitenlayoutvorlage](media/customize-ui-overview/template.png)
+![Dropdownmenü zur Vorlagenauswahl auf der Seite des Benutzerflows im Azure-Portal](media/customize-ui-overview/template.png)
 
 Wählen Sie eine Vorlage aus der Liste aus. Mit der Vorlage **Ozeanblau** wird beispielsweise das folgende Layout auf Ihre Benutzerflowseiten angewendet:
 
-![Vorlage „Ozeanblau“](media/customize-ui-overview/ocean-blue.png)
+![Beispiel für die gerenderte Vorlage „Ozeanblau“ auf der Seite für die Registrierung/Anmeldung](media/customize-ui-overview/ocean-blue.png)
 
 Wenn Sie eine Vorlage auswählen, wird das ausgewählte Layout auf alle Seiten in Ihrem Benutzerflow angewendet, und im Feld **Benutzerdefinierter Seiten-URI** wird der URI für jede Seite angezeigt.
 
@@ -85,13 +85,13 @@ Gehen Sie wie folgt vor, um die Benutzeroberfläche anzupassen:
 - Hosten Sie diese Inhalte auf einem HTTPS-Endpunkt (auf dem CORS zulässig ist). Bei der Konfiguration von CORS müssen die Anforderungsmethoden GET und OPTIONS aktiviert werden.
 - Formatieren Sie die Elemente der Benutzeroberfläche, die von Azure AD B2C in Ihre Seite einfügt werden, mithilfe von CSS. Das folgende Beispiel zeigt eine einfachen CSS-Datei, die außerdem Einstellungen für die Registrierung eingefügter HTML-Elemente enthält:
 
-    ```css 
+    ```css
     h1 {
       color: blue;
       text-align: center;
     }
     .intro h2 {
-      text-align: center; 
+      text-align: center;
     }
     .entry {
       width: 400px ;
@@ -99,7 +99,7 @@ Gehen Sie wie folgt vor, um die Benutzeroberfläche anzupassen:
       margin-right: auto ;
     }
     .divider h2 {
-      text-align: center; 
+      text-align: center;
     }
     .create {
       width: 400px ;

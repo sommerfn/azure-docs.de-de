@@ -3,17 +3,18 @@ title: 'Tutorial: Erstellen von Containerimages in der Cloud –Azure Container 
 description: In diesem Tutorial erfahren Sie, wie Sie mit Azure Container Registry Tasks (ACR Tasks) ein Docker-Containerimage in Azure erstellen und anschließend in Azure Container Instances bereitstellen.
 services: container-registry
 author: dlepow
+manager: gwallace
 ms.service: container-registry
 ms.topic: tutorial
 ms.date: 09/24/2018
 ms.author: danlep
 ms.custom: seodec18, mvc
-ms.openlocfilehash: ed5df09d492bbf6123e76f73717a1738a23a066c
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: a9e84210427612143bffe33efe4a5da5364b7a22
+ms.sourcegitcommit: f5075cffb60128360a9e2e0a538a29652b409af9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "66152126"
+ms.lasthandoff: 07/18/2019
+ms.locfileid: "68310440"
 ---
 # <a name="tutorial-build-and-deploy-container-images-in-the-cloud-with-azure-container-registry-tasks"></a>Tutorial: Erstellen und Bereitstellen von Containerimages in der Cloud mit Azure Container Registry Tasks
 
@@ -34,7 +35,7 @@ In den weiteren Tutorials erfahren Sie, wie Sie mithilfe von Tasks Containerimag
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-Wenn Sie die Azure CLI lokal verwenden möchten, muss bei Ihnen mindestens die Azure CLI-Version **2.0.46** installiert sein, und Sie müssen mit [az login][az-login] angemeldet sein. Führen Sie `az --version` aus, um die Version zu finden. Informationen zur Installation und dem Upgrade der CLI finden Sie bei Bedarf unter [Installieren von Azure CLI][azure-cli].
+Wenn Sie die Azure CLI lokal verwenden möchten, muss bei Ihnen mindestens die Azure CLI-Version **2.0.46** installiert sein, und Sie müssen mit [az login][az-login] angemeldet sein. Führen Sie `az --version` aus, um die Version zu finden. Informationen zum Installieren und Aktualisieren der Befehlszeilenschnittstelle finden Sie bei Bedarf unter [Installieren der Azure CLI][azure-cli].
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -191,7 +192,7 @@ az keyvault create --resource-group $RES_GROUP --name $AKV_NAME
 
 Sie müssen nun einen Dienstprinzipal erstellen und seine Anmeldeinformationen in Ihrem Schlüsselspeicher speichern.
 
-Erstellen Sie mithilfe des Befehls [az ad sp create-for-rbac][az-ad-sp-create-for-rbac] den Dienstprinzipal, und speichern Sie das Kennwort (**password**) des Dienstprinzipals mithilfe des Befehls [az keyvault secret set][az-keyvault-secret-set] im Tresor:
+Verwenden Sie [az ad sp create-for-rbac][az-ad-sp-create-for-rbac] command to create the service principal, and [az keyvault secret set][az-keyvault-secret-set], um das **Kennwort** des Dienstprinzipals im Tresor zu speichern:
 
 ```azurecli-interactive
 # Create service principal, store its password in AKV (the registry *password*)

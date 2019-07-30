@@ -9,12 +9,12 @@ ms.author: deli
 ms.reviewer: klam, LADocs
 ms.topic: article
 ms.date: 09/20/2018
-ms.openlocfilehash: 25ed66fd75301475542dbac8e8a01670ee37563c
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 0225a9f34e016a4b1de51c06ba982d384e41007c
+ms.sourcegitcommit: af58483a9c574a10edc546f2737939a93af87b73
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60531681"
+ms.lasthandoff: 07/17/2019
+ms.locfileid: "68302088"
 ---
 # <a name="migrate-azure-scheduler-jobs-to-azure-logic-apps"></a>Migrieren von Azure Scheduler-Aufträgen zu Azure Logic Apps
 
@@ -79,7 +79,7 @@ Sie können mehrere einmalige Aufträge ausführen, indem Sie eine einzelne Logi
 
    ![Angeben von Details zu „Verzögern bis“](./media/migrate-from-scheduler-to-logic-apps/delay-until-details.png)
 
-1. Fügen Sie alle auszuführenden Aktionen hinzu, indem Sie eine Auswahl aus den [ca. über 200 Connectors](../connectors/apis-list.md) treffen. 
+1. Fügen Sie alle auszuführenden Aktionen hinzu, indem Sie eine Auswahl aus den [Hunderten einsatzbereiten Connectors](../connectors/apis-list.md) treffen. 
 
    Beispielsweise können Sie eine HTTP-Aktion, die eine Anforderung an eine URL sendet, oder Aktionen einschließen, die mit Storage-Warteschlangen, Service Bus-Warteschlangen oder Service Bus-Themen arbeiten: 
 
@@ -104,7 +104,7 @@ Mit der Postman-App können Sie beispielsweise eine POST-Anforderung mit ähnlic
 
 | Anforderungsmethode | URL | Body | Header |
 |----------------|-----|------|---------| 
-| **POST** | <*endpoint-URL*> | **raw** <p>**JSON(application/json)** <p>Geben Sie in das Feld **raw** die Nutzlast an, die in der Anforderung gesendet werden soll. <p>**Hinweis**: Diese Einstellung konfiguriert automatisch die **Header**-Werte. | **Key**: Content-Typ <br>**Wert**: „application/json“
+| **POST** | <*endpoint-URL*> | **raw** <p>**JSON(application/json)** <p>Geben Sie in das Feld **raw** die Nutzlast an, die in der Anforderung gesendet werden soll. <p>**Hinweis**: Diese Einstellung konfiguriert automatisch die **Header**-Werte. | **Key**: Content-Type <br>**Wert**: „application/json“
  |||| 
 
 ![Senden einer Anforderung zum manuellen Auslösen Ihrer Logik-App](./media/migrate-from-scheduler-to-logic-apps/postman-send-post-request.png)
@@ -141,7 +141,7 @@ Jeder einmalige Auftrag in Logic Apps wird als einzelne Logik-App-Instanz ausgef
 
    Weitere Informationen zu erweiterten Planungsoptionen finden Sie unter [Erstellen und Ausführen wiederkehrender Tasks und Workflows mit Azure Logic Apps](../connectors/connectors-native-recurrence.md).
 
-1. Fügen Sie weitere Aktionen hinzu, indem Sie eine Auswahl aus den [über 200 Connectors](../connectors/apis-list.md) treffen. Klicken Sie unter dem Trigger auf **Nächster Schritt**. Suchen Sie nach den gewünschten Aktionen, und wählen Sie sie aus.
+1. Fügen Sie andere Aktionen hinzu, indem Sie eine Auswahl aus den [Hunderten einsatzbereiten Connectors](../connectors/apis-list.md) treffen. Klicken Sie unter dem Trigger auf **Nächster Schritt**. Suchen Sie nach den gewünschten Aktionen, und wählen Sie sie aus.
 
    Beispielsweise können Sie eine HTTP-Aktion, die eine Anforderung an eine URL sendet, oder Aktionen einschließen, die mit Storage-Warteschlangen, Service Bus-Warteschlangen oder Service Bus-Themen arbeiten: 
 

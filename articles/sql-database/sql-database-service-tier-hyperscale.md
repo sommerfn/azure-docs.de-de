@@ -12,12 +12,12 @@ ms.author: sstein
 ms.reviewer: ''
 manager: craigg
 ms.date: 05/06/2019
-ms.openlocfilehash: 4aeda5612b2b3e9e2073a65320b238266c8bb33a
-ms.sourcegitcommit: 084630bb22ae4cf037794923a1ef602d84831c57
+ms.openlocfilehash: 707f7f47b050d22d0bd225cf412181902ae84f50
+ms.sourcegitcommit: 6b41522dae07961f141b0a6a5d46fd1a0c43e6b2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/03/2019
-ms.locfileid: "67537865"
+ms.lasthandoff: 07/15/2019
+ms.locfileid: "67974459"
 ---
 # <a name="hyperscale-service-tier-for-up-to-100-tb"></a>Dienstebene „Hyperscale“ für bis zu 100TB
 
@@ -232,7 +232,7 @@ Hierbei handelt es sich um die aktuellen Einschränkungen der Hyperscale-Dienste
 | Verwaltete Instanz | Die verwaltete Azure SQL-Datenbank-Instanz wird bei Hyperscale-Datenbanken derzeit nicht unterstützt. |
 | Pools für elastische Datenbanken |  Pools für elastische Datenbanken werden mit Hyperskalierung für SQL-Datenbank derzeit nicht unterstützt.|
 | Migration zu „Hyperscale“ ist derzeit ein unidirektionaler Vorgang | Nach der Migration einer Datenbank zu „Hyperscale“ kann sie nicht direkt zu einer anderen Dienstebene migriert werden. Derzeit besteht die einzige Möglichkeit zum Migrieren einer Datenbank von „Hyperscale“ zu einem anderen Diensttarif im Exportieren/Importieren mithilfe einer BACPAC-Datei.|
-| Migration von Datenbanken mit In-Memory-Objekten | In-Memory-Objekte müssen gelöscht und als Nicht-In-Memory-Objekte neu erstellt werden, bevor eine Datenbank zur Dienstebene „Hyperscale“ migriert wird.|
+| Migration von Datenbanken mit beständigen speicherinternen Objekten | Hyperscale unterstützt nur nicht persistente, speicherinterne Objekte (Tabellentypen, native SPs und Funktionen).  Persistente speicherinterne Tabellen und andere Objekte müssen gelöscht und als nicht speicherinterne Objekte neu erstellt werden, bevor eine Datenbank zur Dienstebene „Hyperscale“ migriert wird.|
 | Datenänderungsverfolgung | Sie können die Datenänderungsverfolgung bei Hyperscale-Datenbanken nicht verwenden. |
 | Georeplikation  | Sie können noch keine Georeplikation für Hyperskalierung für Azure SQL-Datenbank-Instanzen konfigurieren.  Sie können Geowiederherstellungen ausführen (Wiederherstellen der Datenbank in einem anderen geografischen Gebiet, für die Notfallwiederherstellung oder aus anderen Gründen). |
 | TDE/AKV-Integration | Transparent Data Encryption mit Azure Key Vault (häufig als Bring-Your-Own-Key oder BYOK bezeichnet) wird noch nicht für Hyperskalierung für Azure SQL-Datenbank-Instanzen unterstützt, TDE mit vom Dienst verwalteten Schlüsseln jedoch vollständig. |

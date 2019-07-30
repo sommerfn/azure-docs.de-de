@@ -9,12 +9,12 @@ ms.date: 09/15/2018
 ms.service: application-insights
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: cdf01fbbcc8ef1f90b2e0f8973f59c46c5bf70f8
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 56e66f17e9ce1d2482463f619e82dfd29d48f191
+ms.sourcegitcommit: 6b41522dae07961f141b0a6a5d46fd1a0c43e6b2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60577860"
+ms.lasthandoff: 07/15/2019
+ms.locfileid: "67990303"
 ---
 # <a name="collect-distributed-traces-from-go-preview"></a>Sammeln verteilter Ablaufverfolgungsdaten von Go (Vorschau)
 
@@ -40,14 +40,16 @@ Zuerst müssen Sie eine Application Insights-Ressource erstellen, die einen Inst
 
    ![Hinzufügen einer Application Insights-Ressource](./media/opencensus-Go/0001-create-resource.png)
 
+ > [!NOTE]
+   >Wenn Sie zum ersten Mal eine Application Insights-Ressource erstellen, können Sie mehr dazu im Artikel [Erstellen einer Application Insights-Ressource](https://docs.microsoft.com/azure/azure-monitor/app/create-new-resource) erfahren.
+
    Ein Dialogfeld für die Konfiguration wird geöffnet. Füllen Sie die Eingabefelder anhand der Informationen in der folgenden Tabelle aus:
 
     | Einstellungen        | Wert           | BESCHREIBUNG  |
    | ------------- |:-------------|:-----|
    | **Name**      | Global eindeutiger Wert | Der Name, der die zu überwachende App identifiziert. |
-   | **Anwendungstyp** | Allgemein | Der Typ der zu überwachenden App. |
    | **Ressourcengruppe**     | myResourceGroup      | Der Name der neuen Ressourcengruppe, die Application Insights-Daten hosten soll. |
-   | **Location** | USA (Ost) | Wählen Sie einen Standort in Ihrer Nähe oder in der Nähe des Standorts, in dem Ihre App gehostet wird. |
+   | **Location** | East US | Wählen Sie einen Standort in Ihrer Nähe oder in der Nähe des Standorts, in dem Ihre App gehostet wird. |
 
 2. Klicken Sie auf **Create**.
 

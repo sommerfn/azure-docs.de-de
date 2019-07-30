@@ -4,12 +4,12 @@ ms.service: azure-functions
 ms.topic: include
 ms.date: 03/05/2019
 ms.author: cshoe
-ms.openlocfilehash: 421e0db48f045c5cbce52a0641902e6d2a11276e
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.openlocfilehash: 3ce3d61bf6b5fb44fa13527bc5a93295784fa66b
+ms.sourcegitcommit: a6873b710ca07eb956d45596d4ec2c1d5dc57353
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67177887"
+ms.lasthandoff: 07/16/2019
+ms.locfileid: "68286211"
 ---
 ## <a name="trigger"></a>Trigger
 
@@ -360,7 +360,7 @@ public void eventHubProcessor(
  }
 ```
 
- Verwenden Sie die `EventHubTrigger`-Anmerkung in der [Laufzeitbibliothek für Java-Funktionen](/java/api/overview/azure/functions/runtime) für Parameter, deren Wert von Event Hub empfangen wird. Parameter mit diesen Anmerkungen führen dazu, dass die Funktion ausgeführt wird, wenn ein Ereignis empfangen wird.  Diese Anmerkung kann mit nativen Java-Typen, POJOs oder Werten mit Optional<T>, die NULL-Werte annehmen können, verwendet werden.
+ Verwenden Sie die `EventHubTrigger`-Anmerkung in der [Laufzeitbibliothek für Java-Funktionen](/java/api/overview/azure/functions/runtime) für Parameter, deren Wert von Event Hub empfangen wird. Parameter mit diesen Anmerkungen führen dazu, dass die Funktion ausgeführt wird, wenn ein Ereignis empfangen wird.  Diese Anmerkung kann mit nativen Java-Typen, POJOs oder Werten mit Optional\<T> verwendet werden, die NULL-Werte annehmen können.
 
 ## <a name="trigger---attributes"></a>Trigger: Attribute
 

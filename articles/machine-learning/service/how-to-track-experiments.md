@@ -1,32 +1,33 @@
 ---
 title: Protokollieren von Metriken während Trainingsausführungen
 titleSuffix: Azure Machine Learning service
-description: Erfahren Sie, wie Sie die Protokollierung zu Ihrem Trainingsskript hinzufügen, wie Sie das Experiment übermitteln, wie Sie den Fortschritt eines laufenden Auftrags überprüfen und wie Sie die Ergebnisse eines Durchlaufs anzeigen. Sie können Ihre Experimente verfolgen und Metriken überwachen, um den Prozess der Modellerstellung zu verbessern.
+description: Sie können Ihre Experimente verfolgen und Metriken überwachen, um den Prozess der Modellerstellung zu verbessern. Erfahren Sie, wie Sie Ihrem Trainingsskript Protokollierung hinzufügen, wie Sie das Experiment übermitteln, wie Sie den Fortschritt eines laufenden Auftrags überprüfen und wie Sie die protokollierten Ergebnisse eines Durchlaufs anzeigen.
 services: machine-learning
 author: heatherbshapiro
 ms.author: hshapiro
+ms.reviewer: sgilley
 ms.service: machine-learning
 ms.subservice: core
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 12/04/2018
+ms.date: 07/11/2019
 ms.custom: seodec18
-ms.openlocfilehash: d3cbc2d5be1f7addf833162b23c5db0786e9d361
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 269568c172ff6c65c9877f9ad22067a11125b339
+ms.sourcegitcommit: fa45c2bcd1b32bc8dd54a5dc8bc206d2fe23d5fb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66297476"
+ms.lasthandoff: 07/12/2019
+ms.locfileid: "67847596"
 ---
 # <a name="log-metrics-during-training-runs-in-azure-machine-learning"></a>Protokollieren von Metriken während Trainingsausführungen in Azure Machine Learning
 
-In diesem Artikel erfahren Sie, wie Sie in Azure Machine Learning Service Protokollierung zu Ihrem Trainingsskript hinzufügen, eine Experimentausführung übermitteln, die Ausführung überwachen und die Ergebnisse einer Ausführung anzeigen können. Verbessern Sie den Modellerstellungsvorgang, indem Sie Ihre Experimente verfolgen und Metriken überwachen. 
+Verbessern Sie den Modellerstellungsvorgang, indem Sie Ihre Experimente verfolgen und Metriken überwachen. In diesem Artikel erfahren Sie, wie Sie in Azure Machine Learning Service Protokollierung zu Ihrem Trainingsskript hinzufügen, eine Experimentausführung übermitteln, die Ausführung überwachen und die Ergebnisse einer Ausführung anzeigen können.
 
 ## <a name="list-of-training-metrics"></a>Liste der Trainingsmetriken 
 
 Die folgenden Metriken können während des Trainings eines Experiments zu einem Durchlauf hinzugefügt werden. Ausführliche Informationen dazu, was Sie bei einer Ausführung nachverfolgen können, finden Sie in der [Referenzdokumentation zur Run-Klasse](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run(class)?view=azure-ml-py).
 
-|Type| Python-Funktion | Notizen|
+|type| Python-Funktion | Notizen|
 |----|:----|:----|
 |Skalarwerte |Funktion:<br>`run.log(name, value, description='')`<br><br>Beispiel:<br>run.log("accuracy", 0.95) |Protokollieren Sie einen Zahlen- oder Zeichenfolgenwert für die Ausführung unter dem jeweiligen Namen. Wenn Sie eine Metrik für eine Ausführung protokollieren, wird diese Metrik in der Ausführungsaufzeichnung des Experiments gespeichert.  Sie können dieselbe Metrik innerhalb einer Ausführung mehrmals protokollieren, wobei das Ergebnis als Vektor dieser Metrik betrachtet wird.|
 |Listen|Funktion:<br>`run.log_list(name, value, description='')`<br><br>Beispiel:<br>run.log_list("accuracies", [0.6, 0.7, 0.87]) | Protokollieren Sie eine Liste mit Werten für die Ausführung unter dem jeweiligen Namen.|
@@ -54,9 +55,7 @@ Bevor Sie die Protokollierung hinzufügen und ein Experiment übermitteln, müss
    from azureml.core import Experiment, Run, Workspace
    import azureml.core
   
-   ws = Workspace(workspace_name = <<workspace_name>>,
-               subscription_id = <<subscription_id>>,
-               resource_group = <<resource_group>>)
+   ws = Workspace.from_config()
    ```
   
 ## <a name="option-1-use-startlogging"></a>Option 1: Verwenden von start_logging
@@ -92,34 +91,36 @@ Das folgende Beispiel trainiert ein einfaches Sklearn Ridge-Modell lokal in eine
 2. Fügen Sie die Experimentnachverfolgung mit dem Azure Machine Learning Service SDK hinzu und laden Sie ein persistentes Modell in die Ausführungsaufzeichnung des Experiments hoch. Der folgende Code fügt Tags und Protokolle hinzu und lädt eine Modelldatei in die Ausführung des Experiments hoch.
 
    ```python
-   # Get an experiment object from Azure Machine Learning
-   experiment = Experiment(workspace = ws, name = "train-within-notebook")
-  
-   # Create a run object in the experiment
-   run = experiment.start_logging()# Log the algorithm parameter alpha to the run
-   run.log('alpha', 0.03)
-
-   # Create, fit, and test the scikit-learn Ridge regression model
-   regression_model = Ridge(alpha=0.03)
-   regression_model.fit(data['train']['X'], data['train']['y'])
-   preds = regression_model.predict(data['test']['X'])
-
-   # Output the Mean Squared Error to the notebook and to the run
-   print('Mean Squared Error is', mean_squared_error(data['test']['y'], preds))
-   run.log('mse', mean_squared_error(data['test']['y'], preds))
-
-   # Save the model to the outputs directory for capture
-   joblib.dump(value=regression_model, filename='outputs/model.pkl')
-
-   # Take a snapshot of the directory containing this notebook
-   run.take_snapshot('./')
-
-   # Complete the run
-   run.complete()
-  
+    # Get an experiment object from Azure Machine Learning
+    experiment = Experiment(workspace=ws, name="train-within-notebook")
+    
+    # Create a run object in the experiment
+    run =  experiment.start_logging()
+    # Log the algorithm parameter alpha to the run
+    run.log('alpha', 0.03)
+    
+    # Create, fit, and test the scikit-learn Ridge regression model
+    regression_model = Ridge(alpha=0.03)
+    regression_model.fit(data['train']['X'], data['train']['y'])
+    preds = regression_model.predict(data['test']['X'])
+    
+    # Output the Mean Squared Error to the notebook and to the run
+    print('Mean Squared Error is', mean_squared_error(data['test']['y'], preds))
+    run.log('mse', mean_squared_error(data['test']['y'], preds))
+    
+    # Save the model to the outputs directory for capture
+    model_file_name = 'outputs/model.pkl'
+    
+    joblib.dump(value = regression_model, filename = model_file_name)
+    
+    # upload the model file explicitly into artifacts 
+    run.upload_file(name = model_file_name, path_or_stream = model_file_name)
+    
+    # Complete the run
+    run.complete()
    ```
 
-Das Skript endet mit ```run.complete()```, wodurch angegeben wird, dass die Ausführung abgeschlossen ist.  Diese Funktion wird in der Regel in Szenarien mit einem interaktiven Notebook verwendet.
+    Das Skript endet mit ```run.complete()```, wodurch angegeben wird, dass die Ausführung abgeschlossen ist.  Diese Funktion wird in der Regel in Szenarien mit einem interaktiven Notebook verwendet.
 
 ## <a name="option-2-use-scriptrunconfig"></a>Option 2: Verwenden von ScriptRunConfig
 
@@ -196,25 +197,26 @@ Dieses Beispiel erweitert das grundlegende sklearn Ridge-Modell von oben. Es fü
 3. Konfigurieren Sie eine vom Benutzer verwaltete lokale Umgebung.
 
    ```python
-   from azureml.core.runconfig import RunConfiguration
-
+   from azureml.core import Environment
+    
    # Editing a run configuration property on-fly.
-   run_config_user_managed = RunConfiguration()
-
-   run_config_user_managed.environment.python.user_managed_dependencies = True
-
+   user_managed_env = Environment("user-managed-env")
+    
+   user_managed_env.python.user_managed_dependencies = True
+    
    # You can choose a specific Python environment by pointing to a Python path 
-   #run_config.environment.python.interpreter_path = '/home/user/miniconda3/envs/sdk2/bin/python'
+   #user_managed_env.python.interpreter_path = '/home/johndoe/miniconda3/envs/myenv/bin/python'
    ```
 
 4. Übermitteln Sie das ```train.py```-Skript, um in der vom Benutzer verwalteten Umgebung ausgeführt zu werden. Der gesamte Skriptordner wird für das Training übermittelt, einschließlich der ```mylib.py```-Datei.
 
    ```python
    from azureml.core import ScriptRunConfig
-  
-   experiment = Experiment(workspace=ws, name="train-on-local")
-   src = ScriptRunConfig(source_directory = './', script = 'train.py', run_config = run_config_user_managed)
-   run = experiment.submit(src)
+    
+   exp = Experiment(workspace=ws, name="train-on-local")
+   src = ScriptRunConfig(source_directory='./', script='train.py')
+   src.run_config.environment = user_managed_env
+   run = exp.submit(src)
    ```
 
 ## <a name="manage-a-run"></a>Verwalten einer Ausführung
@@ -233,7 +235,7 @@ Wenn Sie die **ScriptRunConfig**-Methode verwenden, um Ausführungen zu übermit
    RunDetails(run).show()
    ```
 
-   ![Screenshot des Jupyter-Notebook-Widgets](./media/how-to-track-experiments/widgets.PNG)
+   ![Screenshot des Jupyter-Notebook-Widgets](./media/how-to-track-experiments/run-details-widget.png)
 
 2. **[Für automatisierte Machine Learning-Ausführungen]** Für den Zugriff auf die Diagramme aus einer vorherigen Ausführung. Ersetzen Sie `<<experiment_name>>` durch den entsprechenden Experimentnamen:
 
@@ -270,7 +272,7 @@ Wenn ein Experiment abgeschlossen ist, können Sie zu der aufgezeichneten Ausfü
 
 Der Link für die Ausführung leitet Sie direkt zur Detailseite für die Ausführung im Azure-Portal. Hier finden Sie alle Eigenschaften, nachverfolgten Metriken, Images und Diagramme, die im Experiment protokolliert werden. In diesem Fall protokollierten wir MSE und die Alphawerte.
 
-  ![Ausführen von Details im Azure-Portal](./media/how-to-track-experiments/run-details-page-web.PNG)
+  ![Ausführen von Details im Azure-Portal](./media/how-to-track-experiments/run-details-page.png)
 
 Sie können auch alle Ausgaben oder Protokolle für die Ausführung anzeigen oder die Momentaufnahme des von Ihnen übermittelten Experiments herunterladen, damit Sie den Experimentordner mit anderen teilen können.
 
@@ -302,19 +304,19 @@ Weitere Informationen:
 
 1. Wählen Sie **Experimente** im am weitesten links liegenden Bereich Ihres Arbeitsbereichs aus.
 
-   ![Screenshot des Menüs „Experiment“](./media/how-to-track-experiments/azure-machine-learning-auto-ml-experiment_menu.PNG)
+   ![Screenshot des Menüs „Experiment“](./media/how-to-track-experiments/azure-machine-learning-auto-ml-experiment-menu.png)
 
 1. Wählen Sie das Experiment aus, an dem Sie interessiert sind.
 
-   ![Experimentliste](./media/how-to-track-experiments/azure-machine-learning-auto-ml-experiment_list.PNG)
+   ![Experimentliste](./media/how-to-track-experiments/azure-machine-learning-auto-ml-experiment-list.png)
 
 1. Wählen Sie in der Tabelle die Ausführungsnummer aus.
 
-   ![Experimentausführung](./media/how-to-track-experiments/azure-machine-learning-auto-ml-experiment_run.PNG)
+   ![Experimentausführung](./media/how-to-track-experiments/azure-machine-learning-auto-ml-experiment-run.png)
 
 1. Wählen Sie in der Tabelle die Iterationsnummer für das Modell aus, das Sie weiter untersuchen möchten.
 
-   ![Experimentmodell](./media/how-to-track-experiments/azure-machine-learning-auto-ml-experiment_model.PNG)
+   ![Experimentmodell](./media/how-to-track-experiments/azure-machine-learning-auto-ml-experiment-model.png)
 
 
 
@@ -334,9 +336,9 @@ Eine Konfusionsmatrix wird verwendet, um die Leistung eines Klassifizierungsmode
 
 Für Klassifizierungsprobleme stellt Azure Machine Learning automatisch eine Konfusionsmatrix für jedes Modell zur Verfügung, das erstellt wird. Für jede Konfusionsmatrix zeigt das automatisierte ML die richtig klassifizierten Bezeichnungen als grün und die falsch klassifizierten Bezeichnungen als rot an. Die Größe des Kreises stellt die Anzahl der Samples in diesem Behälter dar. Darüber hinaus wird die Häufigkeitszählung jeder vorhergesagten Bezeichnung und jeder wahren Bezeichnung in den nebenstehenden Balkendiagrammen angezeigt. 
 
-Beispiel 1: Ein Klassifizierungsmodell mit schlechter Genauigkeit ![Ein Klassifizierungsmodell mit schlechter Genauigkeit](./media/how-to-track-experiments/azure-machine-learning-auto-ml-confusion_matrix1.PNG)
+Beispiel 1: Ein Klassifizierungsmodell mit schlechter Genauigkeit ![Ein Klassifizierungsmodell mit schlechter Genauigkeit](./media/how-to-track-experiments/azure-machine-learning-auto-ml-confusion-matrix1.png)
 
-Beispiel 2: Ein Klassifizierungsmodell mit hoher Genauigkeit (ideal) ![Ein Klassifizierungsmodell mit hoher Genauigkeit](./media/how-to-track-experiments/azure-machine-learning-auto-ml-confusion_matrix2.PNG)
+Beispiel 2: Ein Klassifizierungsmodell mit hoher Genauigkeit (ideal) ![Ein Klassifizierungsmodell mit hoher Genauigkeit](./media/how-to-track-experiments/azure-machine-learning-auto-ml-confusion-matrix2.png)
 
 
 #### <a name="precision-recall-chart"></a>Genauigkeit-Trefferquote-Diagramm
@@ -345,17 +347,17 @@ Mit diesem Diagramm können Sie die Genauigkeit-Trefferquote-Kurven für jedes M
 
 Der Begriff „Genauigkeit“ steht für die Fähigkeit eines Klassifizierers, alle Instanzen richtig zu kennzeichnen. „Trefferquote“ stellt die Möglichkeit für einen Klassifizierer dar, alle Instanzen einer bestimmten Bezeichnung zu finden. Die Genauigkeit-Trefferquote-Kurve zeigt die Beziehung zwischen diesen beiden Konzepten. Im Idealfall würde das Modell 100 % Genauigkeit und 100 % Trefferquote aufweisen.
 
-Beispiel 1: Ein Klassifizierungsmodell mit geringer Genauigkeit und geringer Trefferquote ![Ein Klassifizierungsmodell mit geringer Genauigkeit und geringer Trefferquote](./media/how-to-track-experiments/azure-machine-learning-auto-ml-precision_recall1.PNG)
+Beispiel 1: Ein Klassifizierungsmodell mit geringer Genauigkeit und geringer Trefferquote ![Ein Klassifizierungsmodell mit geringer Genauigkeit und geringer Trefferquote](./media/how-to-track-experiments/azure-machine-learning-auto-ml-precision-recall1.png)
 
-Beispiel 2: Ein Klassifizierungsmodell mit ca. 100 % Genauigkeit und ca. 100 % Trefferquote (ideal) ![Ein Klassifizierungsmodell mit ca. 100 % Genauigkeit und ca. 100 % Trefferquote](./media/how-to-track-experiments/azure-machine-learning-auto-ml-precision_recall2.PNG)
+Beispiel 2: Ein Klassifizierungsmodell mit ca. 100 % Genauigkeit und ca. 100 % Trefferquote (ideal) ![Ein Klassifizierungsmodell mit ca. 100 % Genauigkeit und ca. 100 % Trefferquote](./media/how-to-track-experiments/azure-machine-learning-auto-ml-precision-recall2.png)
 
 #### <a name="roc"></a>ROC
 
 Receiver Operating Characteristic (oder ROC) ist ein Diagramm der richtig klassifizierten Bezeichnungen im Vergleich zu den falsch klassifizierten Bezeichnungen für ein bestimmtes Modell. Die ROC-Kurve kann weniger aussagekräftig sein, wenn Modelle mit Datasets mit einem großen Bias trainiert werden, da sie die falsch-positiven Bezeichnungen nicht anzeigt.
 
-Beispiel 1: Ein Klassifizierungsmodell mit geringen wahren Bezeichnungen und hohen falschen Bezeichnungen ![Ein Klassifizierungsmodell mit geringen wahren Bezeichnungen und hohen falschen Bezeichnungen](./media/how-to-track-experiments/azure-machine-learning-auto-ml-roc1.PNG)
+Beispiel 1: Ein Klassifizierungsmodell mit geringen wahren Bezeichnungen und hohen falschen Bezeichnungen ![Ein Klassifizierungsmodell mit geringen wahren Bezeichnungen und hohen falschen Bezeichnungen](./media/how-to-track-experiments/azure-machine-learning-auto-ml-roc-1.png)
 
-Beispiel 2: Ein Klassifizierungsmodell mit hohen wahren Bezeichnungen und geringen falschen Bezeichnungen ![Ein Klassifizierungsmodell mit hohen wahren Bezeichnungen und geringen falschen Bezeichnungen](./media/how-to-track-experiments/azure-machine-learning-auto-ml-roc2.PNG)
+Beispiel 2: Ein Klassifizierungsmodell mit hohen wahren Bezeichnungen und geringen falschen Bezeichnungen ![Ein Klassifizierungsmodell mit hohen wahren Bezeichnungen und geringen falschen Bezeichnungen](./media/how-to-track-experiments/azure-machine-learning-auto-ml-roc-2.png)
 
 #### <a name="lift-curve"></a>Prognosegütekurve
 
@@ -363,9 +365,9 @@ Sie können die Prognosegüte des automatisch mit Azure Machine Learning erstell
 
 Prognosegütediagramme werden verwendet, um die Leistung eines Klassifizierungsmodells auszuwerten. Sie zeigen, wie viel bessere Ergebnisse bei der Verwendung eines Modells im Vergleich dazu zu erwarten sind, wenn kein Modell verwendet wird. 
 
-Beispiel 1: Das Modell schneidet schlechter ab als ein Zufallsauswahlmodell ![Ein Klassifizierungsmodell, das schlechter abschneidet als ein Zufallsauswahlmodell](./media/how-to-track-experiments/azure-machine-learning-auto-ml-lift_curve1.PNG)
+Beispiel 1: Das Modell schneidet schlechter ab als ein Zufallsauswahlmodell ![Ein Klassifizierungsmodell, das schlechter abschneidet als ein Zufallsauswahlmodell](./media/how-to-track-experiments/azure-machine-learning-auto-ml-lift-curve1.png)
 
-Beispiel 2: Das Modell schneidet besser ab als ein Zufallsauswahlmodell ![Ein Klassifizierungsmodell, das besser abschneidet](./media/how-to-track-experiments/azure-machine-learning-auto-ml-lift_curve2.PNG)
+Beispiel 2: Das Modell schneidet besser ab als ein Zufallsauswahlmodell ![Ein Klassifizierungsmodell, das besser abschneidet](./media/how-to-track-experiments/azure-machine-learning-auto-ml-lift-curve2.png)
 
 #### <a name="gains-curve"></a>Gewinnkurve
 
@@ -373,9 +375,9 @@ Ein Gewinndiagramm wertet die Leistung eines Klassifizierungsmodells anhand jede
 
 Verwenden Sie das kumulierte Gewinndiagramm, um die Auswahl der Klassifizierungsgrenze anhand eines Prozentsatzes zu erleichtern, der einem gewünschten Gewinn aus dem Modell entspricht. Diese Informationen bieten eine weitere Möglichkeit, die Ergebnisse im zugehörigen Prognosegütediagramm zu untersuchen.
 
-Beispiel 1: Ein Klassifizierungsmodell mit einem minimalen Gewinn ![Ein Klassifizierungsmodell mit einem minimalen Gewinn](./media/how-to-track-experiments/azure-machine-learning-auto-ml-gains_curve1.PNG)
+Beispiel 1: Ein Klassifizierungsmodell mit einem minimalen Gewinn ![Ein Klassifizierungsmodell mit einem minimalen Gewinn](./media/how-to-track-experiments/azure-machine-learning-auto-ml-gains-curve1.png)
 
-Beispiel 2: Ein Klassifizierungsmodell mit einem erheblichen Gewinn ![Ein Klassifizierungsmodell mit einem erheblichen Gewinn](./media/how-to-track-experiments/azure-machine-learning-auto-ml-gains_curve2.PNG)
+Beispiel 2: Ein Klassifizierungsmodell mit einem erheblichen Gewinn ![Ein Klassifizierungsmodell mit einem erheblichen Gewinn](./media/how-to-track-experiments/azure-machine-learning-auto-ml-gains-curve2.png)
 
 #### <a name="calibration-plot"></a>Kalibrierungsdiagramm
 
@@ -383,9 +385,9 @@ Für alle Klassifizierungsprobleme können Sie die Kalibrierungskurve auf Mikrod
 
 Ein Kalibrierungsdiagramm wird verwendet, um die Sicherheit eines Vorhersagemodells anzuzeigen. Dies geschieht, indem es die Beziehung zwischen der vorhergesagten Wahrscheinlichkeit und der tatsächlichen Wahrscheinlichkeit zeigt, wobei die „Wahrscheinlichkeit“ die Wahrscheinlichkeit darstellt, dass eine bestimmte Instanz zu einer bestimmten Bezeichnung gehört. Ein gut kalibriertes Modell richtet sich nach der y=x-Linie aus, wo es in Bezug auf seine Vorhersagen recht zuverlässig ist. Ein übermäßig zuverlässiges Modell richtet sich nach der y=0-Linie aus, wobei die vorhergesagte Wahrscheinlichkeit vorhanden ist, aber keine tatsächliche Wahrscheinlichkeit vorliegt.
 
-Beispiel 1: Ein gut kalibriertes Modell ![ Ein gut kalibriertes Modell](./media/how-to-track-experiments/azure-machine-learning-auto-ml-calib_curve1.PNG)
+Beispiel 1: Ein gut kalibriertes Modell ![ Ein gut kalibriertes Modell](./media/how-to-track-experiments/azure-machine-learning-auto-ml-calib-curve1.png)
 
-Beispiel 2: Ein übermäßig zuverlässiges Modell ![Ein übermäßig zuverlässiges Modell](./media/how-to-track-experiments/azure-machine-learning-auto-ml-calib_curve2.PNG)
+Beispiel 2: Ein übermäßig zuverlässiges Modell ![Ein übermäßig zuverlässiges Modell](./media/how-to-track-experiments/azure-machine-learning-auto-ml-calib-curve2.png)
 
 ### <a name="regression"></a>Regression
 Für jedes Regressionsmodell, das Sie mit den automatisierten Machine Learning-Funktionen von Azure Machine Learning erstellen, können Sie die folgenden Diagramme anzeigen: 
@@ -400,9 +402,9 @@ Vorhergesagt im Vergleich zu TRUE zeigt die Beziehung zwischen einem vorhergesag
 
 Nach jeder Ausführung wird für jedes Regressionsmodell ein Diagramm mit den vorhergesagten im Vergleich zu den wahren Werten angezeigt. Zum Schutz der Privatsphäre werden die Werte in Behältern zusammengeführt, und die Größe jedes Behälters wird als Balkendiagramm im unteren Teil des Diagrammbereichs angezeigt. Sie können das Vorhersagemodell (mit dem helleren Farbbereich, der die Fehlergrenzen anzeigt) mit dem Idealwert des Modells vergleichen.
 
-Beispiel 1: Ein Regressionsmodell mit niedriger Genauigkeit bei Vorhersagen ![Ein Regressionsmodell mit niedriger Genauigkeit bei Vorhersagen](./media/how-to-track-experiments/azure-machine-learning-auto-ml-regression1.PNG)
+Beispiel 1: Ein Regressionsmodell mit niedriger Genauigkeit bei Vorhersagen ![Ein Regressionsmodell mit niedriger Genauigkeit bei Vorhersagen](./media/how-to-track-experiments/azure-machine-learning-auto-ml-regression1.png)
 
-Beispiel 2: Ein Regressionsmodell mit hoher Genauigkeit bei seinen Vorhersagen ![Ein Regressionsmodell mit hoher Genauigkeit bei seinen Vorhersagen](./media/how-to-track-experiments/azure-machine-learning-auto-ml-regression2.PNG)
+Beispiel 2: Ein Regressionsmodell mit hoher Genauigkeit bei seinen Vorhersagen ![Ein Regressionsmodell mit hoher Genauigkeit bei seinen Vorhersagen](./media/how-to-track-experiments/azure-machine-learning-auto-ml-regression2.png)
 
 <a name="histo"></a>
 
@@ -410,15 +412,15 @@ Beispiel 2: Ein Regressionsmodell mit hoher Genauigkeit bei seinen Vorhersagen 
 
 Ein Residual stellt ein beobachtetes y dar: das vorhergesagte y. Um eine Fehlerspanne mit geringem Bias darzustellen, sollte das Histogramm der Residualwerte als Glockenkurve geformt sein, die um 0 zentriert ist. 
 
-Beispiel 1: Ein Regressionsmodell mit einem Bias in seinen Fehlern ![SA-Regressionsmodell mit einem Bias in seinen Fehlern](./media/how-to-track-experiments/azure-machine-learning-auto-ml-regression3.PNG)
+Beispiel 1: Ein Regressionsmodell mit einem Bias in seinen Fehlern ![SA-Regressionsmodell mit einem Bias in seinen Fehlern](./media/how-to-track-experiments/azure-machine-learning-auto-ml-regression3.png)
 
-Beispiel 2: Ein Regressionsmodell mit einer gleichmäßigeren Verteilung von Fehlern ![Ein Regressionsmodell mit einer gleichmäßigeren Verteilung von Fehlern](./media/how-to-track-experiments/azure-machine-learning-auto-ml-regression4.PNG)
+Beispiel 2: Ein Regressionsmodell mit einer gleichmäßigeren Verteilung von Fehlern ![Ein Regressionsmodell mit einer gleichmäßigeren Verteilung von Fehlern](./media/how-to-track-experiments/azure-machine-learning-auto-ml-regression4.png)
 
 ### <a name="model-explain-ability-and-feature-importance"></a>Modellerklärbarkeit und Featuregewichtung
 
 Die Featuregewichtung stellt eine Bewertung dar, die angibt, wie wertvoll jedes Feature bei der Konstruktion eines Modells war. Sie können die Featuregewichtung für das Modell insgesamt sowie pro Klasse für ein Vorhersagemodell überprüfen. Sie können pro Feature erkennen, wie sich die Gewichtung im Vergleich zu jeder Klasse und insgesamt darstellt.
 
-![Featureerklärbarkeit](./media/how-to-track-experiments/azure-machine-learning-auto-ml-feature_explain1.PNG)
+![Featureerklärbarkeit](./media/how-to-track-experiments/azure-machine-learning-auto-ml-feature-explain1.png)
 
 ## <a name="example-notebooks"></a>Beispielnotebooks
 Die folgenden Notebooks verdeutlichen die Konzepte in diesem Artikel:

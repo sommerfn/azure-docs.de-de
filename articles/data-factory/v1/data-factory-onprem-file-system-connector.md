@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 04/13/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 40086924731876dc44d9651ca46814149dba52f0
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 4d3816eebe85f01301c770a50a618142bcbfbb21
+ms.sourcegitcommit: 64798b4f722623ea2bb53b374fb95e8d2b679318
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66122453"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67839966"
 ---
 # <a name="copy-data-to-and-from-an-on-premises-file-system-by-using-azure-data-factory"></a>Kopieren von Daten in ein und aus einem lokalen Dateisystem mit Azure Data Factory
 > [!div class="op_single_selector" title1="Wählen Sie die von Ihren verwendete Version des Data Factory-Diensts aus:"]
@@ -55,7 +55,7 @@ Sie können eine Pipeline mit einer Kopieraktivität erstellen, die Daten mithil
 
 Am einfachsten erstellen Sie eine Pipeline mit dem **Kopier-Assistenten**. Eine Schritt-für-Schritt-Anleitung finden Sie im [Tutorial: Erstellen einer Pipeline mit dem Kopier-Assistenten](data-factory-copy-data-wizard-tutorial.md) finden Sie eine kurze exemplarische Vorgehensweise zum Erstellen einer Pipeline mithilfe des Assistenten zum Kopieren von Daten.
 
-Sie können auch die folgenden Tools zum Erstellen einer Pipeline verwenden: **Azure-Portal**, **Visual Studio**, **Azure PowerShell**, **Azure Resource Manager-Vorlagen**, **.NET-API** und **REST-API**. Im [Tutorial zur Kopieraktivität](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) finden Sie detaillierte Anweisungen, wie Sie eine Pipeline mit einer Kopieraktivität erstellen können.
+Sie können auch die folgenden Tools zum Erstellen einer Pipeline verwenden: **Visual Studio**, **Azure PowerShell**, **Azure Resource Manager-Vorlage**, **.NET-API** und **REST-API**. Im [Tutorial zur Kopieraktivität](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) finden Sie detaillierte Anweisungen, wie Sie eine Pipeline mit einer Kopieraktivität erstellen können.
 
 Unabhängig davon, ob Sie Tools oder APIs verwenden, führen Sie die folgenden Schritte aus, um eine Pipeline zu erstellen, die Daten aus einem Quelldatenspeicher in einen Senkendatenspeicher verschiebt:
 
@@ -206,7 +206,7 @@ Dieser Abschnitt beschreibt das resultierende Verhalten des Kopiervorgangs für 
 Einzelheiten finden Sie im Artikel [Datei- und Komprimierungsformate in Azure Data Factory](data-factory-supported-file-and-compression-formats.md).
 
 ## <a name="json-examples-for-copying-data-to-and-from-file-system"></a>JSON-Beispiele zum Kopieren von Daten in das bzw. aus dem Dateisystem
-Die folgenden Beispiele zeigen JSON-Beispieldefinitionen, die Sie zum Erstellen einer Pipeline mit dem [Azure-Portal](data-factory-copy-activity-tutorial-using-azure-portal.md), mit [Visual Studio](data-factory-copy-activity-tutorial-using-visual-studio.md) oder [Azure PowerShell](data-factory-copy-activity-tutorial-using-powershell.md) verwenden können. Sie zeigen, wie Sie Daten in und aus einem lokalen Dateisystem und Azure Blob Storage kopieren. Allerdings können Sie mit der Kopier-Aktivität in Azure Data Factory.Daten *direkt* aus den Quellen in alle unter [Unterstützte Datenquellen und Senken](data-factory-data-movement-activities.md#supported-data-stores-and-formats) aufgeführten Senken kopieren.
+Die folgenden Beispiele zeigen JSON-Beispieldefinitionen, die Sie zum Erstellen einer Pipeline mit [Visual Studio](data-factory-copy-activity-tutorial-using-visual-studio.md) oder [Azure PowerShell](data-factory-copy-activity-tutorial-using-powershell.md) verwenden können. Sie zeigen, wie Sie Daten in und aus einem lokalen Dateisystem und Azure Blob Storage kopieren. Allerdings können Sie mit der Kopier-Aktivität in Azure Data Factory.Daten *direkt* aus den Quellen in alle unter [Unterstützte Datenquellen und Senken](data-factory-data-movement-activities.md#supported-data-stores-and-formats) aufgeführten Senken kopieren.
 
 ### <a name="example-copy-data-from-an-on-premises-file-system-to-azure-blob-storage"></a>Beispiel: Kopieren von Daten aus einem lokalen Dateisystem in Azure Blob Storage
 In diesem Beispiel wird gezeigt, wie Sie Daten aus einem lokalen Dateisystem in Azure Blob Storage kopieren. Das Beispiel enthält die folgenden Data Factory-Entitäten:

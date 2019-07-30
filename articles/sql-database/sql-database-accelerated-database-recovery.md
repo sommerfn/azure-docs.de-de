@@ -11,16 +11,16 @@ ms.author: mathoma
 ms.reviewer: carlrab
 manager: craigg
 ms.date: 01/25/2019
-ms.openlocfilehash: 77bc33747964a5f4ee1a67aba777dc3ed76b9a51
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 1d556c82f47868f4ee06694e23092f10029d619d
+ms.sourcegitcommit: 64798b4f722623ea2bb53b374fb95e8d2b679318
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65073465"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67839848"
 ---
 # <a name="accelerated-database-recovery"></a>Schnellere Datenbankwiederherstellung
 
-Die **schnellere Datenbankwiederherstellung (Accelerated Database Recovery, ADR)** ist eine neue Funktion der SQL-Datenbank-Engine. Mit dieser Funktion wird die Datenbankverfügbarkeit aufgrund eines neuen Entwurfs des Wiederherstellungsprozesses der SQL-Datenbank-Engine erheblich verbessert, insbesondere bei Transaktionen mit langer Ausführungsdauer. ADR steht derzeit für Einzel- und Pooldatenbanken in Azure SQL-Datenbank sowie Datenbanken in Azure SQL Data Warehouse zur Verfügung. Die wichtigsten Vorteile von ADR sind:
+Die **schnellere Datenbankwiederherstellung (Accelerated Database Recovery, ADR)** ist eine neue Funktion der SQL-Datenbank-Engine. Mit dieser Funktion wird die Datenbankverfügbarkeit aufgrund eines neuen Entwurfs des Wiederherstellungsprozesses der SQL-Datenbank-Engine erheblich verbessert, insbesondere bei Transaktionen mit langer Ausführungsdauer. ADR steht derzeit für Singletons und Pooldatenbanken in Azure SQL-Datenbank sowie Datenbanken in Azure SQL Data Warehouse (derzeit in der öffentlichen Vorschau) zur Verfügung. Die wichtigsten Vorteile von ADR sind:
 
 - **Schnelle und einheitliche Datenbankwiederherstellung**
 

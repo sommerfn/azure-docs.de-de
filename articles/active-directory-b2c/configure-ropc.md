@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 11/30/2018
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 2e590e4765f4795123e219f8da4b3e62bc79ca30
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: e8de1d27d92ac57f478b7615144dba166f420d27
+ms.sourcegitcommit: 47ce9ac1eb1561810b8e4242c45127f7b4a4aa1a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66511342"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67807224"
 ---
 # <a name="configure-the-resource-owner-password-credentials-flow-in-azure-ad-b2c"></a>Konfigurieren des Flows für Kennwortanmeldeinformationen von Ressourcenbesitzern in Azure AD B2C
 
@@ -135,6 +135,8 @@ Eine erfolgreiche Antwort ähnelt dem folgenden Beispiel:
     "refresh_token_expires_in": 1209600
 }
 ```
+> [!NOTE]
+> Beim Erstellen von Benutzern über die Graph-API muss die Anwendung über die Berechtigungen „openid“, „offline_access“ und „profile“ von Microsoft Graph verfügen.
 
 ## <a name="implement-with-your-preferred-native-sdk-or-use-app-auth"></a>Implementieren mit dem bevorzugten nativen SDK oder Verwenden von AppAuth
 

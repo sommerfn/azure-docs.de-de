@@ -10,12 +10,12 @@ ms.service: application-insights
 ms.topic: landing-page
 ms.date: 01/15/2019
 ms.author: mbullwin
-ms.openlocfilehash: 451a2d6e658c08823d1629270bb7503ebd236c02
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 5571f84de5c6dd4f5dffea5869c744b7e5c02e24
+ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66255697"
+ms.lasthandoff: 07/15/2019
+ms.locfileid: "67875288"
 ---
 <div id="main" class="v2">
     <div class="container">
@@ -66,6 +66,7 @@ ms.locfileid: "66255697"
                                                     <div class="cardText">
                                                         <h3>Neuerungen</h3>
                                                         <p>
+                                                            <a href="./app/azure-vm-vmss-apps.md">Überwachung für Anwendungen auf virtuellen Azure-Computern und Azure-VM-Skalierungsgruppen ohne Code</a><br>
                                                             <a href="./app/kubernetes.md">Überwachen von Kubernetes-Anwendungen</a><br>
                                                             <a href="./app/status-monitor-v2-overview.md">Statusmonitor v2 für IIS-Apps</a><br>
                                                         </p>
@@ -146,6 +147,7 @@ ms.locfileid: "66255697"
                                                             <a href="./app/asp-net.md">Umfassende Überwachungskonfiguration</a><br>
                                                             <a href="./app/monitor-performance-live-website-now.md">Statusmonitor</a><br>
                                                             <a href="./app/azure-web-apps.md">App Service-Überwachung</a><br>
+                                                            <a href="./app/azure-vm-vmss-apps.md">Überwachung von Anwendungen auf VMs und VM-Skalierungsgruppen</a><br>
                                                             <a href="./app/api-custom-events-metrics.md">Benutzerdefinierte Ereignisse und Metriken</a><br>
                                                             <a href="https://github.com/Microsoft/ApplicationInsights-dotnet">Open Source SDK für .NET – GitHub-Repository</a>
                                                         </p>

@@ -11,12 +11,12 @@ ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 04/04/2019
 ms.author: glenga
-ms.openlocfilehash: 581b7cc09089b5f48938bc9677eca6b9dc3731d3
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: 15fd8593f950e0f553d1b7ca34ee785692043cad
+ms.sourcegitcommit: 770b060438122f090ab90d81e3ff2f023455213b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67442294"
+ms.lasthandoff: 07/17/2019
+ms.locfileid: "68304357"
 ---
 # <a name="monitor-azure-functions"></a>Überwachen von Azure Functions
 
@@ -570,7 +570,7 @@ Legen Sie nicht `telemetryClient.Context.Operation.Id` fest. Diese globale Einst
 
 ## <a name="log-custom-telemetry-in-javascript-functions"></a>Protokollieren von benutzerdefinierter Telemetrie in JavaScript-Funktionen
 
-Das [Application Insights Node.js SDK](https://www.npmjs.com/package/applicationinsights) ist derzeit als Betaversion verfügbar. Hier ist Beispielcode angegeben, mit dem benutzerdefinierte Telemetriedaten an Application Insights gesendet werden:
+Im Folgenden finden Sie einen Beispielcodeausschnitt, der benutzerdefinierte Telemetriedaten mit dem [Application Insights Node.js SDK](https://github.com/microsoft/applicationinsights-node.js) sendet:
 
 ```javascript
 const appInsights = require("applicationinsights");

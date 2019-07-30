@@ -8,12 +8,12 @@ ms.subservice: gateway
 ms.topic: article
 ms.date: 06/03/2019
 ms.author: alkohli
-ms.openlocfilehash: 44343f6bc6f48a6caa056f3336af55613a1e74d0
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 38662fc8dda935d5f000aee6609fd9b2e42de17f
+ms.sourcegitcommit: a6873b710ca07eb956d45596d4ec2c1d5dc57353
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66476804"
+ms.lasthandoff: 07/16/2019
+ms.locfileid: "68253178"
 ---
 # <a name="manage-access-power-and-connectivity-mode-for-your-azure-data-box-gateway"></a>Verwalten des Zugriffs, der Energieeinstellungen und des Konnektivitätsmodus für Azure Data Box Gateway
 
@@ -79,7 +79,7 @@ Sie müssen Benutzern keine Zugriffsberechtigungen auf der Abonnementebene gewä
 
 Vergewissern Sie sich vor dem Erstellen einer Ressource, dass der Ressourcenanbieter im Abonnement registriert ist. Ist der Ressourcenanbieter nicht registriert, müssen Sie sicherstellen, dass der Benutzer, der die neue Ressource erstellt, über ausreichende Berechtigungen verfügt, um den erforderlichen Ressourcenanbieter auf der Abonnementebene registrieren zu können. Andernfalls tritt der folgende Fehler auf:
 
-*Das Abonnement "<Subscription name>" ist nicht berechtigt, die folgenden Ressourcenanbieter zu registrieren: Microsoft.DataBoxEdge.*
+*Das Abonnement „\<Abonnementname>“ ist nicht berechtigt, die folgenden Ressourcenanbieter zu registrieren: Microsoft.DataBoxEdge.*
 
 
 Führen Sie den folgenden Befehl aus, um eine Liste mit den registrierten Ressourcenanbietern im aktuellen Abonnement abzurufen:

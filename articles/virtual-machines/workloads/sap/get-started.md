@@ -14,15 +14,15 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
-ms.date: 06/10/2019
+ms.date: 07/15/2019
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 8b4ed11b5a0f463afee0dae149820bb546db0c53
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: df12d4f7b2a06b89df1bfd7d7d904943e341ccd2
+ms.sourcegitcommit: b2db98f55785ff920140f117bfc01f1177c7f7e2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67058715"
+ms.lasthandoff: 07/16/2019
+ms.locfileid: "68234251"
 ---
 # <a name="use-azure-to-host-and-run-sap-workload-scenarios"></a>Verwenden von Azure zum Hosten und Ausführen von SAP-Workloadszenarien
 
@@ -36,10 +36,13 @@ Durch das Hosten von SAP-Workloadszenarien in Azure können auch Anforderungen a
 
 ## <a name="latest-changes"></a>Aktuelle Änderungen
 
+- Veröffentlichung von [Azure-Näherungsplatzierungsgruppen für optimale Netzwerklatenz bei SAP-Anwendungen](sap-proximity-placement-scenarios.md)
+- Veröffentlichung des neuen Handbuchs für [IBM DB2 HADR in Red Hat Enterprise Server](high-availability-guide-rhel-ibm-db2-luw.md)
+- Veröffentlichung von [Hochverfügbarkeit von Azure Virtual Machines für SAP NetWeaver unter Red Hat Enterprise Linux mit Azure NetApp Files für SAP-Anwendungen](high-availability-guide-rhel-netapp-files.md)
 - Einführung von ExpressRoute Fast Path und Global Reach für HANA (große Instanzen) in [SAP HANA-Netzwerkarchitektur (große Instanzen)](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-network-architecture) und verwandten Dokumenten
 - Veröffentlichung von [Steuerung von HANA in Azure (große Instanzen) über das Azure-Portal](hana-li-portal.md)
 - Veröffentlichung von [Hochverfügbarkeit für SAP NetWeaver auf Azure-VMs unter SUSE Linux Enterprise Server mit Azure NetApp Files für SAP-Anwendungen](high-availability-guide-suse-netapp-files.md)
-- Klarstellung zu den Einstellungen für den **Linux OS-Parameter net.ipv4.tcp_timestamps** in Kombination mit einer Azure Load Balancer-Instanz
+
 
 
 

@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 04/16/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: e1163c88a100ebb7500607475ab5740557904137
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 2ed1426bea920d1ef30fb28ff4a975d1268c12ff
+ms.sourcegitcommit: fa45c2bcd1b32bc8dd54a5dc8bc206d2fe23d5fb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66511332"
+ms.lasthandoff: 07/12/2019
+ms.locfileid: "67846930"
 ---
 # <a name="configure-tokens-in-azure-active-directory-b2c"></a>Konfigurieren von Token in Azure Active Directory B2C
 
@@ -33,22 +33,22 @@ Sie können die Lebensdauer des Tokens für den beliebigen Benutzerflow konfigur
 2. Stellen Sie sicher, dass Sie das Verzeichnis verwenden, das Ihren Azure AD B2C-Mandanten enthält. Wählen Sie im Hauptmenü den **Verzeichnis- und Abonnementfilter** aus, und wählen Sie das Verzeichnis aus, das Ihren Azure AD B2C-Mandanten enthält.
 3. Wählen Sie links oben im Azure-Portal die Option **Alle Dienste** aus, suchen Sie nach **Azure AD B2C**, und wählen Sie dann diese Option aus.
 4. Wählen Sie **Benutzerflows (Richtlinien)** aus.
-5. Öffnen Sie den Benutzerflow, den Sie zuvor erstellt haben. 
+5. Öffnen Sie den Benutzerflow, den Sie zuvor erstellt haben.
 6. Wählen Sie **Eigenschaften** aus.
 7. Passen Sie unter **Tokenlebensdauer** die folgenden Eigenschaften an die Anforderungen Ihrer Anwendung an:
 
-    ![Konfigurieren der Tokenlebensdauer](./media/configure-tokens/token-lifetime.png)
+    ![Eigenschafteneinstellungen für die Tokengültigkeitsdauer im Azure-Portal](./media/configure-tokens/token-lifetime.png)
 
 8. Klicken Sie auf **Speichern**.
 
 ## <a name="configure-token-compatibility"></a>Konfigurieren der Tokenkompatibilität
 
 1. Wählen Sie **Benutzerflows (Richtlinien)** aus.
-2. Öffnen Sie den Benutzerflow, den Sie zuvor erstellt haben. 
+2. Öffnen Sie den Benutzerflow, den Sie zuvor erstellt haben.
 3. Wählen Sie **Eigenschaften** aus.
 4. Passen Sie unter **Tokenkompatibilitätseinstellungen** die folgenden Eigenschaften an die Anforderungen Ihrer Anwendung an:
 
-    ![Konfigurieren der Tokenkompatibilität](./media/configure-tokens/token-compatibility.png)
+    ![Eigenschafteneinstellungen für die Tokenkompatibilität im Azure-Portal](./media/configure-tokens/token-compatibility.png)
 
 5. Klicken Sie auf **Speichern**.
 

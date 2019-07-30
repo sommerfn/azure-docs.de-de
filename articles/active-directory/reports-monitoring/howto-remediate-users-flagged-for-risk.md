@@ -1,5 +1,5 @@
 ---
-title: Sicherheitsbericht „Benutzer mit Risikomarkierung“ im Azure Active Directory-Portal | Microsoft-Dokumentation
+title: Benutzer mit Risikomarkierung im Azure Active Directory-Portal | Microsoft-Dokumentation
 description: Hier erfahren Sie mehr über den Sicherheitsbericht „Benutzer mit Risikomarkierung“ im Azure Active Directory-Portal.
 services: active-directory
 author: MarkusVi
@@ -15,12 +15,12 @@ ms.date: 11/13/2018
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7209f468f493e226fae22ccd260e8ceb2e570494
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 30d02c5484ea4cce2953eac6b1b7b26a17c142bc
+ms.sourcegitcommit: 9a699d7408023d3736961745c753ca3cec708f23
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60286674"
+ms.lasthandoff: 07/16/2019
+ms.locfileid: "68276546"
 ---
 # <a name="remediate-users-flagged-for-risk-in-the-azure-active-directory-portal"></a>Behandeln von „Benutzer mit Risikomarkierung“ im Azure Active Directory-Portal
 

@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 07/07/2019
 ms.author: dacurwin
-ms.openlocfilehash: a8b0e8b6c7c9e42764b1f3b2af9ed408f4501cc1
-ms.sourcegitcommit: dda9fc615db84e6849963b20e1dce74c9fe51821
+ms.openlocfilehash: aecad4273493cd573935c78cae51bd0f59461e2e
+ms.sourcegitcommit: 47ce9ac1eb1561810b8e4242c45127f7b4a4aa1a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/08/2019
-ms.locfileid: "67622391"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67806971"
 ---
 # <a name="azure-backup---frequently-asked-questions"></a>Azure Backup – häufig gestellte Fragen
 In diesem Artikel werden allgemeine Fragen um Azure Backup-Dienst beantwortet.
@@ -154,7 +154,7 @@ Pro geschützter Instanz können bis zu 9.999 Wiederherstellungspunkte erstellt 
 - Erfahren Sie mehr über [Sicherung und Wiederherstellung](./backup-overview.md#backup-and-retention).
 
 
-### <a name="how-many-times-can-i-recovery-data-thats-backed-up-to-azure"></a>Wie oft kann ich in Azure gesicherte Daten wiederherstellen?
+### <a name="how-many-times-can-i-recover-data-thats-backed-up-to-azure"></a>Wie oft kann ich in Azure gesicherte Daten wiederherstellen?
 Es gibt keine Beschränkung für die Anzahl der Wiederherstellungen aus Azure Backup.
 
 ### <a name="when-restoring-data-do-i-pay-for-the-egress-traffic-from-azure"></a>Fallen für mich beim Wiederherstellen von Daten für den ausgehenden Datenverkehr von Azure Kosten an?

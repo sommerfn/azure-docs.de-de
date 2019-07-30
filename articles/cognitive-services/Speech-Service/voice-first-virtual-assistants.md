@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 07/05/2019
 ms.author: travisw
-ms.openlocfilehash: 4055b474938e38f653021b46f18200f8e39dd69d
-ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
+ms.openlocfilehash: c9b85895e701ff74e025d6f7895bc32513bc29a1
+ms.sourcegitcommit: 47ce9ac1eb1561810b8e4242c45127f7b4a4aa1a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67604748"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67806901"
 ---
 # <a name="about-custom-voice-first-virtual-assistants-preview"></a>Informationen zu virtuellen Voice-First-Assistenten (Vorschauversion)
 
@@ -43,6 +43,7 @@ Beispielcode für die Erstellung eines virtuellen Voice-First-Assistenten ist au
 * [Beispiele für virtuelle Voice-First-Assistenten (SDK)](https://aka.ms/csspeech/samples)
 * [Schnellstart: Virtuelle Voice-First-Assistenten (C#)](quickstart-virtual-assistant-csharp-uwp.md)
 * [Schnellstart: Virtuelle Voice-First-Assistenten (Java)](quickstart-virtual-assistant-java-jre.md)
+* [Direct Line Speech-Client (C#, WPF)](https://github.com/Azure-Samples/Cognitive-Services-Direct-Line-Speech-Client)
 
 ## <a name="customization"></a>Anpassung
 

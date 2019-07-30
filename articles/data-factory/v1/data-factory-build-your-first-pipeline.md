@@ -14,17 +14,16 @@ ms.topic: conceptual
 ms.date: 01/22/2018
 ms.author: shlo
 robots: noindex
-ms.openlocfilehash: d9d9e68b7e74ba7725e97162d01e1a35314fdd0f
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 552c89cd3294567e8203b69f81c1ac24716a8b1b
+ms.sourcegitcommit: 64798b4f722623ea2bb53b374fb95e8d2b679318
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60564584"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67839432"
 ---
 # <a name="tutorial-build-your-first-pipeline-to-transform-data-using-hadoop-cluster"></a>Tutorial: Erstellen Ihrer ersten Pipeline zum Transformieren von Daten mithilfe eines Hadoop-Clusters
 > [!div class="op_single_selector"]
 > * [Übersicht und Voraussetzungen](data-factory-build-your-first-pipeline.md)
-> * [Azure-Portal](data-factory-build-your-first-pipeline-using-editor.md)
 > * [Visual Studio](data-factory-build-your-first-pipeline-using-vs.md)
 > * [PowerShell](data-factory-build-your-first-pipeline-using-powershell.md)
 > * [Resource Manager: Vorlage](data-factory-build-your-first-pipeline-using-arm.md)
@@ -36,7 +35,7 @@ ms.locfileid: "60564584"
 
 In diesem Tutorial erstellen Sie Ihre erste Azure Data Factory mit einer Datenpipeline. Die Pipeline transformiert Eingabedaten durch Ausführen des Hive-Skripts in einem Azure HDInsight (Hadoop)-Cluster in Ausgabedaten.  
 
-Dieser Artikel enthält eine Übersicht und Voraussetzungen für das Tutorial. Wählen Sie nach dem Erfüllen der Voraussetzungen eines der folgenden Tools/SDKs aus, um das Tutorial durchzuarbeiten: Azure-Portal, Visual Studio, PowerShell, Resource Manager-Vorlage, REST-API. Wählen Sie eine der Optionen in der Dropdownliste am Anfang oder die Links am Ende dieses Artikels, um das Tutorial mithilfe einer der folgenden Optionen auszuführen.    
+Dieser Artikel enthält eine Übersicht und Voraussetzungen für das Tutorial. Wählen Sie nach dem Erfüllen der Voraussetzungen eines der folgenden Tools/SDKs aus, um das Tutorial durchzuarbeiten: Visual Studio, PowerShell, Resource Manager-Vorlage, REST-API. Wählen Sie eine der Optionen in der Dropdownliste am Anfang oder die Links am Ende dieses Artikels, um das Tutorial mithilfe einer der folgenden Optionen auszuführen.    
 
 ## <a name="tutorial-overview"></a>Übersicht über das Tutorial
 In diesem Tutorial führen Sie die folgenden Schritte aus:
@@ -93,13 +92,12 @@ Bevor Sie mit diesem Tutorial beginnen, müssen folgende Voraussetzungen erfüll
 
 Nach dem Erfüllen der Voraussetzungen wählen Sie eines der folgenden Tools/SDKs aus, um das Tutorial auszuführen: 
 
-- [Azure-Portal](data-factory-build-your-first-pipeline-using-editor.md)
 - [Visual Studio](data-factory-build-your-first-pipeline-using-vs.md)
 - [PowerShell](data-factory-build-your-first-pipeline-using-powershell.md)
 - [Resource Manager: Vorlage](data-factory-build-your-first-pipeline-using-arm.md)
 - [REST-API](data-factory-build-your-first-pipeline-using-rest-api.md)
 
-Azure-Portal und Visual Studio bieten eine GUI-Methode zum Erstellen von Data Factorys. Die Optionen PowerShell, Resource Manager-Vorlage und REST-API bieten jedoch Skripting-/Programmiermethoden zum Erstellen von Data Factorys.
+Visual Studio bietet eine grafische Benutzeroberfläche zum Erstellen von Data Factorys. Die Optionen PowerShell, Resource Manager-Vorlage und REST-API bieten jedoch Skripting-/Programmiermethoden zum Erstellen von Data Factorys.
 
 > [!NOTE]
 > Die Datenpipeline in diesem Tutorial transformiert Eingabedaten in Ausgabedaten. Sie kopiert keine Daten aus einem Quelldatenspeicher in einen Zieldatenspeicher. Ein Tutorial zum Kopieren von Daten mithilfe von Azure Data Factory finden Sie unter [Tutorial: Kopieren von Daten aus Blob Storage in SQL-Datenbank](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md).

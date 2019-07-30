@@ -12,15 +12,15 @@ ms.devlang: dotNet
 ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 9/26/2018
+ms.date: 07/10/2019
 ms.author: aljo
 ms.custom: mvc
-ms.openlocfilehash: fc2c23d93a1800232b81c5eb2f861e8b71c3e437
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: c290b13ccb65c68c32d63638b15e8a3f59ef8010
+ms.sourcegitcommit: 920ad23613a9504212aac2bfbd24a7c3de15d549
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66428055"
+ms.lasthandoff: 07/15/2019
+ms.locfileid: "68228103"
 ---
 # <a name="integrate-api-management-with-service-fabric-in-azure"></a>Integrieren von API Management in Service Fabric in Azure
 
@@ -77,7 +77,7 @@ Starten Sie Visual Studio als Administrator, und erstellen Sie einen ASP.NET Cor
  1. Wählen Sie in Visual Studio "Datei -> Neues Projekt" aus.
  2. Wählen Sie die Service Fabric-Anwendungsvorlage unter Cloud aus, und benennen Sie sie **„ApiApplication“** .
  3. Wählen Sie die zustandslose ASP.NET Core-Dienstvorlage aus, und nennen Sie das Projekt **„WebApiService“** .
- 4. Wählen Sie die Web-API ASP.NET Core 2.0-Projektvorlage aus.
+ 4. Wählen Sie die Web-API ASP.NET Core 2.1-Projektvorlage aus.
  5. Nachdem das Projekt erstellt wurde, öffnen Sie die `PackageRoot\ServiceManifest.xml`, und entfernen Sie das `Port`-Attribut aus der Endpunktressourcenkonfiguration:
 
     ```xml

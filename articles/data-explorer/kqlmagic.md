@@ -6,13 +6,13 @@ ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: conceptual
-ms.date: 12/19/2018
-ms.openlocfilehash: 896a5d13279c15f0035f214da3d5a7d7e6f1861f
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.date: 07/10/2019
+ms.openlocfilehash: a894052e54bd1ca9f8316342f714074c92753448
+ms.sourcegitcommit: 47ce9ac1eb1561810b8e4242c45127f7b4a4aa1a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60758414"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67806339"
 ---
 # <a name="use-a-jupyter-notebook-and-kqlmagic-extension-to-analyze-data-in-azure-data-explorer"></a>Verwenden einer Jupyter Notebook-Instanz und der Kqlmagic-Erweiterung zum Analysieren von Daten in Azure Data Explorer
 
@@ -164,6 +164,9 @@ In vielen Analyseszenarios sollten Sie, wiederverwendbare Notebooks erstellen, d
     ```python
     %kql --help "help"
     ```
+
+> [!TIP]
+> Um Informationen zu allen verfügbaren Konfigurationen zu erhalten, verwenden Sie `%config KQLmagic`. Verwenden Sie zum Beheben und Erfassen von Kusto-Fehlern (z. B. Verbindungsprobleme und falsche Abfragen) `%config Kqlmagic.short_errors=False`.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

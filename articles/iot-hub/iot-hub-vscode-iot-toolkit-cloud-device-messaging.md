@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.tgt_pltfrm: arduino
 ms.date: 01/18/2019
 ms.author: junhan
-ms.openlocfilehash: f8799fcb06235474bb33cdaf0406300065208024
-ms.sourcegitcommit: 5bdd50e769a4d50ccb89e135cfd38b788ade594d
+ms.openlocfilehash: 1289e9c8f8cfc9360c9b2325507b43bab3a69028
+ms.sourcegitcommit: 64798b4f722623ea2bb53b374fb95e8d2b679318
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/03/2019
-ms.locfileid: "67543823"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67838511"
 ---
 # <a name="use-azure-iot-tools-for-visual-studio-code-to-send-and-receive-messages-between-your-device-and-iot-hub"></a>Senden und Empfangen von Nachrichten zwischen Ihrem Gerät und IoT Hub mithilfe der Azure IoT-Tools für Visual Studio Code.
 
@@ -56,7 +56,7 @@ Sie erfahren, wie Sie mit den Azure IoT-Tools für Visual Studio Code Gerät-zu-
 5. In der Geräteliste wird nach wenigen Sekunden die Registerkarte **Azure IoT Hub-Geräte** angezeigt.
 
    > [!Note]
-   > Sie können die Einrichtung auch abschließen, indem Sie auf **Set IoT Hub Connection String** (IoT Hub-Verbindungszeichenfolge festlegen) klicken. Geben Sie in das Popupfenster die Verbindungszeichenfolge für den IoT Hub ein, mit dem Ihr IoT-Gerät eine Verbindung herstellt.
+   > Sie können die Einrichtung auch abschließen, indem Sie auf **Set IoT Hub Connection String** (IoT Hub-Verbindungszeichenfolge festlegen) klicken. Geben Sie in das Popupfenster die **iothubowner**-Verbindungszeichenfolge der Richtlinie für den IoT-Hub ein, mit dem Ihr IoT-Gerät eine Verbindung herstellt.
 
 ## <a name="monitor-device-to-cloud-messages"></a>Überwachen von Gerät-zu-Cloud-Nachrichten
 

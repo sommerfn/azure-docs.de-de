@@ -10,12 +10,12 @@ ms.author: larryme
 ms.date: 04/02/2019
 ms.topic: article
 ms.service: multiple
-ms.openlocfilehash: c1d7b52bdce77ca108781a999a8a85b3e3fca0b8
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 58755a0ac49b9549813ddb507dfbd986d83dfce5
+ms.sourcegitcommit: 770b060438122f090ab90d81e3ff2f023455213b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61487453"
+ms.lasthandoff: 07/17/2019
+ms.locfileid: "68305850"
 ---
 # <a name="mainframe-rehosting-on-azure-virtual-machines"></a>Mainframerehosting auf virtuellen Azure-Computern
 
@@ -86,7 +86,7 @@ Informieren Sie sich über das [Verschieben von Mainframe-Computing zu Azure](./
 
 Azure bietet verpflichtungsbasierte Vereinbarungen zum Service Level (Service Level Agreements, SLAs). Hohe Verfügbarkeit ist der Standard, und SLAs können mit lokaler oder geobasierter Replikation von Diensten optimiert werden. Die vollständige [Azure-SLA](https://azure.microsoft.com/support/legal/sla/virtual-machines/) erläutert die garantierte Verfügbarkeit von Azure insgesamt.
 
-Mit Azure-IaaS wie einer VM bieten bestimmte Systemfunktionen Failoverunterstützung – z.B. Failoverclusteringinstanzen und [Verfügbarkeitsgruppen](/azure/virtual-machines/windows/regions-and-availability#availability-sets). Wenn Sie Platform-as-a-Service-Ressourcen (PaaS) von Azure verwenden, handhabt die Plattform Failover automatisch. Beispiele hierfür sind [Azure SQL-Datenbank](/azure/sql-database/sql-database-technical-overview) und [Azure Cosmos DB](/azure/cosmos-db/introduction).
+Mit Azure-IaaS wie einer VM bieten bestimmte Systemfunktionen Failoverunterstützung – z. B. Failoverclusteringinstanzen und Verfügbarkeitsgruppen. Wenn Sie Platform-as-a-Service-Ressourcen (PaaS) von Azure verwenden, handhabt die Plattform Failover automatisch. Beispiele hierfür sind [Azure SQL-Datenbank](/azure/sql-database/sql-database-technical-overview) und [Azure Cosmos DB](/azure/cosmos-db/introduction).
 
 ### <a name="scalability"></a>Skalierbarkeit
 

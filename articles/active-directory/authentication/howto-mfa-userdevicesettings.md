@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 04d4848a00fd645bcf23342f27fe820ccf034a8b
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 3152dead04510078dd475b611afbfc30264e58f7
+ms.sourcegitcommit: a8b638322d494739f7463db4f0ea465496c689c6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66298841"
+ms.lasthandoff: 07/17/2019
+ms.locfileid: "68297648"
 ---
 # <a name="manage-user-settings-with-azure-multi-factor-authentication-in-the-cloud"></a>Verwalten von Benutzereinstellungen mit Azure Multi-Factor Authentication (MFA) in der Cloud
 
@@ -25,6 +25,12 @@ Als Administrator können Sie die folgenden Einstellungen für Benutzer und Ger�
 * Benutzer auffordern, Kontaktmethoden erneut bereitzustellen
 * App-Kennwörter löschen
 * MFA auf allen vertrauenswürdigen Geräten erfordern
+
+## <a name="manage-authentication-methods"></a>Verwalten von Authentifizierungsmethoden
+
+Als Administrator, dem die Rolle „Authentifizierungsadministrator“ zugewiesen wurde, können Sie festlegen, dass Benutzer ihr Kennwort zurücksetzen, sich für die mehrstufige Authentifizierung erneut registrieren oder vorhandene MFA-Sitzungen von ihrem Benutzerobjekt widerrufen müssen.
+
+![Verwalten von Authentifizierungsmethoden im Azure-Portal](./media/howto-mfa-userdevicesettings/manage-authentication-methods.png)
 
 ## <a name="require-users-to-provide-contact-methods-again"></a>Benutzer auffordern, Kontaktmethoden erneut bereitzustellen
 

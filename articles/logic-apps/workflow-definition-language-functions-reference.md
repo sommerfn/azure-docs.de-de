@@ -9,12 +9,12 @@ ms.author: estfan
 ms.reviewer: klam, LADocs
 ms.topic: reference
 ms.date: 08/15/2018
-ms.openlocfilehash: f5e2af7a7118eaa95e43049b3594ffd584aad4cc
-ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
+ms.openlocfilehash: 8ad7d7497a0fbe6fcf20ad5b50ef4e6cac9ed51f
+ms.sourcegitcommit: 10251d2a134c37c00f0ec10e0da4a3dffa436fb3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67203083"
+ms.lasthandoff: 07/13/2019
+ms.locfileid: "67868899"
 ---
 # <a name="functions-reference-for-workflow-definition-language-in-azure-logic-apps-and-microsoft-flow"></a>Funktionsreferenz zur Definitionssprache für Workflows in Azure Logic Apps und Microsoft Flow
 
@@ -295,6 +295,11 @@ Die vollständige Referenz zu den einzelnen Funktionen finden Sie unter [Funktio
 |||
 
 <a name="alphabetical-list"></a>
+
+## <a name="all-functions---alphabetical-list"></a>Alle Funktionen – alphabetische Liste
+
+In diesem Abschnitt werden alle verfügbaren Funktionen in alphabetischer Reihenfolge aufgelistet.
+
 <a name="action"></a>
 
 ### <a name="action"></a>action
@@ -435,8 +440,6 @@ Dies ist das zurückgegebene Ergebnis:
   }
 }
 ```
-
-## <a name="all-functions---alphabaetical-list"></a>Alle Funktionen – alphabetische Liste
 
 <a name="actions"></a>
 

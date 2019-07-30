@@ -15,27 +15,21 @@ ms.workload: tbd
 ms.date: 05/11/2018
 ms.author: yegu
 ms.custom: mvc
-ms.openlocfilehash: 73c14b3d3023dcca113589d63276216fcfdd17f1
-ms.sourcegitcommit: 6cb4dd784dd5a6c72edaff56cf6bcdcd8c579ee7
+ms.openlocfilehash: 70a8e4cd694a90e83bf78e00a7c725a8c887b2eb
+ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2019
-ms.locfileid: "67513441"
+ms.lasthandoff: 07/18/2019
+ms.locfileid: "68324069"
 ---
 # <a name="quickstart-use-azure-cache-for-redis-with-python"></a>Schnellstart: Verwenden von Azure Cache for Redis mit Python
 
-
-## <a name="introduction"></a>Einführung
-
-In dieser Schnellstartanleitung wird gezeigt, wie Sie eine Azure Cache for Redis-Instanz mit Python verbinden, um Lese- und Schreibvorgänge in einem Cache zu ermöglichen. 
-
-![Python-Test abgeschlossen](./media/cache-python-get-started/cache-python-completed.png)
-
-[!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
+In dieser Schnellstartanleitung integrieren Sie Azure Cache für Redis in eine Python-App, um Zugriff auf einen sicheren, dedizierten Cache zu erhalten, der von jeder Anwendung in Azure aus zugänglich ist.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-* Installation einer [Python 2- oder Python 3-Umgebung](https://www.python.org/downloads/) mit [pip](https://pypi.org/project/pip/) 
+- Azure-Abonnement – [Erstellen eines kostenlosen Kontos](https://azure.microsoft.com/free/)
+- [Python 2 oder 3](https://www.python.org/downloads/)
 
 ## <a name="create-an-azure-cache-for-redis-on-azure"></a>Erstellen einer Azure Cache for Redis-Instanz in Azure
 [!INCLUDE [redis-cache-create](../../includes/redis-cache-create.md)]
@@ -127,13 +121,10 @@ Sie werden aufgefordert, das Löschen der Ressourcengruppe zu bestätigen. Geben
 
 Daraufhin werden die Ressourcengruppe und alle darin enthaltenen Ressourcen gelöscht.
 
-
 ## <a name="next-steps"></a>Nächste Schritte
 
 > [!div class="nextstepaction"]
 > [Erstellen einer einfachen ASP.NET-Web-App, die eine Azure Cache for Redis-Instanz verwendet](./cache-web-app-howto.md)
-
-
 
 <!--Image references-->
 [1]: ./media/cache-python-get-started/redis-cache-new-cache-menu.png

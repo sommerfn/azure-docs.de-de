@@ -15,15 +15,15 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/10/2019
 ms.author: iainfou
-ms.openlocfilehash: e49a37ec95a8cf26a2c63bd90759da35fc537e41
-ms.sourcegitcommit: f811238c0d732deb1f0892fe7a20a26c993bc4fc
+ms.openlocfilehash: e0f38ed8367f076c9f9c4da77440bb3e9603d514
+ms.sourcegitcommit: b2db98f55785ff920140f117bfc01f1177c7f7e2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/29/2019
-ms.locfileid: "67474244"
+ms.lasthandoff: 07/16/2019
+ms.locfileid: "68234209"
 ---
-# <a name="azure-ad-domain-services"></a>Azure AD Domain Services
-## <a name="features"></a>Features
+# <a name="features-provided-by-azure-active-directory-domain-services"></a>Von Azure Active Directory Domain Services bereitgestellte Features
+
 Die folgenden Features sind in Domänen verfügbar, die in Azure AD Domain Services verwaltet werden.
 
 * **Einfache Bereitstellung:** Sie können die Azure AD Domain Services für Ihr Azure AD-Verzeichnis mit nur wenigen Mausklicks aktivieren. Ihre verwaltete Domäne enthält reine Cloudbenutzerkonten und Benutzerkonten, die von einem lokalen Verzeichnis aus synchronisiert werden.

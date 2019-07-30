@@ -12,12 +12,12 @@ ms.author: aliceku
 ms.reviewer: vanto
 manager: craigg
 ms.date: 04/19/2019
-ms.openlocfilehash: c3a29c6b4d0308b41e29f38fc29d79634727d593
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 645c140819042153b23d8e06417d4c5f441a14a9
+ms.sourcegitcommit: a6873b710ca07eb956d45596d4ec2c1d5dc57353
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64926009"
+ms.lasthandoff: 07/16/2019
+ms.locfileid: "68249229"
 ---
 # <a name="azure-sql-transparent-data-encryption-with-customer-managed-keys-in-azure-key-vault-bring-your-own-key-support"></a>Azure SQL Transparent Data Encryption mithilfe von Schlüsseln, die vom Kunden in Azure Key Vault verwaltet werden: Bring Your Own Key-Unterstützung
 
@@ -179,7 +179,7 @@ Sobald eine Datenbank mithilfe eines Schlüssels aus Key Vault mit TDE verschlü
 
 Zum Wiederherstellen einer Sicherung, die mit einer TDE-Schutzvorrichtung aus Key Vault verschlüsselt ist, stellen Sie sicher, dass sich das Schlüsselmaterial noch unter dem ursprünglichen Schlüsselnamen im ursprünglichen Tresor befindet. Wenn die TDE-Schutzvorrichtung für eine Datenbank geändert wird, werden alte Sicherungen der Datenbank **nicht aktualisiert**, um die aktuelle TDE-Schutzvorrichtung zu verwenden. Daher wird empfohlen, alle alten Versionen der TDE-Schutzvorrichtung in Key Vault beizubehalten, damit Datenbanksicherungen wiederhergestellt werden können.
 
-Wenn ein Schlüssel, der u.U. für die Wiederherstellung einer Sicherung benötigt wird, nicht mehr in seinem ursprünglichen Schlüsseltresor vorhanden ist, wird die folgende Fehlermeldung zurückgegeben: „Target server `<Servername>` does not have access to all AKV Uris created between <Timestamp #1> and <Timestamp #2>. Please retry operation after restoring all AKV Uris.“ (Zielserver „&lt;Servername&gt;“ kann nicht auf alle zwischen <Timestamp #1> und <Timestamp #2> erstellten AKV-URIs zugreifen. Wiederholen Sie den Vorgang, nachdem alle AKV-URIs wiederhergestellt wurden.)
+Wenn ein Schlüssel, der u.U. für die Wiederherstellung einer Sicherung benötigt wird, nicht mehr in seinem ursprünglichen Schlüsseltresor vorhanden ist, wird die folgende Fehlermeldung zurückgegeben: „Target server `<Servername>` does not have access to all AKV Uris created between \<Timestamp #1> and \<Timestamp #2>. Please retry operation after restoring all AKV Uris.“ (Zielserver „&lt;Servername&gt;“ kann nicht auf alle zwischen <Timestamp #1> und <Timestamp #2> erstellten AKV-URIs zugreifen. Wiederholen Sie den Vorgang, nachdem alle AKV-URIs wiederhergestellt wurden.)
 
 Um dies zu vermeiden, führen Sie das Cmdlet [Get-AzRmSqlServerKeyVaultKey](/powershell/module/az.sql/get-azsqlserverkeyvaultkey) aus, um die Liste der Schlüssel aus Key Vault zurückzugeben, die dem Server hinzugefügt wurden (es sei denn, sie wurden von einem Benutzer gelöscht). Um sicherzustellen, dass alle Sicherungen wiederhergestellt werden können, vergewissern Sie sich, dass der Zielserver für die Sicherung auf alle diese Schlüssel zugreifen kann.
 

@@ -7,12 +7,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 01/04/2019
 ms.author: junhan
-ms.openlocfilehash: 03df2ceb2df4d857e48f1790703a1d87647e43d0
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: f5697e0b51e8349de62e71be1471beb76aa48765
+ms.sourcegitcommit: 64798b4f722623ea2bb53b374fb95e8d2b679318
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60401169"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67838722"
 ---
 # <a name="use-azure-iot-tools-for-visual-studio-code-for-azure-iot-hub-device-management"></a>Verwenden der Azure IoT-Tools für Visual Studio Code für die Geräteverwaltung mit Azure IoT Hub
 
@@ -63,7 +63,7 @@ Führen Sie die Azure IoT-Tools für Visual Studio Code mit unterschiedlichen Ve
 5. In der Geräteliste wird nach wenigen Sekunden die Registerkarte **Azure IoT Hub-Geräte** angezeigt.
 
    > [!Note]
-   > Sie können die Einrichtung auch abschließen, indem Sie auf **Set IoT Hub Connection String** (IoT Hub-Verbindungszeichenfolge festlegen) klicken. Geben Sie in das Popupfenster die Verbindungszeichenfolge für den IoT Hub ein, mit dem Ihr IoT-Gerät eine Verbindung herstellt.
+   > Sie können die Einrichtung auch abschließen, indem Sie auf **Set IoT Hub Connection String** (IoT Hub-Verbindungszeichenfolge festlegen) klicken. Geben Sie in das Popupfenster die **iothubowner**-Verbindungszeichenfolge der Richtlinie für den IoT-Hub ein, mit dem Ihr IoT-Gerät eine Verbindung herstellt.
 
 ## <a name="direct-methods"></a>Direkte Methoden
 

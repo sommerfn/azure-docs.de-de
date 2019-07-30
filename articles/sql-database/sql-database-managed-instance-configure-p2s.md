@@ -12,12 +12,12 @@ ms.author: srbozovi
 ms.reviewer: sstein, carlrab, bonova, jovanpop
 manager: craigg
 ms.date: 03/13/2019
-ms.openlocfilehash: 33e1287edbca6b603d103f11636959b6fe13e578
-ms.sourcegitcommit: 66237bcd9b08359a6cce8d671f846b0c93ee6a82
+ms.openlocfilehash: 5fee129e24d38da350589d5bed90123733f148c0
+ms.sourcegitcommit: a8b638322d494739f7463db4f0ea465496c689c6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67798091"
+ms.lasthandoff: 07/17/2019
+ms.locfileid: "68296060"
 ---
 # <a name="quickstart-configure-a-point-to-site-connection-to-an-azure-sql-database-managed-instance-from-on-premises"></a>Schnellstart: Konfigurieren einer Point-to-Site-Verbindung von einem lokalen Computer mit einer verwalteten Azure SQL-Datenbank-Instanz
 
@@ -35,7 +35,7 @@ In dieser Schnellstartanleitung gilt Folgendes:
 
 1. Öffnen Sie PowerShell auf Ihrem lokalen Clientcomputer.
 
-2. Kopieren Sie dieses PowerShell-Skript. Mit diesem Skript wird ein VPN Gateway an das virtuelle Netzwerk mit der verwalteten Instanz, die Sie in der Schnellstartanleitung [Erstellen einer verwalteten Instanz](sql-database-managed-instance-get-started.md) erstellt haben, angefügt. Das Skript bewirkt Folgendes:
+2. Kopieren Sie dieses PowerShell-Skript. Mit diesem Skript wird ein VPN Gateway an das virtuelle Netzwerk mit der verwalteten Instanz, die Sie in der Schnellstartanleitung [Erstellen einer verwalteten Instanz](sql-database-managed-instance-get-started.md) erstellt haben, angefügt. Dieses Skript verwendet das Az-Modul von Azure PowerShell und führt für Windows-oder Linux-basierte Hosts die folgenden Aktionen aus:
 
    - Erstellen und Installieren von Zertifikaten auf dem Clientcomputer
    - Berechnen des Subnetz-IP-Adressbereichs für den zukünftigen VPN Gateway
@@ -54,9 +54,6 @@ In dieser Schnellstartanleitung gilt Folgendes:
 
      Invoke-Command -ScriptBlock ([Scriptblock]::Create((iwr ($scriptUrlBase+'/attachVPNGateway.ps1?t='+ [DateTime]::Now.Ticks)).Content)) -ArgumentList $parameters, $scriptUrlBase
      ```
-
-     > [!IMPORTANT]
-     > Um in PowerShell anstelle des Azure-Moduls das Azure Resource Manager-Modul zu verwenden, verwenden Sie statt des Cmdlets `attachVPNGatewayAz.ps1` das Cmdlet `attachVPNGateway.ps1`.
 
 3. Fügen Sie das Skript in Ihr PowerShell-Fenster ein, und geben Sie die erforderlichen Parameter an. Die Werte für `<subscriptionId>`, `<resourceGroup>` und `<virtualNetworkName>` sollten den Werten entsprechen, die in der Schnellstartanleitung [Erstellen einer verwalteten Instanz](sql-database-managed-instance-get-started.md) verwendet wurden. Der Wert für `<certificateNamePrefix>` kann eine Zeichenfolge Ihrer Wahl sein.
 

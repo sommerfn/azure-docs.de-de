@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: shlo
 robots: noindex
-ms.openlocfilehash: 518e3fa842c5283dc20a6111773bd55451f026b6
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: f33a59105d1be94ccd4fb24ae3d962b36c2efbdd
+ms.sourcegitcommit: 64798b4f722623ea2bb53b374fb95e8d2b679318
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60486849"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67839351"
 ---
 # <a name="azure-data-factory---frequently-asked-questions"></a>Azure Data Factory – Häufig gestellte Fragen
 > [!NOTE]
@@ -51,11 +51,10 @@ Weitere Informationen finden Sie im Abschnitt **Einschränkungen von Azure Data 
 ### <a name="what-is-the-authoringdeveloper-experience-with-azure-data-factory-service"></a>Was sieht die Erstellung-/Entwicklungsumgebung im Azure Data Factory-Dienst aus?
 Sie können Data Factorys mithilfe eines der folgenden Werkzeuge/SDKs erstellen:
 
-* **Azure-Portal** : Die Data Factory-Blätter im Azure-Portal bieten eine umfassende Benutzeroberfläche zum Erstellen von Data Factorys und verknüpften Diensten. Der **Data Factory-Editor**, der auch Teil des Portals ist, ermöglicht Ihnen die einfache Erstellung von verknüpften Diensten, Tabellen, Datasets und Pipelines durch Angabe von JSON-Definitionen für diese Artefakte. Unter [Erstellen der ersten Azure Data Factory mit dem Azure-Portal](data-factory-build-your-first-pipeline-using-editor.md) finden Sie ein Beispiel für das Verwenden des Portals/Editors zum Erstellen und Bereitstellen einer Data Factory.
 * **Visual Studio** : Sie können mit Visual Studio eine Azure Data Factory erstellen. Unter [Erstellen der ersten Azure Data Factory-Pipeline mit Visual Studio](data-factory-build-your-first-pipeline-using-vs.md) finden Sie weitere Informationen.
 * **Azure PowerShell** : Unter [Erstellen der ersten Azure Data Factory mit Azure PowerShell](data-factory-build-your-first-pipeline-using-powershell.md) finden Sie ein Tutorial und eine exemplarische Vorgehensweise zum Erstellen einer Data Factory mithilfe von PowerShell. In der [Data Factory-Cmdlet-Referenz][adf-powershell-reference] in der MSDN-Bibliothek finden Sie eine umfassende Dokumentation zu Data Factory-Cmdlets.
 * **.NET-Klassenbibliothek** Sie können Data Factorys mithilfe des Data Factory .NET SDK programmgesteuert erstellen. Unter [Erstellen, Überwachen und Verwalten von Daten Factorys mit dem .NET SDK](data-factory-create-data-factories-programmatically.md) finden Sie eine exemplarische Vorgehensweise zum Erstellen einer Data Factory mit dem .NET SDK. In der [Data Factory-Klassenbibliotheksreferenz][msdn-class-library-reference] finden Sie eine umfassende Dokumentation zum Data Factory .NET SDK.
-* **REST-API** Sie können auch die vom Azure-Data Factory-Dienst verfügbar gemachte REST-API zum Erstellen und Bereitstellen von Data Factorys nutzen. Unter [Data Factory-REST-API][msdn-rest-api-reference] finden Sie eine umfassende Dokumentation zur Data Factory-REST-API.
+* **REST-API** Sie können auch die vom Azure-Data Factory-Dienst verfügbar gemachte REST-API zum Erstellen und Bereitstellen von Data Factorys nutzen. In der [Data Factory-REST-API-Referenz][msdn-rest-api-reference] finden Sie eine umfassende Dokumentation zur Data Factory-REST-API.
 * **Azure Resource Manager-Vorlage** Weitere Informationen finden Sie unter [Tutorial: Erstellen der ersten Azure Data Factory mit einer Azure Resource Manager-Vorlage](data-factory-build-your-first-pipeline-using-arm.md).
 
 ### <a name="can-i-rename-a-data-factory"></a>Können Data Factorys umbenannt werden?

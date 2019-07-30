@@ -3,17 +3,17 @@ title: Verwalten der Authentifizierung in Azure Maps | Microsoft-Dokumentation
 description: Sie können über das Azure-Portal die Authentifizierung in Azure Maps verwalten.
 author: walsehgal
 ms.author: v-musehg
-ms.date: 02/14/2019
+ms.date: 07/11/2019
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
-ms.openlocfilehash: 617adbcda70799aa07248945bbc27f9d95aa77a3
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 1dc63a2c2350ad4f1d02d0c1b22050293d7b866c
+ms.sourcegitcommit: 64798b4f722623ea2bb53b374fb95e8d2b679318
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65952571"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67837819"
 ---
 # <a name="manage-authentication-in-azure-maps"></a>Verwalten der Authentifizierung in Azure Maps
 
@@ -59,7 +59,7 @@ Nachdem Sie ein Azure Maps-Konto erstellt haben, müssen Sie eine Verknüpfung z
 
 ## <a name="grant-rbac-to-azure-maps"></a>Gewähren von RBAC in Azure Maps
 
-Nachdem Sie ein Azure Maps-Konto mit Ihrem Azure AD-Mandanten verknüpfen können Sie die Zugriffssteuerung gewähren, indem Sie einem Benutzer oder einer Anwendung Azure Maps-Zugriffssteuerungsrollen zuweisen.
+Nachdem Sie ein Azure Maps-Konto mit Ihrem Azure AD-Mandanten verknüpft haben, können Sie die Zugriffssteuerung gewähren, indem Sie einem Benutzer, einer Gruppe oder einer Anwendung die Rollen für die Azure Maps-Zugriffssteuerung zuweisen.
 
 1. Wechseln Sie zur **Zugriffssteuerung (IAM)** , klicken Sie auf **Rollenzuweisungen**, und wählen Sie dann **Rollenzuweisung hinzufügen** aus.
 

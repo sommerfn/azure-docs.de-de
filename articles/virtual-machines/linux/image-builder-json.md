@@ -7,12 +7,12 @@ ms.date: 05/10/2019
 ms.topic: article
 ms.service: virtual-machines-linux
 manager: gwallace
-ms.openlocfilehash: 16ad2a93c9ff035166a738edba40c99075a6e7ba
-ms.sourcegitcommit: 2e4b99023ecaf2ea3d6d3604da068d04682a8c2d
+ms.openlocfilehash: 065962614d0b85c4c50f86bef0b610c9b3577e07
+ms.sourcegitcommit: a6873b710ca07eb956d45596d4ec2c1d5dc57353
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67671461"
+ms.lasthandoff: 07/16/2019
+ms.locfileid: "68248150"
 ---
 # <a name="preview-create-an-azure-image-builder-template"></a>Vorschau: Erstellen einer Azure Image Builder-Vorlage 
 
@@ -402,7 +402,7 @@ Die Imageausgabe ist eine verwaltete Imageressource.
  
 Verteilungseigenschaften:
 - **type:** managedImage 
-- **imageId:** die Ressourcen-ID des Zielimages; das folgende Format wird erwartet: /subscriptions/<subscriptionId>/resourceGroups/<destinationResourceGroupName>/providers/Microsoft.Compute/images/<imageName>
+- **imageId:** die Ressourcen-ID des Zielimages; das folgende Format wird erwartet: /subscriptions/\<Abonnement-ID>/resourceGroups/\<Ziel-Ressourcengruppenname>/providers/Microsoft.Compute/images/\<Imagename>
 - **location:** der Speicherort des verwalteten Images.  
 - **runOutputName:** eindeutiger Name zur Identifikation der Verteilung.  
 - **artifactTags:** optionale vom Benutzer angegebene Schlüssel-Wert-Paar-Tags.
@@ -441,7 +441,7 @@ Bevor Sie ein Image an den Imagekatalog verteilen können, müssen Sie einen Kat
 Verteilungseigenschaften für Kataloge mit freigegebenen Images:
 
 - **type:** sharedImage  
-- **galleryImageId:** ID des Katalogs mit freigegebenen Images. Das Format lautet: /subscriptions/<subscriptionId>/resourceGroups/<resourceGroupName>/providers/Microsoft.Compute/galleries/<sharedImageGalleryName>/images/<imageGalleryName>.
+- **galleryImageId:** ID des Katalogs mit freigegebenen Images. Das Format lautet: /subscriptions/\<Abonnement-ID>/resourceGroups/\<Ressourcengruppenname>/providers/Microsoft.Compute/galleries/\<NameDesKatalogsMitFreigegebenenImages>/images/\<Imagekatalogname>.
 - **runOutputName:** eindeutiger Name zur Identifikation der Verteilung.  
 - **artifactTags:** optionale vom Benutzer angegebene Schlüssel-Wert-Paar-Tags.
 - **replicationRegions:** Array von Regionen für die Replikation. In einer der hier enthaltenen Regionen muss der Katalog bereitgestellt werden.
