@@ -12,12 +12,12 @@ ms.author: aliceku
 ms.reviewer: vanto
 manager: craigg
 ms.date: 04/19/2019
-ms.openlocfilehash: 7066b600cf50df583fbf8e9e674ef17d77b86183
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: dfc48fec948ab0cf3d16a49bb60eb3c274f2864e
+ms.sourcegitcommit: dad277fbcfe0ed532b555298c9d6bc01fcaa94e2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67061383"
+ms.lasthandoff: 07/10/2019
+ms.locfileid: "67723274"
 ---
 # <a name="transparent-data-encryption-for-sql-database-and-data-warehouse"></a>Transparente Datenverschlüsselung für SQL-Datenbank und Data Warehouse
 
@@ -33,7 +33,7 @@ SQL Server kann bei der Ausführung auf einem virtuellen Azure-Computer auch ein
 
 ## <a name="service-managed-transparent-data-encryption"></a>Von einem Dienst verwaltete transparente Datenverschlüsselung
 
-In Azure ist bei der Standardeinstellung für die transparente Datenverschlüsselung der Verschlüsselungsschlüssel der Datenbank durch ein integriertes Serverzertifikat geschützt. Das integrierte Serverzertifikat ist für jeden Server eindeutig. Wenn sich eine Datenbank in einer Georeplikationsbeziehung befindet, werden die primäre und die sekundäre Geodatenbank vom übergeordneten Serverschlüssel der primären Datenbank geschützt. Sind zwei Datenbanken mit dem gleichen Server verbunden, verwenden sie auch das gleiche integrierte Zertifikat. Microsoft rotiert diese Zertifikate gemäß der internen Sicherheitsrichtlinie automatisch, und der Stammschlüssel wird von einem Microsoft-internen Geheimnisspeicher geschützt.  Kunden können die Compliance von SQL-Datenbank mit internen Sicherheitsrichtlinien in Überwachungsberichten unabhängiger Drittanbieter überprüfen, die in [Microsoft Trust Center](https://servicetrust.microsoft.com/) zur Verfügung stehen.
+In Azure ist bei der Standardeinstellung für die transparente Datenverschlüsselung der Verschlüsselungsschlüssel der Datenbank durch ein integriertes Serverzertifikat geschützt. Das integrierte Serverzertifikat ist für jeden Server eindeutig, und der verwendete Verschlüsselungsalgorithmus ist AES 256. Wenn sich eine Datenbank in einer Georeplikationsbeziehung befindet, werden die primäre und die sekundäre Geodatenbank vom übergeordneten Serverschlüssel der primären Datenbank geschützt. Sind zwei Datenbanken mit dem gleichen Server verbunden, verwenden sie auch das gleiche integrierte Zertifikat.  Microsoft rotiert diese Zertifikate gemäß der internen Sicherheitsrichtlinie automatisch, und der Stammschlüssel wird von einem Microsoft-internen Geheimnisspeicher geschützt.  Kunden können die Compliance von SQL-Datenbank mit internen Sicherheitsrichtlinien in Überwachungsberichten unabhängiger Drittanbieter überprüfen, die in [Microsoft Trust Center](https://servicetrust.microsoft.com/) zur Verfügung stehen.
 
 Microsoft verschiebt und verwaltet auch die Schlüssel nahtlos, die für die Georeplikation und Wiederherstellung benötigt werden.
 

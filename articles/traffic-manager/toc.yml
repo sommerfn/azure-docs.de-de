@@ -10,6 +10,8 @@
       href: quickstart-create-traffic-manager-profile.md
     - name: 'Traffic Manager-Profil erstellen: PowerShell'
       href: quickstart-create-traffic-manager-profile-powershell.md
+    - name: 'Erstellen eines Traffic Manager-Profils: Azure CLI'
+      href: quickstart-create-traffic-manager-profile-cli.md
 - name: Lernprogramme
   items:
     - name: Weiterleiten von Datenverkehr für geringe Latenz
