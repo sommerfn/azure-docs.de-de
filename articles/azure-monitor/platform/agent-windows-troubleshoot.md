@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/12/2019
 ms.author: magoedte
-ms.openlocfilehash: afa4483677336e9a887908a8cccf9590eed27af3
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 9df389b6e6a73530c9bbf5a2187d6735946e309f
+ms.sourcegitcommit: a6873b710ca07eb956d45596d4ec2c1d5dc57353
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67120794"
+ms.lasthandoff: 07/16/2019
+ms.locfileid: "68249770"
 ---
 # <a name="how-to-troubleshoot-issues-with-the-log-analytics-agent-for-windows"></a>Behandeln von Problemen mit dem Log Analytics-Agent für Windows 
 
@@ -53,7 +53,7 @@ Es gibt mehrere Möglichkeiten zur Überprüfung, ob der Agent erfolgreich mit A
 
 - Aktivieren Sie die [Integritätsbewertung des Azure Log Analytics-Agents](../insights/solution-agenthealth.md) im Arbeitsbereich. Sehen Sie sich im Dashboard für die Agent-Integritätsdiagnose die Spalte **Anzahl der nicht reagierenden Agents** an, um schnell festzustellen, ob der Agent aufgeführt ist.  
 
-- Führen Sie die folgende Abfrage aus, um sicherzustellen, dass der Agent einen Heartbeat an den Arbeitsbereich sendet, an den er gemäß der Konfiguration berichten soll. Ersetzen Sie <ComputerName> durch den tatsächlichen Namen des Computers.
+- Führen Sie die folgende Abfrage aus, um sicherzustellen, dass der Agent einen Heartbeat an den Arbeitsbereich sendet, an den er gemäß der Konfiguration berichten soll. Ersetzen Sie `<ComputerName>` durch den tatsächlichen Namen des Computers.
 
     ```
     Heartbeat 
@@ -77,7 +77,7 @@ Es gibt mehrere Möglichkeiten zur Überprüfung, ob der Agent erfolgreich mit A
     |2127 |Integritätsdienstmodule |Fehler beim Senden von Daten mit Empfang eines Fehlercodes |Wenn dies im Laufe des Tages nur zeitweilig auftritt, kann es sich einfach um eine zufällige Anomalie handeln, die ignoriert werden kann. Überwachen Sie dieses Verhalten, um festzustellen, wie häufig dieser Fehler auftritt. Tritt er im Laufe des Tages häufig auf, überprüfen Sie zunächst Ihre Netzwerkkonfiguration und die Proxyeinstellungen. Wenn die Beschreibung HTTP-Fehlercode 404 enthält und der Agent zum ersten Mal versucht, Daten an den Dienst zu senden, ist ein Fehlercode 500 mit einem internen Fehlercode 404 enthalten. 404 bedeutet „nicht gefunden“ und gibt an, dass der Speicherbereich für den neuen Arbeitsbereich weiterhin bereitgestellt wird. Beim nächsten Versuch werden Daten wie erwartet erfolgreich in den Arbeitsbereich geschrieben. Ein HTTP-Fehler 403 weist möglicherweise auf ein Problem mit Berechtigungen oder Anmeldeinformationen hin. Der Fehler 403 enthält weitere Informationen als Hilfe zur Problembehandlung.|
     |4000 |Dienstconnector |Fehler beim Auflösen des DNS-Namens |Der Computer konnte die Internetadresse, die beim Senden von Daten an den Dienst verwendet wurde, nicht auflösen. Dies kann an den Einstellungen der DNS-Auflösung auf Ihrem Computer, falschen Proxyeinstellungen oder an einem vorübergehenden DNS-Problem bei Ihrem Anbieter liegen. Wenn dieses Problem zeitweilig auftritt, kann es durch ein vorübergehendes Netzwerkproblem verursacht werden.|
     |4001 |Dienstconnector |Fehler bei der Verbindung mit dem Dienst |Dieser Fehler kann auftreten, wenn der Agent nicht direkt oder über eine Firewall/einen Proxyserver mit dem Azure Monitor-Dienst kommunizieren kann. Überprüfen Sie die Proxyeinstellungen des Agents, und stellen Sie sicher, dass die Netzwerkfirewall/der Netzwerkproxy den TCP-Datenverkehr vom Computer zum Dienst zulässt.|
-    |4002 |Dienstconnector |Der Dienst hat HTTP-Statuscode 403 als Antwort auf eine Abfrage zurückgegeben. Wenden Sie sich an den Dienstadministrator, um die Integrität des Diensts zu prüfen. Die Abfrage wird später wiederholt. |Dieser Fehler wird während der anfänglichen Registrierungsphase des Agents geschrieben, und Sie sehen eine URL, die der folgenden ähnelt: *https://<workspaceID>.oms.opinsights.azure.com/AgentService.svc/AgentTopologyRequest*. Ein Fehlercode 403 bedeutet „verboten“ und kann durch eine falsch geschriebene Arbeitsbereichs-ID oder einen falsch geschriebenen Arbeitsbereichsschlüssel verursacht werden oder wenn Datum und Uhrzeit auf dem Computer falsch sind. Wenn die Zeit um +/-15 Minuten von der aktuellen Uhrzeit abweicht ist, tritt bei der Integration ein Fehler auf. Aktualisieren Sie zur Behebung dieses Problems das Datum und/oder die Zeitzone des Windows-Computers.|
+    |4002 |Dienstconnector |Der Dienst hat HTTP-Statuscode 403 als Antwort auf eine Abfrage zurückgegeben. Wenden Sie sich an den Dienstadministrator, um die Integrität des Diensts zu prüfen. Die Abfrage wird später wiederholt. |Dieser Fehler wird während der anfänglichen Registrierungsphase des Agents geschrieben, und Sie sehen eine URL, die der folgenden ähnelt: *https://\<workspaceID>.oms.opinsights.azure.com/AgentService.svc/AgentTopologyRequest*. Ein Fehlercode 403 bedeutet „verboten“ und kann durch eine falsch geschriebene Arbeitsbereichs-ID oder einen falsch geschriebenen Arbeitsbereichsschlüssel verursacht werden oder wenn Datum und Uhrzeit auf dem Computer falsch sind. Wenn die Zeit um +/-15 Minuten von der aktuellen Uhrzeit abweicht ist, tritt bei der Integration ein Fehler auf. Aktualisieren Sie zur Behebung dieses Problems das Datum und/oder die Zeitzone des Windows-Computers.|
 
 ## <a name="data-collection-issues"></a>Datensammlungsprobleme
 

@@ -13,12 +13,12 @@ ms.date: 05/08/2019
 ms.author: lizross
 ms.custom: user-help
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e8948040ac338a855c55e2ff44536c900adea7f6
-ms.sourcegitcommit: 399db0671f58c879c1a729230254f12bc4ebff59
+ms.openlocfilehash: a8827119d591ee1e3f12d0e8d8dcfc7ab88ce987
+ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/09/2019
-ms.locfileid: "65470713"
+ms.lasthandoff: 07/22/2019
+ms.locfileid: "68383058"
 ---
 # <a name="what-is-the-my-apps-portal"></a>Was ist das Portal „Meine Apps“?
 
@@ -35,8 +35,8 @@ Ausführliche Informationen und Anweisungen zu den verfügbaren Funktionen im Po
 
 |Artikel |BESCHREIBUNG |
 |------|------------|
-|[Zugreifen auf und Verwenden des Portals „Meine Apps“](my-apps-portal-end-user-access.md)|Anweisungen dazu, wie Sie auf das Webportal **Meine Apps** zugreifen und die cloudbasierten Apps Ihrer Organisation anzeigen und starten (basierend auf dem Gerät)|
-|[Aktualisieren Ihrer Profil- und Kontoinformationen](my-apps-portal-end-user-update-profile.md)|Anweisungen dazu, wie Sie Ihre personenbezogenen Daten aktualisieren, die auf der Seite **Profil** im Portal **Meine Apps** angezeigt werden|
-|[Aktualisieren Ihrer Gruppeninformationen](my-apps-portal-end-user-groups.md)|Anweisungen dazu, wie Sie gruppenbezogene Informationen auf der Seite **Gruppen** des Portals **Meine Apps** anzeigen und verwalten|
-|[Durchführen eigener Zugriffsüberprüfungen](my-apps-portal-end-user-access-reviews.md)|Anweisungen dazu, wie Sie **Zugriffsüberprüfungen** auf der Seite **Zugriffsüberprüfungen** des Portals **Meine Apps** anzeigen und durchführen, um Benutzern oder Gruppen Zugriff auf die Apps Ihrer Organisation zu gewähren oder zu verweigern|
-|[Troubleshoot problems with the My Apps portal](my-apps-portal-end-user-troubleshoot.md) (Behandeln von Problemen mit dem Portal „Meine Apps“)|Hier finden Sie einige Vorschläge für die Behandlung von Problemen mit dem Portal **Meine Apps**, die Sie prüfen können, bevor Sie sich an den Helpdesk wenden.|
+| [Zugreifen auf und Verwenden des Portals „Meine Apps“](my-apps-portal-end-user-access.md) | Anweisungen dazu, wie Sie auf das Webportal **Meine Apps** zugreifen und die cloudbasierten Apps Ihrer Organisation anzeigen und starten (basierend auf dem Gerät) |
+| [Aktualisieren Ihrer Profil- und Kontoinformationen](my-apps-portal-end-user-update-profile.md) |Anweisungen dazu, wie Sie Ihre personenbezogenen Daten aktualisieren, die auf der Seite **Profil** im Portal **Meine Apps** angezeigt werden |
+| [Aktualisieren Ihrer Gruppeninformationen](my-apps-portal-end-user-groups.md)|Anweisungen dazu, wie Sie gruppenbezogene Informationen auf der Seite **Gruppen** des Portals **Meine Apps** anzeigen und verwalten |
+| [Durchführen eigener Zugriffsüberprüfungen](my-apps-portal-end-user-access-reviews.md) |Anweisungen dazu, wie Sie **Zugriffsüberprüfungen** auf der Seite **Zugriffsüberprüfungen** des Portals **Meine Apps** anzeigen und durchführen, um Benutzern oder Gruppen Zugriff auf die Apps Ihrer Organisation zu gewähren oder zu verweigern |
+| [Troubleshoot problems with the My Apps portal](my-apps-portal-end-user-troubleshoot.md) (Behandeln von Problemen mit dem Portal „Meine Apps“) |Hier finden Sie einige Vorschläge für die Behandlung von Problemen mit dem Portal **Meine Apps**, die Sie prüfen können, bevor Sie sich an den Helpdesk wenden. |

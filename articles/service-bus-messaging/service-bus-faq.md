@@ -9,12 +9,12 @@ ms.service: service-bus-messaging
 ms.topic: article
 ms.date: 01/23/2019
 ms.author: aschhab
-ms.openlocfilehash: 26609e7b21af8804a4b43039c84c04597035721c
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.openlocfilehash: 80809afc9f2a8e8da2f6adecfe916141c4cd3e45
+ms.sourcegitcommit: 9a699d7408023d3736961745c753ca3cec708f23
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67706204"
+ms.lasthandoff: 07/16/2019
+ms.locfileid: "68278337"
 ---
 # <a name="service-bus-faq"></a>Service Bus – Häufig gestellte Fragen
 
@@ -134,7 +134,7 @@ Wenn Sie einen Namespace aus einem Abonnement löschen, warten Sie vier Stunden,
 Eine Liste der möglichen Service Bus-Ausnahmen finden Sie in der [Übersicht über Ausnahmen][Exceptions overview].
 
 ### <a name="what-is-a-shared-access-signature-and-which-languages-support-generating-a-signature"></a>Was ist eine Shared Access Signature, und welche Sprachen unterstützen die Generierung einer Signatur?
-SAS (Shared Access Signatures) sind ein Authentifizierungsmechanismus, der auf sicheren Hashes (SHA-256) oder URIs basiert. Informationen dazu, wie Sie Ihre eigenen Signaturen in Node.js, PHP, Java und C\# generieren, finden Sie im Artikel [Shared Access Signatures][Shared Access Signatures].
+SAS (Shared Access Signatures) sind ein Authentifizierungsmechanismus, der auf sicheren Hashes (SHA-256) oder URIs basiert. Informationen dazu, wie Sie Ihre eigenen Signaturen in Node.js, PHP, Java, Python und C# generieren, finden Sie im Artikel [Shared Access Signatures][Shared Access Signatures].
 
 ## <a name="subscription-and-namespace-management"></a>Abonnement- und Namespace-Verwaltung
 ### <a name="how-do-i-migrate-a-namespace-to-another-azure-subscription"></a>Wie migriere ich einen Namespace zu einem anderen Azure-Abonnement?

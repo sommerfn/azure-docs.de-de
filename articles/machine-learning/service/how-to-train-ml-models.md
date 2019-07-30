@@ -2,8 +2,8 @@
 title: Trainieren von ML-Modellen mit einem Estimator
 titleSuffix: Azure Machine Learning service
 description: Erfahren Sie, wie Sie Trainings auf einem einzelnen Knoten und verteilte Trainings konventioneller Machine Learning- und Deep Learning-Modelle mithilfe der Estimator-Klasse von Azure Machine Learning Service ausführen.
-ms.author: minxia
-author: mx-iao
+ms.author: maxluk
+author: maxluk
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.reviewer: sgilley
 ms.date: 04/19/2019
 ms.custom: seodec18
-ms.openlocfilehash: 689d7dcd57c513479c7bc08a45094670242ef6a5
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 0080c8ac5e957912c5fd59a7051619ee60bd914c
+ms.sourcegitcommit: a6873b710ca07eb956d45596d4ec2c1d5dc57353
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67075031"
+ms.lasthandoff: 07/16/2019
+ms.locfileid: "68260065"
 ---
 # <a name="train-models-with-azure-machine-learning-using-estimator"></a>Trainieren von Azure Machine Learning-Modellen mit einem Estimator
 
@@ -59,7 +59,7 @@ Der Codeausschnitt gibt die folgenden Parameter für den `Estimator`-Konstruktor
 Parameter | BESCHREIBUNG
 --|--
 `source_directory`| Lokales Verzeichnis, das den gesamten für den Trainingsauftrag erforderlichen Code enthält. Dieser Ordner wird von Ihrem lokalen Computer auf das Remotecomputeziel kopiert. 
-`script_params`| Wörterbuch, in dem die Befehlszeilenargumente für Ihr Trainingsskript `entry_script` in Wertpaaren der Form <Befehlszeilenargument, Wert> festgelegt sind. Um ein ausführliches Flag in `script_params` anzugeben, verwenden Sie `<command-line argument, "">`.
+`script_params`| Wörterbuch, in dem die Befehlszeilenargumente für Ihr Trainingsskript `entry_script` in Form von `<command-line argument, value>`-Paaren festgelegt sind. Um ein ausführliches Flag in `script_params` anzugeben, verwenden Sie `<command-line argument, "">`.
 `compute_target`| Remotecomputeziel, auf dem Ihr Trainingsskript ausgeführt wird, in diesem Fall ein Azure Machine Learning Compute-Cluster ([AmlCompute](how-to-set-up-training-targets.md#amlcompute)). (Hinweis: Auch wenn der AmlCompute-Cluster das gängige Ziel ist, besteht auch die Möglichkeit, andere Computezieltypen wie Azure-VMs oder sogar lokale Computer auszuwählen.)
 `entry_script`| Dateipfad des Trainingsskripts (relativ zu `source_directory`), das auf dem Remotecomputeziel ausgeführt werden soll. Diese Datei und alle von ihr abhängigen Dateien sollten sich in diesem Ordner befinden.
 `conda_packages`| Liste der Python-Pakete, die über conda installiert werden und für Ihr Trainingsskript erforderlich sind.  

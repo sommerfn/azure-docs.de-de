@@ -11,13 +11,14 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/26/2018
-ms.author: malop;kumud
-ms.openlocfilehash: 99a55d0cd06e6f1a92a70b20447d300dbc05eee1
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.author: malop
+ms.reviewer: kumud
+ms.openlocfilehash: ca4908e642644ccbf349841d143bfcc18e944025
+ms.sourcegitcommit: 770b060438122f090ab90d81e3ff2f023455213b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67709535"
+ms.lasthandoff: 07/17/2019
+ms.locfileid: "68305838"
 ---
 # <a name="security-groups"></a>Sicherheitsgruppen
 <a name="network-security-groups"></a>
@@ -35,7 +36,7 @@ Eine Netzwerksicherheitsgruppe kann – innerhalb der [Grenzwerte](../azure-subs
 |NAME|Ein eindeutiger Name in der Netzwerksicherheitsgruppe.|
 |Priorität | Eine Zahl zwischen 100 und 4.096. Regeln werden in der Reihenfolge ihrer Priorität verarbeitet. Regeln mit niedrigeren Zahlen werden vor Regeln mit höheren Zahlen verarbeitet, weil die Priorität für niedrigere Zahlen höher ist. Nachdem sich für den Datenverkehr eine Übereinstimmung mit einer Regel ergibt, wird die Verarbeitung angehalten. Daher werden alle Regeln mit niedrigerer Priorität (höherer Zahl), die über die gleichen Attribute wie Regeln mit höheren Prioritäten verfügen, nicht verarbeitet.|
 |Quelle oder Ziel| Beliebiges Element oder eine einzelne IP-Adresse, ein CIDR-Block (klassenloses domänenübergreifendes Routing, z.B. 10.0.0.0/24), ein [Diensttag](#service-tags) oder eine [Anwendungssicherheitsgruppe](#application-security-groups). Wenn Sie eine Adresse für eine Azure-Ressource angeben, geben Sie die private IP-Adresse an, die der Ressource zugewiesen ist. Netzwerksicherheitsgruppen werden verarbeitet, nachdem Azure eine öffentliche IP-Adresse in eine private IP-Adresse für eingehenden Datenverkehr übersetzt hat und bevor Azure eine private IP-Adresse in eine öffentliche IP-Adresse für ausgehenden Datenverkehr übersetzt. Erfahren Sie mehr über Azure-[IP-Adressen](virtual-network-ip-addresses-overview-arm.md). Durch das Angeben eines Bereichs, eines Diensttags oder einer Anwendungssicherheitsgruppe haben Sie die Möglichkeit, weniger Sicherheitsregeln zu erstellen. Die Option zum Angeben mehrerer einzelner IP-Adressen und Bereiche (die Angabe mehrerer Diensttags oder Anwendungsgruppen ist nicht zulässig) in einer Regel wird als [Ergänzte Sicherheitsregeln](#augmented-security-rules) bezeichnet. Ergänzte Sicherheitsregeln können nur in Netzwerksicherheitsgruppen erstellt werden, die mit dem Resource Manager-Bereitstellungsmodell erstellt wurden. Es ist nicht möglich, mehrere IP-Adressen und IP-Adressbereiche in Netzwerksicherheitsgruppen anzugeben, die mit dem klassischen Bereitstellungsmodell erstellt wurden. Erfahren Sie mehr über [Azure-Bereitstellungsmodelle](../azure-resource-manager/resource-manager-deployment-model.md?toc=%2fazure%2fvirtual-network%2ftoc.json).|
-|Protocol     | TCP, UDP oder „Any“ (Alle), also (aber nicht nur) z.B. TCP, UDP und ICMP. Das Angeben von ICMP allein ist unzulässig. Wenn Sie ICMP benötigen, müssen Sie also „Any“ (Alle) verwenden. |
+|Protocol     | „TCP“, „UDP“, „ICMP“ oder „Beliebig“.|
 |Direction| Gibt an, ob die Regel für ein- oder ausgehenden Datenverkehr gilt.|
 |Portbereich     |Sie können einen einzelnen Port oder einen Bereich mit Ports angeben. Mögliche Angaben sind beispielsweise „80“ oder „10.000 - 10.005“. Das Angeben von Bereichen ermöglicht Ihnen die Erstellung von weniger Sicherheitsregeln. Ergänzte Sicherheitsregeln können nur in Netzwerksicherheitsgruppen erstellt werden, die mit dem Resource Manager-Bereitstellungsmodell erstellt wurden. In Netzwerksicherheitsgruppen, die mit dem klassischen Bereitstellungsmodell erstellt wurden, können Sie in derselben Sicherheitsregel nicht mehrere Ports oder Portbereiche angeben.   |
 |Aktion     | Zulassen oder Verweigern        |
@@ -112,19 +113,19 @@ Azure erstellt in jeder von Ihnen erstellten Netzwerksicherheitsgruppe die folge
 
 |Priorität|`Source`|Quellports|Ziel|Zielports|Protocol|Access|
 |---|---|---|---|---|---|---|
-|65000|VirtualNetwork|0 - 65535|VirtualNetwork|0 - 65535|Alle|ZULASSEN|
+|65000|VirtualNetwork|0 - 65535|VirtualNetwork|0 - 65535|Beliebig|ZULASSEN|
 
 #### <a name="allowazureloadbalancerinbound"></a>AllowAzureLoadBalancerInBound
 
 |Priorität|`Source`|Quellports|Ziel|Zielports|Protocol|Access|
 |---|---|---|---|---|---|---|
-|65001|AzureLoadBalancer|0 - 65535|0.0.0.0/0|0 - 65535|Alle|ZULASSEN|
+|65001|AzureLoadBalancer|0 - 65535|0.0.0.0/0|0 - 65535|Beliebig|ZULASSEN|
 
 #### <a name="denyallinbound"></a>DenyAllInbound
 
 |Priorität|`Source`|Quellports|Ziel|Zielports|Protocol|Access|
 |---|---|---|---|---|---|---|
-|65500|0.0.0.0/0|0 - 65535|0.0.0.0/0|0 - 65535|Alle|Verweigern|
+|65500|0.0.0.0/0|0 - 65535|0.0.0.0/0|0 - 65535|Beliebig|Verweigern|
 
 ### <a name="outbound"></a>Ausgehend
 
@@ -132,21 +133,21 @@ Azure erstellt in jeder von Ihnen erstellten Netzwerksicherheitsgruppe die folge
 
 |Priorität|`Source`|Quellports| Ziel | Zielports | Protocol | Access |
 |---|---|---|---|---|---|---|
-| 65000 | VirtualNetwork | 0 - 65535 | VirtualNetwork | 0 - 65535 | Alle | ZULASSEN |
+| 65000 | VirtualNetwork | 0 - 65535 | VirtualNetwork | 0 - 65535 | Beliebig | ZULASSEN |
 
 #### <a name="allowinternetoutbound"></a>AllowInternetOutBound
 
 |Priorität|`Source`|Quellports| Ziel | Zielports | Protocol | Access |
 |---|---|---|---|---|---|---|
-| 65001 | 0.0.0.0/0 | 0 - 65535 | Internet | 0 - 65535 | Alle | ZULASSEN |
+| 65001 | 0.0.0.0/0 | 0 - 65535 | Internet | 0 - 65535 | Beliebig | ZULASSEN |
 
 #### <a name="denyalloutbound"></a>DenyAllOutBound
 
 |Priorität|`Source`|Quellports| Ziel | Zielports | Protocol | Access |
 |---|---|---|---|---|---|---|
-| 65500 | 0.0.0.0/0 | 0 - 65535 | 0.0.0.0/0 | 0 - 65535 | Alle | Verweigern |
+| 65500 | 0.0.0.0/0 | 0 - 65535 | 0.0.0.0/0 | 0 - 65535 | Beliebig | Verweigern |
 
-In den Spalten **Quelle** und **Ziel** handelt es sich bei *VirtualNetwork*, *AzureLoadBalancer* und *Internet* um [Diensttags](#service-tags) und nicht um IP-Adressen. In der Protokollspalte steht **Alle** für TCP, UDP und ICMP. Beim Erstellen einer Regel können Sie „TCP“, „UDP“ oder „Alle“ angeben, aber das Angeben von ICMP allein ist nicht möglich. Falls für Ihre Regel ICMP benötigt wird, müssen Sie als Protokoll daher *Alle* auswählen. *0.0.0.0/0* in den Spalten **Quelle** und **Ziel** steht für alle Adressen. Clients wie Azure-Portal, Azure-Befehlszeilenschnittstelle oder PowerShell können „*“ oder „any“ für diesen Ausdruck verwenden.
+In den Spalten **Quelle** und **Ziel** handelt es sich bei *VirtualNetwork*, *AzureLoadBalancer* und *Internet* um [Diensttags](#service-tags) und nicht um IP-Adressen. In der Protokollspalte steht **Beliebig** für TCP, UDP und ICMP. Beim Erstellen einer Regel können Sie „TCP“, „UDP“, „ICMP“ oder „Beliebig“ angeben. *0.0.0.0/0* in den Spalten **Quelle** und **Ziel** steht für alle Adressen. Clients wie Azure-Portal, Azure-Befehlszeilenschnittstelle oder PowerShell können „*“ oder „any“ für diesen Ausdruck verwenden.
  
 Sie können die Standardregeln nicht entfernen, aber Sie können sie außer Kraft setzen, indem Sie Regeln mit höheren Prioritäten erstellen.
 
@@ -172,7 +173,7 @@ Da die Standardsicherheitsregel [AllowVNetInBound](#allowvnetinbound) die gesamt
 
 |Priorität|`Source`|Quellports| Ziel | Zielports | Protocol | Access |
 |---|---|---|---|---|---|---|
-| 120 | * | * | AsgDb | 1433 | Alle | Verweigern |
+| 120 | * | * | AsgDb | 1433 | Beliebig | Verweigern |
 
 ### <a name="allow-database-businesslogic"></a>Allow-Database-BusinessLogic
 

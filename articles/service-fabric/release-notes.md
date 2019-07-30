@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.service: service-fabric
 hide_comments: true
 hideEdit: true
-ms.openlocfilehash: 78fb96cae3d3d128da608183f37771b2ecf66dcf
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.openlocfilehash: 829963cf13eb1dc1b1113b6a296fe77dadb63bc4
+ms.sourcegitcommit: 920ad23613a9504212aac2bfbd24a7c3de15d549
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/17/2019
-ms.locfileid: "67165354"
+ms.lasthandoff: 07/15/2019
+ms.locfileid: "68224933"
 ---
 # <a name="service-fabric-releases"></a>Service Fabric-Versionen
 
@@ -26,7 +26,7 @@ ms.locfileid: "67165354"
 
 Dieser Artikel enthält weitere Informationen zu den neuesten Versionen und Updates für die Service Fabric-Runtime und -SDKs.
 
-## <a name="whats-new-in-service-fabric"></a>**Neuigkeiten in Service Fabric**
+## <a name="whats-new-in-service-fabric"></a>Neuigkeiten in Service Fabric
 
 ### <a name="service-fabric-65"></a>Service Fabric 6.5
 
@@ -56,6 +56,13 @@ Dies sind die Neuigkeiten in Service Fabric 6.5:
 - [SFCTL](https://docs.microsoft.com/azure/service-fabric/service-fabric-cli) wird in MacOS/Linux OneBox-Clustern standardmäßig erstellt.
 
 Weitere Informationen finden Sie in den [Versionshinweisen zu Service Fabric 6.5](https://github.com/Azure/service-fabric/blob/master/release_notes/Service_Fabric_ReleaseNotes_65.pdf).
+
+### <a name="service-fabric-65-releases"></a>Service Fabric 6.5-Releases
+
+| Herausgabedatum | Release | Weitere Informationen |
+|---|---|---|
+| 11. Juni 2019 | [Azure Service Fabric 6.5](https://blogs.msdn.microsoft.com/azureservicefabric/2019/06/11/azure-service-fabric-6-5-release/)  | [Versionshinweise](https://github.com/Azure/service-fabric/blob/master/release_notes/Service_Fabric_ReleaseNotes_65.pdf)|
+| 2\. Juli 2019 | [Azure Service Fabric 6.5 Refresh-Release](https://blogs.msdn.microsoft.com/azureservicefabric/2019/07/04/azure-service-fabric-6-5-refresh-release/)  | [Versionshinweise](https://github.com/Azure/service-fabric/blob/master/release_notes/Service_Fabric_ReleaseNotes_65CU1.pdf)  |
 
 ## <a name="previous-versions"></a>Vorherige Versionen
 

@@ -145,7 +145,7 @@ Nachdem Sie die Registrierung der benutzerdefinierten Domäne abgeschlossen habe
  
 1. Stellen Sie sicher, dass öffentliche Inhalte zum Zwischenspeichern auf dem Endpunkt verfügbar sind. Wenn der CDN-Endpunkt beispielsweise einem Speicherkonto zugeordnet ist, wird der Inhalt vom Azure CDN in einem öffentlichen Container zwischengespeichert. Stellen Sie zum Testen der benutzerdefinierten Domäne sicher, dass der Container den öffentlichen Zugriff zulässt und mindestens eine Datei enthält.
 
-2. Navigieren Sie in Ihrem Browser mithilfe der benutzerdefinierten Domäne zur Adresse der Datei. Wenn Ihre benutzerdefinierte Domäne beispielsweise „www.contoso.com“ lautet, sollte die URL zur zwischengespeicherten Datei in etwa wie folgt lauten: „http:\//www.contoso.com/mein-öffentlicher-Container/meine-Datei.jpg“. Vergewissern Sie sich, dass Ergebnis mit dem Ergebnis des direkten Zugriffs auf den CDN-Endpunkt unter *&lt;Endpunkthostname&gt;* .azureedge.net identisch ist.
+2. Navigieren Sie in Ihrem Browser mithilfe der benutzerdefinierten Domäne zur Adresse der Datei. Wenn Ihre benutzerdefinierte Domäne beispielsweise www.contoso.com lautet, sollte die URL zur zwischengespeicherten Datei in etwa wie folgt lauten: „http:\//www.contoso.com/mein-öffentlicher-Container/meine-Datei.jpg“. Vergewissern Sie sich, dass Ergebnis mit dem Ergebnis des direkten Zugriffs auf den CDN-Endpunkt unter *&lt;Endpunkthostname&gt;* .azureedge.net identisch ist.
 
 
 ## <a name="map-the-permanent-custom-domain"></a>Zuordnen der permanenten benutzerdefinierten Domäne

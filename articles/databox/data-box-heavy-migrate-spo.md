@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: heavy
 ms.topic: tutorial
-ms.date: 07/03/2019
+ms.date: 07/18/2019
 ms.author: alkohli
-ms.openlocfilehash: d74539ec1de8f503b0d0e423adf6273d1422fed5
-ms.sourcegitcommit: ccb9a7b7da48473362266f20950af190ae88c09b
+ms.openlocfilehash: 4955b28dff3193a95950912562cc3b6ec789479d
+ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67592337"
+ms.lasthandoff: 07/18/2019
+ms.locfileid: "68325267"
 ---
 # <a name="use-the-azure-data-box-heavy-to-migrate-your-file-share-content-to-sharepoint-online"></a>Verwenden der Azure Data Box Heavy zum Migrieren von Dateifreigabeinhalten zu SharePoint Online
 
@@ -41,7 +41,7 @@ In diesem Artikel wird erläutert, wie Data Box Heavy zum Migrieren von Dateifre
 
 ## <a name="workflow-overview"></a>Übersicht über Workflow
 
-Für diesen Workflow müssen Sie Schritte mit der Azure Data Box Heavy sowie in SharePoint online ausführen.
+Für diesen Workflow müssen Sie Schritte für Azure Data Box Heavy sowie in SharePoint Online ausführen.
 Die folgenden Schritte beziehen sich auf die Azure Data Box Heavy.
 
 1. Bestellen Sie die Azure Data Box Heavy.
@@ -66,8 +66,8 @@ Führen Sie die folgenden Schritte aus, um Daten auf die Data Box-Heavy zu kopie
 2. [Richten Sie die Data Box Heavy](data-box-heavy-deploy-set-up.md) ein, nachdem Sie sie erhalten haben. Sie verkabeln und konfigurieren beide Knoten auf dem Gerät.
 3. [Kopieren Sie Daten auf die Azure Data Box Heavy](data-box-heavy-deploy-copy-data.md). Stellen Sie während des Kopiervorgangs Folgendes sicher:
 
-    - Verwenden Sie zum Kopieren der Daten nur den Ordner *AzureFile* in der Data Box Heavy. Der Grund dafür ist, dass die Daten in einer Azure-Dateifreigabe und nicht in Block- oder Seitenblobs enthalten sein sollen.
-    - Kopieren Sie Dateien in einen Ordner innerhalb des Ordners *AzureFile*. Durch einen Unterordner innerhalb des Ordners *AzureFile* wird eine Dateifreigabe erstellt. Bei direkt in den Ordner *AzureFile* kopierten Dateien tritt ein Fehler auf, und die Dateien werden als Blockblobs hochgeladen. Dies ist die Dateifreigabe, die Sie im nächsten Schritt auf dem virtuellen Computer bereitstellen.
+    - Verwenden Sie zum Kopieren der Daten nur den Ordner *StorageAccountName_AzFile* in Data Box Heavy. Der Grund dafür ist, dass die Daten in einer Azure-Dateifreigabe und nicht in Block- oder Seitenblobs enthalten sein sollen.
+    - Kopieren Sie Dateien in einen Ordner im Ordner *StorageAccountName_AzFile*. Durch einen Unterordner innerhalb des Ordners *StorageAccountName_AzFile* wird eine Dateifreigabe erstellt. Bei direkt in den Ordner *StorageAccountName_AzFile* kopierten Dateien tritt ein Fehler auf, und die Dateien werden als Blockblobs hochgeladen. Dies ist die Dateifreigabe, die Sie im nächsten Schritt auf dem virtuellen Computer bereitstellen.
     - Kopieren Sie die Daten auf beide Knoten in der Data Box Heavy.
 3. Führen Sie die [Versandvorbereitung](data-box-heavy-deploy-picked-up.md#prepare-to-ship) für das Gerät durch. Eine erfolgreiche Vorbereitung für den Versand gewährleistet das erfolgreiche Hochladen der Dateien in Azure.
 4. [Senden Sie das Gerät zurück](data-box-heavy-deploy-picked-up.md#ship-data-box-heavy-back).

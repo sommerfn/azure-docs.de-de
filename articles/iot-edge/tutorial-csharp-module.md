@@ -9,12 +9,12 @@ ms.date: 04/23/2019
 ms.topic: tutorial
 ms.service: iot-edge
 ms.custom: mvc, seodec18
-ms.openlocfilehash: b9ced0b08ed26057a45959f759fb90cbd7efe2a5
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.openlocfilehash: 305804682ede9833619837807d6f174ec670560e
+ms.sourcegitcommit: c556477e031f8f82022a8638ca2aec32e79f6fd9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/27/2019
-ms.locfileid: "66239785"
+ms.lasthandoff: 07/23/2019
+ms.locfileid: "68414245"
 ---
 # <a name="tutorial-develop-a-c-iot-edge-module-for-linux-devices"></a>Tutorial: Entwickeln eines C#-IoT Edge-Moduls für Linux-Geräte
 
@@ -42,6 +42,9 @@ Informieren Sie sich anhand der nachstehenden Tabelle über Ihre Optionen zum En
 | -- | ------------------ | ------------- |
 | **Linux AMD64** | ![C#-Module für LinuxAMD64 in VS Code](./media/tutorial-c-module/green-check.png) | ![C#-Module für LinuxAMD64 in Visual Studio](./media/tutorial-c-module/green-check.png) |
 | **Linux ARM32** | ![C#-Module für LinuxARM32 in VS Code](./media/tutorial-c-module/green-check.png) | ![C#-Module für LinuxARM32 in Visual Studio](./media/tutorial-c-module/green-check.png) |
+
+>[!NOTE]
+>Unterstützung für Linux ARM64-Geräte ist in der [öffentlichen Vorschau](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) verfügbar. Weitere Informationen finden Sie unter [Develop and debug ARM64 IoT Edge modules in Visual Studio Code (preview)](https://devblogs.microsoft.com/iotdev/develop-and-debug-arm64-iot-edge-modules-in-visual-studio-code-preview) (Entwickeln und Debuggen von ARM64 IoT Edge-Modulen in Visual Studio Code (Vorschauversion)).
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -276,7 +279,7 @@ Im vorherigen Abschnitt haben Sie eine IoT Edge-Projektmappe erstellt und dem �
 
 2. Klicken Sie im VS Code-Explorer mit der rechten Maustaste auf die Datei **deployment.template.json**, und klicken Sie anschließend auf **Build and Push IoT Edge solution** (IoT Edge-Projektmappe erstellen und übertragen).
 
-   Der Befehl zum Erstellen und Übertragen per Push startet drei Vorgänge. Zuerst wird in der Projektmappe ein neuer Ordner mit dem Namen **config** erstellt. Darin ist das vollständige Bereitstellungsmanifest gespeichert, das aus Informationen in der Bereitstellungsvorlage und anderen Projektmappendateien erstellt wurde. Danach führt er `docker build` zum Erstellen des Containerimages aus, das auf der entsprechenden Dockerfile-Datei für Ihre Zielarchitektur basiert. Und schließlich führt er `docker push` aus, um das Imagerepository per Push in Ihre Containerregistrierung zu übertragen.
+   Der Befehl zum Erstellen und Übertragen per Push startet drei Vorgänge. Zuerst erstellt er in der Projektmappe einen neuen Ordner mit dem Namen **config**. Darin ist das vollständige Bereitstellungsmanifest gespeichert, das aus Informationen in der Bereitstellungsvorlage und anderen Projektmappendateien erstellt wurde. Danach führt er `docker build` zum Erstellen des Containerimages aus, das auf der entsprechenden Dockerfile-Datei für Ihre Zielarchitektur basiert. Und schließlich führt er `docker push` aus, um das Imagerepository per Push in Ihre Containerregistrierung zu übertragen.
 
 ## <a name="deploy-and-run-the-solution"></a>Bereitstellen und Ausführen der Projektmappe
 
@@ -300,9 +303,9 @@ Der Status Ihres IoT Edge-Geräts wird im Abschnitt **Azure IoT Hub Devices** (A
 
 1. Klicken Sie im Visual Studio Code-Explorer mit der rechten Maustaste auf den Namen Ihres IoT Edge-Geräts, und wählen Sie **Start Monitoring Built-in Event Endpoint** (Überwachung des integrierten Ereignisendpunkts starten) aus.
 
-2. Zeigen Sie die Nachrichten an, die auf Ihrem IoT-Hub eintreffen. Möglicherweise dauert es eine Weile, bis die Nachrichten eintreffen, weil das IoT Edge-Gerät erst seine neue Bereitstellung empfangen und alle Module starten muss. Danach wird bei den am Code von „CSharpModule“ vorgenommenen Änderungen gewartet, bis die Maschinentemperatur 25 Grad erreicht hat, bevor Nachrichten gesendet werden. Außerdem fügt das Gerät allen Nachrichten, die diesen Temperaturschwellenwert erreichen, den Nachrichtentyp **Alert** (Warnung) hinzu. 
+2. Zeigen Sie die Nachrichten an, die auf Ihrem IoT-Hub eintreffen. Möglicherweise dauert es eine Weile, bis die Nachrichten eintreffen, weil das IoT Edge-Gerät erst seine neue Bereitstellung empfangen und alle Module starten muss. Danach wird bei den am Code von „CModule“ vorgenommenen Änderungen gewartet, bis die Maschinentemperatur 25 Grad erreicht hat, bevor Nachrichten gesendet werden. Außerdem fügt das Gerät allen Nachrichten, die diesen Temperaturschwellenwert erreichen, den Nachrichtentyp **Alert** (Warnung) hinzu. 
 
-   ![Anzeigen von Nachrichten, die auf dem IoT-Hub eintreffen](./media/tutorial-csharp-module/view-d2c-message.png)
+   ![Anzeigen von Nachrichten, die in der IoT Hub-Instanz eingehen](./media/tutorial-csharp-module/view-d2c-message.png)
  
 ## <a name="edit-the-module-twin"></a>Bearbeiten des Modulzwillings
 

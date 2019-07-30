@@ -16,12 +16,12 @@ ms.author: jmprieur
 ms.reviwer: brandwe
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: cb1e322e0424debc14a29ad8a516c95acea54714
-ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
+ms.openlocfilehash: 5bd19b6094d68277130916b5cda565ba9e633c59
+ms.sourcegitcommit: e9c866e9dad4588f3a361ca6e2888aeef208fc35
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "67872109"
+ms.lasthandoff: 07/19/2019
+ms.locfileid: "68334113"
 ---
 # <a name="sign-in-users-and-call-the-microsoft-graph-from-an-android-app"></a>Anmelden von Benutzern und Aufrufen von Microsoft Graph aus einer Android-App
 
@@ -45,7 +45,7 @@ Dies gilt insbesondere in folgenden Fällen:
 
 Dieses Beispiel verwendet die Microsoft-Authentifizierungsbibliothek (Microsoft Authentication Library, MSAL) für Android zum Implementieren der Authentifizierung: [com.microsoft.identity.client](https://javadoc.io/doc/com.microsoft.identity.client/msal).
 
- Die MSAL erneuert Token automatisch, ermöglicht das einmalige Anmelden zwischen anderen Apps auf dem Gerät und verwaltet die Konten.
+ MSAL erneuert Token automatisch, ermöglicht das einmalige Anmelden zwischen anderen Apps auf dem Gerät und verwaltet die Konten.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -411,7 +411,7 @@ private AuthenticationCallback getAuthInteractiveCallback() {
 Als Nächstes fügen Sie Unterstützung für die Abmeldung hinzu.
 
 > [!Important]
-> Die Abmeldung mit der MSAL entfernt alle bekannten Informationen über einen Benutzer aus der Anwendung. Der Benutzer verfügt dennoch über eine aktive Sitzung auf seinem Gerät. Wenn der Benutzer versucht, sich erneut anzumelden, wird möglicherweise eine Benutzeroberfläche zum Anmelden angezeigt, die Anmeldeinformationen müssen jedoch möglicherweise nicht erneut eingegeben werden, da die Gerätesitzung noch aktiv ist.
+> Die Abmeldung mit MSAL entfernt alle bekannten Informationen über einen Benutzer aus der Anwendung. Der Benutzer verfügt aber dennoch über eine aktive Sitzung auf seinem Gerät. Wenn der Benutzer versucht, sich erneut anzumelden, wird möglicherweise eine Benutzeroberfläche zum Anmelden angezeigt, die Anmeldeinformationen müssen jedoch möglicherweise nicht erneut eingegeben werden, da die Gerätesitzung noch aktiv ist.
 
 Um eine Abmeldefunktion hinzuzufügen, fügen Sie die folgende Methode in die `MainActivity`-Klasse ein. Diese Methode durchläuft alle Konten und entfernt sie:
 
@@ -521,7 +521,7 @@ private void updateGraphUI(JSONObject graphResponse) {
 
 #### <a name="multi-account-applications"></a>Anwendungen mit mehreren Konten
 
-Diese App ist für ein Szenario mit einem einzelnen Konto konzipiert. Die MSAL unterstützt auch Szenarien mit mehreren Konten, in diesem Fall müssen die Apps jedoch einige zusätzliche Schritte ausführen. Sie müssen eine Benutzeroberfläche erstellen, um dem Benutzer bei der Auswahl des Kontos zu helfen, das er für die einzelnen Aktionen verwenden möchte, die Token erfordern. Als Alternative kann Ihre Anwendung eine Heuristik implementieren, um das zu verwendende Konto über die `getAccounts()`-Methode auszuwählen.
+Diese App ist für ein Szenario mit einem einzelnen Konto konzipiert. MSAL unterstützt auch Szenarien mit mehreren Konten, in diesem Fall müssen die Apps jedoch einige zusätzliche Schritte ausführen. Sie müssen eine Benutzeroberfläche erstellen, um dem Benutzer bei der Auswahl des Kontos zu helfen, das er für die einzelnen Aktionen verwenden möchte, die Token erfordern. Als Alternative kann Ihre Anwendung eine Heuristik implementieren, um das zu verwendende Konto über die `getAccounts()`-Methode auszuwählen.
 
 ## <a name="test-your-app"></a>Testen Ihrer App
 
@@ -538,3 +538,8 @@ Wenn sich ein Benutzer zum ersten Mal bei Ihrer App anmeldet, wird er von Micros
 ## <a name="get-help"></a>Hier erhalten Sie Hilfe
 
 Sollten Probleme mit diesem Tutorial oder mit Microsoft Identity Platform auftreten, besuchen Sie die Seite [Hilfe und Support](https://docs.microsoft.com/azure/active-directory/develop/developer-support-help-options).
+
+Helfen Sie uns, Microsoft Identity Platform zu verbessern. Teilen Sie uns Ihre Meinung mit, indem Sie eine kurze Umfrage mit zwei Fragen beantworten.
+
+> [!div class="nextstepaction"]
+> [Umfrage zu Microsoft Identity Platform](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbRyKrNDMV_xBIiPGgSvnbQZdUQjFIUUFGUE1SMEVFTkdaVU5YT0EyOEtJVi4u)

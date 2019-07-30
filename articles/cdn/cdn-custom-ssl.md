@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 06/17/2019
 ms.author: magattus
 ms.custom: mvc
-ms.openlocfilehash: 9cc18c7442a55c14ad759201aaf195d2d1bf3309
-ms.sourcegitcommit: ccb9a7b7da48473362266f20950af190ae88c09b
+ms.openlocfilehash: f22273a28d5e4207712bdba71ef788629d51916e
+ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67594063"
+ms.lasthandoff: 07/18/2019
+ms.locfileid: "68321668"
 ---
 # <a name="tutorial-configure-https-on-an-azure-cdn-custom-domain"></a>Tutorial: Konfigurieren von HTTPS in einer benutzerdefinierten Azure CDN-Domäne
 
@@ -190,15 +190,11 @@ Die automatische Überprüfung dauert normalerweise einige Stunden. Öffnen Sie 
 ### <a name="custom-domain-is-not-mapped-to-your-cdn-endpoint"></a>Benutzerdefinierte Domäne ist Ihrem CDN-Endpunkt nicht zugeordnet
 
 >[!NOTE]
->Für das Profil **Azure CDN von Akamai** ist derzeit keine E-Mail-basierte Überprüfung der Eigentümerschaft einer benutzerdefinierten Domäne möglich. Wenn Sie **Azure CDN von Akamai** verwenden, muss Ihre benutzerdefinierte Domäne wie oben beschrieben mit einem CNAME-Eintrag Ihrem CDN-Endpunkt zugeordnet werden.  Dieses Feature befindet sich momentan in unserem Backlog. 
+>Wenn Sie **Azure CDN von Akamai** verwenden, muss Ihre benutzerdefinierte Domäne wie oben beschrieben mit einem CNAME-Eintrag Ihrem CDN-Endpunkt zugeordnet werden.  Dieses Feature befindet sich momentan in unserem Backlog. 
 
 Wenn der CNAME-Eintrag die cdnverify-Unterdomäne enthält, folgen Sie den weiteren Anweisungen in diesem Schritt.
 
-Nachdem Sie eine Anforderung zur Aktivierung von HTTPS für Ihre benutzerdefinierte Domäne übermittelt haben, überprüft die DigiCert-CA, ob die Domäne wirklich Ihnen gehört. Hierzu setzt sich DigiCert mit dem Registranten der Domäne in Verbindung, der in den [WHOIS](http://whois.domaintools.com/)-Registranteninformationen der Domäne angegeben ist. Der Kontakt wird über die E-Mail-Adresse (Standardverfahren) oder die Telefonnummer in der WHOIS-Registrierung hergestellt. HTTPS wird für Ihre benutzerdefinierte Domäne erst nach Abschluss der Domänenüberprüfung aktiviert. Die Genehmigung der Domäne muss innerhalb von sechs Werktagen erfolgen. Anforderungen, die nicht innerhalb von sechs Werktagen genehmigt werden, werden automatisch abgebrochen. 
-
-![WHOIS-Datensatz](./media/cdn-custom-ssl/whois-record.png)
-
-DigiCert sendet zur Überprüfung auch eine E-Mail an zusätzliche E-Mail-Adressen. Falls die WHOIS-Registranteninformationen privat sind, vergewissern Sie sich, dass Sie die Bestätigung direkt über eine der folgenden Adressen vornehmen können:
+DigiCert sendet zur Überprüfung eine E-Mail an die folgenden E-Mail-Adressen. Vergewissern Sie sich, dass Sie die Bestätigung direkt über eine der folgenden Adressen vornehmen können:
 
 admin@&lt;Ihr-Domänenname.com&gt;  
 administrator@&lt;Ihr-Domänenname.com&gt;  
@@ -206,7 +202,7 @@ webmaster@&lt;Ihr-Domänenname.com&gt;
 hostmaster@&lt;Ihr-Domänenname.com&gt;  
 postmaster@&lt;Ihr-Domänenname.com&gt;  
 
-Sie sollten ähnlich wie im folgenden Beispiel nach wenigen Minuten eine E-Mail-Nachricht erhalten, in der Sie aufgefordert werden, die Anforderung zu genehmigen. Wenn Sie einen Spamfilter verwenden, fügen Sie admin@digicert.com der Positivliste hinzu. Sollten Sie nach 24 Stunden noch keine E-Mail erhalten haben, setzen Sie sich mit dem Microsoft-Support in Verbindung.
+Sie sollten ähnlich wie im folgenden Beispiel nach wenigen Minuten eine E-Mail-Nachricht erhalten, in der Sie aufgefordert werden, die Anforderung zu genehmigen. Wenn Sie einen Spamfilter verwenden, fügen Sie verification@digicert.com der Positivliste hinzu. Sollten Sie nach 24 Stunden noch keine E-Mail erhalten haben, setzen Sie sich mit dem Microsoft-Support in Verbindung.
     
 ![E-Mail zur Bestätigung der Domäne](./media/cdn-custom-ssl/domain-validation-email.png)
 

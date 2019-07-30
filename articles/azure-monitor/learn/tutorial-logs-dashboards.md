@@ -14,12 +14,12 @@ ms.topic: tutorial
 ms.date: 06/19/2019
 ms.author: magoedte
 ms.custom: mvc
-ms.openlocfilehash: 93cda8680bc665055d449e86c24d6565f6fc525f
-ms.sourcegitcommit: 2d3b1d7653c6c585e9423cf41658de0c68d883fa
+ms.openlocfilehash: c859fb9b8b3509e8369559a3a9a4d45cb4e34125
+ms.sourcegitcommit: c556477e031f8f82022a8638ca2aec32e79f6fd9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/20/2019
-ms.locfileid: "67296405"
+ms.lasthandoff: 07/23/2019
+ms.locfileid: "68414170"
 ---
 # <a name="create-and-share-dashboards-of-log-analytics-data"></a>Erstellen und Freigeben von Dashboards von Log Analytics-Daten
 
@@ -75,7 +75,7 @@ Speichern Sie die Abfrage durch Auswählen der Schaltfläche **Speichern** oben 
 
 ![Speichern der Abfrage](media/tutorial-logs-dashboards/save-query.png)
 
-Geben Sie unter **Abfrage speichern** einen Namen wie z.B. *Azure-VMs – Prozessorauslastung* und eine Kategorie wie z.B. *Dashboards* ein, und klicken Sie dann auf **Speichern**.  Auf diese Weise können Sie eine Bibliothek für allgemeine Abfragen erstellen, die Sie verwenden und ändern können.  Heften Sie dies schließlich mit Auswahl der Schaltfläche **Anheften** in der oberen rechten Ecke der Seite an das zuvor erstellte freigegebene Dashboard an, und wählen Sie dann den Dashboardnamen aus.
+Geben Sie unter **Abfrage speichern** einen Namen wie z.B. *Azure-VMs – Prozessorauslastung* und eine Kategorie wie z.B. *Dashboards* ein, und klicken Sie dann auf **Speichern**.  Auf diese Weise können Sie eine Bibliothek für allgemeine Abfragen erstellen, die Sie verwenden und ändern können.  Heften Sie dies schließlich mit Auswahl der Schaltfläche **An Dashboard anheften** in der oberen rechten Ecke der Seite an das zuvor erstellte freigegebene Dashboard an, und wählen Sie dann den Dashboardnamen aus.
 
 Jetzt haben Sie eine Abfrage an das Dashboard geheftet und werden feststellen, dass sie mit einem allgemeinen Titel und darunter mit einem Kommentar versehen ist.
 

@@ -5,19 +5,19 @@ services: virtual-wan
 author: cherylmc
 ms.service: virtual-wan
 ms.topic: include
-ms.date: 06/07/2019
+ms.date: 07/22/2019
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: 9cad403e39239ea92aa432ef3234c5388bfa95c7
-ms.sourcegitcommit: 2e4b99023ecaf2ea3d6d3604da068d04682a8c2d
+ms.openlocfilehash: c46c11ead645b93d7710d1e11636037e4dcaf8e7
+ms.sourcegitcommit: a874064e903f845d755abffdb5eac4868b390de7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67673341"
+ms.lasthandoff: 07/24/2019
+ms.locfileid: "68444566"
 ---
 ### <a name="what-is-the-difference-between-an-azure-virtual-network-gateway-vpn-gateway-and-an-azure-virtual-wan-vpngateway"></a>Was ist der Unterschied zwischen einem Gateway für virtuelle Azure-Netzwerke (VPN Gateway) und einem Azure Virtual WAN-Gateway (vpngateway)?
 
-Virtual WAN ermöglicht eine umfassende Site-to-Site-Konnektivität und ist auf Durchsatz, Skalierbarkeit und Benutzerfreundlichkeit ausgelegt. ExpressRoute und Point-to-Site-Konnektivität sind derzeit in der Vorschauphase. CPE-Branchgeräte werden automatisch bereitgestellt und mit Azure Virtual WAN verbunden. Diese Geräte sind über ein ständig wachsendes Ökosystem von SD-WAN- und VPN-Partnern erhältlich. Siehe die [Liste der bevorzugten Partner](https://go.microsoft.com/fwlink/p/?linkid=2019615).
+Virtual WAN ermöglicht eine umfassende Site-to-Site-Konnektivität und ist auf Durchsatz, Skalierbarkeit und Benutzerfreundlichkeit ausgelegt. ExpressRoute für Virtual WAN-Konnektivität befindet sich derzeit in der Vorschauphase. CPE-Branchgeräte werden automatisch bereitgestellt und mit Azure Virtual WAN verbunden. Diese Geräte sind über ein ständig wachsendes Ökosystem von SD-WAN- und VPN-Partnern erhältlich. Siehe die [Liste der bevorzugten Partner](https://go.microsoft.com/fwlink/p/?linkid=2019615).
 
 ### <a name="what-is-a-branch-connection-to-azure-virtual-wan"></a>Was ist eine Branchverbindung mit Azure Virtual WAN?
 
@@ -101,7 +101,7 @@ Eine einfache Konfiguration eines Virtual WAN mit einem Hub und einem VPN-Stando
 
 ### <a name="is-branch-to-branch-connectivity-allowed-in-virtual-wan"></a>Ist die Konnektivität zwischen Branches für Virtual WAN zulässig?
 
-Ja. Die Konnektivität zwischen Zweigstellen ist in Virtual WAN für VPN und VPN zu ExpressRoute zulässig. Site-to-Site-VPN ist allgemein verfügbar. ExpressRoute und Point-to-Site-Konnektivität sind derzeit in der Vorschauphase.
+Ja. Die Konnektivität zwischen Zweigstellen ist in Virtual WAN für VPN und VPN zu ExpressRoute zulässig. Site-to-Site-VPN ist allgemein verfügbar. ExpressRoute befindet sich derzeit in der Vorschauphase.
 
 ### <a name="does-branch-to-branch-traffic-traverse-through-the-azure-virtual-wan"></a>Läuft der Datenverkehr zwischen den Branches über Azure Virtual WAN?
 
@@ -121,7 +121,7 @@ Nein. Für diese Virtual WAN-Instanz ist keine ExpressRoute-Verbindung mit jeder
 
 ### <a name="is-there-a-network-throughput-limit-when-using-azure-virtual-wan"></a>Gibt es bei Verwendung von Azure Virtual WAN einen Grenzwert für den Netzwerkdurchsatz?
 
-Die Anzahl von Branches ist auf 1.000 Verbindungen pro Hub/Region und auf maximal 2 G im Hub begrenzt. Eine Ausnahme stellt die Region „USA, Westen-Mitte“ dar, für die insgesamt 20 GBit/s verfügbar sind. Für die Zukunft ist die Einführung von 20 GBit/s auch für andere Regionen geplant.
+Die Anzahl von Branches ist auf 1000 Verbindungen pro Hub/Region und auf maximal 20 GBit/s im Hub begrenzt.
 
 ### <a name="how-many-vpn-connections-does-a-virtual-wan-hub-support"></a>Wie viele VPN-Verbindungen werden von einem Virtual WAN-Hub unterstützt?
 

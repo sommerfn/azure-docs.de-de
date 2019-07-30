@@ -6,16 +6,18 @@ author: alkohli
 ms.service: databox
 ms.subservice: disk
 ms.topic: tutorial
-ms.date: 04/16/2019
+ms.date: 07/23/2019
 ms.author: alkohli
 Customer intent: As an IT admin, I need to be able to order Data Box Disk to upload on-premises data from my server onto Azure.
-ms.openlocfilehash: 70890dcd72cadc55e56410381a94ac071b248a91
-ms.sourcegitcommit: 72f1d1210980d2f75e490f879521bc73d76a17e1
+ms.openlocfilehash: 336cc7dae00d06e38e4be8671f1cb11ed73e5edc
+ms.sourcegitcommit: c556477e031f8f82022a8638ca2aec32e79f6fd9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/14/2019
-ms.locfileid: "67147526"
+ms.lasthandoff: 07/23/2019
+ms.locfileid: "68414648"
 ---
+::: zone target="docs"
+
 # <a name="tutorial-copy-data-to-azure-data-box-disk-and-verify"></a>Tutorial: Kopieren von Daten auf die Azure Data Box Disk und Durchführen der Überprüfung
 
 In diesem Tutorial wird beschrieben, wie Sie Daten von Ihrem Hostcomputer kopieren und anschließend Prüfsummen generieren, um die Datenintegrität zu überprüfen.
@@ -89,7 +91,7 @@ Führen Sie die folgenden Schritte aus, um eine Verbindung herzustellen und Date
     |Parameter/Optionen  |BESCHREIBUNG |
     |--------------------|------------|
     |`Source`            | Gibt den Pfad zum Quellverzeichnis an.        |
-    |Ziel       | Gibt den Pfad zum Zielverzeichnis an.        |
+    |Destination       | Gibt den Pfad zum Zielverzeichnis an.        |
     |/E                  | Kopiert Unterverzeichnisse, einschließlich der leeren Verzeichnisse. |
     |/MT[:N]             | Erstellt Multithread-Kopien mit N Threads, wobei N hier für eine ganze Zahl zwischen 1 und 128 steht. <br>Der Standardwert für N ist „8“.        |
     |/R: \<N>             | Gibt die Anzahl von Wiederholungsversuchen für fehlerhafte Kopiervorgänge an. Der Standardwert von N ist „1.000.000“ (eine Million Wiederholungen).        |
@@ -287,3 +289,43 @@ Fahren Sie mit dem nächsten Tutorial fort, um zu erfahren, wie Sie den Data Box
 
 > [!div class="nextstepaction"]
 > [Zurücksenden Ihres Azure Data Box-Datenträgers an Microsoft](./data-box-disk-deploy-picked-up.md)
+
+::: zone-end
+
+::: zone target="chromeless"
+
+## <a name="copy-data-to-disks"></a>Kopieren von Daten auf Datenträger
+
+Führen Sie die folgenden Schritte aus, um eine Verbindung herzustellen und Daten von Ihrem Computer in Data Box Disk zu kopieren.
+
+1. Zeigen Sie den Inhalt des entsperrten Laufwerks an. Die Liste der vorab erstellten Ordner und Unterordner im Laufwerk unterscheidet sich je nach den bei der Data Box Disk-Bestellung ausgewählten Optionen.
+2. Kopieren Sie die Daten in Ordner, die das richtige Datenformat aufweisen. Kopieren Sie beispielsweise unstrukturierte Daten in den Ordner *BlockBlob*, VHD- oder VHDX-Daten in den Ordner *PageBlob* und Dateien in *AzureFile*. Falls das Datenformat nicht mit dem entsprechenden Ordner (Speichertyp) übereinstimmt, tritt für den Datenupload in Azure während eines späteren Schritts ein Fehler auf.
+
+    - Im Azure-Speicherkonto wird für jeden Unterordner der Ordner „BlockBlob“ und „PageBlob“ ein Container erstellt. Alle Dateien in den Ordnern *BlockBlob* und *PageBlob* werden in den Standardcontainer „$root“ unter dem Azure Storage-Konto kopiert. 
+    - Alle Dateien im Container „$root“ werden immer als Blockblobs hochgeladen.
+    - Kopieren Sie Dateien in einen Ordner innerhalb des Ordners *AzureFile*. Durch einen Unterordner innerhalb des Ordners *AzureFile* wird eine Dateifreigabe erstellt. Bei direkt in den Ordner *AzureFile* kopierten Dateien tritt ein Fehler auf, und die Dateien werden als Blockblobs hochgeladen.
+    - Falls im Stammverzeichnis Dateien und Ordner vorhanden sind, müssen Sie diese in einen anderen Ordner verschieben, bevor Sie mit dem Kopieren von Daten beginnen.
+    - Wenn Ihre Bestellung „Verwaltete Datenträger“ als ein Speicherziel umfasst, sehen Sie sich die Namenskonventionen für [verwaltete Datenträger](data-box-disk-limits.md#managed-disk-naming-conventions) an.
+
+    > [!IMPORTANT]
+    > Für alle Container, Blobs und Dateien müssen die [Azure-Namenskonventionen](data-box-disk-limits.md#azure-block-blob-page-blob-and-file-naming-conventions) und [Größenbeschränkungen für Azure-Objekte](data-box-disk-limits.md#azure-object-size-limits) eingehalten werden. Wenn diese Regeln oder Einschränkungen nicht beachtet werden, tritt beim Datenupload in Azure ein Fehler auf.
+
+3. Verwenden Sie Drag & Drop im Datei-Explorer oder ein beliebiges SMB-kompatibles Dateikopiertool (beispielsweise Robocopy), um Ihre Daten zu kopieren. Mehrere Kopieraufträge können mit dem folgenden Befehl initiiert werden:
+
+    ```
+    Robocopy <source> <destination>  * /MT:64 /E /R:1 /W:1 /NFL /NDL /FFT /Log:c:\RobocopyLog.txt
+    ```
+4. Öffnen Sie den Zielordner, um die kopierten Dateien anzuzeigen und zu überprüfen. Laden Sie die Protokolldateien herunter, falls während des Kopierprozesses Fehler auftreten, um die Problembehandlung durchzuführen. Die Protokolldateien befinden sich an den Speicherorten, die für den Robocopy-Befehl angegeben wurden.
+
+Verwenden Sie dieses optionale Verfahren zum [Aufteilen und Kopieren](data-box-disk-deploy-copy-data.md#split-and-copy-data-to-disks), wenn Sie mehrere Datenträger verwenden und über ein umfangreiches Dataset verfügen, das aufgeteilt und auf alle Datenträger kopiert werden muss.
+
+## <a name="validate-data"></a>Überprüfen der Daten
+
+Gehen Sie zum Überprüfen Ihrer Daten wie folgt vor:
+
+1. Führen Sie die Datei `DataBoxDiskValidation.cmd` für die Überprüfung der Prüfsumme im Ordner *DataBoxDiskImport* Ihres Laufwerks aus.
+2. Verwenden Sie Option 2, um Ihre Dateien zu überprüfen und Prüfsummen zu generieren. Je nach Größe Ihrer Daten kann dieser Schritt eine Weile dauern. Falls bei der Überprüfung und Generierung der Prüfsumme Fehler auftreten, werden Sie benachrichtigt und erhalten einen Link zu den Fehlerprotokollen.
+
+    Wenn während der Validierung Fehler auftreten, siehe [Beheben von Validierungsfehlern](data-box-disk-troubleshoot.md).
+
+::: zone-end

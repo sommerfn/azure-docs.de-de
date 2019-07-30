@@ -13,24 +13,20 @@ ms.topic: tutorial
 ms.date: 05/30/2019
 ms.author: yegu
 ms.custom: mvc
-ms.openlocfilehash: 2cb9ad28a21842987f8c0f7c75151ab8c7fe6fa0
-ms.sourcegitcommit: 4cdd4b65ddbd3261967cdcd6bc4adf46b4b49b01
+ms.openlocfilehash: d41ce06279536e3479b96d8d7afedf81624dbc9b
+ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/06/2019
-ms.locfileid: "66735809"
+ms.lasthandoff: 07/18/2019
+ms.locfileid: "68326599"
 ---
 # <a name="quickstart-route-azure-app-configuration-events-to-a-web-endpoint-with-azure-cli"></a>Schnellstart: Weiterleiten von Azure App Configuration-Ereignissen an einen Webendpunkt mit der Azure-Befehlszeilenschnittstelle
 
-Benutzer von Azure App Configuration können Ereignisse abonnieren, die bei der Änderung von Schlüssel-Wert-Paaren ausgegeben werden. Diese Ereignisse können Webhooks, Azure Functions, Azure Storage-Warteschlangen oder andere Ereignishandler auslösen, die von [Azure Event Grid](https://docs.microsoft.com/azure/event-grid/event-handlers) unterstützt werden. In diesem Artikel erfahren Sie, wie Sie mithilfe der Azure-Befehlszeilenschnittstelle Azure App Configuration-Ereignisse abonnieren.
+In dieser Schnellstartanleitung erfahren Sie, wie Sie Azure App Configuration-Ereignisabonnements einrichten, um Schlüssel-Wert-Änderungsereignisse an einen Webendpunkt zu senden. Benutzer von Azure App Configuration können Ereignisse abonnieren, die bei der Änderung von Schlüssel-Wert-Paaren ausgegeben werden. Diese Ereignisse können Webhooks, Azure Functions, Azure Storage-Warteschlangen oder andere Ereignishandler auslösen, die von Azure Event Grid unterstützt werden. Üblicherweise senden Sie Ereignisse an einen Endpunkt, der die Ereignisdaten verarbeitet und entsprechende Aktionen ausführt. Der Einfachheit halber senden Sie die Ereignisse in diesem Artikel allerdings an eine Web-App, die die Nachrichten sammelt und anzeigt.
 
-Üblicherweise senden Sie Ereignisse an einen Endpunkt, der die Ereignisdaten verarbeitet und entsprechende Aktionen ausführt. Der Einfachheit halber senden Sie die Ereignisse in diesem Artikel allerdings an eine Web-App, die die Nachrichten sammelt und anzeigt.
+## <a name="prerequisites"></a>Voraussetzungen
 
-Nach Abschluss der Schritte in diesem Artikel sehen Sie, dass die Ereignisdaten an die Web-App gesendet wurden.
-
-![Anzeigen des Abonnementereignisses](./media/quickstarts/event-grid/view-results.png)
-
-[!INCLUDE [quickstarts-free-trial-note.md](../../includes/quickstarts-free-trial-note.md)]
+- Azure-Abonnement – [Erstellen eines kostenlosen Kontos](https://azure.microsoft.com/free/) Sie können optional Azure Cloud Shell verwenden.
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
@@ -144,3 +140,4 @@ Sie haben gelernt, wie Sie Themen und Ereignisabonnements erstellen. Nun können
 
 - [Reacting to Azure App Configuration events](concept-app-configuration-event.md) (Reagieren auf Azure App Configuration-Ereignisse)
 - [Einführung in Azure Event Grid](../event-grid/overview.md)
+- [Azure Event Grid-Handler](../event-grid/event-handlers.md)

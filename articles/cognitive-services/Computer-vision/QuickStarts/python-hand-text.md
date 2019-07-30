@@ -1,7 +1,7 @@
 ---
-title: 'Schnellstart: Extrahieren von handschriftlichem Text – REST, Python'
+title: 'Schnellstart: Extrahieren von gedrucktem und handschriftlichem Text – REST, Python'
 titleSuffix: Azure Cognitive Services
-description: In dieser Schnellstartanleitung extrahieren Sie handschriftlichen Text aus einem Bild mit der Maschinelles Sehen-API und Python.
+description: In dieser Schnellstartanleitung extrahieren Sie gedruckten und handschriftlichen Text aus einem Bild mit der Maschinelles Sehen-API und Python.
 services: cognitive-services
 author: PatrickFarley
 manager: nitinme
@@ -11,16 +11,16 @@ ms.topic: quickstart
 ms.date: 07/03/2019
 ms.author: pafarley
 ms.custom: seodec18
-ms.openlocfilehash: ec58617556ff54bd2273160bb4af80e473ac1693
-ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
+ms.openlocfilehash: 729228b224bdf708fbcf9caf4742f9bb7ad5cff3
+ms.sourcegitcommit: f5075cffb60128360a9e2e0a538a29652b409af9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67603565"
+ms.lasthandoff: 07/18/2019
+ms.locfileid: "68311984"
 ---
-# <a name="quickstart-extract-handwritten-text-using-the-computer-vision-rest-api-and-python"></a>Schnellstart: Extrahieren von handschriftlichem Text mit der Maschinelles Sehen-REST-API und Python
+# <a name="quickstart-extract-printed-and-handwritten-text-using-the-computer-vision-rest-api-and-python"></a>Schnellstart: Extrahieren von gedrucktem und handschriftlichem Text mit der Maschinelles Sehen-REST-API und Python
 
-In dieser Schnellstartanleitung extrahieren Sie handschriftlichen Text aus einem Bild, indem Sie die REST-API von Maschinelles Sehen verwenden. Mit den APIs [Batch Read](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/2afb498089f74080d7ef85eb) und [Read Operation Result](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/5be108e7498a4f9ed20bf96d) können Sie in einem Bild handschriftlichen Text erkennen und erkannte Zeichen als computerlesbare Zeichenfolge extrahieren.
+In dieser Schnellstartanleitung extrahieren Sie gedruckten und/oder handschriftlichen Text aus einem Bild, indem Sie die Maschinelles Sehen-REST-API verwenden. Mit den Methoden [Batch Read](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/2afb498089f74080d7ef85eb) und [Read Operation Result](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/5be108e7498a4f9ed20bf96d) können Sie in einem Bild Text erkennen und erkannte Zeichen als computerlesbare Zeichenfolge extrahieren. Die API bestimmt, welches Erkennungsmodell für die einzelnen Textzeilen verwendet werden soll, daher unterstützt sie Bilder mit gedrucktem und handschriftlichem Text.
 
 > [!IMPORTANT]
 > Im Gegensatz zur [OCR](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fc)-Methode wird die [Batch Read](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/2afb498089f74080d7ef85eb)-Methode asynchron ausgeführt. Diese Methode gibt keine Informationen im Text einer erfolgreichen Antwort zurück. Die Batch Read-Methode gibt stattdessen einen URI im Wert des Antwortheaderfelds `Operation-Content` zurück. Anschließend können Sie diesen URI aufrufen, der die API [Read Operation Result](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/5be108e7498a4f9ed20bf96d) darstellt, um den Status zu überprüfen und die Ergebnisse des Batch Read-Methodenaufrufs zurückzugeben.
@@ -44,10 +44,10 @@ Führen Sie zum Erstellen und Ausführen des Beispiels die folgenden Schritte au
 1. Nehmen Sie bei Bedarf die folgenden Änderungen im Code vor:
     1. Ersetzen Sie den `subscription_key`-Wert durch Ihren Abonnementschlüssel.
     1. Ersetzen Sie den Wert von `vision_base_url` durch die Endpunkt-URL für die Ressource „Maschinelles Sehen-API“ in der Azure-Region, in der Sie Ihre Abonnementschlüssel bezogen haben, falls erforderlich.
-    1. Ersetzen Sie optional den Wert von `image_url` durch die URL eines anderen Bilds, aus dem handschriftlicher Text extrahiert werden soll.
-1. Speichern Sie den Code als Datei mit der Erweiterung `.py`. Beispiel: `get-handwritten-text.py`.
+    1. Ersetzen Sie optional den Wert von `image_url` durch die URL eines anderen Bilds, aus dem Text extrahiert werden soll.
+1. Speichern Sie den Code als Datei mit der Erweiterung `.py`. Beispiel: `get-text.py`.
 1. Öffnen Sie ein Eingabeaufforderungsfenster.
-1. Verwenden Sie an der Eingabeaufforderung den Befehl `python`, um das Beispiel auszuführen. Beispiel: `python get-handwritten-text.py`.
+1. Verwenden Sie an der Eingabeaufforderung den Befehl `python`, um das Beispiel auszuführen. Beispiel: `python get-text.py`.
 
 ```python
 import requests
@@ -83,7 +83,7 @@ response = requests.post(
     text_recognition_url, headers=headers, json=data)
 response.raise_for_status()
 
-# Extracting handwritten text requires two API calls: One call to submit the
+# Extracting text requires two API calls: One call to submit the
 # image for processing, the other to retrieve the text found in the image.
 
 # Holds the URI used to retrieve the recognized text.

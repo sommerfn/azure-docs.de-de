@@ -11,12 +11,12 @@ ms.topic: overview
 ms.date: 07/03/2019
 ms.author: pafarley
 ms.custom: seodec18
-ms.openlocfilehash: f92d8ce8e95962558b3bdb7b4a4d8fe70c725f46
-ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
+ms.openlocfilehash: 523c839ad274b8234a79a89ec45be9a9a4551bf5
+ms.sourcegitcommit: f5075cffb60128360a9e2e0a538a29652b409af9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67604491"
+ms.lasthandoff: 07/18/2019
+ms.locfileid: "68312043"
 ---
 # <a name="what-is-computer-vision"></a>Worum handelt es sich bei maschinellem Sehen?
 
@@ -28,7 +28,7 @@ Sie können maschinelles Sehen in Ihrer Anwendung entweder über ein natives SDK
 
 Sie können Bilder analysieren, um visuelle Merkmale und Eigenschaften zu erkennen und Erkenntnisse zu gewinnen. Alle Features in der folgenden Tabelle werden von der [API für die Bildanalyse](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa) bereitgestellt.
 
-| Aktion | Beschreibung |
+| Aktion | BESCHREIBUNG |
 | ------ | ----------- |
 |**[Markieren visueller Merkmale](concept-tagging-images.md)**|Erkennen und markieren Sie visuelle Merkmale in einem Bild auf der Grundlage von Tausenden von erkennbaren Objekten, Lebewesen, Landschaften und Aktionen. Wenn die Tags nicht eindeutig sind oder nicht zum Allgemeinwissen gehören, enthält die API-Antwort Hinweise, um den Kontext des Tags zu verdeutlichen. Die Markierung ist nicht auf den Hauptinhalt (etwa eine Person im Vordergrund) beschränkt, sondern bezieht auch die Umgebung (Innen- oder Außenbereich), Möbel, Werkzeuge, Pflanzen, Tiere, Zubehör, Geräte und Ähnliches mit ein.|
 |**[Erkennen von Objekten](concept-object-detection.md)**| Die Objekterkennung ähnelt dem Tagging, die API gibt jedoch die Koordinaten des Begrenzungsrahmens für jedes angewendete Tag zurück. Wenn ein Bild z. B. einen Hund, eine Katze sowie eine Person enthält, werden diese Objekte bei der Erkennung zusammen mit ihren Koordinaten im Bild aufgelistet. Sie können diese Funktion verwenden, um weitere Beziehungen zwischen den Objekten in einem Bild zu verarbeiten. Außerdem können Sie feststellen, ob mehrere Instanzen des gleichen Tags in einem Bild enthalten sind.|
@@ -65,7 +65,7 @@ Maschinelles Sehen kann Bilder analysieren, die folgende Anforderungen erfüllen
 - Das Bild muss im JPEG-, PNG-, GIF- oder BMP-Format vorliegen.
 - Die Dateigröße muss weniger als 4 MB betragen.
 - Das Bild muss größer als 50 x 50 Pixel sein.
-  - Für OCR muss die Größe des Bilds zwischen 50 x 50 und 4.200 x 4.200 Pixel liegen.
+  - Für die Lese-API muss die Größe des Bilds zwischen 50 x 50 und 10.000 x 10.000 Pixel liegen.
 
 ## <a name="data-privacy-and-security"></a>Datenschutz und Sicherheit
 

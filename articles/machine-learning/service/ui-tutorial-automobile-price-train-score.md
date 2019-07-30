@@ -3,22 +3,26 @@ title: 'Tutorial: Prognostizieren von Automobilpreisen mithilfe der grafischen B
 titleSuffix: Azure Machine Learning service
 description: Hier erfahren Sie, wie Sie ein Machine Learning-Modell mithilfe einer grafischen Drag & Drop-Benutzeroberfläche trainieren, bewerten und bereitstellen. Dieses Tutorial ist der erste Teil einer zweiteiligen Reihe über das Prognostizieren von Automobilpreisen mithilfe der linearen Regression.
 author: peterclu
-ms.author: peterclu
+ms.author: peterlu
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: tutorial
-ms.date: 04/06/2019
-ms.openlocfilehash: 21f5a2d93b708e93f124bd44177bb7852dfbd86a
-ms.sourcegitcommit: dad277fbcfe0ed532b555298c9d6bc01fcaa94e2
+ms.date: 07/21/2019
+ms.openlocfilehash: 09d81e281b92b662572cefc220f2227651b69838
+ms.sourcegitcommit: 83a89c45253b0d432ce8dcd70084c18e9930b1fd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/10/2019
-ms.locfileid: "67720538"
+ms.lasthandoff: 07/22/2019
+ms.locfileid: "68371720"
 ---
 # <a name="tutorial-predict-automobile-price-with-the-visual-interface"></a>Tutorial: Prognostizieren von Automobilpreisen mithilfe der grafischen Benutzeroberfläche
 
-In diesem Tutorial befassen Sie sich eingehend mit dem Entwickeln einer Vorhersagelösung mithilfe der grafischen Benutzeroberfläche von Azure Machine Learning Service. Am Ende dieses Tutorials verfügen Sie über eine Lösung, mit der Sie den Preis jedes Autos basierend auf den von Ihnen an die Lösung gesendeten technischen Spezifikationen prognostizieren können.
+In diesem zweiteiligen Tutorial erfahren Sie, wie Sie mit der grafischen Benutzeroberfläche von Azure Machine Learning Service eine Predictive Analytics-Lösung entwickeln und bereitstellen, mit der der Preis eines beliebigen Autos prognostiziert werden kann. 
+
+> [!VIDEO https://www.microsoft.com/videoplayer/embed/RE2X1GY]
+
+Im ersten Teil richten Sie Ihre Umgebung ein, fügen einer interaktiven Canvas per Drag & Drop Datasets und Analysemodule hinzu und verknüpfen sie zu einem Experiment. 
 
 Im ersten Teil des Tutorials lernen Sie Folgendes:
 
@@ -27,9 +31,7 @@ Im ersten Teil des Tutorials lernen Sie Folgendes:
 > * Trainieren eines Machine Learning-Modells
 > * Bewerten und Auswerten eines Modells
 
-Im [zweiten Teil](ui-tutorial-automobile-price-deploy.md) des Tutorials erfahren Sie, wie Sie Ihr Vorhersagemodell als Azure-Webdienst bereitstellen.
-
-> [!VIDEO https://www.microsoft.com/videoplayer/embed/RE2X1GY]
+In [Teil 2](ui-tutorial-automobile-price-deploy.md) des Tutorials erfahren Sie, wie Sie Ihr Vorhersagemodell als Azure-Webdienst bereitstellen, um damit den Preis eines beliebigen Autos basierend auf den von Ihnen an die Lösung gesendeten technischen Spezifikationen prognostizieren zu können. 
 
 Eine abgeschlossene Version dieses Tutorials ist als Beispielexperiment verfügbar.
 
@@ -37,11 +39,11 @@ Wählen Sie auf der Seite **Experimente** die Option **Neu hinzufügen** und ans
 
 ## <a name="create-a-workspace"></a>Erstellen eines Arbeitsbereichs
 
-Wenn Sie über einen Azure Machine Learning Service-Arbeitsbereich verfügen, fahren Sie mit dem [nächsten Abschnitt](#open-the-visual-interface-webpage) fort.
+Wenn Sie über einen Azure Machine Learning Service-Arbeitsbereich verfügen, fahren Sie mit dem nächsten Abschnitt fort.
 
 [!INCLUDE [aml-create-portal](../../../includes/aml-create-in-portal.md)]
 
-## <a name="open-the-visual-interface-webpage"></a>Öffnen der Webseite der grafischen Benutzeroberfläche
+## <a name="create-new-experiment"></a>Erstellen eines neuen Experiments
 
 1. Öffnen Sie Ihren Arbeitsbereich im [Azure-Portal](https://portal.azure.com/).
 
@@ -49,21 +51,15 @@ Wenn Sie über einen Azure Machine Learning Service-Arbeitsbereich verfügen, fa
 
     ![Screenshot des Azure-Portals, in dem dargestellt ist, wie der Zugriff auf die grafische Benutzeroberfläche über einen Machine Learning Service-Arbeitsbereich erfolgt](./media/ui-tutorial-automobile-price-train-score/launch-ui.png)
 
-## <a name="create-your-first-experiment"></a>Erstellen Ihres ersten Experiments
-
-Die grafische Benutzeroberfläche bietet einen interaktiven, visuellen Arbeitsbereich für die Erstellung von Predictive Analytics-Modellen. Fügen Sie Datasets und Analysemodule per Drag & Drop einer interaktiven Canvas hinzu, und verknüpfen Sie sie zu einem *Experiment*.
-
 1. Erstellen Sie ein neues Experiment, indem Sie unten im Fenster der grafischen Benutzeroberfläche die Option **+Neu** auswählen.
-
-    ![Hinzufügen eines neuen Experiments](./media/ui-tutorial-automobile-price-train-score/add-new.png)
 
 1. Wählen Sie **Leeres Experiment** aus.
 
-1. Wählen Sie oben im Canvas-Panel den Standardexperimentnamen **Experimented Created on ...** (Experiment erstellt am ...) aus, und geben Sie einen aussagekräftigen Namen ein. Beispielsweise **Automobile price prediction** (Automobilpreisvorhersage). Der Name muss nicht eindeutig sein.
+1. Wählen Sie oben in der Canvas den Standardexperimentnamen **Experiment Created on ...** (Experiment erstellt am ...) aus, und geben Sie einen aussagekräftigen Namen ein. Beispielsweise **Automobile price prediction** (Automobilpreisvorhersage). Der Name muss nicht eindeutig sein.
 
-## <a name="add-data"></a>Hinzufügen von Daten
+## <a name="specify-data"></a>Angeben von Daten
 
-Grundvoraussetzung für Machine Learning sind Daten. Diese Benutzeroberfläche enthält bereits einige Beispieldatasets, die Sie verwenden können. Alternativ können Sie auch Daten aus bereits vorhandenen Quellen importieren. Verwenden Sie für dieses Tutorial das Beispieldataset **Automobile Price Data (Raw)** (Automobilpreisdaten (Rohdaten)). 
+Maschinelles Lernen ist von Daten abhängig. Glücklicherweise sind auf dieser Benutzeroberfläche mehrere Beispieldatasets verfügbar, mit denen Sie experimentieren können. Verwenden Sie für dieses Tutorial das Beispieldataset **Automobile Price Data (Raw)** (Automobilpreisdaten (Rohdaten)). 
 
 1. Links vom Experimentbereich finden Sie eine Palette mit Datensätzen und Modulen. Wählen Sie **Saved Datasets** (Gespeicherte Datasets) und dann **Samples** (Beispiele) aus, um die verfügbaren Beispieldatasets anzuzeigen.
 
@@ -71,22 +67,14 @@ Grundvoraussetzung für Machine Learning sind Daten. Diese Benutzeroberfläche e
 
    ![Ziehen von Daten in den Experimentbereich](./media/ui-tutorial-automobile-price-train-score/drag-data.png)
 
-## <a name="select-columns"></a>Spalten auswählen
+1. Wählen Sie die Datenspalten aus, mit denen Sie arbeiten möchten. Geben Sie im oberen Bereich der Palette **Select** (Auswählen) in das Suchfeld ein, um nach dem Modul **Select Columns in Dataset** (Spalten im Dataset auswählen) zu suchen.
 
-Wählen Sie die Datenspalten aus, mit denen Sie arbeiten möchten. Konfigurieren Sie das Modul zunächst so, dass alle verfügbaren Spalten angezeigt werden.
+1. Klicken Sie auf **Select Columns in Dataset** (Spalten im Dataset auswählen), und ziehen Sie das Modul auf die Canvas. Legen Sie das Modul unter dem Datasetmodul ab.
 
-> [!TIP]
-> Wenn Sie den Namen der gewünschten Daten oder des Moduls kennen, verwenden Sie die Suchleiste oben in der Palette, um sie schnell zu finden. Dieses Verfahren wird im weiteren Verlauf des Tutorials verwendet.
-
-
-1. Geben Sie im Suchfeld **Select** (Auswählen) ein, um nach dem Modul **Select Columns in Dataset** (Spalten im Dataset auswählen) zu suchen.
-
-1. Klicken Sie auf **Select Columns in Dataset**, und ziehen Sie das Modul in den Experimentbereich. Legen Sie das Modul unter dem Dataset ab, das Sie zuvor hinzugefügt haben.
-
-1. Verbinden Sie das Dataset mit dem Modul **Select Columns in Dataset**: Klicken Sie auf den Ausgabeport des Datasets, ziehen Sie ihn auf den Eingabeport des Moduls **Select Columns in Dataset**, und lassen Sie die Maustaste dann los. Das Dataset und das Modul bleiben verbunden, auch wenn Sie diese im Bereich verschieben.
+1. Verknüpfen Sie das zuvor hinzugefügte Dataset durch Klicken und Ziehen mit dem Modul **Select Columns in Dataset** (Spalten im Dataset auswählen). Ziehen Sie eine Linie vom Ausgabeport des Datasets zum Eingabeport von **Select Columns in Dataset** (Spalten im Dataset auswählen) – also von dem kleinen Kreis am unteren Rand des Datasets auf der Canvas zu dem kleinen Kreis am oberen Rand des Moduls.
 
     > [!TIP]
-    > Datasets und Module verfügen über Ein- und Ausgabe-Anschlüsse, die in Form kleiner Kreise dargestellt werden: Eingabe-Anschlüsse oben und Ausgabe-Anschlüsse unten. Zum Erstellen eines Datenflusses über Ihr Experiment verbinden Sie einen Ausgabeport eines Moduls mit dem Eingabeport eines anderen Moduls.
+    > Zum Erstellen eines Datenflusses über Ihr Experiment verbinden Sie einen Ausgabeport eines Moduls mit dem Eingabeport eines anderen Moduls.
     >
 
     ![Verbinden von Modulen](./media/ui-tutorial-automobile-price-train-score/connect-modules.gif)
@@ -114,9 +102,9 @@ Ein Experiment wird auf einem Computeziel ausgeführt. Dabei handelt es sich um 
 Nachdem das Computeziel verfügbar ist, wird das Experiment ausgeführt. Nach Abschluss der Ausführung wird für die einzelnen Module jeweils ein grünes Häkchen angezeigt.
 
 
-## <a name="preview-the-data"></a>Vorschau der Daten
+## <a name="visualize-the-data"></a>Visualisieren der Daten
 
-Nachdem Sie nun Ihr erstes Experiment durchgeführt haben, können Sie die Daten visualisieren, um mehr über das zu verwendende Dataset zu erfahren.
+Nachdem Sie nun Ihr erstes Experiment durchgeführt haben, können Sie die Daten visualisieren, um mehr über Ihr Dataset zu erfahren.
 
 1. Wählen Sie den Ausgabeport am unteren Rand des Moduls **Select Columns in Dataset** aus, und wählen Sie dann **Visualize** (Visualisieren) aus.
 
@@ -124,7 +112,7 @@ Nachdem Sie nun Ihr erstes Experiment durchgeführt haben, können Sie die Daten
 
     In diesem Dataset steht jede Zeile für ein Fahrzeug, und die Variablen, die den einzelnen Fahrzeugen zugeordnet sind, werden als Spalten angezeigt. Es gibt 205 Zeilen und 26 Spalten in diesem Dataset.
 
-     Jedes Mal, wenn Sie auf eine Datenspalte klicken, werden links die Informationen **Statistics** (Statistik) und das Bild **Visualization** (Visualisierung) dieser Spalte angezeigt. Wenn Sie beispielsweise auf **num-of-doors** klicken, sehen Sie, dass diese Spalte 2 eindeutige Werte und 2 fehlende Werte aufweist. Scrollen Sie nach unten, um die Werte anzuzeigen: zwei und vier Türen.
+     Jedes Mal, wenn Sie auf eine Datenspalte klicken, werden links die Informationen **Statistics** (Statistik) und das Bild **Visualization** (Visualisierung) dieser Spalte angezeigt. Wenn Sie beispielsweise auf **num-of-doors** klicken, sehen Sie, dass diese Spalte zwei eindeutige Werte und zwei fehlende Werte aufweist. Scrollen Sie nach unten, um die Werte anzuzeigen: zwei und vier Türen.
 
      ![Vorschau der Daten](./media/ui-tutorial-automobile-price-train-score/preview-data.gif)
 
@@ -132,7 +120,7 @@ Nachdem Sie nun Ihr erstes Experiment durchgeführt haben, können Sie die Daten
 
 ## <a name="prepare-data"></a>Vorbereiten von Daten
 
-DataSets müssen vor der Analyse normalerweise vorverarbeitet werden. Bei der Visualisierung des Datasets sind Ihnen unter Umständen einige fehlende Werte aufgefallen. Damit das Modell die Daten richtig analysieren kann, müssen diese fehlenden Werte bereinigt werden. Sie entfernen alle Zeilen, in denen Werte fehlen. Außerdem enthält die Spalte **normalized-losses** viele fehlende Werte, daher schließen wir diese Spalte ganz aus dem Modell aus.
+Datasets müssen vor der Analyse in der Regel vorverarbeitet werden. Bei der Visualisierung des Datasets sind Ihnen unter Umständen einige fehlende Werte aufgefallen. Damit das Modell die Daten richtig analysieren kann, müssen diese fehlenden Werte bereinigt werden. Sie entfernen alle Zeilen, in denen Werte fehlen. Außerdem enthält die Spalte **normalized-losses** viele fehlende Werte, daher schließen wir diese Spalte ganz aus dem Modell aus.
 
 > [!TIP]
 > Die Bereinigung fehlender Werte aus den Eingabedaten ist eine Voraussetzung für die Verwendung der meisten Module.
@@ -181,8 +169,6 @@ Wenn Sie ein Modell trainieren, müssen Sie etwas bezüglich der fehlenden Daten
 
 1. Klicken Sie im Eigenschaftenbereich unter **Cleaning mode** (Bereinigungsmodus) auf die Option **Remove entire row** (Gesamte Zeile entfernen).
 
-    Mit diesen Optionen wird **Clean Missing Data** (Fehlende Daten bereinigen) angewiesen, Daten durch das Entfernen von Zeilen mit fehlenden Werten zu bereinigen.
-
 1. Doppelklicken Sie auf das Modul, und geben Sie den Kommentar "Remove missing value rows" ein.
  
     ![Entfernen von Zeilen](./media/ui-tutorial-automobile-price-train-score/remove-rows.png)
@@ -190,30 +176,6 @@ Wenn Sie ein Modell trainieren, müssen Sie etwas bezüglich der fehlenden Daten
     Ihr Experiment sollte in etwa wie folgt aussehen:
     
     ![select-column](./media/ui-tutorial-automobile-price-train-score/experiment-clean.png)
-
-## <a name="visualize-the-results"></a>Visualisieren der Ergebnisse
-
-Da Sie Änderungen an den Modulen in Ihrem Experiment vorgenommen haben, hat sich der Status in „In draft“ (Entwurf) geändert.  Um die neuen bereinigten Daten zu visualisieren, müssen Sie zuerst das Experiment erneut ausführen.
-
-1. Wählen Sie unten **Run** (Ausführen) aus, um das Experiment auszuführen.
-
-    Dieses Mal können Sie das Computeziel wiederverwenden, das Sie zuvor erstellt haben.
-
-1. Wählen Sie **Run**  im Dialogfeld aus.
-
-   ![Ausführen des Experiments](./media/ui-tutorial-automobile-price-train-score/select-compute.png)
-
-1. Wenn die Ausführung abgeschlossen ist, klicken Sie mit der rechten Maustaste auf das Modul **Clean Missing Data**, um die neuen bereinigten Daten zu visualisieren.
-
-    ![Visualisieren bereinigter Daten](./media/ui-tutorial-automobile-price-train-score/visualize-cleaned.png)
-
-1. Klicken Sie auf die verschiedenen Spalten im Fenster mit den bereinigten Daten, um sich anzusehen, wie sich die Daten geändert haben.
-
-    ![Visualisieren bereinigter Daten](media/ui-tutorial-automobile-price-train-score/visualize-result.png)
-
-    Es gibt jetzt 193 Zeilen und 25 Spalten.
-
-    Wenn Sie auf **num-of-doors** klicken, sehen Sie, dass diese Spalte noch immer 2 eindeutige Werte aufweist, aber 0 fehlende Werte. Klicken Sie auf die restlichen Spalten, um zu überprüfen, ob das Dataset noch fehlende Daten aufweist. 
 
 ## <a name="train-the-model"></a>Modelltraining
 
@@ -223,13 +185,13 @@ Da die Daten jetzt vorbereitet wurden, können Sie ein Vorhersagemodell erstelle
 
 Da Sie einen Preis (also eine Zahl) vorhersagen möchten, können Sie einen Regressionsalgorithmus verwenden. In diesem Beispiel verwenden Sie ein lineares Regressionsmodell.
 
-Trainieren Sie das Modell, indem Sie einen Datensatz mit dem Preis einspeisen. Das Modell überprüft die Daten und sucht nach Korrelationen zwischen den Features eines Autos und seinem Preis. Testen Sie dann das Modell, indem Sie einen Satz von Features und Funktionen für bekannte Automobile eingeben und prüfen, wie genau das Modell den bekannten Preis vorhersagt.
+Trainieren Sie das Modell, indem Sie einen Datensatz mit dem Preis einspeisen. Das Modell überprüft die Daten und sucht nach Korrelationen zwischen den Features eines Autos und seinem Preis.
 
 Verwenden Sie Ihre Daten sowohl zum Trainieren als auch zum Testen des Modells, indem Sie die Daten in separate Trainings- und Testdatasets aufteilen.
 
 1. Geben Sie im Suchfeld die Wörter **split data** (Daten aufteilen) ein, um nach dem Modul **Split Data** (Daten aufteilen) zu suchen, und verbinden Sie es mit dem linken Port des Moduls **Clean Missing Data** (Fehlende Daten bereinigen).
 
-1. Wählen Sie das Modul **Split Data** (Daten aufteilen) aus, das Sie eben verbunden haben. Legen Sie im Bereich „Properties“ (Eigenschaften) den Anteil der Zeilen im ersten Ausgabedatensatz auf „0,7“ fest. Mit dieser Einstellung verwenden wir 70 Prozent der Daten zum Trainieren des Modells und halten 30 Prozent für Tests zurück.
+1. Wählen Sie das Modul **Split Data** (Daten aufteilen) aus. Legen Sie im Bereich „Properties“ (Eigenschaften) den Anteil der Zeilen im ersten Ausgabedatensatz auf „0,7“ fest. Mit dieser Einstellung verwenden wir 70 Prozent der Daten zum Trainieren des Modells und halten 30 Prozent für Tests zurück.
 
     ![Screenshot der richtigen Konfiguration des Eigenschaftenbereichs. Für „Split Data“ (Daten aufteilen) sollten die Werte „Split Rows“ (Zeilen aufteilen), „0,7“, „Randomized split“ (Zufällige Aufteilung), „0“ und „False“ (Falsch) verwendet werden.](./media/ui-tutorial-automobile-price-train-score/split-data.png)
 
@@ -255,10 +217,6 @@ Verwenden Sie Ihre Daten sowohl zum Trainieren als auch zum Testen des Modells, 
 
     ![Screenshot der richtigen Konfiguration des Experiments nach dem Hinzufügen des Moduls „Train Model“ (Modell trainieren)](./media/ui-tutorial-automobile-price-train-score/train-graph.png)
 
-### <a name="run-the-training-experiment"></a>Ausführen des Trainingsexperiments
-
-[!INCLUDE [aml-ui-create-training-compute](../../../includes/aml-ui-create-training-compute.md)]
-
 ## <a name="score-and-evaluate-the-model"></a>Bewerten und Auswerten des Modells
 
 Nachdem Sie das Modell mit 70 Prozent Ihrer Daten trainiert haben, können Sie unter Verwendung der restlichen 30 Prozent der Daten bewerten, wie gut das Modell funktioniert.
@@ -269,13 +227,13 @@ Nachdem Sie das Modell mit 70 Prozent Ihrer Daten trainiert haben, können Sie u
 
     ![Screenshot der endgültigen richtigen Konfiguration des Experiments.](./media/ui-tutorial-automobile-price-train-score/final-graph.png)
 
-1. Führen Sie das Experiment mit dem gleichen Computeziel aus, das Sie zuvor verwendet haben.
+1. Führen Sie das Experiment mit der zuvor erstellten Computeressource aus.
 
 1. Zeigen Sie die Ausgabe des Moduls **Score Model** an, indem Sie den Ausgabeport des Moduls **Score Model** und dann **Visualize** (Visualisieren) auswählen. Die Ausgabe zeigt die vorhergesagten Preiswerte zusammen mit den bekannten Werten aus den Testdaten an.
 
     ![Screenshot der Ausgabevisualisierung mit hervorgehobener Spalte „Scored Labels“](./media/ui-tutorial-automobile-price-train-score/score-result.png)
 
-1. Um die Ausgabe des Moduls „Evaluate Model“ anzuzeigen, wählen Sie den Ausgabeport aus, und wählen Sie dann „Visualize“ (Visualisieren) aus.
+1. Um die Ausgabe des Moduls **Evaluate Model** (Modell auswerten) anzuzeigen, wählen Sie den Ausgabeport und dann **Visualize** (Visualisieren) aus.
 
     ![Screenshot der Auswertungsergebnisse für das endgültige Experiment.](./media/ui-tutorial-automobile-price-train-score/evaluate-result.png)
 
@@ -307,7 +265,7 @@ Die von Ihnen auf der grafischen Benutzeroberfläche erstellten Experimente kön
 
     ![Screenshot eines detaillierten Ausführungsberichts](./media/ui-tutorial-automobile-price-train-score/run-details.png)
 
-    Der Ausführungsbericht wird in Echtzeit aktualisiert. Wenn Sie in Ihrem Experiment das Modul **Execute Python Script** (Python-Skript ausführen) verwendet haben, können Sie die auszugebenden Skriptprotokolle auf der Registerkarte **Logs** (Protokolle) angeben.
+    Der Ausführungsbericht wird in Echtzeit aktualisiert. Wenn Sie in Ihrem Experiment das Modul **Execute Python Script** (Python-Skript ausführen) oder **Execute R Script** (R-Skript ausführen) verwendet haben, können Sie die auszugebenden Skriptprotokolle auf der Registerkarte **Logs** (Protokolle) angeben.
 
 ## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
 

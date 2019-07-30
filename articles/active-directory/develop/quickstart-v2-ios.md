@@ -3,7 +3,7 @@ title: 'Schnellstart: Microsoft Identity Platform – iOS | Azure'
 description: Hier finden Sie Informationen zum Anmelden von Benutzern und zum Abfragen von Microsoft Graph in einer iOS-Anwendung.
 services: active-directory
 documentationcenter: dev-center-name
-author: danieldobalian
+author: brandwe
 manager: CelesteDG
 ms.assetid: 820acdb7-d316-4c3b-8de9-79df48ba3b06
 ms.service: active-directory
@@ -17,12 +17,12 @@ ms.author: brandwe
 ms.reviewer: jmprieur, saeeda
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b3802d8f92913e416cc6a80f899179fde80cec30
-ms.sourcegitcommit: e9a46b4d22113655181a3e219d16397367e8492d
+ms.openlocfilehash: bfb136529c606cafa235a525fcbe6e03b1d583d0
+ms.sourcegitcommit: e9c866e9dad4588f3a361ca6e2888aeef208fc35
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/21/2019
-ms.locfileid: "65962596"
+ms.lasthandoff: 07/19/2019
+ms.locfileid: "68335594"
 ---
 # <a name="quickstart-sign-in-users-and-call-the-microsoft-graph-api-from-an-ios-app"></a>Schnellstart: Anmelden von Benutzern und Aufrufen der Microsoft Graph-API aus einer iOS-App
 
@@ -90,8 +90,7 @@ Dieser Schnellstart enthält ein Codebeispiel, das zeigt, wie eine native iOS-An
 >    ```swift
 >    let kClientID = "Enter_the_Application_Id_here"
 >    let kAuthority = "https://login.microsoftonline.com/Enter_the_Tenant_Info_Here"
->
->    ```
+>    ``` 
 > 1. Klicken Sie mit der rechten Maustaste auf **Info.plist**, und wählen Sie **Öffnen als** > **Quellcode** aus.
 > 1. Ersetzen Sie unter dem Stammknoten „dict“ den Platzhalter durch Ihre ***Bündel-ID***:
 >
@@ -108,6 +107,10 @@ Dieser Schnellstart enthält ein Codebeispiel, das zeigt, wie eine native iOS-An
 > 
 >    ```
 > 1. Erstellen Sie die App, und führen Sie die App aus! 
+
+> [!div class="sxs-lookup" renderon="portal"]
+> > [!NOTE]
+> > Dieser Schnellstart unterstützt Enter_the_Supported_Account_Info_Here.
 
 > [!div renderon="docs"]
 >
@@ -218,7 +221,7 @@ In einigen Situationen müssen Benutzer mit Microsoft Identity Platform interagi
 * Erstmaliges Anmelden von Benutzern bei der Anwendung.
 * Wenn ein Benutzer sein Kennwort zurücksetzt, muss er seine Anmeldeinformationen eingeben. 
 * Wenn Ihre Anwendung zum ersten Mal Zugriff auf eine Ressource anfordert
-* Wenn MFA erforderlich ist oder andere Richtlinien für bedingten Zugriff erforderlich sind
+* Wenn MFA oder andere Richtlinien für bedingten Zugriff erforderlich sind
 
 ```swift
 let parameters = MSALInteractiveTokenParameters(scopes: kScopes)
@@ -231,7 +234,7 @@ applicationContext.acquireToken(with: parameters) { (result, error) in /* Add yo
 
 #### <a name="acquiretokensilent-getting-an-access-token-silently"></a>acquireTokenSilent: Automatisches Abrufen eines Zugriffstokens
 
-Apps sollten nicht verlangen, dass sich die Benutzer jedes Mal anmelden, wenn sie ein Token anfordern. Wenn der Benutzer sich bereits angemeldet hat, ermöglicht diese Methode Apps, Token im Hintergrund anzufordern. 
+Apps sollten nicht verlangen, dass sich die Benutzer jedes Mal anmelden, wenn sie ein Token anfordern. Wenn sich der Benutzer bereits angemeldet hat, haben Apps durch diese Methode die Möglichkeit, Token im Hintergrund anzufordern. 
 
 ```swift
 let parameters = MSALSilentTokenParameters(scopes: kScopes, account: applicationContext.allAccounts().first)
@@ -253,3 +256,8 @@ Probieren Sie das iOS-Tutorial aus, um eine vollständige Schritt-für-Schritt-A
 > [Tutorial: Aufrufen der Graph-API (iOS)](https://docs.microsoft.com/azure/active-directory/develop/guidedsetups/active-directory-ios)
 
 [!INCLUDE [Help and support](../../../includes/active-directory-develop-help-support-include.md)]
+
+Helfen Sie uns, Microsoft Identity Platform zu verbessern. Teilen Sie uns Ihre Meinung mit, indem Sie eine kurze Umfrage mit zwei Fragen beantworten.
+
+> [!div class="nextstepaction"]
+> [Umfrage zu Microsoft Identity Platform](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbRyKrNDMV_xBIiPGgSvnbQZdUQjFIUUFGUE1SMEVFTkdaVU5YT0EyOEtJVi4u)

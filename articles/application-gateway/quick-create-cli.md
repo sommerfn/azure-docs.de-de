@@ -5,19 +5,19 @@ services: application-gateway
 author: vhorne
 ms.service: application-gateway
 ms.topic: quickstart
-ms.date: 1/8/2019
+ms.date: 07/19/2019
 ms.author: victorh
 ms.custom: mvc
-ms.openlocfilehash: 56b655b07314d5ebc2d0cb47389988f1a89e6a56
-ms.sourcegitcommit: 770b060438122f090ab90d81e3ff2f023455213b
+ms.openlocfilehash: dd68f4a565c28f1dbac7e94442a8f8231af01328
+ms.sourcegitcommit: da0a8676b3c5283fddcd94cdd9044c3b99815046
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/17/2019
-ms.locfileid: "68304343"
+ms.lasthandoff: 07/18/2019
+ms.locfileid: "68314893"
 ---
 # <a name="quickstart-direct-web-traffic-with-azure-application-gateway---azure-cli"></a>Schnellstart: Weiterleiten von Webdatenverkehr per Azure Application Gateway: Azure CLI
 
-In dieser Schnellstartanleitung wird gezeigt, wie Sie die Azure CLI zum Erstellen eines Anwendungsgateways verwenden.  Nach der Erstellung wird das Anwendungsgateway getestet, um sicherzustellen, dass es ordnungsgemäß funktioniert. Mit Azure Application Gateway leiten Sie den Webdatenverkehr Ihrer Anwendungen an bestimmte Ressourcen weiter, indem Sie Ports Listener zuweisen, Regeln erstellen und Ressourcen zu einem Back-End-Pool hinzufügen. Der Einfachheit halber wird in diesem Artikel ein einfaches Setup mit einer öffentlichen Front-End-IP-Adresse, einem grundlegenden Listener zum Hosten einer einzelnen Website auf diesem Anwendungsgateway, zwei virtuellen Computern für den Back-End-Pool und einer Routingregel für grundlegende Anforderungen verwendet.
+In dieser Schnellstartanleitung wird gezeigt, wie Sie die Azure CLI zum Erstellen eines Anwendungsgateways verwenden.  Nach der Erstellung wird das Anwendungsgateway getestet, um sicherzustellen, dass es ordnungsgemäß funktioniert. Mit Azure Application Gateway leiten Sie den Webdatenverkehr Ihrer Anwendungen an bestimmte Ressourcen weiter, indem Sie Ports Listener zuweisen, Regeln erstellen und Ressourcen zu einem Back-End-Pool hinzufügen. In diesem Artikel wird ein einfaches Setup mit einer öffentlichen Front-End-IP-Adresse, einem grundlegenden Listener zum Hosten einer einzelnen Website auf diesem Anwendungsgateway, zwei virtuellen Computern für den Back-End-Pool und einer Routingregel für grundlegende Anforderungen verwendet.
 
 Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) erstellen, bevor Sie beginnen.
 
@@ -41,7 +41,7 @@ az group create --name myResourceGroupAG --location eastus
 
 ### <a name="required-network-resources"></a>Erforderliche Netzwerkressourcen 
 
-Für die Kommunikation in Azure zwischen den von Ihnen erstellten Ressourcen ist ein virtuelles Netzwerk erforderlich.  Das Subnetz für das Anwendungsgateway kann nur Anwendungsgateways enthalten. Andere Ressourcen sind nicht zulässig.  Sie können entweder ein neues Subnetz für Application Gateway erstellen oder ein bereits vorhandenes verwenden. In diesem Beispiel erstellen Sie zwei Subnetze: eines für das Anwendungsgateway und eines für die Back-End-Server. Je nach Anwendungsfall können Sie die Front-End-IP-Adresse von Application Gateway als öffentliche oder als private IP-Adresse konfigurieren. In diesem Beispiel verwenden wir eine öffentliche Front-End-IP-Adresse.
+Für die Kommunikation in Azure zwischen den von Ihnen erstellten Ressourcen ist ein virtuelles Netzwerk erforderlich.  Das Subnetz für das Anwendungsgateway kann nur Anwendungsgateways enthalten. Andere Ressourcen sind nicht zulässig.  Sie können entweder ein neues Subnetz für Application Gateway erstellen oder ein bereits vorhandenes verwenden. In diesem Beispiel erstellen Sie zwei Subnetze: eines für das Anwendungsgateway und eines für die Back-End-Server. Je nach Anwendungsfall können Sie die Front-End-IP-Adresse von Application Gateway als öffentliche oder als private IP-Adresse konfigurieren. In diesem Beispiel verwenden Sie eine öffentliche Front-End-IP-Adresse.
 
 Erstellen Sie das virtuelle Netzwerk und das Subnetz mit [az network vnet create](/cli/azure/network/vnet#az-network-vnet-create). Führen Sie [az network public-ip create](/cli/azure/network/public-ip) aus, um die öffentliche IP-Adresse zu erstellen.
 
@@ -67,7 +67,7 @@ az network public-ip create \
 
 ### <a name="backend-servers"></a>Back-End-Server
 
-Das Back-End kann Netzwerkadapter, VM-Skalierungsgruppen, öffentliche IP-Adressen, interne IP-Adressen, vollqualifizierte Domänennamen (Fully Qualified Domain Names, FQDN) und Back-Ends mit mehreren Mandanten wie Azure App Service umfassen. In diesem Beispiel erstellen Sie zwei virtuelle Computer, die von Azure als Back-End-Server für das Anwendungsgateway verwendet werden. Sie installieren außerdem IIS auf den virtuellen Computern, um zu überprüfen, ob Azure das Anwendungsgateway erfolgreich erstellt hat.
+Ein Back-End kann Netzwerkkarten, VM-Skalierungsgruppen, öffentliche IP-Adressen, interne IP-Adressen, vollqualifizierte Domänennamen (Fully Qualified Domain Names, FQDN) und Back-Ends mit mehreren Mandanten wie Azure App Service umfassen. In diesem Beispiel erstellen Sie zwei virtuelle Computer, die als Back-End-Server für das Anwendungsgateway verwendet werden. Sie installieren außerdem IIS auf den virtuellen Computern, um das Anwendungsgateway zu testen.
 
 #### <a name="create-two-virtual-machines"></a>Erstellen von zwei virtuellen Computern
 
@@ -181,7 +181,7 @@ Kopieren Sie die öffentliche IP-Adresse, und fügen Sie sie in die Adressleiste
     
 ![Testen des Anwendungsgateways](./media/quick-create-cli/application-gateway-nginxtest.png)
 
-Wenn Sie den Browser aktualisieren, sollte der Name der zweiten VM angezeigt werden. Eine gültige Antwort bestätigt, dass das Anwendungsgateway erfolgreich erstellt wurde und eine Verbindung mit dem Back-End herstellen kann.
+Wenn Sie den Browser aktualisieren, sollte der Name der zweiten VM angezeigt werden. Dies weist auf eine erfolgreiche Erstellung des Anwendungsgateways hin, das eine Verbindung mit dem Back-End herstellen kann.
 
 ## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
 

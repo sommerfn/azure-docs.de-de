@@ -1,33 +1,33 @@
 ---
-title: 'Vorgehensweise: Erstellen mehrerer unabhängiger Azure Cosmos DB-Trigger'
-description: Erfahren Sie, wie Sie mehrere unabhängige Azure Cosmos DB-Trigger zum Erstellen ereignisgesteuerter Azure Functions-Architekturen konfigurieren.
+title: Erstellen mehrerer unabhängiger Azure Functions-Trigger für Cosmos DB
+description: Hier erfahren Sie, wie Sie mehrere unabhängige Azure Functions-Trigger für Cosmos DB zum Erstellen ereignisgesteuerter Architekturen konfigurieren.
 author: ealsur
 ms.service: cosmos-db
 ms.topic: sample
-ms.date: 05/23/2019
+ms.date: 07/17/2019
 ms.author: maquaran
-ms.openlocfilehash: 722da9f0112d63af52be8c9c3a746f6da9638bac
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.openlocfilehash: 315ac1025a2b05ec7b16f7f0b14b66f224905d92
+ms.sourcegitcommit: e9c866e9dad4588f3a361ca6e2888aeef208fc35
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/27/2019
-ms.locfileid: "66241951"
+ms.lasthandoff: 07/19/2019
+ms.locfileid: "68335676"
 ---
-# <a name="create-multiple-azure-cosmos-db-triggers"></a>Erstellen mehrerer Azure Cosmos DB-Trigger
+# <a name="create-multiple-azure-functions-triggers-for-cosmos-db"></a>Erstellen mehrerer Azure Functions-Trigger für Cosmos DB
 
-Dieser Artikel beschreibt, wie Sie mehrere Cosmos DB-Trigger zum parallelen Arbeiten und voneinander unabhängigen Reagieren auf Änderungen konfigurieren können.
+Dieser Artikel beschreibt, wie Sie mehrere Azure Functions-Trigger für Cosmos DB konfigurieren können, die parallel verwendet werden können und unabhängig voneinander auf Änderungen reagieren.
 
-![Mit dem Azure Cosmos DB-Trigger arbeitende und einen Container für Leases gemeinsam nutzende serverlose ereignisbasierte Funktionen](./media/change-feed-functions/multi-trigger.png)
+![Serverlose ereignisbasierte Funktionen, die mit dem Azure Functions-Trigger für Cosmos DB arbeiten und gemeinsam einen Leasecontainer nutzen](./media/change-feed-functions/multi-trigger.png)
 
 ## <a name="event-based-architecture-requirements"></a>Anforderungen an die ereignisbasierte Architektur
 
 Beim Erstellen serverloser Architekturen mit [Azure Functions](../azure-functions/functions-overview.md) gilt die [Empfehlung](../azure-functions/functions-best-practices.md#avoid-long-running-functions), kleine zusammenarbeitende Funktionsgruppen anstelle umfangreicher, zeitintensiver Funktionen zu erstellen.
 
-Wenn Sie ereignisbasierte serverlose Flows mithilfe des [Azure Cosmos DB-Triggers](./change-feed-functions.md) erstellen, entsteht ein Szenario, in dem Sie immer dann mehrere Dinge ausführen möchten, wenn in einem bestimmten [Azure Cosmos-Container](./databases-containers-items.md#azure-cosmos-containers) ein neues Ereignis auftritt. Wenn Aktionen, die Sie auslösen möchten, voneinander unabhängig sind, wäre die ideale Lösung, **pro Aktion, die Sie ausführen möchten, einen Cosmos DB-Trigger zu erstellen**, wobei alle Trigger auf demselben Azure Cosmos-Container auf Änderungen lauschen.
+Wenn Sie ereignisbasierte serverlose Flows mithilfe des [Azure Functions-Triggers für Cosmos DB](./change-feed-functions.md) erstellen, entsteht ein Szenario, in dem Sie immer dann mehrere Aktionen ausführen möchten, wenn in einem bestimmten [Azure Cosmos-Container](./databases-containers-items.md#azure-cosmos-containers) ein neues Ereignis auftritt. Wenn auszulösende Aktionen voneinander unabhängig sind, wäre die ideale Lösung, **pro auszuführende Aktion einen Azure Functions-Trigger für Cosmos DB zu erstellen**, wobei alle Trigger in demselben Azure Cosmos-Container auf Änderungen lauschen.
 
 ## <a name="optimizing-containers-for-multiple-triggers"></a>Optimieren von Containern für mehrere Trigger
 
-Unter Berücksichtigung der *Anforderungen* des Cosmos DB-Triggers benötigen wir einen zweiten Container zum Speichern des Status, auch als *Leasescontainer* bezeichnet. Bedeutet das nun, dass Sie für jede Azure-Funktion einen separaten Leasescontainer benötigen?
+Unter Berücksichtigung der *Anforderungen* des Azure Functions-Triggers für Cosmos DB benötigen wir einen zweiten Container zum Speichern des Status, auch als *Leasescontainer* bezeichnet. Bedeutet das nun, dass Sie für jede Azure-Funktion einen separaten Leasescontainer benötigen?
 
 Hier haben Sie zwei Möglichkeiten:
 
@@ -108,6 +108,6 @@ Für JavaScript können Sie die Konfiguration mit dem `leaseCollectionPrefix`-At
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* Informieren Sie sich über die vollständige Konfiguration des [Azure Cosmos DB-Triggers](../azure-functions/functions-bindings-cosmosdb-v2.md#trigger---configuration).
+* [Hier](../azure-functions/functions-bindings-cosmosdb-v2.md#trigger---configuration) finden Sie Informationen zur vollständigen Konfiguration des Azure Functions-Triggers für Cosmos DB.
 * Ziehen Sie die erweiterte [Liste von Beispielen](../azure-functions/functions-bindings-cosmosdb-v2.md#trigger---example) für alle Sprachen zu Rate.
 * Im [GitHub-Repository](https://github.com/ealsur/serverless-recipes/tree/master/cosmosdbtriggerscenarios) finden Sie weitere Beispiele mit „serverlosen“ Anleitungen für Azure Cosmos DB und Azure Functions.

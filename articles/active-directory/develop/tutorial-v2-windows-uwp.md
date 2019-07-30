@@ -16,12 +16,12 @@ ms.date: 07/16/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ff2089e8abdde8e6a99de1be2be070fb457fa632
-ms.sourcegitcommit: 9a699d7408023d3736961745c753ca3cec708f23
+ms.openlocfilehash: dae3f9f2f4a9f6966d3453123773887c244cf4e2
+ms.sourcegitcommit: e9c866e9dad4588f3a361ca6e2888aeef208fc35
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68276641"
+ms.lasthandoff: 07/19/2019
+ms.locfileid: "68334056"
 ---
 # <a name="call-microsoft-graph-api-from-a-universal-windows-platform-application-xaml"></a>Aufrufen der Microsoft Graph-API über eine UWP-Anwendung (XAML)
 
@@ -419,3 +419,8 @@ Nach der Aktivierung von [Integrierte Authentifizierung für Verbunddomänen](#e
 **Problemumgehung:** Wählen Sie **Mit anderen Optionen anmelden** aus. Wählen Sie dann **Mit Benutzernamen und Kennwort anmelden** und **Kennwort angeben** aus, und durchlaufen Sie anschließend die Telefonauthentifizierung.
 
 [!INCLUDE [Help and support](../../../includes/active-directory-develop-help-support-include.md)]
+
+Helfen Sie uns, Microsoft Identity Platform zu verbessern. Teilen Sie uns Ihre Meinung mit, indem Sie eine kurze Umfrage mit zwei Fragen beantworten.
+
+> [!div class="nextstepaction"]
+> [Umfrage zu Microsoft Identity Platform](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbRyKrNDMV_xBIiPGgSvnbQZdUQjFIUUFGUE1SMEVFTkdaVU5YT0EyOEtJVi4u)

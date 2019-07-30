@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: tutorial
 ms.date: 01/11/2018
 ms.author: yexu
-ms.openlocfilehash: 6a9d6ec651cd365995ce63a8dff6d60c8b23dec1
-ms.sourcegitcommit: 5cb0b6645bd5dff9c1a4324793df3fdd776225e4
+ms.openlocfilehash: 52cb11b015bb231b91184a2270e333e4c9aa8303
+ms.sourcegitcommit: 198c3a585dd2d6f6809a1a25b9a732c0ad4a704f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/21/2019
-ms.locfileid: "67312638"
+ms.lasthandoff: 07/23/2019
+ms.locfileid: "68424284"
 ---
 # <a name="incrementally-load-data-from-an-azure-sql-database-to-azure-blob-storage"></a>Inkrementelles Laden von Daten aus Azure SQL-Datenbank in Azure Blob Storage
 In diesem Tutorial erstellen Sie eine Azure Data Factory mit einer Pipeline, bei der Deltadaten aus einer Tabelle in Azure SQL-Datenbank in Azure Blob Storage geladen werden. 
@@ -238,7 +238,7 @@ In diesem Tutorial erstellen Sie eine Pipeline mit zwei Lookup-Aktivitäten, ein
 
         ![Zweite Lookup-Aktivität – Neues Dataset](./media/tutorial-incremental-copy-portal/source-dataset-connection.png)
 17. Wechseln Sie zum Pipeline-Editor, indem Sie oben auf die Registerkarte „Pipeline“ oder in der Strukturansicht auf der linken Seite auf den Namen der Pipeline klicken. Vergewissern Sie sich im Eigenschaftenfenster für die **Lookup**-Aktivität, dass im Feld **Source Dataset** (Quelldataset) die Option **SourceDataset** ausgewählt ist. 
-18. Wählen Sie im Feld **Abfrage verwenden** die Option **Abfrage**, und geben Sie die folgende Abfrage ein: Sie wählen hierbei in der Tabelle **data_source_table** lediglich den höchsten Wert von **LastModifytime** aus. Stellen Sie sicher, dass Sie **Nur erste Zeile** mit einem Häkchen versehen haben.
+18. Wählen Sie im Feld **Abfrage verwenden** die Option **Abfrage**, und geben Sie die folgende Abfrage ein: Sie wählen hierbei in der Tabelle **data_source_table** lediglich den höchsten Wert von **LastModifytime** aus. Stellen Sie sicher, dass Sie auch **Nur erste Zeile** mit einem Häkchen versehen haben.
 
     ```sql
     select MAX(LastModifytime) as NewWatermarkvalue from data_source_table
@@ -309,7 +309,7 @@ In diesem Tutorial erstellen Sie eine Pipeline mit zwei Lookup-Aktivitäten, ein
         | NAME | type | Wert | 
         | ---- | ---- | ----- | 
         | LastModifiedtime | DateTime | @{activity('LookupNewWaterMarkActivity').output.firstRow.NewWatermarkvalue} |
-        | TableName | string | @{activity('LookupOldWaterMarkActivity').output.firstRow.TableName} |
+        | TableName | Zeichenfolge | @{activity('LookupOldWaterMarkActivity').output.firstRow.TableName} |
 
     ![Stored Procedure-Aktivität – Einstellungen für gespeicherte Prozeduren](./media/tutorial-incremental-copy-portal/sproc-activity-stored-procedure-settings.png)
 27. Klicken Sie zum Überprüfen der Pipelineeinstellungen in der Symbolleiste auf **Überprüfen**. Vergewissern Sie sich, dass keine Validierungsfehler vorliegen. Schließen Sie das Fenster **Pipeline Validation Report** (Pipelineüberprüfungsbericht), indem Sie auf >> klicken.   

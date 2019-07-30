@@ -11,19 +11,19 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: sstein, carlrab
 manager: craigg
-ms.date: 07/08/2019
-ms.openlocfilehash: c3a070eb7e1435055b47b39985cf8cb0b182a514
-ms.sourcegitcommit: 66237bcd9b08359a6cce8d671f846b0c93ee6a82
+ms.date: 07/16/2019
+ms.openlocfilehash: 4087137a0e6f4f35c6401de67bd0bca1fe5b421b
+ms.sourcegitcommit: 9a699d7408023d3736961745c753ca3cec708f23
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67798065"
+ms.lasthandoff: 07/16/2019
+ms.locfileid: "68278101"
 ---
 # <a name="sql-database-managed-instance-frequently-asked-questions-faq"></a>Häufig gestellte Fragen (FAQ) zur verwalteten SQL-Datenbank-Instanz
 
 Dieser Artikel enthält viele der am häufigsten gestellten Fragen zur [verwalteten SQL-Datenbank-Instanz](sql-database-managed-instance.md).
 
-## <a name="where-can-i-find-a-list-of-features-that-are-supported-on-managed-instance"></a>Wo finde ich eine Liste der Funktionen, die in einer verwalteten Instanz unterstützt werden?
+## <a name="where-can-i-find-a-list-of-features-supported-on-managed-instance"></a>Wo finde ich eine Liste der Funktionen, die in einer verwalteten Instanz unterstützt werden?
 
 Eine Liste der in einer verwalteten Instanz unterstützten Funktionen finden Sie unter [Azure SQL-Datenbank und SQL Server](sql-database-features.md).
 
@@ -43,13 +43,13 @@ Informationen zu Fehlern und bekannten Problemen finden Sie unter [Verhaltensän
 ## <a name="can-a-managed-instance-have-the-same-name-as-on-premises-sql-server"></a>Kann eine verwaltete Instanz den gleichen Namen wie ein lokaler SQL Server haben?
 
 Die Namen verwalteter Instanzen müssen mit *database.windows.net* enden. So verwenden Sie statt der Standardzone eine andere DNS-Zone, z. B. **mi-another-name**.contoso.com: 
-- Verwenden Sie CliConfig zum Definieren eines Alias (das Tool ist lediglich ein Wrapper für Registrierungseinstellungen, daher kann dies auch mit einer Gruppenrichtlinie oder einem Skript erfolgen).
+- Verwenden Sie „CliConfig“ zum Definieren eines Alias. Weil das Tool nur ein Wrapper für Registrierungseinstellungen ist, könnte es auch mithilfe einer Gruppenrichtlinie oder eines Skripts ausgeführt werden.
 - Verwenden Sie *CNAME* mit der Option *TrustServerCertificate=true*.
 
 
 ## <a name="how-can-i-move-database-from-managed-instance-back-to-sql-server-or-azure-sql-database"></a>Wie kann ich eine Datenbank aus einer verwalteten Instanz zurück zu SQL Server oder Azure SQL-Datenbank verschieben?
 
-Sie können [die Datenbank in eine BACPAC-Datei exportieren](sql-database-export.md) und dann [die BACPAC-Datei importieren]( sql-database-import.md). Dieser Ansatz wird empfohlen, wenn die Datenbank kleiner als 100 GB ist.
+Sie können [die Datenbank in eine BACPAC-Datei exportieren](sql-database-export.md) und dann [die BACPAC-Datei importieren]( sql-database-import.md). Dieser Ansatz wird empfohlen, wenn Ihre Datenbank kleiner als 100 GB ist.
 
 Transaktionsreplikation kann verwendet werden, wenn alle Tabellen in der Datenbank Primärschlüssel aufweisen.
 
@@ -63,19 +63,19 @@ Dieser Ansatz wird empfohlen, wenn die Datenbank kleiner als 100 GB ist. Transak
 
 ## <a name="how-do-i-choose-between-gen-4-and-gen-5-hardware-generation-for-managed-instance"></a>Wie wähle ich zwischen der Hardwaregeneration Gen 4 und Gen 5 für die verwaltete Instanz?
 
-Dies hängt von der Workload ab, da einige Hardwaregenerationen für bestimmte Arten von Workloads besser als andere geeignet sind. Der Themenbereich Leistung ist komplex, jedoch weisen die Hardwaregenerationen die folgenden Unterschiede auf, die sich auf die Workloadleistung auswirken:
-- Gen 4 bietet eine bessere Computeunterstützung, da sie auf physischen Prozessoren basiert, während Gen 5 auf vCore-Prozessoren basiert. Dies kann für rechenintensive Workloads von Vorteil sein.
-- Gen 5 unterstützt den beschleunigten Netzwerkbetrieb. Dies führt zu einer besseren E/A-Bandbreite für den Remotespeicher. Dies kann für E/A-intensive Workloads auf universellen Dienstebenen vorteilhaft sein. In Gen 5 werden schnellere lokale SSD-Datenträger als in Gen 4 verwendet. Dies kann für E/A-intensive Workloads auf unternehmenskritischen Dienstebenen vorteilhaft sein.
+Das hängt von der Workload ab, da einige Hardwaregenerationen für bestimmte Arten von Workloads besser als andere geeignet sind. Der Themenbereich Leistung ist komplex, jedoch weisen die Hardwaregenerationen die folgenden Unterschiede auf, die sich auf die Workloadleistung auswirken:
+- Gen 4 bietet eine bessere Computeunterstützung, da sie auf physischen Prozessoren basiert, während Gen 5 auf vCore-Prozessoren basiert. Das kann für rechenintensive Workloads von Vorteil sein.
+- Gen 5 unterstützt den beschleunigten Netzwerkbetrieb. Dies führt zu einer besseren E/A-Bandbreite für den Remotespeicher. Das kann für E/A-intensive Workloads auf universellen Dienstebenen vorteilhaft sein. In Gen 5 werden schnellere lokale SSD-Datenträger als in Gen 4 verwendet. Das kann für E/A-intensive Workloads auf unternehmenskritischen Dienstebenen vorteilhaft sein.
 
-Kunden werden empfohlen, vor der Liveschaltung die Leistung der tatsächlichen für die Produktion vorgesehenen Workloads zu testen, um zu bestimmen, welche Hardwaregeneration für ihren Fall besser geeignet ist.
+Es wird dringend empfohlen, vor der Liveschaltung die Leistung der tatsächlichen für die Produktion vorgesehenen Workloads zu testen, um zu bestimmen, welche Hardwaregeneration in einem bestimmten Fall besser geeignet ist.
 
 ## <a name="can-i-switch-my-managed-instance-hardware-generation-between-gen-4-and-gen-5-online"></a>Kann ich für meine verwaltete Instanz online zwischen der Hardwaregeneration Gen 4 und Gen 5 wechseln? 
 
-Der automatische Onlinewechsel zwischen Hardwaregenerationen ist möglich, wenn beide Hardwaregenerationen in der gleichen Region verfügbar sind, in der Ihre verwaltete Instanz bereitgestellt wurde. In diesem Fall enthält der Tarifabschnitt des Azure-Portals eine Option zum Wechseln zwischen Hardwaregenerationen.
+Der automatische Onlinewechsel zwischen Hardwaregenerationen ist möglich, wenn beide Hardwaregenerationen in der Region verfügbar sind, in der Ihre verwaltete Instanz bereitgestellt wurde. In diesem Fall enthält der Tarifabschnitt des Azure-Portals eine Option zum Wechseln zwischen Hardwaregenerationen.
 
-Dies ist ein zeitintensiver Vorgang, da die neue verwaltete Instanz auf dem Back-End bereitgestellt wird und die Datenbanken automatisch zwischen der alten und neuen Instanz übertragen werden. Dieser Vorgang erfolgt für Kunden nahtlos.
+Dabei handelt es sich um einen Vorgang mit langer Ausführungszeit, da eine neue verwaltete Instanz im Hintergrund bereitgestellt wird und Datenbanken automatisch zwischen der alten und neuen Instanz mit einem schnellen Failover am Ende des Prozesses übertragen werden. 
 
-Wenn nicht beide Hardwaregenerationen in der gleichen Region unterstützt werden, kann die Hardwaregeneration nur manuell gewechselt werden. Dazu müssen Sie eine neue Instanz in der Region bereitstellen, in der die gewünschte Hardwaregeneration verfügbar ist, und die Daten zwischen der alten und neuen Instanz manuell sichern und wiederherstellen.
+Wenn nicht beide Hardwaregenerationen in der gleichen Region unterstützt werden, kann die Hardwaregeneration nur manuell gewechselt werden. Dazu müssen Sie eine neue Instanz in der Region bereitstellen, in der die gewünschte Hardwaregeneration verfügbar ist, sowie die Daten zwischen der alten und neuen Instanz manuell sichern und wiederherstellen.
 
 
 ## <a name="how-do-i-tune-performance-of-my-managed-instance"></a>Wie optimiere ich die Leistung meiner verwalteten Instanz? 
@@ -88,11 +88,11 @@ Wenn Ihre Workload aus vielen kleinen Transaktionen besteht, sollten Sie den Ver
 
 ## <a name="what-is-the-maximum-storage-size-for-managed-instance"></a>Was ist die maximale Speichergröße für die verwaltete Instanz? 
 
-Die Speichergröße für verwaltete Instanzen hängt von der ausgewählten Dienstebene („Allgemein“ oder „Unternehmenskritisch“) ab. Informationen zu den Speichereinschränkungen dieser Dienstebenen finden Sie unter [Merkmale der Dienstebene](sql-database-service-tiers-general-purpose-business-critical.md).
+Die Speichergröße für verwaltete Instanzen hängt von der ausgewählten Dienstebene („Universell“ oder „Unternehmenskritisch“) ab. Informationen zu den Speichereinschränkungen dieser Dienstebenen finden Sie unter [Merkmale der Dienstebene](sql-database-service-tiers-general-purpose-business-critical.md).
 
 ## <a name="is-the-backup-storage-deducted-from-my-managed-instance-storage"></a>Wird der Sicherungsspeicher vom Speicher meiner verwalteten Instanz abgezogen? 
 
-Nein, der Sicherungsspeicher wird nicht vom Speicher Ihrer verwalteten Instanz abgezogen. Der Sicherungsspeicher ist unabhängig vom Instanzspeicherplatz, und seine Größe ist nicht begrenzt. Der Sicherungsspeicher wird durch die Zeit für die Speicherung der Sicherung Ihrer Instanzdatenbanken begrenzt, die auf 7 bis 35 Tage festgelegt werden kann. Weitere Informationen finden Sie unter [Automatisierte Sicherungen](https://docs.microsoft.com/azure/sql-database/sql-database-automated-backups).
+Nein, der Sicherungsspeicher wird nicht vom Speicher Ihrer verwalteten Instanz abgezogen. Der Sicherungsspeicher ist unabhängig vom Instanzspeicherplatz, und seine Größe ist nicht begrenzt. Der Sicherungsspeicher wird durch den Zeitraum zum Beibehalten der Sicherung Ihrer Instanzdatenbanken begrenzt, der auf 7 bis 35 Tage festgelegt werden kann. Weitere Informationen finden Sie unter [Automatisierte Sicherungen](https://docs.microsoft.com/azure/sql-database/sql-database-automated-backups).
   
 ## <a name="how-can-i-set-inbound-nsg-rules-on-management-ports"></a>Wie kann ich NSG-Regeln für eingehenden Datenverkehr an Verwaltungsports festlegen?
 
@@ -113,13 +113,13 @@ Weitere Informationen zu diesem Thema und zum Überprüfen der integrierten Fire
 
 Kunden wird empfohlen, zum Verringern von Netzwerkrisiken eine Reihe von Sicherheitseinstellungen und -kontrollen anzuwenden:
 
-- Aktivieren Sie Transparent Data Encryption (TDE) für alle Datenbanken.
+- Aktivieren Sie [Transparent Data Encryption (TDE)](https://docs.microsoft.com/azure/sql-database/transparent-data-encryption-azure-sql) für alle Datenbanken.
 - Deaktivieren Sie die Common Language Runtime (CLR). Dies wird auch für lokale Umgebungen empfohlen.
-- Verwenden Sie nur Azure AD-Konten.
-- Greifen Sie auf die verwaltete SQL-Datenbank-Instanz mit einem DBA-Konto mit geringen Berechtigungen zu.
+- Verwenden Sie nur Authentifizierung über Azure Active Directory (AAD).
+- Greifen Sie auf die Instanz mit einem DBA-Konto mit geringen Berechtigungen zu.
 - Konfigurieren Sie den Zugriff auf die JiT-Jumpbox für das Systemadministratorkonto.
-- Aktivieren Sie SQL-Überwachung, und integrieren Sie sie in Warnungsmechanismen.
-- Aktivieren Sie die Bedrohungserkennung über die ATS-Suite.
+- Aktivieren Sie [SQL-Überwachung](https://docs.microsoft.com/sql/relational-databases/security/auditing/sql-server-audit-database-engine), und integrieren Sie sie in Warnungsmechanismen.
+- Aktivieren Sie die [Bedrohungserkennung](https://docs.microsoft.com/azure/sql-database/sql-database-threat-detection) aus der [Advanced Data Security (ADS)](https://docs.microsoft.com/azure/sql-database/sql-database-advanced-data-security)-Sammlung.
 
 
 ## <a name="where-can-i-find-use-cases-and-resulting-cost-savings-with-managed-instance"></a>Wo finde ich Anwendungsfälle und entsprechende Kosteneinsparungen für verwaltete Instanzen?
@@ -150,6 +150,9 @@ In seltenen, jedoch erforderlichen Situationen müssen Sie eine Onlinemigration 
 
 Aus diesem Grund wird dringend empfohlen, keine statische IP-Adresse zu verwenden, da dies zu unnötigen Ausfallzeiten führen kann.
 
+## <a name="can-i-move-a-managed-instance-or-its-vnet-to-another-resource-group"></a>Kann ich eine verwaltete Instanz oder das zugehörige VNet in eine andere Ressourcengruppe verschieben?
+
+Nein, dies ist die aktuelle Plattformeinschränkung. Nachdem eine verwaltete Instanz erstellt wurde, wird das Verschieben dieser Instanz oder des VNets in eine andere Ressourcengruppe oder ein anderes Abonnement nicht unterstützt.
 
 ## <a name="can-i-change-the-time-zone-for-an-existing-managed-instance"></a>Kann ich die Zeitzone für eine vorhandene verwaltete Instanz ändern?
 
@@ -160,17 +163,17 @@ Als Problemumgehung können Sie eine neue verwaltete Instanz mit der richtigen Z
 
 ## <a name="how-do-i-resolve-performance-issues-with-my-managed-instance"></a>Wie löse ich Leistungsprobleme bei meiner verwalteten Instanz?
 
-Als Ausgangspunkt für einen Leistungsvergleich zwischen der verwalteten Instanz und SQL Server empfehlen sich [The best practices for performance comparison between Azure SQL Managed Instance and SQL Server](https://techcommunity.microsoft.com/t5/Azure-SQL-Database/The-best-practices-for-performance-comparison-between-Azure-SQL/ba-p/683210) (Bewährte Methoden für den Leistungsvergleich zwischen der verwalteten Azure-SQL-Instanz und SQL Server, in englischer Sprache).
+Als Ausgangspunkt für einen Leistungsvergleich zwischen der verwalteten Instanz und SQL Server empfiehlt sich der Artikel [Best practices for performance comparison between Azure SQL Managed Instance and SQL Server](https://techcommunity.microsoft.com/t5/Azure-SQL-Database/The-best-practices-for-performance-comparison-between-Azure-SQL/ba-p/683210) (Bewährte Methoden für den Leistungsvergleich zwischen der verwalteten Azure-SQL-Instanz und SQL Server, in englischer Sprache).
 
 Das Laden von Daten erfolgt aufgrund des obligatorischen vollständigen Wiederherstellungsmodells und der [Einschränkungen](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-resource-limits#service-tier-characteristics) für den Schreibdurchsatz des Transaktionsprotokolls in einer verwalteten Instanz häufig langsamer als in SQL Server. Dies kann manchmal umgangen werden, indem vorübergehende Daten in tempdb statt einer Benutzerdatenbank gespeichert oder gruppierte Columnstore-Tabellen oder speicheroptimierte Tabellen verwendet werden.
 
 
 ## <a name="can-i-restore-my-encrypted-database-to-managed-instance"></a>Kann ich meine verschlüsselte Datenbank in einer verwalteten Instanz wiederherstellen?
 
-Ja. Sie müssen die Datenbank nicht entschlüsseln, um sie in einer verwalteten Instanz wiederherstellen zu können. Sie müssen ein Zertifikat/einen als Verschlüsselungsschlüssel-Schutzvorrichtung verwendeten Schlüssel im Quellsystem für die verwaltete Instanz bereitstellen, um Daten aus der verschlüsselten Sicherungsdatei lesen zu können. Dies kann auf zwei Arten durchgeführt werden:
+Ja. Sie müssen die Datenbank nicht entschlüsseln, um sie in einer verwalteten Instanz wiederherstellen zu können. Sie müssen ein Zertifikat/einen als Verschlüsselungsschlüssel-Schutzvorrichtung verwendeten Schlüssel im Quellsystem für die verwaltete Instanz bereitstellen, um Daten aus der verschlüsselten Sicherungsdatei lesen zu können. Dies kann auf zwei Arten erreicht werden:
 
-- Laden Sie die Zertifikatschutzvorrichtung in die verwaltete Instanz hoch. Dies kann nur mithilfe von PowerShell geschehen. Im Beispielskript wird der gesamte Prozess beschrieben.
-- Laden Sie eine asymmetrische Schlüsselschutzvorrichtung in Azure Key Vault (AKV) hoch, und verweisen Sie in der verwalteten Instanz auf sie. Dieser Ansatz ähnelt dem TDE-Anwendungsfall Bring-Your-Own-Key (BYOK), in dem ebenfalls die AKV-Integration zum Speichern des Verschlüsselungsschlüssels verwendet wird. Wenn für die verwaltete Instanz nur der in AKV hochgeladene Schlüssel zum Wiederherstellen verschlüsselter Datenbanken verfügbar sein soll, ohne den Schlüssel als Verschlüsselungsschlüssel-Schutzvorrichtung zu verwenden, befolgen Sie die Anweisungen zum Einrichten von BYOK-TDE, und aktivieren Sie nicht das Kontrollkästchen „Legen Sie den ausgewählten Schlüssel als TDE-Standardschutzvorrichtung fest“.
+- *Laden Sie die Zertifikatschutzvorrichtung in die verwaltete Instanz hoch*. Das kann nur mithilfe von PowerShell geschehen. Im [Beispielskript](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-migrate-tde-certificate) wird der gesamte Prozess beschrieben.
+- *Laden Sie eine asymmetrische Schlüsselschutzvorrichtung in Azure Key Vault (AKV) hoch, und verweisen Sie in der verwalteten Instanz darauf*. Dieser Ansatz ähnelt dem TDE-Anwendungsfall Bring-Your-Own-Key (BYOK), in dem ebenfalls die AKV-Integration zum Speichern des Verschlüsselungsschlüssels verwendet wird. Wenn Sie den Schlüssel nicht als Schutzvorrichtung für den Verschlüsselungsschlüssel verwenden, sondern nur für die verwaltete Instanz zum Wiederherstellen verschlüsselter Datenbanken zur Verfügung stellen möchten, befolgen Sie die Anweisungen zum [Einrichten von BYOK-TDE](https://docs.microsoft.com/azure/sql-database/transparent-data-encryption-azure-sql#manage-transparent-data-encryption-in-the-azure-portal), und aktivieren Sie nicht das Kontrollkästchen *Legen Sie den ausgewählten Schlüssel als TDE-Standardschutzvorrichtung fest*.
 
 Nachdem Sie die Verschlüsselungsschutzvorrichtung für die verwaltete Instanz verfügbar gemacht haben, können Sie mit dem Standardverfahren für die Datenbankwiederherstellung fortfahren.
 

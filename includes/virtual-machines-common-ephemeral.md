@@ -5,15 +5,15 @@ services: virtual-machines
 author: cynthn
 ms.service: virtual-machines
 ms.topic: include
-ms.date: 07/01/2019
+ms.date: 07/08/2019
 ms.author: cynthn
 ms.custom: include file
-ms.openlocfilehash: 30d71ed54e490be8c3a4b36cedbc0eda634323a1
-ms.sourcegitcommit: c0419208061b2b5579f6e16f78d9d45513bb7bbc
+ms.openlocfilehash: a57335eccfce1e81fe0cc85ae6fa7b12aa27e1c3
+ms.sourcegitcommit: 47ce9ac1eb1561810b8e4242c45127f7b4a4aa1a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/08/2019
-ms.locfileid: "67626475"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67805859"
 ---
 Kurzlebige Betriebssystem-Datenträger werden auf dem lokalen Speicher des virtuellen Computers (VM) erstellt und nicht auf dem externen Azure Storage gespeichert. Kurzlebige Betriebssystem-Datenträger eignen sich gut für zustandslose Workloads, bei denen Anwendungen einzelne VM-Ausfälle tolerieren, sind aber stärker durch den Zeitpunkt der VM-Bereitstellung oder das Reimaging der einzelnen VM-Instanzen betroffen. Mit einem kurzlebigen Betriebssystem-Datenträger erzielen Sie eine geringere Latenzzeit für das Lesen/Schreiben auf dem Betriebssystem-Datenträger und schnelleres VM-Reimaging. 
  
@@ -32,7 +32,7 @@ Die Hauptunterschiede zwischen permanenten und kurzlebigen Betriebssystem-Datent
 
 |                             | Permanenter Betriebssystem-Datenträger                          | Kurzlebiger Betriebssystemdatenträger                              |    |
 |-----------------------------|---------------------------------------------|------------------------------------------------|
-| Maximale Größe für Betriebssystem-Datenträger      | 2 TiB                                                                                        | Cachegröße für die VM-Größe oder 2TiB, je nachdem, was kleiner ist – [DS](../articles/virtual-machines/linux/sizes-general.md), [ES](../articles/virtual-machines/linux/sizes-memory.md), [M](../articles/virtual-machines/linux/sizes-memory.md), [FS](../articles/virtual-machines/linux/sizes-compute.md) und [GS](../articles/virtual-machines/linux/sizes-memory.md)              |
+| Maximale Größe für Betriebssystem-Datenträger      | 2 TiB                                                                                        | Cachegröße für die VM-Größe oder 2TiB, je nachdem, was kleiner ist. Informationen zur **Cachegröße in GiB** finden Sie unter [DS](../articles/virtual-machines/linux/sizes-general.md), [ES](../articles/virtual-machines/linux/sizes-memory.md), [M](../articles/virtual-machines/linux/sizes-memory.md), [FS](../articles/virtual-machines/linux/sizes-compute.md) und [GS](/azure/virtual-machines/linux/sizes-previous-gen#gs-series).              |
 | Unterstützte VM-Größen          | Alle                                                                                          | DSv1, DSv2, DSv3, Esv3, Fs, FsV2, GS, M                                               |
 | Unterstützung für Datenträgertyp           | Verwalteter und nicht verwalteter Betriebssystem-Datenträger                                                                | Nur verwalteter Betriebssystem-Datenträger                                                               |
 | Unterstützung für Regionen              | Alle Regionen                                                                                  | Alle Regionen                              |

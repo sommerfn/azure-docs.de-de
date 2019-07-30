@@ -8,12 +8,12 @@ ms.subservice: disk
 ms.topic: article
 ms.date: 06/14/2019
 ms.author: alkohli
-ms.openlocfilehash: f725f38a335972ae8e0a8b8402a99202caa54a70
-ms.sourcegitcommit: 72f1d1210980d2f75e490f879521bc73d76a17e1
+ms.openlocfilehash: f8116ec0836623adf803991017950ddc7f960923
+ms.sourcegitcommit: 47ce9ac1eb1561810b8e4242c45127f7b4a4aa1a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/14/2019
-ms.locfileid: "67147080"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67805706"
 ---
 # <a name="use-logs-to-troubleshoot-validation-issues-in-azure-data-box-disk"></a>Verwenden von Protokollen zur Behandlung von Problemen bei der Überprüfung in Azure Data Box Disk
 
@@ -90,8 +90,8 @@ In der folgenden Tabelle sind die Fehler, die in *error.xml* enthalten sind, zus
 | `InvalidBlobNameFormat` | Der Dateipfad ist keinem gültigen Blobpfad in der Cloud gemäß den Benennungskonventionen für Azure-Blobs zugeordnet.|Benennen Sie die Datei um, damit sie den [Azure-Benennungskonventionen](data-box-disk-limits.md#azure-block-blob-page-blob-and-file-naming-conventions) entspricht. Wiederholen Sie die Überprüfung. |
 | `InvalidFileNameFormat` | Der Dateipfad ist keinem gültigen Dateipfad in der Cloud gemäß den Benennungskonventionen für Azure-Dateien zugeordnet. |Benennen Sie die Datei um, damit sie den [Azure-Benennungskonventionen](data-box-disk-limits.md#azure-block-blob-page-blob-and-file-naming-conventions) entspricht. Wiederholen Sie die Überprüfung. |
 | `InvalidDiskNameFormat` | Der Dateipfad ist keinem gültigen Datenträgernamen in der Cloud gemäß den Benennungskonventionen für verwaltete Azure-Datenträger zugeordnet. |Benennen Sie die Datei um, damit sie den [Azure-Benennungskonventionen](data-box-disk-limits.md#azure-block-blob-page-blob-and-file-naming-conventions) entspricht. Wiederholen Sie die Überprüfung.       |
-| `NotPartOfFileShare` | Die Dateien konnten nicht hochgeladen werden, da der Uploadpfad nicht gültig ist. Laden Sie die Dateien in einen Ordner in Azure Files hoch.   | Entfernen Sie die fehlerhaften Dateien, und laden Sie diese Dateien in einer vorab erstellten Ordner hoch. Wiederholen Sie die Überprüfung. |
-| `NonVhdFileNotSupportedForManagedDisk` | Eine andere Datei als VHD kann nicht als ein verwalteter Datenträger hochgeladen werden. |Entfernen Sie die anderen Dateien, die nicht VHD sind, da diese nicht unterstützt werden. Wiederholen Sie die Überprüfung. |
+| `NotPartOfFileShare` | Der Uploadpfad für Dateien ist ungültig. Laden Sie die Dateien in einen Ordner in Azure Files hoch.   | Entfernen Sie die fehlerhaften Dateien, und laden Sie diese Dateien in einer vorab erstellten Ordner hoch. Wiederholen Sie die Überprüfung. |
+| `NonVhdFileNotSupportedForManagedDisk` | Eine andere Datei als VHD kann nicht als ein verwalteter Datenträger hochgeladen werden. |Entfernen Sie die Nicht-VHD-Dateien aus dem Ordner `ManagedDisk`, da sie nicht unterstützt werden, oder verschieben Sie diese Dateien in einen `PageBlob`-Ordner. Wiederholen Sie die Überprüfung. |
 
 
 ## <a name="next-steps"></a>Nächste Schritte

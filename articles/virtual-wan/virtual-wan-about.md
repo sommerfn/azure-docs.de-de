@@ -5,23 +5,23 @@ services: virtual-wan
 author: cherylmc
 ms.service: virtual-wan
 ms.topic: overview
-ms.date: 06/28/2019
+ms.date: 07/22/2019
 ms.author: cherylmc
 Customer intent: As someone with a networking background, I want to understand what Virtual WAN is and if it is the right choice for my Azure network.
-ms.openlocfilehash: 46f3f87fac5b65229e03ee91d8f2b93b1a1590e8
-ms.sourcegitcommit: 66237bcd9b08359a6cce8d671f846b0c93ee6a82
+ms.openlocfilehash: f1576e963f9c25821b5e3f57907662e3d86df4e0
+ms.sourcegitcommit: 9dc7517db9c5817a3acd52d789547f2e3efff848
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67795283"
+ms.lasthandoff: 07/23/2019
+ms.locfileid: "68406353"
 ---
 # <a name="what-is-azure-virtual-wan"></a>Was ist Azure Virtual WAN?
 
 Der Netzwerkdienst Azure Virtual WAN bietet optimierte und automatisierte Branch-Konnektivität mit und durch Azure. Azure-Regionen dienen als Hubs, die Sie auswählen können, um Branches mit ihnen zu verbinden. Sie können das Azure-Backbone nutzen, um auch Verbindungen mit Branches herzustellen und die Branch-to-VNET-Konnektivität zu nutzen. Wir haben eine Liste von Partnern, die die Automatisierung der Konnektivität mit Azure Virtual WAN-VPN unterstützen. Weitere Informationen finden Sie in dem Artikel [Virtual WAN-Partner und -Standorte](virtual-wan-locations-partners.md).
 
-Azure Virtual WAN vereint zahlreiche Azure-Cloudkonnektivitätsdienste, z.B. Site-to-Site-VPN, ExpressRoute, Point-to-Site-Benutzer-VPN in einer einzigen Betriebsschnittstelle. Die Konnektivität mit Azure-VNets wird mithilfe virtueller Netzwerkverbindungen hergestellt.
+Azure Virtual WAN vereint zahlreiche Azure-Cloudkonnektivitätsdienste, z. B. Site-to-Site-VPN und ExpressRoute in einer einzigen Betriebsschnittstelle. Die Konnektivität mit Azure-VNets wird mithilfe virtueller Netzwerkverbindungen hergestellt.
 
-ExpressRoute und Point-to-Site-Benutzer-VPN für Virtual WAN befinden sich derzeit in der Vorschau.
+ExpressRoute für Virtual WAN befindet sich derzeit in der Vorschauphase.
 
 ![Virtual WAN-Diagramm](./media/virtual-wan-about/virtualwan1.png)
 
@@ -51,7 +51,7 @@ Sie erstellen die folgenden Ressourcen, um ein End-to-End Virtual WAN zu konfigu
 
 ## <a name="connectivity"></a>Konnektivität
 
-Virtual WAN gestattet drei Arten von Konnektivität: Site-to-Site, Point-to-Site (Vorschau) und ExpressRoute (Vorschau).
+Virtual WAN gestattet zwei Konnektivitätstypen: Site-to-Site und ExpressRoute (Vorschauversion)
 
 ### <a name="s2s"></a>Site-to-Site-VPN-Verbindungen
 
@@ -71,11 +71,6 @@ Wenn Sie mit einem Virtual WAN-Partner arbeiten, ist der Workflow wie folgt:
 
 Eine Liste der verfügbaren Partner und Standorte finden Sie in dem Artikel [Virtual WAN-Partner und -Standorte](virtual-wan-locations-partners.md).
 
-### <a name="p2s"></a>Point-to-Site-VPN-Verbindungen (Vorschau)
-
-Mit einer P2S-Verbindung (Point-to-Site) können Sie von einem einzelnen Clientcomputer aus eine sichere Verbindung mit Ihrem virtuellen Hub herstellen. Eine P2S-Verbindung wird hergestellt, indem Sie die Verbindung vom Clientcomputer aus starten. Diese Lösung ist nützlich für Telearbeiter, die an einem Remotestandort (beispielsweise zu Hause oder in einer Konferenz) eine Verbindung herstellen möchten. Wenn nur einige wenige Clients eine Verbindung herstellen müssen, ist ein P2S-VPN (und nicht ein S2S-VPN) ebenfalls eine nützliche Lösung.
-
-Informationen zum Erstellen der Verbindung finden Sie unter [Erstellen einer Point-to-Site-Verbindung per Virtual WAN](virtual-wan-point-to-site-portal.md).
 
 ### <a name="er"></a>ExpressRoute-Verbindungen (Vorschau)
 

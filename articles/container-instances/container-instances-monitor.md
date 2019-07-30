@@ -3,16 +3,17 @@ title: Überwachen von Containern in Azure Container Instances
 description: Vorgehensweise zur Überwachung des Verbrauchs von Computeressourcen, z. B. CPU und Arbeitsspeicher, durch Ihre Container in Azure Container Instances.
 services: container-instances
 author: dlepow
+manager: gwallace
 ms.service: container-instances
 ms.topic: overview
 ms.date: 04/24/2019
 ms.author: danlep
-ms.openlocfilehash: 7b46ea0518038eeb908591b8438acc2a9095242c
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 4c1208d8cbc795e53128df0ccf93e79dc427abad
+ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64570895"
+ms.lasthandoff: 07/18/2019
+ms.locfileid: "68325855"
 ---
 # <a name="monitor-container-resources-in-azure-container-instances"></a>Überwachen von Containerressourcen in Azure Container Instances
 
@@ -21,7 +22,7 @@ ms.locfileid: "64570895"
 In diesem Dokument wird die Erfassung von Azure Monitor-Metriken für Containerinstanzen per Azure-Portal und Azure CLI ausführlich beschrieben.
 
 > [!IMPORTANT]
-> Azure Monitor-Metriken in Azure Container Instances befinden sich zurzeit in der Vorschauphase, und es gelten einige [Einschränkungen](#preview-limitations). Wenn Sie Vorschauversionen nutzen möchten, müssen Sie die [zusätzlichen Nutzungsbedingungen][terms-of-use] akzeptieren. Einige Aspekte dieses Features werden bis zur allgemeinen Verfügbarkeit unter Umständen noch geändert.
+> Azure Monitor-Metriken in Azure Container Instances befinden sich zurzeit in der Vorschauphase, und es gelten einige [Einschränkungen](#preview-limitations). Vorschauversionen werden Ihnen zur Verfügung gestellt, wenn Sie die [zusätzlichen Nutzungsbedingungen][terms-of-use] akzeptieren. Einige Aspekte dieses Features werden bis zur allgemeinen Verfügbarkeit unter Umständen noch geändert.
 
 ## <a name="preview-limitations"></a>Einschränkungen der Vorschau
 

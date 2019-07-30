@@ -1,29 +1,29 @@
 ---
-title: Verbindungsrichtlinie für Azure Cosmos DB-Trigger
-description: Hier erfahren Sie, wie Sie die vom Azure Cosmos DB-Trigger verwendete Verbindungsrichtlinie konfigurieren.
+title: 'Verbindungsrichtlinie: Azure Functions-Trigger für Cosmos DB'
+description: Hier erfahren Sie, wie Sie die vom Azure Functions-Trigger für Cosmos DB verwendete Verbindungsrichtlinie konfigurieren.
 author: ealsur
 ms.service: cosmos-db
 ms.topic: sample
-ms.date: 06/05/2019
+ms.date: 07/17/2019
 ms.author: maquaran
-ms.openlocfilehash: 584d59884b70d2ee8243216e6f907fc9ec2d8ad4
-ms.sourcegitcommit: 45e4466eac6cfd6a30da9facd8fe6afba64f6f50
+ms.openlocfilehash: 359b6a905e64046aad62b70ae53b993c86884ad2
+ms.sourcegitcommit: e9c866e9dad4588f3a361ca6e2888aeef208fc35
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/07/2019
-ms.locfileid: "66755458"
+ms.lasthandoff: 07/19/2019
+ms.locfileid: "68335629"
 ---
-# <a name="how-to-configure-the-connection-policy-used-by-azure-cosmos-db-trigger"></a>Konfigurieren der vom Azure Cosmos DB-Trigger verwendeten Verbindungsrichtlinie
+# <a name="how-to-configure-the-connection-policy-used-by-azure-functions-trigger-for-cosmos-db"></a>Konfigurieren der vom Azure Functions-Trigger für Cosmos DB verwendeten Verbindungsrichtlinie
 
-In diesem Artikel wird die Konfiguration der Verbindungsrichtlinie beschrieben, wenn Sie mithilfe des Azure Cosmos DB-Triggers eine Verbindung mit Ihrem Azure Cosmos-Konto herstellen.
+In diesem Artikel wird die Konfiguration der Verbindungsrichtlinie beschrieben, wenn Sie mithilfe des Azure Functions-Triggers für Cosmos DB eine Verbindung mit Ihrem Azure Cosmos-Konto herstellen.
 
 ## <a name="why-is-the-connection-policy-important"></a>Warum ist die Verbindungsrichtlinie wichtig?
 
-Es gibt zwei Verbindungsmodi: den direkten Modus und den Gatewaymodus. Weitere Informationen zu diesen Verbindungsmodi finden Sie im Artikel [Leistungstipps für Azure Cosmos DB und .NET](./performance-tips.md#networking). Standardmäßig wird der **Gatewaymodus** zum Herstellen aller Verbindungen für den Azure Cosmos DB-Trigger verwendet. Dies ist jedoch unter Umständen nicht die optimale Option für Szenarien mit hohen Leistungsanforderungen.
+Es gibt zwei Verbindungsmodi: den direkten Modus und den Gatewaymodus. Weitere Informationen zu diesen Verbindungsmodi finden Sie im Artikel [Leistungstipps für Azure Cosmos DB und .NET](./performance-tips.md#networking). Standardmäßig wird ein **Gateway** zum Herstellen aller Verbindungen für den Azure Functions-Trigger für Cosmos DB verwendet. Dies ist jedoch unter Umständen nicht die optimale Option für Szenarien mit hohen Leistungsanforderungen.
 
 ## <a name="changing-the-connection-mode-and-protocol"></a>Ändern des Verbindungsmodus und des Protokolls
 
-Für die Konfiguration der Clientverbindungsrichtlinie stehen zwei wichtige Konfigurationseinstellungen zur Verfügung: der **Verbindungsmodus** und das **Verbindungsprotokoll**. Sie können die Standardeinstellung für den Verbindungsmodus und das Verbindungsprotokoll ändern, die von dem Azure Cosmos DB-Trigger und allen [Azure Cosmos DB-Bindungen](../azure-functions/functions-bindings-cosmosdb-v2.md#output) verwendet werden. Wenn Sie die Standardeinstellungen ändern möchten, müssen Sie in Ihrem Azure Functions-Projekt zur Datei `host.json` navigieren und die folgende [zusätzliche Einstellung](../azure-functions/functions-bindings-cosmosdb-v2.md#hostjson-settings) hinzufügen:
+Für die Konfiguration der Clientverbindungsrichtlinie stehen zwei wichtige Konfigurationseinstellungen zur Verfügung: der **Verbindungsmodus** und das **Verbindungsprotokoll**. Sie können die Standardeinstellung für den Verbindungsmodus und das Verbindungsprotokoll ändern, die vom Azure Functions-Trigger für Cosmos DB und allen [Azure Cosmos DB-Bindungen](../azure-functions/functions-bindings-cosmosdb-v2.md#output) verwendet werden. Wenn Sie die Standardeinstellungen ändern möchten, müssen Sie in Ihrem Azure Functions-Projekt zur Datei `host.json` navigieren und die folgende [zusätzliche Einstellung](../azure-functions/functions-bindings-cosmosdb-v2.md#hostjson-settings) hinzufügen:
 
 ```js
 {

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 06/12/2019
 ms.author: aljo
-ms.openlocfilehash: a309b30fc9438ded280109691afd3bde0883dc3c
-ms.sourcegitcommit: 22c97298aa0e8bd848ff949f2886c8ad538c1473
+ms.openlocfilehash: 951c244d7f7d037c8d2ae117f36c18acd902436f
+ms.sourcegitcommit: fa45c2bcd1b32bc8dd54a5dc8bc206d2fe23d5fb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/14/2019
-ms.locfileid: "67144395"
+ms.lasthandoff: 07/12/2019
+ms.locfileid: "67850050"
 ---
 # <a name="customize-service-fabric-cluster-settings"></a>Anpassen von Service Fabric-Clustereinstellungen
 Dieser Artikel beschreibt die verschiedenen Fabric-Einstellungen, die Sie für Ihren Service Fabric-Cluster anpassen können. Für in Azure gehostete Cluster können Sie Einstellungen über das [Azure-Portal](https://portal.azure.com) oder mithilfe einer Azure Resource Manager-Vorlage anpassen. Weitere Informationen finden Sie unter [Aktualisieren der Konfiguration eines Azure-Clusters](service-fabric-cluster-config-upgrade-azure.md). Für eigenständige Cluster passen Sie die Einstellungen durch Aktualisieren der Datei *ClusterConfig.json* und ein Konfigurationsupgrade in Ihrem Cluster an. Weitere Informationen finden Sie unter [Aktualisieren der Konfiguration eines eigenständigen Clusters](service-fabric-cluster-config-upgrade-windows-server.md).
@@ -75,6 +75,7 @@ In der folgenden Liste sind, zusammengestellt nach Abschnitt, die Fabric-Einstel
 
 | **Parameter** | **Zulässige Werte** | **Upgraderichtlinie** | **Anleitung oder Kurzbeschreibung** |
 | --- | --- | --- | --- |
+|AllowCustomUpgradeSortPolicies | Boolesch, Standardwert „false“ |Dynamisch|Gibt an, ob benutzerdefinierte Richtlinien für die Upgradesortierung zulässig sind oder nicht. Hiermit wird das 2-Phasen-Upgrade zum Aktivieren dieses Features durchgeführt. Service Fabric 6.5 bietet Unterstützung für die Angabe einer Sortierungsrichtlinie für Upgradedomänen während Cluster- oder Anwendungsupgrades. Die unterstützten Richtlinien sind „Numeric“, „Lexicographical“, „ReverseNumeric“ und „ReverseLexicographical“. Der Standardwert ist „Numeric“. Um dieses Feature verwenden zu können, muss die Einstellung „ClusterManager/ AllowCustomUpgradeSortPolicies“ des Clustermanifests im zweiten Schritt des Konfigurationsupdates auf „True“ festgelegt werden, nachdem der SF 6.5-Code das Softwareupgrade abgeschlossen hat. Dieser Vorgang muss unbedingt in zwei Phasen durchgeführt werden, weil die Codeaktualisierung während des ersten Upgrades mit der Upgradereihenfolge verwechselt werden kann.|
 |EnableDefaultServicesUpgrade | Boolesch, Standardwert „false“ |Dynamisch|Aktivieren Sie das Aktualisieren von Standarddiensten während des Anwendungsupgrades. Standarddienstbeschreibungen würden nach dem Upgrade überschrieben werden. |
 |FabricUpgradeHealthCheckInterval |Zeit in Sekunden, Standardwert 60 |Dynamisch|Die Häufigkeit der Integritätsstatusprüfungen während eines überwachten Fabric-Upgrades |
 |FabricUpgradeStatusPollInterval |Zeit in Sekunden, Standardwert 60 |Dynamisch|Die Häufigkeit des Abrufs des Upgradestatus der Fabric. Dieser Wert bestimmt die Aktualisierungsrate für Aufrufe von „GetFabricUpgradeProgress“ |
@@ -92,10 +93,10 @@ In der folgenden Liste sind, zusammengestellt nach Abschnitt, die Fabric-Einstel
 |MinReplicaSetSize |Ganze Zahl, Standardwert 3 |Nicht zulässig|MinReplicaSetSize für ClusterManager. |
 |PlacementConstraints | string, Standardwert "" |Nicht zulässig|PlacementConstraints für ClusterManager. |
 |QuorumLossWaitDuration |Zeit in Sekunden, Standardwert MaxValue |Nicht zulässig| Geben Sie die Zeitspanne in Sekunden an. QuorumLossWaitDuration für ClusterManager. |
-|ReplicaRestartWaitDuration |Zeit in Sekunden, Standardwert (60,0 * 30)|Nicht zulässig|Geben Sie die Zeitspanne in Sekunden an. ReplicaRestartWaitDuration für ClusterManager. |
+|ReplicaRestartWaitDuration |Zeit in Sekunden, Standardwert (60,0 \* 30)|Nicht zulässig|Geben Sie die Zeitspanne in Sekunden an. ReplicaRestartWaitDuration für ClusterManager. |
 |ReplicaSetCheckTimeoutRollbackOverride |Zeit in Sekunden, Standardwert 1200 |Dynamisch| Geben Sie die Zeitspanne in Sekunden an. Wenn ReplicaSetCheckTimeout auf den maximalen DWORD-Wert festgelegt ist, wird dies mit dem Wert dieser Konfiguration für Rollbacks überschrieben. Der Wert für Rollforwards wird nie überschrieben. |
 |SkipRollbackUpdateDefaultService | Boolesch, Standardwert „false“ |Dynamisch|CM überspringt das Zurücksetzen der aktualisierten Standarddienste während des Rollbacks eines Anwendungsupgrades. |
-|StandByReplicaKeepDuration | Zeit in Sekunden, Standardwert (3600,0 * 2)|Nicht zulässig|Geben Sie die Zeitspanne in Sekunden an. StandByReplicaKeepDuration für ClusterManager. |
+|StandByReplicaKeepDuration | Zeit in Sekunden, Standardwert (3600,0 \* 2)|Nicht zulässig|Geben Sie die Zeitspanne in Sekunden an. StandByReplicaKeepDuration für ClusterManager. |
 |TargetReplicaSetSize |Ganze Zahl, Standardwert 7 |Nicht zulässig|TargetReplicaSetSize für ClusterManager. |
 |UpgradeHealthCheckInterval |Zeit in Sekunden, Standardwert 60 |Dynamisch|Die Häufigkeit der Integritätsstatusprüfungen während eines überwachten Anwendungsupgrades |
 |UpgradeStatusPollInterval |Zeit in Sekunden, Standardwert 60 |Dynamisch|Die Häufigkeit des Abrufs des Upgradestatus der Anwendung. Dieser Wert bestimmt die Aktualisierungsrate für Aufrufe von „GetApplicationUpgradeProgress“ |
@@ -119,7 +120,7 @@ In der folgenden Liste sind, zusammengestellt nach Abschnitt, die Fabric-Einstel
 ## <a name="defragmentationmetricspercentornumberofemptynodestriggeringthreshold"></a>DefragmentationMetricsPercentOrNumberOfEmptyNodesTriggeringThreshold
 | **Parameter** | **Zulässige Werte** |**Upgraderichtlinie**| **Anleitung oder Kurzbeschreibung** |
 | --- | --- | --- | --- |
-|PropertyGroup|KeyDoubleValueMap, Standardwert None|Dynamisch|Bestimmt die Anzahl der freien Knoten, die erforderlich sind, um den Cluster als defragmentiert zu betrachten. Die Angabe erfolgt als Prozent im Bereich [0,0 - 1,0) oder als Anzahl der leeren Knoten als Zahl >= 1,0. |
+|PropertyGroup|KeyDoubleValueMap, Standardwert None|Dynamisch|Bestimmt die Anzahl der freien Knoten, die erforderlich sind, um den Cluster als defragmentiert zu betrachten. Die Angabe erfolgt als Prozent im Bereich [0,0 – 1,0] oder als Anzahl der leeren Knoten als Zahl >= 1,0. |
 
 ## <a name="diagnostics"></a>Diagnose
 
@@ -131,15 +132,16 @@ In der folgenden Liste sind, zusammengestellt nach Abschnitt, die Fabric-Einstel
 |ApplicationLogsFormatVersion |Ganze Zahl, Standardwert 0 | Dynamisch |Version für das Format der Anwendungsprotokolle. Unterstützte Werte sind 0 und 1. Version 1 umfasst mehr Felder aus dem ETW-Ereignisdatensatz als Version 0. |
 |AuditHttpRequests |Boolesch, Standardwert „false“ | Dynamisch | Hiermit wird die HTTP-Überwachung aktiviert oder deaktiviert. Der Zweck der Überwachung besteht darin, die Aktivitäten anzeigen zu können, die für den Cluster ausgeführt wurden. Dazu gehört auch, wer die jeweilige Anforderung initiiert hat. Beachten Sie, dass dies eine Protokollierung mit bestmöglichem Versuch ist und dass Verlust der Ablaufverfolgung auftreten kann. HTTP-Anforderungen mit „Benutzer“-Authentifizierung werden nicht festgehalten. |
 |CaptureHttpTelemetry|Boolesch, Standardwert „false“ | Dynamisch | Hiermit wird HTTP-Telemetrie aktiviert oder deaktiviert. Mit Telemetrie wird Service Fabric in die Lage versetzt, Telemetriedaten zu erfassen, um zukünftige Arbeit planen und Problembereiche ermitteln zu können. Für Telemetrie werden weder personenbezogene Daten noch der jeweilige Anforderungstext erfasst. Für Telemetriedaten werden alle HTTP-Anforderungen erfasst, sofern dies nicht anders konfiguriert ist. |
-|ClusterId |string | Dynamisch |Die eindeutige ID des Clusters. Diese wird generiert, wenn der Cluster erstellt wird. |
-|ConsumerInstances |string | Dynamisch |Die Liste der DCA-Consumerinstanzen. |
+|ClusterId |Zeichenfolge | Dynamisch |Die eindeutige ID des Clusters. Diese wird generiert, wenn der Cluster erstellt wird. |
+|ConsumerInstances |Zeichenfolge | Dynamisch |Die Liste der DCA-Consumerinstanzen. |
 |DiskFullSafetySpaceInMB |Ganze Zahl, Standardwert 1024 | Dynamisch |Verbleibender Speicherplatz in MB, der vor der Verwendung durch DCA geschützt werden soll. |
 |EnableCircularTraceSession |Boolesch, Standardwert „false“ | statischen |Das Flag gibt an, ob zirkuläre Ablaufverfolgungssitzungen verwendet werden sollen. |
+|EnablePlatformEventsFileSink |Boolesch, Standardwert „false“ | statischen |Aktivieren/Deaktivieren von Plattformereignissen, die auf den Datenträger geschrieben werden |
 |EnableTelemetry |Boolesch, Standardwert „true“ | Dynamisch |Damit werden Telemetriedaten aktiviert oder deaktiviert. |
 |FailuresOnlyHttpTelemetry | Boolesch, Standardwert „true“ | Dynamisch | Wenn HTTP-Telemetrieerfassung aktiviert ist, werden nur fehlerhafte Anforderungen erfasst. Hiermit lässt sich die Anzahl der Ereignisse verringern, die für Telemetrie generiert werden. |
 |HttpTelemetryCapturePercentage | Ganze Zahl, Standardwert 50 | Dynamisch | Wenn HTTP-Telemetrieerfassung aktiviert ist, wird nur ein zufälliger Prozentsatz der Anforderungen erfasst. Hiermit lässt sich die Anzahl der Ereignisse verringern, die für Telemetrie generiert werden. |
 |MaxDiskQuotaInMB |Ganze Zahl, Standardwert 65536 | Dynamisch |Datenträgerkontingent in MB für Windows Fabric-Protokolldateien. |
-|ProducerInstances |string | Dynamisch |Die Liste der DCA-Producerinstanzen. |
+|ProducerInstances |Zeichenfolge | Dynamisch |Die Liste der DCA-Producerinstanzen. |
 
 ## <a name="dnsservice"></a>DnsService
 | **Parameter** | **Zulässige Werte** |**Upgraderichtlinie**| **Anleitung oder Kurzbeschreibung** |
@@ -214,25 +216,26 @@ In der folgenden Liste sind, zusammengestellt nach Abschnitt, die Fabric-Einstel
 
 | **Parameter** | **Zulässige Werte** | **Upgraderichtlinie** | **Anleitung oder Kurzbeschreibung** |
 | --- | --- | --- | --- |
+|AllowNodeStateRemovedForSeedNode|Boolesch, Standardwert ist „false“ |Dynamisch|Flag zur Angabe, ob der Knotenzustand bei einem Startknoten entfernt werden darf |
 |BuildReplicaTimeLimit|TimeSpan, Standardwert Common::TimeSpan::FromSeconds(3600)|Dynamisch|Geben Sie die Zeitspanne in Sekunden an. Das Zeitlimit für das Erstellen eines zustandsbehafteten Replikats, nach dem ein Warnungsintegritätsbericht initiiert wird. |
 |ClusterPauseThreshold|Ganze Zahl, Standardwert 1|Dynamisch|Wenn die Anzahl der Knoten im System diesen Wert unterschreitet, werden Platzierung, Lastenausgleich und Failover beendet. |
 |CreateInstanceTimeLimit|TimeSpan, Standardwert Common::TimeSpan::FromSeconds(300)|Dynamisch|Geben Sie die Zeitspanne in Sekunden an. Das Zeitlimit für das Erstellen einer zustandslosen Instanz, nach dem ein Warnungsintegritätsbericht initiiert wird. |
 |ExpectedClusterSize|Ganze Zahl, Standardwert 1|Dynamisch|Beim ersten Start des Clusters wartet der FM darauf, dass sich diese Anzahl von Knoten meldet, bevor andere Dienste (einschließlich der Systemdienste wie Naming Service) platziert werden. Wenn Sie diesen Wert erhöhen, verlängert sich die Startzeit eines Clusters. Es wird aber verhindert, dass die frühen Knoten überlastet werden. Außerdem werden zusätzliche Verschiebungen verhindert, die erforderlich sind, wenn ein größere Anzahl von Knoten online geht. Dieser Wert sollte in der Regel auf einen kleinen Bruchteil der anfänglichen Clustergröße festgelegt werden. |
-|ExpectedNodeDeactivationDuration|TimeSpan, Standardwert Common::TimeSpan::FromSeconds(60.0 * 30)|Dynamisch|Geben Sie die Zeitspanne in Sekunden an. Dies ist die erwartete Zeitspanne, in der der Abschluss der Deaktivierung eines Knotens erwartet wird. |
-|ExpectedNodeFabricUpgradeDuration|TimeSpan, Standardwert Common::TimeSpan::FromSeconds(60.0 * 30)|Dynamisch|Geben Sie die Zeitspanne in Sekunden an. Dies ist die erwartete Dauer für die Aktualisierung eines Knotens während des Windows Fabric-Upgrades. |
-|ExpectedReplicaUpgradeDuration|TimeSpan, Standardwert Common::TimeSpan::FromSeconds(60.0 * 30)|Dynamisch|Geben Sie die Zeitspanne in Sekunden an. Dies ist die erwartete Dauer für die Aktualisierung aller Replikate auf einem Knoten während des Anwendungsupgrades. |
+|ExpectedNodeDeactivationDuration|TimeSpan, Standardwert „Common::TimeSpan::FromSeconds(60,0 \* 30)“|Dynamisch|Geben Sie die Zeitspanne in Sekunden an. Dies ist die erwartete Zeitspanne, in der der Abschluss der Deaktivierung eines Knotens erwartet wird. |
+|ExpectedNodeFabricUpgradeDuration|TimeSpan, Standardwert „Common::TimeSpan::FromSeconds(60,0 \* 30)“|Dynamisch|Geben Sie die Zeitspanne in Sekunden an. Dies ist die erwartete Dauer für die Aktualisierung eines Knotens während des Windows Fabric-Upgrades. |
+|ExpectedReplicaUpgradeDuration|TimeSpan, Standardwert „Common::TimeSpan::FromSeconds(60,0 \* 30)“|Dynamisch|Geben Sie die Zeitspanne in Sekunden an. Dies ist die erwartete Dauer für die Aktualisierung aller Replikate auf einem Knoten während des Anwendungsupgrades. |
 |IsSingletonReplicaMoveAllowedDuringUpgrade|Boolesch, Standardwert TRUE|Dynamisch|Wenn auf TRUE festgelegt, dürfen Replikate mit einer Zielgröße der Replikatgruppe von 1 während des Upgrades verschoben werden. |
 |MinReplicaSetSize|Ganze Zahl, Standardwert 3|Nicht zulässig|Die Mindestgröße der Replikatgruppe für den FM. Wenn die Anzahl der aktiven FM-Replikate unter diesen Wert sinkt, weist der FM Änderungen am Cluster zurück, bis mindestens die minimale Anzahl der Replikate wiederhergestellt wurde. |
 |PlacementConstraints|string, Standardwert ""|Nicht zulässig|Platzierungsbeschränkungen für die Replikate des Failover-Managers. |
 |PlacementTimeLimit|TimeSpan, Standardwert Common::TimeSpan::FromSeconds(600)|Dynamisch|Geben Sie die Zeitspanne in Sekunden an. Das Zeitlimit für das Erreichen der Zielanzahl von Replikaten, nach dem ein Warnungsintegritätsbericht initiiert wird. |
 |QuorumLossWaitDuration |Zeit in Sekunden, Standardwert MaxValue |Dynamisch|Geben Sie die Zeitspanne in Sekunden an. Dies ist die maximale Dauer, für die eine Partition in einem Zustand des Quorumverlusts sein darf. Wenn für die Partition nach Ablauf dieses Zeitraums noch ein Quorumsverlust vorliegt, wird die Partition aus dem Quorumsverlusts wiederhergestellt, indem die ausgefallenen Replikate als verloren angesehen werden. Beachten Sie, dass dies möglicherweise Datenverluste verursachen kann. |
 |ReconfigurationTimeLimit|TimeSpan, Standardwert Common::TimeSpan::FromSeconds(300)|Dynamisch|Geben Sie die Zeitspanne in Sekunden an. Das Zeitlimit für die Neukonfiguration, nach dem ein Warnungsintegritätsbericht initiiert wird. |
-|ReplicaRestartWaitDuration|TimeSpan, Standardwert Common::TimeSpan::FromSeconds(60.0 * 30)|Nicht zulässig|Geben Sie die Zeitspanne in Sekunden an. Die ReplicaRestartWaitDuration für FMService. |
-|StandByReplicaKeepDuration|TimeSpan, Standardwert Common::TimeSpan::FromSeconds(3600.0 * 24 * 7)|Nicht zulässig|Geben Sie die Zeitspanne in Sekunden an. Dies ist die StandByReplicaKeepDuration für den FMService. |
+|ReplicaRestartWaitDuration|TimeSpan, Standardwert „Common::TimeSpan::FromSeconds(60,0 \* 30)“|Nicht zulässig|Geben Sie die Zeitspanne in Sekunden an. Die ReplicaRestartWaitDuration für FMService. |
+|StandByReplicaKeepDuration|TimeSpan, Standardwert „Common::TimeSpan::FromSeconds(3600,0 \* 24 \* 7)“|Nicht zulässig|Geben Sie die Zeitspanne in Sekunden an. Dies ist die StandByReplicaKeepDuration für den FMService. |
 |TargetReplicaSetSize|Ganze Zahl, Standardwert 7|Nicht zulässig|Dies ist die Zielanzahl der FM-Replikate, die Windows Fabric verwaltet. Eine höhere Anzahl führt zu einer höheren Zuverlässigkeit der FM-Daten bei einer geringen Leistungsverschlechterung. |
 |UserMaxStandByReplicaCount |Ganze Zahl, Standardwert 1 |Dynamisch|Die standardmäßige maximale Anzahl von Reservereplikaten, die das System für Benutzerdienste speichert. |
-|UserReplicaRestartWaitDuration |Zeit in Sekunden, Standardwert 60,0 * 30 |Dynamisch|Geben Sie die Zeitspanne in Sekunden an. Wenn ein dauerhaftes Replikat ausfällt, wartet Windows Fabric für diese Zeitspanne darauf, dass das Replikat wieder aktiviert wird, bevor neue Ersatzreplikate (die eine Kopie des Zustands erfordern würden) erstellt werden. |
-|UserStandByReplicaKeepDuration |Zeit in Sekunden, Standardwert 3600,0 * 24 * 7 |Dynamisch|Geben Sie die Zeitspanne in Sekunden an. Wenn ein dauerhaftes Replikat nach einem Ausfall wieder aktiv ist, wurde es möglicherweise bereits ersetzt. Dieser Timer bestimmt, wie lange FM das Reservereplikat beibehält, bevor es verworfen wird. |
+|UserReplicaRestartWaitDuration |Zeit in Sekunden, Standardwert 60,0 \* 30 |Dynamisch|Geben Sie die Zeitspanne in Sekunden an. Wenn ein dauerhaftes Replikat ausfällt, wartet Windows Fabric für diese Zeitspanne darauf, dass das Replikat wieder aktiviert wird, bevor neue Ersatzreplikate (die eine Kopie des Zustands erfordern würden) erstellt werden. |
+|UserStandByReplicaKeepDuration |Zeit in Sekunden, Standardwert 3600,0 \* 24 \* 7 |Dynamisch|Geben Sie die Zeitspanne in Sekunden an. Wenn ein dauerhaftes Replikat nach einem Ausfall wieder aktiv ist, wurde es möglicherweise bereits ersetzt. Dieser Timer bestimmt, wie lange FM das Reservereplikat beibehält, bevor es verworfen wird. |
 
 ## <a name="faultanalysisservice"></a>FaultAnalysisService
 
@@ -271,6 +274,11 @@ In der folgenden Liste sind, zusammengestellt nach Abschnitt, die Fabric-Einstel
 |CommonName2Ntlmx509StoreLocation|string, Standardwert „LocalMachine“| statischen|Der Speicherort des X509-Zertifikats, das verwendet wird, um bei Verwendung der NTLM-Authentifizierung HMAC für CommonName2NtlmPasswordSecret zu generieren. |
 |CommonName2Ntlmx509StoreName|string, Standardwert „MY“|statischen| Der Speichername des X509-Zertifikats, das verwendet wird, um bei Verwendung der NTLM-Authentifizierung HMAC für CommonName2NtlmPasswordSecret zu generieren. |
 |CommonNameNtlmPasswordSecret|SecureString, Standardwert „Common::SecureString("")“| statischen|Der geheime Schlüssel des Kennworts, der als Startwert verwendet wird, um bei Verwendung der NTLM-Authentifizierung das gleiche Kennwort zu generieren. |
+|DiskSpaceHealthReportingIntervalWhenCloseToOutOfDiskSpace |TimeSpan, Standardwert Common::TimeSpan::FromMinutes(5)|Dynamisch|Geben Sie die Zeitspanne in Sekunden an. Das Zeitintervall zwischen dem Überprüfen des Speicherplatzes für das Berichterstattungs-Integritätsereignis, wenn der Speicherplatz auf dem Datenträger nahezu erschöpft ist. |
+|DiskSpaceHealthReportingIntervalWhenEnoughDiskSpace |TimeSpan, Standardwert Common::TimeSpan::FromMinutes(15)|Dynamisch|Geben Sie die Zeitspanne in Sekunden an. Das Zeitintervall zwischen dem Überprüfen des Speicherplatzes für das Berichterstattungs-Integritätsereignis, wenn auf dem Datenträger ausreichend Speicherplatz vorhanden ist. |
+|EnableImageStoreHealthReporting |Boolesch, Standardwert TRUE |statischen|Konfiguration zur Bestimmung, ob der Dateispeicherdienst seine Integrität melden sollte. |
+|FreeDiskSpaceNotificationSizeInKB|int64, Standardwert 25 \* 1024 |Dynamisch|Die Größe des freien Speicherplatzes, unterhalb dessen es zu einer Integritätswarnung kommen kann. Der minimale Wert dieser Konfiguration und die Konfiguration „FreeDiskSpaceNotificationThresholdPercentage" werden verwendet, um das Senden der Integritätswarnung zu ermitteln. |
+|FreeDiskSpaceNotificationThresholdPercentage|double, Standardwert 0,02 |Dynamisch|Der prozentuale Anteil des freien Speicherplatzes, unterhalb dessen es zu einer Integritätswarnung kommen kann. Der minimale Wert dieser Konfiguration und die Konfiguration „FreeDiskSpaceNotificationInMB" werden verwendet, um das Senden der Integritätswarnung zu ermitteln. |
 |GenerateV1CommonNameAccount| Boolesch, Standardwert TRUE|statischen|Gibt an, ob ein Konto mit dem V1-Generierungsalgorithmus für Benutzernamen erstellt werden soll. Ab Service Fabric-Version 6.1 wird immer ein Konto mit v2-Generierung erstellt. Das V1-Konto ist erforderlich für Upgrades von/auf Versionen, die die V2-Generierung (vor 6.1) nicht unterstützen.|
 |MaxCopyOperationThreads | Uint, Standardwert 0 |Dynamisch| Die maximale Anzahl von parallelen Dateien, die der sekundäre Replikator vom primären Server kopieren kann. 0 = Anzahl von Kernen. |
 |MaxFileOperationThreads | Uint, Standardwert 100 |statischen| Die maximale Anzahl von parallelen Threads, die FileOperations (Kopieren/Verschieben) auf dem primären Replikator durchführen dürfen. 0 = Anzahl von Kernen. |
@@ -327,7 +335,6 @@ In der folgenden Liste sind, zusammengestellt nach Abschnitt, die Fabric-Einstel
 |ActivationRetryBackoffInterval |Zeit in Sekunden, Standardwert 5 |Dynamisch|Backoffintervall bei jedem Aktivierungsfehler. Bei jedem fortlaufenden Aktivierungsfehler wiederholt das System die Aktivierung bis zum Wert von „MaxActivationFailureCount“. Das Wiederholungsintervall bei jedem Versuch ist das Produkt der Anzahl fortlaufender Aktivierungsfehler und des Backoffintervalls für die Aktivierung. |
 |ActivationTimeout| TimeSpan, Standardwert Common::TimeSpan::FromSeconds(180)|Dynamisch| Geben Sie die Zeitspanne in Sekunden an. Das Timeout für die Anwendungsaktivierung, die -deaktivierung und das -upgrade. |
 |ApplicationHostCloseTimeout| TimeSpan, Standardwert Common::TimeSpan::FromSeconds(120)|Dynamisch| Geben Sie die Zeitspanne in Sekunden an. Wenn die Beendigung von Fabric in einem selbstaktivierten Prozess erkannt wird, schließt FabricRuntime alle Replikate im Hostprozess des Benutzers (applicationhost). Dies ist das Timeout für den Schließvorgang. |
-|ApplicationUpgradeTimeout| TimeSpan, Standardwert Common::TimeSpan::FromSeconds(360)|Dynamisch| Geben Sie die Zeitspanne in Sekunden an. Das Timeout für das Anwendungsupgrade. Wenn das Timeout kleiner als „ActivationTimeout“ ist, tritt für das Bereitstellungsmodul ein Fehler auf. |
 |ContainerServiceArguments|Zeichenfolge, Standardwert „-H localhost:2375 -H npipe://“|statischen|Service Fabric (SF) verwaltet den Docker-Daemon (außer auf Windows-Clientcomputern wie Win10). Diese Konfiguration ermöglicht Benutzern, benutzerdefinierte Argumente anzugeben, die beim Start an den Docker-Daemon übergeben werden sollen. Wenn Sie benutzerdefinierte Argumente angegeben, übergibt Service Fabric ausschließlich das Argument „--pidfile“ an die Docker-Engine. Benutzer sollten daher das Argument „--pidfile“ nicht in ihren benutzerdefinierten Argumenten angeben. Außerdem sollte mit den benutzerdefinierten Argumenten sichergestellt werden, dass der Docker-Daemon unter Windows an der Standard-Named Pipe (bzw. unter Linux am Unix-Domänensocket) lauscht, damit Service Fabric mit ihm kommunizieren kann.|
 |ContainerServiceLogFileMaxSizeInKb|Ganze Zahl, Standardwert 32768|statischen|Maximale Größe der Protokolldatei, die von Docker-Containern generiert wird.  Nur Windows|
 |ContainerImageDownloadTimeout|int, Anzahl von Sekunden, Standard ist 1200 (20 Minuten)|Dynamisch|Anzahl von Sekunden, bevor beim Herunterladen von Images ein Timeout auftritt.|
@@ -387,8 +394,8 @@ In der folgenden Liste sind, zusammengestellt nach Abschnitt, die Fabric-Einstel
 |MinReplicaSetSize | Ganze Zahl, Standardwert 3 |statischen|MinReplicaSetSize für ImageStoreService. |
 |PlacementConstraints | string, Standardwert "" |statischen| PlacementConstraints für ImageStoreService. |
 |QuorumLossWaitDuration | Zeit in Sekunden, Standardwert MaxValue |statischen| Geben Sie die Zeitspanne in Sekunden an. QuorumLossWaitDuration für ImageStoreService. |
-|ReplicaRestartWaitDuration | Zeit in Sekunden, Standardwert 60,0 * 30 |statischen|Geben Sie die Zeitspanne in Sekunden an. ReplicaRestartWaitDuration für ImageStoreService. |
-|StandByReplicaKeepDuration | Zeit in Sekunden, Standardwert 3600,0 * 2 |statischen| Geben Sie die Zeitspanne in Sekunden an. StandByReplicaKeepDuration für ImageStoreService. |
+|ReplicaRestartWaitDuration | Zeit in Sekunden, Standardwert 60,0 \* 30 |statischen|Geben Sie die Zeitspanne in Sekunden an. ReplicaRestartWaitDuration für ImageStoreService. |
+|StandByReplicaKeepDuration | Zeit in Sekunden, Standardwert 3600,0 \* 2 |statischen| Geben Sie die Zeitspanne in Sekunden an. StandByReplicaKeepDuration für ImageStoreService. |
 |TargetReplicaSetSize | Ganze Zahl, Standardwert 7 |statischen|TargetReplicaSetSize für ImageStoreService. |
 
 ## <a name="ktllogger"></a>KtlLogger
@@ -432,6 +439,11 @@ In der folgenden Liste sind, zusammengestellt nach Abschnitt, die Fabric-Einstel
 | --- | --- | --- | --- |
 |PropertyGroup|KeyDoubleValueMap, Standardwert None|Dynamisch|Bestimmt die Sammlung der MetricActivityThresholds für die Metriken im Cluster. Der Lastenausgleich funktioniert, wenn maxNodeLoad/minNodeLoad größer als MetricBalancingThresholds ist. Die Defragmentierung funktioniert, wenn maxNodeLoad/minNodeLoad in mindestens einem FD oder UD kleiner als MetricBalancingThresholds ist. |
 
+## <a name="metricloadstickinessforswap"></a>MetricLoadStickinessForSwap
+| **Parameter** | **Zulässige Werte** |**Upgraderichtlinie**| **Anleitung oder Kurzbeschreibung** |
+| --- | --- | --- | --- |
+|PropertyGroup|KeyDoubleValueMap, Standardwert None|Dynamisch|Bestimmt den Teil der Last, der beim Austauschen auf das Replikat festgelegt wird. Es wird ein Wert zwischen „0“ (Last wird nicht mit Replikat festgelegt) und „1“ (Last wird mit Replikat festgelegt – Standard) benötigt. |
+
 ## <a name="namingservice"></a>NamingService
 
 | **Parameter** | **Zulässige Werte** | **Upgraderichtlinie** | **Anleitung oder Kurzbeschreibung** |
@@ -445,7 +457,7 @@ In der folgenden Liste sind, zusammengestellt nach Abschnitt, die Fabric-Einstel
 |MaxOperationTimeout |Zeit in Sekunden, Standardwert 600 |Dynamisch|Geben Sie die Zeitspanne in Sekunden an. Das maximale Timeout, das für Clientvorgänge zulässig ist. Anforderungen, die einen höheren Timeoutwert angeben, werden zurückgewiesen. |
 |MaxOutstandingNotificationsPerClient |Ganze Zahl, Standardwert 1000 |Dynamisch|Die maximale Anzahl von ausstehenden Benachrichtigungen, bevor eine Clientregistrierung erzwungenermaßen vom Gateway geschlossen wird. |
 |MinReplicaSetSize | Ganze Zahl, Standardwert 3 |Nicht zulässig| Die Mindestanzahl von Naming Service-Replikaten, in die geschrieben werden muss, um eine Aktualisierung abzuschließen. Wenn weniger Replikate als diese Anzahl im System aktiv sind, verweigert das System für die Zuverlässigkeit Aktualisierungen des Naming Service-Speichers, bis Replikate wiederhergestellt werden. Dieser Wert sollte nie größer als TargetReplicaSetSize sein. |
-|PartitionCount |Ganze Zahl, Standardwert 3 |Nicht zulässig|Die Anzahl der zu erstellenden Partitionen des Naming Service-Speichers. Jede Partition besitzt einen einzelnen Partitionsschlüssel, der dessen Index entspricht. Daher sind Partitionsschlüssel [0; PartitionCount) vorhanden. Durch Erhöhen der Anzahl von Naming Service-Partitionen kann der Naming Service in größerem Maßstab ausgeführt werden, indem die durchschnittliche Menge von Daten verringert wird, die von sichernden Replikatgruppen gespeichert werden. Dies erhöht jedoch die Auslastung von Ressourcen (da Dienstreplikate im Umfang von PartitionCount × ReplicaSetSize beibehalten werden müssen).|
+|PartitionCount |Ganze Zahl, Standardwert 3 |Nicht zulässig|Die Anzahl der zu erstellenden Partitionen des Naming Service-Speichers. Jede Partition besitzt einen einzelnen Partitionsschlüssel, der ihrem Index entspricht. Daher sind Partitionsschlüssel [0; PartitionCount] vorhanden. Durch Erhöhen der Anzahl von Naming Service-Partitionen kann der Naming Service in größerem Maßstab ausgeführt werden, indem die durchschnittliche Menge von Daten verringert wird, die von sichernden Replikatgruppen gespeichert werden. Dies erhöht jedoch die Auslastung von Ressourcen (da Dienstreplikate im Umfang von PartitionCount × ReplicaSetSize beibehalten werden müssen).|
 |PlacementConstraints | string, Standardwert "" |Nicht zulässig| Platzierungseinschränkung für den Naming Service. |
 |QuorumLossWaitDuration | Zeit in Sekunden, Standardwert MaxValue |Nicht zulässig| Geben Sie die Zeitspanne in Sekunden an. Wenn in einem Naming Service ein Quorumverlust auftritt, wird dieser Timer gestartet. Nach dessen Ablauf betrachtet FM die ausgefallenen Replikate als verloren und versucht, das Quorum wiederherzustellen. Beachten Sie, dass dies zu Datenverlusten führen kann. |
 |RepairInterval | Zeit in Sekunden, Standardwert 5 |statischen| Geben Sie die Zeitspanne in Sekunden an. Intervall, in dem die Korrektur von Benennungsinkonsistenzen zwischen dem Autoritätsbesitzer und dem Namensbesitzer gestartet wird. |
@@ -489,7 +501,7 @@ In der folgenden Liste sind, zusammengestellt nach Abschnitt, die Fabric-Einstel
 
 | **Parameter** | **Zulässige Werte** | **Upgraderichtlinie** | **Anleitung oder Kurzbeschreibung** |
 | --- | --- | --- | --- |
-|Counters |string | Dynamisch |Durch Trennzeichen getrennte Liste der zu erfassenden Leistungsindikatoren. |
+|Counters |Zeichenfolge | Dynamisch |Durch Trennzeichen getrennte Liste der zu erfassenden Leistungsindikatoren. |
 |IsEnabled |Boolesch, Standardwert „true“ | Dynamisch |Das Flag gibt an, ob die Erfassung von Leistungsindikatoren für den lokalen Knoten aktiviert ist. |
 |MaxCounterBinaryFileSizeInMB |Ganze Zahl, Standardwert 1 | Dynamisch |Maximale Größe (in MB) für jede Leistungsindikator-Binärdatei. |
 |NewCounterBinaryFileCreationIntervalInMinutes |Ganze Zahl, Standardwert 10 | Dynamisch |Maximales Intervall (in Sekunden), nach dem eine neue Leistungsindikator-Binärdatei erstellt wird. |
@@ -514,6 +526,7 @@ In der folgenden Liste sind, zusammengestellt nach Abschnitt, die Fabric-Einstel
 |DetailedNodeListLimit | Ganze Zahl, Standardwert 15 |Dynamisch| Definiert die Anzahl von Knoten pro Einschränkung, die vor der Kürzung in Berichte zu nicht platzierten Replikaten aufgenommen werden. |
 |DetailedPartitionListLimit | Ganze Zahl, Standardwert 15 |Dynamisch| Definiert die Anzahl von Partitionen pro Diagnoseeintrag für eine Einschränkung, die vor der Kürzung in die Diagnose aufgenommen werden. |
 |DetailedVerboseHealthReportLimit | Ganze Zahl, Standardwert 200 | Dynamisch|Definiert, wie häufig ein nicht platziertes Replikat dauerhaft nicht platziert bleiben muss, bevor detaillierte Integritätsberichte ausgegeben werden. |
+|EnforceUserServiceMetricCapacities|Boolesch, Standardwert FALSE | statischen |Aktiviert den Schutz für Fabric-Dienste. Alle Benutzerdienste befinden sich unter einem einzigen Auftragsobjekt/einer einzigen cgroup und sind auf die angegebene Menge von Ressourcen beschränkt. Diese muss statisch sein (erfordert einen Neustart von FabricHost), da die Erstellung/das Entfernen von Benutzerauftragsobjekten und das Festlegen von Grenzwerten während des Öffnens des Fabric-Hosts erfolgt. |
 |FaultDomainConstraintPriority | Ganze Zahl, Standardwert 0 |Dynamisch| Bestimmt die Priorität der Fehlerdomäneneinschränkung: 0: Stark; 1: Schwach; negativ: Ignorieren. |
 |GlobalMovementThrottleCountingInterval | Zeit in Sekunden, Standardwert 600 |statischen| Geben Sie die Zeitspanne in Sekunden an. Geben Sie die Länge des letzten Intervalls an, für das Datenverschiebungen pro Domänenreplikat nachverfolgt werden sollen (wird zusammen mit GlobalMovementThrottleThreshold verwendet). Kann auf 0 festgelegt werden, um die globale Drosselung vollständig zu ignorieren. |
 |GlobalMovementThrottleThreshold | Uint, Standardwert 1000 |Dynamisch| Maximale Anzahl von zulässigen Datenverschiebungen in der Lastenausgleichsphase im letzten von GlobalMovementThrottleCountingInterval angegebenen Intervall. |
@@ -550,6 +563,7 @@ In der folgenden Liste sind, zusammengestellt nach Abschnitt, die Fabric-Einstel
 |UseMoveCostReports | Boolesch, Standardwert „false“ | Dynamisch|Weist LB an, das Kostenelement der Bewertungsfunktion zu ignorieren. Dies führt möglicherweise zu mehr Datenverschiebungen für eine Platzierung mit besserem Lastenausgleich. |
 |UseSeparateSecondaryLoad | Boolesch, Standardwert „true“ | Dynamisch|Einstellung, die festlegt, ob eine andere sekundäre Last verwendet werden soll. |
 |ValidatePlacementConstraint | Boolesch, Standardwert „true“ |Dynamisch| Gibt an, ob der PlacementConstraint-Ausdruck für einen Dienst überprüft wird, wenn ServiceDescription für einen Dienst aktualisiert wird. |
+|ValidatePrimaryPlacementConstraintOnPromote| Boolesch, Standardwert TRUE |Dynamisch|Gibt an, ob der Ausdruck „PlacementConstraint“ für einen Dienst beim Failover für die primäre Einstellung ausgewertet werden soll oder nicht. |
 |VerboseHealthReportLimit | Ganze Zahl, Standardwert 20 | Dynamisch|Definiert, wie häufig ein Replikat nicht platziert werden muss, bevor eine Integritätswarnung dafür gemeldet wird (wenn ausführliche Integritätsberichte aktiviert sind). |
 
 ## <a name="reconfigurationagent"></a>ReconfigurationAgent
@@ -699,6 +713,7 @@ In der folgenden Liste sind, zusammengestellt nach Abschnitt, die Fabric-Einstel
 |GetClusterConfiguration | string, Standardwert „Admin\|\|User“ | Dynamisch|Löst GetClusterConfiguration auf einer Partition aus. |
 |GetClusterConfigurationUpgradeStatus | string, Standardwert „Admin\|\|User“ |Dynamisch| Löst GetClusterConfigurationUpgradeStatus auf einer Partition aus. |
 |GetFabricUpgradeStatus |string, Standardwert „Admin\|\|User“ |Dynamisch| Sicherheitskonfiguration für das Abrufen des Clusterupgradestatus. |
+|GetFolderSize |string, Standardwert „Admin“ |Dynamisch|Sicherheitskonfiguration für FileStoreService zum Abrufen der Ordnergröße |
 |GetNodeDeactivationStatus |string, Standardwert „Admin“ |Dynamisch| Sicherheitskonfiguration für das Überprüfen des Deaktivierungstatus. |
 |GetNodeTransitionProgress | string, Standardwert „Admin\|\|User“ |Dynamisch| Sicherheitskonfiguration für das Abrufen des Status eines Knotenübergangsbefehls. |
 |GetPartitionDataLossProgress | string, Standardwert „Admin\|\|User“ | Dynamisch|Ruft den Status für einen API-Aufruf zum Auslösen von Datenverlusten ab. |
@@ -715,7 +730,7 @@ In der folgenden Liste sind, zusammengestellt nach Abschnitt, die Fabric-Einstel
 |InvokeContainerApi|Zeichenfolge, Standardwert „Admin“|Dynamisch|Ruft die Container-API auf |
 |InvokeInfrastructureCommand |string, Standardwert „Admin“ |Dynamisch| Sicherheitskonfiguration für Befehle zum Verwalten von Infrastrukturaufgaben. |
 |InvokeInfrastructureQuery |string, Standardwert „Admin\|\|User“ | Dynamisch|Sicherheitskonfiguration für das Abfragen von Infrastrukturaufgaben. |
-|Auflisten |string, Standardwert „Admin\|\|User“ | Dynamisch|Sicherheitskonfiguration für den Imagespeicherclient-Dateiauflistungsvorgang. |
+|List |string, Standardwert „Admin\|\|User“ | Dynamisch|Sicherheitskonfiguration für den Imagespeicherclient-Dateiauflistungsvorgang. |
 |MoveNextFabricUpgradeDomain |string, Standardwert „Admin“ |Dynamisch| Sicherheitskonfiguration für das Fortsetzen von Clusterupgrades mit einer expliziten Upgradedomäne. |
 |MoveNextUpgradeDomain |string, Standardwert „Admin“ |Dynamisch| Sicherheitskonfiguration für das Fortsetzen von Anwendungsupgrades mit einer expliziten Upgradedomäne. |
 |MoveReplicaControl |string, Standardwert „Admin“ | Dynamisch|Verschieben von Replikaten. |
@@ -809,10 +824,10 @@ In der folgenden Liste sind, zusammengestellt nach Abschnitt, die Fabric-Einstel
 | --- | --- | --- | --- |
 |ContainerNetworkName|string, Standardwert ""| statischen |Der zu verwendende Netzwerkname, wenn ein Containernetzwerk eingerichtet wird.|
 |ContainerNetworkSetup|Boolesch, Standardwert FALSE| statischen |Gibt an, ob ein Containernetzwerk eingerichtet werden soll.|
-|FabricDataRoot |string | Nicht zulässig |Das Service Fabric-Datenstammverzeichnis. Standardwert für Azure ist „d:\svcfab“. |
-|FabricLogRoot |string | Nicht zulässig |Das Service Fabric-Protokollstammverzeichnis. Hier werden SF-Protokolle und Ablaufverfolgungen platziert. |
+|FabricDataRoot |Zeichenfolge | Nicht zulässig |Das Service Fabric-Datenstammverzeichnis. Standardwert für Azure ist „d:\svcfab“. |
+|FabricLogRoot |Zeichenfolge | Nicht zulässig |Das Service Fabric-Protokollstammverzeichnis. Hier werden SF-Protokolle und Ablaufverfolgungen platziert. |
 |NodesToBeRemoved|string, Standardwert ""| Dynamisch |Der Knoten, die als Teil des Konfigurationsupgrades entfernt werden sollen. (Nur für eigenständige Bereitstellungen)|
-|ServiceRunAsAccountName |string | Nicht zulässig |Der Kontoname, unter dem der Fabric-Hostdienst ausgeführt werden soll. |
+|ServiceRunAsAccountName |Zeichenfolge | Nicht zulässig |Der Kontoname, unter dem der Fabric-Hostdienst ausgeführt werden soll. |
 |SkipContainerNetworkResetOnReboot|Boolesch, Standardwert FALSE|Nicht zulässig|Ob das Zurücksetzen des Containernetzwerks beim Neustart übersprungen werden soll.|
 |SkipFirewallConfiguration |Boolesch, Standardwert „false“ | Nicht zulässig |Gibt an, ob Firewalleinstellungen vom System festgelegt werden müssen oder nicht. Dies gilt nur, wenn Sie die Windows-Firewall verwenden. Wenn Sie Firewalls von Drittanbietern verwenden, müssen Sie die Ports für das System und die zu verwendenden Anwendungen öffnen. |
 
@@ -883,6 +898,11 @@ In der folgenden Liste sind, zusammengestellt nach Abschnitt, die Fabric-Einstel
 |X509SecondaryFindValue | string, Standardwert "" |Dynamisch| X509SecondaryFindValue für UpgradeService. |
 |X509StoreLocation | string, Standardwert "" |Dynamisch| X509StoreLocation für UpgradeService. |
 |X509StoreName | string, Standardwert „My“|Dynamisch|X509StoreName für UpgradeService. |
+
+## <a name="userservicemetriccapacities"></a>UserServiceMetricCapacities
+| **Parameter** | **Zulässige Werte** | **Upgraderichtlinie** | **Anleitung oder Kurzbeschreibung** |
+| --- | --- | --- | --- |
+|PropertyGroup| UserServiceMetricCapacitiesMap, Standardwert ist „None“ | statischen | Eine Sammlung von Ressourcenkontrollen-Grenzwerten für Benutzerdienste. Sie muss statisch sein, da sie sich auf die Logik der automatischen Erkennung (AutoDetection) auswirkt. |
 
 ## <a name="next-steps"></a>Nächste Schritte
 Weitere Informationen finden Sie unter [Aktualisieren der Konfiguration eines Azure-Clusters](service-fabric-cluster-config-upgrade-azure.md) und [Aktualisieren der Konfiguration eines eigenständigen Clusters](service-fabric-cluster-config-upgrade-windows-server.md).

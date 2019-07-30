@@ -12,12 +12,12 @@ ms.topic: overview
 ms.date: 05/15/2019
 ms.author: lizross
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f1dae1b8577c4f90211c3b377dbf88efe6907326
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.openlocfilehash: 66cb7218b5217565529e1e15d875c23dff10e06f
+ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/27/2019
-ms.locfileid: "66243893"
+ms.lasthandoff: 07/22/2019
+ms.locfileid: "68382267"
 ---
 # <a name="reset-your-own-work-or-school-password-overview"></a>Übersicht über die Kennwortzurücksetzung für Ihr Geschäfts-, Schul- oder Unikonto
 
@@ -34,5 +34,5 @@ Ausführliche Informationen und Anweisungen zum Registrieren Ihres Kontos für d
 
 |Artikel |BESCHREIBUNG |
 |------|------------|
-|[Registrieren für die Self-Service-Kennwortzurücksetzung](active-directory-passwords-reset-register.md)| Anweisungen zum Überprüfen Ihrer Authentifizierungsmethoden und zum Registrieren für die Self-Service-Kennwortzurücksetzung, damit Sie Ihr eigenes Kennwort zurücksetzen können|
-|[Zurücksetzen Ihres Kennworts](user-help-reset-password.md)| Anweisungen zum Zurücksetzen oder Entsperren Ihres Kennworts für ein Geschäfts-, Schul- oder Unikonto|
+| [Registrieren für die Self-Service-Kennwortzurücksetzung](active-directory-passwords-reset-register.md) – Anweisungen zum Überprüfen Ihrer Authentifizierungsmethoden und zum Registrieren für die Self-Service-Kennwortzurücksetzung, damit Sie Ihr eigenes Kennwort zurücksetzen können|
+| [Zurücksetzen Ihres Kennworts](user-help-reset-password.md) – Anweisungen zum Zurücksetzen oder Entsperren Ihres Kennworts für ein Geschäfts-, Schul- oder Unikonto|

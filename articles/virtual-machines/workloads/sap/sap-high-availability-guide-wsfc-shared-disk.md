@@ -17,12 +17,12 @@ ms.workload: infrastructure-services
 ms.date: 05/05/2017
 ms.author: rclaus
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: aef5c67786726790c5841c1ce4ddff8b67bdf21b
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.openlocfilehash: 7c2b52a0dff08b7fe80d46f878a93d8d0741982c
+ms.sourcegitcommit: a6873b710ca07eb956d45596d4ec2c1d5dc57353
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67709049"
+ms.lasthandoff: 07/16/2019
+ms.locfileid: "68249149"
 ---
 [1928533]:https://launchpad.support.sap.com/#/notes/1928533
 [1999351]:https://launchpad.support.sap.com/#/notes/1999351
@@ -220,7 +220,7 @@ In Windows enthält eine SAP ASCS/SCS-Instanz SAP Central Services, SAP Message 
 Eine SAP ASCS/SCS-Instanz verfügt über die folgenden Komponenten:
 
 * SAP Central Services:
-    * Zwei Prozesse, Nachrichtenserver und Server zum Einreihen in die Warteschlange sowie <virtueller ASCS/SCS-Hostname> für den Zugriff auf diese beiden Prozesse.
+    * Zwei Prozesse, Nachrichtenserver und Server zum Einreihen in die Warteschlange sowie ein \<virtueller ASCS/SCS-Hostname> für den Zugriff auf diese beiden Prozesse.
     * Dateistruktur: S:\usr\sap\\&lt;SID&gt;\ASCS/SCS\<Instanzanzahl\>
 
 
@@ -228,7 +228,7 @@ Eine SAP ASCS/SCS-Instanz verfügt über die folgenden Komponenten:
   * Dateistruktur: S:\usr\sap\\&lt;SID&gt;\SYS\..
   * Die sapmnt-Dateifreigabe, die den Zugriff auf dieses globalen „S:\usr\sap\\&lt;SID&gt;\SYS\...“-Dateien mithilfe des folgenden UNC-Pfads ermöglicht:
 
-    \\\\&lt;Name des virtuellen ASCS/SCS-Hosts&gt;\sapmnt\\&lt;SID&gt;\SYS\..
+    \\\\<Name des virtuellen ASCS/SCS-Hosts\>\sapmnt\\&lt;SID&gt;\SYS\..
 
 
 ![Abbildung 2: Prozesse, Dateistruktur und sapmnt-Dateifreigabe des globalen Hosts einer SAP ASCS/SCS-Instanz][sap-ha-guide-figure-8001]
@@ -243,7 +243,7 @@ _**Abbildung 3:** SAP ASCS/SCS-HA-Architektur mit freigegebenem Datenträger_
 
 > [!IMPORTANT]
 > Diese beiden Komponenten werden unter der gleichen SAP ASCS/SCS-Instanz ausgeführt:
->* Es wird derselbe <virtuelle ASCS/SCS-Hostname> für den Zugriff auf Prozesse des SAP Message Servers und des Servers zum Einreihen in die Warteschlange sowie auf Dateien des globalen SAP-Hosts über die sapmnt-Dateifreigabe verwendet.
+>* Es wird derselbe \<virtuelle ASCS/SCS-Hostname> für den Zugriff auf Prozesse des SAP Message Servers und des Servers zum Einreihen in die Warteschlange sowie auf Dateien des globalen SAP-Hosts über die sapmnt-Dateifreigabe verwendet.
 >* Es wird derselbe freigegebene Clusterdatenträger (Laufwerk S:) gemeinsam genutzt.
 >
 

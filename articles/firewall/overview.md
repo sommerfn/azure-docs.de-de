@@ -6,15 +6,15 @@ ms.service: firewall
 services: firewall
 ms.topic: overview
 ms.custom: mvc
-ms.date: 7/10/2019
+ms.date: 07/19/2019
 ms.author: victorh
 Customer intent: As an administrator, I want to evaluate Azure Firewall so I can determine if I want to use it.
-ms.openlocfilehash: 2894af5f253e20b32dde0ecc5f658edff4814149
-ms.sourcegitcommit: 10251d2a134c37c00f0ec10e0da4a3dffa436fb3
+ms.openlocfilehash: 1349e07662504564fdf48a53f24525c4a16aa477
+ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/13/2019
-ms.locfileid: "67868429"
+ms.lasthandoff: 07/18/2019
+ms.locfileid: "68326905"
 ---
 # <a name="what-is-azure-firewall"></a>Was ist Azure Firewall?
 
@@ -80,7 +80,7 @@ Der eingehende Netzwerkdatenverkehr zur öffentlichen IP-Adresse Ihrer Firewall 
 ## <a name="multiple-public-ip-addresses"></a>Mehrere öffentliche IP-Adressen
 
 > [!IMPORTANT]
-> Azure Firewall mit mehreren öffentlichen IP-Adressen ist über Azure PowerShell, die Azure CLI, REST und Vorlagen verfügbar. Die Portalbenutzeroberfläche wird nach und nach zu den Regionen hinzugefügt und wird nach Abschluss des Rollouts in allen Regionen verfügbar sein.
+> Azure Firewall mit mehreren öffentlichen IP-Adressen ist über das Azure-Portal, Azure PowerShell, die Azure CLI, REST und Vorlagen verfügbar.
 
 
 Sie können der Firewall mehrere öffentliche IP-Adressen zuordnen (bis zu 100).

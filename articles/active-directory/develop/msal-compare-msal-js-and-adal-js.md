@@ -17,12 +17,12 @@ ms.author: nacanuma
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 10b5169d3f06e265b3effa3ec18ad8e4f69959d3
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.openlocfilehash: 328db116cebda5eb288f04cc89e2c85550c38083
+ms.sourcegitcommit: 198c3a585dd2d6f6809a1a25b9a732c0ad4a704f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66121969"
+ms.lasthandoff: 07/23/2019
+ms.locfileid: "68421192"
 ---
 # <a name="differences-between-msal-js-and-adal-js"></a>Unterschiede zwischen MSAL.js und ADAL.js
 
@@ -59,9 +59,9 @@ Wenn in v2.0 die Autorität `https://login.microsoftonline.com/common` verwendet
 
     Das v2.0-Protokoll verwendet in den Anforderungen Geltungsbereiche anstelle von Ressourcen. Das heißt, wenn Ihre Anwendung Token mit Berechtigungen für eine Ressource wie Microsoft Graph anfordern muss, unterscheiden sich die an die Bibliotheksmethoden übergebenen Werte wie folgt:
 
-    v1.0: resource=https://graph.microsoft.com
+    v1.0: Ressource = https\://graph.microsoft.com
 
-    v2.0: scope = https://graph.microsoft.com/User.Read
+    v2.0: Bereich = https\://graph.microsoft.com/User.Read
 
     Sie können Geltungsbereiche für jede beliebige Ressourcen-API mit dem URI der API im Format „App-ID-URI/Geltungsbereich anfordern. Beispiel: „https:\//mytenant.onmicrosoft.com/myapi/api.read“
 
@@ -77,7 +77,7 @@ Wenn in v2.0 die Autorität `https://login.microsoftonline.com/common` verwendet
 
 * Dynamische Geltungsbereiche für inkrementelle Einwilligungen
 
-    Beim Erstellen von Anwendungen mit v1.0 mussten Sie den vollständigen Satz der von der Anwendung benötigten Berechtigungen (statische Geltungsbereiche) registrieren, damit bei der Anmeldung die Benutzereinwilligung eingeholt werden konnte. In v2.0 können Sie den Parameter „scope“ verwenden, um die Berechtigungen zum gewünschten Zeitpunkt anzufordern. Diese werden als dynamische Geltungsbereiche bezeichnet. Dadurch kann der Benutzer Geltungsbereichen inkrementelle Einwilligungen erteilen. Wenn Sie also am Anfang nur möchten, dass sich der Benutzer bei Ihrer Anwendung anmeldet und Sie keinen Zugriff benötigen, können Sie dies tun. Wenn Sie später in der Lage sein müssen, den Kalender des Benutzers zu lesen, können Sie dann den Kalendergeltungsbereich in den Tokenabrufmethoden („acquireToken“) anfordern und die Einwilligung des Benutzers einholen. Beispiel: 
+    Beim Erstellen von Anwendungen mit v1.0 mussten Sie den vollständigen Satz der von der Anwendung benötigten Berechtigungen (statische Geltungsbereiche) registrieren, damit bei der Anmeldung die Benutzereinwilligung eingeholt werden konnte. In v2.0 können Sie den Parameter „scope“ verwenden, um die Berechtigungen zum gewünschten Zeitpunkt anzufordern. Diese werden als dynamische Geltungsbereiche bezeichnet. Dadurch kann der Benutzer Geltungsbereichen inkrementelle Einwilligungen erteilen. Wenn Sie also am Anfang nur möchten, dass sich der Benutzer bei Ihrer Anwendung anmeldet und Sie keinen Zugriff benötigen, können Sie dies tun. Wenn Sie später in der Lage sein müssen, den Kalender des Benutzers zu lesen, können Sie dann den Kalendergeltungsbereich in den Tokenabrufmethoden („acquireToken“) anfordern und die Einwilligung des Benutzers einholen. Beispiel:
 
     ```javascript
     var request = {
@@ -89,7 +89,7 @@ Wenn in v2.0 die Autorität `https://login.microsoftonline.com/common` verwendet
 
 * Geltungsbereiche für V1. 0-APIs
 
-    Beim Abrufen von Token für V1. 0-APIs mit MSAL.js können Sie alle für die API registrierten statischen Geltungsbereiche anfordern, indem Sie `.default` als Geltungsbereich an den App-ID-URI der API anfügen. Beispiel: 
+    Beim Abrufen von Token für V1. 0-APIs mit MSAL.js können Sie alle für die API registrierten statischen Geltungsbereiche anfordern, indem Sie `.default` als Geltungsbereich an den App-ID-URI der API anfügen. Beispiel:
 
     ```javascript
     var request = {

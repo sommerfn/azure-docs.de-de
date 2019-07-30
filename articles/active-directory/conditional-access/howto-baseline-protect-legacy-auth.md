@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb, rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d21b54c3bea98a9a1499dc75890f75f28f2f9dc0
-ms.sourcegitcommit: cf438e4b4e351b64fd0320bf17cc02489e61406a
+ms.openlocfilehash: a313240685e539b613dee1c7ff8bd56bb24eb2ba
+ms.sourcegitcommit: 920ad23613a9504212aac2bfbd24a7c3de15d549
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/08/2019
-ms.locfileid: "67655711"
+ms.lasthandoff: 07/15/2019
+ms.locfileid: "68227319"
 ---
 # <a name="baseline-policy-block-legacy-authentication-preview"></a>Basisrichtlinie: Blockieren der Legacyauthentifizierung (Vorschau)
 
@@ -102,7 +102,7 @@ Schritte zum Aktivieren der modernen Authentifizierung finden Sie in den folgend
 
 ## <a name="enable-the-baseline-policy"></a>Aktivieren der Basisrichtlinie
 
-Die **Basisrichtlinie: Blockieren der Legacyauthentifizierung (Vorschau)** ist vorkonfiguriert und wird im Azure-Portal auf dem Blatt „Bedingter Zugriff“ ganz oben angezeigt.
+Die **Basisrichtlinie: Blockieren der Legacyauthentifizierung (Vorschau)** ist vorkonfiguriert und wird im Azure-Portal auf dem Blatt „Bedingter Zugriff“ ganz oben angezeigt. Diese Einstellung wird erst nach einer erfolgreichen Anmeldung wirksam, sodass Benutzer weiterhin die Möglichkeit haben, es mit der Legacyauthentifizierung zu versuchen.
 
 Gehen Sie wie folgt vor, um diese Richtlinie zu aktivieren und Ihre Organisation zu schützen:
 

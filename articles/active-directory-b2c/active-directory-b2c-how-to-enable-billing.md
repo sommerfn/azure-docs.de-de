@@ -10,12 +10,12 @@ ms.workload: identity
 ms.date: 01/24/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 9d3ce15ac9899fe09d907296976db15ed0babb35
-ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
+ms.openlocfilehash: 5cc6c8b4947f8c5ebeb27be2dc82f323f84a6902
+ms.sourcegitcommit: 64798b4f722623ea2bb53b374fb95e8d2b679318
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/07/2019
-ms.locfileid: "67612485"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67835422"
 ---
 # <a name="link-an-azure-subscription-to-an-azure-active-directory-b2c-tenant"></a>Verknüpfen eines Azure-Abonnements mit einem Azure Active Directory B2C-Mandanten
 
@@ -45,9 +45,9 @@ Navigieren Sie zu dem Azure AD-Mandanten mit Ihrem Azure-Abonnement. Öffnen Sie
 
 ## <a name="find-azure-ad-b2c-in-the-azure-marketplace"></a>Suchen von Azure AD B2C im Azure Marketplace
 
-Klicken Sie auf die Schaltfläche **Ressource erstellen**. Geben Sie im Feld **Marketplace durchsuchen** die Zeichenfolge `B2C` ein.
+Klicken Sie auf die Schaltfläche **Ressource erstellen**. Geben Sie im Feld **Marketplace durchsuchen** die Zeichenfolge `Active Directory B2C` ein.
 
-![Hervorgehobene Schaltfläche „Hinzufügen“ und Text „Azure AD B2C“ im Feld „Marketplace durchsuchen“](../../includes/media/active-directory-b2c-create-tenant/find-azure-ad-b2c.png)
+![Screenshot des Portals mit ‚Active Directory B2C‘ in der Marketplace-Suche](../../includes/media/active-directory-b2c-create-tenant/find-azure-ad-b2c.png)
 
 Klicken Sie in der Ergebnisliste auf **Azure Active Directory B2C**.
 
@@ -67,7 +67,7 @@ Wählen Sie als Abonnement ein aktives Azure-Abonnement aus, für das Sie als Ad
 
 Wählen Sie eine Ressourcengruppe und einen Ressourcengruppenstandort aus. Die hier getroffene Auswahl hat keine Auswirkung auf den Standort, die Leistung oder den Abrechnungsstatus Ihres Azure AD B2C-Mandanten.
 
-![Erstellen einer B2C-Ressource](./media/active-directory-b2c-how-to-enable-billing/createresourceb2c.png)
+![Die Seite zum Erstellen der Azure AD-B2C-Ressource im Azure-Portal](./media/active-directory-b2c-how-to-enable-billing/createresourceb2c.png)
 
 ## <a name="manage-your-azure-ad-b2c-tenant-resources"></a>Verwalten Ihrer Azure AD B2C-Mandantenressourcen
 
@@ -80,7 +80,7 @@ Diese Ressource ermöglicht Folgendes:
 - Senden Sie eine Supportanfrage.
 - Verschieben Ihrer Azure AD B2C-Mandantenressource in ein anderes Azure-Abonnement oder in eine andere Ressourcengruppe
 
-![Einstellungen für die B2C-Ressource](./media/active-directory-b2c-how-to-enable-billing/b2cresourcesettings.png)
+![Seite mit Einstellungen für die B2C-Ressource im Azure-Portal](./media/active-directory-b2c-how-to-enable-billing/b2cresourcesettings.PNG)
 
 ## <a name="change-the-azure-ad-b2c-tenant-billing-subscription"></a>Ändern des Abonnements zur Abrechnung des Azure AD B2C-Mandanten
 

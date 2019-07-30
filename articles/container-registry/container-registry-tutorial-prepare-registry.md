@@ -3,17 +3,18 @@ title: 'Tutorial: Erstellen einer georeplizierten Docker-Registrierung in Azure'
 description: Es wird beschrieben, wie Sie eine Azure-Containerregistrierung erstellen, die Georeplikation konfigurieren, ein Docker-Image vorbereiten und es für die Registrierung bereitstellen. Dieses Tutorial ist der erste Teil einer dreiteiligen Reihe.
 services: container-registry
 author: dlepow
+manager: gwallace
 ms.service: container-registry
 ms.topic: tutorial
 ms.date: 04/30/2017
 ms.author: danlep
 ms.custom: seodec18, mvc
-ms.openlocfilehash: 7aec257335e3380fa99669c1191ee89857ec975d
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: 87746bd39e624699612bf5221258ad757cd462b3
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57533663"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68309587"
 ---
 # <a name="tutorial-prepare-a-geo-replicated-azure-container-registry"></a>Tutorial: Vorbereiten einer georeplizierten Azure-Containerregistrierung
 
@@ -114,7 +115,7 @@ Sollte `git` nicht installiert sein, können Sie das [ZIP-Archiv direkt von GitH
 
 ## <a name="update-dockerfile"></a>Aktualisieren der Dockerfile
 
-Mit der im Beispiel enthaltenen Dockerfile wird veranschaulicht, wie der Container erstellt wird. Den Ausgangspunkt bildet ein offizielles [aspnetcore-Image][dockerhub-aspnetcore]. Anschließend werden die Anwendungsdateien in den Container kopiert und die Abhängigkeiten installiert, die Ausgabe wird mit dem offiziellen Image [aspnetcore-build][dockerhub-aspnetcore-build] kompiliert, und zuletzt wird ein optimiertes aspnetcore-Image erstellt.
+Mit der im Beispiel enthaltenen Dockerfile wird veranschaulicht, wie der Container erstellt wird. Der Ausgangspunkt ist ein offizielles [aspnetcore][dockerhub-aspnetcore]-Image. Anschließend werden die Anwendungsdateien in den Container kopiert, die Abhängigkeiten werden installiert, die Ausgabe wird mit dem offiziellen Image [aspnetcore-build][dockerhub-aspnetcore-build] kompiliert, und zuletzt wird ein optimiertes aspnetcore-Image erstellt.
 
 Die [Dockerfile][dockerfile] befindet sich in der geklonten Quelle unter `./AcrHelloworld/Dockerfile`.
 

@@ -1,6 +1,6 @@
 ---
-title: 'Azure-Portal: Erstellen einer Einzeldatenbank – Azure SQL-Datenbank | Microsoft-Dokumentation'
-description: Erstellen und Abfragen einer Einzeldatenbank in Azure SQL-Datenbank über das Azure-Portal
+title: Erstellen einer Einzeldatenbank – Azure SQL-Datenbank | Microsoft-Dokumentation
+description: Erstellen und Abfragen einer Einzeldatenbank in Azure SQL-Datenbank über das Azure-Portal, PowerShell und Azure CLI.
 services: sql-database
 ms.service: sql-database
 ms.subservice: single-database
@@ -12,14 +12,14 @@ ms.author: ninarn
 ms.reviewer: carlrab, sstein
 manager: craigg
 ms.date: 04/23/2019
-ms.openlocfilehash: 1c24c8a10e35c0cf8979538c67fa8fb71b712741
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 470dca235b9a3212c09052f7535fa90d076fe4d3
+ms.sourcegitcommit: a874064e903f845d755abffdb5eac4868b390de7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67070169"
+ms.lasthandoff: 07/24/2019
+ms.locfileid: "68444467"
 ---
-# <a name="quickstart-create-a-single-database-in-azure-sql-database-using-the-azure-portal"></a>Schnellstart: Erstellen einer Einzeldatenbank in Azure SQL-Datenbank über das Azure-Portal
+# <a name="quickstart-create-a-single-database-in-azure-sql-database-using-the-azure-portal-powershell-and-azure-cli"></a>Schnellstart: Erstellen einer Einzeldatenbank in Azure SQL-Datenbank über das Azure-Portal, PowerShell und Azure CLI
 
 Die Erstellung einer [Einzeldatenbank](sql-database-single-database.md) ist die schnellste und einfachste Bereitstellungsoption zum Erstellen einer Datenbank in Azure SQL-Datenbank. In dieser Schnellstartanleitung wird gezeigt, wie Sie im Azure-Portal eine Einzeldatenbank erstellen und anschließend abfragen.
 
@@ -41,59 +41,7 @@ Wenn Sie eine Einzeldatenbank erstellen, legen Sie auch einen [SQL-Datenbank-Ser
 
 So erstellen Sie eine Einzeldatenbank mit den AdventureWorksLT-Beispieldaten:
 
-1. Klicken Sie im Azure-Portal links oben auf **Ressource erstellen**.
-2. Wählen Sie die Option **Datenbanken** und dann **SQL-Datenbank**, um die Seite **SQL-Datenbank erstellen** zu öffnen.
-
-   ![Erstellen einer Einzeldatenbank](./media/sql-database-get-started-portal/create-database-1.png)
-
-3. Geben Sie auf der Registerkarte **Grundlagen** im Abschnitt **Projektdetails** die folgenden Werte ein, bzw. wählen Sie sie aus:
-
-   - **Abonnement**: Wählen Sie in der Dropdownliste das richtige Abonnement aus, falls es nicht angezeigt wird.
-   - **Ressourcengruppe**: Wählen Sie **Neu erstellen**, geben Sie `myResourceGroup` ein, und wählen Sie **OK**.
-
-     ![Neue SQL-Datenbank: Registerkarte „Grundlagen“](media/sql-database-get-started-portal/new-sql-database-basics.png)
-
-4. Geben Sie im Abschnitt **Datenbankdetails** die folgenden Werte ein, bzw. wählen Sie sie aus:
-
-   - **Datenbankname**: Geben Sie `mySampleDatabase` ein.
-   - **Server**: Wählen Sie **Neu erstellen**, und geben Sie die folgenden Werte ein. Wählen Sie anschließend die Option **Auswählen**.
-       - **Servername**: Geben Sie `mysqlserver` mit einigen Zahlen ein, um die Eindeutigkeit sicherzustellen.
-       - **Serveradministratoranmeldung**: Geben Sie `azureuser`ein.
-       - **Kennwort**: Geben Sie ein komplexes Kennwort ein, das die Anforderungen für Kennwörter erfüllt.
-       - **Standort**: Wählen Sie in der Dropdownliste einen Standort aus, z. B. `West US 2`.
-
-         ![Neuer Server](media/sql-database-get-started-portal/new-server.png)
-
-      > [!IMPORTANT]
-      > Notieren Sie sich die Serveradministratoranmeldung (Anmelde-ID) und das Kennwort, damit Sie sich für diesen und andere Schnellstarts beim Server und bei den Datenbanken anmelden können. Falls Sie die Anmeldeinformationen vergessen, können Sie auf der Seite **SQL Server** die Anmelde-ID abrufen oder das Kennwort zurücksetzen. Um die Seite **SQL Server** zu öffnen, wählen Sie nach dem Erstellen der Datenbank auf der Seite **Übersicht** für die Datenbank den Servernamen aus.
-
-        ![SQL-Datenbankdetails](media/sql-database-get-started-portal/sql-db-basic-db-details.png)
-
-   - **Möchten Sie einen Pool für elastische SQL-Datenbanken verwenden?** Wählen Sie die Option **Nein**.
-   - **Compute und Speicher**: Wählen Sie **Datenbank konfigurieren** und dann für diesen Schnellstart **Kaufoptionen basierend auf virtuellen Kernen**.
-
-     ![Kaufoptionen basierend auf virtuellen Kernen](media/sql-database-get-started-portal/create-database-vcore.png)
-
-   - Wählen Sie **Serverlos**.
-
-     ![Serverlose Computeebene](media/sql-database-get-started-portal/create-database-serverless.png)
-
-   - Überprüfen Sie die Einstellungen für **Max. virtuelle Kerne**, **Min. virtuelle Kerne**, **Verzögerung für automatisches Anhalten** und **Maximale Datengröße**. Ändern Sie diese wie gewünscht.
-   - Akzeptieren Sie die Nutzungsbedingungen für die Vorschau, und klicken Sie auf **OK**.
-   - Wählen Sie **Übernehmen**.
-
-5. Wählen Sie die Registerkarte **Zusätzliche Einstellungen**. 
-6. Wählen Sie im Abschnitt **Datenquelle** unter **Vorhandene Daten verwenden** die Option `Sample`. 
-
-   ![Weitere Einstellungen der SQL-Datenbank](media/sql-database-get-started-portal/create-sql-database-additional-settings.png)
-
-   > [!IMPORTANT]
-   > Sie müssen die Daten **Sample (AdventureWorksLT)** auswählen, um diesen Schnellstart und andere Schnellstarts für Azure SQL-Datenbank, in denen diese Daten verwendet werden, einfach ausführen zu können.
-
-7. Behalten Sie die restlichen Standardwerte bei, und wählen Sie unten im Formular die Option **Bewerten + erstellen**.
-8. Überprüfen Sie die endgültigen Einstellungen, und wählen Sie **Erstellen**.
-
-9. Klicken Sie im Formular **SQL-Datenbank** auf **Erstellen**, um die Ressourcengruppe, den Server und die Datenbank bereitzustellen.
+[!INCLUDE [sql-database-create-single-database](includes/sql-database-create-single-database.md)]
 
 ## <a name="query-the-database"></a>Abfragen der Datenbank
 

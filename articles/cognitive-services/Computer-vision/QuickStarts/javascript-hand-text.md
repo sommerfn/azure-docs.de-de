@@ -1,7 +1,7 @@
 ---
-title: 'Schnellstart: Extrahieren von handschriftlichem Text – JavaScript'
+title: 'Schnellstart: Extrahieren von gedrucktem und handschriftlichem Text – REST, JavaScript'
 titleSuffix: Azure Cognitive Services
-description: In dieser Schnellstartanleitung extrahieren Sie handschriftlichen Text aus einem Bild mit der Maschinelles Sehen-API und JavaScript.
+description: In dieser Schnellstartanleitung extrahieren Sie gedruckten und handschriftlichen Text aus einem Bild mit der Maschinelles Sehen-API und JavaScript.
 services: cognitive-services
 author: PatrickFarley
 manager: nitinme
@@ -11,16 +11,16 @@ ms.topic: quickstart
 ms.date: 07/03/2019
 ms.author: pafarley
 ms.custom: seodec18
-ms.openlocfilehash: f4e627286f6a32816eafa84e860cb8eb49111f67
-ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
+ms.openlocfilehash: 42bb85b5dfab6c9799d89ff92ab5e5b3c0230019
+ms.sourcegitcommit: f5075cffb60128360a9e2e0a538a29652b409af9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67604343"
+ms.lasthandoff: 07/18/2019
+ms.locfileid: "68311986"
 ---
-# <a name="quickstart-extract-handwritten-text-using-the-computer-vision-rest-api-and-javascript"></a>Schnellstart: Extrahieren von handschriftlichem Text mit der Maschinelles Sehen-REST-API und JavaScript
+# <a name="quickstart-extract-printed-and-handwritten-text-using-the-computer-vision-rest-api-and-javascript"></a>Schnellstart: Extrahieren von gedrucktem und handschriftlichem Text mit der Maschinelles Sehen-REST-API und JavaScript
 
-In dieser Schnellstartanleitung extrahieren Sie handschriftlichen Text aus einem Bild, indem Sie die REST-API von Maschinelles Sehen verwenden. Mit den APIs [Batch Read](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/2afb498089f74080d7ef85eb) und [Read Operation Result](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/5be108e7498a4f9ed20bf96d) können Sie in einem Bild handschriftlichen Text erkennen und erkannte Zeichen als computerlesbare Zeichenfolge extrahieren.
+In dieser Schnellstartanleitung extrahieren Sie gedruckten und/oder handschriftlichen Text aus einem Bild, indem Sie die REST-API von Maschinelles Sehen verwenden. Mit den Methoden [Batch Read](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/2afb498089f74080d7ef85eb) und [Read Operation Result](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/5be108e7498a4f9ed20bf96d) können Sie in einem Bild Text erkennen und erkannte Zeichen als computerlesbare Zeichenfolge extrahieren. Die API bestimmt, welches Erkennungsmodell für die einzelnen Textzeilen verwendet werden soll, daher unterstützt sie Bilder mit gedrucktem und handschriftlichem Text.
 
 > [!IMPORTANT]
 > Im Gegensatz zur [OCR](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fc)-Methode wird die [Batch Read](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/2afb498089f74080d7ef85eb)-Methode asynchron ausgeführt. Diese Methode gibt keine Informationen im Text einer erfolgreichen Antwort zurück. Die Batch Read-Methode gibt stattdessen einen URI im Wert des Antwortheaderfelds `Operation-Content` zurück. Anschließend können Sie diesen URI aufrufen, der die Methode [Read Operation Result](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/5be108e7498a4f9ed20bf96d) darstellt, um sowohl den Status zu überprüfen als auch die Ergebnisse des Batch Read-Methodenaufrufs zurückzugeben.
@@ -39,8 +39,8 @@ Führen Sie zum Erstellen und Ausführen des Beispiels die folgenden Schritte au
 1. Nehmen Sie bei Bedarf die folgenden Änderungen im Code vor:
     1. Ersetzen Sie den `subscriptionKey`-Wert durch Ihren Abonnementschlüssel.
     1. Ersetzen Sie den Wert von `uriBase` durch die Endpunkt-URL für die [Batch Read](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/2afb498089f74080d7ef85eb)-Methode in der Azure-Region, in der Sie Ihre Abonnementschlüssel bezogen haben (sofern erforderlich).
-    1. Ersetzen Sie optional den Wert des Attributs `value` für das Steuerelement `inputImage` durch die URL eines anderen Bilds, aus dem Sie handschriftlichen Text extrahieren möchten.
-1. Speichern Sie den Code als Datei mit der Erweiterung `.html`. Beispiel: `get-handwriting.html`.
+    1. Ersetzen Sie optional den Wert des Attributs `value` für das Steuerelement `inputImage` durch die URL eines anderen Bilds, aus dem Sie Text extrahieren möchten.
+1. Speichern Sie den Code als Datei mit der Erweiterung `.html`. Beispiel: `get-text.html`.
 1. Öffnen Sie ein Browserfenster.
 1. Ziehen Sie die Datei in das Browserfenster, und legen Sie sie dort ab.
 1. Wenn die Webseite im Browser angezeigt wird, klicken Sie auf die Schaltfläche **Bild lesen**.
@@ -49,7 +49,7 @@ Führen Sie zum Erstellen und Ausführen des Beispiels die folgenden Schritte au
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Handwriting Sample</title>
+    <title>Text Recognition Sample</title>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>
 </head>
 <body>
@@ -99,10 +99,10 @@ Führen Sie zum Erstellen und Ausführen des Beispiels die folgenden Schritte au
 
         .done(function(data, textStatus, jqXHR) {
             // Show progress.
-            $("#responseTextArea").val("Handwritten text submitted. " +
+            $("#responseTextArea").val("Text submitted. " +
                 "Waiting 10 seconds to retrieve the recognized text.");
 
-            // Note: The response may not be immediately available. Handwriting
+            // Note: The response may not be immediately available. Text
             // recognition is an asynchronous operation that can take a variable
             // amount of time depending on the length of the text you want to
             // recognize. You may need to wait or retry the GET operation.
@@ -160,8 +160,8 @@ Führen Sie zum Erstellen und Ausführen des Beispiels die folgenden Schritte au
         });
     };
 </script>
-<h1>Read handwritten image:</h1>
-Enter the URL to an image of handwritten text, then click
+<h1>Read text from image:</h1>
+Enter the URL to an image of text, then click
 the <strong>Read image</strong> button.
 <br><br>
 Image to read:

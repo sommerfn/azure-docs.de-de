@@ -3,17 +3,18 @@ title: 'Tutorial: Mehrstufige Containeraufgaben – Azure Container Registry Tas
 description: In diesem Tutorial erfahren Sie, wie Sie einen Azure Container Registry Task so konfigurieren, dass automatisch ein mehrstufiger Workflow ausgelöst wird, um Containerimages in der Cloud zu erstellen, auszuführen und zu pushen, wenn Sie Quellcode in einem Git-Repository committen.
 services: container-registry
 author: dlepow
+manager: gwallace
 ms.service: container-registry
 ms.topic: tutorial
 ms.date: 05/09/2019
 ms.author: danlep
 ms.custom: seodec18, mvc
-ms.openlocfilehash: 09b8e5d31bc6a4ec24633889920e2768bb7ce538
-ms.sourcegitcommit: f6c85922b9e70bb83879e52c2aec6307c99a0cac
+ms.openlocfilehash: c78c2c8279972108aee12b9b386175d0f27b7fee
+ms.sourcegitcommit: f5075cffb60128360a9e2e0a538a29652b409af9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/11/2019
-ms.locfileid: "65546554"
+ms.lasthandoff: 07/18/2019
+ms.locfileid: "68310410"
 ---
 # <a name="tutorial-run-a-multi-step-container-workflow-in-the-cloud-when-you-commit-source-code"></a>Tutorial: Ausführen eines mehrstufigen Containerworkflows in der Cloud, wenn Sie Quellcode committen
 
@@ -35,7 +36,7 @@ In diesem Tutorial wird davon ausgegangen, dass Sie bereits die Schritte des [vo
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-Wenn Sie die Azure CLI lokal verwenden möchten, muss bei Ihnen mindestens die Azure CLI-Version **2.0.62** installiert sein, und Sie müssen mit [az login][az-login] angemeldet sein. Führen Sie `az --version` aus, um die Version zu finden. Informationen zur Installation und dem Upgrade der CLI finden Sie bei Bedarf unter [Installieren von Azure CLI][azure-cli].
+Wenn Sie die Azure CLI lokal verwenden möchten, muss bei Ihnen mindestens die Azure CLI-Version **2.0.62** installiert sein, und Sie müssen mit [az login][az-login] angemeldet sein. Führen Sie `az --version` aus, um die Version zu finden. Informationen zum Installieren und Aktualisieren der Befehlszeilenschnittstelle finden Sie bei Bedarf unter [Installieren der Azure CLI][azure-cli].
 
 [!INCLUDE [container-registry-task-tutorial-prereq.md](../../includes/container-registry-task-tutorial-prereq.md)]
 
