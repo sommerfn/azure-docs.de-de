@@ -53,6 +53,8 @@
       href: use-editor-create-project.md
     - name: Einbetten von Widgets in Ihre Anwendung
       href: video-indexer-embed-widgets.md
+    - name: Notfallwiederherstellung
+      href: video-indexer-disaster-recovery.md
     - name: Anpassen von Inhaltsmodellen
       items:
         - name: Person

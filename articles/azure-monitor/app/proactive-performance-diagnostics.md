@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 05/04/2017
 ms.reviewer: antonfr
 ms.author: mbullwin
-ms.openlocfilehash: b1a3b04427839736359c88f8ad6a8db5eedf8488
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 5ccff22a74b0cb1edcbae40fca087fe3197cb6ca
+ms.sourcegitcommit: 10251d2a134c37c00f0ec10e0da4a3dffa436fb3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61294055"
+ms.lasthandoff: 07/13/2019
+ms.locfileid: "67867710"
 ---
 # <a name="smart-detection---performance-anomalies"></a>Intelligente Erkennung – Leistungsabweichungen
 
@@ -58,7 +58,7 @@ Die Benachrichtigungen enthalten Diagnoseinformationen. Hier sehen Sie ein Beisp
 
 ## <a name="configure-email-notifications"></a>Konfigurieren von E-Mail-Benachrichtigungen
 
-Benachrichtigungen der intelligenten Erkennung sind standardmäßig aktiviert und werden an Personen gesendet, die über [Besitzer, Mitwirkende und Leser mit Zugriff auf die Application Insights-Ressource](../../azure-monitor/app/resources-roles-access-control.md) verfügen. Um dies zu ändern, klicken Sie in der E-Mail-Benachrichtigung auf **Konfigurieren**, oder öffnen Sie die Einstellungen für die intelligente Erkennung in Application Insights. 
+Benachrichtigungen der intelligenten Erkennung sind standardmäßig aktiviert und werden an Personen gesendet, die über die Zugriffsberechtigungen [Benutzer mit Leseberechtigung für Überwachungsdaten](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#monitoring-reader) und [Mitwirkender an der Überwachung](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#monitoring-contributor) für das Abonnement verfügen, in dem sich die Application Insights-Ressource befindet. Um dies zu ändern, klicken Sie in der E-Mail-Benachrichtigung auf **Konfigurieren**, oder öffnen Sie die Einstellungen für die intelligente Erkennung in Application Insights. 
   
   ![Einstellungen für die intelligente Erkennung](media/proactive-performance-diagnostics/smart_detection_configuration.png)
   

@@ -17,12 +17,12 @@ ms.author: ryanwi
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 821143d39f8a4c06501ee38ef598a9d06d267d72
-ms.sourcegitcommit: a52d48238d00161be5d1ed5d04132db4de43e076
+ms.openlocfilehash: b7ba6ae188c098e85573503a1518ba65480d713a
+ms.sourcegitcommit: 47ce9ac1eb1561810b8e4242c45127f7b4a4aa1a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/20/2019
-ms.locfileid: "67273104"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67807207"
 ---
 # <a name="authentication-flows"></a>Authentifizierungsflows
 
@@ -70,8 +70,8 @@ Wenn sich Benutzer bei Webanwendungen (Websites) anmelden, erhält die Webanwend
 
 Im obigen Diagramm führt die Anwendung folgende Vorgänge aus:
 
-1. Sie fordert einen Autorisierungscode an, der gegen ein Zugriffstoken eingelöst wird.
-2. Sie verwendet das Zugriffstoken zum Aufrufen einer Web-API.
+1. Fordert einen Autorisierungscode an, der gegen ein Zugriffstoken eingelöst wird.
+2. Verwendet das Zugriffstoken zum Aufrufen einer Web-API.
 
 ### <a name="considerations"></a>Überlegungen
 - Sie können den Autorisierungscode nur einmal zum Einlösen eines Tokens verwenden. Versuchen Sie nicht, ein Token mehrmals mit demselben Autorisierungscode abzurufen. Dies ist laut Protokollstandardspezifikation explizit untersagt. Wenn Sie den Code absichtlich mehrmals einlösen oder sich nicht bewusst sind, dass der Code ebenfalls von einem Framework für Sie eingelöst wird, erhalten Sie die folgende Fehlermeldung: `AADSTS70002: Error validating credentials. AADSTS54005: OAuth2 Authorization code was already redeemed, please retry with a new valid code or use an existing refresh token.`
@@ -111,7 +111,7 @@ MSAL.NET unterstützt zwei Arten von Clientanmeldeinformationen. Diese Clientanm
 Im obigen Diagramm führt die Anwendung folgende Vorgänge aus:
 
 1. Sie ruft ein Token mithilfe der Anmeldeinformationen ab, die aus einem Anwendungsgeheimnis oder Kennwort bestehen.
-2. Sie verwendet das Token für Anforderungen an die Ressource.
+2. Verwendet das Token für Anforderungen an die Ressource.
 
 ### <a name="certificates"></a>Zertifikate 
 
@@ -120,7 +120,7 @@ Im obigen Diagramm führt die Anwendung folgende Vorgänge aus:
 Im obigen Diagramm führt die Anwendung folgende Vorgänge aus:
 
 1. Sie ruft ein Token mithilfe der Zertifikatanmeldeinformationen ab.
-2. Sie verwendet das Token für Anforderungen an die Ressource.
+2. Verwendet das Token für Anforderungen an die Ressource.
 
 Die Clientanmeldeinformationen müssen folgende Voraussetzungen erfüllen:
 - Sie wurden in Azure AD registriert.
@@ -156,7 +156,7 @@ MSAL unterstützt die integrierte Windows-Authentifizierung (IWA) für Desktop- 
 Im obigen Diagramm führt die Anwendung folgende Vorgänge aus:
 
 1. Sie ruft ein Token mithilfe der integrierten Windows-Authentifizierung ab.
-2. Sie verwendet das Token für Anforderungen an die Ressource.
+2. Verwendet das Token für Anforderungen an die Ressource.
 
 ### <a name="constraints"></a>Einschränkungen
 
@@ -166,7 +166,7 @@ IWA ist für Apps bestimmt, die für die .NET Framework- und .NET Core-Plattform
 
 Die mehrstufige Authentifizierung (MFA) wird von der IWA nicht umgangen. Wenn eine solche Authentifizierung konfiguriert ist, kann die IWA im Fall einer MFA-Aufforderung fehlschlagen. Die MFA erfordert eine Interaktion mit dem Benutzer.
 
-Sie haben keinen Einfluss darauf, wann der Identitätsanbieter eine MFA anfordert. Diese Einschränkung gilt allerdings nicht für den Mandantenadministrator. Die MFA ist üblicherweise erforderlich, wenn Sie sich beim Anmeldevorgang in einem anderen Land befinden oder sich mit einem Firmennetzwerk verbinden und dabei kein VPN verwenden. Gelegentlich ist allerdings selbst bei Nutzung eines VPN eine MFA notwendig. Azure AD greift auf KI zurück, um zu ermitteln, ob eine MFA erforderlich ist. Falls die IWA fehlschlägt, sollten Sie auf eine Eingabeaufforderung (https://aka.ms/msal-net-interactive) ausweichen.
+Sie haben keinen Einfluss darauf, wann der Identitätsanbieter eine MFA anfordert. Diese Einschränkung gilt allerdings nicht für den Mandantenadministrator. Die MFA ist üblicherweise erforderlich, wenn Sie sich beim Anmeldevorgang in einem anderen Land befinden oder sich mit einem Firmennetzwerk verbinden und dabei kein VPN verwenden. Gelegentlich ist allerdings selbst bei Nutzung eines VPN eine MFA notwendig. Azure AD greift auf KI zurück, um zu ermitteln, ob eine MFA erforderlich ist. Wenn die integrierte Windows-Authentifizierung zu einem Fehler führt, sollten Sie auf eine [interaktive Benutzeraufforderung](#Interactive) zurückgreifen.
 
 Die beim Erstellen der öffentlichen Clientanwendung übergebene Autorität muss eine der folgenden Voraussetzungen erfüllen:
 - Sie muss auf Mandanten beruhen (im Format `https://login.microsoftonline.com/{tenant}/`, wobei `tenant` entweder die GUID ist, die die Mandanten-ID darstellt, oder eine Domäne, die dem Mandanten zugeordnet ist).
@@ -193,7 +193,7 @@ MSAL unterstützt die [OAuth 2-Gewährung für Kennwortanmeldeinformationen des 
 
 Im obigen Diagramm führt die Anwendung folgende Vorgänge aus:
 
-1. Sie ruft ein Token ab, indem der Benutzername und das Kennwort an den Identitätsanbieter gesendet werden.
+1. Ruft ein Token ab, indem der Benutzername und das Kennwort an den Identitätsanbieter gesendet werden.
 2. Sie ruft eine Web-API mithilfe des Tokens auf.
 
 > [!WARNING]

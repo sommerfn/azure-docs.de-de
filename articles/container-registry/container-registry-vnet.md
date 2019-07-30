@@ -3,16 +3,17 @@ title: Beschränken des Zugriffs auf eine Azure-Containerregistrierung auf ein v
 description: Erlauben Sie den Zugriff auf eine Azure-Containerregistrierung nur von Ressourcen in einem virtuellen Azure-Netzwerk oder von öffentlichen IP-Adressbereichen.
 services: container-registry
 author: dlepow
+manager: gwallace
 ms.service: container-registry
 ms.topic: article
 ms.date: 07/01/2019
 ms.author: danlep
-ms.openlocfilehash: e6e0cdd73a5a2999f78599a06cc7ee397ecc3b4b
-ms.sourcegitcommit: 47ce9ac1eb1561810b8e4242c45127f7b4a4aa1a
+ms.openlocfilehash: 2030496548df312b4f4cfab60c216d5f332c7ac2
+ms.sourcegitcommit: f5075cffb60128360a9e2e0a538a29652b409af9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67806592"
+ms.lasthandoff: 07/18/2019
+ms.locfileid: "68310392"
 ---
 # <a name="restrict-access-to-an-azure-container-registry-using-an-azure-virtual-network-or-firewall-rules"></a>Beschränken des Zugriffs auf eine Azure-Containerregistrierung mithilfe eines virtuellen Azure-Netzwerks oder mit Firewallregeln
 

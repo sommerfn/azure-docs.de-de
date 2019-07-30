@@ -145,6 +145,8 @@
           href: howto-data-in-replication.md
         - name: Erstellen von Lesereplikaten im Azure-Portal
           href: howto-read-replicas-portal.md
+        - name: Erstellen von Lesereplikaten mit der Azure CLI
+          href: howto-read-replicas-cli.md
     - name: Problembehandlung
       items:
         - name: Beheben von Verbindungsproblemen

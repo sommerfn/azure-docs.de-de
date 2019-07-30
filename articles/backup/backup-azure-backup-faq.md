@@ -1,19 +1,18 @@
 ---
 title: Azure Backup – Häufig gestellte Fragen
 description: 'Antworten auf häufig gestellte Fragen zu: Azure Backup-Features wie Azure Recovery Services-Tresoren, zu sicherbaren Elementen sowie zu Funktionsweise, Verschlüsselung und Grenzwerten. '
-services: backup
 author: dcurwin
 manager: carmonm
 ms.service: backup
 ms.topic: conceptual
 ms.date: 07/07/2019
 ms.author: dacurwin
-ms.openlocfilehash: aecad4273493cd573935c78cae51bd0f59461e2e
-ms.sourcegitcommit: 47ce9ac1eb1561810b8e4242c45127f7b4a4aa1a
+ms.openlocfilehash: c60b2bfae0d974d454c03b7eba655cbdacab5943
+ms.sourcegitcommit: c72ddb56b5657b2adeb3c4608c3d4c56e3421f2c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67806971"
+ms.lasthandoff: 07/24/2019
+ms.locfileid: "68466688"
 ---
 # <a name="azure-backup---frequently-asked-questions"></a>Azure Backup – häufig gestellte Fragen
 In diesem Artikel werden allgemeine Fragen um Azure Backup-Dienst beantwortet.
@@ -92,7 +91,7 @@ Windows 8 oder höher | 54.400 GB
 Windows 7 |1\.700 GB
 Windows Server 2012 oder höher | 54.400 GB
 Windows Server 2008, Windows Server 2008 R2 | 1\.700 GB
-Azure-VM | 16 Datenträger<br/><br/> Datenträger bis 4.095 GB
+Azure VM | 16 Datenträger<br/><br/> Datenträger bis 4.095 GB
 
 ### <a name="how-is-the-data-source-size-determined"></a>Wie wird die Größe der Datenquelle bestimmt?
 In der folgenden Tabelle wird beschrieben, wie die einzelnen Datenquellengrößen bestimmt werden.

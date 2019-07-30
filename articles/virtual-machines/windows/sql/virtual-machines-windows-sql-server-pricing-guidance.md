@@ -16,12 +16,12 @@ ms.workload: iaas-sql-server
 ms.date: 08/09/2018
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: d53c1de9678db497a20788d0cab7ee4f0e6f0c9c
-ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
+ms.openlocfilehash: a872b8c34011247e68b0d459482c0599ac0426f2
+ms.sourcegitcommit: 920ad23613a9504212aac2bfbd24a7c3de15d549
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67607066"
+ms.lasthandoff: 07/15/2019
+ms.locfileid: "68228385"
 ---
 # <a name="pricing-guidance-for-sql-server-azure-vms"></a>Preisinformationen für virtuelle Azure-Computer mit SQL Server
 
@@ -114,8 +114,7 @@ Um BYOL mit einem virtuellen SQL Server-Computer zu verwenden, müssen Sie über
 
 | BYOL-Vorteil | BESCHREIBUNG |
 |-----|-----|
-| **Kostenersparnis** | Die Nutzung eigener SQL Server-Lizenzen ist kostengünstiger als die nutzungsbasierte Bezahlung, wenn eine Arbeitsauslastung SQL Server Standard oder Enterprise *länger als 10 Monate* kontinuierlich ausführt. |
-| **Langfristige Einsparungen** | Im Durchschnitt ist es in den ersten drei Jahren *pro Jahr um 30%* günstiger, eine SQL Server-Lizenz zu erwerben oder zu verlängern. Nach drei Jahren müssen Sie die Lizenz nicht mehr verlängern, sondern zahlen nur noch für Software Assurance. Ab diesem Punkt ist BYOL *200% günstiger*. |
+| **Kostenersparnis** | Der [Azure-Hybridvorteil](https://azure.microsoft.com/pricing/hybrid-benefit/) bietet Einsparungen von bis zu 55 %. Weitere Informationen finden Sie unter [Wechsel des Lizenzierungsmodells](virtual-machines-windows-sql-ahb.md). |
 | **Kostenloses passives sekundäres Replikat** | Ein weiterer Vorteil der Nutzung eigener Lizenzen ist die [kostenlose Lizenz für ein passives sekundäres Replikat](https://azure.microsoft.com/pricing/licensing-faq/) pro SQL Server-Instanz, um Hochverfügbarkeit sicherzustellen. Damit halbieren sich die Lizenzierungskosten einer hochverfügbaren SQL Server-Bereitstellung (etwa mit AlwaysOn-Verfügbarkeitsgruppen). Die Berechtigungen zum Ausführen des passiven sekundären Replikats werden über den Software Assurance-Vorteil für Failoverserver bereitgestellt. |
 
 Um einen virtuellen Azure-Computer mit SQL Server 2017 mit einem dieser BYOL-Images zu erstellen, verwenden Sie die VMs mit dem Präfix „{BYOL}“:

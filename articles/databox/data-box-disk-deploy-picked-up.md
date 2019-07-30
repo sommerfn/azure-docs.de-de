@@ -6,16 +6,18 @@ author: alkohli
 ms.service: databox
 ms.subservice: disk
 ms.topic: tutorial
-ms.date: 06/25/2019
+ms.date: 07/23/2019
 ms.author: alkohli
 Customer intent: As an IT admin, I need to be able to order Data Box Disk to upload on-premises data from my server onto Azure.
-ms.openlocfilehash: 7e7a1f119a2f2b0e60645cb776b26c124910cacb
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: ca42532fe6ba954180ce06ed0e3561e42f1fb447
+ms.sourcegitcommit: 198c3a585dd2d6f6809a1a25b9a732c0ad4a704f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67448209"
+ms.lasthandoff: 07/23/2019
+ms.locfileid: "68424235"
 ---
+::: zone target="docs"
+
 # <a name="tutorial-return-azure-data-box-disk-and-verify-data-upload-to-azure"></a>Tutorial: Zurücksenden von Azure Data Box Disk und Überprüfen des Datenuploads in Azure
 
 Dies ist das letzte Tutorial der Reihe „Bereitstellen von Azure Data Box Disk“. In diesem Lernprogramm lernen Sie Folgendes:
@@ -28,6 +30,7 @@ Dies ist das letzte Tutorial der Reihe „Bereitstellen von Azure Data Box Disk�
 ## <a name="prerequisites"></a>Voraussetzungen
 
 Stellen Sie zunächst sicher, dass Sie die Schritte unter [Tutorial: Kopieren von Daten auf die Azure Data Box Disk und Durchführen der Überprüfung](data-box-disk-deploy-copy-data.md).
+
 
 ## <a name="ship-data-box-disk-back"></a>Zurücksenden des Data Box-Datenträgers
 
@@ -106,8 +109,8 @@ Bei Azure-Datencentern in Australien ist aus Sicherheitsgründen eine zusätzlic
 1. Tragen Sie den Namen Ihres Unternehmens und Ihre Adressdaten als Absenderinformationen in den Rücksendeschein ein.
 2. Senden Sie Quantium Solutions über die folgende E-Mail-Vorlage eine E-Mail.
 
-    - Wenn der Rücksendeschein der japanischen Post für eine Nachnahmesendung („Chakubarai“) nicht enthalten war oder fehlt, merken Sie sich das in dieser E-Mail an. Quantium Solutions Japan fordert die japanischen Post dann auf, den Rücksendeschein bei der Abholung mitzubringen.
-    - Wenn Sie mehrere Bestellungen haben, senden Sie jeweils eine E-Mail, um sicherzustellen, dass einzelne die Bestellungen einzeln abgeholt werden.
+    - Falls der Rücksendeschein der japanischen Post für eine Nachnahmesendung („Chakubarai“) nicht enthalten war oder fehlt, weisen Sie in dieser E-Mail darauf hin. Quantium Solutions Japan fordert die japanische Post dann auf, den Rücksendeschein bei der Abholung mitzubringen.
+    - Senden Sie bei mehreren Bestellungen eine E-Mail, um sicherzustellen, dass die einzelnen Bestellungen abgeholt werden.
 
     ```
     To: Customerservice.JP@quantiumsolutions.com
@@ -123,9 +126,9 @@ Bei Azure-Datencentern in Australien ist aus Sicherheitsgründen eine zusätzlic
 
 3. Nachdem die Abholung gebucht wurde, erhalten Sie eine E-Mail-Bestätigung von Quantium Solutions. Die E-Mail-Bestätigung enthält auch Informationen zum Nachnahme-Rücksendeschein („Chakubarai“).
 
-Bei Bedarf können Sie sich über die folgenden Informationen an den Quantium Solution-Support (japanische Sprache) wenden: 
+Den Support von Quantium Solution erreichen Sie bei Bedarf wie folgt (in japanische Sprache): 
 
-- E-Mail: Customerservice.JP@quantiumsolutions.com 
+- E-Mail-Adresse: Customerservice.JP@quantiumsolutions.com 
 - Telefon：03-5755-0150 
 
 #### <a name="pick-up-in-korea"></a>Abholung in Korea
@@ -229,5 +232,41 @@ Fahren Sie mit dem nächsten Artikel zur Vorgehensweise fort, um zu erfahren, wi
 
 > [!div class="nextstepaction"]
 > [Use Azure portal to administer Azure Data Box Disk](./data-box-portal-ui-admin.md) (Verwenden des Azure-Portals zum Verwalten des Azure Data Box-Datenträgers)
+
+::: zone-end
+
+
+::: zone target="chromeless"
+
+# <a name="return-the-disk-and-verify-upload-to-azure"></a>Rücksendung des Datenträgers und Überprüfen des Uploads in Azure
+
+## <a name="ship-to-azure"></a>Senden an Azure
+
+1. Trennen Sie die Datenträger vom Computer, nachdem die Überprüfung der Daten abgeschlossen ist. Entfernen Sie die Verbindungskabel.
+2. Verpacken Sie die Datenträger und die Verbindungskabel in Luftpolsterfolie, und legen Sie sie in das Versandpaket. Fehlendes Zubehör wird ggf. in Rechnung gestellt.
+    - Verwenden Sie das Verpackungsmaterial aus der ursprünglichen Lieferung.  
+    - Es empfiehlt sich, die Datenträger sorgfältig in Luftpolsterfolie zu verpacken.
+    - Achten Sie auf einen festen Sitz der Teile im Karton, um ein Verrutschen innerhalb der Verpackung zu vermeiden.
+3. Die nächsten Schritte hängen davon ab, wo Sie das Gerät zurückgeben.
+    - [Planen Sie die Abholung durch UPS, falls Sie das Gerät in den USA und Kanada zurücksenden](data-box-disk-deploy-picked-up.md#pick-up-in-us-canada).
+    - [Planen Sie eine Abholung mit DHL für Europa](data-box-disk-deploy-picked-up.md#pick-up-in-europe), indem Sie die Website besuchen und die Nummer der Luftfrachtbriefe angeben.
+    - [Planen Sie eine Abholung für Länder in der Region Australien-Pazifik](data-box-disk-deploy-picked-up.md#pick-up-in-asia-pacific-region), z. B. für Australien, Japan, Korea und Singapur.
+4. Nachdem die Datenträger vom Kurierdienst abgeholt wurden, wird der Auftragsstatus im Portal aktualisiert und eine Sendungsverfolgungs-ID angezeigt.
+
+## <a name="verify-upload-to-azure"></a>Überprüfen des Uploads in Azure
+
+Nachdem die Daten in Azure hochgeladen wurden, überprüfen Sie, ob sich Ihre Daten in den Speicherkonten befinden, bevor Sie sie aus der Quelle löschen. Ihre Daten können sich an folgenden Orten befinden:
+
+- In Ihren Azure Storage-Konten. Wenn Sie die Daten in Data Box kopieren, werden die Daten abhängig vom Typ in einen der folgenden Pfade in Ihrem Azure Storage-Konto hochgeladen:
+
+    - **Für Blockblobs und Seitenblobs**: https://<Speicherkontoname>.blob.core.windows.net/<containername>/files/a.txt
+
+    - **Für Azure Files**: https://<Speicherkontoname>.file.core.windows.net/<sharename>/files/a.txt
+
+    Alternativ hierzu können Sie auch im Azure-Portal auf Ihr Azure-Speicherkonto zugreifen und von dort aus entsprechend navigieren.
+
+- In Ihren Ressourcengruppen für verwaltete Datenträger. Beim Erstellen von verwalteten Datenträgern werden die VHDs als Seitenblobs hochgeladen und dann in verwaltete Datenträger konvertiert. Die verwalteten Datenträger werden an die Ressourcengruppen angefügt, die zum Zeitpunkt der Auftragserstellung angegeben waren.
+
+::: zone-end
 
 
