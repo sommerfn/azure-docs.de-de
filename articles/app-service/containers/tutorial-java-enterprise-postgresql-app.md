@@ -11,12 +11,12 @@ ms.topic: tutorial
 ms.date: 11/13/2018
 ms.author: jafreebe
 ms.custom: seodec18
-ms.openlocfilehash: dcd1ef5c54885b758ac9a301616d79a163999bc9
-ms.sourcegitcommit: 79496a96e8bd064e951004d474f05e26bada6fa0
+ms.openlocfilehash: 2d26d9e145030e5972289c224dc2f76078d67527
+ms.sourcegitcommit: a0b37e18b8823025e64427c26fae9fb7a3fe355a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2019
-ms.locfileid: "67509640"
+ms.lasthandoff: 07/25/2019
+ms.locfileid: "68498484"
 ---
 # <a name="tutorial-build-a-java-ee-and-postgres-web-app-in-azure"></a>Tutorial: Erstellen einer Java EE- und Postgres-Web-App in Azure
 
@@ -169,7 +169,7 @@ Zum Konfigurieren des Servers benötigen wir die vier Dateien im Verzeichnis *wi
 
 - **postgresql-42.2.5.jar:** Diese JAR-Datei ist der JDBC-Treiber für Postgres. Weitere Informationen finden Sie auf der [offiziellen Website](https://jdbc.postgresql.org/index.html).
 - **postgres-module.xml:** Diese XML-Datei deklariert einen Namen für das Postgres-Modul (org.postgres). Sie gibt auch die erforderlichen Ressourcen und Abhängigkeiten für die Verwendung des Moduls an.
-- **jboss_cli_commands.cl:** Diese Datei enthält Konfigurationsbefehle, die von der JBoss CLI ausgeführt werden. Die Befehle fügen das Postgres-Modul dem WildFly-Anwendungsserver hinzu, stellen die Anmeldeinformationen bereit, deklarieren einen JNDI-Namen, legen den Schwellenwert für das Zeitlimit fest usw. Wenn Sie nicht mit der JBoss CLI vertraut sind, informieren Sie sich in der [offiziellen Dokumentation](https://access.redhat.com/documentation/red_hat_jboss_enterprise_application_platform/7.0/html-single/management_cli_guide/#how_to_cli).
+- **jboss_cli_commands.cli**: Diese Datei enthält Konfigurationsbefehle, die von der JBoss CLI ausgeführt werden. Die Befehle fügen das Postgres-Modul dem WildFly-Anwendungsserver hinzu, stellen die Anmeldeinformationen bereit, deklarieren einen JNDI-Namen, legen den Schwellenwert für das Zeitlimit fest usw. Wenn Sie nicht mit der JBoss CLI vertraut sind, informieren Sie sich in der [offiziellen Dokumentation](https://access.redhat.com/documentation/red_hat_jboss_enterprise_application_platform/7.0/html-single/management_cli_guide/#how_to_cli).
 - **startup_script.sh:** Dieses Shellskript wird bei jedem Starten Ihrer App Service-Instanz ausgeführt. Das Skript führt nur eine Funktion aus: Übergeben der Befehle in *jboss_cli_commands.cli* an die JBoss-CLI.
 
 Es wird dringend empfohlen, die Inhalte dieser Dateien zu lesen, insbesondere *jboss_cli_commands.cli*.
@@ -194,7 +194,7 @@ Starten Sie dann Ihre App Service-Instanz neu. Die Schaltfläche befindet sich i
 mvn clean install -DskipTests azure-webapp:deploy
 ```
 
-Glückwunsch! Ihre Anwendung verwendet nun eine Postgres-Datenbank, und alle in der Anwendung erstellten Datensätze werden in Postgres anstatt wie zuvor in der H3-In-Memory Database gespeichert. Um dies zu überprüfen, können Sie einen Datensatz erstellen und Ihre App Service-Instanz neu starten. Die Datensätze sind nach einem Neustart Ihrer Anwendung immer noch vorhanden.
+Glückwunsch! Ihre Anwendung verwendet nun eine Postgres-Datenbank, und alle in der Anwendung erstellten Datensätze werden in Postgres anstatt wie zuvor in der H2-In-Memory Database gespeichert. Um dies zu überprüfen, können Sie einen Datensatz erstellen und Ihre App Service-Instanz neu starten. Die Datensätze sind nach einem Neustart Ihrer Anwendung immer noch vorhanden.
 
 ## <a name="clean-up"></a>Bereinigen
 

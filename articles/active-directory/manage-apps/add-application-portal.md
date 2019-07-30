@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 04/09/2019
 ms.author: mimart
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3de6a2cbdfe7a6d006a3bbfab16792376eda0d07
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.openlocfilehash: 466660a1e064ef41eb330b36107dbdcb1d097498
+ms.sourcegitcommit: 75a56915dce1c538dc7a921beb4a5305e79d3c7a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67702537"
+ms.lasthandoff: 07/24/2019
+ms.locfileid: "68477309"
 ---
 # <a name="quickstart-add-an-application-to-your-azure-active-directory-tenant"></a>Schnellstart: Hinzufügen einer Anwendung zu Ihrem Azure Active Directory-Mandanten
 
@@ -137,9 +137,8 @@ So verwenden Sie ein benutzerdefiniertes Logo:
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-In dieser Schnellstartanleitung haben Sie erfahren, wie eine Kataloganwendung zu Ihrem Azure AD-Mandanten hinzugefügt wird. Sie haben gelernt, wie Sie die Eigenschaften für eine Anwendung bearbeiten.
+Sie haben die Anwendung zu Ihrer Azure AD-Organisation hinzugefügt. Wählen Sie nun die gewünschte [Methode für einmaliges Anmelden](what-is-single-sign-on.md#choosing-a-single-sign-on-method) aus, und sehen Sie sich die folgenden Artikel an:
 
-Nun können Sie die Anwendung für einmaliges Anmelden konfigurieren.
-
-> [!div class="nextstepaction"]
-> [Konfigurieren von einmaligem Anmelden](configure-single-sign-on-portal.md)
+- [Konfigurieren des SAML-basierten einmaligen Anmeldens](configure-single-sign-on-non-gallery-applications.md)
+- [Konfigurieren des einmaligen Anmeldens per Kennwort](configure-password-single-sign-on-non-gallery-applications.md)
+- [Konfigurieren der Anmeldung über Link](configure-linked-sign-on.md)

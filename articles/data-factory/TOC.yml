@@ -556,6 +556,8 @@
           href: how-to-create-schedule-trigger.md
         - name: Erstellen eines Triggers für ein rollierendes Fenster
           href: how-to-create-tumbling-window-trigger.md
+        - name: Erstellen einer Triggerabhängigkeit für ein rollierendes Fenster
+          href: tumbling-window-trigger-dependency.md
     - name: Vorlagen
       items:
         - name: Übersicht über Vorlagen

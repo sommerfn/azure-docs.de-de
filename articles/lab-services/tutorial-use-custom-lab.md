@@ -14,12 +14,12 @@ ms.topic: tutorial
 ms.custom: mvc
 ms.date: 01/18/2019
 ms.author: spelluru
-ms.openlocfilehash: b5abb8d4aad7c58bf673aa578255efe12d32ad4b
-ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
+ms.openlocfilehash: ee9a68df685095244fc9471b7d4ab0f6cee0642d
+ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54422897"
+ms.lasthandoff: 07/19/2019
+ms.locfileid: "68360261"
 ---
 # <a name="tutorial-access-a-lab-in-azure-devtest-labs"></a>Tutorial: Zugreifen auf ein Lab in Azure DevTest Labs
 In diesem Tutorial verwenden Sie das Lab, das in [Tutorial: Erstellen eines Labs mithilfe von Azure DevTest Labs](tutorial-create-custom-lab.md) erstellt wurde.
@@ -44,7 +44,7 @@ Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](htt
 
 ## <a name="claim-a-vm"></a>Beanspruchen eines virtuellen Computers
 
-1. Klicken Sie in der Liste **Abrufbare virtuelle Computer** auf die Schaltfläche mit den drei Auslassungspunkten (**...**), und wählen Sie **Computer beanspruchen** aus.
+1. Klicken Sie in der Liste **Abrufbare virtuelle Computer** auf die Schaltfläche mit den drei Auslassungspunkten ( **...** ), und wählen Sie **Computer beanspruchen** aus.
 
     ![Beanspruchen eines virtuellen Computers](./media/tutorial-use-custom-lab/claim-virtual-machine.png)
 1. Vergewissern Sie sich, dass der virtuelle Computer in der Liste **Meine virtuellen Computer** angezeigt wird.
@@ -58,8 +58,15 @@ Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](htt
     ![Herstellen der Verbindung mit dem virtuellen Computer](./media/tutorial-use-custom-lab/connect-button.png)
 2. Speichern Sie die heruntergeladene **RDP**-Datei auf Ihrer Festplatte, und verwenden Sie sie, um eine Verbindung mit dem virtuellen Computer herzustellen. Geben Sie den Benutzernamen und das Kennwort an, den bzw. das Sie beim Erstellen des virtuellen Computers im vorigen Abschnitt angegeben haben. 
 
-    > [!NOTE] 
-    > Für die VM muss SSH- bzw. RDP-Zugriff aktiviert sein, um eine Verbindung mit einer Linux-VM herzustellen. Schritte zum Herstellen einer Verbindung mit einer Linux-VM per RDP finden Sie unter [Installieren und Konfigurieren von Remotedesktop zum Herstellen einer Verbindung mit einem virtuellen Linux-Computer in Azure](../virtual-machines/linux/use-remote-desktop.md). 
+    Für die VM muss SSH- bzw. RDP-Zugriff aktiviert sein, um eine Verbindung mit einer Linux-VM herzustellen. Schritte zum Herstellen einer Verbindung mit einer Linux-VM per RDP finden Sie unter [Installieren und Konfigurieren von Remotedesktop zum Herstellen einer Verbindung mit einem virtuellen Linux-Computer in Azure](../virtual-machines/linux/use-remote-desktop.md). 
+
+    > [!NOTE]
+    > Es gibt andere Möglichkeiten, zur Seite „Virtueller Computer“ für Ihren virtuellen Computer zu gelangen. Hier einige Beispiele: 
+    > 
+    > 1. Suchen Sie nach allen VMs in Ihrem Abonnement. Wählen Sie Ihre VM in der Liste der virtuellen Computer aus, um zur Seite **Virtueller Computer** zu gelangen.
+    > 2. Navigieren Sie zur Seite **Ressourcengruppe** für die Ressourcengruppe. Wählen Sie dann Ihre VM aus der Liste der Ressourcen in der Ressourcengruppe aus, um zur Seite **Virtueller Computer** zu gelangen. 
+    >
+    > Verwenden Sie nicht die Schaltfläche **Verbinden** auf der Symbolleiste der Seite **Virtueller Computer**, zu der Sie mithilfe dieser Optionen gelangen. Navigieren Sie stattdessen von der Seite **DevTest Labs**, wie in diesem Artikel gezeigt, zur Seite **Virtueller Computer**, und verwenden Sie dann die Schaltfläche **Verbinden** auf der Symbolleiste.
 
 
 ## <a name="unclaim-the-vm"></a>Aufheben des Anspruchs auf den virtuellen Computer
@@ -79,5 +86,5 @@ Wenn Sie den virtuellen Computer nicht benötigen, führen Sie folgende Schritte
 In diesem Tutorial wurde gezeigt, wie Sie auf ein Lab zugreifen, das unter Verwendung von Azure DevTest Labs erstellt wurde, und wie Sie dieses Lab verwenden. Weitere Informationen zum Zugriff auf virtuelle Computer in einem Lab sowie zu deren Verwendung finden Sie hier: 
 
 > [!div class="nextstepaction"]
-> [Hinzufügen eines virtuellen Computers zu einem Lab in Azure DevTest Labs](devtest-lab-add-vm.md)
+> [Gewusst wie: eines virtuellen Computers zu einem Lab in Azure DevTest Labs](devtest-lab-add-vm.md)
 

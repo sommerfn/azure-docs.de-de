@@ -14,12 +14,12 @@ ms.topic: tutorial
 ms.custom: mvc
 ms.date: 06/11/2019
 ms.author: spelluru
-ms.openlocfilehash: 803fe6eff8804dbd407642386865fe975c8db524
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 0c50a321cbeb0d07a5039038ff796df00463ac8a
+ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67123266"
+ms.lasthandoff: 07/22/2019
+ms.locfileid: "68385667"
 ---
 # <a name="tutorial-set-up-a-classroom-lab"></a>Tutorial: Einrichten eines Classroom-Labs 
 In diesem Tutorial richten Sie ein Classroom-Lab mit virtuellen Computern ein, die von den Teilnehmern im Classroom verwendet werden.  
@@ -113,14 +113,14 @@ Ein Labbesitzer kann andere Benutzer zur Rolle **Ersteller des Labs** hinzufüge
 Mithilfe der folgenden Schritte können Sie Kontingente pro Benutzer festlegen: 
 
 1. Wählen Sie im linken Menü **Benutzer** aus, wenn die Seite noch nicht aktiv ist. 
-2. Wählen Sie auf der Symbolleiste **Quota per user:** (Kontingent pro Benutzer:) aus. 
-3. Geben Sie auf der Seite **Quota per user** die Anzahl der Stunden an, die Sie jedem Benutzer (Kursteilnehmer) zuteilen möchten: 
-    1. **0 hours (schedule only)** (0 Stunden [nur Zeitplan]). Benutzer können ihre VMs nur während der geplanten Zeit nutzen, oder wenn Sie als Lab-Besitzer die VMs für sie einschalten.
-
-        ![Null Stunden – nur geplante Zeit](../media/how-to-configure-student-usage/zero-hours.png)
+2. Wählen Sie **Kontingent pro Benutzer 10 Stunden** auf der Symbolleiste aus. 
+3. Geben Sie auf der Seite **Kontingent pro Benutzer** die Anzahl der Stunden an, die Sie jedem Benutzer (Kursteilnehmer) zuteilen möchten: 
     1. **Total number of lab hours per user** (Gesamtanzahl der Lab-Stunden pro Benutzer). Benutzer können ihre VMs **zusätzlich zur geplanten Zeit** für die festgelegte (in diesem Feld angegebene) Anzahl von Stunden nutzen. Wenn Sie diese Option auswählen, geben Sie die **Anzahl der Stunden** in das Textfeld ein. 
 
-        ![Anzahl von Stunden pro Benutzer](../media/how-to-configure-student-usage/number-of-hours-per-user.png)
+        ![Anzahl von Stunden pro Benutzer](../media/how-to-configure-student-usage/number-of-hours-per-user.png). 
+    1. **0 Stunden (nur Zeitplan)** . Benutzer können ihre VMs nur während der geplanten Zeit nutzen, oder wenn Sie als Lab-Besitzer die VMs für sie einschalten.
+
+        ![Null Stunden – nur geplante Zeit](../media/how-to-configure-student-usage/zero-hours.png)
     4. Wählen Sie **Speichern** aus. 
 5. Jetzt sehen Sie auf der Symbolleiste die geänderten Werte: **Kontingent pro Benutzer: &lt;Anzahl Stunden&gt;** . 
 
