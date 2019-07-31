@@ -231,7 +231,9 @@
           href: cognitive-search-resources-documentation.md
     - name: Wissensspeicher (Vorschau)
       items:
-        - name: Erste Schritte
+        - name: Herstellen einer Verbindung mithilfe von Power BI
+          href: knowledge-store-connect-powerbi.md
+        - name: Erstellen mithilfe von REST und Postman
           href: knowledge-store-howto.md
     - name: Abfragen von Daten
       items:

@@ -75,8 +75,6 @@
       href: security-center-provide-security-contact-details.md
     - name: Tarif
       href: security-center-pricing.md
-    - name: Sicherheitskonfigurationen
-      href: security-center-customize-os-security-config.md
     - name: Mandantenweite Sichtbarkeit
       href: security-center-management-groups.md
     - name: Implementieren von Sicherheitsempfehlungen
@@ -183,6 +181,8 @@
           href: security-center-alerts-type.md
         - name: UEBA für Azure-Ressourcen und -Benutzer
           href: security-center-ueba-mcas.md
+        - name: Anpassen von Sicherheitskonfigurationen
+          href: security-center-customize-os-security-config.md
 - name: Verweis
   items:
     - name: REST-APIs
