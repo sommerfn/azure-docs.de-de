@@ -213,7 +213,7 @@ Beim Kopieren von Daten aus Amazon Redshift werden die folgenden Zuordnungen von
 | BOOLEAN |String |
 | CHAR |String |
 | DATE |DateTime |
-| DECIMAL |DECIMAL |
+| DECIMAL |Decimal |
 | DOUBLE PRECISION |Double |
 | INTEGER |Int32 |
 | REAL |Single |
