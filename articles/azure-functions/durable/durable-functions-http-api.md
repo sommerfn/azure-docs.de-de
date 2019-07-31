@@ -8,14 +8,14 @@ keywords: ''
 ms.service: azure-functions
 ms.devlang: multiple
 ms.topic: conceptual
-ms.date: 03/14/2019
+ms.date: 07/08/2019
 ms.author: azfuncdf
-ms.openlocfilehash: 2f0b01601dfb28b2b6b8ee8ca53398ec3dccb803
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 7aef7eb2e3d88bef7d2700d9945b9ff343c17536
+ms.sourcegitcommit: af31deded9b5836057e29b688b994b6c2890aa79
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65787285"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67812815"
 ---
 # <a name="http-apis-in-durable-functions-azure-functions"></a>HTTP-APIs in Durable Functions (Azure Functions)
 
@@ -45,12 +45,13 @@ Die [DurableOrchestrationClient](https://azure.github.io/azure-functions-durable
 Diese Beispielfunktionen erzeugen die folgenden JSON-Antwortdaten. Der Datentyp aller Felder lautet `string`.
 
 | Feld                   |BESCHREIBUNG                           |
-|-------------------------|--------------------------------------|
-| **`id`**                |ID der Orchestrierungsinstanz |
-| **`statusQueryGetUri`** |Status-URL der Orchestrierungsinstanz |
-| **`sendEventPostUri`**  |URL der Orchestrierungsinstanz für die „Ereignisauslösung“ |
-| **`terminatePostUri`**  |URL der Orchestrierungsinstanz für die „Beendigung“ |
-| **`rewindPostUri`**     |URL der Orchestrierungsinstanz für den „Rücklauf“ |
+|-----------------------------|--------------------------------------|
+| **`id`**                    |ID der Orchestrierungsinstanz |
+| **`statusQueryGetUri`**     |Status-URL der Orchestrierungsinstanz |
+| **`sendEventPostUri`**      |URL der Orchestrierungsinstanz für die „Ereignisauslösung“ |
+| **`terminatePostUri`**      |URL der Orchestrierungsinstanz für die „Beendigung“ |
+| **`purgeHistoryDeleteUri`** |URL der Orchestrierungsinstanz für den „Bereinigungsverlauf“ |
+| **`rewindPostUri`**         |(Vorschauversion) URL der Orchestrierungsinstanz für den „Rücklauf“ |
 
 Hier eine Beispielantwort:
 
@@ -65,6 +66,7 @@ Location: https://{host}/runtime/webhooks/durabletask/instances/34ce9a28a6834d84
     "statusQueryGetUri":"https://{host}/runtime/webhooks/durabletask/instances/34ce9a28a6834d8492ce6a295f1a80e2?taskHub=DurableFunctionsHub&connection=Storage&code=XXX",
     "sendEventPostUri":"https://{host}/runtime/webhooks/durabletask/instances/34ce9a28a6834d8492ce6a295f1a80e2/raiseEvent/{eventName}?taskHub=DurableFunctionsHub&connection=Storage&code=XXX",
     "terminatePostUri":"https://{host}/runtime/webhooks/durabletask/instances/34ce9a28a6834d8492ce6a295f1a80e2/terminate?reason={text}&taskHub=DurableFunctionsHub&connection=Storage&code=XXX",
+    "purgeHistoryDeleteUri":"https://{host}/runtime/webhooks/durabletask/instances/34ce9a28a6834d8492ce6a295f1a80e2?taskHub=DurableFunctionsHub&connection=Storage&code=XXX"
     "rewindPostUri":"https://{host}/runtime/webhooks/durabletask/instances/34ce9a28a6834d8492ce6a295f1a80e2/rewind?reason={text}&taskHub=DurableFunctionsHub&connection=Storage&code=XXX"
 }
 ```
@@ -547,11 +549,11 @@ POST /admin/extensions/DurableTaskExtension/instances/bcf6fb5067b046fbb021b52ba7
 
 Die Antworten für diese API enthalten keinen Inhalt.
 
-## <a name="rewind-instance-preview"></a>Rewind-Instanz (Vorschau)
+### <a name="rewind-instance-preview"></a>Rewind-Instanz (Vorschau)
 
 Stellt eine fehlerhafte Orchestrierungsinstanz in den Zustand „Wird ausgeführt“ zurück, indem die letzten fehlerhaften Vorgänge erneut durchgeführt werden.
 
-### <a name="request"></a>Anforderung
+#### <a name="request"></a>Anforderung
 
 Für Version 1.x der Azure Functions-Runtime ist die Anforderung wie folgt formatiert (der besseren Übersichtlichkeit halber werden mehrere Zeilen angezeigt):
 
@@ -580,7 +582,7 @@ Anforderungsparameter für diese API enthalten den bereits erwähnten Standardsa
 | **`instanceId`**  | URL             | ID der Orchestrierungsinstanz |
 | **`reason`**      | Abfragezeichenfolge    | Optional. Gibt den Grund für das Zurückspulen der Orchestrierungsinstanz an. |
 
-### <a name="response"></a>response
+#### <a name="response"></a>response
 
 Es können mehrere mögliche Statuscodewerte zurückgegeben werden.
 
@@ -595,6 +597,89 @@ POST /admin/extensions/DurableTaskExtension/instances/bcf6fb5067b046fbb021b52ba7
 ```
 
 Die Antworten für diese API enthalten keinen Inhalt.
+
+### <a name="signal-entity-preview"></a>Signalentität (Vorschauversion)
+
+Sendet eine unidirektionale Vorgangsmeldung an eine [dauerhafte Entität](durable-functions-types-features-overview.md#entity-functions). Wenn die Entität nicht vorhanden ist, wird sie automatisch erstellt.
+
+#### <a name="request"></a>Anforderung
+
+Die HTTP-Anforderung wird wie folgt formatiert (aus Gründen der Übersichtlichkeit werden mehrere Zeilen angezeigt):
+
+```http
+POST /runtime/webhooks/durabletask/entities/{entityType}/{entityKey}
+    ?taskHub={taskHub}
+    &connection={connectionName}
+    &code={systemKey}
+    &op={operationName}
+```
+
+Anforderungsparameter für diese API enthalten den bereits erwähnten Standardsatz sowie die folgenden eindeutigen Parameter:
+
+| Feld             | Parametertyp  | BESCHREIBUNG |
+|-------------------|-----------------|-------------|
+| **`entityType`**  | URL             | Der Typ der Entität |
+| **`entityKey`**   | URL             | Der eindeutige Name der Entität |
+| **`op`**          | Abfragezeichenfolge    | Optional. Der Name des aufzurufenden benutzerdefinierten Vorgangs |
+| **`{content}`**   | Inhalt anfordern | Ereignisnutzlast in JSON-Formatierung |
+
+Nachfolgend sehen Sie eine Beispielanforderung, die eine benutzerdefinierte Meldung vom Typ „Add“ (Hinzufügen) an eine `Counter`-Entität namens `steps` sendet. Der Inhalt der Meldung ist der Wert `5`. Wenn die Entität nicht bereits vorhanden ist, wird sie von dieser Anforderung erstellt:
+
+```http
+POST /runtime/webhooks/durabletask/entities/Counter/steps?op=Add
+Content-Type: application/json
+
+5
+```
+
+#### <a name="response"></a>response
+
+Für diesen Vorgang sind mehrere Antworten möglich:
+
+* **HTTP 202 (Akzeptiert)** : Der Signalvorgang wurde für die asynchrone Verarbeitung akzeptiert.
+* **HTTP 400 (Ungültige Anforderung)** : Der Anforderungsinhalt war nicht vom Typ `application/json`, war kein gültiger JSON-Code oder enthielt einen ungültigen Wert für `entityKey`.
+* **HTTP 404 (Nicht gefunden)** : Das angegebene `entityType`-Element wurde nicht gefunden.
+
+Bei einer erfolgreichen HTTP-Anforderung enthält die Antwort keinen Inhalt. Eine fehlgeschlagene HTTP-Anforderung kann im Antwortinhalt JSON-formatierte Fehlerinformationen enthalten.
+
+### <a name="query-entity-preview"></a>Abfrageentität (Vorschauversion)
+
+Ruft den Zustand der angegebenen Entität ab.
+
+#### <a name="request"></a>Anforderung
+
+Die HTTP-Anforderung wird wie folgt formatiert (aus Gründen der Übersichtlichkeit werden mehrere Zeilen angezeigt):
+
+```http
+GET /runtime/webhooks/durabletask/entities/{entityType}/{entityKey}
+    ?taskHub={taskHub}
+    &connection={connectionName}
+    &code={systemKey}
+```
+
+#### <a name="response"></a>response
+
+Für diesen Vorgang sind zwei Antworten möglich:
+
+* **HTTP 200 (OK)** : Die angegebene Entität ist vorhanden.
+* **HTTP 404 (Nicht gefunden)** : Die angegebene Entität wurde nicht gefunden.
+
+Eine erfolgreiche Antwort enthält den JSON-serialisierten Zustand der Entität als Inhalt.
+
+#### <a name="example"></a>Beispiel
+Nachfolgend sehen Sie ein Beispiel für eine HTTP-Anforderung, mit der der Zustand einer vorhandenen `Counter`-Entität namens `steps` abgerufen wird:
+
+```http
+GET /runtime/webhooks/durabletask/entities/Counter/steps
+```
+
+Wenn die Entität `Counter` einfach eine Reihe von Schritten enthält, die im Feld `currentValue` gespeichert wurden, kann der Antwortinhalt wie folgt aussehen (zur besseren Lesbarkeit formatiert):
+
+```json
+{
+    "currentValue": 5
+}
+```
 
 ## <a name="next-steps"></a>Nächste Schritte
 

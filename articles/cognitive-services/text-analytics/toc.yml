@@ -7,6 +7,8 @@
       href: overview.md
     - name: Beispielbenutzerszenarien
       href: text-analytics-user-scenarios.md
+    - name: Neuigkeiten
+      href: whats-new.md
 - name: Schnellstarts
   expanded: true
   items:

@@ -10,10 +10,10 @@ ms.date: 06/12/2019
 ms.author: danlep
 ms.custom: seodec18, mvc
 ms.openlocfilehash: 496aa065b3b10eac546dbe41f5a2650acc112d29
-ms.sourcegitcommit: f5075cffb60128360a9e2e0a538a29652b409af9
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/18/2019
+ms.lasthandoff: 07/26/2019
 ms.locfileid: "68310517"
 ---
 # <a name="tutorial-automate-container-image-builds-when-a-base-image-is-updated-in-an-azure-container-registry"></a>Tutorial: Automatisieren von Buildvorgängen für Containerimages nach der Aktualisierung eines Basisimages in einer Azure-Containerregistrierung 
@@ -62,7 +62,7 @@ GIT_PAT=<personal-access-token> # The PAT you generated in the second tutorial
 
 ## <a name="base-images"></a>Basisimages
 
-Die meisten Containerimages werden mithilfe von Dockerfiles definiert. Dockerfiles geben als Basis ein übergeordnetes Image an, das häufig als *Basisimage* bezeichnet wird. Basisimages enthalten in der Regel das Betriebssystem, beispielsweise [Alpine Linux][base-alpine] or [Windows Nano Server][base-windows], auf das die restlichen Ebenen des Containers angewandt werden. Sie können auch Anwendungsframeworks wie [Node.js][base-node] oder [.NET Core][base-dotnet] enthalten.
+Die meisten Containerimages werden mithilfe von Dockerfiles definiert. Dockerfiles geben als Basis ein übergeordnetes Image an, das häufig als *Basisimage* bezeichnet wird. Basisimages enthalten in der Regel das Betriebssystem (also beispielsweise [Alpine Linux][base-alpine] oder [Windows Nano Server][base-windows]), auf das die restlichen Ebenen des Containers angewendet werden. Sie können auch Anwendungsframeworks wie [Node.js][base-node] oder [.NET Core][base-dotnet] enthalten.
 
 ### <a name="base-image-updates"></a>Basisimageaktualisierungen
 

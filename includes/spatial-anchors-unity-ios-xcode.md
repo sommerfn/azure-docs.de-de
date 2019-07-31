@@ -4,12 +4,12 @@ ms.service: azure-spatial-anchors
 ms.topic: include
 ms.date: 1/29/2019
 ms.author: rgarcia
-ms.openlocfilehash: e8daaaf5b6b15eb3095f11e94c707a33b4b18e28
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.openlocfilehash: d8b6b1bfcbceb1168d0f74c73e72bd42b41bb2ec
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67177778"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68562478"
 ---
 Wählen Sie **Build** aus. Wählen Sie im dann geöffneten Dialogfeld einen Ordner aus, in den das Xcode-Projekt exportiert wird.
 
@@ -18,7 +18,7 @@ Nach Abschluss des Exports wird ein Ordner angezeigt, der das exportierte Xcode-
 > [!NOTE]
 > Wenn ein Fenster mit der Auswahl zwischen „Ersetzen“ und „Anfügen“ angezeigt wird, empfiehlt es sich, **Anfügen** auszuwählen, da dies schneller ist. Die Auswahl von **Ersetzen** sollte nur erforderlich sein, wenn Sie Ressourcen in Ihrer Szene ändern (wenn Sie beispielsweise Beziehungen zwischen übergeordneten und untergeordneten Elementen hinzufügen, entfernen oder ändern oder wenn Sie Eigenschaften hinzufügen, entfernen oder ändern). Wenn Sie lediglich Änderungen am Quellcode vornehmen, sollte **Anfügen** ausreichend sein.
 
-### <a name="open-the-xcode-project"></a>Öffnen des Xcode-Projekts
+### <a name="convert-the-xcode-project-to-xcworkspace-containing-azure-spatial-anchors-references"></a>Konvertieren des Xcode-Projekts in xcworkspace, das Azure Spatial Anchors-Verweise enthält
 
 Führen Sie im Ordner des exportierten Xcode-Projekts den folgenden Befehl im Terminal aus, um die erforderlichen CocoaPods für das Projekt zu installieren:
 

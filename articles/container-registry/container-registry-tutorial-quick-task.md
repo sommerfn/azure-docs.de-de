@@ -10,10 +10,10 @@ ms.date: 09/24/2018
 ms.author: danlep
 ms.custom: seodec18, mvc
 ms.openlocfilehash: a9e84210427612143bffe33efe4a5da5364b7a22
-ms.sourcegitcommit: f5075cffb60128360a9e2e0a538a29652b409af9
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/18/2019
+ms.lasthandoff: 07/26/2019
 ms.locfileid: "68310440"
 ---
 # <a name="tutorial-build-and-deploy-container-images-in-the-cloud-with-azure-container-registry-tasks"></a>Tutorial: Erstellen und Bereitstellen von Containerimages in der Cloud mit Azure Container Registry Tasks
@@ -192,7 +192,7 @@ az keyvault create --resource-group $RES_GROUP --name $AKV_NAME
 
 Sie müssen nun einen Dienstprinzipal erstellen und seine Anmeldeinformationen in Ihrem Schlüsselspeicher speichern.
 
-Verwenden Sie [az ad sp create-for-rbac][az-ad-sp-create-for-rbac] command to create the service principal, and [az keyvault secret set][az-keyvault-secret-set], um das **Kennwort** des Dienstprinzipals im Tresor zu speichern:
+Erstellen Sie mithilfe des Befehls [az ad sp create-for-rbac][az-ad-sp-create-for-rbac] den Dienstprinzipal, und speichern Sie das Kennwort (**password**) des Dienstprinzipals mithilfe des Befehls [az keyvault secret set][az-keyvault-secret-set] im Tresor:
 
 ```azurecli-interactive
 # Create service principal, store its password in AKV (the registry *password*)

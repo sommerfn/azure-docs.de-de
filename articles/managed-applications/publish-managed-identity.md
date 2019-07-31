@@ -336,7 +336,7 @@ Anforderungstextparameter:
 
 Parameter | Erforderlich | BESCHREIBUNG
 ---|---|---
-authorizationAudience | *Nein* | Der App-ID-URI der Zielressource. Dieser ist auch der `aud`-Anspruch (Zielgruppe) des ausgestellten Tokens. Der Standardwert ist https://management.azure.com/.
+authorizationAudience | *Nein* | Der App-ID-URI der Zielressource. Dieser ist auch der `aud`-Anspruch (Zielgruppe) des ausgestellten Tokens. Der Standardwert ist „https://management.azure.com/“.
 userAssignedIdentities | *Nein* | Die Liste der vom Benutzer zugewiesenen verwalteten Identitäten, für die ein Token abgerufen werden kann. Falls nicht angegeben, gibt `listTokens` das Token für die vom System zugewiesene verwaltete Identität zurück.
 
 

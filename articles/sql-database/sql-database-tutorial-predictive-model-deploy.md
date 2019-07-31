@@ -12,31 +12,31 @@ author: garyericson
 ms.author: garye
 ms.reviewer: davidph
 manager: cgronlun
-ms.date: 05/02/2019
-ms.openlocfilehash: 17b68f71f4034e5eb637d40b975cc22d94438fb7
-ms.sourcegitcommit: 59fd8dc19fab17e846db5b9e262a25e1530e96f3
+ms.date: 07/26/2019
+ms.openlocfilehash: 9fa816b2a8e736f03c99b66b898f48bd2a483b31
+ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/21/2019
-ms.locfileid: "65978708"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68596772"
 ---
 # <a name="tutorial-deploy-a-predictive-model-in-r-with-azure-sql-database-machine-learning-services-preview"></a>Tutorial: Bereitstellen eines Vorhersagemodells in R mit Machine Learning Services (Vorschauversion) für Azure SQL-Datenbank
 
-In Teil drei dieses dreiteiligen Tutorials stellen Sie mithilfe der Machine Learning Services (Vorschau) von Azure SQL-Datenbank ein Vorhersagemodell in R bereit.
+In Teil 3 dieses dreiteiligen Tutorials stellen Sie mithilfe von Machine Learning Services für Azure SQL-Datenbank (Vorschauversion) ein in R entwickeltes Vorhersagemodell in einer SQL-Datenbank bereit.
 
 Sie erstellen eine gespeicherte Prozedur mit einem eingebetteten R-Skript, das mithilfe des Modells Vorhersagen macht. Da Ihr Modell in der Azure SQL-Datenbank ausgeführt wird, kann es auf einfache Weise anhand von Daten trainiert werden, die in der Datenbank gespeichert sind.
 
-In diesem Artikel lernen Sie Folgendes:
+In diesem Artikel erfahren Sie, wie Sie die folgenden Schritte mithilfe der in Teil 1 und 2 entwickelten R-Skripts ausführen:
 
 > [!div class="checklist"]
-> * Speichern des Vorhersagemodells in einer Datenbanktabelle
-> * Erstellen einer gespeicherten Prozedur, die das Modell generiert
+> * Erstellen einer gespeicherten Prozedur, die das Machine Learning-Modell generiert
+> * Speichern des Modells in einer Datenbanktabelle
 > * Erstellen einer gespeicherten Prozedur, die mithilfe des Modells Vorhersagen trifft
 > * Ausführen des Modells mit neuen Daten
 
-In [Teil eins](sql-database-tutorial-predictive-model-prepare-data.md) haben Sie gelernt, eine Beispieldatenbank in Azure SQL-Datenbank zu importieren und anschließend die Daten vorzubereiten, die zum Trainieren eines Vorhersagemodells in R verwendet werden sollen.
+In [Teil 1](sql-database-tutorial-predictive-model-prepare-data.md) haben Sie gelernt, wie Sie eine Beispieldatenbank importieren und anschließend die Daten vorbereiten, die zum Trainieren eines Vorhersagemodells in R verwendet werden sollen.
 
-In [Teil zwei](sql-database-tutorial-predictive-model-build-compare.md) haben Sie erfahren, wie Sie mehrere Modelle erstellen und trainieren und dann das genaueste auswählen.
+In [Teil 2](sql-database-tutorial-predictive-model-build-compare.md) haben Sie erfahren, wie Sie mehrere Machine Learning-Modelle in R erstellen und trainieren und dann das genaueste auswählen.
 
 [!INCLUDE[ml-preview-note](../../includes/sql-database-ml-preview-note.md)]
 
@@ -46,7 +46,7 @@ In [Teil zwei](sql-database-tutorial-predictive-model-build-compare.md) haben Si
 
 ## <a name="create-a-stored-procedure-that-generates-the-model"></a>Erstellen einer gespeicherten Prozedur, die das Modell generiert
 
-In Teil zwei dieser Tutorialreihe haben Sie entschieden, dass ein Entscheidungsstrukturmodell (dtree) die genauesten Ergebnisse liefert. Erstellen Sie jetzt eine gespeicherte Prozedur (`generate_rental_rx_model`), die das dtree-Modell mithilfe von rxDTree aus dem RevoScaleR-Paket trainiert und generiert.
+In Teil zwei dieser Tutorialreihe haben Sie entschieden, dass ein Entscheidungsstrukturmodell (dtree) die genauesten Ergebnisse liefert. Erstellen Sie jetzt mithilfe der entwickelten R-Skripts eine gespeicherte Prozedur (`generate_rental_rx_model`), die das dtree-Modell mithilfe von rxDTree aus dem RevoScaleR-Paket trainiert und generiert.
 
 Führen Sie in Azure Data Studio oder SSMS die folgenden Befehle aus.
 
@@ -214,8 +214,8 @@ Führen Sie im Azure-Portal die folgenden Schritte aus:
 
 Im dritten Teil dieser Tutorialreihe haben Sie die folgenden Schritte ausgeführt:
 
-* Speichern des Vorhersagemodells in einer Datenbanktabelle
-* Erstellen einer gespeicherten Prozedur, die das Modell generiert
+* Erstellen einer gespeicherten Prozedur, die das Machine Learning-Modell generiert
+* Speichern des Modells in einer Datenbanktabelle
 * Erstellen einer gespeicherten Prozedur, die mithilfe des Modells Vorhersagen trifft
 * Ausführen des Modells mit neuen Daten
 

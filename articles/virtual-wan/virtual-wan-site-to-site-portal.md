@@ -5,15 +5,15 @@ services: virtual-wan
 author: cherylmc
 ms.service: virtual-wan
 ms.topic: tutorial
-ms.date: 04/23/2019
+ms.date: 07/25/2019
 ms.author: cherylmc
 Customer intent: As someone with a networking background, I want to connect my local site to my VNets using Virtual WAN and I don't want to go through a Virtual WAN partner.
-ms.openlocfilehash: e8e251aa5031a8eadd2d567bff2830449c7decc3
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: e9be7ef5c4f37c66f7cbf2c6226936438b367108
+ms.sourcegitcommit: f5cc71cbb9969c681a991aa4a39f1120571a6c2e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64689505"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68515165"
 ---
 # <a name="tutorial-create-a-site-to-site-connection-using-azure-virtual-wan"></a>Tutorial: Erstellen einer Site-to-Site-Verbindung per Azure Virtual WAN
 
@@ -63,7 +63,12 @@ Erstellen Sie beliebig viele Sites, die Ihren physischen Standorten entsprechen.
    * **Abonnement**: Überprüfen Sie das Abonnement.
    * **Ressourcengruppe**: Die Ressourcengruppe, die Sie verwenden möchten.
    * **Location**
-4. Klicken Sie auf **Show advanced** (Erweiterte anzeigen), um die zusätzlichen Einstellungen anzuzeigen. Sie können **BGP** wählen, um BGP zu aktivieren, wodurch BGP-Funktionen für alle Verbindungen aktiviert werden, die für diese Site in Azure erstellt werden. Sie können auch unter **Geräteinformationen** (optionale Felder) eingeben. Diese Vorgehensweise kann dem Azure-Team helfen, Ihre Umgebung besser zu verstehen, um in Zukunft weitere Optimierungsmöglichkeiten hinzuzufügen oder Sie bei der Problembehandlung zu unterstützen.
+4. Klicken Sie auf **Show advanced** (Erweiterte anzeigen), um die zusätzlichen Einstellungen anzuzeigen. 
+
+   Sie können **BGP** wählen, um BGP zu aktivieren, wodurch BGP-Funktionen für alle Verbindungen aktiviert werden, die für diese Site in Azure erstellt werden. Die Vorgehensweise zum Konfigurieren von BGP für eine Virtual WAN-Instanz ist dieselbe wie beim Konfigurieren von BGP für ein Azure-VPN-Gateway. Ihre lokale BGP-Peeradresse darf *NICHT* der öffentlichen IP-Adresse Ihres VPN-Geräts oder dem VNET-Adressraum des VPN-Standorts entsprechen. Verwenden Sie als BGP-Peer-IP-Adresse eine andere IP-Adresse für das VPN-Gerät. Dabei kann es sich um eine Adresse handeln, die der Loopback-Schnittstelle des Geräts zugewiesen ist. Es darf jedoch *keine* APIPA-Adresse (169.254.*x*.*x*) sein. Geben Sie diese Adresse im entsprechenden lokalen Netzwerkgateway an, das den Standort darstellt. Informationen zu den Voraussetzungen für BGP finden Sie unter [Übersicht über BGP mit Azure VPN Gateway](../vpn-gateway/vpn-gateway-bgp-overview.md).
+
+   Sie können auch unter **Geräteinformationen** (optionale Felder) eingeben. Diese Vorgehensweise kann dem Azure-Team helfen, Ihre Umgebung besser zu verstehen, um in Zukunft weitere Optimierungsmöglichkeiten hinzuzufügen oder Sie bei der Problembehandlung zu unterstützen.
+   
 5. Klicken Sie auf **Confirm** (Bestätigen).
 6. Nach dem Klicken auf **Confirm** (Bestätigen) können Sie den Status auf der Seite „VPN sites“ (VPN-Standorte) anzeigen. Für den Standort ändert sich der Status von **Wird bereitgestellt** in **Bereitgestellt**.
 
