@@ -61,7 +61,7 @@
           href: custom-error.md
     - name: SSL
       items:
-        - name: SSL-Beendigung und End-to-End-SSL
+        - name: SSL-Terminierung und End-to-End-SSL
           href: ssl-overview.md
         - name: Übersicht über SSL-Richtlinien
           href: application-gateway-ssl-policy-overview.md

@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 05/24/2019
 ms.author: lagayhar
-ms.openlocfilehash: 189b201f9cbdeb728e334f2ff5da3ebd32839e37
-ms.sourcegitcommit: a8b638322d494739f7463db4f0ea465496c689c6
+ms.openlocfilehash: c56b979bf5a4f1e0868dd0542cb71c2da6a85df7
+ms.sourcegitcommit: 5604661655840c428045eb837fb8704dca811da0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/17/2019
-ms.locfileid: "68298178"
+ms.lasthandoff: 07/25/2019
+ms.locfileid: "68494470"
 ---
 # <a name="get-started-with-application-insights-in-a-java-web-project-250-beta"></a>Erste Schritte mit Application Insights in einem Java-Webprojekt (2.5.0-BETA)
 
@@ -143,8 +143,6 @@ Sie können dies auch [per Code festlegen](../../azure-monitor/app/api-custom-ev
         TelemetryConfiguration.getActive().setInstrumentationKey(instrumentationKey);
     }
 ```
-
-Beachten Sie, dass [Livemetriken](https://docs.microsoft.com/azure/azure-monitor/app/live-stream) das Lesen des Instrumentierungsschlüssels aus dem Code nicht unterstützen.
 
 ## <a name="4-add-agent"></a>4. Hinzufügen des Agent
 

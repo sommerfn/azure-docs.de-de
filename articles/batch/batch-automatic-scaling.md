@@ -15,12 +15,12 @@ ms.workload: multiple
 ms.date: 06/20/2017
 ms.author: lahugh
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: fdc2cd8f2218d50aa49d6b4eab2800eb6c92d9c9
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 0b3a4401318544928f8e6d63c3460808467ecc1d
+ms.sourcegitcommit: a8b638322d494739f7463db4f0ea465496c689c6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "62118110"
+ms.lasthandoff: 07/17/2019
+ms.locfileid: "68296760"
 ---
 # <a name="create-an-automatic-scaling-formula-for-scaling-compute-nodes-in-a-batch-pool"></a>Erstellen einer Formel für die automatische Skalierung von Computeknoten in einem Batch-Pool
 
@@ -40,7 +40,7 @@ In diesem Artikel werden die verschiedenen Entitäten erläutert, aus denen sich
 >
 
 ## <a name="automatic-scaling-formulas"></a>Formeln für die automatische Skalierung
-Eine Formel für die automatische Skalierung ist ein von Ihnen definierter Zeichenfolgenwert, der mindestens eine Anweisung enthält. Die Formel für die automatische Skalierung wird dem Element [autoScaleFormula][rest_autoscaleformula] (Batch REST) oder der Eigenschaft [CloudPool.AutoScaleFormula][net_cloudpool_autoscaleformula] (Batch .NET) eines Pools zugewiesen. Der Batch-Dienst verwendet Ihre Formel, um für das nächste Verarbeitungsintervall die Zielanzahl der Computeknoten im Pool zu ermitteln. Die Formelzeichenfolge darf 8 KB nicht überschreiten und kann bis zu 100 durch Semikolons getrennte Anweisungen sowie Zeilenumbrüche und Kommentare enthalten.
+Eine Formel für die automatische Skalierung ist ein von Ihnen definierter Zeichenfolgenwert, der mindestens eine Anweisung enthält. Die Formel für die automatische Skalierung wird dem Element [autoScaleFormula][rest_autoscaleformula] (Batch REST) oder der Eigenschaft CloudPool.AutoScaleFormulaelement (Batch REST) or [CloudPool.AutoScaleFormula][net_cloudpool_autoscaleformula] (Batch .NET) eines Pools zugewiesen. Der Batch-Dienst verwendet Ihre Formel, um für das nächste Verarbeitungsintervall die Zielanzahl der Computeknoten im Pool zu ermitteln. Die Formelzeichenfolge darf 8 KB nicht überschreiten und kann bis zu 100 durch Semikolons getrennte Anweisungen sowie Zeilenumbrüche und Kommentare enthalten.
 
 Sie können sich Formeln für die automatische Skalierung als eine „Batch-Sprache“ für die automatische Skalierung vorstellen. Formelanweisungen sind frei definierte Ausdrücke, die sowohl dienstdefinierte Variablen (vom Batch-Dienst definiert) als auch benutzerdefinierte Variablen (von Ihnen selbst definiert) enthalten können. Mithilfe von mitgelieferten Typen, Operatoren und Funktionen können sie für diese Werte eine Vielzahl von Operationen ausführen. Eine Anweisung kann beispielsweise wie folgt aussehen:
 
@@ -59,10 +59,11 @@ Fügen Sie diese Anweisungen zu Ihrer Formel für die automatische Skalierung hi
 
 Die Zielanzahl der Knoten ist möglicherweise höher oder niedriger als die aktuelle Anzahl der Knoten dieses Typs im Pool, oder sie ist mit der Anzahl identisch. Batch wertet die Formel für die automatische Skalierung des Pools in einem bestimmten Intervall aus (siehe [Intervalle für die automatische Skalierung](#automatic-scaling-interval)). Batch passt die Zielanzahl von den einzelnen Knotentypen im Pool an die Anzahl an, die durch die Formel für die automatische Skalierung zum Zeitpunkt der Auswertung angegeben wird.
 
-### <a name="sample-autoscale-formula"></a>Beispielformel für die automatische Skalierung
+### <a name="sample-autoscale-formulas"></a>Beispielformeln für die automatische Skalierung
 
-Hier sehen Sie ein Beispiel für eine Formel für die automatische Skalierung, die für die meisten Szenarien angepasst werden kann. Die Variablen `startingNumberOfVMs` und `maxNumberofVMs` in der Beispielformel können an Ihre Anforderungen angepasst werden. Diese Formel skaliert dedizierte Knoten. Sie kann jedoch so geändert werden, dass sie auch Knoten mit niedriger Priorität skaliert. 
+Im Folgenden sehen Sie Beispiele für zwei Formeln für die automatische Skalierung, die für die meisten Szenarien angepasst werden können. Die Variablen `startingNumberOfVMs` und `maxNumberofVMs` in den Beispielformeln können Ihren Anforderungen angepasst werden.
 
+#### <a name="pending-tasks"></a>Ausstehende Aufgaben
 ```
 startingNumberOfVMs = 1;
 maxNumberofVMs = 25;
@@ -72,6 +73,17 @@ $TargetDedicatedNodes=min(maxNumberofVMs, pendingTaskSamples);
 ```
 
 Mit dieser Formel für die automatische Skalierung wird der Pool zunächst mit einem einzigen virtuellen Computer erstellt. Die Metrik `$PendingTasks` definiert die Anzahl der Aufgaben, die ausgeführt werden oder sich in einer Warteschlange befinden. Die Formel sucht nach der durchschnittlichen Anzahl ausstehender Aufgaben in den letzten 180 Sekunden und legt die Variable `$TargetDedicatedNodes` entsprechend fest. Die Formel stellt sicher, dass die Zielanzahl der dedizierten Knoten niemals 25 virtuelle Computer überschreitet. Wenn neue Aufgaben gesendet werden, wächst der Pool automatisch an. Werden Aufgaben abgeschlossen, werden VMs nacheinander frei, und der Pool wird durch die Formel für die automatische Skalierung verkleinert.
+
+Diese Formel skaliert dedizierte Knoten. Sie kann jedoch so geändert werden, dass sie auch Knoten mit niedriger Priorität skaliert.
+
+#### <a name="preempted-nodes"></a>Vorzeitig entfernte Knoten 
+```
+maxNumberofVMs = 25;
+$TargetDedicatedNodes = min(maxNumberofVMs, $PreemptedNodeCount.GetSample(180 * TimeInterval_Second));
+$TargetLowPriorityNodes = min(maxNumberofVMs , maxNumberofVMs - $TargetDedicatedNodes);
+```
+
+In diesem Beispiel wird ein Pool erstellt, der mit 25 Knoten mit niedriger Priorität beginnt. Jedes Mal, wenn ein Knoten mit niedriger Priorität vorzeitig entfernt wird, wird er durch einen dedizierten Knoten ersetzt. Wie im ersten Beispiel verhindert die `maxNumberofVMs`-Variable, dass der Pool 25 VMs überschreitet. Dieses Beispiel eignet sich für die Nutzung von VMs mit niedriger Priorität, während gleichzeitig sichergestellt wird, dass für die Lebensdauer des Pools nur eine festgelegte Anzahl vorzeitiger Entfernungen auftritt.
 
 ## <a name="variables"></a>Variables
 Sie können in Ihrer Formel für die automatische Skalierung sowohl **dienstdefinierte** als auch **benutzerdefinierte** Variablen verwenden. Vom Dienst definierte Variablen sind in den Batch-Dienst integriert. Einige der vom Dienst definierten Variablen verfügen über Lese-/Schreibzugriff, und einige sind schreibgeschützt. Benutzerdefinierte Variablen sind Variablen, die Sie definieren. In der im vorherigen Abschnitt gezeigten Beispielformel sind `$TargetDedicatedNodes` und `$PendingTasks` vom Dienst definierte Variablen. Die Variablen `startingNumberOfVMs` und `maxNumberofVMs` sind benutzerdefinierte Variablen.
@@ -401,7 +413,7 @@ Das kürzeste Intervall ist fünf Minuten, das längste 168 Stunden. Wenn ein In
 Jedes Batch SDK bietet eine Möglichkeit für die Aktivierung der automatischen Skalierung. Beispiel:
 
 * [BatchClient.PoolOperations.EnableAutoScaleAsync][net_enableautoscaleasync] (Batch .NET)
-* [Enable automatic scaling on a pool][rest_enableautoscale] (Aktivieren des automatischen Skalierens für einen Pool) (REST-API)
+* [Aktivieren des automatischen Skalierens für einen Pool][rest_enableautoscale] (REST-API)
 
 Beachten Sie folgende Punkte, wenn Sie die automatische Skalierung für einen vorhandenen Pool aktivieren:
 
