@@ -43,6 +43,8 @@
         - name: Offlineauswertung
           href: concepts-offline-evaluation.md
           displayName: 'learning policy, Counterfactual, features'
+        - name: Featureauswertung
+          href: concept-feature-evaluation.md
     - name: Skalierbarkeit und Leistung
       href: concepts-scalability-performance.md
 - name: Anleitungen
