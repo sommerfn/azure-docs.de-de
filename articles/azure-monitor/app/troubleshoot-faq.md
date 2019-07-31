@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 12/17/2018
 ms.author: mbullwin
-ms.openlocfilehash: ab1327b42a76a6e76183d84cb1750cce8b85228f
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 778a95db8ce462d06e2464db56b542f8113a4960
+ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65604285"
+ms.lasthandoff: 07/15/2019
+ms.locfileid: "67875377"
 ---
 # <a name="application-insights-frequently-asked-questions"></a>Application Insights: Häufig gestellte Fragen
 
@@ -37,6 +37,7 @@ ms.locfileid: "65604285"
 
 ## <a name="can-i-use-application-insights-with-"></a>Kann ich Application Insights mit ... verwenden?
 
+* [Web-Apps auf einem IIS-Server in der Azure-VM oder Azure-VM-Skalierungsgruppe](azure-vm-vmss-apps.md)
 * [Web-Apps auf einem IIS-Server – lokal oder auf einem virtuellen Computer](asp-net.md)
 * [Java-Web-Apps](java-get-started.md)
 * [Node.js-Apps](nodejs.md)
@@ -83,7 +84,7 @@ Die Details hängen von der Art des Projekts ab. Für eine Webanwendung:
 
   * Web.config
   * packages.config
-* (Nur neue Projekte – wenn Sie [Application Insights zu einem vorhandenen Webprojekt hinzufügen][start], müssen Sie diesen Schritt manuell ausführen.) Fügen Sie Codeausschnitte in den Client- und Servercode ein, um diese mit der Application Insights-Ressourcen-ID zu initialisieren. Beispielsweise wird in einer MVC-App Code auf der Masterseite "Views/Shared/_Layout.cshtml" eingefügt.
+* (Nur neue Projekte – wenn Sie [Application Insights zu einem vorhandenen Webprojekt hinzufügen][start], müssen Sie diesen Schritt manuell durchführen.) Fügen Sie Codeausschnitte in den Client- und Servercode ein, um diese mit der Application Insights-Ressourcen-ID zu initialisieren. Beispielsweise wird in einer MVC-App Code auf der Masterseite "Views/Shared/_Layout.cshtml" eingefügt.
 
 ## <a name="how-do-i-upgrade-from-older-sdk-versions"></a>Wie aktualisiere ich von älteren SDK-Versionen?
 Informationen hierzu finden Sie in den [Versionshinweisen](release-notes.md) für das SDK, das für Ihren Anwendungstyp geeignet ist.
@@ -104,7 +105,7 @@ Von Server-Web-Apps:
 * HTTP-Anforderungen
 * [Abhängigkeiten](asp-net-dependencies.md) Aufrufe an: SQL-Datenbanken, HTTP-Aufrufe an externe Dienste, Aufrufe an Azure Cosmos DB, Tabellen, Blob Storage und Warteschlangen. 
 * [Ausnahmen](asp-net-exceptions.md) und Stapelüberwachungen.
-* [Leistungsindikatoren](performance-counters.md): Bei Verwendung von [Statusmonitor](monitor-performance-live-website-now.md), [Azure-Überwachung](azure-web-apps.md) oder [collectd-Writer von Application Insights](java-collectd.md).
+* [Leistungsindikatoren:](performance-counters.md) Wenn Sie den [Application Insights-Statusmonitor](monitor-performance-live-website-now.md), die [Azure-Überwachung für App Services](azure-web-apps.md), die [Azure-Überwachung für VMs oder VM-Skalierungsgruppen](azure-vm-vmss-apps.md) oder den [Application Insights-collectd-Writer](java-collectd.md) verwenden.
 * [Benutzerdefinierte Ereignisse und Metriken](api-custom-events-metrics.md), die Sie codieren.
 * [Ablaufverfolgungsprotokolle](asp-net-trace-logs.md), wenn Sie den entsprechenden Sammler konfigurieren.
 

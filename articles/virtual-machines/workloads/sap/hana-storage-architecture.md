@@ -11,15 +11,15 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 03/05/2019
-ms.author: rclaus
+ms.date: 07/04/2019
+ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: a2cfe9dc02e69f3b47c99e01bc70bffc942338fd
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.openlocfilehash: b303a18d481ae1a682d81d87e7c14060ffdfaf14
+ms.sourcegitcommit: 10251d2a134c37c00f0ec10e0da4a3dffa436fb3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67707252"
+ms.lasthandoff: 07/13/2019
+ms.locfileid: "67869180"
 ---
 # <a name="sap-hana-large-instances-storage-architecture"></a>SAP HANA-Speicherarchitektur (große Instanzen)
 
@@ -90,9 +90,9 @@ Einige Beispiele für die Ausführung mehrerer SAP HANA-Instanzen können etwa w
 Andere Variationen sind ebenfalls möglich. 
 
 ## <a name="encryption-of-data-at-rest"></a>Verschlüsselung für ruhende Daten
-Der für HANA (große Instanz) genutzte Speicher ermöglicht eine transparente Verschlüsselung der Daten, die auf den Datenträgern gespeichert werden. Sie können diese Verschlüsselung beim Bereitstellen einer Einheit von HANA (große Instanz) aktivieren. Die Verschlüsselung von Volumes kann auch nach der Bereitstellung aktiviert werden. Der Wechsel von unverschlüsselten zu verschlüsselten Volumes erfolgt transparent und erfordert keine Downtime. 
+Der für HANA (große Instanz) genutzte Speicher verwendet seit Ende 2018 eine transparente Verschlüsselung für die Daten, die auf den Datenträgern gespeichert werden. In früheren Bereitstellungen konnten Sie entscheiden, ob die Volumes verschlüsselt werden sollten. Wenn Sie sich dagegen entschieden haben, konnten Sie die Verschlüsselung der Volumes online anfordern. Der Wechsel von unverschlüsselten zu verschlüsselten Volumes erfolgt transparent und erfordert keine Downtime. 
 
-Bei SKUs der Typ-I-Klasse wird das Volume, auf dem die Start-LUN gespeichert ist, verschlüsselt. Bei der Typ-II-Klasse der SKUs von HANA (große Instanz) müssen Sie die Start-LUN mit Methoden des Betriebssystems verschlüsseln. Für weitere Informationen wenden Sie sich an das Microsoft Service Management-Team.
+Bei SKUs der Typ-I-Klasse wird das Volume, auf dem die Start-LUN gespeichert ist, verschlüsselt. In Stempeln der Revision 3 großer HANA-Instanzen müssen Sie die Boot-LUN bei Verwendung von SKUs von großen HANA-Instanzen der Typ II-Klasse mithilfe von Methoden des Betriebssystems verschlüsseln. In Stempeln der Revision 4 großer HANA-Instanzen wird die Boot-LUN bei Verwendung von Typ II-Einheiten standardmäßig auch im Ruhezustand verschlüsselt. 
 
 ## <a name="required-settings-for-larger-hana-instances-on-hana-large-instances"></a>Erforderliche Einstellungen für größere HANA-Instanzen in HANA (große Instanzen)
 Der in HANA (große Instanzen) genutzte Speicher weist eine Dateigrößenbeschränkung auf. Die [Größenbeschränkung beträgt 16 TB](https://docs.netapp.com/ontap-9/index.jsp?topic=%2Fcom.netapp.doc.dot-cm-vsmg%2FGUID-AA1419CF-50AB-41FF-A73C-C401741C847C.html) pro Datei. Anders als bei den Einschränkungen der Dateigröße in EXT3-Dateisystemen wird die durch HANA (große Instanzen) erzwungene Speichereinschränkung in HANA nicht implizit behandelt. Daher erstellt HANA nicht automatisch eine neue Datendatei, wenn die maximale Dateigröße von 16 TB erreicht wird. Während HANA versucht, die Datei über 16 TB hinaus zu vergrößern, werden Fehler gemeldet, und der Indexserver stürzt am Ende ab.

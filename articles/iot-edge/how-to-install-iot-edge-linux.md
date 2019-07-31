@@ -7,15 +7,15 @@ ms.reviewer: veyalla
 ms.service: iot-edge
 services: iot-edge
 ms.topic: conceptual
-ms.date: 06/27/2019
+ms.date: 07/10/2019
 ms.author: kgremban
 ms.custom: seodec18
-ms.openlocfilehash: bbab0d8d0947c18cf8e6c178d12fdbd7b335d2b6
-ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
+ms.openlocfilehash: 822efe2534d49c0995a672232107cc322e547989
+ms.sourcegitcommit: 920ad23613a9504212aac2bfbd24a7c3de15d549
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/01/2019
-ms.locfileid: "67485899"
+ms.lasthandoff: 07/15/2019
+ms.locfileid: "68227508"
 ---
 # <a name="install-the-azure-iot-edge-runtime-on-linux-x64"></a>Installieren der Azure IoT Edge-Runtime unter Linux (x64)
 
@@ -89,7 +89,7 @@ Installieren Sie die Moby-Befehlszeilenschnittstelle (Command-Line Interface, CL
 
 #### <a name="verify-your-linux-kernel-for-moby-compatibility"></a>Überprüfen Sie Ihren Linux-Kernel auf Moby-Kompatibilität
 
-Viele Hersteller von eingebetteten Geräten stellen Gerätebilder bereit, die benutzerdefinierte Linux-Kernel enthalten, denen Funktionen für die Container-Runtimekompatibilität fehlen können. Wenn Sie Probleme beim Installieren der empfohlenen [Moby](https://github.com/moby/moby)-Container-Runtime haben, dann können Sie versuchen, Ihre Linux-Kernelkonfiguration mit dem [„check-config“](https://raw.githubusercontent.com/moby/moby/master/contrib/check-config.sh)-Skript aus dem offiziellen [Moby Github-Repository](https://github.com/moby/moby) zu korrigieren, indem Sie die folgenden Befehle auf dem Gerät ausführen.
+Viele Hersteller von eingebetteten Geräten stellen Gerätebilder bereit, die benutzerdefinierte Linux-Kernel enthalten, denen Funktionen für die Container-Runtimekompatibilität fehlen können. Wenn Sie Probleme beim Installieren der empfohlenen [Moby](https://github.com/moby/moby)-Containerruntime haben, dann können Sie versuchen, Ihre Linux-Kernelkonfiguration mit dem [check-config](https://raw.githubusercontent.com/moby/moby/master/contrib/check-config.sh)-Skript aus dem offiziellen [Moby GitHub-Repository](https://github.com/moby/moby) zu korrigieren, indem Sie die folgenden Befehle auf dem Gerät ausführen.
 
    ```bash
    curl -sSL https://raw.githubusercontent.com/moby/moby/master/contrib/check-config.sh -o check-config.sh
@@ -183,19 +183,23 @@ Zur manuellen Bereitstellung eines Geräts müssen Sie es mit einer [Geräteverb
 sudo nano /etc/iotedge/config.yaml
 ```
 
-Suchen Sie den Bereitstellungsabschnitt der Datei. Heben Sie die Kommentierung des **manuellen** Bereitstellungsmodus auf, und stellen Sie sicher, dass der dps-Bereitstellungsmodus auskommentiert ist. Aktualisieren Sie den Wert von **device_connection_string** durch die Verbindungszeichenfolge Ihres IoT Edge-Geräts.
+Suchen Sie die Bereitstellungskonfigurationen in der Datei, und heben Sie die Auskommentierung des Abschnitts zum **manuellen Bereitstellungsmodus** auf. Aktualisieren Sie den Wert von **device_connection_string** durch die Verbindungszeichenfolge Ihres IoT Edge-Geräts. Stellen Sie sicher, dass alle anderen Bereitstellungsabschnitte auskommentiert sind.
 
    ```yaml
+   # Manual provisioning configuration
    provisioning:
      source: "manual"
      device_connection_string: "<ADD DEVICE CONNECTION STRING HERE>"
   
+   # DPS TPM provisioning configuration
    # provisioning:
    #   source: "dps"
    #   global_endpoint: "https://global.azure-devices-provisioning.net"
    #   scope_id: "{scope_id}"
-   #   registration_id: "{registration_id}"
-   ```
+   #   attestation:
+   #     method: "tpm"
+   #     registration_id: "{registration_id}"
+```
 
 Speichern und schließen Sie die Datei.
 
@@ -209,7 +213,7 @@ sudo systemctl restart iotedge
 
 ### <a name="option-2-automatic-provisioning"></a>Option 2: Automatische Bereitstellung
 
-Um ein Gerät automatisch bereitzustellen, müssen Sie [den Device Provisioning-Dienst einrichten und die Registrierungs-ID Ihres Geräts abrufen](how-to-auto-provision-simulated-device-linux.md). Die automatische Bereitstellung funktioniert nur mit Geräten, die über einen Trusted Platform Module (TPM)-Chip verfügen. Raspberry Pi-Geräte sind beispielsweise nicht standardmäßig mit TPM ausgestattet.
+Um ein Gerät automatisch bereitzustellen, müssen Sie [den Device Provisioning-Dienst einrichten und die Registrierungs-ID Ihres Geräts abrufen](how-to-auto-provision-simulated-device-linux.md). Es gibt eine Reihe von Nachweismechanismen, die von IoT Edge unterstützt werden, wenn die automatische Bereitstellung verwendet wird. Ihre Hardwareanforderungen haben aber auch Auswirkungen auf Ihre Auswahl. Beispielsweise verfügen Raspberry Pi-Geräte nicht standardmäßig über einen TPM-Chip (Trusted Platform Module).
 
 Öffnen Sie die Konfigurationsdatei.
 
@@ -217,18 +221,22 @@ Um ein Gerät automatisch bereitzustellen, müssen Sie [den Device Provisioning-
 sudo nano /etc/iotedge/config.yaml
 ```
 
-Suchen Sie den Bereitstellungsabschnitt der Datei. Heben Sie die Kommentierung des **dps**-Bereitstellungsmodus auf, und kommentieren Sie den manuellen Abschnitt aus. Aktualisieren Sie die Werte von **scope_id** und **registration_id** mit den Werten aus Ihrer IoT Hub Device Provisioning Service-Instanz und Ihrem IoT Edge-Gerät mit TPM.
+Suchen Sie die Bereitstellungskonfigurationen in der Datei, und heben Sie die Auskommentierung des Abschnitts für Ihren Nachweismechanismus auf. Wenn Sie z. B. den TPM-Nachweis verwenden, aktualisieren Sie die Werte von **scope_id** und **registration_id** mit den Werten aus Ihrer IoT Hub Device Provisioning Service-Instanz bzw. Ihrem IoT Edge-Gerät mit TPM.
 
    ```yaml
+   # Manual provisioning configuration
    # provisioning:
    #   source: "manual"
    #   device_connection_string: "<ADD DEVICE CONNECTION STRING HERE>"
   
+   # DPS TPM provisioning configuration
    provisioning:
      source: "dps"
      global_endpoint: "https://global.azure-devices-provisioning.net"
      scope_id: "{scope_id}"
-     registration_id: "{registration_id}"
+     attestation:
+       method: "tpm"
+       registration_id: "{registration_id}"
    ```
 
 Speichern und schließen Sie die Datei.

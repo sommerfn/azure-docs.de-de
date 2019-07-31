@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 05/23/2019
 ms.author: sngun
 ms.custom: seodec18
-ms.openlocfilehash: 02bbde9a2d744c79cc8a7e95b0732b775c4dc695
-ms.sourcegitcommit: 0ebc62257be0ab52f524235f8d8ef3353fdaf89e
+ms.openlocfilehash: 1c12007e04ff8cd08ddb7afdf9a3c2add9638de3
+ms.sourcegitcommit: 9a699d7408023d3736961745c753ca3cec708f23
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/10/2019
-ms.locfileid: "66241624"
+ms.lasthandoff: 07/16/2019
+ms.locfileid: "68277430"
 ---
 # <a name="monitor-performance-and-storage-metrics-in-azure-cosmos-db"></a>Überwachen von Leistungs- und Speichermetriken in Azure Cosmos DB
 
@@ -48,6 +48,10 @@ Metriken können auf der Seite „Konto“, der neuen Seite „Metriken“ oder 
 4. Auf der Seite **Metrik** werden die Details zur Gesamtzahl der Anforderungen angezeigt. 
 
 ## <a name="set-up-alerts-in-the-portal"></a>Einrichten von Warnungen im Portal
+
+> [!NOTE]
+> Die klassischen Warnungen in Azure Monitor werden am 31. August 2019 eingestellt. Das Azure-Portal bietet ein [Migrationstool](../azure-monitor/platform/alerts-using-migration-tool.md) zum Migrieren von Regeln für klassische Warnungen. Allerdings können nicht alle klassischen Warnungen zu Azure Cosmos DB-Metriken migriert werden, denn es gibt einige Ausnahmen. Eine Liste der klassischen Warnungen, die nicht migriert werden können, finden Sie im Artikel zu [Azure Monitor](../azure-monitor/platform/alerts-understand-migration.md#cosmos-db-metrics). 
+
 1. Klicken Sie im [Azure-Portal](https://portal.azure.com/) auf **Alle Dienste**, dann auf **Azure Cosmos DB** und anschließend auf den Namen des Azure Cosmos DB-Kontos, für das Sie Warnungen zu Leistungsmetriken einrichten möchten.
 2. Klicken Sie im Ressourcenmenü auf **Warnungsregeln**, um die Seite „Warnungsregeln“ zu öffnen.  
    ![Screenshot des ausgewählten Warnungsregelnteils](./media/monitor-accounts/madocdb10.5.png)

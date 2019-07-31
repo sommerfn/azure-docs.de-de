@@ -8,14 +8,14 @@ keywords: ''
 ms.service: azure-functions
 ms.devlang: multiple
 ms.topic: conceptual
-ms.date: 12/07/2018
+ms.date: 07/04/2019
 ms.author: azfuncdf
-ms.openlocfilehash: 76b6f013333113d5a24b744bc962d36b1c0e21b3
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: de5019e0f91c92829082aed962bb9633da52b4a9
+ms.sourcegitcommit: af31deded9b5836057e29b688b994b6c2890aa79
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60731113"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67812842"
 ---
 # <a name="durable-functions-types-and-features-azure-functions"></a>Durable Functions-Typen und -Features (Azure Functions)
 
@@ -27,7 +27,7 @@ Dieser Artikel stellt eine Übersicht über die Typen von Funktionen bereit, die
 
 ## <a name="types-of-durable-functions"></a>Typen von permanenten Funktionen
 
-In Azure Functions können Sie drei Typen permanenter Funktionen verwenden: Aktivitäts-, Orchestrator- und Clientfunktionen.
+In Azure Functions können Sie vier Typen permanenter Funktionen verwenden: Aktivitäts-, Orchestrator-, Entitäts- und Clientfunktionen.
 
 ### <a name="activity-functions"></a>Aktivitätsfunktionen
 
@@ -43,7 +43,7 @@ Weitere Informationen und Beispiele finden Sie unter [Aktivitätsfunktionen](dur
 
 ### <a name="orchestrator-functions"></a>Orchestratorfunktionen
 
-Orchestratorfunktionen beschreiben, wie und in welcher Reihenfolge Aktionen ausgeführt werden. Außerdem wird mit ihnen die Orchestrierung in Code (C# oder JavaScript) beschrieben, wie unter [Durable Functions patterns and technical concepts (Muster und technische Konzepte von Durable Functions)](durable-functions-concepts.md) dargestellt wird. Eine Orchestrierung kann viele verschiedene Aktionstypen umfassen, z. B. [Aktivitätsfunktionen](#activity-functions), [untergeordnete Orchestrierungen](#sub-orchestrations), [das Warten auf externe Ereignisse](#external-events) und [Timer](#durable-timers). 
+Orchestratorfunktionen beschreiben, wie und in welcher Reihenfolge Aktionen ausgeführt werden. Außerdem wird mit ihnen die Orchestrierung in Code (C# oder JavaScript) beschrieben, wie unter [Durable Functions patterns and technical concepts (Muster und technische Konzepte von Durable Functions)](durable-functions-concepts.md) dargestellt wird. Eine Orchestrierung kann viele verschiedene Aktionstypen umfassen, z. B. [Aktivitätsfunktionen](#activity-functions), [untergeordnete Orchestrierungen](#sub-orchestrations), [das Warten auf externe Ereignisse](#external-events) und [Timer](#durable-timers). Orchestratorfunktionen können auch mit [Entitätsfunktionen](#entity-functions) interagieren.
 
 Eine Orchestratorfunktion muss durch einen [Orchestrierungstrigger](durable-functions-bindings.md#orchestration-triggers) ausgelöst werden.
 
@@ -51,11 +51,18 @@ Ein Orchestrator wird von einem [Orchestratorclient](#client-functions) gestarte
 
 Weitere Informationen und Beispiele finden Sie unter [Orchestrierungstrigger](durable-functions-bindings.md#orchestration-triggers).
 
+###  <a name="entity-functions"></a>Entitätsfunktionen (Preview)
+
+Entitätsfunktionen definieren Vorgänge zum Lesen und Aktualisieren kleinerer Zustandsteile, bekannt als *dauerhafte Entitäten*. Wie Orchestratorfunktionen besitzen Entitätsfunktionen einen speziellen Triggertyp, den *Entitätstrigger*. Im Gegensatz zu Orchestratorfunktionen müssen Entitätsfunktionen keine spezifischen Codeeinschränkungen besitzen. Entitätsfunktionen verwalten Zustände auch explizit, statt Zustände implizit durch die Ablaufsteuerung darzustellen.
+
+> [!NOTE]
+> Entitätsfunktionen und zugehörige Funktionen sind nur in Durable Functions 2.0 und höher verfügbar.
+
+Weitere Informationen über Entitätsfunktionen finden Sie in der Dokumentation für die Previewfunktion [Entitätsfunktionen](durable-functions-preview.md#entity-functions).
+
 ### <a name="client-functions"></a>Clientfunktionen
 
-Clientfunktionen sind ausgelöste Funktionen, die neue Instanzen einer Orchestrierung erstellen und gleichzeitig den Einstiegspunkt für das Erstellen einer Instanz in einer Durable Functions-Orchestrierung darstellen. Sie können eine Clientfunktion über verschiedene Quellen (HTTP, Warteschlange, Ereignisstream) auslösen. Zum Schreiben einer Clientfunktion können Sie jede beliebige Sprache verwenden, die von der App unterstützt wird. 
-
-Clientfunktionen verfügen außerdem über eine [Orchestrierungsclientbindung](durable-functions-bindings.md#orchestration-client), mit der sie permanente Orchestrierungen erstellen und verwalten können. 
+Clientfunktionen sind ausgelöste Funktionen, die Instanzen von Orchestrierungen und Entitäten erstellen und verwalten. Sie gelten als Einstiegspunkt für die Interaktion mit Durable Functions. Sie können eine Clientfunktion über verschiedene Quellen (HTTP, Warteschlange, Ereignisdatenstrom usw.) auslösen. Eine Clientfunktion verwendet die [Orchestrierungsclientbindung](durable-functions-bindings.md#orchestration-client), um permanente Orchestrierungen und Entitäten zu erstellen und zu verwalten.
 
 Das einfachste Beispiel für eine Clientfunktion ist eine über HTTP ausgelöste Funktion, die eine Orchestratorfunktion startet und anschließend eine Statusüberprüfungsantwort zurückgibt. Ein Beispiel finden Sie unter [Ermittlung der HTTP-API-URL](durable-functions-http-api.md#http-api-url-discovery).
 

@@ -8,13 +8,13 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive,hdiseo17may2017,seodec18
 ms.topic: conceptual
-ms.date: 05/28/2019
-ms.openlocfilehash: 351b6a8e056d22fa8f2d695a2722b39b9771c8b0
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.date: 07/15/2019
+ms.openlocfilehash: a1ff1449b5cc63c16035f8785662f250a008fbc1
+ms.sourcegitcommit: 770b060438122f090ab90d81e3ff2f023455213b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66299385"
+ms.lasthandoff: 07/17/2019
+ms.locfileid: "68305538"
 ---
 # <a name="set-up-clusters-in-hdinsight-with-apache-hadoop-apache-spark-apache-kafka-and-more"></a>Einrichten von Clustern in HDInsight mit Apache Hadoop, Apache Spark, Apache Kafka usw.
 
@@ -49,7 +49,8 @@ Befolgen Sie die Anweisungen auf dem Bildschirm, um eine grundlegenden Clusterei
 
 * [Ressourcengruppenname](#resource-group-name)
 * [Clustertypen und Konfiguration](#cluster-types) 
-* Clusteranmeldung und SSH-Benutzername
+* [Clustername](#cluster-name)
+* [Clusteranmeldung und SSH-Benutzername](#cluster-login-and-ssh-username)
 * [Location](#location)
 
 ## <a name="resource-group-name"></a>Ressourcengruppenname
@@ -76,12 +77,31 @@ Azure HDInsight bietet derzeit die folgenden Typen von Clustern mit je einer Rei
 ### <a name="hdinsight-version"></a>HDInsight-Version
 Wählen Sie die Version von HDInsight für diesen Cluster aus. Weitere Informationen finden Sie unter [Unterstützte HDInsight-Versionen](hdinsight-component-versioning.md#supported-hdinsight-versions).
 
+## <a name="cluster-name"></a>Clustername
+
+Für Namen von HDInsight-Clustern gelten folgende Einschränkungen:
+- Zulässige Zeichen: a-z, 0–9, A-Z 
+- Max. Länge: 59
+- Reservierte Namen: apps
+- Der Name muss eindeutig sein.
+- Die ersten 6 Zeichen müssen innerhalb eines VNET eindeutig sein.
 
 ## <a name="cluster-login-and-ssh-username"></a>Clusteranmeldung und SSH-Benutzername
 Während der Clustererstellung ermöglichen die HDInsight-Cluster Ihnen das Konfigurieren von zwei Benutzerkonten:
 
 * HTTP-Benutzer: Der Standard-Benutzername lautet *admin*. Für ihn gilt im Azure-Portal die Standardkonfiguration. Er wird auch als „Clusterbenutzer“ bezeichnet.
 * SSH-Benutzer: Wird verwendet, um die Verbindung mit dem Cluster über SSH herzustellen. Weitere Informationen finden Sie unter [Verwenden von SSH mit Linux-basiertem Hadoop in HDInsight unter Linux, Unix oder OS X](hdinsight-hadoop-linux-use-ssh-unix.md).
+
+Für den HTTP-Benutzernamen gelten folgende Einschränkungen:
+- Zulässige Sonderzeichen: _ und @ 
+- Unzulässige Zeichen: #;."',\/:`!*?$(){}[]<>|&--=+%~^Leerzeichen
+- Max. Länge: 20
+
+Für den SSH-Benutzernamen gelten folgende Einschränkungen:
+- Zulässige Sonderzeichen: _ und @ 
+- Unzulässige Zeichen: #;."',\/:`!*?$(){}[]<>|&--=+%~^Leerzeichen
+- Max. Länge: 64
+- Reservierte Namen: hadoop, users, oozie, hive, mapred, ambari-qa, zookeeper, tez, hdfs, sqoop, yarn, hcat, ams, hbase, storm, administrator, admin, user, user1, test, user2, test1, user3, admin1, 1, 123, a, actuser, adm, admin2, aspnet, backup, console, david, guest, john, owner, root, server, sql, support, support_388945a0, sys, test2, test3, user4, user5, spark
 
 Mit dem Sicherheitspaket für Unternehmen können Sie HDInsight mit Active Directory und Apache Ranger integrieren. Mithilfe des Enterprise-Sicherheitspakets können mehrere Benutzer erstellt werden.
 
@@ -154,7 +174,7 @@ Die Verwendung der Knoten wird so lange abgerechnet, wie der Cluster vorhanden i
 ### <a name="number-of-nodes-for-each-cluster-type"></a>Anzahl der Knoten für jeden Clustertyp
 Jeder Clustertyp verfügt über eine eigene Anzahl von Knoten, Terminologie für Knoten und eine VM-Standardgröße. In der folgenden Tabelle ist die Anzahl von Knoten für jeden Knotentyp jeweils in Klammern angegeben.
 
-| Type | Nodes | Diagramm |
+| type | Nodes | Diagramm |
 | --- | --- | --- |
 | Hadoop |Hauptknoten (2), Workerknoten (1+) |![HDInsight-Hadoop-Clusterknoten](./media/hdinsight-hadoop-provision-linux-clusters/hdinsight-hadoop-cluster-type-nodes.png) |
 | hbase |Hauptserver (2), Regionsserver (1+), Master-/Zookeeper-Knoten (3) |![HDInsight-HBase-Clusterknoten](./media/hdinsight-hadoop-provision-linux-clusters/hdinsight-hbase-cluster-type-setup.png) |

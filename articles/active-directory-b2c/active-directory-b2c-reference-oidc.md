@@ -11,12 +11,12 @@ ms.date: 04/16/2019
 ms.author: marsma
 ms.subservice: B2C
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 0c855a3e0280e1fadf2362f2d8959beff2f5d00a
-ms.sourcegitcommit: a52d48238d00161be5d1ed5d04132db4de43e076
+ms.openlocfilehash: c5626e2ddfc24eeaeed562f3eaf73d16626eb458
+ms.sourcegitcommit: 9a699d7408023d3736961745c753ca3cec708f23
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/20/2019
-ms.locfileid: "67271967"
+ms.lasthandoff: 07/16/2019
+ms.locfileid: "68278032"
 ---
 # <a name="web-sign-in-with-openid-connect-in-azure-active-directory-b2c"></a>Webanmeldungen mit OpenID Connect in Azure Active Directory B2C
 
@@ -134,6 +134,8 @@ Eine der Eigenschaften dieses Konfigurationsdokuments ist `jwks_uri`, deren Wert
 Es gibt zwei Möglichkeiten zum Ermitteln, welcher Benutzerflow zum Signieren eines ID-Tokens verwendet wurde (und wo die Metadaten abgerufen werden können). Zunächst einmal ist der Benutzerflowname im `acr`-Anspruch im ID-Token enthalten. Die andere Möglichkeit besteht darin, den Benutzerflow beim Übermitteln der Anforderung im Wert des Parameters `state` zu verschlüsseln und später zu entschlüsseln, um zu bestimmen, welcher Benutzerflow verwendet wurde. Beide Methoden sind gültig.
 
 Nachdem Sie das Metadatendokument aus dem OpenID Connect-Metadatenendpunkt erhalten haben, können Sie die öffentlichen RSA-256-Schlüssel zum Überprüfen der Signatur des ID-Tokens verwenden. Es gibt möglicherweise mehrere Schlüssel an diesem Endpunkt. Sie werden jeweils durch einen `kid`-Anspruch identifiziert. Der Header des ID-Tokens enthält außerdem einen `kid`-Anspruch, der anzeigt, welcher Schlüssel zum Signieren des ID-Tokens verwendet wurde.
+
+Sie müssen den öffentlichen Schlüssel mithilfe von Exponent (e) und Modulus (n) generieren, um die Token von Azure AD B2C zu überprüfen. Sie müssen festlegen, wie dies in der jeweiligen Programmiersprache entsprechend durchzuführen ist. Die offizielle Dokumentation zur Generierung öffentlicher Schlüssel mit dem RSA-Protokoll finden Sie hier: https://tools.ietf.org/html/rfc3447#section-3.1
 
 Nachdem Sie die Signatur des ID-Tokens validiert haben, müssen Sie einige Ansprüche überprüfen, z.B.: Beispiel:
 

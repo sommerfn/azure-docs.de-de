@@ -12,14 +12,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/18/2019
+ms.date: 07/12/2019
 ms.author: spelluru
-ms.openlocfilehash: 533770d98b146dea01e91e1249115c4b5c074b3c
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: c14abf3acce0084507a03f3d34fdd59566d88c28
+ms.sourcegitcommit: 470041c681719df2d4ee9b81c9be6104befffcea
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "62101563"
+ms.lasthandoff: 07/12/2019
+ms.locfileid: "67854272"
 ---
 # <a name="create-virtual-machines-using-an-azure-resource-manager-template"></a>Erstellen von virtuellen Computern mit einer Azure Resource Manager-Vorlage 
 
@@ -51,9 +51,8 @@ Unter [Bewährte Methoden für das Erstellen von Azure Resource Manager-Vorlagen
 ## <a name="view-and-save-a-virtual-machines-resource-manager-template"></a>Anzeigen und Speichern der Resource Manager-Vorlage eines virtuellen Computers
 1. Führen Sie die Schritte unter [Erstellen Ihres ersten virtuellen Computers in einem Lab in Azure DevTest Labs](tutorial-create-custom-lab.md#add-a-vm-to-the-lab) aus, um mit dem Erstellen eines virtuellen Computers zu beginnen.
 1. Geben Sie die erforderlichen Informationen für Ihren virtuellen Computer ein, und fügen Sie alle gewünschten Artefakte für den virtuellen Computer hinzu.
+1. Wechseln Sie zur Registerkarte **Erweiterte Einstellungen**. 
 1. Wählen Sie unten im Fenster zum Konfigurieren der Einstellungen die Option **View ARM template** (ARM-Vorlage anzeigen).
-
-   ![Anzeigen der Schaltfläche „View ARM template“ (ARM-Vorlage anzeigen)](./media/devtest-lab-use-arm-template/devtestlab-lab-view-rm-template.png)
 1. Kopieren und speichern Sie die Resource Manager-Vorlage, damit Sie sie später zum Erstellen eines anderen virtuellen Computers verwenden können.
 
    ![Speichern der Resource Manager-Vorlage zur späteren Verwendung](./media/devtest-lab-use-arm-template/devtestlab-lab-copy-rm-template.png)
@@ -63,6 +62,11 @@ Nachdem Sie die Resource Manager-Vorlage gespeichert haben, müssen Sie den Para
 ![Anpassen der Parameter mit einer JSON-Datei](./media/devtest-lab-use-arm-template/devtestlab-lab-custom-params.png)
 
 Die Resource Manager-Vorlage kann jetzt zum [Erstellen einer VM](devtest-lab-create-environment-from-arm.md) verwendet werden.
+
+## <a name="set-expiration-date"></a>Festlegen des Ablaufdatums
+In Szenarios mit Schulungen, Demos und Testversionen sollten Sie virtuelle Computer erstellen und diese nach einer festgelegten Dauer automatisch löschen, damit keine unnötigen Kosten entstehen. Sie können eine Lab-VM mit einem Ablaufdatum erstellen, indem Sie die **expirationDate**-Eigenschaft für die VM angeben. Sehen Sie sich die gleiche Ressource Manager-Vorlage [in unserem GitHub-Repository](https://github.com/Azure/azure-devtestlab/tree/master/samples/DevTestLabs/QuickStartTemplates/101-dtl-create-vm-username-pwd-customimage-with-expiration) an.
+
+
 
 ### <a name="next-steps"></a>Nächste Schritte
 * Informieren Sie sich über das [Erstellen von Umgebungen mit mehreren virtuellen Computern und PaaS-Ressourcen mit Azure Resource Manager-Vorlagen](devtest-lab-create-environment-from-arm.md).

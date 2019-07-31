@@ -12,17 +12,17 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 04/12/2019
+ms.date: 07/16/2019
 ms.author: ryanwi
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b5e175a8cdd1622add90bd80df63303fe914ab9c
-ms.sourcegitcommit: 087ee51483b7180f9e897431e83f37b08ec890ae
+ms.openlocfilehash: 767f7362a6c46d864ba17f23f6506bf6cdb71414
+ms.sourcegitcommit: 770b060438122f090ab90d81e3ff2f023455213b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/31/2019
-ms.locfileid: "66430811"
+ms.lasthandoff: 07/17/2019
+ms.locfileid: "68304733"
 ---
 # <a name="application-configuration-options"></a>Anwendungskonfigurationsoptionen
 
@@ -38,10 +38,10 @@ In Ihrem Code initialisieren Sie eine neue öffentliche oder vertrauliche Client
 ## <a name="authority"></a>Authority
 Die Autorität ist eine URL, die ein Verzeichnis angibt, aus dem die MSAL Token anfordern kann. Gängige Autoritäten sind folgende:
 
-- [https://login.microsoftonline.com/&amp;lt](https://login.microsoftonline.com/&lt );Mandant&gt; /, wobei &lt; Mandant&gt; die Mandanten-ID des Azure AD-Mandanten (Azure Active Directory) oder eine Domäne ist, die diesem Azure AD-Mandanten zugeordnet ist. Diese wird nur für die Anmeldung von Benutzern einer bestimmten Organisation verwendet.
-- [https://login.microsoftonline.com/common/](https://login.microsoftonline.com/common/ ). Hiermit werden Benutzer mit Geschäfts-, Schul- und Unikonten oder persönlichen Microsoft-Konten angemeldet.
-- [https://login.microsoftonline.com/organizations/](https://login.microsoftonline.com/organizations/ ). Damit werden Benutzer mit Geschäfts-, Schul- oder Unikonten angemeldet.
-- [https://login.microsoftonline.com/consumers/](https://login.microsoftonline.com/consumers/ ). Hiermit werden Benutzer angemeldet, die nur über ein persönliches Microsoft-Konto verfügen (früher als Windows Live ID-Konto bezeichnet).
+- https\://login.microsoftonline.com/\<Mandant\>/, wobei &lt;Mandant&gt; die Mandanten-ID des Azure AD-Mandanten (Azure Active Directory) oder eine Domäne ist, die diesem Azure AD-Mandanten zugeordnet ist. Diese wird nur für die Anmeldung von Benutzern einer bestimmten Organisation verwendet.
+- https\://login.microsoftonline.com/common/. Hiermit werden Benutzer mit Geschäfts-, Schul- und Unikonten oder persönlichen Microsoft-Konten angemeldet.
+- https\://login.microsoftonline.com/organizations/. Damit werden Benutzer mit Geschäfts-, Schul- oder Unikonten angemeldet.
+- https\://login.microsoftonline.com/consumers/. Hiermit werden Benutzer angemeldet, die nur über ein persönliches Microsoft-Konto verfügen (früher als Windows Live ID-Konto bezeichnet).
 
 Die Einstellung für die Autorität muss mit den Angaben im Anwendungsregistrierungsportal übereinstimmen.
 
@@ -50,7 +50,7 @@ Die Autoritäts-URL besteht aus der Instanz und der Zielgruppe.
 Mögliche Autoritäten:
 - Eine Azure AD-Cloudautorität.
 - Eine Azure AD B2C-Autorität. Siehe [B2C-Besonderheiten](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet/wiki/AAD-B2C-specifics).
-- Eine AD FS-Autorität (Active Directory-Verbunddienste). Siehe [AD FS-Unterstützung](https://aka.ms/msal-net-adfs-support).
+- Eine AD FS-Autorität (Active Directory Federation Services, Active Directory-Verbunddienste). Weitere Informationen finden Sie unter [ADFS support](https://aka.ms/msal-net-adfs-support) (AD FS-Unterstützung).
 
 Azure AD-Cloudautoritäten bestehen aus zwei Komponenten:
 - Die *Instanz* eines Identitätsanbieters
@@ -103,11 +103,17 @@ Der Umleitungs-URI ist der URI, an den der Identitätsanbieter die Sicherheitsto
 
 ### <a name="redirect-uri-for-public-client-apps"></a>Umleitungs-URI für öffentliche Client-Apps
 Wenn Sie eine öffentliche Client-App entwickeln und die MSAL verwenden, gilt Folgendes:
-- Sie müssen den `RedirectUri` nicht übergeben, da dieser von der MSAL automatisch berechnet wird. Dieser Umleitungs-URI wird je nach Plattform auf einen der folgenden Werte festgelegt:
-   - `urn:ietf:wg:oauth:2.0:oob` für alle Windows-Plattformen
-   - `msal{ClientId}://auth` für Xamarin Android und iOS
+- Sie verwenden `.WithDefaultRedirectUri()` in Desktop- oder UWP-Anwendungen (MSAL.NET 4.1 und höher). Diese Methode legt die Umleitungs-URI-Eigenschaft der öffentlichen Clientanwendung auf den empfohlenen Standardumleitungs-URI für öffentliche Clientanwendungen fest. 
 
-- Sie müssen den Umleitungs-URI auf der Seite [App-Registrierungen](https://aka.ms/appregistrations) konfigurieren:
+  Plattform  | Umleitungs-URI  
+  ---------  | --------------
+  Desktop-App (.NET FW) | `https://login.microsoftonline.com/common/oauth2/nativeclient` 
+  UWP | Wert von `WebAuthenticationBroker.GetCurrentApplicationCallbackUri()`. Dies ermöglicht SSO mit dem Browser, indem der Wert auf das Ergebnis von WebAuthenticationBroker.GetCurrentApplicationCallbackUri() festgelegt wird, das Sie aufzeichnen müssen.
+  .NET Core | `https://localhost`. Dies ermöglicht dem Benutzer, den Systembrowser für die interaktive Authentifizierung zu verwenden, da .NET Core derzeit keine Benutzeroberfläche für die eingebettete Webansicht hat.
+
+- Sie müssen keinen Umleitungs-URI hinzufügen, wenn Sie eine Xamarin Android- und iOS-Anwendung erstellen, die keinen Broker unterstützt (der Umleitungs-URI wird für Xamarin Android und iOS automatisch auf `msal{ClientId}://auth` gesetzt).
+
+- Sie müssen den Umleitungs-URI auf der Seite [App registrations](https://aka.ms/appregistrations) (App-Registrierungen) konfigurieren:
 
    ![Umleitungs-URI auf der Seite „App-Registrierungen“](media/msal-client-application-configuration/redirect-uri.png)
 
@@ -119,7 +125,7 @@ Sie können den Umleitungs-URI mit der `RedirectUri`-Eigenschaft überschreiben 
 Weitere Informationen dazu finden Sie in der [Dokumentation zu Android und iOS](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet/wiki/Leveraging-the-broker-on-iOS) (in englischer Sprache).
 
 ### <a name="redirect-uri-for-confidential-client-apps"></a>Umleitungs-URI für vertrauliche Client-Apps
-Bei Web-Apps ist der Umleitungs-URI (oder Antwort-URI) der URI, den Azure AD verwendet, um das Token an die Anwendung zurückzusenden. Dies kann die URL der Web-App/Web-API sein, wenn die vertrauliche App diesem Typ entspricht. Der Umleitungs-URI muss in der App-Registrierung registriert werden. Diese Registrierung ist besonders wichtig, wenn Sie eine App bereitstellen, die Sie zuerst lokal getestet haben. In diesem Fall müssen Sie die Antwort-URL der bereitgestellten App im Anwendungsregistrierungsportal hinzufügen.
+Bei Web-Apps ist der Umleitungs-URI (oder Antwort-URI) der URI, den Azure AD verwendet, um das Token an die Anwendung zurückzusenden. Dies kann der URI der Web-App/Web-API sein, wenn die vertrauliche App diesem Typ entspricht. Der Umleitungs-URI muss in der App-Registrierung registriert werden. Diese Registrierung ist besonders wichtig, wenn Sie eine App bereitstellen, die Sie zuerst lokal getestet haben. In diesem Fall müssen Sie die Antwort-URL der bereitgestellten App im Anwendungsregistrierungsportal hinzufügen.
 
 Für Daemon-Apps müssen Sie keinen Umleitungs-URI angeben.
 

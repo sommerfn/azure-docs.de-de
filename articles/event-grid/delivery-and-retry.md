@@ -7,12 +7,12 @@ ms.service: event-grid
 ms.topic: conceptual
 ms.date: 05/15/2019
 ms.author: spelluru
-ms.openlocfilehash: b4bfdd3e9cdf99314dc55907ba163adc6cd39423
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 0945b06f78ac34500f0b16a4a419cff12d1a4734
+ms.sourcegitcommit: af31deded9b5836057e29b688b994b6c2890aa79
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65952882"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67812925"
 ---
 # <a name="event-grid-message-delivery-and-retry"></a>Event Grid – Übermittlung und Wiederholung von Nachrichten
 
@@ -43,6 +43,12 @@ Um deterministisches Verhalten zu erreichen, legen Sie die Gültigkeitsdauer des
 
 Event Grid markiert alle Ereignisse standardmäßig als abgelaufen, die nicht innerhalb von 24 Stunden übermittelt werden. Bei der Erstellung von Ereignisabonnements können Sie die [Wiederholungsrichtlinie anpassen](manage-event-delivery.md). Sie geben die maximale Anzahl von Zustellversuchen (Standardwert 30) und die Gültigkeitsdauer des Ereignisses (Standardwert 1.440 Minuten) ein.
 
+## <a name="delayed-delivery"></a>Verzögerte Übermittlung
+
+Wenn bei einem Endpunkt Übermittlungsfehler auftreten, beginnt Event Grid, die Übermittlung von Ereignissen an diesen Endpunkt und erneute Versuche zu verzögern. Wenn beispielsweise bei den ersten zehn an einem Endpunkt veröffentlichten Ereignissen Fehler auftreten, geht Event Grid davon aus, dass am Endpunkt Probleme auftreten, und verzögert alle nachfolgenden Wiederholungsversuche *und neuen* Übermittlungen für einige Zeit – in einigen Fällen bis zu mehreren Stunden.
+
+Der funktionale Zweck der verzögerten Übermittlung besteht darin, sowohl fehlerhafte Endpunkte als auch das Event Grid-System zu schützen. Ohne Backoff und Verzögerung der Übermittlung an fehlerhafte Endpunkte können die Wiederholungsrichtlinie und Volumefunktionen von Event Grid ein System leicht überfordern.
+
 ## <a name="dead-letter-events"></a>„Unzustellbare Nachrichten“-Ereignisse
 
 Wenn ein Ereignis nicht übermittelt werden kann, kann Event Grid das nicht übermittelte Ereignis an ein Speicherkonto senden. Dieser Prozess wird als Speicherung unzustellbarer Nachrichten bezeichnet. Die Speicherung unzustellbarer Nachrichten ist standardmäßig nicht aktiviert. Wenn Sie das Feature aktivieren möchten, müssen Sie bei der Erstellung des Ereignisabonnements ein Speicherkonto zum Speichern nicht übermittelter Ereignisse angeben. Ereignisse werden aus diesem Speicherkonto gepullt, um Übermittlungsprobleme zu beheben.
@@ -63,25 +69,29 @@ Event Grid verwendet HTTP-Antwortcodes zum Bestätigen des Eingangs von Ereignis
 
 ### <a name="success-codes"></a>Erfolgscodes
 
-Die folgenden HTTP-Antwortcodes geben an, dass ein Ereignis erfolgreich an den Webhook übermittelt wurde. Die Übermittlung gilt dann in Event Grid als abgeschlossen.
+Event Grid berücksichtigt **nur** die folgenden HTTP-Antwortcodes als erfolgreiche Übermittlungen. Alle anderen Statuscodes gelten als Übermittlungen, bei denen Fehler aufgetreten sind, und die Übermittlungen werden entsprechend neu versucht oder als unzustellbar behandelt. Nach dem Empfang eines erfolgreichen Statuscodes betrachtet Event Grid die Übermittlung als abgeschlossen.
 
 - 200 – OK
+- 201 – Erstellt
 - 202 – Akzeptiert
+- 203 Keine Autorisierungsinformationen
+- 204 Kein Inhalt
 
 ### <a name="failure-codes"></a>Fehlercodes
 
-Die folgenden HTTP-Antwortcodes geben an, dass bei der Übermittlung eines Ereignisses ein Fehler aufgetreten ist.
+Alle anderen Codes, die nicht zur obigen Gruppe (200-204) gehören, werden als Fehler angesehen, und es wird ein neuer Versuch unternommen. Für einige gelten spezifische Wiederholungsrichtlinien, die im Folgenden beschrieben werden, alle anderen folgen dem standardmäßigen exponentiellen Backoffmodell. Es ist wichtig zu beachten, dass aufgrund der stark parallelisierten Architektur von Event Grid das Wiederholungsverhalten nicht deterministisch ist. 
 
-- 400 – Ungültige Anforderung
-- 401 – Nicht autorisiert
-- 404 – Nicht gefunden
-- 408 – Anforderungstimeout
-- 413 – Anforderungsentität zu groß
-- 414 – URI zu lang
-- 429 – Zu viele Anforderungen
-- 500 Interner Serverfehler
-- 503 Dienst nicht verfügbar
-- 504 Gateway-Timeout
+| Statuscode | Wiederholungsverhalten |
+| ------------|----------------|
+| 400 – Ungültige Anforderung | Wiederholen Sie den Vorgang nach mindestens 5 Minuten (das Verschieben in die Warteschlange für unzustellbare Nachrichten erfolgt sofort, wenn dies eingerichtet ist). |
+| 401 – Nicht autorisiert | Wiederholen Sie den Vorgang nach mindestens 5 Minuten. |
+| 403 Verboten | Wiederholen Sie den Vorgang nach mindestens 5 Minuten. |
+| 404 – Nicht gefunden | Wiederholen Sie den Vorgang nach mindestens 5 Minuten. |
+| 408 Anforderungstimeout | Wiederholen Sie den Vorgang nach mindestens 2 Minuten. |
+| 413 – Anforderungsentität zu groß | Wiederholen Sie den Vorgang nach mindestens 10 Sekunden (das Verschieben in die Warteschlange für unzustellbare Nachrichten erfolgt sofort, wenn dies eingerichtet ist). |
+| 503 Dienst nicht verfügbar | Wiederholen Sie den Vorgang nach mindestens 30 Sekunden. |
+| Alle anderen | Wiederholen Sie den Vorgang nach mindestens 10 Sekunden. |
+
 
 ## <a name="next-steps"></a>Nächste Schritte
 

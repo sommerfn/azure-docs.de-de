@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 07/05/2019
+ms.date: 07/16/2019
 ms.author: erhopf
-ms.openlocfilehash: 121e94228ca85684b20f2ee43c0f7fa3af82fc73
-ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
+ms.openlocfilehash: cb30b476471e140f96fa1d159e9a16898f529607
+ms.sourcegitcommit: 9a699d7408023d3736961745c753ca3cec708f23
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67606335"
+ms.lasthandoff: 07/16/2019
+ms.locfileid: "68277495"
 ---
 # <a name="speech-devices-sdk-microphone-array-recommendations"></a>Empfehlungen zum Mikrofonarray für das Speech-Geräte-SDK
 
@@ -43,13 +43,12 @@ Bei der Auswahl von Mikrofonen werden folgende Eigenschaften empfohlen:
 
 | Parameter                         | Empfohlen                       |
 |-----------------------------------|-----------------------------------|
-| SNR                               | \> 65 dB (1 kHz-Signal, 94 dBSPL, A-bewertetes Rauschen)   |
+| SNR                               | \> 65 dB (1 kHz-Signal, 94 dBSPL, bewerteter Schalldruckpegel)   |
 | Amplitudenanpassung                | ± 1 dB bei 1 kHz                     |
 | Phasenanpassung                    | ± 2° bei 1 kHz                       |
-| Akustischer Überlastpunkt (AOP)     | \> 120 dBSPL (THD = 10 %)          |
+| Akustischer Überlastpunkt (AOP)     | \> = 120 dBSPL (THD = 10 %)          |
 | Bitrate                          | Mindestens 24 Bit                    |
 | Samplingrate                     | Mindestens 16 kHz\*                   |
-| Richtwirkung                       | Omnidirektional                   |
 | Frequenzgang                | ± 3 dB, 200 – 8000 Hz Floating Mask\*|
 | Zuverlässigkeit                       | Lagertemperaturbereich -40 °C bis 70 °C<br />Betriebstemperaturbereich -20 °C bis 55 °C  |
 
@@ -59,18 +58,19 @@ Eine gute Komponentenauswahl muss mit einer guten elektroakustischen Integration
 
 ## <a name="microphone-array-integration"></a>Integration von Mikrofonarrays
 
-Die Leistung der Arrays bei Integration in ein Gerät und nach einer festen Verstärkung oder EQ sollte den folgenden Empfehlungen entsprechen:
+Die Leistung des im Gerät integrierten Mikrofonarrays kann je nach Komponentenspezifikation variieren. Es ist wichtig, dass Sie sicherstellen, dass die Mikrofone nach der Integration gut abgestimmt sind. Daher sollte die gemessene Geräteleistung nach fester Verstärkung oder Entzerrung den folgenden Empfehlungen entsprechen:
 
 |  Parameter        |    Empfohlen |
 |--------------------|----------------------------------------------------|
-|  SNR                 | \> 65 dB (1 kHz-Signal, 94 dBSPL, A-bewertetes Rauschen) |
+|  SNR                 | \> 63 dB (1 kHz-Signal, 94 	dBSPL, bewerteter Schalldruckpegel) |
 |  Ausgangsempfindlichkeit  | -26 dBFS/Pa bei 1 kHz (empfohlen) |
 |  Amplitudenanpassung  | ± 2 dB, 200 – 8000 Hz |
-|  Phasenanpassung      | ± 5°, 200 – 8000 Hz |
-| THD %                 | ≤ 1 %, 200 – 8000 Hz, 94 dBSPL, 5. Ordnung |
-|  Frequenzgang  | ± 6 dB, 200 – 8000 Hz Floating Mask\* |
+| THD%\*                 | ≤ 1 %, 200 – 8000 Hz, 94 dBSPL, 5. Ordnung |
+|  Frequenzgang  | ± 6 dB, 200 – 8000 Hz Band-pass filter\*\* |
 
-*\*Für hochwertige Kommunikationsanwendungen (VoIP) können „breitere“ Frequenzbereiche erforderlich sein.*
+*\*\*Ein Lautsprecher mit niedriger Verzerrung ist zum Messen des THD-Werts (Total Harmonic Distortion, harmonische Verzerrung) erforderlich (z. B. Neumann KH120).*
+
+*\*\*Für hochwertige Kommunikationsanwendungen (VoIP) können „breitere“ Frequenzbereiche erforderlich sein.*
 
 ## <a name="speaker-integration-recommendations"></a>Empfehlungen zur Lautsprecherintegration
 

@@ -5,15 +5,15 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: article
-ms.date: 06/05/2019
+ms.date: 07/15/2019
 ms.author: tamram
 ms.subservice: common
-ms.openlocfilehash: e57291292d8957fd323f9be03bb7df0492484ea8
-ms.sourcegitcommit: a12b2c2599134e32a910921861d4805e21320159
+ms.openlocfilehash: ffae7467e9f94c68cf004b74c9791f2d9cda3171
+ms.sourcegitcommit: a6873b710ca07eb956d45596d4ec2c1d5dc57353
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/24/2019
-ms.locfileid: "67341621"
+ms.lasthandoff: 07/16/2019
+ms.locfileid: "68250005"
 ---
 # <a name="authenticate-with-azure-active-directory-from-an-application-for-access-to-blobs-and-queues"></a>Authentifizieren mit Azure Active Directory aus einer Anwendung für den Zugriff auf Blobs und Warteschlangen
 
@@ -49,16 +49,16 @@ Ausführlichere Informationen zum Registrieren einer Anwendung bei Azure AD find
 Erteilen Sie als Nächstes Ihrer Anwendung Berechtigungen zum Aufrufen von Azure Storage-APIs. Dieser Schritt ermöglicht Ihrer Anwendung, Anforderungen an Azure Storage mit Azure AD zu autorisieren.
 
 1. Wählen Sie auf der Seite **Übersicht** für Ihre registrierte Anwendung die Option **API-Berechtigungen anzeigen** aus.
-1. Wählen Sie im Abschnitt **API-Berechtigungen** die Option **Berechtigung hinzufügen** und dann **Von meiner Organisation verwendete APIs** aus.
-1. Suchen Sie im Abschnitt **Von meiner Organisation verwendete APIs** nach „Azure Storage“, und wählen Sie **Azure Storage** in der Ergebnisliste aus, um den Bereich **API-Berechtigungen anfordern** anzuzeigen.
+1. Wählen Sie im Abschnitt **API-Berechtigungen** die Option **Berechtigung hinzufügen** und dann **Microsoft-APIs** aus.
+1. Wählen Sie aus der Liste der Ergebnisse **Azure Storage** aus, um den Bereich **API-Berechtigungen anfordern** anzuzeigen.
+1. Beachten Sie, dass unter **What type of permissions does your application require?** (Welche Art von Berechtigungen sind für Ihre Anwendung erforderlich?) als verfügbarer Berechtigungstyp **Delegated permissions** (Delegierte Berechtigungen) angezeigt wird. Diese Option ist standardmäßig für Sie aktiviert.
+1. Aktivieren Sie im Bereich **API-Berechtigungen anfordern** im Abschnitt **Berechtigungen auswählen** das Kontrollkästchen neben **user_impersonation**, und klicken Sie dann auf **Berechtigungen hinzufügen**.
 
     ![Screenshot mit Berechtigungen für den Speicher](media/storage-auth-aad-app/registered-app-permissions-1.png)
 
-1. Beachten Sie, dass unter **What type of permissions does your application require?** (Welche Art von Berechtigungen sind für Ihre Anwendung erforderlich?) als verfügbarer Berechtigungstyp **Delegated permissions** (Delegierte Berechtigungen) angezeigt wird. Diese Option ist standardmäßig für Sie aktiviert.
-1. Aktivieren Sie im Bereich **API-Berechtigungen anfordern** im Abschnitt **Berechtigungen auswählen** das Kontrollkästchen neben **user_impersonation**, und klicken Sie dann auf **Berechtigungen hinzufügen**.
-1. Im Bereich **API-Berechtigungen** wird jetzt angezeigt, dass Ihre Azure AD-Anwendung Zugriff auf Microsoft Graph und Azure Storage hat. Berechtigungen für Microsoft Graph werden automatisch gewährt, wenn Sie Ihre App zum ersten Mal bei Azure AD registrieren.
+Im Bereich **API-Berechtigungen** wird jetzt angezeigt, dass Ihre registrierte Azure AD-Anwendung Zugriff auf Microsoft Graph und Azure Storage hat. Berechtigungen für Microsoft Graph werden automatisch gewährt, wenn Sie Ihre App zum ersten Mal bei Azure AD registrieren.
 
-    ![Screenshot mit Berechtigungen der registrierten App](media/storage-auth-aad-app/registered-app-permissions-2.png)
+![Screenshot mit Berechtigungen der registrierten App](media/storage-auth-aad-app/registered-app-permissions-2.png)
 
 ## <a name="create-a-client-secret"></a>Erstellen eines Clientgeheimnisses
 
@@ -78,6 +78,22 @@ Sobald Sie Ihre Anwendung registriert und ihr Berechtigungen für den Zugriff au
 
 Eine Liste der Szenarien, für die das Abrufen von Token unterstützt wird, finden Sie im GitHub-Repository [Microsoft Authentication Library (MSAL) for .NET](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet) im Bereich [Scenarios](https://aka.ms/msal-net-scenarios).
 
+## <a name="well-known-values-for-authentication-with-azure-ad"></a>Bekannte Werte für die Authentifizierung mit Azure AD
+
+Um einen Sicherheitsprinzipal bei Azure AD zu authentifizieren, müssen Sie einige bekannte Werte in den Code aufnehmen.
+
+### <a name="azure-ad-authority"></a>Azure AD-Autorität
+
+Für die öffentliche Microsoft-Cloud lautet die Azure AD-Autorität wie unten angegeben. Dabei steht *tenant-id* für Ihre Active Directory-Mandanten-ID (oder Verzeichnis-ID):
+
+`https://login.microsoftonline.com/<tenant-id>/`
+
+Die Mandanten-ID identifiziert den zur Authentifizierung zu verwendenden Azure AD-Mandanten. Er wird auch als Verzeichnis-ID bezeichnet. Navigieren Sie zur Seite **Übersicht** Ihrer App-Registrierung im Azure-Portal, und kopieren Sie den Wert von dort, um die Mandanten-ID abzurufen.
+
+### <a name="azure-storage-resource-id"></a>Azure Storage-Ressourcen-ID
+
+[!INCLUDE [storage-resource-id-include](../../../includes/storage-resource-id-include.md)]
+
 ## <a name="net-code-example-create-a-block-blob"></a>Codebeispiel für .NET: Erstellen eines Blockblobs
 
 Das Codebeispiel veranschaulicht, wie Sie ein Zugriffstoken aus Azure AD abrufen. Mit dem Zugriffstoken wird der angegebene Benutzer authentifiziert und anschließend eine Anforderung zum Erstellen eines Blockblobs autorisiert. Damit dieses Beispiel funktioniert, führen Sie zunächst die in den vorherigen Abschnitten beschriebenen Schritte aus.
@@ -89,24 +105,6 @@ Sie benötigen die folgenden Werte aus der App-Registrierung, um das Token anzuf
 - Die Client-ID (oder Anwendungs-ID). Diesen Wert können Sie über die **Übersicht** Ihrer App-Registrierung abrufen.
 - Der Clientumleitungs-URI. Diesen Wert können Sie über die Einstellungen zur **Authentication** (Authentifizierung) für Ihre App-Registrierung abrufen.
 - Den Wert des geheimen Clientschlüssels. Diesen Wert können Sie aus dem Speicherort abrufen, an dem Sie den Wert zuvor abgelegt haben.
-
-### <a name="well-known-values-for-authentication-with-azure-ad"></a>Bekannte Werte für die Authentifizierung mit Azure AD
-
-Um einen Sicherheitsprinzipal bei Azure AD zu authentifizieren, müssen Sie einige bekannte Werte in den Code aufnehmen.
-
-#### <a name="azure-ad-authority"></a>Azure AD-Autorität
-
-Für die öffentliche Microsoft-Cloud lautet die Azure AD-Autorität wie unten angegeben. Dabei steht *tenant-id* für Ihre Active Directory-Mandanten-ID (oder Verzeichnis-ID):
-
-`https://login.microsoftonline.com/<tenant-id>/`
-
-Die Mandanten-ID identifiziert den zur Authentifizierung zu verwendenden Azure AD-Mandanten. Er wird auch als Verzeichnis-ID bezeichnet. Navigieren Sie zur Seite **Übersicht** Ihrer App-Registrierung im Azure-Portal, und kopieren Sie den Wert von dort, um die Mandanten-ID abzurufen.
-
-#### <a name="storage-resource-id"></a>Storage-Ressourcen-ID
-
-Verwenden Sie die Azure Storage-Ressourcen-ID, um ein Token zum Autorisieren von Anforderungen an Azure Storage abzurufen:
-
-`https://storage.azure.com/`
 
 ### <a name="create-a-storage-account-and-container"></a>Erstellen eines Speicherkontos und Containers
 
@@ -177,9 +175,11 @@ Authorization: Bearer eyJ0eXAiOnJKV1...Xd6j
 
 #### <a name="get-an-oauth-token-from-azure-ad"></a>Abrufen eines OAuth-Tokens von Azure AD
 
-Fügen Sie als Nächstes eine Methode hinzu, die ein Token von Azure AD anfordert. Das Token wird im Namen des Benutzers angefordert, und dazu verwenden wir die GetTokenOnBehalfOfUser-Methode.
+Fügen Sie als Nächstes eine Methode hinzu, die im Namen des Benutzers ein Token von Azure AD anfordert. Diese Methode definiert den Bereich, für den Berechtigungen erteilt werden sollen. Weitere Informationen zu Berechtigungen und Bereichen finden Sie unter [Berechtigungen und Zustimmung im Microsoft Identity Platform-Endpunkt](../../active-directory/develop/v2-permissions-and-consent.md).
 
-Denken Sie an Folgendes: Wenn Sie sich kürzlich angemeldet haben und ein Token für die `storage.azure.com`-Ressource anfordern, müssen Sie dem Benutzer eine Benutzeroberfläche anzeigen, auf der er einer Aktion in seinem Namen zustimmen kann. Um diesen Vorgang zu vereinfachen, müssen Sie, wie im folgenden Beispiel gezeigt, die Ausnahme `MsalUiRequiredException` abfangen und die Funktion zum Anfordern der Benutzerzustimmung hinzufügen:
+Verwenden Sie die Ressourcen-ID, um den Bereich zu erstellen, für den das Token abgerufen werden soll. Im Beispiel wird der Bereich mit der Ressourcen-ID und dem integrierten `user_impersonation`-Bereich erstellt, der angibt, dass das Token im Namen des Benutzers angefordert wird.
+
+Beachten Sie, dass Sie dem Benutzer möglicherweise eine Benutzeroberfläche zur Verfügung stellen müssen, die ihm ermöglicht, die Zustimmung zur Anforderung des Tokens in seinem Namen zu erteilen. Wenn eine Zustimmung erforderlich ist, fängt das Beispiel die **MsalUiRequiredException** ab und ruft eine andere Methode auf, um die Anforderung für die Zustimmung zu vereinfachen:
 
 ```csharp
 public async Task<IActionResult> Blob()
@@ -194,7 +194,8 @@ public async Task<IActionResult> Blob()
     }
     catch (MsalUiRequiredException ex)
     {
-        AuthenticationProperties properties = BuildAuthenticationPropertiesForIncrementalConsent(scopes, ex);
+        AuthenticationProperties properties =
+            BuildAuthenticationPropertiesForIncrementalConsent(scopes, ex);
         return Challenge(properties);
     }
 }
@@ -205,15 +206,18 @@ Einwilligung ist der Prozess, mit dem ein Benutzer einer Anwendung die Autorisie
 Mit der folgenden Methode werden die Authentifizierungseigenschaften für die Anforderung der inkrementellen Zustimmung erstellt:
 
 ```csharp
-private AuthenticationProperties BuildAuthenticationPropertiesForIncrementalConsent(string[] scopes, MsalUiRequiredException ex)
+private AuthenticationProperties BuildAuthenticationPropertiesForIncrementalConsent(string[] scopes,
+                                                                                    MsalUiRequiredException ex)
 {
     AuthenticationProperties properties = new AuthenticationProperties();
 
-    // Set the scopes, including the scopes that ADAL.NET / MSAL.NET need for the Token cache.
+    // Set the scopes, including the scopes that ADAL.NET or MSAL.NET need for the Token cache.
     string[] additionalBuildInScopes = new string[] { "openid", "offline_access", "profile" };
-    properties.SetParameter<ICollection<string>>(OpenIdConnectParameterNames.Scope, scopes.Union(additionalBuildInScopes).ToList());
+    properties.SetParameter<ICollection<string>>(OpenIdConnectParameterNames.Scope,
+                                                 scopes.Union(additionalBuildInScopes).ToList());
 
-    // Attempt to set the login_hint so that the logged-in user is not presented with an account selection dialog.
+    // Attempt to set the login_hint so that the logged-in user is not presented
+    // with an account selection dialog.
     string loginHint = HttpContext.User.GetLoginHint();
     if (!string.IsNullOrWhiteSpace(loginHint))
     {
@@ -235,7 +239,7 @@ private AuthenticationProperties BuildAuthenticationPropertiesForIncrementalCons
 
 ## <a name="view-and-run-the-completed-sample"></a>Anzeigen und Ausführen des vollständigen Beispiels
 
-Zum Ausführen der Beispielanwendung klonen Sie diese zunächst, oder laden Sie diese aus [GitHub](https://aka.ms/aadstorage) herunter. Aktualisieren Sie die Anwendung anschließend wie in den folgenden Abschnitten beschrieben.
+Zum Ausführen der Beispielanwendung klonen Sie diese zunächst, oder laden Sie diese aus [GitHub](https://github.com/Azure-Samples/storage-dotnet-azure-ad-msal) herunter. Aktualisieren Sie die Anwendung anschließend wie in den folgenden Abschnitten beschrieben.
 
 ### <a name="provide-values-in-the-settings-file"></a>Bereitstellen von Werten in der Einstellungsdatei
 

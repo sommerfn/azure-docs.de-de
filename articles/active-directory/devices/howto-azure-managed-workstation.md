@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: frasim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 51d8bbc8b8be9679fbf024d7c51de53c430dc493
-ms.sourcegitcommit: 978e1b8cac3da254f9d6309e0195c45b38c24eb5
+ms.openlocfilehash: 90687d0229d3ad74c287bb4aff4885dc26932e40
+ms.sourcegitcommit: 920ad23613a9504212aac2bfbd24a7c3de15d549
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/03/2019
-ms.locfileid: "67550488"
+ms.lasthandoff: 07/15/2019
+ms.locfileid: "68227268"
 ---
 # <a name="deploy-a-secure-azure-managed-workstation"></a>Stellen Sie eine sichere, von Azure verwaltete Arbeitsstation bereit
 
@@ -168,7 +168,7 @@ In Intune im Azure-Portal:
    * Beschreibung – **Bereitstellung von sicheren Arbeitsstationen**.
    * **Alle Zielgeräte in Autopilot umwandeln** auf **Ja** setzen. Diese Einstellung stellt sicher, dass alle Geräte in der Liste mit dem Autopilot-Bereitstellungsdienst registriert werden. Lassen Sie 48 Stunden zur Verarbeitung der Registrierung verstreichen.
 1. Klicken Sie auf **Weiter**.
-   * Wählen Sie im **Bereitstellungsmodus** **Self-Deploying (Preview)** . Geräte mit diesem Profil sind dem Benutzer zugeordnet, der das Gerät registriert. Anmeldeinformationen sind erforderlich, um das Gerät zu registrieren.
+   * Wählen Sie im **Bereitstellungsmodus** **Self-Deploying (Preview)** . Geräte mit diesem Profil sind dem Benutzer zugeordnet, der das Gerät registriert. Anmeldeinformationen sind erforderlich, um das Gerät zu registrieren. Beachten Sie, dass die Bereitstellung eines Geräts im **Selbstbereitstellungsmodus** Ihnen die Bereitstellung von Laptops in einem freigegebenen Modell ermöglicht. Es findet keine Benutzerzuweisung statt, bis das Gerät zum ersten Mal einem Benutzer zugewiesen wird. Folglich werden alle Benutzerrichtlinien wie BitLocker erst dann aktiviert, wenn eine Benutzerzuweisung abgeschlossen ist. Weitere Informationen zum Anmelden bei einem gesicherten Gerät finden Sie unter [Ausgewählte Profile](https://docs.microsoft.com/intune/device-profile-assign).
    * Das Feld **Join to Azure AD as** sollte anzeigen, dass **Azure AD joined** ist und ausgegraut ist.
    * Wählen Sie Ihre Sprache (Region), Benutzerkonto-Typ **Standard**. 
 1. Klicken Sie auf **Weiter**.
@@ -177,6 +177,8 @@ In Intune im Azure-Portal:
 1. Wählen Sie **Zuordnungen** >  **Zuordnung zu** >  **ausgewählten Gruppen**. Wählen Sie unter **Zu integrierende Gruppen** die Option **Sichere Arbeitsstation-Benutzer**.
 1. Klicken Sie auf **Weiter**.
 1. Wählen Sie **Erstellen**, um das Profil zu erstellen. Das Autopilot-Bereitstellungsprofil steht nun für die Zuweisung von Geräten zur Verfügung.
+
+Die Registrierung von Geräten in Autopilot bietet eine je nach Gerätetyp und Rolle unterschiedliche Benutzererfahrung. In unserem Bereitstellungsbeispiel veranschaulichen wir ein Modell, bei dem die gesicherten Geräte in der Masse bereitgestellt werden und gemeinsam genutzt werden können, aber bei der ersten Verwendung wird das Gerät einem Benutzer zugewiesen. Weitere Informationen finden Sie unter [Was ist die Geräteregistrierung?](https://docs.microsoft.com/intune/device-enrollment).
 
 ### <a name="configure-windows-update"></a>Konfigurieren des Windows-Updates
 

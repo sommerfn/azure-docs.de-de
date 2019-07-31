@@ -12,19 +12,20 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 05/24/2019
 ms.author: mbullwin
-ms.openlocfilehash: 6ad2ab00060528557f618eb684ccfa710c3f09b9
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: ea324d616928b0d517c00dc9cab3e282f1e3415e
+ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67074174"
+ms.lasthandoff: 07/15/2019
+ms.locfileid: "67876425"
 ---
-# <a name="instrument-web-apps-at-runtime-with-application-insights-status-monitor"></a>Instrumentieren von Web-Apps zur Laufzeit mit dem Application Insights-Statusmonitor
+# <a name="instrument-web-apps-at-runtime-with-application-insights-codeless-attach"></a>Instrumentieren von Web-Apps zur Laufzeit mit Anfügen ohne Code in Application Insights
 
 Sie können eine Live-Web-App mit Azure Application Insights instrumentieren, ohne dass Sie Ihren Code ändern oder erneut bereitstellen müssen. Sie benötigen ein [Microsoft Azure](https://azure.com) -Abonnement.
 
 Der Statusmonitor wird zum Instrumentieren einer in IIS lokal oder auf einem virtuellen Computer gehosteten .NET-Anwendung verwendet.
 
+- Wenn Ihre App in einer Azure-VM oder einer Azure-VM-Skalierungsgruppe bereitgestellt wird, befolgen Sie [diese Anweisungen](azure-vm-vmss-apps.md).
 - Wenn Ihre App in Azure App Services bereitgestellt wird, befolgen Sie [diese Anweisungen](azure-web-apps.md).
 - Wenn Ihre App auf einer Azure-VM bereitgestellt ist, können Sie die Application Insights-Überwachung über die Azure-Systemsteuerung aktivieren.
 - (Es gibt auch separate Artikel zum Instrumentieren von [Azure Cloud Services](../../azure-monitor/app/cloudservices.md).)
@@ -34,7 +35,7 @@ Der Statusmonitor wird zum Instrumentieren einer in IIS lokal oder auf einem vir
 
 Bei der Anwendung von Application Insights auf die .NET-Webanwendungen können Sie zwischen zwei Möglichkeiten wählen:
 
-* **Buildzeit:** [Fügen Sie Ihrem Web-App-Code das Application Insights-SDK hinzu][greenbrown].
+* **Buildzeit:** [Fügen][greenbrown] Sie Ihrem Web-App-Code das Application Insights-SDK hinzu.
 * **Laufzeit:** Instrumentieren Sie Ihre Web-App auf dem Server wie unten beschrieben, ohne den Code neu zu erstellen und bereitzustellen.
 
 > [!NOTE]
@@ -63,7 +64,7 @@ Wenn Ihre App auf einem IIS-Server gehostet wird, aktivieren Sie Application Ins
 2. Falls der Application Insights-Statusmonitor noch nicht installiert ist, [laden Sie den Statusmonitor-Installer herunter, und starten Sie ihn](#download).
 3. Wählen Sie im Statusmonitor die installierte Webanwendung oder Website aus, die Sie überwachen möchten. Melden Sie sich mit Ihren Azure-Anmeldeinformationen an.
 
-    Konfigurieren Sie die Ressource, in der die Ergebnisse im Application Insights-Portal angezeigt werden sollen. (In der Regel empfiehlt es sich, eine neue Ressource zu erstellen. Wählen Sie eine vorhandene Ressource aus, falls Sie bereits über [Webtests][availability] oder über eine [Clientüberwachung][client] für die App verfügen.) 
+    Konfigurieren Sie die Ressource, in der die Ergebnisse im Application Insights-Portal angezeigt werden sollen. (In der Regel empfiehlt es sich, eine neue Ressource zu erstellen. Wählen Sie eine vorhandene Ressource aus, falls Sie bereits über [Webtests][availability] or [client monitoring][client] für die App verfügen.) 
 
     ![Wählen Sie eine App und eine Ressource.](./media/monitor-performance-live-website-now/appinsights-036-configAIC.png)
 
@@ -79,7 +80,7 @@ Wenn Sie Application Insights aktivieren, werden Ihrer Web-App DLLs und „Appli
 
 ## <a name="when-you-re-publish-your-app-re-enable-application-insights"></a>Erneutes Aktivieren von Application Insights bei erneuter Veröffentlichung der App
 
-Überlegen Sie sich vor dem erneuten Veröffentlichen Ihrer App, ob Sie [Application Insights dem Code in Visual Studio hinzufügen][greenbrown] möchten. Sie erhalten ausführlichere Telemetriedaten und können benutzerdefinierte Telemetrie schreiben.
+Überlegen Sie sich vor dem erneuten Veröffentlichen Ihrer App, ob Sie [Application Insights dem Code in Visual Studio hinzufügen möchten][greenbrown]. Sie erhalten ausführlichere Telemetriedaten und können benutzerdefinierte Telemetrie schreiben.
 
 Wenn Sie die App erneut veröffentlichen möchten, ohne Application Insights dem Code hinzuzufügen, beachten Sie, dass die DLLs und „ApplicationInsights.config“ im Rahmen des Bereitstellungsprozesses unter Umständen aus der veröffentlichten Website gelöscht werden. Deshalb gilt Folgendes:
 
@@ -175,7 +176,7 @@ Löschen Sie diese Dateien in Ihrem Anwendungsverzeichnis:
 
 ### <a name="additional-troubleshooting"></a>Weitere Informationen zur Problembehandlung
 
-* Siehe [Weitere Informationen zur Problembehandlung][qna].
+* Weitere Informationen zur [Problembehandlung][qna].
 
 ## <a name="system-requirements"></a>Systemanforderungen
 Betriebssystemunterstützung für den Application Insights-Statusmonitor auf dem Server:
@@ -311,6 +312,7 @@ Für Anwendungen, die beim Kompilieren bereits instrumentiert sind:
 
 ## <a name="download"></a>Herunterladen des Statusmonitors
 
+- Verwenden des neuen [PowerShell-Moduls](https://docs.microsoft.com/azure/azure-monitor/app/status-monitor-v2-overview)
 - Laden Sie den [Statusmonitor-Installer](https://go.microsoft.com/fwlink/?LinkId=506648) herunter, und starten Sie ihn.
 - Oder führen Sie den [Webplattform-Installer](https://www.microsoft.com/web/downloads/platform.aspx) aus, und suchen Sie darin nach dem Application Insights-Statusmonitor.
 
@@ -325,7 +327,7 @@ Anzeigen der Telemetrie:
 Hinzufügen weiterer Telemetrieelemente:
 
 * [Erstellen Sie Webtests][availability], um sicherzustellen, dass Ihre Website live bleibt.
-* [Fügen Sie Webclienttelemetrie hinzu][usage], um Ausnahmen von Webseitencode anzuzeigen und Ablaufverfolgungsaufrufe einfügen zu können.
+* [Fügen Sie Webclient-Telemetriedaten hinzu][usage], um Ausnahmen von Webseitencode anzuzeigen und Ablaufverfolgungsaufrufe einfügen zu können.
 * [Fügen Sie Ihrem Code das Application Insights SDK hinzu][greenbrown], um Ablaufverfolgungs- und Protokollaufrufe einfügen zu können.
 
 <!--Link references-->

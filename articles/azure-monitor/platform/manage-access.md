@@ -11,14 +11,14 @@ ms.service: log-analytics
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 03/27/2019
+ms.date: 07/16/2019
 ms.author: magoedte
-ms.openlocfilehash: 22802950c68dc5a3cf0df8ee26ff38ccb937b551
-ms.sourcegitcommit: 2d3b1d7653c6c585e9423cf41658de0c68d883fa
+ms.openlocfilehash: fbfbd8e26ab3e92f06194322be7ec2be2fb180fd
+ms.sourcegitcommit: a6873b710ca07eb956d45596d4ec2c1d5dc57353
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/20/2019
-ms.locfileid: "67295519"
+ms.lasthandoff: 07/16/2019
+ms.locfileid: "68254467"
 ---
 # <a name="manage-log-data-and-workspaces-in-azure-monitor"></a>Verwalten von Protokolldaten und Arbeitsbereichen in Azure Monitor
 In Azure Monitor werden Protokolldaten in einem Log Analytics-Arbeitsbereich gespeichert, bei dem es sich im Wesentlichen um einen Container handelt, der Daten und Konfigurationsinformationen enthält. Zum Verwalten des Zugriffs auf Protokolldaten führen Sie verschiedene Verwaltungsaufgaben für Arbeitsbereiche durch. Sie oder andere Mitglieder Ihrer Organisation können mehrere Arbeitsbereiche nutzen, um unterschiedliche Mengen von Daten zu verwalten, die in Ihrer gesamten IT-Infrastruktur oder Teilen davon erfasst werden.
@@ -192,12 +192,18 @@ Jedem Arbeitsbereich können mehrere Konten zugeordnet werden, und jedes Konto k
 
 Für die folgenden Aktivitäten sind ebenfalls Azure-Berechtigungen erforderlich:
 
-| Aktion                                                          | Azure-Berechtigungen erforderlich | Notizen |
-|-----------------------------------------------------------------|--------------------------|-------|
-| Hinzufügen und Entfernen von Überwachungslösungen                        | `Microsoft.Resources/deployments/*` <br> `Microsoft.OperationalInsights/*` <br> `Microsoft.OperationsManagement/*` <br> `Microsoft.Automation/*` <br> `Microsoft.Resources/deployments/*/write` | Diese Berechtigungen müssen auf der Ressourcengruppen- oder Abonnementebene gewährt werden. |
-| Ändern des Tarifs                                       | `Microsoft.OperationalInsights/workspaces/*/write` | |
+||Aktion |Azure-Berechtigungen erforderlich |Notizen |
+|-------|-------------------------|------|
+| Hinzufügen und Entfernen von Überwachungslösungen | `Microsoft.Resources/deployments/*` <br> `Microsoft.OperationalInsights/*` <br> `Microsoft.OperationsManagement/*` <br> `Microsoft.Automation/*` <br> `Microsoft.Resources/deployments/*/write` | Diese Berechtigungen müssen auf der Ressourcengruppen- oder Abonnementebene gewährt werden. |
+| Ändern des Tarifs | `Microsoft.OperationalInsights/workspaces/*/write` | |
 | Anzeigen von Daten auf den Kacheln der *Backup*- und *Site Recovery*-Lösungen | Administrator/Co-Administrator | Zugriff auf Ressourcen, die mit dem klassischen Bereitstellungsmodell bereitgestellt werden |
-| Erstellen eines Arbeitsbereichs im Azure-Portal                        | `Microsoft.Resources/deployments/*` <br> `Microsoft.OperationalInsights/workspaces/*` ||
+| Erstellen eines Arbeitsbereichs im Azure-Portal | `Microsoft.Resources/deployments/*` <br> `Microsoft.OperationalInsights/workspaces/*` ||
+| Anzeigen von grundlegenden Arbeitsbereichseigenschaften und Eingeben des Arbeitsbereichsblatts im Portal | `Microsoft.OperationalInsights/workspaces/read` ||
+| Abfragen von Protokollen mit einer beliebigen Schnittstelle | `Microsoft.OperationalInsights/workspaces/query/read` ||
+| Zugriff auf alle Protokolltypen mithilfe von Abfragen | `Microsoft.OperationalInsights/workspaces/query/*/read` ||
+| Zugriff auf eine bestimmte Protokolltabelle | `Microsoft.OperationalInsights/workspaces/query/<table_name>/read` ||
+| Lesen der Arbeitsbereichsschlüssel, um das Senden von Protokollen an den Arbeitsbereich zuzulassen | `Microsoft.OperationalInsights/workspaces/sharedKeys/action` ||
+
 
 
 #### <a name="manage-access-to-log-analytics-workspace-using-azure-permissions"></a>Verwalten des Zugriffs auf den Log Analytics-Arbeitsbereich mit Azure-Berechtigungen 
@@ -215,9 +221,9 @@ Die Rolle „Log Analytics-Leser“ umfasst die folgenden Azure-Aktionen:
 
 | type    | Berechtigung | BESCHREIBUNG |
 | ------- | ---------- | ----------- |
-| Aktion | `*/read`   | Anzeigen aller Azure-Ressourcen und der Ressourcenkonfiguration, einschließlich: <br> VM-Erweiterungsstatus <br> Konfiguration von Azure-Diagnosen für Ressourcen <br> Sämtliche Eigenschaften und Einstellungen aller Ressourcen |
-| Aktion | `Microsoft.OperationalInsights/workspaces/analytics/query/action` | Ausführen von Protokollsuchabfragen (v2) |
-| Aktion | `Microsoft.OperationalInsights/workspaces/search/action` | Ausführen von Protokollsuchabfragen (v1) |
+| Aktion | `*/read`   | Anzeigen aller Azure-Ressourcen und der Ressourcenkonfiguration, einschließlich: <br> VM-Erweiterungsstatus <br> Konfiguration von Azure-Diagnosen für Ressourcen <br> Sämtliche Eigenschaften und Einstellungen aller Ressourcen. <br> Für Arbeitsbereiche lässt dies uneingeschränkte Berechtigungen zum Lesen der Arbeitsbereichseinstellungen und Durchführen von Abfragen der Daten zu. Genauere Optionen finden Sie oben. |
+| Aktion | `Microsoft.OperationalInsights/workspaces/analytics/query/action` | Veraltet: es gibt keinen Grund, diese Berechtigung Benutzern zuzuweisen. |
+| Aktion | `Microsoft.OperationalInsights/workspaces/search/action` | Veraltet: es gibt keinen Grund, diese Berechtigung Benutzern zuzuweisen. |
 | Aktion | `Microsoft.Support/*` | Öffnen von Supportfällen |
 |Keine Aktion | `Microsoft.OperationalInsights/workspaces/sharedKeys/read` | Verhindert das Lesen des Arbeitsbereichsschlüssels, der zum Verwenden der Datensammlungs-API und zum Installieren von Agents erforderlich ist. Dadurch wird verhindert, dass Benutzer dem Arbeitsbereich neue Ressourcen hinzufügen. |
 
@@ -242,7 +248,7 @@ Die Rolle „Log Analytics-Mitwirkender“ umfasst die folgenden Azure-Aktionen:
 
 | Berechtigung | BESCHREIBUNG |
 | ---------- | ----------- |
-| `*/read`     | Anzeigen aller Ressourcen und der Ressourcenkonfiguration, einschließlich: <br> VM-Erweiterungsstatus <br> Konfiguration von Azure-Diagnosen für Ressourcen <br> Sämtliche Eigenschaften und Einstellungen aller Ressourcen |
+| `*/read`     | Anzeigen aller Azure-Ressourcen und der Ressourcenkonfiguration, einschließlich: <br> VM-Erweiterungsstatus <br> Konfiguration von Azure-Diagnosen für Ressourcen <br> Sämtliche Eigenschaften und Einstellungen aller Ressourcen. <br> Für Arbeitsbereiche lässt dies uneingeschränkte Berechtigungen zum Lesen der Arbeitsbereichseinstellungen und Durchführen von Abfragen der Daten zu. Genauere Optionen finden Sie oben. |
 | `Microsoft.Automation/automationAccounts/*` | Erstellen und Konfigurieren von Azure Automation-Konten (einschließlich Hinzufügen und Bearbeiten von Runbooks) |
 | `Microsoft.ClassicCompute/virtualMachines/extensions/*` <br> `Microsoft.Compute/virtualMachines/extensions/*` | Hinzufügen, Aktualisieren und Entfernen von VM-Erweiterungen (einschließlich Microsoft Monitoring Agent und des OMS-Agents für Linux) |
 | `Microsoft.ClassicStorage/storageAccounts/listKeys/action` <br> `Microsoft.Storage/storageAccounts/listKeys/action` | Anzeigen des Speicherkontoschlüssels. Erforderlich, um Log Analytics für das Lesen von Protokollen aus Azure-Speicherkonten zu konfigurieren |
@@ -268,7 +274,7 @@ Wenn Benutzer Protokolle aus einem Arbeitsbereich mit ressourcenbezogenem Zugrif
 | Berechtigung | BESCHREIBUNG |
 | ---------- | ----------- |
 | `Microsoft.Insights/logs/<tableName>/read`<br><br>Beispiele:<br>`Microsoft.Insights/logs/*/read`<br>`Microsoft.Insights/logs/Heartbeat/read` | Möglichkeit, alle Protokolldaten für die Ressource anzuzeigen.  |
-
+| `Microsoft.Insights/diagnosticSettings/write ` | Die Möglichkeit zum Konfigurieren von Diagnoseeinstellungen, um das Einrichten von Protokollen für diese Ressource zuzulassen. |
 
 Diese Berechtigung wird in der Regel von einer Rolle erteilt, die _\*/read- oder_ _\*_ -Berechtigungen enthält, beispielsweise von den integrierten Rollen [Leser](../../role-based-access-control/built-in-roles.md#reader) und [Mitwirkender](../../role-based-access-control/built-in-roles.md#contributor). Beachten Sie, dass benutzerdefinierte Rollen, die bestimmte Aktionen umfassen, oder dedizierte integrierte Rollen diese Berechtigung ggf. nicht enthalten können.
 

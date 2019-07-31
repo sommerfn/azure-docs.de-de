@@ -6,12 +6,12 @@ ms.service: data-share
 ms.topic: conceptual
 ms.date: 07/10/2019
 ms.author: joanpo
-ms.openlocfilehash: 76889904dd89da0b44dad6b47250351c73f75653
-ms.sourcegitcommit: 1572b615c8f863be4986c23ea2ff7642b02bc605
+ms.openlocfilehash: a5d70b9aa611b4f939cb46b5d25655edd818cb35
+ms.sourcegitcommit: 47ce9ac1eb1561810b8e4242c45127f7b4a4aa1a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/10/2019
-ms.locfileid: "67788525"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67807535"
 ---
 # <a name="roles-and-requirements-for-azure-data-share-preview"></a>Rollen und Anforderungen für Azure Data Share (Vorschau)
 
@@ -21,12 +21,12 @@ Dieser Artikel beschreibt die Rollen, die erforderlich sind, um Daten mithilfe v
 
 Um Daten über Azure Data Share freizugeben oder zu empfangen, muss das Benutzerkonto, mit dem Sie sich bei Azure anmelden, in der Lage sein, dem Speicherkonto, aus dem Sie Daten freigeben oder in dem Sie Daten empfangen, Zugriff auf Data Share zu gewähren. Typischerweise ist dies eine Berechtigung, die in der Rolle **Besitzer** vorhanden ist, oder eine benutzerdefinierte Rolle mit zugewiesener Microsoft.Authorization/Rollenzuordnungen/Schreibberechtigung. 
 
-Um Daten freizugeben oder aus einem Azure Storage-Konto zu empfangen, müssen Sie Besitzer des Speicherkontos sein, in dem Sie Daten empfangen. Auch wenn Sie das Speicherkonto selbst erstellt haben, sind Sie nicht automatisch der Besitzer des Speicherkontos. Um sich selbst der Rolle „Besitzer“ des Azure Storage-Kontos hinzuzufügen, gehen Sie wie folgt vor.
+Damit Sie Daten für ein Azure Storage-Konto freigeben oder von einem solchen Konto empfangen können, müssen Sie der Besitzer des Kontos sein. Auch wenn Sie das Speicherkonto selbst erstellt haben, sind Sie nicht automatisch der Besitzer des Speicherkontos. Um sich selbst der Rolle „Besitzer“ des Azure Storage-Kontos hinzuzufügen, gehen Sie wie folgt vor.
 
 1. Navigieren Sie im Azure-Portal zum Speicherkonto.
 1. Wählen Sie **Zugriffssteuerung (IAM)** aus.
 1. Klicken Sie auf **Hinzufügen**.
-1. Fügen Sie sich selbst als Besitzer von Speicherblobdaten hinzu.
+1. Fügen Sie sich als Besitzer hinzu.
 
 Klicken Sie im Azure-Portal in der oberen rechten Ecke auf Ihren Benutzernamen und dann auf **Berechtigungen**, um Ihre Berechtigungen im Abonnement anzuzeigen. Wenn Sie Zugriff auf mehrere Abonnements besitzen, wählen Sie das entsprechende Abonnement aus. 
 

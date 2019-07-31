@@ -11,15 +11,15 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 05/25/2019
-ms.author: rclaus
+ms.date: 07/15/2019
+ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 2359f1ea1d55b8ce153295cc71fdf78040e8e316
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.openlocfilehash: 01001336e166d5eb2c7dff845b80da2174225a25
+ms.sourcegitcommit: b2db98f55785ff920140f117bfc01f1177c7f7e2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67707418"
+ms.lasthandoff: 07/16/2019
+ms.locfileid: "68234426"
 ---
 # <a name="sap-hana-large-instances-network-architecture"></a>SAP HANA-Netzwerkarchitektur (große Instanzen)
 
@@ -74,7 +74,9 @@ Für SAP-Bereitstellungen in Azure gelten folgende Unterschiede:
 - Die SAP-Anwendungsarchitektur ist empfindlicher gegenüber der Netzwerklatenz als typische Szenarien, in denen Daten zwischen lokalen Systemen und Azure ausgetauscht werden.
 - Das Azure ExpressRoute-Gateway verfügt mindestens über zwei ExpressRoute-Verbindungen. Eine Leitung, die als Verbindung für die lokale Umgebung fungiert, und eine Leitung für die Verbindung mit HANA (große Instanzen). Daher ist nur noch Platz für zwei weitere Leitungen von unterschiedlichen MSEEs, um eine Verbindung mit einem ExpressRoute-Gateway herzustellen. Diese Einschränkung gilt unabhängig von der Nutzung von ExpressRoute Fast Path. Für alle verbundenen Leitungen wird die maximale Bandbreite für eingehende Daten des ExpressRoute-Gateways gemeinsam genutzt.
 
-Die Netzwerklatenz zwischen VMs und Einheiten von HANA (große Instanz) kann höher sein als die typische Roundtriplatenz in einem Netzwerk zwischen VMs. Je nach Azure-Region können die gemessenen Werte die Roundtriplatenz von 0,7 ms übersteigen, die im [SAP-Hinweis 1100926 – Häufig gestellte Fragen: Netzwerkleistung](https://launchpad.support.sap.com/#/notes/1100926/E) als unterdurchschnittlich klassifiziert ist. Je nach Azure-Region und Tool zum Messen der Netzwerkroundtrip-Wartezeit zwischen einem virtuellen Azure-Computer und einer HANA-Einheit (große Instanzen) kann die gemessene Wartezeit bis zu ca. 2 Millisekunden betragen. Trotzdem stellen Kunden SAP HANA-basierte SAP-Produktionsanwendungen erfolgreich unter SAP HANA (große Instanz) bereit. Sie sollten Ihre Geschäftsprozesse unbedingt gründlich in SAP HANA in Azure (große Instanzen) testen. Mit der neuen Funktionalität „ExpressRoute Fast Path“ kann die Netzwerklatenz zwischen HANA (große Instanzen) und VMs auf der Anwendungsschicht in Azure erheblich reduziert werden (siehe unten). 
+Mit Revision 3 der Stamps von SAP HANA (große Instanzen) kann die Netzwerklatenz zwischen VMs und Einheiten von SAP HANA (große Instanzen) höher sein als die typische Roundtriplatenz zwischen VMs in einem Netzwerk. Je nach Azure-Region können die gemessenen Werte die Roundtriplatenz von 0,7 ms übersteigen, die im [SAP-Hinweis 1100926 – Häufig gestellte Fragen: Netzwerkleistung](https://launchpad.support.sap.com/#/notes/1100926/E) als unterdurchschnittlich klassifiziert ist. Je nach Azure-Region und Tool zum Messen der Netzwerkroundtrip-Wartezeit zwischen einem virtuellen Azure-Computer und einer HANA-Einheit (große Instanzen) kann die gemessene Wartezeit bis zu ca. 2 Millisekunden betragen. Trotzdem stellen Kunden SAP HANA-basierte SAP-Produktionsanwendungen erfolgreich unter SAP HANA (große Instanz) bereit. Sie sollten Ihre Geschäftsprozesse unbedingt gründlich in SAP HANA in Azure (große Instanzen) testen. Mit der neuen Funktionalität „ExpressRoute Fast Path“ kann die Netzwerklatenz zwischen HANA (große Instanzen) und VMs auf der Anwendungsschicht in Azure erheblich reduziert werden (siehe unten). 
+
+Mit Revision 4 der Stamps von SAP HANA (große Instanzen) kann die Netzwerklatenz zwischen Azure-VMs, die in der Nähe des Stamps von SAP HANA (große Instanzen) bereitgestellt werden, der durchschnittlichen Klassifizierung entsprechen oder besser sein, wie in [SAP Note #1100926 – FAQ: Network performance](https://launchpad.support.sap.com/#/notes/1100926/E) (SAP-Hinweis 1100926 – FAQ: Netzwerkleistung) dokumentiert, wenn der Azure ExpressRoute Fast Path konfiguriert ist (siehe unten). Um Azure-VMs in unmittelbarer Nähe zu Einheiten von SAP HANA (große Instanzen) der Revision 4 bereitzustellen, müssen Sie [Azure-Näherungsplatzierungsgruppen](https://docs.microsoft.com/azure/virtual-machines/linux/co-location) nutzen. Die Art und Weise, wie Näherungsplatzierungsgruppen verwendet werden können, um die SAP-Anwendungsschicht im gleichen Azure-Rechenzentrum wie die als Revision 4 gehosteten Einheiten von SAP HANA (große Instanzen) unterzubringen, ist in [Azure-Näherungsplatzierungsgruppen für optimale Netzwerklatenz mit SAP-Anwendungen](sap-proximity-placement-scenarios.md) beschrieben.
 
 Die Auswahl der ExpressRoute-Gateway-SKU ist entscheidend, um eine deterministische Netzwerklatenz zwischen VMs und HANA (große Instanz) bereitzustellen. Im Gegensatz zu den Datenverkehrsmustern zwischen lokalen Systemen und VMs kann das Datenverkehrsmuster zwischen VMs und HANA (große Instanz) kleine, aber hohe Bursts von zu übertragenden Anforderungen und Datenvolumen hervorbringen. Damit solche Bursts korrekt verarbeitet werden, empfehlen wir die Verwendung der UltraPerformance-Gateway-SKU. Für die Typ-II-Klasse-SKUs von HANA (große Instanz) muss die UltraPerformance-Gateway-SKU als ExpressRoute-Gateway verwendet werden.
 
@@ -101,7 +103,7 @@ Die zuvor gezeigte lokale Infrastruktur ist über ExpressRoute mit Azure verbund
 > [!NOTE] 
 > Stellen Sie zum Ausführen von SAP-Landschaften in Azure eine Verbindung mit dem Unternehmensedgerouter her, der der Azure-Region in der SAP-Landschaft am nächsten ist. Umfelder von HANA (große Instanz) werden über dedizierte Unternehmensedgerouter-Geräte verbunden, um die Netzwerklatenz zwischen VMs in Azure-IaaS und HANA-Umfeldern (große Instanz) zu minimieren.
 
-Das ExpressRoute-Gateway für die VMs, auf denen SAP-Anwendungsinstanzen gehostet werden, ist mit einer ExpressRoute-Leitung verbunden, über die eine Verbindung mit der lokalen Umgebung hergestellt wird. Dasselbe virtuelle Netzwerk ist mit einem separaten Unternehmensedgerouter verbunden, der zum Herstellen einer Verbindung mit Umfeldern der großen Instanz vorgesehen ist. Bei Verwendung von ExpressRoute Fast Path fließen die Daten von HANA (große Instanzen) zu den VMs der SAP-Anwendungsschicht. Da sie nicht mehr über das ExpressRoute-Gateway geleitet werden, wird die Latenz in Bezug auf Netzwerkroundtrips reduziert.
+Das ExpressRoute-Gateway für die VMs, auf denen SAP-Anwendungsinstanzen gehostet werden, ist mit einer ExpressRoute-Leitung verbunden, über die eine Verbindung mit der lokalen Umgebung hergestellt wird. Dasselbe virtuelle Netzwerk ist mit einem separaten Unternehmensedgerouter verbunden, der zum Herstellen einer Verbindung mit Umfeldern der großen Instanz vorgesehen ist. Bei Verwendung von ExpressRoute Fast Path fließen die Daten von SAP HANA (große Instanzen) zu den VMs der SAP-Anwendungsschicht. Da sie nicht mehr über das ExpressRoute-Gateway geleitet werden, wird die Latenz in Bezug auf Netzwerkroundtrips reduziert.
 
 Dieses System ist ein einfaches Beispiel für ein einzelnes SAP-System. Die SAP-Anwendungsschicht wird in Azure gehostet. Die SAP HANA-Datenbank wird in SAP HANA in Azure (große Instanzen) ausgeführt. Hierbei wird davon ausgegangen, dass die Bandbreite des ExpressRoute-Gateways mit einem Durchsatz von 2 GBit/s oder 10 GBit/s keinen Engpass darstellt.
 

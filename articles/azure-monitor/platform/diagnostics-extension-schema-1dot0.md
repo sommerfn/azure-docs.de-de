@@ -10,10 +10,10 @@ ms.date: 05/15/2017
 ms.author: robb
 ms.subservice: diagnostic-extension
 ms.openlocfilehash: ac2b79d670b803573a359dfc9f8738f972f2d9b5
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.sourcegitcommit: 13d5eb9657adf1c69cc8df12486470e66361224e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 07/31/2019
 ms.locfileid: "60237861"
 ---
 # <a name="azure-diagnostics-10-configuration-schema"></a>Konfigurationsschema für die Azure-Diagnose 1.0
@@ -101,7 +101,7 @@ Das Element der obersten Ebene der Diagnosekonfigurationsdatei
 
 Attribute:
 
-|Attribut  |Type   |Erforderlich| Standard | BESCHREIBUNG|  
+|Attribut  |type   |Erforderlich| Standard | BESCHREIBUNG|  
 |-----------|-------|--------|---------|------------|  
 |**configurationChangePollInterval**|duration|Optional | PT1M| Gibt das Intervall an, in dem der Diagnosemonitor Diagnosekonfigurationsänderungen abruft.|  
 |**overallQuotaInMB**|unsignedInt|Optional| 4\.000 MB. Wenn Sie einen Wert angeben, darf er diese Menge nicht übersteigen. |Die Gesamtmenge des Dateisystemspeichers, die für alle Protokollierungspuffer zugewiesen wurde|  
@@ -113,7 +113,7 @@ Definiert die Pufferkonfiguration für die Protokolle, die von der zugrunde lieg
 
 Attribute:
 
-|Attribut|Type|BESCHREIBUNG|  
+|Attribut|type|BESCHREIBUNG|  
 |---------|----|-----------------|  
 |**bufferQuotaInMB**|unsignedInt|Optional. Gibt die Höchstmenge des Dateisystemspeichers an, der für die angegebenen Daten verfügbar ist.<br /><br /> Der Standardwert ist 0.|  
 |**scheduledTransferLogLevelFilter**|Zeichenfolge|Optional. Gibt den minimalen Schweregrad für Protokolleinträge an, die übertragen werden. Der Standardwert lautet **Undefined**. Weitere mögliche Werte sind **Verbose**, **Information**, **Warning**, **Error** und **Critical**.|  
@@ -126,7 +126,7 @@ Attribute:
 
 Attribute:  
 
-|Attribut|Type|BESCHREIBUNG|  
+|Attribut|type|BESCHREIBUNG|  
 |---------------|----------|-----------------|  
 |**bufferQuotaInMB**|unsignedInt|Optional. Gibt die Höchstmenge des Dateisystemspeichers an, der für die angegebenen Daten verfügbar ist.<br /><br /> Der Standardwert ist 0.|  
 |**scheduledTransferLogLevelFilter**|Zeichenfolge|Optional. Gibt den minimalen Schweregrad für Protokolleinträge an, die übertragen werden. Der Standardwert lautet **Undefined**. Weitere mögliche Werte sind **Verbose**, **Information**, **Warning**, **Error** und **Critical**.|  
@@ -140,7 +140,7 @@ Definiert die Pufferkonfiguration für dateibasierte Protokolle, die Sie definie
 
 Attribute:  
 
-|Attribut|Type|BESCHREIBUNG|  
+|Attribut|type|BESCHREIBUNG|  
 |---------------|----------|-----------------|  
 |**bufferQuotaInMB**|unsignedInt|Optional. Gibt die Höchstmenge des Dateisystemspeichers an, der für die angegebenen Daten verfügbar ist.<br /><br /> Der Standardwert ist 0.|  
 |**scheduledTransferPeriod**|duration|Optional. Gibt das Intervall zwischen geplanten Datenübertragungen an (minutengenau gerundet).<br /><br /> Die Standardeinstellung lautet „PT0S“.|  
@@ -152,7 +152,7 @@ Attribute:
 
 Attribute:  
 
-|Attribut|Type|BESCHREIBUNG|  
+|Attribut|type|BESCHREIBUNG|  
 |---------------|----------|-----------------|  
 |**container**|Zeichenfolge|Der Name des Containers, an den der Inhalt des Verzeichnisses übertragen werden soll.|  
 |**directoryQuotaInMB**|unsignedInt|Optional. Gibt die maximale Größe des Verzeichnisses in Megabyte an.<br /><br /> Der Standardwert ist 0.|  
@@ -164,7 +164,7 @@ Attribute:
 
 Attribute:  
 
-|Attribut|Type|BESCHREIBUNG|  
+|Attribut|type|BESCHREIBUNG|  
 |---------------|----------|-----------------|  
 |**container**|Zeichenfolge|Der Name des Containers, an den der Inhalt des Verzeichnisses übertragen werden soll.|  
 |**directoryQuotaInMB**|unsignedInt|Optional. Gibt die maximale Größe des Verzeichnisses in Megabyte an.<br /><br /> Der Standardwert ist 0.|  
@@ -176,7 +176,7 @@ Attribute:
 
 Attribute:  
 
-|Attribut|Type|BESCHREIBUNG|  
+|Attribut|type|BESCHREIBUNG|  
 |---------------|----------|-----------------|  
 |**container**|Zeichenfolge|Der Name des Containers, an den der Inhalt des Verzeichnisses übertragen werden soll.|  
 |**directoryQuotaInMB**|unsignedInt|Optional. Gibt die maximale Größe des Verzeichnisses in Megabyte an.<br /><br /> Der Standardwert ist 0.|  
@@ -193,7 +193,7 @@ Attribute:
 
 Attribute:
 
-|Attribut|Type|BESCHREIBUNG|  
+|Attribut|type|BESCHREIBUNG|  
 |---------------|----------|-----------------|  
 |**container**|Zeichenfolge|Der Name des Containers, an den der Inhalt des Verzeichnisses übertragen werden soll.|  
 |**directoryQuotaInMB**|unsignedInt|Optional. Gibt die maximale Größe des Verzeichnisses in Megabyte an.<br /><br /> Der Standardwert ist 0.|  
@@ -205,7 +205,7 @@ Attribute:
 
 Attribute:  
 
-|Attribut|Type|BESCHREIBUNG|  
+|Attribut|type|BESCHREIBUNG|  
 |---------------|----------|-----------------|  
 |**path**|Zeichenfolge|Erforderlich. Der absolute Pfad zum Verzeichnis, das überwacht werden soll|  
 |**expandEnvironment**|boolean|Erforderlich. Umgebungsvariablen im Pfad werden erweitert, wenn für sie **true** festgelegt ist.|  
@@ -217,7 +217,7 @@ Attribute:
 
 Attribute:  
 
-|Attribut|Type|BESCHREIBUNG|  
+|Attribut|type|BESCHREIBUNG|  
 |---------------|----------|-----------------|  
 |**name**|Zeichenfolge|Erforderlich. Der Name der lokalen Ressource, die das zu überwachende Verzeichnis enthält|  
 |**relativePath**|Zeichenfolge|Erforderlich. Der Pfad in Relation zur lokalen Ressource, die überwacht werden soll|  
@@ -230,7 +230,7 @@ Attribute:
 
  Attribute:  
 
-|Attribut|Type|BESCHREIBUNG|  
+|Attribut|type|BESCHREIBUNG|  
 |---------------|----------|-----------------|  
 |**bufferQuotaInMB**|unsignedInt|Optional. Gibt die Höchstmenge des Dateisystemspeichers an, der für die angegebenen Daten verfügbar ist.<br /><br /> Der Standardwert ist 0.|  
 |**scheduledTransferPeriod**|duration|Optional. Gibt das Intervall zwischen geplanten Datenübertragungen an (minutengenau gerundet).<br /><br /> Die Standardeinstellung lautet „PT0S“.|  
@@ -242,7 +242,7 @@ Attribute:
 
  Attribute:  
 
-|Attribut|Type|BESCHREIBUNG|  
+|Attribut|type|BESCHREIBUNG|  
 |---------------|----------|-----------------|  
 |**counterSpecifier**|Zeichenfolge|Erforderlich. Der Pfad zum zu erfassenden Leistungsindikator|  
 |**sampleRate**|duration|Erforderlich. Die Rate, mit der der Leistungsindikator erfasst werden soll|  
@@ -254,7 +254,7 @@ Attribute:
 
   Attribute:
 
-|Attribut|Type|BESCHREIBUNG|  
+|Attribut|type|BESCHREIBUNG|  
 |---------------|----------|-----------------|  
 |**bufferQuotaInMB**|unsignedInt|Optional. Gibt die Höchstmenge des Dateisystemspeichers an, der für die angegebenen Daten verfügbar ist.<br /><br /> Der Standardwert ist 0.|  
 |**scheduledTransferLogLevelFilter**|Zeichenfolge|Optional. Gibt den minimalen Schweregrad für Protokolleinträge an, die übertragen werden. Der Standardwert lautet **Undefined**. Weitere mögliche Werte sind **Verbose**, **Information**, **Warning**, **Error** und **Critical**.|  
@@ -267,7 +267,7 @@ Attribute:
 
  Attribute:
 
-|Attribut|Type|BESCHREIBUNG|  
+|Attribut|type|BESCHREIBUNG|  
 |---------------|----------|-----------------|  
 |**name**|Zeichenfolge|Erforderlich. Ein XPath-Ausdruck, der das zu erfassende Protokoll angibt|  
 

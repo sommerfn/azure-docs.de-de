@@ -10,12 +10,12 @@ ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 12/06/2018
 ms.author: azfuncdf
-ms.openlocfilehash: 95ec6a863f951a8c26abd865041c68df333a4e38
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: a244883f470f4906879725daf0d37bd1759e65c4
+ms.sourcegitcommit: af31deded9b5836057e29b688b994b6c2890aa79
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65071345"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67812896"
 ---
 # <a name="durable-functions-patterns-and-technical-concepts-azure-functions"></a>Muster und technische Konzepte von Durable Functions (Azure Functions)
 
@@ -374,7 +374,7 @@ module.exports = async function (context) {
 };
 ```
 
-## <a name="pattern-6-aggregator-preview"></a>Muster 6: Aggregator (Vorschauversion)
+### <a name="aggregator"></a>Muster 6: Aggregator (Vorschauversion)
 
 Beim sechsten Muster geht es um Aggregierung von Ereignisdaten über einen bestimmten Zeitraum in einer einzigen, adressierbaren *Entität*. In diesem Muster können die aggregierten Daten aus mehreren Quellen stammen, in Batches geliefert werden und über lange Zeiträume verteilt sein. Der Aggregator muss möglicherweise Aktionen für Ereignisdaten durchführen, wenn er diese empfängt, und es kann sein, dass externe Daten die aggregierten Daten abfragen müssen.
 
@@ -385,27 +385,46 @@ Das Schwierige an der Implementierung dieses Musters mit normalen, zustandslosen
 Wenn Sie eine [Durable Entity-Funktion](durable-functions-preview.md#entity-functions) verwenden, können Sie dieses Muster ohne Probleme als einzelne Funktion implementieren.
 
 ```csharp
-public static async Task Counter(
-    [EntityTrigger(EntityClassName = "Counter")] IDurableEntityContext ctx)
+[FunctionName("Counter")]
+public static void Counter([EntityTrigger] IDurableEntityContext ctx)
 {
     int currentValue = ctx.GetState<int>();
-    int operand = ctx.GetInput<int>();
 
-    switch (ctx.OperationName)
+    switch (ctx.OperationName.ToLowerInvariant())
     {
         case "add":
+            int amount = ctx.GetInput<int>();
             currentValue += operand;
             break;
-        case "subtract":
-            currentValue -= operand;
-            break;
         case "reset":
-            await SendResetNotificationAsync();
             currentValue = 0;
+            break;
+        case "get":
+            ctx.Return(currentValue);
             break;
     }
 
     ctx.SetState(currentValue);
+}
+```
+
+Dauerhafte Entitäten können auch als .NET-Klassen modelliert werden. Dies kann sich als hilfreich erweisen, wenn die Liste der Vorgänge groß und überwiegend statisch ist. Beim folgenden Beispiel handelt es sich um eine äquivalente Implementierung der `Counter`-Entität unter Verwendung von .NET-Klassen und -Methoden.
+
+```csharp
+public class Counter
+{
+    [JsonProperty("value")]
+    public int CurrentValue { get; set; }
+
+    public void Add(int amount) => this.CurrentValue += amount;
+    
+    public void Reset() => this.CurrentValue = 0;
+    
+    public int Get() => this.CurrentValue;
+
+    [FunctionName(nameof(Counter))]
+    public static Task Run([EntityTrigger] IDurableEntityContext ctx)
+        => ctx.DispatchAsync<Counter>();
 }
 ```
 
@@ -426,7 +445,7 @@ public static async Task Run(
 }
 ```
 
-So ähnlich können Clients den Status einer Entity-Funktion mit Methoden in der `orchestrationClient`-Bindung abfragen.
+Außerdem stehen dynamisch generierte Proxys für signalisierende Entitäten auf typsichere Weise zur Verfügung. Zusätzlich zur Signalisierung können Clients auch den Zustand einer Entitätsfunktion mithilfe von Methoden der `orchestrationClient`-Bindung abfragen.
 
 > [!NOTE]
 > Entity-Funktionen sind momentan nur in der [Vorschauversion von Durable Functions 2.0](durable-functions-preview.md) verfügbar.

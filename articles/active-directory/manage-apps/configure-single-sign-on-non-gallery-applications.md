@@ -12,12 +12,12 @@ ms.date: 05/08/2019
 ms.author: celested
 ms.reviewer: arvinh,luleon
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 95b7cbcf4e485dc93d49b9559dcb7d0d4f597ebe
-ms.sourcegitcommit: 978e1b8cac3da254f9d6309e0195c45b38c24eb5
+ms.openlocfilehash: a72cb7bc7feeba984d568a0465d4f23a494496e8
+ms.sourcegitcommit: 47ce9ac1eb1561810b8e4242c45127f7b4a4aa1a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/03/2019
-ms.locfileid: "67550354"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67807648"
 ---
 # <a name="configure-single-sign-on-to-non-gallery-applications-in-microsoft-identity-platform"></a>Konfigurieren des einmaligen Anmeldens bei nicht im Katalog enthaltenen Anwendungen auf der Microsoft Identity Platform
 
@@ -50,13 +50,14 @@ Zum Registrieren von Anwendungen, die andere Arten von [unterstützten Authentif
 Um eine nicht gelistete Anwendung mithilfe einer Vorlage für die App-Integration zu verknüpfen, führen Sie folgende Schritte aus:
 
 1. Melden Sie sich mit Ihrem Administratorkonto für die Microsoft Identity Platform beim [Azure Active Directory-Portal](https://aad.portal.azure.com/) an.
-2. Wählen Sie **Unternehmensanwendungen** > **Neue Anwendung** aus.
-3. (Optional, aber empfohlen) Geben Sie im Suchfeld **Aus Katalog hinzufügen** den Anzeigename der Anwendung ein. Wenn die Anwendung in den Suchergebnissen angezeigt wird, wählen Sie sie aus und überspringen den Rest dieses Verfahrens.
-4. Wählen Sie **Nicht-Kataloganwendung** aus. Die Seite **Eigene Anwendung hinzufügen** wird angezeigt.
+1. Wählen Sie **Unternehmensanwendungen** > **Neue Anwendung** aus.
+1. (Optional, aber empfohlen) Geben Sie im Suchfeld **Aus Katalog hinzufügen** den Anzeigename der Anwendung ein. Wenn die Anwendung in den Suchergebnissen angezeigt wird, wählen Sie sie aus und überspringen den Rest dieses Verfahrens.
+1. Wählen Sie **Nicht-Kataloganwendung** aus. Die Seite **Eigene Anwendung hinzufügen** wird angezeigt.
 
-   ![Anwendung hinzufügen](./media/configure-single-sign-on-non-gallery-applications/add-your-own-application.png)
-5. Geben Sie den Anzeigenamen für Ihre neue Anwendung ein.
-6. Wählen Sie **Hinzufügen**.
+   ![Zeigt die Seite „Eigene Anwendung hinzufügen“ an](./media/configure-single-sign-on-non-gallery-applications/add-your-own-application.png)
+
+1. Geben Sie den Anzeigenamen für Ihre neue Anwendung ein.
+1. Wählen Sie **Hinzufügen**.
 
 Das Hinzufügen einer Anwendung mit dieser Methode gestaltet sich ähnlich benutzerfreundlich wie bei vorab integrierten Anwendungen. Wählen Sie zunächst in der Randleiste der Anwendung die Option **Einmaliges Anmelden** aus. Die nächste Seite (**SSO-Methode auswählen**) zeigt die Optionen für die Konfiguration des einmaligen Anmeldens an:
 
@@ -64,7 +65,7 @@ Das Hinzufügen einer Anwendung mit dieser Methode gestaltet sich ähnlich benut
 - **Kennwortbasiert**
 - **Verknüpft**
 
-![SSO-Methode auswählen](./media/configure-single-sign-on-non-gallery-applications/select-a-single-sign-on-method.png)
+![Zeigt die Seite „SSO-Methode auswählen“ an](./media/configure-single-sign-on-non-gallery-applications/select-a-single-sign-on-method.png)
 
 Weitere Informationen zu diesen Optionen finden Sie in den folgenden Abschnitten dieses Artikels.
 
@@ -72,7 +73,7 @@ Weitere Informationen zu diesen Optionen finden Sie in den folgenden Abschnitten
 
 Wählen Sie die Option **SAML** aus, um die SAML-basierte Authentifizierung für die Anwendung zu konfigurieren. (Diese Option setzt voraus, dass die Anwendung SAML 2.0 unterstützt.) Die Seite **Einmaliges Anmelden (SSO) mit SAML einrichten** wird angezeigt.
 
-![Einmaliges Anmelden (SSO) mit SAML einrichten](./media/configure-single-sign-on-non-gallery-applications/set-up-single-sign-on-with-saml.png)
+![Zeigt die Seite „Einmaliges Anmelden (SSO) mit SAML einrichten“ an](./media/configure-single-sign-on-non-gallery-applications/set-up-single-sign-on-with-saml.png)
 
 Diese Seite enthält fünf Rubriken:
 
@@ -90,7 +91,7 @@ Informieren Sie sich jetzt darüber, wie die SAML-Funktionen der Anwendung genut
 
 Um Azure AD einzurichten, wechseln Sie zur Rubrik **Grundlegende SAML-Konfiguration**, und wählen Sie das Symbol **Bearbeiten** aus (ein Bleistiftsymbol). Sie können die Werte manuell eingeben oder eine Metadatendatei hochladen, um die Werte der Felder zu extrahieren.
 
-![Grundlegende SAML-Konfiguration](./media/configure-single-sign-on-non-gallery-applications/basic-saml-configuration.png)
+![Zeigt die Seite „Grundlegende SAML-Konfiguration“ an](./media/configure-single-sign-on-non-gallery-applications/basic-saml-configuration.png)
 
 Die folgenden beiden Felder sind erforderlich:
 
@@ -141,7 +142,7 @@ So können Sie die im SAML-Token an die Anwendung gesendeten Ansprüche anzeigen
 
 - Wechseln Sie zur Rubrik **Benutzerattribute und Ansprüche**, und klicken Sie auf das Symbol **Bearbeiten**. Die Seite **Benutzerattribute und Ansprüche** wird angezeigt.
 
-![Benutzerattribute und Ansprüche](./media/configure-single-sign-on-non-gallery-applications/user-attributes-and-claims.png)
+![Zeigt die Seite „Benutzerattribute und Ansprüche“ an](./media/configure-single-sign-on-non-gallery-applications/user-attributes-and-claims.png)
 
 Sie müssen die im SAML-Token ausgestellten Ansprüche aus zwei Gründen möglicherweise bearbeiten:
 
@@ -158,7 +159,7 @@ In Azure AD können Sie das aktive Zertifikat im Base64- oder Raw-Format direkt 
 
 Um Ihre Zertifikate (aktiv oder inaktiv) anzuzeigen, zu erstellen oder herunterzuladen, wechseln Sie zur Rubrik **SAML-Signaturzertifikat** und wählen das Symbol **Bearbeiten** aus. Die Seite **SAML-Signaturzertifikat** wird angezeigt.
 
-![SAML-Signaturzertifikat](./media/configure-single-sign-on-non-gallery-applications/saml-signing-certificate.png)
+![Zeigt die Seite „SAML-Signaturzertifikat“ an](./media/configure-single-sign-on-non-gallery-applications/saml-signing-certificate.png)
 
 Stellen Sie sicher, dass das Zertifikat über Folgendes verfügt:
 
@@ -182,13 +183,13 @@ Nachdem Sie Ihre Anwendung zur Verwendung von Azure AD als SAML-basierten Identi
 So weisen Sie Ihrer Anwendung einen neuen Benutzer oder eine neue Gruppe zu:
 
 1. Wählen Sie auf der Randleiste der Anwendung die Option **Benutzer und Gruppen** aus. Die Seite **\<Anwendungsname> – Benutzer und Gruppen** wird geöffnet und zeigt die aktuelle Liste der zugewiesenen Benutzer und Gruppen an.
-2. Wählen Sie **Benutzer hinzufügen** aus. Die Seite **Zuweisungen hinzufügen** wird angezeigt.
-3. Wählen Sie **Benutzer und Gruppen (\<Anzahl> ausgewählt)** aus. Die Seite **Benutzer und Gruppen** wird geöffnet und zeigt eine Liste der verfügbaren Benutzer und Gruppen an.
-4. Geben Sie einen Namen ein, oder scrollen Sie, um den Benutzer oder die Gruppe in der Liste zu finden, den bzw. die Sie zuweisen möchten.
-5. Wählen Sie jeden Benutzer und jede Gruppe aus, den/die Sie hinzufügen möchten, und klicken Sie dann auf die Schaltfläche **Auswählen**. Die Seite **Benutzer und Gruppen** wird geschlossen.
-6. Wählen Sie auf der Seite **Zuweisungen hinzufügen** die Option **Zuweisen** aus. Die Seite **\< Anwendungsname> – Benutzer und Gruppen** wird geöffnet und zeigt die zusätzlichen Benutzer in der Liste an.
+1. Wählen Sie **Benutzer hinzufügen** aus. Die Seite **Zuweisungen hinzufügen** wird angezeigt.
+1. Wählen Sie **Benutzer und Gruppen (\<Anzahl> ausgewählt)** aus. Die Seite **Benutzer und Gruppen** wird geöffnet und zeigt eine Liste der verfügbaren Benutzer und Gruppen an.
+1. Geben Sie einen Namen ein, oder scrollen Sie, um den Benutzer oder die Gruppe in der Liste zu finden, den bzw. die Sie zuweisen möchten.
+1. Wählen Sie jeden Benutzer und jede Gruppe aus, den/die Sie hinzufügen möchten, und klicken Sie dann auf die Schaltfläche **Auswählen**. Die Seite **Benutzer und Gruppen** wird geschlossen.
+1. Wählen Sie auf der Seite **Zuweisungen hinzufügen** die Option **Zuweisen** aus. Die Seite **\< Anwendungsname> – Benutzer und Gruppen** wird geöffnet und zeigt die zusätzlichen Benutzer in der Liste an.
 
-   ![Benutzer und Gruppen einer Anwendung](./media/configure-single-sign-on-non-gallery-applications/application-users-and-groups.png)
+   ![Zeigt die Seite „Benutzer und Gruppen einer Anwendung“ an](./media/configure-single-sign-on-non-gallery-applications/application-users-and-groups.png)
 
 In dieser Liste können Sie folgende Aktionen ausführen:
 
@@ -213,26 +214,29 @@ Wählen Sie diese Option aus, um das [kennwortbasierte einmalige Anmelden](what-
 
 Nach der Auswahl von **Kennwortbasiert** werden Sie aufgefordert, die URL für die webbasierte Anmeldeseite der Anwendung einzugeben.
 
-![Kennwortbasiertes einmaliges Anmelden](./media/configure-single-sign-on-non-gallery-applications/password-based-sso.png)
+![Zeigt die Seite „Anmelde-URL“ an, auf der die Anmelde-URL eingegeben werden kann](./media/configure-single-sign-on-non-gallery-applications/password-based-sso.png)
 
 Führen Sie die folgenden Schritte aus:
 
 1. Geben Sie die URL ein. Bei dieser Zeichenfolge muss es sich um die Seite handeln, die das Eingabefeld für den Benutzernamen enthält.
-2. Wählen Sie **Speichern** aus. Azure AD versucht, die Anmeldeseite im Hinblick auf die Eingabe eines Benutzernamens und eines Kennworts zu analysieren.
-3. Wenn Azure AD die Seite nicht analysieren kann, wählen Sie **\<Anwendungsname>-Einstellungen für einmaliges Anmelden über ein Kennwort konfigurieren** aus, um die Seite **Anmeldung konfigurieren** anzuzeigen. (Wenn der Versuch erfolgreich war, können Sie den Rest dieses Verfahrens ignorieren.)
-4. Wählen Sie **Anmeldefelder manuell erkennen** aus. Es werden weitere Anweisungen angezeigt, die die manuelle Erkennung von Anmeldefeldern beschreiben.
+1. Wählen Sie **Speichern** aus. Azure AD versucht, die Anmeldeseite im Hinblick auf die Eingabe eines Benutzernamens und eines Kennworts zu analysieren.
+1. Wenn Azure AD die Seite nicht analysieren kann, wählen Sie **\<Anwendungsname>-Einstellungen für einmaliges Anmelden über ein Kennwort konfigurieren** aus, um die Seite **Anmeldung konfigurieren** anzuzeigen. (Wenn der Versuch erfolgreich war, können Sie den Rest dieses Verfahrens ignorieren.)
+1. Wählen Sie **Anmeldefelder manuell erkennen** aus. Es werden weitere Anweisungen angezeigt, die die manuelle Erkennung von Anmeldefeldern beschreiben.
 
    ![Manuelle Konfiguration des kennwortbasierten einmaligen Anmeldens](./media/configure-single-sign-on-non-gallery-applications/password-configure-sign-on.png)
-5. Wählen Sie **Anmeldefelder erfassen** aus. Auf einer neuen Registerkarte wird eine Seite mit dem Erfassungsstatus geöffnet, auf der die Meldung **Die Metadatenerfassung wird aktuell ausgeführt.** angezeigt wird.
-6. Wenn auf einer neuen Registerkarte das Feld **Erweiterung für Zugriffsbereich erforderlich** angezeigt wird, klicken Sie auf **Jetzt installieren**, um die Browsererweiterung **Erweiterung zur sicheren Anmeldung bei "Meine Apps"** zu installieren. (Die Browsererweiterung erfordert Microsoft Edge, Chrome oder Firefox.) Installieren, starten und aktivieren Sie die Erweiterung, und aktualisieren Sie die Seite mit dem Erfassungsstatus.
+
+1. Wählen Sie **Anmeldefelder erfassen** aus. Auf einer neuen Registerkarte wird eine Seite mit dem Erfassungsstatus geöffnet, auf der die Meldung **Die Metadatenerfassung wird aktuell ausgeführt.** angezeigt wird.
+1. Wenn auf einer neuen Registerkarte das Feld **Erweiterung für Zugriffsbereich erforderlich** angezeigt wird, klicken Sie auf **Jetzt installieren**, um die Browsererweiterung **Erweiterung zur sicheren Anmeldung bei "Meine Apps"** zu installieren. (Die Browsererweiterung erfordert Microsoft Edge, Chrome oder Firefox.) Installieren, starten und aktivieren Sie die Erweiterung, und aktualisieren Sie die Seite mit dem Erfassungsstatus.
 
    Die Browsererweiterung wird in einer anderen Registerkarte geöffnet, die die eingegebene URL anzeigt.
-7. Führen Sie auf der Registerkarte mit der eingegebenen URL den Anmeldevorgang durch. Füllen Sie die Felder für Benutzername und Kennwort aus, und versuchen Sie, sich anzumelden. (Sie müssen nicht das richtige Kennwort angeben.)
+
+1. Führen Sie auf der Registerkarte mit der eingegebenen URL den Anmeldevorgang durch. Füllen Sie die Felder für Benutzername und Kennwort aus, und versuchen Sie, sich anzumelden. (Sie müssen nicht das richtige Kennwort angeben.)
 
    Sie werden aufgefordert, die erfassten Anmeldefelder zu speichern.
-8. Klicken Sie auf **OK**. Die Registerkarte wird geschlossen, die Browsererweiterung aktualisiert die Seite mit dem Erfassungsstatus mit der Meldung **Die Metadaten für die Anwendung wurden aktualisiert**. Dann wird auch diese Registerkarte geschlossen.
-9. Wählen Sie auf der Azure AD-Seite **Anmeldung konfigurieren** die Option **OK, ich konnte mich erfolgreich bei der App anmelden** aus.
-10. Klicken Sie auf **OK**.
+
+1. Klicken Sie auf **OK**. Die Registerkarte wird geschlossen, die Browsererweiterung aktualisiert die Seite mit dem Erfassungsstatus mit der Meldung **Die Metadaten für die Anwendung wurden aktualisiert**. Dann wird auch diese Registerkarte geschlossen.
+1. Wählen Sie auf der Azure AD-Seite **Anmeldung konfigurieren** die Option **OK, ich konnte mich erfolgreich bei der App anmelden** aus.
+1. Klicken Sie auf **OK**.
 
 Nach dem Erfassen der Anmeldeseite können Sie Benutzer und Gruppen zuweisen sowie Richtlinien für Anmeldeinformationen einrichten, genauso wie bei normalen [Anwendungen für das einmalige Anmelden mit Kennwort](what-is-single-sign-on.md).
 

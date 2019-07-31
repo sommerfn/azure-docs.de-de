@@ -12,23 +12,23 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 04/24/2019
+ms.date: 07/16/2019
 ms.author: ryanwi
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 83fb999b0cf66cfd8d96e82d23ed43626352a8aa
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 2d78a64ee41e37fe53eba20eab6753c0b6eb8389
+ms.sourcegitcommit: 9a699d7408023d3736961745c753ca3cec708f23
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65544137"
+ms.lasthandoff: 07/16/2019
+ms.locfileid: "68277922"
 ---
 # <a name="universal-windows-platform-specific-considerations-with-msalnet"></a>Spezifische Überlegungen zur Universellen Windows-Plattform mit MSAL.NET
-Unter Xamarin iOS gibt es verschiedene Überlegungen, die Sie bei Verwendung von MSAL.NET berücksichtigen sollten.
+Unter UWP gibt es verschiedene Überlegungen, die Sie bei Verwendung von MSAL.NET berücksichtigen müssen.
 
 ## <a name="the-usecorporatenetwork-property"></a>UseCorporateNetwork-Eigenschaft
-In der WinRT-Plattform hat `PublicClientApplication` die folgende boolesche Eigenschaft ``UseCorporateNetwork``. Durch diese Eigenschaft profitieren Win8.1- und UWP-Anwendungen von der integrierten Windows-Authentifizierung (und daher vom einmaligen Anmelden des im Betriebssystem angemeldeten Benutzers), falls dieser mit einem Konto in einem verbundenen Azure AD-Mandanten angemeldet ist. Diese nutzt Webauthentifizierungsbroker (Web Authentication Broker, WAB). 
+In der WinRT-Plattform hat `PublicClientApplication` die folgende boolesche Eigenschaft ``UseCorporateNetwork``. Durch diese Eigenschaft profitieren Win8.1- und UWP-Anwendungen von der integrierten Windows-Authentifizierung (und daher vom einmaligen Anmelden des im Betriebssystem angemeldeten Benutzers), falls dieser mit einem Konto in einem verbundenen Azure AD-Mandanten angemeldet ist. Wenn Sie diese Eigenschaft festlegen, nutzt MSAL.NET WAB (Web Authentication Broker).
 
 > [!IMPORTANT]
 > Wenn diese Eigenschaft auf TRUE festgelegt ist, wird davon ausgegangen, dass der Anwendungsentwickler die integrierte Windows-Authentifizierung (IWA) in der Anwendung aktiviert hat. Hier:
@@ -37,9 +37,32 @@ In der WinRT-Plattform hat `PublicClientApplication` die folgende boolesche Eige
 >   - Private Netzwerke (Client und Server)
 >   - Freigegebenes Benutzerzertifikat
 
-Die integrierte Windows-Authentifizierung ist standardmäßig nicht aktiviert, da für Anwendungen, welche die Funktion „Unternehmensauthentifizierung“ oder „Freigegebene Benutzerzertifikate“ anfordern, eine höhere Überprüfungsebene erforderlich ist, um im Windows Store akzeptiert zu werden und gegebenenfalls nicht alle Entwickler die Überprüfung auf der höheren Ebene durchführen möchten. 
+Die integrierte Windows-Authentifizierung ist standardmäßig nicht aktiviert, da für Anwendungen, welche die Funktion „Unternehmensauthentifizierung“ oder „Freigegebene Benutzerzertifikate“ anfordern, eine höhere Überprüfungsebene erforderlich ist, um im Windows Store akzeptiert zu werden, und gegebenenfalls nicht alle Entwickler die Überprüfung auf der höheren Ebene durchführen möchten.
 
-Die zugrunde liegende Implementierung auf die Universelle Windows-Plattform (WAB) funktioniert nicht ordnungsgemäß in Enterprise-Szenarios, für die der bedingte Zugriff aktiviert wurde. Der Grund dafür ist, dass der Benutzer versucht, sich mit Windows Hello anzumelden, und ihm vorgeschlagen wird, ein Zertifikat auszuwählen, dieses Zertifikat für die PIN allerdings nicht gefunden wird, oder der Benutzer es auswählt, dann aber nicht zur Eingabe der PIN aufgefordert wird. Eine Möglichkeit zur Umgehung dieses Problems besteht darin, eine alternative Methode zu verwenden (Benutzername/Kennwort + Telefonauthentifizierung), jedoch hat sich diese Vorgehensweise nicht bewährt. 
+Die zugrunde liegende Implementierung auf die Universelle Windows-Plattform (WAB) funktioniert nicht ordnungsgemäß in Enterprise-Szenarios, für die der bedingte Zugriff aktiviert wurde. Das Symptom ist, dass der Benutzer versucht, sich mit Windows Hello anzumelden, und es wird vorgeschlagen, ein Zertifikat auszuwählen, aber:
+
+- das Zertifikat für die PIN wurde nicht gefunden,
+- oder der Benutzer wählt sie aus, wird jedoch nie zur Eingabe der PIN aufgefordert.
+
+Eine Möglichkeit zur Umgehung dieses Problems besteht darin, eine alternative Methode zu verwenden (Benutzername/Kennwort + Telefonauthentifizierung), jedoch hat sich diese Vorgehensweise nicht bewährt.
+
+## <a name="troubleshooting"></a>Problembehandlung
+
+Einige Kunden haben berichtet, dass in einigen bestimmten Unternehmensumgebungen der folgende Anmeldefehler aufgetreten ist:
+
+```Text
+We can't connect to the service you need right now. Check your network connection or try this again later
+```
+
+während sie wissen, dass sie über eine Internetverbindung verfügen, und dies mit einem öffentlichen Netzwerk funktioniert.
+
+Eine Problemumgehung ist, sicherzustellen, dass WAB (die zugrunde liegende Windows-Komponente) privates Netzwerk zulässt. Dies können Sie erreichen, indem Sie einen Registrierungsschlüssel festlegen:
+
+```Text
+HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Image File Execution Options\authhost.exe\EnablePrivateNetwork = 00000001
+```
+
+Weitere Informationen finden Sie unter [Webauthentifizierungsbroker – Fiddler](https://docs.microsoft.com/windows/uwp/security/web-authentication-broker#fiddler).
 
 ## <a name="next-steps"></a>Nächste Schritte
 Weitere Informationen finden Sie in den folgenden Beispielen:

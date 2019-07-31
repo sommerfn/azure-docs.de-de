@@ -8,18 +8,18 @@ ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 05/31/2019
-ms.openlocfilehash: 17214bb4904cc540de0a7d6f753b7e70abfa564c
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: 854fd5ca2bb6c27b7f8815bf85e19c6cf147e475
+ms.sourcegitcommit: 9a699d7408023d3736961745c753ca3cec708f23
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67443649"
+ms.lasthandoff: 07/16/2019
+ms.locfileid: "68278052"
 ---
 # <a name="understand-outputs-from-azure-stream-analytics"></a>Grundlegendes zu den Ausgaben von Azure Stream Analytics
 
 In diesem Artikel werden die Arten von Ausgaben beschrieben, die für einen Azure Stream Analytics-Auftrag verfügbar sind. Mit Ausgaben können Sie die Ergebnisse des Stream Analytics-Auftrags aufbewahren und speichern. Indem Sie die Ausgabedaten verwenden, können Sie weitere Geschäftsanalysen und Data Warehousing-Vorgänge für Ihre Daten durchführen.
 
-Verweisen Sie beim Entwerfen Ihrer Stream Analytics-Abfrage auf den Namen der Ausgabe, indem Sie die [INTO-Klausel](https://msdn.microsoft.com/azure/stream-analytics/reference/into-azure-stream-analytics) verwenden. Sie können eine einzelne Ausgabe pro Auftrag oder (bei Bedarf) auch mehrere Ausgaben pro Streamingauftrag verwenden, indem Sie in der Abfrage mehrere INTO-Klauseln angeben.
+Verweisen Sie beim Entwerfen Ihrer Stream Analytics-Abfrage auf den Namen der Ausgabe, indem Sie die [INTO-Klausel](https://docs.microsoft.com/stream-analytics-query/into-azure-stream-analytics) verwenden. Sie können eine einzelne Ausgabe pro Auftrag oder (bei Bedarf) auch mehrere Ausgaben pro Streamingauftrag verwenden, indem Sie in der Abfrage mehrere INTO-Klauseln angeben.
 
 Zum Erstellen, Bearbeiten und Testen von Stream Analytics-Auftragsausgaben können Sie das [Azure-Portal](stream-analytics-quick-create-portal.md#configure-job-output), [Azure PowerShell](stream-analytics-quick-create-powershell.md#configure-output-to-the-job), die [.NET-API](https://docs.microsoft.com/dotnet/api/microsoft.azure.management.streamanalytics.ioutputsoperations?view=azure-dotnet), die [REST-API](https://docs.microsoft.com/rest/api/streamanalytics/stream-analytics-output) und [Visual Studio](stream-analytics-quick-create-vs.md) verwenden.
 
@@ -37,7 +37,7 @@ In der folgenden Tabelle sind Eigenschaftsnamen und deren Beschreibungen für di
 | Eigenschaftenname | BESCHREIBUNG |
 | --- | --- |
 | Ausgabealias | Ein Anzeigename, der in Abfragen verwendet wird, um die Abfrageausgabe an Data Lake Store weiterzuleiten. |
-| Abonnement | Das Abonnement, das Ihr Azure Data Lake Storage-Konto enthält. |
+| Subscription | Das Abonnement, das Ihr Azure Data Lake Storage-Konto enthält. |
 | Kontoname | Der Name des Data Lake Store-Kontos, an das Sie die Ausgabe senden. Eine Dropdownliste der in Ihrem Abonnement verfügbaren Data Lake Store-Konten wird angezeigt. |
 | Präfixmuster des Pfads | Der Dateipfad, mit dem Ihre Dateien im angegebenen Data Lake Store-Konto geschrieben werden. Sie können eine oder mehrere Instanzen der Variablen {date} und {time} angeben:<br /><ul><li>Beispiel 1: folder1/logs / {date} / {time}</li><li>Beispiel 2: folder1/logs / {date}</li></ul><br />Der Zeitstempel der erstellten Ordnerstruktur folgt der UTC, nicht der lokalen Zeit.<br /><br />Wenn das Dateipfadmuster keinen nachgestellten Schrägstrich („/“) enthält, wird auch das letzte Muster im Dateipfad als Dateinamenpräfix behandelt. <br /><br />In diesen Fällen werden neue Dateien erstellt:<ul><li>Änderung im Ausgabeschema</li><li>Externer oder interner Neustart eines Auftrags</li></ul> |
 | Datumsformat | Optional. Wenn das date-Token im Pfadpräfix verwendet wird, können Sie das Datumsformat auswählen, unter dem die Dateien gespeichert werden. Beispiel: YYYY/MM/DD |
@@ -68,7 +68,9 @@ Die folgende Tabelle enthält die Eigenschaftennamen und die entsprechenden Besc
 > [!NOTE]
 > Das Azure SQL-Datenbank-Angebot wird für eine Auftragsausgabe in Stream Analytics unterstützt, aber dies gilt nicht für einen virtuellen Azure-Computer, auf dem SQL Server mit einer angefügten Datenbank ausgeführt wird, oder in einer verwalteten Azure SQL-Datenbank-Instanz. Dies soll in zukünftigen Versionen geändert werden.
 
-## <a name="blob-storage"></a>Blob Storage
+## <a name="blob-storage-and-azure-data-lake-gen2"></a>Blobspeicher und Azure Data Lake Gen2
+
+Der Ausgang zu Azure Data Lake Gen2 wird als Public Preview-Feature angeboten.
 
 Azure Blob Storage bietet eine kostengünstige und skalierbare Lösung zum Speichern von großen Mengen unstrukturierter Daten in der Cloud. Eine Einführung in Blobspeicher und seine Nutzung finden Sie unter [Hochladen, Herunterladen und Auflisten von Blobs mit dem Azure-Portal](../storage/blobs/storage-quickstart-blobs-portal.md).
 
@@ -83,7 +85,9 @@ Die folgende Tabelle enthält die Eigenschaftennamen und die entsprechenden Besc
 | Pfadmuster | Optional. Das Dateipfadmuster, mit dem Ihre Blobs im angegebenen Container geschrieben werden. <br /><br /> In dem Pfadmuster können Sie mindestens eine Instanz der date- und time-Variablen verwenden, um die Häufigkeit anzugeben, mit der Blobs geschrieben werden: <br /> {date}, {time} <br /><br />Mithilfe von benutzerdefinierter Blob-Partitionierung können Sie einen benutzerdefinierten {field}-Namen aus Ihren Ereignissen angeben, um Blobs zu partitionieren. Der Feldname ist alphanumerisch und kann Leerstellen, Bindestriche und Unterstriche enthalten. Für benutzerdefinierte Felder gelten die folgenden Einschränkungen: <ul><li>Bei Feldnamen wird nicht zwischen Groß- und Kleinschreibung unterschieden. Der Dienst kann z. B. nicht zwischen Spalte „ID“ und Spalte „id“ unterscheiden.</li><li>Geschachtelte Felder sind nicht zulässig. Verwenden Sie stattdessen einen Alias in der Auftragsabfrage zum Vereinfachen des Felds.</li><li>Ausdrücke können nicht als Feldname verwendet werden.</li></ul> <br />Diese Funktion ermöglicht die Verwendung von Konfigurationen für benutzerdefinierte Angaben des Datums-/Uhrzeitformats im Pfad. Benutzerdefinierte Datums- und Uhrzeitformate müssen einzeln nacheinander angegeben werden und in das Schlüsselwort {datetime:\<Spezifizierer>} eingeschlossen sein. Zulässige Eingaben für \<Spezifizierer> sind „yyyy“, „MM“, „M“, „dd“, „d“, „HH“, „H“, „mm“, „m“, „ss“ und „s“. Das Schlüsselwort {datetime:\<Spezifizierer>} kann mehrmals im Pfad verwendet werden, um benutzerdefinierte Konfigurationen für Datum und Uhrzeit zu bilden. <br /><br />Beispiele: <ul><li>Beispiel 1: cluster1/logs/{date}/{time}</li><li>Beispiel 2: cluster1/logs/{date}</li><li>Beispiel 3: cluster1/{client_id}/{date}/{time}</li><li>Beispiel 4: cluster1/{datetime:ss}/{myField}; hierbei lautet die Abfrage: SELECT data.myField AS myField FROM Input;</li><li>Beispiel 5: cluster1/year={datetime:yyyy}/month={datetime:MM}/day={datetime:dd}</ul><br />Der Zeitstempel der erstellten Ordnerstruktur folgt der UTC, nicht der lokalen Zeit.<br /><br />Die Dateibenennung verwendet die nachstehende Konvention: <br /><br />{Präfixmuster des Pfads}/schemaHashcode_Guid_Number.extension<br /><br />Beispielausgabedateien:<ul><li>Myoutput/20170901/00/45434_gguid_1.csv</li>  <li>Myoutput/20170901/01/45434_gguid_1.csv</li></ul> <br />Weitere Informationen zu diesem Feature finden Sie unter [Azure Stream Analytics – benutzerdefinierte Ausgabepartitionierung von Blobs](stream-analytics-custom-path-patterns-blob-storage-output.md). |
 | Datumsformat | Optional. Wenn das date-Token im Pfadpräfix verwendet wird, können Sie das Datumsformat auswählen, unter dem die Dateien gespeichert werden. Beispiel: YYYY/MM/DD |
 | Zeitformat | Optional. Wenn das time-Token im Pfadpräfix verwendet wird, können Sie das Zeitformat auswählen, unter dem die Dateien gespeichert werden. Der einzige derzeit unterstützte Wert ist HH |
-| Ereignisserialisierungsformat | Das Serialisierungsformat für Ausgabedaten. Es werden JSON, CSV und Avro unterstützt. |
+| Ereignisserialisierungsformat | Das Serialisierungsformat für Ausgabedaten. JSON, CSV, Avro und Parquet werden unterstützt. |
+|Minimale Zeilen (nur Parquet)|Die minimale Zeilenanzahl pro Batch. Für Parquet erstellt jeder Batch eine neue Datei. Der aktuelle Standardwert beträgt 2.000 Zeilen und der zulässige Höchstwert 10.000 Zeilen.|
+|Maximale Zeit (nur Parquet)|Die maximale Wartezeit pro Batch. Nach Ablauf dieser Zeit wird der Batch auch dann in die Ausgabe geschrieben, wenn die Anforderung der Mindestanzahl von Zeilen nicht erfüllt ist. Der aktuelle Standardwert beträgt 1 Minute und der zulässige Höchstwert 2 Stunden. Wenn Ihre Blobausgabe eine Pfadmusterhäufigkeit aufweist, kann die Wartezeit nicht über dem Partitionszeitbereich liegen.|
 | Codieren    | Bei Verwendung des CSV- oder JSON-Formats muss eine Codierung angegeben werden. UTF-8 ist derzeit das einzige unterstützte Codierungsformat. |
 | Trennzeichen   | Gilt nur für die CSV-Serialisierung. Stream Analytics unterstützt eine Reihe von üblichen Trennzeichen zum Serialisieren der CSV-Daten. Unterstützte Werte sind Komma, Semikolon, Leerzeichen, Tabstopp und senkrechter Strich. |
 | Format      | Gilt nur für die JSON-Serialisierung. **Separate Zeile** gibt an, dass die Ausgabe so formatiert wird, dass jedes JSON-Objekt in einer neuen Zeile enthalten ist. **Array** gibt an, dass die Ausgabe als Array aus JSON-Objekten formatiert wird. Dieses Array wird nur geschlossen, wenn der Auftrag beendet wird oder Stream Analytics mit dem nächsten Zeitfenster fortfährt. Im Allgemeinen ist es besser, in separaten Zeilen geschriebenen JSON-Code zu verwenden, da er keine spezielle Behandlung erfordert, während noch in die Ausgabedatei geschrieben wird. |
@@ -149,12 +153,12 @@ Power BI verwendet die FIFO-Aufbewahrungsrichtlinie (First In, First Out). Daten
 ### <a name="convert-a-data-type-from-stream-analytics-to-power-bi"></a>Konvertieren eines Datentyps aus Stream Analytics in Power BI
 Azure Stream Analytics aktualisiert das Datenmodell dynamisch zur Laufzeit, wenn sich das Ausgabeschema ändert. Nachverfolgt werden Änderungen an Spaltennamen und -typen sowie das Hinzufügen/Entfernen von Spalten.
 
-Die folgende Tabelle enthält die Datentypkonvertierungen von [Stream Analytics-Datentypen](https://msdn.microsoft.com/library/azure/dn835065.aspx) in [EDM-Typen (Entity Data Model)](https://docs.microsoft.com/dotnet/framework/data/adonet/entity-data-model) von Power BI für den Fall, dass noch kein Power BI-Dataset und noch keine Tabelle vorhanden sind.
+Die folgende Tabelle enthält die Datentypkonvertierungen von [Stream Analytics-Datentypen](https://docs.microsoft.com/stream-analytics-query/data-types-azure-stream-analytics) in [EDM-Typen (Entity Data Model)](https://docs.microsoft.com/dotnet/framework/data/adonet/entity-data-model) von Power BI für den Fall, dass noch kein Power BI-Dataset und noch keine Tabelle vorhanden sind.
 
 Quelle: Stream Analytics | Ziel: Power BI
 -----|-----
 bigint | Int64
-nvarchar(max) | string
+nvarchar(max) | Zeichenfolge
 datetime | DateTime
 float | Double
 Datensatzarray | Zeichenfolgentyp, Konstantenwert „IRecord“ oder „IArray“
@@ -165,12 +169,12 @@ Stream Analytics leitet das Datenmodellschema vom ersten Ereignissatz in der Aus
 Vermeiden Sie die `SELECT *`-Abfrage, um zeilenübergreifende dynamische Schemaaktualisierungen zu verhindern. Neben einer möglichen Beeinträchtigung der Leistung ist möglicherweise auch der Zeitaufwand für die Ergebnisse ungewiss. Wählen Sie die genauen Felder aus, die auf dem Power BI-Dashboard angezeigt werden sollen. Außerdem müssen die Datenwerte mit dem ausgewählten Datentyp kompatibel sein.
 
 
-Vorher/Aktuell | Int64 | string | DateTime | Double
+Vorher/Aktuell | Int64 | Zeichenfolge | DateTime | Double
 -----------------|-------|--------|----------|-------
-Int64 | Int64 | string | string | Double
-Double | Double | string | string | Double
-string | String | String | String | string 
-DateTime | string | string |  DateTime | string
+Int64 | Int64 | Zeichenfolge | Zeichenfolge | Double
+Double | Double | Zeichenfolge | Zeichenfolge | Double
+Zeichenfolge | String | String | String | Zeichenfolge 
+DateTime | Zeichenfolge | Zeichenfolge |  DateTime | Zeichenfolge
 
 ## <a name="table-storage"></a>Table Storage
 

@@ -7,12 +7,12 @@ ms.service: marketplace
 ms.topic: article
 ms.date: 04/25/2019
 ms.author: pabutler
-ms.openlocfilehash: e1a110abf8e057034043da34455bf678277c6cb4
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: dceb82af73061b91676ffb7061c7495995e76667
+ms.sourcegitcommit: 10251d2a134c37c00f0ec10e0da4a3dffa436fb3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65799942"
+ms.lasthandoff: 07/13/2019
+ms.locfileid: "67868718"
 ---
 # <a name="virtual-machine-skus-tab"></a>Registerkarte für VM-SKUs
 
@@ -68,6 +68,11 @@ In der folgenden Tabelle werden der Zweck, der Inhalt und die Formatierung diese
 ## <a name="additional-pricing-considerations"></a>Weitere Überlegungen zu Preisen
 
 Beim oben beschriebenen Preismodell handelt es sich um eine grundlegende Beschreibung.  Es werden laufend Änderungen vorgenommen, und es können sich Auswirkungen aufgrund von lokalen oder regionalen Steuerbestimmungen und Microsoft-Preisrichtlinien ergeben. 
+
+### <a name="new-core-sizes-added-on-722019"></a>Neue Kerngrößen wurden am 2. Juli 2019 hinzugefügt
+
+VM-Herausgeber wurden am 2. Juli 2019 über neue Preise für neue Größen virtueller Azure-Computer (basierend auf der Anzahl der Kerne) benachrichtigt.  Die neuen Preise gelten für die Kerngrößen 10, 44, 48, 60, 120, 208 und 416.  Die neuen Preise für diese Kerngrößen wurden für bestehende VM-Angebote basierend auf den vorherigen Preisen automatisch berechnet.  Herausgeber haben bis zum 1. August 2019 Zeit, die zusätzlichen Preise zu überprüfen und alle gewünschten Änderungen vorzunehmen.  Nach diesem Datum gelten die automatisch berechneten Preise für diese neuen Kerngrößen, wenn Sie nicht bereits vom Herausgeber erneut veröffentlicht wurden.
+
 
 ### <a name="simplified-currency-pricing"></a>Vereinfachte Währungspreise
 

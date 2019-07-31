@@ -7,38 +7,36 @@ ms.service: virtual-desktop
 ms.topic: troubleshooting
 ms.date: 05/23/2019
 ms.author: v-chjenk
-ms.openlocfilehash: a139542bf9272336784ac96d667d65caa1ed96ff
-ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
+ms.openlocfilehash: 8cd24861b9d7432a582d1b635b8ffcf0d8d2b9e6
+ms.sourcegitcommit: b2db98f55785ff920140f117bfc01f1177c7f7e2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67607332"
+ms.lasthandoff: 07/16/2019
+ms.locfileid: "68233625"
 ---
 # <a name="diagnose-graphics-performance-issues-in-remote-desktop"></a>Diagnostizieren von Problemen mit der Grafikleistung in Remotedesktop
 
-Wenn das System nicht die erwartete Leistung zeigt, ist es wichtig, die Ursache des Problems zu ermitteln. Dieser Artikel hilft Ihnen beim Erkennen und Beheben von Leistungsengpässen im Zusammenhang mit Grafiken während Remotedesktopprotokoll-Sitzungen (RDP).
+Um Qualitätsprobleme bei Ihren Remotesitzungen zu diagnostizieren, wurden im Systemmonitor im Abschnitt „RemoteFX-Grafik“ Leistungsindikatoren bereitgestellt. Dieser Artikel hilft Ihnen beim Erkennen und Beheben von Leistungsengpässen im Zusammenhang mit Grafiken während Remotedesktopprotokoll-Sitzungen (RDP) mithilfe dieser Leistungsindikatoren.
 
 ## <a name="find-your-remote-session-name"></a>Suchen nach dem Namen der Remotesitzung
 
-Sie benötigen den Namen der Remotesitzung, um Grafikleistungsindikatoren zu identifizieren. Folgen Sie den Anweisungen in diesem Abschnitt, um den Namen Ihrer Windows Virtual Desktop Preview-Remotesitzung zu ermitteln.
+Sie benötigen den Namen der Remotesitzung, um Grafikleistungsindikatoren zu identifizieren. Befolgen Sie die Anweisungen in diesem Abschnitt, um Ihre Instanz jedes Leistungsindikators zu identifizieren.
 
 1. Öffnen Sie die Windows-Eingabeaufforderung aus der Remotesitzung.
-2. Führen Sie den Befehl **qwinsta** aus.
-    - Wenn die Sitzung auf einem virtuellen Computer (VM) mit mehreren Sitzungen gehostet wird: Das Suffix jedes Indikatornamens entspricht dem Suffix im Sitzungsnamen, z.B. „rdp-tcp 37“.
-    - Wenn die Sitzung auf einem virtuellen Computer gehostet wird, der virtuelle Grafikprozessoren (vGPU) unterstützt: Die Leistungsindikatoren werden auf dem Server und nicht auf dem virtuellen Computer gespeichert. Die Instanzen der Leistungsindikatoren enthalten den Namen des virtuellen Computers anstelle der Zahl im Sitzungsnamen, z.B. „Win8 Enterprise VM“.
+2. Führen Sie den Befehl **qwinsta** aus, und suchen Sie den Namen Ihrer Sitzung.
+    - Wenn die Sitzung auf einem virtuellen Computer (VM) mit mehreren Sitzungen gehostet wird: Ihrer Instanz jedes Leistungsindikators wird das gleiche Suffix angehängt, das auch Ihr Sitzungsname hat (z.B. “rdp-tcp 37”).
+    - Wenn die Sitzung auf einem virtuellen Computer gehostet wird, der virtuelle Grafikprozessoren (vGPU) unterstützt: Ihre Instanz jedes Leistungsindikators wird auf dem Server und nicht auf Ihrem virtuellen Computer gespeichert. Ihre Instanzen der Leistungsindikatoren enthalten den Namen des virtuellen Computers anstelle der Zahl im Sitzungsnamen, z.B. „Win8 Enterprise VM“.
 
 >[!NOTE]
 > Während Leistungsindikatoren RemoteFX in ihrem Namen enthalten, sind in vGPU-Szenarien auch Remotedesktopgrafiken enthalten.
 
 ## <a name="access-performance-counters"></a>Zugreifen auf Leistungsindikatoren
 
-Mithilfe von Leistungsindikatoren in RemoteFX-Grafik können Sie Engpässe erkennen, da Sie Faktoren wie die Codierungszeit für Frames und übersprungene Frames verfolgen können.
-
 Nachdem Sie den Namen der Remotesitzung ermittelt haben, folgen Sie den nachstehenden Anweisungen, um die Leistungsindikatoren in RemoteFX-Grafik für die Remotesitzung zu erfassen.
 
 1. Wählen Sie **Start** > **Verwaltungstools** > **Systemmonitor** aus.
 2. Erweitern Sie im Dialogfeld **Systemmonitor** die Option **Überwachungstools**, und wählen Sie **Systemmonitor** und anschließend **Hinzufügen** aus.
-3. Erweitern Sie im Dialogfeld **Leistungsindikatoren hinzufügen** in der Liste **Verfügbare Leistungsindikatoren** das Leistungsindikatorobjekt für RemoteFX-Grafik.
+3. Erweitern Sie im Dialogfeld **Leistungsindikatoren hinzufügen** in der Liste **Verfügbare Leistungsindikatoren** den Abschnitt für RemoteFX-Grafik.
 4. Wählen Sie die zu überwachenden Leistungsindikatoren aus.
 5. Wählen Sie in der Liste **Instanzen des ausgewählten Objekts** die jeweiligen Instanzen aus, die für die ausgewählten Leistungsindikatoren überwacht werden sollen, und wählen Sie dann **Hinzufügen** aus. Zum Auswählen aller verfügbaren Leistungsindikatorinstanzen wählen Sie **Alle Instanzen** aus.
 6. Klicken Sie nach dem Hinzufügen der Leistungsindikatoren auf **OK**.
@@ -48,7 +46,7 @@ Die ausgewählten Leistungsindikatoren werden auf dem Bildschirm „Systemmonito
 >[!NOTE]
 >Jede aktive Sitzung auf einem Host verfügt über eine eigene Instanz jedes Leistungsindikators.
 
-## <a name="diagnosis"></a>Diagnose
+## <a name="diagnose-issues"></a>Diagnostizieren von Problemen
 
 Leistungsprobleme im Zusammenhang mit Grafiken werden im Allgemeinen in vier Kategorien unterteilt:
 
@@ -57,19 +55,15 @@ Leistungsprobleme im Zusammenhang mit Grafiken werden im Allgemeinen in vier Kat
 - Hohe Eingabelatenz
 - Schlechte Framequalität
 
-Beginnen Sie mit niedriger Framerate, zufälligen Unterbrechungen und hoher Eingabelatenz. Im nächsten Abschnitt erfahren Sie, mit welchen Leistungsindikatoren die jeweilige Kategorie gemessen wird.
-
-### <a name="performance-counters"></a>Leistungsindikatoren
-
-Dieser Abschnitt hilft Ihnen beim Ermitteln von Engpässen.
+### <a name="addressing-low-frame-rate-random-stalls-and-high-input-latency"></a>Behandeln von niedriger Framerate, zufälligen Unterbrechungen und hoher Eingabelatenz.
 
 Überprüfen Sie zuerst den Leistungsindikator „Ausgabeframes/Sekunde“. Er misst die Anzahl der Frames, die dem Client zur Verfügung gestellt werden. Wenn dieser Wert niedriger als beim Leistungsindikator „Eingabeframes/Sekunde“ ist, werden Frames übersprungen. Zur Ermittlung des Engpasses verwenden Sie die Leistungsindikatoren „Übersprungene Frames/Sekunde“.
 
 Es gibt drei Leistungsindikatoren des Typs „Übersprungene Frames/Sekunde“:
 
+- Übersprungene Frames/Sekunde (Unzureichende Serverressourcen)
 - Übersprungene Frames/Sekunde (Unzureichende Netzwerkressourcen)
 - Übersprungene Frames/Sekunde (Unzureichende Clientressourcen)
-- Übersprungene Frames/Sekunde (Unzureichende Serverressourcen)
 
 Ein hoher Wert bei einem der Leistungsindikatoren „Übersprungene Frames/Sekunde“ zeigt an, dass das Problem mit der Ressource in Zusammenhang steht, die vom Leistungsindikator überwacht wird. Wenn beispielsweise der Client Frames nicht mit der gleichen Rate decodiert und darstellt, mit der Frames vom Server bereitgestellt werden, weist der Leistungsindikator „Übersprungene Frames/Sekunde (Unzureichende Clientressourcen)“ einen hohen Wert auf.
 
@@ -77,31 +71,33 @@ Wenn der Wert des Leistungsindikators „Ausgabeframes/Sekunde“ dem des Leistu
 
 Weitere Informationen zum Diagnostizieren von Problemen im Zusammenhang mit einer App finden Sie unter [Leistungsindikatoren für verzögerte Benutzereingabe](https://docs.microsoft.com/windows-server/remote/remote-desktop-services/rds-rdsh-performance-counters).
 
-Da RDP eine durchschnittliche Codierungszeit von 33 ms unterstützt, wird eine Eingabeframerate von bis zu 30 Frames pro Sekunde unterstützt. Beachten Sie, dass 33 ms die maximale unterstützte Framerate ist. In vielen Fällen ist die Framerate für den Benutzer geringer, je nachdem, wie oft ein Frame für RDP von der Quelle bereitgestellt wird. Aufgaben wie das Ansehen eines Videos erfordern beispielsweise die volle Eingabeframerate von 30 Frames pro Sekunde, doch wird für weniger ressourcenintensive Aufgaben wie das gelegentliche Bearbeiten eines Textdokuments keine solch hohe Rate von Eingabeframes pro Sekunde für eine gute Benutzererfahrung benötigt.
+Da RDP eine durchschnittliche Codierungszeit von 33 ms unterstützt, wird eine Eingabeframerate von bis zu 30 Frames pro Sekunde unterstützt. Beachten Sie, dass 33 ms die maximale unterstützte Framerate ist. In vielen Fällen ist die Framerate für den Benutzer geringer, je nachdem, wie oft ein Frame für RDP von der Quelle bereitgestellt wird. Beispielsweise erfordern Aufgaben wie das Ansehen eines Videos eine volle Eingangsbildrate von 30 Frames/Sekunde, aber weniger rechenintensive Aufgaben wie das seltene Bearbeiten eines Dokuments führen ohne Beeinträchtigung der Benutzerfreundlichkeit zu einem viel niedrigeren Wert für die Eingangsbildrate in Frames/Sekunde.
+
+### <a name="addressing-poor-frame-quality"></a>Behandeln von schlechter Framequalität
 
 Mit dem Leistungsindikator „Framequalität“ können Sie Probleme der Framequalität diagnostizieren. Dieser Leistungsindikator gibt die Qualität des Ausgabeframes als Prozentsatz der Qualität des Quellframes an. Der Qualitätsverlust ist möglicherweise auf RemoteFX zurückzuführen oder bereits in der Grafikquelle vorhanden sein. Wenn RemoteFX den Qualitätsverlust verursacht, kann das Problem fehlende Netzwerk- oder Serverressourcen zum Senden von Inhalten mit höherer Genauigkeit sein.
 
 ## <a name="mitigation"></a>Lösung
 
-Wenn Serverressourcen den Engpass verursachen, versuchen Sie die Leistung mit einem der folgenden Schritte zu verbessern:
+Wenn Serverressourcen den Engpass verursachen, versuchen Sie die Leistung mit einem der folgenden Ansätze zu verbessern:
 
 - Reduzieren Sie die Anzahl von Sitzungen pro Host.
 - Erhöhen Sie die Speicher- und Computeressourcen auf dem Server.
 - Verringern Sie die Auflösung der Verbindung.
 
-Wenn Netzwerkressourcen den Engpass verursachen, versuchen Sie die Netzwerkverfügbarkeit pro Sitzung mit einem der folgenden Schritte zu verbessern:
+Wenn Netzwerkressourcen den Engpass verursachen, versuchen Sie die Netzwerkverfügbarkeit pro Sitzung mit einem der folgenden Ansätze zu verbessern:
 
 - Reduzieren Sie die Anzahl von Sitzungen pro Host.
-- Verringern Sie die Auflösung der Verbindung.
 - Verwenden Sie ein Netzwerk mit höherer Bandbreite.
+- Verringern Sie die Auflösung der Verbindung.
 
-Wenn Clientressourcen den Engpass verursachen, versuchen Sie die Leistung mit einem oder zwei der folgenden Schritte zu verbessern:
+Wenn Clientressourcen den Engpass verursachen, versuchen Sie die Leistung mit einem der folgenden Ansätze zu verbessern:
 
 - Installieren Sie den neuesten Remotedesktopclient.
 - Erhöhen Sie die Speicher- und Computeressourcen auf dem Clientcomputer.
 
 > [!NOTE]
-> Der Leistungsindikator „Quellframes/Sekunde“ wird derzeit nicht unterstützt. Aktuell ist der Leistungsindikator „Quellframes/Sekunde“ immer auf 0 gesetzt.
+> Der Leistungsindikator „Quellframes/Sekunde“ wird derzeit nicht unterstützt. Aktuell zeigt der Leistungsindikator „Quellframes/Sekunde“ immer 0 an.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

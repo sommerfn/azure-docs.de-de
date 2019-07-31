@@ -1,23 +1,21 @@
 ---
 title: Grundlegendes zum Rabatt für reservierte Azure-VM-Instanzen | Microsoft-Dokumentation
 description: Hier erfahren Sie, wie der Rabatt für reservierte Azure-VM-Instanzen auf ausgeführte virtuelle Computer angewendet wird.
-documentationcenter: ''
 author: yashesvi
 manager: yashar
-editor: ''
 ms.service: billing
 ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 04/13/2019
+ms.date: 07/11/2019
 ms.author: banders
-ms.openlocfilehash: b112dd881d4b2e87e617111d00bc82c6151d7750
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 191160035f516d818d5537c5c47f9604998c46f7
+ms.sourcegitcommit: fa45c2bcd1b32bc8dd54a5dc8bc206d2fe23d5fb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60370072"
+ms.lasthandoff: 07/12/2019
+ms.locfileid: "67849994"
 ---
 # <a name="how-the-azure-reservation-discount-is-applied-to-virtual-machines"></a>Anwendung des Rabatts für Azure-Reservierungen auf virtuelle Computer
 
@@ -68,9 +66,35 @@ Wenn Sie reservierte VM-Instanzen erwerben, und Sie unter **Optimiert für** die
 
 Ein Reservierungsrabatt gilt nur für die VM-Nutzung, bei der der Wert `ServiceType` in `AdditionalInfo` mit der gekauften Reservierung übereinstimmt. Bei der Anwendung von Reservierungsrabatten wird die für virtuelle Computer verwendete Verbrauchseinheit ignoriert, nur `ServiceType` wird ausgewertet. Sie müssen wissen, für welchen Diensttyp Sie den virtuellen Computer gekauft haben. Sie können eine VM-Reservierung ohne Storage Premium gegen eine Reservierung mit Storage Premium umtauschen und umgekehrt.
 
-## <a name="classic-vms-and-cloud-services"></a>Klassische virtuelle Computer und Clouddienste
+## <a name="services-that-get-vm-reservation-discounts"></a>Dienste, die VM-Reservierungsrabatte erhalten
 
-Reservierte VM-Instanzen gelten automatisch sowohl für klassische virtuelle Computer als auch für Clouddienste, wenn Instanzgrößenflexibilität aktiviert ist. Bei Clouddiensten gilt der Rabatt für Reservierungen allerdings nur für die Computekosten. Wenn der Rabatt für Reservierungen bei Clouddiensten gewährt wird, werden die Nutzungsgebühren in Computegebühren (Linux-Verbrauchseinheit) und die Gebühren für Clouddienste (Verbrauchseinheit für die Verwaltung von Clouddiensten) unterteilt. Weitere Informationen finden Sie im Artikel zur [Anwendung des Reservierungsrabatts auf Cloud Services](billing-reserved-instance-windows-software-costs.md#cloud-services-software-meters-not-included-in-reservation-cost).
+Ihre VM-Reservierungen können für die von mehreren Diensten ausgegebene VM-Nutzung gelten, nicht allein für Ihre VM-Bereitstellungen. Welche Ressourcen Reservierungsrabatte erhalten, ändert sich abhängig von der Einstellung für die Instanzgrößenflexibilität.
+
+### <a name="instance-size-flexibility-setting"></a>Einstellung der Instanzgrößenflexibilität
+
+Die Einstellung der Instanzgrößenflexibilität bestimmt, welche Dienste reservierte Instanzrabatte erhalten.
+
+Unabhängig davon, ob die Einstellung ein- oder ausgeschaltet ist, gelten Reservierungsrabatte automatisch für jede übereinstimmende VM-Nutzung, wenn der *ConsumedService* gleich `Microsoft.Compute` ist. Überprüfen Sie daher ihre Nutzungsdaten auf den Wert *ConsumedService*. Beispiele hierfür sind:
+
+- Virtuelle Computer
+- VM-Skalierungsgruppen
+- Containerdienst
+- Azure Batch-Bereitstellungen (im Benutzerabonnementmodus)
+- Azure Kubernetes Service (AKS)
+- Service Fabric
+
+Wenn die Einstellung eingeschaltet ist, gelten Reservierungsrabatte automatisch für jede übereinstimmende VM-Nutzung, wenn der *ConsumedService* einem der folgenden Elemente entspricht:
+
+- Microsoft.Compute
+- Microsoft.ClassicCompute
+- Microsoft.Batch
+- Microsoft.MachineLearningServices
+- Microsoft.Kusto
+
+Überprüfen Sie den Wert *ConsumedService* in ihren Nutzungsdaten, um zu ermitteln, ob die Nutzung zu Reservierungsrabatten berechtigt ist.
+
+Weitere Informationen zur Instanzgrößenflexibilität finden Sie unter [Flexibilität bei der VM-Größe mit reservierten VM-Instanzen](../virtual-machines/windows/reserved-vm-instance-size-flexibility.md).
+
 
 ## <a name="need-help-contact-us"></a>Sie brauchen Hilfe? Kontakt
 

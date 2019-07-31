@@ -14,15 +14,15 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
-ms.date: 02/03/2019
+ms.date: 07/15/2019
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 3772dbdc8582eea1b2eac368784878a8a36d34ad
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: ead1dfdce4bf3a803eee46a536dc7062626640d9
+ms.sourcegitcommit: b2db98f55785ff920140f117bfc01f1177c7f7e2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "62125307"
+ms.lasthandoff: 07/16/2019
+ms.locfileid: "68234234"
 ---
 # <a name="sap-workload-configurations-with-azure-availability-zones"></a>SAP-Workloadkonfigurationen mit Azure-Verfügbarkeitszonen
 [Azure-Verfügbarkeitszonen](https://docs.microsoft.com/azure/availability-zones/az-overview) sind eines der Hochverfügbarkeitsfeatures von Azure. Die Verwendung von Verfügbarkeitszonen verbessert die allgemeine Verfügbarkeit von SAP-Workloads in Azure. Dieses Feature steht bereits in einigen [Azure-Regionen](https://azure.microsoft.com/global-infrastructure/regions/) zur Verfügung. Künftig wird es in weiteren Regionen verfügbar sein.
@@ -58,7 +58,7 @@ Bei der Bereitstellung von Azure-VMs über Verfügbarkeitszonen hinweg und der E
 
 - Sie müssen [Azure Managed Disks](https://azure.microsoft.com/services/managed-disks/) verwenden, wenn Sie eine Bereitstellung in Azure-Verfügbarkeitszonen durchführen. 
 - Die Zuordnung der Zonenaufzählungen zu den physischen Zonen liegt auf einer Azure-Abonnementbasis fest. Wenn Sie für die Bereitstellung Ihrer SAP-Systeme verschiedene Abonnements verwenden, müssen Sie die idealen Zonen für jedes Abonnement definieren.
-- Sie können Azure-Verfügbarkeitsgruppen nicht in einer Azure-Verfügbarkeitszone bereitstellen. Wählen Sie eine der Methoden als Bereitstellungsframework für virtuelle Computer aus.
+- Sie können Azure-Verfügbarkeitsgruppen nicht in einer Azure-Verfügbarkeitszone bereitstellen, solange Sie keine [Azure-Näherungsplatzierungsgruppe](https://docs.microsoft.com/azure/virtual-machines/linux/co-location) verwenden. Wie Sie die SAP DBMS-Schicht und die zentralen Dienste zonenübergreifend bereitstellen, gleichzeitig die SAP-Anwendungsschicht mit Hilfe von Verfügbarkeitsgruppen bereitstellen und dennoch große Nähe der VMs erreichen können, ist im Artikel [Azure-Näherungsplatzierungsgruppen für optimale Netzwerklatenz mit SAP-Anwendungen](sap-proximity-placement-scenarios.md) dokumentiert. Wenn Sie die Azure-Näherungsplatzierungsgruppen nicht nutzen, müssen Sie die eine oder andere als Bereitstellungsframework für VMs auswählen.
 - Sie können den [Azure Basic Load Balancer](https://docs.microsoft.com/azure/load-balancer/load-balancer-overview#skus) nicht zum Erstellen von Failoverclusterlösungen auf der Grundlage von Windows Server-Failoverclustering oder Pacemaker unter Linux verwenden. Stattdessen müssen Sie die [Azure-SKU Load Balancer Standard](https://docs.microsoft.com/azure/load-balancer/load-balancer-standard-availability-zones) verwenden.
 
 
@@ -103,7 +103,8 @@ Ein vereinfachtes Schema einer Aktiv/Aktiv-Bereitstellung über zwei Zonen könn
 
 Die folgenden Überlegungen gelten für diese Konfiguration:
 
-- Sie behandeln die Azure-Verfügbarkeitszonen als Fehler- und Updatedomänen für alle virtuellen Computer, da Verfügbarkeitsgruppen nicht in Azure-Verfügbarkeitszonen bereitgestellt werden können.
+- Wenn Sie keine [Azure-Näherungsplatzierungsgruppe](https://docs.microsoft.com/azure/virtual-machines/linux/co-location) verwenden, behandeln Sie die Azure-Verfügbarkeitszonen als Fehler- und Updatedomänen für alle virtuellen Computer, da Verfügbarkeitsgruppen nicht in Azure-Verfügbarkeitszonen bereitgestellt werden können.
+- Wenn Sie zonale Bereitstellungen für die DBMS-Schicht und zentrale Dienste kombinieren möchten, aber Azure-Verfügbarkeitsgruppen für die Anwendungsschicht verwenden möchten, müssen Sie Azure-Näherungsplatzierungsgruppen verwenden, wie im Artikel [Azure-Näherungsplatzierungsgruppen für optimale Netzwerklatenz mit SAP-Anwendungen](sap-proximity-placement-scenarios.md) beschrieben.
 - Die Lastenausgleichsmodule für die Failovercluster von SAP Central Services und die DBMS-Ebene müssen [Azure Load Balancer-Instanzen der Standard-SKU](https://docs.microsoft.com/azure/load-balancer/load-balancer-standard-availability-zones) sein. Der Load Balancer Basic funktioniert nicht zonenübergreifend.
 - Das virtuelle Azure-Netzwerk, das Sie zum Hosten des SAP-Systems bereitgestellt haben, wird gemeinsam mit seinen Subnetzen über Zonen verteilt. Sie benötigen keine separaten virtuellen Netzwerke für jede Zone.
 - Für alle VMs, die Sie bereitstellen, müssen Sie [Azure Managed Disks](https://azure.microsoft.com/services/managed-disks/) verwenden. Nicht verwaltete Datenträger werden für zonale Bereitstellungen nicht unterstützt.
@@ -114,7 +115,7 @@ Die folgenden Überlegungen gelten für diese Konfiguration:
     
     Aktuell wird die Lösung mit Microsoft-Dateiservern mit horizontaler Skalierung, wie in [Vorbereiten der Azure-Infrastruktur für SAP-Hochverfügbarkeit mit einem Windows-Failovercluster und einer Dateifreigabe für SAP ASCS-/SCS-Instanzen](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-high-availability-infrastructure-wsfc-file-share) dokumentiert, nicht zonenübergreifend unterstützt.
 - Die dritte Zone wird verwendet, um das SBD-Gerät zu hosten, falls Sie einen [SUSE Linux Pacemaker-Cluster](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-suse-pacemaker#create-azure-fence-agent-stonith-device) oder zusätzliche Anwendungsinstanzen erstellen.
-- Für Laufzeitkonsistenz für unternehmenskritische Prozesse können Sie versuchen, bestimmte Batchaufträge und Benutzer mithilfe von SAP Batch Server-Gruppen, Anmeldegruppen oder RFC-Gruppen direkt zu Anwendungsinstanzen in derselben Zone wie die aktive DBMS-Instanz zu leiten. Im Fall eines zonalen Failovers müssen Sie diese Gruppen jedoch manuell in Instanzen verschieben, die auf VMs in der Zone mit der aktiven DB-VM ausgeführt werden.  
+- Für Laufzeitkonsistenz für unternehmenskritische Prozesse können Sie versuchen, bestimmte Batchaufträge und Benutzer mithilfe von SAP Batch Server-Gruppen, SAP-Anmeldegruppen oder RFC-Gruppen direkt zu Anwendungsinstanzen in derselben Zone wie die aktive DBMS-Instanz zu leiten. Im Fall eines zonalen Failovers müssen Sie diese Gruppen jedoch manuell in Instanzen verschieben, die auf VMs in der Zone mit der aktiven DB-VM ausgeführt werden.  
 - Möglicherweise sollten Sie ruhende Dialoginstanzen in jeder Zone bereitstellen. Auf diese Weise findet eine sofortige Rückkehr zur vorherigen Ressourcenkapazität statt, wenn eine Zone, die von Ihren Anwendungsinstanzen verwendet wird, außer Betrieb ist.
 
 
@@ -127,7 +128,7 @@ Das grundlegende Layout der Architektur sieht folgendermaßen aus:
 
 Die folgenden Überlegungen gelten für diese Konfiguration:
 
-- Verfügbarkeitsgruppen können nicht in Azure-Verfügbarkeitszonen bereitgestellt werden. In diesem Fall ist daher eine Update- und Fehlerdomäne für Ihre Anwendungsschicht vorhanden. Das ist darauf zurückzuführen, dass die Bereitstellung nur in einer Zone stattfindet. Diese Konfiguration ist etwas weniger wünschenswert als die Referenzarchitektur, daher sollten Sie die Anwendungsschicht in einer Azure-Verfügbarkeitsgruppe bereitstellen.
+- Verfügbarkeitsgruppen können nicht in Azure-Verfügbarkeitszonen bereitgestellt werden. Um dies zu kompensieren, können Sie Azure-Näherungsplatzierungsgruppen wie im Artikel [Azure-Näherungsplatzierungsgruppen für optimale Netzwerklatenz mit SAP-Anwendungen](sap-proximity-placement-scenarios.md) dokumentiert verwenden.
 - Wenn Sie diese Architektur verwenden, müssen Sie den Status genau überwachen und versuchen, die aktiven DBMS- und SAP Central Services-Instanzen in derselben Zone zu halten wie Ihre bereitgestellte Anwendungsschicht. Im Fall eines Failovers der SAP Central Services- oder DBMS-Instanz müssen Sie sicherstellen, dass Sie so schnell wie möglich ein manuelles Failback in die Zone mit der SAP-Anwendungsschicht durchführen können.
 - Die Lastenausgleichsmodule für die Failovercluster von SAP Central Services und die DBMS-Ebene müssen [Azure Load Balancer-Instanzen der Standard-SKU](https://docs.microsoft.com/azure/load-balancer/load-balancer-standard-availability-zones) sein. Der Load Balancer Basic funktioniert nicht zonenübergreifend.
 - Das virtuelle Azure-Netzwerk, das Sie zum Hosten des SAP-Systems bereitgestellt haben, wird gemeinsam mit seinen Subnetzen über Zonen verteilt. Sie benötigen keine separaten virtuellen Netzwerke für jede Zone.
@@ -155,7 +156,7 @@ Hier ist ein Beispiel für eine solche Konfiguration:
 
 Die folgenden Überlegungen gelten für diese Konfiguration:
 
-- Entweder nehmen Sie an, dass eine signifikante Distanz zwischen den Einrichtungen, die eine Verfügbarkeitszone hosten, liegt, oder Sie sind auf eine bestimmte Azure-Region beschränkt. Verfügbarkeitsgruppen können nicht in Azure-Verfügbarkeitszonen bereitgestellt werden. In diesem Fall ist daher eine Update- und Fehlerdomäne für Ihre Anwendungsschicht vorhanden. Das ist darauf zurückzuführen, dass die Bereitstellung nur in einer Zone stattfindet. Diese Konfiguration ist etwas weniger wünschenswert als die Referenzarchitektur, daher sollten Sie die Anwendungsschicht in einer Azure-Verfügbarkeitsgruppe bereitstellen.
+- Entweder nehmen Sie an, dass eine signifikante Distanz zwischen den Einrichtungen, die eine Verfügbarkeitszone hosten, liegt, oder Sie sind auf eine bestimmte Azure-Region beschränkt. Verfügbarkeitsgruppen können nicht in Azure-Verfügbarkeitszonen bereitgestellt werden. Um dies zu kompensieren, können Sie Azure-Näherungsplatzierungsgruppen wie im Artikel [Azure-Näherungsplatzierungsgruppen für optimale Netzwerklatenz mit SAP-Anwendungen](sap-proximity-placement-scenarios.md) dokumentiert verwenden.
 - Wenn Sie diese Architektur verwenden, müssen Sie den Status genau überwachen und versuchen, die aktiven DBMS- und SAP Central Services-Instanzen in derselben Zone zu halten wie Ihre bereitgestellte Anwendungsschicht. Im Fall eines Failovers der SAP Central Services- oder DBMS-Instanz müssen Sie sicherstellen, dass Sie so schnell wie möglich ein manuelles Failback in die Zone mit der SAP-Anwendungsschicht durchführen können.
 - Sie sollten die Produktionsanwendungsinstanzen auf den virtuellen Computern, auf denen die aktiven QA-Anwendungsinstanzen ausgeführt werden, vorinstalliert haben.
 - Beim Ausfall einer Zone fahren Sie die QA-Anwendungsinstanzen herunter und starten stattdessen die Produktionsinstanzen. Beachten Sie, dass Sie virtuelle Namen für die Anwendungsinstanzen verwenden müssen, damit dies funktioniert.

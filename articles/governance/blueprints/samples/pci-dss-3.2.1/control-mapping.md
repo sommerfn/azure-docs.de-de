@@ -8,18 +8,18 @@ ms.date: 06/24/2019
 ms.topic: conceptual
 ms.service: blueprints
 manager: carmonm
-ms.openlocfilehash: 38b1cc6249da98e11167416c8e18d06de1645679
-ms.sourcegitcommit: 5bdd50e769a4d50ccb89e135cfd38b788ade594d
+ms.openlocfilehash: 1e85cb5c06f36e0f8c105ece2c012cfe7cb77bf4
+ms.sourcegitcommit: 920ad23613a9504212aac2bfbd24a7c3de15d549
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/03/2019
-ms.locfileid: "67540944"
+ms.lasthandoff: 07/15/2019
+ms.locfileid: "68226025"
 ---
 # <a name="control-mapping-of-the-pci-dss-v321-blueprint-sample"></a>Steuerungszuordnung des Blaupausenbeispiels PCI-DSS v3.2.1
 
 In diesem Artikel wird erläutert, wie das Blaupausenbeispiel PCI-DSS v3.2.1 von Azure Blueprints den Steuerungen von PCI-DSS v3.2.1 zugeordnet wird. Weitere Informationen zu den Steuerungen finden Sie unter [PCI-DSS v3.2.1](https://www.pcisecuritystandards.org/documents/PCI_DSS_v3-2-1.pdf).
 
-Die folgenden Zuordnungen gelten für die Steuerungen unter **PCI-DSS v3.2.1:2018**. Über den rechten Navigationsbereich können Sie direkt zu einer bestimmten Steuerungszuordnung springen. Viele der zugeordneten Steuerungen werden mit einer [Azure Policy](../../../policy/overview.md)-Initiative implementiert. Zum Anzeigen der vollständigen Initiative öffnen Sie **Richtlinie** im Azure-Portal und wählen dann die Seite **Definitionen** aus. Suchen Sie anschließend die integrierte Richtlinieninitiative **[Vorschau] PCI v3.2.1:2018-Steuerungen überwachen und spezifische VM-Erweiterungen zur Unterstützung von Überwachungsanforderungen bereitstellen**, und wählen Sie sie aus.
+Die folgenden Zuordnungen gelten für die Steuerungen unter **PCI-DSS v3.2.1:2018**. Über den rechten Navigationsbereich können Sie direkt zu einer bestimmten Steuerungszuordnung springen. Viele der zugeordneten Steuerungen werden mit einer [Azure Policy](../../../policy/overview.md)-Initiative implementiert. Zum Anzeigen der vollständigen Initiative öffnen Sie **Richtlinie** im Azure-Portal und wählen dann die Seite **Definitionen** aus. Suchen Sie anschließend die integrierte Richtlinieninitiative **\[Vorschau\] PCI v3.2.1:2018-Steuerungen überwachen und spezifische VM-Erweiterungen zur Unterstützung von Überwachungsanforderungen bereitstellen**, und wählen Sie sie aus.
 
 ## <a name="132-and-134-boundary-protection"></a>1.3.2 und 1.3.4 Schutz von Grenzen
 
@@ -98,12 +98,12 @@ In Azure ist die rollenbasierte Zugriffssteuerung (RBAC) zur Verwaltung des Zugr
 
 Diese Blaupause hilft Ihnen bei der Durchsetzung sicherer Kennwörter, indem sie [Azure Policy](../../../policy/overview.md)-Definitionen zuweist, die Windows-VMs überwachen, die keine Mindeststärke und andere Kennwortanforderungen durchsetzen. Aufgrund der Informationen zu virtuellen Computern, die gegen die Richtlinie zur Kennwortsicherheit verstoßen, können Sie Korrekturmaßnahmen ergreifen, um sicherzustellen, dass die Kennwörter für alle Benutzerkonten auf virtuellen Computern mit der Richtlinie konform sind.
 
-- [Vorschau]: Audit Windows VMs that do not have a maximum password age of 70 days
-- [Vorschau]: Deploy requirements to audit Windows VMs that do not have a maximum password age of 70 days
-- [Vorschau]: Audit Windows VMs that do not restrict the minimum password length to 14 characters
-- [Vorschau]: Deploy requirements to audit Windows VMs that do not restrict the minimum password length to 14 characters
-- [Vorschau]: Audit Windows VMs that allow re-use of the previous 24 passwords
-- [Vorschau]: Deploy requirements to audit Windows VMs that allow re-use of the previous 24 passwords
+- \[Vorschau\]: Windows-VMs überwachen, für die kein maximales Kennwortalter von 70 Tagen gilt
+- \[Vorschau\]: Anforderungen zum Überwachen von Windows-VMs bereitstellen, für die kein maximales Kennwortalter von 70 Tagen gilt
+- \[Vorschau\]: Windows-VMs überwachen, bei denen keine Mindestkennwortlänge von 14 Zeichen festgelegt ist
+- \[Vorschau\]: Anforderungen zum Überwachen von Windows-VMs bereitstellen, für die keine Mindestkennwortlänge von 14 Zeichen gilt
+- \[Vorschau\]: Windows-VMs überwachen, die eine Wiederverwendung der vorherigen 24 Kennwörter zulassen
+- \[Vorschau\]: Anforderungen zum Überwachen von Windows-VMs bereitstellen, die eine Wiederverwendung der vorherigen 24 Kennwörter zulassen
 
 ## <a name="103-and-1054-audit-generation"></a>10.3 und 10.5.4 Generierung von Überwachungsdatensätzen
 
