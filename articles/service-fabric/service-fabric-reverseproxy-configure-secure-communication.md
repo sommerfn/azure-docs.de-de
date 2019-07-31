@@ -181,7 +181,7 @@ Der Reverseproxy wählt einen der Endpunkte zum Weiterleiten der Anforderung bas
 > Wenn im **SecureOnlyMode** der Client ein **ListenerName**-Element angegeben hat, das einem HTTP-Endpunkt (ungesichert) entspricht, gibt der Reverseproxy für die Anforderung eine Fehlermeldung mit dem HTTP-Statuscode 404 (Nicht gefunden) aus.
 
 ## <a name="setting-up-client-certificate-authentication-through-the-reverse-proxy"></a>Einrichten der Clientzertifikatauthentifizierung über den Reverseproxy
-Die SSL-Beendigung erfolgt auf dem Reverseproxy, und alle Daten des Clientzertifikats gehen verloren. Damit die Dienste die Clientzertifikatauthentifizierung durchführen, legen Sie die Einstellung **ForwardClientCertificate** im Abschnitt [**ApplicationGateway/Http**](./service-fabric-cluster-fabric-settings.md#applicationgatewayhttp) fest.
+Die SSL-Terminierung erfolgt auf dem Reverseproxy, und alle Daten des Clientzertifikats gehen verloren. Damit die Dienste die Clientzertifikatauthentifizierung durchführen, legen Sie die Einstellung **ForwardClientCertificate** im Abschnitt [**ApplicationGateway/Http**](./service-fabric-cluster-fabric-settings.md#applicationgatewayhttp) fest.
 
 1. Wenn **ForwardClientCertificate** auf **false** festgelegt ist, fordert der Reverseproxy das Clientzertifikat während des SSL-Handshakes mit dem Client nicht an.
 Dies ist das Standardverhalten.

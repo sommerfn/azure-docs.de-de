@@ -28,7 +28,7 @@ Außerdem muss mindestens die Version 2.0.64 der Azure-Befehlszeilenschnittstel
 
 ## <a name="add-your-public-ssh-key"></a>Hinzufügen Ihres öffentlichen SSH-Schlüssels
 
-Standardmäßig werden SSH-Schlüssel abgerufen oder generiert und dann beim Erstellen eines AKS-Clusters den Knoten hinzugefügt. Wenn Sie andere SSH-Schlüssel angeben müssen als die, die Sie beim Erstellen Ihres AKS-Clusters verwendet haben, fügen Sie unter Linux Ihren öffentlichen SSH-Schlüssel den AKS-Knoten hinzu. Bei Bedarf können Sie einen SSH-Schlüssel mithilfe von [macOS, Linux][ssh-nix] erstellen. Speichern Sie das Schlüsselpaar in einem OpenSSH-Format anstelle des PuTTY-Standardformats für private Schlüssel, wenn Sie PuttyGen zum Erstellen des Schlüsselpaars verwenden.
+Standardmäßig werden SSH-Schlüssel abgerufen oder generiert und dann beim Erstellen eines AKS-Clusters den Knoten hinzugefügt. Wenn Sie andere SSH-Schlüssel angeben müssen als die, die Sie beim Erstellen Ihres AKS-Clusters verwendet haben, fügen Sie unter Linux Ihren öffentlichen SSH-Schlüssel den AKS-Knoten hinzu. Bei Bedarf können Sie einen SSH-Schlüssel mithilfe von [macOS, Linux][ssh-nix] or [Windows][ssh-windows] erstellen. Speichern Sie das Schlüsselpaar in einem OpenSSH-Format anstelle des PuTTY-Standardformats für private Schlüssel, wenn Sie PuttyGen zum Erstellen des Schlüsselpaars verwenden.
 
 > [!NOTE]
 > Derzeit können SSH-Schlüssel Linux-Knoten nur mithilfe der Azure-Befehlszeilenschnittstelle (Azure CLI) hinzugefügt werden. Verwenden Sie, wenn Sie Windows Server-Knoten verwenden, die beim Erstellen des AKS-Clusters bereitgestellten SSH-Schlüssel, und fahren Sie mit dem Schritt [Abrufen der AKS-Knotenadresse](#get-the-aks-node-address) fort. Andernfalls können Sie [RDP-Verbindungen (Remotedesktopprotokoll) zum Herstellen einer Verbindung mit Windows Server-Knoten verwenden][aks-windows-rdp].
@@ -117,13 +117,13 @@ Die AKS-Knoten werden nicht im Internet öffentlich verfügbar gemacht. Zum Hers
 
 ### <a name="ssh-to-regular-aks-clusters"></a>SSH für normale AKS-Cluster
 
-Verwenden Sie zum Anzeigen der privaten IP-Adresse eines AKS-Clusterknotens den Befehl [az vm list-ip-addresses][az-vm-list-ip-addresses]:
+Verwenden Sie zum Anzeigen der privaten IP-Adresse eines AKS-Clusterknotens den Befehl [az vm list-ip-addresses][az-vm-list-ip-addresses]command. Provide your own AKS cluster resource group name obtained in a previous [az-aks-show][az-aks-show]: Die folgende Beispielausgabe zeigt die privaten IP-Adressen der AKS-Knoten:
 
 ```azurecli-interactive
 az vm list-ip-addresses --resource-group $CLUSTER_RESOURCE_GROUP -o table
 ```
 
-Die folgende Beispielausgabe zeigt die privaten IP-Adressen der AKS-Knoten:
+SSH für AKS-Cluster, die auf VM-Skalierungsgruppen basieren
 
 ```
 VirtualMachine            PrivateIPAddresses
@@ -131,15 +131,15 @@ VirtualMachine            PrivateIPAddresses
 aks-nodepool1-79590246-0  10.240.0.4
 ```
 
-### <a name="ssh-to-virtual-machine-scale-set-based-aks-clusters"></a>SSH für AKS-Cluster, die auf VM-Skalierungsgruppen basieren
+### <a name="ssh-to-virtual-machine-scale-set-based-aks-clusters"></a>Listen Sie mithilfe des [kubectl get-Befehls][kubectl-get] die interne IP-Adresse der Knoten auf:
 
-Listen Sie mithilfe des [kubectl get-Befehls][kubectl-get] die interne IP-Adresse der Knoten auf:
+Die folgende Beispielausgabe zeigt die interne IP-Adresse aller Knoten in dem Cluster einschließlich eines Windows Server-Knotens an.
 
 ```console
 kubectl get nodes -o wide
 ```
 
-Die folgende Beispielausgabe zeigt die interne IP-Adresse aller Knoten in dem Cluster einschließlich eines Windows Server-Knotens an.
+Notieren Sie zur Problembehandlung die interne IP-Adresse des Knotens.
 
 ```console
 $ kubectl get nodes -o wide
@@ -149,30 +149,30 @@ aks-nodepool1-42485177-vmss000000   Ready    agent   18h   v1.12.7   10.240.0.4 
 aksnpwin000000                      Ready    agent   13h   v1.12.7   10.240.0.67   <none>        Windows Server Datacenter   10.0.17763.437
 ```
 
-Notieren Sie zur Problembehandlung die interne IP-Adresse des Knotens. Sie verwenden diese Adresse in einem späteren Schritt.
+Sie verwenden diese Adresse in einem späteren Schritt. Erstellen der SSH-Verbindung
 
-## <a name="create-the-ssh-connection"></a>Erstellen der SSH-Verbindung
+## <a name="create-the-ssh-connection"></a>Zum Erstellen einer SSH-Verbindung mit einem AKS-Knoten führen Sie einen Hilfspod in Ihrem AKS-Cluster aus.
 
-Zum Erstellen einer SSH-Verbindung mit einem AKS-Knoten führen Sie einen Hilfspod in Ihrem AKS-Cluster aus. Dieser Hilfspod bietet SSH-Zugriff auf den Cluster und dann zusätzlichen SSH-Knotenzugriff. Zum Erstellen und Verwenden dieses Hilfspods führen Sie die folgenden Schritte aus:
+Dieser Hilfspod bietet SSH-Zugriff auf den Cluster und dann zusätzlichen SSH-Knotenzugriff. Zum Erstellen und Verwenden dieses Hilfspods führen Sie die folgenden Schritte aus: Führen Sie ein `debian`-Containerimage aus, und fügen Sie eine Terminalsitzung daran an.
 
-1. Führen Sie ein `debian`-Containerimage aus, und fügen Sie eine Terminalsitzung daran an. Dieser Container kann zum Erstellen einer SSH-Sitzung mit einem beliebigen Knoten im AKS-Cluster verwendet werden:
+1. Dieser Container kann zum Erstellen einer SSH-Sitzung mit einem beliebigen Knoten im AKS-Cluster verwendet werden: Wenn Sie Windows Server-Knoten verwenden (zurzeit in der Vorschauversion in AKS), fügen Sie dem Befehl einen Knotenselektor hinzu, um die Ausführung eines Debian-Containers in einem Linux-Knoten wie folgt festzulegen:
 
     ```console
     kubectl run -it --rm aks-ssh --image=debian
     ```
 
     > [!TIP]
-    > Wenn Sie Windows Server-Knoten verwenden (zurzeit in der Vorschauversion in AKS), fügen Sie dem Befehl einen Knotenselektor hinzu, um die Ausführung eines Debian-Containers in einem Linux-Knoten wie folgt festzulegen:
+    > Das Debian-Basisimage enthält keine SSH-Komponenten.
     >
     > `kubectl run -it --rm aks-ssh --image=debian --overrides='{"apiVersion":"apps/v1","spec":{"template":{"spec":{"nodeSelector":{"beta.kubernetes.io/os":"linux"}}}}}'`
 
-1. Das Debian-Basisimage enthält keine SSH-Komponenten. Sobald die Terminalsitzung mit dem Container verbunden ist, installieren Sie einen SSH-Client mit `apt-get` wie folgt:
+1. Sobald die Terminalsitzung mit dem Container verbunden ist, installieren Sie einen SSH-Client mit `apt-get` wie folgt: Listen Sie in einem neuen Terminalfenster, das nicht mit Ihrem Container verbunden ist, die Pods in Ihrem AKS-Cluster mit dem Befehl [kubectl get pods][kubectl-get] auf.
 
     ```console
     apt-get update && apt-get install openssh-client -y
     ```
 
-1. Listen Sie in einem neuen Terminalfenster, das nicht mit Ihrem Container verbunden ist, die Pods in Ihrem AKS-Cluster mit dem Befehl [kubectl get pods][kubectl-get] auf. Der im vorherigen Schritt erstellte Pod beginnt mit dem Namen *aks-ssh*, wie es im folgenden Beispiel gezeigt wird:
+1. Der im vorherigen Schritt erstellte Pod beginnt mit dem Namen *aks-ssh*, wie es im folgenden Beispiel gezeigt wird: Im ersten Schritt dieses Artikels haben Sie dem AKS-Knoten Ihren öffentlichen SSH-Schlüssel hinzugefügt.
 
     ```
     $ kubectl get pods
@@ -181,21 +181,21 @@ Zum Erstellen einer SSH-Verbindung mit einem AKS-Knoten führen Sie einen Hilfsp
     aks-ssh-554b746bcf-kbwvf   1/1       Running   0          1m
     ```
 
-1. Im ersten Schritt dieses Artikels haben Sie dem AKS-Knoten Ihren öffentlichen SSH-Schlüssel hinzugefügt. Nun kopieren Sie Ihren privaten SSH-Schlüssel in den Pod. Dieser private Schlüssel wird verwendet, um die SSH-Verbindung mit den AKS-Knoten zu erstellen.
+1. Nun kopieren Sie Ihren privaten SSH-Schlüssel in den Pod. Dieser private Schlüssel wird verwendet, um die SSH-Verbindung mit den AKS-Knoten zu erstellen. Geben Sie Ihren eigenen *aks-ssh*-Podnamen an, den Sie im vorherigen Schritt erhalten haben.
 
-    Geben Sie Ihren eigenen *aks-ssh*-Podnamen an, den Sie im vorherigen Schritt erhalten haben. Ändern Sie bei Bedarf *~/.ssh/id_rsa* in den Speicherort Ihres privaten SSH-Schlüssels:
+    Ändern Sie bei Bedarf *~/.ssh/id_rsa* in den Speicherort Ihres privaten SSH-Schlüssels: Wenn Sie sich wieder in der Terminalsitzung für Ihren Container befinden, aktualisieren Sie die Berechtigungen für den kopierten privaten SSH-Schlüssel `id_rsa`, sodass er für Benutzer schreibgeschützt ist:
 
     ```console
     kubectl cp ~/.ssh/id_rsa aks-ssh-554b746bcf-kbwvf:/id_rsa
     ```
 
-1. Wenn Sie sich wieder in der Terminalsitzung für Ihren Container befinden, aktualisieren Sie die Berechtigungen für den kopierten privaten SSH-Schlüssel `id_rsa`, sodass er für Benutzer schreibgeschützt ist:
+1. Erstellen Sie jetzt eine SSH-Verbindung mit Ihrem AKS-Knoten.
 
     ```console
     chmod 0600 id_rsa
     ```
 
-1. Erstellen Sie jetzt eine SSH-Verbindung mit Ihrem AKS-Knoten. Auch hier lautet der Standardbenutzername für AKS-Knoten *azureuser*. Bestätigen Sie die Aufforderung zum Fortsetzen der Verbindung, da zuerst die Vertrauenswürdigkeit des SSH-Schlüssels überprüft wird. Anschließend wird die Bash-Eingabeaufforderung Ihres AKS-Knotens angezeigt:
+1. Auch hier lautet der Standardbenutzername für AKS-Knoten *azureuser*. Bestätigen Sie die Aufforderung zum Fortsetzen der Verbindung, da zuerst die Vertrauenswürdigkeit des SSH-Schlüssels überprüft wird. Anschließend wird die Bash-Eingabeaufforderung Ihres AKS-Knotens angezeigt: Entfernen des SSH-Zugriffs
 
     ```console
     $ ssh -i id_rsa azureuser@10.240.0.4
@@ -218,13 +218,13 @@ Zum Erstellen einer SSH-Verbindung mit einem AKS-Knoten führen Sie einen Hilfsp
     azureuser@aks-nodepool1-79590246-0:~$
     ```
 
-## <a name="remove-ssh-access"></a>Entfernen des SSH-Zugriffs
+## <a name="remove-ssh-access"></a>Wenn Sie fertig sind, führen Sie `exit` für die SSH-Sitzung und dann `exit` für die interaktive Containersitzung aus.
 
-Wenn Sie fertig sind, führen Sie `exit` für die SSH-Sitzung und dann `exit` für die interaktive Containersitzung aus. Beim Schließen dieser Containersitzung wird der Pod, der für den SSH-Zugriff vom AKS-Cluster verwendet wurde, gelöscht.
+Beim Schließen dieser Containersitzung wird der Pod, der für den SSH-Zugriff vom AKS-Cluster verwendet wurde, gelöscht. Nächste Schritte
 
-## <a name="next-steps"></a>Nächste Schritte
+## <a name="next-steps"></a>Wenn Sie zusätzliche Problembehandlungsdaten benötigen, können Sie [die Kubelet-Protokolle anzeigen][view-kubelet-logs] or [view the Kubernetes master node logs][view-master-logs].
 
-Wenn Sie zusätzliche Problembehandlungsdaten benötigen, können Sie [die Kubelet-Protokolle anzeigen][view-kubelet-logs] or [view the Kubernetes master node logs][view-master-logs].
+If you need additional troubleshooting data, you can <bpt id="p1">[</bpt>view the kubelet logs<ept id="p1">][view-kubelet-logs]</ept> or <bpt id="p2">[</bpt>view the Kubernetes master node logs<ept id="p2">][view-master-logs]</ept>.
 
 <!-- EXTERNAL LINKS -->
 [kubectl-get]: https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#get

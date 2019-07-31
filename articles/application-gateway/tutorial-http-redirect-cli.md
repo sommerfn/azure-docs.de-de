@@ -1,6 +1,6 @@
 ---
 title: Erstellen eines Anwendungsgateways mit einem Zertifikat – Azure-Befehlszeilenschnittstelle | Microsoft-Dokumentation
-description: Erfahren Sie, wie Sie mithilfe der Azure-Befehlszeilenschnittstelle ein Anwendungsgateway erstellen und ein Zertifikat für die SSL-Beendigung hinzufügen.
+description: Erfahren Sie, wie Sie mithilfe der Azure-Befehlszeilenschnittstelle ein Anwendungsgateway erstellen und ein Zertifikat für die SSL-Terminierung hinzufügen.
 services: application-gateway
 author: vhorne
 manager: jpconnock
@@ -19,7 +19,7 @@ ms.locfileid: "66133599"
 ---
 # <a name="create-an-application-gateway-with-http-to-https-redirection-using-the-azure-cli"></a>Erstellen eines Anwendungsgateways mit Umleitung von HTTP zu HTTPS über die Azure-Befehlszeilenschnittstelle
 
-Sie können die Azure-Befehlszeilenschnittstelle verwenden, um ein [Anwendungsgateway](application-gateway-introduction.md) mit einem Zertifikat für die SSL-Beendigung zu erstellen. Zum Umleiten des HTTP-Datenverkehrs an den HTTPS-Port in Ihrem Anwendungsgateway wird eine Routingregel verwendet. In diesem Beispiel erstellen Sie auch eine [VM-Skalierungsgruppe](../virtual-machine-scale-sets/virtual-machine-scale-sets-overview.md) für den Back-End-Pool des Anwendungsgateways, die zwei virtuelle Computerinstanzen enthält.
+Sie können die Azure-Befehlszeilenschnittstelle verwenden, um ein [Anwendungsgateway](application-gateway-introduction.md) mit einem Zertifikat für die SSL-Terminierung zu erstellen. Zum Umleiten des HTTP-Datenverkehrs an den HTTPS-Port in Ihrem Anwendungsgateway wird eine Routingregel verwendet. In diesem Beispiel erstellen Sie auch eine [VM-Skalierungsgruppe](../virtual-machine-scale-sets/virtual-machine-scale-sets-overview.md) für den Back-End-Pool des Anwendungsgateways, die zwei virtuelle Computerinstanzen enthält.
 
 In diesem Artikel werden folgende Vorgehensweisen behandelt:
 

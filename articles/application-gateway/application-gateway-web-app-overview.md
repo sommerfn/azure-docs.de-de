@@ -39,9 +39,9 @@ Mit dieser Funktion können Kunden die Optionen in den HTTP-Einstellungen und be
 
 ## <a name="special-considerations"></a>Besondere Überlegungen
 
-### <a name="ssl-termination-and-end-to-end-ssl-with-multi-tenant-services"></a>SSL-Beendigung und End-to-End-SSL-Verschlüsselung mit mehrinstanzfähigen Diensten
+### <a name="ssl-termination-and-end-to-end-ssl-with-multi-tenant-services"></a>SSL-Terminierung und End-to-End-SSL-Verschlüsselung mit mehrinstanzfähigen Diensten
 
-Die SSL-Beendigung und End-to-End-SSL-Verschlüsselung werden für mehrinstanzfähige Dienste unterstützt. Wenn die SSL-Beendigung im Anwendungsgateway durchgeführt werden soll, muss weiterhin ein SSL-Zertifikat zum Listener des Anwendungsgateways hinzugefügt werden. Bei der End-to-End-SSL-Verschlüsselung ist es für vertrauenswürdige Azure-Dienste wie Azure App Service-Web-Apps nicht erforderlich, die Back-Ends im Anwendungsgateway in eine Whitelist aufzunehmen. Daher müssen auch keine Authentifizierungszertifikate hinzugefügt werden. 
+Die SSL-Terminierung und End-to-End-SSL-Verschlüsselung werden für mehrinstanzfähige Dienste unterstützt. Wenn die SSL-Terminierung im Anwendungsgateway durchgeführt werden soll, muss weiterhin ein SSL-Zertifikat zum Listener des Anwendungsgateways hinzugefügt werden. Bei der End-to-End-SSL-Verschlüsselung ist es für vertrauenswürdige Azure-Dienste wie Azure App Service-Web-Apps nicht erforderlich, die Back-Ends im Anwendungsgateway in eine Whitelist aufzunehmen. Daher müssen auch keine Authentifizierungszertifikate hinzugefügt werden. 
 
 ![End-to-End-SSL](./media/application-gateway-web-app-overview/end-to-end-ssl.png)
 

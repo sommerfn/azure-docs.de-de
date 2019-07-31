@@ -1,6 +1,6 @@
 ---
-title: Erstellen eines Anwendungsgateways mit SSL-Beendigung – Azure-Befehlszeilenschnittstelle
-description: Erfahren Sie, wie Sie mithilfe der Azure-Befehlszeilenschnittstelle ein Anwendungsgateway erstellen und ein Zertifikat für die SSL-Beendigung hinzufügen.
+title: Erstellen eines Anwendungsgateways mit SSL-Terminierung – Azure-Befehlszeilenschnittstelle
+description: Erfahren Sie, wie Sie mithilfe der Azure-Befehlszeilenschnittstelle ein Anwendungsgateway erstellen und ein Zertifikat für die SSL-Terminierung hinzufügen.
 services: application-gateway
 author: vhorne
 manager: jpconnock
@@ -17,9 +17,9 @@ ms.contentlocale: de-DE
 ms.lasthandoff: 05/20/2019
 ms.locfileid: "65955686"
 ---
-# <a name="create-an-application-gateway-with-ssl-termination-using-the-azure-cli"></a>Erstellen eines Anwendungsgateways mit SSL-Beendigung mithilfe der Azure-Befehlszeilenschnittstelle
+# <a name="create-an-application-gateway-with-ssl-termination-using-the-azure-cli"></a>Erstellen eines Anwendungsgateways mit SSL-Terminierung mithilfe der Azure-Befehlszeilenschnittstelle
 
-Sie können über die Azure-Befehlszeilenschnittstelle ein [Anwendungsgateway](overview.md) mit einem Zertifikat für die [SSL-Beendigung](ssl-overview.md) erstellen, das eine [VM-Skalierungsgruppe](../virtual-machine-scale-sets/virtual-machine-scale-sets-overview.md) als Back-End-Server verwendet. In diesem Beispiel enthält die Skalierungsgruppe zwei VM-Instanzen, die zum standardmäßigen Back-End-Pool des Anwendungsgateways hinzugefügt werden.
+Sie können über die Azure-Befehlszeilenschnittstelle ein [Anwendungsgateway](overview.md) mit einem Zertifikat für die [SSL-Terminierung](ssl-overview.md) erstellen, das eine [VM-Skalierungsgruppe](../virtual-machine-scale-sets/virtual-machine-scale-sets-overview.md) als Back-End-Server verwendet. In diesem Beispiel enthält die Skalierungsgruppe zwei VM-Instanzen, die zum standardmäßigen Back-End-Pool des Anwendungsgateways hinzugefügt werden.
 
 In diesem Artikel werden folgende Vorgehensweisen behandelt:
 

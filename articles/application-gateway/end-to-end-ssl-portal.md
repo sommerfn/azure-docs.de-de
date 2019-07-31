@@ -32,11 +32,11 @@ Weitere Informationen finden Sie unter [SSL termination and end-to-end SSL (Übe
 
 ## <a name="create-a-new-application-gateway-with-end-to-end-ssl"></a>Erstellen eines neuen Anwendungsgateways mit End-to-End-SSL
 
-Sie müssen zunächst die SSL-Beendigung beim Erstellen eines neuen Anwendungsgateways aktivieren, um ein neues Anwendungsgateway mit End-to-End-SSL-Verschlüsselung zu erstellen. Dadurch wird die SSL-Verschlüsselung für die Kommunikation zwischen dem Client und dem Anwendungsgateway aktiviert. Anschließend müssen Sie die Zertifikate für die Back-End-Server in den HTTP-Einstellungen in die Whitelist aufnehmen, um die SSL-Verschlüsselung für die Kommunikation zwischen dem Anwendungsgateway und den Back-End-Servern zu aktivieren, wodurch die End-to-End-SSL-Verschlüsselung ermöglicht wird.
+Sie müssen zunächst die SSL-Terminierung beim Erstellen eines neuen Anwendungsgateways aktivieren, um ein neues Anwendungsgateway mit End-to-End-SSL-Verschlüsselung zu erstellen. Dadurch wird die SSL-Verschlüsselung für die Kommunikation zwischen dem Client und dem Anwendungsgateway aktiviert. Anschließend müssen Sie die Zertifikate für die Back-End-Server in den HTTP-Einstellungen in die Whitelist aufnehmen, um die SSL-Verschlüsselung für die Kommunikation zwischen dem Anwendungsgateway und den Back-End-Servern zu aktivieren, wodurch die End-to-End-SSL-Verschlüsselung ermöglicht wird.
 
-### <a name="enable-ssl-termination-while-creating-a-new-application-gateway"></a>Aktivieren der SSL-Beendigung beim Erstellung eines neuen Anwendungsgateways
+### <a name="enable-ssl-termination-while-creating-a-new-application-gateway"></a>Aktivieren der SSL-Terminierung beim Erstellung eines neuen Anwendungsgateways
 
-Informationen zum Aktivieren der SSL-Beendigung beim Erstellen eines neuen Anwendungsgateways finden Sie unter [Konfigurieren eines Anwendungsgateways mit SSL-Beendigung mithilfe des Azure-Portals](https://docs.microsoft.com/azure/application-gateway/create-ssl-portal).
+Informationen zum Aktivieren der SSL-Terminierung beim Erstellen eines neuen Anwendungsgateways finden Sie unter [Konfigurieren eines Anwendungsgateways mit SSL-Terminierung mithilfe des Azure-Portals](https://docs.microsoft.com/azure/application-gateway/create-ssl-portal).
 
 ### <a name="whitelist-certificates-for-backend-servers"></a>Aufnehmen der Zertifikate für Back-End-Server in die Whitelist
 
@@ -61,11 +61,11 @@ Informationen zum Aktivieren der SSL-Beendigung beim Erstellen eines neuen Anwen
 
 ## <a name="enable-end-to-end-ssl-for-existing-application-gateway"></a>Aktivieren von End-to-End-SSL für vorhandene Anwendungsgateways
 
-Sie müssen zunächst die SSL-Beendigung im Listener aktivieren, um ein vorhandenes Anwendungsgateway mit End-to-End-SSL-Verschlüsselung zu konfigurieren. Dadurch wird die SSL-Verschlüsselung für die Kommunikation zwischen dem Client und dem Anwendungsgateway aktiviert. Anschließend müssen Sie die Zertifikate für die Back-End-Server in den HTTP-Einstellungen in die Whitelist aufnehmen, um die SSL-Verschlüsselung für die Kommunikation zwischen dem Anwendungsgateway und den Back-End-Servern zu aktivieren, wodurch die End-to-End-SSL-Verschlüsselung ermöglicht wird.
+Sie müssen zunächst die SSL-Terminierung im Listener aktivieren, um ein vorhandenes Anwendungsgateway mit End-to-End-SSL-Verschlüsselung zu konfigurieren. Dadurch wird die SSL-Verschlüsselung für die Kommunikation zwischen dem Client und dem Anwendungsgateway aktiviert. Anschließend müssen Sie die Zertifikate für die Back-End-Server in den HTTP-Einstellungen in die Whitelist aufnehmen, um die SSL-Verschlüsselung für die Kommunikation zwischen dem Anwendungsgateway und den Back-End-Servern zu aktivieren, wodurch die End-to-End-SSL-Verschlüsselung ermöglicht wird.
 
-Sie müssen einen Listener mit HTTPS-Protokoll und -Zertifikat zum Aktivieren der SSL-Beendigung verwenden. Sie können das Protokoll eines vorhandenen Listeners nicht ändern. Daher können Sie entweder einen vorhandenen Listener mit HTTPS-Protokoll und -Zertifikat verwenden oder einen neuen Listener erstellen. Wenn Sie sich für ersteres entscheiden, können Sie die folgenden Schritte zum **Aktivieren der SSL-Beendigung in einem vorhandenen Anwendungsgateway** überspringen und mit dem Abschnitt **Aufnehmen der Zertifikate für Back-End-Server in die Whitelist** fortfahren. Wenn Sie sich für letzteres entschieden haben, verwenden Sie diese Schritte.
+Sie müssen einen Listener mit HTTPS-Protokoll und -Zertifikat zum Aktivieren der SSL-Terminierung verwenden. Sie können das Protokoll eines vorhandenen Listeners nicht ändern. Daher können Sie entweder einen vorhandenen Listener mit HTTPS-Protokoll und -Zertifikat verwenden oder einen neuen Listener erstellen. Wenn Sie sich für ersteres entscheiden, können Sie die folgenden Schritte zum **Aktivieren der SSL-Terminierung in einem vorhandenen Anwendungsgateway** überspringen und mit dem Abschnitt **Aufnehmen der Zertifikate für Back-End-Server in die Whitelist** fortfahren. Wenn Sie sich für letzteres entschieden haben, verwenden Sie diese Schritte.
 
-### <a name="enable-ssl-termination-in-existing-application-gateway"></a>Aktivieren der SSL-Beendigung in einem vorhandenen Anwendungsgateway
+### <a name="enable-ssl-termination-in-existing-application-gateway"></a>Aktivieren der SSL-Terminierung in einem vorhandenen Anwendungsgateway
 
 1. Wählen Sie **Alle Ressourcen** und dann **myAppGateway** aus.
 
@@ -75,7 +75,7 @@ Sie müssen einen Listener mit HTTPS-Protokoll und -Zertifikat zum Aktivieren de
 
 4. Wählen Sie unter **Protokoll** die Option **HTTPS** aus. Daraufhin wird der Bereich **Zertifikat** angezeigt.
 
-5. Laden Sie das PFX-Zertifikat hoch, das Sie für die SSL-Beendigung zwischen dem Client und dem Anwendungsgateway verwenden möchten.
+5. Laden Sie das PFX-Zertifikat hoch, das Sie für die SSL-Terminierung zwischen dem Client und dem Anwendungsgateway verwenden möchten.
 
    > [!NOTE]
    > Sie können zu Testzwecken ein selbstsigniertes Zertifikat verwenden. Für Produktionsworkloads sollten Sie jedoch nie selbstsignierte Zertifikate verwenden. Hier finden Sie Informationen zum [Erstellen eines selbstsignierten Zertifikats](https://docs.microsoft.com/azure/application-gateway/create-ssl-portal#create-a-self-signed-certificate).

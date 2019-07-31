@@ -10,18 +10,18 @@ ms.service: virtual-network
 ms.devlang: NA
 ms.topic: article
 ms.workload: infrastructure-services
-ms.date: 04/22/2019
+ms.date: 07/15/2019
 ms.author: kumud
-ms.openlocfilehash: 0ec650880a45f6383b24b5ac810fc2ee745806b7
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 5093b74484cd04a0c0c7afed8e2ebc725af033f5
+ms.sourcegitcommit: a6873b710ca07eb956d45596d4ec2c1d5dc57353
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "62131073"
+ms.lasthandoff: 07/16/2019
+ms.locfileid: "68249830"
 ---
 # <a name="what-is-ipv6-for-azure-virtual-network-preview"></a>Was ist IPv6 für Azure Virtual Network? (Vorschau)
 
-IPv6 für Azure Virtual Network (VNET) ermöglicht es Ihnen, Anwendungen in Azure mit IPv6- und IPv4-Konnektivität sowohl innerhalb eines virtuellen Netzwerks als auch aus dem und in das Internet bereitzustellen. Aufgrund der Erschöpfung öffentlicher IPv4-Adressen werden neue Netzwerke für Mobilität und Internet der Dinge (IoT) häufig auf IPv6 aufgebaut. Selbst langjährig etablierte ISP- und Mobilnetzwerke werden auf IPv6 umgestellt. Reine IPv4-Dienste können sowohl in vorhandenen als auch in entstehenden Märkten einen echten Nachteil darstellen. Die Dual Stack-IPv4/IPv6-Konnektivität ermöglicht es in Azure gehosteten Diensten, diese Technologielücke mit global verfügbaren Dual Stack-Diensten zu schließen, die problemlos eine Verbindung sowohl mit den vorhandenen IPv4- als auch mit diesen neuen IPv6-Geräten und -Netzwerken herstellen können.
+IPv6 für Azure Virtual Network (VNET) ermöglicht es Ihnen, Anwendungen in Azure mit IPv6- und IPv4-Konnektivität sowohl innerhalb eines virtuellen Netzwerks als auch für das Internet (in ein- und ausgehender Richtung) bereitzustellen. Aufgrund der Erschöpfung öffentlicher IPv4-Adressen werden neue Netzwerke für Mobilität und Internet der Dinge (IoT) häufig auf IPv6 aufgebaut. Selbst langjährig etablierte ISP- und Mobilnetzwerke werden auf IPv6 umgestellt. Reine IPv4-Dienste können sowohl in vorhandenen als auch in entstehenden Märkten einen echten Nachteil darstellen. Die Dual Stack-IPv4/IPv6-Konnektivität ermöglicht es in Azure gehosteten Diensten, diese Technologielücke mit global verfügbaren Dual Stack-Diensten zu schließen, die problemlos eine Verbindung sowohl mit den vorhandenen IPv4- als auch mit diesen neuen IPv6-Geräten und -Netzwerken herstellen können.
 
 Die ursprüngliche IPv6-Konnektivität von Azure macht es einfach, eine Dual Stack-Internetverbindung (IPv4/IPv6) für Anwendungen bereitzustellen, die in Azure gehostet werden. Sie ermöglicht eine einfache Bereitstellung von VMs mit IPv6-Konnektivität mit Lastenausgleich für eingehende und ausgehende initiierte Verbindungen. Dieses Feature ist noch verfügbar. Weitere Informationen finden Sie [hier](../load-balancer/load-balancer-ipv6-overview.md).
 IPv6 für das virtuelle Azure-Netzwerk bietet viel umfangreichere Funktionen, sodass vollständige IPv6-Lösungsarchitekturen in Azure bereitgestellt werden können.
@@ -44,24 +44,32 @@ Vorteile von Azure Virtual Network IPv6:
 
 ## <a name="capabilities"></a>Funktionen
 
-IPv6-Unterstützung für virtuelle Computer umfasst die folgenden Funktionen:
+IPv6 für VNETs beinhaltet die folgenden Funktionen:
 
 - Azure-Kunden können ihren eigenen virtuellen IPv6-Netzwerkadressraum definieren, um den Anforderungen ihrer Anwendungen und Kunden gerecht zu werden, oder eine nahtlose Integration in ihren lokalen IP-Bereich vornehmen.
 - Virtuelle Dual Stack-Netzwerke (IPv4 und IPv6) mit Dual Stack-Subnetzen ermöglichen es Anwendungen, eine Verbindung mit IPv4- und IPv6-Ressourcen in ihrem virtuellen Netzwerk oder im Internet herzustellen.
 - Schützen von Ressourcen mit IPv6-Regeln für Netzwerksicherheitsgruppen
 - Passen Sie das Routing von IPv6-Datenverkehr in Ihrem virtuellen Netzwerk mit benutzerdefinierten Routen an, insbesondere wenn Sie Network Virtual Appliances zur Erweiterung Ihrer Anwendung nutzen.
-- IPv6-Load Balancer-Unterstützung zur Erstellung robuster, skalierbarer Anwendungen, einschließlich Azure DNS-Unterstützung für AAAA-Adresseinträge für öffentliche IPv6-IP-Adressen.
-- Mit Inplace-Upgrades können Sie die IPv6-Konnektivität problemlos zu vorhandenen IPv4-basierten Implementierungen hinzufügen.
+- Internetclients können dank der Azure DNS-Unterstützung von IPv6-Einträgen (AAAA) nahtlos unter Verwendung ihres bevorzugten Protokolls auf Ihre Anwendung mit dualem Stapel zugreifen. 
+- Standardmäßige Unterstützung eines öffentlichen IPv6-Lastenausgleichs für die Erstellung resilienter, skalierbarer Anwendungen, einschließlich:
+    - Optionale IPv6-Integritätstests, mit denen bestimmt werden kann, ob Instanzen von Back-End-Pools fehlerfrei sind und somit neue Flows empfangen können.    
+    - Optionale Ausgangsregeln für uneingeschränkte deklarative Kontrolle über ausgehende Verbindungen, um diese Funktion nach Belieben skalieren und optimieren zu können.
+    - Mehrere optionale Front-End-Konfigurationen, sodass ein einzelner Lastenausgleich mehrere öffentliche IPv6-Adressen nutzen kann. (Für verschiedene Front-End-Adressen können das gleiche Front-End-Protokoll und der gleiche Port verwendet werden.)
+- Eine öffentliche IP-Adresse auf Instanzebene ermöglicht direkte IPv6-Internetkonnektivität für einzelne VMs.
+- Dank direkter Upgrades können Sie bereits vorhandenen IPv4-basierten Bereitstellungen mühelos IPv6-Konnektivität hinzufügen.
 - Erstellen Sie Dual Stack-Anwendungen, die automatisch mit VM-Skalierungsgruppen für Ihre Last skaliert werden.
+- Die Portalunterstützung für die Vorschauversion umfasst nun auch das interaktive Erstellen/Bearbeiten/Löschen von virtuellen Netzwerken und Subnetzen mit dualem Stapel (IPv4 +IPv6), IPv6-Regeln für Netzwerksicherheitsgruppen, benutzerdefinierten IPv6-Routen und öffentlichen IPv6-IP-Adressen.  
 
 ## <a name="limitations"></a>Einschränkungen
 Die Vorschauversion von IPv6 für das virtuelle Azure-Netzwerk weist die folgenden Einschränkungen auf:
-- IPv6 für Azure Virtual Network (Vorschau) ist in allen globalen Azure-Regionen verfügbar, aber nur in globalem Azure, nicht in den Government Clouds.   
-- Die Portalunterstützung für die Vorschau ist für einen Großteil der IPv6-Konfiguration (aber nicht für die gesamte Konfiguration) schreibgeschützt, jedoch bietet IPv6 für Virtual Network vollständige Unterstützung und Dokumentation (mit Beispielen) für die IPv6-Bereitstellung mit Azure PowerShell und der Befehlszeilenschnittstelle (CLI).
+- IPv6 für Azure Virtual Network (Vorschau) ist in allen globalen Azure-Regionen verfügbar, aber nur in globalem Azure, nicht in den Government Clouds.
+- Die Portalunterstützung für Load Balancer Standard-Komponenten beschränkt sich auf die Anzeige.  Für Load Balancer Standard-Bereitstellungen mit Azure PowerShell und Befehlszeilenschnittstelle (Command Line Interface, CLI) sind jedoch eine vollständige Unterstützung und Dokumentation (mit Beispielen) verfügbar.   
 - Die Unterstützung von Network Watcher für die Vorschau ist auf NSG-Flussprotokolle und Netzwerkpaketaufzeichnungen beschränkt.
-- Die Unterstützung von Lastenausgleich für die Vorschau ist zunächst auf den Load Balancer im Tarif „Basic“ beschränkt.
-- Öffentliche IP-Adressen auf Instanzebene (öffentliche IP-Adressen direkt auf einer VM) werden in der Vorschau nicht unterstützt.  
-- Peering virtueller Netzwerke wird (regional und global) in der Vorschau nicht unterstützt. 
+- Peering virtueller Netzwerke wird (regional und global) in der Vorschau nicht unterstützt.
+- Bei Verwendung des externen IPv6-Standardlastenausgleichs gelten folgende Einschränkungen: 
+  - Ausgangsregeln können auf mehrere öffentliche Front-End-IP-Adressen, aber **nicht** auf ein öffentliches IPv6-Präfix verweisen. Für das öffentliche IP-Präfix werden nur IPv4-Präfixe unterstützt.
+  - Bei IPv6-Lastenausgleichsregeln kann das Feature *Floating IP* **nicht** verwendet werden. Die Portwiederverwendung für Back-End-Instanzen wird nur mit IPv4 unterstützt.
+- Das Reservieren eines Blocks von IPv6-Adressen mit Internetzugriff wird vom Azure-Feature für das Präfix für öffentliche IP-Adressen nicht unterstützt.
 
 ## <a name="pricing"></a>Preise
 

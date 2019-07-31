@@ -26,7 +26,7 @@ Die Application Gateway-WAF basiert auf dem [Core Rule Set (CRS)](https://www.ow
 
 ![Application Gateway-WAF-Diagramm](./media/waf-overview/WAF1.png)
 
-Application Gateway wird als Application Delivery Controller (ADC, Controller zur Anwendungsbereitstellung) betrieben. Die Anwendung bietet SSL-Beendigung (Secure Sockets Layer), cookiebasierte Sitzungsaffinität, Lastverteilung per Roundrobin, inhaltsbasiertes Routing, die Möglichkeit zum Hosten mehrerer Websites sowie Sicherheitsverbesserungen.
+Application Gateway wird als Application Delivery Controller (ADC, Controller zur Anwendungsbereitstellung) betrieben. Die Anwendung bietet SSL-Terminierung (Secure Sockets Layer), cookiebasierte Sitzungsaffinität, Lastverteilung per Roundrobin, inhaltsbasiertes Routing, die Möglichkeit zum Hosten mehrerer Websites sowie Sicherheitsverbesserungen.
 
 Zu den Sicherheitsverbesserungen von Application Gateway gehören die SSL-Gruppenrichtlinienverwaltung sowie umfassende End-to-End-Unterstützung. Die Anwendungssicherheit wird von der WAF-Integration in Application Gateway gestärkt. Die Kombination schützt Ihre Webanwendungen vor gängigen Sicherheitslücken. Außerdem bietet sie einen einfach konfigurierbaren zentralen Verwaltungsort.
 

@@ -16,7 +16,7 @@ ms.locfileid: "67601956"
 ---
 # <a name="create-a-front-door-with-http-to-https-redirection-using-the-azure-portal"></a>Erstellen einer Front Door-Ressource mit Umleitung von HTTP zu HTTPS über das Azure-Portal
 
-Sie können das Azure-Portal verwenden, um eine [Front Door-Ressource ](front-door-overview.md) mit einem Zertifikat für die SSL-Beendigung zu erstellen. Eine Routingregel wird verwendet, um HTTP-Datenverkehr an HTTPS umzuleiten.
+Sie können das Azure-Portal verwenden, um eine [Front Door-Ressource ](front-door-overview.md) mit einem Zertifikat für die SSL-Terminierung zu erstellen. Eine Routingregel wird verwendet, um HTTP-Datenverkehr an HTTPS umzuleiten.
 
 In diesem Artikel werden folgende Vorgehensweisen behandelt:
 

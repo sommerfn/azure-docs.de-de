@@ -34,7 +34,6 @@ sections:
       - items:
           - html: '<a href="service/quickstart-run-cloud-notebook">Quickstart: Use a cloud-based notebook server to get started with Azure Machine Learning</a> (Schnellstart: Verwenden eines cloudbasierten Notebookservers für die ersten Schritte mit Azure Machine Learning) – keine Installation erforderlich'
           - html: '<a href="service/quickstart-run-local-notebook">Quickstart: Use your own notebook server to get started with Azure Machine Learning</a> (Schnellstart: Verwenden Ihres eigenen Notebookservers für die ersten Schritte mit Azure Machine Learning) – lokale SDK-Installation'
-          - html: <a href="service/ui-quickstart-run-experiment">Ausführen eines Experiments auf der grafischen Benutzeroberfläche </a> (ohne Code)
         style: unordered
         type: list
       - text: '<b>Tutorial: Bildklassifizierung von MNIST-Daten mit dem SDK:</b>'

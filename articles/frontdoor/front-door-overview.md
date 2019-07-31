@@ -49,7 +49,7 @@ Entsprechend können zwei verschiedene Domänen (`www.contoso.com` und `www.fabr
 ## <a name="session-affinity"></a>Sitzungsaffinität
 Die cookiebasierte Sitzungsaffinität ist ein hilfreiches Feature, mit dem eine Benutzersitzung auf demselben Anwendungs-Back-End fortgesetzt werden kann. Durch die Nutzung von Cookies, die durch Front Door verwaltet werden, wird nachfolgender Datenverkehr von einer Benutzersitzung an dasselbe Anwendungs-Back-End zur Verarbeitung geleitet. Dieses Feature ist wichtig, wenn der Sitzungsstatus für eine Benutzersitzung lokal auf dem Back-End gespeichert wird.
 
-## <a name="secure-sockets-layer-ssl-termination"></a>SSL-Beendigung (Secure Sockets Layer)
+## <a name="secure-sockets-layer-ssl-termination"></a>SSL-Terminierung (Secure Sockets Layer)
 Front Door unterstützt SSL-Beendigung auf Edge-Ebene, d. h., einzelne Benutzer können eine SSL-Verbindung mit Front Door-Umgebungen einrichten, statt sie über lange Transportverbindungen mit dem Anwendungs-Back-End herzustellen. Darüber hinaus unterstützt Front Door sowohl HTTP- als auch HTTPS-Konnektivität zwischen Front Door-Umgebungen und Ihren Back-Ends. Deshalb können Sie auch End-to-End-SSL-Verschlüsselung einrichten. Wenn Front Door für Ihre Arbeitsauslastung beispielsweise infolge der Wiederverwendung einer betriebsbereiten Verbindung innerhalb einer Minute über 5.000 Anforderungen für aktive Dienste empfängt, stellt es ungefähr 500 Verbindungen mit Ihrem Anwendungs-Back-End her, wodurch ihre Back-Ends erheblich entlastet werden.
 
 ## <a name="custom-domains-and-certificate-management"></a>Benutzerdefinierte Domänen und Zertifikatverwaltung
