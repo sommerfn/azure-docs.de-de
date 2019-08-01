@@ -10,14 +10,13 @@ ms.topic: quickstart
 author: stevestein
 ms.author: sstein
 ms.reviewer: ''
-manager: craigg
 ms.date: 12/18/2018
-ms.openlocfilehash: f1eac83f2b5460bf56ddff1bf15d9180adb49a48
-ms.sourcegitcommit: 3d4121badd265e99d1177a7c78edfa55ed7a9626
+ms.openlocfilehash: 63ed2c5c334aef8f6281ee34ec4ed6e47ca8521a
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/30/2019
-ms.locfileid: "66382280"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68569094"
 ---
 # <a name="quickstarts-azure-sql-database-connect-and-query"></a>Schnellstartanleitungen: Azure SQL-Datenbank – Verbindungsherstellung und Abfragen
 
@@ -94,8 +93,8 @@ Die folgende Tabelle enthält Beispiele für ORM (Object-Relational Mapping)-Fra
   - [Herstellen von Verbindungen mit SQL-Datenbanken mithilfe von Python](sql-database-connect-query-python.md)
   - [Herstellen von Verbindungen mit SQL-Datenbanken mithilfe von Ruby](sql-database-connect-query-ruby.md)
 - Codebeispiele für Wiederholungslogik:
-  - [Herstellen robuster Verbindungen mit SQL mit ADO.NET][step-4-connect-resiliently-to-sql-with-ado-net-a78n]
-  - [Herstellen robuster Verbindungen mit SQL mit PHP][step-4-connect-resiliently-to-sql-with-php-p42h]
+  - [Connect resiliently to SQL with ADO.NET][step-4-connect-resiliently-to-sql-with-ado-net-a78n]
+  - [Connect resiliently to SQL with PHP][step-4-connect-resiliently-to-sql-with-php-p42h]
 
 <!-- Link references. -->
 

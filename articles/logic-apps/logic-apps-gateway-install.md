@@ -9,12 +9,12 @@ ms.author: estfan
 ms.reviewer: arthii, LADocs
 ms.topic: article
 ms.date: 10/01/2018
-ms.openlocfilehash: 10a6e5c33f6a3c23d98e6eb3380de0d6dc6ac216
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 61a9b319b9ea44f766bc6f014b76bc48d15efc57
+ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65544479"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68598457"
 ---
 # <a name="install-on-premises-data-gateway-for-azure-logic-apps"></a>Installieren des lokalen Datengateways für Azure Logic Apps
 
@@ -296,7 +296,7 @@ Das Datengateway wird als Windows-Dienst ausgeführt, und Sie können das Gatewa
 
 ## <a name="tenant-level-administration"></a>Verwaltung auf Mandantenebene 
 
-Derzeit können Mandantenadministratoren nicht alle Gateways, die andere Benutzer installiert und konfiguriert haben, zentral verwalten. Als Mandantenadministrator sollten Sie die Benutzer in Ihrer Organisation bitten, Sie jedem Gateway als Administrator hinzuzufügen, das sie installieren. So können Sie alle Gateways in Ihrer Organisation über die Seite „Gatewayeinstellungen“ oder über [PowerShell-Befehle](https://docs.microsoft.com/power-bi/service-gateway-high-availability-clusters#powershell-support-for-gateway-clusters) verwalten. 
+Derzeit können Mandantenadministratoren nicht alle Gateways, die andere Benutzer installiert und konfiguriert haben, zentral verwalten. Als Mandantenadministrator sollten Sie die Benutzer in Ihrer Organisation bitten, Sie jedem Gateway als Administrator hinzuzufügen, das sie installieren. So können Sie alle Gateways in Ihrer Organisation über die Seite „Gatewayeinstellungen“ oder über [PowerShell-Befehle](/data-integration/gateway/service-gateway-powershell-support) verwalten. 
 
 <a name="gateway-cloud-service"></a>
 

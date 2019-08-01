@@ -4,7 +4,7 @@ description: Erfahren Sie, wie Sie Anmeldeinformationen auf der Data Science Vir
 keywords: Deep Learning, KI, Data Science-Tools, virtueller Data Science-Computer, räumliche Analysen, Data Science-Teamprozess
 services: machine-learning
 documentationcenter: ''
-author: gopitk
+author: vijetajo
 manager: cgronlun
 ms.custom: seodec18
 ms.assetid: ''
@@ -15,13 +15,13 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 05/08/2018
-ms.author: gokuma
-ms.openlocfilehash: 023e53bf17c1462c3eaedde3d6d9c1621ade27fc
-ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
+ms.author: vijetaj
+ms.openlocfilehash: 7adc968dd88ede70b18766ce2c156c23324d0c4e
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68358864"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68557915"
 ---
 # <a name="store-access-credentials-on-the-data-science-virtual-machine-securely"></a>Sicheres Speichern von Anmeldeinformationen auf dem virtuellen Computer für Data Science
 

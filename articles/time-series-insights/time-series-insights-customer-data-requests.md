@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.service: time-series-insights
 services: time-series-insights
 ms.custom: seodec18
-ms.openlocfilehash: f99a54f5623100e057e0c02249f5886f46656a21
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: a67e716300254b7ae73cf5c608e4ab9177638456
+ms.sourcegitcommit: 13d5eb9657adf1c69cc8df12486470e66361224e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66355927"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "68677901"
 ---
 # <a name="summary-of-customer-data-request-features"></a>Zusammenfassung der Features für Kundendatenanforderungen
 
@@ -36,7 +36,7 @@ Ein Mandantenadministrator kann Kundendaten über das Azure-Portal löschen.
 
 Bevor Sie jedoch Kundendaten über das Portal löschen, sollten Sie die Zugriffsrichtlinien des Benutzers aus der Time Series Insights-Umgebung im Azure-Portal entfernen. Weitere Informationen finden Sie unter [Gewähren von Datenzugriff für eine Time Series Insights-Umgebung über das Azure-Portal](time-series-insights-data-access.md).
 
-Sie können Löschvorgänge für Zugriffsrichtlinien auch über die REST-API durchführen. Weitere Informationen finden Sie unter [Access Policies – Delete](/rest/api/time-series-insights/management/accesspolicies/delete) (Zugriffsrichtlinien – Delete).
+Sie können Löschvorgänge für Zugriffsrichtlinien auch über die REST-API durchführen. Weitere Informationen finden Sie unter [Access Policies – Delete](https://docs.microsoft.com/rest/api/time-series-insights/management/accesspolicies/delete) (Zugriffsrichtlinien – Delete).
 
 Time Series Insights ist in das Blatt „Policy“ im Azure-Portal integriert. In Time Series Insights sowie auf dem Blatt „Policy“ können Sie die innerhalb des Diensts gespeicherten Benutzerdaten anzeigen, exportieren und löschen. Jeder Löschvorgang, der auf dem Blatt „Policy“ des Azure-Portals durchgeführt wird, zieht die Löschung von Benutzerdaten in Time Series Insights nach sich. Wenn für einen Benutzer beispielsweise eine personenbezogene Abfrage gespeichert wurde, wird diese Abfrage endgültig aus dem Time Series Insights-Explorer gelöscht. Wenn für den Benutzer eine freigegebene Abfrage gespeichert wurde, wird die Abfrage beibehalten, die Benutzerinformationen werden jedoch endgültig gelöscht. Der folgende Hinweis enthält Anweisungen zum Durchführen dieser Aufgaben.
 
@@ -48,7 +48,7 @@ Time Series Insights ist in das Blatt „Policy“ im Azure-Portal integriert. I
 
 Als Mandantenadministrator können Sie Datenzugriffsrichtlinien innerhalb der Time Series Insights-Umgebung im Azure-Portal anzeigen. Weitere Informationen finden Sie unter [Gewähren von Datenzugriff für eine Time Series Insights-Umgebung über das Azure-Portal](time-series-insights-data-access.md).
 
-Es ist zudem möglich, Exportvorgänge für Zugriffsrichtlinien über den Vorgang „List By Environment“ in der bereitgestellten REST-API durchzuführen. Weitere Informationen finden Sie unter [Access Policies – List By Environment](/rest/api/time-series-insights/management/accesspolicies/listbyenvironment) (Zugriffsrichtlinien – List By Environment).
+Es ist zudem möglich, Exportvorgänge für Zugriffsrichtlinien über den Vorgang „List By Environment“ in der bereitgestellten REST-API durchzuführen. Weitere Informationen finden Sie unter [Access Policies – List By Environment](https://docs.microsoft.com/rest/api/time-series-insights/management/accesspolicies/listbyenvironment) (Zugriffsrichtlinien – List By Environment).
 
 ## <a name="to-delete-data-stored-within-time-series-insights"></a>So löschen Sie in Time Series Insights gespeicherte Daten
 

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/28/2019
 ms.author: rkarlin
-ms.openlocfilehash: 882d4e0592b74e8af30ff5bf110a41e403c3bf7d
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 4274b3684a2e9e79385a561b1cad426b4ffd954e
+ms.sourcegitcommit: 6cff17b02b65388ac90ef3757bf04c6d8ed3db03
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60906474"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68609946"
 ---
 # <a name="manage-endpoint-protection-issues-with-azure-security-center"></a>Behandeln von Endpoint Protection-Problemen mit Azure Security Center
 Azure Security Center überwacht den Status des Antischadsoftware-Schutzes und meldet diesen auf dem Blatt „Endpoint protection issues“ (Endpoint Protection-Probleme). Security Center hebt Probleme wie erkannte Bedrohungen und unzureichenden Schutz hervor, die Ihre virtuellen Computer (VMs) und physischen Computer anfällig für Antischadsoftwarebedrohungen machen können. Mithilfe der Informationen unter **Endpoint protection issues** (Endpoint Protection-Probleme) können Sie die Behandlung der erkannten Probleme planen.
@@ -100,7 +100,7 @@ Ein weiteres Suchergebnis wird geöffnet, das gefilterte Informationen für dies
 ## <a name="next-steps"></a>Nächste Schritte
 In diesem Artikel wurde gezeigt, wie Sie die Security Center-Empfehlung „Endpoint Protection installieren“ implementieren. Weitere Informationen zum Aktivieren von Antischadsoftware von Microsoft finden Sie in den folgenden Dokumenten:
 
-* [Microsoft Antimalware for Cloud Services and Virtual Machine (Antischadsoftware von Microsoft für Cloud Services und virtuelle Computer)](../security/azure-security-antimalware.md): Erfahren Sie mehr zur Bereitstellung von Antischadsoftware von Microsoft.
+* [Microsoft Antimalware for Cloud Services and Virtual Machine (Antischadsoftware von Microsoft für Cloud Services und virtuelle Computer)](../security/fundamentals/antimalware.md): Erfahren Sie mehr zur Bereitstellung von Antischadsoftware von Microsoft.
 
 Weitere Informationen zu Security Center finden Sie in den folgenden Dokumenten:
 

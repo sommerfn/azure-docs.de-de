@@ -4,7 +4,7 @@ description: Muster für die Bereitstellung von Data Science VM als Umgebung fü
 keywords: Deep Learning, KI, Data Science-Tools, virtueller Data Science-Computer, räumliche Analysen, Data Science-Teamprozess
 services: machine-learning
 documentationcenter: ''
-author: gopitk
+author: vijetajo
 manager: cgronlun
 ms.custom: seodec18
 ms.assetid: ''
@@ -15,13 +15,13 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 05/08/2018
-ms.author: gokuma
-ms.openlocfilehash: 2e17ab5cfe51f3772148cc730c982671d602a79a
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.author: vijetaj
+ms.openlocfilehash: 81aac356f49f7bf8dc57f77054d10aa3e09d473f
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60502146"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68565262"
 ---
 # <a name="data-science-virtual-machine-based-team-analytics-and-ai-environment"></a>Auf Data Science Virtual Machine basierende Teamanalyse und KI-Umgebung 
 [Data Science Virtual Machine](overview.md) (DSVM) bietet eine umfangreiche Umgebung in der Azure-Plattform mit vorgefertigter Software für künstliche Intelligenz (KI) und Datenanalyse. 

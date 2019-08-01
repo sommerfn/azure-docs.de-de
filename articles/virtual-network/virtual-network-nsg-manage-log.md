@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/04/2018
 ms.author: kumud
-ms.openlocfilehash: b3225d8d2f9eb7ccd0f4087d93cd9c1d940783d9
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 667d725653e9b668b18644e7d0c6d8f437e833ed
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64714675"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68570640"
 ---
 # <a name="diagnostic-logging-for-a-network-security-group"></a>Diagnoseprotokollierung für eine Netzwerksicherheitsgruppe
 
@@ -132,7 +132,7 @@ Zeigen Sie Protokolle an, und analysieren Sie sie. Weitere Informationen finden 
 Mit Diagnosedaten können Sie folgende Vorgänge durchführen:
 - [Schreiben von Diagnosedaten in ein Azure Storage-Konto](../azure-monitor/platform/archive-diagnostic-logs.md?toc=%2fazure%2fvirtual-network%2ftoc.json) zur Überwachung oder manuellen Überprüfung. Mithilfe der Diagnoseeinstellungen für Ressourcen können Sie eine Aufbewahrungsdauer (in Tagen) angeben.
 - [Streamen von Diagnosedaten an einen Event Hub](../azure-monitor/platform/diagnostic-logs-stream-event-hubs.md?toc=%2fazure%2fvirtual-network%2ftoc.json) zur Erfassung durch einen Drittanbieterdienst oder durch eine benutzerdefinierte Analyselösung wie Power BI
-- [Geschrieben in Azure Monitor-Protokolle](../azure-monitor/platform/collect-azure-metrics-logs.md?toc=%2fazure%2fvirtual-network%2ftoc.json#azure-diagnostics-direct-to-log-analytics)
+- [Geschrieben in Azure Monitor-Protokolle](../azure-monitor/platform/diagnostic-logs-stream-log-store.md?toc=%2fazure%2fvirtual-network%2ftoc.json)
 
 ## <a name="log-categories"></a>Protokollkategorien
 

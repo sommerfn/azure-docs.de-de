@@ -10,12 +10,12 @@ ms.topic: article
 ms.service: azure-blockchain
 ms.reviewer: seal
 manager: femila
-ms.openlocfilehash: dd0a33364ed9395a85478798e47352c533bd47dc
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 00d4911c0f2541ea5c64eccca3ab1b1505e06390
+ms.sourcegitcommit: 6cff17b02b65388ac90ef3757bf04c6d8ed3db03
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65027656"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68608528"
 ---
 # <a name="azure-blockchain-service-security"></a>Sicherheit in Azure Blockchain
 
@@ -23,7 +23,7 @@ Azure Blockchain verwendet mehrere Azure-Funktionen, um die Sicherheit und Verf�
 
 ## <a name="isolation"></a>Isolation
 
-Azure Blockchain-Ressourcen werden in einem privaten virtuellen Netzwerk isoliert. Jeder Transaktions- und Validierungsknoten ist ein virtueller Computer (VM). Virtuelle Computer in einem virtuellen Netzwerk können nicht direkt mit virtuellen Computern in einem anderen virtuellen Netzwerk kommunizieren. Durch die Isolation wird sichergestellt, dass die Kommunikation innerhalb des virtuellen Netzwerks privat bleibt. Weitere Informationen zur Isolation virtueller Azure-Netzwerke finden Sie unter [isolation in the Azure Public Cloud (Isolation in der öffentlichen Azure-Cloud)](../../security/azure-isolation.md#networking-isolation).
+Azure Blockchain-Ressourcen werden in einem privaten virtuellen Netzwerk isoliert. Jeder Transaktions- und Validierungsknoten ist ein virtueller Computer (VM). Virtuelle Computer in einem virtuellen Netzwerk können nicht direkt mit virtuellen Computern in einem anderen virtuellen Netzwerk kommunizieren. Durch die Isolation wird sichergestellt, dass die Kommunikation innerhalb des virtuellen Netzwerks privat bleibt. Weitere Informationen zur Isolation virtueller Azure-Netzwerke finden Sie unter [isolation in the Azure Public Cloud (Isolation in der öffentlichen Azure-Cloud)](../../security/fundamentals/isolation-choices.md#networking-isolation).
 
 ![VNET-Diagramm](./media/data-security/vnet.png)
 

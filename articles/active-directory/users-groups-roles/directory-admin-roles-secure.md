@@ -14,12 +14,12 @@ ms.subservice: users-groups-roles
 ms.custom: it-pro
 ms.reviewer: martincoetzer; MarkMorow
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7e61207ea23b9b9560668b58b33e3f32f5f70ab2
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 6c5a08677759f0ed1a39f5507d936c777516b237
+ms.sourcegitcommit: 6cff17b02b65388ac90ef3757bf04c6d8ed3db03
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67083940"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68608102"
 ---
 # <a name="securing-privileged-access-for-hybrid-and-cloud-deployments-in-azure-ad"></a>Schützen des privilegierten Zugriffs für hybride und Cloudbereitstellungen in Azure AD
 
@@ -135,7 +135,7 @@ Phase 2 der Roadmap konzentriert sich auf die Abwehr besonders häufig verwendet
 
 #### <a name="conduct-an-inventory-of-services-owners-and-admins"></a>Durchführen einer Inventur der Dienste, Besitzer und Administratoren
 
-Mit der Zunahme von Bring Your Own Device-Richtlinien (BYOD) und Work From Home-Richtlinien sowie wachsender Drahtloskonnektivität in Unternehmen ist es wichtig, dass Sie überwachen, wer eine Verbindung mit Ihrem Netzwerk herstellt. Eine effektive Sicherheitsüberwachung deckt häufig Geräte, Anwendungen und Programme in Ihrem Netzwerk auf, die nicht von der IT unterstützt werden und darum möglicherweise nicht sicher sind. Weitere Informationen finden Sie unter [Azure-Sicherheitsverwaltung und -Überwachung](../../security/security-management-and-monitoring-overview.md). Stellen Sie sicher, dass alle folgenden Aufgaben in Ihrem Inventurprozess enthalten sind. 
+Mit der Zunahme von Bring Your Own Device-Richtlinien (BYOD) und Work From Home-Richtlinien sowie wachsender Drahtloskonnektivität in Unternehmen ist es wichtig, dass Sie überwachen, wer eine Verbindung mit Ihrem Netzwerk herstellt. Eine effektive Sicherheitsüberwachung deckt häufig Geräte, Anwendungen und Programme in Ihrem Netzwerk auf, die nicht von der IT unterstützt werden und darum möglicherweise nicht sicher sind. Weitere Informationen finden Sie unter [Azure-Sicherheitsverwaltung und -Überwachung](../../security/fundamentals/management-monitoring-overview.md). Stellen Sie sicher, dass alle folgenden Aufgaben in Ihrem Inventurprozess enthalten sind. 
 
 * Identifizieren Sie die Benutzer mit Administratorrollen und die Dienste, über die sie verwalten können.
 * Finden Sie mit Azure AD PIM heraus, welche Benutzer in Ihrer Organisation Administratorzugriff auf Azure AD haben, einschließlich zusätzlicher Rollen zu den in Schritt 1 aufgelisteten.
@@ -291,7 +291,7 @@ Verwenden Sie Privileged Identity Management mit Azure AD-Administratorrollen zu
 
 #### <a name="use-azure-log-integrations-to-send-relevant-azure-logs-to-your-siem-systems"></a>Verwenden von Azure-Protokollintegrationen zum Senden von relevanten Azure-Protokollen an Ihre SIEM-Systeme 
 
-Mit der Azure-Protokollintegration können Sie nicht aufbereitete Protokolle aus Ihren Azure-Ressourcen in die bestehenden SIEM-Systeme (Security Information and Event Management, Sicherheitsinformationen und Ereignisverwaltung) Ihrer Organisation integrieren. Die [Azure-Protokollintegration](../../security/security-azure-log-integration-overview.md) erfasst Windows-Ereignisse aus Protokollen der Windows-Ereignisanzeige und Azure-Ressourcen aus Azure-Aktivitätsprotokollen, Azure Security Center-Warnungen und Azure-Diagnoseprotokollen. 
+Mit der Azure-Protokollintegration können Sie nicht aufbereitete Protokolle aus Ihren Azure-Ressourcen in die bestehenden SIEM-Systeme (Security Information and Event Management, Sicherheitsinformationen und Ereignisverwaltung) Ihrer Organisation integrieren. Die [Azure-Protokollintegration](../../security/fundamentals/azure-log-integration-overview.md) erfasst Windows-Ereignisse aus Protokollen der Windows-Ereignisanzeige und Azure-Ressourcen aus Azure-Aktivitätsprotokollen, Azure Security Center-Warnungen und Azure-Diagnoseprotokollen. 
 
 
 ### <a name="additional-steps-for-organizations-managing-access-to-other-cloud-apps-via-azure-ad"></a>Zusätzliche Schritte für Organisationen, die den Zugriff auf andere Cloud-Apps über Azure AD verwalten

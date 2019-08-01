@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/27/2019
 ms.author: jeedes
-ms.openlocfilehash: 3d6210fa215792fc7ff049eb597df5905926c193
-ms.sourcegitcommit: 2e4b99023ecaf2ea3d6d3604da068d04682a8c2d
+ms.openlocfilehash: de9dce04b6f27b6ae6f5c5caeed5728370359558
+ms.sourcegitcommit: f5cc71cbb9969c681a991aa4a39f1120571a6c2e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67670890"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68515387"
 ---
 # <a name="tutorial-configure-zscaler-one-for-automatic-user-provisioning"></a>Tutorial: Konfigurieren von Zscaler One für die automatische Benutzerbereitstellung
 
@@ -28,8 +28,7 @@ In diesem Tutorial werden die Schritte erläutert, die Sie in Zscaler One und Az
 
 > [!NOTE]
 > Das Tutorial enthält die Beschreibung eines Connectors, der auf dem Benutzerbereitstellungsdienst von Azure AD basiert. Informationen zum Zweck und zur Funktionsweise dieses Diensts sowie häufig gestellte Fragen finden Sie unter [Automatisieren der Bereitstellung und Bereitstellungsaufhebung von Benutzern für SaaS-Anwendungen (Software as a Service) mit Azure Active Directory](../active-directory-saas-app-provisioning.md).
->
-> Dieser Connector ist derzeit als Vorschau verfügbar. Weitere Informationen zu den allgemeinen Nutzungsbedingungen von Microsoft Azure für Vorschaufunktionen finden Sie unter [Zusätzliche Nutzungsbestimmungen für Microsoft Azure-Vorschauen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+
 
 ## <a name="prerequisites"></a>Voraussetzungen
 

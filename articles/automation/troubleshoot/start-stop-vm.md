@@ -9,12 +9,12 @@ ms.author: robreed
 ms.date: 04/04/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 6d24b533d4335e1a6142944ad42484bbe9d2bb96
-ms.sourcegitcommit: f811238c0d732deb1f0892fe7a20a26c993bc4fc
+ms.openlocfilehash: 447aa4f5bb3c274900beddcef8c89db88d3f3ee9
+ms.sourcegitcommit: d585cdda2afcf729ed943cfd170b0b361e615fae
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/29/2019
-ms.locfileid: "67477434"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "68688053"
 ---
 # <a name="troubleshoot-the-startstop-vms-during-off-hours-solution"></a>Problembehandlung beim Starten/Beenden von VMs außerhalb der Geschäftszeiten
 
@@ -179,7 +179,7 @@ Stellen Sie mit den folgenden Schritten sicher, dass die Lösung ordnungsgemäß
 
 Ausführliche und zusätzliche Anleitungen zum Verwenden der Lösung zum Starten und Beenden von VMs in einer Sequenz finden Sie unter [Szenario 2: Starten/Beenden von VMs der Reihe nach mithilfe von Tags](../automation-solution-vm-management.md#scenario-2-startstop-vms-in-sequence-by-using-tags).
 
-## <a name="403"></a>Szenario: Beim Starten/Beenden des VM-Auftrags tritt ein Fehler mit dem „403 Verboten“-Status auf 
+## <a name="403"></a>Szenario: Beim Starten/Beenden des VM-Auftrags tritt ein Fehler mit dem „403 Verboten“-Status auf
 
 ### <a name="issue"></a>Problem
 
@@ -208,6 +208,9 @@ Ihr Problem oder unerwartetes Ergebnis bei Verwendung der Lösung zum Starten/Be
 ### <a name="cause"></a>Ursache
 
 Oft können Fehler durch Verwendung einer alten und veralteten Version der Lösung verursacht werden.
+
+> [!NOTE]
+> Die Lösung „VMs außerhalb der Geschäftszeiten starten/beenden“ wurde mit den Azure-Modulen getestet, die bei der Bereitstellung der Lösung in Ihr Azure Automation-Konto importiert werden. Die Lösung funktioniert derzeit nicht mit neueren Versionen des Azure-Moduls. Dies betrifft nur das Azure Automation-Konto, mit dem Sie die Lösung „VMs außerhalb der Geschäftszeiten starten/beenden“ ausführen. Sie können in Ihren anderen Azure Automation-Konten weiterhin neuere Versionen des Azure-Moduls verwenden, wie in [Aktualisieren von Azure PowerShell-Modulen in Azure Automation](../automation-update-azure-modules.md) beschrieben.
 
 ### <a name="resolution"></a>Lösung
 

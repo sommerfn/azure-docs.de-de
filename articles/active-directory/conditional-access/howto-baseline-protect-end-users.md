@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb, rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f2644e0e35139ac470b89f6af1b95cf510f60a0a
-ms.sourcegitcommit: d3b1f89edceb9bff1870f562bc2c2fd52636fc21
+ms.openlocfilehash: afcd9c9d3191caeabe182f499b5fd80cd8e1d8dd
+ms.sourcegitcommit: 6cff17b02b65388ac90ef3757bf04c6d8ed3db03
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/04/2019
-ms.locfileid: "67561019"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68608137"
 ---
 # <a name="baseline-policy-end-user-protection-preview"></a>Basisrichtlinie: Endbenutzerschutz (Vorschau)
 
@@ -75,5 +75,5 @@ Gehen Sie wie folgt vor, um diese Richtlinie zu aktivieren und Ihre Benutzer zu 
 Weitere Informationen finden Sie unter
 
 * [Conditional Access grundlegende Schutzrichtlinien](concept-baseline-protection.md)
-* [Fünf Schritte zum Sichern Ihrer Identitätsinfrastruktur](../../security/azure-ad-secure-steps.md)
+* [Fünf Schritte zum Sichern Ihrer Identitätsinfrastruktur](../../security/fundamentals/steps-secure-identity.md)
 * [Was ist Conditional Access in Azure Active Directory?](overview.md)

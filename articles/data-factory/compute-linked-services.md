@@ -11,12 +11,12 @@ ms.date: 01/15/2019
 author: nabhishek
 ms.author: abnarain
 manager: craigg
-ms.openlocfilehash: 0e7405e48307091ff5df12096d49a00c011e2de3
-ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
+ms.openlocfilehash: d0fd26da81c4f59f16b5f0364cf165ec36a6ea39
+ms.sourcegitcommit: f5cc71cbb9969c681a991aa4a39f1120571a6c2e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/04/2019
-ms.locfileid: "66480429"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68516329"
 ---
 # <a name="compute-environments-supported-by-azure-data-factory"></a>Von Azure Data Factory unterstützte Compute-Umgebungen
 In diesem Artikel werden verschiedene Compute-Umgebungen beschrieben, mit denen Sie Daten verarbeiten oder transformieren können. Darüber hinaus werden Einzelheiten zu verschiedenen Konfigurationen beschrieben (bedarfsgesteuerte Compute-Umgebung im Vergleich zu einer eigenen Compute-Umgebung). Diese beiden Konfigurationen werden von Data Factory unterstützt, wenn Sie verknüpfte Dienste konfigurieren, um diese Compute-Umgebungen mit Azure Data Factory zu verknüpfen.
@@ -95,7 +95,7 @@ Die folgende JSON definiert einen bedarfsgesteuerten Linux-basierten mit HDInsig
 >
 > 
 
-### <a name="properties"></a>Eigenschaften
+### <a name="properties"></a>Properties
 | Eigenschaft                     | BESCHREIBUNG                              | Erforderlich |
 | ---------------------------- | ---------------------------------------- | -------- |
 | type                         | Legen Sie die Typeigenschaft auf **HDInsightOnDemand**fest. | Ja      |
@@ -283,15 +283,15 @@ Sie können einen verknüpften Azure HDInsight-Dienst erstellen, um Ihren eigene
   }
 ```
 
-### <a name="properties"></a>Eigenschaften
+### <a name="properties"></a>Properties
 | Eigenschaft          | BESCHREIBUNG                                                  | Erforderlich |
 | ----------------- | ------------------------------------------------------------ | -------- |
 | type              | Legen Sie die Typeigenschaft auf **HDInsight**fest.            | Ja      |
 | clusterUri        | Der URI des HDInsight-Clusters.                            | Ja      |
-| userName          | Geben Sie den Namen des Benutzers ein, der mit einem vorhandenen HDInsight-Cluster verbunden werden soll. | Ja      |
+| username          | Geben Sie den Namen des Benutzers ein, der mit einem vorhandenen HDInsight-Cluster verbunden werden soll. | Ja      |
 | password          | Geben Sie ein Kennwort für das Benutzerkonto an.                       | Ja      |
 | linkedServiceName | Der Name des verknüpften Azure Storage-Diensts für die von diesem HDInsight-Cluster verwendete Azure Blob Storage-Instanz. <p>Derzeit können Sie keinen verknüpften Azure Data Lake Store-Dienst für diese Eigenschaft angeben. Sie können auf Daten in Azure Data Lake Store über Hive-/Pig-Skripts zugreifen, wenn der HDInsight-Cluster Zugriff auf die Data Lake Store-Instanz hat. </p> | Ja      |
-| isEspEnabled      | Geben Sie *TRUE* an, wenn der HDInsight-Cluster für das [Enterprise-Sicherheitspaket](https://docs.microsoft.com/azure/hdinsight/domain-joined/apache-domain-joined-introduction) aktiviert ist. Die Standardeinstellung lautet *FALSE*. | Nein       |
+| isEspEnabled      | Geben Sie *TRUE* an, wenn der HDInsight-Cluster für das [Enterprise-Sicherheitspaket](https://docs.microsoft.com/azure/hdinsight/domain-joined/apache-domain-joined-architecture) aktiviert ist. Die Standardeinstellung lautet *FALSE*. | Nein       |
 | connectVia        | Die Integration Runtime, mit der die Aktivitäten diesem verknüpften Dienst zugeteilt werden. Sie können Azure Integration Runtime oder selbstgehostete Integration Runtime verwenden. Wenn keine Option angegeben ist, wird die standardmäßige Azure Integration Runtime verwendet. <br />Verwenden Sie für einen für das Enterprise-Sicherheitspaket (ESP) aktivierten HDInsight-Cluster eine selbstgehostete Integration Runtime, die auf den Cluster zugreifen kann oder in demselben virtuellen Netzwerk wie der ESP-HDInsight-Cluster bereitgestellt werden muss. | Nein       |
 
 > [!IMPORTANT]
@@ -343,7 +343,7 @@ Lesen Sie die folgenden Themen, wenn Sie noch nicht mit dem Azure Batch-Dienst v
 ```
 
 
-### <a name="properties"></a>Eigenschaften
+### <a name="properties"></a>Properties
 | Eigenschaft          | BESCHREIBUNG                              | Erforderlich |
 | ----------------- | ---------------------------------------- | -------- |
 | type              | Legen Sie die Typeigenschaft auf **AzureBatch**fest. | Ja      |
@@ -379,10 +379,10 @@ Sie können einen verknüpften Azure Machine Learning-Dienst erstellen, um einen
 }
 ```
 
-### <a name="properties"></a>Eigenschaften
+### <a name="properties"></a>Properties
 | Eigenschaft               | BESCHREIBUNG                              | Erforderlich                                 |
 | ---------------------- | ---------------------------------------- | ---------------------------------------- |
-| Type                   | Legen Sie die type-Eigenschaft auf **AzureML** fest. | Ja                                      |
+| type                   | Legen Sie die type-Eigenschaft auf **AzureML** fest. | Ja                                      |
 | mlEndpoint             | Die Batchbewertungs-URL.                   | Ja                                      |
 | apiKey                 | Die veröffentlichte API des Arbeitsbereichsmodells.     | Ja                                      |
 | updateResourceEndpoint | Die Ressourcenupdate-URL für einen Azure ML-Webdienst-Endpunkt, mit der der Vorhersagewebdienst mit der Datei des trainierten Modells aktualisiert wird. | Nein                                       |
@@ -421,7 +421,7 @@ Sie erstellen einen mit **Azure Data Lake Analytics** verknüpften Dienst, um ei
 }
 ```
 
-### <a name="properties"></a>Eigenschaften
+### <a name="properties"></a>Properties
 
 | Eigenschaft             | BESCHREIBUNG                              | Erforderlich                                 |
 | -------------------- | ---------------------------------------- | ---------------------------------------- |
@@ -481,7 +481,7 @@ Sie können einen **mit Azure Databricks verknüpften Dienst** erstellen, um den
 
 ```
 
-### <a name="properties"></a>Eigenschaften
+### <a name="properties"></a>Properties
 
 | Eigenschaft             | BESCHREIBUNG                              | Erforderlich                                 |
 | -------------------- | ---------------------------------------- | ---------------------------------------- |

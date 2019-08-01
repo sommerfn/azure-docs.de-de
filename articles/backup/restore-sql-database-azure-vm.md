@@ -1,18 +1,18 @@
 ---
 title: Wiederherstellen gesicherter SQL Server-Datenbanken auf einem virtuellen Azure-Computer mithilfe von Azure Backup | Microsoft-Dokumentation
 description: In diesem Artikel erfahren Sie, wie Sie SQL Server-Datenbanken wiederherstellen, die auf einem virtuellen Azure-Computer ausgeführt und mit Azure Backup gesichert werden.
-author: rayne-wiselman
+author: dcurwin
 manager: carmonm
 ms.service: backup
 ms.topic: conceptual
 ms.date: 05/22/2019
-ms.author: raynew
-ms.openlocfilehash: f6bd9ea70a3334fbf3843a6b5d44d10a929e20ae
-ms.sourcegitcommit: c72ddb56b5657b2adeb3c4608c3d4c56e3421f2c
+ms.author: dacurwin
+ms.openlocfilehash: 71867e520d9c98b4af4d4f18f3d08c9e8cc4a8c4
+ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68467216"
+ms.lasthandoff: 07/30/2019
+ms.locfileid: "68639543"
 ---
 # <a name="restore-sql-server-databases-on-azure-vms"></a>Wiederherstellen von SQL Server-Datenbanken auf virtuellen Azure-Computern
 

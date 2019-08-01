@@ -1,18 +1,18 @@
 ---
 title: Sichern einer Azure-VM über die VM-Einstellungen mit dem Azure Backup-Dienst
 description: Erfahren Sie, wie Sie Azure-VMs mit dem Azure Backup-Dienst sichern.
-author: rayne-wiselman
+author: dcurwin
 manager: carmonm
 ms.service: backup
 ms.topic: conceptual
 ms.date: 06/13/2019
-ms.author: raynew
-ms.openlocfilehash: 994762098027f7051591b8bf89bfa5cb7c380373
-ms.sourcegitcommit: c72ddb56b5657b2adeb3c4608c3d4c56e3421f2c
+ms.author: dacurwin
+ms.openlocfilehash: 042fa44b8f24bb729b94c7631db9469de8493ba4
+ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68465273"
+ms.lasthandoff: 07/30/2019
+ms.locfileid: "68639771"
 ---
 # <a name="back-up-an-azure-vm-from-the-vm-settings"></a>Sichern einer Azure-VM über die VM-Einstellungen
 

@@ -2,23 +2,23 @@
 title: Bearbeiten Ihrer Gruppeninformationen – Azure Active Directory | Microsoft-Dokumentation
 description: Hier finden Sie Anweisungen zum Bearbeiten Ihrer Gruppeninformationen in Azure Active Directory.
 services: active-directory
-author: eross-msft
+author: msaburnley
 manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.subservice: fundamentals
 ms.topic: conceptual
 ms.date: 08/27/2018
-ms.author: lizross
+ms.author: ajburnle
 ms.reviewer: krbain
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 691f705574050b15869a0ac8b7d128507e5aae10
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: dc06abca08b2522ac57552e85f7c1bac3ef854af
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60248816"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68561875"
 ---
 # <a name="edit-your-group-information-using-azure-active-directory"></a>Bearbeiten Ihrer Gruppeninformationen in Azure Active Directory
 

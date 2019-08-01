@@ -16,12 +16,12 @@ ms.date: 05/31/2018
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: cb44c64540cc461bca4e305f7783f7c6b612591b
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: dbcc05093d801261493745c61dc5f68878d338b0
+ms.sourcegitcommit: 6cff17b02b65388ac90ef3757bf04c6d8ed3db03
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60296453"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68607667"
 ---
 # <a name="azure-ad-connect-user-sign-in-options"></a>Azure AD Connect-Optionen für die Benutzeranmeldung
 Mit Azure Active Directory Connect (Azure AD) können sich Ihre Benutzer sowohl bei Cloud- als auch bei lokalen Ressourcen mit denselben Kennwörtern anmelden. In diesem Artikel werden die wichtigsten Konzepte für jedes Identitätsmodell beschrieben, um Sie bei der Auswahl der Identität zu unterstützen, die Sie für die Registrierung für Azure AD verwenden möchten.
@@ -49,7 +49,7 @@ Azure AD unterstützt die folgenden Authentifizierungsmethoden:
 
 Für die meisten Organisationen, die lediglich die Benutzeranmeldung für Office 365, SaaS-Anwendungen und andere Azure AD-basierte Ressourcen aktivieren möchten, empfiehlt sich die Standardoption für die Kennworthashsynchronisierung.
  
-Ausführliche Informationen zum Auswählen einer Authentifizierungsmethode finden Sie unter [Wählen der richtigen Authentifizierungsmethode für Ihre Azure Active Directory-Hybrididentitätslösung](../../security/azure-ad-choose-authn.md).
+Ausführliche Informationen zum Auswählen einer Authentifizierungsmethode finden Sie unter [Wählen der richtigen Authentifizierungsmethode für Ihre Azure Active Directory-Hybrididentitätslösung](../../security/fundamentals/choose-ad-authn.md).
 
 ### <a name="password-hash-synchronization"></a>Kennworthashsynchronisierung
 Mit der Kennworthashsynchronisierung werden Benutzerkennworthashes aus Ihrem lokalen Active Directory mit Azure AD synchronisiert. Werden Kennwörter geändert oder lokal zurückgesetzt, werden die neuen Kennworthashes sofort mit Azure AD synchronisiert, damit Ihre Benutzer für Cloudressourcen und lokale Ressourcen dasselbe Kennwort verwenden können. Die Kennwörter werden weder an Azure AD übermittelt noch als Klartext in Azure AD gespeichert. Sie können die Kennworthashsynchronisierung mit der Kennwortrückschreibung kombinieren, um es den Benutzern zu ermöglichen, ihre Kennwörter in Azure AD selbst zurückzusetzen.

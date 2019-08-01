@@ -1,19 +1,18 @@
 ---
 title: 'Azure-Schnellstart: Erstellen und Verwenden einer Azure Files-Freigabe auf virtuellen Windows-Computern | Microsoft-Dokumentation'
 description: In dieser Schnellstartanleitung wird über das Azure-Portal eine Azure Files-Freigabe eingerichtet und mit einem virtuellen Windows-Computer verbunden. Sie stellen eine Verbindung mit der Files-Freigabe her und laden eine Datei in die Files-Freigabe hoch. Anschließend erstellen Sie eine Momentaufnahme der Files-Freigabe, ändern die darin enthaltene Datei und stellen eine vorherige Momentaufnahme der Files-Freigabe wieder her.
-services: storage
 author: roygara
 ms.service: storage
 ms.topic: quickstart
 ms.date: 02/01/2019
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 5109f4e801c1e34b2026cff8f8dd83558618e153
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 626a6a5e0449d267b67653c2f63303226dd0c99d
+ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58165793"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "68699752"
 ---
 # <a name="quickstart-create-and-manage-azure-files-share-with-windows-virtual-machines"></a>Schnellstart: Erstellen und Verwalten einer Azure Files-Freigabe mit virtuellen Windows-Computern
 

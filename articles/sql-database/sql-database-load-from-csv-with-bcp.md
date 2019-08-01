@@ -10,14 +10,13 @@ ms.topic: conceptual
 author: stevestein
 ms.author: sstein
 ms.reviewer: carlrab
-manager: craigg
 ms.date: 01/25/2019
-ms.openlocfilehash: 6c35d51c1029c0305c86cefd786e60b6547e0dee
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: b3dff4e100d3859978667ad0df7d895a24ca8a8d
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65799880"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68567820"
 ---
 # <a name="load-data-from-csv-into-azure-sql-database-flat-files"></a>Laden von Daten aus einer CSV-Datei in Azure SQL-Datenbank (Flatfiles)
 
@@ -33,7 +32,7 @@ Zur Durchführung der in diesem Artikel aufgeführten Schritte ist Folgendes erf
 * Eine Installation des Befehlszeilenprogramms bcp
 * Eine Installation des Befehlszeilenprogramms sqlcmd
 
-Sie können die Dienstprogramme bcp und sqlcmd aus dem [Microsoft Download Center][Microsoft Download Center] herunterladen.
+Sie können die Dienstprogramme bcp und sqlcmd im [Microsoft Download Center][Microsoft Download Center]herunterladen.
 
 ### <a name="data-in-ascii-or-utf-16-format"></a>Daten im ASCII- oder UTF-16-Format
 

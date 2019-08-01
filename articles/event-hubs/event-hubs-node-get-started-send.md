@@ -10,12 +10,12 @@ ms.topic: article
 ms.custom: seodec18
 ms.date: 04/15/2019
 ms.author: spelluru
-ms.openlocfilehash: e67be59e0ed78b2080986acb73a33fc87599c9d3
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: a3233a32bf8a0e602fbdb64778fad25f550294df
+ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65539343"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "68699049"
 ---
 # <a name="send-events-to-or-receive-events-from-azure-event-hubs-using-nodejs"></a>Senden von Ereignissen an oder Empfangen von Ereignissen aus Event Hubs mithilfe von Node.js
 
@@ -54,13 +54,17 @@ npm install @azure/event-processor-host
 In diesem Abschnitt erfahren Sie, wie Sie eine Node.js-Anwendung zum Senden von Ereignissen an einen Event Hub erstellen. 
 
 1. Öffnen Sie Ihren bevorzugten Editor, z. B. [Visual Studio Code](https://code.visualstudio.com). 
-2. Erstellen Sie eine Datei namens `send.js`, und fügen Sie den folgenden Code ein.
+2. Erstellen Sie eine Datei namens `send.js`, und fügen Sie den folgenden Code ein. Gehen Sie wie im folgenden Artikel beschrieben vor, um die Verbindungszeichenfolge für den Event Hub-Namespace abzurufen: [Abrufen der Verbindungszeichenfolge](event-hubs-get-connection-string.md#get-connection-string-from-the-portal). 
+
     ```javascript
     const { EventHubClient } = require("@azure/event-hubs");
 
-    // Define connection string and the name of the Event Hub
-    const connectionString = "";
-    const eventHubsName = "";
+    // Connection string - primary key of the Event Hubs namespace. 
+    // For example: Endpoint=sb://myeventhubns.servicebus.windows.net/;SharedAccessKeyName=RootManageSharedAccessKey;SharedAccessKey=XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+    const connectionString = "Endpoint=sb://<EVENT HUBS NAMESPACE NAME>.servicebus.windows.net/;SharedAccessKeyName=RootManageSharedAccessKey;SharedAccessKey=<SHARED ACCESS KEY>";
+
+    // Name of the event hub. For example: myeventhub
+    const eventHubsName = "<EVENT HUB NAME>";
 
     async function main() {
       const client = EventHubClient.createFromConnectionString(connectionString, eventHubsName);
@@ -93,9 +97,12 @@ In diesem Abschnitt wird veranschaulicht, wie Sie eine Node.js-Anwendung erstell
     ```javascript
     const { EventHubClient, delay } = require("@azure/event-hubs");
 
-    // Define connection string and related Event Hubs entity name here
-    const connectionString = "";
-    const eventHubsName = "";
+    // Connection string - primary key of the Event Hubs namespace. 
+    // For example: Endpoint=sb://myeventhubns.servicebus.windows.net/;SharedAccessKeyName=RootManageSharedAccessKey;SharedAccessKey=XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+    const connectionString = "Endpoint=sb://<EVENT HUBS NAMESPACE NAME>.servicebus.windows.net/;SharedAccessKeyName=RootManageSharedAccessKey;SharedAccessKey=<SHARED ACCESS KEY>";
+
+    // Name of the event hub. For example: myeventhub
+    const eventHubsName = "<EVENT HUB NAME>";
 
     async function main() {
       const client = EventHubClient.createFromConnectionString(connectionString, eventHubsName);
@@ -133,10 +140,15 @@ In diesem Abschnitt erfahren Sie, wie Sie mithilfe eines Azure-[Ereignisprozesso
     ```javascript
     const { EventProcessorHost, delay } = require("@azure/event-processor-host");
 
-    // Define connection string and related Event Hubs entity name here
-    const eventHubConnectionString = "";
-    const eventHubName = "";
-    const storageConnectionString = "";
+    // Connection string - primary key of the Event Hubs namespace. 
+    // For example: Endpoint=sb://myeventhubns.servicebus.windows.net/;SharedAccessKeyName=RootManageSharedAccessKey;SharedAccessKey=XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+    const connectionString = "Endpoint=sb://<EVENT HUBS NAMESPACE NAME>.servicebus.windows.net/;SharedAccessKeyName=RootManageSharedAccessKey;SharedAccessKey=<SHARED ACCESS KEY>";
+
+    // Name of the event hub. For example: myeventhub
+    const eventHubsName = "<EVENT HUB NAME>";
+
+    // Azure Storage connection string
+    const storageConnectionString = "DefaultEndpointsProtocol=https;AccountName=<STORAGE ACCOUNT NAME>;AccountKey=<STORAGE ACCOUNT KEY>;EndpointSuffix=core.windows.net";
 
     async function main() {
       const eph = EventProcessorHost.createFromConnectionString(

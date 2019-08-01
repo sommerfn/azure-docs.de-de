@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/23/2018
 ms.author: genli
-ms.openlocfilehash: 925461ba6c74fe0bcf286692c1a19bb4e7c02dfa
-ms.sourcegitcommit: a6873b710ca07eb956d45596d4ec2c1d5dc57353
+ms.openlocfilehash: 6217fe51a0231ee1bd34f9fbe8edef47ee073209
+ms.sourcegitcommit: 6cff17b02b65388ac90ef3757bf04c6d8ed3db03
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68254422"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68609705"
 ---
 # <a name="configuration-and-management-issues-for-azure-cloud-services-frequently-asked-questions-faqs"></a>Probleme mit der Konfiguration und Verwaltung von Microsoft Azure Cloud Services: Häufig gestellte Fragen (FAQs)
 
@@ -297,7 +297,7 @@ Sie können mithilfe des PowerShell-Skripts im Starttask die Antischadsoftware-E
 - [Erstellen eines PowerShell-Starttasks](cloud-services-startup-tasks-common.md#create-a-powershell-startup-task)
 - [Set-AzureServiceAntimalwareExtension](https://docs.microsoft.com/powershell/module/servicemanagement/azure/Set-AzureServiceAntimalwareExtension?view=azuresmps-4.0.0 )
 
-Weitere Informationen zu den Antimalware-Bereitstellungsszenarien, und wie sie vom Portal aus aktiviert werden, finden Sie unter [Antimalware-Bereitstellungsszenarien](../security/azure-security-antimalware.md#antimalware-deployment-scenarios).
+Weitere Informationen zu den Antimalware-Bereitstellungsszenarien, und wie sie vom Portal aus aktiviert werden, finden Sie unter [Antimalware-Bereitstellungsszenarien](../security/fundamentals/antimalware.md#antimalware-deployment-scenarios).
 
 ### <a name="how-to-enable-server-name-indication-sni-for-cloud-services"></a>Wie wird die Servernamensanzeige (Server Name Indication, SNI) für Cloud Services aktiviert?
 

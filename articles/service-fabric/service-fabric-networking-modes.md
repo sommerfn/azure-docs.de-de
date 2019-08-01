@@ -3,7 +3,7 @@ title: Konfigurieren von Netzwerkmodi für Azure Service Fabric-Containerdienste
 description: Hier erfahren Sie, wie Sie die verschiedenen Netzwerkmodi einrichten, die von Azure Service Fabric unterstützt werden.
 services: service-fabric
 documentationcenter: .net
-author: aljo-microsoft
+author: athinanthny
 manager: chackdan
 editor: ''
 ms.assetid: d552c8cd-67d1-45e8-91dc-871853f44fc6
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 2/23/2018
 ms.author: subramar
-ms.openlocfilehash: 2dcb678e8350ae0de3317db3682f0e51e27ab6f5
-ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
+ms.openlocfilehash: d749e1355e69ad93c8c211474043f88127ec76f0
+ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/07/2019
-ms.locfileid: "67621932"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68599386"
 ---
 # <a name="service-fabric-container-networking-modes"></a>Netzwerkmodi für Service Fabric-Container
 
@@ -202,10 +202,10 @@ Wenn ein Containerdienst neu gestartet oder im Cluster auf einen anderen Knoten 
 
    |Einstellung |Wert | |
    | --- | --- | --- |
-   |Priorität |2000 | |
+   |Priority |2000 | |
    |NAME |Custom_Dns  | |
    |`Source` |VirtualNetwork | |
-   |Ziel | VirtualNetwork | |
+   |Destination | VirtualNetwork | |
    |Dienst | DNS (UDP/53) | |
    |Aktion | ZULASSEN  | |
    | | |

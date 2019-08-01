@@ -3,18 +3,18 @@ title: Clustering von Punktdaten in Azure Maps | Microsoft-Dokumentation
 description: Gruppieren von Punktdaten im Web-SDK
 author: rbrundritt
 ms.author: richbrun
-ms.date: 03/27/2019
+ms.date: 07/29/2019
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: cpendleton
 ms.custom: codepen
-ms.openlocfilehash: 6dbd4461e7b8382ec3c4075b9688de59678f98f5
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 69e95a9e6c76da5d502314a7190e99fc10e968f7
+ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65957319"
+ms.lasthandoff: 07/30/2019
+ms.locfileid: "68639068"
 ---
 # <a name="clustering-point-data"></a>Clustering von Punktdaten
 
@@ -84,7 +84,7 @@ Weitere Informationen finden Sie unter dem Pen <a href='https://codepen.io/azure
 
 Wenn Mausereignisse auf einer Ebene auftreten, die gruppierte Datenpunkte enthalten, wird der gruppierte Datenpunkt als GeoJSON-Punktfeatureobjekt an das Ereignis zurückgegeben. Dieses Punktfeature weist die folgenden Eigenschaften auf:
 
-| Eigenschaftenname | Type | BESCHREIBUNG |
+| Eigenschaftenname | type | BESCHREIBUNG |
 |---------------|------|-------------|
 | cluster | boolean | Gibt an, ob das Feature einen Cluster darstellt. |
 | cluster_id | Zeichenfolge | Eine eindeutige ID für den Cluster, die mit den DataSource-Methoden `getClusterExpansionZoom`, `getClusterChildren` und `getClusterLeaves` verwendet werden kann. |

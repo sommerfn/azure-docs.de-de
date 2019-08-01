@@ -1,6 +1,6 @@
 ---
 title: Analysieren von Videoinhalten auf anstößiges Material in C# – Content Moderator
-titlesuffix: Azure Cognitive Services
+titleSuffix: Azure Cognitive Services
 description: Hier erfahren Sie, wie Sie Videoinhalte unter Verwendung des Content Moderator SDK für .NET auf verschiedenes anstößiges Material analysieren.
 services: cognitive-services
 author: sanjeev3
@@ -10,12 +10,12 @@ ms.subservice: content-moderator
 ms.topic: conceptual
 ms.date: 01/10/2019
 ms.author: sajagtap
-ms.openlocfilehash: 7e987c1249360b14fddf8af57c61fdd1a46ee6c5
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 1742db702a899d47110177532f5e85e74a59d91c
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60605315"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68564304"
 ---
 # <a name="analyze-video-content-for-objectionable-material-in-c"></a>Analysieren von Videoinhalten auf anstößiges Material in C#
 

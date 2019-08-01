@@ -8,12 +8,12 @@ ms.service: iot-accelerators
 services: iot-accelerators
 ms.date: 11/09/2018
 ms.topic: conceptual
-ms.openlocfilehash: aed63e332375be4f8ed939cf162545c9f366f329
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: eb3d5fea68b5b1b6e648943cb3dbaab5857e9e07
+ms.sourcegitcommit: 6cff17b02b65388ac90ef3757bf04c6d8ed3db03
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66143489"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68608005"
 ---
 # <a name="customize-the-remote-monitoring-solution-accelerator"></a>Anpassen des Solution Accelerators für die Remoteüberwachung
 
@@ -37,7 +37,7 @@ Die folgenden Schritte beschreiben den Prozess zum Einrichten einer lokalen Umge
     az network nsg rule update --name SSH --nsg-name {your solution name}-nsg --resource-group {your solution name} --access Allow
     ```
 
-    Aktivieren Sie SSH-Zugriff nur während der Test- und Entwicklungsphase. Wenn Sie SSH aktivieren, [sollten Sie wieder deaktivieren, sobald Sie fertig sind](../security/azure-security-network-security-best-practices.md#disable-rdpssh-access-to-virtual-machines).
+    Aktivieren Sie SSH-Zugriff nur während der Test- und Entwicklungsphase. Wenn Sie SSH aktivieren, [sollten Sie wieder deaktivieren, sobald Sie fertig sind](../security/fundamentals/network-best-practices.md#disable-rdpssh-access-to-virtual-machines).
 
 1. Suchen Sie über das Azure-Portal oder Azure Cloud Shell den Namen und die öffentliche IP-Adresse des virtuellen Computers. Beispiel:
 

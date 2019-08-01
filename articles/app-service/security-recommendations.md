@@ -9,22 +9,22 @@ ms.topic: conceptual
 ms.date: 06/17/2019
 ms.author: barclayn
 ms.custom: security-recommendations
-ms.openlocfilehash: 53cd2b1dde1158a1c46f798e57911dad110dc87e
-ms.sourcegitcommit: dad277fbcfe0ed532b555298c9d6bc01fcaa94e2
+ms.openlocfilehash: 71d564dac43328371e9d34684f2d13a26616a99d
+ms.sourcegitcommit: 6cff17b02b65388ac90ef3757bf04c6d8ed3db03
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/10/2019
-ms.locfileid: "67718251"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68609772"
 ---
 # <a name="security-recommendations-for-app-service"></a>Sicherheitsempfehlungen für App Service
 
-Dieser Artikel enthält Sicherheitsempfehlungen für Azure App Service. Die Umsetzung dieser Empfehlungen erleichtert es Ihnen, Ihre Sicherheitspflichten zu erfüllen, die im Microsoft-Modell der gemeinsamen Verantwortung beschrieben werden. Außerdem erhöhen Sie dadurch die Gesamtsicherheit Ihrer Web-App-Lösungen. Weitere Informationen dazu, wie Microsoft seinen Verantwortlichkeiten als Dienstanbieter nachkommt, finden Sie im Artikel [Sicherheit der Azure-Infrastruktur](../security/azure-security-infrastructure.md).
+Dieser Artikel enthält Sicherheitsempfehlungen für Azure App Service. Die Umsetzung dieser Empfehlungen erleichtert es Ihnen, Ihre Sicherheitspflichten zu erfüllen, die im Microsoft-Modell der gemeinsamen Verantwortung beschrieben werden. Außerdem erhöhen Sie dadurch die Gesamtsicherheit Ihrer Web-App-Lösungen. Weitere Informationen dazu, wie Microsoft seinen Verantwortlichkeiten als Dienstanbieter nachkommt, finden Sie im Artikel [Sicherheit der Azure-Infrastruktur](../security/fundamentals/infrastructure.md).
 
 ## <a name="general"></a>Allgemein
 
 | Empfehlung | Kommentare |
 |-|-|----|
-| Nutzen Sie Technologien, die auf dem neuesten Stand sind. | Verwenden Sie aktuelle Versionen der unterstützten Plattformen, Programmiersprachen, Protokolle und Frameworks. |
+| Bleiben Sie auf dem neusten Stand | Verwenden Sie aktuelle Versionen der unterstützten Plattformen, Programmiersprachen, Protokolle und Frameworks. |
 
 ## <a name="identity-and-access-management"></a>Identitäts- und Zugriffsverwaltung
 
@@ -62,4 +62,4 @@ Dieser Artikel enthält Sicherheitsempfehlungen für Azure App Service. Die Umse
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Erkundigen Sie sich bei Ihrem Anwendungsanbieter, ob weitere Sicherheitsanforderungen bestehen. Weitere Informationen zum Entwickeln sicherer Anwendungen finden Sie unter [Dokumentation zur sicheren Entwicklung](../security/abstract-develop-secure-apps.md).
+Erkundigen Sie sich bei Ihrem Anwendungsanbieter, ob weitere Sicherheitsanforderungen bestehen. Weitere Informationen zum Entwickeln sicherer Anwendungen finden Sie unter [Dokumentation zur sicheren Entwicklung](../security/fundamentals/abstract-develop-secure-apps.md).

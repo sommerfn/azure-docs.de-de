@@ -1,20 +1,21 @@
 ---
 title: 'Azure Backup: Wiederherstellen virtueller Azure-Computer mithilfe der REST-API'
 description: Verwalten von Wiederherstellungsvorgängen der Azure-VM-Sicherung mit der REST-API
-author: pvrk
-manager: shivamg
+ms.reviewer: pullabhk
+author: dcurwin
+manager: carmonm
 keywords: REST-API; Azure-VM-Sicherung; Azure-VM-Wiederherstellung;
 ms.service: backup
 ms.topic: conceptual
 ms.date: 09/12/2018
-ms.author: pullabhk
+ms.author: dacurwin
 ms.assetid: b8487516-7ac5-4435-9680-674d9ecf5642
-ms.openlocfilehash: 1b2e7994fa52e8fcbbd4fa32a6203181ad9735e5
-ms.sourcegitcommit: c72ddb56b5657b2adeb3c4608c3d4c56e3421f2c
+ms.openlocfilehash: 6525be97d9317791f39cb51a8fa819d38bd49c73
+ms.sourcegitcommit: d585cdda2afcf729ed943cfd170b0b361e615fae
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68466746"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "68689444"
 ---
 # <a name="restore-azure-virtual-machines-using-rest-api"></a>Wiederherstellen virtueller Azure-Computer mit der REST-API
 

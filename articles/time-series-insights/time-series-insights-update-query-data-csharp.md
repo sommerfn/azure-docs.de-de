@@ -12,12 +12,12 @@ ms.workload: big-data
 ms.topic: conceptual
 ms.date: 05/09/2019
 ms.custom: seodec18
-ms.openlocfilehash: fc5f35aedd52e206433afb0f556bc1cde8296232
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 8fdfd39527ccd298b78ef2c4c895d1f667d8d33b
+ms.sourcegitcommit: 13d5eb9657adf1c69cc8df12486470e66361224e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66237472"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "68677615"
 ---
 # <a name="query-data-from-the-azure-time-series-insights-preview-environment-using-c"></a>Abfragen von Daten aus der Azure Time Series Insights Preview-Umgebung mit C#
 
@@ -42,6 +42,6 @@ Das Beispiel zeigt einige einfache Beispiele für die Verwendung der Abfrage-API
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- Weitere Informationen zum Abfragen finden Sie in der [Abfrage-API-Referenz](/rest/api/time-series-insights/preview-query).
+- Weitere Informationen zum Abfragen finden Sie in der [Abfrage-API-Referenz](https://docs.microsoft.com/rest/api/time-series-insights/preview-query).
 
 - Lesen Sie die Informationen zum [Verbinden einer JavaScript-Einzelseiten-App](tutorial-create-tsi-sample-spa.md) für Time Series Insights.

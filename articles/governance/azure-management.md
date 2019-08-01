@@ -7,12 +7,12 @@ ms.service: governance
 ms.topic: article
 ms.date: 12/06/2018
 ms.author: dacoulte
-ms.openlocfilehash: d68e7d9ec3b60b93f0050250d7e7d718db7aa5b8
-ms.sourcegitcommit: ac1cfe497341429cf62eb934e87f3b5f3c79948e
+ms.openlocfilehash: 520b84722d9434b309d3eb6da0baa3c1e4da33d0
+ms.sourcegitcommit: 6cff17b02b65388ac90ef3757bf04c6d8ed3db03
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/01/2019
-ms.locfileid: "67488481"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68608191"
 ---
 # <a name="overview-of-management-services-in-azure"></a>Übersicht der Verwaltungsdienste in Azure
 
@@ -44,7 +44,7 @@ Governance in Azure wird in erster Linie mit zwei Diensten implementiert. [Azure
 
 ## <a name="secure"></a>Schützen
 
-Verwalten Sie die Sicherheit Ihrer Ressourcen und Daten. Ein Sicherheitsprogramm umfasst die Bewertung von Bedrohungen, das Erfassen und Analysieren von Daten und die Einhaltung von Vorschriften für Ihre Anwendungen und Ressourcen. Sicherheitsüberwachung und Bedrohungsanalysen werden von [Azure Security Center](../security-center/security-center-intro.md) bereitgestellt. Dieses umfasst einheitliche Funktionen für die Sicherheitsverwaltung und den erweiterten Schutz vor Bedrohungen für Hybrid Cloud-Workloads. Umfassende Informationen zur Sicherheit in Azure sowie eine Anleitung zum sicheren Konfigurieren von Azure-Ressourcen finden Sie unter [Einführung in Azure Security](../security/azure-security.md).
+Verwalten Sie die Sicherheit Ihrer Ressourcen und Daten. Ein Sicherheitsprogramm umfasst die Bewertung von Bedrohungen, das Erfassen und Analysieren von Daten und die Einhaltung von Vorschriften für Ihre Anwendungen und Ressourcen. Sicherheitsüberwachung und Bedrohungsanalysen werden von [Azure Security Center](../security-center/security-center-intro.md) bereitgestellt. Dieses umfasst einheitliche Funktionen für die Sicherheitsverwaltung und den erweiterten Schutz vor Bedrohungen für Hybrid Cloud-Workloads. Umfassende Informationen zur Sicherheit in Azure sowie eine Anleitung zum sicheren Konfigurieren von Azure-Ressourcen finden Sie unter [Einführung in Azure Security](../security/fundamentals/overview.md).
 
 ## <a name="protect"></a>Schützen
 

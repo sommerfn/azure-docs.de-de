@@ -6,16 +6,16 @@ services: machine-learning
 ms.service: machine-learning
 ms.subservice: studio
 ms.topic: conceptual
-author: garyericson
-ms.author: garye
+author: xiaoharper
+ms.author: amlstudiodocs
 ms.custom: seodc18
 ms.date: 03/04/2019
-ms.openlocfilehash: e29e4713cb01fcf894e09631ecca91ff07587751
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 6e0a355852be57a3b0869a6bf094e98a89f49f28
+ms.sourcegitcommit: f5cc71cbb9969c681a991aa4a39f1120571a6c2e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60751628"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68514921"
 ---
 # <a name="downloadable-infographic-machine-learning-basics-with-algorithm-examples"></a>Herunterladbare Infografik: Grundlagen von Machine Learning mit Algorithmusbeispielen
 
@@ -34,8 +34,8 @@ Laden Sie diese einfach verständliche Infografikübersicht über Grundlagen von
 ## <a name="more-help-with-algorithms-for-beginners-and-advanced-users"></a>Weitere Hilfe zu Algorithmen für Einsteiger und erfahrene Benutzer
 
 * Eine ausführlichere Erläuterung der verschiedenen Typen von Algorithmen für maschinelles Lernen und ihrer Verwendung sowie zur Auswahl des richtigen Algorithmus für Ihre Lösung finden Sie unter [Auswählen von Algorithmen für Azure Machine Learning Studio](algorithm-choice.md).
-* Eine in Kategorien unterteilte Liste aller in Machine Learning Studio verfügbaren Algorithmen für maschinelles Lernen finden Sie in der Hilfe zu den Algorithmen und Modulen in Machine Learning unter [Modell initialisieren][initialize-model].
-* Eine vollständige alphabetische Liste aller in Machine Learning Studio verfügbaren Algorithmen und Module finden Sie in der Hilfe zu den Algorithmen und Modulen in Machine Learning Studio unter [Modulliste von A bis Z für Machine Learning Studio][a-z-list].
+* Eine in Kategorien unterteilte Liste aller in Machine Learning Studio verfügbaren Algorithmen für maschinelles Lernen finden Sie in der Hilfe zu den Algorithmen und Modulen in Machine Learning Studio unter [Initialisieren des Modells][initialize-model].
+* Eine vollständige alphabetische Liste aller in Machine Learning Studio verfügbaren Algorithmen und Module finden Sie in der Hilfe zu den Algorithmen und Modulen in Machine Learning Studio in der [Modulliste von A bis Z für Machine Learning Studio][a-z-list].
 * Eine Übersicht über den Azure KI-Katalog und die zahlreichen von der Community erstellten verfügbaren Ressourcen finden Sie unter [Freigeben und Entdecken von Ressourcen im Azure KI-Katalog](gallery-how-to-use-contribute-publish.md).
 
 

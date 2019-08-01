@@ -3,19 +3,19 @@ title: 'Skalierbarkeit und Leistung: Personalisierung'
 titleSuffix: Azure Cognitive Services
 description: 'Bei hochleistungsfähigen und stark frequentierten Websites und Anwendungen müssen beim Dienst „Personalisierung“ hinsichtlich Skalierbarkeit und Leistung zwei Hauptfaktoren berücksichtigt werden: Latenz und Trainingsdurchsatz.'
 services: cognitive-services
-author: edjez
+author: diberry
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: personalizer
 ms.topic: conceptual
 ms.date: 06/07/2019
-ms.author: edjez
-ms.openlocfilehash: 06c2e65c723e18acc515dd7effc61aae0564f411
-ms.sourcegitcommit: dad277fbcfe0ed532b555298c9d6bc01fcaa94e2
+ms.author: diberry
+ms.openlocfilehash: d116f6bd389b1404ea723c965111cd05880e6c30
+ms.sourcegitcommit: e3b0fb00b27e6d2696acf0b73c6ba05b74efcd85
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/10/2019
-ms.locfileid: "67722421"
+ms.lasthandoff: 07/30/2019
+ms.locfileid: "68662815"
 ---
 # <a name="scalability-and-performance"></a>Skalierbarkeit und Leistung
 

@@ -6,12 +6,12 @@ ms.author: andrela
 ms.service: mariadb
 ms.topic: conceptual
 ms.date: 07/12/2019
-ms.openlocfilehash: e6bbe15727a6f989d8c16c67591d39d7870d5708
-ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
+ms.openlocfilehash: 8d4a7a1b176a0c232c4461c7a8cfc2b1e3faddd6
+ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "67874891"
+ms.lasthandoff: 07/30/2019
+ms.locfileid: "68638373"
 ---
 # <a name="read-replicas-in-azure-database-for-mariadb"></a>Lesereplikate in Azure Database for MariaDB
 
@@ -133,3 +133,4 @@ Der Parameter [`event_scheduler`](https://mariadb.com/kb/en/library/server-syste
 ## <a name="next-steps"></a>Nächste Schritte
 
 - Erfahren Sie, wie Sie [Lesereplikate über das Azure-Portal erstellen und verwalten](howto-read-replicas-portal.md).
+- Erfahren Sie, wie Sie [Lesereplikate über die Azure CLI erstellen und verwalten](howto-read-replicas-cli.md).

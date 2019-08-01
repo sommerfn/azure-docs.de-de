@@ -5,14 +5,14 @@ ms.subservice: single-database
 ms.topic: include
 ms.date: 06/19/2019
 ms.author: mathoma
-ms.openlocfilehash: ae2dd7d88f07d75115eabd6a0069a981936f1b47
-ms.sourcegitcommit: a874064e903f845d755abffdb5eac4868b390de7
+ms.openlocfilehash: dd511375c6b007222185f25610aecbd9931a742b
+ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68444477"
+ms.lasthandoff: 07/30/2019
+ms.locfileid: "68640053"
 ---
-In diesem Schritt erstellen Sie Ihre Ressourcengruppe und eine einzelne Datenbank für Azure SQL-Datenbank. 
+In diesem Schritt erstellen Sie Ihre Ressourcengruppe und eine einzelne Datenbank für Azure SQL-Datenbank.
 
 > [!IMPORTANT]
 > Richten Sie auf dem Computer, auf dem Sie die Schritte des Artikels ausführen, Firewallregeln für die öffentliche IP-Adresse des Computers ein. 
@@ -20,7 +20,8 @@ In diesem Schritt erstellen Sie Ihre Ressourcengruppe und eine einzelne Datenban
 > Weitere Informationen finden Sie unter [Erstellen einer Firewallregel auf Datenbankebene](/sql/relational-databases/system-stored-procedures/sp-set-database-firewall-rule-azure-sql-database). Eine Beschreibung, wie Sie die IP-Adresse für die Firewallregel auf Serverebene für Ihren Computer ermitteln, finden Sie unter [Erstellen einer Firewall auf Serverebene](../sql-database-server-level-firewall-rule.md).  
 
 # <a name="azure-portaltabazure-portal"></a>[Azure-Portal](#tab/azure-portal)
-Erstellen Sie Ihre Ressourcengruppe und einzelne Datenbanken über das Azure-Portal. 
+
+Erstellen Sie Ihre Ressourcengruppe und einzelne Datenbanken über das Azure-Portal.
 
 1. Klicken Sie im Azure-Portal links oben auf **Ressource erstellen**.
 2. Wählen Sie die Option **Datenbanken** und dann **SQL-Datenbank**, um die Seite **SQL-Datenbank erstellen** zu öffnen.
@@ -47,7 +48,7 @@ Erstellen Sie Ihre Ressourcengruppe und einzelne Datenbanken über das Azure-Por
 
       > [!IMPORTANT]
       > Notieren Sie sich die Serveradministratoranmeldung (Anmelde-ID) und das Kennwort, damit Sie sich für diesen und andere Schnellstarts beim Server und bei den Datenbanken anmelden können. Falls Sie die Anmeldeinformationen vergessen, können Sie auf der Seite **SQL Server** die Anmelde-ID abrufen oder das Kennwort zurücksetzen. Um die Seite **SQL Server** zu öffnen, wählen Sie nach dem Erstellen der Datenbank auf der Seite **Übersicht** für die Datenbank den Servernamen aus.
-        
+
    - **Möchten Sie einen Pool für elastische SQL-Datenbanken verwenden?** Wählen Sie die Option **Nein**.
    - **Compute und Speicher**: Wählen Sie **Datenbank konfigurieren** aus. 
 
@@ -62,7 +63,7 @@ Erstellen Sie Ihre Ressourcengruppe und einzelne Datenbanken über das Azure-Por
    - Wählen Sie **Übernehmen**.
 
 5. Wählen Sie die Registerkarte **Zusätzliche Einstellungen**. 
-6. Wählen Sie im Abschnitt **Datenquelle** unter **Vorhandene Daten verwenden** die Option `Sample`. 
+6. Wählen Sie im Abschnitt **Datenquelle** unter **Vorhandene Daten verwenden** die Option `Sample`.
 
    ![Weitere Einstellungen der SQL-Datenbank](../media/sql-database-get-started-portal/create-sql-database-additional-settings.png)
 
@@ -78,7 +79,7 @@ Erstellen Sie Ihre Ressourcengruppe und einzelne Datenbanken über das Azure-Por
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
-Erstellen Sie Ihre Ressourcengruppe und einzelne Datenbanken mit PowerShell. 
+Erstellen Sie Ihre Ressourcengruppe und einzelne Datenbanken mit PowerShell.
 
    ```powershell-interactive
    # Set variables for your server and database
@@ -89,8 +90,7 @@ Erstellen Sie Ihre Ressourcengruppe und einzelne Datenbanken mit PowerShell.
    $password = "PWD27!"+(New-Guid).Guid
    $serverName = "mysqlserver-$(Get-Random)"
    $databaseName = "mySampleDatabase"
-   
-   
+
    # The ip address range that you want to allow to access your server 
    # (leaving at 0.0.0.0 will prevent outside-of-azure connections to your DB)
    $startIp = "0.0.0.0"
@@ -100,18 +100,18 @@ Erstellen Sie Ihre Ressourcengruppe und einzelne Datenbanken mit PowerShell.
    Write-host "Resource group name is" $resourceGroupName 
    Write-host "Password is" $password  
    Write-host "Server name is" $serverName 
-   
+
    # Connect to Azure
    Connect-AzAccount
 
    # Set subscription ID
    Set-AzContext -SubscriptionId $subscriptionId 
-   
+
    # Create a resource group
    Write-host "Creating resource group..."
    $resourceGroup = New-AzResourceGroup -Name $resourceGroupName -Location $location -Tag @{Owner="SQLDB-Samples"}
    $resourceGroup
-   
+
    # Create a server with a system wide unique server name
    Write-host "Creating primary logical server..."
    $server = New-AzSqlServer -ResourceGroupName $resourceGroupName `
@@ -120,14 +120,14 @@ Erstellen Sie Ihre Ressourcengruppe und einzelne Datenbanken mit PowerShell.
       -SqlAdministratorCredentials $(New-Object -TypeName System.Management.Automation.PSCredential `
       -ArgumentList $adminLogin, $(ConvertTo-SecureString -String $password -AsPlainText -Force))
    $server
-   
+
    # Create a server firewall rule that allows access from the specified IP range
    Write-host "Configuring firewall for primary logical server..."
    $serverFirewallRule = New-AzSqlServerFirewallRule -ResourceGroupName $resourceGroupName `
       -ServerName $serverName `
       -FirewallRuleName "AllowedIPs" -StartIpAddress $startIp -EndIpAddress $endIp
    $serverFirewallRule
-   
+
    # Create General Purpose Gen4 database with 1 vCore
    Write-host "Creating a gen5 2 vCore database..."
    $database = New-AzSqlDatabase  -ResourceGroupName $resourceGroupName `
@@ -142,8 +142,8 @@ Erstellen Sie Ihre Ressourcengruppe und einzelne Datenbanken mit PowerShell.
    ```
 
 # <a name="az-clitabbash"></a>[Azure CLI](#tab/bash)
-Erstellen Sie Ihre Ressourcengruppe und einzelne Datenbanken mit der Azure CLI. 
 
+Erstellen Sie Ihre Ressourcengruppe und einzelne Datenbanken mit der Azure CLI.
 
    ```azurecli-interactive
    #!/bin/bash
@@ -158,7 +158,7 @@ Erstellen Sie Ihre Ressourcengruppe und einzelne Datenbanken mit der Azure CLI.
    drLocation=NorthEurope
    drServerName=mysqlsecondary-$RANDOM
    failoverGroupName=failovergrouptutorial-$RANDOM
-   
+
    # The ip address range that you want to allow to access your DB. 
    # Leaving at 0.0.0.0 will prevent outside-of-azure connections to your DB
    startip=0.0.0.0
@@ -169,14 +169,14 @@ Erstellen Sie Ihre Ressourcengruppe und einzelne Datenbanken mit der Azure CLI.
 
    # Set the subscription context for the Azure account
    az account set -s $subscriptionID
-   
+
    # Create a resource group
    echo "Creating resource group..."
    az group create \
       --name $resourceGroupName \
       --location $location \
       --tags Owner[=SQLDB-Samples]
-   
+
    # Create a logical server in the resource group
    echo "Creating primary logical server..."
    az sql server create \
@@ -185,7 +185,7 @@ Erstellen Sie Ihre Ressourcengruppe und einzelne Datenbanken mit der Azure CLI.
       --location $location  \
       --admin-user $adminLogin \
       --admin-password $password
-   
+
    # Configure a firewall rule for the server
    echo "Configuring firewall..."
    az sql server firewall-rule create \
@@ -194,7 +194,7 @@ Erstellen Sie Ihre Ressourcengruppe und einzelne Datenbanken mit der Azure CLI.
       -n AllowYourIp \
       --start-ip-address $startip \
       --end-ip-address $endip
-   
+
    # Create a gen5 1vCore database in the server 
    echo "Creating a gen5 2 vCore database..."
    az sql db create \

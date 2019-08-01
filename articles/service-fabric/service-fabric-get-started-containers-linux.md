@@ -3,7 +3,7 @@ title: Erstellen einer Azure Service Fabric-Containeranwendung unter Linux | Mic
 description: Erstellen Sie Ihre erste Linux-Containeranwendung unter Azure Service Fabric. Erstellen Sie ein Docker-Image mit Ihrer Anwendung, übertragen Sie es per Push an eine Containerregistrierung, erstellen Sie eine Service Fabric-Containeranwendung, und stellen Sie diese bereit.
 services: service-fabric
 documentationcenter: .net
-author: aljo-microsoft
+author: athinanthny
 manager: chackdan
 editor: ''
 ms.assetid: ''
@@ -13,13 +13,13 @@ ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 1/4/2019
-ms.author: aljo
-ms.openlocfilehash: 16f117e7c5291216b5716aee40995e6f224705fa
-ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
+ms.author: atsenthi
+ms.openlocfilehash: dde124a568581c53a4168b1c84e5df8a9d55155f
+ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68359364"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68599556"
 ---
 # <a name="create-your-first-service-fabric-container-application-on-linux"></a>Erstellen Ihrer ersten Service Fabric-Containeranwendung unter Linux
 > [!div class="op_single_selector"]

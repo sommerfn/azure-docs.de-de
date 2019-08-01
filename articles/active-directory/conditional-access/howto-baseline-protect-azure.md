@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb, rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 203b752f9da67ebf60e373fe7ce0893b4fd7fcb5
-ms.sourcegitcommit: d3b1f89edceb9bff1870f562bc2c2fd52636fc21
+ms.openlocfilehash: aab2aa4415345747a0e87b90ef0a7ee770ef3465
+ms.sourcegitcommit: 6cff17b02b65388ac90ef3757bf04c6d8ed3db03
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/04/2019
-ms.locfileid: "67560961"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68608124"
 ---
 # <a name="baseline-policy-require-mfa-for-service-management-preview"></a>Basisrichtlinie: Anfordern von MFA für die Dienstverwaltung (Vorschau)
 
@@ -69,5 +69,5 @@ Gehen Sie wie folgt vor, um diese Richtlinie zu aktivieren und Ihre Administrato
 Weitere Informationen finden Sie unter
 
 * [Conditional Access grundlegende Schutzrichtlinien](concept-baseline-protection.md)
-* [Fünf Schritte zum Sichern Ihrer Identitätsinfrastruktur](../../security/azure-ad-secure-steps.md)
+* [Fünf Schritte zum Sichern Ihrer Identitätsinfrastruktur](../../security/fundamentals/steps-secure-identity.md)
 * [Was ist Conditional Access in Azure Active Directory?](overview.md)

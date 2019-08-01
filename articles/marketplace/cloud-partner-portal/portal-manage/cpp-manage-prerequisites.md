@@ -7,12 +7,12 @@ ms.service: marketplace
 ms.topic: conceptual
 ms.date: 04/01/2019
 ms.author: pabutler
-ms.openlocfilehash: 8c32043d9bf3ca68563ae01d415bdc0e1f6993f7
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 62269490355414a6b75759361cd574ac7e90e162
+ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66258145"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68598670"
 ---
 # <a name="prerequisites-for-managing-accounts-on-the-cloud-partner-portal"></a>Voraussetzungen für die Verwaltung von Konten im Cloud-Partnerportal 
 
@@ -21,7 +21,7 @@ Um das [Cloud-Partnerportal](https://cloudpartner.azure.com/) für jegliche Funk
 
 ## <a name="account-terms-and-guidelines"></a>Bestimmungen und Richtlinien für Konten
 
-Überprüfen Sie sorgfältig Ihre Rechte und Pflichten im Rahmen des [Microsoft-Servicevertrags](https://www.microsoft.com/servicesagreement) und der [Microsoft-Nutzungsbedingungen](https://www.microsoft.com/legal/intellectualproperty/copyright), bevor Sie ein Konto erstellen.  
+Überprüfen Sie sorgfältig Ihre Rechte und Pflichten im Rahmen des [Microsoft-Servicevertrags](https://www.microsoft.com/servicesagreement) und der [Microsoft-Nutzungsbedingungen](https://www.microsoft.com/en-us/legal/intellectualproperty/copyright/default.aspx), bevor Sie ein Konto erstellen.  
 
 Wählen Sie den Kontonamen mit Bedacht aus.  Er stellt Ihre Organisation dar und sollte daher keine geschützten oder strittigen Wörter enthalten.  Microsoft verbietet beispielsweise die Verwendung seiner urheberrechtlich geschützten Begriffe wie z. B. „Azure“ und „Microsoft“ in Kontonamen.  Weitere Informationen finden Sie unter [Richtlinien für Azure Marketplace](https://docs.microsoft.com/azure/marketplace/guidelines).
 

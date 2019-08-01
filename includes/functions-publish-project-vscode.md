@@ -9,18 +9,18 @@ ms.topic: include
 ms.date: 04/16/2019
 ms.author: glenga
 ms.custom: include file
-ms.openlocfilehash: 3cfa36331f8f4ad45f3bf8ff32eee7d89c7d8852
-ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
+ms.openlocfilehash: ba3cf3e77e5414804e881e0cddb151fb14fb7fd5
+ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67608198"
+ms.lasthandoff: 07/30/2019
+ms.locfileid: "68669648"
 ---
 ## <a name="publish-the-project-to-azure"></a>Veröffentlichen des Projekts in Azure
 
 Visual Studio Code ermöglicht die Veröffentlichung Ihres Funktionsprojekts direkt in Azure. Bei diesem Vorgang erstellen Sie eine Funktions-App und zugehörige Ressourcen in Ihrem Azure-Abonnement. Die Funktions-App bietet einen Ausführungskontext für Ihre Funktionen. Das Projekt wird verpackt und in der neuen Funktions-App in Ihrem Azure-Abonnement bereitgestellt.
 
-Standardmäßig erstellt Visual Studio alle Azure-Ressourcen, die für die Erstellung Ihrer Funktions-App erforderlich sind. Die Namen dieser Ressourcen basieren auf dem von Ihnen gewählten Name der Funktions-App. Wenn Sie die volle Kontrolle über die erstellten Ressourcen haben möchten, können Sie stattdessen [mit erweiterten Optionen veröffentlichen](../articles/azure-functions/functions-develop-vs-code.md#enabled-publishing-with-advanced-create-options).
+Standardmäßig erstellt Visual Studio alle Azure-Ressourcen, die für die Erstellung Ihrer Funktions-App erforderlich sind. Die Namen dieser Ressourcen basieren auf dem von Ihnen gewählten Name der Funktions-App. Wenn Sie die volle Kontrolle über die erstellten Ressourcen haben möchten, können Sie stattdessen [mit erweiterten Optionen veröffentlichen](../articles/azure-functions/functions-develop-vs-code.md#enable-publishing-with-advanced-create-options).
 
 In diesem Abschnitt wird davon ausgegangen, dass Sie eine neue Funktions-App in Azure erstellen.
 

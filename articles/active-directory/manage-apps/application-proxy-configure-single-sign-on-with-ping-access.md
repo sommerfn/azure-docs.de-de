@@ -16,12 +16,12 @@ ms.author: celested
 ms.reviewer: harshja
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 54a99d001f8cb59af3042ce8b6849a2cd9480e99
-ms.sourcegitcommit: 0ebc62257be0ab52f524235f8d8ef3353fdaf89e
+ms.openlocfilehash: 0544ed0ff217b6e37cca22a1fc1e0048b30da462
+ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/10/2019
-ms.locfileid: "67723998"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "68694218"
 ---
 # <a name="header-based-authentication-for-single-sign-on-with-application-proxy-and-pingaccess"></a>Headerbasierte Authentifizierung für einmaliges Anmelden mit Anwendungsproxy und PingAccess
 
@@ -94,7 +94,7 @@ So veröffentlichen Sie Ihre eigene lokale Anwendung
    1. **URL in Headern übersetzen**: Wählen Sie **Nein**.
 
    > [!NOTE]
-   > Wenn dies Ihre erste Anwendung ist, verwenden Sie Port 3000, um zu beginnen, und kehren wieder zu dieser Einstellung zurück, um sie bei einer Änderung der PingAccess-Konfiguration zu aktualisieren. Bei nachfolgenden Anwendungen muss der Port dem Listener entsprechen, den Sie in PingAccess konfiguriert haben. Erfahren Sie mehr über [Listener in PingAccess](https://documentation.pingidentity.com/pingaccess/pa31/index.shtml#Listeners.html).
+   > Wenn dies Ihre erste Anwendung ist, verwenden Sie Port 3000, um zu beginnen, und kehren wieder zu dieser Einstellung zurück, um sie bei einer Änderung der PingAccess-Konfiguration zu aktualisieren. Bei nachfolgenden Anwendungen muss der Port dem Listener entsprechen, den Sie in PingAccess konfiguriert haben. Erfahren Sie mehr über [Listener in PingAccess](https://support.pingidentity.com/s/document-item?bundleId=pingaccess-52&topicId=reference/ui/pa_c_Listeners.html).
 
 1. Wählen Sie **Hinzufügen**. Die Übersichtsseite für die neue Anwendung wird angezeigt.
 
@@ -232,7 +232,7 @@ Wenn Sie im folgenden Schritt PingAccess konfigurieren, muss in der Websitzung, 
 
 Nachdem Sie nun alle Schritte des Azure Active Directory-Setups ausgeführt haben, können Sie mit dem Konfigurieren von PingAccess fortfahren.
 
-Die ausführlichen Anleitungen für den PingAccess-Teil dieses Szenarios werden in der Ping Identity-Dokumentation fortgesetzt. Befolgen Sie auf der Ping Identity-Website die Anweisungen unter [Configure PingAccess for Azure AD to protect applications published using Microsoft Azure AD Application Proxy](https://docs.pingidentity.com/bundle/paaad_m_ConfigurePAforMSAzureADSolution_paaad43/page/pa_c_PAAzureSolutionOverview.html) (Konfigurieren von PingAccess für Azure AD zum Schutz von Anwendungen, die mit Microsoft Azure AD-Anwendungsproxy veröffentlicht wurden).
+Die ausführlichen Anleitungen für den PingAccess-Teil dieses Szenarios werden in der Ping Identity-Dokumentation fortgesetzt. Befolgen Sie auf der Ping Identity-Website die Anweisungen unter [Configure PingAccess for Azure AD to protect applications published using Microsoft Azure AD Application Proxy](https://support.pingidentity.com/s/document-item?bundleId=pingaccess-52&topicId=agents/azure/pa_c_PAAzureSolutionOverview.html) (Konfigurieren von PingAccess für Azure AD zum Schutz von Anwendungen, die mit Microsoft Azure AD-Anwendungsproxy veröffentlicht wurden).
 
 Diese Schritte helfen Ihnen, PingAccess zu installieren und ein PingAccess-Konto einzurichten (falls Sie noch keines haben). Um dann eine Azure AD OpenID Connect-Verbindung (OIDC) herzustellen, richten Sie einen Tokenanbieter mit dem Wert von **Verzeichnis-ID (Mandant)** ein, den Sie aus dem Azure AD-Portal kopiert haben. Als Nächstes verwenden Sie zum Erstellen einer Websitzung für PingAccess die Werte **Anwendungs-ID (Client)** und `PingAccess key`. Danach können Sie die Identitätszuordnung einrichten und einen virtuellen Host, einen virtuellen Standort und eine virtuelle Anwendung erstellen.
 
@@ -242,6 +242,6 @@ Nachdem Sie alle Schritte abgeschlossen haben, sollte Ihre Anwendung betriebsber
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- [Configure PingAccess for Azure AD to protect applications published using Microsoft Azure AD Application Proxy](https://docs.pingidentity.com/bundle/paaad_m_ConfigurePAforMSAzureADSolution_paaad43/page/pa_c_PAAzureSolutionOverview.html) (Konfigurieren von PingAccess für Azure AD zum Schutz von Anwendungen, die mit Microsoft Azure AD-Anwendungsproxy veröffentlicht wurden)
+- [Configure PingAccess for Azure AD to protect applications published using Microsoft Azure AD Application Proxy](https://support.pingidentity.com/s/document-item?bundleId=pingaccess-52&topicId=agents/azure/pa_c_PAAzureSolutionOverview.html) (Konfigurieren von PingAccess für Azure AD zum Schutz von Anwendungen, die mit Microsoft Azure AD-Anwendungsproxy veröffentlicht wurden)
 - [Einmaliges Anmelden bei Anwendungen in Azure Active Directory](what-is-single-sign-on.md)
 - [Beheben von Problemen mit Anwendungsproxys und Fehlermeldungen](application-proxy-troubleshoot.md)

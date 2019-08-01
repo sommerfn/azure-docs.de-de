@@ -1,6 +1,6 @@
 ---
 title: Grenzwerte und Kontingente – Custom Vision Service
-titlesuffix: Azure Cognitive Services
+titleSuffix: Azure Cognitive Services
 description: Erfahren Sie über Grenzwerte und Kontingente für Custom Vision Service.
 services: cognitive-services
 author: anrothMSFT
@@ -10,12 +10,12 @@ ms.subservice: custom-vision
 ms.topic: conceptual
 ms.date: 03/25/2019
 ms.author: anroth
-ms.openlocfilehash: 9cff5fdac39be2338305cd37a4b2328a28a48255
-ms.sourcegitcommit: a52d48238d00161be5d1ed5d04132db4de43e076
+ms.openlocfilehash: 37921c655cc3c5de5c3c5079eda47fb7513fdf9f
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/20/2019
-ms.locfileid: "67269259"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68560951"
 ---
 # <a name="limits-and-quotas"></a>Grenzen und Kontingente
 

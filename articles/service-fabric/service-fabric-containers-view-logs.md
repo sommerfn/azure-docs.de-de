@@ -3,7 +3,7 @@ title: Anzeigen von Containerprotokollen in Azure Service Fabric | Microsoft-Dok
 description: In diesem Artikel wird beschrieben, wie Containerprotokolle für einen ausgeführten Service Fabric-Containerdienst mithilfe von Service Fabric Explorer angezeigt werden.
 services: service-fabric
 documentationcenter: .net
-author: aljo-microsoft
+author: athinanthny
 manager: chackdan
 editor: ''
 ms.assetid: ''
@@ -13,13 +13,13 @@ ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 05/15/2018
-ms.author: aljo
-ms.openlocfilehash: 0408010a49b8ec83aa02c74887139f663788ad80
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.author: atsenthi
+ms.openlocfilehash: 3fa40d794d02da08d29b6cac652edf493977f8e1
+ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60881473"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68599735"
 ---
 # <a name="view-logs-for-a-service-fabric-container-service"></a>Anzeigen von Protokollen für einen Service Fabric-Containerdienst
 Azure Service Fabric ist ein Containerorchestrator und unterstützt [Linux- und Windows-Container](service-fabric-containers-overview.md).  In diesem Artikel wird beschrieben, wie Containerprotokolle eines ausgeführten Containerdiensts oder eines inaktiven Containers angezeigt werden, sodass Sie Probleme diagnostizieren und beheben können.

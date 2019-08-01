@@ -10,14 +10,13 @@ ms.topic: conceptual
 author: VanMSFT
 ms.author: vanto
 ms.reviewer: carlrab
-manager: craigg
 ms.date: 05/08/2019
-ms.openlocfilehash: 783a8f0bc25717f1c2bf78a9c0d40b209a07939b
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 1292dbf43b5246fe3da95ead4d5d9113b4bc84f9
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65473339"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68569035"
 ---
 # <a name="azure-sql-database-and-sql-data-warehouse-access-control"></a>Zugriffssteuerung für Azure SQL-Datenbank und SQL Data Warehouse
 
@@ -51,7 +50,7 @@ Benutzerkonten können in der Masterdatenbank erstellt werden und Berechtigungen
 
 Es empfiehlt sich, für die Anwendung ein dediziertes Konto für die Authentifizierung zu verwenden. Auf diese Weise können Sie die Berechtigungen für die Anwendung beschränken und die Risiken schädlicher Aktivitäten reduzieren, falls Ihr Anwendungscode für einen Angriff durch Einschleusung von SQL-Befehlen anfällig ist. Der empfohlene Ansatz besteht darin, einen [eigenständigen Datenbankbenutzer](https://docs.microsoft.com/sql/relational-databases/security/contained-database-users-making-your-database-portable) zu erstellen. Dadurch kann sich Ihre App direkt bei der Datenbank authentifizieren. 
 
-## <a name="authorization"></a>Autorisierung
+## <a name="authorization"></a>Authorization
 
 Autorisierung bezieht sich darauf, welche Aufgaben ein Benutzer in einer Azure SQL-Datenbank ausführen kann. Dies wird durch die [Datenbank-Rollenmitgliedschaften](https://docs.microsoft.com/sql/relational-databases/security/authentication-access/database-level-roles) und [Objektebenenberechtigungen](https://docs.microsoft.com/sql/relational-databases/security/permissions-database-engine) Ihres Benutzerkontos gesteuert. Als bewährte Methode sollten Sie Benutzern nur die minimal erforderlichen Berechtigungen erteilen. Das Server-Admin-Konto, mit dem Sie eine Verbindung herstellen, ist Mitglied von db_owner und verfügt daher über alle Berechtigungen in der Datenbank. Speichern Sie dieses Konto für die Bereitstellung von Schemaänderungen und andere Verwaltungsvorgänge. Verwenden Sie das Konto "ApplicationUser" mit eingeschränkteren Berechtigungen, um eine Verbindung von Ihrer Anwendung zur Datenbank mit den geringsten Berechtigungen herzustellen, die von Ihrer Anwendung benötigt werden. Weitere Informationen finden Sie unter [Verwalten von Anmeldungen](sql-database-manage-logins.md).
 

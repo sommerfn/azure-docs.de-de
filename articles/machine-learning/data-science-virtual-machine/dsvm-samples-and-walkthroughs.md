@@ -4,7 +4,7 @@ description: Erfahren Sie mehr über die Beispiele und exemplarischen Vorgehensw
 keywords: Data Science-Tools, virtuelle Computer für Data Science, Tools für Data Science, Linux Data Science
 services: machine-learning
 documentationcenter: ''
-author: gopitk
+author: vijetajo
 manager: cgronlun
 ms.custom: seodec18
 ms.assetid: ''
@@ -15,13 +15,13 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 09/24/2018
-ms.author: gokuma
-ms.openlocfilehash: e61f0f4ba30b29fea1b2fd5f2a2ab253d3a6710c
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.author: vijetaj
+ms.openlocfilehash: 57ebefb11d23c5ea18d5859ca494944e6a845e04
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60502868"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68565320"
 ---
 # <a name="samples-on-data-science-virtual-machines"></a>Beispiele auf Data Science Virtual Machines
 

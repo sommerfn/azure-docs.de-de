@@ -11,14 +11,13 @@ keywords: SQL Server-Cloud, SQL Server in der Cloud, PaaS-Datenbank, Cloud-SQL S
 author: stevestein
 ms.author: sstein
 ms.reviewer: ''
-manager: craigg
 ms.date: 03/11/2019
-ms.openlocfilehash: 9e95569ba3fe65ea5bce7d6a95a24324235e9a7f
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: 344d201489a409824bb52f928ba5a87bd968500a
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67447756"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68567097"
 ---
 # <a name="choose-the-right-sql-server-option-in-azure"></a>Auswählen der richtigen SQL Server-Option in Azure
 

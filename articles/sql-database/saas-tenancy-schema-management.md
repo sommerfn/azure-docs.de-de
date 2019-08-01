@@ -10,14 +10,13 @@ ms.topic: conceptual
 author: stevestein
 ms.author: sstein
 ms.reviewer: billgib
-manager: craigg
 ms.date: 09/19/2018
-ms.openlocfilehash: eb461367d58f7cadeccd434c0e4ab452b7fc640e
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 7b238044fd3795ae2f49c2fa21367e6499a65672
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66241913"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68570118"
 ---
 # <a name="manage-schema-in-a-saas-application-using-the-database-per-tenant-pattern-with-azure-sql-database"></a>Verwalten von Schemas in einer SaaS-Anwendung mit dem Muster für eine Datenbank pro Mandant in Azure SQL-Datenbank
  
@@ -78,7 +77,7 @@ In der Wingtip Tickets-App gehört zu jeder Mandantendatenbank ein Satz von unte
 Prüfen Sie zunächst die in jeder Mandantendatenbank enthaltenen Veranstaltungsorttypen. Stellen Sie in SQL Server Management Studio (SSMS) eine Verbindung mit einer der Mandantendatenbanken her, und überprüfen Sie die Tabelle VenueTypes.  Sie können diese Tabelle auch im Azure-Portal im Abfrage-Editor abfragen, den Sie über die Seite „Datenbank“ aufrufen können. 
 
 1. Öffnen Sie SSMS, und stellen Sie eine Verbindung mit dem Mandantenserver *tenants1-dpt-&lt;Benutzer&gt;.database.windows.net* her.
-1. Um sich zu vergewissern, dass *Motorcycle Racing* und *Swimming Club* **nicht** in der Ergebnisliste enthalten sind, navigieren Sie zur Datenbank _contosoconcerthall_ auf dem Server *tenants1-dpt-&lt;Benutzer&gt;*, und fragen Sie die Tabelle *VenueTypes* ab.
+1. Um sich zu vergewissern, dass *Motorcycle Racing* und *Swimming Club* **nicht** in der Ergebnisliste enthalten sind, navigieren Sie zur Datenbank _contosoconcerthall_ auf dem Server *tenants1-dpt-&lt;Benutzer&gt;* , und fragen Sie die Tabelle *VenueTypes* ab.
 
 Nun erstellen Sie einen Auftrag zum Aktualisieren der Tabelle *VenueTypes* in allen Mandantendatenbanken und fügen die neuen Veranstaltungsorttypen hinzu.
 
@@ -96,7 +95,7 @@ Beachten Sie die folgenden Elemente im Skript *DeployReferenceData.sql*:
 * **sp\_add\_jobstep** erstellt den Auftragsschritt mit dem T-SQL-Befehlstext zum Aktualisieren der Verweistabelle „VenueTypes“.
 * Die übrigen Ansichten im Skript zeigen das Vorhandensein der Objekte an und überwachen die Auftragsausführung. Verwenden Sie diese Abfragen, um den Statuswert in der Spalte **lifecycle** zu überprüfen und zu ermitteln, wann der Auftrag für alle Zieldatenbanken abgeschlossen wurde.
 
-Nach Abschluss des Skripts können Sie überprüfen, ob die Verweisdaten aktualisiert wurden.  Navigieren Sie in SSMS zur Datenbank *contosoconcerthall* auf dem Server *tenants1-dpt-&lt;Benutzer&gt;*, und fragen Sie die Tabelle *VenueTypes* ab.  Vergewissern Sie sich, dass *Motorcycle Racing* und *Swimming Club* jetzt vorhanden **sind**.
+Nach Abschluss des Skripts können Sie überprüfen, ob die Verweisdaten aktualisiert wurden.  Navigieren Sie in SSMS zur Datenbank *contosoconcerthall* auf dem Server *tenants1-dpt-&lt;Benutzer&gt;* , und fragen Sie die Tabelle *VenueTypes* ab.  Vergewissern Sie sich, dass *Motorcycle Racing* und *Swimming Club* jetzt vorhanden **sind**.
 
 
 ## <a name="create-a-job-to-manage-the-reference-table-index"></a>Erstellen eines Auftrags zum Verwalten des Index der Verweistabelle

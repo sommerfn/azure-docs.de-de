@@ -4,7 +4,7 @@ description: Erfahren Sie mehr über die Tools und Hilfsprogramme, die in der Da
 keywords: Data Science-Tools, virtuelle Computer für Data Science, Tools für Data Science, Linux Data Science
 services: machine-learning
 documentationcenter: ''
-author: gopitk
+author: vijetajo
 manager: cgronlun
 ms.custom: seodec18
 ms.assetid: ''
@@ -15,13 +15,13 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 02/22/2019
-ms.author: gokuma
-ms.openlocfilehash: 0a503b82c07da62b5c5c768d8e1c92cb19e75aee
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.author: vijetaj
+ms.openlocfilehash: d48c2b849f875289c89201f20478deebf4c00db9
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66236477"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68565224"
 ---
 # <a name="get-to-know-your-data-science-virtual-machine"></a>Kennenlernen der Data Science-VM
 
@@ -30,7 +30,7 @@ Die Data Science-VM (DSVM) bietet zahlreiche beliebte Data Science-Tools, Machin
 Darüber hinaus enthält die DSVM mehrere Codebeispiele und exemplarische Vorgehensweisen in Form von Jupyter-Notebooks, die lokal ausgeführt werden können. Außerdem gibt es zum besseren Verständnis der Beispiele eine entsprechende Dokumentation. 
 
 > [!NOTE]
-> Sie können [Azure Notebooks](/azure/notebooks/azure-notebooks-overview) verwenden, um Jupyter-Notebooks in der Cloud zu erstellen, auszuführen und freizugeben. Sie können [Azure Notebooks eine Data Science VM zuordnen](/azure/notebooks/configure-manage-azure-notebooks-projects#compute-tier), um die verfügbare Computeleistung zu erhöhen.
+> Sie können [Azure Notebooks](../../notebooks/azure-notebooks-overview.md) verwenden, um Jupyter-Notebooks in der Cloud zu erstellen, auszuführen und freizugeben. Sie können [Azure Notebooks eine Data Science VM zuordnen](../../notebooks/configure-manage-azure-notebooks-projects.md#compute-tier), um die verfügbare Computeleistung zu erhöhen.
 
 Die Tools, Plattformen, Hilfsprogramme und Beispiele der Data Science-VM wurden in folgende Abschnitte unterteilt:
 
