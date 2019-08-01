@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4332c921af770cb47e9a9a779d0bd148153fcd31
-ms.sourcegitcommit: 2e4b99023ecaf2ea3d6d3604da068d04682a8c2d
+ms.openlocfilehash: 6e58762bd5bf4342804767a200c94b432dd152a0
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67666147"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68562225"
 ---
 # <a name="how-to-plan-your-azure-ad-join-implementation"></a>Gewusst wie: Planen der Implementierung Ihrer Azure AD-Einbindung
 
@@ -271,7 +271,7 @@ MAM gilt nicht für Azure AD Join.
 
 ## <a name="configure-enterprise-state-roaming"></a>Konfigurieren von Enterprise State Roaming
 
-Wenn Sie Enterprise State Roaming in Azure AD aktivieren möchten, damit Benutzer ihre Einstellungen geräteübergreifend synchronisieren können, lesen Sie [Aktivieren von Enterprise State Roaming in Azure Active Directory](https://docs.microsoft.com/azure/active-directory/devices/enterprise-state-roaming-enable). 
+Wenn Sie Enterprise State Roaming in Azure AD aktivieren möchten, damit Benutzer ihre Einstellungen geräteübergreifend synchronisieren können, lesen Sie [Aktivieren von Enterprise State Roaming in Azure Active Directory](enterprise-state-roaming-enable.md). 
 
 **Empfehlung**: Aktivieren Sie diese Einstellung auch für über Azure AD Hybrid eingebundene Geräte.
 

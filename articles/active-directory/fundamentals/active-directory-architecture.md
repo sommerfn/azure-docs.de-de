@@ -2,23 +2,23 @@
 title: Übersicht über die Architektur – Azure Active Directory | Microsoft-Dokumentation
 description: Sie erfahren, was ein Azure Active Directory-Mandant ist und wie Azure über Azure Active Directory verwaltet wird.
 services: active-directory
-author: eross-msft
+author: msaburnley
 manager: daveba
 ms.service: active-directory
 ms.subservice: fundamentals
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 05/23/2019
-ms.author: lizross
+ms.author: ajburnle
 ms.reviewer: jeffsta
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: aed332f32fa9fdc154c72e45914e642a9dad4993
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: b124475b44778ef3bb0dc9eba0c59bb3a277b85a
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67055712"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68562051"
 ---
 # <a name="what-is-the-azure-active-directory-architecture"></a>Was ist die Azure Active Directory-Architektur?
 Mit Azure Active Directory (Azure AD) können Sie den Zugriff auf Azure-Dienste und Ressourcen für Ihre Benutzer sicher verwalten. In Azure AD ist eine vollständige Suite mit Funktionen zur Identitätsverwaltung enthalten. Weitere Informationen zu Azure AD-Features finden Sie unter [Was ist Azure Active Directory?](active-directory-whatis.md).

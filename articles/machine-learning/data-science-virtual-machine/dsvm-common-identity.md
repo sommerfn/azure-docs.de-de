@@ -4,7 +4,7 @@ description: Erfahren Sie, wie Sie gemeinsame Benutzerkonten erstellen, die auf 
 keywords: Deep Learning, KI, Data Science-Tools, virtueller Data Science-Computer, räumliche Analysen, Data Science-Teamprozess
 services: machine-learning
 documentationcenter: ''
-author: gopitk
+author: vijetajo
 manager: cgronlun
 ms.custom: seodec18
 ms.assetid: ''
@@ -15,13 +15,13 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 05/08/2018
-ms.author: gokuma
-ms.openlocfilehash: 0146ee6ee37c2eb9e98d831b54df2218d7de5b62
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.author: vijetaj
+ms.openlocfilehash: 34303c8832a58e4d97ba4e712d624edf321b84a1
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60502374"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68558298"
 ---
 # <a name="set-up-a-common-identity-on-the-data-science-virtual-machine"></a>Einrichten einer gemeinsamen Identität für Data Science Virtual Machine
 

@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 04/29/2019
 ms.author: banders
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 87de721f596eb4148939c00bc4b4db270a87c24e
-ms.sourcegitcommit: 0ebc62257be0ab52f524235f8d8ef3353fdaf89e
+ms.openlocfilehash: dea54f2e692174e12cb2dc1f0e0e0ed9fca127bc
+ms.sourcegitcommit: f5cc71cbb9969c681a991aa4a39f1120571a6c2e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/10/2019
-ms.locfileid: "67724105"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68516572"
 ---
 # <a name="change-the-profile-information-for-your-azure-account"></a>Ändern der Profilinformationen für Ihr Azure-Konto
 
@@ -28,7 +28,7 @@ Microsoft verwendet die E-Mail-Adresse im Profil eines Benutzers, der kein Konto
 
 ## <a name="change-your-profile-information"></a>Ändern Ihrer Profilinformationen
 
-1. Melden Sie sich beim [Azure-Kontocenter](https://account.azure.com/Profile) an.
+1. Melden Sie sich beim [Azure-Kontocenter](https://account.azure.com/subscriptions) an.
 1. Klicken Sie auf die Schaltfläche **Details bearbeiten**, und aktualisieren Sie die Informationen für das **Profil**.
 
    ![Beispiel für Azure-Profilinformationen](./media/billing-how-to-change-azure-account-profile/profile.png)
@@ -72,7 +72,7 @@ Geben Sie die E-Mail-Adresse ein, an die Sie Mitteilungen zu Ihrem Konto erhalte
 
 Sie können Ihre Kontakt-E-Mail-Adresse wie folgt ändern:
 
-* Melden Sie sich beim [Azure-Kontocenter](https://account.azure.com/Profile) an. Wählen Sie **Details bearbeiten** aus, und aktualisieren Sie die Profil-E-Mail-Adresse. Durch die Aktualisierung der Profil-E-Mail-Adresse wird Ihre E-Mail-Adresse für die Anmeldung nicht aktualisiert.
+* Melden Sie sich beim [Azure-Kontocenter](https://account.azure.com/subscriptions) an. Wählen Sie **Details bearbeiten** aus, und aktualisieren Sie die Profil-E-Mail-Adresse. Durch die Aktualisierung der Profil-E-Mail-Adresse wird Ihre E-Mail-Adresse für die Anmeldung nicht aktualisiert.
 
 * Wechseln Sie zum Bereich [Kontaktinformationen](https://portal.azure.com/#blade/HubsExtension/ContactInfoBlade) im Azure-Portal, und geben Sie eine E-Mail-Adresse ein. An die angegebene Adresse werden Dienst- und Marketinginformationen gesendet. Die E-Mail-Adresse im Profil des Azure-Kontocenters wird automatisch angepasst und aktualisiert. Durch die Aktualisierung der Profil-E-Mail-Adresse wird Ihre E-Mail-Adresse für die Anmeldung nicht aktualisiert.
 

@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/23/2019
 ms.author: bwren
-ms.openlocfilehash: b77fb3ab5651147c59b9f0afd22a2d6d0159c90e
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 673575d480b78c151e68963e4a935fc72e7e578b
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66357480"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68564754"
 ---
 # <a name="sources-of-monitoring-data-for-azure-monitor"></a>Quellen für Überwachungsdaten für Azure Monitor
 Azure Monitor basiert auf einer [allgemeinen Überwachungsdatenplattform](data-platform.md), die [Protokolle](data-platform-logs.md) und [Metriken](data-platform-metrics.md) umfasst. Das Sammeln von Daten auf dieser Plattform macht es möglich, Daten von mehreren Ressourcen zusammen mit einem gemeinsamen Satz von Tools in Azure Monitor zu analysieren. Überwachungsdaten werden ggf. auch zur Unterstützung bestimmter Szenarien an andere Speicherorte gesendet, und einige Ressourcen schreiben möglicherweise Daten an andere Speicherorte, bevor sie in Protokollen oder Metriken gesammelt werden können.
@@ -58,7 +58,7 @@ Die auf Ihren Azure-Mandanten bezogenen Telemetriedaten werden von mandantenweit
 ### <a name="azure-active-directory-audit-logs"></a>Azure Active Directory-Überwachungsprotokolle
 [Azure Active Directory-Berichterstellung](../../active-directory/reports-monitoring/overview-reports.md) beinhaltet den Verlauf der Anmeldeaktivität und den Überwachungspfad von Änderungen, die innerhalb eines bestimmten Mandanten vorgenommen wurden. 
 
-| Ziel | BESCHREIBUNG | Verweis |
+| Destination | BESCHREIBUNG | Verweis |
 |:---|:---|:---|
 | Azure Monitor-Protokolle | Konfigurieren Sie Azure AD-Protokolle für das Sammeln in Azure Monitor, um diese mit anderen Überwachungsdaten zu analysieren. | [Integrieren von Azure AD-Protokollen in Azure Monitor-Protokolle (Vorschauversion)](../../active-directory/reports-monitoring/howto-integrate-activity-logs-with-log-analytics.md) |
 | Azure Storage | Exportieren Sie Azure AD-Protokolle zur Archivierung in Azure Storage. | [Tutorial: Archivieren von Azure AD-Protokollen in einem Azure-Speicherkonto (Vorschauversion)](../../active-directory/reports-monitoring/quickstart-azure-monitor-route-logs-to-storage-account.md) |
@@ -74,7 +74,7 @@ Telemetriedaten im Zusammenhang mit Integrität und Betrieb Ihres Azure-Abonneme
 ### <a name="azure-activity-log"></a>Azure-Aktivitätsprotokoll 
 Das [Azure-Aktivitätsprotokoll](activity-logs-overview.md) enthält Service Health-Datensätze sowie Datensätze zu jeglichen Konfigurationsänderungen, die an den Ressourcen in Ihrem Azure-Abonnement vorgenommen wurden. Das Aktivitätsprotokoll ist für alle Azure-Ressourcen verfügbar und stellt ihre _externe_ Ansicht dar.
 
-| Ziel | BESCHREIBUNG | Verweis |
+| Destination | BESCHREIBUNG | Verweis |
 |:---|:---|
 | Aktivitätsprotokoll | Das Aktivitätsprotokoll wird in einem eigenen Datenspeicher gesammelt, den Sie über das Azure Monitor-Menü anzeigen oder zum Erstellen von Aktivitätsprotokollwarnungen verwenden können. | [Abfragen des Aktivitätsprotokolls im Azure-Portal](activity-log-view.md#azure-portal) |
 | Azure Monitor-Protokolle | Konfigurieren Sie Azure Monitor-Protokolle zum Erfassen des Aktivitätsprotokolls, um es mit anderen Überwachungsdaten zu analysieren. | [Erfassen und Analysieren von Azure-Aktivitätsprotokollen im Log Analytics-Arbeitsbereich in Azure Monitor](activity-log-collect.md) |
@@ -84,7 +84,7 @@ Das [Azure-Aktivitätsprotokoll](activity-logs-overview.md) enthält Service Hea
 ### <a name="azure-service-health"></a>Azure Service Health
 [Azure Service Health](../../service-health/service-health-overview.md) enthält Informationen zur Integrität der Azure-Dienste in Ihrem Abonnement, von denen Ihre Anwendung und Ressourcen abhängen.
 
-| Ziel | BESCHREIBUNG | Verweis |
+| Destination | BESCHREIBUNG | Verweis |
 |:---|:---|:---|
 | Aktivitätsprotokoll<br>Azure Monitor-Protokolle | Service Health-Datensätze werden im Azure-Aktivitätsprotokoll gespeichert, sodass Sie sie im Azure-Portal anzeigen oder andere Aktivitäten ausführen können, die mit dem Aktivitätsprotokoll möglich sind. | [Anzeigen von Dienstintegritätsbenachrichtigungen im Azure-Portal](service-notifications.md) |
 
@@ -98,10 +98,10 @@ Diagnoseprotokolle auf Metriken- und Ressourcenebene enthalten Informationen zum
 ### <a name="platform-metrics"></a>Plattformmetriken 
 Die meisten Azure-Dienste senden [Plattformmetriken](data-platform-metrics.md), die ihre Leistung und ihren Betrieb widerspiegeln, direkt an die Metrikdatenbank. Die spezifischen [Metriken variieren je nach Ressourcentyp](metrics-supported.md). 
 
-| Ziel | BESCHREIBUNG | Verweis |
+| Destination | BESCHREIBUNG | Verweis |
 |:---|:---|:---|
 | Azure Monitor-Metriken | Plattformmetriken werden ohne Konfiguration in die Azure Monitor-Metrikdatenbank geschrieben. Greifen Sie über den Metrik-Explorer auf Plattformmetriken zu.  | [Erste Schritte mit dem Azure-Metrik-Explorer](metrics-getting-started.md)<br>[Unterstützte Metriken von Azure Monitor](metrics-supported.md) |
-| Azure Monitor-Protokolle | Kopieren Sie Plattformmetriken in Protokolle zur Trend- und sonstigen Analyse mit Log Analytics. | [Azure-Diagnosen direkt an Log Analytics](collect-azure-metrics-logs.md#azure-diagnostics-direct-to-log-analytics) |
+| Azure Monitor-Protokolle | Kopieren Sie Plattformmetriken in Protokolle zur Trend- und sonstigen Analyse mit Log Analytics. | [Azure-Diagnosen direkt an Log Analytics](diagnostic-logs-stream-log-store.md) |
 | Event Hubs | Streamen Sie Metriken mithilfe von Event Hubs an andere Speicherorte. |[Streamen von Azure-Überwachungsdaten an einen Event Hub für die Verwendung durch ein externes Tool](stream-monitoring-data-event-hubs.md) |
 
 ### <a name="diagnostic-logs"></a>Diagnoseprotokolle
@@ -109,7 +109,7 @@ Die meisten Azure-Dienste senden [Plattformmetriken](data-platform-metrics.md), 
 
 Die Konfigurationsanforderungen und der Inhalt der Diagnoseprotokolle sind je nach Ressourcentyp verschieden, und noch nicht alle Dienste erstellen Diagnoseprotokolle. Ausführliche Informationen zu den einzelnen Diensten und Links zu detaillierten Konfigurationsverfahren finden Sie unter [Unterstützte Dienste, Schemas und Kategorien für Azure-Diagnoseprotokolle](diagnostic-logs-schema.md). Wenn der Dienst in diesem Artikel nicht aufgeführt ist, wird von ihm derzeit nichts in Diagnoseprotokolle geschrieben.
 
-| Ziel | BESCHREIBUNG | Verweis |
+| Destination | BESCHREIBUNG | Verweis |
 |:---|:---|:---|
 | Azure Monitor-Protokolle | Senden Sie Diagnoseprotokolle zur Analyse mit anderen gesammelten Protokolldaten an Azure Monitor-Protokolle. Einige Ressourcen können direkt in Azure Monitor schreiben, während andere in ein Speicherkonto schreiben, bevor sie in einen Log Analytics-Arbeitsbereich importiert werden. | [Streamen von Azure-Diagnoseprotokollen an einen Log Analytics-Arbeitsbereich in Azure Monitor](diagnostic-logs-stream-log-store.md)<br>[Verwenden des Azure-Portals zum Sammeln von Protokollen aus Azure Storage](azure-storage-iis-table.md#use-the-azure-portal-to-collect-logs-from-azure-storage)  |
 | Storage | Senden Sie Diagnoseprotokolle zur Archivierung an Azure Storage. | [Archivieren von Azure-Diagnoseprotokollen](archive-diagnostic-logs.md) |
@@ -123,7 +123,7 @@ Computeressourcen in Azure, in anderen Clouds und lokal haben ein Gastbetriebssy
 ### <a name="azure-diagnostic-extension"></a>Azure-Diagnoseerweiterung
 Durch Aktivieren der Azure-Diagnoseerweiterung für virtuelle Azure-Computer können Sie Protokolle und Metriken aus dem Gastbetriebssystem von Azure-Computeressourcen sammeln, einschließlich Web- und Workerrollen des Azure-Clouddiensts (klassisch), Virtual Machines, Skalierungsgruppen von Virtual Machines und Service Fabric.
 
-| Ziel | BESCHREIBUNG | Verweis |
+| Destination | BESCHREIBUNG | Verweis |
 |:---|:---|:---|
 | Storage | Wenn Sie die Diagnoseerweiterung aktivieren, wird standardmäßig in ein Speicherkonto geschrieben. | [Speichern und Anzeigen von Diagnosedaten in Azure Storage](diagnostics-extension-to-storage.md) |
 | Azure Monitor-Metriken | Wenn Sie die Diagnoseerweiterung zum Sammeln von Leistungsindikatoren konfigurieren, werden diese in die Azure Monitor-Metrikdatenbank geschrieben. | [Senden von Gastbetriebssystemmetriken an den Metrikspeicher von Azure Monitor unter Verwendung einer Resource Manager-Vorlage für einen virtuellen Windows-Computer](collect-custom-metrics-guestos-resource-manager-vm.md) |
@@ -133,7 +133,7 @@ Durch Aktivieren der Azure-Diagnoseerweiterung für virtuelle Azure-Computer kö
 ### <a name="log-analytics-agent"></a>Log Analytics-Agent 
 Installieren Sie den Log Analytics-Agent für eine umfassende Überwachung und Verwaltung Ihrer virtuellen Windows- oder Linux-Computer. Der virtuelle Computer kann in Azure, einer anderen Cloud oder lokal ausgeführt werden.
 
-| Ziel | BESCHREIBUNG | Verweis |
+| Destination | BESCHREIBUNG | Verweis |
 |:---|:---|:---|
 | Azure Monitor-Protokolle | Der Log Analytics-Agent stellt entweder direkt oder über System Center Operations Manager eine Verbindung mit Azure Monitor her und ermöglicht Ihnen, Daten aus Datenquellen zu sammeln, die Sie konfigurieren, oder aus Überwachungslösungen, die zusätzliche Einblicke in Anwendungen ermöglichen, die auf dem virtuellen Computer ausgeführt werden. | [Agent-Datenquellen in Azure Monitor](agent-data-sources.md)<br>[Herstellen einer Verbindung zwischen Operations Manager und Azure Monitor](om-agents.md) |
 
@@ -141,7 +141,7 @@ Installieren Sie den Log Analytics-Agent für eine umfassende Überwachung und V
 ### <a name="azure-monitor-for-vms"></a>Azure Monitor für VMs 
 [Azure Monitor für VMs](../insights/vminsights-overview.md) stellt eine angepasste Überwachungsoberfläche für virtuelle Computer mit Funktionen bereit, die über die grundlegende Azure Monitor-Funktionalität hinausgehen, einschließlich Dienststatus und Integrität des virtuellen Computers. Es ist ein Dependency-Agent auf virtuellen Windows- und Linux-Computern erforderlich, der in den Log Analytics-Agent integriert wird, um ermittelte Daten zu Prozessen, die auf dem virtuellen Computer ausgeführt werden, und externen Prozessabhängigkeiten zu sammeln.
 
-| Ziel | BESCHREIBUNG | Verweis |
+| Destination | BESCHREIBUNG | Verweis |
 |:---|:---|:---|
 | Azure Monitor-Protokolle | Speichert Daten zu Prozessen und Abhängigkeiten auf dem Agent. | [Verwenden der Zuordnung in Azure Monitor für VMs (Vorschauversion) zum Verstehen von Anwendungskomponenten](../insights/vminsights-maps.md) |
 | VM-Speicher | Azure Monitor für VMs speichert Informationen zum Integritätsstatus an einem benutzerdefinierten Speicherort. Dies ist nur für Azure Monitor für VMs im Azure-Portal zusätzlich zur [Azure Resource Health-REST-API](/rest/api/resourcehealth/) verfügbar. | [Grundlegendes zur Integrität Ihrer Azure-VMs](../insights/vminsights-health.md)<br>[Azure Resource Health-REST-API](https://docs.microsoft.com/rest/api/resourcehealth/) |
@@ -157,7 +157,7 @@ Die detaillierte Anwendungsüberwachung in Azure Monitor erfolgt mit [Applicatio
 ### <a name="application-data"></a>Anwendungsdaten
 Wenn Sie Application Insights durch Installation eines Instrumentierungspakets für eine Anwendung aktivieren, werden auf Leistung und Betrieb der Anwendung bezogene Metriken und Protokolle gesammelt. Application Insights speichert die gesammelten Daten auf derselben Azure Monitor-Datenplattform, die auch von anderen Datenquellen verwendet wird. Der Dienst enthält umfassende Tools zum Analysieren der Daten, aber Sie können sie auch mithilfe von Tools wie dem Metrik-Explorer und Log Analytics mit Daten aus anderen Quellen analysieren.
 
-| Ziel | BESCHREIBUNG | Verweis |
+| Destination | BESCHREIBUNG | Verweis |
 |:---|:---|:---|
 | Azure Monitor-Protokolle | Operative Daten zu Ihrer Anwendung, einschließlich Seitenaufrufe, Anwendungsanforderungen, Ausnahmen und Ablaufverfolgungen. | [Analysieren von Protokolldaten in Azure Monitor](../log-query/log-query-overview.md) |
 |                    | Informationen zu Abhängigkeiten zwischen Anwendungskomponenten zur Unterstützung der Anwendungszuordnung und Telemetriekorrelation. | [Telemetriekorrelation in Application Insights](../app/correlation.md) <br> [Anwendungszuordnung](../app/app-map.md) |
@@ -173,7 +173,7 @@ Wenn Sie Application Insights durch Installation eines Instrumentierungspakets f
 
 ### <a name="monitoring-solutions"></a>Überwachungslösungen
 
-| Ziel | BESCHREIBUNG | Verweis
+| Destination | BESCHREIBUNG | Verweis
 |:---|:---|:---|
 | Azure Monitor-Protokolle | Überwachungslösungen sammeln Daten in Azure Monitor-Protokollen, wo sie mit der Abfragesprache oder [Ansichten](view-designer.md), die in der Regel in der Lösung enthalten sind, analysiert werden können. | [Ausführliche Informationen zu Datensammlungen für Überwachungslösungen in Azure](../insights/solutions-inventory.md) |
 
@@ -181,7 +181,7 @@ Wenn Sie Application Insights durch Installation eines Instrumentierungspakets f
 ### <a name="azure-monitor-for-containers"></a>Azure Monitor für Container
 [Azure Monitor für Container](../insights/container-insights-overview.md) stellt eine angepasste Überwachungsoberfläche für [Azure Kubernetes Service (AKS)](/azure/aks/) bereit. Hiermit werden zusätzliche Daten über diese Ressourcen gesammelt, die in der folgenden Tabelle beschrieben sind.
 
-| Ziel | BESCHREIBUNG | Verweis |
+| Destination | BESCHREIBUNG | Verweis |
 |:---|:---|:---|
 | Azure Monitor-Protokolle | Speichert Überwachungsdaten für AKS, einschließlich Bestand, Protokolle und Ereignisse. Metrikdaten werden ebenfalls in Protokollen gespeichert, um deren Analysefunktionen im Portal zu nutzen. | [Verstehen der Leistung von AKS-Clustern mit Azure Monitor für Container](../insights/container-insights-analyze.md) |
 | Azure Monitor-Metriken | Metrikdaten werden in der Metrikdatenbank für die Visualisierung und Warnungen gespeichert. | [Anzeigen von Containermetriken im Metrik-Explorer](../insights/container-insights-analyze.md#view-container-metrics-in-metrics-explorer) |
@@ -195,7 +195,7 @@ Wenn Sie Application Insights durch Installation eines Instrumentierungspakets f
 
 ![Benutzerdefinierte Sammlung](media/data-sources/custom.png)
 
-| Ziel | Methode | BESCHREIBUNG | Verweis |
+| Destination | Methode | BESCHREIBUNG | Verweis |
 |:---|:---|:---|:---|
 | Azure Monitor-Protokolle | Data Collector API (Datensammler-API) | Sammeln Sie Protokolldaten von einem beliebigen REST-Client, und speichern Sie sie im Log Analytics-Arbeitsbereich. | [Senden von Protokolldaten an Azure Monitor mit der HTTP-Datensammler-API (Public Preview)](data-collector-api.md) |
 | Azure Monitor-Metriken | API für benutzerdefinierte Metriken | Sammeln Sie Metrikdaten von einem beliebigen REST-Client, und speichern Sie sie in der Azure Monitor-Metrikdatenbank. | [Senden benutzerdefinierter Metriken für eine Azure-Ressource an den Azure Monitor-Metrikspeicher mithilfe einer REST-API](metrics-store-custom-rest-api.md) |
@@ -204,7 +204,7 @@ Wenn Sie Application Insights durch Installation eines Instrumentierungspakets f
 ## <a name="other-services"></a>Sonstige Dienste
 Sonstige Dienste in Azure schreiben Daten auf die Azure Monitor-Datenplattform. Dadurch können Sie Daten, die von diesen Diensten gesammelt werden, mit den von Azure Monitor gesammelten Daten analysieren und dieselben Analyse- und Virtualisierungstools nutzen.
 
-| Dienst | Ziel | BESCHREIBUNG | Verweis |
+| Dienst | Destination | BESCHREIBUNG | Verweis |
 |:---|:---|:---|:---|
 | [Azure Security Center](/azure/security-center/) | Azure Monitor-Protokolle | Azure Security Center speichert die gesammelten Sicherheitsdaten in einem Log Analytics-Arbeitsbereich und ermöglicht so die Analyse mit anderen von Azure Monitor gesammelten Protokolldaten.  | [Datensammlung in Azure Security Center](../../security-center/security-center-enable-data-collection.md) |
 | [Azure Sentinel](/azure/sentinel/) | Azure Monitor-Protokolle | Azure Sentinel speichert die aus verschiedenen Datenquellen gesammelten Daten in einem Log Analytics-Arbeitsbereich und ermöglicht so die Analyse mit anderen von Azure Monitor gesammelten Protokolldaten.  | [Herstellen einer Verbindung mit Datenquellen](/azure/sentinel/quickstart-onboard) |

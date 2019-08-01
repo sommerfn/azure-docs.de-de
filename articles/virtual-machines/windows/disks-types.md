@@ -1,20 +1,18 @@
 ---
 title: 'Auswählen eines Datenträgertyps für virtuelle Azure IaaS-Windows-Computer: verwaltete Datenträger'
 description: Hier erhalten Sie Informationen über die verfügbaren Azure-Datenträgertypen für virtuelle Windows-Computer, einschließlich SSD Ultra-, SSD Premium-, SSD Standard- und HDD Standard-Datenträgern.
-services: virtual-machines-windows,storage
 author: roygara
 ms.author: rogarana
 ms.date: 05/10/2019
-ms.topic: article
+ms.topic: conceptual
 ms.service: virtual-machines-windows
-ms.tgt_pltfrm: windows
 ms.subservice: disks
-ms.openlocfilehash: 74dbe12a2df07218fbb369097b566a9dad4921c0
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 99337c633f2bce9ed7b41b36cb54037d4c201a78
+ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65539509"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "68698731"
 ---
 [!INCLUDE [virtual-machines-disk-types](../../../includes/virtual-machines-managed-disks-types-overview.md)]
 

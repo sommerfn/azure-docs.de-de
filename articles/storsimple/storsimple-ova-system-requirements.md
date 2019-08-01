@@ -12,17 +12,21 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 01/11/2019
+ms.date: 07/25/2019
 ms.author: alkohli
-ms.openlocfilehash: a6bea2b5447435930cb0e1f80073a11007e80415
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 65d2a21a9f40470cee1dd9d713f9f9cb5431a245
+ms.sourcegitcommit: f5cc71cbb9969c681a991aa4a39f1120571a6c2e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60629304"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68516687"
 ---
 # <a name="storsimple-virtual-array-system-requirements"></a>Systemanforderungen für StorSimple Virtual Array
+
+[!INCLUDE [storsimple-virtual-array-eol-banner](../../includes/storsimple-virtual-array-eol-banner.md)]
+
 ## <a name="overview"></a>Übersicht
+
 In diesem Artikel werden wichtige Systemanforderungen für Ihr Microsoft Azure StorSimple Virtual Array und für die Speicherclients beschrieben, die auf das Array zugreifen. Sie sollten die Informationen sorgfältig überprüfen, bevor Sie Ihr StorSimple-System bereitstellen. Auch später sollten Sie während der Bereitstellung und beim nachfolgenden Betrieb bei Bedarf als Referenz darauf zurückgreifen.
 
 Systemanforderungen:

@@ -11,12 +11,12 @@ ms.workload: big-data
 ms.topic: conceptual
 ms.date: 05/08/2019
 ms.custom: seodec18
-ms.openlocfilehash: ba7d412e9bfc29a53cd0aa47a926f60580b45490
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 5b861ef17648f3efbe1f378f2bf253d5bf3ece44
+ms.sourcegitcommit: 13d5eb9657adf1c69cc8df12486470e66361224e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66237651"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "68677790"
 ---
 # <a name="create-time-series-insights-resources-using-azure-resource-manager-templates"></a>Erstellen von Time Series Insights-Ressourcen mit Azure Resource Manager-Vorlagen
 
@@ -45,7 +45,7 @@ Die Schnellstartvorlage [201-timeseriesinsights-environment-with-eventhub](https
 
 Im folgenden Verfahren wird beschrieben, wie Sie PowerShell zum Bereitstellen einer Azure Resource Manager-Vorlage verwenden, mit der eine Time Series Insights-Umgebung, eine untergeordnete Ereignisquelle, die für die Nutzung von Ereignissen von einem Event Hub konfiguriert ist, und Zugriffsrichtlinien erstellen, mit denen Zugriff auf die Daten der Umgebung gewährt wird. Wenn Sie keinen vorhandenen Event Hub angeben, wird einer für die Bereitstellung erstellt.
 
-1. Installieren Sie Azure PowerShell gemäß den Anweisungen unter [Erste Schritte mit Azure PowerShell-Cmdlets](/powershell/azure/get-started-azureps).
+1. Installieren Sie Azure PowerShell gemäß den Anweisungen unter [Erste Schritte mit Azure PowerShell-Cmdlets](https://docs.microsoft.com/powershell/azure/get-started-azureps).
 
 1. Klonen oder kopieren Sie die Vorlage [201-timeseriesinsights-environment-with-eventhub](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/201-timeseriesinsights-environment-with-eventhub/azuredeploy.json) von GitHub.
 

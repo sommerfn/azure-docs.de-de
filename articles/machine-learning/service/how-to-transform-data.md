@@ -12,12 +12,12 @@ manager: cgronlun
 ms.reviewer: jmartens
 ms.date: 07/16/2019
 ms.custom: seodec18
-ms.openlocfilehash: 08cf646d63e1a295a1bc2ff28180983cc462f084
-ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
+ms.openlocfilehash: add5584ccf3d9d6837e328bbf70d71598e5c0839
+ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68360935"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "68694313"
 ---
 # <a name="transform-data-with-the-azure-machine-learning-data-prep-sdk"></a>Transformieren von Daten mit dem Azure Machine Learning Data Prep SDK
 
@@ -102,7 +102,7 @@ dflow.head(3)
 
 Im dritten Datensatz fehlen Werte für Breiten- und Längengrade. Zum Imputieren dieser fehlenden Werte verwenden Sie [`ImputeMissingValuesBuilder`](https://docs.microsoft.com/python/api/azureml-dataprep/azureml.dataprep.api.builders.imputemissingvaluesbuilder?view=azure-dataprep-py), um einen festen Ausdruck zu lernen. Sie können die Spalten entweder mit einem berechneten `MIN`-, `MAX`- oder `MEAN`-Wert oder einem `CUSTOM`-Wert imputieren. Wenn `group_by_columns` angegeben ist, werden fehlende Werte nach Gruppe imputiert, wobei `MIN`, `MAX`, und `MEAN` pro Gruppe berechnet werden.
 
-Überprüfen Sie den Wert `MEAN` der Spalte für den Breitengrad mithilfe der [`summarize()`](https://docs.microsoft.com/python/api/azureml-dataprep/azureml.dataprep.dataflow?view=azure-dataprep-py#summarize-summary-columns--typing-union-typing-list-azureml-dataprep-api-dataflow-summarycolumnsvalue---nonetype----none--group-by-columns--typing-union-typing-list-str---nonetype----none--join-back--bool---false--join-back-columns-prefix--typing-union-str--nonetype----none-----azureml-dataprep-api-dataflow-dataflow)-Funktion. Diese Funktion akzeptiert ein Array von Spalten im Parameter `group_by_columns` zur Festlegung der Aggregationsebene. Der Parameter `summary_columns` akzeptiert einen `SummaryColumnsValue`-Aufruf. Mit diesem Funktionsaufruf wird der aktuelle Spaltenname, der Name des neuen berechneten Felds sowie die auszuführende `SummaryFunction` festlegt.
+Überprüfen Sie den Wert `MEAN` der Spalte für den Breitengrad mithilfe der [`summarize()`](/python/api/azureml-dataprep/azureml.dataprep.dataflow?view=azure-ml-py#summarize-summary-columns--typing-union-typing-list-azureml-dataprep-api-dataflow--summarycolumnsvalue---nonetype----none--group-by-columns--typing-union-typing-list-str---nonetype----none--join-back--bool---false--join-back-columns-prefix--typing-union-str--nonetype----none-----azureml-dataprep-api-dataflow-dataflow)-Funktion. Diese Funktion akzeptiert ein Array von Spalten im Parameter `group_by_columns` zur Festlegung der Aggregationsebene. Der Parameter `summary_columns` akzeptiert einen `SummaryColumnsValue`-Aufruf. Mit diesem Funktionsaufruf wird der aktuelle Spaltenname, der Name des neuen berechneten Felds sowie die auszuführende `SummaryFunction` festlegt.
 
 ```python
 dflow_mean = dflow.summarize(group_by_columns=['Arrest'],

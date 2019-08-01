@@ -1,20 +1,18 @@
 ---
 title: 'Auswählen eines Datenträgertyps für virtuelle Azure IaaS-Computer unter Linux: verwaltete Datenträger'
 description: Hier erhalten Sie Informationen über die verfügbaren Azure-Datenträgertypen für virtuelle Linux-Computer, einschließlich SSD Ultra-, SSD Premium-, SSD Standard- und HDD Standard-Datenträgern.
-services: virtual-machines-linux,storage
 author: roygara
 ms.author: rogarana
 ms.date: 05/10/2019
-ms.topic: article
+ms.topic: conceptual
 ms.service: virtual-machines-linux
-ms.tgt_pltfrm: linux
 ms.subservice: disks
-ms.openlocfilehash: 2413cfe02dfb3be61ec01518e4fdd7f4b78f5773
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: d0acd49b6f1545ab6020adf498c683a28850730b
+ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65538367"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "68695820"
 ---
 [!INCLUDE [virtual-machines-disk-types](../../../includes/virtual-machines-managed-disks-types-overview.md)]
 

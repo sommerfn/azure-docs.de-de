@@ -1,18 +1,19 @@
 ---
 title: Problembehandlung bei langsamer Sicherung von Dateien und Ordnern in Azure Backup
 description: Enthält Informationen zu Problembehandlungsschritten, mit denen Sie die Ursache von Azure Backup-Leistungsproblemen diagnostizieren können.
-author: saurabhsensharma
-manager: saurabhsensharma
+ms.reviewer: saurse
+author: dcurwin
+manager: carmonm
 ms.service: backup
 ms.topic: troubleshooting
 ms.date: 07/05/2019
-ms.author: saurse
-ms.openlocfilehash: 3a39d39412c8b64d1851ea0fc9511d116f3b232a
-ms.sourcegitcommit: 13d5eb9657adf1c69cc8df12486470e66361224e
+ms.author: dacurwin
+ms.openlocfilehash: 16a8eb4eea4e5e1e3bb49049c49d73adb99eef55
+ms.sourcegitcommit: d585cdda2afcf729ed943cfd170b0b361e615fae
 ms.translationtype: HT
 ms.contentlocale: de-DE
 ms.lasthandoff: 07/31/2019
-ms.locfileid: "68465339"
+ms.locfileid: "68688618"
 ---
 # <a name="troubleshoot-slow-backup-of-files-and-folders-in-azure-backup"></a>Problembehandlung bei langsamer Sicherung von Dateien und Ordnern in Azure Backup
 Dieser Artikel enthält Informationen zu Problembehandlungsschritten, mit denen Sie eine niedrige Geschwindigkeit beim Sichern von Dateien und Ordnern mit Azure Backup diagnostizieren können. Wenn Sie den Azure Backup-Agent zum Sichern von Dateien verwenden, kann der Sicherungsprozess länger als erwartet dauern. Diese Verzögerung kann eine oder mehrere der folgenden Ursachen haben:

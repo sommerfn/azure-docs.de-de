@@ -12,18 +12,20 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 06/28/2018
+ms.date: 07/25/2019
 ms.author: alkohli
-ms.openlocfilehash: 080f49ca1078858462264f229e9acfee6fad17d1
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 723d5e969ba2f635724ffa50d562a7abaf936dcf
+ms.sourcegitcommit: f5cc71cbb9969c681a991aa4a39f1120571a6c2e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61387661"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68517136"
 ---
 # <a name="use-the-new-authentication-for-your-storsimple"></a>Verwenden der neuen Authentifizierung für StorSimple
 
 ## <a name="overview"></a>Übersicht
+
+[!INCLUDE [storsimple-virtual-array-eol-banner](../../includes/storsimple-virtual-array-eol-banner.md)]
 
 Der StorSimple-Geräte-Manager-Dienst wird in Microsoft Azure ausgeführt. Er stellt Verbindungen mit mehreren StorSimple Virtual Arrays her. Bislang hat der StorSimple-Geräte-Manager-Dienst einen Zugriffssteuerungsdienst (Access Control Service, ACS) verwendet, um den Dienst bei Ihrem StorSimple-Gerät zu authentifizieren. Der ACS-Mechanismus wird in Kürze ausgemustert und durch eine AAD-Authentifizierung (Azure Active Directory) basiert.
 

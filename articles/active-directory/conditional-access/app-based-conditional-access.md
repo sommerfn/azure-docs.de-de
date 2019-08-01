@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: spunukol
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ff4e81f5533622c8afbfb0d7c683c76b530aefec
-ms.sourcegitcommit: 79496a96e8bd064e951004d474f05e26bada6fa0
+ms.openlocfilehash: 45eeef7d96f194e224e5b44421e73eb5ee5d9c0d
+ms.sourcegitcommit: f5cc71cbb9969c681a991aa4a39f1120571a6c2e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2019
-ms.locfileid: "67509494"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68515153"
 ---
 # <a name="how-to-require-approved-client-apps-for-cloud-app-access-with-conditional-access"></a>Anleitung: Vorschreiben der Verwendung von genehmigten Client-Apps für den Zugriff auf Cloud-Apps mithilfe des bedingten Zugriffs 
 
@@ -78,23 +78,12 @@ Intune-Richtlinien für den App-Schutz werden beim Zugriff auf Unternehmensdaten
 
 Für die Richtlinie zum bedingten Zugriff in diesem Schritt müssen folgende Komponenten konfiguriert werden:
 
-![Bedingter Zugriff](./media/app-based-conditional-access/01.png)
-
 1. Der **Name** Ihrer Richtlinie zum bedingten Zugriff.
 1. **Benutzer und Gruppen**: Für jede Richtlinie für bedingten Zugriff muss mindestens ein Benutzer oder eine Gruppe ausgewählt werden.
 1. **Cloud-Apps:** Als Cloud-Apps müssen Sie **Office 365 Exchange Online** auswählen.
-
-   ![Bedingter Zugriff](./media/app-based-conditional-access/07.png)
-
 1. **Bedingungen:** Als **Bedingungen** müssen Sie **Geräteplattformen** und **Client-Apps** konfigurieren:
    1. Wählen Sie als **Geräteplattformen** die Optionen **Android** und **iOS** aus.
-
-      ![Bedingter Zugriff](./media/app-based-conditional-access/03.png)
-
    1. Wählen Sie als **Client-Apps (Vorschau)** die Option **Mobile Apps und Desktop-Apps** und **Clients mit moderner Authentifizierung**.
-
-      ![Bedingter Zugriff](./media/app-based-conditional-access/91.png)
-
 1. Als **Zugriffskontrollen** muss **Genehmigte Client-App erforderlich (Vorschau)** ausgewählt werden.
 
    ![Bedingter Zugriff](./media/app-based-conditional-access/05.png)
@@ -103,26 +92,16 @@ Für die Richtlinie zum bedingten Zugriff in diesem Schritt müssen folgende Kom
 
 Für die Richtlinie zum bedingten Zugriff in diesem Schritt müssen folgende Komponenten konfiguriert werden:
 
-![Bedingter Zugriff](./media/app-based-conditional-access/06.png)
-
 1. Der **Name** Ihrer Richtlinie zum bedingten Zugriff.
 1. **Benutzer und Gruppen**: Für jede Richtlinie für bedingten Zugriff muss mindestens ein Benutzer oder eine Gruppe ausgewählt werden.
 1. **Cloud-Apps:** Als Cloud-Apps müssen Sie **Office 365 Exchange Online** auswählen.
-
-   ![Bedingter Zugriff](./media/app-based-conditional-access/07.png)
-
 1. **Bedingungen:** Als **Bedingungen** müssen Sie **Client-Apps (Vorschauversion)** konfigurieren. 
    1. Wählen Sie als **Client-Apps (Vorschauversion)** die Option **Mobile Apps und Desktop-Apps** und **ActiveSync-Clients austauschen**.
-
-      ![Bedingter Zugriff](./media/app-based-conditional-access/92.png)
-
    1. Als **Zugriffskontrollen** muss **Genehmigte Client-App erforderlich (Vorschau)** ausgewählt werden.
 
       ![Bedingter Zugriff](./media/app-based-conditional-access/05.png)
 
 **Schritt 3: Konfigurieren der Intune-Richtlinie für den App-Schutz für iOS- und Android-Clientanwendungen**
-
-![Bedingter Zugriff](./media/app-based-conditional-access/09.png)
 
 Weitere Informationen finden Sie unter [Schützen von Apps und Daten mit Microsoft Intune](https://docs.microsoft.com/intune-classic/deploy-use/protect-apps-and-data-with-microsoft-intune).
 
@@ -144,23 +123,12 @@ Annahmen für den Benutzer in diesem Szenario:
 
 Für die Richtlinie zum bedingten Zugriff in diesem Schritt müssen folgende Komponenten konfiguriert werden:
 
-![Bedingter Zugriff](./media/app-based-conditional-access/71.png)
-
 1. Der **Name** Ihrer Richtlinie zum bedingten Zugriff.
 1. **Benutzer und Gruppen**: Für jede Richtlinie für bedingten Zugriff muss mindestens ein Benutzer oder eine Gruppe ausgewählt werden.
 1. **Cloud-Apps:** Als Cloud-Apps müssen Sie **Office 365 Exchange Online** und **Office 365 SharePoint Online** auswählen. 
-
-   ![Bedingter Zugriff](./media/app-based-conditional-access/02.png)
-
 1. **Bedingungen:** Als **Bedingungen** müssen Sie **Geräteplattformen** und **Client-Apps** konfigurieren:
    1. Wählen Sie als **Geräteplattformen** die Optionen **Android** und **iOS** aus.
-
-      ![Bedingter Zugriff](./media/app-based-conditional-access/03.png)
-
    1. Wählen Sie als **Client-Apps (Vorschau)** die Option **Mobile Apps und Desktop-Clients** und **Clients mit moderner Authentifizierung**.
-
-      ![Bedingter Zugriff](./media/app-based-conditional-access/91.png)
-
 1. Als **Zugriffskontrollen** muss **Genehmigte Client-App erforderlich (Vorschau)** ausgewählt werden.
 
    ![Bedingter Zugriff](./media/app-based-conditional-access/05.png)
@@ -169,19 +137,11 @@ Für die Richtlinie zum bedingten Zugriff in diesem Schritt müssen folgende Kom
 
 Für die Richtlinie zum bedingten Zugriff in diesem Schritt müssen folgende Komponenten konfiguriert werden:
 
-![Bedingter Zugriff](./media/app-based-conditional-access/06.png)
-
 1. Der **Name** Ihrer Richtlinie zum bedingten Zugriff.
 1. **Benutzer und Gruppen**: Für jede Richtlinie für bedingten Zugriff muss mindestens ein Benutzer oder eine Gruppe ausgewählt werden.
 1. **Cloud-Apps:** Als Cloud-Apps müssen Sie **Office 365 Exchange Online** auswählen. Online 
-
-   ![Bedingter Zugriff](./media/app-based-conditional-access/07.png)
-
 1. **Bedingungen:** Als **Bedingungen** müssen Sie **Client-Apps** konfigurieren:
    1. Wählen Sie als **Client-Apps (Vorschauversion)** die Option **Mobile Apps und Desktop-Apps** und **ActiveSync-Clients austauschen**.
-
-      ![Bedingter Zugriff](./media/app-based-conditional-access/92.png)
-
    1. Als **Zugriffskontrollen** muss **Genehmigte Client-App erforderlich (Vorschau)** ausgewählt werden.
 
       ![Bedingter Zugriff](./media/app-based-conditional-access/05.png)
@@ -210,23 +170,12 @@ Annahmen für dieses Szenario:
 
 Für die Richtlinie zum bedingten Zugriff in diesem Schritt müssen folgende Komponenten konfiguriert werden:
 
-![Bedingter Zugriff](./media/app-based-conditional-access/62.png)
-
 1. Der **Name** Ihrer Richtlinie zum bedingten Zugriff.
 1. **Benutzer und Gruppen**: Für jede Richtlinie für bedingten Zugriff muss mindestens ein Benutzer oder eine Gruppe ausgewählt werden.
 1. **Cloud-Apps:** Als Cloud-Apps müssen Sie **Office 365 Exchange Online** und **Office 365 SharePoint Online** auswählen. 
-
-     ![Bedingter Zugriff](./media/app-based-conditional-access/02.png)
-
 1. **Bedingungen:** Als **Bedingungen** müssen Sie **Geräteplattformen** und **Client-Apps** konfigurieren. 
    1. Wählen Sie als **Geräteplattformen** die Optionen **Android** und **iOS** aus.
-
-      ![Bedingter Zugriff](./media/app-based-conditional-access/03.png)
-
    1. Wählen Sie als **Client-Apps (Vorschau)** die Option **Mobile Apps und Desktop-Clients** und **Clients mit moderner Authentifizierung**.
-
-      ![Bedingter Zugriff](./media/app-based-conditional-access/91.png)
-
 1. Als **Zugriffskontrollen** muss Folgendes ausgewählt werden:
    - **Markieren des Geräts als kompatibel erforderlich**
    - **Genehmigte Client-App erforderlich (Vorschau)**
@@ -238,20 +187,11 @@ Für die Richtlinie zum bedingten Zugriff in diesem Schritt müssen folgende Kom
 
 Für die Richtlinie zum bedingten Zugriff in diesem Schritt müssen folgende Komponenten konfiguriert werden:
 
-![Bedingter Zugriff](./media/app-based-conditional-access/61.png)
-
 1. Der **Name** Ihrer Richtlinie zum bedingten Zugriff.
 1. **Benutzer und Gruppen**: Für jede Richtlinie für bedingten Zugriff muss mindestens ein Benutzer oder eine Gruppe ausgewählt werden.
 1. **Cloud-Apps:** Als Cloud-Apps müssen Sie **Office 365 Exchange Online** auswählen. 
-
-   ![Bedingter Zugriff](./media/app-based-conditional-access/07.png)
-
 1. **Bedingungen:** Als **Bedingungen** müssen Sie **Client-Apps** konfigurieren. 
-
-   Wählen Sie als **Client-Apps (Vorschauversion)** die Option **Mobile Apps und Desktop-Apps** und **ActiveSync-Clients austauschen**.
-
-   ![Bedingter Zugriff](./media/app-based-conditional-access/91.png)
-
+   1. Wählen Sie als **Client-Apps (Vorschauversion)** die Option **Mobile Apps und Desktop-Apps** und **ActiveSync-Clients austauschen**.
 1. Als **Zugriffskontrollen** muss **Genehmigte Client-App erforderlich (Vorschau)** ausgewählt werden.
  
    ![Bedingter Zugriff](./media/app-based-conditional-access/11.png)
@@ -286,23 +226,12 @@ Intune-Richtlinien für den App-Schutz werden beim Zugriff auf die Unternehmensd
 
 Für die Richtlinie zum bedingten Zugriff in diesem Schritt müssen folgende Komponenten konfiguriert werden:
 
-![Bedingter Zugriff](./media/app-based-conditional-access/62.png)
-
 1. Der **Name** Ihrer Richtlinie zum bedingten Zugriff.
 1. **Benutzer und Gruppen**: Für jede Richtlinie für bedingten Zugriff muss mindestens ein Benutzer oder eine Gruppe ausgewählt werden.
 1. **Cloud-Apps:** Als Cloud-Apps müssen Sie **Office 365 Exchange Online** und **Office 365 SharePoint Online** auswählen. 
-
-   ![Bedingter Zugriff](./media/app-based-conditional-access/02.png)
-
 1. **Bedingungen:** Als **Bedingungen** müssen Sie **Geräteplattformen** und **Client-Apps** konfigurieren. 
    1. Wählen Sie als **Geräteplattformen** die Optionen **Android** und **iOS** aus.
-
-      ![Bedingter Zugriff](./media/app-based-conditional-access/03.png)
-
    1. Wählen Sie als **Client-Apps (Vorschau)** die Option **Mobile Apps und Desktop-Apps** und **Clients mit moderner Authentifizierung**.
-
-      ![Bedingter Zugriff](./media/app-based-conditional-access/91.png)
-
 1. Als **Zugriffskontrollen** muss Folgendes ausgewählt werden:
    - **Markieren des Geräts als kompatibel erforderlich**
    - **Genehmigte Client-App erforderlich (Vorschau)**
@@ -310,23 +239,15 @@ Für die Richtlinie zum bedingten Zugriff in diesem Schritt müssen folgende Kom
  
       ![Bedingter Zugriff](./media/app-based-conditional-access/13.png)
 
-
-
 **Schritt 2: Konfigurieren einer Azure AD-Richtlinie für bedingten Zugriff für Exchange Online mit Active Sync (EAS)**
 
 Für die Richtlinie zum bedingten Zugriff in diesem Schritt müssen folgende Komponenten konfiguriert werden:
 
-![Bedingter Zugriff](./media/app-based-conditional-access/61.png)
-
 1. Der **Name** Ihrer Richtlinie zum bedingten Zugriff.
 1. **Benutzer und Gruppen**: Für jede Richtlinie für bedingten Zugriff muss mindestens ein Benutzer oder eine Gruppe ausgewählt werden.
 1. **Cloud-Apps:** Als Cloud-Apps müssen Sie **Office 365 Exchange Online** auswählen. 
-
-   ![Bedingter Zugriff](./media/app-based-conditional-access/07.png)
-
 1. **Bedingungen:** Als **Bedingungen** müssen Sie **Client-Apps (Vorschauversion)** konfigurieren. 
-
-   Wählen Sie als **Client-Apps (Vorschauversion)** die Option **Mobile Apps und Desktop-Apps** und **ActiveSync-Clients austauschen**.
+   1. Wählen Sie als **Client-Apps (Vorschauversion)** die Option **Mobile Apps und Desktop-Apps** und **ActiveSync-Clients austauschen**.
 
    ![Bedingter Zugriff](./media/app-based-conditional-access/92.png)
 
@@ -334,8 +255,6 @@ Für die Richtlinie zum bedingten Zugriff in diesem Schritt müssen folgende Kom
    - **Markieren des Geräts als kompatibel erforderlich**
    - **Genehmigte Client-App erforderlich (Vorschau)**
    - **Alle ausgewählten Kontrollen anfordern**   
- 
-      ![Bedingter Zugriff](./media/app-based-conditional-access/64.png)
 
 **Schritt 3: Konfigurieren der Intune-Richtlinie für den App-Schutz für iOS- und Android-Clientanwendungen**
 

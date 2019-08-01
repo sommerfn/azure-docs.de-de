@@ -1,18 +1,19 @@
 ---
 title: Azure Monitor-Protokolldatenmodell für Azure Backup
 description: In diesem Artikel werden die Details des Azure Monitor-Protokolldatenmodells für Azure Backup-Daten vorgestellt.
-author: adigan
-manager: shivamg
+ms.reviewer: adigan
+author: dcurwin
+manager: carmonm
 ms.service: backup
 ms.topic: conceptual
 ms.date: 02/26/2019
-ms.author: adigan
-ms.openlocfilehash: 6563eefffee0ed8d9ce94c3e0a1e24b0d32314f0
-ms.sourcegitcommit: c72ddb56b5657b2adeb3c4608c3d4c56e3421f2c
+ms.author: dacurwin
+ms.openlocfilehash: 878e4e7508d82f78e82f1fd8bda69079d9468e9f
+ms.sourcegitcommit: d585cdda2afcf729ed943cfd170b0b361e615fae
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68466153"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "68689243"
 ---
 # <a name="log-analytics-data-model-for-azure-backup-data"></a>Log Analytics-Datenmodell für Azure Backup-Daten
 
@@ -329,12 +330,12 @@ In dieser Tabelle sind grundlegende Felder zum Sicherungsverwaltungsserver entha
 
 |Feld  |Datentyp  | BESCHREIBUNG  |
 |---------|---------|----------|
-|BackupManagmentServerName_s     |Text         |Name des Servers für die Sicherungsverwaltung        |
+|BackupManagementServerName_s     |Text         |Name des Servers für die Sicherungsverwaltung        |
 |AzureBackupAgentVersion_s     |Text         |Version des Azure Backup-Agenten auf dem Sicherungsverwaltungsserver          |
-|BackupManagmentServerVersion_s     |Text         |Version des Servers für die Sicherungsverwaltung|
-|BackupManagmentServerOSVersion_s     |Text            |Betriebssystemversion des Servers für die Sicherungsverwaltung|
+|BackupManagementServerVersion_s     |Text         |Version des Servers für die Sicherungsverwaltung|
+|BackupManagementServerOSVersion_s     |Text            |Betriebssystemversion des Servers für die Sicherungsverwaltung|
 |BackupManagementServerType_s     |Text         |Typ des Sicherungsverwaltungsserver, z. B. MABS oder SC DPM|
-|BackupManagmentServerUniqueId_s     |Text         |Feld, um den Sicherungsverwaltungsserver eindeutig zu bestimmen       |
+|BackupManagementServerUniqueId_s     |Text         |Feld, um den Sicherungsverwaltungsserver eindeutig zu bestimmen       |
 
 ### <a name="preferredworkloadonvolume"></a>PreferredWorkloadOnVolume
 
