@@ -6,12 +6,12 @@ ms.service: azure-migrate
 ms.topic: article
 ms.date: 07/17/2019
 ms.author: hamusa
-ms.openlocfilehash: 7cde18f2da764a055443900e7daf160f72e2eeb5
-ms.sourcegitcommit: af58483a9c574a10edc546f2737939a93af87b73
+ms.openlocfilehash: 4130bb746a4faa4907353654d16f7c20c0cc7817
+ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/17/2019
-ms.locfileid: "68301655"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68598952"
 ---
 # <a name="set-up-dependency-visualization-for-assessment"></a>Einrichten einer Visualisierung der Abhängigkeit für die Bewertung
 
@@ -39,7 +39,7 @@ Mit der Abhängigkeitszuordnung können Sie Abhängigkeiten computerübergreifen
 Verfügbarkeit | Abhängigkeitsvisualisierung ist in Azure Government nicht verfügbar.
 Dienstzuordnung | Die Visualisierung von Abhängigkeiten verwendet die Service Map-Lösung in den Protokollen von Azure Monitor. [Service Map](../azure-monitor/insights/service-map-configure.md) erkennt Verbindungen zwischen Servern und zeigt sie automatisch an.
 Agents | Um die Visualisierung von Abhängigkeiten zu verwenden, installieren Sie ein paar Agents auf den Computern, die Sie zuordnen möchten:<br/> - [Azure Log Analytics](../azure-monitor/platform/log-analytics-agent.md)-Agent (früher Microsoft Monitoring Agent (MMA) genannt).<br/> – Abhängigkeitsagent für Service Map.<br/><br/> Um die Installation von Agents zu automatisieren, können Sie Bereitstellungstools wie System Center Configuration Manager oder ein Partnertool wie [Intigua](https://www.intigua.com/getting-started-intigua-for-azure-migration) verwenden, das eine Agent-Bereitstellungslösung für Azure Migrate bereitstellt.
-Abhängigkeits-Agent | Überprüfen Sie die Unterstützung des Abhängigkeitsagents für [Windows](/azure-monitor/insights/service-map-configure.md#supported-windows-operating-systems) und [Linux](../azure-monitor/insights/service-map-configure.md#supported-linux-operating-systems).<br/><br/> [Erfahren Sie mehr](https://docs.microsoft.com/azure/monitoring/monitoring-service-map-configure#installation-script-examples) darüber, wie Sie den Abhängigkeitsagent mithilfe von Skripts installieren können.
+Abhängigkeits-Agent | Überprüfen Sie die Unterstützung des Abhängigkeitsagents für [Windows](../azure-monitor/insights/service-map-configure.md#supported-windows-operating-systems) und [Linux](../azure-monitor/insights/service-map-configure.md#supported-linux-operating-systems).<br/><br/> [Erfahren Sie mehr](https://docs.microsoft.com/azure/monitoring/monitoring-service-map-configure#installation-script-examples) darüber, wie Sie den Abhängigkeitsagent mithilfe von Skripts installieren können.
 Log Analytics-Agent (MMA – Microsoft Monitoring Agent) | [Erfahren Sie mehr](../azure-monitor/platform/log-analytics-agent.md#install-and-configure-agent) über MMA-Installationsmethoden.<br/><br/> Bei Computern, die von System Center Operations Manager 2012 R2 oder höher überwacht werden, müssen Sie den MMA-Agent nicht installieren. Service Map ist in den Operations Manager integriert. Sie können die Integration mithilfe der [hier](https://docs.microsoft.com/azure/azure-monitor/insights/service-map-scom#prerequisites) verfügbaren Anleitungen aktivieren. Beachten Sie aber, dass der Abhängigkeits-Agent auf diesen Computern installiert sein muss.<br/><br/> [Überprüfen](../azure-monitor/platform/log-analytics-agent.md#supported-linux-operating-systems) Sie die Linux-Betriebssystemen, die vom Log Analytics-Agent unterstützt werden.
 Bewertungsgruppen | Gruppen, für die Sie Gruppenabhängigkeiten visualisieren möchten, sollten höchstens zehn Computer enthalten. Wenn Sie mehr als 10 Computer haben, teilen Sie diese in kleinere Gruppen auf, um Abhängigkeiten zu visualisieren.
 

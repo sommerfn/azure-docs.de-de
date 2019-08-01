@@ -10,12 +10,12 @@ ms.topic: article
 ms.service: azure-blockchain
 ms.reviewer: brendal
 manager: vamelech
-ms.openlocfilehash: 3531b43e6aee1eedef811e81e192873c5b5ed561
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 01b9f7f74077737ea95a56bbe81f440db425bf0c
+ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66126800"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "68698456"
 ---
 # <a name="ethereum-proof-of-authority-consortium"></a>Ethereum-PoA-Konsortium
 
@@ -764,7 +764,7 @@ Die WebAssembly-Unterstützung ist für neu bereitgestellte PoA-Netzwerke bereit
 
 #### <a name="i-notice-there-are-many-transactions-on-the-network-that-i-didnt-send-where-are-these-coming-from"></a>Mir sind im Netzwerk einige Transaktionen aufgefallen, die ich nicht gesendet habe. Woher kommen diese Transaktionen?
 
-Es ist unsicher, die [persönliche API](https://web3js.readthedocs.io/en/1.0/web3-eth-personal.html) zu entsperren. Bots lauschen auf nicht gesperrte Ethereum-Konten und versuchen, das Guthaben abzuschöpfen. Der Bot nimmt an, dass diese Konten echtes Ether-Guthaben enthalten, und versucht, als Erster an das Guthaben zu gelangen. Sie sollten die persönliche API im Netzwerk nicht aktivieren. Signieren Sie die Transaktionen stattdessen vorab, indem Sie entweder manuell vorgehen und ein Wallet wie MetaMask verwenden, oder die programmgesteuerte Vorgehensweise wählen. Dies wird im Abschnitt [Programmgesteuertes Interagieren mit einem Smart Contract](#programmatically-interacting-with-a-smart-contract) beschrieben.
+Es ist unsicher, die [persönliche API](https://web3js.readthedocs.io/en/v1.2.0/web3-eth-personal.html) zu entsperren. Bots lauschen auf nicht gesperrte Ethereum-Konten und versuchen, das Guthaben abzuschöpfen. Der Bot nimmt an, dass diese Konten echtes Ether-Guthaben enthalten, und versucht, als Erster an das Guthaben zu gelangen. Sie sollten die persönliche API im Netzwerk nicht aktivieren. Signieren Sie die Transaktionen stattdessen vorab, indem Sie entweder manuell vorgehen und ein Wallet wie MetaMask verwenden, oder die programmgesteuerte Vorgehensweise wählen. Dies wird im Abschnitt [Programmgesteuertes Interagieren mit einem Smart Contract](#programmatically-interacting-with-a-smart-contract) beschrieben.
 
 #### <a name="how-to-ssh-onto-a-vm"></a>Wie stelle ich eine SSH-Verbindung mit einem virtuellen Computer her?
 

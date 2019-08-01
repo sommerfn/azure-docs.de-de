@@ -1,165 +1,201 @@
 ---
 title: Azure-Netzwerke | Microsoft-Dokumentation
-description: Informationen zu Azure-Netzwerkdiensten und -funktionen.
+description: Erfahren Sie mehr über Netzwerkdienste in Azure und deren Möglichkeiten.
 services: networking
 documentationcenter: na
-author: jimdial
-manager: timlt
-editor: ''
-tags: azure-resource-manager
-ms.assetid: ''
+author: KumudD
+manager: twooley
 ms.service: virtual-network
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 04/19/2017
-ms.author: jdial
-ms.openlocfilehash: 02db9f2b8cb2ec71d23ad077b90eeacb905d2a16
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.date: 07/17/2019
+ms.author: kumud
+ms.openlocfilehash: 759b61e5fb444643bf83e1cca47b6f7152a96590
+ms.sourcegitcommit: 770b060438122f090ab90d81e3ff2f023455213b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60565795"
+ms.lasthandoff: 07/17/2019
+ms.locfileid: "68305652"
 ---
 # <a name="azure-networking"></a>Azure-Netzwerke
 
-Azure bietet eine Vielzahl von Netzwerkfunktionen, die einzeln oder zusammen verwendet werden können. Klicken Sie auf eine der folgenden Schlüsselfunktionen, um weitere Informationen zu erhalten:
-- [Konnektivität zwischen Azure-Ressourcen](#connectivity): Stellen Sie in einem sicheren, privaten virtuellen Netzwerk in der Cloud eine Verbindung zwischen Azure-Ressourcen her.
-- [Internetkonnektivität](#internet-connectivity): Kommunizieren Sie mit und von Azure-Ressourcen über das Internet.
-- [Lokale Konnektivität](#on-premises-connectivity): Stellen Sie eine Verbindung zwischen einem lokalen Netzwerk und Azure-Ressourcen her – entweder unter Verwendung eines virtuellen privaten Netzwerks (VPN) über das Internet oder über eine dedizierte Verbindung mit Azure.
-- [Lastenausgleich und Datenverkehrsrichtung](#load-balancing): Führen Sie einen Lastenausgleich für Datenverkehr durch, der für Server am gleichen Standort bestimmt ist, und leiten Sie Datenverkehr an Server an anderen Standorten weiter.
-- [Sicherheit:](#security) Filtern Sie den Netzwerkdatenverkehr zwischen Netzwerksubnetzen oder einzelnen virtuellen Computern (virtual machines, VMs).
-- [Routing](#routing): Verwenden Sie das Standardrouting, oder steuern Sie in vollem Umfang das Routing zwischen Azure- und lokalen Ressourcen.
-- [Verwaltbarkeit:](#manageability) Überwachen und verwalten Sie Ihre Azure-Netzwerkressourcen.
-- [Bereitstellungs- und Konfigurationstools](#tools): Verwenden Sie ein webbasiertes Portal oder plattformübergreifende Befehlszeilentools zum Bereitstellen und Konfigurieren von Netzwerkressourcen.
+Die Netzwerkdienste in Azure bieten eine Vielzahl von Netzwerkfunktionen, die einzeln oder zusammen verwendet werden können. Klicken Sie auf eine der folgenden Schlüsselfunktionen, um weitere Informationen zu erhalten:
+- [**Konnektivitätsdienste**](#connect): Verbinden Sie Azure-Ressourcen und lokale Ressourcen über einen oder eine Kombination dieser Netzwerkdienste in Azure: Virtual Network (VNet), Virtual WAN, ExpressRoute, VPN Gateway, Azure DNS oder Azure Bastion.
+- [**Anwendungsschutzdienste**](#protect) Schützen Sie Ihre Anwendungen mit einem oder mehreren dieser Netzwerkdienste in Azure: DDoS Protection, Firewall, Netzwerksicherheitsgruppen, Web Application Firewall oder Virtual Network Endpoints.
+- [**Anwendungsbereitstellungsdienste**](#deliver) Bereitstellen von Anwendungen im Azure-Netzwerk über einen oder eine Kombination dieser Netzwerkdienste in Azure: Content Delivery Network (CDN), Azure Front Door Service, Traffic Manager, Application Gateway oder Load Balancer.
+- [**Netzwerküberwachung**](#monitor) – Überwachen Sie Ihre Netzwerkressourcen mit einem oder mehreren dieser Netzwerkdienste in Azure: Network Watcher, ExpressRoute Monitor, Azure Monitor oder VNet Terminal Access Point (TAP).
 
-## <a name="connectivity"></a>Konnektivität zwischen Azure-Ressourcen
+## <a name="connect"></a>Konnektivitätsdienste
+ 
+Dieser Abschnitt beschreibt Dienste, die die Konnektivität zwischen Azure-Ressourcen, die Konnektivität von einem lokalen Netzwerk zu Azure-Ressourcen und die Konnektivität von Azure – Virtual Network, ExpressRoute, VPN Gateway, Virtual WAN, DNS und Azure Bastion bereitstellen.
 
-Azure-Ressourcen wie Virtual Machines, Cloud Services, VM-Skalierungsgruppen und Azure App Service-Umgebungen können privat über ein Azure Virtual Network (VNET) miteinander kommunizieren. Bei einem VNET handelt es sich um eine logische Isolation der Azure-Cloud für Ihr [Abonnement](../azure-glossary-cloud-terminology.md?toc=%2fazure%2fnetworking%2ftoc.json). Sie können in jedem Azure-Abonnement und in jeder Azure-[Region](https://azure.microsoft.com/regions) mehrere VNETs implementieren. Jedes VNet ist von anderen VNets isoliert. Für jedes VNet ist Folgendes möglich:
+|Dienst|Gründe, die für die Verwendung sprechen:|Szenarien|
+|---|---|---|
+|[Virtuelles Netzwerk](#vnet)|Ermöglicht es Azure-Ressourcen sicher untereinander sowie mit dem Internet und mit lokalen Netzwerken zu kommunizieren.| <p>[Erstellen von Netzwerksicherheitsgruppen über das Azure-Portal](../virtual-network/tutorial-filter-network-traffic.md)</p> <p>[Weiterleiten von Netzwerkdatenverkehr](../virtual-network/tutorial-create-route-table-portal.md)</p> <p>[Einschränken des Netzwerkzugriffs auf Ressourcen](../virtual-network/tutorial-restrict-network-access-to-resources.md)</p> <p>[Herstellen von Verbindungen zwischen virtuellen Netzwerken](../virtual-network/tutorial-connect-virtual-networks-portal.md)</p>|
+|[ExpressRoute](#expressroute)|Dehnt Ihre lokalen Netzwerke über eine private Verbindung, die von einem Konnektivitätsanbieter bereitgestellt wird, auf die Cloud von Microsoft aus.|<p>[Erstellen und Ändern einer ExpressRoute-Verbindung](../expressroute/expressroute-howto-circuit-portal-resource-manager.md)</p> <p>[Erstellen und Ändern des Peerings für eine ExpressRoute-Verbindung](../expressroute/expressroute-howto-routing-portal-resource-manager.md)</p> <p>[Verknüpfen eines VNet mit einer ExpressRoute-Verbindung](../expressroute/expressroute-howto-linkvnet-portal-resource-manager.md)</p> <p>[Konfiguration und Verwaltung von Routenfiltern für ExpressRoute-Verbindungen](../expressroute/how-to-routefilter-portal.md)</p>|
+|[VPN Gateway](#vpngateway)|Sendet verschlüsselten Datenverkehr zwischen einem virtuellen Azure-Netzwerk und einem lokalen Standort über das öffentliche Internet.|<p>[Site-to-site-Verbindungen](../vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-portal.md)</p> <p>[VNet-zu-VNet-Verbindungen](../vpn-gateway/vpn-gateway-howto-vnet-vnet-resource-manager-portal.md)</p> <p>[Point-to-Site-Verbindungen](../vpn-gateway/vpn-gateway-howto-point-to-site-resource-manager-portal.md)</p>|
+|[Virtual WAN](#virtualwan)|Optimiert und automatisiert die Branchkonnektivität zu und durch Azure. Azure-Regionen dienen als Hubs, die Sie auswählen können, um Branches mit ihnen zu verbinden.|<p>[Site-to-site-Verbindungen](../virtual-wan/virtual-wan-site-to-site-portal.md), [ExpressRoute-Verbindungen](../virtual-wan/virtual-wan-expressroute-portal.md)</p> <p>[Point-to-site-Verbindungen](../virtual-wan/virtual-wan-point-to-site-portal.md)</p> |
+|[Azure DNS](#dns)|Hostet die DNS-Domäne, die eine Namensauflösung mithilfe der Microsoft Azure-Infrastruktur ermöglicht.|<p>[Hosten Ihrer Domäne in Azure DNS](../dns/dns-delegate-domain-azure-dns.md)</p><p>[Erstellen von DNS-Einträgen für eine Web-App](../dns/dns-web-sites-custom-domain.md)</p> <p>[Erstellen eines Aliaseintrags für Traffic Manager](../dns/tutorial-alias-tm.md)</p> <p>[Erstellen Sie einen Aliaseintrag für die öffentliche IP-Adresse](../dns/tutorial-alias-pip.md)</p> <p>[Erstellen eines Aliaseintrags für Ressourceneinträge in der Zone](../dns/tutorial-alias-rr.md)</p>|
+|[Azure Bastion (Vorschauversion)](#bastion)|Konfigurieren Sie sichere und nahtlose RDP-/SSH-Verbindungen mit Ihren virtuellen Computern über SSL direkt im Azure-Portal. Beim Herstellen einer Verbindung über Azure Bastion benötigen Ihre virtuellen Computer keine öffentliche IP-Adresse.|<p>[Erstellen eines Azure Bastion-Hosts](../bastion/bastion-create-host-portal.md)</p><p>[Verbinden über SSH mit einer Linux-VM](../bastion/bastion-connect-vm-ssh.md)</p><p>[Verbindung über RDP mit einer Windows-VM](/bastion/bastion-connect-vm-rdp.md)</p>|
+||||
 
-- Geben Sie einen benutzerdefinierten privaten IP-Adressraum ein, indem Sie öffentliche und private Adressen (RFC 1918) verwenden. Azure weist Ressourcen, die mit dem VNet verbunden sind, eine private IP-Adresse aus dem von Ihnen zugewiesenen Adressraum zu.
-- Segmentieren Sie das VNet in mindestens ein Subnetz, und ordnen Sie jedem Subnetz einen Teil des VNet-Adressraums zu.
-- Verwenden Sie die in Azure enthaltene Namensauflösung, oder geben Sie Ihren eigenen DNS-Server an, der für die mit einem VNet verbundenen Ressourcen genutzt werden kann.
 
-Weitere Informationen zum Azure Virtual Network-Dienst finden Sie im Artikel mit der [Übersicht über Virtual Network](../virtual-network/virtual-networks-overview.md?toc=%2fazure%2fnetworking%2ftoc.json). Sie können VNets miteinander verbinden, sodass Ressourcen, für die eine Verbindung mit einem der VNets besteht, darüber miteinander kommunizieren können. Nutzen Sie eine der folgenden Optionen (oder beide), um VNets miteinander zu verbinden:
+### <a name="vnet"></a>Virtuelles Netzwerk
 
-- **Peering**: Hierdurch wird ermöglicht, dass Ressourcen, die mit unterschiedlichen Azure-VNETs innerhalb derselben Azure-Region verbunden sind, miteinander kommunizieren können. Die Bandbreite und Wartezeit für die VNets entspricht den Werten, die gelten, wenn die Ressourcen mit demselben VNet verbunden sind. Weitere Informationen zum Peering finden Sie im Artikel mit der [Übersicht über das Peering in virtuellen Netzwerken](../virtual-network/virtual-network-peering-overview.md?toc=%2fazure%2fnetworking%2ftoc.json).
-- **VPN Gateway**: Hierdurch wird ermöglicht, dass Ressourcen, die mit unterschiedlichen Azure-VNETs innerhalb derselben Azure-Region verbunden sind, miteinander kommunizieren können. Der Datenverkehr zwischen VNETs verläuft über Azure VPN Gateway. Die Bandbreite zwischen VNETs ist auf die Bandbreite des Gateways beschränkt. Weitere Informationen zum Verbinden von VNETs mit VPN Gateway finden Sie im Artikel zur [regionsübergreifenden Konfiguration einer VNET-zu-VNET-Verbindung](../vpn-gateway/vpn-gateway-howto-vnet-vnet-resource-manager-portal.md?toc=%2fazure%2fnetworking%2ftoc.json).
+Azure Virtual Network (VNET) ist der grundlegende Baustein für Ihr privates Netzwerk in Azure. Sie können ein VNets für folgende Zwecke verwenden:
+- **Kommunikation zwischen Azure-Ressourcen**: Sie können virtuelle Computer und verschiedene andere Arten von Azure-Ressourcen in einem virtuellen Netzwerk bereitstellen, wie beispielsweise Azure App Service-Umgebungen, den Azure Kubernetes Service (AKS) und Azure Virtual Machine Scale Sets. Eine vollständige Liste mit Azure-Ressourcen, die Sie in einem virtuellen Netzwerk bereitstellen können, finden Sie unter [Integration virtueller Netzwerke für Azure-Dienste](../virtual-network/virtual-network-for-azure-services.md).
+- **Kommunikation untereinander**: Sie können virtuelle Netzwerke mittels VNet-Peering miteinander verbinden und so die Kommunikation zwischen Ressourcen in beiden virtuellen Netzwerken ermöglichen. Die verbundenen virtuellen Netzwerke können sich in der gleichen Azure-Region oder in verschiedenen Azure-Regionen befinden. Weitere Informationen finden Sie unter [Peering in virtuellen Netzwerken](../virtual-network/virtual-network-peering-overview.md).
+- **Kommunikation mit dem Internet**: Alle Ressourcen in einem VNET können standardmäßig in ausgehender Richtung mit dem Internet kommunizieren. Zur Kommunikation in eingehender Richtung muss der entsprechenden Ressource eine öffentliche IP-Adresse oder eine öffentliche Load Balancer-Instanz zugewiesen werden. Sie können die [öffentliche IP-Adressen](../virtual-network/virtual-network-public-ip-address.md) bzw. die öffentliche [Load Balancer-Instanz](../load-balancer/load-balancer-overview.md) auch zum Verwalten Ihrer ausgehenden Verbindungen verwenden.
+- **Kommunikation mit lokalen Netzwerken**: Sie können Ihre lokalen Computer und Netzwerke unter Verwendung von [VPN Gateway](../vpn-gateway/vpn-gateway-about-vpngateways.md) oder [ExpressRoute](../expressroute/expressroute-introduction.md) verbinden.
 
-## <a name="internet-connectivity"></a>Internetkonnektivität
+Weitere Informationen finden Sie unter [„Was ist Azure Virtual Network?“](../virtual-network/virtual-networks-overview.md).
 
-Alle Azure-Ressourcen, die mit einem VNET verbunden sind, verfügen standardmäßig über Internetkonnektivität in ausgehender Richtung. Die private IP-Adresse der Ressource wird von der Azure-Infrastruktur per SNAT-Vorgang (Source Network Address Translated) in eine öffentliche IP-Adresse übersetzt. Weitere Informationen zur Internetkonnektivität in ausgehender Richtung finden Sie im Artikel [Grundlegendes zu ausgehenden Verbindungen in Azure](../load-balancer/load-balancer-outbound-connections.md?toc=%2fazure%2fnetworking%2ftoc.json).
+### <a name="expressroute"></a>ExpressRoute
+Mit ExpressRoute können Sie Ihre lokalen Netzwerke über eine private Verbindung, die von einem Konnektivitätsanbieter bereitgestellt wird, auf die Microsoft Azure Cloud ausdehnen. Diese Verbindung ist privat. Der Datenverkehr wird nicht über das Internet übertragen. Mit ExpressRoute können Sie Verbindungen zu Microsoft-Clouddiensten herstellen, z.B. Microsoft Azure, Office 365 und Dynamics 365.  Weitere Informationen finden Sie unter [„Was ist ExpressRoute?“](../expressroute/expressroute-introduction.md).
 
-Um über das Internet in eingehender Richtung mit Azure-Ressourcen bzw. in ausgehender Richtung ohne SNAT über das Internet kommunizieren zu können, muss einer Ressource eine öffentliche IP-Adresse zugewiesen sein. Weitere Informationen zu öffentlichen IP-Adressen finden Sie im Artikel [Öffentliche IP-Adressen](../virtual-network/virtual-network-public-ip-address.md?toc=%2fazure%2fnetworking%2ftoc.json).
+![Azure ExpressRoute](./media/networking-overview/expressroute-connection-overview.png)
 
-## <a name="on-premises-connectivity"></a>Lokale Konnektivität
+### <a name="vpngateway"></a>VPN Gateway
+Mit VPN Gateway erstellen Sie verschlüsselte lokale Verbindungen mit Ihrem virtuellen Netzwerk von lokalen Standorten aus, oder erstellen Sie verschlüsselte Verbindungen zwischen VNETs. Für VPN Gateway-Verbindungen stehen verschiedene Konfigurationen zur Verfügung, wie z. B. Site-to-Site, Point-to-Point oder VNet-to-VNet.
+Das folgende Diagramm veranschaulicht mehrere Site-to-Site-VPN-Verbindungen zum gleichen virtuellen Netzwerk.
 
-Sie können über eine VPN-Verbindung oder eine direkte private Verbindung sicher auf Ressourcen in Ihrem VNET zugreifen. Wenn Sie Netzwerkdatenverkehr zwischen Ihrem virtuellen Azure-Netzwerk und Ihrem lokalen Netzwerk senden möchten, müssen Sie ein Gateway für virtuelle Netzwerke erstellen. Sie konfigurieren Einstellungen für das Gateway, um den gewünschten Verbindungstyp zu erstellen: entweder VPN oder ExpressRoute.
+![Site-to-Site Azure VPN Gateway-Verbindungen](./media/networking-overview/vpngateway-multisite-connection-diagram.png)
 
-Sie können Ihr lokales Netzwerk mit einem VNet verbinden, indem Sie eine Kombination der folgenden Optionen verwenden:
+Weitere Informationen zu den verschiedenen Arten von VPN-Verbindungen finden Sie unter [VPN Gateway](../vpn-gateway/vpn-gateway-about-vpngateways.md).
 
-**Point-to-Site (VPN über SSTP)**
+### <a name="virtualwan"></a>Virtual WAN
+Der Netzwerkdienst Azure Virtual WAN bietet optimierte und automatisierte Branch-Konnektivität mit und durch Azure. Azure-Regionen dienen als Hubs, die Sie auswählen können, um Branches mit ihnen zu verbinden. Sie können das Azure-Backbone nutzen, um auch Verbindungen mit Branches herzustellen und die Branch-to-VNET-Konnektivität zu nutzen. Azure Virtual WAN vereint zahlreiche Azure-Cloudkonnektivitätsdienste, z.B. Site-to-Site-VPN, ExpressRoute, Point-to-Site-Benutzer-VPN in einer einzigen Betriebsschnittstelle. Die Konnektivität mit Azure-VNets wird mithilfe virtueller Netzwerkverbindungen hergestellt. Weitere Informationen finden Sie unter [„Was ist das virtuelle Azure-WAN?“](../virtual-wan/virtual-wan-about.md).
 
-Die folgende Abbildung zeigt separate Point-to-Site-Verbindungen zwischen mehreren Computern und einem VNET:
+![Virtual WAN-Diagramm](./media/networking-overview/virtualwan1.png)
 
-![Punkt-zu-Standort](./media/networking-overview/point-to-site.png)
+### <a name="dns"></a>Azure DNS
+Azure DNS ist ein Hostingdienst für DNS-Domänen, der eine Namensauflösung mittels Microsoft Azure-Infrastruktur bietet. Indem Sie Ihre Domänen in Azure hosten, können Sie Ihre DNS-Einträge unter Verwendung der gleichen Anmeldeinformationen, APIs, Tools und Abrechnungsabläufe wie bei Ihren anderen Azure-Diensten verwalten. Weitere Informationen finden Sie unter [„Was ist Azure DNS?“](../dns/dns-overview.md).
 
-Diese Verbindung wird zwischen einem einzelnen Computer und einem VNET eingerichtet. Dieser Verbindungstyp ist gut geeignet, wenn Azure noch neu für Sie ist, oder wenn Sie ein Entwickler sind, da keine oder nur sehr geringe Änderungen Ihres vorhandenen Netzwerks erforderlich sind. Er ist auch praktisch, wenn Sie eine Verbindung von einem Remotestandort aus herstellen, beispielsweise von einer Konferenz oder von zu Hause aus. Point-to-Site-Verbindungen sind häufig mit einer Site-to-Site-Verbindung über dasselbe Gateway für virtuelle Netzwerke gekoppelt. Für die Verbindung wird das SSTP-Protokoll verwendet, um zwischen dem Computer und dem VNET eine verschlüsselte Kommunikation über das Internet zu ermöglichen. Die Dauer der Wartezeit für ein Point-to-Site-VPN ist unvorhersehbar, weil der Datenverkehr über das Internet übertragen wird.
+### <a name="bastion"></a>Azure Bastion (Vorschauversion)
+Azure Bastion ist ein neuer vollständig verwalteter PaaS-Dienst, den Sie in Ihrem virtuellen Netzwerk bereitstellen können. Dieser Dienst bietet sichere und nahtlose RDP- und SSH-Verbindungen mit Ihren virtuellen Computern über SSL direkt im Azure-Portal. Beim Herstellen einer Verbindung über Azure Bastion benötigen Ihre virtuellen Computer keine öffentliche IP-Adresse. Weitere Informationen finden Sie unter [„Was ist Azure Bastion?“](/bastion/bastion-overview.md).
 
-**Site-to-Site (IPsec-/IKE-VPN-Tunnel)**
+![Azure Bastion-Architektur](./media/networking-overview/architecture.png)
 
-![Site-to-Site](./media/networking-overview/site-to-site.png)
 
-Diese Verbindung wird zwischen Ihrem lokalen VPN-Gerät und Azure VPN Gateway eingerichtet. Bei diesem Verbindungstyp können alle lokalen Ressourcen, die von Ihnen autorisiert werden, auf das VNET zugreifen. Die Verbindung ist ein IPSec/IKE-VPN, mit dem die verschlüsselte Kommunikation über das Internet zwischen Ihrem lokalen Gerät und dem Azure VPN Gateway ermöglicht wird. Sie können mehrere lokale Standorte mit demselben VPN-Gateway verbinden. Das lokale VPN-Gerät an den einzelnen Standorten benötigt eine externe ausgerichtete öffentliche IP-Adresse, die sich nicht hinter einer NAT befindet. Die Dauer der Wartezeit für eine Site-to-Site-Verbindung ist unvorhersehbar, da der Datenverkehr über das Internet übertragen wird.
+## <a name="protect"></a>Anwendungsschutzdienste
 
-**ExpressRoute (dedizierte private Verbindung)**
+Dieser Abschnitt beschreibt Netzwerkdienste in Azure, die zum Schutz Ihrer Netzwerkressourcen beitragen: DDoS Protection, Web Application Firewall, Azure Firewall, Netzwerksicherheitsgruppen und Dienstendpunkte.
 
-![ExpressRoute](./media/networking-overview/expressroute.png)
+|Dienst|Gründe, die für die Verwendung sprechen:|Szenario|
+|---|---|---|
+|[DDoS Protection](#ddosprotection) |Hohe Verfügbarkeit für Ihre Anwendungen mit Schutz vor überhöhten IP-Datenverkehrsgebühren|[Verwalten von Azure DDoS Protection](../virtual-network/manage-ddos-protection.md)|
+|[Web Application Firewall](#waf)|<p>[Azure WAF mit Application Gateway](../application-gateway/waf-overview.md) bietet regionalen Schutz für Unternehmen im öffentlichen und privaten Adressraum.</p><p>[Azure WAF mit Front Door](../frontdoor/waf-overview.md) bietet Schutz am Netzwerkedge zu öffentlichen Endpunkten.</p>|<p>[Konfigurieren von Bot-Schutzregeln](../frontdoor/waf-front-door-policy-configure-bot-protection.md)</p> <p>[Konfigurieren von benutzerdefiniertem Antwortcode](../frontdoor/waf-front-door-configure-custom-response-code.md)</p> <p>[Konfigurieren von IP-Einschränkungsregeln](../frontdoor/waf-front-door-configure-ip-restriction.md)</p> <p>[Konfigurieren von Ratenbegrenzungsregeln](../frontdoor/waf-front-door-rate-limit-powershell.md)</p> |
+|[Azure Firewall](#firewall)|Azure Firewall ist ein verwalteter, cloudbasierter Netzwerksicherheitsdienst, der Ihre Azure Virtual Network-Ressourcen schützt. Es ist eine vollständig zustandsbehaftete Firewall-as-a-Service mit integrierter Hochverfügbarkeit und uneingeschränkter Cloudskalierbarkeit.|<p>[Bereitstellung einer Azure Firewall in einem Vnet](../firewall/tutorial-firewall-deploy-portal.md)</p> <p>[- Bereitstellung einer Azure Firewall in einem Hybridnetzwerk](../firewall/tutorial-hybrid-ps.md)</p> <p>[Filtern von eingehendem Datenverkehr mit Azure Firewall DNAT](../firewall/tutorial-firewall-dnat.md)</p>|
+|[Netzwerksicherheitsgruppen](#nsg)|Volle granulare verteilte Endknotensteuerung bei VM/Subnetz für alle Datenflüsse im Netzwerk|[Filtern des Netzwerkdatenverkehrs mit Netzwerksicherheitsgruppen](../virtual-network/tutorial-filter-network-traffic.md)|
+|[VNET-Dienstendpunkte](#serviceendpoints)|Ermöglichen es Ihnen, den Netzwerkzugriff auf einige Azure-Dienstressourcen auf ein Subnetz eines virtuellen Netzwerks einzuschränken.|[Beschränken des Netzwerkzugriffs auf PaaS-Ressourcen](../virtual-network/tutorial-restrict-network-access-to-resources-powershell.md)|
+|||
+### <a name="ddosprotection"></a>DDoS Protection 
+[Azure DDoS Protection](../virtual-network/manage-ddos-protection.md) bietet Gegenmaßnahmen gegen raffinierte DDoS-Bedrohungen. Der Service umfasst erweiterte Funktionen zur Abwehr von DDoS-Angriffen für die in Ihren virtuellen Netzwerken bereitgestellten Anwendungen und Ressourcen. Darüber hinaus haben Kunden, die Azure DDoS Protection einsetzen, Zugang zum DDoS Rapid Response-Support, um DDoS-Experten während einer aktiven Bedrohung zu kontaktieren.
 
-Dieser Verbindungstyp wird zwischen Ihrem Netzwerk und Azure über einen ExpressRoute-Partner eingerichtet. Diese Verbindung ist privat. Der Datenverkehr wird nicht über das Internet übertragen. Die Dauer der Wartezeit für eine ExpressRoute-Verbindung ist vorhersehbar, da der Datenverkehr nicht über das Internet verläuft. ExpressRoute kann mit einer Site-to-Site-Verbindung kombiniert werden.
+![DDoS Protection](./media/networking-overview/ddos-protection.png)
 
-Weitere Informationen zu allen vorherigen Verbindungsoptionen finden Sie im Artikel [Diagramme zur Verbindungstopologie](../vpn-gateway/vpn-gateway-about-vpngateways.md?toc=%2fazure%2fnetworking%2ftoc.json).
+### <a name="waf"></a>Web Application Firewall
 
-## <a name="load-balancing"></a>Lastenausgleich und Datenverkehrsrichtung
+Die Azure Web Application Firewall (WAF) bietet Ihren Webanwendungen Schutz vor gängigen Sicherheitslücken im Web und Schwachstellen wie der Einschleusung von SQL-Befehlen und websiteübergreifenden Skripts. Azure WAF bietet vorkonfigurierten Schutz vor den Top-10-Schwachstellen von OWASP über verwaltete Regeln. Zusätzlich können Kunden auch benutzerdefinierte Regeln konfigurieren, bei denen es sich um von Kunden verwaltete Regeln handelt, die einen zusätzlichen Schutz basierend auf dem Quell-IP-Adressbereich bieten, und Attribute wie Header, Cookies, Formulardatenfelder oder Abzeichenfolge-Parameter anfordern.
 
-Microsoft Azure bietet zahlreiche Dienste für das Verwalten der Verteilung von Netzwerkdatenverkehr und dem Lastenausgleich. Sie können keine der folgenden Funktionen separat oder zusammen verwenden:
+Kunden können [Azure WAF mit Application Gateway](../application-gateway/waf-overview.md) bereitstellen, das regionalen Schutz für Unternehmen im öffentlichen und privaten Adressraum bietet. Kunden können sich auch für [Azure WAF mit Front Door](../frontdoor/waf-overview.md) entscheiden, das Schutz am Netzwerkedge zu öffentlichen Endpunkten bietet.
 
-**DNS-Lastenausgleich**
 
-Der Azure Traffic Manager-Dienst bietet einen globalen DNS-Lastenausgleich. Der Traffic Manager reagiert auf Clients mit der IP-Adresse eines fehlerfreien Endpunkts, basierend auf einer der folgenden Routingmethoden:
-- **Geografisch**: Clients werden anhand des geografischen Ursprungsorts der DNS-Abfrage an bestimmte Endpunkte (Azure, extern oder geschachtelt) geleitet. Diese Methode ermöglicht Szenarien, in denen es wichtig ist, die geografische Region eines Clients zu kennen und dementsprechend zu routen. Zu Beispielen dafür gehören die Einhaltung von Datenhoheitsmandaten, die Verortung von Inhalten und Benutzererfahrungen und das Messen von Datenverkehr aus verschiedenen Regionen.
-- **Leistung:** Die an den Client zurückgegebene IP-Adresse ist die Adresse, die dem Client am nächsten ist. Der nächstgelegene Endpunkt ist nicht unbedingt derjenige, der geografisch am nächsten liegt. Vielmehr wird mit dieser Methode der nächstgelegene Endpunkt durch die Messung der Netzwerklatenz bestimmt. Der Traffic Manager überwacht anhand einer Internetlatenztabelle die Roundtripzeit zwischen IP-Adressbereichen und den einzelnen Azure-Rechenzentren.
-- **Priorität**: Der Datenverkehr wird an den primären Endpunkt (mit der höchsten Priorität) gesendet. Wenn der primäre Endpunkt nicht verfügbar ist, leitet Traffic Manager den Datenverkehr an den sekundären Endpunkt weiter. Wenn weder der primäre noch der sekundäre Endpunkt verfügbar sind, wird der Datenverkehr an den dritten Endpunkt gesendet usw. Ob ein Endpunkt verfügbar ist, hängt vom konfigurierten Status (aktiviert oder deaktiviert) sowie von der fortlaufenden Endpunktüberwachung ab.
-- **Gewichteter Roundrobin:** Für jede Anforderung wählt Traffic Manager einen verfügbaren Endpunkt nach dem Zufallsprinzip aus. Die Wahrscheinlichkeit für die Auswahl eines Endpunkts basiert hierbei auf der Gewichtung, die allen verfügbaren Endpunkten zugewiesen wurde. Die Verwendung der gleichen Gewichtung für alle Endpunkte führt zu einer gleichmäßigen Verteilung des Datenverkehrs. Wenn für bestimmte Endpunkte eine höhere oder niedrigere Gewichtung verwendet wird, werden diese Endpunkte häufiger oder seltener in den DNS-Antworten zurückgegeben.
+### <a name="firewall"></a>Azure Firewall
+Azure Firewall ist ein verwalteter, cloudbasierter Netzwerksicherheitsdienst, der Ihre Azure Virtual Network-Ressourcen schützt. Mit Azure Firewall können Sie Richtlinien zur Anwendungs- und Netzwerkkonnektivität übergreifend für Abonnements und virtuelle Netzwerke zentral erstellen, erzwingen und protokollieren. Azure Firewall verwendet eine statische öffentliche IP-Adresse für Ihre virtuellen Netzwerkressourcen, die es außenstehenden Firewalls ermöglicht, Datenverkehr aus Ihrem virtuellen Netzwerk zu identifizieren. 
 
-Die folgende Abbildung zeigt eine Anforderung für eine Webanwendung, die an einen Web-App-Endpunkt weitergeleitet wird. Endpunkte können auch andere Azure-Dienste wie virtuelle Computer und Cloud Services sein.
+Weitere Informationen zur Azure Firewall finden Sie in der [„Azure Firewall-Dokumentation“](../firewall/overview.md).
 
-![Traffic Manager](./media/networking-overview/traffic-manager.png)
+![Firewallübersicht](./media/networking-overview/firewall-threat.png)
 
-Der Client stellt eine direkte Verbindung zu diesem Endpunkt her. Der Azure Traffic Manager erkennt, wenn ein Endpunkt fehlerhaft ist, und leitet Clients dann an einen anderen, fehlerfreien Endpunkt weiter. Weitere Informationen zum Traffic Manager finden Sie im Artikel mit der [Übersicht über den Azure Traffic Manager](../traffic-manager/traffic-manager-overview.md?toc=%2fazure%2fnetworking%2ftoc.json).
+### <a name="nsg"></a>Netzwerksicherheitsgruppen
+Sie können Netzwerkdatenverkehr von und zu Azure-Ressourcen in einem virtuellen Azure-Netzwerk mithilfe einer Netzwerksicherheitsgruppe filtern. Weitere Informationen finden Sie unter [Sicherheitsübersicht](../virtual-network/security-overview.md).
 
-**Anwendungslastenausgleich**
+### <a name="serviceendpoints"></a>Dienstendpunkte
+Mit Dienstendpunkten von virtuellen Netzwerken (VNETs) werden der Bereich privater Adressen Ihres virtuellen Netzwerks und die Identität Ihres VNET über eine direkte Verbindung auf die Azure-Dienste erweitert. Endpunkte ermöglichen es Ihnen, Ihre kritischen Ressourcen von Azure-Diensten auf Ihre virtuellen Netzwerke zu beschränken und so zu schützen. Der Datenverkehr aus Ihrem VNET an den Azure-Dienst verbleibt immer im Backbone-Netzwerk von Microsoft Azure. Weitere Informationen finden Sie unter [VNET-Dienstendpunkte](../virtual-network/virtual-network-service-endpoints-overview.md).
 
-Der Azure Application Gateway-Dienst stellt den Application Delivery Controller (ADC) als Dienst bereit. Application Gateway bietet für Ihre Anwendungen verschiedene Lastenausgleichsfunktionen der Ebene 7 (HTTP/HTTPS), z.B. eine Web Application Firewall zum Schutz Ihrer Webanwendungen vor Sicherheitsrisiken und Exploits. Application Gateway erlaubt Ihnen außerdem das Optimieren der Produktivität von Webfarmen, indem Sie die CPU-intensive SSL-Beendigung an das Anwendungsgateway auslagern. 
+![VNET-Dienstendpunkte](./media/networking-overview/vnet-service-endpoints-overview.png)
 
-Andere Routingfunktionen für Ebene 7 umfassen Roundrobin-Verteilung des eingehenden Datenverkehrs, cookiebasierte Sitzungsaffinität, Routing auf URL-Pfadbasis, und Möglichkeit zum Hosten von mehreren Websites hinter einem einzelnen Application Gateway. Application Gateway kann als Gateway mit Internetanbindung, rein internes Gateway oder als Kombination dieser beiden Optionen konfiguriert werden. Application Gateway wird vollständig über Azure verwaltet und ist skalierbar und hoch verfügbar. Die Anwendung umfasst viele Diagnose- und Protokollierungsfunktionen zur Verbesserung der Verwaltbarkeit. Weitere Informationen zu Application Gateway finden Sie im Artikel mit der [Übersicht über Application Gateway](../application-gateway/application-gateway-introduction.md?toc=%2fazure%2fnetworking%2ftoc.json).
+## <a name="deliver"></a>Dienste für die Anwendungsbereitstellung
 
-Das folgende Bild zeigt das auf URL-Pfaden basierende Routing mit Application Gateway:
+Dieser Abschnitt beschreibt Netzwerkdienste in Azure, die bei der Bereitstellung von Anwendungen helfen: Content Delivery Network (CDN), Azure Front Door Service, Traffic Manager, Application Gateway und Load Balancer.
 
-![Application Gateway](./media/networking-overview/application-gateway.png)
+|Dienst|Gründe, die für die Verwendung sprechen:|Szenario|
+|---|---|---|
+|[Content Delivery Network](#cdn)|Bietet Benutzern Inhalte mit hoher Bandbreite. In CDNs werden zwischengespeicherte Inhalte auf Edgeservern an POP-Standorten (Point of Presence) gespeichert, die sich in der Nähe der Endbenutzer befinden, um die Wartezeit zu verringern.|<p>[Hinzufügen von CDN zu einer Web-App](../cdn/cdn-add-to-web-app.md)</p> <p>[Zugreifen auf Speicherblobs unter Verwendung einer benutzerdefinierten Azure CDN-Domäne über HTTPS](..//cdn/cdn-storage-custom-domain-https.md)</p> <p>[Hinzufügen einer benutzerdefinierten Domäne zum Azure CDN-Endpunkt](../cdn/cdn-map-content-to-custom-domain.md)</p> <p>[Konfigurieren von HTTPS in einer benutzerdefinierten Azure CDN-Domäne](../cdn/cdn-custom-ssl.md?tabs=option-1-default-enable-https-with-a-cdn-managed-certificate)</p>|
+|[Azure Front Door Service](#frontdoor)|Damit können Sie das globale Routing für Ihren Webdatenverkehr definieren, verwalten und überwachen, indem Sie es für beste Leistung und sofortiges globales Failover bei Hochverfügbarkeit optimieren.|<p>[Hinzufügen einer benutzerdefinierten Domäne für Azure Front Door Service](../frontdoor/front-door-custom-domain.md)</p> <p>[Konfigurieren von HTTPS in einer benutzerdefinierten Front Door-Domäne](../frontdoor/front-door-custom-domain-https.md)</p><p>[Einrichten der Firewallrichtlinie für die Geofilterung von Webanwendungen](../frontdoor/front-door-tutorial-geo-filtering.md)|
+|[Traffic Manager](#trafficmanager)|Verteilt den Datenverkehr basierend auf DNS auf Dienste in Azure-Regionen auf der ganzen Welt und sorgt gleichzeitig für Hochverfügbarkeit und Reaktionsfähigkeit.|<p> [Weiterleiten von Datenverkehr für geringe Latenz](../traffic-manager/tutorial-traffic-manager-improve-website-response.md)</p><p>[Weiterleiten von Datenverkehr an einen Prioritätsendpunkt](../traffic-manager/traffic-manager-configure-priority-routing-method.md)</p><p> [Steuern des Datenverkehrs mit gewichteten Endpunkten](../traffic-manager/tutorial-traffic-manager-weighted-endpoint-routing.md)</p><p>[Weiterleiten von Datenverkehr basierend auf dem geografischen Standort des Endpunkts](../traffic-manager/traffic-manager-configure-geographic-routing-method.md)</p> <p> [Weiterleiten von Datenverkehr basierend auf dem Subnetz des Benutzers](../traffic-manager/tutorial-traffic-manager-subnet-routing.md)</p>|
+|[Load Balancer](#loadbalancer)|Bietet regionalen Lastausgleich durch Weiterleitung des Datenverkehrs über Verfügbarkeitszonen und in Ihre VNetze. Bietet einen internen Lastenausgleich durch Weiterleitung des Datenverkehrs über und zwischen Ihren Ressourcen, um Ihre regionale Anwendung zu erstellen.|<p> [Vornehmen eines Lastausgleichs für Internetdatenverkehr virtueller Computer](../load-balancer/tutorial-load-balancer-standard-manage-portal.md)</p> <p>[Ausführen eines Lastenausgleichs des Datenverkehrs für mehrere VMs in einem virtuellen Netzwerk](../load-balancer/tutorial-load-balancer-basic-internal-portal.md)<p>[Portweiterleitung des Datenverkehrs an einen bestimmten Port auf bestimmten VMs](../load-balancer/tutorial-load-balancer-port-forwarding-portal.md)</p><p> [Konfigurieren von Lastenausgleichs- und Ausgangsregeln](../load-balancer/configure-load-balancer-outbound-cli.md)</p>|
+|[Application Gateway](#applicationgateway)|Azure Application Gateway ist ein Lastenausgleich für Webdatenverkehr, mit dem Sie eingehenden Datenverkehr für Ihre Webanwendungen verwalten können.|<p>[Weiterleiten von Webdatenverkehr per Azure Application Gateway](../application-gateway/quick-create-portal.md)</p><p>[Tutorial: Konfigurieren eines Anwendungsgateways mit SSL-Beendigung mithilfe des Azure-Portals](../application-gateway/create-ssl-portal.md)</p><p>[Erstellen eines Anwendungsgateways mit Umleitung auf URL-Pfadbasis](../application-gateway/create-url-route-portal.md) </p>|
+|
 
-**Netzwerklastenausgleich**
+### <a name="cdn"></a>Content Delivery Network
+Azure Content Delivery Network (CDN) bietet Entwicklern eine globale Lösung zur schnellen Übermittlung von Inhalten mit hoher Bandbreite an Benutzer. Hierzu werden Inhalte auf physischen Knoten zwischengespeichert, die strategisch auf der ganzen Welt verteilt sind. Weitere Informationen zum Azure CDN finden Sie unter [„Azure Content Delivery Network“](../cdn/cdn-overview.md).
 
-Der Azure Load Balancer ist äußerst leistungsfähig und bietet Lastenausgleich der Ebene 4 mit niedriger Latenz für alle UDP- und TCP-Protokolle. Der Dienst verwaltet eingehende und ausgehende Verbindungen. Sie können öffentliche und interne Endpunkte mit Lastenausgleich konfigurieren. Sie können Regeln definieren, um eingehende Verbindungen anhand von TCP- und HTTP-Integritätstestoptionen zu Back-End-Pool-Zielen zuzuordnen, um die Dienstverfügbarkeit zu verwalten. Weitere Informationen zum Load Balancer finden Sie im Artikel mit der [Übersicht über den Load Balancer](../load-balancer/load-balancer-overview.md?toc=%2fazure%2fnetworking%2ftoc.json).
+![Azure CDN](./media/networking-overview/cdn-overview.png)
+
+### <a name="frontdoor"></a>Azure Front Door Service
+Über Azure Front Door Service können Sie das globale Routing für Ihren Webdatenverkehr definieren, verwalten und überwachen, indem Sie es für beste Leistung und sofortiges globales Failover bei Hochverfügbarkeit optimieren. Mit Front Door können Sie Ihre globalen (mehrere Regionen) Consumer- und Unternehmensanwendungen in stabile und hochleistungsfähige personalisierte moderne Anwendungen, APIs und Inhalte transformieren, die eine globale Zielgruppe mit Azure erreichen. Weitere Informationen finden Sie unter [Azure Front Door](../frontdoor/front-door-overview.md).
+
+
+### <a name="trafficmanager"></a>Traffic Manager
+
+Azure Traffic Manager ist ein DNS-basierter Lastenausgleich für Datenverkehr, der es Ihnen ermöglicht, den Datenverkehr optimal auf Dienste in den globalen Azure-Regionen zu verteilen, und gleichzeitig Hochverfügbarkeit und Reaktionsfähigkeit sicherzustellen. Traffic Manager bietet eine Reihe von Routingmethoden für den Datenverkehr zur Verteilung des Datenverkehrs wie Priorität, Gewichtung, Leistung, Geographie, Mehrwertig oder Subnetz. Weitere Informationen zu Routingmethoden für Datenverkehr finden Sie unter [Traffic Manager-Methoden für das Datenverkehrsrouting](../traffic-manager/traffic-manager-routing-methods.md).
+
+Das folgende Diagramm zeigt das prioritätsbasierte Routing von Endpunkten mit dem Traffic Manager:
+
+![Prioritätsbasierte Methode für das Datenverkehrsrouting in Azure Traffic Manager](./media/networking-overview/priority.png)
+
+Weitere Informationen über Traffic Manager finden Sie unter [„Was ist Azure Traffic Manager?“](../traffic-manager/traffic-manager-overview.md).
+
+### <a name="loadbalancer"></a>Load Balancer
+Der Azure Load Balancer ist äußerst leistungsfähig und bietet Lastenausgleich der Ebene 4 mit niedriger Latenz für alle UDP- und TCP-Protokolle. Der Dienst verwaltet eingehende und ausgehende Verbindungen. Sie können öffentliche und interne Endpunkte mit Lastenausgleich konfigurieren. Sie können Regeln definieren, um eingehende Verbindungen anhand von TCP- und HTTP-Integritätstestoptionen zu Back-End-Pool-Zielen zuzuordnen, um die Dienstverfügbarkeit zu verwalten. Weitere Informationen zum Load Balancer finden Sie im Artikel mit der [Übersicht über den Load Balancer](../load-balancer/load-balancer-overview.md).
 
 Die folgende Abbildung zeigt eine Multi-Tier-Anwendung mit Internetzugriff, die sowohl externen als auch internen Lastenausgleich nutzt:
 
-![Load Balancer](./media/networking-overview/load-balancer.png)
+![Beispiel für Azure Load Balancer](./media/networking-overview/IC744147.png)
 
-## <a name="security"></a>Sicherheit
 
-Sie können Datenverkehr zu und von Azure-Ressourcen mithilfe der folgenden Optionen filtern:
+### <a name="applicationgateway"></a>Application Gateway
+Azure Application Gateway ist ein Lastenausgleich für Webdatenverkehr, mit dem Sie eingehenden Datenverkehr für Ihre Webanwendungen verwalten können. Es handelt sich um ein ADC (Application Delivery Controller) als Dienst und bietet verschiedene Lastenausgleichsfunktionen auf Schicht 7 für Ihre Anwendung. Weitere Informationen finden Sie unter [„Was ist Azure Application Gateway?“](../application-gateway/overview.md).
 
-- **Netzwerk**: Sie können Azure-Netzwerksicherheitsgruppen (NSGs) zum Filtern von eingehendem und ausgehendem Datenverkehr von Azure-Ressourcen implementieren. Jede NSG enthält mindestens eine Regel für eingehenden und ausgehenden Datenverkehr. Jede Regel gibt die Quell-IP-Adressen, die Ziel-IP-Adressen, den Port und das Protokoll an, anhand dessen der Datenverkehr gefiltert wird. NSGs können auf einzelne Subnetze und einzelnen virtuelle Computer angewendet werden. Weitere Informationen zu NSGs finden Sie im Artikel mit der [Übersicht über Netzwerksicherheitsgruppen](../virtual-network/security-overview.md?toc=%2fazure%2fnetworking%2ftoc.json).
-- **Anwendung**: Durch die Verwendung eines Application Gateway mit der Web Application Firewall können Sie Ihre Webanwendungen vor Sicherheitsrisiken und Exploits schützen. Typische Beispiele sind Angriffe durch Einschleusung von SQL-Befehlen, siteübergreifende Skripterstellung und falsch formatierte Header. Application Gateway filtert diesen Datenverkehr heraus und verhindert, dass er Ihre Webserver erreicht. Sie können konfigurieren, welche Regeln aktiviert werden sollen. Die Möglichkeit zum Konfigurieren von SSL-Aushandlungsrichtlinien wird bereitgestellt, damit bestimmte Richtlinien deaktiviert werden können. Weitere Informationen zur Web Application Firewall finden Sie im Artikel zur [Web Application Firewall](../application-gateway/application-gateway-web-application-firewall-overview.md?toc=%2fazure%2fnetworking%2ftoc.json).
+Das folgende Diagramm zeigt das auf URL-Pfaden basierende Routing mit Application Gateway:
 
-Wenn Sie eine Netzwerkfunktion benötigen, die von Azure nicht bereitgestellt wird, oder wenn Sie Netzwerkanwendungen verwenden möchten, die Sie lokal einsetzen, können Sie die Produkte in virtuellen Computern implementieren und mit Ihrem VNET verbinden. Der [Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/category/networking?page=1&subcategories=appliances) enthält mehrere verschiedene VMs mit vorkonfigurierten Netzwerkanwendungen, die Sie zurzeit verwenden können. Diese vorkonfigurierten VMs werden in der Regel als virtuelle Netzwerkgeräte bezeichnet. Virtuelle Netzwerkgeräte stehen mit Anwendungen wie Firewall- und WAN-Optimierung zur Verfügung.
+![Application Gateway-Beispiel](./media/networking-overview/figure1-720.png)
 
-## <a name="routing"></a>Routing
+## <a name="monitor"></a>Netzwerküberwachungsdienste
+Dieser Abschnitt beschreibt Netzwerkdienste in Azure, die Ihnen helfen, Ihre Netzwerkressourcen zu überwachen: Network Watcher, ExpressRoute Monitor, Azure Monitor und Virtual Network TAP.
 
-Azure erstellt Standardroutentabellen, über die Ressourcen, die mit einem beliebigen Subnetz in einem beliebigen VNET verbunden sind, kommunizieren können. Sie können eine oder beide der folgenden Routentypen implementieren, um die von Azure erstellten Standardrouten außer Kraft zu setzen:
-- **Benutzerdefiniert**: Sie können benutzerdefinierte Routingtabellen mit Routen erstellen, über die gesteuert wird, wohin der Datenverkehr für die einzelnen Subnetze geleitet wird. Weitere Informationen zu benutzerdefinierten Routen finden Sie im Artikel [Benutzerdefinierte Routen und IP-Weiterleitung](../virtual-network/virtual-networks-udr-overview.md?toc=%2fazure%2fnetworking%2ftoc.json).
-- **Border Gateway Protocol (BGP)** : Wenn Sie Ihr VNET über ein Azure VPN Gateway oder eine ExpressRoute-Verbindung mit dem lokalen Netzwerk verbinden, können Sie die BGP-Routen für Ihre VNets übernehmen. BGP ist das standardmäßige Routingprotokoll, mit dem im Internet üblicherweise Routing- und Erreichbarkeitsinformationen zwischen mehren Netzwerken ausgetauscht werden. Im Kontext virtueller Azure-Netzwerke können Azure VPN Gateway-Instanzen und Ihre lokalen VPN-Geräte (so genannte BGP-Peers oder Nachbarn) über BGP Routen austauschen, die beide Gateways über die Verfügbarkeit und Erreichbarkeit der Präfixe informieren, die die beteiligten Gateways oder Router durchlaufen. BGP ermöglicht auch Transitrouting zwischen mehreren Netzwerken. Hierzu werden von einem BGP-Gateway ermittelte Routen eines BGP-Peers an alle anderen BGP-Peers weitergegeben. Weitere Informationen zu BGP finden Sie im Artikel mit der [Übersicht über BGP mit Azure VPN Gateway-Instanzen](../vpn-gateway/vpn-gateway-bgp-overview.md?toc=%2fazure%2fnetworking%2ftoc.json).
+|Dienst|Gründe, die für die Verwendung sprechen:|Szenario|
+|---|---|---|
+|[Network Watcher](#networkwatcher)|Hilft bei der Überwachung und Fehlerbehebung von Konnektivitätsproblemen, hilft bei der Diagnose von VPN-, NSG- und Routingproblemen, erfasst Pakete auf Ihrer VM, automatisiert die Auslösung von Diagnosetools mit Azure Functions und Logic Apps.|<p>[Diagnostizieren eines Problems mit dem Filter für VM-Datenverkehr](../network-watcher/diagnose-vm-network-traffic-filtering-problem.md)</p><p>[Diagnostizieren von VM-Routingproblemen](../network-watcher/diagnose-vm-network-routing-problem.md)</p><p>[Überwachen der Kommunikation zwischen virtuellen Computern](../network-watcher/connection-monitor.md)</p><p>[Diagnostizieren von Problemen mit der Kommunikation zwischen Netzwerken](../network-watcher/diagnose-communication-problem-between-networks.md)</p><p>[Protokollieren des ein- und ausgehenden Netzwerkdatenverkehrs eines virtuellen Computers](../network-watcher/network-watcher-nsg-flow-logging-portal.md)</p>|
+|[ExpressRoute-Monitor](#expressroutemonitor)|Bietet Echtzeitüberwachung der Netzwerkleistung, -verfügbarkeit und -nutzung, hilft bei der automatischen Ermittlung der Netzwerktopologie, bietet eine schnellere Fehlerisolierung, erkennt transiente Netzwerkprobleme, hilft bei der Analyse historischer Leistungsmerkmale des Netzwerks, unterstützt Mehrfachabonnements.|<p>[Konfigurieren des Netzwerkleistungsmonitors für ExpressRoute](../expressroute/how-to-npm.md)</p><p>[ExpressRoute-Überwachung, Metriken und Warnungen](../expressroute/expressroute-monitoring-metrics-alerts.md)</p>|
+|[Azure Monitor](#azuremonitor)|Hilft Ihnen, die Leistung Ihrer Anwendungen zu verstehen, und erkennt proaktiv Probleme, die sich auf sie auswirken, und Ressourcen, von denen sie abhängen.|<p>[Traffic Manager-Metriken und -Warnungen](../traffic-manager/traffic-manager-metrics-alerts.md)</p><p>[Azure-Überwachungsdiganose für Load Balancer Standard](../load-balancer/load-balancer-standard-diagnostics.md)</p><p>[Überwachen von Azure Firewall-Protokollen und -Metriken](../firewall/tutorial-diagnostics.md)</p><p>[Überwachung und Protokollierung von Azure Web Application Firewall](../frontdoor/waf-front-door-monitor.md)</p>|
+|[TAP eines virtuellen Netzwerks](#vnettap)|Bietet kontinuierliches Streaming des Netzwerkverkehrs virtueller Maschinen zum Paketsammler, ermöglicht Verwaltungslösungen für Netzwerk- und Anwendungsleistung und Sicherheitsanalysetools.|[Erstellen einer VNet TAP-Ressource](../virtual-network/tutorial-tap-virtual-network-cli.md)|
+|
 
-## <a name="manageability"></a>Verwaltbarkeit
+### <a name="networkwatcher"></a>Network Watcher
+Mit Azure Network Watcher werden Tools für die Überwachung, Diagnose, Metrikanzeige und Aktivierung/Deaktivierung von Protokollen für Ressourcen in einem virtuellen Azure-Netzwerk bereitgestellt. Weitere Informationen finden Sie unter [„Was ist Network Watcher?“](../network-watcher/network-watcher-monitoring-overview.md?toc=%2fazure%2fnetworking%2ftoc.json).
+### <a name="expressroutemonitor"></a>ExpressRoute-Monitor
+Informationen darüber, wie Sie die ExpressRoute-Metriken zu Leitungen, Diagnoseprotokolle und Warnmeldungen anzeigen können, finden Sie unter [„ExpressRoute-Überwachung, Metriken und Warnungen“](../expressroute/expressroute-monitoring-metrics-alerts.md?toc=%2fazure%2fnetworking%2ftoc.json).
+### <a name="azuremonitor"></a>Azure Monitor
+Azure Monitor maximiert die Verfügbarkeit und Leistung Ihrer Anwendungen durch die Bereitstellung einer umfassenden Lösung für das Sammeln, Analysieren und Reagieren auf Telemetriedaten aus Ihren cloudbasierten und lokalen Umgebungen. Diese Lösung hilft Ihnen, die Leistung Ihrer Anwendungen zu verstehen, und erkennt proaktiv Probleme, die sich auf sie auswirken, und Ressourcen, von denen sie abhängen. Weitere Informationen finden Sie unter [„Azure Monitor-Übersicht“](../azure-monitor/overview.md?toc=%2fazure%2fnetworking%2ftoc.json).
+### <a name="vnettap"></a>TAP eines virtuellen Netzwerks
+Mit dem TAP (Terminal Access Point) für virtuelle Azure-Netzwerke können Sie Ihren VM-Netzwerkdatenverkehr kontinuierlich an einen Netzwerkpaketcollector oder ein Analysetool streamen. Der Collector oder das Analysetool wird von einem Partner für [virtuelle Netzwerkappliances](https://azure.microsoft.com/solutions/network-appliances/) bereitgestellt. 
 
-Azure bietet die folgenden Tools zum Überwachen und Verwalten von Netzwerken:
-- **Aktivitätsprotokolle**: Alle Azure-Ressourcen verfügen über Aktivitätsprotokolle, die Aufschluss über durchgeführte Vorgänge, den Status von Vorgängen sowie den Initiator des Vorgangs geben. Weitere Informationen zu Aktivitätsprotokollen finden Sie im Artikel mit der [Übersicht über Aktivitätsprotokolle](../azure-monitor/platform/activity-logs-overview.md?toc=%2fazure%2fnetworking%2ftoc.json).
-- **Diagnoseprotokolle:** Regelmäßige und spontane Ereignisse werden von Netzwerkressourcen erstellt, in Azure-Speicherkonten protokolliert und dann an einen Azure Event Hub oder an Azure Monitor-Protokolle gesendet. Diagnoseprotokolle geben Einblick in die Integrität einer Ressource. Diagnoseprotokolle werden für Load Balancer (mit Internetzugriff), Netzwerksicherheitsgruppen, Routen und Application Gateway bereitgestellt. Weitere Informationen zu Diagnoseprotokollen finden Sie im Artikel mit der [Übersicht über Diagnoseprotokolle](../azure-monitor/platform/diagnostic-logs-overview.md?toc=%2fazure%2fnetworking%2ftoc.json).
-- **Metriken**: Metriken sind Leistungsmessungen und -indikatoren, die über einen Zeitraum für Ressourcen gesammelt werden. Metriken können verwendet werden, um basierend auf Schwellenwerten Warnungen auszulösen. Zurzeit sind Metriken für Application Gateway verfügbar. Weitere Informationen zu Metriken finden Sie im Artikel mit der [Übersicht über Metriken](../monitoring-and-diagnostics/monitoring-overview-metrics.md?toc=%2fazure%2fnetworking%2ftoc.json).
-- **Problembehandlung:** Informationen zur Problembehandlung sind direkt über das Azure-Portal zugänglich. Diese Informationen unterstützen Sie bei der Diagnose gängiger Probleme mit ExpressRoute, VPN Gateway, Application Gateway, Netzwerksicherheitsprotokolle, Routen, DNS, Load Balancer und Traffic Manager.
-- **Rollenbasierte Zugriffssteuerung (RBAC)** : Steuern Sie mit der rollenbasierten Zugriffssteuerung (RBAC), wer Netzwerkressourcen erstellen und verwalten kann. Weitere Informationen zu RBAC finden Sie im Artikel [Erste Schritte mit RBAC](../role-based-access-control/overview.md?toc=%2fazure%2fnetworking%2ftoc.json). 
-- **Paketerfassung:** Der Azure Network Watcher-Dienst bietet die Möglichkeit, eine Paketerfassung auf einem virtuellen Computer über eine Erweiterung innerhalb des virtuellen Computers auszuführen. Diese Funktion ist für VMs unter Linux und Windows verfügbar. Weitere Informationen zur Paketerfassung finden Sie im Artikel mit der [Übersicht zur Paketerfassung](../network-watcher/network-watcher-packet-capture-overview.md?toc=%2fazure%2fnetworking%2ftoc.json).
-- **Überprüfen von IP-Datenflüssen:** Network Watcher ermöglicht Ihnen die Überprüfung von IP-Datenflüssen zwischen einem virtuellen Azure-Computer und einer Remoteressource, um zu ermitteln, ob die Pakete zugelassen oder abgelehnt werden. Diese Funktion bietet Administratoren die Möglichkeit, Konnektivitätsprobleme schnell zu diagnostizieren. Weitere Informationen zum Überprüfen von IP-Flüssen finden Sie im Artikel mit der [Übersicht zur IP-Flussüberprüfung](../network-watcher/network-watcher-ip-flow-verify-overview.md?toc=%2fazure%2fnetworking%2ftoc.json).
-- **Behandeln von VPN-Konnektivitätsproblemen**: Die VPN-Problembehandlungsfunktion von Network Watcher bietet die Möglichkeit, eine Verbindung oder ein Gateway abzufragen und die Integrität der Ressourcen zu überprüfen. Weitere Informationen zur Problembehandlung von VPN-Verbindungen finden Sie im Artikel mit der [Übersicht über die Problembehandlung der VPN-Konnektivität](../network-watcher/network-watcher-troubleshoot-overview.md?toc=%2fazure%2fnetworking%2ftoc.json).
-- **Anzeigen der Netzwerktopologie**: Zeigen Sie mit Network Watcher eine grafische Darstellung der Netzwerkressourcen in einem VNET an. Weitere Informationen zum Anzeigen der Netzwerktopologie finden Sie im Artikel mit der [Übersicht über die Topologie](../network-watcher/network-watcher-topology-overview.md?toc=%2fazure%2fnetworking%2ftoc.json).
+In der folgenden Abbildung wird gezeigt, wie der TAP des virtuellen Netzwerks funktioniert. 
 
-## <a name="tools"></a>Bereitstellungs- und Konfigurationstools
+![Funktionsweise eines TAP eines virtuellen Netzwerks](./media/networking-overview/virtual-network-tap-architecture.png)
 
-Sie können Azure-Netzwerkressourcen mit einem der folgenden Tools bereitstellen und konfigurieren:
-
-- **Azure-Portal:** Hierbei handelt es sich um eine grafische Benutzeroberfläche, die in einem Browser ausgeführt wird. Öffnen Sie das [Azure-Portal](https://portal.azure.com).
-- **Azure PowerShell:** Befehlszeilentools zum Verwalten von Azure über Windows-Computer. Weitere Informationen zu Azure PowerShell finden Sie im Artikel mit der [Übersicht über Azure PowerShell](/powershell/azure/overview?toc=%2fazure%2fnetworking%2ftoc.json).
-- **Azure-Befehlszeilenschnittstelle (CLI)** : Befehlszeilentools zum Verwalten von Azure über Linux-, macOS- oder Windows-Computer. Weitere Informationen zur Azure CLI finden Sie im Artikel mit der [Übersicht über die Azure CLI](/cli/azure/get-started-with-azure-cli?toc=%2fazure%2fnetworking%2ftoc.json).
-- **Azure Resource Manager-Vorlagen**: Hierbei handelt es sich um Dateien (im JSON-Format), mit der Infrastruktur und Konfiguration der Azure-Lösung definiert werden. Mit einer Vorlage können Sie die Lösung während ihres Lebenszyklus wiederholt bereitstellen und sicher sein, dass Ihre Ressourcen einheitlich bereitgestellt werden. Weitere Informationen zum Erstellen von Vorlagen finden Sie im Artikel [Bewährte Methoden für das Erstellen von Vorlagen](../azure-resource-manager/resource-manager-template-best-practices.md?toc=%2fazure%2fnetworking%2ftoc.json). Vorlagen können über das Azure-Portal, die CLI oder PowerShell bereitgestellt werden. Um sofort mit Vorlagen loszulegen, stellen Sie eine der zahlreichen vorkonfigurierten Vorlagen in der Bibliothek mit [Azure-Schnellstartvorlagen](https://azure.microsoft.com/resources/templates/?term=network) bereit. 
-
-## <a name="pricing"></a>Preise
-
-Einige Azure-Netzwerkdienste sind gebührenpflichtig, andere hingegen kostenlos. Weitere Informationen finden Sie auf den Seiten mit den Preisen von [Virtual Network](https://azure.microsoft.com/pricing/details/virtual-network), [VPN Gateway](https://azure.microsoft.com/pricing/details/vpn-gateway), [Application Gateway](https://azure.microsoft.com/pricing/details/application-gateway/), [Load Balancer](https://azure.microsoft.com/pricing/details/load-balancer), [Network Watcher](https://azure.microsoft.com/pricing/details/network-watcher), [DNS](https://azure.microsoft.com/pricing/details/dns), [Traffic Manager](https://azure.microsoft.com/pricing/details/traffic-manager) und [ExpressRoute](https://azure.microsoft.com/pricing/details/expressroute).
+Weitere Informationen finden Sie unter [„Was ist der TAP eines virtuelles Netzwerks?“](../virtual-network/virtual-network-tap-overview.md).
 
 ## <a name="next-steps"></a>Nächste Schritte
 
 - Erstellen Sie Ihr erstes VNet, und verbinden Sie einige VMs damit, indem Sie die Schritte des Artikels [Erstellen Ihres ersten virtuellen Netzwerks](../virtual-network/quick-create-portal.md?toc=%2fazure%2fnetworking%2ftoc.json) ausführen.
-- Verbinden Sie Ihren Computer über eine Point-to-Site-Verbindung mit einem VNET, indem Sie die Schritte im Artikel [Konfigurieren einer Point-to-Site-Verbindung](../vpn-gateway/vpn-gateway-howto-point-to-site-resource-manager-portal.md?toc=%2fazure%2fnetworking%2ftoc.json) ausführen.
+- Verbinden Sie Ihren Computer über eine Point-to-Site-Verbindung mit einem VNET, indem Sie die Schritte im Artikel [„Konfigurieren einer Point-to-Site-Verbindung“](../vpn-gateway/vpn-gateway-howto-point-to-site-resource-manager-portal.md?toc=%2fazure%2fnetworking%2ftoc.json) ausführen.
 - Führen Sie einen Lastenausgleich des Internetdatenverkehrs zu öffentlichen Servern durch, indem Sie die Schritte im Artikel [Erstellen eines Load Balancers mit Internetzugriff](../load-balancer/load-balancer-get-started-internet-portal.md?toc=%2fazure%2fnetworking%2ftoc.json) ausführen.
+ 
+ 
+   
