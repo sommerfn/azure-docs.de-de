@@ -593,9 +593,9 @@ Beim Kopieren von Daten aus bzw. nach Azure SQL Data Warehouse werden die folgen
 | binary                                | Byte[]                         |
 | bit                                   | Boolean                        |
 | char                                  | String, Char[]                 |
-| date                                  | DateTime                       |
-| DateTime                              | DateTime                       |
-| datetime2                             | DateTime                       |
+| date                                  | Datetime                       |
+| Datetime                              | Datetime                       |
+| datetime2                             | Datetime                       |
 | Datetimeoffset                        | DateTimeOffset                 |
 | Decimal                               | Decimal                        |
 | FILESTREAM attribute (varbinary(max)) | Byte[]                         |
@@ -608,7 +608,7 @@ Beim Kopieren von Daten aus bzw. nach Azure SQL Data Warehouse werden die folgen
 | nvarchar                              | String, Char[]                 |
 | real                                  | Single                         |
 | rowversion                            | Byte[]                         |
-| smalldatetime                         | DateTime                       |
+| smalldatetime                         | Datetime                       |
 | smallint                              | Int16                          |
 | smallmoney                            | Decimal                        |
 | time                                  | TimeSpan                       |
