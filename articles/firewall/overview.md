@@ -51,7 +51,7 @@ Azure Firewall kann entsprechend Ihren Anforderungen zentral hochskaliert werden
 
 ## <a name="application-fqdn-filtering-rules"></a>FQDN-Anwendungsfilterregeln
 
-Sie können den ausgehenden HTTP/S-Datenverkehr oder Azure SQL-Datenverkehr (Vorschau) auf eine angegebene Liste vollqualifizierter Domänennamen (FQDNs) einschließlich Platzhalter beschränken. Dieses Feature erfordert keine SSL-Beendigung.
+Sie können den ausgehenden HTTP/S-Datenverkehr oder Azure SQL-Datenverkehr (Vorschau) auf eine angegebene Liste vollqualifizierter Domänennamen (FQDNs) einschließlich Platzhalter beschränken. Dieses Feature erfordert keine SSL-Terminierung.
 
 ## <a name="network-traffic-filtering-rules"></a>Filterregeln für den Netzwerkdatenverkehr
 

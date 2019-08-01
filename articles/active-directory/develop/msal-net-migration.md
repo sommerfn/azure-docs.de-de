@@ -17,12 +17,12 @@ ms.author: jmprieur
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f9be13ac22e6eda32668d635032ebcccf417b6c7
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: 3ea45056b0112769105ddd997ce1abc79f59679f
+ms.sourcegitcommit: e3b0fb00b27e6d2696acf0b73c6ba05b74efcd85
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65785217"
+ms.lasthandoff: 07/30/2019
+ms.locfileid: "68663342"
 ---
 # <a name="migrating-applications-to-msalnet"></a>Migrieren von Anwendungen zu MSAL.NET
 
@@ -55,7 +55,7 @@ In MSAL.NET kann auch auf v1.0-Ressourcen zugegriffen werden. Ausführliche Info
 
 - ADAL.NET nutzt [AuthenticationContext](https://github.com/AzureAD/azure-activedirectory-library-for-dotnet/wiki/AuthenticationContext:-the-connection-to-Azure-AD) zur Darstellung Ihrer Verbindung mit dem Sicherheitstokendienst oder Autorisierungsserver durch eine Autorität. MSAL.NET wurde im Gegensatz dazu mit dem Fokus auf [Clientanwendungen](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet/wiki/Client-Applications) konzipiert und stellt mit `PublicClientApplication` und `ConfidentialClientApplication` zwei separate Klassen bereit.
 
-- Abrufen von Token: ADAL.NET und MSAL.NET verfügen über dieselben Authentifizierungsaufrufe (`AcquireTokenAsync` und `AcquireTokenSilentAsync` für ADAL.NET sowie `AqquireTokenInteractive` und `AcquireTokenSilent` in MSAL.NET). Allerdings sind unterschiedliche Parameter erforderlich. Ein Unterschied besteht darin, dass Sie in MSAL.NET nicht mehr die `ClientID` Ihrer Anwendung in jedem AcquireTokenXX-Aufruf übergeben müssen. Tatsächlich wird die `ClientID` lediglich einmal beim Erstellen von `IPublicClientApplication` oder `IConfidentialClientApplication` festgelegt.
+- Abrufen von Token: ADAL.NET und MSAL.NET verfügen über dieselben Authentifizierungsaufrufe (`AcquireTokenAsync` und `AcquireTokenSilentAsync` für ADAL.NET sowie `AcquireTokenInteractive` und `AcquireTokenSilent` in MSAL.NET). Allerdings sind unterschiedliche Parameter erforderlich. Ein Unterschied besteht darin, dass Sie in MSAL.NET nicht mehr die `ClientID` Ihrer Anwendung in jedem AcquireTokenXX-Aufruf übergeben müssen. Tatsächlich wird die `ClientID` lediglich einmal beim Erstellen von `IPublicClientApplication` oder `IConfidentialClientApplication` festgelegt.
 
 ### <a name="iaccount-not-iuser"></a>IAccount im Gegensatz zu IUser
 
@@ -139,9 +139,9 @@ In MSAL.NET stellt der Tokencache eine versiegelte Klasse dar und kann daher nic
 
 ## <a name="signification-of-the-common-authority"></a>Bedeutung der allgemeinen Autorität
 
-Wenn Sie in v1.0 die allgemeine Autorität (https://login.microsoftonline.com/common) verwenden, können sich Benutzer (für jede Organisation) mit einem beliebigen AAD-Konto anmelden. Siehe das Thema zur [Autoritätsüberprüfung in ADAL.NET](https://github.com/AzureAD/azure-activedirectory-library-for-dotnet/wiki/AuthenticationContext:-the-connection-to-Azure-AD#authority-validation).
+Wenn Sie in v1.0 die allgemeine Autorität (https://login.microsoftonline.com/common ) verwenden, können sich Benutzer (für jede Organisation) mit einem beliebigen AAD-Konto anmelden. Siehe das Thema zur [Autoritätsüberprüfung in ADAL.NET](https://github.com/AzureAD/azure-activedirectory-library-for-dotnet/wiki/AuthenticationContext:-the-connection-to-Azure-AD#authority-validation).
 
-Bei Verwendung dieser Autorität (https://login.microsoftonline.com/common) in v2.0 geben Sie Benutzern die Möglichkeit, sich mit einer beliebigen AAD-Organisation oder einem persönlichen Microsoft-Konto (MSA) anzumelden. Wenn Sie in MSAL.NET Anmeldungen auf ein beliebiges AAD-Konto beschränken möchten (dasselbe Verhalten wie in ADAL.NET), müssen Sie https://login.microsoftonline.com/organizations verwenden. Ausführliche Informationen finden Sie unter dem `authority`-Parameter in [öffentlichen Clientanwendungen](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet/wiki/Client-Applications#publicclientapplication).
+Bei Verwendung dieser Autorität (https://login.microsoftonline.com/common ) in v2.0 geben Sie Benutzern die Möglichkeit, sich mit einer beliebigen AAD-Organisation oder einem persönlichen Microsoft-Konto (MSA) anzumelden. Wenn Sie in MSAL.NET Anmeldungen auf ein beliebiges AAD-Konto beschränken möchten (dasselbe Verhalten wie in ADAL.NET), müssen Sie https://login.microsoftonline.com/organizations verwenden. Ausführliche Informationen finden Sie unter dem `authority`-Parameter in [öffentlichen Clientanwendungen](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet/wiki/Client-Applications#publicclientapplication).
 
 ## <a name="v10-and-v20-tokens"></a>v1.0- und v2.0-Token
 
@@ -161,7 +161,7 @@ OAuth2-Berechtigungen sind Berechtigungsbereiche, die eine v1.0-Web-API-Anwendun
 
 ### <a name="scopes-to-request-access-to-specific-oauth2-permissions-of-a-v10-application"></a>Geltungsbereiche, mit denen der Zugriff auf bestimmte OAuth2-Berechtigungen einer v1.0-Anwendung angefordert wird
 
-Wenn Sie Token für bestimmte Geltungsbereiche einer v1.0-Anwendung abrufen möchten (z. B. den AAD-Graph unter https://graph.windows.net), müssten Sie `scopes` erstellen, indem Sie einen gewünschten Ressourcenbezeichner mit einer gewünschten OAuth2-Berechtigung für die jeweilige Ressource verketten.
+Wenn Sie Token für bestimmte Geltungsbereiche einer v1.0-Anwendung abrufen möchten (z. B. den AAD-Graph unter https://graph.windows.net) , müssten Sie `scopes` erstellen, indem Sie einen gewünschten Ressourcenbezeichner mit einer gewünschten OAuth2-Berechtigung für die jeweilige Ressource verketten.
 
 Beispiel: Um im Namen des Benutzers auf eine v1.0-Web-API zuzugreifen, deren App-ID-URI `ResourceId` lautet, verwenden Sie folgenden Code:
 
@@ -192,7 +192,7 @@ Dies liegt daran, dass die Resource Manager-API einen Schrägstrich im `aud`-Ans
 Die von Azure AD verwendete Logik lautet wie folgt:
 - Für einen ADAL (v1.0)-Endpunkt mit einem v1.0-Zugriffstoken (einzige Möglichkeit): aud=resource
 - Für einen MSAL (v2.0)-Endpunkt, der ein Zugriffstoken für eine Ressource abfragt, die v2.0-Token akzeptiert: aud=resource.AppId
-- Für einen MSAL (v2.0)-Endpunkt, der ein Zugriffstoken für eine Ressource abfragt, die ein v1.0-Zugriffstoken akzeptiert (wie im Fall oben), analysiert Azure AD die gewünschte Zielgruppe aus dem angeforderten Geltungsbereich, indem alles vor dem letzten Schrägstrich als Ressourcenbezeichner interpretiert wird. Wenn „https:\//database.windows.net“ die Zielgruppe „https://database.windows.net/“ erwartet, müssen Sie daher den Geltungsbereich „https:\//database.windows.net//.default“ anfordern. Siehe auch Problem [747](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet/issues/747): Resource url's trailing slash is omitted, which caused sql auth failure #747 (Bei der URL der Ressource wurde der nachgestellte Schrägstrich entfernt, wodurch bei der SQL-Authentifizierung Fehler 747 aufgetreten ist.)
+- Für einen MSAL (v2.0)-Endpunkt, der ein Zugriffstoken für eine Ressource abfragt, die ein v1.0-Zugriffstoken akzeptiert (wie im Fall oben), analysiert Azure AD die gewünschte Zielgruppe aus dem angeforderten Geltungsbereich, indem alles vor dem letzten Schrägstrich als Ressourcenbezeichner interpretiert wird. Wenn „https:\//database.windows.net“ die Zielgruppe „https://database.windows.net/ “ erwartet, müssen Sie daher den Geltungsbereich „https:\/ /database.windows.net//.default“ anfordern. Siehe auch Problem [747](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet/issues/747): Resource url's trailing slash is omitted, which caused sql auth failure #747 (Bei der URL der Ressource wurde der nachgestellte Schrägstrich entfernt, wodurch bei der SQL-Authentifizierung Fehler 747 aufgetreten ist.)
 
 
 ### <a name="scopes-to-request-access-to-all-the-permissions-of-a-v10-application"></a>Geltungsbereiche, mit denen der Zugriff auf alle Berechtigungen einer v1.0-Anwendung angefordert wird
