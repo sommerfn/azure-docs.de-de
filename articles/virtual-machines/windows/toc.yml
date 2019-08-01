@@ -108,6 +108,8 @@
           href: compute-benchmark-scores.md
         - name: vCPU-Kontingente
           href: quotas.md
+    - name: Dedizierte Hosts
+      href: dedicated-hosts.md
     - name: Wartung und Updates
       href: maintenance-and-updates.md
     - name: Datenträgerspeicher
@@ -146,6 +148,12 @@
   items:
     - name: Virtuelle Computer erstellen
       items:
+        - name: Verwenden dedizierter Hosts
+          items:
+            - name: PowerShell
+              href: dedicated-hosts-powershell.md
+            - name: Portal
+              href: dedicated-hosts-portal.md
         - name: 'Verwenden von C#'
           href: csharp.md
         - name: Verwenden eines speziellen Datenträgers

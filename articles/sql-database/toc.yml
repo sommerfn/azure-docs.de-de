@@ -175,7 +175,7 @@
           href: sql-database-service-tier-hyperscale-faq.md
     - name: Einzeldatenbanken
       items:
-        - name: Übersicht über einzelne Datenbanken
+        - name: Dokumentation zu Einzeldatenbanken
           href: sql-database-single-index.yml
         - name: Funktionen von Einzeldatenbanken
           href: sql-database-single-database.md
@@ -215,7 +215,7 @@
           href: sql-database-elastic-pool-manage.md
     - name: Verwaltete Instanzen
       items:
-        - name: Übersicht über verwaltete Instanzen
+        - name: Dokumentation zu verwalteten Instanzen
           href: sql-database-managed-instance-index.yml
         - name: 'Verwaltete Instanz: Funktionen'
           href: sql-database-managed-instance.md
@@ -235,7 +235,7 @@
           href: sql-database-managed-instance-public-endpoint-securely.md
     - name: PaaS (Platform-as-a-Service)
       items:
-        - name: Übersicht über PaaS (Platform-as-a-Service)
+        - name: PaaS-Dokumentation (Platform-as-a-Service)
           href: sql-database-paas.yml
         - name: Geschäftskontinuität
           href: sql-database-business-continuity.md
@@ -324,7 +324,7 @@
           href: sql-database-feature-restrictions.md
     - name: Skalierbarkeit
       items:
-        - name: Übersicht über Skalierbarkeit
+        - name: Dokumentation zur Skalierbarkeit
           href: sql-database-scalability-index.yml
         - name: Zentrales Hoch-/Herunterskalieren
           href: sql-database-scale-resources.md
@@ -354,7 +354,7 @@
           href: sql-database-elastic-transactions-overview.md
     - name: Überwachung und Optimierung
       items:
-        - name: 'Überwachung und Optimierung: Übersicht'
+        - name: Dokumentation zu Überwachung und Optimierung
           href: sql-database-monitoring-tuning-index.yml
         - name: Überwachen und Optimieren der Datenbankleistung
           href: sql-database-monitor-tune-overview.md
@@ -378,7 +378,7 @@
               href: sql-database-advisor.md
     - name: Datenbankfunktionen
       items:
-        - name: Übersicht
+        - name: Dokumentation zu den Features von SQL-Datenbank
           href: sql-database-features-index.yml
         - name: Vergleich von SQL-Funktionen
           href: sql-database-features.md
