@@ -344,7 +344,7 @@
           href: cognitive-search-skill-textsplit.md
         - name: Stimmung
           href: cognitive-search-skill-sentiment.md
-        - name: Textübersetzung (Vorschauversion)
+        - name: Textübersetzung
           href: cognitive-search-skill-text-translation.md
         - name: Bildanalyse
           href: cognitive-search-skill-image-analysis.md

@@ -95,7 +95,7 @@ Ein AD FS-Server muss bereits eingerichtet und funktionsfähig sein, bevor Sie m
 
    - **Name der Fallregel** : Erstellen einer E-Mail-Transformationsregel 
    - **Eingehnder Anspruchstyp**: E-Mail-Adresse 
-   - **Ausgehnder Anspruchstyp**: Namens-ID 
+   - **Ausgehender Anspruchstyp**: Namens-ID 
    - **Ausgehendes Namens-ID-Format**: Beständiger Bezeichner 
    - Wählen Sie **Durchlauf aller Anspruchswerte**.
 
@@ -154,4 +154,4 @@ Ein AD FS-Server muss bereits eingerichtet und funktionsfähig sein, bevor Sie m
 1.  Klicken Sie auf **OK**. Der AD FS-Server ist nun für den direkten Verbund mit WS-Fed konfiguriert.
 
 ## <a name="next-steps"></a>Nächste Schritte
-hallo ich bin 
+Als Nächstes [konfigurieren Sie den direkten Verbund in Azure AD](direct-federation.md#step-2-configure-direct-federation-in-azure-ad) entweder im Azure AD-Portal oder mit PowerShell. 
