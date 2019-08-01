@@ -5,15 +5,15 @@ author: dominicbetts
 ms.author: dobett
 ms.date: 11/26/2018
 ms.topic: conceptual
-ms.service: iot-industrialiot
+ms.service: industrial-iot
 services: iot-industrialiot
 manager: philmea
-ms.openlocfilehash: 6eeca062bdc17ec207910b9ba4aa8cea4048f849
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: fc70d140479be100e6aa52cf8105d3e466342cd7
+ms.sourcegitcommit: af58483a9c574a10edc546f2737939a93af87b73
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67080500"
+ms.lasthandoff: 07/17/2019
+ms.locfileid: "68302662"
 ---
 # <a name="deploy-opc-twin-to-an-existing-project"></a>Bereitstellen von OPC Twin in einem vorhandenen Projekt
 
@@ -21,7 +21,7 @@ Das OPC Twin-Modul wird auf IoT Edge ausgeführt und stellt mehrere Edge-Dienste
 
 Der OPC Twin-Microservice ermöglicht die Kommunikation zwischen Bedienern und OPC UA-Servergeräten im Fertigungsbereich über ein OPC Twin IoT Edge-Modul. Der Microservice stellt OPC UA-Dienste („Durchsuchen“, „Lesen“, „Schreiben“ und „Ausführen“) über seine REST-API zur Verfügung. 
 
-Der Mikroservice der OPC UA-Geräteregistrierung ermöglicht den Zugriff auf registrierte OPC UA-Anwendungen und deren Endpunkte. Bediener und Administratoren können neue OPC UA-Anwendungen registrieren und deren Registrierung aufheben sowie die vorhandenen OPC UA-Anwendungen einschließlich ihrer Endpunkte durchsuchen. Zusätzlich zur Verwaltung von Anwendungen und Endpunkten katalogisiert der Registrierungsdienst auch registrierte OPC Twin IoT Edge-Module. Die Dienst-API ermöglicht die Steuerung der Funktionalität des Edge-Moduls, z. B. das Starten oder Beenden der Servererkennung (Überprüfungsdienste) oder das Aktivieren neuer Endpunktzwillinge, auf die über den OPC Twin-Microservice zugegriffen werden kann.
+Der Mikroservice der OPC UA-Geräteregistrierung ermöglicht den Zugriff auf registrierte OPC UA-Anwendungen und deren Endpunkte. Bediener und Administratoren können neue OPC UA-Anwendungen registrieren und deren Registrierung aufheben sowie die vorhandenen OPC UA-Anwendungen einschließlich ihrer Endpunkte durchsuchen. Zusätzlich zur Verwaltung von Anwendungen und Endpunkten katalogisiert der Registrierungsdienst auch registrierte OPC Twin IoT Edge-Module. Die Dienst-API ermöglicht die Steuerung der Funktionalität des Edge-Moduls, z.B. das Starten oder Beenden der Servererkennung (Überprüfungsdienste) oder das Aktivieren neuer Endpunktzwillinge, auf die über den OPC Twin-Microservice zugegriffen werden kann.
 
 Der Modulkern ist die Supervisoridentität. Der Supervisor verwaltet den Endpunktzwilling, der den OPC UA-Serverendpunkten entspricht, die über die entsprechende API der OPC UA-Registrierung aktiviert werden. Diese Endpunktzwillinge übersetzen OPC UA JSON, das vom OPC Twin-Microservice in der Cloud empfangen wurde, in binäre OPC UA-Nachrichten, die über einen zustandsbehafteten sicheren Kanal an den verwalteten Endpunkt gesendet werden. Der Supervisor stellt auch Erkennungsdienste bereit, die Geräteerkennungsereignisse zur Verarbeitung an den OPC UA Device Onboarding-Dienst senden, wenn diese Ereignisse zu Aktualisierungen der OPC UA-Registrierung führen.  In diesem Artikel erfahren Sie, wie Sie das OPC Twin-Modul in einem bestehenden Projekt bereitstellen können.
 
@@ -30,7 +30,7 @@ Der Modulkern ist die Supervisoridentität. Der Supervisor verwaltet den Endpunk
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-Stellen Sie sicher, dass die PowerShell- und [Azure PowerShell](https://docs.microsoft.com/powershell/azure/install-az-ps)-Erweiterungen installiert sind. Wenn dieser Schritt noch nicht erfolgt ist, klonen Sie dieses GitHub-Repository. Führen Sie die folgenden Befehle in PowerShell aus:
+Stellen Sie sicher, dass die PowerShell- und [AzureRM PowerShell](https://docs.microsoft.com/powershell/azure/azurerm/install-azurerm-ps)-Erweiterungen installiert sind. Wenn dieser Schritt noch nicht erfolgt ist, klonen Sie dieses GitHub-Repository. Führen Sie die folgenden Befehle in PowerShell aus:
 
 ```powershell
 git clone --recursive https://github.com/Azure/azure-iiot-components.git
@@ -52,7 +52,7 @@ cd azure-iiot-components
 
    Die Ausgabe enthält die URL des öffentlichen Endpunkts. 
 
-3. Nachdem das Skript erfolgreich abgeschlossen wurde, wählen Sie aus, ob die ENV-Datei gespeichert werden soll.  Sie benötigen die ENV-Umgebungsdatei, wenn Sie mit Tools wie der Konsole eine Verbindung mit dem Cloudendpunkt herstellen oder Module für Entwicklung und Debugging bereitstellen möchten.
+3. Nachdem das Skript erfolgreich abgeschlossen wurde, wählen Sie aus, ob die `.env`-Datei gespeichert werden soll.  Sie benötigen die `.env`-Umgebungsdatei, wenn Sie mit Tools wie der Konsole eine Verbindung mit dem Cloudendpunkt herstellen oder Module für Entwicklung und Debugging bereitstellen möchten.
 
 ## <a name="troubleshooting-deployment-failures"></a>Beheben von Problemen bei der Bereitstellung
 

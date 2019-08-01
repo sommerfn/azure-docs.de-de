@@ -5,20 +5,20 @@ author: ajlam
 ms.author: andrela
 ms.service: mariadb
 ms.topic: conceptual
-ms.date: 06/10/2019
-ms.openlocfilehash: 8abe257090b5159053a37350c9e24cc27073679b
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.date: 07/12/2019
+ms.openlocfilehash: e6bbe15727a6f989d8c16c67591d39d7870d5708
+ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67081747"
+ms.lasthandoff: 07/15/2019
+ms.locfileid: "67874891"
 ---
 # <a name="read-replicas-in-azure-database-for-mariadb"></a>Lesereplikate in Azure Database for MariaDB
 
-Mithilfe des Lesereplikatfeatures können Sie Daten von einem Azure Database for MariaDB-Server auf einen schreibgeschützten Server replizieren. Sie können vom Masterserver auf bis zu fünf Replikate innerhalb derselben Region replizieren. Replikate werden asynchron mithilfe des auf der Position der binären Protokolldatei (binlog) basierenden Replikationsverfahrens der MariaDB-Engine und der globalen Transaktions-ID (GTID) aktualisiert. Weitere Informationen zur binlog-Replikation finden Sie [Übersicht über die binlog Replikation](https://mariadb.com/kb/en/library/replication-overview/).
+Mithilfe des Lesereplikatfeatures können Sie Daten von einem Azure Database for MariaDB-Server auf einen schreibgeschützten Server replizieren. Sie können vom Masterserver bis zu fünf Replikate replizieren. Replikate werden asynchron mithilfe des auf der Position der binären Protokolldatei (binlog) basierenden Replikationsverfahrens der MariaDB-Engine und der globalen Transaktions-ID (GTID) aktualisiert. Weitere Informationen zur binlog-Replikation finden Sie [Übersicht über die binlog Replikation](https://mariadb.com/kb/en/library/replication-overview/).
 
 > [!IMPORTANT]
-> Die Lesereplikation in derselben Region befindet sich derzeit in der öffentlichen Vorschauversion.
+> Sie können ein Lesereplikat in derselben Region wie Ihren Masterserver oder in einer anderen beliebigen Azure-Region erstellen. Lesereplikate (in derselben Region und regionsübergreifend) sind zurzeit als öffentliche Vorschauversion verfügbar.
 
 Replikate sind neue Server, die Sie ähnlich wie normale Azure Database for MariaDB-Server verwalten. Für jedes Lesereplikat werden Ihnen die bereitgestellten Computeressourcen in Form von virtuellen Kernen sowie der Speicher in GB/Monat in Rechnung gestellt.
 

@@ -7,12 +7,12 @@ ms.service: marketplace
 ms.topic: conceptual
 ms.date: 09/13/2018
 ms.author: pabutler
-ms.openlocfilehash: dde3e04dc8f30ea5657139d50dd4456e5dfb57c2
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: e398b43e679fb6420c2256e77d34359ae537ac1c
+ms.sourcegitcommit: 10251d2a134c37c00f0ec10e0da4a3dffa436fb3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64935725"
+ms.lasthandoff: 07/13/2019
+ms.locfileid: "67868741"
 ---
 <a name="pricing-for-virtual-machine-offers"></a>Preise für VM-Angebote
 ==================================
@@ -34,21 +34,31 @@ Die Preise sind für jede Kombination aus Region und Kern unterschiedlich. Jede 
             "currency": "USD",
                 "individually": 
                 {
-                    "sharedcore": 2,
+                    "sharedcore": 1,
                     "1core": 2,
-                    "2core": 3,
-                    "4core": 4,
-                    "6core": 5,
+                    "2core": 2,
+                    "4core": 2,
+                    "6core": 2,
                     "8core": 2,
+                    "10core": 4,
                     "12core": 4,
                     "16core": 4,
                     "20core": 4,
                     "24core": 4,
-                    "32core": 4,
-                    "36core": 4,
-                    "40core": 4,
-                    "64core": 4,
-                    "128core": 4
+                    "32core": 6,
+                    "36core": 6,
+                    "40core": 6,
+                    "44core": 6,
+                    "48core": 10,
+                    "60core": 10,
+                    "64core": 10,
+                    "72core": 10,
+                    "80core": 12,
+                    "96core": 12,
+                    "120core": 15,
+                    "128core": 15,
+                    "208core": 20,
+                    "416core": 30
                 }
         }
         ...
@@ -90,6 +100,12 @@ Der Herausgeber kann auch seine Preistabelle an einen temporären Speicherort ho
      }
 ```
 
+<a name="new-core-sizes-added-on-722019"></a>Neue Kerngrößen wurden am 2.7.2019 hinzugefügt.
+---------------------------
+
+VM-Herausgeber wurden am 2. Juli 2019 über neue Preise für neue Größen virtueller Azure-Computer (basierend auf der Anzahl der Kerne) benachrichtigt.  Die neuen Preise gelten für die Kerngrößen 10, 44, 48, 60, 120, 208 und 416.  Für vorhandene VM-Angebote wurden die neue Preise für diese Kerngrößen basierend auf den aktuellen Preisen automatisch berechnet.  Herausgeber haben bis zum 1. August 2019 Zeit, die zusätzlichen Preise zu überprüfen und alle gewünschten Änderungen vorzunehmen.  Nach diesem Datum gelten die automatisch berechneten Preise für diese neuen Kerngrößen, wenn sie nicht bereits vom Herausgeber erneut veröffentlicht wurden.
+
+
 <a name="regions"></a>Regions
 -------
 
@@ -128,7 +144,7 @@ Die folgende Tabelle zeigt die verschiedenen Regionen, die Sie für angepasste K
 | HU         | Ungarn              | HUF               |
 | IS         | Island              | ISK               |
 | IN         | Indien                | INR               |
-| ID         | Indonesien            | IDR               |
+| id         | Indonesien            | IDR               |
 | IE         | Irland              | EUR               |
 | IL         | Israel               | ILS               |
 | IT         | Italien                | EUR               |

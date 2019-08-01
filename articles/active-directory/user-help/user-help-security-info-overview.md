@@ -12,12 +12,12 @@ ms.topic: overview
 ms.date: 05/08/2019
 ms.author: lizross
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a8a200df2f474cead197a0e74ae7e27927f814d2
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.openlocfilehash: d981ad0f02e9cef31a01a9d407de22cf63352c01
+ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/27/2019
-ms.locfileid: "66242274"
+ms.lasthandoff: 07/22/2019
+ms.locfileid: "68382210"
 ---
 # <a name="security-info-preview-overview"></a>Übersicht über die Sicherheitsinformation (Vorschau)
 
@@ -32,13 +32,14 @@ Auf der Seite **Sicherheitsinformationen** können Sie Ihre Methoden für die zw
 
 Ausführliche Informationen und Anleitungen zum Hinzufügen, Aktualisieren und Löschen Ihrer Sicherheitsinformationen finden Sie in den folgenden Artikeln (abhängig davon, welche Methode Sie verwenden möchten):
 
-|Artikel |BESCHREIBUNG |
-|------|------------|
-|[Einrichten Ihrer Sicherheitsinformationen (Vorschauversion) über die Aufforderung auf der Anmeldeseite](security-info-setup-signin.md)| Anleitung zum Einrichten Ihrer Sicherheitsinformationen, wenn Sie auf der Anmeldeseite dazu aufgefordert werden. Diese Aufforderung wird nur angezeigt, wenn Sie die von Ihrer Organisation geforderten Sicherheitsinformationen noch nicht eingerichtet haben. Sollte die Aufforderung nicht angezeigt werden, können Sie stattdessen einen der anderen Artikel in dieser Tabelle verwenden, um Überprüfungsmethoden zu ändern und hinzuzufügen.|
-|[Einrichten der Sicherheitsinformationen (Vorschau) zur Verwendung einer Authentifikator-App](security-info-setup-auth-app.md)| Anleitung zum Einrichten der Microsoft Authenticator-App als Überprüfungsmethode.|
-|[Einrichten der Sicherheitsinformationen (Vorschau) zur Verwendung von SMS-Nachrichten](security-info-setup-text-msg.md)| Anleitung zum Einrichten von SMS-Nachrichten als Überprüfungsmethode.|
-|[Einrichten der Sicherheitsinformation (Vorschauversion) zur Verwendung von Telefonanrufen](security-info-setup-phone-number.md)| Anleitung zum Einrichten Ihrer Telefonnummer als Überprüfungsmethode.|
-|[Einrichten der Sicherheitsinformationen (Vorschau) zum Verwenden von E-Mail-Adressen](security-info-setup-email.md)| Anleitung zum Hinzufügen Ihrer E-Mail-Adresse, damit Sie Ihr eigenes Kennwort zurücksetzen können.|
-|[Einrichten der Sicherheitsinformation (Vorschauversion) zur Verwendung von Sicherheitsfragen](security-info-setup-questions.md)| Anleitung zum Hinzufügen vordefinierter Sicherheitsfragen, damit Sie Ihr eigenes Kennwort zurücksetzen können.|
-|[Verwalten von App-Kennwörtern auf der Seite „Sicherheitsinformationen“ (Vorschau)](security-info-app-passwords.md)| Anleitung zum Erstellen von App-Kennwörtern für Apps, die keine zweistufige Überprüfung unterstützen, aber in einer Organisation verwendet werden, die die zweistufige Überprüfung verwendet.|
-|[Anmeldung](user-help-sign-in.md)|Beschreibt, wie Sie sich mithilfe der festgelegten Überprüfungsmethode anmelden.|
+| Artikel | BESCHREIBUNG |
+| ------ | ------------ |
+| [Einrichten Ihrer Sicherheitsinformationen (Vorschauversion) über die Aufforderung auf der Anmeldeseite](security-info-setup-signin.md) | Anleitung zum Einrichten Ihrer Sicherheitsinformationen, wenn Sie auf der Anmeldeseite dazu aufgefordert werden. Diese Aufforderung wird nur angezeigt, wenn Sie die von Ihrer Organisation geforderten Sicherheitsinformationen noch nicht eingerichtet haben. Sollte die Aufforderung nicht angezeigt werden, können Sie stattdessen einen der anderen Artikel in dieser Tabelle verwenden, um Überprüfungsmethoden zu ändern und hinzuzufügen. |
+| [Einrichten der Sicherheitsinformationen (Vorschau) zur Verwendung einer Authentifikator-App](security-info-setup-auth-app.md) | Anleitung zum Einrichten der Microsoft Authenticator-App als Überprüfungsmethode. |
+| [Einrichten der Sicherheitsinformationen (Vorschau) zur Verwendung von SMS-Nachrichten](security-info-setup-text-msg.md) | Anleitung zum Einrichten von SMS-Nachrichten als Überprüfungsmethode. |
+| [Einrichten der Sicherheitsinformation (Vorschauversion) zur Verwendung von Telefonanrufen](security-info-setup-phone-number.md) | Anleitung zum Einrichten Ihrer Telefonnummer als Überprüfungsmethode. |
+| [Hinzufügen eines Sicherheitsschlüssels als Überprüfungsmethode](security-info-setup-security-key.md) | Anweisungen zum Registrieren eines Microsoft-kompatiblen Sicherheitsschlüssels als Überprüfungsmethode. |
+| [Einrichten der Sicherheitsinformationen (Vorschau) zum Verwenden von E-Mail-Adressen](security-info-setup-email.md) | Anleitung zum Hinzufügen Ihrer E-Mail-Adresse, damit Sie Ihr eigenes Kennwort zurücksetzen können. |
+| [Einrichten der Sicherheitsinformation (Vorschauversion) zur Verwendung von Sicherheitsfragen](security-info-setup-questions.md) | Anleitung zum Hinzufügen vordefinierter Sicherheitsfragen, damit Sie Ihr eigenes Kennwort zurücksetzen können. |
+| [Verwalten von App-Kennwörtern auf der Seite „Sicherheitsinformationen“ (Vorschau)](security-info-app-passwords.md) | Anleitung zum Erstellen von App-Kennwörtern für Apps, die keine zweistufige Überprüfung unterstützen, aber in einer Organisation verwendet werden, die die zweistufige Überprüfung verwendet. |
+| [Anmeldung](user-help-sign-in.md) |Beschreibt, wie Sie sich mithilfe der festgelegten Überprüfungsmethode anmelden. |

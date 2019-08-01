@@ -22,6 +22,12 @@
     - name: Kapazitätsplanung
       href: ../hdinsight-capacity-planning.md
       maintainContext: true
+    - name: Problembehandlung
+      items:
+        - name: Ausnahme „OutOfMemoryError“
+          items:
+            - name: Limit für GC-Overhead überschritten
+              href: ./interactive-query-troubleshoot-outofmemory-overhead-exceeded.md
 - name: Anleitung
   items:
     - name: Migrieren von Hive-Workloads zu HDInsight 4.0

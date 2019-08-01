@@ -11,15 +11,15 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 09/04/2018
-ms.author: saghorpa
+ms.date: 07/12/2019
+ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: a8662ef3aa7002ede0b183d72e7278d02c551c33
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.openlocfilehash: b2076778751161d5763d7bd0643cfe8f71a5f522
+ms.sourcegitcommit: 10251d2a134c37c00f0ec10e0da4a3dffa436fb3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67707341"
+ms.lasthandoff: 07/13/2019
+ms.locfileid: "67869196"
 ---
 #  <a name="what-is-sap-hana-on-azure-large-instances"></a>Was ist SAP HANA in Azure (große Instanzen)?
 
@@ -35,6 +35,16 @@ Die Kundenisolation innerhalb des Infrastrukturumfelds wird in Mandanten wie fol
 
 Diese Bare-Metal-Servereinheiten unterstützen nur das Ausführen von SAP HANA. Die SAP-Anwendungsschicht oder Middlewareschicht der Workload wird auf VMs ausgeführt. Die Infrastrukturumfelder, die die Einheiten von SAP HANA in Azure (große Instanzen) ausführen, sind mit den Backbones der Azure-Netzwerkdienste verbunden. Auf diese Weise wird eine Konnektivität mit geringer Wartezeit zwischen Einheiten von SAP HANA in Azure (große Instanzen) und VMs bereitgestellt.
 
+Seit Juli 2019 wird zwischen den zwei verschiedenen Stempeln der Revisionen von großen HANA-Instanzen und dem Speicherort für Bereitstellungen unterschieden:
+
+- „Revision 3“ (Rev 3): umfasst die Stempel, die vor Juli 2019 für Kunden zur Bereitstellung zur Verfügung gestellt wurden.
+- „Revision 4“ (Rev 4): Neuer Stempelentwurf, der in unmittelbarer Nähe zu Azure-VM-Hosts bereitgestellt wird und bisher in den folgenden Azure-Regionen freigegeben wurde:
+    -  USA, Westen 2 
+    -  East US 
+    -  Europa, Westen
+    -  Nordeuropa
+
+
 Dieses Dokument ist eines von mehreren Dokumenten, die sich mit SAP HANA in Azure (große Instanzen) befassen. Es bietet eine Einführung in die grundlegende Architektur, die Zuständigkeiten und die von der Lösung bereitgestellten Dienste. Allgemeine Funktionen der Lösung werden ebenfalls erläutert. Die meisten anderen Bereiche (beispielsweise Netzwerk und Konnektivität) werden in vier weiteren Dokumenten ausführlich behandelt. Die Installation oder Bereitstellung von SAP NetWeaver auf VMs wird in der Dokumentation zu SAP HANA in Azure (große Instanzen) nicht behandelt. SAP NetWeaver in Azure wird in separaten Dokumenten abgedeckt, die sich im selben Azure-Dokumentationscontainer befinden. 
 
 
@@ -46,7 +56,7 @@ Die anderen Dokumente mit Anleitungen zu großen HANA-Instanzen behandeln die fo
 - [Hochverfügbarkeit und Notfallwiederherstellung für SAP HANA in Azure (große Instanzen)](hana-overview-high-availability-disaster-recovery.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 - [Problembehandlung und Überwachung von SAP HANA in Azure (große Instanzen)](troubleshooting-monitoring.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 - [Hochverfügbarkeitskonfiguration unter SUSE mit STONITH](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/ha-setup-with-stonith)
-- [Sichern und Wiederherstellen des Betriebssystems für Typ-II-SKUs](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/os-backup-type-ii-skus)
+- [OS backup and restore for Type II SKUs of Revision 3 stamps (Sichern und Wiederherstellen des Betriebssystems für Typ-II-SKUs)](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/os-backup-type-ii-skus)
 
 **Nächste Schritte**
 - Lesen Sie [Informationen zu Begriffen](hana-know-terms.md).

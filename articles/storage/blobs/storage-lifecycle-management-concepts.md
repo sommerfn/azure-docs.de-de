@@ -9,12 +9,12 @@ ms.date: 05/21/2019
 ms.author: mhopkins
 ms.reviewer: yzheng
 ms.subservice: common
-ms.openlocfilehash: 43a673621aa3c114f99479a6da97153dae44990d
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.openlocfilehash: 6902bf73707dc749da76cd32fe48911fcc88ba1e
+ms.sourcegitcommit: 770b060438122f090ab90d81e3ff2f023455213b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67696093"
+ms.lasthandoff: 07/17/2019
+ms.locfileid: "68305722"
 ---
 # <a name="manage-the-azure-blob-storage-lifecycle"></a>Verwalten des Azure Blob Storage-Lebenszyklus
 
@@ -57,13 +57,41 @@ In diesem Artikel wird die Verwaltung einer Richtlinie über das Portal und übe
 
 ### <a name="azure-portal"></a>Azure-Portal
 
+Es gibt zwei Möglichkeiten zum Hinzufügen einer Richtlinie über das Azure-Portal. 
+
+* [Listenansicht des Azure-Portals](#azure-portal-list-view)
+* [Codeansicht des Azure-Portals](#azure-portal-code-view)
+
+#### <a name="azure-portal-list-view"></a>Listenansicht des Azure-Portals
+
+1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
+
+2. Wählen Sie die Option **Alle Ressourcen** und dann Ihr Speicherkonto aus.
+
+3. Wählen Sie unter **Blobdienst** die Option **Lebenszyklusverwaltung** aus, um Ihre Regeln anzuzeigen oder zu ändern.
+
+4. Wählen Sie die Registerkarte **Listenansicht** aus.
+
+5. Wählen Sie **Regel hinzufügen** aus, und füllen Sie dann die Felder des Formulars **Aktionssatz** aus. Im nachstehenden Beispiel werden Blobs in den kalten Speicher verschoben, wenn sie während 30 Tagen nicht geändert wurden.
+
+   ![Seite mit dem Aktionssatz für Lebenszyklusverwaltung im Azure-Portal](media/storage-lifecycle-management-concepts/lifecycle-management-action-set.png)
+
+6. Wählen Sie **Filtersatz** aus, um einen optionalen Filter hinzuzufügen. Wählen Sie dann **Durchsuchen** aus, um den Container und Ordner anzugeben, nach dem gefiltert werden soll.
+
+   ![Seite mit dem Filtersatz für Lebenszyklusverwaltung im Azure-Portal](media/storage-lifecycle-management-concepts/lifecycle-management-filter-set-browse.png)
+
+8. Wählen Sie **Überprüfen + hinzufügen** aus, um die Richtlinieneinstellungen zu überprüfen.
+
+9. Wählen Sie **Hinzufügen** aus, um die neue Richtlinie hinzuzufügen.
+
+#### <a name="azure-portal-code-view"></a>Codeansicht des Azure-Portals
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
 
 2. Wählen Sie die Option **Alle Ressourcen** und dann Ihr Speicherkonto aus.
 
 3. Wählen Sie unter **Blobdienst** die Option **Lebenszyklusverwaltung** aus, um Ihre Richtlinie anzuzeigen oder zu ändern.
 
-4. Der folgende JSON-Code ist ein Beispiel für eine Regel, die auf der Portalseite **Lebenszyklusverwaltung** eingefügt werden kann.
+4. Der folgende JSON-Code ist ein Beispiel für eine Richtlinie, die in die Registerkarte **Codeansicht** eingefügt werden kann.
 
    ```json
    {
@@ -93,7 +121,9 @@ In diesem Artikel wird die Verwaltung einer Richtlinie über das Portal und übe
    }
    ```
 
-5. Weitere Informationen zu diesem JSON-Beispiel finden Sie in den Abschnitten [Richtlinie](#policy) und [Regeln](#rules).
+5. Wählen Sie **Speichern** aus.
+
+6. Weitere Informationen zu diesem JSON-Beispiel finden Sie in den Abschnitten [Richtlinie](#policy) und [Regeln](#rules).
 
 ### <a name="powershell"></a>PowerShell
 
@@ -199,8 +229,8 @@ Jede Regel in der Richtlinie umfasst mehrere Parameter:
 
 | Parametername | Parametertyp | Notizen | Erforderlich |
 |----------------|----------------|-------|----------|
-| `name`         | string |Ein Regelname kann bis zu 256 alphanumerische Zeichen enthalten. Bei Regelnamen wird die Groß-/Kleinschreibung unterschieden.  Er muss innerhalb einer Richtlinie eindeutig sein. | True |
-| `enabled`      | Boolean | Ein optionaler boolescher Wert, über den eine Regel temporär deaktiviert werden kann. Der Standardwert ist TRUE, wenn dieser Wert nicht festgelegt ist. | False | 
+| `name`         | Zeichenfolge |Ein Regelname kann bis zu 256 alphanumerische Zeichen enthalten. Bei Regelnamen wird die Groß-/Kleinschreibung unterschieden.  Er muss innerhalb einer Richtlinie eindeutig sein. | True |
+| `enabled`      | Boolean | Ein optionaler boolescher Wert, über den eine Regel temporär deaktiviert werden kann. Der Standardwert ist „True“, wenn dieser Wert nicht festgelegt wurde. | False | 
 | `type`         | Ein Enumerationswert | Aktuell ist `Lifecycle` der gültige Typ. | True |
 | `definition`   | Ein Objekt, das die Lebenszyklusregel definiert | Jede Definition beinhaltet einen Filtersatz und einen Aktionssatz. | True |
 
@@ -396,8 +426,8 @@ Bei Daten, die regelmäßig geändert und auf die während ihrer Lebensdauer reg
 **Ich habe eine neue Richtlinie erstellt. Warum werden die Aktionen nicht sofort ausgeführt?**  
 Die Plattform führt die Lebenszyklusrichtlinie ein Mal täglich aus. Nachdem Sie eine neue Richtlinie konfiguriert haben, kann es bis zu 24 Stunden dauern, bis einige Aktionen das erste Mal ausgeführt werden.  
 
-**Ich habe ein archiviertes Blob manuell wieder aktiviert. Wie kann ich vorübergehend verhindern, dass es zurück auf die Archivspeicherebene verschoben wird?**  
-Wenn ein Blob von einer Zugriffsebene auf eine andere Zugriffsebene verschoben wird, ändert sich der Zeitpunkt der letzten Änderung nicht. Wenn Sie ein archiviertes Blob manuell auf der heißen Ebene wieder aktivieren, wird es vom Modul für die Lebenszyklusverwaltung zurück auf die Archivspeicherebene verschoben. Dies können Sie verhindern, indem Sie vorübergehend die Regel deaktivieren, die sich auf dieses Blob auswirkt. Sie können das Blob an einen anderen Speicherort kopieren, falls es sich dauerhaft auf einer heißen Ebene befinden muss. Sie können die Regel wieder aktivieren, wenn das Blob zurück auf die Archivspeicherebene verschoben werden kann. 
+**Ich will ein archiviertes Blob manuell aktivieren. Wie kann ich verhindern, dass es vorübergehend zurück auf die Archivspeicherebene verschoben wird?**  
+Wenn ein Blob von einer Zugriffsebene auf eine andere verschoben wird, ändert sich der Zeitpunkt der letzten Änderung nicht. Wenn Sie ein archiviertes Blob auf der heißen Ebene manuell aktivieren, würde es vom Modul für die Lebenszyklusverwaltung zurück auf die Archivspeicherebene verschoben. Deaktivieren Sie vorübergehend die Regel, die sich auf dieses Blob auswirkt, um zu verhindern, dass es erneut archiviert wird. Kopieren Sie das Blob an einen anderen Speicherort, falls es sich dauerhaft auf einer heißen Ebene befinden muss. Aktivieren Sie die Regel erneut, wenn das Blob sicher zurück auf die Archivspeicherebene verschoben werden kann. 
 
 
 ## <a name="next-steps"></a>Nächste Schritte

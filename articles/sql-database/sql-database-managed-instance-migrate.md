@@ -11,27 +11,31 @@ author: bonova
 ms.author: bonova
 ms.reviewer: douglas, carlrab
 manager: craigg
-ms.date: 02/11/2019
-ms.openlocfilehash: 9fe6ab797eaa325ad802702e95f5a0e5b8e4fef4
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.date: 11/07/2019
+ms.openlocfilehash: 0fa65454702c67d4b0baeedc7f412ccec402ea46
+ms.sourcegitcommit: af58483a9c574a10edc546f2737939a93af87b73
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67070423"
+ms.lasthandoff: 07/17/2019
+ms.locfileid: "68302306"
 ---
 # <a name="sql-server-instance-migration-to-azure-sql-database-managed-instance"></a>Migration einer SQL Server-Instanz zu einer verwalteten Azure SQL-Datenbank-Instanz
 
 Dieser Artikel enthält Informationen zu den Methoden, mit denen eine SQL Server 2005-Instanz (oder eine höhere Version) zu einer [verwalteten Azure SQL-Datenbank-Instanz](sql-database-managed-instance.md) migriert wird. Informationen zum Migrieren zu einer Einzel- oder Pooldatenbank finden Sie unter [Migrieren zu einer Einzel- oder Pooldatenbank](sql-database-cloud-migrate.md). Weitere Informationen zum Migrieren von anderen Plattformen finden Sie im [Leitfaden zur Azure-Datenbankmigration](https://datamigration.microsoft.com/).
 
+> [!NOTE]
+> Wenn Sie schnell starten und eine verwaltete Instanz ausprobieren möchten, ist es vielleicht besser, zum [Schnellstarthandbuch](sql-database-managed-instance-quickstart-guide.md) zu wechseln, statt diese Seite zu lesen. 
+
 Die Datenbankmigration sieht im Allgemeinen folgendermaßen aus:
 
 ![Migrationsprozess](./media/sql-database-managed-instance-migration/migration-process.png)
 
-- [Bewerten der Kompatibilität der verwalteten Instanz](#assess-managed-instance-compatibility)
-- [Wählen einer App-Konnektivitätsoption](sql-database-managed-instance-connect-app.md)
-- [Bereitstellen für eine verwaltete Instanz mit optimaler Größe](#deploy-to-an-optimally-sized-managed-instance)
-- [Auswählen der Migrationsmethode und Migration](#select-migration-method-and-migrate)
-- [Überwachen von Anwendungen](#monitor-applications)
+- [Bewerten Sie die Kompatibilität der verwalteten Instanz](#assess-managed-instance-compatibility), wobei Sie sicherstellen sollten, dass es keine blockierenden Probleme gibt, die Ihre Migrationen verhindern können.
+  - Dieser Schritt umfasst auch das Erstellen [einer Leistungsbaseline](#create-performance-baseline), um die Ressourcennutzung für Ihre SQL Server-Quellinstanz zu bestimmen. Der Schritt ist erforderlich, wenn Sie eine verwaltete Instanz von richtiger Größe bereitstellen und überprüfen möchten, ob die Leistungen nach der Migration beeinträchtigt sind.
+- [Auswählen von App-Konnektivitätsoptionen](sql-database-managed-instance-connect-app.md)
+- [Stellen Sie eine verwaltete Instanz mit optimaler Größe bereit](#deploy-to-an-optimally-sized-managed-instance), in der Sie technische Merkmale (Anzahl von virtuellen Kernen, verfügbarer Arbeitsspeicher) und Leistungsstufe („Unternehmenskritisch“, „Universell“) für Ihre verwaltete Instanz auswählen.
+- [Wählen Sie eine Migrationsmethode und den Speicherort aus,](#select-migration-method-and-migrate) an den Sie Ihre Datenbanken mithilfe der Offlinemigration (native Sicherung/Wiederherstellung, Datenbankimport/-export) oder der Onlinemigration (Datenmigrationsdienst, Transaktionsreplikation) migrieren möchten.
+- [Überwachen Sie Anwendungen](#monitor-applications), um sicherzustellen, dass Sie über die erwartete Leistung verfügen.
 
 > [!NOTE]
 > Informationen zum Migrieren einer einzelnen Datenbank zu einer Einzeldatenbank oder einem Pool für elastische Datenbanken finden Sie unter [Migrieren einer SQL Server-Datenbank zu Azure SQL-Datenbank in der Cloud](sql-database-single-database-migrate.md).
@@ -58,7 +62,11 @@ Eine verwaltete SQL-Datenbank-Instanz garantiert eine Verfügbarkeit von 99,99 
 
 ### <a name="create-performance-baseline"></a>Erstellen einer Leistungsbaseline
 
-Wenn Sie die Leistung Ihres Workloads in einer verwalteten Instanz mit Ihrer ursprünglichen Workload, die in SQL Server ausgeführt wird, vergleichen möchten, müssen Sie eine Leistungsbaseline erstellen, die zum Vergleichen verwendet wird. Die folgenden Parameter sind einige der Parameter, die Sie in Ihrer SQL Server-Instanz messen müssen: 
+Wenn Sie die Leistung Ihres Workloads in einer verwalteten Instanz mit Ihrer ursprünglichen Workload, die in SQL Server ausgeführt wird, vergleichen möchten, müssen Sie eine Leistungsbaseline erstellen, die zum Vergleichen verwendet wird. 
+
+Die Leistungsbaseline ist eine Gruppe von Parametern, z.B. durchschnittliche/maximale CPU-Nutzung, durchschnittliche/maximale E/A-Latenz von Datenträgern, Durchsatz, IOPS, durchschnittliche/maximale Seitenlebenserwartung, durchschnittliche/maximale Größe von „tempdb“. Nach der Migration möchten Sie vielleicht ähnliche oder sogar bessere Parameter verwenden. Deshalb ist es wichtig, die Baselinewerte für diese Parameter zu messen und aufzuzeichnen. Zusätzlich zu Systemparametern müssen Sie einen Satz der repräsentativen Abfragen oder der wichtigsten Abfragen in Ihrer Workload auswählen und die minimale/durchschnittliche/maximale Dauer der CPU-Nutzung für die ausgewählten Abfragen messen. Anhand dieser Werte können Sie die Leistung der Workload, die auf der verwalteten Instanz ausgeführt wird, mit den ursprünglichen Werten auf Ihrem SQL Server-Quellsystem vergleichen.
+
+Die folgenden Parameter sind einige der Parameter, die Sie in Ihrer SQL Server-Instanz messen müssen: 
 - [Überwachen der CPU-Nutzung in Ihrer SQL Server-Instanz](https://techcommunity.microsoft.com/t5/Azure-SQL-Database/Monitor-CPU-usage-on-SQL-Server/ba-p/680777#M131) und Aufzeichnen der durchschnittlichen und der maximalen CPU-Nutzung.
 - [Überwachen der Arbeitsspeichernutzung in Ihrer SQL Server-Instanz](https://docs.microsoft.com/sql/relational-databases/performance-monitor/monitor-memory-usage) und Bestimmen der Menge von Arbeitsspeicher, die von verschiedenen Komponenten, z.B. Pufferpool, Plancache, Columnstorepool, [In-Memory-OLTP](https://docs.microsoft.com/sql/relational-databases/in-memory-oltp/monitor-and-troubleshoot-memory-usage?view=sql-server-2017) usw., verwendet wird. Darüber hinaus sollten Sie die durchschnittlichen und maximalen Werte des Speicherleistungsindikators „Seitenlebenserwartung“ ermitteln.
 - Überwachen der Datenträger-E/A-Nutzung in der SQL Server-Instanz mit der [sys.dm_io_virtual_file_stats](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-io-virtual-file-stats-transact-sql)-Sicht oder mit [Leistungsindikatoren](https://docs.microsoft.com/sql/relational-databases/performance-monitor/monitor-disk-usage).
@@ -72,9 +80,10 @@ Als Ergebnis dieser Aktivität sollten Sie folgende dokumentierte Werte haben: d
 ## <a name="deploy-to-an-optimally-sized-managed-instance"></a>Bereitstellen für eine verwaltete Instanz mit optimaler Größe
 
 Verwaltete Instanzen sind auf lokale Workloads zugeschnitten, die zum Verschieben in die Cloud vorgesehen sind. Sie führen ein [neues Kaufmodell](sql-database-service-tiers-vcore.md) ein, das eine größere Flexibilität bei der Auswahl der richtigen Ressourcen für Ihre Workloads bietet. In der lokalen Umgebung sind Sie wahrscheinlich daran gewöhnt, diese Workloads mit physischen Kernen und E/A-Bandbreite zu dimensionieren. Das Kaufmodell für verwaltete Instanzen basiert auf virtuellen Kernen oder „V-Kernen“, wobei zusätzlicher Speicher und EA separat erhältlich sind. Das V-Kern-Modell ist eine einfachere Methode, um die Computeanforderungen in der Cloud mit dem, was Sie heute lokal verwenden, zu vergleichen. Mit diesem neuen Modell können Sie die Größe Ihrer Zielumgebung in der Cloud anpassen. Einige allgemeine Richtlinien, anhand denen Sie die richtige Dienstebene und die richtigen Merkmale auswählen können, sind hier beschrieben:
-- [Überwachen Sie die CPU-Nutzung in Ihrer SQL Server-Instanz](https://techcommunity.microsoft.com/t5/Azure-SQL-Database/Monitor-CPU-usage-on-SQL-Server/ba-p/680777#M131), und prüfen Sie, wie viel Computeleistung Sie derzeit verwenden (verwenden Sie dazu dynamische Verwaltungssichten, SQL Server Management Studio oder andere Überwachungstools). Sie können eine verwaltete Instanz bereitstellen, die die gleiche Anzahl von Kernen hat, wie Sie in SQL Server verwenden. Dabei sollten Sie aber bedenken, dass CPU-Merkmale möglicherweise skaliert werden müssen, damit sie den [Merkmalen des virtuellen Computers entsprechen, auf dem die verwaltete Instanz installiert ist](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-resource-limits#hardware-generation-characteristics).
-- Überprüfen Sie die Menge des verfügbaren Arbeitsspeichers für Ihre SQL Server-Instanz, und wählen Sie [die Dienstebene aus, die entsprechenden Arbeitsspeicher hat](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-resource-limits#hardware-generation-characteristics). Es ist nützlich, die Seitenlebenserwartung in Ihrer SQL Server-Instanz zu messen. Anhand dieses Werts können Sie bestimmen, ob [zusätzlicher Arbeitsspeicher erforderlich ist](https://techcommunity.microsoft.com/t5/Azure-SQL-Database/Do-you-need-more-memory-on-Azure-SQL-Managed-Instance/ba-p/563444).
-- Messen Sie die E/A-Wartezeit des Dateisubsystems, um zwischen den Dienstebenen „Universell“ und „Unternehmenskritisch“ zu wählen.
+- Basierend auf der CPU-Nutzung der Baseline können Sie eine verwaltete Instanz mit derselben Anzahl von Kernen bereitstellen, die Sie in SQL Server verwenden. Dabei sollten Sie aber bedenken, dass CPU-Merkmale möglicherweise skaliert werden müssen, damit sie den [Merkmalen des virtuellen Computers entsprechen, auf dem die verwaltete Instanz installiert ist](sql-database-managed-instance-resource-limits.md#hardware-generation-characteristics).
+- Wählen Sie basierend auf der Baseline-Speicherauslastung[ die Dienstebene mit übereinstimmendem Speicher](sql-database-managed-instance-resource-limits.md#hardware-generation-characteristics) aus. Weil die Menge an Arbeitsspeicher nicht direkt ausgewählt werden kann, müssten Sie die verwaltete Instanz mit der Menge an virtuellen Kernen auswählen, die einen übereinstimmenden Arbeitsspeicher aufweisen (z.B. 5,1 GB/vCore in Gen5). 
+- Wählen Sie basierend auf der Baseline-E/A-Latenz des Datei-Subsystems zwischen den Dienstebenen „Universell“ (Latenz größer als 5 ms) und „Unternehmenskritisch“ (Latenz kleiner als 3 ms) aus.
+- Ordnen Sie basierend auf dem Baseline-Durchsatz die Größe von Daten- oder Protokolldateien vorab zu, um die erwartete E/A-Leistung zu erhalten.
 
 Im [Azure-Portal](sql-database-scale-resources.md) haben Sie die Möglichkeit, Compute- und Speicherressourcen zum Zeitpunkt der Bereitstellung auszuwählen und anschließend zu ändern, ohne dass es zu Downtime für Ihre Anwendung kommt:
 
@@ -169,6 +178,13 @@ Das Ergebnis des Leistungsvergleichs könnte wie folgt aussehen:
 Nehmen Sie die Änderung der Parameter oder ein Upgrade der Dienstebenen vor, um sich der optimalen Konfiguration zu nähern, bis Sie die Workloadleistung erhalten, die Ihren Anforderungen entspricht.
 
 ### <a name="monitor-performance"></a>Überwachen der Leistung
+
+Eine verwaltete Instanz bietet eine Menge an erweiterten Tools zur Überwachung und Problembehandlung, die Sie zur Überwachung der Leistung bei Ihrer Instanz verwenden sollten. Zu den Parametern, die Sie überwachen müssen, gehören die folgenden:
+- CPU-Nutzung auf der Instanz, um zu bestimmen, ob die Anzahl der bereitgestellten virtuellen Kerne Ihrer Workload entspricht.
+- Seitenlebenserwartung auf Ihrer verwalteten Instanz, um zu bestimmen, [ ob Sie zusätzlichen Speicher benötigen](https://techcommunity.microsoft.com/t5/Azure-SQL-Database/Do-you-need-more-memory-on-Azure-SQL-Managed-Instance/ba-p/563444).
+- Wartestatistik wie `INSTANCE_LOG_GOVERNOR` oder `PAGEIOLATCH`, die Sie informieren wird, ob es Speicher-E/A-Probleme gibt – insbesondere auf der Ebene „Universell“, wo Sie Dateien möglicherweise vorab zuordnen müssen, um eine bessere E/A-Leistung zu erhalten.
+
+## <a name="leverage-advanced-paas-features"></a>Nutzen erweiterter PaaS-Features
 
 Sobald Sie sich auf einer vollständig verwalteten Plattform befinden und sich vergewissert haben, dass die Workloadleistungen mit der SQL Server-Workloadleistung übereinstimmen, können Sie die Vorteile nutzen, die automatisch als Teil des SQL-Datenbank-Diensts bereitgestellt werden. 
 

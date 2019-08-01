@@ -12,16 +12,16 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 05/24/2019
 ms.author: lagayhar
-ms.openlocfilehash: a453e82f47bb9eed25c8d5caf986bc854085e8ac
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: d3edfa1ca63560f447d2c9ea3da3588e069b7af1
+ms.sourcegitcommit: 920ad23613a9504212aac2bfbd24a7c3de15d549
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67061217"
+ms.lasthandoff: 07/15/2019
+ms.locfileid: "68226821"
 ---
 # <a name="get-started-with-application-insights-in-a-java-web-project"></a>Erste Schritte mit Application Insights in einem Java-Webprojekt
 
-[Application Insights](https://azure.microsoft.com/services/application-insights/) ist ein erweiterbarer Analysedienst für Webentwickler, der Ihnen dabei hilft, die Leistung und die Verwendung der Liveanwendung zu verstehen. Verwenden Sie es, um [automatisch Anforderungen zu instrumentieren, Abhängigkeiten zu verfolgen und Leistungsindikatoren zu sammeln](auto-collect-dependencies.md#java), Leistungsprobleme und Ausnahmen zu diagnostizieren und [Code zu schreiben][api], um die Aktivitäten der Benutzer Ihrer App zu verfolgen. 
+[Application Insights](https://azure.microsoft.com/services/application-insights/) ist ein erweiterbarer Analysedienst für Webentwickler, der Ihnen dabei hilft, die Leistung und die Verwendung der Liveanwendung zu verstehen. Sie können damit [automatisch Anforderungen instrumentieren, Abhängigkeiten verfolgen und Leistungsindikatoren sammeln](auto-collect-dependencies.md#java), Leistungsprobleme und Ausnahmen diagnostizieren und [Code schreiben][api], um die Aktivitäten der Benutzer Ihrer App zu verfolgen. 
 
 ![Screenshot der Übersicht über die Beispieldaten](./media/java-get-started/overview-graphs.png)
 
@@ -150,7 +150,7 @@ Die Konfigurationsdatei kann sich optional an einem beliebigen Speicherort befin
 
 * Der Instrumentationsschlüssel wird zusammen mit jedem Telemetrieelement übermittelt und weist Application Insights an, ihn in Ihrer Ressource anzuzeigen.
 * Die Komponente "HTTP-Anforderung" ist optional. Sie sendet automatisch Telemetriedaten zu Anforderungen und Antwortzeiten zum Portal.
-* Die Ereigniskorrelation ist eine Ergänzung der HTTP-Anforderungskomponente. Sie weist den einzelnen Anforderungen, die vom Server empfangen wurden, einen Bezeichner zu und fügt ihn als Operation.Id-Eigenschaft jedem Telemetrieelement hinzu. Diese Eigenschaft ermöglicht das Korrelieren der jeder Anforderung zugeordneten Telemetriedaten, indem in [Diagnosesuche][diagnostic] ein Filter festgelegt wird.
+* Die Ereigniskorrelation ist eine Ergänzung der HTTP-Anforderungskomponente. Sie weist den einzelnen Anforderungen, die vom Server empfangen wurden, einen Bezeichner zu und fügt ihn als Operation.Id-Eigenschaft jedem Telemetrieelement hinzu. Diese Eigenschaft ermöglicht das Korrelieren der jeder Anforderung zugeordneten Telemetriedaten, indem in [Diagnosesuche][diagnostic]ein Filter festgelegt wird.
 
 ### <a name="alternative-ways-to-set-the-instrumentation-key"></a>Alternative Methoden zum Festlegen des Instrumentationsschlüssels
 Das Application Insights SDK sucht in dieser Reihenfolge nach dem Schlüssel:
@@ -169,6 +169,8 @@ Sie können dies auch [per Code festlegen](../../azure-monitor/app/api-custom-ev
         TelemetryConfiguration.getActive().setInstrumentationKey(instrumentationKey);
     }
 ```
+
+Beachten Sie, dass [Livemetriken](https://docs.microsoft.com/azure/azure-monitor/app/live-stream) das Lesen des Instrumentierungsschlüssels aus dem Code nicht unterstützen.
 
 ## <a name="4-add-an-http-filter"></a>4. Hinzufügen eines HTTP-Filters
 Der letzte Konfigurationsschritt ermöglicht der HTTP-Anforderungskomponente das Protokollieren jeder Webanforderung. (Nicht erforderlich, wenn nur die bloße API wünschen.)
@@ -364,7 +366,7 @@ Nicht behandelte Ausnahmen werden automatisch erfasst.
 
 Um Daten zu anderen Ausnahmen zu erfassen, haben Sie zwei Möglichkeiten:
 
-* [Fügen Sie trackException()-Aufrufe in den Code ein.][apiexceptions]
+* [Fügen Sie trackException()-Aufrufe in den Code ein][apiexceptions].
 * [Installieren Sie den Java-Agent auf dem Server](java-agent.md). Sie geben die Methoden an, die Sie überwachen möchten.
 
 ## <a name="monitor-method-calls-and-external-dependencies"></a>Überwachen von Methodenaufrufen und externen Abhängigkeiten
@@ -432,46 +434,22 @@ Jeder [Windows-Leistungsindikator](https://msdn.microsoft.com/library/windows/de
 * instanceName – Der Name der Instanz der Leistungsindikatorkategorie oder eine leere Zeichenfolge (""), wenn die Kategorie eine einzelne Instanz enthält. Wenn "categoryName" auf "Process" festgelegt ist und der Leistungsindikator, den Sie erfassen möchten, aus dem aktuellen JVM-Prozess stammt, in dem Ihre Anwendung ausgeführt wird, geben Sie `"__SELF__"`an.
 
 ### <a name="unix-performance-counters"></a>Unix-Leistungsindikatoren
-* [Installieren Sie collectd mit dem Application Insights-Plug-In](java-collectd.md) , um eine Vielzahl von System- und Netzwerkdaten abzurufen.
-
-## <a name="local-forwarder"></a>Lokale Weiterleitung
-
-[Die lokale Weiterleitung](https://docs.microsoft.com/azure/application-insights/local-forwarder) ist ein Agent, der Application Insights- oder [OpenCensus](https://opencensus.io/)-Telemetriedaten aus einer Vielzahl von SDKs und Frameworks erfasst und an Application Insights weiterleitet. Sie kann unter Windows und Linux ausgeführt werden.
-
-```xml
-<Channel type="com.microsoft.applicationinsights.channel.concrete.localforwarder.LocalForwarderTelemetryChannel">
-<DeveloperMode>false</DeveloperMode>
-<EndpointAddress><!-- put the hostname:port of your LocalForwarder instance here --></EndpointAddress>
-<!-- The properties below are optional. The values shown are the defaults for each property -->
-<FlushIntervalInSeconds>5</FlushIntervalInSeconds><!-- must be between [1, 500]. values outside the bound will be rounded to nearest bound -->
-<MaxTelemetryBufferCapacity>500</MaxTelemetryBufferCapacity><!-- units=number of telemetry items; must be between [1, 1000] -->
-</Channel>
-```
-
-Wenn Sie das SpringBoot-Startprogramm verwenden, fügen Sie Folgendes in Ihre Konfigurationsdatei (application.properties) ein:
-
-```yml
-azure.application-insights.channel.local-forwarder.endpoint-address=<!--put the hostname:port of your LocalForwarder instance here-->
-azure.application-insights.channel.local-forwarder.flush-interval-in-seconds=<!--optional-->
-azure.application-insights.channel.local-forwarder.max-telemetry-buffer-capacity=<!--optional-->
-```
-
-Die Standardwerte sind für die Konfiguration von SpringBoot „application.properties“ und „applicationinsights.xml“ identisch.
+* [Installieren Sie „collectd“ mit dem Application Insights-Plug-In](java-collectd.md) , um eine Vielzahl von System- und Netzwerkdaten abzurufen.
 
 ## <a name="get-user-and-session-data"></a>Abrufen von Benutzer- und Sitzungsdaten
 Sie senden also Telemetriedaten vom Webserver. Um jetzt eine Rundum-Ansicht Ihrer Anwendung zu erhalten, können Sie weitere Überwachungsfunktionen hinzufügen:
 
-* [Fügen Sie Ihren Webseiten Telemetrie hinzu][usage], um Seitenaufrufe und Benutzermetriken zu überwachen.
-* [Richten Sie Webtests ein][availability], um sicherzustellen, dass die Anwendung online und reaktionsfähig bleibt.
+* [Fügen Sie Ihren Webseiten Telemetrie hinzu][usage] , um Seitenaufrufe und Benutzermetriken zu überwachen.
+* [Richten Sie Webtests ein][availability] , um sicherzustellen, dass die Anwendung online und reaktionsfähig bleibt.
 
 ## <a name="capture-log-traces"></a>Erfassen von Protokollablaufverfolgungen
-Sie können Application Insights verwenden, um Protokolle aus Log4J, Logback oder anderen Frameworks zu segmentieren. Sie können die Protokolle mit HTTP-Anforderungen und anderer Telemetrie in Beziehung setzen. [Weitere Informationen][javalogs]
+Sie können Application Insights verwenden, um Protokolle aus Log4J, Logback oder anderen Frameworks zu segmentieren. Sie können die Protokolle mit HTTP-Anforderungen und anderer Telemetrie in Beziehung setzen. [Weitere Informationen][javalogs].
 
 ## <a name="send-your-own-telemetry"></a>Senden eigener Telemetriedaten
 Nachdem Sie das SDK installiert haben, können Sie die API verwenden, um eigene Telemetriedaten senden.
 
-* [Verfolgen Sie benutzerdefinierte Ereignisse und Metriken nach][api], um zu erfahren, welche Aktionen Benutzer ausführen.
-* [Durchsuchen Sie Ereignisse und Protokolle][diagnostic], um Probleme besser zu diagnostizieren.
+* [Verfolgen Sie benutzerdefinierte Ereignisse und Metriken nach][api], um zu erfahren, wie Benutzer Ihre Anwendung nutzen.
+* [Durchsuchen Sie Ereignisse und Protokolle][diagnostic] , um Probleme besser zu diagnostizieren.
 
 ## <a name="availability-web-tests"></a>Verfügbarkeitswebtests
 Application Insights kann Ihre Website in regelmäßigen Abständen testen, um zu überprüfen, ob sie betriebsbereit ist und gut reagiert.

@@ -9,12 +9,12 @@ ms.service: key-vault
 ms.topic: conceptual
 ms.date: 05/02/2017
 ms.author: mbaldwin
-ms.openlocfilehash: f9dd8a48da08f00cea1219f72940dd84dd3a97ac
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: e173ff54020f2d365348ae037793cfbba3f9ed7f
+ms.sourcegitcommit: a6873b710ca07eb956d45596d4ec2c1d5dc57353
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64725512"
+ms.lasthandoff: 07/16/2019
+ms.locfileid: "68260440"
 ---
 # <a name="azure-key-vault-net-20---release-notes-and-migration-guide"></a>Azure Key Vault .NET 2.0 – Versionshinweise und Migrationshandbuch
 Die folgenden Informationen unterstützen Sie beim Migrieren zur Version 2.0 der Azure Key Vault-Bibliothek für C# und .NET.  Für ältere Versionen geschriebene Apps müssen aktualisiert werden, um die neueste Version zu unterstützen.  Diese Änderungen sind zur uneingeschränkten Unterstützung neuer und verbesserter Features (beispielsweise **Key Vault-Zertifikate**) erforderlich.
@@ -48,12 +48,12 @@ Key Vault-Zertifikate verwalten X.509-Zertifikate und unterstützen folgendes Ve
 
 * *Secret* wurde in *SecretBundle* geändert.
 * *Dictionary* wurde in *IDictionary* geändert.
-* *List<T>, string []* wurde in *IList<T>* geändert.
+* *List\<T>, string []* wurde in *IList\<T>* geändert.
 * *NextList* wurde in *NextPageLink* geändert.
 
 ## <a name="return-types"></a>Rückgabetypen
 
-* **KeyList** und **SecretList** geben jetzt *IPage<T>* anstelle von *ListKeysResponseMessage* zurück.
+* **KeyList** und **SecretList** geben jetzt *IPage\<T>* anstelle von *ListKeysResponseMessage* zurück.
 * Das generierte **BackupKeyAsync**-Element gibt jetzt *BackupKeyResult* mit *Value* (Backupblob) zurück. Zuvor war die Methode umschlossen und hat nur den Wert zurückgegeben.
 
 ## <a name="exceptions"></a>Ausnahmen

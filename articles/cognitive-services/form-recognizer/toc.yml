@@ -7,22 +7,22 @@
 - name: Schnellstarts
   expaned: true
   items:
-    - name: Trainieren eines benutzerdefinierten Modells und Extrahieren von Daten
+    - name: Verwenden der REST-API
       items:
-        - name: Verwenden der REST-API
+        - name: Trainieren eines benutzerdefinierten Modells und Extrahieren von Daten
           items:
             - name: cURL
               href: quickstarts/curl-train-extract.md
             - name: Python
               href: quickstarts/python-train-extract.md
-    - name: Verwenden eines vordefinierten Belegmodells
-      items:
-        - name: Verwenden der REST-API
+        - name: Verwenden eines vordefinierten Belegmodells
           items:
             - name: cURL
               href: quickstarts/curl-receipts.md
             - name: Python
               href: quickstarts/python-receipts.md
+    - name: Verwenden des .NET SDK
+      href: quickstarts/dotnet-sdk.md
 - name: Anleitungen
   items:
     - name: Erstellen eines Trainingsdatasets

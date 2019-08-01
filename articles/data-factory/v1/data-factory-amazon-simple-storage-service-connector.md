@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 01/22/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 1f5064cece32cfc38f149816961e5156ff20974a
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 0e2468fdd44374343894416c8e39c263cecaa7d5
+ms.sourcegitcommit: 64798b4f722623ea2bb53b374fb95e8d2b679318
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60335333"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67839562"
 ---
 # <a name="move-data-from-amazon-simple-storage-service-by-using-azure-data-factory"></a>Verschieben von Daten aus Amazon Simple Storage Service mithilfe von Azure Data Factory
 > [!div class="op_single_selector" title1="Wählen Sie die von Ihren verwendete Version des Data Factory-Diensts aus:"]
@@ -45,7 +45,7 @@ Sie können eine Pipeline mit einer Kopieraktivität erstellen, die Daten mithil
 
 Am einfachsten erstellen Sie eine Pipeline mit dem **Kopier-Assistenten**. Eine kurze exemplarische Vorgehensweise finden Sie unter [Tutorial: Erstellen einer Pipeline mit dem Kopier-Assistenten](data-factory-copy-data-wizard-tutorial.md).
 
-Sie können auch die folgenden Tools zum Erstellen einer Pipeline verwenden: **Azure-Portal**, **Visual Studio**, **Azure PowerShell**, **Azure Resource Manager-Vorlagen**, **.NET-API** und **REST-API**. Eine detaillierte Anleitung zum Erstellen einer Pipeline mit einer Kopieraktivität finden Sie im [Tutorial zur Kopieraktivität](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md).
+Sie können auch die folgenden Tools zum Erstellen einer Pipeline verwenden: **Visual Studio**, **Azure PowerShell**, **Azure Resource Manager-Vorlage**, **.NET-API** und **REST-API**. Eine detaillierte Anleitung zum Erstellen einer Pipeline mit einer Kopieraktivität finden Sie im [Tutorial zur Kopieraktivität](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md).
 
 Zur Erstellung einer Pipeline, die Daten aus einem Quelldatenspeicher in einen Senkendatenspeicher verschiebt, müssen unabhängig von der Verwendung von Tools oder APIs folgende Schritte ausgeführt werden:
 
@@ -180,7 +180,7 @@ Eine vollständige Liste mit den Abschnitten und Eigenschaften zum Definieren vo
 ## <a name="json-example-copy-data-from-amazon-s3-to-azure-blob-storage"></a>JSON-Beispiel: Kopieren von Daten aus Amazon S3 in Azure Blob Storage
 Dieses Beispiel zeigt, wie Sie Daten aus Amazon S3 in Azure Blob Storage kopieren. Daten können jedoch mithilfe der Kopieraktivität in Data Factory direkt in eine [beliebige der unterstützten Senken](data-factory-data-movement-activities.md#supported-data-stores-and-formats) kopiert werden.
 
-Das Beispiel enthält JSON-Definitionen für die folgenden Data Factory-Entitäten. Sie können diese Definitionen zur Erstellung einer Pipeline verwenden, um Daten aus Amazon S3 in Blob Storage zu kopieren (mithilfe des [Azure-Portals](data-factory-copy-activity-tutorial-using-azure-portal.md) oder über [Visual Studio](data-factory-copy-activity-tutorial-using-visual-studio.md) oder [PowerShell](data-factory-copy-activity-tutorial-using-powershell.md)).   
+Das Beispiel enthält JSON-Definitionen für die folgenden Data Factory-Entitäten. Sie können diese Definitionen zur Erstellung einer Pipeline verwenden, um Daten aus Amazon S3 in Blob Storage zu kopieren (mithilfe von [Visual Studio](data-factory-copy-activity-tutorial-using-visual-studio.md) oder [PowerShell](data-factory-copy-activity-tutorial-using-powershell.md)).   
 
 * Einen verknüpften Dienst des Typs [AwsAccessKey](#linked-service-properties).
 * Einen verknüpften Dienst des Typs [AzureStorage](data-factory-azure-blob-connector.md#linked-service-properties)

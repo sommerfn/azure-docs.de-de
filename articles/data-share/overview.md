@@ -6,12 +6,12 @@ ms.service: data-share
 ms.topic: overview
 ms.date: 07/10/2019
 ms.author: joanpo
-ms.openlocfilehash: 7d4e51ec9564bfb123cf73d9fe89d040f42fe650
-ms.sourcegitcommit: 47ce9ac1eb1561810b8e4242c45127f7b4a4aa1a
+ms.openlocfilehash: 11f32b1f1349ef0f9826f95832648e6949cc2f8c
+ms.sourcegitcommit: 198c3a585dd2d6f6809a1a25b9a732c0ad4a704f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67807541"
+ms.lasthandoff: 07/23/2019
+ms.locfileid: "68421388"
 ---
 # <a name="what-is-azure-data-share-preview"></a>Was ist Azure Data Share (Vorschauversion)?
 
@@ -24,6 +24,8 @@ Mit Azure Data Share (Vorschauversion) können Organisationen Daten für viele K
 Ein Datenanbieter kann steuern, wie seine Daten verarbeitet werden, indem er Nutzungsbedingungen für die Datenfreigabe angibt. Der Datenconsumer muss diese Bedingungen akzeptieren, bevor er Daten empfangen kann. Datenanbieter können die Häufigkeit angeben, mit der Datenconsumer Updates erhalten. Der Zugriff auf neue Updates kann vom Datenanbieter jederzeit widerrufen werden. 
 
 Mit Azure Data Share können bessere Erkenntnisse gewonnen werden, da es leicht möglich ist, Daten von Drittanbietern zu kombinieren, um Analyse- und KI-Szenarien zu erweitern. Nutzen Sie die Leistungsstärke von Azure-Analysetools, um Daten vorzubereiten, zu verarbeiten und zu analysieren, die mit Azure Data Share freigegeben werden. 
+
+Sowohl der Datenanbieter als auch der Datenconsumer müssen über ein Azure-Abonnement verfügen, um Daten freigeben und empfangen zu können. Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/) erstellen.
 
 ## <a name="scenarios-for-azure-data-share"></a>Szenarien für Azure Data Share
 
@@ -79,6 +81,7 @@ Zugriffssteuerungen können auf der Azure Data Share-Ressourcenebene festgelegt 
 
 Azure Data Share nutzt verwaltete Identitäten für Azure-Ressourcen (bisher als MSIs bezeichnet), um die automatische Identitätsverwaltung in Azure Active Directory durchzuführen. Verwaltete Identitäten für Azure-Ressourcen werden für den Zugriff auf die Speicherkonten genutzt, die für die Datenfreigabe verwendet werden. Zwischen einem Datenanbieter und einem Datenconsumer findet kein Austausch von Anmeldeinformationen statt. Weitere Informationen finden Sie unter [Dienste, die verwaltete Identitäten für Azure-Ressourcen unterstützen](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/services-support-managed-identities). 
 
+
 ## <a name="supported-regions"></a>Unterstützte Regionen
 
 Eine Liste mit Azure-Regionen, in denen Azure Data Share verfügbar ist, finden Sie auf der [Seite mit den verfügbaren Produkten nach Region](https://azure.microsoft.com/global-infrastructure/services/), wenn Sie nach Azure Data Share suchen. 
@@ -89,4 +92,4 @@ Der Dienst Azure Data Share muss in Ihrer Region nicht verfügbar sein, um den D
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Informationen zum Freigeben von Daten finden Sie im Tutorial [Share your data using Azure Data Share Preview](share-your-data.md) (Freigeben Ihrer Daten mithilfe von Azure Data Share (Vorschauversion)).
+Informationen zum Freigeben von Daten finden Sie im Tutorial zum [Freigeben Ihrer Daten](share-your-data.md).

@@ -6,26 +6,24 @@ ms.author: stbaron
 ms.topic: conceptual
 ms.service: service-health
 ms.date: 05/10/2019
-ms.openlocfilehash: e79f2924448b69989cc563b7b3b30bca0540533f
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 9c2096f94f38d13288c6ce3742252bc6d576835a
+ms.sourcegitcommit: 470041c681719df2d4ee9b81c9be6104befffcea
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67067203"
+ms.lasthandoff: 07/12/2019
+ms.locfileid: "67854226"
 ---
-# <a name="azure-resource-health-overview"></a>Übersicht über Azure Resource Health
+# <a name="resource-health-overview"></a>Übersicht über Resource Health
  
-Azure Resource Health unterstützt Sie bei der Diagnose und bei Supportanfragen, wenn ein Azure-Dienstproblem Auswirkungen auf Ihre Ressourcen hat. Der Dienst informiert Sie über die aktuelle und frühere Integrität Ihrer Ressourcen. Zudem bietet er technische Unterstützung beim Beheben von Problemen.
+Azure Resource Health unterstützt Sie bei der Diagnose und bei Supportanfragen, wenn Dienstprobleme Auswirkungen auf Ihre Azure-Ressourcen haben. Der Dienst erstellt Berichte zur aktuellen und früheren Integrität Ihrer Ressourcen.
 
-Während [Azure-Status](https://status.azure.com) Sie über Dienstprobleme informiert, die einen großen Azure-Kundenkreis betreffen, bietet Ihnen Resource Health ein personalisiertes Dashboard der Integrität Ihrer Ressourcen. Resource Health teilt Ihnen mit, wie oft Ihre Ressourcen in der Vergangenheit aufgrund von Azure-Dienstproblemen nicht verfügbar waren. So können Sie leicht erkennen, ob eine SLA verletzt wurde. 
+[Azure-Status](https://status.azure.com) bietet Berichte zu Dienstproblemen, die sich auf eine breite Palette von Azure-Kunden auswirken. Resource Health stellt die Integrität Ihrer Ressourcen in einem personalisierten Dashboard dar. Resource Health zeigt alle Zeitpunkte an, zu denen Ihre Ressourcen aufgrund von Azure-Dienstproblemen nicht verfügbar waren. Mit diesen Daten können Sie leicht feststellen, ob gegen eine SLA verstoßen wurde.
 
 ## <a name="resource-definition-and-health-assessment"></a>Ressourcendefinition und Integritätsbewertung
 
-Eine Ressource ist eine bestimmte Instanz eines Azure-Diensts, z. B. ein virtueller Computer, eine Web-App oder eine SQL-Datenbank.
+*Eine Ressource* ist eine bestimmte Instanz eines Azure-Diensts, z. B. ein virtueller Computer, eine Web-App oder eine SQL-Datenbank. Resource Health ermittelt anhand von Signalen der verschiedenen Azure-Dienste, ob eine Ressource fehlerfrei ist. Wenn eine Ressource fehlerhaft ist, analysiert Resource Health zusätzliche Informationen, um die Quelle des Problems zu bestimmen. Der Dienst erstellt auch Berichte zu Aktionen, die von Microsoft zum Beheben des Problems ergriffen werden, und gibt Maßnahmen an, die Sie zur Behebung unternehmen können.
 
-Resource Health ermittelt anhand von Signalen, die von den verschiedenen Azure-Diensten ausgegeben werden, ob eine Ressource fehlerfrei ist. Wenn eine Ressource fehlerhaft ist, analysiert Resource Health zusätzliche Informationen, um die Quelle des Problems zu bestimmen. Resource Health identifiziert auch Aktionen, die Microsoft zum Beheben des Problems durchführt, oder welche Aktionen Sie durchführen können, um die Ursache des Problems zu beseitigen. 
-
-Weitere Details zur Bewertung der Integrität entnehmen Sie der vollständigen Liste von Ressourcentypen und Integritätsprüfungen in [Azure Resource Health](resource-health-checks-resource-types.md).
+Weitere Informationen zur Bewertung der Integrität entnehmen Sie der Liste von Ressourcentypen und Integritätsprüfungen in [Azure Resource Health](resource-health-checks-resource-types.md).
 
 ## <a name="health-status"></a>Integritätsstatus
 
@@ -33,58 +31,59 @@ Die Integrität einer Ressource wird als einer der folgenden Status angezeigt.
 
 ### <a name="available"></a>Verfügbar
 
-Der Status **Verfügbar** bedeutet, dass der Dienst noch keine Ereignisse erkannt hat, die die Integrität der Ressource beeinflussen. In Fällen, in denen die Ressource während der letzten 24 Stunden nach einer ungeplanten Ausfallzeit wiederhergestellt worden ist, wird die Benachrichtigung **Kürzlich behandelt** angezeigt.
+*Verfügbar* bedeutet, dass keine Ereignisse erkannt werden, die sich auf die Integrität der Ressource auswirken. In Fällen, in denen die Ressource während der letzten 24 Stunden nach einer ungeplanten Ausfallzeit wiederhergestellt wurde, wird die Benachrichtigung „Kürzlich behandelt“ angezeigt.
 
 ![Status „Verfügbar“ bei einem virtuellen Computer mit der Benachrichtigung „Kürzlich behandelt“](./media/resource-health-overview/Available.png)
 
 ### <a name="unavailable"></a>Nicht verfügbar
 
-Der Status **Nicht verfügbar** bedeutet, dass der Dienst ein aktives Plattform- oder Nicht-Plattformereignis erkannt hat, das Auswirkungen auf die Integrität der Ressource hat.
+*Nicht verfügbar* bedeutet, dass der Dienst ein aktives Plattform- oder Nicht-Plattformereignis erkannt hat, das Auswirkungen auf die Integrität der Ressource hat.
 
 #### <a name="platform-events"></a>Plattformereignisse
 
 Plattformereignisse werden von mehreren Komponenten der Azure-Infrastruktur ausgelöst. Dazu zählen sowohl geplante Aktionen (z.B. geplante Wartung) als auch unerwartete Vorfälle (z.B. ein nicht geplanter Neustart eines Hosts).
 
-Resource Health stellt weitere Details zum Ereignis und zum Wiederherstellungsprozess bereit. Darüber hinaus können Sie sich selbst dann an den Support wenden, wenn Sie nicht über eine aktive Microsoft-Supportvereinbarung verfügen.
+Resource Health stellt weitere Details zum Ereignis und zum Wiederherstellungsprozess bereit. Darüber hinaus können Sie sich selbst dann an den Microsoft-Support wenden, wenn Sie nicht über eine aktive Supportvereinbarung verfügen.
 
 ![Status „Nicht verfügbar“ bei einem virtuellen Computer aufgrund eines Plattformereignisses](./media/resource-health-overview/Unavailable.png)
 
 #### <a name="non-platform-events"></a>Nicht-Plattformereignisse
 
-Nicht-Plattformereignisse werden durch Aktionen von Benutzern ausgelöst. Beispiele dafür sind das Anhalten eines virtuellen Computers oder das Erreichen der maximalen Anzahl von Verbindungen mit einer Azure Cache for Redis-Instanz.
+Nicht-Plattformereignisse werden durch Benutzeraktionen ausgelöst. Beispiele dafür sind das Anhalten eines virtuellen Computers oder das Erreichen der maximalen Anzahl von Verbindungen mit einer Azure Cache for Redis-Instanz.
 
 ![Status „Nicht verfügbar“ bei einem virtuellen Computer aufgrund eines Nicht-Plattformereignisses](./media/resource-health-overview/Unavailable_NonPlatform.png)
 
 ### <a name="unknown"></a>Unknown
 
-Der Integritätsstatus **Unbekannt** gibt an, dass Resource Health seit mehr als 10 Minuten keine Informationen mehr zu dieser Ressource empfangen hat. Dieser Status ist zwar keine definitive Angabe des Ressourcenzustands, aber ein wichtiger Datenpunkt im Problembehandlungsprozess.
+*Unbekannt* bedeutet, dass Resource Health seit mehr als 10 Minuten keine Informationen mehr zu der Ressource empfangen hat. Dieser Status ist zwar keine definitive Angabe des Ressourcenzustands, aber ein wichtiger Datenpunkt für die Problembehandlung.
 
-Wenn die Ressource wie erwartet ausgeführt wird, wird der Status der Ressource nach wenigen Minuten in **Verfügbar** geändert.
+Wenn die Ressource wie erwartet ausgeführt wird, wird der Status der Ressource nach wenigen Minuten in *Verfügbar* geändert.
 
-Wenn Probleme bei der Ressource auftreten, kann der Integritätsstatus **Unbekannt** darauf hindeuten, dass die Ressource durch ein Ereignis auf der Plattform beeinträchtigt wird.
+Wenn Probleme mit der Ressource auftreten, kann der Integritätsstatus *Unbekannt* bedeuten, dass die Ressource durch ein Ereignis auf der Plattform beeinträchtigt wird.
 
 ![Status „Unbekannt“ bei einem virtuellen Computer](./media/resource-health-overview/Unknown.png)
 
 ### <a name="degraded"></a>Heruntergestuft
 
-Der Integritätsstatus **Heruntergestuft** gibt an, dass Ihre Ressource einen Leistungsverlust festgestellt hat, obwohl sie noch für die Nutzung verfügbar ist.
-Verschiedene Ressourcen verwenden ihre eigenen Kriterien, anhand derer sie angeben, dass eine Ressource einen Leistungsverlust erleidet.
+*Heruntergestuft* bedeutet, dass die Ressource einen Leistungsverlust festgestellt hat, obwohl sie noch für die Nutzung verfügbar ist.
+
+Verschiedene Ressourcen verwenden eigene Kriterien, anhand derer sie angeben, dass sie einen Leistungsverlust erleiden.
 
 ![Status „Heruntergestuft“ bei einem virtuellen Computer](./media/resource-health-overview/degraded.png)
 
 ## <a name="reporting-an-incorrect-status"></a>Melden eines falschen Status
 
-Wenn Sie glauben, dass der aktuelle Integritätsstatus falsch ist, können Sie uns dies durch die Auswahl von **Falschen Integritätsstatus melden** mitteilen. In Fällen, in denen Sie von einem Azure-Problem betroffen sind, empfehlen wir Ihnen, sich in Resource Health an den Support zu wenden. 
+Wenn Sie glauben, dass der aktuelle Integritätsstatus falsch ist, können Sie uns dies durch die Auswahl von **Falschen Integritätsstatus melden** mitteilen. In Fällen, in denen Sie von einem Azure-Problem betroffen sind, empfehlen wir Ihnen, sich in Resource Health an den Support zu wenden.
 
-![Feld zum Übermitteln von Informationen zu einem falschen Status](./media/resource-health-overview/incorrect-status.png)
+![Formular zum Übermitteln von Informationen zu einem falschen Status](./media/resource-health-overview/incorrect-status.png)
 
-## <a name="historical-information"></a>Verlaufsinformationen
+## <a name="history-information"></a>Verlaufsinformationen
 
-Sie können im Abschnitt **Integritätsverlauf** von Resource Health auf bis zu 14 Tage alte Integritätsverlaufsdaten zugreifen. 
+Im Abschnitt **Integritätsverlauf** von Resource Health stehen bis zu 14 Tage alte Verlaufsdaten zur Verfügung.
 
 ![Liste der Resource Health-Ereignisse in den letzten zwei Wochen](./media/resource-health-overview/history-blade.png)
 
-## <a name="getting-started"></a>Erste Schritte
+## <a name="get-started"></a>Erste Schritte
 
 Öffnen von Resource Health für eine Ressource:
 
@@ -100,10 +99,6 @@ Sie können auch auf Resource Health zugreifen, indem Sie **Alle Dienste** ausw�
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Weitere Informationen zu Resource Health finden Sie in den folgenden Dokumenten:
+Weitere Informationen zu Resource Health finden Sie in den folgenden Referenzen:
 -  [Ressourcentypen und Integritätsprüfungen in Azure Resource Health](resource-health-checks-resource-types.md)
 -  [Azure Resource Health – FAQ](resource-health-faq.md)
-
-
-
-

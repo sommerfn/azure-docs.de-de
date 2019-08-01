@@ -11,12 +11,12 @@ ms.custom: mvc
 ms.reviewer: klam, LADocs
 ms.suite: integration
 ms.date: 04/25/2019
-ms.openlocfilehash: a8857d62b3078d78bdd0a339ebadf766ddb2fb43
-ms.sourcegitcommit: 2d3b1d7653c6c585e9423cf41658de0c68d883fa
+ms.openlocfilehash: 51d1af24a22f7ed86b01b1c7c79b204cd552a7ea
+ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/20/2019
-ms.locfileid: "67295819"
+ms.lasthandoff: 07/22/2019
+ms.locfileid: "68385418"
 ---
 # <a name="quickstart-create-automated-tasks-processes-and-workflows-with-azure-logic-apps---visual-studio"></a>Schnellstart: Erstellen von automatisierten Aufgaben, Prozessen und Workflows mit Azure Logic Apps – Visual Studio
 
@@ -64,6 +64,8 @@ In diesem Schnellstart erstellen Sie die gleiche Logik-App wie im Schnellstart z
   Für Dynamics CRM Onlineverbindungen prüft der Designer Ihre CRM-Instanz auf standardmäßige und benutzerdefinierte Eigenschaften.
 
 * Ein von Logic Apps unterstütztes E-Mail-Konto, z.B. Office 365 Outlook, Outlook.com oder Gmail. Informationen zu Connectors für andere Anbieter finden Sie in [dieser Liste](https://docs.microsoft.com/connectors/). In diesem Beispiel wird Office 365 Outlook verwendet. Bei Verwendung eines anderen Anbieters sind die Schritte im Großen und Ganzen identisch, aber die Benutzeroberfläche weicht ggf. etwas ab.
+
+<a name="create-resource-group-project"></a>
 
 ## <a name="create-azure-resource-group-project"></a>Erstellen eines Azure-Ressourcengruppenprojekts
 
@@ -141,6 +143,8 @@ Geben Sie im Suchfeld „rss“ ein. Wählen Sie in der Triggerliste den folgend
 
 1. Speichern Sie Ihre Visual Studio-Projektmappe. (Tastatur: STRG+S)
 
+<a name="deploy-to-Azure"></a>
+
 ## <a name="deploy-logic-app-to-azure"></a>Bereitstellen der Logik-App in Azure
 
 Bevor Sie Ihre Logik-App ausführen und testen können, müssen Sie sie über Visual Studio in Azure bereitstellen.
@@ -173,6 +177,22 @@ Bevor Sie Ihre Logik-App ausführen und testen können, müssen Sie sie über Vi
    ![Outlook sendet E-Mails für jedes neue RSS-Element.](./media/quickstart-create-logic-apps-with-visual-studio/outlook-email.png)
 
 Glückwunsch! Sie haben den Buildvorgang und die Bereitstellung Ihrer Logik-App mit Visual Studio erfolgreich durchgeführt. Informationen zur Verwaltung Ihrer Logik-App und des dazugehörigen Ausführungsverlaufs finden Sie unter [Verwalten von Logik-Apps mit Visual Studio](../logic-apps/manage-logic-apps-with-visual-studio.md).
+
+## <a name="add-new-logic-app"></a>Hinzufügen einer neuen Logik-App
+
+Wenn Sie über ein vorhandenes Azure-Ressourcengruppenprojekt verfügen, können Sie eine leere Logik-App im Fenster mit der JSON-Gliederung dem Projekt hinzufügen.
+
+1. Öffnen Sie im Projektmappen-Explorer die Datei `<logic-app-name>.json`.
+
+1. Wählen Sie im Menü **Ansicht** die Option **Weitere Fenster** > **JSON-Gliederung** aus.
+
+1. Wählen Sie am oberen Rand des Fensters mit der JSON-Gliederung die Option **Ressource hinzufügen** aus, um der Vorlagendatei eine Ressource hinzuzufügen. Klicken Sie im Fenster mit der JSON-Gliederung mit der rechten Maustaste auf **Ressourcen**, und wählen Sie **Neue Ressource hinzufügen** aus.
+
+   ![Fenster mit der JSON-Gliederung](./media/quickstart-create-logic-apps-with-visual-studio/jsonoutline.png)
+
+1. Wählen Sie im Dialogfeld **Ressource hinzufügen** die Option **Logik-App** aus. Benennen Sie Ihre Logik-App, und wählen Sie **Hinzufügen** aus.
+
+   ![Ressource hinzufügen](./media/quickstart-create-logic-apps-with-visual-studio/addresource.png)
 
 ## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
 

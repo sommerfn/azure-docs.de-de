@@ -13,15 +13,15 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 08/13/2018
 ms.author: genli
-ms.openlocfilehash: f0569878d61ce83c4847867378d8e68fe0faa59b
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.openlocfilehash: 8ab6fc75475cd99e3d803450476880175f12d2b6
+ms.sourcegitcommit: 1b7b0e1c915f586a906c33d7315a5dc7050a2f34
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67709394"
+ms.lasthandoff: 07/15/2019
+ms.locfileid: "67881127"
 ---
 # <a name="troubleshoot-a-windows-vm-by-attaching-the-os-disk-to-a-recovery-vm-using-the-azure-portal"></a>Beheben von Problemen einer Windows-VM durch Hinzufügen des Betriebssystemdatenträgers zu einer Wiederherstellungs-VM mit dem Azure-Portal
-Wenn für Ihren virtuellen Windows-Computer in Azure ein Start- oder Datenträgerfehler auftritt, müssen Sie unter Umständen Schritte zur Problembehebung auf der virtuellen Festplatte selbst ausführen. Ein gängiges Beispiel wäre ein ungültiges Anwendungsupdate, das den erfolgreichen Start der VM verhindert. In diesem Artikel wird erläutert, wie das Azure-Portal die Verbindung zwischen Ihrer virtuellen Festplatte und einer anderen Windows-VM herstellt, um alle Fehler zu beheben und dann Ihre ursprüngliche VM neu zu erstellen.
+Wenn für Ihren virtuellen Windows-Computer in Azure ein Start- oder Datenträgerfehler auftritt, müssen Sie unter Umständen Schritte zur Problembehebung auf der virtuellen Festplatte selbst ausführen. Ein gängiges Beispiel wäre ein ungültiges Anwendungsupdate, das den erfolgreichen Start der VM verhindert. In diesem Artikel wird erläutert, wie das Azure-Portal die Verbindung zwischen Ihrer virtuellen Festplatte und einer anderen Windows-VM herstellt, um alle Fehler zu beheben und dann Ihre ursprüngliche VM neu zu erstellen. 
 
 ## <a name="recovery-process-overview"></a>Übersicht über den Wiederherstellungsprozess
 Der Problembehebungsprozess sieht wie folgt aus:
@@ -34,30 +34,24 @@ Der Problembehebungsprozess sieht wie folgt aus:
 
 Mit Azure PowerShell können Sie für einen virtuellen Computer, der verwaltete Datenträger verwendet, nun den Betriebssystemdatenträger ändern. Sie müssen die VM nicht löschen und neu erstellen. Weitere Informationen finden Sie unter [Beheben von Problemen mit einer Windows-VM durch Hinzufügen des Betriebssystemdatenträgers zu einer Wiederherstellungs-VM per Azure PowerShell](troubleshoot-recovery-disks-windows.md).
 
+> [!NOTE]
+> Dieser Artikel gilt nicht für eine VM mit einem nicht verwalteten Datenträger.
+
 ## <a name="determine-boot-issues"></a>Bestimmen von Problemen beim Start
 Überprüfen Sie den Screenshot mit der Startdiagnose der VM, um zu bestimmen, warum Ihre VM nicht richtig gestartet werden kann. Ein gängiges Beispiel wäre ein ungültiges Anwendungsupdate oder eine zugrunde liegende virtuelle Festplatte, die gelöscht oder verschoben wird.
 
-Wählen Sie Ihre VM im Portal aus, und scrollen Sie dann nach unten zum Abschnitt **Unterstützung + Problembehebung**. Klicken Sie auf **Boot diagnostics** (Startdiagnose), um den Screenshot anzuzeigen. Beachten Sie konkrete Fehlermeldungen oder Fehlercodes, um besser ermitteln zu können, warum für die VM ein Problem vorliegt. 
+Wählen Sie Ihre VM im Portal aus, und scrollen Sie dann nach unten zum Abschnitt **Unterstützung + Problembehebung**. Klicken Sie auf **Boot diagnostics** (Startdiagnose), um den Screenshot anzuzeigen. Beachten Sie konkrete Fehlermeldungen oder Fehlercodes, um besser ermitteln zu können, warum für die VM ein Problem vorliegt.
 
 ![Anzeigen der Konsolenprotokolle für die VM-Startdiagnose](./media/troubleshoot-recovery-disks-portal-windows/screenshot-error.png)
 
 Sie können auch auf **Screenshot herunterladen** klicken, um eine Aufnahme des VM-Screenshots herunterzuladen.
 
 ## <a name="view-existing-virtual-hard-disk-details"></a>Anzeigen von Details vorhandener virtueller Festplatten
-Bevor Sie Ihre virtuelle Festplatte zu einer anderen VM hinzufügen können, müssen Sie den Namen der virtuellen Festplatte (VHD) identifizieren. 
+Bevor Sie Ihre virtuelle Festplatte zu einer anderen VM hinzufügen können, müssen Sie den Namen der virtuellen Festplatte (VHD) identifizieren.
 
-Wählen Sie im Portal Ihre Ressourcengruppe und dann Ihr Speicherkonto aus. Klicken Sie auf **Blobs**, wie im folgenden Beispiel:
+Wählen Sie die fehlerhafte VM aus, und klicken Sie auf **Datenträger**. Notieren Sie sich den Namen des Betriebssystemdatenträgers wie im folgenden Beispiel:
 
-![Auswählen von Speicherblobs](./media/troubleshoot-recovery-disks-portal-windows/storage-account-overview.png)
-
-In der Regel verfügen Sie über einen Container namens **VHDs**, der Ihre virtuellen Festplatten speichert. Wählen Sie die Container aus, um eine Liste der virtuellen Festplatten anzuzeigen. Notieren Sie den Namen Ihrer virtuellen Festplatte (das Präfix ist in der Regel der Name Ihrer VM):
-
-![Identifizieren der VHD im Speichercontainer](./media/troubleshoot-recovery-disks-portal-windows/storage-container.png)
-
-Wählen Sie Ihre vorhandenen virtuellen Festplatte aus der Liste aus, und kopieren Sie die URL zur Verwendung in den folgenden Schritten:
-
-![Kopieren vorhandener virtueller Festplatten-URLS](./media/troubleshoot-recovery-disks-portal-windows/copy-vhd-url.png)
-
+![Auswählen von Speicherblobs](./media/troubleshoot-recovery-disks-portal-windows/view-disk.png)
 
 ## <a name="delete-existing-vm"></a>Löschen einer vorhandener VM
 Virtuelle Festplatten und VMs sind zwei unterschiedliche Ressourcen in Azure. Eine virtuelle Festplatte ist der Ort, an dem das Betriebssystem selbst, Anwendungen und Konfigurationen gespeichert werden. Die VM selbst besteht nur aus Metadaten, die die Größe oder Position definieren und auf Ressourcen verweisen, z.B. eine virtuelle Festplatte oder virtuelle Netzwerkschnittstellenkarte (NIC). Jede virtuelle Festplatte verfügt über eine zugewiesene Lease, wenn sie mit einer VM verknüpft ist. Obwohl Datenträger auch bei laufendem Betrieb der VM hinzugefügt und getrennt werden können, kann der Betriebssystemdatenträger nicht getrennt werden, es sei denn, die VM-Ressource wird gelöscht. Die Lease ordnet den Betriebssystemdatenträger weiterhin einer VM zu, selbst wenn diese VM beendet und die Zuordnung aufgehoben ist.
@@ -70,30 +64,15 @@ Wählen Sie Ihre VM im Portal aus, und klicken Sie auf **Löschen**:
 
 Warten Sie, bis die VM gelöscht wurde, bevor Sie die virtuelle Festplatte einer anderen VM hinzufügen. Die Lease auf der virtuellen Festplatte, die sie zur VM zuordnet, muss freigegeben werden, bevor Sie die virtuelle Festplatte einer anderen VM hinzufügen können.
 
-
 ## <a name="attach-existing-virtual-hard-disk-to-another-vm"></a>Hinzufügen einer vorhandenen virtuellen Festplatte zu einer anderen VM
 Verwenden Sie eine andere Problembehebungs-VM für die nächsten Schritte. Fügen Sie die vorhandene virtuelle Festplatte zu dieser Problembehebungs-VM hinzu, um den Inhalt des Datenträgers zu durchsuchen und zu bearbeiten. Durch diesen Prozess können Sie z.B. alle Konfigurationsfehler beheben oder zusätzliche Anwendungs- oder Systemprotokolldateien überprüfen. Wählen Sie eine andere Problembehebungs-VM aus, oder erstellen Sie eine.
 
-1. Wählen Sie im Portal Ihre Ressourcengruppe und dann Ihre Problembehebungs-VM aus. Wählen Sie **Datenträger** aus, und klicken Sie dann auf **Vorhandener hinzufügen**:
+1. Wählen Sie im Portal Ihre Ressourcengruppe und dann Ihre Problembehebungs-VM aus. Wählen Sie **Datenträger** und **Bearbeiten** aus, und klicken Sie dann auf **Datenträger hinzufügen**:
 
     ![Hinzufügen des vorhandenen Datenträgers im Portal](./media/troubleshoot-recovery-disks-portal-windows/attach-existing-disk.png)
 
-2. Klicken Sie auf **VHD-Datei**, um Ihre vorhandene virtuelle Festplatte auszuwählen:
-
-    ![Navigieren zu einer vorhandenen VHD](./media/troubleshoot-recovery-disks-portal-windows/select-vhd-location.png)
-
-3. Wählen Sie Ihr Speicherkonto und Ihren Container aus, und klicken Sie auf Ihre vorhandenen VHD. Klicken Sie auf die Schaltfläche **Auswählen**, um Ihre Auswahl zu bestätigen:
-
-    ![Auswählen Ihrer vorhandenen VHD](./media/troubleshoot-recovery-disks-portal-windows/select-vhd.png)
-
-4. Nachdem Sie Ihre VHD ausgewählt haben, klicken Sie auf **OK**, um die vorhandene virtuelle Festplatte hinzuzufügen:
-
-    ![Bestätigen Sie das Hinzufügen der vorhandene virtuellen Festplatten](./media/troubleshoot-recovery-disks-portal-windows/attach-disk-confirm.png)
-
-5. Nach wenigen Sekunden zeigt der Bereich **Datenträger** für Ihre VM Ihre vorhandenen virtuellen Festplatte an, die als Datenträger verbunden ist:
-
-    ![Vorhandene virtuelle Festplatte, die als Datenträger angefügt ist](./media/troubleshoot-recovery-disks-portal-windows/attached-disk.png)
-
+2. Wählen Sie in der Liste **Datenträger** den Betriebssystemdatenträger der VM aus, die Sie identifiziert haben. Wenn der Betriebssystemdatenträger nicht angezeigt wird, stellen Sie sicher, dass sich die fehlerhafte VM und die Betriebssystemdatenträger in derselben Region (am selben Standort) befinden.
+3. Klicken Sie auf **Speichern**, um die Änderungen zu übernehmen.
 
 ## <a name="mount-the-attached-data-disk"></a>Bereitstellen des hinzugefügten Datenträgers
 
@@ -125,13 +104,16 @@ Sobald Ihre Fehler behoben sind, trennen Sie die vorhandene virtuelle Festplatte
 
     ![Festlegen des Offlinezustands für den Datenträger in Server-Manager](./media/troubleshoot-recovery-disks-portal-windows/server-manager-set-disk-offline.png)
 
-3. Trennen Sie die virtuelle Festplatte von der VM. Wählen Sie Ihre VM im Azure-Portal aus, und klicken Sie auf **Datenträger**. Wählen Sie Ihre vorhandene virtuelle Festplatte aus, und klicken Sie dann auf **Trennen**:
+3. Trennen Sie die virtuelle Festplatte von der VM. Wählen Sie Ihre VM im Azure-Portal aus, und klicken Sie auf **Datenträger**. 
+4. Klicken Sie auf **Bearbeiten**, wählen Sie den angefügten Betriebssystemdatenträger aus, und klicken Sie dann auf **Trennen**:
 
     ![Trennen einer vorhandenen virtuellen Festplatte](./media/troubleshoot-recovery-disks-portal-windows/detach-disk.png)
 
     Warten Sie, bis die VM den Datenträger erfolgreich getrennt hat, bevor Sie fortfahren.
 
 ## <a name="create-vm-from-original-hard-disk"></a>Erstellen einer VM von der ursprünglichen Festplatte
+
+### <a name="method-1-use-azure-resource-manager-template"></a>Methode 1: Verwenden einer Azure Resource Manager-Vorlage
 Verwenden Sie zum Erstellen einer VM von Ihrer ursprünglichen virtuellen Festplatte [diese Azure Resource Manager-Vorlage](https://github.com/Azure/azure-quickstart-templates/tree/master/201-vm-specialized-vhd-new-or-existing-vnet). Die Vorlage stellt eine VM in einem vorhandenen oder neuen virtuellen Netzwerk bereit und nutzt die VHD-URL aus dem früheren Befehl. Klicken Sie wie folgt auf die Schaltfläche **Deploy to Azure** (Bereitstellung in Azure):
 
 ![Bereitstellen eines virtuellen Computers aus der GitHub-Vorlage](./media/troubleshoot-recovery-disks-portal-windows/deploy-template-from-github.png)
@@ -140,6 +122,14 @@ Die Vorlage wird im Azure-Portal für die Bereitstellung geladen. Geben Sie die 
 
 ![Erstellen einer VM über eine Vorlage](./media/troubleshoot-recovery-disks-portal-windows/deploy-from-image.png)
 
+### <a name="method-2-create-a-vm-from-the-disk"></a>Methode 2: Erstellen einer VM auf Grundlage des Datenträgers
+
+1. Wählen Sie im Azure-Portal Ihre Ressourcengruppe aus, und suchen Sie anschließend nach dem Betriebssystemdatenträger. Sie können den Datenträger auch anhand des Datenträgernamens suchen:
+
+    ![Suchen eines Datenträgers im Azure-Portal](./media/troubleshoot-recovery-disks-portal-windows/search-disk.png)
+1. Wählen Sie **Übersicht** und anschließend **VM erstellen** aus.
+    ![Erstellen einer VM anhand eines Datenträgers über das Azure-Portal](./media/troubleshoot-recovery-disks-portal-windows/create-vm-from-disk.png)
+1. Folgen Sie den Anweisungen im Assistenten, um die VM zu erstellen.
 
 ## <a name="re-enable-boot-diagnostics"></a>Erneutes Aktivieren der Startdiagnose
 Wenn Sie Ihre VM aus der vorhandenen virtuellen Festplatte erstellen, werden Startdiagnoseeinstellungen möglicherweise nicht automatisch aktiviert. Wählen Sie Ihre VM im Portal aus, um den Status der Startdiagnoseeinstellungen zu überprüfen und sie ggf. zu aktivieren. Klicken Sie unter **Überwachen** auf **Diagnoseeinstellungen**. Stellen Sie sicher, dass der Status **An** lautet und das Häkchen neben **Startdiagnose** gesetzt ist. Wenn Sie Änderungen vornehmen, klicken Sie auf **Speichern**:

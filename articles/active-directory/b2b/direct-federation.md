@@ -5,19 +5,19 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: B2B
 ms.topic: conceptual
-ms.date: 07/01/2019
+ms.date: 07/15/2019
 ms.author: mimart
 author: msmimart
 manager: celestedg
 ms.reviewer: mal
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a4dadc68e78fbaa979751d5bcd04ef481c3ab886
-ms.sourcegitcommit: 5bdd50e769a4d50ccb89e135cfd38b788ade594d
+ms.openlocfilehash: 113e178d39ec776b63a0b38c55035f3493586ea2
+ms.sourcegitcommit: b2db98f55785ff920140f117bfc01f1177c7f7e2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/03/2019
-ms.locfileid: "67544636"
+ms.lasthandoff: 07/16/2019
+ms.locfileid: "68233869"
 ---
 # <a name="direct-federation-with-ad-fs-and-third-party-providers-for-guest-users-preview"></a>Direkter Verbund mit AD FS und Drittanbietern für Gastnutzer (Vorschau)
 |     |
@@ -61,8 +61,11 @@ Wenn Sie beispielsweise einen direkten Verbund für **fabrikam.com** einrichten,
 
 ### <a name="signing-certificate-renewal"></a>Unterzeichnung der Zertifikatsverlängerung
 Wenn Sie die Metadaten-URL in den Einstellungen des Identitätsanbieters angeben, erneuert Azure AD automatisch das Signaturzertifikat, wenn es abläuft. Wenn das Zertifikat jedoch aus irgendeinem Grund vor Ablauf der Gültigkeitsdauer gedreht wird oder wenn Sie keine Metadaten-URL angeben, kann Azure AD es nicht verlängern. In diesem Fall müssen Sie das Signaturzertifikat manuell aktualisieren.
+
+### <a name="limit-on-federation-relationships"></a>Limit für Verbundbeziehungen
+Derzeit werden maximal 1.000 Verbundbeziehungen unterstützt. Dieses Limit umfasst sowohl [interne Verbünde](https://docs.microsoft.com/powershell/module/msonline/set-msoldomainfederationsettings?view=azureadps-1.0) als auch direkte Verbünde.
 ## <a name="frequently-asked-questions"></a>Häufig gestellte Fragen
-### <a name="can-i-set-up-direct-federation-with-an-unmanaged-email-verified-tenant"></a>Kann ich einen direkten Verbund mit einem nicht verwalteten (per E-Mail verifizierten) Mandant einrichten? 
+### <a name="can-i-set-up-direct-federation-with-a-domain-for-which-an-unmanaged-email-verified-tenant-exists"></a>Kann ich einen direkten Verbund mit einer Domäne einrichten, für die ein nicht verwalteter (per E-Mail verifizierten) Mandant vorhanden ist? 
 Ja. Wenn die Domain nicht verifiziert wurde und der Mandant keine [Übernahme durch den Admin](../users-groups-roles/domains-admin-takeover.md) erfahren hat, können Sie einen direkten Verbund einrichten. Nicht verwaltete oder per E-Mail verifizierte Mandanten werden erstellt, wenn ein Benutzer eine B2B-Einladung einlöst oder eine Self-Service-Anmeldung für Azure AD über eine Domain durchführt, die derzeit nicht existiert. Sie können einen direkten Verbund für diese Domänen einrichten. Wenn Sie versuchen, einen direkten Verbund mit einer DNS-verifizierten Domäne einzurichten, entweder im Azure-Portal oder über PowerShell, wird eine Fehlermeldung angezeigt.
 ### <a name="if-direct-federation-and-email-one-time-passcode-authentication-are-both-enabled-which-method-takes-precedence"></a>Wenn sowohl der direkte Verbund als auch die Einmalpasswort-Authentifizierung per E-Mail aktiviert sind, welches Verfahren hat dann Vorrang?
 Wenn ein direkter Verbund mit einer Partnerorganisation eingerichtet wird, hat sie Vorrang vor der Einmalpasswort-Authentifizierung per E-Mail für neue Gastbenutzer aus dieser Organisation. Wenn ein Gastbenutzer eine Einladung mit Einmalpasswort-Authentifizierung eingelöst hat, bevor Sie einen direkten Verbund einrichten, verwendet er weiterhin die Einmalpasswort-Authentifizierung. 

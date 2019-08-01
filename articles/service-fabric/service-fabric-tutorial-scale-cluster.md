@@ -3,7 +3,7 @@ title: Skalieren eines Service Fabric-Clusters in Azure | Microsoft-Dokumentatio
 description: Dieses Tutorial enthält Informationen zum Skalieren eines Service Fabric-Clusters in Azure.
 services: service-fabric
 documentationcenter: .net
-author: aljo-microsoft
+author: athinanthny
 manager: chackdan
 editor: ''
 ms.assetid: ''
@@ -12,15 +12,15 @@ ms.devlang: dotNet
 ms.topic: tutorial
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 03/19/2019
-ms.author: aljo
+ms.date: 07/22/2019
+ms.author: atsenthi
 ms.custom: mvc
-ms.openlocfilehash: fa9b091beacbc98c6939ec0454bd04da2b7561e7
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 6b1f226fba43428cdf5f46d41425ac534219de7f
+ms.sourcegitcommit: 08d3a5827065d04a2dc62371e605d4d89cf6564f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "66157976"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68619060"
 ---
 # <a name="tutorial-scale-a-service-fabric-cluster-in-azure"></a>Tutorial: Skalieren eines Service Fabric-Clusters in Azure
 
@@ -69,7 +69,7 @@ Beachten Sie beim Skalieren eines Azure-Clusters die folgenden Richtlinien:
 * Andere (nicht primäre) Knotentypen mit Ausführung von zustandsbehafteten Produktionsworkloads sollten immer über mindestens fünf Knoten verfügen.
 * Andere (nicht primäre) Knotentypen mit Ausführung von zustandslosen Produktionsworkloads sollten immer über mindestens zwei Knoten verfügen.
 * Jeder Knotentyp mit der [Dauerhaftigkeitsstufe][durability] „Gold“ oder „Silber“ sollte immer über mindestens fünf Knoten verfügen.
-* Beim horizontalen Herunterskalieren (Entfernen von Knoten) eines primären Knotentyps sollten Sie nie die Anzahl der Instanzen auf einen niedrigeren Wert verringern, als für die [Zuverlässigkeitsstufe][ reliability] erforderlich ist.
+* Beim horizontalen Herunterskalieren (Entfernen von Knoten) eines primären Knotentyps sollten Sie nie die Anzahl der Instanzen auf einen niedrigeren Wert verringern, als für die [Zuverlässigkeitsstufe][reliability] erforderlich ist.
 
 Weitere Informationen finden Sie unter [Anleitung zu Clusterkapazitäten](service-fabric-cluster-capacity.md).
 
@@ -888,7 +888,7 @@ Fahren Sie mit dem folgenden Tutorial fort, um zu erfahren, wie Sie die Runtime 
 [reliability]: service-fabric-cluster-capacity.md#the-reliability-characteristics-of-the-cluster
 [template]:https://github.com/Azure-Samples/service-fabric-cluster-templates/blob/master/7-VM-Windows-3-NodeTypes-Secure-NSG/AzureDeploy.json
 [parameters]:https://github.com/Azure-Samples/service-fabric-cluster-templates/blob/master/7-VM-Windows-3-NodeTypes-Secure-NSG/AzureDeploy.Parameters.json
-und horizontales Herunterskalieren))
+
 > * Hinzufügen und Entfernen von Knotentypen (horizontales Hoch- und Herunterskalieren)
 > * Erhöhen von Knotenressourcen (zentrales Hochskalieren)
 

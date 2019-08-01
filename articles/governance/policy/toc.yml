@@ -274,6 +274,9 @@
     - name: Erstellen von Richtlinien für Arrayeigenschaften
       displayName: 'array property, alias, aliases, in, notIn, type, defaultValue'
       href: ./how-to/author-policies-for-arrays.md
+    - name: Erstellen einer Gastkonfigurationsrichtlinie
+      displayName: 'powershell, dsc, chef, linux, windows'
+      href: ./how-to/guest-configuration-create.md
     - name: Abrufen von Konformitätsdaten
       displayName: 'evaluation, scan, summarize, query, events, log analytics'
       href: ./how-to/get-compliance-data.md

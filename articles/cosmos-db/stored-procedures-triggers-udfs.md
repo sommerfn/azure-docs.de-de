@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 06/14/2019
 ms.author: mjbrown
 ms.reviewer: sngun
-ms.openlocfilehash: 529c536d9ea3b898745f03c80b63702b2af485da
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.openlocfilehash: 53ff318dcc034fb11e2d554f9ad8e8814eb32879
+ms.sourcegitcommit: 2e4b99023ecaf2ea3d6d3604da068d04682a8c2d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/17/2019
-ms.locfileid: "67165574"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67672591"
 ---
 # <a name="stored-procedures-triggers-and-user-defined-functions"></a>Gespeicherte Prozeduren, Trigger und benutzerdefinierte Funktionen
 
@@ -37,7 +37,7 @@ Das Schreiben von gespeicherten Prozeduren, Triggern und benutzerdefinierten Fun
 * **Kapselung:** Mithilfe gespeicherter Prozeduren kann die Logik an einem Ort zusammengefasst werden. Durch die Kapselung wird eine Abstraktionsebene über den Daten hinzugefügt, die es Ihnen erlaubt, Ihre Anwendungen unabhängig von den Daten zu entwickeln. Diese Abstraktionsebene ist hilfreich, wenn die Daten kein Schema aufweisen und Sie keine zusätzliche Logik direkt in der Anwendung hinzufügen müssen. Durch diese Abstraktion können Sie den Zugriff über die Scripts optimieren und dadurch Ihre Daten schützen.
 
 > [!TIP]
-> Gespeicherte Prozeduren eignen sich am besten für schreibintensive Vorgänge. Bei der Entscheidung, wo Sie gespeicherte Prozeduren verwenden, sollten Sie die Kapselung der maximal möglichen Anzahl von Schreibvorgängen optimieren. Gespeicherte Prozeduren sind im Allgemeinen nicht die effizienteste Methode zur Ausführung zahlreicher Lesevorgänge. Eine große Anzahl an den Client zurückzugebender Lesevorgänge mithilfe von gespeicherten Prozeduren in einem Batch zusammenzufassen, bietet daher nicht den gewünschten Nutzen.
+> Gespeicherte Prozeduren eignen sich am besten für Vorgänge mit vielen Schreibvorgängen und erfordern eine Transaktion über einen Partitionsschlüsselwert. Bei der Überlegung, ob Sie gespeicherte Prozeduren verwenden, sollten Sie die Kapselung der maximal möglichen Anzahl von Schreibvorgängen optimieren. Gespeicherte Prozeduren sind im Allgemeinen nicht die effizienteste Methode für die Ausführung zahlreicher Lese- oder Abfragevorgänge. Eine große Anzahl von an den Client zurückzugebenden Lesevorgängen mithilfe von gespeicherten Prozeduren in einem Batch zusammenzufassen, bietet daher nicht den gewünschten Nutzen. Um eine optimale Leistung zu erzielen, sollten Vorgänge mit zahlreichen Lesevorgängen auf der Clientseite unter Verwendung des Cosmos SDK ausgeführt werden. 
 
 ## <a name="transactions"></a>Transaktionen
 

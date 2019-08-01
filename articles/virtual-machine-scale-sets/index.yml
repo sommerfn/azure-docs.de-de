@@ -4,14 +4,12 @@ title: Dokumentation zu VM-Skalierungsgruppen
 metadata:
   title: 'Mit Azure-VM-Skalierungsgruppen können Sie einer Gruppe von identischen virtuellen Computern mit Lastenausgleich und automatischer Skalierung erstellen und verwalten. Erfahren Sie anhand unserer Schnellstarts, Tutorials und Beispiele, wie Sie VM-Skalierungsgruppen erstellen, konfigurieren, verwalten und automatisch skalieren.'
   services: virtual-machine-scale-sets
-  author: carolz
-  manager: czeumault
+  author: georgewallace
+  manager: gwallace
   ms.service: virtual-machine-scale-sets
-  ms.tgt_pltfrm: na
-  ms.devlang: na
   ms.topic: landing-page
   ms.date: 03/14/2018
-  ms.author: carolz
+  ms.author: gwallace
 abstract:
   description: 'Mit Azure-VM-Skalierungsgruppen können Sie einer Gruppe von identischen virtuellen Computern mit Lastenausgleich und automatischer Skalierung erstellen und verwalten. Erfahren Sie anhand unserer Schnellstarts, Tutorials und Beispiele, wie Sie VM-Skalierungsgruppen erstellen, konfigurieren, verwalten und automatisch skalieren.'
 sections:

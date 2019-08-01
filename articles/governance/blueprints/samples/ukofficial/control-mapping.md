@@ -8,18 +8,18 @@ ms.date: 06/26/2019
 ms.topic: conceptual
 ms.service: blueprints
 manager: carmonm
-ms.openlocfilehash: 01a8e104f6d590113784db28e4bfde849d78b15f
-ms.sourcegitcommit: ac1cfe497341429cf62eb934e87f3b5f3c79948e
+ms.openlocfilehash: 945898105aab7261ee494a86aeff10337599feb3
+ms.sourcegitcommit: 920ad23613a9504212aac2bfbd24a7c3de15d549
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/01/2019
-ms.locfileid: "67491915"
+ms.lasthandoff: 07/15/2019
+ms.locfileid: "68226007"
 ---
 # <a name="control-mapping-of-the-uk-official-and-uk-nhs-blueprint-samples"></a>Zuordnungssteuerung der britischen OFFICIAL- und NHS-Blaupausenbeispiele
 
 Der folgende Artikel beschreibt, wie die Muster des UK OFFICIAL und UK NHS Blueprint mit den Kontrollen des UK OFFICIAL und UK NHS übereinstimmen. Weitere Informationen zu den Steuerungen finden Sie unter [UK OFFICIAL](https://www.gov.uk/government/publications/government-security-classifications).
 
-Die folgende Zuordnung bezieht sich auf die Kontrollen von **UK OFFICIAL** und **UK NHS**. Über den rechten Navigationsbereich können Sie direkt zu einer bestimmten Steuerungszuordnung springen. Viele der zugeordneten Steuerungen werden mit einer [Azure Policy](../../../policy/overview.md)-Initiative implementiert. Zum Anzeigen der vollständigen Initiative öffnen Sie **Richtlinie** im Azure-Portal und wählen dann die Seite **Definitionen** aus. Dann finden und wählen Sie **[Vorschau] Audit UK OFFICIAL und UK NHS Kontrollen, und stellen Sie spezifische VM-Erweiterungen bereit, um die integrierte Richtlinieninitiative für Auditanforderungen** zu unterstützen.
+Die folgende Zuordnung bezieht sich auf die Kontrollen von **UK OFFICIAL** und **UK NHS**. Über den rechten Navigationsbereich können Sie direkt zu einer bestimmten Steuerungszuordnung springen. Viele der zugeordneten Steuerungen werden mit einer [Azure Policy](../../../policy/overview.md)-Initiative implementiert. Zum Anzeigen der vollständigen Initiative öffnen Sie **Richtlinie** im Azure-Portal und wählen dann die Seite **Definitionen** aus. Dann finden und wählen Sie **\[Preview\] Audit UK OFFICIAL und UK NHS Kontrollen, und stellen Sie spezifische VM-Erweiterungen bereit, um die integrierte Richtlinieninitiative für Auditanforderungen** zu unterstützen.
 
 ## <a name="1-data-in-transit-protection"></a>1 Daten im Transportschutz
 
@@ -88,27 +88,27 @@ Diese Blaupause weist auch Azure-Richtliniendefinitionen zu Auditkonten zu, die 
 
 Diese Blaupause weist auch eine Azure-Richtliniendefinition zu, die die Dateiberechtigungen für Passwörter von Linux-VM-Passwörtern überprüft, um zu benachrichtigen, wenn sie falsch eingestellt sind. Dieses Design ermöglicht es Ihnen, Korrekturmaßnahmen zu ergreifen, um sicherzustellen, dass die Authentifikatoren nicht beeinträchtigt werden.
 
-- [Vorschau]: Audit Linux VM /etc/passwd file permissions are set to 0644
+- \[Vorschau\]: Festlegung der /etc/passwd-Dateiberechtigungen auf 0644 auf Linux-VMs überwachen
 
 Diese Blaupause hilft Ihnen bei der Durchsetzung sicherer Passwörter, indem sie Azure-Richtliniendefinitionen zuweist, die Windows-VMs auditieren, die keine Mindeststärke und andere Passwortanforderungen erfüllen. Aufgrund der Informationen zu virtuellen Computern, die gegen die Richtlinie zur Kennwortsicherheit verstoßen, können Sie Korrekturmaßnahmen ergreifen, um sicherzustellen, dass die Kennwörter für alle Benutzerkonten auf virtuellen Computern mit der Richtlinie konform sind.
 
-- [Vorschau]: Deploy requirements to audit Windows VMs that do not have the password complexity setting enabled
-- [Vorschau]: Deploy requirements to audit Windows VMs that do not have a maximum password age of 70 days
-- [Vorschau]: Deploy requirements to audit Windows VMs that do not have a minimum password age of 1 day
-- [Vorschau]: Deploy requirements to audit Windows VMs that do not restrict the minimum password length to 14 characters
-- [Vorschau]: Deploy requirements to audit Windows VMs that allow re-use of the previous 24 passwords
-- [Vorschau]: Audit Windows VMs that do not have the password complexity setting enabled
-- [Vorschau]: Audit Windows VMs that do not have a maximum password age of 70 days
-- [Vorschau]: Audit Windows VMs that do not have a minimum password age of 1 day
-- [Vorschau]: Audit Windows VMs that do not restrict the minimum password length to 14 characters
-- [Vorschau]: Audit Windows VMs that allow re-use of the previous 24 passwords
+- \[Vorschau\]: Anforderungen zum Überwachen von Windows-VMs bereitstellen, auf denen nicht die Einstellung für die Kennwortkomplexität aktiviert ist
+- \[Vorschau\]: Anforderungen zum Überwachen von Windows-VMs bereitstellen, die kein maximales Kennwortalter von 70 Tagen verwenden
+- \[Vorschau\]: Anforderungen zum Überwachen von Windows-VMs bereitstellen, die kein Mindestkennwortalter von 1 Tag verwenden
+- \[Vorschau\]: Anforderungen zum Überwachen von Windows-VMs bereitstellen, bei denen keine Mindestkennwortlänge von 14 Zeichen festgelegt ist
+- \[Vorschau\]: Anforderungen zum Überwachen von Windows-VMs bereitstellen, die eine Wiederverwendung der vorherigen 24 Kennwörter zulassen
+- \[Vorschau\]: Windows-VMs überwachen, auf denen nicht die Einstellung für die Kennwortkomplexität aktiviert ist
+- \[Vorschau\]: Windows-VMs überwachen, die kein maximales Kennwortalter von 70 Tagen verwenden
+- \[Vorschau\]: Windows-VMs überwachen, die kein Mindestkennwortalter von 1 Tag verwenden
+- \[Vorschau\]: Windows-VMs überwachen, bei denen keine Mindestkennwortlänge von 14 Zeichen festgelegt ist
+- \[Vorschau\]: Windows-VMs überwachen, die eine Wiederverwendung der vorherigen 24 Kennwörter zulassen
 
 Diese Blaupause hilft Ihnen auch, den Zugriff auf Azure-Ressourcen zu steuern, indem sie Azure-Richtliniendefinitionen zuweist. Mit diesen Richtlinien wird die Verwendung von Ressourcentypen und Konfigurationen überwacht, die einen weniger restriktiven Zugriff auf Ressourcen ermöglichen. Durch Kenntnis der Ressourcen, die gegen diese Richtlinien verstoßen, können Sie Korrekturmaßnahmen ergreifen, um sicherzustellen, dass der Zugriff auf Azure-Ressourcen auf autorisierte Benutzer beschränkt ist.
 
-- [Vorschau]: Deploy requirements to audit Linux VMs that have accounts without passwords
-- [Vorschau]: Deploy requirements to audit Linux VMs that allow remote connections from accounts without passwords
-- [Vorschau]: Audit Linux VMs that have accounts without passwords
-- [Vorschau]: Audit Linux VMs that allow remote connections from accounts without passwords
+- \[Vorschau\]: Anforderungen zum Überwachen von Linux-VMs bereitstellen, die Konten ohne Kennwörter verwenden
+- \[Vorschau\]: Anforderungen zum Überwachen von Linux-VMs bereitstellen, die Remoteverbindungen über Konten ohne Kennwörter zulassen
+- \[Vorschau\]: Linux-VMs überwachen, die Konten ohne Kennwörter verwenden
+- \[Vorschau\]: Linux-VMs überwachen, die Remoteverbindungen über Konten ohne Kennwörter zulassen
 - Speicherkonten sollten zu neuen Azure Resource Manager-Ressourcen migriert werden.
 - Virtuelle Maschinen sollten auf neue Azure Resource Manager-Ressourcen migriert werden
 - Virtuelle Computer überwachen, die keine verwalteten Datenträger verwenden
@@ -145,7 +145,7 @@ Mit dieser Blaupause werden vier Azure Richtliniendefinitionen zugewiesen, um Ko
 
 Diese Blaupause weist auch eine Azure-Richtliniendefinition zu, die die Dateiberechtigungen für Passwörter von Linux-VM-Passwörtern überprüft, um zu benachrichtigen, wenn sie falsch eingestellt sind. Dieses Design ermöglicht es Ihnen, Korrekturmaßnahmen zu ergreifen, um sicherzustellen, dass die Authentifikatoren nicht beeinträchtigt werden.
 
-- [Vorschau]: Audit Linux VM /etc/passwd file permissions are set to 0644
+- \[Vorschau\]: Festlegung der /etc/passwd-Dateiberechtigungen auf 0644 auf Linux-VMs überwachen
 
 ## <a name="13-audit-information-for-users"></a>13 Überwachungsinformationen für Benutzer
 
@@ -154,9 +154,9 @@ Diese Blaupause hilft Ihnen, sicherzustellen, dass Systemereignisse protokollier
 - Nicht überwachte SQL-Datenbank in Azure Security Center überwachen
 - Überwachen der Diagnoseeinstellung
 - Überwachungseinstellungen auf SQL Server-Ebene überwachen
-- [Vorschau]: Deploy Log Analytics Agent for Linux VMs
-- [Vorschau]: Deploy Log Analytics Agent for Windows VMs
-- Bereitstellen eines Netzwerküberwachers beim Erstellen virtueller Netzwerke
+- \[Vorschau\]: Bereitstellen des Log Analytics-Agents für Linux-VMs
+- \[Vorschau\]: Bereitstellen des Log Analytics-Agents für Windows-VMs
+- Bereitstellen von Network Watcher beim Erstellen virtueller Netzwerke
 
 ## <a name="next-steps"></a>Nächste Schritte
 

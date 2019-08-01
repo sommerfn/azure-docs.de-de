@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: spunukol
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b64fd7efb00dabd1e1758ec631e6992d68bff2ab
-ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
+ms.openlocfilehash: 3661b3f7fd37a329857a74d32d292678d98f5aef
+ms.sourcegitcommit: a0b37e18b8823025e64427c26fae9fb7a3fe355a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/01/2019
-ms.locfileid: "67481650"
+ms.lasthandoff: 07/25/2019
+ms.locfileid: "68499834"
 ---
 # <a name="how-to-manage-stale-devices-in-azure-ad"></a>Anleitung: Verwalten von veralteten Geräte in Azure AD
 
@@ -70,7 +70,7 @@ Sie sollten eine entsprechende Richtlinie definieren, um veraltete Gerät in Ihr
 Zum Aktualisieren eines Geräts in Azure AD benötigen Sie ein Konto, dem die folgenden Rollen zugewiesen sind:
 
 - Globaler Administrator
-- Cloudgeräteadministrator (Neue Rolle verfügbar!)
+- Cloudgeräteadministrator
 - Intune-Dienstadministrator
 
 Wählen Sie in der Bereinigungsrichtlinie Konten aus, denen die erforderlichen Rollen zugewiesen sind. 
@@ -145,6 +145,13 @@ Der Zeitstempel wird aktualisiert, um Gerätelebenszyklus-Szenarien zu unterstü
 ### <a name="why-should-i-worry-about-my-bitlocker-keys"></a>Warum sollte ich mir wegen meiner BitLocker-Schlüssel Gedanken machen?
 
 Wenn sie konfiguriert sind, werden BitLocker-Schlüssel für Windows 10-Geräte auf dem Geräteobjekt in Azure AD gespeichert. Wenn Sie ein veraltetes Gerät löschen, löschen Sie auch die BitLocker-Schlüssel, die auf dem Gerät gespeichert sind. Sie sollten ermitteln, ob Ihre Bereinigungsrichtlinie am tatsächlichen Lebenszyklus Ihres Geräts ausgerichtet ist, bevor Sie ein veraltetes Gerät löschen. 
+
+### <a name="why-should-i-worry-about-windows-autopilot-devices"></a>Warum sollte ich mir Gedanken über Windows Autopilot-Geräte machen?
+
+Wenn ein Azure AD-Gerät einem Windows Autopilot-Objekt zugeordnet wurde, können die folgenden drei Szenarien eintreten, wenn das Gerät in der Zukunft für einen anderen Zweck verwendet wird:
+- Bei benutzergesteuerten Nicht-White-Glove-Bereitstellungen mit Windows Autopilot wird ein neues Azure AD-Gerät erstellt, das jedoch nicht mit der ZTDID gekennzeichnet wird.
+- Bei Windows Autopilot-Bereitstellungen im Selbstbereitstellungsmodus wird ein Fehler auftreten, weil ein zugeordnetes Azure AD-Gerät nicht gefunden werden kann.  (Dies ist ein Sicherheitsmechanismus, um sicherzustellen, dass keine „Eindringling“-Geräte versuchen, Azure AD ohne Anmeldeinformationen beizutreten.) Der Fehler weist auf eine fehlende ZTDID-Übereinstimmung hin.
+- Bei White-Glove-Bereitstellungen mit Windows Autopilot wird ein Fehler auftreten, weil ein zugeordnetes Azure AD-Gerät nicht gefunden werden kann. (Im Hintergrund verwenden White-Glove-Bereitstellungen denselben Selbstbereitstellungsmodus-Prozess, sodass sie die gleichen Sicherheitsmechanismen erzwingen.)
 
 ### <a name="how-do-i-know-all-the-type-of-devices-joined"></a>Wie kann ich ermitteln, welche Gerätetypen eingebunden sind?
 

@@ -10,12 +10,12 @@ ms.subservice: load-data
 ms.date: 04/26/2019
 ms.author: kevin
 ms.reviewer: igorstan
-ms.openlocfilehash: 2e7e2048c70cab48ca81b3ebd6bd06779a7bdaeb
-ms.sourcegitcommit: ccb9a7b7da48473362266f20950af190ae88c09b
+ms.openlocfilehash: 5f2830b524c554a6988bfc873cd0f6c54e5c56a4
+ms.sourcegitcommit: 64798b4f722623ea2bb53b374fb95e8d2b679318
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67595673"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67839681"
 ---
 # <a name="tutorial-load-new-york-taxicab-data-to-azure-sql-data-warehouse"></a>Tutorial: Laden von Daten zu New Yorker Taxis in Azure SQL Data Warehouse
 
@@ -603,7 +603,7 @@ Das Laden mithilfe von PolyBase und die Authentifizierung über verwaltete Ident
         
    1. Führen Sie Abfragen wie gewohnt durch, indem Sie [externe Tabellen](https://docs.microsoft.com/sql/t-sql/statements/create-external-table-transact-sql) verwenden.
 
-Beachten Sie die Dokumentation https://docs.microsoft.com/azure/sql-database/sql-database-vnet-service-endpoint-rule-overview, wenn Sie VNET-Dienstendpunkte für SQL Data Warehouse einrichten möchten. 
+Beachten Sie die folgende [Dokumentation](https://docs.microsoft.com/azure/sql-database/sql-database-vnet-service-endpoint-rule-overview), wenn Sie VNET-Dienstendpunkte für SQL Data Warehouse einrichten möchten. 
 
 ## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
 

@@ -11,12 +11,12 @@ ms.date: 01/04/2019
 author: gauravmalhot
 ms.author: gamal
 manager: craigg
-ms.openlocfilehash: 4bd38991b2452bdda65a7647f844dcc17fdfb125
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: d239e44364c3a4879f2f131717511385a4bd7037
+ms.sourcegitcommit: b2db98f55785ff920140f117bfc01f1177c7f7e2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60786931"
+ms.lasthandoff: 07/16/2019
+ms.locfileid: "68234447"
 ---
 # <a name="templates"></a>Vorlagen
 
@@ -49,6 +49,8 @@ Data Factory verwendet Azure Resource Manager-Vorlagen für das Speichern von Da
     -   [Kopieren neuer Dateien basierend auf LastModifiedDate](solution-template-copy-new-files-lastmodifieddate.md)
 
     -   [Kopieren von Dateien aus mehreren Containern zwischen dateibasierten Speichern](solution-template-copy-files-multiple-containers.md)
+
+    -   [Verschieben von Dateien](solution-template-move-files.md)
 
     -   [Deltakopie aus Datenbank](solution-template-delta-copy-with-control-table.md)
 

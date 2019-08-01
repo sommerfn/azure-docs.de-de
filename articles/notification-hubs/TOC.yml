@@ -7,6 +7,7 @@
     - name: Integration in Mobile App Service-Apps
       href: notification-hubs-app-service.md
 - name: Schnellstarts
+  expanded: true
   items:
     - name: 'Erstellen von Notification Hubs: Azure-Portal'
       href: create-notification-hub-portal.md

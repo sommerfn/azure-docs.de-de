@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: troubleshooting
 ms.date: 04/08/2019
 ms.author: v-chjenk
-ms.openlocfilehash: 06b955365ffc7c0a1dff93db95932d8696293e9f
-ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
+ms.openlocfilehash: 41c3c25962d5cb0d608a226ed77408460446bfa5
+ms.sourcegitcommit: a6873b710ca07eb956d45596d4ec2c1d5dc57353
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67605245"
+ms.lasthandoff: 07/16/2019
+ms.locfileid: "68248195"
 ---
 # <a name="windows-virtual-desktop-powershell"></a>Windows Virtual Desktop: PowerShell
 
@@ -58,7 +58,7 @@ Get-RdsDiagnosticActivities -ActivityId <ActivityId>
 
 **Ursache:** Parameter -TenantName
 
-**Behebung:** Geben Sie Get-RdsDiagnosticActivities mit -TenantName <TenantName> aus.
+**Behebung:** Geben Sie „Get-RdsDiagnosticActivities“ mit „-TenantName \<Mandantenname>“ aus.
 
 ### <a name="error-get-rdsdiagnosticactivities----the-user-isnt-authorized-to-query-the-management-service"></a>Fehler Get-RdsDiagnosticActivities: Der Benutzer ist nicht berechtigt, den Verwaltungsdienst abzufragen.
 
@@ -68,7 +68,7 @@ Get-RdsDiagnosticActivities -Deployment -username <username>
 
 **Ursache:** Verwendung des Schalters -Deployment.
 
-**Behebung:** Der Schalter -Deployment kann nur von Bereitstellungsadministratoren verwendet werden. Diese Administratoren sind in der Regel Mitglieder des Teams für Remotedesktopdienste/Windows Virtual Desktop. Ersetzen Sie den Schalter -Deployment durch -TenantName <TenantName>.
+**Behebung:** Der Schalter -Deployment kann nur von Bereitstellungsadministratoren verwendet werden. Diese Administratoren sind in der Regel Mitglieder des Teams für Remotedesktopdienste/Windows Virtual Desktop. Ersetzen Sie den Schalter „-Deployment“ durch „-TenantName \<Mandantenname>“.
 
 ### <a name="error-new-rdsroleassignment----the-user-isnt-authorized-to-query-the-management-service"></a>Fehler New-RdsRoleAssignment: Der Benutzer ist nicht berechtigt, den Verwaltungsdienst abzufragen.
 

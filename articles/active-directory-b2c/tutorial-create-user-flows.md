@@ -10,12 +10,12 @@ ms.topic: article
 ms.date: 06/07/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 111196388d0e17ecde8a2055959f2f573e43ade8
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 130186af13b9207326cd52b46b880c1f13a16100
+ms.sourcegitcommit: fa45c2bcd1b32bc8dd54a5dc8bc206d2fe23d5fb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67056367"
+ms.lasthandoff: 07/12/2019
+ms.locfileid: "67848090"
 ---
 # <a name="tutorial-create-user-flows-in-azure-active-directory-b2c"></a>Tutorial: Erstellen von Benutzerflows in Azure Active Directory B2C
 
@@ -43,25 +43,25 @@ Der Benutzerflow für Registrierung und Anmeldung verarbeitet die Benutzeroberfl
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
 1. Stellen Sie sicher, dass Sie das Verzeichnis verwenden, das Ihren Azure AD B2C-Mandanten enthält, indem Sie im oberen Menü auf den **Verzeichnis- und Abonnementfilter** klicken und das entsprechende Verzeichnis auswählen.
 
-    ![Wechseln zum Abonnementverzeichnis](./media/tutorial-create-user-flows/switch-directories.PNG)
+    ![Verzeichnis- und Abonnementfilter mit ausgewähltem B2C-Mandanten](./media/tutorial-create-user-flows/switch-directories.PNG)
 
 1. Wählen Sie links oben im Azure-Portal die Option **Alle Dienste** aus, suchen Sie nach **Azure AD B2C**, und wählen Sie dann diese Option aus.
 1. Wählen Sie im Menü links unter **Richtlinien** die Option **Benutzerflows (Richtlinien)** aus, und wählen Sie dann **Neuer Benutzerflow** aus.
 
-    ![Auswählen von „Neuer Benutzerflow“](./media/tutorial-create-user-flows/signup-signin-user-flow.png)
+    ![Seite „Benutzerflows“ im Portal mit hervorgehobener Schaltfläche „Neuer Benutzerflow“](./media/tutorial-create-user-flows/signup-signin-user-flow.png)
 
 1. Wählen Sie auf der Registerkarte **Empfohlen** den Benutzerflow **Registrierung und Anmeldung** aus.
 
-    ![Auswählen des Benutzerflows für die Registrierung und Anmeldung](./media/tutorial-create-user-flows/signup-signin-type.png)
+    ![Seite „Benutzerflow auswählen“ mit hervorgehobenem „Anmeldung“ und „Anmeldeflow“](./media/tutorial-create-user-flows/signup-signin-type.png)
 
 1. Geben Sie unter **Name** einen Namen für den Benutzerflow ein. Beispiel: *signupsignin1*.
 1. Wählen Sie unter **Identitätsanbieter** die Option **E-Mail-Registrierung** aus.
 
-    ![Festlegen der Floweigenschaften](./media/tutorial-create-user-flows/signup-signin-properties.png)
+    ![Seite „Benutzerflow erstellen“ im Azure-Portal mit hervorgehobenen Eigenschaften](./media/tutorial-create-user-flows/signup-signin-properties.png)
 
 1. Wählen Sie für **Benutzerattribute und Ansprüche** die Ansprüche und Attribute aus, die Sie bei der Registrierung vom Benutzer sammeln und senden möchten. Wählen Sie z.B. **Mehr anzeigen** und dann Attribute und Ansprüche für **Land/Region**, **Anzeigename** und **Postleitzahl** aus. Klicken Sie auf **OK**.
 
-    ![Auswählen von Attributen und Ansprüchen](./media/tutorial-create-user-flows/signup-signin-attributes.png)
+    ![Auswahlseite für Attribute und Ansprüche mit drei ausgewählten Ansprüchen](./media/tutorial-create-user-flows/signup-signin-attributes.png)
 
 1. Klicken Sie auf **Erstellen**, um den Benutzerflow hinzuzufügen. Dem Namen wird automatisch das Präfix *B2C_1* vorangestellt.
 
@@ -71,7 +71,7 @@ Der Benutzerflow für Registrierung und Anmeldung verarbeitet die Benutzeroberfl
 1. Wählen Sie für **Anwendung** die Webanwendung *webapp1* aus, die Sie zuvor registriert haben. Als **Antwort-URL** sollte `https://jwt.ms` angezeigt werden.
 1. Klicken Sie auf **Benutzerflow ausführen**, und wählen Sie dann **Jetzt registrieren** aus.
 
-    ![Ausführen des Benutzerflows](./media/tutorial-create-user-flows/signup-signin-run-now.PNG)
+    ![Seite „Benutzerflow ausführen“ im Portal mit hervorgehobener Schaltfläche „Benutzerflow ausführen“](./media/tutorial-create-user-flows/signup-signin-run-now.PNG)
 
 1. Geben Sie eine gültige E-Mail-Adresse ein, klicken Sie auf **Überprüfungscode senden**, geben Sie den Überprüfungscode ein, und wählen Sie dann **Code überprüfen**aus.
 1. Geben Sie ein neues Kennwort ein, und bestätigen Sie es.

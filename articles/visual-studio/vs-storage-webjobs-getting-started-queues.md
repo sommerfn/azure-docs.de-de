@@ -12,12 +12,12 @@ ms.workload: azure-vs
 ms.topic: article
 ms.date: 12/02/2016
 ms.author: ghogen
-ms.openlocfilehash: f6f1a3a7f0a406e1dbb40f4bfc6a358da7ac68fa
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 44206f1826fc25407d9dec3f832b70881091e187
+ms.sourcegitcommit: a6873b710ca07eb956d45596d4ec2c1d5dc57353
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60391166"
+ms.lasthandoff: 07/16/2019
+ms.locfileid: "68248962"
 ---
 # <a name="getting-started-with-azure-queue-storage-and-visual-studio-connected-services-webjob-projects"></a>Erste Schritte mit Azure-Warteschlangenspeicher und verbundenen Visual Studio-Diensten (WebJob-Projekte)
 [!INCLUDE [storage-try-azure-tools-queues](../../includes/storage-try-azure-tools-queues.md)]
@@ -190,7 +190,7 @@ Weitere Informationen finden Sie unter [Ordnungsgemäßes Herunterfahren von Web
 Um eine Funktion zu schreiben, die eine neue Warteschlangennachricht erstellt, verwenden Sie das **Queue** -Attribut. Wie bei **QueueTrigger**auch, übergeben Sie den Warteschlangennamen als Zeichenfolge, oder Sie können den [Namen der Warteschlange dynamisch festlegen](#how-to-set-configuration-options).
 
 ### <a name="string-queue-messages"></a>Zeichenfolgen-Warteschlangennachrichten
-Im folgenden nicht asynchronen Beispiel wird eine neue Warteschlangennachricht in der Warteschlange mit dem Namen "outputqueue" mit dem gleichen Inhalt wie die Warteschlangennachricht erstellt, die in der Warteschlange mit dem Namen "inputqueue" empfangen wird. (Verwenden Sie für asynchrone Funktionen **IAsyncCollector<T>** , wie weiter unten in diesem Abschnitt gezeigt.)
+Im folgenden nicht asynchronen Beispiel wird eine neue Warteschlangennachricht in der Warteschlange mit dem Namen "outputqueue" mit dem gleichen Inhalt wie die Warteschlangennachricht erstellt, die in der Warteschlange mit dem Namen "inputqueue" empfangen wird. (Verwenden Sie für asynchrone Funktionen **IAsyncCollector\<T>** , wie weiter unten in diesem Abschnitt gezeigt.)
 
 ```csharp
 public static void CreateQueueMessage(
@@ -216,7 +216,7 @@ public static void CreateQueueMessage(
 Das SDK serialisiert das Objekt automatisch an JSON. Es wird immer eine Warteschlangennachricht erstellt, selbst wenn das Objekt Null ist.
 
 ### <a name="create-multiple-messages-or-in-async-functions"></a>Erstellen mehrerer Nachrichten oder in asynchronen Funktionen
-Um mehrere Nachrichten zu erstellen, legen Sie den Parametertyp für die Ausgabewarteschlange auf **ICollector<T>** oder **IAsyncCollector<T>** fest, wie im folgenden Beispiel gezeigt.
+Um mehrere Nachrichten zu erstellen, legen Sie den Parametertyp für die Ausgabewarteschlange auf **ICollector\<T>** oder **IAsyncCollector\<T>** fest, wie im folgenden Beispiel gezeigt.
 
 ```csharp
 public static void CreateQueueMessages(

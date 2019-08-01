@@ -12,30 +12,32 @@ author: garyericson
 ms.author: garye
 ms.reviewer: davidph
 manager: cgronlun
-ms.date: 05/02/2019
-ms.openlocfilehash: aa9c41ee34a50ab9b1409357bfe7d123166601bf
-ms.sourcegitcommit: 59fd8dc19fab17e846db5b9e262a25e1530e96f3
+ms.date: 07/26/2019
+ms.openlocfilehash: c1271d5b63fa796fe44b7a40c364953464a87539
+ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/21/2019
-ms.locfileid: "65978729"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68596667"
 ---
 # <a name="tutorial-prepare-data-to-train-a-predictive-model-in-r-with-azure-sql-database-machine-learning-services-preview"></a>Tutorial: Vorbereiten von Daten zum Trainieren eines Vorhersagemodells in R mit Machine Learning Services (Vorschauversion) für Azure SQL-Datenbank
 
-In Teil 1 dieser dreiteiligen Reihe von Tutorials bereiten Sie die Daten aus einer Azure SQL-Datenbank zum Trainieren eines Vorhersagemodells in R mit Machine Learning Services (Vorschauversion) für Azure SQL-Datenbank vor.
+In Teil 1 dieser dreiteiligen Tutorialreihe importieren Sie Daten aus einer Azure SQL-Datenbank in R und bereiten diese Daten vor. Später in dieser Reihe verwenden Sie die Daten zum Trainieren und Bereitstellen eines Predictive Machine Learning-Modells in R mit Machine Learning Services für Azure SQL-Datenbank (Vorschauversion).
 
 Stellen Sie sich für diese Reihe von Tutorials vor, dass Sie einen Skiverleih betreiben und die Anzahl der Vermietungen an einem in der Zukunft liegenden Datum vorhersagen möchten. Diese Informationen helfen Ihnen, Ihren Lagerbestand, Ihre Mitarbeiter und Ihre Anlagen bereitzumachen.
+
+In den Teilen 1 und 2 dieser Reihe entwickeln Sie einige R-Skripts in RStudio, um Ihre Daten vorzubereiten und ein Machine Learning-Modell zu trainieren. In Teil 3 führen Sie dann diese R-Skripts in einer SQL-Datenbank mithilfe gespeicherter Prozeduren aus.
 
 In diesem Artikel lernen Sie Folgendes:
 
 > [!div class="checklist"]
-> * Importieren einer Beispieldatenbank in eine Azure SQL-Datenbank
-> * Laden der Daten aus der Azure SQL-Datenbank in einen Datenrahmen unter Verwendung von R
-> * Vorbereiten der Daten durch Identifizieren einiger Spalten als Kategorien
+> * Importieren einer Beispieldatenbank in eine Azure SQL-Datenbank mithilfe von R
+> * Laden der Daten aus der Azure SQL-Datenbank in einen R-Datenrahmen
+> * Vorbereiten der Daten in R durch Identifizieren einiger Spalten als Kategorien
 
-In [Teil zwei](sql-database-tutorial-predictive-model-build-compare.md) erfahren Sie, wie Sie mehrere Modelle erstellen und trainieren und dann das genaueste auswählen.
+In [Teil 2](sql-database-tutorial-predictive-model-build-compare.md) erfahren Sie, wie Sie mehrere Machine Learning-Modelle in R erstellen und trainieren und dann das genaueste auswählen.
 
-In [Teil drei](sql-database-tutorial-predictive-model-deploy.md) lernen Sie, wie Sie das Modell in einer Datenbank speichern und anschließend eine gespeicherte Prozedur erstellen, die auf der Grundlage neuer Daten Vorhersagen treffen kann.
+In [Teil 3](sql-database-tutorial-predictive-model-deploy.md) lernen Sie, wie Sie das Modell in einer Datenbank speichern und anschließend auf der Grundlage der in den Teilen 1 und 2 entwickelten R-Skripts gespeicherte Prozeduren erstellen. Die gespeicherten Prozeduren werden in einer SQL-Datenbank ausgeführt, um Vorhersagen basierend auf neuen Daten zu treffen.
 
 [!INCLUDE[ml-preview-note](../../includes/sql-database-ml-preview-note.md)]
 
@@ -158,9 +160,9 @@ Führen Sie im Azure-Portal die folgenden Schritte aus:
 
 Im ersten Teil dieser Tutorialreihe haben Sie die folgenden Schritte ausgeführt:
 
-* Importieren einer Datenbank-Sicherungsdatei in eine Azure SQL-Datenbank
-* Laden der Daten aus der Azure SQL-Datenbank in einen Datenrahmen unter Verwendung von R
-* Vorbereiten der Daten durch Identifizieren einiger Spalten als Kategorien
+* Importieren einer Beispieldatenbank in eine Azure SQL-Datenbank mithilfe von R
+* Laden der Daten aus der Azure SQL-Datenbank in einen R-Datenrahmen
+* Vorbereiten der Daten in R durch Identifizieren einiger Spalten als Kategorien
 
 Um ein Machine Learning-Modell zu erstellen, das Daten aus der TutorialDB-Datenbank verwendet, verfolgen Sie Teil zwei dieser Tutorialreihe:
 

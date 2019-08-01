@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/09/2019
 ms.author: anavin
-ms.openlocfilehash: cf414cf08771090990775d124e27222e51f786e2
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 11144b1595370f9eb17afce71e0302a63468a089
+ms.sourcegitcommit: 770b060438122f090ab90d81e3ff2f023455213b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66122013"
+ms.lasthandoff: 07/17/2019
+ms.locfileid: "68305701"
 ---
 # <a name="create-a-virtual-network-peering---resource-manager-different-subscriptions"></a>Erstellen eines Peerings virtueller Netzwerke gemäß dem Ressourcen-Manager-Modell in verschiedenen Abonnements
 
@@ -37,11 +37,11 @@ In diesem Tutorial wird ein Peering für virtuelle Netzwerke in der gleichen Reg
 
 Ein Peering in Netzwerken lässt sich mithilfe des [Azure-Portals](#portal), mit der [Azure-Befehlszeilenschnittstelle](#cli) (CLI), mit [Azure PowerShell](#powershell) oder mit der [Azure Resource Manager-Vorlage](#template) erstellen. Klicken Sie auf einen der vorherigen Toollinks. So gelangen Sie direkt zu den Anleitungen zum Erstellen von Peerings virtueller Netzwerke mit dem Tool Ihrer Wahl.
 
+Wenn sich die virtuellen Netzwerke in unterschiedlichen Abonnements befinden und die Abonnements unterschiedlichen Azure Active Directory-Mandanten zugeordnet sind, sollten Sie die folgenden Schritte ausführen, bevor Sie fortfahren:
+1. Fügen Sie den Benutzer aus jedem Active Directory-Mandanten dem entsprechenden anderen Azure Active Directory-Mandanten als [Gastbenutzer](../active-directory/b2b/add-users-administrator.md?toc=%2fazure%2fvirtual-network%2ftoc.json#add-guest-users-to-the-directory) hinzu.
+1. Jeder Benutzer muss die Einladung als Gastbenutzer vom entsprechenden Azure Active Directory-Mandanten akzeptieren.
+
 ## <a name="portal"></a>Erstellen eines Peerings: Azure-Portal
-
-Befolgen Sie die Schritte im Abschnitt zur CLI und zu PowerShell in diesem Artikel, wenn sich die virtuellen Netzwerke, für die Sie das Peering herstellen möchten, in Abonnements befinden, die verschiedenen Azure Active Directory-Mandanten zugeordnet sind. Das Portal verfügt nicht über die Unterstützung für das Peering von virtuellen Netzwerken, die zu Abonnements aus unterschiedlichen Active Directory-Mandanten gehören. 
-
-Beachten Sie, dass es in Cloud Shell Einschränkungen hinsichtlich des Wechselns von Abonnements und Mandanten gibt, wegen denen VNet-Peering oder globales VNet-Peering zwischen virtuellen Netzwerken, die zu Abonnements in verschiedenen Azure Active Directory-Mandanten gehören, nicht funktioniert. Verwenden Sie PowerShell oder die CLI.
 
 In den folgenden Schritten werden für jedes Abonnement unterschiedliche Konten genutzt. Wenn Sie ein Konto verwenden, das über Berechtigungen für beide Abonnements verfügt, können Sie dasselbe Konto für alle Schritte verwenden. Überspringen Sie die Schritte zum Abmelden vom Portal und zum Zuweisen weiterer Benutzerberechtigungen für die virtuellen Netzwerke.
 
@@ -99,9 +99,7 @@ In den folgenden Schritten werden für jedes Abonnement unterschiedliche Konten 
 
 ## <a name="cli"></a>Erstellen eines Peerings: Azure CLI
 
-In diesem Tutorial werden unterschiedliche Konten für jedes Abonnement verwendet. Wenn Sie ein Konto verwenden, das über Berechtigungen für beide Abonnements verfügt, können Sie dasselbe Konto für alle Schritte verwenden. Überspringen Sie die Schritte zum Abmelden von Azure und zum Entfernen der Skriptzeilen zum Erstellen von Benutzerrollenzuweisungen. Ersetzen Sie UserA@azure.com und UserB@azure.com in allen folgenden Skripts durch die Benutzernamen, die Sie für UserA und UserB verwenden. Wenn sich die virtuellen Netzwerke in unterschiedlichen Abonnements befinden und die Abonnements unterschiedlichen Azure Active Directory-Mandanten zugeordnet sind, sollten Sie die folgenden Schritte ausführen, bevor Sie fortfahren:
- - Fügen Sie den Benutzer aus jedem Active Directory-Mandanten dem entsprechenden anderen Azure Active Directory-Mandanten als [Gastbenutzer](../active-directory/b2b/add-users-administrator.md?toc=%2fazure%2fvirtual-network%2ftoc.json#add-guest-users-to-the-directory) hinzu.
- - Jeder Benutzer muss die Einladung als Gastbenutzer vom entsprechenden Azure Active Directory-Mandanten akzeptieren.
+In diesem Tutorial werden unterschiedliche Konten für jedes Abonnement verwendet. Wenn Sie ein Konto verwenden, das über Berechtigungen für beide Abonnements verfügt, können Sie dasselbe Konto für alle Schritte verwenden. Überspringen Sie die Schritte zum Abmelden von Azure und zum Entfernen der Skriptzeilen zum Erstellen von Benutzerrollenzuweisungen. Ersetzen Sie UserA@azure.com und UserB@azure.com in allen folgenden Skripts durch die Benutzernamen, die Sie für UserA und UserB verwenden. 
 
 Für das Skript gilt Folgendes:
 
@@ -182,9 +180,6 @@ Alle Azure-Ressourcen, die Sie in einem der virtuellen Netzwerke erstellen, sind
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 In diesem Tutorial werden unterschiedliche Konten für jedes Abonnement verwendet. Wenn Sie ein Konto verwenden, das über Berechtigungen für beide Abonnements verfügt, können Sie dasselbe Konto für alle Schritte verwenden. Überspringen Sie die Schritte zum Abmelden von Azure und zum Entfernen der Skriptzeilen zum Erstellen von Benutzerrollenzuweisungen. Ersetzen Sie UserA@azure.com und UserB@azure.com in allen folgenden Skripts durch die Benutzernamen, die Sie für UserA und UserB verwenden.
-Wenn sich die virtuellen Netzwerke in unterschiedlichen Abonnements befinden und die Abonnements unterschiedlichen Azure Active Directory-Mandanten zugeordnet sind, sollten Sie die folgenden Schritte ausführen, bevor Sie fortfahren:
- - Fügen Sie den Benutzer aus jedem Active Directory-Mandanten dem entsprechenden anderen Azure Active Directory-Mandanten als [Gastbenutzer](../active-directory/b2b/add-users-administrator.md?toc=%2fazure%2fvirtual-network%2ftoc.json#add-guest-users-to-the-directory) hinzu.
- - Jeder Benutzer muss die Einladung als Gastbenutzer vom entsprechenden Active Directory-Mandanten akzeptieren.
 
 1. Vergewissern Sie sich, dass Sie über Azure PowerShell-Version 1.0.0 oder höher verfügen. Zu diesem Zweck können Sie `Get-Module -Name Az` ausführen. Wir empfehlen Ihnen, die aktuelle Version des PowerShell-[Az](/powershell/azure/install-az-ps)-Moduls zu installieren. Wenn Sie noch nicht mit Azure PowerShell vertraut sind, lesen Sie die [Übersicht über Azure PowerShell](/powershell/azure/overview?toc=%2fazure%2fvirtual-network%2ftoc.json). 
 2. Starten Sie eine PowerShell-Sitzung.
@@ -249,10 +244,6 @@ Wenn sich die virtuellen Netzwerke in unterschiedlichen Abonnements befinden und
 14. **Optional:** Zum Löschen der Ressourcen, die Sie in diesem Tutorial erstellt haben, führen Sie die Schritte im Abschnitt [Löschen von Ressourcen](#delete-powershell) in diesem Artikel aus.
 
 ## <a name="template"></a>Erstellen eines Peerings: Resource Manager-Vorlage
-
-Wenn sich die virtuellen Netzwerke in unterschiedlichen Abonnements befinden und die Abonnements unterschiedlichen Azure Active Directory-Mandanten zugeordnet sind, sollten Sie die folgenden Schritte ausführen, bevor Sie fortfahren:
- - Fügen Sie den Benutzer aus jedem Active Directory-Mandanten dem entsprechenden anderen Azure Active Directory-Mandanten als [Gastbenutzer](../active-directory/b2b/add-users-administrator.md?toc=%2fazure%2fvirtual-network%2ftoc.json#add-guest-users-to-the-directory) hinzu.
- - Jeder Benutzer muss die Einladung als Gastbenutzer vom entsprechenden Active Directory-Mandanten akzeptieren.
 
 1. Führen Sie die Schritte in den Abschnitten [Portal](virtual-network-manage-peering.md#permissions), [Azure CLI](#portal) oder [PowerShell](#cli) dieses Artikels durch, um ein virtuelles Netzwerk zu erstellen und die passenden [Berechtigungen](#powershell) zuzuweisen.
 2. Speichern Sie den darauf folgenden Text in einer Datei auf dem lokalen Computer. Ersetzen Sie `<subscription ID>` durch die Abonnement-ID von UserA. Sie können die Datei z.B. unter dem Namen „vnetpeeringA.json“ speichern.

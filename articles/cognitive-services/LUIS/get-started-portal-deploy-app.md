@@ -1,6 +1,6 @@
 ---
 title: 'Schnellstart: Bereitstellen einer App im LUIS-Portal'
-titleSuffix: Language Understanding - Azure Cognitive Services
+titleSuffix: Azure Cognitive Services
 description: Erfahren Sie, wie Sie Ihre LUIS-App im Vorhersageendpunkt bereitstellen, sobald die App bereit ist, Äußerungsvorhersagen an eine Clientanwendung wie einen Chatbot zurückzugeben. Diese Schnellstartanleitung führt Sie schrittweise durch die Bereitstellung einer Anwendung, indem Sie eine Vorhersageendpunktressource erstellen, der App die Ressource zuweisen, die App trainieren und die App veröffentlichen.
 services: cognitive-services
 author: diberry
@@ -10,12 +10,12 @@ ms.subservice: language-understanding
 ms.topic: quickstart
 ms.date: 05/07/2019
 ms.author: diberry
-ms.openlocfilehash: db2b543fa8e5429cc8d50d7789b03239173f563d
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.openlocfilehash: 5c310c1943eaf23423be873c6172e27c621fe109
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65154526"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68564070"
 ---
 # <a name="quickstart-deploy-an-app-in-the-luis-portal"></a>Schnellstart: Bereitstellen einer App im LUIS-Portal
 
@@ -34,17 +34,17 @@ Sie erstellen die Vorhersageendpunktressource im Azure-Portal. Diese Ressource d
 
 1. Melden Sie sich beim [Azure-Portal](https://ms.portal.azure.com/) an.
 
-1. Wählen Sie das grüne **+**-Anmeldesymbol im oberen linken Bereich aus. Suchen Sie im Marketplace nach `Cognitive Services`, und wählen Sie sie aus.
+1. Wählen Sie das grüne **+** -Anmeldesymbol im oberen linken Bereich aus. Suchen Sie im Marketplace nach `Cognitive Services`, und wählen Sie sie aus.
 
 1. Konfigurieren Sie das Abonnement mit den folgenden Einstellungen:
 
    |Einstellung|Wert|Zweck|
    |--|--|--|
    |NAME|`my-cognitive-service-resource`|Der Name der Azure-Ressource. Sie benötigen diesen Namen, wenn Sie der App im LUIS-Portal die Ressource zuweisen.|
-   |Abonnement|Ihr Abonnement|Wählen Sie eines der mit Ihrem Konto verknüpften Abonnements aus.|
+   |Subscription|Ihr Abonnement|Wählen Sie eines der mit Ihrem Konto verknüpften Abonnements aus.|
    |Location|**USA, Westen**|Die Azure-Region für diese Ressource.|
    |Tarif|**S0**|Der Standardtarif für diese Ressource.|
-   |Ressourcengruppe|`my-cognitive-service-resource-group`|Erstellen Sie eine neue Ressourcengruppe für alle Ihre Cognitive Services-Ressourcen. Wenn Sie mit den Ressourcen fertig sind, können Sie die Ressourcengruppe löschen, um Ihr Abonnement zu bereinigen. |
+   |Resource group|`my-cognitive-service-resource-group`|Erstellen Sie eine neue Ressourcengruppe für alle Ihre Cognitive Services-Ressourcen. Wenn Sie mit den Ressourcen fertig sind, können Sie die Ressourcengruppe löschen, um Ihr Abonnement zu bereinigen. |
    | | | |
 
    ![Azure-API-Auswahl](./media/get-started-portal-deploy-app/create-cognitive-services-resource.png)

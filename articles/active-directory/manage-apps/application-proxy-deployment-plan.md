@@ -7,7 +7,7 @@ author: barbaraselden
 manager: CelesteDG
 ms.assetid: ''
 ms.service: active-directory
-ms.component: app-mgmt
+ms.subservice: app-mgmt
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 04/04/2019
 ms.author: baselden
 ms.reviewer: ''
-ms.openlocfilehash: 24429c5596494082b526b9648a1405bc397b9d2f
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 7d40c0604f0947abe8d536eafe87545790476a98
+ms.sourcegitcommit: c0419208061b2b5579f6e16f78d9d45513bb7bbc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67108483"
+ms.lasthandoff: 07/08/2019
+ms.locfileid: "67625547"
 ---
 # <a name="plan-an-azure-ad-application-proxy-deployment"></a>Planen der Bereitstellung eines Azure AD-Anwendungsproxys
 
@@ -70,7 +70,8 @@ Die folgenden grundlegenden Anforderungen müssen erfüllt sein, um den Azure AD
 
 * **Öffentliches Zertifikat**: Wenn Sie benutzerdefinierte Domänennamen verwenden, müssen Sie ein öffentliches Zertifikat beschaffen, das von einer anderen vertrauenswürdigen Zertifizierungsstelle als Microsoft ausgestellt wurde. Je nach den Anforderungen Ihrer Organisation kann die Beschaffung eines Zertifikats einige Zeit dauern. Wir empfehlen Ihnen daher, sich so früh wie möglich darum zu kümmern. Für den Azure-Anwendungsproxy werden Zertifikate vom Typ „Standard“, [„Platzhalter“](application-proxy-wildcard.md) oder „SAN-basiert“ unterstützt.
 
-* **Domänenanforderungen**: Für das einmalige Anmelden bei Ihren veröffentlichten Anwendungen mithilfe der eingeschränkten Kerberos-Delegierung (Kerberos Constrained Delegation, KCD) muss ein Connectorhost in dieselbe AD-Domäne wie die zu veröffentlichenden Anwendungen eingebunden sein. Ausführliche Informationen zu diesem Thema finden Sie unter [Eingeschränkte Delegierung von Kerberos für die einmalige Anmeldung zu Ihren Apps mit dem Anwendungsproxy](application-proxy-configure-single-sign-on-with-kcd.md). Der Connectordienst wird im Kontext des lokalen Systems ausgeführt und sollte nicht für die Verwendung einer benutzerdefinierten Identität konfiguriert werden.
+* **Domänenanforderungen**: Das einmalige Anmelden bei Ihren veröffentlichten Anwendungen mithilfe der eingeschränkten Kerberos-Delegierung (Kerberos Constrained Delegation, KCD) erfordert, dass der Server, auf dem der Connector ausgeführt wird, und der Server, auf dem die App ausgeführt wird, in Domänen eingebunden sind und derselben Domäne oder vertrauenswürdigen Domänen angehören.
+Ausführliche Informationen zu diesem Thema finden Sie unter [Eingeschränkte Delegierung von Kerberos für die einmalige Anmeldung zu Ihren Apps mit dem Anwendungsproxy](application-proxy-configure-single-sign-on-with-kcd.md). Der Connectordienst wird im Kontext des lokalen Systems ausgeführt und sollte nicht für die Verwendung einer benutzerdefinierten Identität konfiguriert werden.
 
 * **DNS-Einträge für URLs**
 

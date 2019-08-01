@@ -15,28 +15,21 @@ ms.topic: quickstart
 ms.date: 03/26/2018
 ms.author: yegu
 ms.custom: mvc
-ms.openlocfilehash: bac43ef17116dcb2d6a6bb3dd7c1617d91a010d9
-ms.sourcegitcommit: 4c2b9bc9cc704652cc77f33a870c4ec2d0579451
+ms.openlocfilehash: 7cca9d020d5e999bda2c494853295957da5cca1a
+ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/17/2019
-ms.locfileid: "65864818"
+ms.lasthandoff: 07/18/2019
+ms.locfileid: "68326493"
 ---
-# <a name="quickstart-create-an-aspnet-web-app"></a>Schnellstart: Erstellen einer ASP.NET-Web-App 
+# <a name="quickstart-use-azure-cache-for-redis-with-an-aspnet-web-app"></a>Schnellstart: Verwenden von Azure Cache for Redis mit einer ASP.NET-Web-App 
 
-## <a name="introduction"></a>Einführung
-
-In dieser Schnellstartanleitung wird erörtert, wie Sie mit Visual Studio 2019 eine ASP.NET-Webanwendung erstellen und für Azure App Service bereitstellen. Die Beispielanwendung stellt eine Verbindung mit Azure Cache for Redis her, um Daten aus dem Cache abzurufen und zu speichern. Nach der Ausführung der in dieser Schnellstartanleitung beschriebenen Schritte verfügen Sie über eine funktionsfähige, in Azure gehostete Web-App, die Lese- und Schreibvorgänge in Azure Cache for Redis ausführt.
-
-![Einfacher abgeschlossener Azure-Test](./media/cache-web-app-howto/cache-simple-test-complete-azure.png)
-
-[!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
+In dieser Schnellstartanleitung erstellen Sie mit Visual Studio 2019 eine ASP.NET-Webanwendung, die sich mit Azure Cache for Redis verbindet, um Daten aus dem Cache zu speichern und abzurufen. Sie stellen die App dann für Azure App Service bereit.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-Installieren Sie [Visual Studio 2019](https://www.visualstudio.com/downloads/) mit den folgenden Umgebungen, um diesen Schnellstart durchzuführen:
-* ASP.NET und Webentwicklung
-* Azure-Entwicklung
+- Azure-Abonnement – [Erstellen eines kostenlosen Kontos](https://azure.microsoft.com/free/)
+- [Visual Studio 2019](https://www.visualstudio.com/downloads/) mit den Workloads **ASP.NET und Webentwicklung** und **Azure-Entwicklung**.
 
 ## <a name="create-the-visual-studio-project"></a>Erstellen des Visual Studio-Projekts
 

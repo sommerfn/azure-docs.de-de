@@ -12,17 +12,17 @@ author: garyericson
 ms.author: garye
 ms.reviewer: davidph
 manager: cgronlun
-ms.date: 05/02/2019
-ms.openlocfilehash: 3d336d6a53b6d234048c56d8492d278bef6fed64
-ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
+ms.date: 07/26/2019
+ms.openlocfilehash: 2c85a378dc219e8af1b6458344ee4dba0fa73e68
+ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/20/2019
-ms.locfileid: "65957511"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68596798"
 ---
 # <a name="tutorial-create-a-predictive-model-in-r-with-azure-sql-database-machine-learning-services-preview"></a>Tutorial: Erstellen eines Vorhersagemodells in R mit Machine Learning Services (Vorschauversion) für Azure SQL-Datenbank
 
-In Teil zwei dieser dreiteiligen Tutorialreihe erstellen Sie zwei Vorhersagemodelle in R mit den Machine Learning Services (Vorschau) von Azure SQL-Datenbank und wählen dann das genaueste Modell aus.
+In Teil 2 dieser dreiteiligen Tutorialreihe erstellen Sie zwei Vorhersagemodelle in R und wählen dann das genaueste Modell aus. Im nächsten Teil dieser Reihe stellen Sie dieses Modell in einer SQL-Datenbank mit Machine Learning Services für Azure SQL-Datenbank (Vorschauversion) bereit.
 
 In diesem Artikel lernen Sie Folgendes:
 
@@ -31,9 +31,9 @@ In diesem Artikel lernen Sie Folgendes:
 > * Erstellen von Vorhersagen aus beiden Modellen
 > * Vergleichen der Ergebnisse, um das genaueste Modell zu wählen
 
-In [Teil eins](sql-database-tutorial-predictive-model-prepare-data.md) haben Sie gelernt, eine Beispieldatenbank in Azure SQL-Datenbank zu importieren und anschließend die Daten vorzubereiten, die zum Trainieren eines Vorhersagemodells in R verwendet werden sollen.
+In [Teil 1](sql-database-tutorial-predictive-model-prepare-data.md) haben Sie gelernt, wie Sie eine Beispieldatenbank importieren und anschließend die Daten vorbereiten, die zum Trainieren eines Vorhersagemodells in R verwendet werden sollen.
 
-In [Teil drei](sql-database-tutorial-predictive-model-deploy.md) lernen Sie, wie Sie das Modell in einer Datenbank speichern und anschließend eine gespeicherte Prozedur erstellen, die auf der Grundlage neuer Daten Vorhersagen treffen kann.
+In [Teil 3](sql-database-tutorial-predictive-model-deploy.md) lernen Sie, wie Sie das Modell in einer Datenbank speichern und anschließend auf der Grundlage der in den Teilen 1 und 2 entwickelten R-Skripts gespeicherte Prozeduren erstellen. Die gespeicherten Prozeduren werden in einer SQL-Datenbank ausgeführt, um Vorhersagen basierend auf neuen Daten zu treffen.
 
 [!INCLUDE[ml-preview-note](../../includes/sql-database-ml-preview-note.md)]
 

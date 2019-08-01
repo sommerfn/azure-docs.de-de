@@ -5,20 +5,20 @@ author: ajlam
 ms.author: andrela
 ms.service: mariadb
 ms.topic: conceptual
-ms.date: 06/10/2019
-ms.openlocfilehash: eb228138118512c5c64574212910c5f16885ee94
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.date: 07/12/2019
+ms.openlocfilehash: 902187c3462c54f728519aa1e6e60fbcc1eab20f
+ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67081643"
+ms.lasthandoff: 07/15/2019
+ms.locfileid: "67876311"
 ---
 # <a name="how-to-create-and-manage-read-replicas-in-azure-database-for-mariadb-using-the-azure-portal"></a>Informationen zum Erstellen und Verwalten von Lesereplikaten in Azure Database for MariaDB mithilfe des Azure-Portals
 
 In diesem Artikel erfahren Sie, wie Sie Lesereplikate im Azure Database for MariaDB-Dienst über das Azure-Portal erstellen und verwalten.
 
 > [!IMPORTANT]
-> Die Lesereplikation in derselben Region befindet sich derzeit in der öffentlichen Vorschauversion.
+> Sie können ein Lesereplikat in derselben Region wie Ihren Masterserver oder in einer anderen beliebigen Azure-Region erstellen. Lesereplikate (in derselben Region und regionsübergreifend) sind zurzeit als öffentliche Vorschauversion verfügbar.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -45,7 +45,11 @@ Ein Lesereplikatserver kann mit den folgenden Schritten erstellt werden:
 
     ![Azure Database for MariaDB: Replikatname](./media/howto-read-replica-portal/replica-name.png)
 
-6. Wählen Sie **OK** aus, um die Erstellung des Replikats zu bestätigen.
+6. Wählen Sie den Standort für den Replikatserver aus. Sie können ein Replikat in einer beliebigen Azur-Region erstellen. Der Standardstandort ist derselbe wie beim Masterserver.
+
+    ![Azure Database for MariaDB – Replikatstandort](./media/howto-read-replica-portal/replica-location.png)
+
+7. Wählen Sie **OK** aus, um die Erstellung des Replikats zu bestätigen.
 
 > [!NOTE]
 > Lesereplikate werden mit der gleichen Serverkonfiguration wie der Masterserver erstellt. Die Replikatserverkonfiguration kann nach der Erstellung geändert werden. Für die Konfiguration des Replikatservers sollten mindestens die gleichen Werte verwendet werden wie für den Masterserver, damit das Replikat über genügend Kapazität verfügt.

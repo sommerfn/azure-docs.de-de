@@ -1,5 +1,5 @@
 ---
-title: Ändern der Konten, die von einer bei der Microsoft Identity Platform registrierten Anwendung unterstützt werden | Azure
+title: Ändern von Microsoft Identity Platform-App-Konten | Azure
 description: Konfigurieren Sie eine bei der Microsoft Identity Platform registrierte Anwendung, um zu ändern, welche Benutzer oder Konten auf die Anwendung zugreifen können.
 services: active-directory
 documentationcenter: ''
@@ -17,12 +17,12 @@ ms.author: ryanwi
 ms.custom: aaddev
 ms.reviewer: aragra, lenalepa, sureshja
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 00d99ae48abfcb3e4d4abc0d63565994df45f746
-ms.sourcegitcommit: f6c85922b9e70bb83879e52c2aec6307c99a0cac
+ms.openlocfilehash: be62dabc01e00465fa5227c5531fa18a16cf10a9
+ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/11/2019
-ms.locfileid: "65545725"
+ms.lasthandoff: 07/22/2019
+ms.locfileid: "68380782"
 ---
 # <a name="quickstart-modify-the-accounts-supported-by-an-application"></a>Schnellstart: Ändern der von einer Anwendung unterstützten Konten
 

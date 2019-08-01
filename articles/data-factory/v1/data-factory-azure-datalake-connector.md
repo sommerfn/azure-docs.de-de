@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 01/22/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 3bb372c4c3ddb79429df20c24c691c847e927e2a
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: d8637a2711c0301d9e9f409e169ed04fb3d65783
+ms.sourcegitcommit: 64798b4f722623ea2bb53b374fb95e8d2b679318
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60567349"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67839544"
 ---
 # <a name="copy-data-to-and-from-data-lake-storage-gen1-by-using-data-factory"></a>Kopieren von Daten nach bzw. aus Data Lake Storage Gen1 mit Data Factory
 > [!div class="op_single_selector" title1="Wählen Sie die von Ihren verwendete Version des Data Factory-Diensts aus:"]
@@ -54,7 +54,7 @@ Sie können eine Pipeline mit einer Kopieraktivität erstellen, die Daten mithil
 
 Die einfachste Möglichkeit, eine Pipeline zum Kopieren von Daten zu erstellen, ist die Verwendung des **Kopier-Assistenten**. Ein Tutorial zur Erstellung einer Pipeline mit dem Kopier-Assistenten finden Sie unter [Tutorial: Erstellen einer Pipeline mit dem Kopier-Assistenten](data-factory-copy-data-wizard-tutorial.md).
 
-Sie können auch die folgenden Tools zum Erstellen einer Pipeline verwenden: **Azure-Portal**, **Visual Studio**, **Azure PowerShell**, **Azure Resource Manager-Vorlagen**, **.NET-API** und **REST-API**. Im [Tutorial zur Kopieraktivität](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) finden Sie detaillierte Anweisungen, wie Sie eine Pipeline mit einer Kopieraktivität erstellen können.
+Sie können auch die folgenden Tools zum Erstellen einer Pipeline verwenden: **Visual Studio**, **Azure PowerShell**, **Azure Resource Manager-Vorlage**, **.NET-API** und **REST-API**. Im [Tutorial zur Kopieraktivität](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) finden Sie detaillierte Anweisungen, wie Sie eine Pipeline mit einer Kopieraktivität erstellen können.
 
 Unabhängig davon, ob Sie Tools oder APIs verwenden, führen Sie die folgenden Schritte aus, um eine Pipeline zu erstellen, die Daten aus einem Quelldatenspeicher in einen Senkendatenspeicher verschiebt:
 
@@ -208,7 +208,7 @@ Nähere Informationen zu den im Code verwendeten Data Factory-Klassen finden Sie
 
 2. Achten Sie darauf, dem Benutzer oder dem Dienstprinzipal für das Data Lake-Konto mindestens die Rolle **Leser** zu erteilen. Dazu gehen Sie wie folgt vor:
 
-    1. Navigieren Sie zu Azure-Portal > Ihr Data Lake Store-Konto
+    1. Navigieren Sie im Azure-Portal zu Ihrem Data Lake Storage-Konto.
     2. Klicken Sie auf dem Data Lake Storage-Blatt auf **Zugriffssteuerung (IAM)** .
     3. Klicken Sie auf **Rollenzuweisung hinzufügen**.
     4. Legen Sie die **Rolle** auf **Leser** fest, und wählen Sie den Benutzer oder den Dienstprinzipal aus, den Sie zum Kopieren verwenden, um den Zugriff zu erteilen
@@ -307,7 +307,7 @@ Dieser Abschnitt beschreibt das resultierende Verhalten des Kopiervorgangs für 
 Ausführliche Informationen finden Sie im Artikel [Datei- und Komprimierungsformate in Azure Data Factory](data-factory-supported-file-and-compression-formats.md).
 
 ## <a name="json-examples-for-copying-data-to-and-from-data-lake-store"></a>JSON-Beispiele zum Kopieren von Daten in bzw. aus Data Lake Store
-Die folgenden Beispiele enthalten JSON-Beispieldefinitionen. Sie können diese Beispieldefinitionen zum Erstellen einer Pipeline verwenden, indem Sie das [Azure-Portal](data-factory-copy-activity-tutorial-using-azure-portal.md), [Visual Studio](data-factory-copy-activity-tutorial-using-visual-studio.md) oder [Azure PowerShell](data-factory-copy-activity-tutorial-using-powershell.md) nutzen. Die Beispiele verdeutlichen, wie Sie Daten in und aus Data Lake Store und Azure Blob Storage kopieren. Allerdings können Daten _direkt_ aus einer der Quellen in eine der unterstützten Senken kopiert werden. Weitere Informationen finden Sie im Abschnitt „Unterstützte Datenspeicher und Formate“ des Artikels [Verschieben von Daten mit der Kopieraktivität](data-factory-data-movement-activities.md).
+Die folgenden Beispiele enthalten JSON-Beispieldefinitionen. Sie können diese Beispieldefinitionen zum Erstellen einer Pipeline mithilfe von [Visual Studio](data-factory-copy-activity-tutorial-using-visual-studio.md) oder [Azure PowerShell](data-factory-copy-activity-tutorial-using-powershell.md) verwenden. Die Beispiele verdeutlichen, wie Sie Daten in und aus Data Lake Store und Azure Blob Storage kopieren. Allerdings können Daten _direkt_ aus einer der Quellen in eine der unterstützten Senken kopiert werden. Weitere Informationen finden Sie im Abschnitt „Unterstützte Datenspeicher und Formate“ des Artikels [Verschieben von Daten mit der Kopieraktivität](data-factory-data-movement-activities.md).
 
 ### <a name="example-copy-data-from-azure-blob-storage-to-azure-data-lake-store"></a>Beispiel: Kopieren von Daten aus Azure Blob Storage nach Azure Data Lake Storage
 Mit dem Beispielcode in diesem Abschnitt wird Folgendes veranschaulicht:

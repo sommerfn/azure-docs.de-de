@@ -5,15 +5,15 @@ services: storage
 author: jeffpatt24
 ms.service: storage
 ms.topic: article
-ms.date: 01/31/2019
+ms.date: 07/16/2019
 ms.author: jeffpatt
 ms.subservice: files
-ms.openlocfilehash: 9cd1be26f6832fffb86dfefd0d93d9dbb393c0f0
-ms.sourcegitcommit: 82efacfaffbb051ab6dc73d9fe78c74f96f549c2
+ms.openlocfilehash: 1e35ef9eab841878ecc147d7b22a82860f27e7d9
+ms.sourcegitcommit: a8b638322d494739f7463db4f0ea465496c689c6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/20/2019
-ms.locfileid: "67303874"
+ms.lasthandoff: 07/17/2019
+ms.locfileid: "68297701"
 ---
 # <a name="troubleshoot-azure-file-sync"></a>Problembehandlung für Azure-Dateisynchronisierung
 Mit der Azure-Dateisynchronisierung können Sie die Dateifreigaben Ihrer Organisation in Azure Files zentralisieren, ohne auf die Flexibilität, Leistung und Kompatibilität eines lokalen Dateiservers verzichten zu müssen. Mit der Azure-Dateisynchronisierung werden Ihre Windows Server-Computer zu einem schnellen Cache für Ihre Azure-Dateifreigabe. Sie können ein beliebiges Protokoll verwenden, das unter Windows Server verfügbar ist, um lokal auf Ihre Daten zuzugreifen, z.B. SMB, NFS und FTPS. Sie können weltweit so viele Caches wie nötig nutzen.
@@ -244,6 +244,7 @@ Um diese Fehler anzuzeigen, führen Sie das PowerShell-Skript **FileSyncErrorsRe
 
 | HRESULT | HRESULT (dezimal) | Fehlerzeichenfolge | Problem | Wiederherstellung |
 |---------|-------------------|--------------|-------|-------------|
+| 0x80070043 | -2147942467 | ERROR_BAD_NET_NAME | Auf die mehrstufige Datei auf dem Server kann nicht zugegriffen werden. Dieses Problem tritt auf, wenn die mehrstufige Datei vor dem Löschen eines Serverendpunkts nicht zurückgerufen wurde. | Informationen zur Behebung dieses Problems finden Sie unter [Auf Tieringdateien kann nach dem Löschen eines Serverendpunkts nicht zugegriffen werden](https://docs.microsoft.com/azure/storage/files/storage-sync-files-troubleshoot?tabs=portal1%2Cazure-portal#tiered-files-are-not-accessible-on-the-server-after-deleting-a-server-endpoint). |
 | 0x80c80207 | -2134375929 | ECS_E_SYNC_CONSTRAINT_CONFLICT | Eine Datei- oder Verzeichnisänderung kann noch nicht synchronisiert werden, da ein abhängiger Ordner noch nicht synchronisiert ist. Dieses Element wird synchronisiert, sobald die abhängigen Änderungen synchronisiert wurden. | Keine weiteren Maßnahmen erforderlich. |
 | 0x8007007b | -2147024773 | ERROR_INVALID_NAME | Der Datei- oder Verzeichnisname ist ungültig. | Benennen Sie die jeweiligen Datei oder das betreffende Verzeichnis um. Weitere Informationen finden Sie unter [Behandlung von nicht unterstützten Zeichen](https://docs.microsoft.com/azure/storage/files/storage-sync-files-troubleshoot?tabs=portal1%2Cazure-portal#handling-unsupported-characters). |
 | 0x80c80018 | -2134376424 | ECS_E_SYNC_FILE_IN_USE | Eine Datei kann nicht synchronisiert werden, da sie momentan verwendet wird. Die Datei wird synchronisiert, wenn sie nicht mehr verwendet wird. | Keine weiteren Maßnahmen erforderlich. Die Azure-Dateisynchronisierung erstellt einmal pro Tag eine temporäre VSS-Momentaufnahme auf dem Server, um Dateien mit offenen Handles zu synchronisieren. |
@@ -253,8 +254,9 @@ Um diese Fehler anzuzeigen, führen Sie das PowerShell-Skript **FileSyncErrorsRe
 | 0x80070020 | -2147024864 | ERROR_SHARING_VIOLATION | Eine Datei kann nicht synchronisiert werden, da sie momentan verwendet wird. Die Datei wird synchronisiert, wenn sie nicht mehr verwendet wird. | Keine weiteren Maßnahmen erforderlich. |
 | 0x80c80017 | -2134376425 | ECS_E_SYNC_OPLOCK_BROKEN | Eine Datei wurde während der Synchronisierung geändert, deshalb muss sie erneut synchronisiert werden. | Keine weiteren Maßnahmen erforderlich. |
 
+
 #### <a name="handling-unsupported-characters"></a>Behandlung von nicht unterstützten Zeichen
-Wenn das PowerShell-Skript **FileSyncErrorsReport.ps1** Fehler aufgrund von nicht unterstützten Zeichen (Fehlercode 0x8007007b) anzeigt, sollten Sie diese Zeichen aus den entsprechenden Dateinamen entfernen oder darin ändern. PowerShell gibt diese Zeichen wahrscheinlich als Fragezeichen oder leere Rechtecke aus, da die meisten dieser Zeichen keine standardisierte visuelle Codierung aufweisen. Mit dem [Auswertungstool](storage-sync-files-planning.md#evaluation-tool) können Sie nicht unterstützte Zeichen identifizieren.
+Wenn das PowerShell-Skript **FileSyncErrorsReport.ps1** Fehler aufgrund von nicht unterstützten Zeichen (Fehlercode 0x8007007b) anzeigt, sollten Sie diese Zeichen aus den entsprechenden Dateinamen entfernen oder darin ändern. PowerShell gibt diese Zeichen wahrscheinlich als Fragezeichen oder leere Rechtecke aus, da die meisten dieser Zeichen keine standardisierte visuelle Codierung aufweisen. Mit dem [Auswertungstool](storage-sync-files-planning.md#evaluation-cmdlet) können Sie nicht unterstützte Zeichen identifizieren.
 
 Die folgende Tabelle enthält alle Unicode-Zeichen, die die Azure-Dateisynchronisierung noch nicht unterstützt.
 
@@ -797,14 +799,14 @@ Es gibt zwei Hauptklassen von Fehlern, die für jeden Fehlerpfad auftreten könn
 
 In den folgenden Abschnitten wird beschrieben, wie Sie Probleme mit dem Cloudtiering behandeln und ermitteln, ob ein Problem ein Cloudspeicherproblem oder ein Serverproblem ist.
 
-<a id="monitor-tiering-activity"></a>**Gewusst wie: Überwachen der Tieringaktivität auf einem Server**  
+### <a name="how-to-monitor-tiering-activity-on-a-server"></a>Gewusst wie: Überwachen der Tieringaktivität auf einem Server  
 Um die Tieringaktivität auf einem Server zu überwachen, verwenden Sie die Ereignis-IDs 9003, 9016 und 9029 im Telemetrieereignisprotokoll (in der Ereignisanzeige unter „Anwendungen und Dienste\Microsoft\FileSync\Agent“).
 
 - Die Ereignis-ID 9003 ermöglicht die Fehlerverteilung für einen Serverendpunkt. Beispiele: Gesamtfehlerzahl, ErrorCode usw. Beachten Sie, dass ein Ereignis pro Fehlercode protokolliert wird.
 - Die Ereignis-ID 9016 stellt Ghostingergebnisse für ein Volume bereit. Beispiele: Freier Speicherplatz in Prozent, Anzahl der Dateien in der Sitzung, für die ein Ghosting durchgeführt wurde, Anzahl von Dateien, bei denen beim Ghosting ein Fehler aufgetreten ist usw.
 - Die Ereignis-ID 9029 bietet Informationen zu Ghostingsitzungen für einen Serverendpunkt. Beispiele: Anzahl der in der Sitzung herangezogenen Dateien, Anzahl der Dateien in der Sitzung, für die ein Tiering durchgeführt wurde, Anzahl der Dateien, für die bereits ein Tiering durchgeführt ist usw.
 
-<a id="monitor-recall-activity"></a>**Gewusst wie: Überwachen der Rückrufaktivität auf einem Server**  
+### <a name="how-to-monitor-recall-activity-on-a-server"></a>Gewusst wie: Überwachen der Rückrufaktivität auf einem Server
 Um die Rückrufaktivität auf einem Server zu überwachen, verwenden Sie die Ereignis-IDs 9005, 9006, 9009 und 9059 im Telemetrieereignisprotokoll (in der Ereignisanzeige unter „Anwendungen und Dienste\Microsoft\FileSync\Agent“).
 
 - Die Ereignis-ID 9005 bietet Zuverlässigkeit beim Rückruf für einen Serverendpunkt. Beispiele: Gesamtanzahl eindeutiger Dateien, auf die zugegriffen wird, und Gesamtanzahl eindeutiger Dateien, bei denen beim Zugriff ein Fehler aufgetreten ist.
@@ -812,7 +814,7 @@ Um die Rückrufaktivität auf einem Server zu überwachen, verwenden Sie die Ere
 - Die Ereignis-ID 9009 bietet Informationen zu Rückrufsitzungen für einen Serverendpunkt. Hierzu zählen beispielsweise DurationSeconds, CountFilesRecallSucceeded, CountFilesRecallFailed usw.
 - Die Ereignis-ID 9059 bietet Informationen zur Anwendungsrückrufverteilung für einen Serverendpunkt. Hierzu zählen beispielsweise ShareId, Anwendungsname und TotalEgressNetworkBytes.
 
-<a id="files-fail-tiering"></a>**Beheben von Problemen bei Dateien, bei denen kein Tiering möglich ist**  
+### <a name="how-to-troubleshoot-files-that-fail-to-tier"></a>So beheben Sie Probleme bei Dateien, bei denen kein Tiering möglich ist
 Wenn Tieringfehler von Dateien auf Azure Files auftreten:
 
 1. Überprüfen Sie in der Ereignisanzeige die Telemetrie-, Betriebs- und Diagnoseereignisprotokolle unter „Anwendungen und Dienste\Microsoft\FileSync\Agent“. 
@@ -828,7 +830,7 @@ Wenn Tieringfehler von Dateien auf Azure Files auftreten:
 > [!NOTE]
 > Eine Ereignis-ID 9003 wird einmal pro Stunde im Telemetrieereignisprotokoll protokolliert, wenn beim Tiering einer Datei ein Fehler auftritt (pro Fehlercode wird ein Ereignis protokolliert). Die Betriebs- und Diagnoseereignisprotokolle sollten verwendet werden, wenn zusätzliche Informationen zum Diagnostizieren eines Problems benötigt werden.
 
-<a id="files-fail-recall"></a>**Beheben von Rückruffehlern bei Dateien**  
+### <a name="how-to-troubleshoot-files-that-fail-to-be-recalled"></a>Beheben von Rückruffehlern bei Dateien  
 Wenn bei Dateien Rückruffehler auftreten:
 1. Überprüfen Sie in der Ereignisanzeige die Telemetrie-, Betriebs- und Diagnoseereignisprotokolle unter „Anwendungen und Dienste\Microsoft\FileSync\Agent“.
     1. Stellen Sie sicher, dass die Dateien in der Azure-Dateifreigabe vorhanden sind.
@@ -840,7 +842,88 @@ Wenn bei Dateien Rückruffehler auftreten:
 > [!NOTE]
 > Eine Ereignis-ID 9006 wird einmal pro Stunde im Telemetrieereignisprotokoll protokolliert, wenn beim Rückruf einer Datei ein Fehler auftritt (pro Fehlercode wird ein Ereignis protokolliert). Die Betriebs- und Diagnoseereignisprotokolle sollten verwendet werden, wenn zusätzliche Informationen zum Diagnostizieren eines Problems benötigt werden.
 
-<a id="files-unexpectedly-recalled"></a>**Fehlerbehebung bei Dateien, die unerwartet auf einem Server zurückgerufen werden**  
+### <a name="tiered-files-are-not-accessible-on-the-server-after-deleting-a-server-endpoint"></a>Auf Tieringdateien kann nach dem Löschen eines Serverendpunkts nicht zugegriffen werden
+Auf mehrstufige Dateien auf einem Server kann nicht mehr zugegriffen werden, wenn für die Dateien vor dem Löschen eines Serverendpunkts kein Rückruf erfolgt.
+
+Protokollierte Fehler, wenn auf mehrstufige Dateien nicht zugegriffen werden kann
+- Beim Synchronisieren einer Datei wird der Fehlercode -2147942467 (0x80070043 – ERROR_BAD_NET_NAME) im ItemResults-Ereignisprotokoll protokolliert.
+- Beim Zurückrufen einer Datei wird der Fehlercode -2134376393 (0x80c80037 – ECS_E_SYNC_SHARE_NOT_FOUND) im RecallResults-Ereignisprotokoll protokolliert.
+
+Die Wiederherstellung des Zugriffs auf Ihre mehrstufigen Dateien ist möglich, wenn die folgenden Bedingungen erfüllt sind:
+- Serverendpunkt wurde innerhalb der letzten 30 Tage gelöscht
+- Cloudendpunkt wurde nicht gelöscht 
+- Dateifreigabe wurde nicht gelöscht
+- Synchronisierungsgruppe wurde nicht gelöscht
+
+Wenn die obigen Bedingungen erfüllt sind, können Sie den Zugriff auf die Dateien auf dem Server wiederherstellen, indem Sie den Serverendpunkt auf dem Server innerhalb von 30 Tagen unter demselben Pfad in derselben Synchronisierungsgruppe neu erstellen. 
+
+Falls die obigen Bedingungen nicht erfüllt sind, ist das Wiederherstellen des Zugriffs nicht möglich. Der Grund ist, dass diese mehrstufigen Dateien auf dem Server jetzt verwaist sind. Befolgen Sie die Anleitung unten, um die verwaisten mehrstufigen Dateien zu entfernen.
+
+**Hinweise**
+- Wenn auf mehrstufige Dateien auf dem Server nicht zugegriffen werden kann, sollte die vollständige Datei weiterhin zugänglich sein, wenn Sie direkt auf die Azure-Dateifreigabe zugreifen.
+- Führen Sie beim Löschen eines Serverendpunkts die Schritte unter [Entfernen eines Serverendpunkts](https://docs.microsoft.com/azure/storage/files/storage-sync-files-server-endpoint#remove-a-server-endpoint) aus, um verwaiste mehrstufige Dateien in Zukunft zu verhindern.
+
+<a id="get-orphaned"></a>**Abrufen der Liste mit den verwaisten mehrstufigen Dateien** 
+
+1. Überprüfen Sie, ob die Version v5.1 oder höher des Azure-Dateisynchronisierungs-Agents installiert ist.
+2. Führen Sie die folgenden PowerShell-Befehle aus, um verwaiste mehrstufige Dateien aufzulisten:
+```powershell
+Import-Module "C:\Program Files\Azure\StorageSyncAgent\StorageSync.Management.ServerCmdlets.dll"
+$orphanFiles = Get-StorageSyncOrphanedTieredFiles -path <server endpoint path>
+$orphanFiles.OrphanedTieredFiles > OrphanTieredFiles.txt
+```
+3. Speichern Sie die Ausgabedatei „OrphanTieredFiles.txt“, falls Dateien nach dem Löschen aus der Sicherung wiederhergestellt werden müssen.
+
+<a id="remove-orphaned"></a>**Entfernen von verwaisten mehrstufigen Dateien** 
+
+*Option 1: Löschen der verwaisten mehrstufigen Dateien*
+
+Bei dieser Option werden die verwaisten mehrstufigen Dateien auf der Windows Server-Instanz gelöscht. Es ist aber erforderlich, den Serverendpunkt zu entfernen, falls er vorhanden ist (aufgrund der Neuerstellung nach 30 Tagen oder der Verbindung mit einer anderen Synchronisierungsgruppe). Es kommt zu Dateikonflikten, wenn Dateien auf der Windows Server-Instanz oder der Azure-Dateifreigabe aktualisiert werden, bevor der Serverendpunkt neu erstellt wurde.
+
+1. Überprüfen Sie, ob Version v5.1 oder höher des Azure-Dateisynchronisierungs-Agents installiert ist.
+2. Sichern Sie die Azure-Dateifreigabe und den Serverendpunkt-Speicherort.
+3. Entfernen Sie den Serverendpunkt in der Synchronisierungsgruppe (falls vorhanden), indem Sie die Schritte unter [Entfernen eines Serverendpunkts](https://docs.microsoft.com/azure/storage/files/storage-sync-files-server-endpoint#remove-a-server-endpoint) ausführen.
+
+> [!Warning]  
+> Wenn der Serverendpunkt vor der Verwendung des Cmdlets „Remove-StorageSyncOrphanedTieredFiles“ nicht entfernt wird, wird durch das Löschen der verwaisten mehrstufigen Datei auf dem Server die gesamte Datei auf der Azure-Dateifreigabe gelöscht. 
+
+4. Führen Sie die folgenden PowerShell-Befehle aus, um verwaiste mehrstufige Dateien aufzulisten:
+
+```powershell
+Import-Module "C:\Program Files\Azure\StorageSyncAgent\StorageSync.Management.ServerCmdlets.dll"
+$orphanFiles = Get-StorageSyncOrphanedTieredFiles -path <server endpoint path>
+$orphanFiles.OrphanedTieredFiles > OrphanTieredFiles.txt
+```
+5. Speichern Sie die Ausgabedatei „OrphanTieredFiles.txt“, falls Dateien nach dem Löschen aus der Sicherung wiederhergestellt werden müssen.
+6. Führen Sie die folgenden PowerShell-Befehle aus, um verwaiste mehrstufige Dateien zu löschen:
+
+```powershell
+Import-Module "C:\Program Files\Azure\StorageSyncAgent\StorageSync.Management.ServerCmdlets.dll"
+$orphanFilesRemoved = Remove-StorageSyncOrphanedTieredFiles -Path <folder path containing orphaned tiered files> -Verbose
+$orphanFilesRemoved.OrphanedTieredFiles > DeletedOrphanFiles.txt
+```
+**Hinweise** 
+- Auf dem Server geänderte mehrstufige Dateien, die nicht mit der Azure-Dateifreigabe synchronisiert werden, werden gelöscht.
+- Mehrstufige Dateien, auf die zugegriffen werden kann (nicht verwaist), werden nicht gelöscht.
+- Nicht mehrstufige Dateien verbleiben auf dem Server.
+
+7. Optional: Erstellen Sie den Serverendpunkt neu, wenn er in Schritt 3 gelöscht wurde.
+
+*Option 2: Bereitstellen der Azure-Dateifreigabe und Kopieren der Dateien, die auf dem Server verwaist sind, in die lokale Umgebung*
+
+Bei dieser Option muss der Server nicht entfernt werden, aber es muss genügend freier Speicherplatz auf dem Datenträger vorhanden sein, um die gesamten Dateien in die lokale Umgebung kopieren zu können.
+
+1. Führen Sie die [Bereitstellung](https://docs.microsoft.com/azure/storage/files/storage-how-to-use-files-windows) der Azure-Dateifreigabe auf der Windows Server-Instanz durch, die über verwaiste mehrstufige Dateien verfügt.
+2. Führen Sie die folgenden PowerShell-Befehle aus, um verwaiste mehrstufige Dateien aufzulisten:
+```powershell
+Import-Module "C:\Program Files\Azure\StorageSyncAgent\StorageSync.Management.ServerCmdlets.dll"
+$orphanFiles = Get-StorageSyncOrphanedTieredFiles -path <server endpoint path>
+$orphanFiles.OrphanedTieredFiles > OrphanTieredFiles.txt
+```
+3. Verwenden Sie die Ausgabedatei „OrphanTieredFiles.txt“, um verwaiste mehrstufige Dateien auf dem Server zu identifizieren.
+4. Überschreiben Sie die verwaisten mehrstufigen Dateien, indem Sie die vollständige Datei von der Azure-Dateifreigabe auf die Windows Server-Instanz kopieren.
+
+### <a name="how-to-troubleshoot-files-unexpectedly-recalled-on-a-server"></a>Durchführen der Problembehandlung für Dateien, die unerwartet auf einem Server zurückgerufen werden  
 Virenschutz, Sicherung und andere Anwendungen, die viele Dateien lesen, können zu unbeabsichtigten Rückrufen führen, wenn sie das Offline-überspringen-Attribut nicht berücksichtigen und das Lesen des Inhalts dieser Dateien nicht überspringen. Das Überspringen von Offlinedateien für Produkte, die diese Option unterstützen, hilft, unbeabsichtigte Rückrufe während Vorgängen wie Virusscans oder Sicherungsaufträgen zu verhindern.
 
 Wenden Sie sich an den Softwareanbieter, um weitere Informationen zu den erforderlichen Konfigurationsschritten zu erhalten, damit die Lösung das Lesen von Offlinedateien überspringt.

@@ -3,16 +3,17 @@ title: Inhaltsvertrauen in Azure Container Registry
 description: Sie erfahren, wie Inhaltsvertrauen für Ihre Azure-Containerregistrierung aktiviert wird und Push- und Pull-Vorgänge für signierte Images ausgeführt werden.
 services: container-registry
 author: dlepow
+manager: gwallace
 ms.service: container-registry
 ms.topic: quickstart
 ms.date: 05/06/2019
 ms.author: danlep
-ms.openlocfilehash: ca9ef32a830f56edb471256b3b9175ba0fbec51d
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.openlocfilehash: d2132f060076aefe6ae0eccb6d5300c78c96ece5
+ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/27/2019
-ms.locfileid: "65069224"
+ms.lasthandoff: 07/19/2019
+ms.locfileid: "68356550"
 ---
 # <a name="content-trust-in-azure-container-registry"></a>Inhaltsvertrauen in Azure Container Registry
 
@@ -173,7 +174,7 @@ Wie in der `docker push`-Ausgabe angegeben ist der Stammschlüssel bei der Push�
 ~/.docker/trust/private
 ```
 
-Sichern Sie Ihre Stamm- und Repositoryschlüssel, indem Sie sie in ein Archiv komprimieren und sicher offline speichern (z.B. auf einem USB-Speichergerät). Beispiel in Bash:
+Sichern Sie Ihre Stamm- und Repositoryschlüssel, indem Sie sie in einem Archiv komprimieren und an einem sicheren Ort speichern. Beispiel in Bash:
 
 ```bash
 umask 077; tar -zcvf docker_private_keys_backup.tar.gz ~/.docker/trust/private; umask 022
@@ -194,7 +195,9 @@ Zum Deaktivieren des Inhaltsvertrauens für Ihre Registrierung navigieren Sie im
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Zusätzliche Informationen zu Inhaltsvertrauen finden Sie unter [Content trust in Docker][docker-content-trust] (Inhaltsvertrauen in Docker). In diesem Artikel wurden einige wichtige Punkte angesprochen, das Inhaltsvertrauen ist jedoch ein umfangreiches Thema und wird in der Dokumentation zu Docker ausführlicher behandelt.
+* Zusätzliche Informationen zu Inhaltsvertrauen finden Sie unter [Content trust in Docker][docker-content-trust] (Inhaltsvertrauen in Docker). In diesem Artikel wurden einige wichtige Punkte angesprochen, das Inhaltsvertrauen ist jedoch ein umfangreiches Thema und wird in der Dokumentation zu Docker ausführlicher behandelt.
+
+* In der [Azure Pipelines](/azure/devops/pipelines/build/content-trust)-Dokumentation finden Sie ein Beispiel für die Verwendung von Inhaltsvertrauen beim Erstellen und Pushen eines Docker-Images.
 
 <!-- IMAGES> -->
 [content-trust-01-portal]: ./media/container-registry-content-trust/content-trust-01-portal.png

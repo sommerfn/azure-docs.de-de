@@ -9,14 +9,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 03/05/2019
+ms.date: 07/12/2019
 ms.author: tomfitz
-ms.openlocfilehash: bcc529b02505359e6e4e320d4991a082797c5261
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: cdec216187050a449f23f72474e0265acce14c5f
+ms.sourcegitcommit: 10251d2a134c37c00f0ec10e0da4a3dffa436fb3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60389575"
+ms.lasthandoff: 07/13/2019
+ms.locfileid: "67867386"
 ---
 # <a name="azure-resource-manager-template-best-practices"></a>Bewährte Methoden für Azure Resource Manager-Vorlagen
 
@@ -28,7 +28,7 @@ Empfehlungen zur Erstellung von Vorlagen, die in allen Azure-Cloudumgebungen fun
 
 ## <a name="template-limits"></a>Vorlagengrenzwerte
 
-Begrenzen Sie die Größe der Vorlage auf 1 MB und die jeder Parameterdatei auf 64 KB. Die 1-MB-Beschränkung gilt für den endgültigen Status der Vorlage, nachdem sie durch iterative Ressourcendefinitionen und Werte für variables und Parameter erweitert wurde. 
+Begrenzen Sie die Größe der Vorlage auf 4 MB und die jeder Parameterdatei auf 64 KB. Die 4-MB-Beschränkung gilt für den endgültigen Status der Vorlage, nachdem sie durch iterative Ressourcendefinitionen und Werte für variables und Parameter erweitert wurde. 
 
 Außerdem gelten folgenden Beschränkungen:
 
@@ -36,11 +36,11 @@ Außerdem gelten folgenden Beschränkungen:
 * 256 Variablen
 * 800 Ressourcen (einschließlich copy-Anzahl)
 * 64 Ausgabewerte
-* 24\.576 Zeichen in einem Vorlagenausdruck
+* 24.576 Zeichen in einem Vorlagenausdruck
 
 Sie können einige Vorlagengrenzwerte überschreiten, indem Sie eine geschachtelte Vorlage verwenden. Weitere Informationen finden Sie unter [Verwenden von verknüpften Vorlagen bei der Bereitstellung von Azure-Ressourcen](resource-group-linked-templates.md). Um die Anzahl von Parametern, Variablen oder Ausgaben zu reduzieren, können Sie mehrere Werte in einem Objekt kombinieren. Weitere Informationen finden Sie unter [Objekte als Parameter](resource-manager-objects-as-parameters.md).
 
-## <a name="resource-group"></a>Ressourcengruppe
+## <a name="resource-group"></a>Resource group
 
 Wenn Sie Ressourcen für eine Ressourcengruppe bereitstellen, speichert die Ressourcengruppe Metadaten zu den Ressourcen. Die Metadaten werden am Standort der Ressourcengruppe gespeichert.
 

@@ -72,6 +72,8 @@
               href: connect-cisco.md
         - name: Herstellen einer Verbindung mit Threat Intelligence
           href: connect-threat-intelligence.md
+        - name: Herstellen einer Verbindung mit virtuellen Azure Stack-Computern
+          href: connect-azure-stack.md
     - name: Suche
       href: hunting.md
       items:

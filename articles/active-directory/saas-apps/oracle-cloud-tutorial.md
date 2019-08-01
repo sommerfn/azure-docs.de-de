@@ -13,15 +13,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 06/10/2019
+ms.date: 07/26/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 456c984e577e3427ce8cd62d6f63987118f2c8ed
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.openlocfilehash: e0725988ff88baea2458f0a5e459440874e66088
+ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/17/2019
-ms.locfileid: "67164150"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68596439"
 ---
 # <a name="tutorial-integrate-oracle-cloud-infrastructure-console-with-azure-active-directory"></a>Tutorial: Integrieren von Oracle Cloud Infrastructure Console in Azure Active Directory
 
@@ -165,7 +165,7 @@ Gehen Sie wie folgt vor, um das einmalige Anmelden von Azure AD im Azure-Portal 
 
       ![Konfiguration](./media/oracle-cloud-tutorial/config09.png)
 
-   1. Geben Sie in den Feldern unter **IDENTITY PROVIDER GROUP** (IDENTITÄTSANBIETERGRUPPE) den Gruppennamen und die Gruppen-ID ein, die im Azure-Portal eingerichtet sind. Die Gruppe muss der entsprechenden Gruppe im Feld **OCI GROUP** (OCI-GRUPPE) zugeordnet werden.
+   1. Für **IDENTITY PROVIDER GROUP** (IDENTITÄTSANBIETERGRUPPE) sollte die Option „Benutzerdefinierte Gruppe“ ausgewählt werden. Geben Sie als GRUPPEN-ID die GUID der Gruppe aus Azure Active Directory an. Die Gruppe muss der entsprechenden Gruppe im Feld **OCI GROUP** (OCI-GRUPPE) zugeordnet werden.
 
    1. Bei Bedarf können gemäß Ihrem Setup in Azure-Portal und den Anforderungen Ihrer Organisation mehrere Gruppen zugeordnet werden. Klicken Sie auf **+ Add mapping** (+ Zuordnung hinzufügen), um weitere Gruppen hinzuzufügen.
 

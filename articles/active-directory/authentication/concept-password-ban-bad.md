@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c043b2ed1a626e362d7edd1a83429aa14046f8ac
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.openlocfilehash: fe2b4ed91969248bc0818f98306a108555eac424
+ms.sourcegitcommit: 470041c681719df2d4ee9b81c9be6104befffcea
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67703059"
+ms.lasthandoff: 07/12/2019
+ms.locfileid: "67853056"
 ---
 # <a name="eliminate-bad-passwords-in-your-organization"></a>Beseitigen falscher Kennwörter in Ihrer Organisation
 
@@ -49,7 +49,7 @@ Manche Organisationen möchten die Sicherheit möglicherweise noch weiter erhöh
 - Interne unternehmensspezifische Ausdrücke
 - Abkürzungen mit einer bestimmten, unternehmensspezifischen Bedeutung.
 
-Sobald Ausdrücke zur benutzerdefinierten Liste gesperrter Kennwörter hinzugefügt wurden, werden sie bei der Validierung von Kennwörtern der Liste global gesperrter Kennwörter hinzugefügt.
+Sobald Ausdrücke zur benutzerdefinierten Liste gesperrter Kennwörter hinzugefügt wurden, werden sie bei der Überprüfung von Kennwörtern mit den Ausdrücken in der globalen Liste gesperrter Kennwörter kombiniert.
 
 > [!NOTE]
 > Die benutzerdefinierte Liste gesperrter Kennwörter ist auf maximal 1.000 Ausdrücke beschränkt. Sie dient nicht zum Blockieren von äußerst umfangreichen Kennwortlisten. Um die Vorteile der benutzerdefinierten Liste gesperrter Kennwörter umfassend nutzen zu können, empfiehlt Microsoft, sich zunächst mit dem Algorithmus zur Kennwortvalidierung vertraut zu machen (siehe [Auswerten von Kennwörtern](concept-password-ban-bad.md#how-are-passwords-evaluated)), bevor neue Ausdrücke zur benutzerdefinierten Liste gesperrter Kennwörter hinzugefügt werden. Wenn Sie verstehen, wie der Algorithmus funktioniert, kann Ihr Unternehmen eine große Anzahl von schwachen Kennwörtern und deren Varianten effizient erkennen und blockieren.
@@ -86,13 +86,15 @@ Der Azure AD-Kennwortschutz wurde entwickelt, um alle bekannten schwachen Kennw�
 
 Auch wenn die Liste der von Microsoft global gesperrten Kennwörter im Vergleich zu einigen Bulklisten von Drittanbietern klein ist, bietet sie mehr Sicherheit, da sie aus den realen Sicherheitstelemetriedaten von tatsächlichen Kennwort-Spray-Angriffen zusammengestellt wird, und der Algorithmus zur Kennwortvalidierung von Microsoft intelligente Fuzzy-Matching-Techniken verwendet. Daher werden damit Millionen der häufigsten schwachen Kennwörter effizient erkannt und deren Verwendung in Ihrem Unternehmen blockiert. Kunden, die sich dafür entscheiden, unternehmensspezifische Ausdrücke zur benutzerdefinierten Liste gesperrter Kennwörter hinzuzufügen, profitieren ebenfalls vom gleichen Algorithmus.
 
+Weitere Informationen zu kennwortbasierten Sicherheitsproblemen finden Sie unter [Your Pa$$word doesn't matter](https://techcommunity.microsoft.com/t5/Azure-Active-Directory-Identity/Your-Pa-word-doesn-t-matter/ba-p/731984) (Ihr Pa$$word spielt keine Rolle).
+
 ## <a name="on-premises-hybrid-scenarios"></a>Lokale Hybridszenarien
 
-Schützen von ausschließlichen Cloudkonten ist hilfreich, aber viele Organisationen behalten Hybridszenarien einschließlich des lokalen Windows Server Active Directory bei. Es ist möglich, Azure AD-Kennwortschutz für Windows Server Active Directory-Agents lokal zu installieren, um die Liste gesperrter Kennwörter auf Ihre vorhandene Infrastruktur auszudehnen. Zurzeit müssen Benutzer und Administratoren, die Kennwörter lokal ändern, festlegen oder zurücksetzen, die gleiche Kennwortrichtlinie einhalten wie ausschließliche Cloudbenutzer.
+Schützen von ausschließlichen Cloudkonten ist hilfreich, aber viele Organisationen behalten Hybridszenarien einschließlich des lokalen Windows Server Active Directory bei. Die Sicherheitsvorteile des Azure AD-Kennwortschutzes können über die Installation von lokalen Agents auch auf Ihre Windows Server Active Directory-Umgebung erweitert werden. Zurzeit müssen Benutzer und Administratoren, die Kennwörter in Active Directory ändern oder zurücksetzen, dieselbe Kennwortrichtlinie einhalten wie ausschließliche Cloudbenutzer.
 
 ## <a name="how-are-passwords-evaluated"></a>Auswerten von Kennwörtern
 
-Wann immer ein Benutzer sein Kennwort ändert oder zurücksetzt, wird das neue Kennwort auf Stärke und Komplexität überprüft, indem es sowohl mit der globalen als auch mit der benutzerdefinierten Liste der verbotenen Kennwörter (falls diese konfiguriert ist) verglichen wird.
+Wann immer ein Benutzer sein Kennwort ändert oder zurücksetzt, wird das neue Kennwort auf Stärke und Komplexität überprüft, indem es mit der kombinierten Liste von Ausdrücken aus der globalen und der benutzerdefinierte Liste gesperrter Kennwörter (falls letztere konfiguriert wurde) verglichen wird.
 
 Selbst wenn das Kennwort eines Benutzers ein gesperrtes Kennwort enthält, kann das Kennwort dennoch akzeptiert werden, wenn das Gesamtkennwort ansonsten stark genug ist. Ein neu konfiguriertes Kennwort durchläuft die folgenden Schritte, um seine Gesamtstärke zu beurteilen und festzustellen, ob es akzeptiert oder abgelehnt werden sollte.
 

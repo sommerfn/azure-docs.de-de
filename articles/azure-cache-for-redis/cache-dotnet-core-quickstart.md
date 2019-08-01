@@ -15,31 +15,22 @@ ms.topic: quickstart
 ms.date: 05/18/2018
 ms.author: yegu
 ms.custom: mvc
-ms.openlocfilehash: df615b940873cd59341424d0b40a9e399d710126
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: cf241b788c0027c6905c6898352bb3352da64825
+ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57896244"
+ms.lasthandoff: 07/18/2019
+ms.locfileid: "68326516"
 ---
 # <a name="quickstart-use-azure-cache-for-redis-with-a-net-core-app"></a>Schnellstart: Verwenden von Azure Cache for Redis mit einer .NET Core-App
 
-
-
-In dieser Schnellstartanleitung wird beschrieben, wie Sie in die Nutzung von Microsoft Azure Cache for Redis mit .NET Core einsteigen. Microsoft Azure Cache for Redis basiert auf dem beliebten Open-Source-Speicherdienst Azure Cache for Redis. Mit diesem Dienst erhalten Sie Zugriff auf eine sichere, dedizierte Azure Cache for Redis-Instanz, die von Microsoft verwaltet wird. Ein mit Azure Cache for Redis erstellter Cache ist für beliebige Anwendungen in Microsoft Azure erreichbar.
-
-In dieser Schnellstartanleitung verwenden Sie den [StackExchange.Redis](https://github.com/StackExchange/StackExchange.Redis)-Client mit C\#-Code in einer .NET Core-Konsolen-App. Sie erstellen einen Cache und konfigurieren die .NET Core-Client-App. Anschließend fügen Sie dem Cache Objekte hinzu und führen eine Aktualisierung durch. 
-
-Sie können einen beliebigen Code-Editor nutzen, um die Schritte dieser Schnellstartanleitung auszuführen. [Visual Studio Code](https://code.visualstudio.com/) ist aber eine hervorragende Option, die auf Windows-, macOS- und Linux-Plattformen verfügbar ist.
-
-![Konsolen-App abgeschlossen](./media/cache-dotnet-core-quickstart/cache-console-app-complete.png)
-
-[!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
+In dieser Schnellstartanleitung integrieren Sie Azure Cache für Redis in eine .NET Core-App, um Zugriff auf einen sicheren, dedizierten Cache zu erhalten, der von jeder Anwendung in Azure aus zugänglich ist. Sie verwenden insbesondere den [StackExchange.Redis](https://github.com/StackExchange/StackExchange.Redis)-Client mit C#-Code in einer .NET Core-Konsolen-App. 
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-* [.NET SDK 2.0](https://www.microsoft.com/net/learn/get-started/windows) oder höher.
-* Für den StackExchange.Redis-Client ist [.NET Framework 4 oder höher](https://www.microsoft.com/net/download/dotnet-framework-runtime) erforderlich
+- Azure-Abonnement – [Erstellen eines kostenlosen Kontos](https://azure.microsoft.com/free/)
+- [.NET Core SDK](https://dotnet.microsoft.com/download)
+- [.NET Framework 4 oder höher](https://www.microsoft.com/net/download/dotnet-framework-runtime), das vom „StackEdchange.Redis“-Client benötigt wird.
 
 ## <a name="create-a-cache"></a>Erstellen eines Caches
 [!INCLUDE [redis-cache-create](../../includes/redis-cache-create.md)]

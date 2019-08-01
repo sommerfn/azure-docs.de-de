@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: troubleshooting
 ms.date: 07/10/2019
 ms.author: v-chjenk
-ms.openlocfilehash: 7ec4e0ffd87c0ef73a551416d8a8cc672f095483
-ms.sourcegitcommit: 1572b615c8f863be4986c23ea2ff7642b02bc605
+ms.openlocfilehash: 9e58c3bfc0e74f9aac61085608a843954b0923c0
+ms.sourcegitcommit: a6873b710ca07eb956d45596d4ec2c1d5dc57353
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/10/2019
-ms.locfileid: "67786727"
+ms.lasthandoff: 07/16/2019
+ms.locfileid: "68249555"
 ---
 # <a name="tenant-and-host-pool-creation"></a>Mandanten- und Hostpoolerstellung
 
@@ -97,7 +97,7 @@ Führen Sie die folgenden Schritte aus, um eine Problembehandlung bei nicht erfo
 3. Sobald der Fehler identifiziert ist, nutzen Sie die Informationen zur Fehlermeldung und zu den Ressourcen im Artikel [Beheben gängiger Azure-Bereitstellungsfehler mit Azure Resource Manager](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-common-deployment-errors), um den Fehler zu beheben.
 4. Löschen Sie alle Ressourcen, die während der vorherigen Bereitstellung erstellt wurden, und versuchen Sie erneut, die Vorlage bereitzustellen.
 
-### <a name="error-your-deployment-failedhostnamejoindomain"></a>Fehler Fehler bei der Bereitstellung … <hostname>/joindomain
+### <a name="error-your-deployment-failedhostnamejoindomain"></a>Fehler Fehler bei der Bereitstellung….\<Hostname >/JoinDomain
 
 ![Screenshot: Fehler bei der Bereitstellung](media/e72df4d5c05d390620e07f0d7328d50f.png)
 

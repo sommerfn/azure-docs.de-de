@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: industrial-iot
 services: iot-industrialiot
 manager: philmea
-ms.openlocfilehash: 798f087c260b6b0a1efc366b864fe2bb7bce732e
-ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
+ms.openlocfilehash: df1dd45d58baf82710b5e362afaf055aad140b98
+ms.sourcegitcommit: af58483a9c574a10edc546f2737939a93af87b73
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67603698"
+ms.lasthandoff: 07/17/2019
+ms.locfileid: "68302639"
 ---
 # <a name="deploy-opc-twin-module-and-dependencies-from-scratch"></a>Bereitstellen des OPC Twin-Moduls und der Abhängigkeiten von Grund auf
 
@@ -133,7 +133,7 @@ Die einfachste Möglichkeit zum Bereitstellen der Module auf einem Azure IoT Edg
    mcr.microsoft.com/iotedge/opc-twin:latest
    ```
 
-   Verwenden Sie den folgenden JSON-Code unter *Erstellungsoptionen*:
+   Verwenden Sie den folgenden JSON-Code für die *Optionen für Containererstellung*:
 
    ```json
    {"NetworkingConfig": {"EndpointsConfig": {"host": {}}}, "HostConfig": {"NetworkMode": "host" }}
@@ -149,7 +149,7 @@ Die einfachste Möglichkeit zum Bereitstellen der Module auf einem Azure IoT Edg
    mcr.microsoft.com/iotedge/opc-publisher:latest
    ```
 
-   Verwenden Sie den folgenden JSON-Code unter *Erstellungsoptionen*:
+   Verwenden Sie den folgenden JSON-Code für die *Optionen für Containererstellung*:
 
    ```json
    {"Hostname":"publisher","Cmd":["publisher","--pf=./pn.json","--di=60","--to","--aa","--si=0","--ms=0"],"ExposedPorts":{"62222/tcp":{}},"HostConfig":{"PortBindings":{"62222/tcp":[{"HostPort":"62222"}] }}}
@@ -162,8 +162,8 @@ Die einfachste Möglichkeit zum Bereitstellen der Module auf einem Azure IoT Edg
     ```json
     {
       "routes": {
-        "opctwinToIoTHub": "FROM /messages/modules/opctwin/outputs/* INTO $upstream",
-        "opcpublisherToIoTHub": "FROM /messages/modules/opcpublisher/outputs/* INTO $upstream"
+        "opctwinToIoTHub": "FROM /messages/modules/opctwin/* INTO $upstream",
+        "opcpublisherToIoTHub": "FROM /messages/modules/opcpublisher/* INTO $upstream"
       }
     }
     ```

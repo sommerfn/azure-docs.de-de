@@ -1,19 +1,18 @@
 ---
 title: Behandeln von Problemen mit Azure Backup Server
 description: Behandeln von Problemen bei der Installation, bei der Registrierung von Azure Backup Server und bei der Sicherung und Wiederherstellung von Anwendungsworkloads.
-services: backup
 author: srinathvasireddy
 manager: sivan
 ms.service: backup
 ms.topic: conceptual
 ms.date: 07/05/2019
 ms.author: srinathv
-ms.openlocfilehash: ee24fe4c1792f1934fcfb87a2481133631de4263
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.openlocfilehash: f601901ed0cb90421dbf7254d657ef80e1769541
+ms.sourcegitcommit: c72ddb56b5657b2adeb3c4608c3d4c56e3421f2c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67705065"
+ms.lasthandoff: 07/24/2019
+ms.locfileid: "68466097"
 ---
 # <a name="troubleshoot-azure-backup-server"></a>Behandeln von Problemen mit Azure Backup Server
 
@@ -119,3 +118,33 @@ Wir empfehlen, dass Sie die nachstehende Prüfung durchführen, bevor Sie mit de
 | Vorgang | Fehlerdetails | Problemumgehung |
 | --- | --- | --- |
 | Einrichten von E-Mail-Benachrichtigungen mit einem Office 365-Konto |Fehler-ID: 2013| **Ursache:**<br> Versuchte Verwendung des Office 365-Kontos <br>**Empfohlene Maßnahme:**<ol><li> Stellen Sie zuerst sicher, dass für Ihren DPM-Server in Exchange „Zulassen von anonymem Relay für einen Empfangsconnector“ eingerichtet ist. Weitere Informationen dazu, wie Sie diese Option konfigurieren, finden Sie unter [Zulassen von anonymem Relay für einen Empfangsconnector](https://technet.microsoft.com/library/bb232021.aspx) auf TechNet.</li> <li> Falls Sie kein internes SMTP-Relay verwenden können und für die Einrichtung Ihren Office 365-Server verwenden müssen, können Sie IIS als Relay einrichten. Konfigurieren Sie den DPM-Server so, dass er [SMTP mithilfe von ISS an O365 weiterleitet](https://technet.microsoft.com/library/aa995718(v=exchg.65).aspx).<br><br> **WICHTIG:** Achten Sie darauf, das Format „benutzer\@domäne.com“ und *nicht* „domäne\benutzer“ zu verwenden.<br><br><li>Weisen Sie DPM an, den lokalen Servernamen als SMTP-Server zu verwenden (Port 587). Verweisen Sie DPM dann auf die Benutzer-E-Mail, von der die E-Mail-Nachrichten stammen sollen.<li> Der Benutzername und das Kennwort auf der DPM-SMTP-Setupseite sollten sich auf ein Domänenkonto in der Domäne beziehen, in der sich DPM befindet. </li><br> **HINWEIS**: Nehmen Sie beim Ändern der SMTP-Serveradresse Änderungen an den neuen Einstellungen vor, schließen Sie das Feld mit den Einstellungen, und öffnen Sie es dann erneut. So können Sie prüfen, ob der neue Wert vorhanden ist.  Wenn Sie die Werte nur ändern und testen, werden die neuen Einstellungen unter Umständen nicht immer wirksam. Diese Überprüfung ist daher die empfohlene bewährte Methode.<br><br>Sie können diese Einstellungen während des Prozesses jederzeit löschen, indem Sie die DPM-Konsole schließen und die folgenden Registrierungsschlüssel bearbeiten: **HKLM\SOFTWARE\Microsoft\Microsoft Data Protection Manager\Notification\ <br/> Delete SMTPPassword and SMTPUserName keys**. Sie können sie der Benutzeroberfläche wieder hinzufügen, wenn Sie sie neu starten.
+
+
+## <a name="common-issues"></a>Häufige Probleme
+
+In diesem Abschnitt werden häufige Fehler beschrieben, die bei der Verwendung von Azure Backup Server auftreten könnten.
+
+
+### <a name="cbpsourcesnapshotfailedreplicamissingorinvalid"></a>CBPSourceSnapshotFailedReplicaMissingOrInvalid
+
+Fehlermeldung | Empfohlene Maßnahme |
+-- | --
+Bei der Sicherung ist ein Fehler aufgetreten, weil das Replikat für die Datenträgersicherung entweder ungültig ist oder fehlt. | Führen Sie zum Beheben des Problems die folgenden Schritte aus, und wiederholen Sie den Vorgang: <br/> 1. Erstellen Sie einen Datenträger-Wiederherstellungpunkt.<br/> 2. Führen Sie eine Konsistenzprüfung der Datenquelle durch. <br/> 3. Beenden Sie den Schutz der Datenquelle, und konfigurieren Sie den Schutz für diese Datenquelle dann erneut.
+
+### <a name="cbpsourcesnapshotfailedreplicametadatainvalid"></a>CBPSourceSnapshotFailedReplicaMetadataInvalid
+
+Fehlermeldung | Empfohlene Maßnahme |
+-- | --
+Bei der Quellvolume-Momentaufnahme ist ein Fehler aufgetreten, weil die Metadaten auf dem Replikat ungültig sind. | Erstellen Sie einen Datenträger-Wiederherstellungspunkt dieser Datenquelle, und wiederholen Sie die Onlinesicherung.
+
+### <a name="cbpsourcesnapshotfailedreplicainconsistent"></a>CBPSourceSnapshotFailedReplicaInconsistent
+
+Fehlermeldung | Empfohlene Maßnahme |
+-- | --
+Bei der Quellvolume-Momentaufnahme ist aufgrund eines inkonsistenten Datenquellenreplikats ein Fehler aufgetreten. | Führen Sie eine Konsistenzprüfung der Datenquelle durch, und versuchen Sie es erneut.
+
+### <a name="cbpsourcesnapshotfailedreplicacloningissue"></a>CBPSourceSnapshotFailedReplicaCloningIssue
+
+Fehlermeldung | Empfohlene Maßnahme |
+-- | --
+Fehler bei der Sicherung, weil das Datenträgersicherungs-Replikat nicht geklont werden konnte.| Stellen Sie sicher, dass alle vorherigen Datenträgersicherungs-Replikatdateien (VHDX) nicht eingebunden sind und während Onlinesicherungen keine Datenträger-zu-Datenträger-Sicherung erfolgt.

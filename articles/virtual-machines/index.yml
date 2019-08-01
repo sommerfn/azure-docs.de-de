@@ -6,14 +6,14 @@ metadata:
   title: 'Dokumentation für virtuelle Azure-Computer unter Linux – Tutorials, API-Referenz | Microsoft-Dokumentation'
   meta.description: 'Learn how to create, deploy, and manage Windows or Linux virtual machines. Tutorials, API references, and other documentation.'
   services: virtual-machines
-  author: czeumault
-  manager: carolz
+  author: georgewallace
+  manager: gwallace
   ms.service: virtual-machines
   ms.tgt_pltfrm: na
   ms.devlang: na
   ms.topic: landing-page
   ms.date: 01/23/2017
-  ms.author: carolz
+  ms.author: gwallace
 abstract:
   description: 'Hier erfahren Sie, wie Sie virtuelle Azure-Computer erstellen. Anhand von Tutorials, API-Referenzen und anderem Dokumentationsmaterial wird gezeigt, wie Sie virtuelle Windows- oder Linux-Computer sowie VM-Vorlagen erstellen und bereitstellen.'
 sections:

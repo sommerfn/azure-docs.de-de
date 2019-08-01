@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: conceptual
 ms.date: 03/21/2019
 ms.author: helohr
-ms.openlocfilehash: 747e177b0fbbfb9049959c3194ee39c3234bba50
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: f5869cbb51cf1c968ee8ca1e2286416fd263d647
+ms.sourcegitcommit: 920ad23613a9504212aac2bfbd24a7c3de15d549
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65234031"
+ms.lasthandoff: 07/15/2019
+ms.locfileid: "68224631"
 ---
 # <a name="identify-issues-with-the-diagnostics-feature"></a>Identifizieren von Problemen mit der Diagnosefunktion
 
@@ -54,6 +54,14 @@ Mit dem Parameter **-ActivityId** wird eine bestimmte Diagnoseaktivität zurück
 
 ```powershell
 Get-RdsDiagnosticActivities -TenantName <tenantName> -ActivityId <ActivityIdGuid>
+```
+
+### <a name="view-error-messages-for-a-failed-activity-by-activity-id"></a>Anzeigen von Fehlermeldungen für eine fehlerhafte Aktivität nach Aktivitäts-ID
+
+Zum Anzeigen der Fehlermeldungen für eine fehlerhafte Aktivität müssen Sie das Cmdlet mit dem Parameter **-Detailed** ausführen. Sie können die Liste der Fehler anzeigen, indem Sie das Cmdlet **Select-Object** ausführen.
+
+```powershell
+Get-RdsDiagnosticActivities -TenantName <tenantname> -ActivityId <ActivityGuid> -Detailed | Select-Object -ExpandProperty Errors
 ```
 
 ### <a name="filter-diagnostic-activities-by-user"></a>Filtern von Diagnoseaktivitäten nach Benutzer

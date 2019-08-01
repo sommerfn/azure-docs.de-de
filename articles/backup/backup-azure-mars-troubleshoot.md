@@ -1,19 +1,18 @@
 ---
 title: Behandeln von Problemen mit dem Azure Backup-Agent
 description: Behandeln von Problemen mit der Installation und Registrierung des Azure Backup-Agents
-services: backup
 author: saurabhsensharma
-manager: shivamg
+manager: sivan
 ms.service: backup
 ms.topic: conceptual
-ms.date: 05/21/2019
+ms.date: 07/15/2019
 ms.author: saurse
-ms.openlocfilehash: 1c4c2ed6265bdb3c29986fb0b90c3d85d32aadca
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: 6dc56e4eccbad0de986551e055e877d3d051b145
+ms.sourcegitcommit: c72ddb56b5657b2adeb3c4608c3d4c56e3421f2c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67434010"
+ms.lasthandoff: 07/24/2019
+ms.locfileid: "68465969"
 ---
 # <a name="troubleshoot-the-microsoft-azure-recovery-services-mars-agent"></a>Problembehandlung beim Microsoft Azure Recovery Services-Agent (MARS)
 
@@ -46,8 +45,8 @@ Wir empfehlen, die folgenden Prüfungen durchzuführen, bevor Sie mit der Proble
 | Ursache | Empfohlene Aktionen |
 | ---     | ---    |
 | **Die Tresor-Anmeldeinformationen sind ungültig** <br/> <br/> Die Dateien mit den Tresoranmeldeinformationen sind möglicherweise beschädigt oder abgelaufen. (Beispiel: Sie wurden möglicherweise mehr als 48 Stunden vor der Registrierung heruntergeladen.)| Laden Sie neue Anmeldeinformationen aus dem Recovery Services-Tresor im Azure-Portal herunter. (Siehe Schritt 6 im Abschnitt [Herunterladen des MARS-Agents](https://docs.microsoft.com/azure/backup/backup-configure-vault#download-the-mars-agent).) Führen Sie dann nach Bedarf die folgenden Schritte aus: <ul><li> Wenn Sie MARS bereits installiert und registriert haben, öffnen Sie die MMC-Konsole des Microsoft Azure Backup-Agents, und wählen Sie dann **Server registrieren** im Bereich **Aktionen** aus, um die Registrierung mit den neuen Anmeldeinformationen abzuschließen. <br/> <li> Wenn bei der Neuinstallation ein Fehler auftritt, wiederholen Sie den Installationsvorgang mit neuen Anmeldeinformationen.</ul> **Hinweis**: Wenn mehrere Dateien mit Tresor-Anmeldeinformationen heruntergeladen wurden, ist nur die zuletzt heruntergeladene Datei für die nächsten 48 Stunden gültig. Wir empfehlen, eine neue Datei mit Tresor-Anmeldeinformationen herunterzuladen.
-| **Proxyserver/Firewall blockiert die Registrierung** <br/>oder <br/>**Keine Internetverbindung** <br/><br/> Wenn Ihr Computer oder Proxyserver nur über eine eingeschränkte Internetverbindung verfügt und Sie nicht für den Zugriff der erforderlichen URLs sorgen, schlägt die Registrierung fehl.| Führen Sie die folgenden Schritte aus:<br/> <ul><li> Stellen Sie zusammen mit Ihrem IT-Team sicher, dass das System über eine Internetverbindung verfügt.<li> Wenn Sie keinen Proxyserver haben, stellen Sie beim Registrieren des Agents sicher, dass die Proxyoption nicht aktiviert ist. [Überprüfen Sie Ihre Proxyeinstellungen](#verifying-proxy-settings-for-windows).<li> Wenn Sie eine Firewall/einen Proxyserver haben, stellen Sie zusammen mit Ihrem Netzwerkteam sicher, dass die folgenden URLs und IP-Adressen Zugriff haben:<br/> <br> **URLs**<br> www.msftncsi.com <br> .Microsoft.com <br> .WindowsAzure.com <br> .microsoftonline.com <br> .windows.net <br>**IP-Adressen**<br>  20.190.128.0/18 <br>  40.126.0.0/18 <br/></ul></ul>Wiederholen Sie nach Abschluss der vorherigen Problembehandlungsschritte den Registrierungsvorgang.
-| **Antivirensoftware blockiert die Registrierung** | Wenn Sie auf dem Server Antivirensoftware installiert haben, fügen Sie den Virenscans die erforderlichen Ausschlussregeln für die folgenden Dateien und Ordner hinzu: <br/><ui> <li> CBengine.exe <li> CSC.exe<li> Ablageordner. Der Standardspeicherort ist C:\Programme\Microsoft Azure Recovery Services Agent\Scratch. <li> Ordner „Bin“ im Pfad C:\Program Files\Microsoft Azure Recovery Services Agent\Bin.
+| **Proxyserver/Firewall blockiert die Registrierung** <br/>oder <br/>**Keine Internetverbindung** <br/><br/> Wenn Ihr Computer oder Proxyserver nur über eine eingeschränkte Internetverbindung verfügt und Sie nicht für den Zugriff der erforderlichen URLs sorgen, schlägt die Registrierung fehl.| Führen Sie die folgenden Schritte aus:<br/> <ul><li> Stellen Sie zusammen mit Ihrem IT-Team sicher, dass das System über eine Internetverbindung verfügt.<li> Wenn Sie keinen Proxyserver haben, stellen Sie beim Registrieren des Agents sicher, dass die Proxyoption nicht aktiviert ist. [Überprüfen Sie Ihre Proxyeinstellungen](#verifying-proxy-settings-for-windows).<li> Wenn Sie eine Firewall/einen Proxyserver haben, stellen Sie zusammen mit Ihrem Netzwerkteam sicher, dass die folgenden URLs und IP-Adressen Zugriff haben:<br/> <br> **URLs**<br> `www.msftncsi.com` <br> .Microsoft.com <br> .WindowsAzure.com <br> .microsoftonline.com <br> .windows.net <br>**IP-Adressen**<br>  20.190.128.0/18 <br>  40.126.0.0/18 <br/></ul></ul>Wiederholen Sie nach Abschluss der vorherigen Problembehandlungsschritte den Registrierungsvorgang.
+| **Antivirensoftware blockiert die Registrierung** | Wenn Sie auf dem Server Antivirensoftware installiert haben, fügen Sie den Virenscans die erforderlichen Ausschlussregeln für die folgenden Dateien und Ordner hinzu: <br/><ul> <li> CBengine.exe <li> CSC.exe<li> Ablageordner. Der Standardspeicherort ist C:\Programme\Microsoft Azure Recovery Services Agent\Scratch. <li> Ordner „Bin“ im Pfad C:\Program Files\Microsoft Azure Recovery Services Agent\Bin.
 
 ### <a name="additional-recommendations"></a>Weitere Empfehlungen
 - Navigieren Sie zu „C:/Windows/Temp“, und prüfen Sie, ob es mehr als 60.000 oder 65.000 Dateien mit der Erweiterung TMP gibt. Wenn dies der Fall ist, löschen Sie diese Dateien.
@@ -89,13 +88,13 @@ Wir empfehlen, die folgenden Prüfungen durchzuführen, bevor Sie mit der Proble
 
 | Error  | Mögliche Ursachen | Empfohlene Aktionen |
 |---------|---------|---------|
-|<br />Die Aktivierung wurde nicht erfolgreich abgeschlossen. Beim aktuellen Vorgang ist aufgrund eines internen Dienstfehlers [0x1FC07] ein Fehler aufgetreten. Wiederholen Sie den Vorgang nach einiger Zeit. Wenn das Problem weiterhin besteht, wenden Sie sich an den Microsoft-Support.     | <li> Der Ablageordner befindet sich auf einem Volume, das nicht genügend Speicherplatz aufweist. <li> Der Ablageordner wurde nicht ordnungsgemäß verschoben. <li> Die Datei „OnlineBackup.KEK“ fehlt.         | <li>Führen Sie ein Upgrade auf die [aktuelle Version](https://aka.ms/azurebackup_agent) des MARS-Agents durch.<li>Verschieben Sie den Ablageordner oder den Cachespeicherort zu einem Volume, auf dem Speicherplatz in Höhe von 5–10 % der Gesamtgröße der Sicherungsdaten verfügbar ist. Um den Cachespeicherort ordnungsgemäß zu verschieben, führen Sie die unter [Häufig gestellte Fragen zum Sichern von Dateien und Ordnern](https://docs.microsoft.com/azure/backup/backup-azure-file-folder-backup-faq#backup) erläuterten Schritte aus.<li> Stellen Sie sicher, dass die Datei „OnlineBackup.KEK“ vorhanden ist. <br>*Der Standardspeicherort für den Ablageordner oder der Cachepfad lautet „C:\Programme\Microsoft Azure Recovery Services Agent\Scratch“* .        |
+|<br />Die Aktivierung wurde nicht erfolgreich abgeschlossen. Beim aktuellen Vorgang ist aufgrund eines internen Dienstfehlers [0x1FC07] ein Fehler aufgetreten. Wiederholen Sie den Vorgang nach einiger Zeit. Wenn das Problem weiterhin besteht, wenden Sie sich an den Microsoft-Support.     | <li> Der Ablageordner befindet sich auf einem Volume, das nicht genügend Speicherplatz aufweist. <li> Der Ablageordner wurde nicht ordnungsgemäß verschoben. <li> Die Datei „OnlineBackup.KEK“ fehlt.         | <li>Führen Sie ein Upgrade auf die [aktuelle Version](https://aka.ms/azurebackup_agent) des MARS-Agents durch.<li>Verschieben Sie den Ablageordner oder den Cachespeicherort zu einem Volume, auf dem Speicherplatz in Höhe von 5–10 % der Gesamtgröße der Sicherungsdaten verfügbar ist. Um den Cachespeicherort ordnungsgemäß zu verschieben, führen Sie die unter [Häufig gestellte Fragen zum Sichern von Dateien und Ordnern](https://docs.microsoft.com/azure/backup/backup-azure-file-folder-backup-faq#manage-the-backup-cache-folder) erläuterten Schritte aus.<li> Stellen Sie sicher, dass die Datei „OnlineBackup.KEK“ vorhanden ist. <br>*Der Standardspeicherort für den Ablageordner oder der Cachepfad lautet „C:\Programme\Microsoft Azure Recovery Services Agent\Scratch“* .        |
 
 ## <a name="encryption-passphrase-not-correctly-configured"></a>Die Verschlüsselungspassphrase ist nicht richtig konfiguriert.
 
 | Error  | Mögliche Ursachen | Empfohlene Aktionen |
 |---------|---------|---------|
-| <br />Fehler 34506. Die auf diesem Computer gespeicherte Verschlüsselungspassphrase ist nicht richtig konfiguriert.    | <li> Der Ablageordner befindet sich auf einem Volume, das nicht genügend Speicherplatz aufweist. <li> Der Ablageordner wurde nicht ordnungsgemäß verschoben. <li> Die Datei „OnlineBackup.KEK“ fehlt.        | <li>Führen Sie ein Upgrade auf die [neueste Version](https://aka.ms/azurebackup_agent) des MARS-Agents durch.<li>Verschieben Sie den Ablageordner oder den Cachespeicherort zu einem Volume, auf dem Speicherplatz in Höhe von 5–10 % der Gesamtgröße der Sicherungsdaten verfügbar ist. Um den Cachespeicherort ordnungsgemäß zu verschieben, führen Sie die unter [Häufig gestellte Fragen zum Sichern von Dateien und Ordnern](https://docs.microsoft.com/azure/backup/backup-azure-file-folder-backup-faq#backup) erläuterten Schritte aus.<li> Stellen Sie sicher, dass die Datei „OnlineBackup.KEK“ vorhanden ist. <br>*Der Standardspeicherort für den Ablageordner oder der Cachepfad lautet „C:\Programme\Microsoft Azure Recovery Services Agent\Scratch“* .         |
+| <br />Fehler 34506. Die auf diesem Computer gespeicherte Verschlüsselungspassphrase ist nicht richtig konfiguriert.    | <li> Der Ablageordner befindet sich auf einem Volume, das nicht genügend Speicherplatz aufweist. <li> Der Ablageordner wurde nicht ordnungsgemäß verschoben. <li> Die Datei „OnlineBackup.KEK“ fehlt.        | <li>Führen Sie ein Upgrade auf die [neueste Version](https://aka.ms/azurebackup_agent) des MARS-Agents durch.<li>Verschieben Sie den Ablageordner oder den Cachespeicherort zu einem Volume, auf dem Speicherplatz in Höhe von 5–10 % der Gesamtgröße der Sicherungsdaten verfügbar ist. Um den Cachespeicherort ordnungsgemäß zu verschieben, führen Sie die unter [Häufig gestellte Fragen zum Sichern von Dateien und Ordnern](https://docs.microsoft.com/azure/backup/backup-azure-file-folder-backup-faq#manage-the-backup-cache-folder) erläuterten Schritte aus.<li> Stellen Sie sicher, dass die Datei „OnlineBackup.KEK“ vorhanden ist. <br>*Der Standardspeicherort für den Ablageordner oder der Cachepfad lautet „C:\Programme\Microsoft Azure Recovery Services Agent\Scratch“* .         |
 
 
 ## <a name="backups-dont-run-according-to-schedule"></a>Sicherungen werden nicht nach Zeitplan ausgeführt
@@ -165,8 +164,62 @@ Azure Backup kann das Wiederherstellungsvolume möglicherweise auch nach einigen
 
 Wenn bei der Wiederherstellung weiterhin ein Fehler auftritt, starten Sie Ihren Server oder Client neu. Wenn Sie keinen Neustart durchführen möchten oder auch nach einem Neustart des Servers ein Fehler bei der Wiederherstellung auftritt, führen Sie die [Wiederherstellung über einen anderen Computer](backup-azure-restore-windows-server.md#use-instant-restore-to-restore-data-to-an-alternate-machine) aus.
 
-## <a name="need-help-contact-support"></a>Sie brauchen Hilfe? Support kontaktieren
-[Wenden Sie sich an den Support](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade), falls Sie weitere Hilfe benötigen, um das Problem schnell beheben zu lassen.
+
+## <a name="troubleshoot-cache-problems"></a>Behandeln von Cacheproblemen
+
+Der Sicherungsvorgang schlägt möglicherweise fehl, wenn der Cacheordner (auch als Ablageordner bezeichnet) falsch konfiguriert ist, Voraussetzungen nicht erfüllt oder der Zugriff auf ihn beschränkt ist.
+
+### <a name="pre-requisites"></a>Voraussetzungen
+
+Damit MARS-Agent-Vorgänge erfolgreich ausgeführt werden können, muss der Cacheordner den folgenden Anforderungen entsprechen:
+
+- [Stellen Sie sicher, dass am Speicherort des Ablageordners 5–10 % freier Volumespeicherplatz vorhanden ist](backup-azure-file-folder-backup-faq.md#whats-the-minimum-size-requirement-for-the-cache-folder).
+- [Stellen Sie sicher, dass der Ablageordner gültig ist und auf ihn zugegriffen werden kann](backup-azure-file-folder-backup-faq.md#how-to-check-if-scratch-folder-is-valid-and-accessible).
+- [Stellen Sie sicher, dass die Dateiattribute für den Cacheordner unterstützt werden](backup-azure-file-folder-backup-faq.md#are-there-any-attributes-of-the-cache-folder-that-arent-supported).
+- [Stellen Sie sicher, dass der zugeordnete Speicherplatz für Schattenkopien für den Sicherungsvorgang ausreicht](#increase-shadow-copy-storage).
+- [Stellen Sie sicher, dass keine anderen Prozesse (z. B. Antivirensoftware) den Zugriff auf den Cacheordner beschränken](#another-process-or-antivirus-software-blocking-access-to-cache-folder).
+
+### <a name="increase-shadow-copy-storage"></a>Vergrößern des Schattenkopiespeichers
+Sicherungsvorgänge können fehlschlagen, wenn der verfügbare Speicherplatz für Schattenkopien nicht ausreicht, um die Datenquelle zu schützen. Um dieses Problem zu beheben, erhöhen Sie mit Vssadmin den Speicherplatz für Schattenkopien auf dem geschützten Volume, wie unten gezeigt:
+- Überprüfen Sie an der Eingabeaufforderung mit erhöhten Rechten den aktuellen Speicherplatz für Schattenkopien:<br/>
+  `vssadmin List ShadowStorage /For=[Volume letter]:`
+- Vergrößern Sie mit dem folgenden Befehl den Speicherplatz für Schattenkopien:<br/>
+  `vssadmin Resize ShadowStorage /On=[Volume letter]: /For=[Volume letter]: /Maxsize=[size]`
+
+### <a name="another-process-or-antivirus-software-blocking-access-to-cache-folder"></a>Der Zugriff auf den Cacheordner wird durch einen anderen Prozess oder durch Antivirensoftware blockiert
+Wenn Sie auf dem Server Antivirensoftware installiert haben, fügen Sie den Virenscans die erforderlichen Ausschlussregeln für die folgenden Dateien und Ordner hinzu:  
+- Ablageordner. Der Standardspeicherort ist „C:\Programme\Microsoft Azure Recovery Services Agent\Scratch“.
+- Ordner „Bin“ im Pfad „C:\Programme\Microsoft Azure Recovery Services Agent\Bin“
+- CBengine.exe
+- CSC.exe
+
+## <a name="common-issues"></a>Häufige Probleme
+In diesem Abschnitt werden häufige Fehler beschrieben, die bei der Verwendung des MARS-Agents auftreten können.
+
+### <a name="salchecksumstoreinitializationfailed"></a>SalChecksumStoreInitializationFailed
+
+Fehlermeldung | Empfohlene Maßnahme |
+-- | --
+Microsoft Azure Recovery Services Agent was unable to access backup checksum stored in scratch location (Der Microsoft Azure Recovery Services-Agent konnte nicht auf die im Ablageordner gespeicherte Sicherungsprüfsumme zugreifen.) | Führen Sie zum Beheben des Fehlers die folgenden Schritte aus, und starten Sie den Server neu. <br/> - [Überprüfen Sie, ob der Ablageordner durch ein Antivirenprogramm oder einen anderen Prozess blockiert wird](#another-process-or-antivirus-software-blocking-access-to-cache-folder).<br/> - [Überprüfen Sie, ob der Ablageordner gültig ist und der MARS-Agent darauf zugreifen kann](backup-azure-file-folder-backup-faq.md#how-to-check-if-scratch-folder-is-valid-and-accessible).
+
+### <a name="salvhdinitializationerror"></a>SalVhdInitializationError
+
+Fehlermeldung | Empfohlene Maßnahme |
+-- | --
+Microsoft Azure Recovery Services Agent was unable to access the scratch location to initialize VHD (Der Microsoft Azure Recovery Services-Agent konnte nicht auf den Ablageordner zugreifen, um die virtuelle Festplatte zu initialisieren.) | Führen Sie zum Beheben des Fehlers die folgenden Schritte aus, und starten Sie den Server neu. <br/> - [Überprüfen Sie, ob der Ablageordner durch ein Antivirenprogramm oder einen anderen Prozess blockiert wird](#another-process-or-antivirus-software-blocking-access-to-cache-folder).<br/> - [Überprüfen Sie, ob der Ablageordner gültig ist und der MARS-Agent darauf zugreifen kann](backup-azure-file-folder-backup-faq.md#how-to-check-if-scratch-folder-is-valid-and-accessible).
+
+### <a name="sallowdiskspace"></a>SalLowDiskSpace
+
+Fehlermeldung | Empfohlene Maßnahme |
+-- | --
+Backup failed due to insufficient storage in volume  where the scratch folder is located (Die Sicherung ist aufgrund von unzureichendem Speicher im Volume des Ablageordners fehlgeschlagen.) | Führen Sie zum Beheben des Problems die folgenden Schritte aus, und wiederholen Sie den Vorgang:<br/>- [Stellen Sie sicher, dass der MARS-Agent die aktuelle Version aufweist](https://go.microsoft.com/fwlink/?linkid=229525&clcid=0x409).<br/> - [Überprüfen und beheben Sie Speicherprobleme, die den temporären Speicherbereich für Sicherungen beeinträchtigen](#pre-requisites).
+
+### <a name="salbitmaperror"></a>SalBitmapError
+
+Fehlermeldung | Empfohlene Maßnahme |
+-- | --
+Es wurden keine Änderungen in einer Datei gefunden. Dies kann verschiedene Ursachen haben. Wiederholen Sie den Vorgang | Führen Sie zum Beheben des Problems die folgenden Schritte aus, und wiederholen Sie den Vorgang:<br/> - [Stellen Sie sicher, dass der MARS-Agent die aktuelle Version aufweist](https://go.microsoft.com/fwlink/?linkid=229525&clcid=0x409). <br/> - [Überprüfen und beheben Sie Speicherprobleme, die den temporären Speicherbereich für Sicherungen beeinträchtigen](#pre-requisites).
+
 
 ## <a name="next-steps"></a>Nächste Schritte
 * Weitere Einzelheiten finden Sie unter [Sichern von Windows Server mit dem Azure Backup-Agent](tutorial-backup-windows-server-to-azure.md).

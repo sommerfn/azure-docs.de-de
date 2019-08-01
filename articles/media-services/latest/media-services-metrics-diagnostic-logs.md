@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/08/2019
 ms.author: juliako
-ms.openlocfilehash: 138b31856e424078ae32ca2f53393f5aa13505b2
-ms.sourcegitcommit: 66237bcd9b08359a6cce8d671f846b0c93ee6a82
+ms.openlocfilehash: 6d26cd809d78bf05f66c9fa03be5063ca4d2d5e4
+ms.sourcegitcommit: 47ce9ac1eb1561810b8e4242c45127f7b4a4aa1a
 ms.translationtype: HT
 ms.contentlocale: de-DE
 ms.lasthandoff: 07/11/2019
-ms.locfileid: "67797588"
+ms.locfileid: "67805996"
 ---
 # <a name="monitor-media-services-metrics-and-diagnostic-logs"></a>Überwachen von Media Services-Metriken und -Diagnoseprotokollen
 
@@ -57,7 +57,7 @@ Informieren Sie sich außerdem über [Kontingente und Einschränkungen für Kont
 
 ### <a name="streaming-endpoint"></a>Streamingendpunkt
 
-Derzeit werden die folgenden Metriken der Media Services-[Streamingendpunkte](https://docs.microsoft.com/rest/api/media/streamingendpoints) von Azure ausgegeben:
+Die folgenden [Streamingendpunkte](https://docs.microsoft.com/rest/api/media/streamingendpoints) von Media Services-Metriken werden unterstützt:
 
 |Metrikname|`Display name`|BESCHREIBUNG|
 |---|---|---|

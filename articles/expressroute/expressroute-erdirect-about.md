@@ -5,15 +5,15 @@ services: expressroute
 author: jaredr80
 ms.service: expressroute
 ms.topic: conceptual
-ms.date: 07/06/2019
+ms.date: 07/10/2019
 ms.author: jaredro
 ms.custom: seodec18
-ms.openlocfilehash: d7add3d509427d72e23d61d1777db7941c7550a4
-ms.sourcegitcommit: cf438e4b4e351b64fd0320bf17cc02489e61406a
+ms.openlocfilehash: e598cc03a1b7b4999719152540866c7168130e03
+ms.sourcegitcommit: 47ce9ac1eb1561810b8e4242c45127f7b4a4aa1a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/08/2019
-ms.locfileid: "67657264"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67807479"
 ---
 # <a name="about-expressroute-direct"></a>Informationen zu ExpressRoute Direct
 
@@ -59,6 +59,22 @@ ExpressRoute Direct unterstützt Szenarien zur Erfassung umfangreicher Datenmeng
 | --- | --- |
 | **Abonnierte Bandbreite**: 200GBit/s | **Abonnierte Bandbreite**: 20GBit/s |
 | <ul><li>5 GBit/s</li><li>10 GBit/s</li><li>40 GBit/s</li><li>100GBit/s</li></ul> | <ul><li>1 GBit/s</li><li>2 GBit/s</li><li>5 GBit/s</li><li>10 GBit/s</li></ul>
+
+## <a name="technical-requirements"></a>Technische Anforderungen
+
+* Microsoft Enterprise Edge Router (MSEE)-Schnittstellen:
+    * Dual 10- oder 100 Gigabit-Ethernet-Ports nur über das Routerpaar
+    * LR-Fiber-Konnektivität im Einzelmodus
+    * IPv4 und IPv6
+    * IP MTU 1500 Bytes
+
+* Switch/Router-Ebene 2/Layer 3-Konnektivität:
+    * Muss Tagkapselung mit 1 802.1Q (Dot1Q)-Tag oder zwei Tags 802.1Q (QinQ) unterstützen.
+    * Ethernettyp = 0x8100
+    * Muss das äußere VLAN-Tag (STAG), basierend auf der von Microsoft angegebenen VLAN-ID, hinzufügen – *gilt nur für QinQ*.
+    * Muss mehrere BGP-Sitzungen (VLANs) pro Port und Gerät unterstützen.
+    * IPv4- und IPv6-Konnektivität. *Für IPv6 wird keine zusätzliche Unterschnittstelle erstellt. Eine IPv6-Adresse wird der vorhandenen Unterschnittstelle hinzugefügt*. 
+    * Optional: Unterstützung der [bidirektionalen Weiterleitungserkennung (Bidirectional Forwarding Detection, BFD)](https://docs.microsoft.com/azure/expressroute/expressroute-bfd), die für alle privaten Peerings in ExpressRoute-Leitungen standardmäßig konfiguriert ist
 
 ## <a name="vlan-tagging"></a>VLAN-Kennzeichnung
 

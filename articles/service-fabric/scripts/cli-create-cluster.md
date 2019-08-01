@@ -3,7 +3,7 @@ title: 'Azure CLI-Skript: Bereitstellungsbeispiel'
 description: Erstellen Sie einen sicheren Service Fabric-Linux-Cluster in Azure mithilfe der Azure CLI.
 services: service-fabric
 documentationcenter: ''
-author: aljo-microsoft
+author: athinanthny
 manager: chackdan
 editor: ''
 tags: azure-service-management
@@ -13,14 +13,14 @@ ms.workload: multiple
 ms.devlang: na
 ms.topic: sample
 ms.date: 01/18/2018
-ms.author: aljo
+ms.author: atsenthi
 ms.custom: mvc
-ms.openlocfilehash: 3a50d6672833ab1b4986e38ca1ddf24a8c33c562
-ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
+ms.openlocfilehash: 397ae7ee3b5accbbac1bc17020e6c32397c105a2
+ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58664453"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68592392"
 ---
 # <a name="create-a-secure-service-fabric-linux-cluster-in-azure"></a>Erstellen eines sicheren Service Fabric-Linux-Clusters in Azure
 

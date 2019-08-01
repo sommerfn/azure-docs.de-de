@@ -13,17 +13,17 @@ ms.topic: conceptual
 ms.date: 05/22/2019
 ms.reviewer: olegan
 ms.author: mbullwin
-ms.openlocfilehash: 13bf27fd58530c357e3bb83f7cbc503855d40304
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 382f43156ab450600ff0d2e5e2db763cd6bd94df
+ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67075334"
+ms.lasthandoff: 07/15/2019
+ms.locfileid: "67875048"
 ---
 # <a name="configuring-the-application-insights-sdk-with-applicationinsightsconfig-or-xml"></a>Konfigurieren des Application Insights-SDK mit "ApplicationInsights.config" oder XML
 Das Application Insights .NET-SDK umfasst eine Reihe von NuGet-Paketen. Das [Kernpaket](https://www.nuget.org/packages/Microsoft.ApplicationInsights) stellt die API für das Senden von Telemetriedaten an Application Insights bereit. [Zusätzliche Pakete](https://www.nuget.org/packages?q=Microsoft.ApplicationInsights) bieten *Telemetriemodule* und *-initialisierer* für die automatische Nachverfolgung von Telemetriedaten von Ihrer Anwendung und deren Kontext. Durch Anpassen der Konfigurationsdatei können Sie Telemetriemodule und -initialisierer aktivieren oder deaktivieren sowie Parameter für einige von ihnen festlegen.
 
-Die Konfigurationsdatei heißt `ApplicationInsights.config` oder `ApplicationInsights.xml`, je nach dem Typ der Anwendung. Sie wird dem Projekt bei der [Installation der meisten SDK-Versionen][start] automatisch hinzugefügt. Über den [Statusmonitor auf einem IIS-Server][redfield] oder durch Auswahl der [Application Insights-Erweiterung für eine Azure-Website oder einen virtuellen Computer](azure-web-apps.md) wird sie außerdem einer Web-App hinzugefügt.
+Die Konfigurationsdatei heißt `ApplicationInsights.config` oder `ApplicationInsights.xml`, je nach dem Typ der Anwendung. Sie wird dem Projekt bei der [Installation der meisten SDK-Versionen][start] automatisch hinzugefügt. Sie wird über den [Statusmonitor für einen IIS-Server][redfield] auch einer Web-App hinzugefügt. Die Konfigurationsdatei wird ignoriert, wenn die [Erweiterung für Azure-Websites](azure-web-apps.md) oder die [Erweiterung für Azure-VMs und VM-Skalierungsgruppen](azure-vm-vmss-apps.md) verwendet wird.
 
 Es gibt keine gleichwertige Datei zum Steuern des [SDK in einer Webseite][client].
 
@@ -38,12 +38,14 @@ Jedes Telemetriemodul erfasst eine bestimmte Art von Daten und verwendet die Ker
 Für jedes Modul gibt es in der Konfigurationsdatei einen Knoten. Um ein Modul zu deaktivieren, löschen Sie den Knoten, oder kommentieren Sie ihn aus.
 
 ### <a name="dependency-tracking"></a>Abhängigkeitsüberwachung
-[Dependency tracking](../../azure-monitor/app/asp-net-dependencies.md) werden Telemetriedaten zu Aufrufen erfasst, die von Ihrer App für Datenbanken und externe Dienste und Datenbanken durchgeführt werden. Damit dieses Modul auf einem IIS-Server funktioniert, müssen Sie den [Statusmonitor installieren][redfield]. Zur Verwendung in Azure-Web-Apps oder auf virtuellen Computern [wählen Sie die Application Insights-Erweiterung](azure-web-apps.md).
+[Dependency tracking](../../azure-monitor/app/asp-net-dependencies.md) werden Telemetriedaten zu Aufrufen erfasst, die von Ihrer App für Datenbanken und externe Dienste und Datenbanken durchgeführt werden. Damit dieses Modul auf einem IIS-Server funktioniert, müssen Sie den [Statusmonitor installieren][redfield].
 
 Sie können auch eigenen Code zur Abhängigkeitsnachverfolgung mithilfe der [TrackDependency-API](../../azure-monitor/app/api-custom-events-metrics.md#trackdependency)schreiben.
 
 * `Microsoft.ApplicationInsights.DependencyCollector.DependencyTrackingTelemetryModule`
 * [Microsoft.ApplicationInsights.DependencyCollector](https://www.nuget.org/packages/Microsoft.ApplicationInsights.DependencyCollector) .
+
+Abhängigkeiten können ohne Änderung Ihres Codes mithilfe einer agentbasierten Anfügung (ohne Code) automatisch erfasst werden. Zur Verwendung in Azure-Web-Apps aktivieren Sie die [Application Insights-Erweiterung](azure-web-apps.md). Für eine Verwendung in Azure-VMs oder Azure-VM-Skalierungsgruppen aktivieren Sie die [Erweiterung zur Anwendungsüberwachung für VMs und VM-Skalierungsgruppen](azure-vm-vmss-apps.md).
 
 ### <a name="performance-collector"></a>Leistungserfassung
 Dient zum [Sammeln von Systemleistungsindikatoren](../../azure-monitor/app/performance-counters.md), z.B. CPU-, Arbeitsspeicher- und Netzwerkauslastung von IIS-Installationen. Sie können angeben, welche Leistungsindikatoren erfasst werden sollen, z. B. auch Leistungsindikatoren, die Sie selbst eingerichtet haben.

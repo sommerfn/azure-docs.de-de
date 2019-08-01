@@ -24,15 +24,16 @@
         - name: Lokales Ausführen eines Experiments
           displayName: 'workspace, install, sdk'
           href: quickstart-run-local-notebook.md
-    - name: Grafische Benutzeroberfläche
-      items:
-        - name: Vorbereiten und Visualisieren von Daten
-          displayName: experiment drag-and-drop
-          href: ui-quickstart-run-experiment.md
 - name: Lernprogramme
   items:
     - name: Python SDK
       items:
+        - name: Erstellen des ersten ML-Experiments
+          items:
+            - name: 1. Einrichten des Arbeitsbereichs und der Entwicklungsumgebung
+              href: tutorial-1st-experiment-sdk-setup.md
+            - name: 2. Trainieren des ersten Modells
+              href: tutorial-1st-experiment-sdk-train.md
         - name: Bildklassifizierung (MNIST-Daten)
           items:
             - name: 1. Trainieren eines Modells
@@ -90,6 +91,9 @@
       href: /azure/open-datasets/samples?context=azure/machine-learning/service/context/ml-context
 - name: Konzepte
   items:
+    - name: Deep Learning
+      displayName: 'deep learning vs machine learning, deep learning, vs, versus'
+      href: concept-deep-learning-vs-machine-learning.md
     - name: Arbeitsbereich
       displayName: concept definitions architecture
       href: concept-workspace.md
@@ -114,8 +118,6 @@
       href: concept-accelerate-with-fpgas.md
     - name: ONNX und ONNX-Runtime
       href: concept-onnx.md
-    - name: Überwachung von Datenabweichungen
-      href: concept-data-drift.md
     - name: Sicherheit
       items:
         - name: Übersicht über Unternehmenssicherheit
@@ -239,6 +241,9 @@
           href: how-to-deploy-fpga-web-service.md
         - name: IoT Edge
           href: /azure/iot-edge/tutorial-deploy-machine-learning?context=azure/machine-learning/service/context/ml-context
+        - name: Azure App Service
+          displayName: web app
+          href: how-to-deploy-app-service.md
         - name: Benutzerdefiniertes Docker-Image
           href: how-to-deploy-custom-docker-image.md
         - name: Bereitstellen vorhandener Modelle

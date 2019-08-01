@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b24888934d7e89a13b1b07b7138be476575fc306
-ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
+ms.openlocfilehash: c7781651536275eba60bfde49e00a450dde6d3e1
+ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67204615"
+ms.lasthandoff: 07/19/2019
+ms.locfileid: "68357033"
 ---
 # <a name="tutorial-configure-hybrid-azure-active-directory-join-for-managed-domains"></a>Tutorial: Konfigurieren der Azure Active Directory-Hybrideinbindung für verwaltete Domänen
 
@@ -143,7 +143,7 @@ Außerdem müssen Sie in der lokalen Intranetzone des Benutzers die Option **Akt
 
 ### <a name="configure-seamless-sso"></a>Konfigurieren des nahtlosen einmaligen Anmeldens
 
-Sie müssen außerdem [nahtloses SSO konfigurieren](../hybrid/how-to-connect-sso-quick-start.md#step-2-enable-the-feature), um die Azure AD-Hybrideinbindung Ihrer kompatiblen Windows-Geräte in einer verwalteten Domäne erfolgreich durchzuführen, die [PHS](../hybrid/whatis-phs.md) oder [PTA](../hybrid/how-to-connect-pta.md) als Authentifizierungsmethode für die Azure AD-Cloud verwendet.
+Sie müssen außerdem [nahtloses SSO konfigurieren](../hybrid/how-to-connect-sso-quick-start.md#step-2-enable-the-feature), um die Azure AD-Hybrideinbindung Ihrer kompatiblen Windows-Geräte in einer verwalteten Domäne erfolgreich durchzuführen, die [PHS](../hybrid/whatis-phs.md) oder [PTA](../hybrid/how-to-connect-pta.md) als Authentifizierungsmethode für die Azure AD-Cloud verwendet.
 
 ### <a name="install-microsoft-workplace-join-for-windows-downlevel-computers"></a>Installieren von Microsoft Workplace Join für kompatible Windows-Computer
 

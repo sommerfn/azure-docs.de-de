@@ -7,12 +7,12 @@ ms.author: tacox
 ms.reviewer: jasonh
 ms.topic: conceptual
 ms.date: 04/24/2019
-ms.openlocfilehash: c1809885c930c4d22dff3f30d6e874aacf0b540e
-ms.sourcegitcommit: 2e4b99023ecaf2ea3d6d3604da068d04682a8c2d
+ms.openlocfilehash: b9bf3b41bcd0a79027c5dd9a4f3df979fb0bd9f0
+ms.sourcegitcommit: a6873b710ca07eb956d45596d4ec2c1d5dc57353
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67672561"
+ms.lasthandoff: 07/16/2019
+ms.locfileid: "68250146"
 ---
 # <a name="migrate-azure-hdinsight-36-hive-workloads-to-hdinsight-40"></a>Migrieren von Azure HDInsight 3.6-Hive-Workloads zu HDInsight 4.0
 
@@ -99,7 +99,7 @@ In HDInsight 3.6 ist die Ambari-Hive-Ansicht der GUI-Client für die Interaktio
 
 Starten Sie eine Skriptaktion für Ihren Cluster, in der Sie „Head nodes“ als Knotentyp für die Ausführung angeben. Fügen Sie den folgenden URI in das Textfeld „Bash-Skript-URI“ ein: https://hdiconfigactions.blob.core.windows.net/dasinstaller/LaunchDASInstaller.sh
 
-Data Analytics Studio kann über die URL „https://<clustername>.azurehdinsight.net/das/“ gestartet werden.
+Data Analytics Studio kann über die URL „https://\<Clustername>.azurehdinsight.net/das/“ gestartet werden.
 
 
 

@@ -225,7 +225,7 @@ In der Beispielpipeline werden Helm und kubectl verwendet, um den Entwicklungsbe
 
     ![Hinzufügen von Dienstprinzipal-Anmeldeinformationen zu Jenkins](media/tutorial-jenkins-dev-spaces/add-service-principal-credentials.png)
 
-    Die Angabe einer Beschreibung **** ist optional. Eine ausführlichere Anleitung finden Sie im Abschnitt [Hinzufügen des Dienstprinzipals zu Jenkins](https://docs.microsoft.com/azure/jenkins/tutorial-jenkins-deploy-web-app-azure-app-service#add-service-principal-to-jenkins) des Bereitstellungstutorials für Azure App Service. 
+    Die Angabe einer **Beschreibung**ist optional. Eine ausführlichere Anleitung finden Sie im Abschnitt [Hinzufügen des Dienstprinzipals zu Jenkins](https://docs.microsoft.com/azure/jenkins/tutorial-jenkins-deploy-web-app-azure-app-service#add-service-principal-to-jenkins) des Bereitstellungstutorials für Azure App Service. 
 
 
 

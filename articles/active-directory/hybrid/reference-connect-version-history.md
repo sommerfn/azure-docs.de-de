@@ -508,7 +508,7 @@ Status: 19. Oktober 2017
 
 ### <a name="azure-ad-connect-sync"></a>Azure AD Connect-Synchronisierung
 > [!NOTE]
-> Hinweis: Der Synchronisierungsdienst verfügt über eine WMI-Schnittstelle, über die Sie Ihren eigenen benutzerdefinierten Scheduler entwickeln können. Diese Schnittstelle ist inzwischen veraltet und wird in zukünftigen Versionen von Azure AD Connect, die nach dem 30. Juni 2018 ausgeliefert werden, entfernt. Kunden, die den Zeitplan für die Synchronisierung anpassen möchten, sollten den integrierten Scheduler (https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnectsync-feature-scheduler) verwenden.
+> Hinweis: Der Synchronisierungsdienst verfügt über eine WMI-Schnittstelle, über die Sie Ihren eigenen benutzerdefinierten Scheduler entwickeln können. Diese Schnittstelle ist inzwischen veraltet und wird in zukünftigen Versionen von Azure AD Connect, die nach dem 30. Juni 2018 ausgeliefert werden, entfernt. Kunden, die den Zeitplan für die Synchronisierung anpassen möchten, [sollten den integrierten Scheduler](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnectsync-feature-scheduler) verwenden.
 
 #### <a name="fixed-issues"></a>Behobene Probleme
 * Wenn der Azure AD Connect-Assistent das erforderliche AD Connector-Konto zum Synchronisieren von Änderungen aus dem lokalen Active Directory erstellt, wird dem Konto die zum Lesen von PublicFolder-Objekten erforderliche Berechtigung nicht ordnungsgemäß zugewiesen. Dieses Problem betrifft die Expressinstallation und die benutzerdefinierte Installation. Das Problem wird mit dieser Änderung behoben.

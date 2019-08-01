@@ -7,12 +7,12 @@ ms.date: 05/02/2019
 ms.topic: article
 ms.service: virtual-machines-windows
 manager: gwallace
-ms.openlocfilehash: fec6d83870e20b7622f37c52847803d4f03cbba5
-ms.sourcegitcommit: dad277fbcfe0ed532b555298c9d6bc01fcaa94e2
+ms.openlocfilehash: 103ec3c9ee4bd6b3b83408b0f9958a22d3a22ae1
+ms.sourcegitcommit: a6873b710ca07eb956d45596d4ec2c1d5dc57353
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/10/2019
-ms.locfileid: "67722674"
+ms.lasthandoff: 07/16/2019
+ms.locfileid: "68261063"
 ---
 # <a name="preview-create-a-windows-vm-with-azure-image-builder"></a>Vorschau: Erstellen eines virtuellen Windows-Computers mit Azure Image Builder
 
@@ -140,7 +140,7 @@ Warten Sie, bis der Build abgeschlossen ist. Der Vorgang kann bis zu 15 Minuten
 
 ## <a name="create-the-vm"></a>Erstellen des virtuellen Computers
 
-Erstellen Sie den virtuellen Computer mithilfe des erstellten Images. Ersetzen Sie *<password>* durch Ihr eigenes Kennwort für `aibuser` auf dem virtuellen Computer.
+Erstellen Sie den virtuellen Computer mithilfe des erstellten Images. Ersetzen Sie *\<Kennwort>* durch Ihr eigenes Kennwort für `aibuser` auf dem virtuellen Computer.
 
 ```azurecli-interactive
 az vm create \

@@ -1,9 +1,9 @@
 ### YamlMime:YamlDocument
 documentType: LandingData
-title: Dokumentation zur Vorschauversion von Azure Security Center für IoT
+title: Dokumentation zu Azure Security Center für IoT
 metadata:
-  title: 'Dokumentation zur Vorschauversion von Azure Security Center für IoT: Tutorials, Schnellstartanleitungen | Microsoft-Dokumentation'
-  meta.description: Azure Security Center for IoT unifies your security management and enables advanced threat protection across your IoT solution.
+  title: 'Dokumentation zu Azure Security Center für IoT: Tutorials, Schnellstartanleitungen | Microsoft-Dokumentation'
+  meta.description: Azure Security Center for IoT unifies your device security management and enables advanced threat detection and security posture management across your IoT solution.
   services: asc-for-iot
   author: mlottner
   manager: rkarlin
@@ -11,25 +11,25 @@ metadata:
   ms.tgt_pltfrm: na
   ms.devlang: na
   ms.topic: landing-page
-  ms.date: 03/26/19
+  ms.date: 07/23/19
   ms.author: rkarlin
 abstract:
-  description: "Mit der Vorschauversion von Azure Security Center (ASC) für IoT können Sie Ihre gesamte IoT-Lösung in Ihre aktuelle Cybersecurity-Darstellung einbeziehen. So erhalten Sie einen Gesamtüberblick über die Sicherheit aller Azure-Ressourcen. Optionen für die schnelle Bereitstellung und vollständige Integration in IoT\_Hub-Modulzwillinge ermöglichen umfassende Anpassungen und eine einfache Integration in Ihre aktuellen Geräteverwaltungstools.\_"
+  description: "Mit Azure Security Center für IoT können Sie Ihre gesamte IoT-Lösung in Ihre aktuelle Cybersecurity-Darstellung einbeziehen. So erhalten Sie einen Gesamtüberblick über die Sicherheit aller Azure-Ressourcen. Optionen für die schnelle Bereitstellung und vollständige Integration in IoT\_Hub-Modulzwillinge ermöglichen umfassende Anpassungen und eine einfache Integration in Ihre aktuellen Geräteverwaltungstools.\_"
 sections:
   - title: Fünfminütige Schnellstarts
     items:
       - type: paragraph
-        text: "Hier erfahren Sie, wie Sie für Ihre IoT\_Hub-Instanz ASC für IoT aktivieren, Agents für ASC für IoT installieren und Einblick in Ihre Daten und potenziellen Bedrohungen erhalten."
+        text: "Hier erfahren Sie, wie Sie Azure Security Center für IoT für Ihre IoT\_Hub-Instanz aktivieren, Sicherheits-Agents installieren und Einblick in potenzielle Bedrohungen erhalten."
       - type: list
         style: icon48
         items:
           - image:
               src: media/index/deploy.svg
-            text: Aktivieren von ASC für IoT
+            text: Aktivieren von Azure Security Center für IoT
             href: /azure/asc-for-iot/quickstart-onboard-iot-hub
           - image:
               src: media/index/get-started.svg
-            text: Erste Schritte mit ASC für IoT
+            text: Erste Schritte mit Azure Security Center für IoT
             href: /azure/asc-for-iot/getting-started
   - title: Anleitungen
     items:
@@ -38,7 +38,7 @@ sections:
       - type: list
         style: unordered
         items:
-          - html: <a href="/azure/asc-for-iot/how-to-investigate-device">Detect threats with ASC for IoT</a> (Erkennen von Bedrohungen mit ASC für IoT)
+          - html: <a href="/azure/asc-for-iot/how-to-investigate-device">Untersuchen eines verdächtigen IoT-Geräts</a>
   - title: Erweitern Ihrer Fähigkeiten mit Microsoft Learn
     items:
       - type: list
@@ -50,8 +50,17 @@ sections:
             image:
               src: media/index/tutorial.svg
               href: 'https://docs.microsoft.com/learn/azure'
-      - type: paragraph
-        text: <a href="/learn/browse/?term=security">Mehr interaktives Lernen...</a>
+  - title: 'Azure Security Center für IoT: Videos'
+    items:
+      - type: list
+        style: cards
+        className: cardsFTitle
+        items:
+          - title: Übersicht über Microsoft Azure Security Center für IoT
+            href: 'https://youtu.be/pq5uSp9u_x0'
+            image:
+              src: 'https://docs.microsoft.com/media/common/i_video.svg'
+              href: 'https://youtu.be/pq5uSp9u_x0'
   - title: Verweis
     items:
       - type: list

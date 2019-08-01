@@ -1,7 +1,7 @@
 ---
 title: 'Python Schnellstart: Erstellen, Laden und Abfragen von Indizes mit Hilfe von Azure Search REST APIs - Azure Search'
 description: Erklärt, wie Sie einen Index erstellen, Daten laden und Abfragen mit Python, Jupyter Notebooks und der Azure Search REST API ausführen.
-ms.date: 07/09/2019
+ms.date: 07/11/2019
 author: heidisteen
 manager: cgronlun
 ms.author: heidist
@@ -10,12 +10,12 @@ ms.service: search
 ms.devlang: rest-api
 ms.topic: conceptual
 ms.custom: seodec2018
-ms.openlocfilehash: 39ff269c582a2d981d8fb30e09a550813a262eca
-ms.sourcegitcommit: 66237bcd9b08359a6cce8d671f846b0c93ee6a82
+ms.openlocfilehash: 1c570549514ff5a5e7e598aa54d8e2ac4b5a5341
+ms.sourcegitcommit: fa45c2bcd1b32bc8dd54a5dc8bc206d2fe23d5fb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67798736"
+ms.lasthandoff: 07/12/2019
+ms.locfileid: "67849779"
 ---
 # <a name="quickstart-create-an-azure-search-index-in-python-using-jupyter-notebooks"></a>Schnellstart: Erstellen eines Azure Search-Index mithilfe von Python-Jupyter Notebooks
 > [!div class="op_single_selector"]
@@ -26,13 +26,13 @@ ms.locfileid: "67798736"
 > * [Portal](search-create-index-portal.md)
 > 
 
-Erstellen Sie ein Jupyter Notebook, mit dem ein Azure Search-Index mithilfe von Python und den [Azure Search-REST-APIs](https://docs.microsoft.com/rest/api/searchservice/) erstellt, geladen und abgefragt wird. In diesem Artikel wird erläutert, wie Sie ein Notebook Schritt für Schritt von Grund auf neu erstellen. Alternativ können Sie ein abgeschlossenes Notebook ausführen. Um eine Kopie herunterzuladen, [gehen Sie zum Repository azure-search-python-samples](https://github.com/Azure-Samples/azure-search-python-samples).
+Erstellen Sie ein Jupyter Notebook, mit dem ein Azure Search-Index mithilfe von Python und den [Azure Search-REST-APIs](https://docs.microsoft.com/rest/api/searchservice/) erstellt, geladen und abgefragt wird. In diesem Artikel wird erläutert, wie Sie ein Notebook Schritt für Schritt erstellen. Alternativ können Sie [ein bereits fertiges Jupyter Python Notebook herunterladen und installieren](https://github.com/Azure-Samples/azure-search-python-samples).
 
 Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) erstellen, bevor Sie beginnen.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-In diesem Schnellstart werden die folgenden Dienste und Tools verwendet. 
+Für diesen Schnellstart sind die folgenden Dienste und Tools erforderlich. 
 
 + [Anaconda 3.x](https://www.anaconda.com/distribution/#download-section) mit Python 3.x und Jupyter Notebooks.
 
@@ -297,11 +297,11 @@ In diesem Schritt wird beschrieben, wie Sie einen Index mit der [REST-API zum Du
 
 ## <a name="clean-up"></a>Bereinigen
 
-Wenn Sie in Ihrem eigenen Abonnement arbeiten, sollten Sie sich am Ende eines Projekts überlegen, ob Sie die erstellten Ressourcen noch benötigen. Ressourcen, die weiterhin ausgeführt werden, können Sie Geld kosten. Sie können Ressourcen entweder einzeln löschen oder aber die Ressourcengruppe löschen, um den gesamten Ressourcensatz zu löschen.
+Wenn Sie in Ihrem eigenen Abonnement arbeiten, sollten Sie sich am Ende eines Projekts überlegen, ob Sie die erstellten Ressourcen noch benötigen. Ressourcen, die weiterhin ausgeführt werden, können Sie Geld kosten. Sie können entweder einzelne Ressourcen oder aber die Ressourcengruppe löschen, um den gesamten Ressourcensatz zu entfernen.
 
 Ressourcen können im Portal über den Link **Alle Ressourcen** oder **Ressourcengruppen** im linken Navigationsbereich gesucht und verwaltet werden.
 
-Denken Sie bei Verwendung eines kostenlosen Diensts an die Beschränkung auf maximal drei Indizes, Indexer und Datenquellen. Sie können einzelne Elemente über das Portal löschen, um unterhalb des Limits zu bleiben. 
+Denken Sie bei Verwendung eines kostenlosen Diensts an die Beschränkung auf maximal drei Indizes, Indexer und Datenquellen. Sie können einzelne Elemente über das Portal löschen, um unter dem Limit zu bleiben. 
 
 ## <a name="next-steps"></a>Nächste Schritte
 

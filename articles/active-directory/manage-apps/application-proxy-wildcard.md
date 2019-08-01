@@ -16,12 +16,12 @@ ms.author: mimart
 ms.reviewer: harshja
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2ce02d829e0e8a66748e98ec586f35820969dc54
-ms.sourcegitcommit: 0ebc62257be0ab52f524235f8d8ef3353fdaf89e
+ms.openlocfilehash: 5d3b8176566593c5c9e9ff63a6ccbafcb2a35cd5
+ms.sourcegitcommit: 441e59b8657a1eb1538c848b9b78c2e9e1b6cfd5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/10/2019
-ms.locfileid: "67724029"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67827988"
 ---
 # <a name="wildcard-applications-in-the-azure-active-directory-application-proxy"></a>Platzhalteranwendungen im Azure Active Directory-Anwendungsproxy
 
@@ -84,11 +84,11 @@ Hier sind einige Überlegungen, die Sie für Platzhalteranwendungen in Betracht 
 
 Bei Platzhalteranwendungen muss die **interne URL** das Format `http(s)://*.<domain>` aufweisen.
 
-![Verwenden Sie das Format „http(s)://*.<domain>“ für interne URLs.](./media/application-proxy-wildcard/22.png)
+![Verwenden Sie das Format „http(s)://*.\<Domäne>“ für interne URLs.](./media/application-proxy-wildcard/22.png)
 
 Beim Konfigurieren einer **externen URL** müssen Sie folgendes Format verwenden: `https://*.<custom domain>`
 
-![Verwenden Sie das Format „https://*.<custom domain>“ für externe URLs.](./media/application-proxy-wildcard/21.png)
+![Verwenden Sie das Format „https://*.\<benutzerdefinierte Domäne>“ für externe URLs.](./media/application-proxy-wildcard/21.png)
 
 Andere Positionen des Platzhalters, mehrere Platzhalter oder andere RegEx-Zeichenfolgen werden nicht unterstützt und verursachen Fehler.
 
@@ -97,7 +97,7 @@ Andere Positionen des Platzhalters, mehrere Platzhalter oder andere RegEx-Zeiche
 Sie können eine Anwendung aus der Platzhalteranwendung wie folgt ausschließen:
 
 - Veröffentlichen der Ausnahmeanwendung als normale Anwendung
-- Aktivieren das Platzhalters nur für bestimmte Anwendungen über die DNS-Einstellungen  
+- Aktivieren das Platzhalters nur für bestimmte Anwendungen über die DNS-Einstellungen
 
 Das Veröffentlichen einer Anwendung als normale Anwendung ist die bevorzugte Methode, um eine Anwendung aus einem Platzhalter auszuschließen. Veröffentlichen Sie die ausgeschlossenen Anwendungen vor den Platzhalteranwendungen, um sicherzustellen, dass Ihre Ausnahmen von Anfang an erzwungen werden. Die spezifischste Anwendung hat immer Vorrang – eine als `budgets.finance.adventure-works.com` veröffentlichte Anwendung hat Vorrang vor der Anwendung `*.finance.adventure-works.com`, die wiederum Vorrang vor der Anwendung `*.adventure-works.com` hat.
 

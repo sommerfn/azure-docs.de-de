@@ -9,12 +9,12 @@ ms.date: 09/11/2018
 ms.topic: conceptual
 description: Schnelle Kubernetes-Entwicklung mit Containern und Microservices in Azure
 keywords: 'Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, Container, Helm, Service Mesh, Service Mesh-Routing, kubectl, k8s '
-ms.openlocfilehash: 651ae9d9f9a622724e1ee606219ba940995aa555
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: 2434507ac89d631bb96ae9633403075801879a37
+ms.sourcegitcommit: 9a699d7408023d3736961745c753ca3cec708f23
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67441742"
+ms.lasthandoff: 07/16/2019
+ms.locfileid: "68277398"
 ---
 # <a name="troubleshooting-guide"></a>Handbuch zur Problembehandlung
 
@@ -417,7 +417,7 @@ Fügen Sie Ihrem AKS-Cluster einen [Taint](../aks/operator-best-practices-advanc
 
 ## <a name="error-found-no-untainted-linux-nodes-in-ready-state-on-the-cluster-there-needs-to-be-at-least-one-untainted-linux-node-in-ready-state-to-deploy-pods-in-azds-namespace"></a>Fehler „Found no untainted Linux nodes in Ready state on the cluster. There needs to be at least one untainted Linux node in Ready state to deploy pods in 'azds' namespace.“ (Es wurden keine Linux-Knoten ohne Taint im Zustand "Bereit" auf dem Cluster gefunden. Es muss mindestens ein Linux-Knoten ohne Taint im Zustand "Bereit" vorhanden sein, damit Pods im Namespace "azds" bereitgestellt werden können.)
 
-### <a name="reason"></a>Ursache
+### <a name="reason"></a>`Reason`
 
 Azure Dev Spaces konnte keinen Controller auf Ihrem AKS-Cluster erstellen, weil kein Knoten ohne Taint im Zustand *Bereit* gefunden wurde, für den Pods geplant werden können. Azure Dev Spaces erfordert mindestens einen Linux-Knoten in einem Zustand *Bereit*, der die Planung von Pods ohne Angabe von Toleranzen ermöglicht.
 
@@ -426,7 +426,7 @@ Azure Dev Spaces konnte keinen Controller auf Ihrem AKS-Cluster erstellen, weil 
 
 ## <a name="error-azure-dev-spaces-cli-not-installed-properly-when-running-az-aks-use-dev-spaces"></a>Fehler „Azure Dev Spaces CLI not installed properly when running `az aks use-dev-spaces`“ (Azure Dev Spaces CLI ist bei der Ausführung von az aks use-dev-spaces nicht ordnungsgemäß installiert)
 
-### <a name="reason"></a>Ursache
+### <a name="reason"></a>`Reason`
 Ein Update der Azure Dev Spaces CLI hat den Installationspfad geändert. Wenn Sie eine frühere Version der Azure CLI als 2.0.63 verwenden, wird dieser Fehler möglicherweise angezeigt. Verwenden Sie `az --version` zum Anzeigen Ihrer Version der Azure CLI.
 
 ```bash
@@ -439,3 +439,13 @@ Trotz der Fehlermeldung bei der Ausführung von `az aks use-dev-spaces` mit eine
 
 ### <a name="try"></a>Testen
 Aktualisieren Sie die Installation der [Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest) auf 2.0.63 oder höher. Dadurch wird die Fehlermeldung behoben, die Sie bei der Ausführung von `az aks use-dev-spaces` erhalten. Alternativ können Sie auch weiterhin Ihre aktuelle Version der Azure CLI und der Azure Dev Spaces CLI verwenden.
+
+
+## <a name="horizontal-pod-autoscaling-not-working-in-a-dev-space"></a>Die automatische horizontale Podskalierung funktioniert nicht in einem Entwicklungsbereich
+
+### <a name="reason"></a>`Reason`
+
+Wenn Sie einen Dienst in einem Entwicklungsbereich ausführen, wird der Pod dieses Diensts [mit zusätzlichen Containern für die Instrumentation versehen](how-dev-spaces-works.md#prepare-your-aks-cluster). Für diese Container sind keine Ressourcenanforderungen oder -einschränkungen definiert, was bewirkt, dass die automatische horizontale Podskalierung für den Pod deaktiviert wird.
+
+### <a name="try"></a>Testen
+Führen Sie die automatische horizontale Podskalierung in einem Namespace aus, für den keine Entwicklungsbereiche aktiviert sind.

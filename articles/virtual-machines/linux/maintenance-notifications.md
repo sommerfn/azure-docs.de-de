@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/30/2019
 ms.author: shants
-ms.openlocfilehash: 40ae8f0fb9c0c5980c4db1471b2bbad56a57d486
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: c82bacfdff1c9d939016b48735f7917e7d34b47f
+ms.sourcegitcommit: fa45c2bcd1b32bc8dd54a5dc8bc206d2fe23d5fb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65410494"
+ms.lasthandoff: 07/12/2019
+ms.locfileid: "67849683"
 ---
 # <a name="handling-planned-maintenance-notifications-for-linux-virtual-machines"></a>Behandeln von Benachrichtigungen zu geplanten Wartungen für virtuelle Linux-Computer
 
@@ -140,7 +140,7 @@ azure compute virtual-machine initiate-maintenance --service-name myService --na
 
 **A:** In einer Verfügbarkeitsgruppe oder VM-Skalierungsgruppe bereitgestellte virtuelle Computer werden wie Updatedomänen (UD) behandelt. Bei der Wartung berücksichtigt Azure die UD-Einschränkung und startet virtuelle Computer nicht von einer anderen UD (innerhalb derselben Verfügbarkeitsgruppe) aus neu.  Azure wartet auch mindestens 30 Minuten vor dem Wechsel zur nächsten Gruppe von virtuellen Computern. 
 
-Weitere Informationen zu Hochverfügbarkeit finden Sie unter [Regionen und Verfügbarkeit für virtuelle Computer in Azure](regions-and-availability.MD).
+Weitere Informationen zu Hochverfügbarkeit finden Sie unter [Verfügbarkeit für virtuelle Computer in Azure](availability.MD).
 
 **F: Wie werde ich über eine geplante Wartung benachrichtigt?**
 
@@ -160,7 +160,7 @@ Weitere Informationen zu Hochverfügbarkeit finden Sie unter [Regionen und Verf�
 
 **F: Wie sind die Erfahrungen mit VM-Skalierungsgruppen?**
 
-**A:** Es ist nun eine geplante Wartung für VM-Skalierungsgruppen verfügbar. Anleitungen zum Initiieren der Self-Service-Wartung finden Sie im Dokument [zur geplanten VMSS-Wartung](../../virtual-machine-scale-sets/virtual-machine-scale-sets-maintenance-notifications.md).
+**A:** Es ist nun eine geplante Wartung für VM-Skalierungsgruppen verfügbar. Anleitungen zum Initiieren der Self-Service-Wartung finden Sie im Dokument [zur geplanten Wartung für VM-Skalierungsgruppen](../../virtual-machine-scale-sets/virtual-machine-scale-sets-maintenance-notifications.md).
 
 **F: Wie sind die Erfahrungen mit Cloud Services (Web-/Workerrolle) und Service Fabric?**
 

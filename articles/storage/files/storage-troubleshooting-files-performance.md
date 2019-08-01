@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 04/25/2019
 ms.author: gunjanj
 ms.subservice: files
-ms.openlocfilehash: 8c35501f3afbeed519fb5304229f25be1cbd5f9b
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: 1a5e59bd0276477bad1eab9a544dc4070e662016
+ms.sourcegitcommit: a6873b710ca07eb956d45596d4ec2c1d5dc57353
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67445668"
+ms.lasthandoff: 07/16/2019
+ms.locfileid: "68249874"
 ---
 # <a name="troubleshoot-azure-files-performance-issues"></a>Troubleshooting bei Azure Files-Leistungsproblemen
 
@@ -108,7 +108,7 @@ Es werden keine Verzeichnis-Leasedauern unterstützt.
 ### <a name="workaround"></a>Problemumgehung
 
 - Vermeiden Sie nach Möglichkeit, dass Öffnen-/Schließen-Vorgänge im selben Verzeichnis innerhalb kurzer Zeit verarbeitet werden müssen.
-- Erhöhen Sie für virtuelle Linux-Computer das Cachetimeout für Verzeichniseinträge, indem Sie **actimeo=<sec>** als eine Bereitstellungsoption angeben. Der Standardwert für die Option beträgt eine Sekunde, sodass ein höherer Wert, etwa drei oder fünf Sekunden, nützlich sein kann.
+- Erhöhen Sie für virtuelle Linux-Computer das Cachetimeout für Verzeichniseinträge, indem Sie **actimeo=\<Sekunden>** als eine Bereitstellungsoption angeben. Der Standardwert für die Option beträgt eine Sekunde, sodass ein höherer Wert, etwa drei oder fünf Sekunden, nützlich sein kann.
 - Aktualisieren Sie bei virtuellen Linux-Computern den Kernel auf 4.20 oder höher.
 
 ## <a name="low-iops-on-centosrhel"></a>Niedriger IOPS unter CentOS/RHEL

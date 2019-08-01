@@ -9,12 +9,12 @@ ms.service: application-insights
 ms.topic: conceptual
 ms.date: 04/26/2019
 ms.author: mbullwin
-ms.openlocfilehash: 5594c1f3517bf3d3f74841493df3c683304fa3f5
-ms.sourcegitcommit: 837dfd2c84a810c75b009d5813ecb67237aaf6b8
+ms.openlocfilehash: 4f296aae6c147b0d5209276dbd008a1207837cfd
+ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2019
-ms.locfileid: "67502087"
+ms.lasthandoff: 07/15/2019
+ms.locfileid: "67875197"
 ---
 # <a name="monitor-azure-app-service-performance"></a>Überwachen der Leistung von Azure App Service
 
@@ -39,7 +39,7 @@ Es gibt zwei Methoden, um die Überwachung für in Azure App Services gehostete 
 > [!NOTE]
 > Wenn sowohl die Agent-basierte Überwachung als auch die manuelle SDK-basierte Instrumentierung erkannt wird, werden nur die Einstellungen der manuellen Instrumentierung berücksichtigt. Dadurch wird verhindert, dass doppelte Daten gesendet werden. Weitere Informationen dazu finden Sie im [Abschnitt zur Problembehandlung](https://docs.microsoft.com/azure/azure-monitor/app/azure-web-apps#troubleshooting) weiter unten.
 
-## <a name="enable-agent-based-monitoring-net"></a>Aktivieren der Agent-basierten Überwachung für .NET
+## <a name="enable-agent-based-monitoring-for-net-applications"></a>Aktivieren der Agent-basierten Überwachung für .NET-Anwendungen
 
 > [!NOTE]
 > Die Kombination von APPINSIGHTS_JAVASCRIPT_ENABLED und urlCompression wird nicht unterstützt. Weitere Informationen enthält die Erläuterung im [Problembehandlungsabschnitt](https://docs.microsoft.com/azure/azure-monitor/app/azure-web-apps#troubleshooting).
@@ -75,7 +75,7 @@ Es gibt zwei Methoden, um die Überwachung für in Azure App Services gehostete 
 
     * Eine Liste der unterstützten Einstellungen des Telemetrieprozessors für die adaptive Stichprobenerstellung finden Sie im [Code](https://github.com/Microsoft/ApplicationInsights-dotnet/blob/master/src/ServerTelemetryChannel/AdaptiveSamplingTelemetryProcessor.cs) und der [zugehörigen Dokumentation](https://docs.microsoft.com/azure/azure-monitor/app/sampling).
 
-## <a name="enable-agent-based-monitoring-net-core"></a>Aktivieren der Agent-basierten Überwachung für .NET Core
+## <a name="enable-agent-based-monitoring-for-net-core-applications"></a>Aktivieren der Agent-basierten Überwachung für .NET Core-Anwendungen
 
 Unterstützte .NET Core-Versionen: ASP.NET Core 2.0, ASP.NET Core 2.1, ASP.NET Core 2.2
 
@@ -96,7 +96,7 @@ Die Agent-/Erweiterung-basierte Überwachung für das vollständige Framework au
 
     ![Auswählen plattformspezifischer Optionen](./media/azure-web-apps/choose-options-new-net-core.png)
 
-## <a name="enable-client-side-monitoring-net"></a>Aktivieren der clientseitigen Überwachung für .NET
+## <a name="enable-client-side-monitoring-for-net-applications"></a>Aktivieren der clientseitigen Überwachung für .NET-Anwendungen
 
 Die clientseitige Überwachung für ASP.NET ist optional. Zum Aktivieren der clientseitigen Überwachung gehen Sie folgendermaßen vor:
 
@@ -113,7 +113,7 @@ Die clientseitige Überwachung für ASP.NET ist optional. Zum Aktivieren der cli
 
 Zum Deaktivieren der clientseitigen Überwachung entfernen Sie entweder das zugeordnete Schlüssel-Wert-Paar aus den Anwendungseinstellungen oder legen Sie den Wert auf „false“ fest.
 
-## <a name="enable-client-side-monitoring-net-core"></a>Aktivieren der clientseitigen Überwachung für .NET Core
+## <a name="enable-client-side-monitoring-for-net-core-applications"></a>Aktivieren der clientseitigen Überwachung für .NET Core-Anwendungen
 
 Die clientseitige Überwachung für .NET Core-Apps ist mit **Empfohlene Sammlung** **standardmäßig aktiviert**, unabhängig davon, ob die App-Einstellung „APPINSIGHTS_JAVASCRIPT_ENABLED“ vorhanden ist.
 
@@ -169,7 +169,6 @@ Die Grundstruktur des JSON-Codes für die Anwendungseinstellungen für eine App 
           }
         }
       ]
-
 ```
 
 Ein Beispiel für eine Azure Resource Manager-Vorlage mit Anwendungseinstellungen für Application Insights finden Sie in [dieser Vorlage](https://github.com/Andrew-MSFT/BasicImageGallery), insbesondere im Abschnitt ab [Zeile 238](https://github.com/Andrew-MSFT/BasicImageGallery/blob/c55ada54519e13ce2559823c16ca4f97ddc5c7a4/CoreImageGallery/Deploy/CoreImageGalleryARM/azuredeploy.json#L238).

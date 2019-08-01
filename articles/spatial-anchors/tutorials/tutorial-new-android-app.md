@@ -8,12 +8,12 @@ ms.author: rgarcia
 ms.date: 04/03/2019
 ms.topic: tutorial
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: 9838add4f83434848d61f3ae86db71765efdc59a
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.openlocfilehash: 499b08dbdc8e798a884b721bcba51be1f6973df6
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "59995726"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68562393"
 ---
 # <a name="tutorial-step-by-step-instructions-to-create-a-new-android-app-using-azure-spatial-anchors"></a>Tutorial: Schritt-für-Schritt-Anleitung zum Erstellen einer neuen Android-App mit Azure Spatial Anchors
 
@@ -23,7 +23,7 @@ In diesem Tutorial wird veranschaulicht, wie Sie eine neue Android-App erstellen
 
 Damit Sie dieses Tutorial ausführen können, benötigen Sie folgende Komponenten:
 
-- Einen Windows- oder macOS-Computer mit <a href="https://developer.android.com/studio/" target="_blank">Android Studio 3.3+</a>.
+- Einen Windows- oder macOS-Computer mit <a href="https://developer.android.com/studio/" target="_blank">mindestens Android Studio 3.4</a>.
 - Ein <a href="https://developer.android.com/studio/debug/dev-options" target="_blank">für Entwickler geeignetes</a> und <a href="https://developers.google.com/ar/discover/supported-devices" target="_blank">ARCore-fähiges</a> Android-Gerät.
 
 ## <a name="getting-started"></a>Erste Schritte
@@ -57,12 +57,12 @@ Schließen Sie Ihr Entwicklergerät per USB-Kabel an Ihren Entwicklungscomputer 
 </application>
 ```
 
-Ergänzen Sie `Gradle Scripts\build.gradle (Module: app)` um den folgenden Eintrag. Mit diesem Code wird sichergestellt, dass Ihre App auf ARCore Version 1.7 ausgerichtet ist. Nach dieser Änderung erhalten Sie unter Umständen eine Benachrichtigung von Gradle, in der Sie zum Synchronisieren aufgefordert werden: Klicken Sie auf **Sync now** (Jetzt synchronisieren).
+Ergänzen Sie `Gradle Scripts\build.gradle (Module: app)` um den folgenden Eintrag. Mit diesem Code wird sichergestellt, dass Ihre App auf ARCore Version 1.8 ausgerichtet ist. Nach dieser Änderung erhalten Sie unter Umständen eine Benachrichtigung von Gradle, in der Sie zum Synchronisieren aufgefordert werden: Klicken Sie auf **Sync now** (Jetzt synchronisieren).
 
 ```
 dependencies {
     ...
-    implementation 'com.google.ar:core:1.7.0'
+    implementation 'com.google.ar:core:1.8.0'
     ...
 }
 ```
@@ -71,7 +71,7 @@ dependencies {
 
 <a href="https://developers.google.com/ar/develop/java/sceneform/" target="_blank">_Sceneform_</a> erleichtert das Rendern von realistischen 3D-Szenen in Augmented Reality-Apps, ohne dass OpenGL erlernt werden muss.
 
-Ergänzen Sie `Gradle Scripts\build.gradle (Module: app)` um die folgenden Einträge. Dieser Code ermöglicht für Ihre App die Verwendung von Sprachkonstrukten aus Java 8, die für `Sceneform` benötigt werden. Außerdem wird sichergestellt, dass Ihre App auf `Sceneform` Version 1.7 ausgerichtet ist, da sie mit der Version von ARCore übereinstimmen sollte, die für Ihre App verwendet wird. Nach dieser Änderung erhalten Sie unter Umständen eine Benachrichtigung von Gradle, in der Sie zum Synchronisieren aufgefordert werden: Klicken Sie auf **Sync now** (Jetzt synchronisieren).
+Ergänzen Sie `Gradle Scripts\build.gradle (Module: app)` um die folgenden Einträge. Dieser Code ermöglicht für Ihre App die Verwendung von Sprachkonstrukten aus Java 8, die für `Sceneform` benötigt werden. Außerdem wird sichergestellt, dass Ihre App auf `Sceneform` Version 1.8 ausgerichtet ist, da sie mit der Version von ARCore übereinstimmen sollte, die für Ihre App verwendet wird. Nach dieser Änderung erhalten Sie unter Umständen eine Benachrichtigung von Gradle, in der Sie zum Synchronisieren aufgefordert werden: Klicken Sie auf **Sync now** (Jetzt synchronisieren).
 
 ```
 android {
@@ -85,7 +85,7 @@ android {
 
 dependencies {
     ...
-    implementation 'com.google.ar.sceneform.ux:sceneform-ux:1.7.0'
+    implementation 'com.google.ar.sceneform.ux:sceneform-ux:1.8.0'
     ...
 }
 ```
@@ -123,13 +123,13 @@ Führen Sie für Ihre App eine [erneute Bereitstellung](#trying-it-out) auf Ihre
 
 ## <a name="attach-a-local-azure-spatial-anchor"></a>Anfügen eines lokalen Azure-Raumankers
 
-Ergänzen Sie `Gradle Scripts\build.gradle (Module: app)` um den folgenden Eintrag. Mit diesem Code wird sichergestellt, dass Ihre App auf Azure Spatial Anchors Version 1.0.2 ausgerichtet ist. Es sollte aber auch funktionieren, wenn Sie auf eine der neueren Versionen von Azure Spatial Anchors verweisen.
+Ergänzen Sie `Gradle Scripts\build.gradle (Module: app)` um den folgenden Eintrag. Mit diesem Code wird sichergestellt, dass Ihre App auf Azure Spatial Anchors Version 1.3.0 ausgerichtet ist. Es sollte aber auch funktionieren, wenn Sie auf eine der neueren Versionen von Azure Spatial Anchors verweisen.
 
 ```
 dependencies {
     ...
-    implementation "com.microsoft.azure.spatialanchors:spatialanchors_jni:[1.0.2]"
-    implementation "com.microsoft.azure.spatialanchors:spatialanchors_java:[1.0.2]"
+    implementation "com.microsoft.azure.spatialanchors:spatialanchors_jni:[1.3.0]"
+    implementation "com.microsoft.azure.spatialanchors:spatialanchors_java:[1.3.0]"
     ...
 }
 ```

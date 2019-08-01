@@ -1,6 +1,6 @@
 ---
-title: Includedatei
-description: Includedatei
+title: include file
+description: include file
 services: virtual-machines
 author: roygara
 ms.service: virtual-machines
@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 05/06/2019
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 91e9d3a99224c09ecfb5cc3b477a71a7f7bfed7a
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.openlocfilehash: 444e64488b185b1ff2aa7cc63fbeffafc591dbfe
+ms.sourcegitcommit: 57a7d4f67635212f5bf0c56e58fd87c8ec366f2c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65199096"
+ms.lasthandoff: 07/22/2019
+ms.locfileid: "68319986"
 ---
 ## <a name="benefits-of-managed-disks"></a>Vorteile von verwalteten Datenträgern
 
@@ -37,11 +37,23 @@ Verwaltete Datenträger unterstützen [Verfügbarkeitszonen](../articles/availab
 
 ### <a name="azure-backup-support"></a>Azure Backup-Unterstützung
 
-Zum Schutz vor regionalen Katastrophen kann mit [Azure Backup](../articles/backup/backup-introduction-to-azure-backup.md) ein Sicherungsauftrag mit zeitbasierten Sicherungen und Richtlinien zur Sicherungsaufbewahrung erstellt werden. So können Sie einfach nach Belieben VM-Wiederherstellungen ausführen. Azure Backup unterstützt derzeit Datenträgergrößen von bis zu vier Tebibyte (TiB). Weitere Informationen finden Sie unter [Verwendung von virtuellen Computern auf verwalteten Datenträgern](../articles/backup/backup-introduction-to-azure-backup.md#using-managed-disk-vms-with-azure-backup).
+Zum Schutz vor regionalen Katastrophen kann mit [Azure Backup](../articles/backup/backup-overview.md) ein Sicherungsauftrag mit zeitbasierten Sicherungen und Richtlinien zur Sicherungsaufbewahrung erstellt werden. So können Sie einfach nach Belieben VM-Wiederherstellungen ausführen. Azure Backup unterstützt derzeit Datenträgergrößen von bis zu vier Tebibyte (TiB).  Azure Backup unterstützt die Sicherung und Wiederherstellung von verwalteten Datenträgern. [Weitere Informationen](../articles/backup/backup-support-matrix-iaas.md) zur Unterstützung der Azure-VM-Sicherung.
 
 ### <a name="granular-access-control"></a>Genau abgestimmte Zugriffssteuerung
 
 Sie können die [Rollenbasierte Zugriffssteuerung in Azure (RBAC)](../articles/role-based-access-control/overview.md) verwenden, um die spezifischen Berechtigungen für einen verwalteten Datenträger einem oder mehreren Benutzern zuzuweisen. Verwaltete Datenträger bieten viele verschiedene Vorgänge, z.B. Lesen, Schreiben (Erstellen/Aktualisieren), Löschen und Abrufen eines [SAS-URI (Shared Access Signature)](../articles/storage/common/storage-dotnet-shared-access-signature-part-1.md) für den Datenträger. Sie haben die Möglichkeit, Personen nur Zugriff auf die Vorgänge zu gewähren, die sie jeweils benötigen, um ihre Aufgaben zu erledigen. Wenn Sie es für eine Person beispielsweise nicht zulassen möchten, dass sie einen verwalteten Datenträger auf ein Speicherkonto kopiert, können Sie festlegen, dass der Zugriff auf die Exportaktion für diesen verwalteten Datenträger nicht gewährt wird. Wenn Sie nicht möchten, dass eine Person einen SAS-URI zum Kopieren eines verwalteten Datenträgers verwendet, können Sie auch festlegen, dass diese Berechtigung für den verwalteten Datenträger nicht gewährt wird.
+
+## <a name="encryption"></a>Verschlüsselung
+
+Verwaltete Datenträger bieten zwei verschiedene Arten der Verschlüsselung. Die erste ist Storage Service Encryption (SSE), die vom Speicherdienst durchgeführt wird. Die zweite ist Azure Disk Encryption, die Sie für Datenträger für das Betriebssystem und die Daten Ihrer virtuellen Computer aktivieren können.
+
+### <a name="storage-service-encryption-sse"></a>Storage Service Encryption (SSE)
+
+[Azure Storage Service Encryption](../articles/storage/common/storage-service-encryption.md) bietet Verschlüsselung für ruhende Daten und schützt Ihre Daten, um die Sicherheits- und Konformitätsverpflichtungen Ihrer Organisation zu erfüllen. SSE ist standardmäßig für alle verwalteten Datenträger, Momentaufnahmen und Images in allen Regionen aktiviert, in denen Managed Disks verfügbar ist. Weitere Einzelheiten finden Sie auf der Seite mit [FAQs zu Managed Disks](../articles/virtual-machines/windows/faq-for-disks.md#managed-disks-and-storage-service-encryption).
+
+### <a name="azure-disk-encryption-ade"></a>Azure Disk Encryption (ADE)
+
+Mit Azure Disk Encryption können Sie die Betriebssystemdatenträger und andere Datenträger verschlüsseln, die von einem virtuellen IaaS-Computer verwendet werden. Diese Verschlüsselung umfasst verwaltete Datenträger. Unter Windows werden Laufwerke mit branchenüblicher BitLocker-Verschlüsselung verschlüsselt. Unter Linux werden Datenträger mit der DM-Crypt-Technologie verschlüsselt. Dieser Verschlüsselungsvorgang ist in Azure Key Vault integriert, damit Sie die Datenträger-Verschlüsselungsschlüssel steuern und verwalten können. Weitere Informationen finden Sie unter [Azure Disk Encryption für virtuelle IaaS-Computer](../articles/security/azure-security-disk-encryption-overview.md).
 
 ## <a name="disk-roles"></a>Datenträgerrollen
 
@@ -61,11 +73,11 @@ Dieser Datenträger weist eine maximale Kapazität von 2.048 GiB auf.
 
 ### <a name="temporary-disk"></a>Temporärer Datenträger
 
-Jeder virtuelle Computer enthält einen temporären Datenträger, der kein verwalteter Datenträger ist. Der temporäre Datenträger bietet kurzfristigen Speicher für Anwendungen und Prozesse und ist ausschließlich dafür ausgelegt, Daten wie z.B. Seiten-oder Auslagerungsdateien zu speichern. Daten auf dem temporären Datenträger können während eines [Wartungsereignisses](../articles/virtual-machines/windows/manage-availability.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json#understand-vm-reboots---maintenance-vs-downtime) verloren gehen oder wenn Sie eine [VM erneut bereitstellen](../articles/virtual-machines/troubleshooting/redeploy-to-new-node-windows.md?toc=%2Fazure%2Fvirtual-machines%2Fwindows%2Ftoc.json). Bei Azure Linux-VMs ist der temporäre Datenträger standardmäßig „/dev/sdb“ und bei Windows-VMs ist der temporäre Datenträger standardmäßig „E:“. Während eines erfolgreichen standardmäßigen Neustarts der VM bleiben die Daten auf dem temporären Datenträger erhalten.
+Jeder virtuelle Computer enthält einen temporären Datenträger, der kein verwalteter Datenträger ist. Der temporäre Datenträger bietet kurzfristigen Speicher für Anwendungen und Prozesse und ist ausschließlich dafür ausgelegt, Daten wie z.B. Seiten-oder Auslagerungsdateien zu speichern. Daten auf dem temporären Datenträger können während eines [Wartungsereignisses](../articles/virtual-machines/windows/manage-availability.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json#understand-vm-reboots---maintenance-vs-downtime) verloren gehen oder wenn Sie eine [VM erneut bereitstellen](../articles/virtual-machines/troubleshooting/redeploy-to-new-node-windows.md?toc=%2Fazure%2Fvirtual-machines%2Fwindows%2Ftoc.json). Bei Azure Linux-VMs ist der temporäre Datenträger standardmäßig „/dev/sdb“ und bei Windows-VMs ist der temporäre Datenträger standardmäßig „D:“. Während eines erfolgreichen standardmäßigen Neustarts der VM bleiben die Daten auf dem temporären Datenträger erhalten.
 
 ## <a name="managed-disk-snapshots"></a>Momentaufnahmen eines verwalteten Datenträgers
 
-Bei einer Momentaufnahme eines verwalteten Datenträgers handelt es sich um eine schreibgeschützte vollständige Kopie eines verwalteten Datenträgers, die standardmäßig als verwalteter Standarddatenträger gespeichert wird. Mit Momentaufnahmen können Sie Ihre verwalteten Datenträger jederzeit sichern. Diese Momentaufnahmen existieren unabhängig vom Quelldatenträger und können zum Erstellen neuer verwalteter Datenträger verwendet werden. Sie werden auf Basis der verwendeten Größe in Rechnung gestellt. Wenn Sie beispielsweise eine Momentaufnahme eines verwalteten Datenträgers mit einer bereitgestellten Kapazität von 64GiB und einer tatsächlichen Datengröße von 10GiB erstellen, wird die Momentaufnahme nur für die in Anspruch genommene Datengröße von 10GiB in Rechnung gestellt.  
+Bei einer Momentaufnahme eines verwalteten Datenträgers handelt es sich um eine absturzkonsistente, schreibgeschützte vollständige Kopie eines verwalteten Datenträgers, die standardmäßig als verwalteter Standarddatenträger gespeichert wird. Mit Momentaufnahmen können Sie Ihre verwalteten Datenträger jederzeit sichern. Diese Momentaufnahmen existieren unabhängig vom Quelldatenträger und können zum Erstellen neuer verwalteter Datenträger verwendet werden. Sie werden auf Basis der verwendeten Größe in Rechnung gestellt. Wenn Sie beispielsweise eine Momentaufnahme eines verwalteten Datenträgers mit einer bereitgestellten Kapazität von 64GiB und einer tatsächlichen Datengröße von 10GiB erstellen, wird die Momentaufnahme nur für die in Anspruch genommene Datengröße von 10GiB in Rechnung gestellt.  
 
 Weitere Informationen dazu, wie Sie Momentaufnahmen mit verwalteten Datenträgern erstellen, finden Sie in den folgenden Ressourcen:
 
@@ -89,6 +101,22 @@ Eine Momentaufnahme ist eine Kopie eines Datenträgers zum Zeitpunkt der Erstell
 
 Eine Momentaufnahme bezieht sich nur auf den Datenträger, von dem sie erstellt wurde. Darum ist ihre Verwendung problematisch in Szenarien, die die Koordination mehrerer Datenträger erfordern, z.B. Striping. Momentaufnahmen müssten sich miteinander abstimmen, und dies wird derzeit nicht unterstützt.
 
+## <a name="disk-allocation-and-performance"></a>Datenträgerzuordnung und Leistung
+
+Das folgende Diagramm zeigt die Echtzeitzuweisung von Bandbreite und IOPS für Datenträger unter Verwendung eines dreistufigen Bereitstellungssystems:
+
+![Dreistufiges Bereitstellungssystem, das die Zuweisung von Bandbreite und IOPS zeigt](media/virtual-machines-managed-disks-overview/real-time-disk-allocation.png)
+
+Die Bereitstellung auf der ersten Stufe legt die Zuweisung von IOPS und Bandbreite pro Datenträger fest.  Auf der zweiten Stufe implementiert der Compute-Serverhost die SSD-Bereitstellung und wendet sie nur auf Daten an, die auf der SSD des Servers gespeichert sind. Dies umfasst Datenträger mit Caching (ReadWrite und ReadOnly) sowie lokale und temporäre Datenträger. Schließlich erfolgt die VM-Netzwerkbereitstellung auf der dritten Stufe für alle E/A-Vorgänge, die der Computehost an das Back-End von Azure Storage sendet. Bei diesem Schema hängt die Leistung einer VM von einer Vielzahl von Faktoren ab, z. B. wie die VM die lokale SSD verwendet, von der Anzahl der angeschlossenen Datenträger sowie von der Leistung und dem Cachetyp der angeschlossenen Datenträger.
+
+Als Beispiel für diese Einschränkungen wird eine Standard_DS1v1-VM daran gehindert, das Potenzial von 5.000 IOPS eines P30-Datenträgers aufgrund von Einschränkungen auf SSD- und Netzwerkebene zu erreichen, unabhängig davon, ob ein Cache verwendet wird:
+
+![Standard_DS1v1-Beispielzuordnung](media/virtual-machines-managed-disks-overview/example-vm-allocation.png)
+
+Azure verwendet einen priorisierten Netzwerkkanal für den Datenverkehr des Datenträgers, der eine höhere Priorität gegenüber anderen niedrigen Prioritäten des Netzwerkdatenverkehrs erhält. Dies hilft den Datenträgern, ihre erwartete Leistung im Falle von Netzwerkkonflikten aufrechtzuerhalten. Ebenso behandelt Azure Storage Ressourcenkonflikte und andere Probleme im Hintergrund durch den automatischen Lastenausgleich. Azure Storage weist die erforderlichen Ressourcen zu, wenn Sie einen Datenträger erstellen, und wendet einen proaktiven und reaktiven Ausgleich der Ressourcen an, um den Datenverkehr zu bewältigen. Dies stellt weiterhin sicher, dass die Datenträger ihre erwarteten IOPS- und Durchsatzziele einhalten können. Sie können die Metriken auf VM- und Datenträgerebene verwenden, um die Leistungs- und Setupwarnungen bei Bedarf zu verfolgen.
+
+Lesen Sie unseren Artikel [Entwerfen für hohe Leistung](../articles/virtual-machines/windows/premium-storage-performance.md), um die bewährten Methoden zur Optimierung von VM- und Datenträgerkonfigurationen kennenzulernen, damit Sie die gewünschte Leistung erreichen können.
+
 ## <a name="next-steps"></a>Nächste Schritte
 
-Erfahren Sie in unserem Artikel über Datenträgertypen mehr über die einzelnen Datenträgertypen, die Azure bietet, und welcher Typ sich gut für Ihre Anforderungen eignet.
+Erfahren Sie in unserem Artikel über Datenträgertypen mehr über die einzelnen Datenträgertypen, die Azure bietet, welcher Typ sich gut für Ihre Anforderungen eignet, und erhalten Sie Informationen über deren Leistungsziele.

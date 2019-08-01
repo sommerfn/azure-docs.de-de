@@ -12,14 +12,14 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 04/23/2019
 ms.author: tilee
-ms.openlocfilehash: e0d5363e253e89b32b5eca14366504f0ace39043
-ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
+ms.openlocfilehash: 1e5a4ac9f159ce238149d44127fd63dcf3279623
+ms.sourcegitcommit: 47ce9ac1eb1561810b8e4242c45127f7b4a4aa1a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/01/2019
-ms.locfileid: "67479638"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67807101"
 ---
-# <a name="status-monitor-v2-api-enable-applicationinsightsmonitoring-v031-alpha"></a>API für Statusmonitor v2: Enable-ApplicationInsightsMonitoring (v0.3.1-alpha)
+# <a name="status-monitor-v2-api-enable-applicationinsightsmonitoring-v040-alpha"></a>API für Statusmonitor v2: Enable-ApplicationInsightsMonitoring (v0.4.0-alpha)
 
 In diesem Artikel wird ein Cmdlet des [PowerShell-Moduls „Az.ApplicationMonitor“](https://www.powershellgallery.com/packages/Az.ApplicationMonitor/) beschrieben.
 
@@ -93,9 +93,9 @@ Durch Festlegen von `MachineFilter` können Sie ein einzelnes Installationsskrip
 - **MachineFilter** ist ein erforderlicher regulärer C#-Ausdruck des Computer- oder VM-Namens.
     - „.*“ findet alle
     - „ComputerName“ findet nur Computer mit dem exakten angegebenen Namen.
-- **AppFilter** ist ein erforderlicher regulärer C#-Ausdruck des Computer- oder VM-Namens.
+- **AppFilter** ist ein erforderlicher regulärer C#-Ausdruck des IIS-Websitenamens. Mit dem Befehl [get-iissite](https://docs.microsoft.com/powershell/module/iisadministration/get-iissite) können Sie eine Liste der Websites auf Ihrem Server abrufen.
     - „.*“ findet alle
-    - „ApplicationName“ findet nur IIS-Apps mit dem exakten angegebenen Namen.
+    - „SiteName“ findet nur die IIS-Website mit dem exakten angegebenen Namen.
 - **InstrumentationKey** ist erforderlich, um die Überwachung der Apps zu aktivieren, die den beiden oben genannten Filtern entsprechen.
     - Behalten Sie für diesen Wert NULL bei, wenn Sie Regeln zum Ausschließen der Überwachung definieren möchten.
 

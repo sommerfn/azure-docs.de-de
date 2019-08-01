@@ -3,16 +3,17 @@ title: Bereitstellen von Containerinstanzen in einem virtuellen Azure-Netzwerk
 description: Erfahren Sie, wie Sie Containergruppen in einem neuen oder vorhandenen virtuellen Azure-Netzwerk bereitstellen.
 services: container-instances
 author: dlepow
+manager: gwallace
 ms.service: container-instances
 ms.topic: article
-ms.date: 03/26/2019
+ms.date: 07/11/2019
 ms.author: danlep
-ms.openlocfilehash: 25f9d4e02bcb354acf1c771157622f07c5f4bcc1
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: ad7f93bb3934ca01b7f45c0bd4b5cc8be81ea54b
+ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64712805"
+ms.lasthandoff: 07/18/2019
+ms.locfileid: "68325519"
 ---
 # <a name="deploy-container-instances-into-an-azure-virtual-network"></a>Bereitstellen von Containerinstanzen in einem virtuellen Azure-Netzwerk
 
@@ -27,7 +28,7 @@ Containergruppen, die in einem virtuellen Azure-Netzwerk bereitgestellt werden, 
 * Containerkommunikation mit lokalen Ressourcen über ein [VPN-Gateway](../vpn-gateway/vpn-gateway-about-vpngateways.md) oder [ExpressRoute](../expressroute/expressroute-introduction.md)
 
 > [!IMPORTANT]
-> Dieses Feature befindet sich derzeit in der Vorschauphase. Es gelten einige [Einschränkungen](#preview-limitations). Wenn Sie Vorschauversionen nutzen möchten, müssen Sie die [zusätzlichen Nutzungsbedingungen][terms-of-use] akzeptieren. Einige Aspekte dieses Features werden bis zur allgemeinen Verfügbarkeit unter Umständen noch geändert.
+> Dieses Feature befindet sich derzeit in der Vorschauphase. Es gelten einige [Einschränkungen](#preview-limitations). Vorschauversionen werden Ihnen zur Verfügung gestellt, wenn Sie die [zusätzlichen Nutzungsbedingungen][terms-of-use] akzeptieren. Einige Aspekte dieses Features werden bis zur allgemeinen Verfügbarkeit unter Umständen noch geändert.
 
 ## <a name="virtual-network-deployment-limitations"></a>Einschränkungen für die Bereitstellung in einem virtuellen Netzwerk
 
@@ -72,9 +73,9 @@ Das Subnetz, das Sie für Containergruppen verwenden, darf nur Containergruppen 
 
 ### <a name="network-profile"></a>Netzwerkprofil
 
-Ein Netzwerkprofil ist eine Netzwerkkonfigurationsvorlage für Azure-Ressourcen. Es gibt bestimmte Netzwerkeigenschaften für die Ressource an, z.B. das Subnetz, in dem diese bereitgestellt werden sollen. Wenn Sie den Befehl [az container create][az-container-create] zum ersten Mal zum Bereitstellen einer Containergruppe in einem Subnetz (und somit einem virtuellen Netzwerk) verwenden, erstellt Azure ein Netzwerkprofil für Sie. Sie können dieses Netzwerkprofil dann für zukünftige Bereitstellungen in dem Subnetz verwenden. 
+Ein Netzwerkprofil ist eine Netzwerkkonfigurationsvorlage für Azure-Ressourcen. Es gibt bestimmte Netzwerkeigenschaften für die Ressource an, z.B. das Subnetz, in dem diese bereitgestellt werden sollen. Wenn Sie den Befehl [az container create][az-container-create] zum ersten Mal zum Bereitstellen einer Containergruppe in einem Subnetz (und somit in einem virtuellen Netzwerk) verwenden, erstellt Azure ein Netzwerkprofil für Sie. Sie können dieses Netzwerkprofil dann für zukünftige Bereitstellungen in dem Subnetz verwenden. 
 
-Sie müssen die vollständige Resource Manager-Ressourcen-ID eines Netzwerkprofils angeben, um eine Resource Manager-Vorlage, YAML-Datei oder programmgesteuerte Methode zum Bereitstellen einer Containergruppe in einem Subnetz verwenden zu können. Sie können ein Profil nutzen, das zuvor mit [az container create][az-container-create] erstellt wurde, oder ein Profil mit einer Resource Manager-Vorlage erstellen (siehe [Vorlagenbeispiel](https://github.com/Azure/azure-quickstart-templates/tree/master/101-aci-vnet) and [Referenz](https://docs.microsoft.com/azure/templates/microsoft.network/networkprofiles)). Verwenden Sie den Befehl [az network profile list][az-network-profile-list], um die ID eines zuvor erstellten Profils abzurufen. 
+Sie müssen die vollständige Resource Manager-Ressourcen-ID eines Netzwerkprofils angeben, um eine Resource Manager-Vorlage, YAML-Datei oder programmgesteuerte Methode zum Bereitstellen einer Containergruppe in einem Subnetz verwenden zu können. Sie können ein Profil verwenden, das Sie zuvor mithilfe des Befehls [az container create][az-container-create] erstellt haben, oder ein Profil mithilfe einer Resource Manager-Vorlage erstellen (Informationen dazu finden Sie im [Vorlagenbeispiel](https://github.com/Azure/azure-quickstart-templates/tree/master/101-aci-vnet) und in der [Referenz](https://docs.microsoft.com/azure/templates/microsoft.network/networkprofiles)). Verwenden Sie den Befehl [az network profile list][az-network-profile-list], um die ID eines zuvor erstellten Profils abzurufen. 
 
 In der folgenden Abbildung wurden mehrere Containergruppen für ein Subnetz bereitgestellt, das an Azure Container Instances delegiert wurde. Nachdem Sie eine Containergruppe für ein Subnetz bereitgestellt haben, können Sie zusätzliche Containergruppen für dieses bereitstellen, indem Sie das gleiche Netzwerkprofil angeben.
 
@@ -82,11 +83,11 @@ In der folgenden Abbildung wurden mehrere Containergruppen für ein Subnetz bere
 
 ## <a name="deployment-scenarios"></a>Bereitstellungsszenarien
 
-Sie können [az container create][az-container-create] verwenden, um Containergruppen für ein neues virtuelles Netzwerk bereitzustellen, und Azure die Erstellung der erforderlichen Netzwerkressourcen in Ihrem Auftrag erlauben oder Containergruppen für ein vorhandenes virtuelles Netzwerk bereitstellen. 
+Sie können den Befehl [az container create][az-container-create] verwenden, um Containergruppen in einem neuen virtuellen Netzwerk bereitzustellen, um Azure zu erlauben, die erforderlichen Netzwerkressourcen für Sie zu erstellen, oder um eine Bereitstellung in ein vorhandenes virtuelles Netzwerk durchzuführen. 
 
 ### <a name="new-virtual-network"></a>Neues virtuelles Netzwerk
 
-Um eine Bereitstellung für ein neues virtuelles Netzwerk vorzunehmen und die automatische Erstellung von Netzwerkressourcen durch Azure zu veranlassen, geben Sie Folgendes beim Ausführen von [az container create][az-container-create] an:
+Geben Sie beim Ausführen des Befehls [az container create][az-container-create] Folgendes an, um eine Bereitstellung in ein neues virtuelles Netzwerk durchzuführen und die Netzwerkressourcen von Azure erstellen zu lassen:
 
 * Name des virtuellen Netzwerks
 * Adresspräfix des virtuellen Netzwerks im CIDR-Format
@@ -190,7 +191,7 @@ Sie können auch mithilfe einer YAML-Datei eine Containergruppe in einem vorhand
 * `networkProfile`: Die Netzwerkeinstellungen wie das virtuelle Netzwerk und Subnetz für eine Azure-Ressource.
   * `id`: Die vollständige Resource Manager-Ressourcen-ID von `networkProfile`.
 
-Um mit einer YAML-Datei eine Containergruppe in einem virtuellen Netzwerk bereitzustellen, müssen Sie zuerst die ID des Netzwerkprofils abrufen. Führen Sie den Befehl [az network profile list][az-network-profile-list] aus, indem Sie den Namen der Ressourcengruppe angeben, die Ihr virtuelles Netzwerk und das delegierte Subnetz enthält.
+Um mit einer YAML-Datei eine Containergruppe in einem virtuellen Netzwerk bereitzustellen, müssen Sie zuerst die ID des Netzwerkprofils abrufen. Führen Sie den Befehl [az network profile list][az-network-profile-list] aus. Geben Sie dabei den Namen der Ressourcengruppe an, die Ihr virtuelles Netzwerk und das delegierte Subnetz enthält.
 
 ``` azurecli
 az network profile list --resource-group myResourceGroup --query [0].id --output tsv
@@ -234,13 +235,13 @@ tags: null
 type: Microsoft.ContainerInstance/containerGroups
 ```
 
-Stellen Sie die Containergruppe mit dem Befehl [az container create][az-container-create] bereit, indem Sie den YAML-Dateinamen für den Parameter `--file` angeben:
+Stellen Sie die Containergruppe mit dem Befehl [az container create][az-container-create] bereit, wobei Sie den YAML-Dateinamen als Parameter `--file` angeben:
 
 ```azurecli
 az container create --resource-group myResourceGroup --file vnet-deploy-aci.yaml
 ```
 
-Sobald die Bereitstellung abgeschlossen ist, führen Sie den Befehl [az container show][az-container-show] aus, um den Status anzuzeigen:
+Führen Sie den Befehl [az container show][az-container-show] aus, sobald die Bereitstellung abgeschlossen ist, um den Status anzuzeigen:
 
 ```console
 $ az container show --resource-group myResourceGroup --name appcontaineryaml --output table
@@ -265,7 +266,7 @@ az container delete --resource-group myResourceGroup --name appcontaineryaml -y
 
 In der ersten Vorschauversion dieses Features sind mehrere zusätzliche Befehle notwendig, um die Netzwerkressourcen, die Sie zuvor erstellt haben, zu löschen. Wenn Sie die Beispielbefehle in den vorherigen Abschnitten dieses Artikels verwendet haben, um Ihr virtuelles Netzwerk und Subnetz zu erstellen, können Sie diese Netzwerkressourcen mit dem folgenden Skript löschen.
 
-Legen Sie vor der Ausführung des Skripts die Variable `RES_GROUP` auf den Namen der Ressourcengruppe fest, die das virtuelle Netzwerk und Subnetz enthält, die gelöscht werden sollen. Aktualisieren Sie die Namen des virtuellen Netzwerks und des Subnetzes, wenn Sie die zuvor vorgeschlagenen Namen `aci-vnet` und `aci-subnet` nicht verwendet haben. Das Skript ist für die Bash-Shell formatiert. Wenn Sie eine andere Shell, wie PowerShell oder Eingabeaufforderung bevorzugen, müssen Sie die Variablenzuweisung und die Zugriffsmethoden entsprechend anpassen.
+Legen Sie vor der Ausführung des Skripts die Variable `RES_GROUP` auf den Namen der Ressourcengruppe fest, die das virtuelle Netzwerk und Subnetz enthält, die gelöscht werden sollen. Aktualisieren Sie den Namen des virtuellen Netzwerks, wenn Sie nicht den zuvor vorgeschlagenen Namen `aci-vnet` verwendet haben. Das Skript ist für die Bash-Shell formatiert. Wenn Sie eine andere Shell, wie PowerShell oder Eingabeaufforderung bevorzugen, müssen Sie die Variablenzuweisung und die Zugriffsmethoden entsprechend anpassen.
 
 > [!WARNING]
 > Dieses Skript löscht Ressourcen! Es löscht das virtuelle Netzwerk und alle darin enthaltenen Subnetze. Vergewissern Sie sich daher vor der Ausführung dieses Skripts unbedingt, dass Sie die Ressourcen im virtuellen Netzwerk *tatsächlich* nicht mehr benötigen, einschließlich der darin enthaltenen Subnetze. Einmal gelöscht, **können diese Ressourcen nicht mehr wiederhergestellt werden**.
@@ -279,20 +280,6 @@ NETWORK_PROFILE_ID=$(az network profile list --resource-group $RES_GROUP --query
 
 # Delete the network profile
 az network profile delete --id $NETWORK_PROFILE_ID -y
-
-# Get the service association link (SAL) ID
-# Replace aci-vnet and aci-subnet with your VNet and subnet names in the following commands
-
-SAL_ID=$(az network vnet subnet show --resource-group $RES_GROUP --vnet-name aci-vnet --name aci-subnet --query id --output tsv)/providers/Microsoft.ContainerInstance/serviceAssociationLinks/default
-
-# Delete the default SAL ID for the subnet
-az resource delete --ids $SAL_ID --api-version 2018-07-01
-
-# Delete the subnet delegation to Azure Container Instances
-az network vnet subnet update --resource-group $RES_GROUP --vnet-name aci-vnet --name aci-subnet --remove delegations 0
-
-# Delete the subnet
-az network vnet subnet delete --resource-group $RES_GROUP --vnet-name aci-vnet --name aci-subnet
 
 # Delete virtual network
 az network vnet delete --resource-group $RES_GROUP --name aci-vnet

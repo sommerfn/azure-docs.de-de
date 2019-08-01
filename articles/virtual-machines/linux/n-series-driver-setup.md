@@ -16,12 +16,12 @@ ms.workload: infrastructure-services
 ms.date: 01/09/2019
 ms.author: cynthn
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: d6c8bdb27e9e976a7a490c2a824e994242378641
-ms.sourcegitcommit: 2e4b99023ecaf2ea3d6d3604da068d04682a8c2d
+ms.openlocfilehash: 7e798b4316b8ccdc2f76512d4651365f5bb151ce
+ms.sourcegitcommit: 9a699d7408023d3736961745c753ca3cec708f23
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67671218"
+ms.lasthandoff: 07/16/2019
+ms.locfileid: "68278319"
 ---
 # <a name="install-nvidia-gpu-drivers-on-n-series-vms-running-linux"></a>Installieren von NVIDIA GPU-Treibern für virtuelle Computer der Serie N mit Linux
 
@@ -170,9 +170,9 @@ Stellen Sie RDMA-fähige VMs der N-Serie über eines der Images aus dem Azure Ma
 
 * **7.4 HPC (CentOS-basiert)** : Auf der VM sind RDMA-Treiber und Intel MPI 5.1 installiert.
 
-## <a name="install-grid-drivers-on-nv-or-nvv2-series-vms"></a>Installieren von GRID-Treibern für virtuelle Computer der NV- oder NVv2-Serie
+## <a name="install-grid-drivers-on-nv-or-nvv3-series-vms"></a>Installieren von GRID-Treibern auf virtuellen Computern der NV- oder NVv3-Serie
 
-Stellen Sie zum Installieren von NVIDIA GRID-Treibern auf virtuellen Computern der NV- oder NVv2-Serie eine SSH-Verbindung mit jedem virtuellen Computer her, und führen Sie die Schritte für Ihre Linux-Distribution aus. 
+Stellen Sie zum Installieren von NVIDIA GRID-Treibern auf virtuellen Computern der NV- oder NVv3-Serie eine SSH-Verbindung mit jedem virtuellen Computer her, und führen Sie die Schritte für Ihre Linux-Distribution aus. 
 
 ### <a name="ubuntu"></a>Ubuntu 
 
@@ -188,6 +188,8 @@ Stellen Sie zum Installieren von NVIDIA GRID-Treibern auf virtuellen Computern d
    sudo apt-get dist-upgrade -y
 
    sudo apt-get install build-essential ubuntu-desktop -y
+   
+   sudo apt-get install linux-azure -y
    ```
 3. Deaktivieren Sie den Nouveau-Kerneltreiber, da er nicht mit dem NVIDIA-Treiber kompatibel ist. (Verwenden Sie den NVIDIA-Treiber nur auf virtuellen NV- oder NVv2-Computern.) Erstellen Sie zu diesem Zweck eine Datei in `/etc/modprobe.d`, und nennen Sie sie `nouveau.conf`. Die Datei muss den folgenden Inhalt enthalten:
 
@@ -226,8 +228,15 @@ Stellen Sie zum Installieren von NVIDIA GRID-Treibern auf virtuellen Computern d
  
    ```
    IgnoreSP=FALSE
+   EnableUI=FALSE
    ```
-9. Starten Sie die VM neu, und fahren Sie mit der Überprüfung der Installation fort.
+   
+9. Entfernen Sie Folgendes aus `/etc/nvidia/gridd.conf` (sofern vorhanden):
+ 
+   ```
+   FeatureType=0
+   ```
+10. Starten Sie die VM neu, und fahren Sie mit der Überprüfung der Installation fort.
 
 
 ### <a name="centos-or-red-hat-enterprise-linux"></a>CentOS oder Red Hat Enterprise Linux 
@@ -242,6 +251,8 @@ Stellen Sie zum Installieren von NVIDIA GRID-Treibern auf virtuellen Computern d
    sudo rpm -Uvh https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm
  
    sudo yum install dkms
+   
+   sudo yum install hyperv-daemons
    ```
 
 2. Deaktivieren Sie den Nouveau-Kerneltreiber, da er nicht mit dem NVIDIA-Treiber kompatibel ist. (Verwenden Sie den NVIDIA-Treiber nur auf virtuellen NV- oder NV2-Computern.) Erstellen Sie zu diesem Zweck eine Datei in `/etc/modprobe.d`, und nennen Sie sie `nouveau.conf`. Die Datei muss den folgenden Inhalt enthalten:
@@ -290,8 +301,15 @@ Stellen Sie zum Installieren von NVIDIA GRID-Treibern auf virtuellen Computern d
  
    ```
    IgnoreSP=FALSE
+   EnableUI=FALSE 
    ```
-9. Starten Sie die VM neu, und fahren Sie mit der Überprüfung der Installation fort.
+9. Entfernen Sie Folgendes aus `/etc/nvidia/gridd.conf` (sofern vorhanden):
+ 
+   ```
+   FeatureType=0
+   ```
+10. Starten Sie die VM neu, und fahren Sie mit der Überprüfung der Installation fort.
+
 
 ### <a name="verify-driver-installation"></a>Überprüfen der Treiberinstallation
 

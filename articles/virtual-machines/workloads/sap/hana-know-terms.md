@@ -12,14 +12,14 @@ ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 11/20/2018
-ms.author: saghorpa
+ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: c069203e94872452c11a7e6cebccd213e0af639c
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.openlocfilehash: 2564e0d34383f7c1daff5b02a871778fb90546cc
+ms.sourcegitcommit: 10251d2a134c37c00f0ec10e0da4a3dffa436fb3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67706931"
+ms.lasthandoff: 07/13/2019
+ms.locfileid: "67868995"
 ---
 # <a name="know-the-terms"></a>Informationen zu Begriffen
 
@@ -41,7 +41,10 @@ Im Handbuch zur Architektur und technischen Bereitstellung werden mehrere allgem
 - **SKU-Kategorie**: Für HANA (große Instanz) werden die folgenden beiden SKU-Kategorien angeboten:
     - **Typ I-Klasse**: S72, S72m, S96, S144, S144m, S192, S192m und S192xm
     - **Typ II-Klasse**: S384, S384m, S384xm, S384xxm, S576m, S576xm, S768m, S768xm und S960m
-
+- **Stamp**: Definiert die interne Microsoft-Bereitstellungsgröße von SAP HANA (große Instanzen). Bevor Einheiten von SAP HANA (große Instanzen) bereitgestellt werden können, muss ein Stamp von SAP HANA (große Instanzen), der aus Compute-, Netzwerk- und Speicherracks besteht, an einem Rechenzentrumsstandort bereitgestellt werden. Eine solche Bereitstellung wird als Stamp für SAP HANA (große Instanzen) bezeichnet. Seit Revision 4 (siehe unten) wird alternativ der Begriff **Reihe für große Instanzen** verwendet.
+- **Revision**: Es gibt zwei unterschiedliche Stamprevisionen für Stamps von SAP HANA (große Instanzen). Diese unterscheiden sich in der Architektur und in der Nähe zu Hosts für virtuelle Computer in Azure.
+    - „Revision 3“ (Rev 3) ist der ursprüngliche Entwurf, der von Mitte des Jahres 2016 an bereitgestellt wurde.
+    - „Revision 4“ (Rev 4) ist ein neuer Entwurf, der größere Nähe zu Hosts für virtuelle Computer in Azure und damit geringere Netzwerklatenz zwischen Azure-VMS und Einheiten von SAP HANA (große Instanzen) bieten kann. 
 
 Es sind viele weitere Ressourcen zum Bereitstellen einer SAP-Workload in der Cloud verfügbar. Die Planung einer Bereitstellung von SAP HANA in Azure erfordert, dass Sie mit den Prinzipien von Azure-IaaS und der Bereitstellung von SAP-Workloads in Azure-IaaS vertraut sind. Bevor Sie fortfahren, sollten Sie den Artikel zur [Verwendung von SAP-Lösungen auf Azure-VMs](get-started.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) lesen. 
 

@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: troubleshooting
 ms.date: 11/15/2018
 ms.author: genli
-ms.openlocfilehash: 18cd5a86cc2f52567c5f320719d1a9f21b377ed4
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 46f52cb0478b47f8f6b45356815bc4c74e7cc800
+ms.sourcegitcommit: 0ebc62257be0ab52f524235f8d8ef3353fdaf89e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60921271"
+ms.lasthandoff: 07/10/2019
+ms.locfileid: "67724125"
 ---
 # <a name="troubleshoot-azure-windows-virtual-machine-activation-problems"></a>Behandlung von Problemen bei der Aktivierung virtueller Windows-Computer
 
@@ -51,11 +51,9 @@ In der Regel treten Probleme bei der VM-Aktivierung in Azure auf, wenn die Windo
 >
 >Wenn Sie ExpressRoute verwenden, und eine veröffentlichte Standardroute besitzen, gehen Sie unter [Azure VM may fail to activate over ExpressRoute (Die Azure-VM kann womöglich über ExpressRoute nicht aktiviert werden)](https://blogs.msdn.com/b/mast/archive/2015/12/01/azure-vm-may-fail-to-activate-over-expressroute.aspx).
 
-### <a name="step-1-configure-the-appropriate-kms-client-setup-key-for-windows-server-2016-and-windows-server-2012-r2"></a>Schritt 1: Konfigurieren des entsprechenden KMS-Clientsetupschlüssels (für Windows Server 2016 und Windows Server 2012 R2)
+### <a name="step-1-configure-the-appropriate-kms-client-setup-key"></a>Schritt 1: Konfigurieren der entsprechenden KMS-Clientsetupschlüssel
 
-Sie müssen für den virtuellen Computer aus einem benutzerdefinierten Image von Windows Server 2016 oder Windows Server 2012 R2 den geeigneten KMS-Clientsetupschlüssel konfigurieren.
-
-Dieser Schritt gilt nicht für Windows 2012 oder Windows 2008 R2. Es wird die Automation Virtual Machine Activation-Funktion (AVMA) verwendet, die nur in Windows Server 2016 und Windows Server 2012 R2 unterstützt wird.
+Sie müssen für den aus einem benutzerdefinierten Image erstellten virtuellen Computer den geeigneten KMS-Clientsetupschlüssel konfigurieren.
 
 1. Führen Sie **slmgr.vbs/DLV** bei einer Eingabeaufforderung mit erhöhten Rechten aus. Überprüfen Sie den Beschreibungswert in der Ausgabe, und bestimmen Sie, ob er von einem „retail“- (RETAIL-Kanal) oder einem „volume“-Lizenzmedium (VOLUME_KMSCLIENT) erstellt wurde:
   
@@ -86,7 +84,6 @@ Dieser Schritt gilt nicht für Windows 2012 oder Windows 2008 R2. Es wird die Au
 
 3. Stellen Sie sicher, dass der virtuelle Computer richtig konfiguriert ist, damit er den richtigen Azure KMS-Server verwendet. Führen Sie zu diesem Zweck den folgenden Befehl aus:
   
-
     ```powershell
     Invoke-Expression "$env:windir\system32\cscript.exe $env:windir\system32\slmgr.vbs /skms kms.core.windows.net:1688"
     ```
@@ -95,29 +92,26 @@ Dieser Schritt gilt nicht für Windows 2012 oder Windows 2008 R2. Es wird die Au
 
 4. Überprüfen Sie mithilfe von Psping, dass Sie eine Verbindung mit dem KMS-Server besitzen. Wechseln Sie zu dem Ordner, in dem Sie den Download „pstools.zip“ extrahiert haben, und führen Sie dann Folgendes aus:
   
-
     ```
     \psping.exe kms.core.windows.net:1688
     ```
-
-  
    Die vorletzte Zeile der Ausgabe muss Folgendes enthalten: Sent = 4, Received = 4, Lost = 0 (0% loss).
 
    Wenn „Lost“ größer als 0 (null) ist, hat der virtuelle Computer keine Verbindung zum KMS-Server. In diesem Fall müssen Sie sicherstellen, dass der DNS-Server „kms.core.windows.net“ auflösen kann, falls sich der virtuelle Computer in einem virtuellen Netzwerk befindet und für ihn ein benutzerdefinierter DNS-Server angegeben ist. Ändern Sie alternativ den DNS-Server in einen, der „kms.core.windows.net“ auflösen kann.
 
    Beachten Sie, dass VMs den internen DNS-Dienst von Azure verwenden, wenn Sie alle DNS-Server aus einem virtuellen Netzwerk entfernen. Dieser Dienst kann „kms.core.windows.net“ auflösen.
   
-Überprüfen Sie zudem, dass die Gastfirewall nicht so konfiguriert ist, dass sie Aktivierungsversuche blockiert.
+    Stellen Sie außerdem sicher, dass der ausgehende Netzwerkdatenverkehr an den KMS-Endpunkt mit Port 1688 nicht durch die Firewall auf der VM blockiert wird.
 
-1. Nachdem Sie erfolgreich die Verbindung zu „kms.core.windows.net“ überprüft haben, führen Sie den folgenden Befehl auf der erhöhten Windows PowerShell-Aufforderung aus. Dieser Befehl versucht mehrmals, die Aktivierung durchzuführen.
+5. Nachdem Sie erfolgreich die Verbindung zu „kms.core.windows.net“ überprüft haben, führen Sie den folgenden Befehl auf der erhöhten Windows PowerShell-Aufforderung aus. Dieser Befehl versucht mehrmals, die Aktivierung durchzuführen.
 
     ```powershell
-    1..12 | ForEach-Object { Invoke-Expression “$env:windir\system32\cscript.exe $env:windir\system32\slmgr.vbs /ato” ; start-sleep 5 }
+    1..12 | ForEach-Object { Invoke-Expression "$env:windir\system32\cscript.exe $env:windir\system32\slmgr.vbs /ato" ; start-sleep 5 }
     ```
 
-Eine erfolgreiche Aktivierung gibt Informationen zurück, die der folgenden ähnelt:
-
-**Aktivieren von Windows (R), ServerDatacenter-Edition (12345678-1234-1234-1234-12345678) … Das Produkt wurde erfolgreich aktiviert.**
+    Eine erfolgreiche Aktivierung gibt Informationen zurück, die der folgenden ähnelt:
+    
+    **Aktivieren von Windows(R), ServerDatacenter-Edition (12345678-1234-1234-1234-12345678) … Das Produkt wurde erfolgreich aktiviert.**
 
 ## <a name="faq"></a>Häufig gestellte Fragen 
 

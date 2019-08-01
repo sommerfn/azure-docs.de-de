@@ -6,13 +6,13 @@ ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: quickstart
-ms.date: 03/25/2019
-ms.openlocfilehash: 41a15a29798953cb32029b7c4d1167020074e49f
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.date: 07/22/2019
+ms.openlocfilehash: cfab883f9b9b063bd51b9fdb7306d45371449180
+ms.sourcegitcommit: 9dc7517db9c5817a3acd52d789547f2e3efff848
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59046035"
+ms.lasthandoff: 07/23/2019
+ms.locfileid: "68406102"
 ---
 # <a name="quickstart-create-an-azure-data-explorer-cluster-and-database"></a>Schnellstart: Erstellen eines Azure Data Explorer-Clusters und einer Datenbank
 
@@ -47,14 +47,15 @@ Erstellen Sie einen Azure Data Explorer-Cluster mit einem definierten Satz von C
 
 1. Geben Sie die folgenden Informationen als grundlegende Clusterdetails an.
 
-   ![Erstellen eines Clusterformulars](media/create-cluster-database-portal/create-cluster-form.png)
+   ![Erstellen eines Clusterformulars](media/create-cluster-database-portal/create-cluster-form2.png)
 
     **Einstellung** | **Empfohlener Wert** | **Feldbeschreibung**
     |---|---|---|
-    | Abonnement | Ihr Abonnement | Wählen Sie das Azure-Abonnement aus, das Sie für Ihren Cluster verwenden möchten.|
-    | Ressourcengruppe | *test-resource-group* | Verwenden Sie eine vorhandene Ressourcengruppe, oder erstellen Sie eine neue Ressourcengruppe. |
-    | Clustername | Ein eindeutiger Clustername | Wählen Sie einen eindeutigen Namen aus, der Ihren Cluster identifiziert. Beispiel: *mydataexplorercluster*. Der Domänenname *[Region].kusto.windows.net* wird an den angegebenen Namen angefügt. Der Name darf nur Kleinbuchstaben und Zahlen enthalten. Er muss zwischen 3 und 22 Zeichen lang sein.
-    | Standort | *USA, Westen* | Wählen Sie für diesen Schnellstart die Option *USA, Westen* aus. Wählen Sie für ein Produktionssystem die Region aus, die Ihre Anforderungen am besten erfüllt.
+    | Subscription | Ihr Abonnement | Wählen Sie das Azure-Abonnement aus, das Sie für Ihren Cluster verwenden möchten.|
+    | Resource group | Ihre Ressourcengruppe | Verwenden Sie eine vorhandene Ressourcengruppe, oder erstellen Sie eine neue Ressourcengruppe. |
+    | Clustername | Ein eindeutiger Clustername | Wählen Sie einen eindeutigen Namen aus, der Ihren Cluster identifiziert. Der Domänenname *[Region].kusto.windows.net* wird an den angegebenen Namen angefügt. Der Name darf nur Kleinbuchstaben und Zahlen enthalten. Er muss zwischen 4 und 22 Zeichen lang sein.
+    | Region | *USA, Westen* oder *USA, Westen 2* | Wählen Sie *USA, Westen* oder *USA, Westen 2* (wenn Sie Verfügbarkeitszonen verwenden) für diese Schnellstartanleitung aus. Wählen Sie für ein Produktionssystem die Region aus, die Ihre Anforderungen am besten erfüllt.
+    | Verfügbarkeitszonen | *1*, *2* und/oder *3* | Für Regionen mit Unterstützung für Zonenredundanz wählen Sie aus, in welchen Zonen sich Ihre Instanzen befinden sollen (optional). Die Clusterknoten werden standardmäßig im gleichen Rechenzentrum erstellt. Verwenden Sie [Azure-Verfügbarkeitszonen](/azure/availability-zones/az-overview), um die Clusterinstanzen in verschiedenen Verfügbarkeitszonen derselben Region zu platzieren. Durch die Auswahl mehrerer Verfügbarkeitszonen können Sie einen Single Point of Failure vermeiden und eine Hochverfügbarkeit sicherstellen. 
     | Computespezifikationen | *D13_v2* | Wählen Sie für diesen Schnellstart die Spezifikation mit dem niedrigsten Preis aus. Wählen Sie für ein Produktionssystem die Spezifikation aus, die Ihre Anforderungen am besten erfüllt.
     | | |
 

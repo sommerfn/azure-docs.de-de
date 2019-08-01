@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 02/07/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: c15d315d186af5622d9fa988945750d93e8eb11f
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: ae6d55180785c9407662776a95fcba31f8ba5275
+ms.sourcegitcommit: 64798b4f722623ea2bb53b374fb95e8d2b679318
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66507556"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67835203"
 ---
 #  <a name="add-claims-and-customize-user-input-using-custom-policies-in-azure-active-directory-b2c"></a>Hinzufügen von Ansprüchen und Anpassen von Benutzereingaben mit benutzerdefinierten Richtlinien in Azure Active Directory B2C
 
@@ -79,7 +79,7 @@ Die folgenden Elemente werden zum Definieren des Anspruchs verwendet:
 
 #### <a name="dropdownsingleselect"></a>DropdownSingleSelect
 
-![Screenshot der Dropdownoption](./media/active-directory-b2c-configure-signup-self-asserted-custom/dropdown-menu-example.png)
+![Dropdown-Steuerelement für Einzelauswahl mit mehreren Optionen](./media/active-directory-b2c-configure-signup-self-asserted-custom/dropdown-menu-example.png)
 
 ```xml
 <ClaimType Id="city">
@@ -96,7 +96,7 @@ Die folgenden Elemente werden zum Definieren des Anspruchs verwendet:
 
 #### <a name="checkboxmultiselect"></a>CheckboxMultiSelect
 
-![Screenshot der Option für die Mehrfachauswahl](./media/active-directory-b2c-configure-signup-self-asserted-custom/multiselect-menu-example.png)
+![Kontrollkästchen-Steuerelement für Mehrfachauswahl mit mehreren Optionen](./media/active-directory-b2c-configure-signup-self-asserted-custom/multiselect-menu-example.png)
 
 ```xml
 <ClaimType Id="city">
@@ -235,7 +235,7 @@ Die folgenden Elemente werden zum Definieren des Anspruchs verwendet:
       <IncludeTechnicalProfile ReferenceId="AAD-Common" />
     </TechnicalProfile>
     ```
-   
+
 4. Fügen Sie den Anspruch `<OutputClaim ClaimTypeReferenceId="city" />` der Datei „SignUporSignIn.xml“ hinzu, sodass dieser Anspruch nach einer erfolgreichen User Journey an die Anwendung im Token gesendet wird.
 
     ```xml

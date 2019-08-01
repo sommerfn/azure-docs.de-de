@@ -5,14 +5,12 @@ metadata:
   title: 'Dokumentation für Batch – Tutorials, API-Referenz | Microsoft-Dokumentation'
   description: 'Sie können mithilfe von Batch umfangreiche auf Parallelverarbeitung ausgelegte HPC-Anwendungen (High Performance Computing) effizient in der Cloud ausführen. Definieren Sie ohne manuelle Konfiguration oder Verwaltung der Infrastruktur die Azure-Computeressourcen für die parallele oder skalierte Ausführung Ihrer Anwendung. Sie können rechenintensive Tasks planen und basierend auf Ihren Anforderungen Computeressourcen dynamisch hinzufügen oder entfernen. Hier erfahren Sie anhand unserer Schnellstarts, Tutorials und Beispiele, wie Sie Azure Batch verwenden.'
   services: batch
-  author: czeumault
-  manager: carolz
+  author: georgewallace
+  manager: gwallace
   ms.service: batch
-  ms.tgt_pltfrm: na
-  ms.devlang: na
   ms.topic: landing-page
   ms.date: 11/30/2017
-  ms.author: carolz
+  ms.author: gwallace
 abstract:
   description: 'Sie können mithilfe von Batch umfangreiche auf Parallelverarbeitung ausgelegte HPC-Anwendungen (High Performance Computing) effizient in der Cloud ausführen. Definieren Sie ohne manuelle Konfiguration oder Verwaltung der Infrastruktur die Azure-Computeressourcen für die parallele oder skalierte Ausführung Ihrer Anwendung. Sie können rechenintensive Tasks planen und basierend auf Ihren Anforderungen Computeressourcen dynamisch hinzufügen oder entfernen. Hier erfahren Sie anhand unserer Schnellstarts, Tutorials und Beispiele, wie Sie Azure Batch verwenden.'
 sections:

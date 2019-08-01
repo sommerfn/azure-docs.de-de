@@ -9,23 +9,25 @@ ms.reviewer: klam, LADocs
 ms.suite: integration
 ms.topic: article
 ms.date: 05/08/2019
-ms.openlocfilehash: c02361cf69b98da61a0f551ac037e6d35ea42efc
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: ab2413cfce8b87fbe1899a0b7c465c6e6c27a3f5
+ms.sourcegitcommit: 9a699d7408023d3736961745c753ca3cec708f23
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65551865"
+ms.lasthandoff: 07/16/2019
+ms.locfileid: "68277642"
 ---
 # <a name="connectors-for-azure-logic-apps"></a>Connectors für Azure Logic Apps
 
 Connectors ermöglichen den schnellen anwendungs-, dienst-, protokoll- und plattformübergreifenden Zugriff von Azure Logic Apps auf Ereignisse, Daten und Aktionen. Durch Verwenden von Connectors in Ihren Logik-Apps erweitern Sie die Funktionen für Ihre Cloud- und lokalen Apps, um Aufgaben mit zu erstellenden oder bereits vorhandenen Daten auszuführen.
 
-Logic Apps bietet insgesamt [ca. 200 Connectors](https://docs.microsoft.com/connectors). In diesem Artikel werden beliebte und häufiger verwendete Connectors beschrieben, die in Tausenden von Apps und Millionen von Ausführungen zur Verarbeitung von Daten und Informationen erfolgreich verwendet werden. Eine vollständige Liste der Connectors und die Referenzinformationen zu jedem Connector, wie Trigger, Aktionen und Limits, finden Sie auf den Referenzseiten zu Connectors unter [Übersicht über Connectors](https://docs.microsoft.com/connectors). Informieren Sie sich auch über [Trigger und Aktionen](#triggers-actions), das [Preismodell von Logic Apps](../logic-apps/logic-apps-pricing.md) und die [Preise für Logic Apps](https://azure.microsoft.com/pricing/details/logic-apps/). 
+Logic Apps bietet [hunderte Connectors](https://docs.microsoft.com/connectors). In diesem Artikel werden beliebte und häufiger verwendete Connectors beschrieben, die in Tausenden von Apps und Millionen von Ausführungen zur Verarbeitung von Daten und Informationen erfolgreich verwendet werden. Eine vollständige Liste der Connectors und die Referenzinformationen zu jedem Connector, wie Trigger, Aktionen und Limits, finden Sie auf den Referenzseiten zu Connectors unter [Übersicht über Connectors](https://docs.microsoft.com/connectors). Informieren Sie sich auch über [Trigger und Aktionen](#triggers-actions), das [Preismodell von Logic Apps](../logic-apps/logic-apps-pricing.md) und die [Preise für Logic Apps](https://azure.microsoft.com/pricing/details/logic-apps/). 
 
 > [!NOTE]
 > Zur Integration mit einem Dienst oder einer API, die keine Connectors haben, können Sie den Dienst entweder direkt über ein Protokoll wie HTTP aufrufen oder einen [benutzerdefinierten Connector](#custom) erstellen.
 
 Connectors sind entweder als integrierte Trigger und Aktionen oder als verwaltete Connectors verfügbar:
+
+<a name="built-in"></a>
 
 * [**Integrierte Trigger und Aktionen**](#built-ins): Mit diesen integrierten Triggern und Aktionen, die nativer Bestandteil von Azure Logic Apps sind, können Sie Logik-Apps erstellen, die in benutzerdefinierten Zeitplänen ausgeführt werden, mit anderen Endpunkten kommunizieren, Anforderungen empfangen und auf diese antworten. Außerdem können Sie Azure-Funktionen, Azure API-Apps (Web-Apps), Ihre eigenen mit Azure API Management verwalteten und veröffentlichten APIs sowie geschachtelte Logik-Apps aufrufen, die Anforderungen empfangen können. Sie können zudem integrierte Aktionen verwenden, mit denen Sie den Workflow Ihrer Logik-App organisieren und steuern können und die auch mit Daten funktionieren.
 
@@ -35,6 +37,8 @@ Connectors sind entweder als integrierte Trigger und Aktionen oder als verwaltet
   >
   > Weitere Informationen zum Erstellen von ISEs finden Sie unter [Verbinden mit Azure Virtual Networks über Azure Logic Apps](../logic-apps/connect-virtual-network-vnet-isolated-environment.md#create-logic-apps-environment). 
   > Weitere Informationen zu den Preisen finden Sie im [Preismodell für Logic Apps](../logic-apps/logic-apps-pricing.md).
+
+<a name="managed-connectors"></a>
 
 * **Verwaltete Connectors**: Diese von Microsoft bereitgestellten und verwalteten Connectors stellen Trigger und Aktionen für den Zugriff auf Clouddienste und lokale Systeme bereit, z. B. Office 365, Azure Blob Storage, SQL Server, Dynamics, Salesforce, SharePoint und andere. Einige Connectors unterstützen insbesondere B2B-Kommunikationsszenarien (Business-to-Business) und erfordern ein [Integrationskonto](../logic-apps/logic-apps-enterprise-integration-create-integration-account.md), das mit Ihrer Logik-App verknüpft ist. Vor der Verwendung bestimmter Connectors müssen Sie möglicherweise zunächst Verbindungen erstellen, die von Azure Logic Apps verwaltet werden. 
 
@@ -84,9 +88,9 @@ Logic Apps bietet integrierte Aktionen zum Strukturieren und Steuern der Aktione
 
 |   |   |   |   | 
 |---|---|---|---| 
-| [![Symbol für integrierte Aktion][condition-icon]<br/>**Bedingung**][condition-doc] | Auswerten einer Bedingung und Ausführen unterschiedlicher Aktionen abhängig davon, ob die Bedingung TRUE oder FALSE ist. | [![Symbol für integrierte Aktion][for-each-icon]</br>**For each**][for-each-doc] | Ausführen der gleichen Aktionen für jedes Element in einem Array. | 
-| [![Symbol für integrierte Aktion][scope-icon]<br/>**Bereich**][scope-doc] | Gruppieren von Aktionen in *Bereiche*, die einen eigenen Status erhalten, nachdem die Ausführung der Aktionen im Bereich beendet ist. | [![Symbol für integrierte Aktion][switch-icon]</br>**Option**][switch-doc] | Gruppieren von Aktionen in *Fälle*, denen mit Ausnahme des Standardfalls eindeutige Werte zugewiesen werden. Es wird nur der Fall ausgeführt, dessen zugewiesener Wert mit dem Ergebnis eines Ausdrucks, Objekts oder Token übereinstimmt. Wenn keine Übereinstimmungen vorhanden sind, wird der Standardfall ausgeführt. | 
-| [![Symbol für integrierte Aktion][terminate-icon]<br/>**Beenden**][terminate-doc] | Beenden des aktiv ausgeführten Workflows einer Logik-App. | [![Symbol für integrierte Aktion][until-icon]<br/>**Bis**][until-doc] | Wiederholen von Aktionen, bis die angegebene Bedingung TRUE ist oder sich ein Status geändert hat. | 
+| [![Symbol für integrierte Aktion][condition-icon]<br/>**Condition**][condition-doc] | Auswerten einer Bedingung und Ausführen unterschiedlicher Aktionen abhängig davon, ob die Bedingung TRUE oder FALSE ist. | [![Symbol für integrierte Aktion][for-each-icon]</br>**Foreach**][for-each-doc] | Ausführen der gleichen Aktionen für jedes Element in einem Array. | 
+| [![Symbol für integrierte Aktion][scope-icon]<br/>**Scope**][scope-doc] | Gruppieren von Aktionen in *Bereiche*, die einen eigenen Status erhalten, nachdem die Ausführung der Aktionen im Bereich beendet ist. | [![Symbol für integrierte Aktion][switch-icon]</br>**Switch**][switch-doc] | Gruppieren von Aktionen in *Fälle*, denen mit Ausnahme des Standardfalls eindeutige Werte zugewiesen werden. Es wird nur der Fall ausgeführt, dessen zugewiesener Wert mit dem Ergebnis eines Ausdrucks, Objekts oder Token übereinstimmt. Wenn keine Übereinstimmungen vorhanden sind, wird der Standardfall ausgeführt. | 
+| [![Symbol für integrierte Aktion][terminate-icon]<br/>**Terminate**][terminate-doc] | Beenden des aktiv ausgeführten Workflows einer Logik-App. | [![Symbol für integrierte Aktion][until-icon]<br/>**Until**][until-doc] | Wiederholen von Aktionen, bis die angegebene Bedingung TRUE ist oder sich ein Status geändert hat. | 
 ||||| 
 
 ### <a name="manage-or-manipulate-data"></a>Verwalten oder Bearbeiten von Daten
@@ -124,8 +128,8 @@ Im Folgenden sind einige häufig verwendete Standardconnectors aufgeführt, die 
 
 |   |   |   |   |   | 
 |---|---|---|---|---| 
-| ![API-Symbol][biztalk-server-icon]<br/>**BizTalk**</br> **Server** | [![API-Symbol][file-system-icon]<br/>**Datei-</br> system**][file-system-doc] | [![API-Symbol][ibm-db2-icon]<br/>**IBM DB2**][ibm-db2-doc] | [![API-Symbol][ibm-informix-icon]<br/>**IBM**</br> **Informix**][ibm-informix-doc] | ![API-Symbol][mysql-icon]<br/>**MySQL** | 
-| [![API-Symbol][oracle-db-icon]<br/>**Oracle-Datenbank**][oracle-db-doc] | ![API-Symbol][postgre-sql-icon]<br/>**PostgreSQL** | [![API-Symbol][sharepoint-server-icon]<br/>**SharePoint</br> Server**][sharepoint-server-doc] | [![API-Symbol][sql-server-icon]<br/>**SQL</br> Server**][sql-server-doc] | ![API-Symbol][teradata-icon]<br/>**Teradata** | 
+| ![API-Symbol][biztalk-server-icon]<br/>**BizTalk**</br> **Server** | [![API-Symbol][file-system-icon]<br/>**Dateisystem</br>** ][file-system-doc] | [![API-Symbol][ibm-db2-icon]<br/>**IBM DB2**][ibm-db2-doc] | [![API-Symbol][ibm-informix-icon]<br/>**IBM**</br>**Informix**][ibm-informix-doc] | ![API-Symbol][mysql-icon]<br/>**MySQL** | 
+| [![API-Symbol][oracle-db-icon]<br/>**Oracle DB**][oracle-db-doc] | ![API-Symbol][postgre-sql-icon]<br/>**PostgreSQL** | [![API-Symbol][sharepoint-server-icon]<br/>**SharePoint</br>Server**][sharepoint-server-doc] | [![API-Symbol][sql-server-icon]<br/>**SQL</br>Server**][sql-server-doc] | ![API-Symbol][teradata-icon]<br/>**Teradata** | 
 |||||
 
 <a name="integration-account-connectors"></a>

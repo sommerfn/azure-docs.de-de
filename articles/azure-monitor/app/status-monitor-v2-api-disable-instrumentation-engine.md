@@ -12,14 +12,14 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 04/23/2019
 ms.author: tilee
-ms.openlocfilehash: b5ff218ce7bc7593d38f496b22d2a03402a00cdc
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: cd35af6ead2d734fa68b85b199aac219daf8dcd9
+ms.sourcegitcommit: 47ce9ac1eb1561810b8e4242c45127f7b4a4aa1a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66514425"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67807153"
 ---
-# <a name="status-monitor-v2-api-disable-instrumentationengine-v021-alpha"></a>API für Statusmonitor v2: Disable-InstrumentationEngine (v0.2.1-alpha)
+# <a name="status-monitor-v2-api-disable-instrumentationengine-v040-alpha"></a>API für Statusmonitor v2: Disable-InstrumentationEngine (v0.4.0-alpha)
 
 In diesem Artikel wird ein Cmdlet des [PowerShell-Moduls „Az.ApplicationMonitor“](https://www.powershellgallery.com/packages/Az.ApplicationMonitor/) beschrieben.
 

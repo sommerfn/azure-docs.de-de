@@ -1,21 +1,20 @@
 ---
-title: 'Behandeln von Inhaltstypen: Azure Logic Apps | Microsoft-Dokumentation'
+title: 'Behandeln von Inhaltstypen: Azure Logic Apps'
 description: Erfahren Sie, wie Logic Apps Inhaltstypen zur Entwurfszeit und Laufzeit behandelt.
 services: logic-apps
 ms.service: logic-apps
+ms.suite: integration
 author: ecfan
 ms.author: estfan
-manager: jeconnoc
-ms.topic: article
-ms.date: 07/20/2018
 ms.reviewer: klam, LADocs
-ms.suite: integration
-ms.openlocfilehash: 2a9318317d5a01136a42b4fb6d580bafaf53ec4e
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.topic: conceptual
+ms.date: 07/20/2018
+ms.openlocfilehash: 97897da13c70c29834b1fc276829b316416efd8d
+ms.sourcegitcommit: 10251d2a134c37c00f0ec10e0da4a3dffa436fb3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60685746"
+ms.lasthandoff: 07/13/2019
+ms.locfileid: "67868914"
 ---
 # <a name="handle-content-types-in-azure-logic-apps"></a>Behandeln von Inhaltstypen in Azure Logic Apps
 
@@ -144,11 +143,12 @@ In dieser Liste wird beschrieben, wie Logic Apps Inhalt konvertiert, wenn Sie di
 * `xml()`: Konvertiert Daten in `application/xml`.
 * `binary()`: Konvertiert Daten in `application/octet-stream`.
 * `string()`: Konvertiert Daten in `text/plain`.
-* `base64()`: Konvertiert Inhalt in eine Base64-Zeichenfolge.
-* `base64toString()`: Konvertiert eine Base64-codierte Zeichenfolge in `text/plain`.
-* `base64toBinary()`: Konvertiert eine Base64-codierte Zeichenfolge in `application/octet-stream`.
-* `encodeDataUri()`: Codiert eine Zeichenfolge als dataUri-Bytearray.
-* `decodeDataUri()`: Decodiert `dataUri` in ein Bytearray.
+* `base64()`: Konvertiert Inhalt in eine Base64-codierte Zeichenfolge
+* `base64toString()`: Konvertiert eine Base64-codierte Zeichenfolge in `text/plain`
+* `base64toBinary()`: Konvertiert eine Base64-codierte Zeichenfolge in `application/octet-stream`
+* `dataUri()`: Konvertiert eine Zeichenfolge in einen Daten-URI
+* `dataUriToBinary()`: Konvertiert einen Daten-URI in eine binäre Zeichenfolge
+* `dataUriToString()`: Konvertiert einen Daten-URI in eine Zeichenfolge
 
 Wenn Sie z.B. eine HTTP-Anforderung erhalten, in der für `Content-Type` der Wert `application/xml` festgelegt ist, z.B. diesen Inhalt:
 

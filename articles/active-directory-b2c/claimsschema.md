@@ -10,18 +10,18 @@ ms.topic: reference
 ms.date: 09/10/2018
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: e09c4530fc6dce00e6d807908c7de598422a440b
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 132dd91ba121fc5939a0f30194fe4abdd3755414
+ms.sourcegitcommit: fa45c2bcd1b32bc8dd54a5dc8bc206d2fe23d5fb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66511847"
+ms.lasthandoff: 07/12/2019
+ms.locfileid: "67847047"
 ---
 # <a name="claimsschema"></a>ClaimsSchema
 
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
 
-Das **ClaimsSchema**-Element definiert die Anspruchstypen, auf die als Teil der Richtlinie verwiesen werden kann. Im Anspruchsschema deklarieren Sie Ihre Ansprüche. Bei einem Anspruch kann es sich u.a. um einen Vornamen, Nachnamen, Anzeigenamen, eine Telefonnummer handeln. Das ClaimsSchema-Element enthält eine Liste von **ClaimType**-Elementen. Das **ClaimType**-Element enthält das **Id**-Attribut, bei dem es sich um den Anspruchsnamen handelt. 
+Das **ClaimsSchema**-Element definiert die Anspruchstypen, auf die als Teil der Richtlinie verwiesen werden kann. Im Anspruchsschema deklarieren Sie Ihre Ansprüche. Bei einem Anspruch kann es sich u.a. um einen Vornamen, Nachnamen, Anzeigenamen, eine Telefonnummer handeln. Das ClaimsSchema-Element enthält eine Liste von **ClaimType**-Elementen. Das **ClaimType**-Element enthält das **Id**-Attribut, bei dem es sich um den Anspruchsnamen handelt.
 
 ```XML
 <BuildingBlocks>
@@ -44,7 +44,7 @@ Das **ClaimType**-Element enthält die folgenden Attribute:
 
 | Attribut | Erforderlich | BESCHREIBUNG |
 | --------- | -------- | ----------- |
-| id | Ja | Ein Bezeichner, der für den Anspruchsnamen verwendet wird. Andere Elemente können diesen Bezeichner in der Richtlinie verwenden. |
+| Id | Ja | Ein Bezeichner, der für den Anspruchsnamen verwendet wird. Andere Elemente können diesen Bezeichner in der Richtlinie verwenden. |
 
 Das **ClaimType**-Element enthält die folgenden Elemente:
 
@@ -89,7 +89,7 @@ Im folgenden Beispiel wird der Anspruch **surname** bei der Interaktion des Iden
 ```
 
 Infolgedessen gibt das von Azure AD B2C ausgestellte JWT-Token `family_name` anstelle des Anspruchstypnamens **surname** aus.
- 
+
 ```JSON
 {
   "sub": "6fbbd70d-262b-4b50-804c-257ae1706ef2",
@@ -115,14 +115,14 @@ Im folgenden Beispiel wird ein **PhoneNumber**-Anspruch mit der Maske `Simple` k
 <ClaimType Id="PhoneNumber">
   <DisplayName>Phone Number</DisplayName>
   <DataType>string</DataType>
-  <Mask Type="Simple">XXX-XXX-</Mask>  
+  <Mask Type="Simple">XXX-XXX-</Mask>
   <UserHelpText>Your telephone number.</UserHelpText>
 </ClaimType>
 ```
 
 Das Identity Experience Framework rendert die Telefonnummer, wobei die ersten sechs Ziffern ausgeblendet werden:
 
-![Verwenden eines Anspruchstyps mit Maske](./media/claimsschema/mask.png)
+![Telefonnummeranspruch im Browser mit den ersten sechs Ziffern als X](./media/claimsschema/mask.png)
 
 Im folgenden Beispiel wird ein **AlternateEmail**-Anspruch mit der Maske `Regex` konfiguriert:
 
@@ -137,7 +137,7 @@ Im folgenden Beispiel wird ein **AlternateEmail**-Anspruch mit der Maske `Regex`
 
 Das Identity Experience Framework rendert nur den ersten Buchstaben der E-Mail-Adresse und den E-Mail-Domänennamen:
 
-![Verwenden eines Anspruchstyps mit Maske](./media/claimsschema/mask-regex.png)
+![E-Mail-Anspruch im Browser mit Zeichen als Sternchen](./media/claimsschema/mask-regex.png)
 
 
 ### <a name="restriction"></a>Einschränkung
@@ -179,10 +179,10 @@ Im folgenden Beispiel wird ein **city**-Dropdownlistenanspruch mit dem Standardw
   </Restriction>
 </ClaimType>
 ```
+
 „city“-Dropdownliste mit dem Standardwert „New York“:
 
-![„city“-Dropdownliste](./media/claimsschema/dropdownsingleselect.png)
-
+![Dropdownsteuerelement im Browser mit Standardwert](./media/claimsschema/dropdownsingleselect.png)
 
 ### <a name="pattern"></a>Muster
 
@@ -212,7 +212,7 @@ Im folgenden Beispiel wird ein **email**-Anspruch mit Eingabeüberprüfung mit r
 
 Das Identity Experience Framework rendert den E-Mail-Adressenanspruch mit Eingabeüberprüfung des E-Mail-Formats:
 
-![Verwenden des Anspruchstyps mit Muster](./media/claimsschema/pattern.png)
+![Textfeld mit einer Fehlermeldung, die von RegEx-Einschränkung ausgelöst wird](./media/claimsschema/pattern.png)
 
 ## <a name="userinputtype"></a>UserInputType
 
@@ -222,7 +222,7 @@ Azure AD B2C unterstützt eine Vielzahl von Benutzereingabetypen wie ein Textfel
 
 Der Benutzereingabetyp **TextBox** wird für die Bereitstellung eines einzeiligen Textfelds verwendet.
 
-![Verwenden des Anspruchstyps mit Textfeld](./media/claimsschema/textbox.png)
+![Textfeld mit den im Anspruchstyp angegebenen Eigenschaften](./media/claimsschema/textbox.png)
 
 ```XML
 <ClaimType Id="displayName">
@@ -237,7 +237,7 @@ Der Benutzereingabetyp **TextBox** wird für die Bereitstellung eines einzeilige
 
 Der Benutzereingabetyp **EmailBox** wird für die Bereitstellung eines einfachen E-Mail-Eingabefelds verwendet.
 
-![Verwenden des Anspruchstyps mit E-Mail-Feld](./media/claimsschema/emailbox.png)
+![E-Mail-Feld mit im Anspruchstyp angegebenen Eigenschaften](./media/claimsschema/emailbox.png)
 
 ```XML
 <ClaimType Id="email">
@@ -297,7 +297,7 @@ Der Benutzereingabetyp **RadioSingleSelect** wird für die Bereitstellung einer 
     <Enumeration Text="Green " Value="Green" SelectByDefault="false" />
     <Enumeration Text="Orange" Value="Orange" SelectByDefault="true" />
   </Restriction>
-</ClaimType>    
+</ClaimType>
 ```
 
 ### <a name="dropdownsingleselect"></a>DropdownSingleSelect
@@ -375,4 +375,4 @@ Der Benutzereingabetyp **Paragraph** wird für die Bereitstellung eines Felds ve
 </ClaimType>
 ```
 
-Verwenden Sie zum Anzeigen der **Enumeration**-Werte in einem **responseMsg**-Anspruch die Anspruchstransformationen `GetMappedValueFromLocalizedCollection` oder `CreateStringClaim`. Weitere Informationen finden Sie unter [String Claims Transformations (Transformationen von Zeichenfolgeansprüchen)](string-transformations.md). 
+Verwenden Sie zum Anzeigen der **Enumeration**-Werte in einem **responseMsg**-Anspruch die Anspruchstransformationen `GetMappedValueFromLocalizedCollection` oder `CreateStringClaim`. Weitere Informationen finden Sie unter [String Claims Transformations (Transformationen von Zeichenfolgeansprüchen)](string-transformations.md).

@@ -14,12 +14,12 @@ ms.workload: identity
 ms.date: 04/18/2018
 ms.author: jmprieur
 ms.custom: include file
-ms.openlocfilehash: 9ee7422b372993d60c629524eb036b9678e5776c
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.openlocfilehash: cd37880be6d518105e880b93a0bd748f7c729d88
+ms.sourcegitcommit: b2db98f55785ff920140f117bfc01f1177c7f7e2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67178273"
+ms.lasthandoff: 07/16/2019
+ms.locfileid: "68286313"
 ---
 ## <a name="registration-of-secrets-or-certificates"></a>Registrierung von geheimen Schlüsseln oder Zertifikaten
 
@@ -32,9 +32,11 @@ Die Verwaltung von Clientanmeldeinformationen erfolgt auf der Seite **Certificat
 ![image](../articles/active-directory/develop/media/quickstart-update-azure-ad-app-preview/credentials-certificates-secrets-expanded.png)
 
 - Der (auch als geheimer Clientschlüssel bezeichnete) geheime Anwendungsschlüssel wird von Azure AD während der Registrierung der vertraulichen Clientanwendung generiert. Diese Generierung erfolgt, wenn Sie **Neuer geheimer Clientschlüssel** auswählen. An diesem Punkt müssen Sie vor dem Auswählen von **Speichern** die Zeichenfolge des geheimen Schlüssels in die Zwischenablage kopieren, um sie in Ihrer App verwenden zu können. Diese Zeichenfolge wird anschließend nicht mehr angezeigt.
-- Das Zertifikat wird mithilfe der Schaltfläche **Zertifikat hochladen** in die Anwendungsregistrierung hochgeladen.
+- Das Zertifikat wird mithilfe der Schaltfläche **Zertifikat hochladen** in die Anwendungsregistrierung hochgeladen. Azure AD unterstützt nur Zertifikate, die direkt in der Anwendung registriert sind und nicht Vertrauensketten befolgen.
 
 Weitere Informationen finden Sie unter [Schnellstart: Konfigurieren einer Clientanwendung für den Zugriff auf Web-APIs | Hinzufügen von Anmeldeinformationen zu Ihrer Webanwendung](../articles/active-directory/develop/quickstart-configure-app-access-web-apis.md#add-credentials-to-your-web-application).
+
+
 
 ### <a name="registering-client-secrets-using-powershell"></a>Registrieren von geheimen Clientschlüsseln mit PowerShell
 

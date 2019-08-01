@@ -10,12 +10,12 @@ ms.subservice: design
 ms.date: 11/27/2018
 ms.author: anvang
 ms.reviewer: igorstan
-ms.openlocfilehash: 61537a4cb8ca1e6e98f2fa04959861eb03480fe9
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: f0b9b59ec09445a170d1f93181c2b432eafb60bf
+ms.sourcegitcommit: 64798b4f722623ea2bb53b374fb95e8d2b679318
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61474867"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67839981"
 ---
 # <a name="view-a-maintenance-schedule"></a>Anzeigen eines Wartungszeitplans 
 
@@ -27,7 +27,7 @@ Führen Sie die folgenden Schritte aus, um den Wartungszeitplan anzuzeigen, der 
 
 1.  Melden Sie sich beim [Azure-Portal](https://portal.azure.com/) an.
 2.  Wählen Sie das Data Warehouse aus, das Sie anzeigen möchten. 
-3.  Das ausgewählte Data Warehouse wird auf dem Blatt „Übersicht“ geöffnet. Der Wartungszeitplan, der auf das Data Warehouse angewendet wurde, wird unter **Wartungszeitplan (Vorschau)** angezeigt.
+3.  Das ausgewählte Data Warehouse wird auf dem Blatt „Übersicht“ geöffnet. Der Wartungszeitplan, der auf das Data Warehouse angewandt wurde, wird unter **Wartungszeitplan** angezeigt.
 
 ![Blatt „Übersicht“](media/sql-data-warehouse-maintenance-scheduling/clear-overview-blade.PNG)
 

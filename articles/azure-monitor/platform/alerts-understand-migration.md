@@ -4,15 +4,15 @@ description: Enthält eine Beschreibung der Funktionsweise des Migrationstools f
 author: snehithm
 ms.service: azure-monitor
 ms.topic: conceptual
-ms.date: 06/19/2019
+ms.date: 07/10/2019
 ms.author: snmuvva
 ms.subservice: alerts
-ms.openlocfilehash: 015000388c5629dbd8ed8833931a809ebd738bd6
-ms.sourcegitcommit: 2d3b1d7653c6c585e9423cf41658de0c68d883fa
+ms.openlocfilehash: f981c14e26c51c427dab6b418cab8df46b1bb026
+ms.sourcegitcommit: af58483a9c574a10edc546f2737939a93af87b73
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/20/2019
-ms.locfileid: "67295524"
+ms.lasthandoff: 07/17/2019
+ms.locfileid: "68302243"
 ---
 # <a name="understand-how-the-migration-tool-works"></a>Funktionsweise des Migrationstools
 
@@ -33,7 +33,8 @@ Zwar können mit dem Tool fast alle [klassischen Warnungsregeln](monitoring-clas
 - Klassische Warnungsregeln für VM-Gastmetriken (sowohl Windows als auch Linux). Informationen finden Sie in der [Anleitung zum erneuten Erstellen solcher Warnungsregeln in neuen Metrikwarnungen](#guest-metrics-on-virtual-machines) weiter unten in diesem Artikel.
 - Klassische Warnungsregeln für Metriken von klassischem Speicher. Informationen finden Sie in der [Anleitung zum Überwachen Ihrer klassischen Speicherkonten](https://azure.microsoft.com/blog/modernize-alerting-using-arm-storage-accounts/).
 - Klassische Warnungsregeln in einigen Speicherkontometriken. Informationen finden Sie unter den [Details](#storage-account-metrics) weiter unten in diesem Artikel.
-- Klassische Warnungsregeln für einige Cosmos DB-Metriken. Details werden in einem späteren Update hinzugefügt.
+- Klassische Warnungsregeln für einige Cosmos DB-Metriken. Informationen finden Sie unter den [Details](#cosmos-db-metrics) weiter unten in diesem Artikel.
+- Klassische Warnungsregeln für alle Metriken klassischer virtueller Computer und Clouddienste (Microsoft.ClassicCompute/virtualMachines and Microsoft.ClassicCompute/domainNames/slots/roles). Informationen finden Sie unter den [Details](#classic-compute-metrics) weiter unten in diesem Artikel.
 
 Wenn Ihr Abonnement über klassische Regeln dieser Art verfügt, müssen Sie sie manuell migrieren. Da wir keine automatische Migration bereitstellen können, funktionieren alle vorhandenen klassischen Metrikwarnungen noch bis Juni 2020. Diese Verlängerung gibt Ihnen Zeit für die Umstellung auf neue Warnungen. Nach August 2019 können aber keine neuen klassischen Warnungen mehr erstellt werden.
 
@@ -67,6 +68,44 @@ Alle klassischen Warnungen in Speicherkonten können migriert werden, mit Ausnah
 Klassische Warnungsregeln für Metriken vom Typ „Percent“ müssen basierend auf der [Zuordnung zwischen alten und neuen Speichermetriken](https://docs.microsoft.com/azure/storage/common/storage-metrics-migration#metrics-mapping-between-old-metrics-and-new-metrics) migriert werden. Schwellenwerte müssen entsprechend geändert werden, da die neue verfügbare Metrik eine absolute Metrik ist.
 
 Die klassischen Warnungsregeln für AnonymousThrottlingError, SASThrottlingError und ThrottlingError müssen in zwei neue Warnungen aufgeteilt werden, da es keine kombinierte Metrik gibt, die über die gleiche Funktionalität verfügt. Schwellenwerte müssen entsprechend angepasst werden.
+
+### <a name="cosmos-db-metrics"></a>Cosmos DB-Metriken
+
+Alle klassischen Warnungen für Cosmos DB-Metriken können migriert werden, mit Ausnahme von Warnungen für die folgenden Metriken:
+
+- Mittelwert der Anforderungen pro Sekunde
+- Konsistenzebene
+- HTTP 2xx
+- HTTP 3xx
+- HTTP 400
+- HTTP 401
+- Interner Serverfehler
+- Max RUPM Consumed Per Minute (Maximal verwendete U/min)
+- Max RUs Per Second (Maximale RUs pro Sekunde)
+- Mongo Count Failed Requests (Fehlgeschlagene Mongo-Zählungsanforderungen)
+- Mongo Delete Failed Requests (Fehlgeschlagene Mongo-Löschanforderungen)
+- Mongo Insert Failed Requests (Fehlgeschlagene Mongo-Einfügeanforderungen)
+- Mongo Other Failed Requests (Sonstige fehlgeschlagene Mongo-Anforderungen)
+- Mongo Other Request Charge (Kosten sonstiger Mongo-Anforderungen)
+- Mongo Other Request Rate (Rate sonstiger Mongo-Anforderungen)
+- Mongo Query Failed Requests (Fehlgeschlagene Mongo-Abfrageanforderungen)
+- Mongo Query Failed Requests (Fehlgeschlagene Mongo-Aktualisierungsanforderungen)
+- Beobachtete Leselatenz
+- Beobachtete Schreiblatenz
+- Dienstverfügbarkeit
+- Speicherkapazität
+- Gedrosselte Anforderungen
+- Anzahl von Anforderungen
+
+„Mittelwert der Anforderungen pro Sekunde“, „Konsistenzebene“, „Max RUPM Consumed Per Minute“ (Maximal verwendete U/min), „Max RUs Per Second“ (Maximale RUs pro Sekunde), „Beobachtete Leselatenz“, „Beobachtete Schreiblatenz“ und „Speicherkapazität" sind im [neuen System](metrics-supported.md#microsoftdocumentdbdatabaseaccounts) derzeit nicht verfügbar.
+
+Warnungen zu Anforderungsmetriken wie „HTTP 2xx“, „HTTP 3xx“, „HTTP 400“, „HTTP 401“, „Interner Serverfehler“, „Dienstverfügbarkeit“, „Gedrosselte Anforderungen“ und „Anforderungen insgesamt“ werden nicht migriert, da sich die Zählung der Anforderungen zwischen klassischen Metriken und neuen Metriken unterscheidet. Warnungen für diese Metriken müssen manuell mit angepassten Schwellenwerten neu erstellt werden.
+
+Warnungen zu Metriken für fehlgeschlagene Mongo-Anforderungen müssen in mehrere Warnungen unterteilt werden, da keine gemeinsame Metrik vorhanden ist, die die gleiche Funktionalität bietet. Schwellenwerte müssen entsprechend angepasst werden.
+
+### <a name="classic-compute-metrics"></a>Klassische Computemetriken
+
+Die Warnungen zu klassischen Computemetriken werden nicht mithilfe des Migrationstools migriert, da klassische Computeressourcen für neue Warnungen noch nicht unterstützt werden. Die Unterstützung für neue Warnungen zu diesen Ressourcentypen wird in Zukunft hinzugefügt. Sobald sie verfügbar ist, müssen die Kunden vor Juni 2020 neue entsprechende Warnungsregeln basierend auf ihren klassischen Warnungsregeln neu erstellen.
 
 ### <a name="classic-alert-rules-on-deprecated-metrics"></a>Klassische Warnungsregeln für veraltete Metriken
 
@@ -159,9 +198,34 @@ Für Application Insights gibt es die folgenden entsprechenden Metriken:
 | requestFailed.count | requests/failed| Verwenden Sie für `aggregationType` „count“ anstelle von „sum“.   |
 | view.count | pageViews/count| Verwenden Sie für `aggregationType` „count“ anstelle von „sum“.   |
 
+### <a name="microsoftdocumentdbdatabaseaccounts"></a>Microsoft.DocumentDB/databaseAccounts
+
+Für Cosmos DB gibt es die folgenden entsprechenden Metriken:
+
+| Metrik in klassischen Warnungen | Entsprechende Metrik in neuen Warnungen | Kommentare|
+|--------------------------|---------------------------------|---------|
+| AvailableStorage     |AvailableStorage|   |
+| Datengröße | DataUsage| |
+| Dokumentanzahl | DocumentCount||
+| Indexgröße | IndexUsage||
+| Mongo Count Request Charge (Kosten von Mongo-Zählungsanforderung)| MongoRequestCharge mit Dimension „CommandName“ = „count“||
+| Mongo Count Request Rate (Rate von Mongo-Zählungsanforderung) | MongoRequestsCount mit Dimension „CommandName“ = „count“||
+| Mongo Delete Request Charge (Kosten von Mongo-Löschanforderung) | MongoRequestCharge mit Dimension „CommandName“ = „delete“||
+| Mongo Delete Request Rate (Rate von Mongo-Löschanforderung) | MongoRequestsCount mit Dimension „CommandName“ = „delete“||
+| Mongo Insert Request Charge (Kosten von Mongo-Einfügeanforderung) | MongoRequestCharge mit Dimension „CommandName“ = „insert“||
+| Mongo Insert Request Rate (Rate von Mongo-Einfügeanforderung) | MongoRequestsCount mit Dimension „CommandName“ = „insert“||
+| Mongo Query Request Charge (Kosten von Mongo-Abfrageanforderung) | MongoRequestCharge mit Dimension „CommandName“ = „find“||
+| Mongo Query Request Rate (Rate von Mongo-Abfrageanforderung) | MongoRequestsCount mit Dimension „CommandName“ = „find“||
+| Mongo Update Request Charge (Kosten von Mongo-Aktualisierungsanforderung) | MongoRequestCharge mit Dimension „CommandName“ = „update“||
+| Dienst nicht verfügbar| ServiceAvailability||
+| TotalRequestUnits | TotalRequestUnits||
+
 ### <a name="how-equivalent-action-groups-are-created"></a>Erstellen entsprechender Aktionsgruppen
 
 Bei klassischen Warnungsregeln waren E-Mail-, Webhook-, Logik-App-und Runbook-Aktionen direkt mit der eigentlichen Warnungsregel verbunden. Die neuen Warnungsregeln verwenden Aktionsgruppen, die übergreifend über mehrere Warnungsregeln wiederverwendet werden können. Das Migrationstool erstellt eine einzelne Aktionsgruppe für gleiche Aktionen, und zwar unabhängig davon, wie viele Warnungsregeln die Aktion verwenden. Vom Migrationstool erstellte Aktionsgruppen erhalten das Namensformat „Migrated_AG*“.
+
+> [!NOTE]
+> Für klassische Warnungen wurden lokalisierte E-Mails gesendet, die auf dem Gebietsschema des klassischen Administrators basierten, wenn sie zum Benachrichtigen klassischer Administratorrollen verwendet wurden. Neue Warnungs-E-Mails werden über Aktionsgruppen gesendet und sind nur in englischer Sprache verfügbar.
 
 ## <a name="rollout-phases"></a>Rolloutphasen
 
@@ -173,7 +237,6 @@ Der Rollout des Migrationstools erfolgt für Kunden, die klassische Warnungsrege
 Derzeit sind die meisten Abonnements als migrationsbereit gekennzeichnet. Nur Abonnements mit klassischen Warnungsregeln für die folgenden Ressourcentypen sind noch nicht für die Migration bereit.
 
 - Microsoft.classicCompute/domainNames/slots/roles
-- Microsoft.documentDB/databases
 - Microsoft.insights/components
 
 ## <a name="who-can-trigger-the-migration"></a>Wer kann die Migration auslösen?
@@ -184,6 +247,7 @@ Alle Benutzer, die auf Abonnementebene über die integrierte Rolle „Mitwirkend
 - Microsoft.Insights/actiongroups/*
 - Microsoft.Insights/AlertRules/*
 - Microsoft.Insights/metricAlerts/*
+- Microsoft.AlertsManagement/smartDetectorAlertRules/*
 
 > [!NOTE]
 > Ihr Abonnement sollte nicht nur über die obigen Berechtigungen verfügen, sondern außerdem beim Microsoft.AlertsManagement-Ressourcenanbieter registriert werden. Dies ist für eine erfolgreiche Migration von Fehleranomaliewarnungen für Application Insights erforderlich. 

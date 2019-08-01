@@ -115,6 +115,7 @@
     - name: Sprach- und Regionsunterstützung
       href: language-support.md
     - name: Analysen für Bing-Bildersuche-API
-      href: bing-image-stats.md
+      maintainContext: true
+      href: ../bing-web-search/bing-web-stats.md
     - name: Compliance
       href: 'https://azure.microsoft.com/support/legal/cognitive-services-compliance-and-privacy/'

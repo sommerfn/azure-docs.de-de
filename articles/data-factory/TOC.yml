@@ -526,6 +526,8 @@
           href: create-shared-self-hosted-integration-runtime-powershell.md
     - name: Ausführen von SSIS-Paketen in Azure
       items:
+        - name: Ausführen von SSIS-Paketen in Azure über SSDT
+          href: how-to-invoke-ssis-package-ssdt.md
         - name: Ausführen von SSIS-Paketen mit der Aktivität „SSIS-Paket ausführen“
           href: how-to-invoke-ssis-package-ssis-activity.md
         - name: Ausführen von SSIS-Paketen mit der Aktivität „Gespeicherte Prozedur“
@@ -556,6 +558,8 @@
           href: how-to-create-schedule-trigger.md
         - name: Erstellen eines Triggers für ein rollierendes Fenster
           href: how-to-create-tumbling-window-trigger.md
+        - name: Erstellen einer Triggerabhängigkeit für ein rollierendes Fenster
+          href: tumbling-window-trigger-dependency.md
     - name: Vorlagen
       items:
         - name: Übersicht über Vorlagen

@@ -15,35 +15,23 @@ ms.workload: tbd
 ms.date: 05/21/2018
 ms.author: yegu
 ms.custom: mvc
-ms.openlocfilehash: 739f0bd6381e872b5f989f9ecb4dd97fdbdb52c9
-ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
+ms.openlocfilehash: dc629133a393c4ff8f9193b02e9080d7f08f4958
+ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56238095"
+ms.lasthandoff: 07/18/2019
+ms.locfileid: "68326456"
 ---
-# <a name="quickstart-how-to-use-azure-cache-for-redis-with-nodejs"></a>Schnellstart: Verwenden von Azure Cache for Redis mit Node.js
+# <a name="quickstart-use-azure-cache-for-redis-with-nodejs"></a>Schnellstart: Verwenden von Azure Cache for Redis mit Node.js
 
-
-
-Mit Azure Cache for Redis erhalten Sie Zugriff auf eine sichere, dedizierte Azure Cache for Redis-Instanz, die von Microsoft verwaltet wird. Auf Ihren Cache kann in jeder Anwendung in Microsoft Azure zugegriffen werden.
-
-Dieses Thema beschreibt die ersten Schritte mit Azure Cache for Redis und Node.js. 
-
-Sie können einen beliebigen Code-Editor nutzen, um die Schritte dieser Schnellstartanleitung auszuführen. [Visual Studio Code](https://code.visualstudio.com/) ist aber eine hervorragende Option, die auf Windows-, macOS- und Linux-Plattformen verfügbar ist.
-
-![Fertige Cache-App](./media/cache-nodejs-get-started/cache-app-complete.png)
-
-[!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
-
+In dieser Schnellstartanleitung integrieren Sie Azure Cache für Redis in eine Node.js-App, um Zugriff auf einen sicheren, dedizierten Cache zu erhalten, der von jeder Anwendung in Azure aus zugänglich ist.
 
 ## <a name="prerequisites"></a>Voraussetzungen
-Installieren Sie [node_redis](https://github.com/mranney/node_redis):
 
-    npm install redis
+- Azure-Abonnement – [Erstellen eines kostenlosen Kontos](https://azure.microsoft.com/free/)
+- [node_redis](https://github.com/mranney/node_redis), das Sie mit dem Befehl `npm install redis` installieren können. 
 
-In diesem Tutorial wird [node_redis](https://github.com/mranney/node_redis) verwendet. Beispiele für die Verwendung anderer Node.js-Clients finden Sie in der entsprechenden Dokumentation für die [hier](https://redis.io/clients#nodejs)aufgeführten Node.js-Clients.
-
+Beispiele für die Verwendung anderer Node.js-Clients finden Sie in der entsprechenden Dokumentation für die [hier](https://redis.io/clients#nodejs)aufgeführten Node.js-Clients.
 
 ## <a name="create-a-cache"></a>Erstellen eines Caches
 [!INCLUDE [redis-cache-create](../../includes/redis-cache-create.md)]
@@ -57,7 +45,6 @@ Fügen Sie Umgebungsvariablen für Ihren **HOSTNAMEN** und Ihren **primären** Z
 set REDISCACHEHOSTNAME=contosoCache.redis.cache.windows.net
 set REDISCACHEKEY=XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
 ```
-
 
 ## <a name="connect-to-the-cache"></a>Herstellen einer Verbindung mit dem Cache
 
@@ -128,7 +115,6 @@ Im folgenden Beispiel können Sie sehen, dass der `Message`-Schlüssel zuvor ein
 
 ![Fertige Cache-App](./media/cache-nodejs-get-started/cache-app-complete.png)
 
-
 ## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
 
 Falls Sie mit dem nächsten Tutorial fortfahren möchten, können Sie die in dieser Schnellstartanleitung erstellten Ressourcen beibehalten und wiederverwenden.
@@ -149,14 +135,9 @@ Sie werden aufgefordert, das Löschen der Ressourcengruppe zu bestätigen. Geben
 
 Daraufhin werden die Ressourcengruppe und alle darin enthaltenen Ressourcen gelöscht.
 
-
-
 ## <a name="next-steps"></a>Nächste Schritte
 
 In dieser Schnellstartanleitung wurde beschrieben, wie Sie Azure Cache for Redis über eine Node.js-Anwendung verwenden. In der nächsten Schnellstartanleitung erfahren Sie, wie Sie Azure Cache for Redis mit einer ASP.NET-Web-App verwenden.
 
 > [!div class="nextstepaction"]
 > [Erstellen einer ASP.NET-Web-App, die eine Azure Cache for Redis-Instanz verwendet](./cache-web-app-howto.md)
-
-
-

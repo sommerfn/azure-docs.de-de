@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 08/27/2018
 ms.author: apimpm
-ms.openlocfilehash: 14d4bf6d7e1d1f474e2388c4e2ce232574ebf0d8
-ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
+ms.openlocfilehash: 0094364ed2e5d6c024f75a88db90eb703792f9f3
+ms.sourcegitcommit: 9dc7517db9c5817a3acd52d789547f2e3efff848
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59682796"
+ms.lasthandoff: 07/23/2019
+ms.locfileid: "68405833"
 ---
 # <a name="add-an-api-manually"></a>Manuelles Hinzufügen einer API
 
@@ -43,15 +43,14 @@ Absolvieren Sie die folgende Schnellstartanleitung: [Erstellen einer neuen Azure
     ![Leere API](media/add-api-manually/blank-api.png)
 4. Geben Sie Einstellungen für die API ein.
 
-    ![Einstellungen](media/add-api-manually/settings.png)
-
     |**Name**|**Wert**|**Beschreibung**|
     |---|---|---|
-    |**Anzeigename**|„*Blank API*“ |Dieser Name wird im Entwicklerportal angezeigt.|
-    |**Webdienst-URL** (optional)| „*https://httpbin.org*“| Wenn Sie eine API simulieren möchten, müssen Sie nichts eingeben. <br/>In diesem Fall geben Sie [https://httpbin.org](https://httpbin.org) ein. Dies ist ein öffentlicher Testdienst. <br/>Wenn Sie eine API importieren möchten, die automatisch einem Back-End zugeordnet wird, sehen Sie sich die Themen im Abschnitt [Verwandte Themen](#related-topics) an.|
-    |**URL-Schema**|„*HTTPS*“|Obwohl das Back-End in diesem Fall keinen sicheren HTTP-Zugriff hat, geben wir einen sicheren HTTPS-APIM-Zugriff auf das Back-End an. <br/>Diese Art von Szenario (HTTPS nach HTTP) wird als HTTPS-Beendigung bezeichnet. Sie können dies verwenden, wenn sich Ihre API in einem virtuellen Netzwerk befindet (in dem Sie wissen, dass der Zugriff sicher ist, auch wenn nicht HTTPS verwendet wird). <br/>Sie können die „HTTPS-Beendigung“ auch verwenden, um einige CPU-Zyklen zu sparen.|
-    |**URL-Suffix**|„*hbin*“| Das Suffix ist ein Name, der diese spezifische API in dieser APIM-Instanz identifiziert. Es muss in dieser APIM-Instanz eindeutig sein.|
-    |**Produkte**|„*Unlimited*“ |Veröffentlichen Sie die API, indem Sie sie einem Produkt zuordnen. Wenn Sie möchten, dass die API veröffentlicht wird und dann Entwicklern zur Verfügung steht, fügen Sie sie einem Produkt hinzu. Sie können dies während der Erstellung der API vornehmen oder später festlegen.<br/><br/>Bei Produkten handelt es sich um API-Zuordnungen. Sie können eine Reihe von APIs einfügen und sie Entwicklern über das Entwicklerportal zur Verfügung stellen. <br/>Entwickler müssen ein Produkt zunächst abonnieren, um Zugriff auf die API zu erhalten. Wenn sie ein Produkt abonnieren, erhalten sie einen Abonnementschlüssel, der für jede API in diesem Produkt gilt. Wenn Sie die APIM-Instanz erstellt haben, sind Sie bereits Administrator und haben dadurch standardmäßig alle Produkte abonniert.<br/><br/> Standardmäßig enthält jede API Management-Instanz zwei Beispielprodukte: **Starter** und **Unbegrenzt**.| 
+    |**Anzeigename**|*Leere API*|Dieser Name wird im Entwicklerportal angezeigt.|
+    |**Name**|*blank-api*|Stellt einen eindeutigen Namen für die API bereit.|
+    |**Webdienst-URL** (optional)|*https://httpbin.org*| Wenn Sie eine API simulieren möchten, müssen Sie nichts eingeben. <br/>In diesem Fall geben Sie [https://httpbin.org](https://httpbin.org) ein. Dies ist ein öffentlicher Testdienst. <br/>Wenn Sie eine API importieren möchten, die automatisch einem Back-End zugeordnet wird, sehen Sie sich die Themen im Abschnitt [Verwandte Themen](#related-topics) an.|
+    |**URL-Schema**|*HTTPS*|Obwohl das Back-End in diesem Fall keinen sicheren HTTP-Zugriff hat, geben wir einen sicheren HTTPS-APIM-Zugriff auf das Back-End an. <br/>Diese Art von Szenario (HTTPS nach HTTP) wird als HTTPS-Beendigung bezeichnet. Sie können dies verwenden, wenn sich Ihre API in einem virtuellen Netzwerk befindet (in dem Sie wissen, dass der Zugriff sicher ist, auch wenn nicht HTTPS verwendet wird). <br/>Sie können die „HTTPS-Beendigung“ auch verwenden, um einige CPU-Zyklen zu sparen.|
+    |**URL-Suffix**|*hbin*| Das Suffix ist ein Name, der diese spezifische API in dieser APIM-Instanz identifiziert. Es muss in dieser APIM-Instanz eindeutig sein.|
+    |**Produkte**|*Unbegrenzt*|Veröffentlichen Sie die API, indem Sie sie einem Produkt zuordnen. Wenn Sie möchten, dass die API veröffentlicht wird und dann Entwicklern zur Verfügung steht, fügen Sie sie einem Produkt hinzu. Sie können dies während der Erstellung der API vornehmen oder später festlegen.<br/><br/>Bei Produkten handelt es sich um API-Zuordnungen. Sie können eine Reihe von APIs einfügen und sie Entwicklern über das Entwicklerportal zur Verfügung stellen. <br/>Entwickler müssen ein Produkt zunächst abonnieren, um Zugriff auf die API zu erhalten. Wenn sie ein Produkt abonnieren, erhalten sie einen Abonnementschlüssel, der für jede API in diesem Produkt gilt. Wenn Sie die APIM-Instanz erstellt haben, sind Sie bereits Administrator und haben dadurch standardmäßig alle Produkte abonniert.<br/><br/> Standardmäßig enthält jede API Management-Instanz zwei Beispielprodukte: **Starter** und **Unbegrenzt**.| 
 5. Klicken Sie auf **Erstellen**.
 
 An diesem Punkt enthält APIM noch keine Vorgänge, die Vorgängen in Ihrer Back-End-API zugeordnet sind. Wenn Sie einen Vorgang aufrufen, der über das Back-End und nicht über APIM verfügbar gemacht wird, erhalten Sie den Fehler **404**.

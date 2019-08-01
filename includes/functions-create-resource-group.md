@@ -4,12 +4,12 @@ ms.service: azure-functions
 ms.topic: include
 ms.date: 09/04/2018
 ms.author: glenga
-ms.openlocfilehash: c20f86fe7fdcfc7ecc940923a8c98fa1fbf4cf65
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.openlocfilehash: a2994602f857c2c8ff9f935b649a8d3e94c10dca
+ms.sourcegitcommit: a874064e903f845d755abffdb5eac4868b390de7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67177867"
+ms.lasthandoff: 07/24/2019
+ms.locfileid: "68444103"
 ---
 ## <a name="create-a-resource-group"></a>Erstellen einer Ressourcengruppe
 
@@ -21,4 +21,5 @@ Falls Sie nicht Cloud Shell verwenden, melden Sie sich erst mithilfe von `az log
 ```azurecli-interactive
 az group create --name myResourceGroup --location westeurope
 ```
-Im Allgemeinen erstellen Sie Ressourcengruppen und Ressourcen in einer Region in Ihrer Nähe. Um alle unterstützten Standorte für App Service-Pläne anzuzeigen, führen Sie den Befehl [az appservice list-locations](/cli/azure/appservice#az-appservice-list-locations) aus.
+
+Im Allgemeinen erstellen Sie Ressourcengruppen und Ressourcen in einer [Region](https://azure.microsoft.com/global-infrastructure/regions/) in Ihrer Nähe. 

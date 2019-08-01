@@ -7,12 +7,12 @@ ms.author: mattwoj
 ms.service: marketplace
 ms.topic: conceptual
 ms.date: 06/27/2019
-ms.openlocfilehash: dc086bc1252c084b717807213b5ba4c7f9d7bb97
-ms.sourcegitcommit: 6cb4dd784dd5a6c72edaff56cf6bcdcd8c579ee7
+ms.openlocfilehash: cea763416f36abd80b1d22b4414cc2454bc30c66
+ms.sourcegitcommit: 10251d2a134c37c00f0ec10e0da4a3dffa436fb3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2019
-ms.locfileid: "67514054"
+ms.lasthandoff: 07/13/2019
+ms.locfileid: "67868727"
 ---
 # <a name="create-a-new-saas-offer"></a>Erstellen eines neuen SaaS-Angebots
 
@@ -20,7 +20,7 @@ Um mit dem Erstellen von SaaS-Angeboten (Software-as-a-Service) zu beginnen, mü
 
 ![Dashboard „Kommerzieller Marketplace“ im Partner Center](./media/new-offer-overview.png)
 
-Klicken Sie auf die Schaltfläche **Neues Angebot**, und wählen Sie dann das Menüelement **Software-as-a-Service** aus. 
+Klicken Sie auf die Schaltfläche **+ Neues Angebot…** , und wählen Sie dann das Menüelement **Software-as-a-Service** aus. 
 
 Wenn Sie einen der anderen Angebotstypen auswählen, werden Sie zum älteren [Cloud-Partnerportal](https://cloudpartner.azure.com/) umgeleitet.  Im kommerziellen Marketplace im Partner Center-Portal sind derzeit nur SaaS-Angebote verfügbar. 
 
@@ -31,13 +31,14 @@ Das Dialogfeld **Neues Angebot** wird angezeigt.
 ![Dialogfeld „Neues Angebot“](./media/new-offer-popup.png)
 
 
-## <a name="offer-id-and-name"></a>Angebots-ID und Angebotsname
+## <a name="offer-id-and-alias"></a>Angebots-ID und Angebotsalias
 
-- **Angebots-ID:** Erstellen Sie einen eindeutigen Bezeichner für jedes Angebot in Ihrem Konto. Diese ID wird für Kunden in der URL-Adresse für das Marketplace-Angebot und ggf. in Azure Resource Manager-Vorlagen angezeigt. Die Angebots-ID darf keine Großbuchstaben enthalten und muss alphanumerisch sein (Bindestriche und Unterstriche sind zulässig, Leerzeichen jedoch nicht). Sie ist auf 50 Zeichen beschränkt und kann nach der Erstellung nicht aktualisiert werden.  
+- **Angebots-ID:** Eindeutiger Bezeichner für jedes Angebot in Ihrem Konto. Diese ID wird für Kunden in der URL-Adresse für das Marketplace-Angebot und ggf. in Azure Resource Manager-Vorlagen angezeigt. Die Angebots-ID darf keine Großbuchstaben enthalten und muss alphanumerisch sein (Bindestriche und Unterstriche sind zulässig, Leerzeichen jedoch nicht). Sie ist auf 50 Zeichen beschränkt und kann nach der Auswahl von *Erstellen* nicht mehr geändert werden.  
 Beispiel: test-offer-1
 <br>Dies resultiert in der folgenden URL: `https://azuremarketplace.microsoft.com/marketplace/../test-offer-1`
 
-- **Angebotsname:** Der offizielle Name Ihres SaaS-Anwendungsangebots, der in allen Veröffentlichungen, Ankündigungen und Websites einheitlich sein muss.  Dieser Name ist möglicherweise markenrechtlich geschützt.  Der Angebotsname darf keine Leerzeichen und Emojis (mit Ausnahme des Markenzeichen- oder Copyrightsymbols) enthalten und muss auf 50 Zeichen begrenzt sein.
+- **Angebotsalias**: Der Name, der zum Verweisen auf das Angebot im Partner Center-Portal verwendet wird. Dieser Name wird im Marketplace nicht verwendet und unterscheidet sich vom *Angebotsnamen* und anderen Werten, die den Kunden angezeigt werden. Dieser Wert kann nach der Auswahl von *Erstellen* nicht mehr geändert werden.
+
 <br>Beispiel: Testangebot 1&#8482;
 
 Klicken Sie auf **Erstellen**.  Für das Angebot wird die Seite **Angebotsübersicht** erstellt.  
@@ -115,8 +116,8 @@ Erstellen Sie eine Marketplace-Liste, um mit Microsoft für Ihr Geschäft zu wer
 ##### <a name="get-it-now-free"></a>Jetzt abrufen (kostenlos)
 Listen Sie Ihr Angebot für Kunden als kostenlos auf, indem Sie eine gültige URL (mit „http“ oder „https“ beginnend) angeben, über die sie auf Ihre App zugreifen können.  Beispiel: `https://contoso.com/saas-app`
 
-##### <a name="free-trial"></a>Kostenlose Testversion
-Listen Sie Ihr Angebot für Kunden als kostenlose Testversion auf, indem Sie eine gültige URL (mit „http“ oder „https“ beginnend) angeben, über die sie auf Ihre App zugreifen können.  Beispiel: `https://contoso.com/trial/saas-app`
+##### <a name="free-trial-listing"></a>Kostenlose Testversion (Auflistung)
+Listen Sie Ihr Angebot für Kunden mit einem Link zu einer kostenlosen Testversion auf, indem Sie eine gültige URL (mit „http“ oder „https“ beginnend) angeben, über die sie auf Ihre App zugreifen können.  Beispiel: `https://contoso.com/trial/saas-app`. Kostenlose Testversionen in der Angebotsliste werden von Ihrem Dienst erstellt, verwaltet und konfiguriert und weisen keine von Microsoft verwalteten Abonnements auf.
 
 ##### <a name="contact-me"></a>Kontakt mit mir aufnehmen
 Sammeln Sie über Ihr CRM-System (Customer Relationship Management) Kundenkontaktinformationen. Der Kunde wird gebeten, die Berechtigung zur Freigabe seiner Informationen zu erteilen. Diese Kundeninformationen sowie der Angebotsname, die Angebots-ID und der Marketplace, auf dem der Kunde Ihr Angebot gefunden hat, werden an das CRM-System gesendet, das Sie konfiguriert haben. Weitere Informationen zum Konfigurieren des CRM-Systems finden Sie unter [Einbinden der Leadverwaltung](#connect-lead-management). 
@@ -205,6 +206,9 @@ Klicken Sie auf **Speichern**, bevor Sie mit dem nächsten Abschnitt fortfahren!
 
 Auf der Registerkarte „Angebotsliste“ werden die Sprachen (und Märkte) angezeigt, in denen Ihr Angebot verfügbar ist. Derzeit ist nur der Standort „Englisch (USA)“ verfügbar. Auf dieser Seite werden zudem der Status der sprachspezifischen Liste und das Datum/die Uhrzeit der Hinzufügung angezeigt. Sie müssen für jede Sprache/jeden Markt die Marketplace-Informationen (Angebotsname, Beschreibung, Suchbegriffe usw.) definieren.
 
+> [!NOTE]
+> Die Inhalte der Angebotsliste (z.B. Angebotsbeschreibung, Dokumente, Screenshots, Nutzungsbedingungen und Datenschutzrichtlinien) müssen nicht in englischer Sprache vorliegen, solange die Angebotsbeschreibung mit dem folgenden Satz beginnt: „Diese Anwendung ist nur in [nicht englische Sprache] verfügbar.“ Es ist auch zulässig, eine *Nützlicher Link-URL* bereitzustellen, um Inhalte in einer anderen Sprache als der in der Angebotsliste verwendeten anzubieten.
+
 ### <a name="offer-listings"></a>Angebotsauflistungen
 
 Geben Sie Informationen an, die im Marketplace angezeigt werden sollen, einschließlich der Beschreibung des Angebots und der Marketingressourcen.
@@ -268,9 +272,9 @@ Auf der Registerkarte **Technische Konfiguration** werden die technischen Inform
 
 - **Verbindungswebhook** (erforderlich): Für alle asynchronen Ereignisse, die Microsoft im Auftrag des Kunden an Sie senden muss (Beispiel: das SaaS-Abonnement ist ungültig geworden), müssen Sie einen Webhook für die Verbindung angeben. Wenn Sie noch nicht über ein Webhooksystem verfügen, ist die einfachste Konfiguration eine Logik-App am HTTP-Endpunkt, die auf alle veröffentlichten Ereignisse lauscht und sie entsprechend behandelt (z.B. https:\//prod-1westus.logic.azure.com:443/work). Weitere Informationen finden Sie unter [Aufrufen, Auslösen oder Schachteln von Workflows mit HTTP-Endpunkten in Logik-Apps](https://docs.microsoft.com/azure/logic-apps/logic-apps-http-endpoint).
 
-- **ID des Azure AD-Mandanten** (erforderlich): Es ist im Azure-Portal erforderlich, dass Sie eine [Azure AD-App (Active Directory) erstellen](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal), damit überprüft werden kann, ob die Verbindung zwischen unseren beiden Diensten über eine authentifizierte Kommunikation erfolgt. Um die [Mandanten-ID](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#get-tenant-id) zu ermitteln, wechseln Sie zu Azure Active Directory, wählen Sie **Eigenschaften** aus, und suchen Sie nach der aufgeführten Nummer der **Verzeichnis-ID** (z.B. 50c464d3-4930-494c-963c-1e951d15360e).
+- **ID des Azure AD-Mandanten** (erforderlich): Es ist im Azure-Portal erforderlich, dass Sie eine [Azure AD-App (Active Directory) erstellen](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal), damit überprüft werden kann, ob die Verbindung zwischen unseren beiden Diensten über eine authentifizierte Kommunikation erfolgt. Um die [Mandanten-ID](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#get-values-for-signing-in) zu ermitteln, wechseln Sie zu Azure Active Directory, wählen Sie **Eigenschaften** aus, und suchen Sie nach der aufgeführten Nummer der **Verzeichnis-ID** (z.B. 50c464d3-4930-494c-963c-1e951d15360e).
 
-- **Azure AD-App-ID** (erforderlich): Sie benötigen auch die [Anwendungs-ID](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#get-application-id-and-authentication-key) und einen Authentifizierungsschlüssel. Um diese Werte zu ermitteln, wechseln Sie zu Azure Active Directory, und wählen Sie **App-Registrierungen** aus. Suchen Sie dann nach der aufgeführten Nummer der **Anwendungs-ID** (z.B. 50c464d3-4930-494c-963c-1e951d15360e). Um den Authentifizierungsschlüssel zu suchen, wechseln Sie zu **Einstellungen**, und wählen Sie **Schlüssel** aus. Sie müssen eine Beschreibung und eine Dauer angeben und erhalten dann einen Zahlenwert.
+- **Azure AD-App-ID** (erforderlich): Sie benötigen auch die [Anwendungs-ID](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#get-values-for-signing-in) und einen Authentifizierungsschlüssel. Um diese Werte zu ermitteln, wechseln Sie zu Azure Active Directory, und wählen Sie **App-Registrierungen** aus. Suchen Sie dann nach der aufgeführten Nummer der **Anwendungs-ID** (z.B. 50c464d3-4930-494c-963c-1e951d15360e). Um den Authentifizierungsschlüssel zu suchen, wechseln Sie zu **Einstellungen**, und wählen Sie **Schlüssel** aus. Sie müssen eine Beschreibung und eine Dauer angeben und erhalten dann einen Zahlenwert.
 
  Beachten Sie, dass die Azure-Anwendungs-ID Ihrer Herausgeber-ID zugeordnet ist. Stellen Sie also sicher, dass in allen Ihren Angeboten dieselbe Anwendungs-ID verwendet wird.
 
@@ -307,6 +311,22 @@ Klicken Sie auf **Speichern**, nachdem Sie die Angaben in diesen Feldern vorgeno
 
 Auf der Registerkarte **Preise und Verfügbarkeit** können Sie die Märkte, in denen der Plan verfügbar ist, das gewünschte Monetarisierungsmodell, den Preis und den Abrechnungszeitraum konfigurieren. Darüber hinaus können Sie angeben, ob der Plan für alle Benutzer oder nur für bestimmte Kunden (eine private Zielgruppe) angezeigt werden soll.
 
+##### <a name="enabling-free-trials"></a>Aktivieren kostenloser Testversionen
+
+SaaS-Angebote über den kommerziellen Marketplace ermöglichen Ihnen beim Verkauf über Microsoft, eine einmonatige kostenlose Testversion bereitzustellen. Kostenlose Testversionen werden für alle Abrechnungsmodelle und -bedingungen mit Ausnahme von Volumentarifen unterstützt. Diese Option ermöglicht es Kunden, durch den kostenlosen Zugriff für einen Monat eine niedrige Schwelle für den Einstieg zu erhalten.  Wenn Sie eine kostenlose Testversion für Pläne in Ihrem Angebot aktivieren, kann der Kunde diese Version nicht vor Ende des ersten Monats in ein kostenpflichtiges Abonnement umwandeln.  Während dieses Zeitraums können Kunden, die Ihr Angebot erwerben, alle unterstützten Pläne ausprobieren, bei denen die kostenlose Testversion aktiviert ist, und zwischen diesen wechseln.  Die Umwandlung in ein kostenpflichtiges Abonnement erfolgt automatisch am Ende der Laufzeit.
+
+>[!Note]
+>Wenn sich der Kunde für die Umwandlung in einen Plan ohne kostenlose Testversionen entscheidet, wird dies umgesetzt, doch geht die kostenlose Testversion sofort verloren.  Auch sobald ein Kunde mit dem Bezahlen für einen Plan beginnt, kann er selbst dann keine kostenlose Testversion mehr für dasselbe Abonnement erhalten, wenn eine Umwandlung in eine SKU erfolgt, die kostenlose Testversionen unterstützt.
+
+Die Möglichkeit, eine kostenlose Testversion zu konfigurieren, steht für jeden Plan in Ihrem Angebot zur Verfügung. Navigieren Sie einfach zu „Preise und Verfügbarkeit“ für jedes Angebot, und aktivieren Sie das Kontrollkästchen, um eine einmonatige Testversion zuzulassen.
+
+![Kontrollkästchen für eine einmonatige kostenlose Testversion](./media/free-trial-enable.png)
+
+Wenn Sie Informationen zu Kundenabonnements abrufen möchten, die derzeit an einer kostenlosen Testversion teilnehmen, verwenden Sie die neue API-Eigenschaft `isFreeTrial`, die als „true“ oder „false“ gekennzeichnet ist. Weitere Informationen finden Sie unter der [API zum Abrufen eines Saas-Abonnements](https://docs.microsoft.com/azure/marketplace/partner-center-portal/pc-saas-fulfillment-api-v2#get-subscription).
+
+>[!Note]
+>Kostenlose Testversionen werden für Pläne, die den Marketplace-Messungsdienst nutzen, nicht unterstützt.
+
 #### <a name="markets"></a>Märkte
 
 - **Edit markets** (Märkte bearbeiten) (optional)
@@ -320,7 +340,7 @@ Wenn Sie bereits Preise in US-Dollar für Ihren Plan festgelegt haben und einen 
 
 - **Preismodell**: „Flat rate“ (Pauschalgebühr) oder „Seat based“ (Arbeitsplatzbasiert)
 
-**Flat rate:** (Pauschalgebühr): Ermöglichen Sie den Zugriff auf Ihr Angebot mit einer einzelnen monatlichen oder jährlichen Pauschalgebühr. Dies wird manchmal als arbeitsplatzbasierter Preis bezeichnet.
+**Flat rate:** (Pauschalgebühr): Ermöglichen Sie den Zugriff auf Ihr Angebot mit einer einzelnen monatlichen oder jährlichen Pauschalgebühr. Dies wird manchmal als arbeitsplatzbasierter Preis bezeichnet. Dieses Preismodell ermöglicht Ihnen das optionale Definieren von Volumentarifen, bei denen die Marketplace-Messungsdienst-API zur Berechnung für Kunden nach nicht standardmäßigen Einheiten verwendet wird.  Weitere Informationen zur getakteten Abrechnung finden Sie unter [Getaktete Abrechnung mit dem Marketplace-Messungsdienst](./saas-metered-billing.md).
 
 **Seat based** (Arbeitsplatzbasiert): Ermöglichen Sie den Zugriff auf Ihr Angebot mit einem Preis, der auf der Anzahl der Benutzer, die auf Ihr Angebot zugreifen, oder auf der Anzahl der belegten *Arbeitsplätze* basiert. Mithilfe des arbeitsplatzbasierten Modells können Sie die minimal und maximal zulässige Anzahl von Arbeitsplätzen auf Grundlage des Preises festlegen. Auf diese Weise können durch das Konfigurieren mehrerer Pläne unterschiedliche Preise auf Grundlage der Anzahl der Benutzer festgelegt werden.  Diese Felder sind optional. Wenn keine Angabe erfolgt, wird angenommen, dass die Anzahl der Arbeitsplätze unbegrenzt ist (mindestens 1 und maximal die vom System unterstützte maximale Anzahl). Diese Felder können beim Aktualisieren des Plans bearbeitet werden.
 
@@ -434,13 +454,13 @@ Um die Testversion in Ihrem Auftrag bereitzustellen, erstellen Sie ein eigenes e
 
 - **Azure-Abonnement-ID** (erforderlich für Azure Resource Manager und Logik-Apps): Geben Sie die Abonnement-ID ein, um für Ressourcennutzungsberichte und Abrechnungszwecke Zugriff auf die Dienste Ihres Azure-Kontos zu gewähren. Es wird empfohlen, [ein eigenes Azure-Abonnement zu erstellen](https://docs.microsoft.com/azure/billing/billing-create-subscription), das für Testversionen verwendet wird, falls Sie es noch nicht getan haben. Sie finden die Azure-Abonnement-IDs, indem Sie sich beim [Azure-Portal](https://portal.azure.com/) anmelden und im Menü auf der linken Seite zu den **Abonnements** navigieren. Durch Auswahl der Registerkarte wird Ihre Abonnement-ID angezeigt (z.B. a83645ac-1234-5ab6-6789-1h234g764ghty).
 
-- **ID des Azure AD-Mandanten** (erforderlich): Geben Sie Ihre [Mandanten-ID](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#get-tenant-id) von Azure Active Directory (AD) ein. Um die ID zu ermitteln, melden Sie sich beim [Azure-Portal](https://portal.azure.com/) an, wählen Sie im linken Menü die Registerkarte „Active Directory“ aus, klicken Sie auf **Eigenschaften**, und suchen Sie dann die aufgeführte Nummer der **Verzeichnis-ID** (z.B. 50c464d3-4930-494c-963c-1e951d15360e). Sie können auch unter [https://www.whatismytenantid.com](https://www.whatismytenantid.com) die Mandanten-ID Ihrer Organisation mithilfe einer Domänennamen-URL nachschlagen.
+- **ID des Azure AD-Mandanten** (erforderlich): Geben Sie Ihre [Mandanten-ID](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#get-values-for-signing-in) von Azure Active Directory (AD) ein. Um die ID zu ermitteln, melden Sie sich beim [Azure-Portal](https://portal.azure.com/) an, wählen Sie im linken Menü die Registerkarte „Active Directory“ aus, klicken Sie auf **Eigenschaften**, und suchen Sie dann die aufgeführte Nummer der **Verzeichnis-ID** (z.B. 50c464d3-4930-494c-963c-1e951d15360e). Sie können auch unter [https://www.whatismytenantid.com](https://www.whatismytenantid.com) die Mandanten-ID Ihrer Organisation mithilfe einer Domänennamen-URL nachschlagen.
 
 - **Name des Azure AD-Mandanten** (erforderlich für Dynamics 365): Geben Sie den Namen Ihres Azure Active Directory (AD) ein. Um diesen Namen zu suchen, melden Sie sich beim [Azure-Portal](https://portal.azure.com/) an. Oben rechts wird der Mandantenname unter Ihrem Kontonamen angegeben.
 
-- **Azure AD-App-ID** (erforderlich): Geben Sie die [Anwendungs-ID](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#get-application-id-and-authentication-key) von Azure Active Directory (AD) ein. Um die ID zu ermitteln, melden Sie sich beim [Azure-Portal](https://portal.azure.com/) an, wählen Sie im linken Menü die Registerkarte „Active Directory“ aus, klicken Sie auf **App-Registrierungen**, und suchen Sie dann die aufgeführte Nummer der **Anwendungs-ID** (z.B. 50c464d3-4930-494c-963c-1e951d15360e).
+- **Azure AD-App-ID** (erforderlich): Geben Sie die [Anwendungs-ID](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#get-values-for-signing-in) von Azure Active Directory (AD) ein. Um die ID zu ermitteln, melden Sie sich beim [Azure-Portal](https://portal.azure.com/) an, wählen Sie im linken Menü die Registerkarte „Active Directory“ aus, klicken Sie auf **App-Registrierungen**, und suchen Sie dann die aufgeführte Nummer der **Anwendungs-ID** (z.B. 50c464d3-4930-494c-963c-1e951d15360e).
 
-- **Geheimer Azure AD-App-Clientschlüssel** (erforderlich): Geben Sie Ihren [geheimen Clientschlüssel](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#get-application-id-and-authentication-key) für die Azure AD-Anwendung ein. Um diesen Wert zu finden, melden Sie sich beim [Azur-Portal](https://portal.azure.com/) an. Wählen Sie im linken Menü die Registerkarte **Azure Active Directory** aus, wählen Sie **App-Registrierungen** aus und dann Ihre Testversion-App. Wählen Sie als Nächstes **Zertifikate und Geheimnisse** und dann **Neuer geheimer Clientschlüssel** aus, geben Sie eine Beschreibung ein, wählen Sie **Nie** unter **Läuft ab** aus, und wählen Sie dann **Hinzufügen** aus. Stellen Sie sicher, dass Sie den Wert kopieren. (Navigieren Sie nicht von der Seite weg, bevor Sie dies tun, sonst haben Sie keinen Zugriff auf den Wert.)
+- **Geheimer Azure AD-App-Clientschlüssel** (erforderlich): Geben Sie Ihren [geheimen Clientschlüssel](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#certificates-and-secrets) für die Azure AD-Anwendung ein. Um diesen Wert zu finden, melden Sie sich beim [Azur-Portal](https://portal.azure.com/) an. Wählen Sie im linken Menü die Registerkarte **Azure Active Directory** aus, wählen Sie **App-Registrierungen** aus und dann Ihre Testversion-App. Wählen Sie als Nächstes **Zertifikate und Geheimnisse** und dann **Neuer geheimer Clientschlüssel** aus, geben Sie eine Beschreibung ein, wählen Sie **Nie** unter **Läuft ab** aus, und wählen Sie dann **Hinzufügen** aus. Stellen Sie sicher, dass Sie den Wert kopieren. (Navigieren Sie nicht von der Seite weg, bevor Sie dies tun, sonst haben Sie keinen Zugriff auf den Wert.)
 
 Klicken Sie auf **Speichern**, bevor Sie mit dem nächsten Abschnitt fortfahren!
 

@@ -5,14 +5,14 @@ author: msmbaldwin
 ms.service: security
 ms.topic: article
 ms.author: mbaldwin
-ms.date: 06/05/2019
+ms.date: 07/17/2019
 ms.custom: seodec18
-ms.openlocfilehash: 58c5c8321e505fe2c1c7d19c58fe0d031b75b3e4
-ms.sourcegitcommit: 2d3b1d7653c6c585e9423cf41658de0c68d883fa
+ms.openlocfilehash: a67f19f0823827dad74e7aba15a92d696fbf580b
+ms.sourcegitcommit: 770b060438122f090ab90d81e3ff2f023455213b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/20/2019
-ms.locfileid: "67294863"
+ms.lasthandoff: 07/17/2019
+ms.locfileid: "68304269"
 ---
 # <a name="azure-disk-encryption-overview"></a>Übersicht über Azure Disk Encryption
 
@@ -58,7 +58,7 @@ Außerdem werden die folgenden Szenarios für virtuelle Computer unterstützt, w
    > [!NOTE]
    > Die Verschlüsselung von Betriebssystemlaufwerken wird für einige Linux-Distributionen nicht unterstützt. Weitere Informationen finden Sie im Artikel [Von Azure Disk Encryption unterstützte Betriebssysteme: Linux](azure-security-disk-encryption-prerequisites.md#linux).
    
-* Aktivieren der Verschlüsselung auf virtuellen Computern, die mit Windows-Speicherplätzen ab Windows Server 2016 konfiguriert sind
+* Aktivieren der Verschlüsselung auf virtuellen Computern, die mit Windows-Speicherplätzen ab Windows Server 2016 konfiguriert sind Direkte Speicherplätze (S2D) werden noch nicht unterstützt.
 * Sichern und Wiederherstellen verschlüsselter virtueller Computer in Szenarios mit und ohne Schlüsselverschlüsselungsschlüssel (Key Encryption Key, KEK)
 
 Die folgenden Szenarios, Features und Technologien werden von Azure Disk Encryption nicht unterstützt:

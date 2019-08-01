@@ -7,12 +7,12 @@ ms.topic: sample
 author: cjgronlund
 ms.author: cgronlun
 ms.date: 05/02/2019
-ms.openlocfilehash: b62a2690e5879e45a14d0b06a38e8c5171dda14e
-ms.sourcegitcommit: 4891f404c1816ebd247467a12d7789b9a38cee7e
+ms.openlocfilehash: 6991b641bc85a8944bfd12a43f9b049e44ea88d8
+ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/08/2019
-ms.locfileid: "65442334"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68598959"
 ---
 # <a name="example-jupyter-notebooks-show-how-to-enrich-data-with-open-datasets"></a>Jupyter-Beispielnotebooks zeigen das Anreichern von Daten mit öffentlichen Datasets. 
 Die Jupyter-Beispielnotebooks für öffentliche Azure-Datasets zeigen Ihnen, wie Sie öffentliche Datasets laden und zum Anreichern von Demodaten verwenden. Zu den Techniken gehören die Verwendung von Apache Spark und Pandas zur Verarbeitung von Daten.
@@ -41,5 +41,5 @@ Die Jupyter-Beispielnotebooks für öffentliche Azure-Datasets zeigen Ihnen, wie
 ## <a name="next-steps"></a>Nächste Schritte
 
 * [Tutorial: Regressionsmodellierung mit automatisiertem maschinellem Lernen und einem öffentlichen Dataset](tutorial-opendatasets-automl.md)
-* [Python-SDK für öffentliche Datasets](https://aka.ms/open-datasets-api)
+* [Python-SDK für öffentliche Datasets](/python/api/azureml-opendatasets/azureml.opendatasets?view=azure-ml-py)
 * [Katalog öffentlicher Azure-Datasets](https://azure.microsoft.com/services/open-datasets/catalog/)

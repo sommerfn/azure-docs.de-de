@@ -12,16 +12,16 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 05/07/2019
+ms.date: 07/16/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fd2da6baecdce3ab85a45347f27f573bf814445d
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 705545fd5167087be1a001c45f58907d6ff225e8
+ms.sourcegitcommit: 9a699d7408023d3736961745c753ca3cec708f23
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67055751"
+ms.lasthandoff: 07/16/2019
+ms.locfileid: "68277827"
 ---
 # <a name="daemon-app-that-calls-web-apis---code-configuration"></a>Daemon-App, die Web-APIs aufruft – Codekonfiguration
 
@@ -39,11 +39,11 @@ Folgende Microsoft-Bibliotheken unterstützen Daemon-Apps:
 
 ## <a name="configuration-of-the-authority"></a>Autoritätskonfiguration
 
-Da Ihre Daemonanwendungen keine delegierten Berechtigungen sondern Anwendungsberechtigungen verwenden, darf ihr *unterstützter Kontotyp* nicht *Konten in allen Organisationsverzeichnissen und persönliche Microsoft-Konten (z. B. Skype, Xbox, Outlook.com)* lauten. Es gibt keinen Mandantenadministrator, der der Daemonanwendung für persönliche Microsoft-Konten Einwilligung erteilen könnte. Sie müssen *accounts in my organization* (Konten in meiner Organisation) oder *accounts in any organization* (Konten in allen Organisationen) auswählen.
+Da Ihre Daemonanwendungen keine delegierten Berechtigungen, sondern Anwendungsberechtigungen verwenden, darf ihr *unterstützter Kontotyp* nicht *Konten in allen Organisationsverzeichnissen und persönliche Microsoft-Konten (z. B. Skype, Xbox, Outlook.com)* lauten. Es gibt keinen Mandantenadministrator, der der Daemonanwendung für persönliche Microsoft-Konten Einwilligung erteilen könnte. Sie müssen *accounts in my organization* (Konten in meiner Organisation) oder *accounts in any organization* (Konten in allen Organisationen) auswählen.
 
 Deshalb sollte die in der Anwendungskonfiguration angegebene Autorität über einen Mandanten verfügen (eine Mandanten-ID oder ein Domänennamen, die zu Ihrer Organisation gehören).
 
-Wenn Sie ein unabhängiger Softwarehersteller sind und ein Tool mit mehreren Mandanten bereitstellen möchten, können Sie `organizations` verwenden. Beachten Sie jedoch, dass Sie Ihren Kunden erklären müssen, wie diese die Administratoreinwilligung gewähren. Weitere Informationen finden Sie im Abschnitt zum [Anfordern der Einwilligung für einen gesamten Mandanten](v2-permissions-and-consent.md#requesting-consent-for-an-entire-tenant). Außerdem gibt es derzeit in MSAL eine Einschränkung, dass `organizations` nur zulässig ist, wenn die Clientanmeldeinformationen ein Anwendungsgeheimnis (kein Zertifikat) sind. Weitere Informationen finden Sie unter [MSAL.NET Fehler #891](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet/issues/891)
+Wenn Sie ein unabhängiger Softwarehersteller sind und ein mehrinstanzenfähiges Tool bereitstellen möchten, können Sie `organizations` verwenden. Beachten Sie jedoch, dass Sie Ihren Kunden auch erklären müssen, wie die Administratoreinwilligung erteilt wird. Weitere Informationen finden Sie im Abschnitt zum [Anfordern der Einwilligung für einen gesamten Mandanten](v2-permissions-and-consent.md#requesting-consent-for-an-entire-tenant). Außerdem gibt es derzeit in MSAL eine Einschränkung, dass `organizations` nur zulässig ist, wenn die Clientanmeldeinformationen ein Anwendungsgeheimnis (kein Zertifikat) sind. Weitere Informationen finden Sie unter [MSAL.NET Fehler #891](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet/issues/891)
 
 ## <a name="application-configuration-and-instantiation"></a>Konfiguration und Instanziierung von Anwendungen
 
@@ -86,6 +86,9 @@ app = ConfidentialClientApplicationBuilder.Create(config.ClientId)
     .WithAuthority(new Uri(config.Authority))
     .Build();
 ```
+
+Schließlich kann die vertrauliche Clientanwendung ihre Identität statt mit einem geheimen Clientschlüssel oder einem Zertifikat auch mithilfe von Clientassertionen nachweisen. Dieses erweiterte Szenario wird unter [Clientassertionen](msal-net-client-assertions.md) ausführlich erläutert.
+
 
 ### <a name="msalpython"></a>MSAL.Python
 

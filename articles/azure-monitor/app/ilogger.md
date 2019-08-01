@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 02/19/2019
 ms.reviewer: mbullwin
 ms.author: cithomas
-ms.openlocfilehash: 0691c35661a6d185a6aa5ed3383ad600653359d3
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 925264bb69093ab70465665e1d2da615a7a3e53d
+ms.sourcegitcommit: a6873b710ca07eb956d45596d4ec2c1d5dc57353
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67058596"
+ms.lasthandoff: 07/16/2019
+ms.locfileid: "68261753"
 ---
 # <a name="applicationinsightsloggerprovider-for-net-core-ilogger-logs"></a>ApplicationInsightsLoggerProvider für .NET Core-ILogger-Protokolle
 
@@ -287,7 +287,7 @@ Installieren Sie dieses zusätzliche Paket:
 <PackageReference Include="Microsoft.ApplicationInsights.WindowsServer.TelemetryChannel" Version="2.9.1" />
 ```
 
-Im folgenden Abschnitt wird gezeigt, wie die standardmäßige TelemetryConfiguration mit der **services.Configure<TelemetryConfiguration>()** -Methode außer Kraft gesetzt wird. In diesem Beispiel werden `ServerTelemetryChannel` und die Stichprobenentnahme eingerichtet. Der TelemetryConfiguration wird ein benutzerdefinierter ITelemetryInitializer hinzugefügt.
+Im folgenden Abschnitt wird gezeigt, wie die standardmäßige TelemetryConfiguration mit der **services.Configure\<TelemetryConfiguration>()** -Methode außer Kraft gesetzt wird. In diesem Beispiel werden `ServerTelemetryChannel` und die Stichprobenentnahme eingerichtet. Der TelemetryConfiguration wird ein benutzerdefinierter ITelemetryInitializer hinzugefügt.
 
 ```csharp
     // Create the DI container.

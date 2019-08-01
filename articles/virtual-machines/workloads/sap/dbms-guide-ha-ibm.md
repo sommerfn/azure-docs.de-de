@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 04/10/2019
 ms.author: juergent
-ms.openlocfilehash: 7464ea481d4c95856b78a83a875f2cd24c00705b
-ms.sourcegitcommit: 837dfd2c84a810c75b009d5813ecb67237aaf6b8
+ms.openlocfilehash: 754eb063f82344e72bece8fb0ac5708dbc8ab791
+ms.sourcegitcommit: a6873b710ca07eb956d45596d4ec2c1d5dc57353
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2019
-ms.locfileid: "67503324"
+ms.lasthandoff: 07/16/2019
+ms.locfileid: "68249135"
 ---
 [1928533]: https://launchpad.support.sap.com/#/notes/1928533
 [2015553]: https://launchpad.support.sap.com/#/notes/2015553
@@ -593,7 +593,7 @@ Migrieren Sie die Ressourcen zurück zu *azibmdb01*, und löschen Sie die Speich
 crm resource clear msl_<b>Db2_db2ptr_PTR</b>
 </code></pre>
 
-- **crm resource migrate \<res_name> <host>:** Erstellt Speicherorteinschränkungen und kann Probleme mit Übernahmen verursachen.
+- **crm resource migrate \<Ressourcenname> \<Host>:** Erstellt Speicherorteinschränkungen und kann Probleme mit Übernahmen verursachen.
 - **crm resource clear \<res_name>** : Löscht Speicherorteinschränkungen.
 - **crm resource cleanup \<res_name>** : Löscht alle Fehler der Ressource.
 

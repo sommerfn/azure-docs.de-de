@@ -9,12 +9,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 7/3/2019
 ms.author: dapine
-ms.openlocfilehash: 38addf4651373ba0f4df411325218a255c835508
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.openlocfilehash: 05284d434e6bd22fd50957f7cc5ec966f88a4fd4
+ms.sourcegitcommit: 920ad23613a9504212aac2bfbd24a7c3de15d549
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/10/2019
-ms.locfileid: "67717197"
+ms.lasthandoff: 07/15/2019
+ms.locfileid: "68229216"
 ---
 ## <a name="create-an-azure-container-instance-resource"></a>Erstellen einer Azure Container Instances-Ressource
 
@@ -24,8 +24,8 @@ ms.locfileid: "67717197"
 
     |Einstellung|Wert|
     |--|--|
-    |Abonnement|Wählen Sie Ihr Abonnement aus.|
-    |Ressourcengruppe|Wählen Sie die verfügbare Ressource aus, oder erstellen Sie eine neue wie z.B. `cognitive-services`.|
+    |Subscription|Wählen Sie Ihr Abonnement aus.|
+    |Resource group|Wählen Sie die verfügbare Ressource aus, oder erstellen Sie eine neue wie z.B. `cognitive-services`.|
     |Containername|Geben Sie einen Namen ein (beispielsweise `cognitive-container-instance`). Der Name muss aus Kleinbuchstaben bestehen.|
     |Location|Wählen Sie eine Region für die Bereitstellung aus.|
     |Imagetyp|`Public`|
@@ -39,12 +39,12 @@ ms.locfileid: "67717197"
     |--|--|
     |Ports|Legen Sie den TCP-Port auf `5000` fest. Macht den Container an Port 5000 verfügbar.|
 
-4. Geben Sie auf der Registerkarte **Erweitert** die erforderlichen **Umgebungsvariablen** für die [Abrechnungseinstellungen](https://docs.microsoft.com/azure/cognitive-services/text-analytics/how-tos/text-analytics-how-to-install-containers#billing-arguments) des Containers der ACI-Ressource ein:
+4. Geben Sie auf der Registerkarte **Erweitert** die erforderlichen **Umgebungsvariablen** für die Abrechnungseinstellungen des Containers der ACI-Ressource ein:
 
     | Schlüssel | Wert |
     |--|--|
-    |`apikey`|Wird von der Seite **Schlüssel** der Textanalyseressource kopiert. Es handelt sich um eine aus 32 alphanumerischen Zeichen bestehende Zeichenfolge ohne Leerzeichen oder Bindestriche, `xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx`.|
-    |`billing`|Wird von der Seite **Übersicht** der Textanalyseressource kopiert. Beispiel: `https://northeurope.api.cognitive.microsoft.com/text/analytics/v2.0`|
+    |`apikey`|Kopiert von der Seite **Schlüssel** der Ressource. Es handelt sich um eine aus 32 alphanumerischen Zeichen bestehende Zeichenfolge ohne Leerzeichen oder Bindestriche, `xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx`.|
+    |`billing`|Kopiert von der Seite **Übersicht** der Ressource.|
     |`eula`|`accept`|
 
 1. Klicken Sie auf **Überprüfen und erstellen**.

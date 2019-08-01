@@ -1,34 +1,35 @@
 ---
-title: Erstellen einer Klassifizierung – Custom Vision Service
-titlesuffix: Azure Cognitive Services
-description: Erfahren Sie, wie Sie mithilfe der Custom Vision-Website ein Bildklassifizierungsmodell erstellen.
+title: 'Schnellstart: Erstellen einer Klassifizierung – Custom Vision Service'
+titleSuffix: Azure Cognitive Services
+description: In dieser Schnellstartanleitung erfahren Sie, wie Sie mithilfe der Custom Vision-Website ein Bildklassifizierungsmodell erstellen.
 services: cognitive-services
 author: anrothMSFT
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: custom-vision
-ms.topic: conceptual
-ms.date: 04/03/2019
+ms.topic: quickstart
+ms.date: 07/12/2019
 ms.author: anroth
-ms.openlocfilehash: 3cb67b57f406774b4bcaf57c24b8e7741068ced6
-ms.sourcegitcommit: 600d5b140dae979f029c43c033757652cddc2029
+ms.openlocfilehash: dfc137375e35d0d13a34ff45b0c6639bcf6784df
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/04/2019
-ms.locfileid: "66497306"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68561064"
 ---
-# <a name="how-to-build-a-classifier-with-custom-vision"></a>Erstellen einer Klassifizierung mit Custom Vision
+# <a name="quickstart-how-to-build-a-classifier-with-custom-vision"></a>Schnellstart: Erstellen einer Klassifizierung mit Custom Vision
 
-Zur Verwendung des Custom Vision Service müssen Sie zuerst ein Klassifizierungsmodell erstellen. In diesem Leitfaden erfahren Sie, wie eine Klassifizierung über die Custom Vision-Website erstellt wird.
+In dieser Schnellstartanleitung erfahren Sie, wie eine Klassifizierung über die Custom Vision-Website erstellt wird. Nach der Erstellung eines Klassifizierungsmodells können Sie den Custom Vision Service für die Bildklassifizierung verwenden.
+
+Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) erstellen, bevor Sie beginnen.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-- Ein gültiges Azure-Abonnement. Sie können [kostenlos ein Konto erstellen](https://azure.microsoft.com/free/).
 - Eine Reihe von Bildern zum Trainieren Ihrer Klassifizierung. Tipps zum Auswählen von Bildern finden Sie unten.
 
-
 ## <a name="create-custom-vision-resources-in-the-azure-portal"></a>Erstellen von Custom Vision-Ressourcen im Azure-Portal
-Für die Verwendung des Custom Vision Service müssen Sie im [Azure-Portal](https://portal.azure.com/?microsoft_azure_marketplace_ItemHideKey=microsoft_azure_cognitiveservices_customvision#create/Microsoft.CognitiveServicesCustomVision) Custom Vision-Trainings- und -Vorhersageressourcen erstellen. Bei diesem Vorgang wird sowohl eine Trainings- als auch eine Vorhersageressource erstellt. 
+
+Für die Verwendung des Custom Vision Service müssen Sie im Azure-Portal Custom Vision-Trainingsressourcen und -Vorhersageressourcen erstellen. Füllen Sie das Dialogfenster auf der Seite [Custom Vision erstellen](https://portal.azure.com/?microsoft_azure_marketplace_ItemHideKey=microsoft_azure_cognitiveservices_customvision#create/Microsoft.CognitiveServicesCustomVision) aus, um sowohl eine Trainings- als auch eine Vorhersageressource zu erstellen. 
 
 ## <a name="create-a-new-project"></a>Erstellen eines neuen Projekts
 
@@ -62,21 +63,7 @@ Navigieren Sie im Webbrowser zur [Custom Vision-Webseite](https://customvision.a
 
 ## <a name="choose-training-images"></a>Auswählen von Trainingsbildern
 
-Es wird empfohlen, im ersten Trainingssatz mindestens 30 Bilder pro Tag zu verwenden. Sie sollten auch einige zusätzliche Bilder sammeln, um Ihr Modell zu testen, nachdem es trainiert wurde.
-
-Verwenden Sie zum effektiven Trainieren Ihres Modells Bilder mit optischer Vielfalt. Wählen Sie Bilder aus, die sich nach folgenden Aspekten unterscheiden:
-* Kamerawinkel
-* Belichtung
-* background
-* Visueller Stil
-* Einzelne/gruppierte Motive
-* size
-* type
-
-Stellen Sie außerdem sicher, dass alle Ihre Trainingsbilder die folgenden Kriterien erfüllen:
-* JPG-, PNG- oder BMP-Format
-* Höchstens 6 MB groß (4 MB für Vorhersagebilder)
-* Mindestens 256 Pixel an der kürzesten Seite; kürzere Bilder werden von Custom Vision Service automatisch hochskaliert.
+[!INCLUDE [choose training images](includes/choose-training-images.md)]
 
 ## <a name="upload-and-tag-images"></a>Hochladen und Kennzeichnen von Bildern
 
@@ -118,9 +105,7 @@ Nach Abschluss des Trainings wird die Leistung des Modells geschätzt und angeze
 
 ### <a name="probability-threshold"></a>Wahrscheinlichkeitsschwellenwert
 
-Beachten Sie den Schieberegler für den **Wahrscheinlichkeitsschwellenwert** im linken Bereich der Registerkarte **Leistung**. Dies ist der Schwellenwert für eine vorhergesagte Wahrscheinlichkeit, die bei der Berechnung von Genauigkeit und Trefferquote als richtig gelten soll.
-
-Das Interpretieren von Vorhersageaufrufen mit einem hohen Wahrscheinlichkeitsschwellenwert gibt tendenziell Ergebnisse mit hoher Genauigkeit zurück. Dies geht allerdings zu Lasten der Trefferquote (die gefunden Klassifizierungen sind richtig, viele wurden jedoch nicht gefunden). Ein niedriger Wahrscheinlichkeitsschwellenwert bewirkt das Gegenteil (die meisten der tatsächlichen Klassifizierungen wurden gefunden, aber der Satz enthält falsch positive Ergebnisse). In diesem Sinne empfiehlt es sich, den Wahrscheinlichkeitsschwellenwert gemäß den spezifischen Anforderungen Ihres Projekts festzulegen. Später sollten Sie auf Clients den gleichen Wahrscheinlichkeitsschwellenwert als Filter festlegen, wenn Vorhersageergebnisse vom Modell empfangen werden.
+[!INCLUDE [probability threshold](includes/probability-threshold.md)]
 
 ## <a name="manage-training-iterations"></a>Verwalten von Trainingsiterationen
 
@@ -128,7 +113,8 @@ Bei jedem Trainingsvorgang für Ihre Klassifizierung erstellen Sie eine neue _It
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-In diesem Handbuch haben Sie erfahren, wie ein Bildklassifizierungsmodell mithilfe der Custom Vision-Website erstellt und trainiert wird. Informieren Sie sich als Nächstes über den iterativen Prozess zur Verbesserung Ihres Modells.
+In dieser Schnellstartanleitung haben Sie erfahren, wie ein Bildklassifizierungsmodell mithilfe der Custom Vision-Website erstellt und trainiert wird. Informieren Sie sich als Nächstes über den iterativen Prozess zur Verbesserung Ihres Modells.
 
-[Testen und erneutes Trainieren eines Modells mit Custom Vision Service](test-your-model.md)
+> [!div class="nextstepaction"]
+> [Testen und erneutes Trainieren eines Modells mit Custom Vision Service](test-your-model.md)
 

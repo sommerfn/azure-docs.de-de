@@ -6,12 +6,12 @@ ms.service: fxt-edge-filer
 ms.topic: conceptual
 ms.date: 06/20/2019
 ms.author: v-erkell
-ms.openlocfilehash: e7395c69d99884a5c662e545a69778ed195aec55
-ms.sourcegitcommit: 5bdd50e769a4d50ccb89e135cfd38b788ade594d
+ms.openlocfilehash: e6afd90c4e5a1b0759b3de7789ec37db4c04f2c7
+ms.sourcegitcommit: 441e59b8657a1eb1538c848b9b78c2e9e1b6cfd5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/03/2019
-ms.locfileid: "67543102"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67827459"
 ---
 # <a name="monitor-azure-fxt-edge-filer-hardware-status"></a>Überwachen des Azure FXT Edge Filer-Hardwarestatus
 
@@ -58,7 +58,7 @@ Auf dem linken Kontrollfeld vorn befinden sich verschiedene LED-Statusanzeigen (
 
 Die Statusanzeigen auf der linken Seite leuchten gelb, wenn in diesem System ein Fehler vorliegt. Die folgende Tabelle beschreibt mögliche Ursachen und Lösungen für die Fehler. 
 
-Wenn der Fehler nach dem Ausprobieren dieser Lösungen weiterhin besteht, wenden Sie sich an den Support, um Hilfe zu erhalten. 
+Wenn der Fehler nach dem Ausprobieren dieser Lösungen weiterhin besteht, [wenden Sie sich an den Support](fxt-support-ticket.md), um Hilfe zu erhalten. 
 
 | Symbol | BESCHREIBUNG | Fehlerzustand | Lösungsvorschläge |
 |----------------|---------------|--------------------|----------------------|
@@ -79,7 +79,7 @@ Drücken Sie die Systemzustands- und ID-Taste, um zwischen dem System-ID-Modus u
 |-------------------------------------------|-----------------------------------------------|
 | Leuchtet blau | Normalbetrieb: das System eingeschaltet, funktioniert ordnungsgemäß, und der System-ID-Modus ist nicht aktiv. <br/>Drücken Sie die Systemzustands- und ID-Taste, um in den System-ID-Modus zu wechseln. |
 | Blinkt blau | System-ID-Modus ist aktiv. Drücken Sie die Systemzustands- und System-ID-Taste, um in den Systemzustandsmodus zu wechseln. |
-| Leuchtet gelb | Das System befindet sich im Ausfallsicherheitsmodus. Falls das Problem weiterhin besteht, wenden Sie sich an den Microsoft-Kundendienst und -Support. |
+| Leuchtet gelb | Das System befindet sich im Ausfallsicherheitsmodus. Falls das Problem weiterhin besteht, [wenden Sie sich an den Microsoft-Kundendienst und -Support](fxt-support-ticket.md). |
 | Blinkt gelb | Systemfehler. Überprüfen Sie das Systemereignisprotokoll auf bestimmte Fehlermeldungen. Informationen zu den Ereignis- und Fehlermeldungen, die von der Systemfirmware und Agents zur Überwachung von Systemkomponenten generiert werden, finden Sie auf der Fehlercode-Suchseite unter qrl.dell.com. |
 
 

@@ -8,15 +8,18 @@ ms.author: spelluru
 ms.date: 07/09/2019
 ms.topic: article
 ms.service: event-hubs
-ms.openlocfilehash: f179687b0983e145244e228a3d3b06b4eabead48
-ms.sourcegitcommit: dad277fbcfe0ed532b555298c9d6bc01fcaa94e2
+ms.openlocfilehash: 003e68b36ff71fb2991cf087ef33f72aba73a8be
+ms.sourcegitcommit: b2db98f55785ff920140f117bfc01f1177c7f7e2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/10/2019
-ms.locfileid: "67723326"
+ms.lasthandoff: 07/16/2019
+ms.locfileid: "68233957"
 ---
-# <a name="process-data-from-your-event-hub-using-azure-stream-analytics"></a>Verarbeiten von Daten aus einem Event Hub mit Azure Stream Analytics
+# <a name="process-data-from-your-event-hub-using-azure-stream-analytics-preview"></a>Verarbeiten von Daten aus einem Event Hub mit Azure Stream Analytics (Vorschau)
 Der Azure Stream Analytics-Dienst vereinfacht das Erfassen, Verarbeiten und Analysieren von Streamingdaten von Azure Event Hubs und ermöglicht damit Erkenntnisse für Aktionen in Echtzeit. Mit dieser Integration können Sie schnell eine Analysepipeline über einen heißen Pfad erstellen. Sie können im Azure-Portal eingehende Daten visualisieren und eine Stream Analytics-Abfrage schreiben. Wenn die Abfrage fertig ist, können Sie sie mit nur wenigen Klicks in die Produktion verschieben. 
+
+> [!NOTE]
+> Diese Funktion steht derzeit als Vorschau zur Verfügung. 
 
 ## <a name="key-benefits"></a>Hauptvorteile
 Hier sind die wichtigsten Vorteile der Integration von Azure Event Hubs mit Azure Stream Analytics: 
@@ -37,7 +40,7 @@ Hier sind die wichtigsten Vorteile der Integration von Azure Event Hubs mit Azur
 1. Daraufhin wird eine Abfrageseite mit Werten angezeigt, die bereits für die folgenden Felder festgelegt wurden:
     1. Ihr **Event Hub** hat eine Eingabe für die Abfrage.
     1. Ein Beispiel, das eine **SQL-Abfrage** mit SELECT-Anweisung ist. 
-    1. Ein Alias für die **Ausgabe** ermöglicht das Verweisen auf die Testergebnisse. 
+    1. Ein Alias für die **Ausgabe** ermöglicht das Verweisen auf Ihre Abfragetestergebnisse. 
 
         ![Abfrage-Editor](./media/process-data-azure-stream-analytics/query-editor.png)
         

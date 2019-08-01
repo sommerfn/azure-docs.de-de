@@ -3,16 +3,17 @@ title: Beschränken des Zugriffs auf eine Azure-Containerregistrierung auf ein v
 description: Erlauben Sie den Zugriff auf eine Azure-Containerregistrierung nur von Ressourcen in einem virtuellen Azure-Netzwerk oder von öffentlichen IP-Adressbereichen.
 services: container-registry
 author: dlepow
+manager: gwallace
 ms.service: container-registry
 ms.topic: article
 ms.date: 07/01/2019
 ms.author: danlep
-ms.openlocfilehash: 06e45127f940e01de5f3ceeefc354014a88014db
-ms.sourcegitcommit: 6cb4dd784dd5a6c72edaff56cf6bcdcd8c579ee7
+ms.openlocfilehash: 2030496548df312b4f4cfab60c216d5f332c7ac2
+ms.sourcegitcommit: f5075cffb60128360a9e2e0a538a29652b409af9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2019
-ms.locfileid: "67514395"
+ms.lasthandoff: 07/18/2019
+ms.locfileid: "68310392"
 ---
 # <a name="restrict-access-to-an-azure-container-registry-using-an-azure-virtual-network-or-firewall-rules"></a>Beschränken des Zugriffs auf eine Azure-Containerregistrierung mithilfe eines virtuellen Azure-Netzwerks oder mit Firewallregeln
 
@@ -39,6 +40,14 @@ In diesem Artikel werden zwei Szenarios vorgestellt, bei denen mithilfe von Netz
 * Um in diesem Artikel die Schritte an der Azure-Befehlszeilenschnittstelle (CLI) ausführen zu können, ist Azure CLI-Version 2.0.58 oder höher erforderlich. Informationen zum Durchführen einer Installation oder eines Upgrades finden Sei bei Bedarf unter [Installieren der Azure CLI][azure-cli].
 
 * Wenn Sie noch keine Containerregistrierung haben, können Sie eine Registrierung erstellen (Premium-SKU erforderlich) und mithilfe von Push ein Beispielimage wie `hello-world` vom Docker-Hub übertragen. Zum Erstellen einer Registrierung können Sie z.B. das [Azure-Portal][quickstart-portal] or the [Azure CLI][quickstart-cli] verwenden. 
+
+* Wenn Sie den Registrierungszugriff mithilfe eines virtuellen Netzwerks in einem anderen Azure-Abonnement einschränken möchten, müssen Sie den Ressourcenanbieter für Azure Container Registry in diesem Abonnement registrieren. Beispiel:
+
+  ```azurecli
+  az account set --subscription <Name or ID of subscription of virtual network>
+
+  az provider register --namespace Microsoft.ContainerRegistry
+  ``` 
 
 ## <a name="about-network-rules-for-a-container-registry"></a>Informationen zu Netzwerkregeln für eine Containerregistrierung
 

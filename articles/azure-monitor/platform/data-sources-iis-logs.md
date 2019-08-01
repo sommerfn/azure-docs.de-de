@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 11/28/2018
 ms.author: bwren
-ms.openlocfilehash: 5843ee11a615a2780e9fea2d89f7b18fb45706d8
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 05d9dc8f676589dcb301c19b0a2e80e9fd4c1fa0
+ms.sourcegitcommit: a6873b710ca07eb956d45596d4ec2c1d5dc57353
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65604364"
+ms.lasthandoff: 07/16/2019
+ms.locfileid: "68249740"
 ---
 # <a name="collect-iis-logs-in-azure-monitor"></a>Sammeln von IIS-Protokollen in Azure Monitor
 IIS (Internet Information Services, Internetinformationsdienste) speichern Benutzeraktivitäten in Protokolldateien, die von Azure Monitor gesammelt und als [Protokolldaten](data-platform.md) gespeichert werden können.
@@ -34,7 +34,7 @@ IIS-Protokolle können in Azure Monitor über das Menü [Erweiterte Einstellunge
 
 
 ## <a name="data-collection"></a>Datensammlung
-Azure Monitor sammelt jedes Mal IIS-Protokolleinträge aus jedem Agent, wenn das Protokoll geschlossen und ein neues Protokoll erstellt wird. Die Häufigkeit wird über die Einstellung für den **Rolloverzeitplan der Protokolldatei** für die IIS-Website gesteuert, wobei einmal täglich als Standardeinstellung festgelegt ist. Wenn die Einstellung beispielsweise auf **Stündlich** festgelegt ist, erfasst Azure Monitor das Protokoll jede Stunde.  Wenn die Einstellung auf **Täglich** festgelegt ist, erfasst Azure Monitor das Protokoll alle 24 Stunden.
+Azure Monitor erfasst jedes Mal IIS-Protokolleinträge von allen Agents, wenn sich der Protokollzeitstempel ändert oder eine neue Datei erstellt wird. Das Protokoll wird alle 5 Minuten gelesen. Die Häufigkeit der Erstellung neuer Dateien wird mit der Einstellung **Log File Rollover Schedule** (Rolloverzeitplan der Protokolldatei) für die IIS-Website gesteuert, wobei einmal täglich als Standardeinstellung festgelegt ist. Wenn IIS den Zeitstempel aus irgendeinem Grund nicht vor dem Rolloverzeitpunkt aktualisiert, erfasst Azure Monitor das Protokoll stündlich, wenn die Einstellung **Stündlich** festgelegt ist. Wenn die Einstellung auf **Täglich** festgelegt ist, erfasst Azure Monitor das Protokoll alle 24 Stunden.
 
 
 ## <a name="iis-log-record-properties"></a>Eigenschaften der IIS-Protokolldatensätze

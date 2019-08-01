@@ -15,12 +15,12 @@ ms.date: 04/01/2019
 ms.author: mimart
 ms.reviewer: arvinh
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6bf265f51f2fea16f90dd0bcf2891bd9bed5cef8
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: b994078350aec5657659f8835d228eb907606bb8
+ms.sourcegitcommit: 47ce9ac1eb1561810b8e4242c45127f7b4a4aa1a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65963578"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67807635"
 ---
 # <a name="managing-user-account-provisioning-for-enterprise-apps-in-the-azure-portal"></a>Verwalten der Benutzerkontobereitstellung für Unternehmens-Apps im Azure-Portal
 
@@ -31,14 +31,11 @@ In diesem Artikel wird beschrieben, wie das [Azure-Portal](https://portal.azure.
 Im Azure Active Directory-Portal können Sie alle Anwendungen in einem Verzeichnis anzeigen und verwalten, die für einmaliges Anmelden konfiguriert sind. Unternehmens-Apps sind Apps, die innerhalb Ihrer Organisation bereitgestellt und verwendet werden. Führen Sie zum Anzeigen und Verwalten Ihrer Unternehmens-Apps diese Schritte aus:
 
 1. Öffnen Sie das [Azure Active Directory-Portal](https://aad.portal.azure.com).
-
 1. Wählen Sie im linken Bereich die Option **Unternehmensanwendungen** aus. Eine Liste aller konfigurierten Apps wird angezeigt, einschließlich Apps, die aus dem Katalog hinzugefügt wurden.
-
 1. Wählen Sie eine beliebige App aus, um ihren Ressourcenbereich zu laden, in dem Sie Berichte anzeigen und App-Einstellungen verwalten können.
-
 1. Wählen Sie **Bereitstellung** aus, um die Einstellungen für die Bereitstellung von Benutzerkonten für die ausgewählte App zu verwalten.
 
-   ![Bereich für Anwendungsressourcen](./media/configure-automatic-user-provisioning-portal/enterprise-apps-provisioning.png)
+   ![Bildschirm „Bereitstellung“ zum Verwalten der Einstellungen für die Bereitstellung von Benutzerkonten](./media/configure-automatic-user-provisioning-portal/enterprise-apps-provisioning.png)
 
 ## <a name="provisioning-modes"></a>Bereitstellungsmodi
 
@@ -68,17 +65,17 @@ Erweitern Sie **Zuordnungen**, um die Benutzerattribute anzuzeigen und zu bearbe
 
 Zwischen Azure AD-Benutzerobjekten und Benutzerobjekten der einzelnen SaaS-Apps ist eine vorkonfigurierte Gruppe von Zuordnungen vorhanden. Einige Apps verwalten andere Objekttypen, z. B. Gruppen oder Kontakte. Wählen Sie in der Tabelle eine Zuordnung aus, um den Zuordnungs-Editor auf der rechten Seite zu öffnen, in dem Sie diese anzeigen und anpassen können.
 
-![Bereich für Anwendungsressourcen](./media/configure-automatic-user-provisioning-portal/enterprise-apps-provisioning-mapping.png)
+![Zeigt den Bildschirm „Attributzuordnung“](./media/configure-automatic-user-provisioning-portal/enterprise-apps-provisioning-mapping.png)
 
 Unterstützte Anpassungen umfassen:
 
 * Aktivieren und Deaktivieren von Zuordnungen für bestimmte Objekte, z. B. das Azure AD-Benutzerobjekt an das Benutzerobjekt der SaaS-App.
 * Bearbeiten der Attribute, die vom Azure AD-Benutzerobjekt an das Benutzerobjekt der App übermittelt werden Weitere Informationen zur Attributzuordnung finden Sie unter [Grundlegendes zu Attributzuordnungstypen](customize-application-attributes.md#understanding-attribute-mapping-types).
-* Filtern Sie die Bereitstellungsaktionen, die Azure AD für die Zielanwendung ausführt. Anstatt eine vollständige Synchronisierung von Objekten durch Azure AD zuzulassen, können Sie die ausgeführten Aktionen beschränken. 
+* Filtern Sie die Bereitstellungsaktionen, die Azure AD für die Zielanwendung ausführt. Anstatt eine vollständige Synchronisierung von Objekten durch Azure AD zuzulassen, können Sie die ausgeführten Aktionen beschränken.
 
   Beispiel: Wenn Sie nur **Aktualisieren** auswählen, aktualisiert Azure AD nur vorhandene Benutzerkonten in einer Anwendung, ohne neue zu erstellen. Wird nur **Erstellen** ausgewählt, erstellt Azure nur neue Benutzerkonten, ohne vorhandene Konten zu aktualisieren. Dieses Feature ermöglicht Administratoren das Erstellen verschiedener Zuordnungen für Workflows zur Erstellung und Aktualisierung von Konten.
 
-* Hinzufügen einer neuen Attributzuordnung. Klicken Sie unten im Bereich **Attributzuordnung** auf **Neue Zuordnung hinzufügen**. Füllen Sie das Formular **Attribut bearbeiten** aus, und klicken Sie auf **OK**, um die neue Zuordnung der Liste hinzuzufügen. 
+* Hinzufügen einer neuen Attributzuordnung. Klicken Sie unten im Bereich **Attributzuordnung** auf **Neue Zuordnung hinzufügen**. Füllen Sie das Formular **Attribut bearbeiten** aus, und klicken Sie auf **OK**, um die neue Zuordnung der Liste hinzuzufügen.
 
 ### <a name="settings"></a>Einstellungen
 

@@ -10,12 +10,12 @@ ms.reviewer: klam, LADocs
 ms.topic: conceptual
 ms.date: 07/05/2019
 tags: connectors
-ms.openlocfilehash: fa5fd3ef8b144826468f56ea2a14be592cef5dc1
-ms.sourcegitcommit: 5bdd50e769a4d50ccb89e135cfd38b788ade594d
+ms.openlocfilehash: 04d9beaef29e76d40c0bb3f9dcf0bb6f4fe3152d
+ms.sourcegitcommit: b2db98f55785ff920140f117bfc01f1177c7f7e2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/03/2019
-ms.locfileid: "67541309"
+ms.lasthandoff: 07/16/2019
+ms.locfileid: "68234364"
 ---
 # <a name="call-http-or-https-endpoints-by-using-azure-logic-apps"></a>Aufrufen von HTTP- oder HTTPS-Endpunkten mit Azure Logic Apps
 
@@ -88,6 +88,52 @@ Diese integrierte Aktion führt einen HTTP-Aufruf der angegebenen URL für einen
 1. Öffnen Sie zum Hinzufügen weiterer verfügbarer Parameter die Liste **Neuen Parameter hinzufügen**, und wählen Sie die gewünschten Parameter aus.
 
 1. Speichern Sie die Logik-App unbedingt, wenn Sie fertig sind. Wählen Sie auf der Symbolleiste des Designers **Speichern** aus.
+
+## <a name="content-with-multipartform-data-type"></a>Inhalt des Typs „multipart/form-data“
+
+Für die Verarbeitung von Inhalt mit dem Typ `multipart/form-data` in HTTP-Anforderung können Sie ein JSON-Objekt hinzufügen, das die Attribute `$content-type` und `$multipart` im HTTP-Anforderungstext enthält, indem Sie dieses Format verwenden.
+
+```json
+"body": {
+   "$content-type": "multipart/form-data",
+   "$multipart": [
+      {
+         "body": "<output-from-trigger-or-previous-action>",
+         "headers": {
+            "Content-Disposition": "form-data; name=file; filename=<file-name>"
+         }
+      }
+   ]
+}
+```
+
+Angenommen, Sie verfügen über eine Logik-App, die eine HTTP POST-Anforderung für eine Excel-Datei an eine Website sendet, indem sie die API der Website nutzt, die den Typ `multipart/form-data` unterstützt. Diese Aktion könnte folgenderweise aussehen:
+
+![Mehrteilige Formulardaten](./media/connectors-native-http/http-action-multipart.png)
+
+Das folgende Beispiel entspricht der JSON-Definition der HTTP-Aktion in der zugrundeliegenden Workflowdefinition:
+
+```json
+{
+   "HTTP_action": {
+      "body": {
+         "$content-type": "multipart/form-data",
+         "$multipart": [
+            {
+               "body": "@trigger()",
+               "headers": {
+                  "Content-Disposition": "form-data; name=file; filename=myExcelFile.xlsx"
+               }
+            }
+         ]
+      },
+      "method": "POST",
+      "uri": "https://finance.contoso.com"
+   },
+   "runAfter": {},
+   "type": "Http"
+}
+```
 
 ## <a name="connector-reference"></a>Connector-Referenz
 

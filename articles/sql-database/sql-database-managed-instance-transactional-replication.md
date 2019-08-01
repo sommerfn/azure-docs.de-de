@@ -12,12 +12,12 @@ ms.author: mathoma
 ms.reviewer: carlrab
 manager: craigg
 ms.date: 02/08/2019
-ms.openlocfilehash: bcbdd5fd8395cb0a47038595127e9b20118bdf1b
-ms.sourcegitcommit: 72f1d1210980d2f75e490f879521bc73d76a17e1
+ms.openlocfilehash: 1c62fb466774a3599972d6a9cc340cca300eee59
+ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/14/2019
-ms.locfileid: "67147704"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67696189"
 ---
 # <a name="transactional-replication-with-single-pooled-and-instance-databases-in-azure-sql-database"></a>Transaktionsreplikation mit Einzeldatenbanken, Pooldatenbanken und Instanzdatenbanken in Azure SQL-Datenbank
 
@@ -50,7 +50,7 @@ Der **Verteiler** ist eine Instanz oder ein Server, die bzw. der Änderungen an 
 
 Der **Abonnent** ist eine Instanz oder ein Server, die bzw. der die auf dem Herausgeber vorgenommenen Änderungen erhält. Abonnenten können Einzeldatenbanken, Pooldatenbanken und Instanzdatenbanken in Azure SQL-Datenbank- oder SQL Server-Datenbanken sein. Ein Abonnent einer Einzel- oder Pooldatenbank muss als Push-Abonnent konfiguriert sein. 
 
-| Rolle | Einzel- und Pooldatenbanken | Instanzdatenbanken |
+| Role | Einzel- und Pooldatenbanken | Instanzdatenbanken |
 | :----| :------------- | :--------------- |
 | **Herausgeber** | Nein | Ja | 
 | **Verteiler** | Nein | Ja|
@@ -139,7 +139,7 @@ In dieser Konfiguration ist eine Azure SQL-Datenbank (Singleton, in einem Pool z
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-1. [Konfigurieren Sie Transaktionsreplikation für eine verwaltete Instanz](replication-with-sql-database-managed-instance.md). 
+1. [Konfigurieren Sie die Replikation zwischen zwei verwalteten Instanzen.](replication-with-sql-database-managed-instance.md) 
 1. [Erstellen Sie eine Veröffentlichung](https://docs.microsoft.com/sql/relational-databases/replication/publish/create-a-publication).
 1. [Erstellen Sie ein Push-Abonnement](https://docs.microsoft.com/sql/relational-databases/replication/create-a-push-subscription) mit dem Servernamen von Azure SQL-Datenbank als Abonnent (z. B. `N'azuresqldbdns.database.windows.net`) und dem Namen der Azure SQL-Datenbank als Zieldatenbank (z. B. **AdventureWorks**). )
 

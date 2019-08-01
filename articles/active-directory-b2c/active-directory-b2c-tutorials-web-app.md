@@ -10,12 +10,12 @@ ms.custom: mvc
 ms.topic: tutorial
 ms.service: active-directory
 ms.subservice: B2C
-ms.openlocfilehash: 041bcf32035ab6cdc3ee4df06050f75186759f5e
-ms.sourcegitcommit: 64798b4f722623ea2bb53b374fb95e8d2b679318
+ms.openlocfilehash: bcfd1ef02c68de7709cb8642b94f23a6884ea156
+ms.sourcegitcommit: c72ddb56b5657b2adeb3c4608c3d4c56e3421f2c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67835645"
+ms.lasthandoff: 07/24/2019
+ms.locfileid: "68464762"
 ---
 # <a name="tutorial-enable-authentication-in-a-web-application-using-azure-active-directory-b2c"></a>Tutorial: Aktivieren der Authentifizierung in einer Webanwendung mit Azure Active Directory B2C
 
@@ -64,8 +64,9 @@ Die Beispielprojektmappe enthält zwei Projekte:
 Sie ändern das Beispiel, um die in Ihrem Mandanten registrierte Anwendung zu verwenden. Dazu benötigen Sie die Anwendungs-ID und den Anwendungsschlüssel, den bzw. die Sie zuvor notiert haben. Außerdem konfigurieren Sie die von Ihnen erstellten Benutzerflows. Das Beispiel definiert die Konfigurationswerte als Einstellungen in der Datei „Web.config“. So ändern Sie die Einstellungen:
 
 1. Öffnen Sie die Projektmappe **B2C-WebAPI-DotNet** in Visual Studio.
-2. Öffnen Sie im Projekt **TaskWebApp** die Datei **Web.config**. Ersetzen Sie den Wert für `ida:Tenant` durch den Namen des von Ihnen erstellten Mandanten. Ersetzen Sie den Wert für `ida:ClientId` durch die notierte Anwendungs-ID. Ersetzen Sie den Wert für `ida:ClientSecret` durch den notierten Schlüssel.
+2. Öffnen Sie im Projekt **TaskWebApp** die Datei **Web.config**. Ersetzen Sie den Wert für `ida:Tenant` durch den Namen des von Ihnen erstellten Mandanten. Ersetzen Sie den Wert für `ida:ClientId` durch die notierte Anwendungs-ID. Ersetzen Sie den Wert für `ida:ClientSecret` durch den notierten Schlüssel. Sie müssen den geheimen Clientschlüssel mit XML codieren, bevor Sie ihn der Datei „web.config“ hinzufügen.
 3. Ersetzen Sie in der Datei **Web.config** den Wert für `ida:SignUpSignInPolicyId` durch `b2c_1_signupsignin1`. Ersetzen Sie den Wert für `ida:EditProfilePolicyId` durch `b2c_1_profileediting1`. Ersetzen Sie den Wert für `ida:ResetPasswordPolicyId` durch `b2c_1_passwordreset1`.
+
 
 ## <a name="run-the-sample"></a>Ausführen des Beispiels
 

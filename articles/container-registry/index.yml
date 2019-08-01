@@ -5,14 +5,12 @@ metadata:
   title: Dokumentation für Azure Container Registry – Tutorials | Microsoft-Dokumentation
   description: 'Mit Azure Container Registry können Sie Images für alle Arten von Containerbereitstellungen erstellen, speichern und verwalten. Anhand unserer Schnellstarts, Tutorials und Beispiele wird beschrieben, wie Sie Azure Container Registry verwenden.'
   services: container-registry
-  author: czeumault
-  manager: carolz
+  author: georgewallace
+  manager: gwallace
   ms.service: container-registry
-  ms.tgt_pltfrm: na
-  ms.devlang: na
   ms.topic: landing-page
   ms.date: 07/26/2017
-  ms.author: carolz
+  ms.author: gwallace
 abstract:
   description: 'Mit Azure Container Registry können Sie Images für alle Arten von Containerbereitstellungen erstellen, speichern und verwalten. Anhand unserer Schnellstarts, Tutorials und Beispiele wird beschrieben, wie Sie Azure Container Registry verwenden.'
 sections:

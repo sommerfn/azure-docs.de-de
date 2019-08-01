@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 04/15/2019
 ms.author: ramamill
-ms.openlocfilehash: 7fab3b05429e430b444c2a14213c524fbf19a01d
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 66022b5e4885c515bd6117f9a44b8108ff84ae5c
+ms.sourcegitcommit: a6873b710ca07eb956d45596d4ec2c1d5dc57353
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66171669"
+ms.lasthandoff: 07/16/2019
+ms.locfileid: "68250098"
 ---
 # <a name="manage-the-configuration-server-for-vmware-vm-disaster-recovery"></a>Verwalten des Konfigurationsservers für die Notfallwiederherstellung von virtuellen VMware-Computern
 
@@ -109,7 +109,7 @@ Sie können den Konfigurationsserver bei Bedarf im selben Tresor erneut registri
    ```
 
     >[!NOTE]
-    >Um das **neueste Zertifikat** per Pull vom Konfigurationsserver auf den Prozessserver für die horizontale Skalierung abzurufen, führen Sie den folgenden Befehl aus: *"<Installation Drive\Microsoft Azure Site Recovery\agent\cdpcli.exe>" --registermt*
+    >Um das **neueste Zertifikat** vom Konfigurationsserver auf den Prozessserver für die horizontale Skalierung zu pullen, führen Sie den folgenden Befehl aus: *„\<Installationslaufwerk\Microsoft Azure Site Recovery\agent\cdpcli.exe>“ --registermt*.
 
 8. Starten Sie den OBEngine-Dienst neu, indem Sie den folgenden Befehl ausführen.
    ```
@@ -183,7 +183,7 @@ Führen Sie die Installationsdatei wie folgt aus:
 
 ### <a name="parameters"></a>Parameter
 
-|Parametername| Type | BESCHREIBUNG| Werte|
+|Parametername| type | BESCHREIBUNG| Werte|
 |-|-|-|-|
 | /ServerMode|Erforderlich|Gibt an, ob die Installation sowohl den Konfigurations- als auch den Prozessserver oder nur den Prozessserver umfassen soll.|CS<br>PS|
 |/InstallLocation|Erforderlich|Der Ordner, in dem die Komponenten installiert werden.| Beliebiger Ordner auf dem Computer|

@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 296486755f0935e4eb8dcdb663da46ef60ef38bc
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: 6fa2254ff3223be4312f4e9b3db4d9d83da443c0
+ms.sourcegitcommit: f5075cffb60128360a9e2e0a538a29652b409af9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67441012"
+ms.lasthandoff: 07/18/2019
+ms.locfileid: "68311323"
 ---
 # <a name="planning-a-cloud-based-azure-multi-factor-authentication-deployment"></a>Planen einer cloudbasierten Azure Multi-Factor Authentication-Bereitstellung
 
@@ -180,8 +180,7 @@ Get-MsolUser -All | Disable-MFA -KeepMethods
 # Enforce MFA for all users
 Get-MsolUser -All | Set-MfaState -State Enforced
 
-# Wrapper to disable MFA with the option to keep the MFA
-# methods (to avoid having to proof-up again later)
+# Wrapper to disable MFA with the option to keep the MFA methods (to avoid having to proof-up again later)
 function Disable-MFA {
 
     [CmdletBinding()]
@@ -272,7 +271,7 @@ Einige ältere und lokale Anwendungen, die sich nicht direkt bei Azure AD authen
 
 * Ältere lokale Anwendungen, die den Anwendungsproxy verwenden müssen.
 * Lokale RADIUS-Anwendungen, die den MFA-Adapter mit NPS-Server verwenden müssen.
-* Lokale AD FS-Anwendungen, die den MFA-Adapter mit AD FS 2016 verwenden müssen.
+* Lokale AD FS-Anwendungen, die den MFA-Adapter mit AD FS 2016 oder höher verwenden müssen.
 
 Anwendungen, die sich direkt bei Azure AD authentifizieren und die moderne Authentifizierung nutzen (WS-Fed, SAML, OAuth, OpenID Connect) können die Richtlinien für bedingten Zugriff direkt verwenden.
 
@@ -322,13 +321,13 @@ Anders als mit AD FS unter Windows Server 2012 R2 wird der AD FS 2016 Azure MFA-
 
 Wenn die Verwendung von Azure MFA mit AD FS 2016 und der Zielanwendung der Richtlinie für bedingten Zugriff unterliegt, sind zusätzliche Überlegungen erforderlich:
 
-* Bedingter Zugriff ist verfügbar, wenn die Anwendung eine Azure AD vertrauende Seite ist, im Verbund mit AD FS 2016.
-* Bedingter Zugriff ist nicht verfügbar, wenn die Anwendung eine AD FS 2016 vertrauende Seite ist und von AD FS 2016 verwaltet wird oder damit im Verbund ist.
-* Bedingter Zugriff ist auch nicht verfügbar, wenn AD FS 2016 dafür konfiguriert ist, Azure MFA als primäre Authentifizierungsmethode zu verwenden.
+* Bedingter Zugriff ist verfügbar, wenn die Anwendung eine Azure AD vertrauende Seite ist, im Verbund mit AD FS 2016 oder höher.
+* Bedingter Zugriff ist nicht verfügbar, wenn die Anwendung eine AD FS 2016 oder AD FS 2019 vertrauende Seite ist und von AD FS 2016 oder AD FS 2019 verwaltet wird oder damit im Verbund ist.
+* Bedingter Zugriff ist auch nicht verfügbar, wenn AD FS 2016 oder AD FS 2019 dafür konfiguriert ist, Azure MFA als primäre Authentifizierungsmethode zu verwenden.
 
 #### <a name="ad-fs-logging"></a>AD FS-Protokollierung
 
-Standardmäßige AD FS 2016-Protokollierung sowohl im Windows-Sicherheitsprotokoll als auch im AD FS-Administratorprotokoll, enthält Informationen zu Authentifizierungsanforderungen sowie deren Erfolg oder Fehler. Ereignisprotokolldaten in diesen Ereignissen geben an, ob Azure MFA verwendet wurde. Beispielsweise kann eine AD FS-Überwachungsereignis-ID 1200 Folgendes enthalten:
+Die Standardprotokollierung von AD FS 2016 und AD FS 2019 enthält Informationen zu Authentifizierungsanforderungen sowie deren Erfolg oder Fehler sowohl im Windows-Sicherheitsprotokoll als auch im AD FS-Administratorprotokoll. Ereignisprotokolldaten in diesen Ereignissen geben an, ob Azure MFA verwendet wurde. Beispielsweise kann eine AD FS-Überwachungsereignis-ID 1200 Folgendes enthalten:
 
 ```
 <MfaPerformed>true</MfaPerformed>

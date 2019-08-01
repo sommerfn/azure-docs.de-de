@@ -10,12 +10,12 @@ ms.subservice: personalizer
 ms.topic: conceptual
 ms.date: 06/24/2019
 ms.author: edjez
-ms.openlocfilehash: 94eaeb6e34e74e1a0f1a3958c23cf33b86c4adcd
-ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
+ms.openlocfilehash: c317cbec02b82743c233bf36f743cea808c30c69
+ms.sourcegitcommit: a6873b710ca07eb956d45596d4ec2c1d5dc57353
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/07/2019
-ms.locfileid: "67620281"
+ms.lasthandoff: 07/16/2019
+ms.locfileid: "68253590"
 ---
 # <a name="features-are-information-about-actions-and-context"></a>Merkmale sind Informationen über Aktionen und Kontext.
 
@@ -66,9 +66,10 @@ Im Folgenden finden Sie Beispiele für Merkmalsnamespaces, die von Anwendungen v
 * current_time
 * NewsArticle_TextAnalytics
 
-Sie können Merkmalsnamespaces nach Ihren eigenen Konventionen benennen, solange es sich dabei um gültige JSON-Schlüssel handelt.
+Sie können Merkmalsnamespaces nach Ihren eigenen Konventionen benennen, solange es sich dabei um gültige JSON-Schlüssel handelt. Namespaces werden zum Sortieren von Features in verschiedene Gruppen und zum Unterscheiden von Features mit ähnlichen Namen verwendet. Sie können sich Namespaces als „Präfix“ vorstellen, der zu Namen von Features hinzugefügt wird. Namespaces können nicht geschachtelt werden.
 
-Im folgenden JSON-Code sind `user`, `state` und `device` Merkmalsnamespaces.
+
+Im folgenden JSON-Code sind `user`, `state` und `device` Merkmalsnamespaces. Hinweis zur Public Preview: Derzeit wird dringend empfohlen, UTF-8-basierte Namen mit verschiedenen Anfangsbuchstaben für Featurenamespaces zu verwenden. Beispielsweise Namen wie `user`, `state` und `device`, die jeweils mit `u`, `s` und `d` beginnen. Derzeit können Namespaces mit denselben Anfangsbuchstaben zu Konflikten in Indizes für maschinelles Lernen führen.
 
 JSON-Objekte können geschachtelte JSON-Objekte und einfache Eigenschaften/Werte enthalten. Ein Array kann nur einbezogen werden, wenn die Arrayelemente Zahlen sind. 
 
@@ -77,7 +78,7 @@ JSON-Objekte können geschachtelte JSON-Objekte und einfache Eigenschaften/Werte
     "contextFeatures": [
         { 
             "user": {
-                "name":"Doug",
+                "profileType":"AnonymousUser",
                 "latlong": [47.6, -122.1]
             }
         },

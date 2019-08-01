@@ -5,14 +5,14 @@ services: dns
 author: vhorne
 ms.service: dns
 ms.topic: article
-ms.date: 11/3/2018
+ms.date: 7/13/2019
 ms.author: victorh
-ms.openlocfilehash: b08eae072c2fbe420401424baf97a25b4cbbe87b
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 7d20ef750aa4556a73852982631423d3d08271f5
+ms.sourcegitcommit: 470041c681719df2d4ee9b81c9be6104befffcea
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60790741"
+ms.lasthandoff: 07/12/2019
+ms.locfileid: "67854111"
 ---
 # <a name="host-load-balanced-azure-web-apps-at-the-zone-apex"></a>Hosten von Azure Web-Apps mit Lastenausgleich im Zonen-Apex
 
@@ -45,7 +45,7 @@ Erstellen Sie zwei Web App Service-Pläne in Ihrer Ressourcengruppe anhand der f
 
 |NAME  |Betriebssystem  |Location  |Preisstufe  |
 |---------|---------|---------|---------|
-|ASP-01     |Windows|USA (Ost)|Dev/Test D1-Freigegeben|
+|ASP-01     |Windows|East US|Dev/Test D1-Freigegeben|
 |ASP-02     |Windows|USA (Mitte)|Dev/Test D1-Freigegeben|
 
 ## <a name="create-app-services"></a>Erstellen von App Services
@@ -87,9 +87,9 @@ Jetzt können Sie die Endpunkte für die beiden Web-Apps erstellen.
 3. Klicken Sie auf **Hinzufügen**.
 4. Verwenden Sie die folgende Tabelle zum Konfigurieren der Endpunkte:
 
-   |Type  |NAME  |Ziel  |Location  |Benutzerdefinierte Headereinstellungen|
+   |type  |NAME  |Ziel  |Location  |Benutzerdefinierte Headereinstellungen|
    |---------|---------|---------|---------|---------|
-   |Externer Endpunkt     |End-01|IP-Adresse, die Sie für App-01 notiert haben|USA (Ost)|host:\<die URL, die Sie für App-01 notiert haben\><br>Beispiel: **host:app-01.azurewebsites.net**|
+   |Externer Endpunkt     |End-01|IP-Adresse, die Sie für App-01 notiert haben|East US|host:\<die URL, die Sie für App-01 notiert haben\><br>Beispiel: **host:app-01.azurewebsites.net**|
    |Externer Endpunkt     |End-02|IP-Adresse, die Sie für App-02 notiert haben|USA (Mitte)|host:\<die URL, die Sie für App-02 notiert haben\><br>Beispiel: **host:app-02.azurewebsites.net**
 
 ## <a name="create-dns-zone"></a>Erstellen einer DNS-Zone
@@ -104,7 +104,7 @@ Wenn Ihre DNS-Zone bereit ist, können Sie einen Alias-Datensatz für den Zonen-
 2. Klicken Sie auf **Datensatzgruppe**.
 3. Fügen Sie die Datensatzgruppe mithilfe der folgenden Tabelle hinzu:
 
-   |NAME  |Type  |Alias-Datensatzgruppe  |Aliastyp  |Azure-Ressource|
+   |NAME  |type  |Alias-Datensatzgruppe  |Aliastyp  |Azure-Ressource|
    |---------|---------|---------|---------|-----|
    |@     |Eine Datei|Ja|Azure-Ressource|Traffic Manager – Ihr Profil|
 
@@ -144,3 +144,5 @@ Weitere Informationen zu Aliaseinträgen finden Sie in den folgenden Artikeln:
 - [Tutorial: Konfigurieren eines Aliaseintrags, um auf eine öffentliche Azure-IP-Adresse zu verweisen](tutorial-alias-pip.md)
 - [Tutorial: Konfigurieren eines Alias-Ressourceneintrags zur Unterstützung von Apex-Domänennamen mit Traffic Manager](tutorial-alias-tm.md)
 - [Häufig gestellte Fragen zu DNS](https://docs.microsoft.com/azure/dns/dns-faq#alias-records)
+
+Weitere Informationen zum Migrieren eines aktiven DNS-Namens finden Sie unter [Migrieren eines aktiven DNS-Namens zu Azure App Service](../app-service/manage-custom-dns-migrate-domain.md).

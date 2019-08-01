@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 04/25/2019
 ms.author: cynthn
 ms.custom: include file
-ms.openlocfilehash: 499aeccdf00980eeb66ac6ee06e45267fd515143
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.openlocfilehash: cf05468af17a4fafa7c81c7ad8bc89b3306a54af
+ms.sourcegitcommit: a6873b710ca07eb956d45596d4ec2c1d5dc57353
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67178055"
+ms.lasthandoff: 07/16/2019
+ms.locfileid: "68286306"
 ---
 Mithilfe von Katalogen mit freigegebenen Images können Sie Images über RBAC freigeben. Sie können RBAC verwenden, um Images innerhalb Ihres Mandanten und sogar für Personen außerhalb Ihres Mandanten freizugeben. Wenn Sie jedoch Images außerhalb Ihres Azure-Mandanten freigeben möchten, sollten Sie eine App-Registrierung erstellen, um die Freigabe zu erleichtern.  Die Verwendung einer App-Registrierung kann komplexere Freigabeszenarien ermöglichen, wie z.B.: 
 
@@ -46,7 +46,7 @@ Erteilen Sie der App-Registrierung die Berechtigung, den Katalog mit freigegeben
 
 ## <a name="give-tenant-2-access"></a>Mandant 2 Zugriff gewähren
 
-Gewähren Sie Mandant 2 durch Anfordern einer Anmeldung mit einem Browser Zugriff auf die Anwendung. Ersetzen Sie *<Tenant2 ID>* durch die Mandanten-ID des Mandanten, für den Sie Ihren Imagekatalog freigeben möchten. Ersetzen Sie *<Anwendungs-ID (Client)>* durch die Anwendungs-ID der von Ihnen erstellten App-Registrierung. Wenn Sie die Ersetzungen vorgenommen haben, fügen Sie die URL in einen Browser ein, und folgen Sie den Anmeldeaufforderungen, um sich bei Mandant 2 anzumelden.
+Gewähren Sie Mandant 2 durch Anfordern einer Anmeldung mit einem Browser Zugriff auf die Anwendung. Ersetzen Sie *\<Tenant2-ID>* durch die Mandanten-ID des Mandanten, für den Sie Ihren Imagekatalog freigeben möchten. Ersetzen Sie *\<Anwendungs-ID (Client)>* durch die Anwendungs-ID der von Ihnen erstellten App-Registrierung. Wenn Sie die Ersetzungen vorgenommen haben, fügen Sie die URL in einen Browser ein, und folgen Sie den Anmeldeaufforderungen, um sich bei Mandant 2 anzumelden.
 
 ```
 https://login.microsoftonline.com/<Tenant 2 ID>/oauth2/authorize?client_id=<Application (client) ID>&response_type=code&redirect_uri=https%3A%2F%2Fwww.microsoft.com%2F 

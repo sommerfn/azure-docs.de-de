@@ -4,21 +4,21 @@ titlesuffix: Azure Load Balancer
 description: Verwenden Sie Ausgangsregeln, um ausgehende Netzwerkadressenübersetzungen zu definieren.
 services: load-balancer
 documentationcenter: na
-author: KumudD
+author: asudbring
 ms.service: load-balancer
 ms.devlang: na
 ms.topic: article
 ms.custom: seodec18
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 10/19/2018
-ms.author: kumud
-ms.openlocfilehash: 52fafa7e9dd46b6c78af3776797bae48b22ea8df
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.date: 7/17/2019
+ms.author: allensu
+ms.openlocfilehash: 39a23fa277d7bb389098674556b65b1b13676ead
+ms.sourcegitcommit: 770b060438122f090ab90d81e3ff2f023455213b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64698433"
+ms.lasthandoff: 07/17/2019
+ms.locfileid: "68305578"
 ---
 # <a name="load-balancer-outbound-rules"></a>Load Balancer-Ausgangsregeln
 
@@ -208,7 +208,7 @@ Beim Verwenden einer internen Load Balancer Standardinstanz ist die NAT für aus
 - Das konfigurierbare Leerlauftimeout für ausgehenden Datenverkehr beträgt ist 4 bis 120 Minuten (240 bis 7200 Sekunden).
 - Load Balancer unterstützt kein ICMP für die NAT ausgehenden Datenverkehrs.
 - Sie können Ausgangsregeln im Portal weder konfigurieren noch ansehen.  Verwenden Sie stattdessen Vorlagen, die REST-API, die Azure CLI 2.0 oder PowerShell.
-- Ausgangsregeln können nur auf die primäre NIC und die primäre IP-Konfiguration angewendet werden.
+- Ausgangsregeln können nur auf die primäre IP-Konfiguration einer NIC angewandt werden.  Es werden mehrere NICs unterstützt.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

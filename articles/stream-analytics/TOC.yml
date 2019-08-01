@@ -7,6 +7,7 @@
     - name: Muster für End-to-End-Lösungen
       href: stream-analytics-solution-patterns.md
 - name: Schnellstarts
+  expanded: true
   items:
     - name: Erstellen eines Auftrags – Azure-Portal
       href: stream-analytics-quick-create-portal.md
@@ -148,6 +149,8 @@
               href: stream-analytics-scale-jobs.md
         - name: Skalieren mit ML-Funktionen
           href: stream-analytics-scale-with-machine-learning-functions.md
+        - name: Skalieren mit Neupartitionierung
+          href: repartition.md
     - name: Automatisieren
       items:
         - name: Verwenden des .NET SDK

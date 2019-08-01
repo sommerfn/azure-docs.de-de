@@ -155,6 +155,8 @@
           href: logic-apps-enterprise-integration-b2b-business-continuity.md
     - name: Herstellen einer Verbindung mit virtuellen Netzwerken mithilfe von isolierten Umgebungen
       href: connect-virtual-network-vnet-isolated-environment.md
+    - name: Hinzufügen von Artefakten zu Integrationsdienstumgebungen
+      href: add-artifacts-integration-service-environment-ise.md
     - name: Zugriff auf lokale Daten
       items:
         - name: Installieren eines Datengateways
@@ -295,6 +297,8 @@
           href: manage-logic-apps-with-visual-studio.md
         - name: Verwalten von Integrationskonten
           href: logic-apps-enterprise-integration-accounts.md
+        - name: Verwalten von Integrationsdienstumgebungen
+          href: ise-manage-integration-service-environment.md
         - name: Migrieren zum aktuellen Schema
           href: ../connectors/connectors-schema-migration.md
     - name: Test

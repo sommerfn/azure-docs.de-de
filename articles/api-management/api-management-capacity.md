@@ -11,16 +11,16 @@ ms.workload: integration
 ms.topic: article
 ms.date: 06/18/2018
 ms.author: apimpm
-ms.openlocfilehash: fe77361c4c9bed9310f8443ed4ff37faf7ea53a9
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: c39c585d9947422260868734ec89814d8a510089
+ms.sourcegitcommit: 64798b4f722623ea2bb53b374fb95e8d2b679318
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60658307"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67836948"
 ---
 # <a name="capacity-of-an-azure-api-management-instance"></a>Kapazität einer Azure API Management-Instanz
 
-**Kapazität** ist die einzige und wichtigste [Azure Monitor-Metrik](api-management-howto-use-azure-monitor.md#view-metrics-of-your-apis) für das Treffen fundierter Entscheidungen im Hinblick auf die Skalierung einer API Management-Instanz zur Bewältigung höherer Lasten. Ihre Erstellung ist komplex und setzt ein bestimmtes Verhalten voraus.
+**Kapazität** ist die wichtigste [Azure Monitor-Metrik](api-management-howto-use-azure-monitor.md#view-metrics-of-your-apis) für das Treffen fundierter Entscheidungen im Hinblick auf die Skalierung einer API Management-Instanz zur Bewältigung höherer Lasten. Ihre Erstellung ist komplex und setzt ein bestimmtes Verhalten voraus.
 
 In diesem Artikel wird erläutert, was die **Kapazität** ist und wie sie sich verhält. Sie erfahren, wie Sie auf **Kapazitätsmetriken** im Azure-Portal zugreifen können, und wann Sie Ihre API Management-Instanz skalieren oder aktualisieren sollten.
 
@@ -40,12 +40,14 @@ Damit Sie den Schritten in diesem Artikel folgen können, benötigen Sie folgend
 
 ![Kapazitätsmetrik](./media/api-management-capacity/capacity-ingredients.png)
 
-**Kapazität** ist ein Indikator für die Auslastung einer APIM-Instanz. Sie spiegelt die Ressourcenverwendung (CPU, Speicher) und die Länge von Netzwerkwarteschlangen wider. Die CPU- und Speicherauslastung zeigt die Ressourcenverwendung von:
+Die **Kapazität** ist ein Indikator für die Auslastung einer API Management-Instanz. Sie spiegelt die Ressourcenverwendung (CPU, Speicher) und die Länge von Netzwerkwarteschlangen wider. Die CPU- und Speicherauslastung zeigt die Ressourcenverwendung von:
 
-+ APIM-Diensten, wie z.B. Verwaltungsaktionen oder Anfragenbearbeitung, die das Weiterleiten von Anforderungen oder das Ausführen einer Richtlinie einschließen können, und
++ API Management-Diensten, z. B. Verwaltungsaktionen oder Anfragenbearbeitung, die das Weiterleiten von Anforderungen oder das Ausführen einer Richtlinie einschließen können, und
 + ausgewählten Betriebssystemprozessen, einschließlich Prozesse, die Kosten für SSL-Handshakes bei neuen Verbindungen verursachen.
 
 Die **Gesamtkapazität** ist ein Durchschnitt der eigenen Werte aus jeder Einheit einer API Management-Instanz.
+
+Obwohl die **Kapazitätsmetrik** für die Ermittlung von Problemen mit Ihrer API Management-Instanz entworfen wurde, gibt es Fälle, bei denen Probleme nicht in den Änderungen der **Kapazitätsmetrik** berücksichtigt werden.
 
 ## <a name="capacity-metric-behavior"></a>Verhalten der Kapazitätsmetrik
 
@@ -63,6 +65,8 @@ Je komplexer die Vorgänge für die Anforderungen sind, desto höher ist der **K
 ![Metrik mit Kapazitätsspitzen](./media/api-management-capacity/capacity-spikes.png)
 
 Die **Kapazität** kann auch vorübergehend Spitzen aufweisen oder größer als 0 (null) sein, selbst wenn keine Anforderungen verarbeitet werden. Dies geschieht aufgrund von system- oder plattformspezifischen Aktionen und sollte bei der Entscheidung, ob eine Instanz skaliert werden soll, nicht berücksichtigt werden.
+
+Eine niedrige **Kapazitätsmetrik** bedeutet nicht zwingend, dass Ihre API Management-Instanz keine Probleme aufweist.
   
 ## <a name="use-the-azure-portal-to-examine-capacity"></a>Verwenden des Azure-Portals zum Untersuchen der Kapazität
   

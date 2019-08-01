@@ -1,19 +1,18 @@
 ---
 title: Sichern von Workloads in Azure mithilfe von Azure Backup Server
 description: Verwenden Sie Azure Backup Server, um Workloads im Azure-Portal zu schützen und zu sichern.
-services: backup
 author: kasinh
 manager: vvithal
 ms.service: backup
 ms.topic: conceptual
 ms.date: 11/13/2018
 ms.author: kasinh
-ms.openlocfilehash: 43793f1cc105bda7a50371f8fffd4ff787f6e300
-ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
+ms.openlocfilehash: bf0e964c46088947fa50d1eadbcc12b78978251f
+ms.sourcegitcommit: c72ddb56b5657b2adeb3c4608c3d4c56e3421f2c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67204433"
+ms.lasthandoff: 07/24/2019
+ms.locfileid: "68466376"
 ---
 # <a name="install-and-upgrade-azure-backup-server"></a>Installieren und Durchführen eines Upgrades für Azure Backup Server
 > [!div class="op_single_selector"]
@@ -247,15 +246,15 @@ Im Folgenden werden die Schritte aufgeführt, wenn Sie MABS auf einen neuen Serv
 
 
   > [!IMPORTANT]
-  > - Der neue Servername muss den gleichen Namen wie für die ursprüngliche Azure Backup Server-Instanz aufweisen. Der Name der neuen Azure Backup Server-Instanz kann nicht geändert werden, wenn Sie die Wiederherstellungspunkte über den vorherigen Speicherpool und der Data Protection Manager-Datenbank speichern möchten.
-  > - Sie müssen über eine Sicherung der Data Protection Manager-Datenbank verfügen. Sie müssen die Datenbank wiederherstellen.
+  > - Der neue Servername muss den gleichen Namen wie für die ursprüngliche Azure Backup Server-Instanz aufweisen. Der Name der neuen Azure Backup Server-Instanz kann nicht geändert werden, wenn Sie die Wiederherstellungspunkte über den vorherigen Speicherpool und die MABS-Datenbank (DPMDB) speichern möchten.
+  > - Sie benötigen eine Sicherung der MABS-Datenbank (DPMDB). Sie müssen die Datenbank wiederherstellen.
 
 1. Wählen Sie im Anzeigebereich die Clientcomputer aus, für die Sie den Schutz-Agent aktualisieren möchten.
 2. Fahren Sie den ursprünglichen Azure Backup-Server herunter, oder stellen Sie ihn außer Dienst.
 3. Setzen Sie das Computerkonto in Active Directory zurück.
 4. Installieren Sie Server 2016 auf dem neuen Computer, und vergeben Sie den gleichen Namen wie für den ursprünglichen Azure Backup-Server.
 5. Führen Sie den Domänenbeitritt durch.
-6. Installieren Sie Azure Backup Server v2 oder höher. (Verschieben Sie den DPM-Speicherpool vom alten Server, und führen Sie den Import durch.)
+6. Installieren Sie Azure Backup Server v2 oder höher. (Verschieben Sie die Datenträger für den MABS-Speicherpool vom alten Server, und führen Sie den Import durch.)
 7. Stellen Sie die DPMDB aus Schritt 1 wieder her.
 8. Fügen Sie den Speicher vom ursprünglichen Sicherungsserver an den neuen Server an.
 9. Stellen Sie die DPMDB über SQL wieder her.

@@ -9,14 +9,14 @@ ms.topic: conceptual
 ms.author: jordane
 author: jpe316
 ms.reviewer: larryfr
-ms.date: 05/31/2019
+ms.date: 07/08/2019
 ms.custom: seoapril2019
-ms.openlocfilehash: dcb90eb8ee25b8b0c780006f3555a5a9b815ffdd
-ms.sourcegitcommit: 6cb4dd784dd5a6c72edaff56cf6bcdcd8c579ee7
+ms.openlocfilehash: cae6039b904f3dcd19ed191dc1b5fdd2f05f0323
+ms.sourcegitcommit: a6873b710ca07eb956d45596d4ec2c1d5dc57353
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2019
-ms.locfileid: "67514278"
+ms.lasthandoff: 07/16/2019
+ms.locfileid: "68260340"
 ---
 # <a name="deploy-models-with-the-azure-machine-learning-service"></a>Bereitstellen von Modellen mit dem Azure Machine Learning-Dienst
 
@@ -332,12 +332,12 @@ Die folgende Tabelle enthält ein Beispiel für das Erstellen einer Bereitstellu
 Die folgenden Abschnitte zeigen, wie Sie die Bereitstellungskonfiguration erstellen und sie dann zum Bereitstellen des Webdiensts verwenden.
 
 ### <a name="optional-profile-your-model"></a>Optional: Erstellen eines Profils für Ihr Modell
-Es empfiehlt sich gegebenenfalls, ein Profil für Ihr Modell zu erstellen, um die optimalen CPU- und Arbeitsspeicheranforderungen zu bestimmen, bevor Sie Ihr Modell als Dienst bereitstellen. Sie können entweder mit dem SDK oder der CLI ein Profil Ihres Modells erstellen.
 
-Weitere Informationen finden Sie in der SDK-Dokumentation: https://docs.microsoft.com/python/api/azureml-core/azureml.core.model.model?view=azure-ml-py#profile-workspace--profile-name--models--inference-config--input-data-
+Es empfiehlt sich gegebenenfalls, ein Profil für Ihr Modell zu erstellen, um die optimalen CPU- und Arbeitsspeicheranforderungen mithilfe des SDK oder der CLI zu bestimmen, bevor Sie Ihr Modell als Dienst bereitstellen.  Die Ergebnisse der Profilerstellung für das Modell werden als `Run`-Objekt ausgegeben. Die vollständigen Details des [Modellprofilschemas finden Sie in der API-Dokumentation](https://docs.microsoft.com/python/api/azureml-core/azureml.core.profile.modelprofile?view=azure-ml-py).
 
-Die Ergebnisse der Profilerstellung für das Modell werden als Ausführungsobjekt ausgegeben.
-Einzelheiten zum ModelProfile-Schema finden Sie hier: https://docs.microsoft.com/python/api/azureml-core/azureml.core.profile.modelprofile?view=azure-ml-py
+Weitere Informationen zum [Erstellen eines Profils für das Modell mithilfe des SDK](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model.model?view=azure-ml-py#profile-workspace--profile-name--models--inference-config--input-data-).
+
+Verwenden Sie zum Erstellen eines Profils für das Modell mithilfe der CLI [az ml model profile](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/model?view=azure-cli-latest#ext-azure-cli-ml-az-ml-model-profile).
 
 ## <a name="deploy-to-target"></a>Bereitstellen auf dem Ziel
 
@@ -356,9 +356,27 @@ Um eine lokale Bereitstellung durchzuführen, müssen Sie **Docker** auf Ihrem l
 
 + **Verwenden der CLI**
 
+    Verwenden Sie für die Bereitstellung mit der CLI den folgenden Befehl. Ersetzen Sie `mymodel:1` durch den Namen und die Version des registrierten Modells:
+
   ```azurecli-interactive
-  az ml model deploy -m sklearn_mnist:1 -ic inferenceconfig.json -dc deploymentconfig.json
+  az ml model deploy -m mymodel:1 -ic inferenceconfig.json -dc deploymentconfig.json
   ```
+
+    Die Einträge im Dokument `deploymentconfig.json` werden den Parametern für [LocalWebservice.deploy_configuration](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice.local.localwebservicedeploymentconfiguration?view=azure-ml-py) zugeordnet. In der folgenden Tabelle wird die Zuordnung zwischen den Entitäten im JSON-Dokument und den Parametern für die Methode beschrieben:
+
+    | JSON-Entität | Methodenparameter | BESCHREIBUNG |
+    | ----- | ----- | ----- |
+    | `computeType` | Nicht verfügbar | Das Computeziel. Für „local“ muss der Wert `local` sein. |
+    | `port` | `port` | Der lokale Port, auf dem der HTTP-Endpunkt des Diensts verfügbar gemacht werden soll. |
+
+    Der folgende JSON-Code ist ein Beispiel für eine Bereitstellungskonfiguration für die Verwendung mit der CLI:
+
+    ```json
+    {
+        "computeType": "local",
+        "port": 32267
+    }
+    ```
 
 ### <a id="aci"></a> Azure Container Instances (DEVTEST)
 
@@ -379,10 +397,44 @@ Um Kontingente und die Regionsverfügbarkeit für ACI anzuzeigen, lesen Sie den 
 
 + **Verwenden der CLI**
 
-  ```azurecli-interactive
-  az ml model deploy -m sklearn_mnist:1 -n aciservice -ic inferenceconfig.json -dc deploymentconfig.json
-  ```
+    Verwenden Sie für die Bereitstellung mit der CLI den folgenden Befehl. Ersetzen Sie `mymodel:1` durch den Namen und die Version des registrierten Modells. Ersetzen Sie `myservice` durch den Namen, den dieser Dienst erhalten soll:
 
+    ```azurecli-interactive
+    az ml model deploy -m mymodel:1 -n myservice -ic inferenceconfig.json -dc deploymentconfig.json
+    ```
+
+    Die Einträge im Dokument `deploymentconfig.json` werden den Parametern für [AciWebservice.deploy_configuration](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice.aci.aciservicedeploymentconfiguration?view=azure-ml-py) zugeordnet. In der folgenden Tabelle wird die Zuordnung zwischen den Entitäten im JSON-Dokument und den Parametern für die Methode beschrieben:
+
+    | JSON-Entität | Methodenparameter | BESCHREIBUNG |
+    | ----- | ----- | ----- |
+    | `computeType` | Nicht verfügbar | Das Computeziel. Für ACI muss der Wert `ACI` sein. |
+    | `containerResourceRequirements` | Nicht verfügbar | Enthält Konfigurationselemente für die CPU und den Arbeitsspeicher, die dem Container zugeordnet sind. |
+    | &emsp;&emsp;`cpu` | `cpu_cores` | Die Anzahl der CPU-Kerne, die für diesen Webdienst zuzuordnen sind. Standardwert: `0.1` |
+    | &emsp;&emsp;`memoryInGB` | `memory_gb` | Der Arbeitsspeicherumfang (in GB), der für diesen Webdienst zugeordnet werden soll. Standardwert: `0.5` |
+    | `location` | `location` | Die Azure-Region, in der dieser Webdienst bereitgestellt werden soll. Wenn keine Region angegeben ist, wird der Standort des Arbeitsbereichs verwendet. Weitere Informationen zu verfügbaren Regionen finden Sie hier: [ACI-Regionen](https://azure.microsoft.com/global-infrastructure/services/?regions=all&products=container-instances) |
+    | `authEnabled` | `auth_enabled` | Gibt an, ob die Authentifizierung für diesen Webdienst aktiviert werden soll. Der Standardwert ist „FALSE“. |
+    | `sslEnabled` | `ssl_enabled` | Gibt an, ob für diesen Webdienst SSL aktiviert werden soll. Der Standardwert lautet „False“. |
+    | `appInsightsEnabled` | `enable_app_insights` | Gibt an, ob für diesen Webdienst AppInsights aktiviert werden soll. Der Standardwert ist „FALSE“. |
+    | `sslCertificate` | `ssl_cert_pem_file` | Die benötigte CERT-Datei, wenn SSL aktiviert ist |
+    | `sslKey` | `ssl_key_pem_file` | Die benötigte KEY-Datei, wenn SSL aktiviert ist |
+    | `cname` | `ssl_cname` | Der CNAME, wenn SSL aktiviert ist |
+    | `dnsNameLabel` | `dns_name_label` | Die DNS-Namensbezeichnung für den Bewertungsendpunkt. Wenn keine eindeutige DNS-Namensbezeichnung angegeben ist, wird eine für den Bewertungsendpunkt generiert. |
+
+    Der folgende JSON-Code ist ein Beispiel für eine Bereitstellungskonfiguration für die Verwendung mit der CLI:
+
+    ```json
+    {
+        "computeType": "aci",
+        "containerResourceRequirements":
+        {
+            "cpu": 0.5,
+            "memoryInGB": 1.0
+        },
+        "authEnabled": true,
+        "sslEnabled": false,
+        "appInsightsEnabled": false
+    }
+    ```
 
 + **Verwenden von VS Code**
 
@@ -414,9 +466,71 @@ Falls Sie bereits einen AKS-Cluster angefügt haben, können Sie dafür die Bere
 
 + **Verwenden der CLI**
 
+    Verwenden Sie für die Bereitstellung mit der CLI den folgenden Befehl. Ersetzen Sie `myaks` durch den Namen des AKS-Computeziels. Ersetzen Sie `mymodel:1` durch den Namen und die Version des registrierten Modells. Ersetzen Sie `myservice` durch den Namen, den dieser Dienst erhalten soll:
+
   ```azurecli-interactive
-  az ml model deploy -ct myaks -m mymodel:1 -n aksservice -ic inferenceconfig.json -dc deploymentconfig.json
+  az ml model deploy -ct myaks -m mymodel:1 -n myservice -ic inferenceconfig.json -dc deploymentconfig.json
   ```
+
+    Die Einträge im Dokument `deploymentconfig.json` werden den Parametern für [AksWebservice.deploy_configuration](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice.aks.aksservicedeploymentconfiguration?view=azure-ml-py) zugeordnet. In der folgenden Tabelle wird die Zuordnung zwischen den Entitäten im JSON-Dokument und den Parametern für die Methode beschrieben:
+
+    | JSON-Entität | Methodenparameter | BESCHREIBUNG |
+    | ----- | ----- | ----- |
+    | `computeType` | Nicht verfügbar | Das Computeziel. Für AKS muss der Wert `aks` sein. |
+    | `autoScaler` | Nicht verfügbar | Enthält Konfigurationselemente für die automatische Skalierung. Weitere Informationen finden Sie in der Tabelle zur automatischen Skalierung. |
+    | &emsp;&emsp;`autoscaleEnabled` | `autoscale_enabled` | Gibt an, ob die automatische Skalierung für den Webdienst aktiviert werden soll. Wenn `numReplicas` = `0`, dann `True`; andernfalls `False`. |
+    | &emsp;&emsp;`minReplicas` | `autoscale_min_replicas` | Die Mindestanzahl von Containern, die bei der automatischen Skalierung dieses Webdiensts verwendet werden sollen. Standardwert: `1` |
+    | &emsp;&emsp;`maxReplicas` | `autoscale_max_replicas` | Die maximale Anzahl von Containern, die bei der automatischen Skalierung dieses Webdiensts verwendet werden sollen. Standardwert: `10` |
+    | &emsp;&emsp;`refreshPeriodInSeconds` | `autoscale_refresh_seconds` | Gibt an, wie oft die automatische Skalierung versucht, diesen Webdienst zu skalieren. Standardwert: `1` |
+    | &emsp;&emsp;`targetUtilization` | `autoscale_target_utilization` | Die Zielauslastung (in Prozent), die von der automatischen Skalierung für diesen Webdienst beibehalten werden soll. Standardwert: `70` |
+    | `dataCollection` | Nicht verfügbar | Enthält Konfigurationselemente für die Datensammlung. |
+    | &emsp;&emsp;`storageEnabled` | `collect_model_data` | Gibt an, ob die Modelldatensammlung für den Webdienst aktiviert werden soll. Standardwert: `False` |
+    | `authEnabled` | `auth_enabled` | Gibt an, ob die Authentifizierung für den Webdienst aktiviert werden soll. Standardwert: `True` |
+    | `containerResourceRequirements` | Nicht verfügbar | Enthält Konfigurationselemente für die CPU und den Arbeitsspeicher, die dem Container zugeordnet sind. |
+    | &emsp;&emsp;`cpu` | `cpu_cores` | Die Anzahl der CPU-Kerne, die für diesen Webdienst zuzuordnen sind. Standardwert: `0.1` |
+    | &emsp;&emsp;`memoryInGB` | `memory_gb` | Der Arbeitsspeicherumfang (in GB), der für diesen Webdienst zugeordnet werden soll. Standardwert: `0.5` |
+    | `appInsightsEnabled` | `enable_app_insights` | Gibt an, ob für den Webdienst die Application Insights-Protokollierung aktiviert werden soll. Standardwert: `False` |
+    | `scoringTimeoutMs` | `scoring_timeout_ms` | Ein Zeitlimit zum Erzwingen der Bewertung von Aufrufen des Webdiensts. Standardwert: `60000` |
+    | `maxConcurrentRequestsPerContainer` | `replica_max_concurrent_requests` | Die maximale Anzahl gleichzeitiger Anforderungen pro Knoten für diesen Webdienst. Standardwert: `1` |
+    | `maxQueueWaitMs` | `max_request_wait_time` | Die maximale Zeit, die eine Anforderung in der Warteschlange (in Millisekunden) verbleibt, bevor der Fehler 503 zurückgegeben wird. Standardwert: `500` |
+    | `numReplicas` | `num_replicas` | Die Anzahl der Container, die für diesen Webdienst zuzuordnen sind. Kein Standardwert. Wenn dieser Parameter nicht festgelegt ist, wird die automatische Skalierung standardmäßig aktiviert. |
+    | `keys` | Nicht verfügbar | Enthält Konfigurationselemente für Schlüssel. |
+    | &emsp;&emsp;`primaryKey` | `primary_key` | Ein primärer Authentifizierungsschlüssel, der für diesen Webdienst verwendet werden soll. |
+    | &emsp;&emsp;`secondaryKey` | `secondary_key` | Ein sekundärer Authentifizierungsschlüssel, der für diesen Webdienst verwendet werden soll. |
+    | `gpuCores` | `gpu_cores` | Die Anzahl der GPU-Kerne, die für diesen Webdienst zuzuordnen sind. Der Standardwert ist 1. |
+    | `livenessProbeRequirements` | Nicht verfügbar | Enthält Konfigurationselemente für die Anforderungen an Livetests. |
+    | &emsp;&emsp;`periodSeconds` | `period_seconds` | Gibt an, wie häufig (in Sekunden) ein Livetest durchgeführt werden soll. Der Standardwert ist 10 Sekunden. Der Mindestwert ist 1. |
+    | &emsp;&emsp;`initialDelaySeconds` | `initial_delay_seconds` | Die Anzahl der Sekunden, die nach dem Start des Containers vergehen, bevor Livetests initiiert werden. Der Standardwert ist 310. |
+    | &emsp;&emsp;`timeoutSeconds` | `timeout_seconds` | Die Anzahl der Sekunden, nach denen das Zeitlimit für den Livetest überschritten ist. Der Standardwert ist 2 Sekunden. Der Mindestwert ist 1. |
+    | &emsp;&emsp;`successThreshold` | `success_threshold` | Die Anzahl der Erfolge, die mindestens aufeinander folgen müssen, damit ein Livetest nach einem Fehler wieder als erfolgreich betrachtet wird. Der Standardwert lautet 1. Der Mindestwert ist 1. |
+    | &emsp;&emsp;`failureThreshold` | `failure_threshold` | Wenn ein Pod startet und der Livetest fehlschlägt, versucht Kubernetes, die Zeiten des Parameters FailureThreshold zu verwenden, bevor aufgegeben wird. Der Standardwert ist 3. Der Mindestwert ist 1. |
+    | `namespace` | `namespace` | Der Kubernetes-Namespace, in dem der Webdienst bereitgestellt wird. Bis zu 63 alphanumerische Zeichen in Kleinbuchstaben (a–z, 0–9) und Bindestriche (-). Als erstes und letztes Zeichen dürfen keine Bindestriche verwendet werden. |
+
+    Der folgende JSON-Code ist ein Beispiel für eine Bereitstellungskonfiguration für die Verwendung mit der CLI:
+
+    ```json
+    {
+        "computeType": "aks",
+        "autoScaler":
+        {
+            "autoscaleEnabled": true,
+            "minReplicas": 1,
+            "maxReplicas": 3,
+            "refreshPeriodInSeconds": 1,
+            "targetUtilization": 70
+        },
+        "dataCollection":
+        {
+            "storageEnabled": true
+        },
+        "authEnabled": true,
+        "containerResourceRequirements":
+        {
+            "cpu": 0.5,
+            "memoryInGB": 1.0
+        }
+    }
+    ```
 
 + **Verwenden von VS Code**
 

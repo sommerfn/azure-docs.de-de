@@ -8,12 +8,12 @@ ms.subservice: heavy
 ms.topic: article
 ms.date: 07/03/2019
 ms.author: alkohli
-ms.openlocfilehash: 4b41af691bb864dd11b001a6217a7b1e0318d6e0
-ms.sourcegitcommit: ccb9a7b7da48473362266f20950af190ae88c09b
+ms.openlocfilehash: 6097dba9193fce4c8158137b488080107881994a
+ms.sourcegitcommit: 64798b4f722623ea2bb53b374fb95e8d2b679318
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67592329"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67839776"
 ---
 # <a name="azure-data-box-heavy-system-requirements"></a>Systemanforderungen für Azure Data Box Heavy
 
@@ -51,6 +51,12 @@ Die Softwareanforderungen umfassen Informationen zu den unterstützten Betriebss
 ## <a name="networking-requirements"></a>Netzwerkanforderungen
 
 Ihr Datencenter verfügt über ein Hochgeschwindigkeitsnetzwerk. Zur Erzielung der höchstmöglichen Kopiergeschwindigkeit können zwei 40-GbE-Verbindungen (jeweils eine pro Knoten) parallel genutzt werden. Falls Sie über keine 40-GbE-Verbindung verfügen, sollten Sie mindestens zwei Verbindungen mit 10 GbE verwenden (jeweils eine pro Knoten).
+
+### <a name="port-requirements"></a>Portanforderungen
+
+In der folgenden Tabelle sind die Ports aufgeführt, die in der Firewall für SMB- oder NFS-Datenverkehr geöffnet werden müssen. In dieser Tabelle bezieht sich *ein* oder *eingehend* auf die Richtung, aus der eingehende Clientanforderungen auf das Gerät zugreifen. Entsprechend bezieht sich *aus* oder *ausgehend* auf die Richtung, in der das Data Box Heavy-Gerät Daten über die Bereitstellung hinaus an externe Ziele sendet: z. B. ausgehende Verbindungen mit dem Internet.
+
+[!INCLUDE [data-box-port-requirements](../../includes/data-box-port-requirements.md)]
 
 ## <a name="next-steps"></a>Nächste Schritte
 

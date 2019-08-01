@@ -36,7 +36,6 @@ sections:
         items:
           - html: '<a href="quickstart-run-cloud-notebook">Quickstart: Use a cloud-based notebook server to get started with Azure Machine Learning</a> (Schnellstart: Verwenden eines cloudbasierten Notebookservers für die ersten Schritte mit Azure Machine Learning) – keine Installation erforderlich'
           - html: '<a href="quickstart-run-local-notebook">Quickstart: Use your own notebook server to get started with Azure Machine Learning</a> (Schnellstart: Verwenden Ihres eigenen Notebookservers für die ersten Schritte mit Azure Machine Learning) – lokale SDK-Installation'
-          - html: <a href="ui-quickstart-run-experiment">Vorbereiten und Visualisieren von Daten auf der grafischen Benutzeroberfläche ohne Schreiben von Code</a>
   - title: Schritt-für-Schritt-Tutorials
     items:
       - type: paragraph

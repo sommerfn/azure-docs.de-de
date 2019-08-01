@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 06/11/2018
+ms.date: 07/05/2019
 ms.author: panosper
-ms.openlocfilehash: 6cc530d2680c0410081ad3ad3e573cd59d5583d6
-ms.sourcegitcommit: a12b2c2599134e32a910921861d4805e21320159
+ms.openlocfilehash: a437927f6ad43f4c3a90433faa5b9fa6f964aa5c
+ms.sourcegitcommit: 64798b4f722623ea2bb53b374fb95e8d2b679318
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/24/2019
-ms.locfileid: "67341959"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67839228"
 ---
 # <a name="speech-to-text-frequently-asked-questions"></a>Häufig gestellte Fragen zur Spracherkennung
 
@@ -83,7 +83,12 @@ Kontaktieren Sie den [Support für die Sprachunterstützung](mailto:speechsuppor
 
 **A:** Die REST-API beschränkt Anforderungen auf 25 pro 5 Sekunden. Informationen finden Sie auf unseren Seiten für [Spracherkennung](speech-to-text.md).
 
-Wenn Sie weitere Datenschutzbedenken im Hinblick auf die Nutzung von Custom Speech Service haben, wenden Sie sich an einen der Supportkanäle.
+**F: Wie werden Zweikanalaudiodaten in Rechnung gestellt?**
+
+**A:** Wenn Sie jeden Kanal separat übermitteln (jeden Kanal in seiner eigenen Datei), wird Ihnen die Abrechnung gemäß der Dauer der einzelnen Dateien in Rechnung gestellt. Wenn Sie in jedem Kanal eine einzelne Datei übermitteln, wird Ihnen die Dauer der einzelnen Datei in Rechnung gestellt.
+
+> [!IMPORTANT]
+> Wenn Sie weitere Datenschutzbedenken im Hinblick auf die Nutzung von Custom Speech Service haben, wenden Sie sich an einen der Supportkanäle.
 
 ## <a name="importing-data"></a>Importieren von Daten
 

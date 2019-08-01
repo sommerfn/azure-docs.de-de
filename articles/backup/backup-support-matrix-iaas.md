@@ -6,14 +6,14 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: backup
 ms.topic: conceptual
-ms.date: 05/08/2019
+ms.date: 07/02/2019
 ms.author: raynew
-ms.openlocfilehash: ef522785d5074187871c25c54deae84b156d69b1
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 1be9d7ecc996063ee41319628cfc7c81f76bb8ca
+ms.sourcegitcommit: a8b638322d494739f7463db4f0ea465496c689c6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66743173"
+ms.lasthandoff: 07/17/2019
+ms.locfileid: "68296777"
 ---
 # <a name="support-matrix-for-azure-vm-backup"></a>Unterstützungsmatrix für die Sicherung virtueller Azure-Computer
 Mit dem [Azure Backup-Dienst](backup-overview.md) können Sie lokale Computer und Workloads sowie virtuelle Azure-Computer (VMs) sichern. Dieser Artikel enthält eine Zusammenfassung der Unterstützungseinstellungen und Einschränkungen bei der Sicherung von Azure-VMs mit Azure Backup.
@@ -164,14 +164,12 @@ Datenträgergröße | Pro Datenträger bis zu 4.095 GB.<br/><br/> Wenn Ihre Tres
 Speichertyp | HDD Standard, SSD Standard, SSD Premium <br/><br/> SSD Standard wird unterstützt, wenn Ihre Tresore auf die neueste Version der Azure-VM-Sicherung (als sofortige Wiederherstellung bezeichnet) aktualisiert wurden. [Weitere Informationen](backup-instant-restore-capability.md)
 Verwaltete Datenträger | Unterstützt.
 Verschlüsselte Datenträger | Unterstützt.<br/><br/> Virtuelle Azure-Computer mit aktiviertem Azure Disk Encryption können (mit oder ohne Azure AD-App) gesichert werden.<br/><br/> Verschlüsselte virtuelle Computer können nicht auf Datei- oder Ordnerebene wiederhergestellt werden. Stattdessen muss die gesamte VM wiederhergestellt werden.<br/><br/> Sie können die Verschlüsselung auf virtuellen Computern aktivieren, die bereits durch Azure Backup geschützt werden.
-Datenträger mit aktivierter Schreibbeschleunigung | Nicht unterstützt.<br/><br/> Wenn Sie die neueste Version der Azure-VM-Sicherung (bezeichnet als [sofortige Wiederherstellung](backup-instant-restore-capability.md)) ausführen, können Sie Datenträger mit aktivierter Schreibbeschleunigung von der Sicherung ausschließen.
+Datenträger mit aktivierter Schreibbeschleunigung | Nicht unterstützt.<br/><br/> Azure Backup schließt Datenträger mit aktivierter Schreibbeschleunigung bei der Sicherung automatisch aus. Da sie nicht gesichert werden, können Sie diese Datenträger nicht über Wiederherstellungspunkte der VM wiederherstellen.
 Sicherung deduplizierter Datenträger | Nicht unterstützt.
 Hinzufügen eines Datenträgers zu geschütztem virtuellen Computer | Unterstützt.
 Ändern der Datenträgergröße auf geschütztem virtuellen Computer | Unterstützt.
 Freigegebener Speicher| Das Sichern von VMs mit Cluster Shared Volume (CSV) oder Dateiservern mit horizontaler Skalierung wird nicht empfohlen. Bei CSV-Schreibern treten während der Sicherung voraussichtlich Fehler auf. Bei der Wiederherstellung werden Datenträger, die CSV-Volumes enthalten, möglicherweise nicht hochgefahren.
 
-> [!NOTE]
-> Ein Ändern der Datenträgergröße wird von Azure Backup nicht empfohlen.
 
 
 ## <a name="vm-network-support"></a>Netzwerkunterstützung bei virtuellen Computern

@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: article
-ms.date: 05/29/2019
+ms.date: 07/16/2019
 ms.author: diberry
-ms.openlocfilehash: a8a1f6fe9372d013d310c557161ceb813b8a478b
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.openlocfilehash: 3682b9e0c38344be1522440290b46f8c10bd5607
+ms.sourcegitcommit: 9a699d7408023d3736961745c753ca3cec708f23
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/17/2019
-ms.locfileid: "67163636"
+ms.lasthandoff: 07/16/2019
+ms.locfileid: "68275907"
 ---
 # <a name="application-settings"></a>Anwendungseinstellungen
 
@@ -48,7 +48,7 @@ Anhand der folgenden Äußerungen wird veranschaulicht, wie sich die Normalisier
 
 #### <a name="brazilian-portuguese-pt-br-diacritics"></a>Diakritische Zeichen: Portugiesisch (Brasilien) `pt-br`
 
-|Einstellung „false“ für diakritische Zeichen|Einstellung „false“ für diakritische Zeichen|
+|Einstellung „false“ für diakritische Zeichen|Einstellung „true“ für diakritische Zeichen|
 |-|-|
 |`á`|`a`|
 |`â`|`a`|
@@ -66,7 +66,7 @@ Anhand der folgenden Äußerungen wird veranschaulicht, wie sich die Normalisier
 
 #### <a name="dutch-nl-nl-diacritics"></a>Diakritische Zeichen: Niederländisch `nl-nl`
 
-|Einstellung „false“ für diakritische Zeichen|Einstellung „false“ für diakritische Zeichen|
+|Einstellung „false“ für diakritische Zeichen|Einstellung „true“ für diakritische Zeichen|
 |-|-|
 |`á`|`a`|
 |`à`|`a`|
@@ -85,7 +85,7 @@ Anhand der folgenden Äußerungen wird veranschaulicht, wie sich die Normalisier
 
 Gilt sowohl für den französischen als auch für den kanadischen Unterkulturbereich.
 
-|Einstellung „false“ für diakritische Zeichen|Einstellung „false“ für diakritische Zeichen|
+|Einstellung „false“ für diakritische Zeichen|Einstellung „true“ für diakritische Zeichen|
 |--|--|
 |`é`|`e`|
 |`à`|`a`|
@@ -104,7 +104,7 @@ Gilt sowohl für den französischen als auch für den kanadischen Unterkulturber
 
 #### <a name="german-de-de-diacritics"></a>Diakritische Zeichen: Deutsch `de-de`
 
-|Einstellung „false“ für diakritische Zeichen|Einstellung „false“ für diakritische Zeichen|
+|Einstellung „false“ für diakritische Zeichen|Einstellung „true“ für diakritische Zeichen|
 |--|--|
 |`ä`|`a`|
 |`ö`|`o`| 
@@ -112,7 +112,7 @@ Gilt sowohl für den französischen als auch für den kanadischen Unterkulturber
 
 #### <a name="italian-it-it-diacritics"></a>Diakritische Zeichen: Italienisch `it-it`
 
-|Einstellung „false“ für diakritische Zeichen|Einstellung „false“ für diakritische Zeichen|
+|Einstellung „false“ für diakritische Zeichen|Einstellung „true“ für diakritische Zeichen|
 |--|--|
 |`à`|`a`|
 |`è`|`e`|
@@ -129,7 +129,7 @@ Gilt sowohl für den französischen als auch für den kanadischen Unterkulturber
 
 Gilt sowohl für Spanisch als auch für Mexikanisch (Kanada).
 
-|Einstellung „false“ für diakritische Zeichen|Einstellung „false“ für diakritische Zeichen|
+|Einstellung „false“ für diakritische Zeichen|Einstellung „true“ für diakritische Zeichen|
 |-|-|
 |`á`|`a`|
 |`é`|`e`|

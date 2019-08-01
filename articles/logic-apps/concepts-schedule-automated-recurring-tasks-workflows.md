@@ -9,18 +9,23 @@ ms.author: estfan
 ms.reviewer: deli, klam, LADocs
 ms.topic: conceptual
 ms.date: 05/25/2019
-ms.openlocfilehash: 7f15dc5b28a44dc8405e2f0524913e6012ebe380
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 7716c477cea2200e6fee901f7b5f63cd4b833bd7
+ms.sourcegitcommit: b2db98f55785ff920140f117bfc01f1177c7f7e2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66356047"
+ms.lasthandoff: 07/16/2019
+ms.locfileid: "68232681"
 ---
 # <a name="schedule-and-run-recurring-automated-tasks-processes-and-workflows-with-azure-logic-apps"></a>Planen und Ausführen von wiederkehrenden automatisierten Aufgaben, Prozessen und Workflows mit Azure Logic Apps
 
-Logic Apps unterstützt Sie beim Erstellen und Ausführen von automatisierten wiederkehrenden Aufgaben und Prozessen nach einem bestimmten Zeitplan. Indem Sie einen Logik-App-Workflow erstellen, der mit einem integrierten Trigger des Typs „Serie“ oder „Gleitendes Fenster“ – hierbei handelt es sich um Zeitplantrigger – startet, können Sie Aufgaben sofort, zu einem späteren Zeitpunkt oder in sich wiederholenden Intervallen ausführen. Sie können Dienste innerhalb und außerhalb von Azure aufrufen (z.B. über HTTP- oder HTTPS-Endpunkte), Nachrichten in Azure-Diensten wie Azure Storage und Azure Service Bus posten oder Dateien in eine Dateifreigabe hochladen. Mit dem Serientrigger können Sie auch komplexe Zeitpläne und Wiederholungseinstellungen für die Ausführung von Aufgaben einrichten. Weitere Informationen zu den integrierten Zeitplantriggern und -aktionen finden Sie unter [Planen und Ausführen von wiederkehrenden automatisierten Aufgaben und Workflows mit Azure Logic Apps](../logic-apps/concepts-schedule-automated-recurring-tasks-workflows.md).
+Logic Apps unterstützt Sie beim Erstellen und Ausführen von automatisierten wiederkehrenden Aufgaben und Prozessen nach einem bestimmten Zeitplan. Mit einem Logik-App-Workflow, der mit einem integrierten Trigger vom Typ „Serie“ oder „Gleitendes Fenster“ (beides Zeitplantrigger) beginnt, können Sie Aufgaben sofort, zu einem späteren Zeitpunkt oder in sich wiederholenden Intervallen ausführen. Sie können Dienste innerhalb und außerhalb von Azure aufrufen (z.B. über HTTP- oder HTTPS-Endpunkte), Nachrichten in Azure-Diensten wie Azure Storage und Azure Service Bus posten oder Dateien in eine Dateifreigabe hochladen. Mit dem Serientrigger können Sie auch komplexe Zeitpläne und Wiederholungseinstellungen für die Ausführung von Aufgaben einrichten. Weitere Informationen zu den integrierten Zeitplantriggern und -aktionen finden Sie unter [Zeitplantrigger](#schedule-triggers) bzw. unter [Zeitplanaktionen](#schedule-actions). 
 
-Im Folgenden finden Sie einige Beispiele für die Art von Aufgaben, die Sie ausführen können:
+> [!TIP]
+> Sie können wiederkehrende Workloads planen und ausführen, ohne eine separate Logik-App für jeden geplanten Auftrag zu erstellen. Dadurch umgehen Sie auch das [Limit für Workflows pro Region und Abonnement](../logic-apps/logic-apps-limits-and-config.md#definition-limits). Stattdessen können Sie das Logik-App-Muster verwenden, das durch die [Azure-Schnellstartvorlage „Logic App job scheduler“ (Logik-App-Auftragsplaner)](https://github.com/Azure/azure-quickstart-templates/tree/master/301-logicapps-jobscheduler/) erstellt wird.
+>
+> Die Vorlage „Logic App job scheduler“ (Logik-App-Auftragsplaner) erstellt die Logik-App „CreateTimerJob“, die wiederum die Logik-App „TimerJob“ aufruft. Anschließend können Sie die Logik-App „CreateTimerJob“ als API aufrufen, indem Sie eine HTTP-Anforderung ausführen und dabei einen Zeitplan als Eingabe übergeben. Bei jedem Aufruf der Logik-App „CreateTimerJob“ wird auch die Logik-App „TimerJob“ aufgerufen. Dadurch wird eine neue TimerJob-Instanz erstellt, die kontinuierlich auf der Grundlage des angegebenen Zeitplans oder bis zum Erreichen eines bestimmten Limits ausgeführt wird. Auf diese Weise können Sie beliebig viele TimerJob-Instanzen ausführen, ohne sich Gedanken über die Workflowlimits machen zu müssen, da Instanzen keine einzelnen Logik-App-Workflowdefinitionen oder -ressourcen sind.
+
+Die folgende Liste enthält einige Beispielaufgaben, die Sie mit den integrierten Zeitplantriggern ausführen können:
 
 * Abrufen von internen Daten, z.B. durch tägliches Ausführen einer gespeicherten SQL-Prozedur.
 
@@ -42,15 +47,19 @@ Sie können auch die integrierten Zeitplanaktionen nutzen, um den Workflow vor d
 
 Dieser Artikel beschreibt die Funktionen für die integrierten Zeitplantrigger und -aktionen.
 
+<a name="schedule-triggers"></a>
+
 ## <a name="schedule-triggers"></a>Zeitplantrigger
 
-Sie können Ihren Logik-App-Workflow mit dem Trigger „Serie“ oder dem Trigger „Gleitendes Fenster“ starten – beide gehören zu keinem bestimmten Dienst oder System wie etwa Office 365 Outlook oder SQL Server. Diese Trigger starten Ihren Workflow und führen ihn gemäß den von Ihnen angegebenen Wiederholungseinstellungen aus. Sie können das Intervall und die Häufigkeit auswählen, z.B. die Anzahl von Sekunden, Minuten und Stunden für beide Trigger oder die Anzahl von Tagen, Wochen oder Monaten für den Serientrigger. Sie können auch Startdatum und -uhrzeit sowie die Zeitzone festlegen. Bei jeder Triggerauslösung erstellt Logic Apps eine neue Workflowinstanz für Ihre Logik-App und führt diese aus.
+Sie können Ihren Logik-App-Workflow mit dem Trigger „Serie“ oder „Gleitendes Fenster“ starten, was mit keinem bestimmten Dienst oder System wie etwa Office 365 Outlook oder SQL Server verknüpft ist. Diese Trigger starten Ihren Workflow und führen ihn gemäß den von Ihnen angegebenen Wiederholungseinstellungen aus. Sie können das Intervall und die Häufigkeit auswählen, z.B. die Anzahl von Sekunden, Minuten und Stunden für beide Trigger oder die Anzahl von Tagen, Wochen oder Monaten für den Serientrigger. Sie können auch Startdatum und -uhrzeit sowie die Zeitzone festlegen. Bei jeder Triggerauslösung erstellt Logic Apps eine neue Workflowinstanz für Ihre Logik-App und führt diese aus.
 
 Im Folgenden finden Sie die Unterschiede zwischen den beiden Triggern:
 
 * **Serie**: Führt Ihren Workflow in regelmäßigen Intervallen aus, basierend auf dem von Ihnen angegebenen Zeitplan. Wenn Wiederholungen nicht ausgeführt werden, verarbeitet der Serientrigger diese fehlenden Wiederholungen nicht, sondern startet die Wiederholungen beim nächsten geplanten Intervall neu. Sie können Startdatum und -uhrzeit sowie die Zeitzone festlegen. Wenn Sie „Tag“ auswählen, können Sie die genaue Tageszeit in Stunden und Minuten angeben, z.B. jeden Tag um 14:30 Uhr. Wenn Sie „Woche“ auswählen, können Sie auch bestimmte Wochentage angeben, z.B. Mittwoch und Samstag. Weitere Informationen finden Sie unter [Erstellen, Planen und Ausführen von wiederkehrenden Aufgaben und Workflows mit dem Serientrigger](../connectors/connectors-native-recurrence.md).
 
 * **Gleitendes Fenster**: Führt Ihren Workflow in regelmäßigen Intervallen aus, wobei Daten in kontinuierlichen Blöcken verarbeitet werden. Wenn Wiederholungen nicht ausgeführt werden, kehrt der Trigger „Gleitendes Fenster“ zurück und verarbeitet die fehlenden Wiederholungen. Sie können ein Startdatum und eine Startuhrzeit, eine Zeitzone und einen Zeitraum angeben, um den jede Wiederholung in Ihrem Workflow verzögert werden soll. Diese Trigger bietet keine Optionen zum Angeben von Tagen, Wochen, Monaten, Wochentagen oder der genauen Uhrzeit in Stunden und Minuten. Weitere Informationen finden Sie unter [Erstellen, Planen und Ausführen von wiederkehrenden Aufgaben und Workflows mit dem Trigger „Gleitendes Fenster“](../connectors/connectors-native-sliding-window.md).
+
+<a name="schedule-actions"></a>
 
 ## <a name="schedule-actions"></a>Zeitplanaktionen
 
@@ -64,7 +73,7 @@ Nach jeder Aktion in Ihrem Logik-App-Workflow können Sie die Aktionen „Verzö
 
 <a name="start-time"></a>
 
-Die folgenden Muster veranschaulichen, wie Sie die Wiederholung mit dem Startdatum und der Startuhrzeit steuern können und wie der Logic Apps-Dienst diese Wiederholungen ausführt:
+Die folgenden Muster veranschaulichen, wie Sie die Wiederholung mit dem Startdatum und der Startuhrzeit steuern können und wie der Logic Apps-Dienst diese Wiederholungen ausführt:
 
 | Startzeit | Wiederholung ohne Zeitplan | Wiederholung mit Zeitplan (nur Serientrigger) |
 |------------|-----------------------------|----------------------------------------------------|
@@ -75,11 +84,11 @@ Die folgenden Muster veranschaulichen, wie Sie die Wiederholung mit dem Startdat
 
 *Beispiel für eine Startuhrzeit in der Vergangenheit mit Wiederholung, aber ohne Zeitplan*
 
-Annahme: Das aktuelle Datum ist der 8. September 2017, die aktuelle Uhrzeit ist 13:00 Uhr. Sie geben den 7. September 2017 als Startdatum und 14:00 Uhr als Startuhrzeit an – dieses Datum liegt in der Vergangenheit. Sie geben zudem eine Wiederholung an, die alle 2 Tage ausgeführt wird.
+Annahme: Das aktuelle Datum ist der 8. September 2017, die aktuelle Uhrzeit ist 13:00 Uhr. Sie geben den 7. September 2017 als Startdatum und 14:00 Uhr als Startuhrzeit (also einen Zeitpunkt in der Vergangenheit) sowie eine Wiederholung an, die alle zwei Tage ausgeführt wird.
 
 | Startzeit | Die aktuelle Zeit | Serie | Schedule |
 |------------|--------------|------------|----------|
-| 2017-09-**07**T14:00:00Z <br>(**07**.09.2017 um 14:00 Uhr) | 2017-09-**08**T13:00:00Z <br>(**08**.09.2017 um 13:00 Uhr) | alle 2 Tage | {keine} |
+| 2017-09-**07**T14:00:00Z <br>(**07**.09.2017 um 14:00 Uhr) | 2017-09-**08**T13:00:00Z <br>(**08**.09.2017 um 13:00 Uhr) | Alle zwei Tage | {keine} |
 |||||
 
 Für den Serientrigger berechnet die Logic Apps-Engine die Ausführungszeiten basierend auf der Startuhrzeit, verwirft vergangene Ausführungszeiten, verwendet die nächste in der Zukunft liegende Startuhrzeit für die erste Ausführung und berechnet zukünftige Ausführungen basierend auf der letzten Ausführungszeit.

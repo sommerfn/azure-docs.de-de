@@ -8,12 +8,12 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive,mvc
 ms.topic: tutorial
 ms.date: 05/24/2019
-ms.openlocfilehash: c8c99d976f416d0c1d07fb3a266d37ecd6235fdb
-ms.sourcegitcommit: 2d3b1d7653c6c585e9423cf41658de0c68d883fa
+ms.openlocfilehash: fef551c254eb4fa212333a55bde3d642645a16b6
+ms.sourcegitcommit: bafb70af41ad1326adf3b7f8db50493e20a64926
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/20/2019
-ms.locfileid: "67295350"
+ms.lasthandoff: 07/25/2019
+ms.locfileid: "68489806"
 ---
 # <a name="tutorial-process-tweets-using-azure-event-hubs-and-apache-spark-in-hdinsight"></a>Tutorial: Verarbeiten von Tweets mit Azure Event Hubs und Apache Spark in HDInsight
 
@@ -48,7 +48,7 @@ Für den Empfang eines Datenstroms mit Tweets erstellen Sie eine Anwendung in Tw
     |---|---|
     |NAME|Geben Sie einen Anwendungsnamen an. Der für dieses Tutorial verwendete Wert lautet **HDISparkStreamApp0423**. Dieser Name muss eindeutig sein.|
     |BESCHREIBUNG|Geben Sie eine kurze Beschreibung der Anwendung an. Der für dieses Tutorial verwendete Wert lautet **Eine einfache HDInsight Spark-Streaminganwendung**.|
-    |Website|Geben Sie die Website der Anwendung an. Es muss keine gültige Website sein.  Der für dieses Tutorial verwendete Wert lautet **http://www.contoso.com** .|
+    |Website|Geben Sie die Website der Anwendung an. Es muss keine gültige Website sein.  Der für dieses Tutorial verwendete Wert lautet `http://www.contoso.com`.|
     |Rückruf-URL|Dies können Sie leer lassen.|
 
 1. Wählen Sie **Yes, I have read and agree to the Twitter Developer Agreement** (Ja, ich habe die Twitter-Vereinbarung für Entwickler gelesen und stimme ihr zu) und danach **Create your Twitter application** (Twitter-Anwendung erstellen) aus.
@@ -84,8 +84,8 @@ Sie verwenden diesen Event Hub zum Speichern von Tweets.
     |---|---|
     |NAME|Geben Sie einen Namen für den Event Hub an.  Der für dieses Tutorial verwendete Wert lautet **myeventhubns20180403**.|
     |Tarif|Wählen Sie **Standard** aus.|
-    |Abonnement|Wählen Sie Ihr entsprechendes Abonnement aus.|
-    |Ressourcengruppe|Wählen Sie eine vorhandene Ressourcengruppe aus der Dropdownliste aus, oder wählen Sie die Option **Neu erstellen** aus, um eine neue Ressourcengruppe zu erstellen.|
+    |Subscription|Wählen Sie Ihr entsprechendes Abonnement aus.|
+    |Resource group|Wählen Sie eine vorhandene Ressourcengruppe aus der Dropdownliste aus, oder wählen Sie die Option **Neu erstellen** aus, um eine neue Ressourcengruppe zu erstellen.|
     |Location|Wählen Sie den gleichen **Speicherort** wie für Ihren Apache Spark-Cluster in HDInsight aus, um Latenz und Kosten zu reduzieren.|
     |Automatische Vergrößerung aktivieren (optional) |Die „Automatische Vergrößerung“ skaliert die Anzahl der Durchsatzeinheiten, die Ihrem Event Hubs-Namespace zugewiesen werden, wenn Ihr Datenverkehr die Kapazität der zugewiesenen Durchsatzeinheiten überschreitet.  |
     |Maximale Durchsatzeinheiten für die automatische Vergrößerung (optional)|Dieser Schieberegler wird nur angezeigt, wenn Sie **Automatische Vergrößerung aktivieren** aktivieren.  |

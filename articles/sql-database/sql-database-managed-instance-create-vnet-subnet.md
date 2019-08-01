@@ -12,12 +12,12 @@ ms.author: srbozovi
 ms.reviewer: sstein, bonova, carlrab
 manager: craigg
 ms.date: 01/15/2019
-ms.openlocfilehash: 5e8b385d018482d281153f1cf80f9953cb8c7f06
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: d6e205c23545eb4a01ce58a8bc2b63c58200e32a
+ms.sourcegitcommit: 920ad23613a9504212aac2bfbd24a7c3de15d549
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60700476"
+ms.lasthandoff: 07/15/2019
+ms.locfileid: "68228288"
 ---
 # <a name="create-a-virtual-network-for-azure-sql-database-managed-instance"></a>Erstellen eines virtuellen Netzwerks für eine verwaltete Azure SQL-Datenbank-Instanz
 
@@ -34,6 +34,9 @@ Die verwaltete Azure SQL-Datenbank-Instanz muss in einem [virtuellen Azure-Netzw
 > Sie sollten [die Größe des Subnetzes für die verwaltete Instanz bestimmen](sql-database-managed-instance-determine-size-vnet-subnet.md), bevor Sie die erste Instanz bereitstellen. Die Größe des Subnetzes kann nach Einbinden der Ressourcen nicht mehr geändert werden.
 >
 > Wenn Sie die Verwendung eines vorhandenen virtuellen Netzwerks beabsichtigen, müssen Sie diese Netzwerkkonfiguration ändern, um Ihre verwaltete Instanz einzubeziehen. Weitere Informationen finden Sie unter [Ändern eines vorhandenen virtuellen Netzwerks für die verwaltete Instanz](sql-database-managed-instance-configure-vnet-subnet.md).
+>
+> Nachdem eine verwaltete Instanz erstellt wurde, wird das Verschieben dieser Instanz oder des VNET in eine andere Ressourcengruppe oder ein anderes Abonnement nicht unterstützt.
+
 
 ## <a name="create-a-virtual-network"></a>Erstellen eines virtuellen Netzwerks
 

@@ -10,12 +10,13 @@ ms.workload: identity
 ms.date: 08/04/2017
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 27c91185bacea839ec73a3f4bd06f5df43bd4edf
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.custom: fasttrack-edit
+ms.openlocfilehash: 216f5413ce3dae1f2d040643a30a4d7db4a879b8
+ms.sourcegitcommit: 64798b4f722623ea2bb53b374fb95e8d2b679318
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66509652"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67835414"
 ---
 # <a name="accessing-azure-ad-b2c-audit-logs"></a>Zugriff auf Active Directory B2C-Überwachungsprotokolle
 
@@ -24,12 +25,15 @@ Azure Active Directory B2C (Azure AD B2C) gibt Überwachungsprotokolle aus, die 
 > [!IMPORTANT]
 > Überwachungsprotokolle werden nur sieben Tage lang aufbewahrt. Planen Sie den Download und die Speicherung Ihrer Protokolle mit einer der unten aufgeführten Methoden, wenn eine längere Aufbewahrungsdauer erforderlich ist.
 
+> [!NOTE]
+> Im Abschnitt **Benutzer** des Blatts **Azure Active Directory** oder **Azure AD B2C** werden die Benutzeranmeldungen bei einzelnen Azure AD B2C-Anwendungen nicht angezeigt. Für die Anmeldungen wird zwar eine Benutzeraktivität angezeigt, jedoch sind keine Rückschlüsse auf die zugehörige B2C-Anwendung möglich, bei der sich der Benutzer angemeldet hat. Hierfür müssen Sie die Überwachungsprotokolle verwenden. Wie Sie dabei vorgehen, wird in diesem Artikel beschrieben.
+
 ## <a name="overview-of-activities-available-in-the-b2c-category-of-audit-logs"></a>Übersicht der verfügbaren Aktivitäten in der B2C-Kategorie von Überwachungsprotokollen
 Die **B2C**-Kategorie in Überwachungsprotokollen umfasst die folgenden Aktivitätstypen:
 
 |Aktivitätstyp |BESCHREIBUNG  |
 |---------|---------|
-|Autorisierung |Aktivitäten, die die Autorisierung eines Benutzers für den Zugriff auf B2C-Ressourcen betreffen (z.B. ein Administrator, der auf eine Liste von B2C-Richtlinien zugreift).         |
+|Authorization |Aktivitäten, die die Autorisierung eines Benutzers für den Zugriff auf B2C-Ressourcen betreffen (z.B. ein Administrator, der auf eine Liste von B2C-Richtlinien zugreift).         |
 |Verzeichnis |Aktivitäten im Zusammenhang mit Verzeichnisattributen, die abgerufen werden, wenn sich ein Administrator über das Azure-Portal anmeldet. |
 |Anwendung | CRUD-Vorgänge für B2C-Anwendungen |
 |Schlüssel |CRUD-Vorgänge für im B2C-Schlüsselcontainer gespeicherte Schlüssel |
@@ -40,28 +44,43 @@ Die **B2C**-Kategorie in Überwachungsprotokollen umfasst die folgenden Aktivit�
 > Informationen zu den CRUD-Aktivitäten des Benutzerobjekts finden Sie in der Kategorie **Hauptverzeichnis**.
 
 ## <a name="example-activity"></a>Beispielaktivität
-Das folgende Beispiel zeigt die erfassten Daten, wenn sich ein Benutzer bei einem externen Identitätsanbieter anmeldet: ![Überwachungsprotokolle – Beispiel](./media/active-directory-b2c-reference-audit-logs/audit-logs-example.png)
+Das folgende Beispiel zeigt die erfassten Daten, wenn sich ein Benutzer bei einem externen Identitätsanbieter anmeldet: ![Beispiel für die Seite „Audit Log Activity Details“ (Details zur Überwachungsprotokollaktivität) im Azure-Portal](./media/active-directory-b2c-reference-audit-logs/audit-logs-example.png)
+
+Das Panel „Aktivitätsbereich“ enthält die folgenden wichtigen Informationen:
+
+|`Section`|Feld|BESCHREIBUNG|
+|-------|-----|-----------|
+| Aktivität | NAME | Die ausgeführte Aktivität. Dies kann beispielsweise „Issue an id_token to the application“ (ID-Token für die Anwendung ausstellen) sein, wodurch die Benutzeranmeldung abgeschlossen wird. |
+| Initiiert von (Akteur) | ObjectId | Die **Objekt-ID** der B2C-Anwendung, bei der sich der Benutzer anmeldet. Dieser Bezeichner wird nicht im Azure-Portal angezeigt, kann aber über die Graph-API aufgerufen werden. |
+| Initiiert von (Akteur) | Spn | Die **Anwendungs-ID** der B2C-Anwendung, bei der sich der Benutzer anmeldet. |
+| Ziel(e) | ObjectId | Die **Objekt-ID** des Benutzers, der sich anmeldet. |
+| Weitere Details | TenantId | Die **Mandanten-ID** des Azure AD B2C-Mandanten. |
+| Weitere Details | `PolicyId` | Die **Richtlinien-ID** für den Benutzerfluss (Richtlinie), der zur Anmeldung des Benutzers verwendet wird. |
+| Weitere Details | ApplicationId | Die **Anwendungs-ID** der B2C-Anwendung, bei der sich der Benutzer anmeldet. |
 
 ## <a name="accessing-audit-logs-through-the-azure-portal"></a>Zugriff auf Überwachungsprotokolle über das Azure-Portal
 1. Öffnen Sie das [Azure-Portal](https://portal.azure.com). Stellen Sie sicher, dass Sie sich in Ihrem B2C-Verzeichnis befinden.
 2. Klicken Sie links in der Favoritenleiste auf **Azure Active Directory**.
-    
-    ![Überwachungsprotokolle – AAD-Schaltfläche](./media/active-directory-b2c-reference-audit-logs/audit-logs-portal-aad.png)
+
+    ![Hervorgehobene Schaltfläche „Azure Active Directory“ im Menü auf der linken Seite im Portal](./media/active-directory-b2c-reference-audit-logs/audit-logs-portal-aad.png)
 
 1. Klicken Sie unter **Aktivität** auf **Überwachungsprotokolle**.
 
-    ![Überwachungsprotokolle – Abschnitt „Protokolle“](./media/active-directory-b2c-reference-audit-logs/audit-logs-portal-section.png)
+    ![Hervorgehobene Schaltfläche „Überwachungsprotokolle“ im Abschnitt „Aktivität“ des Menüs](./media/active-directory-b2c-reference-audit-logs/audit-logs-portal-section.png)
 
 2. Wählen Sie im Dropdownfeld **Kategorie** die Option **B2C**.
 3. Klicken Sie auf **Anwenden**.
 
-    ![Überwachungsprotokolle – Kategorie](./media/active-directory-b2c-reference-audit-logs/audit-logs-portal-category.png)
+    ![Hervorgehobene Schaltflächen „Kategorie“ und „Anwenden“ im Überwachungsprotokollfilter](./media/active-directory-b2c-reference-audit-logs/audit-logs-portal-category.png)
 
 Sie sehen eine Liste der Aktivitäten, die in den letzten sieben Tagen protokolliert wurden.
 - Verwenden der Dropdownliste **Aktivitätsressourcentyp** zum Filtern nach den oben beschriebenen Aktivitätstypen.
 - Verwenden Sie die Dropdownliste **Datumsbereich**, um den Datumsbereich der angezeigten Aktivitäten zu filtern.
 - Wenn Sie auf eine bestimmte Zeile in der Liste klicken, zeigt Ihnen ein Kontextfeld auf der rechten Seite zusätzliche Attribute, die mit der Aktivität verbunden sind.
 - Klicken Sie auf **Herunterladen**, um die Aktivitäten als CSV-Datei herunterzuladen.
+
+> [!NOTE]
+> Sie können die Überwachungsprotokolle auch aufrufen, indem Sie zu **Azure AD B2C** anstelle von **Azure Active Directory** in der Favoritenleiste links navigieren. Klicken Sie unter **Aktivitäten** auf **Überwachungsprotokolle**. Hier finden Sie die gleichen Protokolle mit ähnlichen Filterfunktionen.
 
 ## <a name="accessing-audit-logs-through-the-azure-ad-reporting-api"></a>Zugriff auf Überwachungsprotokolle über die Azure AD-Berichterstellungs-API
 Überwachungsprotokolle werden in der gleichen Pipeline wie andere Aktivitäten für Azure Active Directory veröffentlicht, sodass auf sie über die [Azure Active Directory-Berichterstellungs-API](https://docs.microsoft.com/azure/active-directory/active-directory-reporting-api-audit-reference) zugegriffen werden kann.

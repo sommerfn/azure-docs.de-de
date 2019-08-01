@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 03/06/2019
 ms.author: mayg
-ms.openlocfilehash: efb49db6cce7ba238d40bf80ddf87b2a1a83834f
-ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
+ms.openlocfilehash: 062ed5e408317e95b36d6d0dfa395311ed4afe7f
+ms.sourcegitcommit: a6873b710ca07eb956d45596d4ec2c1d5dc57353
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/04/2019
-ms.locfileid: "66479985"
+ms.lasthandoff: 07/16/2019
+ms.locfileid: "68261432"
 ---
 # <a name="install-a-linux-master-target-server-for-failback"></a>Installieren eines Linux-Masterzielservers für Failbacks
 Nach dem Failover Ihrer virtuellen Computer zu Azure können Sie für die virtuellen Computer ein Failback zum lokalen Standort durchführen. Für ein Failback müssen Sie den virtuellen Computer von Azure zum lokalen Standort erneut schützen. Für diesen Prozess benötigen Sie einen lokalen Masterzielserver, der den Datenverkehr empfängt. 
@@ -245,7 +245,7 @@ Führen Sie die folgenden Schritte aus, um einen Aufbewahrungsdatenträger zu er
 
     ![Multipfad-ID](./media/vmware-azure-install-linux-master-target/image27.png)
 
-3. Formatieren Sie das Laufwerk, und erstellen Sie auf dem neuen Laufwerk ein Dateisystem: **mkfs.ext4 /dev/mapper/<Multipfad-ID des Aufbewahrungsdatenträgers>** .
+3. Formatieren Sie das Laufwerk, und erstellen Sie auf dem neuen Laufwerk ein Dateisystem: **mkfs.ext4 /dev/mapper/\<Multipfad-ID des Aufbewahrungsdatenträgers>** .
     
     ![Dateisystem](./media/vmware-azure-install-linux-master-target/image23-centos.png)
 

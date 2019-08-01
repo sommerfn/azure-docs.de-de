@@ -8,12 +8,12 @@ ms.subservice: cosmosdb-cassandra
 ms.devlang: java
 ms.topic: quickstart
 ms.date: 09/24/2018
-ms.openlocfilehash: c3bfcffacee7df8a5abf59676a1c47fa283dee7b
-ms.sourcegitcommit: 17411cbf03c3fa3602e624e641099196769d718b
+ms.openlocfilehash: 968c43ed78c59e5c1f147aaaa5bb33484d95c7a9
+ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/10/2019
-ms.locfileid: "65519037"
+ms.lasthandoff: 07/18/2019
+ms.locfileid: "68325483"
 ---
 # <a name="quickstart-build-a-cassandra-app-with-java-sdk-and-azure-cosmos-db"></a>Schnellstart: Erstellen einer Cassandra-App mit dem Java-SDK und Azure Cosmos DB
 
@@ -71,7 +71,7 @@ Beginnen wir nun mit der Verwendung von Code. Wir klonen eine Cassandra-App aus 
 
 ## <a name="review-the-code"></a>Überprüfen des Codes
 
-Dieser Schritt ist optional. Wenn Sie erfahren möchten, wie der Code die Datenbankressourcen erstellt, können Sie sich die folgenden Codeausschnitte ansehen. Andernfalls können Sie mit [Aktualisieren der Verbindungszeichenfolge](#update-your-connection-string) fortfahren. Diese Codeausschnitte stammen alle aus der Datei `src/main/java/com/azure/cosmosdb/cassandra/util/CassandraUtils.java`.  
+Dieser Schritt ist optional. Wenn Sie erfahren möchten, wie der Code die Datenbankressourcen erstellt, können Sie sich die folgenden Codeausschnitte ansehen. Andernfalls können Sie mit [Aktualisieren der Verbindungszeichenfolge](#update-your-connection-string) fortfahren. Alle Codeausschnitte stammen aus der Datei *src/main/java/com/azure/cosmosdb/cassandra/util/CassandraUtils.java*.  
 
 * Cassandra-Host, -Port, -Benutzername, -Kennwort und SSL-Optionen wurden festgelegt. Die Informationen zur Verbindungszeichenfolge stammen von der Seite „Verbindungszeichenfolge“ im Azure-Portal.
 
@@ -85,7 +85,7 @@ Dieser Schritt ist optional. Wenn Sie erfahren möchten, wie der Code die Datenb
     return cluster.connect();
     ```
 
-Die folgenden Codeausschnitte stammen aus der Datei `src/main/java/com/azure/cosmosdb/cassandra/repository/UserRepository.java`.
+Die folgenden Codeausschnitte stammen aus der Datei *src/main/java/com/azure/cosmosdb/cassandra/repository/UserRepository.java*.
 
 * Erstellen Sie einen neuen Keyspace.
 

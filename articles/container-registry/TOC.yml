@@ -77,6 +77,8 @@
       items:
         - name: Einschränken des Zugriffs mit dem virtuellen Netzwerk (Vorschau)
           href: container-registry-vnet.md
+        - name: Zugriff hinter einer Firewall
+          href: container-registry-firewall-access-rules.md
         - name: Authentication
           items:
             - name: Übersicht über die Authentifizierung
@@ -103,8 +105,14 @@
           href: container-registry-tasks-multi-step.md
         - name: Erstellen eines Image mit Buildpacks (Vorschauversion)
           href: container-registry-tasks-pack-build.md
-        - name: Verwenden mit verwalteter Identität
-          href: container-registry-tasks-authentication-managed-identity.md
+        - name: Zugreifen auf geschützte Ressourcen mit verwalteten Identitäten
+          items:
+            - name: Aktivieren einer verwalteten Identität für eine Aufgabe
+              href: container-registry-tasks-authentication-managed-identity.md
+            - name: Registrierungsübergreifende Authentifizierung über eine Aufgabe
+              href: container-registry-tasks-cross-registry-authentication.md
+            - name: Externe Authentifizierung mithilfe eines Schlüsseltresors
+              href: container-registry-tasks-authentication-key-vault.md
     - name: Registrierungen und anderen Azure-Dienste
       items:
         - name: Azure Container Instances

@@ -8,12 +8,12 @@ ms.custom: hdinsightactive,seodec18
 ms.topic: tutorial
 ms.date: 05/22/2019
 ms.author: hrasheed
-ms.openlocfilehash: 51f84234ac35be5f60d1aaa5dac661ad9ce5e0c2
-ms.sourcegitcommit: 25a60179840b30706429c397991157f27de9e886
+ms.openlocfilehash: da31b6a880344de918a3b3e0f89f60d985db2ce7
+ms.sourcegitcommit: 9dc7517db9c5817a3acd52d789547f2e3efff848
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/28/2019
-ms.locfileid: "66257899"
+ms.lasthandoff: 07/23/2019
+ms.locfileid: "68406023"
 ---
 # <a name="tutorial-use-apache-spark-structured-streaming-with-apache-kafka-on-hdinsight"></a>Tutorial: Verwenden von strukturiertem Apache Spark-Streaming mit Apache Kafka in HDInsight
 
@@ -44,7 +44,7 @@ Denken Sie nach dem Ausführen der Schritte in diesem Dokument daran, die Cluste
 > 
 > Der Einfachheit halber enthält dieses Dokument Links zu einer Vorlage, mit der die erforderlichen Azure-Ressourcen erstellt werden können. 
 >
-> Weitere Informationen zur Verwendung von HDInsight in einem virtuellen Netzwerk finden Sie im Dokument [Erweitern von HDInsight mit einem virtuellen Netzwerk](hdinsight-extend-hadoop-virtual-network.md).
+> Weitere Informationen zur Verwendung von HDInsight in einem virtuellen Netzwerk finden Sie im Dokument [Plan a virtual network for Azure HDInsight](hdinsight-plan-virtual-network-deployment.md) (Planen eines virtuellen Netzwerks für HDInsight).
 
 ## <a name="structured-streaming-with-apache-kafka"></a>Strukturiertes Streaming mit Apache Kafka
 
@@ -142,8 +142,8 @@ Führen Sie zum Erstellen eines virtuellen Azure-Netzwerks und zum anschließend
 
     | Einstellung | Wert |
     | --- | --- |
-    | Abonnement | Ihr Azure-Abonnement |
-    | Ressourcengruppe | Die Ressourcengruppe mit den Ressourcen. |
+    | Subscription | Ihr Azure-Abonnement |
+    | Resource group | Die Ressourcengruppe mit den Ressourcen. |
     | Location | Die Azure-Region, in der die Ressourcen erstellt werden. |
     | Spark Cluster Name (Spark-Clustername) | Der Name des Spark-Clusters. Die ersten sechs Zeichen müssen sich vom Kafka-Clusternamen unterscheiden. |
     | Kafka Cluster Name (Kafka-Clustername) | Der Name des Kafka-Clusters. Die ersten sechs Zeichen müssen sich vom Spark-Clusternamen unterscheiden. |

@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: tutorial
-ms.date: 02/13/2019
+ms.date: 07/24/2019
 ms.author: aahi
-ms.openlocfilehash: 75228b8c939cb5b8dd04471662ba86b46cfc808c
-ms.sourcegitcommit: 4c2b9bc9cc704652cc77f33a870c4ec2d0579451
+ms.openlocfilehash: ff4c703070d6a7ebd545de3043e5f59b764fe4c9
+ms.sourcegitcommit: 75a56915dce1c538dc7a921beb4a5305e79d3c7a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/17/2019
-ms.locfileid: "65860474"
+ms.lasthandoff: 07/24/2019
+ms.locfileid: "68478473"
 ---
 # <a name="tutorial-connect-to-the-text-analytics-service-with-connected-services-in-visual-studio"></a>Tutorial: Herstellen einer Verbindung mit dem Textanalysedienst mithilfe von „Verbundene Dienste“ in Visual Studio
 
@@ -32,7 +32,7 @@ Dieser Artikel und die Begleitartikel enthalten Details zur Verwendung des Featu
 
 ## <a name="add-support-to-your-project-for-the-text-analytics-service"></a>Hinzufügen von Unterstützung für den Textanalysedienst zu Ihrem Projekt
 
-1. Erstellen Sie ein neues ASP.NET Core-Webprojekt mit dem Namen „TextAnalyticsDemo“. Verwenden Sie die Projektvorlage „Webanwendung (Model-View-Controller)“ mit allen Standardeinstellungen. Sie müssen das Projekt „MyWebApplication“ nennen, damit der Namespace beim Kopieren von Code in das Projekt übereinstimmt.  Für das Beispiel in diesem Artikel wird MVC verwendet, Sie können den verbundenen Textanalysedienst jedoch mit jedem ASP.NET-Projekttyp nutzen.
+1. Erstellen Sie ein neues ASP.NET Core-Webprojekt mit dem Namen „TextAnalyticsDemo“. Verwenden Sie die Projektvorlage „Webanwendung (Model-View-Controller)“ mit allen Standardeinstellungen. Sie müssen das Projekt „MyWebApplication“ nennen, damit der Namespace übereinstimmt, wenn Sie Code in das Projekt kopieren.  Für das Beispiel in diesem Artikel wird MVC verwendet, Sie können den verbundenen Textanalysedienst jedoch mit jedem ASP.NET-Projekttyp nutzen.
 
 1. Doppelklicken Sie im **Projektmappen-Explorer** auf das Element **Verbundener Dienst**.
    Die Seite „Verbundener Dienst“ wird mit den Diensten angezeigt, die Sie dem Projekt hinzufügen können.
@@ -54,7 +54,7 @@ Dieser Artikel und die Begleitartikel enthalten Details zur Verwendung des Featu
    Folgen Sie dem Link zu den Details für Tarife.
 
 1. Wählen Sie **Hinzufügen** aus, um Unterstützung für den verbundenen Dienst hinzufügen.
-   Visual Studio ändert das Projekt, um die NuGet-Pakete, Konfigurationsdateieinträge und sonstigen Änderungen zur Unterstützung einer Verbindung mit dem Textanalysedienst hinzuzufügen. Im **Ausgabefenster** wird das Protokoll der ausgeführten Aktionen für Ihr Projekt angezeigt. Folgendes sollte angezeigt werden:
+   Visual Studio ändert das Projekt, um die NuGet-Pakete, Konfigurationsdateieinträge und sonstigen Änderungen zur Unterstützung einer Verbindung mit dem Textanalysedienst hinzuzufügen. Im **Ausgabefenster** wird das Protokoll der ausgeführten Aktionen für Ihr Projekt angezeigt. Ihre Ausgabe sollte wie folgt aussehen:
 
    ```output
     [6/1/2018 3:04:02.347 PM] Adding Text Analytics to the project.
@@ -90,7 +90,7 @@ Dieser Artikel und die Begleitartikel enthalten Details zur Verwendung des Featu
       }
    ```
 
-1. Fügen Sie im Ordner „Controller“ eine Klassendatei namens „DemoTextAnalyzeController“ hinzu, und ersetzen Sie deren Inhalt durch den folgenden Code:
+1. Fügen Sie im Ordner *Controller* eine Klassendatei namens `DemoTextAnalyzeController` hinzu, und ersetzen Sie deren Inhalt durch den folgenden Code:
 
     ```csharp
     using System;
@@ -153,7 +153,7 @@ Dieser Artikel und die Begleitartikel enthalten Details zur Verwendung des Featu
     }
     ```
     
-    Der Code enthält „GetTextAnalyzeClient“ zum Abrufen des Clientobjekts, mit dem Sie die Textanalyse-API aufrufen können. Zudem enthält er einen Anforderungshandler, der „DetectLanguage“ für einen angegebenen Text aufruft.
+    Der Code enthält `GetTextAnalyzeClient` zum Abrufen des Clientobjekts für Aufrufe der Textanalyse-API. Zudem enthält er einen Anforderungshandler, der „DetectLanguage“ für einen angegebenen Text aufruft.
 
 1. Fügen Sie die Hilfsklasse „MyHandler“ hinzu, die vom obigen Code verwendet wird.
 
@@ -171,7 +171,7 @@ Dieser Artikel und die Begleitartikel enthalten Details zur Verwendung des Featu
         }
     ```
 
-1. Fügen Sie im Ordner „Modelle“ eine Klasse für das Modell hinzu.
+1. Fügen Sie im Ordner *Modelle* eine Klasse für das Modell hinzu.
 
     ```csharp
     using System;

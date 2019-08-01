@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 07/05/2019
 ms.author: rhurey
-ms.openlocfilehash: 158819d481c0ce245539d783f194b159b2b9edb6
-ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
+ms.openlocfilehash: d73a63a8f58e14149121d0860268fc23930001bf
+ms.sourcegitcommit: 920ad23613a9504212aac2bfbd24a7c3de15d549
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67606523"
+ms.lasthandoff: 07/15/2019
+ms.locfileid: "68226344"
 ---
 # <a name="phrase-lists-for-speech-to-text"></a>Begriffslisten für Spracherkennung
 
@@ -24,6 +24,9 @@ Indem Sie den Speech-Diensten eine Begriffsliste zur Verfügung stellen, können
 Wenn Sie beispielsweise den Befehl „Move to“ und „Ward“ als mögliches Ziel haben, das gesprochen werden kann, können Sie den Eintrag „Move to Ward“ hinzufügen. Das Hinzufügen eines Begriffs erhöht die Wahrscheinlichkeit, dass bei der Audioerkennung „Move to Ward“ anstelle von „Move toward“ erkannt wird.
 
 Einer Begriffsliste können einzelne Wörter oder ganze Phrasen hinzugefügt werden. Bei der Erkennung wird ein Eintrag in einer Begriffsliste verwendet, wenn in der Audiodatei eine genaue Übereinstimmung enthalten ist. Wenn die Begriffsliste aufbauend auf dem vorherigen Beispiel „Move to Ward“ enthält und der erfasste Begriff „Move toward slowly“ lautet, dann ist das Erkennungsergebnis „Move to Ward slowly“.
+
+>[!Note]
+> Derzeit unterstützen Begriffslisten nur Englisch für die Spracherkennung.
 
 ## <a name="how-to-use-phrase-lists"></a>Verwenden von Begriffslisten
 

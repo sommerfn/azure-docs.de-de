@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: tutorial
-ms.date: 07/24/2019
+ms.date: 07/30/2019
 ms.author: aahi
-ms.openlocfilehash: e56926b9a23e0dd649fb85347e521a6dda7863a3
-ms.sourcegitcommit: 75a56915dce1c538dc7a921beb4a5305e79d3c7a
+ms.openlocfilehash: dba65e68e7c2204a4d4d7f80a603de607bba7609
+ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68479875"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "68697344"
 ---
 # <a name="tutorial-integrate-power-bi-with-the-text-analytics-cognitive-service"></a>Tutorial: Integrieren von Power BI in die Textanalyse von Cognitive Services
 
@@ -36,7 +36,7 @@ In diesem Tutorial lernen Sie Folgendes:
 - Microsoft Power BI Desktop. [Kostenlos herunterladen](https://powerbi.microsoft.com/get-started/).
 - Ein Microsoft Azure-Konto. [Starten Sie eine kostenlose Testversion](https://azure.microsoft.com/free/), oder [melden Sie sich an](https://portal.azure.com/).
 - Sie benötigen ein Cognitive Services-API-Konto mit der Textanalyse-API. Wenn Sie keines besitzen, können Sie sich für den Free-Tarif [registrieren](../../cognitive-services-apis-create-account.md) und so Zugriff auf 5.000 Transaktionen pro Monat erhalten. (Details zur Durchführung dieses Tutorials finden Sie auf der Seite mit den [Preisdetails](https://azure.microsoft.com/pricing/details/cognitive-services/text-analytics/).)
-- Außerdem benötigen Sie den [Zugriffsschlüssel für die Textanalyse](../how-tos/text-analytics-how-to-access-key.md), der bei der Registrierung für Sie generiert wurde.
+- Außerdem benötigen Sie den [Zugriffsschlüssel für die Textanalyse](../../cognitive-services-apis-create-account.md#get-the-keys-for-your-resource), der bei der Registrierung für Sie generiert wurde.
 - Kundenkommentare. Sie können [unsere Beispieldaten](https://aka.ms/cogsvc/ta) oder Ihre eigenen Daten verwenden. In diesem Tutorial wird davon ausgegangen, dass Sie unsere Beispieldaten verwenden.
 
 ## <a name="load-customer-data"></a>Laden von Kundendaten

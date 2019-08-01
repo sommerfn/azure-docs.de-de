@@ -11,19 +11,37 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 11/20/2018
-ms.author: saghorpa
+ms.date: 07/12/2019
+ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 043ecdcb83d2ee39e3373f029c00c6237f87601c
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.openlocfilehash: 7961578a1daf67176312d4257a4e86a7091082f0
+ms.sourcegitcommit: 10251d2a134c37c00f0ec10e0da4a3dffa436fb3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67709705"
+ms.lasthandoff: 07/13/2019
+ms.locfileid: "67869253"
 ---
 # <a name="available-skus-for-hli"></a>Verfügbare SKUs für HLI
 
-Der Dienst „SAP HANA in Azure (große Instanzen)“ ist in verschiedenen Konfigurationen in den folgenden Azure-Regionen verfügbar: „USA, Westen“, „USA, Osten“, „Australien, Osten“, „Australien, Südosten“, „Europa, Westen“, „Europa, Norden“, „Japan, Osten“ und „Japan, Westen“.
+Der auf Stempeln der Revision 3 basierende Dienst „SAP HANA in Azure (große Instanzen)“ ist in den folgenden Azure-Regionen mit verschiedenen Konfigurationen verfügbar:
+
+- USA (Westen)
+- East US
+- Australien (Osten)
+- Australien, Südosten
+- Europa, Westen
+- Nordeuropa
+- Japan, Osten
+- Japan, Westen
+
+Der auf Stempeln der Revision 4 basierende Dienst „SAP HANA in Azure (große Instanzen)“ ist in den folgenden Azure-Regionen mit verschiedenen Konfigurationen verfügbar:
+
+- USA, Westen 2
+- East US
+- Europa, Westen
+- Nordeuropa
+
+
 
 [Zertifizierte SAP HANA-SKUs für große HANA-Instanzen](https://www.sap.com/dmc/exp/2014-09-02-hana-hardware/enEN/iaas.html#categories=Microsoft%20Azure) werden in der folgenden Liste aufgeführt:
 
@@ -43,12 +61,12 @@ Der Dienst „SAP HANA in Azure (große Instanzen)“ ist in verschiedenen Konfi
 |---| SAP HANA in Azure S960m<br /> – 20 x Intel® Xeon® Processor E7-8890 v4<br /> 480 CPU-Kerne und 960 CPU-Threads |  20,0 TB |  46 TB | Verfügbar |
 
 
-Unter SAP HANA TDIv5 ermöglicht SAP die kundenspezifische Größenanpassung und kundenspezifische Projekte, die zu Serverkonfigurationen führen könnten, die nicht als zertifiziert wie in den folgenden Dokumenten aufgeführt werden:
+Unter SAP HANA TDIv5 ermöglicht SAP die kundenspezifische Größenanpassung und kundenspezifische Projekte, die zu Serverkonfigurationen führen könnten, die in den folgenden Dokumenten nicht als zertifiziert aufgeführt werden:
 
 - [Zertifizierte SAP HANA-Appliances](https://www.sap.com/dmc/exp/2014-09-02-hana-hardware/enEN/appliances.html)
 - [Zertifizierte SAP HANA-IaaS-Plattformen](https://www.sap.com/dmc/exp/2014-09-02-hana-hardware/enEN/iaas.html#categories=Microsoft%20Azure)
 
-In vielen Fällen enthalten diese kundenspezifischen Serverkonfigurationen mehr Arbeitsspeicher als die durch SAP zertifizierten Servereinheiten. Bei der Nutzung von SAP besteht für Kunden die Möglichkeit, SAP-Support zu erhalten und sich für ihre kundenspezifische Größe der Serverkonfigurationen zu zertifizieren. In Azure sind die folgenden Standard-SKUs für große HANA-Instanzen verfügbar und werden in der Microsoft-Preisliste für solche TDIv5-Projekte mit kundenspezifischer Größe aufgeführt.
+In vielen Fällen enthalten diese kundenspezifischen Serverkonfigurationen mehr Arbeitsspeicher als die durch SAP zertifizierten Servereinheiten. Bei der Nutzung von SAP besteht für Kunden die Möglichkeit, SAP-Support zu erhalten und sich für ihre kundenspezifische Größe der Serverkonfigurationen zu zertifizieren. Die folgenden Standard-SKUs für große HANA-Instanzen stehen in Azure zur Verfügung und werden in der Microsoft-Preisliste für solche TDIv5-Projekte mit kundenspezifischer Größe aufgeführt.
 
 | SKU|CPU | Arbeitsspeicher | Storage | Verfügbarkeit |
 | ---| --- | --- | --- | --- |

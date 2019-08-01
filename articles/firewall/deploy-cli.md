@@ -4,15 +4,15 @@ description: In diesem Artikel erfahren Sie, wie Sie Azure Firewall unter Verwen
 services: firewall
 author: vhorne
 ms.service: firewall
-ms.date: 06/11/2019
+ms.date: 7/10/2019
 ms.author: victorh
 ms.topic: article
-ms.openlocfilehash: b40ac789fbc331e779e85462724e5c8a8e9bce47
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 24954eecde58c978fa3e14bb3a2d411d708687a3
+ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67082235"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67707162"
 ---
 # <a name="deploy-and-configure-azure-firewall-using-azure-cli"></a>Bereitstellen und Konfigurieren von Azure Firewall mithilfe von Azure CLI
 
@@ -20,7 +20,7 @@ Die Steuerung des ausgehenden Netzwerkzugriffs ist ein wichtiger Teil eines umfa
 
 Eine Möglichkeit zur Steuerung des ausgehenden Netzwerkzugriffs aus einem Subnetz ist Azure Firewall. Mit Azure Firewall können Sie Folgendes konfigurieren:
 
-* Anwendungsregeln, die vollqualifizierte Domänennamen (Fully Qualified Domain Names, FQDNs) definieren, auf die von einem Subnetz aus zugegriffen werden kann.
+* Anwendungsregeln, die vollqualifizierte Domänennamen (Fully Qualified Domain Names, FQDNs) definieren, auf die von einem Subnetz aus zugegriffen werden kann. Der FQDN kann auch [SQL-Instanzen enthalten](sql-fqdn-filtering.md).
 * Netzwerkregeln, die die Quelladresse, das Protokoll, den Zielport und die Zieladresse definieren.
 
 Die konfigurierten Firewallregeln werden auf den Netzwerkdatenverkehr angewendet, wenn Sie Ihren Netzwerkdatenverkehr an die Firewall als Subnetz-Standardgateway weiterleiten.
@@ -39,7 +39,7 @@ In diesem Artikel werden folgende Vorgehensweisen behandelt:
 > * Einrichten einer Netzwerkumgebung zu Testzwecken
 > * Bereitstellen einer Firewall
 > * Erstellen einer Standardroute
-> * Konfigurieren einer Anwendungsregel zum Zulassen des Zugriffs auf „www.google.com“
+> * Konfigurieren einer Anwendungsregel zum Zulassen des Zugriffs auf [www.google.com]\(www.google.com)
 > * Konfigurieren einer Netzwerkregel, um den Zugriff auf externe DNS-Server zuzulassen
 > * Testen der Firewall
 
@@ -54,6 +54,13 @@ Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](htt
 ### <a name="azure-cli"></a>Azure-Befehlszeilenschnittstelle
 
 Wenn Sie die Befehlszeilenschnittstelle lokal installieren und verwenden möchten, müssen Sie mindestens die Azure CLI-Version 2.0.4 ausführen. Führen Sie **az --version** aus, um die Version festzustellen. Informationen zum Installieren oder Aktualisieren der Azure CLI finden Sie unter [Installieren der Azure CLI]( /cli/azure/install-azure-cli).
+
+Installieren Sie die Azure Firewall-Erweiterung:
+
+```azurecli-interactive
+az extension add -n azure-firewall
+```
+
 
 ## <a name="set-up-the-network"></a>Einrichten des Netzwerks
 

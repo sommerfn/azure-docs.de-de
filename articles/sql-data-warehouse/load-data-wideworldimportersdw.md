@@ -6,16 +6,16 @@ author: kevinvngo
 manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
-ms.subservice: load data
-ms.date: 04/17/2018
+ms.subservice: load-data
+ms.date: 07/17/2019
 ms.author: kevin
 ms.reviewer: igorstan
-ms.openlocfilehash: a4f52c2bd0040efef9e12a8feec0bfc779105ad4
-ms.sourcegitcommit: aa66898338a8f8c2eb7c952a8629e6d5c99d1468
+ms.openlocfilehash: 30b4009b2f52f4949a380f0fc51b02f94c98d966
+ms.sourcegitcommit: 770b060438122f090ab90d81e3ff2f023455213b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67461865"
+ms.lasthandoff: 07/17/2019
+ms.locfileid: "68304297"
 ---
 # <a name="tutorial-load-data-to-azure-sql-data-warehouse"></a>Tutorial: Laden von Daten in Azure SQL Data Warehouse
 
@@ -78,9 +78,9 @@ Führen Sie die folgenden Schritte aus, um eine leere SQL Data Warehouse-Instanz
 
 5. Klicken Sie auf **Auswählen**.
 
-6. Klicken Sie auf **Leistungsstufe**, um anzugeben, ob das Data Warehouse für Elastizität oder Compute optimiert wird, und um die Anzahl von Data Warehouse-Einheiten festzulegen. 
+6. Klicken Sie auf **Leistungsstufe**, um anzugeben, ob „Gen1“ oder „Gen2“ für das Data Warehouse verwendet werden soll, und um die Anzahl von Data Warehouse-Einheiten festzulegen. 
 
-7. Wählen Sie für dieses Tutorial die Dienstebene **Optimiert für Elastizität** aus. Der Schieberegler ist standardmäßig auf **DW400** gesetzt.  Schieben Sie ihn nach oben und unten, um sich mit der Funktionsweise vertraut zu machen. 
+7. Wählen Sie für dieses Tutorial die Dienstebene **Gen1** aus. Der Schieberegler ist standardmäßig auf **DW400** gesetzt.  Schieben Sie ihn nach oben und unten, um sich mit der Funktionsweise vertraut zu machen. 
 
     ![Konfigurieren der Leistung](media/load-data-wideworldimportersdw/configure-performance.png)
 

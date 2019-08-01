@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.custom: mvc
 ms.date: 03/14/2019
 ms.author: robinsh
-ms.openlocfilehash: b958711c498f0826f2a48d92d4892eb43ec8d18a
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: 23a005ebb16f4786c7dde9ec5b2a7ae7c5685cb8
+ms.sourcegitcommit: b49431b29a53efaa5b82f9be0f8a714f668c38ab
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67446075"
+ms.lasthandoff: 07/22/2019
+ms.locfileid: "68377236"
 ---
 # <a name="quickstart-enable-ssh-and-rdp-over-an-iot-hub-device-stream-by-using-a-c-proxy-application-preview"></a>Schnellstart: Ermöglichen von SSH und RDP über einen IoT Hub-Gerätestream unter Verwendung einer C-Proxyanwendung (Vorschauversion)
 
@@ -149,7 +149,7 @@ In diesem Abschnitt richten Sie einen End-to-End-Stream ein, um SSH-Datenverkehr
 
 ### <a name="run-the-device-local-proxy-application"></a>Ausführen der lokalen Geräteproxyanwendung
 
-1. Bearbeiten Sie die Quelldatei *iothub_client_c2d_streaming_sample.c* im Ordner *iothub_client/samples/iothub_client_c2d_streaming_sample*, und geben Sie Ihre Geräteverbindungszeichenfolge, IP bzw. Hostname des Zielgeräts und den SSH-Port 22 an:
+1. Bearbeiten Sie die Quelldatei *iothub_client_c2d_streaming_proxy_sample.c* im Ordner *iothub_client/samples/iothub_client_c2d_streaming_proxy_sample*, und geben Sie Ihre Geräteverbindungszeichenfolge, IP bzw. Hostname des Zielgeräts und den SSH-Port 22 an:
 
    ```C
    /* Paste in your iothub connection string  */

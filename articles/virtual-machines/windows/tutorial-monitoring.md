@@ -16,12 +16,12 @@ ms.workload: infrastructure
 ms.date: 12/05/2018
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 05fd9f06bec2a68455d42bfd460f0a5a419a255e
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.openlocfilehash: 25160c50cd4844fdb5b3a3454213b2067ef91d01
+ms.sourcegitcommit: 6cff17b02b65388ac90ef3757bf04c6d8ed3db03
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67708034"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68608029"
 ---
 # <a name="tutorial-monitor-and-update-a-windows-virtual-machine-in-azure"></a>Tutorial: Überwachen und Aktualisieren eines virtuellen Windows-Computers in Azure
 
@@ -300,4 +300,4 @@ In diesem Tutorial haben Sie virtuelle Computer mit Azure Security Center konfig
 Im nächsten Tutorial erhalten Sie Informationen zu Azure Security Center.
 
 > [!div class="nextstepaction"]
-> [Verwalten der VM-Sicherheit](./tutorial-azure-security.md)
+> [Verwalten der VM-Sicherheit](../../security/fundamentals/overview.md)

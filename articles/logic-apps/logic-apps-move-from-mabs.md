@@ -9,12 +9,12 @@ ms.author: jonfan
 ms.reviewer: estfan, LADocs
 ms.topic: article
 ms.date: 05/30/2017
-ms.openlocfilehash: f813cb5d8d5c442fc17f126c3a2ff6de7b0bdde1
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: dfc0aa4fa7c70ae91f25f97671b15dacfe991594
+ms.sourcegitcommit: 9a699d7408023d3736961745c753ca3cec708f23
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61321261"
+ms.lasthandoff: 07/16/2019
+ms.locfileid: "68273182"
 ---
 # <a name="migrate-from-biztalk-services-to-azure-logic-apps"></a>Migrieren von BizTalk Services nach Azure Logic Apps
 
@@ -52,7 +52,7 @@ BizTalk Services verfügt über verschiedene Arten von Artefakten.
 
 ## <a name="connectors"></a>Connectors
 
-BizTalk Services-Connectors erlauben das Senden und Empfangen von Daten über Bridges. Dazu gehören auch bidirektionale Bridges, die HTTP-basierte Anforderungs-/Antwort-Interaktionen ermöglichen. Logic Apps verwendet dieselbe Terminologie und besitzt 180+ Connectors, die durch Herstellen einer Verbindung mit einer Vielzahl von Technologien und Diensten demselben Zweck dienen. Connectors sind z.B. für SaaS-und PaaS-Clouddienste wie OneDrive, Office 365, Dynamics CRM und viele mehr verfügbar, plus lokale Systeme über das On-Premises Data Gateway, das den BizTalk Adapter Service für BizTalk Services ersetzt. Die Quellen in BizTalk Services sind auf FTP, SFTP und das Abonnement für Service Bus-Warteschlangen oder -Themen beschränkt.
+BizTalk Services-Connectors erlauben das Senden und Empfangen von Daten über Bridges. Dazu gehören auch bidirektionale Bridges, die HTTP-basierte Anforderungs-/Antwort-Interaktionen ermöglichen. Logic Apps verwendet dieselbe Terminologie und besitzt Hunderte Connectors, die durch Herstellen einer Verbindung mit einer Vielzahl von Technologien und Diensten demselben Zweck dienen. Connectors sind z.B. für SaaS-und PaaS-Clouddienste wie OneDrive, Office 365, Dynamics CRM und viele mehr verfügbar, plus lokale Systeme über das On-Premises Data Gateway, das den BizTalk Adapter Service für BizTalk Services ersetzt. Die Quellen in BizTalk Services sind auf FTP, SFTP und das Abonnement für Service Bus-Warteschlangen oder -Themen beschränkt.
 
 ![](media/logic-apps-move-from-mabs/sources.png)
 
