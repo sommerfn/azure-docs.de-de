@@ -10,12 +10,12 @@ ms.subservice: computer-vision
 ms.topic: tutorial
 ms.date: 04/17/2019
 ms.author: pafarley
-ms.openlocfilehash: 75e52398386e7ef1b338d13a8cfe8f20c06abcc6
-ms.sourcegitcommit: f6c85922b9e70bb83879e52c2aec6307c99a0cac
+ms.openlocfilehash: 00cca0cbf500ea4e884a9f9334896a18fe7b0978
+ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/11/2019
-ms.locfileid: "65541528"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68597854"
 ---
 # <a name="tutorial-use-computer-vision-to-generate-image-metadata-in-azure-storage"></a>Tutorial: Verwenden von „Maschinelles Sehen“ zum Generieren von Bildmetadaten in Azure Storage
 
@@ -42,7 +42,7 @@ Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](htt
 
 Sie müssen für Ihr Azure-Konto eine Maschinelles Sehen-Ressource erstellen. Mit dieser Ressource wird der Zugriff auf den Azure-Dienst „Maschinelles Sehen“ verwaltet. 
 
-1. Befolgen Sie die Anweisungen in [Erstellen einer Azure Cognitive Services-Ressource](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#single-service-subscription), um eine Ressource für maschinelles Sehen zu erstellen.
+1. Befolgen Sie die Anweisungen in [Erstellen einer Azure Cognitive Services-Ressource](../../cognitive-services-apis-create-account.md#single-service-resource), um eine Ressource für maschinelles Sehen zu erstellen.
 
 1. Kehren Sie dann zum Menü für Ihre Ressourcengruppe zurück, und klicken Sie auf das Abonnement der Maschinelles Sehen-API, das Sie gerade erstellt haben. Kopieren Sie die URL unter **Endpunkt** an einen Ort, an dem Sie gleich schnell darauf zugreifen können. Klicken Sie anschließend auf **Zugriffsschlüssel anzeigen**.
 

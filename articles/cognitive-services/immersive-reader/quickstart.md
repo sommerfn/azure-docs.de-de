@@ -10,18 +10,18 @@ ms.subservice: immersive-reader
 ms.topic: quickstart
 ms.date: 06/20/2019
 ms.author: metan
-ms.openlocfilehash: 6386c22044483a0ac4a324397cf2f9d22e83b579
-ms.sourcegitcommit: a874064e903f845d755abffdb5eac4868b390de7
+ms.openlocfilehash: 978b56f5c38a154c79544c7deb5d49396b1deff9
+ms.sourcegitcommit: d585cdda2afcf729ed943cfd170b0b361e615fae
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68442860"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "68688861"
 ---
 # <a name="quickstart-create-a-web-app-that-launches-the-immersive-reader-c"></a>Schnellstart: Erstellen einer Web-App zum Starten des plastischen Readers (C#)
 
 Der [plastische Reader](https://www.onenote.com/learningtools) ist ein inklusiv konzipiertes Tool, das bewährte Techniken zur Verbesserung des Leseverständnisses implementiert.
 
-In diesem Schnellstart erstellen Sie eine Web-App von Grund auf neu und integrieren den plastischen Reader anhand des SDK für den plastischen Reader. Eine vollständiges Arbeitsbeispiel für diesen Schnellstart finden Sie [hier](https://github.com/microsoft/immersive-reader-sdk/tree/master/samples/quickstart-csharp).
+In diesem Schnellstart erstellen Sie eine Web-App von Grund auf neu und integrieren den plastischen Reader anhand des SDK für den plastischen Reader. Eine vollständiges Arbeitsbeispiel für diesen Schnellstart finden Sie [hier](https://github.com/microsoft/immersive-reader-sdk/tree/master/js/samples/quickstart-csharp).
 
 Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) erstellen, bevor Sie beginnen.
 
@@ -224,4 +224,4 @@ Wenn Sie auf die Schaltfläche „Plastischer Reader“ klicken, sehen Sie, dass
 ## <a name="next-steps"></a>Nächste Schritte
 
 * Schauen Sie sich das [Tutorial](./tutorial.md) an, um zu sehen, welche weiteren Möglichkeiten Sie mit dem SDK für den plastischen Reader haben.
-* Schauen Sie sich das [SDK für den plastischen Reader](https://github.com/Microsoft/immersive-reader-sdk) und die [Referenz für das SDK für den plastischen Reader](./reference.md) an.
+* Schauen Sie sich das [SDK für den plastischen Reader](https://github.com/microsoft/immersive-reader-sdk) und die [Referenz für das SDK für den plastischen Reader](./reference.md) an.

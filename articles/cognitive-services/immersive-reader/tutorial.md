@@ -10,12 +10,12 @@ ms.subservice: immersive-reader
 ms.topic: tutorial
 ms.date: 06/20/2019
 ms.author: metan
-ms.openlocfilehash: 73f9ee597682cc995f3a2cc783abeee92bf11bd2
-ms.sourcegitcommit: a0b37e18b8823025e64427c26fae9fb7a3fe355a
+ms.openlocfilehash: ea9728ac54ae357925bd666ffecf270172137f77
+ms.sourcegitcommit: d585cdda2afcf729ed943cfd170b0b361e615fae
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/25/2019
-ms.locfileid: "68501140"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "68688302"
 ---
 # <a name="tutorial-launch-the-immersive-reader-nodejs"></a>Tutorial: Starten des plastischen Readers (Node.js)
 
@@ -126,7 +126,7 @@ Der API-Endpunkt **getimmersivereadertoken** muss durch eine Authentifizierung (
 
 ## <a name="launch-the-immersive-reader-with-sample-content"></a>Starten von Plastischer Reader mit Beispielinhalt
 
-1. Öffnen Sie _views\layout.pug_, und fügen Sie unter dem Tag `head` den folgenden Code vor dem Tag `body` hinzu. Diese Tags vom Typ `script` laden das [Immersive Reader SDK](https://github.com/Microsoft/immersive-reader-sdk) sowie JQuery.
+1. Öffnen Sie _views\layout.pug_, und fügen Sie unter dem Tag `head` den folgenden Code vor dem Tag `body` hinzu. Diese Tags vom Typ `script` laden das [Immersive Reader SDK](https://github.com/microsoft/immersive-reader-sdk) sowie JQuery.
 
     ```pug
     script(src='https://contentstorage.onenote.office.net/onenoteltir/immersivereadersdk/immersive-reader-sdk.0.0.2.js')
@@ -264,5 +264,5 @@ Mathematische Inhalte können mithilfe von [MathML](https://developer.mozilla.or
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* Machen Sie sich mit dem [Immersive Reader SDK](https://github.com/Microsoft/immersive-reader-sdk) und der [zugehörigen Referenz](./reference.md) vertraut.
-* Sehen Sie sich Codebeispiele auf [GitHub](https://github.com/microsoft/immersive-reader-sdk/tree/master/samples/advanced-csharp).
+* Machen Sie sich mit dem [Immersive Reader SDK](https://github.com/microsoft/immersive-reader-sdk) und der [zugehörigen Referenz](./reference.md) vertraut.
+* Sehen Sie sich Codebeispiele auf [GitHub](https://github.com/microsoft/immersive-reader-sdk/tree/master/js/samples/advanced-csharp).

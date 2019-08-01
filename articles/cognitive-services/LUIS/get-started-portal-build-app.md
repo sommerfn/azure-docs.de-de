@@ -1,6 +1,6 @@
 ---
 title: 'Schnellstart: Erstellen einer neuen App im LUIS-Portal'
-titleSuffix: Language Understanding - Azure Cognitive Services
+titleSuffix: Azure Cognitive Services
 description: In diesem Schnellstart erstellen Sie im LUIS-Portal eine neue App. Erstellen Sie die Grundbestandteile einer App, Absichten und Entitäten. Testen Sie die App, indem Sie im interaktiven Testbereich eine Beispielbenutzeräußerung eingeben, um die vorhergesagte Absicht zu erhalten. Das Erstellen einer App ist kostenlos. Es ist kein Azure-Abonnement erforderlich.
 services: cognitive-services
 author: diberry
@@ -10,12 +10,12 @@ ms.subservice: language-understanding
 ms.topic: quickstart
 ms.date: 05/07/2019
 ms.author: diberry
-ms.openlocfilehash: 2e4ff7dc97e3ee72336bd4c081caf1aa1a62bc56
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.openlocfilehash: f54643883028d93b56c7e122f43db95bb6d0b8c1
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65146540"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68560880"
 ---
 # <a name="quickstart-create-a-new-app-in-the-luis-portal"></a>Schnellstart: Erstellen einer neuen App im LUIS-Portal
 

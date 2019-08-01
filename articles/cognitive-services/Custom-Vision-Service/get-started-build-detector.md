@@ -1,6 +1,6 @@
 ---
 title: 'Schnellstart: Erstellen einer Objekterkennung – Custom Vision Service'
-titlesuffix: Azure Cognitive Services
+titleSuffix: Azure Cognitive Services
 description: In dieser Schnellstartanleitung erfahren Sie, wie Sie mithilfe der Custom Vision-Website ein Bildklassifizierungsmodell erstellen.
 services: cognitive-services
 author: anrothMSFT
@@ -10,12 +10,12 @@ ms.subservice: custom-vision
 ms.topic: quickstart
 ms.date: 07/12/2019
 ms.author: anroth
-ms.openlocfilehash: a5f211f3e8b7a55ca5d933ed2296ff9e54cb29e4
-ms.sourcegitcommit: 198c3a585dd2d6f6809a1a25b9a732c0ad4a704f
+ms.openlocfilehash: 40f30ddece9881f565f45f4ef6c9d0e2ad85fe95
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/23/2019
-ms.locfileid: "68424340"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68561132"
 ---
 # <a name="quickstart-how-to-build-an-object-detector-with-custom-vision"></a>Schnellstart: Informationen zum Erstellen einer Objekterkennung mit Custom Vision
 
@@ -29,7 +29,7 @@ Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](htt
 
 ## <a name="create-custom-vision-resources-in-the-azure-portal"></a>Erstellen von Custom Vision-Ressourcen im Azure-Portal
 
-Für die Verwendung des Custom Vision Service müssen Sie im Azure-Portal Custom Vision-Trainings- und -Vorhersageressourcen erstellen. Füllen Sie das Dialogfenster auf der Seite [Custom Vision erstellen](https://portal.azure.com/?microsoft_azure_marketplace_ItemHideKey=microsoft_azure_cognitiveservices_customvision#create/Microsoft.CognitiveServicesCustomVision) aus, um sowohl eine Trainings- als auch eine Vorhersageressource zu erstellen. 
+Für die Verwendung des Custom Vision Service müssen Sie im Azure-Portal Custom Vision-Trainingsressourcen und -Vorhersageressourcen erstellen. Füllen Sie das Dialogfenster auf der Seite [Custom Vision erstellen](https://portal.azure.com/?microsoft_azure_marketplace_ItemHideKey=microsoft_azure_cognitiveservices_customvision#create/Microsoft.CognitiveServicesCustomVision) aus, um sowohl eine Trainings- als auch eine Vorhersageressource zu erstellen. 
 
 ## <a name="create-a-new-project"></a>Erstellen eines neuen Projekts
 

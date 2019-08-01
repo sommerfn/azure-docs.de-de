@@ -10,12 +10,12 @@ ms.subservice: answer-search
 ms.topic: quickstart
 ms.date: 04/13/2018
 ms.author: rosh
-ms.openlocfilehash: 2eaf07e041998efade1091861144a2dc4d78c56d
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: c0da596e84ac827b55affd5545c516e7623980f5
+ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55860302"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "68698064"
 ---
 # <a name="quickstart-project-answer-search-with-python"></a>Schnellstart: „Projekt: Suche nach Antworten“ mit Python
 
@@ -23,7 +23,7 @@ Das folgende Python-Beispiel veranschaulicht das Erstellen und Senden einer Anfo
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-Rufen Sie einen Zugriffsschlüssel für die kostenlose Testversion von [Cognitive Services Labs](https://aka.ms/answersearchsubscription) ab.
+Rufen Sie einen Zugriffsschlüssel für die kostenlose Testversion von [Cognitive Services Labs](https://labs.cognitive.microsoft.com/en-us/project-answer-search) ab.
 
 In diesem Beispiel wird Python 3.6.4 verwendet.
 

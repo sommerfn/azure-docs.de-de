@@ -1,19 +1,18 @@
 ---
 title: 'Tutorial: Erweitern von Windows-Dateiservern mit der Azure-Dateisynchronisierung | Microsoft-Dokumentation'
 description: Es wird der gesamte Prozess beschrieben, mit dem Sie Windows-Dateiserver mit der Azure-Dateisynchronisierung erweitern.
-services: storage
 author: roygara
 ms.service: storage
 ms.topic: tutorial
 ms.date: 10/23/2018
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: df3850a839ac789957a9adffb7122a0b58987781
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: f71a27ea4da6bce5832287e948e0731672280196
+ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64705068"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "68699487"
 ---
 # <a name="tutorial-extend-windows-file-servers-with-azure-file-sync"></a>Tutorial: Erweitern von Windows-Dateiservern mit der Azure-Dateisynchronisierung
 
@@ -100,7 +99,7 @@ Sie haben jetzt ein Speicherkonto und eine Dateifreigabe mit einer Datei erstell
    1. Übernehmen Sie auf der Registerkarte **Datenträger** unter **Datenträgeroptionen** die Standardwerte.
    1. Wählen Sie unter **DATENTRÄGER** die Option **Create and attach a new disk** (Neuen Datenträger erstellen und anfügen).
 
-   1. Verwenden Sie die Standardeinstellungen mit Ausnahme von **Größe (GiB)**. Den Wert dieser Option können Sie für dieses Tutorial in **1 GB** ändern.
+   1. Verwenden Sie die Standardeinstellungen mit Ausnahme von **Größe (GiB)** . Den Wert dieser Option können Sie für dieses Tutorial in **1 GB** ändern.
 
       ![Datenträgerdetails](./media/storage-sync-files-extend-servers/vm-create-new-disk-details.png)
 
@@ -223,7 +222,7 @@ Für die Bereitstellung der Azure-Dateisynchronisierung platzieren Sie zuerst ei
    | **Name** | Ein eindeutiger Name (pro Abonnement) für den Speichersynchronisierungsdienst.<br><br>Verwenden Sie für dieses Tutorial _afssyncservice02_. |
    | **Abonnement** | Das Azure-Abonnement, das Sie für dieses Tutorial verwenden. |
    | **Ressourcengruppe** | Die Ressourcengruppe, die den Speichersynchronisierungsdienst enthält.<br><br>Verwenden Sie für dieses Tutorial _afsresgroup101918_. |
-   | **Location** | USA (Ost) |
+   | **Location** | East US |
 
 1. Wenn Sie fertig sind, können Sie **Erstellen** wählen, um den **Speichersynchronisierungsdienst** bereitzustellen.
 1. Wählen Sie die Registerkarte **Benachrichtigungen** und dann **Zu Ressource wechseln**.

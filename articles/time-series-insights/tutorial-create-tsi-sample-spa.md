@@ -8,12 +8,12 @@ ms.date: 06/29/2019
 ms.author: dpalled
 manager: cshankar
 ms.custom: seodec18
-ms.openlocfilehash: 8ee4cd30d5742896df96ccfd714d85ebbab194f9
-ms.sourcegitcommit: ccb9a7b7da48473362266f20950af190ae88c09b
+ms.openlocfilehash: bd50fb4a28aa0ab71c1fb0aeba772a2bd7d1df9d
+ms.sourcegitcommit: 13d5eb9657adf1c69cc8df12486470e66361224e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67595701"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "68677726"
 ---
 # <a name="tutorial-create-an-azure-time-series-insights-single-page-web-app"></a>Tutorial: Erstellen einer einseitigen Azure Time Series Insights-Web-App
 
@@ -30,9 +30,9 @@ In diesem Tutorial erhalten Sie Informationen zu Folgendem:
 > * Den Quellcode für dieses Tutorial finden Sie auf [GitHub](https://github.com/Microsoft/tsiclient/tree/tutorial/pages/tutorial).
 > * Die [Clientbeispiel-App](https://insights.timeseries.azure.com/clientsample) von Time Series Insights wird gehostet, um die in diesem Tutorial verwendete fertige App anzuzeigen.
 
-## <a name="prerequisites"></a>Voraussetzungen
+Registrieren Sie sich für ein [kostenloses Azure-Abonnement](https://azure.microsoft.com/free/), falls Sie noch keins besitzen.
 
-* Registrieren Sie sich für ein [kostenloses Azure-Abonnement](https://azure.microsoft.com/free/), falls Sie noch keins besitzen.
+## <a name="prerequisites"></a>Voraussetzungen
 
 * Eine kostenlose Kopie von Visual Studio. Laden Sie für den Einstieg die [2017 oder 2019 Communityversionen](https://www.visualstudio.com/downloads/) herunter.
 
@@ -57,7 +57,7 @@ In diesem Tutorial werden darüber hinaus Daten aus der Time Series Insights-Umg
 1. Erstellen Sie ein Verzeichnis, um die Anwendungsprojektdateien zu speichern. Besuchen Sie dann jede der folgenden URLs. Klicken Sie in der oberen rechten Ecke der Seite mit der rechten Maustaste auf den Link **Raw** (Roh), und wählen Sie dann **Speichern unter** aus, um die Dateien in Ihrem Projektverzeichnis zu speichern.
 
    - [*index.html*](https://github.com/Microsoft/tsiclient/blob/tutorial/pages/tutorial/index.html): HTML und JavaScript für die Seite
-   - [*sampleStyles.css*]( https://github.com/Microsoft/tsiclient/blob/tutorial/pages/tutorial/sampleStyles.css): das CSS-Stylesheet
+   - [*sampleStyles.css*](https://github.com/Microsoft/tsiclient/blob/tutorial/pages/tutorial/sampleStyles.css): das CSS-Stylesheet
 
    > [!NOTE]
    > Je nach Browser müssen Sie eventuell die Dateierweiterungen in HTML oder CSS ändern, bevor Sie die Datei speichern.

@@ -10,12 +10,12 @@ ms.subservice: bing-visual-search
 ms.topic: overview
 ms.date: 03/27/2019
 ms.author: scottwhi
-ms.openlocfilehash: 4da4340176259265fd36c55d2b81ecfc3f4ed5f8
-ms.sourcegitcommit: cf438e4b4e351b64fd0320bf17cc02489e61406a
+ms.openlocfilehash: 15abbfd8892464f3a2c21a85c07bc5b8e94e47ad
+ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/08/2019
-ms.locfileid: "67657701"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68594692"
 ---
 # <a name="what-is-the-bing-visual-search-api"></a>Was ist die API für die visuelle Bing-Suche?
 
@@ -47,7 +47,7 @@ Die Ergebnisse der visuellen Bing-Suche beinhalten auch Begrenzungsrahmen für r
 
 Die API für die visuelle Bing-Suche ist ein RESTful-Webdienst und kann somit problemlos in jeder Programmiersprache aufgerufen werden, die HTTP-Anforderungen beherrscht und JSON analysieren kann. Für den Dienst kann entweder die REST-API oder das SDK verwendet werden.
 
-1. Erstellen Sie ein [Cognitive Services-Konto](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) mit Zugriff auf die Bing-Suche-APIs. Falls Sie nicht über ein Azure-Abonnement verfügen, können Sie ein [kostenloses Konto erstellen](https://azure.microsoft.com/free/). Sie können Ihren Abonnementschlüssel über das [Azure-Portal](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#get-the-keys-for-your-subscription) abrufen, nachdem Sie Ihr Konto erstellt haben, oder über die [Azure-Website](https://azure.microsoft.com/try/cognitive-services/my-apis), nachdem Sie eine kostenlose Testversion aktiviert haben.
+1. Erstellen Sie ein [Cognitive Services-Konto](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) mit Zugriff auf die Bing-Suche-APIs. Falls Sie nicht über ein Azure-Abonnement verfügen, können Sie ein [kostenloses Konto erstellen](https://azure.microsoft.com/free/). Sie können Ihren Abonnementschlüssel über das [Azure-Portal](../cognitive-services-apis-create-account.md#get-the-keys-for-your-resource) abrufen, nachdem Sie Ihr Konto erstellt haben, oder über die [Azure-Website](https://azure.microsoft.com/try/cognitive-services/my-apis), nachdem Sie eine kostenlose Testversion aktiviert haben.
 2. Senden Sie eine Anforderung mit einer gültigen Suchabfrage an die API.
 3. Analysieren Sie die zurückgegebene JSON-Nachricht, um die API-Antwort zu verarbeiten.
 

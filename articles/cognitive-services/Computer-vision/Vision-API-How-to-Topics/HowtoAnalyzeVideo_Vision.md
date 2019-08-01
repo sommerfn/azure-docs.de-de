@@ -1,6 +1,6 @@
 ---
 title: 'Beispiel: Analysieren von Videos in Echtzeit – Maschinelles Sehen-API'
-titlesuffix: Azure Cognitive Services
+titleSuffix: Azure Cognitive Services
 description: Erfahren Sie, wie Sie nahezu in Echtzeit Analysen für Frames aus einem Livevideostream durchführen, indem Sie die Maschinelles Sehen-API verwenden.
 services: cognitive-services
 author: KellyDF
@@ -11,12 +11,12 @@ ms.topic: sample
 ms.date: 03/21/2019
 ms.author: kefre
 ms.custom: seodec18
-ms.openlocfilehash: feafb983a7b9e4aea6091753842b03a65ccd3ca5
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.openlocfilehash: 3432ea20f9fb59524940258e13c46ee6f4c4e890
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "60001557"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68565694"
 ---
 # <a name="how-to-analyze-videos-in-real-time"></a>Analysieren von Videos in Echtzeit
 

@@ -1,6 +1,6 @@
 ---
 title: 'Schnellstart: Erstellen einer Wissensdatenbank – REST, Java – QnA Maker'
-titlesuffix: Azure Cognitive Services
+titleSuffix: Azure Cognitive Services
 description: Diese REST-basierte Schnellstartanleitung für Java führt Sie durch das programmgesteuerte Erstellen einer Beispielwissensdatenbank für QnA Maker, die auf dem Azure-Dashboard Ihres Cognitive Services-API-Kontos angezeigt wird.
 services: cognitive-services
 author: diberry
@@ -10,12 +10,12 @@ ms.subservice: qna-maker
 ms.topic: quickstart
 ms.date: 07/16/2019
 ms.author: diberry
-ms.openlocfilehash: 298f7e90bb6848d7b0af032bdaff8724a69c227f
-ms.sourcegitcommit: a6873b710ca07eb956d45596d4ec2c1d5dc57353
+ms.openlocfilehash: 767866fd6768237c4d3a0d7ea422521254414fb3
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68249659"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68559875"
 ---
 # <a name="quickstart-create-a-knowledge-base-in-qna-maker-using-java"></a>Schnellstart: Erstellen einer Wissensdatenbank in QnA Maker mithilfe von Java
 

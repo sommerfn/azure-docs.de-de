@@ -1,21 +1,21 @@
 ---
 title: 'Tutorial: Verwenden der benutzerdefinierten Logoerkennung zum Erkennen von Azure-Diensten: Custom Vision'
-titlesuffix: Azure Cognitive Services
+titleSuffix: Azure Cognitive Services
 description: In diesem Tutorial arbeiten Sie Schritt für Schritt eine Beispiel-App durch, die Azure Custom Vision im Rahmen eines Szenarios zur Logoerkennung verwendet. Erfahren Sie, wie Custom Vision mit anderen Komponenten verwendet wird, um eine End-to-End-Anwendung bereitzustellen.
 services: cognitive-services
 author: PatrickFarley
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
 ms.subservice: custom-vision
 ms.topic: tutorial
 ms.date: 07/03/2019
 ms.author: pafarley
-ms.openlocfilehash: b4b10591069b71a4e70769f5bdcd6149768c5007
-ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
+ms.openlocfilehash: b0a5b110951d7b13110fab935d5ca1333f7f8c1e
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67604024"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68564201"
 ---
 # <a name="tutorial-recognize-azure-service-logos-in-camera-pictures"></a>Tutorial: Erkennen von Azure-Dienstlogos in Bildern von der Kamera
 

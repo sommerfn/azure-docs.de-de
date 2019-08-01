@@ -1,6 +1,6 @@
 ---
 title: 'Schnellstart: Erstellen eines Objekterkennungsprojekts mit dem Custom Vision SDK für Node.js'
-titlesuffix: Azure Cognitive Services
+titleSuffix: Azure Cognitive Services
 description: Erstellen Sie ein Projekt, fügen Sie Tags hinzu, laden Sie Bilder hoch, trainieren Sie Ihr Projekt, und erkennen Sie Objekte unter Verwendung des Node.js-SDK.
 services: cognitive-services
 author: areddish
@@ -10,12 +10,12 @@ ms.subservice: custom-vision
 ms.topic: quickstart
 ms.date: 07/15/2019
 ms.author: areddish
-ms.openlocfilehash: 45fce7a8b02f8613b666ed08d4755b0deb46cbca
-ms.sourcegitcommit: 9a699d7408023d3736961745c753ca3cec708f23
+ms.openlocfilehash: 306f812ab10c0ef247fdc1201e7df2a23b949a54
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68276449"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68564182"
 ---
 # <a name="quickstart-create-an-object-detection-project-with-the-custom-vision-nodejs-sdk"></a>Schnellstart: Erstellen eines Objekterkennungsprojekts mit dem Custom Vision SDK für Node.js
 

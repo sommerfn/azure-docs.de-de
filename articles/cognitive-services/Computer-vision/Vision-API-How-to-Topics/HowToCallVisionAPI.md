@@ -1,6 +1,6 @@
 ---
 title: 'Beispiel: Aufrufen der API für die Bildanalyse – Maschinelles Sehen-API'
-titlesuffix: Azure Cognitive Services
+titleSuffix: Azure Cognitive Services
 description: Erfahren Sie, wie Sie mithilfe von REST in Azure Cognitive Services die Maschinelles Sehen-API aufrufen.
 services: cognitive-services
 author: KellyDF
@@ -11,12 +11,12 @@ ms.topic: sample
 ms.date: 03/21/2019
 ms.author: kefre
 ms.custom: seodec18
-ms.openlocfilehash: 0e2767660edf2a9dbcb8617b07a6b9f71fedb743
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.openlocfilehash: 35e6ad922ab54748165fcf8e273d93ee44bc42cc
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "60011242"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68564526"
 ---
 # <a name="example-how-to-call-the-computer-vision-api"></a>Beispiel: Aufrufen der Maschinelles Sehen-API
 
@@ -164,12 +164,12 @@ Hier sehen Sie ein Beispiel:
 }
 ```
 
-Feld | Type | Inhalt
+Feld | type | Inhalt
 ------|------|------|
-Tags  | `object` | Objekt der obersten Ebene für das Array von Tags
+`Tags`  | `object` | Objekt der obersten Ebene für das Array von Tags
 tags[].Name | `string`  | Schlüsselwort von Tags-Klassifizierung
 tags[].Score    | `number`  | Zuverlässigkeitsbewertung, zwischen 0 und 1.
-Beschreibung  | `object` | Objekt der obersten Ebene für eine Beschreibung.
+description  | `object` | Objekt der obersten Ebene für eine Beschreibung.
 description.tags[] |    `string`    | Liste der Tags.  Wenn nicht sicher ist, dass eine Beschriftung erstellt werden kann, sind diese Tags ggf. die einzigen Informationen, die dem Aufrufenden zur Verfügung stehen.
 description.captions[].text | `string`  | Ein Ausdruck, der das Bild beschreibt.
 description.captions[].confidence   | `number`  | Zuverlässigkeit für den Ausdruck.
@@ -226,7 +226,7 @@ Bei domänenspezifischen Modellen mit Option 2 (Erweiterte Analyse) wird der Rü
 
 Das Feld „categories“ ist eine Liste einer oder mehrerer der [86 Kategorien](../Category-Taxonomy.md) in der ursprünglichen Taxonomie. Beachten Sie auch, dass Kategorien, die mit einem Unterstrich enden, mit dieser Kategorie und ihren untergeordneten Kategorien übereinstimmen (z.B. „people_“ sowie „people_group“, für Prominentenmodell).
 
-Feld   | Type  | Inhalt
+Feld   | type  | Inhalt
 ------|------|------|
 categories | `object`   | Objekt der obersten Ebene
 categories[].name    | `string` | Name aus der 86-Kategorie-Taxonomie

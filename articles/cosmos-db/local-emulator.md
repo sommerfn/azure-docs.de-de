@@ -6,12 +6,12 @@ ms.topic: tutorial
 author: markjbrown
 ms.author: mjbrown
 ms.date: 07/26/2019
-ms.openlocfilehash: 626f71c3938b944cb705dfea4a964c6c33c42164
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 3e07b448e73bf64a3c1ec257948b3d61415480f0
+ms.sourcegitcommit: 08d3a5827065d04a2dc62371e605d4d89cf6564f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68565440"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68619842"
 ---
 # <a name="use-the-azure-cosmos-emulator-for-local-development-and-testing"></a>Verwenden des Azure Cosmos-Emulators für lokale Entwicklungs- und Testvorgänge
 
@@ -97,7 +97,7 @@ Account key: C2y6yDjf5/R+ob0N8A7Cgv30VRDJIWEHLM+4QDU5DE2nQ9nDuVTqobD4b8mGGyPMbIZ
 > Der vom Azure Cosmos-Emulator unterstützte Hauptschlüssel ist nur für die Verwendung mit dem Emulator gedacht. Es ist nicht möglich, Ihr Azure Cosmos DB-Konto und den dazugehörigen Schlüssel mit dem Azure Cosmos-Emulator zu verwenden.
 
 > [!NOTE]
-> Wenn Sie den Emulator mit der Option „/Key“ gestartet haben, verwenden Sie den generierten Schlüssel anstelle von `C2y6yDjf5/R+ob0N8A7Cgv30VRDJIWEHLM+4QDU5DE2nQ9nDuVTqobD4b8mGGyPMbIZnqyMsEcaGQy67XIw/Jw==`. Weitere Informationen zur Option „/Key“ finden Sie in der [Referenz zum Befehlszeilentool](#command-line-syntax).
+> Wenn Sie den Emulator mit der Option „/Key“ gestartet haben, verwenden Sie den generierten Schlüssel anstelle von `C2y6yDjf5/R+ob0N8A7Cgv30VRDJIWEHLM+4QDU5DE2nQ9nDuVTqobD4b8mGGyPMbIZnqyMsEcaGQy67XIw/Jw==`. Weitere Informationen zur Option „/Key“ finden Sie in der [Referenz zum Befehlszeilentool](#command-line).
 
 Genau wie Azure Cosmos DB unterstützt der Azure Cosmos-Emulator ausschließlich die sichere Kommunikation über SSL.
 

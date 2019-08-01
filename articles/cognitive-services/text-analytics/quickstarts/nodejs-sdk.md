@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: quickstart
-ms.date: 06/11/2019
+ms.date: 07/30/2019
 ms.author: shthowse
-ms.openlocfilehash: 7e43d53c0916cf7fdc684c9e044e632015662c3b
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 9b8a713d58d5753e04de050e0bc961b5e8388123
+ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67080931"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "68697484"
 ---
 # <a name="quickstart-using-nodejs-to-call-the-text-analytics-cognitive-service"></a>Schnellstart: Verwenden von Node.js zum Aufrufen der Textanalyse von Cognitive Services
 <a name="HOLTop"></a>
@@ -33,7 +33,7 @@ Die technische Dokumentation für die APIs finden Sie in den [API-Definitionen](
 
 [!INCLUDE [cognitive-services-text-analytics-signup-requirements](../../../../includes/cognitive-services-text-analytics-signup-requirements.md)]
 
-Außerdem benötigen Sie den [Endpunkt und den Zugriffsschlüssel](../How-tos/text-analytics-how-to-access-key.md) – beide wurden der Registrierung für Sie generiert.
+Außerdem benötigen Sie den [Endpunkt und den Zugriffsschlüssel](../../cognitive-services-apis-create-account.md#get-the-keys-for-your-resource) – beide wurden der Registrierung für Sie generiert.
 
 ## <a name="create-a-nodejs-application-and-install-the-sdk"></a>Erstellen einer Node.js-Anwendung und Installieren des SDK
 
