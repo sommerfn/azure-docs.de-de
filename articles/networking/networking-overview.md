@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/17/2019
 ms.author: kumud
-ms.openlocfilehash: 759b61e5fb444643bf83e1cca47b6f7152a96590
-ms.sourcegitcommit: 770b060438122f090ab90d81e3ff2f023455213b
+ms.openlocfilehash: 857b38693ca85d6ab397cbe850f0cd530fefc88c
+ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/17/2019
-ms.locfileid: "68305652"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68598390"
 ---
 # <a name="azure-networking"></a>Azure-Netzwerke
 
@@ -36,9 +36,9 @@ Dieser Abschnitt beschreibt Dienste, die die Konnektivität zwischen Azure-Resso
 |[Virtuelles Netzwerk](#vnet)|Ermöglicht es Azure-Ressourcen sicher untereinander sowie mit dem Internet und mit lokalen Netzwerken zu kommunizieren.| <p>[Erstellen von Netzwerksicherheitsgruppen über das Azure-Portal](../virtual-network/tutorial-filter-network-traffic.md)</p> <p>[Weiterleiten von Netzwerkdatenverkehr](../virtual-network/tutorial-create-route-table-portal.md)</p> <p>[Einschränken des Netzwerkzugriffs auf Ressourcen](../virtual-network/tutorial-restrict-network-access-to-resources.md)</p> <p>[Herstellen von Verbindungen zwischen virtuellen Netzwerken](../virtual-network/tutorial-connect-virtual-networks-portal.md)</p>|
 |[ExpressRoute](#expressroute)|Dehnt Ihre lokalen Netzwerke über eine private Verbindung, die von einem Konnektivitätsanbieter bereitgestellt wird, auf die Cloud von Microsoft aus.|<p>[Erstellen und Ändern einer ExpressRoute-Verbindung](../expressroute/expressroute-howto-circuit-portal-resource-manager.md)</p> <p>[Erstellen und Ändern des Peerings für eine ExpressRoute-Verbindung](../expressroute/expressroute-howto-routing-portal-resource-manager.md)</p> <p>[Verknüpfen eines VNet mit einer ExpressRoute-Verbindung](../expressroute/expressroute-howto-linkvnet-portal-resource-manager.md)</p> <p>[Konfiguration und Verwaltung von Routenfiltern für ExpressRoute-Verbindungen](../expressroute/how-to-routefilter-portal.md)</p>|
 |[VPN Gateway](#vpngateway)|Sendet verschlüsselten Datenverkehr zwischen einem virtuellen Azure-Netzwerk und einem lokalen Standort über das öffentliche Internet.|<p>[Site-to-site-Verbindungen](../vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-portal.md)</p> <p>[VNet-zu-VNet-Verbindungen](../vpn-gateway/vpn-gateway-howto-vnet-vnet-resource-manager-portal.md)</p> <p>[Point-to-Site-Verbindungen](../vpn-gateway/vpn-gateway-howto-point-to-site-resource-manager-portal.md)</p>|
-|[Virtual WAN](#virtualwan)|Optimiert und automatisiert die Branchkonnektivität zu und durch Azure. Azure-Regionen dienen als Hubs, die Sie auswählen können, um Branches mit ihnen zu verbinden.|<p>[Site-to-site-Verbindungen](../virtual-wan/virtual-wan-site-to-site-portal.md), [ExpressRoute-Verbindungen](../virtual-wan/virtual-wan-expressroute-portal.md)</p> <p>[Point-to-site-Verbindungen](../virtual-wan/virtual-wan-point-to-site-portal.md)</p> |
+|[Virtual WAN](#virtualwan)|Optimiert und automatisiert die Branchkonnektivität zu und durch Azure. Azure-Regionen dienen als Hubs, die Sie auswählen können, um Branches mit ihnen zu verbinden.|<p>[Site-to-site-Verbindungen](../virtual-wan/virtual-wan-site-to-site-portal.md), [ExpressRoute-Verbindungen](../virtual-wan/virtual-wan-expressroute-portal.md)</p>|
 |[Azure DNS](#dns)|Hostet die DNS-Domäne, die eine Namensauflösung mithilfe der Microsoft Azure-Infrastruktur ermöglicht.|<p>[Hosten Ihrer Domäne in Azure DNS](../dns/dns-delegate-domain-azure-dns.md)</p><p>[Erstellen von DNS-Einträgen für eine Web-App](../dns/dns-web-sites-custom-domain.md)</p> <p>[Erstellen eines Aliaseintrags für Traffic Manager](../dns/tutorial-alias-tm.md)</p> <p>[Erstellen Sie einen Aliaseintrag für die öffentliche IP-Adresse](../dns/tutorial-alias-pip.md)</p> <p>[Erstellen eines Aliaseintrags für Ressourceneinträge in der Zone](../dns/tutorial-alias-rr.md)</p>|
-|[Azure Bastion (Vorschauversion)](#bastion)|Konfigurieren Sie sichere und nahtlose RDP-/SSH-Verbindungen mit Ihren virtuellen Computern über SSL direkt im Azure-Portal. Beim Herstellen einer Verbindung über Azure Bastion benötigen Ihre virtuellen Computer keine öffentliche IP-Adresse.|<p>[Erstellen eines Azure Bastion-Hosts](../bastion/bastion-create-host-portal.md)</p><p>[Verbinden über SSH mit einer Linux-VM](../bastion/bastion-connect-vm-ssh.md)</p><p>[Verbindung über RDP mit einer Windows-VM](/bastion/bastion-connect-vm-rdp.md)</p>|
+|[Azure Bastion (Vorschauversion)](#bastion)|Konfigurieren Sie sichere und nahtlose RDP-/SSH-Verbindungen mit Ihren virtuellen Computern über SSL direkt im Azure-Portal. Beim Herstellen einer Verbindung über Azure Bastion benötigen Ihre virtuellen Computer keine öffentliche IP-Adresse.|<p>[Erstellen eines Azure Bastion-Hosts](../bastion/bastion-create-host-portal.md)</p><p>[Verbinden über SSH mit einer Linux-VM](../bastion/bastion-connect-vm-ssh.md)</p><p>[Verbindung über RDP mit einer Windows-VM](../bastion/bastion-connect-vm-rdp.md)</p>|
 ||||
 
 
@@ -74,7 +74,7 @@ Der Netzwerkdienst Azure Virtual WAN bietet optimierte und automatisierte Branch
 Azure DNS ist ein Hostingdienst für DNS-Domänen, der eine Namensauflösung mittels Microsoft Azure-Infrastruktur bietet. Indem Sie Ihre Domänen in Azure hosten, können Sie Ihre DNS-Einträge unter Verwendung der gleichen Anmeldeinformationen, APIs, Tools und Abrechnungsabläufe wie bei Ihren anderen Azure-Diensten verwalten. Weitere Informationen finden Sie unter [„Was ist Azure DNS?“](../dns/dns-overview.md).
 
 ### <a name="bastion"></a>Azure Bastion (Vorschauversion)
-Azure Bastion ist ein neuer vollständig verwalteter PaaS-Dienst, den Sie in Ihrem virtuellen Netzwerk bereitstellen können. Dieser Dienst bietet sichere und nahtlose RDP- und SSH-Verbindungen mit Ihren virtuellen Computern über SSL direkt im Azure-Portal. Beim Herstellen einer Verbindung über Azure Bastion benötigen Ihre virtuellen Computer keine öffentliche IP-Adresse. Weitere Informationen finden Sie unter [„Was ist Azure Bastion?“](/bastion/bastion-overview.md).
+Azure Bastion ist ein neuer vollständig verwalteter PaaS-Dienst, den Sie in Ihrem virtuellen Netzwerk bereitstellen können. Dieser Dienst bietet sichere und nahtlose RDP- und SSH-Verbindungen mit Ihren virtuellen Computern über SSL direkt im Azure-Portal. Beim Herstellen einer Verbindung über Azure Bastion benötigen Ihre virtuellen Computer keine öffentliche IP-Adresse. Weitere Informationen finden Sie unter [„Was ist Azure Bastion?“](../bastion/bastion-overview.md).
 
 ![Azure Bastion-Architektur](./media/networking-overview/architecture.png)
 
@@ -101,6 +101,8 @@ Dieser Abschnitt beschreibt Netzwerkdienste in Azure, die zum Schutz Ihrer Netzw
 Die Azure Web Application Firewall (WAF) bietet Ihren Webanwendungen Schutz vor gängigen Sicherheitslücken im Web und Schwachstellen wie der Einschleusung von SQL-Befehlen und websiteübergreifenden Skripts. Azure WAF bietet vorkonfigurierten Schutz vor den Top-10-Schwachstellen von OWASP über verwaltete Regeln. Zusätzlich können Kunden auch benutzerdefinierte Regeln konfigurieren, bei denen es sich um von Kunden verwaltete Regeln handelt, die einen zusätzlichen Schutz basierend auf dem Quell-IP-Adressbereich bieten, und Attribute wie Header, Cookies, Formulardatenfelder oder Abzeichenfolge-Parameter anfordern.
 
 Kunden können [Azure WAF mit Application Gateway](../application-gateway/waf-overview.md) bereitstellen, das regionalen Schutz für Unternehmen im öffentlichen und privaten Adressraum bietet. Kunden können sich auch für [Azure WAF mit Front Door](../frontdoor/waf-overview.md) entscheiden, das Schutz am Netzwerkedge zu öffentlichen Endpunkten bietet.
+
+![Web Application Firewall](./media/networking-overview/waf-overview.png)
 
 
 ### <a name="firewall"></a>Azure Firewall
