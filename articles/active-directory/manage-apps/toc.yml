@@ -221,6 +221,8 @@
           items:
             - name: Benutzerbereitstellung für Katalog-Apps
               href: application-provisioning-config-how-to.md
+            - name: Aktivieren der automatischen Benutzerbereitstellung für mehrinstanzenfähige Apps
+              href: isv-automatic-provisioning-multi-tenant-apps.md
             - name: Konfigurieren der automatischen Benutzerbereitstellung
               href: configure-automatic-user-provisioning-portal.md
             - name: Anpassen von Anwendungsattributen

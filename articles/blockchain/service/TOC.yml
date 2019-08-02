@@ -21,7 +21,7 @@
           href: connect-truffle.md
 - name: Lernprogramme
   items:
-    - name: Senden von Transaktionen
+    - name: Verwenden von Smart Contract-Skripts
       href: send-transaction.md
 - name: Konzepte
   items:

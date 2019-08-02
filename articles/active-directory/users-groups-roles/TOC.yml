@@ -2,7 +2,7 @@
   href: index.yml
 - name: Übersicht
   items:
-    - name: 'Benutzer, Gruppen, Lizenzierung und Rollen'
+    - name: 'Benutzer, Gruppen, Lizenzierung und Rollen in Azure AD'
       href: directory-overview-user-model.md
 - name: Schnellstarts
   items:
@@ -10,6 +10,8 @@
       href: /azure/active-directory/fundamentals/add-users-azure-active-directory?context=azure/active-directory/users-groups-roles/context/ugr-context
     - name: Zuweisen von Lizenzen zu Benutzern
       href: /azure/active-directory/fundamentals/license-users-groups?context=azure/active-directory/users-groups-roles/context/ugr-context
+    - name: Zuweisen einer Rolle mit Ressourcenbereich
+      href: roles-quickstart-app-registration-limits.md
     - name: Festlegen des Gruppenablaufs
       href: groups-quickstart-expiration.md
     - name: Festlegen einer Benennungsrichtlinie für Gruppen
@@ -126,10 +128,24 @@
           href: directory-assign-admin-roles.md
         - name: Anzeigen und Zuweisen von Rollen
           href: directory-manage-roles-portal.md
-        - name: Zuweisen von Rollen mit PowerShell
+        - name: Zuweisen von benutzerdefinierten Rollen in der Graph-API
           href: roles-assign-powershell.md
-        - name: Delegieren von App-Administratorrollen
-          href: roles-delegate-app-roles.md
+        - name: 'Benutzerdefinierte Rollen: Vorschau'
+          items:
+            - name: 'Benutzerdefinierte Rollen: Vorschau'
+              href: roles-custom-overview.md
+            - name: Erstellen einer benutzerdefinierten Rolle
+              href: roles-create-custom.md
+            - name: Anzeigen der Zuweisungen von benutzerdefinierten Rollen
+              href: roles-view-assignments.md
+            - name: "Zuweisen von Rollen im Azure\_AD Admin Center"
+              href: /azure/active-directory/fundamentals/active-directory-users-assign-role-azure-portal?context=azure/active-directory/users-groups-roles/context/ugr-context
+            - name: Zuweisen von benutzerdefinierten Rollen in der Graph-API
+              href: roles-assign-graph.md
+            - name: Vorschauberechtigungen für benutzerdefinierte Rollen
+              href: roles-custom-available-permissions.md
+            - name: Delegieren von App-Administratorberechtigungen
+              href: roles-delegate-app-roles.md
         - name: Rollen mit geringstmöglichen Berechtigungen nach Aufgabe
           href: roles-delegate-by-task.md
         - name: Microsoft 365-Rollen
