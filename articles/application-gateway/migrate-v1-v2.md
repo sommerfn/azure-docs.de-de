@@ -156,7 +156,7 @@ Es folgen einige Szenarien, in denen Ihr aktuelles Anwendungsgateway (Standard) 
 
   * Wenn Sie öffentliche IP-Adressen in Ihrem Anwendungsgateway verwenden, können Sie eine kontrollierte, präzise Migration durchführen, indem Sie ein Traffic Manager-Profil verwenden, um Datenverkehr inkrementell an das neue v2-Gateway weiterzuleiten (gewichtete Routingmethode für Datenverkehr).
 
-    Hierzu können Sie die DNS-Bezeichnungen vom v1- und vom v2-Anwendungsgateway zu dem [Traffic Manager-Profil](../traffic-manager/traffic-manager-routing-methods.md#weighted-traffic-routing-method) hinzufügen und Ihren benutzerdefinierten DNS-Eintrag (z. B. [www.contoso.com]\(www.contoso.com)) über CNAME-Einträge zur Traffic Manager-Domäne (z. B. „contoso.trafficmanager.net“) umleiten.
+    Hierzu können Sie die DNS-Bezeichnungen vom v1- und vom v2-Anwendungsgateway zu dem [Traffic Manager-Profil](../traffic-manager/traffic-manager-routing-methods.md#weighted-traffic-routing-method) hinzufügen und Ihren benutzerdefinierten DNS-Eintrag (z. B. [www.contoso.com]\(www.contoso.com) ) über CNAME-Einträge zur Traffic Manager-Domäne (z. B. „contoso.trafficmanager.net“) umleiten.
   * Alternativ können Sie Ihren benutzerdefinierten Domänen-DNS-Eintrag so aktualisieren, dass er auf die DNS-Bezeichnung des neuen v2-Anwendungsgateways verweist. Abhängig davon, welche Gültigkeitsdauer für Ihren DNS-Eintrag konfiguriert ist, kann es einige Zeit dauern, bis Ihr gesamter Clientdatenverkehr zu Ihrem neuen v2-Gateway migriert wird.
 * **Ihre Client stellen Verbindungen mit der Front-End-IP-Adresse Ihres Anwendungsgateways her**.
 

@@ -44,7 +44,7 @@ ms.locfileid: "67509118"
         ```
         apply plugin: 'com.google.gms.google-services'
         ```        
-    4. Wählen Sie auf der Symbolleiste **Sync Now*** (Jetzt synchronisieren) aus. 
+    4. Wählen Sie auf der Symbolleiste **Sync Now** (Jetzt synchronisieren) aus. 
  
         ![Konfigurationsänderungen an „build.gradle“](./media/notification-hubs-enable-firebase-cloud-messaging/build-gradle-configurations.png)
 6. Klicken Sie auf **Weiter**. 
