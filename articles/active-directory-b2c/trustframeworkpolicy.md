@@ -10,12 +10,12 @@ ms.topic: reference
 ms.date: 09/10/2018
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 904893d4881de6be2c9055fefa9a8267cb045afd
-ms.sourcegitcommit: fa45c2bcd1b32bc8dd54a5dc8bc206d2fe23d5fb
+ms.openlocfilehash: b8b2cad95929d6132a4f0ae52597fb1633874ff1
+ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/12/2019
-ms.locfileid: "67849405"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68592111"
 ---
 # <a name="trustframeworkpolicy"></a>TrustFrameworkPolicy
 
@@ -138,7 +138,7 @@ Richtlinie „B2C_1A_signup_signin“:
 
 Eine User Journey definiert die Geschäftslogik, die ein Benutzer durchläuft. Jede User Journey umfasst einen Satz von Orchestrierungsschritten, mit dem nacheinander eine Reihe von Aktionen in Bezug auf die Authentifizierung und Informationserfassung ausführt wird.
 
-Die Richtliniendatei **SocialAndLocalAccounts** im [Starter Pack](https://docs.microsoft.com/azure/active-directory-b2c/active-directory-b2c-get-started-custom#download-starter-pack-and-modify-policies) enthält die User Journeys SignUpOrSignIn, ProfileEdit und PasswordReset. Sie können weitere User Journeys für andere Szenarien, wie z.B. das Ändern einer E-Mail-Adresse oder das Verknüpfen und Aufheben der Verknüpfung mit einem Social Media-Konto hinzufügen.
+Die Richtliniendatei **SocialAndLocalAccounts** im [Starter Pack](active-directory-b2c-get-started-custom.md#custom-policy-starter-pack) enthält die User Journeys SignUpOrSignIn, ProfileEdit und PasswordReset. Sie können weitere User Journeys für andere Szenarien, wie z.B. das Ändern einer E-Mail-Adresse oder das Verknüpfen und Aufheben der Verknüpfung mit einem Social Media-Konto hinzufügen.
 
 Die Orchestrierungsschritte können ein [technisches Profil](technicalprofiles.md) aufrufen. Ein technisches Profil bietet ein Framework mit einem integrierten Mechanismus für die Kommunikation mit verschiedenen Typen von Parteien. Mit einem technischen Profil können unter anderem folgende Aktionen ausgeführt werden:
 

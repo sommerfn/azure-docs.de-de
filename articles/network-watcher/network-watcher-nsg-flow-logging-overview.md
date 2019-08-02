@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: kumud
-ms.openlocfilehash: 1ec7fd4116aa848a9c431df386997cb23f405f1b
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 5c156e30f4fa0270082cd1108958c3472130a460
+ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64925417"
+ms.lasthandoff: 07/30/2019
+ms.locfileid: "68640817"
 ---
 # <a name="introduction-to-flow-logging-for-network-security-groups"></a>Einführung in die Datenflussprotokollierung für Netzwerksicherheitsgruppen
 
@@ -76,8 +76,6 @@ Datenflussprotokolle enthalten die folgenden Eigenschaften:
 In Version 2 der Protokollierung wird der Flowzustand eingeführt. Sie können konfigurieren, welche Version von Flowprotokollen Sie erhalten. Wie Sie Datenflussprotokolle aktivieren, erfahren Sie unter [Tutorial: Verwalten von Datenflussprotokollen für Netzwerksicherheitsgruppen über das Azure-Portal](network-watcher-nsg-flow-logging-portal.md).
 
 Der Flowzustand *B* wird aufgezeichnet, wenn ein Flow initiiert wird. Die Flowzustände *C* und *E* markieren die Fortsetzung bzw. die Beendung eines Flows. Die Zustände *C* und *E* enthalten Informationen zur Bandbreite des Datenverkehrs.
-
-Für die Flowzustände *C* (Fortsetzung) und *E* (Beendung) wird die Anzahl von Bytes und Paketen vom Zeitpunkt des vorherigen Flowtupeldatensatzes an aggregiert. Entsprechend der vorherigen Beispielkonversation ist die Gesamtanzahl der übertragenen Pakete 1021+52+8005+47 = 9125. Die Gesamtanzahl der übertragenen Bytes ist 588096+29952+4610880+27072 = 5256000.
 
 **Beispiel**: Flowtupel von einer TCP-Unterhaltung zwischen 185.170.185.105:35370 und 10.2.0.4:23:
 

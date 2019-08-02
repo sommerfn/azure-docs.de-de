@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 370771d44e2fbbf0fca7af453f7425ebc1b1bdcd
-ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
+ms.openlocfilehash: 99d17b354e267d003e23e507ca190b951e3ed4a0
+ms.sourcegitcommit: 6cff17b02b65388ac90ef3757bf04c6d8ed3db03
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/07/2019
-ms.locfileid: "67612612"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68608098"
 ---
 # <a name="what-is-conditional-access"></a>Was ist bedingter Zugriff?
 
@@ -73,7 +73,7 @@ Mit einem richtlinienbasierten Ansatz zum Schutz des Zugriffs auf Ihre Cloud-App
 
 ## <a name="azure-ad-conditional-access-and-federated-authentication"></a>Bedingter Azure AD-Zugriff und Verbundauthentifizierung
 
-Richtlinien für bedingten Zugriff arbeiten problemlos mit der [Verbundauthentifizierung](../../security/azure-ad-choose-authn.md#federated-authentication) zusammen. Diese Unterstützung umfasst alle unterstützten Bedingungen und Steuerungen und gibt mithilfe der [Azure AD-Berichterstellung](../reports-monitoring/concept-sign-ins.md) Aufschluss darüber, wie die Richtlinie auf Anmeldungen aktiver Benutzer angewendet wird.
+Richtlinien für bedingten Zugriff arbeiten problemlos mit der [Verbundauthentifizierung](../../security/fundamentals/choose-ad-authn.md#federated-authentication) zusammen. Diese Unterstützung umfasst alle unterstützten Bedingungen und Steuerungen und gibt mithilfe der [Azure AD-Berichterstellung](../reports-monitoring/concept-sign-ins.md) Aufschluss darüber, wie die Richtlinie auf Anmeldungen aktiver Benutzer angewendet wird.
 
 *Verbundauthentifizierung mit Azure AD* bedeutet, dass die Benutzerauthentifizierung bei Azure AD über einen vertrauenswürdigen Authentifizierungsdienst abgewickelt wird. Als vertrauenswürdigen Authentifizierungsdienst können Sie beispielsweise die Active Directory-Verbunddienste (AD FS) oder einen beliebigen anderen Verbunddienst verwenden. Bei dieser Konfiguration führt der Dienst die primäre Benutzerauthentifizierung durch, und Azure AD wird anschließend für die Anmeldung bei einzelnen Anwendungen verwendet. Bedingter Zugriff auf Azure AD wird angewendet, bevor Zugriff auf die Anwendung gewährt wird, auf die der Benutzer zugreift. 
 
@@ -89,4 +89,4 @@ Kunden mit [Microsoft 365 Business-Lizenzen](https://docs.microsoft.com/office36
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Weitere Informationen zur Implementierung von Conditional Access in Ihrer Umgebung finden Sie unter[ Planen der Bereitstellung von Conditional Access in Azure Active Directory](plan-conditional-access.md).
+Weitere Informationen zur Implementierung von bedingtem Zugriff in Ihrer Umgebung finden Sie unter[ Planen der Bereitstellung von bedingtem Zugriff in Azure Active Directory](plan-conditional-access.md).

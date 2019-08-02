@@ -9,14 +9,13 @@ ms.topic: conceptual
 author: srdan-bozovic-msft
 ms.author: srbozovi
 ms.reviewer: vanto, carlrab
-manager: craigg
 ms.date: 05/07/2019
-ms.openlocfilehash: d3e68a5287e59c576f85491e6e5eba33fac080ca
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: cebe6b4ca61b835e7c77f51592c20799fe271853
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65465171"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68567397"
 ---
 # <a name="configure-public-endpoint-in-azure-sql-database-managed-instance"></a>Konfigurieren des öffentlichen Endpunkts in der verwalteten Azure SQL-Datenbank-Instanz
 
@@ -97,7 +96,7 @@ Set-AzSqlInstance -PublicDataEndpointEnabled $false -force
     |---------|---------|---------|
     |**Quelle**     |Beliebige IP-Adresse oder beliebiges Diensttag         |<ul><li>Wählen Sie für Azure-Dienste wie Power BI das Azure Cloud-Diensttag aus</li> <li>Verwenden Sie für Ihren Computer oder Ihre Azure-VM die NAT IP-Adresse</li></ul> |
     |**Quellportbereiche**     |*         |Behalten Sie für diese Option „*“ (beliebig) bei, da Quellports in der Regel dynamisch zugeordnet werden und als solche unvorhersehbar sind |
-    |**Ziel**     |Beliebig         |Behalten Sie für das Ziel „Beliebig“ bei, um in das Subnetz der verwalteten Instanz eingehenden Datenverkehr zuzulassen |
+    |**Ziel**     |Any         |Behalten Sie für das Ziel „Beliebig“ bei, um in das Subnetz der verwalteten Instanz eingehenden Datenverkehr zuzulassen |
     |**Zielportbereiche**     |3342         |Legen Sie den Zielport auf 3342 fest, den öffentlichen TDS-Endpunkt der verwalteten Instanz |
     |**Protokoll**     |TCP         |Die verwaltete Instanz verwendet das TCP-Protokoll für TDS |
     |**Aktion**     |ZULASSEN         |Lassen Sie eingehenden Datenverkehr zur verwalteten Instanz über den öffentlichen Endpunkt zu |

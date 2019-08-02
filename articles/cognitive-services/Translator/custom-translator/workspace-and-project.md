@@ -4,18 +4,18 @@ titleSuffix: Azure Cognitive Services
 description: Ein Arbeitsbereich ist ein Bereich zum Erstellen und Entwickeln Ihres benutzerdefinierten Übersetzungssystems. Er kann mehrere Projekte, Modelle und Dokumente enthalten. Ein Projekt ist ein Wrapper für Modelle, Dokumente und Tests. Jedes Projekt enthält automatisch alle Dokumente, die in den Arbeitsbereich hochgeladen werden und über das korrekte Sprachenpaar verfügen.
 services: cognitive-services
 author: swmachan
-manager: christw
+manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.date: 02/21/2019
 ms.author: swmachan
 ms.topic: conceptual
-ms.openlocfilehash: c35f3911b591a0d9adccdc48dbdc17f8afb5ea00
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: 23db27ba7b51b0f5a312498dbcb1d0f2741245bb
+ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67447338"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68595340"
 ---
 # <a name="what-is-a-custom-translator-workspace"></a>Definition: Custom Translator-Arbeitsbereich
 

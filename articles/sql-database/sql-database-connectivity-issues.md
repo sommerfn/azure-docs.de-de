@@ -11,14 +11,13 @@ ms.topic: conceptual
 author: dalechen
 ms.author: ninarn
 ms.reviewer: carlrab
-manager: craigg
 ms.date: 06/14/2019
-ms.openlocfilehash: adbe8dfd41725c11516f820656b0476ed1aa8881
-ms.sourcegitcommit: 22c97298aa0e8bd848ff949f2886c8ad538c1473
+ms.openlocfilehash: da2107a0573fafd10394931be21fb446f83fd5f2
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/14/2019
-ms.locfileid: "67144037"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68569063"
 ---
 # <a name="working-with-sql-database-connection-issues-and-transient-errors"></a>Arbeiten mit Verbindungsproblemen und vorübergehenden Fehlern bei SQL-Datenbank
 
@@ -77,8 +76,8 @@ Darüber hinaus kann es sinnvoll sein, eine maximale Anzahl von Wiederholungsver
 
 Codebeispiele mit Wiederholungslogik finden Sie unter:
 
-- [Herstellen robuster Verbindungen mit SQL mit ADO.NET][step-4-connect-resiliently-to-sql-with-ado-net-a78n]
-- [Herstellen robuster Verbindungen mit SQL mit PHP][step-4-connect-resiliently-to-sql-with-php-p42h]
+- [Connect resiliently to SQL with ADO.NET][step-4-connect-resiliently-to-sql-with-ado-net-a78n]
+- [Connect resiliently to SQL with PHP][step-4-connect-resiliently-to-sql-with-php-p42h]
 
 <a id="k-test-retry-logic" name="k-test-retry-logic"></a>
 

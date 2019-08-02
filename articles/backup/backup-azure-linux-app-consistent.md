@@ -1,19 +1,20 @@
 ---
 title: 'Azure Backup: anwendungskonsistente Sicherungen von Linux-VMs'
 description: Erstellen Sie anwendungskonsistente Sicherungen Ihrer virtuellen Linux-Computer in Azure. In diesem Artikel wird beschrieben, wie Sie das Skriptframework zum Sichern von in Azure bereitgestellten Linux-VMs konfigurieren. Außerdem enthält dieser Artikel Informationen zur Problembehandlung.
-author: anuragmehrotra
-manager: shivamg
+ms.reviewer: anuragm
+author: dcurwin
+manager: carmonm
 keywords: App-konsistente Sicherung; anwendungskonsistente Sicherung für Azure-VM; Linux-VM-Sicherung; Azure-Sicherung
 ms.service: backup
 ms.topic: conceptual
 ms.date: 1/12/2018
-ms.author: anuragm
-ms.openlocfilehash: adcadf0de2480b0f231dd8808d84cb2907685842
-ms.sourcegitcommit: c72ddb56b5657b2adeb3c4608c3d4c56e3421f2c
+ms.author: dacurwin
+ms.openlocfilehash: dae2268abc3771e43d717c65c19eed37b9f48e8e
+ms.sourcegitcommit: d585cdda2afcf729ed943cfd170b0b361e615fae
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68466142"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "68689252"
 ---
 # <a name="application-consistent-backup-of-azure-linux-vms"></a>Anwendungskonsistente Sicherung von virtuellen Linux-Computern in Azure
 

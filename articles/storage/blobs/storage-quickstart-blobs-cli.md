@@ -9,16 +9,18 @@ ms.topic: quickstart
 ms.date: 11/14/2018
 ms.author: tamram
 ms.reviewer: seguler
-ms.openlocfilehash: 0b74876d153a775993678ad50ed311c524480f76
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.openlocfilehash: 6a0aef9b2fc7a99183ebd6991691245731e00200
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65149598"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68565960"
 ---
 # <a name="quickstart-upload-download-and-list-blobs-using-the-azure-cli"></a>Schnellstart: Hochladen, Herunterladen und Auflisten von Blobs über die Azure CLI
 
 Die Azure CLI ist die Befehlszeilenumgebung von Azure und dient zum Verwalten von Azure-Ressourcen. Sie können sie in Ihrem Browser mit Azure Cloud Shell verwenden. Außerdem können Sie sie unter macOS, Linux oder Windows installieren und über die Befehlszeile ausführen. In diesem Schnellstart wird beschrieben, wie Sie die Azure CLI zum Hoch- und Herunterladen von Daten für Azure Blob Storage verwenden.
+
+[!INCLUDE [storage-multi-protocol-access-preview](../../../includes/storage-multi-protocol-access-preview.md)]
 
 ## <a name="prerequisites"></a>Voraussetzungen
 

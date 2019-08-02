@@ -1,18 +1,19 @@
 ---
 title: Verschieben eines Recovery Services-Tresors zwischen Azure-Abonnements oder in eine andere Ressourcengruppe
 description: Anweisungen zum Verschieben eines Recovery Services-Tresors zwischen Azure-Abonnements und Ressourcengruppen.
-author: sogup
-manager: vijayts
+ms.reviewer: sogup
+author: dcurwin
+manager: carmonm
 ms.service: backup
 ms.topic: conceptual
 ms.date: 04/08/2019
-ms.author: sogup
-ms.openlocfilehash: 0e351a842a303430e66a52a87305cba23f774ef2
-ms.sourcegitcommit: c72ddb56b5657b2adeb3c4608c3d4c56e3421f2c
+ms.author: dacurwin
+ms.openlocfilehash: 83c1c19490470ba88837af4c1ced6352c62e36f4
+ms.sourcegitcommit: d585cdda2afcf729ed943cfd170b0b361e615fae
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68465818"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "68689165"
 ---
 # <a name="move-a-recovery-services-vault-across-azure-subscriptions-and-resource-groups"></a>Verschieben eines Recovery Services-Tresors zwischen Azure-Abonnements und Ressourcengruppen
 

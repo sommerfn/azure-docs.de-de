@@ -8,12 +8,12 @@ ms.service: marketplace
 ms.topic: article
 ms.date: 06/05/2018
 ms.author: ellacroi
-ms.openlocfilehash: dd9aa28703003d2e286197d57e9f00361e2b460d
-ms.sourcegitcommit: cf438e4b4e351b64fd0320bf17cc02489e61406a
+ms.openlocfilehash: 11ab9f6bb4ab61a669c9c898ee9f5668b7cd568f
+ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/08/2019
-ms.locfileid: "67654002"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68598662"
 ---
 # <a name="become-a-cloud-marketplace-publisher"></a>Weg zum Cloud Marketplace-Herausgeber
 
@@ -22,7 +22,7 @@ In diesem Artikel wird beschrieben, wie Sie sich als Herausgeber für den Cloud-
 
 |  | Registrierungsschritt | Duration | Details |  
 |:--- |:--- |:--- |:--- |  
-| 1 | Registrieren im Microsoft Partner Network | 15 Min. | [Registrieren beim Microsoft Partner Network](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-account#register-for-an-account-using-the-enrollment-page) |  
+| 1 | Registrieren im Microsoft Partner Network | 15 Min. | [Registrieren beim Microsoft Partner Network](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-account) |  
 | 2 | Erstellen eines Microsoft-Kontos <ul>(für Azure Marketplace-Transaktionsangebote erforderlich; für andere Benutzer empfohlen)</ul> | 15 Min. | [Erstellen einer Microsoft-ID](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-account) |  
 | 3 | Erstellen eines Partner Center-Kontos | 15 Min. | [Erstellen eines Partner Center-Kontos](https://partner.microsoft.com/dashboard/account/v3/enrollment/introduction/azureisv) |  
 | 4 |  Anmelden beim Cloud-Partnerportal | 1 - 3 Tage | [Anmelden beim Cloud-Partnerportal](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-account#sign-in-with-a-work-account) |  

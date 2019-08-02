@@ -4,17 +4,17 @@ titleSuffix: Azure Cognitive Services
 description: Diese Anleitung enthält ausführliche Anweisungen zum Aktivieren der Diagnoseprotokollierung für Azure Cognitive Services. Diese Protokolle stellen umfassende, häufig verwendete Daten zu den Vorgängen einer Ressource bereit, die für die Ermittlung von Problemen und das Debuggen verwendet werden.
 services: cognitive-services
 author: erhopf
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
 ms.topic: article
 ms.date: 06/14/2019
 ms.author: erhopf
-ms.openlocfilehash: 3be912f053bf206999546678e1e407548af181bf
-ms.sourcegitcommit: cf438e4b4e351b64fd0320bf17cc02489e61406a
+ms.openlocfilehash: cd380b4e2a7c05f0beedc2ab102b268aa4068f66
+ms.sourcegitcommit: f5cc71cbb9969c681a991aa4a39f1120571a6c2e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/08/2019
-ms.locfileid: "67657678"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68516374"
 ---
 # <a name="enable-diagnostic-logging-for-azure-cognitive-services"></a>Aktivieren der Diagnoseprotokollierung für Azure Cognitive Services
 

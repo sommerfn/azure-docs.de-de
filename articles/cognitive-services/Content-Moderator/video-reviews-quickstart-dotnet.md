@@ -1,6 +1,6 @@
 ---
 title: Erstellen von Videoüberprüfungen mit .NET – Content Moderator
-titlesuffix: Azure Cognitive Services
+titleSuffix: Azure Cognitive Services
 description: Dieser Artikel enthält Informationen und Codebeispiele, die Ihnen den schnellen Einstieg in die Verwendung des Content Moderator SDK mit C# erleichtern, um Videoüberprüfungen zu erstellen.
 services: cognitive-services
 author: sanjeev3
@@ -10,12 +10,12 @@ ms.subservice: content-moderator
 ms.topic: article
 ms.date: 03/19/2019
 ms.author: sajagtap
-ms.openlocfilehash: c8572e6bc7fdedb68527cad4e7ea4109838089b5
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 74b0ad4b5d8a16c8d46fcf6de67c46dab29ba51d
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64726831"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68564300"
 ---
 # <a name="create-video-reviews-using-net"></a>Erstellen von Videoüberprüfungen per .NET
 

@@ -1,18 +1,19 @@
 ---
 title: Sichern und Wiederherstellen von Azure Files-Dateifreigaben mithilfe von Azure Backup und PowerShell
 description: Erfahren Sie, wie Sie Azure Files-Dateifreigaben mithilfe von Azure Backup und PowerShell sichern und wiederherstellen.
-author: pvrk
-manager: shivamg
+author: dcurwin
+manager: carmonm
 ms.service: backup
 ms.topic: conceptual
 ms.date: 03/05/2018
-ms.author: pullabhk
-ms.openlocfilehash: 986414d0bac24d0c7e37b34df473346742fa97fd
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.author: dacurwin
+ms.reviewer: pullabhk
+ms.openlocfilehash: 5f62bd0456bfbf5882d6d8c3ee822433fbb58302
+ms.sourcegitcommit: d585cdda2afcf729ed943cfd170b0b361e615fae
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65204177"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "68688776"
 ---
 # <a name="back-up-and-restore-azure-files-with-powershell"></a>Sichern und Wiederherstellen von Azure Files-Dateifreigaben mithilfe von PowerShell
 

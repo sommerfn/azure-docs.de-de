@@ -17,10 +17,10 @@ ms.workload: infrastructure-services
 ms.date: 04/30/2019
 ms.author: radeltch
 ms.openlocfilehash: c8fcf4afa5a363d355f627be95dd7fe8131203ac
-ms.sourcegitcommit: 66237bcd9b08359a6cce8d671f846b0c93ee6a82
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/11/2019
+ms.lasthandoff: 07/26/2019
 ms.locfileid: "67797966"
 ---
 # <a name="high-availability-for-sap-netweaver-on-azure-vms-on-suse-linux-enterprise-server-with-azure-netapp-files-for-sap-applications"></a>Hochverfügbarkeit für SAP NetWeaver auf Azure-VMs unter SUSE Linux Enterprise Server mit Azure NetApp Files für SAP-Anwendungen
@@ -1299,7 +1299,7 @@ Die folgenden Tests sind eine Kopie der Testfälle in den [Best Practices von SU
 ## <a name="next-steps"></a>Nächste Schritte
 
 * [Azure Virtual Machines – Planung und Implementierung für SAP][planning-guide]
-* [Bereitstellung von Azure Virtual Machines für SAP][deployment-guide]
+* [Azure Virtual Machines – Bereitstellung für SAP][deployment-guide]
 * [Azure Virtual Machines – DBMS-Bereitstellung für SAP][dbms-guide]
 * Informationen zum Erreichen von Hochverfügbarkeit und zum Planen der Notfallwiederherstellung für SAP 
 * HANA in Azure (große Instanzen) finden Sie unter [Hochverfügbarkeit und Notfallwiederherstellung für SAP HANA in Azure (große Instanzen)](hana-overview-high-availability-disaster-recovery.md).

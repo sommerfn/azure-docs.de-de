@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 06/28/2019
 ms.author: jaredro
 ms.custom: seodec18
-ms.openlocfilehash: e5674ffb4325eb27af8d0673b2d6ad5ba3a6195e
-ms.sourcegitcommit: 470041c681719df2d4ee9b81c9be6104befffcea
+ms.openlocfilehash: 9a5e5dc414d487efd5f6762c89cecb77da74e3d5
+ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/12/2019
-ms.locfileid: "67854340"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68592061"
 ---
 # <a name="expressroute-faq"></a>ExpressRoute – FAQ
 
@@ -139,7 +139,7 @@ Hochverfügbarkeit erreichen Sie, indem Sie ExpressRoute-Verbindungen an verschi
 
 Sie müssen das Attribut *Local Preference* (Lokale Einstellung) auf Ihrem Router implementieren, um sicherzustellen, dass der Pfad vom lokalen Standort zu Azure immer von Ihrer ExpressRoute-Verbindung bevorzugt wird.
 
-Weitere Informationen zur BGP-Pfadauswahl und allgemeinen Routerkonfigurationen finden Sie [hier](https://docs.microsoft.com/azure/expressroute/expressroute-optimize-routing#path-selection-of-microsoft-and-public-peerings). 
+Weitere Informationen zur BGP-Pfadauswahl und allgemeinen Routerkonfigurationen finden Sie [hier](https://docs.microsoft.com/azure/expressroute/expressroute-optimize-routing#path-selection-on-microsoft-and-public-peerings). 
 
 ### <a name="onep2plink"></a>Wenn ich mich nicht am selben Standort wie ein Cloud Exchange befinde und mein Dienstanbieter Punkt-zu-Punkt-Verbindungen bereitstellt, muss ich zwei physische Verbindungen zwischen meinem lokalen Netzwerk und Microsoft anfordern?
 

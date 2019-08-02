@@ -12,12 +12,12 @@ ms.workload: big-data
 ms.topic: conceptual
 ms.date: 06/29/2019
 ms.custom: seodec18
-ms.openlocfilehash: 899bcffaf3a54bd541d488f99c35ec6721d751ca
-ms.sourcegitcommit: 5bdd50e769a4d50ccb89e135cfd38b788ade594d
+ms.openlocfilehash: bdf0fbfb2b40e932f9e3627c3bc0356eb0afb472
+ms.sourcegitcommit: 13d5eb9657adf1c69cc8df12486470e66361224e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/03/2019
-ms.locfileid: "67543881"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "68677932"
 ---
 # <a name="authentication-and-authorization-for-azure-time-series-insights-api"></a>Authentifizierung und Autorisierung für die Azure Time Series Insights-API
 
@@ -107,6 +107,6 @@ Wenn Sie in **Schritt 3** die Anmeldeinformationen Ihrer Anwendung und Ihrer Ben
 
 - Codebeispiel für die Vorschauversion der Time Series Insights API finden Sie unter [„Abfragevorschau von Daten mit C#“](./time-series-insights-update-query-data-csharp.md).
 
-- API-Referenzinformationen finden Sie in der Referenz zur [Abfrage-API](/rest/api/time-series-insights/ga-query-api).
+- API-Referenzinformationen finden Sie in der Referenz zur [Abfrage-API](https://docs.microsoft.com/rest/api/time-series-insights/ga-query-api).
 
 - Informieren Sie sich, wie Sie [einen Dienstprinzipal erstellen](../active-directory/develop/howto-create-service-principal-portal.md).

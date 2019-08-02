@@ -101,14 +101,18 @@
       items:
         - name: Verwalten Ihrer Anwendung
           href: howto-administer.md
+        - name: Verwalten von Benutzern und Rollen
+          href: howto-manage-users-roles.md
+        - name: Anzeigen Ihrer Rechnung
+          href: howto-view-bill.md
+        - name: Anpassen der Anwendungsbenutzeroberfläche
+          href: howto-customize-ui.md
         - name: Vorbereiten und Hochladen eines Bilds
           href: howto-prepare-images.md
         - name: Konfigurieren des Anwendungsdashboards
           href: howto-configure-homepage.md
         - name: Verwenden von Dashboardkacheln
           href: howto-use-tiles.md
-        - name: Anpassen der Anwendungsbenutzeroberfläche
-          href: howto-customize-ui.md
         - name: Verwenden von Anwendungsvorlagen
           href: howto-use-app-templates.md
         - name: Verwalten über das Azure-Portal

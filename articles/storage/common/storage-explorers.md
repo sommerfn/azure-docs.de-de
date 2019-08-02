@@ -9,12 +9,12 @@ ms.date: 09/06/2017
 ms.author: tamram
 ms.reviewer: dineshm
 ms.subservice: common
-ms.openlocfilehash: 6d80bc71c01d0f1c887d9161edee5516d6b0925b
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: 14cbc076f4c9eebd2647cd667acc856b393e4d93
+ms.sourcegitcommit: fecb6bae3f29633c222f0b2680475f8f7d7a8885
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67443698"
+ms.lasthandoff: 07/30/2019
+ms.locfileid: "68665750"
 ---
 # <a name="azure-storage-client-tools"></a>Azure Storage-Clienttools
 Häufig möchten Benutzer von Azure Storage ihre Daten mithilfe eines Azure Storage-Clienttools anzeigen oder mit den Daten interagieren. In den folgenden Tabellen sind eine Reihe von Tools aufgeführt, die Ihnen dies ermöglichen. Ein Block ist jeweils mit „X“ gekennzeichnet, wenn er das Aufzählen und/oder Zugreifen auf die Datenabstraktion ermöglicht. In der Tabelle ist auch angegeben, ob die Tools kostenlos sind. Mit „Testversion“ wird angegeben, dass es eine kostenlose Testversion gibt, das vollständige Produkt aber nicht kostenfrei ist. Mit „J/N“ wird angegeben, dass eine Version kostenlos erhältlich ist und eine andere Version zum Kauf zur Verfügung steht.
@@ -142,10 +142,10 @@ Wir haben die Funktionalität oder Qualität nicht überprüft, die für die fol
     <td></td>
     <td>X</td>
     <td>X</td>
-    <td></td>
-    <td>J</td>
-    <td></td>
     <td>X</td>
+    <td>J</td>
+    <td>X</td>
+    <td></td>
     <td></td>
     <td></td>
   </tr>

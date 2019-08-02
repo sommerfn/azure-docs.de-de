@@ -10,14 +10,13 @@ ms.topic: conceptual
 author: stevestein
 ms.author: sstein
 ms.reviewer: ''
-manager: craigg
 ms.date: 04/26/2019
-ms.openlocfilehash: 057c764a46508804bee6aa8f9912fdedc69e811f
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: d940cfa91890d26a48b682a6eb09410b3b7de045
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65762699"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68568087"
 ---
 # <a name="azure-sql-database-glossary-of-terms"></a>Glossar mit Begriffen aus Azure SQL-Datenbank
 

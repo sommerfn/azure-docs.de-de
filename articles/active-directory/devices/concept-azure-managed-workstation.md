@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: frasim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 02a6ddef294c4872f2d7e50e8940ecbb4b4b7bc4
-ms.sourcegitcommit: ac1cfe497341429cf62eb934e87f3b5f3c79948e
+ms.openlocfilehash: ba53049d580f3f90499dc0471b9ac981f4a374f2
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/01/2019
-ms.locfileid: "67491595"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68562174"
 ---
 # <a name="understand-secure-azure-managed-workstations"></a>Verstehen Sie sichere, von Azure verwaltete Arbeitsstationen
 
@@ -25,7 +25,7 @@ Gesicherte, isolierte Arbeitsstationen sind von entscheidender Bedeutung für di
 Dieses Dokument erklärt, was Sie für den Aufbau einer sicheren Arbeitsstation benötigen, die oft als Privileged Access Workstation (PAW) bezeichnet wird. Der Artikel enthält auch ausführliche Anweisungen zum Einrichten des ersten Sicherheitskontrollen. Diese Anleitung beschreibt, wie Cloud-basierte Technologie den Service verwalten kann. Es basiert auf Sicherheitsfunktionen, die in Windows 10RS5, Microsoft Defender Advanced Threat Protection (ATP), Azure Active Directory und Intune eingeführt wurden.
 
 > [!NOTE]
-> Dieser Artikel beschreibt das Konzept der einer sicheren Arbeitsstation und deren Bedeutung. Wenn Sie mit dem Konzept bereits vertraut sind und die Bereitstellung überspringen möchten, besuchen Sie [Deploy a Secure Workstation](https://docs.microsoft.com/azure/active-directory/devices/howto-azure-managed-workstation).
+> Dieser Artikel beschreibt das Konzept der einer sicheren Arbeitsstation und deren Bedeutung. Wenn Sie mit dem Konzept bereits vertraut sind und die Bereitstellung überspringen möchten, besuchen Sie [Deploy a Secure Workstation](howto-azure-managed-workstation.md).
 
 ## <a name="why-secure-workstation-access-is-important"></a>Warum ein sicherer Zugriff auf die Arbeitsstation wichtig ist
 

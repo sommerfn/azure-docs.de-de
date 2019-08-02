@@ -1,18 +1,19 @@
 ---
 title: Sichern einer SharePoint-Farm mit Azure Backup Server in Azure
 description: Verwenden Sie Azure Backup Server zum Sichern und Wiederherstellen Ihrer SharePoint-Daten. Dieser Artikel stellt die benötigten Informationen bereit, um Ihre SharePoint-Farm so zu konfigurieren, dass Sie die gewünschten Daten in Azure speichern können. Sie können geschützte SharePoint-Daten vom Datenträger oder aus Azure wiederherstellen.
-author: kasinh
-manager: vvithal
+ms.reviewer: kasinh
+author: dcurwin
+manager: carmonm
 ms.service: backup
 ms.topic: conceptual
 ms.date: 6/8/2018
-ms.author: kasinh
-ms.openlocfilehash: cc7a5f6703d8d6fcec800071e75b7ca42c8f1cef
-ms.sourcegitcommit: c72ddb56b5657b2adeb3c4608c3d4c56e3421f2c
+ms.author: dacurwin
+ms.openlocfilehash: 22f43bf1d3ac8282c4de3349656a21f51e788942
+ms.sourcegitcommit: d585cdda2afcf729ed943cfd170b0b361e615fae
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68466697"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "68689486"
 ---
 # <a name="back-up-a-sharepoint-farm-to-azure"></a>Sichern einer SharePoint-Farm in Azure
 Die Vorgehensweise zum Sichern einer SharePoint-Farm mithilfe von Microsoft Azure Backup Server (MABS) in Microsoft Azure ähnelt der Vorgehensweise zum Sichern anderer Datenquellen. Azure Backup ermöglicht die Verwendung eines flexiblen Sicherungszeitplans, mit dem Sie tägliche, wöchentliche, monatliche oder jährliche Sicherungspunkte erstellen und Aufbewahrungsrichtlinienoptionen für unterschiedliche Sicherungspunkte konfigurieren können. Mit MABS können Sie zudem lokale Festplattenkopien speichern, um die Wiederherstellung zu beschleunigen. Außerdem können Sie Kopien zur kostengünstigen, langfristigen Aufbewahrung in Azure speichern.

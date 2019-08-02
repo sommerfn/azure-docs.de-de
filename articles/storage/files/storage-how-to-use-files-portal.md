@@ -1,19 +1,18 @@
 ---
 title: 'Schnellstart: Verwalten von Azure-Dateifreigaben mit dem Azure-Portal'
 description: In dieser Schnellstartanleitung erfahren Sie, wie Sie Azure Files über das Azure-Portal verwalten.
-services: storage
 author: roygara
 ms.service: storage
 ms.topic: quickstart
 ms.date: 10/18/2018
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 69e7dba06fce14c2411a82dfade344ba1b14a6d3
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 7d7618d2542b1c1d83ed7328c8a32d80f2d0e66a
+ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64698749"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "68699524"
 ---
 # <a name="quickstart-create-and-manage-azure-file-shares-with-the-azure-portal"></a>Schnellstart: Erstellen und Verwalten von Azure-Dateifreigaben mit dem Azure-Portal 
 [Azure Files](storage-files-introduction.md) ist das benutzerfreundliche Clouddateisystem von Microsoft. Azure-Dateifreigaben können unter Windows, Linux und macOS bereitgestellt werden. In dieser Anleitung werden die Grundlagen der Arbeit mit Azure-Dateifreigaben mit dem [Azure-Portal](https://portal.azure.com/) Schritt für Schritt beschrieben.

@@ -3,7 +3,7 @@ title: Unterstützte Clusterversionen in Azure Service Fabric | Microsoft-Dokume
 description: Informationen zu Clusterversionen in Azure Service Fabric
 services: service-fabric
 documentationcenter: .net
-author: aljo-microsoft
+author: athinanthny
 manager: chakdan
 editor: ''
 ms.assetid: ''
@@ -13,13 +13,13 @@ ms.topic: troubleshooting
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 07/03/2019
-ms.author: aljo
-ms.openlocfilehash: 030e57512d10f31ca03dff2f99e57c305de49e97
-ms.sourcegitcommit: d2785f020e134c3680ca1c8500aa2c0211aa1e24
+ms.author: atsenthi
+ms.openlocfilehash: 4ed076792e8b55661df2e5309f08391cf1e75013
+ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/04/2019
-ms.locfileid: "67565994"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68598727"
 ---
 # <a name="supported-service-fabric-versions"></a>Unterstützte Service Fabric-Versionen
 

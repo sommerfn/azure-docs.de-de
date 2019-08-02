@@ -1,20 +1,18 @@
 ---
 title: Behandeln von Azure Files-Problemen unter Windows | Microsoft-Dokumentation
 description: Behandeln von Azure Files-Problemen unter Windows
-services: storage
 author: jeffpatt24
-tags: storage
 ms.service: storage
-ms.topic: article
+ms.topic: conceptual
 ms.date: 01/02/2019
 ms.author: jeffpatt
 ms.subservice: files
-ms.openlocfilehash: 1241a6ee5a49504619c377fa3f7006320def14ec
-ms.sourcegitcommit: 47ce9ac1eb1561810b8e4242c45127f7b4a4aa1a
+ms.openlocfilehash: f36d3bcb16876f080f780658bc59afd794e3431e
+ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67805918"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "68699184"
 ---
 # <a name="troubleshoot-azure-files-problems-in-windows"></a>Behandeln von Azure Files-Problemen unter Windows
 

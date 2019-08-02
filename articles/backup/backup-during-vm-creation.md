@@ -1,18 +1,18 @@
 ---
 title: Aktivieren der Sicherung beim Erstellen eines virtuellen Azure-Computers mit Azure Backup
 description: Hier wird beschrieben, wie die Sicherung beim Erstellen eines virtuellen Azure-Computers mit Azure Backup aktiviert wird.
-author: rayne-wiselman
+author: dcurwin
 manager: carmonm
 ms.service: backup
 ms.topic: conceptual
 ms.date: 06/13/2019
-ms.author: raynew
-ms.openlocfilehash: a19653f7ae3900fd7999f347ef4d3ef710be1430
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.author: dacurwin
+ms.openlocfilehash: 90f69371457bbfe37789b12971343f738ff35e8e
+ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67436334"
+ms.lasthandoff: 07/30/2019
+ms.locfileid: "68639716"
 ---
 # <a name="enable-backup-when-you-create-an-azure-vm"></a>Aktivieren der Sicherung beim Erstellen eines virtuellen Azure-Computers
 
@@ -54,7 +54,7 @@ Falls Sie noch nicht bei Ihrem Konto angemeldet sind, melden Sie beim [Azure-Por
 
 
 > [!NOTE]
-> Der Azure Backup-Dienst erstellt zum Speichern der Momentaufnahme eine separate Ressourcengruppe (nicht die VM-Ressourcengruppe) mit dem Namensformat **AzureBackupRG_geography_number** (Beispiel: AzureBackupRG_northeurope_1). Die Daten in dieser Ressourcengruppe werden für die Dauer (in Tagen) aufbewahrt, die in der Sicherungsrichtlinie für virtuelle Azure-Computer unter *Momentaufnahme(n) zur sofortigen Wiederherstellung beibehalten für* angegeben ist.  Das Anwenden einer Sperre auf diese Ressourcengruppe kann zu Sicherungsfehlern führen.<br>
+> Der Azure Backup-Dienst erstellt zum Speichern der Momentaufnahme eine separate Ressourcengruppe (nicht die VM-Ressourcengruppe) mit dem Namensformat **AzureBackupRG_geography_number** (Beispiel: AzureBackupRG_northeurope_1). Die Daten in dieser Ressourcengruppe werden so lange aufbewahrt, wie dies in der Sicherungsrichtlinie für virtuelle Azure-Computer unter *Momentaufnahme(n) zur sofortigen Wiederherstellung beibehalten für* angegeben ist (in Tagen).  Das Anwenden einer Sperre auf diese Ressourcengruppe kann zu Sicherungsfehlern führen.<br>
 Diese Ressourcengruppe sollte von allen Namens-/Tag-Einschränkungen ausgeschlossen werden, da eine Einschränkungsrichtlinie die Erstellung von Wiederherstellungspunktsammlungen in dieser Gruppe blockieren und erneut zu Fehlern führen würde.
 
 

@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb, rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4474283b9a233e39497cd05f0f04ea0984f02401
-ms.sourcegitcommit: d3b1f89edceb9bff1870f562bc2c2fd52636fc21
+ms.openlocfilehash: 213540a5b6c77146155365133f2cca08eea25351
+ms.sourcegitcommit: 6cff17b02b65388ac90ef3757bf04c6d8ed3db03
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/04/2019
-ms.locfileid: "67560950"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68608158"
 ---
 # <a name="baseline-policy-require-mfa-for-admins-preview"></a>Basisrichtlinie: Benötigt MFA für Admins (Vorschau)
 
@@ -44,7 +44,7 @@ Da die Richtlinie **„MFA für Administratoren erforderlich“ (Vorschau)** fü
 Ältere Authentifizierungsprotokolle (IMAP, SMTP, POP3 usw.) werden von E-Mail-Clients für Authentifizierungsanforderungen verwendet. Diese Protokolle unterstützen keine Multi-Factor Authentication. Die meisten der von Microsoft festgestellten Kontosicherheitsverletzungen werden durch Angriffe verursacht, die sich gegen ältere Protokolle richten und versuchen, die MFA zu umgehen. Um sicherzustellen, dass die MFA bei der Anmeldung mit einem Administratorkonto obligatorisch ist und von Angreifern nicht umgangen werden kann, blockiert diese Richtlinie alle Authentifizierungsanforderungen, die über ältere Protokolle für Administratorkonten ausgeführt werden.
 
 > [!WARNING]
-> Stellen Sie vor dem Aktivieren dieser Richtlinie sicher, dass Ihre Administratoren keine älteren Authentifizierungsprotokolle verwenden. Weitere Informationen finden Sie im Artikel [Gewusst wie: Blockieren Sie die Legacy-Authentifizierung für Azure AD mit Conditional Access ](howto-baseline-protect-legacy-auth.md#identify-legacy-authentication-use)für weitere Informationen.
+> Stellen Sie vor dem Aktivieren dieser Richtlinie sicher, dass Ihre Administratoren keine älteren Authentifizierungsprotokolle verwenden. Weitere Informationen finden Sie im Artikel [Gewusst wie: Legacy-Authentifizierung für Azure AD mit Conditional Access blockieren](howto-baseline-protect-legacy-auth.md#identify-legacy-authentication-use) für weitere Informationen.
 
 ## <a name="enable-the-baseline-policy"></a>Aktivieren der Basisrichtlinie
 
@@ -52,7 +52,7 @@ Die **Basisrichtlinie: MFA für Administratoren benötigt (Vorschau)** ist vorko
 
 Gehen Sie wie folgt vor, um diese Richtlinie zu aktivieren und Ihre Administratoren zu schützen:
 
-1. Melden Sie sich im  **Azure-Portal**  als globaler Administrator, Sicherheitsadministrator oder Administrator mit Conditional Access an.
+1. Melden Sie sich am  **Azure-Portal** als globaler Administrator, Sicherheitsadministrator oder Conditional Access-Administrator an.
 1. Navigieren Sie zu **Azure Active Directory** > **Bedingter Zugriff**.
 1. Wählen Sie in der Liste der Richtlinien den Eintrag **Basisrichtlinie: Benötigt MFA für Admins (Vorschau)** .
 1. Legen Sie **Richtlinie aktivieren** auf **Richtlinie sofort verwenden** fest.
@@ -65,6 +65,6 @@ Gehen Sie wie folgt vor, um diese Richtlinie zu aktivieren und Ihre Administrato
 
 Weitere Informationen finden Sie unter
 
-* [Conditonal Access grundlegende Schutzrichtlinien](concept-baseline-protection.md)
-* [Fünf Schritte zum Sichern Ihrer Identitätsinfrastruktur](../../security/azure-ad-secure-steps.md)
-* [Was ist Conditional Access im Azure Active Directory?](overview.md)
+* [Conditional Access grundlegende Schutzrichtlinien](concept-baseline-protection.md)
+* [Fünf Schritte zum Sichern Ihrer Identitätsinfrastruktur](../../security/fundamentals/steps-secure-identity.md)
+* [Was ist Conditional Access in Azure Active Directory?](overview.md)

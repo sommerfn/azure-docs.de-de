@@ -11,12 +11,12 @@ ms.workload: big-data
 ms.topic: conceptual
 ms.date: 06/26/2019
 ms.custom: seodec18
-ms.openlocfilehash: 99933fa36cc822598ec9c173a470f90264d06d54
-ms.sourcegitcommit: aa66898338a8f8c2eb7c952a8629e6d5c99d1468
+ms.openlocfilehash: 5b48a41f025ef06c69e6de126e0a64ad359ce09a
+ms.sourcegitcommit: fecb6bae3f29633c222f0b2680475f8f7d7a8885
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67461257"
+ms.lasthandoff: 07/30/2019
+ms.locfileid: "68666363"
 ---
 # <a name="create-a-reference-data-set-for-your-time-series-insights-environment-using-the-azure-portal"></a>Erstellen eines Verweis-DataSets für Ihre Time Series Insights-Umgebung über das Azure-Portal
 
@@ -100,4 +100,4 @@ Verweisdaten werden nicht rückwirkend verknüpft. Somit werden nur aktuelle und
 
 * [Verwalten Sie Verweisdaten](time-series-insights-manage-reference-data-csharp.md) programmgesteuert.
 
-* Die vollständige API-Referenz finden Sie im Dokument zur [Verweisdaten-API](/rest/api/time-series-insights/ga-reference-data-api).
+* Die vollständige API-Referenz finden Sie im Dokument zur [Verweisdaten-API](https://docs.microsoft.com/rest/api/time-series-insights/ga-reference-data-api).

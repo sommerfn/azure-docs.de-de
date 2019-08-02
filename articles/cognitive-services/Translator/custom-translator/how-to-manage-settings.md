@@ -3,18 +3,18 @@ title: Verwalten von Einstellungen – Custom Translator
 titleSuffix: Azure Cognitive Services
 description: Hier erfahren Sie, wie Sie in Custom Translator Einstellungen verwalten, Arbeitsbereiche erstellen und freigeben sowie Abonnementschlüssel verwalten.
 author: swmachan
-manager: christw
+manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.date: 02/21/2019
 ms.author: swmachan
 ms.topic: conceptual
-ms.openlocfilehash: d141b5dea8b0b12889559e6c80770379a6afac63
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: f90ada6b6cd1760b3b779010625f252533fa611d
+ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67448356"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68595767"
 ---
 # <a name="how-to-manage-settings"></a>Verwalten von Einstellungen
 

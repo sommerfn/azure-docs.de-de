@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive,hdiseo17may2017,mvc,seodec18
 ms.topic: overview
 ms.date: 06/11/2019
-ms.openlocfilehash: 5e36a4691c485472b1e0b43b9d8c551790bc68e9
-ms.sourcegitcommit: a874064e903f845d755abffdb5eac4868b390de7
+ms.openlocfilehash: 0c1aaa86726465dee5e12416d999c70245ea0844
+ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68442127"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68598075"
 ---
 # <a name="what-is-apache-hadoop-in-azure-hdinsight"></a>Worum handelt es sich bei Apache Hadoop in Azure HDInsight?
 
@@ -86,7 +86,7 @@ HDInsight umfasst bestimmte Clustertypen und Clusteranpassungsfunktionen, z.B. d
 
 |Clustertyp | BESCHREIBUNG |
 |---|---|
-|[Apache Hadoop](https://wiki.apache.org/hadoop)|Ein Framework, das Hadoop Distributed File System, die YARN-Ressourcenverwaltung und ein einfaches MapReduce-Programmiermodell zum parallelen Verarbeiten und Analysieren von Batchdaten nutzt.|
+|[Apache Hadoop](https://hadoop.apache.org/)|Ein Framework, das Hadoop Distributed File System, die YARN-Ressourcenverwaltung und ein einfaches MapReduce-Programmiermodell zum parallelen Verarbeiten und Analysieren von Batchdaten nutzt.|
 |[Apache Spark](https://spark.apache.org/)|Ein Open-Source-Framework für die Parallelverarbeitung, das die arbeitsspeicherinterne Verarbeitung unterstützt, um die Leistung von Anwendungen zur Analyse von Big Data zu steigern. Siehe [Was ist Apache Spark in HDInsight?](../spark/apache-spark-overview.md)|
 |[Apache HBase](https://hbase.apache.org/)|Eine auf Hadoop basierende NoSQL-Datenbank, die wahlfreien Zugriff und starke Konsistenz für große Mengen unstrukturierter und teilstrukturierter Daten bietet – in einer potenziellen Dimension von Milliarden von Zeilen multipliziert mit Milliarden von Spalten. Siehe [Was ist HBase in HDInsight?](../hbase/apache-hbase-overview.md)|
 |[ML Services](https://docs.microsoft.com/machine-learning-server/rebranding-microsoft-r-server)|Ein Server zum Hosten und Verwalten von parallelen, verteilten R-Prozessen. Diese Funktion ermöglicht Datenanalysten, Statistikern und R-Programmierern bei Bedarf den Zugriff auf skalierbare, verteilte Analysemethoden in HDInsight. Siehe [Einführung in R Server und Open-Source-R-Funktionen in HDInsight](../r-server/r-server-overview.md).|

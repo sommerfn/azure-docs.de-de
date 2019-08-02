@@ -1,18 +1,19 @@
 ---
 title: Verwenden von PowerShell zum Sichern von Windows Server in Azure
 description: Erfahren Sie, wie Sie Azure Backup mit PowerShell bereitstellen und verwalten.
-author: pvrk
-manager: shivamg
+ms.reviewer: shivamg
+author: dcurwin
+manager: carmonm
 ms.service: backup
 ms.topic: conceptual
 ms.date: 5/24/2018
-ms.author: shivamg
-ms.openlocfilehash: 5533b52ab984510b0e860f7fdfded8ac9005e5a8
-ms.sourcegitcommit: c72ddb56b5657b2adeb3c4608c3d4c56e3421f2c
+ms.author: dacurwin
+ms.openlocfilehash: bb488db036b99d3826a3060a7f4143bec7aea3e5
+ms.sourcegitcommit: d585cdda2afcf729ed943cfd170b0b361e615fae
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68465237"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "68688567"
 ---
 # <a name="deploy-and-manage-backup-to-azure-for-windows-serverwindows-client-using-powershell"></a>Bereitstellen und Verwalten der Sicherung in Azure für Windows Server-/Windows-Clientcomputer mit PowerShell
 

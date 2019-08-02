@@ -1,6 +1,6 @@
 ---
 title: Erstellen von Moderationsüberprüfungen über die REST-API-Konsole – Content Moderator
-titlesuffix: Azure Cognitive Services
+titleSuffix: Azure Cognitive Services
 description: Verwenden Sie die Überprüfungs-API von Azure Content Moderator, um Bild- oder Textüberprüfungen für die Moderation durch Personen zu erstellen.
 services: cognitive-services
 author: sanjeev3
@@ -10,12 +10,12 @@ ms.subservice: content-moderator
 ms.topic: article
 ms.date: 03/18/2019
 ms.author: sajagtap
-ms.openlocfilehash: 254269ccedc92b9dfc164cc4665a8a8513682773
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 581ab488337cfecae3f5dd97610c7f92c75af8b5
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60607548"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68564351"
 ---
 # <a name="create-human-reviews-rest"></a>Erstellen von Überprüfungen durch Personen (REST)
 

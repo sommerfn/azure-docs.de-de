@@ -17,12 +17,12 @@ ms.author: ryanwi
 ms.reviewer: brandwe, jmprieur, saeeda
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6023e4bd4028cf1679051b6665297afd00b1eba7
-ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
+ms.openlocfilehash: f1ebfce2b96da51b9c33646c1626495d280d7b8a
+ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/01/2019
-ms.locfileid: "67482658"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68592244"
 ---
 # <a name="quickstart-sign-in-users-and-call-the-microsoft-graph-api-from-an-android-app"></a>Schnellstart: Benutzeranmeldung und Aufrufen der Microsoft Graph-API aus einer Android-App
 
@@ -30,7 +30,7 @@ ms.locfileid: "67482658"
 
 Wenn Sie eine Android-Anwendung entwickeln, sorgt Microsoft für eine einfache und unkomplizierte Anmeldung von Azure Active Directory (Azure AD)-Benutzern. Azure AD ermöglicht es Ihrer Anwendung, über Microsoft Graph oder Ihre eigene geschützte Web-API auf die Benutzerdaten zuzugreifen.
 
-Die Azure AD-Authentifizierungsbibliothek (ADAL) für Android bietet Ihrer App die Möglichkeit, durch Unterstützung der [Microsoft Azure Active Directory-Konten](https://azure.microsoft.com/services/active-directory/) mithilfe der Industriestandards OAuth 2.0 und OpenID Connect mit der Nutzung der [Microsoft Azure-Cloud](https://cloud.microsoft.com) und der [Microsoft Graph-API](https://developer.microsoft.com/graph) zu beginnen.
+Die Azure AD-Authentifizierungsbibliothek (ADAL) für Android bietet Ihrer App die Möglichkeit, durch Unterstützung der [Microsoft Azure Active Directory-Konten](https://azure.microsoft.com/services/active-directory/) mithilfe der Industriestandards OAuth 2.0 und OpenID Connect mit der Nutzung der [Microsoft Azure-Cloud](https://azure.microsoft.com/free/cloud-services/) und der [Microsoft Graph-API](https://developer.microsoft.com/graph) zu beginnen.
 
 In diesem Schnellstart erfahren Sie, wie die folgenden Aufgaben ausgeführt werden:
 

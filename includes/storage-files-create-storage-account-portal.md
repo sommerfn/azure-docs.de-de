@@ -9,17 +9,17 @@ ms.date: 03/28/2018
 ms.author: wgries
 ms.custom: include file
 ms.openlocfilehash: a09e9206b3ecd23a6208572a88c16b149033f123
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38732779"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "68699442"
 ---
 Ein Speicherkonto ist ein gemeinsam genutzter Pool mit Speicherplatz, in dem Sie eine Azure-Dateifreigabe oder andere Speicherressourcen wie Blobs oder Warteschlangen bereitstellen können. Ein Speicherkonto kann eine unbegrenzte Anzahl von Freigaben enthalten. Auf einer Freigabe kann eine unbegrenzte Anzahl von Dateien gespeichert werden, bis die Kapazitätsgrenzen des Speicherkontos erreicht sind.
 
 So erstellen Sie ein Speicherkonto:
 
-1. Klicken Sie im Menü auf der linken Seite auf **+**, um eine Ressource zu erstellen.
+1. Klicken Sie im Menü auf der linken Seite auf **+** , um eine Ressource zu erstellen.
 2. Geben Sie im Suchfeld den Suchbegriff **Speicherkonto** ein, klicken Sie auf **Speicherkonto – Blob, Datei, Tabelle, Warteschlange**, und klicken Sie anschließend auf **Erstellen**.
     ![Screenshot: Speicherkontoeintrag im Dialogfeld für die Ressourcensuche](../articles/storage/files/media/storage-how-to-use-files-portal/create-storage-account-1.png)
 

@@ -4,7 +4,7 @@ titleSuffix: Azure
 description: Konfigurieren und erstellen Sie für Analysen und Machine Learning eine Deep Learning Data Science Virtual Machine in Azure.
 services: machine-learning
 documentationcenter: ''
-author: gopitk
+author: vijetajo
 manager: cgronlun
 ms.custom: seodec18
 ms.assetid: e1467c0f-497b-48f7-96a0-7f806a7bec0b
@@ -12,15 +12,15 @@ ms.service: machine-learning
 ms.subservice: data-science-vm
 ms.workload: data-services
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: quickstart
 ms.date: 03/16/2018
-ms.author: gokuma
-ms.openlocfilehash: 318df03c7c4447d051dfa396098462c0f8bbf423
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.author: vijetaj
+ms.openlocfilehash: b9d0f9aead6e2cedd3ca0884273bac0106a925a0
+ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65410439"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68591912"
 ---
 # <a name="provision-a-deep-learning-virtual-machine-on-azure"></a>Bereitstellen einer Data Science Virtual Machine in Azure 
 
@@ -68,7 +68,7 @@ Nach der VM-Erstellung können Sie sich mithilfe von Remotedesktop mit den Anmel
 
 ### <a name="linux-edition"></a>Linux-Edition
 
-Nachdem die VM erstellt wurde, können Sie sich mithilfe von SSH an der VM anmelden. Verwenden Sie dazu die Kontoanmeldeinformationen, die Sie in Schritt 3 im Abschnitt [**Grundlagen**](#basics) für die Textshellschnittstelle erstellt haben. Weitere Informationen zu SSH-Verbindungen mit virtuellen Azure-Computern finden Sie unter [Installieren und Konfigurieren von Remotedesktop zum Herstellen einer Verbindung mit einem virtuellen Linux-Computer in Azure](/azure/virtual-machines/linux/use-remote-desktop). Auf einem Windows-Client können Sie ein SSH-Clienttool wie [Putty](https://www.putty.org) herunterladen. Falls Sie einen grafischen Desktop bevorzugen (X Windows System), können Sie die X11-Weiterleitung von PuTTY verwenden oder den X2Go-Client installieren. 
+Nachdem die VM erstellt wurde, können Sie sich mithilfe von SSH an der VM anmelden. Verwenden Sie dazu die Kontoanmeldeinformationen, die Sie in Schritt 3 im Abschnitt [**Grundlagen**](#basics) für die Textshellschnittstelle erstellt haben. Weitere Informationen zu SSH-Verbindungen mit virtuellen Azure-Computern finden Sie unter [Installieren und Konfigurieren von Remotedesktop zum Herstellen einer Verbindung mit einem virtuellen Linux-Computer in Azure](../../virtual-machines/linux/use-remote-desktop.md). Auf einem Windows-Client können Sie ein SSH-Clienttool wie [Putty](https://www.putty.org) herunterladen. Falls Sie einen grafischen Desktop bevorzugen (X Windows System), können Sie die X11-Weiterleitung von PuTTY verwenden oder den X2Go-Client installieren. 
 
 > [!NOTE]
 > Der X2Go-Client hat bei unseren Tests eine bessere Leistung als X11 und höher erzielt. Es wird empfohlen, den X2Go-Client als grafische Desktop-Benutzeroberfläche zu nutzen.

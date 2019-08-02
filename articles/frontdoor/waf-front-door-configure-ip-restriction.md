@@ -12,12 +12,12 @@ ms.workload: infrastructure-services
 ms.date: 05/31/2019
 ms.author: kumud
 ms.reviewer: tyao
-ms.openlocfilehash: 611a52f43b5b0e076ae37df9df86479ec894c6f4
-ms.sourcegitcommit: fa45c2bcd1b32bc8dd54a5dc8bc206d2fe23d5fb
+ms.openlocfilehash: a610a2c01a1e935c55942b621e5b3799cb002fc0
+ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/12/2019
-ms.locfileid: "67849163"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "68698644"
 ---
 # <a name="configure-an-ip-restriction-rule-with-a-web-application-firewall-for-azure-front-door-service"></a>Konfigurieren einer IP-Einschränkungsregel mit einer Web Application Firewall für Azure Front Door Service
 In diesem Artikel wird erläutert, wie Sie IP-Einschränkungsregeln in Web Application Firewall (WAF) für Azure Front Door Service über die Azure-Befehlszeilenschnittstelle, Azure PowerShell oder eine Azure Resource Manager-Vorlage konfigurieren.
@@ -40,7 +40,7 @@ Gehen Sie zum Erstellen eines Azure Front Door Service-Profils gemäß den Anwei
 
 ### <a name="create-a-waf-policy"></a>Erstellen einer WAF-Richtlinie
 
-Erstellen Sie mit dem Befehl [az network waf-policy create](/cli/azure/ext/front-door/network/waf-policy?view=azure-cli-latest#ext-front-door-az-network-waf-policy-create) eine WAF-Richtlinie. Ersetzen Sie im folgenden Beispiel den Richtliniennamen *IPAllowPolicyExampleCLI* durch einen eindeutigen Richtliniennamen.
+Erstellen Sie mit dem Befehl [az network waf-policy create](/cli/azure/ext/front-door/network/front-door/waf-policy?view=azure-cli-latest#ext-front-door-az-network-front-door-waf-policy-create) eine WAF-Richtlinie. Ersetzen Sie im folgenden Beispiel den Richtliniennamen *IPAllowPolicyExampleCLI* durch einen eindeutigen Richtliniennamen.
 
 ```azurecli-interactive 
 az network waf-policy create \
@@ -50,7 +50,7 @@ az network waf-policy create \
   ```
 ### <a name="add-a-custom-ip-access-control-rule"></a>Hinzufügen einer benutzerdefinierten Regel für die IP-Zugriffssteuerung
 
-Fügen Sie mit dem Befehl [az network waf-policy custom-rule create](/cli/azure/ext/front-door/network/waf-policy/custom-rule?view=azure-cli-latest#ext-front-door-az-network-waf-policy-custom-rule-create) der im vorherigen Schritt erstellten WAF-Richtlinie eine benutzerdefinierte Regel für die IP-Zugriffssteuerung hinzu.
+Fügen Sie mit dem Befehl [az network waf-policy custom-rule create](/cli/azure/ext/front-door/network/front-door/waf-policy/rule?view=azure-cli-latest#ext-front-door-az-network-front-door-waf-policy-rule-create) der im vorherigen Schritt erstellten WAF-Richtlinie eine benutzerdefinierte Regel für die IP-Zugriffssteuerung hinzu.
 
 In den folgenden Beispielen:
 -  Ersetzen Sie *IPAllowPolicyExampleCLI* durch die zuvor erstellte eindeutige Richtlinie.
@@ -82,7 +82,7 @@ az network waf-policy custom-rule create \
 ```
     
 ### <a name="find-the-id-of-a-waf-policy"></a>Suchen der ID einer WAF-Richtlinie 
-Mit dem Befehl [az network waf-policy show](/cli/azure/ext/front-door/network/waf-policy?view=azure-cli-latest#ext-front-door-az-network-waf-policy-show) können Sie die ID einer WAF-Richtlinie suchen. Ersetzen Sie *IPAllowPolicyExampleCLI* im folgenden Beispiel durch die eindeutige Richtlinie, die Sie zuvor erstellt haben.
+Mit dem Befehl [az network waf-policy show](/cli/azure/ext/front-door/network/front-door/waf-policy?view=azure-cli-latest#ext-front-door-az-network-front-door-waf-policy-show) können Sie die ID einer WAF-Richtlinie suchen. Ersetzen Sie *IPAllowPolicyExampleCLI* im folgenden Beispiel durch die eindeutige Richtlinie, die Sie zuvor erstellt haben.
 
    ```azurecli
    az network waf-policy show \

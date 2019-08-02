@@ -105,10 +105,14 @@
           href: sizes-previous-gen.md
         - name: Azure-Computeeinheiten (ACU)
           href: acu.md
+        - name: vCPU-Kontingente
+          href: quotas.md
         - name: Benchmarkergebnisse
           href: compute-benchmark-scores.md
     - name: Unterstützte Distributionen
       href: endorsed-distros.md
+    - name: Dedizierte Hosts
+      href: dedicated-hosts.md
     - name: Wartung und Updates
       href: maintenance-and-updates.md
     - name: Datenträgerspeicher
@@ -139,12 +143,8 @@
       href: monitor.md
     - name: Sicherung und Wiederherstellung
       href: backup-recovery.md
-    - name: Überlegungen zur Bereitstellung
-      items:
-        - name: Richtlinien für Infrastrukturen
-          href: infrastructure-example.md
-        - name: vCPU-Kontingente
-          href: quotas.md
+    - name: Richtlinien für Infrastrukturen
+      href: infrastructure-example.md
     - name: Sicherheitsattribute
       href: virtual-machines-linux-security-attributes.md
 - name: Anleitungen
@@ -160,6 +160,12 @@
           href: create-vm-rest-api.md
         - name: Kopieren oder Klonen eines virtuellen Computers
           href: copy-vm.md
+        - name: Verwenden dedizierter Hosts
+          items:
+            - name: Befehlszeilenschnittstelle (CLI)
+              href: dedicated-hosts-cli.md
+            - name: Portal
+              href: dedicated-hosts-portal.md
     - name: Schützen von virtuellen Computern
       items:
         - name: Just-in-Time-Zugriff

@@ -1,6 +1,6 @@
 ---
 title: API-Referenz – Content Moderator
-titlesuffix: Azure Cognitive Services
+titleSuffix: Azure Cognitive Services
 description: Erfahren Sie mehr über die verschiedenen Inhaltsmoderations- und die Überprüfungs-APIs für Content Moderator.
 services: cognitive-services
 author: sanjeev3
@@ -10,12 +10,12 @@ ms.subservice: content-moderator
 ms.topic: reference
 ms.date: 05/29/2019
 ms.author: sajagtap
-ms.openlocfilehash: f802c64e141e8757f633d82ad577fa50f7d076fc
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 3ad911a95dbe6209fcf55adcac3cf2937b06d1ff
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66688887"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68565619"
 ---
 # <a name="content-moderator-api-reference"></a>Content Moderator-API-Referenz
 

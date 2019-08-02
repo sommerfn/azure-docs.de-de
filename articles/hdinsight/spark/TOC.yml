@@ -58,6 +58,8 @@
               href: ./apache-spark-troubleshoot-outofmemory-heap.md
             - name: Java-Heapspeicher
               href: ./apache-spark-troubleshoot-outofmemory-heap-space.md
+            - name: Fehler beim Starten des Livy-Servers
+              href: ./apache-spark-troubleshoot-outofmemory-native-thread.md
         - name: 'Langsame Apache Spark-Aufträge: Speichercontainer'
           href: ./apache-spark-troubleshoot-job-slowness-container.md
         - name: Ausnahme „IllegalArgumentException“
@@ -68,6 +70,8 @@
           href: ./apache-spark-troubleshoot-rpctimeoutexception.md
         - name: Blockieren der ursprungsübergreifenden API
           href: ./apache-spark-troubleshoot-blocking-cross-origin.md
+        - name: Fehler bei der Kryo-Serialisierung
+          href: ./apache-spark-troubleshoot-sparkexception-kryo-serialization-failed.md
 - name: Anleitung
   items:
     - name: Verwenden des Clusterspeichers

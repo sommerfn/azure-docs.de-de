@@ -12,17 +12,21 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 11/08/2018
+ms.date: 07/25/2019
 ms.author: alkohli
-ms.openlocfilehash: b8e9f12a549f71971c2da3b9865f6a74dad58f61
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: b5ffc16a7c9dacef3036ca5ce225265252dcdf5d
+ms.sourcegitcommit: f5cc71cbb9969c681a991aa4a39f1120571a6c2e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60630137"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68516761"
 ---
 # <a name="storsimple-virtual-array-best-practices"></a>StorSimple Virtual Array – Bewährte Methoden
+
 ## <a name="overview"></a>Übersicht
+
+[!INCLUDE [storsimple-virtual-array-eol-banner](../../includes/storsimple-virtual-array-eol-banner.md)]
+
 Bei Microsoft Azure StorSimple Virtual Array handelt es sich um eine integrierte Speicherlösung, mit der Speicheraufgaben zwischen einem lokalen virtuellen Gerät, das in einem Hypervisor ausgeführt wird, und dem Microsoft Azure-Cloudspeicher verwaltet werden. Das StorSimple Virtual Array ist eine effiziente und kostengünstige Alternative zum physischen Array der 8000er Serie. Das virtuelle Array kann unter Ihrer vorhandenen Hypervisor-Infrastruktur ausgeführt werden, unterstützt sowohl das iSCSI- als auch das SMB-Protokoll und ist gut für Szenarien mit weit entfernten Büros oder Büros in Zweigniederlassungen geeignet. Weitere Informationen zu StorSimple-Lösungen finden Sie unter [Microsoft Azure StorSimple Overview](https://www.microsoft.com/en-us/server-cloud/products/storsimple/overview.aspx)(Übersicht über Microsoft Azure StorSimple).
 
 In diesem Artikel werden die bewährten Methoden beschrieben, die während der Ersteinrichtung, Bereitstellung und Verwaltung des StorSimple Virtual Array implementiert werden. Diese bewährten Methoden umfassen überprüfte Richtlinien für die Einrichtung und Verwaltung Ihres virtuellen Arrays. Dieser Artikel richtet sich an IT-Administratoren, die die virtuellen Arrays in den Datencentern bereitstellen und verwalten.

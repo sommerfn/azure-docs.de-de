@@ -3,19 +3,19 @@ title: 'Konfigurieren von Einstellungen: Personalisierung'
 titleSuffix: Azure Cognitive Services
 description: Die Dienstkonfiguration umfasst die Art, wie der Dienst Belohnungen behandelt, wie oft der Dienst Untersuchungen durchführt, wie oft das Modell neu trainiert wird und wie viele Daten gespeichert werden.
 services: cognitive-services
-author: edjez
+author: diberry
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: personalizer
 ms.topic: conceptual
 ms.date: 05/07/2019
-ms.author: edjez
-ms.openlocfilehash: 6f5028f093a9fd8c17928c2167039599d4db897c
-ms.sourcegitcommit: dad277fbcfe0ed532b555298c9d6bc01fcaa94e2
+ms.author: diberry
+ms.openlocfilehash: f0ccf0e480fa57e0ffdfc94ca35cfaceded37a0b
+ms.sourcegitcommit: e3b0fb00b27e6d2696acf0b73c6ba05b74efcd85
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/10/2019
-ms.locfileid: "67722340"
+ms.lasthandoff: 07/30/2019
+ms.locfileid: "68663898"
 ---
 # <a name="personalizer-settings"></a>Einstellungen der Personalisierung
 

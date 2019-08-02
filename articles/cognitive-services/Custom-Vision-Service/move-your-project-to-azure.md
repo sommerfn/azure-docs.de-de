@@ -1,6 +1,6 @@
 ---
 title: Verschieben eines Projekts aus der eingeschränkten Testversion in Azure
-titlesuffix: Azure Cognitive Services
+titleSuffix: Azure Cognitive Services
 description: Hier erfahren Sie, wie ein Projekt aus der eingeschränkten Testversion in Azure verschoben wird.
 services: cognitive-services
 author: anrothMSFT
@@ -10,12 +10,12 @@ ms.subservice: custom-vision
 ms.topic: conceptual
 ms.date: 02/19/2019
 ms.author: anroth
-ms.openlocfilehash: 6fac6531ea0a39796de13f95aee33b30dc91f131
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 22c3767dfac1e377890f1e01517d18263e694854
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60816519"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68560923"
 ---
 # <a name="how-to-move-your-limited-trial-project-to-azure"></a>Verschieben Ihres Projekts aus der eingeschränkten Testversion in Azure
 

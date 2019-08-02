@@ -10,14 +10,13 @@ ms.topic: quickstart
 author: sachinpMSFT
 ms.author: sachinp
 ms.reviewer: vanto, carlrab
-manager: craigg
 ms.date: 02/11/2019
-ms.openlocfilehash: f708e5a3cd5bc0f11f8b0cfe79a791347c7a7a2b
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.openlocfilehash: 7adced4088b1e155d6776f71e8f23a9eceae2297
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56108958"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68566789"
 ---
 # <a name="quickstart-create-a-server-level-firewall-rule-for-single-and-pooled-databases-using-the-azure-portal"></a>Schnellstart: Erstellen einer Firewallregel auf Serverebene für Einzel- und Pooldatenbanken über das Azure-Portal
 

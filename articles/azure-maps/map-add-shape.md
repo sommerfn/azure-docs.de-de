@@ -3,18 +3,18 @@ title: Hinzufügen einer Form mit Azure Maps | Microsoft-Dokumentation
 description: Hinzufügen einer Form zu einer JavaScript-Karte
 author: jingjing-z
 ms.author: jinzh
-ms.date: 10/30/2018
+ms.date: 07/29/2019
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: ''
 ms.custom: codepen
-ms.openlocfilehash: f61c7a939902ee5d02b2e9ba896c7555968f9d0d
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 0696eba4f3cca7beedc2efcda0182ab82b3d69d9
+ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60769514"
+ms.lasthandoff: 07/30/2019
+ms.locfileid: "68638695"
 ---
 # <a name="add-a-shape-to-a-map"></a>Hinzufügen einer Form zu einer Karte
 
@@ -142,7 +142,7 @@ Azure Maps verwendet eine erweiterte Version des GeoJSON-Schemas, das eine Defin
 }  
 ```
 
-Das Azure Maps-Web-SDK wandelt diese `Pooint`-Features in `Polygon`-Features unter den Deckflächen um und kann auf der Karte mit Polygon- und Linienebenen gerendert werden, wie hier gezeigt.
+Das Azure Maps-Web-SDK wandelt diese `Point`-Features in `Polygon`-Features unter den Deckflächen um und kann auf der Karte mit Polygon- und Linienebenen gerendert werden, wie hier gezeigt.
 
 <iframe height='500' scrolling='no' title='Hinzufügen eines Kreises zu einer Karte' src='//codepen.io/azuremaps/embed/PRmzJX/?height=500&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>Weitere Informationen finden Sie unter dem Pen <a href='https://codepen.io/azuremaps/pen/PRmzJX/'>Add a circle to a map</a> (Hinzufügen eines Kreises zu einer Karte) von Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) auf <a href='https://codepen.io'>CodePen</a>.
 </iframe>

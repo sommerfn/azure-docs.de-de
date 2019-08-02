@@ -54,6 +54,14 @@
     - name: Grundlegendes zu verwalteten Identitäten
       href: ../hdinsight-managed-identities.md
       maintainContext: true
+    - name: Problembehandlung
+      items:
+        - name: Dem HDInsight-Cluster können keine Knoten hinzugefügt werden.
+          href: ./hdinsight-troubleshoot-unable-add-nodes.md
+        - name: 'InvalidNetworkSecurityGroupSecurityRules: Fehler bei der Clustererstellung'
+          href: ./hdinsight-troubleshoot-invalidnetworksecuritygroupsecurityrules-cluster-creation-fails.md
+        - name: Konvertieren eines Dienstprinzipalzertifikats
+          href: ./hdinsight-troubleshoot-converting-service-principal-certificate.md
 - name: Anleitung
   items:
     - name: Verwenden einer Apache Hadoop-Sandbox

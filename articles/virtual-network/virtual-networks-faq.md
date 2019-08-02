@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/12/2019
 ms.author: kumud
-ms.openlocfilehash: fcc26d0d42576e8d39407f2af5bafe6de24db19f
-ms.sourcegitcommit: 1289f956f897786090166982a8b66f708c9deea1
+ms.openlocfilehash: b088b4d0e21819411c7329f3cb1e6ca9761665fd
+ms.sourcegitcommit: 6cff17b02b65388ac90ef3757bf04c6d8ed3db03
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/17/2019
-ms.locfileid: "67154505"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68610208"
 ---
 # <a name="azure-virtual-network-frequently-asked-questions-faq"></a>Azure Virtual Network – häufig gestellte Fragen
 
@@ -215,7 +215,7 @@ Ja. Sie können [Netzwerksicherheitsgruppen](security-overview.md) auf einzelne 
 Ja. Sie können ein [virtuelles Netzwerkgerät für eine Firewall](https://azure.microsoft.com/marketplace/?term=firewall) von mehreren Anbietern über den Azure Marketplace bereitstellen.
 
 ### <a name="is-there-information-available-about-securing-vnets"></a>Sind Informationen zum Schützen von VNets verfügbar?
-Ja. Ausführliche Informationen finden Sie im Artikel [Die Netzwerksicherheit in Azure im Überblick](../security/security-network-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
+Ja. Ausführliche Informationen finden Sie im Artikel [Die Netzwerksicherheit in Azure im Überblick](../security/fundamentals/network-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
 
 ## <a name="apis-schemas-and-tools"></a>APIs, Schemas und Tools
 

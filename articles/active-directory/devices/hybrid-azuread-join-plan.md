@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: abb050eb527e65b4fd31f3251d37fef7d51e867e
-ms.sourcegitcommit: cf438e4b4e351b64fd0320bf17cc02489e61406a
+ms.openlocfilehash: ee3309bdd3629057d174866dde58ffd95e9e5ca8
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/08/2019
-ms.locfileid: "67655973"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68562131"
 ---
 # <a name="how-to-plan-your-hybrid-azure-active-directory-join-implementation"></a>Anleitung: Planen der Implementierung einer Azure Active Directory-Hybrideinbindung
 
@@ -64,7 +64,7 @@ Für Geräte, auf denen das Windows-Desktopbetriebssystem ausgeführt wird, sind
 ### <a name="windows-down-level-devices"></a>Kompatible Windows-Geräte
 
 - Windows 8.1
-- Windows 7. Informationen zum Support für Windows 7 finden Sie in diesem Artikel: [Unterstützung für Windows 7 wird beendet](https://www.microsoft.com/en-us/windowsforbusiness/end-of-windows-7-support).
+- Windows 7. Informationen zum Support für Windows 7 finden Sie in diesem Artikel: [Unterstützung für Windows 7 wird beendet](https://www.microsoft.com/windowsforbusiness/end-of-windows-7-support).
 - Windows Server 2012 R2
 - Windows Server 2012
 - Windows Server 2008 R2
@@ -87,7 +87,7 @@ Wenn Sie das Systemvorbereitungstool (Sysprep) verwenden und ein Image einer nie
 
 Wenn Sie zusätzliche VMs mit einer Momentaufnahme des virtuellen Computers erstellen, stellen Sie sicher, dass diese Momentaufnahme nicht von einem Computer stammt, der bereits als Azure AD-Hybrideinbindung bei Azure AD registriert ist.
 
-Wenn Ihre in die Windows 10-Domäne eingebundenen Geräte bereits für Ihren Mandanten bei [Azure AD registriert](https://docs.microsoft.com/azure/active-directory/devices/overview#getting-devices-in-azure-ad) sind, wird dringend empfohlen, diesen Status vor dem Aktivieren von Azure AD Hybrid Join zu entfernen. In Windows 10 Release 1809 wurden die folgenden Änderungen vorgenommen, um diesen Doppelstatus zu vermeiden:
+Wenn Ihre in die Windows 10-Domäne eingebundenen Geräte bereits für Ihren Mandanten bei [Azure AD registriert](overview.md#getting-devices-in-azure-ad) sind, wird dringend empfohlen, diesen Status vor dem Aktivieren von Azure AD Hybrid Join zu entfernen. In Windows 10 Release 1809 wurden die folgenden Änderungen vorgenommen, um diesen Doppelstatus zu vermeiden:
 
 - Eine etwaige Registrierung bei Azure AD würde nach der Azure AD-Hybrideinbindung des Geräts automatisch entfernt werden.
 - Sie können verhindern, dass Ihr in die Domäne eingebundenes Gerät bei Azure AD registriert wird, indem Sie diesen Registrierungsschlüssel hinzufügen: HKLM\SOFTWARE\Policies\Microsoft\Windows\WorkplaceJoin, "BlockAADWorkplaceJoin"=dword:00000001.
@@ -121,7 +121,7 @@ Wenn Sie eine Verbundumgebung besitzen, die Active Directory-Verbunddienste (AD 
 > [!NOTE]
 > Azure AD unterstützt keine Smartcards oder Zertifikate in verwalteten Domänen.
 
-Ab Version 1.1.819.0 bietet Azure AD Connect einen Assistenten für die Konfiguration der Azure AD-Hybrideinbindung. Mit dem Assistenten können Sie den Konfigurationsprozess erheblich vereinfachen. Wenn das Installieren der erforderlichen Version von Azure AD Connect keine Option für Sie ist, informieren Sie sich über die [manuelle Konfiguration der Geräteregistrierung](https://docs.microsoft.com/azure/active-directory/devices/hybrid-azuread-join-manual). 
+Ab Version 1.1.819.0 bietet Azure AD Connect einen Assistenten für die Konfiguration der Azure AD-Hybrideinbindung. Mit dem Assistenten können Sie den Konfigurationsprozess erheblich vereinfachen. Wenn das Installieren der erforderlichen Version von Azure AD Connect keine Option für Sie ist, informieren Sie sich über die [manuelle Konfiguration der Geräteregistrierung](hybrid-azuread-join-manual.md). 
 
 Lesen Sie auf Grundlage des Szenarios, das Ihrer Identitätsinfrastruktur entspricht:
 

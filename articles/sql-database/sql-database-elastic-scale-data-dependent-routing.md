@@ -10,14 +10,13 @@ ms.topic: conceptual
 author: stevestein
 ms.author: sstein
 ms.reviewer: ''
-manager: craigg
 ms.date: 01/25/2019
-ms.openlocfilehash: fe9098592fcfde2d5e23b78a3e33f2b4ebb9e2dc
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 3f0ce4f3bdf3159e991bfd72590882dfa7412ee3
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60584963"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68568491"
 ---
 # <a name="use-data-dependent-routing-to-route-a-query-to-appropriate-database"></a>Verwenden des datenabhängigen Routings für das Weiterleiten einer Abfrage an die richtige Datenbank
 

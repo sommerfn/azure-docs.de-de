@@ -4,7 +4,7 @@ titleSuffix: Azure
 description: Konfigurieren und erstellen Sie für Analysen und Machine Learning einen virtuellen Computer für Data Science in Azure.
 services: machine-learning
 documentationcenter: ''
-author: gopitk
+author: vijetajo
 manager: cgronlun
 ms.custom: seodec18
 ms.assetid: e1467c0f-497b-48f7-96a0-7f806a7bec0b
@@ -12,15 +12,15 @@ ms.service: machine-learning
 ms.subservice: data-science-vm
 ms.workload: data-services
 ms.devlang: na
-ms.topic: article
+ms.topic: quickstart
 ms.date: 02/22/2019
-ms.author: gokuma
-ms.openlocfilehash: 57768fc463f5ea1d2f1ec386f3f0975758220013
-ms.sourcegitcommit: c0419208061b2b5579f6e16f78d9d45513bb7bbc
+ms.author: vijetaj
+ms.openlocfilehash: dfb3e9f6390d4c80b8f3c37b87f2659c671fa823
+ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/08/2019
-ms.locfileid: "67626384"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68591821"
 ---
 # <a name="provision-a-windows-data-science-virtual-machine-on-azure"></a>Bereitstellen einer Data Science Virtual Machine für Windows in Azure
 
@@ -106,7 +106,7 @@ So erstellen Sie eine DSVM-Instanz:
 
 Nachdem die VM erstellt und bereitgestellt wurde, können Sie sich mithilfe von Remotedesktop mit den Anmeldeinformationen des Administratorkontos anmelden, die Sie zuvor im Abschnitt **Grundlagen** erstellt haben. Sie können nun beginnen, die auf der VM installierten und konfigurierten Tools zu verwenden. Für viele der Tools gibt es Desktopsymbole und Kacheln im Startmenü.
 
-Sie können Azure Notebooks auch eine Data Science VM zuordnen, um Jupyter-Notebooks auf der VM auszuführen und die Einschränkungen der kostenlosen Dienstebene zu umgehen. Weitere Informationen finden Sie unter [Verwalten und Konfigurieren von Projekten – Computeebene](/azure/notebooks/configure-manage-azure-notebooks-projects#compute-tier).
+Sie können Azure Notebooks auch eine Data Science VM zuordnen, um Jupyter-Notebooks auf der VM auszuführen und die Einschränkungen der kostenlosen Dienstebene zu umgehen. Weitere Informationen finden Sie unter [Verwalten und Konfigurieren von Projekten – Computeebene](../../notebooks/configure-manage-azure-notebooks-projects.md#compute-tier).
 
 ## <a name="tools-installed-on-the-microsoft-data-science-virtual-machine"></a>In der Microsoft Data Science Virtual Machine installierte Tools
 

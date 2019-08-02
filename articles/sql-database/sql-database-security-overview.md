@@ -10,14 +10,13 @@ ms.topic: conceptual
 author: aliceku
 ms.author: aliceku
 ms.reviewer: vanto, carlrab, emlisa
-manager: craigg
 ms.date: 05/14/2019
-ms.openlocfilehash: 6b9a5ca350377777beebda24e52bc678c976ad19
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 44b330fcf93b9d2d2d305b3da954421e4fbbcbbc
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67070199"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68566848"
 ---
 # <a name="an-overview-of-azure-sql-database-security-capabilities"></a>Eine Übersicht über die Sicherheitsfunktionen von Azure SQL-Datenbank
 
@@ -66,7 +65,7 @@ Die Authentifizierung ist der Prozess, bei dem bestätigt wird, dass der Benutze
 > [!IMPORTANT]
 > Die Verwaltung von Datenbanken und Servern in Azure wird über die Rollenzuweisungen in Ihrem Portalbenutzerkonto gesteuert. Weitere Informationen zu diesem Artikel finden Sie unter [Rollenbasierte Zugriffssteuerung im Azure-Portal](../role-based-access-control/overview.md). Die Zugriffskontrolle mit Firewallregeln gilt *nicht* für **eine verwaltete Instanz**. Weitere Informationen zur erforderlichen Netzwerkkonfiguration finden Sie im Artikel zum [Herstellen einer Verbindung mit einer verwalteten Instanz](sql-database-managed-instance-connect-app.md).
 
-## <a name="authorization"></a>Autorisierung
+## <a name="authorization"></a>Authorization
 
 Der Begriff Autorisierung bezieht sich auf die Berechtigungen, die einem Benutzer in Azure SQL-Datenbank zugeordnet sind und die festlegen, welche Aktionen der Benutzer ausführen darf. Berechtigungen werden gesteuert, indem Benutzerkonten zu [Datenbankrollen](/sql/relational-databases/security/authentication-access/database-level-roles) hinzugefügt und diesen Rollen Berechtigungen auf Datenbankebene zugewiesen oder dem Benutzer bestimmte [Berechtigungen auf Objektebene](/sql/relational-databases/security/permissions-database-engine) erteilt werden. Weitere Informationen finden Sie unter [Anmeldungen und Benutzer](sql-database-manage-logins.md).
 
