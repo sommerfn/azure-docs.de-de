@@ -9,14 +9,13 @@ ms.topic: overview
 author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: carlr
-manager: craigg
 ms.date: 01/25/2019
-ms.openlocfilehash: 4e80bbc868376a41212d924bd31df6ac70a52ded
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 677d9b5a8ca837288755ab098fbccd8a5b7ddacd
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57901966"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68567854"
 ---
 # <a name="automate-management-tasks-using-database-jobs"></a>Automatisieren von Verwaltungsaufgaben mithilfe von Datenbankaufträgen
 
@@ -45,13 +44,13 @@ Die Auftragsautomatisierung kann in verschiedenen Szenarien hilfreich sein:
 In Azure SQL-Datenbank stehen folgende Auftragsplanungstechnologien zur Verfügung:
 
 - **SQL-Agent-Aufträge** sind eine klassische und bewährte SQL Server-Auftragsplanungskomponente, die in verwalteten Instanzen verfügbar ist. In Einzeldatenbanken stehen SQL-Agent-Aufträge nicht zur Verfügung.
-- **Elastische Datenbankaufträge** sind ein Auftragsplanungsdienst, der benutzerdefinierte Aufträge für einzelne oder mehrere Azure SQL-Datenbanken ausführt.
+- **Aufträge für die elastische Datenbank** sind ein Auftragsplanungsdienst, der benutzerdefinierte Aufträge für einzelne oder mehrere Azure SQL-Datenbanken ausführt.
 
 Zwischen dem SQL-Agent (lokal und als Komponente einer verwalteten SQL-Datenbank-Instanz verfügbar) und dem Datenbank-Agent für elastische Aufträge (für Einzeldatenbanken in Azure SQL-Datenbank und Datenbanken in SQL Data Warehouse verfügbar) gibt es einige Unterschiede.
 
 |  |Elastische Aufträge  |SQL-Agent |
 |---------|---------|---------|
-|Bereich     |  Beliebige Anzahl von Azure SQL-Datenbanken und/oder Data Warehouses in der gleichen Azure-Cloud wie der Auftrags-Agent. Ziele können sich auf unterschiedlichen SQL-Datenbank-Servern, in unterschiedlichen Abonnements und/oder in unterschiedlichen Regionen befinden. <br><br>Zielgruppen können einzelne Datenbanken/Data Warehouses oder alle Datenbanken auf einem Server, in einem Pool oder in einer Shardzuordnung (dynamisch zur Auftragslaufzeit aufgezählt) enthalten. | Beliebige einzelne Datenbank in der gleichen SQL Server-Instanz wie der SQL-Agent. |
+|`Scope`     |  Beliebige Anzahl von Azure SQL-Datenbanken und/oder Data Warehouses in der gleichen Azure-Cloud wie der Auftrags-Agent. Ziele können sich auf unterschiedlichen SQL-Datenbank-Servern, in unterschiedlichen Abonnements und/oder in unterschiedlichen Regionen befinden. <br><br>Zielgruppen können einzelne Datenbanken/Data Warehouses oder alle Datenbanken auf einem Server, in einem Pool oder in einer Shardzuordnung (dynamisch zur Auftragslaufzeit aufgezählt) enthalten. | Beliebige einzelne Datenbank in der gleichen SQL Server-Instanz wie der SQL-Agent. |
 |Unterstützte APIs und Tools     |  Portal, PowerShell, T-SQL, Azure Resource Manager      |   T-SQL, SQL Server Management Studio (SSMS)     |
 
 ## <a name="sql-agent-jobs"></a>SQL-Agent-Aufträge
@@ -224,7 +223,7 @@ Im Zuge der Erstellung des Auftrags-Agents werden in der *Auftragsdatenbank* ein
 
 Eine *Zielgruppe* definiert die Gruppe von Datenbanken, für die ein Auftragsschritt ausgeführt wird. Eine Zielgruppe kann eine beliebige Anzahl und Kombination der folgenden Optionen enthalten:
 
-- **SQL-Datenbankserver:** Bei Angabe eines Servers werden alle Datenbanken, die sich zum Zeitpunkt der Auftragsausführung auf dem Server befinden, in die Gruppe einbezogen. Damit die Gruppe vor der Auftragsausführung aufgezählt und aktualisiert werden kann, müssen die Anmeldeinformationen für die Masterdatenbank angegeben werden.
+- **SQL-Datenbank-Server:** Bei Angabe eines Servers werden alle Datenbanken, die sich zum Zeitpunkt der Auftragsausführung auf dem Server befinden, in die Gruppe einbezogen. Damit die Gruppe vor der Auftragsausführung aufgezählt und aktualisiert werden kann, müssen die Anmeldeinformationen für die Masterdatenbank angegeben werden.
 - **Pool für elastische Datenbanken:** Bei Angabe eines Pools für elastische Datenbanken werden alle Datenbanken, die sich zum Zeitpunkt der Auftragsausführung in dem Pool für elastische Datenbanken befinden, in die Gruppe einbezogen. Genau wie bei einem Server müssen die Anmeldeinformationen für die Masterdatenbank angegeben werden, damit die Gruppe vor der Auftragsausführung aktualisiert werden kann.
 - **Einzelne Datenbank:** Geben Sie eine oder mehrere einzelne Datenbanken an, die in die Gruppe einbezogen werden sollen.
 - **Shardzuordnung:** Datenbanken einer Shardzuordnung.
