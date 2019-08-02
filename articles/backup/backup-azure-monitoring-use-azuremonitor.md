@@ -1,7 +1,6 @@
 ---
 title: 'Azure Backup: Überwachen von Azure Backup mit Azure Monitor'
 description: Überwachen von Azure Backup-Workloads und Erstellen von benutzerdefinierten Warnungen mit Azure Monitor.
-services: backup
 author: pvrk
 manager: shivamg
 keywords: Log Analytics; Azure Backup; Warnungen Diagnoseeinstellungen; Aktionsgruppen
@@ -10,12 +9,12 @@ ms.topic: conceptual
 ms.date: 06/04/2019
 ms.author: pullabhk
 ms.assetid: 01169af5-7eb0-4cb0-bbdb-c58ac71bf48b
-ms.openlocfilehash: e2d4a235737789f2f5852c00218427613db3d558
-ms.sourcegitcommit: 1572b615c8f863be4986c23ea2ff7642b02bc605
+ms.openlocfilehash: 15b701a9ccc469636875736b6e316c150615aa16
+ms.sourcegitcommit: c72ddb56b5657b2adeb3c4608c3d4c56e3421f2c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/10/2019
-ms.locfileid: "67786310"
+ms.lasthandoff: 07/24/2019
+ms.locfileid: "68465931"
 ---
 # <a name="monitor-at-scale-by-using-azure-monitor"></a>Überwachen im richtigen Maßstab mithilfe von Azure Monitor
 
@@ -31,7 +30,7 @@ Azure Backup stellt [integrierte Überwachungs-und Warnungsfunktionen](backup-az
 > [!NOTE]
 > Daten aus Azure VM-Sicherungen, dem Azure Backup-Agent, System Center Data Protection Manager, SQL-Sicherungen in Azure VMS und Azure Files-Freigabesicherungen werden über Diagnoseeinstellungen an den Log Analytics-Arbeitsbereich übertragen. 
 
-Um eine geeignete Überwachung auszuführen, benötigen Sie die Funktionen von zwei Azure-Diensten. *Diagnoseeinstellungen* senden Daten aus mehreren Azure Resource Manager-Ressourcen an eine andere Ressource. *Log Analytics* generiert benutzerdefinierte Warnungen, in denen Sie Aktionsgruppen verwenden können, um andere Benachrichtigungskanäle zu definieren. 
+Um eine bedarfsorientierte Überwachung bzw. einen geeigneten Bericht auszuführen, benötigen Sie die Funktionen von zwei Azure-Diensten. *Diagnoseeinstellungen* senden Daten aus mehreren Azure Resource Manager-Ressourcen an eine andere Ressource. *Log Analytics* generiert benutzerdefinierte Warnungen, in denen Sie Aktionsgruppen verwenden können, um andere Benachrichtigungskanäle zu definieren. 
 
 In den folgenden Abschnitten wird beschrieben, wie Sie Log Analytics zur Überwachung von Azure Backup im gewünschten Umfang verwenden können.
 
@@ -50,50 +49,33 @@ Sie können einen Log Analytics-Arbeitsbereich aus einem anderen Abonnement als 
 
 ### <a name="deploy-a-solution-to-the-log-analytics-workspace"></a>Bereitstellen einer Lösung im Log Analytics-Arbeitsbereich
 
-Nachdem sich die Daten im Log Analytics-Arbeitsbereich befinden, stellen Sie eine [GitHub-Vorlage](https://azure.microsoft.com/resources/templates/101-backup-oms-monitoring/) für Log Analytics bereit, um die Daten zu visualisieren. Um den Arbeitsbereich ordnungsgemäß zu identifizieren, stellen Sie sicher, dass Sie für ihn die gleiche Ressourcengruppe, den gleichen Arbeitsbereichsnamen und den gleichen Speicherort des Arbeitsbereichs verwenden. Installieren Sie dann diese Vorlage für den Arbeitsbereich.
+> [!IMPORTANT]
+> Wir haben eine aktualisierte [Vorlage](https://azure.microsoft.com/resources/templates/101-backup-la-reporting/) zur Mehrfachansicht für die LA-basierte Überwachung und Berichterstellung in Azure Backup veröffentlicht. Beachten Sie, dass Benutzer, die die [frühere Lösung](https://azure.microsoft.com/resources/templates/101-backup-oms-monitoring/) verwendet haben, diese auch nach der Bereitstellung der neuen Lösung in Ihren Arbeitsbereichen sehen werden. Die alte Lösung kann jedoch aufgrund einiger geringfügiger Schemaänderungen falsche Ergebnisse liefern. Es ist daher erforderlich, dass Benutzer die neue Vorlage bereitstellen.
 
-> [!NOTE]
-> Wenn Sie keine Warnungen, Sicherungsaufträge oder Wiederherstellungsaufträge in Ihrem Log Analytics-Arbeitsbereich verwenden, wird möglicherweise der Fehlercode „BadArgumentError“ im Portal angezeigt. Ignorieren Sie diesen Fehler, und setzen Sie die Verwendung der Lösung fort. Sobald der Datenfluss des entsprechenden Typs in den Arbeitsbereich beginnt, spiegeln die Visualisierungen dies wider, und dieser Fehler wird nicht mehr angezeigt.
+Nachdem sich die Daten im Log Analytics-Arbeitsbereich befinden, stellen Sie eine [GitHub-Vorlage](https://azure.microsoft.com/resources/templates/101-backup-la-reporting/) für Log Analytics bereit, um die Daten zu visualisieren. Um den Arbeitsbereich ordnungsgemäß zu identifizieren, stellen Sie sicher, dass Sie für ihn die gleiche Ressourcengruppe, den gleichen Arbeitsbereichsnamen und den gleichen Speicherort des Arbeitsbereichs verwenden. Installieren Sie dann diese Vorlage für den Arbeitsbereich.
 
 ### <a name="view-azure-backup-data-by-using-log-analytics"></a>Anzeigen von Azure Backup-Daten mit Log Analytics
 
-Nachdem die Vorlage bereitgestellt wurde, wird die Lösung zur Überwachung von Azure Backup im Übersichtsbereich des Arbeitsbereichs angezeigt. Gehen Sie folgendermaßen vor, um zur Zusammenfassung zu gelangen:
+Nach der Bereitstellung der Vorlage wird die Lösung zur Überwachung und Berichterstellung von Azure Backup im Übersichtsbereich des Arbeitsbereichs angezeigt. Gehen Sie folgendermaßen vor, um zur Zusammenfassung zu gelangen:
 
 - **Azure Monitor**: Wählen Sie im Abschnitt **Insights** die Option **Weitere** aus, und wählen Sie dann den entsprechenden Arbeitsbereich aus.
 - **Log Analytics-Arbeitsbereiche**: Wählen Sie den relevanten Arbeitsbereich aus, und wählen Sie dann unter **Allgemein** die Option **Zusammenfassung des Arbeitsbereichs** aus.
 
-![Die Kachel „Log Analytics-Überwachung“](media/backup-azure-monitoring-laworkspace/la-azurebackup-azuremonitor-tile.png)
+![Die Kachel „Log Analytics: Überwachung und Berichte“](media/backup-azure-monitoring-laworkspace/la-azurebackup-overview-dashboard.png)
 
-Wenn Sie die Kachel „Überwachung“ auswählen, öffnet die Designer-Vorlage eine Reihe von Diagrammen zu den grundlegenden Überwachungsdaten von Azure Backup. Dies sind einige der Diagramme, die angezeigt werden:
+Durch Auswählen einer der Übersichtskacheln können Sie weitere Informationen anzeigen. Dies sind einige der Berichte, die angezeigt werden:
 
-* Alle Sicherungsaufträge
+* Nicht-Protokollsicherungsaufträge
 
-   ![Log Analytics-Diagramme für Sicherungsaufträge](media/backup-azure-monitoring-laworkspace/la-azurebackup-allbackupjobs.png)
+   ![Log Analytics-Diagramme für Sicherungsaufträge](media/backup-azure-monitoring-laworkspace/la-azurebackup-backupjobsnonlog.png)
 
-* Wiederherstellungsaufträge
+* Warnungen aus der Sicherung von Azure-Ressourcen
 
-   ![Log Analytics-Diagramm für Wiederherstellungsaufträge](media/backup-azure-monitoring-laworkspace/la-azurebackup-restorejobs.png)
+   ![Log Analytics-Diagramm für Wiederherstellungsaufträge](media/backup-azure-monitoring-laworkspace/la-azurebackup-alertsazure.png)
 
-* Integrierte Azure Backup-Warnungen für Azure-Ressourcen
-
-   ![Log Analytics-Diagramm für integrierte Azure Backup-Warnungen für Azure-Ressourcen](media/backup-azure-monitoring-laworkspace/la-azurebackup-activealerts.png)
-
-* Integrierte Azure Backup-Warnungen für lokale Ressourcen
-
-   ![Log Analytics-Diagramm für integrierte Azure Backup-Warnungen für lokale Ressourcen](media/backup-azure-monitoring-laworkspace/la-azurebackup-activealerts-onprem.png)
-
-* Aktive Datenquellen
-
-   ![Log Analytics-Diagramm für aktive gesicherte Entitäten](media/backup-azure-monitoring-laworkspace/la-azurebackup-activedatasources.png)
-
-* Cloudspeicher des Recovery Services-Tresors
-
-   ![Log Analytics-Diagramm für Cloudspeicher des Recovery Services-Tresors](media/backup-azure-monitoring-laworkspace/la-azurebackup-cloudstorage-in-gb.png)
-
+Analog dazu können Sie durch Klicken auf die anderen Kacheln Berichte zu Wiederherstellungsaufträgen, Cloudspeicher, Sicherungselementen, Warnungen von lokalen Ressourcensicherungen und Protokollsicherungsaufträgen anzeigen.
+ 
 Diese Diagramme werden mit der Vorlage bereitgestellt. Wenn erforderlich, können Sie die Diagramme bearbeiten oder weitere Diagramme hinzufügen.
-
-> [!IMPORTANT]
-> Wenn Sie die Vorlage bereitstellen, erstellen Sie im Grunde eine schreibgeschützte Sperre. Um die Vorlage zu bearbeiten und zu speichern, müssen Sie die Sperre entfernen. Sie können eine Sperre im Abschnitt **Einstellungen** des Log Analytics-Arbeitsbereichs im Bereich **Sperren** entfernen.
 
 ### <a name="create-alerts-by-using-log-analytics"></a>Erstellen von Warnungen mit Log Analytics
 
@@ -239,7 +221,7 @@ Die Diagnosedaten aus dem Tresor werden mit einer gewissen Verzögerung in den L
 
 Sie können auch Aktivitätsprotokolle verwenden, um Benachrichtigungen zu Ereignissen zu erhalten, etwa zur erfolgreichen Sicherung. Führen Sie zunächst die folgenden Schritte aus:
 
-1. Melden Sie sich am Azure-Portal an.
+1. Melden Sie sich beim Azure-Portal an.
 1. Öffnen Sie den relevanten Recovery Services-Tresor. 
 1. Öffnen Sie in den Eigenschaften des Tresors den Abschnitt **Aktivitätsprotokoll**.
 

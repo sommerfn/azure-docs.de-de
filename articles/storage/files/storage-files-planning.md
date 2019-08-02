@@ -1,19 +1,18 @@
 ---
 title: Planung für eine Azure Files-Bereitstellung | Microsoft-Dokumentation
 description: Erfahren Sie, was Sie beim Planen einer Azure Files-Bereitstellung berücksichtigen müssen.
-services: storage
 author: roygara
 ms.service: storage
-ms.topic: article
+ms.topic: conceptual
 ms.date: 04/25/2019
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 94e2d50280f8fd23f1bc17b278da2f4fbc9c9da2
-ms.sourcegitcommit: dad277fbcfe0ed532b555298c9d6bc01fcaa94e2
+ms.openlocfilehash: 1845107998bfefde4c604744c3c09f5356010f7b
+ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/10/2019
-ms.locfileid: "67718075"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "68699694"
 ---
 # <a name="planning-for-an-azure-files-deployment"></a>Planung für eine Azure Files-Bereitstellung
 
@@ -98,7 +97,7 @@ Derzeit ist eine direkte Konvertierung zwischen einer Standard- und einer Premiu
 > [!IMPORTANT]
 > Premium-Dateifreigaben sind nur mit LRS und in den meisten Regionen verfügbar, die Speicherkonten anbieten. Um herauszufinden, ob Premium-Dateifreigaben derzeit in Ihrer Region verfügbar sind, lesen Sie die Seite [Verfügbare Produkte nach Region](https://azure.microsoft.com/global-infrastructure/services/?products=storage) für Azure.
 
-### <a name="provisioned-shares"></a>Bereitgestellte Freigaben
+#### <a name="provisioned-shares"></a>Bereitgestellte Freigaben
 
 Premium-Dateifreigaben werden basierend auf einem festen Verhältnis aus GiB/IOPS/Durchsatz bereitgestellt. Für jedes bereitgestellte GiB erhält die Freigabe 1 IOPS und einen Durchsatz von 0,1 MiB/s bis zum maximalen Grenzwert pro Freigabe. Die kleinste zulässige Bereitstellung beträgt 100 GiB mit den minimalen Werten für IOPS/Durchsatz.
 
@@ -135,7 +134,7 @@ Die folgende Tabelle zeigt einige Beispiele dieser Formeln für die bereitgestel
 > [!NOTE]
 > Die Leistung der Dateifreigabe hängt unter anderem von den Computernetzwerklimits, von der verfügbaren Netzwerkbandbreite, E/A-Größen und Parallelität ab. Um eine maximale Leistung zu erreichen, können Sie die Last auf mehrere VMs verteilen. Weitere Informationen über gängige Leistungsprobleme und deren Lösungen finden Sie im [Handbuch zur Problembehandlung](storage-troubleshooting-files-performance.md).
 
-### <a name="bursting"></a>Bursting
+#### <a name="bursting"></a>Bursting
 
 Premium-Dateifreigaben können ihren IOPS-Wert bis zu Faktor drei erhöhen. Bursting wird automatisiert und funktioniert auf Basis eines Guthabensystems. Die Burstübertragung funktioniert auf Best-Effort-Basis, und der Burstgrenzwert ist keine Garantie; bei Dateifreigaben ist eine Burstübertragung *bis zum* Grenzwert möglich.
 
@@ -197,8 +196,10 @@ Dieser Abschnitt gilt nur für Standarddateifreigaben. Alle Premium-Dateifreigab
 
 ### <a name="restrictions"></a>Einschränkungen
 
+- Die [Nutzungsbestimmungen für Microsoft Azure-Vorschauen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) gelten für große Dateifreigaben während der Vorschau, z. B. bei der Verwendung mit Azure-Dateisynchronisierungsbereitstellungen.
 - Sie müssen ein neues universelles Speicherkonto einrichten (vorhandene Speicherkonten können nicht erweitert werden).
-- Die Konvertierung von LRS zu GRS-Konten ist bei neuen Speicherkonten, die nach Annahme des Abonnements für die größeren Dateifreigabevorschauen erstellt wurden, nicht mehr möglich.
+- Die Konvertierung von LRS/ZRS zu GRS-Konten ist bei neuen Speicherkonten, die nach Annahme des Abonnements für die größeren Dateifreigabevorschauen erstellt wurden, nicht mehr möglich.
+
 
 ### <a name="regional-availability"></a>Regionale Verfügbarkeit
 
@@ -206,15 +207,16 @@ Standard-Dateifreigaben sind für alle Region bis zu 5 TiB verfügbar. In einige
 
 |Region  |Unterstützte Redundanz  |Unterstützt vorhandene Speicherkonten  |
 |---------|---------|---------|
+|Australien (Osten)     |LRS|Nein         |
 |Asien, Südosten     |LRS|Nein         |
-|Europa, Westen     |LRS|Nein         |
+|Europa, Westen     |LRS, ZRS|Nein         |
 |USA, Westen 2     |LRS, ZRS|Nein         |
 
 Damit wir neue Regionen und Funktionen priorisieren können, füllen Sie bitte das Formular dieser [Umfrage](https://aka.ms/azurefilesatscalesurvey) aus.
 
 ### <a name="steps-to-onboard"></a>Schritte des Onboardings
 
-Sie müssen Azure PowerShell verwenden, um Ihr Abonnement für die größere Dateifreigabevorschauversion zu registrieren. Sie können [Azure Cloud Shell](https://shell.azure.com/) verwenden oder das [Azure PowerShell-Modul lokal installieren](https://docs.microsoft.com/en-us/powershell/azure/install-Az-ps?view=azps-2.4.0), um die folgenden PowerShell-Befehle auszuführen:
+Sie müssen Azure PowerShell verwenden, um Ihr Abonnement für die größere Dateifreigabevorschauversion zu registrieren. Sie können [Azure Cloud Shell](https://shell.azure.com/) verwenden oder das [Azure PowerShell-Modul lokal installieren](https://docs.microsoft.com/powershell/azure/install-Az-ps?view=azps-2.4.0), um die folgenden PowerShell-Befehle auszuführen:
 
 Vergewissern Sie sich zunächst, dass das Abonnement, das Sie für die Vorschau registrieren möchten, ausgewählt ist:
 

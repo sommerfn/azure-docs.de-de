@@ -4,14 +4,14 @@ description: Erhalten Sie Informationen zur Funktionsweise der Indizierung in Az
 author: ThomasWeiss
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 05/23/2019
+ms.date: 07/22/2019
 ms.author: thweiss
-ms.openlocfilehash: 633d0f619132ee93951cfe0dc329a7514a38ef57
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: c8e21ea89f3e23709d636ab8af4716bff76d7217
+ms.sourcegitcommit: 75a56915dce1c538dc7a921beb4a5305e79d3c7a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66240734"
+ms.lasthandoff: 07/24/2019
+ms.locfileid: "68479283"
 ---
 # <a name="indexing-in-azure-cosmos-db---overview"></a>Indizierung in Azure Cosmos DB: Übersicht
 
@@ -62,25 +62,34 @@ Wenn ein Element geschrieben wird, indiziert Azure Cosmos DB den Pfad jeder Eig
 
 ## <a name="index-kinds"></a>Indextypen
 
-Azure Cosmos DB unterstützt derzeit zwei Arten von Indizes:
+Azure Cosmos DB unterstützt derzeit drei Arten von Indizes:
 
 Der **Range**-Indextyp wird für Folgendes verwendet:
 
-- Gleichheitsabfragen: 
+- Gleichheitsabfragen:
 
-   ```sql SELECT * FROM container c WHERE c.property = 'value'```
+    ```sql
+   SELECT * FROM container c WHERE c.property = 'value'
+    ```
 
-- Bereichsabfragen: 
+- Bereichsabfragen:
 
-   ```sql SELECT * FROM container c WHERE c.property > 'value'``` (funktioniert für `>`, `<`, `>=`, `<=`, `!=`)
+   ```sql
+   SELECT * FROM container c WHERE c.property > 'value'
+   ``` 
+  (funktioniert für `>`, `<`, `>=`, `<=`, `!=`)
 
 - `ORDER BY` fragt Folgendes ab:
 
-   ```sql SELECT * FROM container c ORDER BY c.property```
+   ```sql 
+   SELECT * FROM container c ORDER BY c.property
+   ```
 
-- `JOIN` fragt Folgendes ab: 
+- `JOIN` fragt Folgendes ab:
 
-   ```sql SELECT child FROM container c JOIN child IN c.properties WHERE child = 'value'```
+   ```sql
+   SELECT child FROM container c JOIN child IN c.properties WHERE child = 'value'
+   ```
 
 Range-Indizes können für Skalarwerte (Zeichenfolge oder Zahl) verwendet werden.
 
@@ -88,11 +97,15 @@ Der **Spatial**-Indextyp wird für Folgendes verwendet:
 
 - Abfragen zum räumlichen Abstand: 
 
-   ```sql SELECT * FROM container c WHERE ST_DISTANCE(c.property, { "type": "Point", "coordinates": [0.0, 10.0] }) < 40```
+   ```sql
+   SELECT * FROM container c WHERE ST_DISTANCE(c.property, { "type": "Point", "coordinates": [0.0, 10.0] }) < 40
+   ```
 
 - Räumliche Abfragen: 
 
-   ```sql SELECT * FROM container c WHERE ST_WITHIN(c.property, {"type": "Point", "coordinates": [0.0, 10.0] } })```
+   ```sql
+   SELECT * FROM container c WHERE ST_WITHIN(c.property, {"type": "Point", "coordinates": [0.0, 10.0] } })
+   ```
 
 Spatial-Indizes können für ordnungsgemäß formatierte [GeoJSON](geospatial.md)-Objekte verwendet werden. Derzeit werden Point, LineString und Polygon unterstützt.
 
@@ -100,7 +113,9 @@ Der **zusammengesetzte** Index wird für Folgendes verwendet:
 
 - `ORDER BY` fragt mehrere Eigenschaften ab: 
 
-   ```sql SELECT * FROM container c ORDER BY c.firstName, c.lastName```
+   ```sql
+   SELECT * FROM container c ORDER BY c.firstName, c.lastName
+   ```
 
 ## <a name="querying-with-indexes"></a>Abfragen mit Indizes
 

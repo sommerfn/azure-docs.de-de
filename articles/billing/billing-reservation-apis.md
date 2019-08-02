@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/25/2019
 ms.author: banders
-ms.openlocfilehash: 6d63f9a393dbb40c3b0952eba9ab9449fd7b558d
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 20ed2bcf793ab5c3913ccf66d338e71c1a99a003
+ms.sourcegitcommit: 75a56915dce1c538dc7a921beb4a5305e79d3c7a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64702623"
+ms.lasthandoff: 07/24/2019
+ms.locfileid: "68478924"
 ---
 # <a name="apis-for-azure-reservation-automation"></a>APIs für die Automatisierung von Azure-Reservierungen
 
@@ -104,7 +104,7 @@ Um zwei Reservierungen in eine Reservierung zusammenzuführen, verwenden Sie die
 
 ## <a name="change-scope-for-a-reservation"></a>Ändern des Bereichs für eine Reservierung
 
-Der Bereich einer Reservierung können ein einzelnes Abonnement oder alle Abonnements in Ihrem Abrechnungskontext sein. Wenn Sie den Umfang auf ein Einzelabonnement festlegen, wird die Reservierung mit den ausgeführten Ressourcen im ausgewählten Abonnement abgestimmt. Wenn Sie den Umfang auf „Freigegeben“ festlegen, ordnet Azure die Reservierung Ressourcen zu, die in allen Abonnements innerhalb des Abrechnungskontexts ausgeführt werden. Der Abrechnungskontext ist abhängig von dem Abonnement, das Sie verwendet haben, um die Reservierung zu erwerben. Weitere Informationen finden Sie unter [Verwalten von Reservierungen – Ändern des Bereichs](billing-manage-reserved-vm-instance.md#change-the-reservation-scope).
+Der Bereich einer Reservierung können ein einzelnes Abonnement, eine einzelne Ressourcengruppe oder alle Abonnements in Ihrem Abrechnungskontext sein. Wenn Sie den Umfang auf ein Einzelabonnement oder eine einzelne Ressourcengruppe festlegen, wird die Reservierung mit den ausgeführten Ressourcen im ausgewählten Abonnement abgestimmt. Wenn Sie das Abonnement oder die Ressourcengruppe löschen oder verschieben, wird die Reservierung nicht verwendet.  Wenn Sie den Umfang auf „Freigegeben“ festlegen, ordnet Azure die Reservierung Ressourcen zu, die in allen Abonnements innerhalb des Abrechnungskontexts ausgeführt werden. Der Abrechnungskontext ist abhängig von dem Abonnement, das Sie verwendet haben, um die Reservierung zu erwerben. Sie können den Bereich beim Kauf auswählen oder jederzeit nach dem Kauf ändern. Weitere Informationen finden Sie unter [Verwalten von Reservierungen – Ändern des Bereichs](billing-manage-reserved-vm-instance.md#change-the-reservation-scope).
 
 Um den Bereich programmgesteuert zu ändern, verwenden Sie die API [Reservierung – Update](/rest/api/reserved-vm-instances/reservation/update).
 

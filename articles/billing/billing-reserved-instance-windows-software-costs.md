@@ -3,8 +3,8 @@ title: Softwarekosten für Azure-Reservierungen | Microsoft-Dokumentation
 description: Erfahren Sie, welche Verbrauchseinheiten für Software nicht in den Kosten für reservierte Azure-VM-Instanzen enthalten sind.
 services: billing
 documentationcenter: ''
-author: manish-shukla01
-manager: manshuk
+author: yashar
+manager: yashar
 editor: ''
 tags: billing
 ms.service: billing
@@ -14,16 +14,16 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/30/2019
 ms.author: banders
-ms.openlocfilehash: 340cba65a1faac247678cd187f106157ba566f3e
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 52e2e2503303c2a7525a3a6c156f648c097b27dd
+ms.sourcegitcommit: 75a56915dce1c538dc7a921beb4a5305e79d3c7a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60371171"
+ms.lasthandoff: 07/24/2019
+ms.locfileid: "68478624"
 ---
 # <a name="software-costs-not-included-with-azure-reserved-vm-instances"></a>Nicht in reservierten Azure-VM-Instanzen enthaltene Softwarekosten
 
-Wenn Sie für Ihre reservierten VM-Instanzen keinen Azure-Hybridvorteil haben, werden Ihnen die im folgenden Abschnitt aufgeführten Verbrauchseinheiten für Software berechnet.
+Rabatte für reservierte VM-Instanzen und SQL-Kapazitäten gelten nur für Infrastrukturkosten und nicht für Softwarekosten. Wenn Sie einen virtuellen Windows-Computer verwenden und für Ihre reservierten VM-Instanzen keinen Azure-Hybridvorteil haben, werden Ihnen die im folgenden Abschnitt aufgeführten Verbrauchseinheiten für Software berechnet. Bei SQL PaaS-Bereitstellungen werden die IP-Kosten weiterhin mit einer separaten Verbrauchseinheit abgerechnet, wenn „Azure-Hybridvorteil“ nicht ausgewählt ist.
 
 ## <a name="windows-software-meters-not-included-in-reservation-cost"></a>Nicht in den Reservierungskosten enthaltene Verbrauchseinheiten für Windows-Software
 

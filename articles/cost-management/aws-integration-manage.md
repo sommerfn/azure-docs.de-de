@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.service: cost-management
 manager: ormaoz
 ms.custom: ''
-ms.openlocfilehash: 57e66d449b194662bfc03f7e130cf49c02a15793
-ms.sourcegitcommit: a52d48238d00161be5d1ed5d04132db4de43e076
+ms.openlocfilehash: 05e2375998b3bce4320b2d66ab7fce44cd911dcc
+ms.sourcegitcommit: 75a56915dce1c538dc7a921beb4a5305e79d3c7a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/20/2019
-ms.locfileid: "67275710"
+ms.lasthandoff: 07/24/2019
+ms.locfileid: "68479123"
 ---
 # <a name="manage-aws-costs-and-usage-in-azure"></a>Verwalten von AWS-Kosten und -Nutzung in Azure
 
@@ -151,13 +151,23 @@ Dieser Fehler bedeutet, dass Azure Cost Management die AWS AssumeRole-API nicht 
 - Die Option **MFA anfordern** ist deaktiviert.
 - Das vertrauenswürdige AWS-Konto in der AWS-Rolle ist _432263259397_.
 
-### <a name="collection-failed-with-access-denied"></a>Fehler bei der Sammlung: Zugriff verweigert
+### <a name="collection-failed-with-access-denied---cur-report-definitions"></a>Fehler bei der Sammlung: Zugriff verweigert – Definitionen von CUR-Berichten
 
-- **Fehlercode:** _AccessDeniedReportDefinitions_ 
-- **Fehlercode:** _AccessDeniedListReports_ 
-- **Fehlercode:** _AccessDeniedDownloadReport_ 
+**Fehlercode:** _AccessDeniedReportDefinitions_ 
 
-Diese Fehlermeldung bedeutet, dass Azure Cost Management nicht auf die im Amazon S3-Bucket gespeicherten CUR-Dateien zugreifen kann. Stellen Sie sicher, dass die mit der Rolle verknüpfte AWS JSON-Richtlinie dem Beispiel am Ende des Abschnitts [Erstellen einer Rolle und Richtlinie AWS](aws-integration-set-up-configure.md#create-a-role-and-policy-in-aws) entspricht.
+Dieser Fehler bedeutet, dass Azure Cost Management die Definitionen des Kosten- und Nutzungsberichts nicht anzeigen kann. Diese Berechtigung wird verwendet, um zu überprüfen, ob der CUR wie von Azure Cost Management erwartet definiert wurde. Siehe [Erstellen eines Kosten- und Nutzungsberichts in AWS](aws-integration-set-up-configure.md#create-a-cost-and-usage-report-in-aws).
+
+### <a name="collection-failed-with-access-denied---list-reports"></a>Fehler bei der Sammlung: Zugriff verweigert – Berichte auflisten
+
+**Fehlercode:** _AccessDeniedListReports_ 
+
+Dieser Fehler bedeutet, dass Azure Cost Management das Objekt nicht im S3-Bucket auflisten kann, in dem sich der CUR befindet. Die AWS IAM-Richtlinie erfordert eine Berechtigung für den Bucket und die Objekte im Bucket. Siehe [Erstellen einer Rolle und Richtlinie in AWS](aws-integration-set-up-configure.md#create-a-role-and-policy-in-aws).
+
+### <a name="collection-failed-with-access-denied---download-report"></a>Fehler bei der Sammlung: Zugriff verweigert – Bericht herunterladen 
+
+**Fehlercode:** _AccessDeniedDownloadReport_ 
+
+Diese Fehlermeldung bedeutet, dass Azure Cost Management nicht auf die im Amazon S3-Bucket gespeicherten CUR-Dateien zugreifen und sie nicht herunterladen kann. Stellen Sie sicher, dass die mit der Rolle verknüpfte AWS JSON-Richtlinie dem Beispiel am Ende des Abschnitts [Erstellen einer Rolle und Richtlinie AWS](aws-integration-set-up-configure.md#create-a-role-and-policy-in-aws) entspricht.
 
 ### <a name="collection-failed-since-we-did-not-find-the-cost-and-usage-report"></a>Fehler bei der Sammlung: Bericht „Cost and Usage“ (Kosten und Nutzung) konnte nicht gefunden werden
 
