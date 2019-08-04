@@ -11,16 +11,16 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 05/07/2019
+ms.date: 07/16/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6c78a951258e3c279f96f44ceac469e4c38cf22c
-ms.sourcegitcommit: 1572b615c8f863be4986c23ea2ff7642b02bc605
+ms.openlocfilehash: 2ad995908ff20d123a77b511d127652aa17c4634
+ms.sourcegitcommit: 5604661655840c428045eb837fb8704dca811da0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/10/2019
-ms.locfileid: "67785570"
+ms.lasthandoff: 07/25/2019
+ms.locfileid: "68494525"
 ---
 # <a name="web-app-that-calls-web-apis---code-configuration"></a>Web-App zum Aufruf von Web-APIs – Codekonfiguration
 
@@ -29,6 +29,12 @@ Wie im [Szenario der Benutzeranmeldung über eine Web-App](scenario-web-app-sign
 - Sie lassen ASP.NET oder ASP.NET Core einen Autorisierungscode anfordern. Hierdurch gestattet ASP.NET/ASP.NET Core dem Benutzer, sich anzumelden und seine Einwilligung zu erteilen.
 - Sie abonnieren den Empfang des Autorisierungscodes durch die Web-App.
 - Wenn der Autorisierungscode empfangen wird, verwenden Sie MSAL-Bibliotheken zum Einlösen des Codes, und die daraus resultierenden Zugriffstoken und Aktualisierungstoken werden im Tokencache gespeichert. Von dort aus kann der Cache in anderen Teilen der Anwendung verwendet werden, um weitere Token im Hintergrund abzurufen.
+
+> [!NOTE]
+> Die in diesem Artikel enthaltenen Codeausschnitte wurden aus den folgenden voll funktionsfähigen Beispielen auf GitHub extrahiert:
+>
+> - [Inkrementelles Tutorial zur ASP.NET Core-Web-App](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/tree/master/2-WebApp-graph-user/2-1-Call-MSGraph)
+> - [ASP.NET-Web-App-Beispiel](https://github.com/Azure-Samples/ms-identity-aspnet-webapp-openidconnect)
 
 ## <a name="libraries-supporting-web-app-scenarios"></a>Bibliotheken mit Unterstützung für Web-App-Szenarios
 
@@ -42,7 +48,12 @@ Folgende Bibliotheken unterstützen den Autorisierungscodeflow für Web-Apps:
 
 ## <a name="aspnet-core-configuration"></a>ASP.NET Core-Konfiguration
 
-In ASP.NET Core werden die Vorgänge in der Datei `Startup.cs` durchgeführt. Abonnieren Sie das OIDC-Ereignis `OnAuthorizationCodeReceived`, und rufen Sie über dieses Ereignis die MSAL. NET-Methode `AcquireTokenFromAuthorizationCode` auf. Dadurch werden folgende Token im Tokencache gespeichert: das Zugriffstoken für die angeforderten Bereiche sowie ein Aktualisierungstoken, das zum Aktualisieren des Zugriffstokens kurz vor Ablauf oder zum Abrufen eines Tokens im Namen desselben Benutzers, aber für eine andere Ressource verwendet wird.
+In ASP.NET Core werden die Vorgänge in der Datei `Startup.cs` durchgeführt. Abonnieren Sie das OpenID Connect-Ereignis `OnAuthorizationCodeReceived`, und rufen Sie über dieses Ereignis die MSAL.NET-Methode `AcquireTokenFromAuthorizationCode` auf. Dadurch werden im Tokencache das Zugriffstoken für die angeforderten `scopes` und ein Aktualisierungstoken gespeichert, das verwendet wird, um das Zugriffstoken kurz vor Ablauf zu aktualisieren oder ein Token im Namen desselben Benutzers, aber für eine andere Ressource abzurufen.
+
+```CSharp
+string[] scopes = new string[]{ "user.read" };
+string[] scopesRequestedByMsalNet = new string[]{ "openid", "profile", "offline_access" };
+```
 
 Die Kommentare im folgenden Code helfen Ihnen beim Verständnis einiger komplizierter Aspekte beim Kombinieren von MSAL.NET und ASP.NET Core. Weitere Informationen finden Sie im Artikel [ASP.NET Core Web app incremental tutorial, chapter 2 (Inkrementelles Tutorial zu ASP.NET Core-Web-Apps, Kapitel 2)](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/tree/master/2-WebApp-graph-user/2-1-Call-MSGraph).
 
@@ -56,7 +67,7 @@ Die Kommentare im folgenden Code helfen Ihnen beim Verständnis einiger komplizi
    // their Microsoft personal accounts
    // (it's required by MSAL.NET and automatically provided by Azure AD when users
    // sign in with work or school accounts, but not with their Microsoft personal accounts)
-   options.Scope.Add(OidcConstants.ScopeOfflineAccess);
+   options.Scope.Add("offline_access");
    options.Scope.Add("user.read"); // for instance
 
    // Handling the auth redemption by MSAL.NET so that a token is available in the token cache
@@ -88,7 +99,12 @@ Die Kommentare im folgenden Code helfen Ihnen beim Verständnis einiger komplizi
    };
 ```
 
-In ASP.NET Core werden beim Erstellen der vertraulichen Clientanwendung Informationen verwendet, die sich im HttpContext befinden. Diesem HttpContext sind die URL für die Web-App und der angemeldete Benutzer bekannt (in einem `ClaimsPrincipal`). Darüber hinaus verwendet er die ASP.NET Core-Konfiguration, die einen Abschnitt „AzureAD“ beinhaltet und an die `_applicationOptions`-Datenstruktur gebunden ist. Außerdem muss die Anwendung Tokencaches verwalten.
+In ASP.NET Core werden beim Erstellen der vertraulichen Clientanwendung Informationen verwendet, die sich im HttpContext befinden. Dieser `HttpContext` kennt die URL für die Web-App und den angemeldeten Benutzer (in einem `ClaimsPrincipal`). 
+
+Darüber hinaus verwendet er die ASP.NET Core-Konfiguration, die einen Abschnitt „AzureAD“ umfasst und an die folgenden Elemente gebunden ist:
+
+- Die `_applicationOptions`-Datenstruktur vom Typ [ConfidentialClientApplicationOptions](https://docs.microsoft.com/dotnet/api/microsoft.identity.client.confidentialclientapplicationoptions?view=azure-dotnet)
+- Die `azureAdOptions`-Instanz vom Typ [AzureAdOptions](https://github.com/aspnet/AspNetCore/blob/master/src/Azure/AzureAD/Authentication.AzureAD.UI/src/AzureADOptions.cs), der in ASP.NET Core `Authentication.AzureAD.UI` definiert ist. Außerdem muss die Anwendung Tokencaches verwalten.
 
 ```CSharp
 /// <summary>
@@ -102,7 +118,7 @@ private IConfidentialClientApplication BuildConfidentialClientApplication(HttpCo
  var request = httpContext.Request;
 
  // Find the URI of the application)
- string currentUri = UriHelper.BuildAbsolute(request.Scheme, request.Host, request.PathBase, azureAdOptions.CallbackPath ?? string.Empty);
+ string currentUri = UriHelper.BuildAbsolute(request.Scheme, request.Host, request.PathBase, _applicationOptions.CallbackPath ?? string.Empty);
 
  // Updates the authority from the instance (including national clouds) and the tenant
  string authority = $"{azureAdOptions.Instance}{azureAdOptions.TenantId}/";
@@ -116,19 +132,22 @@ private IConfidentialClientApplication BuildConfidentialClientApplication(HttpCo
  // Initialize token cache providers. In the case of Web applications, there must be one
  // token cache per user (here the key of the token cache is in the claimsPrincipal which
  // contains the identity of the signed-in user)
- if (this.UserTokenCacheProvider != null)
+ if (UserTokenCacheProvider != null)
  {
-  this.UserTokenCacheProvider.Initialize(app.UserTokenCache, httpContext, claimsPrincipal);
+  UserTokenCacheProvider.Initialize(app.UserTokenCache, httpContext, claimsPrincipal);
  }
- if (this.AppTokenCacheProvider != null)
+ if (AppTokenCacheProvider != null)
  {
-  this.AppTokenCacheProvider.Initialize(app.AppTokenCache, httpContext);
+  AppTokenCacheProvider.Initialize(app.AppTokenCache, httpContext);
  }
  return app;
 }
 ```
 
-`AcquireTokenByAuthorizationCode` löst eigentlich den von ASP.NET angeforderten Autorisierungscode ein und ruft die Token ab, die dem MSAL.NET-Benutzertokencache hinzugefügt werden. Von dort aus werden sie anschließend in den ASP.NET Core-Controllern verwendet.
+Ausführliche Informationen zu den Tokencacheanbietern finden Sie in den [Tutorials zu ASP.NET Core-Web-Apps | Tokencaches](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/tree/455d32f09f4f6647b066ebee583f1a708376b12f/2-WebApp-graph-user/2-2-TokenCache).
+
+> [!NOTE]
+> `AcquireTokenByAuthorizationCode` löst eigentlich den von ASP.NET angeforderten Autorisierungscode ein und ruft die Token ab, die dem MSAL.NET-Benutzertokencache hinzugefügt werden. Von dort aus werden sie anschließend in den ASP.NET Core-Controllern verwendet.
 
 ## <a name="aspnet-configuration"></a>ASP.NET-Konfiguration
 
@@ -180,9 +199,12 @@ private async Task OnAuthorizationCodeReceived(AuthorizationCodeReceivedNotifica
 }
 ```
 
+Schließlich kann die vertrauliche Clientanwendung ihre Identität statt mit einem geheimen Clientschlüssel auch mithilfe eines Clientzertifikats oder einer Clientassertion nachweisen.
+Die Verwendung von Clientassertionen ist ein erweitertes Szenario, das unter [Clientassertionen](msal-net-client-assertions.md) detailliert erörtert wird.
+
 ### <a name="msalnet-token-cache-for-a-aspnet-core-web-app"></a>MSAL.NET-Tokencache für eine ASP.NET-/ASP.NET Core-Web-App
 
-In Web-Apps (oder eigentlich Web-APIs) unterscheidet sich die Implementierung des Tokencaches von den Tokencache-Implementierungen von Desktopanwendungen (die häufig [dateibasiert](scenario-desktop-acquire-token.md#file-based-token-cache) sind). Dabei kann die ASP.NET-/ASP.NET Core-Sitzung, ein Redis Cache, eine Datenbank oder sogar Azure Blob Storage verwendet werden. Im Codeausschnitt darüber ist dies das Objekt des `EnablePersistence(HttpContext, clientApp.UserTokenCache, clientApp.AppTokenCache);`-Methodenaufrufs, von dem ein Cachedienst gebunden wird. Die Details zu den genauen Abläufen würden den Rahmen dieses Szenarioleitfadens überschreiten, aber Links werden unten bereitgestellt.
+In Web-Apps (oder eigentlich Web-APIs) unterscheidet sich die Implementierung des Tokencaches von den Tokencache-Implementierungen von Desktopanwendungen (die häufig [dateibasiert](scenario-desktop-acquire-token.md#file-based-token-cache) sind). Dabei kann die ASP.NET-/ASP.NET Core-Sitzung, ein Redis Cache, eine Datenbank oder sogar Azure Blob Storage verwendet werden. Im obigen Codeausschnitt ist dies das Objekt des `EnablePersistence(HttpContext, clientApp.UserTokenCache, clientApp.AppTokenCache);`-Methodenaufrufs, von dem ein Cachedienst gebunden wird. Die Details zu den genauen Abläufen würden den Rahmen dieses Szenarioleitfadens überschreiten, aber Links werden unten bereitgestellt.
 
 > [!IMPORTANT]
 > Ein wichtiger Aspekt ist, dass für Web-Apps und Web-APIs ein Tokencache pro Benutzer (pro Konto) verfügbar sein muss. Sie müssen den Tokencache für jedes Konto serialisieren.

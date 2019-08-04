@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/10/2019
 ms.author: iainfou
-ms.openlocfilehash: e252774d99eecac3623fcbae4ce9fdc0e1591672
-ms.sourcegitcommit: f811238c0d732deb1f0892fe7a20a26c993bc4fc
+ms.openlocfilehash: 3ea4ebe652679ee9e4c0a165493fa86756ca7868
+ms.sourcegitcommit: 5604661655840c428045eb837fb8704dca811da0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/29/2019
-ms.locfileid: "67474104"
+ms.lasthandoff: 07/25/2019
+ms.locfileid: "68494552"
 ---
 # <a name="enable-password-synchronization-to-azure-active-directory-domain-services"></a>Aktivieren der Kennwortsynchronisierung für Azure Active Directory Domain Services
 In vorherigen Aufgaben haben Sie Azure Active Directory Domain Services für Ihren Azure AD-Mandanten (Azure Active Directory) aktiviert. Die nächste Aufgabe besteht darin, die Synchronisierung der Anmeldeinformationshashes, die für die NTLM- (NT LAN Manager) und Kerberos-Authentifizierung erforderlich sind, mit Azure AD Domain Services zu ermöglichen. Nach der Einrichtung der Synchronisierung von Anmeldeinformationen können sich Benutzer mit ihren Unternehmensanmeldeinformationen bei der verwalteten Domäne anmelden.
@@ -41,7 +41,7 @@ Für reine Cloudbenutzerkonten müssen andere Schritte ausgeführt werden als f�
 Ein synchronisierter Azure AD-Mandant wird für die Synchronisierung mit dem lokalen Verzeichnis Ihres Unternehmens per Azure AD Connect festgelegt. Standardmäßig synchronisiert Azure AD Connect keine NTLM- und Kerberos-Anmeldeinformationshashes mit Azure AD. Zum Verwenden der Azure AD-Domänendienste müssen Sie Azure AD Connect so konfigurieren, dass Hashes von Anmeldeinformationen, die für die NTLM- und Kerberos-Authentifizierung benötigt werden, synchronisiert werden. Die folgenden Schritte ermöglichen die Synchronisierung der erforderlichen Anmeldeinformationshashes aus Ihrem lokalen Verzeichnis mit Ihrem Azure AD-Mandanten.
 
 > [!NOTE]
-> **Falls Ihre Organisation über Benutzerkonten verfügt, die von Ihrem lokalen Verzeichnis aus synchronisiert werden, müssen Sie die Synchronisierung von NTLM- und Kerberos-Hashes aktivieren, um die verwaltete Domäne verwenden zu können.** Ein synchronisiertes Benutzerkonto ist ein Konto, das in Ihrem lokalen Verzeichnis erstellt wurde und unter Verwendung von Azure AD Connect mit Ihrem Azure AD-Mandanten synchronisiert wird.
+> **Falls Ihre Organisation über Benutzerkonten verfügt, die von Ihrem lokalen Verzeichnis aus synchronisiert werden, müssen Sie die Synchronisierung von NTLM- und Kerberos-Hashes aktivieren, um die verwaltete Domäne verwenden zu können.** Ein synchronisiertes Benutzerkonto ist ein Konto, das in Ihrem lokalen Verzeichnis erstellt wurde und unter Verwendung von Azure AD Connect mit Ihrem Azure AD-Mandanten synchronisiert wird.  Die Kennworthashsynchronisierung ist ein anderer Prozess als die Benutzer-/Objektsynchronisierung. Sie müssen die Kennworthashsynchronisierung deaktivieren/aktivieren, um eine vollständige Kennwortsynchronisierung zu ermöglichen. Dann werden die Kennworthash-Batchaktualisierungen im Anwendungsereignisprotokoll angezeigt.
 >
 >
 
@@ -77,6 +77,9 @@ Set-ADSyncAADPasswordSyncConfiguration -SourceConnector $adConnector -TargetConn
 ```
 
 Je nach Größe Ihres Verzeichnisses (Anzahl von Benutzern, Gruppen usw.) nimmt die Synchronisierung der Hashes von Anmeldeinformationen mit Azure AD mehr oder weniger Zeit in Anspruch. Die Kennwörter können kurz nach der Synchronisierung der Hashes für die Anmeldeinformationen mit Azure AD in der verwalteten Domäne der Azure AD-Domänendienste verwendet werden.
+
+> [!NOTE]
+> Die **Kennworthashsynchronisierung** ist ein anderer Prozess als die Benutzer-/Objektsynchronisierung. Sie müssen die Kennworthashsynchronisierung deaktivieren/aktivieren, um eine vollständige Kennwortsynchronisierung zu ermöglichen. Dann werden die Kennworthash-Batchaktualisierungen im Anwendungsereignisprotokoll angezeigt.
 
 ## <a name="related-content"></a>Verwandte Inhalte
 * [Aktivieren der Synchronisierung von Kennwörtern für AAD-Domänendienste bei einem reinen Cloud-Azure AD-Verzeichnis](active-directory-ds-getting-started-password-sync.md)

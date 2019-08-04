@@ -1,5 +1,5 @@
 ---
-title: Konfigurieren der automatischen Anmeldebeschleunigung für eine Anwendung mit einer Richtlinie für die Startbereichsermittlung | Microsoft Docs
+title: Konfigurieren der automatischen Anmeldebeschleunigung mit einer Richtlinie für die Startbereichsermittlung | Microsoft-Dokumentation
 description: Erfahren Sie, wie Sie eine Richtlinie für die Startbereichsermittlung für die Azure Active Directory-Authentifizierung für Verbundbenutzer konfigurieren, einschließlich automatischer Beschleunigung und Domänenhinweisen.
 services: active-directory
 documentationcenter: ''
@@ -15,12 +15,12 @@ ms.date: 04/08/2019
 ms.author: mimart
 ms.custom: seoapril2019
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0534037393f4634364b927020595aa21d8e1b7b3
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: 8f8f51fcd69a7115879aad97bbf696833e87877b
+ms.sourcegitcommit: 75a56915dce1c538dc7a921beb4a5305e79d3c7a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67440372"
+ms.lasthandoff: 07/24/2019
+ms.locfileid: "68477204"
 ---
 # <a name="configure-azure-active-directory-sign-in-behavior-for-an-application-by-using-a-home-realm-discovery-policy"></a>Konfigurieren des Verhaltens der Azure Active Directory-Anmeldung für eine Anwendung mit einer Richtlinie für die Startbereichsermittlung (Home Realm Discovery, HDR)
 
@@ -270,5 +270,5 @@ Get-AzureADPolicyAppliedObject -id <ObjectId of the Policy>
 ```
 ## <a name="next-steps"></a>Nächste Schritte
 - Weitere Informationen zur Funktionsweise der Authentifizierung in Azure AD finden Sie unter [Authentifizierungsszenarien für Azure AD](../develop/authentication-scenarios.md).
-- Weitere Informationen zum einmaligen Anmelden von Benutzern finden Sie unter [Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory](configure-single-sign-on-portal.md).
+- Weitere Informationen zum einmaligen Anmelden von Benutzern finden Sie unter [Einmaliges Anmelden bei Anwendungen in Azure Active Directory](what-is-single-sign-on.md).
 - Im [Active Directory-Entwicklerhandbuch](../develop/v1-overview.md) finden Sie eine Übersicht über alle für Entwickler relevanten Inhalte.

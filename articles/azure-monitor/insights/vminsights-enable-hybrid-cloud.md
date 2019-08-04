@@ -11,14 +11,14 @@ ms.service: azure-monitor
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 06/07/2019
+ms.date: 07/12/2019
 ms.author: magoedte
-ms.openlocfilehash: bc26cc0654aac9416bf31ffccf426648e3a8b8d2
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: e8241069a8671919b70dfbe44fe28c99a05358c5
+ms.sourcegitcommit: bafb70af41ad1326adf3b7f8db50493e20a64926
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67122537"
+ms.lasthandoff: 07/25/2019
+ms.locfileid: "68489732"
 ---
 # <a name="enable-azure-monitor-for-vms-preview-for-a-hybrid-environment"></a>Aktivieren von Azure Monitor für VMs (Vorschauversion) für eine Hybridumgebung
 
@@ -44,6 +44,7 @@ Die Schritte zur Ausführung dieser Aufgabe sind wie folgt zusammengefasst:
 4. Stellen Sie Azure Monitor für VMs bereit.
 
 ## <a name="install-the-dependency-agent-on-windows"></a>Installieren des Dependency-Agents unter Windows
+
 Sie können den Dependency-Agent durch Ausführen von `InstallDependencyAgent-Windows.exe` manuell auf Windows-Computern installieren. Wenn Sie diese ausführbare Datei ohne Optionen ausführen, wird ein Setup-Assistent gestartet, mit dem Sie die Installation des Agent interaktiv durchführen können.
 
 >[!NOTE]
@@ -61,6 +62,7 @@ Um das Installationsprogramm beispielsweise mit dem Parameter `/?` auszuführen,
 Dateien für den Dependency-Agent für Windows werden standardmäßig in *C:\Programme\Microsoft Dependency Agent* installiert. Falls der Dependency-Agent nach Abschluss des Setups nicht gestartet wird, suchen Sie in den Protokollen nach ausführlichen Fehlerinformationen. Das Protokollverzeichnis ist *%Programfiles%\Microsoft Dependency Agent\logs*.
 
 ## <a name="install-the-dependency-agent-on-linux"></a>Installieren des Dependency-Agents unter Linux
+
 Der Dependency-Agent wird auf Linux-Servern mit *InstallDependencyAgent-Linux64.bin* installiert, einem Shellskript mit einer selbstextrahierenden Binärdatei. Sie können die Datei mit `sh` ausführen oder der Datei selbst Ausführungsberechtigungen hinzufügen.
 
 >[!NOTE]
@@ -89,12 +91,69 @@ Dateien für den Dependency-Agent werden in den folgenden Verzeichnissen gespeic
 | Ausführbare Dienstdateien | /opt/microsoft/dependency-agent/bin/microsoft-dependency-agent<br>/opt/microsoft/dependency-agent/bin/microsoft-dependency-agent-manager |
 | Binäre Speicherdateien | /var/opt/microsoft/dependency-agent/storage |
 
+## <a name="installation-script-examples"></a>Beispiele für Installationsskripts
+
+Mit dem folgenden Skriptbeispiel zum Herunterladen und Installieren des Dependency-Agents unter Windows oder Linux können Sie den Dependency-Agent ganz einfach auf mehreren Servern gleichzeitig bereitstellen.
+
+### <a name="powershell-script-for-windows"></a>PowerShell-Skript für Windows
+
+```powershell
+Invoke-WebRequest "https://aka.ms/dependencyagentwindows" -OutFile InstallDependencyAgent-Windows.exe
+
+.\InstallDependencyAgent-Windows.exe /S
+```
+
+### <a name="shell-script-for-linux"></a>Shellskript für Linux
+
+```
+wget --content-disposition https://aka.ms/dependencyagentlinux -O InstallDependencyAgent-Linux64.bin
+sudo sh InstallDependencyAgent-Linux64.bin -s
+```
+
+## <a name="desired-state-configuration"></a>Desired State Configuration
+
+Zum Bereitstellen des Dependency-Agents über Desired State Configuration (DSC) können Sie das Modul „xPSDesiredStateConfiguration“ mit dem folgenden Beispielcode verwenden:
+
+```powershell
+configuration ServiceMap {
+
+    Import-DscResource -ModuleName xPSDesiredStateConfiguration
+
+    $DAPackageLocalPath = "C:\InstallDependencyAgent-Windows.exe"
+
+    Node localhost
+    {
+        # Download and install the Dependency agent
+        xRemoteFile DAPackage 
+        {
+            Uri = "https://aka.ms/dependencyagentwindows"
+            DestinationPath = $DAPackageLocalPath
+        }
+
+        xPackage DA
+        {
+            Ensure="Present"
+            Name = "Dependency Agent"
+            Path = $DAPackageLocalPath
+            Arguments = '/S'
+            ProductId = ""
+            InstalledCheckRegKey = "HKEY_LOCAL_MACHINE\SOFTWARE\Wow6432Node\Microsoft\Windows\CurrentVersion\Uninstall\DependencyAgent"
+            InstalledCheckRegValueName = "DisplayName"
+            InstalledCheckRegValueData = "Dependency Agent"
+            DependsOn = "[xRemoteFile]DAPackage"
+        }
+    }
+}
+```
+
 ## <a name="enable-performance-counters"></a>Aktivieren von Leistungsindikatoren
+
 Wenn der Log Analytics-Arbeitsbereich, auf den die Lösung verweist, noch nicht für die Erfassung der von der Lösung benötigten Leistungsindikatoren konfiguriert ist, müssen Sie diese aktivieren. Hierzu stehen zwei Möglichkeiten zur Verfügung:
 * Manuell, wie in [Windows- und Linux-Leistungsindikatoren in Log Analytics](../../azure-monitor/platform/data-sources-performance-counters.md) beschrieben.
 * Durch Herunterladen und Ausführen eines PowerShell-Skripts, das über den [Azure PowerShell-Katalog](https://www.powershellgallery.com/packages/Enable-VMInsightsPerfCounters/1.1) verfügbar ist.
 
 ## <a name="deploy-azure-monitor-for-vms"></a>Bereitstellen von Azure Monitor für VMs
+
 Diese Methode umfasst eine JSON-Vorlage, die die Konfiguration zum Aktivieren der Lösungskomponenten für Ihren Log Analytics-Arbeitsbereich angibt.
 
 Wenn Sie nicht wissen, wie Ressourcen mithilfe einer Vorlage bereitgestellt werden, lesen Sie die folgenden Artikel:
@@ -185,6 +244,35 @@ Wenn Sie die Azure CLI verwenden möchten, müssen Sie sie zuerst installieren u
     provisioningState       : Succeeded
     ```
    Nach dem Aktivieren der Überwachung kann es ca. 10 Minuten dauern, bis Integritätszustand und Metriken für den Hybridcomputer angezeigt werden.
+
+## <a name="troubleshooting"></a>Problembehandlung
+
+### <a name="vm-doesnt-appear-on-the-map"></a>Der virtuelle Computer wird auf der Karte nicht angezeigt
+
+Wenn die Installation des Dependency-Agents erfolgreich war, der Computer jedoch nicht auf der Karte angezeigt wird, diagnostizieren Sie das Problem, indem Sie die folgenden Schritte ausführen.
+
+1. Wurde der Dependency-Agent erfolgreich installiert? Überprüfen Sie, ob der Dienst installiert wurde und ausgeführt wird.
+
+    **Windows:** Suchen Sie nach dem Dienst „Microsoft Dependency-Agent“. 
+
+    **Linux:** Suchen Sie nach dem laufenden Prozess „microsoft-dependency-agent“.
+
+2. Nutzen Sie den [Tarif „Free“ von Log Analytics](https://docs.microsoft.com/azure/log-analytics/log-analytics-add-solutions)? Der kostenlose Plan („Free“) lässt bis zu fünf eindeutige Computer zu. Alle weiteren Computer werden auf der Karte nicht angezeigt, selbst wenn die vorherigen fünf keine Daten mehr senden.
+
+3. Sendet der Computer Protokoll- und Leistungsdaten an Azure Monitor-Protokolle? Führen Sie die folgende Abfrage für Ihren Computer aus: 
+
+    ```Kusto
+    Usage | where Computer == "computer-name" | summarize sum(Quantity), any(QuantityUnit) by DataType
+    ```
+
+    Hat sie ein oder mehrere Ergebnisse zurückgegeben? Sind die Daten aktuell? Wenn dies der Fall ist, funktioniert Ihr Log Analytics-Agent ordnungsgemäß und kommuniziert mit dem Dienst. Wenn nicht, überprüfen Sie den Agent auf dem Server: [Behandeln von Problemen mit dem Log Analytics-Agent für Windows](../platform/agent-windows-troubleshoot.md) oder [Behandeln von Problemen beim Linux-Agent für Log Analytics](../platform/agent-linux-troubleshoot.md).
+
+#### <a name="computer-appears-on-the-map-but-has-no-processes"></a>Der Computer wird auf der Karte angezeigt, enthält aber keine Prozesse
+
+Wenn Ihr Server auf der Karte angezeigt wird, aber keine Prozess- oder Verbindungsdaten enthält, weist dies darauf hin, dass der Dependency-Agent installiert ist und ausgeführt wird, der Kerneltreiber aber nicht geladen wurde. 
+
+Überprüfen Sie die Datei „C:\Program Files\Microsoft Dependency Agent\logs\wrapper.log“ (Windows) bzw. die Datei „/var/opt/microsoft/dependency-agent/log/service.log“ (Linux). Die letzten Zeilen der Datei sollten den Grund angeben, warum der Kernel nicht geladen wurde. Beispielsweise, weil der Kernel nicht unterstützt wird, was unter Linux nach der Aktualisierung des Kernels auftreten kann.
+
 
 ## <a name="next-steps"></a>Nächste Schritte
 

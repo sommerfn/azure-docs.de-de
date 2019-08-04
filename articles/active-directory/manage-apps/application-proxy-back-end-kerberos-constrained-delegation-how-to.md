@@ -16,12 +16,12 @@ ms.date: 04/23/2019
 ms.author: mimart
 ms.reviewer: asteen
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c758b473dcdf36456bcc3569c18849488ad14983
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.openlocfilehash: 3ca50cfb8697fdbb8c71054c5a6b4d5e23792eb5
+ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67702652"
+ms.lasthandoff: 07/22/2019
+ms.locfileid: "68381521"
 ---
 # <a name="troubleshoot-kerberos-constrained-delegation-configurations-for-application-proxy"></a>Problembehandlung von Konfigurationen der eingeschränkten Kerberos-Delegierung für den Anwendungsproxy
 

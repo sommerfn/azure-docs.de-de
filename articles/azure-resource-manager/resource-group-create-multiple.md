@@ -5,14 +5,14 @@ services: azure-resource-manager
 author: tfitzmac
 ms.service: azure-resource-manager
 ms.topic: conceptual
-ms.date: 07/01/2019
+ms.date: 07/25/2019
 ms.author: tomfitz
-ms.openlocfilehash: 22317372a7d954286ebcb0b59aea293c746b2a58
-ms.sourcegitcommit: 79496a96e8bd064e951004d474f05e26bada6fa0
+ms.openlocfilehash: dbacec6e8f91480996150e73f2a81dbcde67550b
+ms.sourcegitcommit: 5604661655840c428045eb837fb8704dca811da0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2019
-ms.locfileid: "67508176"
+ms.lasthandoff: 07/25/2019
+ms.locfileid: "68494802"
 ---
 # <a name="resource-property-or-variable-iteration-in-azure-resource-manager-templates"></a>Iteration von Ressourcen, Eigenschaften oder Variablen in Azure Resource Manager-Vorlagen
 
@@ -141,9 +141,9 @@ Namen:
 * storagefabrikam
 * storagecoho
 
-Resource Manager erstellt die Ressourcen standardmäßig gleichzeitig. Die Reihenfolge, in der sie erstellt werden, ist nicht garantiert. Es ist aber möglicherweise sinnvoll, anzugeben, dass die Ressource sequenziell bereitgestellt werden. Wenn Sie z.B. eine Produktionsumgebung aktualisieren, möchten Sie die Updates möglicherweise staffeln, sodass nur eine bestimmte Anzahl von Ressourcen gleichzeitig aktualisiert wird.
+Resource Manager erstellt die Ressourcen standardmäßig gleichzeitig. Es gilt keine Beschränkung für die Anzahl der parallel bereitgestellten Ressourcen, mit Ausnahme der Begrenzung der Gesamtanzahl auf 800 Ressourcen in der Vorlage. Die Reihenfolge, in der sie erstellt werden, ist nicht garantiert.
 
-Legen Sie zum seriellen Bereitstellen mehrerer Instanzen einer Ressource `mode` auf **serial** und `batchSize` auf die Anzahl der Instanzen fest, die zu einem Zeitpunkt bereitgestellt werden sollen. Im seriellen Modus erstellt Resource Manager eine Abhängigkeit von früheren Instanzen in der Schleife, sodass ein Batch erst dann gestartet wird, wenn der vorherige Batch abgeschlossen wurde.
+Es ist aber möglicherweise sinnvoll, anzugeben, dass die Ressource sequenziell bereitgestellt werden. Wenn Sie z.B. eine Produktionsumgebung aktualisieren, möchten Sie die Updates möglicherweise staffeln, sodass nur eine bestimmte Anzahl von Ressourcen gleichzeitig aktualisiert wird. Legen Sie zum seriellen Bereitstellen mehrerer Instanzen einer Ressource `mode` auf **serial** und `batchSize` auf die Anzahl der Instanzen fest, die zu einem Zeitpunkt bereitgestellt werden sollen. Im seriellen Modus erstellt Resource Manager eine Abhängigkeit von früheren Instanzen in der Schleife, sodass ein Batch erst dann gestartet wird, wenn der vorherige Batch abgeschlossen wurde.
 
 Zum seriellen Bereitstellen von zwei Speicherkonten gleichzeitig verwenden Sie beispielsweise:
 

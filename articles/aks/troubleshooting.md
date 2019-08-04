@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: troubleshooting
 ms.date: 08/13/2018
 ms.author: saudas
-ms.openlocfilehash: f0b0ff3ff4ac742a7e850798c736eb31098f66e8
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 1668e0b3b155804496b190f2ba66d220ba0dd219
+ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65966378"
+ms.lasthandoff: 07/22/2019
+ms.locfileid: "68381953"
 ---
 # <a name="aks-troubleshooting"></a>AKS-Problembehandlung
 
@@ -65,7 +65,7 @@ Wenn das Kubernetes-Dashboard nicht angezeigt wird, überprüfen Sie, ob der Pod
 
 ## <a name="i-cant-get-logs-by-using-kubectl-logs-or-i-cant-connect-to-the-api-server-im-getting-error-from-server-error-dialing-backend-dial-tcp-what-should-i-do"></a>Ich kann Protokolle nicht mithilfe von kubectl-Protokollen abrufen, oder ich kann keine Verbindung mit dem API-Server herstellen. Ich erhalte „Fehler vom Server: Fehler beim Anwählen des Back-Ends: Wählen Sie tcp…“. Wie sollte ich vorgehen?
 
-Stellen Sie sicher, dass die Netzwerksicherheits-Standardgruppe nicht geändert wurde und dass Port 22 für die Verbindung mit dem API-Server geöffnet ist. Überprüfen Sie, ob der `tunnelfront`-Pod im *kube-system*-Namespace ausgeführt wird, indem Sie den Befehl `kubectl get pods --namespace kube-system` verwenden. Falls nicht, erzwingen Sie das Löschen des Pods. Er wird anschließend neu gestartet.
+Stellen Sie sicher, dass die standardmäßige Netzwerksicherheitsgruppe nicht geändert wurde und dass die Ports 22 und 9000 für die Verbindung mit dem API-Server geöffnet sind. Überprüfen Sie, ob der `tunnelfront`-Pod im *kube-system*-Namespace ausgeführt wird, indem Sie den Befehl `kubectl get pods --namespace kube-system` verwenden. Falls nicht, erzwingen Sie das Löschen des Pods. Er wird anschließend neu gestartet.
 
 ## <a name="im-trying-to-upgrade-or-scale-and-am-getting-a-message-changing-property-imagereference-is-not-allowed-error-how-do-i-fix-this-problem"></a>Ich möchte ein Upgrade oder eine Skalierung ausführen und erhalte die folgende Fehlermeldung: „Das Ändern der Eigenschaft ‚imageReference‘ ist nicht zulässig.“ Wie kann ich dieses Problem beheben?
 

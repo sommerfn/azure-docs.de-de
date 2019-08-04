@@ -1,5 +1,5 @@
 ---
-title: Aspekte der Netzwerktopologie bei Verwendung des Azure Active Directory-Anwendungsproxys | Microsoft-Dokumentation
+title: Aspekte der Netzwerktopologie bei Verwendung des Azure AD-Anwendungsproxys | Microsoft-Dokumentation
 description: Es werden die Aspekte der Netzwerktopologie beschrieben, die bei Verwendung des Azure AD-Anwendungsproxys wichtig sind.
 services: active-directory
 documentationcenter: ''
@@ -11,17 +11,17 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 07/28/2017
+ms.date: 07/22/2019
 ms.author: mimart
 ms.reviewer: harshja
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 734fd1d0c150cfb655279b7978a3dd1512923e49
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.openlocfilehash: a7320df63885f562b4724285a3ca5c3cf6ea2a52
+ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67702246"
+ms.lasthandoff: 07/22/2019
+ms.locfileid: "68381441"
 ---
 # <a name="network-topology-considerations-when-using-azure-active-directory-application-proxy"></a>Aspekte der Netzwerktopologie bei Verwendung des Azure Active Directory-Anwendungsproxys
 

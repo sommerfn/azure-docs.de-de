@@ -12,12 +12,12 @@ ms.date: 07/17/2019
 ms.author: mimart
 ms.reviewer: arvindh, japere
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f3b23aa7db29390ef50a72f73fb153fef5301b92
-ms.sourcegitcommit: 770b060438122f090ab90d81e3ff2f023455213b
+ms.openlocfilehash: ddbb233bb9d0970169f040e3040b44a0b75aa1f8
+ms.sourcegitcommit: 75a56915dce1c538dc7a921beb4a5305e79d3c7a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/17/2019
-ms.locfileid: "68304829"
+ms.lasthandoff: 07/24/2019
+ms.locfileid: "68477176"
 ---
 # <a name="single-sign-on-to-applications-in-azure-active-directory"></a>Einmaliges Anmelden bei Anwendungen in Azure Active Directory
 
@@ -71,9 +71,9 @@ SAML-basiertes einmaliges Anmelden wird für Anwendungen unterstützt, die eines
 - SAML 2.0
 - WS-Federation-
 
-Informationen zum Konfigurieren einer SaaS-Anwendung für SAML-basiertes einmaliges Anmelden finden Sie unter [Konfigurieren des SAML-basierten einmaligen Anmeldens](configure-single-sign-on-portal.md). Viele SaaS-Anwendungen (Software-as-a-Service) verfügen auch über ein [anwendungsspezifisches Tutorial](../saas-apps/tutorial-list.md), in dem die Konfiguration des SAML-basierten einmaligen Anmeldens Schritt für Schritt beschrieben wird.
+Informationen zum Konfigurieren einer SaaS-Anwendung für SAML-basiertes einmaliges Anmelden finden Sie unter [Konfigurieren des SAML-basierten einmaligen Anmeldens](configure-single-sign-on-non-gallery-applications.md). Viele SaaS-Anwendungen (Software-as-a-Service) verfügen auch über ein [anwendungsspezifisches Tutorial](../saas-apps/tutorial-list.md), in dem die Konfiguration des SAML-basierten einmaligen Anmeldens Schritt für Schritt beschrieben wird.
 
-Um eine Anwendung für den WS-Verbund zu konfigurieren, führen Sie die gleichen Anweisungen wie zum Konfigurieren der Anwendung für SAML-basiertes einmaliges Anmelden aus, wie unter [Tutorial: Konfigurieren des SAML-basierten einmaligen Anmeldens für eine Anwendung mit Azure Active Directory](configure-single-sign-on-portal.md) beschrieben. Im Schritt zum Konfigurieren der Anwendung für die Verwendung von Azure AD müssen Sie die Azure AD-Anmelde-URL für den WS-Verbund-Endpunkt `https://login.microsoftonline.com/<tenant-ID>/wsfed` ersetzen.
+Um eine Anwendung für den WS-Verbund zu konfigurieren, führen Sie die gleichen Anweisungen wie zum Konfigurieren der Anwendung für SAML-basiertes einmaliges Anmelden aus, wie unter [Tutorial: Konfigurieren des SAML-basierten einmaligen Anmeldens für eine Anwendung mit Azure Active Directory](configure-single-sign-on-non-gallery-applications.md) beschrieben. Im Schritt zum Konfigurieren der Anwendung für die Verwendung von Azure AD müssen Sie die Azure AD-Anmelde-URL für den WS-Verbund-Endpunkt `https://login.microsoftonline.com/<tenant-ID>/wsfed` ersetzen.
 
 Informationen zum Konfigurieren einer lokalen Anwendung für SAML-basiertes einmaliges Anmelden finden Sie unter [SAML-SSO (einmaliges Anmelden) für lokale Anwendungen mit dem Anwendungsproxy](application-proxy-configure-single-sign-on-on-premises-apps.md).
 
@@ -100,7 +100,7 @@ Das kennwortbasierte einmalige Anmelden wird für jede cloudbasierte Anwendung u
 - Chrome unter Windows 7 oder höher und macOS X oder höher
 - Firefox 26.0 oder höher unter Windows XP SP2 oder höher und Mac OS X 10.6 oder höher
 
-Informationen zum Konfigurieren einer Cloudanwendung für kennwortbasiertes einmaliges Anmelden finden Sie unter [Konfigurieren der Anwendung für das einmalige Anmelden per Kennwort](application-sign-in-problem-password-sso-gallery.md#configure-the-app-for-password-sso).
+Informationen zum Konfigurieren einer Cloudanwendung für kennwortbasiertes einmaliges Anmelden finden Sie unter [Konfigurieren des einmaligen Anmeldens per Kennwort](configure-password-single-sign-on-non-gallery-applications.md).
 
 Informationen zum Konfigurieren einer lokalen Anwendung für einmaliges Anmelden über den Anwendungsproxy finden Sie unter [Kennworttresore (Password Vaulting) für einmaliges Anmelden mit Anwendungsproxy](application-proxy-configure-single-sign-on-password-vaulting.md).
 
@@ -127,8 +127,7 @@ Wenn der Endbenutzer die Anmeldeinformationen verwaltet, gilt Folgendes:
 - Administratoren können weiterhin neue Anmeldeinformationen für die Anwendung festlegen.
 
 ## <a name="linked-sign-on"></a>Verknüpfte Anmeldung
-
-Über das verknüpfte einmalige Anmelden kann Azure AD einmaliges Anmelden bei einer Anwendung, die bereits in einem anderen Dienst für einmaliges Anmelden konfiguriert ist, bereitstellen. Die verknüpfte Anwendung kann Endbenutzern im Office 365-Portal oder im Azure AD-MyApps-Portal angezeigt werden. Beispielsweise kann ein Benutzer eine Anwendung, die für einmaliges Anmelden in Active Directory-Verbunddienste 2.0 (AD FS) konfiguriert ist, über das Office 365-Portal starten. Für verknüpfte Anwendungen, die über das Office 365-Portal oder das Azure AD-MyApps-Portal gestartet werden, steht außerdem eine zusätzliche Berichterstellung zur Verfügung.
+Über das verknüpfte einmalige Anmelden kann Azure AD einmaliges Anmelden bei einer Anwendung, die bereits in einem anderen Dienst für einmaliges Anmelden konfiguriert ist, bereitstellen. Die verknüpfte Anwendung kann Endbenutzern im Office 365-Portal oder im Azure AD-MyApps-Portal angezeigt werden. Beispielsweise kann ein Benutzer eine Anwendung, die für einmaliges Anmelden in Active Directory-Verbunddienste 2.0 (AD FS) konfiguriert ist, über das Office 365-Portal starten. Für verknüpfte Anwendungen, die über das Office 365-Portal oder das Azure AD-MyApps-Portal gestartet werden, steht außerdem eine zusätzliche Berichterstellung zur Verfügung. Informationen zum Konfigurieren einer Anwendung für die Anmeldung über Link finden Sie unter [Konfigurieren der Anmeldung über Link](configure-linked-sign-on.md).
 
 ### <a name="linked-sign-on-for-application-migration"></a>Verknüpftes Anmelden für die Migration von Anwendungen
 
@@ -189,8 +188,9 @@ Da dieses Szenario im Rahmen einer Partnerschaft von Azure AD und PingAccess ang
 Weitere Informationen finden Sie unter [Azure Active Directory-Editionen](../fundamentals/active-directory-whatis.md).
 
 ## <a name="related-articles"></a>Verwandte Artikel
-
-- [Tutorials zur Integration von SaaS-Anwendungen in Azure Active Directory](../saas-apps/tutorial-list.md)
-- [Tutorial zum Konfigurieren des einmaligen Anmeldens](configure-single-sign-on-portal.md)
-- [Einführung in die Verwaltung des Zugriffs auf Anwendungen](what-is-access-management.md)
-- Downloadlink: [Single sign-on deployment plan (Bereitstellungsplan für einmaliges Anmelden)](https://aka.ms/SSODeploymentPlan)
+* [Tutorials zur Integration von SaaS-Anwendungen in Azure Active Directory](../saas-apps/tutorial-list.md)
+* [Konfigurieren des SAML-basierten einmaligen Anmeldens](configure-single-sign-on-non-gallery-applications.md)
+* [Konfigurieren des kennwortbasierten einmaligen Anmeldens](configure-password-single-sign-on-non-gallery-applications.md)
+* [Konfigurieren der Anmeldung über Link](configure-linked-sign-on.md)
+* [Einführung in die Verwaltung des Zugriffs auf Anwendungen](what-is-access-management.md)
+* Downloadlink: [Single sign-on deployment plan](https://aka.ms/SSODeploymentPlan) (Bereitstellungsplan für einmaliges Anmelden)
