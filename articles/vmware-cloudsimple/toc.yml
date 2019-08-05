@@ -54,8 +54,6 @@
           href: cloudsimple-faq.md
     - name: Lernprogramme
       items:
-        - name: Ressourcenanbieter aktivieren
-          href: enable-cloudsimple-service.md
         - name: Erstellen des CloudSimple-Diensts
           href: create-cloudsimple-service.md
         - name: Zugriff auf das CloudSimple-Portal

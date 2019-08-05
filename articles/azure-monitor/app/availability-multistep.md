@@ -9,22 +9,22 @@ ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
-ms.date: 06/19/2019
+ms.date: 07/25/2019
 ms.reviewer: sdash
 ms.author: mbullwin
-ms.openlocfilehash: d8bfe92af4e8afc4edae76efb2e1cb7b287c7aa9
-ms.sourcegitcommit: 82efacfaffbb051ab6dc73d9fe78c74f96f549c2
+ms.openlocfilehash: 150c41dce06c81f2e9e07605ab6d5afa9e424453
+ms.sourcegitcommit: 5604661655840c428045eb837fb8704dca811da0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/20/2019
-ms.locfileid: "67304815"
+ms.lasthandoff: 07/25/2019
+ms.locfileid: "68494484"
 ---
 # <a name="multi-step-web-tests"></a>Webtests mit mehreren Schritten
 
 Sie können eine aufgezeichnete Sequenz von URLs und Interaktionen mithilfe einer Website über mehrstufige Webtests überwachen. In diesem Artikel wird der Prozess ausführlich beschrieben, mit dem Sie mit Visual Studio Enterprise einen mehrstufigen Webtest erstellen können.
 
 > [!NOTE]
-> Für mehrstufige Webtests fallen zusätzliche Kosten an. Weitere Informationen erhalten Sie im [offiziellen Leitfaden für Preise](https://azure.microsoft.com/pricing/details/application-insights/).
+> Mehrstufige Webtests sind von Visual Studio-Webtestdateien abhängig. Es wurde [angekündigt](https://devblogs.microsoft.com/devops/cloud-based-load-testing-service-eol/), dass Visual Studio 2019 die letzte Version mit Webtestfunktionen sein wird. Es ist wichtig zu verstehen, dass zwar keine neuen Features hinzugefügt werden, aber Webtestfunktionen in Visual Studio 2019 derzeit noch und auch während des Supportlebenszyklus des Produkts weiterhin unterstützt werden. Das Azure Monitor-Produktteam hat Fragen zur Zukunft von mehrstufigen Verfügbarkeitstests [hier](https://github.com/MicrosoftDocs/azure-docs/issues/26050#issuecomment-468814101) behandelt.  
 
 ## <a name="pre-requisites"></a>Voraussetzungen
 
@@ -34,6 +34,9 @@ Sie können eine aufgezeichnete Sequenz von URLs und Interaktionen mithilfe eine
 Sie finden die Testingtools im **Visual Studio-Installer** unter **Einzelne Komponenten** > **Debuggen und Testen** > **Tools für Webleistung und Auslastungstests**.
 
 ![Screenshot: Visual Studio-Installer mit aktivierter Option „Individuelle Komponenten“ und einem Kontrollkästchen neben dem Element „Tools für Webleistung und Auslastungstests“](./media/availability-multistep/web-performance-load-testing.png)
+
+> [!NOTE]
+> Für mehrstufige Webtests fallen zusätzliche Kosten an. Weitere Informationen erhalten Sie im [offiziellen Leitfaden für Preise](https://azure.microsoft.com/pricing/details/application-insights/).
 
 ## <a name="record-a-multi-step-web-test"></a>Aufzeichnung eines mehrstufigen Webtests
 
