@@ -106,11 +106,11 @@
           href: application-gateway-ilb-arm.md
     - name: Konfigurieren von SSL
       items:
-        - name: SSL-Beendigung
+        - name: SSL-Terminierung
           items:
-            - name: 'SSL-Beendigung: PowerShell'
+            - name: 'SSL-Terminierung: PowerShell'
               href: tutorial-ssl-powershell.md
-            - name: 'SSL-Beendigung: Azure CLI'
+            - name: 'SSL-Terminierung: Azure CLI'
               href: tutorial-ssl-cli.md
             - name: 'Konfigurieren von Key Vault: PowerShell'
               href: configure-keyvault-ps.md

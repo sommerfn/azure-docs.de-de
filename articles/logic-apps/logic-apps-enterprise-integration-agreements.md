@@ -18,8 +18,8 @@ ms.locfileid: "67330304"
 ---
 # <a name="create-and-manage-trading-partner-agreements-in-azure-logic-apps"></a>Erstellen und Verwalten von Handelspartnerverträgen in Azure Logic Apps
 
-Ein [Handelspartnervertrag](../logic-apps/logic-apps-enterprise-integration-partners.md) 
- hilft Organisationen und Unternehmen bei der reibungslosen Kommunikation, indem das branchenübliche Protokoll definiert wird, das beim Austausch von B2B-Nachrichten (Business-to-Business) verwendet wird. ** Vereinbarungen bieten allgemeine Vorteile. Beispiel:
+Ein [Handelspartner](../logic-apps/logic-apps-enterprise-integration-partners.md) 
+ *Vereinbarung* hilft Organisationen und Unternehmen, die nahtlos miteinander kommunizieren können, definieren Sie das spezifische Branche zum Standard-Protokoll verwenden, beim Austausch von Nachrichten für die Business-to-Business (B2B). Vereinbarungen bieten allgemeine Vorteile. Beispiel:
 
 * Sie ermöglichen Organisationen den Austausch von Informationen über ein bekanntes Format.
 * Sie erhöhen die Effizienz beim Durchführen von B2B-Transaktionen.
