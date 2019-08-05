@@ -199,7 +199,7 @@
               href: index-policy.md
         - name: Datentypen
           items:
-            - name: DateTime
+            - name: Datetime
               href: working-with-dates.md
             - name: Geodaten
               href: geospatial.md
@@ -747,6 +747,8 @@
           href: cosmosdb-sql-api-migrate-data-striim.md
         - name: Migrieren zur Cassandra-API mithilfe von Striim
           href: cosmosdb-cassandra-api-migrate-data-striim.md
+        - name: Migrieren Hunderter Terabytes von Daten zu Azure Cosmos DB
+          href: migrate-cosmosdb-data.md
     - name: BulkExecutor-Bibliothek
       items:
         - name: Informationen zur BulkExecutor-Bibliothek

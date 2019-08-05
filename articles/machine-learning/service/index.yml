@@ -43,6 +43,9 @@ sections:
       - type: list
         style: unordered
         items:
+          - html: 'Erste Schritte: <a href="tutorial-first-experiment-automated-ml">Trainieren und Bereitstellen</a> Ihres ersten automatisierten ML-Modells im Azure-Portal'
+          - html: "Erste Schritte: <a href=\"tutorial-1st-experiment-sdk-setup\">Einrichten der Entwicklungsumgebung</a> und <a href=\"tutorial-1st-experiment-sdk-train\">Trainieren Ihres ersten ML-Modells</a> mithilfe einer Jupyter\_Notebook-Instanz (<b>zweiteilige Reihe</b>)"
+          - html: "Erste Schritte: <a href=\"ui-tutorial-automobile-price-train-score\">Trainieren</a> und <a href=\"ui-tutorial-automobile-price-deploy\">Bereitstellen</a> Ihres ersten ML-Experiments mit der grafischen Drag\_&\_Drop-Benutzeroberfläche (<b>zweiteilige Reihe</b>)"
           - html: '<a href="tutorial-train-models-with-aml">Tutorial: Trainieren eines Bildklassifizierungsmodells mit dem Azure Machine Learning Service</a> und <a href="tutorial-deploy-models-with-aml">Tutorial: Bereitstellen eines Bildklassifizierungsmodells in Azure Container Instances</a> (<b>zweiteilige Reihe</b>)'
           - html: '<a href="tutorial-data-prep">Tutorial: Vorbereiten von Daten für die Regressionsmodellierung</a> und <a href="tutorial-auto-train-models">Tutorial: Erstellen Ihres Regressionsmodells mit automatisiertem Machine Learning</a> (<b>zweiteilige Reihe</b>)'
           - html: <a href="ui-tutorial-automobile-price-train-score">Prognostizieren von Automobilpreisen</a> mithilfe der grafischen Benutzeroberfläche und <a href="ui-tutorial-automobile-price-deploy">Bereitstellen</a> des Regressionsmodells

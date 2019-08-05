@@ -56,6 +56,8 @@
       maintainContext: true
     - name: Problembehandlung
       items:
+        - name: Anmeldung beim HDInsight-Cluster nicht möglich
+          href: ./hdinsight-troubleshoot-unable-log-in-cluster.md
         - name: Dem HDInsight-Cluster können keine Knoten hinzugefügt werden.
           href: ./hdinsight-troubleshoot-unable-add-nodes.md
         - name: 'InvalidNetworkSecurityGroupSecurityRules: Fehler bei der Clustererstellung'

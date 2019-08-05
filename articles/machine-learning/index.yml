@@ -36,6 +36,26 @@ sections:
           - html: '<a href="service/quickstart-run-local-notebook">Quickstart: Use your own notebook server to get started with Azure Machine Learning</a> (Schnellstart: Verwenden Ihres eigenen Notebookservers für die ersten Schritte mit Azure Machine Learning) – lokale SDK-Installation'
         style: unordered
         type: list
+      - text: '<b>Tutorial: Trainieren und Bereitstellen Ihres ersten automatisierten ML-Modells im Azure-Portal:</b>'
+        type: paragraph
+      - items:
+          - html: <a href="service/tutorial-first-experiment-automated-ml">Trainieren und Bereitstellen Ihres ersten Klassifizierungsmodells mithilfe von automatisiertem maschinellem Lernen</a>
+        style: unordered
+        type: list
+      - text: '<b>Tutorial: Trainieren Ihres ersten ML-Modells mit dem SDK:</b>'
+        type: paragraph
+      - items:
+          - html: 'Teil 1: <a href="service/tutorial-1st-experiment-sdk-setup">Einrichten der Umgebung und des Arbeitsbereichs</a>'
+          - html: 'Teil 2: <a href="service/tutorial-1st-experiment-sdk-train">Trainieren Ihres ersten Modells</a>'
+        style: unordered
+        type: list
+      - text: '<b>Tutorial: Trainieren und Bereitstellen des ersten Experiments mithilfe der grafischen Benutzeroberfläche:</b>'
+        type: paragraph
+      - items:
+          - html: 'Teil 1: <a href="service/ui-tutorial-automobile-price-train-score">Trainieren eines Regressionsmodells</a>'
+          - html: 'Teil 2: <a href="service/ui-tutorial-automobile-price-deploy">Bereitstellen des Modells</a>'
+        style: unordered
+        type: list
       - text: '<b>Tutorial: Bildklassifizierung von MNIST-Daten mit dem SDK:</b>'
         type: paragraph
       - items:

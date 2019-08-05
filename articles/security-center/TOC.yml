@@ -43,6 +43,8 @@
       href: security-center-incident.md
     - name: Reaktion auf Vorfälle
       href: security-center-incident-response.md
+    - name: Mandantenübergreifende Verwaltung
+      href: security-center-cross-tenant-management.md
 - name: Anleitungen
   items:
     - name: Verbessern Ihrer Sicherheitsbewertung
@@ -81,6 +83,8 @@
       items:
         - name: Was sind Sicherheitsempfehlungen?
           href: security-center-recommendations.md
+        - name: Umsetzen von Empfehlungen
+          href: security-center-remediate-recommendations.md
         - name: Stärken des Sicherheitsstatus
           href: security-center-monitoring.md
         - name: Schützen Ihrer Computer und Apps

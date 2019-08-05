@@ -87,6 +87,8 @@
       items:
         - name: Erstellen der Vorlage
           href: how-to-create-template.md
+        - name: Name und Typ der untergeordneten Ressource
+          href: child-resource-name-type.md
         - name: Erstellen von Ressourcengruppen und Ressourcen für ein Abonnement
           displayName: subscription level deployment
           href: deploy-to-subscription.md
