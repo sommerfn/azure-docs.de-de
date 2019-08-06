@@ -8,12 +8,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 06/07/2019
 ms.author: hrasheed
-ms.openlocfilehash: 4ab30f5f737b0f5188958c4686f82a0084c3ac35
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 301ad4f940e6bd4eedb3a4df64e4740d29effe03
+ms.sourcegitcommit: 9dc7517db9c5817a3acd52d789547f2e3efff848
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67059359"
+ms.lasthandoff: 07/23/2019
+ms.locfileid: "68406221"
 ---
 # <a name="manage-hdinsight-clusters-by-using-the-apache-ambari-rest-api"></a>Verwalten von HDInsight-Clustern mithilfe der Apache Ambari-REST-API
 
@@ -161,7 +161,7 @@ $respObj.host_components.HostRoles.host_name
 
 Auf die von den Beispielen in diesem Abschnitt zurückgegebenen IP-Adressen kann nicht direkt über das Internet zugegriffen werden. Auf sie kann nur innerhalb des virtuellen Azure-Netzwerks, das den HDInsight-Cluster enthält, zugegriffen werden.
 
-Informationen zum Arbeiten mit HDInsight und virtuellen Netzwerken finden Sie unter [Erweitern der HDInsight-Funktionen mit Azure Virtual Network](hdinsight-extend-hadoop-virtual-network.md).
+Weitere Informationen zur Verwendung von HDInsight und virtuellen Netzwerken finden Sie unter [Plan a virtual network for Azure HDInsight](hdinsight-plan-virtual-network-deployment.md) (Planen eines virtuellen Netzwerks für Azure HDInsight).
 
 Zum Ermitteln der IP-Adresse muss Ihnen der interne vollqualifizierte Domänenname (Fully Qualified Domain Name, FQDN) der Clusterknoten bekannt sein. Sobald Sie den FQDN kennen, können Sie die IP-Adresse des Hosts abrufen. Die folgenden Beispiele fragen Ambari zuerst nach dem FQDN aller Hostknoten und dann nach der IP-Adresse jedes Hosts ab.
 

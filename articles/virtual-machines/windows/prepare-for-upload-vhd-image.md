@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: troubleshooting
 ms.date: 05/11/2019
 ms.author: genli
-ms.openlocfilehash: f40b3e0d2a49f6522149a977572d4f3c12e34255
-ms.sourcegitcommit: dad277fbcfe0ed532b555298c9d6bc01fcaa94e2
+ms.openlocfilehash: ad30bd4f77c5f4314956e39f26a30b72d72a208a
+ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/10/2019
-ms.locfileid: "67720066"
+ms.lasthandoff: 07/19/2019
+ms.locfileid: "68361159"
 ---
 # <a name="prepare-a-windows-vhd-or-vhdx-to-upload-to-azure"></a>Vorbereiten einer Windows-VHD oder -VHDX zum Hochladen in Azure
 
@@ -31,10 +31,24 @@ Bei einer VM der Generation 1 können Sie das VHDX-Dateisystem in VHD konvertie
 Weitere Informationen zur Supportrichtlinie für Azure-VMs finden Sie unter [Microsoft-Server-Software-Support für virtuelle Maschinen von Microsoft Azure](https://support.microsoft.com/help/2721672/microsoft-server-software-support-for-microsoft-azure-virtual-machines).
 
 > [!NOTE]
-> Die Anweisungen in diesem Artikel gelten für die 64-Bit-Version von Windows Server 2008 R2 und höheren Versionen des Windows Server-Betriebssystems. Informationen zum Ausführen einer 32-Bit-Version des Betriebssystems in Azure finden Sie unter [Unterstützung für 32-Bit-Betriebssysteme in Azure-VMs](https://support.microsoft.com/help/4021388/support-for-32-bit-operating-systems-in-azure-virtual-machines).
+> Die Anweisungen in diesem Artikel gelten für Folgendes:
+>1. Die 64-Bit-Version von Windows Server 2008 R2 und höhere Versionen des Windows Server-Betriebssystems. Informationen zum Ausführen einer 32-Bit-Version des Betriebssystems in Azure finden Sie unter [Unterstützung für 32-Bit-Betriebssysteme in Azure-VMs](https://support.microsoft.com/help/4021388/support-for-32-bit-operating-systems-in-azure-virtual-machines).
+>2. Wird die Workload mithilfe eines Notfallwiederherstellungstools wie Azure Site Recovery oder Azure Migrate migriert, muss dieser Prozess trotzdem für das Gastbetriebssystem ausgeführt werden, um das Image vor der Migration vorzubereiten.
 
-## <a name="convert-the-virtual-disk-to-a-fixed-size-and-to-vhd"></a>Konvertieren des virtuellen Datenträgers in einen Datenträger mit fester Größe und eine VHD 
-Wenn Sie Ihren virtuellen Datenträger in das für Azure erforderliche Format konvertieren müssen, verwenden Sie eine der in diesem Abschnitt beschriebenen Methoden. Sichern Sie den virtuellen Computer, bevor Sie den virtuellen Datenträger konvertieren. Stellen Sie sicher, dass die Windows-VHD auf dem lokalen Server ordnungsgemäß funktioniert. Beheben Sie dann alle Probleme auf dem virtuellen Computer selbst, bevor Sie versuchen, ihn zu konvertieren oder in Azure hochzuladen.
+## <a name="convert-the-virtual-disk-to-a-fixed-size-and-to-vhd"></a>Konvertieren des virtuellen Datenträgers in einen Datenträger mit fester Größe und eine VHD
+
+Wenn Sie Ihren virtuellen Datenträger in das für Azure erforderliche Format konvertieren müssen, verwenden Sie eine der in diesem Abschnitt beschriebenen Methoden:
+
+1. Sichern Sie den virtuellen Computer, bevor Sie den Prozess zum Konvertieren virtueller Datenträger ausführen.
+
+1. Vergewissern Sie sich, dass die Windows-VHD auf dem lokalen Server ordnungsgemäß funktioniert. Beheben Sie alle Probleme auf dem virtuellen Computer selbst, bevor Sie versuchen, ihn zu konvertieren oder in Azure hochzuladen.
+
+1. Beachten Sie im Zusammenhang mit der VHD-Größe Folgendes:
+
+   1. Alle VHDs in Azure benötigen eine virtuelle Größe, die auf 1 MB ausgerichtet ist. Stellen Sie beim Konvertieren von einem RAW-Datenträger in VHD sicher, dass die Größe des RAW-Datenträgers vor der Konvertierung ein Vielfaches von 1 MB beträgt. Wenn keine vollen Megabytes verwendet werden, treten beim Erstellen von Images auf der Grundlage der hochgeladenen VHD Fehler auf.
+
+   2. Die maximal zulässige Größe für die Betriebssystem-VHD beträgt 2 TB.
+
 
 Nachdem Sie den Datenträger konvertiert haben, erstellen Sie einen virtuellen Computer, der den Datenträger verwendet. Starten Sie den virtuellen Computer, und melden Sie sich auf diesem an, um die Vorbereitung für den Upload abzuschließen.
 

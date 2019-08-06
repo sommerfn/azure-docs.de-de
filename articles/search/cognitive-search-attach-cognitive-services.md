@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 05/20/2019
 ms.author: luisca
 ms.custom: seodec2018
-ms.openlocfilehash: ffce8a2bd8a04e73acdeac037be0b10ba1a9a887
-ms.sourcegitcommit: 2e4b99023ecaf2ea3d6d3604da068d04682a8c2d
+ms.openlocfilehash: 56453891289654e65f8077542fca40876099061e
+ms.sourcegitcommit: e72073911f7635cdae6b75066b0a88ce00b9053b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67672386"
+ms.lasthandoff: 07/19/2019
+ms.locfileid: "68347249"
 ---
 # <a name="attach-a-cognitive-services-resource-with-a-skillset-in-azure-search"></a>Anfügen einer Cognitive Services-Ressource an eine Qualifikationsgruppe in Azure Search 
 
@@ -33,6 +33,9 @@ Sie können eine begrenzte Anzahl von Dokumenten kostenlos anreichern. Oder Sie 
 Azure Search und Azure Cognitive Services müssen in derselben Region vorhanden sein. Andernfalls wird zur Laufzeit die folgende Meldung angezeigt: `"Provided key is not a valid CognitiveServices type key for the region of your search service."` 
 
 Es gibt keine Möglichkeit, einen Dienst zwischen Regionen zu verschieben. Wenn Sie diesen Fehler erhalten, sollten Sie eine neue Cognitive Services-Ressource in der gleichen Region wie Azure Search erstellen.
+
+> [!NOTE]
+> Einige integrierte Qualifikationen basieren auf nicht regionalen Cognitive Services (etwa die [Qualifikation „Textübersetzung“](cognitive-search-skill-text-translation.md)). Wenn Sie Ihrem Skillset eine dieser Qualifikationen hinzufügen, ist nicht garantiert, dass Ihre Daten die Region Ihrer Azure Search- oder Cognitive Services-Ressource nicht verlassen. Ausführlichere Informationen finden Sie unter [Verfügbare Produkte nach Region](https://aka.ms/allinoneregioninfo).
 
 ## <a name="use-free-resources"></a>Verwenden kostenloser Ressourcen
 

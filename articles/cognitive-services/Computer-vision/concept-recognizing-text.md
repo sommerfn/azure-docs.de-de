@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 04/17/2019
 ms.author: pafarley
 ms.custom: seodec18
-ms.openlocfilehash: bcaa990cc2186a5f1eecdbbca91804c92370277c
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: cfbbd0b353699c4b04ede07df0450e66bd59612f
+ms.sourcegitcommit: f5075cffb60128360a9e2e0a538a29652b409af9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66357180"
+ms.lasthandoff: 07/18/2019
+ms.locfileid: "68311960"
 ---
 # <a name="recognize-printed-and-handwritten-text"></a>Erkennen von gedrucktem und handschriftlichem Text
 
@@ -36,7 +36,7 @@ Beim Lesevorgang werden die ursprünglichen Zeilengruppierungen der erkannten W�
 Die Lese-API kann Bilder analysieren, die folgende Anforderungen erfüllen:
 
 - Das Bild muss im JPEG-, PNG-, BMP-, PDF- oder TIFF-Format vorliegen.
-- Die Größe des Bilds muss zwischen 50 x 50 und 4200 x 4200 Pixel liegen. PDF-Seiten dürfen höchstens 17 x 17 Zoll groß sein.
+- Die Größe des Bilds muss zwischen 50 x 50 und 10.000 x 10.000 Pixel liegen. PDF-Seiten dürfen höchstens 17 x 17 Zoll groß sein.
 - Die Bilddatei darf höchstens 20 MB groß sein.
 
 ### <a name="limitations"></a>Einschränkungen

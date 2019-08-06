@@ -2,24 +2,17 @@
 title: Was ist ein Clouddienstmodell, und wie kann es gepackt werden? | Microsoft Docs
 description: Beschreibung des Clouddienstmodells (.csdef, .cscfg) und der Paketdatei (.cspkg) in Azure
 services: cloud-services
-documentationcenter: ''
-author: jpconnock
-manager: timlt
-editor: ''
-ms.assetid: 4ce2feb5-0437-496c-98da-1fb6dcb7f59e
+author: georgewallace
 ms.service: cloud-services
-ms.workload: tbd
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 07/05/2017
-ms.author: jeconnoc
-ms.openlocfilehash: 6c8833dc0db80dde96dda92c426c7840c44c1f1b
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.author: gwallace
+ms.openlocfilehash: 47d031e339b3677e0bf6ddcbad9456041c53c6e2
+ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67080755"
+ms.lasthandoff: 07/19/2019
+ms.locfileid: "68359558"
 ---
 # <a name="what-is-the-cloud-service-model-and-how-do-i-package-it"></a>Was ist das Clouddienstmodell, und wie kann es gepackt werden?
 Ein Clouddienst wird aus drei Komponenten erstellt: aus der Dienstdefinition *(.csdef)* , der Dienstkonfiguration *(.cscfg)* und einem Dienstpaket *(.cspkg)* . Die beiden Dateien **ServiceDefinition.csdef** und **ServiceConfig.cscfg** sind XML-basiert und beschreiben die Struktur und Konfiguration des Clouddiensts; zusammen werden sie als Modell bezeichnet. Die Datei **ServicePackage.cspkg** ist eine ZIP-Datei, die auf der Grundlage der Datei **ServiceDefinition.csdef** generiert wird und unter anderem alle erforderlichen binärbasierten Abhängigkeiten enthält. In Azure wird ein Clouddienst aus der Datei **ServicePackage.cspkg** sowie der Datei **ServiceConfig.cscfg** erstellt.
@@ -280,7 +273,7 @@ Die Variablen sind dabei wie folgt definiert:
 ## <a name="next-steps"></a>Nächste Schritte
 Ich erstelle ein Clouddienstpaket und möchte ...
 
-* [Eine Remotedesktopverbindung für eine Clouddienstinstanz einrichten][remotedesktop]
+* [Einen Remotedesktop für eine Clouddienstinstanz einrichten][remotedesktop]
 * [Ein Clouddienstprojekt bereitstellen][deploy]
 
 Ich verwende Visual Studio und möchte ...
@@ -288,7 +281,7 @@ Ich verwende Visual Studio und möchte ...
 * [Einen neuen Clouddienst erstellen][vs_create]
 * [Einen vorhandenen Clouddienst neu konfigurieren][vs_reconfigure]
 * [Ein Clouddienstprojekt bereitstellen][vs_deploy]
-* [Eine Remotedesktopverbindung für eine Clouddienstinstanz einrichten][vs_remote]
+* [Einen Remotedesktop für eine Clouddienstinstanz einrichten][vs_remote]
 
 [deploy]: cloud-services-how-to-create-deploy-portal.md
 [remotedesktop]: cloud-services-role-enable-remote-desktop-new-portal.md

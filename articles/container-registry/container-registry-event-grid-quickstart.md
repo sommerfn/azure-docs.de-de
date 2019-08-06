@@ -3,17 +3,18 @@ title: 'Schnellstart: Senden von Azure Container Registry-Ereignissen an Event G
 description: In dieser Schnellstartanleitung wird beschrieben, wie Sie Event Grid-Ereignisse für Ihre Containerregistrierung aktivieren, Containerimages mithilfe von Push übertragen und Ereignisse aus einer Beispielanwendung löschen.
 services: container-registry
 author: dlepow
+manager: gwallace
 ms.service: container-registry
 ms.topic: article
 ms.date: 08/23/2018
 ms.author: danlep
 ms.custom: seodec18
-ms.openlocfilehash: f5c075942a29968ea57c684cd817e578df951989
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 49ee9a7f12601b0d93e320ab797be4a1ada41c04
+ms.sourcegitcommit: f5075cffb60128360a9e2e0a538a29652b409af9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60427651"
+ms.lasthandoff: 07/18/2019
+ms.locfileid: "68309800"
 ---
 # <a name="quickstart-send-events-from-private-container-registry-to-event-grid"></a>Schnellstart: Senden von Ereignissen aus der privaten Containerregistrierung an Event Grid
 
@@ -41,7 +42,7 @@ az group create --name $RESOURCE_GROUP_NAME --location eastus
 
 ## <a name="create-a-container-registry"></a>Erstellen einer Containerregistrierung
 
-Stellen Sie anschließend mit den unten aufgeführten Befehlen eine Containerregistrierung in der Ressourcengruppe bereit. Legen Sie zunächst `ACR_NAME` für Ihre Registrierung auf einen Namen fest, bevor Sie den Befehl [az acr create][az-acr-create] ausführen. Der Name muss innerhalb von Azure eindeutig sein und darf 5 bis 50 alphanumerische Zeichen enthalten.
+Stellen Sie anschließend mit den unten aufgeführten Befehlen eine Containerregistrierung in der Ressourcengruppe bereit. Legen Sie zunächst `ACR_NAME` auf einen Namen für Ihre Registrierung fest, bevor Sie den Befehl [az acr create][az-acr-create] ausführen. Der Name muss innerhalb von Azure eindeutig sein und darf 5 bis 50 alphanumerische Zeichen enthalten.
 
 ```azurecli-interactive
 ACR_NAME=<acrName>
@@ -100,7 +101,7 @@ Die Beispiel-App sollte nun gerendert werden, und es sollten keine Ereignismeldu
 
 ## <a name="subscribe-to-registry-events"></a>Abonnieren von Registrierungsereignissen
 
-In Event Grid abonnieren Sie ein *Thema*, um festzulegen, welche Ereignisse Sie nachverfolgen möchten und wohin diese gesendet werden sollen. Durch den Befehl [az eventgrid event-subscription create][az-eventgrid-event-subscription-create] wird die erstellte Containerregistrierung abonniert und die Web-App-URL als Endpunkt festgelegt, an die Ereignisse gesendet werden sollen. Die Umgebungsvariablen, die Sie in den vorherigen Abschnitten angegeben haben, werden hier wiederverwendet, sodass keine Änderungen erforderlich sind.
+In Event Grid abonnieren Sie ein *Thema*, um festzulegen, welche Ereignisse Sie nachverfolgen möchten und wohin diese gesendet werden sollen. Durch den folgenden Befehl vom Typ [az eventgrid event-subscription create][az-eventgrid-event-subscription-create] wird die erstellte Containerregistrierung abonniert und die Web-App-URL als Endpunkt festgelegt, an die Ereignisse gesendet werden sollen. Die Umgebungsvariablen, die Sie in den vorherigen Abschnitten angegeben haben, werden hier wiederverwendet, sodass keine Änderungen erforderlich sind.
 
 ```azurecli-interactive
 ACR_REGISTRY_ID=$(az acr show --name $ACR_NAME --query id --output tsv)
@@ -185,7 +186,7 @@ $ az acr repository show-tags --name $ACR_NAME --repository myimage
 
 ### <a name="delete-the-image"></a>Löschen des Images
 
-Generieren Sie nun ein `ImageDeleted`-Ereignis, indem Sie das Image mit dem Befehl [az acr repository delete][az-acr-repository-delete] löschen:
+Generieren Sie nun ein Ereignis vom Typ `ImageDeleted`, indem Sie das Image mit dem Befehl [az acr repository delete][az-acr-repository-delete] löschen:
 
 ```azurecli-interactive
 az acr repository delete --name $ACR_NAME --image myimage:v1

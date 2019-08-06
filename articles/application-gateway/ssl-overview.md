@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 3/19/2019
 ms.author: victorh
-ms.openlocfilehash: ee901fdcae9717cc6d03d7653bcaacc0c32518e0
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 199fcdf2ebf10852906b842f09fe7beafd2acdb5
+ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66254319"
+ms.lasthandoff: 07/18/2019
+ms.locfileid: "68326606"
 ---
 # <a name="overview-of-ssl-termination-and-end-to-end-ssl-with-application-gateway"></a>Übersicht über SSL-Beendigung und End-to-End-SSL mit Application Gateway
 
@@ -92,7 +92,17 @@ Authentifizierungszertifikate wurden als veraltet markiert und durch Trusted Roo
 - Zertifikate, die von bekannten Zertifizierungsstellen, deren CN dem Hostnamen in den HTTP-Einstellungen des Back-Ends entspricht, zertifiziert wurden, erfordern keinen zusätzlichen Schritt, damit End-to-End-SSL funktioniert. 
 
    Wenn beispielsweise die Back-End-Zertifikate von einer bekannten Zertifizierungsstelle ausgestellt wurden, der CN „contoso.com“ lautet und in der HTTP-Einstellung des Back-Ends das Feld „Host“ ebenfalls auf „contoso.com“ festgelegt wurde, sind keine weiteren Schritte erforderlich. Sie können das Protokoll in der HTTP-Einstellung des Back-Ends auf HTTPS festlegen. In diesem Fall ist SSL sowohl für den Integritätstest als auch für den Datenpfad aktiviert. Wenn Sie Azure App Service oder andere Azure-Webdienste als Back-End verwenden, gelten diese ebenfalls als implizit vertrauenswürdig, und für End-to-End-SSL sind keine weiteren Schritte erforderlich.
+   
+> [!NOTE] 
+>
+> Damit ein SSL-Zertifikat als vertrauenswürdig eingestuft wird, muss das Zertifikat des Back-End-Servers von einer Zertifizierungsstelle ausgestellt worden sein, die im vertrauenswürdigen Speicher von Application Gateway enthalten ist. Wurde das Zertifikat nicht von einer vertrauenswürdigen Zertifizierungsstelle ausgestellt, überprüft Application Gateway, ob das Zertifikat der ausstellenden Zertifizierungsstelle von einer vertrauenswürdigen Zertifizierungsstelle stammt. Dieser Vorgang wird so lange fortgesetzt, bis entweder eine vertrauenswürdige Zertifizierungsstelle gefunden wurde (woraufhin eine vertrauenswürdige, sichere Verbindung hergestellt wird) oder keine vertrauenswürdige Zertifizierungsstelle gefunden werden kann (woraufhin das Back-End von Application Gateway als fehlerhaft markiert wird). Das Back-End-Serverzertifikat sollte daher sowohl die Stammzertifizierungsstelle als auch die Zwischenzertifizierungsstellen enthalten.
+
 - Wenn das Zertifikat selbstsigniert ist oder von einem unbekannten Vermittler signiert wurde, müssen Sie zum Aktivieren von End-to-End-SSL in der v2-SKU ein vertrauenswürdiges Stammzertifikat definieren. Application Gateway kommuniziert nur mit Back-Ends, bei denen das Stammzertifikat des Serverzertifikats mit einem der vertrauenswürdigen Stammzertifikate in der Liste der HTTP-Einstellung für das Back-End, das dem Pool zugeordnet ist, übereinstimmt.
+
+> [!NOTE] 
+>
+> Das selbst signierte Zertifikat muss Teil einer Vertrauenskette sein. Ein einzelnes selbst signiertes Zertifikat ohne Kette wird in der V2-SKU nicht unterstützt.
+
 - Zusätzlich zur Übereinstimmung des Stammzertifikats überprüft Application Gateway auch, ob die Einstellung „Host“ in der HTTP-Einstellung des Back-Ends mit dem allgemeinen Namen (Common Name, CN), der vom SSL-Zertifikat des Back-End-Servers angegeben wird, übereinstimmt. Beim Herstellen einer SSL-Verbindung mit dem Back-End legt Application Gateway die SNI-Erweiterung (Server Name Indication, Servernamensanzeige) auf den Host fest, der in der HTTP-Einstellung des Back-Ends angegeben wurde.
 - Wenn das **Auswählen des Hostnamen aus der Back-End-Adresse** anstelle des Felds „Host“ in der HTTP-Einstellung des Back-Ends ausgewählt wurde, wird der SNI-Header immer auf den FQDN des Back-End-Pools festgelegt, und der CN im SSL-Zertifikat des Back-End-Servers muss mit diesem FQDN übereinstimmen. Mitglieder des Back-End-Pools mit IP-Adressen werden in diesem Szenario nicht unterstützt.
 - Das Stammzertifikat ist ein Base64-codiertes Stammzertifikat aus den Zertifikaten des Back-End-Servers.

@@ -11,12 +11,12 @@ ms.workload: integration
 ms.topic: article
 ms.date: 07/01/2019
 ms.author: apimpm
-ms.openlocfilehash: 59b44dcc9ec3a1f7c274f426a19aa8ed2258db3e
-ms.sourcegitcommit: 79496a96e8bd064e951004d474f05e26bada6fa0
+ms.openlocfilehash: 9eb03be5cd9704c3b124bfb16fd30c5c3466890d
+ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2019
-ms.locfileid: "67509294"
+ms.lasthandoff: 07/18/2019
+ms.locfileid: "68326140"
 ---
 # <a name="configure-a-custom-domain-name"></a>Konfigurieren eines benutzerdefinierten Domänennamens
 
@@ -72,6 +72,16 @@ Zum Ausführen der in diesem Artikel beschriebenen Schritte benötigen Sie Folge
     > Die Zuweisung des Zertifikats kann je nach Größe der Bereitstellung 15 Minuten und länger dauern. Bei der Entwickler-SKU tritt eine Ausfallzeit auf, bei der den SKUs Basic und höher SKUs jedoch nicht.
 
 [!INCLUDE [api-management-custom-domain](../../includes/api-management-custom-domain.md)]
+
+## <a name="dns-configuration"></a>DNS-Konfiguration
+
+Bei der DNS-Konfiguration für Ihren benutzerdefinierten Domänennamen haben Sie zwei Möglichkeiten:
+
+- Konfigurieren eines CNAME-Eintrags, der auf den Endpunkt Ihres konfigurierten benutzerdefinierten Domänennamens verweist
+- Konfigurieren eines A-Eintrags, der auf die Gateway-IP-Adresse für API Management verweist
+
+> [!NOTE]
+> Die IP-Adresse der API Management-Instanz ist zwar statisch, kann sich aber dennoch in bestimmten Szenarien ändern. Daher empfiehlt es sich, beim Konfigurieren der benutzerdefinierten Domäne CNAME zu verwenden. Berücksichtigen Sie dies bei der Wahl der DNS-Konfigurationsmethode. Weitere Informationen finden Sie in den [häufig gestellten Fragen zu API Mananagement](https://docs.microsoft.com/azure/api-management/api-management-faq#is-the-api-management-gateway-ip-address-constant-can-i-use-it-in-firewall-rules).
 
 ## <a name="next-steps"></a>Nächste Schritte
 

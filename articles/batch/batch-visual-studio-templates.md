@@ -4,7 +4,7 @@ description: Es wird beschrieben, wie Visual Studio-Projektvorlagen Sie beim Imp
 services: batch
 documentationcenter: .net
 author: laurenhughes
-manager: jeconnoc
+manager: gwallace
 editor: ''
 ms.assetid: 5e041ae2-25af-4882-a79e-3aa63c4bfb20
 ms.service: batch
@@ -15,12 +15,12 @@ ms.workload: big-compute
 ms.date: 02/27/2017
 ms.author: lahugh
 ms.custom: seodec18
-ms.openlocfilehash: 085bfa582b676f34a02e4c1c5ae7e69c49e5cb4e
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: bb4c71f2c7f42ef599796bc380bb7a9f35b8c64e
+ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60550081"
+ms.lasthandoff: 07/18/2019
+ms.locfileid: "68322770"
 ---
 # <a name="use-visual-studio-project-templates-to-jump-start-batch-solutions"></a>Verwenden von Visual Studio-Vorlagen für den schnellen Einstieg in Batch-Lösungen
 
@@ -56,9 +56,9 @@ Wie im Diagramm unten zu sehen, durchläuft ein Computeauftrag, für den diese V
 Für die Verwendung der Batch-Vorlagen benötigen Sie Folgendes:
 
 * Ein Computer mit installiertem Visual Studio 2015. Batchvorlagen werden derzeit nur für Visual Studio 2015 unterstützt.
-* Die Batch-Vorlagen, die in der [Visual Studio Gallery][vs_gallery] als Visual Studio-Erweiterungen verfügbar sind. Es gibt zwei Möglichkeiten zum Abrufen der Vorlagen:
+* Die Batch-Vorlagen, die in der [Visual Studio Gallery][vs_gallery] als Visual Studio-Erweiterungen verfügbar sind. Es gibt zwei Möglichkeiten zum Abrufen der Vorlagen:
   
-  * Installieren Sie die Vorlagen über das Dialogfeld **Erweiterungen und Updates** in Visual Studio (weitere Informationen finden Sie unter [Suchen und Verwenden von Visual Studio-Erweiterungen][vs_find_use_ext]). Suchen Sie im Dialogfeld **Erweiterungen und Updates** nach den folgenden beiden Erweiterungen, und laden Sie sie herunter:
+  * Installieren Sie die Vorlagen über das Dialogfeld **Erweiterungen und Updates** in Visual Studio. (Weitere Informationen finden Sie unter [Suchen und Verwenden von Visual Studio-Erweiterungen][vs_find_use_ext].) Suchen Sie im Dialogfeld **Erweiterungen und Updates** nach den folgenden beiden Erweiterungen, und laden Sie sie herunter:
     
     * Azure Batch-Auftrags-Manager mit Auftragsteilung
     * Azure Batch-Aufgabenprozessor
@@ -157,7 +157,7 @@ public IEnumerable<CloudTask> Split()
 ```
 
 > [!NOTE]
-> Der mit Anmerkungen versehene Abschnitt in der `Split()`-Methode ist der einzige Abschnitt des Auftrags-Manager-Vorlagencodes, der für Änderungen durch Sie vorgesehen ist, indem Sie die Logik zum Aufteilen der Aufträge auf unterschiedliche Aufgaben hinzufügen. Wenn Sie einen anderen Abschnitt der Vorlage ändern möchten, sollten Sie sich bereits mit der Funktionsweise von Batch vertraut gemacht haben und einige [Batch-Codebeispiele][github_samples] ausprobiert haben.
+> Der mit Anmerkungen versehene Abschnitt in der `Split()`-Methode ist der einzige Abschnitt des Auftrags-Manager-Vorlagencodes, der für Änderungen durch Sie vorgesehen ist, indem Sie die Logik zum Aufteilen der Aufträge auf unterschiedliche Aufgaben hinzufügen. Wenn Sie einen anderen Abschnitt der Vorlage ändern möchten, sollten Sie bereits mit der Funktionsweise von Batch vertraut sein und einige [Batch-Codebeispiele][github_samples] ausprobiert haben.
 > 
 > 
 
@@ -369,7 +369,7 @@ Exitcodes und Ausnahmen bilden einen Mechanismus, mit dem das Ergebnis der Ausf�
 
 Eine Aufgabenprozessoraufgabe, die mit der Aufgabenprozessorvorlage implementiert wird, kann drei mögliche Exitcodes zurückgeben:
 
-| Code | BESCHREIBUNG |
+| Code | Beschreibung |
 | --- | --- |
 | [Process.ExitCode][process_exitcode] |Der Aufgabenprozessor wurde bis zum Ende ausgeführt. Beachten Sie, dass dies nicht heißt, dass das aufgerufene Programm erfolgreich war. Es bedeutet lediglich, dass es vom Aufgabenprozessor erfolgreich aufgerufen wurde und alle Schritte der Nachverarbeitung ohne Ausnahmen durchgeführt wurden. Die Bedeutung des Exitcodes richtet sich nach dem aufgerufenen Programm. Normalerweise bedeutet der Exitcode 0, dass das Programm erfolgreich war, und alle anderen Exitcodes bedeuten, dass die Ausführung nicht erfolgreich war. |
 | 1 |Der Aufgabenprozessor ist mit einer Ausnahme in einem „erwarteten“ Teil des Programms fehlgeschlagen. Die Ausnahme wurde in eine `TaskProcessorException` mit Diagnoseinformationen übersetzt und enthält nach Möglichkeit Vorschläge für die Behebung des Fehlers. |
@@ -410,7 +410,7 @@ Ein Client kann Informationen in Form von Umgebungseinstellungen an die Auftrags
 * Batch-Konto-URL
 * Batch-Konto-Schlüssel
 
-Der Batch-Dienst verfügt über einen einfachen Mechanismus zum Übergeben von Umgebungseinstellungen an eine Auftrags-Manager-Aufgabe, indem die `EnvironmentSettings`-Eigenschaft in [Microsoft.Azure.Batch.JobManagerTask][net_jobmanagertask] verwendet wird.
+Der Batch-Dienst verfügt über einen einfachen Mechanismus zum Übergeben von Umgebungseinstellungen an eine Auftrags-Manager-Aufgabe, indem die Eigenschaft `EnvironmentSettings` in [Microsoft.Azure.Batch.JobManagerTask][net_jobmanagertask] verwendet wird.
 
 Um beispielsweise die `BatchClient` -Instanz für ein Batch-Konto abzurufen, können Sie die URL und die Anmeldeinformationen eines gemeinsam verwendeten Schlüssels für das Batch-Konto als Umgebungsvariablen übergeben. Außerdem können Sie den Speicherkontonamen und den Speicherkontoschlüssel als Umgebungsvariablen übergeben, um auf das Speicherkonto zuzugreifen, das mit dem Batch-Konto verknüpft ist.
 
@@ -437,7 +437,7 @@ Sie können Parameter auch an einzelne Aufgaben übergeben, die mit der Aufgaben
 
 ## <a name="next-steps"></a>Nächste Schritte
 ### <a name="persist-job-and-task-output-to-azure-storage"></a>Persistente Aufträge und Aufgabenausgabe in Azure Storage
-Ein weiteres nützliches Tool bei der Entwicklung von Batch-Lösungen sind [Azure Batch-Dateikonventionen][nuget_package]. Verwenden Sie diese .NET-Klassenbibliothek (derzeit in der Vorschauphase) in Ihren Batch .NET-Anwendungen, um Aufgabenausgaben leicht speichern und für Azure Storage übermitteln zu können. [Beibehalten der Ausgabe von Azure Batch-Aufträgen und -Tasks](batch-task-output.md) enthält eine umfassende Beschreibung der Bibliothek und ihrer Verwendung.
+Ein weiteres nützliches Tool bei der Entwicklung von Batch-Lösungen sind [Azure Batch-Dateikonventionen][nuget_package]. Verwenden Sie diese .NET-Klassenbibliothek (derzeit in der Vorschauphase) in Ihren Batch .NET-Anwendungen, um Aufgabenausgaben leicht speichern und für Azure Storage übermitteln zu können. [Beibehalten der Ausgabe von Azure Batch-Aufträgen und -Tasks](batch-task-output.md) enthält eine umfassende Beschreibung der Bibliothek und ihrer Verwendung.
 
 
 [net_jobmanagertask]: https://msdn.microsoft.com/library/azure/microsoft.azure.batch.jobmanagertask.aspx

@@ -12,23 +12,18 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 04/23/2019
 ms.author: tilee
-ms.openlocfilehash: c8199c960229f9cc53cf57f9da3e1f17ebd9f5c7
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 02f4fa45cbfa619825478520961b6411459973e4
+ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67074159"
+ms.lasthandoff: 07/18/2019
+ms.locfileid: "68326276"
 ---
 # <a name="status-monitor-v2-detailed-instructions"></a>Statusmonitor v2: Ausführliche Anleitungen
 
 In diesem Artikel wird beschrieben, wie der PowerShell-Katalog integriert und das ApplicationMonitor-Modul heruntergeladen wird.
-Es werden die häufigsten Parameter beschrieben, die für den Einstieg erforderlich sind.
-Außerdem sind darin manuelle Anleitungen für den Fall enthalten, dass Sie keinen Internetzugriff haben.
-
-> [!IMPORTANT]
-> Statusmonitor v2 ist derzeit als öffentliche Vorschauversion verfügbar.
-> Diese Vorschauversion wird ohne Vereinbarung zum Servicelevel bereitgestellt und ist nicht für Produktionsworkloads vorgesehen. Einige Features werden möglicherweise nicht unterstützt oder bieten möglicherweise nur eingeschränkte Funktionen.
-> Weitere Informationen finden Sie unter [Zusätzliche Nutzungsbestimmungen für Microsoft Azure-Vorschauen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+Der Artikel enthält die gängigsten Parameter, die für den Einstieg erforderlich sind.
+Außerdem finden Sie hier eine Anleitung zum manuellen Herunterladen, falls Sie über keinen Internetzugriff verfügen.
 
 ## <a name="get-an-instrumentation-key"></a>Abrufen eines Instrumentierungsschlüssels
 
@@ -36,11 +31,10 @@ Für den Einstieg benötigen Sie einen Instrumentierungsschlüssel. Weitere Info
 
 ## <a name="run-powershell-as-admin-with-an-elevated-execution-policy"></a>Ausführen von PowerShell als Administrator mit einer Ausführungsrichtlinie mit erhöhten Rechten
 
-**Als Administrator ausführen**
+### <a name="run-as-admin"></a>Ausführen als Administrator
 
 PowerShell benötigt Berechtigungen auf Administratorebene, um Änderungen an Ihrem Computer vornehmen zu können.
-
-**Ausführungsrichtlinie**
+### <a name="execution-policy"></a>Ausführungsrichtlinie
 - Beschreibung: Die Ausführung von PowerShell-Skripts ist standardmäßig deaktiviert. Es wird empfohlen, RemoteSigned-Skripts nur für den aktuellen Bereich zuzulassen.
 - Referenz: [Informationen zu Ausführungsrichtlinien](https://docs.microsoft.com/powershell/module/microsoft.powershell.core/about/about_execution_policies?view=powershell-6) und [Set-ExecutionPolicy](
 https://docs.microsoft.com/powershell/module/microsoft.powershell.security/set-executionpolicy?view=powershell-6

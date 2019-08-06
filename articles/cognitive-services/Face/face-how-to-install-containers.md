@@ -11,12 +11,12 @@ ms.subservice: face-api
 ms.topic: conceptual
 ms.date: 06/19/2019
 ms.author: dapine
-ms.openlocfilehash: 84960e82e25f4b6cc59324f17ce46de7f9f7ac23
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.openlocfilehash: f4abf17c774fb75a0314c8890f5f4383058e37fd
+ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67704683"
+ms.lasthandoff: 07/18/2019
+ms.locfileid: "68321376"
 ---
 # <a name="install-and-run-face-containers"></a>Installieren und Ausführen von Containern für die Gesichtserkennung
 
@@ -32,7 +32,7 @@ Zur Verwendung des Containers für die Gesichtserkennungs-API müssen die folgen
 |--|--|
 |Docker-Engine| Die Docker-Engine muss auf einem [Hostcomputer](#the-host-computer) installiert sein. Für die Docker-Umgebung stehen Konfigurationspakete für [macOS](https://docs.docker.com/docker-for-mac/), [Windows](https://docs.docker.com/docker-for-windows/) und [Linux](https://docs.docker.com/engine/installation/#supported-platforms) zur Verfügung. Eine Einführung in Docker und Container finden Sie in der [Docker-Übersicht](https://docs.docker.com/engine/docker-overview/).<br><br> Docker muss so konfiguriert werden, dass die Container eine Verbindung mit Azure herstellen und Abrechnungsdaten an Azure senden können. <br><br> Unter Windows muss Docker auch für die Unterstützung von Linux-Containern konfiguriert werden.<br><br>|
 |Kenntnisse zu Docker | Sie müssen über Grundkenntnisse der Konzepte von Docker, einschließlich Registrierungen, Repositorys, Container und Containerimages, verfügen. Außerdem müssen Sie die grundlegenden `docker`-Befehle kennen.| 
-|Azure `Cognitive Services`-Ressource |Um den Container zu verwenden, benötigen Sie Folgendes:<br><br>Eine Azure Cognitive Services-Ressource sowie den zugehörigen Abrechnungsschlüssel und den URI des Abrechnungsendpunkts. Beide Werte stehen auf den Seiten **Übersicht** und **Schlüssel** der Ressource zur Verfügung. Sie sind zum Starten des Containers erforderlich. Fügen Sie dem Endpunkt-URI das `face/v1.0`-Routing hinzu, wie im folgenden Beispiel BILLING_ENDPOINT_URI dargestellt: <br><br>**{BILLING_KEY}** : Der Ressourcenschlüssel.<br><br>**{BILLING_ENDPOINT_URI}** : Der Endpunkt-URI. Beispiel: `https://westus.api.cognitive.microsoft.com/face/v1.0`|
+|Gesichtserkennungsressource |Um den Container zu verwenden, benötigen Sie Folgendes:<br><br>Eine Azure-Ressource vom Typ **Gesichtserkennung** sowie den zugehörigen API-Schlüssel und Endpunkt-URI. Beide Werte stehen auf den Seiten **Übersicht** und **Schlüssel** der Ressource zur Verfügung. Sie sind zum Starten des Containers erforderlich.<br><br>**{API_KEY}** : Einer der beiden verfügbaren Ressourcenschlüssel auf der Seite **Schlüssel**<br><br>**{ENDPOINT_URI}** : Der Endpunkt, der auf der Seite **Übersicht** angegeben ist
 
 ## <a name="request-access-to-the-private-container-registry"></a>Anfordern des Zugriffs auf die private Containerregistrierung
 
@@ -84,10 +84,10 @@ Verwenden Sie den Befehl [docker run](https://docs.docker.com/engine/reference/c
 
 | Platzhalter | Wert |
 |-------------|-------|
-|{BILLING_KEY} | Dieser Schlüssel wird zum Starten des Containers verwendet und ist auf der `Cognitive Services` **Schlüssel**-Seite von Azure verfügbar. |
-|{BILLING_ENDPOINT_URI} | Den URI des Abrechnungsendpunkts finden Sie auf der `Cognitive Services` **Übersicht**-Seite von Azure. Ein Beispiel ist `https://westus.api.cognitive.microsoft.com/face/v1.0`.|
+|{API_KEY} | Dieser Schlüssel wird zum Starten des Containers verwendet und ist auf der `Cognitive Services` **Schlüssel**-Seite von Azure verfügbar. |
+|{ENDPOINT_URI} | Den URI des Abrechnungsendpunkts finden Sie auf der `Cognitive Services` **Übersicht**-Seite von Azure. Ein Beispiel ist `https://westus.api.cognitive.microsoft.com/face/v1.0`.|
 
-Fügen Sie dem Endpunkt-URI das `face/v1.0`-Routing hinzu, wie im vorherigen Beispiel BILLING_ENDPOINT_URI dargestellt. 
+Fügen Sie dem Endpunkt-URI das Routing `face/v1.0` hinzu, wie im vorherigen ENDPOINT_URI-Beispiel gezeigt. 
 
 Ersetzen Sie im folgenden Beispiel für den `docker run`-Befehl diese Parameter durch Ihre eigenen Werte.
 
@@ -95,8 +95,8 @@ Ersetzen Sie im folgenden Beispiel für den `docker run`-Befehl diese Parameter 
 docker run --rm -it -p 5000:5000 --memory 4g --cpus 1 \
 containerpreview.azurecr.io/microsoft/cognitive-services-face \
 Eula=accept \
-Billing={BILLING_ENDPOINT_URI} \
-ApiKey={BILLING_KEY}
+Billing={ENDPOINT_URI} \
+ApiKey={API_KEY}
 ```
 
 Dieser Befehl:

@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/21/2019
 ms.author: apimpm
-ms.openlocfilehash: 8947637a42adfca12268c3f84e208079768870e0
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 8ee7db3ade594958729deeb12007f528376d5179
+ms.sourcegitcommit: a874064e903f845d755abffdb5eac4868b390de7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65921220"
+ms.lasthandoff: 07/24/2019
+ms.locfileid: "68442416"
 ---
 # <a name="api-management-access-restriction-policies"></a>API Management-Richtlinien für die Zugriffsbeschränkung
 
@@ -78,7 +78,7 @@ Diese Richtlinie kann in den folgenden [Abschnitten](https://azure.microsoft.com
 
 -   **Richtlinienabschnitte**: inbound, outbound
 
--   **Richtlinienbereiche**: global, Produkt, API, Vorgang
+-   **Richtlinienbereiche:** alle Bereiche
 
 ## <a name="LimitCallRate"></a> Aufrufrate nach Abonnement begrenzen
 
@@ -138,7 +138,7 @@ Diese Richtlinie kann in den folgenden [Abschnitten](https://azure.microsoft.com
 
 -   **Richtlinienabschnitte**: inbound
 
--   **Richtlinienbereiche**: Produkt
+-   **Richtlinienbereiche:** Produkt, API, Vorgang
 
 ## <a name="LimitCallRateByKey"></a> Aufrufrate nach Schlüssel begrenzen
 
@@ -202,7 +202,7 @@ Diese Richtlinie kann in den folgenden [Abschnitten](https://azure.microsoft.com
 
 -   **Richtlinienabschnitte**: inbound
 
--   **Richtlinienbereiche**: global, Produkt, API, Vorgang
+-   **Richtlinienbereiche:** alle Bereiche
 
 ## <a name="RestrictCallerIPs"></a> Aufrufer-IPs beschränken
 
@@ -248,7 +248,7 @@ Im folgenden Beispiel lässt die Richtlinie nur Anfragen zu, die entweder von de
 Diese Richtlinie kann in den folgenden [Abschnitten](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) und [Bereichen](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes) von Richtlinien verwendet werden.
 
 -   **Richtlinienabschnitte**: inbound
--   **Richtlinienbereiche**: global, Produkt, API, Vorgang
+-   **Richtlinienbereiche:** alle Bereiche
 
 ## <a name="SetUsageQuota"></a> Nutzungskontingent nach Abonnement festlegen
 
@@ -366,7 +366,7 @@ Im folgenden Beispiel wird das Kontingent anhand der IP-Adresse des Aufrufers be
 Diese Richtlinie kann in den folgenden [Abschnitten](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) und [Bereichen](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes) von Richtlinien verwendet werden.
 
 -   **Richtlinienabschnitte**: inbound
--   **Richtlinienbereiche**: global, Produkt, API, Vorgang
+-   **Richtlinienbereiche:** alle Bereiche
 
 ## <a name="ValidateJWT"></a> JWT überprüfen
 
@@ -553,7 +553,7 @@ output-token-variable-name|Eine Zeichenfolge. Der Name der Kontextvariablen, die
 Diese Richtlinie kann in den folgenden [Abschnitten](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) und [Bereichen](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes) von Richtlinien verwendet werden.
 
 -   **Richtlinienabschnitte**: inbound
--   **Richtlinienbereiche**: global, Produkt, API, Vorgang
+-   **Richtlinienbereiche:** alle Bereiche
 
 ## <a name="next-steps"></a>Nächste Schritte
 

@@ -1,6 +1,6 @@
 ---
 title: Zustände von Azure Stream Analytics-Aufträgen
-description: Dieser Artikel beschreibt die verschiedenen Zustände eines Stream Analytics-Auftrags.
+description: 'In diesem Artikel werden die vier verschiedenen Zustände eines Stream Analytics-Auftrags beschrieben: „Wird ausgeführt“, „Beendet“, „Beeinträchtigt“ und „Fehler“.'
 services: stream-analytics
 author: sidram
 ms.author: sidram
@@ -8,18 +8,18 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 06/21/2019
-ms.openlocfilehash: bef21dc35bbd2b9b50cf7b362624321866773bfe
-ms.sourcegitcommit: 08138eab740c12bf68c787062b101a4333292075
+ms.openlocfilehash: c533463ff544dc315142f7fb95c34c67933f9614
+ms.sourcegitcommit: a874064e903f845d755abffdb5eac4868b390de7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/22/2019
-ms.locfileid: "67331342"
+ms.lasthandoff: 07/24/2019
+ms.locfileid: "68444249"
 ---
 # <a name="azure-stream-analytics-job-states"></a>Zustände von Azure Stream Analytics-Aufträgen
 
-Ein Stream Analytics-Auftrag kann zu einem beliebigen Zeitpunkt einen von vier Zuständen haben. Den Zustand Ihres Stream Analytics-Auftrags können Sie im Azure-Portal auf der zugehörigen Seite „Übersicht“ bestimmen. 
+Ein Stream Analytics-Auftrag kann sich in einem von vier Zuständen befinden: „Wird ausgeführt“, „Beendet“, „Beeinträchtigt“ oder „Fehler“. Den Zustand Ihres Stream Analytics-Auftrags können Sie im Azure-Portal auf der zugehörigen Seite „Übersicht“ bestimmen. 
 
-| Zustand | BESCHREIBUNG | Empfohlene Aktionen |
+| Zustand | Beschreibung | Empfohlene Aktionen |
 | --- | --- | --- |
 | **Wird ausgeführt** | Ihr in Azure ausgeführter Auftrag liest Ereignisse aus den definierten Eingabequellen, verarbeitet sie und schreibt die Ergebnisse in die konfigurierten Ausgabesenken. | Es ist eine bewährte Methode, die Leistung Ihres Auftrags durch Überwachung [wichtiger Metriken](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-set-up-alerts#scenarios-to-monitor) zu verfolgen. |
 | **Beendet** | Ihr Auftrag wurde beendet und verarbeitet keine Ereignisse mehr. | Nicht verfügbar | 

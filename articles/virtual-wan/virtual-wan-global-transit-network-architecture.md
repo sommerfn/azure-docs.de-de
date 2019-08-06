@@ -5,15 +5,15 @@ services: virtual-wan
 author: cherylmc
 ms.service: virtual-wan
 ms.topic: article
-ms.date: 05/20/2019
+ms.date: 07/23/2019
 ms.author: cherylmc
 Customer intent: As someone with a networking background, I want to understand global transit network architecture as it relates to Virtual WAN.
-ms.openlocfilehash: 114d11f98c6181a03f5ce52527b5e2efea468c42
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 2376c77ecc328788c842e045aafb618cbad39b0e
+ms.sourcegitcommit: 198c3a585dd2d6f6809a1a25b9a732c0ad4a704f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65965981"
+ms.lasthandoff: 07/23/2019
+ms.locfileid: "68421427"
 ---
 # <a name="global-transit-network-architecture-and-virtual-wan"></a>Architektur mit einem globalen Transitnetzwerk und Azure Virtual WAN
 
@@ -48,7 +48,7 @@ In Abbildung 2 sehen Sie den logischen Aufbau des globalen Netzwerks, bei dem ge
 
 ## <a name="crossregion"></a>Regionsübergreifende Verbindungen
 
-Für ein Unternehmen entspricht der Cloudfußabdruck oft dem physischen Fußabdruck. Die meisten Unternehmen greifen über eine ihren physischen Standorten und Benutzern nahe gelegene Region auf die Cloud zu. Einer der wichtigsten Faktoren für eine Architektur mit einem globalen Netzwerk ist das Ermöglichen regionsübergreifender Verbindungen zwischen Netzwerkentitäten und -endpunkten. Ein Cloudfußabdruck kann sich auf mehrere Regionen erstrecken. Das bedeutet, das der Datenverkehr einer Zweigstelle, die in einer bestimmten Region mit der Cloud verbunden ist, eine Zweigstelle oder ein virtuelles Netzwerk in einer anderen Region mithilfe von Hub-zu-Hub-Konnektivität, die sich aktuell in der Vorschau befindet, erreichen kann.
+Für ein Unternehmen entspricht der Cloudfußabdruck oft dem physischen Fußabdruck. Die meisten Unternehmen greifen über eine ihren physischen Standorten und Benutzern nahe gelegene Region auf die Cloud zu. Einer der wichtigsten Faktoren für eine Architektur mit einem globalen Netzwerk ist das Ermöglichen regionsübergreifender Verbindungen zwischen Netzwerkentitäten und -endpunkten. Ein Cloudfußabdruck kann sich auf mehrere Regionen erstrecken. Das bedeutet, dass der Datenverkehr einer Zweigstelle, die in einer bestimmten Region mit der Cloud verbunden ist, dank Hub-zu-Hub-Konnektivität eine Zweigstelle oder ein virtuelles Netzwerk in einer anderen Region erreichen kann. (Dieses Feature befindet sich derzeit in der Planung.)
 
 ## <a name="any"></a>N:n-Verbindungen
 
@@ -106,5 +106,4 @@ Der VNET-Hub verbindet den gesamten Transitdatenverkehr und kann ihn potenziell 
 Erstellen Sie eine Verbindung mithilfe von Azure Virtual WAN.
 
 * [Erstellen einer Site-to-Site-Verbindung per Azure Virtual WAN](virtual-wan-site-to-site-portal.md)
-* [Erstellen einer Point-to-Site-Verbindung per Azure Virtual WAN](virtual-wan-point-to-site-portal.md)
 * [Erstellen einer ExpressRoute-Zuordnung per Azure Virtual WAN](virtual-wan-expressroute-portal.md)

@@ -11,28 +11,26 @@ author: MayMSFT
 manager: cgronlun
 ms.reviewer: nibaccam
 ms.date: 05/21/2019
-ms.openlocfilehash: a879fa17244977277dab3e2e66c5888a44759764
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: 765ec8291ba873c6b200cf330d82e6e2ab53357d
+ms.sourcegitcommit: 198c3a585dd2d6f6809a1a25b9a732c0ad4a704f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67444026"
+ms.lasthandoff: 07/23/2019
+ms.locfileid: "68423113"
 ---
 # <a name="create-and-access-datasets-preview-in-azure-machine-learning"></a>Erstellen von und Zugreifen auf Datasets (Vorschauversion) in Azure Machine Learning
 
-In diesem Artikel wird beschrieben, wie Sie Azure Machine Learning-Datasets (Vorschauversion) erstellen und auf die Daten von lokal und remote durchgeführten Experimenten zugreifen.
+In diesem Artikel wird beschrieben, wie Sie Azure Machine Learning-Datasets (Vorschauversion) erstellen und auf Daten in lokalen oder remotebasierten Experimenten zugreifen.
 
-Mit verwalteten Datasets haben Sie folgende Möglichkeiten: 
-* **Einfaches Zugreifen auf Daten während des Modelltrainings**, ohne eine erneute Verbindung mit zugrunde liegenden Speichern herstellen zu müssen
+Azure Machine Learning-Datasets ermöglichen Folgendes: 
 
-* **Sicherstellen der Datenkonsistenz und -reproduzierbarkeit** durch die übergreifende Nutzung des gleichen Zeigers für Experimente: Notebooks, automatisiertes maschinelles Lernen, Pipelines, grafische Benutzeroberfläche
+* **Aufbewahren einer einzelnen Datenkopie in Ihrem Speicher**, auf die durch Datasets verwiesen wird
+
+* **Analysieren von Daten** mithilfe explorativer Datenanalysen 
+
+* **Müheloses Zugreifen auf Daten während des Modelltrainings**, ohne sich Gedanken über Verbindungszeichenfolgen oder Datenpfade machen zu müssen
 
 * **Freigeben von Daten und Zusammenarbeiten** mit anderen Benutzern
-
-* **Untersuchen von Daten** und Verwalten des Lebenszyklus von Datenmomentaufnahmen und -versionen
-
-* **Vergleichen von Daten** im Training mit der Produktion
-
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -49,18 +47,18 @@ Sie benötigen Folgendes, um Datasets zu erstellen und zu nutzen:
 
 ## <a name="data-formats"></a>Datenformate
 
-Sie können aus den folgenden Daten ein Azure Machine Learning-Dataset erstellen:
+Folgende Formate können zur Erstellung eines Azure Machine Learning-Datasets verwendet werden:
 + [delimited](https://docs.microsoft.com/python/api/azureml-core/azureml.core.dataset.dataset#from-delimited-files-path--separator------header--promoteheadersbehavior-all-files-have-same-headers--3---encoding--fileencoding-utf8--0---quoting-false--infer-column-types-true--skip-rows-0--skip-mode--skiplinesbehavior-no-rows--0---comment-none--include-path-false--archive-options-none-)
-+ [binary](https://docs.microsoft.com/python/api/azureml-core/azureml.core.dataset.dataset?view=azure-ml-py#from-binary-files-path-)
 + [json](https://docs.microsoft.com/python/api/azureml-core/azureml.core.dataset.dataset?view=azure-ml-py#from-json-files-path--encoding--fileencoding-utf8--0---flatten-nested-arrays-false--include-path-false-)
 + [Excel](https://docs.microsoft.com/python/api/azureml-core/azureml.core.dataset.dataset?view=azure-ml-py#from-excel-files-path--sheet-name-none--use-column-headers-false--skip-rows-0--include-path-false--infer-column-types-true-)
 + [Parquet](https://docs.microsoft.com/python/api/azureml-core/azureml.core.dataset.dataset?view=azure-ml-py#from-parquet-files-path--include-path-false-)
-+ [Azure SQL-Datenbank](https://docs.microsoft.com/python/api/azureml-core/azureml.core.dataset.dataset?view=azure-ml-py#from-sql-query-data-source--query-)
-+ [Azure Data Lake Gen1 ](https://docs.microsoft.com/python/api/azureml-core/azureml.core.dataset.dataset?view=azure-ml-py#from-sql-query-data-source--query-)
++ [pandas DataFrame](https://docs.microsoft.com/python/api/azureml-core/azureml.core.dataset.dataset?view=azure-ml-py#from-pandas-dataframe-dataframe--path-none--in-memory-false-)
++ [SQL query](https://docs.microsoft.com/python/api/azureml-core/azureml.core.dataset.dataset?view=azure-ml-py#from-sql-query-data-source--query-)
++ [binary](https://docs.microsoft.com/python/api/azureml-core/azureml.core.dataset.dataset?view=azure-ml-py#from-binary-files-path-)
 
 ## <a name="create-datasets"></a>Erstellen von Datasets 
 
-Sie können mit Ihren Datasets mit dem azureml-datasets-Paket im [Azure Machine Learning Python SDK](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py) und speziell mit [der `Dataset`-Klasse](https://docs.microsoft.com/python/api/azureml-core/azureml.core.dataset(class)?view=azure-ml-py) interagieren.
+Durch Erstellen eines Datasets erstellen Sie einen Verweis auf den Speicherort der Datenquelle sowie eine Kopie der zugehörigen Metadaten. Die Daten bleiben an ihrem Speicherort, sodass keine zusätzlichen Speicherkosten anfallen.
 
 ### <a name="create-from-local-files"></a>Erstellen aus lokalen Dateien
 
@@ -82,11 +80,11 @@ Verwenden Sie alternativ die dateispezifischen Funktionen, um explizit die Analy
 
 ### <a name="create-from-azure-datastores"></a>Erstellen aus Azure-Datenspeichern
 
-Erstellen Sie wie folgt Datasets aus einem Azure-Datenspeicher:
+Gehen Sie wie folgt vor, um Datasets auf der Grundlage eines [Azure-Datenspeichers](how-to-access-data.md) zu erstellen:
 
-* Stellen Sie sicher, dass Sie über Zugriff vom Typ `contributor` oder `owner` auf den registrierten Azure-Datenspeicher verfügen.
+* Vergewissern Sie sich, dass Sie für den registrierten Azure-Datenspeicher über Zugriff vom Typ `contributor` oder `owner` verfügen.
 
-* Importieren Sie die [`Workspace`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.workspace.workspace?view=azure-ml-py)-, [`Datastore`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.datastore(class)?view=azure-ml-py#definition)- und `Dataset`-Pakete aus dem SDK.
+* Erstellen Sie das Dataset, indem Sie auf einen Pfad im Datenspeicher verweisen: 
 
 ```Python
 from azureml.core.workspace import Workspace
@@ -97,20 +95,16 @@ datastore_name = 'your datastore name'
 
 # get existing workspace
 workspace = Workspace.from_config()
-```
 
- Die `get()`-Methode ruft einen vorhandenen Datenspeicher im Arbeitsbereich ab.
-
-```
+# retrieve an existing datastore in the workspace by name
 dstore = Datastore.get(workspace, datastore_name)
 ```
 
-Verwenden Sie die `from_delimited_files()`-Methode, um in durch Trennzeichen getrennten Dateien zu lesen und ein nicht registriertes Dataset zu erstellen.
+Verwenden Sie die Methode `from_delimited_files()`, um durch Trennzeichen getrennte Dateien aus einer Klasse vom Typ [DataReference](https://docs.microsoft.com/python/api/azureml-core/azureml.data.data_reference.datareference?view=azure-ml-py) zu lesen und ein nicht registriertes Dataset zu erstellen.
 
 ```Python
 # create an in-memory Dataset on your local machine
-datapath = dstore.path('data/src/crime.csv')
-dataset = Dataset.from_delimited_files(datapath)
+dataset = Dataset.from_delimited_files(dstore.path('data/src/crime.csv'))
 
 # returns the first 5 rows of the Dataset as a pandas Dataframe.
 dataset.head(5)
@@ -135,16 +129,19 @@ dataset = dataset.register(workspace = workspace,
 
 ## <a name="access-data-in-datasets"></a>Zugreifen auf Daten in Datasets
 
-Registrierte Datasets sind lokal, remote und auf Computeclustern wie der Azure Machine Learning-Computeressource verfügbar und nutzbar. Um Ihre registrierten Datasets Experimente und Computeumgebungen übergreifend wiederzuverwenden, rufen Sie mit folgendem Code Ihren Arbeitsbereich und das registrierte Dataset mit Namen ab.
+Auf registrierte Datasets kann in Computeclustern wie Azure Machine Learning Compute lokal und remote zugegriffen werden. Verwenden Sie für den experimentübergreifenden Zugriff auf Ihr registriertes Dataset den folgenden Code, um Ihren Arbeitsbereich und das registrierte Dataset anhand des Namens abzurufen.
 
 ```Python
 workspace = Workspace.from_config()
 
 # See list of datasets registered in workspace.
-Dataset.list(workspace)
+print(Dataset.list(workspace))
 
 # Get dataset by name
-dataset = workspace.datasets['dataset_crime']
+dataset = Dataset.get(workspace, 'dataset_crime')
+
+# Load data into pandas DataFrame
+dataset.to_pandas_dataframe()
 ```
 
 ## <a name="next-steps"></a>Nächste Schritte

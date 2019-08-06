@@ -1,6 +1,6 @@
 ---
-title: Häufig verwendete Sicherheitsattribute für Azure Event Hubs
-description: Eine Prüfliste allgemeiner Sicherheitsattribute für die Auswertung von Azure Event Hubs
+title: Sicherheitsattribute für Azure Event Hubs
+description: Eine Prüfliste der Sicherheitsattribute für die Auswertung von Azure Event Hubs
 services: event-hubs
 ms.service: event-hubs
 documentationcenter: ''
@@ -9,14 +9,14 @@ manager: barbkess
 ms.topic: conceptual
 ms.date: 05/22/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 50f19d50f211972c2042c69a1e3177ffb4a47624
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 2262609de774eb2b1334215bf46968b5554ed691
+ms.sourcegitcommit: a874064e903f845d755abffdb5eac4868b390de7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66245471"
+ms.lasthandoff: 07/24/2019
+ms.locfileid: "68442451"
 ---
-# <a name="common-security-attributes-for-azure-event-hubs"></a>Häufig verwendete Sicherheitsattribute für Azure Event Hubs
+# <a name="security-attributes-for-azure-event-hubs"></a>Sicherheitsattribute für Azure Event Hubs
 
 In diesem Artikel werden die in Azure Event Hubs integrierten Sicherheitsattribute beschrieben.
 
@@ -26,8 +26,8 @@ In diesem Artikel werden die in Azure Event Hubs integrierten Sicherheitsattribu
 
 | Sicherheitsattribut | Ja/Nein | Notizen |
 |---|---|--|
-| Verschlüsselung ruhender Daten:<ul><li>Serverseitige Verschlüsselung</li><li>Serverseitige Verschlüsselung mit vom Kunden verwalteten Schlüsseln</li><li>Weitere Verschlüsselungsfunktionen (z. B. clientseitig, immer verschlüsselt usw.)</ul>|  Ja | |
-| Verschlüsselung während der Übertragung:<ul><li>ExpressRoute-Verschlüsselung</li><li>In VNet-Verschlüsselung</li><li>VNet-VNet-Verschlüsselung</ul>| Ja | |
+| Verschlüsselung ruhender Daten (z. B. serverseitige Verschlüsselung, serverseitige Verschlüsselung mit vom Kunden verwalteten Schlüsseln und andere Verschlüsselungsfunktionen)|  Ja | |
+| Verschlüsselung während der Übertragung (z.B. ExpressRoute-Verschlüsselung, VNet-Verschlüsselung und VNet-VNet-Verschlüsselung)| Ja | |
 | Verarbeitung von Verschlüsselungsschlüsseln (CMK, BYOK usw.)| Nein |  |
 | Verschlüsselung auf Spaltenebene (Azure Data Services)| – | |
 | Verschlüsselte API-Aufrufe| Ja |  |
@@ -37,7 +37,7 @@ In diesem Artikel werden die in Azure Event Hubs integrierten Sicherheitsattribu
 | Sicherheitsattribut | Ja/Nein | Notizen |
 |---|---|--|
 | Unterstützung des Dienstendpunkts| Ja |  |
-| Unterstützung der vNET-Einschleusung| Nein | |
+| Unterstützung der VNet-Einschleusung| Nein | |
 | Unterstützung von Netzwerkisolation und Firewall| Ja |  |
 | Unterstützung der Tunnelerzwingung| Nein |  |
 
@@ -52,7 +52,7 @@ In diesem Artikel werden die in Azure Event Hubs integrierten Sicherheitsattribu
 | Sicherheitsattribut | Ja/Nein | Notizen|
 |---|---|--|
 | Authentication| Ja | |
-| Autorisierung|  Ja | |
+| Authorization|  Ja | |
 
 
 ## <a name="audit-trail"></a>Überwachungspfad

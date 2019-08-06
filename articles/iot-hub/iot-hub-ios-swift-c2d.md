@@ -7,12 +7,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 04/19/2018
 ms.author: kgremban
-ms.openlocfilehash: 6bb95bf887837fffc4196bca8d761239ac430a1a
-ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
+ms.openlocfilehash: af1b331836cd025bbe15665aa03faee000e7c4f0
+ms.sourcegitcommit: 9dc7517db9c5817a3acd52d789547f2e3efff848
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/07/2019
-ms.locfileid: "67620178"
+ms.lasthandoff: 07/23/2019
+ms.locfileid: "68404240"
 ---
 # <a name="send-cloud-to-device-messages-with-iot-hub-ios"></a>Senden von Cloud-zu-Gerät-Nachrichten mit IoT Hub (iOS)
 
@@ -101,6 +101,12 @@ Der Installationsbefehl installiert nicht nur die erforderlichen Pods für Ihr P
 
    ![Ausführen des Projekts](media/iot-hub-ios-swift-c2d/run-sample.png)
 
+## <a name="get-the-iot-hub-connection-string"></a>Abrufen der IoT-Hub-Verbindungszeichenfolge
+
+In diesem Artikel erstellen Sie einen Back-End-Dienst, um Cloud-zu-Gerät-Nachrichten über den IoT-Hub zu senden, den Sie unter [Schnellstart: Senden von Telemetriedaten von einem Gerät an einen IoT-Hub (iOS)](quickstart-send-telemetry-ios.md) erstellt haben. Damit Ihr Dienst Cloud-zu-Gerät-Nachrichten senden kann, muss er über die Berechtigung **Dienstverbindung** verfügen. Standardmäßig wird jeder IoT-Hub mit einer SAS-Richtlinie namens **service** erstellt, die diese Berechtigung erteilt.
+
+[!INCLUDE [iot-hub-include-find-service-connection-string](../../includes/iot-hub-include-find-service-connection-string.md)]
+
 ## <a name="simulate-a-service-device"></a>Simulieren eines Dienstgeräts
 
 In diesem Abschnitt simulieren Sie ein zweites iOS-Gerät mit einer Swift-App, die C2D-Nachrichten über die IoT Hub-Instanz sendet. Diese Konfiguration ist in IoT-Szenarien hilfreich, in denen ein iPhone oder iPad als Controller für andere iOS-Geräte fungiert, die mit einer IoT Hub-Instanz verbunden sind.
@@ -125,31 +131,25 @@ Der Installationsbefehl installiert nicht nur die erforderlichen Pods für Ihr P
 
 ### <a name="run-the-sample-service-application"></a>Ausführen der Beispieldienstanwendung
 
-1. Rufen Sie die Dienstverbindungszeichenfolge für Ihre IoT Hub-Instanz ab. Diese Zeichenfolge können Sie entweder im [Azure-Portal](https://portal.azure.com) auf dem Blatt **Richtlinien für gemeinsamen Zugriff** aus der Richtlinie **iothubowner** kopieren oder mithilfe des folgenden CLI-Befehls abrufen:  
-
-    ```azurecli-interactive
-    az iot hub show-connection-string --name {YourIoTHubName} --output table
-    ```
-
-2. Öffnen Sie den Beispielarbeitsbereich in Xcode.
+1. Öffnen Sie den Beispielarbeitsbereich in Xcode.
 
    ```sh
    open AzureIoTServiceSample.xcworkspace
    ```
 
-3. Erweitern Sie das Projekt **AzureIoTServiceSample** und anschließend den Ordner mit dem gleichen Namen.  
+2. Erweitern Sie das Projekt **AzureIoTServiceSample** und anschließend den Ordner mit dem gleichen Namen.  
 
-4. Öffnen Sie **ViewController.swift** zur Bearbeitung in Xcode. 
+3. Öffnen Sie **ViewController.swift** zur Bearbeitung in Xcode. 
 
-5. Suchen Sie nach der Variablen **connectionString**, und aktualisieren Sie den Wert mit der zuvor kopierten Dienstverbindungszeichenfolge.
+4. Suchen Sie nach der Variablen **connectionString**, und aktualisieren Sie den Wert mit der Dienstverbindungszeichenfolge, die Sie zuvor in [Abrufen der IoT-Hub-Verbindungszeichenfolge](#get-the-iot-hub-connection-string) kopiert haben.
 
-6. Speichern Sie die Änderungen.
+5. Speichern Sie die Änderungen.
 
-7. Legen Sie die Emulatoreinstellungen in Xcode auf ein iOS-Gerät fest, bei dem es sich nicht um das Gerät handelt, das Sie zum Ausführen des IoT-Geräts verwendet haben. Xcode kann nicht mehrere Emulatoren vom gleichen Typ ausführen.
+6. Legen Sie die Emulatoreinstellungen in Xcode auf ein iOS-Gerät fest, bei dem es sich nicht um das Gerät handelt, das Sie zum Ausführen des IoT-Geräts verwendet haben. Xcode kann nicht mehrere Emulatoren vom gleichen Typ ausführen.
 
    ![Ändern des Emulatorgeräts](media/iot-hub-ios-swift-c2d/change-device.png)
 
-8. Klicken Sie auf die Schaltfläche **Erstellen und Ausführen**, oder drücken Sie die Tastenkombination **BEFEHL+R**, um das Projekt im Geräteemulator auszuführen.
+7. Klicken Sie auf die Schaltfläche **Erstellen und Ausführen**, oder drücken Sie die Tastenkombination **BEFEHL+R**, um das Projekt im Geräteemulator auszuführen.
 
    ![Ausführen des Projekts](media/iot-hub-ios-swift-c2d/run-app.png)
 

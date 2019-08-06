@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
 ms.topic: article
-ms.date: 03/22/2019
+ms.date: 07/10/2019
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: spunukol
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5919eebccad8d7f9e048ae07be296eaaaf8428eb
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 316c5b6b52c30b51fb2f177a0ae2bd9758fc91d9
+ms.sourcegitcommit: a874064e903f845d755abffdb5eac4868b390de7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67112110"
+ms.lasthandoff: 07/24/2019
+ms.locfileid: "68442462"
 ---
 # <a name="azure-active-directory-conditional-access-settings-reference"></a>Referenz zu den Einstellungen für den bedingten Azure Active Directory-Zugriff
 
@@ -57,7 +57,6 @@ Sie können folgenden Cloud-Apps von Microsoft eine Richtlinie für bedingten Zu
 - Microsoft Intune
 - Microsoft Intune-Registrierung
 - Microsoft Planner
-- Microsoft Power BI
 - Microsoft PowerApps
 - Microsoft-Suche in Bing
 - Microsoft StaffHub
@@ -69,6 +68,7 @@ Sie können folgenden Cloud-Apps von Microsoft eine Richtlinie für bedingten Zu
 - Office Delve
 - Office Sway
 - Outlook-Gruppen
+- Power BI-Dienst
 - Project Online
 - Skype for Business Online
 - Virtuelles privates Netzwerk (VPN):
@@ -97,11 +97,13 @@ In einer Richtlinie für bedingten Zugriff können Sie die Geräteplattformbedin
 
 ![Binden der Zugriffsrichtlinie an das Clientbetriebssystem](./media/technical-reference/41.png)
 
+Wenn Sie die ältere Authentifizierung mit der Bedingung **„Andere Clients“** blockieren, können Sie auch die Geräteplattform als Bedingung festlegen.
+
 ## <a name="client-apps-condition"></a>Client-Apps-Bedingung
 
 In der Richtlinie für bedingten Zugriff können Sie die [Client-Apps](conditions.md#client-apps)-Bedingung konfigurieren, um die Richtlinie mit der Client-App zu verknüpfen, die einen Zugriffsversuch initiiert hat. Legen Sie die Client-Apps-Bedingung fest, um den Zugriff zu gewähren oder zu verweigern, wenn mit den folgenden Arten von Client-Apps ein Zugriffsversuch unternommen wird:
 
-- "Browser"
+- Browser
 - Mobile Apps und Desktop-Apps
 
 ![Steuern des Zugriffs für Client-Apps](./media/technical-reference/03.png)
@@ -114,7 +116,7 @@ In der Richtlinie für bedingten Zugriff können Sie als Client-App **Browser** 
 
 Diese Einstellung funktioniert mit allen Browsern. Die folgenden Betriebssysteme und Browser werden jedoch unterstützt, um eine Geräterichtlinie, z. B. eine konforme Geräteanforderung, zu erfüllen:
 
-| Betriebssystem                     | Browser                                      |
+| OS                     | Browser                                      |
 | :--                    | :--                                           |
 | Windows 10             | Internet Explorer, Microsoft Edge, Chrome     |
 | Windows 8/8.1        | Internet Explorer, Chrome                     |
@@ -134,7 +136,7 @@ Unter Windows 7, iOS, Android und macOS identifiziert Azure AD das Gerät anhand
 
 #### <a name="chrome-support"></a>Chrome-Unterstützung
 
-Installieren Sie [diese Erweiterung](https://chrome.google.com/webstore/detail/windows-10-accounts/ppnbnpeolgkicgegkbkbjmhlideopiji), damit Chrome unter **Windows 10 Creators Update (Version 1703**) oder höher unterstützt wird.
+Installieren Sie die [Erweiterung für Windows 10-Konten](https://chrome.google.com/webstore/detail/windows-10-accounts/ppnbnpeolgkicgegkbkbjmhlideopiji), damit Chrome ab **Windows 10 Creators Update (Version 1703)** unterstützt wird. Diese Erweiterung ist erforderlich, wenn eine Richtlinie für bedingten Zugriff gerätespezifische Details erfordert.
 
 Um diese Erweiterung für Chrome-Browser automatisch bereitzustellen, erstellen Sie den folgenden Registrierungsschlüssel:
 
@@ -142,8 +144,8 @@ Um diese Erweiterung für Chrome-Browser automatisch bereitzustellen, erstellen 
 | --- | --- |
 | `Path` | HKEY_LOCAL_MACHINE\Software\Policies\Google\Chrome\ExtensionInstallForcelist |
 | NAME | 1 |
-| Type | REG_SZ (Zeichenfolge) |
-| Daten | ppnbnpeolgkicgegkbkbjmhlideopiji; https://clients2.google.com/service/update2/crx |
+| type | REG_SZ (Zeichenfolge) |
+| Daten | ppnbnpeolgkicgegkbkbjmhlideopiji;https\://clients2.google.com/service/update2/crx |
 
 Erstellen Sie den folgenden Registrierungsschlüssel, damit Chrome unter **Windows 8.1 und 7** unterstützt wird:
 
@@ -151,7 +153,7 @@ Erstellen Sie den folgenden Registrierungsschlüssel, damit Chrome unter **Windo
 | --- | --- |
 | `Path` | HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Google\Chrome\AutoSelectCertificateForUrls |
 | NAME | 1 |
-| Type | REG_SZ (Zeichenfolge) |
+| type | REG_SZ (Zeichenfolge) |
 | Daten | {"pattern":"https://device.login.microsoftonline.com","filter":{"ISSUER":{"CN":"MS-Organization-Access"}}} |
 
 Diese Browser unterstützen die Geräteauthentifizierung, sodass das Gerät identifiziert und anhand einer Richtlinie überprüft werden kann. Bei der Geräteüberprüfung tritt ein Fehler auf, wenn der Browser im privaten Modus ausgeführt wird.
@@ -202,6 +204,8 @@ Diese Einstellung gilt für die folgenden Client-Apps:
 
 - Microsoft Azure Information Protection
 - Microsoft Bookings
+- Microsoft Cortana
+- Microsoft Dynamics 365
 - Microsoft Edge
 - Microsoft Excel
 - Microsoft Flow
@@ -240,8 +244,11 @@ In Ihrer Richtlinie für bedingten Zugriff können Sie verlangen, dass eine App-
 
 Diese Einstellung gilt für die folgenden Client-Apps:
 
+- Microsoft Cortana
+- Microsoft Edge
 - Microsoft OneDrive
 - Microsoft Outlook
+- Microsoft Planner
 
 **Anmerkungen**
 

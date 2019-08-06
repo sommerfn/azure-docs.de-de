@@ -4,14 +4,14 @@ description: Beschreibt, wie verknüpfte Vorlagen in einer Azure-Ressourcen-Mana
 author: tfitzmac
 ms.service: azure-resource-manager
 ms.topic: conceptual
-ms.date: 05/01/2019
+ms.date: 07/17/2019
 ms.author: tomfitz
-ms.openlocfilehash: 4a5fe1bd2bf57fbec240ab242dd889014dde9578
-ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
+ms.openlocfilehash: c79429d1a39e975c6bcc7fce191846a6205f9a86
+ms.sourcegitcommit: f5075cffb60128360a9e2e0a538a29652b409af9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67206429"
+ms.lasthandoff: 07/18/2019
+ms.locfileid: "68311704"
 ---
 # <a name="using-linked-and-nested-templates-when-deploying-azure-resources"></a>Verwenden von verknüpften und geschachtelten Vorlagen bei der Bereitstellung von Azure-Ressourcen
 
@@ -90,7 +90,7 @@ Verwenden Sie zum Schachteln der Vorlage mit der Hauptvorlage die **template**-E
 > ],
 > ```
 >
-> Sie können die Funktion `reference` nicht im Ausgabeabschnitt einer geschachtelten Vorlage verwenden. Um die Werte für eine bereitgestellte Ressource in einer geschachtelten Vorlage zurückzugeben, konvertieren Sie Ihre geschachtelte Vorlage in eine verknüpfte Vorlage.
+> Die Funktion `reference` kann nicht im Ausgabeabschnitt einer geschachtelten Vorlage für eine Ressource verwendet werden, die Sie in der geschachtelten Vorlage bereitgestellt haben. Um die Werte für eine bereitgestellte Ressource in einer geschachtelten Vorlage zurückzugeben, konvertieren Sie Ihre geschachtelte Vorlage in eine verknüpfte Vorlage.
 
 Die geschachtelten Vorlage erfordert [dieselben Eigenschaften](resource-group-authoring-templates.md) wie eine Standardvorlage.
 

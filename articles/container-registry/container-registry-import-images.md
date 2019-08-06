@@ -3,16 +3,17 @@ title: Importieren von Containerimages in Azure Container Registry
 description: Importieren von Containerimages in eine Azure-Containerregistrierung mithilfe von Azure-APIs, ohne dass Docker-Befehle ausgeführt werden müssen
 services: container-registry
 author: dlepow
+manager: gwallace
 ms.service: container-registry
 ms.topic: article
 ms.date: 02/06/2019
 ms.author: danlep
-ms.openlocfilehash: b8a2280fe82e0f4be8e2812f5494150927642692
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: c44eabffaefe24e15f980c9871a5c65ab958f2fc
+ms.sourcegitcommit: f5075cffb60128360a9e2e0a538a29652b409af9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60827288"
+ms.lasthandoff: 07/18/2019
+ms.locfileid: "68310614"
 ---
 # <a name="import-container-images-to-a-container-registry"></a>Importieren von Containerimages in eine Containerregistrierung
 
@@ -32,7 +33,7 @@ Der Imageimport in eine Azure-Containerregistrierung bietet gegenüber der Verwe
 
 * Wenn Sie Images mit mehreren Architekturen (etwa offizielle Docker-Images) importieren, werden Images für alle Architekturen und Plattformen kopiert, die in der Manifestliste angegeben sind.
 
-Damit Sie Containerimages importieren können, muss für diesen Artikel die Azure-Befehlszeilenschnittstelle in Azure Cloud Shell oder lokal (Version 2.0.55 oder höhere Version empfohlen) ausgeführt werden. Führen Sie `az --version` aus, um die Version zu finden. Wenn Sie eine Installation oder ein Upgrade ausführen müssen, finden Sie unter [Installieren von Azure CLI 2.0][azure-cli] Informationen dazu.
+Damit Sie Containerimages importieren können, muss für diesen Artikel die Azure-Befehlszeilenschnittstelle in Azure Cloud Shell oder lokal (Version 2.0.55 oder höhere Version empfohlen) ausgeführt werden. Führen Sie `az --version` aus, um die Version zu finden. Informationen zum Durchführen einer Installation oder eines Upgrades finden Sei bei Bedarf unter [Installieren der Azure CLI][azure-cli].
 
 > [!NOTE]
 > Azure Container Registry unterstützt darüber hinaus die [Georeplikation](container-registry-geo-replication.md), falls Sie identische Containerimages auf mehrere Azure-Regionen verteilen müssen. Durch die Georeplikation einer Registrierung (Premium-SKU erforderlich) können Sie in mehreren Regionen identische Image- und Tagnamen aus einer einzelnen Registrierung bereitstellen.
@@ -122,7 +123,7 @@ az acr import --name myregistry --source docker.io/sourcerepo/sourceimage:tag --
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-In diesem Artikel haben Sie erfahren, wie Sie Containerimages aus einer öffentlichen Registrierung oder einer anderen privaten Registrierung in eine Azure-Containerregistrierung importieren. Informationen zu weiteren Optionen zum Importieren von Images finden Sie in der [az acr import][az-acr-import]-Befehlsreferenz. 
+In diesem Artikel haben Sie erfahren, wie Sie Containerimages aus einer öffentlichen Registrierung oder einer anderen privaten Registrierung in eine Azure-Containerregistrierung importieren. Informationen zu weiteren Optionen beim Importieren von Images finden Sie in der Befehlsreferenz für [az acr import][az-acr-import]. 
 
 
 <!-- LINKS - Internal -->

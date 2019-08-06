@@ -1,6 +1,6 @@
 ---
-title: Allgemeine Sicherheitsattribute für Azure Service Bus Relay
-description: Eine Prüfliste allgemeiner Sicherheitsattribute für die Auswertung von Azure Service Bus Relay
+title: Sicherheitsattribute für Azure Service Bus Relay
+description: Eine Prüfliste der Sicherheitsattribute für die Auswertung von Azure Service Bus Relay
 services: service-bus-relay
 ms.service: service-bus-relay
 documentationcenter: ''
@@ -9,12 +9,12 @@ manager: barbkess
 ms.topic: conceptual
 ms.date: 04/23/2019
 ms.author: mbaldwin
-ms.openlocfilehash: d8ce3c995e8e0f20ed6d694f481cc5fc9fde4fa7
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 2047f64914d4a286e6de38b7b2c8524d98eba562
+ms.sourcegitcommit: a874064e903f845d755abffdb5eac4868b390de7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66000149"
+ms.lasthandoff: 07/24/2019
+ms.locfileid: "68443882"
 ---
 # <a name="security-attributes-for-azure-service-bus-relay"></a>Sicherheitsattribute für Azure Service Bus Relay
 
@@ -26,8 +26,8 @@ In diesem Artikel werden die in Azure Service Bus Relay integrierten Sicherheits
 
 | Sicherheitsattribut | Ja/Nein | Notizen |
 |---|---|--|
-| Verschlüsselung ruhender Daten:<ul><li>Serverseitige Verschlüsselung</li><li>Serverseitige Verschlüsselung mit vom Kunden verwalteten Schlüsseln</li><li>Weitere Verschlüsselungsfunktionen (z. B. clientseitig, immer verschlüsselt usw.)</ul>|  – | Relay ist ein Websocket, das Daten nicht beibehält. |
-| Verschlüsselung während der Übertragung:<ul><li>ExpressRoute-Verschlüsselung</li><li>In VNet-Verschlüsselung</li><li>VNet-VNet-Verschlüsselung</ul>| Ja | Der Dienst erfordert TLS. |
+| Verschlüsselung ruhender Daten (z. B. serverseitige Verschlüsselung, serverseitige Verschlüsselung mit vom Kunden verwalteten Schlüsseln und andere Verschlüsselungsfunktionen)|  – | Relay ist ein Websocket, das Daten nicht beibehält. |
+| Verschlüsselung während der Übertragung (z.B. ExpressRoute-Verschlüsselung, VNet-Verschlüsselung und VNet-VNet-Verschlüsselung)| Ja | Der Dienst erfordert TLS. |
 | Verarbeitung von Verschlüsselungsschlüsseln (CMK, BYOK usw.)| Nein | Verwendet nur Microsoft-TLS-Zertifikate.  |
 | Verschlüsselung auf Spaltenebene (Azure Data Services)| – | |
 | Verschlüsselte API-Aufrufe| Ja | HTTPS. |

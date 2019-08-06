@@ -6,14 +6,14 @@ author: bwren
 manager: carmonm
 ms.service: log-analytics
 ms.topic: conceptual
-ms.date: 08/20/2018
+ms.date: 07/19/2019
 ms.author: bwren
-ms.openlocfilehash: 2e2d13e6923535a8993a6477cbbfb921f6092d66
-ms.sourcegitcommit: d2785f020e134c3680ca1c8500aa2c0211aa1e24
+ms.openlocfilehash: cf2aee475f5d3933421de45fa5b2ade687bed62f
+ms.sourcegitcommit: e72073911f7635cdae6b75066b0a88ce00b9053b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/04/2019
-ms.locfileid: "67565590"
+ms.lasthandoff: 07/19/2019
+ms.locfileid: "68348090"
 ---
 # <a name="get-started-with-log-analytics-in-azure-monitor"></a>Erste Schritte mit Log Analytics in Azure Monitor
 
@@ -178,6 +178,9 @@ Nachdem Sie eine nützliche Abfrage erstellt haben, sollten Sie diese speichern 
 Sie können entweder die gesamte Abfrageseite oder eine einzelne Abfrage als Funktion speichern. Funktionen sind Abfragen, auf die auch durch andere Abfragen verwiesen werden kann. Um eine Abfrage als Funktion zu speichern, müssen Sie einen Funktionsalias angeben. Dies ist der Name zum Aufrufen dieser Abfrage, wenn durch andere Abfragen auf diese verwiesen wird.
 
 ![Funktion speichern](media/get-started-portal/save-function.png)
+
+>[!NOTE]
+>Folgende Zeichen werden unterstützt: `a–z, A–Z, 0-9, -, _, ., <space>, (, ), |` (im Feld **Name** beim Speichern oder Bearbeiten der gespeicherten Abfrage).
 
 Log Analytics-Abfragen werden immer in einem ausgewählten Arbeitsbereich gespeichert und für andere Benutzer des Arbeitsbereichs freigegeben.
 

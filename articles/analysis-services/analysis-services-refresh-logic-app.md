@@ -7,12 +7,12 @@ ms.service: analysis-services
 ms.topic: conceptual
 ms.date: 04/26/2019
 ms.author: chlound
-ms.openlocfilehash: 6ffce339fe7b1a434c8f007b417ee81a42529dfc
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 2234a2c6cd42be45a2b2e7784c1dd5aec8839cb9
+ms.sourcegitcommit: f5075cffb60128360a9e2e0a538a29652b409af9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66142482"
+ms.lasthandoff: 07/18/2019
+ms.locfileid: "68311734"
 ---
 # <a name="refresh-with-logic-apps"></a>Aktualisieren mit Logic Apps
 
@@ -66,7 +66,7 @@ Konfigurieren Sie die Aktivität „HTTP“ wie folgt:
 |Eigenschaft  |Wert  |
 |---------|---------|
 |**Methode**     |POST         |
-|**URI**     | https://*Ihre Serverregion*/servers/*Name des AAS-Servers*/models/*Name Ihrer Datenbank*/ <br /> <br /> Beispiel: https:\//westus.asazure.windows.net/servers/myserver/models/AdventureWorks/|
+|**URI**     | https://*Ihre Serverregion*/servers/*Name des AAS-Servers*/models/*Name Ihrer Datenbank*/refreshes <br /> <br /> Beispiel: https:\//westus.asazure.windows.net/servers/myserver/models/AdventureWorks/refreshes|
 |**Header**     |   Content-Type, application/json <br /> <br />  ![Header](./media/analysis-services-async-refresh-logic-app/6.png)    |
 |**Text**     |   Weitere Informationen zum Bilden des Anforderungstexts finden Sie unter [Asynchrones Aktualisieren mit der REST-API – POST /refreshes](analysis-services-async-refresh.md#post-refreshes). |
 |**Authentifizierung**     |Active Directory OAuth         |

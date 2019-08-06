@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.author: lazinnat
 author: lazinnat
 ms.date: 06/12/2019
-ms.openlocfilehash: 6735787f9b43f98ab611584f3c7191c9f927dbc2
-ms.sourcegitcommit: f811238c0d732deb1f0892fe7a20a26c993bc4fc
+ms.openlocfilehash: ff96bddef1b34f5a8bf743ccaaccba2da01534dc
+ms.sourcegitcommit: e9c866e9dad4588f3a361ca6e2888aeef208fc35
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/29/2019
-ms.locfileid: "67479055"
+ms.lasthandoff: 07/19/2019
+ms.locfileid: "68335082"
 ---
 # <a name="view-definition-artifact-in-azure-managed-applications"></a>Ansichtsdefinitionsartefakt in Azure Managed Applications
 
@@ -32,6 +32,8 @@ JSON-Beispielcode für die Ansichtsdefinition:
 
 ```json
 {
+    "$schema": "https://schema.management.azure.com/schemas/viewdefinition/0.0.1-preview/ViewDefinition.json#",
+    "contentVersion": "0.0.0.1",
     "views": [
         {
             "kind": "Overview",
@@ -84,7 +86,7 @@ JSON-Beispielcode für die Ansichtsdefinition:
                         "displayName": "Custom Context Action",
                         "path": "testCustomResource/testContextAction",
                         "icon": "Stop",
-                        "createUIDefinition": { },
+                        "createUIDefinition": { }
                     }
                 ],
                 "columns": [
@@ -126,6 +128,8 @@ Wenn Sie diese Ansicht in **viewDefinition.json** bereitstellen, überschreibt s
 |Header|Nein|Die Überschrift der Übersichtsseite.|
 |description|Nein|Die Beschreibung Ihrer verwalteten Anwendung.|
 |commands|Nein|Das Array der zusätzlichen Symbolleisten-Schaltflächen der Übersichtsseite finden Sie unter [commands](#commands).|
+
+![Übersicht](./media/view-definition/overview.png)
 
 ## <a name="metrics"></a>metrics
 
@@ -182,6 +186,8 @@ Die Metrikenansicht ermöglicht Ihnen, Daten von Ihren verwalteten Anwendungsres
 |resourceTagFilter|Nein|Das Ressourcentagsarray (wird mit dem `or`-Wort getrennt), für das Metriken angezeigt würden. Wird zusätzlich zum Ressourcentypfilter angewandt.|
 |resourceType|Ja|Der Ressourcentyp, für den Metriken angezeigt würden.|
 
+![metrics](./media/view-definition/metrics.png)
+
 ## <a name="custom-resources"></a>Benutzerdefinierte Ressourcen
 
 `"kind": "CustomResources"`
@@ -228,6 +234,8 @@ In dieser Ansicht können Sie für Ihren benutzerdefinierten Ressourcentyp GET-,
 |commands|Nein|Das Array der zusätzlichen Symbolleisten-Schaltflächen der Ansicht CustomResources finden Sie unter [commands](#commands).|
 |columns|Nein|Das Array von Spalten der benutzerdefinierten Ressource. Wenn nicht definiert, wird standardmäßig die `name`-Spalte angezeigt. Die Spalte muss einen `"key"` und einen `"displayName"` besitzen. Geben Sie für „key“ den Schlüssel der Eigenschaft zur Anzeige in einer Ansicht ein. Wenn geschachtelt, verwenden Sie einen Punkt als Trennzeichen, z.B. `"key": "name"` oder `"key": "properties.property1"`. Geben Sie für „displayName“ den Anzeigenamen der Eigenschaft zur Anzeige in einer Ansicht ein. Sie können auch eine `"optional"`-Eigenschaft angeben. Bei Festlegung auf „True“ wird die Spalte in einer Ansicht standardmäßig ausgeblendet.|
 
+![CustomResources](./media/view-definition/customresources.png)
+
 ## <a name="commands"></a>Befehle
 
 „Commands“ ist ein Array von zusätzlichen Symbolleisten-Schaltflächen, die auf der Seite angezeigt werden. Jeder Befehl stellt eine POST-Aktion von Ihrem in **mainTemplate.json** definierten Azure Custom Provider dar. Eine Einführung in benutzerdefinierte Anbieter finden Sie unter [Azure Custom Providers: Übersicht](custom-providers-overview.md).
@@ -252,7 +260,12 @@ In dieser Ansicht können Sie für Ihren benutzerdefinierten Ressourcentyp GET-,
 |icon|Nein|Das Symbol der Befehlsschaltfläche. Die Liste der unterstützten Symbole ist im [JSON-Schema](https://schema.management.azure.com/schemas/viewdefinition/0.0.1-preview/ViewDefinition.json#) definiert.|
 |createUIDefinition|Nein|Schema zum Erstellen von Benutzeroberflächendefinitionen für den Befehl. Eine Einführung zum Erstellen von Benutzeroberflächendefinitionen finden Sie unter [Erste Schritte mit „CreateUiDefinition“](create-uidefinition-overview.md).|
 
+## <a name="looking-for-help"></a>Wenn Hilfe benötigt wird
+
+Fragen zu Azure Managed Applications können bei [Stack Overflow](http://stackoverflow.com/questions/tagged/azure-managedapps) gestellt werden. Eine ähnliche Frage wurde möglicherweise bereits gestellt und beantwortet, weshalb Sie dies zunächst prüfen sollten, bevor Sie etwas posten. Fügen Sie das Tag `azure-managedapps` hinzu, um schnell eine Antwort zu erhalten!
+
 ## <a name="next-steps"></a>Nächste Schritte
 
 - Eine Einführung in verwaltete Anwendungen finden Sie in der [Übersicht über verwaltete Azure-Anwendungen](overview.md).
 - Eine Einführung in benutzerdefinierte Anbieter finden Sie unter [Azure Custom Providers: Übersicht](custom-providers-overview.md).
+- Informationen zum Erstellen einer verwalteten Azure-Anwendung mit benutzerdefinierten Azure-Anbietern finden Sie unter [Tutorial: Erstellen einer verwalteten Anwendung mit benutzerdefinierten Aktionen und Ressourcen](tutorial-create-managed-app-with-custom-provider.md).

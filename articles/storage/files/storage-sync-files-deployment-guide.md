@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 07/19/2018
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 12fd1b03e58d1c62157c6652ce96d8f0172dadb2
-ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
+ms.openlocfilehash: 6a41830dcb7f681713db7a7802ab430581dc844f
+ms.sourcegitcommit: c71306fb197b433f7b7d23662d013eaae269dc9c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67606106"
+ms.lasthandoff: 07/22/2019
+ms.locfileid: "68371142"
 ---
 # <a name="deploy-azure-file-sync"></a>Bereitstellen der Azure-Dateisynchronisierung
 Mit der Azure-Dateisynchronisierung können Sie die Dateifreigaben Ihrer Organisation in Azure Files zentralisieren, ohne auf die Flexibilität, Leistung und Kompatibilität eines lokalen Dateiservers verzichten zu müssen. Mit der Azure-Dateisynchronisierung werden Ihre Windows Server-Computer zu einem schnellen Cache für Ihre Azure-Dateifreigabe. Sie können ein beliebiges Protokoll verwenden, das unter Windows Server verfügbar ist, um lokal auf Ihre Daten zuzugreifen, z.B. SMB, NFS und FTPS. Sie können weltweit so viele Caches wie nötig nutzen.
@@ -357,6 +357,20 @@ if ($cloudTieringDesired) {
 
 ---
 
+## <a name="configure-firewall-and-virtual-network-settings"></a>Konfigurieren von Firewall- und VNET-Einstellungen
+
+### <a name="portal"></a>Portal
+Wenn Sie Ihre Azure-Dateisynchronisierung mit Firewall- und VNET-Einstellungen konfigurieren möchten, gehen Sie wie folgt vor:
+
+1. Navigieren Sie im Azure-Portal zu dem Speicherkonto, das Sie schützen möchten.
+1. Wählen Sie im linken Menü die Option **Firewalls und virtuelle Netzwerke** aus:
+1. Wählen Sie unter **Zugriff erlauben von** die Option **Ausgewählte Netzwerke** aus.
+1. Vergewissern Sie sich, dass die IP-Adresse oder das virtuelle Netzwerk Ihres Servers unter dem entsprechenden Abschnitt aufgeführt ist.
+1. Vergewissern Sie sich, dass das Kontrollkästchen **Vertrauenswürdigen Microsoft-Diensten den Zugriff auf dieses Speicherkonto erlauben** aktiviert ist.
+1. Klicken Sie auf **Save** (Speichern), um Ihre Einstellungen zu speichern.
+
+![Konfigurieren von Firewall- und VNET-Einstellungen für die Azure-Dateisynchronisierung](media/storage-sync-files-deployment-guide/firewall-and-vnet.png)
+
 ## <a name="onboarding-with-azure-file-sync"></a>Onboarding bei der Azure-Dateisynchronisierung
 Die empfohlenen Schritte zum erstmaligen Onboarding bei der Azure-Dateisynchronisierung ohne Ausfallzeiten unter Beibehaltung der vollen Dateitreue und Zugriffssteuerungsliste (ACL) sind wie folgt:
  
@@ -376,12 +390,12 @@ Die empfohlenen Schritte zum erstmaligen Onboarding bei der Azure-Dateisynchroni
 Wenn Sie nicht über zusätzlichen Speicherplatz für das erste Onboarding verfügen und an die vorhandenen Freigaben anhängen möchten, können Sie für die Daten in den Azure-Dateifreigaben vorab ein Seeding ausführen. Dieser Ansatz wird ausdrücklich nur dann empfohlen, wenn Sie Ausfallzeiten akzeptieren und absolut keine Datenveränderungen auf den Serverfreigaben während des ersten Onboardingprozesses garantieren können. 
  
 1. Stellen Sie sicher, dass sich die Daten auf den Servern während des Onboardingprozesses nicht ändern können.
-2. Führen Sie auf den Azure-Dateifreigaben vorab ein Seeding mit den Serverdaten mithilfe eines Datenübertragungstools über den SBM durch, wie z.B. Robocopy oder direkte SMB-Kopie. Da AzCopy keine Daten über den SMB hochlädt, kann dieses Tool nicht für das Vorabseeding verwendet werden.
+2. Führen Sie auf den Azure-Dateifreigaben vorab ein Seeding mit den Serverdaten mithilfe eines Datenübertragungstools über den SBM durch (etwa per Robocopy oder mittels direkter SMB-Kopie). Da AzCopy keine Daten über den SMB hochlädt, kann dieses Tool nicht für das Vorabseeding verwendet werden.
 3. Erstellen Sie eine Azure-Dateisynchronisierungstopologie mit den gewünschten Serverendpunkten, die auf die vorhandenen Freigaben zeigen.
 4. Lassen Sie die Synchronisierung den Abstimmungsprozess auf allen Endpunkten abschließen. 
 5. Sobald die Abstimmung abgeschlossen ist, können Sie Freigaben für Änderungen öffnen.
  
-Beachten Sie, dass der Ansatz des Vorabseedings derzeit einige Einschränkungen aufweist: 
+Für das Vorabseeding gelten aktuell einige Einschränkungen: 
 - Vollständige Originaltreue für Dateien wird nicht beibehalten. Dateien verlieren beispielsweise Zugriffssteuerungslisten und Zeitstempel.
 - Datenänderungen auf dem Server, bevor die Synchronisierungstopologie vollständig in Betrieb ist, können zu Konflikten auf den Serverendpunkten führen.  
 - Nachdem der Cloudendpunkt erstellt wurde, führt die Azure-Dateisynchronisierung einen Prozess aus, um die Dateien in der Cloud zu erkennen, bevor die anfängliche Synchronisierung gestartet wird. Die zum Abschluss dieses Prozesses benötigte Zeit variiert je nach den verschiedenen Faktoren wie Netzwerkgeschwindigkeit, verfügbare Bandbreite und Anzahl der Dateien und Ordner. Grob geschätzt schafft der Erkennungsprozess in der Vorschauversion ca. 10 Dateien pro Sekunde. Selbst wenn das Vorabseeding schnell erfolgt, kann die Gesamtzeit bis zur Inbetriebnahme eines voll funktionsfähigen Systems erheblich länger sein, wenn für die Daten in der Cloud vorab ein Seeding durchgeführt wird.

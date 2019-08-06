@@ -8,12 +8,12 @@ ms.reviewer: jasonh
 ms.topic: conceptual
 ms.custom: seodec18
 ms.date: 04/23/2019
-ms.openlocfilehash: 8699533cd64e6b1778c5e78b8c51eb1efe518c75
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 1ad3c446df2f2ce62024dfdda589669653f65ef4
+ms.sourcegitcommit: bafb70af41ad1326adf3b7f8db50493e20a64926
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67126213"
+ms.lasthandoff: 07/25/2019
+ms.locfileid: "68488706"
 ---
 # <a name="configure-a-hdinsight-cluster-with-enterprise-security-package-by-using-azure-active-directory-domain-services"></a>Konfigurieren eines HDInsight-Clusters mit Enterprise-Sicherheitspaket (Enterprise Security Package, ESP) mithilfe von Azure Active Directory Domain Services
 
@@ -34,6 +34,8 @@ In diesem Artikel erfahren Sie, wie Sie einen HDInsight-Cluster mit ESP mit Azur
 Das Aktivieren von AD DS ist eine Voraussetzung zum Erstellen eines HDInsight-Clusters mit ESP. Weitere Informationen finden Sie unter [Aktivieren von Azure Active Directory Domain Services mithilfe des Azure-Portals](../../active-directory-domain-services/create-instance.md). 
 
 Wenn Azure AD DS aktiviert ist, beginnen alle Benutzer und Objekte standardmäßig mit der Synchronisierung von Azure Active Directory (AAD) zu Azure AD DS. Die Dauer des Synchronisierungsvorgangs hängt von der Anzahl von Objekten in Azure AD ab. Die Synchronisierung kann bei Hunderttausenden von Objekten einige Tage dauern. 
+
+Der mit Azure AD DS verwendete Domänenname darf maximal 39 Zeichen lang sein, da er ansonsten nicht mit HDInsight verwendet werden kann.
 
 Sie können auswählen, nur die Gruppen zu synchronisieren, die Zugriff auf die HDInsight-Cluster benötigen. Diese Option, nur bestimmte Gruppen zu synchronisieren, wird als *bereichsbezogene Synchronisierung* bezeichnet. Anweisungen finden Sie unter [Konfigurieren der bereichsbezogenen Synchronisierung von Azure AD mit Ihrer verwalteten Domäne](../../active-directory-domain-services/scoped-synchronization.md).
 
@@ -80,11 +82,11 @@ Wenn Sie AD DS aktiviert haben, wird ein lokaler DNS-Server auf den Azure-VMs au
 
 Es ist einfacher, die Azure AD DS-Instanz und den HDInsight-Cluster im gleichen virtuellen Azure-Netzwerk zu platzieren. Wenn Sie verschiedene VNETs verwenden möchten, müssen Sie ein Peering für diese virtuellen Netzwerke ausführen, sodass der Domänencontroller für HDI-VMs sichtbar ist. Weitere Informationen finden Sie unter [Peering in virtuellen Netzwerken](../../virtual-network/virtual-network-peering-overview.md). 
 
-Nachdem die VNETs durchsucht wurden, konfigurieren Sie das HDInsight-VNET so, dass es einen benutzerdefinierten DNS-Server verwendet, und geben Sie die privaten AD DS-IP-Adressen als DNS-Serveradressen ein. Wenn beide VNETs die gleichen DNS-Server verwenden, wird Ihr benutzerdefinierter Domänenname in die richtige IP-Adresse aufgelöst und ist über HDInsight erreichbar. Wenn Ihr Domänenname beispielsweise „contoso.com“ lautet, muss nach diesem Schritt das Pingen von „contoso.com“ in die richtige AD DS-IP-Adresse aufgelöst werden. 
+Nachdem die VNETs durchsucht wurden, konfigurieren Sie das HDInsight-VNET so, dass es einen benutzerdefinierten DNS-Server verwendet, und geben Sie die privaten AD DS-IP-Adressen als DNS-Serveradressen ein. Wenn beide VNETs die gleichen DNS-Server verwenden, wird Ihr benutzerdefinierter Domänenname in die richtige IP-Adresse aufgelöst und ist über HDInsight erreichbar. Wenn Ihr Domänenname also beispielsweise `contoso.com` lautet, muss `ping contoso.com` nach diesem Schritt in die richtige Azure AD DS-IP-Adresse aufgelöst werden.
 
 ![Konfigurieren von benutzerdefinierten DNS-Servern für VNET mit Peering](./media/apache-domain-joined-configure-using-azure-adds/hdinsight-aadds-peered-vnet-configuration.png)
 
-Wenn Sie in Ihrem HDInsight-Subnetz Regeln für Netzwerksicherheitsgruppen (NSG) verwenden, müssen Sie die [erforderlichen IP-Adressen](../hdinsight-extend-hadoop-virtual-network.md) für den eingehenden und ausgehenden Datenverkehr zulassen. 
+Wenn Sie in Ihrem HDInsight-Subnetz Regeln für Netzwerksicherheitsgruppen (NSG) verwenden, müssen Sie die [erforderlichen IP-Adressen](../hdinsight-management-ip-addresses.md) für den eingehenden und ausgehenden Datenverkehr zulassen. 
 
 **Um zu testen**, ob Ihr Netzwerk korrekt eingerichtet ist, verknüpfen Sie eine Windows-VM mit dem HDInsight-VNET/Subnetz, pingen Sie den Domänennamen (er sollte sich in eine IP-Adresse auflösen), und führen Sie dann **ldp.exe** aus, um auf die AD DS-Domäne zuzugreifen. Verknüpfen Sie dann diese **Windows-VM mit der Domäne zum Bestätigen**, dass alle erforderlichen RPC-Aufrufe zwischen Client und Server erfolgreich sind. Sie können auch **nslookup** verwenden, um den Netzwerkzugriff auf Ihr Speicherkonto oder eine beliebige externe Datenbank zu bestätigen (z.B. externer Hive-Metastore oder Ranger-Datenbank).
 Achten Sie darauf, dass alle [benötigten Ports](/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/dd772723(v=ws.10)#communication-to-domain-controllers) in der Whitelist der Regeln der Netzwerksicherheitsgruppe (NSG) des AAD DS-Subnetzes enthalten sind, wenn AAD DS durch eine NSG gesichert ist. Wenn der Domänenbeitritt dieses virtuellen Windows-Computers erfolgreich ist, können Sie mit dem nächsten Schritt fortfahren und ESP-Cluster erstellen.
@@ -108,7 +110,7 @@ Zum Erstellen eines HDInsight-Clusters mit ESP müssen Sie die folgende Paramete
 
 - **Clusterzugriffsgruppen**: Die Sicherheitsgruppen, deren Benutzer Sie synchronisieren möchten und deren Benutzer Zugriff auf den Cluster haben sollen, sollten in Azure AD DS verfügbar sein. Zum Beispiel die Gruppe HiveUsers. Weitere Informationen dazu finden Sie in [Erstellen einer Gruppe in Azure Active Directory und Hinzufügen von Mitgliedern](../../active-directory/fundamentals/active-directory-groups-create-azure-portal.md).
 
-- **LDAPS-URL**: Beispiel: ldaps://contoso.com:636.
+- **LDAPS-URL**: Ein Beispiel ist `ldaps://contoso.com:636`.
 
 Der folgende Screenshot zeigt eine erfolgreiche Konfigurationen im Azure-Portal:
 

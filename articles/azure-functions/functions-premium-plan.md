@@ -10,29 +10,31 @@ ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 4/11/2019
 ms.author: jehollan
-ms.openlocfilehash: dab7561db8f223bff87f41ef756605359c3478e4
-ms.sourcegitcommit: 600d5b140dae979f029c43c033757652cddc2029
+ms.openlocfilehash: 8ad09550e572c98931346b44a6c6f84da29a85e4
+ms.sourcegitcommit: a874064e903f845d755abffdb5eac4868b390de7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/04/2019
-ms.locfileid: "66492702"
+ms.lasthandoff: 07/24/2019
+ms.locfileid: "68443956"
 ---
 # <a name="azure-functions-premium-plan-preview"></a>Premium-Plan (Premium-Tarif) für Azure Functions (Vorschau)
 
 Der Premium-Plan für Azure Functions ist eine Hostingoption für Funktions-Apps. Der Premium-Plan bietet Features wie VNet-Konnektivität, keinen Kaltstart und Premium-Hardware.  Mehrere Funktions-Apps können im selben Premium-Plan bereitgestellt werden, und der Tarif ermöglicht es Ihnen, die Compute-Instanzgröße, Basisplangröße und maximale Plangröße zu konfigurieren.  Einen Vergleich des Premium-Plans und anderer Pläne und Hostingtypen finden Sie unter [Skalierung und Hosting von Azure Functions](functions-scale.md).
 
-> [!NOTE]
-> Die Vorschauversion des Premium-Plans unterstützt derzeit die Funktionen, die in .NET, Node oder Java über Windows-Infrastruktur ausgeführt werden.
-
 ## <a name="create-a-premium-plan"></a>Erstellen eines Premium-Plans
 
 [!INCLUDE [functions-premium-create](../../includes/functions-premium-create.md)]
 
-Sie können einen Premium-Plan auch über die Azure CLI erstellen.
+Sie können auch einen Premium-Plan erstellen. Verwenden Sie dazu [az functionapp plan create](/cli/azure/functionapp/plan#az-functionapp-plan-create) in der Azure-Befehlszeilenschnittstelle. Im folgenden Beispiel wird ein Plan vom Typ _Elastic Premium 1_ erstellt:
 
 ```azurecli-interactive
-az functionapp plan create -g <resource-group> -n <plan-name> -l <region> --number-of-workers 1 --sku EP1
+az functionapp plan create --resource-group <RESOURCE_GROUP> --name <PLAN_NAME> \
+--location <REGION> --sku EP1
 ```
+
+Ersetzen Sie in diesem Beispiel `<RESOURCE_GROUP>` durch Ihre Ressourcengruppe und `<PLAN_NAME>` durch einen Namen für Ihren Plan, der in der Ressourcengruppe eindeutig ist. Geben Sie eine [unterstützte `<REGION>`](#regions) an. Wenn Sie einen Premium-Plan mit Linux-Unterstützung erstellen möchten, schließen Sie die Option `--is-linux` ein.
+
+Nach Erstellung des Plans können Sie mithilfe von [az functionapp create](/cli/azure/functionapp#az-functionapp-create) Ihre Funktions-App erstellen. Im Portal werden Plan und App gleichzeitig erstellt. 
 
 ## <a name="features"></a>Features
 
@@ -99,30 +101,32 @@ Wenn Sie Ihren Plan erstellen oder skalieren, können Sie zwischen drei Instanzg
 |EP2|2|7 GB|250 GB|
 |EP3|4|14 GB|250 GB|
 
-## <a name="regions"></a>Regionen
+## <a name="regions"></a>Regions
 
-Nachstehend sind die derzeit unterstützten Regionen für die öffentliche Vorschau aufgeführt.
+Nachstehend sind die derzeit unterstützten Regionen für die Public Preview des jeweiligen Betriebssystems aufgeführt.
 
-|Region|
-|--|
-|Australien (Osten)|
-|Australien, Südosten|
-|Kanada, Mitte|
-|USA (Mitte)|
-|Asien, Osten|
-|USA (Ost) 2|
-|Frankreich, Mitte|
-|Japan, Westen|
-|Korea, Mitte|
-|USA Nord Mitte|
-|Nordeuropa|
-|USA Süd Mitte|
-|Indien (Süden)|
-|Asien, Südosten|
-|UK, Westen|
-|Europa, Westen|
-|Indien, Westen|
-|USA (Westen)|
+|Region| Windows | Linux |
+|--| -- | -- |
+|Australien (Osten)| ✔ | |
+|Australien, Südosten | ✔ | ✔ |
+|Kanada, Mitte| ✔ |  |
+|USA (Mitte)| ✔ |  |
+|Asien, Osten| ✔ |  |
+|East US | | ✔ |
+|USA (Ost) 2| ✔ |  |
+|Frankreich, Mitte| ✔ |  |
+|Japan, Osten|  | ✔ |
+|Japan, Westen| ✔ | |
+|Korea, Mitte| ✔ |  |
+|USA Nord Mitte| ✔ |  |
+|Nordeuropa| ✔ | ✔ |
+|USA Süd Mitte| ✔ |  |
+|Indien (Süden) | ✔ | |
+|Asien, Südosten| ✔ | ✔ |
+|UK, Westen| ✔ |  |
+|Europa, Westen| ✔ | ✔ |
+|Indien, Westen| ✔ |  |
+|USA (Westen)| ✔ | ✔ |
 
 ## <a name="known-issues"></a>Bekannte Probleme
 

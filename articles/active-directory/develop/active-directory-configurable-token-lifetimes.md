@@ -8,28 +8,29 @@ manager: CelesteDG
 editor: ''
 ms.assetid: 06f5b317-053e-44c3-aaaa-cf07d8692735
 ms.service: active-directory
+ms.subservice: develop
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/15/2019
+ms.date: 07/04/2019
 ms.author: ryanwi
 ms.custom: aaddev, annaba
 ms.reviewer: hirsin
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4b1c68d9254b0da2e5296c83d8dd4c95091fde1b
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 901cf3e25ed63421f7e07d7773b6381fc54ea8a2
+ms.sourcegitcommit: bafb70af41ad1326adf3b7f8db50493e20a64926
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67111802"
+ms.lasthandoff: 07/25/2019
+ms.locfileid: "68489113"
 ---
 # <a name="configurable-token-lifetimes-in-azure-active-directory-preview"></a>Konfigurierbare Tokengültigkeitsdauern in Azure Active Directory (Vorschau)
 
 Sie können die Gültigkeitsdauer eines Tokens angeben, das von Azure Active Directory (Azure AD) ausgestellt wird. Die Tokengültigkeitsdauer können Sie für alle Apps Ihrer Organisation, für eine mehrinstanzenfähige Anwendung (Multiorganisationsanwendung) oder für einen bestimmten Dienstprinzipal in Ihrer Organisation festlegen.
 
 > [!IMPORTANT]
-> Wir haben Feedback zur Vorschauversion von unseren Kunden erhalten und auf dessen Grundlage das Feature für eine konfigurierbare Tokengültigkeitsdauer durch [Funktionen zur Verwaltung von Authentifizierungssitzungen](https://go.microsoft.com/fwlink/?linkid=2083106) in Azure AD mit bedingtem Zugriff ersetzt. Ab 1. November 2019 gilt dieses Feature als veraltet. Wenn Sie die Richtlinie für eine konfigurierbare Tokengültigkeitsdauer verwenden, sollten Sie zum neuen Feature für den bedingten Zugriff wechseln. 
+> Aufgrund des Kundenfeedbacks während der Vorschauphase haben wir in „Bedingter Azure AD-Zugriff“ [Funktionen zur Verwaltung von Authentifizierungssitzungen](https://go.microsoft.com/fwlink/?linkid=2083106) implementiert. Mithilfe dieses neuen Features können Sie die Lebensdauer von Aktualisierungstoken durch Festlegen der Anmeldehäufigkeit konfigurieren. Nach dem 1. November 2019 können Aktualisierungstoken nicht mehr mithilfe einer Richtlinie für die konfigurierbare Tokengültigkeitsdauer konfiguriert werden. Die Richtlinie kann jedoch weiterhin zum Konfigurieren von Zugriffstoken verwendet werden.
 
 In Azure AD steht ein Richtlinienobjekt für eine Reihe von Regeln, die für einzelne Anwendungen oder alle Anwendungen in einer Organisation erzwungen werden. Jeder Richtlinientyp verfügt über eine eindeutige Struktur mit einem Satz von Eigenschaften, die auf Objekte angewendet werden, denen sie zugewiesen sind.
 
@@ -39,6 +40,7 @@ Sie können eine Richtlinie als Standardrichtlinie für Ihre Organisation festle
 > Die Richtlinie für konfigurierbare Tokengültigkeitsdauer wird für SharePoint Online nicht unterstützt.  Sie haben zwar die Möglichkeit, diese Richtlinie über PowerShell zu erstellen, sie wird von SharePoint Online aber nicht akzeptiert. Im [SharePoint Online-Blog](https://techcommunity.microsoft.com/t5/SharePoint-Blog/Introducing-Idle-Session-Timeout-in-SharePoint-and-OneDrive/ba-p/119208) finden Sie weitere Informationen zum Konfigurieren von Timeouts für Leerlaufsitzungen.
 >* Die Standardlebensdauer für das SharePoint Online-Zugriffstoken beträgt eine Stunde. 
 >* Die standardmäßige maximale Inaktivitätsdauer für das SharePoint Online-Aktualisierungstoken beträgt 90 Tage.
+
 
 ## <a name="token-types"></a>Tokentypen
 
@@ -79,7 +81,7 @@ Eine Tokengültigkeitsdauer-Richtlinie ist ein Richtlinienobjekt, das Regeln fü
 ### <a name="configurable-token-lifetime-properties"></a>Konfigurierbare Eigenschaften der Tokengültigkeitsdauer
 | Eigenschaft | Richtlinien-Eigenschaftszeichenfolge | Betrifft | Standard | Minimum | Maximum |
 | --- | --- | --- | --- | --- | --- |
-| Gültigkeitsdauer Zugriffstoken |AccessTokenLifetime |Zugriffstoken, ID-Token, SAML2-Token |1 Stunde |10 Minuten |1 Tag |
+| Gültigkeitsdauer Zugriffstoken |Accesstokenlifetime<sup>4</sup> |Zugriffstoken, ID-Token, SAML2-Token |1 Stunde |10 Minuten |1 Tag |
 | Max. Zeit der Inaktivität für Aktualisierungstoken |MaxInactiveTime |Aktualisierungstoken |90 Tage |10 Minuten |90 Tage |
 | Max. Alter Single-Factor-Aktualisierungstoken |MaxAgeSingleFactor |Aktualisierungstoken (für alle Benutzer) |Bis zum Widerruf |10 Minuten |Bis zum Widerruf<sup>1</sup> |
 | Max. Alter Multi-Factor-Aktualisierungstoken |MaxAgeMultiFactor |Aktualisierungstoken (für alle Benutzer) |Bis zum Widerruf |10 Minuten |Bis zum Widerruf<sup>1</sup> |
@@ -87,6 +89,7 @@ Eine Tokengültigkeitsdauer-Richtlinie ist ein Richtlinienobjekt, das Regeln fü
 | Max. Alter Multi-Factor-Sitzungstoken |MaxAgeSessionMultiFactor<sup>3</sup> |Sitzungstoken (beständig und nicht beständig) |Bis zum Widerruf |10 Minuten |Bis zum Widerruf<sup>1</sup> |
 
 * <sup>1</sup>365 Tage ist die explizite Maximallänge, die für diese Attribute festgelegt werden kann.
+* <sup>4</sup> Damit der Microsoft Teams-Webclient funktioniert, empfiehlt es sich, „AccessTokenLifetime“ für Microsoft Teams auf mehr als 15 Minuten festzulegen.
 
 ### <a name="exceptions"></a>Ausnahmen
 | Eigenschaft | Betrifft | Standard |

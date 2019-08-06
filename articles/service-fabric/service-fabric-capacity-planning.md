@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 2/23/2018
 ms.author: subramar
-ms.openlocfilehash: d7ca566b86ed79aa773d7af2553223c79ed9944a
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 4f2aa4b848172ab8b6a7e74de7dc1bc5f80639a1
+ms.sourcegitcommit: e9c866e9dad4588f3a361ca6e2888aeef208fc35
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64701835"
+ms.lasthandoff: 07/19/2019
+ms.locfileid: "68335645"
 ---
 # <a name="capacity-planning-for-service-fabric-applications"></a>Kapazitätsplanung für Service Fabric-Anwendungen
 In diesem Dokument erfahren Sie, wie Sie die Anzahl der Ressourcen (CPU, Arbeitsspeicher, Datenträgerspeicher) bestimmen, die Sie zum Ausführen von Azure Service Fabric-Anwendungen benötigen. Es ist üblich, dass sich die erforderlichen Ressourcen mit der Zeit ändern. In der Regel brauchen Sie für das Entwickeln und Testen Ihres Diensts ein bestimmtes Maß an Ressourcen, das Sie erhöhen müssen, sobald Sie zur Produktionsumgebung wechseln und die Beliebtheit Ihrer Anwendung zunimmt. Vergegenwärtigen Sie sich beim Entwurf einer Anwendung die langfristigen Anforderungen, und treffen Sie Entscheidungen, die Ihrem Dienst eine Skalierung zum Erfüllen einer hohen Kundennachfrage ermöglichen.
@@ -51,7 +51,7 @@ Es ist ratsam, jederzeit einige zusätzliche VMs vorzuhalten, damit Sie unerwart
 Im vorangehenden Beispiel wird von einem einzelnen statusbehafteten Dienst ausgegangen. Wenn Sie mehr als einen statusbehafteten Dienst haben, müssen Sie die „DB_Size“ der anderen Dienste der Gleichung hinzufügen. Alternativ können Sie die Anzahl der Knoten für jeden statusbehafteten Dienst separat berechnen.  Ihr Dienst weist möglicherweise Replikate oder Partitionen auf, die nicht ausgeglichen sind. Bedenken Sie, dass sich in Partitionen auch mehr Daten als in anderen befinden können. Weitere Informationen zur Partitionierung finden Sie im Artikel [Partitionieren von Service Fabric Reliable Services](service-fabric-concepts-partitioning.md). Die vorherige Gleichung ist jedoch unabhängig von der Anzahl der Partitionen oder Replikate, da Service Fabric dafür sorgt, dass die Replikate optimal auf die Knoten verteilt werden.
 
 ## <a name="use-a-spreadsheet-for-cost-calculation"></a>Verwenden einer Kalkulationstabelle zur Berechnung der Kosten
-Jetzt werden wir die Formel mit echten Zahlen füllen. Im [Beispielarbeitsblatt](https://servicefabricsdkstorage.blob.core.windows.net/publicrelease/SF%20VM%20Cost%20calculator-NEW.xlsx) wird gezeigt, wie die Kapazität für eine Anwendung mit drei Arten von Datenobjekten geplant wird. Für jedes Objekt wählen wir einen Schätzwert für seine Größe und die erwartete Anzahl. Wir wählen außerdem aus, wie viele Replikate von jedem Objekttyp wir wünschen. Das Arbeitsblatt berechnet die Gesamtmenge des Arbeitsspeichers, der im Cluster gespeichert werden soll.
+Jetzt werden wir die Formel mit echten Zahlen füllen. Im [Beispielarbeitsblatt](https://github.com/Azure/service-fabric/raw/master/docs_resources/SF_VM_Cost_calculator-NEW.xlsx) wird gezeigt, wie die Kapazität für eine Anwendung mit drei Arten von Datenobjekten geplant wird. Für jedes Objekt wählen wir einen Schätzwert für seine Größe und die erwartete Anzahl. Wir wählen außerdem aus, wie viele Replikate von jedem Objekttyp wir wünschen. Das Arbeitsblatt berechnet die Gesamtmenge des Arbeitsspeichers, der im Cluster gespeichert werden soll.
 
 Dann geben wir eine VM-Größe und die monatlichen Kosten ein. Basierend auf der VM-Größe weist die Tabelle die Mindestanzahl von Partitionen aus, auf die Sie Ihre Daten verteilen müssen, damit diese physisch auf die Knoten passen. Sie benötigen ggf. mehr Partitionen, um die besonderen Rechnen- und Netzwerkverkehrsanforderungen Ihrer Anwendung zu erfüllen. Das Arbeitsblatt zeigt, dass sich die Anzahl der Partitionen zum Verwalten der Benutzerprofilobjekte von eins auf sechs erhöht hat.
 

@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: article
-ms.date: 06/24/2019
+ms.date: 07/22/2019
 ms.author: diberry
-ms.openlocfilehash: 4c08c95a05d4f22e2338a7264409aec0f64a4755
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: edaa36cf22e63d42eb347aea3da1816e2c93b45e
+ms.sourcegitcommit: 75a56915dce1c538dc7a921beb4a5305e79d3c7a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67442518"
+ms.lasthandoff: 07/24/2019
+ms.locfileid: "68479216"
 ---
 # <a name="preview-migrate-to-api-version-3x-for-luis-apps"></a>Vorschau: Migrieren zu API-Version 3.x für LUIS-Apps
 
@@ -53,6 +53,11 @@ Das Format des HTTP-Endpunktaufrufs für V3 hat sich geändert.
 |GET|https://<b>{REGION}</b>.api.cognitive.microsoft.com/luis/<b>v3.0-preview</b>/apps/<b>{APP-ID}</b>/slots/<b>{SLOTNAME}</b>/predict?query=<b>{ABFRAGE}</b>|
 |POST|https://<b>{REGION}</b>.api.cognitive.microsoft.com/luis/<b>v3.0-preview</b>/apps/<b>{APP-ID}</b>/slots/<b>{SLOTNAME}</b>/predict|
 |||
+
+Gültige Werte für „slots“:
+
+* `production`
+* `staging`
 
 ## <a name="endpoint-url-changes-by-version-id"></a>Änderungen der Endpunkt-URL nach Versions-ID
 
@@ -107,7 +112,7 @@ In der API V3 stehen andere Abfragezeichenfolgen-Parameter zur Verfügung.
 |--|--|--|--|--|
 |`dynamicLists`|array|Nur V3|Nicht erforderlich.|Mit [dynamischen Listen](#dynamic-lists-passed-in-at-prediction-time) können Sie eine trainierte und veröffentlichte Listenentität erweitern, die bereits Teil der LUIS-App ist.|
 |`externalEntities`|array|Nur V3|Nicht erforderlich.|Mit [externen Entitäten](#external-entities-passed-in-at-prediction-time) kann Ihre LUIS-App zur Laufzeit Entitäten identifizieren und bezeichnen. Dieses Verhalten kann als Feature für andere vorhandene Entitäten verwendet werden. |
-|`options.datetimeReference`|Zeichenfolge|Nur V3|Kein Standardwert|Wird zum Ermitteln des [datetimeV2-Offsets](luis-concept-data-alteration.md#change-time-zone-of-prebuilt-datetimev2-entity) verwendet.|
+|`options.datetimeReference`|Zeichenfolge|Nur V3|Kein Standardwert|Wird zum Ermitteln des [datetimeV2-Offsets](luis-concept-data-alteration.md#change-time-zone-of-prebuilt-datetimev2-entity) verwendet. Das Format für „datetimeReference“ ist [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601).|
 |`options.overridePredictions`|boolean|Nur V3|false|Gibt an, ob die [externe Entität (mit dem gleichen Namen wie die vorhandene Entität)](#override-existing-model-predictions) des Benutzers oder die vorhandene Entität im Modell für die Vorhersage genutzt wird. |
 |`query`|Zeichenfolge|Nur V3|Erforderlich.|**In V2** enthält der `q`-Parameter die vorherzusagende Äußerung. <br><br>**In V3** wird der `query`-Parameter verwendet, um anzugeben, dass dieses Feature verwendet werden soll.|
 
@@ -144,6 +149,8 @@ Folgende JSON-Eigenschaften der obersten Ebene werden für V3 verwendet:
     }
 }
 ```
+
+Die `normalizedQuery`-Eigenschaft enthält Rechtschreibkorrekturen. Dies entspricht der V2-API-Eigenschaft `alteredQuery`.  
 
 Das `intents`-Objekt ist eine ungeordnete Liste. Beachten Sie, dass das erste untergeordnete Element in `intents` nicht zwangsläufig `topIntent` entspricht. Verwenden Sie daher den `topIntent`-Wert, um die Bewertung zu ermitteln:
 

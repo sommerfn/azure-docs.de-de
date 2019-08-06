@@ -3,28 +3,28 @@ title: 'Zählen der Status für Tasks und Knoten: Azure Batch | Microsoft-Dokume
 description: Zählen der Status von Azure Batch-Tasks und -Computeknoten zum Verwalten und Überwachen von Batch-Lösungen.
 services: batch
 author: laurenhughes
-manager: jeconnoc
+manager: gwallace
 ms.service: batch
 ms.topic: article
 ms.date: 09/07/2018
 ms.author: lahugh
 ms.custom: seodec18
-ms.openlocfilehash: 574cdea61a474dda5d20254bfae9ff2f06044cca
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 7b41be8c325cd238592f33369499348885de1778
+ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60775371"
+ms.lasthandoff: 07/18/2019
+ms.locfileid: "68323546"
 ---
 # <a name="monitor-batch-solutions-by-counting-tasks-and-nodes-by-state"></a>Überwachen von Batch-Lösungen durch Zählen von Tasks und Knoten nach Status
 
 Zum Überwachen und Verwalten umfangreicher Azure Batch-Lösungen benötigen Sie die genaue Anzahl von Ressourcen in verschiedenen Status. Azure Batch ermöglicht effiziente Vorgänge zum Abrufen dieser Werte für Batch-*Tasks* und *Computeknoten*. Verwenden Sie diese Vorgänge anstelle von potenziell zeitaufwendigen Listenabfragen, um ausführliche Informationen zu großen Sammlungen von Tasks oder Knoten zurückzugeben.
 
-* [Get Task Counts][rest_get_task_counts] (Taskanzahl abrufen) ruft eine aggregierte Anzahl von aktiven, ausgeführten und abgeschlossenen Tasks in einem Auftrag und von erfolgreichen oder fehlgeschlagenen Tasks ab. 
+* [Get Task Counts][rest_get_task_counts] (Taskanzahl abrufen) ruft eine aggregierte Anzahl von aktiven, ausgeführten und abgeschlossenen Tasks in einem Auftrag sowie von erfolgreichen oder nicht erfolgreichen Tasks ab. 
 
   Dadurch, dass Sie die Anzahl von Tasks jedes Status zählen, können Sie für Benutzer leichter den Fortschrittsstatus des Auftrags anzeigen oder unerwartete Verzögerungen oder Fehler erkennen, die sich möglicherweise auf den Auftrag auswirken. Get Task Counts (Taskanzahl abrufen) ist ab Version 2017-06-01.5.1 der Batch-Dienst-API und verwandten SDKs und Tools verfügbar.
 
-* [List Pool Node Counts][rest_get_node_counts] (Poolknotenanzahl auflisten): Ruft die Anzahl der dedizierten Computeknoten mit niedriger Priorität in jedem Pool ab, die sich in verschiedenen Status befinden: Erstellung, Im Leerlauf, Offline, Vorzeitig entfernt, Neustart wird ausgeführt, Reimaging, Wird gestartet usw. 
+* [List Pool Node Counts][rest_get_node_counts] (Poolknotenanzahl auflisten) ruft die Anzahl dedizierter Computeknoten mit niedriger Priorität in jedem Pool ab, die sich in verschiedenen Zuständen befinden: „Wird erstellt“, „Im Leerlauf“, „Offline“, „Vorzeitig entfernt“, „Neustart wird ausgeführt“, „Reimaging“, „Wird gestartet“ und Ähnliches. 
 
   Durch Zählen von Knoten in jedem Status können Sie festlegen, wann Sie über ausreichende Computeressourcen für die Ausführung Ihrer Aufträge besitzen und potentielle Probleme mit Ihren Pools identifizieren. List Pool Node Counts (Poolknotenanzahl auflisten) ist ab Version 2018-03-01.6.1 der Batch-Dienst-API und verwandten SDKs und Tools verfügbar.
 
@@ -35,9 +35,9 @@ Wenn Sie eine Version des Diensts verwenden, die die Zählvorgänge für Tasks u
 Mit dem Vorgang „Get Task Counts“ (Taskanzahl abrufen) werden Tasks nach den folgenden Status gezählt:
 
 - **Aktiv**: Ein Task, der in die Warteschlange gestellt wurde und ausgeführt werden kann, derzeit aber keinem Computeknoten zugewiesen ist. Ein Task wird auch als `active` gezählt, wenn er von [einem übergeordneten Task](batch-task-dependencies.md) abhängig ist, der noch nicht abgeschlossen ist. 
-- **Ausgeführt**: Ein Task, der einem Computeknoten zugewiesen, aber noch nicht abgeschlossen wurde. Ein Task wird als `running` gezählt, wenn sein Status entweder `preparing` oder `running` lautet. Dies wird mit dem Vorgang [Get information about a task][rest_get_task] (Informationen zu einem Task abrufen) angegeben.
+- **Ausgeführt**: Ein Task, der einem Computeknoten zugewiesen, aber noch nicht abgeschlossen wurde. Ein Task wird als `running` gezählt, wenn sein Zustand entweder `preparing` oder `running` lautet (gemäß Angabe durch den Vorgang zum [Abrufen von Informationen zu einem Task][rest_get_task]).
 - **Abgeschlossen**: Ein Task, der nicht mehr zur Ausführung berechtigt ist, da er entweder erfolgreich abgeschlossen wurde oder fehlgeschlagen ist und außerdem sein Wiederholungslimit ausgeschöpft hat. 
-- **Erfolgreich**: Ein Task, dessen Taskausführungsergebnis `success` lautet. Batch bestimmt, ob ein Task erfolgreich oder fehlerhaft war, indem die Eigenschaft `TaskExecutionResult` der Eigenschaft [executionInfo][rest_get_exec_info] überprüft wird.
+- **Erfolgreich**: Ein Task, dessen Taskausführungsergebnis `success` lautet. Batch überprüft anhand der Eigenschaft `TaskExecutionResult` der Eigenschaft [executionInfo][rest_get_exec_info], ob ein Task erfolgreich war.
 - **Fehler**: Ein Task, dessen Taskausführungsergebnis `failure` lautet.
 
 Das folgende .NET-Codebeispiel zeigt, wie Sie die Taskanzahl nach dem Status abrufen: 
@@ -71,7 +71,7 @@ Der Vorgang „List Pool Node Counts“ (Poolknotenanzahl auflisten) zählt Comp
 - **Reimaging**: Ein Knoten, auf dem das Betriebssystem neu installiert wird.
 - **Ausführung**: Ein Knoten, der auf dem mindestens ein Task (mit Ausnahme des Starttasks) ausgeführt wird.
 - **Wird gestartet**: Ein Knoten, auf dem der Batch-Dienst gestartet wird. 
-- **StartTaskFailed**: Ein Knoten, auf dem der [Starttask][rest_start_task] fehlgeschlagen ist und alle Wiederholungsversuche ausgeschöpft wurden und auf dem `waitForSuccess` für den Starttask festgelegt ist. Der Knoten kann nicht zum Ausführen von Tasks verwendet werden.
+- **StartTaskFailed**: Ein Knoten, auf dem der [Starttask][rest_start_task] nicht erfolgreich war, alle Wiederholungsversuche ausgeschöpft wurden und auf dem `waitForSuccess` für den Starttask festgelegt ist. Der Knoten kann nicht zum Ausführen von Tasks verwendet werden.
 - **Unbekannt**: Ein Knoten, der die Verbindung mit dem Batch-Dienst verloren hat und dessen Status unbekannt ist.
 - **Unbrauchbar**: Ein Knoten, der aufgrund von Fehlern nicht zur Taskausführung verwendet werden kann.
 - **WaitingForStartTask**: Ein Knoten, auf dem die Ausführung des Starttasks gestartet wurde, aber `waitForSuccess` festgelegt ist und der Starttask noch nicht abgeschlossen wurde.

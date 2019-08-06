@@ -1,6 +1,6 @@
 ---
 title: Sicherheitsattribute für Azure API Management
-description: Prüfliste mit allgemeinen Sicherheitsattributen zur Evaluierung von API Management
+description: Eine Prüfliste mit Sicherheitsattributen zur Evaluierung von API Management
 services: api-management
 author: msmbaldwin
 manager: barbkess
@@ -8,12 +8,12 @@ ms.service: api-management
 ms.topic: conceptual
 ms.date: 04/16/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 3b5826d472b80179c5eb76e0e3a6b1c7ee282487
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 2049e2349e3a25ebd4d3f4db19ec47bbaeb067de
+ms.sourcegitcommit: a874064e903f845d755abffdb5eac4868b390de7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66001089"
+ms.lasthandoff: 07/24/2019
+ms.locfileid: "68442284"
 ---
 # <a name="security-attributes-for-api-management"></a>Sicherheitsattribute für API Management
 
@@ -25,8 +25,8 @@ In diesem Artikel werden die in API Management integrierten Sicherheitsattribute
 
 | Sicherheitsattribut | Ja/Nein | Notizen |
 |---|---|--|
-| Verschlüsselung ruhender Daten:<ul><li>Serverseitige Verschlüsselung</li><li>Serverseitige Verschlüsselung mit vom Kunden verwalteten Schlüsseln</li><li>Weitere Verschlüsselungsfunktionen (z. B. clientseitig, immer verschlüsselt usw.)</ul>| Ja (nur serverseitige Verschlüsselung) | Vertrauliche Daten, z. B. Zertifikate, Schlüssel und als geheim gekennzeichnete Werte, werden mit vom Dienst verwalteten Schlüsseln für die jeweilige Dienstinstanz verschlüsselt. |
-| Verschlüsselung während der Übertragung:<ul><li>ExpressRoute-Verschlüsselung</li><li>In VNet-Verschlüsselung</li><li>VNet-VNet-Verschlüsselung</ul>| Ja | [ExpressRoute](../expressroute/index.yml)- und VNET-Verschlüsselung erfolgen über [Azure-Netzwerke](../virtual-network/index.yml). |
+| Verschlüsselung ruhender Daten (z. B. serverseitige Verschlüsselung, serverseitige Verschlüsselung mit vom Kunden verwalteten Schlüsseln und andere Verschlüsselungsfunktionen)| Ja (nur serverseitige Verschlüsselung) | Vertrauliche Daten, z. B. Zertifikate, Schlüssel und als geheim gekennzeichnete Werte, werden mit vom Dienst verwalteten Schlüsseln für die jeweilige Dienstinstanz verschlüsselt. |
+| Verschlüsselung während der Übertragung (z. B. ExpressRoute-Verschlüsselung, VNet-Verschlüsselung und VNet-VNet-Verschlüsselung)| Ja | [ExpressRoute](../expressroute/index.yml)- und VNET-Verschlüsselung erfolgen über [Azure-Netzwerke](../virtual-network/index.yml). |
 | Verarbeitung von Verschlüsselungsschlüsseln (CMK, BYOK usw.)| Nein | Alle Verschlüsselungsschlüssel gelten pro Dienstinstanz und werden vom Dienst verwaltet. |
 | Verschlüsselung auf Spaltenebene (Azure Data Services)| – | |
 | Verschlüsselte API-Aufrufe| Ja | Aufrufe auf Verwaltungsebene erfolgen über [Azure Resource Manager](../azure-resource-manager/index.yml) und TLS. Ein gültiges JSON Web Token (JWT) ist erforderlich.  Aufrufe auf Datenebene können mit TLS und einem der unterstützten Authentifizierungsmechanismen (z. B. Clientzertifikat oder JWT) geschützt werden.
@@ -52,7 +52,7 @@ In diesem Artikel werden die in API Management integrierten Sicherheitsattribute
 | Sicherheitsattribut | Ja/Nein | Notizen|
 |---|---|--|
 | Authentication| Ja | |
-| Autorisierung| Ja | |
+| Authorization| Ja | |
 
 
 ## <a name="audit-trail"></a>Überwachungspfad

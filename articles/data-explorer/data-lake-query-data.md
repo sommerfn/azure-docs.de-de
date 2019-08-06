@@ -6,13 +6,13 @@ ms.author: orspodek
 ms.reviewer: rkarlin
 ms.service: data-explorer
 ms.topic: conceptual
-ms.date: 06/25/2019
-ms.openlocfilehash: d6a58d144482e17f7e4b615134115d1da46af6f0
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.date: 07/17/2019
+ms.openlocfilehash: cd53e1386d9d6f2a38beb1661554c8cc9116169d
+ms.sourcegitcommit: 5604661655840c428045eb837fb8704dca811da0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67454389"
+ms.lasthandoff: 07/25/2019
+ms.locfileid: "68494864"
 ---
 # <a name="query-data-in-azure-data-lake-using-azure-data-explorer-preview"></a>Abfragen von Daten in Azure Data Lake mit Azure Data Explorer (Vorschau)
 
@@ -31,6 +31,9 @@ Azure Data Explorer ist in Azure Blob Storage und Azure Data Lake Storage Gen2 i
 
 ## <a name="create-an-external-table"></a>Erstellen einer externen Tabelle
 
+ > [!NOTE]
+ > Derzeit werden die Speicherkonten Azure Blob Storage und Azure Data Lake Storage Gen2 unterstützt. Aktuell werden folgende Datenformate unterstützt: JSON, CSV, TSV und TXT.
+
 1. Verwenden Sie den Befehl `.create external table`, um eine externe Tabelle in Azure Data Explorer zu erstellen. Weitere Befehle für externe Tabellen wie `.show`, `.drop` und `.alter` sind unter [Befehle für externe Tabellen](/azure/kusto/management/externaltables) dokumentiert.
 
     ```Kusto
@@ -45,13 +48,37 @@ Azure Data Explorer ist in Azure Blob Storage und Azure Data Lake Storage Gen2 i
 
     Diese Abfrage erstellt tägliche Partitionen (*container1/yyyy/MM/dd/all_exported_blobs.csv*). Durch eine differenziertere Partitionierung können Sie eine höhere Leistung erwarten. Beispielsweise verzeichnen Abfragen über externe Tabellen mit täglichen Partitionen (wie die oben dargestellte Abfrage) eine bessere Leistung als Abfragen mit monatlich partitionierten Tabellen.
 
-    > [!NOTE]
-    > Derzeit werden die Speicherkonten Azure Blob Storage und Azure Data Lake Storage Gen2 unterstützt. Die derzeit unterstützten Datenformate lauten CSV, TSV und TXT.
-
 1. Die externe Tabelle ist im linken Bereich der Webbenutzeroberfläche sichtbar.
 
     ![Externe Tabelle auf der Webbenutzeroberfläche](media/data-lake-query-data/external-tables-web-ui.png)
+
+### <a name="create-an-external-table-with-json-format"></a>Erstellen einer externen Tabelle mit JSON-Format
+
+Sie können eine externe Tabelle mit JSON-Format erstellen. Weitere Informationen finden Sie unter [External tables commands (preview)](/azure/kusto/management/externaltables) (Befehle für externe Tabellen (Vorschauversion)).
+
+1. Verwenden Sie den Befehl `.create external table`, um eine Tabelle namens *ExternalTableJson* zu erstellen:
+
+    ```kusto
+    .create external table ExternalTableJson (rownumber:int, rowguid:guid) 
+    kind=blob
+    dataformat=json
+    ( 
+       h@'http://storageaccount.blob.core.windows.net/container1;secretKey'
+    )
+    with 
+    (
+       docstring = "Docs",
+       folder = "ExternalTables",
+       namePrefix="Prefix"
+    ) 
+    ```
  
+1. Beim JSON-Format müssen in einem zweiten Schritt Spaltenzuordnungen erstellt werden, wie im Anschluss zu sehen. Erstellen Sie mithilfe der folgenden Abfrage eine spezifische JSON-Zuordnung namens *mappingName*:
+
+    ```kusto
+    .create external table ExternalTableJson json mapping "mappingName" '[{ "column" : "rownumber", "datatype" : "int", "path" : "$.rownumber"},{ "column" : "rowguid", "path" : "$.rowguid" }]' 
+    ```
+
 ### <a name="external-table-permissions"></a>Berechtigungen für externe Tabellen
  
 * Der Datenbankbenutzer kann eine externe Tabelle erstellen. Der Ersteller der Tabelle wird automatisch zum Tabellenadministrator.
@@ -68,6 +95,14 @@ external_table("ArchivedProducts") | take 100
 
 > [!TIP]
 > IntelliSense wird derzeit in Abfragen für externe Tabellen nicht unterstützt.
+
+### <a name="query-an-external-table-with-json-format"></a>Abfragen einer externen Tabelle mit JSON-Format
+
+Wenn Sie eine externe Tabelle mit JSON-Format abfragen möchten, verwenden Sie die Funktion `external_table()`, und geben Sie als Funktionsargumente sowohl den Tabellennamen als auch den Zuordnungsnamen an. Wenn in der folgenden Abfrage *mappingName* nicht angegeben wird, wird eine Zuordnung verwendet, die Sie zuvor erstellt haben:
+
+```kusto
+external_table(‘ExternalTableJson’, ‘mappingName’)
+```
 
 ## <a name="query-external-and-ingested-data-together"></a>Gemeinsames Abfragen von externen und erfassten Daten
 
@@ -151,7 +186,7 @@ Das Beispiel-DataSet *TaxiRides* enthält New Yorker Taxidaten der [New York Cit
     partition by bin(pickup_datetime, 1d)
     dataformat=csv
     ( 
-    h@'https://externalkustosamples.blob.core.windows.net/taxiridesbyday?st=2019-06-18T14%3A59%3A00Z&se=2029-06-19T14%3A59%3A00Z&sp=rl&sv=2016-05-31&sr=c&sig=yEaO%2BrzFHzAq7lvd4d9PeQ%2BTi3AWnho8Rn8hGU0X30M%3D'
+        h@'http://storageaccount.blob.core.windows.net/container1;secretKey''
     )
     ```
 1. Die daraus resultierende Tabelle wurde im Cluster *help* erstellt:

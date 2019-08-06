@@ -3,23 +3,19 @@ title: Installieren von .NET in Rollen in Azure Cloud Services | Microsoft-Dokum
 description: Dieser Artikel beschreibt die manuelle Installation von .NET Framework in Clouddienstweb- und -workerrollen.
 services: cloud-services
 documentationcenter: .net
-author: jpconnock
-manager: timlt
-editor: ''
-ms.assetid: 8d1243dc-879c-4d1f-9ed0-eecd1f6a6653
+author: georgewallace
+manager: carmonm
 ms.service: cloud-services
 ms.devlang: dotnet
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: na
 ms.date: 06/22/2018
-ms.author: jeconnoc
-ms.openlocfilehash: bc861b6730e8bf9db6ba2ab005496914f7b9ed89
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.author: gwallace
+ms.openlocfilehash: 25151f154b9806646406639df3efd7616e53f6bf
+ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64699678"
+ms.lasthandoff: 07/19/2019
+ms.locfileid: "68359635"
 ---
 # <a name="install-net-on-azure-cloud-services-roles"></a>Installieren von .NET in Rollen in Azure Cloud Services
 Dieser Artikel beschreibt die Installation von .NET Framework-Versionen, die nicht im Funktionsumfang des Azure-Gastbetriebssystems vorhanden sind. Sie können .NET im Gastbetriebssystem zum Konfigurieren Ihrer Clouddienstweb- und -workerrollen nutzen.
@@ -227,9 +223,9 @@ Dieser XML-Code dient zum Konfigurieren der Diagnose zur Übertragung der Dateie
 Wenn Sie Ihren Clouddienst bereitstellen, installieren die Startaufgaben .NET Framework, sofern es nicht bereits installiert ist. Ihre Clouddienstrollen haben, während das Framework installiert wird, den Status *Ausgelastet*. Wenn die Installation des Frameworks einen Neustart erfordert, werden möglicherweise die Dienstrollen auch neu gestartet. 
 
 ## <a name="additional-resources"></a>Zusätzliche Ressourcen
-* [Installieren von .NET Framework][Installing the .NET Framework]
-* [Ermitteln der installierten .NET Framework-Versionen][How to: Determine Which .NET Framework Versions Are Installed]
-* [Beheben von Problemen bei .NET Framework-Installationen][Troubleshooting .NET Framework Installations]
+* [Installation des .NET Frameworks][Installing the .NET Framework]
+* [Ermitteln der installierten .NET Framework-Versionen][How to: Determine Which .NET Framework Versions Are Installed]
+* [Beheben von Problemen bei .NET Framework-Installationen][Troubleshooting .NET Framework Installations]
 
 [How to: Determine Which .NET Framework Versions Are Installed]: /dotnet/framework/migration-guide/how-to-determine-which-versions-are-installed
 [Installing the .NET Framework]: /dotnet/framework/install/guide-for-developers

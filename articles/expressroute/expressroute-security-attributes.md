@@ -1,6 +1,6 @@
 ---
-title: Häufig verwendete Sicherheitsattribute für Azure ExpressRoute
-description: Eine Prüfliste allgemeiner Sicherheitsattribute für die Auswertung von Azure ExpressRoute
+title: Sicherheitsattribute für Azure ExpressRoute
+description: Eine Prüfliste mit Sicherheitsattributen zur Evaluierung von Azure ExpressRoute
 services: expressroute
 ms.service: expressroute
 documentationcenter: ''
@@ -9,16 +9,16 @@ manager: barbkess
 ms.topic: conceptual
 ms.date: 06/05/2019
 ms.author: mbaldwin
-ms.openlocfilehash: d6156715fb87831d465197fd8eec59d245221e48
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: c9a46497c18b99ad7774036fd92e63d024b47045
+ms.sourcegitcommit: a874064e903f845d755abffdb5eac4868b390de7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67082211"
+ms.lasthandoff: 07/24/2019
+ms.locfileid: "68442200"
 ---
-# <a name="common-security-attributes-for-azure-expressroute"></a>Häufig verwendete Sicherheitsattribute für Azure ExpressRoute
+# <a name="security-attributes-for-azure-expressroute"></a>Sicherheitsattribute für Azure ExpressRoute
 
-Sicherheit ist ein wesentlicher Bestandteil jedes Azure-Diensts. In diesem Artikel werden die in Azure ExpressRoute integrierten Sicherheitsattribute beschrieben.
+In diesem Artikel werden die in Azure ExpressRoute integrierten Sicherheitsattribute beschrieben.
 
 [!INCLUDE [Security Attributes Header](../../includes/security-attributes-header.md)]
 
@@ -26,8 +26,8 @@ Sicherheit ist ein wesentlicher Bestandteil jedes Azure-Diensts. In diesem Artik
 
 | Sicherheitsattribut | Ja/Nein | Notizen |
 |---|---|--|
-| Verschlüsselung ruhender Daten:<ul><li>Serverseitige Verschlüsselung</li><li>Serverseitige Verschlüsselung mit vom Kunden verwalteten Schlüsseln</li><li>Weitere Verschlüsselungsfunktionen (z. B. clientseitig, immer verschlüsselt usw.)</ul>|  – | ExpressRoute speichert keine Kundendaten. |
-| Verschlüsselung während der Übertragung:<ul><li>ExpressRoute-Verschlüsselung</li><li>In VNet-Verschlüsselung</li><li>VNet-VNet-Verschlüsselung</ul>| Nein | |
+| Verschlüsselung ruhender Daten (z. B. serverseitige Verschlüsselung, serverseitige Verschlüsselung mit vom Kunden verwalteten Schlüsseln und andere Verschlüsselungsfunktionen)|  – | ExpressRoute speichert keine Kundendaten. |
+| Verschlüsselung während der Übertragung (z. B. ExpressRoute-Verschlüsselung, VNET-Verschlüsselung und VNET-VNET-Verschlüsselung)| Nein | |
 | Verarbeitung von Verschlüsselungsschlüsseln (CMK, BYOK usw.)| – |  |
 | Verschlüsselung auf Spaltenebene (Azure Data Services)| – | |
 | Verschlüsselte API-Aufrufe| Ja | Über [Azure Resource Manager](../azure-resource-manager/index.yml) und HTTPS. |
@@ -37,7 +37,7 @@ Sicherheit ist ein wesentlicher Bestandteil jedes Azure-Diensts. In diesem Artik
 | Sicherheitsattribut | Ja/Nein | Notizen |
 |---|---|--|
 | Unterstützung des Dienstendpunkts| – |  |
-| Unterstützung der vNET-Einschleusung| – | |
+| Unterstützung der VNet-Einschleusung| – | |
 | Unterstützung von Netzwerkisolation und Firewall| Ja | Jeder Kunde ist in seiner eigenen Routingdomäne enthalten und wird zu seinem eigenen VNET getunnelt |
 | Unterstützung der Tunnelerzwingung| – | Über Border Gateway Protocol (BGP). |
 
@@ -52,7 +52,7 @@ Sicherheit ist ein wesentlicher Bestandteil jedes Azure-Diensts. In diesem Artik
 | Sicherheitsattribut | Ja/Nein | Notizen|
 |---|---|--|
 | Authentication| Ja | Dienstkonto für Gateway für Microsoft (GWM), Controller; JIT-Zugriff (Just-in-Time) für Entwicklung und Betrieb. |
-| Autorisierung|  Ja |Dienstkonto für Gateway für Microsoft (GWM), Controller; JIT-Zugriff (Just-in-Time) für Entwicklung und Betrieb. |
+| Authorization|  Ja |Dienstkonto für Gateway für Microsoft (GWM), Controller; JIT-Zugriff (Just-in-Time) für Entwicklung und Betrieb. |
 
 
 ## <a name="audit-trail"></a>Überwachungspfad

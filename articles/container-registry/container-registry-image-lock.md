@@ -3,28 +3,29 @@ title: Sperren von Images in Azure Container Registry
 description: Festlegen von Attributen für ein Containerimage oder Repository, sodass es in einer Azure-Containerregistrierung nicht gelöscht oder überschrieben werden kann.
 services: container-registry
 author: dlepow
+manager: gwallace
 ms.service: container-registry
 ms.topic: article
 ms.date: 02/19/2019
 ms.author: danlep
-ms.openlocfilehash: ebbfaba158e7ddb669111f097eb1adde2373aa6c
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 7a313353ee1c7afae10fd7af84570565037e40ab
+ms.sourcegitcommit: f5075cffb60128360a9e2e0a538a29652b409af9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60828646"
+ms.lasthandoff: 07/18/2019
+ms.locfileid: "68310648"
 ---
 # <a name="lock-a-container-image-in-an-azure-container-registry"></a>Sperren von Containerimages in einer Azure-Containerregistrierung
 
-Sie können eine Imageversion oder ein Repository in einer Azure-Containerregistrierung sperren, damit es nicht gelöscht oder aktualisiert werden kann. Aktualisieren Sie die Attribute mithilfe des Azure CLI-Befehls [az acr repository update][az-acr-repository-update], um ein Image oder ein Repository zu sperren. 
+Sie können eine Imageversion oder ein Repository in einer Azure-Containerregistrierung sperren, damit es nicht gelöscht oder aktualisiert werden kann. Aktualisieren Sie die Attribute mithilfe des Azure CLI-Befehls [az acr repository update][az-acr-repository-update], um ein Image oder ein Repository zu sperren. 
 
-Für die Vorgehensweisen in diesem Artikel ist erforderlich, dass Sie die Azure CLI in Azure Cloud Shell oder lokal ausführen (Version 2.0.55 oder höher werden empfohlen). Führen Sie `az --version` aus, um die Version zu finden. Wenn Sie eine Installation oder ein Upgrade ausführen müssen, finden Sie unter [Installieren von Azure CLI 2.0][azure-cli] Informationen dazu.
+Für die Vorgehensweisen in diesem Artikel ist erforderlich, dass Sie die Azure CLI in Azure Cloud Shell oder lokal ausführen (Version 2.0.55 oder höher werden empfohlen). Führen Sie `az --version` aus, um die Version zu finden. Informationen zum Durchführen einer Installation oder eines Upgrades finden Sei bei Bedarf unter [Installieren der Azure CLI][azure-cli].
 
 ## <a name="scenarios"></a>Szenarien
 
 Markierte Images sind in Azure Container Registry standardmäßig *änderbar*. Mit den entsprechenden Berechtigungen können Sie ein Image also wiederholt mit dem gleichen Tag aktualisieren und an eine Registrierung pushen. Containerimages können bei Bedarf auf [gelöscht](container-registry-delete.md) werden. Dieses Verhalten ist nützlich, wenn Sie Images entwickeln und eine Größe für Ihre Registrierung einhalten müssen.
 
-Wenn Sie jedoch ein Containerimage für die Produktionsumgebung bereitstellen, benötigen Sie möglicherweise ein *unveränderliches* Containerimage. Ein unveränderliches Containerimage kann nicht versehentlich gelöscht oder überschrieben werden. Verwenden Sie den Befehl [az acr repository update][az-acr-repository-update], um Repository-Attribute festzulegen, wodurch Folgendes ermöglicht wird:
+Wenn Sie jedoch ein Containerimage für die Produktionsumgebung bereitstellen, benötigen Sie möglicherweise ein *unveränderliches* Containerimage. Ein unveränderliches Containerimage kann nicht versehentlich gelöscht oder überschrieben werden. Verwenden Sie den Befehl [az acr repository update][az-acr-repository-update], um Repositoryattribute für Folgendes festzulegen:
 
 * Sperren einer Imageversion oder eines gesamten Repositorys
 
@@ -37,7 +38,7 @@ Beispiele hierzu finden Sie in den nachfolgenden Abschnitten.
 ## <a name="lock-an-image-or-repository"></a>Sperren von Images oder Repositorys 
 
 ### <a name="show-the-current-repository-attributes"></a>Anzeigen der aktuellen Repository-Attribute
-Führen Sie den folgenden Befehl [az acr repository show][az-acr-repository-show] aus, um die aktuellen Attribute eines Repositorys anzuzeigen:
+Führen Sie den folgenden Befehl vom Typ [az acr repository show][az-acr-repository-show] aus, um die aktuellen Attribute eines Repositorys anzuzeigen:
 
 ```azurecli
 az acr repository show \
@@ -46,7 +47,7 @@ az acr repository show \
 ```
 
 ### <a name="show-the-current-image-attributes"></a>Anzeigen der aktuellen Imageattribute
-Führen Sie den folgenden Befehl [az acr repository show][az-acr-repository-show] aus, um die aktuellen Attribute eines Tags anzuzeigen:
+Führen Sie den folgenden Befehl vom Typ [az acr repository show][az-acr-repository-show] aus, um die aktuellen Attribute eines Tags anzuzeigen:
 
 ```azurecli
 az acr repository show \
@@ -56,7 +57,7 @@ az acr repository show \
 
 ### <a name="lock-an-image-by-tag"></a>Sperren von Images mithilfe von Tags
 
-Führen Sie den folgenden [az acr repository update][az-acr-repository-update]-Befehl aus, um das Image *myrepo/myimage:tag* in *myregistry* zu sperren:
+Führen Sie den folgenden Befehl vom Typ [az acr repository update][az-acr-repository-update] aus, um das Image *myrepo/myimage:tag* in *myregistry* zu sperren:
 
 ```azurecli
 az acr repository update \
@@ -148,7 +149,7 @@ In diesem Artikel haben Sie gelernt, wie Sie den Befehl [az acr repository updat
 
 Mit dem Befehl [az acr repository show][az-acr-repository-show] können Sie die für eine Imageversion oder ein Repository festgelegten Attribute anzeigen.
 
-Informationen zu Löschvorgängen finden Sie unter [Löschen von Containerimages in Azure Container Registry][container-registry-delete].
+Ausführliche Informationen zu Löschvorgängen finden Sie unter [Löschen von Containerimages in Azure Container Registry][container-registry-delete].
 
 <!-- LINKS - Internal -->
 [az-acr-repository-update]: /cli/azure/acr/repository#az-acr-repository-update

@@ -9,12 +9,12 @@ ms.author: robreed
 ms.date: 05/20/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 9faa261f4b6293d778c5da685f630a21fd88f600
-ms.sourcegitcommit: f811238c0d732deb1f0892fe7a20a26c993bc4fc
+ms.openlocfilehash: cd4500b4ef6492f0b6499bb1e9aa1a773313e860
+ms.sourcegitcommit: a0b37e18b8823025e64427c26fae9fb7a3fe355a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/29/2019
-ms.locfileid: "67478575"
+ms.lasthandoff: 07/25/2019
+ms.locfileid: "68498364"
 ---
 # <a name="workspace-mappings"></a>Arbeitsbereichzuordnungen
 
@@ -66,7 +66,7 @@ Wenn Sie die Lösung „Updateverwaltung“ verwendet haben, können Sie optiona
 
 * Zeitpläne für Updates: Diese verfügen über Namen, die den Updatebereitstellungen entsprechen, die Sie erstellt haben.
 
-* Für die Lösung erstellte Hybrid Worker-Gruppen: Jede wird ähnlich wie „machine1.contoso.com_9ceb8108 - 26 c 9-4051-b6b3-227600d715c8“ benannt.
+* Für die Lösung erstellte Hybrid Worker-Gruppen (jeweils mit einem Namen wie `machine1.contoso.com_9ceb8108-26c9-4051-b6b3-227600d715c8`).
 
 Wenn Sie die Lösung „Starten und Beenden von VMs außerhalb der Kernzeit“ verwendet haben, können Sie optional die folgenden Elemente entfernen, die nach dem Entfernen der Lösung nicht mehr benötigt werden.
 

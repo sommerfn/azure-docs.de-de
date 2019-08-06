@@ -12,12 +12,12 @@ ms.author: srbozovi
 ms.reviewer: sstein, bonova, carlrab
 manager: craigg
 ms.date: 04/16/2019
-ms.openlocfilehash: dbb5ee122e715aeaa66d786f02966beedd2447c3
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 960320e280a613a537f1918d93e4584a13a0b374
+ms.sourcegitcommit: f5075cffb60128360a9e2e0a538a29652b409af9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65522329"
+ms.lasthandoff: 07/18/2019
+ms.locfileid: "68309975"
 ---
 # <a name="connectivity-architecture-for-a-managed-instance-in-azure-sql-database"></a>Konnektivitätsarchitektur für eine verwaltete Instanz in Azure SQL-Datenbank
 
@@ -97,18 +97,18 @@ Stellen Sie eine verwaltete Instanz in einem dedizierten Subnetz im virtuellen N
 
 ### <a name="mandatory-inbound-security-rules"></a>Obligatorische Eingangssicherheitsregeln
 
-| NAME       |Port                        |Protocol|`Source`           |Ziel|Aktion|
+| NAME       |Port                        |Protocol|`Source`           |Destination|Aktion|
 |------------|----------------------------|--------|-----------------|-----------|------|
-|management  |9000, 9003, 1438, 1440, 1452|TCP     |Beliebig              |MI-SUBNETZ  |ZULASSEN |
-|mi_subnet   |Beliebig                         |Beliebig     |MI-SUBNETZ        |MI-SUBNETZ  |ZULASSEN |
-|health_probe|Beliebig                         |Beliebig     |AzureLoadBalancer|MI-SUBNETZ  |ZULASSEN |
+|management  |9000, 9003, 1438, 1440, 1452|TCP     |Any              |MI-SUBNETZ  |ZULASSEN |
+|mi_subnet   |Any                         |Any     |MI-SUBNETZ        |MI-SUBNETZ  |ZULASSEN |
+|health_probe|Any                         |Any     |AzureLoadBalancer|MI-SUBNETZ  |ZULASSEN |
 
 ### <a name="mandatory-outbound-security-rules"></a>Obligatorische Ausgangssicherheitsregeln
 
-| NAME       |Port          |Protocol|`Source`           |Ziel|Aktion|
+| NAME       |Port          |Protocol|`Source`           |Destination|Aktion|
 |------------|--------------|--------|-----------------|-----------|------|
 |management  |80, 443, 12000|TCP     |MI-SUBNETZ        |AzureCloud |ZULASSEN |
-|mi_subnet   |Beliebig           |Beliebig     |MI-SUBNETZ        |MI-SUBNETZ  |ZULASSEN |
+|mi_subnet   |Any           |Any     |MI-SUBNETZ        |MI-SUBNETZ  |ZULASSEN |
 
 > [!IMPORTANT]
 > Stellen Sie sicher, dass es nur eine Regel für eingehenden Datenverkehr für die Ports 9000, 9003, 1438, 1440, 1452 und eine Regel für ausgehenden Datenverkehr für die Ports 80, 443, 12000 gibt. Die Bereitstellung von verwalteten Instanzen über Azure Resource Manager-Bereitstellungen schlägt fehl, wenn Regeln für eingehenden und ausgehenden Datenverkehr für jeden Port separat konfiguriert werden. Wenn für diese Ports separate Regeln gelten, schlägt die Bereitstellung mit dem Fehlercode `VnetSubnetConflictWithIntendedPolicy` fehl.
@@ -228,7 +228,7 @@ Stellen Sie eine verwaltete Instanz in einem dedizierten Subnetz im virtuellen N
 
 Darüber hinaus können Sie der Routingtabelle Einträge hinzufügen, um Datenverkehr mit lokalen privaten IP-Bereichen als Ziel über ein virtuelles Netzwerkgateway oder ein virtuelles Netzwerkgerät (Network Appliance, NVA) zu leiten.
 
-Wenn das virtuelle Netzwerk ein benutzerdefiniertes DNS enthält, muss der benutzerdefinierte DNS-Server imstande sein, Hostnamen in der Zone \*. core.windows.net aufzulösen. Die Verwendung zusätzlicher Funktionen wie Azure AD Authentication macht unter Umständen auch die Auflösung zusätzlicher FQDNs erforderlich. Weitere Informationen finden Sie unter [Konfigurieren eines benutzerdefinierten DNS für eine verwaltete Azure SQL-Datenbank-Instanz](sql-database-managed-instance-custom-dns.md).
+Wenn das virtuelle Netzwerk ein benutzerdefiniertes DNS enthält, muss der benutzerdefinierte DNS-Server öffentliche DNS-Einträge auflösen können. Die Verwendung zusätzlicher Funktionen wie Azure AD Authentication macht unter Umständen auch die Auflösung zusätzlicher FQDNs erforderlich. Weitere Informationen finden Sie unter [Konfigurieren eines benutzerdefinierten DNS für eine verwaltete Azure SQL-Datenbank-Instanz](sql-database-managed-instance-custom-dns.md).
 
 ## <a name="next-steps"></a>Nächste Schritte
 

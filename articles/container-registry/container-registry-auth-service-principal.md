@@ -3,16 +3,17 @@ title: Azure Container Registry-Authentifizierung mit einem Dienstprinzipal
 description: Gewähren Sie Zugriff auf Images in Ihrer privaten Containerregistrierung, indem Sie einen Azure Active Directory-Dienstprinzipal verwenden.
 services: container-registry
 author: dlepow
+manager: gwallace
 ms.service: container-registry
 ms.topic: article
 ms.date: 12/13/2018
 ms.author: danlep
-ms.openlocfilehash: 5d8904b5906adbdab68989b3a5cf9c3975c23533
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 97c45a009b155eea7bc61a9dd337090b9e3c1b42
+ms.sourcegitcommit: f5075cffb60128360a9e2e0a538a29652b409af9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61347064"
+ms.lasthandoff: 07/18/2019
+ms.locfileid: "68309958"
 ---
 # <a name="azure-container-registry-authentication-with-service-principals"></a>Azure Container Registry-Authentifizierung mit Dienstprinzipalen
 
@@ -34,7 +35,7 @@ Beispielsweise kann Ihre Webanwendung einen Dienstprinzipal verwenden, der ihr n
 
 Sie sollten einen Dienstprinzipal verwenden, um in **monitorlosen Szenarien** Zugriff auf die Registrierung bieten. Das heißt, dies betrifft jede Anwendung, jeden Dienst oder jedes Skript, das Containerimages in automatisierter oder anderweitig unbeaufsichtigter Weise pushen oder pullen muss.
 
-Für den individuellen Zugriff auf eine Registrierung, z.B. wenn Sie manuell ein Containerimage auf Ihre Entwicklungsarbeitsstation pullen, sollten Sie stattdessen Ihre eigene [Azure AD-Identität](container-registry-authentication.md#individual-login-with-azure-ad) für den Registrierungszugriff verwenden (z.B. mit [az acr login][az-acr-login]).
+Für den individuellen Zugriff auf eine Registrierung (etwa, wenn Sie manuell ein Containerimage auf Ihre Entwicklungsarbeitsstation pullen) sollten Sie stattdessen Ihre eigene [Azure AD-Identität](container-registry-authentication.md#individual-login-with-azure-ad) für den Registrierungszugriff verwenden (beispielsweise mit [az acr login][az-acr-login]).
 
 [!INCLUDE [container-registry-service-principal](../../includes/container-registry-service-principal.md)]
 
@@ -42,7 +43,7 @@ Für den individuellen Zugriff auf eine Registrierung, z.B. wenn Sie manuell ein
 
 Die obigen Beispielskripts für die Azure CLI auf GitHub sowie Versionen für Azure PowerShell finden Sie hier:
 
-* [Azure CLI][acr-scripts-cli]
+* [Azure-Befehlszeilenschnittstelle][acr-scripts-cli]
 * [Azure PowerShell][acr-scripts-psh]
 
 ## <a name="next-steps"></a>Nächste Schritte

@@ -9,15 +9,15 @@ editor: ''
 ms.service: media-services
 ms.workload: ''
 ms.topic: article
-ms.date: 05/02/2019
+ms.date: 07/05/2019
 ms.author: juliako
 ms.custom: seodec18
-ms.openlocfilehash: a8dac6f38052f176c7a3741a664e174d0a66cbc5
-ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
+ms.openlocfilehash: 26fea4322df625b2e38028a3b7121fb41f2acf81
+ms.sourcegitcommit: f5075cffb60128360a9e2e0a538a29652b409af9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/07/2019
-ms.locfileid: "67612696"
+ms.lasthandoff: 07/18/2019
+ms.locfileid: "68311863"
 ---
 # <a name="developing-with-media-services-v3-apis"></a>Entwickeln mit Media Services v3-APIs
 
@@ -85,20 +85,26 @@ Weitere Informationen zum Verfolgen asynchroner Azure-Vorgänge finden Sie unter
 
 Media Services verfügt über die folgenden zeitintensiven Vorgänge:
 
-* Create LiveEvent
-* Update LiveEvent
-* Delete LiveEvent
-* Start LiveEvent
-* Stop LiveEvent
-* Reset LiveEvent
-* Create LiveOutput
-* Delete LiveOutput
-* Create StreamingEndpoint
-* Update StreamingEndpoint
-* Delete StreamingEndpoint
-* Start StreamingEndpoint
-* Stop StreamingEndpoint
-* Scale StreamingEndpoint
+* [Erstellen von Liveereignissen](https://docs.microsoft.com/rest/api/media/liveevents/create)
+* [Aktualisieren von Liveereignissen](https://docs.microsoft.com/rest/api/media/liveevents/update)
+* [Löschen von Liveereignissen](https://docs.microsoft.com/rest/api/media/liveevents/delete)
+* [Starten von Liveereignissen](https://docs.microsoft.com/rest/api/media/liveevents/start)
+* [Beenden von Liveereignissen](https://docs.microsoft.com/rest/api/media/liveevents/stop)
+
+  Verwenden Sie den Parameter `removeOutputsOnStop`, um beim Beenden des Ereignisses alle zugehörigen Liveausgaben zu löschen.  
+* [Zurücksetzen eines Liveereignisses](https://docs.microsoft.com/rest/api/media/liveevents/reset)
+* [Erstellen einer Liveausgabe](https://docs.microsoft.com/rest/api/media/liveevents/create)
+* [Löschen einer Liveausgabe](https://docs.microsoft.com/rest/api/media/liveevents/delete)
+* [Erstellen eines Streamingendpunkts](https://docs.microsoft.com/rest/api/media/streamingendpoints/create)
+* [Aktualisieren eines Streamingendpunkts](https://docs.microsoft.com/rest/api/media/streamingendpoints/update)
+* [Löschen eines Streamingendpunkts](https://docs.microsoft.com/rest/api/media/streamingendpoints/delete)
+* [Starten eines Streamingendpunkts](https://docs.microsoft.com/rest/api/media/streamingendpoints/start)
+* [Beenden eines Streamingendpunkts](https://docs.microsoft.com/rest/api/media/streamingendpoints/stop)
+* [Skalieren eines Streamingendpunkts](https://docs.microsoft.com/rest/api/media/streamingendpoints/scale)
+
+Nach erfolgreicher Übermittlung eines zeitintensiven Vorgangs erhalten Sie eine Bestätigung vom Typ „202 – Akzeptiert“ und müssen anhand der zurückgegebenen Vorgangs-ID abfragen, ob der Vorgang abgeschlossen ist.
+
+Für jedes Liveereignis bzw. für jede zugehörige Liveausgabe wird jeweils nur ein einzelner zeitintensiver Vorgang unterstützt. Wurde ein zeitintensiver Vorgang gestartet, muss er erst abgeschlossen werden, bevor der nächste zeitintensive Vorgang für das gleiche Liveereignis oder für eine der zugehörigen Liveausgaben gestartet wird. Bei Liveereignissen mit mehreren Liveausgaben müssen Sie warten, bis ein zeitintensiver Vorgang für eine Liveausgabe abgeschlossen wurde, bevor Sie einen zeitintensiven Vorgang für eine weitere Liveausgabe auslösen. 
 
 ## <a name="sdks"></a>SDKs
 

@@ -3,16 +3,17 @@ title: Manuelles Beenden oder Starten von Containern in Azure Container Instance
 description: Hier erfahren Sie, wie Sie eine Containergruppe in Azure Container Instances manuell beenden oder starten.
 services: container-instances
 author: dlepow
+manager: gwallace
 ms.service: container-instances
 ms.topic: article
 ms.date: 04/15/2019
 ms.author: danlep
-ms.openlocfilehash: 8e62d106a42dfbec897e5e14cf68fd3d7fd823c4
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: c7d46ad8d935e28b5a24e48c85ac2464b55b2669
+ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65070814"
+ms.lasthandoff: 07/18/2019
+ms.locfileid: "68325642"
 ---
 # <a name="manually-stop-or-start-containers-in-azure-container-instances"></a>Manuelles Beenden oder Starten von Containern in Azure Container Instances
 
@@ -20,7 +21,7 @@ Die Einstellung [Neustartrichtlinie](container-instances-restart-policy.md) eine
 
 ## <a name="stop"></a>Beenden
 
-Sie können eine ausgeführte Containergruppe manuell beenden, indem Sie z. B. den Befehl [az container stop][az-container-stop] oder das Azure-Portal verwenden. Für bestimmte Containerworkloads möchten Sie möglicherweise eine zeitintensive Containergruppe nach einem definierten Zeitraum beenden, um Kosten zu sparen. 
+Sie können eine ausgeführte Containergruppe manuell beenden, indem Sie z. B. den Befehl [az container stop][az-container-stop] oder das Azure-Portal verwenden. Für bestimmte Containerworkloads möchten Sie möglicherweise eine zeitintensive Containergruppe nach einem definierten Zeitraum beenden, um Kosten zu sparen. 
 
 *Wenn eine Containergruppe in den Zustand „Beendet“ wechselt, wird sie beendet und verwendet alle Container in der Gruppe wieder. Der Containerzustand bleibt nicht erhalten.*
 
@@ -40,7 +41,7 @@ Nachdem Sie eine Containergruppe manuell gestartet oder neu gestartet haben, wir
   
 ## <a name="restart"></a>Neu starten
 
-Sie können eine Containergruppe neu starten, während sie ausgeführt wird, indem Sie z. B. den Befehl [az container restart][az-container-restart] verwenden. Diese Aktion startet alle Container in der Containergruppe neu. Wenn das Containerimage für einen Container aktualisiert wird, wird ein neues Image gepullt. 
+Sie können eine Containergruppe neu starten, während sie ausgeführt wird, indem Sie z. B. den Befehl [az container restart][az-container-restart] verwenden. Diese Aktion startet alle Container in der Containergruppe neu. Wenn das Containerimage für einen Container aktualisiert wird, wird ein neues Image gepullt. 
 
 Der Neustart einer Containergruppe ist hilfreich, wenn Sie ein Bereitstellungsproblem beheben möchten. Wenn beispielsweise eine temporäre Ressourcenbeschränkung die erfolgreiche Ausführung Ihrer Container verhindert, kann ein Neustart der Gruppe das Problem beheben.
 

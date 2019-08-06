@@ -12,20 +12,22 @@ ms.date: 01/24/2019
 ms.author: lizross
 ms.reviewer: olhaun
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e6f94ba30c06fc6975ab212c895cecefe5d383fa
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: effe48c859e711f0efc41c1a4d651e5d15d5ada9
+ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60473905"
+ms.lasthandoff: 07/22/2019
+ms.locfileid: "68382613"
 ---
 # <a name="add-your-non-microsoft-accounts"></a>Hinzufügen Ihrer Nicht-Microsoft-Konten
+
 Fügen Sie Ihre nicht von Microsoft stammenden Konten (z. B. für Google, Facebook oder GitHub) zur Microsoft Authenticator-App für die zweistufige Überprüfung hinzu. Die Microsoft Authenticator-App funktioniert mit jeder App, welche die zweistufige Überprüfung verwendet, und mit jedem Konto, das die Standards für zeitbasierte Einmalkennwörter (TOTP) unterstützt.
 
 >[!Important]
 >Bevor Sie Ihr Konto hinzufügen können, müssen Sie die Microsoft Authenticator-App herunterladen und installieren. Wenn Sie dies noch nicht getan haben, führen Sie die im Artikel [Herunterladen und Installieren der App](user-help-auth-app-download-install.md) aufgeführten Schritte aus.
 
 ## <a name="add-personal-accounts"></a>Hinzufügen persönlicher Konten
+
 Im Allgemeinen müssen Sie für alle Ihre persönlichen Konten wie folgt vorgehen:
 
 1. Melden Sie sich bei Ihrem Konto an, und aktivieren Sie dann die zweistufige Überprüfung auf Ihrem Gerät oder Computer.
@@ -35,6 +37,7 @@ Im Allgemeinen müssen Sie für alle Ihre persönlichen Konten wie folgt vorgehe
 Wir geben hier den Vorgang für Facebook-, Google-, GitHub- und Amazon-Konten an, aber dieser Vorgang ist für alle anderen Apps (wie z. B. Instagram, Netflix oder Adobe) gleich.
 
 ## <a name="add-your-google-account"></a>Hinzufügen Ihres Google-Kontos
+
 Fügen Sie Ihr Google-Konto hinzu, indem Sie die zweistufige Überprüfung aktivieren und dann das Konto zur App hinzufügen.
 
 ### <a name="turn-on-two-factor-verification"></a>Aktivieren der zweistufigen Überprüfung
@@ -70,6 +73,7 @@ Fügen Sie Ihr Google-Konto hinzu, indem Sie die zweistufige Überprüfung aktiv
     >Weitere Informationen zur zweistufigen Überprüfung und zu Ihrem Google-Konto finden Sie unter [Bestätigung in zwei Schritten aktivieren](https://support.google.com/accounts/answer/185839) und [Mehr Informationen zur Bestätigung in zwei Schritten](https://www.google.com/landing/2step/help.html).
 
 ## <a name="add-your-facebook-account"></a>Hinzufügen Ihres Facebook-Kontos
+
 Fügen Sie Ihr Facebook-Konto hinzu, indem Sie die zweistufige Überprüfung aktivieren und dann das Konto zur App hinzufügen.
 
 ### <a name="turn-on-two-factor-verification"></a>Aktivieren der zweistufigen Überprüfung
@@ -109,6 +113,7 @@ Fügen Sie Ihr Facebook-Konto hinzu, indem Sie die zweistufige Überprüfung akt
     >Unter [Was ist die zweistufige Authentifizierung und wie funktioniert sie?](https://www.facebook.com/help/148233965247823) finden Sie weitere Informationen zur zweistufigen Überprüfung und zu Ihrem Facebook-Konto.
 
 ## <a name="add-your-github-account"></a>Hinzufügen Ihres GitHub-Kontos
+
 Fügen Sie Ihr GitHub-Konto hinzu, indem Sie die zweistufige Überprüfung aktivieren und dann das Konto zur App hinzufügen.
 
 ### <a name="turn-on-two-factor-verification"></a>Aktivieren der zweistufigen Überprüfung
@@ -137,7 +142,7 @@ Fügen Sie Ihr GitHub-Konto hinzu, indem Sie die zweistufige Überprüfung aktiv
 
 5. Geben Sie einen **Kontonamen** (z. B. GitHub) ein, geben Sie den **geheimen Schlüssel** aus Schritt 4 ein, und wählen Sie dann **Fertig stellen** aus.
 
-4. Geben Sie auf Ihrem Computer auf der Seite **Zweistufige Authentifizierung** den in der App für Ihr GitHub-Konto angegebenen sechsstelligen Prüfcode ein, und wählen Sie dann **Aktivieren** aus.
+6. Geben Sie auf Ihrem Computer auf der Seite **Zweistufige Authentifizierung** den in der App für Ihr GitHub-Konto angegebenen sechsstelligen Prüfcode ein, und wählen Sie dann **Aktivieren** aus.
 
     Auf der Seite **Konten** der App werden der Name Ihres Kontos und ein sechsstelliger Prüfcode angezeigt. Um die Sicherheit zu erhöhen, wird der Prüfcode alle 30 Sekunden geändert, um zu verhindern, dass jemand einen Code mehrmals verwendet.
 
@@ -145,6 +150,7 @@ Fügen Sie Ihr GitHub-Konto hinzu, indem Sie die zweistufige Überprüfung aktiv
     >Weitere Informationen zur zweistufigen Überprüfung und zu Ihrem GitHub-Konto finden Sie unter [About two-factor authentication](https://help.github.com/articles/about-two-factor-authentication/).
 
 ## <a name="add-your-amazon-account"></a>Hinzufügen Ihres Amazon-Kontos
+
 Fügen Sie Ihr Amazon-Konto hinzu, indem Sie die zweistufige Überprüfung aktivieren und dann das Konto zur App hinzufügen.
 
 ### <a name="turn-on-two-factor-verification"></a>Aktivieren der zweistufigen Überprüfung
@@ -168,23 +174,22 @@ Fügen Sie Ihr Amazon-Konto hinzu, indem Sie die zweistufige Überprüfung aktiv
     >[!Note]
     >Wenn die Kamera nicht ordnungsgemäß funktioniert, können Sie den QR-Code und die URL manuell eingeben.
 
-5. Überprüfen Sie die Seite **Konten** der Microsoft Authenticator-App auf Ihrem Gerät, um sicherzustellen, dass Ihre Kontoinformationen korrekt sind und ein zugehöriger sechsstelliger Prüfcode vorhanden ist.
+7. Überprüfen Sie die Seite **Konten** der Microsoft Authenticator-App auf Ihrem Gerät, um sicherzustellen, dass Ihre Kontoinformationen korrekt sind und ein zugehöriger sechsstelliger Prüfcode vorhanden ist.
 
     Um die Sicherheit zu erhöhen, wird der Prüfcode alle 30 Sekunden geändert, um zu verhindern, dass jemand einen Code mehrmals verwendet.
 
-6. Geben Sie auf Ihrem Computer auf der Seite **Wählen Sie, wie Sie Codes erhalten möchten** den in der App für Ihr Amazon-Konto angegebenen sechsstelligen Prüfcode ein, und wählen Sie dann **Code verifizieren und fortfahren** aus.
+8. Geben Sie auf Ihrem Computer auf der Seite **Wählen Sie, wie Sie Codes erhalten möchten** den in der App für Ihr Amazon-Konto angegebenen sechsstelligen Prüfcode ein, und wählen Sie dann **Code verifizieren und fortfahren** aus.
 
-7. Schließen Sie den Registrierungsprozess ab, einschließlich des Hinzufügens einer zusätzlichen Überprüfungsmethode, wie z. B. einer Textnachricht, und wählen Sie dann **Code senden** aus.
+9. Schließen Sie den Registrierungsprozess ab, einschließlich des Hinzufügens einer zusätzlichen Überprüfungsmethode, wie z. B. einer Textnachricht, und wählen Sie dann **Code senden** aus.
 
-8. Geben Sie auf Ihrem Computer auf der Seite **Sicherungsmethode hinzufügen** den von der Sicherungsmethode für Ihr Amazon-Konto angegebenen sechsstelligen Prüfcode ein, und wählen Sie dann **Code verifizieren und fortfahren** aus.
+10. Geben Sie auf Ihrem Computer auf der Seite **Sicherungsmethode hinzufügen** den von der Sicherungsmethode für Ihr Amazon-Konto angegebenen sechsstelligen Prüfcode ein, und wählen Sie dann **Code verifizieren und fortfahren** aus.
 
-9. Entscheiden Sie auf der Seite „Fast fertig“, ob Ihr Computer als vertrauenswürdiges Gerät gespeichert werden soll, und klicken Sie dann auf **OK. Aktivieren der zweistufigen Überprüfung** aus.
+11. Entscheiden Sie auf der Seite **Fast fertig**, ob Ihr Computer als vertrauenswürdiges Gerät gespeichert werden soll, und wählen Sie dann **OK. Aktivieren der zweistufigen Überprüfung** aus.
 
     Die Seite **Erweiterte Sicherheitseinstellungen** wird mit Ihren aktualisierten Details der zweistufigen Überprüfung (Zwei-Schritt-Verifizierung) angezeigt.
 
     >[!NOTE]
     >Weitere Informationen zur zweistufigen Überprüfung und zu Ihrem Amazon-Konto finden Sie unter [Über Zwei-Schritt-Verifizierung](https://www.amazon.com/gp/help/customer/display.html?nodeId=201596330) und [Anmelden mit Zwei-Schritt-Verifizierung](https://www.amazon.com/gp/help/customer/display.html?nodeId=201962440).
-
 
 ## <a name="next-steps"></a>Nächste Schritte
 

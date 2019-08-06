@@ -7,16 +7,16 @@ ms.topic: conceptual
 ms.date: 06/11/2019
 ms.author: tvoellm
 ms.reviewer: sngun
-ms.openlocfilehash: eb8c98df0f015244adf06a9b57f2223509f1f081
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 9d06cf334f08ba6ec9c47450d21d33733900ebe5
+ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67082115"
+ms.lasthandoff: 07/19/2019
+ms.locfileid: "68356574"
 ---
-# <a name="certificate-based-authentication-for-an-azure-ad-identity-to-access-keys-from-an-azure-cosmos-account"></a>Zertifikatbasierte Authentifizierung für eine Azure AD-Identität für den Zugriff auf Schlüssel aus einem Azure-Cosmos-Konto
+# <a name="certificate-based-authentication-for-an-azure-ad-identity-to-access-keys-from-an-azure-cosmos-db-account"></a>Zertifikatbasierte Authentifizierung für eine Azure AD-Identität für den Zugriff auf Schlüssel aus einem Azure Cosmos DB-Konto
 
-Mithilfe der zertifikatbasierten Authentifizierung kann Ihre Clientanwendung mit Azure Active Directory (Azure AD) und einem Clientzertifikat authentifiziert werden. Sie können eine zertifikatbasierte Authentifizierung auf einem Computer durchführen, auf dem Sie eine Identität benötigen, wie beispielsweise einem lokalen Computer oder einem virtuellen Computer in Azure. Ihre Anwendung kann dann Azure Cosmo DB-Schlüssel lesen, ohne dass sich die Schlüssel direkt in der Anwendung befinden. Dieser Artikel beschreibt, wie Sie eine beispielhafte Azure AD-Anwendung erstellen, sie für die zertifikatbasierte Authentifizierung konfigurieren, sich mit der neuen Anwendungsidentität bei Azure anmelden und dann die Schlüssel von Ihrem Azure Cosmos-Konto abrufen. In diesem Artikel werden die Identitäten mit Azure PowerShell eingerichtet und eine C#-Beispiel-App bereitgestellt, die Schlüssel aus Ihrem Azure Cosmos-Konto authentifiziert und darauf zugreift.  
+Mithilfe der zertifikatbasierten Authentifizierung kann Ihre Clientanwendung mit Azure Active Directory (Azure AD) und einem Clientzertifikat authentifiziert werden. Sie können eine zertifikatbasierte Authentifizierung auf einem Computer durchführen, auf dem Sie eine Identität benötigen, wie beispielsweise einem lokalen Computer oder einem virtuellen Computer in Azure. Ihre Anwendung kann dann Azure Cosmos DB-Schlüssel lesen, ohne dass sich die Schlüssel direkt in der Anwendung befinden. Dieser Artikel beschreibt, wie Sie eine beispielhafte Azure AD-Anwendung erstellen, sie für die zertifikatbasierte Authentifizierung konfigurieren, sich mit der neuen Anwendungsidentität bei Azure anmelden und dann die Schlüssel von Ihrem Azure Cosmos-Konto abrufen. In diesem Artikel werden die Identitäten mit Azure PowerShell eingerichtet und eine C#-Beispiel-App bereitgestellt, die Schlüssel aus Ihrem Azure Cosmos-Konto authentifiziert und darauf zugreift.  
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -26,7 +26,7 @@ Mithilfe der zertifikatbasierten Authentifizierung kann Ihre Clientanwendung mit
 
 ## <a name="register-an-app-in-azure-ad"></a>Registrieren einer App in Azure AD
 
-In diesem Schritt registrieren Sie eine beispielhafte Webanwendung in Ihrem Azure AD-Konto. Diese Anwendung wird später verwendet, um die Schlüssel aus deinem Azure Cosmos-Konto zu lesen. Führen Sie zum Registrieren der Anwendung die folgenden Schritte aus: 
+In diesem Schritt registrieren Sie eine beispielhafte Webanwendung in Ihrem Azure AD-Konto. Diese Anwendung wird später verwendet, um die Schlüssel aus Ihrem Azure Cosmos DB-Konto zu lesen. Führen Sie zum Registrieren der Anwendung die folgenden Schritte aus: 
 
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com/) an.
 
@@ -197,7 +197,6 @@ namespace TodoListDaemonWithCert
             Console.WriteLine("Got result {0} and keys {1}", response.StatusCode.ToString(), response.Content.ReadAsStringAsync().Result);
         }
  
- 
         /// <summary>
         /// Reads the certificate
         /// </summary>
@@ -218,52 +217,6 @@ namespace TodoListDaemonWithCert
             cert = signingCert.OfType<X509Certificate2>().OrderByDescending(c => c.NotBefore).FirstOrDefault();
             store.Close();
             return cert;
-        }
- 
- 
-        /// <summary>
-        /// Get an access token from Azure AD using client credentials.
-        /// If the attempt to get a token fails because the server is unavailable, retry twice after 3 seconds each
-        /// </summary>
-        private static async Task<AuthenticationResult> GetAccessToken(AuthenticationContext authContext, string resourceUri, ClientAssertionCertificate cert)
-        {
-            //
-            // Get an access token from Azure AD using client credentials.
-            // If the attempt to get a token fails because the server is unavailable, retry twice after 3 seconds each.
-            //
-            AuthenticationResult result = null;
-            int retryCount = 0;
-            bool retry = false;
- 
-            do
-            {
-                retry = false;
-                errorCode = 0;
- 
-                try
-                {
-                    result = await authContext.AcquireTokenAsync(resourceUri, cert);
-                }
-                catch (AdalException ex)
-                {
-                    if (ex.ErrorCode == "temporarily_unavailable")
-                    {
-                        retry = true;
-                        retryCount++;
-                        Thread.Sleep(3000);
-                    }
- 
-                    Console.WriteLine(
-                        String.Format("An error occurred while acquiring a token\nTime: {0}\nError: {1}\nRetry: {2}\n",
-                        DateTime.Now.ToString(),
-                        ex.ToString(),
-                        retry.ToString()));
- 
-                    errorCode = -1;
-                }
- 
-            } while ((retry == true) && (retryCount < 3));
-            return result;
         }
     }
 }

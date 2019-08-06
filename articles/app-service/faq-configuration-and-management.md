@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/30/2018
 ms.author: genli
-ms.openlocfilehash: ec2580f0c71c98c7a03f3326cb1b8ff539109ee0
-ms.sourcegitcommit: dad277fbcfe0ed532b555298c9d6bc01fcaa94e2
+ms.openlocfilehash: 6f86a8465bcbd3d88ffb7909cac53c3fd38c3af6
+ms.sourcegitcommit: bafb70af41ad1326adf3b7f8db50493e20a64926
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/10/2019
-ms.locfileid: "67720025"
+ms.lasthandoff: 07/25/2019
+ms.locfileid: "68489431"
 ---
 # <a name="configuration-and-management-faqs-for-web-apps-in-azure"></a>Häufig gestellte Fragen zur Konfiguration und Verwaltung von Web-Apps in Azure
 
@@ -152,12 +152,9 @@ Exception: System.Data.Entity.Core.EntityException: The underlying provider fail
 
 Die Ausnahme wurde durch ein Problem beim Hybridverbindungs-Manager ausgelöst, das inzwischen behoben wurde. Achten Sie darauf, ein [Update Ihres Hybridverbindungs-Managers](https://go.microsoft.com/fwlink/?LinkID=841308) vorzunehmen, um dieses Problem zu beheben.
 
-## <a name="how-do-i-add-or-edit-a-url-rewrite-rule"></a>Wie kann ich eine URL-Rewrite-Regel hinzufügen oder bearbeiten?
+## <a name="how-do-i-add-a-url-rewrite-rule"></a>Wie kann ich eine URL-Rewrite-Regel hinzufügen?
 
-So können Sie eine URL-Rewrite-Regel hinzufügen oder bearbeiten
-
-1. Richten Sie Internetinformationsdienste-Manager (Internet Information Services, IIS) so ein, dass eine Verbindung mit Ihrer App Service-Web-App hergestellt wird. Informationen zum Herstellen einer Verbindung von IIS-Manager mit App Service finden Sie unter [Remoteverwaltung von Azure-Websites mithilfe des IIS-Managers](https://azure.microsoft.com/blog/remote-administration-of-windows-azure-websites-using-iis-manager/).
-2. Sie können die URL-Rewrite-Regel in IIS-Manager hinzufügen oder bearbeiten. Informationen zum Hinzufügen oder Bearbeiten einer URL-Rewrite-Regel finden Sie unter [Erstellen von Rewrite-Regeln für das URL-Rewrite-Modul](https://www.iis.net/learn/extensions/url-rewrite-module/creating-rewrite-rules-for-the-url-rewrite-module).
+Um eine URL-Rewrite-Regel (Regel zum erneuten Schreiben einer URL) hinzuzufügen, erstellen Sie eine „web.config“-Datei mit den entsprechenden Konfigurationseinträgen im Ordner **wwwroot**. Weitere Informationen finden Sie unter [Azure App Services: Understanding URL Re-write](https://blogs.msdn.microsoft.com/madhurabharadwaj/2018/06/01/azure-app-services-understanding-url-re-write/).
 
 ## <a name="how-do-i-control-inbound-traffic-to-app-service"></a>Wie steuere ich den in App Service eingehenden Datenverkehr?
 

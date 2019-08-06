@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/21/2018
 ms.author: spelluru
-ms.openlocfilehash: c6ea5e72f70620004b4b00be0c779893a3b2ad90
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.openlocfilehash: 207f73bbf9a92d26be1791fc11ce81fe68252705
+ms.sourcegitcommit: 198c3a585dd2d6f6809a1a25b9a732c0ad4a704f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67706189"
+ms.lasthandoff: 07/23/2019
+ms.locfileid: "68422958"
 ---
 # <a name="azure-relay-faqs"></a>Azure Relay – häufig gestellte Fragen
 
@@ -36,7 +36,7 @@ Der [Azure Relay-Dienst](relay-what-is-it.md) vereinfacht Ihre Hybridanwendungen
 Ein [Namespace](relay-create-namespace-portal.md) ist ein Bereichscontainer für die Adressierung von Relay-Ressourcen innerhalb Ihrer Anwendung. Um Relay verwenden zu können, müssen Sie einen Namespace erstellen. Dies ist einer der ersten Schritte.
 
 ### <a name="what-happened-to-service-bus-relay-service"></a>Was ist aus dem Service Bus Relay-Dienst geworden?
-Der früher „Relay“ genannte Service Bus-Dienst heißt jetzt [WCF-Relay](relay-wcf-dotnet-get-started.md). Sie können den Dienst weiter wie gewohnt verwenden. Der Hybrid Connections-Dienst ist die aktualisierte Version eines Diensts, der aus Azure BizTalk Services übernommen wurde. WCF-Relay und Hybrid Connections werden weiterhin unterstützt.
+Der früher „Relay“ genannte Service Bus-Dienst heißt jetzt [WCF-Relay](service-bus-relay-tutorial.md). Sie können den Dienst weiter wie gewohnt verwenden. Der Hybrid Connections-Dienst ist die aktualisierte Version eines Diensts, der aus Azure BizTalk Services übernommen wurde. WCF-Relay und Hybrid Connections werden weiterhin unterstützt.
 
 ## <a name="pricing"></a>Preise
 In diesem Abschnitt werden einige häufig gestellte Fragen zur Relay-Preisstruktur beantwortet. Allgemeine Informationen zu Azure-Preisen finden Sie unter [Häufig gestellte Fragen zum Azure-Support](https://azure.microsoft.com/support/faq/). Vollständige Informationen zu Relay-Preisen finden Sie unter [Service Bus-Preise][Pricing overview].
@@ -128,7 +128,7 @@ Move-AzResource -DestinationResourceGroupName 'targetRG' -DestinationSubscriptio
 Eine Beschreibung häufig auftretender Ausnahmen und der vorgeschlagenen Aktionen, die Sie ausführen können, finden Sie unter [Relay-Ausnahmen][Relay exceptions].
 
 ### <a name="what-is-a-shared-access-signature-and-which-languages-can-i-use-to-generate-a-signature"></a>Was ist eine Shared Access Signature, und welche Sprachen kann ich zum Generieren einer Signatur verwenden?
-Bei Shared Access Signatures handelt es sich um einen Authentifizierungsmechanismus, der auf sicheren Hashes (SHA-256) oder URIs basiert. Informationen dazu, wie Sie Ihre eigenen Signaturen in Node, PHP, Java, C und C# generieren, finden Sie im Artikel [Service Bus-Authentifizierung mit Shared Access Signatures][Shared Access Signatures].
+Bei Shared Access Signatures handelt es sich um einen Authentifizierungsmechanismus, der auf sicheren Hashes (SHA-256) oder URIs basiert. Informationen zum Generieren eigener Signaturen in Node.js, PHP, Python, Java, C und C# finden Sie im Artikel [Service Bus-Authentifizierung mit Shared Access Signatures][Shared Access Signatures].
 
 ### <a name="is-it-possible-to-whitelist-relay-endpoints"></a>Ist es möglich, Relayendpunkte in eine Whitelist aufzunehmen?
 Ja. Der Relayclient stellt mithilfe vollqualifizierter Domänennamen Verbindungen mit dem Azure Relay-Dienst her. Kunden können einen Eintrag für `*.servicebus.windows.net` für Firewalls hinzufügen, die DNS-Whitelists unterstützen.

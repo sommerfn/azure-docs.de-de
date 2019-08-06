@@ -1,6 +1,6 @@
 ---
-title: Häufig verwendete Sicherheitsattribute für den Azure Key Vault
-description: Eine Prüfliste allgemeiner Sicherheitsattribute für die Auswertung von Azure Key Vault
+title: Sicherheitsattribute für den Azure Key Vault
+description: Eine Prüfliste mit Sicherheitsattributen zur Evaluierung von Azure Key Vault
 services: key-vault
 author: msmbaldwin
 manager: barbkess
@@ -8,12 +8,12 @@ ms.service: key-vault
 ms.topic: conceptual
 ms.date: 04/16/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 1c2265ff5f4c444121bf70c35145703f1b9fe981
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 836d025c5bc69da9606c9a6172ac6a43caaaf29b
+ms.sourcegitcommit: a874064e903f845d755abffdb5eac4868b390de7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66000192"
+ms.lasthandoff: 07/24/2019
+ms.locfileid: "68444018"
 ---
 # <a name="security-attributes-for-azure-key-vault"></a>Sicherheitsattribute für den Azure Key Vault
 
@@ -25,8 +25,8 @@ In diesem Artikel werden die in Azure Key Vault integrierten Sicherheitsattribut
 
 | Sicherheitsattribut | Ja/Nein | Notizen |
 |---|---|--|
-| Verschlüsselung ruhender Daten:<ul><li>Serverseitige Verschlüsselung</li><li>Serverseitige Verschlüsselung mit vom Kunden verwalteten Schlüsseln</li><li>Weitere Verschlüsselungsfunktionen (z. B. clientseitig, immer verschlüsselt usw.)</ul>| Ja | Alle Objekte werden verschlüsselt. |
-| Verschlüsselung während der Übertragung:<ul><li>ExpressRoute-Verschlüsselung</li><li>In VNet-Verschlüsselung</li><li>VNet-VNet-Verschlüsselung</ul>| Ja | Die gesamte Kommunikation erfolgt über verschlüsselte API-Aufrufe. |
+| Verschlüsselung ruhender Daten (z. B. serverseitige Verschlüsselung, serverseitige Verschlüsselung mit vom Kunden verwalteten Schlüsseln und andere Verschlüsselungsfunktionen)| Ja | Alle Objekte werden verschlüsselt. |
+| Verschlüsselung während der Übertragung (z. B. ExpressRoute-Verschlüsselung, VNET-Verschlüsselung und VNET-VNET-Verschlüsselung)| Ja | Die gesamte Kommunikation erfolgt über verschlüsselte API-Aufrufe. |
 | Verarbeitung von Verschlüsselungsschlüsseln (CMK, BYOK usw.)| Ja | Der Kunde überwacht alle Schlüssel im Schlüsseltresor. Wenn vom Hardwaresicherheitsmodul (HSM) unterstützte Schlüssel angegeben werden, bietet ein FIPS Level 2 HSM Schutz für Schlüssel, Zertifikate oder Geheimnisse. |
 | Verschlüsselung auf Spaltenebene (Azure Data Services)| – |  |
 | Verschlüsselte API-Aufrufe| Ja | Mithilfe von HTTPS |
@@ -51,7 +51,7 @@ In diesem Artikel werden die in Azure Key Vault integrierten Sicherheitsattribut
 | Sicherheitsattribut | Ja/Nein | Notizen|
 |---|---|--|
 | Authentication| Ja | Die Authentifizierung erfolgt über Azure Active Directory. |
-| Autorisierung| Ja | Mithilfe der Schlüsseltresor-Zugriffsrichtlinie |
+| Authorization| Ja | Mithilfe der Schlüsseltresor-Zugriffsrichtlinie |
 
 
 ## <a name="audit-trail"></a>Überwachungspfad

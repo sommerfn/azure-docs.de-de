@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8b1461999679935587370f66349a440d588465cd
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 399fccf9aaaeb9e252527e80a6549ee286bb1898
+ms.sourcegitcommit: c71306fb197b433f7b7d23662d013eaae269dc9c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67052541"
+ms.lasthandoff: 07/22/2019
+ms.locfileid: "68369376"
 ---
 # <a name="when-to-use-an-azure-multi-factor-authentication-provider"></a>Erste Schritte mit einem Azure Multi-Factor Authentication-Anbieter
 
@@ -42,6 +42,35 @@ Das Nutzungsmodell (pro aktiviertem Benutzer oder pro Authentifizierung) kann na
 Sofern die Anzahl erworbenen Lizenzen für alle Benutzer ausreicht, die für MFA aktiviert sind, können Sie den MFA-Anbieter auch ganz löschen.
 
 Falls Ihr MFA-Anbieter nicht mit einem Azure AD-Mandanten verknüpft ist oder Sie den neuen MFA-Anbieter mit einem anderen Azure AD-Mandanten verknüpfen, werden Benutzereinstellungen und Konfigurationsoptionen nicht übernommen. Darüber hinaus müssen vorhandene Azure MFA-Server unter Verwendung von Aktivierungsanmeldeinformationen des MFA-Anbieters erneut aktiviert werden. Wenn Sie die MFA-Server erneut aktivieren, um sie mit dem MFA-Anbieter zu verknüpfen, hat das keinerlei Auswirkungen auf die Authentifizierung per Telefonanruf oder SMS, aber Benachrichtigungen der mobilen App funktionieren erst wieder, wenn die Benutzer die mobile App erneut aktivieren.
+
+### <a name="removing-an-authentication-provider"></a>Entfernen eines Authentifizierungsanbieters
+
+> [!CAUTION]
+> Beim Löschen eines Authentifizierungsanbieters wird keine Bestätigung angezeigt. **Löschen** ist ein endgültiger Prozess.
+
+Authentifizierungsanbieter finden Sie hier: **Azure-Portal** > **Azure Active Directory** > **MFA** > **Anbieter**. Klicken Sie auf einen aufgeführten Anbieter, um die zugehörigen Details und Konfigurationen anzuzeigen.
+
+Überprüfen Sie vor dem Entfernen eines Authentifizierungsanbieters zunächst alle benutzerdefinierten Einstellungen, die ggf. für Ihren Anbieter konfiguriert wurden. Überlegen Sie sich, welche Einstellungen von Ihrem Anbieter zu allgemeinen MFA-Einstellungen migriert werden müssen, und migrieren Sie sie. 
+
+Mit Anbietern verknüpfte MFA-Server müssen unter Verwendung der Anmeldeinformationen reaktiviert werden, die unter **Azure-Portal** > **Azure Active Directory** > **MFA** > **Servereinstellungen** generiert wurden. Vor der Reaktivierung müssen auf Azure MFA-Servern in Ihrer Umgebung folgende Dateien aus dem Verzeichnis `\Program Files\Multi-Factor Authentication Server\Data\` gelöscht werden:
+
+- caCert
+- cert
+- groupCACert
+- groupKey
+- groupName
+- licenseKey
+- pkey
+
+![Löschen eines Authentifizierungsanbieters über das Azure-Portal](./media/concept-mfa-authprovider/authentication-provider-removal.png)
+
+Wenn Sie sich vergewissert haben, dass alle Einstellungen migriert wurden, können Sie unter **Azure-Portal** > **Azure Active Directory** > **MFA** > **Anbieter** die Auslassungspunkte **...** und anschließend **Löschen** auswählen.
+
+> [!WARNING]
+> Beim Löschen eines Authentifizierungsanbieters werden alle diesem Anbieter zugeordneten Berichtsinformationen gelöscht. Es empfiehlt sich gegebenenfalls, Aktivitätsberichte vor dem Löschen des Anbieters zu speichern.
+
+> [!NOTE]
+> Benutzer mit älteren Versionen von Microsoft Authenticator-App und Azure MFA-Server müssen ihre App möglicherweise neu registrieren.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

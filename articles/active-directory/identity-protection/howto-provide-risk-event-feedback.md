@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: identity-protection
 ms.topic: conceptual
-ms.date: 05/13/2019
+ms.date: 07/19/2019
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 66d53590e89afb1a903b22ff60e32871a1502ada
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 6bd0984a78860192f507323491952e895c8de8bf
+ms.sourcegitcommit: c71306fb197b433f7b7d23662d013eaae269dc9c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65828078"
+ms.lasthandoff: 07/22/2019
+ms.locfileid: "68370203"
 ---
 # <a name="how-to-give-risk-feedback-in-azure-ad-identity-protection"></a>Anleitung: Senden von Feedback zu Risikoereignissen in Azure AD Identity Protection
 
@@ -33,13 +33,13 @@ Eine Erkennung von Identity Protection ist ein Indikator für verdächtige Aktiv
 
 Es gibt verschiedene Gründe, warum Sie Feedback zu den Risikobewertungen von Azure AD senden sollten:
 
-1. **Sie haben festgestellt, dass die Benutzer- oder Anmelderisikobewertung von Azure AD falsch ist**. Beispielsweise könnte eine im Bericht „Riskante Anmeldungen“ aufgeführte Anmeldung gutartig und alle darauf bezogenen Erkennungen falsch positiv gewesen sein.
-1. **Sie haben festgestellt, dass die Benutzer- oder Anmelderisikobewertung von Azure AD richtig ist**. Beispielsweise könnte eine im Bericht „Riskante Anmeldungen“ aufgeführte Anmeldung tatsächlich bösartig gewesen sein, und Sie möchten Azure AD bestätigen, dass alle Erkennungen bezüglich dieser Anmeldung richtig positiv sind.
-1. **Sie haben das Risiko für diesen Benutzer außerhalb von Azure AD Identity Protection bereinigt** und möchten, dass die Risikostufe des Benutzers aktualisiert wird.
+- **Sie haben festgestellt, dass die Benutzer- oder Anmelderisikobewertung von Azure AD falsch ist**. Beispielsweise könnte eine im Bericht „Riskante Anmeldungen“ aufgeführte Anmeldung gutartig und alle darauf bezogenen Erkennungen falsch positiv gewesen sein.
+- **Sie haben festgestellt, dass die Benutzer- oder Anmelderisikobewertung von Azure AD richtig ist**. Beispielsweise könnte eine im Bericht „Riskante Anmeldungen“ aufgeführte Anmeldung tatsächlich bösartig gewesen sein, und Sie möchten Azure AD bestätigen, dass alle Erkennungen bezüglich dieser Anmeldung richtig positiv sind.
+- **Sie haben das Risiko für diesen Benutzer außerhalb von Azure AD Identity Protection bereinigt** und möchten, dass die Risikostufe des Benutzers aktualisiert wird.
 
 ## <a name="how-does-azure-ad-use-my-risk-feedback"></a>Wie verwendet Azure AD mein Risikofeedback?
 
-Azure AD verwendet Ihr Feedback, um das Risiko des zugrunde liegenden Benutzers bzw. der Anmeldung zu aktualisieren. Dieses Feedback hilft dabei, den Endbenutzer zu schützen. Sobald Sie beispielsweise bestätigen, dass eine Anmeldung kompromittiert wurde, setzt Azure AD direkt das Risiko des Benutzers und das aggregierte Risiko der Anmeldungen (nicht das Echtzeitrisiko) auf „Hoch“. Wenn Sie diesen Benutzer in Ihrer Benutzerrisikorichtlinie den Benutzern mit hohem Risiko zuordnen, bei denen erzwungen wird, dass sie ihre Kennwörter sicher zurücksetzen, sorgt der Benutzer bei seiner nächsten Anmeldung automatisch für Abhilfe.
+Azure AD verwendet Ihr Feedback, um das Risiko des zugrunde liegenden Benutzers bzw. der Anmeldung sowie die Genauigkeit dieser Ereignisse zu aktualisieren. Dieses Feedback hilft dabei, den Endbenutzer zu schützen. Sobald Sie beispielsweise bestätigen, dass eine Anmeldung kompromittiert wurde, setzt Azure AD direkt das Risiko des Benutzers und das aggregierte Risiko der Anmeldungen (nicht das Echtzeitrisiko) auf „Hoch“. Wenn Sie diesen Benutzer in Ihrer Benutzerrisikorichtlinie den Benutzern mit hohem Risiko zuordnen, bei denen erzwungen wird, dass sie ihre Kennwörter sicher zurücksetzen, sorgt der Benutzer bei seiner nächsten Anmeldung automatisch für Abhilfe.
 
 ## <a name="how-should-i-give-risk-feedback-and-what-happens-under-the-hood"></a>Wie soll ich Risikofeedback senden, und was geschieht im Hintergrund?
 

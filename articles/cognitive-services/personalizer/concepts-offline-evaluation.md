@@ -10,12 +10,12 @@ ms.subservice: personalizer
 ms.topic: conceptual
 ms.date: 05/07/2019
 ms.author: edjez
-ms.openlocfilehash: 3fdedd1af9b683b221dfa4aebad7a30559b7abff
-ms.sourcegitcommit: dad277fbcfe0ed532b555298c9d6bc01fcaa94e2
+ms.openlocfilehash: 3d9415a99655c7866c1a6688d0e48fd0b236a63b
+ms.sourcegitcommit: 198c3a585dd2d6f6809a1a25b9a732c0ad4a704f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/10/2019
-ms.locfileid: "67722495"
+ms.lasthandoff: 07/23/2019
+ms.locfileid: "68423267"
 ---
 # <a name="offline-evaluation"></a>Offlineauswertung
 
@@ -48,7 +48,7 @@ Im Folgenden finden Sie wichtige Überlegungen für die repräsentative Offlinea
 
 Die Personalisierung kann den Offlineauswertungsprozess verwenden, um eine stärker optimierte Lernrichtlinie automatisch zu ermitteln.
 
-Nach der Durchführung der Offlineauswertung können Sie die relative Effektivität der Personalisierung mit dieser neuen Richtlinie im Vergleich zur aktuellen Onlinerichtlinie sehen. Sie können diese Lernrichtlinie dann anwenden, damit sie bei der Personalisierung sofort wirksam wird, oder sie für die zukünftige Analyse oder Verwendung herunterladen.
+Nach der Durchführung der Offlineauswertung können Sie die relative Effektivität der Personalisierung mit dieser neuen Richtlinie im Vergleich zur aktuellen Onlinerichtlinie sehen. Sie können diese Lernrichtlinie dann anwenden, sodass sie bei der Personalisierung sofort wirksam wird, indem Sie sie herunterladen und in den Bereich für Modelle und Richtlinien hochladen. Sie können sie aber auch zur späteren Analyse oder Verwendung herunterladen.
 
 ## <a name="understanding-the-relevance-of-offline-evaluation-results"></a>Verstehen der Relevanz von Offlineauswertungsergebnissen
 
@@ -98,4 +98,6 @@ Wir empfehlen, sich Merkmalsauswertungen anzusehen, und folgende Fragen zu stell
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-[Konfigurieren der Personalisierung](how-to-settings.md)
+[Einstellungen der Personalisierung](how-to-settings.md)
+[Gewusst wie: Analysieren Ihrer Lernschleife mit einer Offlineauswertung](how-to-offline-evaluation.md)
+[Funktionsweise der Personalisierung](how-personalizer-works.md)

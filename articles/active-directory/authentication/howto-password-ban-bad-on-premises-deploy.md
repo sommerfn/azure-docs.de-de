@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jsimmons
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8487f82b123b42f9d6a6f0fbd6d6cbb240bf9fdc
-ms.sourcegitcommit: 1572b615c8f863be4986c23ea2ff7642b02bc605
+ms.openlocfilehash: 01a9cc4ec4788422337b77b285ed8ee440f6acd4
+ms.sourcegitcommit: e72073911f7635cdae6b75066b0a88ce00b9053b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/10/2019
-ms.locfileid: "67785529"
+ms.lasthandoff: 07/19/2019
+ms.locfileid: "68346888"
 ---
 # <a name="deploy-azure-ad-password-protection"></a>Bereitstellen des Kennwortschutzes für Azure AD
 
@@ -135,7 +135,11 @@ Es gibt zwei erforderliche Installationsprogramme für den Azure AD-Kennwortschu
         ```
 
         > [!NOTE]
-        > Dieser Modus schlägt fehl, wenn Azure Multi-Factor Authentication erforderlich ist. In diesem Fall verwenden Sie einen der beiden anderen Authentifizierungsmodi.
+        > Diese Modus ist nicht erfolgreich, wenn Azure Multi-Factor Authentication für Ihr Konto erforderlich ist. Verwenden Sie in diesem Fall einen der beiden vorherigen Authentifizierungsmodi oder ein anderes Konto, für das keine mehrstufige Authentifizierung erforderlich ist.
+        >
+        > Eine mehrstufige Authentifizierung kann auch erforderlich sein, wenn der (im Hintergrund durch den Azure AD-Kennwortschutz verwendete) Azure-Geräteregistrierungsdienst so konfiguriert wurde, dass global eine mehrstufige Authentifizierung erzwungen wird. Zur Umgehung dieses Problems können Sie ein anderes Konto verwenden, das die mehrstufige Authentifizierung mit einem der beiden vorherigen Authentifizierungsmodi unterstützt, oder die MFA-Anforderung des Azure-Geräteregistrierungsdients vorübergehend lockern. Navigieren Sie hierzu im Azure-Verwaltungsportal zu „Azure Active Directory“ > „Geräte“ > „Geräteeinstellungen“, und legen Sie die Einstellung „Mehrstufige Authentifizierung zum Hinzufügen von Geräten erforderlich“ auf „Nein“ fest. Denken Sie daran, diese Einstellung nach Abschluss der Registrierung wieder auf „Ja“ zurücksetzen.
+        >
+        > MFA-Anforderungen sollten ausschließlich zu Testzwecken umgangen werden.
 
        Sie müssen zurzeit den Parameter *-ForestCredential* nicht angeben, der für zukünftige Funktionalität reserviert ist.
 
@@ -156,7 +160,7 @@ Es gibt zwei erforderliche Installationsprogramme für den Azure AD-Kennwortschu
         ```
 
         > [!NOTE]
-        > Dieser Modus funktioniert nicht auf Server Core-Betriebssystemen. Verwenden Sie stattdessen einen der folgenden zwei Authentifizierungsmechanismen. Dieser Modus kann fehlschlagen, wenn verstärkte Sicherheitskonfiguration für Internet Explorer aktiviert ist. Die Problemumgehung besteht darin, diese Konfiguration zu deaktivieren, den Proxy zu registrieren und die Konfiguration dann erneut zu aktivieren.  
+        > Dieser Modus funktioniert nicht auf Server Core-Betriebssystemen. Verwenden Sie stattdessen einen der folgenden zwei Authentifizierungsmechanismen. Dieser Modus kann fehlschlagen, wenn verstärkte Sicherheitskonfiguration für Internet Explorer aktiviert ist. Die Problemumgehung besteht darin, diese Konfiguration zu deaktivieren, die Gesamtstruktur zu registrieren und die Konfiguration dann wieder zu aktivieren.  
 
      * Wählen Sie den Gerätecode-Authentifizierungsmodus aus:
 
@@ -175,7 +179,11 @@ Es gibt zwei erforderliche Installationsprogramme für den Azure AD-Kennwortschu
         ```
 
         > [!NOTE]
-        > Dieser Modus schlägt fehl, wenn Azure Multi-Factor Authentication erforderlich ist. In diesem Fall verwenden Sie einen der beiden anderen Authentifizierungsmodi.
+        > Diese Modus ist nicht erfolgreich, wenn Azure Multi-Factor Authentication für Ihr Konto erforderlich ist. Verwenden Sie in diesem Fall einen der beiden vorherigen Authentifizierungsmodi oder ein anderes Konto, für das keine mehrstufige Authentifizierung erforderlich ist.
+        >
+        > Eine mehrstufige Authentifizierung kann auch erforderlich sein, wenn der (im Hintergrund durch den Azure AD-Kennwortschutz verwendete) Azure-Geräteregistrierungsdienst so konfiguriert wurde, dass global eine mehrstufige Authentifizierung erzwungen wird. Zur Umgehung dieses Problems können Sie ein anderes Konto verwenden, das die mehrstufige Authentifizierung mit einem der beiden vorherigen Authentifizierungsmodi unterstützt, oder die MFA-Anforderung des Azure-Geräteregistrierungsdients vorübergehend lockern. Navigieren Sie hierzu im Azure-Verwaltungsportal zu „Azure Active Directory“ > „Geräte“ > „Geräteeinstellungen“, und legen Sie die Einstellung „Mehrstufige Authentifizierung zum Hinzufügen von Geräten erforderlich“ auf „Nein“ fest. Denken Sie daran, diese Einstellung nach Abschluss der Registrierung wieder auf „Ja“ zurücksetzen.
+        >
+        > MFA-Anforderungen sollten ausschließlich zu Testzwecken umgangen werden.
 
        Diese Beispiele funktionieren nur, wenn der aktuell angemeldete Benutzer auch ein Active Directory-Domänenadministrator für die Stammdomäne ist. Wenn dies nicht der Fall ist, können die alternativen Anmeldeinformationen für die Domäne auch über den Parameter *-ForestCredential* angegeben werden.
 

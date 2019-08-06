@@ -10,12 +10,12 @@ ms.topic: article
 ms.custom: seodec18
 ms.date: 05/15/2019
 ms.author: shvija
-ms.openlocfilehash: e1ec6987f1a142e9bf9cd4413cfb4444bde1b7dd
-ms.sourcegitcommit: 66237bcd9b08359a6cce8d671f846b0c93ee6a82
+ms.openlocfilehash: 66b11ef8e746222074eadab2348f8a2cf9dab39f
+ms.sourcegitcommit: 75a56915dce1c538dc7a921beb4a5305e79d3c7a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67796998"
+ms.lasthandoff: 07/24/2019
+ms.locfileid: "68479146"
 ---
 # <a name="event-hubs-frequently-asked-questions"></a>Häufig gestellte Fragen zu Event Hubs
 
@@ -185,8 +185,9 @@ Einen Event Hub Dedicated-Cluster erstellen Sie, indem Sie eine [Supportanfrage 
 ## <a name="best-practices"></a>Bewährte Methoden
 
 ### <a name="how-many-partitions-do-i-need"></a>Wie viele Partitionen benötige ich?
+Die Anzahl der Partitionen wird bei der Erstellung angegeben und muss zwischen zwei und 32 liegen. Die Partitionenanzahl kann nicht geändert werden. Behalten Sie daher beim Festlegen der Partitionenanzahl die langfristige Skalierung im Hinterkopf. Partitionen sind ein Mechanismus zum Organisieren von Daten, der sich auf die erforderliche Downstreamparallelität in verarbeitenden Anwendungen bezieht. Die Anzahl der Partitionen in einem Event Hub steht in direktem Zusammenhang mit der erwarteten Anzahl von gleichzeitigen Lesern. Weitere Informationen zur Partitionen finden Sie unter [Partitionen](event-hubs-features.md#partitions).
 
-Die Anzahl von Partitionen auf einem Event Hub kann nach der Einrichtung nicht mehr geändert werden. Vor diesem Hintergrund ist es wichtig, dass Sie vor Beginn genau überlegen, wie viele Partitionen Sie benötigen. 
+Möglicherweise möchten Sie zum Zeitpunkt der Erstellung den höchstmöglichen Wert (32) festlegen. Beachten Sie, dass mehr als eine Partition dazu führt, dass Ereignisse an mehrere Partitionen gesendet werden, ohne die Reihenfolge einzuhalten, es sei denn, Sie konfigurieren Absender so, dass sie nur an eine einzige der 32 Partitionen senden und somit die übrigen 31 redundant sind. Im ersten Fall müssen Sie Ereignisse über alle 32 Partitionen lesen. Im letzteren Fall gibt es keine offensichtlichen zusätzlichen Kosten außer der zusätzlichen Konfiguration, die Sie auf dem Ereignisprozessorhost vornehmen müssen.
 
 Event Hubs ist für einen einzelnen Partitionsleser pro Verbrauchergruppe ausgelegt. In den meisten Fällen reicht die Standardeinstellung von vier Partitionen aus. Wenn Sie Ihre Ereignisverarbeitung skalieren möchten, möchten Sie vielleicht die Möglichkeit haben, das Hinzufügen weiterer Partitionen zu erwägen. Es gibt keine bestimmte Durchsatzbegrenzung für eine Partition, aber der aggregierte Durchsatz in Ihrem Namespace ist durch die Anzahl der Durchsatzeinheiten beschränkt. Wenn Sie die Anzahl der Durchsatzeinheiten in Ihrem Namespace erhöhen, wünschen Sie vielleicht zusätzliche Partitionen, um gleichzeitigen Lesern zu ermöglichen, ihren eigenen maximalen Durchsatz zu erzielen.
 

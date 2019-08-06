@@ -3,16 +3,17 @@ title: Verwenden einer verwalteten Identität mit Azure Container Registry Tasks
 description: Bieten Sie einer Azure Container Registry-Aufgabe durch Zuweisung einer verwalteten Identität für Azure-Ressourcen Zugriff auf Azure-Ressourcen einschließlich anderer privater Containerregistrierungen.
 services: container-registry
 author: dlepow
+manager: gwallace
 ms.service: container-registry
 ms.topic: article
 ms.date: 06/12/2019
 ms.author: danlep
-ms.openlocfilehash: 5b60727472a06aaac8ccd3dce8609461e8972311
-ms.sourcegitcommit: 72f1d1210980d2f75e490f879521bc73d76a17e1
+ms.openlocfilehash: 46351af375ab4c6e59a3ddfba3c05c1e517fab0d
+ms.sourcegitcommit: f5075cffb60128360a9e2e0a538a29652b409af9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/14/2019
-ms.locfileid: "67148030"
+ms.lasthandoff: 07/18/2019
+ms.locfileid: "68311531"
 ---
 # <a name="use-an-azure-managed-identity-in-acr-tasks"></a>Verwenden einer verwalteten Azure-Identität in ACR Tasks 
 
@@ -25,7 +26,7 @@ In diesem Artikel erfahren Sie mehr über verwaltete Identitäten und lernen Fol
 > * Gewähren des Identitätszugriffs auf Azure-Ressourcen wie andere Azure-Containerregistrierungen
 > * Verwenden der verwalteten Identität für den Zugriff auf die Ressourcen aus einer Aufgabe 
 
-Um die in diesem Artikel verwendeten Azure-Ressourcen zu erstellen, müssen Sie mindestens Version 2.0.66 der Azure-Befehlszeilenschnittstelle (Azure CLI) ausführen. Führen Sie `az --version` aus, um die Version zu finden. Wenn Sie eine Installation oder ein Upgrade ausführen müssen, finden Sie unter [Installieren von Azure CLI 2.0][azure-cli] Informationen dazu.
+Um die in diesem Artikel verwendeten Azure-Ressourcen zu erstellen, müssen Sie mindestens Version 2.0.66 der Azure-Befehlszeilenschnittstelle (Azure CLI) ausführen. Führen Sie `az --version` aus, um die Version zu finden. Informationen zum Durchführen einer Installation oder eines Upgrades finden Sei bei Bedarf unter [Installieren der Azure CLI][azure-cli].
 
 ## <a name="why-use-a-managed-identity"></a>Gründe für die Verwendung einer verwalteten Identität
 
@@ -67,7 +68,7 @@ steps:
 
 ### <a name="create-task-with-system-assigned-identity"></a>Erstellen einer Aufgabe mit systemseitig zugewiesener Identität
 
-Erstellen Sie die Aufgabe *multiple-reg* durch Ausführen des folgenden [az acr task create][az-acr-task-create]-Befehls. Der Aufgabenkontext ist der multipleRegistries-Ordner des Beispielrepositorys, und der Befehl verweist auf die Datei `testtask.yaml` im Repository. Der `--assign-identity`-Parameter ohne zusätzlichen Wert erstellt eine vom System zugewiesene Identität für die Aufgabe. Diese Aufgabe ist so eingerichtet, dass Sie sie manuell auslösen müssen, aber Sie könnten sie so einrichten, dass sie ausgeführt wird, wenn Commits in das Repository gepusht werden oder eine Pullanforderung gestellt wird. 
+Erstellen Sie die Aufgabe *multiple-reg* durch Ausführen des folgenden Befehls vom Typ [az acr task create][az-acr-task-create]. Der Aufgabenkontext ist der multipleRegistries-Ordner des Beispielrepositorys, und der Befehl verweist auf die Datei `testtask.yaml` im Repository. Der `--assign-identity`-Parameter ohne zusätzlichen Wert erstellt eine vom System zugewiesene Identität für die Aufgabe. Diese Aufgabe ist so eingerichtet, dass Sie sie manuell auslösen müssen, aber Sie könnten sie so einrichten, dass sie ausgeführt wird, wenn Commits in das Repository gepusht werden oder eine Pullanforderung gestellt wird. 
 
 ```azurecli
 az acr task create \
@@ -94,7 +95,7 @@ In der Befehlsausgabe zeigt der Abschnitt `identity` an, dass eine Identität vo
 [...]
 ``` 
 
-Verwenden Sie den Befehl [az acr task show][az-acr-task-show], um die `principalId` in einer Variablen zu speichern und in späteren Befehlen zu verwenden:
+Verwenden Sie den Befehl [az acr task show][az-acr-task-show], um die Prinzipal-ID (`principalId`) in einer Variablen zu speichern und in späteren Befehlen zu verwenden:
 
 ```azurecli
 principalID=$(az acr task show --name multiple-reg --registry myregistry --query identity.principalId --output tsv)
@@ -104,14 +105,14 @@ principalID=$(az acr task show --name multiple-reg --registry myregistry --query
 
 Erteilen Sie in diesem Abschnitt der vom System zugewiesenen Identität Berechtigungen, die beiden Zielregistrierungen mit den Namen *customregistry1* und *customregistry2* zu pushen.
 
-Zunächst verwenden Sie den Befehl [az acr show][az-acr-show], um die Ressourcen-ID jeder Registrierung abzurufen und die IDs in Variablen zu speichern:
+Verwenden Sie zunächst den Befehl [az acr show][az-acr-show], um die Ressourcen-ID der einzelnen Registrierungen abzurufen und in Variablen zu speichern:
 
 ```azurecli
 reg1_id=$(az acr show --name customregistry1 --query id --output tsv)
 reg2_id=$(az acr show --name customregistry2 --query id --output tsv)
 ```
 
-Verwenden Sie den Befehl [az role assignment create][az-role-assignment-create], um der Identität die `acrpush`-Rolle für jede Registrierung zuzuweisen. Diese Rolle besitzt Berechtigungen zum Pullen und Pushen von Images an eine Containerregistrierung.
+Verwenden Sie den Befehl [az role assignment create][az-role-assignment-create], um der Identität die Rolle `acrpush` für jede Registrierung zuzuweisen. Diese Rolle besitzt Berechtigungen zum Pullen und Pushen von Images an eine Containerregistrierung.
 
 ```azurecli
 az role assignment create --assignee $principalID --scope $reg1_id --role acrpush
@@ -120,7 +121,7 @@ az role assignment create --assignee $principalID --scope $reg2_id --role acrpus
 
 ### <a name="add-target-registry-credentials-to-task"></a>Hinzufügen von Zielregistrierungs-Anmeldeinformationen zur Aufgabe
 
-Verwenden Sie nun den Befehl [az acr task credential add][az-acr-task-credential-add], um die Anmeldeinformationen der Identität zur Aufgabe hinzuzufügen, sodass sie sich bei beiden Zielregistrierungen authentifizieren kann.
+Verwenden Sie nun den Befehl [az acr task credential add][az-acr-task-credential-add], um der Aufgabe die Anmeldeinformationen der Identität hinzuzufügen, sodass sie sich bei beiden Zielregistrierungen authentifizieren kann.
 
 ```azurecli
 az acr task credential add \
@@ -138,7 +139,7 @@ az acr task credential add \
 
 ### <a name="manually-run-the-task"></a>Manuelles Ausführen der Aufgabe
 
-Lösen Sie die Aufgabe mit dem Befehl [az acr task run][az-acr-task-run] manuell aus. Mit dem Parameter `--set` werden die Anmeldeservernamen der beiden Zielregistrierungen als Werte für die Aufgabenvariablen `REGISTRY1` und `REGISTRY2` übergeben.
+Lösen Sie die Aufgabe mithilfe des Befehls [az acr task run][az-acr-task-run] manuell aus. Mit dem Parameter `--set` werden die Anmeldeservernamen der beiden Zielregistrierungen als Werte für die Aufgabenvariablen `REGISTRY1` und `REGISTRY2` übergeben.
 
 ```azurecli
 az acr task run \
@@ -225,19 +226,19 @@ In diesem Beispiel erstellen Sie eine vom Benutzer zugewiesene Identität mit Be
 
 ### <a name="create-a-key-vault-and-store-a-secret"></a>Erstellen eines Schlüsseltresors und Speichern eines Geheimnisses
 
-Erstellen Sie zunächst – falls erforderlich – mit dem folgenden Befehl [az group create][az-group-create] eine Ressourcengruppe namens *myResourceGroup* am Speicherort *eastus*:
+Erstellen Sie bei Bedarf zunächst mithilfe des folgenden Befehls vom Typ [az group create][az-group-create] eine Ressourcengruppe namens *myResourceGroup* am Standort *eastus*:
 
 ```azurecli-interactive
 az group create --name myResourceGroup --location eastus
 ```
 
-Verwenden Sie den Befehl [az keyvault create][az-keyvault-create], um eine Key Vault-Instanz zu erstellen. Geben Sie hierbei einen eindeutigen Namen für die Key Vault-Instanz an. 
+Verwenden Sie den Befehl [az keyvault create][az-keyvault-create], um einen Schlüsseltresor zu erstellen. Geben Sie hierbei einen eindeutigen Namen für die Key Vault-Instanz an. 
 
 ```azurecli-interactive
 az keyvault create --name mykeyvault --resource-group myResourceGroup --location eastus
 ```
 
-Speichern Sie mithilfe des Befehls [az keyvault secret set][az-keyvault-secret-set] ein Beispielgeheimnis in der Key Vault-Instanz:
+Speichern Sie mithilfe des Befehls [az keyvault secret set][az-keyvault-secret-set] ein Beispielgeheimnis im Schlüsseltresor:
 
 ```azurecli
 az keyvault secret set \
@@ -251,7 +252,7 @@ Beispielsweise könnten Sie Anmeldeinformationen speichern, um sich bei einer pr
 
 ### <a name="create-an-identity"></a>Erstellen einer Identität
 
-Erstellen Sie mit dem Befehl [az identity create][az-identity-create] eine Identität namens *myACRTasksId* in Ihrem Abonnement. Sie können entweder dieselbe Ressourcengruppe verwenden, die Sie zuvor zum Erstellen einer Containerregistrierung oder eines Schlüsseltresors verwendet haben, oder Sie verwenden eine andere Ressourcengruppe.
+Erstellen Sie mithilfe des Befehls [az identity create][az-identity-create] eine Identität namens *myACRTasksId* in Ihrem Abonnement. Sie können entweder dieselbe Ressourcengruppe verwenden, die Sie zuvor zum Erstellen einer Containerregistrierung oder eines Schlüsseltresors verwendet haben, oder Sie verwenden eine andere Ressourcengruppe.
 
 ```azurecli-interactive
 az identity create --resource-group myResourceGroup --name myACRTasksId
@@ -269,7 +270,7 @@ principalID=$(az identity show --resource-group myResourceGroup --name myACRTask
 
 ### <a name="grant-identity-access-to-keyvault-to-read-secret"></a>Gewähren des Zugriffs auf den Schlüsseltresor für die Identität, um ein Geheimnis zu lesen
 
-Führen Sie den folgenden Befehl [az keyvault set-policy][az-keyvault-set-policy] aus, um eine Zugriffsrichtlinie für den Schlüsseltresor festzulegen. Das folgende Beispiel ermöglicht der vom Benutzer zugewiesenen Identität das Abrufen von Geheimnissen aus dem Schlüsseltresor. Dieser Zugriff wird später benötigt, um eine Aufgabe mit mehreren Schritten erfolgreich auszuführen.
+Führen Sie den folgenden Befehl vom Typ [az keyvault set-policy][az-keyvault-set-policy] aus, um eine Zugriffsrichtlinie für den Schlüsseltresor festzulegen. Das folgende Beispiel ermöglicht der vom Benutzer zugewiesenen Identität das Abrufen von Geheimnissen aus dem Schlüsseltresor. Dieser Zugriff wird später benötigt, um eine Aufgabe mit mehreren Schritten erfolgreich auszuführen.
 
 ```azurecli-interactive
  az keyvault set-policy --name mykeyvault --resource-group myResourceGroup --object-id $principalID --secret-permissions get
@@ -277,7 +278,7 @@ Führen Sie den folgenden Befehl [az keyvault set-policy][az-keyvault-set-policy
 
 ### <a name="grant-identity-reader-access-to-the-resource-group-for-registry"></a>Gewähren des Leserzugriffs auf die Ressourcengruppe für die Registrierung für die Identität
 
-Führen Sie den folgenden Befehl [az role assignment create][az-role-assignment-create] aus, um der Identität eine Leserrolle zuzuweisen, in diesem Fall für die Ressourcengruppe, die die Quellregistrierung enthält. Diese Rolle wird später benötigt, um eine Aufgabe mit mehreren Schritten erfolgreich auszuführen.
+Führen Sie den folgenden Befehl vom Typ [az role assignment create][az-role-assignment-create] aus, um der Identität eine Leserrolle zuzuweisen (in diesem Fall für die Ressourcengruppe mit der Quellregistrierung). Diese Rolle wird später benötigt, um eine Aufgabe mit mehreren Schritten erfolgreich auszuführen.
 
 ```azurecli
 az role assignment create --role reader --resource-group myResourceGroup --assignee $principalID
@@ -346,7 +347,7 @@ In der Befehlsausgabe zeigt der Abschnitt `identity` an, dass eine Identität vo
 
 ### <a name="manually-run-the-task"></a>Manuelles Ausführen der Aufgabe
 
-Lösen Sie die Aufgabe mit dem Befehl [az acr task run][az-acr-task-run] manuell aus. Der `--set`-Parameter wird verwendet, um den Namen der Quellregistrierung an die Aufgabe zu übergeben:
+Lösen Sie die Aufgabe mithilfe des Befehls [az acr task run][az-acr-task-run] manuell aus. Der `--set`-Parameter wird verwendet, um den Namen der Quellregistrierung an die Aufgabe zu übergeben:
 
 ```azurecli
 az acr task run --name msitask --registry myregistry --set registryName=myregistry  

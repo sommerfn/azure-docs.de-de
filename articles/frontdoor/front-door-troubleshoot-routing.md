@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/22/2018
 ms.author: sharadag
-ms.openlocfilehash: 7a261d65a7bd3eea150dd764c65b94ddd47466b3
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 420d7afe0d825da9149f2cb2ae1540a2805b357c
+ms.sourcegitcommit: e9c866e9dad4588f3a361ca6e2888aeef208fc35
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60736121"
+ms.lasthandoff: 07/19/2019
+ms.locfileid: "68335880"
 ---
 # <a name="troubleshooting-common-routing-issues"></a>Behandeln von häufigen Routingproblemen
 In diesem Artikel wird beschrieben, wie Sie einige häufige Routingprobleme in Ihrer Azure Front Door Service-Konfiguration beheben können. 
@@ -62,11 +62,11 @@ Dieses Symptom kann verschiedene Ursachen haben:
 
 
 3. Überprüfen der Einstellungen der Routingregel
-     - Navigieren Sie zur Routingregel, die vom fraglichen Front-End-Hostnamen an einen Back-End-Pool weiterleiten soll. Stellen Sie sicher, dass die zulässigen Protokolle ordnungsgemäß konfiguriert sind. Wenn dies nicht der Fall ist, stellen Sie sicher, dass das von Front Door beim Weiterleiten der Anforderung verwendete Protokoll ordnungsgemäß konfiguriert ist. Die _zulässigen Protokolle_ bestimmen, welche Anforderungen Front Door akzeptieren soll, und das _Weiterleitungsprotokoll_ auf der Registerkarte _Erweitert_ bestimmt, welches Protokoll Front Door für die Weiterleitung der Anforderung an das Back-End verwenden soll.
+     - Navigieren Sie zur Routingregel, die vom fraglichen Front-End-Hostnamen an einen Back-End-Pool weiterleiten soll. Stellen Sie sicher, dass die zulässigen Protokolle ordnungsgemäß konfiguriert sind. Wenn dies nicht der Fall ist, stellen Sie sicher, dass das von Front Door beim Weiterleiten der Anforderung verwendete Protokoll ordnungsgemäß konfiguriert ist. Die _zulässigen Protokolle_ bestimmen, welche Anforderungen Front Door akzeptieren soll, und das _Weiterleitungsprotokoll_ bestimmt, welches Protokoll Front Door für die Weiterleitung der Anforderung an das Back-End verwenden soll.
           - Wenn das Back-End beispielsweise nur HTTP-Anforderungen akzeptiert, wären die folgenden Konfigurationen gültig:
                - _Zulässige Protokolle_ sind HTTP und HTTPS. _Weiterleitungsprotokoll_ ist HTTP. Die Übereinstimmungsanforderung funktioniert nicht, da HTTPS ein zulässiges Protokoll ist, und wenn eine Anforderung als HTTPS gesendet wird, würde Front Door versuchen, sie über HTTPS weiterzuleiten.
 
                - _Zulässiges Protokoll_ ist HTTP. _Weiterleitungsprotokoll_ ist entweder Übereinstimmungsanforderung oder HTTPS.
 
-   - Klicken Sie oben im Bereich für die Routingregelkonfiguration auf die Registerkarte _Erweitert_. _URL-Rewrite_ ist standardmäßig deaktiviert. Verwenden Sie dieses Feld nur, wenn Sie den Umfang der auf dem Back-End gehosteten Ressourcen, die verfügbar sein sollen, einschränken möchten. Wenn das Feld deaktiviert ist, leitet Front Door den gleichen Anforderungspfad weiter, der eingegangen ist. Es ist möglich, dass dieses Feld falsch konfiguriert ist und Front Door eine Ressource vom Back-End anfordert, die nicht verfügbar ist. Daher wird der HTTP-Statuscode 404 zurückgegeben.
+   - _URL-Rewrite_ ist standardmäßig deaktiviert. Verwenden Sie dieses Feld nur, wenn Sie den Umfang der auf dem Back-End gehosteten Ressourcen, die verfügbar sein sollen, einschränken möchten. Wenn das Feld deaktiviert ist, leitet Front Door den gleichen Anforderungspfad weiter, der eingegangen ist. Es ist möglich, dass dieses Feld falsch konfiguriert ist und Front Door eine Ressource vom Back-End anfordert, die nicht verfügbar ist. Daher wird der HTTP-Statuscode 404 zurückgegeben.
 

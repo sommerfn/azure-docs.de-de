@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/26/2019
 ms.author: allensu
-ms.openlocfilehash: 640d36649f59842a740b4c12b4e3ab39a6d98c13
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 37f1a0d9c70afc0a3a86ac76b682ee7b2adb253d
+ms.sourcegitcommit: e9c866e9dad4588f3a361ca6e2888aeef208fc35
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67050954"
+ms.lasthandoff: 07/19/2019
+ms.locfileid: "68335799"
 ---
 # <a name="traffic-manager-frequently-asked-questions-faq"></a>Häufig gestellte Fragen (FAQ) zu Traffic Manager
 
@@ -438,7 +438,7 @@ Traffic Manager-Überwachungseinstellungen werden pro Profil festgelegt. Wenn Si
 Mit Traffic Manager können Sie benutzerdefinierte Header in den für Ihre Endpunkte initiierten HTTP(S)-Integritätsprüfungen angeben. Wenn Sie einen benutzerdefinierten Header angeben möchten, können Sie dies auf Profilebene (gilt für alle Endpunkte) oder auf Endpunktebene tun. Wenn ein Header auf beiden Ebenen definiert ist, überschreibt der auf der Endpunktebene angegebene Header den auf der Profilebene angegebenen Header.
 Ein häufiger Anwendungsfall dafür ist die Angabe von Hostheadern, sodass Traffic Manager-Anforderungen korrekt an einen Endpunkt weitergeleitet werden können, der in einer mehrinstanzenfähigen Umgebung gehostet wird. Ein weiterer Anwendungsfall ist die Identifizierung von Traffic Manager-Anforderungen aus den HTTP(S)-Anforderungsprotokollen eines Endpunkts.
 
-## <a name="what-host-header-do-endpoint-health-checks-use"></a>Welcher Hostheader wird für die Integritätsprüfungen für Endpunkte verwendet?
+### <a name="what-host-header-do-endpoint-health-checks-use"></a>Welcher Hostheader wird für die Integritätsprüfungen für Endpunkte verwendet?
 
 Wenn keine benutzerdefinierte Hostheadereinstellung angegeben wird, ist der vom Traffic Manager verwendete Hostheader der DNS-Name des im Profil konfigurierten Endpunktziels, sofern verfügbar.
 

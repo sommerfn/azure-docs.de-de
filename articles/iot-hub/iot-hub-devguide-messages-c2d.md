@@ -8,12 +8,12 @@ ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
 ms.date: 03/15/2018
-ms.openlocfilehash: 0fc1b65a4ba1c8a3d76b48206d6a4703035e05bc
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: b0057815bee46d6708886302ff5b598c89b47e8f
+ms.sourcegitcommit: e9c866e9dad4588f3a361ca6e2888aeef208fc35
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67055329"
+ms.lasthandoff: 07/19/2019
+ms.locfileid: "68335733"
 ---
 # <a name="send-cloud-to-device-messages-from-an-iot-hub"></a>Senden von C2D-Nachrichten von einem IoT-Hub
 
@@ -43,7 +43,7 @@ Ein Gerät kann auch Folgendes durchführen:
 
 * *Verwerfen* der Nachricht: Der IoT-Hub platziert die Nachricht wieder in der Warteschlange mit dem Status *Zur Warteschlange hinzugefügt*. Geräte, die über das MQTT-Protokoll eine Verbindung herstellen, können C2D-Nachrichten nicht ablehnen.
 
-Bei der Nachrichtenverarbeitung durch den Thread könnte ein Fehler auftreten, ohne dass de IoT-Hub hierüber benachrichtigt wird. In diesem Fall werden Nachrichten automatisch vom Status *Nicht sichtbar* zurück in den Status *Zur Warteschlange hinzugefügt* versetzt, wenn ein Timeout für die *Sichtbarkeit* (oder *Sperrung*) abgelaufen ist. Der Standardwert dieses Timeouts ist eine Minute.
+Bei der Nachrichtenverarbeitung durch den Thread könnte ein Fehler auftreten, ohne dass de IoT-Hub hierüber benachrichtigt wird. In diesem Fall werden Nachrichten automatisch vom Status *Nicht sichtbar* zurück in den Status *Zur Warteschlange hinzugefügt* versetzt, wenn ein Timeout für die *Sichtbarkeit* (oder *Sperrung*) abgelaufen ist. Der Wert dieses Timeouts ist auf eine Minute festgelegt und kann nicht geändert werden.
 
 Die Eigenschaft *Anzahl maximaler Zustellungen* im IoT-Hub bestimmt, wie oft eine Nachricht zwischen den Statuswerten **In Warteschlange eingereiht** und *Nicht sichtbar* wechseln kann. Nachdem diese Anzahl überschritten wurde, legt der IoT-Hub den Status der Nachricht auf *Unzustellbar* fest. Ebenso kennzeichnet der IoT-Hub eine Nachricht nach deren Ablaufzeitpunkt als *Unzustellbar*. Weitere Informationen finden Sie unter [Nachrichtenablauf (Gültigkeitsdauer)](#message-expiration-time-to-live).
 

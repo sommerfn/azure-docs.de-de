@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e15cf9b2e10a581c72a5035b52be47c3e2c9dfda
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 05c93c9fe2b34ae3b87c44608cc5c5c8947ecc73
+ms.sourcegitcommit: a0b37e18b8823025e64427c26fae9fb7a3fe355a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67112340"
+ms.lasthandoff: 07/25/2019
+ms.locfileid: "68499852"
 ---
 # <a name="configure-authentication-session-management-with-conditional-access"></a>Konfigurieren der Verwaltung von Authentifizierungssitzungen mit bedingtem Zugriff
 
@@ -39,7 +39,7 @@ Die Standardkonfiguration von Azure Active Directory (Azure AD) sieht für die A
 
 Es klingt vielleicht beunruhigend, innerhalb von 90 Tagen keine erneute Anmeldung von einem Benutzer zu fordern, tatsächlich wird die Sitzung bei einer Verletzung der IT-Richtlinien jedoch gesperrt. Einige Beispiele beinhalten u. a. eine Kennwortänderung, ein nicht kompatibles Gerät oder eine Kontodeaktivierung. Sie können [Benutzersitzungen auch explizit mit PowerShell sperren](https://docs.microsoft.com/powershell/module/azuread/revoke-azureaduserallrefreshtoken?view=azureadps-2.0). Die Standardkonfiguration von Azure AD basiert auf dem Grundprinzip „Benutzer nicht zur Angabe ihrer Anmeldeinformationen auffordern, solange der Sicherheitsstatus ihrer Sitzung unverändert ist“.
 
-Die Einstellung für die Anmeldehäufigkeit funktioniert bei Apps, die das OATH2- oder OIDC-Protokoll gemäß den Standards implementiert haben. Die meisten nativen Microsoft-Apps für Windows, Mac und mobile Umgebungen sind mit der Einstellung kompatibel.
+Die Einstellung für die Anmeldehäufigkeit funktioniert bei Apps mit standardkonformer Implementierung des OAUTH2- oder OIDC-Protokolls. Die meisten nativen Microsoft-Apps für Windows, Mac und mobile Umgebungen sind mit der Einstellung kompatibel.
 
 ## <a name="persistence-of-browsing-sessions"></a>Persistenz von Browsersitzungen
 

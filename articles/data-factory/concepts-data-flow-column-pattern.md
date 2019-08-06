@@ -1,17 +1,17 @@
 ---
 title: Azure Data Factory Mapping Data Flow – Spaltenmuster
-description: Erfahren Sie, wie Sie mit Spaltenmustern von Azure Data Factory im Mappingdatenfluss generalisierte Vorlagenmuster zum Transformieren von Feldern in einem Datenfluss ohne Berücksichtigung der zugrunde liegenden Schemametadaten erstellen.
+description: Erstellen generalisierter Datentransformationsmuster mit Spaltenmustern von Azure Data Factory in Mappingdatenflüssen
 author: kromerm
 ms.author: makromer
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 01/30/2019
-ms.openlocfilehash: 08cdaafe00b7dc586ea75f6ff03fdb89107edee9
-ms.sourcegitcommit: 087ee51483b7180f9e897431e83f37b08ec890ae
+ms.openlocfilehash: 076c3318a68a50e6bd1b4f9f2a4a4b9a034533c6
+ms.sourcegitcommit: e72073911f7635cdae6b75066b0a88ce00b9053b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/31/2019
-ms.locfileid: "66430760"
+ms.lasthandoff: 07/19/2019
+ms.locfileid: "68346569"
 ---
 # <a name="azure-data-factory-mapping-data-flows-column-patterns"></a>Azure Data Factory-Mappingdatenfluss – Spaltenmuster
 
@@ -30,3 +30,13 @@ Geben Sie beim Erstellen von Vorlagenspaltenmustern im Ausdruck `$$` an, um eine
 Wenn Sie eine der RegEx-Funktionen des Ausdrucks-Generators verwenden möchten, können Sie anschließend mit $1, $2, $3 usw. auf die von Ihrem regulären Ausdruck abgeglichenen Teilmuster verweisen.
 
 Ein Beispiel für ein Spaltenmusterszenario ist die Verwendung von SUMME mit einer Reihe von eingehenden Feldern. Die aggregierten Berechnungen von SUMME befinden sich in der Aggregat-Transformation. Sie können dann bei jeder Übereinstimmung der Feldtypen, die mit „Integer“ übereinstimmen, SUMME verwenden und dann mit $$ auf jede Übereinstimmung in Ihrem Ausdruck verweisen.
+
+## <a name="match-columns"></a>Spaltenabgleich
+![Spaltenmustertypen](media/data-flow/pattern2.png "Mustertypen")
+
+Um Muster auf der Grundlage von Spalten zu erstellen, können Sie Spaltenname, Typ, Stream oder Position für den Abgleich heranziehen und eine beliebige Kombination dieser Optionen mit Ausdrucksfunktionen und regulären Ausdrücken verwenden.
+
+![Spaltenposition](media/data-flow/position.png "Spaltenposition")
+
+## <a name="next-steps"></a>Nächste Schritte
+Informieren Sie sich ausführlicher über die [Ausdruckssprache](https://aka.ms/dataflowexpressions) des ADF-Mappingdatenflusses für Datentransformationen.

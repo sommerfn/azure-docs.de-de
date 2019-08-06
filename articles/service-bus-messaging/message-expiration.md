@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/23/2019
 ms.author: aschhab
-ms.openlocfilehash: fdfd7794961b0254526b124525c6e978d13b0114
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 109ecc671b43365c433a626ff8d9fe55a5a626b5
+ms.sourcegitcommit: f5075cffb60128360a9e2e0a538a29652b409af9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65800273"
+ms.lasthandoff: 07/18/2019
+ms.locfileid: "68310293"
 ---
 # <a name="message-expiration-time-to-live"></a>Nachrichtenablauf (Gültigkeitsdauer)
 
@@ -26,7 +26,7 @@ Die Nutzlast in einer Nachricht oder die in einer Nachricht an einen Empfänger 
 
 Für Entwicklungs- und Testumgebungen, in denen Warteschlangen und Themen häufig im Rahmen von Teilläufen von Anwendungen oder Anwendungsteilen verwendet werden, ist es auch wünschenswert, dass nicht zugestellte Testnachrichten automatisch gesammelt werden, damit der nächste Testlauf davon unbeeinflusst starten kann.
 
-Der Ablauf jeder einzelnen Nachricht kann durch das Festlegen der Systemeigenschaft [TimeToLive](/dotnet/api/microsoft.azure.servicebus.message.timetolive#Microsoft_Azure_ServiceBus_Message_TimeToLive) gesteuert werden, die eine relative Dauer angibt. Der Ablauf wird zu einem absoluten Zeitpunkt, an dem die Nachricht in die Warteschlange der Entität gestellt wird. Derzeit akzeptiert die [ExpiresAtUtc](/dotnet/api/microsoft.azure.servicebus.message.expiresatutc)-Eigenschaft nur den Wert [(**EnqueuedTimeUtc**](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage.enqueuedtimeutc#Microsoft_ServiceBus_Messaging_BrokeredMessage_EnqueuedTimeUtc) + [**TimeToLive**)](/dotnet/api/microsoft.azure.servicebus.message.timetolive#Microsoft_Azure_ServiceBus_Message_TimeToLive). Die Einstellung für die Gültigkeitsdauer (Time-to-Live, TTL) einer im Broker gespeicherten Nachricht wird nicht erzwungen, wenn kein Client aktiv lauscht.
+Der Ablauf jeder einzelnen Nachricht kann durch das Festlegen der Systemeigenschaft [TimeToLive](/dotnet/api/microsoft.azure.servicebus.message.timetolive#Microsoft_Azure_ServiceBus_Message_TimeToLive) gesteuert werden, die eine relative Dauer angibt. Der Ablauf wird zu einem absoluten Zeitpunkt, an dem die Nachricht in die Warteschlange der Entität gestellt wird. Derzeit akzeptiert die [ExpiresAtUtc](/dotnet/api/microsoft.azure.servicebus.message.expiresatutc)-Eigenschaft nur den Wert [(**EnqueuedTimeUtc**](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage.enqueuedtimeutc#Microsoft_ServiceBus_Messaging_BrokeredMessage_EnqueuedTimeUtc) + [**TimeToLive**)](/dotnet/api/microsoft.azure.servicebus.message.timetolive#Microsoft_Azure_ServiceBus_Message_TimeToLive). Die Einstellung für die Gültigkeitsdauer (Time-to-Live, TTL) einer im Broker gespeicherten Nachricht wird nicht erzwungen, wenn keine Clients aktiv lauschen.
 
 Nach Ablauf des **ExpiresAtUtc**-Zeitpunkts können Nachrichten nicht mehr abgerufen werden. Die Ablaufzeit wirkt sich nicht auf Nachrichten aus, die momentan für die Zustellung gesperrt sind. Diese Nachrichten werden weiterhin normal behandelt. Wenn die Sperre abläuft oder die Nachricht abgebrochen wird, tritt der Ablauf sofort in Kraft.
 

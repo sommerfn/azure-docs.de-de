@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 04/08/2019
 ms.author: sutalasi
-ms.openlocfilehash: b2e9bf7fbe7d5940b517d97dcc15d21c30835001
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: b000610b5cba6f768a629ad797500a57597f2569
+ms.sourcegitcommit: e9c866e9dad4588f3a361ca6e2888aeef208fc35
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67449218"
+ms.lasthandoff: 07/19/2019
+ms.locfileid: "68335694"
 ---
 # <a name="replicate-azure-disk-encryption-enabled-virtual-machines-to-another-azure-region"></a>Replizieren von ADE-fähigen (Azure Disk Encryption) virtuellen Computern in einer anderen Azure-Region
 
@@ -28,21 +28,17 @@ Site Recovery erfordert, dass der Benutzer Berechtigungen besitzt, um den Schlü
 Zum Aktivieren der Replikation von Azure Disk Encryption-fähigen VMs aus dem Azure-Portal benötigt der Benutzer folgende Berechtigungen:
 
 - Schlüsseltresorberechtigungen
-    - List
-    - Erstellen
-    - Get
-
--   Berechtigungen für Schlüsseltresorgeheimnisse
-    - List
-    - Erstellen
-    - Get
-
+    - Auflisten, Erstellen und Abrufen
+    
+- Berechtigungen für Schlüsseltresorgeheimnisse
+    - Verwaltungsvorgänge für Geheimnisse
+        - Abrufen, Auflisten und Festlegen
+    
 - Berechtigungen für Schlüsseltresorschlüssel (nur erforderlich, wenn die virtuellen Computer den Schlüssel für die Schlüsselverschlüsselung verwenden, um Datenträger-Verschlüsselungsschlüssel zu verschlüsseln)
-    - List
-    - Get
-    - Erstellen
-    - Verschlüsseln
-    - Entschlüsseln
+    - Schlüsselverwaltungsvorgänge
+        - Abrufen, Auflisten und Erstellen
+    - Kryptografische Vorgänge
+        - Entschlüsseln und Verschlüsseln
 
 Wechseln Sie zur Schlüsseltresorressource im Portal, um Berechtigungen zu verwalten. Fügen Sie die erforderlichen Berechtigungen für den Benutzer hinzu. Im folgenden Beispiel wird veranschaulicht, wie Berechtigungen für den Schlüsseltresor *ContosoWeb2Keyvault* aktiviert werden, der sich in der Quellregion befindet.
 

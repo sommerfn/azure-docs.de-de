@@ -1,5 +1,5 @@
 ---
-title: Security Center-Integration mit Azure-Sicherheitsprodukten | Microsoft-Dokumentation
+title: Integration von Azure-Sicherheitsprodukten in Azure Security Center | Microsoft-Dokumentation
 description: In diesem Thema werden Azure-Sicherheitsprodukte mit Azure Security Center-Integration vorgestellt.
 services: security-center
 documentationcenter: na
@@ -14,14 +14,14 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 7/02/2019
 ms.author: v-mohabe
-ms.openlocfilehash: 64a636cc4452de1ef4a2d0e94629e7d8e3a5878d
-ms.sourcegitcommit: a8b638322d494739f7463db4f0ea465496c689c6
+ms.openlocfilehash: 847748d1c56221119d8f74a2aee716ee08448e28
+ms.sourcegitcommit: e9c866e9dad4588f3a361ca6e2888aeef208fc35
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/17/2019
-ms.locfileid: "68295738"
+ms.lasthandoff: 07/19/2019
+ms.locfileid: "68335817"
 ---
-# <a name="security-center-integration-with-azure-security-products-in-asc"></a>Security Center-Integration mit Azure-Sicherheitsprodukten in ASC
+# <a name="integration-of-azure-security-products-in-azure-security-center"></a>Integration von Azure-Sicherheitsprodukten in Azure Security Center
 
 Security Center bietet Kunden zusätzliche Microsoft-Lizenzen, um ihre Ergebnisse in Security Center integrieren und in konsolidierter Form betrachten zu können.
 

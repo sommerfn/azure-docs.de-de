@@ -4,7 +4,7 @@ description: Hier erhalten Sie eine kurze Einführung in die Batch-Befehle der A
 services: batch
 documentationcenter: ''
 author: laurenhughes
-manager: jeconnoc
+manager: gwallace
 editor: ''
 ms.assetid: fcd76587-1827-4bc8-a84d-bba1cd980d85
 ms.service: batch
@@ -15,12 +15,12 @@ ms.workload: big-compute
 ms.date: 07/24/2018
 ms.author: lahugh
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: e2bd67ebb977a37c75631f16fbbf4c7dbd6bf250
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 6e541ef82b7fe63042adf84733dd86fdd3eabdf1
+ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60782554"
+ms.lasthandoff: 07/18/2019
+ms.locfileid: "68323733"
 ---
 # <a name="manage-batch-resources-with-azure-cli"></a>Verwalten von Batch-Ressourcen mit der Azure CLI
 
@@ -130,7 +130,7 @@ az batch pool create my_batch_pool.json
 
 Die meisten Batch-Ressourcen können zwar allein mithilfe von Befehlszeilenoptionen erstellt werden, manche Features erfordern jedoch die Angabe einer JSON-Datei mit den Ressourcendetails. Eine JSON-Datei ist beispielsweise erforderlich, wenn Sie Ressourcendateien für eine Startaufgabe angeben möchten.
 
-Sie finden die für die Ressourcenerstellung erforderliche JSON-Syntax in der [Batch REST-API-Referenz][rest_api]. Jedes Thema zum „Hinzufügen eines *Ressourcentyps*“ in der REST API-Referenz enthält JSON-Beispielskripts zum Erstellen dieser Ressource. Sie können diese JSON-Beispielskripts als Vorlage für JSON-Dateien verwenden, die Sie mit der Azure CLI verwenden möchten. Die JSON-Syntax für die Erstellung eines Pools finden Sie beispielsweise unter [Hinzufügen eines Pools zu einem Konto][rest_add_pool].
+Die für die Ressourcenerstellung erforderliche JSON-Syntax finden Sie in der [Batch-REST-API-Referenz][rest_api]. Jedes Thema zum „Hinzufügen eines *Ressourcentyps*“ in der REST API-Referenz enthält JSON-Beispielskripts zum Erstellen dieser Ressource. Sie können diese JSON-Beispielskripts als Vorlage für JSON-Dateien verwenden, die Sie mit der Azure CLI verwenden möchten. Die JSON-Syntax für die Poolerstellung finden Sie beispielsweise unter [Hinzufügen eines Pools zu einem Konto][rest_add_pool].
 
 Ein Beispielskript, das eine JSON-Datei angibt, finden Sie unter [Ausführen eines Auftrags und von Tasks mit Batch](./scripts/batch-cli-sample-run-job.md).
 

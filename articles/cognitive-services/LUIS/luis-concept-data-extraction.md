@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 04/01/2019
+ms.date: 07/24/2019
 ms.author: diberry
-ms.openlocfilehash: 15d6b0d28f926bdb39b35b763b89422cddcccc84
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: d10588e3df3932f5749093170e7e76fc029053ff
+ms.sourcegitcommit: 75a56915dce1c538dc7a921beb4a5305e79d3c7a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65150694"
+ms.lasthandoff: 07/24/2019
+ms.locfileid: "68479091"
 ---
 # <a name="extract-data-from-utterance-text-with-intents-and-entities"></a>Extrahieren von Daten aus dem Äußerungstext mit Absichten und Entitäten
 LUIS bietet Ihnen die Möglichkeit, Informationen aus Benutzeräußerungen in natürlicher Sprache zu erfassen. Die Informationen werden so extrahiert, dass sie von einem Programm, einer Anwendung oder einem Chatbot verwendet werden können. In den folgenden Abschnitten erfahren Sie anhand von JSON-Beispielen, welche Daten von Absichten und Entitäten zurückgegeben werden.
@@ -48,7 +48,7 @@ Die wichtigste Angabe ist der **Name der Absicht** mit der höchsten Bewertung. 
 
 |Datenobjekt|Datentyp|Speicherort der Daten|Wert|
 |--|--|--|--|
-|Absicht|string|topScoringIntent.intent|"GetStoreInfo"|
+|Absicht|Zeichenfolge|topScoringIntent.intent|"GetStoreInfo"|
 
 Wenn Ihr Chatbot oder die App, die den Aufruf an LUIS durchgeführt hat, eine Entscheidung basierend auf mehreren Absichtsbewertungen trifft, geben Sie die Bewertungen aller Absichten zurück, indem Sie den QueryString-Parameter `verbose=true` festlegen. Die Endpunktantwort lautet:
 
@@ -77,8 +77,8 @@ Die Absichten werden von der höchsten zur niedrigsten Bewertung sortiert.
 
 |Datenobjekt|Datentyp|Speicherort der Daten|Wert|Punkte|
 |--|--|--|--|:--|
-|Absicht|string|intents[0].intent|"GetStoreInfo"|0.984749258|
-|Absicht|string|intents[1].intent|"None"|0.0168218873|
+|Absicht|Zeichenfolge|intents[0].intent|"GetStoreInfo"|0.984749258|
+|Absicht|Zeichenfolge|intents[1].intent|"None"|0.0168218873|
 
 Wenn Sie vordefinierte Domänen hinzufügen, gibt der Name der Absicht die Domäne, wie z.B. `Utilties` oder `Communication`, sowie die Absicht an:
 
@@ -108,9 +108,9 @@ Wenn Sie vordefinierte Domänen hinzufügen, gibt der Name der Absicht die Domä
 
 |Domäne|Datenobjekt|Datentyp|Speicherort der Daten|Wert|
 |--|--|--|--|--|
-|Versorgungsunternehmen|Absicht|string|intents[0].intent|"<b>Utilities</b>.ShowNext"|
-|Kommunikation|Absicht|string|intents[1].intent|<b>Communication</b>.StartOver"|
-||Absicht|string|intents[2].intent|"None"|
+|Versorgungsunternehmen|Absicht|Zeichenfolge|intents[0].intent|"<b>Utilities</b>.ShowNext"|
+|Kommunikation|Absicht|Zeichenfolge|intents[1].intent|<b>Communication</b>.StartOver"|
+||Absicht|Zeichenfolge|intents[2].intent|"None"|
 
 
 ## <a name="data-from-entities"></a>Daten von Entitäten
@@ -148,141 +148,15 @@ Im Deutschen wird z.B. das Wort `das Bauernbrot` in `das bauern brot` tokenisier
 
 ## <a name="simple-entity-data"></a>Daten einfacher Entitäten
 
-Eine [einfache Entität](luis-concept-entity-types.md) ist ein maschinell erlernter Wert. Dabei kann es sich um ein Wort oder einen Ausdruck handeln.
-
-`Bob Jones wants 3 meatball pho`
-
-In der vorherigen Äußerung wird `Bob Jones` als die einfache Entität `Customer` bezeichnet.
-
-Die vom Endpunkt zurückgegebenen Daten enthalten den Namen der Entität, den in der Äußerung ermittelten Text, den Speicherort des erkannten Texts und die Bewertung:
-
-```JSON
-"entities": [
-  {
-  "entity": "bob jones",
-  "type": "Customer",
-  "startIndex": 0,
-  "endIndex": 8,
-  "score": 0.473899543
-  }
-]
-```
-
-|Datenobjekt|Name der Entität|Wert|
-|--|--|--|
-|Entität vom Typ „Simple“|`Customer`|`bob jones`|
+Eine [einfache Entität](reference-entity-simple.md) ist ein maschinell erlernter Wert. Dabei kann es sich um ein Wort oder einen Ausdruck handeln.
 
 ## <a name="composite-entity-data"></a>Daten zusammengesetzter Entitäten
-[Zusammengesetzte](luis-concept-entity-types.md) Entitäten sind maschinell erlernt und können ein Wort oder einen Ausdruck enthalten. Betrachten Sie beispielsweise eine zusammengesetzte Entität der vordefinierten Entitäten `number` und `Location::ToLocation` bei der folgenden Äußerung:
 
-`book 2 tickets to paris`
-
-Beachten Sie, dass zwischen der Anzahl `2` und der ToLocation `paris` Wörter stehen, die nicht Teil der Entitäten sind. Die grüne Unterstreichung, die in einer bezeichneten Äußerung auf der [LUIS](luis-reference-regions.md)-Website verwendet wird, gibt eine zusammengesetzte Entität an.
-
-![Entität vom Typ „Composite“](./media/luis-concept-data-extraction/composite-entity.png)
-
-Zusammengesetzte Entitäten werden in einem Array vom Typ `compositeEntities` zurückgegeben. Dabei werden auch alle Entitäten in dieser zusammengesetzten Entität im `entities`-Array zurückgegeben:
-
-```JSON
-
-"entities": [
-    {
-    "entity": "2 tickets to cairo",
-    "type": "ticketInfo",
-    "startIndex": 0,
-    "endIndex": 17,
-    "score": 0.67200166
-    },
-    {
-    "entity": "2",
-    "type": "builtin.number",
-    "startIndex": 0,
-    "endIndex": 0,
-    "resolution": {
-        "subtype": "integer",
-        "value": "2"
-    }
-    },
-    {
-    "entity": "cairo",
-    "type": "builtin.geographyV2",
-    "startIndex": 13,
-    "endIndex": 17
-    }
-],
-"compositeEntities": [
-    {
-    "parentType": "ticketInfo",
-    "value": "2 tickets to cairo",
-    "children": [
-        {
-        "type": "builtin.geographyV2",
-        "value": "cairo"
-        },
-        {
-        "type": "builtin.number",
-        "value": "2"
-        }
-    ]
-    }
-]
-```    
-
-|Datenobjekt|Name der Entität|Wert|
-|--|--|--|
-|Vordefinierte Entität – number|"builtin.number"|"2"|
-|Vordefinierte Entität – GeographyV2|"Location::ToLocation"|"paris"|
+Eine [zusammengesetzte Entität](reference-entity-composite.md) besteht aus anderen Entitäten, z. B. vordefinierte Entitäten, einfache Entitäten, Entitäten als reguläre Ausdrücke oder Listenentitäten. Die einzelnen Entitäten bilden zusammen die gesamte Entität. 
 
 ## <a name="list-entity-data"></a>Daten von Listenentitäten
 
-Eine [Listenentität](luis-concept-entity-types.md) wird nicht maschinell erlernt. Sie stellt eine genaue Textübereinstimmung dar. Eine Liste stellt die enthaltenen Elemente zusammen mit Synonymen für diese Einträge dar. LUIS kennzeichnet jede Übereinstimmung für ein Element in einer Liste in der Antwort als eine Entität. Ein Synonym kann in mehreren Listen enthalten sein.
-
-Angenommen, die App enthält die Liste `Cities`, die Variationen von Städtenamen einschließlich Ort des Flughafens (Sea-tac), Flughafencode (SEA), Postleitzahl (98101) und Vorwahl (206) ermöglicht.
-
-|Listenelement|Elementsynonyme|
-|---|---|
-|`Seattle`|`sea-tac`, `sea`, `98101`, `206`, `+1` |
-|`Paris`|`cdg`, `roissy`, `ory`, `75001`, `1`, `+33`|
-
-`book 2 tickets to paris`
-
-In der Äußerung oben wird das Wort `paris` dem Element Paris als Teil der Listenentität `Cities` zugeordnet. Die Listenentität findet Übereinstimmungen sowohl des normalisierten Elementnamens als auch der Synonyme des Elements.
-
-```JSON
-"entities": [
-  {
-    "entity": "paris",
-    "type": "Cities",
-    "startIndex": 18,
-    "endIndex": 22,
-    "resolution": {
-      "values": [
-        "Paris"
-      ]
-    }
-  }
-]
-```
-
-Eine weitere Beispieläußerung mit einem Synonym für Paris:
-
-`book 2 tickets to roissy`
-
-```JSON
-"entities": [
-  {
-    "entity": "roissy",
-    "type": "Cities",
-    "startIndex": 18,
-    "endIndex": 23,
-    "resolution": {
-      "values": [
-        "Paris"
-      ]
-    }
-  }
-]
-```
+[Listenentitäten](reference-entity-list.md) stellen einen festen, abgeschlossenen Satz verwandter Wörter zusammen mit ihren Synonymen dar. LUIS ermittelt keine zusätzlichen Werte für Listenentitäten. Suchen Sie mithilfe des Features **Empfehlen** nach Vorschlägen für neue Wörter basierend auf der aktuellen Liste. Wenn mehr als eine Listenentität mit demselben Wert vorhanden ist, wird in der Endpunktabfrage jede Entität zurückgegeben. 
 
 ## <a name="prebuilt-entity-data"></a>Daten vordefinierter Entität
 [Vordefinierte](luis-concept-entity-types.md) Entitäten werden basierend auf einer Übereinstimmung mit einem regulären Ausdruck mithilfe des Open-Source-Projekts [Recognizers-Text](https://github.com/Microsoft/Recognizers-Text) ermittelt. Die vordefinierten Entitäten werden im Array „entities“ zurückgegeben. Dabei wird dem Typnamen das Präfix `builtin::` vorangestellt. Der folgende Text ist eine Beispieläußerung mit den zurückgegebenen vordefinierten Entitäten:
@@ -369,35 +243,8 @@ Eine weitere Beispieläußerung mit einem Synonym für Paris:
 ```
 
 ## <a name="regular-expression-entity-data"></a>Daten von Entitäten aus regulären Ausdrücken
-Entitäten aus [regulären Ausdrücken](luis-concept-entity-types.md) werden basierend auf der Übereinstimmung eines regulären Ausdrucks mit einem Ausdruck, den Sie beim Erstellen der Entität angeben, ermittelt. Wenn Sie als Definition der Entität aus einem regulären Ausdruck `kb[0-9]{6}` verwenden, stellt die folgende JSON-Antwort eine Beispieläußerung für die zurückgegebenen RegEx-Entitäten für die Abfrage `When was kb123456 published?` dar:
 
-```JSON
-{
-  "query": "when was kb123456 published?",
-  "topScoringIntent": {
-    "intent": "FindKBArticle",
-    "score": 0.933641255
-  },
-  "intents": [
-    {
-      "intent": "FindKBArticle",
-      "score": 0.933641255
-    },
-    {
-      "intent": "None",
-      "score": 0.04397359
-    }
-  ],
-  "entities": [
-    {
-      "entity": "kb123456",
-      "type": "KB number",
-      "startIndex": 9,
-      "endIndex": 16
-    }
-  ]
-}
-```
+Eine [Entität als regulärer Ausdruck](reference-entity-regular-expression.md) extrahiert eine Entität anhand des regulären Ausdrucks, den Sie bereitstellen.
 
 ## <a name="extracting-names"></a>Extrahieren von Namen
 Das Abrufen von Namen aus einer Äußerung ist schwierig, da es sich bei einem Namen um nahezu jede Kombination aus Buchstaben und Wörtern handeln kann. Je nach Art des Namens, den Sie extrahieren möchten, haben Sie verschiedene Optionen. Die folgenden Vorschläge sind keine Regeln, sondern eher Richtlinien.
@@ -482,49 +329,8 @@ Rollen sind kontextabhängige Unterschiede von Entitäten.
 ```
 
 ## <a name="patternany-entity-data"></a>Daten in Entitäten vom Typ „Pattern.any“
-Entitäten vom Typ „Pattern.any“ haben eine variable Länge und werden in Vorlagenäußerungen von [Mustern](luis-concept-patterns.md) verwendet.
 
-```JSON
-{
-  "query": "where is the form Understand your responsibilities as a member of the community and who needs to sign it after I read it?",
-  "topScoringIntent": {
-    "intent": "FindForm",
-    "score": 0.999999464
-  },
-  "intents": [
-    {
-      "intent": "FindForm",
-      "score": 0.999999464
-    },
-    {
-      "intent": "GetEmployeeBenefits",
-      "score": 4.883697E-06
-    },
-    {
-      "intent": "None",
-      "score": 1.02040713E-06
-    },
-    {
-      "intent": "GetEmployeeOrgChart",
-      "score": 9.278342E-07
-    },
-    {
-      "intent": "MoveAssetsOrPeople",
-      "score": 9.278342E-07
-    }
-  ],
-  "entities": [
-    {
-      "entity": "understand your responsibilities as a member of the community",
-      "type": "FormName",
-      "startIndex": 18,
-      "endIndex": 78,
-      "role": ""
-    }
-  ]
-}
-```
-
+[Pattern.any](reference-entity-pattern-any.md) ist ein Platzhalter variabler Länge, der nur in der Vorlagenäußerung eines Musters verwendet wird, um zu kennzeichnen, wo die Entität beginnt und endet.  
 
 ## <a name="sentiment-analysis"></a>Stimmungsanalyse
 Wenn die Standpunktanalyse konfiguriert wurde, enthält die JSON-Antwort von LUIS eine Standpunktanalyse. Weitere Informationen zu Standpunktanalysen finden Sie in der Dokumentation zur [Textanalyse](https://docs.microsoft.com/azure/cognitive-services/text-analytics/).

@@ -1,6 +1,6 @@
 ---
-title: Allgemeine Sicherheitsattribute für Azure Resource Manager
-description: Eine Prüfliste allgemeiner Sicherheitsattribute für die Bewertung von Azure Resource Manager
+title: Sicherheitsattribute für Azure Resource Manager
+description: Eine Prüfliste mit Sicherheitsattributen zur Evaluierung von Azure Resource Manager
 services: azure-resource-manager
 author: msmbaldwin
 manager: barbkess
@@ -8,12 +8,12 @@ ms.service: azure-resource-manager
 ms.topic: conceptual
 ms.date: 04/25/2019
 ms.author: mbaldwin
-ms.openlocfilehash: a771d4c2ae22b7bf149c13c80fe5286ef52a4545
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: e3bfb79c54ff57adfa947f2dd0100f6c05c7af9f
+ms.sourcegitcommit: a874064e903f845d755abffdb5eac4868b390de7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66002255"
+ms.lasthandoff: 07/24/2019
+ms.locfileid: "68444147"
 ---
 # <a name="security-attributes-for-azure-resource-manager"></a>Sicherheitsattribute für Azure Resource Manager
 
@@ -25,8 +25,8 @@ In diesem Artikel werden die in Azure Resource Manager integrierten Sicherheitsa
 
 | Sicherheitsattribut | Ja/Nein | Notizen |
 |---|---|--|
-| Verschlüsselung ruhender Daten:<ul><li>Serverseitige Verschlüsselung</li><li>Serverseitige Verschlüsselung mit vom Kunden verwalteten Schlüsseln</li><li>Weitere Verschlüsselungsfunktionen (z. B. clientseitig, immer verschlüsselt usw.)</ul>| Ja |  |
-| Verschlüsselung während der Übertragung:<ul><li>ExpressRoute-Verschlüsselung</li><li>In VNet-Verschlüsselung</li><li>VNet-VNet-Verschlüsselung</ul>| Ja | HTTPS/TLS. |
+| Verschlüsselung ruhender Daten (z. B. serverseitige Verschlüsselung, serverseitige Verschlüsselung mit vom Kunden verwalteten Schlüsseln und andere Verschlüsselungsfunktionen)| Ja |  |
+| Verschlüsselung während der Übertragung (z. B. ExpressRoute-Verschlüsselung, VNET-Verschlüsselung und VNET-VNET-Verschlüsselung)| Ja | HTTPS/TLS. |
 | Verarbeitung von Verschlüsselungsschlüsseln (CMK, BYOK usw.)| – | Azure Resource Manager speichert keine Kundeninhalte, sondern nur Steuerdaten. |
 | Verschlüsselung auf Spaltenebene (Azure Data Services)| Ja | |
 | Verschlüsselte API-Aufrufe| Ja | |
@@ -51,7 +51,7 @@ In diesem Artikel werden die in Azure Resource Manager integrierten Sicherheitsa
 | Sicherheitsattribut | Ja/Nein | Notizen|
 |---|---|--|
 | Authentication| Ja | Basierend auf [Azure Active Directory](/azure/active-directory).|
-| Autorisierung| Ja | |
+| Authorization| Ja | |
 
 
 ## <a name="audit-trail"></a>Überwachungspfad

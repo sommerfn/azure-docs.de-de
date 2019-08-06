@@ -9,12 +9,12 @@ ms.subservice: personalizer
 ms.topic: conceptual
 ms.date: 06/07/2019
 ms.author: edjez
-ms.openlocfilehash: 38480d3cc32d53084b79af627e4f7e6ae7dcc03d
-ms.sourcegitcommit: dad277fbcfe0ed532b555298c9d6bc01fcaa94e2
+ms.openlocfilehash: 7bdafafc0d542a98b80f2b6f5db2c14c8777bf5b
+ms.sourcegitcommit: 198c3a585dd2d6f6809a1a25b9a732c0ad4a704f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/10/2019
-ms.locfileid: "67722357"
+ms.lasthandoff: 07/23/2019
+ms.locfileid: "68423255"
 ---
 # <a name="how-personalizer-works"></a>Funktionsweise der Personalisierung
 
@@ -79,6 +79,8 @@ Personalisierung basiert auf innovativer Wissenschaft und Forschung im Bereich d
 * **Inaktive Ereignisse**: Ein inaktives Ereignis ist eines, für das Sie die Rangfolge aufgerufen haben, sich aber nicht sicher sind, ob der Benutzer jemals das Ergebnis sehen wird, weil dies Entscheidungen der Clientanwendung unterliegt. Inaktive Ereignisse ermöglichen es Ihnen, Personalisierungsergebnisse zu erstellen und zu speichern und dann zu entscheiden, sie später zu verwerfen, ohne dass dies das Machine Learning-Modell beeinträchtigt.
 
 * **Modell**: Ein Personalisierungsmodell erfasst alle Daten, die über Benutzerverhalten gelernt wurden, erhält Trainingsdaten aus der Kombination der Argumente, die Sie an die Rangfolge- und Relevanzaufrufe senden, und besitzt ein Trainingsverhalten, das von der Lernrichtlinie bestimmt wird. 
+
+* **Lernrichtlinie**: Die Art und Weise, wie die Personalisierung ein Modell bei jedem Ereignis trainiert, wird durch einige Metaparameter bestimmt, die die Funktionsweise der Machine Learning-Algorithmen beeinflussen. Neue Personalisierungsschleifen beginnen mit einer Standardlernrichtlinie, mit der sich eine moderate Leistung erzielen lässt. Im Zuge von [Auswertungen](concepts-offline-evaluation.md) kann die Personalisierung neue Lernrichtlinien erstellen, die speziell für die Anwendungsfälle Ihrer Schleife optimiert sind. Mit Richtlinien, die im Zuge der Auswertung generiert und für die einzelnen spezifischen Schleifen optimiert wurden, verbessert sich die Leistung der Personalisierung erheblich.
 
 ## <a name="example-use-cases-for-personalizer"></a>Beispielanwendungsfall für die Personalisierung
 
@@ -182,3 +184,4 @@ Sie können die Wirksamkeit der Personalisierung in regelmäßigen Abständen ü
 ## <a name="next-steps"></a>Nächste Schritte
 
 Versteshen, [wo Sie Personalisierung verwenden können](where-can-you-use-personalizer.md).
+Führen Sie [Offlineauswertungen](how-to-offline-evaluation.md) durch.

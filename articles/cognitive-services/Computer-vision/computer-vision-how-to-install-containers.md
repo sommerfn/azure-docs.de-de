@@ -1,6 +1,6 @@
 ---
 title: Installieren und Ausführen von Containern – maschinelles Sehen
-titlesuffix: Azure Cognitive Services
+titleSuffix: Azure Cognitive Services
 description: Informationen zum Herunterladen, Installieren und Ausführen von Containern für maschinelles Sehen in diesem Schritt-für-Schritt-Tutorial.
 services: cognitive-services
 author: IEvangelist
@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 06/19/2019
 ms.author: dapine
 ms.custom: seodec18
-ms.openlocfilehash: d72b47d375b8e50cde43e263261551d3010ba013
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.openlocfilehash: afccce5ca9101ed1e30f69264abae7ad85b4902b
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67704712"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68564575"
 ---
 # <a name="install-and-run-recognize-text-containers"></a>Installieren und Ausführen von Texterkennungscontainern
 
@@ -34,7 +34,7 @@ Zur Verwendung des Containers für die Texterkennung müssen Sie die folgenden V
 |--|--|
 |Docker-Engine| Die Docker-Engine muss auf einem [Hostcomputer](#the-host-computer) installiert sein. Für die Docker-Umgebung stehen Konfigurationspakete für [macOS](https://docs.docker.com/docker-for-mac/), [Windows](https://docs.docker.com/docker-for-windows/) und [Linux](https://docs.docker.com/engine/installation/#supported-platforms) zur Verfügung. Eine Einführung in Docker und Container finden Sie in der [Docker-Übersicht](https://docs.docker.com/engine/docker-overview/).<br><br> Docker muss so konfiguriert werden, dass die Container eine Verbindung mit Azure herstellen und Abrechnungsdaten an Azure senden können. <br><br> **Unter Windows** muss Docker auch für die Unterstützung von Linux-Containern konfiguriert werden.<br><br>|
 |Kenntnisse zu Docker | Sie sollten über Grundkenntnisse der Konzepte von Docker, einschließlich Registrierungen, Repositorys, Container und Containerimages, verfügen und die grundlegenden `docker`-Befehle kennen.| 
-|Azure `Cognitive Services`-Ressource |Um den Container zu verwenden, benötigen Sie Folgendes:<br><br>Eine Azure _Cognitive Services_-Ressource, den zugehörigen Abrechnungsschlüssel und den URI des Abrechnungsendpunkts. Beide Werte stehen auf der Übersichts- und auf der Schlüsselseite der Ressource zur Verfügung und werden zum Starten des Containers benötigt. Sie müssen, wie im folgenden Beispiel BILLING_ENDPOINT_URI dargestellt, dem Endpunkt-URI das `vision/v2.0`-Routing hinzufügen. <br><br>**{BILLING_KEY}** : Der Ressourcenschlüssel.<br><br>**{BILLING_ENDPOINT_URI}** : Der Endpunkt-URI. Beispiel: `https://westus.api.cognitive.microsoft.com/vision/v2.0`|
+|Ressource für maschinelles Sehen |Um den Container zu verwenden, benötigen Sie Folgendes:<br><br>Eine Azure-Ressource vom Typ **Maschinelles Sehen** sowie den zugehörigen API-Schlüssel und Endpunkt-URI. Beide Werte stehen auf der Übersichts- und auf der Schlüsselseite der Ressource zur Verfügung und werden zum Starten des Containers benötigt.<br><br>**{API_KEY}** : Einer der beiden verfügbaren Ressourcenschlüssel auf der Seite **Schlüssel**<br><br>**{ENDPOINT_URI}** : Der Endpunkt, der auf der Seite **Übersicht** angegeben ist|
 
 ## <a name="request-access-to-the-private-container-registry"></a>Anfordern des Zugriffs auf die private Containerregistrierung
 
@@ -44,14 +44,13 @@ Zur Verwendung des Containers für die Texterkennung müssen Sie die folgenden V
 
 [!INCLUDE [Host Computer requirements](../../../includes/cognitive-services-containers-host-computer.md)]
 
-
 ### <a name="container-requirements-and-recommendations"></a>Containeranforderungen und -empfehlungen
 
 In der folgenden Tabelle werden die Mindestanforderungen und empfohlenen Werte für CPU-Kerne und Arbeitsspeicher beschrieben, die jedem Container für die Texterkennung zugeordnet werden.
 
 | Container | Minimum | Empfohlen |TPS<br>(Minimum, Maximum)|
 |-----------|---------|-------------|--|
-|Texterkennung|1 Kern, 8 GB Arbeitsspeicher, 0,5 TPS|2 Kerne, 8 GB Arbeitsspeicher, 1 TPS|0,5, 1|
+|Texterkennung|Ein Kern, 8 GB Arbeitsspeicher, 0,5 TPS|Zwei Kerne, 8 GB Arbeitsspeicher, 1 TPS|0,5, 1|
 
 * Jeder Kern muss eine Geschwindigkeit von mindestens 2,6 GHz aufweisen.
 * TPS: Transaktionen pro Sekunde
@@ -90,8 +89,8 @@ Verwenden Sie den Befehl [docker run](https://docs.docker.com/engine/reference/c
 
 | Platzhalter | Wert |
 |-------------|-------|
-|{BILLING_KEY} | Dieser Schlüssel wird zum Starten des Containers verwendet und ist auf der Schlüsselseite von Azure `Cognitive Services` verfügbar.  |
-|{BILLING_ENDPOINT_URI} | Der Wert für den URI des Abrechnungsendpunkts. Ein Beispiel ist `https://westus.api.cognitive.microsoft.com/vision/v2.0`.|
+|{API_KEY} | Dieser Schlüssel wird zum Starten des Containers verwendet und ist auf der Schlüsselseite von Azure `Cognitive Services` verfügbar.  |
+|{ENDPOINT_URI} | Der Wert für den URI des Abrechnungsendpunkts. Ein Beispiel ist `https://westus.api.cognitive.microsoft.com/vision/v2.0`.|
 
 Sie müssen, wie im folgenden Beispiel BILLING_ENDPOINT_URI dargestellt, dem Endpunkt-URI das `vision/v2.0`-Routing hinzufügen.
 
@@ -101,8 +100,8 @@ Ersetzen Sie im folgenden Beispiel für den Befehl `docker run` diese Parameter 
 docker run --rm -it -p 5000:5000 --memory 4g --cpus 1 \
 containerpreview.azurecr.io/microsoft/cognitive-services-recognize-text \
 Eula=accept \
-Billing={BILLING_ENDPOINT_URI} \
-ApiKey={BILLING_KEY}
+Billing={ENDPOINT_URI} \
+ApiKey={API_KEY}
 ```
 
 Dieser Befehl:
@@ -132,7 +131,7 @@ Sie können die Vorgänge `POST /vision/v2.0/recognizeText` und `GET /vision/v2.
 
 ### <a name="synchronous-text-recognition"></a>Synchrone Texterkennung
 
-Mit dem Vorgang `POST /vision/v2.0/recognizeTextDirect` können Sie gedruckten Text in einem Bild synchron erkennen. Da dieser Vorgang synchron ist, entspricht der Anforderungstext für diesen Vorgang dem des Vorgangs `POST /vision/v2.0/recognizeText`, aber der Antworttext für diesen Vorgang ist identisch mit dem des Vorgangs `GET /vision/v2.0/textOperations/*{id}*`.
+Mit dem Vorgang `POST /vision/v2.0/recognizeTextDirect` können Sie gedruckten Text in einem Bild synchron erkennen. Da dieser Vorgang synchron ist, entspricht der Anforderungstext für diesen Vorgang dem des Vorgangs `POST /vision/v2.0/recognizeText`, der Antworttext für diesen Vorgang entspricht jedoch der Rückgabe des Vorgangs `GET /vision/v2.0/textOperations/*{id}*`.
 
 <!--  ## Validate container is running -->
 
@@ -156,7 +155,7 @@ Der Container für die Texterkennung sendet Abrechnungsinformationen an Azure un
 
 Weitere Informationen zu diesen Optionen finden Sie unter [Konfigurieren von Containern](./computer-vision-resource-container-config.md).
 
-<!--blogs/samples/video coures -->
+<!--blogs/samples/video course -->
 
 [!INCLUDE [Discoverability of more container information](../../../includes/cognitive-services-containers-discoverability.md)]
 

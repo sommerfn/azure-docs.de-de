@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-policy
 manager: carmonm
 ms.custom: seodec18
-ms.openlocfilehash: c79a4907e277c337509bd362653cfb100c4bd39c
-ms.sourcegitcommit: e5dcf12763af358f24e73b9f89ff4088ac63c6cb
+ms.openlocfilehash: 74e36d944450e1ce2c61481b2cb7e345860212af
+ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/14/2019
-ms.locfileid: "67137441"
+ms.lasthandoff: 07/18/2019
+ms.locfileid: "68326880"
 ---
 # <a name="understand-azure-policys-guest-configuration"></a>Informationen zu Guest Configuration von Azure Policy
 
@@ -118,6 +118,10 @@ Azure Policy verwendet die Eigenschaft **complianceStatus** des Guest Configurat
 > Ohne die **DeployIfNotExists**-Richtlinie gibt die **Audit**-Richtlinie „0 von 0“ Ressourcen als Status an.
 
 Alle integrierten Richtlinien für Guest Configuration sind in einer Initiative zum Gruppieren der Definitionen zur Verwendung in Zuweisungen enthalten. Der integrierte Initiative mit dem Namen *[Vorschau]: Kennwortsicherheitseinstellungen auf virtuellen Linux- und Windows-Computern überwachen* enthält 18 Richtlinien. Es gibt sechs **DeployIfNotExists**- und **Audit**-Paare für Windows und drei für Linux. Dabei stellt die Logik innerhalb der Definition nur sicher, dass das Zielbetriebssystem anhand der [Richtlinienregel](definition-structure.md#policy-rule)definition ausgewertet wird.
+
+## <a name="multiple-assignments"></a>Mehrere Zuweisungen
+
+Aufgrund der Gastkonfigurationsrichtlinien kann die gleiche Gastzuweisung derzeit lediglich einmal pro virtuellem Computer zugewiesen werden, auch wenn bei der Richtlinienzuweisung andere Parameter verwendet werden.
 
 ## <a name="client-log-files"></a>Protokolldateien des Clients
 

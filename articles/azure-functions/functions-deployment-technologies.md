@@ -10,12 +10,12 @@ ms.custom: vs-azure
 ms.topic: conceptual
 ms.date: 04/25/2019
 ms.author: cotresne
-ms.openlocfilehash: 47d8bf33fd686942326db3b1cc606978bf47a1bb
-ms.sourcegitcommit: ccb9a7b7da48473362266f20950af190ae88c09b
+ms.openlocfilehash: 7f931a72eab534bc2856e9e545b684d2b8ae7a60
+ms.sourcegitcommit: a874064e903f845d755abffdb5eac4868b390de7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67594391"
+ms.lasthandoff: 07/24/2019
+ms.locfileid: "68444038"
 ---
 # <a name="deployment-technologies-in-azure-functions"></a>Bereitstellungstechnologien in Azure Functions
 
@@ -23,8 +23,13 @@ Ihnen stehen verschiedene Technologien zur Verfügung, um Code aus Azure Functio
 
 ## <a name="deployment-technology-availability"></a>Bereitstellungstechnologie: Verfügbarkeit
 
-> [!IMPORTANT]
-> Azure Functions unterstützt die plattformübergreifende lokale Entwicklung sowie Hosting unter Windows und Linux. Derzeit sind drei Hostingpläne verfügbar: [Verbrauch](functions-scale.md#consumption-plan), [Premium](functions-scale.md#premium-plan) und [Dedicated (Azure App Service)](functions-scale.md#app-service-plan). Jeder Plan weist ein anderes Verhalten auf. Nicht alle Bereitstellungstechnologien stehen für jede Variante von Azure Functions zur Verfügung.
+Azure Functions unterstützt die plattformübergreifende lokale Entwicklung sowie Hosting unter Windows und Linux. Derzeit sind drei Hostingpläne verfügbar:
+
++ [Verbrauch](functions-scale.md#consumption-plan)
++ [Premium](functions-scale.md#premium-plan)
++ [Dediziert (App Service)](functions-scale.md#app-service-plan)
+
+Jeder Plan weist ein anderes Verhalten auf. Nicht alle Bereitstellungstechnologien stehen für jede Variante von Azure Functions zur Verfügung. Das folgende Diagramm zeigt die jeweils unterstützten Bereitstellungstechnologien für die verschiedenen Kombination aus Betriebssystem und Hostingplan:
 
 | Bereitstellungstechnologie | Windows: Verbrauch | Windows Premium (Vorschau) | Windows: Dediziert  | Linux-Verbrauch (Vorschau) | Linux: Dediziert |
 |-----------------------|:-------------------:|:-------------------------:|:-----------------:|:---------------------------:|:---------------:|
@@ -39,7 +44,7 @@ Ihnen stehen verschiedene Technologien zur Verfügung, um Code aus Azure Functio
 | Portalbearbeitung |✔|✔|✔| |✔<sup>2</sup>|
 
 <sup>1</sup> Bereitstellungstechnologie, die eine [manuelle Triggersynchronisierung](#trigger-syncing) erfordert.  
-<sup>2</sup> Die Portalbearbeitung steht nur für HTTP-Trigger und Trigger mit Timer zur Verfügung (für Functions unter Linux im Plan „Dedicated“).
+<sup>2</sup> Die Portalbearbeitung steht nur für HTTP-Trigger und Trigger mit Timer zur Verfügung (für Functions unter Linux mit dem Plan „Premium“ oder „Dediziert“).
 
 ## <a name="key-concepts"></a>Wichtige Begriffe
 
@@ -75,13 +80,13 @@ Verwenden Sie ZIP-Bereitstellung, um eine ZIP-Datei mit ihrer Funktions-APP in A
 >
 >Wenn die Bereitstellung mithilfe der ZIP-Bereitstellung erfolgt, können Sie festlegen, dass die App im Modus [Aus Paketdatei ausführen](run-functions-from-deployment-package.md) ausgeführt wird. Um den Modus „Aus Paketdatei ausführen“ festzulegen, legen Sie den Wert der Anwendungseinstellung `WEBSITE_RUN_FROM_PACKAGE` auf `1`fest. Wir empfehlen die ZIP-Bereitstellung. Sie führt zu schnelleren Ladezeiten für Ihre Anwendungen und ist die Standardeinstellung für VS Code, Visual Studio und die Azure CLI.
 
->__Einsatzgebiete:__ ZIP-Bereitstellung ist die empfohlene Bereitstellungstechnologie für Azure Functions unter Windows sowie für Azure Functions unter Linux im Plan „Dedicated“.
+>__Einsatzgebiete:__ ZIP-Bereitstellung ist die empfohlene Bereitstellungstechnologie für Functions unter Windows und Linux im Plan „Premium“ oder „Dediziert“.
 
 ### <a name="docker-container"></a>Docker-Container
 
 Sie können ein Linux-Containerimage bereitstellen, das Ihre Funktions-App enthält.
 
->__Verwendung:__ Erstellen Sie eine Linux-Funktions-App im Plan „Dedicated“, und geben Sie das gewünschte Containerimage für die Ausführung an. Hierzu stehen zwei Möglichkeiten zur Verfügung:
+>__Verwendung:__ Erstellen Sie eine Linux-Funktions-App im Plan „Premium“ oder „Dediziert“, und geben Sie das gewünschte Containerimage für die Ausführung an. Hierzu stehen zwei Möglichkeiten zur Verfügung:
 >
 >* Erstellen Sie eine Linux-Funktions-App unter einem Azure App Service-Plan über das Azure-Portal. Wählen Sie für **Veröffentlichen** das **Docker-Image** aus, und konfigurieren Sie dann den Container. Geben Sie den Speicherort ein, an dem das Image gehostet wird.
 >* Erstellen Sie eine Linux-Funktions-App unter einem App Service-Plan mithilfe der Azure CLI. Eine entsprechende Anleitung finden Sie unter [Erstellen einer Funktion unter Linux mithilfe eines benutzerdefinierten Images](functions-create-function-linux-custom-image.md#create-and-deploy-the-custom-image).
@@ -104,7 +109,7 @@ Bei der Web Deploy-Methode werden Ihre Windows-Anwendungen verpackt und auf eine
 
 Verbinden Sie Ihre Funktions-App mithilfe der Quellcodeverwaltung mit einem Git-Repository. Ein Update des Codes in diesem Repository löst die Bereitstellung aus. Weitere Informationen finden Sie im [Kudu-Wiki](https://github.com/projectkudu/kudu/wiki/VSTS-vs-Kudu-deployments).
 
->__Verwendung:__ Verwenden Sie das Bereitstellungscenter im Azure Functions-Portal, um die auf Quellcodeverwaltung basierende Veröffentlichung einzurichten. Weitere Informationen finden Sie unter [Continuous Deployment für Azure Functions](functions-continuous-deployment.md).
+>__Verwendung:__ Verwenden Sie das Bereitstellungscenter im Functions-Bereich des Portals, um die auf Quellcodeverwaltung basierende Veröffentlichung einzurichten. Weitere Informationen finden Sie unter [Continuous Deployment für Azure Functions](functions-continuous-deployment.md).
 
 >__Einsatzgebiete:__ Die Verwendung von Quellcodeverwaltung ist die bewährte Methode für Teams, die an ihren Funktions-Apps zusammenarbeiten. Quellcodeverwaltung ist eine gute Bereitstellungsoption, die anspruchsvollere Bereitstellungspipelines ermöglicht.
 
@@ -138,26 +143,26 @@ Im portalbasierten Editor können Sie die Dateien, die sich in ihrer Funktions-A
 
 >__Verwendung:__ Wenn Sie Ihre Funktionen im Azure-Portal bearbeiten möchten, müssen [Ihre Funktionen im Portal erstellt](functions-create-first-azure-function.md) worden sein. Bei Verwendung einer anderen Bereitstellungsmethode wird Ihre Funktion schreibgeschützt und kann nicht mehr über das Portal bearbeitet werden, um eine zentrale zuverlässige Datenquelle (Single Source Of Truth, SSOT) zu gewährleisten. Sie können den Bearbeitungsmodus manuell erneut auf `Read/Write` festlegen und alle bereitstellungsbezogenen Anwendungseinstellungen (etwa `WEBSITE_RUN_FROM_PACKAGE`) entfernen, um wieder zu einem Zustand zurückzukehren, in dem Sie Ihre Dateien über das Portal bearbeiten können. 
 
->__Einsatzgebiete:__ Das Portal ist eine gute Möglichkeit, um erste Schritte mit Azure Functions auszuführen. Für intensivere Entwicklungsarbeiten wird empfohlen, dass Sie die Clienttools verwenden:
+>__Einsatzgebiete:__ Das Portal ist eine gute Möglichkeit, um erste Schritte mit Azure Functions auszuführen. Bei intensiveren Entwicklungsarbeiten empfiehlt sich die Verwendung eines der folgenden Clienttools:
 >
->* [Erstellen Ihrer ersten Funktion mit Visual Studio Code](functions-create-first-function-vs-code.md)
->* [Erste Schritte mit Azure Functions Core Tools](functions-run-local.md)
->* [Erstellen Ihrer ersten Funktion mit Visual Studio](functions-create-your-first-function-visual-studio.md)
+>* [Visual Studio Code](functions-create-first-function-vs-code.md)
+>* [Azure Functions Core Tools (Befehlszeile)](functions-run-local.md)
+>* [Visual Studio](functions-create-your-first-function-visual-studio.md)
 
 Die folgende Tabelle gibt Aufschluss über die Betriebssysteme und Programmiersprachen, die Portalbearbeitung unterstützen:
 
-| | Windows: Verbrauch | Windows: Premium (Vorschauversion) | Windows: Dediziert | Linux: Verbrauch (Vorschauversion) | Linux: Dediziert |
-|-|:-----------------: |:-------------------------:|:-----------------:|:---------------------------:|:---------------:|
+| | Windows: Verbrauch | Windows Premium (Vorschau) | Windows: Dediziert | Linux-Verbrauch (Vorschau) | Linux: Premium (Vorschau)| Linux: Dediziert |
+|-|:-----------------: |:-------------------------:|:-----------------:|:---------------------------:|:---------------:|:---------------:|
 | C# | | | | | |
-| C#-Skript |✔|✔|✔| |✔<sup>*</sup>|
-| F# | | | | | |
-| Java | | | | | |
-| JavaScript (Node.js) |✔|✔|✔| |✔<sup>*</sup>|
-| Python (Vorschauversion) | | | | | |
-| PowerShell (Vorschauversion) |✔|✔|✔| | |
-| TypeScript (Node.js) | | | | | |
+| C#-Skript |✔|✔|✔| |✔<sup>\*</sup> |✔<sup>\*</sup>|
+| F# | | | | | | |
+| Java | | | | | | |
+| JavaScript (Node.js) |✔|✔|✔| |✔<sup>\*</sup>|✔<sup>\*</sup>|
+| Python (Vorschauversion) | | | | | | |
+| PowerShell (Vorschauversion) |✔|✔|✔| | | |
+| TypeScript (Node.js) | | | | | | |
 
-<sup>*</sup> Die Portalbearbeitung steht nur für HTTP-Trigger und Trigger mit Timer zur Verfügung (für Functions unter Linux im Plan „Dedicated“).
+<sup>*</sup> Die Portalbearbeitung steht nur für HTTP-Trigger und Trigger mit Timer zur Verfügung (für Functions unter Linux mit dem Plan „Premium“ oder „Dediziert“).
 
 ## <a name="deployment-slots"></a>Bereitstellungsslots
 
@@ -173,9 +178,10 @@ Es gibt zwei Ebenen der Unterstützung für Bereitstellungsslots:
 | Betriebssystem/Hostingplan | Unterstützungsebene |
 | --------------- | ------ |
 | Windows: Verbrauch | Vorschau |
-| Windows: Premium (Vorschauversion) | Vorschau |
+| Windows Premium (Vorschau) | Vorschau |
 | Windows: Dediziert | Allgemeine Verfügbarkeit |
 | Linux: Verbrauch | Nicht unterstützt |
+| Linux: Premium (Vorschau) | Vorschau |
 | Linux: Dediziert | Allgemeine Verfügbarkeit |
 
 ## <a name="next-steps"></a>Nächste Schritte

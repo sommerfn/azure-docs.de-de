@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/14/2019
 ms.author: b-juche
-ms.openlocfilehash: 6f1ca3398678b59a81e5c22b51b36a1f5505d4c2
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: f97bb4842d9e24d879dd47757fda75b16bca48cf
+ms.sourcegitcommit: 5604661655840c428045eb837fb8704dca811da0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65804864"
+ms.lasthandoff: 07/25/2019
+ms.locfileid: "68494819"
 ---
 # <a name="faqs-about-azure-netapp-files"></a>Häufig gestellte Fragen zu Azure NetApp Files
 
@@ -126,21 +126,21 @@ Das Root Squashing wird derzeit nicht unterstützt.
 
 ## <a name="smb-faqs"></a>Häufig gestellte Fragen zu SMB
 
-### <a name="does-azure-netapp-files-support-azure-active-directory"></a>Unterstützt Azure NetApp Files Azure Active Directory?
-
-Nein, dies wird derzeit nicht unterstützt.  Azure NetApp Files unterstützt Active Directory Domain Services (Bring Your Own AD), wobei vorhandene Active Directory-Domänencontroller mit Azure NetApp Files verwendet werden können. Domänencontroller können als virtuelle Computer in Azure oder als lokale Computer mit ExpressRoute-Verbindung existieren.
-
 ### <a name="is-an-active-directory-connection-required-for-smb-access"></a>Ist für den SMB-Zugriff eine Active Directory-Verbindung erforderlich? 
 
-Ja, Sie müssen eine Active Directory-Verbindung erstellen, bevor Sie ein SMB-Volume bereitstellen. Damit erfolgreich eine Verbindung hergestellt werden kann, muss das delegierte Subnetz von Azure NetApp Files auf die angegebenen Domänencontroller zugreifen können.  Ausführliche Informationen dazu finden Sie unter [Erstellen eines SMB-Volumes](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-create-volumes#create-an-smb-volume). 
+Ja, Sie müssen eine Active Directory-Verbindung erstellen, bevor Sie ein SMB-Volume bereitstellen. Damit erfolgreich eine Verbindung hergestellt werden kann, muss das delegierte Subnetz von Azure NetApp Files auf die angegebenen Domänencontroller zugreifen können.  Ausführliche Informationen dazu finden Sie unter [Erstellen eines SMB-Volumes](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-create-volumes-smb). 
 
 ### <a name="how-many-active-directory-connections-are-supported"></a>Wie viele Active Directory-Verbindungen werden unterstützt?
 
 Azure NetApp Files unterstützt derzeit eine Active Directory-Verbindung pro Abonnement. Darüber hinaus gilt die Active Directory-Verbindung spezifisch für ein einzelnes NetApp-Konto, sie wird nicht von mehreren Konten gemeinsam genutzt. 
 
-### <a name="what-versions-of-windows-ad-are-supported"></a>Welche Versionen von Windows AD werden unterstützt?
+### <a name="does-azure-netapp-files-support-azure-active-directory"></a>Unterstützt Azure NetApp Files Azure Active Directory? 
 
-Azure NetApp Files unterstützt die Windows Server 2008r2SP1-2016-Version von Active Directory Domain Services.
+Sowohl [Azure Active Directory (AD) Domain Services](https://docs.microsoft.com/azure/active-directory-domain-services/overview) als auch [Active Directory Domain Services (AD DS)](https://docs.microsoft.com/windows-server/identity/ad-ds/get-started/virtual-dc/active-directory-domain-services-overview) wird unterstützt. Bereits vorhandene Active Directory-Domänencontroller können mit Azure NetApp Files verwendet werden. Domänencontroller können als virtuelle Computer in Azure oder lokal über ExpressRoute oder S2S-VPN betrieben werden. Azure NetApp Files unterstützt aktuell keine AD-Einbindung für [Azure Active Directory](https://azure.microsoft.com/resources/videos/azure-active-directory-overview/).
+
+### <a name="what-versions-of-windows-server-active-directory-are-supported"></a>Welche Versionen von Windows Server Active Directory werden unterstützt?
+
+Azure NetApp Files unterstützt die Windows Server-Versionen 2008 R2 SP1 – 2019 von Active Directory Domain Services.
 
 ## <a name="capacity-management-faqs"></a>Häufig gestellte Fragen zur Kapazitätsverwaltung
 

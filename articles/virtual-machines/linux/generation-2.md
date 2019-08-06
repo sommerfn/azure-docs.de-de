@@ -4,7 +4,7 @@ description: 'Übersicht: Azure-Support für VMs der Generation 2'
 services: virtual-machines-linux
 documentationcenter: ''
 author: laurenhughes
-manager: jeconnoc
+manager: gwallace
 editor: ''
 tags: azure-resource-manager
 ms.service: virtual-machines-linux
@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/23/2019
 ms.author: lahugh
-ms.openlocfilehash: 352df275742c38307065252d2f65bb4253d78e5d
-ms.sourcegitcommit: 6e6813f8e5fa1f6f4661a640a49dc4c864f8a6cb
+ms.openlocfilehash: e551f23c833a5ed88fe14a2f61b03581be0c74fc
+ms.sourcegitcommit: 75a56915dce1c538dc7a921beb4a5305e79d3c7a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/17/2019
-ms.locfileid: "67151259"
+ms.lasthandoff: 07/24/2019
+ms.locfileid: "68479998"
 ---
 # <a name="support-for-generation-2-vms-preview-on-azure"></a>Unterstützung für VMs der Generation 2 (Vorschau) in Azure
 
@@ -37,12 +37,15 @@ VMs der Generation 2 verwenden die neue UEFI-basierte Startarchitektur und nicht
 
 VMs der Generation 1 werden von allen VM-Größen in Azure unterstützt. Azure bietet jetzt Unterstützung für die Vorschauversion von Generation 2 für die folgenden ausgewählten VM-Serien:
 
+* [B-Serie](https://docs.microsoft.com/azure/virtual-machines/linux/b-series-burstable)
 * [Dsv2-Serie](https://docs.microsoft.com/azure/virtual-machines/linux/sizes-general#dsv2-series) und [Dsv3-Serie](https://docs.microsoft.com/azure/virtual-machines/linux/sizes-general#dsv3-series-1)
 * [Esv3-Serie](https://docs.microsoft.com/azure/virtual-machines/linux/sizes-memory#esv3-series)
 * [Fsv2-Serie](https://docs.microsoft.com/azure/virtual-machines/linux/sizes-compute#fsv2-series-1)
-* [GS-Serie](https://docs.microsoft.com/azure/virtual-machines/linux/sizes-memory#gs-series)
+* [GS-Serie](https://docs.microsoft.com/azure/virtual-machines/linux/sizes-previous-gen#gs-series)
 * [Ls-Serie](https://docs.microsoft.com/azure/virtual-machines/linux/sizes-previous-gen#ls-series) und [Lsv2-Serie](https://docs.microsoft.com/azure/virtual-machines/linux/sizes-storage#lsv2-series)
 * [Mv2-Serie](https://docs.microsoft.com/azure/virtual-machines/linux/sizes-memory#mv2-series)
+* [NCv2-Serie](https://docs.microsoft.com/azure/virtual-machines/linux/sizes-gpu#ncv2-series) und [NCv3-Serie](https://docs.microsoft.com/azure/virtual-machines/linux/sizes-gpu#ncv3-series)
+* [ND-Serie](https://docs.microsoft.com/azure/virtual-machines/linux/sizes-gpu#nd-series)
 
 ## <a name="generation-2-vm-images-in-azure-marketplace"></a>VM-Images der Generation 2 in Azure Marketplace
 

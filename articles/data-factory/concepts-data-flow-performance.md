@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.author: makromer
 ms.service: data-factory
 ms.date: 05/16/2019
-ms.openlocfilehash: bbbc2bc5c47821469ecf15a27195b1bf0c12e6e5
-ms.sourcegitcommit: 156b313eec59ad1b5a820fabb4d0f16b602737fc
+ms.openlocfilehash: 090c229c5e97ede8eb7a397ce8f4d13d8735a346
+ms.sourcegitcommit: 9dc7517db9c5817a3acd52d789547f2e3efff848
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67190629"
+ms.lasthandoff: 07/23/2019
+ms.locfileid: "68404604"
 ---
 # <a name="mapping-data-flows-performance-and-tuning-guide"></a>Anleitung zur Leistung und Optimierung der Mapping Data Flow-Funktion
 
@@ -127,7 +127,18 @@ Wenn Sie auf das Symbol klicken, werden der Ausführungsplan und das nachfolgend
 * Beachten Sie dies, wenn Sie diese gängige Option auswählen. Wenn Sie viele große Quelldateien in eine einzige Ausgabedateipartition kombinieren, kann dies dazu führen, dass die Clusterknotenressourcen nicht mehr ausreichen.
 * Um die Ausschöpfung der Computeknotenressourcen zu vermeiden, können Sie das Standard- oder explizite Partitionierungsschema in ADF beibehalten, das auf Leistung optimiert, und dann eine nachfolgende Kopieraktivität zur Pipeline hinzufügen, durch die alle PART-Dateien des Ausgabeordners in eine neue Einzeldateien zusammengeführt werden. Diese Technik wird im Wesentlichen verwendet, um die Aktion der Transformation von der Dateizusammenführung zu trennen, erzielt aber dasselbe Ergebnis wie das Festlegen der „Ausgabe in eine einzelne Datei“.
 
+### <a name="looping-through-file-lists"></a>Durchlaufen von Dateilisten
+
+In den meisten Fällen werden Datenflüsse in ADF besser über eine Pipeline ausgeführt, die der Datenfluss-Quelltransformation das Durchlaufen mehrerer Dateien ermöglicht. Anders ausgedrückt: Es empfiehlt sich, innerhalb Ihrer Quelle Platzhalter oder Dateilisten im Datenfluss zu verwenden, anstatt in der Pipeline mittels „ForEach“ eine umfangreiche Dateiliste zu durchlaufen und bei jeder Iteration eine Aktivität zum Ausführen des Datenflusses aufzurufen. Der Datenflussprozess wird schneller ausgeführt, wenn das Durchlaufen innerhalb des Datenflusses erfolgen kann.
+
+Ein Beispiel: Angenommen, in einem Ordner in Blob Storage befindet sich eine Liste mit zu verarbeitenden Datendateien vom Juli 2019. In diesem Fall ist es sinnvoller, einmalig in der Pipeline eine Aktivität zum Ausführen des Datenflusses aufzurufen und in der Quelle einen Platzhalter zu verwenden:
+
+```DateFiles/*_201907*.txt```
+
+Dadurch erzielen Sie eine bessere Leistung als bei einem Suchvorgang für den Blobspeicher in einer Pipeline, bei der dann alle entsprechenden Dateien mittels „ForEach“ mit einer eingeschlossenen Aktivität zum Ausführen des Datenflusses durchlaufen werden.
+
 ## <a name="next-steps"></a>Nächste Schritte
+
 Lesen Sie die folgenden Artikel zu Datenflüssen in Bezug auf die Leistung:
 
 - [Registerkarte „Optimieren“ für Datenflüsse](concepts-data-flow-optimize-tab.md)

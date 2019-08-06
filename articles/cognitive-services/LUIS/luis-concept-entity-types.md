@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 06/12/2019
+ms.date: 07/24/2019
 ms.author: diberry
-ms.openlocfilehash: 628a96c4e912341226d67a7ed8f241194e7b7825
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: a5a3ba8c25107317e7c47ee358f9a6ebe7d4556f
+ms.sourcegitcommit: 75a56915dce1c538dc7a921beb4a5305e79d3c7a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67080037"
+ms.lasthandoff: 07/24/2019
+ms.locfileid: "68479116"
 ---
 # <a name="entity-types-and-their-purposes-in-luis"></a>Entitätstypen und ihr Zweck in LUIS
 
@@ -135,59 +135,15 @@ Wenn Sie über eine Entität, die nicht durch maschinelles Lernen erworben wurde
 
 ## <a name="composite-entity"></a>Entität vom Typ „Composite“
 
-Eine zusammengesetzte Entität besteht aus anderen Entitäten, z. B. vom Typ Vordefiniert, Einfach, Regulärer Ausdruck oder Liste. Die einzelnen Entitäten bilden zusammen die gesamte Entität. 
-
-Diese Entität ist gut geeignet, wenn für die Daten Folgendes gilt:
-
-* Sind aufeinander bezogen. 
-* Sie sind im Kontext der Äußerung miteinander verknüpft.
-* Verwenden eine Vielzahl von Entitätstypen.
-* Müssen gruppiert und von der Clientanwendung als eine Informationseinheit verarbeitet werden.
-* Verfügen über viele verschiedene Benutzeräußerungen, für die maschinelles Lernen erforderlich ist.
-
-![Entität vom Typ „Composite“](./media/luis-concept-entities/composite-entity.png)
-
-[Tutorial](luis-tutorial-composite-entity.md)<br>
-[JSON-Beispielantwort für Entität](luis-concept-data-extraction.md#composite-entity-data)<br>
+Eine [zusammengesetzte Entität](reference-entity-composite.md) besteht aus anderen Entitäten, z. B. vordefinierte Entitäten, einfache Entitäten, Entitäten als reguläre Ausdrücke oder Listenentitäten. Die einzelnen Entitäten bilden zusammen die gesamte Entität. 
 
 ## <a name="list-entity"></a>Entität vom Typ „List“
 
-Listenentitäten stellen einen festen, abgeschlossenen Satz verwandter Wörter zusammen mit ihren Synonymen dar. LUIS ermittelt keine zusätzlichen Werte für Listenentitäten. Suchen Sie mithilfe des Features **Empfehlen** nach Vorschlägen für neue Wörter basierend auf der aktuellen Liste. Wenn mehr als eine Listenentität mit demselben Wert vorhanden ist, wird in der Endpunktabfrage jede Entität zurückgegeben. 
-
-Diese Entität ist gut geeignet, wenn für die Textdaten Folgendes gilt:
-
-* Es handelt sich um einen bekannten Satz.
-* Sie werden nicht oft geändert. Wenn Sie die Liste häufig ändern oder möchten, dass die Liste selbstständig erweitert wird, stellt eine einfache Entität, die um eine Begriffsliste erweitert wurde, eine bessere Wahl dar. 
-* Für den Satz werden die maximalen LUIS-[Grenzen](luis-boundaries.md) dieses Entitätstyps nicht überschritten.
-* Der Text in der Äußerung ist eine exakte Übereinstimmung mit einem Synonym oder dem kanonischen Namen. LUIS verwendet die Liste über genaue Textübereinstimmungen hinaus nicht. Fuzzyübereinstimmungen, Nicht-Berücksichtigung der Groß- und Kleinschreibung, Wortstammerkennung, Pluralformen und andere Varianten lassen sich mit einer List-Entität nicht auflösen. Um Varianten zu behandeln, sollten Sie die Verwendung eines [Musters](luis-concept-patterns.md#syntax-to-mark-optional-text-in-a-template-utterance) mit der optionalen Textsyntax in Erwägung ziehen.
-
-![Entität vom Typ „List“](./media/luis-concept-entities/list-entity.png)
-
-[Tutorial](luis-quickstart-intent-and-list-entity.md)<br>
-[JSON-Beispielantwort für Entität](luis-concept-data-extraction.md#list-entity-data)
+[Listenentitäten](reference-entity-list.md) stellen einen festen, abgeschlossenen Satz verwandter Wörter zusammen mit ihren Synonymen dar. LUIS ermittelt keine zusätzlichen Werte für Listenentitäten. Suchen Sie mithilfe des Features **Empfehlen** nach Vorschlägen für neue Wörter basierend auf der aktuellen Liste. Wenn mehr als eine Listenentität mit demselben Wert vorhanden ist, wird in der Endpunktabfrage jede Entität zurückgegeben. 
 
 ## <a name="patternany-entity"></a>Entität „Pattern.any“
 
-Pattern.any ist ein Platzhalter variabler Länge, der nur in der Vorlagenäußerung eines Musters verwendet wird, um zu kennzeichnen, wo die Entität beginnt und endet.  
-
-Diese Entität ist gut geeignet, wenn Folgendes gilt:
-
-* Die Endung der Entität kann leicht mit dem verbleibenden Text der Äußerung verwechselt werden. 
-[Tutorial](luis-tutorial-pattern.md)<br>
-[JSON-Beispielantwort für Entität](luis-concept-data-extraction.md#patternany-entity-data)
-
-**Beispiel**  
-Bei einer Clientanwendung, mit der anhand des Titels nach Büchern gesucht wird, wird mit pattern.any der vollständige Titel extrahiert. Eine Vorlagenäußerung mit pattern.any für diese Buchsuche lautet `Was {BookTitle} written by an American this year[?]` (Wurde {Buchtitel} in diesem Jahr von einem Autor bzw. einer Autorin aus den USA geschrieben?). 
-
-In der folgenden Tabelle enthält jede Zeile zwei Versionen der Äußerung. In der oberen Äußerung ist dargestellt, wie LUIS die Äußerung zuerst sieht. Hierbei ist unklar, wo der Buchtitel beginnt und endet. Die untere Äußerung gibt an, wie LUIS den Buchtitel erkennen kann, wenn ein Muster für die Extraktion vorhanden ist. 
-
-|Äußerung|
-|--|
-|Wurde das Buch The Man Who Mistook His Wife for a Hat and Other Clinical Tales in diesem Jahr von einem Autor bzw. einer Autorin aus den USA geschrieben?<br><br>Wurde das Buch **The Man Who Mistook His Wife for a Hat and Other Clinical Tales** in diesem Jahr von einem Autor bzw. einer Autorin aus den USA geschrieben?|
-|Wurde Half Asleep in Frog Pajamas in diesem Jahr von einem Autor bzw. einer Autorin aus den USA geschrieben?<br><br>Wurde **Half Asleep in Frog Pajamas** in diesem Jahr von einem Autor bzw. einer Autorin aus den USA geschrieben?|
-|Wurde The Particular Sadness of Lemon Cake: A Novel in diesem Jahr von einem Autor bzw. einer Autorin aus den USA geschrieben?<br><br>Wurde **The Particular Sadness of Lemon Cake: A Novel** in diesem Jahr von einem Autor bzw. einer Autorin aus den USA geschrieben?|
-|Wurde There's A Wocket In My Pocket! in diesem Jahr von einem Autor bzw. einer Autorin aus den USA geschrieben?<br><br>Wurde **There's A Wocket In My Pocket!** in diesem Jahr von einem Autor bzw. einer Autorin aus den USA geschrieben?|
-||
+[Pattern.any](reference-entity-pattern-any.md) ist ein Platzhalter variabler Länge, der nur in der Vorlagenäußerung eines Musters verwendet wird, um zu kennzeichnen, wo die Entität beginnt und endet.  
 
 ## <a name="prebuilt-entity"></a>Vordefinierte Entität
 
@@ -240,43 +196,11 @@ Die erste Option ist das Entfernen der Beispieläußerung.
 
 ## <a name="regular-expression-entity"></a>Entität vom Typ „RegEx“ 
 
-Ein regulärer Ausdruck ist am besten für unformatierten Text von Äußerungen geeignet. Die Groß-/Kleinschreibung sowie die Kultur werden ignoriert.  Reguläre Ausdrücke werden nach Änderungen durch die Rechtschreibprüfung auf Zeichenebene (nicht auf Tokenebene) angewandt. Wenn der reguläre Ausdruck zu komplex ist (z.B. mit zu vielen Klammern), können Sie den Ausdruck dem Modell nicht hinzufügen. Es wird ein Teil der [.NET Regex](https://docs.microsoft.com/dotnet/standard/base-types/regular-expressions)-Bibliothek verwendet, aber nicht die gesamte Bibliothek. 
+Eine [Entität als regulärer Ausdruck](reference-entity-regular-expression.md) extrahiert eine Entität anhand des regulären Ausdrucks, den Sie bereitstellen.
 
-Diese Entität ist gut geeignet, wenn Folgendes gilt:
+## <a name="simple-entity"></a>Entität vom Typ „Simple“
 
-* Die Daten sind einheitlich formatiert, und auch bei den Abweichungen herrscht Einheitlichkeit.
-* Für den regulären Ausdruck sind nicht mehr als zwei Schachtelungsebenen erforderlich. 
-
-![Entität vom Typ „RegEx“](./media/luis-concept-entities/regex-entity.png)
-
-[Tutorial](luis-quickstart-intents-regex-entity.md)<br>
-[JSON-Beispielantwort für Entität](luis-concept-data-extraction.md#regular-expression-entity-data)<br>
-
-Reguläre Ausdrücke finden möglicherweise mehr, als Sie erwarten. Ein Beispiel hierfür ist eine numerische Wortsuche, wie z. B. `one` und `two`. Ein Beispiel ist der folgende reguläre Ausdruck, der die Zahl `one` zusammen mit anderen Zahlen findet:
-
-```javascript
-(plus )?(zero|one|two|three|four|five|six|seven|eight|nine)(\s+(zero|one|two|three|four|five|six|seven|eight|nine))*
-``` 
-
-Dieser RegEx-Ausdruck findet auch alle Wörter, die auf diese Zahlen enden, wie z. B. `phone`. Um Probleme wie dieses zu beheben, stellen Sie sicher, dass bei Übereinstimmungen für reguläre Ausdrücke die Wortgrenzen berücksichtigt werden. Der reguläre Ausdruck mit Berücksichtigung von Wortgrenzen für dieses Beispiel wird im folgenden regulären Ausdruck verwendet:
-
-```javascript
-\b(plus )?(zero|one|two|three|four|five|six|seven|eight|nine)(\s+(zero|one|two|three|four|five|six|seven|eight|nine))*\b
-```
-
-## <a name="simple-entity"></a>Entität vom Typ „Simple“ 
-
-Eine einfache Entität ist eine generische Entität, die ein einzelnes Konzept beschreibt und im Kontext des maschinellen Lernens erworben wurde. Da es sich bei einfachen Entitäten normalerweise um Namen handelt, z.B. Unternehmensnamen, Produktnamen oder andere Namen, sollten Sie wie folgt vorgehen: Fügen Sie eine [Liste mit Ausdrücken](luis-concept-feature.md) hinzu, wenn Sie eine einfache Entität verwenden, um das Signal für die verwendeten Namen zu verstärken. 
-
-Diese Entität ist gut geeignet, wenn Folgendes gilt:
-
-* Die Daten sind nicht einheitlich formatiert, aber weisen auf denselben Sachverhalt hin. 
-
-![Entität vom Typ „Simple“](./media/luis-concept-entities/simple-entity.png)
-
-[Tutorial](luis-quickstart-primary-and-secondary-data.md)<br/>
-[Beispielantwort für Entität](luis-concept-data-extraction.md#simple-entity-data)<br/>
-
+Eine [einfache Entität](reference-entity-simple.md) ist ein maschinell erlernter Wert. Dabei kann es sich um ein Wort oder einen Ausdruck handeln.
 ## <a name="entity-limits"></a>Grenzwerte für Entitäten
 
 Informieren Sie sich über die [Grenzwerte](luis-boundaries.md#model-boundaries), um zu erfahren, wie viele Entitäten jedes Typs Sie einem Modell hinzufügen können.

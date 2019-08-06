@@ -1,6 +1,6 @@
 ---
-title: Allgemeine Sicherheitsattribute für Azure Service Fabric
-description: Eine Prüfliste allgemeiner Sicherheitsattribute für die Auswertung von Azure Service Fabric
+title: Sicherheitsattribute für Azure Service Fabric
+description: Eine Prüfliste der Sicherheitsattribute für die Auswertung von Azure Service Fabric
 services: service-fabric
 documentationcenter: ''
 author: msmbaldwin
@@ -9,12 +9,12 @@ ms.service: service-fabric
 ms.topic: conceptual
 ms.date: 04/16/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 7c1718298c3f7c3fea28fa0b18569085f071696f
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 23c7f8bdcf67d59ccdd5cd0b00bc0e0960ba1d8f
+ms.sourcegitcommit: a874064e903f845d755abffdb5eac4868b390de7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66003055"
+ms.lasthandoff: 07/24/2019
+ms.locfileid: "68443856"
 ---
 # <a name="security-attributes-for-azure-service-fabric"></a>Sicherheitsattribute für Azure Service Fabric
 
@@ -26,8 +26,8 @@ In diesem Artikel werden die in Azure Service Fabric integrierten Sicherheitsatt
 
 | Sicherheitsattribut | Ja/Nein | Notizen |
 |---|---|--|
-| Verschlüsselung ruhender Daten:<ul><li>Serverseitige Verschlüsselung</li><li>Serverseitige Verschlüsselung mit vom Kunden verwalteten Schlüsseln</li><li>Weitere Verschlüsselungsfunktionen (z. B. clientseitig, immer verschlüsselt usw.)</ul>| Ja | Der Cluster und die VM-Skalierungsgruppe, auf der der Cluster basiert, befinden sich im Besitz des Kunden. Azure Disk Encryption kann für die VM-Skalierungsgruppe aktiviert werden. |
-| Verschlüsselung während der Übertragung:<ul><li>ExpressRoute-Verschlüsselung</li><li>In VNet-Verschlüsselung</li><li>VNet-VNet-Verschlüsselung</ul>| Ja |  |
+| Verschlüsselung ruhender Daten (z. B. serverseitige Verschlüsselung, serverseitige Verschlüsselung mit vom Kunden verwalteten Schlüsseln und andere Verschlüsselungsfunktionen)| Ja | Der Cluster und die VM-Skalierungsgruppe, auf der der Cluster basiert, befinden sich im Besitz des Kunden. Azure Disk Encryption kann für die VM-Skalierungsgruppe aktiviert werden. |
+| Verschlüsselung während der Übertragung (z.B. ExpressRoute-Verschlüsselung, VNet-Verschlüsselung und VNet-VNet-Verschlüsselung)| Ja |  |
 | Verarbeitung von Verschlüsselungsschlüsseln (CMK, BYOK usw.)| Ja | Der Cluster und die VM-Skalierungsgruppe, auf der der Cluster basiert, befinden sich im Besitz des Kunden. Azure Disk Encryption kann für die VM-Skalierungsgruppe aktiviert werden. |
 | Verschlüsselung auf Spaltenebene (Azure Data Services)| – |  |
 | Verschlüsselte API-Aufrufe| Ja | Service Fabric-API-Aufrufe erfolgen über Azure Resource Manager. Ein gültiges JSON Web Token (JWT) ist erforderlich. |
@@ -52,7 +52,7 @@ In diesem Artikel werden die in Azure Service Fabric integrierten Sicherheitsatt
 | Sicherheitsattribut | Ja/Nein | Notizen|
 |---|---|--|
 | Authentication| Ja | Die Authentifizierung erfolgt über Azure Active Directory. |
-| Autorisierung| Ja | Identitäts- und Zugriffsverwaltung (IAM) für Aufrufe über SFRP. Direkte Aufrufe von Clusterendpunkten unterstützen zwei Rollen: „Benutzer“ und „Administrator“. Der Kunde kann die APIs einer der beiden Rollen zuordnen. |
+| Authorization| Ja | Identitäts- und Zugriffsverwaltung (IAM) für Aufrufe über SFRP. Direkte Aufrufe von Clusterendpunkten unterstützen zwei Rollen: „Benutzer“ und „Administrator“. Der Kunde kann die APIs einer der beiden Rollen zuordnen. |
 
 
 ## <a name="audit-trail"></a>Überwachungspfad

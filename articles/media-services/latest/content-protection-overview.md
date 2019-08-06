@@ -11,89 +11,109 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/28/2019
+ms.date: 07/17/2019
 ms.author: juliako
 ms.custom: seodec18
-ms.openlocfilehash: 0172879ff2a2c351c4ca721a449e2e2839934baa
-ms.sourcegitcommit: 470041c681719df2d4ee9b81c9be6104befffcea
+ms.openlocfilehash: 174184993e40b60dc89022d360f0c09fb31bc60b
+ms.sourcegitcommit: a0b37e18b8823025e64427c26fae9fb7a3fe355a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/12/2019
-ms.locfileid: "67854071"
+ms.lasthandoff: 07/25/2019
+ms.locfileid: "68501283"
 ---
-# <a name="content-protection-with-dynamic-encryption"></a>Inhaltsschutz mit dynamischer Verschlüsselung
+# <a name="protect-your-content-by-using-media-services-dynamic-encryption"></a>Inhaltsschutz mit der dynamischen Verschlüsselung von Media Services
 
-Mit Azure Media Services können Sie Ihre Medien ab dem Zeitpunkt, an dem sie Ihren Computer verlassen, während des gesamten Prozesses der Speicherung, Verarbeitung und Übermittlung sichern. Mit Media Services können Sie Ihre zu übermittelnden Live- und On-Demand-Inhalte dynamisch mit Advanced Encryption Standard (AES-128) oder einem der drei wichtigsten DRM-Systeme verschlüsseln: Microsoft PlayReady, Google Widevine und Apple FairPlay. Media Services bietet auch einen Dienst für die Übermittlung von AES-Schlüsseln und DRM-Lizenzen (PlayReady, Widevine und FairPlay) an autorisierte Clients. 
+Mithilfe von Azure Media Services können Sie Ihre Medien ab dem Zeitpunkt, an dem sie Ihren Computer verlassen, während des gesamten Prozesses der Speicherung, Verarbeitung und Übermittlung sichern. Mit Media Services können Sie Ihre zu übermittelnden Live- und On-Demand-Inhalte dynamisch mit Advanced Encryption Standard (AES-128) oder einem der drei wichtigsten DRM-Systeme verschlüsseln: Microsoft PlayReady, Google Widevine und Apple FairPlay. Media Services bietet auch einen Dienst für die Übermittlung von AES-Schlüsseln und DRM-Lizenzen (PlayReady, Widevine und FairPlay) an autorisierte Clients.  
 
-Die folgende Abbildung veranschaulicht den Media Services-Workflow zum Schutz von Inhalten: 
+In Media Services v3 ist dem Streaminglocator ein Inhaltsschlüssel zugeordnet (siehe [dieses Beispiel](protect-with-aes128.md)). Bei Verwendung des Media Services-Schlüsselübermittlungsdiensts kann der Inhaltsschlüssel durch Azure Media Services generiert werden. Sie sollten den Inhaltsschlüssel selbst generieren, wenn Sie Ihren eigenen Schlüsselbereitstellungsdienst verwenden oder wenn Sie ein Hochverfügbarkeitsszenario verwenden, für das Sie denselben Inhaltsschlüssel in zwei Rechenzentren benötigen.
 
-![Inhalt schützen](./media/content-protection/content-protection.svg)
+Wenn ein Player einen Stream anfordert, verwendet Media Services den angegebenen Schlüssel, um den Inhalt dynamisch mit einem unverschlüsselten AES-Schlüssel oder per DRM-Verschlüsselung zu verschlüsseln. Um den Stream zu entschlüsseln, fordert der Player den Schlüssel vom Media Services-Schlüsselübermittlungsdienst oder dem von Ihnen angegebenen Schlüsselübermittlungsdienst an. Um zu entscheiden, ob der Benutzer berechtigt ist, den Schlüssel zu erhalten, wertet der Dienst die Richtlinie für Inhaltsschlüssel aus, die Sie für den Schlüssel angegeben haben.
 
-&#42; *Die dynamische Verschlüsselung unterstützt AES-128 mit unverschlüsseltem Schlüssel, CBCS und CENC. Details finden Sie [hier](#streaming-protocols-and-encryption-types) in der Unterstützungsmatrix.*
+Zum Konfigurieren von Autorisierungs- und Authentifizierungsrichtlinien für Ihre Lizenzen und Schlüssel können Sie die REST-API oder eine Media Services-Clientbibliothek verwenden.
 
-Dieser Artikel erläutert die relevanten Konzepte und Begriffe für den Inhaltsschutz mit Media Services.
+Die folgende Abbildung veranschaulicht den Workflow für Media Services-Inhaltsschutz:
+
+![Workflow für Media Services-Inhaltsschutz](./media/content-protection/content-protection.svg)
+  
+&#42; *Die dynamische Verschlüsselung unterstützt AES-128 mit unverschlüsseltem Schlüssel, CBCS und CENC. Details finden Sie in der [Unterstützungsmatrix](#streaming-protocols-and-encryption-types).*
+
+In diesem Artikel werden Konzepte und Begriffe erläutert, die Ihnen helfen, den Inhaltsschutz mit Media Services zu verstehen.
 
 ## <a name="main-components-of-a-content-protection-system"></a>Hauptkomponenten eines Inhaltsschutzsystems
 
-Für einen erfolgreichen Entwurf Ihres Inhaltsschutzsystems oder Ihrer Inhaltsschutzanwendung müssen Sie mit dem vollständigen Umfang und Aufwand vertraut sein. Die folgende Aufstellung bietet eine Übersicht über drei Komponenten, die Sie implementieren müssen. 
-
-1. Azure Media Services-Code
-  
-   Das [DRM](https://github.com/Azure-Samples/media-services-v3-dotnet-tutorials/blob/master/AMSV3Tutorials/EncryptWithDRM/Program.cs)-Beispiel zeigt Ihnen die Implementierung eines Multi-DRM-Systems mit Media Services v3 über .NET. Zudem zeigt es die Verwendung des Media Services-Diensts zur Lizenz-/Schlüsselbereitstellung. Sie können jedes Medienobjekt mit mehreren Verschlüsselungstypen (AES-128, PlayReady, Widevine, FairPlay) verschlüsseln. Informationen zu sinnvollen Kombinationen finden Sie unter [Streamingprotokolle und Verschlüsselungstypen](#streaming-protocols-and-encryption-types).
-  
-   Das Beispiel veranschaulicht die folgenden Schritte:
-
-   1. Erstellen und konfigurieren Sie [Richtlinien für Inhaltsschlüssel](content-key-policy-concept.md). Sie erstellen eine **Richtlinie für den Inhaltsschlüssel**, um zu konfigurieren, wie der Inhaltsschlüssel (der sicheren Zugriff auf Ihre Medienobjekte bereitstellt) an Endclients übermittelt wird.    
-
-      * Definieren Sie die Autorisierung zur Lizenzbereitstellung, die die Logik der Autorisierungsprüfung basierend auf Ansprüchen in JWT angibt.
-      * Konfigurieren Sie die Lizenzen [PlayReady](playready-license-template-overview.md), [Widevine](widevine-license-template-overview.md) und/oder [FairPlay](fairplay-license-overview.md). Mit den Vorlagen können Sie die Rechte und Berechtigungen für die einzelnen verwendeten DRMs konfigurieren.
-
-        ```
-        ContentKeyPolicyPlayReadyConfiguration playReadyConfig = ConfigurePlayReadyLicenseTemplate();
-        ContentKeyPolicyWidevineConfiguration widevineConfig = ConfigureWidevineLicenseTempate();
-        ContentKeyPolicyFairPlayConfiguration fairPlayConfig = ConfigureFairPlayPolicyOptions();
-        ```
-   2. Erstellen Sie einen [Streaminglocator](streaming-locators-concept.md), der so konfiguriert ist, dass er das verschlüsselte Objekt streamen kann. 
-  
-      Der **Streaminglocator** muss einer [Streamingrichtlinie](streaming-policy-concept.md) zugeordnet sein. In diesem Beispiel wird „StreamingLocator.StreamingPolicyName“ auf die Richtlinie „Predefined_MultiDrmCencStreaming“ festgelegt. Die PlayReady- und Widevine-Verschlüsselungen werden angewendet, und der Schlüssel wird basierend auf den konfigurierten DRM-Lizenzen an den Wiedergabeclient übermittelt. Wenn Sie den Stream auch mit CBCS (FairPlay) verschlüsseln möchten, verwenden Sie „Predefined_MultiDrmStreaming“.
-      
-      Der Streaminglocator wird außerdem der definierten **Richtlinie für den Inhaltsschlüssel** zugeordnet.
-    
-   3. Erstellen Sie einen Testtoken.
-
-      Die **GetTokenAsync**-Methode zeigt, wie Sie einen Testtoken erstellen.
-   4. Erstellen Sie die Streaming-URL.
-
-      Die **GetDASHStreamingUrlAsync**-Methode zeigt, wie Sie die Streaming-URL erstellen. In diesem Fall streamt die URL den **DASH**-Inhalt.
-
-2. Player mit AES- oder DRM-Client. Eine Videoplayer-App basierend auf einem Player-SDK (nativ oder browserbasiert) muss die folgenden Anforderungen erfüllen:
-   * Das Player-SDK unterstützt die erforderlichen DRM-Clients.
-   * Das Player-SDK unterstützt die erforderlichen Streamingprotokolle: Smooth, DASH und/oder HLS.
-   * Das Player-SDK muss die Übergabe eines JWT-Token in die Lizenzerwerbsanforderung verarbeiten können.
-  
-     Sie können mithilfe der [Azure Media Player-API](https://amp.azure.net/libs/amp/latest/docs/) einen Player erstellen. Verwenden Sie die [ProtectionInfo-API von Azure Media Player](https://amp.azure.net/libs/amp/latest/docs/), um anzugeben, welche DRM-Technologie auf unterschiedlichen DRM-Plattformen verwendet werden soll.
-
-     Zum Testen von mit AES oder CENC (Widevine und/oder PlayReady) verschlüsselten Inhalten können Sie [Azure Media Player](https://aka.ms/azuremediaplayer) verwenden. Stellen Sie sicher, dass Sie auf „Erweiterte Optionen“ klicken und Ihre Verschlüsselungsoptionen angeben.
-
-     Wenn Sie mit FairPlay verschlüsselte Inhalte testen möchten, verwenden Sie [diesen Testplayer](https://aka.ms/amtest). Der Player unterstützt Widevine-, PlayReady- und FairPlay-DRMs sowie die AES-128-Verschlüsselung mit unverschlüsselten Schlüsseln. 
-    
-     Sie müssen den richtigen Browser zum Testen der verschiedenen DRMs auswählen: Chrome/Opera/Firefox für Widevine, Microsoft Edge/IE11 für PlayReady, Safari unter macOS für FairPlay.
-
-3. Sicherheitstokendienst (STS), der JSON Web Token (JWT) als Zugriffstoken für den Zugriff auf die Back-End-Ressource ausgibt. Sie können die AMS-Lizenzbereitstellungsdienste als Back-End-Ressource verwenden. Ein Sicherheitstokendienst muss Folgendes definieren:
-
-   * Aussteller und Zielgruppe (oder Gültigkeitsbereich)
-   * Ansprüche, die von Geschäftsanforderungen für den Inhaltsschutz abhängen
-   * Symmetrische oder asymmetrische Überprüfung für die Signaturüberprüfung
-   * Unterstützung des Schlüsselrollovers (sofern erforderlich)
-
-     Sie können [dieses STS-Tool](https://openidconnectweb.azurewebsites.net/DRMTool/Jwt) verwenden, um den Sicherheitstokendienst zu testen. Das Tool unterstützt alle drei Typen von Verifizierungsschlüsseln: symmetrisch, asymmetrisch oder Azure AD mit Schlüsselrollover. 
+Für ein erfolgreiches Abschließen Ihres Inhaltsschutzsystems muss Ihnen der Umfang der Maßnahmen genau bekannt sein. Die folgenden Abschnitte geben eine Übersicht über drei Komponenten, die Sie implementieren müssen. 
 
 > [!NOTE]
-> Es wird dringend empfohlen, jede Komponente umfassend einzurichten und vollständig zu testen (siehe Beschreibung weiter oben), bevor Sie mit der nächsten Komponente fortfahren. Verwenden Sie zum Testen Ihres Inhaltsschutzsystems die in der Aufstellung oben angegebenen Tools.  
+> Es wird dringend empfohlen, dass Sie sich auf jede Komponente in den folgenden Abschnitten konzentrieren und vollständige Tests durchführen, bevor Sie mit der nächsten Komponente fortfahren. Verwenden Sie zum Testen Ihres Inhaltsschutzsystems die in den Abschnitten angegebenen Tools.
+
+### <a name="media-services-code"></a>Media Services-Code
+  
+Das [DRM-Beispiel](https://github.com/Azure-Samples/media-services-v3-dotnet-tutorials/blob/master/AMSV3Tutorials/EncryptWithDRM/Program.cs) zeigt Ihnen die Implementierung eines Multi-DRM-Systems mit Media Services v3 über .NET. Zudem zeigt es die Verwendung des Media Services-Diensts zur Lizenz-/Schlüsselbereitstellung.   
+  
+Sie können jedes Medienobjekt mit mehreren Verschlüsselungstypen (AES-128, PlayReady, Widevine, FairPlay) verschlüsseln. Informationen zu sinnvollen Kombinationen finden Sie unter [Streamingprotokolle und Verschlüsselungstypen](#streaming-protocols-and-encryption-types).
+
+Das Beispiel veranschaulicht die folgenden Schritte:
+
+1. Erstellen und konfigurieren Sie eine [Richtlinie für Inhaltsschlüssel](content-key-policy-concept.md).    
+
+   Sie erstellen eine Richtlinie für Inhaltsschlüssel, um zu konfigurieren, wie der Inhaltsschlüssel (der sicheren Zugriff auf Ihre Medienobjekte bereitstellt) an Endclients übermittelt wird:  
+ 
+   * Definieren Sie die Autorisierung zur Lizenzbereitstellung. Geben Sie die Logik der Autorisierungsprüfung basierend auf Ansprüchen in JSON Web Token (JWT) an.
+   * Konfigurieren Sie die Lizenzen [PlayReady](playready-license-template-overview.md), [Widevine](widevine-license-template-overview.md) und/oder [FairPlay](fairplay-license-overview.md). Mit den Vorlagen können Sie die Rechte und Berechtigungen für die einzelnen DRMs konfigurieren.
+
+     ```
+     ContentKeyPolicyPlayReadyConfiguration playReadyConfig = ConfigurePlayReadyLicenseTemplate();
+     ContentKeyPolicyWidevineConfiguration widevineConfig = ConfigureWidevineLicenseTempate();
+     ContentKeyPolicyFairPlayConfiguration fairPlayConfig = ConfigureFairPlayPolicyOptions();
+     ```
+2. Erstellen Sie einen [Streaminglocator](streaming-locators-concept.md), der so konfiguriert ist, dass er das verschlüsselte Objekt streamen kann. 
+  
+   Der Streaminglocator muss einer [Streamingrichtlinie](streaming-policy-concept.md) zugeordnet sein. In diesem Beispiel wird `StreamingLocator.StreamingPolicyName` auf die Richtlinie „Predefined_MultiDrmCencStreaming“ festgelegt. 
+      
+   Die PlayReady- und Widevine-Verschlüsselungen werden angewendet, und der Schlüssel wird basierend auf den konfigurierten DRM-Lizenzen an den Wiedergabeclient übermittelt. Wenn Sie den Stream auch mit CBCS (FairPlay) verschlüsseln möchten, verwenden Sie die Richtlinie „Predefined_MultiDrmStreaming“.
+
+   Der Streaminglocator wird außerdem der von Ihnen definierten Richtlinie für Inhaltsschlüssel zugeordnet.
+3. Erstellen Sie einen Testtoken.
+
+   Die `GetTokenAsync`-Methode zeigt, wie Sie ein Testtoken erstellen.
+4. Erstellen Sie die Streaming-URL.
+
+   Die `GetDASHStreamingUrlAsync`-Methode zeigt, wie Sie die Streaming-URL erstellen. In diesem Fall streamt die URL den DASH-Inhalt.
+
+### <a name="player-with-an-aes-or-drm-client"></a>Player mit einem AES- oder DRM-Client 
+
+Eine Videoplayer-App basierend auf einem Player-SDK (nativ oder browserbasiert) muss die folgenden Anforderungen erfüllen:
+
+* Das Player-SDK unterstützt die erforderlichen DRM-Clients.
+* Das Player-SDK unterstützt die erforderlichen Streamingprotokolle: Smooth, DASH und/oder HLS.
+* Das Player-SDK kann die Übergabe eines JWT-Tokens in einer Lizenzerwerbsanforderung verarbeiten.
+
+Sie können mithilfe der [Azure Media Player-API](https://amp.azure.net/libs/amp/latest/docs/) einen Player erstellen. Verwenden Sie die [ProtectionInfo-API von Azure Media Player](https://amp.azure.net/libs/amp/latest/docs/), um anzugeben, welche DRM-Technologie auf unterschiedlichen DRM-Plattformen verwendet werden soll.
+
+Zum Testen von mit AES oder CENC (Widevine und/oder PlayReady) verschlüsselten Inhalten können Sie [Azure Media Player](https://aka.ms/azuremediaplayer) verwenden. Stellen Sie sicher, dass Sie **Erweiterte Optionen** auswählen und Ihre Verschlüsselungsoptionen prüfen.
+
+Wenn Sie mit FairPlay verschlüsselte Inhalte testen möchten, verwenden Sie [diesen Testplayer](https://aka.ms/amtest). Der Player unterstützt Widevine-, PlayReady- und FairPlay-DRMs sowie die AES-128-Verschlüsselung mit unverschlüsselten Schlüsseln. 
+
+Wählen Sie den richtigen Browser zum Testen der verschiedenen DRMs aus:
+
+* Chrome, Opera oder Firefox für Widevine
+* Microsoft Edge oder Internet Explorer 11 für PlayReady
+* Safari unter macOS für FairPlay
+
+### <a name="security-token-service"></a>Sicherheitstokendienst
+
+Ein Sicherheitstokendienst (Security Token Service, STS) gibt JWT als Zugriffstoken für den Back-End-Ressourcenzugriff aus. Sie können den Azure Media Services-Diensts zur Lizenz-/Schlüsselbereitstellung als Back-End-Ressource verwenden. Ein Sicherheitstokendienst muss Folgendes definieren:
+
+* Aussteller und Zielgruppe (oder Gültigkeitsbereich)
+* Ansprüche, die von Geschäftsanforderungen für den Inhaltsschutz abhängen
+* Symmetrische oder asymmetrische Überprüfung für die Signaturüberprüfung
+* Unterstützung des Schlüsselrollovers (sofern erforderlich)
+
+Mit [diesem STS-Tool](https://openidconnectweb.azurewebsites.net/DRMTool/Jwt) können Sie den Sicherheitstokendienst testen. Es unterstützt alle drei Typen von Überprüfungsschlüsseln: symmetrisch, asymmetrisch oder Azure Active Directory (Azure AD) mit Schlüsselrollover. 
 
 ## <a name="streaming-protocols-and-encryption-types"></a>Streamingprotokolle und Verschlüsselungstypen
 
-Mit Media Services können Sie Ihre zu übermittelnden Inhalte dynamisch mit unverschlüsselten AES-Schlüsseln oder per DRM-Verschlüsselung über Microsoft PlayReady, Google Widevine oder FairPlay verschlüsseln. Zurzeit können Sie die Streamingformate HTTP Live Streaming (HLS), MPEG DASH und Smooth Streaming verschlüsseln. Jedes Protokoll unterstützt die folgenden Verschlüsselungsmethoden:
+Mit Media Services können Sie Ihre zu übermittelnden Inhalte dynamisch mit unverschlüsselten AES-Schlüsseln oder per DRM-Verschlüsselung über Microsoft PlayReady, Google Widevine oder FairPlay verschlüsseln. Zurzeit können Sie die Streamingformate HTTP Live Streaming (HLS), MPEG DASH und Smooth Streaming verschlüsseln. Jedes Protokoll unterstützt die folgenden Verschlüsselungsmethoden.
 
 ### <a name="hls"></a>HLS
 
@@ -107,7 +127,7 @@ Das HLS-Protokoll unterstützt folgende Containerformate und Verschlüsselungssc
 |MPG2-TS |CENC (PlayReady) |`https://amsv3account-usw22.streaming.media.azure.net/00000000-0000-0000-0000-000000000000/ignite.ism/manifest(format=m3u8-aapl,encryption=cenc)`|
 |CMAF(fmp4) |CENC (PlayReady) |`https://amsv3account-usw22.streaming.media.azure.net/00000000-0000-0000-0000-000000000000/ignite.ism/manifest(format=m3u8-cmaf,encryption=cenc)`|
 
-HLS, CMAF und FairPlay (einschließlich HEVC und H.265) werden auf folgenden Geräten unterstützt:
+HLS/CMAF + FairPlay (einschließlich HEVC/H.265) wird auf folgenden Geräten unterstützt:
 
 * iOS 11 oder höher 
 * iPhone 8 oder höher
@@ -139,33 +159,76 @@ Folgende DRM-Clients werden von gängigen Browsern unterstützt:
 |Browser|Verschlüsselung|
 |---|---|
 |Chrome|Widevine|
-|Edge, Internet Explorer 11|PlayReady|
+|Microsoft Edge, Internet Explorer 11|PlayReady|
 |Firefox|Widevine|
 |Opera|Widevine|
 |Safari|FairPlay|
 
-## <a name="aes-128-clear-key-vs-drm"></a>Unverschlüsselter AES-128-Schlüssel im Vergleich zu DRM
+## <a name="controlling-content-access"></a>Steuern des Inhaltszugriffs
 
-Kunden fragen sich oft, ob sie die AES-Verschlüsselung oder ein DRM-System verwenden sollten. Der Hauptunterschied zwischen den beiden Systemen besteht darin, dass bei der AES-Verschlüsselung der Inhaltsschlüssel während der Übertragung ohne zusätzliche Verschlüsselung (als Klartext) an den Client übertragen wird. So kann der Schlüssel zur Entschlüsselung des Inhalts für den Clientplayer zugänglich gemacht und in einer Netzwerkablaufverfolgung auf dem Client als unverschlüsselter Text angezeigt werden. Die Verschlüsselung mit einem unverschlüsselten AES-128-Schlüssel eignet sich für Anwendungsfälle, in denen der Betrachter vertrauenswürdig ist (z.B. bei Unternehmensvideos, die innerhalb eines Unternehmens verteilt und von Mitarbeitern angesehen werden).
+Sie können steuern, wer Zugriff auf Ihre Inhalte hat, indem Sie die Richtlinie für Inhaltsschlüssel konfigurieren. Media Services unterstützt mehrere Möglichkeiten zur Autorisierung von Benutzern, die Schlüssel anfordern. Sie müssen die Richtlinie für Inhaltsschlüssel konfigurieren. Der Client (Player) muss die Richtlinie erfüllen, bevor der Schlüssel an den Client übermittelt werden kann. Die Richtlinie für Inhaltsschlüssel kann eine *offene* oder eine *Tokeneinschränkung* enthalten. 
 
-DRM-Systeme wie PlayReady, Widevine und FairPlay bieten eine zusätzliche Verschlüsselungsebene für den Schlüssel, der zum Entschlüsseln des Inhalts verwendet wird (im Vergleich zum unverschlüsselten AES-128-Schlüssel). Der Inhaltsschlüssel wird zusätzlich zur Verschlüsselung auf Übertragungsebene durch TLS in einen durch die DRM-Runtime geschützten Schlüssel verschlüsselt. Zusätzlich erfolgt die Entschlüsselung in einer sicheren Umgebung auf Betriebssystemebene, wo ein Angriff durch einen böswilligen Benutzer schwieriger auszuführen ist. DRM wird für Anwendungsfälle empfohlen, in denen der Betrachter möglicherweise nicht vertrauenswürdig ist und Sie ein Höchstmaß an Sicherheit benötigen.
+Eine Richtlinie für Inhaltsschlüssel mit offener Einschränkung kann verwendet werden, wenn Sie eine Lizenz für Personen ohne Autorisierung ausgeben möchten. Beispielsweise wenn Ihr Umsatz AD-basiert und nicht abonnementbasiert ist.  
 
-## <a name="dynamic-encryption-and-key-delivery-service"></a>Dynamische Verschlüsselung und des Schlüsselübermittlungsdienst
+Bei einer Richtlinie für Inhaltsschlüssel mit Tokeneinschränkung wird der Inhaltsschlüssel nur an einen Client gesendet, der in der Lizenz-/Schlüsselanforderung ein gültiges JWT-Token oder ein SWT-Token (Simple Web Token) präsentiert. Dieses Token muss von einem Sicherheitstokendienst (STS) ausgestellt werden. 
 
-In Media Services v3 ist dem Streaminglocator ein Inhaltsschlüssel zugeordnet (siehe [dieses Beispiel](protect-with-aes128.md)). Bei Verwendung des Media Services-Schlüsselübermittlungsdiensts kann der Inhaltsschlüssel durch Azure Media Services generiert werden. Sie sollten den Inhaltsschlüssel selbst generieren, wenn Sie Ihren eigenen Schlüsselbereitstellungsdienst verwenden oder wenn Sie ein Hochverfügbarkeitsszenario verwenden, für das Sie denselben Inhaltsschlüssel in zwei Rechenzentren benötigen.
+Sie können Azure AD als STS verwenden oder einen benutzerdefinierten STS bereitstellen. Der STS muss für die Erstellung eines mit dem angegebenen Schlüssel signierten Tokens und die Ausstellungsansprüche konfiguriert sein, die Sie in der Konfiguration der Tokeneinschränkung angegeben haben. Der Media Services-Dienst zur Lizenz-/Schlüsselbereitstellung gibt die angeforderte Lizenz bzw. den angeforderten Schlüssel an den Client zurück, wenn die beiden folgenden Bedingungen erfüllt sind:
 
-Wenn ein Player einen Stream anfordert, verwendet Media Services den angegebenen Schlüssel, um den Inhalt dynamisch mit einem unverschlüsselten AES-Schlüssel oder per DRM-Verschlüsselung zu verschlüsseln. Um den Stream zu entschlüsseln, fordert der Player den Schlüssel vom Media Services-Schlüsselübermittlungsdienst oder dem von Ihnen angegebenen Schlüsselübermittlungsdienst an. Um zu entscheiden, ob der Benutzer berechtigt ist, den Schlüssel zu erhalten, wertet der Dienst die Richtlinie für Inhaltsschlüssel aus, die Sie für den Schlüssel angegeben haben.
+* Das Token ist gültig. 
+* Die Ansprüche im Token entsprechen denen, die für die Lizenz oder den Schlüssel konfiguriert sind.
 
-Media Services bietet einen Schlüsselübermittlungsdienst zum Übermitteln von DRM-Lizenzen (PlayReady, Widevine und FairPlay) und unverschlüsselten AES-Schlüsseln an autorisierte Clients. Zum Konfigurieren von Autorisierungs- und Authentifizierungsrichtlinien für Ihre Lizenzen und Schlüssel können Sie die REST-API oder eine Media Services-Clientbibliothek verwenden.
+Bei der Konfiguration der Richtlinie mit Tokeneinschränkung müssen die Parameter für den primären Verifizierungsschlüssel (primary verification key), den Aussteller (issuer) und die Zielgruppe (audience) angegeben werden. Der primäre Verifizierungsschlüssel enthält den Schlüssel, mit dem das Token signiert wurde. Der Aussteller ist der Sicherheitstokendienst, der das Token ausstellt. „Audience“ (manchmal auch „Scope“) beschreibt den Verwendungszweck des Tokens oder die Ressource, auf die durch das Token Zugriff gewährt wird. Der Media Services-Dienst zur Lizenz-/Schlüsselbereitstellung überprüft, ob diese Werte im Token mit den Werten in der Vorlage übereinstimmen.
 
-### <a name="custom-key-and-license-acquisition-url"></a>URL für benutzerdefinierte Schlüssel und den Lizenzerwerb
+### <a name="token-replay-prevention"></a>Verhindern der Tokenwiedergabe
 
-Verwenden Sie folgende Vorlagen, wenn Sie einen anderen Schlüssel und Lizenzbereitstellungsdienst (nicht Media Services) festlegen möchten. Die beiden ersetzbaren Felder in den Vorlagen sind vorhanden, damit Sie Ihre Streamingrichtlinie für mehrere Ressourcen freigeben können, anstatt für jede Ressource eine Streamingrichtlinie zu erstellen. 
+Mit der Funktion zum *Verhindern der Tokenwiedergabe* können Media Services-Kunden einen Grenzwert festlegen, wie oft dasselbe Token zum Anfordern eines Schlüssels oder einer Lizenz verwendet werden kann. Der Kunde kann einen Anspruch vom Typ `urn:microsoft:azure:mediaservices:maxuses` im Token hinzufügen, wobei der Wert die Häufigkeit ist, mit der das Token für den Erwerb einer Lizenz oder eines Schlüssels verwendet werden kann. Bei allen nachfolgenden Anforderungen mit demselben Token für die Schlüsselbereitstellung wird eine nicht autorisierte Antwort zurückgegeben. Informationen zum Hinzufügen des Anspruchs finden Sie im [DRM-Beispiel](https://github.com/Azure-Samples/media-services-v3-dotnet-tutorials/blob/master/AMSV3Tutorials/EncryptWithDRM/Program.cs#L601).
+ 
+#### <a name="considerations"></a>Überlegungen
 
-* EnvelopeEncryption.CustomKeyAcquisitionUrlTemplate: Vorlage für die URL des benutzerdefinierten Diensts, der Schlüssel für die Player der Endbenutzer bereitstellt. Diese ist nicht erforderlich, wenn Sie Azure Media Services für das Ausstellen von Schlüsseln verwenden. Die Vorlage unterstützt ersetzbare Token, die der Dienst zur Laufzeit mit dem Wert für die Anforderung aktualisiert.  Die derzeit unterstützten Werte für Token sind {AlternativeMediaId} (wird durch den Wert von StreamingLocatorId.AlternativeMediaId ersetzt) und {ContentKeyId} (wird durch den Wert des Bezeichners des angeforderten Schlüssels ersetzt).
-* StreamingPolicyPlayReadyConfiguration.CustomLicenseAcquisitionUrlTemplate: Vorlage für die URL des benutzerdefinierten Diensts, der Lizenzen für die Player der Endbenutzer bereitstellt. Diese ist nicht erforderlich, wenn Sie Azure Media Services für das Ausstellen von Lizenzen verwenden. Die Vorlage unterstützt ersetzbare Token, die der Dienst zur Laufzeit mit dem Wert für die Anforderung aktualisiert. Die derzeit unterstützten Werte für Token sind {AlternativeMediaId} (wird durch den Wert von StreamingLocatorId.AlternativeMediaId ersetzt) und {ContentKeyId} (wird durch den Wert des Bezeichners des angeforderten Schlüssels ersetzt). 
-* StreamingPolicyWidevineConfiguration.CustomLicenseAcquisitionUrlTemplate: Identische Funktionsweise wie die oben behandelte Vorlage, gilt jedoch für Widevine. 
-* StreamingPolicyFairPlayConfiguration.CustomLicenseAcquisitionUrlTemplate: Identische Funktionsweise wie die oben behandelte Vorlage, gilt jedoch für FairPlay.  
+* Kunden müssen die Kontrolle über die Tokengenerierung haben. Der Anspruch muss in das Token selbst eingefügt werden.
+* Bei Verwendung dieser Funktion werden Anforderungen mit Token, deren Ablaufzeit mehr als eine Stunde vor dem Zeitpunkt liegt, zu dem die Anforderung empfangen wird, werden mit der Antwort „nicht autorisiert“ abgelehnt.
+* Token werden durch ihre Signatur eindeutig identifiziert. Jede Änderung an der Nutzlast (z.B. eine Aktualisierung der Ablaufzeit oder des Anspruchs) ändert die Signatur des Tokens, und es zählt als ein neues Token, das bei der Schlüsselbereitstellung zuvor noch nicht aufgetreten ist.
+* Die Wiedergabe schlägt fehl, wenn das Token den vom Kunden festgelegten `maxuses`-Wert überschritten hat.
+* Diese Funktion kann für alle vorhandenen geschützten Inhalte verwendet werden (nur das ausgegebene Token muss geändert werden).
+* Diese Funktion kann sowohl mit JWT als auch mit SWT verwendet werden.
+
+## <a name="using-a-custom-sts"></a>Verwenden eines benutzerdefinierten Sicherheitstokendienst
+
+Möglicherweise möchte ein Kunde einen benutzerdefinierten Sicherheitstokendienst zum Bereitstellen von Token verwenden. Hierfür kann es folgende Gründe geben:
+
+* Der vom Kunden verwendete IDP-Dienst unterstützt den Sicherheitstokendienst nicht. In diesem Fall kann ein benutzerdefinierter Sicherheitstokendienst eine mögliche Option sein.
+* Der Kunde benötigt möglicherweise eine flexiblere oder strengere Kontrolle bei der Integration des Sicherheitstokendiensts in das Abrechnungssystem des Kunden für Abonnenten. Ein MVPD-Anbieter (Multichannel Video Programming Distributor) stellt ggf. mehrere OTT-Abonnentenpakete bereit, z.B. „Premium“, „Standard“, „Sport“ usw. Der Programmanbieter möchte die Ansprüche in einem Token mit dem Paket eines Abonnenten abgleichen, sodass nur die Inhalte in einem bestimmten Paket zur Verfügung gestellt werden. In diesem Fall bietet ein benutzerdefinierter STS die erforderliche Flexibilität und Kontrolle.
+* Einfügen benutzerdefinierter Ansprüche in das Token, um zwischen verschiedenen ContentKeyPolicyOptions mit unterschiedlichen DRM-Lizenzparametern (Abonnementlizenz oder Mietlizenz) auszuwählen.
+* Einfügen eines Anspruchs, der den Bezeichner des Inhaltsschlüssels darstellt, auf den das Token den Zugriff ermöglicht.
+
+Wenn Sie einen benutzerdefinierten Sicherheitstokendienst verwenden, müssen Sie zwei Änderungen vornehmen:
+
+* Wenn Sie den Lizenzbereitstellungsdienst für ein Medienobjekt konfigurieren, müssen Sie anstelle des aktuellen Schlüssels aus Azure AD Sicherheitsschlüssel angeben, der vom benutzerdefinierten Sicherheitstokendienst zur Überprüfung verwendet wird.
+* Wenn ein JWT generiert wird, wird anstelle des privaten Schlüssels des aktuellen X.509-Zertifikats in Azure AD ein Sicherheitsschlüssel angegeben.
+
+Es gibt zwei Arten von Sicherheitsschlüsseln:
+
+* Symmetrischer Schlüssel: Um ein JWT zu generieren und zu überprüfen, wird ein und derselbe Schlüssel verwendet.
+* Asymmetrischer Schlüssel: Ein Paar aus öffentlichem und privatem Schlüssel in einem X.509-Zertifikat wird mit einem privaten Schlüssel verwendet, um ein JWT zu verschlüsseln und zu generieren. Das gleiche Paar wird mit dem öffentlichen Schlüssel verwendet, um das Token zu überprüfen.
+
+Bei Verwendung von .NET Framework/C# als Entwicklungsplattform muss das X.509-Zertifikat für einen asymmetrischen Sicherheitsschlüssel eine Schlüssellänge von mindestens 2048 aufweisen. Dies ist eine Voraussetzung für die „System.IdentityModel.Tokens.X509AsymmetricSecurityKey“--Klasse in .NET Framework. Andernfalls wird die folgende Ausnahme ausgelöst: IDX10630: "System.IdentityModel.Tokens.X509AsymmetricSecurityKey" für die Signierung darf nicht kleiner als 2.048s Bit sein.
+
+## <a name="custom-key-and-license-acquisition-url"></a>URL für benutzerdefinierte Schlüssel und den Lizenzerwerb
+
+Verwenden Sie folgende Vorlagen, wenn Sie einen anderen Lizenz-/Schlüsselbereitstellungsdienst (nicht Media Services) festlegen möchten. Die beiden ersetzbaren Felder in den Vorlagen sind vorhanden, damit Sie Ihre Streamingrichtlinie für mehrere Ressourcen freigeben können, anstatt für jede Ressource eine Streamingrichtlinie zu erstellen. 
+
+* `EnvelopeEncryption.CustomKeyAcquisitionUrlTemplate`: Vorlage für die URL des benutzerdefinierten Diensts, der Schlüssel für die Player der Endbenutzer bereitstellt. Diese ist nicht erforderlich, wenn Sie Azure Media Services für das Ausstellen von Schlüsseln verwenden. 
+
+   Die Vorlage unterstützt ersetzbare Token, die der Dienst zur Laufzeit mit dem Wert für die Anforderung aktualisiert.  Folgende Tokenwerte werden derzeit unterstützt:
+   * `{AlternativeMediaId}`, der durch den Wert von „StreamingLocatorId.AlternativeMediaId“ ersetzt wird.
+   * `{ContentKeyId}`, der durch den Wert des Bezeichners des angeforderten Schlüssels ersetzt wird.
+* `StreamingPolicyPlayReadyConfiguration.CustomLicenseAcquisitionUrlTemplate`: Vorlage für die URL des benutzerdefinierten Diensts, der Lizenzen für die Player der Endbenutzer bereitstellt. Diese ist nicht erforderlich, wenn Sie Azure Media Services für das Ausstellen von Lizenzen verwenden. 
+
+   Die Vorlage unterstützt ersetzbare Token, die der Dienst zur Laufzeit mit dem Wert für die Anforderung aktualisiert. Folgende Tokenwerte werden derzeit unterstützt:  
+   * `{AlternativeMediaId}`, der durch den Wert von „StreamingLocatorId.AlternativeMediaId“ ersetzt wird.
+   * `{ContentKeyId}`, der durch den Wert des Bezeichners des angeforderten Schlüssels ersetzt wird. 
+* `StreamingPolicyWidevineConfiguration.CustomLicenseAcquisitionUrlTemplate`: Entspricht der vorherigen Vorlage, nur für Widevine. 
+* `StreamingPolicyFairPlayConfiguration.CustomLicenseAcquisitionUrlTemplate`: Entspricht der vorherigen Vorlage, nur für FairPlay.  
 
 Beispiel:
 
@@ -173,37 +236,15 @@ Beispiel:
 streamingPolicy.EnvelopEncryption.customKeyAcquisitionUrlTemplate = "https://mykeyserver.hostname.com/envelopekey/{AlternativeMediaId}/{ContentKeyId}";
 ```
 
-`ContentKeyId` enthält den Wert des angeforderten Schlüssels, und `AlternativeMediaId` kann verwendet werden, wenn Sie die Anforderung einer Ihrer Entitäten zuordnen möchten. `AlternativeMediaId` kann beispielsweise verwendet werden, um nach Berechtigungen zu suchen.
+`ContentKeyId` enthält den Wert des angeforderten Schlüssels. Sie können `AlternativeMediaId` verwenden, wenn Sie die Anforderung einer Ihrer Entitäten zuordnen möchten. `AlternativeMediaId` kann beispielsweise verwendet werden, um nach Berechtigungen zu suchen.
 
-Unter [Streaming Policies - Create (Streamingrichtlinien: Erstellung)](https://docs.microsoft.com/rest/api/media/streamingpolicies/create) finden Sie REST-Beispiele, in denen URLs für benutzerdefinierte Schlüssel und den Lizenzerwerb verwendet werden.
-
-## <a name="control-content-access"></a>Steuern des Zugriffs auf Inhalte
-
-Sie können steuern, wer Zugriff auf Ihre Inhalte hat, indem Sie die Richtlinie für Inhaltsschlüssel konfigurieren. Media Services unterstützt mehrere Möglichkeiten zur Autorisierung von Benutzern, die Schlüssel anfordern. Sie müssen die Richtlinie für Inhaltsschlüssel konfigurieren. Der Client (Player) muss die Richtlinie erfüllen, bevor der Schlüssel an den Client übermittelt werden kann. Die Richtlinie für Inhaltsschlüssel kann eine **offene** oder eine **Tokeneinschränkung** enthalten. 
-
-Bei einer Richtlinie mit Tokeneinschränkung wird der Inhaltsschlüssel nur an einen Client gesendet, der in der Schlüssel-/Lizenzanforderung ein gültiges JWT (JSON Web Token) oder SWT (Simple Web Token) präsentiert. Dieses Token muss von einem Sicherheitstokendienst ausgestellt werden. Sie können Azure Active Directory als Sicherheitstokendienst verwenden oder einen benutzerdefinierten Sicherheitstokendienst bereitstellen. Der STS muss für die Erstellung eines mit dem angegebenen Schlüssel signierten Tokens und die Ausstellungsansprüche konfiguriert sein, die Sie in der Konfiguration der Tokeneinschränkung angegeben haben. Der Schlüsselübermittlungsdienst von Media Services gibt den angeforderten Schlüssel bzw. die Lizenz an den Client zurück, wenn das Token gültig ist und die Ansprüche im Token mit den für den Schlüssel bzw. die Lizenz konfigurierten Ansprüchen übereinstimmen.
-
-Bei der Konfiguration der Richtlinie mit Tokeneinschränkung müssen die Parameter für den primären Verifizierungsschlüssel (primary verification key), den Aussteller (issuer) und die Zielgruppe (audience) angegeben werden. Der primäre Verifizierungsschlüssel enthält den Schlüssel, mit dem das Token signiert wurde. Der Aussteller ist der Sicherheitstokendienst, der das Token ausstellt. „Audience“ (manchmal auch „Scope“) beschreibt den Verwendungszweck des Tokens oder die Ressource, auf die durch das Token Zugriff gewährt wird. Der Schlüsselübermittlungsdienst von Media Services überprüft, ob die Werte im Token mit den Werten in der Vorlage übereinstimmen.
-
-Benutzer verwenden häufig einen benutzerdefinierten Sicherheitstokendienst, um benutzerdefinierte Ansprüche in das Token einzufügen. Dadurch kann zwischen verschiedenen ContentKeyPolicyOptions mit unterschiedlichen DRM-Lizenzparametern (Abonnementlizenz oder Mietlizenz) ausgewählt oder ein Anspruch eingefügt werden, der den Bezeichner des Inhaltsschlüssels darstellt, auf den das Token den Zugriff ermöglicht.
- 
-## <a name="storage-side-encryption"></a>Speicherseitige Verschlüsselung
-
-Zum Schutz Ihrer im Ruhezustand befindlichen Ressourcen sollten die Ressourcen durch die speicherseitige Verschlüsselung verschlüsselt werden. Die folgende Tabelle zeigt, wie die speicherseitige Verschlüsselung in Media Services v3 funktioniert:
-
-|Verschlüsselungsoption|BESCHREIBUNG|Media Services v3|
-|---|---|---|
-|Media Services-Speicherverschlüsselung| AES-256-Verschlüsselung, Schlüssel von Media Services verwaltet|Nicht unterstützt<sup>(1)</sup>|
-|[Speicherdienstverschlüsselung für ruhende Daten](https://docs.microsoft.com/azure/storage/common/storage-service-encryption)|Durch Azure Storage angebotene serverseitige Verschlüsselung – Schlüssel wird von Azure oder vom Kunden verwaltet|Unterstützt|
-|[Clientseitige Storage-Verschlüsselung](https://docs.microsoft.com/azure/storage/common/storage-client-side-encryption)|Durch Azure Storage angebotene clientseitige Verschlüsselung – Schlüssel wird vom Kunden in Key Vault verwaltet|Nicht unterstützt|
-
-<sup>1</sup> In Media Services v3 wird Speicherverschlüsselung (AES-256-Verschlüsselung) nur für die Abwärtskompatibilität unterstützt, wenn Ihre Ressourcen mit Media Services v2 erstellt wurden. Dies bedeutet, dass v3 mit vorhandenen speicherverschlüsselten Ressourcen funktioniert, jedoch nicht die Erstellung neuer zulässt.
+ Unter [Streaming Policies – Create](https://docs.microsoft.com/rest/api/media/streamingpolicies/create) (Streamingrichtlinien: Erstellung) finden Sie REST-Beispiele, in denen URLs für den benutzerdefinierten Lizenz-/Schlüsselerwerb verwendet werden.
 
 ## <a name="troubleshoot"></a>Problembehandlung
 
 Wenn der Fehler `MPE_ENC_ENCRYPTION_NOT_SET_IN_DELIVERY_POLICY` angezeigt wird, überprüfen Sie, ob Sie die richtige Streamingrichtlinie angegeben haben.
 
-Bei Fehlern, die auf `_NOT_SPECIFIED_IN_URL` enden, sollten Sie sicherstellen, dass Sie das Verschlüsselungsformat in der URL angeben. Beispiel: `…/manifest(format=m3u8-cmaf,encryption=cbcs-aapl)`. Weitere Informationen finden Sie unter [Streamingprotokolle und Verschlüsselungstypen](#streaming-protocols-and-encryption-types).
+Bei Fehlern, die auf `_NOT_SPECIFIED_IN_URL` enden, sollten Sie sicherstellen, dass Sie das Verschlüsselungsformat in der URL angeben. Ein Beispiel ist `…/manifest(format=m3u8-cmaf,encryption=cbcs-aapl)`. Weitere Informationen finden Sie unter [Streamingprotokolle und Verschlüsselungstypen](#streaming-protocols-and-encryption-types).
 
 ## <a name="ask-questions-give-feedback-get-updates"></a>Fragen stellen, Feedback geben, Updates abrufen
 
@@ -214,5 +255,6 @@ Im Artikel [Azure Media Services-Community](media-services-community.md) finden 
 * [Schutz durch AES-Verschlüsselung](protect-with-aes128.md)
 * [Schutz mit DRM](protect-with-drm.md)
 * [Entwurf eines Multi-DRM-Inhaltsschutzsystems mit Zugriffssteuerung](design-multi-drm-system-with-access-control.md)
+* [Speicherseitige Verschlüsselung](storage-account-concept.md#storage-side-encryption)
 * [Häufig gestellte Fragen](frequently-asked-questions.md)
 

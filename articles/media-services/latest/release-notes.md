@@ -11,12 +11,12 @@ ms.workload: na
 ms.topic: article
 ms.date: 06/07/2019
 ms.author: juliako
-ms.openlocfilehash: b3e772ebb05f79abb70e58e63a93c3336a413e38
-ms.sourcegitcommit: 5bdd50e769a4d50ccb89e135cfd38b788ade594d
+ms.openlocfilehash: c730f41d1dbc48c6622d0a2ba43c32dd1a96c24c
+ms.sourcegitcommit: f5075cffb60128360a9e2e0a538a29652b409af9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/03/2019
-ms.locfileid: "67542552"
+ms.lasthandoff: 07/18/2019
+ms.locfileid: "68311804"
 ---
 # <a name="azure-media-services-v3-release-notes"></a>Versionshinweise zu Azure Media Services v3
 
@@ -33,6 +33,14 @@ Damit Sie bezüglich der aktuellen Entwicklungen auf dem neuesten Stand bleiben,
 > Derzeit können Sie das Azure-Portal nicht für die Verwaltung von v3-Ressourcen verwenden. Verwenden Sie die [REST-API](https://aka.ms/ams-v3-rest-sdk), CLI oder eines der unterstützten SDKs.
 
 Weitere Informationen finden Sie unter [Hinweise zur Migration von Media Services v2 zu v3](migrate-from-v2-to-v3.md#known-issues).
+
+## <a name="july-2019"></a>Juli 2019
+
+### <a name="content-protection"></a>Content Protection
+
+Beim Streamen von Inhalten, die mittels Tokeneinschränkung geschützt sind, benötigen Endbenutzer ein Token, das im Rahmen der Schlüsselübermittlungsanforderung gesendet wird. Mit dem Feature zum *Verhindern der Tokenwiedergabe* können Media Services-Kunden einen Grenzwert festlegen, der bestimmt, wie oft ein Token zum Anfordern eines Schlüssels oder einer Lizenz verwendet werden kann. Weitere Informationen finden Sie unter [Token Replay Prevention](content-protection-overview.md#token-replay-prevention) (Verhindern der Tokenwiedergabe).
+
+Dieses Feature steht aktuell in „USA, Mitte“ und in „USA, Westen-Mitte“ zur Verfügung.
 
 ## <a name="june-2019"></a>Juni 2019
 

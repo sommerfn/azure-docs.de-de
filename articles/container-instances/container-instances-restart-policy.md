@@ -3,16 +3,17 @@ title: Verwenden von Neustartrichtlinien mit Aufgaben in Containern in Azure Con
 description: Hier erfahren Sie, wie Sie mit Azure Container Instances Aufgaben ausführen, die bis zum Abschluss ausgeführt werden, z.B. bei Build-, Test- oder Image-Rendering-Aufträgen.
 services: container-instances
 author: dlepow
+manager: gwallace
 ms.service: container-instances
 ms.topic: article
 ms.date: 04/15/2019
 ms.author: danlep
-ms.openlocfilehash: 06872eefd0d500a22214109ad5055dd236b5a6ac
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 4fe5d9a20249a17030e0ccfa34f6a4f183be0d82
+ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60608125"
+ms.lasthandoff: 07/18/2019
+ms.locfileid: "68325677"
 ---
 # <a name="run-containerized-tasks-with-restart-policies"></a>Ausführen von Aufgaben in Containern mit Neustartrichtlinien
 
@@ -20,7 +21,7 @@ Da Container in Azure Container Instances sehr schnell und bequem bereitgestellt
 
 Mit einer konfigurierbaren Neustartrichtlinie können Sie angeben, dass Container beendet werden, wenn ihre Prozesse abgeschlossen wurden. Da Containerinstanzen nach Sekunden abgerechnet werden, fallen nur Gebühren für die Computerressourcen an, die beim Ausführen des Containers verwendet werden, der Ihre Aufgabe ausführt.
 
-In den Beispielen in diesem Artikel wird die Azure-Befehlszeilenschnittstelle (Azure CLI) verwendet. Sie benötigen eine [lokale Installation][azure-cli-install] von Azure CLI, Version 2.0.21 oder höher, oder Sie verwenden die Befehlszeilenschnittstelle in der [Azure Cloud Shell](../cloud-shell/overview.md).
+In den Beispielen in diesem Artikel wird die Azure-Befehlszeilenschnittstelle (Azure CLI) verwendet. Sie benötigen Azure CLI-Version 2.0.21 oder höher mit einer [lokalen Installation][azure-cli-install], oder Sie verwenden die CLI in der [Azure Cloud Shell](../cloud-shell/overview.md).
 
 ## <a name="container-restart-policy"></a>Container-Neustartrichtlinie
 
@@ -34,7 +35,7 @@ Wenn Sie eine [Containergruppe](container-instances-container-groups.md) in Azur
 
 ## <a name="specify-a-restart-policy"></a>Angeben einer Neustartrichtlinie
 
-Wie Sie eine Richtlinie für den Neustart angeben, hängt davon ab, wie Sie die Containerinstanzen erstellen, z.B. mit der Azure CLI, Azure PowerShell-Cmdlets oder im Azure-Portal. Geben Sie in der Azure CLI den `--restart-policy`-Parameter an, wenn Sie [az container create][az-container-create] aufrufen.
+Wie Sie eine Richtlinie für den Neustart angeben, hängt davon ab, wie Sie die Containerinstanzen erstellen, z.B. mit der Azure CLI, Azure PowerShell-Cmdlets oder im Azure-Portal. Geben Sie in der Azure-Befehlszeilenschnittstelle den Parameter `--restart-policy` an, wenn Sie [az container create][az-container-create] aufrufen.
 
 ```azurecli-interactive
 az container create \
@@ -46,9 +47,9 @@ az container create \
 
 ## <a name="run-to-completion-example"></a>Beispiel für das Ausführen bis zum Abschluss
 
-Um die Richtlinie für den Neustart in der Praxis zu sehen, erstellen Sie eine Containerinstanz aus dem Microsoft-Image [aci-wordcount][aci-wordcount-image], und geben Sie die Neustartrichtlinie `OnFailure` an. Bei diesem Beispielcontainer wird ein Python-Skript ausgeführt, das standardmäßig den Text von Shakespeares [Hamlet](http://shakespeare.mit.edu/hamlet/full.html) analysiert, die 10 häufigsten Wörter an STDOUT schreibt und dann beendet wird.
+Erstellen Sie eine Containerinstanz auf der Grundlage des Microsoft-Images [aci-wordcount][aci-wordcount-image], und geben Sie die Neustartrichtlinie `OnFailure` an, um die Neustartrichtlinie in Aktion zu sehen. Bei diesem Beispielcontainer wird ein Python-Skript ausgeführt, das standardmäßig den Text von Shakespeares [Hamlet](http://shakespeare.mit.edu/hamlet/full.html) analysiert, die 10 häufigsten Wörter an STDOUT schreibt und dann beendet wird.
 
-Führen Sie den Beispielcontainer mit dem folgenden [az container create][az-container-create]-Befehl aus:
+Führen Sie den Beispielcontainer mithilfe des folgenden Befehls vom Typ [az container create][az-container-create] aus:
 
 ```azurecli-interactive
 az container create \
@@ -58,7 +59,7 @@ az container create \
     --restart-policy OnFailure
 ```
 
-Azure Container Instances startet den Container und beendet ihn dann, wenn die Anwendung (oder wie in diesem Fall das Skript) beendet wird. Wenn Azure Container Instances einen Container beendet, dessen Neustartrichtlinie `Never` oder `OnFailure` lautet, wird der Status des Containers auf **Beendet** festgelegt. Sie können den Status des Containers mit dem Befehl [az container show][az-container-show] überprüfen:
+Azure Container Instances startet den Container und beendet ihn dann, wenn die Anwendung (oder wie in diesem Fall das Skript) beendet wird. Wenn Azure Container Instances einen Container beendet, dessen Neustartrichtlinie `Never` oder `OnFailure` lautet, wird der Status des Containers auf **Beendet** festgelegt. Der Status eines Containers kann mithilfe des Befehls [az container show][az-container-show] überprüft werden:
 
 ```azurecli-interactive
 az container show --resource-group myResourceGroup --name mycontainer --query containers[0].instanceView.currentState.state

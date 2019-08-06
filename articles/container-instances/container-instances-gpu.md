@@ -3,17 +3,17 @@ title: Bereitstellen GPU-fähiger Azure-Containerinstanzen
 description: Erfahren Sie, wie Sie Azure-Containerinstanzen zur Ausführung auf GPU-Ressourcen bereitstellen.
 services: container-instances
 author: dlepow
-manager: jeconnoc
+manager: gwallace
 ms.service: container-instances
 ms.topic: article
 ms.date: 04/17/2019
 ms.author: danlep
-ms.openlocfilehash: 5073b68f6ef3de330671e3ea25056e0cae976360
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 300e9b82d578663a4d2ada3889a07d8b03051cc5
+ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60583809"
+ms.lasthandoff: 07/18/2019
+ms.locfileid: "68325952"
 ---
 # <a name="deploy-container-instances-that-use-gpu-resources"></a>Bereitstellen von Containerinstanzen, die GPU-Ressourcen verwenden
 
@@ -22,7 +22,7 @@ Zum Ausführen bestimmter rechenintensiver Workloads auf Azure Container Instanc
 In diesem Artikel wird veranschaulicht, wie Sie beim Bereitstellen einer Containergruppe GPU-Ressourcen mithilfe einer [YAML-Datei](container-instances-multi-container-yaml.md) oder [Resource Manager-Vorlage](container-instances-multi-container-group.md) hinzufügen. Sie können außerdem GPU-Ressourcen angeben, wenn Sie eine Containerinstanz über das Azure-Portal bereitstellen.
 
 > [!IMPORTANT]
-> Dieses Feature befindet sich derzeit in der Vorschauphase. Es gelten einige [Einschränkungen](#preview-limitations). Wenn Sie Vorschauversionen nutzen möchten, müssen Sie die [zusätzlichen Nutzungsbedingungen][terms-of-use] akzeptieren. Einige Aspekte dieses Features werden bis zur allgemeinen Verfügbarkeit unter Umständen noch geändert.
+> Dieses Feature befindet sich derzeit in der Vorschauphase. Es gelten einige [Einschränkungen](#preview-limitations). Vorschauversionen werden Ihnen zur Verfügung gestellt, wenn Sie die [zusätzlichen Nutzungsbedingungen][terms-of-use] akzeptieren. Einige Aspekte dieses Features werden bis zur allgemeinen Verfügbarkeit unter Umständen noch geändert.
 
 ## <a name="preview-limitations"></a>Einschränkungen der Vorschau
 
@@ -93,7 +93,7 @@ properties:
   restartPolicy: OnFailure
 ```
 
-Stellen Sie die Containergruppe mit dem Befehl [az container create][az-container-create] bereit, wobei Sie den YAML-Dateinamen als Parameter `--file` angeben. Sie müssen den Namen einer Ressourcengruppe und einen Speicherort für die Containergruppe (z. B. *eastus*) angeben, der GPU-Ressourcen unterstützt.  
+Stellen Sie die Containergruppe mithilfe des Befehls [az container create][az-container-create] bereit, und geben Sie dabei für den Parameter `--file` den YAML-Dateinamen an. Sie müssen den Namen einer Ressourcengruppe und einen Speicherort für die Containergruppe (z. B. *eastus*) angeben, der GPU-Ressourcen unterstützt.  
 
 ```azurecli
 az container create --resource-group myResourceGroup --file gpu-deploy-aci.yaml --location eastus
@@ -118,7 +118,7 @@ Done
 
 ## <a name="resource-manager-template-example"></a>Beispiel mit Resource Manager-Vorlage
 
-Eine weitere Möglichkeit, eine Containergruppe mit GPU-Ressourcen bereitzustellen, ist die Verwendung einer [Resource Manager-Vorlage](container-instances-multi-container-group.md). Erstellen Sie zunächst eine Datei mit dem Namen `gpudeploy.json`, und fügen Sie dann den folgende JSON-Code ein. In diesem Beispiel wird eine Containerinstanz mit einer V100-GPU bereitgestellt, die einen [TensorFlow](https://www.tensorflow.org/versions/r1.1/get_started/mnist/beginners)-Trainingsauftrag für das [MNIST-Dataset](http://yann.lecun.com/exdb/mnist/) ausführt. Die Ressourcenanforderungen reichen zum Ausführen der Workload aus.
+Eine weitere Möglichkeit, eine Containergruppe mit GPU-Ressourcen bereitzustellen, ist die Verwendung einer [Resource Manager-Vorlage](container-instances-multi-container-group.md). Erstellen Sie zunächst eine Datei mit dem Namen `gpudeploy.json`, und fügen Sie dann den folgende JSON-Code ein. In diesem Beispiel wird eine Containerinstanz mit einer V100-GPU bereitgestellt, die einen [TensorFlow](https://www.tensorflow.org/)-Trainingsauftrag für die MNIST-Datenbank ausführt. Die Ressourcenanforderungen reichen zum Ausführen der Workload aus.
 
 ```JSON
 {
@@ -211,7 +211,7 @@ Adding run metadata for 999
 
 ## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
 
-Da die Verwendung von GPU-Ressourcen teuer sein kann, stellen Sie sicher, dass Ihre Container nicht unbeabsichtigt über einen längeren Zeitraum ausgeführt werden. Überwachen Sie Ihre Container im Azure-Portal, oder überprüfen Sie den Status einer Containergruppe mit dem Befehl [az container show][az-container-show]. Beispiel:
+Da die Verwendung von GPU-Ressourcen teuer sein kann, stellen Sie sicher, dass Ihre Container nicht unbeabsichtigt über einen längeren Zeitraum ausgeführt werden. Überwachen Sie Ihre Container im Azure-Portal, oder überprüfen Sie den Status einer Containergruppe mithilfe des Befehls [az container show][az-container-show]. Beispiel:
 
 ```azurecli
 az container show --resource-group myResourceGroup --name gpucontainergroup --output table
