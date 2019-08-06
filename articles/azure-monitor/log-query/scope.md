@@ -6,14 +6,14 @@ author: bwren
 manager: carmonm
 ms.service: log-analytics
 ms.topic: conceptual
-ms.date: 06/19/2019
+ms.date: 06/25/2019
 ms.author: bwren
-ms.openlocfilehash: a948b80f6524339f0908a2fb19c4a83d70b3b140
-ms.sourcegitcommit: 2d3b1d7653c6c585e9423cf41658de0c68d883fa
+ms.openlocfilehash: e67dcb1236fd5ef113835dfe99de444fc2594481
+ms.sourcegitcommit: 9dc7517db9c5817a3acd52d789547f2e3efff848
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/20/2019
-ms.locfileid: "67296869"
+ms.lasthandoff: 07/23/2019
+ms.locfileid: "68405746"
 ---
 # <a name="log-query-scope-and-time-range-in-azure-monitor-log-analytics"></a>Protokollabfragebereich und Zeitbereich in Azure Monitor Log Analytics
 Wenn Sie eine [Protokollabfrage](log-query-overview.md) in [Log Analytics im Azure-Portal](get-started-portal.md) ausführen, sind die von der Abfrage ausgewerteten Daten von dem von Ihnen ausgewählten Bereich und Zeitbereich abhängig. In diesem Artikel wird der Bereich, der Zeitbereich und das Festlegen dieser Bereiche je nach Ihren Anforderungen beschrieben. Außerdem erfahren Sie mehr über das Verhalten von verschiedenen Bereichstypen.
@@ -49,6 +49,19 @@ Sie können die folgenden Befehle in einer Abfrage nicht verwenden, wenn diese e
 - [app](app-expression.md)
 - [workspace](workspace-expression.md)
  
+
+## <a name="query-limits"></a>Abfragegrenzwerte
+Möglicherweise bestehen Ihre Geschäftsanforderungen an eine Azure-Ressource darin, Daten in mehrere Log Analytics-Arbeitsbereiche zu schreiben. Der Arbeitsbereich muss sich nicht in derselben Region wie die Ressource befinden, und in einem einzelnen Arbeitsbereich könnten Daten aus Ressourcen in einer Vielzahl von Regionen gesammelt werden.  
+
+Das Festlegen des Bereichs auf eine Ressource oder eine Gruppe von Ressourcen ist ein besonderes Leistungsfeature von Log Analytics, da dies Ihnen die automatische Konsolidierung verteilter Daten in einer einzelnen Abfrage ermöglicht. Es kann die Leistung jedoch erheblich beeinträchtigen, wenn Daten aus Arbeitsbereichen in mehreren Azure-Regionen abgerufen werden müssen.
+
+Log Analytics schützt vor übermäßigem Mehraufwand durch Abfragen, die Arbeitsbereiche in mehreren Regionen umfassen, indem eine Warnung oder Fehlermeldung ausgegeben wird, wenn eine bestimmte Anzahl von Regionen verwendet wird. Ihre Abfrage empfängt eine Warnung, wenn der Bereich Arbeitsbereiche in mindestens 5 Regionen enthält. Sie wird zwar weiterhin ausgeführt, aber ihre Ausführung kann übermäßig lange dauern.
+
+![Abfragewarnung](media/scope/query-warning.png)
+
+Die Ausführung Ihrer Abfrage wird blockiert, wenn der Bereich Arbeitsbereiche in mindestens 20 Regionen umfasst. In diesem Fall werden Sie aufgefordert, die Anzahl der Arbeitsbereichsregionen zu verringern und erneut zu versuchen, die Abfrage auszuführen. In der Dropdownliste werden alle Regionen im Bereich der Abfrage angezeigt, und Sie sollten die Anzahl der Regionen verringern, bevor Sie versuchen, die Abfrage erneut auszuführen.
+
+![Fehler bei Abfrage](media/scope/query-failed.png)
 
 
 ## <a name="time-range"></a>Zeitbereich

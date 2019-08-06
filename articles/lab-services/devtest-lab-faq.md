@@ -12,14 +12,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/19/2019
+ms.date: 07/18/2019
 ms.author: spelluru
-ms.openlocfilehash: a46d816c04d9f5629c2ee9538016d42c53f9a331
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: fb66fa2d4a6a03841fa057c4d1982b7bf4c6976d
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66244389"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68565332"
 ---
 # <a name="azure-devtest-labs-faq"></a>Häufig gestellte Fragen zu Azure DevTest Labs
 Im Folgenden werden einige der am häufigsten gestellten Fragen zu Azure DevTest Labs beantwortet.
@@ -46,7 +46,7 @@ Unser Twitter-Handle: [@azlabservices](https://twitter.com/azlabservices)
 ### <a name="what-if-my-question-isnt-answered-here"></a>Was kann ich tun, wenn meine Frage hier nicht beantwortet wird?
 Wenn Ihre Frage hier nicht aufgeführt wird, informieren Sie uns, damit wir Ihnen helfen können, eine Antwort zu finden.
 
-- Veröffentlichen Sie eine Frage am Ende dieses Artikels zu häufig gestellten Fragen. Tauschen Sie sich mit dem Azure Cache-Team und anderen Communitymitgliedern über diesen Artikel aus.
+- Veröffentlichen Sie eine Frage am Ende dieses Artikels zu häufig gestellten Fragen. 
 - Um eine größere Zielgruppe zu erreichen, veröffentlichen Sie eine Frage im [Azure DevTest Labs MSDN-Forum](https://social.msdn.microsoft.com/Forums/azure/home?forum=AzureDevTestLabs). Tauschen Sie sich mit dem Azure DevTest Labs-Team und anderen Communitymitgliedern aus.
 - Um Funktionsanforderungen einzureichen, übermitteln Sie Ihre Anfragen und Ideen an [Azure DevTest Labs User Voice](https://feedback.azure.com/forums/320373-azure-devtest-labs).
 
@@ -390,6 +390,19 @@ VM-Bereitstellungsfehler werden in Aktivitätsprotokollen erfasst. Sie finden di
 
 Gelegentlich tritt der Bereitstellungsfehler vor Beginn der VM-Bereitstellung auf. Dies ist beispielsweise der Fall, wenn das Abonnementlimit für eine Ressource, die mit der VM erstellt wurde, überschritten wird. In diesem Fall werden die Fehlerdetails in den Aktivitätsprotokollen auf Labebene erfasst. Aktivitätsprotokolle befinden sich im unteren Bereich der Einstellungen von **Konfiguration und Richtlinien**. Weitere Informationen zum Verwenden von Aktivitätsprotokollen in finden Sie unter [Anzeigen von Aktivitätsprotokollen, um Aktionen an Ressourcen zu überwachen](../azure-resource-manager/resource-group-audit.md).
 
+### <a name="why-do-i-get-location-is-not-available-for-resource-type-error-when-trying-to-create-a-lab"></a>Warum erhalte ich die Fehlermeldung, dass der Speicherort für den Ressourcentyp nicht verfügbar sei, wenn ich versuche, ein Lab zu erstellen?
+Möglicherweise wird eine Fehlermeldung ähnlich der folgenden angezeigt, wenn Sie versuchen, ein Lab zu erstellen: 
 
+```
+The provided location 'australiacentral' is not available for resource type 'Microsoft.KeyVault/vaults'. List of available regions for the resource type is 'northcentralus,eastus,northeurope,westeurope,eastasia,southeastasia,eastus2,centralus,southcentralus,westus,japaneast,japanwest,australiaeast,australiasoutheast,brazilsouth,centralindia,southindia,westindia,canadacentral,canadaeast,uksouth,ukwest,westcentralus,westus2,koreacentral,koreasouth,francecentral,southafricanorth
+```
+
+Sie können diesen Fehler beheben, indem Sie einen der folgenden Schritte ausführen:
+
+#### <a name="option-1"></a>Option 1:
+Überprüfen Sie die Verfügbarkeit des Ressourcentyps in Azure-Regionen auf der Seite [Verfügbare Produkte nach Region](https://azure.microsoft.com/global-infrastructure/services/). Wenn der Ressourcentyp in einer bestimmten Region nicht verfügbar ist, unterstützt DevTest Labs die Erstellung eines Labs in dieser Region nicht. Wählen Sie beim Erstellen des Labs eine andere Region aus. 
+
+#### <a name="option-2"></a>Option 2:
+Wenn der Ressourcentyp in Ihrer Region verfügbar ist, überprüfen Sie, ob er in Ihrem Abonnement registriert ist. Dies kann auf der Ebene des Abonnementbesitzers erfolgen, wie in [diesem Artikel](../azure-resource-manager/resource-manager-supported-services.md) gezeigt. 
 
 

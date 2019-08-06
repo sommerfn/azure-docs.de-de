@@ -4,23 +4,25 @@ description: Es wird beschrieben, wie Sie die Registrierungsrichtlinie für die 
 services: active-directory
 ms.service: active-directory
 ms.subservice: identity-protection
-ms.topic: article
+ms.topic: conceptual
 ms.date: 05/01/2019
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.author: joflore
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 434d07163713a139b42a5dbe1664f81dafc2a1ca
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 27ff7512bb3f9422ed4c8edd7ab50fce23f0ed07
+ms.sourcegitcommit: a0b37e18b8823025e64427c26fae9fb7a3fe355a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67108939"
+ms.lasthandoff: 07/25/2019
+ms.locfileid: "68499561"
 ---
 # <a name="how-to-configure-the-azure-multi-factor-authentication-registration-policy"></a>Anleitung: Konfigurieren der Registrierungsrichtlinie für die mehrstufige Authentifizierung in Azure
 
-Azure AD Identity Protection unterstützt Sie beim Verwalten des Rollouts der Registrierung für die mehrstufige Authentifizierung (Multi-Factor Authentication, MFA), indem eine Richtlinie für bedingten Zugriff zur Anforderung der MFA-Registrierung konfiguriert wird – und dies unabhängig von der App, bei der Sie sich anmelden möchten. In diesem Artikel wird beschrieben, wofür die Richtlinie verwendet werden kann und wie sie konfiguriert wird.
+Azure AD Identity Protection unterstützt Sie beim Verwalten des Rollouts der Registrierung für die mehrstufige Authentifizierung (Multi-Factor Authentication, MFA): Es wird eine Richtlinie für bedingten Zugriff zur Anforderung der MFA-Registrierung konfiguriert – unabhängig davon, bei welcher App mit moderner Authentifizierung Sie sich anmelden möchten. In diesem Artikel wird beschrieben, wofür die Richtlinie verwendet werden kann und wie sie konfiguriert wird.
+
+
 
 ## <a name="what-is-the-azure-multi-factor-authentication-registration-policy"></a>Was ist die Registrierungsrichtlinie für die mehrstufige Authentifizierung in Azure (Azure Multi-Factor Authentication)?
 
@@ -58,6 +60,8 @@ Nehmen Sie beim Konfigurieren der MFA-Registrierungsrichtlinie die folgenden Kon
 - **Speichern** Sie die Richtlinie.
 
 ## <a name="user-experience"></a>Benutzererfahrung
+
+Azure Active Directory Identity Protection fordert Ihre Benutzer auf, sich bei der nächsten interaktiven Anmeldung zu registrieren.
 
 Eine Übersicht über die zugehörige Benutzeroberfläche finden Sie unter:
 

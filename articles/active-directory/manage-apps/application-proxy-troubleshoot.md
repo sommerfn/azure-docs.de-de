@@ -16,22 +16,23 @@ ms.author: mimart
 ms.reviewer: japere
 ms.custom: H1Hack27Feb2017; it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2cac7e3ba458caad9c373160be1b66e2a665088a
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: 6cf5b6d4cadf4592fbaa19c89a969b20e9eb69b6
+ms.sourcegitcommit: 198c3a585dd2d6f6809a1a25b9a732c0ad4a704f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67440455"
+ms.lasthandoff: 07/23/2019
+ms.locfileid: "68424266"
 ---
 # <a name="troubleshoot-application-proxy-problems-and-error-messages"></a>Beheben von Problemen mit Anwendungsproxys und Fehlermeldungen
+
+Bei der Behandlung von Problemen mit dem Anwendungsproxy sollten Sie sich zunächst mit dem Ablauf der Fehlerbehebung vertraut machen, [Debuggen von Problemen mit Anwendungsproxyconnectors](application-proxy-debug-connectors.md), um zu ermitteln, ob die Anwendungsproxyconnectors richtig konfiguriert wurden. Falls Sie immer noch Probleme mit dem Herstellen der Verbindung mit der Anwendung haben, helfen Ihnen die Problembehandlungsschritte unter [Debuggen von Problemen mit Anwendungsproxyanwendungen](application-proxy-debug-apps.md) weiter.
+
 Wenn beim Zugriff auf eine veröffentlichte Anwendung oder beim Veröffentlichen von Anwendungen Fehler auftreten, überprüfen Sie die folgenden Optionen, um zu ermitteln, ob der Microsoft Azure AD-Anwendungsproxy ordnungsgemäß funktioniert:
 
-* Öffnen Sie die Windows Services-Konsole, und vergewissern Sie sich, dass der Dienst **Microsoft AAD-Anwendungsproxy-Connector** aktiviert ist und ausgeführt wird. Sie können gegebenenfalls auch – wie in der folgenden Abbildung gezeigt – die Eigenschaftenseite des Anwendungsproxy-Diensts anzeigen:  
+* Öffnen Sie die Windows-Dienste-Konsole. Vergewissern Sie sich, dass der Dienst **Microsoft AAD-Anwendungsproxy-Connector** aktiviert ist und ausgeführt wird. Sie können gegebenenfalls auch – wie in der folgenden Abbildung gezeigt – die Eigenschaftenseite des Anwendungsproxy-Diensts anzeigen:  
   ![Screenshot: Fenster mit Microsoft AAD-Anwendungsproxy-Connector-Eigenschaften](./media/application-proxy-troubleshoot/connectorproperties.png)
 * Öffnen Sie die Ereignisanzeige, und suchen Sie unter **Anwendungs- und Dienstprotokolle** > **Microsoft** > **AadApplicationProxy** > **Connector** > **Administrator** nach Ereignissen, die sich auf den Anwendungsproxy-Connector beziehen.
 * Bei Bedarf sind ausführlichere Protokolle verfügbar, indem Sie [die Sitzungsprotokolle des Anwendungsproxy-Connectors aktivieren](application-proxy-connectors.md#under-the-hood).
-
-Bei der Behandlung von Problemen mit dem Anwendungsproxy sollten Sie sich zunächst mit dem Ablauf der Fehlerbehebung vertraut machen, [Debuggen von Problemen mit Anwendungsproxyconnectors](application-proxy-debug-connectors.md), um zu ermitteln, ob die Anwendungsproxyconnectors richtig konfiguriert wurden. Falls Sie immer noch Probleme mit dem Herstellen der Verbindung mit der Anwendung haben, helfen Ihnen die Problembehandlungsschritte unter [Debuggen von Problemen mit Anwendungsproxyanwendungen](application-proxy-debug-apps.md) weiter.
 
 ## <a name="the-page-is-not-rendered-correctly"></a>Die Seite wird nicht richtig gerendert
 Möglicherweise treten Probleme mit dem Rendern der Anwendung oder einer fehlerhaften Funktionsweise auf, ohne dass Sie spezifische Fehlermeldungen erhalten. Dies kann der Fall sein, wenn Sie den Artikelpfad veröffentlicht haben, für die Anwendung aber Inhalt erforderlich ist, der außerhalb des Pfads vorliegt.

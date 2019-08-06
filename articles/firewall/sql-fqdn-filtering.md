@@ -5,14 +5,14 @@ services: firewall
 author: vhorne
 ms.service: firewall
 ms.topic: article
-ms.date: 7/17/2019
+ms.date: 07/19/2019
 ms.author: victorh
-ms.openlocfilehash: 6dbc855fb1eb2ee9bcd292c896706b31f819aa5a
-ms.sourcegitcommit: a6873b710ca07eb956d45596d4ec2c1d5dc57353
+ms.openlocfilehash: 239998f29ac9a578174c5dba547bb24ba0755505
+ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68253126"
+ms.lasthandoff: 07/18/2019
+ms.locfileid: "68318188"
 ---
 # <a name="configure-azure-firewall-application-rules-with-sql-fqdns"></a>Konfigurieren von Azure Firewall-Anwendungsregeln mit SQL-FQDNs
 
@@ -32,8 +32,7 @@ Mit SQL-FQDNs können Sie Datenverkehr wie folgt filtern:
 Während der Public Preview-Phase wird die SQL-FQDN-Filterung nur im [Proxymodus](https://docs.microsoft.com/azure/sql-database/sql-database-connectivity-architecture#connection-policy) unterstützt (Port 1433). Wenn Sie SQL im standardmäßigen Umleitungsmodus verwenden, können Sie zur Filterung des Zugriffs das SQL-Diensttag im Rahmen von [Netzwerkregeln](overview.md#network-traffic-filtering-rules) verwenden.
 Wenn Sie nicht standardmäßige Ports für SQL-IaaS-Datenverkehr verwenden, können Sie diese Ports in den Firewallanwendungsregeln konfigurieren.
 
-> [!NOTE]
-> Anwendungsregeln mit SQL-FQDNs stehen derzeit in allen Regionen über die Azure-Befehlszeilenschnittstelle, über REST und über Vorlagen zur Verfügung. Die Portalbenutzeroberfläche wird den Regionen nach und nach hinzugefügt und ist nach Abschluss des Rollouts in allen Regionen verfügbar.
+Anwendungsregeln mit SQL-FQDNs stehen derzeit in allen Regionen über Azure-Portal, Azure-Befehlszeilenschnittstelle, REST und Vorlagen zur Verfügung.
 
 ## <a name="configure-using-azure-cli"></a>Konfigurieren über die Azure-Befehlszeilenschnittstelle
 

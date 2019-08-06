@@ -10,12 +10,12 @@ ms.topic: reference
 ms.date: 09/10/2018
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 67770661f0660b9a84d16bbbc7d86cfcbca2cfdf
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 5ab2b11749aa57065a1a4d688b02fed97731ab7c
+ms.sourcegitcommit: c72ddb56b5657b2adeb3c4608c3d4c56e3421f2c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66511583"
+ms.lasthandoff: 07/24/2019
+ms.locfileid: "68464743"
 ---
 # <a name="buildingblocks"></a>BuildingBlocks
 
@@ -66,7 +66,9 @@ Das **BuildingBlocks**-Element enthält die folgenden Elemente, die in der angeg
     - Vergleichen von zwei Ansprüchen und Zurückgeben eines Anspruchs mit TRUE, wodurch angegeben wird, ob zwei Ansprüche übereinstimmen. Andernfalls wird FALSE zurückgegeben.
     - Erstellen eines String-Anspruchs aus dem angegebenen Parameter in der Richtlinie.
     - Erstellen einer zufälligen Zeichenfolge mithilfe des Zufallszahlengenerators.
-    - Formatieren eines Anspruchs anhand der angegebenen Formatzeichenfolge. Diese Transformation verwenden die C#-Methode `String.Format`.
+    - Formatieren eines Anspruchs anhand der angegebenen Formatzeichenfolge. Bei dieser Transformation wird die C#-Methode `String.Format` verwendet.
+    
+- InputValidation – Mit diesem Element können Sie boolesche Aggregationen ähnlich wie *and* und *or* durchführen.
 
 - [ContentDefinitions:](contentdefinitions.md) Enthält URLs für HTML5-Vorlagen zur Verwendung in Ihrer User Journey. In einer benutzerdefinierten Richtlinie definiert eine Inhaltsdefinition den URI der HTML5-Seite, die für einen angegebenen Schritt in der User Journey verwendet wird. Dies könnten beispielsweise die Seiten für das Registrieren oder Anmelden oder das Zurücksetzen des Kennworts oder Fehlerseiten sein. Sie können das Aussehen und Verhalten durch Überschreiben von LoadUri für die HTML5-Datei ändern. Alternativ können Sie neue Inhaltsdefinitionen gemäß Ihrer Anforderungen erstellen. Dieses Element kann einen Verweis auf lokalisierte Ressourcen in Form einer Lokalisierungs-ID enthalten.
 

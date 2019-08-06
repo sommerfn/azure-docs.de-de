@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/22/2018
 ms.author: allensu
-ms.openlocfilehash: 3c5459d0474ecd45501e634c4777fa178386183c
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 8815d852ad9f8a1823e1c21cc2d233409518da33
+ms.sourcegitcommit: e9c866e9dad4588f3a361ca6e2888aeef208fc35
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67071154"
+ms.lasthandoff: 07/19/2019
+ms.locfileid: "68333790"
 ---
 # <a name="nested-traffic-manager-profiles"></a>Geschachtelte Traffic Manager-Profile
 
@@ -94,6 +94,20 @@ Angenommen, Sie verwenden Traffic Manager, um den Datenverkehr nahtlos zwischen 
 Die Überwachungseinstellungen in einem Traffic Manager-Profil gelten für alle Endpunkte innerhalb eines Profils. Bei geschachtelten Profilen können Sie für jede Website ein anderes untergeordnetes Profil verwenden, um unterschiedliche Überwachungseinstellungen zu definieren.
 
 ![Traffic Manager-Endpunktüberwachung mit separaten Einstellungen für jeden Endpunkt][10]
+
+## <a name="faqs"></a>Häufig gestellte Fragen
+
+* [Wie konfiguriere ich geschachtelte Profile?](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#traffic-manager-endpoint-monitoring)
+
+* [Wie viele Schachtelungsebenen werden in Traffic Manager unterstützt?](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#how-many-layers-of-nesting-does-traffic-manger-support)
+
+* [Kann ich andere Endpunkttypen mit geschachtelten untergeordneten Profilen im gleichen Traffic Manager-Profil kombinieren?](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#can-i-mix-other-endpoint-types-with-nested-child-profiles-in-the-same-traffic-manager-profile)
+
+* [Wie wird das Abrechnungsmodell auf geschachtelte Profile angewendet?](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#how-does-the-billing-model-apply-for-nested-profiles)
+
+* [Wirken sich geschachtelte Profile auf die Leistung aus?](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#is-there-a-performance-impact-for-nested-profiles)
+
+* [Wie berechnet Traffic Manager die Integrität eines geschachtelten Endpunkts in einem übergeordneten Profil?](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#how-does-traffic-manager-compute-the-health-of-a-nested-endpoint-in-a-parent-profile)
 
 ## <a name="next-steps"></a>Nächste Schritte
 

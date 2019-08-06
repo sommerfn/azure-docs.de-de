@@ -1,6 +1,6 @@
 ---
 title: Arbeiten mit Sicherheitsrichtlinien | Microsoft-Dokumentation
-description: In diesem Artikel ist beschrieben, wie Sie mit Sicherheitsrichtlinien i Azure Security Center arbeiten.
+description: In diesem Artikel ist beschrieben, wie Sie mit Sicherheitsrichtlinien in Azure Security Center arbeiten.
 services: security-center
 documentationcenter: na
 author: monhaber
@@ -13,14 +13,14 @@ ms.topic: conceptual
 ms.custom: mvc
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 5/05/2019
+ms.date: 7/18/2019
 ms.author: v-mohabe
-ms.openlocfilehash: 7ff05421222ff0f4312d703366cfd443eee06450
-ms.sourcegitcommit: 978e1b8cac3da254f9d6309e0195c45b38c24eb5
+ms.openlocfilehash: 4550532d36753d9b8ed472193bc833855ddd34c9
+ms.sourcegitcommit: da0a8676b3c5283fddcd94cdd9044c3b99815046
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/03/2019
-ms.locfileid: "67551732"
+ms.lasthandoff: 07/18/2019
+ms.locfileid: "68314918"
 ---
 # <a name="working-with-security-policies"></a>Arbeiten mit Sicherheitsrichtlinien
 
@@ -71,7 +71,7 @@ Zeigen Sie Ihre Sicherheitsrichtlinien in Security Center wie folgt an:
    Auf dem Bildschirm **Richtlinienverwaltung** können Sie die Anzahl von Verwaltungsgruppen, Abonnements und Arbeitsbereichen sowie Ihre Verwaltungsgruppenstruktur anzeigen.
 
    > [!NOTE]
-   > - Im Security Center-Dashboard wird unter **Abonnementabdeckung** ggf. eine höhere Anzahl von Abonnements als unter **Richtlinienverwaltung** angezeigt. Unter der „Abonnementabdeckung“ wird die Anzahl von Abonnements vom Typ „Standard“, „Free“ und „Nicht abgedeckt“ angezeigt. Für Abonnements vom Typ „Nicht abgedeckt“ ist Security Center nicht aktiviert, und sie werden unter **Richtlinienverwaltung** nicht angezeigt.
+   > Im Security Center-Dashboard wird unter **Abonnementabdeckung** ggf. eine höhere Anzahl von Abonnements als unter **Richtlinienverwaltung** angezeigt. Unter der „Abonnementabdeckung“ wird die Anzahl von Abonnements vom Typ „Standard“, „Free“ und „Nicht abgedeckt“ angezeigt. Für Abonnements vom Typ „Nicht abgedeckt“ ist Security Center nicht aktiviert, und sie werden unter **Richtlinienverwaltung** nicht angezeigt.
    >
 
 2. Wählen Sie das Abonnement oder die Verwaltungsgruppe aus, zu dem bzw. der Sie die Richtlinien anzeigen möchten.
@@ -84,10 +84,10 @@ Zeigen Sie Ihre Sicherheitsrichtlinien in Security Center wie folgt an:
    ![Bildschirm mit Richtlinien](./media/security-center-policies/policy-screen.png)
 
 > [!NOTE]
-> - Beim Anzeigen von zugewiesenen Richtlinien können Sie mehrere Zuweisungen sehen und die jeweilige Konfiguration der Zuweisungen auch einzeln prüfen.
+> Beim Anzeigen von zugewiesenen Richtlinien können Sie mehrere Zuweisungen sehen und die jeweilige Konfiguration der Zuweisungen auch einzeln prüfen.
 
 ## <a name="edit-security-policies"></a>Bearbeiten von Sicherheitsrichtlinien
-Sie können die Standardsicherheitsrichtlinie für jedes Ihrer Azure-Abonnements und jede Verwaltungsgruppe in [Azure Policy](../governance/policy/tutorials/create-and-manage.md) bearbeiten. Eine Sicherheitsrichtlinie kann nur von einem Besitzer, Mitwirkenden oder Systemadministrator des Abonnements oder der enthaltenden Verwaltungsgruppe geändert werden.
+Sie können die Standardsicherheitsrichtlinie für jedes Ihrer Azure-Abonnements und jede Verwaltungsgruppe in [Azure Policy](../governance/policy/tutorials/create-and-manage.md) bearbeiten. Eine Sicherheitsrichtlinie kann nur von einem Besitzer oder Sicherheitsadministrator des Abonnements oder der enthaltenden Verwaltungsgruppe geändert werden.
 
 Eine Anleitung zur Bearbeitung einer Sicherheitsrichtlinie in Azure Policy finden Sie unter [Erstellen und Verwalten von Richtlinien zur Konformitätserzwingung](../governance/policy/tutorials/create-and-manage.md).
 
@@ -145,6 +145,7 @@ Ersetzen Sie diese Variablen in den folgenden Beispielen:
 
 In diesem Beispiel wird gezeigt, wie Sie die integrierte Security Center-Initiative einem Abonnement oder einer Verwaltungsgruppe zuweisen:
  
+ ```
     PUT  
     https://management.azure.com/{scope}/providers/Microsoft.Authorization/policyAssignments/{policyAssignmentName}?api-version=2018-05-01 
 
@@ -169,6 +170,7 @@ In diesem Beispiel wird gezeigt, wie Sie die integrierte Security Center-Initiat
     } 
 
     } 
+ ```
 
 In diesem Beispiel wird gezeigt, wie Sie die integrierte Security Center-Initiative einem Abonnement zuweisen, wobei die folgenden Richtlinien deaktiviert sind: 
 
@@ -178,7 +180,7 @@ In diesem Beispiel wird gezeigt, wie Sie die integrierte Security Center-Initiat
 
 - Endpunktschutz (Endpoint Protection) („endpointProtectionMonitoringEffect“) 
 
-
+ ```
     PUT https://management.azure.com/{scope}/providers/Microsoft.Authorization/policyAssignments/{policyAssignmentName}?api-version=2018-05-01 
     
     Request Body (JSON) 
@@ -210,12 +212,12 @@ In diesem Beispiel wird gezeigt, wie Sie die integrierte Security Center-Initiat
      } 
     
     } 
-
+ ```
 In diesem Beispiel wird gezeigt, wie Sie eine Zuweisung entfernt wird:
-
+ ```
     DELETE   
     https://management.azure.com/{scope}/providers/Microsoft.Authorization/policyAssignments/{policyAssignmentName}?api-version=2018-05-01 
-
+ ```
 
 ### Referenz der Richtliniennamen <a name="policy-names"></a>
 

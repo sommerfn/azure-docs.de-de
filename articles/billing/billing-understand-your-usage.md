@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/24/2019
 ms.author: banders
-ms.openlocfilehash: 2eb9f8e19be2a7b6220bc34bf4ce0c72c4ac0b4f
-ms.sourcegitcommit: a52d48238d00161be5d1ed5d04132db4de43e076
+ms.openlocfilehash: 66b54c027cde6341b23aef2c10b43fa21bf357da
+ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/20/2019
-ms.locfileid: "67275057"
+ms.lasthandoff: 07/22/2019
+ms.locfileid: "68383461"
 ---
 # <a name="understand-the-terms-in-your-azure-usage-and-charges-file"></a>Grundlegendes zu den Bedingungen in der Datei für die Azure-Nutzung und -Gebühren
 
@@ -33,7 +33,7 @@ Nutzungsbasierte Bezahlung (Pay-as-you-go, PAYG) | Ja | Nein | Nein | Nein
 Weitere Informationen zu Marketplace-Bestellungen (auch als externe Dienstleistungen bezeichnet) finden Sie unter [Grundlegendes zu Azure-Gebühren für externe Dienste](billing-understand-your-azure-marketplace-charges.md).
 
 Anweisungen für den Download finden Sie unter [Abrufen von Azure-Rechnungen und täglichen Nutzungsdaten](billing-download-azure-invoice-daily-usage-date.md).
-Die Datei für die Nutzung und Gebühren ist im Dateiformat mit kommagetrennten Werten (CSV) verfügbar, das Sie in einem Tabellenkalkulationsprogramm öffnen können.
+Sie können Ihre Nutzungs- und Gebühren-CSV-Datei in Microsoft Excel oder einer anderen Tabellenkalkulationsanwendung öffnen.
 
 ## <a name="list-of-terms-and-descriptions"></a>Liste der Begriffe und Beschreibungen
 
@@ -42,82 +42,91 @@ Die Liste umfasst Konten für nutzungsbasierte Bezahlung (Pay-as-you-go, PAYG), 
 
 Begriff | Kontotyp | BESCHREIBUNG
 --- | --- | ---
-AccountName | EA | Anzeigename des Registrierungskontos.
-AccountOwnerId | EA | Eindeutiger Bezeichner für das Registrierungskonto.
+AccountName | EA, PAYG | Anzeigename des EA-Registrierungs- oder PAYG-Abrechnungskontos.
+AccountOwnerId | EA, PAYG | Eindeutiger Bezeichner des EA-Registrierungs- oder PAYG-Abrechnungskontos.
 AdditionalInfo | Alle | Dienstspezifische Metadaten. Dies kann beispielsweise ein Imagetyp für einen virtuellen Computer sein.
-BillingAccountId | EA, MCA | Eindeutiger Bezeichner für das Stammabrechnungskonto.
-BillingAccountName | EA, MCA | Name des Abrechnungskontos.
-BillingCurrency | EA, MCA | Dem Abrechnungskonto zugeordnete Währung.
-BillingPeriod | EA | Abrechnungszeitraum der Gebühren.
-BillingPeriodEndDate | EA, MCA | Enddatum des Abrechnungszeitraums.
-BillingPeriodStartDate | EA, MCA | Startdatum des Abrechnungszeitraums.
-BillingProfileId | EA, MCA | Eindeutiger Bezeichner des EA-Registrierungs- oder MCA-Abrechnungsprofils.
-BillingProfileName | EA, MCA | Name des EA-Registrierungs- oder MCA-Abrechnungsprofils.
-ChargeType | EA, MCA | Gibt an, ob die Gebühren die Nutzung (**Nutzung**), einen Kauf (**Einkauf**) oder eine Erstattung (**Rückerstattung**) darstellt.
-ConsumedQuantity | Nutzungsbasierte Zahlung | Siehe „Quantity“.
+BillingAccountId | Alle | Eindeutiger Bezeichner für das Stammabrechnungskonto.
+BillingAccountName | Alle | Name des Abrechnungskontos.
+BillingCurrency | Alle | Dem Abrechnungskonto zugeordnete Währung.
+BillingPeriod | EA, PAYG | Abrechnungszeitraum der Gebühren.
+BillingPeriodEndDate | Alle | Enddatum des Abrechnungszeitraums.
+BillingPeriodStartDate | Alle | Startdatum des Abrechnungszeitraums.
+BillingProfileId | Alle | Eindeutiger Bezeichner des EA-Registrierungs-, PAYG-Abonnement-, MCA-Abrechnungsprofil- oder konsolidierten AWS-Kontos.
+BillingProfileName | Alle | Name des EA-Registrierungs-, PAYG-Abonnement-, MCA-Abrechnungsprofil- oder konsolidierten AWS-Kontos.
+ChargeType | Alle | Gibt an, ob die Gebühren die Nutzung (**Nutzung**), einen Kauf (**Einkauf**) oder eine Erstattung (**Rückerstattung**) darstellt.
 ConsumedService | Alle | Name des Diensts, dem die Gebühren zugeordnet sind.
-Kosten | EA | Siehe „CostInBillingCurrency“.
 CostCenter | EA, MCA | Die Kostenstelle, die im Abonnement für die Nachverfolgung der Kosten festgelegt wurde (nur in offenen Abrechnungszeiträumen für MCA-Konten verfügbar).
+Kosten | EA, PAYG | Siehe „CostInBillingCurrency“.
 CostInBillingCurrency | MCA | Kosten der Gebühren in der Abrechnungswährung vor Gutschriften oder Steuern.
 CostInPricingCurrency | MCA | Kosten der Gebühren in der Preiswährung vor Gutschriften oder Steuern.
-Currency | Nutzungsbasierte Zahlung | Siehe „BillingCurrency“.
-Date | EA, MCA | Verbrauchs- oder Kaufdatum der Gebühren.
+Currency | EA, PAYG | Siehe „BillingCurrency“.
+Date | Alle | Verbrauchs- oder Kaufdatum der Gebühren.
+EffectivePrice | Alle | Gemischter Einzelpreis für den Zeitraum. Mit den gemischten Preisen wird aus allen Einzelpreisschwankungen (wie z.B. abgestuftem Tiering) der Durchschnitt ermittelt, wodurch der Preis sinkt, da die Menge im Laufe der Zeit wächst.
 ExchangeRateDate | MCA | Datum, an dem der Wechselkurs festgelegt wurde.
 ExchangeRatePricingToBilling | MCA | Der für die Umrechnung der Kosten aus der Preiswährung in die Abrechnungswährung verwendete Wechselkurs.
-Frequency | EA, MCA | Gibt an, ob eine Gebühr sich voraussichtlich wiederholt. Gebühren fallen entweder einmal (**OneTime**), wiederholt monatlich oder jährlich (**Recurring**) oder basierend auf der Nutzung (**UsageBased**) an.
+Frequency | Alle | Gibt an, ob eine Gebühr sich voraussichtlich wiederholt. Gebühren fallen entweder einmal (**OneTime**), wiederholt monatlich oder jährlich (**Recurring**) oder basierend auf der Nutzung (**UsageBased**) an.
 IncludedQuantity | Nutzungsbasierte Zahlung | Die Menge der Verbrauchseinheit, die kostenlos in Ihrem Abrechnungszeitraum inbegriffen ist.
 InstanceId | PAGY | Siehe „ResourceId“.
-InvoiceId | EA, MCA | Die eindeutige Dokument-ID, die in der PDF-Datei für die Rechnung aufgeführt ist.
+InvoiceId | PAYG, MCA | Die eindeutige Dokument-ID, die in der PDF-Datei für die Rechnung aufgeführt ist.
 InvoiceSection | MCA | Siehe „InvoiceSectionName“.
 InvoiceSectionId | EA, MCA | Eindeutiger Bezeichner für EA-Abteilung oder MCA-Rechnungsabschnitt.
 InvoiceSectionName | EA, MCA | Name für EA-Abteilung oder MCA-Rechnungsabschnitt.
-IsAzureCreditEligible | EA, MCA | Gibt an, ob die Gebühr mit einer Azure-Gutschrift bezahlt werden kann (Werte: True, False).
-IsEstimated | Alle | Gibt an, ob der Abrechnungszeitraum geschlossen/beendet wird. Bis die Rechnung erstellt wird, können die Nutzungsdaten während des Abrechnungszeitraums schwanken. Diese Datensätze werden als „Geschätzt“ markiert.
-Location | EA, MCA | Standort des Rechenzentrums, in dem die Ressource ausgeführt wird.
+IsAzureCreditEligible | Alle | Gibt an, ob die Gebühr mit einer Azure-Gutschrift bezahlt werden kann (Werte: True, False).
+Location | MCA | Standort des Rechenzentrums, in dem die Ressource ausgeführt wird.
 MeterCategory | Alle | Name der Klassifizierungskategorie der Verbrauchseinheit. Beispiele: *Clouddienste* und *Netzwerk*.
 MeterId | Alle | Der eindeutige Bezeichner für die Verbrauchseinheit.
 MeterName | Alle | Der Name der Verbrauchseinheit.
 MeterRegion | Alle | Der Name des Standorts des Rechenzentrums für auf Basis des Standorts abgerechnete Dienste. Siehe „Location“.
 MeterSubCategory | Alle | Name der Unterklassifizierungskategorie der Verbrauchseinheit.
-OfferId | EA, MCA | Der Name des erworbenen Angebots.
-PartNumber | EA | Der Bezeichner, der verwendet wird, um bestimmte Verbrauchseinheitspreise zu erhalten.
-PlanName | EA | Name des Marketplace-Plans.
+OfferId | Alle | Der Name des erworbenen Angebots.
+PartNumber | EA, PAYG | Der Bezeichner, der verwendet wird, um bestimmte Verbrauchseinheitspreise zu erhalten.
+PlanName | EA, PAYG | Name des Marketplace-Plans.
 PreviousInvoiceId | MCA | Verweis auf die ursprüngliche Rechnung, wenn es sich bei diesem Posten um eine Rückerstattung handelt.
 PricingCurrency | MCA | Währung, die verwendet wird, wenn die Bewertung basierend auf vereinbarten Preisen erfolgt.
-Produkt | MCA | Siehe „ProductName“.
-ProductId | EA, MCA | Der eindeutige Bezeichner für das Produkt.
-ProductName | EA | Der Name des Produkts.
-ProductOrderId | EA, MCA | Der eindeutige Bezeichner für die Produktbestellung.
-ProductOrderName | EA, MCA | Der eindeutige Name für die Produktbestellung.
-PublisherName | EA, MCA | Herausgeber für Marketplace-Dienste.
-PublisherType | EA, MCA | Art des Herausgebers (Werte: firstParty, thirdPartyReseller, thirdPartyAgency).
-Menge | EA, MCA | Die Anzahl der erworbenen oder genutzten Einheiten.
-Rate | Nutzungsbasierte Zahlung | Siehe „UnitPrice“.
+Produkt | Alle | Der Name des Produkts.
+ProductId | MCA | Der eindeutige Bezeichner für das Produkt.
+ProductOrderId | Alle | Der eindeutige Bezeichner für die Produktbestellung.
+ProductOrderName | Alle | Der eindeutige Name für die Produktbestellung.
+PublisherName | Alle | Herausgeber für Marketplace-Dienste.
+PublisherType | Alle | Typ des Herausgebers (Werte: **Azure**, **AWS**, **Marketplace**).
+Menge | Alle | Die Anzahl der erworbenen oder genutzten Einheiten.
 ReservationId | EA, MCA | Der eindeutige Bezeichner für die erworbene Reservierungsinstanz.
 ReservationName | EA, MCA | Der Name der erworbenen Reservierungsinstanz.
-ResourceGroupId | EA, MCA | Der eindeutiger Bezeichner für die [Ressourcengruppe](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview), in der sich die Ressource befindet.
-ResourceGroupName | EA, MCA | Name der [Ressourcengruppe](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview), in der sich die Ressource befindet.
-resourceId | EA, MCA | Der eindeutige Bezeichner der [Azure Resource Manager](https://docs.microsoft.com/rest/api/resources/resources)-Ressource.
-ResourceLocation | EA, MCA | Standort des Rechenzentrums, in dem die Ressource ausgeführt wird. Siehe „Location“.
-ResourceName | EA | Der Name der Ressource.
+ResourceGroup | Alle | Name der [Ressourcengruppe](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview), in der sich die Ressource befindet.
+resourceId | Alle | Der eindeutige Bezeichner der [Azure Resource Manager](https://docs.microsoft.com/rest/api/resources/resources)-Ressource.
+ResourceLocation | Alle | Standort des Rechenzentrums, in dem die Ressource ausgeführt wird. Siehe „Location“.
+ResourceName | EA, PAYG | Der Name der Ressource.
 ResourceType | MCA | Der Ressourceninstanztyp.
-ServiceFamily | EA, MCA | Die Dienstfamilie, zu der der Dienst gehört.
+ServiceFamily | MCA | Die Dienstfamilie, zu der der Dienst gehört.
 ServiceInfo1 | Alle | Dienstspezifische Metadaten.
 ServiceInfo2 | Alle | Ein Legacyfeld mit optionalen dienstspezifischen Metadaten.
 ServicePeriodEndDate | MCA | Das Enddatum des Bewertungszeitraums, durch den die Preise für den genutzten oder erworbenen Dienst festgelegt wurden.
 ServicePeriodStartDate | MCA | Das Startdatum des Bewertungszeitraums, durch den die Preise für den genutzten oder erworbenen Dienst festgelegt wurden.
-SubscriptionId | Alle | Der eindeutige Bezeichner für das Abonnement.
-SubscriptionName | Alle | Name des Abonnements.
+SubscriptionId | Alle | Der eindeutige Bezeichner für das Azure-Abonnement.
+SubscriptionName | Alle | Der Name des Azure-Abonnements.
 `Tags` | Alle | Tags, die der Ressource zugewiesen werden. Umfasst keine Ressourcengruppen-Tags. Kann verwendet werden, um die Kosten für interne verbrauchsbasierte Kostenzuteilung zu gruppieren oder zu verteilen. Weitere Informationen finden Sie unter [Organisieren von Azure-Ressourcen mit Tags](https://azure.microsoft.com/updates/organize-your-azure-resources-with-tags/).
-Unit | Nutzungsbasierte Zahlung | Siehe „UnitOfMeasure“.
 UnitOfMeasure | Alle | Die Abrechnungsmaßeinheiten für den Dienst. Computedienste werden beispielsweise pro Stunde abgerechnet.
-UnitPrice | EA | Der Preis pro Einheit für die Gebühren.
-UsageDate | Nutzungsbasierte Zahlung | Siehe „Date“.
+UnitPrice | EA, PAYG | Der Preis pro Einheit für die Gebühren.
 
 Beachten Sie, dass einige Felder bei den verschiedenen Kontotypen in Groß-/Kleinschreibung und Abstand abweichen können.
 Ältere Versionen von Pay-as-you-go-Nutzungsdateien verfügen über separate Abschnitte für Abrechnung und tägliche Nutzung.
 
-## <a name="ensure-that-your-charges-are-correct"></a>Sicherstellen, dass Ihre Gebühren richtig sind
+### <a name="list-of-terms-from-older-apis"></a>Liste der Begriffe aus älteren APIs
+In der folgenden Tabelle werden die in älteren APIs verwendeten Begriffe den neuen Begriffen zugeordnet. Diese Beschreibungen finden Sie in der obigen Tabelle.
+
+Alter Begriff | Neuer Begriff
+--- | ---
+ConsumedQuantity | Menge
+IncludedQuantity | –
+InstanceId | resourceId
+Rate | EffectivePrice
+Unit | UnitOfMeasure
+UsageDate | Date
+UsageEnd | Date
+UsageStart | Date
+
+
+## <a name="ensure-charges-are-correct"></a>Sicherstellen, dass Gebühren richtig sind
 
 Weitere Informationen über detaillierte Nutzung und Gebühren finden Sie in den Grundlegenden Informationen zur Rechnung nach [nutzungsbasierter Bezahlung (Pay-as-you-go)](./billing-understand-your-bill.md) oder [Microsoft-Kundenvereinbarung](billing-mca-understand-your-bill.md).
 

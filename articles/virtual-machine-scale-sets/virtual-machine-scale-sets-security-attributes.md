@@ -1,6 +1,6 @@
 ---
-title: Allgemeine Sicherheitsattribute für virtuelle Azure VM-Skalierungsgruppen
-description: Eine Prüfliste allgemeiner Sicherheitsattribute für die Auswertung von Azure VM-Skalierungsgruppen
+title: Sicherheitsattribute für Azure Virtual Machine Scale Sets-Instanzen
+description: Eine Prüfliste der Sicherheitsattribute für die Auswertung von Azure Virtual Machine Scale Sets-Instanzen
 services: virtual-machine-scale-sets
 ms.service: virtual-machine-scale-sets
 documentationcenter: ''
@@ -9,16 +9,16 @@ manager: barbkess
 ms.topic: conceptual
 ms.date: 06/05/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 42187ce1a3103ba037ba2e2c179c720e444ddc60
-ms.sourcegitcommit: a8b638322d494739f7463db4f0ea465496c689c6
+ms.openlocfilehash: 1e96d3d8ba909afdc4bb402f95c4f482f3ddf681
+ms.sourcegitcommit: a874064e903f845d755abffdb5eac4868b390de7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/17/2019
-ms.locfileid: "68296333"
+ms.lasthandoff: 07/24/2019
+ms.locfileid: "68444270"
 ---
-# <a name="common-security-attributes-for-azure-virtual-machine-scale-sets"></a>Allgemeine Sicherheitsattribute für virtuelle Azure VM-Skalierungsgruppen
+# <a name="security-attributes-for-azure-virtual-machine-scale-sets"></a>Sicherheitsattribute für Azure Virtual Machine Scale Sets-Instanzen
 
-In diesem Artikel werden die in Azure VM-Skalierungsgruppen integrierten allgemeinen Sicherheitsattribute beschrieben.
+In diesem Artikel werden die in Azure Virtual Machine Scale Sets-Instanzen integrierten Sicherheitsattribute beschrieben.
 
 [!INCLUDE [Security attributes header](../../includes/security-attributes-header.md)]
 

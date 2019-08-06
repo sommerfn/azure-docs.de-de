@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 04/22/2019
 ms.author: cherylmc
 ms.custom: seodec18
-ms.openlocfilehash: 9bdeb91b145f8c7f31be8c1dcd5c5158d50ff2f6
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: eed6113442b4080341ff08b3983880f3afe66c00
+ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64712312"
+ms.lasthandoff: 07/22/2019
+ms.locfileid: "68385122"
 ---
 # <a name="expressroute-qos-requirements"></a>QoS-Anforderungen für ExpressRoute
 Skype for Business umfasst verschiedene Workloads mit jeweils unterschiedlichen QoS-Anforderungen. Wenn Sie Sprachdienste über ExpressRoute bereitstellen möchten, sollten die im Folgenden beschriebenen Anforderungen erfüllt sein.
@@ -29,7 +29,7 @@ Die folgende Tabelle enthält eine Liste mit DSCP-Markierungen, die von Microsof
 
 | **Datenverkehrsklasse** | **Behandlung (DSCP-Markierung)** | **Microsoft Teams- und Skype for Business-Workloads** |
 | --- | --- | --- |
-| **Voice** |EF (46) |Skype-/Lync-Sprachanrufe |
+| **Voice** |EF (46) |Skype/Microsoft Teams/Lync-Stimme |
 | **Interactive** |AF41 (34) |Video, VBSS |
 | |AF21 (18) |App-Freigabe | 
 | **Standard** |AF11 (10) |Dateiübertragung |

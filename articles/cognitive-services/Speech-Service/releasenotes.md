@@ -3,20 +3,20 @@ title: Versionshinweise – Speech Services
 titlesuffix: Azure Cognitive Services
 description: Hier finden Sie eine fortlaufende Liste von veröffentlichten Features, Verbesserungen, Fehlerbehebungen und bekannten Problemen bei Azure Speech Services.
 services: cognitive-services
-author: wolfma61
+author: BrianMouncer
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 06/26/2019
-ms.author: wolfma
+ms.date: 07/23/2019
+ms.author: jhakulin
 ms.custom: seodec18
-ms.openlocfilehash: 609443a4926fabd991846faee4a0a7dffe3a696b
-ms.sourcegitcommit: ac1cfe497341429cf62eb934e87f3b5f3c79948e
+ms.openlocfilehash: e641051b75620ef5308bc81bca21b3ceda105d09
+ms.sourcegitcommit: 9dc7517db9c5817a3acd52d789547f2e3efff848
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/01/2019
-ms.locfileid: "67490180"
+ms.lasthandoff: 07/23/2019
+ms.locfileid: "68404835"
 ---
 # <a name="release-notes"></a>Versionshinweise
 

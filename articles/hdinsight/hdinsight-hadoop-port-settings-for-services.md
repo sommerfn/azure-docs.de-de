@@ -8,12 +8,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/27/2019
 ms.author: hrasheed
-ms.openlocfilehash: 77e7aec1797a4b33068430371ba0969d1737746e
-ms.sourcegitcommit: 79496a96e8bd064e951004d474f05e26bada6fa0
+ms.openlocfilehash: 34ab49378f9237a42bed869a6f6d67249b5238f9
+ms.sourcegitcommit: c72ddb56b5657b2adeb3c4608c3d4c56e3421f2c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2019
-ms.locfileid: "67508794"
+ms.lasthandoff: 07/24/2019
+ms.locfileid: "68464688"
 ---
 # <a name="ports-used-by-apache-hadoop-services-on-hdinsight"></a>Ports für Apache Hadoop-Dienste in HDInsight
 
@@ -28,7 +28,7 @@ Intern wird HDInsight von mehreren Azure Virtual Machines (Knoten im Cluster) im
 > [!IMPORTANT]  
 > Wenn Sie kein virtuelles Azure-Netzwerk als eine Konfigurationsoption für HDInsight angeben, wird automatisch eines erstellt. Sie können diesem virtuellen Netzwerk jedoch nicht mit anderen Computern (z.B. anderen virtuellen Azure-Computern oder Ihrem Client-Entwicklungscomputer) beitreten.
 
-Um für weitere Computer den Beitritt zum virtuellen Netzwerk durchzuführen, müssen Sie zuerst das virtuelle Netzwerk erstellen und beim Erstellen des HDInsight-Clusters dann angeben. Weitere Informationen finden Sie unter [Erweitern der HDInsight-Funktionen mit Azure Virtual Network](hdinsight-extend-hadoop-virtual-network.md)
+Um für weitere Computer den Beitritt zum virtuellen Netzwerk durchzuführen, müssen Sie zuerst das virtuelle Netzwerk erstellen und beim Erstellen des HDInsight-Clusters dann angeben. Weitere Informationen finden Sie unter [Planen eines virtuellen Netzwerks für HDInsight](hdinsight-plan-virtual-network-deployment.md).
 
 ## <a name="public-ports"></a>Öffentliche Ports
 
@@ -105,7 +105,7 @@ Beispiele:
 | NodeManager |Alle Workerknoten |30050 |&nbsp; |Adresse des Container-Managers |
 | NodeManager-Webbenutzeroberfläche |Alle Workerknoten |30060 |HTTP |Resource Manager-Schnittstelle |
 | Zeitachsenadresse |Hauptknoten |10200 |RPC |RPC-Dienst des Zeitachsendiensts |
-| Zeitachsen-Webbenutzeroberfläche |Hauptknoten |8181 |HTTP |Webbenutzeroberfläche des Zeitachsendiensts |
+| Zeitachsen-Webbenutzeroberfläche |Hauptknoten |8188 |HTTP |Webbenutzeroberfläche des Zeitachsendiensts |
 
 ### <a name="hive-ports"></a>Hive-Ports
 

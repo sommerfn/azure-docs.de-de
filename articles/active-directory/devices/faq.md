@@ -9,14 +9,14 @@ ms.date: 06/28/2019
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
-ms.reviewer: jairoc
+ms.reviewer: ravenn
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8802f9e5c84078725675d961ada7f8183c91c0ec
-ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
+ms.openlocfilehash: fbba3f1b753738de57aa311387e522bae1b7b523
+ms.sourcegitcommit: a0b37e18b8823025e64427c26fae9fb7a3fe355a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/01/2019
-ms.locfileid: "67481756"
+ms.lasthandoff: 07/25/2019
+ms.locfileid: "68499792"
 ---
 # <a name="azure-active-directory-device-management-faq"></a>Azure Active Directory: Häufig gestellte Fragen zur Geräteverwaltung
 
@@ -48,23 +48,50 @@ Nur die folgenden Geräte werden unter den **BENUTZER-Geräten** aufgeführt:
 
 ---
 
-### <a name="q-i-deleted-my-device-in-the-azure-portal-or-by-using-windows-powershell-but-the-local-state-on-the-device-says-its-still-registered"></a>F: Ich habe mein Gerät im Azure-Portal oder mithilfe von Windows PowerShell gelöscht. Laut lokalem Status auf dem Gerät ist es aber immer noch registriert.
+### <a name="q-why-do-my-users-see-an-error-message-saying-your-organization-has-deleted-the-device-or-your-organization-has-disabled-the-device-on-their-windows-10-devices-"></a>F: Warum sehen meine Benutzer auf ihren Windows 10-Geräten eine Fehlermeldung, die besagt, dass die Organisation das Gerät gelöscht oder deaktiviert hat?
 
-**A:** Dieser Vorgang ist von vornherein vorgesehen. Das Gerät hat keinen Zugriff auf Ressourcen in der Cloud. 
+**A:** Benutzer erhalten auf Windows 10-Geräten, die in Azure AD eingebunden oder registriert sind, ein [Primäres Aktualisierungstoken](concept-primary-refresh-token.md) (Primary Refresh Token, PRT), das das einmalige Anmelden ermöglicht. Die Gültigkeit des PRT basiert auf der Gültigkeit des Geräts selbst. Benutzern wird diese Meldung angezeigt, wenn das Gerät in Azure AD entweder gelöscht oder deaktiviert wurde, ohne dass die Aktion vom Gerät selbst initiiert wurde. Ein Gerät kann in einem der folgenden Szenarien in Azure AD gelöscht oder deaktiviert werden: 
 
-Wenn Sie sich erneut registrieren möchten, müssen Sie eine manuelle Aktion am Gerät durchführen. 
+- Der Benutzer deaktiviert das Gerät im Meine Apps-Portal. 
+- Ein Administrator (oder Benutzer) löscht oder deaktiviert das Gerät im Azure-Portal oder über PowerShell.
+- Nur in Azure AD Hybrid eingebundene Geräte: Ein Administrator entfernt die Geräte-OE aus dem Synchronisierungsbereich, was dazu führt, dass die Geräte aus Azure AD gelöscht werden.
 
-Um den Verknüpfungsstatus aus Windows 10 und Windows Server 2016, die in die lokale Active Directory-Domäne eingebunden sind zu löschen, führen Sie die folgenden Schritte aus:
+Weiter unten finden Sie Informationen dazu, wie diese Aktionen korrigiert werden können.
 
-1. Öffnen Sie die Eingabeaufforderung als Administrator.
-1. Geben Sie `dsregcmd.exe /debug /leave` ein.
-1. Melden Sie sich ab und erneut an, um den geplanten Task auszulösen, der das Gerät erneut in Azure AD registriert. 
+---
 
-Gehen Sie für kompatible Windows-BS-Versionen, die in die lokale Active Directory-Domäne eingebunden sind, folgendermaßen vor:
+### <a name="q-i-disabled-or-deleted-my-device-in-the-azure-portal-or-by-using-windows-powershell-but-the-local-state-on-the-device-says-its-still-registered-what-should-i-do"></a>F: Ich habe mein Gerät im Azure-Portal oder mithilfe von Windows PowerShell deaktiviert oder gelöscht. Laut lokalem Status auf dem Gerät ist es aber immer noch registriert. Wie sollte ich vorgehen?
 
-1. Öffnen Sie die Eingabeaufforderung als Administrator.
-1. Geben Sie `"%programFiles%\Microsoft Workplace Join\autoworkplace.exe /l"` ein.
-1. Geben Sie `"%programFiles%\Microsoft Workplace Join\autoworkplace.exe /j"` ein.
+**A:** Dieser Vorgang ist von vornherein vorgesehen. In diesem Fall hat das Gerät keinen Zugriff auf Ressourcen in der Cloud. Administratoren können diese Aktion für veraltete, verlorene oder gestohlene Geräte ausführen, um nicht autorisierten Zugriff zu verhindern. Wenn diese Aktion unbeabsichtigt ausgeführt wurde, müssen Sie das Gerät erneut aktivieren oder registrieren, wie unten beschrieben.
+
+- Wenn das Gerät in Azure AD deaktiviert wurde, kann ein Administrator mit ausreichenden Berechtigungen es über das Azure AD-Portal wieder aktivieren.  
+
+ - Wenn das Gerät in Azure AD gelöscht wurde, müssen Sie es neu registrieren. Zur erneuten Registrierung müssen Sie eine manuelle Aktion auf dem Gerät durchführen. Anweisungen zur erneuten Registrierung basierend auf dem Gerätestatus finden Sie unten. 
+
+      Um in Azure AD Hybrid eingebundene Windows 10- und Windows Server 2016/2019-Geräte erneut zu registrieren, führen Sie die folgenden Schritte aus:
+
+      1. Öffnen Sie die Eingabeaufforderung als Administrator.
+      1. Geben Sie `dsregcmd.exe /debug /leave` ein.
+      1. Melden Sie sich ab und erneut an, um den geplanten Task auszulösen, der das Gerät erneut in Azure AD registriert. 
+
+      Gehen Sie bei kompatiblen Windows-Betriebssystemversionen, die in Azure AD Hybrid eingebunden sind, folgendermaßen vor:
+
+      1. Öffnen Sie die Eingabeaufforderung als Administrator.
+      1. Geben Sie `"%programFiles%\Microsoft Workplace Join\autoworkplace.exe /l"` ein.
+      1. Geben Sie `"%programFiles%\Microsoft Workplace Join\autoworkplace.exe /j"` ein.
+
+      Gehen Sie bei in Azure AD eingebundenen Windows 10-Geräten folgendermaßen vor:
+
+      1. Öffnen Sie die Eingabeaufforderung als Administrator.
+      1. Geben Sie `dsregcmd /forcerecovery` ein (Hinweis: Sie müssen Administrator sein, um diese Aktion auszuführen).
+      1. Klicken Sie im angezeigten Dialogfeld auf „Anmelden“, und fahren Sie mit dem Anmeldevorgang fort.
+      1. Melden Sie sich vom Gerät ab, und melden Sie sich erneut an, um die Wiederherstellung abzuschließen.
+
+      Gehen Sie bei in Azure AD registrierten Windows 10-Geräten folgendermaßen vor:
+
+      1. Wechseln Sie zu **Einstellungen** > **Konten** > **Auf Geschäfts-, Schul- oder Unikonto zugreifen**. 
+      1. Wählen Sie das Konto aus, und klicken Sie auf **Trennen**.
+      1. Klicken Sie auf „+ Verbinden“, und registrieren Sie das Gerät erneut, indem Sie den Anmeldevorgang durchlaufen.
 
 ---
 

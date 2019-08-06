@@ -8,16 +8,16 @@ ms.service: load-balancer
 ms.topic: conceptual
 ms.date: 05/06/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 71e87a3295a9cd73dca2f97b3fa04a5d5ff76f84
-ms.sourcegitcommit: 66237bcd9b08359a6cce8d671f846b0c93ee6a82
+ms.openlocfilehash: 1318b3e433224b009b76458b12e82c9bcf94bb7a
+ms.sourcegitcommit: a874064e903f845d755abffdb5eac4868b390de7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67798690"
+ms.lasthandoff: 07/24/2019
+ms.locfileid: "68444397"
 ---
 # <a name="security-attributes-for-azure-sql-database"></a>Sicherheitsattribute für Azure SQL-Datenbank
 
-In diesem Artikel werden die allgemeinen in Azure SQL-Datenbank integrierten Sicherheitsattribute beschrieben.
+In diesem Artikel werden die in Azure SQL-Datenbank integrierten Sicherheitsattribute beschrieben.
 
 [!INCLUDE [Security Attributes Header](../../includes/security-attributes-header.md)]
 

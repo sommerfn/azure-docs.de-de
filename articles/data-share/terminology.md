@@ -6,12 +6,12 @@ ms.service: data-share
 ms.topic: conceptual
 ms.date: 07/10/2019
 ms.author: joanpo
-ms.openlocfilehash: 4e7db84666b9d3786c3fc25e3653d24d0b95f2e4
-ms.sourcegitcommit: 1572b615c8f863be4986c23ea2ff7642b02bc605
+ms.openlocfilehash: 01025acfa2fd939db8134a1e61c7902034a1d2c3
+ms.sourcegitcommit: 198c3a585dd2d6f6809a1a25b9a732c0ad4a704f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/10/2019
-ms.locfileid: "67788561"
+ms.lasthandoff: 07/23/2019
+ms.locfileid: "68424212"
 ---
 # <a name="azure-data-share-preview-concepts"></a>Konzepte von Azure Data Share (Vorschauversion) 
 
@@ -55,11 +55,11 @@ Ein Datenanbieter kann mehrere Empfängern zu seiner Datenfreigabe einladen. Er 
 
 Ein Datenanbieter kann eine Einladung löschen, nachdem sie gesendet wurde. Beachten Sie Folgendes: Wenn ein Datenanbieter eine Einladung löscht, nachdem sie angenommen wurde, kann der Dataconsumer noch immer über ein aktives Freigabeabonnement verfügen. Wenn der Datenanbieter eine Einladung löscht, die noch nicht angenommen wurde, ist der Datenconsumer nicht mehr in der Lage, die Einladung zu akzeptieren. 
 
-## <a name="recipient"></a>Empfänger
+## <a name="recipient"></a>Recipient
 
 Ein Empfänger ist eine Person, die eine Einladung für eine Datenfreigabe empfängt. In der Regel wird ein Datenanbieter einer Datenfreigabe Empfänger hinzufügen, die er erstellt. Sobald der Empfänger einer Einladung die Einladung annimmt, wird er zu einem Datenconsumer.  
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Informationen zum Freigeben von Daten finden Sie im Tutorial zum [Freigeben von Daten](share-your-data.md).
+Informationen zum Freigeben von Daten finden Sie im Tutorial zum [Freigeben Ihrer Daten](share-your-data.md).
 

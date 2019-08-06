@@ -9,12 +9,12 @@ ms.subservice: forms-recognizer
 ms.topic: conceptual
 ms.date: 06/19/2019
 ms.author: dapine
-ms.openlocfilehash: 7752b09dd1bf20d796b19d03e62426b098486c39
-ms.sourcegitcommit: dad277fbcfe0ed532b555298c9d6bc01fcaa94e2
+ms.openlocfilehash: 4a490e8a9f111985df9c9e8c9f73bc36d686cc2a
+ms.sourcegitcommit: e72073911f7635cdae6b75066b0a88ce00b9053b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/10/2019
-ms.locfileid: "67718459"
+ms.lasthandoff: 07/19/2019
+ms.locfileid: "68348697"
 ---
 # <a name="configure-form-recognizer-containers"></a>Konfigurieren des Containers für die Formularerkennung
 
@@ -47,7 +47,7 @@ Sie finden diese Einstellung im Azure-Portal in **Form Recognizer Overview** (Ü
 
 |Erforderlich| NAME | Datentyp | BESCHREIBUNG |
 |--|------|-----------|-------------|
-|Ja| `Billing` | string | URI des Abrechnungsendpunkts<br><br>Beispiel:<br>`Billing=https://westus2.api.cognitive.microsoft.com/` |
+|Ja| `Billing` | Zeichenfolge | URI des Abrechnungsendpunkts<br><br>Beispiel:<br>`Billing=https://westus2.api.cognitive.microsoft.com/` |
 
 ## <a name="eula-setting"></a>Eula-Einstellung
 
@@ -76,8 +76,8 @@ Die genaue Syntax für den Bereitstellungspunkt auf dem Host variiert je nach Be
 
 |Optional| NAME | Datentyp | BESCHREIBUNG |
 |-------|------|-----------|-------------|
-|Erforderlich| `Input` | string | Das Ziel der Eingabeeinbindung. Standardwert: `/input`.    <br><br>Beispiel:<br>`--mount type=bind,src=c:\input,target=/input`|
-|Erforderlich| `Output` | string | Das Ziel der Ausgabeeinbindung. Standardwert: `/output`.  <br><br>Beispiel:<br>`--mount type=bind,src=c:\output,target=/output`|
+|Erforderlich| `Input` | Zeichenfolge | Das Ziel der Eingabeeinbindung. Standardwert: `/input`.    <br><br>Beispiel:<br>`--mount type=bind,src=c:\input,target=/input`|
+|Erforderlich| `Output` | Zeichenfolge | Das Ziel der Ausgabeeinbindung. Standardwert: `/output`.  <br><br>Beispiel:<br>`--mount type=bind,src=c:\output,target=/output`|
 
 ## <a name="example-docker-run-commands"></a>Beispiele für den Befehl „docker run“
 
@@ -90,8 +90,8 @@ Ersetzen Sie in der folgenden Tabelle {_argument_name_} durch Ihre eigenen Werte
 
 | Platzhalter | Wert |
 |-------------|-------|
-|{BILLING_KEY} | Der Schlüssel, der zum Starten des Containers verwendet wird. Er steht im Azure-Portal auf der Seite „Form Recognizer Keys“ (Schlüssel für Formularerkennung) zur Verfügung.  |
-|{BILLING_ENDPOINT_URI} | Den Wert für den URI des Abrechnungsendpunkts finden Sie im Azure-Portal auf der Seite „Form Recognizer Overview“ (Formularerkennung – Übersicht).|
+|{FORM_RECOGNIZER_API_KEY} | Der Schlüssel, der zum Starten des Containers verwendet wird. Er steht im Azure-Portal auf der Seite „Form Recognizer Keys“ (Schlüssel für Formularerkennung) zur Verfügung.  |
+|{FORM_RECOGNIZER_ENDPOINT_URI} | Den Wert für den URI des Abrechnungsendpunkts finden Sie im Azure-Portal auf der Seite „Form Recognizer Overview“ (Formularerkennung – Übersicht).|
 |{COMPUTER_VISION_API_KEY}| Der Schlüssel steht im Azure-Portal auf der Seite „Computer Vision API Keys“ (Schlüssel für die Maschinelles Sehen-API) zur Verfügung.|
 |{COMPUTER_VISION_ENDPOINT_URI}|Der Abrechnungsendpunkt. Wenn Sie eine cloudbasierte Ressource für maschinelles Sehen verwenden, steht der Wert für den URI im Azure-Portal auf der Seite „Computer Vision API Overview“ (Maschinelles Sehen-API – Übersicht) zur Verfügung. Bei Verwendung eines *cognitive-services-recognize-text*-Containers verwenden Sie die URL des Abrechnungsendpunkts, die im Befehl `docker run` an den Container übergeben wird.|
 
@@ -113,8 +113,8 @@ docker run --rm -it -p 5000:5000 --memory 8g --cpus 2 \
 --mount type=bind,source=c:\output,target=/output \
 containerpreview.azurecr.io/microsoft/cognitive-services-form-recognizer \
 Eula=accept \
-Billing={BILLING_ENDPOINT_URI} \
-ApiKey={BILLING_KEY} \
+Billing={FORM_RECOGNIZER_ENDPOINT_URI} \
+ApiKey={FORM_RECOGNIZER_API_KEY} \
 FormRecognizer:ComputerVisionApiKey={COMPUTER_VISION_API_KEY} \
 FormRecognizer:ComputerVisionEndpointUri={COMPUTER_VISION_ENDPOINT_URI}
 ```
@@ -127,13 +127,12 @@ docker run --rm -it -p 5000:5000 --memory 8g --cpus 2 \
 --mount type=bind,source=c:\output,target=/output \
 containerpreview.azurecr.io/microsoft/cognitive-services-form-recognizer \
 Eula=accept \
-Billing={BILLING_ENDPOINT_URI} \
-ApiKey={BILLING_KEY} \
+Billing={FORM_RECOGNIZER_ENDPOINT_URI} \
+ApiKey={FORM_RECOGNIZER_API_KEY} \
 FormRecognizer:ComputerVisionApiKey={COMPUTER_VISION_API_KEY} \
 FormRecognizer:ComputerVisionEndpointUri={COMPUTER_VISION_ENDPOINT_URI}
 Logging:Console:LogLevel:Default=Information
 ```
-
 
 ## <a name="next-steps"></a>Nächste Schritte
 

@@ -11,14 +11,14 @@ ms.service: azure-monitor
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 06/12/2019
+ms.date: 07/22/2019
 ms.author: magoedte
-ms.openlocfilehash: a370dcb349b61f3dda544d9c5a2030b6789e34c4
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: bbfc8cc61571de8b76ef1f7f0216501ef6d2cdee
+ms.sourcegitcommit: b49431b29a53efaa5b82f9be0f8a714f668c38ab
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67075434"
+ms.lasthandoff: 07/22/2019
+ms.locfileid: "68377473"
 ---
 # <a name="understand-aks-cluster-performance-with-azure-monitor-for-containers"></a>Verstehen der Leistung von AKS-Clustern mit Azure Monitor für Container 
 Mit Azure Monitor für Container können Sie die Leistungsdiagramme und den Integritätsstatus verwenden, um die Workload Ihrer Azure Kubernetes Service-Cluster (AKS) aus zwei Perspektiven zu überwachen, direkt aus einem AKS-Cluster oder aus allen AKS-Clustern in einem Abonnement von Azure Monitor. Die Anzeige von Azure Container Instances (ACI) ist auch möglich, wenn Sie einen bestimmten AKS-Cluster überwachen.
@@ -31,16 +31,18 @@ Azure Monitor bietet eine Multi-Cluster-Ansicht, die den Integritätsstatus alle
 
 Die wichtigsten Unterschiede zwischen der Überwachung eines Windows Server-Clusters mit Azure Monitor für Container gegenüber einem Linux-Cluster sind die folgenden:
 
-- Für Windows-Knoten und -Container ist keine Arbeitsspeicher-RSS-Metrik verfügbar. 
+- Für Windows-Knoten und -Container ist keine Arbeitsspeicher-RSS-Metrik verfügbar.
 - Für Windows-Knoten sind keine Informationen zur Speicherkapazität des Datenträgers verfügbar.
 - Eine Unterstützung von Liveprotokollen ist verfügbar, ausgenommen Windows-Containerprotokolle.
 - Nur Pod-Umgebungen werden überwacht, nicht aber Docker-Umgebungen.
 - Mit der Vorschauversion werden maximal 30 Windows Server-Container unterstützt. Diese Einschränkung gilt nicht für Linux-Container.  
 
 ## <a name="sign-in-to-the-azure-portal"></a>Melden Sie sich auf dem Azure-Portal an.
+
 Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an. 
 
-## <a name="multi-cluster-view-from-azure-monitor"></a>Multi-Cluster-Ansicht in Azure Monitor 
+## <a name="multi-cluster-view-from-azure-monitor"></a>Multi-Cluster-Ansicht in Azure Monitor
+
 Zum Anzeigen des Integritätsstatus aller bereitgestellten AKS-Cluster wählen Sie im linken Seitenbereich im Azure-Portal **Überwachen** aus.  Wählen Sie im Abschnitt **Insights** die Option **Container** aus.  
 
 ![Beispiel für ein Multi-Cluster-Dashboard in Azure Monitor](./media/container-insights-analyze/azmon-containers-multiview.png)
@@ -89,6 +91,7 @@ Die folgende Tabelle stellt eine Aufschlüsselung der Berechnung dar, die die In
 Aus der Liste der Cluster können Sie einen Drilldown zur Seite **Cluster** ausführen, indem Sie auf den Namen eines Clusters klicken, zur Leistungsseite **Knoten**, indem Sie in der Spalte **Knoten** des betreffenden Clusters auf den Rollup der Knoten klicken oder einen Drilldown zur Leistungsseite **Controller** ausführen, indem Sie auf den Rollup in der Spalte **Benutzerpods** oder **Systempods** klicken.   
 
 ## <a name="view-performance-directly-from-an-aks-cluster"></a>Direktes Anzeigen der Leistung auf einem AKS-Cluster
+
 Der Zugriff auf Azure Monitor für Container ist direkt auf einem AKS-Cluster möglich, indem Sie im linken Randbereich **Insights** auswählen. Die Darstellung der Informationen zu Ihrem AKS-Cluster ist in vier Perspektiven unterteilt:
 
 - Cluster
@@ -112,6 +115,7 @@ Mit den Pfeiltasten nach links/rechts können Sie durch jeden Datenpunkt im Diag
 Azure Monitor für Container unterstützt auch den Azure Monitor-[Metrik-Explorer](../platform/metrics-getting-started.md), in dem Sie eigene Boxplotdiagramme erstellen, Trends korrelieren und untersuchen und an Dashboards anheften können. Im Metrik-Explorer können Sie die Kriterien, die Sie für die Visualisierung Ihrer Metriken festgelegt haben, als Grundlage einer [metrikbasierten Warnungsregel](../platform/alerts-metric.md) verwenden.  
 
 ## <a name="view-container-metrics-in-metrics-explorer"></a>Anzeigen von Containermetriken im Metrik-Explorer
+
 Im Metrik-Explorer können Sie Metriken für aggregierte Knoten und Podnutzung aus Azure Monitor für Container anzeigen. In der folgenden Tabelle sind die Details zur Verwendung der Metrikdiagramme für die Visualisierung von Containermetriken zusammengefasst.
 
 |Namespace | Metrik |
@@ -163,7 +167,9 @@ Virtuelle Knoten mit Azure Container Instances, die das Linux-Betriebssystem aus
 Auf einem erweiterten Knoten können Sie per Drilldown von dem Pod oder Container, der auf dem Knoten ausgeführt wird, zum Controller navigieren, um für diesen Controller gefilterte Leistungsdaten anzuzeigen. Klicken Sie auf den Wert in der Spalte **Controller** für den spezifischen Knoten.   
 ![Exemplarischer Drilldownvorgang vom Knoten zum Controller in der Leistungsansicht](./media/container-insights-analyze/drill-down-node-controller.png)
 
-Im oberen Bereich der Seite können Sie Controller oder Container auswählen und den Status sowie die Ressourcenauslastung für diese Objekte überprüfen.  Wenn Sie stattdessen die Arbeitsspeicherauslastung überprüfen möchten, wählen Sie aus der Dropdownliste **Metrik** die Option **Arbeitsspeicher RSS** oder **Arbeitssatz für Arbeitsspeicher** aus. **Arbeitsspeicher RSS** wird nur für die Kubernetes-Version 1.8 und höher unterstützt. Andernfalls werden Werte für **Min&nbsp;%** als *NaN&nbsp;%* angezeigt. Dieser numerische Datentypwert stellt einen nicht definierten oder nicht darstellbaren Wert dar. 
+Im oberen Bereich der Seite können Sie Controller oder Container auswählen und den Status sowie die Ressourcenauslastung für diese Objekte überprüfen.  Wenn Sie stattdessen die Arbeitsspeicherauslastung überprüfen möchten, wählen Sie aus der Dropdownliste **Metrik** die Option **Arbeitsspeicher RSS** oder **Arbeitssatz für Arbeitsspeicher** aus. **Arbeitsspeicher RSS** wird nur für die Kubernetes-Version 1.8 und höher unterstützt. Andernfalls werden Werte für **Min&nbsp;%** als *NaN&nbsp;%* angezeigt. Dieser numerische Datentypwert stellt einen nicht definierten oder nicht darstellbaren Wert dar.
+
+Im Arbeitsspeicher-Arbeitssatz sind der residente Speicher und der virtuelle Speicher (Cache) enthalten, und er ist die Gesamtmenge dessen, was die Anwendung verwendet. Arbeitsspeicher-RSS zeigt nur den Hauptspeicher an, der der residente Speicher ist. Diese Metrik zeigt die tatsächliche Kapazität des verfügbaren Arbeitsspeichers an.
 
 ![Leistungsansicht zu den Containerknoten](./media/container-insights-analyze/containers-node-metric-dropdown.png)
 
@@ -200,7 +206,7 @@ Wählen Sie im Selektor **Controller** aus.
 
 Hier können Sie die Leistungsintegrität Ihrer Controller und virtuellen ACI-Knoten oder virtuellen Knotenpods anzeigen, die nicht mit einem Controller verbunden sind.
 
-![Leistungsansicht des Controllers <Name>](./media/container-insights-analyze/containers-controllers-view.png)
+![Leistungsansicht des Controllers \<Name>](./media/container-insights-analyze/containers-controllers-view.png)
 
 Die Zeilenhierarchie beginnt mit einem Controller. Wenn Sie einen Controller erweitern, wird mindestens ein Pod angezeigt.  Wenn Sie einen Pod erweitern, wird in der letzten Zeile der Container angezeigt, der mit dem Pod verknüpft ist. Von einem erweiterten Controller aus können Sie per Drilldown zu dem Knoten navigieren, auf dem er ausgeführt wird, um für diesen Controller gefilterte Leistungsdaten anzuzeigen. ACI-Pods, die nicht mit einem Controller verbunden sind, werden als letztes in der Liste aufgeführt.
 
@@ -241,7 +247,7 @@ Wählen Sie im Selektor **Container** aus.
 
 Hier können Sie die Leistungsintegrität Ihrer Azure Kubernetes- und Azure Container Instances-Container anzeigen.  
 
-![Leistungsansicht des Controllers <Name>](./media/container-insights-analyze/containers-containers-view.png)
+![Leistungsansicht des Controllers \<Name>](./media/container-insights-analyze/containers-containers-view.png)
 
 Von einem Container aus können Sie per Drilldown zu einem Pod oder Knoten navigieren, um für das entsprechende Objekt gefilterte Leistungsdaten anzuzeigen. Klicken Sie auf den Wert in der Spalte **Pod** oder **Knoten** für den spezifischen Container.   
 
@@ -271,20 +277,36 @@ Die Symbole im Statusfeld zeigen die Onlinestatus der Pods an, wie in der folgen
 | ![Statussymbol für „Beendet“](./media/container-insights-analyze/containers-terminated-icon.png) | Erfolgreich beendet oder Fehler beim Beenden|  
 | ![Symbol für den Status „Fehler“](./media/container-insights-analyze/containers-failed-icon.png) | Status „Fehler“ |  
 
-## <a name="disk-capacity-workbook"></a>Arbeitsmappe für Datenträgerkapazität
+## <a name="workbooks"></a>Arbeitsmappen
+
 Arbeitsmappen kombinieren Text,  [Protokollabfragen](../log-query/query-language.md), [Metriken](../platform/data-platform-metrics.md) und Parameter zu umfassenden interaktiven Berichten. Arbeitsmappen können von anderen Teammitgliedern bearbeitet werden, die Zugriff auf dieselben Azure-Ressourcen haben.
 
-Azure Monitor für Container enthält eine Arbeitsmappe für den Einstieg mit dem Namen **Datenträgerkapazität**.  Diese Arbeitsmappe zeigt interaktive Diagramme zur Datenträgerauslastung für jeden Datenträger, der dem Knoten in einem Container bereitgestellt wird, anhand der folgenden Gesichtspunkte:
+Azure Monitor für Container enthält vier Arbeitsmappen für den Einstieg:
 
-- Datenträgerauslastung in Prozent für alle Datenträger
-- Freier Speicherplatz für alle Datenträger
-- Eine Tabelle, die für den Datenträger jedes Knotens den verwendeten Speicherplatz in Prozent, den Trend des verwendeten Speicherplatzes in Prozent, den freien Speicherplatz (GiB) und den Trend des freien Speicherplatzes (GiB) angibt. Bei Auswahl einer Zeile in der Tabelle wird der Prozentsatz des verwendeten Speicherplatzes und der freie Speicherplatz (GiB) darunter angezeigt. 
+- **Datenträgerkapazität**: Diese Arbeitsmappe zeigt interaktive Diagramme zur Datenträgerauslastung für jeden Datenträger, der dem Knoten in einem Container bereitgestellt wird, anhand der folgenden Gesichtspunkte:
 
-Sie greifen auf diese Arbeitsmappe zu, indem Sie in der Dropdownliste **Arbeitsmappen anzeigen** die Option **Datenträgerkapazität** auswählen.  
+    - Datenträgerauslastung in Prozent für alle Datenträger
+    - Freier Speicherplatz für alle Datenträger
+    - Ein Raster, das für den Datenträger jedes Knotens den verwendeten Speicherplatz in Prozent, den Trend des verwendeten Speicherplatzes in Prozent, den freien Speicherplatz (GiB) und den Trend des freien Speicherplatzes (GiB) angibt. Bei Auswahl einer Zeile in der Tabelle wird der Prozentsatz des verwendeten Speicherplatzes und der freie Speicherplatz (GiB) darunter angezeigt. 
+
+- **Datenträger-E/A**: Diese Arbeitsmappe zeigt interaktive Diagramme zur Datenträgerauslastung für jeden Datenträger, der dem Knoten in einem Container bereitgestellt wird, anhand der folgenden Gesichtspunkte:
+
+    - Zusammenfassung der Datenträger-E/A auf allen Datenträgern nach gelesenen Bytes/Sek., geschriebenen Bytes/Sek. und Trends der gelesenen und geschriebenen Bytes/Sek. 
+    - In acht Leistungsdiagrammen werden wichtige Leistungsindikatoren angezeigt, um Datenträger-E/A-Engpässe zu messen und zu identifizieren.
+
+- **Kubelet**: Enthält zwei Raster, die die Hauptknoten-Betriebsstatistiken anzeigen:
+
+    - „Übersicht nach Knotenraster“ fasst alle Vorgänge, alle Fehler und die erfolgreichen Vorgänge für jeden Knoten in Prozent und Trend zusammen.
+    - „Übersicht nach Vorgangstyp“ fasst die Vorgänge für jeden Typ, alle Fehler und die erfolgreichen Vorgänge in Prozent und Trend zusammen.
+
+- **Netzwerk:** Stellt interaktive Netzwerkauslastungs-Diagramme für die Netzwerkadapter der einzelnen Knoten und ein Raster dar, in dem die wichtigsten Leistungsindikatoren zum Messen der Leistung der Netzwerkadapter angezeigt werden.  
+
+Sie greifen auf diese Arbeitsmappen zu, indem Sie sie jeweils in der Dropdownliste **Arbeitsmappen anzeigen** auswählen.  
 
 ![Dropdownliste „Arbeitsmappen anzeigen“](./media/container-insights-analyze/view-workbooks-dropdown-list.png)
 
-
 ## <a name="next-steps"></a>Nächste Schritte
+
 - Informationen zum Erstellen von Warnungen für hohe CPU- und Arbeitsspeicherauslastung zur Unterstützung Ihrer DevOps oder Betriebsprozesse und -verfahren finden Sie unter [Erstellen von Leistungswarnungen mit Azure Monitor für Container](container-insights-alerts.md). 
+
 - Sehen Sie sich die [Beispiele zu Protokollabfragen](container-insights-log-search.md#search-logs-to-analyze-data) an, die auch vordefinierte Abfragen enthalten. Mit diesen Materialien können Sie Auswertungen von bzw. Anpassungen für Warnungen, Visualisierungen und Analysen von Clustern vornehmen.

@@ -8,12 +8,12 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
 ms.date: 09/14/2018
-ms.openlocfilehash: 716c60cf5155bf0583b2d602e8f46f8ba7c1cfcd
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 641fc41c25746a67b4b1fe3d5316df17f14f113c
+ms.sourcegitcommit: b49431b29a53efaa5b82f9be0f8a714f668c38ab
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64726823"
+ms.lasthandoff: 07/22/2019
+ms.locfileid: "68377251"
 ---
 # <a name="use-extended-apache-spark-history-server-to-debug-and-diagnose-apache-spark-applications"></a>Verwenden des erweiterten Apache Spark-Verlaufsservers zum Debuggen und Diagnostizieren von Apache Spark-Anwendungen
 
@@ -319,7 +319,7 @@ Wenn Sie mit einem Hotfix eine Aktualisierung durchführen möchten, verwenden S
 
 ## <a name="known-issues"></a>Bekannte Probleme
 
-1.  Gegenwärtig können nur Spark 2.3-Cluster verwendet werden.
+1.  Gegenwärtig können nur Spark 2.3- und 2.4-Cluster verwendet werden.
 
 2.  Ein-/Ausgabedaten über RDD werden auf der Registerkarte „Daten“ nicht angezeigt.
 

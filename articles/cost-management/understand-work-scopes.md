@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.service: cost-management
 manager: micflan
 ms.custom: ''
-ms.openlocfilehash: 699707953ae06afa9cbf3cc7286f94917ba0efca
-ms.sourcegitcommit: ac1cfe497341429cf62eb934e87f3b5f3c79948e
+ms.openlocfilehash: 66bad9c9c647fe87fdcf6b99a8d17f319b1ef9fc
+ms.sourcegitcommit: 75a56915dce1c538dc7a921beb4a5305e79d3c7a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/01/2019
-ms.locfileid: "67490110"
+ms.lasthandoff: 07/24/2019
+ms.locfileid: "68479978"
 ---
 # <a name="understand-and-work-with-scopes"></a>Verstehen von und Arbeiten mit Bereichen
 
@@ -142,6 +142,18 @@ Azure-Abonnements werden ähnlich wie unter EA-Registrierungskonten unter Rechnu
 
 Abrechnungsbenutzer haben keinen Zugriff auf Verwaltungsgruppen, da sie nicht explizit zum Abrechnungskonto gehören. Wenn jedoch Verwaltungsgruppen für die Organisation aktiviert sind, werden alle Abonnementkosten im Abrechnungskonto und in der Stammverwaltungsgruppe zusammengeführt, da sie beide auf ein einziges Verzeichnis beschränkt sind. Verwaltungsgruppen enthalten nur Käufe, die nutzungsbasiert sind. Käufe wie Reservierungen und Marketplace-Angebote von Drittanbietern fließen nicht in Verwaltungsgruppen ein. Daher können das Abrechnungskonto und die Stammverwaltungsgruppe unterschiedliche Summen ausweisen. Um diese Kosten anzuzeigen, verwenden Sie das Abrechnungskonto oder entsprechende Abrechnungsprofil.
 
+## <a name="aws-scopes"></a>AWS-Bereiche
+
+Wenn die AWS-Integration abgeschlossen ist, finden Sie weitere Informationen unter [Einrichten und Konfigurieren der AWS-Integration](aws-integration-set-up-configure.md). Folgende Bereiche sind verfügbar:
+
+- **Externes Abrechnungskonto**: Repräsentiert eine Kundenvereinbarung mit einem Drittanbieter. Dies ist vergleichbar mit dem Abrechnungskonto für Enterprise Agreements.
+
+    Ressourcentyp: `Microsoft.CostManagement/externalBillingAccounts`
+    
+- **Externes Abonnement**: Repräsentiert ein operatives Kundenkonto bei einem Drittanbieter. Dies ist vergleichbar mit einem Azure-Abonnement.
+
+    Ressourcentyp: `Microsoft.CostManagement/externalSubscriptions`
+
 ## <a name="cloud-solution-provider-csp-scopes"></a>Bereiche für Cloud Solution Provider (CSP)
 
 Cloud Solution Provider-Partner (CSP) werden derzeit in Cost Management nicht unterstützt. Stattdessen können Sie das [Partner Center](https://docs.microsoft.com/azure/cloud-solution-provider/overview/partner-center-overview) verwenden.
@@ -204,7 +216,7 @@ Bei der Arbeit mit Cost Management-APIs ist es wichtig, den Bereich zu kennen. E
 3. Kopieren Sie die Verwaltungsgruppen-ID aus der Tabelle.
 4. Ihr Bereich ist: `"/providers/Microsoft.Management/managementGroups/{id}"`
 
-### <a name="subscription"></a>Abonnement
+### <a name="subscription"></a>Subscription
 
 1. Öffnen Sie das Azure-Portal, und navigieren Sie in der Liste der Dienste zu **Abonnements**.
 2. Kopieren Sie die Abonnement-ID aus der Tabelle.

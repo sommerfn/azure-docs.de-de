@@ -2,17 +2,17 @@
 title: 'Netzwerkpartner: Azure Networking| Microsoft-Dokumentation'
 description: Dieser Artikel enthält eine Liste der MSP-Netzwerkpartner.
 services: networking
-author: cherylmc
+author: skishen525
 ms.service: expressroute
 ms.topic: conceptual
-ms.date: 07/10/2019
-ms.author: cherylmc
-ms.openlocfilehash: a28f787ba7796185112b7293b91688d2572f5e22
-ms.sourcegitcommit: 66237bcd9b08359a6cce8d671f846b0c93ee6a82
+ms.date: 07/22/2019
+ms.author: sukishen
+ms.openlocfilehash: ffcfd48d9a93ee7c73e2597ff9bea704e0378440
+ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67799943"
+ms.lasthandoff: 07/22/2019
+ms.locfileid: "68385210"
 ---
 # <a name="about-azure-networking-msp-partners"></a>Informationen zu Azure Networking-MSP-Partnern
 
@@ -28,7 +28,7 @@ Kunden können MSP-Dienstangebote im Azure Marketplace oder direkt beim MSP-erwe
 
 Über die Links in diesem Abschnitt erhalten Sie weitere Informationen zu verwalteten Cloudnetzwerkdiensten, die von Azure Networking MSP-Partnern angeboten werden. Sollte Ihr Partner für Cloudnetzwerkdienste im folgenden Abschnitt nicht aufgeführt sein, bitten Sie den Anbieter, sich mit uns in Verbindung zu setzen. Hierzu kann er uns eine E-Mail senden: ManagedVirtualWAN@microsoft.com. 
 
-[Aryka](https://www.aryaka.com/)
+[Aryaka Networks](https://www.aryaka.com/)
 
 [BT](https://www.bt.com/)
 
@@ -38,7 +38,7 @@ Kunden können MSP-Dienstangebote im Azure Marketplace oder direkt beim MSP-erwe
 
 [InterCloud](https://www.intercloud.com/)
 
-[IIJ](https://www.riverbed.com/go/steelconnect-azurewan.html)
+[IIJ](https://www.iij.ad.jp/en/)
 
 [Megaport](https://www.megaport.com/)
 

@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 06/30/2017
 ms.reviewer: sergkanz
 ms.author: mbullwin
-ms.openlocfilehash: 2c33c481d96a9edecc6360a9a91c095c2bca220b
-ms.sourcegitcommit: 66237bcd9b08359a6cce8d671f846b0c93ee6a82
+ms.openlocfilehash: 841c55e9aa05e6b627716b084ad7685683f9faec
+ms.sourcegitcommit: a0b37e18b8823025e64427c26fae9fb7a3fe355a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67798345"
+ms.lasthandoff: 07/25/2019
+ms.locfileid: "68498355"
 ---
 # <a name="track-custom-operations-with-application-insights-net-sdk"></a>Nachverfolgen von benutzerdefinierten Vorgängen mit dem Application Insights .NET SDK
 
@@ -484,6 +484,13 @@ public async Task RunAllTasks()
     await Task.WhenAll(task1, task2);
 }
 ```
+
+## <a name="applicationinsights-operations-vs-systemdiagnosticsactivity"></a>Application Insights-Vorgänge im Vergleich zu System.Diagnostics.Activity
+`System.Diagnostics.Activity` stellt den verteilten Ablaufverfolgungskontext dar und wird von Frameworks und Bibliotheken verwendet, um Kontext zu erstellen sowie innerhalb und außerhalb des Prozesses weiterzugeben und um Telemetrieelemente zu korrelieren. Die Aktivität arbeitet mit `System.Diagnostics.DiagnosticSource` zusammen, dem Benachrichtigungsmechanismus des Frameworks bzw. der Bibliothek zum Benachrichtigen bei interessanten Ereignissen (eingehende oder ausgehende Anforderungen, Ausnahmen usw.).
+
+Aktivitäten sind wichtige Elemente in Application Insights, und die automatische Erfassung von Abhängigkeiten und Anforderungen stützt sich neben `DiagnosticSource`-Ereignissen in erheblichem Maß auf Aktivitäten. Wenn Sie eine Aktivität in Ihrer Anwendung erstellen, führt dies nicht zur Erstellung von Application Insights-Telemetrie. Application Insights muss DiagnosticSource-Ereignisse empfangen und die Namen und Nutzlasten der Ereignisse kennen, um eine Aktivität in Telemetrie zu übersetzen.
+
+Jeder Application Insights-Vorgang (Anforderung oder Abhängigkeit) umfasst ein `Activity`-Element – beim Aufruf von `StartOperation` wird im Hintergrund eine Aktivität erstellt. `StartOperation` ist die empfohlene Methode, um Anforderungs- oder Abhängigkeitstelemetrien manuell nachzuverfolgen und sicherzustellen, dass alle Elemente korreliert sind.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

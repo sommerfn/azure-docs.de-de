@@ -8,13 +8,13 @@ author: ecfan
 ms.author: estfan
 ms.reviewer: klam, LADocs
 ms.topic: article
-ms.date: 06/19/2019
-ms.openlocfilehash: 735bf2802bcf55ed87de2ffd2f52539898302b00
-ms.sourcegitcommit: a52d48238d00161be5d1ed5d04132db4de43e076
+ms.date: 07/19/2019
+ms.openlocfilehash: b649ea1c69f82840a663cf32391e4c74ac6cc33e
+ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/20/2019
-ms.locfileid: "67275077"
+ms.lasthandoff: 07/18/2019
+ms.locfileid: "68319509"
 ---
 # <a name="limits-and-configuration-information-for-azure-logic-apps"></a>Grenzwert- und Konfigurationsinformationen für Azure Logic Apps
 
@@ -173,13 +173,29 @@ Die folgenden Grenzwerte gelten für benutzerdefinierte Connectors, die Sie übe
 
 ## <a name="integration-account-limits"></a>Grenzwerte für Integrationskonten
 
+Für jedes Azure-Abonnement gelten folgende Grenzwerte für das Integrationskonto:
+
+* Ein einzelnes [Free-Tarif](../logic-apps/logic-apps-pricing.md#integration-accounts)-Integrationskonto
+
+* 1\.000 Integrationskonten insgesamt, einschließlich Integrationskonten in beliebigen [Integrationsdienstumgebungen (Integration Service Environments, ISE)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md) in [Developer- und Premium-SKUs](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md#ise-level).
+
+* Jede ISE, ob [Developer oder Premium](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md#ise-level), ist auf insgesamt 5 Integrationskonten beschränkt:
+
+  | ISE SKU | Begrenzung |
+  |---------|-------|
+  | **Premium** | 5 insgesamt – nur [Standard](../logic-apps/logic-apps-pricing.md#integration-accounts), nicht Free oder Basic |
+  | **Developer** | 5 insgesamt – Free (begrenzt auf 1), Standard oder beides, nicht Basic |
+  |||
+
+Zusätzliche Kosten fallen für Integrationskonten an, die Sie über die Integrationskonten hinaus hinzufügen, die in einer ISE enthalten sind. Weitere Informationen zur Preisgestaltung und Abrechnung für ISEs finden Sie unter [Feststehendes Preismodell](../logic-apps/logic-apps-pricing.md#fixed-pricing). Eine Preisübersicht finden Sie unter [Preismodell für Azure Logic Apps](https://azure.microsoft.com/pricing/details/logic-apps/).
+
 <a name="artifact-number-limits"></a>
 
 ### <a name="artifact-limits-per-integration-account"></a>Artefaktgrenzwerte pro Integrationskonto
 
-Die folgenden Grenzwerte gelten für die Anzahl von Artefakten für jedes Integrationskonto. Weitere Informationen hierzu finden Sie unter [Logic Apps – Preise](https://azure.microsoft.com/pricing/details/logic-apps/).
+Die folgenden Grenzwerte gelten für die Anzahl von Artefakten für jeden Integrationskontotarif. Eine Preisübersicht finden Sie unter [Preismodell für Azure Logic Apps](https://azure.microsoft.com/pricing/details/logic-apps/). Informationen zur Preisgestaltung und Abrechnung für Integrationskonten finden Sie unter [Integrationskonten](../logic-apps/logic-apps-pricing.md#integration-accounts).
 
-> [!NOTE] 
+> [!NOTE]
 > Verwenden Sie den Free-Tarif nur für Versuchsszenarios und nicht für Produktionsszenarios. Dieser Tarif beschränkt Durchsatz und Nutzung und ist nicht mit einer Vereinbarung zum Servicelevel (Service-Level Agreement, SLA) verbunden.
 
 | Artefakt | Kostenlos | Basic | Standard |

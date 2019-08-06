@@ -16,12 +16,12 @@ ms.workload: infrastructure-services
 ms.date: 9/25/2018
 ms.author: aanandr
 ms.custom: ''
-ms.openlocfilehash: a5c367402bd1e61485095fd1d565a8582acc3a9e
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: ff6fd45e0a68a3e93e4c62eb31a566a6dffa2344
+ms.sourcegitcommit: 5604661655840c428045eb837fb8704dca811da0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60824889"
+ms.lasthandoff: 07/25/2019
+ms.locfileid: "68494952"
 ---
 # <a name="azure-kubernetes-network-policies-overview"></a>Übersicht über Azure Kubernetes-Netzwerkrichtlinien
 
@@ -32,7 +32,7 @@ Netzwerkrichtlinien bieten Mikrosegmentierung für Pods, genau wie Netzwerksiche
 Azure-Netzwerkrichtlinien funktionieren in Verbindung mit Azure CNI, wodurch die VNET-Integration für Container ermöglicht wird. Derzeit ist die Unterstützung nur für Linux-Knoten verfügbar. Die Implementierungen konfigurieren die Linux-IP-Tabellenregeln basierend auf den definierten Richtlinien, um das Filtern des Datenverkehrs durchzusetzen.
 
 ## <a name="planning-security-for-your-kubernetes-cluster"></a>Planen der Sicherheit Ihres Kubernetes-Clusters
-Wenn Sie die Sicherheit Ihres Clusters implementieren, verwenden Sie Netzwerksicherheitsgruppen, um den Nord-Süd-Datenverkehr zu filtern, d. h. den ein- und ausgehenden Datenverkehr Ihres Clustersubnetzes, und verwenden Sie Kubernetes-Netzwerkrichtlinien für den Ost-West-Datenverkehr, d. h. Datenverkehr zwischen Pods in Ihrem Cluster.
+Wenn Sie die Sicherheit Ihres Clusters implementieren, verwenden Sie Netzwerksicherheitsgruppen, um den Nord-Süd-Datenverkehr zu filtern, d.h. den ein- und ausgehenden Datenverkehr Ihres Clustersubnetzes, und verwenden Sie Kubernetes-Netzwerkrichtlinien für den Ost-West-Datenverkehr, d.h. den Datenverkehr zwischen den Pods in Ihrem Cluster.
 
 ## <a name="using-azure-kubernetes-network-policies"></a>Verwenden der Azure Kubernetes-Netzwerkrichtlinien
 Azure-Netzwerkrichtlinien können auf folgende Weise verwendet werden, um eine Mikrosegmentierung für Pods zu ermöglichen.

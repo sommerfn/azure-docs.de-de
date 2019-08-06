@@ -12,12 +12,12 @@ ms.author: rohitna
 ms.reviewer: carlrab, vanto
 manager: craigg
 ms.date: 07/02/2019
-ms.openlocfilehash: 8441e64981b7157e91a56124a08c0aa02a9b1db0
-ms.sourcegitcommit: 084630bb22ae4cf037794923a1ef602d84831c57
+ms.openlocfilehash: 9dfc22be45b68ba4ff59d88810435db35bafc8b6
+ms.sourcegitcommit: 5604661655840c428045eb837fb8704dca811da0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/03/2019
-ms.locfileid: "67537930"
+ms.lasthandoff: 07/25/2019
+ms.locfileid: "68494965"
 ---
 # <a name="azure-sql-connectivity-architecture"></a>Verbindungsarchitektur von Azure SQL
 
@@ -64,18 +64,20 @@ Im nächsten Schritt fügen wir jeder Region mehr Gateways hinzu und setzen die 
 
 | Name der Region          | Gateway-IP-Adresse | Außer Betrieb gesetztes Gateway </br> IP-Adresse| Hinweise zur Außerbetriebnahme | 
 | --- | --- | --- | --- |
+| Australien, Mitte    | 20.36.105.0 | | |
+| Australien, Mitte 2   | 20.36.113.0 | | |
 | Australien (Osten)       | 13.75.149.87, 40.79.161.1 | | |
 | Australien, Südosten | 191.239.192.109, 13.73.109.251 | | |
 | Brasilien Süd         | 104.41.11.5        |                 | |
 | Kanada, Mitte       | 40.85.224.249      |                 | |
 | Kanada, Osten          | 40.86.226.166      |                 | |
 | USA (Mitte)           | 13.67.215.62, 52.182.137.15 | 23.99.160.139 | Keine Verbindungen nach dem 1. September 2019 |
-| China, Osten 1         | 139.219.130.35     |                 | |
+| China, Osten           | 139.219.130.35     |                 | |
 | China, Osten 2         | 40.73.82.1         |                 | |
-| China, Norden 1        | 139.219.15.17      |                 | |
+| China, Norden          | 139.219.15.17      |                 | |
 | China, Norden 2        | 40.73.50.0         |                 | |
 | Asien, Osten            | 191.234.2.139, 52.175.33.150 |       | |
-| US, Osten 1            | 40.121.158.30, 40.79.153.12 | 191.238.6.43 | Keine Verbindungen nach dem 1. September 2019 |
+| East US              | 40.121.158.30, 40.79.153.12 | 191.238.6.43 | Keine Verbindungen nach dem 1. September 2019 |
 | USA (Ost) 2            | 40.79.84.180, 52.177.185.181, 52.167.104.0 | 191.239.224.107    | Keine Verbindungen nach dem 1. September 2019 |
 | Frankreich, Mitte       | 40.79.137.0, 40.79.129.1 |           | |
 | Deutschland, Mitte      | 51.4.144.100       |                 | |
@@ -89,13 +91,17 @@ Im nächsten Schritt fügen wir jeder Region mehr Gateways hinzu und setzen die 
 | Korea, Süden          | 52.231.200.86      |                 | |
 | USA Nord Mitte     | 23.96.178.199      | 23.98.55.75     | Keine Verbindungen nach dem 1. September 2019 |
 | Nordeuropa         | 40.113.93.91       | 191.235.193.75  | Keine Verbindungen nach dem 1. September 2019 |
+| Südafrika, Norden   | 102.133.152.0      |                 | |
+| Südafrika, Westen    | 102.133.24.0       |                 | |
 | USA Süd Mitte     | 13.66.62.124       | 23.98.162.75    | Keine Verbindungen nach dem 1. September 2019 |
 | Südostasien      | 104.43.15.0        | 23.100.117.95   | Keine Verbindungen nach dem 1. September 2019 |
+| VAE, Mitte          | 20.37.72.64        |                 | |
+| Vereinigte Arabische Emirate, Norden            | 65.52.248.0        |                 | |
 | UK, Süden             | 51.140.184.11      |                 | |
 | UK, Westen              | 51.141.8.11        |                 | |
 | USA, Westen-Mitte      | 13.78.145.25       |                 | |
-| Europa, Westen          | 191.237.232.75, 40.68.37.158 |       | |
-| USA, Westen 1            | 23.99.34.75, 104.42.238.205 |        | |
+| Europa, Westen          | 40.68.37.158       | 191.237.232.75  | Keine Verbindungen nach dem 1. September 2019 |
+| USA (Westen)              | 104.42.238.205     | 23.99.34.75     | Keine Verbindungen nach dem 1. September 2019 |
 | USA, Westen 2            | 13.66.226.202      |                 | |
 |                      |                    |                 | |
 

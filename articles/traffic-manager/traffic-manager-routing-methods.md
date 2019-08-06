@@ -10,12 +10,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/17/2018
 ms.author: allensu
-ms.openlocfilehash: 9068cb0dad742ac6e5eeae0b3a1b801d08d4734c
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 305f24fc274ad48f5c60762223b7bf4e970fe083
+ms.sourcegitcommit: e9c866e9dad4588f3a361ca6e2888aeef208fc35
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67070992"
+ms.lasthandoff: 07/19/2019
+ms.locfileid: "68333735"
 ---
 # <a name="traffic-manager-routing-methods"></a>Traffic Manager-Routingmethoden
 
@@ -123,8 +123,38 @@ Traffic Manager liest die IP-Quelladresse der DNS-Abfrage und entscheidet, aus w
 
 Wie unter [Funktionsweise von Traffic Manager Works](traffic-manager-how-it-works.md) bereits beschrieben, erhält Traffic Manager DNS-Abfragen nicht direkt von Clients. Vielmehr erhält er DNS-Abfragen vom rekursiven DNS-Dienst, für deren Verwendung die Clients konfiguriert sind. Daher handelt es sich bei der IP-Adresse, die zur Ermittlung der Region verwendet wird, nicht um die IP-Adresse eines Clients, sondern um die IP-Adresse des zugehörigen rekursiven DNS-Diensts. In der Praxis lässt sich diese IP-Adresse für diesen Zweck gut verwenden.
 
+### <a name="faqs"></a>Häufig gestellte Fragen
+
+* [Was sind einige Anwendungsfälle, in denen geografisches Routing nützlich ist?](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#what-are-some-use-cases-where-geographic-routing-is-useful)
+
+* [Wie entscheide ich, ob ich die leistungsbezogene oder geografische Routingmethode verwenden sollte?](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#how-do-i-decide-if-i-should-use-performance-routing-method-or-geographic-routing-method)
+
+* [Welche Regionen werden von Traffic Manager für das geografische Routing unterstützt?](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#what-are-the-regions-that-are-supported-by-traffic-manager-for-geographic-routing)
+
+* [Wie bestimmt Traffic Manager, woher die Abfrage eines Benutzers stammt?](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#how-does-traffic-manager-determine-where-a-user-is-querying-from)
+
+* [Ist garantiert, dass Traffic Manager immer den genauen geografischen Standort des Benutzers ermitteln kann?](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#is-it-guaranteed-that-traffic-manager-can-correctly-determine-the-exact-geographic-location-of-the-user-in-every-case)
+
+* [Muss sich ein Endpunkt physisch in der Region befinden, für die er für geografisches Routen konfiguriert ist?](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#does-an-endpoint-need-to-be-physically-located-in-the-same-region-as-the-one-it-is-configured-with-for-geographic-routing)
+
+* [Kann ich geografische Regionen Endpunkten in einem Profil zuordnen, das nicht für geografisches Routing konfiguriert ist?](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#can-i-assign-geographic-regions-to-endpoints-in-a-profile-that-is-not-configured-to-do-geographic-routing)
+
+* [Warum tritt ein Fehler auf, wenn ich versuche, die Routingmethode eines vorhandenen Profils in geografisch zu ändern?](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#why-am-i-getting-an-error-when-i-try-to-change-the-routing-method-of-an-existing-profile-to-geographic)
+
+* [Warum wird es Kunden dringend empfohlen, in einem Profil mit aktiviertem geografischem Routing geschachtelte Profile anstelle von Endpunkten zu erstellen?](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#why-is-it-strongly-recommended-that-customers-create-nested-profiles-instead-of-endpoints-under-a-profile-with-geographic-routing-enabled)
+
+* [Gibt es Einschränkungen hinsichtlich der API-Version, die diesen Routingtyp unterstützt?](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#are-there-any-restrictions-on-the-api-version-that-supports-this-routing-type)
+
 ## <a name = "multivalue"></a>Routingmethode „MultiValue“ für Datenverkehr
 Mit der Routingmethode **MultiValue** für Datenverkehr können Sie mehrere fehlerfreie Endpunkte in einer einzelnen DNS-Abfrageantwort abrufen. Dadurch kann der Aufrufer clientseitige Wiederholungsversuche mit anderen Endpunkten ausführen, falls ein zurückgegebener Endpunkt nicht reagiert. Dieses Muster kann zur Erhöhung der Verfügbarkeit eines Diensts beitragen und bei einer neuen DNS-Abfrage zum Abrufen eines fehlerfreien Endpunkts die Wartezeit verkürzen. Die Routingmethode „MultiValue“ funktioniert nur, wenn alle Endpunkte vom Typ „Extern“ und als IPv4- oder IPv6-Adressen angegeben sind. Wenn eine Abfrage für dieses Profil empfangen wird, werden alle fehlerfreien Endpunkte unter Berücksichtigung einer konfigurierbaren maximalen Rückgabeanzahl zurückgegeben.
+
+### <a name="faqs"></a>Häufig gestellte Fragen
+
+* [Was sind einige Anwendungsfälle, in denen MultiValue-Routing nützlich ist?](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#what-are-some-use-cases-where-multivalue-routing-is-useful)
+
+* [Wie viele Endpunkte werden zurückgegeben, wenn das MultiValue-Routing verwendet wird?](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#how-many-endpoints-are-returned-when-multivalue-routing-is-used)
+
+* [Erhalte ich den gleichen Satz von Endpunkten, wenn das MultiValue-Routing verwendet wird?](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#will-i-get-the-same-set-of-endpoints-when-multivalue-routing-is-used)
 
 ## <a name = "subnet"></a>Routingmethode „Subnetz“ für Datenverkehr
 Mit der Routingmethode **Subnetz** für Datenverkehr können Sie eine Gruppe von Endbenutzer-IP-Adressbereichen bestimmten Endpunkten in einem Profil zuordnen. Wenn der Traffic Manager danach eine DNS-Abfrage für dieses Profil empfängt, untersucht er die Quell-IP-Adresse der Anforderung (in den meisten Fällen ist das die ausgehende IP-Adresse der vom Aufrufer verwendeten DNS-Auflösung), um zu bestimmen, welchem Endpunkt sie zugeordnet ist, und gibt den entsprechenden Endpunkt in der Abfrageantwort zurück. 
@@ -133,6 +163,19 @@ Die IP-Adresse, die einem Endpunkt zugeordnet wird, kann in Form von CIDR-Bereic
 Wenn Sie einen Endpunkt ohne Adressbereich definieren, funktioniert dieser als Fallback und verarbeitet den Datenverkehr aller verbleibenden Subnetze. Wenn kein Fallbackendpunkt enthalten ist, sendet der Traffic Manager eine NODATA-Antwort für undefinierte Bereiche. Daher wird dringend empfohlen, entweder einen Fallbackendpunkt zu definieren oder alle möglichen IP-Adressbereiche für alle Ihre Endpunkte anzugeben.
 
 Die Routingmethode „Subnetz“ kann verwendet werden, um Benutzern, die eine Verbindung über einen bestimmten IP-Adressraum herstellen, ein anderes Erlebnis zu bieten. So kann ein Kunde mithilfe der Routingmethode „Subnetz“ beispielsweise sämtliche Anforderungen, die von der Konzernzentrale ausgehen, an einen anderen Endpunkt weiterleiten, um etwa eine interne Version einer App zu testen. Ein weiteres Szenario wäre etwa die Bereitstellung einer anderen Erfahrung für Benutzer, die eine Verbindung über einen bestimmten ISP herstellen, um beispielsweise Benutzer eines bestimmten ISP zu blockieren.
+
+### <a name="faqs"></a>Häufig gestellte Fragen
+
+* [Welche Anwendungsfälle gibt es, in denen Subnetzrouting sinnvoll ist?](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#what-are-some-use-cases-where-subnet-routing-is-useful)
+
+* [Wie erkennt Traffic Manager die IP-Adresse des Endbenutzers?](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#how-does-traffic-manager-know-the-ip-address-of-the-end-user)
+
+* [Wie kann ich bei der Verwendung von Subnetzrouting IP-Adressen angeben?](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#how-can-i-specify-ip-addresses-when-using-subnet-routing)
+
+* [Wie kann ich bei der Verwendung von Subnetzrouting einen Fallbackendpunkt angeben?](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#how-can-i-specify-a-fallback-endpoint-when-using-subnet-routing)
+
+* [Was geschieht, wenn ein Endpunkt in einem Profil vom Typ Subnetzrouting deaktiviert ist?](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#what-happens-if-an-endpoint-is-disabled-in-a-subnet-routing-type-profile)
+
 
 ## <a name="next-steps"></a>Nächste Schritte
 
