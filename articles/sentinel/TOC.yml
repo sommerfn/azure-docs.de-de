@@ -13,7 +13,7 @@
   items:
     - name: Erkennen von verdächtigen Bedrohungen
       href: tutorial-detect-threats.md
-    - name: Untersuchen von Fällen
+    - name: Untersuchen von Vorfällen
       href: tutorial-investigate-cases.md
     - name: Reagieren auf Bedrohungen
       href: tutorial-respond-threats-playbook.md

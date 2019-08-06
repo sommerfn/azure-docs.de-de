@@ -5,14 +5,14 @@ author: yashesvi
 manager: yashar
 ms.service: billing
 ms.topic: conceptual
-ms.date: 07/03/2019
+ms.date: 07/19/2019
 ms.author: banders
-ms.openlocfilehash: cd0a70aa0fb5096c5b0157ae078c961da03109bc
-ms.sourcegitcommit: d2785f020e134c3680ca1c8500aa2c0211aa1e24
+ms.openlocfilehash: c63447ff0a3329e0cc0dc0605984ae4f26e9c25f
+ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/04/2019
-ms.locfileid: "67565323"
+ms.lasthandoff: 07/19/2019
+ms.locfileid: "68359230"
 ---
 # <a name="what-are-azure-reservations"></a>Was sind Azure-Reservierungen?
 
@@ -38,9 +38,9 @@ Für virtuelle Windows-Computer und SQL-Datenbank können Sie die Lizenzierungsk
 
 Um einen Plan zu kaufen, müssen Sie eine Rolle des Abonnementverantwortlichen bei einem Enterprise-Abonnement (MS-AZR-0017P oder MS-AZR-0148P) oder einem Abonnement mit nutzungsbasierter Zahlung (MS-AZR-003P oder MS-AZR-0023P) haben. Cloudlösungsanbieter können Azure-Reservierungen über das Azure-Portal oder  [Partner Center](/partner-center/azure-reservations)  erwerben.
 
-EA-Kunden können Käufe für EA-Administratoren beschränken, indem sie die Option **Reservierte Instanzen hinzufügen** im EA-Portal deaktivieren. EA-Administratoren müssen der Besitzer für mindestens ein EA-Abonnement sein, um eine Reservierung zu erwerben. Die Option ist nützlich für Unternehmen, die ein zentralisiertes Team benötigen, um Reservierungen für verschiedene Kostenstellen einzukaufen. Nach dem Kauf können zentralisierte Teams die Reservierungen um Kostenstellenbesitzer erweitern. Die Besitzer können dann die Reservierung auf ihre Abonnements ausdehnen. Das zentrale Team muss keinen Zugriff des Abonnenten haben, wenn die Reservierung gekauft wird.
+Kunden mit Enterprise Agreement (EA) können Käufe auf EA-Administratoren beschränken. Hierzu müssen sie im EA Portal die Option **Reservierte Instanzen hinzufügen** deaktivieren. EA-Administratoren müssen der Besitzer für mindestens ein EA-Abonnement sein, um eine Reservierung zu erwerben. Die Option ist nützlich für Unternehmen, die ein zentralisiertes Team benötigen, um Reservierungen für verschiedene Kostenstellen einzukaufen. Nach dem Kauf können zentralisierte Teams die Reservierungen um Kostenstellenbesitzer erweitern. Die Besitzer können dann die Reservierung auf ihre Abonnements ausdehnen. Das zentrale Team muss keinen Zugriff des Abonnenten haben, wenn die Reservierung gekauft wird.
 
-Ein Reservierungsrabatt gilt nur für Ressourcen, die mit Abonnements verbunden sind, die über Enterprise, CSP und individuelle Pläne mit nutzungsbasierten Tarifen erworben wurden.
+Ein Reservierungsrabatt gilt nur für Ressourcen in Verbindung mit Abonnements, die über Enterprise, einen Cloud Solution Provider (CSP) und individuelle Pläne mit nutzungsbasierten Tarifen erworben wurden.
 
 ## <a name="scope-reservations"></a>Bereichsreservierungen
 
@@ -51,8 +51,8 @@ Sie können den Bereich für eine Reservierung auf ein Abonnement oder eine Ress
 Beim Festlegen von Ressourcengruppenbereichen stehen Ihnen je nach Bedarf drei Optionen zur Verfügung, mit denen Sie den Bereich einer Reservierung definieren können:
 
 - **Single resource group scope** (Bereich einer einzelnen Ressourcengruppe): Wendet den Reservierungsrabatt nur auf die entsprechenden Ressourcen in der ausgewählten Ressourcengruppe an.
-- **Single subscription scope** (Bereich eines einzelnen Abonnements): Wendet den Reservierungsrabatt auf die entsprechenden Ressourcen im ausgewählten Abonnement an.
-- **Shared scope** (Gemeinsam genutzter Bereich): Wendet den Reservierungsrabatt auf die entsprechenden Ressourcen in berechtigten Abonnements innerhalb des Abrechnungskontexts an. Für Kunden mit einem Enterprise Agreement ist der Abrechnungskontext die Registrierung. Für Kunden mit individuellen Abonnements mit nutzungsbasierten Tarifen handelt es sich beim Abrechnungsbereich um alle berechtigten Abonnements, die vom Kontoadministrator erstellt wurden.
+- **Einzelnes Abonnement**: Wendet den Reservierungsrabatt auf die entsprechenden Ressourcen im ausgewählten Abonnement an.
+- **Gemeinsam genutzt**: Wendet den Reservierungsrabatt auf die entsprechenden Ressourcen in berechtigten Abonnements innerhalb des Abrechnungskontexts an. Für Kunden mit einem Enterprise Agreement ist der Abrechnungskontext die Registrierung. Für Kunden mit individuellen Abonnements mit nutzungsbasierten Tarifen handelt es sich beim Abrechnungsbereich um alle berechtigten Abonnements, die vom Kontoadministrator erstellt wurden.
 
 Während Reservierungsrabatte auf Ihre Nutzung angewendet werden, verarbeitet Azure die Reservierung in der folgenden Reihenfolge:
 
@@ -66,11 +66,11 @@ Eine einzelne Ressourcengruppe kann abhängig davon, wie Sie Ihre Reservierungen
 
 Sie können den Bereich der Reservierung auf eine Ressourcengruppe festlegen, wenn Sie die Reservierung erwerben, oder Sie legen den Bereich nach dem Kauf fest. Sie müssen Besitzer eines Abonnements sein, um den Bereich der Reservierung auf eine Ressourcengruppe festzulegen.
 
-Um den Bereich festzulegen, navigieren Sie zur Seite [Einkaufsreservierung](https://ms.portal.azure.com/#blade/Microsoft\_Azure\_Reservations/CreateBlade/referrer/Browse\_AddCommand) im Azure-Portal. Wählen Sie dann den zu erwerbenden Reservierungstyp aus. Ändern Sie im Auswahlformular **Produkt auswählen, das Sie erwerben möchten** den Wert des **Bereichs** in **Einzelne Ressourcengruppe**, und wählen Sie eine Ressourcengruppe aus.
+Um den Bereich festzulegen, navigieren Sie zur Seite [Einkaufsreservierung](https://ms.portal.azure.com/#blade/Microsoft\_Azure\_Reservations/CreateBlade/referrer/Browse\_AddCommand) im Azure-Portal. Wählen Sie den zu erwerbenden Reservierungstyp aus. Ändern Sie im Auswahlformular **Produkt auswählen, das Sie erwerben möchten** den Wert von „Bereich“ in „Einzelne Ressourcengruppe“. Wählen Sie anschließend eine Ressourcengruppe aus.
 
 ![Beispiel für die Kaufauswahl einer VM-Reservierung](./media/billing-save-compute-costs-reservations/select-product-to-purchase.png)
 
-Kaufempfehlungen für die Ressourcengruppe in der Reservierung des virtuellen Computers werden angezeigt. Empfehlungen werden berechnet, indem die Nutzung während der letzten 30 Tagen analysiert wird. Eine Kaufempfehlung erfolgt, wenn die Kosten für das Ausführen von Ressourcen mit reservierten Instanzen günstiger sind als die Kosten für die Ausführung von Ressourcen mit nutzungsbasierter Bezahlung. Weitere Informationen zu Reservierungskaufempfehlungen finden Sie im Blogbeitrag [Get Reserved Instance purchase recommendations based on usage pattern](https://azure.microsoft.com/blog/get-usage-based-reserved-instance-recommendations) (Erhalten von Kaufempfehlungen für die reservierte Instanz basierend auf dem Nutzungsverhalten).
+Kaufempfehlungen für die Ressourcengruppe in der Reservierung des virtuellen Computers werden angezeigt. Empfehlungen werden berechnet, indem die Nutzung während der letzten 30 Tagen analysiert wird. Eine Kaufempfehlung erfolgt, wenn die Kosten für das Ausführen von Ressourcen mit reservierten Instanzen günstiger sind als die Kosten für die Ausführung von Ressourcen mit nutzungsbasierter Bezahlung. Weitere Informationen zu Reservierungskaufempfehlungen finden Sie unter [Get Reserved Instance purchase recommendations based on usage pattern](https://azure.microsoft.com/blog/get-usage-based-reserved-instance-recommendations) (Erhalten von Kaufempfehlungen für die reservierte Instanz basierend auf dem Nutzungsverhalten).
 
 Sie können den Bereich nach dem Erwerb einer Reservierung immer aktualisieren. Navigieren Sie zu diesem Zweck zu der Reservierung, klicken Sie auf **Konfiguration**, und legen Sie den Bereich für die Reservierung erneut fest. Das Neuzuweisen eines Bereichs für eine Reservierung ist keine kommerzielle Transaktion. Die Reservierungsbedingungen ändern sich nicht. Weitere Informationen zum Aktualisieren des Bereichs finden Sie unter [Aktualisieren des Bereichs nach dem Erwerb einer Reservierung](billing-manage-reserved-vm-instance.md#change-the-reservation-scope).
 
@@ -88,7 +88,7 @@ Wenn Sie feststellen, dass die Nutzung der Reservierung mit dem Bereich „Resso
 
 Wenn Sie nicht über passende Ressourcen in einer Ressourcengruppe verfügen, wird die Reservierung nicht ausgenutzt. Die Reservierung gilt nicht automatisch für eine andere Ressourcengruppe oder ein anderes Abonnement, wenn eine geringe Auslastung vorliegt.
 
-Ein Reservierungsbereich wird nicht automatisch aktualisiert, wenn Sie die Ressourcengruppe aus einem Abonnement in ein anderes verschieben. Sie müssen den Bereich der Reservierung neu festlegen. Andernfalls wird die Reservierung nicht ausgenutzt.
+Ein Reservierungsbereich wird nicht automatisch aktualisiert, wenn Sie die Ressourcengruppe aus einem Abonnement in ein anderes verschieben. Der Bereich wird nicht aktualisiert, wenn Sie die Ressourcengruppe löschen. Sie müssen den [Bereich der Reservierung neu festlegen](billing-manage-reserved-vm-instance.md#change-the-reservation-scope). Andernfalls wird die Reservierung nicht ausgenutzt.
 
 ## <a name="discounted-subscription-and-offer-types"></a>Abonnements und Angebotstypen mit Rabatt
 
@@ -106,13 +106,13 @@ Die Reservierung wird mit der Zahlungsmethode in Rechnung gestellt, die mit dem 
 
 ## <a name="how-reservation-discount-is-applied"></a>Wie der Reservierungsrabatt angewendet wird
 
-Der Reservierungsrabatt gilt für die Ressourcennutzung, die den Attributen entspricht, die Sie beim Kauf der Reservierung auswählen. Zu diesen Attributen gehört der Bereich, in dem die entsprechenden VMs, SQL-Datenbank-Instanzen, Azure Cosmos DB-Instanzen oder anderen Ressourcen ausgeführt werden. Beispiel: Wenn Sie einen Rabatt auf eine Reservierung für vier VMs vom Typ „Standard D2“ in der Region „USA, Westen“ nutzen möchten, wählen Sie das Abonnement aus, in dem die VMs ausgeführt werden.
+Der Reservierungsrabatt gilt für die Ressourcennutzung, die den Attributen entspricht, die Sie beim Kauf der Reservierung auswählen. Zu den Attributen gehört der Bereich, in dem die entsprechenden VMs, SQL-Datenbank-Instanzen, Azure Cosmos DB-Instanzen oder anderen Ressourcen ausgeführt werden. Beispiel: Wenn Sie einen Rabatt auf eine Reservierung für vier VMs vom Typ „Standard D2“ in der Region „USA, Westen“ nutzen möchten, wählen Sie das Abonnement aus, in dem die VMs ausgeführt werden.
 
 Reservierungsrabatte funktionieren nach dem Prinzip „*use-it-or-lose-it*“. Wenn Sie für eine Stunde nicht über die entsprechenden Ressourcen verfügen, verlieren Sie folglich eine Reservierungsmenge für diese Stunde. Ungenutzte reservierte Stunden können nicht übertragen werden.
 
 Wenn Sie eine Ressource beenden, wird der Reservierungsrabatt automatisch auf eine andere entsprechende Ressource im angegebenen Reservierungsumfang angewandt. Wenn keine übereinstimmenden Ressourcen im angegebenen Reservierungsumfang gefunden werden, gehen die reservierten Stunden *verloren*.
 
-Beispielsweise können Sie später eine Ressource erstellen und über eine entsprechende Reservierung verfügen, die nicht ausgelastet ist. In diesem Beispiel gilt der Reservierungsrabatt automatisch für die neue übereinstimmende Ressource.
+Beispielsweise können Sie später eine Ressource erstellen und über eine entsprechende Reservierung verfügen, die nicht ausgelastet ist. Der Reservierungsrabatt gilt automatisch für die neue übereinstimmende Ressource.
 
 Wenn die virtuellen Computer in verschiedenen Abonnements in Ihrer Registrierung/Ihrem Konto ausgeführt werden, wählen Sie den Bereich „Freigegeben“ aus. Der Bereich „Freigegeben“ ermöglicht die abonnementübergreifende Anwendung des Reservierungsrabatts. Sie können den Bereich nach dem Erwerb einer Reservierung ändern. Weitere Informationen finden Sie unter [Verwalten von Azure-Reservierungen](billing-manage-reserved-vm-instance.md).
 
@@ -120,7 +120,7 @@ Der Rabatt auf Reservierungen gilt nur für Ressourcen, denen einer der Abonneme
 
 ## <a name="when-the-reservation-term-expires"></a>Wann das Ende des Reservierungszeitraums erreicht ist
 
-Am Ende der Laufzeit der Reservierung läuft der Abrechnungsrabatt ab, und die Infrastruktur der virtuellen Computer, SQL-Datenbank-Instanzen, Azure Cosmos DB-Instanzen oder anderen Ressourcen wird mit den Gebühren für die nutzungsbasierte Bezahlung in Rechnung gestellt. Azure-Reservierungen verlängern sich nicht automatisch. Zur weiteren Nutzung des Abrechnungsrabatts müssen Sie eine neue Reservierung für Dienste und Software erwerben, die für Reservierungen berechtigt sind.
+Am Ende des Reservierungszeitraums läuft der Abrechnungsrabatt ab. Für den virtuellen Computer, die SQL-Datenbank, Azure Cosmos DB oder andere Ressourcen wird der Preis für die nutzungsbasierte Bezahlung berechnet. Azure-Reservierungen werden nicht automatisch verlängert. Zur weiteren Nutzung des Abrechnungsrabatts müssen Sie eine neue Reservierung für Dienste und Software erwerben, die für Reservierungen berechtigt sind.
 
 ## <a name="discount-applies-to-different-sizes"></a>Rabatt gilt für verschiedene Größen
 
@@ -128,9 +128,31 @@ Wenn Sie eine Reservierung erwerben, kann der Rabatt auf andere Instanzen mit At
 
 Servicepläne:
 
-- Reservierte VM-Instanzen: Wenn Sie die Reservierung erwerben und unter **Optimiert für** die Option **Instanzgrößenflexibilität** auswählen, hängt die Abdeckung des Rabatts von der ausgewählten VM-Größe ab. Die Reservierung kann für VM-Größen in derselben Größenordnung gelten. Weitere Informationen finden Sie unter [Flexibilität bei der VM-Größe mit reservierten VM-Instanzen](../virtual-machines/windows/reserved-vm-instance-size-flexibility.md).
+- Reservierte VM-Instanzen: Wenn Sie die Reservierung erwerben und **Optimiert für: Flexibilität bei der Instanzgröße** wählen, hängt die Abdeckung des Rabatts von der ausgewählten VM-Größe ab. Die Reservierung kann für VM-Größen in derselben Größenordnung gelten. Weitere Informationen finden Sie unter [Flexibilität bei der VM-Größe mit reservierten VM-Instanzen](../virtual-machines/windows/reserved-vm-instance-size-flexibility.md).
 - Reservierte SQL-Datenbank-Kapazität: Die Rabattabdeckung hängt von der ausgewählten Leistungsstufe ab. Weitere Informationen finden Sie unter [Grundlegendes zur Anwendung eines Rabatts für Azure-Reservierungen auf SQL-Datenbank-Instanzen](billing-understand-reservation-charges.md).
 - Reservierte Azure Cosmos DB-Kapazität: Die Rabattabdeckung hängt vom bereitgestellten Durchsatz ab. Weitere Informationen finden Sie unter [Understand how an Azure Cosmos DB reservation discount is applied (Grundlegendes zur Anwendung eines Rabatts für Azure Cosmos DB-Reservierungen)](billing-understand-cosmosdb-reservation-charges.md).
+
+## <a name="reservation-notifications"></a>Reservierungsbenachrichtigungen
+
+Je nachdem, wie Sie für Ihr Azure-Abonnement bezahlen, senden wir per E-Mail Reservierungsbenachrichtigungen an die folgenden Benutzer Ihrer Organisation. Benachrichtigungen werden für verschiedene Ereignisse gesendet, z. B.:
+
+- Purchase
+- Bevorstehender Reservierungsablauf
+- Expiry
+- Verlängerung
+- Abbruch
+- Bereichsänderung
+
+Für Kunden mit EA-Abonnements:
+- Eine Kaufbenachrichtigung wird an den Käufer und die EA-Benachrichtigungskontakte gesendet.
+- Andere Benachrichtigungen zum Reservierungslebenszyklus werden nur an die EA-Benachrichtigungskontakte gesendet.
+- Benutzer, die einer Reservierung per RBAC-Berechtigung (IAM) hinzugefügt werden, erhalten keine E-Mail-Benachrichtigungen.
+
+Für Kunden mit Einzelabonnements:
+- Der Käufer erhält eine Kaufbenachrichtigung.
+- Zum Zeitpunkt des Kaufs erhält der Besitzer des Abrechnungskontos eines Abonnements eine Kaufbenachrichtigung.
+- Der Kontobesitzer erhält alle anderen Benachrichtigungen.
+
 
 ## <a name="need-help-contact-us"></a>Sie brauchen Hilfe? Wenden Sie sich an uns.
 

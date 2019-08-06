@@ -5,16 +5,16 @@ services: iot-edge
 author: shizn
 manager: philmea
 ms.author: xshi
-ms.date: 07/01/2019
+ms.date: 07/22/2019
 ms.topic: article
 ms.service: iot-edge
 ms.custom: seodec18
-ms.openlocfilehash: 953a549a44d224f9d196c6d6842bdcae04cca975
-ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
+ms.openlocfilehash: 3c9fd286fd28d55318221177f69948c20ed1b935
+ms.sourcegitcommit: c556477e031f8f82022a8638ca2aec32e79f6fd9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/01/2019
-ms.locfileid: "67485911"
+ms.lasthandoff: 07/23/2019
+ms.locfileid: "68414472"
 ---
 # <a name="use-visual-studio-2019-to-develop-and-debug-modules-for-azure-iot-edge"></a>Entwickeln und Debuggen von Modulen für Azure IoT Edge mithilfe von Visual Studio 2019
 
@@ -27,10 +27,7 @@ Die Azure IoT Edge-Tools für Visual Studio bietet die folgenden Vorteile:
 - Sie können Ihre Azure IoT-Module in C oder C# programmieren und dabei von sämtlichen Vorteilen der Entwicklung mit Visual Studio profitieren.
 - Sie können Ihre Azure IoT Edge-Geräte und -Module in der Benutzeroberfläche verwalten.
 
-In diesem Artikel erfahren Sie, wie Sie Ihre IoT Edge-Module mithilfe der Azure IoT Edge-Tools für Visual Studio 2019 entwickeln. Außerdem erfahren Sie, wie Sie Ihr Projekt auf Ihrem Azure IoT Edge-Gerät bereitstellen.
-
-> [!TIP]
-> Die von Visual Studio erstellte Struktur eines IoT Edge-Projekts ist nicht die gleiche wie in Visual Studio Code.
+In diesem Artikel erfahren Sie, wie Sie Ihre IoT Edge-Module mithilfe der Azure IoT Edge-Tools für Visual Studio 2019 entwickeln. Außerdem erfahren Sie, wie Sie Ihr Projekt auf Ihrem Azure IoT Edge-Gerät bereitstellen. Derzeit bietet Visual Studio 2019 Unterstützung für Module, die in C und C# geschrieben wurden. Die unterstützten Gerätearchitekturen sind Windows X64 und Linux X64 oder ARM32. Weitere Informationen zu unterstützten Betriebssystemen, Sprachen und Architekturen finden Sie unter [Sprach- und Architekturunterstützung.](module-development.md#language-and-architecture-support)
   
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -95,11 +92,14 @@ Wenn Visual Studio 2019 bereit ist, benötigen Sie auch die folgenden Tools und 
 
 Die Azure IoT Edge-Projektvorlage in Visual Studio erstellt ein Projekt, das auf Azure IoT Edge-Geräten im Azure IoT Hub bereitgestellt werden kann. Sie erstellen zunächst eine Azure IoT Edge-Lösung und generieren anschließend das erste Modul in dieser Lösung. Jede IoT Edge-Lösung kann mehrere Module enthalten.
 
+> [!TIP]
+> Die von Visual Studio erstellte Struktur eines IoT Edge-Projekts ist nicht die gleiche wie in Visual Studio Code.
+
 1. Suchen Sie im Visual Studio-Dialogfeld „Neues Projekt“ das Projekt **Azure IoT Edge**, wählen Sie es aus, und klicken Sie auf **Weiter**. Im Fenster zum Konfigurieren des Projekts geben Sie einen Namen und den Speicherort für Ihr Projekt ein, und wählen Sie dann **Erstellen** aus. Der Standardname für das Projekt ist **AzureIoTEdgeApp1**.
 
    ![Erstellen eines neuen Projekts](./media/how-to-visual-studio-develop-csharp-module/create-new.png)
 
-1. Wählen Sie im Fenster **IoT Edge-Anwendung und -Modul hinzufügen** entweder **C#-Modul** oder **C++-Modul** aus, und geben Sie den Namen und das Imagerepository für Ihr Modul an. Visual Studio füllt den Modulnamen automatisch mit **localhost:5000/<Name Ihres Moduls\>** aus. Ersetzen Sie ihn durch Ihre eigenen Registrierungsinformationen. Wenn Sie eine lokale Docker-Registrierung zum Testen verwenden, können Sie **localhost** nutzen. Nutzen Sie den Anmeldeserver aus Ihren Registrierungseinstellungen, wenn Sie Azure Container Registry verwenden. Der Anmeldeserver hat die Form * **\<Registrierungsname\>*.azurecr.io**. Ersetzen Sie nur den Teil **localhost:5000** der Zeichenfolge, damit das endgültige Ergebnis die folgende Form hat: * *\<* Registrierungsname *\>.azurecr.io/* \<Name Ihres Moduls\>***. Der Standardname für das Modul ist **IoTEdgeModule1**.
+1. Wählen Sie im Fenster **IoT Edge-Anwendung und -Modul hinzufügen** entweder **C#-Modul** oder **C++-Modul** aus, und geben Sie den Namen und das Imagerepository für Ihr Modul an. Visual Studio füllt den Modulnamen automatisch mit **localhost:5000/<Name Ihres Moduls\>** aus. Ersetzen Sie ihn durch Ihre eigenen Registrierungsinformationen. Wenn Sie eine lokale Docker-Registrierung zum Testen verwenden, können Sie **localhost** nutzen. Nutzen Sie den Anmeldeserver aus Ihren Registrierungseinstellungen, wenn Sie Azure Container Registry verwenden. Der Anmeldeserver hat die Form **_\<Registrierungsname\>_ .azurecr.io**. Ersetzen Sie nur den Teil **localhost:5000** der Zeichenfolge, damit das endgültige Ergebnis die folgende Form hat: **\<*Registrierungsname*\>.azurecr.io/ _\<Name Ihres Moduls\>_** . Der Standardname für das Modul ist **IoTEdgeModule1**.
 
    ![Anwendung und Modul hinzufügen](./media/how-to-visual-studio-develop-csharp-module/add-application-and-module.png)
 

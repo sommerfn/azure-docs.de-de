@@ -4,14 +4,14 @@ description: Hier erfahren Sie, wie Sie mithilfe von Azure Cosmos DB und Azure F
 author: SnehaGunda
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 05/28/2019
+ms.date: 07/17/2019
 ms.author: sngun
-ms.openlocfilehash: db85d02a4f5c6e0f644a03394b570aac46202e72
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 3bf89cd3ec0822cee2a3ebcf76de4193046462f9
+ms.sourcegitcommit: e9c866e9dad4588f3a361ca6e2888aeef208fc35
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66256942"
+ms.lasthandoff: 07/19/2019
+ms.locfileid: "68335907"
 ---
 # <a name="serverless-database-computing-using-azure-cosmos-db-and-azure-functions"></a>Serverloses Datenbankcomputing mit Azure Cosmos DB und Azure Functions
 
@@ -23,36 +23,37 @@ Mit der nativen Integration zwischen [Azure Cosmos DB](https://azure.microsoft.c
 
 Mit Azure Cosmos DB und Azure Functions können Sie Ihre Datenbanken und serverlosen Apps wie folgt integrieren:
 
-* Erstellen Sie einen ereignisgesteuerten **Azure Cosmos DB-Trigger** in einer Azure-Funktion. Dieser Trigger stützt sich auf [Änderungsfeed](change-feed.md)-Datenströme, anhand derer Ihr Azure Cosmos DB-Container auf Änderungen überwacht wird. Werden Änderungen an einem Container vorgenommen, wird der Änderungsfeed-Datenstrom an den Trigger gesendet, wodurch die Azure-Funktion aufgerufen wird.
+* Erstellen Sie einen ereignisgesteuerten **Azure Functions-Trigger für Cosmos DB**. Dieser Trigger stützt sich auf [Änderungsfeed](change-feed.md)-Datenströme, anhand derer Ihr Azure Cosmos DB-Container auf Änderungen überwacht wird. Werden Änderungen an einem Container vorgenommen, wird der Änderungsfeed-Datenstrom an den Trigger gesendet, wodurch die Azure-Funktion aufgerufen wird.
 * Sie können aber auch eine Azure-Funktion mithilfe einer **Eingabebindung** an einen Azure Cosmos DB-Container binden. Eingabebindungen lesen Daten aus einem Container, wenn eine Funktion ausgeführt wird.
 * Binden Sie eine Funktion mithilfe einer **Ausgabebindung** an einen Azure Cosmos DB-Container. Ausgabebindungen schreiben Daten in einen Container, wenn eine Funktion abgeschlossen wird.
 
 > [!NOTE]
-> Zurzeit werden Azure Cosmos DB-Trigger, Eingabebindungen und Ausgabebindungen nur für die Verwendung mit der SQL-API unterstützt. Für alle anderen Azure Cosmos DB-APIs müssen Sie für den Datenbankzugriff aus Ihrer Funktion den statischen Client für Ihre API verwenden.
+> Derzeit werden Azure Functions-Trigger, Eingabebindungen und Ausgabebindungen für Cosmos DB nur für die Verwendung mit der SQL-API unterstützt. Für alle anderen Azure Cosmos DB-APIs müssen Sie für den Datenbankzugriff aus Ihrer Funktion den statischen Client für Ihre API verwenden.
 
 
 In der folgenden Abbildung wird jede einzelne dieser drei Integrationen veranschaulicht: 
 
 ![Integration von Azure Cosmos DB und Azure Functions](./media/serverless-computing-database/cosmos-db-azure-functions-integration.png)
 
-Der Azure Cosmos DB-Trigger, die Eingabebindung und die Ausgabebindung können in den folgenden Kombinationen verwendet werden:
-* Eine Azure Cosmos DB-Trigger kann mit einer Ausgangsbindung an einen anderen Azure Cosmos DB-Container verwendet werden. Nachdem eine Funktion eine Aktion an einem Element im Änderungsfeed ausgeführt hat, können Sie es in einen anderen Container schreiben (beim Schreiben in den ursprünglichen Container würde im Endeffekt eine rekursive Schleife entstehen). Sie können jedoch auch einen Azure Cosmos DB-Trigger verwenden, um effektiv alle geänderten Elemente aus einem Container in einen anderen Container zu migrieren, unter Verwendung einer Ausgabebindung.
+Der Azure Functions-Trigger, die Eingabebindung und die Ausgabebindung für Azure Cosmos DB können in den folgenden Kombinationen verwendet werden:
+
+* Ein Azure Functions-Trigger für Cosmos DB kann mit einer Ausgabebindung an einen anderen Azure Cosmos DB-Container verwendet werden. Nachdem eine Funktion eine Aktion an einem Element im Änderungsfeed ausgeführt hat, können Sie es in einen anderen Container schreiben (beim Schreiben in den ursprünglichen Container würde im Endeffekt eine rekursive Schleife entstehen). Sie können aber auch einen Azure Functions-Trigger für Cosmos DB verwenden, um alle geänderten Elemente auf effektive Weise von einem Container zu einem anderen zu migrieren, indem Sie eine Ausgabebindung nutzen.
 * Eingabebindungen und Ausgabebindungen für Azure Cosmos DB können in derselben Azure-Funktion verwendet werden. Dies funktioniert gut in Fällen, in denen Sie mit der Eingabebindung bestimmte Daten suchen, sie in der Azure-Funktion ändern und anschließend nach der Änderung im selben oder einem anderen Container speichern möchten.
-* Eine Eingabebindung an einen Azure Cosmos DB-Container kann in derselben Funktion wie ein Azure Cosmos DB-Trigger verwendet werden; die Verwendung mit oder ohne eine Ausgabebindung ist ebenfalls möglich. Mit einer solchen Kombination können Sie z.B. aktuelle Wechselkursinformationen (abgerufen mit einer Eingangsbindung in einen Kurscontainer) auf den Änderungsfeed für neue Bestellungen in Ihrem Einkaufswagendienst anwenden. Die aktualisierte Einkaufswagensumme kann mit angewendetem aktuellen Wechselkurs mithilfe einer Ausgabebindung in einen dritten Container geschrieben werden.
+* Eine Eingabebindung an einen Azure Cosmos DB-Container kann in derselben Funktion wie ein Azure Functions-Trigger für Cosmos DB verwendet werden. Die Verwendung mit oder ohne Ausgabebindung ist ebenfalls möglich. Mit einer solchen Kombination können Sie z.B. aktuelle Wechselkursinformationen (abgerufen mit einer Eingangsbindung in einen Kurscontainer) auf den Änderungsfeed für neue Bestellungen in Ihrem Einkaufswagendienst anwenden. Die aktualisierte Einkaufswagensumme kann mit angewendetem aktuellen Wechselkurs mithilfe einer Ausgabebindung in einen dritten Container geschrieben werden.
 
 ## <a name="use-cases"></a>Anwendungsfälle
 
 Die folgenden Anwendungsfälle veranschaulichen einige Möglichkeiten, wie Sie das Beste aus Ihren Azure Cosmos DB-Daten machen können – indem Sie Ihre Daten mit dem ereignisgesteuerten Azure Functions verbinden.
 
-### <a name="iot-use-case---azure-cosmos-db-trigger-and-output-binding"></a>IoT-Anwendungsfall: Azure Cosmos DB-Trigger und Ausgabebindung
+### <a name="iot-use-case---azure-functions-trigger-and-output-binding-for-cosmos-db"></a>IoT-Anwendungsfall: Azure Functions-Trigger und -Ausgabebindung für Cosmos DB
 
 In IoT-Implementierungen können Sie eine Funktion aufrufen, wenn die Motorkontrollleuchte in einem angeschlossenen Auto angezeigt wird.
 
-**Implementierung:** Verwenden eines Azure Cosmos DB-Triggers und einer Ausgabebindung
+**Implementierung:** Verwenden eines Azure Functions-Triggers und der Ausgabebindung für Cosmos DB
 
-1. Mit einem **Azure Cosmos DB-Trigger** werden Ereignisse für Fahrzeugwarnungen ausgelöst, z.B. das Einschalten der Motorkontrollleuchte in einem angeschlossenen Auto.
+1. Mit einem **Azure Functions-Trigger für Cosmos DB** werden Ereignisse für Fahrzeugwarnungen ausgelöst, z. B. das Einschalten der Motorkontrollleuchte in einem angeschlossenen Auto.
 2. Bei Einschalten der Motorkontrollleuchte werden die Sensordaten an Azure Cosmos DB gesendet.
-3. Azure Cosmos DB erstellt oder aktualisiert Dokumente mit neuen Sensordaten. Anschließend werden diese Änderungen zum Azure Cosmos DB-Trigger gestreamt.
+3. Azure Cosmos DB erstellt oder aktualisiert Dokumente mit neuen Sensordaten. Anschließend werden diese Änderungen zum Azure Functions-Trigger für Cosmos DB gestreamt.
 4. Der Trigger wird bei jeder Datenänderung an der Sensordatensammlung ausgelöst, da alle Änderungen über den Änderungsfeed gestreamt werden.
 5. Anhand einer Schwellenwertbedingung in der Funktion werden die Sensordaten an die Garantieabteilung gesendet.
 6. Steigt auch die Temperatur über einen bestimmten Wert, wird auch eine Warnung an den Fahrzeughalter gesendet.
@@ -60,7 +61,7 @@ In IoT-Implementierungen können Sie eine Funktion aufrufen, wenn die Motorkontr
 
 Die folgende Abbildung zeigt den Code, der für diesen Trigger in das Azure-Portal geschrieben wird.
 
-![Erstellen eines Azure Cosmos DB-Triggers im Azure-Portal](./media/serverless-computing-database/cosmos-db-trigger-portal.png)
+![Erstellen eines Azure Functions-Triggers für Cosmos DB im Azure-Portal](./media/serverless-computing-database/cosmos-db-trigger-portal.png)
 
 ### <a name="financial-use-case---timer-trigger-and-input-binding"></a>Finanzieller Anwendungsfall – Trigger mit Timer und Eingabebindung
 
@@ -78,30 +79,30 @@ In den folgenden Abbildungen wird der Code im Azure-Portal für dieses Szenario 
 
 ![Datei „Run.csx“ für einen Trigger mit Timer für ein finanzielles Szenario](./media/serverless-computing-database/azure-function-cosmos-db-trigger-run.png)
 
-### <a name="gaming-use-case---azure-cosmos-db-trigger-and-output-binding"></a>Gaming-Anwendungsfall: Azure Cosmos DB-Trigger und Ausgabebindung
+### <a name="gaming-use-case---azure-functions-trigger-and-output-binding-for-cosmos-db"></a>Gaming-Anwendungsfall: Azure Functions-Trigger und -Ausgabebindung für Cosmos DB 
 
 Wenn in einer Gaming-Anwendung ein neuer Benutzer erstellt wird, können Sie mithilfe der [Azure Cosmos DB-Gremlin-API](graph-introduction.md) nach anderen Benutzern suchen, die diesen möglicherweise kennen. Anschließend können Sie die Ergebnisse in eine [Azure Cosmos DB-SQL-Datenbank] schreiben, aus der sie leicht abgerufen werden können.
 
-**Implementierung:** Verwenden eines Azure Cosmos DB-Triggers und einer Ausgabebindung
+**Implementierung:** Verwenden eines Azure Functions-Triggers und der Ausgabebindung für Cosmos DB
 
-1. Mithilfe einer Azure Cosmos DB-[Grafikdatenbank](graph-introduction.md), in der alle Benutzer gespeichert werden, können Sie eine neue Funktion mit einem Azure Cosmos DB-Trigger erstellen. 
+1. Mithilfe einer Azure Cosmos DB-[Graphdatenbank](graph-introduction.md), in der alle Benutzer gespeichert werden, können Sie eine neue Funktion mit einem Azure Functions-Trigger für Cosmos DB erstellen. 
 2. Bei Einfügen eines neuen Benutzers wird die Funktion aufgerufen, und das Ergebnis wird mithilfe einer **Ausgabebindung** gespeichert.
-3. Die Funktion fragt die Grafikdatenbank ab und sucht nach allen Benutzern, die in direkter Beziehung zum neuen Benutzer stehen. Das resultierende Dataset wird an die Funktion zurückgegeben.
+3. Die Funktion fragt die Graphdatenbank ab und sucht nach allen Benutzern, die in direkter Beziehung zum neuen Benutzer stehen. Das resultierende Dataset wird an die Funktion zurückgegeben.
 4. Diese Daten werden dann in einer Azure Cosmos DB gespeichert, aus der sie von jeder Front-End-Anwendung abgerufen werden können, die den neuen Benutzer für seine verknüpften Freunde anzeigt.
 
 ### <a name="retail-use-case---multiple-functions"></a>Einzelhandel-Anwendungsfall: Mehrere Funktionen
 
 Wenn ein Benutzer in Einzelhandelsimplementierungen seinem Einkaufskorb einen Artikel hinzufügt, sind Sie nun flexibel genug, um Funktionen für optionale Business-Pipelinekomponenten zu erstellen und aufzurufen.
 
-**Implementierung:** Mehrere Azure Cosmos DB-Trigger überwachen einen Container
+**Implementierung:** Mehrere Azure Functions-Trigger für Cosmos DB überwachen einen Container
 
-1. Sie können mehrere Azure Functions erstellen, indem Sie jeder davon Azure Cosmos DB-Trigger hinzufügen – diese überwachen alle denselben Änderungsfeed von Einkaufswagendaten. Beachten Sie, dass eine neue Leasesammlung für jede Funktion erforderlich ist, wenn mehrere Funktionen auf den gleichen Änderungsfeed lauschen. Weitere Informationen über Leasesammlungen finden Sie unter [Grundlegendes zur Change Feed Processor-Bibliothek](change-feed-processor.md).
+1. Sie können mehrere Azure Functions erstellen, indem Sie diesen jeweils Azure Functions-Trigger für Cosmos DB hinzufügen – diese überwachen alle denselben Änderungsfeed von Einkaufswagendaten. Beachten Sie, dass eine neue Leasesammlung für jede Funktion erforderlich ist, wenn mehrere Funktionen auf den gleichen Änderungsfeed lauschen. Weitere Informationen über Leasesammlungen finden Sie unter [Grundlegendes zur Change Feed Processor-Bibliothek](change-feed-processor.md).
 2. Wenn dem Einkaufswagen eines Benutzers ein neuer Artikel hinzugefügt wird, wird jede Funktion unabhängig vom Änderungsfeed aus dem Einkaufswagen-Container aufgerufen.
    * Eine Funktion kann anhand des Inhalts des aktuellen Einkaufswagens die Anzeige weiterer Artikel ändern, an denen der Benutzer möglicherweise auch interessiert ist.
    * Von einer anderen Funktion können die Gesamtzahlen des Bestands aktualisiert werden.
    * Eine weitere Funktion kann Kundeninformationen zu bestimmten Produkten an die Marketingabteilung senden, die sie wiederum in einem Werbeverteiler versendet. 
 
-     Jede Abteilung kann einen Azure Cosmos DB-Trigger durch Überwachen des Änderungsfeeds erstellen. Damit ist sichergestellt, dass wichtige Bestellverarbeitungsereignisse im Prozess nicht verzögert werden.
+     Jede Abteilung kann einen Azure Functions-Trigger für Cosmos DB durch Überwachen des Änderungsfeeds erstellen. Damit ist sichergestellt, dass wichtige Bestellverarbeitungsereignisse im Prozess nicht verzögert werden.
 
 Da die Funktion in allen diesen Anwendungsfällen die App selbst entkoppelt hat, müssen Sie nicht andauernd neue App-Instanzen starten. Stattdessen ruft Azure Functions einzelne Funktionen auf, um einzelne Prozesse je nach Bedarf abzuschließen.
 
@@ -109,9 +110,9 @@ Da die Funktion in allen diesen Anwendungsfällen die App selbst entkoppelt hat,
 
 Die native Integration zwischen Azure Cosmos DB und Azure Functions ist im Azure-Portal und in Visual Studio 2019 verfügbar.
 
-* Im Azure Functions-Portal können Sie einen Azure Cosmos DB-Trigger erstellen. Schnellstartanweisungen finden Sie unter [Erstellen eines Azure Cosmos DB-Triggers im Azure-Portal](https://aka.ms/cosmosdbtriggerportalfunc).
-* Im Azure Cosmos DB-Portal können Sie einer vorhandenen Azure-Funktionen-App in derselben Ressourcengruppe einen Azure Cosmos DB-Trigger hinzufügen.
-* In Visual Studio 2019 können Sie einen Azure Cosmos DB-Trigger mithilfe der [Azure Functions-Tools](../azure-functions/functions-develop-vs.md) erstellen:
+* Im Azure Functions-Portal können Sie einen Trigger erstellen. Eine Schnellstartanleitung finden Sie unter [Erstellen einer durch Azure Cosmos DB ausgelösten Funktion](https://aka.ms/cosmosdbtriggerportalfunc).
+* Im Azure Cosmos DB-Portal können Sie einer vorhandenen Azure-Funktionen-App in derselben Ressourcengruppe einen Azure Functions-Trigger für Cosmos DB hinzufügen.
+* In Visual Studio 2019 können Sie den Trigger mit den [Azure Functions-Tools](../azure-functions/functions-develop-vs.md) erstellen:
 
     >[!VIDEO https://www.youtube.com/embed/iprndNsUeeg]
 
@@ -145,7 +146,7 @@ Wenn Sie nicht sicher sind, ob Flow, Logic Apps, Azure Functions oder WebJobs am
 
 Stellen wir nun eine echte Verbindung zwischen Azure Cosmos DB und Azure Functions her: 
 
-* [Erstellen eines Azure Cosmos DB-Triggers im Azure-Portal](https://aka.ms/cosmosdbtriggerportalfunc)
+* [Erstellen einer durch Azure Cosmos DB ausgelösten Funktion](https://aka.ms/cosmosdbtriggerportalfunc)
 * [Erstellen eines Azure Functions-HTTP-Triggers mit einer Azure Cosmos DB-Eingabebindung](https://aka.ms/cosmosdbinputbind)
 * [Azure Cosmos DB-Bindungen und -Trigger](../azure-functions/functions-bindings-cosmosdb.md)
 

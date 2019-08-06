@@ -14,15 +14,15 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
-ms.date: 05/05/2017
+ms.date: 07/24/2019
 ms.author: rclaus
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 1d26df6aeb09934408b9081ac077af52ffc24d66
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.openlocfilehash: 70f9264357ca1a0c1a612481f4254e86f05e41d8
+ms.sourcegitcommit: 75a56915dce1c538dc7a921beb4a5305e79d3c7a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67709061"
+ms.lasthandoff: 07/24/2019
+ms.locfileid: "68479180"
 ---
 [1928533]:https://launchpad.support.sap.com/#/notes/1928533
 [1999351]:https://launchpad.support.sap.com/#/notes/1999351
@@ -292,9 +292,11 @@ Durch Dateifreigaben mit horizontaler Skalierung wird eine hochverfügbare und h
 
 Direkte Speicherplätze werden als freigegebener Datenträger für eine Dateifreigabe mit horizontaler Skalierung verwendet. Mit direkten Speicherplätzen können Sie hochverfügbaren und skalierbaren Speicher erstellen, in dem Server mit lokalem Speicher verwendet werden. Freigegebener Speicher für eine Dateifreigabe mit horizontaler Skalierung ist, wie bei globalen SAP-Hostdateien, kein Single Point of Failure.
 
-> [!IMPORTANT]
->Wenn Sie *nicht* vorhaben, eine Notfallwiederherstellung einzurichten, wird empfohlen, eine Dateifreigabe mit horizontaler Skalierung als Lösung für eine Dateifreigabe mit Hochverfügbarkeit in Azure zu verwenden.
->
+Beachten Sie bei der Auswahl von „Direkte Speicherplätze“ die folgenden Anwendungsfälle:
+
+- Die zum Erstellen des Clusters mit „Direkte Speicherplätze“ verwendeten virtuellen Computer müssen in einer Azure-Verfügbarkeitsgruppe bereitgestellt werden.
+- Für die Notfallwiederherstellung eines Clusters mit „Direkte Speicherplätze“ können Sie [Azure Site Recovery Services](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-support-matrix#replicated-machines---storage) verwenden.
+- Ein Ausdehnen des Clusters mit „Direkte Speicherplätze“ über verschiedene Azure-Verfügbarkeitszonen wird nicht unterstützt.
 
 ### <a name="sap-prerequisites-for-scale-out-file-shares-in-azure"></a>SAP-Voraussetzungen für Dateifreigaben mit horizontaler Skalierung in Azure
 
@@ -316,7 +318,6 @@ Um eine Dateifreigabe mit horizontaler Skalierung verwenden zu können, muss Ihr
 * Um eine gute Netzwerkleistung zwischen VMs zu erzielen, die für die Datenträgersynchronisierung mit direkten Speicherplätzen erforderlich ist, sollten Sie einen VM-Typ verwenden, der mindestens über eine „hohe“ Netzwerkbandbreite verfügt.
     Weitere Informationen finden Sie in den Spezifikationen zur [DSv2-Serie][dv2-series] and [DS-Series][ds-series].
 * Es wird empfohlen, eine gewisse nicht zugeordnete Kapazität im Speicherpool zu reservieren. Indem Sie nicht zugeordnete Kapazität im Speicherpool übrig lassen, erhalten Volumes Speicherplatz für „direkte“ Korrekturen, wenn ein Laufwerk ausfällt. Dies verbessert die Datensicherheit und die Leistung.  Weitere Informationen finden Sie unter [Auswählen der Volumegröße][choosing-the-size-of-volumes-s2d].
-* Azure-VMs für Dateifreigaben mit horizontaler Skalierung müssen in einer eigenen Azure-Verfügbarkeitsgruppe bereitgestellt werden.
 * Sie müssen den internen Lastenausgleich von Azure nicht für den Netzwerknamen der Dateifreigabe mit horizontaler Skalierung konfigurieren wie bei \<globaler SAP-Host\>. Dies wird für den \<Namen des virtuellen ASCS/SCS-Hosts\> der SAP ASCS/SCS-Instanz oder für den DBMS erledigt. Eine Dateifreigabe mit horizontaler Skalierung skaliert die Last horizontal auf alle Clusterknoten. Der \<globale SAP-Host\> verwendet die lokale IP-Adresse für alle Clusterknoten.
 
 
@@ -338,17 +339,11 @@ Sie können SAP ASCS/SCS-Instanzen auch in einem Cluster mit eigener SAP-\<SID\>
 _**Abbildung 5:** In zwei Clustern bereitgestellte SAP ASCS/SCS-Instanz und eine Dateifreigabe mit horizontaler Skalierung_
 
 > [!IMPORTANT]
-> In der Azure-Cloud muss jeder Cluster, der für SAP und Dateifreigaben mit horizontaler Skalierung verwendet wird, in einer eigenen Azure-Verfügbarkeitsgruppe bereitgestellt werden. Dadurch wird eine verteilte Platzierung der Cluster-VMs in der zugrunde liegenden Azure-Infrastruktur sichergestellt.
+> In der Azure-Cloud muss jeder Cluster, der für SAP und Dateifreigaben mit horizontaler Skalierung verwendet wird, in einer eigenen Azure-Verfügbarkeitsgruppe oder über Azure-Verfügbarkeitszonen bereitgestellt werden. Dadurch wird eine verteilte Platzierung der Cluster-VMs in der zugrunde liegenden Azure-Infrastruktur sichergestellt. Bei dieser Technologie werden Bereitstellungen über Verfügbarkeitszonen unterstützt.
 >
 
 ## <a name="generic-file-share-with-sios-datakeeper-as-cluster-shared-disks"></a>Allgemeine Dateifreigabe mit SIOS DataKeeper als freigegebenen Clusterdatenträgern
 
-
-> [!IMPORTANT]
-> Für eine hochverfügbare Dateifreigabe wird eine Dateifreigabelösung mit horizontaler Skalierung empfohlen.
->
-> Wenn Sie planen, für Ihre hochverfügbare Dateifreigabe auch Notfallwiederherstellung einzurichten, müssen Sie für Ihre freigegebenen Clusterdatenträger eine allgemeine Dateifreigabe und SISO DataKeeper verwenden.
->
 
 Eine allgemeine Dateifreigabe ist eine weitere Option zum Erzielen einer hochverfügbaren Dateifreigabe.
 

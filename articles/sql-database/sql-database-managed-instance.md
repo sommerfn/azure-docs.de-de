@@ -1,6 +1,6 @@
 ---
-title: Azure SQL-Datenbank – Advanced Data Security | Microsoft-Dokumentation
-description: In diesem Thema wird Advanced Data Security einer Azure SQL-Datenbank und die Verwendung beschrieben sowie erläutert, wie sie sich von einer Einzel- oder Pooldatenbank in Azure SQL-Datenbank unterscheidet.
+title: Verwaltete Azure SQL-Datenbank-Instanz – Übersicht| Microsoft-Dokumentation
+description: In diesem Artikel wird die verwaltete Azure SQL-Datenbank-Instanz beschrieben.
 services: sql-database
 ms.service: sql-database
 ms.subservice: managed-instance
@@ -11,15 +11,15 @@ author: bonova
 ms.author: bonova
 ms.reviewer: sstein, carlrab, vanto
 manager: craigg
-ms.date: 06/26/2019
-ms.openlocfilehash: b03f546b992bd9de6092dc0da8ef72aa69aa1da2
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.date: 07/18/2019
+ms.openlocfilehash: f4dc00623694fa1fd218f43e7bbd19edef48dec4
+ms.sourcegitcommit: e72073911f7635cdae6b75066b0a88ce00b9053b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67447791"
+ms.lasthandoff: 07/19/2019
+ms.locfileid: "68348123"
 ---
-# <a name="use-sql-database-advanced-data-security-with-virtual-networks-and-near-100-compatibility"></a>Verwenden der Advanced Data Security einer Azure SQL-Datenbank mit virtuellen Netzwerken und nahezu 100iger % Kompatibilität
+# <a name="what-is-azure-sql-database-managed-instance"></a>Was ist eine verwaltete Azure SQL-Datenbank-Instanz?
 
 Eine verwaltete Instanz ist eine neue Bereitstellungsoption von Azure SQL-Datenbank, die für nahezu uneingeschränkte Kompatibilität mit der aktuellen lokalen SQL Server-Datenbank-Engine (Enterprise Edition) sorgt. Darüber hinaus bietet sie eine native Implementierung eines [virtuellen Netzwerks (VNET)](../virtual-network/virtual-networks-overview.md) zur Behebung allgemeiner Sicherheitsrisiken sowie ein vorteilhaftes [Geschäftsmodell](https://azure.microsoft.com/pricing/details/sql-database/) für Kunden mit lokaler SQL Server-Instanz. Mit dem Bereitstellungsmodell für die verwaltete Instanz können bestehende SQL Server-Kunden ihre lokalen Anwendungen mit minimalen Änderungen an den Anwendungen und Datenbanken per Lift & Shift zur Cloud migrieren. Gleichzeitig behält die Bereitstellungsoption für die verwaltete Instanz (automatisches Patchen und automatische Versionsupdates, [automatische Sicherungen](sql-database-automated-backups.md), [Hochverfügbarkeit](sql-database-high-availability.md)) bei, die den Verwaltungsaufwand und die Gesamtkosten drastisch reduzieren.
 
@@ -77,7 +77,7 @@ Das [vCore-basierte Kaufmodell](sql-database-service-tiers-vcore.md) für verwal
 
 Beim V-Kern-Modell können Sie verschiedene Hardwaregenerationen auswählen.
 
-- **Gen4**: Logische CPUs basierend auf Intel-Prozessoren vom Typ E5-2673 v3 (Haswell) mit 2,4 GHz, angefügte SSD, physische Kerne, 7 GB RAM pro Kern und Computegrößen zwischen 8 und 24 virtuellen Kernen.
+- **Gen4**: Logische CPUs basierend auf Intel-Prozessoren vom Typ E5-2673 v3 (Haswell) mit 2,4 GHz, angefügte SSD, physische Kerne, 7 GB RAM pro Kern und Computegrößen zwischen 8 und 24 virtuellen Kernen.
 - **Gen5**: Logische CPUs basierend auf Intel-Prozessoren vom Typ E5-2673 v4 (Broadwell) mit 2,3 GHz,schnelle NVMe SSD, logischer Kern mit Hyperthreading und Computegrößen zwischen 4 und 80 Kernen.
 
 Weitere Informationen zu den Unterschieden zwischen Hardwaregenerationen finden Sie unter [Ressourceneinschränkungen für verwaltete Instanzen](sql-database-managed-instance-resource-limits.md#hardware-generation-characteristics).
@@ -119,6 +119,70 @@ Folgende wichtige Merkmale kennzeichnen die Dienstebene „Unternehmenskritisch�
 - [In-Memory-OLTP](sql-database-in-memory.md), das für Workloads mit hohen Leistungsanforderungen verwendet werden kann  
 
 Weitere Informationen zu den Unterschieden zwischen Dienstebenen finden Sie unter [Ressourceneinschränkungen für verwaltete Instanzen](sql-database-managed-instance-resource-limits.md#service-tier-characteristics).
+
+
+## <a name="managed-instance-management-operations"></a>Verwaltungsvorgänge für verwaltete Instanzen
+
+Azure SQL-Datenbank verfügt über Verwaltungsvorgänge, die Sie zum automatischen Bereitstellen von neuen verwalteten Instanzen, Aktualisieren von Instanzeigenschaften und Löschen von Instanzen (falls diese nicht mehr benötigt werden) verwenden können. Dieser Abschnitt enthält Informationen zu Verwaltungsvorgängen und deren typischer Dauer.
+
+Zur Unterstützung von [Bereitstellungen in virtuellen Azure-Netzwerken (VNETs)](../virtual-network/virtual-network-for-azure-services.md#deploy-azure-services-into-virtual-networks) und zur Sicherstellung der Isolation und Sicherheit für Kunden werden für verwaltete Instanzen [virtuelle Cluster](sql-database-managed-instance-connectivity-architecture.md#high-level-connectivity-architecture) verwendet. Hierbei handelt es sich um einen dedizierten Satz isolierter virtueller Computer, die im VNET-Subnetz des Kunden bereitgestellt werden. Praktisch jede Bereitstellung einer verwalteten Instanz in einem leeren Subnetz führt dazu, dass ein neuer virtueller Cluster erstellt wird.
+
+Nachfolgende Vorgänge für bereitgestellte verwaltete Instanzen können auch Auswirkungen auf den zugrunde liegenden virtuellen Cluster haben. Dies wirkt sich auf die Dauer von Verwaltungsvorgängen aus, da die Bereitstellung von zusätzlichen virtuellen Computern mit Mehraufwand verbunden ist. Dieser muss berücksichtigt werden, wenn Sie neue Bereitstellungen oder Updates vorhandener verwalteter Instanzen planen.
+
+Alle Verwaltungsvorgänge können wie folgt kategorisiert werden:
+
+- Instanzbereitstellung (Erstellung neuer Instanzen) 
+- Instanzupdate (Änderung von Instanzeigenschaften, z. B. V-Kerne, reservierter Speicher usw.)
+- Instanzlöschung
+
+Normalerweise dauern Vorgänge in virtuellen Clustern am längsten. Die Dauer der Vorgänge in virtuellen Clustern variiert. Unten sind die Werte angegeben, die für vorhandene Diensttelemetriedaten normalerweise zu erwarten sind:
+
+- Erstellung eines virtuellen Clusters. Dies ist ein synchroner Schritt der Vorgänge für die Instanzverwaltung. **90 % der Vorgänge werden innerhalb von vier Stunden abgeschlossen**.
+- Änderung der Größe des virtuellen Clusters (Vergrößerung oder Verkleinerung). Die Vergrößerung ist ein synchroner Schritt, und die Verkleinerung wird asynchron durchgeführt (ohne Auswirkung auf die Dauer von Instanzverwaltungsvorgängen). **90 % der Clustervergrößerungen werden in weniger als 2,5 Stunden abgeschlossen**.
+- Löschung eines virtuellen Clusters. Der Löschvorgang ist ein asynchroner Schritt, der in einem leeren virtuellen Cluster aber auch [manuell initiiert](sql-database-managed-instance-delete-virtual-cluster.md) werden kann. In diesem Fall wird der Vorgang synchron durchgeführt. **90 % der Löschungen virtueller Cluster werden innerhalb von 1,5 Stunden abgeschlossen**.
+
+Darüber hinaus kann die Verwaltung von Instanzen auch einen der Vorgänge in gehosteten Datenbanken umfassen. Dies führt zu längeren Dauern:
+
+- Anfügen von Datenbankdateien aus Azure Storage. Dies ist ein synchroner Schritt, z. B. Compute (V-Kern) oder das zentrale Hoch- oder Herunterskalieren im Tarif „Universell“. **90 % dieser Vorgänge werden innerhalb von fünf Minuten abgeschlossen**.
+- Seeding der Always On-Verfügbarkeitsgruppe. Dies ist ein synchroner Schritt, z. B. Compute (V-Kern) oder die Skalierung des Speichers im Tarif „Unternehmenskritisch“ sowie die Änderung der Dienstebene von „Universell“ in „Unternehmenskritisch“ (oder umgekehrt). Die Dauer dieses Vorgangs ist proportional zur Gesamtgröße der Datenbank sowie zur aktuellen Datenbankaktivität (Anzahl aktiver Transaktionen). Aufgrund der Datenbankaktivität beim Aktualisieren einer Instanz kann die Gesamtdauer erheblich variieren. **90 % dieser Vorgänge werden mindestens mit 220 GB pro Stunde durchgeführt**.
+
+In der folgenden Tabelle sind die Vorgänge und die typischen Gesamtdauern zusammengefasst:
+
+|Kategorie  |Vorgang  |Segment mit langer Ausführungsdauer  |Geschätzte Dauer  |
+|---------|---------|---------|---------|
+|**Bereitstellung** |Erste Instanz in einem leeren Subnetz|Erstellung eines virtuellen Clusters|90 % der Vorgänge werden innerhalb von vier Stunden abgeschlossen|
+|Bereitstellung |Erste Instanz einer anderen Hardwaregeneration in einem nicht leeren Subnetz (z. B. erste Gen5-Instanz in einem Subnetz mit Gen4-Instanzen)|Erstellung eines virtuellen Clusters*|90 % der Vorgänge werden innerhalb von vier Stunden abgeschlossen|
+|Bereitstellung |Erstellung der ersten Instanz mit vier V-Kernen in einem leeren oder nicht leeren Subnetz|Erstellung eines virtuellen Clusters**|90 % der Vorgänge werden innerhalb von vier Stunden abgeschlossen|
+|Bereitstellung |Nachfolgende Instanzerstellung im nicht leeren Subnetz (2. Instanz, 3. Instanz usw.)|Änderung der Größe eines virtuellen Clusters|90 % der Vorgänge werden innerhalb von 2,5 Stunden abgeschlossen|
+|**Aktualisieren** |Änderung der Instanzeigenschaft (Administratorkennwort, AAD-Anmeldung, Azure-Hybridvorteil-Flag)|–|Bis zu 1 Minute|
+|Aktualisieren |Zentrales Hoch-/Herunterskalieren des Instanzspeichers (Dienstebene „Universell“)|- Änderung der Größe eines virtuellen Clusters<br>- Anfügung von Datenbankdateien|90 % der Vorgänge werden innerhalb von 2,5 Stunden abgeschlossen|
+|Aktualisieren |Zentrales Hoch-/Herunterskalieren des Instanzspeichers (Tarif „Unternehmenskritisch“)|- Änderung der Größe eines virtuellen Clusters<br>- Seeding der Always On-Verfügbarkeitsgruppe|90 % der Vorgänge werden innerhalb von 2,5 Stunden zzgl. der Zeit für das Seeding aller Datenbanken (220 GB/Stunde) abgeschlossen|
+|Aktualisieren |Zentrales Hoch-/Herunterskalieren der Computekapazität (V-Kerne) (Universell)|- Änderung der Größe eines virtuellen Clusters<br>- Anfügung von Datenbankdateien|90 % der Vorgänge werden innerhalb von 2,5 Stunden abgeschlossen|
+|Aktualisieren |Zentrales Hoch-/Herunterskalieren der Computekapazität (V-Kerne) (Unternehmenskritisch)|- Änderung der Größe eines virtuellen Clusters<br>- Seeding der Always On-Verfügbarkeitsgruppe|90 % der Vorgänge werden innerhalb von 2,5 Stunden zzgl. der Zeit für das Seeding aller Datenbanken (220 GB/Stunde) abgeschlossen|
+|Aktualisieren |Zentrales Herunterskalieren einer Instanz auf vier V-Kerne (Universell)|- Änderung der Größe eines virtuellen Clusters (beim ersten Mal ist ggf. die Erstellung eines virtuellen Clusters erforderlich**)<br>- Anfügung von Datenbankdateien|90 % der Vorgänge werden innerhalb von 4 Stunden und 5 Minuten abgeschlossen**|
+|Aktualisieren |Zentrales Herunterskalieren einer Instanz auf vier V-Kerne (Universell)|- Änderung der Größe eines virtuellen Clusters (beim ersten Mal ist ggf. die Erstellung eines virtuellen Clusters erforderlich**)<br>- Seeding der Always On-Verfügbarkeitsgruppe|90 % der Vorgänge werden innerhalb von 4 Stunden zzgl. der Zeit für das Seeding aller Datenbanken (220 GB/Stunde) abgeschlossen|
+|Aktualisieren |Änderung der Instanzdienstebene („Universell“ in „Unternehmenskritisch“ und umgekehrt)|- Änderung der Größe eines virtuellen Clusters<br>- Seeding der Always On-Verfügbarkeitsgruppe|90 % der Vorgänge werden innerhalb von 2,5 Stunden zzgl. der Zeit für das Seeding aller Datenbanken (220 GB/Stunde) abgeschlossen|
+|**Löschung**|Instanzlöschung|Log Tail-Sicherung für alle Datenbanken|90 % der Vorgänge werden innerhalb einer Minute abgeschlossen.<br>Hinweis: Wenn die letzte Instanz im Subnetz gelöscht wird, wird bei diesem Vorgang das Löschen des virtuellen Clusters nach 12 Stunden eingeplant.***|
+|Löschen|Löschung eines virtuellen Clusters (als vom Benutzer initiierter Vorgang)|Löschung eines virtuellen Clusters|90 % der Vorgänge werden innerhalb von 1,5 Stunden abgeschlossen|
+
+\* Der virtuelle Cluster wird pro Hardwaregeneration erstellt.
+
+\*\* Die Option für die Bereitstellung von vier V-Kernen wurde im Juni 2019 eingeführt und erfordert eine neue Version des virtuellen Clusters. Falls Sie im Zielsubnetz über Instanzen verfügen, die alle vor dem 12. Juni erstellt wurden, wird automatisch ein neuer virtueller Cluster bereitgestellt, um vier V-Kern-Instanzen zu hosten.
+
+\*\*\* Bei der aktuellen Konfiguration wird „12 Stunden“ verwendet, aber da sich dies in Zukunft ändern kann, sollten Sie hierfür keine festen Abhängigkeiten einrichten. Falls Sie einen virtuellen Cluster früher löschen müssen (z. B. um das Subnetz freizugeben), helfen Ihnen die Informationen unter [Löschen eines Subnetzes nach Löschen einer verwalteten Azure SQL-Datenbank-Instanz](sql-database-managed-instance-delete-virtual-cluster.md) weiter.
+
+### <a name="instance-availability-during-management"></a>Instanzverfügbarkeit während der Verwaltung
+
+Verwaltete Instanzen sind bei Bereitstellungs-und Löschvorgängen für Clientanwendungen nicht verfügbar.
+
+Verwaltete Instanzen sind bei Updatevorgängen verfügbar, aber es kommt zu einem kurzen Ausfall aufgrund des Failovers, das am Ende von Updates ausgeführt wird. Dies dauert normalerweise maximal zehn Sekunden.
+
+> [!IMPORTANT]
+> Die Dauer eines Failovers kann bei Transaktionen mit langer Ausführungsdauer, die für die Datenbanken durchgeführt werden, aufgrund einer [verlängerten Wiederherstellungszeit](sql-database-accelerated-database-recovery.md#the-current-database-recovery-process) erheblich variieren. Daher raten wir Ihnen davon ab, die Compute- oder Speicherkapazität der verwalteten Azure SQL-Datenbank-Instanzen zu skalieren oder die Dienstebene gleichzeitig mit den Transaktionen mit langer Ausführungsdauer (Datenimport, Datenverarbeitungsaufträge, Neuerstellung des Index usw.) zu ändern. Beim Datenbankfailover, das am Ende des Vorgangs ausgeführt wird, werden laufende Transaktionen abgebrochen. Dies führt zu einer verlängerten Wiederherstellungszeit.
+
+Die [Schnellere Datenbankwiederherstellung](sql-database-accelerated-database-recovery.md) ist für verwaltete Azure SQL-Datenbank-Instanzen derzeit nicht verfügbar. Nach der Aktivierung wird mit diesem Feature die Variabilität der Failoverzeit erheblich reduziert. Dies gilt auch für Transaktionen mit langer Ausführungsdauer.
+
+
 
 ## <a name="advanced-security-and-compliance"></a>Erweiterte Sicherheit und Konformität
 

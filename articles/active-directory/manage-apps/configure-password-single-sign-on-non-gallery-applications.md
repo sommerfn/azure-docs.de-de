@@ -1,6 +1,6 @@
 ---
-title: Konfigurieren des einmaligen Anmeldens per Kennwort für eine nicht im Katalog enthaltene Anwendung | Microsoft-Dokumentation
-description: Hier erfahren Sie, wie Sie eine benutzerdefinierte Anwendung für das sichere einmalige Anmelden mit Kennwort konfigurieren, wenn die Anwendung nicht im Azure AD-Anwendungskatalog aufgeführt ist.
+title: Konfigurieren des einmaligen Anmeldens per Kennwort für Azure AD-Apps | Microsoft-Dokumentation
+description: Konfigurieren des einmaligen Anmeldens (Single Sign-On, SSO) per Kennwort für Ihre Azure AD-Unternehmensanwendungen auf der Microsoft Identity Platform (Azure AD)
 services: active-directory
 author: msmimart
 manager: CelesteDG
@@ -8,33 +8,23 @@ ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 11/12/2018
+ms.date: 07/10/2019
 ms.author: mimart
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1df52e0c25ecaff451f133e3a9207fb04b11f4a5
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: d191abafbaad123ed47f8eaae6cdd4e48478da7a
+ms.sourcegitcommit: 198c3a585dd2d6f6809a1a25b9a732c0ad4a704f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65824933"
+ms.lasthandoff: 07/23/2019
+ms.locfileid: "68422642"
 ---
-# <a name="how-to-configure-password-single-sign-on-for-a-non-gallery-application"></a>Konfigurieren des einmaligen Anmeldens per Kennwort für eine nicht im Katalog enthaltene Anwendung
+# <a name="configure-password-single-sign-on"></a>Konfigurieren des einmaligen Anmeldens per Kennwort
 
-Zusätzlich zu den Auswahlmöglichkeiten im Azure AD-Anwendungskatalog können Sie auch eine **nicht im Katalog enthaltene Anwendung** hinzufügen, wenn die gewünschte Anwendung im Katalog nicht aufgeführt wird. Auf diese Weise können Sie Anwendungen hinzufügen, die in Ihrer Organisation bereits vorhanden sind. Sie können auch Anwendungen eines Anbieters hinzufügen, der noch nicht im [Azure AD-Anwendungskatalog](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis) gelistet ist.
+Wenn Sie Ihren Azure AD-Unternehmensanwendungen [eine Katalog-App](add-gallery-app.md) oder eine [andere Web-App](add-non-gallery-app.md) hinzufügen, können Sie als SSO-Option beispielsweise [einmaliges Anmelden per Kennwort](what-is-single-sign-on.md#password-based-sso) verwenden. Diese Option ist für alle Webanwendungen mit einer HTML-Anmeldeseite verfügbar. Das kennwortbasierte einmalige Anmelden (auch als „Password Vaulting“ oder „Kennworttresor“ bezeichnet) ermöglicht es Ihnen, den Benutzerzugriff und die Kennwörter für Webanwendungen zu verwalten, die keinen Identitätsverbund unterstützen. Das Feature ist auch für Szenarien nützlich, in denen mehrere Benutzer ein Konto gemeinsam verwenden müssen, wie z.B. bei den App-Konten für die sozialen Medien Ihrer Organisation. 
 
-Nachdem Sie eine nicht im Katalog enthaltene Anwendung hinzugefügt haben, können Sie die Methode für das einmalige Anmelden konfigurieren, die für diese Anwendung verwendet werden soll. Wählen Sie dazu im [Azure-Portal](https://portal.azure.com/) das Navigationselement **Einmaliges Anmelden** für eine Unternehmensanwendung aus.
-
-Eine der verfügbaren Methoden für das einmalige Anmelden ist die Option [Kennwortbasiertes einmaliges Anmelden](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis). Durch **Hinzufügen einer nicht im Katalog enthaltenen Anwendung** können Sie jede Anwendung integrieren, die HTML-basierte Felder für Benutzername und Kennwort generiert, selbst wenn diese nicht zu den von uns vorab integrierten Anwendungen gehört.
-
-Hierzu wird eine Technologie zum Auslesen von Seiten verwendet, die zur Zugriffsbereichserweiterung gehört. Mit dieser Technologie können wir Felder für die Eingabe von Benutzername und Kennwort automatisch ermitteln und diese Informationen für Ihre spezifische Anwendungsinstanz sicher speichern. Danach können die Felder für Benutzername und Kennwort auf sichere Weise automatisch ausgefüllt werden, wenn ein Benutzer im Anwendungszugriffsbereich zur entsprechenden Anwendung navigiert.
-
-Diese Option eignet sich hervorragend dazu, jede beliebige Anwendung schnell in Azure AD zu integrieren, und ermöglicht Ihnen Folgendes:
-
--   Integrieren Sie **jede beliebige Anwendung** in Ihren Azure AD-Mandanten, vorausgesetzt, die Anwendung generiert HTML-basierte Eingabefelder für Benutzername und Kennwort.
+Einmaliges Anmelden per Kennwort eignet sich hervorragend, um Anwendungen schnell in Azure AD zu integrieren, und ermöglicht Ihnen Folgendes:
 
 -   Aktivieren Sie das **einmalige Anmelden für Ihre Benutzer**, indem Sie Benutzernamen und Kennwörter für die in Azure AD integrierte Anwendung sicher speichern und später in der Anwendung automatisch ausfüllen.
-
--   **Ermitteln Sie automatisch Eingabefelder** für jede beliebige Anwendung. Falls die automatische Ermittlung diese Felder nicht findet, können Sie sie mithilfe der browserbasierten Zugriffsbereichserweiterung manuell suchen.
 
 -   **Unterstützen Sie Anwendungen, die mehrere Anmeldefelder erfordern** für Anwendungen, die über Benutzername und Kennwort hinaus weitere Informationen zur Anmeldung erfordern.
 
@@ -44,148 +34,65 @@ Diese Option eignet sich hervorragend dazu, jede beliebige Anwendung schnell in 
 
 -   Ermöglichen Sie es einem **Mitglied der Gruppe „Business“** , mithilfe des Features [Self-Service-Anwendungszugriff](https://docs.microsoft.com/azure/active-directory/active-directory-self-service-application-access) die Benutzernamen und Kennwörter festzulegen, die einem Benutzer zugewiesen werden.
 
--   Ermöglichen Sie es einem **Administrator**, beim Zuweisen von Benutzern zu einer Anwendung das Feature zum Aktualisieren von Anmeldeinformationen zu verwenden, um die den Benutzern zugewiesenen Benutzernamen und Kennwörter anzugeben.
+-   Ermöglichen Sie einem **Administrator** das Angeben eines Benutzernamens und Kennworts für Einzelpersonen oder Gruppen, wenn diese sich mit der Funktion „Anmeldeinformationen aktualisieren“ an der Anwendung anmelden. 
 
--   Ermöglichen Sie es einem **Administrator**, beim [Zuweisen von Gruppen zu einer Anwendung](#assign-an-application-to-a-group-directly) das Feature zum Aktualisieren von Anmeldeinformationen zu verwenden, um die von Gruppen von Benutzern gemeinsam genutzten Benutzernamen und Kennwörter anzugeben.
+## <a name="before-you-begin"></a>Voraussetzungen
 
-Im folgenden Abschnitt wird beschrieben, wie Sie das [kennwortbasierte einmalige Anmelden](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis) bei einer beliebigen Anwendung aktivieren, die Sie über das Feature zum **Hinzufügen einer nicht im Katalog enthaltenen Anwendung** hinzugefügt haben.
+Falls die Anwendung Ihrem Azure AD-Mandanten noch nicht hinzugefügt wurde, helfen Ihnen die Artikel [Hinzufügen einer Katalog-App zu Ihrer Azure AD-Organisation](add-gallery-app.md) bzw. [Add an unlisted (non-gallery) application to your Azure AD organization](add-non-gallery-app.md) (Hinzufügen einer nicht aufgeführten (nicht im Katalog enthaltenen) Anwendung zu Ihrer Azure AD-Organisation) weiter.
 
-## <a name="overview-of-steps-required"></a>Übersicht über die erforderlichen Schritte
+## <a name="open-the-app-and-select-password-single-sign-on"></a>Öffnen der App und Auswählen des einmaligen Anmeldens per Kennwort
 
-Um eine Anwendung aus dem Azure AD-Katalog zu konfigurieren, müssen folgende Schritte ausgeführt werden:
+1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) als Cloudanwendungsadministrator oder Anwendungsadministrator für Ihren Azure AD-Mandanten an.
 
--   [Hinzufügen einer nicht im Katalog enthaltenen Anwendung](#add-a-non-gallery-application)
+2. Navigieren Sie zu **Azure Active Directory** > **Unternehmensanwendungen**. Eine zufällige Stichprobe von Anwendungen in Ihrem Azure AD-Mandanten wird angezeigt. 
 
--   [Konfigurieren der Anwendung für das einmalige Anmelden per Kennwort](#configure-the-application-for-password-single-sign-on)
+3. Wählen Sie im Menü **Anwendungstyp** die Option **Alle Anwendungen** und dann **Übernehmen** aus.
 
--   Zuweisen der Anwendung zu einem Benutzer oder einer Gruppe
+4. Geben Sie den Namen Ihrer Anwendung in das Suchfeld ein, und wählen Sie in den Ergebnissen Ihre Anwendung aus.
 
-    -   [Direktes Zuweisen eines Benutzers zu einer Anwendung](#assign-a-user-to-an-application-directly)
+5. Wählen Sie im Abschnitt **Verwalten** die Option **Einmaliges Anmelden** aus. 
 
-    -   [Direktes Zuweisen einer Anwendung zu einer Gruppe](#assign-an-application-to-a-group-directly)
+6. Wählen Sie **Kennwortbasiert**.
 
-## <a name="add-a-non-gallery-application"></a>Hinzufügen einer nicht im Katalog enthaltenen Anwendung
+7. Geben Sie die URL der webbasierten Anmeldeseite der Anwendung ein. Bei dieser Zeichenfolge muss es sich um die Seite handeln, die das Eingabefeld für den Benutzernamen enthält.
 
-Um eine Anwendung aus dem Azure AD-Katalog hinzuzufügen, führen Sie folgende Schritte aus:
+   ![Kennwortbasiertes einmaliges Anmelden](./media/configure-single-sign-on-non-gallery-applications/password-based-sso.png)
 
-1.  Öffnen Sie das [Azure-Portal](https://portal.azure.com), und melden Sie sich als **Globaler Administrator** oder **Co-Administrator** an.
+8. Wählen Sie **Speichern** aus. Azure AD versucht, die Anmeldeseite im Hinblick auf die Eingabe eines Benutzernamens und eines Kennworts zu analysieren. Wenn der Versuch erfolgreich ist, sind Sie fertig. 
+ 
+> [!NOTE]
+> Der nächste Schritt ist das [Zuweisen von Benutzern oder Gruppen zur Anwendung](methods-for-assigning-users-and-groups.md). Nachdem Sie Benutzer und Gruppen zugewiesen haben, können Sie die Anmeldeinformationen angeben, die für einen Benutzer verwendet werden können, wenn dieser sich an der Anwendung anmeldet. Wählen Sie die Option **Benutzer und Gruppen**, aktivieren Sie das Kontrollkästchen für die Zeile des Benutzers bzw. der Gruppe, und klicken Sie anschließend auf **Anmeldeinformationen aktualisieren**. Geben Sie dann den Benutzernamen und das Kennwort ein, der bzw. das für den Benutzer oder die Gruppe verwendet werden soll. Andernfalls werden die Benutzer beim Start der Anwendung aufgefordert, die Anmeldeinformationen selbst einzugeben.
+ 
 
-2.  Öffnen Sie die **Azure Active Directory-Erweiterung**, indem Sie oben im Hauptnavigationsmenü auf der linken Seite auf **Alle Dienste** klicken.
+## <a name="manual-configuration"></a>Manuelle Konfiguration
 
-3.  Geben Sie im Filtersuchfeld **Azure Active Directory** ein, und wählen Sie das Element **Azure Active Directory** aus.
+Falls der Analyseversuch von Azure AD nicht erfolgreich ist, können Sie die Anmeldung manuell konfigurieren.
 
-4.  Klicken Sie im linken Azure Active Directory-Navigationsmenü auf **Unternehmensanwendungen**.
+1. Wählen Sie unter **\<Anwendungsname>-Konfiguration** die Option **\<Anwendungsname>-Einstellungen für einmaliges Anmelden über ein Kennwort konfigurieren**, um die Seite **Anmeldung konfigurieren** anzuzeigen. 
 
-5.  Klicken Sie oben rechts im Bereich **Unternehmensanwendungen** auf die Schaltfläche **Hinzufügen**.
+2. Wählen Sie **Anmeldefelder manuell erkennen** aus. Es werden weitere Anweisungen angezeigt, die die manuelle Erkennung von Anmeldefeldern beschreiben.
 
-6.  Klicken Sie auf **Nicht-Kataloganwendung**.
+   ![Manuelle Konfiguration des kennwortbasierten einmaligen Anmeldens](./media/configure-password-single-sign-on/password-configure-sign-on.png)
+3. Wählen Sie **Anmeldefelder erfassen** aus. Auf einer neuen Registerkarte wird eine Seite mit dem Erfassungsstatus geöffnet, auf der die Meldung **Die Metadatenerfassung wird aktuell ausgeführt.** angezeigt wird.
 
-7.  Geben Sie den Namen Ihrer Anwendung im Textfeld **Name** ein. Wählen Sie **Hinzufügen** aus.
+4. Wenn auf einer neuen Registerkarte das Feld **Erweiterung für Zugriffsbereich erforderlich** angezeigt wird, klicken Sie auf **Jetzt installieren**, um die Browsererweiterung **Erweiterung zur sicheren Anmeldung bei "Meine Apps"** zu installieren. (Die Browsererweiterung erfordert Microsoft Edge, Chrome oder Firefox.) Installieren, starten und aktivieren Sie die Erweiterung, und aktualisieren Sie die Seite mit dem Erfassungsstatus.
 
-Nach kurzer Zeit wird der Konfigurationsbereich der Anwendung angezeigt.
+   Die Browsererweiterung wird in einer anderen Registerkarte geöffnet, die die eingegebene URL anzeigt.
+5. Führen Sie auf der Registerkarte mit der eingegebenen URL den Anmeldevorgang durch. Füllen Sie die Felder für Benutzername und Kennwort aus, und versuchen Sie, sich anzumelden. (Sie müssen nicht das richtige Kennwort angeben.)
 
-## <a name="configure-the-application-for-password-single-sign-on"></a>Konfigurieren der Anwendung für das einmalige Anmelden per Kennwort
+   Sie werden aufgefordert, die erfassten Anmeldefelder zu speichern.
+6. Klicken Sie auf **OK**. Die Browsererweiterung aktualisiert die Seite mit dem Erfassungsstatus mit der Meldung **Die Metadaten für die Anwendung wurden aktualisiert**. Die Registerkarte des Browsers wird geschlossen.
 
-Um das einmalige Anmelden für eine Anwendung zu konfigurieren, führen Sie folgende Schritte aus:
+7. Wählen Sie auf der Azure AD-Seite **Anmeldung konfigurieren** die Option **OK, ich konnte mich erfolgreich bei der App anmelden** aus.
 
-1. Öffnen Sie das [**Azure-Portal**](https://portal.azure.com/), und melden Sie sich als **Globaler Administrator** oder **Co-Administrator** an.
+8. Klicken Sie auf **OK**.
 
-2. Öffnen Sie die **Azure Active Directory-Erweiterung**, indem Sie oben im Hauptnavigationsmenü auf der linken Seite auf **Alle Dienste** klicken.
+Nach dem Erfassen der Anmeldeseite können Sie Benutzer und Gruppen zuweisen sowie Richtlinien für Anmeldeinformationen einrichten, genauso wie bei normalen [Anwendungen für das einmalige Anmelden mit Kennwort](what-is-single-sign-on.md).
 
-3. Geben Sie im Filtersuchfeld **Azure Active Directory** ein, und wählen Sie das Element **Azure Active Directory** aus.
-
-4. Klicken Sie im linken Azure Active Directory-Navigationsmenü auf **Unternehmensanwendungen**.
-
-5. Klicken Sie auf **Alle Anwendungen**, um eine Liste aller Anwendungen anzuzeigen.
-
-   * Wenn die gewünschte Anwendung nicht angezeigt wird, verwenden Sie das Steuerelement **Filter** oberhalb der Liste **Alle Anwendungen**, und legen Sie die Option **Anzeigen** auf **Alle Anwendungen** fest.
-
-6. Wählen Sie die Anwendung aus, für die Sie das einmalige Anmelden konfigurieren möchten.
-
-7. Nachdem die Anwendung geladen wurde, klicken Sie im linken Navigationsmenü der Anwendung auf **Einmaliges Anmelden**.
-
-8. Wählen Sie den Modus **Kennwortbasiertes Anmelden** aus.
-
-9. Geben Sie die **Anmelde-URL** ein. Dies ist die URL, unter der Benutzer ihren Benutzernamen und ihr Kennwort eingeben, um sich anzumelden. Stellen Sie sicher, dass die Anmeldefelder unter der URL sichtbar sind.
-
-10. Weisen Sie der Anwendung Benutzer zu.
-
-11. Darüber hinaus können Sie Anmeldeinformationen für einen Benutzer angeben, indem Sie die Zeile des Benutzers auswählen, auf **Anmeldeinformationen aktualisieren** klicken und den Benutzernamen und das Kennwort für den Benutzer eingeben. Andernfalls werden die Benutzer beim Start der Anwendung aufgefordert, die Anmeldeinformationen selbst einzugeben.
-
-
-## <a name="assign-a-user-to-an-application-directly"></a>Direktes Zuweisen eines Benutzers zu einer Anwendung
-
-Um einer Anwendung Benutzer direkt zuzuweisen, führen Sie folgende Schritte aus:
-
-1. Öffnen Sie das [**Azure-Portal**](https://portal.azure.com/), und melden Sie sich als **Globaler Administrator** an.
-
-2. Öffnen Sie die **Azure Active Directory-Erweiterung**, indem Sie oben im Hauptnavigationsmenü auf der linken Seite auf **Alle Dienste** klicken.
-
-3. Geben Sie im Filtersuchfeld **Azure Active Directory** ein, und wählen Sie das Element **Azure Active Directory** aus.
-
-4. Klicken Sie im linken Azure Active Directory-Navigationsmenü auf **Unternehmensanwendungen**.
-
-5. Klicken Sie auf **Alle Anwendungen**, um eine Liste aller Anwendungen anzuzeigen.
-
-   * Wenn die gewünschte Anwendung nicht angezeigt wird, verwenden Sie das Steuerelement **Filter** oberhalb der Liste **Alle Anwendungen**, und legen Sie die Option **Anzeigen** auf **Alle Anwendungen** fest.
-
-6. Wählen Sie aus der Liste die Anwendung aus, der Sie einen Benutzer zuweisen möchten.
-
-7. Nachdem die Anwendung geladen wurde, klicken Sie im linken Navigationsmenü der Anwendung auf **Benutzer und Gruppen**.
-
-8. Um den Bereich **Zuweisung hinzufügen** zu öffnen, klicken Sie oberhalb der Liste **Benutzer und Gruppen** auf die Schaltfläche **Hinzufügen**.
-
-9. Klicken Sie im Bereich **Zuweisung hinzufügen** auf das Auswahlfeld **Benutzer und Gruppen**.
-
-10. Geben Sie im Suchfeld **Nach Name oder E-Mail-Adresse suchen** den **vollständigen Namen** oder die **E-Mail-Adresse** des gewünschten Benutzers ein.
-
-11. Zeigen Sie auf den **Benutzer** in der Liste, um ein **Kontrollkästchen** anzuzeigen. Klicken Sie auf das Kontrollkästchen neben dem Profilbild oder Logo des Benutzers, um den Benutzer zur Liste **Ausgewählt** hinzuzufügen.
-
-12. **Optional**: Wenn Sie **mehrere Benutzer hinzufügen** möchten, geben Sie im Suchfeld **Nach Name oder E-Mail-Adresse suchen** einen weiteren **vollständigen Namen** oder eine weitere **E-Mail-Adresse** ein, und klicken Sie auf das Kontrollkästchen, um diesen Benutzer zur Liste **Ausgewählt** hinzuzufügen.
-
-13. Wenn Sie alle gewünschten Benutzer ausgewählt haben, klicken Sie auf die Schaltfläche **Auswählen**, um sie zur Liste der Benutzer und Gruppen hinzuzufügen, die der Anwendung zugewiesen werden sollen.
-
-14. **Optional**: Klicken Sie im Bereich **Zuweisung hinzufügen** auf das Auswahlfeld **Rolle auswählen**, um eine Rolle auszuwählen, die den ausgewählten Benutzern zugewiesen werden soll.
-
-15. Klicken Sie auf die Schaltfläche **Zuweisen**, um die Anwendung den ausgewählten Benutzern zuzuweisen.
-
-## <a name="assign-an-application-to-a-group-directly"></a>Direktes Zuweisen einer Anwendung zu einer Gruppe
-
-Um einer Anwendung Gruppen direkt zuzuweisen, führen Sie folgende Schritte aus:
-
-1. Öffnen Sie das [**Azure-Portal**](https://portal.azure.com/), und melden Sie sich als **Globaler Administrator** an.
-
-2. Öffnen Sie die **Azure Active Directory-Erweiterung**, indem Sie oben im Hauptnavigationsmenü auf der linken Seite auf **Alle Dienste** klicken.
-
-3. Geben Sie im Filtersuchfeld **Azure Active Directory** ein, und wählen Sie das Element **Azure Active Directory** aus.
-
-4. Klicken Sie im linken Azure Active Directory-Navigationsmenü auf **Unternehmensanwendungen**.
-
-5. Klicken Sie auf **Alle Anwendungen**, um eine Liste aller Anwendungen anzuzeigen.
-
-   * Wenn die gewünschte Anwendung nicht angezeigt wird, verwenden Sie das Steuerelement **Filter** oberhalb der Liste **Alle Anwendungen**, und legen Sie die Option **Anzeigen** auf **Alle Anwendungen** fest.
-
-6. Wählen Sie aus der Liste die Anwendung aus, der Sie einen Benutzer zuweisen möchten.
-
-7. Nachdem die Anwendung geladen wurde, klicken Sie im linken Navigationsmenü der Anwendung auf **Benutzer und Gruppen**.
-
-8. Um den Bereich **Zuweisung hinzufügen** zu öffnen, klicken Sie oberhalb der Liste **Benutzer und Gruppen** auf die Schaltfläche **Hinzufügen**.
-
-9. Klicken Sie im Bereich **Zuweisung hinzufügen** auf das Auswahlfeld **Benutzer und Gruppen**.
-
-10. Geben Sie im Suchfeld **Nach Name oder E-Mail-Adresse suchen** den **vollständigen Gruppennamen** der gewünschten Gruppe ein.
-
-11. Zeigen Sie auf die **Gruppe** in der Liste, um ein **Kontrollkästchen** anzuzeigen. Klicken Sie auf das Kontrollkästchen neben dem Profilbild oder Logo der Gruppe, um den Benutzer zur Liste **Ausgewählt** hinzuzufügen.
-
-12. **Optional**: Wenn Sie **mehrere Gruppen hinzufügen** möchten, geben Sie im Suchfeld **Nach Name oder E-Mail-Adresse suchen** einen weiteren **vollständigen Gruppennamen** ein, und klicken Sie auf das Kontrollkästchen, um diese Gruppe der Liste **Ausgewählt** hinzuzufügen.
-
-13. Wenn Sie alle gewünschten Gruppen ausgewählt haben, klicken Sie auf die Schaltfläche **Auswählen**, um sie zur Liste der Benutzer und Gruppen hinzuzufügen, die der Anwendung zugewiesen werden sollen.
-
-14. **Optional**: Klicken Sie im Bereich **Zuweisung hinzufügen** auf das Auswahlfeld **Rolle auswählen**, um eine Rolle auszuwählen, die den ausgewählten Gruppen zugewiesen werden soll.
-
-15. Klicken Sie auf die Schaltfläche **Zuweisen**, um die Anwendung den ausgewählten Gruppen zuzuweisen.
-
-Nach kurzer Zeit können die ausgewählten Benutzer diese Anwendungen im Zugriffsbereich starten.
+> [!NOTE]
+> Sie können ein Kachellogo für die Anwendung hochladen. Verwenden Sie hierzu die Schaltfläche **Logo hochladen** auf der Registerkarte **Konfigurieren** für die Anwendung.
 
 ## <a name="next-steps"></a>Nächste Schritte
-[Bereitstellen von einmaligem Anmelden bei Ihren Apps mit dem Anwendungsproxy](application-proxy-configure-single-sign-on-with-kcd.md)
+
+- [Zuweisen von Benutzern und Gruppen zu einer Anwendung in Azure Active Directory](methods-for-assigning-users-and-groups.md)
+- [Verwalten der Benutzerkontobereitstellung für Unternehmens-Apps im Azure-Portal](configure-automatic-user-provisioning-portal.md)

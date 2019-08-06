@@ -11,37 +11,37 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 06/14/2019
+ms.date: 07/25/2019
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: b269c75be7fec55fb77afecc6d04b86266c74a6f
-ms.sourcegitcommit: 72f1d1210980d2f75e490f879521bc73d76a17e1
+ms.openlocfilehash: 20ef71f98817a57f884e9c5a3cef4ceeaebe74eb
+ms.sourcegitcommit: a0b37e18b8823025e64427c26fae9fb7a3fe355a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/14/2019
-ms.locfileid: "67147302"
+ms.lasthandoff: 07/25/2019
+ms.locfileid: "68498439"
 ---
 # <a name="integrate-your-app-with-an-azure-virtual-network"></a>Integrieren Ihrer App in ein Azure Virtual Network
 In diesem Dokument wird die Azure App Service-Funktion für die Integration in ein virtuelles Netzwerk beschrieben, und Sie erfahren, wie Sie die Funktion mit Apps in [Azure App Service](https://go.microsoft.com/fwlink/?LinkId=529714) einrichten. Mit [Azure Virtual Networks][VNETOverview] (VNETs) können Sie viele Ihrer Azure-Ressourcen in einem Netzwerk platzieren, das nicht über das Internet geroutet werden kann.  
 
-Es gibt zwei Methoden, um Azure App Service zu nutzen. 
+Es gibt zwei Varianten der Nutzung von Azure App Service. 
 
 1. Mehrinstanzenfähige Systeme, die den gesamten Bereich der Tarife unterstützen, mit Ausnahme von Isoliert
 2. Die App Service-Umgebung (App Service Environment, ASE), die in Ihrem VNET bereitgestellt wird und Apps im Tarif „App Service (isoliert)“ unterstützt
 
-In diesem Dokument werden die beiden Funktionen für die VNET-Integration erläutert, die in der mehrinstanzenfähigen App Service-Lösung verwendet werden können. In der [App Service-Umgebung][ASEintro] befindet sich Ihre App bereits in einem VNET und benötigt das VNET-Integrationsfeature nicht, um Ressourcen im selben VNET zu erreichen. Ausführliche Informationen zu allen Netzwerkfunktionen von App Service finden Sie unter [App Service networking features](networking-features.md) (App Service-Netzwerkfunktionen).
+In diesem Dokument werden die beiden Funktionen für die VNET-Integration erläutert, die in der mehrinstanzenfähigen App Service-Lösung verwendet werden können. In der [App Service-Umgebung][ASEintro] befindet sich Ihre App bereits in einem VNET und benötigt das VNET-Integrationsfeature nicht, um Ressourcen in demselben VNET zu erreichen. Ausführliche Informationen zu allen Netzwerkfunktionen von App Service finden Sie unter [App Service networking features](networking-features.md) (App Service-Netzwerkfunktionen).
 
 Es gibt zwei Versionen der Funktion für die VNET-Integration:
 
 1. Eine Version ermöglicht die Integration in VNETs in der gleichen Region. Diese Version der Funktion erfordert ein Subnetz in einem VNET in der gleichen Region. Diese Funktion ist noch in der Vorschau, wird aber für Windows-App-Produktionsworkloads unterstützt, wobei einige Einschränkungen unten aufgeführt sind.
-2. Die andere Version ermöglicht die Integration in VNETs in anderen Regionen oder in klassische VNETs. Diese Version erfordert die Bereitstellung eines virtuellen Netzwerkgateways in Ihrem VNET. Dies ist die auf Point-to-Site-VPN basierende Funktion.
+2. Die andere Version ermöglicht die Integration in VNETs in anderen Regionen oder in klassische VNETs. Diese Version erfordert die Bereitstellung eines virtuellen Netzwerkgateways in Ihrem VNET. Dies ist das Feature, das auf einer Point-to-Site-VPN-Verbindung basiert und nur für Windows-Apps unterstützt wird.
 
 Für eine App kann jeweils nur eine Version der Funktion für die VNET-Integration verwendet werden. Daher stellt sich die Frage, welche Version für Sie die richtige Lösung ist. Beide Versionen können für viele Zwecke verwendet werden. Es gibt jedoch einige wesentliche Unterschiede:
 
 | Problem  | Lösung | 
 |----------|----------|
 | Sie möchten eine RFC 1918-Adresse (10.0.0.0/8, 172.16.0.0/12, 192.168.0.0/16) in der gleichen Region erreichen. | Regionale VNET-Integration |
-| Sie möchten ein klassisches VNET oder ein VNET in einer anderen Region erreichen. | VNET-Integration, die ein Gateway erfordert |
+| Sie möchten Ressourcen in einem klassischen VNET oder einem VNET in einer anderen Region erreichen. | VNET-Integration, die ein Gateway erfordert |
 | Sie möchten RFC 1918-Endpunkte über ExpressRoute erreichen. | Regionale VNET-Integration |
 | Sie möchten Ressourcen über Dienstendpunkte erreichen. | Regionale VNET-Integration |
 
@@ -78,12 +78,16 @@ Diese Funktion ist zurzeit als Vorschauversion verfügbar, wird aber mit folgend
 * Sie können nicht über Verbindungen mit globalem Peering auf Ressourcen zugreifen.
 * Sie können keine Routen für den Datenverkehr festlegen, der von Ihrer App in Ihr VNET gesendet wird.
 * Die Funktion ist nur bei neueren App Service-Skalierungseinheiten verfügbar, die App Service-Pläne mit dem Tarif „PremiumV2“ unterstützen.
+* Das Integrationssubnetz kann nur von einem App Service-Plan verwendet werden.
 * Die Funktion kann nicht für Apps im Plan „App Service (isoliert)“ in einer App Service-Umgebung verwendet werden.
-* Die Funktion erfordert ein nicht verwendetes Subnetz mit mindestens 32 Adressen in Ihrem Resource Manager-VNET.
+* Für das Feature ist ein nicht genutztes Subnetz erforderlich, also vom Typ /27 mit 32 Adressen oder höher in Ihrem Resource Manager-VNET.
 * Die App und das VNET müssen sich in der gleichen Region befinden.
-* Eine Adresse wird für jede Instanz des App Service-Plans verwendet. Da die Subnetzgröße nach dem Zuweisen nicht mehr geändert werden kann, verwenden Sie ein Subnetz, das mehr als die maximale Skalierungsgröße abdecken kann. Empfohlen wird die Größe /27 mit 32 Adressen, da sie einen App Service-Plan unterstützt, der für 20 Instanzen skaliert ist.
 * Ein VNET mit einer integrierten App kann nicht gelöscht werden. Sie müssen zuerst die Integration entfernen. 
 * Sie können nur eine regionale VNET-Integration pro App Service-Plan verwenden. Mehrere Apps im gleichen App Service-Plan können das gleiche VNET verwenden. 
+
+Eine Adresse wird für jede Instanz des App Service-Plans verwendet. Wenn Sie Ihre App auf fünf Instanzen skaliert haben, werden fünf Adressen genutzt. Da die Subnetzgröße nach der Zuweisung nicht geändert werden kann, müssen Sie ein Subnetz verwenden, das für die Aufnahme jedweder Skalierung Ihrer App groß genug ist. Empfohlen wird die Größe /27 mit 32 Adressen, da sie einen Premium-App Service-Plan unterstützt, der für 20 Instanzen skaliert ist.
+
+Wenn Sie möchten, dass Ihre Apps in einem anderen App Service-Plan ein VNET erreichen, das bereits mit Apps in einem anderen App Service-Plan verbunden ist, müssen Sie ein anderes Subnetz auswählen. Es darf nicht das Subnetz sein, das von der bereits vorhandenen VNET-Integration verwendet wird.  
 
 Diese Funktion befindet sich auch für Linux in der Vorschauphase. So verwenden Sie die Funktion für die VNET-Integration mit einem Resource Manager-VNET in der gleichen Region:
 
@@ -101,11 +105,15 @@ Nachdem Ihre App in Ihr VNET integriert wurde, verwendet sie den DNS-Server, mit
 
 Um Ihre App vom VNET zu trennen, wählen Sie **Verbindung trennen** aus. Hiermit wird Ihre Web-App neu gestartet. 
 
-Mit dem neuen VNET-Integrationsfeature können Sie Dienstendpunkte verwenden.  Um Dienstendpunkte mit Ihrer App zu verwenden, stellen Sie über die neue VNET-Integration eine Verbindung mit einem ausgewählten VNET her, und konfigurieren Sie dann Dienstendpunkte in dem für die Integration verwendeten Subnetz. 
 
 #### <a name="web-app-for-containers"></a>Web-App für Container
 
 Wenn Sie App Service unter Linux mit den integrierten Images verwenden, funktioniert die regionale VNET-Integration ohne zusätzliche Änderungen. Wenn Sie Web-App für Container verwenden, müssen Sie Ihr Docker-Image ändern, um die VNET-Integration zu verwenden. Verwenden Sie in Ihrem Docker-Image die Umgebungsvariable PORT als Hauptlauschport des Webservers, anstatt eine hartcodierte Portnummer zu verwenden. Die Umgebungsvariable PORT wird von der App Service-Plattform automatisch beim Start des Containers festgelegt.
+
+### <a name="service-endpoints"></a>Dienstendpunkte
+
+Mit dem neuen VNET-Integrationsfeature können Sie Dienstendpunkte verwenden.  Um Dienstendpunkte mit Ihrer App zu verwenden, stellen Sie über die neue VNET-Integration eine Verbindung mit einem ausgewählten VNET her, und konfigurieren Sie dann Dienstendpunkte in dem für die Integration verwendeten Subnetz. 
+
 
 ### <a name="how-vnet-integration-works"></a>Funktionsweise der VNET-Integration
 
@@ -236,7 +244,7 @@ Bei der Funktion für die regionale VNET-Integration fallen neben den Gebühren 
 
 Bei der VNET-Integration, die ein Gateway erfordert, fallen drei Gebühren an:
 
-* Gebühren für den App Service-Tarif: Ihre Apps müssen in einem App Service-Plan mit dem Tarif „Standard“, „Premium“ oder „PremiumV2“ enthalten sein. Weitere Informationen zu diesen Kosten finden Sie hier: [App Service – Preise][ASPricing]. 
+* Gebühren für den App Service-Tarif: Ihre Apps müssen in einem App Service-Plan mit dem Tarif „Standard“, „Premium“ oder „PremiumV2“ enthalten sein. Weitere Informationen zu diesen Kosten finden Sie hier: [App Service – Preise][ASPricing] 
 * Datenübertragungskosten: Für ausgehende Daten fallen keine Gebühren an, auch wenn sich das VNET im selben Rechenzentrum befindet. Diese Kosten werden unter [Datenübertragung – Preisübersicht][DataPricing] beschrieben. 
 * Kosten für VPN Gateway: Für das VNET-Gateway, das für das Point-to-Site-VPN erforderlich ist, fallen Kosten an. Die Details finden Sie auf der Seite [VPN Gateway – Preise][VNETPricing].
 

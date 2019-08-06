@@ -6,24 +6,115 @@ services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: reference
-ms.author: larryfr
-author: Blackmist
-ms.date: 05/14/2019
+ms.author: jmartens
+author: j-martens
+ms.date: 07/25/2019
 ms.custom: seodec18
-ms.openlocfilehash: 2568d2213d15faf66ecf606e56ea6b82bacafc3e
-ms.sourcegitcommit: b2db98f55785ff920140f117bfc01f1177c7f7e2
+ms.openlocfilehash: f39c914bce3fbc47775a76f1c3a1fb64de560505
+ms.sourcegitcommit: a0b37e18b8823025e64427c26fae9fb7a3fe355a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68233683"
+ms.lasthandoff: 07/25/2019
+ms.locfileid: "68498334"
 ---
 # <a name="azure-machine-learning-service-release-notes"></a>Azure Machine Learning-Dienst – Anmerkungen zu dieser Version
 
-Erfahren Sie in diesem Artikel mehr über die Versionen des Azure Machine Learning-Diensts.  Eine vollständige Beschreibung jedes SDKs finden Sie in der jeweiligen Referenzdokumentation für:
-+ Das [**Haupt-SDK für Python**](https://aka.ms/aml-sdk) von Azure Machine Learning
-+ Das [**Datenaufbereitungs-SDK**](https://aka.ms/data-prep-sdk) von Azure Machine Learning
+Erfahren Sie in diesem Artikel mehr über die Versionen des Azure Machine Learning-Diensts.  Den vollständigen SDK-Referenzinhalt finden Sie auf der Hauptseite der Referenz zum [**Azure Machine Learning SDK für Python**](https://aka.ms/aml-sdk).
 
 Sehen Sie die [Liste der bekannten Probleme](resource-known-issues.md) an, um mehr über bekannte Fehler und Problemumgehungen zu erfahren.
+
+## <a name="2019-07-23"></a>2019-07-23
+
+### <a name="azure-machine-learning-sdk-for-python-v1053"></a>Azure Machine Learning SDK für Python v1.0.53
+
++ **Neue Features**
+    + Für das automatisierte maschinelle Lernen wird jetzt das Trainieren von ONNX-Modellen auf dem Remotecomputeziel unterstützt.
+  + In Azure Machine Learning ist es jetzt möglich, das Training von einer vorherigen Ausführung, einem Prüfpunkt oder für bestimmte Modelldateien fortzusetzen.
+    + Informieren Sie sich, wie Sie [Estimators verwenden, um das Training für eine vorherige Ausführung fortzusetzen](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/training-with-deep-learning/train-tensorflow-resume-training/train-tensorflow-resume-training.ipynb).
+
++ **Fehlerbehebungen und Verbesserungen**
+  + **automl-client-core-nativeclient**
+    + Der Fehler im Zusammenhang mit dem Verlust von Spaltentypen nach der Transformation wurde behoben (Link zum Fehler). 
+    + „y_query“ wurde gestattet, einen Objekttyp anzunehmen, der „None(s)“ (Nichts) am Anfang enthält (#459519).
+  + **azure-cli-ml**
+    + Die CLI-Befehle „model deploy“ und „service update“ akzeptieren jetzt Parameter, Konfigurationsdateien oder eine Kombination daraus. Parameter haben Vorrang vor Attributen in Dateien.
+    + Die Modellbeschreibung kann nach der Registrierung jetzt aktualisiert werden.
+  + **azureml-automl-core**
+    + Aktualisierung der NimbusML-Abhängigkeit auf Version 1.2.0 (derzeitige aktuelle Version).
+    + Unterstützung für NimbusML-Estimators und -Pipelines für die Verwendung in AutoML-Estimators.
+    + Es wurde ein Fehler im Vorgang bei der Ensembleauswahl behoben, bei dem das resultierende Ensemble unnötig vergrößert wurde, auch wenn die Ergebnisse konstant blieben.
+    + Aktivierung der Wiederverwendung einiger Featurebereitstellungen für Vorhersageaufgaben über Kreuzvalidierungsaufteilungen hinweg. So wird die Laufzeit des Setups für aufwändige Featurebereitstellungen, z. B. Verzögerungen und gleitende Fenster, ungefähr um den Faktor „n_cross_validations“ beschleunigt.
+    + Es wurde ein Problem behoben, das aufgetreten ist, wenn die Zeit außerhalb des von Pandas unterstützten Zeitbereichs gelegen hat. Nun wird ein DataException-Vorgang ausgelöst, falls die Zeit kleiner als „pd.Timestamp.min“ oder größer als „pd.Timestamp.max“ ist.
+    + Bei der Vorhersage sind jetzt verschiedene Häufigkeiten in Trainings- und Testsätzen zulässig, falls sie aneinander ausgerichtet werden können. Dies ist beispielsweise für „Vierteljährlich ab Januar“ und „Vierteljährlich ab Oktober“ möglich.
+    + Die „parameters“-Eigenschaft wurde dem „TimeSeriesTransformer“-Element hinzugefügt.
+    + Entfernen Sie alte Ausnahmeklassen.
+    + Bei Vorhersageaufgaben akzeptiert der Parameter `target_lags` jetzt einen einzelnen Integerwert oder eine Liste mit Integerwerten. Wenn der Integerwert angegeben wurde, wird nur eine Verzögerung erstellt. Bei Angabe einer Liste werden die eindeutigen Werte von Verzögerungen verwendet. Mit „target_lags=[1, 2, 2, 4]“ werden Verzögerungen mit einer, zwei und vier Perioden erstellt.
+    + Der Fehler im Zusammenhang mit dem Verlust von Spaltentypen nach der Transformation wurde behoben (Link zum Fehler).
+    + Bei `model.forecast(X, y_query)` wurde „y_query“ gestattet, einen Objekttyp anzunehmen, der „None(s)“ (Nichts) am Anfang enthält (#459519).
+    + Hinzufügen von erwarteten Werten zur automl-Ausgabe.
+  + **azureml-contrib-datadrift**
+    +  Verbesserungen am Beispielnotebook, z. B. Wechsel zu „azureml-opendatasets“ anstelle von „azureml-contrib-opendatasets“ und Leistungsverbesserungen bei der Anreicherung von Daten.
+  + **azureml-contrib-explain-model**
+    + Fehlerbehebung: „transformations“-Argument für LIME Explainer für unformatierte Featurepriorität im azureml-contrib-explain-model-Paket.
+    + Bilderklärungen im Image Explainer für das AzureML-contrib-explain-model-Paket wurden Segmentierungen hinzugefügt.
+    + SciPy Sparse-Unterstützung für Lime Explainer hinzugefügt.
+    + Dem Mimic Explainer wurde „batch_size“ hinzugefügt, wenn „include_local=False“ für das Streaming globaler Erläuterungen in Batches zutrifft, um die Ausführungszeit von DecisionTreeExplainableModel zu verbessern.
+  + **azureml-contrib-featureengineering**
+    + Fehlerbehebung für Aufruf von „set_featurizer_timeseries_params()“: Änderung des Wörterbuchwerttyps und Null Check – Notebook für Zeitreihen-Featurizer hinzugefügt
+    + Aktualisierung der NimbusML-Abhängigkeit auf Version 1.2.0 (derzeitige aktuelle Version).
+  + **azureml-core**
+    + Die Möglichkeit zum Anfügen von DBFS-Datenspeichern in der AzureML CLI wurde hinzugefügt. 
+    + Der Fehler für den Datenspeicherupload, bei dem ein leerer Ordner erstellt wurde, wenn `target_path` mit `/` gestartet wurde, wurde behoben.
+    + deepcopy-Problem in ServicePrincipalAuthentication wurde behoben.
+    + Die Befehle „az ml environment show“ und „az ml environment list“ wurden der CLI hinzugefügt.
+    + Umgebungen unterstützen jetzt das Angeben einer „base_dockerfile“ als Alternative zu einem bereits erstellten „base_image“.
+    + Die nicht genutzte RunConfiguration-Einstellung „auto_prepare_environment“ wurde als veraltet gekennzeichnet.
+    + Die Modellbeschreibung kann nach der Registrierung jetzt aktualisiert werden.
+    + Fehlerbehebung: Beim Löschen von Modellen und Bildern werden jetzt mehr Informationen zum Abrufen von Upstreamobjekten bereitgestellt, die von ihnen abhängen, wenn der Löschvorgang aufgrund einer Upstreamabhängigkeit fehlschlägt.
+    + Es wurde ein Fehler behoben, bei dem eine leere Dauer für Bereitstellungen ausgegeben wurde, die beim Erstellen eines Arbeitsbereichs für einige Umgebungen durchgeführt werden.
+    + Verbesserung in Bezug auf Ausnahmen aufgrund eines Fehlers beim Erstellen von Arbeitsbereichen. Benutzern wird nicht eine Meldung der Art „Arbeitsbereich kann nicht erstellt werden. ... kann nicht gefunden werden.“ angezeigt, sondern stattdessen der tatsächliche Erstellungsfehler.
+    + Unterstützung für die Tokenauthentifizierung in AKS-Webdiensten hinzugefügt. 
+    + `Webservice`-Objekten wurde die `get_token()`-Methode hinzugefügt.
+    + CLI-Unterstützung für die Verwaltung von Machine Learning-Datasets wurde hinzugefügt.
+    + Für `Datastore.register_azure_blob_container` kann jetzt optional ein `blob_cache_timeout`-Wert (in Sekunden) verwendet werden, mit dem die blobfuse-Bereitstellungsparameter konfiguriert werden, um den Cacheablauf für diesen Datenspeicher zu aktivieren. In der Standardeinstellung wird kein Timeout genutzt. Wenn ein Blob gelesen wird, verbleibt er im lokalen Cache, bis der Auftrag abgeschlossen ist. Für die meisten Aufträge wird diese Einstellung bevorzugt, aber bei einigen Aufträgen müssen mehr Daten aus einem großen Dataset gelesen werden, als auf die Knoten passen. Bei diesen Aufträgen ist der Vorgang eher erfolgreich, wenn dieser Parameter optimiert wird. Gehen Sie beim Optimieren dieses Parameters mit Bedacht vor: Wenn Sie den Wert zu niedrig festlegen, kann dies zu einer schlechten Leistung führen, da die in einer Epoche verwendeten Daten ggf. ablaufen, bevor sie erneut verwendet werden. Dies bedeutet, dass alle Lesevorgänge aus dem Blobspeicher (also dem Netzwerk) erfolgen, anstatt aus dem lokalen Cache. Hieraus ergibt sich eine negative Auswirkung auf die Trainingszeiten.
+    + Die Modellbeschreibung kann nach der Registrierung jetzt richtig aktualisiert werden.
+    + Beim Löschen von Modellen und Images werden jetzt mehr Informationen zu Upstream-Objekten angegeben, die davon abhängig sind und dazu führen, dass der Löschvorgang nicht erfolgreich ist.
+    + Die Ressourcenverwendung bei Remoteausführungen, die „azureml.mlflow“ verwenden, wurde verbessert.
+  + **azureml-dataprep**
+    + Dataflow-Objekte können jetzt durchlaufen werden, wodurch eine Abfolge von Datensätzen erzeugt wird.
+    + `_summarize_each` wurde `azureml.dataprep.Dataflow` als experimentelles Feature hinzugefügt.
+  + **azureml-explain-model**
+    + Fehlerbehebung: „transformations“-Argument für LIME Explainer für unformatierte Featurepriorität im azureml-contrib-explain-model-Paket.
+    + SciPy Sparse-Unterstützung für Lime Explainer hinzugefügt.
+    + SHAP Linear Explainer-Wrapper wurde hinzugefügt, und Tabular Explainer wurde eine weitere Ebene zur Erklärung von linearen Modellen hinzugefügt.
+    + Für Mimic Explainer in der Erklärungsmodellbibliothek wurde der Fehler behoben, der bei geringer Dateneingabe für „include_local=False“ aufgetreten ist.
+    + Erwartete Werte wurden der automl-Ausgabe hinzugefügt.
+    + Die Featurepriorität für die Permutation wurde für den Fall korrigiert, in dem das „transformations“-Argument bereitgestellt wurde, um die unformatierte Featurepriorität zu erhalten.
+    + Dem Mimic Explainer wurde „batch_size“ hinzugefügt, wenn „include_local=False“ für das Streaming globaler Erklärungen in Batches zutrifft, um die Ausführungszeit von DecisionTreeExplainableModel zu verbessern.
+    + Für die Modellerklärungsbibliothek wurden Fehler für Blackbox Explainer behoben, bei denen für die Vorhersage eine Pandas-Datenrahmeneingabe erforderlich ist.
+    + Der Fehler, bei dem `explanation.expected_values` gelegentlich einen float-Wert anstelle einer Liste mit einem darin enthaltenen float-Wert zurückgegeben hat, wurde behoben.
+  + **azureml-mlflow**
+    + Leistung von „mlflow.set_experiment(experiment_name)“ wurde verbessert.
+    + Ein Fehler bei der Nutzung von „InteractiveLoginAuthentication“ für „mlflow tracking_uri“ wurde behoben.
+    + Die Ressourcenverwendung bei Remoteausführungen, die „azureml.mlflow“ nutzen, wurde verbessert.
+    + Die Dokumentation des „azureml-mlflow“-Pakets wurde verbessert.
+    + Es wurde ein Fehler gepatcht, bei dem „mlflow.log_artifacts("my_dir")“ Artefakte unter „my_dir/<artifact-paths>“ gespeichert hat, anstatt unter „<artifact-paths>“.
+  + **azureml-opendatasets**
+    + Anheften von „pyarrow“ von „opendatasets“ an alte Versionen (< 0.14.0) aufgrund des neu entstandenen Arbeitsspeicherproblems.
+    +  „azureml-contrib-opendatasets“ wurde in „azureml-opendatasets“ verschoben. - Open Dataset-Klassen wurde gestattet, sich bei einem AML-Arbeitsbereich zu registrieren und nahtlos AML-Dataset-Funktionen zu nutzen. - Die NoaaIsdWeather-Erweiterungsleistung in Nicht-Spark-Versionen wurde erheblich verbessert.
+  + **azureml-pipeline-steps**
+    + DBFS Datastore wird in DatabricksStep jetzt für Ein- und Ausgaben unterstützt.
+    + Aktualisierung der Dokumentation für Azure Batch-Schritt in Bezug auf Ein-/Ausgaben.
+    + In AzureBatchStep wurde der Standardwert von *delete_batch_job_after_finish* in *true* geändert.
+  + **azureml-telemetry**
+    +  „azureml-contrib-opendatasets“ wurde in „azureml-opendatasets“ verschoben. - Open Dataset-Klassen wurde gestattet, sich bei einem AML-Arbeitsbereich zu registrieren und nahtlos AML-Dataset-Funktionen zu nutzen. - Die NoaaIsdWeather-Erweiterungsleistung in Nicht-Spark-Versionen wurde erheblich verbessert.
+  + **azureml-train-automl**
+    + Aktualisierung der Dokumentation zu „get_output“, damit der tatsächliche Rückgabetyp widergespiegelt wird, und zusätzliche Hinweise zum Abrufen wichtiger Eigenschaften.
+    + Aktualisierung der NimbusML-Abhängigkeit auf Version 1.2.0 (derzeitige aktuelle Version).
+    + Erwartete Werte wurden der automl-Ausgabe hinzugefügt.
+  + **azureml-train-core**
+    + Zeichenfolgen werden jetzt als Computeziel für die automatisierte Hyperparameteroptimierung akzeptiert.
+    + Die nicht genutzte RunConfiguration-Einstellung „auto_prepare_environment“ wurde als veraltet gekennzeichnet.
 
 ## <a name="2019-07-09"></a>2019-07-09
 
@@ -622,7 +713,7 @@ Azure Machine Learning Compute kann unter Python, mit dem Azure-Portal oder mit 
 + Anzeigen des Status für den Azure Machine Learning Compute-Cluster in Echtzeit
 + Nutzen der hinzugefügten Unterstützung für virtuelle Netzwerke für Azure Machine Learning Compute und die Azure Kubernetes Service-Erstellung
 + Erneutes Ausführen Ihrer veröffentlichten Pipelines mit vorhandenen Parametern
-+ Neue [automatisierte Machine Learning-Diagramme](how-to-track-experiments.md#auto) für Klassifizierungsmodelle (Prognosegüte-, Gewinn-, Kalibrierungs-, Featurewichtigkeitsdiagramm mit Modellerklärung) und Regressionsmodelle (Restdaten- und Featurewichtigkeitsdiagramm mit Modellerklärung) 
++ Neue [automatisierte Machine Learning-Diagramme](how-to-understand-automated-ml.md) für Klassifizierungsmodelle (Prognosegüte-, Gewinn-, Kalibrierungs-, Featurewichtigkeitsdiagramm mit Modellerklärung) und Regressionsmodelle (Restdaten- und Featurewichtigkeitsdiagramm mit Modellerklärung) 
 + Pipelines können im Azure-Portal angezeigt werden
 
 

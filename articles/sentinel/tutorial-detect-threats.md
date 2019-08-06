@@ -13,14 +13,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 03/20/2019
+ms.date: 07/20/2019
 ms.author: rkarlin
-ms.openlocfilehash: e20f6fc0dc8dbe02b09490f62ce84af12aa31b87
-ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
+ms.openlocfilehash: ad9c752898733286701db2d0f0b1fc40029b7521
+ms.sourcegitcommit: c71306fb197b433f7b7d23662d013eaae269dc9c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/07/2019
-ms.locfileid: "67621231"
+ms.lasthandoff: 07/22/2019
+ms.locfileid: "68370715"
 ---
 # <a name="tutorial-detect-threats-with-azure-sentinel-preview"></a>Tutorial: Erkennen von Bedrohungen mit Azure Sentinel Preview
 
@@ -33,7 +33,7 @@ Nachdem Sie [Ihre Datenquellen mit Azure Sentinel verbunden](quickstart-onboard.
 Dieses Tutorial unterstützt Sie bei der Gefahrenerkennung mit Azure Sentinel.
 > [!div class="checklist"]
 > * Erstellen von Erkennungsregeln
-> * Reagieren auf Bedrohungen
+> * Automatisieren der Reaktionen auf Bedrohungen
 
 ## <a name="create-detection-rules"></a>Erstellen von Erkennungsregeln
 
@@ -83,14 +83,24 @@ Erkennungsregeln basieren auf der Art der Bedrohungen und Anomalien, die in Ihre
 
 
 
-## <a name="respond-to-threats"></a>Reagieren auf Bedrohungen
+## <a name="automate-threat-responses"></a>Automatisieren der Reaktionen auf Bedrohungen
 
-In Azure Sentinel stehen Ihnen zwei Hauptoptionen zur Verfügung, um mithilfe von Playbooks auf Bedrohungen zu reagieren. Sie können festlegen, dass ein Playbook automatisch ausgeführt wird, wenn eine Warnung ausgelöst wird, oder Sie können ein Playbook manuell als Reaktion auf eine Warnung ausführen.
+SIEM/SOC-Teams können gelegentlich von Sicherheitswarnungen geradezu überschwemmt werden. Dabei kann das Warnungsaufkommen so hoch sein, dass die zur Verfügung stehenden Sicherheitsadministratoren überlastet sind. Dies führt oftmals dazu, dass zahlreiche Warnungen nicht untersucht werden können und Organisationen anfällig für nicht erkannte Angriffe werden. 
 
-- Legen Sie bei der Konfiguration des Playbooks fest, dass es automatisch ausgeführt wird, wenn eine Warnung ausgelöst wird. 
+Viele – wenn nicht sogar der Großteil – dieser Warnungen entsprechen wiederkehrenden Mustern, die mithilfe spezifischer, definierter Wartungsaktionen verarbeitet werden können. Azure Sentinel ermöglicht Ihnen in Playbooks bereits das Definieren von Wartungsaktionen. Darüber hinaus ist es möglich, Echtzeitautomatisierung als Teil der Playbookdefinition festzulegen, um Ihnen die vollständige Automatisierung einer definierten Reaktion auf bestimmte Sicherheitswarnungen zu ermöglichen. Mithilfe der Echtzeitautomatisierung können zuständige Teams die Arbeitsauslastung erheblich reduzieren, indem sie die Routinereaktionen auf wiederkehrende Warnungstypen vollständig automatisieren, sodass Sie sich auf eindeutige Warnungen, die Analyse von Mustern, die Ermittlung von Bedrohungen und mehr konzentrieren können.
 
-- Führen Sie ein Playbook innerhalb der Warnung manuell aus, indem Sie auf **Playbooks anzeigen** klicken und dann ein Playbook auswählen, das ausgeführt werden soll.
+So automatisieren Sie Reaktionen:
 
+1. Wählen Sie die Warnung aus, für die Sie die Reaktion automatisieren möchten.
+1. Wählen Sie im Navigationsmenü des Azure Sentinel-Arbeitsbereichs die Option **Analytics** aus.
+1. Wählen Sie die zu automatisierende Warnung aus. 
+1. Wählen Sie auf der Seite **Warnungsregel bearbeiten** unter **Real-time automation** (Echtzeitautomatisierung) für **Triggered playbooks** (Ausgelöste Playbooks) das Playbook aus, das bei einer Übereinstimmung mit dieser Warnungsregel ausgeführt werden soll.
+1. Wählen Sie **Speichern** aus.
+
+   ![Echtzeitautomatisierung](./media/tutorial-detect-threats/rt-configuration.png)
+
+
+Sie können die Behebung für eine Warnung auch manuell durchführen, indem Sie innerhalb der Warnung ein Playbook ausführen. Klicken Sie hierfür auf **Playbooks anzeigen**, und wählen Sie dann ein Playbook aus, das ausgeführt werden soll. Informationen zur Erstellung eines neuen bzw. Bearbeitung eines vorhandenen Playbooks finden Sie unter [Tutorial: Einrichten automatisierter Reaktionen auf Bedrohungen in der Vorschauversion von Azure Sentinel](tutorial-respond-threats-playbook.md).
 
 
 

@@ -9,50 +9,67 @@ ms.topic: conceptual
 ms.author: vaidyas
 author: csteegz
 ms.reviewer: larryfr
-ms.date: 06/01/2019
-ms.openlocfilehash: 8086d059913cc61bff0bca31681368bea6d76777
-ms.sourcegitcommit: 5bdd50e769a4d50ccb89e135cfd38b788ade594d
+ms.date: 07/24/2019
+ms.openlocfilehash: 520e7fe953256e4c489e4c540493d9f74dda3aef
+ms.sourcegitcommit: 5604661655840c428045eb837fb8704dca811da0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/03/2019
-ms.locfileid: "67543805"
+ms.lasthandoff: 07/25/2019
+ms.locfileid: "68494355"
 ---
 # <a name="deploy-a-deep-learning-model-for-inference-with-gpu"></a>Bereitstellen eines Deep Learning-Modells für das Ziehen von Rückschlüssen mit einer GPU
 
-Dieser Artikel zeigt Ihnen, wie Sie den Azure Machine Learning Service verwenden können, um ein GPU-fähiges Tensorflow Deep Learning Modell als Webservice bereitzustellen.
+Dieser Artikel zeigt Ihnen, wie Sie den Azure Machine Learning Service verwenden können, um ein GPU-fähiges Modell als Webservice bereitzustellen. Die Informationen in diesem Artikel basieren auf der Bereitstellung eines Modells in Azure Kubernetes Service (AKS). Der AKS-Cluster stellt eine GPU-Ressource bereit, die vom Modell für das Ziehen von Rückschlüssen verwendet wird.
 
-Stellen Sie Ihr Modell in einem Azure Kubernetes Service (AKS)-Cluster bereit, um GPU-fähige Inferenzierungen durchzuführen. Inferenzierung oder Modellbewertung ist die Phase, in der das eingesetzte Modell für die Vorhersage verwendet wird. Die Verwendung von GPUs anstelle von CPUs bietet Leistungsvorteile bei hochparallelisierbaren Berechnungen.
+Das Ziehen von Rückschlüssen oder Modellbewertung ist die Phase, in der das bereitgestellte Modell verwendet wird, um Vorhersagen zu treffen. Die Verwendung von GPUs anstelle von CPUs bietet Leistungsvorteile bei hochparallelisierbaren Berechnungen.
 
-Obwohl dieses Beispiel ein TensorFlow-Modell verwendet, können Sie die folgenden Schritte auf jedes Machine Learning-Framework anwenden, das GPUs unterstützt, indem Sie kleine Änderungen an der Bewertungsdatei und der Umgebungsdatei vornehmen. 
-
-In diesem Artikel führen Sie die folgenden Schritte aus:
-
-* Erstellen eines GPU-fähigen AKS-Clusters
-* Bereitstellen eines TensorFlow-GPU-Modells
-* Ausführen einer Beispielabfrage für Ihr bereitgestelltes Modell
+> [!TIP]
+> Obwohl bei den Codeausschnitten in diesem Artikel ein TensorFlow-Modell verwendet wird, können Sie die Informationen auf jedes Machine Learning-Framework anwenden, das GPUs unterstützt.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-* Ein Azure Machine Learning Service-Arbeitsbereich.
-* Eine Python-Distribution.
-* Ein registriertes gespeichertes TensorFlow-Modell.
+* Ein Azure Machine Learning-Dienstbereich. Weitere Informationen finden Sie unter [Erstellen eines Azure Machine Learning Service-Arbeitsbereichs](setup-create-workspace.md).
+
+* Eine Python-Entwicklungsumgebung, in der das Azure Machine Learning SDK installiert ist. Weitere Informationen finden Sie im Abschnitt [Python SDK](setup-create-workspace.md#sdk) des Artikels „Erstellen eines Arbeitsbereichs“.
+
+* Ein registriertes Modell, das eine GPU verwendet.
+
     * Informationen zum Registrieren von Modellen finden Sie unter [Bereitstellen von Modellen](../service/how-to-deploy-and-where.md#registermodel).
 
-Sie können den ersten Teil dieser How-to-Serie, [Wie man ein TensorFlow-Modell trainiert](how-to-train-tensorflow.md), abschließen, um die notwendigen Voraussetzungen zu erfüllen.
+    * Informationen zum Erstellen und Registrieren des TensorFlow-Modells, das zum Erstellen dieses Dokuments verwendet wird, finden Sie unter [Trainieren eines TensorFlow-Modells](how-to-train-tensorflow.md).
 
-## <a name="provision-an-aks-cluster-with-gpus"></a>Bereitstellen eines AKS-Clusters mit GPUs
+* Ein allgemeines Verständnis dafür, [Wie und wo Modelle bereitgestellt werden](how-to-deploy-and-where.md).
 
-Azure verfügt über viele verschiedene GPU-Optionen. Diese können Sie alle für das Ziehen von Rückschlüssen verwenden. In der [Liste mit den VMs der N-Serie](https://azure.microsoft.com/pricing/details/virtual-machines/linux/#n-series) finden Sie eine vollständige Aufschlüsselung der Funktionen und Kosten.
+## <a name="connect-to-your-workspace"></a>Herstellen einer Verbindung mit Ihrem Arbeitsbereich
 
-Weitere Informationen zur Verwendung von AKS mit Azure Machine Learning Service finden Sie unter [Bereitstellen von Modellen mit dem Azure Machine Learning-Dienst](../service/how-to-deploy-and-where.md#deploy-aks).
+Verwenden Sie den folgenden Code, um eine Verbindung mit einem vorhandenen Arbeitsbereich herzustellen:
 
-```Python
+> [!IMPORTANT]
+> In diesem Codeausschnitt wird davon ausgegangen, dass die Arbeitsbereichskonfiguration im aktuellen Verzeichnis oder in dessen übergeordnetem Verzeichnis gespeichert wird. Weitere Informationen zum Erstellen eines Arbeitsbereichs und zum Speichern der Konfiguration in einer Datei finden Sie unter [Erstellen eines Azure Machine Learning Service-Arbeitsbereichs](setup-create-workspace.md).
+
+```python
+from azureml.core import Workspace
+
+# Connect to the workspace
+ws = Workspace.from_config()
+```
+
+## <a name="create-a-kubernetes-cluster-with-gpus"></a>Erstellen eines Kubernetes-Clusters mit GPUs
+
+Der Azure Kubernetes Service bietet viele verschiedene GPU-Optionen. Diese können Sie alle für das Ziehen von Modellrückschlüssen verwenden. In der [Liste mit den VMs der N-Serie](https://azure.microsoft.com/pricing/details/virtual-machines/linux/#n-series) finden Sie eine vollständige Aufschlüsselung der Funktionen und Kosten.
+
+Der folgende Code veranschaulicht, wie Sie einen neuen AKS-Cluster für Ihren Arbeitsbereich erstellen:
+
+```python
+from azureml.core.compute import ComputeTarget, AksCompute
+from azureml.exceptions import ComputeTargetException
+
 # Choose a name for your cluster
 aks_name = "aks-gpu"
 
 # Check to see if the cluster already exists
 try:
-    compute_target = ComputeTarget(workspace=ws, name=aks_name)
+    aks_target = ComputeTarget(workspace=ws, name=aks_name)
     print('Found existing compute target')
 except ComputeTargetException:
     print('Creating a new compute target...')
@@ -68,11 +85,16 @@ except ComputeTargetException:
 ```
 
 > [!IMPORTANT]
-> Azure berechnet Ihnen Gebühren, solange der AKS-Cluster bereitgestellt ist. Stellen Sie sicher, dass Sie Ihren AKS-Cluster löschen, wenn Sie ihn nicht mehr benötigen.
+> Azure berechnet Ihnen Gebühren, solange der AKS-Cluster vorhanden ist. Stellen Sie sicher, dass Sie Ihren AKS-Cluster löschen, wenn Sie ihn nicht mehr benötigen.
+
+Weitere Informationen zur Verwendung von Azure Kubernetes Service mit Azure Machine Learning Service finden Sie unter [Bereitstellung: wo und wie](how-to-deploy-and-where.md#deploy-aks).
 
 ## <a name="write-the-entry-script"></a>Schreiben des Eingangsskripts
 
-Speichern Sie den folgenden Code als `score.py` in Ihrem Arbeitsverzeichnis. Mit dieser Datei werden Bilder bewertet, wenn sie an Ihren Dienst gesendet werden. Sie lädt das gespeicherte TensorFlow-Modell und übergibt bei jeder POST-Anforderung dann das Eingabebild an die TensorFlow-Sitzung und gibt die sich ergebenden Bewertungen zurück. Für andere Frameworks zum Ziehen von Rückschlüssen sind andere Bewertungsdateien erforderlich.
+Das Eingabeskript empfängt Daten, die an den Webdienst übermittelt wurden, übergibt sie an das Modell und gibt die Bewertungsergebnisse zurück. Das folgende Skript lädt das TensorFlow-Modell beim Start und verwendet es dann zum Bewerten von Daten.
+
+> [!TIP]
+> Das Eingabeskript ist für Ihr Modell spezifisch. Das Skript muss beispielsweise das Framework kennen, das bei Ihrem Modell, den Datenformaten usw. verwendet werden soll.
 
 ```python
 import json
@@ -82,16 +104,19 @@ import tensorflow as tf
 
 from azureml.core.model import Model
 
+
 def init():
     global X, output, sess
     tf.reset_default_graph()
     model_root = Model.get_model_path('tf-dnn-mnist')
-    saver = tf.train.import_meta_graph(os.path.join(model_root, 'mnist-tf.model.meta'))
+    saver = tf.train.import_meta_graph(
+        os.path.join(model_root, 'mnist-tf.model.meta'))
     X = tf.get_default_graph().get_tensor_by_name("network/X:0")
     output = tf.get_default_graph().get_tensor_by_name("network/output/MatMul:0")
-    
+
     sess = tf.Session()
     saver.restore(sess, os.path.join(model_root, 'mnist-tf.model'))
+
 
 def run(raw_data):
     data = np.array(json.loads(raw_data)['data'])
@@ -99,11 +124,13 @@ def run(raw_data):
     out = output.eval(session=sess, feed_dict={X: data})
     y_hat = np.argmax(out, axis=1)
     return y_hat.tolist()
-
 ```
+
+Diese Datei hat den Namen `score.py`. Weitere Informationen zu Eingabeskripts finden Sie unter [Bereitstellung: wo und wie](how-to-deploy-and-where.md).
+
 ## <a name="define-the-conda-environment"></a>Definieren der Conda-Umgebung
 
-Erstellen Sie eine Conda-Umgebungsdatei namens `myenv.yml`, um die Abhängigkeiten für Ihren Dienst anzugeben. Es ist wichtig anzugeben, dass Sie `tensorflow-gpu` verwenden, um eine beschleunigte Leistung zu erzielen.
+Die Conda-Umgebungsdatei gibt die Abhängigkeiten für den Dienst an. Sie enthält Abhängigkeiten, die sowohl für das Modell als auch das Eingabeskript erforderlich sind. Der folgende YAML-Code definiert die Umgebung für ein TensorFlow-Modell. Er gibt den Wert `tensorflow-gpu` an, der die in dieser Bereitstellung verwendete GPU nutzen wird:
 
 ```yaml
 name: project_environment
@@ -120,60 +147,102 @@ channels:
 - conda-forge
 ```
 
-## <a name="define-the-gpu-inferenceconfig-class"></a>Definieren der InferenceConfig-GPU-Klasse
+Bei diesem Beispiel wird die Datei als `myenv.yml` gespeichert.
 
-Erstellen Sie ein `InferenceConfig`-Objekt, um die GPUs zu aktivieren und sicherzustellen, dass CUDA mit Ihrem Docker-Image installiert wird.
+## <a name="define-the-deployment-configuration"></a>Definieren der Bereitstellungskonfiguration
+
+Die Bereitstellungskonfiguration definiert die Azure Kubernetes Service-Umgebung, die zum Ausführen des Webdiensts verwendet wird:
 
 ```python
-from azureml.core.model import Model
+from azureml.core.webservice import AksWebservice
+
+gpu_aks_config = AksWebservice.deploy_configuration(autoscale_enabled=False,
+                                                    num_replicas=3,
+                                                    cpu_cores=2,
+                                                    memory_gb=4)
+```
+
+Weitere Informationen finden Sie in der Referenzdokumentation zu [AksService.deploy_configuration](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice.aks.akswebservice?view=azure-ml-py#deploy-configuration-autoscale-enabled-none--autoscale-min-replicas-none--autoscale-max-replicas-none--autoscale-refresh-seconds-none--autoscale-target-utilization-none--collect-model-data-none--auth-enabled-none--cpu-cores-none--memory-gb-none--enable-app-insights-none--scoring-timeout-ms-none--replica-max-concurrent-requests-none--max-request-wait-time-none--num-replicas-none--primary-key-none--secondary-key-none--tags-none--properties-none--description-none--gpu-cores-none--period-seconds-none--initial-delay-seconds-none--timeout-seconds-none--success-threshold-none--failure-threshold-none--namespace-none-).
+
+## <a name="define-the-inference-configuration"></a>Definieren der Rückschlusskonfiguration
+
+Die Rückschlusskonfiguration verweist auf das Eingabeskript und die Conda-Umgebungsdatei. Außerdem ermöglicht Sie GPU-Support, der CUDA in dem für den Webdienst erstellten Docker-Image installiert:
+
+```python
 from azureml.core.model import InferenceConfig
 
-aks_service_name ='aks-dnn-mnist'
-gpu_aks_config = AksWebservice.deploy_configuration(autoscale_enabled = False, 
-                                                    num_replicas = 3, 
-                                                    cpu_cores=2, 
-                                                    memory_gb=4)
-model = Model(ws,"tf-dnn-mnist")
-
-inference_config = InferenceConfig(runtime= "python", 
+inference_config = InferenceConfig(runtime="python",
                                    entry_script="score.py",
-                                   conda_file="myenv.yml", 
+                                   conda_file="myenv.yml",
                                    enable_gpu=True)
 ```
 
-Weitere Informationen finden Sie unter
-
-- [InferenceConfig-Klasse](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model.inferenceconfig?view=azure-ml-py)
-- [AksServiceDeploymentConfiguration-Klasse](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice.aks.aksservicedeploymentconfiguration?view=azure-ml-py)
+Weitere Informationen finden Sie in der Referenzdokumentation zu [InferenceConfig](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model.inferenceconfig?view=azure-ml-py).
 
 ## <a name="deploy-the-model"></a>Bereitstellen des Modells
 
 Stellen Sie dieses Modell in Ihrem AKS-Cluster bereit, und warten Sie, bis es den Dienst erstellt.
 
 ```python
+from azureml.core.model import Model
+
+# Name of the web service that is deployed
+aks_service_name = 'aks-dnn-mnist'
+# Get the registerd model
+model = Model(ws, "tf-dnn-mnist")
+# Deploy the model
 aks_service = Model.deploy(ws,
                            models=[model],
-                           inference_config=inference_config, 
+                           inference_config=inference_config,
                            deployment_config=gpu_aks_config,
                            deployment_target=aks_target,
                            name=aks_service_name)
 
-aks_service.wait_for_deployment(show_output = True)
+aks_service.wait_for_deployment(show_output=True)
 print(aks_service.state)
 ```
 
 > [!NOTE]
-> Der Azure Machine Learning Service stellt kein Modell mit einem `InferenceConfig`-Objekt bereit, für das erwartet wird, dass die GPU für einen Cluster ohne GPU aktiviert ist.
+> Wenn beim Objekt `InferenceConfig` der Wert `enable_gpu=True` festgelegt wurde, muss der Parameter `deployment_target` auf einen Cluster verweisen, der eine GPU bereitstellt. Andernfalls funktioniert die Bereitstellung nicht.
 
-Weitere Informationen finden Sie unter [Model class](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model.model?view=azure-ml-py) (Model-Klasse).
+Weitere Informationen finden Sie in der Referenzdokumentation zu [Model](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model.model?view=azure-ml-py).
 
-## <a name="issue-a-sample-query-to-your-model"></a>Ausführen einer Beispielabfrage an Ihr Modell
+## <a name="issue-a-sample-query-to-your-service"></a>Ausstellen einer Beispielabfrage für Ihren Dienst
 
-Senden Sie eine Testabfrage an das bereitgestellte Modell. Wenn Sie ein JPEG-Bild an das Modell senden, wird es bewertet. Das folgende Codebeispiel verwendet eine externe Hilfsfunktion zum Laden von Bildern. Den entsprechenden Code finden Sie unter pir [TensorFlow Beispiel auf GitHub](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/training-with-deep-learning/train-hyperparameter-tune-deploy-with-tensorflow/utils.py) . 
+Senden Sie eine Testabfrage an das bereitgestellte Modell. Wenn Sie ein JPEG-Bild an das Modell senden, wird es bewertet. Im folgenden Codebeispiel werden Testdaten heruntergeladen. Anschließend wird ein zufälliges Testbild ausgewählt, das an den Dienst gesendet werden soll. 
 
 ```python
 # Used to test your webservice
-from utils import load_data 
+import os
+import urllib
+import gzip
+import numpy as np
+import struct
+import requests
+
+# load compressed MNIST gz files and return numpy arrays
+def load_data(filename, label=False):
+    with gzip.open(filename) as gz:
+        struct.unpack('I', gz.read(4))
+        n_items = struct.unpack('>I', gz.read(4))
+        if not label:
+            n_rows = struct.unpack('>I', gz.read(4))[0]
+            n_cols = struct.unpack('>I', gz.read(4))[0]
+            res = np.frombuffer(gz.read(n_items[0] * n_rows * n_cols), dtype=np.uint8)
+            res = res.reshape(n_items[0], n_rows * n_cols)
+        else:
+            res = np.frombuffer(gz.read(n_items[0]), dtype=np.uint8)
+            res = res.reshape(n_items[0], 1)
+    return res
+
+# one-hot encode a 1-D array
+def one_hot_encode(array, num_of_classes):
+    return np.eye(num_of_classes)[array.reshape(-1)]
+
+# Download test data
+os.makedirs('./data/mnist', exist_ok=True)
+urllib.request.urlretrieve('http://yann.lecun.com/exdb/mnist/t10k-images-idx3-ubyte.gz', filename='./data/mnist/test-images.gz')
+urllib.request.urlretrieve('http://yann.lecun.com/exdb/mnist/t10k-labels-idx1-ubyte.gz', filename='./data/mnist/test-labels.gz')
 
 # Load test data from model training
 X_test = load_data('./data/mnist/test-images.gz', False) / 255.0
@@ -184,21 +253,20 @@ random_index = np.random.randint(0, len(X_test)-1)
 input_data = "{\"data\": [" + str(list(X_test[random_index])) + "]}"
 
 api_key = aks_service.get_keys()[0]
-headers = {'Content-Type':'application/json', 'Authorization':('Bearer '+ api_key)}
+headers = {'Content-Type': 'application/json',
+           'Authorization': ('Bearer ' + api_key)}
 resp = requests.post(aks_service.scoring_uri, input_data, headers=headers)
 
 print("POST to url", aks_service.scoring_uri)
-#print("input data:", input_data)
 print("label:", y_test[random_index])
 print("prediction:", resp.text)
 ```
 
-> [!IMPORTANT]
-> Stellen Sie sicher, dass sich Ihr Client in derselben Azure-Region wie der Endpunkt befindet, um die Latenz zu verringern und den Durchsatz zu optimieren. In diesem Beispiel werden die APIs in der Azure-Region „USA, Osten“ erstellt.
+Weitere Informationen zum Erstellen einer Clientanwendung finden Sie unter [Erstellen eines Clients zur Nutzung des bereitgestellten Webdiensts](how-to-consume-web-service.md).
 
 ## <a name="clean-up-the-resources"></a>Bereinigen der Ressourcen
 
-Löschen Sie Ihre Ressourcen, nachdem Sie dieses Beispiel abgeschlossen haben.
+Wenn Sie den AKS-Cluster speziell für dieses Beispiel erstellt haben, löschen Sie Ihre Ressourcen nach Abschluss des Vorgangs.
 
 > [!IMPORTANT]
 > Azure berechnet Ihnen Gebühren basierend darauf, wie lange der AKS-Cluster bereitgestellt wird. Achten Sie darauf, ihn zu bereinigen, wenn Sie ihn nicht mehr nutzen.

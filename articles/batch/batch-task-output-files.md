@@ -3,7 +3,7 @@ title: Beibehalten der Ausgabe von Aufträgen und Tasks in Azure Storage mit der
 description: In diesem Artikel erhalten Sie Informationen zur Verwendung der Batch-Dienst-API zur Beibehaltung der Ausgabe von Batch-Tasks und -Aufträgen in Azure Storage.
 services: batch
 author: laurenhughes
-manager: jeconnoc
+manager: gwallace
 editor: ''
 ms.service: batch
 ms.devlang: multiple
@@ -13,12 +13,12 @@ ms.workload: big-compute
 ms.date: 03/05/2019
 ms.author: lahugh
 ms.custom: seodec18
-ms.openlocfilehash: 982fe5cea633d9fd1bbbe7dc862b69d89f5f1c1c
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: c113521a1828a27ce9454ea142cb1708b7c5a1b6
+ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65595281"
+ms.lasthandoff: 07/18/2019
+ms.locfileid: "68322839"
 ---
 # <a name="persist-task-data-to-azure-storage-with-the-batch-service-api"></a>Beibehalten von Taskdaten mithilfe der Batch-Dienst-API in Azure Storage
 
@@ -178,7 +178,7 @@ Wenn Sie in einer anderen Sprache als C# entwickeln, müssen Sie den Dateikonven
 
 ## <a name="code-sample"></a>Codebeispiel
 
-Das Beispielprojekt [PersistOutputs][github_persistoutputs] ist eines der [Azure Batch-Codebeispiele][github_samples] auf GitHub. Diese Visual Studio-Projektmappe veranschaulicht, wie die Batch-Clientbibliothek für .NET verwendet werden kann, um die Taskausgabe in dauerhaftem Speicher beizubehalten. Gehen Sie folgendermaßen vor, um das Beispiel auszuführen:
+Das [PersistOutputs-][github_persistoutputs] sample project is one of the [Azure Batch code samples][github_samples] auf GitHub. Diese Visual Studio-Projektmappe veranschaulicht, wie die Batch-Clientbibliothek für .NET verwendet werden kann, um die Taskausgabe in dauerhaftem Speicher beizubehalten. Gehen Sie folgendermaßen vor, um das Beispiel auszuführen:
 
 1. Öffnen Sie das Projekt in **Visual Studio 2019**.
 2. Fügen Sie die **Anmeldeinformationen** für Ihr Batch- und Storage-Konto zu **AccountSettings.settings** im Microsoft.Azure.Batch.Samples.Common-Projekt hinzu.

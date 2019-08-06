@@ -1,57 +1,63 @@
 ---
-title: Horizontales Hochskalieren eines Azure Data Explorer-Clusters
+title: Verwalten des horizontalen Skalierens (horizontales Hochskalieren) eines Clusters in Azure Data Explorer zur Anpassung an sich ändernden Bedarf
 description: Dieser Artikel beschreibt Schritte zum horizontalen Hoch- und Herunterskalieren eines Azure Data Explorer-Clusters basierend auf sich änderndem Bedarf.
 author: orspod
 ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: conceptual
-ms.date: 06/30/2019
-ms.openlocfilehash: 29bfcc42462a667850f0b2e1bbda3d29cd1597ab
-ms.sourcegitcommit: 1e347ed89854dca2a6180106228bfafadc07c6e5
+ms.date: 07/14/2019
+ms.openlocfilehash: 70e6bdfcf9718244632ad02e09d3ddadee71a617
+ms.sourcegitcommit: f5075cffb60128360a9e2e0a538a29652b409af9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67571264"
+ms.lasthandoff: 07/18/2019
+ms.locfileid: "68311572"
 ---
-# <a name="manage-cluster-horizontal-scaling-to-accommodate-changing-demand"></a>Verwalten der horizontalen Clusterskalierung bei sich änderndem Bedarf
+# <a name="manage-cluster-horizontal-scaling-scale-out-in-azure-data-explorer-to-accommodate-changing-demand"></a>Verwalten des horizontalen Skalierens (horizontales Hochskalieren) eines Clusters in Azure Data Explorer zur Anpassung an sich ändernden Bedarf
 
-Die richtige Größe eines Clusters ist entscheidend für die Leistung von Azure-Daten-Explorer. Aber der Bedarf in einem Cluster kann nicht mit absoluter Genauigkeit vorhergesagt werden. Eine statische Clustergröße kann zu einer Unter- oder Überauslastung führen, was beides nicht ideal ist.
+Die richtige Größe eines Clusters ist entscheidend für die Leistung von Azure-Daten-Explorer. Eine statische Clustergröße kann zu einer Unter- oder Überauslastung führen, was beides nicht ideal ist.
 
-Ein besserer Ansatz ist die *Skalierung* eines Clusters, wobei je nach Bedarf Kapazitäten hinzugefügt und entfernt werden. Es gibt zwei Workflows für die Skalierung: 
+Da der Bedarf für einen Cluster nicht mit absoluter Genauigkeit vorhergesagt werden kann, ist es besser, einen Cluster zu *skalieren* und je nach Bedarf Kapazität und CPU-Ressourcen hinzuzufügen bzw. zu entfernen. 
+
+Es gibt zwei Workflows für die Skalierung eines Azure Data Explorer-Clusters: 
+
 * Horizontales Hoch- oder Herunterskalieren
-* Vertikales (oder zentrales) Hoch- oder Herunterskalieren
+* [Zentrales Hoch- oder Herunterskalieren](manage-cluster-vertical-scaling.md)
 
 In diesem Artikel wird der Workflow für die horizontale Skalierung beschrieben.
 
-Die horizontale Skalierung ermöglicht die automatische Skalierung der Instanzenanzahl auf der Grundlage vordefinierter Regeln und Zeitpläne. Sie legen die Autoskalierungseinstellungen für Ihren Cluster im Azure-Portal fest, wie in diesem Artikel beschrieben.
+## <a name="configure-horizontal-scaling"></a>Konfigurieren der horizontalen Skalierung
 
-## <a name="steps-to-configure-horizontal-scaling"></a>Schritte zum Konfigurieren der horizontalen Skalierung
+Bei Verwendung der horizontalen Skalierung können Sie die Instanzenanzahl anhand von vordefinierten Regeln und Zeitplänen automatisch skalieren. Geben Sie die Einstellungen für die Autoskalierung für Ihren Cluster wie folgt an:
 
-Navigieren Sie im Azure-Portal zu Ihrer Data Explorer-Clusterressource. Wählen Sie unter der Überschrift **Einstellungen** die Option **Horizontal hochskalieren** aus. 
+1. Navigieren Sie im Azure-Portal zu Ihrer Azure Data Explorer-Clusterressource. Wählen Sie unter **Einstellungen** die Option **Horizontal hochskalieren** aus. 
 
-Wählen Sie die gewünschte Methode für die Autoskalierung aus: **Manuelle Skalierung**, **Optimized autoscale** (Optimierte Autoskalierung) oder **Custom autoscale** (Benutzerdefinierte Autoskalierung).
+2. Wählen Sie im Fenster **Horizontal hochskalieren** die gewünschte Methode für die Autoskalierung aus: **Manuelle Skalierung**, **Optimierte Autoskalierung** oder **Benutzerdefinierte Autoskalierung**.
 
-### <a name="manual-scale"></a>Manuelle Skalierung
+### <a name="manual-scale"></a>Manuelles Skalieren
 
-„Manuelle Skalierung“ ist die Standardeinstellung bei der Clustererstellung. Bei dieser Einstellung wird eine statische Clusterkapazität verwendet, die sich nicht automatisch ändert. Die statische Kapazität kann mithilfe der Leiste festgelegt werden und ändert sich erst, wenn Sie die Erweiterungseinstellung des Clusters ändern.
+„Manuelle Skalierung“ ist die Standardeinstellung bei der Clustererstellung. Der Cluster verfügt über eine statische Kapazität, die sich nicht automatisch ändert. Sie wählen die statische Kapazität über die Leiste **Anzahl von Instanzen** aus. Für die Skalierung des Clusters wird diese Einstellung so lange beibehalten, bis Sie eine weitere Änderung vornehmen.
 
    ![Manuelle Skalierung](media/manage-cluster-horizontal-scaling/manual-scale-method.png)
 
 ### <a name="optimized-autoscale"></a>Optimierte Autoskalierung
 
-Die optimierte Autoskalierung ist die empfohlene Methode für die Autoskalierung. Schritte zum Konfigurieren der optimierten Autoskalierung:
+Die optimierte Autoskalierung ist die empfohlene Methode für die Autoskalierung. Mit dieser Methode werden die Leistung und die Kosten des Clusters optimiert. Wenn sich der Cluster einem Status mit zu geringer Auslastung nähert, wird er horizontal herunterskaliert. Durch diese Aktion werden die Kosten verringert, während gleichzeitig die Leistungsstufe erhalten bleibt. Wenn sich der Cluster einem Status mit zu hoher Auslastung nähert, wird er horizontal hochskaliert, damit die optimale Leistung erhalten bleibt. Konfigurieren Sie die optimierte Autoskalierung wie folgt:
 
-1. Wählen Sie die Option für die optimierte Autoskalierung sowie eine Unter- und eine Obergrenze für die Anzahl von Clusterinstanzen aus, zwischen denen die automatische Skalierung erfolgen soll.
-2. Klicken Sie auf "Speichern".
+1. Wählen Sie **Optimierte Autoskalierung**. 
+
+1. Wählen Sie eine Mindest- und eine Höchstzahl von Instanzen aus. Die automatische Skalierung des Clusters bewegt sich dann je nach Last zwischen diesen beiden Werten.
+
+1. Wählen Sie **Speichern** aus.
 
    ![Optimierte Autoskalierung](media/manage-cluster-horizontal-scaling/optimized-autoscale-method.png)
 
-Nach dem Klicken auf Speichern wird die optimierte Autoskalierung gestartet, und die Aktionen des Mechanismus werden im Aktivitätsprotokoll des Clusters erfasst. Diese Autoskalierungsmethode optimiert die Leistung und die Kosten des Clusters: Wenn sich der Cluster einer Unterauslastung nähert, wird er horizontal herunterskaliert, wodurch weiterhin die gleiche Leistung zur Verfügung steht, aber weniger Kosten anfallen. Nähert sich der Cluster dagegen einer Überauslastung, wird er horizontal hochskaliert, um eine optimale Leistung zu gewährleisten.
+Die optimierte automatische Skalierung beginnt mit der Arbeit. Ihre Aktionen sind im Azure-Aktivitätsprotokoll des Clusters jetzt sichtbar.
 
 ### <a name="custom-autoscale"></a>Benutzerdefinierte Autoskalierung
 
-Bei der benutzerdefinierten Autoskalierung kann Ihr Cluster basierend auf den von Ihnen angegebenen Metriken dynamisch skaliert werden. Die folgende Grafik zeigt den Ablauf und die Schritte zum Konfigurieren der benutzerdefinierten Autoskalierung. Weitere Details finden Sie in der Grafik.
+Bei Verwendung der benutzerdefinierten Autoskalierung können Sie Ihren Cluster basierend auf den von Ihnen angegebenen Metriken dynamisch skalieren. Die folgende Grafik zeigt den Ablauf und die Schritte zum Konfigurieren der benutzerdefinierten Autoskalierung. Weitere Details finden Sie in der Grafik.
 
 1. Geben Sie im Feld **Name der Einstellung für die Autoskalierung** einen Namen ein, z. B. *Horizontale Skalierung: Cacheauslastung*. 
 
@@ -61,7 +67,7 @@ Bei der benutzerdefinierten Autoskalierung kann Ihr Cluster basierend auf den vo
 
 3. Wählen Sie **+ Regel hinzufügen** aus.
 
-4. Geben Sie im Abschnitt **Skalierungsregel** auf der rechten Seite Werte für jede Einstellung an.
+4. Geben Sie im Abschnitt **Skalierungsregel** auf der rechten Seite Werte für jede Einstellung ein.
 
     **Kriterien**
 
@@ -86,7 +92,7 @@ Bei der benutzerdefinierten Autoskalierung kann Ihr Cluster basierend auf den vo
 
 5. Wählen Sie **Hinzufügen**.
 
-6. Geben Sie im Abschnitt **Instanzgrenzwerte** auf der linken Seite Werte für jede Einstellung an.
+6. Geben Sie im Abschnitt **Instanzgrenzwerte** auf der linken Seite Werte für jede Einstellung ein.
 
     | Einstellung | Beschreibung und Wert |
     | --- | --- |
@@ -97,9 +103,10 @@ Bei der benutzerdefinierten Autoskalierung kann Ihr Cluster basierend auf den vo
 
 7. Wählen Sie **Speichern** aus.
 
-Sie haben nun einen horizontalen Skalierungsvorgang für Ihren Azure-Daten-Explorer-Cluster konfiguriert. Fügen Sie eine weitere Regel für einen Vorgang zum horizontalen Herunterskalieren hinzu. Wenn Sie Hilfe bei Clusterskalierungsproblemen benötigen, erstellen Sie im [Azure-Portal](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview) eine Supportanfrage.
+Sie haben nun die horizontale Skalierung für Ihren Azure Data Explorer-Cluster konfiguriert. Fügen Sie eine weitere Regel für die vertikale Skalierung hinzu. Wenn Sie Hilfe bei Clusterskalierungsproblemen benötigen, erstellen Sie im [Azure-Portal](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview) eine Supportanfrage.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
 * [Überwachen der Azure Data Explorer-Leistung, -Integrität und -Auslastung mit Metriken](using-metrics.md)
+
 * [Manage cluster vertical scaling (scale up) in Azure Data Explorer to accommodate changing demand](manage-cluster-vertical-scaling.md) (Verwalten der vertikalen Clusterskalierung (Hochskalieren) in Azure Data Explorer bei sich änderndem Bedarf)
