@@ -13,14 +13,14 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
-ms.date: 11/17/2018
+ms.date: 07/29/2019
 ms.author: sedusch
-ms.openlocfilehash: f09f66e81ec4878aedebfee9be4c0c67b75c8ad6
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 4a4421b87aa094306a42212f76f7590d4f139047
+ms.sourcegitcommit: 6cff17b02b65388ac90ef3757bf04c6d8ed3db03
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61463003"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68607977"
 ---
 # <a name="sap-lama-connector-for-azure"></a>SAP LaMa-Connector für Azure
 
@@ -30,6 +30,7 @@ ms.locfileid: "61463003"
 [2562184]: https://launchpad.support.sap.com/#/notes/2562184
 [2628497]: https://launchpad.support.sap.com/#/notes/2628497
 [2445033]: https://launchpad.support.sap.com/#/notes/2445033
+[2815988]: https://launchpad.support.sap.com/#/notes/2815988
 [Logo_Linux]:media/virtual-machines-shared-sap-shared/Linux.png
 [Logo_Windows]:media/virtual-machines-shared-sap-shared/Windows.png
 [dbms-guide]:dbms-guide.md
@@ -67,7 +68,7 @@ Weitere Informationen finden Sie im auch [SAP-Hilfeportal für SAP LaMa](https:/
   Wenn Sie die dynamische IP-Adresszuordnung im Subnetz verwenden, das auch von SAP LaMa genutzt wird, kann die Vorbereitung eines SAP-Systems mit SAP LaMa fehlschlagen. Wenn ein SAP-System nicht vorbereitet ist, sind die IP-Adressen nicht reserviert. Das heißt, sie werden möglicherweise anderen VMs zugeordnet.
 
 * Wenn Sie sich bei verwalteten Hosts anmelden, stellen Sie sicher, dass die Bereitstellung von Dateisystemen weiterhin aufgehoben werden kann.  
-  Wenn Sie sich auf einer Linux-VM anmelden und das Arbeitsverzeichnis in ein Verzeichnis in einem Bereitstellungspunkt ändern, z.B. /usr/sap/AH1/ASCS00/exe, kann die Bereitstellung des Volumes nicht aufgehoben werden, und das Verschieben oder Aufheben der Vorbereitung schlägt fehl.
+  Wenn Sie sich auf einer Linux-VM anmelden und das Arbeitsverzeichnis in ein Verzeichnis in einem Bereitstellungspunkt ändern, z.B. „/usr/sap/AH1/ASCS00/exe“, kann die Bereitstellung des Volumes nicht aufgehoben werden, und das Verschieben oder Aufheben der Vorbereitung schlägt fehl.
 
 ## <a name="set-up-azure-connector-for-sap-lama"></a>Einrichten eines Azure-Connectors für SAP LaMa
 
@@ -226,7 +227,7 @@ Die Vorlagen haben die folgenden Parameter:
 
 In den folgenden Beispielen wird davon ausgegangen, dass Sie SAP HANA mit der System-ID HN1 und das SAP NetWeaver-System mit der System-ID AH1 installieren. Die virtuellen Hostnamen sind „hn1-db“ für die HANA-Instanz, „ah1-db“ für den vom SAP NetWeaver-System verwendeten HANA-Mandanten, „ah1-ascs“ für SAP NetWeaver ASCS und „ah1-di-0“ für den ersten SAP NetWeaver-Anwendungsserver.
 
-#### <a name="install-sap-netweaver-ascs-for-sap-hana"></a>Installieren von SAP NetWeaver ASCS für SAP HANA
+#### <a name="install-sap-netweaver-ascs-for-sap-hana-using-azure-managed-disks"></a>Installieren von SAP NetWeaver ASCS für SAP HANA mithilfe von Azure Managed Disks
 
 Bevor Sie SAP Software Provisioning Manager (SWPM) starten, müssen Sie die IP-Adresse des virtuellen Hostnamens von ASCS bereitstellen. Es wird empfohlen, „sapacext“ zu verwenden. Wenn Sie die IP-Adresse mit „sapacext“ bereitstellen, stellen Sie sicher, dass Sie die IP-Adresse nach einem Neustart erneut bereitstellen.
 
@@ -251,6 +252,93 @@ Fügen Sie den folgenden Profilparameter dem SAP-Host-Agent-Profil hinzu, der si
 ```
 acosprep/nfs_paths=/home/ah1adm,/usr/sap/trans,/sapmnt/AH1,/usr/sap/AH1
 ```
+
+#### <a name="install-sap-netweaver-ascs-for-sap-hana-on-azure-netappfiles-anf-beta"></a>Installieren von SAP NetWeaver ASCS für SAP HANA auf Azure NetAppFiles (ANF) BETA
+
+> [!NOTE]
+> Diese Funktionalität ist noch nicht allgemein verfügbar. Weitere Informationen finden Sie im SAP-Hinweis [2815988] (nur für Kunden der Vorschauversion sichtbar).
+Öffnen Sie einen SAP-Incident in der Komponente BC-VCM-LVM-HYPERV, und fordern Sie das Einbinden des LaMa-Speicheradapters für die Azure NetApp Files-Vorschauversion an.
+
+ANF stellt NFS für Azure bereit. Im Zusammenhang mit SAP LaMa vereinfacht dies die Erstellung der ASCS-Instanzen (ABAP Central Services) und der nachfolgenden Installation von Anwendungsservern. Zuvor musste die ASCS-Instanz auch als NFS-Server fungieren, und der Parameter „acosprep/nfs_paths“ musste dem „host_profile“ des SAP-HostAgents hinzugefügt werden.
+
+#### <a name="anf-is-currently-available-in-these-regions"></a>ANF ist zurzeit in den folgenden Regionen verfügbar:
+
+Australien, Osten; USA, Mitte; USA, Osten; USA, Osten 2, Europa, Norden; USA, Süden-Mitte, Europa, Westen und USA, Westen 2.
+
+#### <a name="network-requirements"></a>Netzwerkanforderungen
+
+ANF erfordert ein delegiertes Subnetz, das Teil desselben VNET wie bei den SAP-Servern sein muss. Hier ist ein Beispiel für solch eine Konfiguration.
+Dieser Bildschirm zeigt die Erstellung des VNET und des ersten Subnetzes:
+
+![SAP LaMa – Erstellen eines virtuellen Netzwerks für Azure ANF ](media/lama/sap-lama-createvn-50.png)
+
+Im nächsten Schritt wird das delegierte Subnetz für „Microsoft.NetApp/volumes“ erstellt.
+
+![SAP LaMa – Hinzufügen eines delegierten Subnetzes ](media/lama/sap-lama-addsubnet-50.png)
+
+![SAP LaMa – Liste der Subnetze ](media/lama/sap-lama-subnets.png)
+
+Jetzt muss ein NetApp-Konto im Azure-Portal erstellt werden:
+
+![SAP LaMa – Erstellen eines NetApp-Kontos ](media/lama/sap-lama-create-netappaccount-50.png)
+
+![SAP LaMa – NetApp-Konto wurde erstellt ](media/lama/sap-lama-netappaccount.png)
+
+Innerhalb des NetApp-Kontos gibt der Kapazitätspool die Größe und den Typ der Datenträger für die einzelnen Pools an:
+
+![SAP LaMa – Erstellen eines NetApp-Kapazitätspools ](media/lama/sap-lama-capacitypool-50.png)
+
+![SAP LaMa – NetApp-Kapazitätspool wurde erstellt ](media/lama/sap-lama-capacitypool-list.png)
+
+Jetzt können die NFS-Volumes definiert werden. Da es Volumes für mehrere Systeme in einem einzigen Pool geben wird, sollte ein selbsterklärendes Benennungsschema ausgewählt werden. Durch das Hinzufügen der Sicherheits-ID (SID) können verwandte Volumes gruppiert werden. Für ASCS und die AS-Instanz sind die folgenden Bereitstellungen erforderlich: \<SID\>, /usr/sap/\<SID\> und /home/\<sid\>adm. Optionales „/usr/sap/trans“ für das zentrale Übertragungsverzeichnis, das mindestens von allen Systemen einer einzigen Landschaft verwendet wird.
+
+> [!NOTE]
+> Während der BETA-Phase muss der Name der Volumes im Abonnement eindeutig sein.
+
+![SAP LaMa – Erstellen eines Volumes 1 ](media/lama/sap-lama-createvolume-80.png)
+
+![SAP LaMa – Erstellen eines Volumes 2 ](media/lama/sap-lama-createvolume2-80.png)
+
+![SAP LaMa – Erstellen eines Volumes 3 ](media/lama/sap-lama-createvolume3-80.png)
+
+Diese Schritte müssen auch bei den anderen Volumes wiederholt werden.
+
+![SAP LaMa – Liste der erstellten Volumes ](media/lama/sap-lama-volumes.png)
+
+Jetzt müssen diese Volumes in den Systemen bereitgestellt werden, in denen die Erstinstallation mit SAP SWPM ausgeführt wird.
+
+Zuerst müssen die Bereitstellungspunkte erstellt werden. In diesem Fall ist die SID „AN1“. Deshalb müssen die folgenden Befehle ausgeführt werden:
+
+```bash
+mkdir -p /home/an1adm
+mkdir -p /sapmnt/AN1
+mkdir -p /usr/sap/AN1
+mkdir -p /usr/sap/trans
+```
+Im nächsten Schritt werden die ANF-Volumes mit den folgenden Befehlen bereitgestellt:
+
+```bash
+# sudo mount -t nfs -o rw,hard,rsize=65536,wsize=65536,vers=3,tcp 9.9.9.132:/an1-home-sidadm /home/an1adm
+# sudo mount -t nfs -o rw,hard,rsize=65536,wsize=65536,vers=3,tcp 9.9.9.132:/an1-sapmnt-sid /sapmnt/AN1
+# sudo mount -t nfs -o rw,hard,rsize=65536,wsize=65536,vers=3,tcp 9.9.9.132:/an1-usr-sap-sid /usr/sap/AN1
+# sudo mount -t nfs -o rw,hard,rsize=65536,wsize=65536,vers=3,tcp 9.9.9.132:/global-usr-sap-trans /usr/sap/trans
+```
+Die Bereitstellungsbefehle können auch aus dem Portal abgeleitet werden. Die lokalen Bereitstellungspunkte müssen angepasst werden.
+
+Verwenden Sie zum Überprüfen den Befehl „df-h“.
+
+![SAP LaMa – BS-Ebene für Bereitstellungspunkte ](media/lama/sap-lama-mounts.png)
+
+Jetzt muss die Installation mit SWPM durchgeführt werden.
+
+Dieselben Schritte müssen für mindestens eine AS-Instanz ausgeführt werden.
+
+Nach der erfolgreichen Installation muss das System innerhalb von SAP LaMa erkannt werden.
+
+Die Einstellungspunkte sollten für ASCS und die AS-Instanz ähnlich wie hier aussehen:
+
+![SAP LaMa-Bereitstellungspunkte in LaMa ](media/lama/sap-lama-ascs.png) (Dies ist ein Beispiel. Die IP-Adressen und der Exportpfad unterscheiden sich von den zuvor verwendeten.)
+
 
 #### <a name="install-sap-hana"></a>Installieren von SAP HANA
 
@@ -475,7 +563,7 @@ Verwenden Sie *as1-di-0* als *PAS-Instanzhostnamen* im Dialogfeld *Primäre Anwe
     Fügen Sie in Schritt *Isolation* eine Hostregel hinzu, um die Kommunikation von der VM zum Domänencontroller zu ermöglichen.
 
 ## <a name="next-steps"></a>Nächste Schritte
-* [SAP HANA in Azure-Vorgängen – Leitfaden][hana-ops-guide]
-* [SAP NetWeaver auf virtuellen Azure-Computern – Planungs- und Implementierungshandbuch][planning-guide]
-* [Bereitstellung von Azure Virtual Machines für SAP][deployment-guide]
-* [SAP NetWeaver auf virtuellen Azure-Computern – DBMS-Bereitstellungshandbuch][dbms-guide]
+* [SAP HANA in Azure – Betriebshandbuch][hana-ops-guide]
+* [Azure Virtual Machines – Planung und Implementierung für SAP][planning-guide]
+* [Azure Virtual Machines – Bereitstellung für SAP][deployment-guide]
+* [Azure Virtual Machines – DBMS-Bereitstellung für SAP][dbms-guide]

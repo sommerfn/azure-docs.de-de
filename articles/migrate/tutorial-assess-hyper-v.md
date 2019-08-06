@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 07/11/2019
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: 83567a45980b29931f9b68bd6d60df0d427b09de
-ms.sourcegitcommit: af31deded9b5836057e29b688b994b6c2890aa79
+ms.openlocfilehash: c790667c73adfed061b97b14ebb7df4c68461786
+ms.sourcegitcommit: e3b0fb00b27e6d2696acf0b73c6ba05b74efcd85
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67813020"
+ms.lasthandoff: 07/30/2019
+ms.locfileid: "68663788"
 ---
 # <a name="assess-hyper-v-vms-with-azure-migrate-server-assessment"></a>Bewerten von Hyper-V-VMs mit der Azure Migrate-Serverbewertung
 
@@ -110,15 +110,17 @@ Laden Sie die gezippte VHD-Vorlage für die Appliance herunter.
 Vergewissern Sie sich vor der Bereitstellung, dass die gezippte Datei sicher ist.
 
 1. Öffnen Sie auf dem Computer, auf den Sie die Datei heruntergeladen haben, ein Administratorbefehlsfenster.
-2. Führen Sie den folgenden Befehl aus, um den Hash für die VHD zu generieren:
-    - ```C:\>CertUtil -HashFile <file_location> [Hashing Algorithm]```
-    - Beispielverwendung: ```C:\>CertUtil -HashFile C:\AzureMigrate\AzureMigrate.ova SHA256```
+
+2. Führen Sie den folgenden PowerShell-Befehl aus, um den Hash für die ZIP-Datei zu generieren:
+    - ```C:\>Get-FileHash -Path <file_location> -Algorithm [Hashing Algorithm]```
+    - Beispielverwendung: ```C:\>Get-FileHash -Path ./AzureMigrateAppliance_v1.19.06.27.zip -Algorithm SHA256```
+
 3.  Für die Applianceversion 1.19.06.27 muss der generierte Hash den folgenden Einstellungen entsprechen:
 
   **Algorithmus** | **Hashwert**
   --- | ---
-  MD5 | 3681f745fa2b0a0a6910707d85161ec5
-  SHA256 | e6ca109afab9657bdcfb291c343b3e3abced9a273d25273059171f9954d25832
+  MD5 | 3681F745FA2B0A0A6910707D85161EC5
+  SHA256 | E6CA109AFAB9657BDCFB291C343B3E3ABCED9A273D25273059171F9954D25832
 
 
 
@@ -158,9 +160,9 @@ Führen Sie die Ersteinrichtung der Appliance durch.
 1. Gehen Sie in der Web-App unter **Erforderliche Komponenten einrichten** wie folgt vor:
     - **Lizenz**: Akzeptieren Sie die Lizenzbedingungen, und lesen Sie die Drittanbieterinformationen.
     - **Konnektivität**: Die App überprüft, ob die VM über Internetzugriff verfügt. Sollte die VM einen Proxy verwenden, gehen Sie wie folgt vor:
-        - Klicken Sie auf **Proxyeinstellungen**, und geben Sie die Proxyadresse und den Lauschport an (im Format http://ProxyIPAddress oder http://ProxyFQDN ).
-        - Geben Sie die Anmeldeinformationen an, wenn der Proxy eine Authentifizierung erfordert.
-        - Es werden nur HTTP-Proxys unterstützt.
+      - Klicken Sie auf **Proxyeinstellungen**, und geben Sie die Proxyadresse und den Lauschport an (im Format http://ProxyIPAddress oder http://ProxyFQDN ).
+      - Geben Sie die Anmeldeinformationen an, wenn der Proxy eine Authentifizierung erfordert.
+      - Es werden nur HTTP-Proxys unterstützt.
     - **Uhrzeitsynchronisierung**: Die Uhrzeit wird überprüft. Die Uhrzeit der Appliance muss mit der Internetzeit synchronisiert werden, damit die VM-Ermittlung ordnungsgemäß funktioniert.
     - **Updates installieren**: Die Azure Migrate-Serverbewertung überprüft, ob auf der Appliance die neuesten Updates installiert sind.
 
@@ -178,19 +180,31 @@ Führen Sie die Ersteinrichtung der Appliance durch.
 
 ### <a name="delegate-credentials-for-smb-vhds"></a>Delegieren von Anmeldeinformationen für SMB-VHDs
 
-Wenn Sie VHDs in SMBs ausführen, müssen Sie die Delegierung von Anmeldeinformationen von der Appliance an die Hyper-V-Hosts aktivieren. Falls Sie diesen Schritt im [vorherigen Tutorial](tutorial-prepare-hyper-v.md#enable-credssp-on-hosts) nicht für jeden Host ausgeführt haben, können Sie dies jetzt über die Appliance nachholen:
+Wenn Sie VHDs in SMBs ausführen, müssen Sie die Delegierung von Anmeldeinformationen von der Appliance an die Hyper-V-Hosts aktivieren. Dafür ist Folgendes erforderlich:
 
-1. Führen Sie auf der Appliance-VM den folgenden Befehl aus. „HyperVHost1“ und „HyperVHost2“ sind Beispielhostnamen.
+- Sie ermöglichen es jedem Host, als Delegat für die Appliance zu fungieren. Diesen Schritte sollten Sie im vorherigen Tutorial ausgeführt haben, als Sie Hyper-V auf die Bewertung und Migration vorbereitet haben. Sie müssen CredSSP für die Hosts entweder [manuell](tutorial-prepare-hyper-v.md#enable-credssp-on-hosts) oder durch [Ausführung des Konfigurationsskripts für Hyper-V-Voraussetzungen](tutorial-prepare-hyper-v.md#hyper-v-prerequisites-configuration-script) eingerichtet haben.
+- Aktivieren Sie die CredSSP-Delegierung, sodass die Azure Migrate-Appliance als Client fungieren und die Anmeldeinformationen an einen Host delegieren kann.
 
-    ```
-    Enable-WSManCredSSP -Role Client -DelegateComputer HyperVHost1.contoso.com HyperVHost2.contoso.com -Force
-    ```
+Gehen Sie zur Aktivierung für die Appliance wie folgt vor:
 
-2. Gehen Sie alternativ im Editor für lokale Gruppenrichtlinien auf der Appliance wie folgt vor:
-    - Klicken Sie unter **Richtlinie für "Lokaler Computer"**  > **Computerkonfiguration** auf **Administrative Vorlagen** > **System** > **Delegierung von Anmeldeinformationen**.
-    - Doppelklicken Sie auf **Delegierung von aktuellen Anmeldeinformationen zulassen**, und wählen Sie **Aktiviert** aus.
-    - Klicken Sie unter **Optionen** auf **Anzeigen**, und fügen Sie jeden Hyper-V-Host, den Sie ermitteln möchten, mit dem Präfix **wsman/** der Liste hinzu.
-    - Doppelklicken Sie unter **Delegierung von Anmeldeinformationen** auf **Delegierung von aktuellen Anmeldeinformationen mit reiner NTLM-Serverauthentifizierung zulassen**. Fügen Sie auch hier wieder jeden Hyper-V-Host, den Sie ermitteln möchten, mit dem Präfix **wsman/** der Liste hinzu.
+#### <a name="option-1"></a>Option 1:
+
+Führen Sie auf der Appliance-VM den folgenden Befehl aus. „HyperVHost1“ und „HyperVHost2“ sind Beispielhostnamen.
+
+```
+Enable-WSManCredSSP -Role Client -DelegateComputer HyperVHost1.contoso.com HyperVHost2.contoso.com -Force
+```
+
+Beispiel: ` Enable-WSManCredSSP -Role Client -DelegateComputer HyperVHost1.contoso.com HyperVHost2.contoso.com -Force `
+
+#### <a name="option-2"></a>Option 2:
+
+Gehen Sie alternativ im Editor für lokale Gruppenrichtlinien auf der Appliance wie folgt vor:
+
+1. Klicken Sie unter **Richtlinie für "Lokaler Computer"**  > **Computerkonfiguration** auf **Administrative Vorlagen** > **System** > **Delegierung von Anmeldeinformationen**.
+2. Doppelklicken Sie auf **Delegierung von aktuellen Anmeldeinformationen zulassen**, und wählen Sie **Aktiviert** aus.
+3. Klicken Sie unter **Optionen** auf **Anzeigen**, und fügen Sie jeden Hyper-V-Host, den Sie ermitteln möchten, mit dem Präfix **wsman/** der Liste hinzu.
+4. Doppelklicken Sie dann unter **Delegierung von Anmeldeinformationen** auf **Delegierung von aktuellen Anmeldeinformationen mit reiner NTLM-Serverauthentifizierung zulassen**. Fügen Sie auch hier wieder jeden Hyper-V-Host, den Sie ermitteln möchten, mit dem Präfix **wsman/** der Liste hinzu.
 
 ## <a name="start-continuous-discovery"></a>Starten der kontinuierlichen Ermittlung
 
@@ -220,7 +234,7 @@ Mit der Azure Migrate-Serverbewertung können zwei Arten von Bewertungen ausgef
 
 **Bewertung** | **Details** | **Daten**
 --- | --- | ---
-**Leistungsbasiert** | Bewertungen basierend auf gesammelten Leistungsdaten | **Empfohlene VM-Größe**: Basierend auf CPU- und Arbeitsspeicher-Nutzungsdaten<br/><br/> **Empfohlener Datenträgertyp (verwalteter Datenträger vom Typ Standard oder Premium)** : Basierend auf IOPS und Durchsatz der lokalen Datenträger
+**Leistungsbasiert** | Bewertungen basierend auf gesammelten Leistungsdaten | **Empfohlene VM-Größe**: Basierend auf CPU- und Arbeitsspeicher-Nutzungsdaten<br/><br/> **Empfohlener Datenträgertyp (Verwalteter Datenträger vom Typ Standard oder Premium)** : Basierend auf IOPS und Durchsatz der lokalen Datenträger
 **Wie lokal** | Bewertungen basierend auf lokaler Größenanpassung | **Empfohlene VM-Größe**: Basierend auf der Größe der lokalen VM<br/><br> **Empfohlener Datenträgertyp**: Basierend auf der für die Bewertung ausgewählten Speichertypeinstellung
 
 
@@ -245,7 +259,7 @@ Führen Sie eine Bewertung wie folgt aus:
 
     ![Erstellen einer Bewertung](./media/tutorial-assess-hyper-v/assessment-create.png)
 
-6. Zeigen Sie die erstellte Bewertung unter **Server** > **Azure Migrate: Server Assessment** (Azure Migrate-Serverbewertung) an.
+6. Zeigen Sie die erstellte Bewertung unter **Server** > **Azure Migrate: Serverbewertung** aus.
 7. Klicken Sie auf **Bewertung exportieren**, um sie als Excel-Datei herunterzuladen.
 
 
@@ -319,7 +333,7 @@ Weitere Informationen zu bewährten Methoden für Zuverlässigkeitsstufen finden
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-In diesem Tutorial haben Sie Folgendes durchgeführt:
+In diesem Tutorial führen Sie Folgendes durch:
 
 > [!div class="checklist"]
 > * Einrichten einer Azure Migrate-Appliance

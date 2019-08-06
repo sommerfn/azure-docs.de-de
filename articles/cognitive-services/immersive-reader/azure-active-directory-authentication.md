@@ -10,12 +10,12 @@ ms.subservice: immersive-reader
 ms.topic: reference
 ms.date: 07/22/2019
 ms.author: rwaller
-ms.openlocfilehash: 8af56d0d7c0f320e607421f12effdb9b37d5f78d
-ms.sourcegitcommit: a874064e903f845d755abffdb5eac4868b390de7
+ms.openlocfilehash: de6a29e1c4c102aa7d4038185c1635544ba9dfe2
+ms.sourcegitcommit: d585cdda2afcf729ed943cfd170b0b361e615fae
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68444603"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "68688789"
 ---
 # <a name="use-azure-active-directory-azure-ad-authentication-with-the-immersive-reader-service"></a>Verwenden der Azure Active Directory-Authentifizierung (Azure AD) mit dem Dienst Plastischer Reader
 
@@ -29,7 +29,7 @@ In den folgenden Abschnitten verwenden Sie entweder die Azure Cloud Shell-Umgebu
    Select-AzSubscription -SubscriptionName <YOUR_SUBSCRIPTION>
    ```
 
-2. Als Nächstes [erstellen Sie eine Plastischer Reader-Ressource](https://docs.microsoft.com/powershell/module/az.cognitiveservices/new-azcognitiveservicesaccount?view=azps-1.8.0) mit einer benutzerdefinierten Unterdomäne. 
+2. Als Nächstes [erstellen Sie eine Plastischer Reader-Ressource](https://docs.microsoft.com/powershell/module/az.cognitiveservices/new-azcognitiveservicesaccount?view=azps-1.8.0) mit einer benutzerdefinierten Unterdomäne.
 
    >[!NOTE]
    > Der Name der Unterdomäne wird im SDK für den plastischen Reader verwendet, wenn der Reader mit der launchAsync-Funktion gestartet wird.
@@ -37,7 +37,7 @@ In den folgenden Abschnitten verwenden Sie entweder die Azure Cloud Shell-Umgebu
    -SkuName kann F0 (Free-Tarif) oder S0 sein (Standard-Tarif, auch kostenlos während Public Preview). Der S0-Tarif hat ein höheres Limit für die Aufrufrate und kein monatliches Kontingent für die Anzahl der Aufrufe.
 
    -Location kann einer der folgenden Werte sein: `eastus`, `westus`, `australiaeast`, `centralindia`, `japaneast`, `northeurope`, `westeurope`
-   
+
    -CustomSubdomainName muss global eindeutig sein und darf einige Zeichen nicht enthalten, wie z.B. „.“, „!“ oder „,“.
 
 
@@ -63,7 +63,7 @@ In den folgenden Abschnitten verwenden Sie entweder die Azure Cloud Shell-Umgebu
 
    // Display the Resource info
    $resource
-   ```   
+   ```
 
 ## <a name="assign-a-role-to-a-service-principal"></a>Zuweisen einer Rolle zu einem Dienstprinzipal
 
@@ -83,7 +83,7 @@ Nachdem Sie nun über eine Unterdomäne verfügen, die Ihrer Ressource zugeordne
    $aadApp
    ```
 
-   Hier erfassen wir das neu erstellte Azure AD-App-Objekt in einer **$aadApp**-Variablen, die im nächsten Schritt verwendet werden soll.   
+   Hier erfassen wir das neu erstellte Azure AD-App-Objekt in einer **$aadApp**-Variablen, die im nächsten Schritt verwendet werden soll.
 
 2. Als Nächstes müssen Sie für die AAD-Anwendung [einen Dienstprinzipal erstellen](https://docs.microsoft.com/powershell/module/az.resources/new-azadserviceprincipal?view=azps-1.8.0).
 
@@ -128,11 +128,11 @@ In diesem Beispiel wird Ihr Kennwort verwendet, um den Dienstprinzipal zum Abruf
    ```
 
    >[!NOTE]
-   > Das SDK für den plastischen Reader verwendet die AccessToken-Eigenschaft des Tokens, z.B. $token.AccessToken. Weitere Informationen finden Sie in der SDK-[Referenz](reference.md) und in den [Codebeispielen](https://github.com/microsoft/immersive-reader-sdk/tree/master/samples).
+   > Das SDK für den plastischen Reader verwendet die AccessToken-Eigenschaft des Tokens, z.B. $token.AccessToken. Weitere Informationen finden Sie in der SDK-[Referenz](reference.md) und in den [Codebeispielen](https://github.com/microsoft/immersive-reader-sdk/tree/master/js/samples).
 
 Alternativ dazu kann der Dienstprinzipal auch mit einem Zertifikat authentifiziert werden. Außer einem Dienstprinzipal werden auch Benutzerprinzipale unterstützt, indem Berechtigungen durch eine andere Azure AD-Anwendung delegiert werden. In diesem Fall verwenden Benutzer keine Kennwörter oder Zertifikate, sondern werden beim Abrufen des Tokens zur zweistufigen Authentifizierung aufgefordert.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
 * Schauen Sie sich das [Tutorial](./tutorial.md) an, um zu sehen, welche weiteren Möglichkeiten Sie mit dem SDK für den plastischen Reader haben.
-* Schauen Sie sich das [SDK für den plastischen Reader](https://github.com/Microsoft/immersive-reader-sdk) und die [Referenz für das SDK für den plastischen Reader](./reference.md) an.
+* Schauen Sie sich das [SDK für den plastischen Reader](https://github.com/microsoft/immersive-reader-sdk) und die [Referenz für das SDK für den plastischen Reader](./reference.md) an.

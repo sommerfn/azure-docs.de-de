@@ -53,13 +53,7 @@
     - name: Problembehandlung
       items:
         - name: Ausnahme „OutOfMemoryError“
-          items:
-            - name: Nicht genügend Heapspeicher
-              href: ./apache-spark-troubleshoot-outofmemory-heap.md
-            - name: Java-Heapspeicher
-              href: ./apache-spark-troubleshoot-outofmemory-heap-space.md
-            - name: Fehler beim Starten des Livy-Servers
-              href: ./apache-spark-troubleshoot-outofmemory-native-thread.md
+          href: ./apache-spark-troubleshoot-outofmemory.md
         - name: 'Fehler beim Apache Spark-Auftrag: NoClassDefFoundError'
           href: ./apache-spark-troubleshoot-job-fails-noclassdeffounderror.md
         - name: 'Fehler beim Apache Spark-Auftrag: InvalidClassException'

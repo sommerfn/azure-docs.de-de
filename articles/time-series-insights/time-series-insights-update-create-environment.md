@@ -8,14 +8,14 @@ manager: cshankar
 ms.service: time-series-insights
 services: time-series-insights
 ms.topic: tutorial
-ms.date: 06/18/2019
+ms.date: 07/29/2019
 ms.custom: seodec18
-ms.openlocfilehash: 824d24b97f192583a42192b3bb90eb1818e1aa18
-ms.sourcegitcommit: a52d48238d00161be5d1ed5d04132db4de43e076
+ms.openlocfilehash: b462f0c427020b1422b91fbd7ac34e3023e546b8
+ms.sourcegitcommit: 13d5eb9657adf1c69cc8df12486470e66361224e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/20/2019
-ms.locfileid: "67273000"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "68677866"
 ---
 # <a name="tutorial-set-up-an-azure-time-series-insights-preview-environment"></a>Tutorial: Einrichten einer Azure Time Series Insights Preview-Umgebung
 
@@ -23,14 +23,21 @@ Dieses Tutorial führt Sie durch das Erstellen einer Azure Time Series Insights 
 
 In diesem Tutorial lernen Sie Folgendes:
 
-* Erstellen einer Azure Time Series Insights Preview-Umgebung.
-* Herstellen einer Verbindung der Azure Time Series Insights Preview-Umgebung mit einem Event Hub in Azure Event Hubs.
-* Ausführen eines Solution Accelerator-Beispiels zum Streamen von Daten in die Azure Time Series Insights Preview-Umgebung.
-* Durchführen einer grundlegenden Analyse für die Daten
-* Definieren eines Zeitreihenmodell-Typs und einer Hierarchie und Zuordnen zu Ihren Instanzen
+> [!div class="checklist"]
+> * Erstellen einer Azure Time Series Insights Preview-Umgebung.
+> * Herstellen einer Verbindung der Azure Time Series Insights Preview-Umgebung mit einem Event Hub in Azure Event Hubs.
+> * Ausführen eines Solution Accelerator-Beispiels zum Streamen von Daten in die Azure Time Series Insights Preview-Umgebung.
+> * Durchführen einer grundlegenden Analyse für die Daten
+> * Definieren eines Zeitreihenmodell-Typs und einer Hierarchie und Zuordnen zu Ihren Instanzen
 
 >[!TIP]
-> Mit [IoT Solution Accelerators](https://www.azureiotsolutions.com/Accelerators) werden für Unternehmen geeignete vorkonfigurierte Lösungen bereitgestellt, mit denen Sie die Entwicklung von benutzerdefinierten IoT-Lösungen beschleunigen können.
+> Mit [IoT Solution Accelerators](https://www.azureiotsolutions.com/Accelerators) werden für Unternehmen konzipierte vorkonfigurierte Lösungen bereitgestellt, mit denen Sie die Entwicklung benutzerdefinierter IoT-Lösungen beschleunigen können.
+
+Registrieren Sie sich für ein [kostenloses Azure-Abonnement](https://azure.microsoft.com/free/), falls Sie noch keins besitzen.
+
+## <a name="prerequisites"></a>Voraussetzungen
+
+* Ihr Azure-Anmeldekonto muss außerdem Mitglied der Rolle **Besitzer** des Abonnements sein. Weitere Informationen finden Sie unter [Verwalten des Zugriffs auf Azure-Ressourcen mit RBAC und dem Azure-Portal](../role-based-access-control/role-assignments-portal.md).
 
 ## <a name="create-a-device-simulation"></a>Erstellen einer Gerätesimulation
 
@@ -321,6 +328,14 @@ In diesem Abschnitt wenden Sie ein Modell zum Strukturieren der Daten an. Um das
 1. Um Details zu einem Ereignis anzuzeigen, wählen Sie eine Region aus, und klicken Sie dann mit der rechten Maustaste auf das Diagramm:
 
    [![Detaillierte Ereignisliste](media/v2-update-provision/define-eighteen.png)](media/v2-update-provision/define-eighteen.png#lightbox)
+
+
+## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
+
+Bereinigen Sie nach dem Tutorial die von Ihnen erstellten Ressourcen:
+
+1. Wählen Sie im [Azure-Portal](https://portal.azure.com) im Menü auf der linken Seite **Alle Ressourcen** aus, und suchen Sie Ihre Azure Time Series Insights-Ressourcengruppe.
+1. Löschen Sie entweder die gesamte Ressourcengruppe (und alle darin enthaltenen Ressourcen), indem Sie auf **Löschen** klicken, oder entfernen Sie die Ressourcen einzeln.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

@@ -29,7 +29,7 @@ sections:
             image:
               src: ../media/index/i_overview.svg
             title: Was ist Textanalyse?
-          - href: /azure/cognitive-services/text-analytics/how-tos/text-analytics-how-to-signup
+          - href: /azure/cognitive-services/cognitive-services-apis-create-account
             html: '<p>Erfahren Sie, wie Sie sich für die Textanalyse-API registrieren.</p>'
             image:
               src: ../media/index/i_get-started.svg

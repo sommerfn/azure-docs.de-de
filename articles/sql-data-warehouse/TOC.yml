@@ -287,8 +287,6 @@
       items:
         - name: Upgrade auf Gen2
           href: upgrade-to-latest-generation.md
-        - name: Wiederherstellen Ihres Data Warehouse
-          href: sql-data-warehouse-restore.md
         - name: 'Überwachen Ihrer Workload: Portal'
           href: sql-data-warehouse-monitor-workload-portal.md
         - name: 'Überwachen Ihrer Workload: DMVs'

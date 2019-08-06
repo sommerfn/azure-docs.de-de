@@ -4,26 +4,16 @@
   expanded: true
   items:
     - name: Was ist der Azure Machine Learning-Dienst?
-      displayName: AML services overview
+      displayName: 'AML, services, overview, introduction'
       href: overview-what-is-azure-ml.md
     - name: Funktionsweise des Diensts
-      displayName: architecture concepts definitions
+      displayName: 'architecture, concepts, definitions, glossary'
       href: concept-azure-machine-learning-architecture.md
 - name: Einrichtung
   items:
     - name: Erstellen eines Arbeitsbereichs
       displayName: install sdk workspace
       href: setup-create-workspace.md
-- name: Schnellstarts
-  items:
-    - name: Python SDK
-      items:
-        - name: Ausführen des Experiments in der Cloud
-          displayName: workspace
-          href: quickstart-run-cloud-notebook.md
-        - name: Lokales Ausführen eines Experiments
-          displayName: 'workspace, install, sdk'
-          href: quickstart-run-local-notebook.md
 - name: Lernprogramme
   items:
     - name: Python SDK
@@ -52,10 +42,10 @@
     - name: Grafische Benutzeroberfläche
       items:
         - name: Trainieren eines Regressionsmodells
-          displayName: experiment drag-and-drop visual interface Tutorial 1
+          displayName: studio
           href: ui-tutorial-automobile-price-train-score.md
         - name: Bereitstellen eines Regressionsmodells
-          displayName: experiment drag-and-drop visual interface Tutorial 2
+          displayName: studio
           href: ui-tutorial-automobile-price-deploy.md
     - name: Automatisiertes maschinelles Lernen
       items:
@@ -65,27 +55,27 @@
 - name: Beispiele
   items:
     - name: Notebooks
-      displayName: 'example, examples, jupyter, azure notebooks, python, notebook, github'
+      displayName: 'example, examples, server, jupyter, azure notebooks, python, notebook, github'
       href: samples-notebooks.md
     - name: Experimente mit der visuellen Benutzeroberfläche
       items:
         - name: Preisprognose
-          displayName: 'Basic Sample, training, regression, sample 1'
+          displayName: 'regression, studio'
           href: ui-sample-regression-predict-automobile-price-basic.md
         - name: Preisprognose (erweitert)
-          displayName: 'Advanced Sample, training, regression, sample 2'
+          displayName: 'regression, studio'
           href: ui-sample-regression-predict-automobile-price-compare-algorithms.md
         - name: Vorhersagen des Kreditrisikos
-          displayName: 'Basic Sample, training, classification, sample 3'
+          displayName: 'classification, studio'
           href: ui-sample-classification-predict-credit-risk-basic.md
         - name: Kreditrisikoprognose (erweitert)
-          displayName: 'Advanced Sample, training, classification, sample 4'
+          displayName: 'classification, studio'
           href: ui-sample-classification-predict-credit-risk-cost-sensitive.md
         - name: Änderungsprognose
-          displayName: 'Basic Sample, training, classification, sample 5'
+          displayName: 'classification, studio'
           href: ui-sample-classification-predict-churn.md
         - name: Vorhersage von Flugverspätungen
-          displayName: 'Basic Sample, training, classification, sample 6'
+          displayName: 'classification, studio'
           href: ui-sample-classification-predict-flight-delay.md
     - name: Azure Open Datasets
       href: /azure/open-datasets/samples?context=azure/machine-learning/service/context/ml-context
@@ -97,7 +87,7 @@
     - name: Arbeitsbereich
       href: concept-workspace.md
     - name: Computeziel
-      displayName: 'compute, resource, target, dsvm, AKS, kubernetes, amlcompute, Data Science Virtual Machine, local, cluster, ACI, container instance, Databricks, data lake, lake, HDI, HDInsight'
+      displayName: 'resource, dsvm, AKS, kubernetes, amlcompute, Data Science Virtual Machine, local, cluster, ACI, container instance, ADB, Databricks, data lake, lake, HDI, HDInsight'
       href: concept-compute-target.md
     - name: Grafische Benutzeroberfläche
       displayName: studio
@@ -106,7 +96,7 @@
       displayName: 'automl, auto ml'
       href: concept-automated-ml.md
     - name: Modellverwaltung (MLOps)
-      displayName: 'deploy, deployment, mlops, operationalize, operationalization'
+      displayName: 'deploy, deployment, publish, production, operationalize, operationalization'
       href: concept-model-management-and-deployment.md
     - name: ML-Pipelines
       href: concept-ml-pipelines.md
@@ -157,15 +147,15 @@
           href: how-to-vscode-tools.md
     - name: Arbeiten mit Daten
       items:
+        - name: Abrufen von Daten aus einem Datenspeicher
+          displayName: 'blob, get, fileshare, access storage'
+          href: how-to-access-data.md
         - name: Hinzufügen und Registrieren von Dataset
           displayName: 'data, dataset'
           href: how-to-create-register-datasets.md
         - name: Erkunden von Daten
           displayName: 'data, eda, exploratory, analysis, etl, dataset, summary statistics, profile, explore, data preparation, dataprep'
           href: how-to-explore-prepare-data.md
-        - name: Abrufen von Daten aus einem Datenspeicher
-          displayName: blob get fileshare access storage
-          href: how-to-access-data.md
         - name: Vorbereiten mit azureml.dataprep
           items:
             - name: Laden von Daten
@@ -229,7 +219,7 @@
     - name: Bereitstellen und Verarbeiten von Modellen
       items:
         - name: 'Bereitstellung: wo und wie'
-          displayName: publish web service
+          displayName: 'publish, web, service, operationalize, aks, kubernetes, aci, container, cli, consume, docker'
           href: how-to-deploy-and-where.md
         - name: Azure Container Instances
           href: how-to-deploy-azure-container-instance.md
@@ -285,13 +275,13 @@
 - name: Verweis
   items:
     - name: Machine Learning SDK
-      displayName: api core package python data prep
-      href: 'https://aka.ms/aml-sdk'
+      displayName: 'api, core, package, python, class'
+      href: 'https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py'
     - name: Machine Learning-CLI
-      displayName: 'cli, extension, command line, command-line, az, ci/cd, automate, automated'
+      displayName: 'extension, command line, command-line, az, ci/cd, automate, automated'
       href: reference-azure-machine-learning-cli.md
     - name: Module der grafischen Benutzeroberfläche
-      displayName: module reference
+      displayName: 'module, reference, algorithm, studio'
       items:
         - name: 'Module: Referenzübersicht'
           href: ../algorithm-module-reference/module-reference.md
@@ -384,7 +374,7 @@
 - name: Ressourcen
   items:
     - name: Versionshinweise
-      displayName: what's new issues bugs
+      displayName: 'what''s, new, issues, bugs'
       href: azure-machine-learning-release-notes.md
     - name: Azure-Roadmap
       href: 'https://azure.microsoft.com/roadmap/'
@@ -393,7 +383,7 @@
     - name: Regionale Verfügbarkeit
       href: 'https://azure.microsoft.com/regions/services/'
     - name: Bekannte Probleme
-      displayName: bugs errors troubleshoot
+      displayName: 'bugs, errors, troubleshoot'
       href: resource-known-issues.md
     - name: Benutzerforum
       href: 'https://aka.ms/aml-forum-service'
@@ -402,5 +392,5 @@
     - name: Vergleichen unserer ML-Produkte
       href: /azure/architecture/data-guide/technology-choices/data-science-and-machine-learning?context=azure/machine-learning/service/context/ml-context
     - name: Was ist mit Workbench passiert?
-      displayName: desktop ui Workbench upgrade update transfer
+      displayName: 'desktop, ui, Workbench, upgrade, update, transfer'
       href: overview-what-happened-to-workbench.md

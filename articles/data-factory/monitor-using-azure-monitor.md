@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 12/11/2018
 ms.author: shlo
-ms.openlocfilehash: 722d77bf27e3cd7eb921b09e0a1d4732a5b5f874
-ms.sourcegitcommit: 6cb4dd784dd5a6c72edaff56cf6bcdcd8c579ee7
+ms.openlocfilehash: 6bad74d33f5d50bb7a35de69927bf97daad07798
+ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2019
-ms.locfileid: "67514420"
+ms.lasthandoff: 07/18/2019
+ms.locfileid: "68326872"
 ---
 # <a name="alert-and-monitor-data-factories-using-azure-monitor"></a>Benachrichtigen und Überwachen von Data Factorys mithilfe von Azure Monitor
 Cloudanwendungen sind komplexe Systeme mit zahlreichen Variablen. Die Überwachung stellt Daten bereit, auf deren Grundlage die ordnungsgemäße Ausführung der Anwendung sichergestellt werden kann. Sie trägt auch zur Vermeidung potenzieller Probleme bei und hilft bei der Behandlung bereits aufgetretener Probleme. Darüber hinaus können Sie auf der Grundlage von Überwachungsdaten umfassende Erkenntnisse über Ihre Anwendung gewinnen. Mithilfe dieser Kenntnisse können Sie die Leistung oder Wartungsfreundlichkeit der Anwendung verbessern oder Aktionen automatisieren, die andernfalls manuell ausgeführt werden müssten.
@@ -105,13 +105,13 @@ https://management.azure.com/{resource-id}/providers/microsoft.insights/diagnost
 
 | Eigenschaft | Typ | BESCHREIBUNG |
 | --- | --- | --- |
-| storageAccountId |string | Die Ressourcen-ID des Speicherkontos, an das Diagnoseprotokolle gesendet werden sollen. |
-| serviceBusRuleId |string | Die Service Bus-Regel-ID des Service Bus-Namespace, in dem Event Hubs für das Streaming von Diagnoseprotokollen erstellt werden sollen. Die Regel-ID hat folgendes Format: "{Service Bus-Ressourcen-ID}/authorizationrules/{Schlüsselname}".|
+| storageAccountId |Zeichenfolge | Die Ressourcen-ID des Speicherkontos, an das Diagnoseprotokolle gesendet werden sollen. |
+| serviceBusRuleId |Zeichenfolge | Die Service Bus-Regel-ID des Service Bus-Namespace, in dem Event Hubs für das Streaming von Diagnoseprotokollen erstellt werden sollen. Die Regel-ID hat folgendes Format: "{Service Bus-Ressourcen-ID}/authorizationrules/{Schlüsselname}".|
 | workspaceId | Komplexer Typ | Array metrischer Zeiteinheiten und ihrer Aufbewahrungsrichtlinien. Diese Eigenschaft ist derzeit leer. |
 |metrics| Parameterwerte der Pipelineausführung, die an die aufgerufene Pipeline übergeben werden sollen| Ein JSON-Objekt, das Parameternamen Argumentwerten zuordnet |
 | logs| Komplexer Typ| Der Name einer Diagnoseprotokollkategorie für einen Ressourcentyp. Um die Liste der Diagnoseprotokollkategorien für eine Ressource zu erhalten, führen Sie zuerst einen GET-Vorgang zum Abrufen von Diagnoseeinstellungen aus. |
-| category| string| Array von Protokollkategorien und ihrer Aufbewahrungsrichtlinien |
-| timeGrain | string | Die Granularität von Metriken, die im Zeitformat ISO 8601 erfasst werden. Muss „PT1M“ (eine Minute) sein|
+| category| Zeichenfolge| Array von Protokollkategorien und ihrer Aufbewahrungsrichtlinien |
+| timeGrain | Zeichenfolge | Die Granularität von Metriken, die im Zeitformat ISO 8601 erfasst werden. Muss „PT1M“ (eine Minute) sein|
 | enabled| Boolean | Gibt an, ob die Sammlung dieser Metrik- oder Protokollkategorie für diese Ressource aktiviert ist|
 | retentionPolicy| Komplexer Typ| Beschreibt die Aufbewahrungsrichtlinie für eine Metrik- oder Protokollkategorie. Wird nur für die Speicherkonto-Option verwendet.|
 | days| Int| Anzahl der Tage, die Metriken oder Protokolle aufbewahrt werden sollen. Beim Wert 0 werden die Protokolle dauerhaft gespeichert. Wird nur für die Speicherkonto-Option verwendet. |
@@ -234,7 +234,9 @@ https://management.azure.com/{resource-id}/providers/microsoft.insights/diagnost
 
 ## <a name="schema-of-logs--events"></a>Schema von Protokollen und Ereignissen
 
-### <a name="activity-run-logs-attributes"></a>Attribute der Protokolle von Aktivitätsausführungen
+### <a name="azure-monitor-schema"></a>Azure Monitor-Schema
+
+#### <a name="activity-run-logs-attributes"></a>Attribute der Protokolle von Aktivitätsausführungen
 
 ```json
 {
@@ -275,21 +277,21 @@ https://management.azure.com/{resource-id}/providers/microsoft.insights/diagnost
 
 | Eigenschaft | Typ | BESCHREIBUNG | Beispiel |
 | --- | --- | --- | --- |
-| Level |string | Ebene der Diagnoseprotokolle. Bei Protokollen von Aktivitätsausführungen ist dies stets Ebene 4. | `4`  |
-| correlationId |string | Eindeutige ID zum durchgängigen Nachverfolgen einer bestimmten Anforderung | `319dc6b4-f348-405e-b8d7-aafc77b73e77` |
-| time | string | Zeitpunkt des Ereignisses im Zeitraum, UTC-Format: `YYYY-MM-DDTHH:MM:SS.00000Z` | `2017-06-28T21:00:27.3534352Z` |
-|activityRunId| string| ID der Aktivitätsausführung | `3a171e1f-b36e-4b80-8a54-5625394f4354` |
-|pipelineRunId| string| ID der Pipelineausführung | `9f6069d6-e522-4608-9f99-21807bfc3c70` |
-|resourceId| string | Mit der Data Factory-Ressource verknüpfte Ressourcen-ID | `/SUBSCRIPTIONS/<subID>/RESOURCEGROUPS/<resourceGroupName>/PROVIDERS/MICROSOFT.DATAFACTORY/FACTORIES/<dataFactoryName>` |
-|category| string | Kategorie der Diagnoseprotokolle. Legen Sie diese Eigenschaft auf „ActivityRuns“ fest | `ActivityRuns` |
-|level| string | Ebene der Diagnoseprotokolle. Legen Sie diese Eigenschaft auf „Informational“ fest | `Informational` |
-|operationName| string |Der Name der Aktivität mit Status. Bei Status „start heartbeat“ `MyActivity -`. Bei Status „end heartbeat“ `MyActivity - Succeeded` mit Endstatus | `MyActivity - Succeeded` |
-|pipelineName| string | Name der Pipeline | `MyPipeline` |
-|activityName| string | Der Name der Aktivität | `MyActivity` |
-|start| string | Start der Aktivitätsausführung im Zeitraum, UTC-Format | `2017-06-26T20:55:29.5007959Z`|
-|end| string | Ende der Aktivitätsausführung im Zeitraum, UTC-Format Wenn die Aktivität noch nicht beendet ist (Diagnoseprotokoll für eine startende Aktivität), wird der Standardwert `1601-01-01T00:00:00Z` festgelegt.  | `2017-06-26T20:55:29.5007959Z` |
+| Level |Zeichenfolge | Ebene der Diagnoseprotokolle. Bei Protokollen von Aktivitätsausführungen ist dies stets Ebene 4. | `4`  |
+| correlationId |Zeichenfolge | Eindeutige ID zum durchgängigen Nachverfolgen einer bestimmten Anforderung | `319dc6b4-f348-405e-b8d7-aafc77b73e77` |
+| time | Zeichenfolge | Zeitpunkt des Ereignisses im Zeitraum, UTC-Format: `YYYY-MM-DDTHH:MM:SS.00000Z` | `2017-06-28T21:00:27.3534352Z` |
+|activityRunId| Zeichenfolge| ID der Aktivitätsausführung | `3a171e1f-b36e-4b80-8a54-5625394f4354` |
+|pipelineRunId| Zeichenfolge| ID der Pipelineausführung | `9f6069d6-e522-4608-9f99-21807bfc3c70` |
+|resourceId| Zeichenfolge | Mit der Data Factory-Ressource verknüpfte Ressourcen-ID | `/SUBSCRIPTIONS/<subID>/RESOURCEGROUPS/<resourceGroupName>/PROVIDERS/MICROSOFT.DATAFACTORY/FACTORIES/<dataFactoryName>` |
+|category| Zeichenfolge | Kategorie der Diagnoseprotokolle. Legen Sie diese Eigenschaft auf „ActivityRuns“ fest | `ActivityRuns` |
+|level| Zeichenfolge | Ebene der Diagnoseprotokolle. Legen Sie diese Eigenschaft auf „Informational“ fest | `Informational` |
+|operationName| Zeichenfolge |Der Name der Aktivität mit Status. Bei Status „start heartbeat“ `MyActivity -`. Bei Status „end heartbeat“ `MyActivity - Succeeded` mit Endstatus | `MyActivity - Succeeded` |
+|pipelineName| Zeichenfolge | Name der Pipeline | `MyPipeline` |
+|activityName| Zeichenfolge | Der Name der Aktivität | `MyActivity` |
+|start| Zeichenfolge | Start der Aktivitätsausführung im Zeitraum, UTC-Format | `2017-06-26T20:55:29.5007959Z`|
+|end| Zeichenfolge | Ende der Aktivitätsausführung im Zeitraum, UTC-Format Wenn die Aktivität noch nicht beendet ist (Diagnoseprotokoll für eine startende Aktivität), wird der Standardwert `1601-01-01T00:00:00Z` festgelegt.  | `2017-06-26T20:55:29.5007959Z` |
 
-### <a name="pipeline-run-logs-attributes"></a>Attribute der Protokolle von Pipelineausführungen
+#### <a name="pipeline-run-logs-attributes"></a>Attribute der Protokolle von Pipelineausführungen
 
 ```json
 {
@@ -321,20 +323,20 @@ https://management.azure.com/{resource-id}/providers/microsoft.insights/diagnost
 
 | Eigenschaft | Typ | BESCHREIBUNG | Beispiel |
 | --- | --- | --- | --- |
-| Level |string | Ebene der Diagnoseprotokolle. Bei Protokollen von Aktivitätsausführungen ist dies Ebene 4. | `4`  |
-| correlationId |string | Eindeutige ID zum durchgängigen Nachverfolgen einer bestimmten Anforderung | `319dc6b4-f348-405e-b8d7-aafc77b73e77` |
-| time | string | Zeitpunkt des Ereignisses im Zeitraum, UTC-Format: `YYYY-MM-DDTHH:MM:SS.00000Z` | `2017-06-28T21:00:27.3534352Z` |
-|runId| string| ID der Pipelineausführung | `9f6069d6-e522-4608-9f99-21807bfc3c70` |
-|resourceId| string | Mit der Data Factory-Ressource verknüpfte Ressourcen-ID | `/SUBSCRIPTIONS/<subID>/RESOURCEGROUPS/<resourceGroupName>/PROVIDERS/MICROSOFT.DATAFACTORY/FACTORIES/<dataFactoryName>` |
-|category| string | Kategorie der Diagnoseprotokolle. Legen Sie diese Eigenschaft auf „PipelineRuns“ fest | `PipelineRuns` |
-|level| string | Ebene der Diagnoseprotokolle. Legen Sie diese Eigenschaft auf „Informational“ fest | `Informational` |
-|operationName| string |Name der Pipeline mit Status. „Pipeline - Succeeded“ mit Endstatus nach Abschluss der Pipelineausführung| `MyPipeline - Succeeded` |
-|pipelineName| string | Name der Pipeline | `MyPipeline` |
-|start| string | Start der Aktivitätsausführung im Zeitraum, UTC-Format | `2017-06-26T20:55:29.5007959Z`|
-|end| string | Ende der Aktivitätsausführungen im Zeitraum, UTC-Format Wenn die Aktivität noch nicht beendet ist (Diagnoseprotokoll für eine startende Aktivität), wird der Standardwert `1601-01-01T00:00:00Z` festgelegt.  | `2017-06-26T20:55:29.5007959Z` |
-|status| string | Der Endstatus der Pipelineausführung („Succeeded“ oder „Failed“) | `Succeeded`|
+| Level |Zeichenfolge | Ebene der Diagnoseprotokolle. Bei Protokollen von Aktivitätsausführungen ist dies Ebene 4. | `4`  |
+| correlationId |Zeichenfolge | Eindeutige ID zum durchgängigen Nachverfolgen einer bestimmten Anforderung | `319dc6b4-f348-405e-b8d7-aafc77b73e77` |
+| time | Zeichenfolge | Zeitpunkt des Ereignisses im Zeitraum, UTC-Format: `YYYY-MM-DDTHH:MM:SS.00000Z` | `2017-06-28T21:00:27.3534352Z` |
+|runId| Zeichenfolge| ID der Pipelineausführung | `9f6069d6-e522-4608-9f99-21807bfc3c70` |
+|resourceId| Zeichenfolge | Mit der Data Factory-Ressource verknüpfte Ressourcen-ID | `/SUBSCRIPTIONS/<subID>/RESOURCEGROUPS/<resourceGroupName>/PROVIDERS/MICROSOFT.DATAFACTORY/FACTORIES/<dataFactoryName>` |
+|category| Zeichenfolge | Kategorie der Diagnoseprotokolle. Legen Sie diese Eigenschaft auf „PipelineRuns“ fest | `PipelineRuns` |
+|level| Zeichenfolge | Ebene der Diagnoseprotokolle. Legen Sie diese Eigenschaft auf „Informational“ fest | `Informational` |
+|operationName| Zeichenfolge |Name der Pipeline mit Status. „Pipeline - Succeeded“ mit Endstatus nach Abschluss der Pipelineausführung| `MyPipeline - Succeeded` |
+|pipelineName| Zeichenfolge | Name der Pipeline | `MyPipeline` |
+|start| Zeichenfolge | Start der Aktivitätsausführung im Zeitraum, UTC-Format | `2017-06-26T20:55:29.5007959Z`|
+|end| Zeichenfolge | Ende der Aktivitätsausführungen im Zeitraum, UTC-Format Wenn die Aktivität noch nicht beendet ist (Diagnoseprotokoll für eine startende Aktivität), wird der Standardwert `1601-01-01T00:00:00Z` festgelegt.  | `2017-06-26T20:55:29.5007959Z` |
+|status| Zeichenfolge | Der Endstatus der Pipelineausführung („Succeeded“ oder „Failed“) | `Succeeded`|
 
-### <a name="trigger-run-logs-attributes"></a>Attribute der Protokolle von Triggerausführungen
+#### <a name="trigger-run-logs-attributes"></a>Attribute der Protokolle von Triggerausführungen
 
 ```json
 {
@@ -365,27 +367,49 @@ https://management.azure.com/{resource-id}/providers/microsoft.insights/diagnost
 
 | Eigenschaft | Typ | BESCHREIBUNG | Beispiel |
 | --- | --- | --- | --- |
-| Level |string | Ebene der Diagnoseprotokolle. Legen Sie diese für Protokolle von Aktivitätsausführungen auf 4 fest. | `4`  |
-| correlationId |string | Eindeutige ID zum durchgängigen Nachverfolgen einer bestimmten Anforderung | `319dc6b4-f348-405e-b8d7-aafc77b73e77` |
-| time | string | Zeitpunkt des Ereignisses im Zeitraum, UTC-Format: `YYYY-MM-DDTHH:MM:SS.00000Z` | `2017-06-28T21:00:27.3534352Z` |
-|triggerId| string| ID der Triggerausführung | `08587023010602533858661257311` |
-|resourceId| string | Mit der Data Factory-Ressource verknüpfte Ressourcen-ID | `/SUBSCRIPTIONS/<subID>/RESOURCEGROUPS/<resourceGroupName>/PROVIDERS/MICROSOFT.DATAFACTORY/FACTORIES/<dataFactoryName>` |
-|category| string | Kategorie der Diagnoseprotokolle. Legen Sie diese Eigenschaft auf „PipelineRuns“ fest | `PipelineRuns` |
-|level| string | Ebene der Diagnoseprotokolle. Legen Sie diese Eigenschaft auf „Informational“ fest | `Informational` |
-|operationName| string |Name des Triggers mit Endstatus, ob dieser erfolgreich ausgelöst wurde. „MyTrigger - Succeeded“, wenn der Heartbeat erfolgreich war| `MyTrigger - Succeeded` |
-|triggerName| string | Name des Triggers | `MyTrigger` |
-|triggerType| string | Typ des Triggers (manueller Trigger oder Zeitplantrigger) | `ScheduleTrigger` |
-|triggerEvent| string | Ereignis des Triggers | `ScheduleTime - 2017-07-06T01:50:25Z` |
-|start| string | Beginn der Triggerauslösung im Zeitraum, UTC-Format | `2017-06-26T20:55:29.5007959Z`|
-|status| string | Endstatus, der angibt, ob der Trigger erfolgreich ausgelöst wurde („Succeeded“ oder „Failed“) | `Succeeded`|
+| Level |Zeichenfolge | Ebene der Diagnoseprotokolle. Legen Sie diese für Protokolle von Aktivitätsausführungen auf 4 fest. | `4`  |
+| correlationId |Zeichenfolge | Eindeutige ID zum durchgängigen Nachverfolgen einer bestimmten Anforderung | `319dc6b4-f348-405e-b8d7-aafc77b73e77` |
+| time | Zeichenfolge | Zeitpunkt des Ereignisses im Zeitraum, UTC-Format: `YYYY-MM-DDTHH:MM:SS.00000Z` | `2017-06-28T21:00:27.3534352Z` |
+|triggerId| Zeichenfolge| ID der Triggerausführung | `08587023010602533858661257311` |
+|resourceId| Zeichenfolge | Mit der Data Factory-Ressource verknüpfte Ressourcen-ID | `/SUBSCRIPTIONS/<subID>/RESOURCEGROUPS/<resourceGroupName>/PROVIDERS/MICROSOFT.DATAFACTORY/FACTORIES/<dataFactoryName>` |
+|category| Zeichenfolge | Kategorie der Diagnoseprotokolle. Legen Sie diese Eigenschaft auf „PipelineRuns“ fest | `PipelineRuns` |
+|level| Zeichenfolge | Ebene der Diagnoseprotokolle. Legen Sie diese Eigenschaft auf „Informational“ fest | `Informational` |
+|operationName| Zeichenfolge |Name des Triggers mit Endstatus, ob dieser erfolgreich ausgelöst wurde. „MyTrigger - Succeeded“, wenn der Heartbeat erfolgreich war| `MyTrigger - Succeeded` |
+|triggerName| Zeichenfolge | Name des Triggers | `MyTrigger` |
+|triggerType| Zeichenfolge | Typ des Triggers (manueller Trigger oder Zeitplantrigger) | `ScheduleTrigger` |
+|triggerEvent| Zeichenfolge | Ereignis des Triggers | `ScheduleTime - 2017-07-06T01:50:25Z` |
+|start| Zeichenfolge | Beginn der Triggerauslösung im Zeitraum, UTC-Format | `2017-06-26T20:55:29.5007959Z`|
+|status| Zeichenfolge | Endstatus, der angibt, ob der Trigger erfolgreich ausgelöst wurde („Succeeded“ oder „Failed“) | `Succeeded`|
 
+### <a name="log-analytics-schema"></a>Log Analytics-Schema
+
+Log Analytics erbt das Schema von Azure Monitor. Dabei gelten jedoch folgende Ausnahmen:
+
+* Der erste Buchstabe jedes Spaltennamens wird groß geschrieben. *correlationId* aus Azure Monitor wird in Log Analytics also beispielsweise zu *CorrelationId*.
+* Die Spaltenebene ** wird gelöscht.
+* Die dynamischen Spalteneigenschaften ** werden wie folgt als dynamischer JSON-Blobtyp beibehalten:
+
+    | Azure Monitor-Spalte | Log Analytics-Spalte | Typ |
+    | --- | --- | --- |
+    | $.properties.UserProperties | UserProperties | Dynamisch |
+    | $.properties.Annotations | Anmerkungen | Dynamisch |
+    | $.properties.Input | Eingabe | Dynamisch |
+    | $.properties.Output | Output | Dynamisch |
+    | $.properties.Error.errorCode | ErrorCode | int |
+    | $.properties.Error.message | ErrorMessage | Zeichenfolge |
+    | $.properties.Error | Error | Dynamisch |
+    | $.properties.Predecessors | Predecessors | Dynamisch |
+    | $.properties.Parameters | Parameter | Dynamisch |
+    | $.properties.SystemParameters | SystemParameters | Dynamisch |
+    | $.properties.Tags | `Tags` | Dynamisch |
+    
 ## <a name="metrics"></a>metrics
 
 Mit Azure Monitor können Sie Telemetriedaten verwenden, um sich einen Überblick über Leistung und Integrität Ihrer Workloads in Azure zu verschaffen. Die wichtigsten Typen von Telemetriedaten sind Metriken (auch Leistungsindikatoren genannt), die von den meisten Azure-Ressourcen ausgegeben werden. Azure Monitor bietet Ihnen verschiedene Möglichkeiten, diese Metriken für die Überwachung und Problembehandlung zu konfigurieren und zu nutzen.
 
-ADFV2 gibt die folgenden Metriken aus.
+ADFV2 gibt die folgenden Metriken aus:
 
-| **Metrik**           | **Metrikanzeigename**         | **Einheit** | **Aggregationstyp** | **Beschreibung**                                       |
+| **Metrik**           | **Anzeigename der Metrik**         | **Einheit** | **Aggregationstyp** | **Beschreibung**                                       |
 |----------------------|---------------------------------|----------|----------------------|-------------------------------------------------------|
 | PipelineSucceededRuns | Metriken zu erfolgreichen Pipelineausführungen | Count    | Gesamt                | Insgesamt erfolgreiche Pipelineausführungen in einem Zeitfenster von einer Minute |
 | PipelineFailedRuns   | Metriken zu fehlerhaften Pipelineausführungen    | Count    | Gesamt                | Insgesamt fehlerhafte Pipelineausführungen in einem Zeitfenster von einer Minute    |
@@ -394,7 +418,7 @@ ADFV2 gibt die folgenden Metriken aus.
 | TriggerSucceededRuns | Metriken zu erfolgreichen Triggerausführungen  | Count    | Gesamt                | Insgesamt erfolgreiche Triggerausführungen in einem Zeitfenster von einer Minute   |
 | TriggerFailedRuns    | Metriken zu fehlerhaften Triggerausführungen     | Count    | Gesamt                | Insgesamt fehlerhafte Triggerausführungen in einem Zeitfenster von einer Minute      |
 
-Eine Anleitung für den Zugriff auf die Metriken finden Sie im folgenden Artikel: https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-metrics
+Folgen Sie den Anweisungen unter [Azure Monitor-Datenplattform](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-metrics), um auf die Metriken zuzugreifen.
 
 ## <a name="monitor-data-factory-metrics-with-azure-monitor"></a>Überwachen von Data Factory-Metriken mit Azure Monitor
 
@@ -412,13 +436,28 @@ Das folgende Video enthält eine siebenminütige Einführung und Demonstration d
 
 Aktivieren Sie die Diagnoseeinstellungen für Ihre Data Factory.
 
-1.  Wählen Sie **Azure Monitor** -> **Diagnoseeinstellungen** -> Wählen Sie die Data Factory aus -> Aktivieren Sie die Diagnose.
+1. Navigieren Sie im Portal zu Azure Monitor, und klicken Sie im Menü **Einstellungen** auf **Diagnoseeinstellungen**.
 
-    ![monitor-oms-image1.png](media/data-factory-monitor-oms/monitor-oms-image1.png)
+2. Wählen Sie die Data Factory aus, für die Sie eine Diagnoseeinstellung festlegen möchten.
+    
+3. Sollten für die ausgewählte Data Factory keine Einstellungen vorhanden sein, werden Sie aufgefordert, eine Einstellung zu erstellen. Klicken Sie auf „Diagnose aktivieren“.
 
-2.  Geben Sie die Diagnoseeinstellungen einschließlich der Konfiguration des Arbeitsbereichs an.
+   ![Diagnoseeinstellung hinzufügen – keine Einstellungen vorhanden](media/data-factory-monitor-oms/monitor-oms-image1.png)
+
+   Sind Einstellungen für die Data Factory vorhanden, wird eine Liste mit den Einstellungen angezeigt, die bereits für diese Data Factory konfiguriert sind. Klicken Sie auf „Diagnoseeinstellung hinzufügen“.
+
+   ![Diagnoseeinstellung hinzufügen – Einstellungen vorhanden](media/data-factory-monitor-oms/add-diagnostic-setting.png)
+
+4. Legen Sie einen Namen für Ihre Einstellung fest, und aktivieren Sie das Kontrollkästchen **An Log Analytics senden**. Wählen Sie dann einen Log Analytics-Arbeitsbereich aus.
 
     ![monitor-oms-image2.png](media/data-factory-monitor-oms/monitor-oms-image2.png)
+
+5. Klicken Sie auf **Speichern**.
+
+Nach einigen Augenblicken wird die neue Einstellung in der Liste mit den Einstellungen für diese Data Factory angezeigt, und Diagnoseprotokolle werden an diesen Arbeitsbereich gestreamt, sobald neue Ereignisdaten generiert werden. Möglicherweise vergehen bis zu 15 Minuten zwischen der Ausgabe eines Ereignisses und dessen Anzeige in Log Analytics.
+
+> [!NOTE]
+> Da Azure-Protokolltabellen explizit auf maximal 500 Spalten begrenzt sind, wird **dringend empfohlen, den ressourcenspezifischen Modus zu verwenden**. Weitere Informationen finden Sie unter [Bekannte Einschränkung: Spaltenlimit in Azure-Diagnose](https://docs.microsoft.com/azure/azure-monitor/platform/diagnostic-logs-stream-log-store#known-limitation-column-limit-in-azurediagnostics).
 
 ### <a name="install-azure-data-factory-analytics-from-azure-marketplace"></a>Installieren von Azure Data Factory-Analysen aus dem Azure Marketplace
 
@@ -462,7 +501,7 @@ Sie können u.a. die obigen Metriken visualisieren, die Abfragen hinter diesen M
 
 ## <a name="alerts"></a>Alerts
 
-Melden Sie sich beim Azure-Portal an, und klicken Sie auf **Überwachen -&gt; Warnungen**, um Warnungen zu erstellen.
+Melden Sie sich beim Azure-Portal an, und klicken Sie auf **Überwachen** > **Warnungen**, um Warnungen zu erstellen.
 
 ![Warnungen im Portalmenü](media/monitor-using-azure-monitor/alerts_image3.png)
 

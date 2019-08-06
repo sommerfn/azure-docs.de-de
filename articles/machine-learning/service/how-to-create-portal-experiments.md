@@ -11,12 +11,12 @@ author: tsikiksr
 manager: cgronlun
 ms.reviewer: nibaccam
 ms.date: 05/02/2019
-ms.openlocfilehash: 5eb3e94ff65e8a8b74f357a4cb8a517fd3837c5a
-ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
+ms.openlocfilehash: 1bfc415b2e4dbc66e2afeae73b78079fb027a60c
+ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "67871815"
+ms.lasthandoff: 07/19/2019
+ms.locfileid: "68358844"
 ---
 # <a name="create-and-explore-automated-machine-learning-experiments-in-the-azure-portal-preview"></a>Erstellen und Untersuchen automatisierter Machine Learning-Experimente im Azure-Portal (Vorschau)
 
@@ -180,7 +180,7 @@ Bei Trainingsaufträgen kann es eine Weile dauern, bis die Ausführung jeder Pip
 
 ### <a name="view-training-run-details"></a>Anzeigen der Details der Trainingsausführung
 
-Führen Sie einen Drilldown der Ausgabemodelle aus, um Details zur Trainingsausführung anzuzeigen, z.B. Leistungsmetriken und Verteilungsdiagramme. [Weitere Informationen zu Diagrammen](how-to-track-experiments.md#understanding-automated-ml-charts).
+Führen Sie einen Drilldown der Ausgabemodelle aus, um Details zur Trainingsausführung anzuzeigen, z.B. Leistungsmetriken und Verteilungsdiagramme. [Weitere Informationen zu Diagrammen](how-to-understand-automated-ml.md).
 
 ![Details zur Iteration](media/how-to-create-portal-experiments/iteration-details.png)
 
@@ -243,4 +243,5 @@ Automatisiertes maschinelles Lernen unterstützt Sie dabei, das Modell bereitzus
 ## <a name="next-steps"></a>Nächste Schritte
 
 * [Weitere Informationen zu automatisiertem Machine Learning](concept-automated-ml.md) und Azure Machine Learning.
+* [Grundlagen von Ergebnissen des automatisierten maschinellen Lernens](how-to-understand-automated-ml.md)
 * [Informationen zum Nutzen eines Webdiensts](https://docs.microsoft.com/azure/machine-learning/service/how-to-consume-web-service)
