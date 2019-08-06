@@ -50,7 +50,7 @@ Folgende Eigenschaften werden für den mit Hive verknüpften Dienst unterstützt
 | serviceDiscoveryMode | „true“, um das Verwenden des Diensts ZooKeeper anzugeben, andernfalls „false“.  | Nein |
 | zooKeeperNameSpace | Der Namespace für ZooKeeper, unter dem Hive Server 2-Knoten hinzugefügt werden.  | Nein |
 | useNativeQuery | Gibt an, ob der Treiber native HiveQL-Abfragen verwendet oder diese in eine äquivalente Form in HiveQL konvertiert.  | Nein |
-| userName | Der Benutzername für den Zugriff auf den Hive-Server.  | Nein |
+| username | Der Benutzername für den Zugriff auf den Hive-Server.  | Nein |
 | password | Das Kennwort für den Benutzer. Markieren Sie dieses Feld als SecureString, um es sicher in Data Factory zu speichern, oder [verweisen Sie auf ein in Azure Key Vault gespeichertes Geheimnis](store-credentials-in-key-vault.md). | Nein |
 | httpPath | Die Teil-URL, die dem Hive-Server entspricht.  | Nein |
 | enableSsl | Gibt an, ob die Verbindungen mit dem Server mit SSL verschlüsselt werden. Der Standardwert ist „false“.  | Nein |
